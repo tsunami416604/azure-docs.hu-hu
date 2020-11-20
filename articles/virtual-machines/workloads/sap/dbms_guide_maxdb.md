@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7195e3c9f2d38c16bd9cad59a2489157c7c1340f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4257fcca1172502560c182651d649745e494cc1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654633"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94958965"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>Az SAP MaxDB, a liveCache és a Content Server üzembe helyezése Azure-beli virtuális gépeken
 
@@ -328,7 +329,7 @@ Javasoljuk, hogy a Microsoft Windows operációs rendszer legújabb verzióját 
 Az SAP MaxDB dokumentációjának frissített listáját a következő SAP-megjegyzésekben találja: [767598]
 
 ### <a name="sap-maxdb-configuration-guidelines-for-sap-installations-in-azure-vms"></a>SAP MaxDB-konfigurációs irányelvek az SAP-telepítésekhez az Azure virtuális gépeken
-#### <a name="storage-configuration"></a><a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>Tárolási konfiguráció
+#### <a name="storage-configuration"></a><a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>Tároló konfigurálása
 Az Azure Storage ajánlott eljárásai az SAP-MaxDB az RDBMS-alapú [virtuális gépek tárolási struktúrájának](./dbms_guide_general.md#65fa79d6-a85f-47ee-890b-22e794f51a64)fejezetében említett általános ajánlásokat követve.
 
 > [!IMPORTANT]
@@ -425,7 +426,7 @@ Az SAP jelenleg a következőket támogatja:
 * **SAP MaxDB 7,9-es verzió**
 * **Microsoft IIS (Internet Information Server) 8,0-es verzió (és újabb)**
 
-Javasoljuk, hogy az SAP Content Server legújabb verzióját és a **Microsoft IIS**legújabb verzióját használja. 
+Javasoljuk, hogy az SAP Content Server legújabb verzióját és a **Microsoft IIS** legújabb verzióját használja. 
 
 Tekintse meg az SAP Content Server és a Microsoft IIS legújabb támogatott verzióit az [SAP termék rendelkezésre állási mátrixában (PAM)][sap-pam].
 

@@ -8,19 +8,20 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 99a0805239ee2437ad6ec9ceb40cf45496a07850
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 3a3518ba68c9474fc4a34390e6fd9a7d1e88f6c6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047658"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959594"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Oktatóanyag: környezet beállítása a gépi tanuláshoz IoT Edge
 
-> [!NOTE]
-> Ez a cikk egy sorozat részét képezi a Azure Machine Learning IoT Edge-on való használatáról szóló oktatóanyaghoz. Ha ezt a cikket közvetlenül megérkezett, javasoljuk, hogy kezdje a sorozat [első cikkével](tutorial-machine-learning-edge-01-intro.md) a legjobb eredmények érdekében.
-
 Ez a cikk segít felkészülni a környezet fejlesztésére és üzembe helyezésére. Először állítson be egy fejlesztői gépet minden szükséges eszközzel. Ezután hozza létre a szükséges Felhőbeli erőforrásokat az Azure-ban.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Ez a cikk egy sorozat részét képezi a Azure Machine Learning IoT Edge-on való használatáról szóló oktatóanyaghoz. A sorozat minden cikke az előző cikkben található munkára épül. Ha ezt a cikket közvetlenül megérkezett, tekintse meg az [első cikket](tutorial-machine-learning-edge-01-intro.md) a sorozatban.
 
 ## <a name="set-up-the-development-vm"></a>A fejlesztési virtuális gép beállítása
 
@@ -100,9 +101,9 @@ A Cost csökkentése érdekében a fejlesztési virtuális gép a 1900 PST-re be
 
 1. A Azure Portal navigáljon a parancsfájl által létrehozott virtuális gépre.
 
-1. A bal oldali ablaktábla **műveletek**területén válassza az **automatikus leállítás**lehetőséget.
+1. A bal oldali ablaktábla **műveletek** területén válassza az **automatikus leállítás** lehetőséget.
 
-1. Igény szerint módosítsa az **ütemezett leállítást** és az **időzónát** , majd válassza a **Mentés**lehetőséget.
+1. Igény szerint módosítsa az **ütemezett leállítást** és az **időzónát** , majd válassza a **Mentés** lehetőséget.
 
 ## <a name="connect-to-the-development-vm"></a>Kapcsolódás a fejlesztési virtuális géphez
 
@@ -110,9 +111,9 @@ Most, hogy létrehozott egy virtuális gépet, be kell fejeznie az oktatóanyag 
 
 1. Kattintson duplán arra az RDP-fájlra, amelyet a parancsfájl hozott létre az asztalon.
 
-1. Ekkor megjelenik egy párbeszédpanel, amely azt jelzi, hogy a távoli kapcsolatok közzétevője ismeretlen. Ez elfogadható, ezért válassza a **kapcsolat**lehetőséget.
+1. Ekkor megjelenik egy párbeszédpanel, amely azt jelzi, hogy a távoli kapcsolatok közzétevője ismeretlen. Ez elfogadható, ezért válassza a **kapcsolat** lehetőséget.
 
-1. Adja meg a virtuális gép létrehozásához megadott rendszergazdai jelszót, majd kattintson **az OK**gombra.
+1. Adja meg a virtuális gép létrehozásához megadott rendszergazdai jelszót, majd kattintson **az OK** gombra.
 
 1. A rendszer kérni fogja, hogy fogadja el a virtuális gép tanúsítványát. Válassza az **Igen** lehetőséget.
 
@@ -183,7 +184,7 @@ Az IoT hub létrehozásának részeként az előző szakaszban futtatott szkript
 
 1. Az erőforrások listájában válassza ki a parancsfájl által létrehozott IoT Hub. A név egy véletlenszerű karakterrel végződő névvel fog rendelkezni, például: `IotEdgeAndMlHub-jrujej6de6i7w` .
 
-1. A bal oldali ablaktábla **üzenetkezelés**területén válassza az üzenet- **Útválasztás**lehetőséget.
+1. A bal oldali ablaktábla **üzenetkezelés** területén válassza az üzenet- **Útválasztás** lehetőséget.
 
 1. Az **üzenet-útválasztás** lapon válassza az **Egyéni végpontok** fület.
 
@@ -193,19 +194,19 @@ Az IoT hub létrehozásának részeként az előző szakaszban futtatott szkript
 
    A **turbofanDeviceStorage** az egyéni végpontok listájában látható. Figyelje meg a végpont alábbi jellemzőit:
 
-   * A létrehozott blob Storage-tárolóra mutat, amelyet a `devicedata` **tároló neve**jelez.
+   * A létrehozott blob Storage-tárolóra mutat, amelyet a `devicedata` **tároló neve** jelez.
    * A **Fájlnév formátuma** a név utolsó elemének partíciója. Ezt a formátumot úgy találjuk, hogy az oktatóanyag későbbi részében Azure Notebooks a fájl műveleteihez.
    * Az **állapota** kifogástalannak kell lennie.
 
 1. Válassza az **Útvonalak** lapot.
 
-1. Válassza ki a **turbofanDeviceDataToStorage**nevű útvonalat.
+1. Válassza ki a **turbofanDeviceDataToStorage** nevű útvonalat.
 
 1. Az **útvonalak részletei** lapon vegye figyelembe, hogy az útvonal végpontja az **turbofanDeviceStorage** végpont.
 
    ![A turbofanDeviceDataToStorage útvonal részleteinek áttekintése](media/tutorial-machine-learning-edge-02-prepare-environment/route-details.png)
 
-1. Tekintse meg az **útválasztási lekérdezést**, amely **igaz**értékre van beállítva. Ez a beállítás azt jelenti, hogy az összes eszköz telemetria-üzeneteinek egyezniük kell ezzel az útvonallal; Ezért minden üzenet el lesz küldve a **turbofanDeviceStorage** -végpontnak.
+1. Tekintse meg az **útválasztási lekérdezést**, amely **igaz** értékre van beállítva. Ez a beállítás azt jelenti, hogy az összes eszköz telemetria-üzeneteinek egyezniük kell ezzel az útvonallal; Ezért minden üzenet el lesz küldve a **turbofanDeviceStorage** -végpontnak.
 
 1. Mivel nem történt módosítás, csak zárjuk be ezt a lapot.
 

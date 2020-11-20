@@ -10,17 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
-ms.openlocfilehash: cd974377637f535383c4e099ac408bea88f887a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90b0ab4fdabd40e803d1f85a640e4cb387e40c44
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88853116"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94958948"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>Magas rendelkezésre állás a Windows rendszerű Azure-beli virtuális gépeken futó SAP NetWeaver számára az SAP-alkalmazások Azure NetApp Files (SMB) szolgáltatásával
 
@@ -120,7 +121,7 @@ Hajtsa végre a következő lépéseket a Azure NetApp Files használatának el�
 7. Csatlakoztassa az SMB-kötetet a Windows rendszerű virtuális gépén.
 
 > [!TIP]
-> A Azure NetApp Files kötet csatlakoztatására vonatkozó utasításokat megtalálja, ha az [Azure Portalon](https://portal.azure.com/#home) navigál az Azure NetApp Files objektumhoz, kattintson a **kötetek** panelre, majd a **csatlakoztatási utasítások**lehetőségre.  
+> A Azure NetApp Files kötet csatlakoztatására vonatkozó utasításokat megtalálja, ha az [Azure Portalon](https://portal.azure.com/#home) navigál az Azure NetApp Files objektumhoz, kattintson a **kötetek** panelre, majd a **csatlakoztatási utasítások** lehetőségre.  
 
 ## <a name="prepare-the-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster"></a>Az infrastruktúra előkészítése az SAP HA-hez Windows feladatátvevő fürt használatával 
 
@@ -146,7 +147,7 @@ Az SAP-től a következő szoftverekre van szüksége:
 1. Telepítsen egy SAP ASCS/SCS-példányt az első fürtcsomóponton. Indítsa el az SAP SWPM telepítési eszközét, majd keresse meg a következőt: **termék**  >  **adatbázis-kezelője** > telepítés > Application Server ABAP (vagy Java) > High-Availability System > ASCS/SCS instance > első fürtcsomópont.  
 
 2. Válassza ki a **fájlmegosztás fürtöt** a SWPM-ben.  
-3. Ha a rendszer a **rendszerszintű SAP Rendszerfürt paramétereinek**megadását kéri, adja meg a korábban **fájlmegosztási állomásnévként**létrehozott Azure NetApp Files SMB-megosztás állomásnevét.  Ebben a példában az SMB-megosztás állomásneve a következő: **anfsmb-9562**. 
+3. Ha a rendszer a **rendszerszintű SAP Rendszerfürt paramétereinek** megadását kéri, adja meg a korábban **fájlmegosztási állomásnévként** létrehozott Azure NetApp Files SMB-megosztás állomásnevét.  Ebben a példában az SMB-megosztás állomásneve a következő: **anfsmb-9562**. 
 
    > [!IMPORTANT]
    > Ha az előfeltétel-ellenőrző eredményei a SWPM a folyamatos rendelkezésre állási szolgáltatási feltétel nem teljesülnek, akkor a késleltetett hibaüzenet utasításait követve, [amikor olyan megosztott mappához próbál hozzáférni, amely már nem létezik a Windows rendszerben](https://support.microsoft.com/help/2820470/delayed-error-message-when-you-try-to-access-a-shared-folder-that-no-l).  

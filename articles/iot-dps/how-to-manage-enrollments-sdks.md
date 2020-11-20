@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 ms.custom: fasttrack-edit, iot
 services: iot-dps
-ms.openlocfilehash: 1dc97f92e6139475d0d5ac5ea1201d6ff6b8d470
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45a2b7a64006ab6963290be3ac86a3a5d1e4916d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532324"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959883"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Az eszközök regisztrálásának kezelése az Azure Device kiépítési szolgáltatás SDK-k használatával
 Az *eszközök* regisztrálása egyetlen eszköz vagy eszközök egy csoportját hozza létre, amelyek egy bizonyos ponton regisztrálhatnak az eszköz kiépítési szolgáltatásával. A beléptetési rekord tartalmazza az eszköz (ek) kezdeti kívánt konfigurációját a regisztráció részeként, beleértve a kívánt IoT hubot is. Ez a cikk bemutatja, hogyan kezelheti az eszközök regisztrációját a kiépítési szolgáltatás számára az Azure IoT-létesítési szolgáltatás SDK-k használatával programozott módon.  Az SDK-k a GitHubon érhetők el ugyanazon a tárházon, mint az Azure IoT SDK-k.
@@ -21,12 +21,12 @@ Az *eszközök* regisztrálása egyetlen eszköz vagy eszközök egy csoportját
 ## <a name="prerequisites"></a>Előfeltételek
 * Szerezze be a kapcsolatok karakterláncát az eszköz kiépítési szolgáltatásának példányáról.
 * Szerezze be az eszköz biztonsági összetevőit a használt [igazolási mechanizmushoz](concepts-service.md#attestation-mechanism) :
-    * [**Platformmegbízhatósági modul (TPM)**](/azure/iot-dps/concepts-security#trusted-platform-module):
+    * [**Platformmegbízhatósági modul (TPM)**](./concepts-tpm-attestation.md):
         * Egyéni regisztráció: regisztrációs azonosító és TPM-kiterjesztési kulcs fizikai eszközről vagy TPM-szimulátorból.
         * A regisztrációs csoport nem vonatkozik a TPM-igazolásra.
-    * [**X. 509**](/azure/iot-dps/concepts-security):
-        * Egyéni regisztráció: a fizikai eszközről vagy az SDK [Dice](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) emulátorból származó [levél tanúsítványa](/azure/iot-dps/concepts-security) .
-        * Beléptetési Csoport: a [hitelesítésszolgáltató/főtanúsítvány](/azure/iot-dps/concepts-security#root-certificate) vagy a [közbenső tanúsítvány](/azure/iot-dps/concepts-security#intermediate-certificate), amely az eszköz tanúsítványának fizikai eszközön történő előállítására szolgál.  Az SDK-DICE emulátorból is létrehozható.
+    * [**X. 509**](./concepts-service.md#attestation-mechanism):
+        * Egyéni regisztráció: a fizikai eszközről vagy az SDK [Dice](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) emulátorból származó [levél tanúsítványa](./concepts-service.md#attestation-mechanism) .
+        * Beléptetési Csoport: a [hitelesítésszolgáltató/főtanúsítvány](./concepts-x509-attestation.md#root-certificate) vagy a [közbenső tanúsítvány](./concepts-x509-attestation.md#intermediate-certificate), amely az eszköz tanúsítványának fizikai eszközön történő előállítására szolgál.  Az SDK-DICE emulátorból is létrehozható.
 * A pontos API-hívások a nyelvi különbségek miatt eltérőek lehetnek. A részletekért tekintse át a GitHubon megadott mintákat:
    * [Java-kiépítési szolgáltatás ügyféloldali mintái](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-samples)
    * [Node.js kiépítési szolgáltatás ügyféloldali mintái](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/service/samples)
@@ -35,7 +35,7 @@ Az *eszközök* regisztrálása egyetlen eszköz vagy eszközök egy csoportját
 ## <a name="create-a-device-enrollment"></a>Eszközök regisztrálásának létrehozása
 Az eszközöket kétféleképpen lehet regisztrálni a kiépítési szolgáltatással:
 
-* A **beléptetési csoport** olyan eszközök csoportja, amelyek osztoznak az X. 509 tanúsítványok közös igazolási mechanizmusán, amelyet a [Főtanúsítvány](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate) vagy a [közbenső tanúsítvány](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate)írt alá. Azt javasoljuk, hogy nagy számú, a kívánt kezdeti konfigurációt megosztó eszközhöz használjon beléptetési csoportot, vagy ha az összes eszköz ugyanahhoz a bérlőhöz fog csatlakozni. Vegye figyelembe, hogy csak az X. 509 igazolási mechanizmust használó eszközök regisztrálása *beléptetési csoportként*. 
+* A **beléptetési csoport** olyan eszközök csoportja, amelyek osztoznak az X. 509 tanúsítványok közös igazolási mechanizmusán, amelyet a [Főtanúsítvány](./concepts-x509-attestation.md#root-certificate) vagy a [közbenső tanúsítvány](./concepts-x509-attestation.md#intermediate-certificate)írt alá. Azt javasoljuk, hogy nagy számú, a kívánt kezdeti konfigurációt megosztó eszközhöz használjon beléptetési csoportot, vagy ha az összes eszköz ugyanahhoz a bérlőhöz fog csatlakozni. Vegye figyelembe, hogy csak az X. 509 igazolási mechanizmust használó eszközök regisztrálása *beléptetési csoportként*. 
 
     A munkafolyamatot követő SDK-k segítségével létrehozhat egy regisztrációs csoportot:
 

@@ -3,16 +3,17 @@ title: Oracle-megoldások az Azure Virtual Machines szolgáltatásban | Microsof
 description: Ismerkedjen meg az Oracle virtuálisgép-rendszerképek támogatott konfigurációinak és korlátaival Microsoft Azureon.
 author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 739245a8a17c97f3a8081cfee7e7bb31e4135952
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 093d3c0da0b40f2a287b1cb451a419f71ce4b8d7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843978"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957588"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Oracle VM-rendszerképek és azok üzembe helyezése Microsoft Azure
 

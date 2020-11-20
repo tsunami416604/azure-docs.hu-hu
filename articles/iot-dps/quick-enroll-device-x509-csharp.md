@@ -9,18 +9,18 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 618b2c6acb8792382adb4c067aa8f33003227091
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9fc34532818a742ef67e4b2532966874d083199d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91532584"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959849"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Rövid útmutató: X.509-eszközök regisztrációja a Device Provisioning Service-be a C# használatával
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
-Ez a rövid útmutató bemutatja, hogyan hozhat létre a C# segítségével programozott módon egy [regisztrációs csoportot](concepts-service.md#enrollment-group), amely köztes vagy legfelső szintű hitelesítésszolgáltatói X.509-tanúsítványokat használ. A beléptetési csoport a .NET- [hez készült Microsoft Azure IOT SDK](https://github.com/Azure/azure-iot-sdk-csharp) -val és egy C# .net Core-alkalmazással jön létre. Egy regisztrációs csoport a tanúsítványláncukban ugyanazon aláíró tanúsítvánnyal rendelkező eszközök kiépítési szolgáltatáshoz való hozzáférését szabályozza. További tudnivalókért lásd: [Eszközök kiépítési szolgáltatáshoz való hozzáférésének szabályozása X.509-tanúsítványokkal](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates). További információ az X.509-tanúsítványon alapuló nyilvánoskulcs-infrastruktúra (PKI) az Azure IoT Hubbal és a Device Provisioning Service-szel való használatáról: [X.509 hitelesítésszolgáltatói tanúsítványok biztonsági áttekintése](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview). 
+Ez a rövid útmutató bemutatja, hogyan hozhat létre a C# segítségével programozott módon egy [regisztrációs csoportot](concepts-service.md#enrollment-group), amely köztes vagy legfelső szintű hitelesítésszolgáltatói X.509-tanúsítványokat használ. A beléptetési csoport a .NET- [hez készült Microsoft Azure IOT SDK](https://github.com/Azure/azure-iot-sdk-csharp) -val és egy C# .net Core-alkalmazással jön létre. Egy regisztrációs csoport a tanúsítványláncukban ugyanazon aláíró tanúsítvánnyal rendelkező eszközök kiépítési szolgáltatáshoz való hozzáférését szabályozza. További tudnivalókért lásd: [Eszközök kiépítési szolgáltatáshoz való hozzáférésének szabályozása X.509-tanúsítványokkal](./concepts-x509-attestation.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates). További információ az X.509-tanúsítványon alapuló nyilvánoskulcs-infrastruktúra (PKI) az Azure IoT Hubbal és a Device Provisioning Service-szel való használatáról: [X.509 hitelesítésszolgáltatói tanúsítványok biztonsági áttekintése](../iot-hub/iot-hub-x509ca-overview.md). 
 
 Ez a rövid útmutató azt várja, hogy már létrehozott egy IoT hub és egy eszköz kiépítési szolgáltatási példányát. Ha még nem hozta létre ezeket az erőforrásokat, hajtsa végre a [IoT hub Device Provisioning Service beállítása a Azure Portal](./quick-setup-auto-provision.md) rövid útmutatóval, mielőtt folytatja ezt a cikket.
 
@@ -44,7 +44,7 @@ Az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) olyan tesztelési
 > Az SDK-eszközökkel létrehozott tanúsítványokat csak fejlesztési teszteléshez használhatja.
 > Ezeket a tanúsítványokat ne használja éles környezetben.
 > A kód olyan rögzített jelszavakat tartalmaz, mint a *1234*, amelyek 30 nap elteltével lejárnak.
-> A termelési használathoz megfelelő tanúsítványok beszerzésével kapcsolatos további információt az Azure IoT Hub dokumentációjának [X.509 hitelesítésszolgáltatói tanúsítvány beszerzése](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate) című részében talál.
+> A termelési használathoz megfelelő tanúsítványok beszerzésével kapcsolatos további információt az Azure IoT Hub dokumentációjának [X.509 hitelesítésszolgáltatói tanúsítvány beszerzése](../iot-hub/iot-hub-x509ca-overview.md#how-to-get-an-x509-ca-certificate) című részében talál.
 >
 
 Ha ezt a tesztelési eszközt szeretné használni a tanúsítványok létrehozásához, hajtsa végre a következő lépéseket:
@@ -71,25 +71,25 @@ A C SDK-ban található eszközökön kívül a *Microsoft Azure IOT SDK for .ne
 
 A rövid útmutatóban lévő mintához szüksége lesz a kiépítési szolgáltatás kapcsolati sztringjére.
 
-1. Jelentkezzen be a Azure Portalba, válassza a **minden erőforrás**lehetőséget, majd az eszköz kiépítési szolgáltatását.
+1. Jelentkezzen be a Azure Portalba, válassza a **minden erőforrás** lehetőséget, majd az eszköz kiépítési szolgáltatását.
 
-1. Válassza a **megosztott hozzáférési házirendek**lehetőséget, majd válassza ki a tulajdonságok megnyitásához használni kívánt hozzáférési szabályzatot. A **hozzáférési házirendben**másolja és mentse az elsődleges kulcs kapcsolati karakterláncát.
+1. Válassza a **megosztott hozzáférési házirendek** lehetőséget, majd válassza ki a tulajdonságok megnyitásához használni kívánt hozzáférési szabályzatot. A **hozzáférési házirendben** másolja és mentse az elsődleges kulcs kapcsolati karakterláncát.
 
     ![A kiépítési szolgáltatás kapcsolati sztringjének lekérése a portálról](media/quick-enroll-device-x509-csharp/get-service-connection-string-vs2019.png)
 
 ## <a name="create-the-enrollment-group-sample"></a>A regisztrációs csoport mintájának létrehozása 
 
-Ez a szakasz bemutatja, hogyan hozhat létre egy olyan .NET Core Console-alkalmazást, amely beléptetési csoportot telepít a kiépítési szolgáltatáshoz. Néhány módosítással ezeket a lépéseket követve létrehozhat egy [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot)-konzolalkalmazást is a regisztrációs csoport hozzáadásához. További információk az IoT Core használatával való fejlesztésről: [Windows IoT Core – fejlesztői dokumentáció](https://docs.microsoft.com/windows/iot-core/).
+Ez a szakasz bemutatja, hogyan hozhat létre egy olyan .NET Core Console-alkalmazást, amely beléptetési csoportot telepít a kiépítési szolgáltatáshoz. Néhány módosítással ezeket a lépéseket követve létrehozhat egy [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot)-konzolalkalmazást is a regisztrációs csoport hozzáadásához. További információk az IoT Core használatával való fejlesztésről: [Windows IoT Core – fejlesztői dokumentáció](/windows/iot-core/).
 
-1. Nyissa meg a Visual studiót, és válassza **az új projekt létrehozása**lehetőséget. A **create a New Project (új projekt létrehozása**) területen válassza a **(.net Core)** beállítást a C#-projekt sablonhoz, és válassza a **tovább**lehetőséget.
+1. Nyissa meg a Visual studiót, és válassza **az új projekt létrehozása** lehetőséget. A **create a New Project (új projekt létrehozása**) területen válassza a **(.net Core)** beállítást a C#-projekt sablonhoz, és válassza a **tovább** lehetőséget.
 
-1. Nevezze el a projekt *CreateEnrollmentGroup*, majd kattintson a **Létrehozás**gombra.
+1. Nevezze el a projekt *CreateEnrollmentGroup*, majd kattintson a **Létrehozás** gombra.
 
     ![Visual C# Windows klasszikus asztali projekt konfigurálása](media//quick-enroll-device-x509-csharp/configure-app-vs2019.png)
 
-1. Amikor a megoldás megnyílik a Visual Studióban, a **megoldáskezelő** ablaktáblán kattintson a jobb gombbal a **CreateEnrollmentGroup** projektre, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
+1. Amikor a megoldás megnyílik a Visual Studióban, a **megoldáskezelő** ablaktáblán kattintson a jobb gombbal a **CreateEnrollmentGroup** projektre, majd válassza a **NuGet-csomagok kezelése** lehetőséget.
 
-1. A **NuGet csomagkezelő**területén válassza a **Tallózás**elemet, keresse meg és válassza a **Microsoft. Azure. Devices. kiépítés. szolgáltatás**elemet, majd kattintson a **telepítés**gombra.
+1. A **NuGet csomagkezelő** területén válassza a **Tallózás** elemet, keresse meg és válassza a **Microsoft. Azure. Devices. kiépítés. szolgáltatás** elemet, majd kattintson a **telepítés** gombra.
 
     ![NuGet Package Manager (NuGet-csomagkezelő) ablak](media//quick-enroll-device-x509-csharp/add-nuget.png)
 
@@ -176,7 +176,7 @@ Ez a szakasz bemutatja, hogyan hozhat létre egy olyan .NET Core Console-alkalma
   
 Futtassa a mintát a Visual Studióban a regisztrációs csoport létrehozásához. Ekkor megjelenik egy parancssori ablak, amely megerősítő üzeneteket jelenít meg. A sikeres létrehozáskor a parancssori ablak az új beléptetési csoport tulajdonságait jeleníti meg.
 
-Ellenőrizheti, hogy létrejött-e a beléptetési csoport. Nyissa meg az eszköz kiépítési szolgáltatásának összegzését, és válassza a regisztrációk **kezelése**, majd a **beléptetési csoportok**lehetőséget. Meg kell jelennie egy új regisztrációs bejegyzésnek, amely megfelel a mintában használt regisztrációs azonosítónak is.
+Ellenőrizheti, hogy létrejött-e a beléptetési csoport. Nyissa meg az eszköz kiépítési szolgáltatásának összegzését, és válassza a regisztrációk **kezelése**, majd a **beléptetési csoportok** lehetőséget. Meg kell jelennie egy új regisztrációs bejegyzésnek, amely megfelel a mintában használt regisztrációs azonosítónak is.
 
 ![A regisztráció tulajdonságai a portálon](media/quick-enroll-device-x509-csharp/verify-enrollment-portal-vs2019.png)
 
@@ -188,11 +188,11 @@ Ha azt tervezi, hogy vizsgálja meg a C# szolgáltatási mintát, ne törölje a
 
 1. Zárjuk be a C#-minta kimeneti ablakát a számítógépen.
 
-1. Navigáljon a Azure Portal eszköz kiépítési szolgáltatásához, válassza a **regisztrációk kezelése**, majd a **beléptetési csoportok**lehetőséget. Válassza ki a rövid útmutató segítségével létrehozott beléptetési bejegyzés *regisztrációs azonosítóját* , majd nyomja le a **delete**billentyűt.
+1. Navigáljon a Azure Portal eszköz kiépítési szolgáltatásához, válassza a **regisztrációk kezelése**, majd a **beléptetési csoportok** lehetőséget. Válassza ki a rövid útmutató segítségével létrehozott beléptetési bejegyzés *regisztrációs azonosítóját* , majd nyomja le a **delete** billentyűt.
 
-1. A Azure Portal eszköz kiépítési szolgáltatásában válassza ki a **tanúsítványok**lehetőséget, válassza ki a rövid útmutatóhoz feltöltött tanúsítványt, és a **tanúsítvány részleteinek**tetején kattintson a **Törlés** gombra.  
+1. A Azure Portal eszköz kiépítési szolgáltatásában válassza ki a **tanúsítványok** lehetőséget, válassza ki a rövid útmutatóhoz feltöltött tanúsítványt, és a **tanúsítvány részleteinek** tetején kattintson a **Törlés** gombra.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozta az X. 509 közbenső vagy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány beléptetési csoportját az Azure IoT Hub Device Provisioning Service használatával. Ha mélyebben szeretné megismerni az eszközkiépítést, folytassa az Azure Portalon az eszközkiépítési szolgáltatás beállításának oktatóanyagával.
 

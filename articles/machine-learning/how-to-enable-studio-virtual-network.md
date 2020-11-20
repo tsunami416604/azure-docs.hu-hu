@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 7cdd70a44a090b03a3f11626805565469c7c04e7
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: df4d777ad78240b3ca84c51152b37861c4ccc486
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554665"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960002"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure Machine Learning Studio használata Azure-beli virtuális hálózaton
 
@@ -90,7 +90,7 @@ Azure Machine Learning adattárolókat [használ a Storage-](concept-data.md#dat
 1. Az adattár beállításainál válassza az __Igen__ lehetőséget a  __Azure Machine learning szolgáltatás számára a munkaterület által felügyelt identitás használatával való elérésének engedélyezéséhez__.
 
 
-Ezek a lépések hozzáadja a munkaterület által felügyelt identitást __olvasóként__ a Storage szolgáltatáshoz az Azure erőforrás-alapú hozzáférés-vezérlés (Azure RBAC) használatával. Az __olvasói__ hozzáférés lehetővé teszi, hogy a munkaterület beolvassa a tűzfal beállításait, és gondoskodjon arról, hogy a virtuális hálózat ne maradjon meg
+Ezek a lépések hozzáadják a munkaterület által felügyelt identitást __olvasóként__ a Storage szolgáltatáshoz az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával. Az __olvasói__ hozzáférés lehetővé teszi, hogy a munkaterület beolvassa a tűzfal beállításait, és gondoskodjon arról, hogy a virtuális hálózat ne maradjon meg
 
 > [!NOTE]
 > A módosítások érvénybe léptetése akár 10 percet is igénybe vehet.

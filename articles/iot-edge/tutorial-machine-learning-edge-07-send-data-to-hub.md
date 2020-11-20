@@ -9,23 +9,24 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ec7337ad798d586cb93bd13e60ead1ef9f2a4abe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0695af6922182aa8be7acfb4b0a931bed35ef7d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857248"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959305"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Oktatóanyag: az adatküldés transzparens átjárón keresztül
-
-> [!NOTE]
-> Ez a cikk egy sorozat részét képezi a Azure Machine Learning IoT Edge-on való használatáról szóló oktatóanyaghoz. Ha ezt a cikket közvetlenül megérkezett, javasoljuk, hogy kezdje a sorozat [első cikkével](tutorial-machine-learning-edge-01-intro.md) a legjobb eredmények érdekében.
 
 Ebben a cikkben ismét szimulált eszközként használjuk a fejlesztői virtuális gépet. Azonban ahelyett, hogy közvetlenül a IoT Hub küld adatokat, az eszköz átküldi az adatokat a IoT Edge eszközre, amely transzparens átjáróként van konfigurálva.
 
 A IoT Edge eszköz működését a szimulált eszköz adatküldése közben Figyeljük. Ha az eszköz futása befejeződött, tekintse meg a Storage-fiókban tárolt információt, és ellenőrizze, hogy minden a várt módon működik-e.
 
 Ezt a lépést általában egy felhő vagy egy eszköz fejlesztője hajtja végre.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Ez a cikk egy sorozat részét képezi a Azure Machine Learning IoT Edge-on való használatáról szóló oktatóanyaghoz. A sorozat minden cikke az előző cikkben található munkára épül. Ha ezt a cikket közvetlenül megérkezett, tekintse meg az [első cikket](tutorial-machine-learning-edge-01-intro.md) a sorozatban.
 
 ## <a name="review-device-harness"></a>Eszköz-hám áttekintése
 
@@ -54,7 +55,7 @@ Tekintse meg a kódot, és figyelje meg, hogy a két elem hogyan lett implement�
 
 ## <a name="build-and-run-leaf-device"></a>Leaf-eszköz létrehozása és futtatása
 
-1. Ha a DeviceHarness projekt továbbra is meg van nyitva a Visual Studio Code-ban, hozza létre a projektet. A **terminál** menüben válassza a **Build feladat futtatása** és a **Létrehozás**lehetőséget.
+1. Ha a DeviceHarness projekt továbbra is meg van nyitva a Visual Studio Code-ban, hozza létre a projektet. A **terminál** menüben válassza a **Build feladat futtatása** és a **Létrehozás** lehetőséget.
 
 1. Keresse meg a peremhálózati átjáró teljes tartománynevét (FQDN) úgy, hogy megkeresi a IoT Edge eszközét (Linux rendszerű virtuális gépet) a Azure Portal, és a **DNS-név** értékét az Áttekintés lapról másolja.
 
@@ -68,7 +69,7 @@ Tekintse meg a kódot, és figyelje meg, hogy a két elem hogyan lett implement�
 
 1. Az alkalmazás megkísérli a tanúsítvány telepítését a fejlesztői gépre. Ha igen, fogadja el a biztonsági figyelmeztetést.
 
-1. Amikor a rendszer kéri a IoT Hub kapcsolódási karakterláncot, kattintson a három pontra (**..**.) az Azure IoT hub eszközök paneljén, majd válassza a **Másolás IoT hub a kapcsolódási karakterlánc**lehetőséget. Illessze be az értéket a terminálba.
+1. Amikor a rendszer kéri a IoT Hub kapcsolódási karakterláncot, kattintson a három pontra (**..**.) az Azure IoT hub eszközök paneljén, majd válassza a **Másolás IoT hub a kapcsolódási karakterlánc** lehetőséget. Illessze be az értéket a terminálba.
 
 1. A következőhöz hasonló kimenetet fog látni:
 
@@ -232,7 +233,7 @@ Ha azt tervezi, hogy vizsgálja meg a teljes körű oktatóanyag által használ
 
 1. Ha helyileg hozott létre tanúsítványokat, törölje a c: \\ edgeCertificates mappát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben azt használtuk, hogy fejlesztési virtuális gépe szimulálja az érzékelőt és a működési adatokat a IoT Edge eszközre küldött levélben. A rendszer ellenőrizte, hogy az eszköz moduljai a peremhálózati eszköz valós idejű működésének vizsgálatával és a Storage-fiókba feltöltött fájlok megtekintésével irányították, besorolták, megtartották és feltöltötték az adatforrásokat.
 

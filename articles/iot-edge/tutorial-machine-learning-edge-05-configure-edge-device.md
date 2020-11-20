@@ -9,21 +9,22 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, devx-track-azurecli
-ms.openlocfilehash: b85984207742e0b8991ab65875dd22505b918185
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: f57e809373a8bd06c4b4afbb9b193464315e788f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736752"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959577"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Oktatóanyag: IoT Edge-eszköz konfigurálása
-
-> [!NOTE]
-> Ez a cikk egy sorozat részét képezi a Azure Machine Learning IoT Edge-on való használatáról szóló oktatóanyaghoz. Ha ezt a cikket közvetlenül megérkezett, javasoljuk, hogy kezdje a sorozat [első cikkével](tutorial-machine-learning-edge-01-intro.md) a legjobb eredmények érdekében.
 
 Ebben a cikkben egy Linux rendszerű Azure-beli virtuális gépet konfigurálunk olyan IoT Edge eszközként, amely transzparens átjáróként működik. Egy transzparens átjáró konfigurációja lehetővé teszi az eszközök számára, hogy az átjárón keresztül csatlakozzanak az Azure IoT Hubhoz, és nem tudta, hogy az átjáró létezik. Ugyanakkor egy, az Azure-ban IoT Hub eszközzel kommunikáló felhasználó nem ismeri a köztes átjáró eszközét. Végső soron az Edge Analytics szolgáltatást hozzáadjuk a rendszerhez IoT Edge modulok az átlátszó átjáróhoz való hozzáadásával.
 
 A cikkben ismertetett lépéseket általában egy felhőalapú fejlesztő hajtja végre.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Ez a cikk egy sorozat részét képezi a Azure Machine Learning IoT Edge-on való használatáról szóló oktatóanyaghoz. A sorozat minden cikke az előző cikkben található munkára épül. Ha ezt a cikket közvetlenül megérkezett, tekintse meg az [első cikket](tutorial-machine-learning-edge-01-intro.md) a sorozatban.
 
 ## <a name="create-certificates"></a>Tanúsítványok létrehozása
 
@@ -43,7 +44,7 @@ Ebben a szakaszban létrehozjuk az önaláírt tanúsítványokat egy Docker-ren
 
 6. Az Explorer ablaktáblán kattintson a jobb gombbal a **Docker** elemre, és válassza a **rendszerkép létrehozása** lehetőséget.
 
-7. A párbeszédpanelen fogadja el az alapértelmezett értéket a rendszerkép neve és a címke: **createcertificates: Latest** .
+7. A párbeszédpanelen fogadja el az alapértelmezett értéket a rendszerkép neve és a címke: **createcertificates: Latest**.
 
     ![Tanúsítványok létrehozása a Visual Studio Code-ban](media/tutorial-machine-learning-edge-05-configure-edge-device/create-certificates.png)
 
@@ -62,7 +63,7 @@ Ebben a szakaszban létrehozjuk az önaláírt tanúsítványokat egy Docker-ren
 
 11. Ha a rendszer kéri, adja meg a hitelesítő adatait.
 
-12. Ha a tároló futása befejeződött, keresse meg a következő fájlokat a **c: \\ edgeCertificates** :
+12. Ha a tároló futása befejeződött, keresse meg a következő fájlokat a **c: \\ edgeCertificates**:
 
     * c: \\ edgeCertificates \\ tanúsítványok \\ Azure-IOT-test-only. root. ca. CERT. PEM
     * c: \\ edgeCertificates \\ tanúsítványok \\ New-Edge-Device-Full-Chain. CERT. PEM
@@ -124,7 +125,7 @@ Ha a piactéren parancsfájl-alapú telepítésben szeretné használni a rendsz
 
 1. A keresősáv mezőben adja meg és válassza ki a **piactér** lehetőséget.
 
-1. A piactéren keresse meg és válassza ki az **Ubuntu-Azure IoT Edge** .
+1. A piactéren keresse meg és válassza ki az **Ubuntu-Azure IoT Edge**.
 
 1. A programozott módon történő üzembe helyezéshez válassza az **első lépések** hivatkozást.
 
@@ -152,11 +153,11 @@ Ezután futtassa a parancsfájlt a IoT Edge eszközhöz tartozó virtuális gép
 
 3. Ha a rendszer kéri, adja meg az egyes paraméterek értékeit. Az előfizetés, az erőforráscsoport és a hely esetében javasoljuk, hogy a jelen oktatóanyagban szereplő összes erőforráshoz ugyanazt használja.
 
-    * **Azure-előfizetés azonosítója** : a Azure Portal található
-    * **Erőforráscsoport neve** : emlékezetes név az oktatóanyag erőforrásainak csoportosításához
-    * **Hely** : az az Azure-hely, ahol a virtuális gép létre lesz hozva. Például: westus2 vagy northeurope. További információkért tekintse meg az összes [Azure-helyet](https://azure.microsoft.com/global-infrastructure/locations/).
-    * **AdminUsername** : annak a rendszergazdai fióknak a neve, amelyet a virtuális gépre való bejelentkezéshez használni fog
-    * **AdminPassword** : a virtuális gépen a AdminUsername beállított jelszó
+    * **Azure-előfizetés azonosítója**: a Azure Portal található
+    * **Erőforráscsoport neve**: emlékezetes név az oktatóanyag erőforrásainak csoportosításához
+    * **Hely**: az az Azure-hely, ahol a virtuális gép létre lesz hozva. Például: westus2 vagy northeurope. További információkért tekintse meg az összes [Azure-helyet](https://azure.microsoft.com/global-infrastructure/locations/).
+    * **AdminUsername**: annak a rendszergazdai fióknak a neve, amelyet a virtuális gépre való bejelentkezéshez használni fog
+    * **AdminPassword**: a virtuális gépen a AdminUsername beállított jelszó
 
 4. Ahhoz, hogy a parancsfájl be tudja állítani a virtuális gépet, be kell jelentkeznie az Azure-ba az Ön által használt Azure-előfizetéshez társított hitelesítő adatokkal.
 
@@ -183,7 +184,7 @@ A következő néhány szakaszban az általunk létrehozott Azure-beli virtuáli
     ssh -l <username> iotedge-<suffix>.<region>.cloudapp.azure.com
     ```
 
-2. Amikor a rendszer felszólítja a gazdagép hitelességének ellenőrzésére, írja be az **Igen** értéket, és válassza az **ENTER billentyűt** .
+2. Amikor a rendszer felszólítja a gazdagép hitelességének ellenőrzésére, írja be az **Igen** értéket, és válassza az **ENTER billentyűt**.
 
 3. Ha a rendszer kéri, adja meg a jelszavát.
 
@@ -230,7 +231,7 @@ Az oktatóanyagban később fogunk foglalkozni a levél eszközzel. Ebben a szak
 
 A IoT Edge futtatókörnyezet a fájlt használja a konfiguráció megőrzéséhez `/etc/iotedge/config.yaml` . A fájlban háromféle információt kell frissíteni:
 
-* **Eszköz-összekapcsolási karakterlánc** : az eszköz identitásának IoT hub
+* **Eszköz-összekapcsolási karakterlánc**: az eszköz identitásának IoT hub
 * **Tanúsítványok:** az alsóbb rétegbeli eszközökkel létesített kapcsolatokhoz használandó tanúsítványok
 * **Állomásnév:** a virtuális gép IoT Edge eszköz teljes TARTOMÁNYNEVE (FQDN).
 

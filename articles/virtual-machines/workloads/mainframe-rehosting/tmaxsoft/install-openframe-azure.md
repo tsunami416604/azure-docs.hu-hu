@@ -8,12 +8,13 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: 9189be5f2f513cd27fe8783d6a1825aac016522c
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.subservice: workloads
+ms.openlocfilehash: ad3dbd8cdc6fff7eca8c24bb6e5258022d52cb9b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677746"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959458"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>TmaxSoft-OpenFrame Kiindulópontul telepítése az Azure-ban
 
@@ -134,9 +135,9 @@ A OpenFrame Kiindulópontul környezetet különböző üzembe helyezési mintá
 
      ![Operációs rendszer beállításai a Azure Portal](media/vm-04.png)
 
-6. Az **alapvető** beállítások területen adja meg a **név** , a **Felhasználónév** , a **Hitelesítés típusa** , az **előfizetés** (utólagos elszámolású a fizetés AWS-stílusa) és az **erőforráscsoport** (használjon egy meglévőt, vagy hozzon létre egy TmaxSoft csoportot).
+6. Az **alapvető** beállítások területen adja meg a **név**, a **Felhasználónév**, a **Hitelesítés típusa**, az **előfizetés** (utólagos elszámolású a fizetés AWS-stílusa) és az **erőforráscsoport** (használjon egy meglévőt, vagy hozzon létre egy TmaxSoft csoportot).
 
-7. Ha elkészült (beleértve a **hitelesítési típushoz** tartozó nyilvános/titkos kulcspárt is), kattintson a **Submit (Küldés** ) gombra.
+7. Ha elkészült (beleértve a **hitelesítési típushoz** tartozó nyilvános/titkos kulcspárt is), kattintson a **Submit (Küldés**) gombra.
 
 > [!NOTE]
 > Ha a **hitelesítési típushoz** egy nyilvános SSH-kulcsot használ, tekintse meg a következő szakaszban ismertetett lépéseket a nyilvános/titkos kulcspár létrehozásához, majd folytassa a lépéseket itt.
@@ -183,13 +184,13 @@ Amikor új személyeknek adnak hozzáférést a virtuális géphez:
 
 4. Adja meg a beállításokat. Az Azure megkezdi a virtuális gép üzembe helyezését. Ez a folyamat általában néhány percet vesz igénybe.
 
-5. A virtuális gép üzembe helyezésekor megjelenik az irányítópult, amely megjeleníti a konfiguráció során kiválasztott beállításokat. Jegyezze fel a **nyilvános IP-címet** .
+5. A virtuális gép üzembe helyezésekor megjelenik az irányítópult, amely megjeleníti a konfiguráció során kiválasztott beállításokat. Jegyezze fel a **nyilvános IP-címet**.
 
     ![Tmax az Azure-irányítópulton](media/create-vm-03.png)
 
 6. Nyissa meg a PuTTY eszközt.
 
-7. Az **állomásnév** mezőben adja meg a felhasználónevét és a másolt nyilvános IP-címet. Például: **username \@ publicip** .
+7. Az **állomásnév** mezőben adja meg a felhasználónevét és a másolt nyilvános IP-címet. Például: **username \@ publicip**.
 
     ![A PuTTY konfiguráció párbeszédpanelt megjelenítő képernyőkép, amely kiemeli az állomásnév (vagy az IP-cím) mező értékét.](media/putty-01.png)
 
@@ -1359,7 +1360,7 @@ A JEUS telepítése előtt telepítse az Apache Ant-csomagot, amely a JEUS telep
      [oframe7@ofdemo setup]$ . .bash_profile
      ```
 
-11. Nem *kötelező* . Hozzon létre egy aliast a JEUS-összetevők egyszerű leállításához és indításához:
+11. Nem *kötelező*. Hozzon létre egy aliast a JEUS-összetevők egyszerű leállításához és indításához:
 
      ```     
      # JEUS alias
@@ -1393,7 +1394,7 @@ A JEUS telepítése előtt telepítse az Apache Ant-csomagot, amely a JEUS telep
 
     1.  Módosítsa a **csomópontnév** a **ofdemo** értékre.
     2.  Az ablak jobb oldalán kattintson az **OK gombra** .
-    3.  Kattintson a **módosítások alkalmazása** gombra az ablak bal alsó részén, és a leíráshoz adja meg a *hostname Change (állomásnév módosítása* ) értéket.
+    3.  Kattintson a **módosítások alkalmazása** gombra az ablak bal alsó részén, és a leíráshoz adja meg a *hostname Change (állomásnév módosítása*) értéket.
 
     ![JEUS webfelügyeleti képernyő](media/jeus-02.png)
 

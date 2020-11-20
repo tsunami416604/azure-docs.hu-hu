@@ -11,12 +11,12 @@ author: lobrien
 ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
-ms.openlocfilehash: fd5c0905b4a5d050eaf35456353122fd26f8cbf7
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 75d013b863671246e6249f367676e4de86bc1de8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445268"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960020"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>Gépi tanulási folyamatok közzététele és nyomon követése
 
@@ -74,7 +74,7 @@ Ha már rendelkezik egy folyamattal, akkor közzétehet egy folyamatot, hogy az 
 Minden közzétett folyamat REST-végponttal rendelkezik. A folyamat végpontja segítségével bármely külső rendszerből elindíthatja a folyamat futtatását, beleértve a nem Python-ügyfeleket is. Ez a végpont lehetővé teszi a "felügyelt ismételhetőség" használatát a Batch-pontozási és-átképzési forgatókönyvekben.
 
 > [!IMPORTANT]
-> Ha szerepköralapú hozzáférés-vezérlést (RBAC) használ a folyamathoz való hozzáférés kezelésére, [állítsa be a folyamathoz tartozó forgatókönyv (képzés vagy pontozás) engedélyeit](how-to-assign-roles.md#common-scenarios).
+> Ha Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) használ a folyamathoz való hozzáférés kezelésére, [állítsa be a folyamathoz tartozó forgatókönyv (képzés vagy pontozás) engedélyeit](how-to-assign-roles.md#common-scenarios).
 
 Az előző folyamat futtatásának meghívásához egy Azure Active Directory hitelesítési fejléc tokenre van szükség. Az ilyen jogkivonatok lekérése a [AzureCliAuthentication osztály](/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?preserve-view=true&view=azure-ml-py) referenciájában és a Azure Machine learning jegyzetfüzetben történő [hitelesítésben](https://aka.ms/pl-restep-auth) olvasható.
 
@@ -90,7 +90,7 @@ response = requests.post(published_pipeline1.endpoint,
 
 A `json` post kérelem argumentumának tartalmaznia kell a `ParameterAssignments` kulcshoz a folyamat paramétereit és azok értékeit tartalmazó szótárt. Emellett az `json` argumentum a következő kulcsokat is tartalmazhatja:
 
-| Kulcs | Description |
+| Kulcs | Leírás |
 | --- | --- | 
 | `ExperimentName` | A végponthoz társított kísérlet neve |
 | `Description` | A végpontot leíró szabadkézi szöveg | 
@@ -362,7 +362,7 @@ p.disable()
 
 A használatával újra engedélyezheti `p.enable()` . További információ: PublishedPipeline- [osztály](/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline?preserve-view=true&view=azure-ml-py) referenciája.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Ezeket a Jupyter-jegyzetfüzeteket a githubon](https://aka.ms/aml-pipeline-readme) a gépi tanulási folyamatok további megismeréséhez használhatja.
 - Tekintse meg a [azureml-pipeline-Core](/python/api/azureml-pipeline-core/?preserve-view=true&view=azure-ml-py) csomag és a azureml-folyamatok – [STEPs](/python/api/azureml-pipeline-steps/?preserve-view=true&view=azure-ml-py) csomag SDK-referenciáját.

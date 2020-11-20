@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: 6d61bd2c45cc1ba9cd9494750b793d7321288224
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57c6caea2de9063b133d4d5d643629184e412dad
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87797746"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957690"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>A pacemaker beállítása SUSE Linux Enterprise Server az Azure-ban
 
@@ -86,7 +87,7 @@ Futtassa az alábbi parancsokat az összes **iSCSI cél virtuális gépen**.
 
 Futtassa az alábbi parancsokat az összes **iSCSI-tároló virtuális gépen** az SAP-rendszerek által használt fürtök iSCSI-lemezének létrehozásához. A következő példában a több fürthöz tartozó SBD-eszközök jönnek létre. Ez azt mutatja be, hogyan érdemes egyetlen iSCSI-célkiszolgáló használatát több fürthöz használni. A SBD-eszközök az operációsrendszer-lemezen vannak elhelyezve. Győződjön meg arról, hogy elegendő lemezterülettel rendelkezik.
 
-**`nfs`** az NFS-fürt azonosítására szolgál, **a ascsnw1** a **NW1**ASCS-fürt azonosítására szolgál. a **dbnw1** a **NW1**, az **NFS-0** és az **NFS-1 adatbázis-** fürtjének azonosítására szolgál. az NFS-fürtcsomópontok állomásneve, a **NW1-xscs-0** és a **NW1-xscs-1** a **NW1** ASCS-fürtcsomópontok állomásneve, a NW1- **db-0** és a NW1- **db-** 1 pedig az adatbázis-fürt csomópontjainak állomásneve. Cserélje le őket a fürtcsomópontok állomásneve és az SAP-System SID azonosítóra.
+**`nfs`** az NFS-fürt azonosítására szolgál, **a ascsnw1** a **NW1** ASCS-fürt azonosítására szolgál. a **dbnw1** a **NW1**, az **NFS-0** és az **NFS-1 adatbázis-** fürtjének azonosítására szolgál. az NFS-fürtcsomópontok állomásneve, a **NW1-xscs-0** és a **NW1-xscs-1** a **NW1** ASCS-fürtcsomópontok állomásneve, a NW1- **db-0** és a NW1- **db-** 1 pedig az adatbázis-fürt csomópontjainak állomásneve. Cserélje le őket a fürtcsomópontok állomásneve és az SAP-System SID azonosítóra.
 
 <pre><code># Create the root folder for all SBD devices
 sudo mkdir /sbd
@@ -367,7 +368,7 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
 1. **[A]** a Cloud-netconfig konfigurálása – Azure a ha-fürthöz
 
    >[!NOTE]
-   > A Cloud **-netconfig-Azure** csomag telepített verziójának ellenőrzéséhez futtassa a **Zypper info Cloud-netconfig-Azure**alkalmazást. Ha a környezete 1,3-es vagy újabb verziójú, a hálózati adapterek a Cloud Network beépülő modullal való felügyeletét már nem szükséges letiltani. Ha a verzió 1,3-nál kisebb, javasoljuk, hogy frissítse a **Cloud-netconfig-Azure** csomagot a legújabb elérhető verzióra.  
+   > A Cloud **-netconfig-Azure** csomag telepített verziójának ellenőrzéséhez futtassa a **Zypper info Cloud-netconfig-Azure** alkalmazást. Ha a környezete 1,3-es vagy újabb verziójú, a hálózati adapterek a Cloud Network beépülő modullal való felügyeletét már nem szükséges letiltani. Ha a verzió 1,3-nál kisebb, javasoljuk, hogy frissítse a **Cloud-netconfig-Azure** csomagot a legújabb elérhető verzióra.  
 
    Módosítsa a hálózati adapter konfigurációs fájlját az alább látható módon, hogy megakadályozza, hogy a Cloud Network beépülő modul eltávolítsa a virtuális IP-címet (a pacemakernek meg kell határoznia a VIP-hozzárendelést). További információ: [SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633). 
 
@@ -442,7 +443,7 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    >A bővítményt a SUSEConnect---listájának bővítményeinek futtatásával tekintheti meg.  
    >A gyorsabb feladatátvételi idő elérése az Azure kerítés ügynökével:
    > - a SLES 12 SP4 vagy a SLES 12 SP5 telepítse a Python-Azure-mgmt-számítás **4.6.2** vagy újabb verzióját  
-   > - a SLES 15-én telepítse a Python**3**csomag **4.6.2** vagy újabb verzióját – Azure-mgmt-számítás 
+   > - a SLES 15-én telepítse a Python **3** csomag **4.6.2** vagy újabb verzióját – Azure-mgmt-számítás 
 
 1. **[A]** telepítési állomásnév feloldása
 

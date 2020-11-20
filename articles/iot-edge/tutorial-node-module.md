@@ -9,18 +9,18 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-python, devx-track-js
-ms.openlocfilehash: a4496ba46b486f183136381a51c6a523dd9e1b87
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 5c8918995675cae8e70ca9fc1efb0cf4c7cb233b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047981"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959407"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-for-linux-devices"></a>Oktatóanyag: Node.js IoT Edge modul fejlesztése és üzembe helyezése Linux-eszközökhöz
 
 A Visual Studio Code segítségével fejlesztheti Node.js kódot, és telepítheti azt egy Azure IoT Edge rendszert futtató linuxos eszközre.
 
-Az IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. A rövid útmutatókban létrehozott szimulált IoT Edge-eszközt fogja használni. Az oktatóanyag a következőket ismerteti:
+Az IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. A rövid útmutatókban létrehozott szimulált IoT Edge-eszközt fogja használni. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -33,9 +33,9 @@ Az ebben az oktatóanyagban létrehozott IoT Edge-modul szűri az eszköze álta
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="solution-scope"></a>Megoldás hatóköre
+## <a name="prerequisites"></a>Előfeltételek
 
-Ez az oktatóanyag bemutatja, hogyan fejleszthet egy modult **Node.js** a **Visual Studio Code**használatával, és hogyan telepítheti azt egy **Linux-eszközre**. A IoT Edge nem támogatja Node.js modulokat Windows-eszközökhöz.
+Ez az oktatóanyag bemutatja, hogyan fejleszthet egy modult **Node.js** a **Visual Studio Code** használatával, és hogyan telepítheti azt egy **Linux-eszközre**. A IoT Edge nem támogatja Node.js modulokat Windows-eszközökhöz.
 
 A következő táblázat segítségével megismerheti a Node.js modulok fejlesztésének és üzembe helyezésének lehetőségeit:
 
@@ -43,8 +43,6 @@ A következő táblázat segítségével megismerheti a Node.js modulok fejleszt
 | - | ------------------ | ------------------ |
 | **Linux AMD64** | ![A VS Code használata a Linux AMD64 Node.js moduljaihoz](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![A VS Code használata a Linux ARM32 Node.js moduljaihoz](./media/tutorial-c-module/green-check.png) |  |
-
-## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag megkezdése előtt el kellett volna végeznie az előző oktatóanyagot a fejlesztői környezet létrehozásához a Linux-tárolók fejlesztéséhez: [IoT Edge modulok létrehozása Linux-eszközökhöz](tutorial-develop-for-linux.md). Ezeknek az oktatóanyagoknak a végrehajtásával a következő előfeltételek szükségesek:
 
@@ -66,7 +64,7 @@ A következő lépések bemutatják, hogyan hozhat létre IoT Edge Node.js modul
 
 Az **npm** használatával létrehozhat egy Node.js-megoldást, amelyre majd építkezhet.
 
-1. A Visual Studio Code-ban **View**válassza  >  az**integrált terminál** megtekintése lehetőséget a vs Code integrált terminál megnyitásához.
+1. A Visual Studio Code-ban **View** válassza  >  az **integrált terminál** megtekintése lehetőséget a vs Code integrált terminál megnyitásához.
 
 2. Az integrált terminálon írja be a következő parancsot a **yeoman** és a Node.js Azure IoT Edge-modul generátorának telepítéséhez:
 
@@ -74,7 +72,7 @@ Az **npm** használatával létrehozhat egy Node.js-megoldást, amelyre majd ép
     npm install -g yo generator-azure-iot-edge-module
     ```
 
-3. **View**  >  A vs Code parancs paletta megnyitásához kattintson a**parancs paletta** megtekintése elemre.
+3. **View**  >  A vs Code parancs paletta megnyitásához kattintson a **parancs paletta** megtekintése elemre.
 
 4. A parancskatalógusban írja be és futtassa az **Azure: Sign in** (Azure: bejelentkezés) parancsot, és az utasításokat követve jelentkezzen be Azure-fiókjába. Ha már be van jelentkezve, ezt a lépést kihagyhatja.
 
@@ -187,7 +185,7 @@ Minden sablonhoz tartozik egy mintakód, amely a **SimulatedTemperatureSensor** 
 
 Az előző szakaszban létrehozott egy IoT Edge megoldást, és hozzáadta a kódot a NodeModule, amely kiszűri azokat az üzeneteket, amelyekben a jelentett gépi hőmérséklet az elfogadható határértékeken belül van. Most létre kell hoznia a megoldást tárolórendszerképként, és le kell küldenie a tárolóregisztrációs adatbázisba.
 
-1. Nyissa meg a vs Code integrált terminált a terminál **megtekintése**lehetőség kiválasztásával  >  **Terminal**.
+1. Nyissa meg a vs Code integrált terminált a terminál **megtekintése** lehetőség kiválasztásával  >  **Terminal**.
 
 2. Jelentkezzen be a Docker-be a következő parancs beírásával a terminálon. Jelentkezzen be a felhasználónévvel, a jelszóval és a bejelentkezési kiszolgálóval az Azure Container registryből. Ezeket az értékeket a beállításjegyzék **hozzáférési kulcsok** részéből kérheti le a Azure Portal.
 
@@ -197,7 +195,7 @@ Az előző szakaszban létrehozott egy IoT Edge megoldást, és hozzáadta a kó
 
    Biztonsági figyelmeztetés jelenhet meg, amely a használatát javasolja `--password-stdin` . Habár az ajánlott eljárás az éles környezetekben javasolt, az oktatóanyag hatókörén kívül esik. További információkért lásd a [Docker bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) referenciáját.
 
-3. A VS Code Explorerben kattintson a jobb gombbal a **deployment.template.js** fájlra, és válassza a **IoT Edge megoldás létrehozása és leküldése**lehetőséget.
+3. A VS Code Explorerben kattintson a jobb gombbal a **deployment.template.js** fájlra, és válassza a **IoT Edge megoldás létrehozása és leküldése** lehetőséget.
 
    A build és a push parancs három műveletet indít el. Először létrehoz egy új mappát a **konfigurációban** , amely tartalmazza a teljes telepítési jegyzékfájlt, kiépítve a telepítési sablonban és más megoldási fájlokban található információkat. Másodszor, futtatja `docker build` a tároló rendszerképét a célként megadott architektúra megfelelő Docker alapján. Ezután futtatja, `docker push` hogy leküldi a rendszerkép-tárházat a tároló-beállításjegyzékbe.
 
@@ -213,9 +211,9 @@ Ellenőrizze, hogy a IoT Edge eszköz működik-e.
 
 2. Kattintson a jobb gombbal az IoT Edge-eszköz nevére, majd válassza a **Create Deployment for Single Device** (Üzembe helyezés létrehozása egyetlen eszközhöz) parancsot.
 
-3. Válassza ki a **konfigurációs** mappában található fájl **deployment.amd64.jsét** , majd kattintson az **Edge központi telepítési jegyzék kiválasztása**elemre. Ne használja a deployment.template.json fájlt.
+3. Válassza ki a **konfigurációs** mappában található fájl **deployment.amd64.jsét** , majd kattintson az **Edge központi telepítési jegyzék kiválasztása** elemre. Ne használja a deployment.template.json fájlt.
 
-4. Az eszköz alatt bontsa ki a **modulok** elemet a telepített és futó modulok listájának megtekintéséhez. Kattintson a frissítés gombra. Meg kell jelennie az új **NodeModule** , amelyen a **SimulatedTemperatureSensor** modul, valamint a **$edgeAgent** és a **$edgeHub**fut.
+4. Az eszköz alatt bontsa ki a **modulok** elemet a telepített és futó modulok listájának megtekintéséhez. Kattintson a frissítés gombra. Meg kell jelennie az új **NodeModule** , amelyen a **SimulatedTemperatureSensor** modul, valamint a **$edgeAgent** és a **$edgeHub** fut.
 
     A modulok elindításához néhány percet is igénybe vehet. Az IoT Edge futtatókörnyezetnek meg kell kapnia az új üzembe helyezési jegyzékfájlt, le kell kérnie a modul lemezképeit a tároló futtatókörnyezetből, majd el kell indítania az új modulokat.
 
@@ -225,7 +223,7 @@ Miután alkalmazta az üzembehelyezési jegyzéket az IoT Edge-eszközén, az es
 
 Az IoT Edge-eszköz állapotát a Visual Studio Code Explorer **Azure IoT Hub-eszközök** szakaszában tekintheti meg. Bontsa ki az eszköz részleteit, és megjelenik a telepített és a futó modulok listája.
 
-1. A Visual Studio Code Explorerben kattintson a jobb gombbal a IoT Edge eszköz nevére, és válassza a **figyelés beépített esemény végpontjának indítása**lehetőséget.
+1. A Visual Studio Code Explorerben kattintson a jobb gombbal a IoT Edge eszköz nevére, és válassza a **figyelés beépített esemény végpontjának indítása** lehetőséget.
 
 2. Megtekintheti a IoT Hub érkező üzeneteket. Eltarthat egy ideig, amíg az üzenetek megérkeznek. A IoT Edge eszköznek meg kell kapnia az új központi telepítést, és el kell indítania az összes modult. Ezután megvárja a NodeModule-kód módosításait, amíg a gép hőmérséklete 25 fokkal nem éri el az üzenetek küldését. Az üzenet típusú **riasztást** is hozzáadja az adott hőmérsékleti küszöbértéket elérő üzenetekhez.
 
@@ -235,13 +233,13 @@ A NodeModule modult az üzembe helyezési jegyzékben használta, hogy 25 fokos 
 
 1. A Visual Studio Code-ban bontsa ki a IoT Edge eszköz alatti részleteket a futó modulok megtekintéséhez.
 
-2. Kattintson a jobb gombbal a **NodeModule** elemre, és válassza a **modul Twin szerkesztése**lehetőséget.
+2. Kattintson a jobb gombbal a **NodeModule** elemre, és válassza a **modul Twin szerkesztése** lehetőséget.
 
 3. A kívánt tulajdonságok között keresse meg a **TemperatureThreshold** . Módosítsa az értékét egy új 5 fokos hőmérsékletre, a legutóbbi jelentett hőmérsékletnél pedig 10 fokkal magasabbra.
 
 4. Mentse a modul különálló fájlját.
 
-5. Kattintson a jobb gombbal a modul dupla szerkesztési paneljén bárhová, és válassza a **modul Twin frissítése**elemet.
+5. Kattintson a jobb gombbal a modul dupla szerkesztési paneljén bárhová, és válassza a **modul Twin frissítése** elemet.
 
 6. A bejövő eszközről a felhőbe irányuló üzenetek figyelése. Ekkor az új hőmérsékleti küszöb eléréséig az üzenetek leállnak.
 

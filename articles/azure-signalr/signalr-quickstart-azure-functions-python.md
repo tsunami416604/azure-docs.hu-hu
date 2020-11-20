@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: antchu
 ms.custom: devx-track-python
-ms.openlocfilehash: 24985a006390977c89c4eedc23084a9856272eba
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aaaf9011d38e7ec02e83db63757c434329b835e0
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91355642"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960291"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>Gyors útmutató: csevegési helyiség létrehozása a Azure Functions és a Signaler szolgáltatással a Python használatával
 
@@ -31,21 +31,21 @@ A Azure Functions [Python 3,6 vagy 3,7](https://www.python.org/downloads/)szüks
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qspython)
+Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qspython).
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
 Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azure-fiókjával.
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qspython)
+Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qspython).
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qspython)
+Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qspython).
 
 [!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qspython)
+Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qspython).
 
 ## <a name="configure-and-run-the-azure-function-app"></a>Az Azure-függvényalkalmazás konfigurálása és futtatása
 
@@ -81,7 +81,7 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azu
 
 1. A **local.settings.json** fájlban illessze be a kapcsolati sztringet az **AzureSignalRConnectionString** beállítás értékéhez. Mentse a fájlt.
 
-1. A Python-függvények mappákba vannak rendezve. Minden mappában két fájl található: *function.jsa* függvényben használt kötéseket definiálja, és az * \_ \_ init \_ \_ .* a függvény törzse. Ebben a függvényalkalmazásban két HTTP által indított függvény található:
+1. A Python-függvények mappákba vannak rendezve. Minden mappában két fájl található: *function.jsa* függvényben használt kötéseket definiálja, és az *\_ \_ init \_ \_ .* a függvény törzse. Ebben a függvényalkalmazásban két HTTP által indított függvény található:
 
     - **negotiate** – A *SignalRConnectionInfo* bemeneti kötést használja érvényes kapcsolatadatok létrehozásához és visszaküldéséhez.
     - **messages** – A kéréstörzsben fogadja a csevegés üzenetét, és a *SignalR* kimeneti kötés használatával továbbítja azt az összes csatlakoztatott ügyfélalkalmazás számára.
@@ -100,21 +100,20 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azu
 
     ![Function alkalmazás futtatása](media/signalr-quickstart-azure-functions-python/signalr-quickstart-run-application.png)
     
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qspython)
+Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qspython).
 
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qspython)
+Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qspython).
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qspython)
+Problémák léptek fel? Próbálja ki a [hibaelhárítási útmutatót](signalr-howto-troubleshoot-guide.md) , vagy [tudassa velünk](https://aka.ms/asrs/qspython).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy valós idejű kiszolgáló nélküli alkalmazást készített és futtatott a VS Code-ban. A következőkben még többet tudhat meg az Azure Functions VS Code-ból történő üzembe helyezéséről.
 
 > [!div class="nextstepaction"]
 > [Az Azure Functions üzembe helyezése VS Code-dal](/azure/developer/javascript/tutorial-vscode-serverless-node-01)
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qspython)

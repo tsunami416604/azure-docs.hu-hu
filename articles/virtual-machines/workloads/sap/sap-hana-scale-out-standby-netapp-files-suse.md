@@ -10,17 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: radeltch
-ms.openlocfilehash: 21d4af6985dbe246e60fe95f8f03de7f8aa0501b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1383db44922a044f5e51075b6e1feafa70c78009
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91314062"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94958757"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>SAP HANA kibővíthető rendszer üzembe helyezése készenléti csomóponttal Azure-beli virtuális gépeken Azure NetApp Files használatával SUSE Linux Enterprise Server 
 
@@ -232,21 +233,21 @@ A következő utasítások feltételezik, hogy már létrehozta az erőforráscs
 
    c. Válassza ki az ügyfél Azure virtuális hálózati alhálózatát. Válassza a [gyorsított hálózat](../../../virtual-network/create-vm-accelerated-networking-cli.md)lehetőséget.  
 
-   A virtuális gépek központi telepítésekor a rendszer automatikusan létrehozza a hálózati adapter nevét. Az egyszerűség kedvéért ebben az útmutatóban az automatikusan generált hálózati adapterekre fogunk hivatkozni, amelyek az ügyfél Azure virtuális hálózati alhálózatához vannak csatolva, mint a **hanadb1**, a **hanadb2-Client**és a **hanadb3-Client**. 
+   A virtuális gépek központi telepítésekor a rendszer automatikusan létrehozza a hálózati adapter nevét. Az egyszerűség kedvéért ebben az útmutatóban az automatikusan generált hálózati adapterekre fogunk hivatkozni, amelyek az ügyfél Azure virtuális hálózati alhálózatához vannak csatolva, mint a **hanadb1**, a **hanadb2-Client** és a **hanadb3-Client**. 
 
-3. Hozzon létre három hálózati adaptert, egyet az egyes virtuális gépekhez a virtuális hálózat alhálózatához `storage` (ebben a példában a **hanadb1**, a **hanadb2**és a **hanadb3-** tárolót).  
+3. Hozzon létre három hálózati adaptert, egyet az egyes virtuális gépekhez a virtuális hálózat alhálózatához `storage` (ebben a példában a **hanadb1**, a **hanadb2** és a **hanadb3-** tárolót).  
 
-4. Hozzon létre három hálózati adaptert, egyet az egyes virtuális gépekhez a virtuális hálózat alhálózatához `hana`  (ebben a példában a **hanadb1-Hana**, a **hanadb2-Hana**és a **hanadb3-Hana**).  
+4. Hozzon létre három hálózati adaptert, egyet az egyes virtuális gépekhez a virtuális hálózat alhálózatához `hana`  (ebben a példában a **hanadb1-Hana**, a **hanadb2-Hana** és a **hanadb3-Hana**).  
 
 5. Csatlakoztassa az újonnan létrehozott virtuális hálózati adaptereket a megfelelő virtuális gépekhez az alábbi lépések végrehajtásával:  
 
     a. Nyissa meg a [Azure Portal](https://portal.azure.com/#home)a virtuális gépet.  
 
-    b. A bal oldali ablaktáblán válassza a **Virtual Machines**lehetőséget. Szűrje a virtuális gép nevét (például **hanadb1**), majd válassza ki a virtuális gépet.  
+    b. A bal oldali ablaktáblán válassza a **Virtual Machines** lehetőséget. Szűrje a virtuális gép nevét (például **hanadb1**), majd válassza ki a virtuális gépet.  
 
     c. Az **Áttekintés** ablaktáblán válassza a **Leállítás** elemet a virtuális gép felszabadításához.  
 
-    d. Válassza a **hálózatkezelés**lehetőséget, majd csatlakoztassa a hálózati adaptert. A **hálózati adapter csatolása** legördülő listában válassza ki a már létrehozott hálózati adaptereket és az `storage` `hana` alhálózatokat.  
+    d. Válassza a **hálózatkezelés** lehetőséget, majd csatlakoztassa a hálózati adaptert. A **hálózati adapter csatolása** legördülő listában válassza ki a már létrehozott hálózati adaptereket és az `storage` `hana` alhálózatokat.  
     
     e. Kattintson a **Mentés** gombra. 
  
@@ -273,9 +274,9 @@ A következő utasítások feltételezik, hogy már létrehozta az erőforráscs
 
 7. Indítsa el a virtuális gépeket a következő lépések végrehajtásával:  
 
-    a. A bal oldali ablaktáblán válassza a **Virtual Machines**lehetőséget. Szűrje a virtuális gép nevét (például **hanadb1**), majd jelölje ki.  
+    a. A bal oldali ablaktáblán válassza a **Virtual Machines** lehetőséget. Szűrje a virtuális gép nevét (például **hanadb1**), majd jelölje ki.  
 
-    b. Az **Áttekintés** ablaktáblán válassza az **Indítás**lehetőséget.  
+    b. Az **Áttekintés** ablaktáblán válassza az **Indítás** lehetőséget.  
 
 ## <a name="operating-system-configuration-and-preparation"></a>Operációs rendszer konfigurációja és előkészítése
 
@@ -388,7 +389,7 @@ Konfigurálja és készítse elő az operációs rendszert a következő lépés
     mkdir -p /usr/sap/<b>HN1</b>
     </code></pre>
 
-2. **[1]** a **HN1**megosztott/usr/SAP tartozó csomópont-specifikus könyvtárak létrehozása.  
+2. **[1]** a **HN1** megosztott/usr/SAP tartozó csomópont-specifikus könyvtárak létrehozása.  
 
     <pre><code>
     # Create a temporary directory to mount <b>HN1</b>-shared
@@ -421,7 +422,7 @@ Konfigurálja és készítse elő az operációs rendszert a következő lépés
     Nobody-Group = <b>nobody</b>
     </code></pre>
 
-4. **[A]** ellenőrzés `nfs4_disable_idmapping` . Értékeként az **Y**értéknek kell lennie. A-t tartalmazó könyvtár-struktúra létrehozásához `nfs4_disable_idmapping` hajtsa végre a csatlakoztatási parancsot. Nem lehet manuálisan létrehozni a könyvtárat a/sys/modules alatt, mivel a hozzáférés a kernel/illesztőprogramok számára van fenntartva.  
+4. **[A]** ellenőrzés `nfs4_disable_idmapping` . Értékeként az **Y** értéknek kell lennie. A-t tartalmazó könyvtár-struktúra létrehozásához `nfs4_disable_idmapping` hajtsa végre a csatlakoztatási parancsot. Nem lehet manuálisan létrehozni a könyvtárat a/sys/modules alatt, mivel a hozzáférés a kernel/illesztőprogramok számára van fenntartva.  
 
     <pre><code>
     # Check nfs4_disable_idmapping 
@@ -435,7 +436,7 @@ Konfigurálja és készítse elő az operációs rendszert a következő lépés
     echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
     </code></pre>
 
-5. **[A]** manuálisan hozza létre a SAP HANA csoportot és a felhasználót. A Group sapsys és a User **hn1**adm azonosítóit ugyanahhoz az azonosítóhoz kell beállítani, amelyek a bevezetéskor vannak megadva. (Ebben a példában az azonosítók értéke **1001**.) Ha az azonosítók nincsenek megfelelően beállítva, akkor nem fog tudni hozzáférni a kötetekhez. A Group sapsys és a **hn1**adm és sapadm felhasználói fiókjainak azonosítóinak azonosnak kell lenniük az összes virtuális gépen.  
+5. **[A]** manuálisan hozza létre a SAP HANA csoportot és a felhasználót. A Group sapsys és a User **hn1** adm azonosítóit ugyanahhoz az azonosítóhoz kell beállítani, amelyek a bevezetéskor vannak megadva. (Ebben a példában az azonosítók értéke **1001**.) Ha az azonosítók nincsenek megfelelően beállítva, akkor nem fog tudni hozzáférni a kötetekhez. A Group sapsys és a **hn1** adm és sapadm felhasználói fiókjainak azonosítóinak azonosnak kell lenniük az összes virtuális gépen.  
 
     <pre><code>
     # Create user group 
@@ -533,7 +534,7 @@ Ebben a példában a SAP HANA üzembe helyezéséhez az Azure-ban készenléti c
     sudo zypper install libgcc_s1 libstdc++6 libatomic1 
     </code></pre>
 
-4. **[2], [3]** SAP HANA és címtárak tulajdonosának módosítása `data` `log` az **hn1**adm-re.   
+4. **[2], [3]** SAP HANA és címtárak tulajdonosának módosítása `data` `log` az **hn1** adm-re.   
 
     <pre><code>
     # Execute as root
@@ -556,9 +557,9 @@ Ebben a példában a SAP HANA üzembe helyezéséhez az Azure-ban készenléti c
      * **Válasszon műveletet**: **1** . lépés (telepítéshez)
      * **További összetevők a telepítéshez**: írja be a **2, 3** értéket
      * Telepítési útvonal: nyomja le az ENTER billentyűt (az alapértelmezett érték a/Hana/Shared)
-     * **Helyi állomásnév**esetén: nyomja le az ENTER billentyűt az alapértelmezett érték elfogadásához.
+     * **Helyi állomásnév** esetén: nyomja le az ENTER billentyűt az alapértelmezett érték elfogadásához.
      * A alá kívánja **adni az állomásokat a rendszeren?**: ENTER **y**
-     * **Vesszővel tagolt állomásnevek**esetén adja meg a következőt: **hanadb2, hanadb3**
+     * **Vesszővel tagolt állomásnevek** esetén adja meg a következőt: **hanadb2, hanadb3**
      * A **gyökér felhasználónévnél** [root]: nyomja le az ENTER billentyűt az alapértelmezett érték elfogadásához
      * A **gyökér felhasználói jelszava**: írja be a root felhasználó jelszavát
      * A gazdagépek hanadb2 tartozó szerepkörök esetében: **1**  megadása (feldolgozói)
@@ -657,7 +658,7 @@ Ebben a példában a SAP HANA üzembe helyezéséhez az Azure-ban készenléti c
 
 1. Csomópont-összeomlás szimulálása egy SAP HANA munkavégző csomóponton. Tegye a következőket: 
 
-   a. A csomópont összeomlásának szimulálása előtt futtassa a következő parancsokat a **hn1**adm használatával a környezet állapotának rögzítéséhez:  
+   a. A csomópont összeomlásának szimulálása előtt futtassa a következő parancsokat a **hn1** adm használatával a környezet állapotának rögzítéséhez:  
 
    <pre><code>
     # Check the landscape status
@@ -712,7 +713,7 @@ Ebben a példában a SAP HANA üzembe helyezéséhez az Azure-ban készenléti c
 
 2. A következő lépésekkel megöli a kiszolgálónevet:
 
-   a. A teszt előtt ellenőrizze a környezet állapotát a következő parancsok **hn1**adm-ként való futtatásával:  
+   a. A teszt előtt ellenőrizze a környezet állapotát a következő parancsok **hn1** adm-ként való futtatásával:  
 
    <pre><code>
     #Landscape status 
@@ -734,7 +735,7 @@ Ebben a példában a SAP HANA üzembe helyezéséhez az Azure-ban készenléti c
     hanadb3, 3, 50313, 50314, 0.3, HDB|HDB_STANDBY, GRAY
    </code></pre>
 
-   b. Futtassa az alábbi parancsokat **hn1**adm-ként az aktív főcsomóponton, amely ebben az esetben **hanadb1** :  
+   b. Futtassa az alábbi parancsokat **hn1** adm-ként az aktív főcsomóponton, amely ebben az esetben **hanadb1** :  
 
     <pre><code>
         hn1adm@hanadb1:/usr/sap/HN1/HDB03> HDB kill
@@ -768,7 +769,7 @@ Ebben a példában a SAP HANA üzembe helyezéséhez az Azure-ban készenléti c
     hn1adm@hanadb1:/usr/sap/HN1/HDB03> HDB start
    </code></pre>
 
-   A **hanadb1**SAP HANA elindítása után a következő állapotot kell elvárnia:  
+   A **hanadb1** SAP HANA elindítása után a következő állapotot kell elvárnia:  
 
    <pre><code>
     # Check the instance status

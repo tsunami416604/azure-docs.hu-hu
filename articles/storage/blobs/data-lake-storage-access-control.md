@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 80c27613ad3956d565b858b02ed32ac13af3a62c
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 03117b9f0c3cbaea22f36703f689264549b851e8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320480"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959135"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlési listák (ACL-ek) Azure Data Lake Storage Gen2
 
@@ -60,7 +60,7 @@ A hozzáférési ACL-ek és az alapértelmezett ACL-ek azonos struktúrával ren
 
 ## <a name="levels-of-permission"></a>Engedélyek szintjei
 
-A Container objektumokra vonatkozó engedélyek a következők: **olvasás**, **írás**és **végrehajtás**, és a fájlokon és könyvtárakon is használhatók az alábbi táblázatban látható módon:
+A Container objektumokra vonatkozó engedélyek a következők: **olvasás**, **írás** és **végrehajtás**, és a fájlokon és könyvtárakon is használhatók az alábbi táblázatban látható módon:
 
 |            |    Fájl     |   Címtár |
 |------------|-------------|----------|
@@ -90,9 +90,9 @@ Az Data Lake Storage Gen2 által használt POSIX stílusú modellben az elemhez 
 
 A következő táblázat azokat az ACL-bejegyzéseket tartalmazza, amelyek szükségesek ahhoz, hogy a rendszerbiztonsági tag végrehajtsa a **művelet** oszlopban felsorolt műveleteket. 
 
-Ez a táblázat egy fiktív címtár-hierarchia minden szintjét jelképező oszlopot mutat be. Van egy oszlop a tároló gyökérkönyvtárához ( `\` ), egy **Oregon**nevű alkönyvtárhoz, a **Portland**nevű Oregon könyvtár alkönyvtárához és egy **Data.txt**nevű Portland-könyvtárban található szövegfájlhoz. 
+Ez a táblázat egy fiktív címtár-hierarchia minden szintjét jelképező oszlopot mutat be. Van egy oszlop a tároló gyökérkönyvtárához ( `\` ), egy **Oregon** nevű alkönyvtárhoz, a **Portland** nevű Oregon könyvtár alkönyvtárához és egy **Data.txt** nevű Portland-könyvtárban található szövegfájlhoz. 
 
-> [! IMPORANT] Ez a táblázat azt feltételezi, hogy **csak** ACL-eket használ az Azure RBAC szerepkör-hozzárendelései nélkül. Ha meg szeretne tekinteni egy hasonló táblázatot, amely az Azure RBAC-t kombinálja ACL-ekkel együtt, tekintse meg az [engedélyek táblázat: az Azure RBAC és az ACL](data-lake-storage-access-control-model.md#permissions-table-combining-azure-rbac-and-acl)
+> [! IMPORANT] Ez a táblázat azt feltételezi, hogy **csak** az ACL-eket használja az Azure szerepkör-hozzárendelések nélkül. Ha meg szeretne tekinteni egy hasonló táblázatot, amely az Azure RBAC-t kombinálja ACL-ekkel együtt, tekintse meg az [engedélyek táblázat: az Azure RBAC és az ACL](data-lake-storage-access-control-model.md#permissions-table-combining-azure-rbac-and-acl)
 
 |    Művelet             |    /    | Oregon | Portland | Data.txt     |
 |--------------------------|---------|----------|-----------|--------------|
@@ -119,7 +119,7 @@ Minden fájl és könyvtár külön engedélyekkel rendelkezik ezekhez az identi
 - Nevesített felügyelt identitások
 - Minden egyéb felhasználó
 
-A felhasználók és csoportok identitása Azure Active Directory- (Azure AD-) indentitás. Így ha nincs másképp jelölve, a *felhasználó*Data Lake Storage Gen2 kontextusában hivatkozhat egy Azure ad-felhasználóra, egyszerű szolgáltatásnévre, felügyelt identitásra vagy biztonsági csoportra.
+A felhasználók és csoportok identitása Azure Active Directory- (Azure AD-) indentitás. Így ha nincs másképp jelölve, a *felhasználó* Data Lake Storage Gen2 kontextusában hivatkozhat egy Azure ad-felhasználóra, egyszerű szolgáltatásnévre, felügyelt identitásra vagy biztonsági csoportra.
 
 ### <a name="the-owning-user"></a>A tulajdonos felhasználó
 
@@ -133,11 +133,11 @@ Automatikusan az elem tulajdonosa lesz az a felhasználó, aki létrehozta az el
 
 ### <a name="the-owning-group"></a>A tulajdonoscsoport
 
-A POSIX ACL-ekben minden felhasználó egy *elsődleges csoporttal*van társítva. Például az "Alice" nevű felhasználó a "Finance" csoportba tartozhat. Alice több csoporthoz is tartozhat, de egy csoport mindig ki van jelölve elsődleges csoportjaként. A POSIX-ben ha Alice létrehoz egy fájlt, a fájl tulajdonoscsoportja Alice elsődleges csoportja lesz, ami ebben az esetben a „finance”. A tulajdonos csoport egyéb esetben egyéb felhasználókhoz/csoportokhoz hozzárendelt engedélyekhez hasonlóan viselkedik.
+A POSIX ACL-ekben minden felhasználó egy *elsődleges csoporttal* van társítva. Például az "Alice" nevű felhasználó a "Finance" csoportba tartozhat. Alice több csoporthoz is tartozhat, de egy csoport mindig ki van jelölve elsődleges csoportjaként. A POSIX-ben ha Alice létrehoz egy fájlt, a fájl tulajdonoscsoportja Alice elsődleges csoportja lesz, ami ebben az esetben a „finance”. A tulajdonos csoport egyéb esetben egyéb felhasználókhoz/csoportokhoz hozzárendelt engedélyekhez hasonlóan viselkedik.
 
 #### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>A tulajdonos csoport kiosztása új fájlhoz vagy könyvtárhoz
 
-* **1. eset**: a gyökérkönyvtár "/". Ez a könyvtár akkor jön létre, amikor létrejön egy Data Lake Storage Gen2 tároló. Ebben az esetben a tulajdonos csoport arra a felhasználóra van beállítva, aki létrehozta a tárolót, ha az a OAuth használatával történt. Ha a tároló megosztott kulccsal, a fiók SAS-vel vagy egy szolgáltatás SAS-vel lett létrehozva, akkor a tulajdonos és a tulajdonos csoport **$superuserra**van állítva.
+* **1. eset**: a gyökérkönyvtár "/". Ez a könyvtár akkor jön létre, amikor létrejön egy Data Lake Storage Gen2 tároló. Ebben az esetben a tulajdonos csoport arra a felhasználóra van beállítva, aki létrehozta a tárolót, ha az a OAuth használatával történt. Ha a tároló megosztott kulccsal, a fiók SAS-vel vagy egy szolgáltatás SAS-vel lett létrehozva, akkor a tulajdonos és a tulajdonos csoport **$superuserra** van állítva.
 * **2. eset** (minden egyéb eset): új elem létrehozásakor a tulajdonos csoportot a rendszer a szülő könyvtárából másolja.
 
 #### <a name="changing-the-owning-group"></a>A tulajdonos csoport módosítása
@@ -199,7 +199,7 @@ Ahogy az a hozzáférés-ellenőrzési algoritmusban is látható, a maszk korl�
 
 Új Data Lake Storage Gen2 tároló esetén a gyökérkönyvtár ("/") hozzáférési ACL-jéhez tartozó maszk alapértelmezés szerint **750** a könyvtárakhoz és a **640** fájlokhoz. Az alábbi táblázat a jogosultsági szintek szimbolikus jelölését mutatja be.
 
-|Entitás|Könyvtárak|Fájlok|
+|Entitás|Könyvtárak|Files|
 |--|--|--|
 |Tulajdonos felhasználó|`rwx`|`r-w`|
 |Tulajdonoscsoport|`r-x`|`r--`|
@@ -224,7 +224,7 @@ Ha új fájlt vagy könyvtárat hoz létre egy meglévő címtárban, a szülő 
 
 ### <a name="umask"></a>umask
 
-Fájl vagy könyvtár létrehozásakor a rendszer a umask használatával módosítja az alapértelmezett ACL-ek beállítását az alárendelt elemen. a umask egy 9 bites érték a szülő címtárakban, amelyek RWX értéket tartalmaznak a **tulajdonos felhasználó**, a **tulajdonos csoport**és a **többi**számára.
+Fájl vagy könyvtár létrehozásakor a rendszer a umask használatával módosítja az alapértelmezett ACL-ek beállítását az alárendelt elemen. a umask egy 9 bites érték a szülő címtárakban, amelyek RWX értéket tartalmaznak a **tulajdonos felhasználó**, a **tulajdonos csoport** és a **többi** számára.
 
 A umask, amely a 007-re beállított állandó érték Azure Data Lake Storage Gen2. Ez az érték a következőre van lefordítva:
 
@@ -270,7 +270,7 @@ Ha a HNS ki van kapcsolva, az Azure Azure RBAC engedélyezési szabályai továb
 
 Annak megismeréséhez, hogy a rendszer hogyan értékeli ki az Azure RBAC és az ACL-eket, hogy engedélyezési döntéseket hozzon a Storage-fiók erőforrásaihoz, olvassa el az [engedélyek kiértékelésének módját](data-lake-storage-access-control-model.md#how-permissions-are-evaluated).
 
-### <a name="what-are-the-limits-for-azure-rbac-role-assignments-and-acl-entries"></a>Mik az Azure RBAC szerepkör-hozzárendelések és az ACL-bejegyzések korlátai?
+### <a name="what-are-the-limits-for-azure-role-assignments-and-acl-entries"></a>Mik az Azure szerepkör-hozzárendelések és az ACL-bejegyzések korlátai?
 
 Az alábbi táblázat összefoglalja a korlátozásokat, amelyeket figyelembe kell venni az Azure RBAC a "durva szemű" engedélyek (a Storage-fiókokra vagy tárolóra vonatkozó engedélyek) kezelésére, valamint a "részletes" engedélyek (a fájlokra és könyvtárakra vonatkozó engedélyek) kezelésére szolgáló ACL-ek használatával. Biztonsági csoportok használata ACL-hozzárendelésekhez. A csoportok használatával kevésbé valószínű, hogy túllépi a szerepkör-hozzárendelések maximális számát az előfizetésben, valamint az ACl-bejegyzések maximális számát fájlonként vagy címtárban. 
 
@@ -343,6 +343,6 @@ Az Azure Storage REST API tartalmaz egy [set Container ACL](https://docs.microso
 * [POSIX ACL Ubuntu rendszeren](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [Hozzáférés-vezérlési listákat használó ACL Linux rendszeren](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 - [Hozzáférés-vezérlési modell Azure Data Lake Storage Gen2](data-lake-storage-access-control-model.md)

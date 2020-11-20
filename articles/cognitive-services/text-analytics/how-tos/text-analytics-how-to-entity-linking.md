@@ -8,47 +8,53 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 11/11/2020
+ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: cabde27591159b5751435a97a909a5f6f8c3081b
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: ef06faa17739153b2a04e777498e1de6e97c0646
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94518226"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957095"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Elnevezett entitások felismerésének használata a Text Analyticsban
 
-A Text Analytics API lehetővé teszi a strukturálatlan szöveg átrendezését és a disambiguated entitások listájának beolvasása, amely a weben található további információkra mutató hivatkozásokat tartalmaz. Az API támogatja az elnevezett entitások felismerését és az entitások összekapcsolását is.
+A Text Analytics API lehetővé teszi a strukturálatlan szöveg átrendezését és a disambiguated entitások listájának beolvasása, amely a weben található további információkra mutató hivatkozásokat tartalmaz. Az API támogatja a nevesített entitások felismerését (egyrészt) több entitás kategóriája és az entitások összekapcsolása esetén.
 
-### <a name="entity-linking"></a>Entitáskapcsolás
+## <a name="entity-linking"></a>Entitáskapcsolás
 
 Az entitások összekapcsolása lehetővé teszi egy szövegben talált entitás identitásának azonosítását és egyértelműsítse (például annak meghatározását, hogy a "Mars" szó előfordulása a bolygóra vagy a háború római istenere vonatkozik). Ennek a folyamatnak a megfelelő nyelven kell megadnia egy tudásbázist, hogy az felismert entitások szövegben legyenek összekapcsolva. Az Entity Linking a [wikipedia](https://www.wikipedia.org/) -t használja a Tudásbázisban.
 
-
-### <a name="named-entity-recognition-ner"></a>Elnevezett entitások felismerése
+## <a name="named-entity-recognition-ner"></a>Elnevezett entitások felismerése
 
 Az elnevezett entitások felismerése lehetővé teszi a különböző entitások azonosítását a szövegben, és azokat előre definiált osztályokra vagy típusokra kategorizálhatja, például: személy, hely, esemény, termék és szervezet.  
 
-## <a name="named-entity-recognition-versions-and-features"></a>Elnevezett entitás-felismerési verziók és szolgáltatások
+## <a name="personally-identifiable-information-pii"></a>Személyazonosításra alkalmas adatok
+
+A személyre szabott funkció az egyoldalas szolgáltatás része, és képes azonosítani és kivonni a bizalmas entitásokat egy olyan szövegben, amely egy személyhez van társítva, például: telefonszám, e-mail-cím, levelezési cím, Passport-szám.  
+
+## <a name="named-entity-recognition-features-and-versions"></a>Elnevezett entitás-felismerési funkciók és verziók
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-| Jellemző                                                         | V 3.0 | V 3.1 – előzetes verzió. 2 |
+| Funkció                                                         | V 3.0 | V 3.1 – előzetes verzió. 3 |
 |-----------------------------------------------------------------|--------|----------|
 | Egyszeri és batch-kérelmek módszerei                          | X      | X        |
 | Bővített entitások felismerése több kategória között           | X      | X        |
 | Különálló végpontok az entitások összekapcsolását és a meghívást kérő kérelmek küldéséhez. | X      | X        |
 | Személyes ( `PII` ) és Health ( `PHI` ) információs entitások felismerése        |        | X        |
+| Kivonás `PII`        |        | X        |
 
 További információért lásd a [nyelvi támogatást](../language-support.md) ismertető témakört.
 
-## <a name="entity-types"></a>Entitástípusok
-
 A nevesített entitások felismerése v3 több típusra kiterjedő kibővített észlelést biztosít. A "v 3.0" jelenleg az [általános entitások kategóriájában](../named-entity-types.md)ismeri fel az entitásokat.
 
-A nevesített entitások felismerése v 3.1 – preview. 2 tartalmazza a v 3.0 észlelési funkcióit, valamint a személyes adatok észlelésének képességét `PII` a `v3.1-preview.2/entities/recognition/pii` végpont használatával. A nem kötelező paraméter használatával `domain=phi` azonosíthatja a bizalmas állapottal kapcsolatos információkat ( `PHI` ). További információért tekintse meg az [entitások kategóriáit](../named-entity-types.md) ismertető cikket, és a [végpontok kérése](#request-endpoints) című szakaszt.
+Elnevezett Entity Recognition v 3.1 – preview. 3 tartalmazza a v 3.0 észlelési képességeit, valamint: 
+* A személyes adatok () észlelésének lehetősége `PII` a `v3.1-preview.3/entities/recognition/pii` végpont használatával. 
+* Egy opcionális `domain=phi` paraméter a bizalmas állapottal kapcsolatos információk észleléséhez ( `PHI` ).
+* [Aszinkron művelet](text-analytics-how-to-call-api.md) a `/analyze` végpont használatával.
 
+További információ: az [entitások kategóriái](../named-entity-types.md) című cikk és a [végpontok igénylése](#request-endpoints) című rész. 
 
 ## <a name="sending-a-rest-api-request"></a>REST API kérelem küldése
 
@@ -68,41 +74,41 @@ Hozzon létre egy POST kérést. A következő hivatkozásokon a [Poster](text-a
 
 ### <a name="request-endpoints"></a>Kérelmek végpontjai
 
-#### <a name="version-31-preview2"></a>[3,1-es verzió – preview. 2](#tab/version-3-preview)
+#### <a name="version-31-preview3"></a>[3,1-es verzió – preview. 3](#tab/version-3-preview)
 
-Az elnevezett entitások felismerése `v3.1-preview.2` külön végpontokat használ a feladatokhoz, a személyre és az entitások összekapcsolására Az alábbi URL-formátumot használja a kérelme alapján:
+A nevesített entitások felismerése `v3.1-preview.3` külön végpontokat használ a meghívásos, a személyes és az entitások összekapcsolására vonatkozó kérelmekhez. Az alábbi URL-formátumot használja a kérelem alapján.
 
-Entitás összekapcsolása
-* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/linking`
+**Entitás összekapcsolása**
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/linking`
 
-[Elnevezett entitás-felismerés verziója 3,1 – előzetes verzió referenciája a következőhöz: `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesLinking)
+[Elnevezett entitás-felismerés verziója 3,1 – előzetes verzió referenciája a következőhöz: `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesLinking)
 
-NER
-* Általános entitások – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/recognition/general`
+**Elnevezett entitások felismerése**
+* Általános entitások – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/general`
 
-[Elnevezett entitás-felismerés verziója 3,1 – előzetes verzió referenciája a következőhöz: `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionGeneral)
+[Elnevezett entitás-felismerés verziója 3,1 – előzetes verzió referenciája a következőhöz: `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionGeneral)
 
-Személyazonosításra alkalmas adatok
-* Személyes ( `PII` ) információk – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/recognition/pii`
+**Személyazonosításra alkalmas adatok**
+* Személyes ( `PII` ) információk – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/pii`
 
 A nem kötelező `domain=phi` paraméterrel is felderítheti az állapotadatok ( `PHI` ) szövegben való észlelését. 
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/recognition/pii?domain=phi`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/pii?domain=phi`
 
-Jegyezze fel a tulajdonság hozzáadását `redactedText` a válasz JSON-ban, amely tartalmazza azt a módosított bemeneti szöveget, ahol az észlelt személyre szabási entitásokat a rendszer az entitások minden karaktere esetében a * értékre cseréli.
+A-től kezdődően `v3.1-preview.3` a JSON-válasz tartalmaz egy `redactedText` tulajdonságot, amely tartalmazza azt a módosított bemeneti szöveget, amelyben a `*` rendszer az entitások egyes karakterei esetében az észlelt személyes adatokat felváltotta.
 
-[Elnevezett entitás-felismerés verziója 3,1 – előzetes verzió referenciája a következőhöz: `PII`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionPii)
+[Elnevezett entitás-felismerés verziója 3,1 – előzetes verzió referenciája a következőhöz: `PII`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionPii)
 
 #### <a name="version-30"></a>[3,0-es verzió](#tab/version-3)
 
 Az elnevezett entitások felismerése v3 külön végpontokat használ az Egypéldányos és az entitás-összekapcsolási kérelmekhez Az alábbi URL-formátumot használja a kérelme alapján:
 
-Entitás összekapcsolása
+**Entitás összekapcsolása**
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/linking`
 
 [Elnevezett entitás-felismerés 3,0-es verziójának referenciája `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)
 
-NER
+**Elnevezett entitások felismerése**
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/recognition/general`
 
 [Elnevezett entitás-felismerés 3,0-es verziójának referenciája `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)
@@ -113,7 +119,7 @@ A Text Analytics API kulcsot tartalmazó kérelem fejlécének beállítása. A 
 
 ### <a name="example-ner-request"></a>Példa a kérelemre 
 
-Az alábbi példa az API-nak elküldhető tartalomra mutat. A kérelem formátuma megegyezik az API mindkét verziójával.
+A következő JSON egy példa az API-nak elküldhető tartalomra. A kérelem formátuma megegyezik az API mindkét verziójával.
 
 ```json
 {
@@ -138,11 +144,11 @@ A Text Analytics API állapot nélküli. A fiókjában nem tárolunk semmilyen a
 
 Az összes POST kérelem egy JSON formátumú választ ad vissza az azonosítók és az észlelt entitás tulajdonságaival.
 
-A kimenetet visszaadása azonnali. Az eredmények adatfolyamát JSON elfogadó alkalmazáshoz küldheti vagy a kimenetet elmentheti fájlba a helyi rendszeren, majd importálható az adatokat rendezni, keresni és kezelni képes alkalmazásba. A többnyelvű és a Emoji-támogatás miatt a válasz szöveges eltolásokat is tartalmazhat. További információért lásd: [a szöveg eltolásának feldolgozása](../concepts/text-offsets.md) .
+A kimenetet visszaadása azonnali. Az eredmények adatfolyamát JSON elfogadó alkalmazáshoz küldheti vagy a kimenetet elmentheti fájlba a helyi rendszeren, majd importálható az adatokat rendezni, keresni és kezelni képes alkalmazásba. A többnyelvű és a Emoji-támogatás miatt a válasz szöveges eltolásokat is tartalmazhat. További információ: [a szöveg eltolásának feldolgozása](../concepts/text-offsets.md).
 
 ### <a name="example-responses"></a>Válaszok – példa
 
-A 3-as verzió külön végpontokat biztosít az általános célú, a személyes és az entitások összekapcsolásához. A két műveletre adott válaszok alább láthatók. 
+A 3-as verzió külön végpontokat biztosít az általános célú, a személyes adatokkal és az entitások összekapcsolásával kapcsolatban. A két műveletre adott válaszok alább láthatók. 
 
 #### <a name="version-31-preview"></a>[3,1-es verzió – előzetes verzió](#tab/version-3-preview)
 
@@ -292,7 +298,7 @@ Példa az általános célú válaszra:
 ---
 
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ebben a cikkben megtanulta az entitások összekapcsolásával kapcsolatos fogalmakat és munkafolyamatokat a Cognitive Services Text Analytics használatával. Összegezve:
 

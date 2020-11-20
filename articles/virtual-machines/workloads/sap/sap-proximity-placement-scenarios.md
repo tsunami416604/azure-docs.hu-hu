@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/29/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7b48e4223e4e5fc5100de250d85441fcb96d50a3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: aae822665702300064e82e80d74b5c2256423ea1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977238"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957282"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>Azure Proximity-elhelyezési csoportok optimális hálózati késéshez SAP-alkalmazásokkal
 Az SAP NetWeaver vagy az SAP S/4HANA architektúrán alapuló SAP-alkalmazások érzékenyek az SAP-alkalmazási rétegek és az SAP-adatbázis szintjei közötti hálózati késésre. Ez az érzékenység az alkalmazási rétegben futó üzleti logika legnagyobb része. Mivel az SAP-alkalmazás rétege futtatja az üzleti logikát, nagy gyakorisággal kérdezi le a lekérdezéseket az adatbázis-rétegre, és másodpercenként több ezer vagy több tízezer értéket ad meg. A legtöbb esetben a lekérdezések természete egyszerű. Általában 500-s vagy annál kisebb adatbázis-szinten futnak.

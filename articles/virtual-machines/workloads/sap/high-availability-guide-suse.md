@@ -10,17 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/22/2020
 ms.author: radeltch
-ms.openlocfilehash: 63adf2b1ca7ae795e35e8245440093fe0f6e6c49
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 508fff16f96d0dfddb77b219bb545fb8580b4048
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486174"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94958897"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver számára SUSE Linux Enterprise Server SAP-alkalmazásokhoz
 
@@ -156,7 +157,7 @@ Az összes szükséges erőforrás üzembe helyezéséhez használhatja a GitHub
    9. Rendszergazdai Felhasználónév és rendszergazdai jelszó  
       Létrejön egy új felhasználó, amely használható a gépre való bejelentkezéshez.
    10. Alhálózat azonosítója  
-   Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben a virtuális gépet definiáló alhálózat van, akkor nevezze el az adott alhálózat AZONOSÍTÓját. Az azonosító általában úgy néz ki, mint az/Subscriptions/** &lt; előfizetés &gt; -azonosítója**/ResourceGroups/** &lt; &gt; **** &lt; &gt; **nevű erőforráscsoport neve/Providers/Microsoft.Network/virtualNetworks/virtuális hálózat neve/Subnets/** &lt; alhálózat neve &gt; **
+   Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben a virtuális gépet definiáló alhálózat van, akkor nevezze el az adott alhálózat AZONOSÍTÓját. Az azonosító általában úgy néz ki, mint az/Subscriptions/**&lt; előfizetés &gt; -azonosítója**/ResourceGroups/**&lt; &gt;****&lt; &gt;** nevű erőforráscsoport neve/Providers/Microsoft.Network/virtualNetworks/virtuális hálózat neve/Subnets/**&lt; alhálózat neve &gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>A Linux telepítése manuálisan Azure Portal használatával
 
@@ -193,13 +194,13 @@ Először létre kell hoznia a virtuális gépeket ehhez az NFS-fürthöz. Ezt k
       1. Válassza ki az (A) SCS-fürthöz tartozó virtuális gépeket és azok IP-címeit.
       1. Kattintson az Add (Hozzáadás) parancsra
    1. Az állapot-mintavételek létrehozása
-      1. A ASCS 620**00** portja
+      1. A ASCS 620 **00** portja
          1. Nyissa meg a terheléselosztó-t, válassza az állapot-tesztek elemet, majd kattintson a Hozzáadás gombra.
          1. Adja meg az új állapot-mintavétel nevét (például **NW1-ASCs-HP**)
-         1. Válassza a TCP protokollt, a 620**00**portot, az 5. időközt és a nem megfelelő állapotú küszöbértéket 2
+         1. Válassza a TCP protokollt, a 620 **00** portot, az 5. időközt és a nem megfelelő állapotú küszöbértéket 2
          1. Kattintson az OK gombra
-      1. Port 621**02** ASCS-esekhöz
-         * A fenti lépések megismétlésével hozzon létre egy állapot-mintavételt az ERS számára (például 621**02** és **NW1-AERS-HP**)
+      1. Port 621 **02** ASCS-esekhöz
+         * A fenti lépések megismétlésével hozzon létre egy állapot-mintavételt az ERS számára (például 621 **02** és **NW1-AERS-HP**)
    1. Terheléselosztási szabályok
       1. Terheléselosztási szabályok ASCS
          1. Nyissa meg a Load balancert, válassza a terheléselosztási szabályok elemet, majd kattintson a Hozzáadás gombra.
@@ -227,15 +228,15 @@ Először létre kell hoznia a virtuális gépeket ehhez az NFS-fürthöz. Ezt k
       1. Válassza ki az (A) SCS-fürthöz tartozó virtuális gépeket.
       1. Kattintson az OK gombra
    1. Az állapot-mintavételek létrehozása
-      1. A ASCS 620**00** portja
+      1. A ASCS 620 **00** portja
          1. Nyissa meg a terheléselosztó-t, válassza az állapot-tesztek elemet, majd kattintson a Hozzáadás gombra.
          1. Adja meg az új állapot-mintavétel nevét (például **NW1-ASCs-HP**)
-         1. Válassza a TCP protokollt, a 620**00**portot, az 5. időközt és a nem megfelelő állapotú küszöbértéket 2
+         1. Válassza a TCP protokollt, a 620 **00** portot, az 5. időközt és a nem megfelelő állapotú küszöbértéket 2
          1. Kattintson az OK gombra
-      1. Port 621**02** ASCS-esekhöz
-         * A fenti lépések megismétlésével hozzon létre egy állapot-mintavételt az ERS számára (például 621**02** és **NW1-AERS-HP**)
+      1. Port 621 **02** ASCS-esekhöz
+         * A fenti lépések megismétlésével hozzon létre egy állapot-mintavételt az ERS számára (például 621 **02** és **NW1-AERS-HP**)
    1. Terheléselosztási szabályok
-      1. 32**00** TCP a ASCS
+      1. 32 **00** TCP a ASCS
          1. Nyissa meg a Load balancert, válassza a terheléselosztási szabályok elemet, majd kattintson a Hozzáadás gombra.
          1. Adja meg az új terheléselosztó-szabály nevét (például **NW1-LB-3200**)
          1. Válassza ki a korábban létrehozott előtérbeli IP-címet, háttér-készletet és állapot-mintavételt (például **NW1-ASCs-frontend**)
@@ -244,9 +245,9 @@ Először létre kell hoznia a virtuális gépeket ehhez az NFS-fürthöz. Ezt k
          1. **Ügyeljen arra, hogy a lebegő IP-címet engedélyezze**
          1. Kattintson az OK gombra
       1. További portok a ASCS
-         * Ismételje meg a fenti lépéseket a**36 00**,**39 00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 és TCP ASCS
+         * Ismételje meg a fenti lépéseket a **36 00**,**39 00**, 81 **00**, 5 **00** 13, 5 **00** 14, 5 **00** 16 és TCP ASCS
       1. További portok a ASCS-ESEK számára
-         * Ismételje meg a fenti lépéseket a 33**02**, 5**02**13, 5**02**14, 5**02**16 és TCP ASCS-eseknél.
+         * Ismételje meg a fenti lépéseket a 33 **02**, 5 **02** 13, 5 **02** 14, 5 **02** 16 és TCP ASCS-eseknél.
 
 > [!IMPORTANT]
 > A lebegő IP-címek nem támogatottak a terheléselosztási helyzetekben a hálózati adapter másodlagos IP-konfigurációjában. További részletek: az [Azure Load Balancer korlátozásai](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations). Ha a virtuális gép további IP-címére van szüksége, helyezzen üzembe egy második hálózati adaptert.  
@@ -255,7 +256,7 @@ Először létre kell hoznia a virtuális gépeket ehhez az NFS-fürthöz. Ezt k
 > Ha a nyilvános IP-címek nélküli virtuális gépek a belső (nincs nyilvános IP-cím) standard Azure Load Balancer háttér-készletbe kerülnek, nem lesz kimenő internetkapcsolat, kivéve, ha további konfigurálást végeznek a nyilvános végpontok útválasztásának engedélyezéséhez. A kimenő kapcsolatok elérésével kapcsolatos részletekért lásd: [nyilvános végpontú kapcsolat Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben](./high-availability-guide-standard-load-balancer-outbound-connections.md).  
 
 > [!IMPORTANT]
-> Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a paramétert a **0**értékre **net.IPv4.tcp_timestamps** . Részletekért lásd: [Load Balancer Health](../../../load-balancer/load-balancer-custom-probe-overview.md)-tesztek.
+> Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a paramétert a **0** értékre **net.IPv4.tcp_timestamps** . Részletekért lásd: [Load Balancer Health](../../../load-balancer/load-balancer-custom-probe-overview.md)-tesztek.
 
 ### <a name="create-pacemaker-cluster"></a>Pacemaker-fürt létrehozása
 
@@ -271,9 +272,9 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    </code></pre>
 
    > [!NOTE]
-   > A gazdagép nevében található kötőjel használatával kapcsolatos ismert probléma az **SAP-SUSE-cluster-Connector**csomag **3.1.1** -es verziójában van meghatározva. Győződjön meg arról, hogy a csomag SAP-SUSE-cluster-Connector legalább 3.1.1-es verzióját használja, ha a fürt csomópontjait használja az állomásnévben. Ellenkező esetben a fürt nem fog működni. 
+   > A gazdagép nevében található kötőjel használatával kapcsolatos ismert probléma az **SAP-SUSE-cluster-Connector** csomag **3.1.1** -es verziójában van meghatározva. Győződjön meg arról, hogy a csomag SAP-SUSE-cluster-Connector legalább 3.1.1-es verzióját használja, ha a fürt csomópontjait használja az állomásnévben. Ellenkező esetben a fürt nem fog működni. 
 
-   Győződjön meg arról, hogy az SAP SUSE-fürt összekötő új verzióját telepítette. A régit hívták sap_suse_cluster_connector és az újat **SAP-SUSE-cluster-Connector**néven nevezzük.
+   Győződjön meg arról, hogy az SAP SUSE-fürt összekötő új verzióját telepítette. A régit hívták sap_suse_cluster_connector és az újat **SAP-SUSE-cluster-Connector** néven nevezzük.
 
    ```
    sudo zypper info sap-suse-cluster-connector
@@ -450,7 +451,7 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    <pre><code>sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>
 
-   Ha a telepítés során nem sikerül almappát létrehozni a/usr/SAP/**NW1**/ASCS**00**-ben, próbálja meg beállítani a ASCS**00** mappa tulajdonosát és csoportját, és próbálkozzon újra.
+   Ha a telepítés során nem sikerül almappát létrehozni a/usr/SAP/**NW1**/ASCS **00**-ben, próbálja meg beállítani a ASCS **00** mappa tulajdonosát és csoportját, és próbálkozzon újra.
 
    <pre><code>chown nw1adm /usr/sap/<b>NW1</b>/ASCS<b>00</b>
    chgrp sapsys /usr/sap/<b>NW1</b>/ASCS<b>00</b>
@@ -507,7 +508,7 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    > [!NOTE]
    > Használja az SWPM SP 20 PL 05-es vagy újabb verzióját. Az alacsonyabb verziók nem tudják megfelelően beállítani az engedélyeket, és a telepítés sikertelen lesz.
 
-   Ha a telepítés során nem sikerül almappát létrehozni a/usr/SAP/**NW1**/ERS**02**-ben, próbálja meg beállítani az ERS**02** mappa tulajdonosát és csoportját, és próbálkozzon újra.
+   Ha a telepítés során nem sikerül almappát létrehozni a/usr/SAP/**NW1**/ERS **02**-ben, próbálja meg beállítani az ERS **02** mappa tulajdonosát és csoportját, és próbálkozzon újra.
 
    <pre><code>chown nw1adm /usr/sap/<b>NW1</b>/ERS<b>02</b>
    chgrp sapsys /usr/sap/<b>NW1</b>/ERS<b>02</b>
@@ -794,7 +795,7 @@ Az SAP-alkalmazáskiszolgáló telepítéséhez kövesse az alábbi lépéseket.
      DATABASE: <b>HN1</b>
    </code></pre>
 
-   A kimenet azt mutatja, hogy az alapértelmezett bejegyzés IP-címe a virtuális gépre mutat, nem pedig a terheléselosztó IP-címére. Ezt a bejegyzést úgy kell módosítani, hogy a terheléselosztó virtuális állomásneve mutasson. Ügyeljen arra, hogy ugyanazt a portot használja (a fenti kimenetben**30313** ) és az adatbázis nevét (a fenti kimenet**HN1** )!
+   A kimenet azt mutatja, hogy az alapértelmezett bejegyzés IP-címe a virtuális gépre mutat, nem pedig a terheléselosztó IP-címére. Ezt a bejegyzést úgy kell módosítani, hogy a terheléselosztó virtuális állomásneve mutasson. Ügyeljen arra, hogy ugyanazt a portot használja (a fenti kimenetben **30313** ) és az adatbázis nevét (a fenti kimenet **HN1** )!
 
    <pre><code>su - <b>nw1</b>adm
    hdbuserstore SET DEFAULT <b>nw1-db:30313@HN1</b> <b>SAPABAP1</b> <b>&lt;password of ABAP schema&gt;</b>

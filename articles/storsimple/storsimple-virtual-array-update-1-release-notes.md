@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 48dec3a87ab540af224ae4ac59dd37cee7c9d0ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ec88e4e97d45b27c0226198491b3adec6448496
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76271343"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960240"
 ---
 # <a name="storsimple-virtual-array-update-10-release-notes"></a>StorSimple Virtual Array Update 1,0 kibocsátási megjegyzések
 
@@ -47,7 +47,7 @@ Az 1,0-es frissítés megfelel a szoftver verziójának **10.0.10296.0**.
 
 A következő táblázat az ebben a kiadásban kijavított problémák összegzését tartalmazza.
 
-| Nem. | Szolgáltatás | Probléma |
+| Nem. | Funkció | Probléma |
 | --- | --- | --- |
 | 1 |HRE-alapú hitelesítés| Ez a kiadás olyan módosításokat tartalmaz, amelyek lehetővé teszik a HRE számára a StorSimple Eszközkezelő való hitelesítést.|
 | 2 |Garbage-gyűjtemény| Ezt a problémát egy olyan ügyfél-telephelyen jelentették be, amelyben az eszköz-és a Storage-fiók különböző régiókban található, és az ügyfél időszakos hálózati hibát jelzett, ami hatással van a számlázásra. Ebben a kiadásban a probléma megoldódott. |
@@ -58,7 +58,7 @@ A következő táblázat az ebben a kiadásban kijavított problémák összegz�
 
 Az alábbi táblázat összefoglalja a StorSimple virtuális tömb ismert problémáit, és tartalmazza az előző kiadásokból megjelent problémákat.
 
-| Nem. | Szolgáltatás | Probléma | Áthidaló megoldás/megjegyzések |
+| Nem. | Funkció | Probléma | Áthidaló megoldás/megjegyzések |
 | --- | --- | --- | --- |
 | **1.** |Frissítések |Az előzetes verzióban létrehozott virtuális tömbök nem frissíthetők támogatott általánosan elérhető verzióra. |Ezeket a virtuális tömböket az általános rendelkezésre állási kiadáshoz a vész-helyreállítási (DR) munkafolyamat használatával kell végrehajtani. |
 | **2.** |Kiépített adatlemez |Miután kiépített egy megadott méretű adatlemezt, és létrehozta a megfelelő StorSimple virtuális tömböt, nem szabad kibontania vagy csökkentenie az adatlemezt. Az eredmény az eszköz helyi szintjein lévő összes érték elvesztését eredményezi. | |
@@ -80,14 +80,14 @@ Az alábbi táblázat összefoglalja a StorSimple virtuális tömb ismert probl�
 | **18.** |Frissítések |Ha a helyi webes KEZELŐFELÜLETtel telepíti az 1. frissítést a virtuális tömbön, meg kell győződnie arról, hogy az 0,6-es frissítést futtatja. Ha a 0,6-es frissítésnél kisebb verziót futtat, először telepítenie kell a 0,6-es frissítést, majd az 1. frissítést kell alkalmaznia. Ha közvetlenül telepíti a 1,0-es frissítést egy előzetes verziójú 0,6-es verzióról, néhány frissítést nem fog tudni kihagyni, és a figyelési diagramok nem fognak működni.   | |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Telepítse a 1,0](storsimple-virtual-array-install-update-1.md) -es frissítést a StorSimple virtuális tömbbe.
 
-## <a name="references"></a>Hivatkozások
+## <a name="references"></a>Referencia
 Régebbi kiadási megjegyzést keres? Ugrás:
 *  [StorSimple Virtual Array Update 0,6 kibocsátási megjegyzések](storsimple-virtual-array-update-06-release-notes.md)
 * [StorSimple Virtual Array Update 0,5 kibocsátási megjegyzések](storsimple-virtual-array-update-05-release-notes.md)
 * [StorSimple Virtual Array Update 0,4 kibocsátási megjegyzések](storsimple-virtual-array-update-04-release-notes.md)
 * [StorSimple Virtual Array Update 0,3 kibocsátási megjegyzések](storsimple-ova-update-03-release-notes.md)
 * [StorSimple Virtual Array Update 0,1 és 0,2 kibocsátási megjegyzések](storsimple-ova-update-01-release-notes.md)
-* [A StorSimple Virtual Array általános elérhetőségi kibocsátási megjegyzései](storsimple-ova-pp-release-notes.md)
+* [A StorSimple Virtual Array általános elérhetőségi kibocsátási megjegyzései](./storsimple-virtual-array-update-06-release-notes.md)

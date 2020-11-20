@@ -8,17 +8,14 @@ ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cfb778a1a632dc17a9f50c7ea05debed0edb4fb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9a29e890553d15d19853ec836f8c4296869e143
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88660247"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959628"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Oktatóanyag: Azure Machine Learning modell betanítása és üzembe helyezése
-
-> [!NOTE]
-> Ez a cikk egy sorozat részét képezi a Azure Machine Learning IoT Edge-on való használatáról szóló oktatóanyaghoz. Ha ezt a cikket közvetlenül megérkezett, javasoljuk, hogy kezdje a sorozat [első cikkével](tutorial-machine-learning-edge-01-intro.md) a legjobb eredmények érdekében.
 
 Ebben a cikkben a következő feladatokat hajtjuk végre:
 
@@ -29,6 +26,10 @@ Ebben a cikkben a következő feladatokat hajtjuk végre:
 A Azure Notebooks kihasználja az Azure Machine Learning munkaterület előnyeit, amely a gépi tanulási modellek kipróbálásához, betanításához és üzembe helyezéséhez használt alapvető blokk.
 
 A cikkben ismertetett lépéseket általában az adatszakértők végzik.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Ez a cikk egy sorozat részét képezi a Azure Machine Learning IoT Edge-on való használatáról szóló oktatóanyaghoz. A sorozat minden cikke az előző cikkben található munkára épül. Ha ezt a cikket közvetlenül megérkezett, tekintse meg az [első cikket](tutorial-machine-learning-edge-01-intro.md) a sorozatban.
 
 ## <a name="set-up-azure-notebooks"></a>Azure Notebooks beállítása
 
@@ -70,11 +71,11 @@ A mintaként szolgáló jegyzetfüzet-fájlokat egy új Azure Notebooks projektb
 
 1. Kattintson a **Létrehozás** gombra.
 
-1. Válassza a **feltöltés** lehetőséget (a felfelé mutató nyíl ikont), és válassza **a számítógép**lehetőséget.
+1. Válassza a **feltöltés** lehetőséget (a felfelé mutató nyíl ikont), és válassza **a számítógép** lehetőséget.
 
-1. Válassza a **fájlok kiválasztása**lehetőséget.
+1. Válassza a **fájlok kiválasztása** lehetőséget.
 
-1. Navigáljon a **C:\source\IoTEdgeAndMlSample\AzureNotebooks**. Jelölje ki a listában az összes fájlt, majd kattintson a **Megnyitás**gombra.
+1. Navigáljon a **C:\source\IoTEdgeAndMlSample\AzureNotebooks**. Jelölje ki a listában az összes fájlt, majd kattintson a **Megnyitás** gombra.
 
 1. Jelölje be a **Megbízom a fájlok tartalmában** jelölőnégyzetet.
 
@@ -110,11 +111,11 @@ Tekintsük át a Azure Notebooks-projektbe feltöltött fájlokat. Az oktatóany
 
 Most, hogy létrejött a projekt, futtathatja a jegyzetfüzeteket. 
 
-1. A projekt lapon válassza a **01-turbofan \_ regresszió. ipynb**lehetőséget.
+1. A projekt lapon válassza a **01-turbofan \_ regresszió. ipynb** lehetőséget.
 
     ![Válassza ki az első futtatandó jegyzetfüzetet](media/tutorial-machine-learning-edge-04-train-model/select-turbofan-regression-notebook.png)
 
-1. Ha a jegyzetfüzet **nem megbízhatóként**jelenik meg, kattintson a jegyzetfüzet jobb felső sarkában található **nem megbízható** elemre. Amikor megjelenik a párbeszédpanel, válassza a **megbízhatóság**lehetőséget.
+1. Ha a jegyzetfüzet **nem megbízhatóként** jelenik meg, kattintson a jegyzetfüzet jobb felső sarkában található **nem megbízható** elemre. Amikor megjelenik a párbeszédpanel, válassza a **megbízhatóság** lehetőséget.
 
 1. A legjobb eredmény érdekében olvassa el az egyes cellák dokumentációját, és futtassa azt egyenként. Kattintson a **Futtatás** elemre az eszköztáron. Később, célszerű több cella futtatására is. A frissítés és az elavultság figyelmeztetéseit figyelmen kívül hagyhatja.
 
@@ -129,7 +130,7 @@ Most, hogy létrejött a projekt, futtathatja a jegyzetfüzeteket.
 
     ![Globális tulajdonságok beállítása a jegyzetfüzetben](media/tutorial-machine-learning-edge-04-train-model/set-global-properties.png)
 
-1. Az előző cellában, a **munkaterület részletei**között, a Futtatás után keresse meg a hivatkozást, amely arra utasítja Önt, hogy jelentkezzen be a hitelesítésbe:
+1. Az előző cellában, a **munkaterület részletei** között, a Futtatás után keresse meg a hivatkozást, amely arra utasítja Önt, hogy jelentkezzen be a hitelesítésbe:
 
     ![Bejelentkezési kérés az eszköz hitelesítéséhez](media/tutorial-machine-learning-edge-04-train-model/sign-in-prompt.png)
 
@@ -137,7 +138,7 @@ Most, hogy létrejött a projekt, futtathatja a jegyzetfüzeteket.
 
     ![Alkalmazás hitelesítése az eszköz megerősítésekor](media/tutorial-machine-learning-edge-04-train-model/cross-platform-cli.png)
 
-1. Az **eredményeket**tartalmazó cellában másolja ki az értéket a FUTTATÁSi azonosítóból, és illessze be a futtatási azonosítóhoz **az alábbi cellában található futtatási**azonosítóra.
+1. Az **eredményeket** tartalmazó cellában másolja ki az értéket a FUTTATÁSi azonosítóból, és illessze be a futtatási azonosítóhoz **az alábbi cellában található futtatási** azonosítóra.
 
    ![A futtatási azonosító másolása cellák között](media/tutorial-machine-learning-edge-04-train-model/automl-id.png)
 
@@ -145,7 +146,7 @@ Most, hogy létrejött a projekt, futtathatja a jegyzetfüzeteket.
 
 1. Mentse a jegyzetfüzetet, és térjen vissza a projekt lapra.
 
-1. Nyissa meg a **02 – turbofan \_ üzembe helyezés \_ Model. ipynb** , és futtassa az egyes cellákat. A **konfiguráláshoz a munkaterületet**követő cellában kell bejelentkeznie.
+1. Nyissa meg a **02 – turbofan \_ üzembe helyezés \_ Model. ipynb** , és futtassa az egyes cellákat. A **konfiguráláshoz a munkaterületet** követő cellában kell bejelentkeznie.
 
 1. Mentse a jegyzetfüzetet, és térjen vissza a projekt lapra.
 
@@ -165,7 +166,7 @@ Annak ellenőrzéséhez, hogy a jegyzetfüzetek sikeresen befejeződtek-e, ellen
 
 1. Ellenőrizze, hogy létrejöttek-e az alábbi Azure-erőforrások. Néhány erőforrás neve véletlenszerű karakterekkel van hozzáfűzve.
 
-    | Azure-erőforrás | Név |
+    | Azure-erőforrás | Name |
     | --- | --- |
     | Machine Learning munkaterület | turborfanDemo |
     | Container Registry | turbofandemoxxxxxxxx |
@@ -179,7 +180,7 @@ A jegyzetfüzetbe beillesztheti a hibakereséshez használható Python-utasítá
 
 Előfordulhat, hogy törölnie kell a korábban létrehozott fájlokat és az Azure-erőforrásokat, ha újra meg kell ismételni a jegyzetfüzeteket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben két, Azure Notebooks futó Jupyter-jegyzetfüzetet használtunk a turbofan-eszközökről a hátralévő hasznos élettartam (RUL) osztályozó, az osztályozó modellként való mentéséhez, a tároló lemezképének létrehozásához, valamint a lemezkép webszolgáltatásként való üzembe helyezéséhez és teszteléséhez.
 

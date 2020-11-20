@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 1cfcc14a-6795-4cfd-a740-aa09d6d2b817
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 57b3614136d364aea624305ea792a33db1a1957e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b329cce5b20d69377fc5ec14a1fafd8d222b2c8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361806"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94958557"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Azure Virtual Machines magas rendelkezésre állás az SAP NetWeaver számára
 
@@ -196,7 +197,7 @@ A cikksorozat a következőkre terjed ki:
     > Javasoljuk, hogy az SAP-telepítések Azure Resource Manager üzemi modelljét használja. Számos előnyt kínál, amelyek nem érhetők el a klasszikus üzemi modellben. További információ az Azure [üzembe helyezési modelljeiről][virtual-machines-azure-resource-manager-architecture-benefits-arm].   
     >
 * Magas szintű SAP-elérhetőség:
-  * ![Windows-embléma.][Logo_Windows]  **Windows**a **Windows Server FELADATÁTVEVŐ fürt (WSFC)** használatával
+  * ![Windows-embléma.][Logo_Windows]  **Windows** a **Windows Server FELADATÁTVEVŐ fürt (WSFC)** használatával
   * ![Linux-embléma.][Logo_Linux] **Linux**, **Linux-fürt keretrendszer** használatával
 
 Ebből a cikkből megtudhatja, hogyan teheti lehetővé az egypontos meghibásodási (SPOF) összetevők, például az SAP Central Services (ASCS/SCS) és az adatbázis-kezelő rendszerek (adatbázisok) védelmének biztosítását. Az Azure-ban található redundáns összetevőkről, például az SAP Application Serverről is tájékozódhat.

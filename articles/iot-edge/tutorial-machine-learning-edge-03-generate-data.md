@@ -8,17 +8,14 @@ ms.date: 1/20/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c40f7d988f2b5f206f42eae787efcdce786948a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef6e86bbb55a2c51779f2dcf60f802ce549516cb
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857078"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959679"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>Oktatóanyag: szimulált eszköz-adatértékek előállítása
-
-> [!NOTE]
-> Ez a cikk egy sorozat részét képezi a Azure Machine Learning IoT Edge-on való használatáról szóló oktatóanyaghoz. Ha ezt a cikket közvetlenül megérkezett, javasoljuk, hogy kezdje a sorozat [első cikkével](tutorial-machine-learning-edge-01-intro.md) a legjobb eredmények érdekében.
 
 Ebben a cikkben a Machine learning-betanítási adatok segítségével szimuláljuk a telemetria-t az Azure IoT Hubba küldő eszközt. Ahogy az a bevezetésben is szerepel, ez az oktatóanyag a [Turbofan motor-degradációs szimulációs adatkészletet](https://c3.nasa.gov/dashlink/resources/139/) használja, hogy szimulálja az adatok egy csoportból történő betanítását és tesztelését.
 
@@ -46,13 +43,17 @@ A cikkben leírt feladatok elvégzése körülbelül 20 percet vesz igénybe.
 
 Ennek a lépésnek a működésével egyenértékűnek kell lennie az eszközök fejlesztői és a felhőalapú fejlesztők által.
 
+## <a name="prerequisites"></a>Előfeltételek
+
+Ez a cikk egy sorozat részét képezi a Azure Machine Learning IoT Edge-on való használatáról szóló oktatóanyaghoz. A sorozat minden cikke az előző cikkben található munkára épül. Ha ezt a cikket közvetlenül megérkezett, tekintse meg az [első cikket](tutorial-machine-learning-edge-01-intro.md) a sorozatban.
+
 ## <a name="configure-visual-studio-code-and-build-deviceharness-project"></a>A Visual Studio Code konfigurálása és a DeviceHarness-projekt létrehozása
 
 1. Nyisson meg egy távoli asztali munkamenetet a fejlesztői virtuális géphez.
 
 1. A Visual Studio Code-ban nyissa meg a `C:\source\IoTEdgeAndMlSample\DeviceHarness` mappát.
 
-1. Mivel első alkalommal használja a bővítményeket ezen a gépen, egyes bővítmények frissítik és telepítik a függőségeiket. A rendszer kérheti a bővítmény frissítését. Ha igen, válassza az **Újratöltés ablak**lehetőséget.
+1. Mivel első alkalommal használja a bővítményeket ezen a gépen, egyes bővítmények frissítik és telepítik a függőségeiket. A rendszer kérheti a bővítmény frissítését. Ha igen, válassza az **Újratöltés ablak** lehetőséget.
 
    Ha a kimeneti ablakban OmniSharp hibák jelennek meg, el kell távolítania a C#-bővítményt.
 
@@ -69,9 +70,9 @@ Ennek a lépésnek a működésével egyenértékűnek kell lennie az eszközök
 
    Ha nem kapja meg ezeket az értesítéseket, akkor nyissa meg a Visual Studio Code-ot, törölje a bin és az obj könyvtárakat a alkalmazásban `C:\source\IoTEdgeAndMlSample\DeviceHarness` , nyissa meg a Visual Studio Code-ot, majd nyissa meg újra
 
-1. Ellenőrizze, hogy a környezet megfelelően van-e beállítva a Build, a **CTRL**  +  **SHIFT**  +  **B**vagy a **Terminal**  >  **Run Build feladat**aktiválásával.
+1. Ellenőrizze, hogy a környezet megfelelően van-e beállítva a Build, a **CTRL**  +  **SHIFT**  +  **B** vagy a **Terminal**  >  **Run Build feladat** aktiválásával.
 
-1. A rendszer kéri, hogy válassza ki a futtatandó felépítési feladatot. Válassza a **Létrehozás**lehetőséget.
+1. A rendszer kéri, hogy válassza ki a futtatandó felépítési feladatot. Válassza a **Létrehozás** lehetőséget.
 
 1. A Build lefut, és sikert jelző üzenetet küld.
 
@@ -95,17 +96,17 @@ Most, hogy létrehoztuk a projektet, kapcsolódjon az IoT hub-hoz a kapcsolati s
 
 1. A Visual Studio Code Explorer alsó részén kattintson az **Azure IoT hub** -keretre a kibontásához.
 
-1. A kibontott keretben kattintson a **IoT hub kiválasztása**elemre.
+1. A kibontott keretben kattintson a **IoT hub kiválasztása** elemre.
 
 1. Ha a rendszer kéri, válassza ki az Azure-előfizetését, majd az IoT hubot.
 
-1. További műveletekért kattintson az **Azure IoT hub** jobb oldalán lévő **..** . elemre. Válassza a **másolás IoT hub a kapcsolatok karakterlánca**lehetőséget.
+1. További műveletekért kattintson az **Azure IoT hub** jobb oldalán lévő **..** . elemre. Válassza a **másolás IoT hub a kapcsolatok karakterlánca** lehetőséget.
 
    ![IoT Hub-kapcsolatok karakterláncának másolása](media/tutorial-machine-learning-edge-03-generate-data/copy-hub-connection-string.png)
 
 ### <a name="run-the-deviceharness-project"></a>A DeviceHarness projekt futtatása
 
-1. **View**  >  A Visual Studio Code Terminal megnyitásához válassza a**terminál** megtekintése lehetőséget.
+1. **View**  >  A Visual Studio Code Terminal megnyitásához válassza a **terminál** megtekintése lehetőséget.
 
    Ha nem jelenik meg a kérdés, nyomja le az ENTER billentyűt.
 
@@ -119,9 +120,9 @@ Most, hogy létrehoztuk a projektet, kapcsolódjon az IoT hub-hoz a kapcsolati s
 
 1. Vegye figyelembe, hogy az eszközök bekerülnek a IoT Hubba, és az eszközök zöld színnel jelennek meg, jelezve, hogy az eszközön keresztül történik az adatküldés. Miután az eszközök üzeneteket küldenek az IoT hubhoz, a kapcsolat megszakadt és kék színnel jelenik meg.
 
-1. Megtekintheti az adott hubhoz küldött üzeneteket, ha a jobb gombbal rákattint valamelyik eszközre, és kiválasztja a **figyelés beépített esemény-végpontjának elindítása**lehetőséget. Az üzenetek a Visual Studio Code kimenet paneljén jelennek meg.
+1. Megtekintheti az adott hubhoz küldött üzeneteket, ha a jobb gombbal rákattint valamelyik eszközre, és kiválasztja a **figyelés beépített esemény-végpontjának elindítása** lehetőséget. Az üzenetek a Visual Studio Code kimenet paneljén jelennek meg.
 
-1. A figyelés leállításához kattintson az **Azure IoT hub** kimenet ablaktáblára, és válassza a **beépített esemény-végpont figyelésének leállítása**lehetőséget.
+1. A figyelés leállításához kattintson az **Azure IoT hub** kimenet ablaktáblára, és válassza a **beépített esemény-végpont figyelésének leállítása** lehetőséget.
 
 1. Hagyja, hogy az alkalmazás végrehajtsa a befejezést, ami néhány percet vesz igénybe.
 
@@ -131,9 +132,9 @@ A DeviceHarness által elküldett adatai a IoT hubhoz kerültek, ahol ellenőriz
 
 1. Nyissa meg a [Azure Portalt](https://portal.azure.com/) , és navigáljon az oktatóanyaghoz létrehozott IoT hub-hoz.
 
-1. A bal oldali ablaktábla **figyelés**területén válassza a **metrikák**lehetőséget.
+1. A bal oldali ablaktábla **figyelés** területén válassza a **metrikák** lehetőséget.
 
-1. A diagram definíciója lapon kattintson a **metrika** legördülő listára, görgessen le a listából, és válassza az **Útválasztás: tárolóba szállított adatok**elemet. A diagramnak meg kell jelennie annak a csúcsnak, amikor az adattovábbítás a Storage szolgáltatásba megtörténik.
+1. A diagram definíciója lapon kattintson a **metrika** legördülő listára, görgessen le a listából, és válassza az **Útválasztás: tárolóba szállított adatok** elemet. A diagramnak meg kell jelennie annak a csúcsnak, amikor az adattovábbítás a Storage szolgáltatásba megtörténik.
 
    ![A diagram a tárolóhelyre történő adattároláskor megjeleníti a tüske](media/tutorial-machine-learning-edge-03-generate-data/iot-hub-usage.png)
 
@@ -157,7 +158,7 @@ Az IoT hub számára elküldett adatait a rendszer átirányítja az előző cik
 
 1. Az adatolvasásra és az adatelemzésre jelenleg nincs szükség. ezt a következő cikkben fogjuk elvégezni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben egy .NET Core-projekttel hoztunk létre virtuális IoT-eszközöket, és a rajtuk keresztül továbbítjuk azokat az IoT hub és egy Azure Storage-tárolóba. Ez a projekt olyan valós helyzetet szimulál, amelyben a fizikai IoT-eszközök az adatküldés egy IoT Hubba és egy egy kurátori tárolóba kerülnek. Ezek az információk az érzékelők, az üzemeltetési beállítások, a meghibásodási jelek és a módok, valamint így tovább. Ha elegendő adatokat gyűjtöttek össze, azt használjuk a modell betanítására, amely megjósolja az eszköz hátralévő hasznos élettartamát (RUL). Ezt a Machine learninget a következő cikkben mutatjuk be.
 

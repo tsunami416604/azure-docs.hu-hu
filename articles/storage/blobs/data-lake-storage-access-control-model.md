@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 11/10/2020
 ms.author: normesta
-ms.openlocfilehash: a5cdeba654440e666bc79df361b3f90db8a73b0a
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 3ddcbe57112251a428e11d6c164cdb1224553f98
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578648"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959203"
 ---
 # <a name="access-control-model-in-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlési modell Azure Data Lake Storage Gen2
 
@@ -53,16 +53,16 @@ A hozzáférés-vezérlési listák lehetővé teszi a "finomabb gabona" eléré
 
 A rendszerbiztonsági tag-alapú hitelesítés során az engedélyeket a következő sorrendben értékeli ki a rendszer.
 
-: &nbsp; &nbsp; Az Azure RBAC szerepkör-hozzárendeléseket először kiértékeli a rendszer, és elsőbbséget élvez minden ACL-hozzárendelésnél.
+: az &nbsp; &nbsp; Azure-beli szerepkör-hozzárendelések először a kiértékelésre kerülnek, és elsőbbséget élveznek minden ACL-hozzárendelésnél.
 
-: kettő: &nbsp; &nbsp; Ha a művelet az Azure RBAC szerepkör-hozzárendelés alapján teljes mértékben engedélyezve van, akkor az ACL-eket a rendszer egyáltalán nem értékeli ki.
+: kettő: &nbsp; &nbsp; Ha a művelet teljes mértékben engedélyezve van az Azure szerepkör-hozzárendelés alapján, akkor az ACL-eket a rendszer egyáltalán nem értékeli ki.
 
 : három: &nbsp; &nbsp; Ha a művelet nem teljes mértékben engedélyezve van, akkor az ACL-eket a rendszer kiértékeli.
 
 > [!div class="mx-imgBorder"]
 > ![a adatközpont tárterületének engedélyezési folyamata](./media/control-access-permissions-data-lake-storage/data-lake-storage-permissions-flow.png)
 
-Mivel a rendszer kiértékeli a hozzáférési engedélyeket, **nem** használhat ACL-t a szerepkör-hozzárendelés által már megadott hozzáférés **korlátozására** . Ennek az az oka, hogy a rendszer először kiértékeli az Azure RBAC szerepkör-hozzárendeléseket, és ha a hozzárendelés megfelelő hozzáférési engedélyt biztosít, az ACL-eket figyelmen kívül hagyja a rendszer 
+Mivel a rendszer kiértékeli a hozzáférési engedélyeket, **nem** használhat ACL-t a szerepkör-hozzárendelés által már megadott hozzáférés **korlátozására** . Ennek az az oka, hogy a rendszer először kiértékeli az Azure szerepkör-hozzárendeléseket, és ha a hozzárendelés megfelelő hozzáférési jogosultságot biztosít, akkor az ACL-eket figyelmen kívül hagyja 
 
 Az alábbi ábrán három gyakori művelet engedélyezési folyamata látható: a könyvtár tartalmának listázása, egy fájl olvasása és egy fájl írása.
 
@@ -71,7 +71,7 @@ Az alábbi ábrán három gyakori művelet engedélyezési folyamata látható: 
 
 ## <a name="permissions-table-combining-azure-rbac-and-acl"></a>Engedélyek tábla: az Azure RBAC és az ACL összekapcsolása
 
-Az alábbi táblázat bemutatja, hogyan egyesítheti az Azure RBAC-szerepköröket és-ACL-bejegyzéseket, hogy a rendszerbiztonsági tag el tudja végezni a **művelet** oszlopban felsorolt műveleteket. Ez a táblázat egy fiktív címtár-hierarchia minden szintjét jelképező oszlopot mutat be. Van egy oszlop a tároló gyökérkönyvtárához ( `/` ), egy **Oregon** nevű alkönyvtárhoz, a **Portland** nevű Oregon könyvtár alkönyvtárához és egy **Data.txt** nevű Portland-könyvtárban található szövegfájlhoz. Ezekben az oszlopokban az engedélyek megadásához szükséges ACL-bejegyzés [rövid formáját](data-lake-storage-access-control.md#short-forms-for-permissions) ábrázolja. **N/A** ( _nem alkalmazható_ ) az oszlopban jelenik meg, ha a művelet VÉGREHAJTÁSához nincs szükség ACL-bejegyzésre.
+Az alábbi táblázat bemutatja, hogyan egyesítheti az Azure-szerepköröket és-ACL-bejegyzéseket, hogy a rendszerbiztonsági tag el tudja végezni a **művelet** oszlopban felsorolt műveleteket. Ez a táblázat egy fiktív címtár-hierarchia minden szintjét jelképező oszlopot mutat be. Van egy oszlop a tároló gyökérkönyvtárához ( `/` ), egy **Oregon** nevű alkönyvtárhoz, a **Portland** nevű Oregon könyvtár alkönyvtárához és egy **Data.txt** nevű Portland-könyvtárban található szövegfájlhoz. Ezekben az oszlopokban az engedélyek megadásához szükséges ACL-bejegyzés [rövid formáját](data-lake-storage-access-control.md#short-forms-for-permissions) ábrázolja. **N/A** (_nem alkalmazható_) az oszlopban jelenik meg, ha a művelet VÉGREHAJTÁSához nincs szükség ACL-bejegyzésre.
 
 |    Művelet             | Hozzárendelt RBAC szerepkör               |    /        | Oregon     | Portland | Data.txt |             
 |--------------------------|----------------------------------|-------------|-------------|-----------|----------|
@@ -85,12 +85,12 @@ Az alábbi táblázat bemutatja, hogyan egyesítheti az Azure RBAC-szerepkörök
 |                          |   Nincs                           | `--X`    | `--X`    | `--X`     | `RW-`  |
 | Data.txt törlése          |   Storage-blobadatok tulajdonosa        | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok közreműködője  | N.A.      | N.A.      | N.A.       | N.A.    |
-|                          |   Storage-blobadatok olvasója       | `--X`    | `--X`    | `-WX`     | N/A    |
-|                          |   Nincs                           | `--X`    | `--X`    | `-WX`     | N/A    |
+|                          |   Storage-blobadatok olvasója       | `--X`    | `--X`    | `-WX`     | N.A.    |
+|                          |   Nincs                           | `--X`    | `--X`    | `-WX`     | N.A.    |
 | Data.txt létrehozása          |   Storage-blobadatok tulajdonosa        | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok közreműködője  | N.A.      | N.A.      | N.A.       | N.A.    |
-|                          |   Storage-blobadatok olvasója       | `--X`    | `--X`    | `-WX`     | N/A    |
-|                          |   Nincs                           | `--X`    | `--X`    | `-WX`     | N/A    |
+|                          |   Storage-blobadatok olvasója       | `--X`    | `--X`    | `-WX`     | N.A.    |
+|                          |   Nincs                           | `--X`    | `--X`    | `-WX`     | N.A.    |
 | Listáját                   |   Storage-blobadatok tulajdonosa        | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok közreműködője  | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok olvasója       | N.A.      | N.A.      | N.A.       | N.A.    |
@@ -102,7 +102,7 @@ Az alábbi táblázat bemutatja, hogyan egyesítheti az Azure RBAC-szerepkörök
 | /Oregon/Portland/listázása   |   Storage-blobadatok tulajdonosa        | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok közreműködője  | N.A.      | N.A.      | N.A.       | N.A.    |
 |                          |   Storage-blobadatok olvasója       | N.A.      | N.A.      | N.A.       | N.A.    |
-|                          |   Nincs                           | `--X`    | `--X`    | `R-X`     | N/A    |
+|                          |   Nincs                           | `--X`    | `--X`    | `R-X`     | N.A.    |
 
 
 > [!NOTE] 
@@ -112,7 +112,7 @@ Az alábbi táblázat bemutatja, hogyan egyesítheti az Azure RBAC-szerepkörök
 
 [!INCLUDE [Security groups](../../../includes/azure-storage-data-lake-groups.md)]
 
-## <a name="limits-on-azure-rbac-role-assignments-and-acl-entries"></a>Azure RBAC szerepkör-hozzárendelések és ACL-bejegyzések korlátai
+## <a name="limits-on-azure-role-assignments-and-acl-entries"></a>Azure-beli szerepkör-hozzárendelések és ACL-bejegyzések korlátai
 
 A csoportok használatával kevésbé valószínű, hogy túllépi a szerepkör-hozzárendelések maximális számát az előfizetésben, valamint az ACL-bejegyzések maximális számát fájlonként vagy címtárban. A következő táblázat ezeket a korlátozásokat ismerteti.
 

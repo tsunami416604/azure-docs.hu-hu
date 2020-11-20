@@ -3,16 +3,17 @@ title: Oracle-adatbázis tervezése és megvalósítása az Azure-ban | Microsof
 description: Egy Oracle-adatbázis megtervezése és megvalósítása az Azure-környezetben.
 author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 9bfd2330f71b9690e2864968cf51cb438bb23676
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6b7c280d9ff5f4d8a3c35eb11e080bf2f9f287c0
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534073"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959169"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Oracle-adatbázis tervezése és implementálása az Azure-ban
 
@@ -143,13 +144,13 @@ A hálózati sávszélességre vonatkozó követelmények alapján különböző
 
 ### <a name="disk-types-and-configurations"></a>Lemezek típusai és konfigurációi
 
-- *Alapértelmezett operációsrendszer-lemezek* : ezek a lemezek állandó adatmennyiséget és gyorsítótárazást biztosítanak. A rendszer indításkor optimalizált operációsrendszer-hozzáférésre, és nem a tranzakciós vagy adatraktár (analitikus) számítási feladatokhoz lett tervezve.
+- *Alapértelmezett operációsrendszer-lemezek*: ezek a lemezek állandó adatmennyiséget és gyorsítótárazást biztosítanak. A rendszer indításkor optimalizált operációsrendszer-hozzáférésre, és nem a tranzakciós vagy adatraktár (analitikus) számítási feladatokhoz lett tervezve.
 
-- Nem *felügyelt lemezek* : ilyen típusú lemezekkel kezelheti a virtuálisgép-lemezeknek megfelelő VHD-fájlokat tároló Storage-fiókokat. A VHD-fájlok blobként tárolódnak az Azure Storage-fiókokban.
+- Nem *felügyelt lemezek*: ilyen típusú lemezekkel kezelheti a virtuálisgép-lemezeknek megfelelő VHD-fájlokat tároló Storage-fiókokat. A VHD-fájlok blobként tárolódnak az Azure Storage-fiókokban.
 
-- *Felügyelt lemezek* : az Azure kezeli a virtuálisgép-lemezekhez használt Storage-fiókokat. Adja meg a lemez típusát (prémium vagy standard) és a szükséges lemez méretét. Az Azure létrehozza és kezeli a lemezt.
+- *Felügyelt lemezek*: az Azure kezeli a virtuálisgép-lemezekhez használt Storage-fiókokat. Adja meg a lemez típusát (prémium vagy standard) és a szükséges lemez méretét. Az Azure létrehozza és kezeli a lemezt.
 
-- *Prémium szintű Storage-lemezek* : ezek a lemezek a legmegfelelőbbek az éles számítási feladatokhoz. A Premium Storage olyan virtuálisgép-lemezeket támogat, amelyek adott méretű virtuális gépekhez, például a DS, a DSv2, a GS és az F sorozatú virtuális gépekhez csatlakoztathatók. A prémium szintű lemez különböző méretekkel rendelkezik, és az 32 GB és 4 096 GB közötti hosszúságú lemezek közül választhat. Mindegyik lemez mérete saját teljesítményre vonatkozó előírásokkal rendelkezik. Az alkalmazás követelményeitől függően egy vagy több lemezt is csatolhat a virtuális géphez.
+- *Prémium szintű Storage-lemezek*: ezek a lemezek a legmegfelelőbbek az éles számítási feladatokhoz. A Premium Storage olyan virtuálisgép-lemezeket támogat, amelyek adott méretű virtuális gépekhez, például a DS, a DSv2, a GS és az F sorozatú virtuális gépekhez csatlakoztathatók. A prémium szintű lemez különböző méretekkel rendelkezik, és az 32 GB és 4 096 GB közötti hosszúságú lemezek közül választhat. Mindegyik lemez mérete saját teljesítményre vonatkozó előírásokkal rendelkezik. Az alkalmazás követelményeitől függően egy vagy több lemezt is csatolhat a virtuális géphez.
 
 Amikor új felügyelt lemezt hoz létre a portálról, kiválaszthatja a **használni** kívánt lemez típusát. Ne feledje, hogy az összes rendelkezésre álló lemez nem jelenik meg a legördülő menüben. Egy adott virtuálisgép-méret kiválasztása után a menü csak a virtuális gép méretétől függően elérhető Premium Storage SKU-t jeleníti meg.
 
@@ -186,9 +187,9 @@ Az I/O-követelmények egyértelmű képe után kiválaszthatja a követelménye
 
 A gazdagépek gyorsítótárazásának három lehetősége van:
 
-- *Readonly* : a rendszer az összes kérést gyorsítótárazza a későbbi olvasási műveletekhez. Az összes írás közvetlenül az Azure Blob Storage-ban marad.
+- *Readonly*: a rendszer az összes kérést gyorsítótárazza a későbbi olvasási műveletekhez. Az összes írás közvetlenül az Azure Blob Storage-ban marad.
 
-- *READWRITE* : ez egy "olvasásra előre" algoritmus. Az olvasási és írási műveleteket a rendszer gyorsítótárazza a későbbi olvasási műveletekhez. A nem írható írási írások megmaradnak a helyi gyorsítótárban. Emellett a legkisebb lemezterületet is biztosítja a könnyű munkaterhelések esetében. Ha a ReadWrite cache-t olyan alkalmazással használja, amely nem kezeli a szükséges adatmegőrzést, adatvesztést okozhat, ha a virtuális gép összeomlik.
+- *READWRITE*: ez egy "olvasásra előre" algoritmus. Az olvasási és írási műveleteket a rendszer gyorsítótárazza a későbbi olvasási műveletekhez. A nem írható írási írások megmaradnak a helyi gyorsítótárban. Emellett a legkisebb lemezterületet is biztosítja a könnyű munkaterhelések esetében. Ha a ReadWrite cache-t olyan alkalmazással használja, amely nem kezeli a szükséges adatmegőrzést, adatvesztést okozhat, ha a virtuális gép összeomlik.
 
 - *Nincs* (letiltva): ennek a lehetőségnek a használatával megkerülheti a gyorsítótárat. A rendszer az összes adatlemezt áthelyezi az Azure Storage szolgáltatásba. Ez a módszer a legmagasabb I/o-sebességet biztosítja az I/O-igényes számítási feladatokhoz. A tranzakciós költségeket is figyelembe kell vennie.
 
@@ -208,9 +209,9 @@ Az adatlemez-beállítás mentése után a gazdagép-gyorsítótár beállítás
 
 Az Azure-környezet beállítása és konfigurálása után a következő lépés a hálózat védelme. Íme néhány javaslat:
 
-- *NSG házirend* : a NSG alhálózat vagy hálózati adapter használatával lehet definiálni. Egyszerűbben szabályozható a hozzáférés az alhálózat szintjén, mind a biztonság, mind a kényszerített útválasztás, például az alkalmazási tűzfalak esetében.
+- *NSG házirend*: a NSG alhálózat vagy hálózati adapter használatával lehet definiálni. Egyszerűbben szabályozható a hozzáférés az alhálózat szintjén, mind a biztonság, mind a kényszerített útválasztás, például az alkalmazási tűzfalak esetében.
 
-- *Jumpbox* : a biztonságosabb hozzáférés érdekében a rendszergazdáknak nem kell közvetlenül kapcsolódniuk az alkalmazás-szolgáltatáshoz vagy-adatbázishoz. A Jumpbox a felügyeleti gép és az Azure-erőforrások közötti adathordozóként használják.
+- *Jumpbox*: a biztonságosabb hozzáférés érdekében a rendszergazdáknak nem kell közvetlenül kapcsolódniuk az alkalmazás-szolgáltatáshoz vagy-adatbázishoz. A Jumpbox a felügyeleti gép és az Azure-erőforrások közötti adathordozóként használják.
 ![A Jumpbox-topológia oldalának képernyőképe](./media/oracle-design/jumpbox.png)
 
     A rendszergazda számítógép csak a Jumpbox számára biztosít IP-hozzáférésre korlátozott hozzáférést. A Jumpbox hozzáféréssel kell rendelkeznie az alkalmazáshoz és az adatbázishoz.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 93d230656fd7ef34e76a143fb3186d23f8d3afed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34bbf4d723e46663efe77560245db74d9dea1fc4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766250"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957911"
 ---
 # <a name="use-the-device-summary-in-storsimple-device-manager-service"></a>Az eszköz összegzésének használata a StorSimple Eszközkezelő szolgáltatásban
 
@@ -78,10 +78,10 @@ Az Essentials terület a fontos tulajdonságok, például az állapot, a modell,
 
      Ebben a diagramban megtekintheti a teljes elsődleges tárterület mérőszámait (a gazdagépek által az eszközhöz írt adatok mennyiségét), valamint az eszköz által az adott időszakban felhasznált teljes felhőalapú tárterületet.
   
-     Ebben a kontextusban az *elsődleges tárterület* a gazdagép által írt összes adatmennyiségre utal, és a kötet típusa szerint bontható: az *elsődleges többplatformos tárolás* magában foglalja mind a helyileg tárolt, mind a felhőbe irányuló adatfeldolgozást. Az *elsődleges helyileg rögzített tárterület* csak a helyileg tárolt adattárolást foglalja magában. A *felhőalapú tárolás*másfelől a felhőben tárolt adatmennyiség mértékének mérése. Ez a tároló a rétegekből származó adatokat és biztonsági másolatokat tartalmaz. A felhőben tárolt adatmennyiség deduplikált és tömörítve van, míg az elsődleges tároló az deduplikálása és tömörítése előtt felhasznált tárterületet jelzi. (Összehasonlíthatja ezt a két számot a tömörítési sebesség megismeréséhez.) Az elsődleges és a Felhőbeli tárolás esetében a megjelenő összegek a beállított követési gyakoriságon alapulnak. Ha például egy hetes gyakoriságot választ, akkor a diagram az előző hét egyes napjain jeleníti meg az összes adatát.
+     Ebben a kontextusban az *elsődleges tárterület* a gazdagép által írt összes adatmennyiségre utal, és a kötet típusa szerint bontható: az *elsődleges többplatformos tárolás* magában foglalja mind a helyileg tárolt, mind a felhőbe irányuló adatfeldolgozást. Az *elsődleges helyileg rögzített tárterület* csak a helyileg tárolt adattárolást foglalja magában. A *felhőalapú tárolás* másfelől a felhőben tárolt adatmennyiség mértékének mérése. Ez a tároló a rétegekből származó adatokat és biztonsági másolatokat tartalmaz. A felhőben tárolt adatmennyiség deduplikált és tömörítve van, míg az elsődleges tároló az deduplikálása és tömörítése előtt felhasznált tárterületet jelzi. (Összehasonlíthatja ezt a két számot a tömörítési sebesség megismeréséhez.) Az elsődleges és a Felhőbeli tárolás esetében a megjelenő összegek a beállított követési gyakoriságon alapulnak. Ha például egy hetes gyakoriságot választ, akkor a diagram az előző hét egyes napjain jeleníti meg az összes adatát.
 
      Ha meg szeretné tekinteni a Felhőbeli tárhely mennyiségét az idő múlásával, válassza ki a **Felhőbeli tároláshoz használt** lehetőséget. Ha meg szeretné tekinteni a gazdagép által írt összes tárterületet, válassza ki a **felhasznált elsődleges** többhelyes tárolót és az **elsődleges helyileg rögzített tárolási** beállításokat. 
-     További információ: [a StorSimple Eszközkezelő szolgáltatás használata a StorSimple-eszközök figyelésére](storsimple-monitor-device.md).
+     További információ: [a StorSimple Eszközkezelő szolgáltatás használata a StorSimple-eszközök figyelésére](./storsimple-8000-monitor-device.md).
 
 
 * A **kapacitás** csempe az eszközön az összes rendelkezésre álló tárterülethez képest kiépített elsődleges tárterületet jeleníti meg. A **kiépített** mennyiség a használatra előkészített és lefoglalt tárterületre utal, és a **fennmaradó** kapacitás az eszközön kiépíthető fennmaradó kapacitásra utal. 
@@ -96,4 +96,3 @@ Az Essentials terület a fontos tulajdonságok, például az állapot, a modell,
 ## <a name="next-steps"></a>Következő lépések
 * További információ a [StorSimple szolgáltatás összefoglalási](storsimple-8000-service-dashboard.md)paneljéről.
 * További információ [a StorSimple Eszközkezelő szolgáltatás a StorSimple-eszköz felügyeletéhez való használatáról](storsimple-8000-manager-service-administration.md).
-

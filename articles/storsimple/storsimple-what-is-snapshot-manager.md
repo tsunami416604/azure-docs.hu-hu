@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d7e9d73fa94acd2f31452de05ef3caee92d5cf3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2214f085c30419cefb3f6f84139d5592873173f7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90055503"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960121"
 ---
 # <a name="an-introduction-to-storsimple-snapshot-manager"></a>Bevezetés a StorSimple Snapshot Manager
 
@@ -79,7 +79,7 @@ A StorSimple Snapshot Manager segítségével kötetek hozhatók létre, majd ko
 
 A StorSimple Snapshot Manager a mennyiségi csoportok használatával hozza létre az alkalmazás-konzisztens biztonsági másolatokat. Az alkalmazás konzisztenciája akkor áll fenn, ha minden kapcsolódó fájl és adatbázis szinkronizálva van, és egy adott időpontban egy alkalmazás valódi állapotát jelöli. A mennyiségi csoportok (amelyek más néven *konzisztencia-csoportok*) a biztonsági mentési vagy visszaállítási feladatok alapját képezik.
 
-A kötetek csoportjai nem egyeznek a mennyiségi tárolókkal. A mennyiségi tárolók egy vagy több olyan kötetet tartalmaznak, amelyek osztoznak egy felhőalapú Storage-fiókban és más attribútumokon, például a titkosítás és a sávszélesség használatában. Egyetlen mennyiségi tároló legfeljebb 256, dinamikusan kiosztott StorSimple-kötetet tartalmazhat. A mennyiségi tárolókkal kapcsolatos további információkért nyissa [meg a mennyiségi tárolók kezelése](storsimple-manage-volume-containers.md)című témakört. A kötetek a biztonsági mentési műveletek megkönnyítésére konfigurált kötetek gyűjteményei. Ha két, különböző kötet-tárolóhoz tartozó kötetet választ, helyezze azokat egyetlen kötet csoportba, majd hozzon létre egy biztonsági mentési szabályzatot az adott kötethez, majd minden kötetről készítsen biztonsági mentést a megfelelő méretű tárolóban a megfelelő tárolási fiók használatával.
+A kötetek csoportjai nem egyeznek a mennyiségi tárolókkal. A mennyiségi tárolók egy vagy több olyan kötetet tartalmaznak, amelyek osztoznak egy felhőalapú Storage-fiókban és más attribútumokon, például a titkosítás és a sávszélesség használatában. Egyetlen mennyiségi tároló legfeljebb 256, dinamikusan kiosztott StorSimple-kötetet tartalmazhat. A mennyiségi tárolókkal kapcsolatos további információkért nyissa [meg a mennyiségi tárolók kezelése](./storsimple-8000-manage-volume-containers.md)című témakört. A kötetek a biztonsági mentési műveletek megkönnyítésére konfigurált kötetek gyűjteményei. Ha két, különböző kötet-tárolóhoz tartozó kötetet választ, helyezze azokat egyetlen kötet csoportba, majd hozzon létre egy biztonsági mentési szabályzatot az adott kötethez, majd minden kötetről készítsen biztonsági mentést a megfelelő méretű tárolóban a megfelelő tárolási fiók használatával.
 
 > [!NOTE]
 > Egy mennyiségi csoport összes kötetének egyetlen felhőalapú szolgáltatótól kell származnia.
@@ -140,4 +140,3 @@ További információ a biztonsági mentési feladatok figyeléséről: a [StorS
 ## <a name="next-steps"></a>Következő lépések
 * További információ a [StorSimple Snapshot Manager használatáról a StorSimple-megoldás felügyeletéhez](storsimple-snapshot-manager-admin.md).
 * Töltse le a [StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220).
-

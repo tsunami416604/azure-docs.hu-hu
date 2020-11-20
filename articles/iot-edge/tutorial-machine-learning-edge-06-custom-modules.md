@@ -9,17 +9,14 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3a2087c83ec48b0b732ce1cb954f78fad9b46fef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 199da0586a061bccdf8a6ff8a1f53df2f703512f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857435"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959441"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Oktatóanyag: egyéni IoT Edge-modulok létrehozása és üzembe helyezése
-
-> [!NOTE]
-> Ez a cikk egy sorozat részét képezi a Azure Machine Learning IoT Edge-on való használatáról szóló oktatóanyaghoz. Ha ezt a cikket közvetlenül megérkezett, javasoljuk, hogy kezdje a sorozat [első cikkével](tutorial-machine-learning-edge-01-intro.md) a legjobb eredmények érdekében.
 
 Ebben a cikkben három IoT Edge-modult hozunk létre, amelyek üzeneteket fogadnak a Leaf IoT-eszközökről, az adatok futtatását a gépi tanulási modellen keresztül, majd az elemzések továbbításával IoT Hub.
 
@@ -54,6 +51,10 @@ Az alábbi ábrán a modulok, a bemenetek, a kimenetek és a IoT Edge hub útvon
 ![IoT Edge három modul architektúrájának diagramja](media/tutorial-machine-learning-edge-06-custom-modules/modules-diagram.png)
 
 A cikkben ismertetett lépéseket általában egy felhőalapú fejlesztő hajtja végre.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Ez a cikk egy sorozat részét képezi a Azure Machine Learning IoT Edge-on való használatáról szóló oktatóanyaghoz. A sorozat minden cikke az előző cikkben található munkára épül. Ha ezt a cikket közvetlenül megérkezett, tekintse meg az [első cikket](tutorial-machine-learning-edge-01-intro.md) a sorozatban.
 
 ## <a name="create-a-new-iot-edge-solution"></a>Új IoT Edge-megoldás létrehozása
 
@@ -137,7 +138,7 @@ Ebben a lépésben létrehozunk egy Azure IoT Edge megoldást az "Azure Machine 
       CONTAINER_REGISTRY_PASSWORD_<your registry name>=<ACR password>
       ```
 
-1. Kattintson a jobb gombbal a deployment.template.jsfájlra a Visual Studio Code Explorerben, és válassza a **IoT Edge megoldás létrehozása**lehetőséget.
+1. Kattintson a jobb gombbal a deployment.template.jsfájlra a Visual Studio Code Explorerben, és válassza a **IoT Edge megoldás létrehozása** lehetőséget.
 
 1. Figyelje meg, hogy a parancs létrehoz egy deployment.amd64.jsfájlt tartalmazó konfigurációs mappát. Ez a fájl a megoldás konkrét telepítési sablonja.
 
@@ -154,13 +155,13 @@ Az útválasztó modul a megoldás fontos részét képezi, amely biztosítja, h
 
 ### <a name="create-the-module-and-copy-files"></a>A modul létrehozása és fájlok másolása
 
-1. Kattintson a jobb gombbal a Visual Studio Code modulok mappájára, majd válassza a **IoT Edge modul hozzáadása**lehetőséget.
+1. Kattintson a jobb gombbal a Visual Studio Code modulok mappájára, majd válassza a **IoT Edge modul hozzáadása** lehetőséget.
 
 1. Válassza a **C# modult** a modul sablonhoz.
 
 1. Nevezze el a modul **turbofanRouter**.
 
-1. Ha a rendszer kéri a Docker-rendszerkép tárházát, használja a Machine learning-munkaterületen a beállításjegyzéket (a beállításjegyzéket a *deployment.template.js* fájljának registryCredentials csomópontjában találja). Ez az érték a beállításjegyzék teljesen minősített címe, például ** \<your registry\> . azurecr.IO/turbofanrouter**.
+1. Ha a rendszer kéri a Docker-rendszerkép tárházát, használja a Machine learning-munkaterületen a beállításjegyzéket (a beállításjegyzéket a *deployment.template.js* fájljának registryCredentials csomópontjában találja). Ez az érték a beállításjegyzék teljesen minősített címe, például **\<your registry\> . azurecr.IO/turbofanrouter**.
 
     > [!NOTE]
     > Ebben a cikkben a Azure Machine Learning munkaterület által létrehozott Azure Container Registry használjuk. Ez csupán kényelmi megoldás. Létrehoztunk egy új tároló-beállításjegyzéket, és ott közzétettük a modulokat.
@@ -175,11 +176,11 @@ Az útválasztó modul a megoldás fontos részét képezi, amely biztosítja, h
 
 ### <a name="build-router-module"></a>Útválasztó modul létrehozása
 
-1. A Visual Studio Code-ban válassza a **terminál**  >  **alapértelmezett felépítési feladat beállítása**lehetőséget.
+1. A Visual Studio Code-ban válassza a **terminál**  >  **alapértelmezett felépítési feladat beállítása** lehetőséget.
 
-1. Válassza **a létrehozás tasks.jsfájlból sablonból**lehetőséget.
+1. Válassza **a létrehozás tasks.jsfájlból sablonból** lehetőséget.
 
-1. Válassza a **.net Core**lehetőséget.
+1. Válassza a **.net Core** lehetőséget.
 
 1. Cserélje le a tasks.jstartalmát a következő kódra.
 
@@ -299,11 +300,11 @@ A Avro-író modul két feladattal rendelkezik a megoldásban, az üzenetek tár
 
 ### <a name="create-module-and-copy-files"></a>Modul létrehozása és fájlok másolása
 
-1. A Visual Studio Code-ban **View**válassza a  >  **parancs paletta**megtekintése lehetőséget, majd keresse meg a **Python: Select tolmács**elemet.
+1. A Visual Studio Code-ban **View** válassza a  >  **parancs paletta** megtekintése lehetőséget, majd keresse meg a **Python: Select tolmács** elemet.
 
 1. Válassza ki a telepített Python 3,7-es vagy újabb verzióját.
 
-1. Kattintson a jobb gombbal a Visual Studio Code modulok mappájára, majd válassza a **IoT Edge modul hozzáadása**lehetőséget.
+1. Kattintson a jobb gombbal a Visual Studio Code modulok mappájára, majd válassza a **IoT Edge modul hozzáadása** lehetőséget.
 
 1. Válassza a **Python Module** (Python-modul) lehetőséget.
 
@@ -577,25 +578,25 @@ A router és az osztályozó a helyén arra számítunk, hogy a rendszer csak az
 
 1. A Azure Portal navigáljon a IoT Hub.
 
-1. A bal oldali ablaktábla **üzenetkezelés**területén válassza az **üzenet-útválasztás**lehetőséget.
+1. A bal oldali ablaktábla **üzenetkezelés** területén válassza az **üzenet-útválasztás** lehetőséget.
 
-1. Az **útvonalak** lapon válassza a **Hozzáadás**lehetőséget.
+1. Az **útvonalak** lapon válassza a **Hozzáadás** lehetőséget.
 
 1. Nevezze el az útvonal **RulMessageRoute**.
 
-1. Válassza a végpont **hozzáadása** lehetőséget a **végpont** -választótól jobbra, majd válassza a **Storage**lehetőséget.
+1. Válassza a végpont **hozzáadása** lehetőséget a **végpont** -választótól jobbra, majd válassza a **Storage** lehetőséget.
 
 1. A **tárolási végpont hozzáadása** lapon nevezze el a végpont **ruldata**.
 
-1. Válassza **a tároló**kiválasztása lehetőséget.
+1. Válassza **a tároló** kiválasztása lehetőséget.
 
-1. A **Storage-fiókok** oldalon keresse meg az ebben az oktatóanyagban használt Storage-fiókot, amelynek neve **iotedgeandml \<unique suffix\> **, például a következő:.
+1. A **Storage-fiókok** oldalon keresse meg az ebben az oktatóanyagban használt Storage-fiókot, amelynek neve **iotedgeandml \<unique suffix\>**, például a következő:.
 
-1. Válassza ki a **ruldata** tárolót, és kattintson a **kiválasztás**elemre.
+1. Válassza ki a **ruldata** tárolót, és kattintson a **kiválasztás** elemre.
 
 1. A Storage-végpont **hozzáadása** lapon kattintson a **Létrehozás** elemre a tárolási végpont létrehozásához.
 
-1. Az **útvonal hozzáadása lapon adja** vissza az **útválasztási lekérdezést**a `true` következő lekérdezéssel:
+1. Az **útvonal hozzáadása lapon adja** vissza az **útválasztási lekérdezést** a `true` következő lekérdezéssel:
 
     ```sql
     IS_DEFINED($body.PredictedRul) AND NOT IS_DEFINED($body.OperationalSetting1)
@@ -612,7 +613,7 @@ A router és az osztályozó a helyén arra számítunk, hogy a rendszer csak az
     }
     ```
 
-1. Válassza a **teszt útvonal**lehetőséget. Ha a teszt sikeres, "az üzenet megfelelt a lekérdezésnek" jelenik meg.
+1. Válassza a **teszt útvonal** lehetőséget. Ha a teszt sikeres, "az üzenet megfelelt a lekérdezésnek" jelenik meg.
 
 1. Kattintson a **Mentés** gombra.
 
@@ -664,7 +665,7 @@ Nem szeretnénk átirányítani az új előrejelzési adatgyűjtést a régi tá
    }
    ```
 
-1. Válassza a **teszt útvonal**lehetőséget. Ha a teszt sikeres, "az üzenet megfelelt a lekérdezésnek" jelenik meg.
+1. Válassza a **teszt útvonal** lehetőséget. Ha a teszt sikeres, "az üzenet megfelelt a lekérdezésnek" jelenik meg.
 
 1. Kattintson a **Mentés** gombra.
 
@@ -672,13 +673,13 @@ Nem szeretnénk átirányítani az új előrejelzési adatgyűjtést a régi tá
 
 Konfigurálja a IoT Hub fájlfeltöltés funkciót, hogy a fájl-író modul feltöltse a fájlokat a tárolóba.
 
-1. A IoT Hub bal oldali panel menüjének **üzenetkezelés**területén válassza a **fájlfeltöltés**lehetőséget.
+1. A IoT Hub bal oldali panel menüjének **üzenetkezelés** területén válassza a **fájlfeltöltés** lehetőséget.
 
-1. Válassza az **Azure Storage-tároló**elemet.
+1. Válassza az **Azure Storage-tároló** elemet.
 
 1. Válassza ki a Storage-fiókját a listából.
 
-1. Válassza ki a **azureml-blobtárhely-** vel kezdődő tárolót GUID azonosítóval, majd kattintson a **kiválasztás**gombra.
+1. Válassza ki a **azureml-blobtárhely-** vel kezdődő tárolót GUID azonosítóval, majd kattintson a **kiválasztás** gombra.
 
 1. Kattintson a **Mentés** gombra. A portál értesíti a Mentés befejeződéséről.
 
@@ -719,13 +720,13 @@ Most, hogy elvégezte a konfigurációs módosításokat, készen állunk a rend
 
 1. A Visual Studio Code-ban indítson el egy új terminált egy parancssorba, és jelentkezzen be az Azure Container registrybe (ACR).
 
-  A felhasználónevet, a jelszót és a bejelentkezési kiszolgáló értékét a Azure Portalban találja. A tároló-beállításjegyzék nevének formátuma a következő: "turbofandemo \<unique id\> ". A bal oldali ablaktábla **Beállítások**területén a **hozzáférési kulcsok** elemre kattintva megtekintheti azokat.
+  A felhasználónevet, a jelszót és a bejelentkezési kiszolgáló értékét a Azure Portalban találja. A tároló-beállításjegyzék nevének formátuma a következő: "turbofandemo \<unique id\> ". A bal oldali ablaktábla **Beállítások** területén a **hozzáférési kulcsok** elemre kattintva megtekintheti azokat.
 
    ```cmd
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-1. A Visual Studio Code-ban kattintson a jobb gombbal a deployment.template.jselemre, majd válassza a **IoT Edge megoldás létrehozása és leküldése**lehetőséget.
+1. A Visual Studio Code-ban kattintson a jobb gombbal a deployment.template.jselemre, majd válassza a **IoT Edge megoldás létrehozása és leküldése** lehetőséget.
 
 ### <a name="view-modules-in-the-registry"></a>A beállításjegyzék moduljainak megtekintése
 
@@ -733,7 +734,7 @@ A létrehozás sikeres befejezését követően a Azure Portal segítségével �
 
 1. Nyissa meg az oktatóanyaghoz tartozó Azure Container Registry. A tároló-beállításjegyzék nevének formátuma a következő: "turbofandemo \<unique id\> ". 
 
-1. A bal oldali ablaktábla **szolgáltatások**területén válassza a **tárolók**lehetőséget.
+1. A bal oldali ablaktábla **szolgáltatások** területén válassza a **tárolók** lehetőséget.
 
 1. Vegye figyelembe, hogy mindkét létrehozott, **avrofilewriter** és **turbofanrouter**-modul adattárakként jelenik meg.
 
@@ -747,7 +748,7 @@ Beépítettük és konfiguráltuk a megoldásokat a megoldásban, most a modulok
 
 1. A Visual Studio Code-ban kattintson a jobb gombbal a **deployment.amd64.js** fájlra a konfigurációs mappában.
 
-1. Válassza **a központi telepítés létrehozása egyetlen eszközhöz**lehetőséget.
+1. Válassza **a központi telepítés létrehozása egyetlen eszközhöz** lehetőséget.
 
 1. Válassza ki a IoT Edge eszközt, **aaTurboFanEdgeDevice**.
 
@@ -804,7 +805,7 @@ Ha bejelentkezik a IoT Edge eszközre (az esetünkben a linuxos virtuális gépr
    sudo docker exec -it avroFileWriter bash
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben egy IoT Edge megoldást hoztunk létre a Visual Studio Code-ban három modullal: egy osztályozó, egy útválasztó és egy fájl írója/feltöltője. Az útvonalakat úgy állítottuk be, hogy a modulok kommunikáljanak egymással a peremhálózati eszközön. Módosítottuk a peremhálózati eszköz konfigurációját, és frissítettük a Dockerfiles, hogy telepítse a függőségeket, és hozzáadja a kötési csatlakoztatásokat a modulok tárolóhoz. 
 

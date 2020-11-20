@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: SAP
 ms.assetid: d7c59cc1-b2d0-4d90-9126-628f9c7a5538
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 217d5b060ca1b7d32cd334049db9b7c68b7949a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a02c30423ab3c6de87eac7d34b5f0004e54a8d5d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87065079"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957809"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Milyen SAP-szoftvert támogatnak az Azure-beli üzemelő példányok?
 Ez a cikk azt ismerteti, hogyan tudhatja meg, hogy milyen SAP-szoftverek támogatottak az Azure-környezetekben, valamint hogy a szükséges operációs rendszerek és az adatbázis-kezelők milyen kiadásokkal rendelkeznek.
@@ -95,7 +96,7 @@ A SAP HANA futtatásához az SAP több és erősebb feltételekkel rendelkezik, 
 > A "betű" karakterrel kezdődő egység a [HANA Large instances](./hana-overview-architecture.md) egység. 
 
 > [!NOTE]
-> Az SAP nem rendelkezik a SAP HANA fő kiadásaitól függő speciális minősítéssel. A közös véleménysel ellentétben a [Hana Certified IaaS platformon](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)az oszlop **minősítési forgatókönyve** nem tesz **utasítást a Hana Major vagy**az alverzió minősítésére. Azt feltételezheti, hogy a HANA 1,0 és a HANA 2,0 számára felhasználható összes egység a Hana 1,0 kiadásokban is támogatott, ha az adott egységekhez tartozó minősített operációsrendszer-kiadásokat is támogatja. 
+> Az SAP nem rendelkezik a SAP HANA fő kiadásaitól függő speciális minősítéssel. A közös véleménysel ellentétben a [Hana Certified IaaS platformon](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)az oszlop **minősítési forgatókönyve** nem tesz **utasítást a Hana Major vagy** az alverzió minősítésére. Azt feltételezheti, hogy a HANA 1,0 és a HANA 2,0 számára felhasználható összes egység a Hana 1,0 kiadásokban is támogatott, ha az adott egységekhez tartozó minősített operációsrendszer-kiadásokat is támogatja. 
 
 SAP HANA használata esetén a különböző minimális operációsrendszer-kiadásokra lehet érvényes, mint az általános NetWeaver-esetekben. Az egyes egységekhez tartozó támogatott operációs rendszerek mindegyikét külön kell megtekinteni, mivel ezek eltérőek lehetnek. Ezt úgy teheti meg, hogy az egyes egységekre kattint. További részletek jelennek meg. A felsorolt részletek egyike az adott egységhez támogatott különböző operációs rendszerek.
 
@@ -144,5 +145,5 @@ Az SAP Hybris kereskedelmi platformjának támogatása az Azure-ban részletesen
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az [Azure Virtual Machines tervezésének és megvalósításának](./planning-guide.md) következő lépéseinek elolvasása az SAP NetWeaver-ban

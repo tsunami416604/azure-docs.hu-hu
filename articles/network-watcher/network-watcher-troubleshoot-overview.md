@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: 95edcee32c1917d23e4808e805f947d18d2fa7f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f27cb217b60c23f3cf89f48effb933837269000e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986227"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960325"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Az erőforrás-hibaelhárítás bemutatása az Azure Network Watcher
 
@@ -105,7 +105,7 @@ Az erőforrás-hibaelhárítási naplófájlok tárolása egy Storage-fiókban t
 > [!NOTE]
 > Bizonyos esetekben a rendszer csak a naplófájlok egy részhalmazát írja a tárolóba.
 
-A fájlok Azure Storage-fiókokból való letöltésével kapcsolatos utasításokért tekintse meg az [Azure Blob Storage használatának első lépései a .NET használatával](../storage/blobs/storage-dotnet-how-to-use-blobs.md)című témakört. Egy másik eszköz is használható Storage Explorer. Storage Explorer további információ a következő hivatkozáson található: [Storage Explorer](https://storageexplorer.com/)
+A fájlok Azure Storage-fiókokból való letöltésével kapcsolatos utasításokért tekintse meg az [Azure Blob Storage használatának első lépései a .NET használatával](../storage/blobs/storage-quickstart-blobs-dotnet.md)című témakört. Egy másik eszköz is használható Storage Explorer. Storage Explorer további információ a következő hivatkozáson található: [Storage Explorer](https://storageexplorer.com/)
 
 ### <a name="connectionstatstxt"></a>ConnectionStats.txt
 

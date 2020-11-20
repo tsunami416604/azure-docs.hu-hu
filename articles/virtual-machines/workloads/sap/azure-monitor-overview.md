@@ -3,16 +3,17 @@ title: Az SAP-megoldások áttekintése és architektúrája Azure Monitor | Mic
 description: Ez a cikk az Azure monitor for SAP-megoldásokkal kapcsolatos gyakori kérdésekre ad választ.
 author: rdeltcheva
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: d9730324b2557c8f0bb203f7badbd00e0e7e704e
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 5bb40ec930731b58d457500d83b66c7a187b44d8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994248"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957435"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>SAP-megoldások Azure monitorja (előzetes verzió)
 
@@ -78,7 +79,7 @@ Az architektúra legfontosabb összetevői a következők:
 - Azure Portal – a kiindulási pont az ügyfelek számára. Az ügyfelek a piactéren Azure Portal és az SAP-megoldások felderítése céljából is felfedezhetik Azure Monitor
 - Azure Monitor SAP-megoldások erőforráshoz – az ügyfelek számára az a hely, ahol megtekintheti a figyelési telemetria
 - Felügyelt erőforráscsoport – az SAP-megoldások erőforrás-telepítésének Azure Monitor részeként automatikusan települt. A felügyelt erőforráscsoport súgójában üzembe helyezett erőforrások a telemetria gyűjteményében találhatók. Az üzembe helyezett fő erőforrások és a céljuk a következők:
-   - Azure-beli virtuális gép: *gyűjtő virtuális*gépnek is nevezzük. Ez egy Standard_B2ms virtuális gép. Ennek a virtuális gépnek a fő célja a *figyelési tartalom*üzemeltetése. A figyelési tartalom arra a logikára utal, amely a telemetria és a begyűjtött adatoknak a megfigyelési keretrendszerbe való továbbítására szolgál. A fenti ábrán a figyelési tartalom tartalmazza azt a logikát, amely az SQL-porton keresztül SAP HANA adatbázishoz csatlakozik.
+   - Azure-beli virtuális gép: *gyűjtő virtuális* gépnek is nevezzük. Ez egy Standard_B2ms virtuális gép. Ennek a virtuális gépnek a fő célja a *figyelési tartalom* üzemeltetése. A figyelési tartalom arra a logikára utal, amely a telemetria és a begyűjtött adatoknak a megfigyelési keretrendszerbe való továbbítására szolgál. A fenti ábrán a figyelési tartalom tartalmazza azt a logikát, amely az SQL-porton keresztül SAP HANA adatbázishoz csatlakozik.
    - [Azure Key Vault](../../../key-vault/general/basic-concepts.md): ezt az erőforrást úgy helyezi üzembe, hogy biztonságosan tárolja SAP HANA adatbázis hitelesítő adatait, és adatokat tároljon a [szolgáltatókról](./azure-monitor-providers.md).
    - Log Analytics munkaterület: az a cél, ahol a telemetria-adat található.
       - A vizualizáció az [Azure-munkafüzetek](../../../azure-monitor/platform/workbooks-overview.md)használatával log Analytics telemetria épül. Az ügyfelek testre szabhatják a vizualizációt. Az ügyfelek az Azure irányítópulton is rögzíthetik a munkafüzeteket vagy adott vizualizációkat az Azure irányítópulton az autofrissítési képességhez, amely a legalacsonyabb részletességgel 30 percet vesz igénybe.

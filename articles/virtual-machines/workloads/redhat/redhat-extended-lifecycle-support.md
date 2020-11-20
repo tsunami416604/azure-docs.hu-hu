@@ -3,16 +3,17 @@ title: Red Hat Enterprise Linux – teljes életciklusra kiterjesztett támogat�
 description: További információ a Red Hat Enterprise Extended Lifecycle támogatásának hozzáadásáról
 author: mathapli
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: mathapli
 ms.reviewer: cynthn
-ms.openlocfilehash: 124ff65087887a437e0b82fbd7b1e4c72e4f7b4c
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 71ff00dbf32ef32ead85be60cdbe53f23c8e35c7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684355"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957571"
 ---
 # <a name="red-hat-enterprise-linux-rhel-extended-lifecycle-support"></a>Red Hat Enterprise Linux (RHEL) bővített életciklus-támogatás
 Ez a cikk a Red Hat Enterprise-lemezképek kiterjesztett életciklus-támogatásával kapcsolatos információkat tartalmaz:
@@ -29,7 +30,7 @@ A 2020. november 30-án kezdődően a Red Hat Enterprise Linux 6 a karbantartás
 
 #### <a name="what-is-the-additional-charge-for-using-red-hat-enterprise-linux-extended-life-cycle-support-els-add-on"></a>Mi a kiegészítő díj a Red Hat Enterprise Linux kiterjesztett életciklus-támogatás (ELS) bővítmény használatához?
 
-|Virtuális gép mérete|További díjszabási idő kerete|További dollár összeg (USD)| Jegyzetek|
+|Virtuális gép mérete|További díjszabási idő kerete|További dollár összeg (USD)| Megjegyzések|
 |---|---|---|---|
 | Kis virtuális vendég (<= 4 mag) | Óránkénti kiegészítő díj | TBC | |
 |  | Havi kiegészítő díj | TBC | Fenntartott példányok esetén |

@@ -3,16 +3,17 @@ title: SAP S/4HANA vagy BW/4HANA üzembe helyezése Azure-beli virtuális gépen
 description: SAP S/4HANA vagy BW/4HANA üzembe helyezése Azure-beli virtuális gépen
 author: hermanndms
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 09/15/2016
 ms.author: hermannd
 ms.reviewer: cynthn
-ms.openlocfilehash: 116de28501b77262ef126ed420982d853376da4e
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 6492e770479042a5a1b4da6f61917832adad4873
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993398"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959288"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>SAP S/4HANA vagy BW/4HANA üzembe helyezése az Azure-ban
 Ez a cikk bemutatja, hogyan helyezhet üzembe S/4HANA az Azure-ban az SAP Cloud Appliance Library (SAP CAL) 3,0 használatával. Más SAP HANA-alapú megoldások, például a BW/4HANA üzembe helyezéséhez kövesse ugyanezeket a lépéseket.
@@ -51,7 +52,7 @@ A **megoldások** lapon az Azure-on elérhető SAP Cal HANA-alapú megoldások l
 
     c. A **21Vianet által üzemeltetett Windows Azure** egy olyan lehetőség Kínában, amely a klasszikus üzemi modellt használja.
 
-    A Resource Manager-modellben való üzembe helyezéshez válassza a **Microsoft Azure**lehetőséget.
+    A Resource Manager-modellben való üzembe helyezéshez válassza a **Microsoft Azure** lehetőséget.
 
     ![SAP CAL-fiók részletei](./media/cal-s4h/s4h-pic-2a.png)
 
@@ -59,7 +60,7 @@ A **megoldások** lapon az Azure-on elérhető SAP Cal HANA-alapú megoldások l
 
    ![SAP CAL-fiókok](./media/cal-s4h/s4h-pic3c.png)
 
-1. Ha engedélyezni szeretné az SAP CAL üzembe helyezését az Ön által megadott Azure-előfizetésben, kattintson az **Engedélyezés**elemre. A böngésző lapon a következő oldal jelenik meg:
+1. Ha engedélyezni szeretné az SAP CAL üzembe helyezését az Ön által megadott Azure-előfizetésben, kattintson az **Engedélyezés** elemre. A böngésző lapon a következő oldal jelenik meg:
 
    ![Internet Explorer Cloud Services-bejelentkezés](./media/cal-s4h/s4h-pic4c.png)
 
@@ -69,13 +70,13 @@ A **megoldások** lapon az Azure-on elérhető SAP Cal HANA-alapú megoldások l
 
 1. Kattintson az **Elfogadás** lehetőségre. Ha az engedélyezés sikeres, az SAP CAL-fiók definíciója ismét megjelenik. Rövid idő elteltével egy üzenet megerősíti, hogy az engedélyezési folyamat sikeres volt.
 
-1. Ha az újonnan létrehozott SAP CAL-fiókot szeretné hozzárendelni a felhasználóhoz, adja meg a **felhasználói azonosítóját** a jobb oldali szövegmezőben, majd kattintson a **Hozzáadás**gombra.
+1. Ha az újonnan létrehozott SAP CAL-fiókot szeretné hozzárendelni a felhasználóhoz, adja meg a **felhasználói azonosítóját** a jobb oldali szövegmezőben, majd kattintson a **Hozzáadás** gombra.
 
    ![Fiók a felhasználói társításhoz](./media/cal-s4h/s4h-pic8a.png)
 
-1. A fiók az SAP CAL-be való bejelentkezéshez használt felhasználóhoz való hozzárendeléséhez kattintson a **felülvizsgálat**gombra. 
+1. A fiók az SAP CAL-be való bejelentkezéshez használt felhasználóhoz való hozzárendeléséhez kattintson a **felülvizsgálat** gombra. 
  
-1. A felhasználó és az újonnan létrehozott SAP CAL-fiók közötti társítás létrehozásához kattintson a **Létrehozás**gombra.
+1. A felhasználó és az újonnan létrehozott SAP CAL-fiók közötti társítás létrehozásához kattintson a **Létrehozás** gombra.
 
    ![Felhasználó – SAP CAL-fiók társítása](./media/cal-s4h/s4h-pic9b.png)
 
@@ -113,15 +114,15 @@ Itt mutatjuk be az üzembe helyezés alapvető elérési útját.
 
    ![SAP CAL alapszintű mód: példány létrehozása](./media/cal-s4h/s4h-pic10a.png)
 
-1. Kattintson a **Létrehozás**gombra, és a megjelenő üzenetablakban kattintson **az OK**gombra.
+1. Kattintson a **Létrehozás** gombra, és a megjelenő üzenetablakban kattintson **az OK** gombra.
 
    ![SAP CAL támogatott VM-méretek](./media/cal-s4h/s4h-pic10b.png)
 
-1. A **titkos kulcs** párbeszédpanelen kattintson a **tároló** elemre a titkos kulcs az SAP Cal-ben való tárolásához. Ha a titkos kulcs jelszavas védelmét szeretné használni, kattintson a **Letöltés**gombra. 
+1. A **titkos kulcs** párbeszédpanelen kattintson a **tároló** elemre a titkos kulcs az SAP Cal-ben való tárolásához. Ha a titkos kulcs jelszavas védelmét szeretné használni, kattintson a **Letöltés** gombra. 
 
    ![SAP CAL titkos kulcsa](./media/cal-s4h/s4h-pic10c.png)
 
-1. Olvassa el az SAP CAL **figyelmeztető** üzenetet, és kattintson **az OK**gombra.
+1. Olvassa el az SAP CAL **figyelmeztető** üzenetet, és kattintson **az OK** gombra.
 
    ![SAP CAL figyelmeztetés](./media/cal-s4h/s4h-pic10d.png)
 
@@ -131,7 +132,7 @@ Itt mutatjuk be az üzembe helyezés alapvető elérési útját.
 
    ![Az új portálon üzembe helyezett SAP CAL-objektumok](./media/cal-s4h/sapcaldeplyment_portalview.png)
 
-1. Az SAP CAL portálon az állapot **aktívként**jelenik meg. A megoldáshoz való kapcsolódáshoz kattintson a **Kapcsolódás**gombra. A különböző összetevőkhöz való kapcsolódás különböző beállításai a megoldáson belül vannak telepítve.
+1. Az SAP CAL portálon az állapot **aktívként** jelenik meg. A megoldáshoz való kapcsolódáshoz kattintson a **Kapcsolódás** gombra. A különböző összetevőkhöz való kapcsolódás különböző beállításai a megoldáson belül vannak telepítve.
 
    ![SAP CAL-példányok](./media/cal-s4h/active_solution.png)
 

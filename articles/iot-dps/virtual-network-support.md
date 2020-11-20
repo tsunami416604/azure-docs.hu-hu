@@ -7,12 +7,12 @@ ms.service: iot-dps
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: wesmc
-ms.openlocfilehash: d90b18094a26830ee6909251d46837eff95a812a
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: f1409a931195d236b2729e629e4603c606137593
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998587"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959781"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>Azure IoT Hub Device Provisioning Service (DPS) virtuális hálózatok támogatása
 
@@ -22,7 +22,7 @@ A legtöbb forgatókönyvben, ahol a DPS konfigurálva van egy VNET, a IoT Hub u
 
 
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 
 Alapértelmezés szerint a DPS-gazdagépek egy nyilvánosan elérhető IP-címmel rendelkező nyilvános végponthoz rendelnek leképezést az interneten keresztül. Ez a nyilvános végpont minden ügyfél számára látható. A nyilvános végponthoz való hozzáférést a IoT-eszközök széles körű hálózatokon, illetve helyszíni hálózatokon is megpróbálkozhat.
 
@@ -38,7 +38,7 @@ Az ügyfelek több okból is korlátozni szeretnék az Azure-erőforrásokhoz, p
 
 A kapcsolatok korlátozásának gyakori módszerei közé tartozik a [DPS IP-szűrési szabályok](./iot-dps-ip-filtering.md) és a virtuális HÁLÓZATKEZELÉS (VNET) [privát végpontokkal](../private-link/private-endpoint-overview.md). Ennek a cikknek a célja, hogy leírja a DPS VNET megközelítését privát végpontok használatával. 
 
-A helyszíni hálózatokban üzemelő eszközök [virtuális magánhálózati (VPN)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) vagy [ExpressRoute](https://azure.microsoft.com/services/expressroute/) privát kapcsolatok használatával csatlakozhatnak az Azure-beli VNET, és privát végpontokon keresztül férhetnek hozzá a DPS-erőforrásokhoz. 
+A helyszíni hálózatokban üzemelő eszközök [virtuális magánhálózati (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) vagy [ExpressRoute](https://azure.microsoft.com/services/expressroute/) privát kapcsolatok használatával csatlakozhatnak az Azure-beli VNET, és privát végpontokon keresztül férhetnek hozzá a DPS-erőforrásokhoz. 
 
 A privát végpontok egy olyan magánhálózati IP-cím, amely az Azure-erőforrások elérhetőségét biztosító, az ügyfél tulajdonában lévő VNET van lefoglalva. Ha a DPS-erőforráshoz privát végpontot használ, lehetővé válik, hogy a VNET belül működő eszközöket a DPS-erőforrás általi kiépítés kérelmezése nélkül is engedélyezzék a nyilvános végpontra irányuló forgalom engedélyezése nélkül.
 
@@ -51,7 +51,7 @@ A folytatás előtt győződjön meg arról, hogy teljesülnek az alábbi előfe
 
 * Kiépített egy Azure-VNET egy olyan alhálózattal, amelyben a magánhálózati végpont létre lesz hozva. További információ: [virtuális hálózat létrehozása az Azure CLI használatával](../virtual-network/quick-create-cli.md).
 
-* A helyszíni hálózatokon belül üzemelő eszközökön [virtuális magánhálózati (VPN)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) vagy [ExpressRoute](https://azure.microsoft.com/services/expressroute/) -alapú privát kapcsolatok állíthatók be az Azure VNET.
+* A helyszíni hálózatokon belül üzemelő eszközökön [virtuális magánhálózati (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) vagy [ExpressRoute](https://azure.microsoft.com/services/expressroute/) -alapú privát kapcsolatok állíthatók be az Azure VNET.
 
 ## <a name="private-endpoint-limitations"></a>Magánhálózati végpontokra vonatkozó korlátozások
 
@@ -69,7 +69,7 @@ Privát végpontok használata esetén vegye figyelembe a következő jelenlegi 
 
 Privát végpont beállításához kövesse az alábbi lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)nyissa meg a DPS-erőforrást, és kattintson a **hálózatkezelés** fülre. Kattintson a **privát végponti kapcsolatok** és a **+ privát végpont**elemre.
+1. A [Azure Portal](https://portal.azure.com/)nyissa meg a DPS-erőforrást, és kattintson a **hálózatkezelés** fülre. Kattintson a **privát végponti kapcsolatok** és a **+ privát végpont** elemre.
 
     ![Új privát végpont hozzáadása a DPS-hez](./media/virtual-network-support/networking-tab-add-private-endpoint.png)
 
@@ -93,9 +93,9 @@ Privát végpont beállításához kövesse az alábbi lépéseket:
     | Mező | Érték |
     | :---- | :-----|
     | **Előfizetés**        | Válassza ki azt az Azure-előfizetést, amely azt a DPS-erőforrást tartalmazza, amelyet a privát végpont fog mutatni.  |
-    | **Erőforrás típusa**       | Válassza a **Microsoft. Devices/ProvisioningServices**lehetőséget. |
+    | **Erőforrás típusa**       | Válassza a **Microsoft. Devices/ProvisioningServices** lehetőséget. |
     | **Erőforrás**            | Válassza ki azt a DPS-erőforrást, amelyhez a privát végpont hozzá fog rendelni. |
-    | **Célzott alerőforrás** | Válassza a **iotDps**lehetőséget. |
+    | **Célzott alerőforrás** | Válassza a **iotDps** lehetőséget. |
 
     > [!TIP]
     > Ebben a cikkben az **Azure-erőforráshoz való kapcsolódás erőforrás-azonosító vagy alias** -beállítás alapján [című szakasza](#request-a-private-endpoint) nyújt tájékoztatást.
@@ -129,7 +129,7 @@ Az erőforrás-azonosító alapján privát végpontot is igényelhet a DPS-erő
     | :---- | :-----|
     | **Erőforrás-azonosító vagy alias** | Adja meg a DPS-erőforrás erőforrás-AZONOSÍTÓját. |
     | **Célzott alerőforrás** | **IotDps** megadása |
-    | **Kérelem üzenete** | Adja meg a DPS-erőforrás tulajdonosának kérési üzenetét.<br>Például: <br>`Please approve this new private endpoint`<br>`for IoT devices in site 23 to access this DPS instance`  |
+    | **Kérelem üzenete** | Adja meg a DPS-erőforrás tulajdonosának kérési üzenetét.<br>Példa: <br>`Please approve this new private endpoint`<br>`for IoT devices in site 23 to access this DPS instance`  |
 
     Kattintson a **Tovább gombra: konfiguráció** lehetőségre a privát végpont VNET konfigurálásához.
 
@@ -154,5 +154,5 @@ A díjszabással kapcsolatos információkért lásd: az [Azure Private link dí
 
 Az alábbi hivatkozásokat követve további információkat tudhat meg a DPS biztonsági funkcióiról:
 
-* [Biztonság](concepts-security.md)
+* [Biztonság](./concepts-service.md#attestation-mechanism)
 * [TLS 1,2-támogatás](tls-support.md)

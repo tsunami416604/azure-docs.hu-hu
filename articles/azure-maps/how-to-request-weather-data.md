@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b5db19a6549e7e4675213973554ff18bf46dda1e
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 3e0dce10d582006ab8c1dabf6d4b3efc82d8f39f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92915423"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957112"
 ---
 # <a name="request-real-time-and-forecasted-weather-data-using-azure-maps-weather-services"></a>A valós idejű és az előre jelzett időjárási idő lekérése Azure Maps időjárási szolgáltatásokkal
 
@@ -27,6 +27,12 @@ Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 * Napi előrejelzéseket kérhet a [napi előrejelzési API beszerzése](https://docs.microsoft.com/rest/api/maps/weather/getdailyforecastpreview)paranccsal.
 * Óránkénti előrejelzést kérhet a [Get óránkénti előrejelzési API](https://docs.microsoft.com/rest/api/maps/weather/gethourlyforecastpreview)használatával.
 * Kérelmek percenkénti előrejelzése a [Get minute előrejelzési API](https://docs.microsoft.com/rest/api/maps/weather/getminuteforecastpreview)használatával.
+
+Ez a videó áttekintést nyújt a Azure Maps időjárási szolgáltatásairól a REST hívási példákkal.
+
+<br/>
+
+<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Maps-Weather-services-for-developers/player" width="960" height="540" allowFullScreen frameBorder="0" title="Azure Maps időjárási szolgáltatások fejlesztőknek – Microsoft Channel 9 videó"></iframe>
 
 ## <a name="prerequisites"></a>Előfeltételek
 

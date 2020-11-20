@@ -10,17 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 520a7649942fc5186d32020853b98297ef8b34d7
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 36c101acc9e272ca0860649aad1a5e18fb5000a5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152121"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957333"
 ---
 # <a name="high-availability-of-sap-hana-scale-out-system-on-red-hat-enterprise-linux"></a>SAP HANA kibővíthető rendszer magas rendelkezésre állása Red Hat Enterprise Linux 
 
@@ -122,7 +123,7 @@ Az alábbi utasításokban feltételezzük, hogy már létrehozta az erőforrás
 A jelen dokumentumban bemutatott konfiguráció esetében hét virtuális gépet helyezzen üzembe: 
    - három virtuális gép, amely HANA DB-csomópontként szolgál a HANA-alapú replikálási helyhez 1: **HANA-S1-db1**, **HANA-S1-DB2** és **HANA-S1-db3**  
    - három virtuális gép, amely HANA DB-csomópontként szolgál a HANA-alapú replikálási helyhez 2: **Hana-S2-db1**, **HANA-S2-DB2** és **HANA-S2-db3**  
-   - egy kisméretű virtuális gép, amely *többségi gyártóként*szolgál: **Hana-s-mm**
+   - egy kisméretű virtuális gép, amely *többségi gyártóként* szolgál: **Hana-s-mm**
 
    Az SAP DB HANA-csomópontként üzembe helyezett virtuális gépeket az SAP for HANA minősítéssel kell ellátni a [SAP HANA hardveres könyvtárban](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)közzétettek szerint. A HANA DB-csomópontok telepítésekor ellenőrizze, hogy a [gyorsított hálózat](../../../virtual-network/create-vm-accelerated-networking-cli.md) van-e kiválasztva.  
   
@@ -138,19 +139,19 @@ A jelen dokumentumban bemutatott konfiguráció esetében hét virtuális gépet
    > Győződjön meg arról, hogy a kiválasztott operációs rendszer SAP-tanúsítvánnyal rendelkezik az adott virtuálisgép-típusok SAP HANAához. A SAP HANA Certified VM-típusok és operációsrendszer-kiadások listáját az adott típusokhoz a [SAP HANA Certified IaaS Platforms](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) webhelyen teheti meg. Kattintson a felsorolt virtuálisgép-típus részleteire az adott típushoz tartozó SAP HANA által támogatott operációsrendszer-kiadások teljes listájának lekéréséhez.  
   
 
-2. Hozzon létre hat hálózati adaptert, egyet mindegyik HANA DB virtuális géphez, a `inter` virtuális hálózati alhálózatban (ebben a példában a **HANA-S1-db1-Inter**, **Hana-S1-DB2-Inter**, Hana- **S1-db3-Inter**, **Hana-S2-db1-Inter**, **Hana-S2-DB2-Inter**és **Hana-S2-db3-Inter**).  
+2. Hozzon létre hat hálózati adaptert, egyet mindegyik HANA DB virtuális géphez, a `inter` virtuális hálózati alhálózatban (ebben a példában a **HANA-S1-db1-Inter**, **Hana-S1-DB2-Inter**, Hana- **S1-db3-Inter**, **Hana-S2-db1-Inter**, **Hana-S2-DB2-Inter** és **Hana-S2-db3-Inter**).  
 
-3. Hozzon létre hat hálózati adaptert, egyet mindegyik HANA DB virtuális géphez, a `hsr` virtuális hálózati alhálózatban (ebben a példában a **HANA-S1-db1-HSR**, **Hana-S1-DB2-HSR**, **Hana-S1-db3-HSR**, **Hana-S2-** db1-HSR, **Hana-S2-DB2-HSR**és **Hana-S2-db3-HSR**).  
+3. Hozzon létre hat hálózati adaptert, egyet mindegyik HANA DB virtuális géphez, a `hsr` virtuális hálózati alhálózatban (ebben a példában a **HANA-S1-db1-HSR**, **Hana-S1-DB2-HSR**, **Hana-S1-db3-HSR**, **Hana-S2-** db1-HSR, **Hana-S2-DB2-HSR** és **Hana-S2-db3-HSR**).  
 
 4. Csatlakoztassa az újonnan létrehozott virtuális hálózati adaptereket a megfelelő virtuális gépekhez:  
 
     a. Nyissa meg a [Azure Portal](https://portal.azure.com/#home)a virtuális gépet.  
 
-    b. A bal oldali ablaktáblán válassza a **Virtual Machines**lehetőséget. Szűrje a virtuális gép nevét (például **Hana-S1-db1**), majd válassza ki a virtuális gépet.  
+    b. A bal oldali ablaktáblán válassza a **Virtual Machines** lehetőséget. Szűrje a virtuális gép nevét (például **Hana-S1-db1**), majd válassza ki a virtuális gépet.  
 
     c. Az **Áttekintés** ablaktáblán válassza a **Leállítás** elemet a virtuális gép felszabadításához.  
 
-    d. Válassza a **hálózatkezelés**lehetőséget, majd csatlakoztassa a hálózati adaptert. A **hálózati adapter csatolása** legördülő listában válassza ki a már létrehozott hálózati adaptereket és az `inter` `hsr` alhálózatokat.  
+    d. Válassza a **hálózatkezelés** lehetőséget, majd csatlakoztassa a hálózati adaptert. A **hálózati adapter csatolása** legördülő listában válassza ki a már létrehozott hálózati adaptereket és az `inter` `hsr` alhálózatokat.  
     
     e. Kattintson a **Mentés** gombra. 
  
@@ -187,7 +188,7 @@ A jelen dokumentumban bemutatott konfiguráció esetében hét virtuális gépet
 1. A standard Load Balancer használatát javasoljuk. A standard Load Balancer üzembe helyezéséhez kövesse az alábbi konfigurációs lépéseket:
    1. Először hozzon létre egy előtér-IP-címkészletet:
 
-      1. Nyissa meg a terheléselosztó felületet, válassza a előtér **IP-készlet**lehetőséget, majd kattintson a **Hozzáadás**gombra.
+      1. Nyissa meg a terheléselosztó felületet, válassza a előtér **IP-készlet** lehetőséget, majd kattintson a **Hozzáadás** gombra.
       1. Adja meg az új előtér-IP-készlet nevét (például **Hana-frontend**).
       1. Állítsa a **hozzárendelést** **statikus** értékre, és adja meg az IP-címet (például **10.23.0.18**).
       1. Válassza az **OK** lehetőséget.
@@ -195,26 +196,26 @@ A jelen dokumentumban bemutatott konfiguráció esetében hét virtuális gépet
 
    1. Ezután hozzon létre egy háttér-készletet, és vegye fel az összes fürtbeli virtuális gépet a háttér-készletbe:
 
-      1. Nyissa meg a Load balancert, válassza a **háttérbeli készletek**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
+      1. Nyissa meg a Load balancert, válassza a **háttérbeli készletek** lehetőséget, majd válassza a **Hozzáadás** lehetőséget.
       1. Adja meg az új háttér-készlet nevét (például **Hana-backend**).
-      1. Válassza **a virtuális gép hozzáadása**lehetőséget.
+      1. Válassza **a virtuális gép hozzáadása** lehetőséget.
       1. Válassza a **Virtuális gép** lehetőséget.
       1. Válassza ki a SAP HANA-fürt virtuális gépei és az alhálózat IP-címeit `client` .
-      1. Válassza a **Hozzáadás** lehetőséget.
+      1. Válassza a **Hozzáadás** elemet.
 
    1. Következő lépésként hozzon létre egy állapot-mintavételt:
 
-      1. Nyissa meg a terheléselosztó-t, válassza az **állapot**-tesztek elemet, majd kattintson a **Hozzáadás**gombra.
+      1. Nyissa meg a terheléselosztó-t, válassza az **állapot**-tesztek elemet, majd kattintson a **Hozzáadás** gombra.
       1. Adja meg az új állapot-mintavétel nevét (például **Hana-HP**).
-      1. Válassza a **TCP** lehetőséget a protokoll és a**625-** es port. Tartsa meg az **intervallum** értékét 5-re, a nem kifogástalan **állapot küszöbértékének** értéke pedig 2.
+      1. Válassza a **TCP** lehetőséget a protokoll és a **625-** es port. Tartsa meg az **intervallum** értékét 5-re, a nem kifogástalan **állapot küszöbértékének** értéke pedig 2.
       1. Válassza az **OK** lehetőséget.
 
    1. Ezután hozza létre a terheléselosztási szabályokat:
    
-      1. Nyissa meg a terheléselosztó-t, válassza a terheléselosztási **szabályok**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
+      1. Nyissa meg a terheléselosztó-t, válassza a terheléselosztási **szabályok** lehetőséget, majd válassza a **Hozzáadás** lehetőséget.
       1. Adja meg az új terheléselosztó-szabály nevét (például **Hana-LB**).
       1. Válassza ki az előtér-IP-címet, a háttér-készletet és a korábban létrehozott állapot-mintavételt (például **Hana-frontend**, **Hana-backend** és **Hana-HP**).
-      1. Válassza a **hektár portok**lehetőséget.
+      1. Válassza a **hektár portok** lehetőséget.
       1. Növelje az **üresjárati időkorlátot** 30 percre.
       1. Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
       1. Válassza az **OK** lehetőséget.
@@ -227,7 +228,7 @@ A jelen dokumentumban bemutatott konfiguráció esetében hét virtuális gépet
 
 
    > [!IMPORTANT]
-   > Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a paramétert a **0**értékre **net.IPv4.tcp_timestamps** . Részletekért lásd: [Load Balancer Health](../../../load-balancer/load-balancer-custom-probe-overview.md)-tesztek.
+   > Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a paramétert a **0** értékre **net.IPv4.tcp_timestamps** . Részletekért lásd: [Load Balancer Health](../../../load-balancer/load-balancer-custom-probe-overview.md)-tesztek.
    > Lásd még: SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421).  
 
 ### <a name="deploy-the-azure-netapp-files-infrastructure"></a>A Azure NetApp Files infrastruktúra üzembe helyezése 
@@ -322,7 +323,7 @@ Ebben a példában a közös HANA-fájlrendszerek üzembe helyezése Azure NetAp
     Nobody-Group = nobody
     ```
 
-3. **[Ah]** Ellenőrizze `nfs4_disable_idmapping` . Értékeként az **Y**értéknek kell lennie. A-t tartalmazó könyvtár-struktúra létrehozásához `nfs4_disable_idmapping` hajtsa végre a csatlakoztatási parancsot. Nem lehet manuálisan létrehozni a könyvtárat a/sys/modules alatt, mivel a hozzáférés a kernel/illesztőprogramok számára van fenntartva.  
+3. **[Ah]** Ellenőrizze `nfs4_disable_idmapping` . Értékeként az **Y** értéknek kell lennie. A-t tartalmazó könyvtár-struktúra létrehozásához `nfs4_disable_idmapping` hajtsa végre a csatlakoztatási parancsot. Nem lehet manuálisan létrehozni a könyvtárat a/sys/modules alatt, mivel a hozzáférés a kernel/illesztőprogramok számára van fenntartva.  
    Erre a lépésre csak akkor van szükség, ha az Azure NetAppFiles NFSv 4.1-et használja.  
 
     ```
@@ -352,7 +353,7 @@ Ebben a példában a közös HANA-fájlrendszerek üzembe helyezése Azure NetAp
     ```
 
 
-10. **[Ah]** Ellenőrizze, hogy a megfelelő `/hana/shared/` fájlrendszerek csatlakoztatva vannak-e az NFS protokoll-verzió **NFSV4 NÉVLEKÉPEZŐJE**rendelkező HANA db-alapú virtuális gépekhez.  
+10. **[Ah]** Ellenőrizze, hogy a megfelelő `/hana/shared/` fájlrendszerek csatlakoztatva vannak-e az NFS protokoll-verzió **NFSV4 NÉVLEKÉPEZŐJE** rendelkező HANA db-alapú virtuális gépekhez.  
 
     ```
     sudo nfsstat -m
@@ -493,7 +494,7 @@ Ebben a példában az Azure-beli virtuális gépeken található HSR-alapú kib�
      * **Válasszon műveletet**: **1** . lépés (telepítéshez)
      * **További összetevők a telepítéshez**: írja be a **2, 3** értéket
      * Telepítési útvonal: nyomja le az ENTER billentyűt (az alapértelmezett érték a/Hana/Shared)
-     * **Helyi állomásnév**esetén: nyomja le az ENTER billentyűt az alapértelmezett érték elfogadásához.
+     * **Helyi állomásnév** esetén: nyomja le az ENTER billentyűt az alapértelmezett érték elfogadásához.
      * A szeretné **hozzáadni a gazdagépeket a rendszerhez?**: ENTER **n**
      * **SAP HANA rendszer-azonosító**: írja be a **HN1**
      * **Példány száma** [00]: **03**
@@ -585,7 +586,7 @@ Ebben a példában az Azure-beli virtuális gépeken található HSR-alapú kib�
      * A **"Hana-S1-db3" [1]: 1. gazdagéphez tartozó szerepkörök kiválasztása**
      * A **gazdagép feladatátvételi csoportjának megadása a "Hana-S1-db3" gazdagéphez [alapértelmezett]**: nyomja le az ENTER billentyűt az alapértelmezett érték elfogadásához
      * A **tárolási partíció számának megadása a következő gazdagép számára: Hana-S1-db3 ' [<<assign automatically>>]**: az ENTER billentyű lenyomásával fogadja el az alapértelmezett értéket.
-     * A **"Hana-S1-db3" gazdagéphez tartozó Working Group (alapértelmezett) érték**esetén: nyomja le az ENTER billentyűt az alapértelmezett érték elfogadásához.
+     * A **"Hana-S1-db3" gazdagéphez tartozó Working Group (alapértelmezett) érték** esetén: nyomja le az ENTER billentyűt az alapértelmezett érték elfogadásához.
      * A rendszergazda **(hn1adm) jelszava**: írja be a jelszót.
      * Az **adja meg az SAP Host Agent User (sapadm) jelszót**: írja be a jelszót.
      * Az **SAP Host Agent User (sapadm) jelszó megerősítése**: írja be a jelszót.
@@ -599,7 +600,7 @@ Ebben a példában az Azure-beli virtuális gépeken található HSR-alapú kib�
 
 1. **[1]** a rendszerreplikáció konfigurálása az 1. helyen:
 
-   Az adatbázisok biztonsági mentése **hn1**adm-ként:
+   Az adatbázisok biztonsági mentése **hn1** adm-ként:
 
     ```
     hdbsql -d SYSTEMDB -u SYSTEM -p "passwd" -i 03 "BACKUP DATA USING FILE ('initialbackupSYS')"
@@ -936,7 +937,7 @@ Az összes virtuális gép belefoglalása, beleértve a fürt többségi gyárt�
 
    3. Ezután hozza létre a HANA-példány erőforrását.  
       > [!NOTE]
-      > Ez a cikk a *Slave*kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.  
+      > Ez a cikk a *Slave* kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.  
  
       Ha RHEL **7. x** fürtöt épít ki, használja a következő parancsokat:    
       ```
@@ -961,7 +962,7 @@ Az összes virtuális gép belefoglalása, beleértve a fürt többségi gyárt�
        meta master-max="1" clone-node-max=1 interleave=true
       ```
       > [!IMPORTANT]
-      > Ajánlott eljárásként Azt javasoljuk, hogy csak a **nem**értékre állítsa a AUTOMATED_REGISTERt, miközben alapos feladatátvételi teszteket végez, hogy megakadályozza a sikertelen elsődleges példányok másodlagosként való automatikus regisztrálását. Miután a feladatátvételi tesztek sikeresen befejeződtek, állítsa AUTOMATED_REGISTER **Igen**értékre, hogy az áttelepítési rendszer replikációja automatikusan folytatódjon. 
+      > Ajánlott eljárásként Azt javasoljuk, hogy csak a **nem** értékre állítsa a AUTOMATED_REGISTERt, miközben alapos feladatátvételi teszteket végez, hogy megakadályozza a sikertelen elsődleges példányok másodlagosként való automatikus regisztrálását. Miután a feladatátvételi tesztek sikeresen befejeződtek, állítsa AUTOMATED_REGISTER **Igen** értékre, hogy az áttelepítési rendszer replikációja automatikusan folytatódjon. 
 
    4. Hozzon létre virtuális IP-címet és kapcsolódó erőforrásokat.  
       ```
@@ -1070,7 +1071,7 @@ Az összes virtuális gép belefoglalása, beleértve a fürt többségi gyárt�
 
    A SAP HANA erőforrás-ügynökök a `/hana/shared` feladatátvétel során a művelet végrehajtásához tárolt bináris fájloktól függenek. A fájlrendszer az `/hana/shared` NFS-en keresztül van csatlakoztatva a bemutatott konfigurációban. A végrehajtható teszt a fájlrendszer újracsatlakoztatása `/hana/shared` *írásvédettként*. Ez a megközelítés ellenőrzi, hogy a fürt átadja-e a feladatátvételt, ha `/hana/shared` az aktív rendszerreplikálási helyhez való hozzáférés elvész.  
 
-   **Várt eredmény**: Ha újracsatlakoztatja `/hana/shared` a *csak olvasási*művelettel, a fájlrendszerre vonatkozó olvasási/írási műveletet végző figyelési művelet sikertelen lesz, mivel nem tud írni a fájlrendszerbe, és a HANA-erőforrás feladatátvételét fogja elindítani. Ugyanez az eredmény várható, ha a HANA-csomópont elveszti az NFS-megosztás elérését.  
+   **Várt eredmény**: Ha újracsatlakoztatja `/hana/shared` a *csak olvasási* művelettel, a fájlrendszerre vonatkozó olvasási/írási műveletet végző figyelési művelet sikertelen lesz, mivel nem tud írni a fájlrendszerbe, és a HANA-erőforrás feladatátvételét fogja elindítani. Ugyanez az eredmény várható, ha a HANA-csomópont elveszti az NFS-megosztás elérését.  
      
    A fürt erőforrásainak állapotát a vagy a futtatásával is megtekintheti `crm_mon` `pcs status` . Erőforrás állapota a teszt elindítása előtt:
       ```

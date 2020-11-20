@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: be7cfef5c7121d918c375dae216d293d9d56526b
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: e3f541e28f47bb6456b441811d23baa9e020fde7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890479"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959152"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Az Azure SAP LaMa összekötője
 
@@ -319,7 +320,7 @@ A NetApp-fiókban a kapacitási készlet meghatározza az egyes készletekhez ta
 
 ![SAP láma NetApp Capacity-készlet létrehozva ](media/lama/sap-lama-capacitypool-list.png)
 
-Az NFS-kötetek már meghatározhatók. Mivel az egyik készletben több rendszer számára is lesznek kötetek, az önmagát magyarázó elnevezési sémát kell kiválasztani. A SID hozzáadása segít a kapcsolódó kötetek csoportosításában. A ASCS és az as példány esetében a következő csatlakoztatásokra van szükség: */sapmnt/ \<SID\>* , */usr/SAP/ \<SID\>* és */Home/ \<sid\> adm* . Opcionálisan */usr/SAP/Trans* van szükség a központi átviteli könyvtárhoz, amelyet legalább egy tájkép összes rendszere használ.
+Az NFS-kötetek már meghatározhatók. Mivel az egyik készletben több rendszer számára is lesznek kötetek, az önmagát magyarázó elnevezési sémát kell kiválasztani. A SID hozzáadása segít a kapcsolódó kötetek csoportosításában. A ASCS és az as példány esetében a következő csatlakoztatásokra van szükség: */sapmnt/ \<SID\>*, */usr/SAP/ \<SID\>* és */Home/ \<sid\> adm*. Opcionálisan */usr/SAP/Trans* van szükség a központi átviteli könyvtárhoz, amelyet legalább egy tájkép összes rendszere használ.
 
 > [!NOTE]
 > A BÉTAVERZIÓs fázisban a kötetek nevének egyedinek kell lennie az előfizetésen belül.
@@ -417,7 +418,7 @@ Ha manuálisan állítja be, új HDB-userstore-bejegyzéseket is létre kell hoz
 /usr/sap/AH1/hdbclient/hdbuserstore SET DEFAULT ah1-db:35041@AH1 SAPABAP1 <password>
 ```
 
-Használja az *ah1-di-0 értéket* a *Pas instance Host neveként* a párbeszédablak *elsődleges Application Server-példányában* .
+Használja az *ah1-di-0 értéket* a *Pas instance Host neveként* a párbeszédablak *elsődleges Application Server-példányában*.
 
 #### <a name="post-installation-steps-for-sap-hana"></a>A SAP HANA telepítés utáni lépései
 
@@ -447,9 +448,9 @@ Hozzá kell adnia az adatbázis virtuális állomásneve IP-címét egy hálóza
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-db -n 255.255.255.128
 ```
 
-Futtassa a SWPM adatbázis-példányának telepítését az SQL Server rendszerű virtuális gépen. A SQL Serverhoz való kapcsolódáshoz használt állomásnév felülbírálásához használja a SAPINST_USE_HOSTNAME = *AS1-db-* t. Ha a Azure Resource Manager sablonnal telepítette a virtuális gépet, akkor ügyeljen arra, hogy az adatbázis-adatfájlokhoz használt könyvtárat a *C:\sql\data* és az adatbázis naplófájljában adja meg a *C:\sql\log* .
+Futtassa a SWPM adatbázis-példányának telepítését az SQL Server rendszerű virtuális gépen. A SQL Serverhoz való kapcsolódáshoz használt állomásnév felülbírálásához használja a SAPINST_USE_HOSTNAME =*AS1-db-* t. Ha a Azure Resource Manager sablonnal telepítette a virtuális gépet, akkor ügyeljen arra, hogy az adatbázis-adatfájlokhoz használt könyvtárat a *C:\sql\data* és az adatbázis naplófájljában adja meg a *C:\sql\log*.
 
-Győződjön meg arról, hogy a felhasználói *NT AUTHORITY\SYSTEM* hozzáfér a SQL Serverhoz, és rendelkezik a *kiszolgálói szerepkörrel* . További információ: SAP Note [1877727] és [2562184].
+Győződjön meg arról, hogy a felhasználói *NT AUTHORITY\SYSTEM* hozzáfér a SQL Serverhoz, és rendelkezik a *kiszolgálói szerepkörrel*. További információ: SAP Note [1877727] és [2562184].
 
 #### <a name="install-sap-netweaver-application-server"></a>Az SAP NetWeaver Application Server telepítése
 
@@ -460,7 +461,7 @@ Az SAP Software kiépítési vezető (SWPM) elindítása előtt csatlakoztatnia 
 C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-di-0 -n 255.255.255.128
 ```
 
-Használja az *AS1-di-0 értéket* a *Pas instance Host neveként* a párbeszédablak *elsődleges Application Server-példányában* .
+Használja az *AS1-di-0 értéket* a *Pas instance Host neveként* a párbeszédablak *elsődleges Application Server-példányában*.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
