@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 93cccb1455f7a228cf40d4948cd8579610230db5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 876fd8260b64fba4d3d34a766b4259323c660b76
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526442"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968077"
 ---
 # <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>Oktatóanyag: az eszköz kiépítése egy IoT hubhoz az Azure IoT Hub Device Provisioning Service használatával
 
@@ -36,13 +36,13 @@ Ha nem ismeri az automatikus kiépítés folyamatát, a folytatás előtt tekint
 Ennek a lépésnek a részét képezi az eszköz egyedi biztonsági összetevőinek a Device Provisioning Service-hez adása. Ezek a biztonsági összetevők az eszköz [igazolási mechanizmusán](concepts-service.md#attestation-mechanism) alapulnak a következő módon:
 
 - TPM-alapú eszközökhöz a következőkre van szükség:
-    - Az egyes TPM-lapkákhoz vagy szimulációkhoz tartozó egyedi *ellenőrzőkulcs*, amely a TPM-lapka gyártójától szerezhető be.  További információkért olvassa el a [TPM-ellenőrzőkulcsot ismertető](https://technet.microsoft.com/library/cc770443.aspx) szakaszt.
+    - Az egyes TPM-lapkákhoz vagy szimulációkhoz tartozó egyedi *ellenőrzőkulcs*, amely a TPM-lapka gyártójától szerezhető be.  További információkért olvassa el a [TPM-ellenőrzőkulcsot ismertető](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770443(v=ws.11)) szakaszt.
     - A névtérben/hatókörben lévő eszköz egyedi azonosítására használt *regisztrációs azonosító*. Ez az azonosító nem feltétlenül egyezik az eszköz azonosítójával. Az azonosító minden eszközhöz kötelező. TPM-alapú eszközök esetén a regisztrációs azonosító magából a TPM-ből származhat, például a TPM-ellenőrzőkulcs SHA-256 kivonata lehet.
 
       [![Regisztrációs információk a TPM-hez a portálon](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png)](./media/tutorial-provision-device-to-hub/tpm-device-enrollment.png#lightbox)  
 
 - X.509-alapú eszközökhöz a következőkre van szükség:
-    - Az [X.509-lapkához vagy -szimulációhoz kiadott tanúsítvány](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx)*.pem* vagy *.cer* fájlformátumban. Egyéni regisztráció esetén az X. 509 rendszer eszközönként  *aláírt tanúsítványát* kell használnia, a regisztrációs csoportok esetében azonban a *főtanúsítványt*kell használnia. 
+    - Az [X.509-lapkához vagy -szimulációhoz kiadott tanúsítvány](/windows/win32/seccertenroll/about-x-509-public-key-certificates)*.pem* vagy *.cer* fájlformátumban. Egyéni regisztráció esetén az X. 509 rendszer eszközönként  *aláírt tanúsítványát* kell használnia, a regisztrációs csoportok esetében azonban a *főtanúsítványt* kell használnia. 
 
       [![Egyéni regisztráció hozzáadása X. 509 tanúsítványhoz a portálon](./media/tutorial-provision-device-to-hub/individual-enrollment.png)](./media/tutorial-provision-device-to-hub/individual-enrollment.png#lightbox)
 
@@ -88,7 +88,7 @@ Az eszköz indítása után a következő műveleteket kell elvégezni:
 
     ![Sikeres csatlakozás a hubhoz a portálon](./media/tutorial-provision-device-to-hub/hub-connect-success.png)
 
-További információ: kiépítési eszköz ügyféloldali mintája, [prov_dev_client_sample. c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c). A minta a szimulált eszköz TPM, X. 509 tanúsítványokkal és szimmetrikus kulcsokkal való üzembe helyezését mutatja be. A minta használatával kapcsolatos részletes utasításokért tekintse át a [TPM](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device), [X. 509](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-x509)és a [szimmetrikus kulcs](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-symm-key) igazolási útmutatóit.
+További információ: kiépítési eszköz ügyféloldali mintája, [prov_dev_client_sample. c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c). A minta a szimulált eszköz TPM, X. 509 tanúsítványokkal és szimmetrikus kulcsokkal való üzembe helyezését mutatja be. A minta használatával kapcsolatos részletes utasításokért tekintse át a [TPM](./quick-create-simulated-device.md), [X. 509](./quick-create-simulated-device-x509.md)és a [szimmetrikus kulcs](./quick-create-simulated-device-symm-key.md) igazolási útmutatóit.
 
 ## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:

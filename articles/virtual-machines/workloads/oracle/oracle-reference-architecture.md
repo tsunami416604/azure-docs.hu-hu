@@ -3,16 +3,17 @@ title: Az Azure-beli Oracle-adatbázisok referenciái architektúrái | Microsof
 description: A Oracle Database Enterprise Edition-adatbázisok Microsoft Azure Virtual Machines-on való futtatására szolgáló architektúrák.
 author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: d2a6954ffdb9f992ada7fc24dbcc161658b21d23
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 86f3ef8ccac83cdc939cff5572dd81e78137d396
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480428"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968723"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Az Azure-beli Oracle Database Enterprise Edition hivatkozási architektúrái
 
@@ -168,7 +169,7 @@ A duplikált táblák az összes szegmensen tárolódnak, míg a szilánkokra os
 
 Az Oracle-adatőr a rendszer által felügyelt, felhasználó által definiált és összetett horizontális Felskálázási módszerekkel végezhető.
 
-Az alábbi ábra egy Oracle-horizontális Felskálázási útmutató, amely az egyes szegmensek magas rendelkezésre állására szolgáló Oracle-adatvédelemmel rendelkezik. Az architektúra diagram egy összetett horizontális Felskálázási _módszert_mutat be. Az architektúra-diagram valószínűleg különbözik az adattárolással, a terheléselosztással, a magas rendelkezésre állással, a vész-helyreállítással és más módszerekkel, amelyek eltérő módon használhatók. Az Oracle horizontális felskálázása lehetővé teszi ezen követelmények teljesítését, valamint vízszintesen és hatékonyan méretezheti ezeket a lehetőségeket. Hasonló architektúra is üzembe helyezhető az Oracle GoldenGate használatával.
+Az alábbi ábra egy Oracle-horizontális Felskálázási útmutató, amely az egyes szegmensek magas rendelkezésre állására szolgáló Oracle-adatvédelemmel rendelkezik. Az architektúra diagram egy összetett horizontális Felskálázási _módszert_ mutat be. Az architektúra-diagram valószínűleg különbözik az adattárolással, a terheléselosztással, a magas rendelkezésre állással, a vész-helyreállítással és más módszerekkel, amelyek eltérő módon használhatók. Az Oracle horizontális felskálázása lehetővé teszi ezen követelmények teljesítését, valamint vízszintesen és hatékonyan méretezheti ezeket a lehetőségeket. Hasonló architektúra is üzembe helyezhető az Oracle GoldenGate használatával.
 
 ![A rendelkezésre állási zónák és a FSFO adatvédelme Oracle Database](./media/oracle-reference-architecture/oracledb_dg_sh_az.png)
 

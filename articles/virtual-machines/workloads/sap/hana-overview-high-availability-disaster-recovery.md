@@ -7,18 +7,19 @@ author: saghorpa
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0585c1251ba18e1390f3eee28a989edee6eb8591
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56e2e2a048e44dcad626208b059e258d55ba7057
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77616935"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967599"
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Magas rendelkezésre állású és vész-helyreállítási SAP HANA Large Instances az Azure-ban 
 
@@ -69,7 +70,7 @@ A magas rendelkezésre állásról SAP HANA a következő SAP-cikkekben talál t
 
 A HANA Large-példányok vész-helyreállítási funkcióinak kihasználásához meg kell terveznie a hálózati kapcsolatot a két Azure-régióval. Szüksége lesz egy Azure ExpressRoute Circuit-kapcsolatra a fő Azure-régióban, és egy másik áramköri kapcsolatot a helyszínen a vész-helyreállítási régióba. Ez a mérték olyan helyzetet mutat be, amelyben probléma merült fel egy Azure-régióban, beleértve a Microsoft Enterprise Edge router (MSEE) helyét is.
 
-Második lépésként összekapcsolhatja az összes olyan Azure-beli virtuális hálózatot, amely az Azure-ban (nagyméretű példányokon) csatlakozik SAP HANAhoz az egyik régióban egy olyan ExpressRoute-áramkörhöz, amely a másik régióban lévő HANA nagyméretű példányokat csatlakoztatja. Ezzel a *kapcsolattal*az 1. régió egy Azure-beli virtuális hálózatán futó szolgáltatások kapcsolódhatnak a 2. régióban található HANA nagyméretű példány-egységekhez, és fordítva. Ez a mérték azt az esetet tárgyalja, amelyben a helyszíni helyhez és az Azure-hoz csatlakozó MSEE-helyek közül csak az egyik kerül offline állapotba.
+Második lépésként összekapcsolhatja az összes olyan Azure-beli virtuális hálózatot, amely az Azure-ban (nagyméretű példányokon) csatlakozik SAP HANAhoz az egyik régióban egy olyan ExpressRoute-áramkörhöz, amely a másik régióban lévő HANA nagyméretű példányokat csatlakoztatja. Ezzel a *kapcsolattal* az 1. régió egy Azure-beli virtuális hálózatán futó szolgáltatások kapcsolódhatnak a 2. régióban található HANA nagyméretű példány-egységekhez, és fordítva. Ez a mérték azt az esetet tárgyalja, amelyben a helyszíni helyhez és az Azure-hoz csatlakozó MSEE-helyek közül csak az egyik kerül offline állapotba.
 
 A következő ábra egy rugalmas konfigurációt mutat be a vész-helyreállítási esetekben:
 

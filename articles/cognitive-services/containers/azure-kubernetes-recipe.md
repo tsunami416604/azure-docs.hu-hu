@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: b53476bcb05d6e91b157c24795c963c04e6f4bb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a6e7ee125cac66b48e666a766c39813aa38fb1a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88244490"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968502"
 ---
 # <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>A Text Analytics nyelvfelismerés tároló üzembe helyezése az Azure Kubernetes Service-ben
 
@@ -25,9 +25,9 @@ Megtudhatja, hogyan helyezheti üzembe a nyelvfelismerés-tárolót. Ez az eljá
 
 Ennek az eljárásnak számos olyan eszközre van szüksége, amelyet helyileg kell telepíteni és futtatni. Ne használja az Azure Cloud shellt.
 
-* Azure-előfizetés használata. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services), mielőtt hozzákezd.
+* Azure-előfizetés használata. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services).
 * [Git](https://git-scm.com/downloads) az operációs rendszerhez, így az eljárásban használt [minta](https://github.com/Azure-Samples/cognitive-services-containers-samples) klónozása is megtörténik.
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)-vel.
+* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)-vel.
 * A [Docker-motort](https://www.docker.com/products/docker-engine) , és ellenőrizze, hogy a Docker CLI működik-e a konzol ablakban.
 * [kubectl](https://storage.googleapis.com/kubernetes-release/release/v1.13.1/bin/windows/amd64/kubectl.exe).
 * Egy megfelelő árképzési szintű Azure-erőforrás. Nem minden díjszabási csomag működik ezzel a tárolóval:

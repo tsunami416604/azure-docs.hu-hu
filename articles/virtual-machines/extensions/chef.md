@@ -8,17 +8,18 @@ manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
-ms.openlocfilehash: 9391bb4867717b6780b50cf90b998254227d2310
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8977563c6b19754eda53686baf85f840a7583e77
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87082613"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968366"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Chef VM-bővítmény Linux és Windows rendszerekhez
 
@@ -67,7 +68,7 @@ A következő JSON a Chef virtuálisgép-bővítmény sémáját mutatja be. A k
 
 ### <a name="core-property-values"></a>Alapvető tulajdonságok értékei
 
-| Name (Név) | Érték/példa | Adattípus
+| Name | Érték/példa | Adattípus
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | karakterlánc (dátum) |
 | közzétevő | `Chef.Bootstrap.WindowsAzure` | sztring |
@@ -76,17 +77,17 @@ A következő JSON a Chef virtuálisgép-bővítmény sémáját mutatja be. A k
 
 ### <a name="settings"></a>Beállítások
 
-| Name (Név) | Érték/példa | Adattípus | Kötelező?
+| Name | Érték/példa | Adattípus | Kötelező?
 | ---- | ---- | ---- | ----
-| beállítások/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | karakterlánc (URL) | I |
-| beállítások/bootstrap_options/validation_client_name | `myorg-validator` | sztring | I |
-| beállítások/Runlist | `recipe[mycookbook::default]` | sztring | I |
+| beállítások/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | karakterlánc (URL) | Y |
+| beállítások/bootstrap_options/validation_client_name | `myorg-validator` | sztring | Y |
+| beállítások/Runlist | `recipe[mycookbook::default]` | sztring | Y |
 
 ### <a name="protected-settings"></a>Védett beállítások
 
-| Name (Név) | Példa | Adattípus | Kötelező?
+| Name | Példa | Adattípus | Kötelező?
 | ---- | ---- | ---- | ---- |
-| Protectedsettingsfromkeyvault/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | sztring | I |
+| Protectedsettingsfromkeyvault/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | sztring | Y |
 
 <!--
 ### Linux-specific settings
@@ -155,6 +156,6 @@ További hibaelhárítási információk a [Chef VM-bővítmény readme](https:/
 > [!NOTE]
 > A Chefhez közvetlenül kapcsolódó bármilyen más esetben forduljon a [Chef ügyfélszolgálatához](https://www.chef.io/support/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a támogatás kérése lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).

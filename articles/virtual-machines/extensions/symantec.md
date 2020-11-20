@@ -4,16 +4,17 @@ description: Megtudhatja, hogyan telepítheti és konfigurálhatja a Symantec En
 author: roiyz
 tags: azure-service-management
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: akjosh
-ms.openlocfilehash: a89ec99af02b32d452fba1dffb0387ae6013a7c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e001c85dd960e9d60ff321cfecc8bf8b80de087c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87292433"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967941"
 ---
 # <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>Symantec-Endpoint Protection telepítése és konfigurálása Windowsos virtuális gépen
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
@@ -42,7 +43,7 @@ $vm = Get-AzureVM -ServiceName $CSName -Name $VMName
 write-host $vm.VM.ProvisionGuestAgent
 ```
 
-Ha a **Write-Host** parancs **igaz**értéket jelenít meg, a virtuálisgép-ügynök telepítve lesz. Ha a **Hamis értéket**jeleníti meg, tekintse meg az utasításokat, valamint a letöltésre mutató hivatkozást az Azure-blogbejegyzésben a [VM-ügynök és-bővítmények – 2. rész][Agent].
+Ha a **Write-Host** parancs **igaz** értéket jelenít meg, a virtuálisgép-ügynök telepítve lesz. Ha a **Hamis értéket** jeleníti meg, tekintse meg az utasításokat, valamint a letöltésre mutató hivatkozást az Azure-blogbejegyzésben a [VM-ügynök és-bővítmények – 2. rész][Agent].
 
 Ha a virtuálisgép-ügynök telepítve van, futtassa a következő parancsokat a Symantec Endpoint Protection-ügynök telepítéséhez.
 
@@ -56,7 +57,7 @@ Set-AzureVMExtension -Publisher Symantec –Version $Agent.Version -ExtensionNam
 Annak ellenőrzéséhez, hogy telepítve van-e a Symantec biztonsági bővítménye, és hogy naprakész-e:
 
 1. Jelentkezzen be a virtuális gépre. Útmutatásért lásd: [Hogyan jelentkezhet be a Windows Servert futtató virtuális gépre][Logon].
-2. Windows Server 2008 R2 esetén kattintson a **Start > Symantec Endpoint Protection**lehetőségre. A Windows Server 2012 vagy a Windows Server 2012 R2 esetében a kezdőképernyőn írja be a **Symantec**parancsot, majd kattintson a **Symantec Endpoint Protection**elemre.
+2. Windows Server 2008 R2 esetén kattintson a **Start > Symantec Endpoint Protection** lehetőségre. A Windows Server 2012 vagy a Windows Server 2012 R2 esetében a kezdőképernyőn írja be a **Symantec** parancsot, majd kattintson a **Symantec Endpoint Protection** elemre.
 3. Az **állapot – Symantec Endpoint Protection** ablak **állapot** lapján frissítse a frissítéseket, vagy szükség esetén indítsa újra a rendszert.
 
 ## <a name="additional-resources"></a>További források

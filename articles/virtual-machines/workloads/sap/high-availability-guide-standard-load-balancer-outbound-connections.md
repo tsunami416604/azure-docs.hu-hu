@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/16/2020
 ms.author: radeltch
-ms.openlocfilehash: d4d21ac0fc0f218b9168adfad3e1b2ec42092b42
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a6b62e9c894c25b2c3cd064524881ae5db51ec5a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544749"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968536"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Nyilvános végponti kapcsolat a Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben
 
@@ -147,14 +148,14 @@ Az architektúra így néz ki:
    1. Kattintson az alhálózat hozzáadása lehetőségre. Adja meg a **AzureFirewallSubnet** nevet. Adja meg a megfelelő címtartományt. Mentse el.  
 3. Azure Firewall létrehozása.  
    1. Azure Portal válassza az összes erőforrás lehetőséget, majd kattintson a Hozzáadás, a tűzfal, a Létrehozás elemre. Válassza az erőforráscsoport lehetőséget (válassza ki ugyanazt az erőforráscsoportot, ahol a Virtual Network).  
-   1. Adja meg a Azure Firewall erőforrás nevét. Például: **MyAzureFirewall** .  
+   1. Adja meg a Azure Firewall erőforrás nevét. Például: **MyAzureFirewall**.  
    1. Válassza ki a régiót, és válasszon ki legalább két rendelkezésre állási zónát, amelyek a virtuális gépek üzembe helyezéséhez szükséges rendelkezésre állási zónákhoz vannak igazítva.  
    1. Válassza ki a Virtual Networkt, ahol az SAP virtuális gépek és az Azure standard Load Balancer telepítve van.  
-   1. Nyilvános IP-cím: kattintson a Létrehozás gombra, és adjon meg egy nevet. Például **MyFirewallPublicIP** .  
+   1. Nyilvános IP-cím: kattintson a Létrehozás gombra, és adjon meg egy nevet. Például **MyFirewallPublicIP**.  
 4. Hozzon létre Azure Firewall szabályt, hogy engedélyezze a kimenő kapcsolatokat a megadott nyilvános végpontok számára. A példa bemutatja, hogyan engedélyezheti az Azure Management API nyilvános végpontjának elérését.  
    1. Válassza a szabályok, hálózati szabályok gyűjtése, majd a hálózati szabálygyűjtemény hozzáadása elemet.  
-   1. Név: **MyOutboundRule** , adja meg a prioritást, válassza a művelet **engedélyezése lehetőséget** .  
-   1. Szolgáltatás: név **ToAzureAPI** .  Protokoll: válassza **a bármelyik** lehetőséget. Forrás címe: adja meg az alhálózat tartományát, ahol a virtuális gépek és a standard Load Balancer telepítve vannak a következő példányhoz: **11.97.0.0/24** . Célport: írja be a (z <b>*</b> ) értéket.  
+   1. Név: **MyOutboundRule**, adja meg a prioritást, válassza a művelet **engedélyezése lehetőséget**.  
+   1. Szolgáltatás: név **ToAzureAPI**.  Protokoll: válassza **a bármelyik** lehetőséget. Forrás címe: adja meg az alhálózat tartományát, ahol a virtuális gépek és a standard Load Balancer telepítve vannak a következő példányhoz: **11.97.0.0/24**. Célport: írja be a (z <b>*</b> ) értéket.  
    1. Mentés
    1. Ha továbbra is a Azure Firewall elhelyezni, válassza az Áttekintés lehetőséget. Jegyezze fel a Azure Firewall magánhálózati IP-címét.  
 5. Útvonal létrehozása a Azure Firewallhoz  
@@ -166,7 +167,7 @@ Az architektúra így néz ki:
 
 6. Hozzon létre felhasználó által megadott útvonalat a virtuális gépek alhálózatáról a **MyAzureFirewall** magánhálózati IP-címére.
    1. Ahogy az útválasztási táblázatban van elhelyezve, kattintson az útvonalak elemre. Válassza a Hozzáadás elemet. 
-   1. Útvonal neve: ToMyAzureFirewall, címzési előtag: **0.0.0.0/0** . Következő ugrás típusa: válassza a virtuális berendezés elemet. Következő ugrási cím: adja meg a konfigurált tűzfal magánhálózati IP-címét: **11.97.1.4** .  
+   1. Útvonal neve: ToMyAzureFirewall, címzési előtag: **0.0.0.0/0**. Következő ugrás típusa: válassza a virtuális berendezés elemet. Következő ugrási cím: adja meg a konfigurált tűzfal magánhálózati IP-címét: **11.97.1.4**.  
    1. Mentés
 
 ## <a name="using-proxy-for-pacemaker-calls-to-azure-management-api"></a>Proxy használata a pacemaker-hívások számára az Azure felügyeleti API-hoz
@@ -185,7 +186,7 @@ A proxy használatával engedélyezheti a pacemaker-hívásokat az Azure felügy
 
 ### <a name="pacemaker-configuration-with-proxy"></a>Pacemaker-konfiguráció proxyval 
 
-Az iparágban számos különböző proxy lehetőség áll rendelkezésre. A proxy üzembe helyezésének lépésenkénti utasításai a dokumentum hatókörén kívül esnek. Az alábbi példában feltételezzük, hogy a proxy válaszol a **MyProxyService** , és figyeli a port **MyProxyPort** .  
+Az iparágban számos különböző proxy lehetőség áll rendelkezésre. A proxy üzembe helyezésének lépésenkénti utasításai a dokumentum hatókörén kívül esnek. Az alábbi példában feltételezzük, hogy a proxy válaszol a **MyProxyService** , és figyeli a port **MyProxyPort**.  
 Ha engedélyezni szeretné, hogy a pacemaker kommunikáljon az Azure felügyeleti API-val, hajtsa végre a következő lépéseket az összes fürtcsomóponton:  
 
 1. Szerkessze a pacemaker konfigurációs fájl/etc/sysconfig/pacemaker, és adja hozzá a következő sorokat (a fürt összes csomópontja):

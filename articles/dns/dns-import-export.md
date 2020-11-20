@@ -8,12 +8,12 @@ ms.service: dns
 ms.date: 7/30/2020
 ms.author: rohink
 ms.topic: how-to
-ms.openlocfilehash: 8f17d7f32d774cac283ec335c372e8f68d50931f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2b998432f6c4417da0242d86347ed43acb5071a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87424222"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968230"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>DNS-zónafájl importálása és exportálása az Azure CLI-vel
 
@@ -33,7 +33,7 @@ A DNS-zónafájl Azure DNSba való importálása előtt be kell szereznie a zón
 
 * Ha a DNS-zónát egy partneri szolgáltatás (például egy tartományregisztráló, egy dedikált DNS-szolgáltató vagy egy alternatív felhőalapú szolgáltató) üzemelteti, a szolgáltatásnak meg kell adnia a DNS-zónafájl letöltésének lehetőségét.
 * Ha a DNS-zóna a Windows DNS-ben üzemel, a zónafájl alapértelmezett mappája a **%systemroot%\System32\Dns**. Az egyes zónák teljes elérési útja a DNS-konzol **általános** lapján is látható.
-* Ha a DNS-zóna a kötés használatával fut, az egyes zónákhoz tartozó zónafájl helye a **. conf nevű**kötési konfigurációs fájlban van megadva.
+* Ha a DNS-zóna a kötés használatával fut, az egyes zónákhoz tartozó zónafájl helye a **. conf nevű** kötési konfigurációs fájlban van megadva.
 
 ## <a name="import-a-dns-zone-file-into-azure-dns"></a>DNS-zóna fájljának importálása a Azure DNSba
 
@@ -177,8 +177,8 @@ Ha exportálni szeretné a meglévő Azure DNS zóna **contoso.com** az erőforr
 az network dns zone export -g myresourcegroup -n contoso.com -f contoso.com.txt
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Ismerje meg, hogyan kezelheti a rekordhalmazokat [és rekordokat](dns-getstarted-create-recordset-cli.md) a DNS-zónában.
+* Ismerje meg, hogyan kezelheti a rekordhalmazokat [és rekordokat](./dns-getstarted-cli.md) a DNS-zónában.
 
 * Ismerje meg, hogyan [delegálhatja a tartományt Azure DNSre](dns-domain-delegation.md).

@@ -4,15 +4,15 @@ description: Az időszakos kapcsolati hibák és a kapcsolódó teljesítménnye
 author: v-miegge
 manager: barbkess
 ms.topic: troubleshooting
-ms.date: 07/24/2020
+ms.date: 11/19/2020
 ms.author: ramakoni
 ms.custom: security-recommendations,fasttrack-edit
-ms.openlocfilehash: 76b4408b2f8c631453281ecf6f214d49318252a3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 989f47c0ff60865a8e8be15e089cdcf96ab2550c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785051"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968298"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Az időszakos kimenő kapcsolatok hibáinak elhárítása a Azure App Serviceban
 
@@ -29,18 +29,29 @@ Az Azure app Service-ben üzemeltetett alkalmazások és függvények a követke
 
 ## <a name="cause"></a>Ok
 
-Ezen tünetek egyik fő oka, hogy az alkalmazás példánya nem tud új kapcsolódást nyitni a külső végponthoz, mert elérte a következő korlátozások valamelyikét:
+Az időszakos kapcsolódási problémák fő oka a korlát, miközben új kimenő kapcsolatok jelennek meg. A találatok többek között a következők lehetnek:
 
-* TCP-kapcsolatok: az elvégezhető kimenő kapcsolatok száma korlátozott. Ez a használt munkavégző méretével van társítva.
-* SNAT-portok: az Azure-beli [Kimenő kapcsolatok](../load-balancer/load-balancer-outbound-connections.md)esetében az Azure a forrás hálózati CÍMFORDÍTÁS (SNAT) és egy Load Balancer (az ügyfelek számára nem elérhető) használatával kommunikál az Azure-on kívüli végpontokkal a nyilvános IP-címeken, valamint az Azure-ba irányuló végponti pontokat, amelyek nem használják ki a szolgáltatás/privát végpontok előnyeit. Az Azure app Service minden példánya eredetileg előre lefoglalt számú **128** SNAT-portot kap. Ez a korlát befolyásolja a kapcsolatok megnyitását ugyanahhoz a gazdagéphez és port kombinációhoz. Ha az alkalmazás a címek és a portok kombinációinak együttes használatával hoz létre kapcsolatokat, nem fogja használni a SNAT-portokat. A rendszer akkor használja a SNAT-portokat, ha ismétlődő hívásokat végez ugyanahhoz a címnek és port kombinációhoz. A portok felszabadítása után a port igény szerint újra felhasználható. Az Azure hálózati terheléselosztó csak 4 perc várakozás után visszaállítja a SNAT-portot a lezárt kapcsolatoktól.
+* TCP-kapcsolatok: az elvégezhető kimenő kapcsolatok száma korlátozott. A kimenő kapcsolatok korlátja a használt feldolgozó méretével van társítva.
+* SNAT-portok: [Az Azure kimenő kapcsolatai](../load-balancer/load-balancer-outbound-connections.md) ismertetik a SNAT, valamint azt, hogy a kimenő kapcsolatok milyen hatással vannak a kimenő kapcsolatokra. Az Azure a forrás hálózati címfordítás (SNAT) és a terheléselosztó (az ügyfelek számára nem elérhető) használatával kommunikál a nyilvános IP-címekkel. Az Azure app Service minden példánya eredetileg előre lefoglalt számú **128** SNAT-portot kap. A SNAT-port korlátja hatással van a kapcsolatokra ugyanazzal a címtől és port kombinációval. Ha az alkalmazás a címek és a portok kombinációinak együttes használatával hoz létre kapcsolatokat, nem fogja használni a SNAT-portokat. A rendszer akkor használja a SNAT-portokat, ha ismétlődő hívásokat végez ugyanahhoz a címnek és port kombinációhoz. A portok felszabadítása után a port igény szerint újra felhasználható. Az Azure hálózati terheléselosztó csak 4 perc várakozás után visszaállítja a SNAT-portot a lezárt kapcsolatoktól.
 
-Amikor az alkalmazások és a függvények gyorsan megnyitnak egy új csatlakozást, gyorsan kihasználhatják az 128-es portok előre lefoglalt kvótáját. Ezután le lesznek tiltva, amíg egy új SNAT-port elérhetővé válik, vagy a további SNAT-portok dinamikusan kiosztásával, vagy egy visszaigényelt SNAT-port újbóli használatával. Azok az alkalmazások vagy függvények, amelyek nem tudnak új kapcsolatokat létrehozni, a jelen cikk a **jelenségek** című szakaszában ismertetett problémák valamelyikével kezdődnek.
+Amikor az alkalmazások és a függvények gyorsan megnyitnak egy új csatlakozást, gyorsan kihasználhatják az 128-es portok előre lefoglalt kvótáját. Ezután le lesznek tiltva, amíg egy új SNAT-port elérhetővé válik, vagy a további SNAT-portok dinamikusan kiosztásával, vagy egy visszaigényelt SNAT-port újbóli használatával. Ha az alkalmazás kifogyott a SNAT-portok közül, az időszak kimenő kapcsolódási problémái lesznek. 
 
 ## <a name="avoiding-the-problem"></a>A probléma elkerülése
 
+Van néhány olyan megoldás, amely lehetővé teszi a SNAT-portok korlátozásának elkerülését. Ezek közé tartoznak például az alábbiak:
+
+* kapcsolati készletek: a kapcsolatok készletezésével elkerülhető az új hálózati kapcsolatok megnyitása a hívásokhoz ugyanahhoz a címről és porthoz.
+* szolgáltatási végpontok: nem rendelkezik SNAT-port korlátozással a szolgáltatás-végpontokkal védett szolgáltatásokhoz.
+* privát végpontok: nincs SNAT-portra vonatkozó korlátozás a privát végpontokkal védett szolgáltatásokhoz.
+* NAT-átjáró: egy NAT-átjáróval rendelkező, 64 KB-os kimenő SNAT-portokkal rendelkezik, amelyek segítségével a forgalmat továbbító erőforrások képesek használni.
+
+A SNAT-port problémájának elkerülése azt jelenti, hogy az új kapcsolatok ismételt létrehozását nem kell ismétlődő módon létrehozni ugyanahhoz a gazdagéphez és porthoz. A kapcsolódási készletek a probléma megoldásának egyik kézenfekvő módja.
+
 Ha a cél egy olyan Azure-szolgáltatás, amely támogatja a szolgáltatási végpontokat, az SNAT-portok kimerülésével kapcsolatos problémákat a [regionális VNet integrációs](./web-sites-integrate-with-vnet.md) és szolgáltatási végpontok vagy privát végpontok használatával lehet elkerülni. Ha regionális VNet-integrációt használ, és az integrációs alhálózaton helyezi el a szolgáltatási végpontokat, az alkalmazás kimenő forgalma ezen szolgáltatásokhoz nem lesz kimenő SNAT-korlátozás. Hasonlóképpen, ha regionális VNet-integrációt és privát végpontokat használ, akkor nem lesz kimenő SNAT portja az adott célhelyre. 
 
-A SNAT-port problémájának elkerülése azt jelenti, hogy az új kapcsolatok ismételt létrehozását nem kell ismétlődő módon létrehozni ugyanahhoz a gazdagéphez és porthoz.
+Ha a cél az Azure-on kívüli külső végpont, a NAT-átjáró használatával 64 kilobájtos kimenő SNAT-portot biztosít. Emellett egy dedikált kimenő címet is biztosít, amelyet nem oszt meg senkivel. 
+
+Ha lehetséges, javítsa a kódot a kapcsolódási készletek használatához, és elkerülje a teljes helyzetet. Nem mindig elég gyors a kód módosítása a helyzet enyhítése érdekében. Azokban az esetekben, amikor nem tudja időben módosítani a kódot, használja ki a többi megoldást. A probléma legjobb megoldás az, ha az összes megoldást a lehető legjobb módon kombinálja. Próbáljon szolgáltatási végpontokat és magánhálózati végpontokat használni az Azure-szolgáltatásokhoz és a REST NAT-átjáróhoz. 
 
 Az SNAT-portok kimerülését csökkentő általános stratégiákat az Azure-dokumentáció **kimenő kapcsolatainak** [problémamegoldó szakasza](../load-balancer/load-balancer-outbound-connections.md) tárgyalja. Az alábbi stratégiák az Azure app Service-ben üzemeltetett alkalmazásokra és funkciókra vonatkoznak.
 
@@ -110,7 +121,7 @@ Habár a PHP nem támogatja a kapcsolatok készletezését, kipróbálhatja az �
 * A [terhelési tesztnek](/azure/devops/test/load-test/app-service-web-app-performance-test) valós adatátviteli sebességgel kell szimulálnia a valós globális adatértékeket. Az alkalmazások és függvények tesztelése a valós terhelések alatt az idő előtt azonosíthatja és megoldhatja a SNAT-portok kimerülésével kapcsolatos problémákat.
 * Győződjön meg arról, hogy a háttér-szolgáltatások gyorsan adnak vissza válaszokat. A Azure SQL Database kapcsolatos teljesítménnyel kapcsolatos problémák elhárításához tekintse át az [Intelligent Insights-Azure SQL Database teljesítményproblémák elhárítása](../azure-sql/database/intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow)című témakört.
 * Bővítse a App Service tervet több példányra. További információ a skálázásról: [alkalmazások méretezése Azure app Serviceban](./manage-scale-up.md). Az App Service-csomagokban minden feldolgozói példány több SNAT-portot foglal le. Ha több példányon terjeszti a használatot, a SNAT-portok használata a 100-as kimenő kapcsolatok ajánlott korlátja alá kerül, egyedi távoli végponton.
-* Érdemes lehet áthelyezni [app Service Environment (](./environment/using-an-ase.md)beadási), ahol egyetlen kimenő IP-címet adott meg, és a kapcsolatok és SNAT portok korlátai jóval magasabbak. A beosztásban a SNAT-portok száma az [Azure Load Balancer előfoglalási táblázatán](../load-balancer/load-balancer-outbound-connections.md#snatporttable) alapul – így például az 1-50-es feldolgozói példányokkal rendelkező központnak 1024 előre lefoglalt 512 51-100 portja van.
+* Érdemes lehet áthelyezni [app Service Environment (](./environment/using-an-ase.md)beadási), ahol egyetlen kimenő IP-címet adott meg, és a kapcsolatok és SNAT portok korlátai jóval magasabbak. A SNAT-portok száma az [Azure Load Balancer előfoglalási táblázatán](../load-balancer/load-balancer-outbound-connections.md#snatporttable) alapul, így például az 1-50-es feldolgozói példányokkal rendelkező központnak 1024 előre lefoglalt portja van, míg az 51-100-es feldolgozói példányokkal rendelkező központnak a 512 előre lefoglalt portjai vannak.
 
 A kimenő TCP-korlátok elkerülése könnyebben megoldható, mivel a korlátokat a feldolgozók mérete határozza meg. Megtekintheti a [homokozóban futó virtuális gépek numerikus korlátait – TCP-kapcsolatok](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)
 
@@ -135,7 +146,7 @@ Ha nem tudja, hogy az alkalmazás viselkedése elég gyors legyen, néhány eszk
 3. Válassza a SNAT port kimerülése csempét a kategória alatt található elérhető csempék listájában. A gyakorlat az, hogy 128 alatt maradjon.
 Ha szüksége van rá, továbbra is megnyithatja a támogatási jegyet, és a támogatási szakembernek az Ön számára készült mérőszámot fogja kapni.
 
-Vegye figyelembe, hogy mivel a SNAT-port használata nem érhető el metrikaként, nem lehetséges az automatikus skálázás a SNAT-port használata alapján, vagy az SNAT-portok foglalási metrikája alapján.
+Mivel a SNAT-portok használata nem érhető el metrikaként, nem lehetséges az automatikus skálázás a SNAT-port használata alapján, vagy az SNAT-portok foglalási metrikája alapján.
 
 ### <a name="tcp-connections-and-snat-ports"></a>TCP-kapcsolatok és SNAT portok
 

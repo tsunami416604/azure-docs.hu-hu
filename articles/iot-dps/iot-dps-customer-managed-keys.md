@@ -8,12 +8,12 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 02/24/2020
 ms.author: menchi
-ms.openlocfilehash: e9b5a549d550f117e080fc64193fbe29658f401d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d22a01bab81fc330484e7715a65c89a1cfd7802c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85298225"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967176"
 ---
 # <a name="encryption-of-data-at-rest-with-customer-managed-keys-for-device-provisioning-service"></a>Az ügyfél által felügyelt kulcsok használata a Device kiépítési szolgáltatáshoz – az inaktív adatok titkosítása
 
@@ -24,8 +24,8 @@ A Device kiépítési szolgáltatás (DPS) támogatja az inaktív adatok titkos�
 Ehhez a funkcióhoz új DPS létrehozására van szükség. Ha szeretné kipróbálni ezt a funkciót, lépjen kapcsolatba velünk a [Microsoft támogatási szolgálatán](https://azure.microsoft.com/support/create-ticket/)keresztül. Ossza meg vállalata nevét és előfizetési AZONOSÍTÓját, amikor kapcsolatba lép a Microsoft ügyfélszolgálatával.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [További információ az eszköz kiépítési szolgáltatásáról](https://docs.microsoft.com/azure/iot-dps/)
+* [További információ az eszköz kiépítési szolgáltatásáról](./index.yml)
 
-* [További információ a Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [További információ a Azure Key Vault](../key-vault/general/overview.md)

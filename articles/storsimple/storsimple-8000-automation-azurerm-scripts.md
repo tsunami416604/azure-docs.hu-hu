@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 4a53dd803b22899b7dd15db0aa1ff411641a11dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3339f883d177366a64187e0c090752527802c8d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88183258"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968774"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>Azure Resource Manager SDK-alapú parancsfájlok használata a StorSimple-eszközök kezeléséhez
 
@@ -57,7 +57,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik az alábbiakkal:
     * Windows-környezetben kövesse a [Azure PowerShell telepítése és konfigurálása](/powershell/azure/install-az-ps)című témakör lépéseit. A StorSimple a Windows Server-gazdagépen is telepítheti a Azure PowerShell, ha az egyiket használja.
     * Linux-vagy MacOS-környezetben kövesse a [Azure PowerShell telepítése és konfigurálása MacOS vagy Linux](/powershell/azure/install-az-ps)rendszeren című témakör lépéseit.
 
-További információ a Azure PowerShell használatáról: Ismerkedés [a Azure PowerShell használatával](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+További információ a Azure PowerShell használatáról: Ismerkedés [a Azure PowerShell használatával](/powershell/azure/get-started-azureps).
 
 ### <a name="run-azure-powershell-script"></a>Azure PowerShell parancsfájl futtatása
 
@@ -69,7 +69,7 @@ Az ebben a példában használt parancsfájl felsorolja a StorSimple-eszközön 
         mkdir C:\scripts\StorSimpleSDKTools
         cd C:\scripts\StorSimpleSDKTools
     ```    
-2. [Töltse le az NUGET CLI](https://www.nuget.org/downloads) -t az előző lépésben létrehozott mappában. A _nuget.exe_különböző verziói vannak. Válassza ki az SDK-nak megfelelő verziót. Minden letöltési hivatkozás közvetlenül egy _. exe_ -fájlra mutat. Győződjön meg arról, hogy a jobb gombbal rákattint, és mentse a fájlt a számítógépre ahelyett, hogy a böngészőből futtatná.
+2. [Töltse le az NUGET CLI](https://www.nuget.org/downloads) -t az előző lépésben létrehozott mappában. A _nuget.exe_ különböző verziói vannak. Válassza ki az SDK-nak megfelelő verziót. Minden letöltési hivatkozás közvetlenül egy _. exe_ -fájlra mutat. Győződjön meg arról, hogy a jobb gombbal rákattint, és mentse a fájlt a számítógépre ahelyett, hogy a böngészőből futtatná.
 
     A következő parancs futtatásával is letöltheti és tárolhatja a parancsfájlt ugyanabban a mappában, amelyet korábban hozott létre.
     

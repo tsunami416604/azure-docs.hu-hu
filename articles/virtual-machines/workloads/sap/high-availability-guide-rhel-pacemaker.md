@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: radeltch
-ms.openlocfilehash: 4c444cb84f215ba4f42c14eb64f1d2f441e4280d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e906e6c86d615852191e2fd65a2b1a58695ed34
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91598298"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968553"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>A pacemaker beállítása Red Hat Enterprise Linux az Azure-ban
 
@@ -169,13 +170,13 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
 
    Futtassa a következő parancsokat a csomópontok hitelesítéséhez és a fürt létrehozásához. Állítsa a tokent 30000-re, hogy a memóriát megőrizve karbantartást engedélyezzen. További információkért tekintse meg [ezt a cikket a Linux rendszerhez][virtual-machines-linux-maintenance].  
    
-   Ha a **RHEL 7. x verzióban**hoz létre fürtöt, használja a következő parancsokat:  
+   Ha a **RHEL 7. x verzióban** hoz létre fürtöt, használja a következő parancsokat:  
    <pre><code>sudo pcs cluster auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
    sudo pcs cluster setup --name <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> --token 30000
    sudo pcs cluster start --all
    </code></pre>
 
-   Ha a **RHEL 8. X verzióban**hoz létre fürtöt, használja a következő parancsokat:  
+   Ha a **RHEL 8. X verzióban** hoz létre fürtöt, használja a következő parancsokat:  
    <pre><code>sudo pcs host auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
    sudo pcs cluster setup <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> totem token=30000
    sudo pcs cluster start --all
@@ -294,13 +295,13 @@ sudo pcs property set stonith-timeout=900
 > [!NOTE]
 > A (z) "pcmk_host_map" kapcsoló csak akkor szükséges a parancsban, ha a RHEL és az Azure-csomópontok nevei nem egyeznek. Tekintse meg az parancs félkövér szakaszát.
 
-A **7. X**RHEL használja a következő parancsot a kerítés eszköz konfigurálásához:    
+A **7. X** RHEL használja a következő parancsot a kerítés eszköz konfigurálásához:    
 <pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> \
 power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
 op monitor interval=3600
 </code></pre>
 
-A **8. X**RHEL használja a következő parancsot a kerítés eszköz konfigurálásához:  
+A **8. X** RHEL használja a következő parancsot a kerítés eszköz konfigurálásához:  
 <pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm username="<b>login ID</b>" password="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> \
 power_timeout=240 pcmk_reboot_timeout=900 pcmk_monitor_timeout=120 pcmk_monitor_retries=4 pcmk_action_limit=3 \
 op monitor interval=3600

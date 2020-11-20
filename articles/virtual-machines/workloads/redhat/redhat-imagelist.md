@@ -3,16 +3,17 @@ title: Red Hat Enterprise Linux az Azure-ban elérhető rendszerképek
 description: Ismerkedjen meg Red Hat Enterprise Linux rendszerképekkel Microsoft Azure
 author: asinn826
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 66e2f70a5d55d263f7da343c0987e77a9f60c3b0
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: b03d559b8952a61896fa79a568fb8200b3618fed
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372676"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968638"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Az Azure-ban elérhető Red Hat Enterprise Linux-(RHEL-) rendszerképek
 Az Azure különféle RHEL-rendszerképeket kínál különböző használati esetekhez.
@@ -26,7 +27,7 @@ Ez az Azure-ban elérhető RHEL-lemezképek listája. Ha másként nincs megadva
 > [!NOTE]
 > A nyers képek már nem jönnek létre az LVM-particionált lemezképek javára. Az LVM számos előnyt biztosít a régebbi nyers (nem LVM) particionálási sémához képest, beleértve a jóval rugalmasabb partíció-átméretezési lehetőségeket.
 
-Ajánlat| Termékváltozat | Particionálás | Kiépítés | Jegyzetek
+Ajánlat| Termékváltozat | Particionálás | Kiépítés | Megjegyzések
 :----|:----|:-------------|:-------------|:-----
 RHEL          | 6.7      | NYERS    | Linux-ügynök | Meghosszabbított életciklus-támogatás érhető el december 1-től. [További részletek.](redhat-extended-lifecycle-support.md)
 |             | 6.8      | NYERS    | Linux-ügynök | Meghosszabbított életciklus-támogatás érhető el december 1-től. [További részletek.](redhat-extended-lifecycle-support.md)
@@ -103,7 +104,7 @@ RHEL – BYOS     |RHEL – lvm74| LVM    | Linux-ügynök | A RHEL 7,4 BYOS-lem
 > [!NOTE]
 > A RHEL-SAP-HANA-termék ajánlata a Red Hat által életbe lépésnek minősül. A meglévő telepítések továbbra is rendesen működnek, de a Red Hat azt ajánlja, hogy az ügyfelek a RHEL-SAP-HANA rendszerképekről a RHEL-SAP-if lemezképekre telepítsenek, beleértve a SAP HANA-tárházat és a HA-bővítményt. A Red Hat SAP felhőalapú ajánlatával kapcsolatos további részletek [itt](https://access.redhat.com/articles/3751271)érhetők el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ az [Azure-beli Red Hat-lemezképekről](./redhat-images.md).
 * További információ a [Red Hat frissítési infrastruktúráról](./redhat-rhui.md).
 * További információ a [RHEL BYOS ajánlatáról](./byos.md).

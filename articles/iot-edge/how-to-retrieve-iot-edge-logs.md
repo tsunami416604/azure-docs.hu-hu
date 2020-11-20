@@ -4,18 +4,18 @@ description: IoT Edge modul naplójának lekérése és feltöltése az Azure Bl
 author: v-tcassi
 manager: philmea
 ms.author: v-tcassi
-ms.date: 09/14/2020
+ms.date: 11/12/2020
 ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 64264028706c1493f687f032a7ec39e69188bd45
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 97cdc4ad0b1d5e7dfb6642fa0163f810be5d7171
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171920"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966921"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>Naplók beolvasása IoT Edge központi telepítésből
 
@@ -141,7 +141,15 @@ az iot hub invoke-module-method \
 
 A **UploadModuleLogs** Direct metódus használatával küldje el a kért naplókat egy adott Azure Blob Storage-tárolóba.
 
-Ez a metódus a **GetModuleLogs**hasonló JSON-adattartalmat fogad el, a "sas URL" kulcs hozzáadásával:
+<!-- 1.2.0 -->
+::: moniker range=">=iotedge-2020-11"
+
+> [!NOTE]
+> Ha a naplókat egy eszköz mögötti eszközről szeretné feltölteni, a felső rétegbeli eszközön konfigurálnia kell az [API-proxyt és a blob Storage-modult](how-to-configure-api-proxy-module.md) . Ezek a modulok a naplókat az alsóbb rétegbeli eszközről az átjáró-eszközön keresztül a Felhőbeli tárolóba irányítják.
+
+::: moniker-end
+
+Ez a metódus a **GetModuleLogs** hasonló JSON-adattartalmat fogad el, a "sas URL" kulcs hozzáadásával:
 
 ```json
     {
@@ -260,6 +268,14 @@ A Azure Portalban hívja meg a metódust a metódus nevével `UploadModuleLogs` 
 ## <a name="upload-support-bundle-diagnostics"></a>Támogatási csomag diagnosztika feltöltése
 
 A **UploadSupportBundle** Direct metódussal IoT Edge modul naplófájljainak zip-fájlját csomagolhatja és töltheti fel egy elérhető Azure Blob Storage-tárolóba. Ez a közvetlen metódus futtatja a [`iotedge support-bundle`](./troubleshoot.md#gather-debug-information-with-support-bundle-command) parancsot a IoT Edge eszközön a naplók beszerzéséhez.
+
+<!-- 1.2.0 -->
+::: moniker range=">=iotedge-2020-11"
+
+> [!NOTE]
+> Ha a naplókat egy eszköz mögötti eszközről szeretné feltölteni, a felső rétegbeli eszközön konfigurálnia kell az [API-proxyt és a blob Storage-modult](how-to-configure-api-proxy-module.md) . Ezek a modulok a naplókat az alsóbb rétegbeli eszközről az átjáró-eszközön keresztül a Felhőbeli tárolóba irányítják.
+
+::: moniker-end
 
 Ez a metódus egy JSON-adattartalmat fogad el a következő sémával:
 

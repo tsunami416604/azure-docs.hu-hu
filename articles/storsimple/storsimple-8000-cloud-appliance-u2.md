@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 219e2b77a0f6f30307c43f006fcdd3828d3c8fbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d78051c1a5af82a986152c8244d25b68dd65d552
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87021375"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968842"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>A StorSimple Cloud Appliance üzembe helyezése és kezelése az Azure-ban (3. frissítés és újabb)
 
@@ -47,7 +47,7 @@ A StorSimple felhőalapú készülék két modellben érhető el: a hagyományos
 | **Maximális kapacitás** |30 TB |64 TB |
 | **Azure VM** |Standard_A3 (4 mag, 7 GB memória)| Standard_DS3 (4 mag, 14 GB memória)|
 | **Régiónkénti elérhetőség** |Minden Azure-régió |A Premium Storage-ot támogató Azure-régiók és DS3 Azure-beli virtuális gépek<br></br>[Ebben a listában](https://azure.microsoft.com/regions/services/) ellenőrizheti, hogy a **Virtuális gépek &gt; DS-sorozat** és a **Storage &gt; Disk Storage** termékek egyaránt elérhetők-e az adott régióban. |
-| **Tárolási típus** |A helyi lemezeken Azure Standard szintű tárolást használ<br></br> További információ a [Standard szintű tárfiók létrehozásáról](../storage/common/storage-create-storage-account.md) |Azure Premium Storaget használ a helyi lemezekhez<sup>2</sup> <br></br> |
+| **Tárolási típus** |A helyi lemezeken Azure Standard szintű tárolást használ<br></br> További információ a [Standard szintű tárfiók létrehozásáról](../storage/common/storage-account-create.md) |Azure Premium Storaget használ a helyi lemezekhez<sup>2</sup> <br></br> |
 | **Útmutató a számítási feladatokhoz** |A fájlok elemszintű lekérése a biztonsági másolatokból |Felhőalapú fejlesztési és tesztelési forgatókönyvek <br></br>Kis késés és nagyobb teljesítményű számítási feladatok<br></br>Másodlagos vészhelyreállítási eszköz |
 
 <sup>1</sup> *korábbi nevén 1100*.
@@ -96,7 +96,7 @@ A felhőalapú készülék kiépítése előtt a következő előkészületekre 
 Hajtsa végre a következő frissítéseket a StorSimple-eszközkezelő szolgáltatáson a felhőalapú készülék létrehozása előtt:
 
 * Vegyen fel [hozzáférés-vezérlési rekordokat](storsimple-8000-manage-acrs.md) azokhoz a gépekhez, amelyek a felhőalapú készülék gazdakiszolgálói lesznek.
-* A felhőalapú készülékkel megegyező régióban lévő [tárfiókot](storsimple-8000-manage-storage-accounts.md#add-a-storage-account) használjon. Különböző régiókban lévő tárfiókok használata esetén a teljesítmény gyenge lehet. A felhőalapú készülékkel Standard vagy Prémium szintű Storage-fiókot is használhat. További információ a [standard szintű Storage-fiókok](../storage/common/storage-create-storage-account.md)létrehozásáról.
+* A felhőalapú készülékkel megegyező régióban lévő [tárfiókot](storsimple-8000-manage-storage-accounts.md#add-a-storage-account) használjon. Különböző régiókban lévő tárfiókok használata esetén a teljesítmény gyenge lehet. A felhőalapú készülékkel Standard vagy Prémium szintű Storage-fiókot is használhat. További információ a [standard szintű Storage-fiókok](../storage/common/storage-account-create.md)létrehozásáról.
 * A felhőalapú készülék létrehozásához ne használja ugyanazt a tárfiókot, amelyet az adataihoz is használ. Ugyanazon tárfiók használata esetén a teljesítmény gyenge lehet.
 
 Mielőtt hozzákezd, ellenőrizze az alábbi információk meglétét:
@@ -267,7 +267,7 @@ Az összes költség megszüntetéséhez törölnie kell a felhőalapú berendez
 ## <a name="troubleshoot-internet-connectivity-errors"></a>Az internetkapcsolat hibáinak elhárítása
 Ha nincs internetkapcsolat a felhőalapú berendezés létrehozása közben, a létrehozási lépés sikertelen lesz. Az internetes kapcsolat hibáinak elhárítása érdekében hajtsa végre a következő lépéseket az Azure Portalon:
 
-1. [Windows rendszerű virtuális gép létrehozása az Azure Portalon](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) A virtuális gépnek ugyanazt a tárfiókot, virtuális hálózatot és alhálózatot kell használnia, mint a felhőalapú berendezés. Ha már létezik Windows Server-gazdagép az Azure-ban, amely ugyanazt a tárfiókot, virtuális hálózatot és alhálózatot használja, azt is használhatja az internetkapcsolat hibáinak elhárítására.
+1. [Windows rendszerű virtuális gép létrehozása az Azure Portalon](../virtual-machines/windows/quick-create-portal.md) A virtuális gépnek ugyanazt a tárfiókot, virtuális hálózatot és alhálózatot kell használnia, mint a felhőalapú berendezés. Ha már létezik Windows Server-gazdagép az Azure-ban, amely ugyanazt a tárfiókot, virtuális hálózatot és alhálózatot használja, azt is használhatja az internetkapcsolat hibáinak elhárítására.
 2. Jelentkezzen be távolról az előző lépésben létrehozott virtuális gépbe.
 3. Nyisson meg egy parancsablakot a virtuális gépen (Win+R, majd írja be a `cmd` kifejezést).
 4. Futtassa az alábbi parancsot a parancssorban.
@@ -276,6 +276,6 @@ Ha nincs internetkapcsolat a felhőalapú berendezés létrehozása közben, a l
 5. Ha az `nslookup` sikertelen, akkor az internetkapcsolat hibája megakadályozza, hogy a felhőalapú berendezés regisztráljon a StorSimple-eszközkezelő szolgáltatásban.
 6. Végezze el a szükséges módosításokat a virtuális hálózaton, hogy a felhőalapú berendezés elérhesse az Azure-helyeket, például a _windows.net_ helyet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Tekintse át, hogyan [felügyelhető a felhőalapú berendezés a StorSimple-eszközkezelő szolgáltatással](storsimple-8000-manager-service-administration.md).
 * Ismerje meg, hogyan hajtható végre egy [StorSimple-kötet visszaállítása egy biztonságimentés-készletből](storsimple-8000-restore-from-backup-set-u2.md).

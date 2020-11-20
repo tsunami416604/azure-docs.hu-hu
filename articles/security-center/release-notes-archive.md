@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2020
 ms.author: memildin
-ms.openlocfilehash: e802f798ade5e6bfe0b40b17bbf15df5387ef7c3
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 26192c742ab2e010c18c02226252dbb480b72cee
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357844"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967159"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Archiválja a Azure Security Center újdonságait?
 
@@ -188,7 +188,7 @@ Most hozzáadhat olyan szabványokat, mint például a:
 - **Canada Federal PBMM**
 - **Azure CIS 1.1.0 (új)** (az Azure CIS 1.1.0 teljes körű képviselete)
 
-Emellett a közelmúltban hozzáadta az **Azure biztonsági teljesítménytesztet** , a Microsoft által készített Azure-specifikus iránymutatásokat a biztonsági és megfelelőségi ajánlott eljárásokhoz a közös megfelelőségi keretrendszerek alapján. Az irányítópulton további szabványok is támogatottak lesznek, amint azok elérhetővé válnak.  
+Emellett a közelmúltban hozzáadta az **Azure biztonsági teljesítménytesztet**, a Microsoft által készített Azure-specifikus iránymutatásokat a biztonsági és megfelelőségi ajánlott eljárásokhoz a közös megfelelőségi keretrendszerek alapján. Az irányítópulton további szabványok is támogatottak lesznek, amint azok elérhetővé válnak.  
  
 További információ [a szabványok készletének testreszabásáról a szabályozási megfelelőségi irányítópulton](update-regulatory-compliance-packages.md).
 
@@ -392,7 +392,7 @@ A Kubernetes gyorsan megkezdi a szoftverek Felhőbeli üzembe helyezésének és
 A nyilvános előzetes kiadás új funkciói a következők:
 
 - **Felderítés & láthatóság** – a felügyelt AK-példányok folyamatos észlelése Security Center regisztrált előfizetései között.
-- Biztonsági **pontszámokra vonatkozó javaslatok** – a gyakorlatban használható elemek biztosítják, hogy az ügyfelek az ügyfelek biztonságos pontszámának részeként megfeleljenek az AK biztonsággal kapcsolatos ajánlott eljárásainak, például a "szerepköralapú Access Control a Kubernetes való hozzáférés korlátozására."
+- **Biztonságos pontszámra vonatkozó javaslatok** – a gyakorlatban használható elemek segítenek az ÜGYFELEKNEK az AK-ra vonatkozó ajánlott biztonsági eljárások betartásában, valamint a biztonságos pontszám növelésében. A javaslatok közé tartoznak például a "szerepköralapú hozzáférés-vezérlés használata a Kubernetes-fürthöz való hozzáférés korlátozásához".
 - **Fenyegetések észlelése** – gazdagép-és fürt-alapú elemzések, például "a rendszerjogosultságú tároló észlelve".
 
 

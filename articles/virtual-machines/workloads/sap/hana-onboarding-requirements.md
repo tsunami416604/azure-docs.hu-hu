@@ -7,18 +7,19 @@ author: msjuergent
 manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 01/31/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 141a75a75a214ff4a6f136df7570d6e81f7f4e82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f72342a318e3436fb80fb06b2312f664c9d04969
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77617000"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967618"
 ---
 # <a name="onboarding-requirements"></a>Előkészítési követelmények
 
@@ -70,7 +71,7 @@ Az operációs rendszer és a HLI belső vezérlőprogram/illesztőprogram-verzi
 - Licencek és szoftvertelepítési összetevők minden olyan SAP-alkalmazáshoz, amely SAP HANA és kapcsolódó SAP-támogatási szerződésekhez csatlakozik.
 - Licencek és szoftvertelepítési összetevők minden olyan nem SAP-alkalmazáshoz, amelyet a SAP HANA Azure-beli (nagyméretű példányos) környezetekben és a kapcsolódó támogatási szerződésekben használtak.
 
-**Ismereteit**
+**Szakértelem**
 
 - Az Azure IaaS és összetevőinek megismerése és ismerete.
 - Az SAP-munkaterhelések Azure-ban való üzembe helyezésének és megismerésének tapasztalatai.

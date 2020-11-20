@@ -1,17 +1,17 @@
 ---
 title: Az Azure VMware-megoldás erőforrásának engedélyezése
-description: Megtudhatja, hogyan küldhet be támogatási kérést az Azure VMware-megoldási erőforrásának engedélyezéséhez. További csomópontokat is igényelhet a meglévő Azure VMware-megoldás privát felhőben.
+description: Megtudhatja, hogyan küldhet be támogatási kérést az Azure VMware-megoldási erőforrásának engedélyezéséhez. További gazdagépeket is igényelhet a meglévő Azure VMware-megoldás privát felhőben.
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: 8e1b891559cb2d01adc9fdf834ef3c9714fe1233
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: cd58611f77c2f2fb1694597fc9ef049420093ccc
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888436"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967363"
 ---
 # <a name="how-to-enable-azure-vmware-solution-resource"></a>Az Azure VMware megoldás erőforrásának engedélyezése
-Megtudhatja, hogyan küldhet be támogatási kérést az [Azure VMware-megoldási](introduction.md) erőforrásának engedélyezéséhez. További csomópontokat is igényelhet a meglévő Azure VMware-megoldás privát felhőben.
+Megtudhatja, hogyan küldhet be támogatási kérést az [Azure VMware-megoldási](introduction.md) erőforrásának engedélyezéséhez. További gazdagépeket is igényelhet a meglévő Azure VMware-megoldás privát felhőben.
 
 ## <a name="eligibility-criteria"></a>Megfelelőségi feltételek
 
@@ -22,7 +22,7 @@ Egy Azure-előfizetésben Azure-fiókra lesz szüksége. Az Azure-előfizetésne
 
 
 ## <a name="enable-azure-vmware-solution-for-ea-customers"></a>Azure VMware-megoldás engedélyezése az EA-ügyfelek számára
-Az Azure VMware-megoldási erőforrás létrehozása előtt egy támogatási jegyet kell benyújtania a csomópontok lefoglalásához. Miután a támogatási csapat megkapja a kérést, akár öt munkanapot is igénybe vesz, hogy erősítse meg a kérését, és lefoglalja a csomópontjait. Ha van egy meglévő Azure VMware-megoldás saját felhője, és több csomópontot szeretne lefoglalni, akkor ugyanezt a folyamatot kell megtennie.
+Az Azure VMware-megoldási erőforrás létrehozása előtt egy támogatási jegyet kell benyújtania a gazdagépek lefoglalásához. Miután a támogatási csapat megkapja a kérést, akár öt munkanapot is igénybe vesz, hogy erősítse meg kérelmét, és foglalja le a gazdagépeket. Ha van egy meglévő Azure VMware-megoldás saját felhője, és több gazdagépet szeretne lefoglalni, akkor ugyanezt a folyamatot kell megtennie.
 
 
 1. A Azure Portal a Súgó és **támogatás** területen hozzon létre egy **[új támogatási kérést](https://rc.portal.azure.com/#create/Microsoft.Support)** , és adja meg a következő információkat a jegyhez:
@@ -38,20 +38,20 @@ Az Azure VMware-megoldási erőforrás létrehozása előtt egy támogatási jeg
 
    - POC vagy éles üzem 
    - Régiónév
-   - Csomópontok száma
+   - Gazdagépek száma
    - Bármilyen más részlet
 
    >[!NOTE]
-   >Az Azure VMware-megoldás legalább három csomópontot javasol a saját felhő és a redundancia N + 1 csomópontok kiépítéséhez. 
+   >Az Azure VMware-megoldás legalább három gazdagép használatát javasolja a saját felhő és a redundancia N + 1 gazdagépek számára. 
 
 1. Válassza a **felülvizsgálat + létrehozás** lehetőséget a kérelem elküldéséhez.
 
    A támogatási képviselők akár öt munkanapot is igénybe vesznek, hogy erősítse a kérelmét.
 
    >[!IMPORTANT] 
-   >Ha már rendelkezik egy meglévő Azure VMware-megoldással, és további csomópontokra van szüksége, vegye figyelembe, hogy öt munkanapra van szükség a csomópontok lefoglalásához. 
+   >Ha már rendelkezik egy meglévő Azure VMware-megoldással, és további gazdagépeket kér, vegye figyelembe, hogy öt munkanapon belül le kell foglalni a gazdagépeket. 
 
-1. A csomópontok kiépítése előtt győződjön meg arról, hogy regisztrálja a **Microsoft. AVS** erőforrás-szolgáltatót a Azure Portal.  
+1. A gazdagépek kiépítése előtt győződjön meg arról, hogy regisztrálja a **Microsoft. AVS** erőforrás-szolgáltatót a Azure Portal.  
 
    ```azurecli-interactive
    az provider register -n Microsoft.AVS --subscription <your subscription ID>
@@ -99,21 +99,21 @@ Miután konfigurálta az Azure-csomagot és a szükséges vSphere-RBAC engedély
 
    - POC vagy éles üzem 
    - Régiónév
-   - Csomópontok száma
+   - Gazdagépek száma
    - Bármilyen más részlet
    - Több ügyfél üzemeltetésére szolgál?
 
    >[!NOTE]
-   >Az Azure VMware-megoldás legalább három csomópontot javasol a saját felhő és a redundancia N + 1 csomópontok kiépítéséhez. 
+   >Az Azure VMware-megoldás legalább három gazdagép használatát javasolja a saját felhő és a redundancia N + 1 gazdagépek számára. 
 
 1. Válassza a **felülvizsgálat + létrehozás** lehetőséget a kérelem elküldéséhez.
 
    A támogatási képviselők akár öt munkanapot is igénybe vesznek, hogy erősítse a kérelmét.
 
    >[!IMPORTANT] 
-   >Ha már rendelkezik egy meglévő Azure VMware-megoldással, és további csomópontokra van szüksége, vegye figyelembe, hogy öt munkanapra van szükség a csomópontok lefoglalásához. 
+   >Ha már rendelkezik egy meglévő Azure VMware-megoldással, és további gazdagépeket kér, vegye figyelembe, hogy öt munkanapon belül le kell foglalni a gazdagépeket. 
 
-1. Miután hozzáadta az Azure-csomaghoz, és engedélyezte a kvótát, az ügyfél vagy a partner rendszergazdája üzembe helyezhet egy Azure VMware-megoldást a saját Azure Portal. A csomópontok kiépítése előtt győződjön meg arról, hogy regisztrálja a **Microsoft. AVS** erőforrás-szolgáltatót a Azure Portal.  
+1. Miután hozzáadta az Azure-csomaghoz, és engedélyezte a kvótát, az ügyfél vagy a partner rendszergazdája üzembe helyezhet egy Azure VMware-megoldást a saját Azure Portal. A gazdagépek kiépítése előtt győződjön meg arról, hogy regisztrálja a **Microsoft. AVS** erőforrás-szolgáltatót a Azure Portal.  
 
    ```azurecli-interactive
    az provider register -n Microsoft.AVS --subscription <your subscription ID>

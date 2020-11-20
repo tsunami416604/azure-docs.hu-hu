@@ -7,18 +7,19 @@ author: msjuergent
 manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b99e744fb949f707467286c3d79de0f4e76a49c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf9fd361dea43b1cfa6ae45710a3a7bbf4e4de03
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87835510"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967669"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA (nagyméretű példányok) hálózati architektúrája
 
@@ -167,7 +168,7 @@ A Microsoft egy [ExpressRoute Global REACH](../../../expressroute/expressroute-g
 Azon Azure-régiókban, ahol a Global Reach elérhető, kérheti a ExpressRoute-áramkör Global Reach funkciójának engedélyezését, amely összekapcsolja a helyszíni hálózatot az Azure-beli virtuális hálózattal, amely a HANA nagyméretű példány-egységekhez is csatlakozik. A ExpressRoute-áramkör helyszíni oldalának van néhány hatása. Az árakért keresse [meg Global REACH-bővítmény](https://azure.microsoft.com/pricing/details/expressroute/)árát. A HANA nagyméretű példány-egységeket az Azure-hoz összekapcsoló áramkörhöz kapcsolódóan nem számítunk fel további költségeket. 
 
 > [!IMPORTANT]  
-> Ha Global Reacht használ a HANA nagyméretű példány-egységek és a helyszíni eszközök közvetlen elérésének engedélyezéséhez, a hálózati adatok és a vezérlési folyamat **nem az Azure Virtual Networks**szolgáltatáson keresztül történik, hanem közvetlenül a Microsoft vállalati Exchange-útválasztók között. Ennek eredményeképpen a NSG-vagy ASG-szabályok, illetve az Azure-beli virtuális hálózatokban üzembe helyezett bármilyen típusú tűzfal, NVA vagy proxy nem kerül megérintésre. **Ha a ExpressRoute Global Reach segítségével engedélyezi a helyszíni és a HANA-példányok nagyméretű példányaira vonatkozó korlátozásokat, és a HANA nagyméretű példányokhoz való hozzáféréshez szükséges engedélyeket meg kell határozni a helyszíni oldalon található tűzfalakon.** 
+> Ha Global Reacht használ a HANA nagyméretű példány-egységek és a helyszíni eszközök közvetlen elérésének engedélyezéséhez, a hálózati adatok és a vezérlési folyamat **nem az Azure Virtual Networks** szolgáltatáson keresztül történik, hanem közvetlenül a Microsoft vállalati Exchange-útválasztók között. Ennek eredményeképpen a NSG-vagy ASG-szabályok, illetve az Azure-beli virtuális hálózatokban üzembe helyezett bármilyen típusú tűzfal, NVA vagy proxy nem kerül megérintésre. **Ha a ExpressRoute Global Reach segítségével engedélyezi a helyszíni és a HANA-példányok nagyméretű példányaira vonatkozó korlátozásokat, és a HANA nagyméretű példányokhoz való hozzáféréshez szükséges engedélyeket meg kell határozni a helyszíni oldalon található tűzfalakon.** 
 
 ##### <a name="connecting-hana-large-instances-in-different-azure-regions"></a>A HANA nagyméretű példányainak különböző Azure-régiókban való csatlakoztatása
 Ugyanúgy, ahogy a ExpressRoute Global Reach a helyszíni és a HANA nagyméretű példányokhoz való csatlakozáshoz is használható, két különböző régióban üzembe helyezett HANA nagyméretű példány-bérlők összekapcsolására használható. Az elkülönítés az a ExpressRoute-áramkör, amelyet a HANA nagyméretű példányai bérlői használnak az Azure-hoz való kapcsolódásra mindkét régióban. Két különböző régióban üzembe helyezett HANA nagyméretű példány-bérlő csatlakoztatása nem jár további költségekkel. 

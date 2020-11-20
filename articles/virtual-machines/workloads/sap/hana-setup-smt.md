@@ -7,18 +7,19 @@ author: hermanndms
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: hermannd
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c186b73cb00d03b731cd015b3ee06bf8f2233fa4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88b1cd2a5bf33d6401f0d2e15237400e27c72e54
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541152"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967652"
 ---
 # <a name="set-up-smt-server-for-suse-linux"></a>Az SMT-kiszolgáló beállítása SUSE Linux rendszerhez
 SAP HANA nagyméretű példányai nem rendelkeznek közvetlen kapcsolattal az internettel. Ez nem egy egyszerű folyamat, amellyel regisztrálhatja az adott egységet az operációs rendszer szolgáltatójával, valamint letöltheti és alkalmazhatja a frissítéseket. A SUSE Linux rendszerhez készült megoldás egy SMT-kiszolgáló beállítása egy Azure-beli virtuális gépen. A virtuális gépet egy olyan Azure-beli virtuális hálózatban üzemelteti, amely a HANA Large-példányhoz csatlakozik. Ilyen SMT-kiszolgáló esetén a HANA nagyméretű példány egysége regisztrálhatja és letöltheti a frissítéseket. 
@@ -78,7 +79,7 @@ Resolving package dependencies...
 ```
 
 
-Az SMT-csomagok telepítéséhez a YAST eszközt is használhatja. A YAST-ben lépjen a **szoftver karbantartása**elemre, és keressen rá az SMT kifejezésre. Válassza ki az **SMT**-t, amely automatikusan YaST2-SMT-re vált.
+Az SMT-csomagok telepítéséhez a YAST eszközt is használhatja. A YAST-ben lépjen a **szoftver karbantartása** elemre, és keressen rá az SMT kifejezésre. Válassza ki az **SMT**-t, amely automatikusan YaST2-SMT-re vált.
 
 ![Képernyőfelvétel a YAST-beli SMT-ről](./media/hana-installation/image5_smt_in_yast.PNG)
 

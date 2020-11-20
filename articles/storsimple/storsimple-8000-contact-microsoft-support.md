@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: daf54b64e33b83b909fe91455cee2f5c1ec27d3d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c288f59b1cb9a85ed4bc978d1c3fba18ba30b572
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960320"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968757"
 ---
 # <a name="contact-microsoft-support"></a>Kapcsolatfelvétel a Microsoft ügyfélszolgálatával
 
@@ -21,7 +21,7 @@ A StorSimple Eszközkezelő lehetővé teszi **egy új támogatási kérelem nap
 * Támogatási kérelmek életciklusának kezelése a portálon belülről.
 * Támogatási munkamenet elindítása a StorSimple-eszköz Windows PowerShell-felületén.
 
-Support request létrehozása előtt tekintse át a [StorSimple 8000 sorozat támogatási SLA-kat és információkat](https://msdn.microsoft.com/library/mt433077.aspx) .
+Support request létrehozása előtt tekintse át a [StorSimple 8000 sorozat támogatási SLA-kat és információkat](./storsimple-8000-support-options.md) .
 
 ## <a name="create-a-support-request"></a>Támogatási kérelem létrehozása
 
@@ -29,12 +29,12 @@ A [támogatási csomagtól](https://azure.microsoft.com/support/plans/)függően
 
 #### <a name="to-create-a-support-request"></a>Támogatási kérelem létrehozása
 
-1. Nyissa meg a StorSimple-eszközkezelő szolgáltatást. A szolgáltatás összegzése panel beállításainál válassza a **támogatás + hibaelhárítás** szakaszt, majd kattintson az **új támogatási kérelem**elemre.
+1. Nyissa meg a StorSimple-eszközkezelő szolgáltatást. A szolgáltatás összegzése panel beállításainál válassza a **támogatás + hibaelhárítás** szakaszt, majd kattintson az **új támogatási kérelem** elemre.
      
     ![Kapcsolatfelvétel az MS ügyfélszolgálatával az új portálon keresztül](./media/storsimple-8000-contact-microsoft-support/contactsupport1.png)
    
-2. Az **új támogatási kérelem** panelen válassza az **alapismeretek**lehetőséget. Az **alapvető beállítások** panelen végezze el a következő lépéseket:
-   1. A **probléma típusa** legördülő listában válassza a **technikai**lehetőséget.
+2. Az **új támogatási kérelem** panelen válassza az **alapismeretek** lehetőséget. Az **alapvető beállítások** panelen végezze el a következő lépéseket:
+   1. A **probléma típusa** legördülő listában válassza a **technikai** lehetőséget.
    2. Az aktuális **előfizetés**, a **szolgáltatás** típusa és az **erőforrás** (StorSimple Eszközkezelő szolgáltatás) automatikusan ki van választva. 
    3. Válassza ki a **támogatási csomagot** a legördülő listából, ha az előfizetéshez több csomag van társítva. A technikai támogatás engedélyezéséhez fizetős támogatási csomag szükséges.
    4. Kattintson a **Tovább** gombra.
@@ -47,15 +47,15 @@ A [támogatási csomagtól](https://azure.microsoft.com/support/plans/)függően
     2. Adja meg, hogy a probléma a készülékhez vagy a StorSimple Eszközkezelő szolgáltatáshoz kapcsolódik-e.
     3. Válassza ki a probléma **kategóriáját** , és adja meg a probléma további **részleteit** .
     4. Adja meg a probléma kezdő dátumát és időpontját.
-    5. A **fájlfeltöltés**területen kattintson a mappa ikonra a támogatási csomag megkereséséhez.
-    6. A **diagnosztikai adatok megosztásának**megadásához.
+    5. A **fájlfeltöltés** területen kattintson a mappa ikonra a támogatási csomag megkereséséhez.
+    6. A **diagnosztikai adatok megosztásának** megadásához.
     7. Kattintson a **Tovább** gombra.
 
        ![Kapcsolatfelvétel az MS ügyfélszolgálatával az új portálon keresztül 3](./media/storsimple-8000-contact-microsoft-support/contactsupport3.png) 
 
-4. Az **új támogatási kérelem** panelen kattintson a **3. lépés kapcsolattartási adatok**elemre. A **kapcsolattartási adatok** panelen hajtsa végre a következő lépéseket:
+4. Az **új támogatási kérelem** panelen kattintson a **3. lépés kapcsolattartási adatok** elemre. A **kapcsolattartási adatok** panelen hajtsa végre a következő lépéseket:
 
-   1. A **kapcsolattartási beállítások**területen adja meg a kívánt kapcsolattartási módszert (telefon vagy e-mail) és a nyelvet. A válaszidő automatikusan ki van választva az előfizetési terv alapján.
+   1. A **kapcsolattartási beállítások** területen adja meg a kívánt kapcsolattartási módszert (telefon vagy e-mail) és a nyelvet. A válaszidő automatikusan ki van választva az előfizetési terv alapján.
    2. A kapcsolattartási adatok területen adja meg a nevét, az e-mail-címet, a nem kötelező kapcsolattartót, az országot/régiót. Jelölje be a **kapcsolattartási változások mentése a későbbi támogatási kérelmekhez** jelölőnégyzetet.
    3. Kattintson a **Létrehozás** gombra.
    
@@ -70,7 +70,7 @@ A támogatási jegy létrehozása után a jegyet a teljes életciklusán kereszt
 
 #### <a name="to-manage-your-support-requests"></a>A támogatási kérések kezelése
 
-1. A Súgó és támogatás lapon keresse meg a **tallózás > Súgó + támogatás**menüpontot.
+1. A Súgó és támogatás lapon keresse meg a **tallózás > Súgó + támogatás** menüpontot.
 
     ![Támogatási kérelmek kezelése](./media/storsimple-8000-contact-microsoft-support/managesupport1.png)
 
@@ -92,7 +92,7 @@ A támogatási munkamenet elindításához hajtsa végre a következő lépések
 
 1. Közvetlenül a soros konzol vagy egy távoli számítógépről származó Telnet-munkamenet használatával férhet hozzá az eszközhöz. Ehhez kövesse a [Putty használata az eszköz soros konzolhoz való kapcsolódáshoz](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)című témakör lépéseit.
 2. A megnyíló munkamenetben nyomja le az **ENTER** billentyűt a parancssor beszerzéséhez.
-3. A soros konzol menüjében válassza az 1. lehetőséget, majd **Jelentkezzen be a teljes hozzáférés**lehetőséggel.
+3. A soros konzol menüjében válassza az 1. lehetőséget, majd **Jelentkezzen be a teljes hozzáférés** lehetőséggel.
 4. A parancssorba írja be a következő jelszót:
    
     `Password1`

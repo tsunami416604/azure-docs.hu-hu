@@ -3,6 +3,7 @@ title: Az IBM&T fejlesztési és tesztelési környezet telepítése az Azure-on
 description: Az IBM Z fejlesztési és tesztelési környezet (&T) üzembe helyezése az Azure-beli virtuális gépek (VM) szolgáltatáson (IaaS) keresztül.
 services: virtual-machines-linux
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 documentationcenter: ''
 author: njray
 ms.author: edprice
@@ -12,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 55eb9a0bca3f142c1065f867cebd840cc7958b7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c12a812f66345a26701b2a1623487fd262ede4be
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86499919"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968332"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>Az IBM&T fejlesztési és tesztelési környezet telepítése az Azure-ban
 
@@ -62,7 +63,7 @@ Ez a cikk bemutatja, hogyan állíthatja be a Z fejlesztési és tesztelési kö
 
 3. Szerezze be a virtuális gép **Áttekintés** paneljén látható SSH hitelesítő adatokat a **kapcsolat** gomb használatával. Válassza az **SSH** fület, és másolja az SSH-bejelentkezési parancsot a vágólapra.
 
-4. Jelentkezzen be egy [bash-rendszerhéjba](../../../../cloud-shell/quickstart.md) a helyi számítógépről, és illessze be a parancsot. Ez az **SSH \<user id\> \@ \<IP Address\> **formában jelenik meg. Ha a rendszer kéri a hitelesítő adatok megadását, adja meg őket a saját kezdőkönyvtár kapcsolatának létrehozásához.
+4. Jelentkezzen be egy [bash-rendszerhéjba](../../../../cloud-shell/quickstart.md) a helyi számítógépről, és illessze be a parancsot. Ez az **SSH \<user id\> \@ \<IP Address\>** formában jelenik meg. Ha a rendszer kéri a hitelesítő adatok megadását, adja meg őket a saját kezdőkönyvtár kapcsolatának létrehozásához.
 
 ## <a name="copy-the-installation-file-to-the-server"></a>A telepítési fájl másolása a kiszolgálóra
 
@@ -108,7 +109,7 @@ A webkiszolgáló telepítési fájlja a **ZDT \_ install \_ EE \_ v 12.0.0.1. t
 
 4. Nyomja le az **ENTER** billentyűt, és figyelmesen olvassa el a licencszerződéseket. A licenc végén adja meg az **Igen** értéket a folytatáshoz.
 
-5. Amikor a rendszer felszólítja az újonnan létrehozott felhasználó jelszavának módosítására, **ibmsys1**használja a **sudo passwd ibmsys1** parancsot, és adja meg az új jelszót.
+5. Amikor a rendszer felszólítja az újonnan létrehozott felhasználó jelszavának módosítására, **ibmsys1** használja a **sudo passwd ibmsys1** parancsot, és adja meg az új jelszót.
 
 6. Annak ellenőrzése, hogy a telepítés sikeres volt-e
 
@@ -116,7 +117,7 @@ A webkiszolgáló telepítési fájlja a **ZDT \_ install \_ EE \_ v 12.0.0.1. t
     dpkg -l | grep zdtapp
     ```
 
-7. Ellenőrizze, hogy a kimenet tartalmazza-e a **zdtapp 12.0.0.0**karakterláncot, amely azt jelzi, hogy a csomag gázzal való telepítése sikerült
+7. Ellenőrizze, hogy a kimenet tartalmazza-e a **zdtapp 12.0.0.0** karakterláncot, amely azt jelzi, hogy a csomag gázzal való telepítése sikerült
 
 ### <a name="starting-enterprise-edition"></a>Enterprise kiadás indítása
 
@@ -136,6 +137,6 @@ Ne feledje, hogy a webkiszolgáló indításakor a rendszer a telepítési folya
 
 3. Illessze be az URL-címet egy webböngészőbe, és nyissa meg a felügyeleti összetevőt a&T-telepítéshez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Alkalmazás-fejlesztőknek vezérelt terjesztés (ADCD) beállítása az IBM&T v1-ben](./demo.md)

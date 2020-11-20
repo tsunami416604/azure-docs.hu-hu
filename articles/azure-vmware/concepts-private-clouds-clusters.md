@@ -3,12 +3,12 @@ title: Fogalmak – privát felhők és fürtök
 description: Ismerje meg az Azure VMware Solution szoftver által meghatározott adatközpontok és vSphere-fürtök főbb képességeit.
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 0454ade503ce40de46363f65d36a64340219c0b1
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: af34bb0d83d9571ae91dce90cab198a61cfe82a1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874015"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967380"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware-megoldás – saját felhő és fürt – fogalmak
 
@@ -38,7 +38,7 @@ A vSphere és a NSX-T Manager használatával kezelheti a fürtkonfiguráció va
 
 ## <a name="hosts"></a>Hosts
 
-Az Azure VMware-megoldás saját felhőalapú fürtök Hyper-konvergens, operációs rendszer nélküli infrastruktúra-csomópontokat használnak. A következő táblázat a gazdagép RAM-, CPU-és lemezterület-kapacitását mutatja be. 
+Az Azure VMware-megoldás saját felhőalapú fürtök Hyper-konvergens, operációs rendszer nélküli infrastruktúra-gazdagépeket használnak. A következő táblázat a gazdagép RAM-, CPU-és lemezterület-kapacitását mutatja be. 
 
 | Állomás típusa              |             CPU             |   Memória (GB)   |  vSAN NVMe gyorsítótárazási szintje (TB, nyers)  |  vSAN SSD kapacitási szintje (TB, nyers)  |
 | :---                   |            :---:            |    :---:     |               :---:              |                :---:               |

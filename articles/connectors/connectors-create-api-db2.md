@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: plarsen, logicappspm
 ms.topic: conceptual
-ms.date: 08/23/2018
+ms.date: 11/19/2020
 tags: connectors
-ms.openlocfilehash: 6c9c54450788a89a7b1aadbb0b4682a60619c061
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 765bb66b572f0c046222cfb617fe4caa80925256
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334599"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967401"
 ---
 # <a name="access-and-manage-ibm-db2-resources-by-using-azure-logic-apps"></a>Az IBM DB2-erőforrások elérése és kezelése Azure Logic Apps használatával
 
@@ -28,7 +28,7 @@ Az IBM DB2-összekötő támogatja ezeket az IBM DB2 platformokat és verziókat
 
 | Platform | Verzió | 
 |----------|---------|
-| IBM DB2 for z/OS | 11,1, 10,1 |
+| IBM DB2 for z/OS | 12, 11,1, 10,1 |
 | IBM DB2 – i | 7,3, 7,2, 7,1 |
 | IBM DB2 a LUW-hez | 11, 10,5 |
 |||
@@ -64,7 +64,7 @@ A cikkben szereplő példák az **ismétlődési** eseményindítót használjá
 
 1. A [Azure Portalban](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic app Designerben, ha még nincs megnyitva.
 
-1. Az trigger alatt válassza az **új lépés**lehetőséget.
+1. Az trigger alatt válassza az **új lépés** lehetőséget.
 
 1. A keresőmezőbe írja be szűrőként a "DB2" kifejezést. Ebben a példában a műveletek listában válassza a következő műveletet: **táblák beolvasása (előzetes verzió)**
 
@@ -78,7 +78,7 @@ A cikkben szereplő példák az **ismétlődési** eseményindítót használjá
 
 ## <a name="connect-to-cloud-db2"></a>Kapcsolódás a Cloud DB2-hez
 
-A kapcsolat beállításához adja meg a kapcsolódási adatokat, ha a rendszer kéri, válassza a **Létrehozás**lehetőséget, majd mentse a logikai alkalmazást:
+A kapcsolat beállításához adja meg a kapcsolódási adatokat, ha a rendszer kéri, válassza a **Létrehozás** lehetőséget, majd mentse a logikai alkalmazást:
 
 | Tulajdonság | Kötelező | Leírás |
 |----------|----------|-------------|
@@ -90,7 +90,7 @@ A kapcsolat beállításához adja meg a kapcsolódási adatokat, ha a rendszer 
 | **Jelszó** | Igen | Az adatbázis jelszava |
 ||||
 
-Példa:
+Például:
 
 ![A felhőalapú adatbázisok kapcsolati adatai](./media/connectors-create-api-db2/create-db2-cloud-connection.png)
 
@@ -98,7 +98,7 @@ Példa:
 
 ## <a name="connect-to-on-premises-db2"></a>Kapcsolódás helyszíni DB2-hez
 
-A kapcsolatok létrehozása előtt már telepítve kell lennie a helyszíni adatátjárónak. Ellenkező esetben nem lehet befejezni a kapcsolatok beállítását. Ha telepítette az átjárót, folytassa a kapcsolat részleteinek megadásával, majd válassza a **Létrehozás**lehetőséget.
+A kapcsolatok létrehozása előtt már telepítve kell lennie a helyszíni adatátjárónak. Ellenkező esetben nem lehet befejezni a kapcsolatok beállítását. Ha telepítette az átjárót, folytassa a kapcsolat részleteinek megadásával, majd válassza a **Létrehozás** lehetőséget.
 
 | Tulajdonság | Kötelező | Leírás |
 |----------|----------|-------------|
@@ -112,28 +112,28 @@ A kapcsolatok létrehozása előtt már telepítve kell lennie a helyszíni adat
 | **Átjáró** | Igen | A telepített helyszíni adatátjáró neve <p><p>**Megjegyzés**: válassza ki ezt az értéket a listából, amely tartalmazza az Azure-előfizetésben és az erőforráscsoporthoz található összes telepített adatátjárót. |
 ||||
 
-Példa:
+Például:
 
 ![A helyszíni adatbázisok kapcsolati adatai](./media/connectors-create-api-db2/create-db2-on-premises-connection.png)
 
 ### <a name="view-output-tables"></a>Kimeneti táblák megtekintése
 
-A logikai alkalmazás manuális futtatásához a tervező eszköztárán válassza a **Futtatás**lehetőséget. A logikai alkalmazás futásának befejeződése után megtekintheti a kimenetet a futtatásból.
+A logikai alkalmazás manuális futtatásához a tervező eszköztárán válassza a **Futtatás** lehetőséget. A logikai alkalmazás futásának befejeződése után megtekintheti a kimenetet a futtatásból.
 
-1. A logikai alkalmazás menüjében válassza az **Áttekintés**lehetőséget.
+1. A logikai alkalmazás menüjében válassza az **Áttekintés** lehetőséget.
 
-1. Az **Összefoglalás**alatt, a **futtatási előzmények** szakaszban válassza ki a legutóbbi futtatást, amely a lista első eleme.
+1. Az **Összefoglalás** alatt, a **futtatási előzmények** szakaszban válassza ki a legutóbbi futtatást, amely a lista első eleme.
 
    ![Futtatási előzmények megtekintése](./media/connectors-create-api-db2/run-history.png)
 
-1. A **logikai alkalmazás futtatása**területen most már ellenőrizheti a logikai alkalmazás egyes lépéseinek állapotát, bemeneteit és kimeneteit.
+1. A **logikai alkalmazás futtatása** területen most már ellenőrizheti a logikai alkalmazás egyes lépéseinek állapotát, bemeneteit és kimeneteit.
 Bontsa ki a **táblák beolvasása** műveletet.
 
    ![Művelet kibontása](./media/connectors-create-api-db2/expand-action-step.png)
 
-1. A bemenetek megtekintéséhez válassza a **nyers bemenetek megjelenítése**elemet.
+1. A bemenetek megtekintéséhez válassza a **nyers bemenetek megjelenítése** elemet.
 
-1. A kimenetek megtekintéséhez válassza a **nyers kimenetek megjelenítése**lehetőséget.
+1. A kimenetek megtekintéséhez válassza a **nyers kimenetek megjelenítése** lehetőséget.
 
    A kimenetek tartalmazzák a táblák listáját.
 
@@ -159,22 +159,22 @@ Egy DB2-adatbázistábla egyik rekordjának beolvasásához használja a logikai
 
    ![Képernyőkép: "a sor beolvasása (előzetes verzió)" művelet a megnyitott "táblanév" listával és a "terület" érték kiválasztásával.](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
 
-1. Ha elkészült, a tervező eszköztárán válassza a **Mentés**lehetőséget.
+1. Ha elkészült, a tervező eszköztárán válassza a **Mentés** lehetőséget.
 
 ### <a name="view-output-row"></a>Kimeneti sor megtekintése
 
-A logikai alkalmazás manuális futtatásához a tervező eszköztárán válassza a **Futtatás**lehetőséget. A logikai alkalmazás futásának befejeződése után megtekintheti a kimenetet a futtatásból.
+A logikai alkalmazás manuális futtatásához a tervező eszköztárán válassza a **Futtatás** lehetőséget. A logikai alkalmazás futásának befejeződése után megtekintheti a kimenetet a futtatásból.
 
-1. A logikai alkalmazás menüjében válassza az **Áttekintés**lehetőséget.
+1. A logikai alkalmazás menüjében válassza az **Áttekintés** lehetőséget.
 
-1. Az **Összefoglalás**alatt, a **futtatási előzmények** szakaszban válassza ki a legutóbbi futtatást, amely a lista első eleme.
+1. Az **Összefoglalás** alatt, a **futtatási előzmények** szakaszban válassza ki a legutóbbi futtatást, amely a lista első eleme.
 
-1. A **logikai alkalmazás futtatása**területen most már ellenőrizheti a logikai alkalmazás egyes lépéseinek állapotát, bemeneteit és kimeneteit.
+1. A **logikai alkalmazás futtatása** területen most már ellenőrizheti a logikai alkalmazás egyes lépéseinek állapotát, bemeneteit és kimeneteit.
 Bontsa ki a **sor beolvasása** műveletet.
 
-1. A bemenetek megtekintéséhez válassza a **nyers bemenetek megjelenítése**elemet.
+1. A bemenetek megtekintéséhez válassza a **nyers bemenetek megjelenítése** elemet.
 
-1. A kimenetek megtekintéséhez válassza a **nyers kimenetek megjelenítése**lehetőséget.
+1. A kimenetek megtekintéséhez válassza a **nyers kimenetek megjelenítése** lehetőséget.
 
    A kimenetek tartalmazzák a megadott sort.
 
@@ -194,24 +194,24 @@ Egy DB2-adatbázistábla összes rekordjának beolvasásához használja a logik
 
    ![Képernyőkép a "sor beolvasása (előzetes verzió)" műveletről "a tábla neve" listában kiválasztott "terület" értékkel.](./media/connectors-create-api-db2/db2-get-rows-action-select-table.png)
 
-1. Ha szűrőt vagy lekérdezést szeretne megadni az eredményekhez, válassza a **Speciális beállítások megjelenítése**lehetőséget.
+1. Ha szűrőt vagy lekérdezést szeretne megadni az eredményekhez, válassza a **Speciális beállítások megjelenítése** lehetőséget.
 
-1. Ha elkészült, a tervező eszköztárán válassza a **Mentés**lehetőséget.
+1. Ha elkészült, a tervező eszköztárán válassza a **Mentés** lehetőséget.
 
 ### <a name="view-output-rows"></a>Kimeneti sorok megtekintése
 
-A logikai alkalmazás manuális futtatásához a tervező eszköztárán válassza a **Futtatás**lehetőséget. A logikai alkalmazás futásának befejeződése után megtekintheti a kimenetet a futtatásból.
+A logikai alkalmazás manuális futtatásához a tervező eszköztárán válassza a **Futtatás** lehetőséget. A logikai alkalmazás futásának befejeződése után megtekintheti a kimenetet a futtatásból.
 
-1. A logikai alkalmazás menüjében válassza az **Áttekintés**lehetőséget.
+1. A logikai alkalmazás menüjében válassza az **Áttekintés** lehetőséget.
 
-1. Az **Összefoglalás**alatt, a **futtatási előzmények** szakaszban válassza ki a legutóbbi futtatást, amely a lista első eleme.
+1. Az **Összefoglalás** alatt, a **futtatási előzmények** szakaszban válassza ki a legutóbbi futtatást, amely a lista első eleme.
 
-1. A **logikai alkalmazás futtatása**területen most már ellenőrizheti a logikai alkalmazás egyes lépéseinek állapotát, bemeneteit és kimeneteit.
+1. A **logikai alkalmazás futtatása** területen most már ellenőrizheti a logikai alkalmazás egyes lépéseinek állapotát, bemeneteit és kimeneteit.
 Bontsa ki a **sorok beolvasása** műveletet.
 
-1. A bemenetek megtekintéséhez válassza a **nyers bemenetek megjelenítése**elemet.
+1. A bemenetek megtekintéséhez válassza a **nyers bemenetek megjelenítése** elemet.
 
-1. A kimenetek megtekintéséhez válassza a **nyers kimenetek megjelenítése**lehetőséget.
+1. A kimenetek megtekintéséhez válassza a **nyers kimenetek megjelenítése** lehetőséget.
 
    A kimenetek tartalmazzák a megadott tábla összes rekordját.
 
@@ -239,26 +239,26 @@ Ha egyetlen rekordot szeretne hozzáadni egy DB2-adatbázis táblához, használ
    | **Régió azonosítója** | Igen | A hozzáadandó régió azonosítója, például: "102" |
    |||| 
 
-   Példa:
+   Például:
 
    ![Képernyőfelvétel: a Logic Apps Designer és a "sor beszúrása (előzetes verzió)" művelet és a példa tulajdonság értékei.](./media/connectors-create-api-db2/db2-insert-row-action-select-table.png)
 
-1. Ha elkészült, a tervező eszköztárán válassza a **Mentés**lehetőséget.
+1. Ha elkészült, a tervező eszköztárán válassza a **Mentés** lehetőséget.
 
 ### <a name="view-insert-row-outputs"></a>Sorok beszúrási kimenetének megtekintése
 
-A logikai alkalmazás manuális futtatásához a tervező eszköztárán válassza a **Futtatás**lehetőséget. A logikai alkalmazás futásának befejeződése után megtekintheti a kimenetet a futtatásból.
+A logikai alkalmazás manuális futtatásához a tervező eszköztárán válassza a **Futtatás** lehetőséget. A logikai alkalmazás futásának befejeződése után megtekintheti a kimenetet a futtatásból.
 
-1. A logikai alkalmazás menüjében válassza az **Áttekintés**lehetőséget.
+1. A logikai alkalmazás menüjében válassza az **Áttekintés** lehetőséget.
 
-1. Az **Összefoglalás**alatt, a **futtatási előzmények** szakaszban válassza ki a legutóbbi futtatást, amely a lista első eleme.
+1. Az **Összefoglalás** alatt, a **futtatási előzmények** szakaszban válassza ki a legutóbbi futtatást, amely a lista első eleme.
 
-1. A **logikai alkalmazás futtatása**területen most már ellenőrizheti a logikai alkalmazás egyes lépéseinek állapotát, bemeneteit és kimeneteit.
+1. A **logikai alkalmazás futtatása** területen most már ellenőrizheti a logikai alkalmazás egyes lépéseinek állapotát, bemeneteit és kimeneteit.
 Bontsa ki a **sor beszúrása** műveletet.
 
-1. A bemenetek megtekintéséhez válassza a **nyers bemenetek megjelenítése**elemet.
+1. A bemenetek megtekintéséhez válassza a **nyers bemenetek megjelenítése** elemet.
 
-1. A kimenetek megtekintéséhez válassza a **nyers kimenetek megjelenítése**lehetőséget.
+1. A kimenetek megtekintéséhez válassza a **nyers kimenetek megjelenítése** lehetőséget.
 
    A kimenetek tartalmazzák a megadott táblához hozzáadott rekordot.
 
@@ -287,26 +287,26 @@ Ha egy DB2-adatbázistábla egyetlen rekordját szeretné frissíteni, használj
    | **Régió azonosítója** | Igen | Az új régió azonosítója, például "102" |
    ||||
 
-   Példa:
+   Például:
 
    ![Képernyőfelvétel: a Logic Apps Designer és a "frissítési sor (előzetes verzió)" művelet, ahol kiválaszthat egy táblát.](./media/connectors-create-api-db2/db2-update-row-action-select-table.png)
 
-1. Ha elkészült, a tervező eszköztárán válassza a **Mentés**lehetőséget.
+1. Ha elkészült, a tervező eszköztárán válassza a **Mentés** lehetőséget.
 
 ### <a name="view-update-row-outputs"></a>Frissítési sor kimenetének megtekintése
 
-A logikai alkalmazás manuális futtatásához a tervező eszköztárán válassza a **Futtatás**lehetőséget. A logikai alkalmazás futásának befejeződése után megtekintheti a kimenetet a futtatásból.
+A logikai alkalmazás manuális futtatásához a tervező eszköztárán válassza a **Futtatás** lehetőséget. A logikai alkalmazás futásának befejeződése után megtekintheti a kimenetet a futtatásból.
 
-1. A logikai alkalmazás menüjében válassza az **Áttekintés**lehetőséget.
+1. A logikai alkalmazás menüjében válassza az **Áttekintés** lehetőséget.
 
-1. Az **Összefoglalás**alatt, a **futtatási előzmények** szakaszban válassza ki a legutóbbi futtatást, amely a lista első eleme.
+1. Az **Összefoglalás** alatt, a **futtatási előzmények** szakaszban válassza ki a legutóbbi futtatást, amely a lista első eleme.
 
-1. A **logikai alkalmazás futtatása**területen most már ellenőrizheti a logikai alkalmazás egyes lépéseinek állapotát, bemeneteit és kimeneteit.
+1. A **logikai alkalmazás futtatása** területen most már ellenőrizheti a logikai alkalmazás egyes lépéseinek állapotát, bemeneteit és kimeneteit.
 Bontsa ki a **frissítési sor** műveletet.
 
-1. A bemenetek megtekintéséhez válassza a **nyers bemenetek megjelenítése**elemet.
+1. A bemenetek megtekintéséhez válassza a **nyers bemenetek megjelenítése** elemet.
 
-1. A kimenetek megtekintéséhez válassza a **nyers kimenetek megjelenítése**lehetőséget.
+1. A kimenetek megtekintéséhez válassza a **nyers kimenetek megjelenítése** lehetőséget.
 
    A kimenetek közé tartozik a megadott táblában frissített rekord.
 
@@ -332,26 +332,26 @@ Ha egyetlen rekordot szeretne törölni egy DB2-adatbázis táblából, használ
    | **Sor azonosítója** | Igen | A törlendő rekord azonosítója, például: "99999" |
    ||||
 
-   Példa:
+   Például:
 
    ![Képernyőfelvétel: a Logic Apps Designer és a "sor törlése (előzetes verzió)" művelet, ahol kiválaszthat egy törölni kívánt táblát.](./media/connectors-create-api-db2/db2-delete-row-action-select-table.png)
 
-1. Ha elkészült, a tervező eszköztárán válassza a **Mentés**lehetőséget.
+1. Ha elkészült, a tervező eszköztárán válassza a **Mentés** lehetőséget.
 
 ### <a name="view-delete-row-outputs"></a>Sorok törlési kimenetének megtekintése
 
-A logikai alkalmazás manuális futtatásához a tervező eszköztárán válassza a **Futtatás**lehetőséget. A logikai alkalmazás futásának befejeződése után megtekintheti a kimenetet a futtatásból.
+A logikai alkalmazás manuális futtatásához a tervező eszköztárán válassza a **Futtatás** lehetőséget. A logikai alkalmazás futásának befejeződése után megtekintheti a kimenetet a futtatásból.
 
-1. A logikai alkalmazás menüjében válassza az **Áttekintés**lehetőséget.
+1. A logikai alkalmazás menüjében válassza az **Áttekintés** lehetőséget.
 
-1. Az **Összefoglalás**alatt, a **futtatási előzmények** szakaszban válassza ki a legutóbbi futtatást, amely a lista első eleme.
+1. Az **Összefoglalás** alatt, a **futtatási előzmények** szakaszban válassza ki a legutóbbi futtatást, amely a lista első eleme.
 
-1. A **logikai alkalmazás futtatása**területen most már ellenőrizheti a logikai alkalmazás egyes lépéseinek állapotát, bemeneteit és kimeneteit.
+1. A **logikai alkalmazás futtatása** területen most már ellenőrizheti a logikai alkalmazás egyes lépéseinek állapotát, bemeneteit és kimeneteit.
 Bontsa ki a **sor törlése** műveletet.
 
-1. A bemenetek megtekintéséhez válassza a **nyers bemenetek megjelenítése**elemet.
+1. A bemenetek megtekintéséhez válassza a **nyers bemenetek megjelenítése** elemet.
 
-1. A kimenetek megtekintéséhez válassza a **nyers kimenetek megjelenítése**lehetőséget.
+1. A kimenetek megtekintéséhez válassza a **nyers kimenetek megjelenítése** lehetőséget.
 
    A kimenetek már nem tartalmazzák a megadott táblából törölt rekordot.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: matd
-ms.openlocfilehash: a35b4e398757cb3d4b17e4fd6a5e342fe3c82918
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66a1e22282864d0425173504735d6beb42b76ad7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710379"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967261"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>StorSimple biztonsági mentési célként a Backup Exec
 
@@ -79,7 +79,7 @@ A StorSimple az alábbi előnyöket kínálja:
 
 Bár a StorSimple két fő telepítési forgatókönyvet mutat be (elsődleges biztonsági mentési cél és másodlagos biztonsági mentési cél), alapvetően egyszerű, blokkos tárolóeszköz. A StorSimple végzi a tömörítést és a demásolást. Zökkenőmentesen küldi és kéri le az adatokat a felhő és az alkalmazás és a fájlrendszer között.
 
-További információ a StorSimple [: StorSimple 8000 sorozat: hibrid felhőalapú tárolási megoldás](storsimple-overview.md). Emellett áttekintheti a [technikai StorSimple 8000 sorozatának specifikációit](storsimple-technical-specifications-and-compliance.md).
+További információ a StorSimple [: StorSimple 8000 sorozat: hibrid felhőalapú tárolási megoldás](storsimple-overview.md). Emellett áttekintheti a [technikai StorSimple 8000 sorozatának specifikációit](./storsimple-8000-technical-specifications-and-compliance.md).
 
 > [!IMPORTANT]
 > A StorSimple-eszköz biztonsági mentési célként való használata csak a StorSimple 8000 Update 3 és újabb verziók esetében támogatott.
@@ -170,7 +170,7 @@ A megoldás optimális végrehajtása érdekében javasoljuk, hogy kövesse ezek
 
 ### <a name="deploy-storsimple"></a>StorSimple üzembe helyezése
 
-A részletes StorSimple üzembe helyezési útmutató: a helyszíni StorSimple- [eszköz üzembe helyezése](storsimple-deployment-walkthrough-u2.md).
+A részletes StorSimple üzembe helyezési útmutató: a helyszíni StorSimple- [eszköz üzembe helyezése](./storsimple-8000-deployment-walkthrough-u2.md).
 
 ### <a name="deploy-backup-exec"></a>Backup Exec üzembe helyezése
 
@@ -185,7 +185,7 @@ Ebben a szakaszban néhány konfigurációs példát mutatunk be. Az alábbi pé
 | StorSimple üzembe helyezési feladatai  | További megjegyzések |
 |---|---|
 | A helyszíni StorSimple-eszköz üzembe helyezése. | Támogatott verziók: 3. frissítés és újabb verziók. |
-| Kapcsolja be a biztonsági mentési célt. | Ezekkel a parancsokkal bekapcsolhatja vagy kikapcsolhatja a biztonsági mentési cél üzemmódot, és lekérheti az állapotot. További információ: [távoli kapcsolódás StorSimple-eszközhöz](storsimple-remote-connect.md).</br> A biztonsági mentési mód bekapcsolása: `Set-HCSBackupApplianceMode -enable` . </br> A biztonsági mentési mód kikapcsolásához: `Set-HCSBackupApplianceMode -disable` . </br> A biztonsági mentési mód beállításainak aktuális állapotának beolvasása: `Get-HCSBackupApplianceMode` . |
+| Kapcsolja be a biztonsági mentési célt. | Ezekkel a parancsokkal bekapcsolhatja vagy kikapcsolhatja a biztonsági mentési cél üzemmódot, és lekérheti az állapotot. További információ: [távoli kapcsolódás StorSimple-eszközhöz](./storsimple-8000-remote-connect.md).</br> A biztonsági mentési mód bekapcsolása: `Set-HCSBackupApplianceMode -enable` . </br> A biztonsági mentési mód kikapcsolásához: `Set-HCSBackupApplianceMode -disable` . </br> A biztonsági mentési mód beállításainak aktuális állapotának beolvasása: `Get-HCSBackupApplianceMode` . |
 | Hozzon létre egy közös mennyiségi tárolót a kötethez, amely a biztonsági mentési adatait tárolja. A mennyiségi tárolóban lévő összes érték deduplikált. | A StorSimple mennyiségi tárolók a deduplikáló tartományokat határozzák meg.  |
 | Hozzon létre StorSimple-köteteket. | Hozzon létre a méretekkel rendelkező köteteket a lehető leghamarabb a várt használathoz, mert a kötet mérete befolyásolja a Felhőbeli pillanatkép időtartamát. További információ a kötetek méretének [megtartásáról: adatmegőrzési szabályzatok](#retention-policies).</br> </br> Használjon StorSimple rétegű köteteket, és jelölje be a **kötet használata a ritkábban használt archiválási** mezőkhöz jelölőnégyzetet. </br> Csak a helyileg rögzített kötetek használata nem támogatott. |
 | Hozzon létre egy egyedi StorSimple biztonsági mentési szabályzatot az összes biztonsági mentési cél kötethez. | A StorSimple biztonsági mentési szabályzata határozza meg a kötet konzisztencia-csoportját. |
@@ -211,16 +211,16 @@ Ebben a szakaszban néhány konfigurációs példát mutatunk be. Az alábbi pé
 - Tiltsa le a Windows Server töredezettségmentesítését a StorSimple köteteken.
 - Tiltsa le a Windows Server-indexelést a StorSimple köteteken.
 - Futtasson víruskereső-vizsgálatot a forrás gazdagépen (ne a StorSimple-köteteken).
-- A [Windows Server alapértelmezett karbantartásának](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) kikapcsolása a Feladatkezelő eszközben. Ezt a következő módszerek egyikével teheti meg:
+- A [Windows Server alapértelmezett karbantartásának](/windows/win32/w8cookbook/automatic-maintenance) kikapcsolása a Feladatkezelő eszközben. Ezt a következő módszerek egyikével teheti meg:
   - Kapcsolja ki a karbantartási konfigurátort a Windows Feladatütemezőben.
-  - Töltse le a [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) a Windows Sysinternals webhelyről. A PsExec letöltése után futtassa a Azure PowerShell rendszergazdaként, és írja be a következőt:
+  - Töltse le a [PsExec](/sysinternals/downloads/psexec) a Windows Sysinternals webhelyről. A PsExec letöltése után futtassa a Azure PowerShell rendszergazdaként, és írja be a következőt:
     ```powershell
     psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
     ```
 
 ### <a name="storsimple-best-practices"></a>StorSimple ajánlott eljárások
 
-  -   Győződjön meg arról, hogy a StorSimple-eszköz frissült a [3. vagy újabb frissítéssel](storsimple-install-update-3.md).
+  -   Győződjön meg arról, hogy a StorSimple-eszköz frissült a [3. vagy újabb frissítéssel](./index.yml).
   -   Az iSCSI-és a Felhőbeli forgalom elkülönítése. Dedikált iSCSI-kapcsolatok használata a StorSimple és a biztonsági mentési kiszolgáló közötti adatforgalomhoz.
   -   Győződjön meg arról, hogy a StorSimple-eszköz dedikált biztonsági mentési cél. A vegyes munkaterhelések nem támogatottak, mert hatással vannak a RTO és a RPO.
 
@@ -233,7 +233,7 @@ Ebben a szakaszban néhány konfigurációs példát mutatunk be. Az alábbi pé
 -   A StorSimple támogatja a Backup Exec teljes és növekményes biztonsági mentését. Azt javasoljuk, hogy ne használjon szintetikus és különbözeti biztonsági mentést.
 -   A biztonsági mentési adatfájloknak csak egy adott feladatokhoz kell tartalmazniuk. Például a különböző feladatokhoz tartozó adathordozók nem adhatók hozzá.
 -   A feladatok ellenőrzésének letiltása. Ha szükséges, az ellenőrzést a legutóbbi biztonsági mentési feladatot követően kell ütemezni. Fontos tisztában lenni azzal, hogy ez a művelet hatással van a biztonsági mentés ablakára.
--   Válassza **Storage**  >  **a lemez**  >  **adatai**  >  **Tulajdonságok**lehetőséget. Kikapcsolhatja a **lemezterület előzetes lefoglalását**.
+-   Válassza **Storage**  >  **a lemez**  >  **adatai**  >  **Tulajdonságok** lehetőséget. Kikapcsolhatja a **lemezterület előzetes lefoglalását**.
 
 A legújabb Backup Exec-beállításokkal és a követelmények végrehajtásának ajánlott eljárásaival kapcsolatban tekintse meg [a Veritas webhelyét](https://www.veritas.com).
 
@@ -267,11 +267,11 @@ Az előző feltételezések alapján hozzon létre egy 26 TiB-es StorSimple-rét
 
 ### <a name="to-set-up-backup-exec-storage"></a>A Backup Exec Storage beállítása
 
-1.  A Backup Exec felügyeleti konzolján válassza a **Storage**  >  **Configure Storage**  >  **lemezes**tárolás konfigurálása  >  **következő**lehetőséget.
+1.  A Backup Exec felügyeleti konzolján válassza a **Storage**  >  **Configure Storage**  >  **lemezes** tárolás konfigurálása  >  **következő** lehetőséget.
 
     ![Backup Exec felügyeleti konzol, tároló konfigurálása lap](./media/storsimple-configure-backup-target-using-backup-exec/image4.png)
 
-2.  Válassza a **Disk Storage**lehetőséget, majd kattintson a **tovább**gombra.
+2.  Válassza a **Disk Storage** lehetőséget, majd kattintson a **tovább** gombra.
 
     ![Backup Exec felügyeleti konzol, válassza a tár lapot](./media/storsimple-configure-backup-target-using-backup-exec/image5.png)
 
@@ -279,11 +279,11 @@ Az előző feltételezések alapján hozzon létre egy 26 TiB-es StorSimple-rét
 
     ![Backup Exec felügyeleti konzol, név és leírás lap](./media/storsimple-configure-backup-target-using-backup-exec/image7.png)
 
-4.  Válassza ki azt a lemezt, amelyen létre szeretné hozni a lemezes tárolóeszközt, majd kattintson a **tovább**gombra.
+4.  Válassza ki azt a lemezt, amelyen létre szeretné hozni a lemezes tárolóeszközt, majd kattintson a **tovább** gombra.
 
     ![Backup Exec felügyeleti konzol, Storage Disk kiválasztási oldal](./media/storsimple-configure-backup-target-using-backup-exec/image9.png)
 
-5.  Növelje az írási műveletek számát **16**-ra, majd kattintson a **tovább**gombra.
+5.  Növelje az írási műveletek számát **16**-ra, majd kattintson a **tovább** gombra.
 
     ![Backup Exec felügyeleti konzol, egyidejű írási műveletek beállításai lap](./media/storsimple-configure-backup-target-using-backup-exec/image10.png)
 
@@ -313,8 +313,8 @@ Az alábbi ábra egy tipikus kötet hozzárendelését mutatja be egy biztonság
 | Gyakoriság/biztonsági mentés típusa | Összes | Növekményes (nap 1-5)  |   
 |---|---|---|
 | Hetente (1-4 hét) | Szombat | Monday-Friday |
-| havonta  | Szombat  |   |
-| Évi | Szombat  |   |
+| Havonta  | Szombat  |   |
+| Éves | Szombat  |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-backup-exec-backup-job"></a>StorSimple-kötetek kiosztása Backup Exec biztonsági mentési feladatokhoz
@@ -323,26 +323,26 @@ A következő folyamat azt feltételezi, hogy a Backup Exec és a célként mega
 
 #### <a name="to-assign-storsimple-volumes-to-a-backup-exec-backup-job"></a>StorSimple-kötetek társítása egy Backup Exec biztonsági mentési feladatokhoz
 
-1.  A Backup Exec felügyeleti konzolján válassza a **gazdagép**  >  **biztonsági**mentése  >  **lemezre**lehetőséget.
+1.  A Backup Exec felügyeleti konzolján válassza a **gazdagép**  >  **biztonsági** mentése  >  **lemezre** lehetőséget.
 
     ![Backup Exec felügyeleti konzol, válassza a gazdagép, a biztonsági mentés és a lemezre történő biztonsági mentés lehetőséget.](./media/storsimple-configure-backup-target-using-backup-exec/image14.png)
 
-2.  A **biztonsági mentés definíciójának tulajdonságai** párbeszédpanel **biztonsági mentés**területén válassza a **Szerkesztés**lehetőséget.
+2.  A **biztonsági mentés definíciójának tulajdonságai** párbeszédpanel **biztonsági mentés** területén válassza a **Szerkesztés** lehetőséget.
 
     ![Backup Exec felügyeleti konzol, biztonsági mentési definíció tulajdonságai párbeszédpanel](./media/storsimple-configure-backup-target-using-backup-exec/image15.png)
 
 3.  Állítsa be a teljes és növekményes biztonsági mentéseket, hogy azok megfeleljenek a RPO és a RTO követelményeinek, és megfeleljenek a Veritas ajánlott eljárásainak.
 
-4.  A **biztonsági mentési beállítások** párbeszédpanelen válassza a **tároló**elemet.
+4.  A **biztonsági mentési beállítások** párbeszédpanelen válassza a **tároló** elemet.
 
     ![Backup Exec felügyeleti konzol, Backup Options Storage párbeszédpanel](./media/storsimple-configure-backup-target-using-backup-exec/image16.png)
 
 5.  Rendelje hozzá a megfelelő StorSimple-köteteket a biztonsági mentési ütemtervhez.
 
     > [!NOTE]
-    > A **tömörítés** és a **titkosítás típusa** **none**értékre van állítva.
+    > A **tömörítés** és a **titkosítás típusa** **none** értékre van állítva.
 
-6.  Az **ellenőrzés**területen jelölje be a nem **ellenőrzi a feladathoz** jelölőnégyzetet. Ez a beállítás a StorSimple-rétegek befolyásolására is hatással lehet.
+6.  Az **ellenőrzés** területen jelölje be a nem **ellenőrzi a feladathoz** jelölőnégyzetet. Ez a beállítás a StorSimple-rétegek befolyásolására is hatással lehet.
 
     > [!NOTE]
     > A töredezettségmentesítés, az indexelés és a háttérben történő ellenőrzés negatív hatással van a StorSimple-rétegek szintjére.
@@ -387,23 +387,23 @@ A következő táblázat bemutatja, hogyan állíthatja be a biztonsági mentés
 | 2. hét | StorSimple hét 2-4 |   |   |   |   |   |
 | 3. hét | StorSimple hét 2-4 |   |   |   |   |   |
 | 4. hét | StorSimple hét 2-4 |   |   |   |   |   |
-| havonta | StorSimple havonta |   |   |   |   |   |
-| Évi | StorSimple évente  |   |   |   |   |   |
+| Havonta | StorSimple havonta |   |   |   |   |   |
+| Éves | StorSimple évente  |   |   |   |   |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-backup-exec-archive-and-deduplication-job"></a>StorSimple-kötetek kiosztása a Backup Exec Archive és a deduplikáló feladatokhoz
 
 #### <a name="to-assign-storsimple-volumes-to-a-backup-exec-archive-and-duplication-job"></a>StorSimple-kötetek kiosztása a Backup Exec Archive és az ismétlődő feladatokhoz
 
-1.  A Backup Exec felügyeleti konzolon kattintson a jobb gombbal arra a feladatokra, amelyet StorSimple szeretne archiválni, majd válassza a **biztonsági mentési definíció tulajdonságai**  >  **Szerkesztés**lehetőséget.
+1.  A Backup Exec felügyeleti konzolon kattintson a jobb gombbal arra a feladatokra, amelyet StorSimple szeretne archiválni, majd válassza a **biztonsági mentési definíció tulajdonságai**  >  **Szerkesztés** lehetőséget.
 
     ![Backup Exec felügyeleti konzol, biztonsági mentési definíció tulajdonságai lap](./media/storsimple-configure-backup-target-using-backup-exec/image19.png)
 
-2.  Válassza az ismétlődő **szakasz hozzáadása**  >  **lemezre**  >  **Szerkesztés**lehetőséget.
+2.  Válassza az ismétlődő **szakasz hozzáadása**  >  **lemezre**  >  **Szerkesztés** lehetőséget.
 
     ![Backup Exec felügyeleti konzol, fázis hozzáadása](./media/storsimple-configure-backup-target-using-backup-exec/image20.png)
 
-3.  A **duplikált beállítások** párbeszédpanelen válassza ki a **forráshoz** és az **ütemtervhez**használni kívánt értékeket.
+3.  A **duplikált beállítások** párbeszédpanelen válassza ki a **forráshoz** és az **ütemtervhez** használni kívánt értékeket.
 
     ![Backup Exec felügyeleti konzol, biztonsági mentési definíciók tulajdonságai és duplikált beállítások](./media/storsimple-configure-backup-target-using-backup-exec/image21.png)
 
@@ -411,15 +411,15 @@ A következő táblázat bemutatja, hogyan állíthatja be a biztonsági mentés
 
     ![Képernyőkép, amely megjeleníti a tároló kiválasztásához szükséges listát.](./media/storsimple-configure-backup-target-using-backup-exec/image22.png)
 
-5.  Jelölje be az **ellenőrzés**jelölőnégyzetet, majd jelölje be a **feladatok nem ellenőrzik a feladatokhoz** jelölőnégyzetet.
+5.  Jelölje be az **ellenőrzés** jelölőnégyzetet, majd jelölje be a **feladatok nem ellenőrzik a feladatokhoz** jelölőnégyzetet.
 
     ![Képernyőkép, amely azt mutatja be, hogy hol jelölje be az adatok mellőzése ehhez a feladatsorhoz lehetőséget.](./media/storsimple-configure-backup-target-using-backup-exec/image23.png)
 
-6.  Kattintson az **OK** gombra.
+6.  Válassza az **OK** lehetőséget.
 
     ![A biztonsági mentési definíció tulajdonságait megjelenítő képernyőkép.](./media/storsimple-configure-backup-target-using-backup-exec/image24.png)
 
-7.  A **biztonsági mentés** oszlopban adjon hozzá egy új szakaszt. A forráshoz használja a **növekményes**használatot. A cél mezőben válassza ki azt a StorSimple-kötetet, amelyben a növekményes biztonsági mentési feladatot archiválja. Ismételje meg a 1-6. lépést.
+7.  A **biztonsági mentés** oszlopban adjon hozzá egy új szakaszt. A forráshoz használja a **növekményes** használatot. A cél mezőben válassza ki azt a StorSimple-kötetet, amelyben a növekményes biztonsági mentési feladatot archiválja. Ismételje meg a 1-6. lépést.
 
 ## <a name="storsimple-cloud-snapshots"></a>StorSimple Felhőbeli Pillanatképek
 
@@ -472,22 +472,22 @@ Visszaállít egy StorSimple-eszközről, például helyreállítja az összes b
 
 A katasztrófák számos tényezőt okozhatnak. A következő táblázat az általános vész-helyreállítási forgatókönyveket ismerteti.
 
-| Forgatókönyv | Hatás | Helyreállítás | Jegyzetek |
+| Használati eset | Hatás | Helyreállítás | Megjegyzések |
 |---|---|---|---|
-| StorSimple-eszköz meghibásodása | A biztonsági mentési és visszaállítási műveletek megszakadnak. | Cserélje le a meghibásodott eszközt, és hajtsa végre a [StorSimple feladatátvételt és a vész-helyreállítást](storsimple-device-failover-disaster-recovery.md). | Ha az eszköz helyreállítása után visszaállítást kell végeznie, a teljes adathalmazok beolvasása a felhőből az új eszközre történik. Minden művelet Felhőbeli sebességgel történik. Előfordulhat, hogy az indexelési és katalogizálás-újraellenőrzési folyamat az összes biztonságimásolat-készletet megkeresi és lekéri a felhő szintjéről a helyi eszköz rétegre, amely időigényes folyamat lehet. |
+| StorSimple-eszköz meghibásodása | A biztonsági mentési és visszaállítási műveletek megszakadnak. | Cserélje le a meghibásodott eszközt, és hajtsa végre a [StorSimple feladatátvételt és a vész-helyreállítást](./storsimple-8000-device-failover-disaster-recovery.md). | Ha az eszköz helyreállítása után visszaállítást kell végeznie, a teljes adathalmazok beolvasása a felhőből az új eszközre történik. Minden művelet Felhőbeli sebességgel történik. Előfordulhat, hogy az indexelési és katalogizálás-újraellenőrzési folyamat az összes biztonságimásolat-készletet megkeresi és lekéri a felhő szintjéről a helyi eszköz rétegre, amely időigényes folyamat lehet. |
 | A Backup Exec Server meghibásodása | A biztonsági mentési és visszaállítási műveletek megszakadnak. | Hozza létre újra a biztonsági mentési kiszolgálót, és végezze el az adatbázis-visszaállítást részletesen a [Backup Exec (BEDB) adatbázis manuális biztonsági mentésének és visszaállításának módjában](http://www.veritas.com/docs/000041083). | Újra kell építenie vagy vissza kell állítania a Backup Exec-kiszolgálót a vész-helyreállítási helyen. Állítsa vissza az adatbázist a legutóbbi pontra. Ha a visszaállított Backup Exec-adatbázis nincs szinkronban a legújabb biztonsági mentési feladatokkal, az indexelés és a katalogizálás szükséges. Az index és a katalógus újraellenőrzésének folyamata okozhatja, hogy az összes biztonságimásolat-készlet beolvasható, és a felhő szintjéről a helyi eszköz szintjére kell húzni. Ez további időigényesvé teszi. |
 | A hely meghibásodása, amely a biztonsági mentési kiszolgáló és a StorSimple elvesztését eredményezi | A biztonsági mentési és visszaállítási műveletek megszakadnak. | Először állítsa vissza a StorSimple, majd állítsa vissza a Backup exect. | Először állítsa vissza a StorSimple, majd állítsa vissza a Backup exect. Ha az eszköz helyreállítása után visszaállítást kell végeznie, a teljes adatfeldolgozási készletek a felhőből az új eszközre lesznek beolvasva. Minden művelet Felhőbeli sebességgel történik. |
 
-## <a name="references"></a>Hivatkozások
+## <a name="references"></a>Referencia
 
 Ehhez a cikkhez a következő dokumentumok hivatkoznak:
 
-- [StorSimple többutas I/O-telepítés](storsimple-configure-mpio-windows-server.md)
-- [Tárolási helyzetek: dinamikus kiépítés](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
-- [GPT-meghajtók használata](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
-- [Árnyékmásolatok beállítása megosztott mappákhoz](https://technet.microsoft.com/library/cc771893.aspx)
+- [StorSimple többutas I/O-telepítés](./storsimple-8000-configure-mpio-windows-server.md)
+- [Tárolási helyzetek: dinamikus kiépítés](/windows-hardware/drivers/storage/thin-provisioning)
+- [GPT-meghajtók használata](/previous-versions/windows/hardware/design/dn653580(v=vs.85)#EHD)
+- [Árnyékmásolatok beállítása megosztott mappákhoz](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771893(v=ws.11))
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ a [biztonságimásolat-készletből való visszaállításról](storsimple-restore-from-backup-set-u2.md).
-- További információ az [eszközök feladatátvételének és a vész-helyreállításnak](storsimple-device-failover-disaster-recovery.md)a végrehajtásáról.
+- További információ a [biztonságimásolat-készletből való visszaállításról](./storsimple-8000-restore-from-backup-set-u2.md).
+- További információ az [eszközök feladatátvételének és a vész-helyreállításnak](./storsimple-8000-device-failover-disaster-recovery.md)a végrehajtásáról.

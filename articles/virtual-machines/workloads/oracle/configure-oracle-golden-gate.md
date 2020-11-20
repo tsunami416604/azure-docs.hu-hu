@@ -3,16 +3,17 @@ title: Az Oracle Golden Gate megvalósítása Azure Linux rendszerű virtuális 
 description: Gyorsan beszerezhet egy Oracle Golden-kaput az Azure-környezetben.
 author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: c480de6da0427b8eda212e02e08c7b3f5426941c
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3fff58c240341776a3bb99c059c179cc4f9d96e9
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534141"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966870"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Az Oracle Golden Gate megvalósítása Azure Linux rendszerű virtuális gépen 
 
@@ -24,7 +25,7 @@ A kezdés előtt győződjön meg arról, hogy az Azure CLI telepítve van. Tov�
 
 ## <a name="prepare-the-environment"></a>A környezet előkészítése
 
-Az Oracle Golden Gate telepítésének elvégzéséhez két Azure-beli virtuális gépet kell létrehoznia ugyanazon rendelkezésre állási csoporton belül. A virtuális gépek létrehozásához használt Piactéri lemezkép **Oracle: Oracle-Database-EE: 12.1.0.2: Latest** .
+Az Oracle Golden Gate telepítésének elvégzéséhez két Azure-beli virtuális gépet kell létrehoznia ugyanazon rendelkezésre állási csoporton belül. A virtuális gépek létrehozásához használt Piactéri lemezkép **Oracle: Oracle-Database-EE: 12.1.0.2: Latest**.
 
 Emellett ismernie kell a UNIX-szerkesztő VI-t, és alapvető ismeretekkel kell rendelkeznie az X11-ről (X Windows).
 
@@ -49,7 +50,7 @@ Jelentkezzen be az Azure-előfizetésbe az az [login](/cli/azure/reference-index
 az login
 ```
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi az Azure-erőforrásokat, és amelyekről felügyelhető. 
 
@@ -389,9 +390,9 @@ Ez egy választható lépés. Ezt a lépést kihagyhatja, ha Linux-ügyfelet has
 3. A PuTTY Key Generatorban:
 
    - Kulcs létrehozásához kattintson a **Létrehozás** gombra.
-   - Másolja a kulcs tartalmát ( **CTRL + c** ).
+   - Másolja a kulcs tartalmát (**CTRL + c**).
    - Kattintson a **titkos kulcs mentése** gombra.
-   - Hagyja figyelmen kívül a megjelenő figyelmeztetést, majd kattintson **az OK gombra** .
+   - Hagyja figyelmen kívül a megjelenő figyelmeztetést, majd kattintson **az OK gombra**.
 
    ![A PuTTY Key Generator oldalának képernyőképe](./media/oracle-golden-gate/puttykeygen.png)
 
@@ -409,7 +410,7 @@ Ez egy választható lépés. Ezt a lépést kihagyhatja, ha Linux-ügyfelet has
    > A kulcsnak tartalmaznia kell a karakterláncot `ssh-rsa` . Emellett a kulcs tartalmának egysoros szövegnek kell lennie.
    >  
 
-6. Indítsa el a PuTTY alkalmazást. A **Kategória** ablaktáblán válassza a **kapcsolatok**  >  **SSH** -  >  **hitelesítés** lehetőséget. A **hitelesítő fájl titkos kulcsa** mezőben keresse meg a korábban létrehozott kulcsot.
+6. Indítsa el a PuTTY alkalmazást. A **Kategória** ablaktáblán válassza a **kapcsolatok**  >  **SSH**-  >  **hitelesítés** lehetőséget. A **hitelesítő fájl titkos kulcsa** mezőben keresse meg a korábban létrehozott kulcsot.
 
    ![A titkos kulcs beállítása lap képernyőképe](./media/oracle-golden-gate/setprivatekey.png)
 

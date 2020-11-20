@@ -9,22 +9,23 @@ editor: ''
 tags: azure-resource-manager
 keywords: SAP, Azure, ANF, HANA, Azure NetApp Files, pillanatkép
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 02755c164e72e3149497ee8e3c1fdc19141fd54f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 511801962d07e5fb99000b2fc19adce2489b46d3
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973631"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967482"
 ---
 # <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>NFS 4.1-es verziójú kötetek az SAP HANA-hoz készült Azure NetApp Filesban
 
-A Azure NetApp Files olyan natív NFS-megosztásokat biztosít, amelyek a **/Hana/Shared**, a **/Hana/Data**és a **/Hana/log** kötetek esetében használhatók. A **/Hana/Data** -és **/HANA/log** -KÖTETEK ANF-alapú NFS-megosztások használata a v 4.1 NFS protokoll használatát igényli. A **/Hana/Data** és a **/Hana/log** kötetek használatakor a rendszer nem támogatja az NFS-protokoll v3-as verziójának használatát a ANF-megosztások létrehozásakor. 
+A Azure NetApp Files olyan natív NFS-megosztásokat biztosít, amelyek a **/Hana/Shared**, a **/Hana/Data** és a **/Hana/log** kötetek esetében használhatók. A **/Hana/Data** -és **/HANA/log** -KÖTETEK ANF-alapú NFS-megosztások használata a v 4.1 NFS protokoll használatát igényli. A **/Hana/Data** és a **/Hana/log** kötetek használatakor a rendszer nem támogatja az NFS-protokoll v3-as verziójának használatát a ANF-megosztások létrehozásakor. 
 
 
 > [!IMPORTANT]
@@ -91,7 +92,7 @@ A HANA-rendszerek esetében, amelyek nem igényelnek nagy sávszélességet, a A
 > [!IMPORTANT]
 > Az egyetlen NFS-köteten üzembe helyezett kapacitástól függetlenül az átviteli sebesség várhatóan a virtuális gép egy fogyasztója által kihasználható 1,2 – 1,4 GB/s sávszélességű sávszélességet eredményez. Ennek a ANF-ajánlat és a kapcsolódó Linux-munkamenetek az NFS-re vonatkozó korlátai mögötti architektúrájának kell megfelelnie. A teljesítmény-és átviteli sebesség a cikk [teljesítményének teljesítményteszt-tesztelési eredményei a Azure NetApp Files esetében](../../../azure-netapp-files/performance-benchmarks-linux.md) egy megosztott NFS-köteten lettek elvégezve, több ügyfél virtuális géppel és több munkamenet eredményeként. Ez a forgatókönyv különbözik az SAP-ben mérhető forgatókönyvtől. Az átviteli sebességet egyetlen virtuális gépről egy NFS-kötetre mérjük. ANF-on üzemeltetve.
 
-Az adatokhoz és a naplóhoz tartozó minimális teljesítménybeli követelmények teljesítéséhez, valamint a **/Hana/Shared**vonatkozó irányelvek alapján az ajánlott méretek a következőképpen néznek ki:
+Az adatokhoz és a naplóhoz tartozó minimális teljesítménybeli követelmények teljesítéséhez, valamint a **/Hana/Shared** vonatkozó irányelvek alapján az ajánlott méretek a következőképpen néznek ki:
 
 | Kötet | Méret<br /> Premium Storagei szintű | Méret<br /> Ultra Storage-rétegek | Támogatott NFS-protokoll |
 | --- | --- | --- |

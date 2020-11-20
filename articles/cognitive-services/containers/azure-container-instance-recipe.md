@@ -10,16 +10,16 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: f247465c7e2c0a212df2821ebc7165d3ee5b15f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ddaed181d017e3167694a9d7edf53c7c09fd5e9
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80876657"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968519"
 ---
 # <a name="deploy-and-run-container-on-azure-container-instance"></a>Tároló üzembe helyezése és futtatása az Azure Container Instancesben
 
-A következő lépésekkel egyszerűen méretezheti az Azure Cognitive Services-alkalmazásait a felhőben az Azure [Container instances](https://docs.microsoft.com/azure/container-instances/). A tárolókra bontás segítségével az infrastruktúra kezelése helyett az alkalmazások kiépítésére koncentrálhat. További információ a tárolók használatáról: [szolgáltatások és előnyök](../cognitive-services-container-support.md#features-and-benefits).
+A következő lépésekkel egyszerűen méretezheti az Azure Cognitive Services-alkalmazásait a felhőben az Azure [Container instances](../../container-instances/index.yml). A tárolókra bontás segítségével az infrastruktúra kezelése helyett az alkalmazások kiépítésére koncentrálhat. További információ a tárolók használatáról: [szolgáltatások és előnyök](../cognitive-services-container-support.md#features-and-benefits).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -44,7 +44,7 @@ A szögletes zárójelben lévő összes változót `<>` a saját értékeivel k
 
 1. Válassza ki a **szolgáltatás API leírása** elemet a tárolóhoz tartozó felvágási oldal megtekintéséhez.
 
-1. Válassza ki a **post** API-k bármelyikét, és válassza a **kipróbálás**lehetőséget.  A paraméterek megjelennek a bemenettel együtt. Adja meg a paramétereket.
+1. Válassza ki a **post** API-k bármelyikét, és válassza a **kipróbálás** lehetőséget.  A paraméterek megjelennek a bemenettel együtt. Adja meg a paramétereket.
 
 1. Válassza a **végrehajtás** lehetőséget, hogy elküldje a kérést a tároló példányának.
 

@@ -7,18 +7,19 @@ author: saghorpa
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5fdaa1346e4837b3bf611d964158d132dcdfeeda
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 42333a3feae19b6c3c77494f7e843cac1d9bc078
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282680"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968128"
 ---
 # <a name="backup-and-restore-of-sap-hana-on-hana-large-instances"></a>SAP HANA biztonsági mentése és visszaállítása a HANA nagyméretű példányain
 
@@ -347,7 +348,7 @@ Futtassa a parancsfájlt felhasználói **gyökérként**.
 ## <a name="file-level-restore-from-a-storage-snapshot"></a>Fájl szintű visszaállítás tárolási pillanatképből
 
 <!-- hana, logs and boot are no spelling errors as Acrolinx indicates, but terms of parameter values -->
-A **Hana** és a **logs**típusú Pillanatképek esetében közvetlenül a **. Snapshot** könyvtár kötetein érheti el a pillanatképeket. Mindegyik pillanatképhez van egy alkönyvtár. Másolja az összes fájlt abba az állapotba, amely az adott alkönyvtárból származó pillanatkép pontján volt a tényleges címtár-struktúrába. 
+A **Hana** és a **logs** típusú Pillanatképek esetében közvetlenül a **. Snapshot** könyvtár kötetein érheti el a pillanatképeket. Mindegyik pillanatképhez van egy alkönyvtár. Másolja az összes fájlt abba az állapotba, amely az adott alkönyvtárból származó pillanatkép pontján volt a tényleges címtár-struktúrába. 
 
 A parancsfájl aktuális verziójában *nincs* olyan visszaállítási parancsfájl, amely a pillanatkép-visszaállításhoz önkiszolgálóként van megadva. A pillanatkép-visszaállítás az önkiszolgáló vész-helyreállítási parancsfájlok részeként is elvégezhető a vész-helyreállítási helyen a feladatátvétel során. Ha vissza szeretne állítani egy kívánt pillanatképet a meglévő elérhető pillanatképekről, a szolgáltatási kérelem megnyitásával kapcsolatba kell lépnie a Microsoft operatív csapatával.
 
@@ -438,19 +439,19 @@ A SnapCenter SAP HANAba való integrálásának lépései a következők:
 
 1. A SAP HANA-előfizetés lapon válassza ki az **erőforráscsoportok** allapot.
 
-   :::image type="content" source="./media/snapcenter/solution-lab-subscription-resource-groups.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához" lightbox="./media/snapcenter/solution-lab-subscription-resource-groups.png":::
+   :::image type="content" source="./media/snapcenter/solution-lab-subscription-resource-groups.png" alt-text="Megoldás labor előfizetési erőforráscsoport" lightbox="./media/snapcenter/solution-lab-subscription-resource-groups.png":::
 
 1. Válasszon ki egy megfelelő erőforráscsoportot egy régióban.
 
-   :::image type="content" source="./media/snapcenter/select-appropriate-resource-group-in-region.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához" lightbox="./media/snapcenter/select-appropriate-resource-group-in-region.png":::
+   :::image type="content" source="./media/snapcenter/select-appropriate-resource-group-in-region.png" alt-text="Válassza ki a megfelelő erőforráscsoportot a régióban" lightbox="./media/snapcenter/select-appropriate-resource-group-in-region.png":::
 
 1. Válassza ki az Azure Storage-ban SAP HANA megfelelő SKU-bejegyzést.
 
-   :::image type="content" source="./media/snapcenter/select-sku-entry-corresponding-to-sap-hana.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához" lightbox="./media/snapcenter/select-sku-entry-corresponding-to-sap-hana.png":::
+   :::image type="content" source="./media/snapcenter/select-sku-entry-corresponding-to-sap-hana.png" alt-text="Válassza ki a SAP HANA megfelelő SKU-bejegyzést." lightbox="./media/snapcenter/select-sku-entry-corresponding-to-sap-hana.png":::
 
 1. Nyisson meg egy **új támogatási jegyet** , amely a vörös színnel van lefoglalva.
 
-   :::image type="content" source="./media/snapcenter/open-new-support-ticket-request.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához":::
+   :::image type="content" source="./media/snapcenter/open-new-support-ticket-request.png" alt-text="Új támogatási jegy kérésének megnyitása":::
 
 1. Az **alapok** lapon adja meg a következő adatokat a jegyhez:
 
@@ -468,7 +469,7 @@ A SnapCenter SAP HANAba való integrálásának lépései a következők:
    * SnapCenter beállítása a HLI
    * A SnapCenter-felhasználó nyilvános kulcsa (SnapCenter. PEM) – tekintse meg a nyilvános kulcs létrehozása alább példát
 
-     :::image type="content" source="./media/snapcenter/new-support-request-details.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához" lightbox="./media/snapcenter/new-support-request-details.png":::
+     :::image type="content" source="./media/snapcenter/new-support-request-details.png" alt-text="Új támogatási kérelem – Részletek lap" lightbox="./media/snapcenter/new-support-request-details.png":::
 
 1. A támogatási jegy áttekintéséhez válassza a **felülvizsgálat + létrehozás** elemet. 
 
@@ -525,7 +526,7 @@ A SnapCenter telepítése előtt tekintse át [SAP HANA biztonsági mentést vag
 
 1. Konfigurálja a SnapCenter tartozó felhasználói hitelesítő adatokat. Alapértelmezés szerint feltölti az alkalmazás telepítéséhez használt Windows felhasználói hitelesítő adatokat. 
 
-   :::image type="content" source="media/snapcenter/installation-user-inputs-dialog.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához"::: 
+   :::image type="content" source="media/snapcenter/installation-user-inputs-dialog.png" alt-text="Felhasználói bemenetek telepítése párbeszédpanel"::: 
 
 1. A munkamenet indításakor mentse a biztonsági kivételt, és elindul a grafikus felhasználói felület.
 
@@ -534,22 +535,22 @@ A SnapCenter telepítése előtt tekintse át [SAP HANA biztonsági mentést vag
 
 ### <a name="set-up-the-storage-system"></a>A tárolási rendszerek beállítása
 
-1. A SnapCenter területen válassza a **tárolási rendszer**, majd az **+ új**lehetőséget. 
+1. A SnapCenter területen válassza a **tárolási rendszer**, majd az **+ új** lehetőséget. 
 
-   :::image type="content" source="./media/snapcenter/snapcenter-storage-connections-window.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához" lightbox="./media/snapcenter/snapcenter-storage-connections-window.png":::
+   :::image type="content" source="./media/snapcenter/snapcenter-storage-connections-window.png" alt-text="SnapCenter" lightbox="./media/snapcenter/snapcenter-storage-connections-window.png":::
 
    Az alapértelmezett érték a bérlők egy SVM. Ha az ügyfél több Bérlővel vagy HLIs rendelkezik több régióban, a javaslat az összes SVMs konfigurálása a SnapCenter-ben
 
 1. A tárolási rendszer hozzáadása lapon adja meg a hozzáadni kívánt tárolási rendszer adatait, a SnapCenter felhasználónevét és jelszavát, majd válassza a **Submit (Küldés**) lehetőséget.
 
-   :::image type="content" source="./media/snapcenter/new-storage-connection.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához":::
+   :::image type="content" source="./media/snapcenter/new-storage-connection.png" alt-text="Új tárolási kapcsolatok":::
 
    >[!NOTE]
    >Az alapértelmezett érték a bérlők egy SVM.  Ha több bérlő is van, akkor a javaslat a SnapCenter összes SVMs konfigurálására szolgál. 
 
 1. A SnapCenter-ben válassza a **gazdagépek** lehetőséget, majd a kiválasztás **+ Hozzáadás** elemet a Hana beépülő modul és a Hana db-gazdagépek beállításához.  A SnapCenter legújabb verziója automatikusan észleli a HANA-adatbázist a gazdagépen.
 
-   :::image type="content" source="media/snapcenter/managed-hosts-new-host.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához" lightbox="media/snapcenter/managed-hosts-new-host.png":::
+   :::image type="content" source="media/snapcenter/managed-hosts-new-host.png" alt-text="A SnapCenter területen válassza a gazdagépek lehetőséget, majd válassza a Hozzáadás lehetőséget." lightbox="media/snapcenter/managed-hosts-new-host.png":::
 
 1. Adja meg az új gazdagép adatait:
    1. Válassza ki a gazdagép típusának operációs rendszerét.
@@ -557,7 +558,7 @@ A SnapCenter telepítése előtt tekintse át [SAP HANA biztonsági mentést vag
    1. Adja meg a használni kívánt hitelesítő adatokat.
    1. Válassza ki a **Microsoft Windows** és **SAP HANA** beállításokat, majd válassza a **Submit (Küldés**) lehetőséget.
 
-   :::image type="content" source="media/snapcenter/add-new-host-operating-system-credentials.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához":::
+   :::image type="content" source="media/snapcenter/add-new-host-operating-system-credentials.png" alt-text="Információk az új gazdagépről":::
 
    >[!IMPORTANT]
    >Az első csomópont telepítése előtt a SnapCenter lehetővé teszi, hogy a nem root felhasználó telepítse a beépülő modulokat az adatbázisba.  A nem legfelső szintű felhasználók engedélyezésével kapcsolatos információkért lásd: [nem gyökérszintű felhasználó hozzáadása és sudo-jogosultságok konfigurálása](https://library.netapp.com/ecmdocs/ECMLP2590889/html/GUID-A3EEB5FC-242B-4C2C-B407-510E48A8F131.html).
@@ -566,23 +567,23 @@ A SnapCenter telepítése előtt tekintse át [SAP HANA biztonsági mentést vag
 
 1. A beépülő modul telepítése után a SnapCenter-ben válassza a **gazdagépek** lehetőséget, majd a **+ Hozzáadás** elemet a HANA-csomópont hozzáadásához.
 
-   :::image type="content" source="media/snapcenter/add-hana-node.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához" lightbox="media/snapcenter/add-hana-node.png":::
+   :::image type="content" source="media/snapcenter/add-hana-node.png" alt-text="HANA-csomópont hozzáadása" lightbox="media/snapcenter/add-hana-node.png":::
 
 1. Adja meg a HANA-csomópont adatait:
    1. Válassza ki a gazdagép típusának operációs rendszerét.
    1. Adja meg a HANA DB hostname vagy az IP-címet.
    1. Válassza ki a **+** HANA db gazda operációs rendszeren konfigurált hitelesítő adatok hozzáadását, majd kattintson **az OK gombra**.
-   1. Válassza a **SAP HANA** , majd a **Küldés**lehetőséget.
+   1. Válassza a **SAP HANA** , majd a **Küldés** lehetőséget.
 
-   :::image type="content" source="media/snapcenter/add-hana-node-details.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához":::
+   :::image type="content" source="media/snapcenter/add-hana-node-details.png" alt-text="SAP HANA csomópont részletei":::
 
-1. Erősítse meg az ujjlenyomatot, és válassza a **jóváhagyás és küldés**lehetőséget.
+1. Erősítse meg az ujjlenyomatot, és válassza a **jóváhagyás és küldés** lehetőséget.
 
-   :::image type="content" source="media/snapcenter/confirm-submit-fingerprint.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához":::
+   :::image type="content" source="media/snapcenter/confirm-submit-fingerprint.png" alt-text="Ujjlenyomat megerősítése és elküldése":::
 
 1. A HANA csomóponton a rendszeradatbázis területen válassza a **biztonsági**  >  **felhasználók**  >  **SNAPCENTER** elemet a SNAPCENTER-felhasználó létrehozásához.
 
-   :::image type="content" source="media/snapcenter/create-snapcenter-user-hana-system-db.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához":::
+   :::image type="content" source="media/snapcenter/create-snapcenter-user-hana-system-db.png" alt-text="A SnapCenter-felhasználó létrehozása a HANA-ban (System db)":::
 
 
 
@@ -595,15 +596,15 @@ Ha a HSR-t konfigurálta, akkor manuálisan kell konfigurálnia a rendszerkonfig
 
 1. A SnapCenter területen válassza az **erőforrások** és a **San HANA** (felül) lehetőséget, majd válassza a **+ SAP HANA adatbázis hozzáadása** lehetőséget (a jobb oldalon).
 
-   :::image type="content" source="media/snapcenter/manual-hana-setup.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához" lightbox="media/snapcenter/manual-hana-setup.png":::
+   :::image type="content" source="media/snapcenter/manual-hana-setup.png" alt-text="A HANA kézi beállítása" lightbox="media/snapcenter/manual-hana-setup.png":::
 
 1. Megadhatja a HANA rendszergazda felhasználó által a Linux-gazdagépen konfigurált erőforrás-adatokat, vagy azon a gazdagépen, amelyen a beépülő modulok telepítve vannak. A biztonsági mentés a Linux rendszer beépülő moduljából lesz felügyelve.
 
-   :::image type="content" source="media/snapcenter/provide-resource-details-sap-hana-database.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához":::
+   :::image type="content" source="media/snapcenter/provide-resource-details-sap-hana-database.png" alt-text="A Linux-gazdagépen konfigurált HANA rendszergazda felhasználó erőforrás-adatainak megadása.":::
 
-1. Válassza ki azt az adatmennyiséget, amelyhez pillanatképeket szeretne készíteni, válassza a **Mentés** , majd a **Befejezés**lehetőséget.
+1. Válassza ki azt az adatmennyiséget, amelyhez pillanatképeket szeretne készíteni, válassza a **Mentés** , majd a **Befejezés** lehetőséget.
 
-   :::image type="content" source="media/snapcenter/provide-storage-footprint.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához":::
+   :::image type="content" source="media/snapcenter/provide-storage-footprint.png" alt-text="Válassza ki azt az adatmennyiséget, amelyhez pillanatképeket szeretne készíteni, válassza a mentés, majd a Befejezés lehetőséget.":::
 
 ### <a name="create-a-snapshot-policy"></a>Pillanatkép-szabályzat létrehozása
 
@@ -611,53 +612,53 @@ Mielőtt SnapCenter használ a SAP HANA adatbázis-erőforrások biztonsági men
 
 1. A SnapCenter területen válassza az **erőforrások** lehetőséget, majd válasszon ki egy adatbázist.
 
-   :::image type="content" source="media/snapcenter/select-database-create-policy.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához":::
+   :::image type="content" source="media/snapcenter/select-database-create-policy.png" alt-text="A SnapCenter területen válassza az erőforrások lehetőséget, majd válasszon ki egy adatbázist.":::
 
 1. A pillanatkép-ütemező konfigurálásához kövesse a konfigurációs varázsló munkafolyamatát.
 
-   :::image type="content" source="media/snapcenter/follow-workflow-configuration-wizard.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához" lightbox="media/snapcenter/follow-workflow-configuration-wizard.png":::
+   :::image type="content" source="media/snapcenter/follow-workflow-configuration-wizard.png" alt-text="A pillanatkép-ütemező konfigurálásához kövesse a konfigurációs varázsló munkafolyamatát." lightbox="media/snapcenter/follow-workflow-configuration-wizard.png":::
 
 1. Adja meg az előre/post parancsok és a speciális SSL-kulcsok konfigurálásának beállításait.  Ebben a példában nem használunk speciális beállításokat.
 
-   :::image type="content" source="media/snapcenter/configuration-options-pre-post-commands.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához" lightbox="media/snapcenter/configuration-options-pre-post-commands.png":::
+   :::image type="content" source="media/snapcenter/configuration-options-pre-post-commands.png" alt-text="Adja meg a Pre-post parancsok és a speciális SSL-kulcsok konfigurálásának beállításait." lightbox="media/snapcenter/configuration-options-pre-post-commands.png":::
 
 1. A **Hozzáadás** gombra kattintva létrehozhat egy pillanatkép-szabályzatot, amely más HANA-adatbázisokhoz is használható. 
 
-   :::image type="content" source="media/snapcenter/select-one-or-more-policies.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához":::
+   :::image type="content" source="media/snapcenter/select-one-or-more-policies.png" alt-text="A Hozzáadás gombra kattintva létrehozhat egy pillanatkép-szabályzatot, amely más HANA-adatbázisokhoz is használható.":::
 
 1. Adja meg a szabályzat nevét és leírását.
 
-   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához":::
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy.png" alt-text="Adja meg a szabályzat nevét és leírását.":::
 
 
 1. Válassza ki a biztonsági mentés típusát és gyakoriságát.
 
-   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-settings.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához":::
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-settings.png" alt-text="Válassza ki a biztonsági mentés típusát és gyakoriságát.":::
 
 1. Konfigurálja az **igény szerinti biztonsági mentés megőrzési beállításait**.  A példánkban megtartjuk a megőrzést három pillanatkép-másolattal.
 
-   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-retention-settings.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához":::
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-retention-settings.png" alt-text="Konfigurálja az igény szerinti biztonsági mentés megőrzési beállításait.":::
 
-1. Az **óránkénti adatmegőrzési beállítások**konfigurálása. 
+1. Az **óránkénti adatmegőrzési beállítások** konfigurálása. 
 
-   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-hourly-retention-settings.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához":::
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-hourly-retention-settings.png" alt-text="Az óránkénti adatmegőrzési beállítások konfigurálása.":::
 
 1. Ha a SnapMirror beállítása konfigurálva van, válassza **a snapmirror frissítése lehetőséget a helyi pillanatkép-másolat létrehozása után**.
 
-   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-snapmirror.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához":::
+   :::image type="content" source="media/snapcenter/new-sap-hana-backup-policy-snapmirror.png" alt-text="Ha SnapMirror van szükség, válassza a SnapMirror frissítése lehetőséget a helyi pillanatkép-másolat létrehozása után.":::
 
 1. Válassza a **Befejezés** lehetőséget az új biztonsági mentési szabályzat összefoglalásának áttekintéséhez. 
-1. Az **ütemterv konfigurálása**területen válassza a **Hozzáadás**lehetőséget.
+1. Az **ütemterv konfigurálása** területen válassza a **Hozzáadás** lehetőséget.
 
-   :::image type="content" source="media/snapcenter/configure-schedules-for-selected-policies.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához":::
+   :::image type="content" source="media/snapcenter/configure-schedules-for-selected-policies.png" alt-text="Az ütemterv konfigurálása területen válassza a Hozzáadás lehetőséget.":::
 
 1. Válassza ki a **kezdési dátumot**, a **lejárat** dátumát és a gyakoriságot.
 
-   :::image type="content" source="media/snapcenter/add-schedules-for-policy.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához":::
+   :::image type="content" source="media/snapcenter/add-schedules-for-policy.png" alt-text="Válassza ki a kezdési dátumot, a lejárat dátumát és a gyakoriságot.":::
 
 1. Adja meg az értesítések e-mail-címét.
 
-   :::image type="content" source="media/snapcenter/backup-policy-notification-settings.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához":::
+   :::image type="content" source="media/snapcenter/backup-policy-notification-settings.png" alt-text="Adja meg az értesítések e-mail-címét.":::
 
 1.  A biztonsági mentési szabályzat létrehozásához válassza a **Befejezés** lehetőséget.
 
@@ -702,45 +703,45 @@ A SnapCenter segítségével visszaállíthatja az adatbázist.  Ebben a szakasz
    ```
 
 
-1. Az adatbázisfájlok visszaállítása a SnapCenter-on keresztül.  Válassza ki az adatbázist, majd válassza a **visszaállítás**lehetőséget.  
+1. Az adatbázisfájlok visszaállítása a SnapCenter-on keresztül.  Válassza ki az adatbázist, majd válassza a **visszaállítás** lehetőséget.  
 
-   :::image type="content" source="media/snapcenter/restore-database-via-snapcenter.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához" lightbox="media/snapcenter/restore-database-via-snapcenter.png":::
+   :::image type="content" source="media/snapcenter/restore-database-via-snapcenter.png" alt-text="Válasszon ki egy adatbázist, és válassza a visszaállítás lehetőséget." lightbox="media/snapcenter/restore-database-via-snapcenter.png":::
 
 1. Válassza ki a visszaállítási típust.  A példánkban visszaállítjuk a teljes erőforrást. 
 
-   :::image type="content" source="media/snapcenter/restore-database-select-restore-type.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához":::
+   :::image type="content" source="media/snapcenter/restore-database-select-restore-type.png" alt-text="Válassza ki a visszaállítási típust.":::
 
    >[!NOTE]
    >Alapértelmezett beállításként nem kell megadnia a helyi visszaállításhoz szükséges parancsokat a lemezen lévő pillanatképből. 
 
    >[!TIP]
-   >Ha egy adott LUN-t szeretne visszaállítani a köteten belül, válassza a **fájl szintje**lehetőséget.
+   >Ha egy adott LUN-t szeretne visszaállítani a köteten belül, válassza a **fájl szintje** lehetőséget.
 
 1. Kövesse a munkafolyamatot a konfigurációs varázsló segítségével.
    
    A SnapCenter visszaállítja az adattárolást az eredeti helyre, így elindíthatja a helyreállítási folyamatot a HANA-ban. Mivel a SnapCenter nem tudja módosítani a biztonsági mentési katalógust (az adatbázis le van állítva), a rendszer figyelmeztetést jelenít meg.
 
-   :::image type="content" source="media/snapcenter/restore-database-job-details-warning.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához":::
+   :::image type="content" source="media/snapcenter/restore-database-job-details-warning.png" alt-text="Mivel a SnapCenter nem tudja módosítani a biztonsági mentési katalógust, a rendszer figyelmeztetést jelenít meg. ":::
 
-1. Mivel a rendszer az összes adatbázisfájlt visszaállítja, indítsa el a helyreállítási folyamatot a HANA-ban. A HANA Studio **rendszerek**területén kattintson a jobb gombbal a rendszeradatbázisra, majd válassza a **biztonsági mentés és helyreállítás**  >  **rendszeradatbázis helyreállítása**lehetőséget.
+1. Mivel a rendszer az összes adatbázisfájlt visszaállítja, indítsa el a helyreállítási folyamatot a HANA-ban. A HANA Studio **rendszerek** területén kattintson a jobb gombbal a rendszeradatbázisra, majd válassza a **biztonsági mentés és helyreállítás**  >  **rendszeradatbázis helyreállítása** lehetőséget.
 
-   :::image type="content" source="media/snapcenter/hana-studio-backup-recovery.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához":::
+   :::image type="content" source="media/snapcenter/hana-studio-backup-recovery.png" alt-text="Indítsa el a helyreállítási folyamatot a HANA-ban.":::
 
 1. Válasszon egy helyreállítási típust.
 
-   :::image type="content" source="media/snapcenter/restore-database-select-recovery-type.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához":::
+   :::image type="content" source="media/snapcenter/restore-database-select-recovery-type.png" alt-text="Válassza ki a helyreállítási típust.":::
 
 1. Válassza ki a biztonsági mentési katalógus helyét.
 
-   :::image type="content" source="media/snapcenter/restore-database-select-location-backup-catalog.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához":::
+   :::image type="content" source="media/snapcenter/restore-database-select-location-backup-catalog.png" alt-text="Válassza ki a biztonsági mentési katalógus helyét.":::
 
 1. Válasszon ki egy biztonsági másolatot a SAP HANA-adatbázis helyreállításához.
 
-   :::image type="content" source="media/snapcenter/restore-database-select-backup.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához":::
+   :::image type="content" source="media/snapcenter/restore-database-select-backup.png" alt-text="Válasszon ki egy biztonsági másolatot a SAP HANA-adatbázis helyreállításához.":::
 
    Az adatbázis helyreállítását követően egy üzenet jelenik meg, amely helyreállt az **idő** , és a rendszer visszaállítja a **napló pozíciójának** bélyegzőjét.
 
-1. A **rendszerek**területen kattintson a jobb gombbal a rendszeradatbázisra, és válassza a **biztonsági mentés és helyreállítás**a  >  **bérlői adatbázis helyreállítása**lehetőséget.
+1. A **rendszerek** területen kattintson a jobb gombbal a rendszeradatbázisra, és válassza a **biztonsági mentés és helyreállítás** a  >  **bérlői adatbázis helyreállítása** lehetőséget.
 1. A bérlői adatbázis helyreállításának befejezéséhez kövesse a varázsló munkafolyamatát. 
 
 Az adatbázisok visszaállításával kapcsolatos további információkért lásd: [SAP HANA biztonsági mentés/helyreállítás a SnapCenter-](https://www.netapp.com/us/media/tr-4614.pdf)mel.
@@ -753,7 +754,7 @@ Visszaállíthatja a nem adatköteteket, például a hálózati fájlmegosztás 
 
 A klónozás előtt ugyanazzal a HANA-verzióval kell telepíteni a forrás-adatbázist. A SID és az azonosító eltérő lehet. 
 
-:::image type="content" source="media/snapcenter/system-cloning-diagram.png" alt-text="Támogatási eset létrehozása a felhasználói tároló beállításához" lightbox="media/snapcenter/system-cloning-diagram.png" border="false":::
+:::image type="content" source="media/snapcenter/system-cloning-diagram.png" alt-text="Rendszerklónozás SAP HANA" lightbox="media/snapcenter/system-cloning-diagram.png" border="false":::
 
 1. HANA-adatbázis felhasználói tárolójának létrehozása a H34-adatbázishoz a/usr/sap/H34/HDB40.
 
@@ -777,7 +778,7 @@ A klónozás előtt ugyanazzal a HANA-verzióval kell telepíteni a forrás-adat
 1. A SnapCenter adja hozzá a cél gazdagépet, amelyen a klón csatlakoztatva lesz. További információ: [gazdagépek hozzáadása és beépülőmodul-csomagok telepítése távoli gazdagépeken](http://docs.netapp.com/ocsc-43/index.jsp?topic=%2Fcom.netapp.doc.ocsc-dpg-sap-hana%2FGUID-246C0810-4F0B-4BF7-9A35-B729AD69954A.html).
    1. Adja meg a hozzáadni kívánt futtató hitelesítő adatokkal kapcsolatos információkat. 
    1. Válassza ki a gazdagép operációs rendszerét, és adja meg a gazdagép adatait.
-   1. A **telepítendő beépülő modulok**alatt válassza ki a verziót, adja meg a telepítési útvonalat, és válassza a **SAP HANA**lehetőséget.
+   1. A **telepítendő beépülő modulok** alatt válassza ki a verziót, adja meg a telepítési útvonalat, és válassza a **SAP HANA** lehetőséget.
    1. A telepítés előtti ellenőrzések futtatásához válassza az **Érvényesítés** lehetőséget.
 
 1. Állítsa le a HANA-t, és válassza le a régi adatmennyiséget.  A klónt a SnapCenter fogja csatlakoztatni.  
@@ -830,7 +831,7 @@ A klónozás előtt ugyanazzal a HANA-verzióval kell telepíteni a forrás-adat
    >[!NOTE]
    >További információ: [klónozás biztonsági mentésből](https://docs.netapp.com/ocsc-43/index.jsp?topic=%2Fcom.netapp.doc.ocsc-dpg-cpi%2FGUID-F6E7FF73-0183-4B9F-8156-8D7DA17A8555.html).
 
-1. A **parancsfájlok**területen adja meg a következőket:
+1. A **parancsfájlok** területen adja meg a következőket:
 
    * **Csatlakoztatási parancs:** /NetApp/SC-System-refresh.sh csatlakoztatási H34% hana_data_h31_mnt00001_t250_vol_Clone
    * **Klónozás utáni parancs:** /NetApp/SC-System-refresh.sh Recover H34

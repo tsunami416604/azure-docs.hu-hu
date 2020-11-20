@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 48b8737fc37a183405f42b958e38c328a2ce7cb8
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 9db4328ce6519bef05017ba697d8f0f029f2096a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739594"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967414"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Egyéni kiosztási szabályzatok használata
 
@@ -25,14 +25,14 @@ Tegyük fel például, hogy meg szeretné vizsgálni az eszköz által a kiépí
 
 Ez a cikk egy egyéni kiosztási szabályzatot mutat be egy C# nyelven írt Azure-függvény használatával. Két új IoT hub jön létre, amely egy *contoso kenyérpirítói osztályt* és egy *contoso Heat pumps-részleget* jelöl. Az üzembe helyezést kérő eszközökön regisztrálni kell egy regisztrációs azonosítót a következő utótagok egyikével, hogy el lehessen fogadni az üzembe helyezéshez:
 
-* **-contoso-tstrsd-007** : contoso kenyérpirítók osztása
-* **-contoso-hpsd-088** : contoso Heat pumps Division
+* **-contoso-tstrsd-007**: contoso kenyérpirítók osztása
+* **-contoso-hpsd-088**: contoso Heat pumps Division
 
 Az eszközök a regisztrációs AZONOSÍTÓn alapuló kötelező utótagok egyikén lesznek kiépítve. Ezek az eszközök az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)-ban foglalt kiépítési minta használatával lesznek szimulálva.
 
 A cikk a következő lépéseket hajtja végre:
 
-* Hozzon létre két contoso Division IoT-hubokat az Azure CLI használatával ( **contoso kenyérpirító részleg** és **contoso Heat pumps Division** )
+* Hozzon létre két contoso Division IoT-hubokat az Azure CLI használatával (**contoso kenyérpirító részleg** és **contoso Heat pumps Division**)
 * Új csoportos regisztráció létrehozása Azure-függvény használatával az egyéni kiosztási szabályzathoz
 * Hozzon létre két eszköz-szimulációs eszköz kulcsait.
 * A fejlesztési környezet beállítása az Azure IoT C SDK-hoz
@@ -44,7 +44,7 @@ A cikk a következő lépéseket hajtja végre:
 
 A következő előfeltételek a Windows fejlesztési környezetéhez szükségesek. Linux vagy macOS esetén tekintse meg a [fejlesztési környezet előkészítése](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) az SDK-ban című dokumentáció megfelelő szakaszát.
 
-* A [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019-es verziójában engedélyezve van az ["asztali fejlesztés C++](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) -ban" számítási feladattal. A Visual Studio 2015 és a Visual Studio 2017 is támogatott.
+* A [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019-es verziójában engedélyezve van az ["asztali fejlesztés C++](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) -ban" számítási feladattal. A Visual Studio 2015 és a Visual Studio 2017 is támogatott.
 
 * A [Git](https://git-scm.com/download/) legújabb verziójának telepített példánya.
 
@@ -66,7 +66,7 @@ Ebben a szakaszban a Azure Cloud Shell használatával hozzon létre egy üzembe
     az group create --name contoso-us-resource-group --location westus
     ```
 
-2. A Azure Cloud Shell használatával hozzon létre egy eszköz-kiépítési szolgáltatást az az [IOT DPS Create](/cli/azure/iot/dps#az-iot-dps-create) paranccsal. A kiépítési szolgáltatás hozzá lesz adva a *contoso-US-Resource-Group* -hoz.
+2. A Azure Cloud Shell használatával hozzon létre egy eszköz-kiépítési szolgáltatást az az [IOT DPS Create](/cli/azure/iot/dps#az-iot-dps-create) paranccsal. A kiépítési szolgáltatás hozzá lesz adva a *contoso-US-Resource-Group*-hoz.
 
     Az alábbi példa egy *contoso-kiépítés-Service-1098* nevű kiépítési szolgáltatást hoz létre a *westus* helyen. Egyedi szolgáltatásnevet kell használnia. Hozzon létre saját utótagot a szolgáltatás nevében a **1098** helyett.
 
@@ -76,7 +76,7 @@ Ebben a szakaszban a Azure Cloud Shell használatával hozzon létre egy üzembe
 
     A parancs végrehajtása több percet is igénybe vehet.
 
-3. A Azure Cloud Shell használatával hozza létre a **contoso kenyérpirítók Division** IoT hubot az az [IoT hub Create](/cli/azure/iot/hub#az-iot-hub-create) paranccsal. Az IoT hub hozzá lesz adva a *contoso-US-Resource-Group* -hoz.
+3. A Azure Cloud Shell használatával hozza létre a **contoso kenyérpirítók Division** IoT hubot az az [IoT hub Create](/cli/azure/iot/hub#az-iot-hub-create) paranccsal. Az IoT hub hozzá lesz adva a *contoso-US-Resource-Group*-hoz.
 
     Az alábbi példa egy *contoso-kenyérpirítós-hub-1098* nevű IoT-hubot hoz létre a *westus* helyen. Egyedi hub-nevet kell használnia. Hozzon létre saját utótagot a hub neveként a **1098** helyett. Az egyéni kiosztási szabályzathoz tartozó példa programkódjának `-toasters-` a hub nevében kell lennie.
 
@@ -86,7 +86,7 @@ Ebben a szakaszban a Azure Cloud Shell használatával hozzon létre egy üzembe
 
     A parancs végrehajtása több percet is igénybe vehet.
 
-4. A Azure Cloud Shell használatával hozza létre a **contoso Heat szivattyúk Division** IoT hubot az az [IoT hub Create](/cli/azure/iot/hub#az-iot-hub-create) paranccsal. Ez az IoT hub a *contoso-US-Resource-Group* -hoz is hozzá lesz adva.
+4. A Azure Cloud Shell használatával hozza létre a **contoso Heat szivattyúk Division** IoT hubot az az [IoT hub Create](/cli/azure/iot/hub#az-iot-hub-create) paranccsal. Ez az IoT hub a *contoso-US-Resource-Group*-hoz is hozzá lesz adva.
 
     A következő példa egy *contoso-heatpumps-hub-1098* nevű IoT-hubot hoz létre a *westus* helyen. Egyedi hub-nevet kell használnia. Hozzon létre saját utótagot a hub neveként a **1098** helyett. Az egyéni kiosztási szabályzathoz tartozó példa programkódjának `-heatpumps-` a hub nevében kell lennie.
 
@@ -98,26 +98,26 @@ Ebben a szakaszban a Azure Cloud Shell használatával hozzon létre egy üzembe
 
 ## <a name="create-the-custom-allocation-function"></a>Az egyéni foglalási függvény létrehozása
 
-Ebben a szakaszban egy Azure-függvényt hoz létre, amely megvalósítja az egyéni foglalási szabályzatot. Ez a függvény határozza meg, hogy melyik IoT hub-eszközt kell regisztrálni ahhoz, hogy a regisztrációs azonosítója tartalmazza a következő karakterláncot: **contoso-tstrsd-007** vagy **-contoso-hpsd-088** . Azt is beállítja, hogy az eszköz egy kenyérpirító vagy egy hőszivattyú legyen.
+Ebben a szakaszban egy Azure-függvényt hoz létre, amely megvalósítja az egyéni foglalási szabályzatot. Ez a függvény határozza meg, hogy melyik IoT hub-eszközt kell regisztrálni ahhoz, hogy a regisztrációs azonosítója tartalmazza a következő karakterláncot: **contoso-tstrsd-007** vagy **-contoso-hpsd-088**. Azt is beállítja, hogy az eszköz egy kenyérpirító vagy egy hőszivattyú legyen.
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). A kezdőlapon válassza az **+ erőforrás létrehozása** lehetőséget.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). A kezdőlapon válassza az **+ erőforrás létrehozása** lehetőséget.
 
 2. A *Keresés a piactéren* mezőbe írja be a "függvényalkalmazás" kifejezést. A legördülő listában válassza a **függvényalkalmazás** lehetőséget, majd válassza a **Létrehozás** lehetőséget.
 
 3. **Függvényalkalmazás** Létrehozás lap **alapok** lapján adja meg az új Function alkalmazás következő beállításait, majd válassza a **felülvizsgálat + létrehozás** lehetőséget:
 
-    **Erőforráscsoport** : válassza ki a **contoso-US-Resource-Group** elemet, hogy az ebben a cikkben létrehozott összes erőforrást együtt őrizze meg.
+    **Erőforráscsoport**: válassza ki a **contoso-US-Resource-Group** elemet, hogy az ebben a cikkben létrehozott összes erőforrást együtt őrizze meg.
 
-    **Függvényalkalmazás neve** : adjon meg egy egyedi Function app-nevet. Ez a példa a **contoso-Function-app-1098-** et használja.
+    **Függvényalkalmazás neve**: adjon meg egy egyedi Function app-nevet. Ez a példa a **contoso-Function-app-1098-** et használja.
 
-    **Közzététel** : Ellenőrizze, hogy a **kód** ki van-e választva.
+    **Közzététel**: Ellenőrizze, hogy a **kód** ki van-e választva.
 
-    **Futásidejű verem** : válassza a **.net Core** elemet a legördülő menüből.
+    **Futásidejű verem**: válassza a **.net Core** elemet a legördülő menüből.
 
-    **Régió** : válassza ki ugyanazt a régiót, mint az erőforráscsoportot. Ez a példa az **USA nyugati** régióját használja.
+    **Régió**: válassza ki ugyanazt a régiót, mint az erőforráscsoportot. Ez a példa az **USA nyugati** régióját használja.
 
     > [!NOTE]
-    > Alapértelmezés szerint a Application Insights engedélyezve van. A Application Insights nem szükséges ehhez a cikkhez, de segíthet megérteni és megvizsgálni az egyéni foglalással kapcsolatban felmerülő problémákat. Ha szeretné, letilthatja Application Insights a **figyelés** lapon, majd a **nem** lehetőséget választva **engedélyezheti a Application Insights** .
+    > Alapértelmezés szerint a Application Insights engedélyezve van. A Application Insights nem szükséges ehhez a cikkhez, de segíthet megérteni és megvizsgálni az egyéni foglalással kapcsolatban felmerülő problémákat. Ha szeretné, letilthatja Application Insights a **figyelés** lapon, majd a **nem** lehetőséget választva **engedélyezheti a Application Insights**.
 
     ![Azure-függvényalkalmazás létrehozása az egyéni foglalási funkció üzemeltetéséhez](./media/how-to-use-custom-allocation-policies/create-function-app.png)
 
@@ -306,11 +306,11 @@ Ebben a szakaszban egy új beléptetési csoportot fog létrehozni, amely az egy
 
 3. A **regisztrációs csoport hozzáadása** lapon adja meg a következő adatokat, majd kattintson a **Save (Mentés** ) gombra.
 
-    **Csoportnév** : írja be a **contoso-Custom-lefoglalt-Devices** nevet.
+    **Csoportnév**: írja be a **contoso-Custom-lefoglalt-Devices** nevet.
 
-    **Igazolás típusa** : válassza a **szimmetrikus kulcs** lehetőséget.
+    **Igazolás típusa**: válassza a **szimmetrikus kulcs** lehetőséget.
 
-    **Kulcsok automatikus generálása** : ezt a jelölőnégyzetet már be kell jelölni.
+    **Kulcsok automatikus generálása**: ezt a jelölőnégyzetet már be kell jelölni.
 
     **Válassza ki, hogyan szeretné hozzárendelni az eszközöket a** **központokhoz: válassza az egyéni (Azure-függvény használata)** lehetőséget.
 
@@ -320,15 +320,15 @@ Ebben a szakaszban egy új beléptetési csoportot fog létrehozni, amely az egy
 
     Hajtsa végre ezt a lépést mindkét kiosztott IoT-hubhoz.
 
-    **Előfizetés** : Ha több előfizetéssel rendelkezik, válassza ki azt az előfizetést, amelyben létrehozta a kiosztott IoT hubokat.
+    **Előfizetés**: Ha több előfizetéssel rendelkezik, válassza ki azt az előfizetést, amelyben létrehozta a kiosztott IoT hubokat.
 
-    **IoT hub** : válassza ki a létrehozott részlegi hubok egyikét.
+    **IoT hub**: válassza ki a létrehozott részlegi hubok egyikét.
 
-    **Hozzáférési szabályzat** : válassza a **iothubowner** lehetőséget.
+    **Hozzáférési szabályzat**: válassza a **iothubowner** lehetőséget.
 
     ![A IoT-hubok összekapcsolása a létesítési szolgáltatással](./media/how-to-use-custom-allocation-policies/link-divisional-hubs.png)
 
-5. A **regisztrációs csoport hozzáadásakor** , ha a IoT hubok is össze lettek kapcsolva, ki kell választania azokat IoT hub csoportként a beléptetési csoport számára az alábbi ábrán látható módon:
+5. A **regisztrációs csoport hozzáadásakor**, ha a IoT hubok is össze lettek kapcsolva, ki kell választania azokat IoT hub csoportként a beléptetési csoport számára az alábbi ábrán látható módon:
 
     ![Az üzembe helyezési központ csoportjának létrehozása a regisztrációhoz](./media/how-to-use-custom-allocation-policies/enrollment-divisional-hub-group.png)
 
@@ -336,7 +336,7 @@ Ebben a szakaszban egy új beléptetési csoportot fog létrehozni, amely az egy
 
     ![Válassza ki a függvényt, és mentse a beléptetési csoportot](./media/how-to-use-custom-allocation-policies/save-enrollment.png)
 
-7. Miután mentette a beléptetést, nyissa meg újra, és jegyezze fel az **elsődleges kulcsot** . Először mentenie kell a beléptetést, hogy a kulcsok létrejöttek legyenek. A rendszer ezt a kulcsot használja a szimulált eszközökhöz tartozó egyedi eszközök kulcsának létrehozásához.
+7. Miután mentette a beléptetést, nyissa meg újra, és jegyezze fel az **elsődleges kulcsot**. Először mentenie kell a beléptetést, hogy a kulcsok létrejöttek legyenek. A rendszer ezt a kulcsot használja a szimulált eszközökhöz tartozó egyedi eszközök kulcsának létrehozásához.
 
 ## <a name="derive-unique-device-keys"></a>Egyedi eszköz kulcsának származtatása
 
@@ -437,7 +437,7 @@ Ez a szakasz a Windows-alapú munkaállomás irányába mutat. Linux-példaként
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
 
-    Ha `cmake` nem találja a C++ fordítót, előfordulhat, hogy a parancs futtatásakor hibákat fog kiépíteni. Ha ez történik, próbálja meg futtatni a parancsot a [Visual Studio-parancssorban](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs).
+    Ha `cmake` nem találja a C++ fordítót, előfordulhat, hogy a parancs futtatásakor hibákat fog kiépíteni. Ha ez történik, próbálja meg futtatni a parancsot a [Visual Studio-parancssorban](/dotnet/framework/tools/developer-command-prompt-for-vs).
 
     A sikeres létrehozást követően a kimenet utolsó sorai a következőhöz hasonlóan néznek majd ki:
 
@@ -568,7 +568,7 @@ Az alábbi táblázat a várt forgatókönyveket és az eredményül kapott hiba
 | A webhook a következő hibakódot adja vissza: >= 429 | A DPS-előkészítés számos alkalommal próbálkozik újra. Az újrapróbálkozási szabályzat jelenleg a következőket hajtja végre:<br><br>&nbsp;&nbsp;-Újrapróbálkozás száma: 10<br>&nbsp;&nbsp;-Kezdeti időköz: 1s<br>&nbsp;&nbsp;– Növekmény: 9-es | Az SDK figyelmen kívül hagyja a hibát, és egy másik lekérési állapotjelző üzenetet küld a megadott időn belül |
 | A webhook bármely más állapotkódot ad vissza | Eredmény állapota: sikertelen<br><br>Hibakód: CustomAllocationFailed (400207) | Az SDK visszaadja PROV_DEVICE_RESULT_DEV_AUTH_ERROR |
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha azt tervezi, hogy folytatja a jelen cikkben létrehozott erőforrásokkal való munkát, meghagyhatja őket. Ha nem tervezi tovább használni az erőforrásokat, a következő lépésekkel törölheti az ebben a cikkben létrehozott összes erőforrást a szükségtelen költségek elkerülése érdekében.
 
@@ -591,4 +591,4 @@ Az erőforráscsoport törlése név szerint:
 ## <a name="next-steps"></a>Következő lépések
 
 * További információ: [IoT hub eszköz](concepts-device-reprovision.md) újraépítése 
-* További részletekért lásd: [az előzőleg](how-to-unprovision-devices.md) kiépített eszközök kiépítése. 
+* További részletekért lásd: [az előzőleg](how-to-unprovision-devices.md) kiépített eszközök kiépítése.

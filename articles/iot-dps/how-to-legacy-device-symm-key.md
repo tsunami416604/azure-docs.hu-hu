@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: eliotga
-ms.openlocfilehash: f67ed44fffe6bd690d6bd76fcefa19d9ee23e52b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc33dcd2c80b2a6d4a1cc27778e49dc06ac48b34
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90529400"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967312"
 ---
 # <a name="how-to-provision-devices-using-symmetric-key-enrollment-groups"></a>Eszközök kiépítése szimmetrikus kulcsú beléptetési csoportok használatával
 
@@ -49,7 +49,7 @@ A cikkben bemutatott kód a gyors üzembe helyezési ponttal megegyező mintáza
 
 A következő előfeltételek a Windows fejlesztési környezetéhez szükségesek. Linux vagy macOS esetén tekintse meg a [fejlesztési környezet előkészítése](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) az SDK-ban című dokumentáció megfelelő szakaszát.
 
-* A [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019-es verziójában engedélyezve van az ["asztali fejlesztés C++](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) -ban" számítási feladattal. A Visual Studio 2015 és a Visual Studio 2017 is támogatott.
+* A [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019-es verziójában engedélyezve van az ["asztali fejlesztés C++](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) -ban" számítási feladattal. A Visual Studio 2015 és a Visual Studio 2017 is támogatott.
 
 * A [Git](https://git-scm.com/download/) legújabb verziójának telepített példánya.
 
@@ -88,7 +88,7 @@ Az SDK tartalmazza a szimulált eszközhöz tartozó mintakód kódját. A szimu
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
     
-    Ha a `cmake` nem találja a C++ fordítóprogramot, a fenti parancs futtatása esetlegesen fordítási hibákat adhat vissza. Ilyen esetekben futtassa a parancsot a [Visual Studio parancssorából](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs). 
+    Ha a `cmake` nem találja a C++ fordítóprogramot, a fenti parancs futtatása esetlegesen fordítási hibákat adhat vissza. Ilyen esetekben futtassa a parancsot a [Visual Studio parancssorából](/dotnet/framework/tools/developer-command-prompt-for-vs). 
 
     A sikeres létrehozást követően a kimenet utolsó sorai a következőhöz hasonlóan néznek majd ki:
 
@@ -113,11 +113,11 @@ Az SDK tartalmazza a szimulált eszközhöz tartozó mintakód kódját. A szimu
 
 2. Válassza a **regisztrációk kezelése** fület, majd kattintson a **regisztrációs csoport hozzáadása** gombra az oldal tetején. 
 
-3. A **regisztrációs csoport hozzáadása**párbeszédpanelen adja meg a következő adatokat, majd kattintson a **Save (Mentés** ) gombra.
+3. A **regisztrációs csoport hozzáadása** párbeszédpanelen adja meg a következő adatokat, majd kattintson a **Save (Mentés** ) gombra.
 
    - **Csoport neve**: adja meg a **mylegacydevices**.
 
-   - **Igazolás típusa**: válassza a **szimmetrikus kulcs**lehetőséget.
+   - **Igazolás típusa**: válassza a **szimmetrikus kulcs** lehetőséget.
 
    - **Kulcsok automatikus létrehozása**: Jelölje be ezt a jelölőnégyzetet.
 
@@ -290,15 +290,4 @@ Ez a mintakód szimulál egy eszköz rendszerindítási sorozatot, amely elküld
 
 * További információ: [IoT hub eszköz](concepts-device-reprovision.md) újraépítése 
 * [Rövid útmutató: Szimmetrikus kulcs kiosztása szimulált eszköz számára](quick-create-simulated-device-symm-key.md)
-* További részletekért lásd: [az előzőleg automatikusan kiépített eszközök](how-to-unprovision-devices.md) kiépítése. 
-
-
-
-
-
-
-
-
-
-
-
+* További részletekért lásd: [az előzőleg automatikusan kiépített eszközök](how-to-unprovision-devices.md) kiépítése.

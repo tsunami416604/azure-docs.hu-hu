@@ -3,16 +3,17 @@ title: Oracle-adatbázis létrehozása Azure-beli virtuális gépen | Microsoft 
 description: Gyorsan beszerezhet egy Oracle Database 12c-adatbázist az Azure-környezetben.
 author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 557091652702a6cc313456ed2468d9620e02abf8
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 6468acb598cee26c46b62d64c748f0e393f27271
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996212"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967958"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Oracle Database létrehozása Azure-beli virtuális gépen
 
@@ -343,7 +344,7 @@ Jelentkezzen be a **sys** -fiók használatával, és jelölje be a **as SYSDBA*
 
 ![Az Oracle OEM Express bejelentkezési oldalának képernyőképe](./media/oracle-quick-start/oracle_oem_express_login.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha befejezte az Azure-beli első Oracle-adatbázis vizsgálatát, és a virtuális gép már nincs rá szükség, az az [Group delete](/cli/azure/group) paranccsal eltávolíthatja az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást.
 

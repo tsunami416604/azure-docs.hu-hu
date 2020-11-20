@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: SAP, Azure HANA, Storage ultrakönnyű lemez, Premium Storage
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bbaa9d33d3a31b682a66b2a3254fc2265b6f8d7b
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: af2eac929e3e3f40e1ac1cd384c943b1e09171a8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357077"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967465"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure-beli virtuális gépek tárkonfigurációi
 
@@ -46,7 +47,7 @@ A különböző tárolási típusok minimális SAP HANA tanúsított feltételei
 - Legalább a **/Hana/log** -kötethez tartozó Azure Ultra Disk. A **/Hana/Data** -kötetet az Azure írásgyorsító nélküli Premium Storage-ra vagy az ultra Disk gyorsabb újraindítására lehet helyezni
 - A **/Hana/log és a/hana/data** Azure NetApp Files felső részén található **NFS v 4.1** kötetek. A/Hana/Shared mennyisége NFS v3 vagy NFS v 4.1 protokollt használhat.
 
-Egyes tárolási típusok kombinálhatók. Előfordulhat például, hogy az **/Hana/Data** -t a Premium Storage-ra helyezi, és a **/Hana/log** a szükséges kis késleltetés érdekében a lemezes tárolásra is helyezhető. Ha a **/HANA/Data** ANF alapuló kötetet használ, a  **/Hana/log** -kötetet a ANF-on felüli NFS-en kell alapulnia. A ANF-en keresztüli NFS használata az egyik kötetre (például a/Hana/Data-ra) és az Azure Premium Storage-ra, vagy a másik kötethez tartozó Ultra Disk (például **/Hana/log** ) **nem támogatott**.
+Egyes tárolási típusok kombinálhatók. Előfordulhat például, hogy az **/Hana/Data** -t a Premium Storage-ra helyezi, és a **/Hana/log** a szükséges kis késleltetés érdekében a lemezes tárolásra is helyezhető. Ha a **/HANA/Data** ANF alapuló kötetet használ, a  **/Hana/log** -kötetet a ANF-on felüli NFS-en kell alapulnia. A ANF-en keresztüli NFS használata az egyik kötetre (például a/Hana/Data-ra) és az Azure Premium Storage-ra, vagy a másik kötethez tartozó Ultra Disk (például **/Hana/log**) **nem támogatott**.
 
 A helyszíni világban ritkán kell foglalkoznia az I/O-alrendszerekkel és képességeivel. Ennek az az oka, hogy a készülék gyártójának meg kell győződnie arról, hogy a minimális tárolási követelmények teljesülnek SAP HANA esetén. Ha saját maga hozza létre az Azure-infrastruktúrát, tisztában kell lennie az egyes SAP-kiállított követelményekkel. Az SAP által ajánlott minimális átviteli sebességek közül néhány:
 
@@ -309,7 +310,7 @@ Ha a SAP HANA adatmennyiségét és a naplózási kötetet egyesíti, a csíkozo
 Vannak felsorolva olyan virtuálisgép-típusok, amelyek nem rendelkeznek SAP-tanúsítvánnyal, és amelyek nem szerepelnek az ún. [SAP HANA Hardware könyvtárban](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Az ügyfelek visszajelzései voltak, hogy ezek a nem felsorolt virtuálisgép-típusok sikeresen használatba kerültek néhány nem üzemi feladathoz.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ:
 
 - [SAP HANA magas rendelkezésre állású útmutató Azure-beli virtuális gépekhez](./sap-hana-availability-overview.md).

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/19/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e90c1d1cfa02f63a2b5115124dee2a9da68e2f3f
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 9122d6716aa94a7e0164c9c7774c7c8d85be814a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917273"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968009"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Javaslat létrehozása az automatikus kiegészítés és a javasolt eredmények lekérdezésben való engedélyezéséhez
 
@@ -40,9 +40,11 @@ A javaslat egy belső adatstruktúra, amely támogatja a keresési típusokat a 
 
 A javaslatok létrehozásához vegyen fel egyet egy [index-definícióba](/rest/api/searchservice/create-index). A javaslat lekéri a nevet és azon mezők gyűjteményét, amelyeken a typeahead-élmény engedélyezve van. és [állítsa be az egyes tulajdonságokat](#property-reference). A javaslatok létrehozásához a legjobb idő az, amikor azt a mezőt is meghatározza, amelyik azt fogja használni.
 
-+ Csak karakterlánc-mezők használata
++ Csak karakterlánc-mezőket használjon.
 
-+ Az alapértelmezett standard Lucene Analyzer ( `"analyzer": null` ) vagy a [Language Analyzer](index-add-language-analyzers.md) (például `"analyzer": "en.Microsoft"` ) használata a mezőben
++ Ha a karakterlánc mező egy összetett típus része (például a címen belüli város mező), vegye fel a szülőt a következő mezőbe: `"Address/City"` (REST, C# és Python) vagy `["Address"]["City"]` (JavaScript).
+
++ Használja az alapértelmezett standard Lucene-elemzőt ( `"analyzer": null` ) vagy egy [nyelvi elemzőt](index-add-language-analyzers.md) (például `"analyzer": "en.Microsoft"` ) a mezőn.
 
 Ha már meglévő mezők használatával próbál létrehozni egy javaslatot, az API letiltja azt. Az előtagok az indexelés során jönnek létre, ha a két vagy több karakterből álló kombinációk részleges kifejezései a teljes feltételek mellett jogkivonatot kapnak. Mivel a meglévő mezők már jogkivonattal rendelkeznek, újra kell építenie az indexet, ha hozzá kívánja adni őket egy javaslathoz. További információ: [Azure Cognitive Search index újraépítése](search-howto-reindex.md).
 

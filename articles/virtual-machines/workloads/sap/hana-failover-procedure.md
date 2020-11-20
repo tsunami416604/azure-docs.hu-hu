@@ -7,18 +7,19 @@ author: saghorpa
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6454903a7c37da30e317e29c126109b39b14efbc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1daba0819e0164602ae78ece87421834f36fb09a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83660580"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967822"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>Vészhelyreállítási feladatátvételi eljárás
 
@@ -42,7 +43,7 @@ Ha több SAP HANA példány feladatátvételét szeretné végrehajtani, futtass
 A DR feladatátvételt is tesztelheti a tényleges replikációs kapcsolat befolyásolása nélkül. A feladatátvételi teszt végrehajtásához kövesse az Azure-beli [SAP HANA Microsoft Snapshot-eszközök](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.3/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.3.pdf)"teszt elvégzése azure_hana_test_dr_failover" című szakaszának lépéseit. 
 
 >[!IMPORTANT]
->Ne *futtasson* üzemi tranzakciókat a Dr-helyen a **feladatátvétel tesztelésének**folyamatán keresztül létrehozott példányon. A parancs azure_hana_test_dr_failover olyan kötetek készletét hozza létre, amelyek nem rendelkeznek kapcsolattal az elsődleges hellyel. Ennek eredményeképpen az elsődleges helyhez való szinkronizálás *nem* lehetséges. 
+>Ne *futtasson* üzemi tranzakciókat a Dr-helyen a **feladatátvétel tesztelésének** folyamatán keresztül létrehozott példányon. A parancs azure_hana_test_dr_failover olyan kötetek készletét hozza létre, amelyek nem rendelkeznek kapcsolattal az elsődleges hellyel. Ennek eredményeképpen az elsődleges helyhez való szinkronizálás *nem* lehetséges. 
 
 Ha több SAP HANA-példányt szeretne tesztelni, futtassa többször a parancsfájlt. Ha a rendszer kéri, adja meg a feladatátvételi teszthez használni kívánt példány SAP HANA SID-azonosítóját. 
 
@@ -83,8 +84,8 @@ A következő lépések bemutatják, hogyan állíthatja helyre a SAP HANA üzem
 
 1. Módosítsa az alapértelmezett beállítások némelyikét:
 
-      - Törölje a **különbözeti biztonsági mentések használata**jelölőnégyzet jelölését.
-      - Válassza a **naplózási körzet inicializálása**elemet.
+      - Törölje a **különbözeti biztonsági mentések használata** jelölőnégyzet jelölését.
+      - Válassza a **naplózási körzet inicializálása** elemet.
 
    ![A napló inicializálási körzetének beállítása](./media/hana-overview-high-availability-disaster-recovery/initialize_log_dr3.PNG)
 
@@ -120,5 +121,5 @@ A tárolási replikálási folyamat állapotának figyeléséhez futtassa a para
 A paranccsal és a kimenetével kapcsolatos további információkért tekintse meg a "DR replikáció állapotának beolvasása – azure_hana_replication_status" című részt a [Microsoft Snapshot Tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.3/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.3.pdf)-ban.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Lásd: [a HANA oldal figyelése és hibáinak megoldása](hana-monitor-troubleshoot.md).

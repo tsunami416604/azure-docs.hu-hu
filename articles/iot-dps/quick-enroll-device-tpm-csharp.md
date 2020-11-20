@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 872d1f43f1e9dc180e41a2bf625ca18b74522b40
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 14f17c6716fe98a11d03e8d1021bcdb1058fe671
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91409510"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968111"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>Gyors útmutató: TPM-eszköz regisztrálása a IoT Hub Device Provisioning Service a C# Service SDK-val
 
@@ -39,25 +39,25 @@ Ez a cikk bemutatja, hogyan hozhat létre egyéni regisztrációt TPM-eszközhö
 
 A rövid útmutatóban lévő mintához szüksége lesz a kiépítési szolgáltatás kapcsolati sztringjére.
 
-1. Jelentkezzen be a Azure Portalba, válassza a **minden erőforrás**lehetőséget, majd az eszköz kiépítési szolgáltatását.
+1. Jelentkezzen be a Azure Portalba, válassza a **minden erőforrás** lehetőséget, majd az eszköz kiépítési szolgáltatását.
 
-1. Válassza a **megosztott hozzáférési házirendek**lehetőséget, majd válassza ki a tulajdonságok megnyitásához használni kívánt hozzáférési szabályzatot. A **hozzáférési házirendben**másolja és mentse az elsődleges kulcs kapcsolati karakterláncát.
+1. Válassza a **megosztott hozzáférési házirendek** lehetőséget, majd válassza ki a tulajdonságok megnyitásához használni kívánt hozzáférési szabályzatot. A **hozzáférési házirendben** másolja és mentse az elsődleges kulcs kapcsolati karakterláncát.
 
     ![A kiépítési szolgáltatás kapcsolati sztringjének lekérése a portálról](media/quick-enroll-device-tpm-csharp/get-service-connection-string-vs2019.png)
 
 ## <a name="create-the-individual-enrollment-sample"></a>Az egyéni regisztrációs minta létrehozása
 
-Ebből a szakaszból megtudhatja, hogyan hozhat létre egy olyan .NET Core Console-alkalmazást, amely egy TPM-eszköz egyéni regisztrációját hozzáadja a kiépítési szolgáltatáshoz. Néhány módosítással ezeket a lépéseket követve létrehozhat egy [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot)-konzolalkalmazást is az egyéni regisztráció hozzáadásához. Ha többet szeretne megtudni a IoT Core-fejlesztéssel kapcsolatban, tekintse meg a [Windows IoT Core fejlesztői dokumentációját](https://docs.microsoft.com/windows/iot-core/).
+Ebből a szakaszból megtudhatja, hogyan hozhat létre egy olyan .NET Core Console-alkalmazást, amely egy TPM-eszköz egyéni regisztrációját hozzáadja a kiépítési szolgáltatáshoz. Néhány módosítással ezeket a lépéseket követve létrehozhat egy [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot)-konzolalkalmazást is az egyéni regisztráció hozzáadásához. Ha többet szeretne megtudni a IoT Core-fejlesztéssel kapcsolatban, tekintse meg a [Windows IoT Core fejlesztői dokumentációját](/windows/iot-core/).
 
-1. Nyissa meg a Visual studiót, és válassza **az új projekt létrehozása**lehetőséget. A **create a New Project (új projekt létrehozása**) területen válassza a **(.net Core)** C#-projekt sablonját, és kattintson a **Tovább gombra**.
+1. Nyissa meg a Visual studiót, és válassza **az új projekt létrehozása** lehetőséget. A **create a New Project (új projekt létrehozása**) területen válassza a **(.net Core)** C#-projekt sablonját, és kattintson a **Tovább gombra**.
 
-1. Nevezze el a projekt *CreateTpmEnrollment*, majd kattintson a **Létrehozás**gombra.
+1. Nevezze el a projekt *CreateTpmEnrollment*, majd kattintson a **Létrehozás** gombra.
 
     ![Visual C# Windows klasszikus asztali projekt konfigurálása](media/quick-enroll-device-tpm-csharp/configure-tpm-app-vs2019.png)
 
-1. Amikor a megoldás megnyílik a Visual Studióban, a **megoldáskezelő** ablaktáblán kattintson a jobb gombbal a **CreateTpmEnrollment** projektre. Válassza a **NuGet-csomagok kezelése**lehetőséget.
+1. Amikor a megoldás megnyílik a Visual Studióban, a **megoldáskezelő** ablaktáblán kattintson a jobb gombbal a **CreateTpmEnrollment** projektre. Válassza a **NuGet-csomagok kezelése** lehetőséget.
 
-1. A **NuGet csomagkezelő**területén válassza a **Tallózás**elemet, keresse meg és válassza a **Microsoft. Azure. Devices. kiépítés. szolgáltatás**elemet, majd kattintson a **telepítés**gombra.
+1. A **NuGet csomagkezelő** területén válassza a **Tallózás** elemet, keresse meg és válassza a **Microsoft. Azure. Devices. kiépítés. szolgáltatás** elemet, majd kattintson a **telepítés** gombra.
 
    ![NuGet Package Manager (NuGet-csomagkezelő) ablak](media//quick-enroll-device-tpm-csharp/add-nuget.png)
 
@@ -147,7 +147,7 @@ Futtassa a mintát a Visual Studióban a TPM-eszköz egyéni regisztrációjána
 
 Ekkor megjelenik egy parancssori ablak, amely megerősítő üzeneteket jelenít meg. A sikeres létrehozáskor a parancssori ablak megjeleníti az új egyéni regisztráció tulajdonságait.
 
-Ellenőrizheti, hogy létrejött-e az egyéni regisztráció. Nyissa meg az eszköz kiépítési szolgáltatásának összegzését, és válassza a **regisztrációk kezelése**, majd az **Egyéni regisztrációk**lehetőséget. Meg kell jelennie egy új regisztrációs bejegyzésnek, amely megfelel a mintában használt regisztrációs azonosítónak is.
+Ellenőrizheti, hogy létrejött-e az egyéni regisztráció. Nyissa meg az eszköz kiépítési szolgáltatásának összegzését, és válassza a **regisztrációk kezelése**, majd az **Egyéni regisztrációk** lehetőséget. Meg kell jelennie egy új regisztrációs bejegyzésnek, amely megfelel a mintában használt regisztrációs azonosítónak is.
 
 ![A regisztráció tulajdonságai a portálon](media/quick-enroll-device-tpm-csharp/verify-enrollment-portal-vs2019.png)
 
@@ -161,15 +161,15 @@ Ha azt tervezi, hogy vizsgálja meg a C# szolgáltatási mintát, ne törölje a
 
 1. Zárjuk be a C#-minta kimeneti ablakát a számítógépen.
 
-1. Navigáljon a Azure Portal eszköz kiépítési szolgáltatásához, válassza a **regisztrációk kezelése**lehetőséget, majd válassza az **Egyéni regisztrációk** lapot. Jelölje be a rövid útmutató segítségével létrehozott beléptetési bejegyzés *regisztrációs azonosítójának* melletti jelölőnégyzetet, majd kattintson a panel tetején található **Törlés** gombra.
+1. Navigáljon a Azure Portal eszköz kiépítési szolgáltatásához, válassza a **regisztrációk kezelése** lehetőséget, majd válassza az **Egyéni regisztrációk** lapot. Jelölje be a rövid útmutató segítségével létrehozott beléptetési bejegyzés *regisztrációs azonosítójának* melletti jelölőnégyzetet, majd kattintson a panel tetején található **Törlés** gombra.
 
 1. Ha követte a [szimulált TPM-eszköz létrehozása és kiépítése a C# ESZKÖZOLDALI SDK használatával](quick-create-simulated-device-tpm-csharp.md) című témakör lépéseit SZIMULÁLt TPM-eszköz létrehozásához, hajtsa végre a következő lépéseket:
 
     1. Zárja be a TPM-szimulátor ablakát és a szimulált eszköz mintakódkimeneti ablakát.
 
-    1. Az Azure Portalon lépjen ahhoz az IoT Hubhoz, ahol regisztrálta az eszközt. Az **Intézők**alatt található menüben válassza a **IoT eszközök**elemet, jelölje be az ebben a rövid ÚTMUTATÓban regisztrált eszköz *azonosítójának* melletti jelölőnégyzetet, majd kattintson a panel tetején található **Törlés** gombra.
+    1. Az Azure Portalon lépjen ahhoz az IoT Hubhoz, ahol regisztrálta az eszközt. Az **Intézők** alatt található menüben válassza a **IoT eszközök** elemet, jelölje be az ebben a rövid ÚTMUTATÓban regisztrált eszköz *azonosítójának* melletti jelölőnégyzetet, majd kattintson a panel tetején található **Törlés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban programozott módon létrehozott egy egyéni beléptetési bejegyzést egy TPM-eszközhöz. Opcionálisan létrehozott egy TPM-mel szimulált eszközt a számítógépen, és kiépítheti azt az IoT hub-ra az Azure IoT Hub Device Provisioning Service használatával. Ha mélyebben szeretné megismerni az eszközkiépítést, folytassa az Azure Portalon az eszközkiépítési szolgáltatás beállításának oktatóanyagával.
 

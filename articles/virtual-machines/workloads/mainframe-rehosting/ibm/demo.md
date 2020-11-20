@@ -3,6 +3,7 @@ title: Alkalmazás-fejlesztőknek szóló felügyelt terjesztés (ADCD) beállí
 description: Futtasson egy IBM Z fejlesztési és tesztelési környezetet (&T) az Azure Virtual Machines (VM) környezetben.
 services: virtual-machines-linux
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 documentationcenter: ''
 author: njray
 manager: edprice
@@ -12,12 +13,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: b2509539551b3991690e6d0313e069ae015eb892
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dcd354b906b4d6c92d8b3186fc8e09c94a31ca55
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87052400"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968400"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>Alkalmazás-fejlesztőknek vezérelt terjesztés (ADCD) beállítása az IBM&T v1-ben
 
@@ -50,25 +51,25 @@ A ADCD adathordozóhoz való hozzáférés szükséges. Az alábbi lépések fel
 
 1. Jelentkezzen be a [Passport-előnybe](https://www.ibm.com/software/howtobuy/passportadvantage/paocustomer).
 
-2. Válassza a **szoftverletöltések** és a **média-hozzáférés**lehetőséget.
+2. Válassza a **szoftverletöltések** és a **média-hozzáférés** lehetőséget.
 
-3. Válassza a **program felajánlása és a szerződés száma**lehetőséget, majd kattintson a **Folytatás**gombra.
+3. Válassza a **program felajánlása és a szerződés száma** lehetőséget, majd kattintson a **Folytatás** gombra.
 
-4. Adja meg a rész leírását vagy a cikkszám értéket, majd kattintson a **Finder**elemre.
+4. Adja meg a rész leírását vagy a cikkszám értéket, majd kattintson a **Finder** elemre.
 
 5. Ha a theproduct név alapján szeretné megjeleníteni és megtekinteni, kattintson a betűrendes sorrend listára.
 
-6. Válassza ki az **összes operációs** rendszert az **operációs rendszer mezőben**, és a **nyelvek mező** **összes nyelvét** . Ezután kattintson az **Indítás**gombra.
+6. Válassza ki az **összes operációs** rendszert az **operációs rendszer mezőben**, és a **nyelvek mező** **összes nyelvét** . Ezután kattintson az **Indítás** gombra.
 
 7. Az **egyes fájlok kijelölése** elemre kattintva bontsa ki a listát, és jelenítse meg a letölteni kívánt adathordozót.
 
-8. Ellenőrizze a letölteni kívánt csomag (oka) t, válassza a **Letöltés**lehetőséget, majd töltse le a fájlokat a kívánt könyvtárba.
+8. Ellenőrizze a letölteni kívánt csomag (oka) t, válassza a **Letöltés** lehetőséget, majd töltse le a fájlokat a kívánt könyvtárba.
 
 ## <a name="upload-the-adcd-packages"></a>A ADCD-csomag (ok) feltöltése
 
 Most, hogy már rendelkezik a csomaggal, fel kell töltenie őket a virtuális gépre az Azure-ban.
 
-1. A Azure Portal kezdeményez egy **SSH** -munkamenetet a létrehozott Ubuntu virtuális géppel. Nyissa meg a virtuális gépet, válassza az **Áttekintés** panelt, majd válassza a **Kapcsolódás**lehetőséget.
+1. A Azure Portal kezdeményez egy **SSH** -munkamenetet a létrehozott Ubuntu virtuális géppel. Nyissa meg a virtuális gépet, válassza az **Áttekintés** panelt, majd válassza a **Kapcsolódás** lehetőséget.
 
 2. Válassza az **SSH** fület, majd másolja az SSH-parancsot a vágólapra.
 
@@ -111,13 +112,13 @@ A következő lépés, hogy a&T-T konfigurálja a feltöltött csomag (ok) haszn
 
     ![IBM&T Enterprise Edition üdvözlő képernyő](media/02-welcome.png)
 
-3. A **gyorskonfigurálás** lap **Konfigurálás**területén válassza a **képtároló**elemet.
+3. A **gyorskonfigurálás** lap **Konfigurálás** területén válassza a **képtároló** elemet.
 
      ![IBM&T Enterprise Edition gyorskonfigurálás képernyő](media/03-quickstart.png)
 
-4. A **rendszerkép-tároló konfigurálása** lapon válassza az **SSH File Transfer Protocol**lehetőséget.
+4. A **rendszerkép-tároló konfigurálása** lapon válassza az **SSH File Transfer Protocol** lehetőséget.
 
-5. Az **állomásnév**mezőbe írja be a **localhost** nevet, és adja meg a könyvtár elérési útját, ahová a lemezképeket feltöltötte. Például:/home/MyUserID/ZDT/adcd/nov2017/volumes.
+5. Az **állomásnév** mezőbe írja be a **localhost** nevet, és adja meg a könyvtár elérési útját, ahová a lemezképeket feltöltötte. Például:/home/MyUserID/ZDT/adcd/nov2017/volumes.
 
 6. Adja meg a virtuális gép **felhasználói azonosítóját** és **jelszavát** . Ne használja a&T felhasználói AZONOSÍTÓját és jelszavát.
 
@@ -127,11 +128,11 @@ A következő lépés, hogy a&T-T konfigurálja a feltöltött csomag (ok) haszn
 
 A következő lépés, hogy konfigurálja a&T-T. Ez az emulált üzemeltetett környezet, ahol a lemezképek futnak.
 
-1. A **gyorskonfigurálás** lapon a **Konfigurálás**területen válassza a **célként szolgáló környezetek**lehetőséget.
+1. A **gyorskonfigurálás** lapon a **Konfigurálás** területen válassza a **célként szolgáló környezetek** lehetőséget.
 
-2. A **cél környezetek konfigurálása** lapon válassza a **cél hozzáadása**elemet.
+2. A **cél környezetek konfigurálása** lapon válassza a **cél hozzáadása** elemet.
 
-3. Válassza a **Linux**lehetőséget. Az IBM a következő két típusú környezetet támogatja: Linux és Cloud (OpenStack), de ez a bemutató Linuxon fut.
+3. Válassza a **Linux** lehetőséget. Az IBM a következő két típusú környezetet támogatja: Linux és Cloud (OpenStack), de ez a bemutató Linuxon fut.
 
 4. A **cél környezet hozzáadása** lapon az Állomásnév mezőbe írja be a **localhost** **nevet**. Tartsa meg az **SSH-portot** **22**-re állítva.
 
@@ -143,7 +144,7 @@ A következő lépés, hogy konfigurálja a&T-T. Ez az emulált üzemeltetett k�
 
 Az előző konfigurációs lépések végrehajtása után be kell állítania a&T-T a csomag (ok) és a célként megadott környezet használatára. Újra használhatja a lemezkép-tárolási folyamatot a&T-ben, amely lehetővé teszi a lemezképek csatlakoztatását és használatát. Használhatja az SSH-t vagy az FTP-t.
 
-1. A **gyorskonfigurálás** lap **Konfigurálás**területén válassza a **ADCD**lehetőséget. Megjelenik az utasítások egy készlete, amelyből megtudhatja, milyen lépéseket kell végrehajtania ahhoz, hogy egy ADCD-csomagot csatlakoztatni lehessen. Ez elmagyarázza, hogy miért nevezték el a cél könyvtárat, ahogy azt korábban tettük.
+1. A **gyorskonfigurálás** lap **Konfigurálás** területén válassza a **ADCD** lehetőséget. Megjelenik az utasítások egy készlete, amelyből megtudhatja, milyen lépéseket kell végrehajtania ahhoz, hogy egy ADCD-csomagot csatlakoztatni lehessen. Ez elmagyarázza, hogy miért nevezték el a cél könyvtárat, ahogy azt korábban tettük.
 
 2. Feltéve, hogy az összes rendszerkép fel lett töltve a megfelelő könyvtárakba, kattintson a jobb alsó sarokban látható **ADCD** -hivatkozásra (a következő képernyőképen látható 7. lépés).
 
@@ -155,7 +156,7 @@ Amikor az előző konfigurációs lépés befejeződik, megjelenik a **rendszerk
 
 1. A köteten lévő különböző csomagok megjelenítéséhez válassza ki a kötetet (ebben az esetben november 2017).
 
-2. Ebben a bemutatóban válassza az **Customer Information Control System (CICS)-5,3**lehetőséget.
+2. Ebben a bemutatóban válassza az **Customer Information Control System (CICS)-5,3** lehetőséget.
 
 3. A **rendszerkép neve** mezőbe írja be a rendszerkép nevét (például **MyCICS-rendszerkép**).
 
@@ -163,7 +164,7 @@ Amikor az előző konfigurációs lépés befejeződik, megjelenik a **rendszerk
 
      ![IBM&T Enterprise Edition – rendszerkép létrehozása a ADCD Components képernyő használatával](media/06-adcd.png)
 
-5. A megjelenő ablakban a lemezkép központi telepítését követően válassza a **lemezképek telepítése**lehetőséget.
+5. A megjelenő ablakban a lemezkép központi telepítését követően válassza a **lemezképek telepítése** lehetőséget.
 
 6. A **rendszerkép üzembe helyezése a célszámítógépen** lapon válassza ki az előző oldalon létrehozott rendszerképet (**MyCICS-rendszerkép**) és a korábban létrehozott célként megadott környezetet (**MyCICS**).
 
@@ -175,7 +176,7 @@ Amikor az előző konfigurációs lépés befejeződik, megjelenik a **rendszerk
 
      ![Tulajdonságok képernyő](media/07-properties.png)
 
-10. Válassza a **Befejezés**lehetőséget.
+10. Válassza a **Befejezés** lehetőséget.
 
 11. Válassza a **rendszerkép** központi telepítése a **lemezkép üzembe helyezése a cél környezetbe** lapra lehetőséget.
 
@@ -186,7 +187,7 @@ A lemezkép most már üzembe helyezhető, és készen áll arra, hogy csatlakoz
 
 Gratulálunk! Mostantól egy IBM mainframe-környezetet futtat az Azure-ban.
 
-## <a name="learn-more"></a>Tudjon meg többet
+## <a name="learn-more"></a>További információ
 
 - [Mainframe-áttelepítés: mítoszok és tények](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
 - [IBM DB2-pureScale az Azure-ban](../../../linux/ibm-db2-purescale-azure.md)

@@ -7,18 +7,19 @@ author: msjuergent
 manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 047ea4d07f2b497ac8c7deb90c056d63976094f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e560fc996393969eecb45a3fdda24bc940436dc0
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77617071"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967720"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>HANA-oldali monitorozás és hibaelhárítás
 
@@ -35,7 +36,7 @@ A SAP HANA teljesítményével kapcsolatos vonatkozó gyakori kérdések a köve
 
 ## <a name="sap-hana-alerts"></a>Riasztások SAP HANA
 
-Első lépésként tekintse meg az aktuális SAP HANA riasztási naplókat. A SAP HANA Studióban lépjen a **felügyeleti konzol: riasztások: megjelenítés: minden riasztás**elemre. Ezen a lapon jelennek meg a minimális és maximális küszöbértékeken kívül eső adott értékek (szabad fizikai memória, CPU-kihasználtság stb.) összes SAP HANA riasztása. Alapértelmezés szerint a rendszer 15 percenként automatikusan frissíti az ellenőrzéseket.
+Első lépésként tekintse meg az aktuális SAP HANA riasztási naplókat. A SAP HANA Studióban lépjen a **felügyeleti konzol: riasztások: megjelenítés: minden riasztás** elemre. Ezen a lapon jelennek meg a minimális és maximális küszöbértékeken kívül eső adott értékek (szabad fizikai memória, CPU-kihasználtság stb.) összes SAP HANA riasztása. Alapértelmezés szerint a rendszer 15 percenként automatikusan frissíti az ellenőrzéseket.
 
 ![A SAP HANA Studióban nyissa meg a felügyeleti konzolt: riasztások: megjelenítés: minden riasztás](./media/troubleshooting-monitoring/image1-show-alerts.png)
 
@@ -123,7 +124,7 @@ SAP HANA állapot-ellenőrzés végrehajtása a HANA \_ konfigurációs \_ Minic
 
 Tekintse meg az [SAP note #1969700 – SQL-utasítás gyűjteményét SAP HANA](https://launchpad.support.sap.com/#/notes/1969700) és töltse le a megjegyzéshez csatolt SQL Statements.zip fájlt. Tárolja a. zip fájlt a helyi merevlemezen.
 
-SAP HANA Studióban a **rendszerinformációk** lapon kattintson a jobb gombbal a **név** oszlopra, és válassza az **SQL-utasítások importálása**lehetőséget.
+SAP HANA Studióban a **rendszerinformációk** lapon kattintson a jobb gombbal a **név** oszlopra, és válassza az **SQL-utasítások importálása** lehetőséget.
 
 ![SAP HANA Studióban a rendszerinformációk lapon kattintson a jobb gombbal a név oszlopra, és válassza az SQL-utasítások importálása elemet.](./media/troubleshooting-monitoring/image7-import-statements-a.png)
 
@@ -135,7 +136,7 @@ Ekkor megnyílik a teljes SQL-utasítás, amely lehetővé teszi a bemeneti para
 
 ![Megnyílik a teljes SQL-utasítás, amely lehetővé teszi a bemeneti paraméterek (módosítási szakasz) módosítását és végrehajtását.](./media/troubleshooting-monitoring/image8-import-statements-b.png)
 
-Egy másik példa a jobb gombbal a **replikálás: Áttekintés**területen található utasításokra kattint. Válassza a **végrehajtás** elemet a helyi menüből:
+Egy másik példa a jobb gombbal a **replikálás: Áttekintés** területen található utasításokra kattint. Válassza a **végrehajtás** elemet a helyi menüből:
 
 ![Egy másik példa a jobb gombbal a replikálás: Áttekintés területen található utasításokra kattint. Válassza a végrehajtás lehetőséget a helyi menüben](./media/troubleshooting-monitoring/image9-import-statements-c.png)
 

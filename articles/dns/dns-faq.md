@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/15/2019
 ms.author: rohink
-ms.openlocfilehash: baa03e9a9bbbc7f8eefc1e0ba57a0a8b18da6e29
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 2f7e4eadc25028db4668db8d245803c7ddba8688
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328759"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968247"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS GYIK
 
@@ -80,7 +80,7 @@ A DNSSEC funkció nyomon követhető a Azure DNS várakozó fájlok között. A 
 
 ### <a name="does-azure-dns-support-zone-transfers-axfrixfr"></a>Támogatja a Azure DNS a zónaletöltések (AXFR/IXFR)?
 
-Nem. Azure DNS jelenleg nem támogatja a zónaletöltések használatát. A DNS-zónák [Az Azure CLI használatával importálhatók Azure DNSba](dns-import-export.md). A DNS-rekordokat a [Azure DNS felügyeleti portál](dns-operations-recordsets-portal.md), a [REST API](https://docs.microsoft.com/powershell/module/az.dns), az [SDK](dns-sdk.md), a [PowerShell-parancsmagok](dns-operations-recordsets.md)vagy a [CLI-eszköz](dns-operations-recordsets-cli.md)kezeli.
+Nem. Azure DNS jelenleg nem támogatja a zónaletöltések használatát. A DNS-zónák [Az Azure CLI használatával importálhatók Azure DNSba](dns-import-export.md). A DNS-rekordokat a [Azure DNS felügyeleti portál](dns-operations-recordsets-portal.md), a [REST API](/powershell/module/az.dns), az [SDK](dns-sdk.md), a [PowerShell-parancsmagok](dns-operations-recordsets.md)vagy a [CLI-eszköz](dns-operations-recordsets-cli.md)kezeli.
 
 A zónaletöltés funkció nyomon követhető a Azure DNS várakozó fájlok között. A visszajelzési webhely használatával [regisztrálja a szolgáltatás támogatását](https://feedback.azure.com/forums/217313-networking/suggestions/12925503-extend-azure-dns-to-support-zone-transfers-so-it-c).
 
@@ -149,7 +149,7 @@ Igen. Azure DNS támogatja a közös üzemeltetésű tartományokat más DNS-szo
 
 A közös üzemeltetés beállításához módosítsa a tartományhoz tartozó NS-rekordokat úgy, hogy mindkét szolgáltató névkiszolgálók felé mutassanak. A névkiszolgáló (NS) rekordjai határozzák meg, hogy mely szolgáltatók kapják meg a tartomány DNS-lekérdezéseit. Ezeket az NS-rekordokat Azure DNS, a másik szolgáltatóban és a szülő zónában is módosíthatja. A fölérendelt zóna általában a tartománynév-regisztrálón keresztül van konfigurálva. További információ a DNS-delegálásról: [DNS-tartomány delegálása](dns-domain-delegation.md).
 
-Győződjön meg arról is, hogy a tartomány DNS-rekordjai szinkronban vannak a DNS-szolgáltatók között. A Azure DNS jelenleg nem támogatja a DNS-zónák átvitelét. A DNS-rekordokat a [Azure DNS felügyeleti portál](dns-operations-recordsets-portal.md), a [REST API](https://docs.microsoft.com/rest/api/dns/), az [SDK](dns-sdk.md), a [PowerShell-parancsmagok](dns-operations-recordsets.md)vagy a [CLI-eszköz](dns-operations-recordsets-cli.md)használatával kell szinkronizálni.
+Győződjön meg arról is, hogy a tartomány DNS-rekordjai szinkronban vannak a DNS-szolgáltatók között. A Azure DNS jelenleg nem támogatja a DNS-zónák átvitelét. A DNS-rekordokat a [Azure DNS felügyeleti portál](dns-operations-recordsets-portal.md), a [REST API](/rest/api/dns/), az [SDK](dns-sdk.md), a [PowerShell-parancsmagok](dns-operations-recordsets.md)vagy a [CLI-eszköz](dns-operations-recordsets-cli.md)használatával kell szinkronizálni.
 
 ### <a name="do-i-have-to-delegate-my-domain-to-all-four-azure-dns-name-servers"></a>Meg kell-e adni a tartományom mind a négy Azure DNS a névkiszolgálók delegálását?
 
@@ -195,7 +195,7 @@ A nemzetközi tartománynevek (IDNs) az egyes DNS-neveket az [punycode](https://
 
 A IDNs Azure DNS-ben való konfigurálásához alakítsa át a zóna nevét vagy a punycode nevet. Azure DNS jelenleg nem támogatja a punycode-re vagy-re történő beépített átalakítást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [További információ a Azure DNSról](dns-overview.md).
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/1/2016
 ms.author: alkohli
-ms.openlocfilehash: d7c7cf335336cc552adaf5d9490bc58d64b0cdc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2395e3c6f2026bc1024de38122bc20959fdcf9b7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85515434"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967091"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>A StorSimple Eszközkezelő szolgáltatás használata a StorSimple virtuális tömb felügyeletéhez
 ![folyamat beállítása folyamatban](./media/storsimple-virtual-array-manager-service-administration/manage4.png)
@@ -34,7 +34,7 @@ A cikk elolvasása után a következőket fogja tudni:
 * A StorSimple virtuális tömb felügyelete a StorSimple Eszközkezelő Service használatával
 
 > [!NOTE]
-> A StorSimple 8000 Series eszközhöz elérhető felügyeleti lehetőségek megtekintéséhez lépjen a [StorSimple Manager szolgáltatás használatára a StorSimple-eszköz felügyeletéhez](storsimple-manager-service-administration.md).
+> A StorSimple 8000 Series eszközhöz elérhető felügyeleti lehetőségek megtekintéséhez lépjen a [StorSimple Manager szolgáltatás használatára a StorSimple-eszköz felügyeletéhez](./storsimple-8000-manager-service-administration.md).
 > 
 > 
 
@@ -76,6 +76,5 @@ Az egyes munkafolyamatokkal kapcsolatos további információkért kattintson a 
 > 
 > 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A webes felhasználói felületről és annak használatáról a [StorSimple webes felhasználói felületének használata a StorSimple virtuális tömb felügyeletéhez](storsimple-ova-web-ui-admin.md)című témakörben olvashat bővebben.
-

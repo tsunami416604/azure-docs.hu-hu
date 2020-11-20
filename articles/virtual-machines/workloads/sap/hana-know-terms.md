@@ -7,18 +7,19 @@ author: msjuergent
 manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6785ae821f701121185f0064c6317c69d50191ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b65190c0fd2fcac132f762116a63357a08e6bf02
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77617052"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967737"
 ---
 # <a name="know-the-terms"></a>A feltételek megismerése
 
@@ -33,7 +34,7 @@ Számos gyakori definíciót széles körben használnak az architektúra és a 
 - **SAP-rendszer**: az adatbázis-kezelő réteg és az alkalmazás rétegének kombinációja, például egy SAP ERP fejlesztői rendszer, egy SAP BW tesztelési rendszer és egy SAP CRM termelési rendszer. Az Azure-beli üzemelő példányok nem támogatják a két réteg a helyszíni és az Azure közötti felosztását. Az SAP rendszer üzembe helyezése a helyszínen történik, vagy az Azure-ban van üzembe helyezve. Az SAP-környezetek különböző rendszereit üzembe helyezheti az Azure-ban vagy a helyszínen egyaránt. Telepítheti például az SAP CRM fejlesztési és tesztelési rendszereit az Azure-ban, miközben üzembe helyezi az SAP CRM üzemi rendszerét a helyszínen. Az Azure-beli SAP HANA (nagyméretű példányok) esetében a rendszer azt a célt szolgálja, hogy a virtuális gépek SAP-alkalmazási rétegét, illetve az Azure-beli (nagyméretű példányok) bélyegző SAP HANA egy egységéhez tartozó SAP HANA-példányt üzemelteti.
 - **Nagyméretű példány bélyegzője**: olyan hardveres infrastruktúra-verem, amely SAP HANA TDI-tanúsítvánnyal rendelkezik, és dedikáltan SAP HANA példányok futtatására az Azure-ban.
 - **SAP HANA az Azure-ban (nagyméretű példányok):** Az ajánlat hivatalos neve az Azure-ban, hogy HANA-példányokat futtasson SAP HANA TDI-tanúsítvánnyal rendelkező hardvereken, amelyeket nagyméretű példányokban helyeztek üzembe különböző Azure-régiókban. A *HANA nagyméretű példány* kapcsolódó kifejezése rövid SAP HANA az Azure-ban *(nagyméretű példányok)* , és széles körben használatos ebben a technikai üzembe helyezési útmutatóban.
-- **Létesítmények**közötti: olyan forgatókönyv, amelyben a virtuális gépeket egy olyan Azure-előfizetéshez telepítik, amely helyek közötti, többhelyes vagy Azure ExpressRoute kapcsolatot tartalmaz a helyszíni adatközpontok és az Azure között. A közös Azure-dokumentációban az ilyen típusú központi telepítések a létesítmények közötti forgatókönyvekben is szerepelnek. A kapcsolódás oka a helyszíni tartományok, a helyszíni Azure Active Directory/OpenLDAP és a helyszíni DNS kiterjesztése az Azure-ba. A helyszíni környezet az Azure-előfizetések Azure-eszközeire van kiterjesztve. Ezzel a bővítménnyel a virtuális gépek a helyszíni tartomány részei lehetnek. 
+- **Létesítmények** közötti: olyan forgatókönyv, amelyben a virtuális gépeket egy olyan Azure-előfizetéshez telepítik, amely helyek közötti, többhelyes vagy Azure ExpressRoute kapcsolatot tartalmaz a helyszíni adatközpontok és az Azure között. A közös Azure-dokumentációban az ilyen típusú központi telepítések a létesítmények közötti forgatókönyvekben is szerepelnek. A kapcsolódás oka a helyszíni tartományok, a helyszíni Azure Active Directory/OpenLDAP és a helyszíni DNS kiterjesztése az Azure-ba. A helyszíni környezet az Azure-előfizetések Azure-eszközeire van kiterjesztve. Ezzel a bővítménnyel a virtuális gépek a helyszíni tartomány részei lehetnek. 
 
    A helyszíni tartomány tartományi felhasználói hozzáférhetnek a kiszolgálókhoz, és futtathatnak szolgáltatásokat ezeken a virtuális gépeken (például az adatbázis-kezelő szolgáltatásokban). A helyszíni és az Azure által üzembe helyezett virtuális gépek közötti kommunikáció és névfeloldás lehetséges. Ez a forgatókönyv a legtöbb SAP-eszköz üzembe helyezésének módjára jellemző. További információ: [Azure VPN Gateway](../../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) és [virtuális hálózat létrehozása helyek közötti kapcsolattal a Azure Portal használatával](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 - **Bérlő**: a HANA nagyméretű példány bélyegén üzembe helyezett ügyfelek elkülönítettek a *bérlőhöz.* A bérlő a többi bérlő hálózati, tárolási és számítási rétegében el van különítve. A különböző bérlők számára hozzárendelt tárolási és számítási egységek nem látják egymást, és nem tudnak kommunikálni egymással a HANA nagyméretű példány-bélyegző szintjén. Egy ügyfél dönthet úgy is, hogy a központi telepítések különböző bérlők között vannak. A HANA nagyméretű példány Stamp szintjén azonban nincs kommunikáció a bérlők között.

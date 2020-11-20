@@ -8,23 +8,40 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: f0204f5b923cf3363d85be9642d2866436df155a
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.custom: references_regions
+ms.openlocfilehash: 8743e765a050bfc4a2ba93a1b3e0344a960edb76
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369460"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966887"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>A Text Analytics API újdonságai.
 
 A Text Analytics API frissítése folyamatosan történik. Ha naprakészen szeretne maradni a legutóbbi fejleményekkel, ez a cikk az új kiadásokkal és szolgáltatásokkal kapcsolatos információkat tartalmaz.
 
+## <a name="november-2020"></a>2020. november
+
+* Egy [új végpont](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Analyze) Text Analytics API v 3.1-es verziójával – előzetes verzió. 3 az új ASZINKRON elemzési [API](how-tos/text-analytics-how-to-call-api.md?tabs=analyze)-hoz, amely támogatja a kötegelt feldolgozást az egyidejű, a személyes és a kulcsfontosságú kifejezéseket kinyerő műveletekhez.
+* Egy [új végpont](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Health) Text Analytics API v 3.1-es verziójával (előzetes verzió), amely az új, az [állapotba](how-tos/text-analytics-for-health.md) helyezett API-hoz készült aszinkron Text Analytics a kötegelt feldolgozás támogatásával.
+* A fent felsorolt új funkciók csak a következő régiókban érhetők el: `West US 2` , `East US 2` , `Central US` , `North Europe` és `West Europe` régiók.
+* A portugál (brazíliai) `pt-BR` mostantól támogatott a [Hangulatelemzés](how-tos/text-analytics-how-to-sentiment-analysis.md) v3. x verzióban, a modell verziójától kezdve `2020-04-01` . Hozzáadja a `pt-PT` portugál meglévő támogatásához.
+* Frissített ügyféloldali kódtárak, amelyek tartalmazzák az aszinkron elemzést és az Text Analytics az állapotfigyelő műveletekhez. Példákat a GitHubon talál:
+
+    * [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)
+    * [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)
+    * [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics)
+
+
+> [!div class="nextstepaction"]
+> [További információ: Text Analytics API v 3.1 – előzetes verzió. 3](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Languages)
+
 ## <a name="october-2020"></a>2020. október
 
 * Hindi támogatás a Hangulatelemzés v3. x verzióhoz, a modell verziójától kezdve `2020-04-01` . 
-* `2020-09-01`A v3/languages végponthoz tartozó verzióját, amely növeli a nyelvi észlelést és a pontosságot.
+* Modell verziója `2020-09-01` a v3/languages végponthoz, amely növeli a nyelvfelismerés és a pontosság növelését.
 * v3 elérhetőség Közép-Indiában és Észak-Egyesült Arab Emírségekben.
 
 ## <a name="september-2020"></a>2020. szeptember
@@ -147,7 +164,7 @@ A JSON-válaszban a következő tulajdonságok nevei módosultak, ahol lehetség
 
 ### <a name="text-analytics-api-v31-public-preview"></a>Text Analytics API v 3.1 nyilvános előzetes verzió
    * Új Hangulatelemzés funkció – [vélemény bányászata](how-tos/text-analytics-how-to-sentiment-analysis.md#opinion-mining)
-   * Új [személyes ( `PII` ) tartományi szűrő](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) a védett állapotra vonatkozó információkhoz ( `PHI` ).
+   * Új személyes ( `PII` ) tartományi szűrő a védett állapotra vonatkozó információkhoz ( `PHI` ).
 
 > [!div class="nextstepaction"]
 > [További információ a Text Analytics API v 3.1 előzetes verziójáról](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Languages)
@@ -162,7 +179,7 @@ Az [egységes Azure SDK kiadás](https://techcommunity.microsoft.com/t5/azure-sd
    * [JavaScript (Node.js)](./quickstarts/text-analytics-sdk.md?pivots=programming-language-javascript&tabs=version-3)
    * [Java](./quickstarts/text-analytics-sdk.md?pivots=programming-language-java&tabs=version-3)
    
-   > [!div class="nextstepaction"]
+> [!div class="nextstepaction"]
 > [További információ a Text Analytics API v3 SDK-ról](./quickstarts/text-analytics-sdk.md?tabs=version-3)
 
 ### <a name="named-entity-recognition-v3-public-preview"></a>Elnevezett entitás-felismerés v3 nyilvános előzetes verziója
@@ -185,9 +202,6 @@ További entitás-típusok mostantól elérhetők az elnevezett entitás-felisme
     * Telefonszám (csak US)
     * URL-cím
     * IP-cím
-
-> [!div class="nextstepaction"]
-> [További információ az elnevezett Entity Recognition v3-ról](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)
 
 ### <a name="october-2019"></a>2019. október
 
@@ -219,11 +233,11 @@ Támogatja az angol ( `en` ), a japán (), a `ja` kínai egyszerűsített ( `zh-
 > [!div class="nextstepaction"]
 > [További információ a Hangulatelemzés v3-ról](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi a Text Analytics API?](overview.md)  
 * [Példa felhasználói forgatókönyvek](text-analytics-user-scenarios.md)
 * [Hangulat elemzése](how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Nyelvfelismerés](how-tos/text-analytics-how-to-language-detection.md)
 * [Entitások felismerése](how-tos/text-analytics-how-to-entity-linking.md)
-* [Kulcskifejezések kinyerése](how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Fő kifejezés kibontása](how-tos/text-analytics-how-to-keyword-extraction.md)

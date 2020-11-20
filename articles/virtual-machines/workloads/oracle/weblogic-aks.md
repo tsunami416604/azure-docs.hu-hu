@@ -2,17 +2,18 @@
 title: Az Oracle WebLogic Server Azure Kubernetes szolgáltatásban való futtatásának megoldásai
 description: Ismerje meg, hogyan futtathatja az Oracle WebLogic Servert az Azure Kubernetes szolgáltatásban.
 author: rezar
-ms.service: container-service
+ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 10/28/2020
 ms.author: rezar
 ms.reviewer: cynthn
-ms.openlocfilehash: ff7b9b0bfcdc0c06eae14ecfdccabf9e337d3649
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.openlocfilehash: a57d5a00fad9a17e01b96ebdf395fb7a4b857935
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186678"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968689"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-the-azure-kubernetes-service"></a>Milyen megoldások futnak az Oracle WebLogic Server Azure Kubernetes Service-ben való futtatásához?
 
@@ -34,19 +35,19 @@ A WebLogic-kiszolgáló az AK-on, az Oracle és a Microsoft közösen is biztos�
 
 Az útmutató jelenleg azt feltételezi, hogy a tartományt a Docker-rendszerképen kívül helyezi üzembe, és az Oracle standard Docker-rendszerképeit használja. Útmutatást adunk ahhoz, hogy az egyéni rendszerképeket a Docker-rendszerképen belül engedélyezzük a tartományon. A jövőben további egyszerű használat és Azure-szolgáltatások integrációja is lehetséges a piactéren, az Oracle WebLogic Server Azure Virtual Machines-megoldásokkal való tükrözése révén.
 
-_Ezek a megoldások saját licenccel rendelkeznek_ . Feltételezik, hogy már megkapta a megfelelő licenceket az Oracle-vel, és megfelelő licenccel rendelkezik az ajánlatok Azure-beli futtatásához.
+_Ezek a megoldások saját licenccel rendelkeznek_. Feltételezik, hogy már megkapta a megfelelő licenceket az Oracle-vel, és megfelelő licenccel rendelkezik az ajánlatok Azure-beli futtatásához.
 
-_Ha szeretné, hogy az áttelepítési forgatókönyvek szorosan összhangban legyenek a megoldások fejlesztéséhez használt mérnöki csapattal, töltse ki [ezt a rövid kérdőívet](https://aka.ms/wls-on-azure-survey) , és adja meg a kapcsolattartási adatait_ . A program-menedzserek, az építészek és a mérnökök hamarosan megközelítik Önt, és megkezdik a szoros együttműködést. Az áttelepítési forgatókönyvben való együttműködés lehetősége ingyenes, amíg a megoldások aktív kezdeti fejlesztés alatt állnak.
+_Ha szeretné, hogy az áttelepítési forgatókönyvek szorosan összhangban legyenek a megoldások fejlesztéséhez használt mérnöki csapattal, töltse ki [ezt a rövid kérdőívet](https://aka.ms/wls-on-azure-survey) , és adja meg a kapcsolattartási adatait_. A program-menedzserek, az építészek és a mérnökök hamarosan megközelítik Önt, és megkezdik a szoros együttműködést. Az áttelepítési forgatókönyvben való együttműködés lehetősége ingyenes, amíg a megoldások aktív kezdeti fejlesztés alatt állnak.
 
 ## <a name="deployment-architectures"></a>Üzembe helyezési architektúrák
 
 Az Oracle WebLogic Server Azure Kubernetes szolgáltatásban való futtatására szolgáló megoldások széles körben lehetővé teszik az éles környezetben felépíthető üzembe helyezési architektúrák viszonylag könnyen elérhetővé tételét.
 
-:::image type="content" source="media/oracle-weblogic/weblogic-architecture-aks.png" alt-text="A WebLogic-kiszolgáló az AK-on való üzembe helyezéséhez használhatja a minta-parancsfájlokat.":::
+:::image type="content" source="media/oracle-weblogic/weblogic-architecture-aks.png" alt-text="Az összetett WebLogic-kiszolgálók üzembe helyezése engedélyezve van az AK-ban":::
 
 A megoldások az ügyfelek számára teljes rugalmasságot biztosítanak az üzemelő példányok testreszabásához. Valószínű, hogy az alkalmazások üzembe helyezése során az ügyfelek a további Azure-erőforrásokat is integrálják az üzemelő példányokkal. Javasoljuk, hogy visszajelzéseket nyújtson a felmérésben a megoldások továbbfejlesztése érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg az Oracle WebLogic Server futtatását az Azure Kubernetes szolgáltatásban.
 

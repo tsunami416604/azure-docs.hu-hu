@@ -3,16 +3,17 @@ title: Mi a megoldás az Oracle WebLogic Server Azure-beli futtatására Virtual
 description: Ismerje meg, hogyan futtathatja az Oracle WebLogic Servert Microsoft Azure Virtual Machineson.
 author: rezar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 09/23/2020
 ms.author: rezar
 ms.reviewer: cynthn
-ms.openlocfilehash: d8639214773a4444876b2a89dda5dd831b8c36ce
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 51f0e68b3e07a157a5222a4374f9e1b74ef7e403
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927290"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968706"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>Melyik megoldásokkal futtatható az Oracle WebLogic Server az Azure Virtual Machinesben?
 
@@ -28,7 +29,7 @@ Az Azure WLS-megoldások célja, hogy a lehető legegyszerűbb legyen a Java EE-
 
 A különböző forgatókönyvek teljesítéséhez négy ajánlat áll rendelkezésre: [egyetlen csomópont rendszergazdai kiszolgáló nélkül](https://portal.azure.com/#create/oracle.20191001-arm-oraclelinux-wls20191001-arm-oraclelinux-wls), [egyetlen csomópont rendszergazdai kiszolgálóval](https://portal.azure.com/#create/oracle.20191009-arm-oraclelinux-wls-admin20191009-arm-oraclelinux-wls-admin), [fürttel](https://portal.azure.com/#create/oracle.20191007-arm-oraclelinux-wls-cluster20191007-arm-oraclelinux-wls-cluster)és [dinamikus fürttel](https://portal.azure.com/#create/oracle.20191021-arm-oraclelinux-wls-dynamic-cluster20191021-arm-oraclelinux-wls-dynamic-cluster). Az ajánlatok díjmentesen elérhetők. Ezek az ajánlatok alább olvashatók és kapcsolhatók.
 
-_Ezek az ajánlatok saját licencet kapnak_ . Feltételezik, hogy már megkapta a megfelelő licenceket az Oracle-vel, és megfelelő licenccel rendelkezik az ajánlatok Azure-beli futtatásához.
+_Ezek az ajánlatok saját licencet kapnak_. Feltételezik, hogy már megkapta a megfelelő licenceket az Oracle-vel, és megfelelő licenccel rendelkezik az ajánlatok Azure-beli futtatásához.
 
 Az ajánlatok számos operációsrendszer-, Java-és WLS-verziót támogatnak alaplemezképeken keresztül (például WebLogic Server 14 és JDK 11 Oracle Linux 7,6). Ezek az alaplemezképek az Azure-ban is elérhetők az Azure-ban. Az alaplemezképek olyan ügyfelek számára alkalmasak, akik összetett, testreszabott Azure-alapú üzembe helyezést igényelnek. Az alapképek aktuális készlete [itt](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=WebLogic%20Server%20Base%20Image&page=1)érhető el.
 
@@ -52,7 +53,7 @@ _Ha szeretné, hogy az áttelepítési forgatókönyvek szorosan együttműködv
 
 A megoldások az éles környezetben felépíthető üzembe helyezési architektúrák széles választékát teszik lehetővé. Az üzleti alkalmazások fejlesztésére összpontosítva az áttelepítési esetek többségét a lehető legtermelékenyebb módon lehet teljesíteni.
 
-:::image type="content" source="media/oracle-weblogic/weblogic-architecture-vms.png" alt-text="A WebLogic-kiszolgáló Azure-beli üzembe helyezéséhez használhatja a Azure Portal":::
+:::image type="content" source="media/oracle-weblogic/weblogic-architecture-vms.png" alt-text="Az összetett WebLogic-kiszolgálók telepítése engedélyezve van az Azure-ban":::
 
 A megoldások által automatikusan kiépített igényeken túl az ügyfelek rugalmasan testre szabhatják az üzembe helyezést. Valószínű, hogy az alkalmazások üzembe helyezése során az ügyfelek a további Azure-erőforrásokat is integrálják az üzemelő példányokkal. Javasoljuk, hogy visszajelzéseket nyújtson a megoldások további tökéletesítéséről.
 

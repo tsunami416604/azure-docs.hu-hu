@@ -10,12 +10,12 @@ ms.author: ravokkar
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 7683f5d60c5d788707e2f89774cee42e7820db87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a7ec2f4f8fdf631a6bc5096296275291ec41751
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87924206"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967125"
 ---
 # <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>Kommunikáció a DPS használatával a MQTT protokollal
 
@@ -29,13 +29,13 @@ A DPS nem a teljes funkcionalitású MQTT-közvetítő, és nem támogatja az MQ
 A DPS-vel való kommunikációt a TLS/SSL protokollal kell biztosítani. Ezért a DPS nem támogatja a nem biztonságos kapcsolatokat a 1883-as porton keresztül.
 
  > [!NOTE] 
- > A DPS jelenleg nem támogatja a TPM- [igazolási mechanizmust](https://docs.microsoft.com/azure/iot-dps/concepts-device#attestation-mechanism) használó eszközöket az MQTT protokollon keresztül.
+ > A DPS jelenleg nem támogatja a TPM- [igazolási mechanizmust](./concepts-service.md#attestation-mechanism) használó eszközöket az MQTT protokollon keresztül.
 
 ## <a name="connecting-to-dps"></a>Csatlakozás a DPS-hez
 
 Az eszközök a MQTT protokoll használatával csatlakozhatnak a DPS-hez az alábbi lehetőségek bármelyikével.
 
-* Az [Azure IoT üzembe](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#microsoft-azure-provisioning-sdks)helyezési SDK-k könyvtárai.
+* Az [Azure IoT üzembe](../iot-hub/iot-hub-devguide-sdks.md#microsoft-azure-provisioning-sdks)helyezési SDK-k könyvtárai.
 * A MQTT protokoll közvetlenül.
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>A MQTT protokoll használata közvetlenül (eszközként)
@@ -44,7 +44,7 @@ Ha egy eszköz nem tudja használni az eszköz SDK-kat, akkor továbbra is csatl
 
 * A **ClientId** mezőben használja a **regisztrációban**.
 
-* A **Felhasználónév** mezőben használja a nevet `{idScope}/registrations/{registration_id}/api-version=2019-03-31` , ahol a a `{idScope}` DPS [idScope](https://docs.microsoft.com/azure/iot-dps/concepts-device#id-scope) .
+* A **Felhasználónév** mezőben használja a nevet `{idScope}/registrations/{registration_id}/api-version=2019-03-31` , ahol a a `{idScope}` DPS [idScope](./concepts-service.md#id-scope) .
 
 * A **Password (jelszó** ) mezőben használjon sas-tokent. Az SAS-token formátuma megegyezik a HTTPS és a AMQP protokollok esetében is:
 
@@ -57,9 +57,9 @@ Ha egy eszköz nem tudja használni az eszköz SDK-kat, akkor továbbra is csatl
 
 A következő lista felsorolja a DPS implementáció-specifikus viselkedéseit:
 
- * A DPS nem támogatja a **CleanSession** jelző funkciójának **0-ra**való beállítását.
+ * A DPS nem támogatja a **CleanSession** jelző funkciójának **0-ra** való beállítását.
 
- * Ha egy eszköz egy, a **QoS 2**szolgáltatással foglalkozó témakörre van előfizetve, a DPS maximális QoS-szintet biztosít a **SUBACK** -csomagban. Ezután a DPS a QoS 1 használatával továbbítja az üzeneteket az eszköznek.
+ * Ha egy eszköz egy, a **QoS 2** szolgáltatással foglalkozó témakörre van előfizetve, a DPS maximális QoS-szintet biztosít a **SUBACK** -csomagban. Ezután a DPS a QoS 1 használatával továbbítja az üzeneteket az eszköznek.
 
 ## <a name="tlsssl-configuration"></a>TLS/SSL-konfiguráció
 
@@ -68,10 +68,10 @@ Ahhoz, hogy az ügyfél közvetlenül használhassa a MQTT protokollt, a TLS 1,2
 
 ## <a name="registering-a-device"></a>Eszköz regisztrálása
 
-Ha a DPS-n keresztül szeretne regisztrálni egy eszközt, az eszköznek `$dps/registrations/res/#` **témakör-szűrőként**kell előfizetnie. A témakör szűrője többszintű helyettesítő karaktert használ, amely `#` lehetővé teszi, hogy az eszköz további tulajdonságokat kapjon a témakör nevében. A DPS nem engedélyezi a `#` vagy `?` helyettesítő karakterek használatát az altémakörök szűréséhez. Mivel a DPS nem általános célú pub-sub üzenetküldési közvetítő, csak a dokumentált témakörök nevét és a témakör szűrőit támogatja.
+Ha a DPS-n keresztül szeretne regisztrálni egy eszközt, az eszköznek `$dps/registrations/res/#` **témakör-szűrőként** kell előfizetnie. A témakör szűrője többszintű helyettesítő karaktert használ, amely `#` lehetővé teszi, hogy az eszköz további tulajdonságokat kapjon a témakör nevében. A DPS nem engedélyezi a `#` vagy `?` helyettesítő karakterek használatát az altémakörök szűréséhez. Mivel a DPS nem általános célú pub-sub üzenetküldési közvetítő, csak a dokumentált témakörök nevét és a témakör szűrőit támogatja.
 
-Az eszköznek közzé kell tennie egy regisztrációs üzenetet a DPS-ben a `$dps/registrations/PUT/iotdps-register/?$rid={request_id}` **témakör neveként**. A hasznos adatoknak JSON formátumban kell tartalmazniuk az [eszköz regisztrációs](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice#deviceregistration) objektumát.
-Sikeres forgatókönyv esetén az eszköz választ kap a `$dps/registrations/res/202/?$rid={request_id}&retry-after=x` témakör nevére, ahol az x az újrapróbálkozási érték másodpercben. A válasz hasznos tartalma JSON formátumban fogja tartalmazni a [RegistrationOperationStatus](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice#registrationoperationstatus) objektumot.
+Az eszköznek közzé kell tennie egy regisztrációs üzenetet a DPS-ben a `$dps/registrations/PUT/iotdps-register/?$rid={request_id}` **témakör neveként**. A hasznos adatoknak JSON formátumban kell tartalmazniuk az [eszköz regisztrációs](/rest/api/iot-dps/runtimeregistration/registerdevice#deviceregistration) objektumát.
+Sikeres forgatókönyv esetén az eszköz választ kap a `$dps/registrations/res/202/?$rid={request_id}&retry-after=x` témakör nevére, ahol az x az újrapróbálkozási érték másodpercben. A válasz hasznos tartalma JSON formátumban fogja tartalmazni a [RegistrationOperationStatus](/rest/api/iot-dps/runtimeregistration/registerdevice#registrationoperationstatus) objektumot.
 
 ## <a name="polling-for-registration-operation-status"></a>A regisztrációs művelet állapotának lekérdezése
 

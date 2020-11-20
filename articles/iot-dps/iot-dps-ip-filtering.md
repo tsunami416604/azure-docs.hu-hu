@@ -7,12 +7,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 580c378df5fc3912aa540b5d85adf99bc42605e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f50c84212e62fae378d9d95e8990e084c82bb99a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511942"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967210"
 ---
 # <a name="use-azure-iot-dps-ip-connection-filters"></a>Azure IoT DPS IP-kapcsolati szűrők használata
 
@@ -22,7 +22,7 @@ A biztonság minden IoT-megoldás esetében fontos szempont. A biztonsági konfi
 
 Két konkrét használati eset van, ahol hasznos lehet blokkolni egy DPS-végpont felé irányuló, adott IP-címekről érkező kapcsolatokat:
 
-* A DPS-ének csak az IP-címek egy adott tartományából érkező forgalmat szabad fogadnia, minden mást pedig el kell utasítania. Tegyük fel, hogy a DPS-t az [Azure Express Route-tal](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services) használja, hogy privát kapcsolatokat létesíthessen a DPS és az eszközei között.
+* A DPS-ének csak az IP-címek egy adott tartományából érkező forgalmat szabad fogadnia, minden mást pedig el kell utasítania. Tegyük fel, hogy a DPS-t az [Azure Express Route-tal](../expressroute/expressroute-faqs.md#supported-services) használja, hogy privát kapcsolatokat létesíthessen a DPS és az eszközei között.
 
 * El kell utasítania a forgalmat az olyan IP-címekről, amelyeket a DPS rendszergazdája gyanúsnak talált.
 
@@ -48,7 +48,7 @@ Az **IP-szűrési szabály hozzáadása** lehetőség kiválasztása után tölt
 
 ![Az IP-szűrési szabály hozzáadása lehetőség kiválasztása után](./media/iot-dps-ip-filtering/ip-filter-after-selecting-add.png)
 
-* Adjon **nevet** az IP-szűrési szabálynak. A névnek egyedi alfanumerikus sztringnek kell lennie, amely nem különbözteti meg a kis- és nagybetűket, és legfeljebb 128 karakterből áll. Csak az ASCII 7 bites alfanumerikus karakterei és a `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` elfogadottak.
+* Adjon **nevet** az IP-szűrési szabálynak. A névnek egyedi alfanumerikus sztringnek kell lennie, amely nem különbözteti meg a kis- és nagybetűket, és legfeljebb 128 karakterből áll. Csak az ASCII 7 bites alfanumerikus karakterei és a `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` elfogadottak.
 
 * Adjon meg egy egyedi IPv4-címet vagy egy IP-címblokkot CIDR-jelölésrendszer használatával. A CIDR-jelölés szerint például a 192.168.100.0/22 a 192.168.100.0 és a 192.168.103.255 közötti 1024 IPv4-címet jelöli.
 
@@ -74,7 +74,7 @@ IP-szűrési szabály törléséhez válassza az adott sorban található kuka i
 
 ## <a name="update-ip-filter-rules-in-code"></a>IP-szűrési szabályok frissítése a kódban
 
-A DPS IP-szűrőjét az Azure-beli erőforrás-szolgáltató REST-végpontjának használatával kérheti le és módosíthatja. Lásd: `properties.ipFilterRules` a [createorupdate metódusban](https://docs.microsoft.com/rest/api/iot-dps/iotdpsresource/createorupdate).
+A DPS IP-szűrőjét az Azure-beli erőforrás-szolgáltató REST-végpontjának használatával kérheti le és módosíthatja. Lásd: `properties.ipFilterRules` a [createorupdate metódusban](/rest/api/iot-dps/iotdpsresource/createorupdate).
 
 A DPS IP-szűrési szabályok frissítése az Azure CLI-ben és az Azure PowerShellben jelenleg nem támogatott, de Azure Resource Manager-sablonok segítségével elvégezhető. Resource Manager-sablonok használatával kapcsolatos útmutatás: [Azure Resource Manager-sablonok](../azure-resource-manager/templates/overview.md). A következő példasablonok megmutatják, hogyan hozhat létre, szerkeszthet és törölhet DPS IP-szűrési szabályokat.
 

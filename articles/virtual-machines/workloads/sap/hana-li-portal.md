@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 887adb3e8b0a5f0410fc9a7732e2220049b7ba6c
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 550e22ac861b92994f2695594d09fc2935d273d1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927192"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967754"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Az Azure HANA nagyméretű példányok vezérlése az Azure Portalon keresztül
 Ez a dokumentum azt ismerteti, hogyan jelennek meg a [Hana nagyméretű példányai](./hana-overview-architecture.md) [Azure Portalban](https://portal.azure.com) , és milyen tevékenységek hajthatók végre az Ön számára üzembe helyezett Hana nagyméretű példány-egységekkel Azure Portal használatával. A HANA nagyméretű példányainak láthatósága Azure Portal egy Azure-erőforrás-szolgáltatón keresztül érhető el a HANA nagyméretű példányain, amelyek jelenleg nyilvános előzetes verzióban érhetők el
@@ -60,7 +61,7 @@ A listában szereplő erőforráscsoportok listájában előfordulhat, hogy szű
 
 ![Erőforráscsoportok szűrése Azure Portal](./media/hana-li-portal/portal-filtering-subscription.png)
 
-A megfelelő előfizetésre való szűrés után továbbra is lehetnek az erőforráscsoportok hosszú listája. Keressen egy olyan **TXXX** , amelyben az "xxx" három számjegyből áll, például: **T050** . 
+A megfelelő előfizetésre való szűrés után továbbra is lehetnek az erőforráscsoportok hosszú listája. Keressen egy olyan **TXXX** , amelyben az "xxx" három számjegyből áll, például: **T050**. 
 
 Amikor megtalálta az erőforráscsoportot, sorolja fel a részleteit. A kapott lista így néz ki:
 
@@ -146,7 +147,7 @@ A következő képernyőn megjelenő SAP HANA Large Instances szolgáltatás bes
 
 ![Válassza ki a Azure Portal összes szolgáltatását](./media/hana-li-portal/portal-create-service-request.png)
 
-A szolgáltatások listájában megtalálhatja a szolgáltatás **SAP HANA nagyméretű példányát** . A szolgáltatás kiválasztásakor kiválaszthatja az egyes problémák típusait az alábbiak szerint:
+A szolgáltatások listájában megtalálhatja a szolgáltatás **SAP HANA nagyméretű példányát**. A szolgáltatás kiválasztásakor kiválaszthatja az egyes problémák típusait az alábbiak szerint:
 
 
 ![A probléma osztály kiválasztása Azure Portal](./media/hana-li-portal/portal-select-problem-class.png)

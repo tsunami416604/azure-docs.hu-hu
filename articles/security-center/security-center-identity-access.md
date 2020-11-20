@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2020
 ms.author: memildin
-ms.openlocfilehash: 575c139a3b417eb9429695d3ea6be26bf5625de5
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 12e5a6db7257678b3d4d14d7583a1a30da0d3a87
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371069"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967142"
 ---
 # <a name="monitor-identity-and-access"></a>Identitás és hozzáférés monitorozása
 
-A biztonsági szegély egy hálózati kerületből lett kialakulóban egy identitási peremhálózaton. Ezzel a fejlesztéssel a biztonság kevésbé foglalkozik a hálózat védelmével, és többet tudhat meg az alkalmazások, az információk és a felhasználók biztonságának kezeléséről.
+A biztonsági határ hálózati határról identitáshatárra változott. Ezzel a fejlesztéssel a biztonság kevésbé foglalkozik a hálózat védelmével, és többet tudhat meg az alkalmazások, az információk és a felhasználók biztonságának kezeléséről.
 
 Az identitással kapcsolatos tevékenységek és konfigurációs beállítások figyelésével proaktív műveleteket hajthat végre az incidensek megkezdése előtt, illetve a megkísérelt támadások leállításához szükséges reaktív műveleteket.
 
@@ -30,7 +30,7 @@ Az identitással kapcsolatos tevékenységek és konfigurációs beállítások 
 
 Azure Security Center két dedikált biztonsági vezérlővel rendelkezik, amelyekkel biztosíthatja, hogy megfeleljen a szervezete identitásának és biztonsági követelményeinek: 
 
- - **Hozzáférés és engedélyek kezelése** – javasoljuk, hogy fogadja el a [legkevésbé privilegizált hozzáférési modellt](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) , és gondoskodjon arról, hogy a felhasználók csak a feladataik elvégzéséhez szükséges hozzáférést biztosítsanak. Ez a vezérlő a [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md) megvalósítására vonatkozó javaslatokat is tartalmaz az erőforrásokhoz való hozzáférés szabályozásához.
+ - **Hozzáférés és engedélyek kezelése** – javasoljuk, hogy fogadja el a [legkevésbé privilegizált hozzáférési modellt](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) , és gondoskodjon arról, hogy a felhasználók csak a feladataik elvégzéséhez szükséges hozzáférést biztosítsanak. A vezérlő az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md) megvalósítására vonatkozó javaslatokat is tartalmaz az erőforrásokhoz való hozzáférés szabályozásához.
  
  - Többtényezős hitelesítés **engedélyezése** – az [MFA](https://www.microsoft.com/security/business/identity/mfa) engedélyezve van, a fiókok biztonságosabbak, és a felhasználók továbbra is elvégezhetik az egyszeri bejelentkezéssel szinte bármilyen alkalmazást.
 
@@ -69,7 +69,7 @@ A következő Azure Resource Graph-lekérdezéssel megtekintheti, hogy mely fió
 
     :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="Az Azure Resource Graph Explorer * * ajánlási oldalának elindítása" :::
 
-1. Adja meg a következő lekérdezést, és válassza a **lekérdezés futtatása**lehetőséget.
+1. Adja meg a következő lekérdezést, és válassza a **lekérdezés futtatása** lehetőséget.
 
     ```kusto
     securityresources

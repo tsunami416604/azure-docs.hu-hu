@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2017
 ms.author: alkohli
-ms.openlocfilehash: c8d8e3b9058b753dc2a6da35878449c94399225e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69a36f38cc76693f596b45d4df6e232bc01584d5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85508044"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967975"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-device"></a>A StorSimple-eszköz felügyeletéhez használja a StorSimple Eszközkezelő szolgáltatást
 
@@ -65,7 +65,7 @@ Az egyes munkafolyamatokkal kapcsolatos további információkért kattintson a 
 | Hozzáférés-vezérlési rekordok</br>Hozzáférés-vezérlési rekord létrehozása</br>Hozzáférés-vezérlési rekord szerkesztése</br>Hozzáférés-vezérlési rekord törlése |[Hozzáférés-vezérlési rekordok kezelése](storsimple-8000-manage-acrs.md) |
 | Feladatok részleteinek megjelenítése</br>Feladat megszakítása |[Feladatok kezelése](storsimple-8000-manage-jobs-u2.md) |
 | Riasztási értesítések fogadása</br>Riasztások kezelése</br>Riasztások felülvizsgálata |[StorSimple-riasztások megtekintése és kezelése](storsimple-8000-manage-alerts.md) |
-| Figyelési diagramok létrehozása |[A StorSimple-eszköz figyelése](storsimple-monitor-device.md) |
+| Figyelési diagramok létrehozása |[A StorSimple-eszköz figyelése](./storsimple-8000-monitor-device.md) |
 | Mennyiségi tároló hozzáadása</br>Mennyiségi tároló módosítása</br>Mennyiségi tároló törlése |[Kötettárolók kezelése](storsimple-8000-manage-volume-containers.md) |
 | Kötet hozzáadása</br>Kötet módosítása</br>Kötet offline állapotba helyezése</br>Kötet törlése</br>Kötet figyelése |[Kötetek kezelése](storsimple-8000-manage-volumes-u2.md) |
 | Eszközbeállítások módosítása</br>Időbeli beállítások módosítása</br>DNS.md beállításainak módosítása</br>Hálózati adapterek konfigurálása |[Eszköz konfigurációjának módosítása a StorSimple-eszközhöz](storsimple-8000-modify-device-config.md) |
@@ -73,14 +73,14 @@ Az egyes munkafolyamatokkal kapcsolatos további információkért kattintson a 
 | Az eszköz rendszergazdai jelszavának módosítása</br>StorSimple Snapshot Manager jelszavának módosítása |[StorSimple jelszavának módosítása](storsimple-8000-change-passwords.md) |
 | Távfelügyelet konfigurálása |[Távoli kapcsolódás a StorSimple-eszközhöz](storsimple-8000-remote-connect.md) |
 | Riasztási beállítások konfigurálása |[StorSimple-riasztások megtekintése és kezelése](storsimple-8000-manage-alerts.md) |
-| A CHAP konfigurálása a StorSimple-eszközhöz |[A CHAP konfigurálása a StorSimple-eszközhöz](storsimple-configure-chap.md) |
+| A CHAP konfigurálása a StorSimple-eszközhöz |[A CHAP konfigurálása a StorSimple-eszközhöz](./storsimple-8000-configure-chap.md) |
 | Biztonsági mentési szabályzat hozzáadása</br>Ütemterv hozzáadása vagy módosítása</br>Biztonsági mentési szabályzat törlése</br>Manuális biztonsági mentés készítése</br>Egyéni biztonsági mentési szabályzat létrehozása több kötettel és ütemtervtel |[Biztonsági mentési szabályzatok kezelése](storsimple-8000-manage-backup-policies-u2.md) |
 | Az eszközök vezérlőinek leállítása</br>Eszközillesztők újraindítása</br>Vezérlők leállítása</br>Az eszköz visszaállítása a gyári beállításokra</br>(Csak a helyszíni eszközök esetében) |[StorSimple-eszköz vezérlő kezelése](storsimple-8000-manage-device-controller.md) |
 | A StorSimple hardveres összetevőinek megismerése</br>Hardverállapot monitorozása</br>(Csak a helyszíni eszközök esetében) |[Hardver-összetevők figyelése](storsimple-8000-monitor-hardware-status.md) |
 | Támogatási csomag létrehozása |[Támogatási csomag létrehozása és kezelése](storsimple-8000-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple) |
 | Szoftverfrissítések telepítése |[Az eszköz frissítése](storsimple-update-device.md) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha bármilyen problémát tapasztal a StorSimple-eszköz napi működésével vagy annak hardveres összetevőivel kapcsolatban, tekintse meg a következőt:
 
@@ -88,4 +88,3 @@ Ha bármilyen problémát tapasztal a StorSimple-eszköz napi működésével va
 * [StorSimple-figyelési kijelző LED-ek használata](storsimple-monitoring-indicators.md)
 
 Ha nem tudja elhárítani a problémákat, és létre kell hoznia egy szolgáltatási kérelmet, tekintse meg a [kapcsolatfelvételi Microsoft ügyfélszolgálata](storsimple-8000-contact-microsoft-support.md).
-

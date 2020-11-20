@@ -3,6 +3,7 @@ title: IBM számítási feladatok az Azure-ban | Microsoft Docs
 description: A Microsoft partnereitől származó mainframe-emulátorral és más szolgáltatásokkal áthelyezheti az IBM z/OS munkaterheléseket Microsoft Azure használatával.
 services: virtual-machines-linux
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 documentationcenter: ''
 author: njray
 ms.author: edprice
@@ -12,12 +13,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: e99685b4d1476ee527b9eb7f1332f6a6beece669
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efc4f6293623278314df3ac55b2fecae2e28f7d8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86499972"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968349"
 ---
 # <a name="ibm-workloads-on-azure"></a>IBM számítási feladatok az Azure-ban
 

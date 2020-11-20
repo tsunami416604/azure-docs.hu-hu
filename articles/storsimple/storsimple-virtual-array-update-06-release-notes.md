@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/24/2017
 ms.author: alkohli
-ms.openlocfilehash: e984531feced2d61332e4c399848c12cd245a34a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24bddb47a32a7b8ad4ea659d52c2d5b2730be9ad
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60870706"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967023"
 ---
 # <a name="storsimple-virtual-array-update-06-release-notes"></a>StorSimple Virtual Array Update 0,6 kibocsátási megjegyzések
 
@@ -40,7 +40,7 @@ Az 0,6-es frissítés megfelel a szoftver verziójának **10.0.10293.0**.
 ## <a name="whats-new-in-the-update-06"></a>Az 0,6-es frissítés újdonságai
 Az 0,6-es frissítés kritikus fontosságú frissítés, és azonnal üzembe kell helyezni. Ez a frissítés a következő javításokat tartalmazza: 
 
-- **Windows biztonsági javítások** – ez a kiadás a **Windows kritikus biztonsági javításait**tartalmazza. Tekintse át az alábbi biztonsági frissítéseket a biztonsági problémákról és a kapcsolódó javításokról:
+- **Windows biztonsági javítások** – ez a kiadás a **Windows kritikus biztonsági javításait** tartalmazza. Tekintse át az alábbi biztonsági frissítéseket a biztonsági problémákról és a kapcsolódó javításokról:
     - [December 2016 biztonsági csak a Windows 8,1 és a Windows Server 2012 R2 minőségi frissítése](https://support.microsoft.com/help/3205400/december-2016-security-only-quality-update-for-windows-8.1-and-windows-server-2012-r2)
     - [Március 2017 biztonsági csak a Windows 8,1 és a Windows Server 2012 R2 minőségi frissítése](https://support.microsoft.com/help/4012213/march-2017-security-only-quality-update-for-windows-8-1-and-windows-server-2012-r23)
     - [2017. május 9. – KB4019213 (csak biztonsági frissítés)](https://support.microsoft.com/help/4019213/windows-8-update-kb4019213)
@@ -52,7 +52,7 @@ Az 0,6-es frissítés kritikus fontosságú frissítés, és azonnal üzembe kel
 
 A következő táblázat az ebben a kiadásban kijavított problémák összegzését tartalmazza.
 
-| Nem. | Szolgáltatás | Probléma |
+| Nem. | Funkció | Probléma |
 | --- | --- | --- |
 | 1 |Biztonság| Ez a kiadás kritikus Windowsos biztonsági frissítéseket tartalmaz. Javasoljuk, hogy azonnal telepítse ezt a frissítést.|
 | 2 |Visszaállítás| A visszaállítás során egy olyan versenyhelyzet fordult elő, amely megakadályozza a visszaállítási feladatok befejezését. A hibajavítás megjavítja ezt a versenyhelyzet-feltételt.|
@@ -62,7 +62,7 @@ A következő táblázat az ebben a kiadásban kijavított problémák összegz�
 
 Az alábbi táblázat összefoglalja a StorSimple virtuális tömb ismert problémáit, és tartalmazza az előző kiadásokból megjelent problémákat.
 
-| Nem. | Szolgáltatás | Probléma | Áthidaló megoldás/megjegyzések |
+| Nem. | Funkció | Probléma | Áthidaló megoldás/megjegyzések |
 | --- | --- | --- | --- |
 | **1.** |Frissítések |Az előzetes verzióban létrehozott virtuális eszközök nem frissíthetők támogatott általánosan elérhető verzióra. |Ezeket a virtuális eszközöket egy vész-helyreállítási (DR) munkafolyamat használatával kell átadni az általános elérhetőségi kiadáshoz. |
 | **2.** |Kiépített adatlemez |Miután kiépített egy adott méretű adatlemezt, és létrehozta a megfelelő StorSimple virtuális eszközt, az adatlemezt nem szabad kibontani vagy csökkentenie. Az eredmény az eszköz helyi szintjein lévő összes érték elvesztését eredményezi. | |
@@ -85,12 +85,11 @@ Az alábbi táblázat összefoglalja a StorSimple virtuális tömb ismert probl�
 ## <a name="next-step"></a>Következő lépés
 [Telepítse a 0,6](storsimple-virtual-array-install-update-06.md) -es frissítést a StorSimple virtuális tömbbe.
 
-## <a name="references"></a>Hivatkozások
+## <a name="references"></a>Referencia
 Régebbi kiadási megjegyzést keres? Ugrás:
 
 * [StorSimple Virtual Array Update 0,5 kibocsátási megjegyzések](storsimple-virtual-array-update-05-release-notes.md)
 * [StorSimple Virtual Array Update 0,4 kibocsátási megjegyzések](storsimple-virtual-array-update-04-release-notes.md)
 * [StorSimple Virtual Array Update 0,3 kibocsátási megjegyzések](storsimple-ova-update-03-release-notes.md)
 * [StorSimple Virtual Array Update 0,1 és 0,2 kibocsátási megjegyzések](storsimple-ova-update-01-release-notes.md)
-* [A StorSimple Virtual Array általános elérhetőségi kibocsátási megjegyzései](storsimple-ova-pp-release-notes.md)
-
+* [A StorSimple Virtual Array általános elérhetőségi kibocsátási megjegyzései]()

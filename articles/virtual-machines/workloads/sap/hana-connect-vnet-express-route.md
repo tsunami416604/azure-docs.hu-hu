@@ -7,18 +7,19 @@ author: msjuergent
 manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8c7e8d4875a8bf3f53ac536ae95ac7499a74d45c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5a8a8157721f34abf7761a85febc7bcea3abb88
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87082154"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967839"
 ---
 # <a name="connect-a-virtual-network-to-hana-large-instances"></a>Virtuális hálózat összekapcsolása a HANA nagyméretű példányaival
 
@@ -149,7 +150,7 @@ Az ehhez szükséges, a Microsoft számára a kéréshez használni kívánt, va
 - "A hálózat módosítása – Global Reach hozzáadása" témakör tárgya
 - Részletek: "Global Reach hozzáadása a HANA nagyméretű példányhoz a HANA nagyméretű példány-bérlőhöz vagy a" Global Reach hozzáadása a helyszínhez a nagyméretű példányok bérlője számára.
 - További részletek a HANA nagyméretű példányának a HANA nagyméretű példány bérlői esetéhez: meg kell határoznia azt a **két Azure-régiót** , ahol a két bérlő csatlakozik, **és** el kell küldenie a **/29 IP-címtartományt** .
-- További részletek a helyszíni és a HANA nagyméretű példányok bérlői esetéhez: meg kell határoznia azt az **Azure-régiót** , ahol a Hana nagyméretű példány bérlője telepítve van, közvetlenül szeretne csatlakozni. Emellett meg kell adnia a **hitelesítési GUID** azonosítót és az **áramköri társ-azonosítót** , amelyet a ExpressRoute áramkörnek a helyszíni és az Azure közötti létrehozásakor kapott. Emellett az **ASN**nevet kell megadnia. Az utolsó megszabadítható egy **/29 IP-címtartomány** a ExpressRoute Global REACH.
+- További részletek a helyszíni és a HANA nagyméretű példányok bérlői esetéhez: meg kell határoznia azt az **Azure-régiót** , ahol a Hana nagyméretű példány bérlője telepítve van, közvetlenül szeretne csatlakozni. Emellett meg kell adnia a **hitelesítési GUID** azonosítót és az **áramköri társ-azonosítót** , amelyet a ExpressRoute áramkörnek a helyszíni és az Azure közötti létrehozásakor kapott. Emellett az **ASN** nevet kell megadnia. Az utolsó megszabadítható egy **/29 IP-címtartomány** a ExpressRoute Global REACH.
 
 > [!NOTE]
 > Ha mindkét esetet kezelni szeretné, két különböző/29 IP-címtartományt kell megadnia, amelyek nem fedik át az eddig használt egyéb IP-címtartományt. 
@@ -157,6 +158,6 @@ Az ehhez szükséges, a Microsoft számára a kéréshez használni kívánt, va
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A HLI további hálózati követelményei](hana-additional-network-requirements.md)

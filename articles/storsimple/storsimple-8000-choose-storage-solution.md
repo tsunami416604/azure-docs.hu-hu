@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 903342230b28f8e4fbdcdfd93543e5a0aa54975e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6f5bb1c2716acbbac8d3e776eb9beda045fd881
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88183275"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968740"
 ---
 # <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>A StorSimple összehasonlítása az Azure File Synckel és a Data Box Edge adatátviteli lehetőségeivel 
 
@@ -20,9 +20,9 @@ ms.locfileid: "88183275"
  
 Ez a dokumentum áttekintést nyújt a helyszíni adatátviteli lehetőségekről az Azure-ba, összehasonlítva a következővel: Data Box Edge vs. Azure File Sync vs. StorSimple 8000 sorozat.
 
-- **[Data Box Edge](/azure/databox-online/data-box-edge-overview)** – a Data Box Edge egy helyszíni hálózati eszköz, amely az Azure-ba, illetve az Azure-ba helyezi át az adatátvitelt, és az AI-kompatibilis Edge számítási feladatokkal előre feldolgozza az adatok feltöltését. Data Box Gateway az eszköz virtuális verziója azonos adatátviteli képességekkel.
-- **[Azure file Sync](/azure/storage/files/storage-sync-files-deployment-guide)** – a Azure file Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Azure File Sync általánosan elérhetővé vált a 2018-es verzióban.
-- **[StorSimple](/azure/storsimple/storsimple-overview)** – a StorSimple egy hibrid eszköz, amely segít a vállalatok számára az elsődleges tárterület, az adatvédelem, az archiválás és a vész-helyreállítás egyetlen megoldáson való összevonásával, az Azure Storage-nal való szoros integráció révén. A StorSimple termék-életciklusa [itt](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series)található.
+- **[Data Box Edge](../databox-online/azure-stack-edge-overview.md)** – a Data Box Edge egy helyszíni hálózati eszköz, amely az Azure-ba, illetve az Azure-ba helyezi át az adatátvitelt, és az AI-kompatibilis Edge számítási feladatokkal előre feldolgozza az adatok feltöltését. A Data Box Gateway az eszköz virtuális verziója, amely ugyanazokkal az adatátviteli képességekkel rendelkezik.
+- **[Azure file Sync](../storage/files/storage-sync-files-deployment-guide.md)** – a Azure file Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Azure File Sync általánosan elérhetővé vált a 2018-es verzióban.
+- **[StorSimple](./storsimple-overview.md)** – a StorSimple egy hibrid eszköz, amely segít a vállalatok számára az elsődleges tárterület, az adatvédelem, az archiválás és a vész-helyreállítás egyetlen megoldáson való összevonásával, az Azure Storage-nal való szoros integráció révén. A StorSimple termék-életciklusa [itt](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series)található.
 
 ## <a name="comparison-summary"></a>Összehasonlító összefoglalás
 
@@ -39,5 +39,5 @@ Ez a dokumentum áttekintést nyújt a helyszíni adatátviteli lehetőségekrő
 
 ## <a name="next-steps"></a>Következő lépések
 
-- A [Azure Data Box Edge](/azure/databox-online/data-box-edge-overview) és a [Azure Data Box Gateway](/azure/databox-online/data-box-gateway-overview) ismertetése
-- Tudnivalók a [Azure file Sync](/azure/storage/files/storage-sync-files-deployment-guide)
+- A [Azure Data Box Edge](../databox-online/azure-stack-edge-overview.md) és a [Azure Data Box Gateway](../databox-online/data-box-gateway-overview.md) ismertetése
+- Tudnivalók a [Azure file Sync](../storage/files/storage-sync-files-deployment-guide.md)

@@ -2,18 +2,18 @@
 title: Gyakori kérdések
 description: Választ ad az Azure VMware megoldással kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
-ms.date: 11/12/2020
+ms.date: 11/19/2020
 ms.author: dikamath
-ms.openlocfilehash: c9a8b5f9e02cc76789755bf81d309826de1459c5
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 0bc3e0ab5b3017c2d051113a57d79214ffce0836
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920593"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967346"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Gyakran ismételt kérdések az Azure VMware-megoldásról
 
-Válaszok az Azure VMware megoldással kapcsolatos gyakori kérdésekre.
+Ez a cikk az Azure VMware megoldással kapcsolatos gyakori kérdésekre ad választ.
 
 ## <a name="general"></a>Általános kérdések
 
@@ -49,11 +49,11 @@ Igen. A VM-Migrálás és a vMotion segítségével a virtuális gépek áthelye
 
 #### <a name="is-a-specific-version-of-vsphere-required-in-on-premises-environments"></a>A vSphere adott verziója szükséges a helyszíni környezetekben?
 
-Az összes felhőalapú környezet a VMware HCX, a vSphere 5,5-es vagy újabb verziókkal rendelkezik a vMotion helyszíni környezetekben.
+Az összes felhőalapú környezet a VMware HCX, a vSphere 5,5 vagy a későbbi verziókban érhető el a vMotion helyszíni környezetekben.
 
 #### <a name="what-does-the-change-control-process-look-like"></a>Mire hasonlít a változás-ellenőrzési folyamat?
 
-A szolgáltatásban végzett frissítések a Microsoft Azure szokásos módosítás-felügyeleti folyamatát követik. Az ügyfelek felelősek a munkaterhelés-felügyeleti feladatokért és a kapcsolódó módosítási felügyeleti folyamatokkal kapcsolatban.
+Magának a szolgáltatásnak a frissítései a Microsoft Azure szokásos módosítás-felügyeleti folyamatát követik. Az ügyfelek felelősek a munkaterhelés-felügyeleti feladatokért és a kapcsolódó módosítási felügyeleti folyamatokkal kapcsolatban.
 
 #### <a name="how-is-this-different-from-azure-vmware-solution-by-cloudsimple"></a>Miben különbözik a CloudSimple Azure VMware-megoldástól?
 
@@ -65,7 +65,7 @@ Az új Azure VMware-megoldással a Microsoft és a VMware közvetlen felhőalap�
 Igen, ha a telepített rendszer be van kapcsolva, hozzáférhet a saját Felhőbeli vCenter, és nyilvános DNS-t használ az ESXi-állomásnevek feloldásához.
 
 #### <a name="are-there-special-instructions-for-installing-and-using-vmrc-with-azure-vmware-solution-vms"></a>Van-e speciális útmutatás a VMRC Azure VMware-megoldású virtuális gépekkel történő telepítéséhez és használatához?
-Nem, használja a [VMware által megadott utasításokat](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) , és teljesíti az utasításokban megadott virtuálisgép-előfeltételeket. 
+Nem. A [VMware által megadott utasításokat](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) követve teljesítheti az utasításokban meghatározott virtuálisgép-előfeltételeket. 
 
 #### <a name="is-vmware-hcx-supported-on-vpns"></a>A VMware HCX támogatott a VPN-en?
 Nem, a sávszélesség és a késési követelmények miatt.
@@ -105,7 +105,7 @@ Az Azure VMware-megoldás minden ESXi-állomása 4 25 GB/s hálózati adapterekk
 
 Igen, a rendszer alapértelmezés szerint titkosítja az összes vSAN-adatfájlt a Azure Key Vaultban tárolt kulcsok használatával.
 
-#### <a name="you-document-that-commvault-veritas-and-veeam-have-extended-their-backup-solutions-to-work-with-azure-vmware-solution-what-about-other-independent-software-vendor-isv-backup-solutions"></a>Dokumentálja, hogy a CommVault, a Veritas és a Veeam kibővítette a biztonsági mentési megoldásait az Azure VMware megoldással való együttműködéshez. Mi a helyzet a többi független szoftvergyártó (ISV) biztonsági mentési megoldással?
+#### <a name="you-document-that-commvault-veritas-and-veeam-have-extended-their-backup-solutions-to-work-with-azure-vmware-solution-what-about-other-independent-software-vendors-isvs-backup-solutions"></a>Dokumentálja, hogy a CommVault, a Veritas és a Veeam kibővítette a biztonsági mentési megoldásait az Azure VMware megoldással való együttműködéshez. Mi a helyzet a más független szoftvergyártók (ISV) biztonsági mentési megoldásaival?
 
 Amennyire tudjuk, minden olyan biztonsági mentési megoldás, amely a HotAdd átviteli móddal VMware VADP-t használ, azonnal működnie kell az Azure VMware megoldáson.
 
@@ -147,7 +147,7 @@ Nem. A csúcsminőségű ESXi-gazdagépek az üzemi fürtökön való használat
 
 #### <a name="what-versions-of-vmware-software-is-used-in-private-clouds"></a>A VMware-szoftverek milyen verzióit használják a privát felhők?
 
-A privát felhők a vSphere 6,7, a vSAN 6,7, a VMware HCX és a NSX-T 2,5-es verzióját használják.  
+A privát felhők a vSphere 6,7 U3, a vSAN 6,7 U3, a VMware HCX és a NSX-T 2,5 használatát használják.  További információ: [a VMware szoftver verziójának követelményei](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html).
 
 #### <a name="do-private-clouds-use-vmware-nsx"></a>A privát felhők a VMware NSX-t használják?
 
@@ -163,7 +163,7 @@ Nem, nem szükséges a helyszíni NSX használata.
 
 #### <a name="what-is-the-upgrade-and-update-schedule-for-vmware-software-in-a-private-cloud"></a>Mi a VMware-szoftverek frissítési és frissítési ütemterve egy privát felhőben?
 
-A Private Cloud szoftvercsomag frissítései megtartják a szoftvert a VMware-től a legújabb szoftvercsomag-kiadás egyik verzióján belül. A Private Cloud Software-verziók eltérhetnek az egyes szoftver-összetevők legújabb verzióitól (ESXi, NSX-T, vCenter, vSAN).
+A Private Cloud szoftvercsomag frissítései megőrzik a szoftvert a VMware-ből származó legújabb szoftvercsomag-kiadás egy verzióján belül. A Private Cloud Software-verziók eltérhetnek az egyes szoftver-összetevők legújabb verzióitól (ESXi, NSX-T, vCenter, vSAN).
 
 #### <a name="how-often-will-the-private-cloud-software-stack-be-updated"></a>Milyen gyakran frissül a Private Cloud Software stack?
 
@@ -237,7 +237,7 @@ Igen, az ügyfelek egy CSP által felügyelt Azure-előfizetésen belül telepí
 
 A Microsoft támogatást nyújt az Azure VMware-megoldáshoz. Egy [támogatási kérelmet](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)is küldhet. 
 
-A CSP által felügyelt előfizetések esetében a megoldás szolgáltatója az első támogatási szintet ugyanúgy biztosítja, mint a CSP más Azure-szolgáltatásokhoz.
+A CSP által felügyelt előfizetések esetében az első szintű támogatás a megoldás-szolgáltatót ugyanolyan módon biztosítja, mint a CSP más Azure-szolgáltatásokhoz.
 
 #### <a name="what-accounts-do-i-need-to-create-an-azure-vmware-solution-private-cloud"></a>Milyen fiókokra van szükségem egy Azure VMware-megoldás saját Felhőbeli létrehozásához?
 
@@ -245,7 +245,7 @@ Egy Azure-előfizetésben Azure-fiókra lesz szüksége.
 
 #### <a name="are-red-hat-solutions-supported-on-azure-vmware-solution"></a>A Red Hat-megoldások támogatottak az Azure VMware-megoldásokban?
 
-A Microsoft és a Red hat olyan integrált, közösen elhelyezett támogatási csapattal rendelkezik, amely egységes kapcsolattartási pontot biztosít az Azure platformon futó Red Hat-ökoszisztémák számára.  A Red Hat Enterprise Linux-vel dolgozó egyéb Azure platform-szolgáltatásokhoz hasonlóan az Azure VMware megoldás a Felhőbeli hozzáférés és az integrált támogatás égisze alá tartozik, és a Red Hat Enterprise Linux támogatott az Azure VMware-megoldáson belüli futtatásához.
+A Microsoft és a Red Hat egy integrált, közös elhelyezésű támogatási csapattal rendelkezik, amely egységes kapcsolattartási pontot biztosít az Azure platformon futó Red Hat-ökoszisztémák számára.  A Red Hat Enterprise Linux-t használó egyéb Azure platform-szolgáltatásokhoz hasonlóan az Azure VMware megoldás a felhőalapú hozzáférés és az integrált támogatás égisze alá tartozik. A Red Hat Enterprise Linux az Azure VMware-megoldáson belüli futtatására is használható.
 
 #### <a name="is-vmware-hcx-enterprise-available-and-if-so-how-much-does-it-cost"></a>Elérhető a VMware HCX Enterprise, és ha igen, Mennyibe kerül?
 
@@ -260,7 +260,7 @@ EA-előfizetések esetén kövesse az alábbi eljárást. Először a következ�
 * [Azure-nagyvállalati szerződés (EA)](../cost-management-billing/manage/ea-portal-agreements.md) a Microsofttal.
 * Azure-fiók Azure-előfizetésben.
 
-Az Azure VMware-megoldási erőforrás létrehozása előtt küldjön be egy támogatási jegyet a csomópontok lefoglalásához. A kérés megerősítése és a csomópontok lefoglalása akár öt munkanapot is igénybe vesz. Ha van egy meglévő Azure VMware-megoldás saját felhője, és több csomópontot szeretne lefoglalni, akkor ugyanezt a folyamatot kell megtennie.
+Az Azure VMware-megoldási erőforrás létrehozása előtt egy támogatási jegyet küld a gazdagépek lefoglalásához. A kérés megerősítése és teljesítése akár öt munkanapot is igénybe vesz. Ha van egy meglévő Azure VMware-megoldás saját felhője, és több gazdagépet szeretne lefoglalni, akkor ugyanezt a folyamatot kell megtennie.
 
 1. A Azure Portal a Súgó és **támogatás** területen hozzon létre egy **[új támogatási kérést](https://rc.portal.azure.com/#create/Microsoft.Support)** , és adja meg a következő információkat a jegyhez:
    - **Probléma típusa:** Technikai
@@ -275,46 +275,47 @@ Az Azure VMware-megoldási erőforrás létrehozása előtt küldjön be egy tá
 
    - POC vagy éles üzem 
    - Régiónév
-   - Csomópontok száma
+   - Gazdagépek száma
    - Bármilyen más részlet
 
    >[!NOTE]
-   >Az Azure VMware-megoldás legalább három csomópontot javasol a saját felhő és a redundancia N + 1 csomópontok kiépítéséhez. 
+   >Az Azure VMware-megoldás legalább három gazdagép használatát javasolja a saját felhő és a redundancia N + 1 gazdagépek számára. 
 
 1. Válassza a **felülvizsgálat + létrehozás** lehetőséget a kérelem elküldéséhez.
 
    A támogatási képviselők akár öt munkanapot is igénybe vesznek, hogy erősítse a kérelmét.
 
    >[!IMPORTANT] 
-   >Ha már rendelkezik egy meglévő Azure VMware-megoldással, és további csomópontokra van szüksége, vegye figyelembe, hogy öt munkanapra van szükség a csomópontok lefoglalásához. 
+   >Ha már rendelkezik egy meglévő Azure VMware-megoldással, és további gazdagépeket kér, vegye figyelembe, hogy öt munkanapon belül le kell foglalni a gazdagépeket. 
 
-1. A csomópontok kiépítése előtt győződjön meg arról, hogy regisztrálja a **Microsoft. AVS** erőforrás-szolgáltatót a Azure Portal.  
+1. A gazdagépek kiépítése előtt győződjön meg arról, hogy regisztrálja a **Microsoft. AVS** erőforrás-szolgáltatót a Azure Portal.  
 
    ```azurecli-interactive
    az provider register -n Microsoft.AVS --subscription <your subscription ID>
+   ```
 
-   For additional ways to register the resource provider, see [Azure resource providers and types](../azure-resource-manager/management/resource-providers-and-types.md). 
+   Az erőforrás-szolgáltató regisztrálásának további módjaiért tekintse meg az [Azure erőforrás-szolgáltatók és-típusok](../azure-resource-manager/management/resource-providers-and-types.md)című témakört. 
 
-#### Are Reserved Instances available for purchasing through the Cloud Solution Provider (CSP) program?
+#### <a name="are-reserved-instances-available-for-purchasing-through-the-cloud-solution-provider-csp-program"></a>Elérhetőek-e a fenntartott példányok a Cloud Solution Provider (CSP) programon keresztül?
 
-Yes. CSP can purchase reserved instances for their customers. For more information, see the [Save costs with a reserved instance](reserved-instance.md) article. 
+Igen. A CSP fenntartott példányokat is vásárolhat ügyfelei számára. További információkért tekintse meg a [költségek mentése fenntartott példányokkal foglalkozó](reserved-instance.md) cikket. 
 
-#### Does Azure VMware Solution offer multi-tenancy for hosting CSP partners?
+#### <a name="does-azure-vmware-solution-offer-multi-tenancy-for-hosting-csp-partners"></a>Az Azure VMware-megoldás több-bérlős szolgáltatást kínál a CSP-partnerek üzemeltetéséhez?
 
-No. Currently Azure VMware Solution doesn't offer multi-tenancy.
+Nem. Az Azure VMware-megoldás jelenleg nem nyújt több-bérlőt.
 
-#### Will traffic between on-premises and Azure VMware Solution over ExpressRoute incur any outbound data transfer charge in the metered data plan?
+#### <a name="will-traffic-between-on-premises-and-azure-vmware-solution-over-expressroute-incur-any-outbound-data-transfer-charge-in-the-metered-data-plan"></a>A helyszíni és az Azure VMware-megoldás közötti forgalom ExpressRoute a forgalmi díjas adatcsomagban?
 
-Traffic in the Azure VMware Solution ExpressRoute circuit isn't metered in any way. Traffic from your ExpressRoute circuit connecting to your on-premises to Azure is charged according to ExpressRoute pricing plans.
+Az Azure VMware-megoldás ExpressRoute áramkörének forgalma semmilyen módon nem mérhető. A ExpressRoute-áramkörről a helyszíni Azure-hoz kapcsolódó forgalom a ExpressRoute díjszabási csomagok alapján kerül kiszámlázásra.
 
 
-## Customer communication
+## <a name="customer-communication"></a>Ügyfél-kommunikáció
 
-#### How can I receive an alert when Azure sends service health notifications to my Azure subscription?
+#### <a name="how-can-i-receive-an-alert-when-azure-sends-service-health-notifications-to-my-azure-subscription"></a>Hogyan kaphatok riasztást, ha az Azure szolgáltatás-állapotra vonatkozó értesítéseket küld az Azure-előfizetésre?
 
-Service issues, planned maintenance, health advisories, security advisories notifications are published through **Service Health** in the Azure portal.  You can take timely actions when you set up activity log alerts for these notifications. For more information, see [Create service health alerts using the Azure portal](../service-health/alerts-activity-log-service-notifications-portal.md#create-service-health-alert-using-azure-portal).
+A szolgáltatással kapcsolatos problémák, a tervezett karbantartás, az állapot-tanácsadók, a biztonsági tanácsadók értesítései a Azure Portal **Service Healthon** keresztül jelennek meg.  Az értesítésekhez tartozó műveletnapló-riasztások beállításakor időben hajthat végre műveleteket. További információ: [szolgáltatás állapotára vonatkozó riasztások létrehozása a Azure Portal használatával](../service-health/alerts-activity-log-service-notifications-portal.md#create-service-health-alert-using-azure-portal).
 
-:::image type="content" source="media/service-health.png" alt-text="Screenshot of Service Health notifications":::
+:::image type="content" source="media/service-health.png" alt-text="Képernyőkép Service Health értesítésekről":::
 
 
 

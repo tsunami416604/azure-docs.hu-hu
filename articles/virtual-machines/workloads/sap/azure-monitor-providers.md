@@ -3,22 +3,23 @@ title: SAP Solutions-szolgáltatók Azure Monitor | Microsoft Docs
 description: Ez a cikk a SAP Solutions-szolgáltatók Azure monitor szolgáltatásával kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza.
 author: rdeltcheva
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: f5df8bccc10ca64ee9a04f195299c5228b7274c1
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 056eba8694d1727350809121f763181e3cdbdc64
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94356450"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968604"
 ---
 # <a name="azure-monitor-for-sap-solutions-providers-preview"></a>Azure monitor SAP Solutions-szolgáltatók számára (előzetes verzió)
 
 ## <a name="overview"></a>Áttekintés  
 
-Az SAP-megoldások Azure Monitor kontextusában a *szolgáltató típusa* egy adott *szolgáltatóra* vonatkozik. Például *SAP HANA* , amely az SAP-környezet egy adott összetevőjéhez van konfigurálva, például SAP HANA adatbázishoz. A szolgáltató a megfelelő összetevőhöz tartozó kapcsolódási adatokat tartalmazza, és segít az adott összetevőből származó telemetria-adatok gyűjtésében. Az SAP-megoldások erőforrásának (más néven SAP-figyelő erőforrás) egy Azure Monitor több szolgáltatóval is konfigurálható ugyanazzal a szolgáltatói típussal vagy több szolgáltatói típussal.
+Az SAP-megoldások Azure Monitor kontextusában a *szolgáltató típusa* egy adott *szolgáltatóra* vonatkozik. Például *SAP HANA*, amely az SAP-környezet egy adott összetevőjéhez van konfigurálva, például SAP HANA adatbázishoz. A szolgáltató a megfelelő összetevőhöz tartozó kapcsolódási adatokat tartalmazza, és segít az adott összetevőből származó telemetria-adatok gyűjtésében. Az SAP-megoldások erőforrásának (más néven SAP-figyelő erőforrás) egy Azure Monitor több szolgáltatóval is konfigurálható ugyanazzal a szolgáltatói típussal vagy több szolgáltatói típussal.
    
 Az ügyfelek különböző szolgáltatói típusokat állíthatnak be, amelyek lehetővé teszik az adatok gyűjtését az SAP-környezet megfelelő összetevőjéről. Az ügyfelek például konfigurálhatják SAP HANA szolgáltatói típust, egy másik szolgáltatót a magas rendelkezésre állású fürt szolgáltatói típusához és így tovább.  
 
@@ -82,7 +83,7 @@ Microsoft SQL Server szolgáltató konfigurálásához az SAP rendszerazonosít�
 
 ![Azure Monitor SAP Solutions-szolgáltatók számára – SQL](./media/azure-monitor-sap/azure-monitor-providers-sql.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Hozza létre az első Azure Monitor az SAP Solutions-erőforráshoz.
 - Kérdése van az SAP-megoldások Azure Monitorával kapcsolatban? Olvassa el a [Gyakori kérdések](./azure-monitor-faq.md) szakaszt.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
-ms.openlocfilehash: 8267a678f35d01119ae3e7d89a07c789dc969614
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70b6231829173059ffee675105bacbe1bd1532f2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85507500"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967108"
 ---
 # <a name="use-storsimple-device-manager-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>StorSimple-Eszközkezelő használata a StorSimple virtuális tömbhöz tartozó Storage-fiók hitelesítő adatainak kezeléséhez
 
@@ -31,7 +31,7 @@ A StorSimple virtuális tömb StorSimple Eszközkezelő szolgáltatás paneljén
   
   ![Eszközkezelő szolgáltatás irányítópultja](./media/storsimple-virtual-array-manage-storage-accounts/ova-storageaccts-dashboard.png)  
 
-Ez az oktatóanyag azt ismerteti, hogyan adhat hozzá, szerkeszthet vagy törölhet Storage-fiók hitelesítő adatait a StorSimple virtuális tömbhöz. Az oktatóanyagban szereplő információk csak a StorSimple virtuális tömbre vonatkoznak. További információ a Storage-fiókok 8000 sorozatban való kezeléséről: [a StorSimple Manager szolgáltatás használata a Storage-fiók kezeléséhez](storsimple-manage-storage-accounts.md).
+Ez az oktatóanyag azt ismerteti, hogyan adhat hozzá, szerkeszthet vagy törölhet Storage-fiók hitelesítő adatait a StorSimple virtuális tömbhöz. Az oktatóanyagban szereplő információk csak a StorSimple virtuális tömbre vonatkoznak. További információ a Storage-fiókok 8000 sorozatban való kezeléséről: [a StorSimple Manager szolgáltatás használata a Storage-fiók kezeléséhez](./storsimple-8000-manage-storage-accounts.md).
 
 A Storage-fiók hitelesítő adatai tartalmazzák azokat a hitelesítő adatokat, amelyeket az eszköz használ a Storage-fiókhoz a felhőalapú szolgáltatóhoz való hozzáféréshez. Microsoft Azure Storage-fiókok esetében ezek a hitelesítő adatok, például a fiók neve és az elsődleges elérési kulcs.
 
@@ -52,7 +52,7 @@ A Storage-fiók **hitelesítő** adatai panelen végrehajtható hitelesítő ada
 A StorSimple-eszközzel három típusú Storage-fiók hitelesítő adatai használhatók.
 
 * Automatikusan **generált Storage-fiók hitelesítő adatai** – ahogy a neve is sugallja, az ilyen típusú Storage-fiók hitelesítő adatai automatikusan létrejönnek a szolgáltatás első létrehozásakor. A Storage-fiók hitelesítő adatainak létrehozásával kapcsolatos további tudnivalókért tekintse meg az [új szolgáltatás létrehozása](storsimple-virtual-array-manage-service.md#create-a-service)című témakört.
-* **a Storage-fiók hitelesítő adatai a szolgáltatás előfizetésében** – ezek az Azure Storage-fiók hitelesítő adatai, amelyek ugyanahhoz az előfizetéshez vannak társítva, mint a szolgáltatáshoz. További információ a Storage-fiók hitelesítő adatainak létrehozásáról: [Tudnivalók az Azure Storage-fiókokról](../storage/common/storage-create-storage-account.md).
+* **a Storage-fiók hitelesítő adatai a szolgáltatás előfizetésében** – ezek az Azure Storage-fiók hitelesítő adatai, amelyek ugyanahhoz az előfizetéshez vannak társítva, mint a szolgáltatáshoz. További információ a Storage-fiók hitelesítő adatainak létrehozásáról: [Tudnivalók az Azure Storage-fiókokról](../storage/common/storage-account-create.md).
 * **a Storage-fiók hitelesítő adatai a szolgáltatás előfizetésén kívül** – ezek az Azure Storage-fiók hitelesítő adatai, amelyek nincsenek társítva a szolgáltatáshoz, és valószínűleg léteztek a szolgáltatás létrehozása előtt.
 
 ## <a name="add-a-storage-account-credential"></a>Tárfiók hitelesítő adatainak hozzáadása
@@ -72,7 +72,7 @@ Az Azure Storage-fiók hitelesítő adatainak hozzáadásához kövesse az aláb
 3. Kattintson a **Hozzáadás** parancsra.
 4. A **Storage-fiók hozzáadása** panelen tegye a következőket:
    
-    1. Az **előfizetés**mezőben válassza az **aktuális**lehetőséget.
+    1. Az **előfizetés** mezőben válassza az **aktuális** lehetőséget.
     2. Adja meg az Azure Storage-fiók nevét.
     3. Az **Engedélyezés** gombra kattintva biztonságos csatornát hozhat létre a StorSimple-eszköz és a felhő közötti hálózati kommunikációhoz. Csak akkor válassza a **Letiltás** lehetőséget, ha privát felhőben működik.
     4. Kattintson a **Hozzáadás** parancsra. A rendszer értesítést küld arról, hogy a Storage-fiók létrehozása sikeres volt.<br></br>
@@ -86,17 +86,17 @@ Az Azure Storage-fiók hitelesítő adatainak hozzáadásához kövesse az aláb
 3. Kattintson a **Hozzáadás** parancsra.
 4. A **Storage-fiók hozzáadása** panelen tegye a következőket:
    
-    1. Az **előfizetés**mezőben válassza az **egyéb**lehetőséget.
+    1. Az **előfizetés** mezőben válassza az **egyéb** lehetőséget.
    
     2. Adja meg az Azure Storage-fiók hitelesítő adatainak nevét.
    
-    3. A **Storage-fiók hozzáférési kulcsa** szövegmezőben adja meg az Azure Storage-fiók hitelesítő adatainak elsődleges elérési kulcsát. A kulcs beszerzéséhez nyissa meg az Azure Storage szolgáltatást, válassza ki a Storage-fiók hitelesítő adatait, majd kattintson a **fiók kulcsainak kezelése**lehetőségre. Most már az elsődleges hozzáférési kulcsot is másolhatja.
+    3. A **Storage-fiók hozzáférési kulcsa** szövegmezőben adja meg az Azure Storage-fiók hitelesítő adatainak elsődleges elérési kulcsát. A kulcs beszerzéséhez nyissa meg az Azure Storage szolgáltatást, válassza ki a Storage-fiók hitelesítő adatait, majd kattintson a **fiók kulcsainak kezelése** lehetőségre. Most már az elsődleges hozzáférési kulcsot is másolhatja.
    
     4. A TLS engedélyezéséhez kattintson az **Engedélyezés** gombra egy biztonságos csatorna létrehozásához a StorSimple Eszközkezelő szolgáltatás és a felhő közötti hálózati kommunikációhoz. Kattintson a **Letiltás** gombra, ha privát felhőben működik.
    
     5. Kattintson a **Hozzáadás** parancsra. A rendszer értesítést küld a Storage-fiók hitelesítő adatainak sikeres létrehozása után.
 
-5. Az újonnan létrehozott Storage-fiók hitelesítő adatai a StorSimple konfigurálása Eszközkezelő szolgáltatás paneljén a **Storage-fiók hitelesítő adatai**területen jelennek meg.
+5. Az újonnan létrehozott Storage-fiók hitelesítő adatai a StorSimple konfigurálása Eszközkezelő szolgáltatás paneljén a **Storage-fiók hitelesítő adatai** területen jelennek meg.
    
     ![Adja hozzá a Storage-fiók hitelesítő adatait a Eszközkezelő szolgáltatás-előfizetésen kívül](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-outside-storageacct.png)
 
@@ -138,18 +138,17 @@ Biztonsági okokból a kulcsfontosságú rotációs szolgáltatás gyakran köve
 Ahhoz, hogy tájékoztassa a StorSimple Eszközkezelő szolgáltatását a változásról, el kell érnie a StorSimple Eszközkezelő szolgáltatást, el kell érnie a Storage-fiók hitelesítő adatait, majd szinkronizálnia kell az elsődleges vagy másodlagos kulcsot (attól függően, hogy melyik lett módosítva). A szolgáltatás ezután lekéri a legújabb kulcsot, titkosítja a kulcsokat, és elküldi a titkosított kulcsot az eszköznek.
 
 #### <a name="to-synchronize-keys-for-storage-account-credentials-in-the-same-subscription-as-the-service-azure-only"></a>A Storage-fiók hitelesítő adatainak kulcsainak szinkronizálása a szolgáltatással megegyező előfizetésben (csak az Azure-ban)
-1. A szolgáltatás kirakodási paneljén válassza ki a szolgáltatást, kattintson duplán a szolgáltatás nevére, majd a **konfiguráció** szakaszban kattintson a **Storage-fiók hitelesítő adatai**elemre.
+1. A szolgáltatás kirakodási paneljén válassza ki a szolgáltatást, kattintson duplán a szolgáltatás nevére, majd a **konfiguráció** szakaszban kattintson a **Storage-fiók hitelesítő adatai** elemre.
 2. A **Storage-fiók hitelesítő adatai** panelen, a Storage-fiók hitelesítő adatainak listájában válassza ki azt a Storage-fiók hitelesítő adatait, amelynek kulcsait szinkronizálni szeretné.
 3. A kiválasztott Storage-fiók hitelesítő adatainak **Tulajdonságok** paneljén tegye a következőket:
    
-    1. Kattintson a **továbbiak**, majd a **hozzáférési kulcs szinkronizálása**elemre.
+    1. Kattintson a **továbbiak**, majd a **hozzáférési kulcs szinkronizálása** elemre.
    
     2. Ha a rendszer megerősítést kér, kattintson a szinkronizálás **kulcs** elemre a szinkronizálás befejezéséhez.
     
-4. A StorSimple Eszközkezelő szolgáltatásban frissítenie kell azt a kulcsot, amely korábban megváltozott a Microsoft Azure Storage szolgáltatásban. Ha az elsődleges hozzáférési kulcs módosult (újragenerált), akkor a **Storage-fiók kulcsának szinkronizálása** panelen kattintson az elsődleges elemre, majd a **kulcs szinkronizálása**elemre. Ha a másodlagos kulcs módosult, kattintson a **másodlagos**, majd a **kulcs szinkronizálása**elemre.
+4. A StorSimple Eszközkezelő szolgáltatásban frissítenie kell azt a kulcsot, amely korábban megváltozott a Microsoft Azure Storage szolgáltatásban. Ha az elsődleges hozzáférési kulcs módosult (újragenerált), akkor a **Storage-fiók kulcsának szinkronizálása** panelen kattintson az elsődleges elemre, majd a **kulcs szinkronizálása** elemre. Ha a másodlagos kulcs módosult, kattintson a **másodlagos**, majd a **kulcs szinkronizálása** elemre.
    
     ![Hozzáférési kulcs szinkronizálása](./media/storsimple-virtual-array-manage-storage-accounts/ova-sync-access-key.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerje meg, hogyan [kezelheti a StorSimple virtuális tömböt](storsimple-ova-web-ui-admin.md).
-

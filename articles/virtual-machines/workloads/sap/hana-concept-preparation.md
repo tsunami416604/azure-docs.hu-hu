@@ -7,18 +7,19 @@ author: saghorpa
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 89da6935d85628b5ce4ff762ad31d3f280682921
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7f0782738a8aa57b2bc0b87e1378972e3fa5d31c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424255"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967856"
 ---
 # <a name="disaster-recovery-principles"></a>Vész-helyreállítási alapelvek
 
@@ -76,7 +77,7 @@ Az operatív csapat létrehozza a replikálási kapcsolatot az üzemi Azure-rég
 >A/Hana/log kötet nem replikálódik, mert nem szükséges visszaállítani a replikált SAP HANA adatbázist konzisztens állapotra a vész-helyreállítási helyen.
 
 Ezután állítsa be, vagy állítsa be a tárolási pillanatkép biztonsági mentési ütemtervét, hogy a RTO és a RPO a katasztrófa esetén. A helyreállítási pont célkitűzésének minimalizálásához állítsa be a következő replikációs intervallumokat a HANA nagyméretű példány-szolgáltatásban:
-- A kombinált pillanatkép által érintett kötetek esetében (a **Hana**típusú pillanatkép típusa) állítsa be úgy a 15 percenkénti replikálást, hogy a vész-helyreállítási helyen lévő megfelelő tárolási kötetre irányuló célkitűzések legyenek.
+- A kombinált pillanatkép által érintett kötetek esetében (a **Hana** típusú pillanatkép típusa) állítsa be úgy a 15 percenkénti replikálást, hogy a vész-helyreállítási helyen lévő megfelelő tárolási kötetre irányuló célkitűzések legyenek.
 - A tranzakciónapló biztonsági mentési kötete (pillanatkép típusú **naplók**) beállításnál állítsa be, hogy 3 percenként replikálódjon a vész-helyreállítási helyen található megfelelő tárolási kötetre.
 
 A helyreállítási pont célkitűzésének minimalizálásához állítsa be a következőket:
@@ -104,6 +105,6 @@ A replikálás előrehaladtával a DR Azure-régiókban található PRD-kötetek
 
 Feladatátvétel esetén a legújabb tárolási pillanatkép helyett a korábbi tárolási pillanatképre is visszaállíthatja a visszaállítást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a vész- [helyreállítási feladatátvételi eljárást](hana-failover-procedure.md).

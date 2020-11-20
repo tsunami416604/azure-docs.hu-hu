@@ -9,12 +9,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: rohink
-ms.openlocfilehash: 19189af6424960b8e20be686af745b10f2d8578b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41eb15a38c97532951723f12d1ac74c90c838eb1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85846834"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968196"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS-zónák és -rekordok áttekintése
 
@@ -93,7 +93,7 @@ A SOA rekordban lévő zóna sorozatszáma nem frissül automatikusan, ha a zón
 Az [SRV-rekordokat](https://en.wikipedia.org/wiki/SRV_record) a különböző szolgáltatások használják a kiszolgálók helyeinek megadására. SRV-rekord megadásakor a Azure DNSban:
 
 * A *szolgáltatást* és a *protokollt* a rekordtípus nevének részeként kell megadni, az aláhúzások előtaggal.  Például: ' \_ SIP. \_ tcp.name '.  A zóna csúcsán lévő rekord esetében nem kell megadnia a (z) " \@ " nevet a rekord nevében, egyszerűen használja a szolgáltatást és a protokollt, például " \_ SIP". \_ TCP ".
-* A *prioritás*, a *súlyozás*, a *port*és a *cél* paraméterként van megadva a rekordban lévő rekordok mindegyikében.
+* A *prioritás*, a *súlyozás*, a *port* és a *cél* paraméterként van megadva a rekordban lévő rekordok mindegyikében.
 
 ### <a name="txt-records"></a>TXT-rekordok
 
@@ -127,7 +127,7 @@ Alapértelmezés szerint Azure DNS PowerShell a Etagek használatával blokkolja
 
 A Azure DNS REST API szintjén a Etagek HTTP-fejlécek használatával vannak megadva.  Viselkedésük a következő táblázatban szerepel:
 
-| Fejléc | Működés |
+| Fejléc | Viselkedés |
 | --- | --- |
 | Nincs |Mindig sikeres (nincs ETAG-ellenőrzés) |
 | If-Match \<etag> |A PUT csak akkor sikeres, ha az erőforrás létezik, és a ETAG megfelel |
@@ -141,7 +141,7 @@ Azure DNS használatakor a következő alapértelmezett korlátok érvényesek:
 
 [!INCLUDE [dns-limits](../../includes/dns-limits.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* A Azure DNS használatának megkezdéséhez Ismerje meg, hogyan [hozhat létre DNS-zónát](dns-getstarted-create-dnszone-portal.md) , és hogyan [hozhat létre DNS-rekordokat](dns-getstarted-create-recordset-portal.md).
+* A Azure DNS használatának megkezdéséhez Ismerje meg, hogyan [hozhat létre DNS-zónát](./dns-getstarted-portal.md) , és hogyan [hozhat létre DNS-rekordokat](./dns-getstarted-portal.md).
 * Meglévő DNS-zóna áttelepítéséhez tekintse meg [a DNS-zónafájl importálását és exportálását](dns-import-export.md)ismertető témakört.

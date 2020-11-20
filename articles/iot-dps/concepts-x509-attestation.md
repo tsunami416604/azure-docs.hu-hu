@@ -7,12 +7,12 @@ ms.date: 09/14/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 3e06c79b9cbd5643d119974a4ed8628ea1b1cd4f
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 9eee315aac28847710662b463add7d6e68d8d505
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096759"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967295"
 ---
 # <a name="x509-certificate-attestation"></a>X.509 tanúsítványigazolás
 
@@ -26,7 +26,7 @@ Az X. 509 tanúsítványokat a hardveres biztonsági modul HSM-ben lehet tároln
 
 ## <a name="x509-certificates"></a>X. 509 tanúsítványok
 
-Az X. 509 tanúsítványok az igazolási mechanizmusként való használata kiváló módszer a termelés méretezésére és az eszközök üzembe helyezésének egyszerűsítésére. Az X. 509 tanúsítványokat jellemzően olyan megbízhatósági láncba rendezi a rendszer, amelyben a láncban lévő összes tanúsítványt aláírja a következő magasabb tanúsítvány titkos kulcsa, és így tovább, egy önaláírt főtanúsítványban leáll. Ez a megállapodás egy megbízható legfelső szintű hitelesítésszolgáltató (CA) által létrehozott főtanúsítványból delegált megbízhatósági láncot hoz létre az egyes közbenső HITELESÍTÉSSZOLGÁLTATÓKon keresztül az eszközre telepített végfelhasználói "levél" tanúsítványhoz. További információért lásd: [az eszközök hitelesítése X. 509 hitelesítésszolgáltatói tanúsítványokkal](/azure/iot-hub/iot-hub-x509ca-overview). 
+Az X. 509 tanúsítványok az igazolási mechanizmusként való használata kiváló módszer a termelés méretezésére és az eszközök üzembe helyezésének egyszerűsítésére. Az X. 509 tanúsítványokat jellemzően olyan megbízhatósági láncba rendezi a rendszer, amelyben a láncban lévő összes tanúsítványt aláírja a következő magasabb tanúsítvány titkos kulcsa, és így tovább, egy önaláírt főtanúsítványban leáll. Ez a megállapodás egy megbízható legfelső szintű hitelesítésszolgáltató (CA) által létrehozott főtanúsítványból delegált megbízhatósági láncot hoz létre az egyes közbenső HITELESÍTÉSSZOLGÁLTATÓKon keresztül az eszközre telepített végfelhasználói "levél" tanúsítványhoz. További információért lásd: [az eszközök hitelesítése X. 509 hitelesítésszolgáltatói tanúsítványokkal](../iot-hub/iot-hub-x509ca-overview.md). 
 
 A tanúsítványlánc gyakran az eszközökhöz társított logikai vagy fizikai hierarchiát jelképezi. A gyártó például a következőket teheti:
 - önaláírt legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány kiállítása
@@ -34,11 +34,11 @@ A tanúsítványlánc gyakran az eszközökhöz társított logikai vagy fizikai
 - az egyes gyári tanúsítványok használata egy egyedi közbenső HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány előállításához a üzemben lévő minden egyes gépsor esetében
 - Végül pedig használja az éles vonal tanúsítványát, hogy létrehozzon egy egyedi eszköz-(végfelhasználói) tanúsítványt a sorban gyártott összes eszközhöz. 
 
-További információ: [az X. 509 hitelesítésszolgáltatói tanúsítványok fogalmi megértése a IoT-iparágban](/azure/iot-hub/iot-hub-x509ca-concept). 
+További információ: [az X. 509 hitelesítésszolgáltatói tanúsítványok fogalmi megértése a IoT-iparágban](../iot-hub/iot-hub-x509ca-concept.md). 
 
 ### <a name="root-certificate"></a>Főtanúsítvány
 
-A főtanúsítvány egy önaláírt X. 509 tanúsítvány, amely egy hitelesítésszolgáltatót (CA) jelöl. Ez a tanúsítványlánc végállomása vagy megbízhatósági kapcsolata. A főtanúsítványokat a szervezet önállóan vagy egy főtanúsítvány-szolgáltatótól vásárolhatja meg. További információért lásd: [X. 509 hitelesítésszolgáltatói tanúsítványok beolvasása](/azure/iot-hub/iot-hub-security-x509-get-started#get-x509-ca-certificates). A főtanúsítványt a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványnak is nevezzük.
+A főtanúsítvány egy önaláírt X. 509 tanúsítvány, amely egy hitelesítésszolgáltatót (CA) jelöl. Ez a tanúsítványlánc végállomása vagy megbízhatósági kapcsolata. A főtanúsítványokat a szervezet önállóan vagy egy főtanúsítvány-szolgáltatótól vásárolhatja meg. További információért lásd: [X. 509 hitelesítésszolgáltatói tanúsítványok beolvasása](../iot-hub/iot-hub-security-x509-get-started.md#get-x509-ca-certificates). A főtanúsítványt a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványnak is nevezzük.
 
 ### <a name="intermediate-certificate"></a>Köztes tanúsítvány
 
@@ -47,7 +47,7 @@ A köztes tanúsítvány egy X. 509 tanúsítvány, amelyet a főtanúsítvány 
 ##### <a name="why-are-intermediate-certs-useful"></a>Miért hasznos a közbenső tanúsítványok?
 A köztes tanúsítványokat számos módon használják. A köztes tanúsítványok például az eszközök termékcsoportok szerinti csoportosítására használhatók, így az ügyfelek megvásárolják az eszközöket, a céges részlegeket vagy a gyárakat. 
 
-Képzelje el, hogy a contoso egy *ContosoRootCert*nevű főtanúsítvánnyal rendelkező, a saját nyilvános kulcsokra épülő infrastruktúrát (PKI) használó nagy vállalat. A contoso minden leányvállalatának saját közbenső tanúsítványa van, amelyet a *ContosoRootCert*írt alá. Az egyes leányvállalatok ezután a közbenső tanúsítvánnyal írják alá a levelek tanúsítványait az egyes eszközökön. Ebben a forgatókönyvben a contoso egyetlen [DPS-példányt](./how-to-verify-certificates.md)is használhat, ahol a *ContosoRootCert* igazolni kellett. Mindegyik leányvállalathoz tartozhatnak regisztrációs csoportjuk. Így minden egyes leányvállalatnak nem kell aggódnia a tanúsítványok ellenőrzése során.
+Képzelje el, hogy a contoso egy *ContosoRootCert* nevű főtanúsítvánnyal rendelkező, a saját nyilvános kulcsokra épülő infrastruktúrát (PKI) használó nagy vállalat. A contoso minden leányvállalatának saját közbenső tanúsítványa van, amelyet a *ContosoRootCert* írt alá. Az egyes leányvállalatok ezután a közbenső tanúsítvánnyal írják alá a levelek tanúsítványait az egyes eszközökön. Ebben a forgatókönyvben a contoso egyetlen [DPS-példányt](./how-to-verify-certificates.md)is használhat, ahol a *ContosoRootCert* igazolni kellett. Mindegyik leányvállalathoz tartozhatnak regisztrációs csoportjuk. Így minden egyes leányvállalatnak nem kell aggódnia a tanúsítványok ellenőrzése során.
 
 
 ### <a name="end-entity-leaf-certificate"></a>Végfelhasználói "levél" tanúsítvány
@@ -56,7 +56,7 @@ A levél tanúsítványa vagy a végfelhasználói tanúsítvány azonosítja a 
 
 Az [Egyéni beléptetési](./concepts-service.md#individual-enrollment) bejegyzésekhez használt levél-tanúsítványokhoz követelmény, hogy a **tulajdonos nevét** az egyéni beléptetési bejegyzés regisztrációs azonosítójára kell beállítani. A [beléptetési csoport](./concepts-service.md#enrollment-group) bejegyzéseihez használt levél-tanúsítványoknak a **tulajdonos nevének** a kívánt eszköz-azonosítóra kell vonatkozniuk, amely a beléptetési csoportban lévő hitelesített eszköz **regisztrációs rekordjaiban** jelenik meg.
 
-További információért lásd: [X. 509 hitelesítésszolgáltatói tanúsítványokkal aláírt eszközök hitelesítése](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates).
+További információért lásd: [X. 509 hitelesítésszolgáltatói tanúsítványokkal aláírt eszközök hitelesítése](../iot-hub/iot-hub-x509ca-overview.md#authenticating-devices-signed-with-x509-ca-certificates).
 
 ## <a name="controlling-device-access-to-the-provisioning-service-with-x509-certificates"></a>Eszköz hozzáférésének szabályozása a kiépítési szolgáltatáshoz X. 509 tanúsítvánnyal
 
@@ -109,4 +109,4 @@ Ez a mechanizmus és a tanúsítványlánc hierarchikus szerkezete nagy rugalmas
 - *4. eszköz*: főtanúsítvány – > B tanúsítvány > 4. eszköz tanúsítványa
 - *5. eszköz*: főtanúsítvány – > B tanúsítvány > 5. eszköz tanúsítványa
 
-Kezdetben létrehozhat egyetlen engedélyezett csoportos beléptetési bejegyzést a főtanúsítvány számára, hogy az összes öt eszköz számára engedélyezze a hozzáférést. Ha a B tanúsítvány később sérül, létrehozhat egy letiltott regisztrációs csoport bejegyzést a B tanúsítványhoz, amely megakadályozza a *4* . és az *5. eszköz* regisztrációját. Ha továbbra is a *3. eszköz* biztonsága sérül, létrehozhat egy letiltott egyéni beléptetési bejegyzést a tanúsítványához. Ez visszavonja a *3. eszköz*hozzáférését, de az *1* . és a *2* . eszköz regisztrációját is lehetővé teszi.
+Kezdetben létrehozhat egyetlen engedélyezett csoportos beléptetési bejegyzést a főtanúsítvány számára, hogy az összes öt eszköz számára engedélyezze a hozzáférést. Ha a B tanúsítvány később sérül, létrehozhat egy letiltott regisztrációs csoport bejegyzést a B tanúsítványhoz, amely megakadályozza a *4* . és az *5. eszköz* regisztrációját. Ha továbbra is a *3. eszköz* biztonsága sérül, létrehozhat egy letiltott egyéni beléptetési bejegyzést a tanúsítványához. Ez visszavonja a *3. eszköz* hozzáférését, de az *1* . és a *2* . eszköz regisztrációját is lehetővé teszi.

@@ -7,18 +7,19 @@ author: hermanndms
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: hermannd
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 023f32fce01ffbd974b182fa89fd604e62332936
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 994130ce2ecb4578a8d34f1f77b310bb558d3c7a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77617212"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967907"
 ---
 # <a name="install-hana-on-sap-hana-on-azure-large-instances"></a>A HANA telepítése SAP HANAon az Azure-ban (nagyméretű példányok)
 
@@ -39,7 +40,7 @@ A HANA nagyméretű példányok egysége nem kapcsolódik közvetlenül az inter
 
 Szüksége van egy SAP S-User vagy más felhasználóra, amely lehetővé teszi az SAP piactér elérését.
 
-1. Jelentkezzen be, és lépjen az [SAP Service Marketplace](https://support.sap.com/en/index.html)webhelyre. Válassza a **Szoftvertelepítés letöltése**  >  **és**  >  **a frissítés ABC-index alapján**lehetőséget. Ezután válassza **a H – SAP HANA platform kiadása**  >  **SAP HANA platform Edition 2,0**-  >  **telepítés**lehetőséget. Töltse le az alábbi képernyőképen látható fájlokat.
+1. Jelentkezzen be, és lépjen az [SAP Service Marketplace](https://support.sap.com/en/index.html)webhelyre. Válassza a **Szoftvertelepítés letöltése**  >  **és**  >  **a frissítés ABC-index alapján** lehetőséget. Ezután válassza **a H – SAP HANA platform kiadása**  >  **SAP HANA platform Edition 2,0**-  >  **telepítés** lehetőséget. Töltse le az alábbi képernyőképen látható fájlokat.
 
    ![Képernyőkép a letölteni kívánt fájlokról](./media/hana-installation/image16_download_hana.PNG)
 
@@ -79,7 +80,7 @@ Ezen a ponton olyan képernyőkép-sorozatot végez, amelyben megadja a telepít
 
 ![Képernyőfelvétel SAP HANA életciklus-kezelési képernyőről, SAP HANA-adatbázis kiválasztásával](./media/hana-installation/image18_hana_selection.PNG)
 
-A következő képernyőn válassza az **új rendszer telepítése**lehetőséget.
+A következő képernyőn válassza az **új rendszer telepítése** lehetőséget.
 
 ![Képernyőfelvétel SAP HANA életciklus-kezelési képernyőről, az új rendszerek telepítése beállítással](./media/hana-installation/image19_select_new.PNG)
 
@@ -87,7 +88,7 @@ Ezután válasszon több további telepítendő összetevő közül.
 
 ![Képernyőkép a SAP HANA életciklus-kezelési képernyőről, a további összetevők listájával](./media/hana-installation/image20_select_components.PNG)
 
-Itt választjuk ki a SAP HANA ügyfelet és a SAP HANA studiót. Egy Felskálázási példányt is telepítünk. Ezután válassza az **Egygazda rendszer**lehetőséget. 
+Itt választjuk ki a SAP HANA ügyfelet és a SAP HANA studiót. Egy Felskálázási példányt is telepítünk. Ezután válassza az **Egygazda rendszer** lehetőséget. 
 
 ![Képernyőkép a SAP HANA életciklus-kezelési képernyőről, amelyen egyetlen gazda rendszer van kiválasztva](./media/hana-installation/image21_single_host.PNG)
 
@@ -130,7 +131,7 @@ A telepítés befejezésekor a következőhöz hasonló képernyőnek kell megje
 A SAP HANA példánynak most már működnie kell, és használatra készen kell állnia. Csatlakoznia kell hozzá SAP HANA studióból. Győződjön meg arról is, hogy megkeresi és alkalmazza a legújabb frissítéseket.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Magas rendelkezésre állású és vész-helyreállítási SAP HANA Large Instances az Azure-ban](hana-overview-high-availability-disaster-recovery.md)
 

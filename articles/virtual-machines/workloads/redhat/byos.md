@@ -3,16 +3,17 @@ title: Red Hat Enterprise Linux saját előfizetéssel rendelkező Azure-lemezk�
 description: Ismerkedjen meg a saját előfizetésekkel kapcsolatos rendszerképekkel Red Hat Enterprise Linux Azure-ban.
 author: asinn826
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 06/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 3a597b6454b3fb738ca192fa7750ca94fdb873ab
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 6f2c15518a12a99ca1390284165ad2d48156e06a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372795"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968672"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux saját előfizetéssel rendelkező Gold-lemezképek az Azure-ban
 
@@ -208,7 +209,7 @@ A Azure Disk Encryption alkalmazására vonatkozó lépésekért lásd: [Azure D
 
 - Ha az Automation használatával helyez üzembe virtuális gépeket a RHEL BYOS-lemezképből, meg kell adnia a minta parancsaiban láthatóhoz hasonló csomag-paramétereket. Ha például a Terraform-t használja, megadhatja a terv információit egy [csomag blokkban](https://www.terraform.io/docs/providers/azurerm/r/virtual_machine.html#plan).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Red Hat Cloud Access további információi a [Red Hat nyilvános felhő dokumentációjában](https://access.redhat.com/public-cloud) találhatók
 - A Felhőbeli hozzáférés részletes útmutatóját és a program részleteit a [Red Hat Cloud Access dokumentációjában](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index)találja.
