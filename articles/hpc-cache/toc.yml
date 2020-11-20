@@ -8,6 +8,10 @@
   items:
     - name: Az aggregált névtér tervezése
       href: hpc-cache-namespace.md
+    - name: Biztonság
+      items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
 - name: Útmutatók
   items:
     - name: Előfeltételek

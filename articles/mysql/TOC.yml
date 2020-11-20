@@ -116,8 +116,6 @@
           href: sample-scripts-azure-cli.md
         - name: Java-kapcsolatkészletezés
           href: sample-scripts-java-connection-pooling.md
-        - name: Az Azure Policy beépített elemei
-          href: ./policy-reference.md
     - name: Alapelvek
       items:
         - name: Kiszolgálók
@@ -156,6 +154,9 @@
               href: concepts-azure-ad-authentication.md
             - name: Infrastruktúra kettős titkosítása
               href: concepts-infrastructure-double-encryption.md
+            - name: Az Azure Policy biztonsági vezérlői
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./security-controls-policy.md
             - name: Biztonsági alapkonfiguráció
               href: security-baseline.md
         - name: Tervezett karbantartás
@@ -573,6 +574,9 @@
       href: /azure/templates/microsoft.dbformysql/allversions
     - name: Felügyelet – Tárolt eljárások
       href: reference-stored-procedures.md
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: További források
   items:
     - name: Üzembehelyezési sablonok

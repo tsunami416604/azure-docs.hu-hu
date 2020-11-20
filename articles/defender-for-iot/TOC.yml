@@ -57,8 +57,12 @@
       href: concept-security-alerts.md
     - name: Testreszabható biztonsági riasztások
       href: concept-customizable-security-alerts.md
-    - name: Biztonsági javaslatok
-      href: concept-recommendations.md
+    - name: Biztonság
+      items:
+        - name: Biztonsági javaslatok
+          href: concept-recommendations.md
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
     - name: Alapkonfiguráció
       href: concept-baseline.md
     - name: Eseményösszesítés

@@ -352,19 +352,19 @@
             - name: 1. frissítés
               href: storsimple-update1-release-notes.md
             - name: 0.3-as frissítés
-              href: storsimple-february-2015-release-notes.md
+              href: ./index.yml
             - name: 0.2-es frissítés
-              href: storsimple-january-2015-release-notes.md
+              href: ./index.yml
             - name: 0.1-es frissítés
-              href: storsimple-october-2014-release-notes.md
+              href: ./index.yml
             - name: Kiadás – GA
-              href: storsimple-july-2014-release-notes.md
+              href: ./index.yml
     - name: Referencia
       items:
         - name: REST API
-          href: 'https://docs.microsoft.com/rest/api/storsimple'
+          href: /rest/api/storsimple
         - name: A Windows PowerShell StorSimple-bővítményének parancsmagjai
-          href: 'https://technet.microsoft.com/library/dn688168.aspx'
+          href: /powershell/module/hcs/?viewFallbackFrom=winserverr2-ps
         - name: Resource Manager-sablon
           href: /azure/templates/microsoft.storsimple/allversions
 - name: StorSimple Data Manager
@@ -398,7 +398,7 @@
     - name: Kibocsátási megjegyzések
       items:
         - name: A StorSimple kibocsátási megjegyzései
-          href: 'https://aka.ms/storsimple-virtual-array-latest-relnote'
+          href: ./storsimple-virtual-array-update-04-release-notes.md
         - name: A CSP kibocsátási megjegyzései
           href: 'https://partner.microsoft.com/Support/whats-new'
         - name: 'StorSimple CSP-hez: GYIK'
@@ -412,13 +412,13 @@
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Marketing blog
-      href: 'https://blogs.technet.com/b/cis/'
+      href: /archive/blogs/cis/
     - name: Marketing
       href: 'https://azure.microsoft.com/services/storsimple/'
     - name: A StorSimple támogatási lehetőségei
       href: storsimple-8000-support-options.md
     - name: Microsoft Q&A kérdések oldala
-      href: 'https://docs.microsoft.com/answers/topics/azure-storsimple.html'
+      href: /answers/topics/azure-storsimple.html
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/storsimple/'
     - name: Díjkalkulátor
@@ -426,7 +426,7 @@
     - name: Szolgáltatási hírek
       href: 'https://azure.microsoft.com/updates/?product=storsimple'
     - name: Támogatási blog
-      href: 'https://docs.microsoft.com/archive/blogs/storsimple/'
+      href: /archive/blogs/storsimple/
     - name: Harmadik felekkel kapcsolatos közlemények
       href: 'https://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip'
     - name: Videók

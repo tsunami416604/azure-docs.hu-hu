@@ -69,17 +69,17 @@
     - name: Migrálás a kapcsolatfigyelőbe
       items:
         - name: A hálózati teljesítményfigyelőből
-          href: migrate-to-connection-monitor-preview-from-network-performance-monitor.md
+          href: migrate-to-connection-monitor-from-network-performance-monitor.md
         - name: A kapcsolatfigyelőből (klasszikus)
-          href: migrate-to-connection-monitor-preview-from-connection-monitor.md
+          href: migrate-to-connection-monitor-from-connection-monitor-classic.md
     - name: A virtuális gép hálózati problémáinak diagnosztizálása
       items:
         - name: Virtuálisgép-bővítmény telepítése
           items:
             - name: Windows
-              href: ../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+              href: ../virtual-machines/extensions/network-watcher-windows.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json
             - name: Linux
-              href: ../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+              href: ../virtual-machines/extensions/network-watcher-linux.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json
         - name: Útválasztási probléma diagnosztizálása
           items:
             - name: Azure PowerShell
@@ -184,7 +184,7 @@
     - name: Egy hely és egy Azure-régió közötti relatív késés meghatározása
       href: view-relative-latencies.md
     - name: Hálózati teljesítmény monitorozása
-      href: ../log-analytics/log-analytics-network-performance-monitor.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+      href: ../azure-monitor/insights/network-performance-monitor.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json
     - name: Erőforrások áthelyezése
       items:
         - name: A Network Watcher erőforrásainak áthelyezése
@@ -214,7 +214,7 @@
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Microsoft Q&A kérdések oldala
-      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-network.html'
+      href: /answers/topics/azure-virtual-network.html
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/network-watcher/'
     - name: Szolgáltatási hírek

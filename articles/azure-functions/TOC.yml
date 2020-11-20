@@ -4,6 +4,8 @@
   items:
     - name: Az Azure Functions ismertetése
       href: functions-overview.md
+    - name: Első lépések
+      href: functions-get-started.md
     - name: Tartós függvények
       href: durable/durable-functions-overview.md
     - name: Kiszolgáló nélküli összehasonlítás
@@ -588,8 +590,6 @@
       href: /azure/architecture/serverless-quest/serverless-overview
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
-    - name: Díjszabás
-      href: 'https://azure.microsoft.com/pricing/details/functions/'
     - name: Díjkalkulátor
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Kvótákra vonatkozó információk

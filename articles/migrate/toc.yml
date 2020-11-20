@@ -90,6 +90,10 @@
           href: migrate-appliance.md
         - name: Replikációs berendezés követelményei
           href: migrate-replication-appliance.md
+    - name: Biztonság
+      items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
     - name: Az Azure Migrate-berendezés architektúrája
       href: migrate-appliance-architecture.md
     - name: A Hyper-V migrálási architektúrája

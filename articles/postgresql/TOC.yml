@@ -106,8 +106,6 @@
       items:
         - name: Azure CLI
           href: sample-scripts-azure-cli.md
-        - name: Az Azure Policy beépített elemei
-          href: ./policy-reference.md
     - name: Alapelvek
       items:
         - name: Kiszolgálók
@@ -147,6 +145,9 @@
             - name: Infrastruktúra kettős titkosítása
               href: concepts-infrastructure-double-encryption.md
               displayName: 'security, infrastructure encryption'
+            - name: Az Azure Policy biztonsági vezérlői
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./security-controls-policy.md
             - name: Biztonsági alapkonfiguráció
               href: security-baseline.md
         - name: Hálózatkezelés
@@ -638,6 +639,9 @@
       href: /rest/api/postgresql
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.dbforpostgresql/allversions
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: További források
   items:
     - name: Fejlessze a készségeit a Microsoft Learnnel
