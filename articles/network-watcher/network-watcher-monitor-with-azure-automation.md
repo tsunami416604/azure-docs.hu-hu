@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 273e9f7ce65cdd15000b1cc4ac7c19cde5992992
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af671996722524de9af1a90ae8dfde27f814c8c2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91396773"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951638"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>VPN-átjárók figyelése Network Watcher hibaelhárítással
 
 A hálózati teljesítmény alapos betekintést biztosít a megbízható szolgáltatások biztosításához az ügyfeleknek. Ezért fontos, hogy gyorsan felderítse a hálózati leállás feltételeit, és javítsa a kiesési feltétel enyhítését. A Azure Automation lehetővé teszi a feladatok programozott módon történő megvalósítását és futtatását a runbookok használatával. A Azure Automation használata tökéletes receptet hoz létre a folyamatos és proaktív hálózati figyelés és riasztások elkészítése során.
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Használati eset
 
 Az alábbi képen egy többrétegű alkalmazás található, amely VPN Gateway és alagút használatával létesített helyszíni kapcsolattal rendelkezik. A VPN Gateway működésének biztosítása kritikus fontosságú az alkalmazások teljesítményében.
 
@@ -51,7 +51,7 @@ A forgatókönyv elindítása előtt a következő előfeltételeknek kell megfe
 
 ### <a name="create-the-runbook"></a>A runbook létrehozása
 
-A példa konfigurálásának első lépése a runbook létrehozása. Ez a példa egy futtató fiókot használ. A futtató fiókokkal kapcsolatos további információkért látogasson el a [Runbookok hitelesítése Azure-beli futtató fiókkal](../automation/automation-create-runas-account.md) című témakörre.
+A példa konfigurálásának első lépése a runbook létrehozása. Ez a példa egy futtató fiókot használ. A futtató fiókokkal kapcsolatos további információkért látogasson el a [Runbookok hitelesítése Azure-beli futtató fiókkal](../automation/manage-runas-account.md) című témakörre.
 
 ### <a name="step-1"></a>1. lépés
 
@@ -67,7 +67,7 @@ Kattintson a **Runbook hozzáadása** elemre a runbook létrehozási folyamatán
 
 ### <a name="step-3"></a>3. lépés
 
-A **gyors létrehozás**területen kattintson az **új runbook létrehozása** elemre a runbook létrehozásához.
+A **gyors létrehozás** területen kattintson az **új runbook létrehozása** elemre a runbook létrehozásához.
 
 ![runbook panel hozzáadása][3]
 
@@ -145,13 +145,13 @@ else
 
 ### <a name="step-6"></a>6. lépés
 
-A runbook mentését követően egy ütemtervet kell csatolni ahhoz, hogy automatizálja a runbook indítását. A folyamat elindításához kattintson az **ütemterv**gombra.
+A runbook mentését követően egy ütemtervet kell csatolni ahhoz, hogy automatizálja a runbook indítását. A folyamat elindításához kattintson az **ütemterv** gombra.
 
 ![6. lépés][6]
 
 ## <a name="link-a-schedule-to-the-runbook"></a>Ütemterv összekapcsolása a runbook
 
-Létre kell hozni egy új ütemtervet. Kattintson az **ütemterv csatolása a runbook**elemre.
+Létre kell hozni egy új ütemtervet. Kattintson az **ütemterv csatolása a runbook** elemre.
 
 ![7. lépés][7]
 
@@ -170,7 +170,7 @@ Az **új ütemterv** panelen töltse ki az ütemtervre vonatkozó információka
 - **Starts (indítás** ) – Ez az érték a dátum, idő és időzóna kombinációja, amely az ütemezett eseményindítók időpontját hozza létre.
 - Ismétlődés – ez az érték határozza meg az ütemezések **ismétlődését** .  Az érvényes értékek **egyszer** vagy **ismétlődőek**.
 - **Ismétlődik minden** – az ütemterv ismétlődési időköze órában, napban, hetekben vagy hónapokban.
-- **Lejárat beállítása** – az érték határozza meg, hogy az ütemterv lejár-e vagy sem. Értéke **Igen** vagy **nem**lehet. Ha az Igen lehetőséget választja, érvényes dátumot és időpontot kell megadni.
+- **Lejárat beállítása** – az érték határozza meg, hogy az ütemterv lejár-e vagy sem. Értéke **Igen** vagy **nem** lehet. Ha az Igen lehetőséget választja, érvényes dátumot és időpontot kell megadni.
 
 > [!NOTE]
 > Ha egy runbook gyakrabban fut le óránként, több ütemtervet kell létrehoznia különböző intervallumokban (azaz 15, 30, 45 perccel az óra után)

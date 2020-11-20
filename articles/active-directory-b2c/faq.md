@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4db3c58da791a5cad5fc3b9c98f245202d8119e2
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 384f178481f7a6ff202d5363ba09c242b1fc366d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92054763"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951791"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: gyakori kérdések (GYIK)
 
@@ -37,7 +37,7 @@ Azure AD B2C nem használható a Microsoft 365 felhasználók hitelesítéséhez
 
 Egy Azure AD-bérlőben a bérlőhöz tartozó felhasználók az űrlap e-mail-címével rendelkeznek `<xyz>@<tenant domain>` . A a `<tenant domain>` bérlő vagy a kezdeti tartomány ellenőrzött tartományainak egyike `<...>.onmicrosoft.com` . Ez a fióktípus munkahelyi vagy iskolai fiók.
 
-Egy Azure ad B2C bérlőben a legtöbb alkalmazás azt szeretné, hogy a felhasználó tetszőleges e-mail-címmel jelentkezzen be (például,,, joe@comcast.net bob@gmail.com sarah@contoso.com vagy jim@live.com ). Ez a fióktípus helyi fiók. A helyi fiókok (például Joe, Bob, Sarah vagy Jim) alapján is támogatjuk az tetszőleges felhasználóneveket. Ezt a két helyi fióktípus közül választhatja ki, ha az Azure Portal Azure AD B2C identitás-szolgáltatóját konfigurálja. A Azure AD B2C-bérlőben válassza az **identitás-szolgáltatók**, majd a **helyi fiók**lehetőséget, és válassza a **username (Felhasználónév**) lehetőséget.
+Egy Azure ad B2C bérlőben a legtöbb alkalmazás azt szeretné, hogy a felhasználó tetszőleges e-mail-címmel jelentkezzen be (például,,, joe@comcast.net bob@gmail.com sarah@contoso.com vagy jim@live.com ). Ez a fióktípus helyi fiók. A helyi fiókok (például Joe, Bob, Sarah vagy Jim) alapján is támogatjuk az tetszőleges felhasználóneveket. Ezt a két helyi fióktípus közül választhatja ki, ha az Azure Portal Azure AD B2C identitás-szolgáltatóját konfigurálja. A Azure AD B2C-bérlőben válassza az **identitás-szolgáltatók**, majd a **helyi fiók** lehetőséget, és válassza a **username (Felhasználónév**) lehetőséget.
 
 Az alkalmazásokhoz tartozó felhasználói fiókok létrehozhatók egy regisztrációs felhasználói folyamaton, a regisztrációs vagy bejelentkezési felhasználói folyamaton, a Microsoft Graph API-n vagy a Azure Portal.
 
@@ -90,7 +90,7 @@ Az áttelepítési eszköz írásához a Microsoft Graph API-t használhatja. A 
 
 ### <a name="what-password-user-flow-is-used-for-local-accounts-in-azure-ad-b2c"></a>Milyen jelszó-felhasználói folyamatot használ a Azure AD B2C helyi fiókjaihoz?
 
-A helyi fiókok Azure AD B2C jelszavának felhasználói folyamata az Azure AD-szabályzaton alapul. Az Azure AD B2C's regisztrálása, regisztrálása, illetve bejelentkezési és jelszó-visszaállítási felhasználói folyamatai az "erős" jelszó erősségét használják, és nem jár le semmilyen jelszó. További részletekért tekintse [meg a jelszóházirend és a korlátozások a Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy)című témakört.
+A helyi fiókok Azure AD B2C jelszavának felhasználói folyamata az Azure AD-szabályzaton alapul. Az Azure AD B2C's regisztrálása, regisztrálása, illetve bejelentkezési és jelszó-visszaállítási felhasználói folyamatai az "erős" jelszó erősségét használják, és nem jár le semmilyen jelszó. További részletekért tekintse [meg a jelszóházirend és a korlátozások a Azure Active Directoryban](../active-directory/authentication/concept-sspr-policy.md)című témakört.
 
 A fiókok zárolásával és jelszavával kapcsolatos információkért lásd: a [fenyegetések kezelése az erőforrásokra és az adatokra Azure Active Directory B2Cban](threat-management.md).
 
@@ -104,7 +104,7 @@ Nem, biztonsági okokból Azure AD B2C lapok nem nyithatók meg iFrame-kereten b
 
 ### <a name="does-azure-ad-b2c-work-with-crm-systems-such-as-microsoft-dynamics"></a>Működik Azure AD B2C olyan CRM-rendszerekkel, mint a Microsoft Dynamics?
 
-Elérhető a Microsoft Dynamics 365 portál integrációja. Lásd: a [Dynamics 365-portál konfigurálása Azure ad B2C használatára a hitelesítéshez](https://docs.microsoft.com/dynamics365/customer-engagement/portals/azure-ad-b2c).
+Elérhető a Microsoft Dynamics 365 portál integrációja. Lásd: a [Dynamics 365-portál konfigurálása Azure ad B2C használatára a hitelesítéshez](/dynamics365/customer-engagement/portals/azure-ad-b2c).
 
 ### <a name="does-azure-ad-b2c-work-with-sharepoint-on-premises-2016-or-earlier"></a>Működik Azure AD B2C a SharePoint helyszíni 2016-es vagy korábbi verziójában?
 
@@ -112,7 +112,7 @@ Azure AD B2C nem a SharePoint külső partner-megosztási forgatókönyvének a 
 
 ### <a name="should-i-use-azure-ad-b2c-or-b2b-to-manage-external-identities"></a>A külső identitások kezeléséhez Azure AD B2C vagy B2B használata szükséges?
 
-Olvassa el a [B2B együttműködés és B2C összevetése az Azure ad-ben](../active-directory/b2b/compare-with-b2c.md) című témakört, ahol többet tudhat meg a külső identitási forgatókönyvek megfelelő jellemzőinek alkalmazásáról.
+Olvassa el a [B2B együttműködés és B2C összevetése az Azure ad-ben](../active-directory/external-identities/compare-with-b2c.md) című témakört, ahol többet tudhat meg a külső identitási forgatókönyvek megfelelő jellemzőinek alkalmazásáról.
 
 ### <a name="what-reporting-and-auditing-features-does-azure-ad-b2c-provide-are-they-the-same-as-in-azure-ad-premium"></a>Milyen jelentéskészítési és naplózási funkciókat biztosít a Azure AD B2C? Ugyanazok, mint a prémium szintű Azure ADban?
 
@@ -134,32 +134,32 @@ Jelenleg nincs. Ez a funkció az ütemterven található. A tartomány ellenőrz
 
 A Azure AD B2C bérlő törléséhez kövesse az alábbi lépéseket.
 
-Használhatja az új, egységesített **Alkalmazásregisztrációk** élményt vagy az örökölt  **alkalmazások (örökölt)** felületét. [További információ az új felületről](https://aka.ms/b2cappregtraining).
+Használhatja az új, egységesített **Alkalmazásregisztrációk** élményt vagy az örökölt  **alkalmazások (örökölt)** felületét. [További információ az új felületről](./app-registrations-training-guide.md).
 
 #### <a name="app-registrations"></a>[Alkalmazásregisztrációk](#tab/app-reg-ga/)
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) *előfizetés-rendszergazdaként*. Ugyanazt a munkahelyi vagy iskolai fiókot használja, vagy ugyanazt a Microsoft-fiók, amelyet az Azure-ra való regisztrációhoz használt.
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
-1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
+1. A bal oldali menüben válassza a **Azure ad B2C** lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C** lehetőséget.
 1. Törölje az összes **felhasználói folyamatot (szabályzatot)** a Azure ad B2C-bérlőben.
-1. Válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza a **minden alkalmazás** lapot.
+1. Válassza a **Alkalmazásregisztrációk** lehetőséget, majd válassza a **minden alkalmazás** lapot.
 1. Az összes regisztrált alkalmazás törlése.
-1. A **B2C-Extensions-app**törlése.
+1. A **B2C-Extensions-app** törlése.
 1. A **Kezelés** menüpontban válassza a **Felhasználók** lehetőséget.
 1. Jelölje ki az egyes felhasználókat, és válassza ki azt az *előfizetés-rendszergazda* felhasználót, amelyhez jelenleg be van jelentkezve. Kattintson a lap alján található **Törlés** elemre, és válassza az **Igen** lehetőséget, ha a rendszer kéri.
 1. A bal oldali menüben válassza a **Azure Active Directory** lehetőséget.
-1. A **kezelés**területen válassza a **felhasználói beállítások**lehetőséget.
-1. A **kezelés**területen válassza a **Tulajdonságok** lehetőséget.
+1. A **kezelés** területen válassza a **felhasználói beállítások** lehetőséget.
+1. A **kezelés** területen válassza a **Tulajdonságok** lehetőséget.
 1. Az **Azure-erőforrásokhoz való hozzáférés kezelése** területen válassza az **Igen**, majd a **Mentés** lehetőséget.
 1. Jelentkezzen ki a Azure Portal, majd jelentkezzen be újra a hozzáférésének frissítéséhez.
 1. A bal oldali menüben válassza a **Azure Active Directory** lehetőséget.
-1. Az **Áttekintés** lapon válassza a **bérlő törlése**lehetőséget. A folyamat befejezéséhez kövesse a képernyőn megjelenő utasításokat.
+1. Az **Áttekintés** lapon válassza a **bérlő törlése** lehetőséget. A folyamat befejezéséhez kövesse a képernyőn megjelenő utasításokat.
 
 #### <a name="applications-legacy"></a>[Alkalmazások (örökölt)](#tab/applications-legacy/)
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) *előfizetés-rendszergazdaként*. Ugyanazt a munkahelyi vagy iskolai fiókot használja, vagy ugyanazt a Microsoft-fiók, amelyet az Azure-ra való regisztrációhoz használt.
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
-1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
+1. A bal oldali menüben válassza a **Azure ad B2C** lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C** lehetőséget.
 1. Törölje a Azure AD B2C bérlő összes **felhasználói folyamatát (szabályzatát)** .
 1. Törölje az Azure AD B2C-bérlőben regisztrált összes **alkalmazást (örökölt)** .
 1. A bal oldali menüben válassza a **Azure Active Directory** lehetőséget.
@@ -167,14 +167,14 @@ Használhatja az új, egységesített **Alkalmazásregisztrációk** élményt v
 1. Jelölje ki az egyes felhasználókat, és válassza ki azt az *előfizetés-rendszergazda* felhasználót, amelyhez jelenleg be van jelentkezve. Kattintson a lap alján található **Törlés** elemre, és válassza az **Igen** lehetőséget, ha a rendszer kéri.
 1. A **Kezelés** területen válassza az **Alkalmazásregisztrációk** lehetőséget.
 1. Válassza **az összes alkalmazás megtekintése** lehetőséget
-1. Válassza ki a **B2C-Extensions-app**nevű alkalmazást, válassza a **Törlés**lehetőséget, majd kattintson az **Igen** gombra, amikor a rendszer kéri.
-1. A **kezelés**területen válassza a **felhasználói beállítások**lehetőséget.
-1. Ha van ilyen, a **LinkedIn-fiók kapcsolatai**területen válassza a **nem**, majd a **Mentés**lehetőséget.
-1. A **kezelés**területen válassza a **Tulajdonságok** lehetőséget.
+1. Válassza ki a **B2C-Extensions-app** nevű alkalmazást, válassza a **Törlés** lehetőséget, majd kattintson az **Igen** gombra, amikor a rendszer kéri.
+1. A **kezelés** területen válassza a **felhasználói beállítások** lehetőséget.
+1. Ha van ilyen, a **LinkedIn-fiók kapcsolatai** területen válassza a **nem**, majd a **Mentés** lehetőséget.
+1. A **kezelés** területen válassza a **Tulajdonságok** lehetőséget.
 1. Az **Azure-erőforrásokhoz való hozzáférés kezelése** területen válassza az **Igen**, majd a **Mentés** lehetőséget.
 1. Jelentkezzen ki a Azure Portal, majd jelentkezzen be újra a hozzáférésének frissítéséhez.
 1. A bal oldali menüben válassza a **Azure Active Directory** lehetőséget.
-1. Az **Áttekintés** lapon válassza a **könyvtár törlése**lehetőséget. A folyamat befejezéséhez kövesse a képernyőn megjelenő utasításokat.
+1. Az **Áttekintés** lapon válassza a **könyvtár törlése** lehetőséget. A folyamat befejezéséhez kövesse a képernyőn megjelenő utasításokat.
 
 * * *
 

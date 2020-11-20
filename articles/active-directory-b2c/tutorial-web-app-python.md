@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.custom: devx-track-python
-ms.openlocfilehash: 6a113b3a3df475853f3690a0e932378bc0e2ab02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4455f21ae7243ab7a15e8d746d6674289f9fdb5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87844626"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953015"
 ---
 # <a name="tutorial-enable-authentication-in-a-python-web-application-with-azure-ad-b2c"></a>Oktatóanyag: hitelesítés engedélyezése egy Python-webalkalmazásban Azure AD B2C
 
@@ -49,16 +49,16 @@ Emellett a helyi fejlesztési környezetben a következőkre lesz szüksége:
 
 Az előfeltételek részeként elvégzett második oktatóanyagban egy webalkalmazást regisztrált Azure AD B2Cban. Ebben az oktatóanyagban a kód mintával való kommunikáció engedélyezéséhez adjon hozzá egy válasz URL-címet (más néven átirányítási URI-t) az alkalmazás regisztrálásához.
 
-Ha frissíteni szeretne egy alkalmazást a Azure AD B2C-bérlőben, használhatja az új egyesített **Alkalmazásregisztrációk** -élményt vagy az örökölt  **alkalmazások (örökölt)** felületét. [További információ az új felületről](https://aka.ms/b2cappregtraining).
+Ha frissíteni szeretne egy alkalmazást a Azure AD B2C-bérlőben, használhatja az új egyesített **Alkalmazásregisztrációk** -élményt vagy az örökölt  **alkalmazások (örökölt)** felületét. [További információ az új felületről](./app-registrations-training-guide.md).
 
 #### <a name="app-registrations"></a>[Alkalmazásregisztrációk](#tab/app-reg-ga/)
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
-1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
-1. Válassza a **Alkalmazásregisztrációk**lehetőséget, válassza a **birtokolt alkalmazások** fület, majd válassza ki a *webapp1* alkalmazást.
-1. A **kezelés**területen válassza a **hitelesítés**lehetőséget.
-1. A **web**alatt válassza az **URI hozzáadása** hivatkozást, majd `http://localhost:5000/getAToken` a szövegmezőbe írja be a szöveget.
+1. A bal oldali menüben válassza a **Azure ad B2C** lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C** lehetőséget.
+1. Válassza a **Alkalmazásregisztrációk** lehetőséget, válassza a **birtokolt alkalmazások** fület, majd válassza ki a *webapp1* alkalmazást.
+1. A **kezelés** területen válassza a **hitelesítés** lehetőséget.
+1. A **web** alatt válassza az **URI hozzáadása** hivatkozást, majd `http://localhost:5000/getAToken` a szövegmezőbe írja be a szöveget.
 1. Kattintson a **Mentés** gombra.
 
 #### <a name="applications-legacy"></a>[Alkalmazások (örökölt)](#tab/applications-legacy/)
@@ -67,7 +67,7 @@ Ha frissíteni szeretne egy alkalmazást a Azure AD B2C-bérlőben, használhatj
 1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
 1. Válassza az **összes szolgáltatás** elemet a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 1. Válassza az **alkalmazások (örökölt)** lehetőséget, majd válassza ki a *webapp1* alkalmazást.
-1. A **Válasz URL-cím**területen adja hozzá a címet `http://localhost:5000/getAToken` .
+1. A **Válasz URL-cím** területen adja hozzá a címet `http://localhost:5000/getAToken` .
 1. Kattintson a **Mentés** gombra.
 * * *
 
@@ -121,7 +121,7 @@ CLIENT_SECRET = "22222222-2222-2222-2222-222222222222" # Placeholder - for use O
 ```
 
 > [!WARNING]
-> A kódrészlet megjegyzései szerint azt javasoljuk, hogy ne **tárolja a titkos kulcsokat** az alkalmazás kódjában. A hardcoded változó *csak kényelmi*célokat szolgál a kód mintában. Érdemes lehet környezeti változót vagy titkos tárolót használni, például Azure Key Vault.
+> A kódrészlet megjegyzései szerint azt javasoljuk, hogy ne **tárolja a titkos kulcsokat** az alkalmazás kódjában. A hardcoded változó *csak kényelmi* célokat szolgál a kód mintában. Érdemes lehet környezeti változót vagy titkos tárolót használni, például Azure Key Vault.
 
 ## <a name="run-the-sample"></a>Minta futtatása
 
@@ -162,17 +162,17 @@ Ez a minta alkalmazás támogatja a regisztrációt, a bejelentkezést és a jel
 
     Érvényes e-mail-címet használjon, és ellenőrizze az ellenőrző kód használatával. Állítson be egy jelszót. Adja meg a kért attribútumokhoz tartozó értékeket.
 
-    :::image type="content" source="media/tutorial-web-app-python/python-flask-web-app-02.png" alt-text="Webböngésző, amelyen a Python-lombik webalkalmazása helyileg fut":::
+    :::image type="content" source="media/tutorial-web-app-python/python-flask-web-app-02.png" alt-text="Azure AD B2C felhasználói folyamat által megjelenített regisztrációs oldal":::
 
 1. A **Létrehozás** gombra kattintva helyi fiókot hozhat létre a Azure ad B2C könyvtárban.
 
-A **Létrehozás**gombra kattintva az alkalmazás megjeleníti a bejelentkezett felhasználó nevét.
+A **Létrehozás** gombra kattintva az alkalmazás megjeleníti a bejelentkezett felhasználó nevét.
 
-:::image type="content" source="media/tutorial-web-app-python/python-flask-web-app-03.png" alt-text="Webböngésző, amelyen a Python-lombik webalkalmazása helyileg fut":::
+:::image type="content" source="media/tutorial-web-app-python/python-flask-web-app-03.png" alt-text="Webböngésző, amely bemutatja a Python-lombik webalkalmazást a bejelentkezett felhasználóval":::
 
 Ha tesztelni szeretné a bejelentkezést, válassza ki a **kijelentkezési** hivatkozást, majd válassza a **Bejelentkezés** lehetőséget, és jelentkezzen be a regisztráció során megadott e-mail-címmel és jelszóval.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy Python-lombik webalkalmazást konfigurált a Azure AD B2C-bérlőben lévő felhasználói folyamattal való együttműködésre a regisztrálási és bejelentkezési képesség biztosításához. A következő lépéseket végezte el:
 

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 708ec35524f25314ca568944b738ba2cdf60d55c
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 79a99d9f0ca117d8f47d56d76399210a72b91bb7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132074"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951655"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>AZONOSÍTÓ jogkivonat-útmutató technikai profiljának definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -34,7 +34,7 @@ A id_token_hint a jogkivonat kiállítója (egy függő entitás vagy egy identi
 
 A id_token_hintnak érvényes JWT-tokennek kell lennie. A következő táblázat felsorolja a kötelező jogcímeket. További jogcímek megadása nem kötelező.
 
-| Név | Jogcím | Példaérték | Description |
+| Name | Jogcím | Példaérték | Leírás |
 | ---- | ----- | ------------- | ----------- |
 | Célközönség | `aud` | `a489fc44-3cc0-4a78-92f6-e413cd853eae` | Azonosítja a jogkivonat kívánt címzettjét. Ez egy tetszőleges karakterlánc, amelyet a jogkivonat kiállítója meghatároz. Azure AD B2C érvényesíti ezt az értéket, és elutasítja a tokent, ha az nem egyezik.  |
 | Kiállító | `iss` |`https://localhost` | Azonosítja a biztonsági jogkivonat szolgáltatást (jogkivonat-kiállítót). Ez a jogkivonat-kiállító által definiált tetszőleges URI. Azure AD B2C érvényesíti ezt az értéket, és elutasítja a tokent, ha az nem egyezik.  |
@@ -84,16 +84,16 @@ A szimmetrikus kulcs használatakor a következő metaadatok érvényesek.
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| kiállító | Yes | Azonosítja a biztonsági jogkivonat szolgáltatást (jogkivonat-kiállítót). Ennek az értéknek meg kell egyeznie a `iss` jogcímek JWT jogkivonat-jogcímen belül. | 
-| IdTokenAudience | Yes | Azonosítja a jogkivonat kívánt címzettjét. Azonosnak kell lennie a `aud` jogcímek JWT token jogcímével. | 
+| kiállító | Igen | Azonosítja a biztonsági jogkivonat szolgáltatást (jogkivonat-kiállítót). Ennek az értéknek meg kell egyeznie a `iss` jogcímek JWT jogkivonat-jogcímen belül. | 
+| IdTokenAudience | Igen | Azonosítja a jogkivonat kívánt címzettjét. Azonosnak kell lennie a `aud` jogcímek JWT token jogcímével. | 
 
 Aszimmetrikus kulcs használata esetén a következő metaadatok érvényesek. 
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| METAADATOK| Yes | Egy olyan URL-cím, amely egy jogkivonat-kiállítói konfigurációs dokumentumra mutat, amely az OpenID Well-known Configuration Endpoint néven is ismert.   |
-| kiállító | No | Azonosítja a biztonsági jogkivonat szolgáltatást (jogkivonat-kiállítót). Ez az érték használható a metaadatokban konfigurált érték felülírására, és meg kell egyeznie a `iss` jogcímek JWT jogkivonat-jogcímen belüli jogcímevel. |  
-| IdTokenAudience | No | Azonosítja a jogkivonat kívánt címzettjét. Azonosnak kell lennie a `aud` jogcímek JWT token jogcímével. |  
+| METAADATOK| Igen | Egy olyan URL-cím, amely egy jogkivonat-kiállítói konfigurációs dokumentumra mutat, amely az OpenID Well-known Configuration Endpoint néven is ismert.   |
+| kiállító | Nem | Azonosítja a biztonsági jogkivonat szolgáltatást (jogkivonat-kiállítót). Ez az érték használható a metaadatokban konfigurált érték felülírására, és meg kell egyeznie a `iss` jogcímek JWT jogkivonat-jogcímen belüli jogcímevel. |  
+| IdTokenAudience | Nem | Azonosítja a jogkivonat kívánt címzettjét. Azonosnak kell lennie a `aud` jogcímek JWT token jogcímével. |  
 
 ## <a name="cryptographic-keys"></a>Titkosítási kulcsok
 
@@ -101,7 +101,7 @@ Szimmetrikus kulcs használatakor a **CryptographicKeys** elem a következő att
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| client_secret | Yes | Az JWT-jogkivonat aláírásának ellenőrzéséhez használt kriptográfiai kulcs.|
+| client_secret | Igen | Az JWT-jogkivonat aláírásának ellenőrzéséhez használt kriptográfiai kulcs.|
 
 
 ## <a name="how-to-guide"></a>Útmutató
@@ -129,14 +129,14 @@ Ugyanazt a kulcsot kell létrehoznia, amelyet a jogkivonat-kiállító használ 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
-1. A Azure Portal keresse meg és válassza a **Azure ad B2C**lehetőséget.
-1. Az Áttekintés lap **szabályzatok**területén válassza az **identitási élmény keretrendszere**elemet.
+1. A Azure Portal keresse meg és válassza a **Azure ad B2C** lehetőséget.
+1. Az Áttekintés lap **szabályzatok** területén válassza az **identitási élmény keretrendszere** elemet.
 1. **Házirend-kulcsok** kiválasztása 
-1. Válassza a **manuális**lehetőséget.
-1. A **név mezőben**használja a következőt: `IdTokenHintKey` .  
+1. Válassza a **manuális** lehetőséget.
+1. A **név mezőben** használja a következőt: `IdTokenHintKey` .  
    Lehet, hogy az előtag `B2C_1A_` automatikusan hozzá lesz adva.
 1. A **titok** mezőben adja meg a korábban létrehozott bejelentkezési kulcsot.
-1. A **kulcshasználat**esetében használja a **titkosítást**.
+1. A **kulcshasználat** esetében használja a **titkosítást**.
 1. Kattintson a **Létrehozás** gombra.
 1. Erősítse meg, hogy létrehozta a kulcsot `B2C_1A_IdTokenHintKey` .
 
@@ -189,7 +189,7 @@ Tekintse meg a [TokenMetadataController.cs](https://github.com/azure-ad-b2c/id-t
 
 #### <a name="step-1-prepare-a-self-signed-certificate"></a>1. lépés Önaláírt tanúsítvány előkészítése
 
-Ha még nem rendelkezik tanúsítvánnyal, akkor ehhez az útmutatóhoz önaláírt tanúsítványt is használhat. Windows rendszeren a PowerShell [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) parancsmag segítségével hozhatja elő a tanúsítványt.
+Ha még nem rendelkezik tanúsítvánnyal, akkor ehhez az útmutatóhoz önaláírt tanúsítványt is használhat. Windows rendszeren a PowerShell [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) parancsmag segítségével hozhatja elő a tanúsítványt.
 
 Futtassa ezt a PowerShell-parancsot egy önaláírt tanúsítvány létrehozásához. Módosítsa az `-Subject` argumentumot megfelelően az alkalmazáshoz, és Azure ad B2C a bérlő nevét. A dátumot úgy is beállíthatja `-NotAfter` , hogy a tanúsítványhoz eltérő lejáratot határozzon meg.
 
@@ -249,7 +249,7 @@ A szimmetrikus és az aszimmetrikus megközelítés esetében a `id_token_hint` 
     ```xml
     <OrchestrationStep Order="1" Type="GetClaims" CpimIssuerTechnicalProfileReferenceId="IdTokenHint_ExtractClaims" />
     ``` 
-1. A függő entitás házirendjében ismételje meg ugyanazokat a bemeneti jogcímeket, amelyeket a IdTokenHint_ExtractClaims technikai profilban konfigurált. Példa:
+1. A függő entitás házirendjében ismételje meg ugyanazokat a bemeneti jogcímeket, amelyeket a IdTokenHint_ExtractClaims technikai profilban konfigurált. Például:
     ```xml
    <RelyingParty>
      <DefaultUserJourney ReferenceId="SignUp" />

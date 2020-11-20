@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/31/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5528607b0559dad246262748c83c9d359ee2144e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c362ce256259606c85af0a7e13ccde1715bb012b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85385739"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953933"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>OWIN-alapú webes API migrálása b2clogin.com
 
@@ -42,7 +42,7 @@ Először le kell kérnie a jogkivonat kiállítói végpontjának URI azonosít
 Először válassza ki az egyik meglévő felhasználói folyamatot:
 
 1. Navigáljon a Azure AD B2C-bérlőhöz a [Azure Portal](https://portal.azure.com)
-1. A **házirendek**területen válassza a **felhasználói folyamatok (szabályzatok) lehetőséget.**
+1. A **házirendek** területen válassza a **felhasználói folyamatok (szabályzatok) lehetőséget.**
 1. Válasszon ki egy meglévő szabályzatot, például *B2C_1_signupsignin1*, majd válassza a **felhasználói folyamat futtatása** lehetőséget.
 1. A lap tetején található **felhasználói folyamat futtatása** szakaszban válassza ki a hiperhivatkozást, hogy navigáljon az OpenID Connect Discovery-végponthoz az adott felhasználói folyamathoz.
 
@@ -88,7 +88,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 Ebben a szakaszban a kód frissítésével adja meg, hogy a jogkivonat-kiállítói végpontok is érvényesek-e.
 
 1. A **B2C-WebAPI-DotNet. SLN** megoldás megnyitása a Visual Studióban
-1. A **TaskService** projektben nyissa meg a *TaskService \\ App_Start * * \\ Startup.auth.cs** * fájlt a szerkesztőben
+1. A **TaskService** projektben nyissa meg a * TaskService \\ App_Start \\ **Startup.auth.cs** _ fájlt a szerkesztőben
 1. Adja hozzá a következő `using` direktívát a fájl elejéhez:
 
     `using System.Collections.Generic;`
@@ -107,7 +107,7 @@ Ebben a szakaszban a kód frissítésével adja meg, hogy a jogkivonat-kiállít
     };
     ```
 
-`TokenValidationParameters` a MSAL.NET által biztosított, és a OWIN middleware a *Startup.auth.cs*-ben a kód következő szakaszában használja fel. Ha több érvényes kiállító van megadva, a OWIN-alkalmazás folyamata arról tájékoztat, hogy mindkét jogkivonat-végpont érvényes kiállító.
+`TokenValidationParameters` a a MSAL.NET által biztosított, és a OWIN-alapú middleware a kód következő szakaszában található, _Startup. auth. cs *. Ha több érvényes kiállító van megadva, a OWIN-alkalmazás folyamata arról tájékoztat, hogy mindkét jogkivonat-végpont érvényes kiállító.
 
 ```csharp
 app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
@@ -123,7 +123,7 @@ Ahogy azt korábban említettük, a többi OWIN-tár általában hasonló lehet�
 
 A webes API mostantól támogatja mindkét URI-t, most frissítenie kell a webalkalmazást, hogy lekérje a jogkivonatokat a b2clogin.com-végpontról.
 
-Beállíthatja például a minta-webalkalmazást úgy, hogy az új végpontot használja a `ida:AadInstance` **TaskWebApp** projekt *TaskWebApp \\ * * Web.config** * fájljában lévő érték módosításával.
+Beállíthatja például a minta webalkalmazást úgy, hogy az új végpontot használja az `ida:AadInstance` _ TaskWebApp * * projekt *TaskWebApp \\ **Web.config** _ fájljában* lévő érték módosításával.
 
 Módosítsa a `ida:AadInstance` TaskWebApp *Web.config* lévő értéket úgy, hogy az a helyett a következőre hivatkozik `{your-b2c-tenant-name}.b2clogin.com` `login.microsoftonline.com` .
 
@@ -143,7 +143,7 @@ Ezután (cserélje le a `{your-b2c-tenant}` B2C-bérlő nevét):
 
 Ha a végponti karakterláncok a webalkalmazás végrehajtása során jönnek létre, a rendszer a b2clogin.com-alapú végpontokat használja, amikor jogkivonatokat kér.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk bemutatja a Microsoft OWIN middleware (Katana) megvalósítására szolgáló webes API konfigurálásának módszerét, hogy több kiállítói végponttól fogadja el a jogkivonatokat. Észreveheti, hogy több más karakterlánc is van a TaskService és a TaskWebApp-projektek *Web.Config* fájljaiban, amelyeket módosítani kell, ha a saját bérlője számára szeretné felépíteni és futtatni ezeket a projekteket. Szívesen módosítja a projekteket megfelelően, ha szeretné megtekinteni őket működés közben, a teljes körű megvalósítás azonban a jelen cikk hatókörén kívül esik.
 
@@ -154,6 +154,6 @@ További információ a Azure AD B2C által kibocsátott biztonsági jogkivonato
 [sample-repo]: https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi
 
 <!-- LINKS - Internal -->
-[katana]: https://docs.microsoft.com/aspnet/aspnet/overview/owin-and-katana/
-[validissuers]: https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters.validissuers
-[tokenvalidationparameters]: https://docs.microsoft.com/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters
+[katana]: /aspnet/aspnet/overview/owin-and-katana/
+[validissuers]: /dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters.validissuers
+[tokenvalidationparameters]: /dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters

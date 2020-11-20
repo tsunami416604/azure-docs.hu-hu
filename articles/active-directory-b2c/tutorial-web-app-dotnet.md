@@ -11,12 +11,12 @@ ms.custom: devx-track-csharp, mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 5957ccb7bd7ff7e7acc0ed76899850bbca09ad6c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c3c63b6116e02e8a742b69e90c11e182d72ab2e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91664800"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953030"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Oktatóanyag: hitelesítés engedélyezése webalkalmazásokban Azure Active Directory B2C használatával
 
@@ -45,15 +45,15 @@ Az előfeltételek részeként elvégzett oktatóanyagban egy webalkalmazást re
 
 ### <a name="add-a-redirect-uri-reply-url"></a>Átirányítási URI hozzáadása (válasz URL-címe)
 
-Ha frissíteni szeretne egy alkalmazást a Azure AD B2C-bérlőben, használhatja az új egyesített **Alkalmazásregisztrációk** -élményt vagy az örökölt  **alkalmazások (örökölt)** felületét. [További információ az új felületről](https://aka.ms/b2cappregtraining).
+Ha frissíteni szeretne egy alkalmazást a Azure AD B2C-bérlőben, használhatja az új egyesített **Alkalmazásregisztrációk** -élményt vagy az örökölt  **alkalmazások (örökölt)** felületét. [További információ az új felületről](./app-registrations-training-guide.md).
 
 #### <a name="app-registrations"></a>[Alkalmazásregisztrációk](#tab/app-reg-ga/)
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
-1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
-1. Válassza a **Alkalmazásregisztrációk**lehetőséget, válassza a **birtokolt alkalmazások** fület, majd válassza ki a *webapp1* alkalmazást.
-1. A **web**területen válassza az **URI hozzáadása** hivatkozást, írja be a nevet `https://localhost:44316` , majd kattintson a **Mentés**gombra.
+1. A bal oldali menüben válassza a **Azure ad B2C** lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C** lehetőséget.
+1. Válassza a **Alkalmazásregisztrációk** lehetőséget, válassza a **birtokolt alkalmazások** fület, majd válassza ki a *webapp1* alkalmazást.
+1. A **web** területen válassza az **URI hozzáadása** hivatkozást, írja be a nevet `https://localhost:44316` , majd kattintson a **Mentés** gombra.
 1. Válassza az **Áttekintés** lehetőséget.
 1. Jegyezze fel az **alkalmazás (ügyfél) azonosítóját** , hogy a webalkalmazás konfigurálásakor egy későbbi lépésben használhassa.
 
@@ -63,7 +63,7 @@ Ha frissíteni szeretne egy alkalmazást a Azure AD B2C-bérlőben, használhatj
 1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
 1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 1. Válassza az **alkalmazások (örökölt)** lehetőséget, majd válassza ki a *webapp1* alkalmazást.
-1. A **Válasz URL-cím**területen adja hozzá a címet `https://localhost:44316` .
+1. A **Válasz URL-cím** területen adja hozzá a címet `https://localhost:44316` .
 1. Kattintson a **Mentés** gombra.
 1. A Tulajdonságok lapon jegyezze fel az alkalmazás AZONOSÍTÓját a webalkalmazás konfigurálásakor egy későbbi lépésben való használatra.
 
@@ -77,7 +77,7 @@ Ezután hozzon létre egy ügyfél-titkot a regisztrált webalkalmazáshoz. A we
 
 ## <a name="configure-the-sample"></a>A minta konfigurálása
 
-Ebben az oktatóanyagban egy olyan mintát konfigurál, amelyet letöltheti a GitHubról. A minta a ASP.NET használatával egyszerű feladatlistát biztosít. A minta a [Microsoft OWIN köztes összetevőket](https://docs.microsoft.com/aspnet/aspnet/overview/owin-and-katana/)használja. [Töltse le a zip-fájlt](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip), vagy a klónozza a GitHubon található mintát. A mintafájlt egy olyan mappába kell kibontani, ahol a teljes elérési út rövidebb, mint 260 karakter.
+Ebben az oktatóanyagban egy olyan mintát konfigurál, amelyet letöltheti a GitHubról. A minta a ASP.NET használatával egyszerű feladatlistát biztosít. A minta a [Microsoft OWIN köztes összetevőket](/aspnet/aspnet/overview/owin-and-katana/)használja. [Töltse le a zip-fájlt](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip), vagy a klónozza a GitHubon található mintát. A mintafájlt egy olyan mappába kell kibontani, ahol a teljes elérési út rövidebb, mint 260 karakter.
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
@@ -95,7 +95,7 @@ Frissítse a Web.config fájl beállításait a felhasználói folyamattal való
 1. Nyissa meg a **B2C-WebAPI-DotNet** megoldást a Visual Studióban.
 1. A **TaskWebApp** projektben nyissa meg a **Web.config** fájlt.
     1. Frissítse a és a értékét a `ida:Tenant` `ida:AadInstance` létrehozott Azure ad B2C bérlő nevével. Például cserélje le a következőt: `fabrikamb2c` `contoso` .
-    1. Cserélje le a értéket a `ida:TenantId` címtár-azonosítóra, amelyet az Azure B2C-bérlő tulajdonságainál talál (a Azure Portal a **Azure Active Directory**  >  **Tulajdonságok**  >  **könyvtár azonosítója**alatt).
+    1. Cserélje le a értéket a `ida:TenantId` címtár-azonosítóra, amelyet az Azure B2C-bérlő tulajdonságainál talál (a Azure Portal a **Azure Active Directory**  >  **Tulajdonságok**  >  **könyvtár azonosítója** alatt).
     1. Cserélje le a értékét `ida:ClientId` a rögzített alkalmazás-azonosítóra.
     1. Cserélje le az `ida:ClientSecret` értékét a feljegyzett kulcsra. Ha az ügyfél titkos kulcsa bármely előre definiált XML-entitást tartalmaz, például kisebb, mint ( `<` ), nagyobb, mint (), vagy a `>` `&` Double quote ( `"` ), akkor el kell kerülnie ezeket a karaktereket az ügyfél titkos kódjának a Web.configba való hozzáadása előtt.
     1. Cserélje le a értékét a értékre `ida:SignUpSignInPolicyId` `b2c_1_signupsignin1` .
@@ -104,13 +104,13 @@ Frissítse a Web.config fájl beállításait a felhasználói folyamattal való
 
 ## <a name="run-the-sample"></a>Minta futtatása
 
-1. Megoldáskezelő kattintson a jobb gombbal a **TaskWebApp** projektre, majd kattintson a **beállítás indítási projektként**lehetőségre.
-1. Nyomja le az **F5**billentyűt. Az alapértelmezett böngésző elindítja a helyi webhely címét: `https://localhost:44316/`.
+1. Megoldáskezelő kattintson a jobb gombbal a **TaskWebApp** projektre, majd kattintson a **beállítás indítási projektként** lehetőségre.
+1. Nyomja le az **F5** billentyűt. Az alapértelmezett böngésző elindítja a helyi webhely címét: `https://localhost:44316/`.
 
 ### <a name="sign-up-using-an-email-address"></a>Regisztrálás e-mail-címmel
 
 1. Válassza a **regisztráció/bejelentkezés** lehetőséget az alkalmazás felhasználójának való regisztrációhoz. A rendszer a **b2c_1_signupsignin1** felhasználói folyamatot használja.
-1. Az Azure AD B2C megjelenít egy bejelentkezési oldalt egy regisztrációs hivatkozással. Mivel még nem rendelkezik fiókkal, válassza a **regisztráció most**lehetőséget. A regisztrációs munkafolyamat megjelenít egy lapot, amely a felhasználó azonosító adatait gyűjti be és ellenőrzi az e-mail-cím alapján. A regisztrációs munkafolyamat a felhasználó jelszavát és a felhasználói folyamatban definiált kért attribútumokat is gyűjti.
+1. Az Azure AD B2C megjelenít egy bejelentkezési oldalt egy regisztrációs hivatkozással. Mivel még nem rendelkezik fiókkal, válassza a **regisztráció most** lehetőséget. A regisztrációs munkafolyamat megjelenít egy lapot, amely a felhasználó azonosító adatait gyűjti be és ellenőrzi az e-mail-cím alapján. A regisztrációs munkafolyamat a felhasználó jelszavát és a felhasználói folyamatban definiált kért attribútumokat is gyűjti.
 1. Érvényes e-mail-címet használjon, és ellenőrizze az ellenőrző kód használatával. Állítson be egy jelszót. Adja meg a kért attribútumokhoz tartozó értékeket.
 
     ![A bejelentkezési vagy bejelentkezési munkafolyamat részeként megjelenő regisztrációs oldal](./media/tutorial-web-app-dotnet/sign-up-workflow.PNG)

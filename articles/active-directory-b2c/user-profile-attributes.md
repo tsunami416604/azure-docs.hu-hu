@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 3/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1e6965e15b7482935148ae7fcd2edf0f3cc722b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98c33d4b9e749e804f70d9dccb7198884c80dfe7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83738557"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952702"
 ---
 # <a name="user-profile-attributes"></a>Felhasználói profilattribútumok
 
@@ -26,7 +26,7 @@ A Azure Active Directory (Azure AD) B2C címtár felhasználói profilja egy be�
 
 A külső rendszerekkel is integrálható. Használhatja például a Azure AD B2Ct a hitelesítéshez, de a delegálást egy külső ügyfélkapcsolat-kezelési (CRM) vagy ügyfél-törzsvásárlói adatbázisra, amely az ügyféladatok mérvadó forrása. További információt a [távoli profil](https://github.com/azure-ad-b2c/samples/tree/master/policies/remote-profile) megoldásában talál.
 
-Az alábbi táblázat az Azure AD B2C Directory felhasználói profil által támogatott [felhasználói erőforrástípus](https://docs.microsoft.com/graph/api/resources/user) attribútumokat sorolja fel. A következő információkat adja meg az egyes attribútumokról:
+Az alábbi táblázat az Azure AD B2C Directory felhasználói profil által támogatott [felhasználói erőforrástípus](/graph/api/resources/user) attribútumokat sorolja fel. A következő információkat adja meg az egyes attribútumokról:
 
 - Az Azure AD B2C által használt attribútum neve (amelyet a Microsoft Graph neve zárójelben, ha más)
 - Attribútum adattípusa
@@ -46,7 +46,7 @@ Az alábbi táblázat az Azure AD B2C Directory felhasználói profil által tá
 |ország         |Sztring|Az ország/régió, amelyben a felhasználó található. Példa: "US" vagy "UK". Maximális hosszúság 128.|Igen|Igen|Megőrzött, kimenet|
 |createdDateTime|DateTime|A felhasználói objektum létrehozásának dátuma. Csak olvasható.|Nem|Nem|Megőrzött, kimenet|
 |creationType    |Sztring|Ha a felhasználói fiók helyi fiókként lett létrehozva egy Azure Active Directory B2C bérlő számára, akkor az érték a LocalAccount vagy a nameCoexistence. Csak olvasható.|Nem|Nem|Megőrzött, kimenet|
-|dateOfBirth     |Dátum|születési dátum.|Nem|Nem|Megőrzött, kimenet|
+|dateOfBirth     |Date|születési dátum.|Nem|Nem|Megőrzött, kimenet|
 |Részleg      |Sztring|Annak a részlegnek a neve, amelyben a felhasználó működik. Maximális hosszúság 64.|Igen|Nem|Megőrzött, kimenet|
 |displayName     |Sztring|A felhasználó megjelenítendő neve. Maximális hosszúság 256.|Igen|Igen|Megőrzött, kimenet|
 |<sup>1</sup> . érték facsimiletelephonenumber|Sztring|A felhasználó üzleti faxhoz tartozó telefonszám.|Igen|Nem|Megőrzött, kimenet|
@@ -94,7 +94,7 @@ A következő esetekben gyakran létre kell hoznia a saját attribútumait:
 - Az identitás-szolgáltató egyedi felhasználói azonosítóval rendelkezik, például **uniqueUserGUID** , amelyet menteni kell.
 - Egy egyéni felhasználói útra van szükség egy felhasználó állapotára, például a **migrationStatus**.
 
-Azure AD B2C kiterjeszti az egyes felhasználói fiókokban tárolt attribútumok készletét. A bővítmény attribútumai [kiterjesztik](https://docs.microsoft.com/graph/extensibility-overview#schema-extensions) a címtárban lévő felhasználói objektumok sémáját. A bővítmény attribútumai csak egy alkalmazás-objektumon regisztrálhatók, annak ellenére, hogy egy felhasználóhoz tartozó adatmennyiséget tartalmaznak. A bővítmény attribútum a B2C-Extensions-app nevű alkalmazáshoz van csatolva. Ne módosítsa ezt az alkalmazást, mert az Azure AD B2C használja a felhasználói adattároláshoz. Az alkalmazás az Azure Active Directory Alkalmazásregisztrációk alatt található.
+Azure AD B2C kiterjeszti az egyes felhasználói fiókokban tárolt attribútumok készletét. A bővítmény attribútumai [kiterjesztik](/graph/extensibility-overview#schema-extensions) a címtárban lévő felhasználói objektumok sémáját. A bővítmény attribútumai csak egy alkalmazás-objektumon regisztrálhatók, annak ellenére, hogy egy felhasználóhoz tartozó adatmennyiséget tartalmaznak. A bővítmény attribútum a B2C-Extensions-app nevű alkalmazáshoz van csatolva. Ne módosítsa ezt az alkalmazást, mert az Azure AD B2C használja a felhasználói adattároláshoz. Az alkalmazás az Azure Active Directory Alkalmazásregisztrációk alatt található.
 
 > [!NOTE]
 > - Akár 100-es kiterjesztési attribútum is írható bármely felhasználói fiókba.
@@ -111,8 +111,8 @@ A következő adattípusok támogatottak, amikor definiál egy tulajdonságot a 
 |Egész szám    | 32 bites érték.               |
 |Sztring     | 256 karakter maximális száma.     |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a bővítmény attribútumairól:
-- [Sémakiterjesztések](https://docs.microsoft.com/graph/extensibility-overview#schema-extensions)
+- [Sémakiterjesztések](/graph/extensibility-overview#schema-extensions)
 - [Egyéni attribútumok definiálása felhasználói folyamattal](user-flow-custom-attributes.md)
 - [Egyéni attribútumok definiálása egyéni házirenddel](custom-policy-custom-attributes.md)

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 4f6b09061a4aa98824e176af55efcedfab3df48c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b80b1a4b3f9bcde6cf01b0e0e59425c6783bd5d9
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051917"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953763"
 ---
 # <a name="tutorial-for-configuring-hypr-with-azure-active-directory-b2c"></a>Oktatóanyag a HYPR konfigurálásához a Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ A kezdéshez a következőkre lesz szüksége:
 
 - Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
 
-- [Azure ad B2C bérlő](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant). A bérlő az Azure-előfizetéshez van csatolva.
+- [Azure ad B2C bérlő](./tutorial-create-tenant.md). A bérlő az Azure-előfizetéshez van csatolva.
 
 - Egy HYPR Felhőbeli bérlő, ingyenes [próbaverziós fiók](https://get.hypr.com/free-trial)beszerzése.
 
@@ -62,7 +62,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 1. Nyissa meg a házirend mappában található [Azure ad B2C HYPR szabályzatot](https://github.com/HYPR-Corp-Public/Azure-AD-B2C-HYPR-Sample/tree/master/policy) .
 
-2. A [LocalAccounts Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) letöltéséhez kövesse ezt a [dokumentumot](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack)
+2. A [LocalAccounts Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) letöltéséhez kövesse ezt a [dokumentumot](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack)
 
 3. Konfigurálja a Azure AD B2C bérlő házirendjét.
 
@@ -71,7 +71,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 ## <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 
-1. Nyissa meg a Azure AD B2C bérlőt, és a házirendek területen válassza az **identitási élmény keretrendszere**elemet.
+1. Nyissa meg a Azure AD B2C bérlőt, és a házirendek területen válassza az **identitási élmény keretrendszere** elemet.
 
 2. Válassza ki a korábban létrehozott **SignUpSignIn**.
 
@@ -81,7 +81,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
    b. **Válasz URL-címe**: válassza ki az **átirányítási URL-címet**
 
-   c. Válassza a **felhasználói folyamat futtatása**lehetőséget.
+   c. Válassza a **felhasználói folyamat futtatása** lehetőséget.
 
 4. Ugorjon a regisztrációs folyamatra, és hozzon létre egy fiókot
 
@@ -91,6 +91,6 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 További információkért tekintse át a következő cikkeket:
 
-- [Egyéni szabályzatok az Azure AD B2C-ben](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Egyéni szabályzatok az Azure AD B2C-ben](./custom-policy-overview.md)
 
-- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](./custom-policy-get-started.md?tabs=applications)

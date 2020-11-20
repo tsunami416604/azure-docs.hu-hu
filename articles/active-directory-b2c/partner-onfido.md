@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 5d0835114844069d4ebdc992b872f9be1f0b3ca6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48fc8533ee1fd206e69e16d4c03e4b4acf047135
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259220"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953686"
 ---
 # <a name="tutorial-for-configuring-onfido-with-azure-active-directory-b2c"></a>Oktatóanyag a Onfido konfigurálásához a Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ A kezdéshez a következőkre lesz szüksége:
 
 - Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
 
-- [Egy Azure ad B2C bérlő](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) , amely az Azure-előfizetéshez van csatolva.
+- [Egy Azure ad B2C bérlő](./tutorial-create-tenant.md) , amely az Azure-előfizetéshez van csatolva.
 
 - Egy Onfido [próbaverziós fiók](https://onfido.com/signup/).
 
@@ -74,7 +74,7 @@ További információ a Onfido: [ONFIDO API-dokumentáció](https://documentatio
 
 ### <a name="part-1---deploy-the-api"></a>1. rész – az API üzembe helyezése
 
-- A megadott [API-kód](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/API/Onfido.Api) üzembe helyezése egy Azure-szolgáltatásban. A kód a Visual studióból is közzétehető, ezeket az [utasításokat](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)követve.
+- A megadott [API-kód](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/API/Onfido.Api) üzembe helyezése egy Azure-szolgáltatásban. A kód a Visual studióból is közzétehető, ezeket az [utasításokat](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)követve.
 - CORS beállítása, **engedélyezett forrás** hozzáadása https://{your_tenant_name}. b2clogin. com
 
 >[!NOTE]
@@ -82,9 +82,9 @@ További információ a Onfido: [ONFIDO API-dokumentáció](https://documentatio
 
 #### <a name="adding-sensitive-configuration-settings"></a>Bizalmas konfigurációs beállítások hozzáadása
 
-Az Alkalmazásbeállítások konfigurálhatók az [Azure app Service-ben](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings). Az App Service lehetővé teszi a beállítások biztonságos konfigurálását anélkül, hogy azokat egy adattárba kellene bejelentkeznie. A REST API-nak a következő beállításokra van szüksége:
+Az Alkalmazásbeállítások konfigurálhatók az [Azure app Service-ben](../app-service/configure-common.md#configure-app-settings). Az App Service lehetővé teszi a beállítások biztonságos konfigurálását anélkül, hogy azokat egy adattárba kellene bejelentkeznie. A REST API-nak a következő beállításokra van szüksége:
 
-| Alkalmazásbeállítás neve | Forrás | Jegyzetek |
+| Alkalmazásbeállítás neve | Forrás | Megjegyzések |
 |:-------------------------|:-------|:-------|
 |OnfidoSettings: aad| Onfido-fiók |
 
@@ -92,7 +92,7 @@ Az Alkalmazásbeállítások konfigurálhatók az [Azure app Service-ben](https:
 
 #### <a name="configure-your-storage-location"></a>A tárolási hely konfigurálása
 
-1. [Blob Storage-tároló beállítása a Storage-fiókban](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)
+1. [Blob Storage-tároló beállítása a Storage-fiókban](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
 
 2. Tárolja a felhasználói felületi fájlokat a [felhasználói felület mappájából](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/UI) a blob-tárolóba.
 
@@ -100,7 +100,7 @@ Az Alkalmazásbeállítások konfigurálhatók az [Azure app Service-ben](https:
 
    a. Lépjen a **Beállítások**  > **engedélyezett forráshoz**, majd írja be a következőt: `https://{your_tenant_name}.b2clogin.com` . Cserélje le a-bérlő nevét a Azure AD B2C bérlő nevére. Például: https://fabrikam.b2clogin.com . A bérlő nevének megadásakor használja az összes kisbetűt.
 
-   b. Az **engedélyezett módszereknél**válassza a és a lehetőséget `GET` `PUT` .
+   b. Az **engedélyezett módszereknél** válassza a és a lehetőséget `GET` `PUT` .
 
    c. Válassza a **Mentés** lehetőséget.
 
@@ -110,7 +110,7 @@ Az Alkalmazásbeállítások konfigurálhatók az [Azure app Service-ben](https:
 
 2. Nyissa meg az egyes HTML-fájlokat.
 
-3. Keresse meg és cserélje le {a-UI-blob-Container-URL}-t annak a URL-címével, ahol a felhasználói felület **ocean_blue**, a **dist**és az **assets** mappák találhatók
+3. Keresse meg és cserélje le {a-UI-blob-Container-URL}-t annak a URL-címével, ahol a felhasználói felület **ocean_blue**, a **dist** és az **assets** mappák találhatók
 
 4. Keresse meg és cserélje le a {Your-Intermediate-API-URL} címet a köztes API app Service URL-címére.
 
@@ -118,7 +118,7 @@ Az Alkalmazásbeállítások konfigurálhatók az [Azure app Service-ben](https:
 
 1. Tárolja a felhasználói felületi fájlokat a felhasználói felület mappájából a blob-tárolóba.
 
-2. A fájlok és a hozzáférési engedélyek kezeléséhez használja a [Azure Storage Explorer](https://docs.microsoft.com/azure/virtual-machines/windows/disks-use-storage-explorer-managed-disks) .
+2. A fájlok és a hozzáférési engedélyek kezeléséhez használja a [Azure Storage Explorer](../virtual-machines/disks-use-storage-explorer-managed-disks.md) .
 
 ### <a name="part-3---configure-azure-ad-b2c"></a>3. rész – Azure AD B2C konfigurálása
 
@@ -135,21 +135,21 @@ A megadott [Egyéni szabályzatokban](https://github.com/azure-ad-b2c/partner-in
 | {your_tenant_extensions_appid}                         | A bérlő tárolási alkalmazásának alkalmazás-azonosítója                                      | 01234567-89ab-cdef-0123-456789abcdef         |
 | {your_tenant_extensions_app_objectid}                  | A bérlő Storage-alkalmazásának objektum-azonosítója                                   | 01234567-89ab-cdef-0123-456789abcdef         |
 | {your_app_insights_instrumentation_key} | Az alkalmazás-bepillantási példány kialakítási kulcsa *| 01234567-89ab-cdef-0123-456789abcdef|
-|{your_ui_file_base_url}| Annak a helynek az URL-címe, ahol a felhasználói felület **ocean_blue**, a **dist**és az **eszközök** mappája található | https://yourstorage.blob.core.windows.net/UI/|
+|{your_ui_file_base_url}| Annak a helynek az URL-címe, ahol a felhasználói felület **ocean_blue**, a **dist** és az **eszközök** mappája található | https://yourstorage.blob.core.windows.net/UI/|
 | {your_app_service_URL}                                 | A beállított app Service URL-címe                                             | `https://yourapp.azurewebsites.net`          |
 
 * Az alkalmazás-felismerések egy másik bérlőn is lehetnek. Ez a lépés nem kötelező. Ha nincs rá szükség, távolítsa el a megfelelő TechnicalProfiles és OrchestrationSteps.
 
 ### <a name="part-4---configure-the-azure-ad-b2c-policy"></a>4. rész – a Azure AD B2C házirend konfigurálása
 
-Tekintse át ezt a [dokumentumot](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack) , amely útmutatást nyújt a Azure ad B2C bérlő beállításához és a házirendek konfigurálásához.
+Tekintse át ezt a [dokumentumot](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack) , amely útmutatást nyújt a Azure ad B2C bérlő beállításához és a házirendek konfigurálásához.
 
 >[!NOTE]
 > Ajánlott eljárásként Azt javasoljuk, hogy az ügyfelek az attribútumok gyűjteménye lapon vegyenek fel beleegyező értesítéseket. Értesítse a felhasználókat arról, hogy az adatok a harmadik féltől származó szolgáltatásoknak személyazonosság-ellenőrzés céljából lesznek elküldve.
 
 ## <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 
-1. Nyissa meg a Azure AD B2C bérlőt, és a házirendek területen válassza az **identitási élmény keretrendszere**elemet.
+1. Nyissa meg a Azure AD B2C bérlőt, és a házirendek területen válassza az **identitási élmény keretrendszere** elemet.
 
 2. Válassza ki a korábban létrehozott **SignUpSignIn**.
 
@@ -159,7 +159,7 @@ Tekintse át ezt a [dokumentumot](https://docs.microsoft.com/azure/active-direct
 
    b. **Válasz URL-címe**: válassza ki az **átirányítási URL-címet**
 
-   c. Válassza a **felhasználói folyamat futtatása**lehetőséget.
+   c. Válassza a **felhasználói folyamat futtatása** lehetőséget.
 
 4. Ugorjon a regisztrációs folyamatra, és hozzon létre egy fiókot
 
@@ -169,6 +169,6 @@ Tekintse át ezt a [dokumentumot](https://docs.microsoft.com/azure/active-direct
 
 További információkért tekintse át a következő cikkeket:
 
-- [Egyéni szabályzatok az Azure AD B2C-ben](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Egyéni szabályzatok az Azure AD B2C-ben](./custom-policy-overview.md)
 
-- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](./custom-policy-get-started.md?tabs=applications)

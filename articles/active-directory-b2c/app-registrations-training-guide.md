@@ -11,12 +11,12 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3e1d76c5ef1f003fe9e01b866343ef7de7ab4166
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 16b5814835ec5cad6b66087fee37676155196339
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92214923"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952080"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>A Azure Active Directory B2C új Alkalmazásregisztrációk felülete
 
@@ -91,14 +91,14 @@ Az **iOS-, MacOS** -és **Android** -platformok nyilvános ügyfél típusúak. 
 
 ## <a name="application-certificates--secrets"></a>Alkalmazás-tanúsítványok & Secrets
 
-A **kulcsok**helyett az új felhasználói élményben a tanúsítványok **& Secrets** panelen kezelheti a tanúsítványokat és a titkos kulcsokat. A tanúsítványok & titkos kódok lehetővé teszik az alkalmazások számára, hogy azonosítsák magukat a hitelesítési szolgáltatásban, amikor jogkivonatokat fogadnak a webes címezhető helyen (HTTPS-séma használatával). Javasoljuk, hogy az ügyfél hitelesítő adatai helyett egy tanúsítványt használjon az Azure AD-vel való hitelesítéshez. A tanúsítványok nem használhatók a Azure AD B2C való hitelesítéshez.
+A **kulcsok** helyett az új felhasználói élményben a tanúsítványok **& Secrets** panelen kezelheti a tanúsítványokat és a titkos kulcsokat. A tanúsítványok & titkos kódok lehetővé teszik az alkalmazások számára, hogy azonosítsák magukat a hitelesítési szolgáltatásban, amikor jogkivonatokat fogadnak a webes címezhető helyen (HTTPS-séma használatával). Javasoljuk, hogy az ügyfél hitelesítő adatai helyett egy tanúsítványt használjon az Azure AD-vel való hitelesítéshez. A tanúsítványok nem használhatók a Azure AD B2C való hitelesítéshez.
 
 
 ## <a name="features-not-applicable-in-azure-ad-b2c-tenants"></a>Azure AD B2C bérlők nem alkalmazható szolgáltatásai
 A következő Azure AD-alkalmazás-regisztrációs képességek nem alkalmazhatók Azure AD B2C bérlők számára, illetve nem érhetők el:
 - **Szerepkörök és rendszergazdák** – jelenleg nem érhető el Azure ad B2Choz.
 - **Branding** – a felhasználói felület/UX testreszabása a **vállalati védjegyezési** felületen vagy felhasználói folyamat részeként van konfigurálva. Ismerkedjen meg [a Azure Active Directory B2C felhasználói felületének testreszabásával](customize-ui-overview.md).
-- **Közzétevő tartományának ellenőrzése** – az alkalmazás regisztrálva van a *. onmicrosoft.com*, amely nem ellenőrzött tartomány. Emellett a közzétevői tartományt elsődlegesen a felhasználói jóváhagyás biztosítására használják, amely nem vonatkozik Azure AD B2C alkalmazásokra a felhasználói hitelesítéshez. [További információ a közzétevő tartományáról](https://docs.microsoft.com/azure/active-directory/develop/howto-configure-publisher-domain).
+- **Közzétevő tartományának ellenőrzése** – az alkalmazás regisztrálva van a *. onmicrosoft.com*, amely nem ellenőrzött tartomány. Emellett a közzétevői tartományt elsődlegesen a felhasználói jóváhagyás biztosítására használják, amely nem vonatkozik Azure AD B2C alkalmazásokra a felhasználói hitelesítéshez. [További információ a közzétevő tartományáról](../active-directory/develop/howto-configure-publisher-domain.md).
 - **Jogkivonat konfigurációja** – a jogkivonat a felhasználói folyamat részeként van konfigurálva, nem pedig alkalmazás.
 - A gyors üzembe helyezési **élmény jelenleg** nem érhető el Azure ad B2C bérlők számára.
 <!-- - The **Integration assistant** blade is currently not available for Azure AD B2C tenants. -->

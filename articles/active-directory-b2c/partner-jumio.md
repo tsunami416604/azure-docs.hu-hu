@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 4e5becdd026b0a1c9e848b183ebeee5833654461
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3a8881b9fe44727caf07b3cc0d5ee19f0444e98
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259271"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953661"
 ---
 # <a name="tutorial-for-configuring-jumio-with-azure-active-directory-b2c"></a>Oktatóanyag a Jumio konfigurálásához a Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ A kezdéshez a következőkre lesz szüksége:
 
 - Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
 
-- Egy [Azure ad B2C bérlő](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) , amely az Azure-előfizetéshez van csatolva.
+- Egy [Azure ad B2C bérlő](./tutorial-create-tenant.md) , amely az Azure-előfizetéshez van csatolva.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -65,7 +65,7 @@ Miután létrehozta a Jumio-fiókot, a fiók használatával konfigurálja a Azu
 
 ### <a name="deploy-the-api"></a>Az API üzembe helyezése
 
-A megadott [API-kód](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Jumio/API/Jumio.Api) üzembe helyezése egy Azure-szolgáltatásban. A kódot a Visual studióból teheti közzé a következő [utasítások](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)követésével.
+A megadott [API-kód](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Jumio/API/Jumio.Api) üzembe helyezése egy Azure-szolgáltatásban. A kódot a Visual studióból teheti közzé a következő [utasítások](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)követésével.
 
 >[!NOTE]
 >Szüksége lesz az üzembe helyezett szolgáltatás URL-címére az Azure AD konfigurálásához a szükséges beállításokkal.
@@ -85,7 +85,7 @@ A megadott [API-kód](https://github.com/azure-ad-b2c/partner-integrations/tree/
 
    A tanúsítvány ezután a számára megadott helyre lesz exportálva ``{your-local-path}`` .
 
-3. Importálja a tanúsítványt a Azure App Serviceba a [cikkben](https://docs.microsoft.com/azure/app-service/configure-ssl-certificate#upload-a-private-certificate)található utasításokat követve.
+3. Importálja a tanúsítványt a Azure App Serviceba a [cikkben](../app-service/configure-ssl-certificate.md#upload-a-private-certificate)található utasításokat követve.
 
 ### <a name="create-a-signingencryption-key"></a>Aláírási/titkosítási kulcs létrehozása
 
@@ -102,9 +102,9 @@ A karakterlánc létrehozásához használja a következő PowerShell-parancsfá
 
 ### <a name="configure-the-api"></a>Az API konfigurálása
 
-Az Alkalmazásbeállítások megadható [a Azure app Serviceban](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings). Ezzel a módszerrel biztonságos módon konfigurálhatja a beállításokat anélkül, hogy azokat egy adattárba kellene benéznie. A REST API-hoz a következő beállításokat kell megadnia:
+Az Alkalmazásbeállítások megadható [a Azure app Serviceban](../app-service/configure-common.md#configure-app-settings). Ezzel a módszerrel biztonságos módon konfigurálhatja a beállításokat anélkül, hogy azokat egy adattárba kellene benéznie. A REST API-hoz a következő beállításokat kell megadnia:
 
-| Alkalmazásbeállítások | Forrás | Jegyzetek |
+| Alkalmazásbeállítások | Forrás | Megjegyzések |
 | :-------- | :------------| :-----------|
 |JumioSettings:AuthUsername | Jumio-fiók konfigurálása |     |
 |JumioSettings:AuthPassword | Jumio-fiók konfigurálása |     |
@@ -118,7 +118,7 @@ Az Alkalmazásbeállítások megadható [a Azure app Serviceban](https://docs.mi
 
 ### <a name="deploy-the-ui"></a>A felhasználói felület üzembe helyezése
 
-1. Hozzon létre egy [blob Storage-tárolót a Storage-fiókban](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container).
+1. Hozzon létre egy [blob Storage-tárolót a Storage-fiókban](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container).
 
 2. Tárolja a felhasználói felületi fájlokat a blob-tároló [felhasználói felület mappájából](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Jumio/UI) .
 
@@ -139,7 +139,7 @@ Az Alkalmazásbeállítások megadható [a Azure app Serviceban](https://docs.mi
 
 1. Lépjen a házirendek mappában található [Azure ad B2C házirendre](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Jumio/Policies) .
 
-2. A [LocalAccounts Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)letöltéséhez kövesse [ezt a cikket](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack) .
+2. A [LocalAccounts Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)letöltéséhez kövesse [ezt a cikket](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack) .
 
 3. Konfigurálja a Azure AD B2C bérlő házirendjét.
 
@@ -148,17 +148,17 @@ Az Alkalmazásbeállítások megadható [a Azure app Serviceban](https://docs.mi
 
 ## <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 
-1. Nyissa meg a Azure AD B2C bérlőt. A **szabályzatok**területen válassza az **identitási élmény keretrendszere**elemet.
+1. Nyissa meg a Azure AD B2C bérlőt. A **szabályzatok** területen válassza az **identitási élmény keretrendszere** elemet.
 
 2. Válassza ki a korábban létrehozott **SignUpSignIn**.
 
 3. Válassza a **felhasználói folyamat futtatása** lehetőséget, majd:
 
-   a. **Alkalmazás**esetén válassza ki a regisztrált alkalmazást (a minta a JWT).
+   a. **Alkalmazás** esetén válassza ki a regisztrált alkalmazást (a minta a JWT).
 
-   b. A **Válasz URL-cím**mezőben válassza ki az **átirányítási URL-címet**.
+   b. A **Válasz URL-cím** mezőben válassza ki az **átirányítási URL-címet**.
 
-   c. Válassza a **felhasználói folyamat futtatása**lehetőséget.
+   c. Válassza a **felhasználói folyamat futtatása** lehetőséget.
 
 4. Ugorjon végig a regisztrációs folyamaton, és hozzon létre egy fiókot.
 
@@ -168,6 +168,6 @@ Az Alkalmazásbeállítások megadható [a Azure app Serviceban](https://docs.mi
 
 További információkért tekintse át a következő cikkeket:
 
-- [Egyéni szabályzatok az Azure AD B2C-ben](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Egyéni szabályzatok az Azure AD B2C-ben](./custom-policy-overview.md)
 
-- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](./custom-policy-get-started.md?tabs=applications)

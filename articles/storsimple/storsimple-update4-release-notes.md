@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: ef95ca7b9f94690b607e37fbf5d9378c2f2bcfda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 060a52b61dcd43fe0d05b2a8ef594c0ab9f2cc9e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85847273"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954052"
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>StorSimple 8000 sorozat Update 4 kibocsátási megjegyzések
 
@@ -47,7 +47,7 @@ A 4. frissítés a következő főbb javításokat és hibajavításokat tartalm
 
     Egy új funkció a 4. frissítésben van megvalósítva, amely nyomon követi a gyakran használt és a hő létrehozását, ha az eszköz a DR előtt használatban van DR. után a StorSimple a hő használatával automatikusan visszaállítja és kihasználja az adatok felhőből történő helyreállítását. 
 
-    A visszaállítások mostantól hő-alapú visszaállítások. A hő-alapú visszaállítási és rehidratáló feladatok lekérdezésével és megszakításával kapcsolatos további információkért nyissa meg [Windows PowerShell StorSimple-bővítménye parancsmag-referenciát](https://technet.microsoft.com/library/dn688168.aspx).
+    A visszaállítások mostantól hő-alapú visszaállítások. A hő-alapú visszaállítási és rehidratáló feladatok lekérdezésével és megszakításával kapcsolatos további információkért nyissa meg [Windows PowerShell StorSimple-bővítménye parancsmag-referenciát](/powershell/module/hcs/?viewFallbackFrom=winserverr2-ps).
 
 * A **StorSimple Diagnostics eszköz** – a 4. frissítésben egy StorSimple diagnosztikai eszközt bocsát ki, amely lehetővé teszi a rendszer, a hálózat, a teljesítmény és a hardver-összetevők állapotával kapcsolatos problémák egyszerű diagnosztizálását és hibaelhárítását. Ez az eszköz a Windows PowerShell StorSimple-bővítményeon keresztül fut. További információ: [hibakeresés a StorSimple Diagnostics eszközzel](storsimple-8000-diagnostics.md).
 
@@ -59,7 +59,7 @@ A 4. frissítés a következő főbb javításokat és hibajavításokat tartalm
 
 * **Lemez meghibásodására figyelmeztető riasztás** – új riasztás, amely figyelmezteti a felhasználót, hogy a közelgő lemezhibák bekerülnek ebben a kiadásban. Ha ezt a riasztást tapasztalja, lépjen kapcsolatba Microsoft ügyfélszolgálata a helyettesítő lemez szállításához. További információkért keresse fel a [StorSimple-eszköz hardveres riasztásait](storsimple-8000-manage-alerts.md#hardware-alerts).
 
-* **Vezérlő-helyettesítési változások** – ez a kiadás lehetővé teszi, hogy a felhasználó lekérdezze a vezérlő helyettesítési folyamatának állapotát. További információért lépjen a [parancsmagra a vezérlő helyettesítési állapotának lekérdezéséhez](https://technet.microsoft.com/library/dn688168.aspx).
+* **Vezérlő-helyettesítési változások** – ez a kiadás lehetővé teszi, hogy a felhasználó lekérdezze a vezérlő helyettesítési folyamatának állapotát. További információért lépjen a [parancsmagra a vezérlő helyettesítési állapotának lekérdezéséhez](/powershell/module/hcs/?viewFallbackFrom=winserverr2-ps).
 
 
 ## <a name="issues-fixed-in-update-4"></a>A 4. frissítésben rögzített problémák
@@ -82,7 +82,7 @@ Nincsenek új ismert problémák a 4. frissítésben. Az előző kiadásokban a 
 
 ## <a name="serial-attached-scsi-sas-controller-and-firmware-updates-in-update-4"></a>Sorosan csatlakoztatott SCSI (SAS) vezérlő és belső vezérlőprogram frissítései a 4. frissítésben
 
-Ez a kiadás SAS-vezérlővel és LSI-illesztőprogrammal és belső vezérlőprogram-frissítésekkel rendelkezik. A frissítések telepítésével kapcsolatos további információkért lásd: a [4. frissítés telepítése](storsimple-install-update-4.md) a StorSimple-eszközön.
+Ez a kiadás SAS-vezérlővel és LSI-illesztőprogrammal és belső vezérlőprogram-frissítésekkel rendelkezik. A frissítések telepítésével kapcsolatos további információkért lásd: a [4. frissítés telepítése](./storsimple-8000-install-update-4.md) a StorSimple-eszközön.
 
 ## <a name="virtual-device-updates-in-update-4"></a>Virtuális eszközök frissítései a 4. frissítésben
 
@@ -90,5 +90,4 @@ Ez a frissítés nem alkalmazható a StorSimple Cloud Appliancera (más néven v
 
 ## <a name="next-step"></a>Következő lépés
 
-Megtudhatja, hogyan [telepítheti a 4. frissítést](storsimple-install-update-4.md) a StorSimple-eszközre.
-
+Megtudhatja, hogyan [telepítheti a 4. frissítést](./storsimple-8000-install-update-4.md) a StorSimple-eszközre.

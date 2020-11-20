@@ -4,16 +4,16 @@ description: Ismerje meg a HPC használatára optimalizált H-sorozatú és N so
 author: vermagit
 ms.author: amverma
 ms.service: virtual-machines
-ms-subservice: hpc
+ms.subservice: workloads
 ms.topic: overview
 ms.date: 07/29/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: e2c3a1559b4a6642f17a2a998e68543a519b1225
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 5950e9ab6ec979938a2318c4d25f53db4f5e1064
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996724"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951383"
 ---
 # <a name="high-performance-computing-on-infiniband-enabled-h-series-and-n-series-vms"></a>Nagy teljesítményű számítástechnika a InfiniBand-t használó H-és N-sorozatú virtuális gépeken
 
@@ -35,7 +35,7 @@ A InfiniBand-kompatibilis virtuális gépek InfiniBand beállításával kapcsol
 Az SR-IOV-kompatibilis H-sorozat és az N-sorozat szinte minden MPI-könyvtárat és-verziót támogat. A leggyakoribb, támogatott MPI-kódtárak a következők: Intel MPI, OpenMPI, MPICH, MVAPICH2, platform MPI és minden távoli közvetlen memória-hozzáférési (RDMA) művelet.
 A különböző támogatott MPI-könyvtárak telepítésével és az optimális konfigurációval kapcsolatos további tudnivalókért tekintse meg az [MPI beállítása](setup-mpi.md) című témakört.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 Első lépésként válassza a [H-sorozat](../../sizes-hpc.md) és az [N sorozatú](../../sizes-gpu.md) virtuális gép típusát a számítási feladatokhoz a virtuálisgép-specifikációk és a [RDMA képesség](../../sizes-hpc.md#rdma-capable-instances)alapján.
 Másodszor konfigurálja a virtuális gépet a InfiniBand engedélyezésével. Ezt többféleképpen is elvégezheti, beleértve az optimalizált virtuálisgép-rendszerképek használatát a besütött illesztőprogramokkal; a részletekért lásd: [a Linux optimalizálása](configure.md) és a [InfiniBand engedélyezése](enable-infiniband.md) .

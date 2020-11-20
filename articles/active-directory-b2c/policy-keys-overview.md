@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 02294d4832224f1c94a4c586f3dcc455255bfbbf
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 30348d7ca12ded2d1f4b0522a7cabeadf0553a07
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670104"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953355"
 ---
 # <a name="overview-of-policy-keys-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C lévő szabályzati kulcsok áttekintése
 
@@ -28,7 +28,7 @@ A Azure Active Directory B2C (Azure AD B2C) házirend-kulcsok formájában táro
  Ez a cikk azt ismerteti, hogy mit kell tudnia a Azure AD B2C által használt szabályzati kulcsokról.
 
 > [!NOTE]
-> A házirend-kulcsok konfigurálása jelenleg csak az [Egyéni házirendekre](active-directory-b2c-get-started-custom.md) korlátozódik.
+> A házirend-kulcsok konfigurálása jelenleg csak az [Egyéni házirendekre](./custom-policy-get-started.md) korlátozódik.
 
 A Azure Portal szolgáltatások közötti megbízhatósági kapcsolat létrehozásához szükséges titkokat és tanúsítványokat a **házirend-kulcsok** menü alatt állíthatja be. A kulcsok szimmetrikusak vagy aszimmetrikusak lehetnek. A *szimmetrikus* titkosítás vagy a titkos kulcs titkosítása, ahol egy közös titkot használ a titkosításhoz és az adatvisszafejtéshez. Az *aszimmetrikus* titkosítás vagy a nyilvános kulcsú titkosítás egy olyan titkosítási rendszer, amely kulcsokat használ, és amelyek a függő entitás alkalmazásával megosztott nyilvános kulcsokból és a kizárólag Azure ad B2C ismert titkos kulcsokból állnak.
 
@@ -63,15 +63,15 @@ Ha egy Azure AD B2C kulcskészlet több kulccsal rendelkezik, akkor a következ�
   - Ha az aktuális dátum és idő nagyobb, mint a kulcs aktiválási dátuma, Azure AD B2C aktiválja a kulcsot, és leállítja az előző aktív kulcs használatát.
 - Ha az aktuális kulcs lejárati ideje eltelt, és a kulcstároló tartalmaz egy olyan új kulcsot, amely *nem a korábbi* és a *lejárati* idő alatt érvényes, akkor az új kulcs automatikusan aktívvá válik.
 - Ha az aktuális kulcs lejárati ideje eltelt, és *a kulcstároló nem tartalmaz olyan* új kulcsot, amely nem rendelkezik a *korábbi* és a *lejárati* időpontok érvényességi idejével, Azure ad B2C nem fogja tudni használni a lejárt kulcsot. A Azure AD B2C egy hibaüzenetet jelenít meg az egyéni szabályzat függő összetevőjén belül. A probléma elkerüléséhez hozzon létre egy alapértelmezett kulcsot az aktiválás és a lejárat dátuma nélkül biztonsági hálóként.
-- Az OpenId Connect jól ismert konfigurációs végpontjának kulcs végpontja (JWKS URI) a kulcstárolóban konfigurált kulcsokat tükrözi, ha a kulcsra a [JwtIssuer műszaki profiljában](https://docs.microsoft.com/azure/active-directory-b2c/jwt-issuer-technical-profile)hivatkozunk. Egy OIDC-függvénytárat használó alkalmazás automatikusan beolvassa ezt a metaadatokat, így biztosítva, hogy a megfelelő kulcsokat használja a jogkivonatok érvényesítéséhez. További információ: a [Microsoft Authentication Library](https://docs.microsoft.com/azure/active-directory/develop/msal-b2c-overview)használata, amely mindig automatikusan beolvassa a legújabb jogkivonat-aláíró kulcsokat.
+- Az OpenId Connect jól ismert konfigurációs végpontjának kulcs végpontja (JWKS URI) a kulcstárolóban konfigurált kulcsokat tükrözi, ha a kulcsra a [JwtIssuer műszaki profiljában](./jwt-issuer-technical-profile.md)hivatkozunk. Egy OIDC-függvénytárat használó alkalmazás automatikusan beolvassa ezt a metaadatokat, így biztosítva, hogy a megfelelő kulcsokat használja a jogkivonatok érvényesítéséhez. További információ: a [Microsoft Authentication Library](../active-directory/develop/msal-b2c-overview.md)használata, amely mindig automatikusan beolvassa a legújabb jogkivonat-aláíró kulcsokat.
 
 ## <a name="policy-key-management"></a>Házirend-kulcs kezelése
 
-A kulcstárolón belüli aktuális aktív kulcs lekéréséhez használja a Microsoft Graph API [getActiveKey](https://docs.microsoft.com/graph/api/trustframeworkkeyset-getactivekey) -végpontot.
+A kulcstárolón belüli aktuális aktív kulcs lekéréséhez használja a Microsoft Graph API [getActiveKey](/graph/api/trustframeworkkeyset-getactivekey) -végpontot.
 
 Aláírási és titkosítási kulcsok hozzáadása vagy törlése:
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 1. A Azure Portal keresse meg és válassza a **Azure ad B2C** lehetőséget.
 1. Az Áttekintés lap **szabályzatok** területén válassza az **identitási élmény keretrendszere** elemet.
@@ -89,10 +89,3 @@ A kulcskészlet kulcsai nem helyezhetők át vagy nem cserélhetők le. Ha módo
 ## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan használható a Microsoft Graph a [kulcskészlet](microsoft-graph-operations.md#trust-framework-policy-keyset) és a [házirend-kulcsok](microsoft-graph-operations.md#trust-framework-policy-key) üzembe helyezésének automatizálására.
-
-
-
-
-
-
-

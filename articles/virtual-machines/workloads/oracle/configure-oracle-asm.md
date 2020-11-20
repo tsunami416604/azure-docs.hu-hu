@@ -3,16 +3,17 @@ title: Az Oracle ASM beállítása Azure Linux rendszerű virtuális gépeken | 
 description: Az Oracle ASM gyors üzembe helyezése az Azure-környezetben.
 author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: b9653cded11edd36602caea0ecd50cfb8dd05ebe
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: e5593d530891e39404e0b9760861f2f22ae333d3
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547180"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952693"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Az Oracle ASM beállítása Azure Linux rendszerű virtuális gépen  
 
@@ -30,7 +31,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 
 ## <a name="prepare-the-environment"></a>A környezet előkészítése
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az erőforráscsoport létrehozásához használja az [az group create](/cli/azure/group) parancsot. Az Azure-erőforráscsoport olyan logikai tároló, amelyben az Azure-erőforrások üzembe helyezése és kezelése történik. Ebben a példában egy *myResourceGroup* nevű erőforráscsoportot a *eastus* régióban.
 
@@ -144,7 +145,7 @@ Az Oracle ASM telepítésével kapcsolatos további információkért lásd: [Or
 
 ## <a name="set-up-oracle-asm"></a>Oracle ASM beállítása
 
-Ebben az oktatóanyagban az alapértelmezett felhasználó a *Grid* , és az alapértelmezett csoport a *asmadmin* . Győződjön meg arról, hogy az *Oracle* -felhasználó tagja a asmadmin csoportnak. Az Oracle ASM telepítésének beállításához hajtsa végre a következő lépéseket:
+Ebben az oktatóanyagban az alapértelmezett felhasználó a *Grid* , és az alapértelmezett csoport a *asmadmin*. Győződjön meg arról, hogy az *Oracle* -felhasználó tagja a asmadmin csoportnak. Az Oracle ASM telepítésének beállításához hajtsa végre a következő lépéseket:
 
 1. Az Oracle ASM Library-illesztőprogram beállítása magában foglalja az alapértelmezett felhasználó (rács) és az alapértelmezett csoport (asmadmin) definiálását, valamint a meghajtó konfigurálását a rendszerindítási indításhoz (az y választása) és a lemezek a rendszerindításkor való vizsgálatához A következő parancs utasításait kell megválaszolnia:
 
@@ -346,7 +347,7 @@ Az Oracle Grid Infrastructure szoftver letöltéséhez és előkészítéséhez 
 
 1. Töltse le az Oracle Grid-infrastruktúrát az [Oracle ASM letöltési oldaláról](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-linux-download-2240591.html). 
 
-   Töltse le a két. zip fájlt a következő címen **: Oracle Database 12C Release 1 Grid Infrastructure (12.1.0.2.0) a Linux x86-64-hez** .
+   Töltse le a két. zip fájlt a következő címen **: Oracle Database 12C Release 1 Grid Infrastructure (12.1.0.2.0) a Linux x86-64-hez**.
 
 2. Miután letöltötte a. zip-fájlokat az ügyfélszámítógépre, a biztonságos másolási protokoll (SCP) használatával másolja a fájlokat a virtuális gépre:
 
@@ -420,11 +421,11 @@ Az Oracle ASM konfigurálásához grafikus felület szükséges a telepítés é
    > A kulcsnak tartalmaznia kell a karakterláncot `ssh-rsa` . Emellett a kulcs tartalmának egysoros szövegnek kell lennie.
    >  
 
-6. Az ügyfél rendszeren indítsa el a PuTTY-t. A **Kategória** ablaktáblán válassza a **Kapcsolódás**  >  **SSH** -  >  **hitelesítés** lehetőséget. A **hitelesítő fájl titkos kulcsa** mezőben keresse meg a korábban létrehozott kulcsot.
+6. Az ügyfél rendszeren indítsa el a PuTTY-t. A **Kategória** ablaktáblán válassza a **Kapcsolódás**  >  **SSH**-  >  **hitelesítés** lehetőséget. A **hitelesítő fájl titkos kulcsa** mezőben keresse meg a korábban létrehozott kulcsot.
 
    ![Az SSH-hitelesítési lehetőségek képernyőképe](./media/oracle-asm/setprivatekey.png)
 
-7. A **Kategória** ablaktáblán lépjen a **Kapcsolódás**  >  **SSH**  >  **X11-hez** . Jelölje be az **X11 továbbításának engedélyezése** jelölőnégyzetet.
+7. A **Kategória** ablaktáblán lépjen a **Kapcsolódás**  >  **SSH**  >  **X11-hez**. Jelölje be az **X11 továbbításának engedélyezése** jelölőnégyzetet.
 
    ![Képernyőkép az SSH X11 továbbítási lehetőségeiről](./media/oracle-asm/enablex11.png)
 
@@ -436,7 +437,7 @@ Az Oracle ASM konfigurálásához grafikus felület szükséges a telepítés é
 
 Az Oracle Grid-infrastruktúra telepítéséhez hajtsa végre a következő lépéseket:
 
-1. Jelentkezzen be **rácsként** . (Be kell jelentkeznie anélkül, hogy jelszót kellene megadnia.) 
+1. Jelentkezzen be **rácsként**. (Be kell jelentkeznie anélkül, hogy jelszót kellene megadnia.) 
 
    > [!NOTE]
    > Ha Windows rendszert futtat, a telepítés megkezdése előtt győződjön meg arról, hogy elindította a Xming.
@@ -555,7 +556,7 @@ Az Oracle Database szoftver már telepítve van az Azure Marketplace-rendszerké
    - A **tárolás típusa** beállításnál győződjön meg arról, hogy az **automatikus tárolási felügyelet (ASM)** van kiválasztva.
    - Az **adatbázisfájlok helyéhez** használja az alapértelmezett ASM javasolt helyet.
    - A **gyors helyreállítási területen** használja az alapértelmezett ASM javasolt helyet.
-   - írja be a **rendszergazdai jelszót** , és **erősítse meg a jelszót** .
+   - írja be a **rendszergazdai jelszót** , és **erősítse meg a jelszót**.
    - Győződjön meg róla `create as container database` , hogy be van jelölve.
    - írjon be egy `pluggable database name` értéket.
 

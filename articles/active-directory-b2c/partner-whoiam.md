@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 718ccbaa57ffe9f4ebaf4e8df448b602ba8cc3fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1b2c7513562e951e1098cf327780387ddf6a495
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89293150"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953542"
 ---
 # <a name="tutorial-for-configuring-whoiam-with-azure-active-directory-b2c"></a>Oktatóanyag a WhoIAM konfigurálásához a Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ A kezdéshez a következőkre lesz szüksége:
 
 - Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
 
-- [Egy Azure ad B2C bérlő](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) , amely az Azure-előfizetéshez van csatolva.
+- [Egy Azure ad B2C bérlő](./tutorial-create-tenant.md) , amely az Azure-előfizetéshez van csatolva.
 
 - Egy WhoIAM [próbaverziós fiók](https://www.whoiam.ai/contact-us/).
 
@@ -72,7 +72,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
     - [Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/): a beállítások tárolására és lekérésére szolgál.
 
-    - [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview#:~:text=Application%20Insights%2C%20a%20feature%20of%20Azure%20Monitor%2C%20is,professionals.%20Use%20it%20to%20monitor%20your%20live%20applications) (nem kötelező): az API-ra és a felügyeleti portálra való bejelentkezéshez használatos.
+    - [Application Insights](../azure-monitor/app/app-insights-overview.md) (nem kötelező): az API-ra és a felügyeleti portálra való bejelentkezéshez használatos.
 
 3. Telepítse a BRIMS API-t és a BRIMS felügyeleti portált az Azure-környezetben.
 
@@ -82,17 +82,17 @@ A WhoIAM BRIMS kapcsolatos további információkért tekintse meg a [termék do
 
 ## <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 
-1. Nyissa meg a Azure AD B2C bérlőt. A **szabályzatok**területen válassza az **identitási élmény keretrendszere**elemet.
+1. Nyissa meg a Azure AD B2C bérlőt. A **szabályzatok** területen válassza az **identitási élmény keretrendszere** elemet.
 
 2. Válassza ki a korábban létrehozott **SignUpSignIn**.
 
 3. Válassza a **felhasználói folyamat futtatása** lehetőséget, majd:
 
-   a. **Alkalmazás**esetén válassza ki a regisztrált alkalmazást (a minta a JWT).
+   a. **Alkalmazás** esetén válassza ki a regisztrált alkalmazást (a minta a JWT).
 
-   b. A **Válasz URL-cím**mezőben válassza ki az **átirányítási URL-címet**.
+   b. A **Válasz URL-cím** mezőben válassza ki az **átirányítási URL-címet**.
 
-   c. Válassza a **felhasználói folyamat futtatása**lehetőséget.
+   c. Válassza a **felhasználói folyamat futtatása** lehetőséget.
 
 4. Ugorjon végig a regisztrációs folyamaton, és hozzon létre egy fiókot.
 
@@ -102,6 +102,6 @@ A WhoIAM BRIMS kapcsolatos további információkért tekintse meg a [termék do
 
 További információkért tekintse át a következő cikkeket:
 
-- [Egyéni szabályzatok az Azure AD B2C-ben](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Egyéni szabályzatok az Azure AD B2C-ben](./custom-policy-overview.md)
 
-- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](./custom-policy-get-started.md?tabs=applications)

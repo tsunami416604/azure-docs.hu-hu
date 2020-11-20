@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cfce5b42d37908d0ba89cff9c4831cb25b968524
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07a8f785cf2b9a64f3acb9f44c4fca5023c4fcf3
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259322"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953746"
 ---
 # <a name="tutorial-for-configuring-idology-with-azure-active-directory-b2c"></a>Oktatóanyag a IDology konfigurálásához a Azure Active Directory B2C 
 
@@ -67,15 +67,15 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 ### <a name="part-1---deploy-the-api"></a>1. rész – az API üzembe helyezése
 
-A megadott [API-kód](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/IDology/Api) üzembe helyezése egy Azure-szolgáltatásban. A kód a Visual studióból is közzétehető, ezeket az [utasításokat](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)követve.
+A megadott [API-kód](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/IDology/Api) üzembe helyezése egy Azure-szolgáltatásban. A kód a Visual studióból is közzétehető, ezeket az [utasításokat](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)követve.
 
 Szüksége lesz az üzembe helyezett szolgáltatás URL-címére az Azure AD konfigurálásához a szükséges beállításokkal.
 
 ### <a name="part-2---configure-the-api"></a>2. rész – az API konfigurálása 
 
-Az Alkalmazásbeállítások [konfigurálhatók app Service az Azure-ban](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings). Ezzel a módszerrel a beállítások biztonságosan konfigurálhatók egy adattárba való ellenőrzés nélkül. A REST API-hoz a következő beállításokat kell megadnia:
+Az Alkalmazásbeállítások [konfigurálhatók app Service az Azure-ban](../app-service/configure-common.md#configure-app-settings). Ezzel a módszerrel a beállítások biztonságosan konfigurálhatók egy adattárba való ellenőrzés nélkül. A REST API-hoz a következő beállításokat kell megadnia:
 
-| Alkalmazásbeállítások | Forrás | Jegyzetek |
+| Alkalmazásbeállítások | Forrás | Megjegyzések |
 | :-------- | :------------| :-----------|
 |IdologySettings:ApiUsername | IDology-fiók konfigurálása |     |
 |IdologySettings:ApiPassword | IDology-fiók konfigurálása |     |
@@ -119,7 +119,7 @@ A minta szabályzat ezeket a neveket használja:
 
 ## <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 
-1. Nyissa meg a Azure AD B2C bérlőt, és a **házirendek**területen válassza a **felhasználói folyamatok**elemet.
+1. Nyissa meg a Azure AD B2C bérlőt, és a **házirendek** területen válassza a **felhasználói folyamatok** elemet.
 
 2. Válassza ki a korábban létrehozott **felhasználói folyamatot**.
 
@@ -129,7 +129,7 @@ A minta szabályzat ezeket a neveket használja:
 
    1. **Válasz URL-címe** – válassza ki az **átirányítási URL-címet**.
 
-   1. Válassza a **felhasználói folyamat futtatása**lehetőséget.
+   1. Válassza a **felhasználói folyamat futtatása** lehetőséget.
 
 4. Ugorjon végig a regisztrációs folyamaton, és hozzon létre egy fiókot.
 
@@ -137,7 +137,7 @@ A minta szabályzat ezeket a neveket használja:
 
 6. Ugorjon végig a bejelentkezési folyamaton.
 
-7. A **Folytatás**gombra való belépés után a IDology puzzle jelenik meg.
+7. A **Folytatás** gombra való belépés után a IDology puzzle jelenik meg.
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -145,5 +145,4 @@ További információkért tekintse át a következő cikkeket:
 
 - [Egyéni szabályzatok az Azure AD B2C-ben](custom-policy-overview.md)
 
-- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](custom-policy-get-started.md?tabs=applications) 
-
+- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](custom-policy-get-started.md?tabs=applications)

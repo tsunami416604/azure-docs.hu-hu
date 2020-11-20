@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2f99c5b9362380690badce832c3dd540137d35ac
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 07897823a3ba3b83e240e8e8dc005ea13b036fce
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92215404"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952046"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>Active Directory B2C használható alkalmazások típusai
  
@@ -141,7 +141,7 @@ A hosszan futó folyamatokat vagy a felhasználó jelenléte nélkül működő 
 
 Bár a OAuth 2,0 ügyfél-hitelesítő adatok engedélyezési folyamatát jelenleg nem támogatja közvetlenül a Azure AD B2C hitelesítési szolgáltatás, beállíthatja az ügyfél hitelesítő adatait az Azure AD-vel és a Microsoft Identity platform/token-végpontjának használatával az Azure AD B2C-bérlőben lévő alkalmazásokhoz. Egy Azure AD B2C bérlő néhány funkciót megoszt az Azure AD Enterprise-Bérlővel.
 
-Az ügyfél-hitelesítő adatok folyamatának beállításához lásd: [Azure Active Directory v 2.0 és a OAuth 2,0 ügyfél hitelesítő adatainak folyamata](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-client-creds). A sikeres hitelesítés a jogkivonat formátumának beérkezését eredményezi, hogy az Azure AD az Azure ad- [jogkivonat referenciájában](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)leírtak szerint használható legyen.
+Az ügyfél-hitelesítő adatok folyamatának beállításához lásd: [Azure Active Directory v 2.0 és a OAuth 2,0 ügyfél hitelesítő adatainak folyamata](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md). A sikeres hitelesítés a jogkivonat formátumának beérkezését eredményezi, hogy az Azure AD az Azure ad- [jogkivonat referenciájában](../active-directory/develop/id-tokens.md)leírtak szerint használható legyen.
 
 A felügyeleti alkalmazások regisztrálásával kapcsolatos utasításokért lásd: [Azure ad B2C kezelése Microsoft Graphsal](microsoft-graph-get-started.md).
 
@@ -155,7 +155,7 @@ Ez a láncolatba fűzött webes API-megoldás az OAuth 2.0 JWT tulajdonosi hitel
 
 A következő módokon ne szerkessze Azure AD B2C alkalmazást:
 
-- Más alkalmazás-felügyeleti portálokon, például az [alkalmazás regisztrációs portálján](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade).
+- Egyéb alkalmazáskezelési portálokon, például az [Alkalmazásregisztrációs portálon](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade).
 - A Graph API vagy a PowerShell használatával.
 
 Ha a Azure AD B2C alkalmazást a Azure Portalon kívül szerkeszti, akkor az egy hibás alkalmazás lesz, és már nem használható a Azure AD B2C. Törölje az alkalmazást, majd hozza létre újra.

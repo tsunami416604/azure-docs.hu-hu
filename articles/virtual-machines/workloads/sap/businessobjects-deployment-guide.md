@@ -9,19 +9,20 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 9d1759e5b809bc40e63fb6024fb7f107ad347da6
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: ee7cc1c81bd35bf2b51c712c3a60a046435ee700
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094357"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951283"
 ---
-# <a name="sap-businessobjects-bi-platform-planning-and-implementation-guide-on-azure"></a>SAP BusinessObjects BI platform tervezési és megvalósítási útmutató az Azure-ban
+# <a name="sap-businessobjects-bi-platform-planning-and-implementation-guide-on-azure"></a>SAP BusinessObjects BI platformtervezési és -megvalósítási útmutató az Azure-on
 
 ## <a name="overview"></a>Áttekintés
 
@@ -137,7 +138,7 @@ A BI platformnak a CMS-hez és a naplózási adattárhoz szükséges adatbázisr
 
 - MaxDB
 
-Ez a dokumentum bemutatja az **SAP Bobi platform Windows rendszeren való** üzembe helyezésének irányelveit a Azure SQL Database és az **SAP Bobi platformmal Linux**rendszeren a Azure Database for MySQL használatával. Az SAP BusinessObjects BI platform Azure-on való futtatásának ajánlott módszere is.
+Ez a dokumentum bemutatja az **SAP Bobi platform Windows rendszeren való** üzembe helyezésének irányelveit a Azure SQL Database és az **SAP Bobi platformmal Linux** rendszeren a Azure Database for MySQL használatával. Az SAP BusinessObjects BI platform Azure-on való futtatásának ajánlott módszere is.
 
 ## <a name="sizing"></a>Méretezés
 
@@ -206,7 +207,7 @@ Az Azure-régió egy vagy több adatközpont, amely tartalmazza a különböző 
 
 Az SAP BI platform különböző összetevőket tartalmaz, amelyek bizonyos virtuálisgép-típusokat, tárolókat, például Azure Files vagy Azure NetApp Files vagy adatbázis-szolgáltatást (DBaaS) igényelnek az adatszintjéhez, amely esetleg nem érhető el bizonyos régiókban. Megtalálhatja a virtuálisgép-típusokkal, az Azure Storage-típusokkal vagy a [régiókban elérhető](https://azure.microsoft.com/en-us/global-infrastructure/services/) egyéb Azure-szolgáltatásokkal kapcsolatos pontos információkat. Ha már futtatta az SAP-rendszereit az Azure-ban, valószínűleg a régiója azonosítható. Ebben az esetben először meg kell vizsgálnia, hogy a szükséges szolgáltatások elérhetők-e ezekben a régiókban az SAP BI platform architektúrájának eldöntéséhez.
 
-### <a name="availability-zones"></a>Rendelkezésre állási zónák
+### <a name="availability-zones"></a>Rendelkezésreállási zónák
 
 Availability Zones fizikailag különálló helyet az Azure-régión belül. Az egyes rendelkezésre állási zónák egy vagy több olyan adatközpontból állnak, amelyek független energiaellátással, hűtéssel és hálózatkezeléssel rendelkeznek.
 

@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: c753e9a18f9869e1bf11aa437fb60484f2553e17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9bec7ffe28fbcdafd365f9867ebecaee5d2647e5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259254"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953685"
 ---
 # <a name="tutorial-for-configuring-lexisnexis-with-azure-active-directory-b2c"></a>Oktatóanyag a LexisNexis konfigurálásához a Azure Active Directory B2C
 
@@ -33,7 +33,7 @@ A kezdéshez a következőkre lesz szüksége:
 
 - Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
 
-- [Egy Azure ad B2C bérlő](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) , amely az Azure-előfizetéshez van csatolva.
+- [Egy Azure ad B2C bérlő](./tutorial-create-tenant.md) , amely az Azure-előfizetéshez van csatolva.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -73,16 +73,16 @@ A fiók létrehozása után megkapja az API-konfigurációhoz szükséges inform
 
 ### <a name="part-1---deploy-the-api"></a>1. rész – az API üzembe helyezése
 
-A megadott [API-kód](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/Api) üzembe helyezése egy Azure-szolgáltatásban. A kód a Visual studióból is közzétehető, ezeket az [utasításokat](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)követve.
+A megadott [API-kód](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/Api) üzembe helyezése egy Azure-szolgáltatásban. A kód a Visual studióból is közzétehető, ezeket az [utasításokat](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)követve.
 
 >[!NOTE]
 >Szüksége lesz az üzembe helyezett szolgáltatás URL-címére az Azure AD konfigurálásához a szükséges beállításokkal.
 
 ### <a name="part-2---configure-the-api"></a>2. rész – az API konfigurálása
 
-[Az Alkalmazásbeállítások konfigurálhatók az Azure app Service-ben](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings).  Ezzel a módszerrel a beállítások biztonságosan konfigurálhatók egy adattárba való ellenőrzés nélkül. A REST API-hoz a következő beállításokat kell megadnia:
+[Az Alkalmazásbeállítások konfigurálhatók az Azure app Service-ben](../app-service/configure-common.md#configure-app-settings).  Ezzel a módszerrel a beállítások biztonságosan konfigurálhatók egy adattárba való ellenőrzés nélkül. A REST API-hoz a következő beállításokat kell megadnia:
 
-| Alkalmazásbeállítások | Forrás | Jegyzetek |
+| Alkalmazásbeállítások | Forrás | Megjegyzések |
 | :-------- | :------------| :-----------|
 |ThreatMetrix: URL | ThreatMetrix-fiók konfigurálása |     |
 |ThreatMetrix: OrgId | ThreatMetrix-fiók konfigurálása |     |
@@ -95,13 +95,13 @@ A megadott [API-kód](https://github.com/azure-ad-b2c/partner-integrations/tree/
 
 Ez a megoldás a Azure AD B2C által betöltött egyéni FELHASZNÁLÓIFELÜLET-sablonokat használja. Ezek a felhasználói felületi sablonok a profilkészítést közvetlenül a ThreatMetrix szolgáltatásnak küldik el.
 
-Tekintse át ezeket az [utasításokat](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#custom-page-content-walkthrough) a mellékelt [felhasználói felületi fájlok](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template) blob Storage-fiókba történő telepítéséhez. Az utasítások közé tartozik a blob Storage-fiók beállítása, a CORS konfigurálása és a nyilvános hozzáférés engedélyezése.
+Tekintse át ezeket az [utasításokat](./custom-policy-ui-customization.md#custom-page-content-walkthrough) a mellékelt [felhasználói felületi fájlok](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template) blob Storage-fiókba történő telepítéséhez. Az utasítások közé tartozik a blob Storage-fiók beállítása, a CORS konfigurálása és a nyilvános hozzáférés engedélyezése.
 
 A felhasználói felület az [Ocean Blue sablonon](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template/ocean_blue)alapul. A felhasználói felületen lévő összes hivatkozást frissíteni kell, hogy az üzembe helyezett helyre hivatkozzon. A felhasználói felület mappában keresse meg és cserélje le https://yourblobstorage/blobcontainer az üzembe helyezett helyet.
 
 ### <a name="part-4---create-api-policy-keys"></a>4. rész – API-szabályzatok kulcsainak létrehozása
 
-Tekintse meg ezt a [dokumentumot](https://docs.microsoft.com/azure/active-directory-b2c/secure-rest-api#add-rest-api-username-and-password-policy-keys) , és hozzon létre két házirend-kulcsot – egyet az API-felhasználónévhez, egyet pedig a fent megadott API-jelszóhoz.
+Tekintse meg ezt a [dokumentumot](./secure-rest-api.md#add-rest-api-username-and-password-policy-keys) , és hozzon létre két házirend-kulcsot – egyet az API-felhasználónévhez, egyet pedig a fent megadott API-jelszóhoz.
 
 A minta szabályzat ezeket a neveket használja:
 
@@ -122,14 +122,14 @@ A megadott [TrustFrameworkExtensions-szabályzatban](https://github.com/azure-ad
 
 ### <a name="part-7---configure-the-azure-ad-b2c-policy"></a>7. rész – a Azure AD B2C házirend konfigurálása
 
-Tekintse meg ezt a [dokumentumot](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack) a [helyi fiókok kezdő csomagjának](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) letöltéséhez, és konfigurálja a Azure ad B2C bérlő [házirendjét](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/policy) .
+Tekintse meg ezt a [dokumentumot](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack) a [helyi fiókok kezdő csomagjának](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts) letöltéséhez, és konfigurálja a Azure ad B2C bérlő [házirendjét](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/policy) .
 
 >[!NOTE]
 >Frissítse a megadott szabályzatokat az adott bérlőhöz kapcsolódóan.
 
 ## <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 
-1. Nyissa meg a Azure AD B2C bérlőt, és a házirendek területen válassza a **felhasználói folyamatok**lehetőséget.
+1. Nyissa meg a Azure AD B2C bérlőt, és a házirendek területen válassza a **felhasználói folyamatok** lehetőséget.
 
 2. Válassza ki a korábban létrehozott **felhasználói folyamatot**.
 
@@ -139,7 +139,7 @@ Tekintse meg ezt a [dokumentumot](https://docs.microsoft.com/azure/active-direct
 
    b. **Válasz URL-címe**: válassza ki az **átirányítási URL-címet**
 
-   c. Válassza a **felhasználói folyamat futtatása**lehetőséget.
+   c. Válassza a **felhasználói folyamat futtatása** lehetőséget.
 
 4. Ugorjon a regisztrációs folyamatra, és hozzon létre egy fiókot
 
@@ -147,12 +147,12 @@ Tekintse meg ezt a [dokumentumot](https://docs.microsoft.com/azure/active-direct
 
 6. Bejelentkezési folyamat átugrása  
 
-7. A **folytatáshoz**a ThreatMetrix-puzzle jelenik meg.
+7. A **folytatáshoz** a ThreatMetrix-puzzle jelenik meg.
 
 ## <a name="next-steps"></a>Következő lépések
 
 További információkért tekintse át a következő cikkeket:
 
-- [Egyéni szabályzatok az Azure AD B2C-ben](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Egyéni szabályzatok az Azure AD B2C-ben](./custom-policy-overview.md)
 
-- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](./custom-policy-get-started.md?tabs=applications)

@@ -11,19 +11,19 @@ ms.topic: how-to
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 79219d7a7b59818d54acc6a2b0b4c8093ead3a6a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: acbd2918bd311cec1c27018763ad10771d779d85
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85385229"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953321"
 ---
 # <a name="sign-in-using-an-android-application-in-azure-active-directory-b2c"></a>Bejelentkezés Android-alkalmazással Azure Active Directory B2C
 
 A Microsoft identitásplatformja nyílt szabványokat, többek között OAuth2-t és OpenID Connectet használ. Ezek a szabványok lehetővé teszik bármely olyan kódtár kihasználása, amelyet integrálni szeretne Azure Active Directory B2Cokkal. Ha más kódtárakat szeretne használni, a következőhöz hasonló bemutatót is használhat, amely bemutatja, hogyan konfigurálhat harmadik féltől származó kódtárat a Microsoft Identity platformhoz való kapcsolódáshoz. [A RFC6749 OAuth2 specifikációt](https://tools.ietf.org/html/rfc6749) megvalósító könyvtárak többsége a Microsoft Identity platformhoz tud csatlakozni.
 
 > [!WARNING]
-> A Microsoft nem biztosít javításokat harmadik féltől származó kódtárak számára, és nem végezte el a könyvtárak áttekintését. Ez a minta egy AppAuth nevű harmadik féltől származó könyvtárat használ, amely az Azure AD B2C segítségével alapszintű forgatókönyvekben való kompatibilitásra lett tesztelve. A problémákat és a szolgáltatási kérelmeket a könyvtár nyílt forráskódú projektjeire kell irányítani. További információt [ebben a cikkben](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries) talál.
+> A Microsoft nem biztosít javításokat harmadik féltől származó kódtárak számára, és nem végezte el a könyvtárak áttekintését. Ez a minta egy AppAuth nevű harmadik féltől származó könyvtárat használ, amely az Azure AD B2C segítségével alapszintű forgatókönyvekben való kompatibilitásra lett tesztelve. A problémákat és a szolgáltatási kérelmeket a könyvtár nyílt forráskódú projektjeire kell irányítani. További információt [ebben a cikkben](../active-directory/develop/reference-v2-libraries.md) talál.
 >
 >
 

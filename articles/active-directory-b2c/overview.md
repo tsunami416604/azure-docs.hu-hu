@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 09/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7126cd38a9d0f9ed0079a73e1235cb08a99bcbcf
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 29b34041042f00d72b8a9fe86e31bd80f8c77dc2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91396535"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953950"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Mi az az Azure Active Directory B2C?
 
@@ -79,7 +79,7 @@ A WoodGrove élelmiszerboltok számos bejelentkezési lehetőséget biztosítana
 
 * Az **egyes** ügyfelek regisztrálhatnak vagy bejelentkezhetnek az egyes fiókokkal, például egy közösségi identitás-szolgáltatóval vagy egy e-mail-címmel és jelszóval.
 * Az **üzleti** ügyfelek regisztrálhatnak és bejelentkezhetnek a vállalati hitelesítő adataikkal.
-* A **partnerek** és a szállítók olyan személyek, akik a boltot a termékek eladásával látják el. A partner identitását a [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md)biztosíthatja.
+* A **partnerek** és a szállítók olyan személyek, akik a boltot a termékek eladásával látják el. A partner identitását a [Azure Active Directory B2B](../active-directory/external-identities/what-is-b2b.md)biztosíthatja.
 
 ![Egyéni (B2C), üzleti (B2C) és partneri (B2B) bejelentkezési lapok](./media/overview/woodgrove-overview.png)
 
@@ -95,7 +95,7 @@ Amikor egy ügyfél kiválasztja a **személyes fiókjával való regisztráció
 
 ![Az Azure AD B2C által üzemeltetett egyéni WoodGrove regisztrációs oldal](./media/overview/sign-up.png)
 
-Miután megadta az e-mail-címet, és kiválasztja az **ellenőrző kód küldése**lehetőséget, Azure ad B2C elküldi őket a kódnak. Miután megtörtént a kód megadása, válassza a **kód ellenőrzése**lehetőséget, majd adja meg a többi információt az űrlapon, továbbá el kell fogadnia a szolgáltatási feltételeket is.
+Miután megadta az e-mail-címet, és kiválasztja az **ellenőrző kód küldése** lehetőséget, Azure ad B2C elküldi őket a kódnak. Miután megtörtént a kód megadása, válassza a **kód ellenőrzése** lehetőséget, majd adja meg a többi információt az űrlapon, továbbá el kell fogadnia a szolgáltatási feltételeket is.
 
 Ha a **Létrehozás** gombra kattint, a Azure ad B2C átirányítja a felhasználót a WoodGrove-élelmiszerboltok webhelyére. Amikor átirányítja, Azure AD B2C egy OpenID Connect hitelesítési tokent továbbít a WoodGrove webalkalmazásnak. A felhasználó most már be van jelentkezve, és készen áll arra, hogy a megjelenített nevük a jobb felső sarokban jelenjen meg, jelezve, hogy be van jelentkezve.
 
@@ -103,7 +103,7 @@ Ha a **Létrehozás** gombra kattint, a Azure ad B2C átirányítja a felhaszná
 
 ### <a name="authenticate-business-customers"></a>Üzleti ügyfelek hitelesítése
 
-Amikor az ügyfél kiválasztja az egyik lehetőséget az **üzleti ügyfelek**területen, a WoodGrove élelmiszerboltok webhely más Azure ad B2C szabályzatot hív meg, mint az egyes ügyfelek esetében.
+Amikor az ügyfél kiválasztja az egyik lehetőséget az **üzleti ügyfelek** területen, a WoodGrove élelmiszerboltok webhely más Azure ad B2C szabályzatot hív meg, mint az egyes ügyfelek esetében.
 
 Ez a szabályzat bemutatja a felhasználónak, hogy a regisztrációhoz és a bejelentkezéshez a vállalati hitelesítő adatait használja. A WoodGrove-példában a felhasználók a munkahelyi vagy iskolai fiókkal való bejelentkezést kérik. Ez a szabályzat egy [több-bérlős Azure ad-alkalmazást](../active-directory/develop/howto-convert-app-to-be-multi-tenant.md) és az `/common` Azure ad-végpontot használja, hogy a világ bármely Microsoft 365 ügyfelével összevonása Azure ad B2C.
 
@@ -111,7 +111,7 @@ Ez a szabályzat bemutatja a felhasználónak, hogy a regisztrációhoz és a be
 
 A **Bejelentkezés a beszállítói fiók** hivatkozásával Azure Active Directory B2B's együttműködési funkciót használ. Az Azure AD B2B a Azure Active Directory funkcióinak családja a partneri identitások kezeléséhez. Ezek az identitások összevonhatók Azure Active Directoryból Azure AD B2C által védett alkalmazásokhoz való hozzáféréshez.
 
-További információ az Azure AD B2B-ről: [Mi a vendég felhasználói hozzáférés Azure Active Directory B2B-ben?](../active-directory/b2b/what-is-b2b.md).
+További információ az Azure AD B2B-ről: [Mi a vendég felhasználói hozzáférés Azure Active Directory B2B-ben?](../active-directory/external-identities/what-is-b2b.md).
 
 <!-- UNCOMMENT WHEN REPO IS UPDATED WITH LATEST DEMO CODE
 ### Sample code
@@ -121,7 +121,7 @@ If you'd like to jump right into the code to see how the WoodGrove Groceries app
 [Azure-Samples/active-directory-external-identities-woodgrove-demo][woodgrove-repo] (GitHub)
 -->
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már van egy ötlete arról, hogy milyen Azure AD B2C és milyen forgatókönyvek segíthetnek a működésében, mélyebben megismerheti a funkcióit és a technikai aspektusait.
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 7b76c81a78bfd3eb57a54f1d23ba1b154b09b3e6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: bcf5f75cf5cabe42f530a6a179c2cafd43b5520d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660151"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952539"
 ---
 # <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>Azure AD-identitás használata a gépi tanulási webszolgáltatással az Azure Kubernetes Service-ben
 
@@ -32,13 +32,13 @@ Ebben az útmutatóban megtudhatja, hogyan rendelhet hozzá egy Azure Active Dir
 
 ## <a name="create-and-install-an-azure-identity"></a>Azure-identitás létrehozása és telepítése
 
-1. A következő paranccsal megállapíthatja, hogy a RBAC engedélyezve van-e az AK-fürtön:
+1. A következő paranccsal megállapíthatja, hogy az AK-fürt Kubernetes-RBAC engedélyezve van-e:
 
     ```azurecli-interactive
     az aks show --name <AKS cluster name> --resource-group <resource group name> --subscription <subscription id> --query enableRbac
     ```
 
-    Ez a parancs egy értéket ad vissza, `true` Ha a RBAC engedélyezve van. Ez az érték határozza meg a következő lépésben használandó parancsot.
+    Ez a parancs egy értéket ad vissza, `true` Ha a KUBERNETES RBAC engedélyezve van. Ez az érték határozza meg a következő lépésben használandó parancsot.
 
 1. Telepítse az [Azure ad Pod-identitást](https://azure.github.io/aad-pod-identity/docs/getting-started/installation/) az AK-fürtbe.
 

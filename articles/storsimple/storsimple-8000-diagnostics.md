@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: ca674f38b5c327123bc1d13dd284f84f614881b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf0570cd62a2c329407cfb6dd087020f53cdc991
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91300445"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954069"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>Az 8000 sorozatú eszköz problémáinak elhárításához használja a StorSimple Diagnostics eszközt
 
@@ -332,7 +332,7 @@ Az alábbi példa az 8100-es eszköz kimenetét jeleníti meg. A kimenetben az a
 * A portálon nincs engedélyezve a 2-5-es érték.
 * A DNS-kiszolgáló konfigurációja érvényes, és az eszköz csatlakozhat a DNS-kiszolgálón keresztül.
 * Az NTP-kiszolgáló kapcsolata is rendben van.
-* A 80-es és a 443-es port nyitva van. Az 9354-as port azonban le van tiltva. A [rendszerhálózati követelmények](storsimple-system-requirements.md)alapján meg kell nyitnia ezt a portot a Service Bus-kommunikációhoz.
+* A 80-es és a 443-es port nyitva van. Az 9354-as port azonban le van tiltva. A [rendszerhálózati követelmények](./storsimple-8000-system-requirements.md)alapján meg kell nyitnia ezt a portot a Service Bus-kommunikációhoz.
 * A TLS/SSL-tanúsítvány érvényes.
 * Az eszköz kapcsolódni tud a Storage-fiókhoz: _myss8000storageacct_.
 * A frissítési kiszolgálókhoz való kapcsolódás érvényes.
@@ -388,7 +388,7 @@ Az eszköz használatához hajtsa végre a következő lépéseket:
 
     Ha a diagnosztikai eszköz által jelentett írási-olvasási késések magasak:
 
-    1. Konfigurálja Storage Analytics a blob Services számára, és elemezze a kimenetet az Azure Storage-fiók késésének megismeréséhez. Részletes útmutatásért lásd: [Storage Analytics engedélyezése és konfigurálása](../storage/common/storage-enable-and-view-metrics.md). Ha ezek a késések is nagyok és hasonlók az StorSimple Diagnostics eszköztől kapott számokhoz, akkor az Azure Storage szolgáltatásban kell naplóznia egy szolgáltatási kérelmet.
+    1. Konfigurálja Storage Analytics a blob Services számára, és elemezze a kimenetet az Azure Storage-fiók késésének megismeréséhez. Részletes útmutatásért lásd: [Storage Analytics engedélyezése és konfigurálása](../storage/blobs/monitor-blob-storage.md). Ha ezek a késések is nagyok és hasonlók az StorSimple Diagnostics eszköztől kapott számokhoz, akkor az Azure Storage szolgáltatásban kell naplóznia egy szolgáltatási kérelmet.
 
     2. Ha a tárolási fiók késése alacsony, forduljon a hálózati rendszergazdához, és vizsgálja meg a hálózat késésével kapcsolatos problémákat.
 
@@ -417,8 +417,8 @@ Itt látható egy táblázat, amely leírja, hogy a rendszerinformációk külö
 | PowerShell-paraméter    | Leírás  |
 |-------------------------|------------------|
 | Instance ID             | Minden vezérlő egyedi azonosítóval vagy a hozzá társított GUID azonosítóval rendelkezik.|
-| Name (Név)                    | Az eszköz rövid neve, amelyet az eszköz telepítése során a Azure Portal konfigurál. Az alapértelmezett felhasználóbarát név az eszköz sorozatszáma. |
-| Modell                   | A StorSimple 8000 sorozatú eszköz modellje. A modell 8100 vagy 8600 lehet.|
+| Name                    | Az eszköz rövid neve, amelyet az eszköz telepítése során a Azure Portal konfigurál. Az alapértelmezett felhasználóbarát név az eszköz sorozatszáma. |
+| Modellezés                   | A StorSimple 8000 sorozatú eszköz modellje. A modell 8100 vagy 8600 lehet.|
 | Sorozatszám            | Az eszköz sorozatszáma a gyárban van hozzárendelve, és 15 karakter hosszú. Például: 8600-SHX0991003G44HT azt jelzi, hogy:<br> 8600 – az eszköz modellje.<br>SHX – a gyártási hely.<br> 0991003 – egy adott termék. <br> G44HT – az utolsó 5 számjegy növekszik az egyedi sorozatszámok létrehozásához. Ez nem lehet szekvenciális készlet.|
 | TimeZone                | Az eszköz üzembe helyezése során a Azure Portal konfigurált eszköz időzónája.|
 | CurrentController       | Az a vezérlő, amelyhez a StorSimple-eszköz Windows PowerShell-felületén keresztül csatlakozik.|
@@ -440,6 +440,6 @@ Itt látható egy táblázat, amely leírja, hogy a rendszerinformációk külö
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A [Invoke-HcsDiagnostics parancsmag szintaxisának](https://technet.microsoft.com/library/mt795371.aspx)megismerése.
+* A [Invoke-HcsDiagnostics parancsmag szintaxisának](/previous-versions/windows/powershell-scripting/mt795371(v=wps.630))megismerése.
 
-* További információ a StorSimple-eszköz [üzembe helyezési problémáinak elhárításáról](storsimple-troubleshoot-deployment.md) .
+* További információ a StorSimple-eszköz [üzembe helyezési problémáinak elhárításáról](./storsimple-8000-troubleshoot-deployment.md) .

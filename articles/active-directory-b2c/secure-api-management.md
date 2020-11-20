@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0e8802d612f2497cc58c90856e9a5a5572a142f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60b7bb33dfbf29b7e448887ce992d03009133b2e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87482838"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953489"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Azure API Management API biztonságossá tétele Azure AD B2C
 
@@ -33,24 +33,24 @@ A cikk lépéseinek folytatása előtt a következő erőforrásokra van szüks�
 
 ## <a name="get-azure-ad-b2c-application-id"></a>Azure AD B2C alkalmazás AZONOSÍTÓjának beolvasása
 
-Ha az Azure-API Managementban található API-t Azure AD B2C használatával védi, több értékre van szüksége a APIM-ben létrehozott [bejövő házirendhez](../api-management/api-management-howto-policies.md) . Először jegyezze fel egy korábban a Azure AD B2C-bérlőben létrehozott alkalmazás AZONOSÍTÓját. Ha az előfeltételekben létrehozott alkalmazást használja, használja a *webbapp1*alkalmazás-azonosítóját.
+Ha az Azure-API Managementban található API-t Azure AD B2C használatával védi, több értékre van szüksége a APIM-ben létrehozott [bejövő házirendhez](../api-management/api-management-howto-policies.md) . Először jegyezze fel egy korábban a Azure AD B2C-bérlőben létrehozott alkalmazás AZONOSÍTÓját. Ha az előfeltételekben létrehozott alkalmazást használja, használja a *webbapp1* alkalmazás-azonosítóját.
 
-Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja az új, egységes **Alkalmazásregisztrációk** -élményt vagy az örökölt  **alkalmazások (örökölt)** felületét. [További információ az új felületről](https://aka.ms/b2cappregtraining).
+Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja az új, egységes **Alkalmazásregisztrációk** -élményt vagy az örökölt  **alkalmazások (örökölt)** felületét. [További információ az új felületről](./app-registrations-training-guide.md).
 
 #### <a name="app-registrations"></a>[Alkalmazásregisztrációk](#tab/app-reg-ga/)
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
-1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
-1. Válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza a **birtokolt alkalmazások** fület.
+1. A bal oldali menüben válassza a **Azure ad B2C** lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C** lehetőséget.
+1. Válassza a **Alkalmazásregisztrációk** lehetőséget, majd válassza a **birtokolt alkalmazások** fület.
 1. Jegyezze fel a *webapp1* vagy egy korábban létrehozott másik alkalmazáshoz tartozó **alkalmazás (ügyfél) azonosító** oszlopában található értéket.
 
 #### <a name="applications-legacy"></a>[Alkalmazások (örökölt)](#tab/applications-legacy/)
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
-1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
-1. A **kezelés**területen válassza az **alkalmazások (örökölt)** lehetőséget.
+1. A bal oldali menüben válassza a **Azure ad B2C** lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C** lehetőséget.
+1. A **kezelés** területen válassza az **alkalmazások (örökölt)** lehetőséget.
 1. Jegyezze fel a *webapp1* vagy egy korábban létrehozott másik alkalmazás **alkalmazás-azonosító** oszlopában található értéket.
 
 * * *
@@ -60,8 +60,8 @@ Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja
 Ezután szerezze be a jól ismert konfigurációs URL-címet az egyik Azure AD B2C felhasználói folyamathoz. Szüksége lesz az Azure API Management támogatni kívánt jogkivonat-kiállítói végpont URI-ra is.
 
 1. Tallózással keresse meg Azure AD B2C-bérlőjét a [Azure Portalban](https://portal.azure.com).
-1. A **házirendek**területen válassza a **felhasználói folyamatok**elemet.
-1. Válasszon ki egy meglévő szabályzatot, például *B2C_1_signupsignin1*, majd válassza a **felhasználói folyamat futtatása**lehetőséget.
+1. A **házirendek** területen válassza a **felhasználói folyamatok** elemet.
+1. Válasszon ki egy meglévő szabályzatot, például *B2C_1_signupsignin1*, majd válassza a **felhasználói folyamat futtatása** lehetőséget.
 1. Jegyezze fel az URL-címet a lap tetején található **felhasználói folyamat futtatása** fejléc alatt látható hiperhivatkozásban. Ez az URL-cím az OpenID Connect jól ismert felderítési végpontja a felhasználói folyamat számára, és a következő szakaszban azt használja, amikor konfigurálja a bejövő házirendet az Azure API Managementban.
 
     ![Jól ismert URI-hivatkozás a Azure Portal futtatása lapon](media/secure-apim-with-b2c-token/portal-01-policy-link.png)
@@ -88,7 +88,7 @@ Most már készen áll arra, hogy hozzáadja a bejövő szabályzatot az Azure A
 1. Válassza az **API-k** lehetőséget.
 1. Válassza ki azt az API-t, amelyet Azure AD B2C szeretne biztonságossá tenni.
 1. Válassza ki a **Tervezés** fület.
-1. A **bejövő feldolgozás**területen válassza **\</\>** a házirend-szerkesztő megnyitásához.
+1. A **bejövő feldolgozás** területen válassza **\</\>** a házirend-szerkesztő megnyitásához.
 1. Helyezze a következő `<validate-jwt>` címkét a `<inbound>` szabályzatba.
 
     1. Frissítse az `url` elem értékét a `<openid-config>` szabályzat jól ismert konfigurációs URL-címével.
@@ -126,11 +126,11 @@ Az API meghívásához a Azure AD B2C által kiállított hozzáférési jogkivo
 Először Azure AD B2C által kiállított jogkivonatra van szüksége, amelyet a `Authorization` Poster fejlécében kell használni. A regisztrálási/bejelentkezési felhasználói folyamat **Futtatás most** funkciójának használatával beszerezhet egyet, amelyet az előfeltételek egyikének kell létrehoznia.
 
 1. Tallózással keresse meg Azure AD B2C-bérlőjét a [Azure Portalban](https://portal.azure.com).
-1. A **házirendek**területen válassza a **felhasználói folyamatok**elemet.
+1. A **házirendek** területen válassza a **felhasználói folyamatok** elemet.
 1. Válasszon ki egy meglévő regisztrációs vagy bejelentkezési felhasználói folyamatot, például *B2C_1_signupsignin1*.
-1. **Alkalmazás**esetében válassza a *webapp1*lehetőséget.
-1. A **Válasz URL-címéhez**válassza a lehetőséget `https://jwt.ms` .
-1. Válassza a **felhasználói folyamat futtatása**lehetőséget.
+1. **Alkalmazás** esetében válassza a *webapp1* lehetőséget.
+1. A **Válasz URL-címéhez** válassza a lehetőséget `https://jwt.ms` .
+1. Válassza a **felhasználói folyamat futtatása** lehetőséget.
 
     ![Felhasználói folyamat futtatása lap a bejelentkezéshez használt felhasználói folyamat Azure Portal](media/secure-apim-with-b2c-token/portal-03-user-flow.png)
 
@@ -145,7 +145,7 @@ A közzétett API-t meghívó ügyfélalkalmazás (ebben az esetben a posta) ér
 
 1. Tallózással keresse meg az Azure API Management Service-példányt a [Azure Portalban](https://portal.azure.com).
 1. Válassza az **Előfizetések** lehetőséget.
-1. Válassza ki a termék három pontját **: korlátlan**, majd válassza a **kulcsok megjelenítése/elrejtése**lehetőséget.
+1. Válassza ki a termék három pontját **: korlátlan**, majd válassza a **kulcsok megjelenítése/elrejtése** lehetőséget.
 1. Jegyezze fel a termék **elsődleges kulcsát** . Ezt a kulcsot a `Ocp-Apim-Subscription-Key` Poster http-kérelmében szereplő fejlécre használja.
 
 ![Előfizetési kulcs lapja a Azure Portalban kiválasztott kulcsok megjelenítése/elrejtése elemnél](media/secure-apim-with-b2c-token/portal-04-api-subscription-key.png)
@@ -271,7 +271,7 @@ A következő példában a APIM bejövő házirendje azt szemlélteti, hogyan fo
 </policies>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure API Management-szabályzatokkal kapcsolatos további részletekért tekintse meg a [APIM házirend-referenciájának indexét](../api-management/api-management-policies.md).
 

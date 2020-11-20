@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cb833ff35dae4fe1c0c27204ec66fa6b4cdb82c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 340c9629af89bfacb85b37503743fc5770070ae3
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388884"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951842"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Testre szabhatja az alkalmazás felhasználói felületét egy egyéni házirend használatával Azure Active Directory B2C
 
@@ -34,7 +34,7 @@ Hajtsa végre az [Ismerkedés az egyéni szabályzatokkal](custom-policy-get-sta
 
 A felhasználói felület testreszabásának konfigurálásához másolja a **ContentDefinition** és annak alárendelt elemeit az alapfájlból a kiterjesztések fájlba.
 
-1. Nyissa meg a szabályzat alapfájlját. Például: <em>`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`**</em> . Ez az alapfájl az egyéni házirend alapszintű csomagban található egyik házirend-fájl, amelyet az előfeltételben kell megszereznie az [Egyéni szabályzatok használatának első lépéseiben](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
+1. Nyissa meg a szabályzat alapfájlját. Például: <em>`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`**</em> . Ez az alapfájl az egyéni házirend alapszintű csomagban található egyik házirend-fájl, amelyet az előfeltételben kell megszereznie az [Egyéni szabályzatok használatának első lépéseiben](./custom-policy-get-started.md).
 1. Keresse meg és másolja a **ContentDefinitions** elem teljes tartalmát.
 1. Nyissa meg a kiterjesztési fájlt. Például *TrustFrameworkExtensions.xml*. Keresse meg a **BuildingBlocks** elemet. Ha az elem nem létezik, adja hozzá.
 1. Illessze be a **ContentDefinitions** elem teljes tartalmát, amelyet a **BuildingBlocks** elem gyermekeiként másolt.
@@ -66,13 +66,13 @@ A felhasználói felület testreszabásának konfigurálásához másolja a **Co
 
 1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
 1. Keresse meg és válassza ki a **Azure ad B2C**.
-1. A **szabályzatok**területen válassza az **identitási élmény keretrendszere**elemet.
-1. Válassza az **egyéni házirend feltöltése**lehetőséget.
+1. A **szabályzatok** területen válassza az **identitási élmény keretrendszere** elemet.
+1. Válassza az **egyéni házirend feltöltése** lehetőséget.
 1. Töltse fel a korábban módosított kiterjesztéseket tartalmazó fájlt.
 
 #### <a name="52-test-the-custom-policy-by-using-run-now"></a>5,2 az egyéni házirend tesztelése a **Futtatás most** használatával
 
-1. Válassza ki a feltöltött szabályzatot, majd válassza a **Futtatás most**lehetőséget.
+1. Válassza ki a feltöltött szabályzatot, majd válassza a **Futtatás most** lehetőséget.
 1. Regisztrálnia kell egy e-mail-cím használatával.
 
 [!INCLUDE [active-directory-b2c-html-templates](../../includes/active-directory-b2c-html-templates.md)]
@@ -131,6 +131,6 @@ A Azure AD B2C a francia nyelvhez a két betűs ISO-kódot küldi el `fr` :
 https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a testreszabható felhasználói felületi elemekről: [útmutató a felhasználói folyamatokhoz használható felhasználói felület testreszabásához](customize-ui-overview.md).

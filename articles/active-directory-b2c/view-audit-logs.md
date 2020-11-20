@@ -12,18 +12,18 @@ ms.date: 02/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4fc25edb873a2dfe84f6ca716a71cf028c74cb2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9485fb09d3ac7684ba91bcd37720a0e55603404b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85383937"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952726"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Azure AD B2C naplók elérése
 
 A Azure Active Directory B2C (Azure AD B2C) a B2C-erőforrásokkal, a kiállított jogkivonatokkal és a rendszergazdai hozzáféréssel kapcsolatos tevékenységeket tartalmazó naplókat bocsát ki. Ez a cikk röviden áttekinti a naplókban elérhető információkat, és leírja, hogyan férhet hozzá ezekhez az adatokhoz a Azure AD B2C bérlőhöz.
 
-A naplózási naplózási események csak **hét napig**őrződnek meg. Tervezze meg a naplók letöltését és tárolását az alább látható módszerek valamelyikével, ha hosszabb megőrzési időtartamra van szüksége.
+A naplózási naplózási események csak **hét napig** őrződnek meg. Tervezze meg a naplók letöltését és tárolását az alább látható módszerek valamelyikével, ha hosszabb megőrzési időtartamra van szüksége.
 
 > [!NOTE]
 > Az egyes Azure AD B2C alkalmazásokhoz tartozó felhasználói bejelentkezések nem jelennek meg a Azure Portal **Azure Active Directory** vagy **Azure ad B2C** lapjain a **felhasználók** szakaszban. A bejelentkezési események felhasználói tevékenységet mutatnak, de nem kapcsolhatók vissza arra a B2C-alkalmazásra, amelyhez a felhasználó bejelentkezett. Az ehhez szükséges naplókat a jelen cikkben ismertetett módon kell használni.
@@ -53,7 +53,7 @@ A tevékenység részletei panel a következő releváns információkat tartalm
 
 |Section|Mező|Leírás|
 |-------|-----|-----------|
-| Tevékenység | Név | Melyik tevékenység történt. Tegyük fel például, *hogy kiállít egy id_token az alkalmazáshoz*, amely a tényleges felhasználói bejelentkezést vonja le. |
+| Tevékenység | Name | Melyik tevékenység történt. Tegyük fel például, *hogy kiállít egy id_token az alkalmazáshoz*, amely a tényleges felhasználói bejelentkezést vonja le. |
 | Kezdeményező (színész) | ObjectId | Annak a B2C-alkalmazásnak az **azonosítója** , amelyhez a felhasználó bejelentkezik. Ez az azonosító nem látható a Azure Portalban, de a Microsoft Graph API-n keresztül érhető el. |
 | Kezdeményező (színész) | SPN | Annak a B2C-alkalmazásnak az **azonosítója** , amelyhez a felhasználó bejelentkezik. |
 | Cél(ok) | ObjectId | A bejelentkezett felhasználó **objektumazonosító** . |
@@ -67,7 +67,7 @@ A Azure Portal hozzáférést biztosít a Azure AD B2C bérlő naplójának esem
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
 1. Váltson arra a könyvtárra, amely a Azure AD B2C bérlőt tartalmazza, majd keresse meg **Azure ad B2C**.
-1. A bal oldali menü **tevékenységek** területén válassza a **naplók**lehetőséget.
+1. A bal oldali menü **tevékenységek** területén válassza a **naplók** lehetőséget.
 
 Megjelenik az elmúlt hét napban naplózott tevékenységi események listája.
 
@@ -80,11 +80,11 @@ Több szűrési lehetőség is elérhető, beleértve a következőket:
 
 Ha kijelöl egy sort a listában, a program megjeleníti az esemény tevékenységének részleteit.
 
-Ha le szeretné tölteni a tevékenységi események listáját egy vesszővel tagolt (CSV) fájlban, válassza a **Letöltés**lehetőséget.
+Ha le szeretné tölteni a tevékenységi események listáját egy vesszővel tagolt (CSV) fájlban, válassza a **Letöltés** lehetőséget.
 
 ## <a name="get-audit-logs-with-the-azure-ad-reporting-api"></a>Naplók beszerzése az Azure AD Reporting API-val
 
-A naplók ugyanazon a folyamaton lesznek közzétéve, mint a Azure Active Directory egyéb tevékenységei, így azok a [Azure Active Directory jelentési API](https://docs.microsoft.com/graph/api/directoryaudit-list)-n keresztül érhetők el. További információ: Ismerkedés [a Azure Active Directory Reporting API-val](../active-directory/reports-monitoring/concept-reporting-api.md).
+A naplók ugyanazon a folyamaton lesznek közzétéve, mint a Azure Active Directory egyéb tevékenységei, így azok a [Azure Active Directory jelentési API](/graph/api/directoryaudit-list)-n keresztül érhetők el. További információ: Ismerkedés [a Azure Active Directory Reporting API-val](../active-directory/reports-monitoring/concept-reporting-api.md).
 
 ### <a name="enable-reporting-api-access"></a>Jelentéskészítési API-hozzáférés engedélyezése
 
@@ -221,6 +221,6 @@ Itt látható a cikkben korábban bemutatott példa tevékenység esemény JSON-
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Más felügyeleti feladatokat is automatizálhat, például [felügyelheti Azure ad B2C felhasználói fiókjait Microsoft Graph](manage-user-accounts-graph-api.md)használatával.

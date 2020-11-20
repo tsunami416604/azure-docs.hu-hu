@@ -11,19 +11,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2020
 ms.author: damendo
-ms.openlocfilehash: 4d308b8a1a589308e2481c8bb9e0dc9ec64be25b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad60b0be8a9a5341c71d760f98c0db84a72763c2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90995282"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951519"
 ---
 # <a name="introduction-to-network-configuration-diagnostics-in-azure-network-watcher"></a>Az Azure-beli hálózati konfigurációs diagnosztika bemutatása Network Watcher
 
 A hálózati konfiguráció diagnosztikai eszköze segít az ügyfeleknek megérteni, hogy az Azure-Virtual Network mely adatforgalom engedélyezett vagy tagadható meg, valamint részletes információkkal a hibakereséshez. Segítheti a megértését, ha helyesen vannak konfigurálva a NSG-szabályok. 
 
 ## <a name="pre-requisites"></a>Előfeltételek
-A hálózati konfigurációs diagnosztika használatához engedélyezni kell Network Watcher az előfizetésében. Lásd: [Azure Network Watcher-példány létrehozása](https://docs.microsoft.com/azure/network-watcher/network-watcher-create) az engedélyezéshez.
+A hálózati konfigurációs diagnosztika használatához engedélyezni kell Network Watcher az előfizetésében. Lásd: [Azure Network Watcher-példány létrehozása](./network-watcher-create.md) az engedélyezéshez.
 
 ## <a name="background"></a>Háttér
 
@@ -39,7 +39,6 @@ Egy adott folyamat esetében a NCD eszköz futtatja a folyamat szimulációját,
 ## <a name="next-steps"></a>Következő lépések
 
 Hálózati konfigurációs diagnosztika használata más felületeken keresztül
- - [REST API](https://docs.microsoft.com/rest/api/network-watcher/networkwatchers/getnetworkconfigurationdiagnostic)
- - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/invoke-aznetworkwatchernetworkconfigurationdiagnostic?view=azps-4.6.1)
- - [Azure CLI](https://docs.microsoft.com/cli/azure/network/watcher?view=azure-cli-latest#az_network_watcher_run_configuration_diagnostic)
-
+ - [REST API](/rest/api/network-watcher/networkwatchers/getnetworkconfigurationdiagnostic)
+ - [PowerShell](/powershell/module/az.network/invoke-aznetworkwatchernetworkconfigurationdiagnostic?view=azps-4.6.1)
+ - [Azure CLI](/cli/azure/network/watcher?view=azure-cli-latest#az_network_watcher_run_configuration_diagnostic)

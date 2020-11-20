@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: a88894bb7462e9ac3afd16d69ae820dd98543a5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29116d880a51444eb45a351e2118a07d13873043
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259373"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953848"
 ---
 # <a name="tutorial-for-configuring-experian-with-azure-active-directory-b2c"></a>Oktatóanyag a Experian konfigurálásához a Azure Active Directory B2C
 
@@ -42,7 +42,7 @@ A kezdéshez a következőkre lesz szüksége:
 
 - Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
 
-- [Egy Azure ad B2C bérlő](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) , amely az Azure-előfizetéshez van csatolva.
+- [Egy Azure ad B2C bérlő](./tutorial-create-tenant.md) , amely az Azure-előfizetéshez van csatolva.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -77,14 +77,14 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 ### <a name="part-1---deploy-the-api"></a>1. rész – az API üzembe helyezése
 
-A megadott [API-kód](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/Experian/CrossCoreIntegrationApi/CrossCoreIntegrationApi.sln) üzembe helyezése egy Azure-szolgáltatásban. A kód a Visual studióból is közzétehető, ezeket az [utasításokat](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)követve.
+A megadott [API-kód](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/Experian/CrossCoreIntegrationApi/CrossCoreIntegrationApi.sln) üzembe helyezése egy Azure-szolgáltatásban. A kód a Visual studióból is közzétehető, ezeket az [utasításokat](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)követve.
 
 >[!NOTE]
 >Szüksége lesz az üzembe helyezett szolgáltatás URL-címére az Azure AD konfigurálásához a szükséges beállításokkal.
 
 ### <a name="part-2---deploy-the-client-certificate"></a>2. rész – az ügyféltanúsítvány üzembe helyezése
 
-A Experian API-hívást egy ügyféltanúsítvány védi. Ezt az ügyféltanúsítványt a Experian biztosítja. A jelen [dokumentumban](https://docs.microsoft.com/azure/app-service/environment/certificates#private-client-certificate)említett utasításokat követve a tanúsítványt fel kell tölteni az Azure app Service-be. A minta házirend ezeket a kulcsokat a következő folyamat során használja:
+A Experian API-hívást egy ügyféltanúsítvány védi. Ezt az ügyféltanúsítványt a Experian biztosítja. A jelen [dokumentumban](../app-service/environment/certificates.md#private-client-certificate)említett utasításokat követve a tanúsítványt fel kell tölteni az Azure app Service-be. A minta házirend ezeket a kulcsokat a következő folyamat során használja:
 
 - A tanúsítvány feltöltése
 
@@ -92,9 +92,9 @@ A Experian API-hívást egy ügyféltanúsítvány védi. Ezt az ügyféltanús�
 
 ### <a name="part-3---configure-the-api"></a>3. rész – az API konfigurálása
 
-[Az Alkalmazásbeállítások konfigurálhatók az Azure app Service-ben](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings). Ezzel a módszerrel a beállítások biztonságosan konfigurálhatók egy adattárba való ellenőrzés nélkül. A REST API-hoz a következő beállításokat kell megadnia:
+[Az Alkalmazásbeállítások konfigurálhatók az Azure app Service-ben](../app-service/configure-common.md#configure-app-settings). Ezzel a módszerrel a beállítások biztonságosan konfigurálhatók egy adattárba való ellenőrzés nélkül. A REST API-hoz a következő beállításokat kell megadnia:
 
-| Alkalmazásbeállítások | Forrás | Jegyzetek |
+| Alkalmazásbeállítások | Forrás | Megjegyzések |
 | :-------- | :------------| :-----------|
 |CrossCoreConfig: TenantId | Experian-fiók konfigurálása |     |
 |CrossCoreConfig:OrgCode | Experian-fiók konfigurálása |     |
@@ -110,7 +110,7 @@ A Experian API-hívást egy ügyféltanúsítvány védi. Ezt az ügyféltanús�
 
 ### <a name="part-4---create-api-policy-keys"></a>4. rész – API-szabályzatok kulcsainak létrehozása
 
-Tekintse meg ezt a [dokumentumot](https://docs.microsoft.com/azure/active-directory-b2c/secure-rest-api#add-rest-api-username-and-password-policy-keys) , és hozzon létre két házirend-kulcsot – egyet az API-felhasználónévhez, egyet pedig a fentiekben megadott API-jelszóhoz a http alapszintű hitelesítéshez.
+Tekintse meg ezt a [dokumentumot](./secure-rest-api.md#add-rest-api-username-and-password-policy-keys) , és hozzon létre két házirend-kulcsot – egyet az API-felhasználónévhez, egyet pedig a fentiekben megadott API-jelszóhoz a http alapszintű hitelesítéshez.
 
 >[!NOTE]
 >A szabályzatok konfigurálásához később szükség lesz a kulcsokra.
@@ -133,7 +133,7 @@ A megadott [Egyéni szabályzatokban](https://github.com/azure-ad-b2c/partner-in
 
 ### <a name="part-6---configure-the-azure-ad-b2c-policy"></a>6. rész – a Azure AD B2C házirend konfigurálása
 
-Tekintse át ezt a [dokumentumot](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack) , amely útmutatást nyújt a Azure ad B2C bérlő beállításához és a házirendek konfigurálásához.
+Tekintse át ezt a [dokumentumot](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack) , amely útmutatást nyújt a Azure ad B2C bérlő beállításához és a házirendek konfigurálásához.
 
 >[!NOTE]
 >Ez a minta házirend a [helyi fiókok kezdő csomagjára](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)épül.
@@ -143,7 +143,7 @@ Tekintse át ezt a [dokumentumot](https://docs.microsoft.com/azure/active-direct
 
 ## <a name="test-the-user-flow"></a>A felhasználói folyamat tesztelése
 
-1. Nyissa meg a Azure AD B2C bérlőt, és a házirendek területen válassza a **felhasználói folyamatok**lehetőséget.
+1. Nyissa meg a Azure AD B2C bérlőt, és a házirendek területen válassza a **felhasználói folyamatok** lehetőséget.
 
 2. Válassza ki a korábban létrehozott **felhasználói folyamatot**.
 
@@ -153,7 +153,7 @@ Tekintse át ezt a [dokumentumot](https://docs.microsoft.com/azure/active-direct
 
    b. **Válasz URL-címe**: válassza ki az **átirányítási URL-címet**
 
-   c. Válassza a **felhasználói folyamat futtatása**lehetőséget.
+   c. Válassza a **felhasználói folyamat futtatása** lehetőséget.
 
 4. Ugorjon a regisztrációs folyamatra, és hozzon létre egy fiókot
 
@@ -161,12 +161,12 @@ Tekintse át ezt a [dokumentumot](https://docs.microsoft.com/azure/active-direct
 
 6. Bejelentkezési folyamat átugrása  
 
-7. A **folytatáshoz**a CrossCore-puzzle jelenik meg.
+7. A **folytatáshoz** a CrossCore-puzzle jelenik meg.
 
 ## <a name="next-steps"></a>Következő lépések
 
 További információkért tekintse át a következő cikkeket:
 
-- [Egyéni szabályzatok az Azure AD B2C-ben](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Egyéni szabályzatok az Azure AD B2C-ben](./custom-policy-overview.md)
 
-- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](./custom-policy-get-started.md?tabs=applications)

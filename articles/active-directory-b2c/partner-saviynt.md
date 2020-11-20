@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 8406074933489e53e9235a8a6a05b68f1dd42a85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 184616058cb2a86025eb75b4923e374ab42ebf05
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259136"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953559"
 ---
 # <a name="tutorial-for-configuring-saviynt-with-azure-active-directory-b2c"></a>Oktatóanyag a Saviynt konfigurálásához a Azure Active Directory B2C
 
@@ -36,7 +36,7 @@ A kezdéshez a következőkre lesz szüksége:
 
 - Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
 
-- [Azure ad B2C bérlő](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant). A bérlő az Azure-előfizetéshez van csatolva.
+- [Azure ad B2C bérlő](./tutorial-create-tenant.md). A bérlő az Azure-előfizetéshez van csatolva.
 
 - Saviynt- [előfizetés](https://saviynt.com/contact-us/)
 
@@ -48,7 +48,7 @@ A Saviynt-integráció a következő összetevőket tartalmazza:
 
 - [Saviynt](https://saviynt.com/integrations/azure-ad/for-b2c/) – a személyazonosság-irányítási platform, amely részletesen delegált felügyeletet biztosít a felhasználói életciklus kezeléséhez és a Azure ad B2C felhasználók hozzáférésének irányításához.  
 
-- [Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api) – ez az API biztosítja a Saviynt számára a Azure ad B2C felhasználók és a hozzájuk tartozó hozzáférések Azure ad B2Cban való kezeléséhez szükséges interfészeket.
+- [Microsoft Graph API](/graph/use-the-api) – ez az API biztosítja a Saviynt számára a Azure ad B2C felhasználók és a hozzájuk tartozó hozzáférések Azure ad B2Cban való kezeléséhez szükséges interfészeket.
 
 A következő architektúra-diagram a megvalósítást mutatja be.
 
@@ -69,7 +69,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 1. Saviynt-fiók létrehozásához forduljon a [Saviynt](https://saviynt.com/contact-us/)
 
-2. Delegált felügyeleti házirendek létrehozása és felhasználók társítása [delegált rendszergazdaként](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-concept-delegation) különböző szerepkörökkel.
+2. Delegált felügyeleti házirendek létrehozása és felhasználók társítása [delegált rendszergazdaként](../active-directory/users-groups-roles/roles-concept-delegation.md) különböző szerepkörökkel.
 
 ## <a name="configure-azure-ad-b2c-with-saviynt"></a>Azure AD B2C konfigurálása a Saviynt
 
@@ -79,25 +79,25 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 2. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 
-3. A Azure Portal keresse meg és válassza a **Azure ad B2C**lehetőséget.
+3. A Azure Portal keresse meg és válassza a **Azure ad B2C** lehetőséget.
 
-4. Válassza **Alkalmazásregisztrációk**  >  **új regisztráció**lehetőséget.
+4. Válassza **Alkalmazásregisztrációk**  >  **új regisztráció** lehetőséget.
 
-5. Adja meg az alkalmazás nevét. Például Saviynt, majd válassza a **Létrehozás**lehetőséget.
+5. Adja meg az alkalmazás nevét. Például Saviynt, majd válassza a **Létrehozás** lehetőséget.
 
 6. Lépjen az **API-engedélyek** elemre, és válassza **a + engedély hozzáadása elemet.**
 
 7. Megjelenik a kérelem API-engedélyek lap. Válassza a **Microsoft API** -k fület, és a leggyakrabban használt Microsoft API-kkal válassza a **Microsoft Graph** lehetőséget.
 
-8. Lépjen a következő lapra, és válassza az **alkalmazás engedélyei**lehetőséget.
+8. Lépjen a következő lapra, és válassza az **alkalmazás engedélyei** lehetőséget.
 
-9. Válassza a **könyvtár**lehetőséget, majd a **könyvtár. Read. All** és a **Directory. ReadWrite. All** jelölőnégyzetet.
+9. Válassza a **könyvtár** lehetőséget, majd a **könyvtár. Read. All** és a **Directory. ReadWrite. All** jelölőnégyzetet.
 
-10. Válassza az **engedélyek hozzáadása**lehetőséget. Tekintse át a hozzáadott engedélyeket.
+10. Válassza az **engedélyek hozzáadása** lehetőséget. Tekintse át a hozzáadott engedélyeket.
 
-11. Válassza **a rendszergazdai jóváhagyás megadása az alapértelmezett címtár számára**  >  **Mentés**lehetőséget.
+11. Válassza **a rendszergazdai jóváhagyás megadása az alapértelmezett címtár számára**  >  **Mentés** lehetőséget.
 
-12. Nyissa meg a **tanúsítványok és titkok** lehetőséget, majd válassza az **+ ügyfél titkos kulcsának hozzáadása**elemet. Adja meg az ügyfél titkos kulcsának leírását, válassza a lejárat lehetőséget, majd kattintson a **Hozzáadás**gombra.
+12. Nyissa meg a **tanúsítványok és titkok** lehetőséget, majd válassza az **+ ügyfél titkos kulcsának hozzáadása** elemet. Adja meg az ügyfél titkos kulcsának leírását, válassza a lejárat lehetőséget, majd kattintson a **Hozzáadás** gombra.
 
 13. Létrejön a titkos kulcs, és megjelenik az ügyfél titkos kulcsa szakaszban.
 
@@ -113,7 +113,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 Az alábbi lépések azt ismertetik, hogyan engedélyezhető a Saviynt a felhasználói törlési műveletek végrehajtásához a Azure AD B2Cban.
 
 >[!NOTE]
->[Értékelje ki a kockázatot, mielőtt hozzáférést adna a rendszergazdai szerepkörökhöz egy egyszerű szolgáltatáshoz.](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
+>[Értékelje ki a kockázatot, mielőtt hozzáférést adna a rendszergazdai szerepkörökhöz egy egyszerű szolgáltatáshoz.](../active-directory/develop/app-objects-and-service-principals.md)
 
 1. Telepítse a MSOnline PowerShell-modul legújabb verzióját egy Windows Workstation/Server rendszerre.
 
@@ -133,8 +133,8 @@ Keresse meg a Saviynt-bérlőt, és tesztelje a felhasználói életciklus kezel
 
 További információkért tekintse át a következő cikkeket:
 
-- [Egyéni szabályzatok az Azure AD B2C-ben](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Egyéni szabályzatok az Azure AD B2C-ben](./custom-policy-overview.md)
 
-- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](./custom-policy-get-started.md?tabs=applications)
 
-- [Webes API-alkalmazás létrehozása](https://docs.microsoft.com/azure/active-directory-b2c/add-web-api-application)
+- [Webes API-alkalmazás létrehozása](./add-web-api-application.md)

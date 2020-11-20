@@ -5,14 +5,14 @@ services: web-application-firewall
 ms.topic: article
 author: winthrop28
 ms.service: web-application-firewall
-ms.date: 10/14/2020
+ms.date: 11/19/2020
 ms.author: victorh
-ms.openlocfilehash: 0f7fec997ec6d0c73fe6d1039ab1033752e0cedf
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 9fb8bf689e2767f681994258c4d2c51be41d6c68
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566571"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952131"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Az Azure webalkalmazási tűzfal (WAF) szabályzatának áttekintése
 
@@ -53,7 +53,7 @@ Ez a globális szabályzat alkalmas a contoso.com és a fabrikam.com, de körül
 
 A adatum.com/payments URI-ja az, ahol óvatosnak kell lennie. Ezért alkalmazzon egy másik szabályzatot az URI-ra, és hagyja az összes szabályt, és távolítsa el az összes kivételt is.
 
-Ebben a példában egy globális szabályzattal rendelkezik, amely két helyre vonatkozik. Van egy helyhez tartozó szabályzata, amely egy adott helyre vonatkozik, majd egy URI-házirend, amely egy adott elérésiút-alapú szabályra vonatkozik. Lásd: (hivatkozás beszúrása itt, ha létezik) útmutató – a jelen példában a megfelelő PowerShellhez hozzon létre egy-egy webhelyre és egy URI-szabályzatot.
+Ebben a példában egy globális szabályzattal rendelkezik, amely két helyre vonatkozik. Van egy helyhez tartozó szabályzata, amely egy adott helyre vonatkozik, majd egy URI-házirend, amely egy adott elérésiút-alapú szabályra vonatkozik. A jelen példában a megfelelő PowerShell-lel kapcsolatban lásd: [WAF házirendek konfigurálása Azure PowerShell használatával](per-site-policies.md) .
 
 ## <a name="existing-waf-configurations"></a>Meglévő WAF-konfigurációk
 

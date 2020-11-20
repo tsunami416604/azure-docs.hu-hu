@@ -11,19 +11,19 @@ ms.topic: how-to
 ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 558e6cea4d5e0c9bd0f6222f9070d2b867a5bf44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6064bd2c62922abea44508b8bf6cdfa3e7ecbc92
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85384940"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953304"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: bejelentkezés iOS-alkalmazás használatával
 
 A Microsoft identitásplatformja nyílt szabványokat, többek között OAuth2-t és OpenID Connectet használ. A nyílt szabványú protokoll használatával további fejlesztői lehetőségek közül választhat, amikor kijelöl egy könyvtárat a szolgáltatásokkal való integrációhoz. Ezt a bemutatót és másokat, például a Microsoft Identity platformhoz kapcsolódó alkalmazások írásához segítséget nyújt a fejlesztőknek. [A RFC6749 OAuth2 SPECT](https://tools.ietf.org/html/rfc6749) megvalósító kódtárak többsége képes csatlakozni a Microsoft Identity platformhoz.
 
 > [!WARNING]
-> A Microsoft nem biztosít javításokat harmadik féltől származó tárak számára, és nem végzett felülvizsgálatot ezen könyvtárakon. Ez a minta egy AppAuth nevű harmadik féltől származó könyvtárat használ, amely a Azure AD B2C segítségével alapszintű forgatókönyvekben való kompatibilitásra lett tesztelve. A problémákat és a szolgáltatási kérelmeket a könyvtár nyílt forráskódú projektjeire kell irányítani. További információkért tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries).
+> A Microsoft nem biztosít javításokat harmadik féltől származó tárak számára, és nem végzett felülvizsgálatot ezen könyvtárakon. Ez a minta egy AppAuth nevű harmadik féltől származó könyvtárat használ, amely a Azure AD B2C segítségével alapszintű forgatókönyvekben való kompatibilitásra lett tesztelve. A problémákat és a szolgáltatási kérelmeket a könyvtár nyílt forráskódú projektjeire kell irányítani. További információkért tekintse meg [ezt a cikket](../active-directory/develop/reference-v2-libraries.md).
 >
 >
 
@@ -45,8 +45,8 @@ Az egyéni átirányítási URI-t is rögzítheti egy későbbi lépésben való
 ## <a name="create-your-user-flows"></a>Felhasználói folyamatok létrehozása
 Azure AD B2C minden felhasználói élményt egy [felhasználói folyamat](user-flow-overview.md)definiál. Ez az alkalmazás egyetlen identitási élményt tartalmaz: egy kombinált bejelentkezést és egy regisztrációt. A felhasználói folyamat létrehozásakor ügyeljen arra, hogy:
 
-* A **regisztrálási attribútumok**területen válassza ki az attribútum **megjelenítendő nevét**.  Más attribútumok is kiválaszthatók.
-* Az **alkalmazás jogcímei**területen válassza ki a jogcímek **megjelenítendő nevét** és a **felhasználó objektumának azonosítóját**. Más jogcímeket is kijelölhet.
+* A **regisztrálási attribútumok** területen válassza ki az attribútum **megjelenítendő nevét**.  Más attribútumok is kiválaszthatók.
+* Az **alkalmazás jogcímei** területen válassza ki a jogcímek **megjelenítendő nevét** és a **felhasználó objektumának azonosítóját**. Más jogcímeket is kijelölhet.
 * A létrehozás után másolja az egyes felhasználói folyamatok **nevét** . A felhasználói folyamat neve `b2c_1_` a felhasználói folyamat mentésekor előtaggal van ellátva.  A felhasználói folyamat nevét később kell megadnia.
 
 Miután létrehozta a felhasználói folyamatokat, készen áll az alkalmazás létrehozására.

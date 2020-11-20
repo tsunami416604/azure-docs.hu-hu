@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 8ebfbeeb4533f21bc0fa10a5fee7b88ef069c262
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8eca6297a704e1ef478c09baf227cf622d6890bb
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84298847"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953151"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Oktatóanyag: Node.js webes API-khoz való hozzáférés engedélyezése egy asztali alkalmazásból az Azure Active Directory B2C használatával
 
@@ -49,29 +49,29 @@ Az asztali alkalmazás konfigurálásakor a hatókör alatt lévő értéket jeg
 
 A védett webes API-k natív ügyfélalkalmazások általi meghívásához meg kell adnia a regisztrált natív ügyfélalkalmazás-engedélyeket a Azure AD B2C regisztrált webes API-hoz.
 
-Az előfeltételként szolgáló oktatóanyagban regisztrált egy *nativeapp1*nevű natív ügyfélalkalmazás. A következő lépésekkel konfigurálhatja, hogy a natív alkalmazás regisztrálása az előző szakaszban *webapi1* elérhető API-hatókörökkel történjen. Ez lehetővé teszi, hogy az asztali alkalmazás olyan hozzáférési jogkivonatot szerezzen be Azure AD B2Ctól, amelyet a webes API használhat az erőforrásokhoz való hatókörön belüli hozzáférés ellenőrzéséhez és biztosításához. Az oktatóanyag későbbi részében az asztali alkalmazás és a webes API-kód is konfigurálható és futtatható.
+Az előfeltételként szolgáló oktatóanyagban regisztrált egy *nativeapp1* nevű natív ügyfélalkalmazás. A következő lépésekkel konfigurálhatja, hogy a natív alkalmazás regisztrálása az előző szakaszban *webapi1* elérhető API-hatókörökkel történjen. Ez lehetővé teszi, hogy az asztali alkalmazás olyan hozzáférési jogkivonatot szerezzen be Azure AD B2Ctól, amelyet a webes API használhat az erőforrásokhoz való hatókörön belüli hozzáférés ellenőrzéséhez és biztosításához. Az oktatóanyag későbbi részében az asztali alkalmazás és a webes API-kód is konfigurálható és futtatható.
 
-Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja az új, egységes **Alkalmazásregisztrációk** -élményt vagy az örökölt  **alkalmazások (örökölt)** felületét. [További információ az új felületről](https://aka.ms/b2cappregtraining).
+Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja az új, egységes **Alkalmazásregisztrációk** -élményt vagy az örökölt  **alkalmazások (örökölt)** felületét. [További információ az új felületről](./app-registrations-training-guide.md).
 
 #### <a name="app-registrations"></a>[Alkalmazásregisztrációk](#tab/app-reg-ga/)
 
-1. Válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza ki azt a natív ügyfélalkalmazás-alkalmazást, amelynek hozzáféréssel kell RENDELKEZNIE az API-hoz. Például: *nativeapp1*.
-1. A **kezelés**területen válassza az **API-engedélyek**lehetőséget.
-1. A **konfigurált engedélyek**területen válassza **az engedély hozzáadása**elemet.
+1. Válassza a **Alkalmazásregisztrációk** lehetőséget, majd válassza ki azt a natív ügyfélalkalmazás-alkalmazást, amelynek hozzáféréssel kell RENDELKEZNIE az API-hoz. Például: *nativeapp1*.
+1. A **kezelés** területen válassza az **API-engedélyek** lehetőséget.
+1. A **konfigurált engedélyek** területen válassza **az engedély hozzáadása** elemet.
 1. Válassza a **saját API** -k fület.
 1. Válassza ki azt az API-t, amelyhez hozzáférést szeretne adni a natív ügyfélalkalmazás számára. Például: *webapi1*.
-1. Az **engedély**területen bontsa ki a **bemutató**elemet, majd válassza ki a korábban definiált hatóköröket. Például: *bemutató. Read* és *demo. Write*.
-1. Válassza az **engedélyek hozzáadása**lehetőséget. Az utasítás szerint várjon néhány percet, mielőtt továbblép a következő lépésre.
+1. Az **engedély** területen bontsa ki a **bemutató** elemet, majd válassza ki a korábban definiált hatóköröket. Például: *bemutató. Read* és *demo. Write*.
+1. Válassza az **engedélyek hozzáadása** lehetőséget. Az utasítás szerint várjon néhány percet, mielőtt továbblép a következő lépésre.
 1. Válassza a **rendszergazdai jóváhagyás megadása (a bérlő neve)** lehetőséget.
 1. Válassza ki a jelenleg bejelentkezett rendszergazdai fiókot, vagy jelentkezzen be egy olyan fiókkal a Azure AD B2C-bérlőben, amely legalább a *Cloud Application Administrator* szerepkörhöz van rendelve.
 1. Válassza ki az **Elfogadás** lehetőséget.
-1. Válassza a **frissítés**lehetőséget, majd ellenőrizze, hogy a "engedélyezve..." mindkét hatókör **állapota** alatt jelenik meg. Eltarthat néhány percig, amíg az engedélyek propagálása megtörténik.
+1. Válassza a **frissítés** lehetőséget, majd ellenőrizze, hogy a "engedélyezve..." mindkét hatókör **állapota** alatt jelenik meg. Eltarthat néhány percig, amíg az engedélyek propagálása megtörténik.
 
 #### <a name="applications-legacy"></a>[Alkalmazások (örökölt)](#tab/applications-legacy/)
 
-1. Válassza az **alkalmazások (örökölt)** lehetőséget, majd válassza a *nativeapp1*lehetőséget.
-1. Válassza az **API-hozzáférés**lehetőséget, majd kattintson a **Hozzáadás**gombra.
-1. Az **API kiválasztása** legördülő menüben válassza a *webapi1*lehetőséget.
+1. Válassza az **alkalmazások (örökölt)** lehetőséget, majd válassza a *nativeapp1* lehetőséget.
+1. Válassza az **API-hozzáférés** lehetőséget, majd kattintson a **Hozzáadás** gombra.
+1. Az **API kiválasztása** legördülő menüben válassza a *webapi1* lehetőséget.
 1. A **hatókörök kiválasztása** legördülő menüben válassza ki a korábban definiált hatóköröket. Például: *bemutató. Read* és *demo. Write*.
 1. Válassza az **OK** lehetőséget.
 

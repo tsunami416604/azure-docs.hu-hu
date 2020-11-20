@@ -11,12 +11,12 @@ ms.date: 11/30/2018
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1d631c47225fac7d8a95541313593333a1399e07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2233dbd7b0e669c23397b4bc6a84f2bfdc208391
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87115965"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952811"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Egyéni attribútumok definiálása a Azure Active Directory B2Cban
 
@@ -36,20 +36,20 @@ ms.locfileid: "87115965"
     ![B2C-bérlő kiemelve a címtár-és előfizetés-szűrőben](./media/user-flow-custom-attributes/select-directory.PNG)
 
 3. Válassza az Azure Portal bal felső sarkában található **Minden szolgáltatás** lehetőséget, majd keresse meg és válassza ki az **Azure AD B2C**-t.
-4. Válassza ki a **felhasználói attribútumok**elemet, majd kattintson a **Hozzáadás**gombra.
+4. Válassza ki a **felhasználói attribútumok** elemet, majd kattintson a **Hozzáadás** gombra.
 5. Adja meg az egyéni attribútum **nevét** (például "ShoeSize").
-6. Válassza ki az **adattípust**. Csak a **String**, a **Boolean**és az **int** érték érhető el.
+6. Válassza ki az **adattípust**. Csak a **String**, a **Boolean** és az **int** érték érhető el.
 7. Igény szerint megadhat egy **leírást** az információs célokra.
-8. Kattintson a **Létrehozás** elemre.
+8. Kattintson a **Létrehozás** gombra.
 
-Az egyéni attribútum már elérhető a **felhasználói attribútumok** listájában és a felhasználói folyamatokban való használathoz. Egyéni attribútum csak akkor jön létre, amikor az első alkalommal használja a felhasználói folyamatokban, és nem, amikor hozzáadja a **felhasználói attribútumok**listájához.
+Az egyéni attribútum már elérhető a **felhasználói attribútumok** listájában és a felhasználói folyamatokban való használathoz. Egyéni attribútum csak akkor jön létre, amikor az első alkalommal használja a felhasználói folyamatokban, és nem, amikor hozzáadja a **felhasználói attribútumok** listájához.
 
 ## <a name="use-a-custom-attribute-in-your-user-flow"></a>Egyéni attribútum használata a felhasználói folyamatokban
 
-1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok**lehetőséget.
+1. A Azure AD B2C-bérlőben válassza a **felhasználói folyamatok** lehetőséget.
 1. Válassza ki a szabályzatot (például "B2C_1_SignupSignin") a megnyitásához.
 1. Válassza ki a **felhasználói attribútumok** elemet, majd válassza ki az egyéni attribútumot (például "ShoeSize"). Kattintson a **Mentés** gombra.
 1. Válassza ki az **alkalmazás jogcímeit** , majd válassza ki az egyéni attribútumot.
 1. Kattintson a **Mentés** gombra.
 
-Miután létrehozott egy új felhasználót egy olyan felhasználói folyamattal, amely az újonnan létrehozott egyéni attribútumot használja, az objektum [Microsoft Graph Explorerben](https://developer.microsoft.com/graph/graph-explorer)kérdezhető le. Azt is megteheti, hogy a felhasználói folyamat [Futtatás felhasználói folyamat futtatása](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows) funkciójával ellenőrzi az ügyfél élményét. Ekkor látnia kell a **ShoeSize** a regisztrációs útvonalon összegyűjtött attribútumok listájában, és az alkalmazásnak visszaadott tokenben tekintheti meg.
+Miután létrehozott egy új felhasználót egy olyan felhasználói folyamattal, amely az újonnan létrehozott egyéni attribútumot használja, az objektum [Microsoft Graph Explorerben](https://developer.microsoft.com/graph/graph-explorer)kérdezhető le. Azt is megteheti, hogy a felhasználói folyamat [Futtatás felhasználói folyamat futtatása](./tutorial-create-user-flows.md) funkciójával ellenőrzi az ügyfél élményét. Ekkor látnia kell a **ShoeSize** a regisztrációs útvonalon összegyűjtött attribútumok listájában, és az alkalmazásnak visszaadott tokenben tekintheti meg.

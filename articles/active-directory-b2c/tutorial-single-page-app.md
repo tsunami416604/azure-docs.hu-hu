@@ -11,12 +11,12 @@ ms.custom: mvc, seo-javascript-september2019, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 6daf2da5b5bac051ac110ff15ed2c44971300a30
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 705df6ddc6b665ac3d0d62ec3dad93e38f5e513e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421039"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953100"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>Oktatóanyag: hitelesítés engedélyezése egyoldalas alkalmazásban Azure AD B2C
 
@@ -53,7 +53,7 @@ Emellett a helyi fejlesztési környezetben a következőkre lesz szüksége:
 
 Az előfeltételek részeként elvégzett [második oktatóanyagban](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-spa) egy egyoldalas alkalmazást regisztrált Azure ad B2Cban. Ebben az oktatóanyagban a kód mintával való kommunikáció engedélyezéséhez adjon hozzá egy válasz URL-címet (más néven átirányítási URI-t) az alkalmazás regisztrálásához.
 
-Ha frissíteni szeretne egy alkalmazást a Azure AD B2C-bérlőben, használhatja az új egyesített **Alkalmazásregisztrációk** -élményt vagy az örökölt  **alkalmazások (örökölt)** felületét. [További információ az új felületről](https://aka.ms/b2cappregtraining).
+Ha frissíteni szeretne egy alkalmazást a Azure AD B2C-bérlőben, használhatja az új egyesített **Alkalmazásregisztrációk** -élményt vagy az örökölt  **alkalmazások (örökölt)** felületét. [További információ az új felületről](./app-registrations-training-guide.md).
 
 #### <a name="app-registrations-auth-code-flow"></a>[Alkalmazásregisztrációk (Auth-kód folyamatábrája)](#tab/app-reg-auth/)
 
@@ -62,7 +62,7 @@ Ha frissíteni szeretne egy alkalmazást a Azure AD B2C-bérlőben, használhatj
 1. A bal oldali menüben válassza a **Azure ad B2C** lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C** lehetőséget.
 1. Válassza a **Alkalmazásregisztrációk** lehetőséget, válassza a **birtokolt alkalmazások** fület, majd válassza ki a *spaapp1* alkalmazást.
 1. Az **egyoldalas alkalmazás** területen válassza az **URI hozzáadása** hivatkozást, majd írja be a értéket `http://localhost:6420` .
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 1. Válassza az **Áttekintés** lehetőséget.
 1. Jegyezze fel az **alkalmazás (ügyfél) azonosítóját** egy későbbi lépésben való használatra, amikor frissíti a kódot az egyoldalas webalkalmazásban.
 
@@ -84,7 +84,7 @@ Ha frissíteni szeretne egy alkalmazást a Azure AD B2C-bérlőben, használhatj
 1. Válassza az **összes szolgáltatás** elemet a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 1. Válassza az **alkalmazások (örökölt)** lehetőséget, majd válassza ki a *spaapp1* alkalmazást.
 1. A **Válasz URL-cím** területen adja hozzá a címet `http://localhost:6420` .
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 1. A Tulajdonságok lapon jegyezze fel az **alkalmazás azonosítóját**. Az alkalmazás-azonosítót egy későbbi lépésben kell használni, amikor frissíti a kódot az egyoldalas webalkalmazásban.
 
 * * *
@@ -141,7 +141,7 @@ Az eredményül kapott kódnak az alábbihoz hasonlóan kell kinéznie:
 
 #### <a name="auth-code-flow-sample"></a>[Auth kód flow-minta](#tab/review-auth/)
 
-*authConfig.js* :
+*authConfig.js*:
 
 ```javascript
 const msalConfig = {
@@ -165,7 +165,7 @@ const tokenRequest = {
 };
 ```
 
-*policies.js* :
+*policies.js*:
 
 ```javascript
 const b2cPolicies = {
@@ -189,7 +189,7 @@ const b2cPolicies = {
 }
 ```
 
-*apiConfig.js* :
+*apiConfig.js*:
 
 ```javascript
 const apiConfig = {
@@ -200,7 +200,7 @@ const apiConfig = {
 
 #### <a name="implicit-flow-sample"></a>[Implicit folyamat mintája](#tab/review-implicit/)
 
-*authConfig.js* :
+*authConfig.js*:
 
 ```javascript
 const msalConfig = {
@@ -224,7 +224,7 @@ const tokenRequest = {
 };
 ```
 
-*policies.js* :
+*policies.js*:
 
 ```javascript
 const b2cPolicies = {
@@ -247,7 +247,7 @@ const b2cPolicies = {
 }
 ```
 
-*apiConfig.js* :
+*apiConfig.js*:
 
 ```javascript
 const apiConfig = {
@@ -318,7 +318,7 @@ Ezen a ponton az alkalmazás továbbra is megpróbál kommunikálni a bemutató 
 
 A védett API engedélyezéséhez lépjen a sorozat következő oktatóanyagára (lásd a [következő lépések](#next-steps) szakaszt).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy egyoldalas alkalmazást konfigurált a Azure AD B2C-bérlő felhasználói folyamatával való együttműködéshez a regisztrálási és bejelentkezési képesség biztosításához. A következő lépéseket végezte el:
 

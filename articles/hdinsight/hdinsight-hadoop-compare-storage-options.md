@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: a866a225da87c22a3a276a5d59b8e86f1f955cae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34eeeed2b3c44336cd4aa1219d54b1811c6988f5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856194"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952318"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>A tárolási lehetőségek összehasonlítása az Azure HDInsight-fürtökkel való használathoz
 
@@ -36,6 +36,8 @@ A következő táblázat összefoglalja a HDInsight különböző verziói álta
 |Azure Storage| Általános célú v1 | Objektum | Blob | Standard | N/A | Mind | Mind |
 |Azure Storage| Blob Storage * * | Objektum | BLOB letiltása | Standard | Gyors elérésű, ritka elérésű Archívum | Mind | Mind |
 |1. generációs Azure Data Lake Storage| N.A. | Hierarchikus (fájlrendszer) | N.A. | N.A. | N.A. | 3,6 csak | A HBase kivételével |
+|Azure Storage| BLOB letiltása| Objektum | BLOB letiltása | Prémium | N.A.| 3.6 + | Csak a gyorsított írási HBase|
+|2. generációs Azure Data Lake Storage| BLOB letiltása| Hierarchikus (fájlrendszer) | BLOB letiltása | Prémium | N.A.| 3.6 + | Csak a gyorsított írási HBase|
 
 * * A HDInsight-fürtök esetében csak a másodlagos Storage-fiókok lehetnek BlobStorage, és az oldal Blobja nem támogatott tárolási lehetőség.
 
@@ -48,14 +50,14 @@ A fürtöket az elsődleges és választható másodlagos tárolók szolgáltat�
 | HDInsight verziója | Elsődleges tárterület | Másodlagos tároló | Támogatott |
 |---|---|---|---|
 | 3,6 & 4,0 | Általános célú v1, általános célú v2 | Általános célú v1, általános célú v2, BlobStorage (blokk Blobok) | Igen |
-| 3,6 & 4,0 | Általános célú v1, általános célú v2 | 2. generációs Data Lake Storage | Nem |
-| 3,6 & 4,0 | Data Lake Storage Gen2 * | 2. generációs Data Lake Storage | Igen |
+| 3,6 & 4,0 | Általános célú v1, általános célú v2 | Data Lake Storage Gen2 | Nem |
+| 3,6 & 4,0 | Data Lake Storage Gen2 * | Data Lake Storage Gen2 | Igen |
 | 3,6 & 4,0 | Data Lake Storage Gen2 * | Általános célú v1, általános célú v2, BlobStorage (blokk Blobok) | Igen |
-| 3,6 & 4,0 | 2. generációs Data Lake Storage | Data Lake Storage Gen1 | Nem |
+| 3,6 & 4,0 | Data Lake Storage Gen2 | Data Lake Storage Gen1 | Nem |
 | 3,6 | Data Lake Storage Gen1 | Data Lake Storage Gen1 | Igen |
 | 3,6 | Data Lake Storage Gen1 | Általános célú v1, általános célú v2, BlobStorage (blokk Blobok) | Igen |
 | 3,6 | Data Lake Storage Gen1 | Data Lake Storage Gen2 | Nem |
-| 4,0 | Data Lake Storage Gen1 | Bármelyik | Nem |
+| 4,0 | Data Lake Storage Gen1 | Bármely | Nem |
 | 4,0 | Általános célú v1, általános célú v2 | Data Lake Storage Gen1 | Nem |
 
 * = Ez lehet egy vagy több Data Lake Storage Gen2, feltéve, hogy minden beállítás ugyanazt a felügyelt identitást használja a fürt eléréséhez.

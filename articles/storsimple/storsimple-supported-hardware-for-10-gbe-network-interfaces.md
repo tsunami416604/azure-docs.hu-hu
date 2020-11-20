@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/21/2016
 ms.author: alkohli
-ms.openlocfilehash: 7fafe177ea0c6c618dc4ab0727ba14c83cbb0102
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd30c7ec15eadd3d7945349a8aae4ac824bfdc7f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68965017"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954086"
 ---
 # <a name="supported-hardware-for-the-10-gbe-network-interfaces-on-your-storsimple-device"></a>A StorSimple-eszköz 10 GbE hálózati adapterének támogatott hardverei
 
@@ -32,12 +32,12 @@ Ez a cikk a Microsoft Azure StorSimple eszközzel használható kiegészítő ha
 A Microsoft a következő kisméretű (SFP) adóvevők, kábelek és kapcsolók tesztelésével biztosítja, hogy optimálisan működjenek az eszközökkel. (A következő táblázatok frissülnek az új hardver tesztelésekor.)
 
 ### <a name="sfp-transceivers"></a>SFP + adóvevők
-| Gyártó | Modell |
+| Gyártó | Modellezés |
 | --- | --- |
 | Cisco |SFP-10G-SR |
 
 ### <a name="cables"></a>Kábelek
-| S. Nem. | Gyártó | Modell |
+| S. Nem. | Gyártó | Modellezés |
 | --- | --- | --- |
 | 1. |Cisco |SFP-H10GB-CU1M |
 | 2. |Cisco |SFP-H10GB-CU2M |
@@ -45,7 +45,7 @@ A Microsoft a következő kisméretű (SFP) adóvevők, kábelek és kapcsolók 
 | 4. |Tripp-Lite |N820-05M (OM3) |
 
 ### <a name="switches"></a>Switchek
-| S. Nem. | Gyártó | Modell |
+| S. Nem. | Gyártó | Modellezés |
 | --- | --- | --- |
 | 1. |Cisco |N3K-C3172PQ-10GE |
 | 2. |Cisco |N3K-C3048-ZM-F |
@@ -73,7 +73,7 @@ A Mellanox a következő kisméretű (SFP) adóvevők, kábelek és kapcsolók t
 ### <a name="cables-and-modules-supported-by-mellanox"></a>A Mellanox által támogatott kábelek és modulok
 A következő táblázat felsorolja a Mellanox által támogatott kábeleket és modulokat. Ezeket a Microsoft nem tesztelte, de valószínűleg működik a StorSimple-eszközzel.
 
-| S. Nem. | Sebesség | Modell | Leírás | Gyártó |
+| S. Nem. | Sebesség | Modellezés | Leírás | Gyártó |
 | --- | --- | --- | --- | --- |
 | 1. |10 GbE |CAB-SFP-SFP-1M |passzív réz kábel SFP + 10 GB/s 1M |Arista |
 | 2. |10 GbE |CAB-SFP-SFP-2M |passzív réz kábel SFP + 10 GB/s 2m |Arista |
@@ -114,7 +114,7 @@ A következő táblázat felsorolja a Mellanox által támogatott kábeleket és
 ### <a name="switches-supported-by-mellanox"></a>A Mellanox által támogatott kapcsolók
 A következő táblázat felsorolja a Mellanox által támogatott kapcsolókat. Ezeket a Microsoft nem tesztelte, de valószínűleg működik a StorSimple-eszközzel.
 
-| S. Nem. | Sebesség | Modell | Leírás | Gyártó |
+| S. Nem. | Sebesség | Modellezés | Leírás | Gyártó |
 | --- | --- | --- | --- | --- |
 | 1. |10 GbE |516733 – B21 |HP-előgörbe 6120XG 10 GbE Ethernet panel kapcsoló |HP |
 | 2. |10 GbE |538113 – B21 |HP 10 GbE Pass-Through modul (PTM) |HP |
@@ -124,6 +124,5 @@ A következő táblázat felsorolja a Mellanox által támogatott kapcsolókat. 
 | 6. |1 GbE |438030 – B21 |HP 1 GbE kapcsoló modul – GbE2c réteg 2/3 Ethernet panel kapcsoló |HP |
 | 7. |1 GbE |6120G |HP-görbe 6120G/XG 1 GbE kapcsoló panelje |HP |
 
-## <a name="next-steps"></a>További lépések
-[További információ a StorSimple hardveres összetevőiről és állapotáról](storsimple-monitor-hardware-status.md).
-
+## <a name="next-steps"></a>Következő lépések
+[További információ a StorSimple hardveres összetevőiről és állapotáról](./storsimple-8000-monitor-hardware-status.md).

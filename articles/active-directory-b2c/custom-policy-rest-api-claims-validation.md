@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 30273c0103d8a0fde12b1b7c6f66d16dd4ea84cb
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 761bc4db7760ef5e84e3fc3c8a5deea5d4508f51
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089519"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951927"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-to-validate-user-input"></a>Bemutató: REST API jogcímek cseréje a Azure AD B2C felhasználói úton a felhasználói bevitel érvényesítéséhez
 
@@ -65,7 +65,7 @@ Ha az ellenőrzés nem sikerült, a REST API HTTP 409 (ütközés) értéket kel
 }
 ```
 
-A REST API végpont beállítása kívül esik a jelen cikk hatókörén. Létrehoztunk egy [Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) mintát. Az Azure-függvény teljes kódját a [githubon](https://github.com/azure-ad-b2c/rest-api/tree/master/source-code/azure-function)érheti el.
+A REST API végpont beállítása kívül esik a jelen cikk hatókörén. Létrehoztunk egy [Azure functions](../azure-functions/functions-reference.md) mintát. Az Azure-függvény teljes kódját a [githubon](https://github.com/azure-ad-b2c/rest-api/tree/master/source-code/azure-function)érheti el.
 
 ## <a name="define-claims"></a>Jogcímek meghatározása
 
@@ -233,12 +233,12 @@ Ha vissza szeretné állítani a promóciós kód jogcímet a függő entitás a
 1. Győződjön meg arról, hogy az Azure AD-bérlőt tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki az Azure ad-bérlőt tartalmazó könyvtárat.
 1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Alkalmazásregisztrációk**.
 1. Válassza az **identitási élmény keretrendszert**.
-1. Válassza az **egyéni házirend feltöltése**lehetőséget, majd töltse fel a módosított házirend-fájlokat: *TrustFrameworkExtensions.xml*és *SignUpOrSignin.xml*. 
+1. Válassza az **egyéni házirend feltöltése** lehetőséget, majd töltse fel a módosított házirend-fájlokat: *TrustFrameworkExtensions.xml* és *SignUpOrSignin.xml*. 
 1. Válassza ki a feltöltött regisztrációs vagy bejelentkezési szabályzatot, majd kattintson a **Futtatás most** gombra.
 1. Regisztrálnia kell egy e-mail-cím használatával.
 1. Kattintson a **regisztrálás most** hivatkozásra.
-1. A **saját hűség-azonosítójában**írja be a 1234 értéket, majd kattintson a **Folytatás**gombra. Ezen a ponton egy érvényesítési hibaüzenet jelenik meg.
-1. Váltson át egy másik értékre, és kattintson a **Folytatás**gombra.
+1. A **saját hűség-azonosítójában** írja be a 1234 értéket, majd kattintson a **Folytatás** gombra. Ezen a ponton egy érvényesítési hibaüzenet jelenik meg.
+1. Váltson át egy másik értékre, és kattintson a **Folytatás** gombra.
 1. Az alkalmazásnak visszaadott jogkivonat tartalmazza a `promoCode` jogcímet.
 
 ```json

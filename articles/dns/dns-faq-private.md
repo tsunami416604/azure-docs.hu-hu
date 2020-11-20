@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
 ms.author: rohink
-ms.openlocfilehash: 9d183f2da7b916b1547fa1f81aa877b1b5488b41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24f2ca238288854b99160a25c3d4dcedf8ce3368
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91308435"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952386"
 ---
 # <a name="azure-private-dns-faq"></a>Azure Private DNS – gyakori kérdések
 
@@ -34,7 +34,7 @@ Nem. A privát zónák a virtuális hálózatokkal együtt működnek. A haszná
 
 ## <a name="can-the-same-private-zone-be-used-for-several-virtual-networks-for-resolution"></a>Használható-e ugyanaz a privát zóna a megoldáshoz több virtuális hálózat esetében is?
 
-Igen. A privát DNS-zónák több ezer virtuális hálózattal is összekapcsolhatók. További információ: [Azure DNS korlátok](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits)
+Igen. A privát DNS-zónák több ezer virtuális hálózattal is összekapcsolhatók. További információ: [Azure DNS korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-dns-limits)
 
 ## <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-linked-to-a-private-zone"></a>Egy másik előfizetéshez tartozó virtuális hálózat egy privát zónához van csatolva?
 
@@ -75,11 +75,11 @@ Igen. A privát zónák nem cserélik le az alapértelmezett Azure által biztos
 ## <a name="will-the-dns-suffix-on-virtual-machines-within-a-linked-virtual-network-be-changed-to-that-of-the-private-zone"></a>A rendszer a társított virtuális hálózaton belüli virtuális gépek DNS-utótagját a privát zónára módosítja?
 
 Nem. A társított virtuális hálózatban lévő virtuális gépek DNS-utótagja az alapértelmezett Azure által biztosított utótag ("*. internal.cloudapp.net") marad. Ezt a DNS-utótagot manuálisan is módosíthatja a virtuális gépeken a saját zónában.
-Az utótag módosításával kapcsolatos útmutatásért lásd: [dinamikus DNS használata a gazdagépek regisztrálásához a saját DNS-kiszolgálón](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-ddns#windows-clients)
+Az utótag módosításával kapcsolatos útmutatásért lásd: [dinamikus DNS használata a gazdagépek regisztrálásához a saját DNS-kiszolgálón](../virtual-network/virtual-networks-name-resolution-ddns.md#windows-clients)
 
 ## <a name="what-are-the-usage-limits-for-azure-dns-private-zones"></a>Mik a Azure DNS privát zónák használati korlátai?
 
-Azure DNS privát zónák használati korlátaival kapcsolatos részletekért tekintse meg a [Azure DNS korlátozásait](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits) .
+Azure DNS privát zónák használati korlátaival kapcsolatos részletekért tekintse meg a [Azure DNS korlátozásait](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-dns-limits) .
 
 ## <a name="why-dont-my-existing-private-dns-zones-show-up-in-new-portal-experience"></a>Miért nem jelennek meg a meglévő privát DNS-zónák az új portálon?
 
