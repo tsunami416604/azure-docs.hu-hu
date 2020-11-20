@@ -733,8 +733,10 @@
           items:
             - name: Migrálás a Data Lake Storage Gen1-ből
               href: data-lake-storage-migrate-gen1-to-gen2.md
-            - name: Helyszíni HDFS-tároló migrálása
+            - name: HDFS-tároló offline migrálása
               href: data-lake-storage-migrate-on-premises-HDFS-cluster.md
+            - name: HDFS-tároló online migrálása
+              href: migrate-gen2-wandisco-live-data-platform.md
         - name: Kezelés
           items:
             - name: .NET

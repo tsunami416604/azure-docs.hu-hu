@@ -3,18 +3,21 @@ title: Azure Event Grid kézbesítés és újrapróbálkozás
 description: Leírja, hogy Azure Event Grid hogyan kézbesíti az eseményeket, és hogyan kezeli a kézbesítetlen üzeneteket.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 483a868022d4ae8f7c564e51344dfbede4314232
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 7bf8fd3a647e28d18a7ca1e658761f9226d1153a
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042950"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981102"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid üzenet kézbesítése és újrapróbálkozás
 
 Ez a cikk azt ismerteti, hogyan kezeli a Azure Event Grid az eseményeket, amikor a kézbesítés nem ismerhető fel.
 
-Event Grid tartós kézbesítést biztosít. Minden egyes előfizetéshez legalább egyszer kézbesít minden üzenetet. Az eseményeket azonnal elküldi az egyes előfizetések regisztrált végpontjának. Ha egy végpont nem igazolja egy esemény fogadását, Event Grid újrapróbálkozik az esemény kézbesítésével.
+Event Grid tartós kézbesítést biztosít. Minden egyes előfizetéshez **legalább egyszer** kézbesít minden üzenetet. Az eseményeket azonnal elküldi az egyes előfizetések regisztrált végpontjának. Ha egy végpont nem igazolja egy esemény fogadását, Event Grid újrapróbálkozik az esemény kézbesítésével.
+
+> [!NOTE]
+> A Event Grid nem garantálja az események kézbesítésének sorrendjét, így az előfizető a rendeléstől függetlenül is megkaphatja őket. 
 
 ## <a name="batched-event-delivery"></a>Kötegelt esemény kézbesítése
 

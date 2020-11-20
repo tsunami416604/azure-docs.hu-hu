@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 11/19/2020
 tags: connectors
-ms.openlocfilehash: c0e8743d78c8eeafb5bdeb6ade783d5e75991f91
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: b8f95e7e173dd6d1ad43301aab8ff3ec7cf78018
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94330988"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981000"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Bejövő HTTPS-kérések fogadása és válasza Azure Logic Apps
 
@@ -153,7 +153,7 @@ A logikai alkalmazás csak [korlátozott ideig](../logic-apps/logic-apps-limits-
 
 1. Az alábbi lépéseket követve ellenőrizheti, hogy a bejövő hívás rendelkezik-e a megadott sémának megfelelő kérelem törzsével:
 
-   1. A kérelem triggerének címsorában válassza az ellipszisek ( **..**.) gombot.
+   1. A kérelem triggerének címsorában válassza az ellipszisek (**..**.) gombot.
 
    1. Az trigger beállításainak bekapcsolásához kapcsolja be a **séma érvényesítése** elemet, majd kattintson a **kész** gombra.
 
@@ -190,9 +190,9 @@ A logikai alkalmazás csak [korlátozott ideig](../logic-apps/logic-apps-limits-
    > [!NOTE]
    > Ha a kivonatot vagy a font szimbólumot () az URI-ban szeretné felvenni a **#** kérelem-trigger hívása során, használja inkább a következő kódolt verziót: `%25%23`
 
-1. A logikai alkalmazás elindításához küldjön egy HTTP-BEJEGYZÉST a generált URL-címre.
+1. A logikai alkalmazás teszteléséhez küldjön HTTP-kérést a generált URL-címre.
 
-   Használhat például egy olyan eszközt, mint például a [Poster](https://www.getpostman.com/) a http post küldését. Az trigger alapjául szolgáló JSON-definícióval és az trigger meghívásával kapcsolatos további információkért tekintse meg a következő témaköröket: [trigger típusának](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) és [hívásának, triggerének vagy beágyazásának munkafolyamatai http-végpontokkal Azure Logic apps](../logic-apps/logic-apps-http-endpoint.md).
+   Használhat például egy olyan eszközt, mint például a [Poster](https://www.getpostman.com/) a HTTP-kérelem elküldéséhez. Az trigger alapjául szolgáló JSON-definícióval és az trigger meghívásával kapcsolatos további információkért tekintse meg a következő témaköröket: [trigger típusának](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) és [hívásának, triggerének vagy beágyazásának munkafolyamatai http-végpontokkal Azure Logic apps](../logic-apps/logic-apps-http-endpoint.md).
 
 További információ a biztonságról: hitelesítés és titkosítás a logikai alkalmazásba érkező bejövő hívásokhoz, például [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security), korábbi nevén SSL (SSL), [Azure Active Directory nyílt hitelesítés (Azure ad OAuth)](../active-directory/develop/index.yml), a logikai alkalmazás Azure-beli API Management való kimutatása, illetve a bejövő hívásokat kezdeményező IP-címek korlátozása: a [kérelmeken alapuló eseményindítók számára a biztonságos hozzáférés és az adatokhoz való hozzáférés](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
 
@@ -264,7 +264,7 @@ Ha a kérelem triggert használja a bejövő kérések kezelésére, modellezhet
 
 1. Ha elkészült, mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Biztonságos hozzáférés és adathozzáférés a beérkező hívások számára a kérelmeken alapuló eseményindítók számára](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)
 * [Összekötők a Logic Apps számára](../connectors/apis-list.md)

@@ -9,7 +9,7 @@
   items:
     - name: Új jelszó önkiszolgáló kérésének engedélyezése
       href: tutorial-enable-sspr.md
-    - name: Az Azure Multi-Factor Authentication engedélyezése
+    - name: Az Azure AD többtényezős hitelesítés engedélyezése
       href: tutorial-enable-azure-mfa.md
     - name: Jelszóvisszaíró engedélyezése a helyszíni rendszerhez
       href: tutorial-enable-sspr-writeback.md
@@ -80,7 +80,7 @@
           href: howto-sspr-authenticationdata.md
         - name: SSPR Windows rendszerű ügyfelekhez
           href: howto-sspr-windows.md
-    - name: Azure Multi-Factor Authentication
+    - name: Azure AD többtényezős hitelesítés
       items:
         - name: Üzembehelyezési útmutató
           href: howto-mfa-getstarted.md
@@ -108,7 +108,7 @@
               href: howto-mfa-nps-extension.md
             - name: Speciális konfiguráció az NPS-bővítményhez
               href: howto-mfa-nps-extension-advanced.md
-            - name: Az Azure VPN és az Azure MFA
+            - name: Azure VPN és Azure AD MFA
               href: ../../vpn-gateway/vpn-gateway-radius-mfa-nsp.md
             - name: Távoli asztali átjáró
               href: howto-mfa-nps-extension-rdg.md

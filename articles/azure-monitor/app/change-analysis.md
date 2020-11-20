@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: ed29bfc099ce401288c07db863207a1d989a5e0d
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 36e73ceddaa5e3f9cbbf4a41f76a4ba6d70eed0f
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168273"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94979963"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Alkalmazás-módosítási elemzés (előzetes verzió) használata Azure Monitor
 
@@ -43,7 +43,7 @@ A beállítások, például az IP-konfigurációs szabály, a TLS-beállítások
 
 ### <a name="changes-in-web-app-deployment-and-configuration-in-guest-changes"></a>A webalkalmazások telepítésének és konfigurációjának változásai (a vendég módosításaiban)
 
-A Change Analysis egy alkalmazás központi telepítési és konfigurációs állapotát 4 óránként rögzíti. Képes azonosítani például az alkalmazás környezeti változóinak változásait. Az eszköz kiszámítja a különbségeket, és bemutatja, hogy mi változott. A Resource Manager változásaitól eltérően előfordulhat, hogy a programkód-telepítési változási információk nem lesznek azonnal elérhetők az eszközön. A Change Analysis legújabb változásainak megtekintéséhez válassza a **frissítés**lehetőséget.
+A Change Analysis egy alkalmazás központi telepítési és konfigurációs állapotát 4 óránként rögzíti. Képes azonosítani például az alkalmazás környezeti változóinak változásait. Az eszköz kiszámítja a különbségeket, és bemutatja, hogy mi változott. A Resource Manager változásaitól eltérően előfordulhat, hogy a programkód-telepítési változási információk nem lesznek azonnal elérhetők az eszközön. A Change Analysis legújabb változásainak megtekintéséhez válassza a **frissítés** lehetőséget.
 
 ![Képernyőkép a "változások ellenőrzése most" gombról](./media/change-analysis/scan-changes.png)
 
@@ -91,13 +91,13 @@ Azure Monitor a Change Analysis az önkiszolgáló **diagnosztizálása és a pr
 
 ### <a name="application-change-analysis-in-the-diagnose-and-solve-problems-tool"></a>Alkalmazás-változási elemzés a problémák diagnosztizálása és megoldása eszközben
 
-Az Application Change Analysis egy önálló detektor a webalkalmazásban a problémák diagnosztizálásához és megoldásához. Az **alkalmazás összeomlik** és a **webalkalmazás-leállási érzékelők**is összesítve vannak. A problémák diagnosztizálása és megoldása eszköz beírása után a **Microsoft. ChangeAnalysis** erőforrás-szolgáltató automatikusan regisztrálva lesz. Kövesse az alábbi utasításokat a webalkalmazás vendégen belüli módosítás-követésének engedélyezéséhez.
+Az Application Change Analysis egy önálló detektor a webalkalmazásban a problémák diagnosztizálásához és megoldásához. Az **alkalmazás összeomlik** és a **webalkalmazás-leállási érzékelők** is összesítve vannak. A problémák diagnosztizálása és megoldása eszköz beírása után a **Microsoft. ChangeAnalysis** erőforrás-szolgáltató automatikusan regisztrálva lesz. Kövesse az alábbi utasításokat a webalkalmazás vendégen belüli módosítás-követésének engedélyezéséhez.
 
 1. Válassza ki **a rendelkezésre állást és a teljesítményt**.
 
     ![Képernyőkép a "rendelkezésre állás és teljesítmény" hibaelhárítási lehetőségeiről](./media/change-analysis/availability-and-performance.png)
 
-2. Válassza az **alkalmazás módosítása**lehetőséget. A funkció az **alkalmazások összeomlása**során is elérhető.
+2. Válassza az **alkalmazás módosítása** lehetőséget. A funkció az **alkalmazások összeomlása** során is elérhető.
 
    ![Képernyőkép az "alkalmazás-összeomlások" gombról](./media/change-analysis/application-changes.png)
 
@@ -105,7 +105,7 @@ Az Application Change Analysis egy önálló detektor a webalkalmazásban a prob
 
    ![Képernyőkép az "alkalmazás-összeomlások" lehetőségeiről](./media/change-analysis/enable-changeanalysis.png)
 
-4. Kapcsolja be az **elemzést** , és válassza a **Mentés**lehetőséget. Az eszköz az összes webalkalmazást megjeleníti App Service csomag alatt. A csomag szintje kapcsoló használatával bekapcsolhatja a tervben szereplő összes webalkalmazáshoz tartozó változások elemzését.
+4. Kapcsolja be az **elemzést** , és válassza a **Mentés** lehetőséget. Az eszköz az összes webalkalmazást megjeleníti App Service csomag alatt. A csomag szintje kapcsoló használatával bekapcsolhatja a tervben szereplő összes webalkalmazáshoz tartozó változások elemzését.
 
     ![Képernyőfelvétel: a Change Analysis felhasználói felületének engedélyezése](./media/change-analysis/change-analysis-on.png)
 
@@ -172,7 +172,7 @@ foreach ($webapp in $webapp_list)
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
 ### <a name="having-trouble-registering-microsoftchange-analysis-resource-provider-from-change-history-tab"></a>Nem sikerült regisztrálni a Microsoftot. módosítsa az elemzési erőforrás-szolgáltatót a változási előzmények lapról
-Ha első alkalommal tekinti meg a változási előzményeket az alkalmazás-módosítási elemzéssel való integráció után, akkor azt fogja látni, hogy automatikusan regisztrálja a **Microsoft. ChangeAnalysis**erőforrás-szolgáltatót. Ritka esetekben előfordulhat, hogy a következő okok miatt sikertelenek lehetnek:
+Ha első alkalommal tekinti meg a változási előzményeket az alkalmazás-módosítási elemzéssel való integráció után, akkor azt fogja látni, hogy automatikusan regisztrálja a **Microsoft. ChangeAnalysis** erőforrás-szolgáltatót. Ritka esetekben előfordulhat, hogy a következő okok miatt sikertelenek lehetnek:
 
 - **Nem rendelkezik elegendő engedélyekkel a Microsoft. ChangeAnalysis erőforrás-szolgáltató regisztrálásához**. Ez a hibaüzenet azt jelenti, hogy a jelenlegi előfizetésben szereplő szerepkörhöz nincs társítva a **Microsoft. support/register/Action** hatókör. Ez akkor fordulhat elő, ha nem Ön az előfizetés tulajdonosa, és megosztott hozzáférési engedélyekkel rendelkezik egy munkatárson keresztül. például egy erőforráscsoport elérésének megtekintése. A probléma megoldásához vegye fel a kapcsolatot az előfizetés tulajdonosával a **Microsoft. ChangeAnalysis** erőforrás-szolgáltató regisztrálásához. Ez a Azure Portal előfizetéseken keresztül is elvégezhető **| Erőforrás-szolgáltatók** és keresés ```Microsoft.ChangeAnalysis``` és regisztrálás a felhasználói felületen, vagy Azure PowerShell vagy az Azure CLI-n keresztül.
 
@@ -183,15 +183,16 @@ Ha első alkalommal tekinti meg a változási előzményeket az alkalmazás-mód
     ```
 
 - **Nem sikerült regisztrálni a Microsoft. ChangeAnalysis erőforrás-szolgáltatót**. Ez az üzenet azt jelenti, hogy a felhasználói felület azonnal leállt, mert az erőforrás-szolgáltató regisztrálására irányuló kérést küldött, és nem kapcsolódik a jogosultsági problémákhoz. Valószínűleg ideiglenes internetkapcsolati probléma lehet. Próbálja meg frissíteni a lapot, és ellenőrizze az internetkapcsolatot. Ha a hiba továbbra is fennáll, forduljon a következőhöz: changeanalysishelp@microsoft.com
+- Nem **sikerült lekérdezni a Microsoft. ChangeAnalysis erőforrás-szolgáltatót** az *Azure Lighthouse-előfizetéssel nem támogatott, a módosítások csak az előfizetés otthoni bérlője esetében érhetők el*. A Change Analysis erőforrás-szolgáltatóra vonatkozó korlátozás most már regisztrálva van az Azure Lighthouse-előfizetésen keresztül a hazai bérlőn kívüli felhasználók számára. A közeljövőben várhatóan ez a korlátozás. Ha ez egy blokkolási probléma az Ön számára, van egy áthidaló megoldás, amely magában foglalja egy egyszerű szolgáltatásnév létrehozását és a szerepkör explicit módon történő hozzárendelését a hozzáférés engedélyezéséhez.  További információért forduljon a szolgáltatáshoz changeanalysishelp@microsoft.com .
 
-- **Ez a vártnál több időt vesz**igénybe. Ez az üzenet azt jelenti, hogy a regisztráció 2 percnél hosszabb időt vesz igénybe. Ez szokatlan, de nem feltétlenül jelenti azt, hogy valamilyen hiba történt. Megtekintheti az **előfizetéseket | Erőforrás-szolgáltató** a **Microsoft. ChangeAnalysis** erőforrás-szolgáltató regisztrációs állapotának kereséséhez. A felhasználói felület használatával törölheti, újra regisztrálhatja vagy frissítheti a regisztrációt, és megtekintheti, hogy ez segít-e. Ha a probléma továbbra is fennáll, forduljon changeanalysishelp@microsoft.com a támogatási szolgálathoz.
+- **Ez a vártnál több időt vesz** igénybe. Ez az üzenet azt jelenti, hogy a regisztráció 2 percnél hosszabb időt vesz igénybe. Ez szokatlan, de nem feltétlenül jelenti azt, hogy valamilyen hiba történt. Megtekintheti az **előfizetéseket | Erőforrás-szolgáltató** a **Microsoft. ChangeAnalysis** erőforrás-szolgáltató regisztrációs állapotának kereséséhez. A felhasználói felület használatával törölheti, újra regisztrálhatja vagy frissítheti a regisztrációt, és megtekintheti, hogy ez segít-e. Ha a probléma továbbra is fennáll, forduljon changeanalysishelp@microsoft.com a támogatási szolgálathoz.
     ![Az RP-regisztráció túl hosszú ideig történő hibaelhárítása](./media/change-analysis/troubleshoot-registration-taking-too-long.png)
 
 ![Képernyőfelvétel a problémák diagnosztizálása és megoldása eszközről egy olyan virtuális géphez, amelyen a hibaelhárítási eszközök vannak kiválasztva.](./media/change-analysis/vm-dnsp-troubleshootingtools.png)
 
 ![Képernyőkép a virtuális gép legutóbbi változásainak hibaelhárítási eszközének csempéről.](./media/change-analysis/analyze-recent-changes.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az [Azure app Services-alkalmazások](azure-web-apps.md)Application Insights engedélyezése.
 - Engedélyezze Application Insights az [Azure-beli virtuális gépek és az Azure-beli virtuálisgép-méretezési csoport IIS által üzemeltetett alkalmazásai](azure-vm-vmss-apps.md)számára.

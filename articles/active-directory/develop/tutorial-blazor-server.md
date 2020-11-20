@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: aaf716b4ac4c49f1d852e917ba818a10ecb541c4
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: d499a0e7d3ca7933632b52d5edbd8094a29dbcaa
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628033"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94979895"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>Oktatóanyag: a Microsoft Identity platformot használó blézer-kiszolgálói alkalmazás létrehozása a hitelesítéshez
 
-A Blazer-kiszolgáló támogatást nyújt a borotva összetevőinek a kiszolgálón ASP.NET Core alkalmazásban való üzemeltetéséhez. Ebből az oktatóanyagból megtudhatja, hogyan valósítható meg a hitelesítés, és hogyan kérhet le információkat a Microsoft Graph egy Blaze Server-alkalmazásban a Microsoft Identity platform használatával, és regisztrálja az alkalmazást a Azure Active Directoryban (Azure AD).
+Ebben az oktatóanyagban egy olyan Blazer Server-alkalmazást hoz létre, amely bejelentkezik a felhasználók számára, és beolvassa a Microsoft Graph adatait a Microsoft Identity platform használatával, és regisztrálja az alkalmazást a Azure Active Directoryban (Azure AD).
 
 A [Blazer WASM](tutorial-blazor-webassembly.md)oktatóanyaga is rendelkezésre áll.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ebben az oktatóanyagban:
 
 > [!div class="checklist"]
 > * Azure Active Directory (Azure AD) használatára konfigurált új Blazer Server-alkalmazás létrehozása hitelesítéshez
@@ -201,7 +201,7 @@ A jóváhagyás megadása után navigáljon az "adat lekérése" lapra, és olva
 
 :::image type="content" source="./media/tutorial-blazor-server/final-app-2.png" alt-text="Képernyőkép a végleges alkalmazásról. Van egy fejléce, amely szerint a Hello Nicholas, és megjeleníti a Nicholas-hoz tartozó e-mailek listáját.":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan hívhat meg olyan webalkalmazásokat, amelyek a többrészes forgatókönyvek felhasználói számára jelentkeznek be:
 

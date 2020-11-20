@@ -12,17 +12,18 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 01169f3e73fb1d6ddf0ecaf4958c6121cb21c295
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 6b8a9cbfd3e7057f0d85d5f4e19fea3aa4fbe90b
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216130"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980218"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása egy JavaScript-alapú egyoldalas alkalmazásból (SPA) az Auth Code flow használatával
 
-Ez az oktatóanyag bemutatja, hogyan hozhat létre olyan JavaScript-alapú egyoldalas alkalmazást (SPA), amely a JavaScript v 2.0-hoz készült Microsoft Authentication Library (MSAL) szolgáltatást használja a következőhöz:
+Ebben az oktatóanyagban egy olyan JavaScript-alapú egyoldalas alkalmazást (SPA) hoz létre, amely bejelentkezik a felhasználókba, és meghívja a Microsoft Grapht a PKCE-vel való engedélyezési kód használatával. Az Ön által létrehozott SPA a Microsoft Authentication Library (MSAL) használata a JavaScript 2.0-s verzióhoz.
 
+Ebben az oktatóanyagban:
 > [!div class="checklist"]
 > * A OAuth 2,0 engedélyezési kód folyamatának végrehajtása a PKCE
 > * Személyes Microsoft-fiókok, valamint munkahelyi és iskolai fiókok aláírása
@@ -118,13 +119,13 @@ Most már rendelkezik egy kis webkiszolgálóval a SPA kiszolgálásához. Az ok
 ```
 msal-spa-tutorial/
 ├── app
-│   ├── authConfig.js
-│   ├── authPopup.js
-│   ├── authRedirect.js
-│   ├── graphConfig.js
-│   ├── graph.js
-│   ├── index.html
-│   └── ui.js
+│   ├── authConfig.js
+│   ├── authPopup.js
+│   ├── authRedirect.js
+│   ├── graphConfig.js
+│   ├── graph.js
+│   ├── index.html
+│   └── ui.js
 └── server.js
 ```
 
@@ -327,7 +328,7 @@ Módosítsa a szakasz értékeit az `msalConfig` itt leírtak szerint:
   - Ha az alkalmazás támogatja a *szervezeti címtárban lévő fiókokat*, cserélje le ezt az értéket a **bérlői azonosítóra** vagy a **bérlő nevére**. Például: `contoso.microsoft.com`.
   - Ha az alkalmazás *minden szervezeti címtárban támogatja a fiókokat*, cserélje le ezt az értéket a következőre: `organizations` .
   - Ha az alkalmazás a *szervezeti címtárban és a személyes Microsoft-fiókokban is támogatja a fiókokat*, cserélje le ezt az értéket a következőre: `common` .
-  - A *személyes Microsoft-fiókok*támogatásának korlátozásához cserélje le ezt az értéket a következőre: `consumers` .
+  - A *személyes Microsoft-fiókok* támogatásának korlátozásához cserélje le ezt az értéket a következőre: `consumers` .
 - A `Enter_the_Redirect_Uri_Here` értéke `http://localhost:3000`.
 
 `authority`Ha a globális Azure-felhőt használja, a *authConfig.js* az alábbihoz hasonló értéknek kell megjelennie:
@@ -336,7 +337,7 @@ Módosítsa a szakasz értékeit az `msalConfig` itt leírtak szerint:
 authority: "https://login.microsoftonline.com/common",
 ```
 
-Még mindig az *alkalmazás* mappájában hozzon létre egy *graphConfig.js*nevű fájlt. Adja hozzá a következő kódot, amely megadja az alkalmazásnak a Microsoft Graph API meghívásához szükséges konfigurációs paramétereket:
+Még mindig az *alkalmazás* mappájában hozzon létre egy *graphConfig.js* nevű fájlt. Adja hozzá a következő kódot, amely megadja az alkalmazásnak a Microsoft Graph API meghívásához szükséges konfigurációs paramétereket:
 
 ```javascript
 // Add the endpoints here for Microsoft Graph API services you'd like to use.
@@ -547,7 +548,7 @@ function readMail() {
 
 Amikor a felhasználó első alkalommal kiválasztja a **Bejelentkezés** gombot, a `signIn` metódus meghívja a `loginPopup` felhasználót a bejelentkezéshez. A `loginPopup` metódus megnyit egy előugró ablakot a *Microsoft Identity platform végpontján* a felhasználó hitelesítő adatainak megadásához és érvényesítéséhez. Sikeres bejelentkezés után *msal.js* kezdeményezi az [engedélyezési kód folyamatát](v2-oauth2-auth-code-flow.md).
 
-Ekkor a rendszer elküld egy PKCE-védelemmel ellátott hitelesítési kódot a CORS által védett jogkivonat-végpontba, és kicseréli a jogkivonatokat. Az alkalmazás egy azonosító jogkivonatot, hozzáférési jogkivonatot és frissítési jogkivonatot fogad el, és *msal.js*dolgozza fel, és a jogkivonatokban tárolt információk gyorsítótárazva vannak.
+Ekkor a rendszer elküld egy PKCE-védelemmel ellátott hitelesítési kódot a CORS által védett jogkivonat-végpontba, és kicseréli a jogkivonatokat. Az alkalmazás egy azonosító jogkivonatot, hozzáférési jogkivonatot és frissítési jogkivonatot fogad el, és *msal.js* dolgozza fel, és a jogkivonatokban tárolt információk gyorsítótárazva vannak.
 
 Az azonosító jogkivonat a felhasználóra vonatkozó alapszintű információkat tartalmaz, például a megjelenítendő nevüket. Ha azt tervezi, hogy az azonosító jogkivonat által megadott bármilyen adatforrást használ, a háttér-kiszolgálónak *ellenőriznie kell* , hogy a tokent egy érvényes felhasználónak adta-e ki az alkalmazás számára.
 
@@ -617,25 +618,25 @@ Elkészült az alkalmazás létrehozásával, és most már készen áll a Node.
 
 ### <a name="sign-in-to-the-application"></a>Bejelentkezés az alkalmazásba
 
-Miután a böngésző betölti a *index.html* fájlt, válassza a **Bejelentkezés**lehetőséget. A rendszer felszólítja, hogy jelentkezzen be a Microsoft Identity platform-végponttal:
+Miután a böngésző betölti a *index.html* fájlt, válassza a **Bejelentkezés** lehetőséget. A rendszer felszólítja, hogy jelentkezzen be a Microsoft Identity platform-végponttal:
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="Egy egyoldalas alkalmazásban az engedélyezési kód folyamatát ábrázoló diagram":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="Webböngésző – bejelentkezési párbeszédpanel megjelenítése":::
 
 ### <a name="provide-consent-for-application-access"></a>Adja meg az alkalmazás-hozzáférés beleegyezikét
 
 Amikor először jelentkezik be az alkalmazásba, a rendszer felszólítja, hogy adjon hozzáférést a profilhoz, és jelentkezzen be:
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-02-consent-dialog.png" alt-text="Egy egyoldalas alkalmazásban az engedélyezési kód folyamatát ábrázoló diagram":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-02-consent-dialog.png" alt-text="A böngészőben megjelenő tartalom párbeszédpanel":::
 
 Ha beleegyezik a kért engedélyekkel, a webalkalmazások megjelenítik a felhasználónevet, és sikeres bejelentkezést jeleznek:
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-03-signed-in.png" alt-text="Egy egyoldalas alkalmazásban az engedélyezési kód folyamatát ábrázoló diagram":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-03-signed-in.png" alt-text="A webböngésző sikeres bejelentkezésének eredményei":::
 
 ### <a name="call-the-graph-api"></a>A Graph API meghívása
 
 A bejelentkezést követően válassza a **Profil megtekintése** lehetőséget a Microsoft Graph API-hívásra adott válaszban visszaadott felhasználói profil adatainak megtekintéséhez:
 
-:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-04-see-profile.png" alt-text="Egy egyoldalas alkalmazásban az engedélyezési kód folyamatát ábrázoló diagram":::
+:::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-04-see-profile.png" alt-text="A Microsoft Graph a böngészőben megjelenő profil adatai":::
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>További információ a hatókörökről és a delegált engedélyekről
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b20dab7719e4c55c5868032db3178bb7baaddda0
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7aa84336a3d71349c127ad15a90af98ffe2133fe
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748482"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980235"
 ---
 # <a name="how-to-certify-iot-plug-and-play-devices"></a>Az IoT Plug and Play-eszközök minősítése
 
@@ -44,6 +44,10 @@ A minősítési követelmények teljesítéséhez az eszköznek a következőket
 - Tegye közzé a modellt és az összes szükséges felületet az [Azure IoT nyilvános modell adattárában](https://devicemodels.azureiotsolutions.com/) .
 - Küldje el a modell AZONOSÍTÓját a DPS- [regisztráció](concepts-developer-guide-device-csharp.md#dps-payload) során a DPS kiépítési hasznos adattartalomban.
 - Bejelenti a modell AZONOSÍTÓját a [MQTT-kapcsolatban](concepts-developer-guide-device-csharp.md#model-id-announcement).
+- Minden eszköz modellnek kompatibilisnek kell lennie az [Azure IoT Centralával](https://aka.ms/pnp-iotc-getstarted).
+
+> [!NOTE]
+> Az Azure IoT Central jelenleg nem támogatja teljes mértékben a **tömb** -és **térinformatikai** DTDL adattípusait.
 
 ## <a name="test-with-the-azure-iot-extension-cli"></a>Tesztelés az Azure IoT-bővítmény parancssori felületével
 

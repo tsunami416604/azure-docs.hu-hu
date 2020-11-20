@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperfq2
-ms.openlocfilehash: 6533cbde10dfc924bd982357def859229eb1714a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9aa1156da48ba39672d59858d0640619581329ee
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94963164"
+ms.locfileid: "94981119"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Az Azure Digital Twins Twin gráf lekérdezése
 
@@ -277,7 +277,7 @@ Jelentősen csökkentheti a szükséges lekérdezések számát az ikrek tömbj�
 
 Vegyünk például egy olyan forgatókönyvet, amelyben *Buildings* az épületek *padlót* és *padlót* *tartalmaznak.* Ha egy olyan épületen belül szeretne keresni, amely forró, az egyik módszer az alábbi lépések követése.
 
-1. Az épületben található emeletek keresése `contains` kapcsolat alapján
+1. A kapcsolat alapján megkeresheti az épületben található szinteket `contains` .
 
     ```sql
     SELECT Floor

@@ -57,6 +57,12 @@
               href: manage-vm-extensions-template.md
         - name: Ügynök kezelése
           href: manage-agent.md
+    - name: Forgatókönyvek
+      items:
+        - name: Előkészítés az Azure Sentinel számára
+          href: scenario-onboard-azure-sentinel.md
+        - name: Előkészítés az Azure Security Center számára
+          href: /security-center/quickstart-onboard-machines.md
     - name: Hibaelhárítás
       items:
         - name: Ügynökök kapcsolódási problémái

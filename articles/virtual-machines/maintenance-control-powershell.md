@@ -5,14 +5,14 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 01/31/2020
+ms.date: 11/19/2020
 ms.author: cynthn
-ms.openlocfilehash: efd35cfe2660f4597ec0c95dc29bcb4b839da680
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4cb57eb8d3396667e6c9cb40b7e41b1e97622ed
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91306939"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981187"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>Frissítések vezérlése karbantartási vezérléssel és Azure PowerShell
 
@@ -34,7 +34,7 @@ Install-Module -Name Az.Maintenance
 
 Ha helyileg telepíti a rendszert, győződjön meg róla, hogy rendszergazdaként megnyitja a PowerShell-parancssort.
 
-Azt is megteheti, hogy meg kell erősítenie, hogy nem *megbízható adattárból*kíván telepíteni. Írja be, `Y` vagy válassza az **Igen** lehetőséget az összes elemre a modul telepítéséhez.
+Azt is megteheti, hogy meg kell erősítenie, hogy nem *megbízható adattárból* kíván telepíteni. Írja be, `Y` vagy válassza az **Igen** lehetőséget az összes elemre a modul telepítéséhez.
 
 
 ## <a name="create-a-maintenance-configuration"></a>Karbantartási konfiguráció létrehozása
@@ -67,13 +67,7 @@ A [Get-AzMaintenanceConfiguration](/powershell/module/az.maintenance/get-azmaint
 Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
 ```
 
-### <a name="create-a-maintenance-configuration-with-scheduled-window-in-preview"></a>Karbantartási konfiguráció létrehozása ütemezett ablakkal (előzetes verzió)
-
-
-> [!IMPORTANT]
-> Az ütemezett ablak szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
-> Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+### <a name="create-a-maintenance-configuration-with-scheduled-window"></a>Karbantartási konfiguráció létrehozása ütemezett ablakkal
 
 A New-AzMaintenanceConfiguration használatával hozzon létre egy karbantartási konfigurációt egy ütemezett ablaktal, amikor az Azure alkalmazza a frissítéseket az erőforrásokon. Ez a példa egy konfig nevű karbantartási konfigurációt hoz létre, amelynek ütemezett ablaka 5 óra minden hónap negyedik hétfőjén. Miután létrehozott egy ütemezett ablakot, már nem kell manuálisan alkalmaznia a frissítéseket.
 
@@ -91,8 +85,13 @@ $config = New-AzMaintenanceConfiguration `
 > [!IMPORTANT]
 > A karbantartási **időtartamnak** *2 óra* vagy hosszabbnak kell lennie. A karbantartási **ismétlődést** legalább 35 nap múlva be kell állítani.
 
-A karbantartási **Ismétlődések** napi, heti vagy havi ütemezések formájában adhatók meg. A napi ütemezett példák a következők: nap, recurEvery: 3Days recurEvery. Hetente ütemezett példák a következők: recurEvery: 3Weeks, recurEvery: Week szombat, vasárnap. A havi ütemterv például a recurEvery: month day23, day24, recurEvery: hónap múlt vasárnap, recurEvery: hónap negyedik hétfő.
-
+A karbantartási **Ismétlődés** a következőképpen lehet kifejezni:
+ | Érték | Példa |
+      |-------|-------------|
+      | napi | recurEvery: nap **vagy** RecurEvery: 3days | 
+      | weekly | recurEvery: 3Weeks **vagy** RecurEvery: hét szombat, vasárnap | 
+      | havi | recurEvery: hónap day23, day24 **vagy** RecurEvery: hónap múlt vasárnap **vagy** RecurEvery: hónap negyedik hétfő | 
+      
 
 ## <a name="assign-the-configuration"></a>A konfiguráció kiosztása
 

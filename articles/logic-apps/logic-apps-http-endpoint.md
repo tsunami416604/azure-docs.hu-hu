@@ -5,13 +5,13 @@ services: logic-apps
 ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 08/27/2020
-ms.openlocfilehash: 8a59b47dadd845f1a522854c503af11c8fff72fd
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.date: 11/19/2020
+ms.openlocfilehash: b345168dad63b1846d46c12721587eaffb5f887e
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331974"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981204"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Logikai alkalmazások hívása, elindítása vagy beágyazása HTTPS-végpontok használatával Azure Logic Apps
 
@@ -104,7 +104,7 @@ További információ a biztonságról: hitelesítés és titkosítás a logikai
 
    * A **http post URL-cím** mezőtől jobbra válassza a **Másolás URL-cím** (fájlok másolása ikon) lehetőséget.
 
-   * Tegye ezt a POST hívást:
+   * Ezt a hívást a kérelem-trigger által várt metódussal teheti meg. Ez a példa a következő `POST` metódust használja:
 
      `POST https://management.azure.com/{logic-app-resource-ID}/triggers/{endpoint-trigger-name}/listCallbackURL?api-version=2016-06-01`
 
@@ -124,7 +124,7 @@ További információ a biztonságról: hitelesítés és titkosítás a logikai
 
 ## <a name="select-expected-request-method"></a>A várt kérelem módszerének kiválasztása
 
-Alapértelmezés szerint a kérelem triggere egy POST-kérést vár. Megadhat egy másik módszert a várható értékhez, de csak egyetlen metódust használhat.
+Alapértelmezés szerint a kérelem triggere `POST` kérést vár. Megadhat azonban egy másik módszert, amelyet a hívónak használnia kell, de csak egyetlen metódussal.
 
 1. A kérelem triggerben nyissa meg az **új paraméter hozzáadása** listát, és válassza a **metódus** lehetőséget, amely hozzáadja ezt a tulajdonságot az triggerhez.
 
@@ -154,7 +154,7 @@ Ha a paraméter értékeit a végpont URL-címén keresztül szeretné elfogadni
 
 ### <a name="accept-values-through-get-parameters"></a>Értékek elfogadása a GET paraméterekkel
 
-1. A kérelem triggerben nyissa meg az **új paraméter hozzáadása listát** , adja hozzá a **Method** tulajdonságot az triggerhez, majd válassza a **Get** metódust.
+1. A kérelem triggerben nyissa meg az **új paraméter hozzáadása listát**, adja hozzá a **Method** tulajdonságot az triggerhez, majd válassza a **Get** metódust.
 
    További információ: a [várt kérelem módszerének kiválasztása](#select-method).
 
@@ -262,7 +262,7 @@ Ha a paraméter értékeit a végpont URL-címén keresztül szeretné elfogadni
 
 ## <a name="call-logic-app-through-endpoint-url"></a>Logikai alkalmazás hívása a végpont URL-címén keresztül
 
-Miután létrehozta a végpontot, aktiválhatja a logikai alkalmazást egy HTTPS `POST` -kérés küldésével a végpont teljes URL-címére. A Logic apps beépített támogatást nyújt a közvetlen elérésű végpontokhoz.
+Miután létrehozta a végpontot, aktiválhatja a logikai alkalmazást egy HTTPS-kérés küldésével a végpont teljes URL-címére. A Logic apps beépített támogatást nyújt a közvetlen elérésű végpontokhoz.
 
 <a name="generated-tokens"></a>
 
@@ -384,7 +384,7 @@ A válasz művelet JSON-definíciójának és a logikai alkalmazás teljes JSON-
 
 #### <a name="q-what-about-url-security"></a>K: Mi az URL-biztonság?
 
-**A** : az Azure biztonságos módon generálja a logikai alkalmazás visszahívási URL-címeit [közös hozzáférésű aláírás (SAS)](/rest/api/storageservices/delegate-access-with-shared-access-signature)használatával. Ez az aláírás lekérdezési paraméterként halad át, és a logikai alkalmazás futtatása előtt érvényesíteni kell. Az Azure egy titkos kulcs egyedi kombinációjával, a trigger nevével és a végrehajtott művelettel hozza létre az aláírást. Tehát ha valaki hozzáfér a titkos logikai alkalmazás kulcsához, nem tud érvényes aláírást előállítani.
+**A**: az Azure biztonságos módon generálja a logikai alkalmazás visszahívási URL-címeit [közös hozzáférésű aláírás (SAS)](/rest/api/storageservices/delegate-access-with-shared-access-signature)használatával. Ez az aláírás lekérdezési paraméterként halad át, és a logikai alkalmazás futtatása előtt érvényesíteni kell. Az Azure egy titkos kulcs egyedi kombinációjával, a trigger nevével és a végrehajtott művelettel hozza létre az aláírást. Tehát ha valaki hozzáfér a titkos logikai alkalmazás kulcsához, nem tud érvényes aláírást előállítani.
 
 > [!IMPORTANT]
 > A termelési és a magasabb biztonsági rendszerek esetében erősen ajánljuk, hogy a logikai alkalmazás közvetlenül a böngészőből hívja meg a következő okokat:
@@ -396,14 +396,14 @@ További információ a biztonságról: hitelesítés és titkosítás a logikai
 
 #### <a name="q-can-i-configure-callable-endpoints-further"></a>K: lehet, hogy a hívható végpontok továbbra is konfigurálhatók?
 
-**A** : igen, a https-végpontok az [Azure API Management](../api-management/api-management-key-concepts.md)segítségével fejlettebb konfigurációt támogatnak. Ezzel a szolgáltatással következetesen kezelheti az összes API-t, beleértve a Logic apps-t, egyéni tartományneveket állíthat be, több hitelesítési módszert használhat, többek között például:
+**A**: igen, a https-végpontok az [Azure API Management](../api-management/api-management-key-concepts.md)segítségével fejlettebb konfigurációt támogatnak. Ezzel a szolgáltatással következetesen kezelheti az összes API-t, beleértve a Logic apps-t, egyéni tartományneveket állíthat be, több hitelesítési módszert használhat, többek között például:
 
 * [A kérelem módszerének módosítása](../api-management/api-management-advanced-policies.md#SetRequestMethod)
 * [A kérelem URL-szegmensének módosítása](../api-management/api-management-transformation-policies.md#RewriteURL)
 * A API Management-tartományok beállítása a [Azure Portal](https://portal.azure.com/)
 * Házirend beállítása az egyszerű hitelesítés kereséséhez
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Bejövő HTTPS-hívások fogadása és válaszadás a Azure Logic Apps használatával](../connectors/connectors-native-reqres.md)
 * [Biztonságos hozzáférés és adatAzure Logic Apps-hozzáférés a kérelmeken alapuló eseményindítók bejövő hívásainak számára](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests)

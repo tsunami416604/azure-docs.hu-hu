@@ -16,12 +16,12 @@ ms.date: 02/07/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4778ce5efcd6145447c194eaab34bc230bcbe34c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d74a243ab10d0fffca960dc5149999560a7b54cd
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371545"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980586"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-szerepkörökre vonatkozó kérelmek jóváhagyása vagy elutasítása Privileged Identity Management
 
@@ -38,9 +38,9 @@ A 2019-es verziótól kezdődően a Privileged Identity Management Azure AD-szer
 
 Kövesse a cikkben ismertetett lépéseket az Azure AD-szerepkörökre vonatkozó kérelmek jóváhagyásához vagy elutasításához.
 
-# <a name="new-version"></a>[Új verzió](#tab/new)
+## <a name="new-version"></a>[Új verzió](#tab/new)
 
-## <a name="view-pending-requests"></a>Függőben lévő kérelmek megtekintése
+### <a name="view-pending-requests"></a>Függőben lévő kérelmek megtekintése
 
 Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha egy Azure AD-szerepkörre vonatkozó kérelem jóváhagyása függőben van. Ezeket a függőben lévő kérelmeket Privileged Identity Management tekintheti meg.
 
@@ -48,13 +48,13 @@ Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha egy Azure AD
 
 1. Nyissa meg **Azure ad Privileged Identity Management**.
 
-1. Válassza a **kérelmek jóváhagyása**lehetőséget.
+1. Válassza a **kérelmek jóváhagyása** lehetőséget.
 
     ![Kérelmek jóváhagyása – az Azure AD-szerepkörök felülvizsgálatára vonatkozó kérést megjelenítő lap](./media/azure-ad-pim-approval-workflow/resources-approve-pane.png)
 
     A **szerepkör-aktiválási kérések** szakaszban megtekintheti a jóváhagyásra váró kérelmek listáját.
 
-## <a name="approve-requests"></a>Kérések jóváhagyása
+### <a name="approve-requests"></a>Kérések jóváhagyása
 
 1. Keresse meg és válassza ki a jóváhagyni kívánt kérelmet. A jóváhagyás vagy megtagadás lap jelenik meg.
 
@@ -62,11 +62,11 @@ Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha egy Azure AD
 
 1. Az **indoklás** mezőben adja meg az üzleti indoklást.
 
-1. Válassza a **jóváhagyás**lehetőséget. A jóváhagyásról Azure-értesítést fog kapni.
+1. Válassza a **jóváhagyás** lehetőséget. A jóváhagyásról Azure-értesítést fog kapni.
 
     ![A kérelem jóváhagyását jelző értesítés jóváhagyása](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png))
 
-## <a name="deny-requests"></a>Kérelmek megtagadása
+### <a name="deny-requests"></a>Kérelmek megtagadása
 
 1. Keresse meg és válassza ki a megtagadni kívánt kérelmet. A jóváhagyás vagy megtagadás lap jelenik meg.
 
@@ -74,9 +74,9 @@ Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha egy Azure AD
 
 1. Az **indoklás** mezőben adja meg az üzleti indoklást.
 
-1. Válassza a **Megtagadás**lehetőséget. Megjelenik egy értesítés az elutasítással.
+1. Válassza a **Megtagadás** lehetőséget. Megjelenik egy értesítés az elutasítással.
 
-## <a name="workflow-notifications"></a>Munkafolyamat-értesítések
+### <a name="workflow-notifications"></a>Munkafolyamat-értesítések
 
 Íme néhány információ a munkafolyamat-értesítésekről:
 
@@ -88,9 +88,9 @@ Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha egy Azure AD
 >[!NOTE]
 >Globális rendszergazda vagy Kiemelt szerepkörű rendszergazda, aki úgy véli, hogy egy jóváhagyott felhasználó nem lehet aktív, távolítsa el az aktív szerepkör-hozzárendelést Privileged Identity Management. Bár a rendszergazdák nem kapnak értesítést a függőben lévő kérelmekről, hacsak nem jóváhagyók, megtekinthetik és megtörölhetik az összes felhasználóra vonatkozó függőben lévő kéréseket a Privileged Identity Management függőben lévő kérelmek megtekintésével.
 
-# <a name="previous-version"></a>[Előző verzió](#tab/previous)
+## <a name="previous-version"></a>[Előző verzió](#tab/previous)
 
-## <a name="view-pending-requests"></a>Függőben lévő kérelmek megtekintése
+### <a name="view-pending-requests"></a>Függőben lévő kérelmek megtekintése
 
 Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha egy Azure AD-szerepkörre vonatkozó kérelem jóváhagyása függőben van. Ezeket a függőben lévő kérelmeket Privileged Identity Management tekintheti meg.
 
@@ -98,15 +98,15 @@ Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha egy Azure AD
 
 1. Nyissa meg **Azure ad Privileged Identity Management**.
 
-1. Kattintson az **Azure ad-szerepkörök**elemre.
+1. Kattintson az **Azure ad-szerepkörök** elemre.
 
-1. Kattintson a **kérelmek jóváhagyása**gombra.
+1. Kattintson a **kérelmek jóváhagyása** gombra.
 
     ![Azure AD-szerepkörök – kérelmek jóváhagyása](./media/azure-ad-pim-approval-workflow/approve-requests.png)
 
     Ekkor megjelenik a jóváhagyásra váró kérelmek listája.
 
-## <a name="approve-requests"></a>Kérések jóváhagyása
+### <a name="approve-requests"></a>Kérések jóváhagyása
 
 1. Válassza ki a jóváhagyni kívánt kéréseket, majd kattintson a **jóváhagyás** gombra a kijelölt kérések jóváhagyása panel megnyitásához.
 
@@ -122,7 +122,7 @@ Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha egy Azure AD
 
     ![Kijelölt kérelmek jóváhagyása ablaktábla jóváhagyása után gombra kattintás](./media/azure-ad-pim-approval-workflow/pim-approve-status.png)
 
-## <a name="deny-requests"></a>Kérelmek megtagadása
+### <a name="deny-requests"></a>Kérelmek megtagadása
 
 1. Válassza ki a megtagadni kívánt kéréseket, majd kattintson a **Megtagadás** gombra a kiválasztott kérelmek megtagadása ablaktábla megnyitásához.
 
@@ -132,7 +132,7 @@ Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha egy Azure AD
 
     ![A kijelölt kérések ablaktábla megtagadása megtagadás miatt](./media/azure-ad-pim-approval-workflow/pim-deny-selected-requests.png)
 
-1. Válassza a **Megtagadás**lehetőséget.
+1. Válassza a **Megtagadás** lehetőséget.
 
     A rendszer a megtagadásával frissíti az állapotjelző szimbólumot.
 

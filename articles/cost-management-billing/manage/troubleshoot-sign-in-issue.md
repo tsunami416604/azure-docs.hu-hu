@@ -34,11 +34,11 @@ Ha az internetböngésző oldala lefagy, próbálkozzon az alábbi lépésekkel,
 
    - **Edge:** Nyissa meg a **Beállítások** elemet (a profilképe mellett lévő három pont), válassza az **Új InPrivate-ablak** lehetőséget, majd nyissa meg az [Azure Portalt](https://portal.azure.com/) vagy az [Azure Fiókközpontot](https://account.azure.com/Subscriptions), és jelentkezzen be. 
    - **Chrome:** Válassza az **Inkognitó** módot.
-   - **Safari:** Válassza a **Fájl** , majd az **Új privát ablak** elemet.
+   - **Safari:** Válassza a **Fájl**, majd az **Új privát ablak** elemet.
 
 - Ürítse ki a gyorsítótárat, és törölje az internetes cookie-kat:
 
-   - **Edge:** Nyissa meg a **Beállítások** elemet, és válassza az **Adatvédelem és szolgáltatások** lehetőséget. Kövesse a **Böngészési adatok törlése** területen megjelenő lépéseket. Győződjön meg arról, hogy az **Előzmények** , a **Letöltési előzmények** és a **Gyorsítótárazott képek és fájlok** mellett található jelölőnégyzet be van jelölve, majd kattintson a **Törlés** gombra.
+   - **Edge:** Nyissa meg a **Beállítások** elemet, és válassza az **Adatvédelem és szolgáltatások** lehetőséget. Kövesse a **Böngészési adatok törlése** területen megjelenő lépéseket. Győződjön meg arról, hogy az **Előzmények**, a **Letöltési előzmények** és a **Gyorsítótárazott képek és fájlok** mellett található jelölőnégyzet be van jelölve, majd kattintson a **Törlés** gombra.
    - **Chrome:** Válassza a **Beállítások** lehetőséget, majd az **Adatvédelem és biztonság** területen kattintson a **Böngészési adatok törlése** elemre.
 
 ## <a name="you-are-automatically-signed-in-as-a-different-user"></a>Automatikusan egy másik felhasználóként jelentkezik be
@@ -49,13 +49,13 @@ A hiba elhárításához próbálkozzon az alábbi módszerekkel:
 
 - Ürítse ki a gyorsítótárat, és törölje az internetes cookie-kat.
 
-   - **Edge:** Nyissa meg a **Beállítások** elemet, és válassza az **Adatvédelem és szolgáltatások** lehetőséget. Kövesse a **Böngészési adatok törlése** területen megjelenő lépéseket. Győződjön meg arról, hogy az **Előzmények** , a **Letöltési előzmények** , a **Cookie-k** és a **Gyorsítótárazott képek és fájlok** mellett található jelölőnégyzet be van jelölve, majd kattintson a **Törlés** gombra.
+   - **Edge:** Nyissa meg a **Beállítások** elemet, és válassza az **Adatvédelem és szolgáltatások** lehetőséget. Kövesse a **Böngészési adatok törlése** területen megjelenő lépéseket. Győződjön meg arról, hogy az **Előzmények**, a **Letöltési előzmények**, a **Cookie-k** és a **Gyorsítótárazott képek és fájlok** mellett található jelölőnégyzet be van jelölve, majd kattintson a **Törlés** gombra.
    - **Chrome:** Válassza a **Beállítások** lehetőséget, majd az **Adatvédelem és biztonság** területen kattintson a **Böngészési adatok törlése** elemre.
 - Állítsa vissza a böngésző alapértelmezett beállításait.
 - Használjon privát böngészési módot a böngészőben. 
    - **Edge:** Nyissa meg a **Beállítások** elemet (a profilképe mellett lévő három pont), válassza az **Új InPrivate-ablak** lehetőséget, majd nyissa meg az [Azure Portalt](https://portal.azure.com/) vagy az [Azure Fiókközpontot](https://account.azure.com/Subscriptions), és jelentkezzen be. 
    - **Chrome:** Válassza az **Inkognitó** módot.
-   - **Safari:** Válassza a **Fájl** , majd az **Új privát ablak** elemet.
+   - **Safari:** Válassza a **Fájl**, majd az **Új privát ablak** elemet.
 
 ## <a name="i-can-sign-in-but-i-see-the-error-no-subscriptions-found"></a>Be tudok jelentkezni, de a Nem található előfizetés hiba jelenik meg
 

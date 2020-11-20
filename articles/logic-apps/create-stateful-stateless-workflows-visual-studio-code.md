@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, rohitha, vikanand, hongzili, sopai, absaafan, logicappspm
 ms.topic: conceptual
-ms.date: 11/09/2020
-ms.openlocfilehash: 749807349fd83f9639461fd4ddd9ab771d108119
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.date: 11/17/2020
+ms.openlocfilehash: 14809cb28870e88cfa584c4f02360d50beabf901
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410555"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981052"
 ---
 # <a name="create-stateful-or-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Állapotalapú vagy állapot nélküli munkafolyamatok létrehozása a Visual Studio Code-ban az Azure Logic Apps (előzetes verzió) bővítményével
 
@@ -221,7 +221,7 @@ Ebben a nyilvános előzetes verzióban ezek a képességek nem érhetők el, va
 
    ![Képernyőkép, amely a Visual Studio Code eszközsort és a kiválasztott Azure ikont jeleníti meg.](./media/create-stateful-stateless-workflows-visual-studio-code/visual-studio-code-azure-icon.png)
 
-1. Az Azure ablaktáblán az **Azure: Logic apps (előzetes verzió)** területen válassza a **Bejelentkezés az Azure** -ba lehetőséget. Amikor megjelenik a Visual Studio Code Authentication oldal, jelentkezzen be az Azure-fiókjával.
+1. Az Azure ablaktáblán az **Azure: Logic apps (előzetes verzió)** területen válassza a **Bejelentkezés az Azure**-ba lehetőséget. Amikor megjelenik a Visual Studio Code Authentication oldal, jelentkezzen be az Azure-fiókjával.
 
    ![Képernyőkép, amely az Azure-ablaktáblát és az Azure-bejelentkezéshez kiválasztott hivatkozást mutatja.](./media/create-stateful-stateless-workflows-visual-studio-code/sign-in-azure-subscription.png)
 
@@ -324,7 +324,7 @@ A logikai alkalmazás létrehozása előtt hozzon létre egy helyi projektet, ho
       Host shutdown completed.
       ```
 
-      Ez a hiba akkor fordulhat elő, ha korábban megpróbálta megnyitni a tervezőt, majd megszüntette vagy törölte a projektet. Ennek a hibának a megoldásához törölje a **ExtensionBundles** mappát ezen a helyen **. ..\Users \\ {your-username} \AppData\Local\Temp\Functions\ExtensionBundles** , majd próbálja **meg** újra megnyitni aworkflow.jsfájlt a tervezőben.
+      Ez a hiba akkor fordulhat elő, ha korábban megpróbálta megnyitni a tervezőt, majd megszüntette vagy törölte a projektet. Ennek a hibának a megoldásához törölje a **ExtensionBundles** mappát ezen a helyen **. ..\Users \\ {your-username} \AppData\Local\Temp\Functions\ExtensionBundles**, majd próbálja **meg** újra megnyitni aworkflow.jsfájlt a tervezőben.
 
 1. Az **Összekötők engedélyezése az Azure-ban** listában válassza az Azure-beli **Összekötők használata** lehetőséget, amely az Azure-ban elérhető és az Azure-ban üzembe helyezett összes felügyelt összekötőre vonatkozik, nem csak az Azure-szolgáltatások összekötői.
 
@@ -367,7 +367,7 @@ Miután megnyitotta a Logic app Designer alkalmazást a **workflow.jsa** fájl h
 
 Ebben a példában a logikai alkalmazás munkafolyamata ezt az triggert és a következő műveleteket használja:
 
-* A beépített [kérelem triggere](../connectors/connectors-native-reqres.md), **Amikor HTTP-kérés érkezik** , amely bejövő hívásokat fogad, és olyan végpontot hoz létre, amelyet más szolgáltatások vagy logikai alkalmazások hívhatnak meg.
+* A beépített [kérelem triggere](../connectors/connectors-native-reqres.md), **Amikor HTTP-kérés érkezik**, amely bejövő hívásokat fogad, és olyan végpontot hoz létre, amelyet más szolgáltatások vagy logikai alkalmazások hívhatnak meg.
 
 * Az [Office 365 Outlook művelet](../connectors/connectors-create-api-office365-outlook.md), **e-mail küldése**.
 
@@ -392,9 +392,9 @@ Ebben a példában a logikai alkalmazás munkafolyamata ezt az triggert és a k�
 
    1. A tervezőben válassza ki az elemet, amely megnyitja az elem részletek ablaktábláját a jobb oldalon.
 
-   1. Bontsa ki a Visual Studio Code ablakát úgy, hogy az trigger vagy a művelet neve mellett az ellipszisek ( **..**.) gomb a jobb felső sarokban jelenik meg. 
+   1. Bontsa ki a Visual Studio Code ablakát úgy, hogy az trigger vagy a művelet neve mellett az ellipszisek (**..**.) gomb a jobb felső sarokban jelenik meg. 
 
-   1. Nyissa meg az ellipszisek ( **..**.) menüt, majd válassza a **Törlés** lehetőséget. A törlés megerősítéséhez kattintson **az OK gombra**.
+   1. Nyissa meg az ellipszisek (**..**.) menüt, majd válassza a **Törlés** lehetőséget. A törlés megerősítéséhez kattintson **az OK gombra**.
 
       ![Képernyőfelvétel: a kijelölt elem megjelenítése a tervezőben az Open details panelen és a kijelölt ellipszisek gomb és a "Törlés" lehetőséggel.](./media/create-stateful-stateless-workflows-visual-studio-code/delete-item-from-designer.png)
 
@@ -452,7 +452,7 @@ Ebben a példában a logikai alkalmazás munkafolyamata ezt az triggert és a k�
    ||||
 
    > [!NOTE]
-   > Ha módosítani kívánja a részleteket tartalmazó ablaktáblán a **Beállítások** , a **Futtatás után** vagy a **statikus eredmény** lapot, győződjön meg arról, hogy a **kész** gombra kattint a módosítások elvégzéséhez, mielőtt átváltja a lapokat, vagy megváltoztatja a fókuszt a tervezőre. Ellenkező esetben a Visual Studio Code nem fogja megőrizni a módosításokat. További információkért tekintse meg az előzetes verziójú bővítmény [ismert problémák GitHub-oldalát](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md).
+   > Ha módosítani kívánja a részleteket tartalmazó ablaktáblán a **Beállítások**, a **Futtatás után** vagy a **statikus eredmény** lapot, győződjön meg arról, hogy a **kész** gombra kattint a módosítások elvégzéséhez, mielőtt átváltja a lapokat, vagy megváltoztatja a fókuszt a tervezőre. Ellenkező esetben a Visual Studio Code nem fogja megőrizni a módosításokat. További információkért tekintse meg az előzetes verziójú bővítmény [ismert problémák GitHub-oldalát](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md).
 
 1. A tervezőben válassza a **Mentés** lehetőséget.
 
@@ -498,7 +498,7 @@ A logikai alkalmazás teszteléséhez kövesse az alábbi lépéseket a hibakere
 
    1. A **menteni kívánt gyűjtemény vagy mappa kiválasztása** területen válassza a **gyűjtemény létrehozása** lehetőséget.
 
-   1. A **minden gyűjtemény** területen adja meg a kérések rendszerezéséhez létrehozandó gyűjtemény nevét, nyomja le az ENTER billentyűt, majd válassza a **Mentés lehetőséget < *gyűjtemény neve* >** elemre. Ez a példa `Logic Apps requests` a gyűjtemény nevét használja.
+   1. A **minden gyűjtemény** területen adja meg a kérések rendszerezéséhez létrehozandó gyűjtemény nevét, nyomja le az ENTER billentyűt, majd válassza a **Mentés lehetőséget <*gyűjtemény neve* >** elemre. Ez a példa `Logic Apps requests` a gyűjtemény nevét használja.
 
       A Poster kérelmi panelje megnyílik, így kérést küldhet a visszahívási URL-címre a kérelem triggere számára.
 
@@ -528,19 +528,22 @@ A logikai alkalmazás teszteléséhez kövesse az alábbi lépéseket a hibakere
    | **Megszakítva** | A Futtatás leállt vagy nem fejeződik be külső problémák miatt, például rendszerleállás vagy elévült Azure-előfizetés. |
    | **Megszakítva** | A Futtatás elindítva és elindítva, de lemondási kérelem érkezett. |
    | **Sikertelen** | A Futtatás során legalább egy művelet sikertelen volt. A munkafolyamatban nem történt további művelet, amely a hiba kezelésére lett beállítva. |
-   | **Fut** | A Futtatás aktiválva lett, és folyamatban van, de ez az állapot a [művelet korlátai](logic-apps-limits-and-config.md) vagy a [jelenlegi díjszabási csomag](https://azure.microsoft.com/pricing/details/logic-apps/)miatt szabályozott Futtatás esetén is megjelenhet. <p><p>**Tipp** : Ha [diagnosztikai naplózást](monitor-logic-apps-log-analytics.md)állít be, a megjelenő összes szabályozási eseményről információt kaphat. |
+   | **Fut** | A Futtatás aktiválva lett, és folyamatban van, de ez az állapot a [művelet korlátai](logic-apps-limits-and-config.md) vagy a [jelenlegi díjszabási csomag](https://azure.microsoft.com/pricing/details/logic-apps/)miatt szabályozott Futtatás esetén is megjelenhet. <p><p>**Tipp**: Ha [diagnosztikai naplózást](monitor-logic-apps-log-analytics.md)állít be, a megjelenő összes szabályozási eseményről információt kaphat. |
    | **Sikeres** | A Futtatás sikerült. Ha bármilyen művelet meghiúsult, a munkafolyamat egy későbbi művelete ezt a hibát kezelte. |
-   | **Időtúllépés** | A Futtatás időtúllépés miatt meghaladta az időkorlátot, mert a jelenlegi időtartam túllépte a futtatási időtartam határértékét, amelyet a [ **futtatási Előzmények megőrzése nap** beállításban](logic-apps-limits-and-config.md#run-duration-retention-limits)szabályoz. A Futtatás időtartamát a Futtatás kezdő időpontja és a futtatási időtartam korlátja alapján számítjuk ki a kezdési időpontnál. <p><p>**Megjegyzés** : Ha a Futtatás időtartama szintén meghaladja az aktuális *futtatási előzmények megőrzési korlátját* is, amelyet a futtatási [ **Előzmények megőrzésének napja** beállítás](logic-apps-limits-and-config.md#run-duration-retention-limits)is szabályoz, a futtatást a rendszer a napi törlési feladatokból törli a futtatási előzményekből. Függetlenül attól, hogy a futási idő ki vagy fejeződik be, a megőrzési időszakot a rendszer mindig a Futtatás kezdési ideje és az *aktuális* megőrzési korlát használatával számítja ki. Tehát ha csökkenti a repülés közbeni futás időtartamának korlátját, a Futtatás időtúllépést eredményez. A Futtatás azonban marad, vagy törlődik a futtatási előzmények alapján, attól függően, hogy a Futtatás időtartama túllépte-e a megőrzési korlátot. |
+   | **Időtúllépés** | A Futtatás időtúllépés miatt meghaladta az időkorlátot, mert a jelenlegi időtartam túllépte a futtatási időtartam határértékét, amelyet a [ **futtatási Előzmények megőrzése nap** beállításban](logic-apps-limits-and-config.md#run-duration-retention-limits)szabályoz. A Futtatás időtartamát a Futtatás kezdő időpontja és a futtatási időtartam korlátja alapján számítjuk ki a kezdési időpontnál. <p><p>**Megjegyzés**: Ha a Futtatás időtartama szintén meghaladja az aktuális *futtatási előzmények megőrzési korlátját* is, amelyet a futtatási [ **Előzmények megőrzésének napja** beállítás](logic-apps-limits-and-config.md#run-duration-retention-limits)is szabályoz, a futtatást a rendszer a napi törlési feladatokból törli a futtatási előzményekből. Függetlenül attól, hogy a futási idő ki vagy fejeződik be, a megőrzési időszakot a rendszer mindig a Futtatás kezdési ideje és az *aktuális* megőrzési korlát használatával számítja ki. Tehát ha csökkenti a repülés közbeni futás időtartamának korlátját, a Futtatás időtúllépést eredményez. A Futtatás azonban marad, vagy törlődik a futtatási előzmények alapján, attól függően, hogy a Futtatás időtartama túllépte-e a megőrzési korlátot. |
    | **Várakozó** | A Futtatás nem indult el vagy szüneteltetve van, például egy olyan korábbi munkafolyamat-példány miatt, amely még fut. |
    |||
 
-1. Ha szeretné áttekinteni az egyes lépésekhez tartozó állapotokat egy adott futtatásban, valamint a lépés bemeneteit és kimeneteit, válassza a futtatáshoz tartozó három pont ( **...** ) gombot, és válassza a **Futtatás megjelenítése** lehetőséget.
+1. Ha szeretné áttekinteni az egyes lépésekhez tartozó állapotokat egy adott futtatásban, valamint a lépés bemeneteit és kimeneteit, válassza a futtatáshoz tartozó három pont (**...**) gombot, és válassza a **Futtatás megjelenítése** lehetőséget.
 
    ![Képernyőfelvétel: a munkafolyamat futtatási előzményeinek sora az ellipszisek gomb és a "Futtatás megjelenítése" beállítással](./media/create-stateful-stateless-workflows-visual-studio-code/show-run-history.png)
 
    A Visual Studio Code megnyitja a figyelés nézetet, és megjeleníti a Futtatás egyes lépéseinek állapotát.
 
    ![Képernyőfelvétel a munkafolyamat-Futtatás egyes lépéseiről és állapotukról](./media/create-stateful-stateless-workflows-visual-studio-code/run-history-action-status.png)
+
+   > [!NOTE]
+   > Ha a Futtatás sikertelen volt, és a figyelés nézet egy lépése megjeleníti a `400 Bad Request` hibát, a probléma oka lehet egy hosszabb Eseményindító neve vagy művelet neve, amelynek hatására az alapul szolgáló Uniform Resource Identifier (URI) túllépi az alapértelmezett karakteres korlátot. További információ: ["400 hibás kérelem"](#400-bad-request).
 
    A munkafolyamat egyes lépései a következő lehetséges állapotokat tartalmazhatják:
 
@@ -621,7 +624,7 @@ Miután elvégezte a logikai alkalmazás frissítését, egy másik teszt futtat
 
 1. A Poster vagy a kérések létrehozására és küldésére szolgáló eszközében küldjön egy másik kérést a munkafolyamat elindításához.
 
-1. Ha állapot-nyilvántartó munkafolyamatot hozott létre, a munkafolyamat áttekintés lapján ellenőrizze a legutóbbi Futtatás állapotát. Az egyes lépések állapotának, bemenetének és kimenetének megtekintéséhez kattintson a futtatáshoz tartozó három pontra ( **...** ), majd válassza a **Futtatás megjelenítése** lehetőséget.
+1. Ha állapot-nyilvántartó munkafolyamatot hozott létre, a munkafolyamat áttekintés lapján ellenőrizze a legutóbbi Futtatás állapotát. Az egyes lépések állapotának, bemenetének és kimenetének megtekintéséhez kattintson a futtatáshoz tartozó három pontra (**...**), majd válassza a **Futtatás megjelenítése** lehetőséget.
 
    Például itt látható a Futtatás lépésenkénti állapota, miután a minta munkafolyamat frissült a válasz művelettel.
 
@@ -957,7 +960,7 @@ A [.net Core parancssori felület (CLI) eszköz](/dotnet/core/tools/)használat�
 
    `POST /runtime/webhooks/workflow/api/management/workflows/{workflow-name}/triggers/{trigger-name}/listCallbackUrl?api-version=2019-10-01-edge-preview&code={master-key}`
 
-   Az < *Master-key* > érték az Azure Storage-fiókban van definiálva, amelyet a `AzureWebJobsStorage` fájl, az **Azure-webjobs-Secrets/{Deployment-Name}/host.jsa** fájlban beállított, ahol megtalálhatja az értéket ebben a szakaszban:
+   Az <*Master-key*> érték az Azure Storage-fiókban van definiálva, amelyet a `AzureWebJobsStorage` fájl, az **Azure-webjobs-Secrets/{Deployment-Name}/host.jsa** fájlban beállított, ahol megtalálhatja az értéket ebben a szakaszban:
 
    ```json
    {
@@ -1015,7 +1018,48 @@ Bár a [Azure Logic apps számos meglévő korlátja](../logic-apps/logic-apps-l
 
   * A kód futtatásának korlátja öt másodperc és 15 másodperc közötti értékre nő.
 
-## <a name="next-steps"></a>További lépések
+<a name="troubleshooting"></a>
+
+## <a name="troubleshoot-errors-and-problems"></a>Hibák és problémák elhárítása
+
+<a name="400-bad-request"></a>
+
+### <a name="400-bad-request"></a>"400 hibás kérelem"
+
+Ha egy Futtatás meghiúsul, és megvizsgálja a Futtatás figyelés nézetben nézetet, a hiba megjelenhet egy hosszabb nevű eseményindítón vagy műveleten, ami miatt a mögöttes Uniform Resource Identifier (URI) túllépi az alapértelmezett karakteres korlátot.
+
+A probléma megoldásához és a hosszú URI-ra való igazításhoz módosítsa a `UrlSegmentMaxCount` számítógépen a és a `UrlSegmentMaxLength` beállításkulcsokat a következő lépésekkel. A kulcs alapértelmezett értékeit a témakör ismerteti, [Http.sys beállításjegyzék-beállításokat a Windows rendszerhez](/troubleshoot/iis/httpsys-registry-windows).
+
+> [!IMPORTANT]
+> Mielőtt elkezdené, győződjön meg róla, hogy mentette a munkáját. Ehhez a megoldáshoz újra kell indítani a számítógépet, miután elkészült, hogy a módosítások érvénybe lépnek.
+
+1. A számítógépén nyissa meg a **Futtatás** ablakot, és futtassa a `regedit` parancsot, amely megnyitja a beállításszerkesztőt.
+
+1. A **felhasználói fiókok felügyelete** mezőben válassza az **Igen** lehetőséget a számítógép módosításainak engedélyezéséhez.
+
+1. A bal oldali ablaktábla **számítógép** területén bontsa ki a csomópontokat az elérési út mentén, **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters**, majd válassza a **Parameters (paraméterek**) lehetőséget.
+
+1. A jobb oldali ablaktáblában keresse meg a `UrlSegmentMaxCount` és a `UrlSegmentMaxLength` beállításkulcsot.
+
+1. Növelje ezeket a kulcs-értékeket úgy, hogy az URI-k a használni kívánt neveket is elférjenek. Ha ezek a kulcsok nem léteznek, adja hozzá őket a **Parameters (paraméterek** ) mappához a következő lépésekkel:
+
+   1. A **Paraméterek** helyi menüjében válassza az **új**  >  **Duplaszó (32 bites) értéket**.
+
+   1. A megjelenő szerkesztés mezőben adja meg `UrlSegmentMaxCount` az új kulcs nevét.
+
+   1. Nyissa meg az új kulcs helyi menüjét, és kattintson a **módosítás** lehetőségre.
+
+   1. A megjelenő **karakterlánc szerkesztése** mezőben adja meg a hexadecimális vagy decimális formátumban használni kívánt **Value** Key értéket. Például `400` a hexadecimális érték a decimális értékkel egyenlő `1024` .
+
+   1. A `UrlSegmentMaxLength` kulcs értékének hozzáadásához ismételje meg ezeket a lépéseket.
+
+   A kulcsok értékének növelését vagy hozzáadását követően a Beállításszerkesztő a következő példához hasonló:
+
+   ![A Rendszerleíróadatbázis-szerkesztőt bemutató képernyőkép.](media/create-stateful-stateless-workflows-visual-studio-code/edit-registry-settings-uri-length.png)
+
+1. Ha elkészült, indítsa újra a számítógépet, hogy a módosítások érvénybe lépnek.
+
+## <a name="next-steps"></a>Következő lépések
 
 Örömmel vesszük a véleményét a nyilvános előzetes verzióval kapcsolatos tapasztalatairól!
 

@@ -10,7 +10,7 @@
       href: require-tou.md
 - name: Oktatóanyagok
   items:
-    - name: Azure Multi-Factor Authentication szükséges
+    - name: Azure AD többtényezős hitelesítés szükséges
       href: ../authentication/tutorial-enable-azure-mfa.md?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json
 - name: Alapelvek
   expanded: false

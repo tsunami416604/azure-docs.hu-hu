@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: a26a618d4f1bd9900136561d95c21c1ecbaadfaa
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 1459c80c857a436c8369d3ebe89794e0b69c33b1
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94916474"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980881"
 ---
 # <a name="azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Azure Hybrid Benefit – hogyan vonatkozik Linux Virtual Machines
 
@@ -146,6 +146,35 @@ A: nem. A virtuális gépen futó disztribúcióval nem egyező típusú licenc 
 *K: a Red Hat Cloud Access szolgáltatásban regisztráltam, de továbbra sem tudom engedélyezni a RHEL virtuális gépeken nyújtott előnyöket. Mi a teendő?*
 
 Válasz: eltarthat egy ideig, amíg a Red Hat Cloud Access-előfizetés regisztrálása a Red Hat-ról az Azure-ra terjed. Ha továbbra is látni szeretné a hibát egy munkanap után, forduljon a Microsoft támogatási szolgálatához.
+
+*K: üzembe helyeztem egy virtuális gépet egy "arany lemezkép" RHEL-BYOS használatával. Átválthatom a BYOS-ből a TB-re való számlázást?*
+
+A: nem. A Azure Hybrid Benefit csak utólagos elszámolású lemezképeken támogatja az átalakítást.
+
+*K: üzembe helyeztem egy virtuális gépet egy "arany lemezkép" RHEL-BYOS használatával. Átválthatom a BYOS-ből a TB-re való számlázást?*
+
+A: nem. A Azure Hybrid Benefit csak utólagos elszámolású lemezképeken támogatja az átalakítást.
+
+*K: Feltöltöttem a saját RHEL-rendszerképét a helyszíni rendszerből (ASR vagy más módon) az Azure-ba. Átválthatom a BYOS-ből a TB-re való számlázást?*
+
+A: nem. A Azure Hybrid Benefit képesség jelenleg csak a RHEL és a SLES Marketplace-lemezképek esetében érhető el. 
+
+*K: használhatok Azure Hybrid Benefit a piactér RHEL és a SLES SAP-lemezképeken üzembe helyezett virtuális gépeken?*
+
+Válasz: igen. A (z) "RHEL_BYOS" RHEL virtuális gépekhez és "SLES_BYOS" licencelési típust használhat a piactér RHEL és a SLES SAP-lemezképből üzembe helyezett virtuális gépek átalakításához.
+
+*K: használhatom a Azure Hybrid Benefitt a virtuálisgép-méretezési csoporton (VMSS) a RHEL és a SLES?*
+
+A: nem. A VMSS a RHEL és a SLES jelenleg nem tartoznak Azure Hybrid Benefitek hatálya alá.
+
+*K: használhatom Azure Hybrid Benefit a RHEL és a SLES fenntartott példányokon (RIs)?*
+
+A: nem. A RIs a RHEL és a SLES jelenleg nem tartozik Azure Hybrid Benefit ma.
+
+*K: használhatom a Azure Hybrid Benefitt a RHEL-lemezképeken SQL Server üzembe helyezett virtuális gépen?*
+
+A: nem. Ezek támogatásához nincs terv.
+ 
 
 ## <a name="common-issues"></a>Gyakori problémák
 Ez a szakasz az észlelt gyakori problémák listáját és a mérséklési lépéseket tartalmazza.

@@ -504,14 +504,16 @@
                   href: ./spark/synapse-spark-sql-pool-import-export.md
 - name: Synapse Link
   items:
+    - name: Áttekintés
+      items:
+        - name: Synapse Link az Azure Cosmos DB-hez
+          href: ../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: Rövid útmutatók
       items:
         - name: Csatlakozás a Cosmos DB-hez készült Synapse Linkhez
           href: quickstart-connect-synapse-link-cosmos-db.md
     - name: Alapelvek
       items:
-        - name: Synapse Link az Azure Cosmos DB-hez
-          href: ../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Elemzési tár – áttekintés
           href: ../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: A Synapse Link támogatott funkciói
@@ -967,7 +969,7 @@
   items:
     - name: Áttekintés
       items:
-        - name: Mit jelent a gépi tanulás a Synapse Analyticsben?
+        - name: Mit jelent a gépi tanulás az Azure Synapse-ben?
           href: machine-learning/what-is-machine-learning.md
     - name: Rövid útmutatók
       items:

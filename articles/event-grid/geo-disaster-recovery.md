@@ -2,21 +2,21 @@
 title: Geo vész-helyreállítás a Azure Event Gridban | Microsoft Docs
 description: Leírja, hogyan támogatja a Azure Event Grid a Geo vész-helyreállítási (GeoDR) automatikus használatát.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: ccb16971020a65932daa8f9adf4b7cd9008a9253
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/19/2020
+ms.openlocfilehash: 10beaf0ae25f3ed9b7bcda5961a89494b18b84d9
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86105846"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980849"
 ---
 # <a name="server-side-geo-disaster-recovery-in-azure-event-grid"></a>Kiszolgálóoldali földrajzi katasztrófa-helyreállítás Azure Event Grid
 Event Grid mostantól automatikus geo vész-helyreállítási (GeoDR) metaadatokat tartalmaz, nem csak az új, hanem az összes meglévő tartományt, témakört és esemény-előfizetést. Ha egy teljes Azure-régió leáll, Event Grid az összes eseménnyel kapcsolatos infrastruktúra-metaadatát szinkronizálja egy párosított régióba. Az új események az Ön beavatkozása nélkül is újra áramlanak. 
 
 A vész-helyreállítás két mérőszámmal mérhető:
 
-- [Helyreállítási pont célkitűzése (RPO)](https://en.wikipedia.org/wiki/Disaster_recovery#Recovery_Point_Objective): az elveszíthető percek vagy órák.
-- [Helyreállítási időre vonatkozó célkitűzés (RTO)](https://en.wikipedia.org/wiki/Disaster_recovery#Recovery_time_objective): az a perc, ameddig a szolgáltatás leáll.
+- Helyreállítási pont célkitűzése (RPO): az elveszíthető percek vagy órák.
+- Helyreállítási idő célkitűzése (RTO): az a perc vagy óra, ameddig a szolgáltatás leáll.
 
 Event Grid automatikus feladatátvétele különböző RPO és RTOs rendelkezik a metaadatokhoz (esemény-előfizetések stb.) és az adatokhoz (eseményekhez). Ha a következőtől eltérő specifikációra van szüksége, akkor is saját [ügyféloldali feladatátvételt alkalmazhat a témakör Health API-k használatával](custom-disaster-recovery.md).
 
@@ -32,5 +32,5 @@ Event Grid automatikus feladatátvétele különböző RPO és RTOs rendelkezik 
 > A Event Grid metaadatok GeoDR díja: $0.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha saját ügyféloldali feladatátvételi logikát szeretne megvalósítani, tekintse meg a [# saját vész-helyreállítási felépítése az egyéni témakörökhöz című részt Event Grid](custom-disaster-recovery.md)

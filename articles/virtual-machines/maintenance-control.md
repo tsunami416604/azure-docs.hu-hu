@@ -5,14 +5,14 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 04/22/2020
+ms.date: 11/19/2020
 ms.author: cynthn
-ms.openlocfilehash: 4d126d1e6bb92d2079ac3c0d95f754cb9aab3c21
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 4b9dec0fe684e002fadbac2db375c354db2b6d01
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978611"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981170"
 ---
 # <a name="managing-platform-updates-with-maintenance-control"></a>A platform frissítéseinek kezelése a karbantartási ellenőrzéssel 
 
@@ -23,12 +23,13 @@ A karbantartási ellenőrzéssel eldöntheti, hogy mikor alkalmazza a frissíté
 A karbantartási ellenőrzéssel a következőket teheti:
 - A Batch frissítése egyetlen frissítési csomagba.
 - Várjon akár 35 napra a frissítések alkalmazásához. 
-- A karbantartási időszak platform-frissítéseinek automatizálása [Azure functions](https://github.com/Azure/azure-docs-powershell-samples/tree/master/maintenance-auto-scheduler)használatával.
+- A platform frissítéseinek automatizálása karbantartási ütemterv konfigurálásával vagy [Azure functions](https://github.com/Azure/azure-docs-powershell-samples/tree/master/maintenance-auto-scheduler)használatával.
 - A karbantartási konfigurációk az előfizetések és az erőforráscsoportok között működnek. 
 
 ## <a name="limitations"></a>Korlátozások
 
 - A virtuális gépeknek [dedikált gazdagépen](./dedicated-hosts.md)kell lenniük, vagy egy elkülönített virtuálisgép- [mérettel](isolation.md)kell létrehozni.
+- Ha a karbantartási ütemterv be van jelentve, legalább 2 óráig kell lennie.
 - 35 nap elteltével a rendszer automatikusan alkalmazza a frissítést.
 - A felhasználónak **erőforrás-közreműködői** hozzáféréssel kell rendelkeznie.
 

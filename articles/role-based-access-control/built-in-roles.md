@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 11/03/2020
+ms.date: 11/18/2020
 ms.custom: generated
-ms.openlocfilehash: a48a13fa18025254ee31344868d10181ae87c65e
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: e18dc7e16eb0b114bd279d53b7dcc895bd62f338
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685477"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980861"
 ---
 # <a name="azure-built-in-roles"></a>Beépített Azure-szerepkörök
 
@@ -121,7 +121,7 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 > | [Log Analytics olvasó](#log-analytics-reader) | Log Analytics olvasó megtekintheti és megkeresheti az összes figyelési adatait, valamint megtekintheti a figyelési beállításokat, beleértve az Azure Diagnostics konfigurációjának megtekintését az összes Azure-erőforráson. | 73c42c96-874c-492b-b04d-ab87d138a893 |
 > | [Séma beállításjegyzékbeli közreműködői (előzetes verzió)](#schema-registry-contributor-preview) | Séma-beállításjegyzékbeli csoportok és sémák olvasása, írása és törlése. | 5dffeca3-4936-4216-b2bc-10343a5abb25 |
 > | [Séma beállításjegyzék-olvasója (előzetes verzió)](#schema-registry-reader-preview) | Séma-beállításjegyzékbeli csoportok és sémák olvasása és listázása. | 2c56ea50-c6b3-40a6-83c0-9d98858bc7d2 |
-> | **Blockchain** |  |  |
+> | **Blokklánc** |  |  |
 > | [Blockchain-hozzáférés (előzetes verzió)](#blockchain-member-node-access-preview) | Engedélyezi a hozzáférést a Blockchain-tagok csomópontjaihoz | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
 > | **AI és gépi tanulás** |  |  |
 > | [Cognitive Services közreműködő](#cognitive-services-contributor) | Lehetővé teszi Cognitive Services kulcsainak létrehozását, olvasását, frissítését, törlését és kezelését. | 25fbc0a9-bd7c-42a3-aa1a-3b75d497ee68 |
@@ -237,6 +237,7 @@ Teljes hozzáférést biztosít az összes erőforrás kezeléséhez, de nem tes
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/elevateAccess/Action | A hívónak felhasználói hozzáférésű rendszergazdai hozzáférést engedélyez a bérlői hatókörben |
 > | [Microsoft. Blueprint](resource-provider-operations.md#microsoftblueprint)/blueprintAssignments/Write | Tervrajz-hozzárendelések létrehozása vagy frissítése |
 > | [Microsoft. Blueprint](resource-provider-operations.md#microsoftblueprint)/blueprintAssignments/delete | Bármely tervrajz-hozzárendelés törlése |
+> | [Microsoft. számítási](resource-provider-operations.md#microsoftcompute)/Galleries/Share/Action | Katalógus megosztása különböző hatókörökre |
 > | **DataActions** |  |
 > | *nincs* |  |
 > | **NotDataActions** |  |
@@ -260,7 +261,8 @@ Teljes hozzáférést biztosít az összes erőforrás kezeléséhez, de nem tes
         "Microsoft.Authorization/*/Write",
         "Microsoft.Authorization/elevateAccess/Action",
         "Microsoft.Blueprint/blueprintAssignments/write",
-        "Microsoft.Blueprint/blueprintAssignments/delete"
+        "Microsoft.Blueprint/blueprintAssignments/delete",
+        "Microsoft.Compute/galleries/share/action"
       ],
       "dataActions": [],
       "notDataActions": []
@@ -686,7 +688,7 @@ Tekintse meg Virtual Machines a portálon, és jelentkezzen be normál felhaszn�
 }
 ```
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 
 ### <a name="cdn-endpoint-contributor"></a>CDN-végpont közreműködői
@@ -2587,7 +2589,7 @@ Azure Storage-várólisták és üzenetsor-üzenetek olvasása és listázása. 
 }
 ```
 
-## <a name="web"></a>Webes
+## <a name="web"></a>Web
 
 
 ### <a name="azure-maps-data-reader"></a>Adatolvasó Azure Maps
@@ -4966,7 +4968,7 @@ Séma-beállításjegyzékbeli csoportok és sémák olvasása és listázása.
 }
 ```
 
-## <a name="blockchain"></a>Blockchain
+## <a name="blockchain"></a>Blokklánc
 
 
 ### <a name="blockchain-member-node-access-preview"></a>Blockchain-hozzáférés (előzetes verzió)
@@ -6551,6 +6553,7 @@ A felhasználóhoz rendelt identitás olvasása és hozzárendelése [További i
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/Query/*/READ |  |
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/READ | Munkaterületen lévő adatforrások beolvasása. |
 > | [Microsoft.](resource-provider-operations.md#microsoftinsights)/workbooks/* |  |
+> | [Microsoft.](resource-provider-operations.md#microsoftinsights)/myworkbooks/READ | Privát munkafüzet beolvasása |
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/READ | Szerepkörök és szerepkör-hozzárendelések olvasása |
 > | [Microsoft.](resource-provider-operations.md#microsoftinsights)/alertRules/* | Klasszikus metrikai riasztás létrehozása és kezelése |
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Központi telepítés létrehozása és kezelése |
@@ -6583,6 +6586,7 @@ A felhasználóhoz rendelt identitás olvasása és hozzárendelése [További i
         "Microsoft.OperationalInsights/workspaces/query/*/read",
         "Microsoft.OperationalInsights/workspaces/dataSources/read",
         "Microsoft.Insights/workbooks/*",
+        "Microsoft.Insights/myworkbooks/read",
         "Microsoft.Authorization/*/read",
         "Microsoft.Insights/alertRules/*",
         "Microsoft.Resources/deployments/*",
@@ -6620,6 +6624,7 @@ Azure Sentinel-olvasó [További információ](../sentinel/roles.md)
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/Query/*/READ |  |
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/READ | Munkaterületen lévő adatforrások beolvasása. |
 > | [Microsoft.](resource-provider-operations.md#microsoftinsights)/workbooks/READ | Munkafüzet beolvasása |
+> | [Microsoft.](resource-provider-operations.md#microsoftinsights)/myworkbooks/READ | Privát munkafüzet beolvasása |
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/READ | Szerepkörök és szerepkör-hozzárendelések olvasása |
 > | [Microsoft.](resource-provider-operations.md#microsoftinsights)/alertRules/* | Klasszikus metrikai riasztás létrehozása és kezelése |
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Központi telepítés létrehozása és kezelése |
@@ -6656,6 +6661,7 @@ Azure Sentinel-olvasó [További információ](../sentinel/roles.md)
         "Microsoft.OperationalInsights/workspaces/query/*/read",
         "Microsoft.OperationalInsights/workspaces/dataSources/read",
         "Microsoft.Insights/workbooks/read",
+        "Microsoft.Insights/myworkbooks/read",
         "Microsoft.Authorization/*/read",
         "Microsoft.Insights/alertRules/*",
         "Microsoft.Resources/deployments/*",
@@ -6699,13 +6705,15 @@ Azure Sentinel-olvasó [További információ](../sentinel/roles.md)
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/Query/*/READ |  |
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/READ | Munkaterületen lévő adatforrások beolvasása. |
 > | [Microsoft.](resource-provider-operations.md#microsoftinsights)/workbooks/READ | Munkafüzet beolvasása |
+> | [Microsoft.](resource-provider-operations.md#microsoftinsights)/myworkbooks/READ | Privát munkafüzet beolvasása |
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/READ | Szerepkörök és szerepkör-hozzárendelések olvasása |
 > | [Microsoft.](resource-provider-operations.md#microsoftinsights)/alertRules/* | Klasszikus metrikai riasztás létrehozása és kezelése |
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Központi telepítés létrehozása és kezelése |
 > | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/READ | Erőforráscsoportok beolvasása vagy felsorolása. |
 > | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Támogatási jegy létrehozása és frissítése |
 > | **NotActions** |  |
-> | *nincs* |  |
+> | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/Cases/*/delete |  |
+> | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/Incidents/*/delete |  |
 > | **DataActions** |  |
 > | *nincs* |  |
 > | **NotDataActions** |  |
@@ -6741,13 +6749,17 @@ Azure Sentinel-olvasó [További információ](../sentinel/roles.md)
         "Microsoft.OperationalInsights/workspaces/query/*/read",
         "Microsoft.OperationalInsights/workspaces/dataSources/read",
         "Microsoft.Insights/workbooks/read",
+        "Microsoft.Insights/myworkbooks/read",
         "Microsoft.Authorization/*/read",
         "Microsoft.Insights/alertRules/*",
         "Microsoft.Resources/deployments/*",
         "Microsoft.Resources/subscriptions/resourceGroups/read",
         "Microsoft.Support/*"
       ],
-      "notActions": [],
+      "notActions": [
+        "Microsoft.SecurityInsights/cases/*/Delete",
+        "Microsoft.SecurityInsights/incidents/*/Delete"
+      ],
       "dataActions": [],
       "notDataActions": []
     }
@@ -7004,8 +7016,8 @@ A kulcsok metaadatainak olvasása, valamint a becsomagolási/kicsomagolási műv
 > | *nincs* |  |
 > | **DataActions** |  |
 > | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/READ | A megadott tárolóban található kulcsok listázása, illetve a kulcsok beolvasása és a kulcs nyilvános anyaga. Az aszimmetrikus kulcsok esetében ez a művelet közzéteszi a nyilvános kulcsot, és olyan nyilvános kulcsú algoritmusokat is képes végrehajtani, mint például a titkosítás és az aláírás ellenőrzése. A titkos kulcsok és a szimmetrikus kulcsok soha nem érhetők el. |
-> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/wrap/Action | Szimmetrikus kulcs becsomagolása Key Vault kulccsal. Vegye figyelembe, hogy ha a Key Vault kulcs aszimmetrikus, a művelet olvasási hozzáféréssel is elvégezhető. |
-> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/unwrap/Action | Szimmetrikus kulcs kicsomagolása Key Vault kulccsal. |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/wrap/Action | Szimmetrikus kulcs becsomagolása Key Vault kulccsal. Vegye figyelembe, hogy ha a Key Vault kulcs aszimmetrikus, ezt a műveletet olvasási hozzáféréssel rendelkező rendszerbiztonsági tag is elvégezheti. |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/unwrap/Action | Egy szimmetrikus kulcs kicsomagolása Key Vault kulccsal. |
 > | **NotDataActions** |  |
 > | *nincs* |  |
 
@@ -7048,13 +7060,13 @@ Titkosítási műveletek végrehajtása kulcsok használatával. Csak az "Azure 
 > | **DataActions** |  |
 > | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/READ | A megadott tárolóban található kulcsok listázása, illetve a kulcsok beolvasása és a kulcs nyilvános anyaga. Az aszimmetrikus kulcsok esetében ez a művelet közzéteszi a nyilvános kulcsot, és olyan nyilvános kulcsú algoritmusokat is képes végrehajtani, mint például a titkosítás és az aláírás ellenőrzése. A titkos kulcsok és a szimmetrikus kulcsok soha nem érhetők el. |
 > | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/Update/Action | Az adott kulcshoz társított megadott attribútumok frissítése. |
-> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/Backup/Action | Hozzon létre egy kulcs biztonságimásolat-fájlját. A fájl a kulcs visszaállítására használható ugyanazon előfizetés Key Vaultében. A korlátozások vonatkozhatnak. |
-> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/encrypt/Action | Titkosítsa az egyszerű szöveges kulcsot. Vegye figyelembe, hogy ha a kulcs aszimmetrikus, akkor ezt a műveletet olvasási hozzáféréssel rendelkező rendszerbiztonsági tag végezheti el. |
-> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/decrypt/Action | Rejtjelezett visszafejtése kulccsal. |
-> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/wrap/Action | Szimmetrikus kulcs becsomagolása Key Vault kulccsal. Vegye figyelembe, hogy ha a Key Vault kulcs aszimmetrikus, a művelet olvasási hozzáféréssel is elvégezhető. |
-> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/unwrap/Action | Szimmetrikus kulcs kicsomagolása Key Vault kulccsal. |
-> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/Sign/Action | A kivonatot egy kulccsal írja alá. |
-> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/Verify/Action | Ellenőrizze a kivonatot. Vegye figyelembe, hogy ha a kulcs aszimmetrikus, akkor ezt a műveletet olvasási hozzáféréssel rendelkező rendszerbiztonsági tag végezheti el. |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/Backup/Action | Létrehoz egy kulcs biztonságimásolat-fájlját. A fájl a kulcs visszaállítására használható ugyanazon előfizetés Key Vaultében. A korlátozások vonatkozhatnak. |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/encrypt/Action | Titkosítja az egyszerű szöveges kulcsot. Vegye figyelembe, hogy ha a kulcs aszimmetrikus, akkor ezt a műveletet olvasási hozzáféréssel rendelkező rendszerbiztonsági tag végezheti el. |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/decrypt/Action | Visszafejti a rejtjelezett egy kulccsal. |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/wrap/Action | Szimmetrikus kulcs becsomagolása Key Vault kulccsal. Vegye figyelembe, hogy ha a Key Vault kulcs aszimmetrikus, ezt a műveletet olvasási hozzáféréssel rendelkező rendszerbiztonsági tag is elvégezheti. |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/unwrap/Action | Egy szimmetrikus kulcs kicsomagolása Key Vault kulccsal. |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/Sign/Action | Egy üzenet kivonatának (kivonatának) regisztrálása kulccsal. |
+> | [Microsoft.](resource-provider-operations.md#microsoftkeyvault)kulcstartó/Vaults/Keys/Verify/Action | Ellenőrzi, hogy van-e egy kulccsal rendelkező üzenet-kivonat (kivonat) aláírása. Vegye figyelembe, hogy ha a kulcs aszimmetrikus, akkor ezt a műveletet olvasási hozzáféréssel rendelkező rendszerbiztonsági tag végezheti el. |
 > | **NotDataActions** |  |
 > | *nincs* |  |
 
@@ -7760,7 +7772,7 @@ Beolvashatja az összes figyelési és a figyelési beállításokat. Lásd még
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/sharedKeys/Action | Lekéri a munkaterület megosztott kulcsait. Ezek a kulcsok a Microsoft Operational Insights-ügynökök munkaterülethez való összekapcsolására szolgálnak. |
 > | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/storageinsightconfigs/* | A log Analytics tárolási Insight-konfigurációinak olvasása/írása/törlése. |
 > | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Támogatási jegy létrehozása és frissítése |
-> | [Microsoft. WorkloadMonitor](resource-provider-operations.md#microsoftworkloadmonitor)/Monitors/* | Információ kérése a vendég virtuális gép állapotának figyelői.  |
+> | [Microsoft. WorkloadMonitor](resource-provider-operations.md#microsoftworkloadmonitor)/Monitors/* | Információ kérése a vendég virtuális gép állapotának figyelői. |
 > | [Microsoft. AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/smartDetectorAlertRules/* |  |
 > | [Microsoft. AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/actionRules/* |  |
 > | [Microsoft. AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/smartGroups/* |  |

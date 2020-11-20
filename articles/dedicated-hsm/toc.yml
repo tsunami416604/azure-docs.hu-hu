@@ -10,6 +10,10 @@
       href: tutorial-deploy-hsm-cli.md
     - name: HSM-ek üzembe helyezése meglévő virtuális hálózaton a PowerShell-lel
       href: tutorial-deploy-hsm-powershell.md
+- name: Rövid útmutatók
+  items:
+    - name: Azure Dedicated HSM létrehozása az Azure PowerShell használatával
+      href: quickstart-create-hsm-powershell.md
 - name: Alapelvek
   items:
     - name: Magas rendelkezésre állás

@@ -61,10 +61,14 @@
       href: security-baselines-overview.md
     - name: Az API Management biztonsági alapkonfigurációja
       href: ../../api-management/security-baseline.md
+    - name: Az App Service biztonsági alapkonfigurációja
+      href: ../../app-service/security-baseline.md
     - name: Az Application Gateway biztonsági alapkonfigurációja
       href: ../../application-gateway/security-baseline.md
     - name: Az Automation biztonsági alapkonfigurációja
       href: ../../automation/security-baseline.md
+    - name: Az Azure Advisor biztonsági alapkonfigurációja
+      href: ../../advisor/security-baseline.md
     - name: Az Azure Backup biztonsági alapkonfigurációja
       href: ../../backup/security-baseline.md
     - name: Az Azure Cache for Redis biztonsági alapkonfigurációja
@@ -97,6 +101,8 @@
       href: ../../frontdoor/security-baseline.md
     - name: Az Azure Functions biztonsági alapkonfigurációja
       href: ../../azure-functions/security-baseline.md
+    - name: Az Azure Information Protection biztonsági alapkonfigurációja
+      href: /azure/information-protection/security-baseline
     - name: Az Azure IoT Hub biztonsági alapkonfigurációja
       href: ../../iot-hub/security-baseline.md
     - name: Az Azure Kubernetes Service biztonsági alapkonfigurációja

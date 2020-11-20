@@ -32,7 +32,7 @@
       href: tutorial-deploy-vmware-hcx.md
     - name: 8 – Magánfelhő skálázása
       href: tutorial-scale-private-cloud.md
-- name: Fogalmak
+- name: Alapelvek
   items:
     - name: Magánfelhők és -fürtök
       href: concepts-private-clouds-clusters.md
@@ -42,7 +42,7 @@
       href: concepts-storage.md
     - name: Magánfelhők hozzáférése és identitása
       href: concepts-identity.md
-    - name: Szerepköralapú hozzáférés-vezérlés
+    - name: vSphere szerepköralapú hozzáférés-vezérlés
       href: concepts-role-based-access-control.md
     - name: Magánfelhők monitorozása és javítása
       href: concepts-monitor-repair-private-cloud.md

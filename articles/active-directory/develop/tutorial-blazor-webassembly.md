@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: f967b10d729c9c5486bbca9b643f48aaf558687c
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 5489feeeec64c7b3d4b5fc28eddfe8b780308796
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628067"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94979878"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>Oktatóanyag: bejelentkezés a felhasználókba és a védett API meghívása egy Blazer webszerelvény-alkalmazásból
 
-A Blazer web Assembly (WASM) egy egyoldalas alkalmazás-keretrendszer, amellyel interaktív ügyféloldali webalkalmazásokat hozhat létre a .NET használatával. Ebből az oktatóanyagból megtudhatja, hogyan valósítható meg a hitelesítés, és hogyan kérhet le információkat Microsoft Graph egy WASM-alkalmazásban a Microsoft Identity platform használatával, és hogyan regisztrálhat az alkalmazást Azure Active Directory (Azure AD)-ban.
+Ebben az oktatóanyagban egy olyan Blazer webszerelvény-alkalmazást hoz létre, amely bejelentkezik a felhasználók számára, és beolvassa a Microsoft Graph adatait a Microsoft Identity platform használatával, és regisztrálja az alkalmazást a Azure Active Directoryban (Azure AD).
 
 A [Blazer-kiszolgáló oktatóanyaga](tutorial-blazor-server.md)is rendelkezésre áll. 
 
-Az oktatóanyagban a következőket végezheti el:
+Ebben az oktatóanyagban:
 
 > [!div class="checklist"]
 >
@@ -239,7 +239,7 @@ A jóváhagyás megadása után navigáljon az "adat lekérése" lapra, és olva
 
 :::image type="content" source="./media/tutorial-blazor-webassembly/final-app.png" alt-text="Képernyőkép a végleges alkalmazásról. Van egy fejléce, amely szerint a Hello Nicholas, és megjeleníti a Nicholas-hoz tartozó e-mailek listáját.":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Microsoft Identity platform – ajánlott eljárások és javaslatok](./identity-platform-integration-checklist.md)

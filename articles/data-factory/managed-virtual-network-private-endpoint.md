@@ -13,12 +13,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: a34f2e50a5eb4ab87a02a5128cb912fa220849f1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 81d82bccd6b6bd97b84df5269dd59ffac4903370
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317078"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980361"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory felügyelt Virtual Network (előzetes verzió)
 
@@ -72,6 +72,11 @@ Ha a tulajdonos jóváhagyja a kapcsolatot, a magánhálózati kapcsolat létrej
 ![Felügyelt privát végpont jóváhagyása](./media/tutorial-copy-data-portal-private/approve-private-endpoint.png)
 
 Csak egy felügyelt magánhálózati végpont engedélyezett állapotban küldhet forgalmat egy adott privát kapcsolati erőforrásnak.
+
+## <a name="interactive-authoring"></a>Interaktív szerzői műveletek
+Az interaktív szerzői képességek olyan funkciókhoz használatosak, mint a kapcsolat tesztelése, a mappák listájának és a táblázatok listájának lekérése, a séma beolvasása és az előnézet. Az ADF által felügyelt virtuális hálózatban lévő Azure Integration Runtime létrehozásakor vagy szerkesztésekor engedélyezheti az interaktív szerzői műveleteket. A háttérrendszer előre lefoglalja a számítási funkciókat az interaktív szerzői funkciókhoz. Ellenkező esetben a számítás minden olyan interaktív művelet elvégzése után le lesz foglalva, amely több időt vesz igénybe. Az interaktív létrehozás élettartama (TTL) 60 perc, ami azt jelenti, hogy az utolsó interaktív szerzői művelethez tartozó 60 perc elteltével automatikusan le lesz tiltva.
+
+![Interaktív szerzői műveletek](./media/managed-vnet/interactive-authoring.png)
 
 ## <a name="limitations-and-known-issues"></a>Korlátozások és ismert problémák
 ### <a name="supported-data-sources"></a>Támogatott adatforrások

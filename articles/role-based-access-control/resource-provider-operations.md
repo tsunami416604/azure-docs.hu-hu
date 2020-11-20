@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 11/03/2020
+ms.date: 11/18/2020
 ms.custom: generated
-ms.openlocfilehash: cf8c8e7d56f4eff351361edd148f91e81a07bfbb
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: ceb1aea1edcc4916fdd802673c3145b12de01801
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649143"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980915"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure erőforrás-szolgáltatói műveletek
 
@@ -81,7 +81,7 @@ A műveletek listájának megtekintéséhez kattintson az erőforrás-szolgálta
 | [Microsoft.Kusto](#microsoftkusto) |
 | [Microsoft. PowerBIDedicated](#microsoftpowerbidedicated) |
 | [Microsoft. StreamAnalytics](#microsoftstreamanalytics) |
-| **Blockchain** |
+| **Blokklánc** |
 | [Microsoft. Blockchain](#microsoftblockchain) |
 | **AI és gépi tanulás** |
 | [Microsoft. BotService](#microsoftbotservice) |
@@ -629,7 +629,7 @@ Azure-szolgáltatás: [Service Fabric](../service-fabric/index.yml)
 > | Microsoft. ServiceFabric/Locations/Operations/READ | Bármilyen művelet beolvasása hely szerint |
 > | Microsoft. ServiceFabric/Operations/READ | Az összes elérhető művelet beolvasása |
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 ### <a name="microsoftcdn"></a>Microsoft. CDN
 
@@ -843,6 +843,7 @@ Azure-szolgáltatás [: Application Gateway](../application-gateway/index.yml), 
 > | Microsoft. Network/azureFirewalls/networkRuleCollections/READ | Azure Firewall NetworkRuleCollection beolvasása |
 > | Microsoft. Network/azureFirewalls/networkRuleCollections/Write | CreatesOrUpdates Azure Firewall NetworkRuleCollection |
 > | Microsoft. Network/azureFirewalls/networkRuleCollections/delete | Azure Firewall NetworkRuleCollection törlése |
+> | Microsoft. Network/azureWebCategories/READ | Azure webkategóriák beolvasása |
 > | Microsoft. Network/bastionHosts/READ | Megerősített gazdagép beolvasása |
 > | Microsoft. Network/bastionHosts/Write | Megerősített gazdagép létrehozása vagy frissítése |
 > | Microsoft. Network/bastionHosts/delete | Megerősített gazdagép törlése |
@@ -1242,6 +1243,8 @@ Azure-szolgáltatás [: Application Gateway](../application-gateway/index.yml), 
 > | Microsoft. Network/virtualHubs/bgpConnections/READ | A virtuális központ hub BGP-kapcsolatok alárendelt erőforrásának beolvasása |
 > | Microsoft. Network/virtualHubs/bgpConnections/Write | A virtuális központ hub BGP-kapcsolatok alárendelt erőforrásának létrehozása vagy frissítése |
 > | Microsoft. Network/virtualHubs/bgpConnections/delete | A virtuális központ hub BGP-kapcsolatok alárendelt erőforrásának törlése |
+> | Microsoft. Network/virtualHubs/bgpConnections/advertisedRoutes/művelet | Beolvassa a virtualrouter meghirdetett útvonalakat |
+> | Microsoft. Network/virtualHubs/bgpConnections/learnedRoutes/művelet | Virtualrouter megtanult útvonalak beolvasása |
 > | Microsoft. Network/virtualHubs/hubRouteTables/READ | A virtuális központ útválasztási tábla alárendelt erőforrásának beolvasása |
 > | Microsoft. Network/virtualHubs/hubRouteTables/Write | Egy útválasztási tábla alárendelt erőforrásának létrehozása vagy frissítése a virtuális hubhoz |
 > | Microsoft. Network/virtualHubs/hubRouteTables/delete | A virtuális központ útválasztási tábla alárendelt erőforrásának törlése |
@@ -1329,6 +1332,9 @@ Azure-szolgáltatás [: Application Gateway](../application-gateway/index.yml), 
 > | Microsoft. Network/vpngateways/startpacketcapture/Action | A VPN Gateway-csomagok rögzítésének elindítása az erőforrás alapján |
 > | Microsoft. Network/vpngateways/stoppacketcapture/Action | VPN Gateway-csomagok rögzítésének leállítása a sas URL |
 > | Microsoft. Network/vpngateways/listvpnconnectionshealth/Action | A kapcsolati állapot beolvasása a átjáróban lévő kapcsolatok teljes vagy egy részhalmazára |
+> | Microsoft. Network/vpnGateways/natRules/READ | NAT-szabály erőforrásának beolvasása |
+> | Microsoft. Network/vpnGateways/natRules/Write | NAT-szabály erőforrásának létrehozása |
+> | Microsoft. Network/vpnGateways/natRules/delete | NAT-szabály erőforrásának törlése |
 > | Microsoft. Network/vpnGateways/VPN/READ | VpnConnection beolvasása. |
 > | Microsoft. Network/vpnGateways/VPN/Write | Egy VpnConnection helyez el. |
 > | Microsoft. Network/vpnGateways/VPN/delete | Töröl egy VpnConnection. |
@@ -1866,7 +1872,7 @@ Azure-szolgáltatás: [StorSimple](../storsimple/index.yml)
 > | Microsoft. StorSimple/Managers/storageDomains/operationResults/READ | A művelet eredményeinek megjelenítése vagy beolvasása |
 > | Microsoft. StorSimple/Operations/READ | A műveletek listája vagy beolvasása |
 
-## <a name="web"></a>Webes
+## <a name="web"></a>Web
 
 ### <a name="microsoftcertificateregistration"></a>Microsoft. CertificateRegistration
 
@@ -1934,6 +1940,9 @@ Azure-szolgáltatás: [Azure Maps](../azure-maps/index.yml)
 > | Microsoft. Maps/fiókok/törlés | Maps-fiók törlése. |
 > | Microsoft. Maps/accounts/Listkeys műveletének beolvasása/Action | Maps-fiók kulcsainak listázása. |
 > | Microsoft. Maps/accounts/regenerateKey/Action | Új Maps-fiók elsődleges vagy másodlagos kulcsának létrehozása. |
+> | Microsoft. Maps/fiókok/alkotók/írás | Létrehozó létrehozása vagy frissítése. |
+> | Microsoft. Maps/fiókok/alkotók/olvasás | Szerezzen be egy létrehozót. |
+> | Microsoft. Maps/accounts/Creators/delete | Egy létrehozó törlése. |
 > | Microsoft. Maps/fiókok/eventGridFilters/delete | Event Grid szűrő törlése. |
 > | Microsoft. Maps/accounts/eventGridFilters/READ | Event Grid szűrő beszerzése |
 > | Microsoft. Maps/fiókok/eventGridFilters/írás | Event Grid szűrő létrehozása vagy frissítése. |
@@ -2103,6 +2112,7 @@ Azure-szolgáltatás: [Azure signaler szolgáltatás](../azure-signalr/index.yml
 > | Microsoft. SignalRService/Locations/checknameavailability/Action | Annak ellenőrzése, hogy a név elérhető-e az új szignáló szolgáltatással való használatra |
 > | Microsoft. SignalRService/Locations/operationresults/szignáló/olvasás | Hely-alapú aszinkron művelet eredményének lekérdezése |
 > | Microsoft. SignalRService/Locations/operationStatuses/operationId/READ | Hely-alapú aszinkron művelet állapotának lekérdezése |
+> | Microsoft. SignalRService/Locations/operationStatuses/szignáló/olvasás | Hely-alapú aszinkron művelet állapotának lekérdezése |
 > | Microsoft. SignalRService/Locations/használati adatok/olvasás | Az Azure Signaler szolgáltatás kvóta-használatának beolvasása |
 > | Microsoft. SignalRService/operationresults/READ | Szolgáltatói szintű aszinkron művelet eredményének lekérdezése |
 > | Microsoft. SignalRService/Operations/READ | Az Azure Signaler szolgáltatás műveleteinek listázása. |
@@ -2610,6 +2620,7 @@ Azure-szolgáltatás: [app Service](../app-service/index.yml), [Azure functions]
 > | Microsoft. Web/staticSites/getuser/művelet | A felhasználó információinak beolvasása egy statikus helyhez |
 > | Microsoft. Web/staticSites/listsecrets/művelet | Statikus hely titkainak listázása |
 > | Microsoft. Web/staticSites/resetapikey/művelet | Statikus hely API-kulcsának alaphelyzetbe állítása |
+> | Microsoft. Web/staticSites/zipdeploy/művelet | Statikus hely üzembe helyezése tömörített tartalomból |
 > | Microsoft. Web/staticSites/authproviders/listusers/művelet | Egy statikus hely felhasználóinak listázása |
 > | Microsoft. Web/staticSites/authproviders/Users/delete | Felhasználó törlése egy statikus helyhez |
 > | Microsoft. Web/staticSites/authproviders/felhasználók/írás | Felhasználó frissítése statikus helyhez |
@@ -2617,6 +2628,7 @@ Azure-szolgáltatás: [app Service](../app-service/index.yml), [Azure functions]
 > | Microsoft. Web/staticSites/Build/delete | Statikus helyhez tartozó Build törlése |
 > | Microsoft. Web/staticSites/buildek/listfunctionappsettings/művelet | Egy statikus hely létrehozásához tartozó Function app-beállítások listázása |
 > | Microsoft. Web/staticSites/buildek/listappsettings/művelet | Az alkalmazás beállításainak listázása egy statikus hely létrehozásához |
+> | Microsoft. Web/staticSites/buildek/zipdeploy/művelet | Statikus webhely üzembe helyezése tömörített tartalomból |
 > | Microsoft. Web/staticSites/Build/config/Write | Alkalmazások beállításainak létrehozása vagy frissítése egy statikus hely létrehozásához |
 > | Microsoft. Web/staticSites/config/Write | Alkalmazás beállításainak létrehozása vagy frissítése egy statikus helyhez |
 > | Microsoft. Web/staticSites/customdomains/írás | Egyéni tartomány létrehozása statikus helyhez |
@@ -3931,6 +3943,8 @@ Azure-szolgáltatás: [Azure SQL Database](../azure-sql/database/index.yml), [Az
 > | Microsoft. SQL/Locations/serverAdministratorOperationResults/READ | Kiszolgáló Azure Active Directory rendszergazdai művelet eredményei |
 > | Microsoft. SQL/Locations/serverKeyAzureAsyncOperation/READ | Folyamatban lévő műveletek beolvasása transzparens adattitkosítási kiszolgáló kulcsain |
 > | Microsoft. SQL/Locations/serverKeyOperationResults/READ | Folyamatban lévő műveletek beolvasása transzparens adattitkosítási kiszolgáló kulcsain |
+> | Microsoft. SQL/Locations/serverTrustGroupAzureAsyncOperation/READ | A kiszolgálói megbízhatósági csoport aszinkron művelete állapotának beolvasása |
+> | Microsoft. SQL/Locations/serverTrustGroupOperationResults/READ | A kiszolgálói megbízhatósági csoport művelet eredményének beolvasása |
 > | Microsoft. SQL/Locations/serverTrustGroups/Write | Kiszolgáló-megbízhatósági csoportot hoz létre a megadott paraméterekkel |
 > | Microsoft. SQL/Locations/serverTrustGroups/delete | Törli a meglévő SQL Server megbízhatósági csoportot |
 > | Microsoft. SQL/Locations/serverTrustGroups/READ | A meglévő SQL Server megbízhatósági csoportok beolvasása |
@@ -3946,12 +3960,12 @@ Azure-szolgáltatás: [Azure SQL Database](../azure-sql/database/index.yml), [Az
 > | Microsoft. SQL/Locations/virtualNetworkRulesAzureAsyncOperation/READ | A megadott virtuális hálózati szabályok Azure aszinkron műveletének részleteit adja vissza.  |
 > | Microsoft. SQL/Locations/virtualNetworkRulesOperationResults/READ | A virtuális hálózati szabályok megadott műveletének részleteit adja vissza.  |
 > | Microsoft. SQL/managedInstances/tdeCertificates/művelet | TDE-tanúsítvány létrehozása/frissítése |
-> | Microsoft. SQL/managedInstances/joinServerTrustGroup/művelet | Annak megállapítása, hogy a felhasználó csatlakozhat-e a kiszolgálói megbízhatósági csoporthoz |
+> | Microsoft. SQL/managedInstances/feladatátvétel/művelet | Az ügyfél által kezdeményezett felügyelt példány feladatátvétele. |
+> | Microsoft. SQL/managedInstances/joinServerTrustGroup/művelet | Annak megállapítása, hogy a felhasználó csatlakozhat-e a felügyelt kiszolgálóhoz egy kiszolgálói megbízhatósági csoportba |
 > | Microsoft. SQL/managedInstances/exportálás/művelet | Rendszeradatbázis és SMK-kulcs exportálása |
 > | Microsoft. SQL/managedInstances/READ | Visszaadja a felügyelt példányok listáját, vagy lekéri a megadott felügyelt példány tulajdonságait. |
 > | Microsoft. SQL/managedInstances/írás | Létrehoz egy felügyelt példányt a megadott paraméterekkel, vagy frissíti a megadott felügyelt példány tulajdonságait vagy címkéit. |
 > | Microsoft. SQL/managedInstances/delete | Egy meglévő felügyelt példány törlése. |
-> | Microsoft. SQL/managedInstances/feladatátvétel/művelet | Az ügyfél által kezdeményezett felügyelt példány feladatátvétele. |
 > | Microsoft. SQL/managedInstances/rendszergazdák/olvasás | Lekéri a felügyelt példányok rendszergazdáinak listáját. |
 > | Microsoft. SQL/managedInstances/rendszergazdák/írás | A felügyelt példányok rendszergazdájának létrehozása vagy frissítése a megadott paraméterekkel. |
 > | Microsoft. SQL/managedInstances/rendszergazdák/törlés | A felügyelt példány meglévő rendszergazdája törölve. |
@@ -4100,11 +4114,11 @@ Azure-szolgáltatás: [Azure SQL Database](../azure-sql/database/index.yml), [Az
 > | Microsoft. SQL/kiszolgálók/adatbázisok/dataMaskingPolicies/szabályok/törlés | Az adatmaszkolási házirend szabályának törlése egy adott adatbázisra vonatkozóan |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/dataWarehouseQueries/olvasás | Az adatraktár-terjesztési lekérdezési adatokat adja vissza a kiválasztott lekérdezési AZONOSÍTÓhoz. |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/dataWarehouseQueries/dataWarehouseQuerySteps/READ | Az adatraktár-lekérdezés elosztott lekérdezési lépésének információit adja vissza a kiválasztott lépés-AZONOSÍTÓhoz |
-> | Microsoft. SQL/kiszolgálók/adatbázisok/dataWarehouseUserActivities/olvasás | Az Azure szinapszis Analytics dedikált SQL-készletének felhasználói tevékenységeit kérdezi le, beleértve a futó és a felfüggesztett lekérdezéseket is |
+> | Microsoft. SQL/kiszolgálók/adatbázisok/dataWarehouseUserActivities/olvasás | Lekéri egy SQL Data Warehouse példány felhasználói tevékenységét, amely tartalmazza a futó és a felfüggesztett lekérdezéseket |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/extendedAuditingSettings/olvasás | Az adott adatbázisban konfigurált kiterjesztett blob-naplózási szabályzat részleteinek beolvasása |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/extendedAuditingSettings/írás | Egy adott adatbázis kiterjesztett blob-naplózási szabályzatának módosítása |
-> | Microsoft. SQL/kiszolgálók/adatbázisok/bővítmények/olvasás | Az adatbázishoz tartozó bővítmények gyűjteményét kéri le. |
-> | Microsoft. SQL/kiszolgálók/adatbázisok/bővítmények/írás | Egy adott adatbázis kiterjesztésének módosítása |
+> | Microsoft. SQL/kiszolgálók/adatbázisok/bővítmények/írás | Adatbázis-kiterjesztési műveletet hajt végre. |
+> | Microsoft. SQL/kiszolgálók/adatbázisok/bővítmények/olvasás | Adatbázis-bővítmények lekérése művelet. |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/bővítmények/importExtensionOperationResults/olvasás | Folyamatban lévő importálási műveletek beolvasása |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/geoBackupPolicies/olvasás | Egy adott adatbázishoz tartozó földrajzi biztonsági mentési szabályzatok beolvasása |
 > | Microsoft. SQL/kiszolgálók/adatbázisok/geoBackupPolicies/írás | Adatbázis-geobackup szabályzat létrehozása vagy frissítése |
@@ -4681,7 +4695,7 @@ Azure-szolgáltatás: [stream Analytics](../stream-analytics/index.yml)
 > | Microsoft. StreamAnalytics/streamingjobs/átalakítások/olvasás | Stream Analytics feladatok átalakításának olvasása |
 > | Microsoft. StreamAnalytics/streamingjobs/átalakítás/írás | Stream Analytics feladatok átalakításának írása |
 
-## <a name="blockchain"></a>Blockchain
+## <a name="blockchain"></a>Blokklánc
 
 ### <a name="microsoftblockchain"></a>Microsoft. Blockchain
 
@@ -5140,6 +5154,7 @@ Azure-szolgáltatás: [Cognitive Services](../cognitive-services/index.yml)
 > | Microsoft. CognitiveServices/fiókok/TextAnalytics/entitások/művelet | Az API egy adott dokumentum ismert entitások és általános névvel ellátott entitások ( \" személy \" , \" hely \" , \" szervezet \" stb.) listáját adja vissza egy adott dokumentumban. |
 > | Microsoft. CognitiveServices/fiókok/TextAnalytics/alkifejezések/művelet | Az API a bemeneti szövegben szereplő legfontosabb beszéd pontokat jelölő karakterláncok listáját adja vissza. |
 > | Microsoft. CognitiveServices/accounts/TextAnalytics/hangulat/művelet | Az API egy 0 és 1 közötti számértéket ad vissza.<br>Az 1-hez közeli értékek pozitív hangulatot, a 0-hoz közeliek pedig negatív hangulatot jelölnek.<br>A 0,5-es pontszám jelzi az érzelmek hiányát (például<br>egy factoid-utasítás). |
+> | Microsoft. CognitiveServices/fiókok/TextAnalytics/elemzés/művelet | Szöveges dokumentumok gyűjteményének beküldése az elemzéshez. Egy vagy több végrehajtani kívánt egyedi feladat megadására. |
 > | Microsoft. CognitiveServices/fiókok/TextTranslation/észlelés/művelet | Egy szöveg nyelvét azonosítja. |
 > | Microsoft. CognitiveServices/accounts/TextTranslation/breaksentence/Action | Meghatározza a mondatok szegélyének elhelyezését egy szövegben. |
 > | Microsoft. CognitiveServices/fiókok/TextTranslation/fordítás/művelet | Lefordítja a szöveget. |
@@ -5501,24 +5516,24 @@ Azure-szolgáltatás: [Notification Hubs](../notification-hubs/index.yml)
 > | Microsoft. NotificationHubs/névterek/CheckNotificationHubAvailability/művelet | Ellenőrzi, hogy a megadott NotificationHub-név elérhető-e a névtéren belül. |
 > | Microsoft. NotificationHubs/névterek/engedélyezési szabályok/írás | Hozzon létre egy névtér szintű engedélyezési szabályokat, és frissítse a tulajdonságait. Az engedélyezési szabályok hozzáférési jogosultságokat, az elsődleges és a másodlagos kulcsokat is frissítheti. |
 > | Microsoft. NotificationHubs/névterek/engedélyezési szabályok/olvasás | A névterek engedélyezési szabályai leírásának beolvasása. |
-> | Microsoft. NotificationHubs/névterek/engedélyezési szabályok/delete | Névtér-engedélyezési szabály törlése. Az alapértelmezett névtér-engedélyezési szabály nem törölhető.  |
+> | Microsoft. NotificationHubs/névterek/engedélyezési szabályok/delete | Névtér-engedélyezési szabály törlése. Az alapértelmezett névtér-engedélyezési szabály nem törölhető. |
 > | Microsoft. NotificationHubs/névterek/engedélyezési szabályok/listkeys műveletének beolvasása/művelet | A névtérhez tartozó kapcsolódási karakterlánc beolvasása |
 > | Microsoft. NotificationHubs/névterek/engedélyezési szabályok/regenerateKeys/művelet | A névtér-engedélyezési szabály újragenerálta az elsődleges/Értesítésiközpont, megadhatja azt a kulcsot, amelyet újra kell generált |
-> | Microsoft. NotificationHubs/névterek/diagnosticSettings/olvasás | Névtér diagnosztikai beállításainak erőforrás-leírásának beolvasása |
-> | Microsoft. NotificationHubs/névterek/diagnosticSettings/írás | Névtér diagnosztikai beállításainak erőforrás-leírásának beolvasása |
-> | Microsoft. NotificationHubs/névterek/logDefinitions/olvasás | Névtér-naplók erőforrás-leírások listájának beolvasása |
 > | Microsoft. NotificationHubs/névterek/NotificationHubs/írás | Hozzon létre egy értesítési központot, és frissítse a tulajdonságait. A tulajdonságai főleg PNS hitelesítő adatokkal rendelkeznek. Engedélyezési szabályok és TTL |
 > | Microsoft. NotificationHubs/névterek/NotificationHubs/olvasás | Értesítési központ erőforrás-leírásának beolvasása |
 > | Microsoft. NotificationHubs/névterek/NotificationHubs/delete | Értesítési központ erőforrásának törlése |
 > | Microsoft. NotificationHubs/névterek/NotificationHubs/engedélyezési szabályok/művelet | Az értesítési központ engedélyezési szabályainak listájának beolvasása |
 > | Microsoft. NotificationHubs/névterek/NotificationHubs/pnsCredentials/művelet | Az összes értesítési központ PNS hitelesítő adatainak beolvasása. Ide tartozik a WNS, a MPNS, a APNS, a GCM és a Baidu hitelesítő adatai. |
-> | Microsoft. NotificationHubs/névterek/NotificationHubs/debugSend/művelet | Teszt leküldéses értesítés küldése. |
+> | Microsoft. NotificationHubs/névterek/NotificationHubs/debugSend/művelet | Teszt leküldéses értesítés küldése 10 megfeleltetett eszköznek. |
 > | Microsoft. NotificationHubs/névterek/NotificationHubs/engedélyezési szabályok/Write | Hozzon létre értesítési központ engedélyezési szabályait, és frissítse a tulajdonságait. Az engedélyezési szabályok hozzáférési jogosultságokat, az elsődleges és a másodlagos kulcsokat is frissítheti. |
 > | Microsoft. NotificationHubs/névterek/NotificationHubs/engedélyezési szabályok/READ | Az értesítési központ engedélyezési szabályainak listájának beolvasása |
 > | Microsoft. NotificationHubs/névterek/NotificationHubs/engedélyezési szabályok/delete | Értesítési központ engedélyezési szabályainak törlése |
 > | Microsoft. NotificationHubs/névterek/NotificationHubs/engedélyezési szabályok/listkeys műveletének beolvasása/művelet | Az értesítési központ kapcsolódási karakterláncának beolvasása |
 > | Microsoft. NotificationHubs/névterek/NotificationHubs/engedélyezési szabályok/regenerateKeys/művelet | Az értesítési központ engedélyezési szabálya újragenerálta az elsődleges/Értesítésiközpont, megadhatja azt a kulcsot, amelyet újra kell generált |
 > | Microsoft. NotificationHubs/névterek/NotificationHubs/metricDefinitions/READ | Névtér-metrikák erőforrás-leírásának beolvasása |
+> | Microsoft. NotificationHubs/névterek/szolgáltatók/Microsoft. bepillantást/diagnosticSettings/READ | Névtér diagnosztikai beállításainak beolvasása |
+> | Microsoft. NotificationHubs/névterek/szolgáltatók/Microsoft. bepillantások/diagnosticSettings/írás | Névtér diagnosztikai beállításainak létrehozása vagy frissítése |
+> | Microsoft. NotificationHubs/névterek/szolgáltatók/Microsoft. bepillantást/logDefinitions/READ | A névtér elérhető naplófájljainak beolvasása |
 > | Microsoft. NotificationHubs/operationResults/READ | Notification Hubs szolgáltató műveleti eredményének visszaadása |
 > | Microsoft. NotificationHubs/Operations/READ | Notification Hubs szolgáltató által támogatott műveletek listáját adja vissza. |
 
@@ -5566,7 +5581,25 @@ Azure-szolgáltatás: [Azure térbeli horgonyok](../spatial-anchors/index.yml)
 > | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. MixedReality/regisztráció/művelet | Regisztrálja az előfizetést a vegyes valóság erőforrás-szolgáltatóhoz. |
+> | Microsoft. MixedReality/regisztráció/művelet | A vegyes valóság erőforrás-szolgáltatóhoz tartozó előfizetés regisztrációjának törlése. |
+> | Microsoft. MixedReality/Locations/checknameavailability/READ | A név rendelkezésre állásának ellenőrzése |
+> | Microsoft. MixedReality/ObjectUnderstandingAccounts/delete | Objektum-megértési fiók törlése |
+> | Microsoft. MixedReality/ObjectUnderstandingAccounts/listkeys műveletének beolvasása/művelet | Az objektum által megjelenő fiók kulcsainak listázása |
+> | Microsoft. MixedReality/ObjectUnderstandingAccounts/READ | Tekintse meg az objektum által megértett tulajdonságokat |
+> | Microsoft. MixedReality/ObjectUnderstandingAccounts/regeneratekeys/művelet | Objektum kulcsának újragenerálása a fiókkal |
+> | Microsoft. MixedReality/ObjectUnderstandingAccounts/Write | Az objektum által értelmezhető fiók tulajdonságainak frissítése |
+> | Microsoft. MixedReality/Operations/READ | A Microsoft Mixed Reality elérhető műveleteinek listázása |
+> | Microsoft. MixedReality/RemoteRenderingAccounts/delete | Távoli renderelési fiók törlése |
+> | Microsoft. MixedReality/RemoteRenderingAccounts/listkeys műveletének beolvasása/művelet | Távoli renderelési fiók kulcsainak listázása |
+> | Microsoft. MixedReality/RemoteRenderingAccounts/READ | Távoli megjelenítési fiók tulajdonságainak beolvasása |
+> | Microsoft. MixedReality/RemoteRenderingAccounts/regeneratekeys/művelet | Távoli renderelési fiók kulcsainak újragenerálása |
+> | Microsoft. MixedReality/RemoteRenderingAccounts/Write | Távoli megjelenítési fiók tulajdonságainak frissítése |
+> | Microsoft. MixedReality/RemoteRenderingAccounts/kulcsok/olvasás | Távoli renderelési fiók kulcsainak olvasása |
 > | Microsoft. MixedReality/remoteRenderingAccounts/Providers/Microsoft. bepillantást/metricDefinitions/READ | A Microsoft. MixedReality/remoteRenderingAccounts elérhető metrikáinak beolvasása |
+> | Microsoft. MixedReality/SpatialAnchorsAccounts/listkeys műveletének beolvasása/művelet | Térbeli horgonyok fiókjának kulcsainak listázása |
+> | Microsoft. MixedReality/SpatialAnchorsAccounts/READ | Térbeli horgonyok fiók tulajdonságainak olvasása |
+> | Microsoft. MixedReality/SpatialAnchorsAccounts/regeneratekeys/művelet | Térbeli horgonyok fiók kulcsának újragenerálása |
+> | Microsoft. MixedReality/SpatialAnchorsAccounts/kulcsok/olvasás | Térbeli horgonyok fiókjában lévő kulcsok olvasása |
 > | Microsoft. MixedReality/spatialAnchorsAccounts/Providers/Microsoft. bepillantást/diagnosticSettings/READ | A Microsoft. MixedReality/spatialAnchorsAccounts diagnosztikai beállításainak beolvasása |
 > | Microsoft. MixedReality/spatialAnchorsAccounts/Providers/Microsoft. bepillantások/diagnosticSettings/írás | A Microsoft. MixedReality/spatialAnchorsAccounts diagnosztikai beállításainak létrehozása vagy frissítése |
 > | Microsoft. MixedReality/spatialAnchorsAccounts/Providers/Microsoft. bepillantást/metricDefinitions/READ | A Microsoft. MixedReality/spatialAnchorsAccounts elérhető metrikáinak beolvasása |
@@ -5931,6 +5964,11 @@ Azure-szolgáltatás: [Azure stack Edge](../databox-online/azure-stack-edge-over
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/szerepkörök/olvasás | A szerepkörök listája vagy beolvasása |
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/roles/Write | Szerepkörök létrehozása vagy frissítése |
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/roles/delete | A szerepkörök törlése |
+> | Microsoft. DataBoxEdge/dataBoxEdgeDevices/roles/addons/READ | Felsorolja vagy lekéri a ArmApiRes_addons |
+> | Microsoft. DataBoxEdge/dataBoxEdgeDevices/roles/addons/READ | Felsorolja vagy lekéri a ArmApiRes_addons |
+> | Microsoft. DataBoxEdge/dataBoxEdgeDevices/roles/addons/Write | A ArmApiRes_addons létrehozása vagy frissítése |
+> | Microsoft. DataBoxEdge/dataBoxEdgeDevices/roles/addons/delete | A ArmApiRes_addons törlése |
+> | Microsoft. DataBoxEdge/dataBoxEdgeDevices/roles/addons/operationResults/READ | A művelet eredményének megjelenítése vagy beolvasása |
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/roles/monitoringConfig/Write | A figyelési konfiguráció létrehozása vagy frissítése |
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/roles/monitoringConfig/delete | A figyelési konfiguráció törlése |
 > | Microsoft. DataBoxEdge/dataBoxEdgeDevices/roles/monitoringConfig/READ | A figyelési konfiguráció listája vagy beolvasása |
@@ -6543,65 +6581,65 @@ Azure-szolgáltatás: [Key Vault](../key-vault/index.yml)
 > | Microsoft. Key Vault/managedHSMs/delete | Felügyelt HSM törlése |
 > | Microsoft. kulcstartó/műveletek/olvasás | A Microsoft. kulcstartó erőforrás-szolgáltatóján elérhető műveletek listája |
 > | Microsoft. kulcstartó/tárolók/olvasás | Key Vault tulajdonságainak megtekintése |
-> | Microsoft. kulcstartó/tárolók/írás | Új kulcstartó létrehozása vagy egy meglévő kulcstartó tulajdonságainak frissítése |
-> | Microsoft. kulcstartó/tárolók/törlés | Kulcstároló törlése |
+> | Microsoft. kulcstartó/tárolók/írás | Létrehoz egy új kulcstartót, vagy frissíti egy meglévő kulcstartó tulajdonságait. Bizonyos tulajdonságok további engedélyeket igényelhetnek. |
+> | Microsoft. kulcstartó/tárolók/törlés | Kulcstartó törlése |
 > | Microsoft. kulcstartó/tárolók/üzembe helyezés/művelet | Lehetővé teszi az Azure-erőforrások üzembe helyezése során a kulcstartó titkos kulcsaihoz való hozzáférését |
-> | Microsoft. kulcstartó/tárolók/accessPolicies/írás | Meglévő hozzáférési szabályzat frissítése az egyesítéssel vagy a lecseréléssel, vagy új hozzáférési szabályzat hozzáadásával egy tárba. |
+> | Microsoft. kulcstartó/tárolók/accessPolicies/írás | Egy meglévő hozzáférési szabályzat frissítése a Key Vault egyesítésével vagy cseréjével, vagy új hozzáférési szabályzat hozzáadásával. |
 > | Microsoft. kulcstartó/tárolók/eventGridFilters/olvasás | Értesíti a Microsoft. Key Vaultot arról, hogy az Key Vault EventGrid-előfizetését tekinti meg |
 > | Microsoft. kulcstartó/tárolók/eventGridFilters/írás | Értesíti a Microsoft. Key Vaultot arról, hogy a Key Vault új EventGrid-előfizetést hoz létre |
 > | Microsoft. kulcstartó/tárolók/eventGridFilters/törlés | Értesíti a Microsoft. Key Vaultot arról, hogy az Key Vault EventGrid-előfizetése törölve lett |
 > | Microsoft. kulcstartó/tárolók/kulcsok/olvasás | Egy megadott tároló kulcsainak listázása vagy a megadott kulcs aktuális verziójának beolvasása. |
-> | Microsoft. kulcstartó/tárolók/kulcsok/írás | Hozzon létre egy új kulcsot, vagy frissítsen egy meglévő kulcsot. |
+> | Microsoft. kulcstartó/tárolók/kulcsok/írás | Egy új kulcs első verzióját hozza létre, ha az nem létezik. Ha már létezik, a meglévő kulcsot módosítás nélkül visszaadja a rendszer. Ez az API nem hoz létre további verziókat, és nem frissíti a meglévő kulcsokat. |
 > | Microsoft. kulcstartó/tárolók/kulcsok/verziók/olvasás | Egy adott kulcs verzióinak listázása, vagy a kulcs megadott verziójának olvasása. |
 > | Microsoft. kulcstartó/tárolók/titkok/olvasás | Megtekintheti egy titkos kulcs tulajdonságait, de nem az értékét. |
-> | Microsoft. kulcstartó/tárolók/titkok/írás | Hozzon létre egy új titkot, vagy frissítse egy meglévő titok értékét. |
+> | Microsoft. kulcstartó/tárolók/titkok/írás | Létrehoz egy új titkot, vagy frissíti egy meglévő titok értékét. |
 > | **DataAction** | **Leírás** |
 > | Microsoft. kulcstartó/tárolók/certificatecas/törlés | Tanúsítvány kiállítójának törlése |
 > | Microsoft. kulcstartó/tárolók/certificatecas/olvasás | A tanúsítvány kiállítójának olvasása |
 > | Microsoft. kulcstartó/tárolók/certificatecas/írás | Az írási tanúsítvány kiállítója |
 > | Microsoft. kulcstartó/tárolók/certificatecontacts/írás | Tanúsítvány-kapcsolattartó kezelése |
-> | Microsoft. kulcstartó/tárolók/tanúsítványok/törlés | Tanúsítvány törlése. |
+> | Microsoft. kulcstartó/tárolók/tanúsítványok/törlés | Töröl egy tanúsítványt. Minden verzió törlődik. |
 > | Microsoft. kulcstartó/tárolók/tanúsítványok/olvasás | Egy adott kulcstartó tanúsítványainak listázása vagy egy tanúsítvány adatainak beolvasása. |
-> | Microsoft. kulcstartó/tárolók/tanúsítványok/biztonsági mentés/művelet | Hozzon létre egy tanúsítvány biztonságimásolat-fájlját. A fájl a tanúsítvány visszaállítására használható ugyanazon előfizetés Key Vault. A korlátozások vonatkozhatnak. |
+> | Microsoft. kulcstartó/tárolók/tanúsítványok/biztonsági mentés/művelet | Létrehoz egy tanúsítvány biztonságimásolat-fájlját. A fájl a tanúsítvány visszaállítására használható ugyanazon előfizetés Key Vault. A korlátozások vonatkozhatnak. |
 > | Microsoft. kulcstartó/tárolók/tanúsítványok/kiürítés/művelet | Kiüríti a tanúsítványt, így helyreállíthatatlan lehet. |
 > | Microsoft. kulcstartó/tárolók/tanúsítványok/frissítés/művelet | Az adott tanúsítványhoz társított megadott attribútumok frissítése. |
-> | Microsoft. kulcstartó/tárolók/tanúsítványok/létrehozás/művelet | Új tanúsítvány létrehozása. |
-> | Microsoft. kulcstartó/tárolók/tanúsítványok/importálás/művelet | Egy meglévő érvényes, titkos kulcsot tartalmazó tanúsítvány importálása Azure Key Vaultba. Az importálandó tanúsítvány PFX-vagy PEM-formátumban is lehet. |
+> | Microsoft. kulcstartó/tárolók/tanúsítványok/létrehozás/művelet | Új tanúsítvány létrehozása. Ha a tanúsítvány nem létezik, a rendszer az első verziót hozza létre. Ellenkező esetben egy új verzió jön létre. |
+> | Microsoft. kulcstartó/tárolók/tanúsítványok/importálás/művelet | Egy meglévő érvényes, titkos kulcsot tartalmazó tanúsítvány importálása.<br>Az importálandó tanúsítvány PFX-vagy PEM-formátumban is lehet.<br>Ha a tanúsítvány nem létezik a Key Vaultban, akkor az első verzió a megadott tartalommal jön létre.<br>Ellenkező esetben a rendszer egy új verziót hoz létre a megadott tartalommal. |
 > | Microsoft. kulcstartó/tárolók/tanúsítványok/helyreállítás/művelet | Helyreállítja a törölt tanúsítványt. A művelet végrehajtja a törlési művelet megfordítását. A művelet a helyreállítható törlésre engedélyezett tárolókban alkalmazható, és a megőrzési időtartam alatt ki kell állítani. |
-> | Microsoft. kulcstartó/tárolók/tanúsítványok/visszaállítás/művelet | Visszaállítja egy biztonsági másolattal rendelkező tanúsítványt és annak minden verzióját egy tárolóba. |
+> | Microsoft. kulcstartó/tárolók/tanúsítványok/visszaállítás/művelet | Visszaállítja a tanúsítványt és annak összes verzióját egy Key Vault által generált biztonságimásolat-fájlból. |
 > | Microsoft. kulcstartó/tárolók/kulcsok/olvasás | A megadott tárolóban található kulcsok listázása, illetve a kulcsok beolvasása és a kulcs nyilvános anyaga.<br>Az aszimmetrikus kulcsok esetében ez a művelet közzéteszi a nyilvános kulcsot, és olyan nyilvános kulcsú algoritmusokat is képes végrehajtani, mint például a titkosítás és az aláírás ellenőrzése.<br>A titkos kulcsok és a szimmetrikus kulcsok soha nem érhetők el. |
 > | Microsoft. kulcstartó/tárolók/kulcsok/frissítés/művelet | Az adott kulcshoz társított megadott attribútumok frissítése. |
-> | Microsoft. kulcstartó/tárolók/kulcsok/létrehozás/művelet | Létrehoz egy új kulcsot. |
-> | Microsoft. kulcstartó/tárolók/kulcsok/importálás/művelet | Importálja a külsőleg létrehozott kulcsot, tárolja azt, és visszaadja a kulcs paramétereit és attribútumait az ügyfélnek. |
+> | Microsoft. kulcstartó/tárolók/kulcsok/létrehozás/művelet | Létrehoz egy új kulcsot. Ha a kulcs nem létezik, a rendszer az első verziót hozza létre. Ellenkező esetben a rendszer egy új verziót hoz létre a megadott értékkel. |
+> | Microsoft. kulcstartó/tárolók/kulcsok/importálás/művelet | Külsőleg létrehozott kulcs importálása. Ha a kulcs nem létezik, a rendszer az első verziót hozza létre az importált anyaggal. Ellenkező esetben a rendszer létrehoz egy új verziót az importált anyaggal. |
 > | Microsoft. kulcstartó/tárolók/kulcsok/helyreállítás/művelet | Helyreállítja a törölt kulcsot. A művelet végrehajtja a törlési művelet megfordítását. A művelet a helyreállítható törlésre engedélyezett tárolókban alkalmazható, és a megőrzési időtartam alatt ki kell állítani. |
-> | Microsoft. kulcstartó/tárolók/kulcsok/visszaállítás/művelet | Visszaállítja egy biztonsági másolatba mentett kulcsot és annak összes verzióját egy tárolóba. |
-> | Microsoft. kulcstartó/tárolók/kulcsok/törlés | Kulcs törlése. |
-> | Microsoft. kulcstartó/tárolók/kulcsok/biztonsági mentés/művelet | Hozzon létre egy kulcs biztonságimásolat-fájlját. A fájl a kulcs visszaállítására használható ugyanazon előfizetés Key Vaultében. A korlátozások vonatkozhatnak. |
+> | Microsoft. kulcstartó/tárolók/kulcsok/visszaállítás/művelet | Visszaállítja a kulcsot és annak összes verzióját egy Key Vault által generált biztonságimásolat-fájlból. |
+> | Microsoft. kulcstartó/tárolók/kulcsok/törlés | Töröl egy kulcsot. Minden verzió törlődik. |
+> | Microsoft. kulcstartó/tárolók/kulcsok/biztonsági mentés/művelet | Létrehoz egy kulcs biztonságimásolat-fájlját. A fájl a kulcs visszaállítására használható ugyanazon előfizetés Key Vaultében. A korlátozások vonatkozhatnak. |
 > | Microsoft. kulcstartó/tárolók/kulcsok/kiürítés/művelet | Kiüríti a kulcsot, így helyreállíthatatlan lehet. |
-> | Microsoft. kulcstartó/tárolók/kulcsok/titkosítás/művelet | Titkosítsa az egyszerű szöveges kulcsot. Vegye figyelembe, hogy ha a kulcs aszimmetrikus, akkor ezt a műveletet olvasási hozzáféréssel rendelkező rendszerbiztonsági tag végezheti el. |
-> | Microsoft. kulcstartó/tárolók/kulcsok/visszafejtés/művelet | Rejtjelezett visszafejtése kulccsal. |
-> | Microsoft. kulcstartó/tárolók/kulcsok/becsomagolás/művelet | Szimmetrikus kulcs becsomagolása Key Vault kulccsal. Vegye figyelembe, hogy ha a Key Vault kulcs aszimmetrikus, a művelet olvasási hozzáféréssel is elvégezhető. |
-> | Microsoft. kulcstartó/tárolók/kulcsok/kicsomagolás/művelet | Szimmetrikus kulcs kicsomagolása Key Vault kulccsal. |
-> | Microsoft. kulcstartó/tárolók/kulcsok/aláírás/művelet | A kivonatot egy kulccsal írja alá. |
-> | Microsoft. kulcstartó/tárolók/kulcsok/ellenőrzés/művelet | Ellenőrizze a kivonatot. Vegye figyelembe, hogy ha a kulcs aszimmetrikus, akkor ezt a műveletet olvasási hozzáféréssel rendelkező rendszerbiztonsági tag végezheti el. |
-> | Microsoft. kulcstartó/tárolók/titkok/törlés | Titkos kód törlése. |
-> | Microsoft. kulcstartó/tárolók/titkok/biztonsági mentés/művelet | Hozzon létre egy titkos kulcsot tartalmazó biztonságimásolat-fájlt. A fájl segítségével visszaállíthatja a titkos kulcsot egy adott előfizetéshez tartozó Key Vaultban. A korlátozások vonatkozhatnak. |
+> | Microsoft. kulcstartó/tárolók/kulcsok/titkosítás/művelet | Titkosítja az egyszerű szöveges kulcsot. Vegye figyelembe, hogy ha a kulcs aszimmetrikus, akkor ezt a műveletet olvasási hozzáféréssel rendelkező rendszerbiztonsági tag végezheti el. |
+> | Microsoft. kulcstartó/tárolók/kulcsok/visszafejtés/művelet | Visszafejti a rejtjelezett egy kulccsal. |
+> | Microsoft. kulcstartó/tárolók/kulcsok/becsomagolás/művelet | Szimmetrikus kulcs becsomagolása Key Vault kulccsal. Vegye figyelembe, hogy ha a Key Vault kulcs aszimmetrikus, ezt a műveletet olvasási hozzáféréssel rendelkező rendszerbiztonsági tag is elvégezheti. |
+> | Microsoft. kulcstartó/tárolók/kulcsok/kicsomagolás/művelet | Egy szimmetrikus kulcs kicsomagolása Key Vault kulccsal. |
+> | Microsoft. kulcstartó/tárolók/kulcsok/aláírás/művelet | Egy üzenet kivonatának (kivonatának) regisztrálása kulccsal. |
+> | Microsoft. kulcstartó/tárolók/kulcsok/ellenőrzés/művelet | Ellenőrzi, hogy van-e egy kulccsal rendelkező üzenet-kivonat (kivonat) aláírása. Vegye figyelembe, hogy ha a kulcs aszimmetrikus, akkor ezt a műveletet olvasási hozzáféréssel rendelkező rendszerbiztonsági tag végezheti el. |
+> | Microsoft. kulcstartó/tárolók/titkok/törlés | Töröl egy titkos kulcsot. Minden verzió törlődik. |
+> | Microsoft. kulcstartó/tárolók/titkok/biztonsági mentés/művelet | Létrehozza a titkos kulcs biztonságimásolat-fájlját. A fájl segítségével visszaállíthatja a titkos kulcsot egy adott előfizetéshez tartozó Key Vaultban. A korlátozások vonatkozhatnak. |
 > | Microsoft. kulcstartó/tárolók/titkok/kiürítés/művelet | Kiüríti a titkos kulcsot, így helyreállíthatatlan lehet. |
 > | Microsoft. kulcstartó/tárolók/titkok/frissítés/művelet | Frissíti a megadott titokhoz társított attribútumokat. |
 > | Microsoft. kulcstartó/tárolók/titkok/helyreállítás/művelet | Helyreállítja a törölt titkos kulcsot. A művelet végrehajtja a törlési művelet megfordítását. A művelet a helyreállítható törlésre engedélyezett tárolókban alkalmazható, és a megőrzési időtartam alatt ki kell állítani. |
-> | Microsoft. kulcstartó/tárolók/titkok/visszaállítás/művelet | Visszaállítja egy biztonsági másolatba mentett titkos kulcsot és annak minden verzióját egy tárolóba. |
+> | Microsoft. kulcstartó/tárolók/titkok/visszaállítás/művelet | Egy titkos kulcsot és annak összes verzióját visszaállítja egy Key Vault által generált biztonságimásolat-fájlból. |
 > | Microsoft. kulcstartó/tárolók/titkok/readMetadata/művelet | Egy titkos kulcs tulajdonságainak listázása vagy megtekintése, az értéke nem. |
 > | Microsoft. kulcstartó/tárolók/titkok/getSecret/művelet | Egy titkos kulcs értékének beolvasása. |
-> | Microsoft. kulcstartó/tárolók/titkok/setSecret/művelet | Hozzon létre új titkot. |
+> | Microsoft. kulcstartó/tárolók/titkok/setSecret/művelet | Egy titkos kulcs értékét állítja be. Ha a titok nem létezik, a rendszer az első verziót hozza létre. Ellenkező esetben a rendszer egy új verziót hoz létre a megadott értékkel. |
 > | Microsoft. kulcstartó/tárolók/storageaccounts/olvasás | Felügyelt Storage-fiókok és SAS-definíciók olvasása. |
-> | Microsoft. kulcstartó/tárolók/storageaccounts/beállítás/művelet | Felügyelt Storage-fiók definíciójának létrehozása vagy frissítése. |
+> | Microsoft. kulcstartó/tárolók/storageaccounts/beállítás/művelet | Létrehoz vagy frissít egy felügyelt Storage-fiók definícióját. |
 > | Microsoft. kulcstartó/tárolók/storageaccounts/törlés | Egy felügyelt Storage-fiók definíciójának törlése. |
-> | Microsoft. kulcstartó/tárolók/storageaccounts/biztonsági mentés/művelet | Készítsen biztonsági másolatot a felügyelt Storage-fiók és a SAS (közös hozzáférésű aláírás) definíciójának létrehozásáról. |
+> | Microsoft. kulcstartó/tárolók/storageaccounts/biztonsági mentés/művelet | Létrehoz egy felügyelt Storage-fiók és SAS (közös hozzáférésű aláírás) definícióját tartalmazó biztonságimásolat-fájlt. |
 > | Microsoft. kulcstartó/tárolók/storageaccounts/kiürítés/művelet | Felügyelt Storage-fiók vagy SAS (közös hozzáférésű aláírás) helyreállított definíciójának végleges törlése. |
 > | Microsoft. kulcstartó/tárolók/storageaccounts/regeneratekey/művelet | Egy felügyelt Storage-fiók elérési kulcsának újralétrehozása. |
 > | Microsoft. kulcstartó/tárolók/storageaccounts/helyreállítás/művelet | Felügyelt Storage-fiók vagy SAS (közös hozzáférésű aláírás) helyreállított definíciójának helyreállítása. |
-> | Microsoft. kulcstartó/tárolók/storageaccounts/visszaállítás/művelet | A felügyelt Storage-fiók és a hozzá tartozó SAS (közös hozzáférésű aláírás) definícióját állítja vissza. |
-> | Microsoft. kulcstartó/tárolók/storageaccounts/sas/set/Action | Hozzon létre vagy frissítsen egy felügyelt Storage-fiók SAS-definícióját (közös hozzáférési aláírás). |
+> | Microsoft. kulcstartó/tárolók/storageaccounts/visszaállítás/művelet | A felügyelt Storage-fiók és a hozzá tartozó SAS (közös hozzáférésű aláírás) definícióját visszaállítja egy Key Vault által létrehozott biztonságimásolat-fájlból. |
+> | Microsoft. kulcstartó/tárolók/storageaccounts/sas/set/Action | Létrehoz vagy frissít egy felügyelt Storage-fiók SAS-definícióját (közös hozzáférési aláírás). |
 > | Microsoft. kulcstartó/tárolók/storageaccounts/sas/delete | Törölje a felügyelt Storage-fiók SAS-definícióját (közös hozzáférési aláírás). |
 
 ### <a name="microsoftsecurity"></a>Microsoft. Security
@@ -6618,6 +6656,9 @@ Azure-szolgáltatás: [Security Center](../security-center/index.yml)
 > | Microsoft. Security/advancedThreatProtectionSettings/READ | Az erőforrás összetett veszélyforrások elleni védelmi beállításainak beolvasása |
 > | Microsoft. Security/advancedThreatProtectionSettings/írás | Az erőforrás összetett veszélyforrások elleni védelmi beállításainak frissítése |
 > | Microsoft. Security/riasztások/olvasás | Az összes elérhető biztonsági riasztás beolvasása |
+> | Microsoft. Security/alertsSuppressionRules/READ | Az összes elérhető biztonsági riasztás letiltási szabályának beolvasása |
+> | Microsoft. Security/alertsSuppressionRules/írás | Új biztonsági riasztási szabály létrehozása vagy meglévő szabály frissítése |
+> | Microsoft. Security/alertsSuppressionRules/delete | Biztonsági riasztások letiltási szabályának törlése |
 > | Microsoft. Security/applicationWhitelistings/READ | Az alkalmazás allowlistings beolvasása |
 > | Microsoft. Security/applicationWhitelistings/írás | Új alkalmazás allowlisting létrehozása vagy meglévő frissítése |
 > | Microsoft. Security/assessmentMetadata/READ | Elérhető biztonsági értékelési metaadatok beolvasása az előfizetéshez |
@@ -6651,6 +6692,8 @@ Azure-szolgáltatás: [Security Center](../security-center/index.yml)
 > | Microsoft. Security/Locations/riasztások/olvasás | Az összes elérhető biztonsági riasztás beolvasása |
 > | Microsoft. Security/Locations/riasztások/elutasítás/művelet | Biztonsági riasztás bezárása |
 > | Microsoft. Security/Locations/riasztások/aktiválás/művelet | Biztonsági riasztás aktiválása |
+> | Microsoft. Security/Locations/riasztások/feloldás/művelet | Biztonsági riasztás feloldása |
+> | Microsoft. Security/Locations/riasztások/szimulálás/művelet | Biztonsági riasztás szimulálása |
 > | Microsoft. Security/Locations/jitNetworkAccessPolicies/READ | Az igény szerinti hálózati hozzáférési szabályzatok beolvasása |
 > | Microsoft. Security/Locations/jitNetworkAccessPolicies/Write | Egy új, igény szerinti hálózati hozzáférési házirend létrehozása vagy egy meglévő frissítése |
 > | Microsoft. Security/Locations/jitNetworkAccessPolicies/delete | Az igény szerinti hálózati hozzáférési házirend törlése |
@@ -6665,6 +6708,10 @@ Azure-szolgáltatás: [Security Center](../security-center/index.yml)
 > | Microsoft. Security/díjszabás/olvasás | A hatókör díjszabási beállításainak beolvasása |
 > | Microsoft. Security/díjszabás/írás | A hatókör díjszabási beállításainak frissítése |
 > | Microsoft. Security/díjszabás/törlés | A hatókör díjszabási beállításainak törlése |
+> | Microsoft. Security/secureScoreControlDefinitions/READ | Biztonságos pontszám-vezérlés definíciójának beolvasása |
+> | Microsoft. Security/secureScoreControls/READ | Az előfizetés számított biztonságos pontszám-vezérlésének beolvasása |
+> | Microsoft. Security/secureScores/READ | Az előfizetés számított biztonságos pontszámának beolvasása |
+> | Microsoft. Security/secureScores/secureScoreControls/READ | A biztonságos pontszám kiszámításához szükséges számított biztonságos pontszám-vezérlés beolvasása |
 > | Microsoft. Security/securityContacts/READ | A biztonsági kapcsolattartó beolvasása |
 > | Microsoft. Security/securityContacts/írás | A biztonsági kapcsolattartó frissítése |
 > | Microsoft. Security/securityContacts/delete | A biztonsági kapcsolattartó törlése |
@@ -6676,6 +6723,12 @@ Azure-szolgáltatás: [Security Center](../security-center/index.yml)
 > | Microsoft. Security/securityStatusesSummaries/READ | A hatókörre vonatkozó biztonsági állapotok összegzésének beolvasása |
 > | Microsoft. Security/beállítások/olvasás | A hatókör beállításainak beolvasása |
 > | Microsoft. Security/beállítások/írás | A hatókör beállításainak frissítése |
+> | Microsoft. Security/sqlVulnerabilityAssessments/baselineRules/művelet | Adja hozzá a szabályok listáját az alaptervhez. |
+> | Microsoft. Security/sqlVulnerabilityAssessments/baselineRules/READ | Visszaadja az adatbázisok alapkonfigurációját (az alaptervhez hozzáadott összes szabályt), vagy beolvassa a szabály alapértékeit a megadott szabály-AZONOSÍTÓhoz. |
+> | Microsoft. Security/sqlVulnerabilityAssessments/baselineRules/írás | Módosítsa a szabály alaptervének eredményét. |
+> | Microsoft. Security/sqlVulnerabilityAssessments/baselineRules/delete | Távolítsa el a szabály eredményét az alaptervből. |
+> | Microsoft. Security/sqlVulnerabilityAssessments/Scans/READ | Visszaadja a sebezhetőségi felmérési rekordok listáját, vagy beolvassa a megadott vizsgálati AZONOSÍTÓhoz tartozó vizsgálati rekordot. |
+> | Microsoft. Security/sqlVulnerabilityAssessments/Scans/scanResults/READ | Visszaadja a sebezhetőségi felmérési szabály eredményét, vagy beolvassa a szabály eredményét a megadott szabály-AZONOSÍTÓhoz. |
 > | Microsoft. Security/feladatok/olvasás | Az összes elérhető biztonsági javaslat beolvasása |
 > | Microsoft. Security/webApplicationFirewalls/READ | A webalkalmazási tűzfalak beolvasása |
 > | Microsoft. Security/webApplicationFirewalls/írás | Új webalkalmazási tűzfal létrehozása vagy egy meglévő frissítése |
@@ -6732,7 +6785,8 @@ Azure-szolgáltatás: [Azure Sentinel](../sentinel/index.yml)
 > | Microsoft. SecurityInsights/dataConnectors/Write | Az adatösszekötő frissítése |
 > | Microsoft. SecurityInsights/dataConnectors/delete | Adatösszekötő törlése |
 > | Microsoft. SecurityInsights/entitások/olvasás | A Sentinel-entitások gráfjának beolvasása |
-> | Microsoft. SecurityInsights/entitások/idősor/művelet | Egy adott tartományhoz tartozó entitás idővonalának beolvasása |
+> | Microsoft. SecurityInsights/entitások/gettimeline/művelet | Egy adott tartományhoz tartozó entitás idővonalának beolvasása |
+> | Microsoft. SecurityInsights/entitások/getInsights/művelet | Egy adott tartományhoz tartozó entitás-bepillantást kap |
 > | Microsoft. SecurityInsights/entitások/kapcsolatok/olvasás | Az entitás és a kapcsolódó erőforrások közötti kapcsolat beolvasása |
 > | Microsoft. SecurityInsights/entitások/kapcsolatok/írás | Az entitás és a kapcsolódó erőforrások közötti kapcsolat frissítése |
 > | Microsoft. SecurityInsights/entitások/kapcsolatok/törlés | Az entitás és a kapcsolódó erőforrások közötti kapcsolat törlése |
@@ -7436,7 +7490,7 @@ Azure-szolgáltatás: [Azure Migrate](../migrate/migrate-services-overview.md)
 > | Microsoft. OffAzure/VMwareSites/vCenter/READ | Egy VMware-vCenter tulajdonságainak beolvasása |
 > | Microsoft. OffAzure/VMwareSites/vCenter/Write | A VMware-vCenter létrehozása vagy frissítése |
 
-## <a name="monitor"></a>Figyelés
+## <a name="monitor"></a>Monitor
 
 ### <a name="microsoftalertsmanagement"></a>Microsoft. AlertsManagement
 
@@ -8699,6 +8753,7 @@ Azure-szolgáltatás: [Cost Management + számlázás](../cost-management-billin
 > | Microsoft. Billing/billingAccounts/billingSubscriptions/READ |  |
 > | Microsoft. Billing/billingAccounts/billingSubscriptions/áthelyezés/művelet |  |
 > | Microsoft. Billing/billingAccounts/billingSubscriptions/validateMoveEligibility/művelet |  |
+> | Microsoft. Billing/billingAccounts/billingSubscriptions/downloadDocuments/művelet | Számla letöltése a listáról letölthető hivatkozás használatával |
 > | Microsoft. Billing/billingAccounts/ügyfelek/olvasás |  |
 > | Microsoft. Billing/billingAccounts/Customers/billingPermissions/READ |  |
 > | Microsoft. Billing/billingAccounts/részlegek/olvasás |  |
@@ -8712,7 +8767,6 @@ Azure-szolgáltatás: [Cost Management + számlázás](../cost-management-billin
 > | Microsoft. számlázás/billingAccounts/termékek/áthelyezés/művelet |  |
 > | Microsoft. Billing/billingAccounts/Products/validateMoveEligibility/Action |  |
 > | Microsoft. Billing/részlegek/olvasás |  |
-> | Microsoft. Billing/számlák/Letöltés/művelet | Számla letöltése a listáról letölthető hivatkozás használatával |
 > | Microsoft. Billing/számlák/Letöltés/művelet | Számla letöltése a listáról letölthető hivatkozás használatával |
 > | Microsoft. számlázás/műveletek/olvasás |  |
 
@@ -9338,69 +9392,76 @@ Azure-szolgáltatás: [site Recovery](../site-recovery/index.yml)
 > | Művelet | Leírás |
 > | --- | --- |
 > | Microsoft. Recoveryservices szolgáltatónál/regisztráció/művelet | Az adott erőforrás-szolgáltatóhoz tartozó előfizetés regisztrálása |
-> | Microsoft. Recoveryservices szolgáltatónál/Locations/backupPreValidateProtection/Action |  |
-> | Microsoft. Recoveryservices szolgáltatónál/Locations/backupStatus/Action | Recovery Services-tárolók biztonsági mentési állapotának keresése |
-> | Microsoft. Recoveryservices szolgáltatónál/Locations/backupValidateFeatures/Action | Funkciók ellenőrzése |
+> | Microsoft. recoveryservices szolgáltatónál/Locations/backupPreValidateProtection/Action |  |
+> | Microsoft. recoveryservices szolgáltatónál/Locations/backupStatus/Action | Recovery Services-tárolók biztonsági mentési állapotának keresése |
+> | Microsoft. recoveryservices szolgáltatónál/Locations/backupValidateFeatures/Action | Funkciók ellenőrzése |
 > | Microsoft. Recoveryservices szolgáltatónál/Locations/allocateStamp/Action | A AllocateStamp a szolgáltatás által használt belső művelet |
 > | Microsoft. Recoveryservices szolgáltatónál/Locations/checkNameAvailability/Action | Ellenőrizze, hogy az erőforrás neve rendelkezésre állása egy API-e, hogy elérhető-e az erőforrás neve |
 > | Microsoft. Recoveryservices szolgáltatónál/Locations/allocatedStamp/READ | A lefoglalt bélyegző beolvasása a szolgáltatás által használt belső művelet |
-> | Microsoft. Recoveryservices szolgáltatónál/Locations/backupProtectedItem/Write | Védett elemek biztonsági másolatának létrehozása |
-> | Microsoft. Recoveryservices szolgáltatónál/Locations/backupProtectedItems/READ | Az összes védett elem listáját adja vissza. |
+> | Microsoft. recoveryservices szolgáltatónál/Locations/backupProtectedItem/Write | Védett elemek biztonsági másolatának létrehozása |
+> | Microsoft. recoveryservices szolgáltatónál/Locations/backupProtectedItems/READ | Az összes védett elem listáját adja vissza. |
 > | Microsoft. Recoveryservices szolgáltatónál/Locations/operationStatus/READ | Egy adott művelet műveleti állapotának beolvasása |
 > | Microsoft. Recoveryservices szolgáltatónál/Operations/READ | A művelet egy erőforrás-szolgáltató műveleteinek listáját adja vissza. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupJobsExport/művelet | Feladatok exportálása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupSecurityPIN/művelet | Recovery Services-tároló biztonsági PIN-kódjának beolvasása. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupValidateOperation/művelet | A művelet érvényesítése védett elemen |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupCrossRegionRestore/művelet | Régiók közötti helyreállítási pontok visszaállítása a védett elemekhez. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupCrrJob/művelet | A Recovery Services-tár másodlagos régiójában adja meg a régiók közötti visszaállítási feladatok részleteit. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupCrrJobs/művelet | Az Recovery Services-tár másodlagos régiójában lévő régiók közötti visszaállítási feladatok listázása. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupJobsExport/művelet | Feladatok exportálása |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupSecurityPIN/művelet | Recovery Services-tároló biztonsági PIN-kódjának beolvasása. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupValidateOperation/művelet | A művelet érvényesítése védett elemen |
 > | Microsoft. Recoveryservices szolgáltatónál/tárolók/írás | A Create Vault művelet létrehoz egy "Vault" típusú Azure-erőforrást. |
 > | Microsoft. Recoveryservices szolgáltatónál/tárolók/olvasás | A tár beolvasása művelet lekérdezi a Vault típusú Azure-erőforrást jelképező objektumot. |
 > | Microsoft. Recoveryservices szolgáltatónál/tárolók/törlés | A tár törlése művelet törli a "Vault" típusú megadott Azure-erőforrást. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupconfig/READ | Recovery Services-tároló konfigurációjának visszaadása. |
-> | Microsoft. Recoveryservices szolgáltatónál/tárolók/backupconfig/írás | Recovery Services tár konfigurációjának frissítése. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupEncryptionConfigs/READ | A biztonsági mentési erőforrás titkosítási konfigurációjának beolvasása. |
-> | Microsoft. Recoveryservices szolgáltatónál/tárolók/backupEncryptionConfigs/írás | A biztonsági mentési erőforrás titkosítási konfigurációjának frissítése |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupEngines/READ | A tár összes regisztrált biztonságimásolat-felügyeleti kiszolgálóját adja vissza. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vaults/backupFabrics/refreshContainers/művelet | Frissíti a tárolók listáját |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/backupProtectionIntent/delete | Biztonsági másolat védelmi leképezésének törlése |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/backupProtectionIntent/READ | Biztonsági másolat védelmi szándékának beolvasása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/backupProtectionIntent/Write | Biztonsági másolat védelmi leképezésének létrehozása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/operationResults/READ | A művelet állapotának visszaadása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/operationsStatus/READ | A művelet állapotának visszaadása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/protectableContainers/READ | Az összes védhető tároló beolvasása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/delete | A regisztrált tároló törlése |
-> | Microsoft. Recoveryservices szolgáltatónál/Vaults/backupFabrics/protectionContainers/lekérdezés/művelet | A tárolóban lévő számítási feladatok lekérdezése |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/READ | Az összes regisztrált tároló visszaadása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/Write | Létrehoz egy regisztrált tárolót |
-> | Microsoft. Recoveryservices szolgáltatónál/Vaults/backupFabrics/protectionContainers/Items/READ | Tároló összes elemének beolvasása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/operationResults/READ | A védelmi tárolón végrehajtott művelet eredményét kapja meg. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/operationsStatus/READ | Lekéri a védelmi tárolón végrehajtott művelet állapotát. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vaults/backupFabrics/protectionContainers/protectedItems/biztonsági mentés/művelet | A védett elemek biztonsági mentését végzi. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/protectedItems/delete | Védett elemek törlése |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/protectedItems/READ | A védett tétel objektumának részleteit adja vissza. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/protectedItems/Write | Védett elemek biztonsági másolatának létrehozása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/protectedItems/operationResults/READ | A védett elemeken végrehajtott művelet eredményét kapja meg. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/protectedItems/operationsStatus/READ | A védett elemeken végrehajtott művelet állapotát adja vissza. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/művelet | Azonnali elemek helyreállításának kiépítése védett elemek esetén |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/protectedItems/recoveryPoints/READ | A védett elemek helyreállítási pontjainak beolvasása. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/Restore/Action | A védett elemek helyreállítási pontjainak visszaállítása. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/művelet | A védett elemek azonnali elemek helyreállításának visszavonása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vaults/backupJobs/megszakítás/művelet | Feladat megszakítása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupJobs/READ | Az összes feladatütemezés visszaadása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupJobs/operationResults/READ | A feladatok műveletének eredményét adja vissza. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupJobs/operationsStatus/READ | A feladatok műveletének állapotát adja vissza. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupOperationResults/READ | Recovery Services-tár biztonsági mentési műveletének eredményét adja vissza. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupOperations/READ | Recovery Services-tároló biztonsági mentési műveletének állapotát adja vissza. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupPolicies/delete | Védelmi szabályzat törlése |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupPolicies/READ | Az összes védelmi szabályzat visszaadása |
-> | Microsoft. Recoveryservices szolgáltatónál/tárolók/backupPolicies/írás | Védelmi szabályzat létrehozása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupPolicies/operationResults/READ | A házirend-művelet eredményeinek beolvasása. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vaults/backupPolicies/Operations/READ | Házirend-művelet állapotának beolvasása. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupProtectableItems/READ | Az összes védhető elem listáját adja vissza. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupProtectedItems/READ | Az összes védett elem listáját adja vissza. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupProtectionContainers/READ | Az előfizetéshez tartozó összes tárolót adja vissza. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupProtectionIntents/READ | Az összes biztonsági mentési védelmi leképezés listázása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupstorageconfig/READ | Recovery Services tároló tárolási konfigurációját adja vissza. |
-> | Microsoft. Recoveryservices szolgáltatónál/tárolók/backupstorageconfig/írás | Frissíti Recovery Services tár tárolási konfigurációját. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/backupUsageSummaries/READ | A védett elemek és a védett kiszolgálók összefoglalásait adja vissza egy Recovery Services számára. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupAadProperties/READ | A HRE tulajdonságainak beolvasása a harmadik régióban a régiók közötti visszaállításhoz. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupconfig/READ | Recovery Services-tároló konfigurációjának visszaadása. |
+> | Microsoft. recoveryservices szolgáltatónál/tárolók/backupconfig/írás | Recovery Services tár konfigurációjának frissítése. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupCrrOperationResults/READ | Recovery Services-tár CRR-műveletének eredményét adja vissza. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupCrrOperationsStatus/READ | Recovery Services-tár CRR műveleti állapotát adja vissza. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupEncryptionConfigs/READ | A biztonsági mentési erőforrás titkosítási konfigurációjának beolvasása. |
+> | Microsoft. recoveryservices szolgáltatónál/tárolók/backupEncryptionConfigs/írás | A biztonsági mentési erőforrás titkosítási konfigurációjának frissítése |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupEngines/READ | A tár összes regisztrált biztonságimásolat-felügyeleti kiszolgálóját adja vissza. |
+> | Microsoft. recoveryservices szolgáltatónál/Vaults/backupFabrics/refreshContainers/művelet | Frissíti a tárolók listáját |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/backupProtectionIntent/delete | Biztonsági másolat védelmi leképezésének törlése |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/backupProtectionIntent/READ | Biztonsági másolat védelmi szándékának beolvasása |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/backupProtectionIntent/Write | Biztonsági másolat védelmi leképezésének létrehozása |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/operationResults/READ | A művelet állapotának visszaadása |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/operationsStatus/READ | A művelet állapotának visszaadása |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/protectableContainers/READ | Az összes védhető tároló beolvasása |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/delete | A regisztrált tároló törlése |
+> | Microsoft. recoveryservices szolgáltatónál/Vaults/backupFabrics/protectionContainers/lekérdezés/művelet | A tárolóban lévő számítási feladatok lekérdezése |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/READ | Az összes regisztrált tároló visszaadása |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/Write | Létrehoz egy regisztrált tárolót |
+> | Microsoft. recoveryservices szolgáltatónál/Vaults/backupFabrics/protectionContainers/Items/READ | Tároló összes elemének beolvasása |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/operationResults/READ | A védelmi tárolón végrehajtott művelet eredményét kapja meg. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/operationsStatus/READ | Lekéri a védelmi tárolón végrehajtott művelet állapotát. |
+> | Microsoft. recoveryservices szolgáltatónál/Vaults/backupFabrics/protectionContainers/protectedItems/biztonsági mentés/művelet | A védett elemek biztonsági mentését végzi. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/protectedItems/delete | Védett elemek törlése |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/protectedItems/READ | A védett tétel objektumának részleteit adja vissza. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/protectedItems/Write | Védett elemek biztonsági másolatának létrehozása |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/protectedItems/operationResults/READ | A védett elemeken végrehajtott művelet eredményét kapja meg. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/protectedItems/operationsStatus/READ | A védett elemeken végrehajtott művelet állapotát adja vissza. |
+> | Microsoft. recoveryservices szolgáltatónál/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/accessToken/művelet | AccessToken beolvasása a régiók közötti visszaállításhoz. |
+> | Microsoft. recoveryservices szolgáltatónál/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/művelet | Azonnali elemek helyreállításának kiépítése védett elemek esetén |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupFabrics/protectionContainers/protectedItems/recoveryPoints/READ | A védett elemek helyreállítási pontjainak beolvasása. |
+> | Microsoft. recoveryservices szolgáltatónál/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/Restore/Action | A védett elemek helyreállítási pontjainak visszaállítása. |
+> | Microsoft. recoveryservices szolgáltatónál/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/művelet | A védett elemek azonnali elemek helyreállításának visszavonása |
+> | Microsoft. recoveryservices szolgáltatónál/Vaults/backupJobs/megszakítás/művelet | Feladat megszakítása |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupJobs/READ | Az összes feladatütemezés visszaadása |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupJobs/operationResults/READ | A feladatok műveletének eredményét adja vissza. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupJobs/operationsStatus/READ | A feladatok műveletének állapotát adja vissza. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupOperationResults/READ | Recovery Services-tár biztonsági mentési műveletének eredményét adja vissza. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupOperations/READ | Recovery Services-tároló biztonsági mentési műveletének állapotát adja vissza. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupPolicies/delete | Védelmi szabályzat törlése |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupPolicies/READ | Az összes védelmi szabályzat visszaadása |
+> | Microsoft. recoveryservices szolgáltatónál/tárolók/backupPolicies/írás | Védelmi szabályzat létrehozása |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupPolicies/operationResults/READ | A házirend-művelet eredményeinek beolvasása. |
+> | Microsoft. recoveryservices szolgáltatónál/Vaults/backupPolicies/Operations/READ | Házirend-művelet állapotának beolvasása. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupProtectableItems/READ | Az összes védhető elem listáját adja vissza. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupProtectedItems/READ | Az összes védett elem listáját adja vissza. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupProtectionContainers/READ | Az előfizetéshez tartozó összes tárolót adja vissza. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupProtectionIntents/READ | Az összes biztonsági mentési védelmi leképezés listázása |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupstorageconfig/READ | Recovery Services tároló tárolási konfigurációját adja vissza. |
+> | Microsoft. recoveryservices szolgáltatónál/tárolók/backupstorageconfig/írás | Frissíti Recovery Services tár tárolási konfigurációját. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/backupUsageSummaries/READ | A védett elemek és a védett kiszolgálók összefoglalásait adja vissza egy Recovery Services számára. |
 > | Microsoft. Recoveryservices szolgáltatónál/tárolók/tanúsítványok/írás | Az erőforrás-tanúsítvány frissítése művelet frissíti az erőforrás/tároló hitelesítő adatait tartalmazó tanúsítványt. |
 > | Microsoft. Recoveryservices szolgáltatónál/Vault/extendedInformation/READ | A kiterjesztett adatok beolvasása művelet lekérdezi egy objektum kiterjesztett adatait, amely a (z) típusú Azure-erőforrást jelképezi? |
 > | Microsoft. Recoveryservices szolgáltatónál/tárolók/extendedInformation/írás | A kiterjesztett adatok beolvasása művelet lekérdezi egy objektum kiterjesztett adatait, amely a (z) típusú Azure-erőforrást jelképezi? |
@@ -9409,14 +9470,14 @@ Azure-szolgáltatás: [site Recovery](../site-recovery/index.yml)
 > | Microsoft. Recoveryservices szolgáltatónál/tárolók/monitoringAlerts/írás | A riasztás feloldása. |
 > | Microsoft. Recoveryservices szolgáltatónál/Vault/monitoringConfigurations/READ | A Recovery Services-tár értesítési konfigurációjának beolvasása. |
 > | Microsoft. Recoveryservices szolgáltatónál/tárolók/monitoringConfigurations/írás | E-mail-értesítések konfigurálása a Recovery Services-tárolóhoz. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/privateEndpointConnectionProxies/delete | Várjon néhány percet, majd próbálja megismételni a műveletet. If the issue persists, please contact Microsoft support. (Az Azure Key Vault-művelet meghiúsult. Próbálja meg újból végrehajtani a műveletet. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához.) |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/privateEndpointConnectionProxies/READ | Az összes védhető tároló beolvasása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vaults/privateEndpointConnectionProxies/validate/Action | Az összes védhető tároló beolvasása |
-> | Microsoft. Recoveryservices szolgáltatónál/tárolók/privateEndpointConnectionProxies/írás | Az összes védhető tároló beolvasása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/privateEndpointConnectionProxies/operationsStatus/READ | Az összes védhető tároló beolvasása |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/privateEndpointConnections/delete | Privát végponti kérelmek törlése. Ezt a hívást a Backup rendszergazdája végzi. |
-> | Microsoft. Recoveryservices szolgáltatónál/tárolók/privateEndpointConnections/írás | Privát végponti kérelmek jóváhagyása vagy elutasítása. Ezt a hívást a Backup rendszergazdája végzi. |
-> | Microsoft. Recoveryservices szolgáltatónál/Vault/privateEndpointConnections/operationsStatus/READ | Egy privát végponti kapcsolatok műveleti állapotát adja vissza. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/privateEndpointConnectionProxies/delete | Várjon néhány percet, majd próbálja megismételni a műveletet. If the issue persists, please contact Microsoft support. (Az Azure Key Vault-művelet meghiúsult. Próbálja meg újból végrehajtani a műveletet. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához.) |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/privateEndpointConnectionProxies/READ | Az összes védhető tároló beolvasása |
+> | Microsoft. recoveryservices szolgáltatónál/Vaults/privateEndpointConnectionProxies/validate/Action | Az összes védhető tároló beolvasása |
+> | Microsoft. recoveryservices szolgáltatónál/tárolók/privateEndpointConnectionProxies/írás | Az összes védhető tároló beolvasása |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/privateEndpointConnectionProxies/operationsStatus/READ | Az összes védhető tároló beolvasása |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/privateEndpointConnections/delete | Privát végponti kérelmek törlése. Ezt a hívást a Backup rendszergazdája végzi. |
+> | Microsoft. recoveryservices szolgáltatónál/tárolók/privateEndpointConnections/írás | Privát végponti kérelmek jóváhagyása vagy elutasítása. Ezt a hívást a Backup rendszergazdája végzi. |
+> | Microsoft. recoveryservices szolgáltatónál/Vault/privateEndpointConnections/operationsStatus/READ | Egy privát végponti kapcsolatok műveleti állapotát adja vissza. |
 > | Microsoft. Recoveryservices szolgáltatónál/tárolók/registeredIdentities/írás | A szolgáltatás-tároló regisztrálása művelettel regisztrálhat egy tárolót a helyreállítási szolgáltatással. |
 > | Microsoft. Recoveryservices szolgáltatónál/Vault/registeredIdentities/READ | A tárolók beolvasása művelettel beolvashatók az adott erőforráshoz regisztrált tárolók. |
 > | Microsoft. Recoveryservices szolgáltatónál/Vault/registeredIdentities/delete | A tároló regisztrációjának törlése művelettel törölheti a tároló regisztrációját. |
@@ -9532,7 +9593,7 @@ Azure-szolgáltatás: [site Recovery](../site-recovery/index.yml)
 > | Microsoft. Recoveryservices szolgáltatónál/Vault/replicationVaultSettings/READ | Bármilyen beolvasás  |
 > | Microsoft. Recoveryservices szolgáltatónál/tárolók/replicationVaultSettings/írás | Tetszőlegesek létrehozása vagy frissítése  |
 > | Microsoft. Recoveryservices szolgáltatónál/Vault/replicationvCenters/READ | Bármilyen vCenter beolvasása |
-> | Microsoft. Recoveryservices szolgáltatónál/tárolók/használati adatok/olvasás | Egy Recovery Services tár használati adatait adja vissza. |
+> | Microsoft. recoveryservices szolgáltatónál/tárolók/használati adatok/olvasás | Egy Recovery Services tár használati adatait adja vissza. |
 > | Microsoft. Recoveryservices szolgáltatónál/tárolók/használati adatok/olvasás | Bármely tár használatának olvasása |
 > | Microsoft. Recoveryservices szolgáltatónál/Vault/vaultTokens/READ | A tároló-jogkivonat művelettel lekérheti a tár szintű háttérbeli műveletek tároló-tokenjét. |
 

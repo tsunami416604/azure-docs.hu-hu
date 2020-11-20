@@ -12,12 +12,12 @@ metadata:
   ms.author: joflore
   ms.date: 02/11/2020
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 17775be39e534d0825596973452dabc13054ee8d
-  ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+  ms.openlocfilehash: d484600da9be9d84b6af7ad31754ea86bf6b6873
+  ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/13/2020
-  ms.locfileid: "91968225"
+  ms.lasthandoff: 11/18/2020
+  ms.locfileid: "94838051"
 landingContent:
 - title: Tudnivalók a hitelesítésről
   linkLists:
@@ -51,21 +51,21 @@ landingContent:
       url: howto-sspr-deployment.md
     - text: Új jelszó kérésének engedélyezése a Windows bejelentkezési képernyőjéről
       url: howto-sspr-windows.md
-- title: Az Azure Multi-Factor Authentication engedélyezése
+- title: Az Azure AD többtényezős hitelesítés engedélyezése
   linkLists:
   - linkListType: concept
     links:
-    - text: Az Azure Multi-Factor Authentication működése
+    - text: Az Azure AD többtényezős hitelesítés működése
       url: concept-mfa-howitworks.md
   - linkListType: tutorial
     links:
-    - text: Az Azure Multi-Factor Authentication engedélyezése
+    - text: Az Azure AD többtényezős hitelesítés engedélyezése
       url: tutorial-enable-azure-mfa.md
-    - text: A kockázatalapú Azure Multi-Factor Authentication engedélyezése
+    - text: A kockázatalapú Azure AD többtényezős hitelesítés engedélyezése
       url: tutorial-risk-based-sspr-mfa.md
   - linkListType: deploy
     links:
-    - text: Az Azure Multi-Factor Authentication üzembehelyezési útmutatója
+    - text: Az Azure AD többtényezős hitelesítés üzembehelyezési útmutatója
       url: howto-mfa-getstarted.md
     - text: NPS-bővítmény használata helyszíni alkalmazások integrálásához
       url: howto-mfa-nps-extension.md
