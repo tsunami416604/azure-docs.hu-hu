@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 3d35a1f6913d0b657956489d0e57836a05f9eb1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 188a348b497a485be0a8091b50a3f2c11b6493c0
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90900050"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960750"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure Cognitive Services-tárolók – gyakori kérdések (GYIK)
 
@@ -50,7 +50,7 @@ Cognitive Services az erőforrások tároló-konfigurációit az ügyfelek vezé
 
 **A:** Nem mindenki ismeri a "szuverén felhő" kifejezést, ezért kezdjük a definícióval:
 
-> A "szuverén felhő" a [Azure Government](../../azure-government/documentation-government-welcome.md), az [Azure Germany](../../germany/germany-welcome.md)és az [Azure China 21Vianet](https://docs.microsoft.com/azure/china/overview-operations) -felhőkből áll.
+> A "szuverén felhő" a [Azure Government](../../azure-government/documentation-government-welcome.md), az [Azure Germany](../../germany/germany-welcome.md)és az [Azure China 21Vianet](/azure/china/overview-operations) -felhőkből áll.
 
 Sajnos a Cognitive Services tárolók natív módon *nem* támogatottak a szuverén felhőkben. A tárolók futtathatók ezekben a felhőkben, de a nyilvános felhőből fognak megjelenni, és használati adatokat kell küldeniük a nyilvános végpontnak.
 

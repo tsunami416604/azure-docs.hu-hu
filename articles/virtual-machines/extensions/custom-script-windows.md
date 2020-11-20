@@ -5,17 +5,18 @@ services: virtual-machines-windows
 manager: carmonm
 author: bobbytreed
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: 0bb1e4cb9b24c9b46f623e1604930367b82a47eb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8d11ff6eaab8ed6a13c3c2aa1b712cc57e7825ea
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973818"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960971"
 ---
 # <a name="custom-script-extension-for-windows"></a>Egyéniszkript-bővítmény Windows rendszerre
 
@@ -124,7 +125,7 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
 
 | Name | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | date |
+| apiVersion | 2015-06-15 | dátum |
 | közzétevő | Microsoft.Compute | sztring |
 | típus | CustomScriptExtension | sztring |
 | typeHandlerVersion | 1.10 | int |
@@ -250,7 +251,7 @@ Set-AzVMExtension -ResourceGroupName <resourceGroupName> `
 
 ### <a name="running-scripts-from-a-local-share"></a>Parancsfájlok futtatása helyi megosztásból
 
-Ebben a példában érdemes helyi SMB-kiszolgálót használni a parancsfájl helyéhez. Ehhez a **commandToExecute**kivételével semmilyen egyéb beállítást nem kell megadnia.
+Ebben a példában érdemes helyi SMB-kiszolgálót használni a parancsfájl helyéhez. Ehhez a **commandToExecute** kivételével semmilyen egyéb beállítást nem kell megadnia.
 
 ```powershell
 $protectedSettings = @{"commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File \\filesvr\build\serverUpdate1.ps1"};
@@ -294,11 +295,11 @@ Az egyéni szkriptek klasszikus virtuális gépeken való üzembe helyezéséhez
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Navigáljon a klasszikus VM-erőforráshoz. Válassza a **bővítmények** lehetőséget a **Beállítások**területen.
+Navigáljon a klasszikus VM-erőforráshoz. Válassza a **bővítmények** lehetőséget a **Beállítások** területen.
 
-Kattintson a **+ Hozzáadás** elemre, majd az erőforrások listájában válassza az **Egyéni szkriptek bővítmény**lehetőséget.
+Kattintson a **+ Hozzáadás** elemre, majd az erőforrások listájában válassza az **Egyéni szkriptek bővítmény** lehetőséget.
 
-A **bővítmény telepítése** lapon válassza ki a helyi PowerShell-fájlt, és töltse ki az argumentumokat, és kattintson **az OK**gombra.
+A **bővítmény telepítése** lapon válassza ki a helyi PowerShell-fájlt, és töltse ki az argumentumokat, és kattintson **az OK** gombra.
 
 ### <a name="powershell"></a>PowerShell
 

@@ -12,20 +12,20 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: 7f7bc16658733a7200d29fae22d96a2157b73065
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01370092c5e272fe64f4ffdad577b69d3a532810
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91292132"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963028"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-managed-instance"></a>SQL Server Integration Services csomagok migrálása egy felügyelt Azure SQL-példányra
 Ha SQL Server Integration Servicest (SSIS) használ, és szeretné áttelepíteni a SSIS-projekteket/csomagokat a SQL Server által üzemeltetett SSISDB a felügyelt Azure SQL-példányok által üzemeltetett cél SSISDB, használhatja a Azure Database Migration Service.
 
-Ha a használt SSIS-verzió korábbi, mint 2012, vagy ha nem SSISDB-csomag típusú tárolót használ, a SSIS-projektek/csomagok áttelepítése előtt át kell alakítania azokat az integrációs szolgáltatások projekt-átalakítási varázslójával, amely a SSMS is elindítható. További információ: [projektek konvertálása a projekt üzembe helyezési modelljére](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert).
+Ha a használt SSIS-verzió korábbi, mint 2012, vagy ha nem SSISDB-csomag típusú tárolót használ, a SSIS-projektek/csomagok áttelepítése előtt át kell alakítania azokat az integrációs szolgáltatások projekt-átalakítási varázslójával, amely a SSMS is elindítható. További információ: [projektek konvertálása a projekt üzembe helyezési modelljére](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert).
 
 > [!NOTE]
-> A Azure Database Migration Service (DMS) jelenleg nem támogatja a Azure SQL Database cél áttelepítési célként. A SSIS-projektek/csomagok Azure SQL Databaseba való újbóli üzembe helyezéséhez tekintse meg [SQL Server Integration Services csomagok újbóli üzembe helyezése Azure SQL Database](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages).
+> A Azure Database Migration Service (DMS) jelenleg nem támogatja a Azure SQL Database cél áttelepítési célként. A SSIS-projektek/csomagok Azure SQL Databaseba való újbóli üzembe helyezéséhez tekintse meg [SQL Server Integration Services csomagok újbóli üzembe helyezése Azure SQL Database](./how-to-migrate-ssis-packages.md).
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
@@ -37,15 +37,15 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 A lépések elvégzéséhez a következőkre lesz szüksége:
 
-* Microsoft Azure Virtual Network létrehozása a Azure Database Migration Service számára a Azure Resource Manager üzembe helyezési modell használatával, amely helyek közötti kapcsolatot biztosít a helyszíni forráskiszolgálóról a [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy a [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)használatával. További információkért tekintse meg a [hálózati topológiák az SQL felügyelt példányok áttelepítése Azure Database Migration Service használatával]( https://aka.ms/dmsnetworkformi)című cikket. A virtuális hálózatok létrehozásával kapcsolatos további információkért tekintse meg a [Virtual Network dokumentációt](https://docs.microsoft.com/azure/virtual-network/), és különösen a gyors üzembe helyezési cikkeket részletesen ismerteti.
-* Annak biztosítása érdekében, hogy a virtuális hálózati hálózati biztonsági csoport szabályai ne blokkolja a következő bejövő kommunikációs portokat Azure Database Migration Service: 443, 53, 9354, 445, 12000. A Virtual Network NSG-forgalom szűrésével kapcsolatos további információkért tekintse meg a [hálózati forgalom szűrése hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)című cikket.
-* A [Windows tűzfal konfigurálása a forrás-adatbázismotor eléréséhez](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access?view=sql-server-2017).
+* Microsoft Azure Virtual Network létrehozása a Azure Database Migration Service számára a Azure Resource Manager üzembe helyezési modell használatával, amely helyek közötti kapcsolatot biztosít a helyszíni forráskiszolgálóról a [ExpressRoute](../expressroute/expressroute-introduction.md) vagy a [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)használatával. További információkért tekintse meg a [hálózati topológiák az SQL felügyelt példányok áttelepítése Azure Database Migration Service használatával]( https://aka.ms/dmsnetworkformi)című cikket. A virtuális hálózatok létrehozásával kapcsolatos további információkért tekintse meg a [Virtual Network dokumentációt](../virtual-network/index.yml), és különösen a gyors üzembe helyezési cikkeket részletesen ismerteti.
+* Annak biztosítása érdekében, hogy a virtuális hálózati hálózati biztonsági csoport szabályai ne blokkolja a következő bejövő kommunikációs portokat Azure Database Migration Service: 443, 53, 9354, 445, 12000. A Virtual Network NSG-forgalom szűrésével kapcsolatos további információkért tekintse meg a [hálózati forgalom szűrése hálózati biztonsági csoportokkal](../virtual-network/virtual-network-vnet-plan-design-arm.md)című cikket.
+* A [Windows tűzfal konfigurálása a forrás-adatbázismotor eléréséhez](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access?view=sql-server-2017).
 * A Windows tűzfal megnyitásával engedélyezheti a Azure Database Migration Service számára a forrás SQL Server elérését, amely alapértelmezés szerint a 1433-as TCP-port.
 * Ha több megnevezett SQL Server-példányt futtat dinamikus portokkal, előnyös lehet engedélyezni az SQL Browser Service-t, és engedélyezni a tűzfalakon keresztül az 1434-es UDP-porthoz való hozzáférést. Így az Azure Database Migration Service a forráskiszolgálón található megnevezett példányhoz férhet hozzá.
 * Ha tűzfalberendezést használ a forrásadatbázis(ok) előtt, előfordulhat, hogy tűzfalszabályokat kell hozzáadnia annak engedélyezéséhez, hogy az Azure Database Migration Service a migrálás céljából hozzáférhessen a forrásadatbázis(ok)hoz, valamint a fájlokhoz a 445-ös SMB-porton keresztül.
-* SQL felügyelt példány a SSISDB üzemeltetéséhez. Ha létre kell hoznia egyet, kövesse az [Azure SQL felügyelt példány létrehozása](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)című cikk részletes ismertetését.
+* SQL felügyelt példány a SSISDB üzemeltetéséhez. Ha létre kell hoznia egyet, kövesse az [Azure SQL felügyelt példány létrehozása](../azure-sql/managed-instance/instance-create-quickstart.md)című cikk részletes ismertetését.
 * Annak biztosítása érdekében, hogy a forrás SQL Server és a célként felügyelt példány összekapcsolásához használt bejelentkezési adatok a sysadmin (rendszergazda) kiszolgálói szerepkör tagjai legyenek.
-* Annak ellenőrzéséhez, hogy a SSIS Azure Data Factory (Azure-SSIS Integration Runtime ADF) van-e kiépítve egy SQL felügyelt példány által üzemeltetett SSISDB (az [Azure-SSIS Integration Runtime létrehozása a Azure Data Factory](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)-ben) című cikkben leírtak szerint.
+* Annak ellenőrzéséhez, hogy a SSIS Azure Data Factory (Azure-SSIS Integration Runtime ADF) van-e kiépítve egy SQL felügyelt példány által üzemeltetett SSISDB (az [Azure-SSIS Integration Runtime létrehozása a Azure Data Factory](../data-factory/create-azure-ssis-integration-runtime.md)-ben) című cikkben leírtak szerint.
 
 ## <a name="assess-source-ssis-projectspackages"></a>Forrás SSIS projektek/csomagok értékelése
 
@@ -57,17 +57,17 @@ Bár a forrás-SSISDB értékelése még nincs integrálva az adatbázis Migrati
 
     ![Portál-előfizetések megtekintése](media/how-to-migrate-ssis-packages-mi/portal-select-subscriptions.png)
 
-2. Válassza ki azt az előfizetést, amelyben létre kívánja hozni a Azure Database Migration Service példányát, majd válassza az **erőforrás-szolgáltatók**lehetőséget.
+2. Válassza ki azt az előfizetést, amelyben létre kívánja hozni a Azure Database Migration Service példányát, majd válassza az **erőforrás-szolgáltatók** lehetőséget.
 
     ![Erőforrás-szolgáltatók megtekintése](media/how-to-migrate-ssis-packages-mi/portal-select-resource-provider.png)
 
-3. Keresse meg az áttelepítést, majd a **Microsoft. DataMigration**jobb oldalán válassza a **regisztráció**lehetőséget.
+3. Keresse meg az áttelepítést, majd a **Microsoft. DataMigration** jobb oldalán válassza a **regisztráció** lehetőséget.
 
     ![Erőforrás-szolgáltató regisztrálása](media/how-to-migrate-ssis-packages-mi/portal-register-resource-provider.png)
 
 ## <a name="create-an-azure-database-migration-service-instance"></a>Azure Database Migration Service-példány létrehozása
 
-1. A Azure Portal válassza az + **erőforrás létrehozása**lehetőséget, keresse meg a **Azure Database Migration Service**, majd válassza a **Azure Database Migration Service** elemet a legördülő listából.
+1. A Azure Portal válassza az + **erőforrás létrehozása** lehetőséget, keresse meg a **Azure Database Migration Service**, majd válassza a **Azure Database Migration Service** elemet a legördülő listából.
 
      ![Azure Piactér](media/how-to-migrate-ssis-packages-mi/portal-marketplace.png)
 
@@ -83,9 +83,9 @@ Bár a forrás-SSISDB értékelése még nincs integrálva az adatbázis Migrati
 
     A virtuális hálózat Azure Database Migration Service hozzáférést biztosít a forrás-SQL Server és a felügyelt Azure SQL-példányhoz.
 
-    A virtuális hálózatok Azure Portalban való létrehozásával kapcsolatos további információkért tekintse meg a [virtuális hálózat létrehozása a Azure Portal használatával](https://aka.ms/DMSVnet)című cikket.
+    A virtuális hálózatok Azure Portalban való létrehozásával kapcsolatos további információkért tekintse meg a [virtuális hálózat létrehozása a Azure Portal használatával](../virtual-network/quick-create-portal.md)című cikket.
 
-    További részletekért tekintse meg a [hálózati topológiák az Azure SQL felügyelt példányok áttelepítése a Azure Database Migration Service használatával](https://aka.ms/dmsnetworkformi)című cikket.
+    További részletekért tekintse meg a [hálózati topológiák az Azure SQL felügyelt példányok áttelepítése a Azure Database Migration Service használatával](./resource-network-topologies.md)című cikket.
 
 6. Válasszon tarifacsomagot.
 
@@ -107,7 +107,7 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
 
 3. Válassza a + **Új migrálási projekt** lehetőséget.
 
-4. Az **új áttelepítési projekt** képernyőn adja meg a projekt nevét, a **forráskiszolgáló típusa** szövegmezőben válassza a **SQL Server**lehetőséget, a **CÉLKISZOLGÁLÓ típusa** szövegmezőben válassza az **Azure SQL felügyelt példány**lehetőséget, majd a **tevékenység típusa**beállításnál válassza a **SSIS-csomag áttelepítése**lehetőséget.
+4. Az **új áttelepítési projekt** képernyőn adja meg a projekt nevét, a **forráskiszolgáló típusa** szövegmezőben válassza a **SQL Server** lehetőséget, a **CÉLKISZOLGÁLÓ típusa** szövegmezőben válassza az **Azure SQL felügyelt példány** lehetőséget, majd a **tevékenység típusa** beállításnál válassza a **SSIS-csomag áttelepítése** lehetőséget.
 
    ![DMS-projekt létrehozása](media/how-to-migrate-ssis-packages-mi/dms-create-project2.png)
 
@@ -140,7 +140,7 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
 
 1. **A migrálás összegzése** képernyő **Tevékenység neve** szövegbeviteli mezőjében adja meg a migrálási tevékenység nevét.
 
-2. A **SSIS projekt (ek) és a környezet (ek) felülírására szolgáló beállításnál**határozza meg, hogy felülírja vagy figyelmen kívül hagyja-e a meglévő SSIS-projekteket és-környezeteket.
+2. A **SSIS projekt (ek) és a környezet (ek) felülírására szolgáló beállításnál** határozza meg, hogy felülírja vagy figyelmen kívül hagyja-e a meglévő SSIS-projekteket és-környezeteket.
 
     ![Migrálási projekt áttekintése](media/how-to-migrate-ssis-packages-mi/dms-project-summary2.png)
 

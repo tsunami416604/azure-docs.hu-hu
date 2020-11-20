@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: e950e34a1965e309d226c42bf4b3128cbe3bf3c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dad02735228bb639981bf3f053a74f29d1944e5a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91291503"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961481"
 ---
 # <a name="custom-roles-for-sql-server-to-azure-sql-managed-instance-online-migrations"></a>Egyéni szerepkörök az Azure SQL felügyelt példányok online áttelepítéséhez SQL Server
 
@@ -32,7 +32,7 @@ Javasoljuk, hogy legalább két egyéni szerepkört hozzon létre az alkalmazás
 > [!NOTE]
 > Az utolsó egyéni szerepkör-követelményt végül el lehet távolítani, mivel a rendszer az új SQL felügyelt példány kódját telepíti az Azure-ba.
 
-**Egyéni szerepkör az alkalmazás-azonosítóhoz**. Ez a szerepkör az *erőforrás* -vagy *erőforráscsoport* szintjén Azure Database Migration Service áttelepítéshez szükséges (az alkalmazás-azonosítóval kapcsolatos további tudnivalókért tekintse meg a következő cikket: az [Azure ad-alkalmazás és az erőforrások elérésére képes egyszerű szolgáltatásnév létrehozása a portál használatával](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)).
+**Egyéni szerepkör az alkalmazás-azonosítóhoz**. Ez a szerepkör az *erőforrás* -vagy *erőforráscsoport* szintjén Azure Database Migration Service áttelepítéshez szükséges (az alkalmazás-azonosítóval kapcsolatos további tudnivalókért tekintse meg a következő cikket: az [Azure ad-alkalmazás és az erőforrások elérésére képes egyszerű szolgáltatásnév létrehozása a portál használatával](../active-directory/develop/howto-create-service-principal-portal.md)).
 
 ```json
 {
@@ -83,7 +83,7 @@ Javasoljuk, hogy legalább két egyéni szerepkört hozzon létre az alkalmazás
 
 A fenti JSON-t három szövegfájlban kell tárolni, és használhatja a AzureRM, az AZ PowerShell-parancsmagokat vagy az Azure CLI-t a szerepkörök létrehozásához a **New-AzureRmRoleDefinition (AzureRM)** vagy a **New-AzRoleDefinition (az)** használatával.
 
-További információt az [Azure egyéni szerepkörei](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)című cikkben talál.
+További információt az [Azure egyéni szerepkörei](../role-based-access-control/custom-roles.md)című cikkben talál.
 
 Miután létrehozta ezeket az egyéni szerepköröket, szerepkör-hozzárendeléseket kell hozzáadnia a felhasználókhoz és az alkalmazás-AZONOSÍTÓhoz a megfelelő erőforrásokhoz vagy erőforráscsoportokhöz:
 
@@ -142,7 +142,7 @@ Ha a Azure Active Directoryban szereplő egyéni szerepkörök száma nem jelent
 
 Ha szerepkört szeretne hozzárendelni a felhasználókhoz/alkalmazás-AZONOSÍTÓhoz, nyissa meg a Azure Portal, hajtsa végre a következő lépéseket:
 
-1. Keresse meg az erőforráscsoportot vagy az erőforrást (kivéve az előfizetésre vonatkozó szerepkört), lépjen a **Access Control**elemre, és görgessen az imént létrehozott egyéni szerepkörök megkereséséhez.
+1. Keresse meg az erőforráscsoportot vagy az erőforrást (kivéve az előfizetésre vonatkozó szerepkört), lépjen a **Access Control** elemre, és görgessen az imént létrehozott egyéni szerepkörök megkereséséhez.
 
 2. Válassza ki a megfelelő szerepkört, válassza ki az alkalmazás AZONOSÍTÓját, majd mentse a módosításokat.
 

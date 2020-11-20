@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: f0ec9d2a3794ea910339b4d329bb28f23c5a76b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4baca7f261aa7544b54992a5e1ddf620794774f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91297358"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962280"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Gyakori Azure Database Migration Service problémák és hibák elhárítása
 
@@ -25,7 +25,7 @@ Ez a cikk néhány olyan gyakori problémát és hibát ismertet, amelyekkel Azu
 > [!NOTE]
 > Elfogultság – ingyenes kommunikáció
 >
-> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a _Slave_kifejezésre mutató hivatkozásokat tartalmaz. Az [elfogultság nélküli kommunikációhoz használható Microsoft-stílus útmutatója](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) ezt a kizáró szót ismeri fel. A szó a jelen cikkben a konzisztencia miatt használatos, mert jelenleg a szoftverben megjelenő szó. Ha a szoftver frissítve lett a szó eltávolítására, a rendszer a cikket úgy frissíti, hogy az legyen az igazítás.
+> A Microsoft sokféle és befogadó környezetet támogat. Ez a cikk a _Slave_ kifejezésre mutató hivatkozásokat tartalmaz. Az [elfogultság nélküli kommunikációhoz használható Microsoft-stílus útmutatója](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) ezt a kizáró szót ismeri fel. A szó a jelen cikkben a konzisztencia miatt használatos, mert jelenleg a szoftverben megjelenő szó. Ha a szoftver frissítve lett a szó eltávolítására, a rendszer a cikket úgy frissíti, hogy az legyen az igazítás.
 >
 
 ## <a name="migration-activity-in-queued-state"></a>Áttelepítési tevékenység várólistán lévő állapotban
@@ -54,7 +54,7 @@ Ha a MySQL-ből Azure Database for MySQL Azure Database Migration Service haszn�
 
 | Ok         | Feloldás |
 | ------------- | ------------- |
-| Ez a hiba akkor fordulhat elő, ha az áttelepítést végző felhasználó hiányzik a ReplicationAdmin szerepkör és/vagy a replikációs ügyfél, a replikációs REPLIKA és a SUPER (a MySQL 5.6.6 korábbi verziók).<br><br><br><br><br><br><br><br><br><br><br><br><br> | Győződjön meg arról, hogy a felhasználói fiók [előfeltételként megadott jogosultságai](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#prerequisites) pontosan vannak konfigurálva a Azure Database for MySQL példányon. Például az alábbi lépéseket követve létrehozhat egy "migrateuser" nevű felhasználót a szükséges jogosultságokkal:<br>1. hozza létre a (z) "%" felhasználói migrateuser@ "Secret" AZONOSÍTÓval. <br>2. adja meg az összes jogosultságot a db_name. * a "Secret" által azonosított "migrateuser" @ "%" értékre. Ismételje meg ezt a lépést, ha további adatbázisokhoz szeretne hozzáférést biztosítani <br>3. Adjon meg replikálási Slave-t *.* a "Secret" által azonosított "migrateuser" @ "%" értékre.<br>4. engedélyezze a replikációs ügyfelet a-ben *.* a "Secret" által azonosított "migrateuser" @ "%" értékre.<br>5. kiürítési jogosultságok; |
+| Ez a hiba akkor fordulhat elő, ha az áttelepítést végző felhasználó hiányzik a ReplicationAdmin szerepkör és/vagy a replikációs ügyfél, a replikációs REPLIKA és a SUPER (a MySQL 5.6.6 korábbi verziók).<br><br><br><br><br><br><br><br><br><br><br><br><br> | Győződjön meg arról, hogy a felhasználói fiók [előfeltételként megadott jogosultságai](./tutorial-mysql-azure-mysql-online.md#prerequisites) pontosan vannak konfigurálva a Azure Database for MySQL példányon. Például az alábbi lépéseket követve létrehozhat egy "migrateuser" nevű felhasználót a szükséges jogosultságokkal:<br>1. hozza létre a (z) "%" felhasználói migrateuser@ "Secret" AZONOSÍTÓval. <br>2. adja meg az összes jogosultságot a db_name. * a "Secret" által azonosított "migrateuser" @ "%" értékre. Ismételje meg ezt a lépést, ha további adatbázisokhoz szeretne hozzáférést biztosítani <br>3. Adjon meg replikálási Slave-t *.* a "Secret" által azonosított "migrateuser" @ "%" értékre.<br>4. engedélyezze a replikációs ügyfelet a-ben *.* a "Secret" által azonosított "migrateuser" @ "%" értékre.<br>5. kiürítési jogosultságok; |
 
 ## <a name="error-when-attempting-to-stop-azure-database-migration-service"></a>Hiba történt a Azure Database Migration Service leállításakor
 
@@ -84,7 +84,7 @@ Ha SQL Serverról az Azure SQL felügyelt példányára végez online áttelepí
 
 | Ok         | Feloldás    |
 | ------------- | ------------- |
-| Ez a hiba azt jelzi, hogy az SQL Serverról az SQL felügyelt példányára való online áttelepítéshez használt egyszerű alkalmazás nem járul hozzá az előfizetéshez. A felügyelt példányokkal rendelkező bizonyos API-hívások esetében ez az engedély szükséges a visszaállítási művelet előfizetéséhez. <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | A `Get-AzureADServicePrincipal` hibaüzenetben elérhető PowerShell-parancsmag használatával `-ObjectId` jelenítse meg a használt alkalmazás-azonosító megjelenítendő nevét.<br><br> Érvényesítse az alkalmazás engedélyeit, és győződjön meg arról, hogy az előfizetés szintjén szerepel a [közreműködő szerepkör](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) . <br><br> A Azure Database Migration Service mérnöki csapat azon dolgozik, hogy korlátozza a jelenlegi hozzájárulási szerepkör szükséges hozzáférését az előfizetéshez. Ha olyan üzleti követelménye van, amely nem engedélyezi a hozzájárulási szerepkör használatát, további segítségért forduljon az Azure támogatási szolgálatához. |
+| Ez a hiba azt jelzi, hogy az SQL Serverról az SQL felügyelt példányára való online áttelepítéshez használt egyszerű alkalmazás nem járul hozzá az előfizetéshez. A felügyelt példányokkal rendelkező bizonyos API-hívások esetében ez az engedély szükséges a visszaállítási művelet előfizetéséhez. <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | A `Get-AzureADServicePrincipal` hibaüzenetben elérhető PowerShell-parancsmag használatával `-ObjectId` jelenítse meg a használt alkalmazás-azonosító megjelenítendő nevét.<br><br> Érvényesítse az alkalmazás engedélyeit, és győződjön meg arról, hogy az előfizetés szintjén szerepel a [közreműködő szerepkör](../role-based-access-control/built-in-roles.md#contributor) . <br><br> A Azure Database Migration Service mérnöki csapat azon dolgozik, hogy korlátozza a jelenlegi hozzájárulási szerepkör szükséges hozzáférését az előfizetéshez. Ha olyan üzleti követelménye van, amely nem engedélyezi a hozzájárulási szerepkör használatát, további segítségért forduljon az Azure támogatási szolgálatához. |
 
 ## <a name="error-when-deleting-nic-associated-with-azure-database-migration-service"></a>Hiba történt a Azure Database Migration Servicehoz társított NIC törlésekor
 
@@ -102,7 +102,7 @@ Amikor az Azure Database Migration Service projektvarázslóban próbál csatlak
 
 | Ok         | Feloldás    |
 | ------------- | ------------- |
-| A [ExpressRoute](https://azure.microsoft.com/services/expressroute/)használatakor Azure Database Migration Service a szolgáltatáshoz társított Virtual Network alhálózaton három szolgáltatási végpontot [kell](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) kiépíteni:<br> – Service Bus végpont<br> – Tárolási végpont<br> – Céladatbázis végpontja (például SQL-végpont, Cosmos DB végpont)<br><br><br><br><br> | [Engedélyezze](https://docs.microsoft.com/azure/dms/tutorial-sql-server-azure-sql-online) a szükséges szolgáltatási végpontokat a forrás-és a Azure Database Migration Service közötti ExpressRoute-kapcsolathoz. <br><br><br><br><br><br><br><br> |
+| A [ExpressRoute](https://azure.microsoft.com/services/expressroute/)használatakor Azure Database Migration Service a szolgáltatáshoz társított Virtual Network alhálózaton három szolgáltatási végpontot [kell](./tutorial-sql-server-azure-sql-online.md) kiépíteni:<br> – Service Bus végpont<br> – Tárolási végpont<br> – Céladatbázis végpontja (például SQL-végpont, Cosmos DB végpont)<br><br><br><br><br> | [Engedélyezze](./tutorial-sql-server-azure-sql-online.md) a szükséges szolgáltatási végpontokat a forrás-és a Azure Database Migration Service közötti ExpressRoute-kapcsolathoz. <br><br><br><br><br><br><br><br> |
 
 ## <a name="lock-wait-timeout-error-when-migrating-a-mysql-database-to-azure-db-for-mysql"></a>Zárolási várakozási időtúllépési hiba történt a MySQL-adatbázis MySQL-adatbázisba való áttelepítésekor
 
@@ -126,13 +126,13 @@ Ha egy vagy több elnevezett példányon vagy dinamikus porton futó SQL Server-
 
 ## <a name="additional-known-issues"></a>További ismert problémák
 
-* [Ismert problémák/áttelepítési korlátozások az online áttelepítéssel Azure SQL Database](https://docs.microsoft.com/azure/dms/known-issues-azure-sql-online)
-* [Ismert problémák/áttelepítési korlátozások az online áttelepítéssel Azure Database for MySQL](https://docs.microsoft.com/azure/dms/known-issues-azure-mysql-online)
-* [Ismert problémák/áttelepítési korlátozások az online áttelepítéssel Azure Database for PostgreSQL](https://docs.microsoft.com/azure/dms/known-issues-azure-postgresql-online)
+* [Ismert problémák/áttelepítési korlátozások az online áttelepítéssel Azure SQL Database](./known-issues-azure-sql-online.md)
+* [Ismert problémák/áttelepítési korlátozások az online áttelepítéssel Azure Database for MySQL](./known-issues-azure-mysql-online.md)
+* [Ismert problémák/áttelepítési korlátozások az online áttelepítéssel Azure Database for PostgreSQL](./known-issues-azure-postgresql-online.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Tekintse meg a [Azure Database Migration Service PowerShellt](https://docs.microsoft.com/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration)ismertető cikket.
-* A Azure Portal használatával megtekintheti a [kiszolgáló paramétereinek konfigurálása Azure Database for MySQLben](https://docs.microsoft.com/azure/mysql/howto-server-parameters)című cikket.
-* Tekintse meg a [Azure Database Migration Service használatának előfeltételeit ismertető](https://docs.microsoft.com/azure/dms/pre-reqs)cikket.
-* Tekintse meg a [Azure Database Migration Service használatának gyakori kérdéseit](https://docs.microsoft.com/azure/dms/faq).
+* Tekintse meg a [Azure Database Migration Service PowerShellt](/powershell/module/azurerm.datamigration/?view=azurermps-6.13.0#data_migration)ismertető cikket.
+* A Azure Portal használatával megtekintheti a [kiszolgáló paramétereinek konfigurálása Azure Database for MySQLben](../mysql/howto-server-parameters.md)című cikket.
+* Tekintse meg a [Azure Database Migration Service használatának előfeltételeit ismertető](./pre-reqs.md)cikket.
+* Tekintse meg a [Azure Database Migration Service használatának gyakori kérdéseit](./faq.md).

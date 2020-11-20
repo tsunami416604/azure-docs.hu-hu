@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/03/2020
 ms.custom: how-to, contperfq1, devx-track-python, data4ml
-ms.openlocfilehash: 30ece529b141f3a50191c532d85265d8e9555b34
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3c8e18a3a216240a624b3b14f5e2e397d6c06012
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538597"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961328"
 ---
 # <a name="connect-to-storage-services-on-azure"></a>Kapcsolódás az Azure Storage Services szolgáltatásához
 
@@ -24,14 +24,14 @@ Ebből a cikkből megtudhatja, hogyan **kapcsolódhat az Azure-beli tárolási s
 
 Ha az adattárolókat a Azure Machine Learning VS Code bővítménnyel szeretné létrehozni és kezelni, További tudnivalókért tekintse meg a [vs Code erőforrás-kezelési útmutatóját](how-to-manage-resources-vscode.md#datastores) .
 
-[Ezekből az Azure Storage-megoldásokból is létrehozhat adattárakat](#matrix). A nem **támogatott tárolási megoldások esetében** , valamint az adatforgalomnak a ml-kísérletek során történő megtakarítása érdekében [Helyezze át az adatait](#move) egy támogatott Azure Storage-megoldásba.  
+[Ezekből az Azure Storage-megoldásokból is létrehozhat adattárakat](#matrix). A nem **támogatott tárolási megoldások esetében**, valamint az adatforgalomnak a ml-kísérletek során történő megtakarítása érdekében [Helyezze át az adatait](#move) egy támogatott Azure Storage-megoldásba.  
 
 Ha szeretné megismerni, hogy az adattárolók hogyan illeszkednek Azure Machine Learning összesített adatelérési munkafolyamataihoz, tekintse meg a [biztonságos hozzáférésről](concept-data.md#data-workflow) szóló cikket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A következők szükségesek:
-- Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
+- Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
 - Egy [támogatott tárolási típusú](#matrix)Azure Storage-fiók.
 
@@ -180,7 +180,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
 
 Egy Azure Data Lake Storage 2. generációs (ADLS Gen 2) adattár esetében a [register_azure_data_lake_gen2 ()](/python/api/azureml-core/azureml.core.datastore.datastore?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) használatával regisztrálja az Azure DataLake Gen 2 tárolóhoz csatlakoztatott hitelesítő adatokat az [egyszerű szolgáltatás engedélyeivel](../active-directory/develop/howto-create-service-principal-portal.md).  
 
-Az egyszerű szolgáltatás használatához [regisztrálnia](../active-directory/develop/app-objects-and-service-principals.md) kell az alkalmazást, és biztosítania kell a szolgáltatás egyszerű hozzáférését a szerepköralapú hozzáférés-vezérlés (Azure RBAC) vagy a hozzáférés-vezérlési listák (ACL) használatával. További információ a [2. generációs ADLS-hez beállított hozzáférés-vezérlésről](../storage/blobs/data-lake-storage-access-control-model.md). 
+Az egyszerű szolgáltatás használatához [regisztrálnia](../active-directory/develop/app-objects-and-service-principals.md) kell az alkalmazást, és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) vagy a hozzáférés-vezérlési listák (ACL) használatával kell megadnia az egyszerű szolgáltatás adatelérését. További információ a [2. generációs ADLS-hez beállított hozzáférés-vezérlésről](../storage/blobs/data-lake-storage-access-control-model.md). 
 
 A következő kód létrehozza és regisztrálja az `adlsgen2_datastore_name` adattárt a `ws` munkaterületen. Ez az adattár hozzáfér a fájlrendszerhez a `test` `account_name` Storage-fiókban a megadott egyszerű szolgáltatás hitelesítő adataival. Tekintse át a [tárolási hozzáférési & engedélyek](#storage-access-and-permissions) szakaszt a virtuális hálózati forgatókönyvekkel kapcsolatos útmutatásért és a szükséges hitelesítő adatok megkereséséhez. 
 

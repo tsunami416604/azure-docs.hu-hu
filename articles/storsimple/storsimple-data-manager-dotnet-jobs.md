@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: e34701640de24a4c3c13f8d10073b4392af2f28a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b18627d2806662d6d966af95d51873d5623b2393
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88183648"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961124"
 ---
 # <a name="use-the-net-sdk-to-initiate-data-transformation"></a>A .NET SDK használata adatátalakítás kezdeményezéséhez
 
@@ -33,7 +33,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
     - Visual Studio 2012, 2013, 2015 vagy 2017.
 
-    - Azure PowerShell. [Töltse le az Azure PowerShellt](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
+    - Azure PowerShell. [Töltse le az Azure PowerShellt](/powershell/azure/).
 *   Egy adott erőforráscsoport StorSimple Data Manager megfelelően konfigurált feladatdefiníció.
 *   Az összes szükséges DLL-fájl. Töltse le ezeket a DLL-eket a [GitHub-adattárból](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls).
 *   [`Get-ConfigurationParams.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1) szkript a GitHub-adattárból.
@@ -65,21 +65,21 @@ Az alábbi lépések végrehajtásával indítson el egy adat-átalakítási fel
     1. Válassza a **Fájl > Új projekt** lehetőséget.
 
         ![1. projekt létrehozása](media/storsimple-data-manager-dotnet-jobs/create-new-project-7.png)        
-    2. Válassza a **telepített > sablonok > Visual C# > Console Application**elemet.
+    2. Válassza a **telepített > sablonok > Visual C# > Console Application** elemet.
     3. Adja **DataTransformationApp** meg a DataTransformationApp **nevet**.
-    4. A **helyhez**válassza a **C:\DataTransformation** lehetőséget.
+    4. A **helyhez** válassza a **C:\DataTransformation** lehetőséget.
     6. A projekt létrehozásához kattintson az **OK** gombra.
 
         ![2. projekt létrehozása](media/storsimple-data-manager-dotnet-jobs/create-new-project-1.png)
 
 4. Most adja hozzá a DLL-fájlok [mappában](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) található összes DLL-t a létrehozott projektben található **hivatkozásként** . A DLL-fájlok hozzáadásához hajtsa végre a következőket:
 
-   1. A Visual Studióban lépjen a **> megoldáskezelő megtekintése**elemre.
+   1. A Visual Studióban lépjen a **> megoldáskezelő megtekintése** elemre.
    2. Kattintson az Adatátalakítási alkalmazás projekt bal oldalán található nyílra. Kattintson a **hivatkozások** elemre, majd kattintson a jobb gombbal a **hivatkozás hozzáadásához**.
     
        ![DLL-fájlok hozzáadása 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-4.png)
 
-   3. Keresse meg a csomagok mappa helyét, jelölje ki az összes dll-fájlt, és kattintson a **Hozzáadás**, majd **az OK**gombra.
+   3. Keresse meg a csomagok mappa helyét, jelölje ki az összes dll-fájlt, és kattintson a **Hozzáadás**, majd **az OK** gombra.
 
        ![DLL-fájlok hozzáadása 2](media/storsimple-data-manager-dotnet-jobs/create-new-project-6.png)
 
@@ -94,7 +94,7 @@ Az alábbi lépések végrehajtásával indítson el egy adat-átalakítási fel
     using Microsoft.Internal.Dms.DmsWebJob.Contracts;
     ```
     
-6. A következő kód inicializálja az Adatátalakítási feladatsort. Adja hozzá ezt a **Main metódushoz**. Cserélje le a konfigurációs paraméterek értékét a korábban beszerzett értékekre. Dugja be az erőforráscsoport- **név** és a **resourcename**értékeit. A **ResourceGroupName** az a StorSimple Data Manager társítva, amelyhez a feladatdefiníció konfigurálva lett. A **resourcename** a StorSimple Data Manager szolgáltatás neve.
+6. A következő kód inicializálja az Adatátalakítási feladatsort. Adja hozzá ezt a **Main metódushoz**. Cserélje le a konfigurációs paraméterek értékét a korábban beszerzett értékekre. Dugja be az erőforráscsoport- **név** és a **resourcename** értékeit. A **ResourceGroupName** az a StorSimple Data Manager társítva, amelyhez a feladatdefiníció konfigurálva lett. A **resourcename** a StorSimple Data Manager szolgáltatás neve.
 
     ```
     // Setup the configuration parameters.

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: e6002bb7995be1cfd1b2812b765835ff7af924e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6438fb1c21ce248f6e1b766e7e10cc79043db9f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91308537"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961583"
 ---
 # <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>Az Azure Database Migration Service használatára vonatkozó előfeltételek áttekintése
 
@@ -28,11 +28,11 @@ A Azure Database Migration Service használatával kapcsolatos előfeltételek a
 
 Azure Database Migration Service az összes támogatott áttelepítési forgatókönyv esetében gyakori előfeltételek közé tartozik a következők szükségesek:
 
-* Hozzon létre egy Microsoft Azure Virtual Network a Azure Database Migration Service számára a Azure Resource Manager üzemi modell használatával, amely helyek közötti kapcsolatot biztosít a helyszíni forráskiszolgáló számára a [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy a [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)használatával.
-* Győződjön meg arról, hogy a virtuális hálózati hálózati biztonsági csoport (NSG) szabályai nem gátolják meg a következő kommunikációs portokat: 443, 53, 9354, 445, 12000. A Virtual Network NSG-forgalom szűrésével kapcsolatos további információkért tekintse meg a [hálózati forgalom szűrése hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)című cikket.
+* Hozzon létre egy Microsoft Azure Virtual Network a Azure Database Migration Service számára a Azure Resource Manager üzemi modell használatával, amely helyek közötti kapcsolatot biztosít a helyszíni forráskiszolgáló számára a [ExpressRoute](../expressroute/expressroute-introduction.md) vagy a [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)használatával.
+* Győződjön meg arról, hogy a virtuális hálózati hálózati biztonsági csoport (NSG) szabályai nem gátolják meg a következő kommunikációs portokat: 443, 53, 9354, 445, 12000. A Virtual Network NSG-forgalom szűrésével kapcsolatos további információkért tekintse meg a [hálózati forgalom szűrése hálózati biztonsági csoportokkal](../virtual-network/virtual-network-vnet-plan-design-arm.md)című cikket.
 * Ha a forrásadatbázis (ok) előtt tűzfal-berendezést használ, előfordulhat, hogy olyan tűzfalszabályok hozzáadására van szükség, amelyek lehetővé teszik a Azure Database Migration Service számára a forrás-adatbázis (ok) elérését az áttelepítéshez.
-* Konfigurálja a [Windows tűzfalat az adatbázismotorhoz való hozzáféréshez](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
-* Engedélyezze a TCP/IP protokollt, amely az SQL Server Express telepítése során alapértelmezés szerint le van tiltva – kövesse a [Kiszolgálói hálózati protokoll engedélyezése vagy letiltása](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure) cikk utasításait.
+* Konfigurálja a [Windows tűzfalat az adatbázismotorhoz való hozzáféréshez](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
+* Engedélyezze a TCP/IP protokollt, amely az SQL Server Express telepítése során alapértelmezés szerint le van tiltva – kövesse a [Kiszolgálói hálózati protokoll engedélyezése vagy letiltása](/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure) cikk utasításait.
 
     > [!IMPORTANT]
     > Azure Database Migration Service egy példányának létrehozása olyan virtuális hálózati beállításokhoz való hozzáférést igényel, amelyek általában nem azonos erőforráscsoporthoz tartoznak. Ennek eredményeképpen a DMS-példányt létrehozó felhasználónak engedélyre van szüksége az előfizetés szintjén. A szükséges szerepkörök létrehozásához, amelyeket igény szerint hozzárendelhet, futtassa a következő parancsfájlt:
@@ -113,21 +113,21 @@ A Azure Database Migration Service az összes áttelepítési forgatókönyvre v
 
 Ha a Azure Database Migration Service használatával hajtja végre SQL Server Azure SQL Database áttelepítéseket, az összes áttelepítési forgatókönyvhöz közös előfeltételek mellett ügyeljen arra, hogy a következő további előfeltételeket kövesse:
 
-* Hozzon létre egy Azure SQL Database példány példányát, amelyet a [Azure Portalban található Azure SQL Database adatbázis létrehozása](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)című cikkben ismertetett részletek követnek.
+* Hozzon létre egy Azure SQL Database példány példányát, amelyet a [Azure Portalban található Azure SQL Database adatbázis létrehozása](../azure-sql/database/single-database-create-quickstart.md)című cikkben ismertetett részletek követnek.
 * Töltse le a [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) 3.3-as vagy újabb verzióját.
 * Nyissa meg a Windows tűzfalat, és engedélyezze, hogy az Azure Database Migration Service elérhesse a forrásul szolgáló SQL Servert, amely alapértelmezés szerint az 1433-as TCP-porton található.
 * Ha több megnevezett SQL Server-példányt futtat dinamikus portokkal, előnyös lehet engedélyezni az SQL Browser Service-t, és engedélyezni a tűzfalakon keresztül az 1434-es UDP-porthoz való hozzáférést. Így az Azure Database Migration Service a forráskiszolgálón található megnevezett példányhoz férhet hozzá.
-* Hozzon létre egy kiszolgálói szintű [Tűzfalszabály-szabályt](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) a SQL Database számára, hogy lehetővé tegye a Azure Database Migration Service hozzáférést a célként megadott adatbázisokhoz. Adja meg a Azure Database Migration Servicehoz használt virtuális hálózat alhálózati tartományát.
-* Gondoskodjon róla, hogy a forrásként szolgáló SQL Server-példányhoz való kapcsolódáshoz használt hitelesítő adatok rendelkezzenek [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) engedélyekkel.
+* Hozzon létre egy kiszolgálói szintű [Tűzfalszabály-szabályt](../azure-sql/database/firewall-configure.md) a SQL Database számára, hogy lehetővé tegye a Azure Database Migration Service hozzáférést a célként megadott adatbázisokhoz. Adja meg a Azure Database Migration Servicehoz használt virtuális hálózat alhálózati tartományát.
+* Gondoskodjon róla, hogy a forrásként szolgáló SQL Server-példányhoz való kapcsolódáshoz használt hitelesítő adatok rendelkezzenek [CONTROL SERVER](/sql/t-sql/statements/grant-server-permissions-transact-sql) engedélyekkel.
 * Győződjön meg arról, hogy a célként megadott adatbázishoz való kapcsolódáshoz használt hitelesítő adatok rendelkeznek-e az adatbázis VEZÉRLÉSére szolgáló engedéllyel.
 
    > [!NOTE]
-   > A Azure Database Migration Service SQL Serverról Azure SQL Databasere való áttelepítésének végrehajtásához szükséges előfeltételek teljes listáját az oktatóanyag [SQL Server áttelepítése Azure SQL Database](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql)című cikkben tekintheti meg.
+   > A Azure Database Migration Service SQL Serverról Azure SQL Databasere való áttelepítésének végrehajtásához szükséges előfeltételek teljes listáját az oktatóanyag [SQL Server áttelepítése Azure SQL Database](./tutorial-sql-server-to-azure-sql.md)című cikkben tekintheti meg.
    >
 
 ## <a name="prerequisites-for-migrating-sql-server-to-azure-sql-managed-instance"></a>SQL Server áttelepítésének előfeltételei az Azure SQL felügyelt példányaihoz
 
-* Hozzon létre egy felügyelt SQL-példányt a [Azure Portalban az Azure SQL felügyelt példány létrehozása](https://aka.ms/sqldbmi)című cikkben ismertetett részleteket követve.
+* Hozzon létre egy felügyelt SQL-példányt a [Azure Portalban az Azure SQL felügyelt példány létrehozása](../azure-sql/managed-instance/instance-create-quickstart.md)című cikkben ismertetett részleteket követve.
 * Nyissa meg a tűzfalakat, hogy engedélyezze az SMB-forgalmat az 445-as porton a Azure Database Migration Service IP-cím vagy alhálózat-tartomány számára.
 * Nyissa meg a Windows tűzfalat, és engedélyezze, hogy az Azure Database Migration Service elérhesse a forrásul szolgáló SQL Servert, amely alapértelmezés szerint az 1433-as TCP-porton található.
 * Ha több megnevezett SQL Server-példányt futtat dinamikus portokkal, előnyös lehet engedélyezni az SQL Browser Service-t, és engedélyezni a tűzfalakon keresztül az 1434-es UDP-porthoz való hozzáférést. Így az Azure Database Migration Service a forráskiszolgálón található megnevezett példányhoz férhet hozzá.
@@ -135,10 +135,10 @@ Ha a Azure Database Migration Service használatával hajtja végre SQL Server A
 * Hozzon létre egy hálózati megosztást, amelyet az Azure Database Migration Service használhat a forrásként szolgáló adatbázis biztonsági mentésére.
 * Győződjön meg arról, hogy a forrásként szolgáló SQL Server-példányt futtató szolgáltatásfiók írási, a forrásként szolgáló kiszolgáló számítógépes fiókja pedig olvasási és írási jogosultságokkal rendelkezik az Ön által létrehozott hálózati megosztáson.
 * Jegyezzen fel egy olyan Windows-felhasználót (és jelszót), amely teljes körű jogosultságokkal rendelkezik az Ön által korábban létrehozott hálózati megosztáson. A Azure Database Migration Service megszemélyesíti a felhasználói hitelesítő adatokat a biztonságimásolat-fájlok Azure Storage-tárolóba való feltöltéséhez a visszaállítási művelethez.
-* Hozzon létre egy BLOB-tárolót, és kérje le az SAS URI- [t az Azure Blob Storage-erőforrások kezelése Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container)használatával című cikk lépéseit követve. A SAS URI létrehozásakor ügyeljen arra, hogy a házirend ablakban válassza az összes engedély (olvasás, írás, törlés, Listázás) lehetőséget.
+* Hozzon létre egy BLOB-tárolót, és kérje le az SAS URI- [t az Azure Blob Storage-erőforrások kezelése Storage Explorer](../vs-azure-tools-storage-explorer-blobs.md#get-the-sas-for-a-blob-container)használatával című cikk lépéseit követve. A SAS URI létrehozásakor ügyeljen arra, hogy a házirend ablakban válassza az összes engedély (olvasás, írás, törlés, Listázás) lehetőséget.
 
    > [!NOTE]
-   > A SQL Serverról az SQL felügyelt példányra történő áttelepítések végrehajtásához szükséges előfeltételek teljes listáját az oktatóanyag az [SQL felügyelt példányra SQL Server áttelepítése](https://aka.ms/migratetomiusingdms)című témakörben Azure Database Migration Service.
+   > A SQL Serverról az SQL felügyelt példányra történő áttelepítések végrehajtásához szükséges előfeltételek teljes listáját az oktatóanyag az [SQL felügyelt példányra SQL Server áttelepítése](./tutorial-sql-server-to-managed-instance.md)című témakörben Azure Database Migration Service.
 
 ## <a name="next-steps"></a>Következő lépések
 

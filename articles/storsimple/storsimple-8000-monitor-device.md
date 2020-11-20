@@ -6,19 +6,19 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/17/2017
 ms.author: alkohli
-ms.openlocfilehash: 7ffb13912780edcf3d92093e672d1dae983e50a8
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: de4cae90f2cc1223271672d9fc5ba5b42e4409e4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977408"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962433"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>A StorSimple-eszköz figyelése a StorSimple Eszközkezelő szolgáltatással
 
 ## <a name="overview"></a>Áttekintés
 A StorSimple-megoldásban lévő egyes eszközök figyeléséhez használhatja a StorSimple Eszközkezelő szolgáltatást. Létrehozhat egyéni diagramokat az I/O-teljesítmény, a kapacitás kihasználtsága, a hálózati átviteli sebesség és az eszköz teljesítményének mérőszámai alapján, és rögzítheti az irányítópultra. További információért keresse fel a [portál irányítópultjának testreszabása](../azure-portal/azure-portal-dashboards.md)című témakört.
 
-Egy adott eszköz figyelési információinak megtekintéséhez a Azure Portal válassza ki a StorSimple Eszközkezelő szolgáltatást. Az eszközök listájából válassza ki az eszközt, majd lépjen a **figyelés**elemre. Ekkor megtekintheti a kiválasztott eszköz **kapacitását**, **felhasználását**és **teljesítményének** diagramját.
+Egy adott eszköz figyelési információinak megtekintéséhez a Azure Portal válassza ki a StorSimple Eszközkezelő szolgáltatást. Az eszközök listájából válassza ki az eszközt, majd lépjen a **figyelés** elemre. Ekkor megtekintheti a kiválasztott eszköz **kapacitását**, **felhasználását** és **teljesítményének** diagramját.
 
 ## <a name="capacity"></a>Kapacitás
 A **kapacitás** nyomon követi a kiépített területet és az eszközön maradó területet. A fennmaradó kapacitás ezután helyileg rögzítettként vagy lépcsőzetesen jelenik meg.
@@ -139,6 +139,5 @@ A **CPU-kihasználtság** az eszközön használt CPU-ra vonatkozó metrikákat 
 
 
 ## <a name="next-steps"></a>Következő lépések
-* Ismerje meg, hogyan [használhatja a StorSimple Eszközkezelő szolgáltatás-eszköz irányítópultot](storsimple-device-dashboard.md).
-* Ismerje meg, hogyan kezelheti a [StorSimple-eszközt a StorSimple Eszközkezelő szolgáltatással](storsimple-manager-service-administration.md).
-
+* Ismerje meg, hogyan [használhatja a StorSimple Eszközkezelő szolgáltatás-eszköz irányítópultot](./storsimple-8000-device-dashboard.md).
+* Ismerje meg, hogyan kezelheti a [StorSimple-eszközt a StorSimple Eszközkezelő szolgáltatással](./storsimple-8000-manager-service-administration.md).

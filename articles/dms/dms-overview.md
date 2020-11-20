@@ -10,12 +10,12 @@ ms.service: dms
 ms.workload: data-services
 ms.topic: overview
 ms.date: 02/20/2020
-ms.openlocfilehash: 77b121dca4ed5966487268cf47353dc43b7e9a1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 328c29afee3752ecb11b83f22d67f20aa3a2c93e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91292081"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963011"
 ---
 # <a name="what-is-azure-database-migration-service"></a>Mi az Azure Database Migration Service?
 
@@ -23,7 +23,7 @@ A Azure Database Migration Service egy teljes körűen felügyelt szolgáltatás
 
 ## <a name="migrate-databases-to-azure-with-familiar-tools"></a>Adatbázisok migrálása az Azure-ba ismerős eszközökkel
 
-A Azure Database Migration Service a meglévő eszközök és szolgáltatások bizonyos funkcióit integrálja. Egy átfogó, széles körben elérhető megoldást kínál ügyfeleinek. A szolgáltatás a [Data Migration Assistant](https://aka.ms/dma) használatával készít értékelési jelentéseket, amelyek útmutatást nyújtanak az áttelepítés elvégzése előtt szükséges módosítások végrehajtásához. A szükséges szervizelési műveletek elvégzéséhez. Ha készen áll az áttelepítési folyamat megkezdésére, Azure Database Migration Service végrehajtja az összes szükséges lépést. Nyugodtan elindíthatja a migrálási projekteket, amelyeket aztán nem kell nyomon követnie, mivel biztos lehet benne, hogy a folyamat a Microsoft által meghatározott ajánlott eljárásokat használja. 
+A Azure Database Migration Service a meglévő eszközök és szolgáltatások bizonyos funkcióit integrálja. Egy átfogó, széles körben elérhető megoldást kínál ügyfeleinek. A szolgáltatás a [Data Migration Assistant](/sql/dma/dma-overview) használatával készít értékelési jelentéseket, amelyek útmutatást nyújtanak az áttelepítés elvégzése előtt szükséges módosítások végrehajtásához. A szükséges szervizelési műveletek elvégzéséhez. Ha készen áll az áttelepítési folyamat megkezdésére, Azure Database Migration Service végrehajtja az összes szükséges lépést. Nyugodtan elindíthatja a migrálási projekteket, amelyeket aztán nem kell nyomon követnie, mivel biztos lehet benne, hogy a folyamat a Microsoft által meghatározott ajánlott eljárásokat használja. 
 
 > [!NOTE]
 > A Azure Database Migration Service használata az online áttelepítés végrehajtásához a prémium szintű díjszabás alapján kell létrehoznia egy példányt.

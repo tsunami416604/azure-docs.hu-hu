@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: b8f570c2cd5f3939bab0df0c4fefe1becc3c81da
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: bf6e61ef3dfb1c50166cf17168b4deeb21e958d7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893441"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962909"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Gyakori kérdések a Azure Database Migration Service használatáról
 
@@ -32,7 +32,7 @@ A Azure Database Migration Service egy teljes körűen felügyelt szolgáltatás
 * Folyamatos beruházás a súrlódások közötti áttelepítéshez.
 
 **Q. Milyen forrás/cél párokat Azure Database Migration Service jelenleg a támogatás?**
-A szolgáltatás jelenleg számos különböző forrás-, cél-vagy áttelepítési forgatókönyvet támogat. Az egyes elérhető áttelepítési forgatókönyvek állapotának teljes listáját lásd a [Azure Database Migration Service által támogatott áttelepítési forgatókönyvek állapotáról szóló](https://docs.microsoft.com/azure/dms/resource-scenario-status)cikkben.
+A szolgáltatás jelenleg számos különböző forrás-, cél-vagy áttelepítési forgatókönyvet támogat. Az egyes elérhető áttelepítési forgatókönyvek állapotának teljes listáját lásd a [Azure Database Migration Service által támogatott áttelepítési forgatókönyvek állapotáról szóló](./resource-scenario-status.md)cikkben.
 
 Más áttelepítési forgatókönyvek előzetes verzióban érhetők el, és a DMS előzetes verziójának használatával kell benyújtani a jelölést. Az előzetes verzióban elérhető forgatókönyvek teljes listáját és az egyik ajánlatban való részvételre való regisztrációt a [DMS előzetes](https://aka.ms/dms-preview/)verziójának webhelyén tekintheti meg.
 
@@ -58,11 +58,11 @@ Több előfeltétel szükséges annak biztosításához, hogy Azure Database Mig
 
 Azure Database Migration Service az összes támogatott áttelepítési forgatókönyv esetében gyakori előfeltételek közé tartozik a következők szükségesek:
 
-* Hozzon létre egy Microsoft Azure Virtual Network a Azure Database Migration Service számára a Azure Resource Manager üzemi modell használatával, amely helyek közötti kapcsolatot biztosít a helyszíni forráskiszolgáló számára a [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy a [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)használatával.
-* Győződjön meg arról, hogy a virtuális hálózati hálózati biztonsági csoport szabályai nem gátolják meg a következő kommunikációs portokat: 443, 53, 5671-5672, 9350-9354, 445, 12000. A Virtual Network NSG-forgalom szűrésével kapcsolatos további információkért tekintse meg a [hálózati forgalom szűrése hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)című cikket.
+* Hozzon létre egy Microsoft Azure Virtual Network a Azure Database Migration Service számára a Azure Resource Manager üzemi modell használatával, amely helyek közötti kapcsolatot biztosít a helyszíni forráskiszolgáló számára a [ExpressRoute](../expressroute/expressroute-introduction.md) vagy a [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)használatával.
+* Győződjön meg arról, hogy a virtuális hálózati hálózati biztonsági csoport szabályai nem gátolják meg a következő kommunikációs portokat: 443, 53, 5671-5672, 9350-9354, 445, 12000. A Virtual Network NSG-forgalom szűrésével kapcsolatos további információkért tekintse meg a [hálózati forgalom szűrése hálózati biztonsági csoportokkal](../virtual-network/virtual-network-vnet-plan-design-arm.md)című cikket.
 * Ha a forrásadatbázis (ok) előtt tűzfal-berendezést használ, előfordulhat, hogy olyan tűzfalszabályok hozzáadására van szükség, amelyek lehetővé teszik a Azure Database Migration Service számára a forrás-adatbázis (ok) elérését az áttelepítéshez.
 
-Az egyes áttelepítési forgatókönyvek Azure Database Migration Service használatával való versenyéhez szükséges előfeltételek listáját a docs.microsoft.com-ben található Azure Database Migration Service [dokumentációban](https://docs.microsoft.com/azure/dms/dms-overview) találhatja meg a kapcsolódó oktatóanyagokat.
+Az egyes áttelepítési forgatókönyvek Azure Database Migration Service használatával való versenyéhez szükséges előfeltételek listáját a docs.microsoft.com-ben található Azure Database Migration Service [dokumentációban](./dms-overview.md) találhatja meg a kapcsolódó oktatóanyagokat.
 
 **Q. Hogyan megkeresni a Azure Database Migration Service IP-címét, hogy létre tudok hozni egy engedélyezési listát a saját forrás-adatbázis áttelepítéshez való hozzáféréséhez használt tűzfalszabályok számára?**
 Előfordulhat, hogy olyan tűzfalszabályok hozzáadására van szükség, amelyek lehetővé teszik a Azure Database Migration Service számára, hogy hozzáférjenek a forrás-adatbázishoz az áttelepítés során. A szolgáltatás IP-címe dinamikus, de ha a ExpressRoute-t használja, ezt a címet a vállalati hálózat is saját maga rendeli hozzá. A megfelelő IP-cím azonosításának legegyszerűbb módja, ha ugyanazt az erőforráscsoportot tekinti meg, mint a kiépített Azure Database Migration Service erőforrás a társított hálózati adapter megtalálásához. Általában a hálózati adapter erőforrásának neve a NIC előtaggal kezdődik, majd egy egyedi karakter-és számsorozattal, például a NIC-jj6tnztnmarpsskr82rbndyp. A hálózati adapter erőforrásának kiválasztásával megtekintheti azt az IP-címet, amelyet az erőforrás-áttekintés Azure Portal lapon szerepeltetni kell az engedélyezési listán.
@@ -86,7 +86,7 @@ Azt is megadhatja, hogy a SQL Server milyen portot figyel, ha lekérdezi a SQL S
 ```
 
 **Q. Hogyan beállítani a Microsoft Azure Virtual Networkt?**
-Noha több Microsoft-oktatóanyag is van, amely végigvezeti a virtuális hálózat beállításának folyamatán, a hivatalos dokumentáció az [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)cikkben jelenik meg.
+Noha több Microsoft-oktatóanyag is van, amely végigvezeti a virtuális hálózat beállításának folyamatán, a hivatalos dokumentáció az [Azure Virtual Network](../virtual-network/virtual-networks-overview.md)cikkben jelenik meg.
 
 ## <a name="usage"></a>Használat
 
@@ -96,7 +96,7 @@ Egy tipikus, egyszerű adatbázis-áttelepítés során a következőket végezh
 1. Hozzon létre egy céladatbázis (eke) t.
 2. Mérje fel a forrás-adatbázis (oka) t.
     * A homogén áttelepítések esetében a meglévő adatbázis (oka) t a [DMA](https://www.microsoft.com/download/details.aspx?id=53595)használatával értékelheti ki.
-    * Heterogén áttelepítések esetén (a versengő forrásokból) mérje fel a meglévő adatbázis (oka) t a [SSMA](https://aka.ms/get-ssma). A SSMA használatával is konvertálhatja az adatbázis-objektumokat, és áttelepítheti a sémát a célként megadott platformra.
+    * Heterogén áttelepítések esetén (a versengő forrásokból) mérje fel a meglévő adatbázis (oka) t a [SSMA](/sql/ssma/sql-server-migration-assistant). A SSMA használatával is konvertálhatja az adatbázis-objektumokat, és áttelepítheti a sémát a célként megadott platformra.
 3. Hozzon létre egy Azure Database Migration Service-példányt.
 4. Hozzon létre egy áttelepítési projektet, amely meghatározza a forrásadatbázis (oka) t, a célként megadott adatbázist és az áttelepítendő táblákat.
 5. Indítsa el a teljes betöltést.

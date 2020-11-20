@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: e2f9ba27410195b187ad7c8ae39c04a66da4c234
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a35d6449d88620c2ac977ae45584c59f665378bf
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84738702"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960495"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-azure-cli"></a>Az Azure Network Watcher Azure CLI-vel Virtual Network átjáró és kapcsolatok hibáinak megoldása
 
@@ -91,8 +91,8 @@ A parancsmag futtatása után Network Watcher áttekinti az erőforrást az áll
 
 A művelet szövege általános útmutatást nyújt a probléma megoldásához. Ha a probléma megoldására is sor kerül, további útmutatást nyújt a hivatkozáshoz. Abban az esetben, ha nincs további útmutatás, a válasz egy támogatási eset megnyitására szolgáló URL-címet biztosít.  A válasz tulajdonságaival és a benne foglalt információkkal kapcsolatos további információkért tekintse meg [Network Watcher a hibakeresés áttekintése című](network-watcher-troubleshoot-overview.md) témakört.
 
-A fájlok Azure Storage-fiókokból való letöltésével kapcsolatos utasításokért tekintse meg az [Azure Blob Storage használatának első lépései a .NET használatával](../storage/blobs/storage-dotnet-how-to-use-blobs.md)című témakört. Egy másik eszköz is használható Storage Explorer. Storage Explorer további információ a következő hivatkozáson található: [Storage Explorer](https://storageexplorer.com/)
+A fájlok Azure Storage-fiókokból való letöltésével kapcsolatos utasításokért tekintse meg az [Azure Blob Storage használatának első lépései a .NET használatával](../storage/blobs/storage-quickstart-blobs-dotnet.md)című témakört. Egy másik eszköz is használható Storage Explorer. Storage Explorer további információ a következő hivatkozáson található: [Storage Explorer](https://storageexplorer.com/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a beállítások megváltoztak a VPN-kapcsolat leállításakor, tekintse meg a [hálózati biztonsági csoportok kezelése](../virtual-network/manage-network-security-group.md) a hálózati biztonsági csoport és az esetlegesen érintett biztonsági szabályok nyomon követéséhez című témakört.

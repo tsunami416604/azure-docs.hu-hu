@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: alkohli
-ms.openlocfilehash: a56610dd81d6e50da11bbd65bcf0682e399b1783
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c9feb1131f6d2d0eb75ac71e27dc46c226c52c1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84707395"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961056"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>A helyszíni StorSimple-eszköz (3. frissítés vagy újabb) üzembe helyezése
 
@@ -166,7 +166,7 @@ Befejezte az eszköz konfigurálását.
 ## <a name="configure-a-new-storage-account-for-the-service"></a>Új tárfiók konfigurálása a szolgáltatáshoz
 Ez egy opcionális lépés, amelyet csak akkor kell végrehajtania, ha nem engedélyezte a tárfiók automatikus létrehozását a szolgáltatással. A StorSimple-kötettároló létrehozásához Microsoft Azure Storage-fiók szükséges.
 
-Ha az Azure-tárfiókot egy másik régióban szeretné létrehozni, tekintse meg a részletes utasításokat a [Tudnivalók az Azure Storage-fiókokról](../storage/common/storage-create-storage-account.md) című szakaszban.
+Ha az Azure-tárfiókot egy másik régióban szeretné létrehozni, tekintse meg a részletes utasításokat a [Tudnivalók az Azure Storage-fiókokról](../storage/common/storage-account-create.md) című szakaszban.
 
 Hajtsa végre a következő lépéseket az Azure Portal **StorSimple-eszközkezelő szolgáltatás** lapján.
 
@@ -204,7 +204,6 @@ A sztereó csatlakozó hegye PIN 3 RX-nek, a közepe PIN 2 TX-nek, az alapja ped
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A StorSimple Cloud Appliance konfigurálása](storsimple-8000-cloud-appliance-u2.md).
 * [A StorSimple-eszközt a StorSimple-eszközkezelő szolgáltatás segítségével kezelheti.](storsimple-8000-manager-service-administration.md)
-

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: reference
 ms.date: 01/08/2020
-ms.openlocfilehash: 5839de1fde8e4a4d5e661d232ae91099a9483bcb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae036b7d893eb268ea55026054bf364dad0b610e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91291571"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961549"
 ---
 # <a name="network-topologies-for-azure-sql-managed-instance-migrations-using-azure-database-migration-service"></a>Hálózati topológiák az Azure SQL felügyelt példányainak Azure Database Migration Service használatával történő áttelepítéséhez
 
@@ -32,7 +32,7 @@ Akkor használja ezt a topológiát, ha az Azure SQL felügyelt példánya a hel
 **Követelmények**
 
 - Ebben az esetben az SQL felügyelt példánya és a Azure Database Migration Service példány ugyanabban a Microsoft Azure Virtual Networkban jön létre, de különböző alhálózatokat használ.  
-- Az ebben a forgatókönyvben használt virtuális hálózat a helyszíni hálózathoz is csatlakozik a [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy a [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)használatával.
+- Az ebben a forgatókönyvben használt virtuális hálózat a helyszíni hálózathoz is csatlakozik a [ExpressRoute](../expressroute/expressroute-introduction.md) vagy a [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)használatával.
 
 ## <a name="sql-managed-instance-isolated-from-the-on-premises-network"></a>A helyszíni hálózatból elkülönített SQL felügyelt példány
 
@@ -46,8 +46,8 @@ Akkor használja ezt a hálózati topológiát, ha a környezete a következő e
 
 **Követelmények**
 
-- Az ehhez a forgatókönyvhöz Azure Database Migration Service használt virtuális hálózatnak a (vagy a VPN) használatával is csatlakoznia kell a helyszíni https://docs.microsoft.com/azure/expressroute/expressroute-introduction) hálózathoz [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
-- Állítsa be a [VNet hálózati](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) társítást a felügyelt SQL-példányhoz használt virtuális hálózat és a Azure Database Migration Service között.
+- Az ehhez a forgatókönyvhöz Azure Database Migration Service használt virtuális hálózatnak a (vagy a VPN) használatával is csatlakoznia kell a helyszíni https://docs.microsoft.com/azure/expressroute/expressroute-introduction) hálózathoz [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md).
+- Állítsa be a [VNet hálózati](../virtual-network/virtual-network-peering-overview.md) társítást a felügyelt SQL-példányhoz használt virtuális hálózat és a Azure Database Migration Service között.
 
 ## <a name="cloud-to-cloud-migrations-shared-virtual-network"></a>Felhőből felhőbe történő Migrálás: megosztott virtuális hálózat
 
@@ -71,7 +71,7 @@ Akkor használja ezt a hálózati topológiát, ha a környezete a következő e
 
 **Követelmények**
 
-- Állítsa be a [VNet hálózati](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) társítást a felügyelt SQL-példányhoz használt virtuális hálózat és a Azure Database Migration Service között.
+- Állítsa be a [VNet hálózati](../virtual-network/virtual-network-peering-overview.md) társítást a felügyelt SQL-példányhoz használt virtuális hálózat és a Azure Database Migration Service között.
 
 ## <a name="inbound-security-rules"></a>Bejövő biztonsági szabály
 
@@ -85,16 +85,16 @@ Akkor használja ezt a hálózati topológiát, ha a környezete a következő e
 |---------------------------|-------------------------------------------------------|--------------|------------|---------------------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | felügyelet                | 443, 9354                                              | TCP          | Bármelyik        | Bármelyik                       | Engedélyezés      | A felügyeleti sík Service Bus és az Azure Blob Storage szolgáltatáson keresztül kommunikál. <br/>(Ha a Microsoft-társak engedélyezve vannak, előfordulhat, hogy nincs szüksége erre a szabályra.)                                                             |
 | Diagnosztika               | 12000                                                 | TCP          | Bármelyik        | Bármelyik                       | Engedélyezés      | A DMS ezt a szabályt használja a diagnosztikai adatok gyűjtéséhez hibaelhárítási célból.                                                                                                                      |
-| SQL-forráskiszolgáló         | 1433 (vagy TCP IP-port, amelyet a SQL Server figyel) | TCP          | Bármelyik        | A helyszíni címtér | Engedélyezés      | SQL Serveri forrás kapcsolódás a DMS-ből <br/>(Ha helyek közötti kapcsolattal rendelkezik, előfordulhat, hogy nincs szüksége erre a szabályra.)                                                                                       |
-| Megnevezett példány SQL Server | 1434                                                  | UDP          | Bármelyik        | A helyszíni címtér | Engedélyezés      | SQL Server megnevezett példány forrásának kapcsolata a DMS-ből <br/>(Ha helyek közötti kapcsolattal rendelkezik, előfordulhat, hogy nincs szüksége erre a szabályra.)                                                                        |
-| SMB-megosztás                 | 445                                                   | TCP          | Bármelyik        | A helyszíni címtér | Engedélyezés      | SMB hálózati megosztás a DMS-hez az adatbázis biztonsági mentési fájljainak áttelepítéséhez az Azure-beli virtuális gépen Azure SQL Database a MI és az SQL Server rendszerre <br/>(Ha helyek közötti kapcsolattal rendelkezik, előfordulhat, hogy nincs szüksége erre a szabályra). |
+| SQL-forráskiszolgáló         | 1433 (vagy TCP IP-port, amelyet a SQL Server figyel) | TCP          | Bármely        | A helyszíni címtér | Engedélyezés      | SQL Serveri forrás kapcsolódás a DMS-ből <br/>(Ha helyek közötti kapcsolattal rendelkezik, előfordulhat, hogy nincs szüksége erre a szabályra.)                                                                                       |
+| Megnevezett példány SQL Server | 1434                                                  | UDP          | Bármely        | A helyszíni címtér | Engedélyezés      | SQL Server megnevezett példány forrásának kapcsolata a DMS-ből <br/>(Ha helyek közötti kapcsolattal rendelkezik, előfordulhat, hogy nincs szüksége erre a szabályra.)                                                                        |
+| SMB-megosztás                 | 445                                                   | TCP          | Bármely        | A helyszíni címtér | Engedélyezés      | SMB hálózati megosztás a DMS-hez az adatbázis biztonsági mentési fájljainak áttelepítéséhez az Azure-beli virtuális gépen Azure SQL Database a MI és az SQL Server rendszerre <br/>(Ha helyek közötti kapcsolattal rendelkezik, előfordulhat, hogy nincs szüksége erre a szabályra). |
 | DMS_subnet                | Bármelyik                                                   | Bármelyik          | Bármelyik        | DMS_Subnet                | Engedélyezés      |                                                                                                                                                                                                  |
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
-- [SQL Server migrálása SQL felügyelt példányra](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance)
-- [A Azure Database Migration Service használatának előfeltételeinek áttekintése](https://docs.microsoft.com/azure/dms/pre-reqs)
-- [Virtuális hálózat létrehozása az Azure Portallal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+- [SQL Server migrálása SQL felügyelt példányra](./tutorial-sql-server-to-managed-instance.md)
+- [A Azure Database Migration Service használatának előfeltételeinek áttekintése](./pre-reqs.md)
+- [Virtuális hálózat létrehozása az Azure Portallal](../virtual-network/quick-create-portal.md)
 
 ## <a name="next-steps"></a>Következő lépések
 

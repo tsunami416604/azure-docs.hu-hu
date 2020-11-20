@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 156da7504a1a5e2a704e52a783fcd3e437a59867
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2efd3e9c9ca97ea3d94b03bd5e440cd24d5da5da
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986266"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960582"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>A virtuális gép biztonságának elemzése a biztonsági csoport nézetben REST API használatával
 
@@ -27,7 +27,7 @@ ms.locfileid: "90986266"
 > - [REST API](network-watcher-security-group-view-rest.md)
 
 > [!NOTE]
-> A biztonsági csoport nézetének API-ját már nem tartja karban, és hamarosan elavulttá válik. Használja az [érvényes biztonsági szabályok funkciót](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview) , amely ugyanazokat a funkciókat biztosítja. 
+> A biztonsági csoport nézetének API-ját már nem tartja karban, és hamarosan elavulttá válik. Használja az [érvényes biztonsági szabályok funkciót](./network-watcher-security-group-view-overview.md) , amely ugyanazokat a funkciókat biztosítja. 
 
 A biztonsági csoport nézet a virtuális gépekre alkalmazott konfigurált és érvényes hálózati biztonsági szabályokat adja vissza. Ez a képesség hasznos lehet a hálózati biztonsági csoportok és a virtuális gépen konfigurált szabályok naplózására és diagnosztizálására, hogy a forgalom megfelelő engedélyezése vagy elutasítása sikeres legyen. Ebben a cikkben bemutatjuk, hogyan kérhető le a hatályos és alkalmazott biztonsági szabályok egy virtuális gépre REST API használatával
 
@@ -40,7 +40,7 @@ Ebben az esetben a Network Watcher REST API-t hívja meg egy virtuális gép biz
 
 Ez a forgatókönyv feltételezi, hogy már követte a [Network Watcher létrehozása](network-watcher-create.md) című témakör lépéseit Network Watcher létrehozásához. A forgatókönyv azt is feltételezi, hogy egy érvényes virtuális géppel rendelkező erőforráscsoport használatban van.
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Használati eset
 
 A cikkben ismertetett forgatókönyv az adott virtuális gép hatályos és alkalmazott biztonsági szabályait kérdezi le.
 
@@ -115,7 +115,7 @@ armclient post "https://management.azure.com/subscriptions/${subscriptionId}/Res
 
 ## <a name="view-the-response"></a>Válasz megtekintése
 
-Az alábbi példa az előző parancs válaszát adja vissza. Az eredmények a virtuális gép összes hatályos és alkalmazott biztonsági szabályát megjelenítik a **NetworkInterfaceSecurityRules**, a **DefaultSecurityRules**és a **EffectiveSecurityRules**csoportokban lebontva.
+Az alábbi példa az előző parancs válaszát adja vissza. Az eredmények a virtuális gép összes hatályos és alkalmazott biztonsági szabályát megjelenítik a **NetworkInterfaceSecurityRules**, a **DefaultSecurityRules** és a **EffectiveSecurityRules** csoportokban lebontva.
 
 ```json
 
@@ -186,5 +186,3 @@ Az alábbi példa az előző parancs válaszát adja vissza. Az eredmények a vi
 ## <a name="next-steps"></a>Következő lépések
 
 A hálózati biztonsági csoportok érvényesítésének automatizálásához látogasson el [Network Watcher a hálózati biztonsági csoportok (NSG) naplózása](network-watcher-security-group-view-powershell.md) című témakörre.
-
-

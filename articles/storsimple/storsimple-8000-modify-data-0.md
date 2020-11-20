@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
-ms.openlocfilehash: 1d5d57cab9906c04c5c207fa7df2d2fae6f749e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 85d7114f419266124d0d23368b24700af025758a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514606"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961039"
 ---
 # <a name="modify-the-data-0-network-interface-settings-on-your-storsimple-8000-series-device"></a>Módosítsa az adat0 hálózati adapter beállításait a StorSimple 8000 Series eszközön
 
@@ -38,7 +38,7 @@ Az oktatóanyag elolvasása után a következőket teheti:
 A 0. hálózati beállítások újrakonfigurálásához csatlakozzon a StorSimple eszköz Windows PowerShell-felületéhez, és indítsa el a telepítővarázsló munkamenetét. Az adatok 0 beállításainak módosításához hajtsa végre a következő lépéseket:
 
 #### <a name="to-modify-data-0-network-settings-through-setup-wizard"></a>Az adat0 hálózati beállítások módosítása a telepítővarázsló segítségével
-1. A soros konzol menüjében válassza az 1. lehetőséget, majd **Jelentkezzen be a teljes hozzáférés**lehetőséggel. Amikor a rendszer kéri, adja meg az **eszköz rendszergazdai jelszavát**. Az alapértelmezett jelszó: `Password1` .
+1. A soros konzol menüjében válassza az 1. lehetőséget, majd **Jelentkezzen be a teljes hozzáférés** lehetőséggel. Amikor a rendszer kéri, adja meg az **eszköz rendszergazdai jelszavát**. Az alapértelmezett jelszó: `Password1` .
 2. A parancssorba írja be a következőt:
    
     `Invoke-HcsSetupWizard`
@@ -51,7 +51,7 @@ A 0. hálózati beállítások újrakonfigurálásához csatlakozzon a StorSimpl
 Az adat0 hálózati adapter újrakonfigurálásának másik módja a `Set-HcsNetInterface` parancsmag használata. A parancsmagot a rendszer a StorSimple-eszköz Windows PowerShell felületéről hajtja végre. Ha ezt az eljárást használja, a vezérlő rögzített IP-címei is konfigurálhatók itt. Az adatok 0 beállítások módosításához hajtsa végre a következő lépéseket: 
 
 #### <a name="to-modify-data-0-network-settings-through-the-set-hcsnetinterface-cmdlet"></a>Az adat0 hálózati beállítások módosítása a Set-HcsNetInterface parancsmaggal
-1. A soros konzol menüjében válassza az 1. lehetőséget, majd **Jelentkezzen be a teljes hozzáférés**lehetőséggel. Amikor a rendszer kéri, adja meg az eszköz rendszergazdai jelszavát. Az alapértelmezett jelszó: `Password1` .
+1. A soros konzol menüjében válassza az 1. lehetőséget, majd **Jelentkezzen be a teljes hozzáférés** lehetőséggel. Amikor a rendszer kéri, adja meg az eszköz rendszergazdai jelszavát. Az alapértelmezett jelszó: `Password1` .
 2. A parancssorba írja be a következőt:
    
     `Set-HCSNetInterface -InterfaceAlias Data0 -IPv4Address <> -IPv4Netmask <> -IPv4Gateway <> -Controller0IPv4Address <> -Controller1IPv4Address <> -IsiScsiEnabled 1 -IsCloudEnabled 1`
@@ -64,9 +64,8 @@ Az adat0 hálózati adapter újrakonfigurálásának másik módja a `Set-HcsNet
    * A 0. vezérlő rögzített IPv4-címe
    * Az 1. vezérlő rögzített IPv4-címe
      
-     A parancsmag használatával kapcsolatos további információkért látogasson el [Windows PowerShell StorSimple-bővítménye parancsmag-referenciára](https://technet.microsoft.com/library/dn688161.aspx).
+     A parancsmag használatával kapcsolatos további információkért látogasson el [Windows PowerShell StorSimple-bővítménye parancsmag-referenciára](/previous-versions/windows/powershell-scripting/dn688161(v=wps.630)).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A nem az adat0 hálózati adapterek konfigurálásához használhatja a [Azure Portal hálózati beállításait](storsimple-8000-modify-device-config.md). 
-* Ha a hálózati adapterek konfigurálása során problémákba ütközik, tekintse meg az [üzembe helyezési problémák elhárítása](storsimple-troubleshoot-deployment.md)című témakört.
-
+* Ha a hálózati adapterek konfigurálása során problémákba ütközik, tekintse meg az [üzembe helyezési problémák elhárítása](./storsimple-8000-troubleshoot-deployment.md)című témakört.

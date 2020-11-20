@@ -11,19 +11,19 @@ ms.author: nigup
 author: nishankgu
 ms.date: 11/09/2020
 ms.custom: how-to, seodec18, devx-track-azurecli, contperfq2
-ms.openlocfilehash: dd8eff01cd52f8d80eb56f3a1ebe924763c8b70c
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 6cd4bbec89e955c398f7cb6e37ba5c3dcc6427ea
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441699"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961226"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning-munkaterülethez való hozzáférés kezelése
 
 Ebből a cikkből megtudhatja, hogyan kezelheti a hozzáférés (Engedélyezés) Azure Machine Learning munkaterületre. Az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md) az Azure-erőforrásokhoz való hozzáférés kezelésére szolgál, például új erőforrások létrehozására vagy a meglévők használatára. A Azure Active Directoryban (Azure AD) lévő felhasználók meghatározott szerepköröket kapnak, amelyek hozzáférést biztosítanak az erőforrásokhoz. Az Azure beépített szerepköröket és egyéni szerepkörök létrehozását is lehetővé teszi.
 
 > [!TIP]
-> Ez a cikk a Azure Machine Learningre összpontosít, és az Azure ML-re támaszkodó egyes szolgáltatások biztosítják a saját RBAC-beállításait. A cikkben szereplő információk alapján például beállíthatja, hogy kik küldhetnek pontozási kérelmeket webszolgáltatásként üzembe helyezett modellbe az Azure Kubernetes szolgáltatásban. Az Azure Kubernetes szolgáltatás azonban saját Azure RBAC-szerepköröket is biztosít. A szolgáltatással kapcsolatos olyan RBAC, amelyek hasznosak lehetnek a Azure Machine Learninghoz, tekintse meg az alábbi hivatkozásokat:
+> Ez a cikk a Azure Machine Learningre összpontosít, és az Azure ML-re támaszkodó egyes szolgáltatások biztosítják a saját RBAC-beállításait. A cikkben szereplő információk alapján például beállíthatja, hogy kik küldhetnek pontozási kérelmeket webszolgáltatásként üzembe helyezett modellbe az Azure Kubernetes szolgáltatásban. Az Azure Kubernetes szolgáltatás azonban saját Azure-szerepköröket is biztosít. A szolgáltatással kapcsolatos olyan RBAC, amelyek hasznosak lehetnek a Azure Machine Learninghoz, tekintse meg az alábbi hivatkozásokat:
 >
 > * [Az Azure Kubernetes-fürt erőforrásaihoz való hozzáférés szabályozása](../aks/azure-ad-rbac.md)
 > * [Az Azure RBAC használata az Kubernetes-hitelesítéshez](../aks/manage-azure-rbac.md)
@@ -467,7 +467,7 @@ Lehetővé teszi, hogy csak az adat címkézésére szolgáló szerepkört defin
 
 - Időnként akár 1 órát is igénybe vehet, amíg az új szerepkör-hozzárendelések érvénybe lépnek a gyorsítótárban tárolt engedélyekkel szemben a veremben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Vállalati biztonság áttekintése](concept-enterprise-security.md)
 - [Virtual Network elkülönítés és Adatvédelem – áttekintés](how-to-network-security-overview.md)

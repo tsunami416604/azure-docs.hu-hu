@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 3b9a94f7f9f64426374a5ea349b3653d837fc1ac
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: a9ac4830d11aa3360a272ac1feb167eb20c26c9a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92494446"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962620"
 ---
 # <a name="online-migration-issues--limitations-to-azure-db-for-mysql-with-azure-database-migration-service"></a>Az online áttelepítéssel kapcsolatos problémák & a MySQL-hez készült Azure-ADATBÁZISra vonatkozó korlátozásokat Azure Database Migration Service
 
@@ -118,7 +118,7 @@ Ha az AWS RDS MySQL-ről a Azure Database for MySQLra próbál online áttelepí
 
   **Korlátozás**: Ez a hiba akkor fordul elő, ha a cél Azure Database for MySQL-adatbázis nem rendelkezik a szükséges sémával. A séma áttelepítése szükséges ahhoz, hogy lehetővé váljon az adatáttelepítés a célhelyre.
 
-  **Áthidaló megoldás**: [telepítse át a sémát](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#migrate-the-sample-schema) a forrás adatbázisából a céladatbázisbe.
+  **Áthidaló megoldás**: [telepítse át a sémát](./tutorial-mysql-azure-mysql-online.md#migrate-the-sample-schema) a forrás adatbázisából a céladatbázisbe.
 
 ## <a name="other-limitations"></a>Egyéb korlátozások
 
@@ -136,7 +136,7 @@ Ha az AWS RDS MySQL-ről a Azure Database for MySQLra próbál online áttelepí
 
 - Azure Database Migration Service az egyetlen áttelepítési tevékenységben az áttelepítéshez szükséges adatbázisok korlátja négy.
 
-- Az Azure DMS nem támogatja a lépcsőzetes hivatkozási műveletet, amely segít automatikusan törölni vagy frissíteni a gyermektábla egyező sorát, amikor egy sort törölnek vagy frissítenek a fölérendelt táblában. További információ a MySQL dokumentációjában található a [FOREIGN Key megkötések](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)című cikk hivatkozási műveletek című szakasza. Az Azure DMS-nek szüksége van arra, hogy a kezdeti adatterhelés során dobja el a külső kulcsra vonatkozó korlátozásokat a célként megadott adatbázis-kiszolgálón, és nem használhat hivatkozási műveleteket. Ha a számítási feladat a kapcsolódó alárendelt tábla ezen hivatkozási művelettel való frissítésének függvénye, akkor azt javasoljuk, hogy ehelyett végezzen el egy [memóriaképet és egy visszaállítást](https://docs.microsoft.com/azure/mysql/concepts-migrate-dump-restore) . 
+- Az Azure DMS nem támogatja a lépcsőzetes hivatkozási műveletet, amely segít automatikusan törölni vagy frissíteni a gyermektábla egyező sorát, amikor egy sort törölnek vagy frissítenek a fölérendelt táblában. További információ a MySQL dokumentációjában található a [FOREIGN Key megkötések](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)című cikk hivatkozási műveletek című szakasza. Az Azure DMS-nek szüksége van arra, hogy a kezdeti adatterhelés során dobja el a külső kulcsra vonatkozó korlátozásokat a célként megadott adatbázis-kiszolgálón, és nem használhat hivatkozási műveleteket. Ha a számítási feladat a kapcsolódó alárendelt tábla ezen hivatkozási művelettel való frissítésének függvénye, akkor azt javasoljuk, hogy ehelyett végezzen el egy [memóriaképet és egy visszaállítást](../mysql/concepts-migrate-dump-restore.md) . 
 
 - **Hiba:** A sor mérete túl nagy (> 8126). Egyes oszlopok SZÖVEGre vagy BLOBra való módosítása segíthet. Az aktuális sor formátumában 0 bájtos BLOB-előtag van tárolva.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 69fe84d6546e3fcb9e905a6b77ad3d9af3ed4d51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2da4ebfa6a9ce64b03e6e1d29956f740f6cb3c1b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87077951"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960610"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-powershell"></a>A virtuális gép biztonságának elemzése a biztonsági csoport nézetben a PowerShell használatával
 
@@ -27,7 +27,7 @@ ms.locfileid: "87077951"
 > - [REST API](network-watcher-security-group-view-rest.md)
 
 > [!NOTE]
-> A biztonsági csoport nézetének API-ját már nem tartja karban, és hamarosan elavulttá válik. Használja az [érvényes biztonsági szabályok funkciót](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview) , amely ugyanazokat a funkciókat biztosítja. 
+> A biztonsági csoport nézetének API-ját már nem tartja karban, és hamarosan elavulttá válik. Használja az [érvényes biztonsági szabályok funkciót](./network-watcher-security-group-view-overview.md) , amely ugyanazokat a funkciókat biztosítja. 
 
 A biztonsági csoport nézet a virtuális gépekre alkalmazott konfigurált és érvényes hálózati biztonsági szabályokat adja vissza. Ez a képesség hasznos lehet a hálózati biztonsági csoportok és a virtuális gépen konfigurált szabályok naplózására és diagnosztizálására, hogy a forgalom megfelelő engedélyezése vagy elutasítása sikeres legyen. Ebben a cikkben bemutatjuk, hogyan kérheti le a konfigurált és érvényes biztonsági szabályokat egy virtuális gépre a PowerShell használatával
 
@@ -40,7 +40,7 @@ Ebben az esetben a `Get-AzNetworkWatcherSecurityGroupView` parancsmagot futtatva
 
 Ez a forgatókönyv feltételezi, hogy már követte a [Network Watcher létrehozása](network-watcher-create.md) című témakör lépéseit Network Watcher létrehozásához.
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Használati eset
 
 A cikkben ismertetett forgatókönyv egy adott virtuális gép konfigurált és érvényes biztonsági szabályait kérdezi le.
 
@@ -70,7 +70,7 @@ $secgroup = Get-AzNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatche
 
 ## <a name="viewing-the-results"></a>Az eredmények megtekintése
 
-Az alábbi példa a visszaadott eredmények rövidített válasza. Az eredmények a virtuális gép összes hatályos és alkalmazott biztonsági szabályát megjelenítik a **NetworkInterfaceSecurityRules**, a **DefaultSecurityRules**és a **EffectiveSecurityRules**csoportokban lebontva.
+Az alábbi példa a visszaadott eredmények rövidített válasza. Az eredmények a virtuális gép összes hatályos és alkalmazott biztonsági szabályát megjelenítik a **NetworkInterfaceSecurityRules**, a **DefaultSecurityRules** és a **EffectiveSecurityRules** csoportokban lebontva.
 
 ```
 NetworkInterfaces : [
@@ -129,8 +129,6 @@ NetworkInterfaces : [
                     ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A hálózati biztonsági csoportok érvényesítésének automatizálásához látogasson el [Network Watcher a hálózati biztonsági csoportok (NSG) naplózása](network-watcher-nsg-auditing-powershell.md) című témakörre.
-
-

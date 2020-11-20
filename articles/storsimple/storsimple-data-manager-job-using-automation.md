@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: f13e402344111dea28514ed7b0d381b46ff73064
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d0103857b6f759560129dbe8e693ec6c0d7291e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743607"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961209"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>Az Azure Automation használata feladat indításához
 
@@ -26,7 +26,7 @@ Ez a cikk részletesen ismerteti, hogyan hozhat létre Azure Automation runbook,
 
 Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
-*   Azure PowerShell telepítve van az ügyfélszámítógépen. [Azure PowerShell letöltése](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps).
+*   Azure PowerShell telepítve van az ügyfélszámítógépen. [Azure PowerShell letöltése](/powershell/azure/azurerm/install-azurerm-ps).
 *   Egy adott erőforráscsoport egy StorSimple Data Manager szolgáltatásának megfelelően konfigurált feladatdefiníció.
 *   Töltse le  [`DataTransformationApp.zip`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/raw/master/Azure%20Automation%20For%20Data%20Manager/DataTransformationApp.zip) a fájlt a GitHub-adattárból. 
 *   [`Trigger-DataTransformation-Job.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Azure%20Automation%20For%20Data%20Manager/Trigger-DataTransformation-Job.ps1)Parancsfájl letöltése a GitHub-adattárból.
@@ -35,11 +35,11 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
 ### <a name="set-up-the-automation-account"></a>Az Automation-fiók beállítása
 
-1. Hozzon létre egy Azure-beli futtató Automation-fiókot a Azure Portal. Ehhez lépjen az **Azure marketplace > minden** elemre, és keressen rá az **automatizálás**kifejezésre. Válassza az **Automation-fiókok**lehetőséget.
+1. Hozzon létre egy Azure-beli futtató Automation-fiókot a Azure Portal. Ehhez lépjen az **Azure marketplace > minden** elemre, és keressen rá az **automatizálás** kifejezésre. Válassza az **Automation-fiókok** lehetőséget.
 
     ![Futtató Automation-fiók létrehozása](./media/storsimple-data-manager-job-using-automation/search-automation-account1.png)
 
-2. Új Automation-fiók hozzáadásához kattintson a **+ Hozzáadás**gombra.
+2. Új Automation-fiók hozzáadásához kattintson a **+ Hozzáadás** gombra.
 
     ![Futtató Automation-fiók létrehozása 2](./media/storsimple-data-manager-job-using-automation/add-automation-account1.png)
 
@@ -50,7 +50,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik az alábbiakkal:
    3. Hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévő erőforráscsoportot.
    4. Válasszon egy **helyet**.
    5. Hagyja bejelölve az alapértelmezett **futtató fiók létrehozása** lehetőséget.
-   6. Az irányítópulton való gyors hozzáférésre mutató hivatkozás beszerzéséhez tekintse meg a **rögzítés az irányítópulton**lehetőséget. Kattintson a **Létrehozás** lehetőségre.
+   6. Az irányítópulton való gyors hozzáférésre mutató hivatkozás beszerzéséhez tekintse meg a **rögzítés az irányítópulton** lehetőséget. Kattintson a **Létrehozás** gombra.
 
       ![3. futtató Automation-fiók létrehozása](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
     
@@ -58,9 +58,9 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik az alábbiakkal:
     
       ![Az Automation-fiók üzembe helyezésére vonatkozó értesítés](./media/storsimple-data-manager-job-using-automation/deployment-automation-account-notification1.png)
 
-      További információért nyissa meg a [futtató fiók létrehozása](../automation/automation-create-runas-account.md)című témakört.
+      További információért nyissa meg a [futtató fiók létrehozása](../automation/manage-runas-account.md)című témakört.
 
-3. Az újonnan létrehozott fiókban nyissa meg a **megosztott erőforrások > modulokat** , és kattintson a **+ modul hozzáadása**lehetőségre.
+3. Az újonnan létrehozott fiókban nyissa meg a **megosztott erőforrások > modulokat** , és kattintson a **+ modul hozzáadása** lehetőségre.
 
     ![1. modul importálása](./media/storsimple-data-manager-job-using-automation/import-module-1.png)
 
@@ -72,7 +72,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
    ![4. modul importálása](./media/storsimple-data-manager-job-using-automation/import-module-4.png)
 
-5. Értesítést kap arról, hogy a modul üzembe helyezése folyamatban van, és egy másik értesítés a folyamat befejezésekor.  A **modulok** állapota **elérhető**értékre változik.
+5. Értesítést kap arról, hogy a modul üzembe helyezése folyamatban van, és egy másik értesítés a folyamat befejezésekor.  A **modulok** állapota **elérhető** értékre változik.
 
     ![5. modul importálása](./media/storsimple-data-manager-job-using-automation/import-module-5.png)
 
@@ -80,13 +80,13 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
 Az alábbi lépések végrehajtásával importálhatja, közzéteheti és futtathatja a runbook a feladatdefiníció elindításához.
 
-1. Az Azure Portalon nyissa meg az Automation-fiókját. Nyissa meg a **Process Automation > runbookok** , és kattintson **a + runbook hozzáadása**elemre.
+1. Az Azure Portalon nyissa meg az Automation-fiókját. Nyissa meg a **Process Automation > runbookok** , és kattintson **a + runbook hozzáadása** elemre.
 
     ![1. runbook hozzáadása](./media/storsimple-data-manager-job-using-automation/add-runbook-1.png)
 
-2. A **Runbook hozzáadása**területen kattintson a **meglévő runbook importálása**elemre.
+2. A **Runbook hozzáadása** területen kattintson a **meglévő runbook importálása** elemre.
 
-3. Mutasson a `Trigger-DataTransformation-Job.ps1` **Runbook fájl**Azure PowerShell parancsfájlra. A runbook típusa automatikusan ki van választva. Adja meg a runbook nevét és leírását (nem kötelező). Kattintson a **Létrehozás** lehetőségre.
+3. Mutasson a `Trigger-DataTransformation-Job.ps1` **Runbook fájl** Azure PowerShell parancsfájlra. A runbook típusa automatikusan ki van választva. Adja meg a runbook nevét és leírását (nem kötelező). Kattintson a **Létrehozás** gombra.
 
     ![2. runbook hozzáadása](./media/storsimple-data-manager-job-using-automation/add-runbook-2.png)
 
@@ -98,7 +98,7 @@ Az alábbi lépések végrehajtásával importálhatja, közzéteheti és futtat
 
     ![4. runbook hozzáadása](./media/storsimple-data-manager-job-using-automation/add-runbook-4.png)
 
-6. Adja meg a paramétereket, például a StorSimple Data Manager szolgáltatás nevét, a társított erőforráscsoportot és a feladatdefiníció nevét. **Indítsa el** a tesztet. A jelentés a Futtatás befejezésekor jön létre. További információért látogasson el a [runbook tesztelésének](../automation/automation-first-runbook-textual-powershell.md#step-3---test-the-runbook)módjára.
+6. Adja meg a paramétereket, például a StorSimple Data Manager szolgáltatás nevét, a társított erőforráscsoportot és a feladatdefiníció nevét. **Indítsa el** a tesztet. A jelentés a Futtatás befejezésekor jön létre. További információért látogasson el a [runbook tesztelésének](../automation/learn/automation-tutorial-runbook-textual-powershell.md#step-3---test-the-runbook)módjára.
 
     ![Runbook hozzáadása 8](./media/storsimple-data-manager-job-using-automation/add-runbook-8.png)    
 
@@ -110,7 +110,7 @@ Az alábbi lépések végrehajtásával importálhatja, közzéteheti és futtat
 
     ![7. runbook hozzáadása](./media/storsimple-data-manager-job-using-automation/add-runbook-7.png)
 
-9. **Indítsa el** a runbook. A **Start runbook**mezőben adja meg az összes paramétert. Az Adatátalakítási feladatok elküldéséhez és elindításához kattintson **az OK** gombra.
+9. **Indítsa el** a runbook. A **Start runbook** mezőben adja meg az összes paramétert. Az Adatátalakítási feladatok elküldéséhez és elindításához kattintson **az OK** gombra.
 
 10. A Azure Portalben a feladat előrehaladásának figyeléséhez lépjen a **feladatok** elemre a StorSimple Data Manager szolgáltatásban. Válassza ki, majd kattintson a feladatra a feladatok részleteinek megtekintéséhez.
 

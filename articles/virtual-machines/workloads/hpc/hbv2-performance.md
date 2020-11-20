@@ -3,19 +3,19 @@ title: HBv2 sorozatú VM-méret teljesítmény
 description: A HBv2 sorozatú virtuálisgép-méretek teljesítmény-tesztelési eredményeinek megismerése az Azure-ban.
 services: virtual-machines
 author: vermagit
-manager: gwallace
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 09/28/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 96c70936d6025ad5c1686f5ebae054d01ae05d07
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: b782f3d435b7b3737de09b7a12d0fb17aa5f1edc
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332649"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963317"
 ---
 # <a name="hbv2-series-virtual-machine-sizes"></a>HBv2 sorozatú virtuális gépek méretei
 
@@ -52,7 +52,7 @@ A OSU-es teljesítményteszt-csomagból származó MPI sávszélesség-teszt fut
 ./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw
 ``` 
 
-:::image type="content" source="./media/bandwidth-hbv2.png" alt-text="MPI-késés az Azure HB-ban.":::
+:::image type="content" source="./media/bandwidth-hbv2.png" alt-text="MPI-sávszélesség az Azure HB-ban.":::
 
 
 ## <a name="mellanox-perftest"></a>Mellanox Perftest
@@ -65,7 +65,7 @@ numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Olvassa el a legújabb bejelentéseket és néhány nagy teljesítményű számítástechnikai (HPC) példát és eredményt az [Azure számítási technikai közösségének blogjában](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).
 - A HPC-munkaterhelések futtatásának magasabb szintű építészeti nézetét lásd: [nagy teljesítményű számítástechnika (HPC) az Azure](/azure/architecture/topics/high-performance-computing/)-ban.

@@ -6,12 +6,12 @@ author: yunjchoi
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: yunjchoi
-ms.openlocfilehash: 03bb7b786280dfcbb64190adac51b8d001d59c18
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d06ad2f740394a4959f3665c5d6311e71841241
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79126602"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960835"
 ---
 # <a name="azure-kubernetes-service-diagnostics-preview-overview"></a>Az Azure Kubernetes Service Diagnostics (előzetes verzió) áttekintése
 
@@ -39,7 +39,7 @@ Miután rákattint egy kategóriára, megtekintheti a fürthöz tartozó diagnos
 
 ## <a name="cluster-insights"></a>Fürtbeli adatfelismerések
 
-A következő diagnosztikai ellenőrzések érhetők el a **Fürtbeli**adatvizsgálatokban.
+A következő diagnosztikai ellenőrzések érhetők el a **Fürtbeli** adatvizsgálatokban.
 
 ### <a name="cluster-node-issues"></a>Fürt csomópontjaival kapcsolatos problémák
 
@@ -79,8 +79,10 @@ Az identitás-és biztonsági felügyelet észleli a hitelesítési és engedél
 - 401 hiba
 - 403-as hibák
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Gyűjtsön naplókat, amelyek segítenek a fürtökkel kapcsolatos problémák további hibaelhárításában az [AK-periszkóp](https://aka.ms/aksperiscope)használatával.
+
+Olvassa el a 2. napon belüli üzemeltetési útmutató [osztályozási gyakorlatok szakaszát](https://docs.microsoft.com/azure/architecture/operator-guides/aks/aks-triage-practices) .
 
 Tegye fel kérdéseit vagy visszajelzéseit a [UserVoice](https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks) címen a "[diag]" cím hozzáadásával.

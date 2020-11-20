@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019,fasttrack-edit, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: c82acb66266fd36e5b7155adbfa5bd5ade1b765c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e1c45b99138a05ef78976b90f65f57304e676ff
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91291987"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962773"
 ---
 # <a name="migrate-sql-server-to-sql-managed-instance-with-powershell--azure-database-migration-service"></a>SQL Server migrálása az SQL felügyelt példányára PowerShell-& Azure Database Migration Service
 
@@ -40,30 +40,30 @@ Ez a cikk részletesen ismerteti az online és az offline áttelepítések elvé
 A lépések elvégzéséhez a következőkre lesz szüksége:
 
 * [SQL Server 2016 vagy újabb](https://www.microsoft.com/sql-server/sql-server-downloads) (bármely kiadás).
-* A **AdventureWorks2016** -adatbázis egy helyi példánya, amely [innen](https://docs.microsoft.com/sql/samples/adventureworks-install-configure?view=sql-server-2017)tölthető le.
-* A TCP/IP protokoll engedélyezéséhez, amely alapértelmezés szerint le van tiltva SQL Server Express telepítéssel. Engedélyezze a TCP/IP protokollt a [kiszolgáló hálózati protokolljának engedélyezése vagy letiltása](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)című cikkben leírtak szerint.
-* A [Windows tűzfal konfigurálása az adatbázismotor-hozzáféréshez](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
+* A **AdventureWorks2016** -adatbázis egy helyi példánya, amely [innen](/sql/samples/adventureworks-install-configure?view=sql-server-2017)tölthető le.
+* A TCP/IP protokoll engedélyezéséhez, amely alapértelmezés szerint le van tiltva SQL Server Express telepítéssel. Engedélyezze a TCP/IP protokollt a [kiszolgáló hálózati protokolljának engedélyezése vagy letiltása](/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)című cikkben leírtak szerint.
+* A [Windows tűzfal konfigurálása az adatbázismotor-hozzáféréshez](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 * Azure-előfizetés. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
-* A felügyelt SQL-példányok. A felügyelt SQL-példányok létrehozásához kövesse a [ASQL felügyelt példány létrehozása](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)című cikk részleteit.
+* A felügyelt SQL-példányok. A felügyelt SQL-példányok létrehozásához kövesse a [ASQL felügyelt példány létrehozása](../azure-sql/managed-instance/instance-create-quickstart.md)című cikk részleteit.
 * [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v 3.3 vagy újabb verzió letöltése és telepítése.
-* A Azure Resource Manager üzemi modellel létrehozott Microsoft Azure Virtual Network, amely a [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy a [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)használatával biztosítja Azure Database Migration Service a helyek közötti kapcsolatot a helyszíni forráskiszolgálóról.
-* A helyszíni adatbázis és a séma áttelepítésének befejezett értékelése Data Migration Assistant használatával, a [SQL Server áttelepítési felmérés végrehajtása](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)című cikkben leírtak szerint.
-* A `Az.DataMigration` modul (0.7.2 vagy újabb verzió) letöltése és telepítése a PowerShell-Galéria az [install-Module PowerShell-parancsmag](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1)használatával.
-* Győződjön meg arról, hogy a forrás SQL Server-példányhoz való kapcsolódáshoz használt hitelesítő adatok rendelkeznek a [vezérlési kiszolgáló](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) engedéllyel.
+* A Azure Resource Manager üzemi modellel létrehozott Microsoft Azure Virtual Network, amely a [ExpressRoute](../expressroute/expressroute-introduction.md) vagy a [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)használatával biztosítja Azure Database Migration Service a helyek közötti kapcsolatot a helyszíni forráskiszolgálóról.
+* A helyszíni adatbázis és a séma áttelepítésének befejezett értékelése Data Migration Assistant használatával, a [SQL Server áttelepítési felmérés végrehajtása](/sql/dma/dma-assesssqlonprem)című cikkben leírtak szerint.
+* A `Az.DataMigration` modul (0.7.2 vagy újabb verzió) letöltése és telepítése a PowerShell-Galéria az [install-Module PowerShell-parancsmag](/powershell/module/powershellget/Install-Module?view=powershell-5.1)használatával.
+* Győződjön meg arról, hogy a forrás SQL Server-példányhoz való kapcsolódáshoz használt hitelesítő adatok rendelkeznek a [vezérlési kiszolgáló](/sql/t-sql/statements/grant-server-permissions-transact-sql) engedéllyel.
 * Annak biztosítása érdekében, hogy a cél SQL felügyelt példányhoz való kapcsolódáshoz használt hitelesítő adatok rendelkezzenek a VEZÉRLÉSi adatbázis engedéllyel a célként megadott SQL felügyelt példány adatbázisain.
 
     > [!IMPORTANT]
-    > Online áttelepítéshez már be kell állítania a Azure Active Directory hitelesítő adatait. További információkért tekintse meg az [erőforrásokhoz hozzáférő Azure ad-alkalmazás és egyszerű szolgáltatás létrehozása a portál használatával](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)című cikket.
+    > Online áttelepítéshez már be kell állítania a Azure Active Directory hitelesítő adatait. További információkért tekintse meg az [erőforrásokhoz hozzáférő Azure ad-alkalmazás és egyszerű szolgáltatás létrehozása a portál használatával](../active-directory/develop/howto-create-service-principal-portal.md)című cikket.
 
 ## <a name="sign-in-to-your-microsoft-azure-subscription"></a>Jelentkezzen be Microsoft Azure-előfizetésbe
 
-Jelentkezzen be az Azure-előfizetésbe a PowerShell használatával. További információkért tekintse meg a következő cikket: [bejelentkezés Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
+Jelentkezzen be az Azure-előfizetésbe a PowerShell használatával. További információkért tekintse meg a következő cikket: [bejelentkezés Azure PowerShell](/powershell/azure/authenticate-azureps).
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelyben az Azure-erőforrások üzembe helyezése és kezelése történik.
 
-Hozzon létre egy erőforráscsoportot a [`New-AzResourceGroup`](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) parancs használatával.
+Hozzon létre egy erőforráscsoportot a [`New-AzResourceGroup`](/powershell/module/az.resources/new-azresourcegroup) parancs használatával.
 
 A következő példában létrehozunk egy *myResourceGroup* nevű ERŐFORRÁSCSOPORTOT az *USA keleti* régiójában.
 
@@ -71,18 +71,18 @@ A következő példában létrehozunk egy *myResourceGroup* nevű ERŐFORRÁSCSO
 New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 ```
 
-## <a name="create-an-instance-of-azure-database-migration-service"></a>Egy Azure Database Migration Service-példány létrehozása
+## <a name="create-an-instance-of-azure-database-migration-service"></a>Azure Database Migration Service-példány létrehozása
 
 Azure Database Migration Service új példányát a parancsmag használatával hozhatja létre `New-AzDataMigrationService` .
 Ez a parancsmag a következő szükséges paramétereket várja:
 
-* *Azure-erőforráscsoport neve*. A [`New-AzResourceGroup`](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) paranccsal létrehozhat egy Azure-erőforráscsoportot a korábban bemutatott módon, és paraméterként megadhatja a nevét.
+* *Azure-erőforráscsoport neve*. A [`New-AzResourceGroup`](/powershell/module/az.resources/new-azresourcegroup) paranccsal létrehozhat egy Azure-erőforráscsoportot a korábban bemutatott módon, és paraméterként megadhatja a nevét.
 * *Szolgáltatás neve*. A Azure Database Migration Service kívánt egyedi szolgáltatásnév megfelelő karakterlánc.
 * *Hely*. Megadja a szolgáltatás helyét. Itt adhatja meg az Azure-beli adatközpont helyét, például az USA nyugati régióját vagy Délkelet-Ázsiában.
 * *SKU*. Ez a paraméter a DMS SKU-nevének felel meg. A jelenleg támogatott SKU-nevek *Basic_1vCore*, *Basic_2vCores*, *GeneralPurpose_4vCores*.
-* *Virtuális alhálózati azonosító*. Alhálózat létrehozásához használhatja a parancsmagot [`New-AzVirtualNetworkSubnetConfig`](https://docs.microsoft.com//powershell/module/az.network/new-azvirtualnetworksubnetconfig) .
+* *Virtuális alhálózati azonosító*. Alhálózat létrehozásához használhatja a parancsmagot [`New-AzVirtualNetworkSubnetConfig`](//powershell/module/az.network/new-azvirtualnetworksubnetconfig) .
 
-A következő példa egy *MyDMS* nevű szolgáltatást hoz létre az *USA keleti* régiójában, a *MyVNET* nevű virtuális hálózat és egy *MySubnet*nevű alhálózat használatával. *MyDMSResourceGroup*
+A következő példa egy *MyDMS* nevű szolgáltatást hoz létre az *USA keleti* régiójában, a *MyVNET* nevű virtuális hálózat és egy *MySubnet* nevű alhálózat használatával. *MyDMSResourceGroup*
 
 > [!IMPORTANT]
 > Az alábbi kódrészlet egy offline áttelepítésre vonatkozik, amelyhez prémium SKU alapján nem szükséges Azure Database Migration Service példánya. Online áttelepítéshez a-SKU paraméter értékének tartalmaznia kell egy prémium SKU-t.
@@ -161,7 +161,7 @@ Ezután hozzon létre és indítson el egy Azure Database Migration Service fela
 
 ### <a name="create-credential-parameters-for-source-and-target"></a>Hitelesítőadat-paraméterek létrehozása a forrás és a cél számára
 
-Hozzon létre kapcsolatbiztonsági hitelesítő adatokat [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) objektumként.
+Hozzon létre kapcsolatbiztonsági hitelesítő adatokat [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) objektumként.
 
 Az alábbi példa az *PSCredential* objektumok létrehozását mutatja be mind a forrás-, mind a cél kapcsolathoz, és a jelszavakat karakterlánc-változókként *$sourcePassword* és *$targetPassword*.
 
@@ -226,7 +226,7 @@ $blobSasUri="https://mystorage.blob.core.windows.net/test?st=2018-07-13T18%3A10%
 ```
 
 > [!NOTE]
-> A Azure Database Migration Service nem támogatja a fiók szintű SAS-token használatát. A Storage-fiók tárolóhoz SAS URI-t kell használnia. [Itt találja az arra vonatkozó tudnivalókat, hogyan kérheti le a blobtároló SAS URI-ját](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container).
+> A Azure Database Migration Service nem támogatja a fiók szintű SAS-token használatát. A Storage-fiók tárolóhoz SAS URI-t kell használnia. [Itt találja az arra vonatkozó tudnivalókat, hogyan kérheti le a blobtároló SAS URI-ját](../vs-azure-tools-storage-explorer-blobs.md#get-the-sas-for-a-blob-container).
 
 ### <a name="additional-configuration-requirements"></a>További konfigurációs követelmények
 
@@ -290,8 +290,8 @@ Függetlenül attól, hogy offline vagy online áttelepítést végez-e, a `New-
 * *Feladatnév*. A létrehozandó feladat neve. 
 * *SourceConnection*. A forrás-SQL Server kapcsolatokat jelképező AzDmsConnInfo objektum.
 * *TargetConnection*. A célként megadott Azure SQL felügyelt példány-kapcsolatokat jelképező AzDmsConnInfo objektum.
-* *SourceCred*. [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) objektum a forráskiszolgálón való csatlakozáshoz.
-* *TargetCred*. [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) objektum a célkiszolgálóra való csatlakozáshoz.
+* *SourceCred*. [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) objektum a forráskiszolgálón való csatlakozáshoz.
+* *TargetCred*. [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) objektum a célkiszolgálóra való csatlakozáshoz.
 * *SelectedDatabase*. A forrás-és céladatbázis-leképezést jelképező AzDataMigrationSelectedDB objektum.
 * *BackupFileShare*. Az a helyi hálózati megosztást jelképező fájlmegosztás objektum, amelyet a Azure Database Migration Service a forrás-adatbázis biztonsági másolatait felhasználva.
 * *BackupBlobSasUri*. Az SAS URI-ja, amely hozzáférést biztosít a Azure Database Migration Service számára a Storage-fiók tárolójához, amelyhez a szolgáltatás feltölti a biztonságimásolat-fájlokat. Itt találja az arra vonatkozó tudnivalókat, hogyan kérheti le a blobtároló SAS URI-ját.
@@ -314,7 +314,7 @@ A `New-AzDataMigrationTask` parancsmag emellett olyan paramétereket is vár, am
 
 #### <a name="create-and-start-an-offline-migration-task"></a>Offline áttelepítési feladat létrehozása és elindítása
 
-Az alábbi példa egy **myDMSTask**nevű offline áttelepítési feladatot hoz létre és indít el:
+Az alábbi példa egy **myDMSTask** nevű offline áttelepítési feladatot hoz létre és indít el:
 
 ```powershell
 $migTask = New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDbMi `
@@ -335,7 +335,7 @@ $migTask = New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDbMi `
 
 #### <a name="create-and-start-an-online-migration-task"></a>Online áttelepítési feladat létrehozása és elindítása
 
-Az alábbi példa egy **myDMSTask**nevű Online áttelepítési feladatot hoz létre és indít el:
+Az alábbi példa egy **myDMSTask** nevű Online áttelepítési feladatot hoz létre és indít el:
 
 ```powershell
 $migTask = New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDbMiSync `
@@ -422,4 +422,4 @@ További információkat a további áttelepítési forgatókönyvekről (forrá
 
 ## <a name="next-steps"></a>Következő lépések
 
-Tudjon meg többet a Azure Database Migration Serviceről a cikk [Mi a Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview)című cikkben.
+Tudjon meg többet a Azure Database Migration Serviceről a cikk [Mi a Azure Database Migration Service?](./dms-overview.md)című cikkben.

@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: d121430452e0ed445af19f9b1ac89cfdfccdcdae
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 05bcb0aebd44dee60fa3f323e1f109e4c0761ec8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167321"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961957"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Magas rendelkezésre állás az NFS-en SUSE Linux Enterprise Server Azure-beli virtuális gépeken
 
@@ -120,7 +121,7 @@ Az összes szükséges erőforrás üzembe helyezéséhez használhatja a GitHub
    4. Rendszergazdai Felhasználónév és rendszergazdai jelszó  
       Létrejön egy új felhasználó, amely használható a gépre való bejelentkezéshez.
    5. Alhálózat azonosítója  
-      Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben a virtuális gépet definiáló alhálózat van, akkor nevezze el az adott alhálózat AZONOSÍTÓját. Az azonosító általában úgy néz ki, mint az/Subscriptions/** &lt; előfizetés &gt; -azonosítója**/ResourceGroups/** &lt; &gt; **** &lt; &gt; **nevű erőforráscsoport neve/Providers/Microsoft.Network/virtualNetworks/virtuális hálózat neve/Subnets/** &lt; alhálózat neve &gt; **
+      Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben a virtuális gépet definiáló alhálózat van, akkor nevezze el az adott alhálózat AZONOSÍTÓját. Az azonosító általában úgy néz ki, mint az/Subscriptions/**&lt; előfizetés &gt; -azonosítója**/ResourceGroups/**&lt; &gt;****&lt; &gt;** nevű erőforráscsoport neve/Providers/Microsoft.Network/virtualNetworks/virtuális hálózat neve/Subnets/**&lt; alhálózat neve &gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>A Linux telepítése manuálisan Azure Portal használatával
 
@@ -158,7 +159,7 @@ Először létre kell hoznia a virtuális gépeket ehhez az NFS-fürthöz. Ezt k
          1. A NW1 61000-es portja
             1. Nyissa meg a terheléselosztó-t, válassza az állapot-tesztek elemet, majd kattintson a Hozzáadás gombra.
             1. Adja meg az új állapot-mintavétel nevét (például **NW1-HP**)
-            1. Válassza a TCP protokollt, a 610**00**portot, az 5. időközt és a nem megfelelő állapotú küszöbértéket 2
+            1. Válassza a TCP protokollt, a 610 **00** portot, az 5. időközt és a nem megfelelő állapotú küszöbértéket 2
             1. Kattintson az OK gombra
          1. A NW2 61001-es portja
             * A fenti lépések megismétlésével hozzon létre egy állapot-mintavételt a NW2
@@ -166,7 +167,7 @@ Először létre kell hoznia a virtuális gépeket ehhez az NFS-fürthöz. Ezt k
          1. Nyissa meg a Load balancert, válassza a terheléselosztási szabályok elemet, majd kattintson a Hozzáadás gombra.
          1. Adja meg az új Load Balancer-szabály nevét (például **NW1-LB**)
          1. Válassza ki a korábban létrehozott előtérbeli IP-címet, a háttér-készletet és az állapot-mintavételt (például **NW1-frontend**). **NW-háttér** és **NW1-HP**)
-         1. Válassza a **hektár portok**lehetőséget.
+         1. Válassza a **hektár portok** lehetőséget.
          1. Üresjárati időkorlát 30 percre növelve
          1. **Ügyeljen arra, hogy a lebegő IP-címet engedélyezze**
          1. Kattintson az OK gombra
@@ -192,7 +193,7 @@ Először létre kell hoznia a virtuális gépeket ehhez az NFS-fürthöz. Ezt k
          1. A NW1 61000-es portja
             1. Nyissa meg a terheléselosztó-t, válassza az állapot-tesztek elemet, majd kattintson a Hozzáadás gombra.
             1. Adja meg az új állapot-mintavétel nevét (például **NW1-HP**)
-            1. Válassza a TCP protokollt, a 610**00**portot, az 5. időközt és a nem megfelelő állapotú küszöbértéket 2
+            1. Válassza a TCP protokollt, a 610 **00** portot, az 5. időközt és a nem megfelelő állapotú küszöbértéket 2
             1. Kattintson az OK gombra
          1. A NW2 61001-es portja
             * A fenti lépések megismétlésével hozzon létre egy állapot-mintavételt a NW2
@@ -219,7 +220,7 @@ Először létre kell hoznia a virtuális gépeket ehhez az NFS-fürthöz. Ezt k
 > Ha a nyilvános IP-címek nélküli virtuális gépek a belső (nincs nyilvános IP-cím) standard Azure Load Balancer háttér-készletbe kerülnek, nem lesz kimenő internetkapcsolat, kivéve, ha további konfigurálást végeznek a nyilvános végpontok útválasztásának engedélyezéséhez. A kimenő kapcsolatok elérésével kapcsolatos részletekért lásd: [nyilvános végpontú kapcsolat Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben](./high-availability-guide-standard-load-balancer-outbound-connections.md).  
 
 > [!IMPORTANT]
-> Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a paramétert a **0**értékre **net.IPv4.tcp_timestamps** . Részletekért lásd: [Load Balancer Health](../../../load-balancer/load-balancer-custom-probe-overview.md)-tesztek.
+> Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a paramétert a **0** értékre **net.IPv4.tcp_timestamps** . Részletekért lásd: [Load Balancer Health](../../../load-balancer/load-balancer-custom-probe-overview.md)-tesztek.
 
 ### <a name="create-pacemaker-cluster"></a>Pacemaker-fürt létrehozása
 
@@ -581,7 +582,7 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    <pre><code>sudo crm configure property maintenance-mode=false
    </code></pre>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az SAP-ASCS és-adatbázis telepítése](high-availability-guide-suse.md)
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]

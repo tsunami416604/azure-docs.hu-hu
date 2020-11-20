@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 21562bc17d4bfd4913c9085755d962382d207c79
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 59eae5303d9eca48fa4cec30fe622faf19ffba1f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566792"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961889"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Oktatóanyag: rendelkezésre állási csoportok létrehozásának előfeltételei az Azure-beli SQL Serveron Virtual Machines
 
@@ -29,7 +29,7 @@ Ez az oktatóanyag bemutatja, hogyan végezheti el az [Azure Virtual Machines (V
 
 Habár ez a cikk manuálisan konfigurálja a rendelkezésre állási csoport környezetét, ez a [Azure Portal](availability-group-azure-portal-configure.md), a [PowerShell vagy az Azure CLI](availability-group-az-commandline-configure.md), illetve az Azure-gyorsindítási [sablonok](availability-group-quickstart-template-configure.md) használatával is lehetséges. 
 
-**Becsült idő** : az előfeltételek teljesítéséhez több óráig is eltarthat. Az idő nagy részében a virtuális gépek létrehozása történik.
+**Becsült idő**: az előfeltételek teljesítéséhez több óráig is eltarthat. Az idő nagy részében a virtuális gépek létrehozása történik.
 
 Az alábbi ábra az oktatóanyagban felépített tudnivalókat mutatja be.
 
@@ -111,7 +111,7 @@ Az Azure visszatér a portál irányítópultra, és értesítést küld az új 
 
 Az új virtuális hálózat egy **rendszergazda** nevű alhálózattal rendelkezik. A tartományvezérlők ezt az alhálózatot használják. A SQL Server virtuális gépek egy másik, **SQL** nevű alhálózatot használnak. Az alhálózat konfigurálása:
 
-1. Az irányítópulton válassza ki a létrehozott erőforráscsoportot ( **SQL-ha-RG** ). Keresse meg a hálózatot az **erőforrás csoportban az erőforráscsoport területen.**
+1. Az irányítópulton válassza ki a létrehozott erőforráscsoportot ( **SQL-ha-RG**). Keresse meg a hálózatot az **erőforrás csoportban az erőforráscsoport területen.**
 
     Ha az **SQL-ha-RG** nem látható, keresse meg az **erőforráscsoportok** kiválasztásával és az erőforráscsoport neve alapján történő szűréssel.
 
@@ -124,7 +124,7 @@ Az új virtuális hálózat egy **rendszergazda** nevű alhálózattal rendelkez
 
 5. Második alhálózat létrehozásához válassza a **+ alhálózat** lehetőséget.
 6. Az **alhálózat hozzáadása** területen konfigurálja az alhálózatot úgy, hogy beírja a **sqlsubnet** **nevet**. Az Azure automatikusan megadja a **címtartomány érvényes tartományát**. Győződjön meg arról, hogy ez a címtartomány legalább 10 címmel rendelkezik. Éles környezetben több címet is igényelhet.
-7. Kattintson az **OK** gombra.
+7. Válassza az **OK** lehetőséget.
 
     ![Alhálózat konfigurálása](./media/availability-group-manually-configure-prerequisites-tutorial-/08-configuresubnet.png)
 
@@ -171,7 +171,7 @@ A tartományvezérlők létrehozásához és konfigurálásához térjen vissza 
 
 1. Válassza a **Hozzáadás** elemet. 
 2. Írja be a **Windows Server 2016 datacentert**.
-3. Válassza a **Windows Server 2016 Datacenter** lehetőséget. A **Windows Server 2016 Datacenter** rendszerben ellenőrizze, hogy a telepítési modell **Resource Manager** -e, majd válassza a **Létrehozás** lehetőséget. 
+3. Válassza a **Windows Server 2016 Datacenter** lehetőséget. A **Windows Server 2016 Datacenter** rendszerben ellenőrizze, hogy a telepítési modell **Resource Manager**-e, majd válassza a **Létrehozás** lehetőséget. 
 
 Két virtuális gép létrehozásához ismételje meg a fenti lépéseket. Nevezze el a két virtuális gépet:
 
@@ -190,7 +190,7 @@ A következő táblázat a két gép beállításait mutatja be:
 | **Virtuális merevlemez típusa** |SSD |
 | **Felhasználónév** |Rdfe |
 | **Jelszó** |Contoso! 0000 |
-| **Előfizetés** |*Az előfizetése* |
+| **Előfizetés** |*Az Ön előfizetése* |
 | **Erőforráscsoport** |SQL-HA-RG |
 | **Hely** |*Tartózkodási hely* |
 | **Méret** |DS1_V2 |
@@ -199,7 +199,7 @@ A következő táblázat a két gép beállításait mutatja be:
 | **Alhálózat** |felügyelet |
 | **Nyilvános IP-cím** |*A virtuális géppel megegyező név* |
 | **Hálózati biztonsági csoport** |*A virtuális géppel megegyező név* |
-| **Rendelkezésre állási csoport** |adavailabilityset </br>Tartalék **tartományok** : 2 </br>**Frissítési tartományok** : 2|
+| **Rendelkezésre állási csoport** |adavailabilityset </br>Tartalék **tartományok**: 2 </br>**Frissítési tartományok**: 2|
 | **Diagnosztika** |Engedélyezve |
 | **Diagnosztikai Storage-fiók** |*Automatikusan létrehozva* |
 
@@ -218,7 +218,7 @@ A következő lépésekben konfigurálja az **ad-Primary-DC** gépet a Corp.cont
 
     ![Csatlakozás virtuális géphez](./media/availability-group-manually-configure-prerequisites-tutorial-/20-connectrdp.png)
 
-2. Jelentkezzen be a konfigurált rendszergazdai fiókjával ( **\DomainAdmin** ) és jelszavával ( **contoso! 0000** ).
+2. Jelentkezzen be a konfigurált rendszergazdai fiókjával (**\DomainAdmin**) és jelszavával (**contoso! 0000**).
 3. Alapértelmezés szerint a **Kiszolgálókezelő** irányítópultjának kell megjelennie.
 4. Válassza a **szerepkörök és szolgáltatások hozzáadása** hivatkozást az irányítópulton.
 
@@ -285,7 +285,7 @@ Miután létrehozta az első tartományvezérlőt, és engedélyezte a DNS-t az 
 Az elsődleges tartományvezérlő újraindítása után beállíthatja a második tartományvezérlőt. Ez a választható lépés a magas rendelkezésre állás. A második tartományvezérlő konfigurálásához kövesse az alábbi lépéseket:
 
 1. A portálon nyissa meg az **SQL-ha-RG** erőforráscsoportot, és válassza ki az **ad-szekunder-DC** gépet. Az **ad-másodlagos-tartományvezérlőn** válassza a **Kapcsolódás** lehetőséget egy RDP-fájl megnyitásához a távoli asztal eléréséhez.
-2. Jelentkezzen be a virtuális gépre a beállított rendszergazdai fiók ( **BUILTIN\DomainAdmin** ) és a jelszó ( **contoso! 0000** ) használatával.
+2. Jelentkezzen be a virtuális gépre a beállított rendszergazdai fiók (**BUILTIN\DomainAdmin**) és a jelszó (**contoso! 0000**) használatával.
 3. Módosítsa az előnyben részesített DNS-kiszolgáló címeit a tartományvezérlő címeként.
 4. A **hálózati és megosztási központban** válassza ki a hálózati adaptert.
 
@@ -294,7 +294,7 @@ Az elsődleges tartományvezérlő újraindítása után beállíthatja a másod
 5. Válassza ki a **Tulajdonságok** elemet.
 6. Válassza a **Internet Protocol 4-es verzió (TCP/IPv4)** lehetőséget, majd válassza a **Tulajdonságok** lehetőséget.
 7. Válassza **a következő DNS-kiszolgáló címek használata** lehetőséget, majd adja meg az elsődleges tartományvezérlő címét az **ELŐNYben részesített DNS-kiszolgálón**.
-8. Kattintson **az OK gombra** , majd a **Bezárás** gombra a módosítások elvégzéséhez. Most már tud csatlakozni a virtuális géphez a **Corp.contoso.com**.
+8. Kattintson **az OK gombra**, majd a **Bezárás** gombra a módosítások elvégzéséhez. Most már tud csatlakozni a virtuális géphez a **Corp.contoso.com**.
 
    >[!IMPORTANT]
    >Ha a DNS-beállítás módosítása után elveszíti a távoli asztal kapcsolatát, lépjen a Azure Portal, és indítsa újra a virtuális gépet.
@@ -314,7 +314,7 @@ Az elsődleges tartományvezérlő újraindítása után beállíthatja a másod
     ![Központi telepítés konfigurálása](./media/availability-group-manually-configure-prerequisites-tutorial-/28-deploymentconfig.png)
 
 18. Kattintson a **Kiválasztás** elemre.
-19. Kapcsolódjon a rendszergazdai fiók használatával ( **Corp. CONTOSO. COM\domainadmin** ) és jelszó ( **contoso! 0000** ).
+19. Kapcsolódjon a rendszergazdai fiók használatával (**Corp. CONTOSO. COM\domainadmin**) és jelszó (**contoso! 0000**).
 20. A **tartomány kiválasztása az erdőből** területen válassza ki a tartományt, majd kattintson **az OK gombra**.
 21. A **tartományvezérlő beállításainál** használja az alapértelmezett értékeket, és állítsa be a Címtárszolgáltatások helyreállító módjának jelszavát.
 
@@ -342,9 +342,9 @@ A következő lépésekben konfigurálja a Active Directory fiókokat. A követk
 Az egyes fiókok létrehozásához kövesse az alábbi lépéseket.
 
 1. Jelentkezzen be az **ad-Primary-DC** gépre.
-2. A **Kiszolgálókezelőben** válassza az **eszközök** , majd a **Active Directory felügyeleti központ** lehetőséget.   
+2. A **Kiszolgálókezelőben** válassza az **eszközök**, majd a **Active Directory felügyeleti központ** lehetőséget.   
 3. Válassza a **Corp (helyi)** elemet a bal oldali ablaktáblán.
-4. A jobb oldali **feladatok** ablaktáblán válassza az **új** , majd a **felhasználó** lehetőséget.
+4. A jobb oldali **feladatok** ablaktáblán válassza az **új**, majd a **felhasználó** lehetőséget.
 
    ![Active Directory felügyeleti központ](./media/availability-group-manually-configure-prerequisites-tutorial-/29-addcnewuser.png)
 
@@ -363,14 +363,14 @@ Az egyes fiókok létrehozásához kövesse az alábbi lépéseket.
 
 2. Válassza a **bővítmények** lehetőséget, majd a **Biztonság** lapon kattintson a **speciális** gombra.
 3. A **Corp speciális biztonsági beállításai** párbeszédpanelen válassza a **Hozzáadás** lehetőséget.
-4. Kattintson **a rendszerbiztonsági tag kiválasztása** elemre, keresse meg a **CORP\Install** , majd válassza **az OK** gombot.
+4. Kattintson **a rendszerbiztonsági tag kiválasztása** elemre, keresse meg a **CORP\Install**, majd válassza **az OK** gombot.
 5. Jelölje be az **összes tulajdonság olvasása** jelölőnégyzetet.
 
 6. Jelölje be a **számítógép-objektumok létrehozása** jelölőnégyzetet.
 
      ![Corp felhasználói engedélyek](./media/availability-group-manually-configure-prerequisites-tutorial-/33-addpermissions.png)
 
-7. Válassza az **OK** , majd újra az **OK** elemet. A **Corp** Properties ablak bezárásához.
+7. Válassza az **OK**, majd újra az **OK** elemet. A **Corp** Properties ablak bezárásához.
 
 Most, hogy befejezte a Active Directory és a felhasználói objektumok konfigurálását, hozzon létre két SQL Server virtuális gépet és egy tanúsító kiszolgáló virtuális gépet. Ezután csatlakozzon mindhárom tartományhoz.
 
@@ -402,7 +402,7 @@ Ezután hozzon létre három virtuális gépet – két SQL Server virtuális g�
 | Válassza ki a megfelelő gyűjtemény elemet |**Windows Server 2016 Datacenter** |**SQL Server 2016 SP1 Enterprise Windows Server 2016 rendszeren** |**SQL Server 2016 SP1 Enterprise Windows Server 2016 rendszeren** |
 | A virtuális gép konfigurációjának **alapjai** |**Név** = fürt – FSW<br/>**Felhasználónév** = rdfe<br/>**Password** = contoso! 0000<br/>**Előfizetés** = az előfizetése<br/>**Erőforráscsoport** = SQL-ha-RG<br/>**Location** = az Azure-beli helye |**Név** = SQLServer-0<br/>**Felhasználónév** = rdfe<br/>**Password** = contoso! 0000<br/>**Előfizetés** = az előfizetése<br/>**Erőforráscsoport** = SQL-ha-RG<br/>**Location** = az Azure-beli helye |**Név** = SQLServer-1<br/>**Felhasználónév** = rdfe<br/>**Password** = contoso! 0000<br/>**Előfizetés** = az előfizetése<br/>**Erőforráscsoport** = SQL-ha-RG<br/>**Location** = az Azure-beli helye |
 | Virtuális gép konfigurációjának **mérete** |**Size** = DS1 \_ v2 (1 VCPU, 3,5 GB) |**Size** = DS2 \_ v2 (2 VCPU, 7 GB)</br>A méretnek támogatnia kell az SSD-tárolót (prémium szintű lemezes támogatás). )) |**Size** = DS2 \_ v2 (2 VCPU, 7 GB) |
-| Virtuális gép konfigurációs **beállításai** |**Storage** : felügyelt lemezek használata.<br/>**Virtuális hálózat** = autoHAVNET<br/>**Alhálózat** = sqlsubnet (10.1.1.0/24)<br/>A **nyilvános IP-cím** automatikusan létrejön.<br/>**Hálózati biztonsági csoport** = nincs<br/>**Figyelési diagnosztika** = engedélyezve<br/>**Diagnosztikai Storage-fiók** = automatikusan létrehozott Storage-fiók használata<br/>**Rendelkezésre állási csoport** = sqlAvailabilitySet<br/> |**Storage** : felügyelt lemezek használata.<br/>**Virtuális hálózat** = autoHAVNET<br/>**Alhálózat** = sqlsubnet (10.1.1.0/24)<br/>A **nyilvános IP-cím** automatikusan létrejön.<br/>**Hálózati biztonsági csoport** = nincs<br/>**Figyelési diagnosztika** = engedélyezve<br/>**Diagnosztikai Storage-fiók** = automatikusan létrehozott Storage-fiók használata<br/>**Rendelkezésre állási csoport** = sqlAvailabilitySet<br/> |**Storage** : felügyelt lemezek használata.<br/>**Virtuális hálózat** = autoHAVNET<br/>**Alhálózat** = sqlsubnet (10.1.1.0/24)<br/>A **nyilvános IP-cím** automatikusan létrejön.<br/>**Hálózati biztonsági csoport** = nincs<br/>**Figyelési diagnosztika** = engedélyezve<br/>**Diagnosztikai Storage-fiók** = automatikusan létrehozott Storage-fiók használata<br/>**Rendelkezésre állási csoport** = sqlAvailabilitySet<br/> |
+| Virtuális gép konfigurációs **beállításai** |**Storage**: felügyelt lemezek használata.<br/>**Virtuális hálózat** = autoHAVNET<br/>**Alhálózat** = sqlsubnet (10.1.1.0/24)<br/>A **nyilvános IP-cím** automatikusan létrejön.<br/>**Hálózati biztonsági csoport** = nincs<br/>**Figyelési diagnosztika** = engedélyezve<br/>**Diagnosztikai Storage-fiók** = automatikusan létrehozott Storage-fiók használata<br/>**Rendelkezésre állási csoport** = sqlAvailabilitySet<br/> |**Storage**: felügyelt lemezek használata.<br/>**Virtuális hálózat** = autoHAVNET<br/>**Alhálózat** = sqlsubnet (10.1.1.0/24)<br/>A **nyilvános IP-cím** automatikusan létrejön.<br/>**Hálózati biztonsági csoport** = nincs<br/>**Figyelési diagnosztika** = engedélyezve<br/>**Diagnosztikai Storage-fiók** = automatikusan létrehozott Storage-fiók használata<br/>**Rendelkezésre állási csoport** = sqlAvailabilitySet<br/> |**Storage**: felügyelt lemezek használata.<br/>**Virtuális hálózat** = autoHAVNET<br/>**Alhálózat** = sqlsubnet (10.1.1.0/24)<br/>A **nyilvános IP-cím** automatikusan létrejön.<br/>**Hálózati biztonsági csoport** = nincs<br/>**Figyelési diagnosztika** = engedélyezve<br/>**Diagnosztikai Storage-fiók** = automatikusan létrehozott Storage-fiók használata<br/>**Rendelkezésre állási csoport** = sqlAvailabilitySet<br/> |
 | A virtuális gép konfigurációjának **SQL Server beállításai** |Nem alkalmazható |**SQL-kapcsolat** = Private (Virtual Networkon belül)<br/>**Port** = 1433<br/>**SQL-hitelesítés** = letiltás<br/>**Tárolási konfiguráció** = általános<br/>**Automatikus javítás** = vasárnap 2:00-kor<br/>**Automatikus biztonsági mentés** = letiltva</br>**Azure Key Vault integráció** = letiltva |**SQL-kapcsolat** = Private (Virtual Networkon belül)<br/>**Port** = 1433<br/>**SQL-hitelesítés** = letiltás<br/>**Tárolási konfiguráció** = általános<br/>**Automatikus javítás** = vasárnap 2:00-kor<br/>**Automatikus biztonsági mentés** = letiltva</br>**Azure Key Vault integráció** = letiltva |
 
 <br/>
@@ -415,14 +415,14 @@ A három virtuális gép teljes kiépítés után csatlakoztatnia kell őket a *
 
 ### <a name="join-the-servers-to-the-domain"></a><a name="joinDomain"></a>A kiszolgálók csatlakoztatása a tartományhoz
 
-Most már csatlakoztathatja a virtuális gépeket a **Corp.contoso.com** -hez. Hajtsa végre a következő lépéseket a SQL Server virtuális gépek és a tanúsító fájlmegosztás kiszolgálója között:
+Most már csatlakoztathatja a virtuális gépeket a **Corp.contoso.com**-hez. Hajtsa végre a következő lépéseket a SQL Server virtuális gépek és a tanúsító fájlmegosztás kiszolgálója között:
 
 1. Távolról csatlakozhat a virtuális géphez a **BUILTIN\DomainAdmin** használatával.
 2. A **Kiszolgálókezelőben** válassza a **helyi kiszolgáló** lehetőséget.
 3. Válassza ki a **munkacsoport** hivatkozást.
 4. A **számítógép neve** szakaszban válassza a **módosítás** lehetőséget.
-5. Jelölje be a **tartomány** jelölőnégyzetet, és írja be a **Corp.contoso.com** szöveget a szövegmezőbe. Kattintson az **OK** gombra.
-6. A **Windows biztonsági** előugró ablakban határozza meg az alapértelmezett tartományi rendszergazdai fiók ( **CORP\DomainAdmin** ) és a jelszó ( **contoso! 0000** ) hitelesítő adatait.
+5. Jelölje be a **tartomány** jelölőnégyzetet, és írja be a **Corp.contoso.com** szöveget a szövegmezőbe. Válassza az **OK** lehetőséget.
+6. A **Windows biztonsági** előugró ablakban határozza meg az alapértelmezett tartományi rendszergazdai fiók (**CORP\DomainAdmin**) és a jelszó (**contoso! 0000**) hitelesítő adatait.
 7. Amikor megjelenik az "üdvözli a corp.contoso.com tartomány" üzenet, kattintson az **OK gombra**.
 8. Válassza a **Bezárás** lehetőséget, majd az előugró ablakban válassza az **Újraindítás most** lehetőséget.
 
@@ -440,11 +440,11 @@ Miután minden virtuális gép újraindult a tartomány tagjaként, adja hozzá 
    >Győződjön meg arról, hogy a tartományi rendszergazda fiókkal jelentkezik be. Az előző lépésekben a beépített rendszergazdai fiókot használta. Most, hogy a kiszolgáló a tartományban van, használja a tartományi fiókot. Az RDP-munkamenetben adja meg a *tartomány* \\ *felhasználónevét*.
    >
 
-2. A **Kiszolgálókezelőben** válassza az **eszközök** , majd a számítógép- **kezelés** lehetőséget.
+2. A **Kiszolgálókezelőben** válassza az **eszközök**, majd a számítógép- **kezelés** lehetőséget.
 3. A **Számítógép-kezelés** ablakban bontsa ki a **helyi felhasználók és csoportok** csomópontot, majd válassza a **csoportok** lehetőséget.
 4. Kattintson duplán a **rendszergazdák** csoportra.
 5. A **rendszergazdák tulajdonságai** párbeszédpanelen kattintson a **Hozzáadás** gombra.
-6. Adja meg a felhasználó **CORP\Install** , majd kattintson **az OK gombra**.
+6. Adja meg a felhasználó **CORP\Install**, majd kattintson **az OK gombra**.
 7. A **rendszergazda tulajdonságok** párbeszédpanel bezárásához kattintson **az OK gombra** .
 8. Ismételje meg az előző lépéseket a **SQLServer-1** és a **cluster-FSW**.
 
@@ -471,7 +471,7 @@ A rendelkezésre állási csoport konfigurálásához használja a telepítési 
 
 1. A bejelentkezést úgy állítsa be, hogy a sysadmin ( **rendszergazda** ) rögzített kiszolgálói szerepkör tagja legyen.
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 Ismételje meg a fenti lépéseket a másik SQL Server VM.
 
@@ -538,14 +538,14 @@ Ismételje meg a lépéseket a többi SQL Server VMon.
 
 ### <a name="tuning-failover-cluster-network-thresholds"></a>Feladatátvevő fürt hálózati küszöbértékének finomhangolása
 
-Ha SQL Server AlwaysOn rendelkező Azure-beli virtuális gépeken futtatja a Windows feladatátvevő fürt csomópontjait, ajánlott a fürt beállításának módosítása egy nyugodtabb figyelési állapotra.  Ez sokkal stabilabb és megbízhatóbb lesz a fürt számára.  További részletekért lásd: [IaaS és SQL AlwaysOn – a feladatátvevő fürt hálózati küszöbértékének finomhangolása](/windows-server/troubleshoot/iaas-sql-failover-cluser).
+Ha SQL Server AlwaysOn rendelkező Azure-beli virtuális gépeken futtatja a Windows feladatátvevő fürt csomópontjait, ajánlott a fürt beállításának módosítása egy nyugodtabb figyelési állapotra.  Ez sokkal stabilabb és megbízhatóbb lesz a fürt számára.  További részletekért lásd: [IaaS és SQL AlwaysOn – a feladatátvevő fürt hálózati küszöbértékének finomhangolása](/windows-server/troubleshoot/iaas-sql-failover-cluster).
 
 
 ## <a name="configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"></a> A tűzfal konfigurálása minden SQL Server VM
 
 A megoldáshoz a következő TCP-portokat kell megnyitni a tűzfalon:
 
-- **SQL Server VM** : a SQL Server alapértelmezett példányának 1433-as portja.
+- **SQL Server VM**: a SQL Server alapértelmezett példányának 1433-as portja.
 - **Azure Load Balancer** -mintavétel: Bármely elérhető port. A példák gyakran használják a 59999-ot.
 - **Adatbázis-tükrözési végpont:** Bármely elérhető port. A példák gyakran használják a 5022-ot.
 
@@ -562,10 +562,10 @@ A portok megnyitásának módszere a használt tűzfal megoldástól függ. A k�
 
    ![SQL tűzfal](./media/availability-group-manually-configure-prerequisites-tutorial-/35-tcpports.png)
 
-5. Válassza a **Tovább** gombot.
+5. Kattintson a **Tovább** gombra.
 6. A **művelet** lapon tartsa be **a kijelölt kapcsolat lehetőséget** , majd kattintson a **tovább** gombra.
 7. A **profil** lapon fogadja el az alapértelmezett beállításokat, majd kattintson a **tovább** gombra.
-8. A **név** lapon adja meg a szabály nevét (például az **Azure LB** -mintavételt) a **név** szövegmezőben, majd válassza a **Befejezés** lehetőséget.
+8. A **név** lapon adja meg a szabály nevét (például az **Azure LB**-mintavételt) a **név** szövegmezőben, majd válassza a **Befejezés** lehetőséget.
 
 Ismételje meg ezeket a lépéseket a második SQL Server VM.
 

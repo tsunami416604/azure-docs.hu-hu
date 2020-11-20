@@ -3,18 +3,18 @@ title: Az Azure-Blob Storageban tárolt adatkezelési és-keresési blob-indexel
 description: Tekintse át, hogyan használhat blob-indexelési címkéket a blob-objektumok kategorizálásához, kezeléséhez és lekérdezéséhez.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 10/19/2020
+ms.date: 11/19/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 159252cf850fd59f40d1b59e592153f50d7cb813
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 2e3e16b71d52edd9ab4eaf55651567b95e334b84
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371970"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961787"
 ---
 # <a name="use-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Az Azure-beli blob-indexek (előzetes verzió) használatával kezelhetők és megkereshetők az Azure Blob Storage
 
@@ -56,13 +56,13 @@ Mivel a blob-index előzetes verzióban érhető el, a .NET Storage-csomag megje
 
 ## <a name="upload-a-new-blob-with-index-tags"></a>Új blob feltöltése tárgymutató-címkékkel
 
-Az index címkékkel rendelkező új Blobok feltöltését a [Storage blob-Adattulajdonosa](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)végezheti el. Emellett a `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [szerepköralapú hozzáférés-vezérlési](/azure/role-based-access-control/overview) engedéllyel rendelkező felhasználók is elvégezhetik ezt a műveletet.
+Ezt a feladatot a [Storage blob-adatok tulajdonosa](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) vagy egy olyan rendszerbiztonsági tag hajthatja végre, amely `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` egy egyéni Azure-szerepkörön keresztül engedélyt kapott az [Azure erőforrás-szolgáltatói műveletre](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) .
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
 1. A [Azure Portal](https://portal.azure.com/)válassza ki a Storage-fiókját. 
 
-2. Navigáljon a containers ( **tárolók** ) lehetőségre **blob Service**alatt, és válassza ki a tárolót
+2. Navigáljon a containers ( **tárolók** ) lehetőségre **blob Service** alatt, és válassza ki a tárolót
 
 3. Jelölje be a **feltöltés** gombot, és tallózással keresse meg a helyi fájlrendszert, és keresse meg a feltöltendő fájlt a blokk blobként.
 
@@ -114,15 +114,15 @@ static async Task BlobIndexTagsOnCreate()
 
 ## <a name="get-set-and-update-blob-index-tags"></a>BLOB-index címkék beolvasása, beállítása és frissítése
 
-A blob-indexek címkéit a [Storage blob-Adattulajdonosa](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)is elvégezheti. Emellett a `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read` [szerepköralapú hozzáférés-vezérlési](/azure/role-based-access-control/overview) engedéllyel rendelkező felhasználók is elvégezhetik ezt a műveletet.
+A blob-indexek címkéit a [Storage blob-adattulajdonosa](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) vagy egy olyan rendszerbiztonsági tag hajthatja végre, amely `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read` egy egyéni Azure-szerepkörön keresztül engedélyt kapott az [Azure erőforrás-szolgáltatói műveletre](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) .
 
-A blob-indexek beállítása és frissítése a [Storage blob-Adattulajdonossal](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)végezhető el. Emellett a `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [szerepköralapú hozzáférés-vezérlési](/azure/role-based-access-control/overview) engedéllyel rendelkező felhasználók is elvégezhetik ezt a műveletet.
+A blob-indexek beállítását és frissítését a [Storage blob-adattulajdonosa](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) vagy egy olyan rendszerbiztonsági tag hajthatja végre, amely `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` egy egyéni Azure-szerepkörön keresztül engedélyt kapott az [Azure erőforrás-szolgáltatói műveletre](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) .
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
 1. A [Azure Portal](https://portal.azure.com/)válassza ki a Storage-fiókját. 
 
-2. Navigáljon a containers ( **tárolók** ) lehetőségre a **blob Service**alatt, válassza ki a tárolót
+2. Navigáljon a containers ( **tárolók** ) lehetőségre a **blob Service** alatt, válassza ki a tárolót
 
 3. Válassza ki a blobot a kiválasztott tárolóban lévő Blobok listájából
 
@@ -132,7 +132,7 @@ A blob-indexek beállítása és frissítése a [Storage blob-Adattulajdonossal]
 
 6. Kattintson a **Save (Mentés** ) gombra a blob frissítéseinek megerősítéséhez
 
-:::image type="content" source="media/storage-blob-index-concepts/blob-index-get-set-tags.png" alt-text="Képernyőkép a Azure Portalről, amely bemutatja, hogyan tölthet fel egy blobot index címkékkel.":::
+:::image type="content" source="media/storage-blob-index-concepts/blob-index-get-set-tags.png" alt-text="Képernyőkép a Azure Portalről, amely bemutatja, hogyan lehet beolvasni, beállítani, frissíteni és törölni a Blobok indexelési címkéit.":::
 
 # <a name="net"></a>[.NET](#tab/net)
 
@@ -193,7 +193,7 @@ static async Task BlobIndexTagsExample()
 
 ## <a name="filter-and-find-data-with-blob-index-tags"></a>Az Adatszűrés és-keresés a blob-index címkékkel
 
-A blob indexek által végzett keresés és szűrés a [Storage blob-adattulajdonos](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)által végezhető el. Emellett a `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` [szerepköralapú hozzáférés-vezérlési](/azure/role-based-access-control/overview) engedéllyel rendelkező felhasználók is elvégezhetik ezt a műveletet.
+Ezt a feladatot a [Storage blob-adatok tulajdonosa](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) vagy egy olyan rendszerbiztonsági tag hajthatja végre, amely `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` egy egyéni Azure-szerepkörön keresztül engedélyt kapott az [Azure erőforrás-szolgáltatói műveletre](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) .
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -201,7 +201,7 @@ A Azure Portalon belül a blob-index címkék szűrő automatikusan alkalmazza a
 
 1. A [Azure Portal](https://portal.azure.com/)válassza ki a Storage-fiókját. 
 
-2. Navigáljon a containers ( **tárolók** ) lehetőségre **blob Service**alatt, és válassza ki a tárolót
+2. Navigáljon a containers ( **tárolók** ) lehetőségre **blob Service** alatt, és válassza ki a tárolót
 
 3. Válassza a **blob index címkék szűrő** gombot a kiválasztott tárolón belüli szűréshez
 
@@ -209,7 +209,7 @@ A Azure Portalon belül a blob-index címkék szűrő automatikusan alkalmazza a
 
 5. A **blob index címkék szűrő** gombjának kiválasztásával további címke-szűrőket adhat hozzá (legfeljebb 10)
 
-:::image type="content" source="media/storage-blob-index-concepts/blob-index-tag-filter-within-container.png" alt-text="Képernyőkép a Azure Portalről, amely bemutatja, hogyan tölthet fel egy blobot index címkékkel.":::
+:::image type="content" source="media/storage-blob-index-concepts/blob-index-tag-filter-within-container.png" alt-text="Képernyőkép az Azure Portalről, amely bemutatja, hogyan szűrheti és keresheti meg a címkézett blobokat az indexelési címkék használatával":::
 
 # <a name="net"></a>[.NET](#tab/net)
 
@@ -303,11 +303,11 @@ static async Task FindBlobsByTagsExample()
 
 4. Válassza ki a **szűrő** beállítása lehetőséget, ha opcionális szűrőt szeretne hozzáadni az előtag egyeztetéséhez és a blob-index egyeztetéséhez.
 
-  :::image type="content" source="media/storage-blob-index-concepts/blob-index-match-lifecycle-filter-set.png" alt-text="Képernyőkép a Azure Portalről, amely bemutatja, hogyan tölthet fel egy blobot index címkékkel.":::
+  :::image type="content" source="media/storage-blob-index-concepts/blob-index-match-lifecycle-filter-set.png" alt-text="Képernyőkép a Azure Portalről, amely bemutatja, hogyan adhat hozzá tárgymutató-címkéket az életciklus-kezeléshez.":::
 
 5. A szabály beállításainak áttekintéséhez válassza a **felülvizsgálat + Hozzáadás** elemet.
 
-  :::image type="content" source="media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png" alt-text="Képernyőkép a Azure Portalről, amely bemutatja, hogyan tölthet fel egy blobot index címkékkel.":::
+  :::image type="content" source="media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png" alt-text="Képernyőkép a Azure Portalről, amely egy életciklus-kezelési szabályt mutat be a blob index címkék szűrővel példa":::
 
 6. Válassza a **Hozzáadás** lehetőséget az új szabály életciklus-kezelési házirendre való alkalmazásához
 
