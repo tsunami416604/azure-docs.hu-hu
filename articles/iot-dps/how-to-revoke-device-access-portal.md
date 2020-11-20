@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: f5bedde9e5e095b1b8637a09263bf18b06bcddea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 120446472038076e34f62b47ba79348e5de8b972
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532341"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951077"
 ---
 # <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Eszköz regisztrálása az Azure-ból IoT Hub Device Provisioning Service
 
@@ -32,12 +32,12 @@ Ha átmenetileg le szeretné tiltani az eszközt a beléptetési bejegyzés leti
 
 1. Jelentkezzen be a Azure Portalba, és válassza ki a **minden erőforrás** elemet a bal oldali menüben.
 2. Az erőforrások listájában válassza ki azt a kiépítési szolgáltatást, amelyről az eszközt le szeretné állítani.
-3. A kiépítési szolgáltatásban válassza a **regisztrációk kezelése**lehetőséget, majd válassza az **Egyéni regisztrációk** lapot.
+3. A kiépítési szolgáltatásban válassza a **regisztrációk kezelése** lehetőséget, majd válassza az **Egyéni regisztrációk** lapot.
 4. Válassza ki a letiltani kívánt eszköz beléptetési bejegyzését. 
 
     ![Egyéni regisztráció kiválasztása](./media/how-to-revoke-device-access-portal/select-individual-enrollment.png)
 
-5. A beléptetési lapon görgessen le az aljára, és válassza a **Letiltás** lehetőséget a **belépés engedélyezése** kapcsolóhoz, majd kattintson a **Mentés**gombra.  
+5. A beléptetési lapon görgessen le az aljára, és válassza a **Letiltás** lehetőséget a **belépés engedélyezése** kapcsolóhoz, majd kattintson a **Mentés** gombra.  
 
    ![Egyéni beléptetési bejegyzés letiltása a portálon](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)
 
@@ -45,7 +45,7 @@ Az eszköz végleges letiltása a beléptetési bejegyzés törlésével:
 
 1. Jelentkezzen be a Azure Portalba, és válassza ki a **minden erőforrás** elemet a bal oldali menüben.
 2. Az erőforrások listájában válassza ki azt a kiépítési szolgáltatást, amelyről az eszközt le szeretné állítani.
-3. A kiépítési szolgáltatásban válassza a **regisztrációk kezelése**lehetőséget, majd válassza az **Egyéni regisztrációk** lapot.
+3. A kiépítési szolgáltatásban válassza a **regisztrációk kezelése** lehetőséget, majd válassza az **Egyéni regisztrációk** lapot.
 4. Jelölje be a letiltani kívánt eszköz beléptetési bejegyzése melletti jelölőnégyzetet. 
 5. Válassza a **Törlés** lehetőséget az ablak tetején, majd az **Igen** gombot választva erősítse meg, hogy el kívánja távolítani a beléptetést. 
 
@@ -56,7 +56,7 @@ Az eljárás befejezése után a bejegyzést a rendszer az egyéni regisztráci�
 
 ## <a name="disallow-an-x509-intermediate-or-root-ca-certificate-by-using-an-enrollment-group"></a>X. 509 közbenső vagy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány letiltása egy regisztrációs csoport használatával
 
-Az X. 509 tanúsítványok általában megbízhatósági tanúsítványlánc szerint vannak rendezve. Ha egy lánc bármely fázisában egy tanúsítvány sérül, a megbízhatóság megszakad. A tanúsítványnak nem szabad megelőznie, hogy az eszköz kiépítési szolgáltatása az adott tanúsítványt tartalmazó láncon kívülről kiépítse az eszközöket. Ha többet szeretne megtudni az X. 509 tanúsítványokról és azok használatáról a kiépítési szolgáltatással kapcsolatban, tekintse meg az [x. 509 tanúsítványokat](./concepts-security.md#x509-certificates). 
+Az X. 509 tanúsítványok általában megbízhatósági tanúsítványlánc szerint vannak rendezve. Ha egy lánc bármely fázisában egy tanúsítvány sérül, a megbízhatóság megszakad. A tanúsítványnak nem szabad megelőznie, hogy az eszköz kiépítési szolgáltatása az adott tanúsítványt tartalmazó láncon kívülről kiépítse az eszközöket. Ha többet szeretne megtudni az X. 509 tanúsítványokról és azok használatáról a kiépítési szolgáltatással kapcsolatban, tekintse meg az [x. 509 tanúsítványokat](./concepts-x509-attestation.md#x509-certificates). 
 
 A beléptetési csoport olyan eszközökre vonatkozó bejegyzés, amelyek közös igazolási mechanizmussal rendelkeznek az X. 509 tanúsítványokban, amelyek ugyanabban a közbenső vagy legfelső szintű HITELESÍTÉSSZOLGÁLTATÓN vannak aláírva. A beléptetési csoport bejegyzése a közbenső vagy a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓhoz társított X. 509 tanúsítvánnyal van konfigurálva. A bejegyzés is konfigurálható bármilyen konfigurációs értékkel (például Twin State és IoT hub-kapcsolatok), amelyeket az adott tanúsítvánnyal rendelkező eszközök közösen használnak a tanúsítványlánc számára. A tanúsítvány letiltásához letilthatja vagy törölheti a regisztrációs csoportot.
 
@@ -64,9 +64,9 @@ A tanúsítvány ideiglenes letiltása a beléptetési csoport letiltásával:
 
 1. Jelentkezzen be a Azure Portalba, és válassza ki a **minden erőforrás** elemet a bal oldali menüben.
 2. Az erőforrások listájában válassza ki azt a kiépítési szolgáltatást, amelyből le szeretné állítani az aláíró tanúsítványt.
-3. A kiépítési szolgáltatásban válassza a **regisztrációk kezelése**lehetőséget, majd válassza a **regisztrációs csoportok** lapot.
+3. A kiépítési szolgáltatásban válassza a **regisztrációk kezelése** lehetőséget, majd válassza a **regisztrációs csoportok** lapot.
 4. Válassza ki a beléptetési csoportot a letiltani kívánt tanúsítvány használatával.
-5. Válassza a **Letiltás** lehetőséget a **belépés engedélyezése** kapcsolón, majd kattintson a **Mentés**gombra.  
+5. Válassza a **Letiltás** lehetőséget a **belépés engedélyezése** kapcsolón, majd kattintson a **Mentés** gombra.  
 
    ![Beléptetési csoport bejegyzésének letiltása a portálon](./media/how-to-revoke-device-access-portal/disable-enrollment-group.png)
 
@@ -75,7 +75,7 @@ A tanúsítvány végleges letiltása a beléptetési csoport törlésével:
 
 1. Jelentkezzen be a Azure Portalba, és válassza ki a **minden erőforrás** elemet a bal oldali menüben.
 2. Az erőforrások listájában válassza ki azt a kiépítési szolgáltatást, amelyről az eszközt le szeretné állítani.
-3. A kiépítési szolgáltatásban válassza a **regisztrációk kezelése**lehetőséget, majd válassza a **regisztrációs csoportok** lapot.
+3. A kiépítési szolgáltatásban válassza a **regisztrációk kezelése** lehetőséget, majd válassza a **regisztrációs csoportok** lapot.
 4. Jelölje be a beléptetési csoport melletti jelölőnégyzetet a letiltani kívánt tanúsítványhoz. 
 5. Válassza a **Törlés** lehetőséget az ablak tetején, majd az **Igen** gombot választva erősítse meg, hogy el kívánja távolítani a beléptetési csoportot. 
 
@@ -94,7 +94,7 @@ Ha egyetlen eszközt szeretne letiltani egy regisztrációs csoportban, kövesse
 
 1. Jelentkezzen be a Azure Portalba, és válassza ki a **minden erőforrás** elemet a bal oldali menüben.
 2. Az erőforrások listájából válassza ki a letiltani kívánt eszköz beléptetési csoportját tartalmazó kiépítési szolgáltatást.
-3. A kiépítési szolgáltatásban válassza a **regisztrációk kezelése**lehetőséget, majd válassza az **Egyéni regisztrációk** lapot.
+3. A kiépítési szolgáltatásban válassza a **regisztrációk kezelése** lehetőséget, majd válassza az **Egyéni regisztrációk** lapot.
 4. Válassza az **Egyéni regisztráció hozzáadása** gombot a felső részen. 
 5. A **regisztráció hozzáadása** lapon válassza az **X. 509** lehetőséget az eszköz igazolási **mechanizmusa** .
 
@@ -102,7 +102,7 @@ Ha egyetlen eszközt szeretne letiltani egy regisztrációs csoportban, kövesse
 
     ![Az eszköz tulajdonságainak beállítása a nem engedélyezett eszközhöz](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group-1.png)
 
-6. Görgessen a **regisztráció hozzáadása** lap aljára, és válassza a **Letiltás** lehetőséget a **belépés engedélyezése** kapcsolón, majd kattintson a **Mentés**gombra. 
+6. Görgessen a **regisztráció hozzáadása** lap aljára, és válassza a **Letiltás** lehetőséget a **belépés engedélyezése** kapcsolón, majd kattintson a **Mentés** gombra. 
 
     [![Letiltott egyéni beléptetési bejegyzés használata az eszköz csoportos regisztrációjának letiltásához a portálon](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png#lightbox)
 
@@ -110,4 +110,4 @@ A regisztráció sikeres létrehozásakor az **Egyéni regisztrációk** lapon m
 
 ## <a name="next-steps"></a>Következő lépések
 
-A regisztráció a nagyobb megszüntetési folyamat része is. Az eszközök megszüntetése magában foglalja a kiépítési szolgáltatásból való kivonást és a IoT hub-ból való regisztrációt is. A teljes folyamattal kapcsolatos további tudnivalókért lásd: a [korábban automatikusan kiépített eszközök kiépítése](how-to-unprovision-devices.md) . 
+A regisztráció a nagyobb megszüntetési folyamat része is. Az eszközök megszüntetése magában foglalja a kiépítési szolgáltatásból való kivonást és a IoT hub-ból való regisztrációt is. A teljes folyamattal kapcsolatos további tudnivalókért lásd: a [korábban automatikusan kiépített eszközök kiépítése](how-to-unprovision-devices.md) .

@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e80332b172eeb4c49ae068e1781ffcaf1657f13
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ac75ab31f8c9cdd9405115db4f5c35d28707e29f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978220"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950363"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-munkaterhelések az Azure-ban: tervezési és üzembe helyezési ellenőrzőlista
 
@@ -150,7 +151,7 @@ Javasoljuk, hogy a kísérleti üzembe helyezés során egy teljes HADR-megoldá
         - Ha el szeretné kerülni az Azure-ban üzembe helyezett, helyszíni SAP GUI-felületek és SAP-alkalmazások rétegei közötti GUI-időtúllépést, akkor győződjön meg arról, hogy ezek a paraméterek be vannak-e állítva az alapértelmezett. PFL vagy a példány profiljában:
             - rdisp/keepalive_timeout = 3600
             - rdisp/életben tartás = 20
-        - Az SAP-sorba helyezni folyamat és az SAP-munkafolyamatok közötti létesített kapcsolatok megzavarásának megelőzése érdekében a **enque/encni/set_so_keepalive** paramétert **igaz**értékre kell állítani. Lásd még: [SAP-megjegyzés #2743751](https://launchpad.support.sap.com/#/notes/2743751).  
+        - Az SAP-sorba helyezni folyamat és az SAP-munkafolyamatok közötti létesített kapcsolatok megzavarásának megelőzése érdekében a **enque/encni/set_so_keepalive** paramétert **igaz** értékre kell állítani. Lásd még: [SAP-megjegyzés #2743751](https://launchpad.support.sap.com/#/notes/2743751).  
         - Ha Windows feladatátvevő fürtöt használ, győződjön meg arról, hogy a nem válaszoló csomópontokra való reagálás időpontja helyesen van beállítva az Azure-hoz. A [feladatátvételi fürt hálózati küszöbértékeit](https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834) felsoroló cikk felsorolja a paramétereket és azt, hogy azok hogyan befolyásolják a feladatátvételi érzékenységet. Ha feltételezi, hogy a fürtcsomópontok ugyanabban az alhálózatban vannak, akkor módosítania kell a következő paramétereket:
             - SameSubNetDelay = 2000
             - SameSubNetThreshold = 15

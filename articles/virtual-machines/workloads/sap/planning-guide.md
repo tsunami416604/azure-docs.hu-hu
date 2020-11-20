@@ -5,18 +5,19 @@ author: MSSedusch
 manager: juergent
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: ea53eda3863ea5164142fa0d37fff7be365a4d5c
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: c186e7beeed3a1729560d7deb002d573e0014508
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92894100"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950975"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines az SAP NetWeaver tervezése és megvalósítása
 
@@ -314,7 +315,7 @@ A tanulmány kiegészíti az SAP-telepítési dokumentációt és az SAP-megjegy
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 A felhő-számítástechnika egy széles körben használt kifejezés, amely egyre nagyobb jelentőséggel bír az informatikai iparban, a kisvállalkozásoktól egészen a nagy és a multinacionális vállalatokig.
 
 A Microsoft Azure a Microsoft Cloud Services platformja, amely az új lehetőségek széles spektrumát kínálja. Mostantól az ügyfelek gyorsan üzembe helyezhetik és kioszthatják az alkalmazásokat a felhőben, így azok nem korlátozódnak technikai vagy költségvetési korlátozásokra. Az idő és a költségvetés hardveres infrastruktúrába való befektetése helyett a vállalatok az alkalmazásra, az üzleti folyamatokra, valamint az ügyfelek és a felhasználók számára nyújtott előnyökre is koncentrálnak.
@@ -494,7 +495,7 @@ A helyszíni díjszabással kapcsolatos további információkért olvassa el a 
 Az Azure emellett egy dedikált gazdagép fogalmait is biztosítja. A dedikált gazdagépi koncepció részletesebben szabályozza az Azure által végzett javítási ciklusokat. A javítás időpontját a saját ütemterv szerint állíthatja be. Ez az ajánlat kifejezetten olyan ügyfelek számára célozza meg a munkaterheléseket, amelyek nem feltétlenül követik a számítási feladatok normál ciklusát. Az Azure dedikált gazdagép-ajánlatok fogalmait az [Azure dedikált gazdagép](../../dedicated-hosts.md)című cikkben olvashatja. Az ajánlat használata az SAP számítási feladatait támogatja, és számos SAP-ügyfél használja, akik hatékonyabban szeretnék szabályozni az infrastruktúra és a Microsoft végleges karbantartási terveinek javítását. Ha többet szeretne megtudni arról, hogyan kezeli a Microsoft a virtuális gépeket üzemeltető Azure-infrastruktúrát, olvassa el az [Azure-beli virtuális gépek karbantartását](../../maintenance-and-updates.md)ismertető cikket.
 
 #### <a name="generation-1-and-generation-2-virtual-machines"></a>1. és 2. generációs virtuális gépek
-A Microsoft hypervisor képes a virtuális gépek két különböző generációjának kezelésére. Ezeket a formátumokat az **1** . és a **2** . generációnak nevezzük. A **2. generáció** az 2012-as évben lett bevezetve a Windows Server 2012 hypervisorral. Az Azure az 1. generációs virtuális gépek használatával indult el. Az Azure-beli virtuális gépek üzembe helyezésekor az alapértelmezett érték az 1. generációs formátumot is használja. Eközben a 2. generációs virtuális gépek formátumait is üzembe helyezheti. A [2. generációs virtuális gépek Azure](../../generation-2.md) -ban való támogatása a 2. generációs virtuális gépekként üzembe HELYEZHETŐ Azure VM-családokat sorolja fel. Ez a cikk a 2. generációs virtuális gépeknek a Hyper-V saját felhőben és az Azure-on való futtatásával kapcsolatos fontos működési különbségeit is felsorolja. Ennél is fontosabb ez a cikk az 1. generációs virtuális gépek és a 2. generációs virtuális gépek közötti, az Azure-ban futtatott működési különbségeket is felsorolja.
+A Microsoft hypervisor képes a virtuális gépek két különböző generációjának kezelésére. Ezeket a formátumokat az **1** . és a **2**. generációnak nevezzük. A **2. generáció** az 2012-as évben lett bevezetve a Windows Server 2012 hypervisorral. Az Azure az 1. generációs virtuális gépek használatával indult el. Az Azure-beli virtuális gépek üzembe helyezésekor az alapértelmezett érték az 1. generációs formátumot is használja. Eközben a 2. generációs virtuális gépek formátumait is üzembe helyezheti. A [2. generációs virtuális gépek Azure](../../generation-2.md) -ban való támogatása a 2. generációs virtuális gépekként üzembe HELYEZHETŐ Azure VM-családokat sorolja fel. Ez a cikk a 2. generációs virtuális gépeknek a Hyper-V saját felhőben és az Azure-on való futtatásával kapcsolatos fontos működési különbségeit is felsorolja. Ennél is fontosabb ez a cikk az 1. generációs virtuális gépek és a 2. generációs virtuális gépek közötti, az Azure-ban futtatott működési különbségeket is felsorolja.
 
 > [!NOTE]
 > Az 1. és a 2. generációs virtuális gépek az Azure-ban üzemelő működési különbségek. Tekintse át a  [2. generációs virtuális gépek Azure](../../generation-2.md) -ban való támogatását ismertető cikket a különbségek listájának megtekintéséhez.
@@ -856,7 +857,7 @@ Ha a virtuális gép az Azure-beli üzembe helyezési forgatókönyvben nem elé
 ---
 > ![Windows-embléma.][Logo_Windows] Windows
 >
-> Utolsó lépésként jelentkezzen be egy virtuális gépre egy rendszergazdai fiókkal. Nyisson meg egy Windows-parancssorablakot *rendszergazdaként* . Lépjen a%windir%\Windows\System32\Sysprep, és hajtsa végre sysprep.exe.
+> Utolsó lépésként jelentkezzen be egy virtuális gépre egy rendszergazdai fiókkal. Nyisson meg egy Windows-parancssorablakot *rendszergazdaként*. Lépjen a%windir%\Windows\System32\Sysprep, és hajtsa végre sysprep.exe.
 > Egy kis ablak jelenik meg. Fontos, hogy ellenőrizzék az **általánosítási** beállítást (az alapértelmezett beállítás nincs bejelölve), és az alapértelmezett "újraindítás" értékről a "Leállítás" értékre módosítsa a leállítási lehetőséget. Ez az eljárás azt feltételezi, hogy a Sysprep folyamat a helyszínen fut a virtuális gép vendég operációs rendszerében.
 > Ha az eljárást az Azure-ban már futó virtuális géppel szeretné elvégezni, kövesse a [jelen cikkben](../../windows/capture-image-resource.md)ismertetett lépéseket.
 >
@@ -1178,7 +1179,7 @@ További javaslatok és további részletek, különösen az adatbázis-kezelő 
 
 A legtöbb esetben további lemezeket kell létrehoznia ahhoz, hogy az SAP-adatbázist üzembe lehessen helyezni a virtuális gépen. Beszéltünk a jelen dokumentum SAP-környezetek számára készült virtuális gépek [/lemezek szerkezete][planning-guide-5.5.1] című fejezetében található lemezek számával kapcsolatos megfontolásokról. A Azure Portal lemezek csatlakoztatását és leválasztását teszi lehetővé az alapszintű virtuális gép üzembe helyezésekor. A lemezek csatlakoztathatók/leválaszthatók, ha a virtuális gép működik, és leáll. Lemez csatlakoztatásakor a Azure Portal egy üres lemez vagy egy meglévő lemez csatolására szolgál, amely ebben az időpontban nem csatlakozik egy másik virtuális géphez.
 
-**Megjegyzés** : a lemezeket csak egy virtuális géphez lehet csatlakoztatni egy adott időpontban.
+**Megjegyzés**: a lemezeket csak egy virtuális géphez lehet csatlakoztatni egy adott időpontban.
 
 ![Lemezek csatlakoztatása/leválasztása az Azure standard Storage szolgáltatással][planning-guide-figure-1400]
 
@@ -1186,7 +1187,7 @@ Egy új virtuális gép telepítése során eldöntheti, hogy szeretné-e haszn�
 
 Ezután el kell döntenie, hogy létre kell-e hoznia egy új és egy üres lemezt, vagy ha olyan meglévő lemezt szeretne kijelölni, amely korábban fel lett töltve, és most csatlakoztatni kell a virtuális géphez.
 
-**Fontos** : a gazdagépek gyorsítótárazását **nem** érdemes az Azure standard Storage szolgáltatással használni. A gazdagép-gyorsítótár beállításait a NONE (alapértelmezett) értéknél hagyja meg. Az Azure Premium Storage használata esetén engedélyeznie kell az olvasási gyorsítótárazást, ha az I/O-jellemző többnyire olvasási, például az adatbázis-adatfájlokkal kapcsolatos jellemző I/O-forgalom. Adatbázis-tranzakciós naplófájl esetén nem ajánlott a gyorsítótárazás.
+**Fontos**: a gazdagépek gyorsítótárazását **nem** érdemes az Azure standard Storage szolgáltatással használni. A gazdagép-gyorsítótár beállításait a NONE (alapértelmezett) értéknél hagyja meg. Az Azure Premium Storage használata esetén engedélyeznie kell az olvasási gyorsítótárazást, ha az I/O-jellemző többnyire olvasási, például az adatbázis-adatfájlokkal kapcsolatos jellemző I/O-forgalom. Adatbázis-tranzakciós naplófájl esetén nem ajánlott a gyorsítótárazás.
 
 ---
 > ![Windows-embléma.][Logo_Windows] Windows
@@ -1275,7 +1276,7 @@ Előfordulhat, hogy a tűzfalat úgy kell konfigurálnia a virtuális gépeken, 
 > * A varázsló következő lépésében hagyja a beállítást a TCP-ben, és írja be a megnyitni kívánt portszámot. Mivel az SAP-példány azonosítója 00, a 3200-es évekig tartottunk. Ha a példánya eltérő példányszámmal rendelkezik, meg kell nyitni a korábban a példány száma alapján megadott portot.
 > * A varázsló következő részén hagyja bejelölve a **kapcsolat engedélyezése** elemet.
 > * A varázsló következő lépésében meg kell határoznia, hogy a szabály a tartományra, a magán-és a nyilvános hálózatra vonatkozik-e. Szükség esetén módosítsa az igényeket. Ha azonban az SAP grafikus felhasználói felületről a nyilvános hálózaton kívülről csatlakozik, akkor a nyilvános hálózaton alkalmaznia kell a szabályt.
-> * A varázsló utolsó lépésében nevezze el a szabályt, és mentse a Finish ( **Befejezés** ) billentyűt.
+> * A varázsló utolsó lépésében nevezze el a szabályt, és mentse a Finish ( **Befejezés**) billentyűt.
 >
 > A szabály azonnal érvénybe lép.
 >
@@ -1776,8 +1777,8 @@ A vész- **helyreállítási (Dr)** az IT-szolgáltatások megszakadásának min
 
 Az Azure-beli SAP magas rendelkezésre állással kapcsolatos vitát két részre lehet bontani:
 
-* Az **Azure-infrastruktúrák magas rendelkezésre állása** , például ha számítási (VM), hálózat, tárterület stb., valamint az SAP-alkalmazások rendelkezésre állásának növeléséhez szükséges előnyök.
-* **SAP-alkalmazások magas rendelkezésre állása** , például ha az SAP szoftver összetevői:
+* Az **Azure-infrastruktúrák magas rendelkezésre állása**, például ha számítási (VM), hálózat, tárterület stb., valamint az SAP-alkalmazások rendelkezésre állásának növeléséhez szükséges előnyök.
+* **SAP-alkalmazások magas rendelkezésre állása**, például ha az SAP szoftver összetevői:
   * SAP-alkalmazások kiszolgálói
   * SAP ASCS/SCS-példány
   * ADATBÁZIS-kiszolgáló

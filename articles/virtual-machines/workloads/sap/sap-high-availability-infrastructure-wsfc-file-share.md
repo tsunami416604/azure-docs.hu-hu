@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 2ce38add-1078-4bb9-a1da-6f407a9bc910
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 14ffcbf2e111e052f4b45259b0b25664049d3b3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62803bd450db351290bbc12d650d23a4148a4536
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855365"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951196"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Azure-infrastruktúra előkészítése az SAP magas rendelkezésre állásához Windows feladatátvevő fürt és fájlmegosztás használatával SAP ASCS/SCS-példányok esetén
 
@@ -259,9 +260,9 @@ Az Azure-infrastruktúra előkészítéséhez végezze el a következőket:
 * A Windows Server 2016 használatakor javasoljuk, hogy konfigurálja az [Azure Cloud tanúsító][deploy-cloud-witness].
 
 
-## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>Telepítse manuálisan a Scale-Out fájlkiszolgáló fürtöt 
+## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>Telepítse manuálisan a Scale-Out fájlkiszolgáló fürtöt 
 
-Az alábbi kód végrehajtásával manuálisan telepítheti a Microsoft Scale-Out Fájlkiszolgálói fürtöt a blog [közvetlen tárolóhelyek az Azure-ban][ms-blog-s2d-in-azure]című témakörben leírtak szerint:  
+Az alábbi kód végrehajtásával manuálisan telepítheti a Microsoft Scale-Out Fájlkiszolgálói fürtöt a blog [közvetlen tárolóhelyek az Azure-ban][ms-blog-s2d-in-azure]című témakörben leírtak szerint:  
 
 
 ```powershell
@@ -315,7 +316,7 @@ Javasoljuk, hogy használja a Managed Disks.
 _**1. ábra**: Scale-Out Fájlkiszolgálói erőforrás-kezelő sablonjának felhasználói felületi képernyője felügyelt lemezekkel_
 
 A sablonban tegye a következőket:
-1. A **virtuális gépek száma** mezőben adja meg a minimum **2**értéket.
+1. A **virtuális gépek száma** mezőben adja meg a minimum **2** értéket.
 2. A **virtuális gépek lemezei szám** mezőjébe írja be a **3** (2 lemez + 1 tartalék lemez = 3 lemez) minimális számát.
 3. A **SOFs neve** mezőbe írja be az SAP globális gazdagép hálózati nevét ( **sapglobalhost**).
 4. A **megosztás neve** mezőbe írja be a fájlmegosztás nevét ( **sapmnt**).
@@ -328,7 +329,7 @@ A Scale-Out fájlkiszolgáló Közvetlen tárolóhelyek és Azure nem felügyelt
 
 _**2. ábra**: a Scale-Out fájlkiszolgáló Azure Resource Manager sablonjának felhasználói felületi képernyője felügyelt lemezek nélkül_
 
-A **Storage-fiók típusa** mezőben válassza a **Premium Storage**lehetőséget. Minden egyéb beállítás megegyezik a felügyelt lemezek beállításaival.
+A **Storage-fiók típusa** mezőben válassza a **Premium Storage** lehetőséget. Minden egyéb beállítás megegyezik a felügyelt lemezek beállításaival.
 
 ## <a name="adjust-cluster-timeout-settings"></a>A fürt időtúllépési beállításainak módosítása
 
@@ -340,6 +341,6 @@ Miután sikeresen telepítette a Windows Scale-Out fájlkiszolgáló fürtöt, a
 
 Ezek a beállítások az ügyfelekkel lettek tesztelve, és jó kompromisszumot biztosítanak. Elég rugalmasak, de a valós hibák és a virtuális gépek meghibásodása esetén is elég gyors feladatátvételt biztosítanak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az SAP NetWeaver magas rendelkezésre állásának telepítése Windows feladatátvevő fürtön és fájlmegosztás SAP ASCS/SCS-példányokhoz][sap-high-availability-installation-wsfc-file-share]

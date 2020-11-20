@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 5dbb8d508fe824d0264043625c988f43092f3f78
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 13b379fd3b4f788d79cbb6a9bf6d40cb1693eaf9
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699236"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948967"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor"></a>Hálózati kapcsolat figyelése a kapcsolat figyelője szolgáltatással
 
@@ -34,7 +34,7 @@ A kapcsolódási figyelő egységes végpontok közötti kapcsolatok figyelésé
 - A hibrid alkalmazásnak kapcsolódnia kell egy Azure Storage-végponthoz. A helyszíni hely és az Azure-alkalmazás ugyanahhoz az Azure Storage-végponthoz csatlakozik. Össze szeretné hasonlítani a helyszíni hely késéseit az Azure-alkalmazás késésével.
 - Szeretné megtekinteni a helyszíni telepítések és a felhőalapú alkalmazást futtató Azure-beli virtuális gépek közötti kapcsolatot.
 
-A kapcsolat figyelője a két funkció közül a legjobbat ötvözi: a Network Watcher- [kapcsolat figyelője (klasszikus)](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#monitor-communication-between-a-virtual-machine-and-an-endpoint) és a Network Performance monitor (NPM) [szolgáltatás kapcsolódási figyelője](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-service-connectivity), a [ExpressRoute figyelése](https://docs.microsoft.com/azure/expressroute/how-to-npm)és a [Teljesítményfigyelő](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-performance-monitor) funkció.
+A kapcsolat figyelője a két funkció közül a legjobbat ötvözi: a Network Watcher- [kapcsolat figyelője (klasszikus)](./network-watcher-monitoring-overview.md#monitor-communication-between-a-virtual-machine-and-an-endpoint) és a Network Performance monitor (NPM) [szolgáltatás kapcsolódási figyelője](../azure-monitor/insights/network-performance-monitor-service-connectivity.md), a [ExpressRoute figyelése](../expressroute/how-to-npm.md)és a [Teljesítményfigyelő](../azure-monitor/insights/network-performance-monitor-performance-monitor.md) funkció.
 
 A következő előnyökkel jár a Csatlakozáskezelő:
 
@@ -65,7 +65,7 @@ A kapcsolati figyelő egyszerűsített végrehajtható fájlokra támaszkodik a 
 
 Ahhoz, hogy a Csatlakozáskezelő felismerje az Azure-beli virtuális gépeket megfigyelési forrásként, telepítse a Network Watcher-ügynök virtuálisgép-bővítményét. Ezt a bővítményt *Network Watcher bővítménynek* is nevezzük. Az Azure Virtual Machines használatához a bővítménynek teljes körű monitorozást és egyéb speciális funkciókat kell elindítania. 
 
-A [virtuális gép létrehozásakor](https://docs.microsoft.com/azure/network-watcher/connection-monitor#create-the-first-vm)a Network Watcher bővítményt is telepítheti. A [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/network-watcher-linux) és a [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/network-watcher-windows)Network Watcher bővítményét külön is telepítheti, konfigurálhatja és elháríthatja.
+A [virtuális gép létrehozásakor](./connection-monitor.md#create-the-first-vm)a Network Watcher bővítményt is telepítheti. A [Linux](../virtual-machines/extensions/network-watcher-linux.md) és a [Windows](../virtual-machines/extensions/network-watcher-windows.md)Network Watcher bővítményét külön is telepítheti, konfigurálhatja és elháríthatja.
 
 A hálózati biztonsági csoport (NSG) vagy a tűzfal szabályai letilthatják a forrás és a cél közötti kommunikációt. A Csatlakozáskezelő észleli ezt a problémát, és diagnosztikai üzenetként jeleníti meg a topológiában. A kapcsolat figyelésének engedélyezéséhez győződjön meg arról, hogy a NSG és a tűzfalszabályok engedélyezik a TCP-vagy ICMP-csomagok használatát a forrás és a cél között.
 
@@ -73,7 +73,7 @@ A hálózati biztonsági csoport (NSG) vagy a tűzfal szabályai letilthatják a
 
 Ahhoz, hogy a Csatlakozáskezelő felismerje a helyszíni gépeket a figyeléshez, telepítse a Log Analytics ügynököt a gépekre. Ezután engedélyezze a Network Performance Monitor megoldást. Ezek az ügynökök Log Analytics munkaterületekhez vannak társítva, ezért be kell állítania a munkaterület-azonosítót és az elsődleges kulcsot, mielőtt az ügynökök el tudják indítani a figyelést.
 
-A Windows rendszerű gépek Log Analytics ügynökének telepítéséhez lásd: [Azure monitor virtuálisgép-bővítmény a Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows)rendszerhez.
+A Windows rendszerű gépek Log Analytics ügynökének telepítéséhez lásd: [Azure monitor virtuálisgép-bővítmény a Windows](../virtual-machines/extensions/oms-windows.md)rendszerhez.
 
 Ha az elérési út tartalmazza a tűzfalakat vagy a hálózati virtuális berendezéseket (NVA), akkor győződjön meg arról, hogy a célhely elérhető.
 
@@ -81,7 +81,7 @@ Ha az elérési út tartalmazza a tűzfalakat vagy a hálózati virtuális beren
 
 A virtuális hálózattal rendelkező összes előfizetés engedélyezve van a Network Watcher. Amikor létrehoz egy virtuális hálózatot az előfizetésében, Network Watcher automatikusan engedélyezve lesz a virtuális hálózat régiójában és előfizetésében. Ez az automatikus engedélyezés nem befolyásolja az erőforrásokat, vagy díjköteles. Győződjön meg arról, hogy a Network Watcher nincs explicit módon letiltva az előfizetésen. 
 
-További információ: [Network Watcher engedélyezése](https://docs.microsoft.com/azure/network-watcher/network-watcher-create).
+További információ: [Network Watcher engedélyezése](./network-watcher-create.md).
 
 ## <a name="create-a-connection-monitor"></a>Kapcsolatfigyelő létrehozása 
 
@@ -111,7 +111,7 @@ A Csatlakozáskezelő a következő entitásokat tartalmazza:
 
  ![A kapcsolati figyelőt bemutató diagram, a tesztelési csoportok és tesztek közötti kapcsolat meghatározása](./media/connection-monitor-2-preview/cm-tg-2.png)
 
-[Azure Portal](connection-monitor-preview-create-using-portal.md) vagy [ARMClient](connection-monitor-preview-create-using-arm-client.md) használatával is létrehozhat egy figyelőt
+[Azure Portal](./connection-monitor-create-using-portal.md) vagy [ARMClient](./connection-monitor-create-using-template.md) használatával is létrehozhat egy figyelőt
 
 A tesztelési csoportba felvett összes forrás, cél és tesztelési konfiguráció az egyes tesztekre bontva kerül. Íme egy példa arra, hogyan oszlanak meg a források és a célhelyek:
 
@@ -131,10 +131,10 @@ A tesztelési csoportba felvett összes forrás, cél és tesztelési konfigurá
 | 6 | B | T | 2. konfiguráció |
 | 7 | B | E | 1. konfiguráció |
 | 8 | B | E | 2. konfiguráció |
-| 9 | C | T | 1. konfiguráció |
-| 10 | C | T | 2. konfiguráció |
-| 11 | C | E | 1. konfiguráció |
-| 12 | C | E | 2. konfiguráció |
+| 9 | C# | T | 1. konfiguráció |
+| 10 | C# | T | 2. konfiguráció |
+| 11 | C# | E | 1. konfiguráció |
+| 12 | C# | E | 2. konfiguráció |
 
 ### <a name="scale-limits"></a>Skálázási korlátok
 
@@ -213,7 +213,7 @@ Csak a sikertelen tesztek megjelenítése a 10.192.64.56, ahol a forrás IP-cím
 Csak a sikertelen tesztek megjelenítése a outlook.office365.com:
 1. Váltás a nézetre a **teszteléshez**.
 1. Az állapot-alapú szűrő esetében válassza a **sikertelen** lehetőséget.
-1. A Keresés mezőbe írja be a *Outlook.office365.com*
+1. A Keresés mezőbe írja be a *Office.Live.com*
 1. A legfelső szintű szűrő **hatókörében** válassza a **Célhelyek** lehetőséget.
   
   :::image type="content" source="./media/connection-monitor-2-preview/tests-view.png" alt-text="Képernyőfelvétel: a szűrt nézetet megjelenítő nézet, amely csak a Outlook.Office365.com célhelyének sikertelen teszteit jeleníti meg" lightbox="./media/connection-monitor-2-preview/tests-view.png":::
@@ -271,12 +271,12 @@ A kapcsolatok figyelése előtt létrehozott AverageRoundtripMs a következő n�
 
 Metrikák használata esetén állítsa be az erőforrástípust a Microsoft. Network/networkWatchers/connectionMonitors
 
-| Metrika | Megjelenített név | Egység | Összesítés típusa | Leírás | Dimenziók |
+| Metric | Megjelenített név | Egység | Összesítés típusa | Leírás | Dimenziók |
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent | %-Os mintavétel sikertelen | Százalék | Átlag | A kapcsolat figyelési mintavételének százalékos aránya meghiúsult. | Nincsenek méretek |
 | AverageRoundtripMs | Átlagos menetidő (MS) | Ezredmásodpercben | Átlag | A forrás és a cél között eljuttatott kapcsolat-figyelési mintavételek átlagos hálózati RTT. |             Nincsenek méretek |
-| ChecksFailedPercent (előzetes verzió) | %-Os ellenőrzés sikertelen (előzetes verzió) | Százalék | Átlag | A teszt sikertelen ellenőrzésének százalékos aránya. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Sourceresourceid azonosítónak <br>SourceType <br>Protokoll <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Régió |
-| RoundTripTimeMs (előzetes verzió) | Oda-és visszaút időpontja (MS) (előzetes verzió) | Ezredmásodpercben | Átlag | A forrás és a cél között továbbított ellenőrzések RTT. Ez az érték nem átlag. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Sourceresourceid azonosítónak <br>SourceType <br>Protokoll <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Régió |
+| ChecksFailedPercent (előzetes verzió) | %-Os ellenőrzés sikertelen (előzetes verzió) | Százalék | Átlag | A teszt sikertelen ellenőrzésének százalékos aránya. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Sourceresourceid azonosítónak <br>SourceType <br>Protokoll <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
+| RoundTripTimeMs (előzetes verzió) | Oda-és visszaút időpontja (MS) (előzetes verzió) | Ezredmásodpercben | Átlag | A forrás és a cél között továbbított ellenőrzések RTT. Ez az érték nem átlag. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>Sourceresourceid azonosítónak <br>SourceType <br>Protokoll <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
 
 #### <a name="metric-based-alerts-for-connection-monitor"></a>Metrika-alapú riasztások a kapcsolatok figyelője számára
 
@@ -348,5 +348,5 @@ Az Azure-beli virtuális gépeket forrásként szolgáló hálózatok esetében 
 
 ## <a name="next-steps"></a>Következő lépések
     
-   * Ismerje meg [, hogyan hozhatja létre a Azure Portal a kapcsolódási figyelőt](connection-monitor-preview-create-using-portal.md)  
-   * Ismerje meg [, hogyan hozhat létre ARMClient a kapcsolódási figyelő használatával](connection-monitor-preview-create-using-arm-client.md)  
+   * Ismerje meg [, hogyan hozhatja létre a Azure Portal a kapcsolódási figyelőt](./connection-monitor-create-using-portal.md)  
+   * Ismerje meg [, hogyan hozhat létre ARMClient a kapcsolódási figyelő használatával](./connection-monitor-create-using-template.md)

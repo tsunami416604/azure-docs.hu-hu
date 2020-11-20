@@ -10,12 +10,12 @@ ms.devlang: NA
 ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: e9033caf903967432b713afa00a509bd2d966d8b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ff70df225b5ed27960c96889d409d7005f0fbcc4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972016"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950730"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>StorSimple-kötet helyreállítása biztonságimásolat-készletből
 
@@ -63,7 +63,7 @@ A 4. frissítésben a Windows PowerShell-parancsmagok segítségével lekérdezh
 
 * `Set-HcsRehydrationJob` – Ez a parancsmag lehetővé teszi a rehidratáló feladat szüneteltetését, leállítását, folytatását, ha a rehidratálás folyamatban van.
 
-A rehidratáló parancsmagokkal kapcsolatos további információkért nyissa meg a [Windows PowerShell-parancsmagok referenciáját a StorSimple](https://technet.microsoft.com/library/dn688168.aspx).
+A rehidratáló parancsmagokkal kapcsolatos további információkért nyissa meg a [Windows PowerShell-parancsmagok referenciáját a StorSimple](/powershell/module/hcs/?viewFallbackFrom=winserverr2-ps).
 
 Automatikus rehidratálás esetén általában nagyobb átmeneti olvasási teljesítmény várható. A tökéletesítések tényleges nagysága számos tényezőtől függ, például a hozzáférési mintával, az adatváltozással és az adattípussal. 
 
@@ -95,7 +95,7 @@ A **biztonsági mentési katalógus** panel használatával visszaállíthatja a
 
 
 ### <a name="to-restore-your-volume"></a>A kötet visszaállítása
-1. Lépjen a StorSimple Eszközkezelő szolgáltatásra, majd kattintson a **biztonsági mentési katalógus**lehetőségre.
+1. Lépjen a StorSimple Eszközkezelő szolgáltatásra, majd kattintson a **biztonsági mentési katalógus** lehetőségre.
 
 2. Válasszon egy biztonságimásolat-készletet a következők szerint:
    
@@ -113,7 +113,7 @@ A **biztonsági mentési katalógus** panel használatával visszaállíthatja a
    > [!IMPORTANT]
    > Először is győződjön meg arról, hogy a köteteket offline állapotba helyezte a gazdagépen, mielőtt a kötetek offline állapotba kerültek az eszközön. Ha nem végzi el a kötetek offline állapotba helyezését a gazdagépen, lehetséges, hogy adatsérülést eredményezhet.
    
-4. Váltson vissza a **biztonsági mentési katalógus** lapra, és válassza ki a biztonságimásolat-készletet. Kattintson a jobb gombbal, majd a helyi menüben válassza a **visszaállítás**lehetőséget.
+4. Váltson vissza a **biztonsági mentési katalógus** lapra, és válassza ki a biztonságimásolat-készletet. Kattintson a jobb gombbal, majd a helyi menüben válassza a **visszaállítás** lehetőséget.
 
     ![Biztonságimásolat-készlet 2. listája](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
 
@@ -121,7 +121,7 @@ A **biztonsági mentési katalógus** panel használatával visszaállíthatja a
    
     ![Megerősítő oldal](./media/storsimple-8000-restore-from-backup-set-u2/restorebu2.png)
 
-7. Kattintson a **visszaállítás**gombra. Ez egy visszaállítási feladatot kezdeményez, amelyet a **feladatok** lap elérésével tekinthet meg.
+7. Kattintson a **visszaállítás** gombra. Ez egy visszaállítási feladatot kezdeményez, amelyet a **feladatok** lap elérésével tekinthet meg.
 
    ![2. megerősítő lap](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
 
@@ -137,4 +137,3 @@ A visszaállítási művelet befejezéséhez állítsa offline állapotba a köt
 ## <a name="next-steps"></a>Következő lépések
 * Ismerje meg, hogyan [kezelheti a StorSimple-köteteket](storsimple-8000-manage-volumes-u2.md).
 * Ismerje meg, hogyan kezelheti a [StorSimple-eszközt a StorSimple Eszközkezelő szolgáltatással](storsimple-8000-manager-service-administration.md).
-

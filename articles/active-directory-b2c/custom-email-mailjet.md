@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6f2608dafb77aeba98f188ec04f78649656ef969
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: b74de2bdf1f6239f1006c820579a336946939421
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089655"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949581"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>Egyéni e-mail-ellenőrzés a mailjet
 
 Az egyéni e-mailek használata Azure Active Directory B2C (Azure AD B2C) a testreszabott e-mailek küldése az alkalmazásait használó felhasználók számára. A [DisplayControls](display-controls.md) (jelenleg előzetes verzióban) és a harmadik féltől származó e-mail-szolgáltató mailjet használatával saját e-mail-sablont használhat, amely a következőkből áll *:* cím és tárgy, valamint támogatja a honosítási és egyéni egyszeri jelszavas (OTP) beállításokat.
 
-Az egyéni e-mail-ellenőrzéshez egy külső gyártótól származó e-mail-szolgáltató, például [mailjet](https://Mailjet.com), [SendGrid](custom-email.md)vagy [SparkPost](https://sparkpost.com), egyéni REST API vagy bármilyen HTTP-alapú e-mail-szolgáltató használata szükséges (beleértve a sajátját is). Ez a cikk a mailjet-t használó megoldások beállítását ismerteti.
+Az egyéni e-mail-ellenőrzéshez egy külső gyártótól származó e-mail-szolgáltató, például [mailjet](https://Mailjet.com), [SendGrid](./custom-email-sendgrid.md)vagy [SparkPost](https://sparkpost.com), egyéni REST API vagy bármilyen HTTP-alapú e-mail-szolgáltató használata szükséges (beleértve a sajátját is). Ez a cikk a mailjet-t használó megoldások beállítását ismerteti.
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
@@ -42,26 +42,26 @@ Ezután tárolja a mailjet API-kulcsot egy Azure AD B2C házirend-kulcsban a sza
 1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, és válassza ki a Azure ad B2C könyvtárat.
 1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 1. Az **Áttekintés** lapon válassza az **identitási élmény keretrendszert**.
-1. Válassza a **szabályzat kulcsok**lehetőséget, majd kattintson a **Hozzáadás**gombra.
-1. A **Beállítások**területen válassza a **manuális**lehetőséget.
+1. Válassza a **szabályzat kulcsok** lehetőséget, majd kattintson a **Hozzáadás** gombra.
+1. A **Beállítások** területen válassza a **manuális** lehetőséget.
 1. Adja meg a szabályzat kulcsának **nevét** . Például: `MailjetApiKey`. A rendszer automatikusan hozzáadja az előtagot a `B2C_1A_` kulcs nevéhez.
-1. A **Secret (titkos**kulcs) mezőben adja meg a korábban rögzített mailjet **API-kulcsot** .
-1. A **kulcshasználat**beállításnál válassza az **aláírás**lehetőséget.
+1. A **Secret (titkos** kulcs) mezőben adja meg a korábban rögzített mailjet **API-kulcsot** .
+1. A **kulcshasználat** beállításnál válassza az **aláírás** lehetőséget.
 1. Kattintson a **Létrehozás** gombra.
-1. Válassza a **szabályzat kulcsok** lehetőséget, majd kattintson a **Hozzáadás**gombra.
-1. A **Beállítások**területen válassza a **manuális**lehetőséget.
+1. Válassza a **szabályzat kulcsok** lehetőséget, majd kattintson a **Hozzáadás** gombra.
+1. A **Beállítások** területen válassza a **manuális** lehetőséget.
 1. Adja meg a szabályzat kulcsának **nevét** . Például: `MailjetSecretKey`. A rendszer automatikusan hozzáadja az előtagot a `B2C_1A_` kulcs nevéhez.
-1. A **Secret (titkos**kulcs) mezőben adja meg a korábban rögzített **titkos** mailjet.
-1. A **kulcshasználat**beállításnál válassza az **aláírás**lehetőséget.
+1. A **Secret (titkos** kulcs) mezőben adja meg a korábban rögzített **titkos** mailjet.
+1. A **kulcshasználat** beállításnál válassza az **aláírás** lehetőséget.
 1. Kattintson a **Létrehozás** gombra.
 
 ## <a name="create-a-mailjet-template"></a>Mailjet-sablon létrehozása
 
 Hozzon létre egy mailjet [dinamikus tranzakciós sablont](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/)a létrehozott mailjet-fiókkal és egy Azure ad B2Ci mailjet API-kulccsal.
 
-1. A mailjet webhelyen nyissa meg a [tranzakciós sablonok](https://app.mailjet.com/templates/transactional) lapot, és válassza az **új sablon létrehozása**lehetőséget.
-1. Válassza **a HTML**-kódban való kódolással lehetőséget, majd válassza **a teljesen új kód**lehetőséget.
-1. Adjon meg egy egyedi nevet, például: `Verification email` , majd válassza a **Létrehozás**lehetőséget.
+1. A mailjet webhelyen nyissa meg a [tranzakciós sablonok](https://app.mailjet.com/templates/transactional) lapot, és válassza az **új sablon létrehozása** lehetőséget.
+1. Válassza **a HTML**-kódban való kódolással lehetőséget, majd válassza **a teljesen új kód** lehetőséget.
+1. Adjon meg egy egyedi nevet, például: `Verification email` , majd válassza a **Létrehozás** lehetőséget.
 1. A HTML-szerkesztőben illessze be a következő HTML-sablont, vagy használja a sajátját. A `{{var:otp:""}}` és a `{{var:email:""}}` Paraméterek dinamikusan lesznek lecserélve az egyszeri jelszóval és a felhasználói e-mail-címmel.
 
     ```HTML
@@ -159,10 +159,10 @@ Hozzon létre egy mailjet [dinamikus tranzakciós sablont](https://sendgrid.com/
     ```
 
 1. A bal felső rész **szerkesztési tárgyának** kibontása
-    1. A **Tárgy**mezőben adja meg a tárgy alapértelmezett értékét. A mailjet ezt az értéket használja, ha az API nem tartalmaz tárgy paramétert.
-    1. A **név**mezőbe írja be a vállalat nevét.
-    1. A **cím**mezőben válassza ki az e-mail-címét
-    1. Válassza a **Mentés** lehetőséget.
+    1. A **Tárgy** mezőben adja meg a tárgy alapértelmezett értékét. A mailjet ezt az értéket használja, ha az API nem tartalmaz tárgy paramétert.
+    1. A **név** mezőbe írja be a vállalat nevét.
+    1. A **cím** mezőben válassza ki az e-mail-címét
+    1. Kattintson a **Mentés** gombra.
 1. A jobb felső sarokban válassza a **mentés & közzététel**, majd az **Igen, a módosítások közzététele** lehetőséget.
 1. Jegyezze fel a létrehozott sablon **azonosítóját** egy későbbi lépésben való használatra. Ezt az azonosítót kell megadnia [a jogcím-átalakítás hozzáadásakor](#add-the-claims-transformation).
 

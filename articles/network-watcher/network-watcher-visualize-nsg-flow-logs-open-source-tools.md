@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 0896df301718c74e63a9e18c74615130fa80c952
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18ffc5aa9c56451099afc4ddbe8b6ac5bd588974
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986259"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948765"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>Azure Network Watcher NSG-forgalomnaplók vizualizációja nyílt forráskódú eszközök használatával
 
@@ -25,7 +25,7 @@ A hálózati biztonsági csoport folyamatábrája olyan információkat biztosí
 
 Ezek a flow-naplók nehéz kézzel elemezni és betekintést nyerni. Azonban több nyílt forráskódú eszköz is rendelkezésre áll, amelyek segítenek megjeleníteni ezeket az adatforrásokat. Ez a cikk megoldást nyújt a naplók rugalmas verem használatával történő megjelenítésére, így gyorsan indexelheti és megjelenítheti a folyamat naplóit egy Kibana-irányítópulton.
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Használati eset
 
 Ebben a cikkben egy olyan megoldást hozunk létre, amely lehetővé teszi a hálózati biztonsági csoport folyamatábráinak megjelenítését a rugalmas verem használatával.  A Logstash bemeneti beépülő modulja közvetlenül a flow-naplókat tartalmazó tárolási blobból szerzi be a folyamat naplóit. Ezután a rugalmas verem használatával a rendszer indexeli a folyamat naplóit, és egy Kibana-irányítópult létrehozásához használja az információk megjelenítéséhez.
 
@@ -41,7 +41,7 @@ Ha a NSG-flow naplóit a rugalmas Veremtel csatlakoztatja, létrehozhatunk egy K
 
 #### <a name="install-elasticsearch"></a>A Elasticsearch telepítése
 
-1. A 5,0-es és újabb verziókhoz tartozó rugalmas verem Java 8-at igényel. Futtassa a parancsot a `java -version` verziójának vizsgálatához. Ha nincs telepítve a Java, tekintse meg az [Azure-suppored JDK](https://aka.ms/azure-jdks)dokumentációját.
+1. A 5,0-es és újabb verziókhoz tartozó rugalmas verem Java 8-at igényel. Futtassa a parancsot a `java -version` verziójának vizsgálatához. Ha nincs telepítve a Java, tekintse meg az [Azure-suppored JDK](/azure/developer/java/fundamentals/java-jdk-long-term-support)dokumentációját.
 2. Töltse le a rendszerének megfelelő bináris csomagot:
 
    ```bash

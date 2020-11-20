@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
-ms.openlocfilehash: ae87771e8a557ad7cb58c9cad9231784606cdd74
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 25f4ae0dbfd7827a36dede6a889c342ea490e273
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426549"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948476"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Traffic Analytics gyakori kérdések
 
@@ -52,13 +52,13 @@ A Traffic Analytics engedélyezéséhez a fióknak a következők valamelyikét 
         
 Az előfizetéshez felhasználóhoz rendelt szerepkörök ellenőrzését:
 
-1. Jelentkezzen be az Azure-ba a **login-AzAccount**használatával. 
+1. Jelentkezzen be az Azure-ba a **login-AzAccount** használatával. 
 
-2. Válassza ki a szükséges előfizetést a **Select-AzSubscription**használatával. 
+2. Válassza ki a szükséges előfizetést a **Select-AzSubscription** használatával. 
 
-3. Az adott felhasználóhoz rendelt összes szerepkör listázásához használja a  **Get-AzRoleAssignment-SignInName [felhasználói e-mail]-IncludeClassicAdministrators**lehetőséget. 
+3. Az adott felhasználóhoz rendelt összes szerepkör listázásához használja a  **Get-AzRoleAssignment-SignInName [felhasználói e-mail]-IncludeClassicAdministrators** lehetőséget. 
 
-Ha nem lát kimenetet, forduljon a megfelelő előfizetés-rendszergazdához, és kérjen hozzáférést a parancsok futtatásához. További részletek: [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása Azure PowerShell használatával](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
+Ha nem lát kimenetet, forduljon a megfelelő előfizetés-rendszergazdához, és kérjen hozzáférést a parancsok futtatásához. További részletek: [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása Azure PowerShell használatával](../role-based-access-control/role-assignments-powershell.md).
 
 
 ## <a name="in-which-azure-regions-is-traffic-analytics-available"></a>Mely Azure-régiók Traffic Analytics elérhetők?
@@ -126,7 +126,7 @@ Igen.
 
 ## <a name="can-i-use-an-existing-workspace"></a>Használhatok egy meglévő munkaterületet?
 
-Igen. Ha egy meglévő munkaterületet választ ki, győződjön meg arról, hogy az új lekérdezési nyelvre lett migrálva. Ha nem szeretné frissíteni a munkaterületet, egy újat kell létrehoznia. További információ az új lekérdezési nyelvről: [Azure monitor naplók frissítése az új naplók keresésére](../log-analytics/log-analytics-log-search-upgrade.md).
+Igen. Ha egy meglévő munkaterületet választ ki, győződjön meg arról, hogy az új lekérdezési nyelvre lett migrálva. Ha nem szeretné frissíteni a munkaterületet, egy újat kell létrehoznia. További információ az új lekérdezési nyelvről: [Azure monitor naplók frissítése az új naplók keresésére](../azure-monitor/log-query/log-query-overview.md).
 
 ## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>Használhatom az Azure Storage-fiókomat egy előfizetésben, és az Log Analytics munkaterületem egy másik előfizetésben is szerepelhet?
 
@@ -176,7 +176,7 @@ Az erőforrások információit látja az irányítópulton; azonban nem állnak
 
 ## <a name="can-i-configure-traffic-analytics-using-powershell-or-an-azure-resource-manager-template-or-client"></a>Konfigurálható a Traffic Analytics a PowerShell vagy egy Azure Resource Manager sablon vagy ügyfél használatával?
 
-A Traffic Analytics a 6.2.1-es verziótól kezdve a Windows PowerShell használatával konfigurálható. A flow naplózásának és a Traffic Analytics konfigurálásához egy adott NSG a Set parancsmag használatával: [set-AzNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherconfigflowlog). A flow naplózásának és a Traffic Analytics állapotának egy adott NSG való lekéréséhez lásd: [Get-AzNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcherflowlogstatus).
+A Traffic Analytics a 6.2.1-es verziótól kezdve a Windows PowerShell használatával konfigurálható. A flow naplózásának és a Traffic Analytics konfigurálásához egy adott NSG a Set parancsmag használatával: [set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog). A flow naplózásának és a Traffic Analytics állapotának egy adott NSG való lekéréséhez lásd: [Get-AzNetworkWatcherFlowLogStatus](/powershell/module/az.network/get-aznetworkwatcherflowlogstatus).
 
 Jelenleg nem használhat Azure Resource Manager sablont a Traffic Analytics konfigurálásához.
 
@@ -250,7 +250,7 @@ Például ha a flow az USA nyugati középső régióját veszi [figyelembe, és
 
 ## <a name="how-frequently-does-traffic-analytics-process-data"></a>Milyen gyakran Traffic Analytics az adatfeldolgozás?
 
-Tekintse át Traffic Analytics séma és az adatösszesítési dokumentum [adatösszesítési szakaszát](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema#data-aggregation) .
+Tekintse át Traffic Analytics séma és az adatösszesítési dokumentum [adatösszesítési szakaszát](./traffic-analytics-schema.md#data-aggregation) .
 
 ## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>Hogyan működik Traffic Analytics úgy, hogy az IP-cím rosszindulatú? 
 
@@ -262,7 +262,7 @@ A Traffic Analytics nem rendelkezik beépített támogatással a riasztásokhoz.
 - A Traffic Analytics Log Analytics shortlink is használhatja. 
 - A lekérdezések megírásához használja az [itt dokumentált sémát](traffic-analytics-schema.md) 
 - A riasztás létrehozásához kattintson az "új riasztási szabály" elemre.
-- A riasztás létrehozásához tekintse meg a [riasztások dokumentációját](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)
+- A riasztás létrehozásához tekintse meg a [riasztások dokumentációját](../azure-monitor/platform/alerts-log.md)
 
 ## <a name="how-do-i-check-which-vms-are-receiving-most-on-premises-traffic"></a>Hogyan annak ellenőrzését, hogy mely virtuális gépek kapják meg a legtöbb helyszíni forgalmat?
 
@@ -348,10 +348,10 @@ A földrajzi Térkép oldal két fő szakaszt tartalmaz:
 - Miután kiválasztott egy szűrőt a szalagcímre, és megnyomta a gombot `Ctrl+F6` , a fókusz az egyik kiemelt csomópontra (**Azure Datacenter** vagy **ország/régió**) kerül át a Térkép nézetben.
 - A térképen található többi kijelölt csomópontra való áthelyezéshez használja a `Tab` vagy a `Right arrow` kulcsot a továbbítási mozgáshoz. Használja `Shift+Tab` a vagy a `Left arrow` billentyűt a visszafelé mozgatáshoz.
 - A Térkép bármelyik Kiemelt csomópontjának kiválasztásához használja a `Enter` vagy a `Down arrow` kulcsot.
-- Az ilyen csomópontok kiválasztásakor a fókusz áthelyezése a csomópont **információs eszköz mezőjébe** . Alapértelmezés szerint a fókusz a **tájékoztatási eszköz mezőben**lévő lezárt gombra lép. A **Box** nézeten belüli további áthelyezéshez használja a `Right arrow` és `Left arrow` a billentyűket a továbbításhoz és a visszafelé való mozgáshoz. A gomb megnyomásakor a `Enter` fókusz gombra kell kattintania a **tájékoztatási eszköz mezőben**.
+- Az ilyen csomópontok kiválasztásakor a fókusz áthelyezése a csomópont **információs eszköz mezőjébe** . Alapértelmezés szerint a fókusz a **tájékoztatási eszköz mezőben** lévő lezárt gombra lép. A **Box** nézeten belüli további áthelyezéshez használja a `Right arrow` és `Left arrow` a billentyűket a továbbításhoz és a visszafelé való mozgáshoz. A gomb megnyomásakor a `Enter` fókusz gombra kell kattintania a **tájékoztatási eszköz mezőben**.
 - Amikor megnyomja a `Tab` fókuszt a **tájékoztatási eszköz mezőben**, a fókusz a kijelölt csomóponttal megegyező kontinensen lévő végpontokra kerül át. A `Right arrow` és a `Left arrow` kulcsok használatával áthelyezheti ezeket a végpontokat.
 - Ha át szeretne térni más folyamat-végpontokra vagy kontinens-fürtökre, használja `Tab` a továbbítási mozgáshoz és `Shift+Tab` a visszafelé mozgatáshoz.
-- Ha a fókusz a **kontinensen lévő fürtökön**található, a `Enter` vagy a `Down` nyílbillentyűk használatával kiemelheti a kontinensen belüli fürtben található végpontokat. Ha a végpontokon és a Bezárás gombra kattint a kontinens fürtjének információs mezőjében, használja a vagy a `Right arrow` `Left arrow` kulcsot a továbbításhoz és a visszafelé mozgáshoz. Bármelyik végponton használhatja a `Shift+L` kapcsolót a kiválasztott csomópontról a végpontra való váltáshoz. `Shift+L`Az újbóli megnyomásával átléphet a kiválasztott végpontra.
+- Ha a fókusz a **kontinensen lévő fürtökön** található, a `Enter` vagy a `Down` nyílbillentyűk használatával kiemelheti a kontinensen belüli fürtben található végpontokat. Ha a végpontokon és a Bezárás gombra kattint a kontinens fürtjének információs mezőjében, használja a vagy a `Right arrow` `Left arrow` kulcsot a továbbításhoz és a visszafelé mozgáshoz. Bármelyik végponton használhatja a `Shift+L` kapcsolót a kiválasztott csomópontról a végpontra való váltáshoz. `Shift+L`Az újbóli megnyomásával átléphet a kiválasztott végpontra.
         
 ### <a name="keyboard-navigation-at-any-stage"></a>Billentyűzet-navigáció bármely fázisban
     
@@ -400,4 +400,4 @@ A virtuális alhálózatok topológiája lap két fő szakaszt tartalmaz:
 - Miután kiválasztott egy szűrőt a szalagcímen, és megnyomta a gombot `Ctrl+F6` , a fókusz a topológia nézet egyik kijelölt csomópontjára (**alhálózata**) helyezi át.
 - A topológia nézet más kiemelt csomópontjaira való áthelyezéshez használja a kulcsot a `Shift+Right arrow` továbbítási mozgáshoz. 
 - A Kiemelt csomópontokon a fókusz áthelyezése a csomópont **információs eszköz mezőjébe** . Alapértelmezés szerint a fókusz a **tájékoztatási eszköz mező** **További részletek** gombjára lép. A **Box** nézeten belüli további áthelyezéshez használja a `Right arrow` és `Left arrow` a billentyűket a továbbításhoz és a visszafelé való mozgáshoz. A gomb megnyomásakor a `Enter` fókusz gombra kell kattintania a **tájékoztatási eszköz mezőben**.
-- Az ilyen csomópontok kiválasztásakor a kulcs megnyomásával megtekintheti az összes kapcsolatát, egyet pedig eggyel `Shift+Left arrow` . A fókusz a kapcsolatok **információs eszköz mezőjére** lép. A fókuszt bármikor visszahelyezheti a csomópontra az újbóli megnyomásával `Shift+Right arrow` .    
+- Az ilyen csomópontok kiválasztásakor a kulcs megnyomásával megtekintheti az összes kapcsolatát, egyet pedig eggyel `Shift+Left arrow` . A fókusz a kapcsolatok **információs eszköz mezőjére** lép. A fókuszt bármikor visszahelyezheti a csomópontra az újbóli megnyomásával `Shift+Right arrow` .

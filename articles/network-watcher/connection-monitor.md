@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: acdaf2318c3082db876ed9c69b704d3d00cd4c90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bef78766deb739791720838bb27649586da96152
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76834654"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948794"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Oktatóanyag: Két virtuális gép közötti hálózati kommunikáció monitorozása az Azure Portal használatával
 
@@ -32,7 +32,7 @@ A virtuális gépek és a végpontok (pl. egy másik virtuális gép) közötti 
 > * Riasztások létrehozása a kapcsolatfigyelő metrikáin
 > * Virtuális gépek közötti kommunikációs probléma diagnosztizálása és a megoldás megismerése
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -73,7 +73,7 @@ Végezze el ismét [Az első virtuális gép létrehozása](#create-the-first-vm
 |Lépés|Beállítás|Érték|
 |---|---|---|
 | 1 | **Ubuntu-kiszolgáló** verziójának kiválasztása |                                                                         |
-| 3 | Név                                  | myVm2                                                                   |
+| 3 | Name                                  | myVm2                                                                   |
 | 3 | Hitelesítéstípus                   | Illessze be SSH nyilvános kulcsát, vagy válassza a **Jelszó** lehetőséget és adjon meg egy jelszót. |
 | 3 | Erőforráscsoport                        | Válassza a **Meglévő használata** lehetőséget, majd a **myResourceGroup** elemet.                 |
 | 6 | Bővítmények                            | **Linux-Network Watcher ügynök**                                             |
@@ -116,7 +116,7 @@ Hozzon létre egy kapcsolatfigyelőt a *myVm1* és a *myVm2* virtuális gép kö
 
     | Elem                     | Érték                      | Részletek                                                     |
     | ---------                | ---------                  |--------                                                     |
-    | status                   | Elérhető                  | Jelzi, hogy a végpont elérhető-e.|
+    | Állapot                   | Elérhető                  | Jelzi, hogy a végpont elérhető-e.|
     | ÁTL. ADATVÁLTÁS          | A kapcsolat adatváltási idejét jelzi ezredmásodpercben. A kapcsolatfigyelő 60 másodpercenként teszteli a kapcsolatot, így a késést az idő függvényében is monitorozhatja.                                         |
     | Ugrások                     | A kapcsolatfigyelő jelzi a két végpont közötti ugrásokat. Eben a példában a kapcsolat két, azonos virtuális hálózaton található virtuális gép között jött létre, ezért csak egy ugrásra van szükség a 10.0.0.5 IP-címre. Ha bármilyen meglévő rendszer vagy egyéni útvonal átirányítja a forgalmat a virtuális gépek között egy VPN-átjárón vagy egy hálózati virtuális berendezésen keresztül, további ugrásokra lesz szükség.                                                                                                                         |
     | ÁLLAPOT                   | A végpontok melletti zöld pipák jelzik, hogy a végpontok kifogástalan állapotúak.    ||
@@ -129,7 +129,7 @@ A riasztásokat riasztási szabályok hozzák létre az Azure Monitorban, és re
 2. Kattintson a **Cél kiválasztása** elemre, majd válassza ki a megcélozni kívánt erőforrásokat. Válassza ki az **előfizetést**, majd adja meg az **erőforrás típusát** a használni kívánt Kapcsolatfigyelő kiszűréséhez.
 
     ![riasztási képernyő a kiválasztott céllal](./media/connection-monitor/set-alert-rule.png)
-1. A megcélozni kívánt erőforrás kiválasztása után válassza a **Feltételek hozzáadása** elemet. A Network Watcher olyan [metrikákkal rendelkezik, amelyeken riasztásokat hozhat létre](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts#metrics-and-dimensions-supported). Állítsa be az **elérhető jeleket** a ProbesFailedPercent és az AverageRoundtripMs metrikáin:
+1. A megcélozni kívánt erőforrás kiválasztása után válassza a **Feltételek hozzáadása** elemet. A Network Watcher olyan [metrikákkal rendelkezik, amelyeken riasztásokat hozhat létre](../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported). Állítsa be az **elérhető jeleket** a ProbesFailedPercent és az AverageRoundtripMs metrikáin:
 
     ![riasztás oldal kiválasztott jelekkel](./media/connection-monitor/set-alert-signals.png)
 1. Adja meg a riasztás részleteit, például a riasztási szabály nevét, a leírását és a súlyosságát. Egy műveletcsoportot is hozzáadhat a riasztáshoz a riasztás válaszának automatizálása és testreszabása érdekében.
@@ -171,7 +171,7 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot és a benne lév�
 2. Válassza az **Erőforráscsoport törlése** elemet.
 3. Írja be a *myResourceGroup* nevet az **ÍRJA BE AZ ERŐFORRÁSCSOPORT NEVÉT:** mezőbe, majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan monitorozhatja a két virtuális gép közötti kommunikációt. Megtudta, hogy egy hálózati biztonsági csoport szabály akadályozta meg a virtuális géppel való kommunikációt. A kapcsolatfigyelő által visszaadható válaszok megismeréséhez tekintse meg a [választípusokra](network-watcher-connectivity-overview.md#response) vonatkozó részt. Lehetősége van egy virtuális gép, egy teljes tartománynév, egy URI vagy egy IP-cím közötti kommunikáció monitorozására is.
 

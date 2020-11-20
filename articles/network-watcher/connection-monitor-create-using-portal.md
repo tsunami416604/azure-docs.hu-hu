@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: vinigam
-ms.openlocfilehash: 8c4df64334957a78fcf05c11625335214f8e032a
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: d652f1eae62270fa8968d64a2bd15a1261dca673
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699372"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949190"
 ---
 # <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>Figyelő létrehozása a Csatlakozáskezelő Azure Portal használatával
 
@@ -102,7 +102,7 @@ A Azure Portalban a tesztkörnyezet létrehozásához a következő mezők ért�
 
 * **Tesztelési csoport letiltása**: Ha bejelöli ezt a jelölőnégyzetet, letilthatja az összes olyan forrás és cél figyelését, amelyet a tesztelési csoport meghatároz. Ez a beállítás alapértelmezés szerint nincs bejelölve.
 * **Név**: nevezze el a tesztelési csoportot.
-* **Források**: az Azure-beli virtuális gépeket és a helyszíni gépeket forrásként is megadhatja, ha az ügynökök telepítve vannak rajtuk. A forráshoz tartozó ügynök telepítésével kapcsolatos további tudnivalókért lásd: [figyelési ügynökök telepítése](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#install-monitoring-agents).
+* **Források**: az Azure-beli virtuális gépeket és a helyszíni gépeket forrásként is megadhatja, ha az ügynökök telepítve vannak rajtuk. A forráshoz tartozó ügynök telepítésével kapcsolatos további tudnivalókért lásd: [figyelési ügynökök telepítése](./connection-monitor-overview.md#install-monitoring-agents).
    * Azure-ügynökök kiválasztásához válassza az **Azure-végpontok** fület. Itt csak a kapcsolódási figyelő létrehozásakor megadott régióhoz kötött virtuális gépek jelennek meg. Alapértelmezés szerint a virtuális gépek a hozzájuk tartozó előfizetésbe vannak csoportosítva. Ezek a csoportok össze vannak csukva. 
    
        Az **előfizetések** szintjéről a hierarchiában lévő többi szintre is lebonthatja a részletezést:
@@ -117,7 +117,7 @@ A Azure Portalban a tesztkörnyezet létrehozásához a következő mezők ért�
 
    * A helyszíni ügynökök kiválasztásához válassza a **nem Azure-végpontok** fület. Alapértelmezés szerint az ügynökök régiónként vannak csoportosítva. Ezekhez a munkaterületekhez a Network Performance Monitor konfigurálva van. 
    
-       Ha Network Performance Monitort kell hozzáadnia a munkaterülethez, szerezze be azt az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview)-ről. A Network Performance Monitor hozzáadásával kapcsolatos további információkért lásd: [monitorozási megoldások a Azure monitor](https://docs.microsoft.com/azure/azure-monitor/insights/solutions). 
+       Ha Network Performance Monitort kell hozzáadnia a munkaterülethez, szerezze be azt az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview)-ről. A Network Performance Monitor hozzáadásával kapcsolatos további információkért lásd: [monitorozási megoldások a Azure monitor](../azure-monitor/insights/solutions.md). 
    
        A **Csatlakozáskezelő létrehozása** területen az **alapbeállítások** lapon az alapértelmezett régió van kiválasztva. Ha megváltoztatja a régiót, az ügynököket az új régióban lévő munkaterületekről is kiválaszthatja. Kiválaszthat egy vagy több ügynököt vagy alhálózatot. Az **alhálózat** nézetben kiválaszthatja a figyeléshez megadott IP-címeket. Ha több alhálózatot ad hozzá, a rendszer létrehoz egy **OnPremises_Network_1** nevű egyéni helyszíni hálózatot. A **Group By** választót is módosíthatja ügynökök szerint.
 
@@ -140,7 +140,7 @@ A Azure Portalban a tesztkörnyezet létrehozásához a következő mezők ért�
     
     * A nem Azure-ügynökök célhelyként való kiválasztásához válassza a **nem Azure-beli végpontok** fület. Alapértelmezés szerint az ügynökök régiónként vannak csoportosítva. Ezek a munkaterületek Network Performance Monitor konfigurálva vannak. 
     
-      Ha Network Performance Monitort kell hozzáadnia a munkaterülethez, szerezze be azt az Azure Marketplace-ről. A Network Performance Monitor hozzáadásával kapcsolatos további információkért lásd: [monitorozási megoldások a Azure monitor](https://docs.microsoft.com/azure/azure-monitor/insights/solutions). 
+      Ha Network Performance Monitort kell hozzáadnia a munkaterülethez, szerezze be azt az Azure Marketplace-ről. A Network Performance Monitor hozzáadásával kapcsolatos további információkért lásd: [monitorozási megoldások a Azure monitor](../azure-monitor/insights/solutions.md). 
 
       A **Csatlakozáskezelő létrehozása** területen az **alapbeállítások**   lapon az alapértelmezett régió van kiválasztva. Ha megváltoztatja a régiót, az ügynököket az új régióban lévő munkaterületekről is kiválaszthatja. Kiválaszthat egy vagy több ügynököt vagy alhálózatot. Az **alhálózat** nézetben kiválaszthatja a figyeléshez megadott IP-címeket. Ha több alhálózatot ad hozzá, a rendszer létrehoz egy **OnPremises_Network_1** nevű egyéni helyszíni hálózatot.  
 
@@ -182,7 +182,7 @@ A Azure Portal a riasztások létrehozásához a kapcsolódási figyelőhöz a k
 
 - **Feltétel neve**: a riasztás a `Test Result(preview)` metrikán jön létre. Ha a figyelő teszt eredménye sikertelen, akkor a riasztási szabály tüzet fog okozni. 
 
-- **Műveleti csoport neve**: közvetlenül is megadhatja az e-mail-címet, vagy létrehozhat riasztásokat a műveleti csoportok használatával. Ha közvetlenül adja meg az e-mail-címét, létrejön egy **NPM E-mail ActionGroup** nevű műveleti csoport. A rendszer hozzáadja az e-mail-azonosítót a műveleti csoporthoz. Ha a műveleti csoportok használata mellett dönt, ki kell választania egy korábban létrehozott műveleti csoportot. A műveleti csoportok létrehozásával kapcsolatos további információkért lásd: [create Action groups in the Azure Portal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups). A riasztás létrehozása után [kezelheti a riasztásokat](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric#view-and-manage-with-azure-portal). 
+- **Műveleti csoport neve**: közvetlenül is megadhatja az e-mail-címet, vagy létrehozhat riasztásokat a műveleti csoportok használatával. Ha közvetlenül adja meg az e-mail-címét, létrejön egy **NPM E-mail ActionGroup** nevű műveleti csoport. A rendszer hozzáadja az e-mail-azonosítót a műveleti csoporthoz. Ha a műveleti csoportok használata mellett dönt, ki kell választania egy korábban létrehozott műveleti csoportot. A műveleti csoportok létrehozásával kapcsolatos további információkért lásd: [create Action groups in the Azure Portal](../azure-monitor/platform/action-groups.md). A riasztás létrehozása után [kezelheti a riasztásokat](../azure-monitor/platform/alerts-metric.md#view-and-manage-with-azure-portal). 
 
 - **Riasztási szabály neve**: a Csatlakozáskezelő neve.
 
@@ -201,5 +201,5 @@ A hálózati figyelők a következő skálázási korlátokkal rendelkeznek:
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Ismerje meg [, hogyan elemezheti a figyelési információkat, és hogyan állíthat be riasztásokat](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#analyze-monitoring-data-and-set-alerts).
-* Ismerje meg [, hogyan diagnosztizálhatja a hálózattal kapcsolatos problémákat](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#diagnose-issues-in-your-network).
+* Ismerje meg [, hogyan elemezheti a figyelési információkat, és hogyan állíthat be riasztásokat](./connection-monitor-overview.md#analyze-monitoring-data-and-set-alerts).
+* Ismerje meg [, hogyan diagnosztizálhatja a hálózattal kapcsolatos problémákat](./connection-monitor-overview.md#diagnose-issues-in-your-network).

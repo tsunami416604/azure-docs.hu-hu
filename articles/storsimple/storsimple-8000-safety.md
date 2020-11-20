@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
-ms.openlocfilehash: 556a84acb3461fb39b3eb0390b54878254bafabf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3adbd292d42fd6fd2a0e149e103c17968a6f084b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514532"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950754"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>StorSimple-eszköz biztonságos telepítése és üzemeltetése
 ![Figyelmeztető ikon ](./media/storsimple-safety/IC740879.png)
@@ -114,7 +114,7 @@ Az eszköz két PCMs való működésre lett tervezve. Minden PCMs van egy tápe
 
 A sérülés, az áramütés vagy a halál valószínűségének csökkentése:
 
-* Ne távolítsa el a borítókat a PCM-ből. Áramütést jelent a belső áramütés. A PCM visszaküldéséhez és a csere megszerzéséhez [forduljon Microsoft ügyfélszolgálatahoz](storsimple-contact-microsoft-support.md).
+* Ne távolítsa el a borítókat a PCM-ből. Áramütést jelent a belső áramütés. A PCM visszaküldéséhez és a csere megszerzéséhez [forduljon Microsoft ügyfélszolgálatahoz](./storsimple-8000-contact-microsoft-support.md).
 
 ![Értesítés ikonjának ](./media/storsimple-safety/IC740881.png) **megjegyzése:**
 
@@ -152,7 +152,7 @@ Az akkumulátorok légi úton történő szállítása vagy egyéb módon tört�
 
 Miután áttekintette ezeket a biztonsági értesítéseket, a következő lépés az eszköz kicsomagolása, összekötése és csatlakoztatása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az 8100-es eszközökön válassza a [StorSimple 8100 eszköz telepítése](storsimple-8100-hardware-installation.md)lehetőséget.
 * Az 8600-es eszközökön válassza a [StorSimple 8600 eszköz telepítése](storsimple-8600-hardware-installation.md)lehetőséget.

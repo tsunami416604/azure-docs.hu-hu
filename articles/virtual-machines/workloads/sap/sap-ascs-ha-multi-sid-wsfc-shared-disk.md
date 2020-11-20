@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: cbf18abe-41cb-44f7-bdec-966f32c89325
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cf306fd5675e07fb4eb6c9fd56760aaebd960b7b
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 9998c4a9c37d30a35acaad8972b9345c5e251e42
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167372"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950533"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-shared-disk-on-azure"></a>SAP ASCS/SCS instance multi-SID magas rendelkezésre állás a Windows Server feladatátvételi fürtszolgáltatással és a megosztott lemezzel az Azure-ban
 
@@ -49,7 +50,7 @@ A terheléselosztó korlátaival kapcsolatos további információkért tekintse
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Már konfigurált egy WSFC-fürtöt egy SAP ASCS/SCS-példányhoz a **fájlmegosztás**használatával, ahogy az ebben a diagramban látható.
+Már konfigurált egy WSFC-fürtöt egy SAP ASCS/SCS-példányhoz a **fájlmegosztás** használatával, ahogy az ebben a diagramban látható.
 
 ![Magas rendelkezésre állású SAP ASCS/SCS-példány][sap-ha-guide-figure-6001]
 
@@ -254,7 +255,7 @@ A magas szintű eljárás a következő:
 
 10. [Tesztelje az SAP ASCS/SCS instance feladatátvételi és SIOS replikációját][sap-high-availability-installation-wsfc-shared-disk-test-ascs-failover-and-sios-repl].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hálózati korlátok: Azure Resource Manager][networking-limits-azure-resource-manager]
 - [Több VIP Azure Load Balancer][load-balancer-multivip-overview]

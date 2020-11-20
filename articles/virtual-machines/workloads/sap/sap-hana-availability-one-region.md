@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dcabd01cfbda8cd892c82b391bf649b2b464d6fb
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: e522e358a1b76cea08dac550b33d7a2dfa7d926d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927770"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950227"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>SAP HANA rendelkezésre állás egy Azure-régión belül
 Ez a cikk számos rendelkezésre állási forgatókönyvet ismertet egy Azure-régión belül. Az Azure számos régióval rendelkezik, és a világ minden pontján elterjedt. Az Azure-régiók listájáért lásd: [Azure-régiók](https://azure.microsoft.com/regions/). Az Azure-régión belüli virtuális gépeken való SAP HANA üzembe helyezéséhez a Microsoft egy HANA-példánnyal rendelkező egyetlen virtuális gép üzembe helyezését kínálja. A rendelkezésre állás érdekében két, HANA-példánnyal rendelkező virtuális gépet telepíthet egy olyan Azure-beli rendelkezésre állási [csoporton](../../windows/tutorial-availability-sets.md) belül, amely HANA rendszerreplikációt használ a rendelkezésre álláshoz. 

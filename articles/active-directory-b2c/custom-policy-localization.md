@@ -10,18 +10,18 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cdd7f4957b22eb4c87d60e3d57b0cec675659963
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 7ba0604c0fb1a51c5276f2a28fb0e39b878b7639
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131802"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949564"
 ---
 # <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Az alkalmazás felhasználói felületének honosítása egyéni házirend használatával Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-A Azure Active Directory B2C (Azure AD B2C) nyelvi testreszabása lehetővé teszi, hogy az ügyfelek igényeinek megfelelően különböző nyelveket is kielégítse. A Microsoft a [36 nyelvekhez](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-language-customization#supported-languages)biztosít fordításokat, de bármilyen nyelven saját fordításokat is megadhat. Ha a felhasználói élmény csak egyetlen nyelven érhető el, testreszabhatja a lapokon található bármely szöveget. 
+A Azure Active Directory B2C (Azure AD B2C) nyelvi testreszabása lehetővé teszi, hogy az ügyfelek igényeinek megfelelően különböző nyelveket is kielégítse. A Microsoft a [36 nyelvekhez](./user-flow-language-customization.md#supported-languages)biztosít fordításokat, de bármilyen nyelven saját fordításokat is megadhat. Ha a felhasználói élmény csak egyetlen nyelven érhető el, testreszabhatja a lapokon található bármely szöveget. 
 
 Ebből a cikkből megtudhatja, hogyan támogathatja a házirendben szereplő több területi vagy nyelvi beállítást a felhasználói útvonalakhoz. A honosítás három lépésből áll: állítsa be a támogatott nyelvek explicit listáját, adjon meg nyelvspecifikus karakterláncokat és gyűjteményeket, és szerkessze az oldal [tartalmának definícióját](contentdefinitions.md) . 
 
@@ -246,16 +246,16 @@ A következő példában az angol (en) és a spanyol (es) egyéni sztringek hozz
 1. Mentse a bővítmények fájlt.
 1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
 1. Keresse meg és válassza ki a **Azure ad B2C**.
-1. A **szabályzatok**területen válassza az **identitási élmény keretrendszere**elemet.
-1. Válassza az **egyéni házirend feltöltése**lehetőséget.
+1. A **szabályzatok** területen válassza az **identitási élmény keretrendszere** elemet.
+1. Válassza az **egyéni házirend feltöltése** lehetőséget.
 1. Töltse fel a korábban módosított kiterjesztéseket tartalmazó fájlt.
 
 ### <a name="test-the-custom-policy-by-using-run-now"></a>Az egyéni házirend tesztelése a **Futtatás most** használatával
 
-1. Válassza ki a feltöltött szabályzatot, majd válassza a **Futtatás most**lehetőséget.
+1. Válassza ki a feltöltött szabályzatot, majd válassza a **Futtatás most** lehetőséget.
 1. Látnia kell a honosított regisztrációs vagy bejelentkezési oldalt.
 1. Kattintson a regisztrációs hivatkozásra, és tekintse meg a honosított regisztrációs lapot.
-1. A böngésző alapértelmezett nyelvének átváltása spanyolra. A lekérdezési karakterlánc paramétert is hozzáadhatja `ui_locales` az engedélyezési kérelemhez. Példa: 
+1. A böngésző alapértelmezett nyelvének átváltása spanyolra. A lekérdezési karakterlánc paramétert is hozzáadhatja `ui_locales` az engedélyezési kérelemhez. Például: 
 
 ```http
 https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1A_signup_signin/oauth2/v2.0/authorize&client_id=0239a9cc-309c-4d41-12f1-31299feb2e82&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjwt.ms&scope=openid&response_type=id_token&prompt=login&ui_locales=es
@@ -265,4 +265,3 @@ https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1A_signup_s
 
 - További információ a [honosítási](localization.md) elemről a IEF-hivatkozásban.
 - Tekintse meg a Azure AD B2Cban elérhető [honosítási karakterlánc-azonosítók](localization-string-ids.md) listáját.
-

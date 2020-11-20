@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: cbf18abe-41cb-44f7-bdec-966f32c89325
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/24/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5a356e96b82e6fbe855d0b474dcb6b1f59c98333
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b204aa508370c62aaf33688aeb7ec63d3f8f1b0e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88855220"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950618"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>SAP ASCS/SCS instance multi-SID magas rendelkezésre állás a Windows Server feladatátvételi fürtszolgáltatással és fájlmegosztás az Azure-ban
 
@@ -32,7 +33,7 @@ Több virtuális IP-címet is kezelhet egy [belső Azure Load Balancer][load-bal
 
 Ha rendelkezik SAP-telepítéssel, a belső terheléselosztó használatával létrehozhat egy Windows-fürtöt az SAP Central Services (ASCS/SCS) példányaihoz.
 
-Ebből a cikkből megtudhatja, hogyan helyezhet át egyetlen ASCS/SCS-telepítésről egy SAP multi-SID konfigurációra úgy, hogy további SAP ASCS/SCS fürtözött példányokat telepít egy meglévő Windows Server feladatátvételi fürtszolgáltatási (WSFC) fürtre a **fájlmegosztás**használatával. A folyamat befejezésekor konfigurált egy SAP multi-SID-fürtöt.
+Ebből a cikkből megtudhatja, hogyan helyezhet át egyetlen ASCS/SCS-telepítésről egy SAP multi-SID konfigurációra úgy, hogy további SAP ASCS/SCS fürtözött példányokat telepít egy meglévő Windows Server feladatátvételi fürtszolgáltatási (WSFC) fürtre a **fájlmegosztás** használatával. A folyamat befejezésekor konfigurált egy SAP multi-SID-fürtöt.
 
 > [!NOTE]
 >
@@ -49,7 +50,7 @@ A terheléselosztó korlátaival kapcsolatos további információkért tekintse
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Már konfigurált egy WSFC-fürtöt egy SAP ASCS/SCS-példányhoz a **fájlmegosztás**használatával, ahogy az ebben a diagramban látható.
+Már konfigurált egy WSFC-fürtöt egy SAP ASCS/SCS-példányhoz a **fájlmegosztás** használatával, ahogy az ebben a diagramban látható.
 
 ![1. ábra: SAP-ASCS/SCS-példány és SOFS két fürtben üzembe helyezve][sap-ha-guide-figure-8007]
 
@@ -71,13 +72,13 @@ A cél az, hogy több SAP Advanced Business Application Programming (ASCS) vagy 
 
 _**2. ábra:** SAP multi-SID-konfiguráció két fürtben_
 
-Egy további **SAP \<SID2> ** -rendszer telepítése azonos egy rendszer telepítésével \<SID> . Két további előkészítési lépésre van szükség a ASCS/SCS-fürtön, valamint a fájlmegosztás SOFS-fürtön.
+Egy további **SAP \<SID2>** -rendszer telepítése azonos egy rendszer telepítésével \<SID> . Két további előkészítési lépésre van szükség a ASCS/SCS-fürtön, valamint a fájlmegosztás SOFS-fürtön.
 
 ## <a name="prepare-the-infrastructure-for-an-sap-multi-sid-scenario"></a>Az infrastruktúra előkészítése egy több SID-es SAP-forgatókönyvhöz
 
 ### <a name="prepare-the-infrastructure-on-the-domain-controller"></a>Az infrastruktúra előkészítése a tartományvezérlőn
 
-Hozza létre a következő tartományi csoportot: ** \<Domain> \ SAP_ \<SID2> _GlobalAdmin**, például a \<SID2> = PR2. A tartományi csoport neve \<Domain> \ SAP_PR2_GlobalAdmin.
+Hozza létre a következő tartományi csoportot: **\<Domain> \ SAP_ \<SID2> _GlobalAdmin**, például a \<SID2> = PR2. A tartományi csoport neve \<Domain> \ SAP_PR2_GlobalAdmin.
 
 ### <a name="prepare-the-infrastructure-on-the-ascsscs-cluster"></a>Az infrastruktúra előkészítése a ASCS/SCS-fürtön
 
@@ -98,8 +99,8 @@ Ezek a lépések az [infrastruktúra-előkészítés egy SAP multi-SID forgatók
 _**3. ábra:** A többszörös SID-SOFS megegyezik az SAP globális gazdagép nevével_
 
 > [!IMPORTANT]
->A második **SAP \<SID2> ** -rendszer esetében ugyanaz a Volume1 és ugyanaz a **\<SAPGlobalHost>** hálózatnév használatos.
->Mivel már beállította a **SAPMNT** -t a különböző SAP-rendszerek megosztási neveként, **\<SAPGlobalHost>** a hálózat nevének újrafelhasználásához ugyanazt a **Volume1**kell használnia.
+>A második **SAP \<SID2>** -rendszer esetében ugyanaz a Volume1 és ugyanaz a **\<SAPGlobalHost>** hálózatnév használatos.
+>Mivel már beállította a **SAPMNT** -t a különböző SAP-rendszerek megosztási neveként, **\<SAPGlobalHost>** a hálózat nevének újrafelhasználásához ugyanazt a **Volume1** kell használnia.
 >
 >A globális gazdagép elérési útja a \<SID2> C:\ClusterStorage \\ **Volume1**\usr\sap \<SID2> \SYS\.
 >
@@ -226,7 +227,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 Ha SAPMNT-fájlmegosztást szeretne létrehozni a indítása kötet2 *\<SAPGlobalHost2>* -ben a második SAP állomásneveként \<SID2> , indítsa el a **fájlmegosztás hozzáadása** varázslót Feladatátvevőfürt-kezelő.
 
-Kattintson a jobb gombbal a **saoglobal2** SOFS, majd válassza a **fájlmegosztás hozzáadása**elemet.
+Kattintson a jobb gombbal a **saoglobal2** SOFS, majd válassza a **fájlmegosztás hozzáadása** elemet.
 
 ![6. ábra: a "fájlmegosztás hozzáadása" varázsló elindítása][sap-ha-guide-figure-8017]
 

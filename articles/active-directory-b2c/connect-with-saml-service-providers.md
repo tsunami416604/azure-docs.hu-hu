@@ -12,12 +12,12 @@ ms.date: 11/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 80ecd02f9aebbca66169d64d6c6d0302d58ca439
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 4426a305d72fdd86ee58b3f4a05153593515d4b5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647664"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949649"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML-alkalmazás regisztrálása Azure AD B2C
 
@@ -73,7 +73,7 @@ Használhat egy nyilvános hitelesítésszolgáltató által kiadott tanúsítv�
 
 ### <a name="11-prepare-a-self-signed-certificate"></a>1,1 önaláírt tanúsítvány előkészítése
 
-Ha még nem rendelkezik tanúsítvánnyal, az oktatóanyaghoz használhat önaláírt tanúsítványt is. Windows rendszeren a PowerShell [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) parancsmag segítségével hozhatja elő a tanúsítványt.
+Ha még nem rendelkezik tanúsítvánnyal, az oktatóanyaghoz használhat önaláírt tanúsítványt is. Windows rendszeren a PowerShell [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) parancsmag segítségével hozhatja elő a tanúsítványt.
 
 1. Futtassa ezt a PowerShell-parancsot egy önaláírt tanúsítvány létrehozásához. Módosítsa az `-Subject` argumentumot megfelelően az alkalmazáshoz, és Azure ad B2C a bérlő nevét. A dátumot úgy is beállíthatja `-NotAfter` , hogy a tanúsítványhoz eltérő lejáratot határozzon meg.
 
@@ -443,7 +443,7 @@ A saját metaadat-végponton keresztül a következő, SAML-függő entitások (
 
 Az SAML-token olyan biztonsági jogkivonat, amelyet a sikeres bejelentkezés után Azure AD B2C állít ki. A felhasználóval, a szolgáltatóval kapcsolatos információkat tartalmaz, amelyek esetében a jogkivonat célja, aláírása és érvényességi ideje. A következő táblázat felsorolja azokat a jogcímeket és tulajdonságokat, amelyeket Azure AD B2C által kiállított SAML-jogkivonatban várhat.
 
-|Elem  |Tulajdonság  |Jegyzetek  |
+|Elem  |Tulajdonság  |Megjegyzések  |
 |---------|---------|---------|
 |`<Response>`| `ID` | A válasz automatikusan generált egyedi azonosítója. | 
 |`<Response>`| `InResponseTo` | Annak az SAML-kérésnek az azonosítója, amelyre ez az üzenet válaszol. | 

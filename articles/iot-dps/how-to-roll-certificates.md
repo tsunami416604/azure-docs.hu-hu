@@ -7,12 +7,12 @@ ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: fbcb3656bc824e2fd352f92314652bd04167b4d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf8b1e04e11dee4e636826430838a467fe034e3f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531406"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951128"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>X. 509 eszközök tanúsítványainak behelyezése
 
@@ -51,7 +51,7 @@ Amikor egy eszköz először az automatikus kiépítés révén lett kiépítve,
 
 Miután az új levél tanúsítványát beszállították az eszközre, az már nem tud csatlakozni az IoT hubhoz, mert új tanúsítványt használ a kapcsolódáshoz. Az IoT hub csak a régi tanúsítvánnyal rendelkező eszközt ismeri fel. Az eszköz csatlakozási kísérletének eredménye "jogosulatlan" kapcsolódási hiba lesz. A hiba megoldásához frissítenie kell az eszköz beléptetési bejegyzését az eszköz új levél-tanúsítványához. Ezt követően a kiépítési szolgáltatás szükség szerint frissítheti a IoT Hub-eszköz beállításjegyzék-információit az eszköz újraépítésekor. 
 
-A kapcsolódási hiba egyik lehetséges kivétele olyan forgatókönyv, amelyben létrehozott egy [regisztrációs csoportot](concepts-service.md#enrollment-group) az eszközhöz a kiépítési szolgáltatásban. Ebben az esetben, ha nem a gyökér-vagy köztes tanúsítványokat az eszköz megbízhatósági láncában látja, akkor a rendszer felismeri az eszközt, ha az új tanúsítvány a beléptetési csoportban definiált megbízhatósági lánc részét képezi. Ha ez a forgatókönyv egy biztonsági szabálysértésre való reagálásra szolgál, akkor legalább a csoportba tartozó, a megszegett eszközök tanúsítványainak letiltása szükséges. További információ: [bizonyos eszközök letiltása egy regisztrációs csoportban](https://docs.microsoft.com/azure/iot-dps/how-to-revoke-device-access-portal#disallow-specific-devices-in-an-enrollment-group).
+A kapcsolódási hiba egyik lehetséges kivétele olyan forgatókönyv, amelyben létrehozott egy [regisztrációs csoportot](concepts-service.md#enrollment-group) az eszközhöz a kiépítési szolgáltatásban. Ebben az esetben, ha nem a gyökér-vagy köztes tanúsítványokat az eszköz megbízhatósági láncában látja, akkor a rendszer felismeri az eszközt, ha az új tanúsítvány a beléptetési csoportban definiált megbízhatósági lánc részét képezi. Ha ez a forgatókönyv egy biztonsági szabálysértésre való reagálásra szolgál, akkor legalább a csoportba tartozó, a megszegett eszközök tanúsítványainak letiltása szükséges. További információ: [bizonyos eszközök letiltása egy regisztrációs csoportban](./how-to-revoke-device-access-portal.md#disallow-specific-devices-in-an-enrollment-group).
 
 A beléptetési bejegyzések frissítése a **beléptetések kezelése** oldalon végezhető el. Az oldal eléréséhez kövesse az alábbi lépéseket:
 
@@ -69,7 +69,7 @@ A beléptetési bejegyzés frissítésének módja attól függ, hogy egyéni re
 
 Ha a tanúsítványokat biztonsági szabálysértésre válaszul végzi, a következő módszert kell használnia, amely azonnal törli az aktuális tanúsítványt:
 
-1. Kattintson az **Egyéni regisztrációk**elemre, majd a listában kattintson a regisztrációs azonosító bejegyzésre. 
+1. Kattintson az **Egyéni regisztrációk** elemre, majd a listában kattintson a regisztrációs azonosító bejegyzésre. 
 
 2. Kattintson az **aktuális tanúsítvány törlése** gombra, majd kattintson a mappa ikonra a beléptetési bejegyzéshez feltöltendő új tanúsítvány kiválasztásához. Ha elkészült, kattintson a **Mentés** gombra.
 
@@ -92,7 +92,7 @@ Ha a tanúsítványok lejáratának kezeléséhez a tanúsítványokat végzi, a
 Később, amikor a másodlagos tanúsítvány közel van a lejárathoz, és azt el kell érni, az elsődleges konfiguráció használatával forgatható. Az elsődleges és a másodlagos tanúsítványok közötti rotáció csökkenti az állásidőt a kiépíteni próbált eszközök esetében.
 
 
-1. Kattintson az **Egyéni regisztrációk**elemre, majd a listában kattintson a regisztrációs azonosító bejegyzésre. 
+1. Kattintson az **Egyéni regisztrációk** elemre, majd a listában kattintson a regisztrációs azonosító bejegyzésre. 
 
 2. Kattintson a **másodlagos tanúsítvány** elemre, majd kattintson a mappa ikonra a beléptetési bejegyzéshez feltölteni kívánt új tanúsítvány kiválasztásához. Kattintson a **Mentés** gombra.
 
@@ -108,7 +108,7 @@ Ha a csoportos regisztrációt biztonsági szabálysértésre válaszul szeretn�
 
 1. Kattintson a **tanúsítványok** lapra az eszköz kiépítési szolgáltatási példányához.
 
-2. Kattintson a feltört tanúsítványra a listában, majd kattintson a **Törlés** gombra. Erősítse meg a törlést a tanúsítvány nevének megadásával, és kattintson az **OK**gombra. Ismételje meg ezt a folyamatot az összes sérült tanúsítvány esetében.
+2. Kattintson a feltört tanúsítványra a listában, majd kattintson a **Törlés** gombra. Erősítse meg a törlést a tanúsítvány nevének megadásával, és kattintson az **OK** gombra. Ismételje meg ezt a folyamatot az összes sérült tanúsítvány esetében.
 
     ![Legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány törlése](./media/how-to-roll-certificates/delete-root-cert.png)
 
@@ -116,7 +116,7 @@ Ha a csoportos regisztrációt biztonsági szabálysértésre válaszul szeretn�
 
 4. Kattintson a **regisztrációk kezelése** lapra az eszköz kiépítési szolgáltatási példányához, majd kattintson a **regisztrációs csoportok** listára. Kattintson a regisztrációs csoport nevére a listában.
 
-5. Kattintson a **hitelesítésszolgáltatói tanúsítvány**elemre, majd válassza ki az új legfelső szintű hitelesítésszolgáltatói tanúsítványt. Ezután kattintson a **Mentés** gombra. 
+5. Kattintson a **hitelesítésszolgáltatói tanúsítvány** elemre, majd válassza ki az új legfelső szintű hitelesítésszolgáltatói tanúsítványt. Ezután kattintson a **Mentés** gombra. 
 
     ![A feltört tanúsítványhoz tartozó új legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány kiválasztása](./media/how-to-roll-certificates/select-new-root-cert.png)
 
@@ -132,9 +132,9 @@ Ha a csoportos regisztrációt biztonsági szabálysértésre válaszul szeretn�
 
 #### <a name="update-compromised-intermediate-certificates"></a>Sérült közbenső tanúsítványok frissítése
 
-1. Kattintson a **beléptetési csoportok**elemre, majd kattintson a csoport nevére a listában. 
+1. Kattintson a **beléptetési csoportok** elemre, majd kattintson a csoport nevére a listában. 
 
-2. Kattintson a **köztes tanúsítvány**elemre, és **törölje az aktuális tanúsítványt**. Kattintson a mappa ikonra, és navigáljon a beléptetési csoportba feltöltendő új köztes tanúsítványhoz. Ha elkészült, kattintson a **Mentés** gombra. Ezeket a lépéseket mind az elsődleges, mind a másodlagos tanúsítvány esetében el kell végezni, ha mindkettő sérül.
+2. Kattintson a **köztes tanúsítvány** elemre, és **törölje az aktuális tanúsítványt**. Kattintson a mappa ikonra, és navigáljon a beléptetési csoportba feltöltendő új köztes tanúsítványhoz. Ha elkészült, kattintson a **Mentés** gombra. Ezeket a lépéseket mind az elsődleges, mind a másodlagos tanúsítvány esetében el kell végezni, ha mindkettő sérül.
 
     Ezt az új közbenső tanúsítványt olyan ellenőrzött legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal kell aláírni, amely már hozzá lett adva a kiépítési szolgáltatáshoz. További információ: [X. 509 tanúsítványok](concepts-x509-attestation.md#x509-certificates).
 
@@ -162,11 +162,11 @@ Később, amikor a másodlagos tanúsítvány közel van a lejárathoz, és azt 
 
 2. Kattintson a **regisztrációk kezelése** lapra az eszköz kiépítési szolgáltatási példányához, majd kattintson a **regisztrációs csoportok** listára. Kattintson a regisztrációs csoport nevére a listában.
 
-3. Kattintson a **hitelesítésszolgáltatói tanúsítvány**elemre, majd válassza ki az új legfelső szintű hitelesítésszolgáltatói tanúsítványt a **másodlagos tanúsítvány** konfigurálása területen. Ezután kattintson a **Mentés** gombra. 
+3. Kattintson a **hitelesítésszolgáltatói tanúsítvány** elemre, majd válassza ki az új legfelső szintű hitelesítésszolgáltatói tanúsítványt a **másodlagos tanúsítvány** konfigurálása területen. Ezután kattintson a **Mentés** gombra. 
 
     ![Válassza ki az új legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt a lejárathoz](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
 
-4. Később, amikor az elsődleges tanúsítvány lejárt, kattintson az eszköz kiépítési szolgáltatási példányának **tanúsítványok** fülére. Kattintson a lejárt tanúsítványra a listában, majd kattintson a **Törlés** gombra. Erősítse meg a törlést a tanúsítvány nevének megadásával, majd kattintson **az OK**gombra.
+4. Később, amikor az elsődleges tanúsítvány lejárt, kattintson az eszköz kiépítési szolgáltatási példányának **tanúsítványok** fülére. Kattintson a lejárt tanúsítványra a listában, majd kattintson a **Törlés** gombra. Erősítse meg a törlést a tanúsítvány nevének megadásával, majd kattintson **az OK** gombra.
 
     ![Legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány törlése](./media/how-to-roll-certificates/delete-root-cert.png)
 
@@ -175,7 +175,7 @@ Később, amikor a másodlagos tanúsítvány közel van a lejárathoz, és azt 
 #### <a name="update-expiring-intermediate-certificates"></a>Lejáró közbenső tanúsítványok frissítése
 
 
-1. Kattintson a **beléptetési csoportok**elemre, majd kattintson a csoport nevére a listában. 
+1. Kattintson a **beléptetési csoportok** elemre, majd kattintson a csoport nevére a listában. 
 
 2. Kattintson a **másodlagos tanúsítvány** elemre, majd kattintson a mappa ikonra a beléptetési bejegyzéshez feltölteni kívánt új tanúsítvány kiválasztásához. Kattintson a **Mentés** gombra.
 

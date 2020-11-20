@@ -8,16 +8,16 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: xujing
-ms.openlocfilehash: 3cbab09c6b50abb590cfe9f2720713a8fa547aa7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d68314aab636180ff17e330c49c9859b8851b06
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75646472"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950686"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Hibaelhárítás az Azure IoT Hub Device Provisioning Service
 
-A IoT-eszközök kapcsolódási problémái nehézkesek lehetnek a hibaelhárításhoz, mert számos lehetséges meghibásodási pont, például az igazolási hibák, a regisztrációs hibák stb. Ez a cikk útmutatást nyújt az eszközök csatlakozási problémáinak észleléséhez és hibaelhárításához [Azure monitoron](https://docs.microsoft.com/azure/azure-monitor/overview)keresztül.
+A IoT-eszközök kapcsolódási problémái nehézkesek lehetnek a hibaelhárításhoz, mert számos lehetséges meghibásodási pont, például az igazolási hibák, a regisztrációs hibák stb. Ez a cikk útmutatást nyújt az eszközök csatlakozási problémáinak észleléséhez és hibaelhárításához [Azure monitoron](../azure-monitor/overview.md)keresztül.
 
 ## <a name="using-azure-monitor-to-view-metrics-and-set-up-alerts"></a>A Azure Monitor használata a metrikák megjelenítéséhez és a riasztások beállításához
 
@@ -40,9 +40,9 @@ Az alábbi eljárás azt ismerteti, hogyan lehet megtekinteni és beállítani a
 
 5. Válassza ki a kívánt összesítési módszert a metrika vizuális nézetének létrehozásához. 
 
-6. Egy metrika riasztásának beállításához válassza a metrika panel jobb felső sarkában található **új riasztási szabályok** lehetőséget, és **válassza az** **új riasztási szabályok**lehetőséget.
+6. Egy metrika riasztásának beállításához válassza a metrika panel jobb felső sarkában található **új riasztási szabályok** lehetőséget, és **válassza az** **új riasztási szabályok** lehetőséget.
 
-7. Válassza a **feltétel hozzáadása**lehetőséget, majd a kérdésekkel válassza ki a kívánt metrikát és küszöbértéket.
+7. Válassza a **feltétel hozzáadása** lehetőséget, majd a kérdésekkel válassza ki a kívánt metrikát és küszöbértéket.
 
 További információ: [Mi a klasszikus riasztás a Microsoft Azureban?](../azure-monitor/platform/alerts-overview.md)
 
@@ -52,9 +52,9 @@ További információ: [Mi a klasszikus riasztás a Microsoft Azureban?](../azur
 
 2. Keresse meg az IoT hubot.
 
-3. Válassza a **diagnosztikai beállítások**lehetőséget.
+3. Válassza a **diagnosztikai beállítások** lehetőséget.
 
-4. Kattintson **a diagnosztika bekapcsolása**elemre.
+4. Kattintson **a diagnosztika bekapcsolása** elemre.
 
 5. A kívánt naplók összegyűjtésének engedélyezése.
 
@@ -81,5 +81,5 @@ Ez a táblázat a gyakori hibák megismerésére és megoldására használható
 | 401 | Az engedélyezési jogkivonat nem érvényesíthető; például lejárt vagy nem vonatkozik a kérelem URI-ra. Ezt a hibakódot a rendszer a TPM-igazolási folyamat részeként is visszaadja az eszközöknek. | 401 Nem engedélyezett|
 | 404 | Az eszköz kiépítési szolgáltatásának példánya vagy egy erőforrás (például egy beléptetés) nem létezik. |404 Nem található |
 | 412 | A kérelemben szereplő ETag nem felel meg a meglévő erőforrás ETag, a RFC7232. | 412 előfeltétel sikertelen |
-| 429 | A szolgáltatás szabályozza a műveleteket. Az egyes szolgáltatási korlátokat lásd: [IoT hub Device Provisioning Service korlátok](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#iot-hub-device-provisioning-service-limits). | 429 túl sok kérés |
+| 429 | A szolgáltatás szabályozza a műveleteket. Az egyes szolgáltatási korlátokat lásd: [IoT hub Device Provisioning Service korlátok](../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-device-provisioning-service-limits). | 429 túl sok kérés |
 | 500 | Belső hiba történt. | 500 Belső kiszolgálóhiba|

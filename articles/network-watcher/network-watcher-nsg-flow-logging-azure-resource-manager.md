@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/26/2020
 ms.author: damendo
-ms.openlocfilehash: 6d16d878b0cf7a73c87b5d6e9263a24c4dfb4383
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8db4d4ae56a5a0ee0c92de5d9822614a3270b1c5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84738141"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948680"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>NSG-adatforgalmi naplók konfigurálása Azure Resource Manager sablonból
 
@@ -31,15 +31,15 @@ ms.locfileid: "84738141"
 > - [Azure Resource Manager](network-watcher-nsg-flow-logging-azure-resource-manager.md)
 
 
-A [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) az Azure natív és hatékony módja az [infrastruktúra kódként](https://docs.microsoft.com/azure/devops/learn/what-is-infrastructure-as-code)való kezelésének.
+A [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/) az Azure natív és hatékony módja az [infrastruktúra kódként](/azure/devops/learn/what-is-infrastructure-as-code)való kezelésének.
 
-Ebből a cikkből megtudhatja, hogyan engedélyezheti programozott módon a [NSG-flow-naplókat](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview) egy Azure Resource Manager sablon és Azure PowerShell használatával. Kezdjük azzal, hogy áttekintjük a NSG flow log objektum tulajdonságait, amelyet néhány sablon követ. Ezután a sablon üzembe helyezése egy helyi PowerShell-példány használatával.
+Ebből a cikkből megtudhatja, hogyan engedélyezheti programozott módon a [NSG-flow-naplókat](./network-watcher-nsg-flow-logging-overview.md) egy Azure Resource Manager sablon és Azure PowerShell használatával. Kezdjük azzal, hogy áttekintjük a NSG flow log objektum tulajdonságait, amelyet néhány sablon követ. Ezután a sablon üzembe helyezése egy helyi PowerShell-példány használatával.
 
 
 ## <a name="nsg-flow-logs-object"></a>NSG-folyamat naplófájljainak objektuma
 
 Az NSG flow az összes paraméterrel rendelkező objektumot alább mutatja.
-A tulajdonságok teljes áttekintéséhez olvassa el a [NSG flow-naplók sablonjának referenciáját](https://docs.microsoft.com/azure/templates/microsoft.network/2019-11-01/networkwatchers/flowlogs#RetentionPolicyParameters).
+A tulajdonságok teljes áttekintéséhez olvassa el a [NSG flow-naplók sablonjának referenciáját](/azure/templates/microsoft.network/2019-11-01/networkwatchers/flowlogs#RetentionPolicyParameters).
 
 ```json
 {
@@ -76,8 +76,8 @@ Microsoft. Network/networkWatchers/flowLogs erőforrás létrehozásához adja h
 
 Ha első alkalommal használja Azure Resource Manager-sablonokat, további információt az alábbi hivatkozásokon talál.
 
-* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell#deploy-local-template)
-* [Oktatóanyag: az első Azure Resource Manager-sablon létrehozása és üzembe helyezése](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-create-first-template?tabs=azure-powershell)
+* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template)
+* [Oktatóanyag: az első Azure Resource Manager-sablon létrehozása és üzembe helyezése](../azure-resource-manager/templates/template-tutorial-create-first-template.md?tabs=azure-powershell)
 
 
 Az alábbi két példa a teljes sablonokat mutatja be a NSG-naplók beállításához.
@@ -172,14 +172,14 @@ New-AzResourceGroupDeployment -Name EnableFlowLog -ResourceGroupName NetworkWatc
 
 ## <a name="verifying-your-deployment"></a>Az üzemelő példány ellenőrzése
 
-Több módon is ellenőrizhető, hogy sikeres volt-e a központi telepítés. A PowerShell-konzol a "ProvisioningState" kifejezést "sikeres" értékre kell mutatnia. Emellett a [NSG flow-naplók portál oldalán](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) is megtekintheti a módosításokat. Ha probléma merült fel az üzembe helyezéssel kapcsolatban, tekintse meg a [gyakori Azure-telepítési hibák elhárítását Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/templates/common-deployment-errors).
+Több módon is ellenőrizhető, hogy sikeres volt-e a központi telepítés. A PowerShell-konzol a "ProvisioningState" kifejezést "sikeres" értékre kell mutatnia. Emellett a [NSG flow-naplók portál oldalán](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) is megtekintheti a módosításokat. Ha probléma merült fel az üzembe helyezéssel kapcsolatban, tekintse meg a [gyakori Azure-telepítési hibák elhárítását Azure Resource Manager](../azure-resource-manager/templates/common-deployment-errors.md).
 
 ## <a name="deleting-your-resource"></a>Erőforrás törlése
-Az Azure lehetővé teszi az erőforrások törlését a "teljes" üzembe helyezési módban. A flow-naplók erőforrásának törléséhez adja meg a telepítést teljes módban anélkül, hogy a törölni kívánt erőforrást is tartalmazza. További információ a [teljes telepítési módból](https://docs.microsoft.com/azure/azure-resource-manager/templates/deployment-modes#complete-mode)
+Az Azure lehetővé teszi az erőforrások törlését a "teljes" üzembe helyezési módban. A flow-naplók erőforrásának törléséhez adja meg a telepítést teljes módban anélkül, hogy a törölni kívánt erőforrást is tartalmazza. További információ a [teljes telepítési módból](../azure-resource-manager/templates/deployment-modes.md#complete-mode)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan jelenítheti meg a NSG flow-adatait a következő használatával:
 * [Microsoft Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 * [Nyílt forráskódú eszközök](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
-* [Azure-Traffic Analytics](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [Azure-Traffic Analytics](./traffic-analytics.md)

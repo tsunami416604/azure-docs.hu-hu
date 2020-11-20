@@ -11,16 +11,16 @@ ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 416e2c767b5afd40fea38e6f75fcd3f01440b49a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: edff5354d0565bd32cd0332b4aa0f215c2980d73
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89255343"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949785"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Számlázási modell Azure Active Directory B2C
 
-A Azure Active Directory B2C (Azure AD B2C) díjszabása a havi aktív felhasználók (MAU) alapján történik, amely a naptári hónapon belül a hitelesítési tevékenységgel rendelkező egyedi felhasználók száma. Ez a számlázási modell a Azure AD B2C bérlőre és az [Azure ad vendég felhasználói együttműködésre (B2B)](https://docs.microsoft.com/azure/active-directory/external-identities/external-identities-pricing)is vonatkozik. A MAU számlázási szolgáltatással csökkentheti a költségeket, és az ingyenes szintet, valamint a rugalmas és kiszámítható díjszabást kínál. Ebből a cikkből megismerheti a MAU-számlázást, összekapcsolhatja Azure AD B2C bérlőit egy előfizetéssel, és módosíthatja az árképzési szintet.
+A Azure Active Directory B2C (Azure AD B2C) díjszabása a havi aktív felhasználók (MAU) alapján történik, amely a naptári hónapon belül a hitelesítési tevékenységgel rendelkező egyedi felhasználók száma. Ez a számlázási modell a Azure AD B2C bérlőre és az [Azure ad vendég felhasználói együttműködésre (B2B)](../active-directory/external-identities/external-identities-pricing.md)is vonatkozik. A MAU számlázási szolgáltatással csökkentheti a költségeket, és az ingyenes szintet, valamint a rugalmas és kiszámítható díjszabást kínál. Ebből a cikkből megismerheti a MAU-számlázást, összekapcsolhatja Azure AD B2C bérlőit egy előfizetéssel, és módosíthatja az árképzési szintet.
 
 > [!IMPORTANT]
 > Ez a cikk nem tartalmazza a díjszabás részleteit. A használati számlázással és a díjszabással kapcsolatos legfrissebb információkért tekintse meg a [Azure Active Directory B2C díjszabását](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
@@ -39,7 +39,7 @@ A MAU-számlázás kihasználása érdekében a Azure AD B2C bérlőt egy Azure-
 
 ## <a name="about-the-monthly-active-users-mau-billing-model"></a>Tudnivalók a havi aktív felhasználók (MAU) számlázási modelljéről
 
-A MAU-számlázás a Azure AD B2C bérlők számára a **2019. november 1-jén**lép érvénybe. Minden olyan Azure AD B2C bérlőt, amelyet az adott napon vagy azt követően előfizetéshez kapcsolódóan hozott létre, és amelyekhez kapcsolódott. Ha olyan Azure AD B2C Bérlővel rendelkezik, amely nincs előfizetéshez társítva, ezt most kell megtennie. Ha olyan meglévő Azure AD B2C Bérlővel rendelkezik, amely a 2019. november 1. előtti előfizetéshez van csatolva, javasoljuk, hogy frissítsen a havi aktív felhasználók (MAU) számlázási modelljére, vagy maradjon a hitelesítési számlázási modellen.
+A MAU-számlázás a Azure AD B2C bérlők számára a **2019. november 1-jén** lép érvénybe. Minden olyan Azure AD B2C bérlőt, amelyet az adott napon vagy azt követően előfizetéshez kapcsolódóan hozott létre, és amelyekhez kapcsolódott. Ha olyan Azure AD B2C Bérlővel rendelkezik, amely nincs előfizetéshez társítva, ezt most kell megtennie. Ha olyan meglévő Azure AD B2C Bérlővel rendelkezik, amely a 2019. november 1. előtti előfizetéshez van csatolva, javasoljuk, hogy frissítsen a havi aktív felhasználók (MAU) számlázási modelljére, vagy maradjon a hitelesítési számlázási modellen.
   
 A Azure AD B2C bérlőt a használni kívánt funkciók alapján a megfelelő Azure-díjszabási csomaghoz is csatolni kell. A prémium szintű funkciókhoz Azure AD B2C [Premium P1 vagy P2 díjszabás](https://azure.microsoft.com/pricing/details/active-directory-b2c/)szükséges. Előfordulhat, hogy az új szolgáltatások használatakor frissítenie kell az árképzési szintet. A feltételes hozzáféréshez például ki kell választania a bérlőhöz Azure AD B2C Premium P2 díjszabási szintet.
 
@@ -60,12 +60,12 @@ Azure AD B2C bérlőhöz kapcsolódó előfizetés használható Azure AD B2C ha
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a használni kívánt Azure-előfizetést tartalmazza (*nem* pedig a Azure ad B2C bérlőt tartalmazó könyvtár).
-3. Válassza az **erőforrás létrehozása**lehetőséget, írja be a `Active Directory B2C` **Keresés a piactéren** mezőbe, majd válassza a **Azure Active Directory B2C**lehetőséget.
+3. Válassza az **erőforrás létrehozása** lehetőséget, írja be a `Active Directory B2C` **Keresés a piactéren** mezőbe, majd válassza a **Azure Active Directory B2C** lehetőséget.
 4. Kattintson a **Létrehozás** gombra.
-5. Válassza a **meglévő Azure ad B2C bérlő összekapcsolása az Azure-előfizetéssel**lehetőséget.
+5. Válassza a **meglévő Azure ad B2C bérlő összekapcsolása az Azure-előfizetéssel** lehetőséget.
 6. Válasszon ki egy **Azure ad B2C bérlőt** a legördülő listából. Csak azok a bérlők jelennek meg, amelyekhez Ön globális rendszergazda, és amelyek még nem kapcsolódnak előfizetéshez. A **Azure ad B2C erőforrás neve** mező a kiválasztott Azure ad B2C-bérlő tartománynevével van feltöltve.
 7. Válasszon ki egy aktív Azure- **előfizetést** , amelynek Ön a rendszergazdája.
-8. Az **erőforráscsoport**területen válassza az **új létrehozása**lehetőséget, majd adja meg az **erőforráscsoport helyét**. Az erőforráscsoport beállításai nincsenek hatással a Azure AD B2C bérlői helyére, teljesítményére vagy számlázási állapotára.
+8. Az **erőforráscsoport** területen válassza az **új létrehozása** lehetőséget, majd adja meg az **erőforráscsoport helyét**. Az erőforráscsoport beállításai nincsenek hatással a Azure AD B2C bérlői helyére, teljesítményére vagy számlázási állapotára.
 9. Kattintson a **Létrehozás** gombra.
 
     ![A Azure Portal Azure AD B2C erőforrás-létrehozási lapja](./media/billing/portal-01-create-b2c-resource-page.png)
@@ -78,13 +78,13 @@ A bérlőt a Azure AD B2C Bérlővel használni kívánt funkciók alapján kell
 
 Az árképzési szintek módosításához kövesse az alábbi lépéseket.
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 
 2. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely az Azure B2C-bérlőhöz kapcsolódó Azure-előfizetést tartalmazza (*ne* válassza ki a Azure ad B2C bérlőt).
 
-3. A portál felső részén található keresőmezőbe írja be a Azure AD B2C bérlő nevét. Ezután válassza ki a bérlőt a keresési eredmények között az **erőforrások**területen.
+3. A portál felső részén található keresőmezőbe írja be a Azure AD B2C bérlő nevét. Ezután válassza ki a bérlőt a keresési eredmények között az **erőforrások** területen.
 
-4. Az erőforrás- **Áttekintés** oldalon az **árképzési**csomag területen válassza a **módosítás**elemet.
+4. Az erőforrás- **Áttekintés** oldalon az **árképzési** csomag területen válassza a **módosítás** elemet.
 
    ![A tarifacsomag módosítása](media/billing/change-pricing-tier.png)
  
@@ -106,13 +106,13 @@ A következőkben megtudhatja, hogyan válthat egy meglévő Azure AD B2C erőfo
 
     ![Címtár-és előfizetés-szűrő a Azure Portal](./media/billing/portal-mau-01-select-b2c-directory.png)
 
-3. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
+3. A bal oldali menüben válassza a **Azure ad B2C** lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C** lehetőséget.
 
-4. A Azure AD B2C bérlő **Áttekintés** lapján kattintson az **Erőforrás neve**alatt található hivatkozásra. A rendszer átirányítja az Azure AD-bérlő Azure AD B2C erőforrására.<br/>
+4. A Azure AD B2C bérlő **Áttekintés** lapján kattintson az **Erőforrás neve** alatt található hivatkozásra. A rendszer átirányítja az Azure AD-bérlő Azure AD B2C erőforrására.<br/>
 
     ![Azure AD B2C az erőforrás-hivatkozás ki van emelve a Azure Portal](./media/billing/portal-mau-02-b2c-resource-link.png)
 
-5. Az Azure AD B2C erőforrás **áttekintő** lapján a **számlázható egységek**területen válassza ki a **hitelesítést (a Mau-re váltás)** hivatkozásra.<br/>
+5. Az Azure AD B2C erőforrás **áttekintő** lapján a **számlázható egységek** területen válassza ki a **hitelesítést (a Mau-re váltás)** hivatkozásra.<br/>
 
     ![A Azure Portal Kiemelt MAU-hivatkozásra vált](./media/billing/portal-mau-03-change-to-mau-link.png)
 
@@ -125,11 +125,11 @@ A következőkben megtudhatja, hogyan válthat egy meglévő Azure AD B2C erőfo
 
 A MAU-alapú mérés az előfizetés/erőforrás tulajdonosaként azonnal engedélyezve van, erősítse meg a változást. A havi számla a változás és a MAU új egységeinek változása után számlázza a hitelesítési egységeket.
 
-A felhasználók nem számítanak fel kétszer az átmeneti hónap során. A módosítást megelőzően hitelesítő egyedi aktív felhasználóknak egy naptári hónapban kell fizetniük a hitelesítési díjak alapján. Ugyanezek a felhasználók nem szerepelnek a MAU-számításban az előfizetés számlázási ciklusának hátralévő részében. Példa:
+A felhasználók nem számítanak fel kétszer az átmeneti hónap során. A módosítást megelőzően hitelesítő egyedi aktív felhasználóknak egy naptári hónapban kell fizetniük a hitelesítési díjak alapján. Ugyanezek a felhasználók nem szerepelnek a MAU-számításban az előfizetés számlázási ciklusának hátralévő részében. Például:
 
 * A contoso B2C-bérlő 1 000 felhasználóval rendelkezik. 250 a felhasználók egy adott hónapban aktívak. Az előfizetés rendszergazdája a hónap 10. napján megváltoztathatja a hitelesítést a havi aktív felhasználók (MAU) esetében.
 * Az 1 – 10. számlázási díj számlázása az egyes hitelesítési modell alapján történik.
-  * Ha 100 felhasználó jelentkezik be ebben az időszakban (1 – 10.), ezek *a felhasználók a hónapra kifizetettként*vannak megjelölve.
+  * Ha 100 felhasználó jelentkezik be ebben az időszakban (1 – 10.), ezek *a felhasználók a hónapra kifizetettként* vannak megjelölve.
 * A 10 (az áttérés tényleges időpontjában) számlázása a MAU-díj alapján történik.
   * Ha egy további 150 felhasználó jelentkezik be ebben az időszakban (10 – 30.), akkor csak a további 150 lesz kiszámlázva.
   * Az első 100 felhasználó folyamatos tevékenysége nem érinti a naptári hónap hátralévő részének számlázását.

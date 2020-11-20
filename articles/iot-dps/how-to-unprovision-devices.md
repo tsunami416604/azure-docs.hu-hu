@@ -7,12 +7,12 @@ ms.date: 05/11/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 5683d40e9565068c6cd79eedb08b036eab2c54cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 37099b551e004ebfc702dce37c2a1499aa46ff10
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531389"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950724"
 ---
 # <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>Korábban automatikusan kiépített eszközök kiépítése 
 
@@ -25,7 +25,7 @@ Előfordulhat, hogy meg kell szüntetnie az eszköz kiépítési szolgáltatás�
    - További információ az eszközök regisztrálásáról: az [eszköz regisztrálása az Azure-ból IoT hub Device Provisioning Service](how-to-revoke-device-access-portal.md).
    - Ha meg szeretné tudni, hogyan lehet az eszközöket programozott módon felvenni az egyik kiépítési szolgáltatási SDK használatával, tekintse meg az [eszközök regisztrálásának kezelése a Service SDK-val](how-to-manage-enrollments-sdks.md)című témakört.
 
-2. Regisztrálja az eszközt a IoT Hub, hogy elkerülje a jövőbeli kommunikációt és az adatátvitelt. Újra ideiglenesen letilthatja vagy véglegesen törölheti az eszköz bejegyzését az azonosító beállításjegyzékében arra a IoT Hub, ahol üzembe lett helyezve. További információ a [tiltásról: eszközök letiltása](/azure/iot-hub/iot-hub-devguide-identity-registry#disable-devices) . A [Azure Portalban](https://portal.azure.com)tekintse meg az IoT hub erőforrás "eszközkezelés/IoT eszközei" című témakört.
+2. Regisztrálja az eszközt a IoT Hub, hogy elkerülje a jövőbeli kommunikációt és az adatátvitelt. Újra ideiglenesen letilthatja vagy véglegesen törölheti az eszköz bejegyzését az azonosító beállításjegyzékében arra a IoT Hub, ahol üzembe lett helyezve. További információ a [tiltásról: eszközök letiltása](../iot-hub/iot-hub-devguide-identity-registry.md#disable-devices) . A [Azure Portalban](https://portal.azure.com)tekintse meg az IoT hub erőforrás "eszközkezelés/IoT eszközei" című témakört.
 
 Az eszközök kiépítésének pontos lépései az igazolási mechanizmustól és a kiépítési szolgáltatáshoz kapcsolódó regisztrációs bejegyzéstől függenek. A következő szakasz áttekintést nyújt a folyamatról a regisztráció és az igazolás típusa alapján.
 
@@ -63,4 +63,4 @@ A beléptetési csoportok esetében kétféle esetben érdemes figyelembe venni 
 
 - Egyetlen eszköz kiépítése egy beléptetési csoportból:
   1. Hozzon létre egy letiltott egyéni regisztrációt a levél (eszköz) tanúsítványához. Ez visszavonja az eszköz kiépítési szolgáltatáshoz való hozzáférését, miközben továbbra is engedélyezi a hozzáférést azokhoz az eszközökhöz, amelyeken a regisztrációs csoport aláíró tanúsítványa szerepel a láncban. Ne törölje az eszköz letiltott egyéni regisztrációját. Ezzel lehetővé teszi, hogy az eszköz újra regisztrálja a regisztrációs csoportot. 
-  2. A regisztrációs csoport kiépített eszközeinek listájával megkeresheti azt az IoT hubot, amelyet az eszköz kiépített, illetve amelyről letiltotta vagy törölheti az adott hub identitás-beállításjegyzékében. 
+  2. A regisztrációs csoport kiépített eszközeinek listájával megkeresheti azt az IoT hubot, amelyet az eszköz kiépített, illetve amelyről letiltotta vagy törölheti az adott hub identitás-beállításjegyzékében.

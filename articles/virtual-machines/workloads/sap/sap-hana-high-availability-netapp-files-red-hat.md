@@ -7,17 +7,18 @@ author: rdeltcheva
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 8800adae73de2672dd89678a6346fe6b0df755ba
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: f107ba4dd0150e9727183d0bd334c9279de17337
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144188"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950006"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>A SAP HANA skálázás magas rendelkezésre állása Azure NetApp Filesekkel Red Hat Enterprise Linux
 
@@ -51,7 +52,7 @@ ms.locfileid: "92144188"
 [sap-hana-ha]:sap-hana-high-availability.md
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
-Ez a cikk azt ismerteti, hogyan konfigurálható SAP HANA rendszerreplikáció a felskálázásos központi telepítésben, ha a HANA-fájlrendszerek NFS-en keresztül vannak csatlakoztatva, Azure NetApp Files (ANF) használatával. A példában a konfigurációk és a telepítési parancsok, a példány száma **03**és a HANA rendszerazonosító **HN1** vannak használatban. SAP HANA replikáció egy elsődleges csomópontból és legalább egy másodlagos csomópontból áll.
+Ez a cikk azt ismerteti, hogyan konfigurálható SAP HANA rendszerreplikáció a felskálázásos központi telepítésben, ha a HANA-fájlrendszerek NFS-en keresztül vannak csatlakoztatva, Azure NetApp Files (ANF) használatával. A példában a konfigurációk és a telepítési parancsok, a példány száma **03** és a HANA rendszerazonosító **HN1** vannak használatban. SAP HANA replikáció egy elsődleges csomópontból és legalább egy másodlagos csomópontból áll.
 
 Ha a dokumentumban szereplő lépések a következő előtagokkal vannak megjelölve, a jelentés a következő:
 
@@ -236,28 +237,28 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Ezután hajtsa vé
 
 8.  Ha standard Load balancert használ, kövesse az alábbi konfigurációs lépéseket:
     1.  Először hozzon létre egy előtér-IP-címkészletet:
-        1.  Nyissa meg a terheléselosztó felületet, válassza a előtér **IP-készlet**lehetőséget, majd kattintson a **Hozzáadás**gombra.
+        1.  Nyissa meg a terheléselosztó felületet, válassza a előtér **IP-készlet** lehetőséget, majd kattintson a **Hozzáadás** gombra.
         1.  Adja meg az új előtér-IP-készlet nevét (például **Hana-frontend**).
         1.  Állítsa a **hozzárendelést** **statikus** értékre, és adja meg az IP-címet (például **10.32.0.10**).
         1.  Válassza az **OK** lehetőséget.
         1.  Az új előtér-IP-készlet létrehozása után jegyezze fel a készlet IP-címét.
     1.  Következő lépésként hozzon létre egy háttér-készletet:
-        1.  Nyissa meg a Load balancert, válassza a **háttérbeli készletek**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
+        1.  Nyissa meg a Load balancert, válassza a **háttérbeli készletek** lehetőséget, majd válassza a **Hozzáadás** lehetőséget.
         1.  Adja meg az új háttér-készlet nevét (például **Hana-backend**).
-        1.  Válassza **a virtuális gép hozzáadása**lehetőséget.
+        1.  Válassza **a virtuális gép hozzáadása** lehetőséget.
         1.  Válassza a * * virtuális gép * * elemet.
         1.  Válassza ki a SAP HANA-fürthöz tartozó virtuális gépeket és azok IP-címeit.
-        1.  Válassza a **Hozzáadás** lehetőséget.
+        1.  Válassza a **Hozzáadás** elemet.
     1.  Következő lépésként hozzon létre egy állapot-mintavételt:
-        1.  Nyissa meg a terheléselosztó-t, válassza az **állapot**-tesztek elemet, majd kattintson a **Hozzáadás**gombra.
+        1.  Nyissa meg a terheléselosztó-t, válassza az **állapot**-tesztek elemet, majd kattintson a **Hozzáadás** gombra.
         1.  Adja meg az új állapot-mintavétel nevét (például **Hana-HP**).
-        1.  Válassza a TCP lehetőséget a protokoll és a**625-** es port. Tartsa meg az **intervallum** értékét 5-re, a nem kifogástalan **állapot küszöbértékének** értéke pedig 2.
+        1.  Válassza a TCP lehetőséget a protokoll és a **625-** es port. Tartsa meg az **intervallum** értékét 5-re, a nem kifogástalan **állapot küszöbértékének** értéke pedig 2.
         1.  Válassza az **OK** lehetőséget.
     1.  Ezután hozza létre a terheléselosztási szabályokat:
-        1.  Nyissa meg a terheléselosztó-t, válassza a terheléselosztási **szabályok**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
+        1.  Nyissa meg a terheléselosztó-t, válassza a terheléselosztási **szabályok** lehetőséget, majd válassza a **Hozzáadás** lehetőséget.
         1.  Adja meg az új terheléselosztó-szabály nevét (például **Hana-LB**).
         1.  Válassza ki az előtér-IP-címet, a háttér-készletet és a korábban létrehozott állapot-mintavételt (például **Hana-frontend**, **Hana-backend** és **Hana-HP**).
-        1.  Válassza a **hektár portok**lehetőséget.
+        1.  Válassza a **hektár portok** lehetőséget.
         1.  Növelje az **üresjárati időkorlátot** 30 percre.
         1.  Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
         1.  Válassza az **OK** lehetőséget.
@@ -265,55 +266,55 @@ Először létre kell hoznia a Azure NetApp Files köteteket. Ezután hajtsa vé
 
 9. Ha a forgatókönyv az alapszintű Load Balancer használatát is megköveteli, kövesse az alábbi konfigurációs lépéseket:
     1.  Konfigurálja a Load balancert. Először hozzon létre egy előtér-IP-címkészletet:
-        1.  Nyissa meg a terheléselosztó felületet, válassza a előtér **IP-készlet**lehetőséget, majd kattintson a **Hozzáadás**gombra.
+        1.  Nyissa meg a terheléselosztó felületet, válassza a előtér **IP-készlet** lehetőséget, majd kattintson a **Hozzáadás** gombra.
         1.  Adja meg az új előtér-IP-készlet nevét (például **Hana-frontend**).
         1.  Állítsa a **hozzárendelést** **statikus** értékre, és adja meg az IP-címet (például **10.32.0.10**).
         1.  Válassza az **OK** lehetőséget.
         1.  Az új előtér-IP-készlet létrehozása után jegyezze fel a készlet IP-címét.
     1.  Következő lépésként hozzon létre egy háttér-készletet:
-        1.  Nyissa meg a Load balancert, válassza a **háttérbeli készletek**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
+        1.  Nyissa meg a Load balancert, válassza a **háttérbeli készletek** lehetőséget, majd válassza a **Hozzáadás** lehetőséget.
         1.  Adja meg az új háttér-készlet nevét (például **Hana-backend**).
-        1.  Válassza **a virtuális gép hozzáadása**lehetőséget.
+        1.  Válassza **a virtuális gép hozzáadása** lehetőséget.
         1.  Válassza ki a 3. lépésben létrehozott rendelkezésre állási készletet.
         1.  Válassza ki a SAP HANA-fürthöz tartozó virtuális gépeket.
         1.  Válassza az **OK** lehetőséget.
     1.  Következő lépésként hozzon létre egy állapot-mintavételt:
-        1.  Nyissa meg a terheléselosztó-t, válassza az **állapot**-tesztek elemet, majd kattintson a **Hozzáadás**gombra.
+        1.  Nyissa meg a terheléselosztó-t, válassza az **állapot**-tesztek elemet, majd kattintson a **Hozzáadás** gombra.
         1.  Adja meg az új állapot-mintavétel nevét (például **Hana-HP**).
-        1.  Válassza a **TCP** lehetőséget a protokoll és a**625-** es port. Tartsa meg az **intervallum** értékét 5-re, a nem kifogástalan **állapot küszöbértékének** értéke pedig 2.
+        1.  Válassza a **TCP** lehetőséget a protokoll és a **625-** es port. Tartsa meg az **intervallum** értékét 5-re, a nem kifogástalan **állapot küszöbértékének** értéke pedig 2.
         1.  Válassza az **OK** lehetőséget.
     1.  SAP HANA 1,0 esetében hozza létre a terheléselosztási szabályokat:
-        1.  Nyissa meg a terheléselosztó-t, válassza a terheléselosztási **szabályok**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
-        1.  Adja meg az új terheléselosztó-szabály nevét (például Hana-LB-3**03**15).
+        1.  Nyissa meg a terheléselosztó-t, válassza a terheléselosztási **szabályok** lehetőséget, majd válassza a **Hozzáadás** lehetőséget.
+        1.  Adja meg az új terheléselosztó-szabály nevét (például Hana-LB-3 **03** 15).
         1.  Válassza ki az előtér-IP-címet, a háttér-készletet és a korábban létrehozott állapot-mintavételt (például **Hana-frontend**).
-        1.  Tartsa a **protokollt** **TCP**-értékre, és írja be a 3**03**15 portot.
+        1.  Tartsa a **protokollt** **TCP**-értékre, és írja be a 3 **03** 15 portot.
         1.  Növelje az **üresjárati időkorlátot** 30 percre.
         1.  Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
         1.  Válassza az **OK** lehetőséget.
-        1.  Ismételje meg ezeket a lépéseket a 3**03**17-ös porton.
+        1.  Ismételje meg ezeket a lépéseket a 3 **03** 17-ös porton.
     1.  SAP HANA 2,0 esetében hozza létre a rendszeradatbázis terheléselosztási szabályait:
-        1.  Nyissa meg a terheléselosztó-t, válassza a terheléselosztási **szabályok**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
-        1.  Adja meg az új terheléselosztó-szabály nevét (például Hana-LB-3**03**13).
+        1.  Nyissa meg a terheléselosztó-t, válassza a terheléselosztási **szabályok** lehetőséget, majd válassza a **Hozzáadás** lehetőséget.
+        1.  Adja meg az új terheléselosztó-szabály nevét (például Hana-LB-3 **03** 13).
         1.  Válassza ki az előtér-IP-címet, a háttér-készletet és a korábban létrehozott állapot-mintavételt (például **Hana-frontend**).
-        1.  Tartsa a **protokollt** **TCP**-értékre, és írja be a 3**03**13 portot.
+        1.  Tartsa a **protokollt** **TCP**-értékre, és írja be a 3 **03** 13 portot.
         1.  Növelje az **üresjárati időkorlátot** 30 percre.
         1.  Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
         1.  Válassza az **OK** lehetőséget.
         1.  Ismételje meg ezeket a lépéseket a 3.**03**. porton.
     1.  SAP HANA 2,0 esetében először hozza létre a bérlői adatbázishoz tartozó terheléselosztási szabályokat:
-        1.  Nyissa meg a terheléselosztó-t, válassza a terheléselosztási **szabályok**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
-        1.  Adja meg az új terheléselosztó-szabály nevét (például Hana-LB-3**03**40).
+        1.  Nyissa meg a terheléselosztó-t, válassza a terheléselosztási **szabályok** lehetőséget, majd válassza a **Hozzáadás** lehetőséget.
+        1.  Adja meg az új terheléselosztó-szabály nevét (például Hana-LB-3 **03** 40).
         1.  Válassza ki a korábban létrehozott előtérbeli IP-címet, a háttér-készletet és az állapot-mintavételt (például **Hana-frontend**).
-        1.  Tartsa a **protokollt** **TCP**-re, és írja be a 3**03**40 portot.
+        1.  Tartsa a **protokollt** **TCP**-re, és írja be a 3 **03** 40 portot.
         1.  Növelje az **üresjárati időkorlátot** 30 percre.
         1.  Ügyeljen arra, hogy a **lebegő IP-címet engedélyezze**.
         1.  Válassza az **OK** lehetőséget.
-        1.  Ismételje meg ezeket a lépéseket a 3**03**41 és 3**03**42-es porton.
+        1.  Ismételje meg ezeket a lépéseket a 3 **03** 41 és 3 **03** 42-es porton.
 
 A SAP HANA szükséges portokkal kapcsolatos további információkért olvassa el a [bérlői adatbázisok kapcsolatai](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) című részt a [SAP HANA bérlői adatbázisok](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) útmutatójában vagy az [2388694](https://launchpad.support.sap.com/#/notes/2388694)-es SAP-megjegyzésben.
 
 > [!IMPORTANT]
-> Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a paramétert a **0**értékre **net.IPv4.tcp_timestamps** . Részletekért lásd: [Load Balancer Health](../../../load-balancer/load-balancer-custom-probe-overview.md)-tesztek. Lásd még: SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421).
+> Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a paramétert a **0** értékre **net.IPv4.tcp_timestamps** . Részletekért lásd: [Load Balancer Health](../../../load-balancer/load-balancer-custom-probe-overview.md)-tesztek. Lásd még: SAP Note [2382421](https://launchpad.support.sap.com/#/notes/2382421).
 
 ## <a name="mount-the-azure-netapp-files-volume"></a>A Azure NetApp Files kötet csatlakoztatása
 
@@ -373,7 +374,7 @@ A SAP HANA szükséges portokkal kapcsolatos további információkért olvassa 
     Flags: rw,noatime,vers=4.1,rsize=262144,wsize=262144,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,clientaddr=10.32.0.4,local_lock=none,addr=10.32.2.4
     ```
 
-6. **[A]** ellenőrizze **nfs4_disable_idmapping**. Értékeként az **Y**értéknek kell lennie. A **nfs4_disable_idmapping** található címtár-struktúra létrehozásához hajtsa végre a csatlakoztatási parancsot. Nem lehet manuálisan létrehozni a könyvtárat a/sys/modules alatt, mivel a hozzáférés a kernel/illesztőprogramok számára van fenntartva.
+6. **[A]** ellenőrizze **nfs4_disable_idmapping**. Értékeként az **Y** értéknek kell lennie. A **nfs4_disable_idmapping** található címtár-struktúra létrehozásához hajtsa végre a csatlakoztatási parancsot. Nem lehet manuálisan létrehozni a könyvtárat a/sys/modules alatt, mivel a hozzáférés a kernel/illesztőprogramok számára van fenntartva.
 
     ```
     # Check nfs4_disable_idmapping 
@@ -563,7 +564,7 @@ Ebben a példában mindegyik fürtcsomópont saját HANA NFS-fájlrendszerrel re
 
    A fürt és az összes erőforrás állapotának megtekintése
    > [!NOTE]
-   > Ez a cikk a *Slave*kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
+   > Ez a cikk a *Slave* kifejezésre mutató hivatkozásokat tartalmaz, amelyek egy kifejezés, amelyet a Microsoft már nem használ. Ha a rendszer eltávolítja a kifejezést a szoftverből, azt a cikkből távolítjuk el.
    
     ```
     sudo pcs status

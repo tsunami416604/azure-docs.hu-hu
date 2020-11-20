@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b34d5cdd95f44082d05153390209de5145e56d3f
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 84053df34ffda0d4686ad80a9e5f3af00ac53d72
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089570"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949496"
 ---
 # <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Forgatókönyv: REST API-jogcímek hozzáadása egyéni házirendekhez Azure Active Directory B2C
 
@@ -53,7 +53,7 @@ Miután a REST API érvényesíti az adatait, a következő JSON-adataival kell 
 }
 ```
 
-A REST API végpont beállítása kívül esik a jelen cikk hatókörén. Létrehoztunk egy [Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) mintát. Az Azure-függvény teljes kódját a [githubon](https://github.com/azure-ad-b2c/rest-api/tree/master/source-code/azure-function)érheti el.
+A REST API végpont beállítása kívül esik a jelen cikk hatókörén. Létrehoztunk egy [Azure functions](../azure-functions/functions-reference.md) mintát. Az Azure-függvény teljes kódját a [githubon](https://github.com/azure-ad-b2c/rest-api/tree/master/source-code/azure-function)érheti el.
 
 ## <a name="define-claims"></a>Jogcímek meghatározása
 
@@ -185,7 +185,7 @@ Ha vissza szeretné `balance` állítani a jogcímet a függő entitás alkalmaz
 
 Ismételje meg ezt a lépést a **ProfileEdit.xml**, és **PasswordReset.xml** a felhasználói útvonalakat.
 
-Mentse a módosított fájlokat: *TrustFrameworkBase.xml*, *TrustFrameworkExtensions.xml*, *SignUpOrSignin.xml*, *ProfileEdit.xml*és *PasswordReset.xml*. 
+Mentse a módosított fájlokat: *TrustFrameworkBase.xml*, *TrustFrameworkExtensions.xml*, *SignUpOrSignin.xml*, *ProfileEdit.xml* és *PasswordReset.xml*. 
 
 ## <a name="test-the-custom-policy"></a>Egyéni szabályzat tesztelése
 
@@ -193,7 +193,7 @@ Mentse a módosított fájlokat: *TrustFrameworkBase.xml*, *TrustFrameworkExtens
 1. Győződjön meg arról, hogy az Azure AD-bérlőt tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki az Azure ad-bérlőt tartalmazó könyvtárat.
 1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Alkalmazásregisztrációk**.
 1. Válassza az **identitási élmény keretrendszert**.
-1. Válassza **az egyéni házirend feltöltése**lehetőséget, majd töltse fel a módosított házirend-fájlokat: *TrustFrameworkBase.xml*, és *TrustFrameworkExtensions.xml*, *SignUpOrSignin.xml*, *ProfileEdit.xml*és *PasswordReset.xml*. 
+1. Válassza **az egyéni házirend feltöltése** lehetőséget, majd töltse fel a módosított házirend-fájlokat: *TrustFrameworkBase.xml*, és *TrustFrameworkExtensions.xml*, *SignUpOrSignin.xml*, *ProfileEdit.xml* és *PasswordReset.xml*. 
 1. Válassza ki a feltöltött regisztrációs vagy bejelentkezési szabályzatot, majd kattintson a **Futtatás most** gombra.
 1. Regisztrálnia kell egy e-mail-cím vagy egy Facebook-fiók használatával.
 1. Az alkalmazásnak visszaadott jogkivonat tartalmazza a `balance` jogcímet.

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 11/12/2020
-ms.openlocfilehash: 68a7dd1b9a7af9f2667785c8b822b2771510d00e
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: b41f5e9a3bd4d3cbe52cf2e1c567d24de8a661f4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562831"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949955"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure AD B2C figyelése Azure Monitor
 
@@ -25,7 +25,7 @@ A Azure Monitor használatával átirányíthatja Azure Active Directory B2C (Az
 A naplózási eseményeket a következő módon irányíthatja át:
 
 * Egy Azure [Storage-fiók](../storage/blobs/storage-blobs-introduction.md).
-* [Log Analytics munkaterület](../azure-monitor/platform/resource-logs-collect-workspace.md) (az adatelemzéshez, az irányítópultok létrehozásához és a riasztáshoz adott eseményeken).
+* [Log Analytics munkaterület](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) (az adatelemzéshez, az irányítópultok létrehozásához és a riasztáshoz adott eseményeken).
 * Egy Azure [Event hub](../event-hubs/event-hubs-about.md) (és integrálható a splunk és a szumó logikai példányokkal).
 
 ![Azure Monitor](./media/azure-monitor/azure-monitor-flow.png)
@@ -34,7 +34,7 @@ Ebből a cikkből megtudhatja, hogyan viheti át a naplókat egy Azure Log Analy
 
 ## <a name="deployment-overview"></a>Az üzembe helyezés áttekintése
 
-A Azure AD B2C [Azure Active Directory monitorozást](../active-directory/reports-monitoring/overview-monitoring.md)használ. Az Azure AD B2C-bérlőn belüli Azure Active Directory *diagnosztikai beállításainak* engedélyezéséhez az [Azure Lighthouse](../lighthouse/concepts/azure-delegated-resource-management.md) használatával [delegálhat egy erőforrást](../lighthouse/concepts/azure-delegated-resource-management.md), amely lehetővé teszi a Azure ad B2C (a **szolgáltató** ) számára az Azure ad-( **ügyfél** -) erőforrás felügyeletét. Miután elvégezte a cikkben leírt lépéseket, hozzáférhet az *Azure-ad-B2C-figyelő* erőforráscsoporthoz, amely tartalmazza a [log Analytics munkaterületet](../azure-monitor/learn/quick-create-workspace.md) a **Azure ad B2C** portálon. A naplókat a Azure AD B2C a Log Analytics-munkaterületre is továbbíthatja.
+A Azure AD B2C [Azure Active Directory monitorozást](../active-directory/reports-monitoring/overview-monitoring.md)használ. Az Azure AD B2C-bérlőn belüli Azure Active Directory *diagnosztikai beállításainak* engedélyezéséhez az [Azure Lighthouse](../lighthouse/concepts/azure-delegated-resource-management.md) használatával [delegálhat egy erőforrást](../lighthouse/concepts/azure-delegated-resource-management.md), amely lehetővé teszi a Azure ad B2C (a **szolgáltató**) számára az Azure ad-( **ügyfél**-) erőforrás felügyeletét. Miután elvégezte a cikkben leírt lépéseket, hozzáférhet az *Azure-ad-B2C-figyelő* erőforráscsoporthoz, amely tartalmazza a [log Analytics munkaterületet](../azure-monitor/learn/quick-create-workspace.md) a **Azure ad B2C** portálon. A naplókat a Azure AD B2C a Log Analytics-munkaterületre is továbbíthatja.
 
 A telepítés során a Azure AD B2C-címtárban lévő felhasználó vagy csoport számára engedélyezi a Log Analytics Workspace-példány konfigurálását az Azure-előfizetést tartalmazó bérlőn belül. Az engedélyezés létrehozásához üzembe kell helyeznie egy [Azure Resource Manager](../azure-resource-manager/index.yml) sablont az előfizetést tartalmazó Azure ad-bérlőn.
 
@@ -87,7 +87,7 @@ A felügyelet egyszerűbbé tételéhez ajánlott az Azure AD felhasználói *cs
 
 ### <a name="33-create-an-azure-resource-manager-template"></a>3,3 Azure Resource Manager sablon létrehozása
 
-Ezután létre fog hozni egy Azure Resource Manager sablont, amely Azure AD B2C hozzáférést biztosít a korábban létrehozott Azure AD-erőforráscsoporthoz (például *Azure-ad-B2C-monitor* ). Telepítse a sablont a GitHub-mintából az **üzembe helyezés az Azure** -ban gombbal, amely megnyitja a Azure Portal, és lehetővé teszi a sablon közvetlen konfigurálását és üzembe helyezését a portálon. A fenti lépésekben ellenőrizze, hogy be van-e jelentkezve az Azure AD-bérlőbe (nem a Azure AD B2C bérlőre).
+Ezután létre fog hozni egy Azure Resource Manager sablont, amely Azure AD B2C hozzáférést biztosít a korábban létrehozott Azure AD-erőforráscsoporthoz (például *Azure-ad-B2C-monitor*). Telepítse a sablont a GitHub-mintából az **üzembe helyezés az Azure** -ban gombbal, amely megnyitja a Azure Portal, és lehetővé teszi a sablon közvetlen konfigurálását és üzembe helyezését a portálon. A fenti lépésekben ellenőrizze, hogy be van-e jelentkezve az Azure AD-bérlőbe (nem a Azure AD B2C bérlőre).
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely tartalmazza az **Azure ad** -bérlőt.
@@ -100,7 +100,7 @@ Ezután létre fog hozni egy Azure Resource Manager sablont, amely Azure AD B2C 
    | Mező   | Meghatározás |
    |---------|------------|
    | Előfizetés |  Válassza ki azt az Azure-előfizetést tartalmazó könyvtárat, amelyben az *Azure-ad-B2C-monitor* erőforráscsoport létrejött. |
-   | Régió| Válassza ki azt a régiót, ahol az erőforrást telepíteni kívánja.  | 
+   | Region| Válassza ki azt a régiót, ahol az erőforrást telepíteni kívánja.  | 
    | MSP-ajánlat neve| A definíciót leíró név. Például *Azure ad B2C figyelés*.  |
    | MSP-ajánlat leírása| Az ajánlat rövid leírása. Például *engedélyezi a Azure AD B2C Azure monitorét*.|
    | Bérlői azonosító kezeli| A Azure AD B2C bérlő (más néven címtár-azonosító) **bérlői azonosítója** . |
@@ -239,7 +239,7 @@ Az alábbi útmutatást követve hozzon létre egy új munkafüzetet egy JSON-ka
 1. Alkalmazza a sablont az Apply ( **alkalmaz** ) gomb használatával.
 1. A munkafüzet szerkesztésének befejezéséhez válassza az eszköztár **Szerkesztés kész** gombját.
 1. Végül mentse a munkafüzetet a **Mentés** gomb használatával az eszköztárból.
-1. Adjon meg egy **címet** , például *Azure ad B2C irányítópultot*.
+1. Adjon meg egy **címet**, például *Azure ad B2C irányítópultot*.
 1. Kattintson a **Mentés** gombra.
 
     ![A munkafüzet mentése](./media/azure-monitor/wrkb-title.png)

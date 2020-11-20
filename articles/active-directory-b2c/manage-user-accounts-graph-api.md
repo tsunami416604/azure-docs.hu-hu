@@ -12,12 +12,12 @@ ms.date: 08/03/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4a9323cc92567d681ee8c73a62e0b89c17c22b1e
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a5fcbf80850fd9de77e6f9a431afea6d48cb14d1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647613"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949411"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Azure AD B2C felhasználói fiókok kezelése Microsoft Graph
 
@@ -35,13 +35,13 @@ A kezelési alkalmazás által használható alkalmazás-regisztráció létreho
 
 ## <a name="user-management-microsoft-graph-operations"></a>Felhasználói felügyeleti Microsoft Graph műveletek
 
-A következő felhasználói kezelési műveletek érhetők el a [Microsoft Graph API](https://docs.microsoft.com/graph/api/resources/user)-ban:
+A következő felhasználói kezelési műveletek érhetők el a [Microsoft Graph API](/graph/api/resources/user)-ban:
 
-- [Felhasználók listájának beolvasása](https://docs.microsoft.com/graph/api/user-list)
-- [Felhasználó létrehozása](https://docs.microsoft.com/graph/api/user-post-users)
-- [Felhasználó beolvasása](https://docs.microsoft.com/graph/api/user-get)
-- [Felhasználó frissítése](https://docs.microsoft.com/graph/api/user-update)
-- [Felhasználó törlése](https://docs.microsoft.com/graph/api/user-delete)
+- [Felhasználók listájának beolvasása](/graph/api/user-list)
+- [Felhasználó létrehozása](/graph/api/user-post-users)
+- [Felhasználó beolvasása](/graph/api/user-get)
+- [Felhasználó frissítése](/graph/api/user-update)
+- [Felhasználó törlése](/graph/api/user-delete)
 
 ## <a name="user-properties"></a>Felhasználói tulajdonságok
 
@@ -125,7 +125,7 @@ Microsoft Graph API támogatja a bővítmény-attribútumokkal rendelkező felha
 
 ## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>Mintakód: felhasználói fiókok programozott felügyelete
 
-Ez a mintakód egy olyan .NET Core Console-alkalmazás, amely a [Microsoft Graph SDK](https://docs.microsoft.com/graph/sdks/sdks-overview) -val együttműködik a Microsoft Graph API-val. A kód azt mutatja be, hogyan hívhatja meg az API-t, hogy programozott módon felügyelje a felhasználókat egy Azure AD B2C bérlőn.
+Ez a mintakód egy olyan .NET Core Console-alkalmazás, amely a [Microsoft Graph SDK](/graph/sdks/sdks-overview) -val együttműködik a Microsoft Graph API-val. A kód azt mutatja be, hogyan hívhatja meg az API-t, hogy programozott módon felügyelje a felhasználókat egy Azure AD B2C bérlőn.
 [Letöltheti a minta archívumot](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management/archive/master.zip) (*. zip), [böngészheti a tárházat](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management) a githubon, vagy megnyithatja az adattárat:
 
 ```cmd
@@ -152,7 +152,7 @@ Az alkalmazás megjeleníti a végrehajtható parancsok listáját. Például az
 
 ### <a name="code-discussion"></a>Kód-vitafórum
 
-A mintakód a [Microsoft Graph SDK](https://docs.microsoft.com/graph/sdks/sdks-overview)-t használja, amelynek célja, hogy leegyszerűsítse a Microsoft Graphhoz hozzáférő, magas színvonalú, hatékony és rugalmas alkalmazások kialakítását.
+A mintakód a [Microsoft Graph SDK](/graph/sdks/sdks-overview)-t használja, amelynek célja, hogy leegyszerűsítse a Microsoft Graphhoz hozzáférő, magas színvonalú, hatékony és rugalmas alkalmazások kialakítását.
 
 A Microsoft Graph API-nak benyújtott minden kérelemhez hozzáférési jogkivonat szükséges a hitelesítéshez. A megoldás a [Microsoft. Graph. auth](https://www.nuget.org/packages/Microsoft.Graph.Auth/) NuGet csomag használatát teszi lehetővé, amely a Microsoft Authentication Library (MSAL) hitelesítési forgatókönyv-alapú burkolóját biztosítja a Microsoft Graph SDK-val való használatra.
 
@@ -203,7 +203,7 @@ public static async Task ListUsers(GraphServiceClient graphClient)
 }
 ```
 
-[Az Microsoft Graph SDK-kat használó API-hívások a](https://docs.microsoft.com/graph/sdks/create-requests) Microsoft Graph információk olvasására és írására, a `$select` visszaadott tulajdonságok szabályozására, az egyéni lekérdezési paraméterek megadására, valamint a `$filter` és a lekérdezés paramétereinek használatára vonatkozó információkat tartalmaznak `$orderBy` .
+[Az Microsoft Graph SDK-kat használó API-hívások a](/graph/sdks/create-requests) Microsoft Graph információk olvasására és írására, a `$select` visszaadott tulajdonságok szabályozására, az egyéni lekérdezési paraméterek megadására, valamint a `$filter` és a lekérdezés paramétereinek használatára vonatkozó információkat tartalmaznak `$orderBy` .
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -211,5 +211,5 @@ Azure AD B2C erőforrásokhoz támogatott Microsoft Graph API-műveletek teljes 
 
 <!-- LINK -->
 
-[graph-objectIdentity]: https://docs.microsoft.com/graph/api/resources/objectidentity
+[graph-objectIdentity]: /graph/api/resources/objectidentity
 [graph-user]: (https://docs.microsoft.com/graph/api/resources/user)

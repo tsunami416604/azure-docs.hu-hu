@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 10abd1065fe47556109ed69d36493c165dec1418
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 177215775c9e83286aa98872eed0ab211a8f36ff
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84738226"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948748"
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>A NSG-naplózás automatizálása az Azure Network Watcher biztonsági csoport nézettel
 
 Az ügyfelek gyakran szembesülnek azzal a kihívással, hogy igazolják az infrastruktúrájuk biztonsági állapotát. Ez a kihívás nem különbözik az Azure-beli virtuális gépektől. Fontos, hogy a hálózati biztonsági csoport (NSG) szabályai alapján hasonló biztonsági profilt alkalmazzon. A biztonsági csoport nézet használatával lekérheti a virtuális gépen alkalmazott szabályok listáját egy NSG belül. Megadhat egy arany NSG biztonsági profilt, és elindíthatja a biztonsági csoport nézetet egy heti lépésszám esetében, és összehasonlíthatja a kimenetet az arany profiljával, és létrehozhat egy jelentést. Így könnyen azonosíthatja az összes olyan virtuális gépet, amely nem felel meg az előírt biztonsági profilnak.
 
-Ha nem ismeri a hálózati biztonsági csoportokat, tekintse meg a [hálózati biztonság áttekintése](../virtual-network/security-overview.md)című témakört.
+Ha nem ismeri a hálózati biztonsági csoportokat, tekintse meg a [hálózati biztonság áttekintése](../virtual-network/network-security-groups-overview.md)című témakört.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -34,7 +34,7 @@ Ebben az esetben összehasonlítja egy ismert jó alapkonfigurációt a virtuál
 
 Ez a forgatókönyv feltételezi, hogy már követte a [Network Watcher létrehozása](network-watcher-create.md) című témakör lépéseit Network Watcher létrehozásához. A forgatókönyv azt is feltételezi, hogy egy érvényes virtuális géppel rendelkező erőforráscsoport használatban van.
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Használati eset
 
 A cikkben ismertetett forgatókönyv beolvassa a virtuális gép biztonsági csoportjának nézetét.
 
@@ -186,19 +186,6 @@ Direction                : Inbound
 SideIndicator            : <=
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a beállítások módosultak, tekintse meg a [hálózati biztonsági csoportok kezelése](../virtual-network/manage-network-security-group.md) a hálózati biztonsági csoport és a szóban forgó biztonsági szabályok nyomon követéséhez című témakört.
-
-
-
-
-
-
-
-
-
-
-
-
-

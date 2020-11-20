@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: bba3666fbce6a8ea591654d1abdad319f1e0857c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65e9657c3948d8ce5883cd33ca8720f501352105
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86999517"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950669"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Eszköz felügyelete a Windows PowerShell StorSimple-bővítményével
 
@@ -28,7 +28,7 @@ A cikk elolvasása után a következőket teheti:
 * Segítség kérése Windows PowerShell StorSimple-bővítményeban.
 
 > [!NOTE]
-> * Windows PowerShell StorSimple-bővítménye-parancsmagokkal felügyelheti a StorSimple-eszközt soros konzolról vagy távolról a Windows PowerShell távelérés használatával. Az ezen felületen használható egyes parancsmagokkal kapcsolatos további információkért tekintse meg a [Windows PowerShell StorSimple-bővítménye parancsmag-referenciáját](https://technet.microsoft.com/library/dn688168.aspx).
+> * Windows PowerShell StorSimple-bővítménye-parancsmagokkal felügyelheti a StorSimple-eszközt soros konzolról vagy távolról a Windows PowerShell távelérés használatával. Az ezen felületen használható egyes parancsmagokkal kapcsolatos további információkért tekintse meg a [Windows PowerShell StorSimple-bővítménye parancsmag-referenciáját](/powershell/module/hcs/?viewFallbackFrom=winserverr2-ps).
 > * A Azure PowerShell StorSimple-parancsmagok a parancsmagok egy másik gyűjteménye, amely lehetővé teszi a StorSimple-és áttelepítési feladatok automatizálását a parancssorból. A StorSimple Azure PowerShell-parancsmagokkal kapcsolatos további információkért nyissa meg az [Azure StorSimple parancsmag-referenciát](/powershell/module/servicemanagement/azure.service/?view=azuresmps-4.0.0&viewFallbackFrom=azuresmps-3.7.0#azure).
 
 
@@ -47,10 +47,10 @@ Győződjön meg arról, hogy a következő Putty-beállításokat használja a 
 
 #### <a name="to-configure-putty"></a>A PuTTY konfigurálása
 
-1. A PuTTY **újrakonfigurálása** párbeszédpanel **Kategória** ablaktábláján válassza a **billentyűzet**elemet.
+1. A PuTTY **újrakonfigurálása** párbeszédpanel **Kategória** ablaktábláján válassza a **billentyűzet** elemet.
 2. Győződjön meg arról, hogy a következő beállítások vannak kiválasztva (az új munkamenet indításakor ez az alapértelmezett beállítás).
    
-   | Billentyûzet eleme | Kiválasztás |
+   | Billentyûzet eleme | Válassza ezt: |
    | --- | --- |
    | Backspace-kulcs |Control-? (127) |
    | Kezdőlap és a Befejezés kulcsa |Standard |
@@ -61,9 +61,9 @@ Győződjön meg arról, hogy a következő Putty-beállításokat használja a 
    
     ![Támogatott Putty-beállítások](./media/storsimple-windows-powershell-administration/IC740877.png)
 3. Kattintson az **Alkalmaz** gombra.
-4. A **Kategória** ablaktáblán válassza a **fordítás**lehetőséget.
-5. A **távoli karakterkészlet** listából válassza az **UTF-8**elemet.
-6. **A vonalas rajzolási karakterek**felügyelete alatt válassza a **Unicode-vonal rajzolási kódjának használata**lehetőséget. Az alábbi képernyőfelvételen a megfelelő Putty-kijelölések láthatók.
+4. A **Kategória** ablaktáblán válassza a **fordítás** lehetőséget.
+5. A **távoli karakterkészlet** listából válassza az **UTF-8** elemet.
+6. **A vonalas rajzolási karakterek** felügyelete alatt válassza a **Unicode-vonal rajzolási kódjának használata** lehetőséget. Az alábbi képernyőfelvételen a megfelelő Putty-kijelölések láthatók.
    
     ![UTF-Putty beállításai](./media/storsimple-windows-powershell-administration/IC740878.png)
 7. Kattintson az **Alkalmaz** gombra.
@@ -94,7 +94,7 @@ A következő beállítások közül választhat:
 2. **Bejelentkezés a társ-vezérlőbe teljes hozzáféréssel** Ez a beállítás megegyezik az 1. lehetőséggel, azzal a különbséggel, hogy (a megfelelő hitelesítő adatokkal) csatlakozik a **SSAdminConsole** RunSpace a társ-vezérlőn. Mivel a StorSimple-eszköz egy magas rendelkezésre állású eszköz, amely két vezérlővel rendelkezik aktív-passzív konfigurációban, a társ a soros konzolon keresztül elérni kívánt eszköz másik vezérlőjét jelöli.
    Az 1. lehetőséghez hasonlóan ez a beállítás is lehetővé teszi a Microsoft ügyfélszolgálata számára, hogy hozzáférjenek a nem korlátozott RunSpace egy társ-vezérlőn.
 
-3. **Korlátozott hozzáférésű kapcsolódás** Ez a beállítás a Windows PowerShell felületének korlátozott módban való elérésére szolgál. A rendszer nem kéri a hozzáférési hitelesítő adatokat. Ez a beállítás az 1. és a 2. lehetőséghez képest egy szűkebb RunSpace csatlakozik.  Az 1. beállításon keresztül elérhető egyes feladatok*nem* hajthatók végre a következő RunSpace:
+3. **Korlátozott hozzáférésű kapcsolódás** Ez a beállítás a Windows PowerShell felületének korlátozott módban való elérésére szolgál. A rendszer nem kéri a hozzáférési hitelesítő adatokat. Ez a beállítás az 1. és a 2. lehetőséghez képest egy szűkebb RunSpace csatlakozik.  Az 1. beállításon keresztül elérhető egyes feladatok *nem* hajthatók végre a következő RunSpace:
    
    * Visszaállítás a gyári beállításokra
    * Jelszó módosítása
@@ -175,7 +175,6 @@ A súgót egyszerűen frissítheti a Windows PowerShell felületén. A következ
 > A RunSpace elérhető parancsmagok listájának lekéréséhez jelentkezzen be a megfelelő menüpontba, és futtassa a `Get-Command` parancsmagot.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a fenti munkafolyamatok egyikének végrehajtása során problémákba ütközik a StorSimple-eszközzel, tekintse meg az [eszközök a StorSimple-telepítésekkel kapcsolatos hibaelhárítást ismertető témakört](storsimple-8000-troubleshoot-deployment.md#tools-for-troubleshooting-storsimple-deployments).
-

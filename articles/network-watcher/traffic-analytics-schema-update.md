@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/06/2020
 ms.author: vinigam
-ms.openlocfilehash: 31d0de63185c56eafda8c42efbe44d8e7ffcaf1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be69e7fc0c836257b92aa8573826fe1e8a36d770
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87022463"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94948442"
 ---
 # <a name="sample-queries-with-new-fields-in-the-traffic-analytics-schema-august-2019-schema-update"></a>A Traffic Analytics sémában új mezőket tartalmazó lekérdezések (a séma frissítése augusztus 2019)
 
-A [Traffic Analytics naplózási sémája](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema) a következő új mezőket tartalmazza: **SrcPublicIPs_s**, **DestPublicIPs_s**, **NSGRule_s**. Az új mezők a forrás-és cél IP-címekről nyújtanak információt, és leegyszerűsítik a lekérdezéseket.
+A [Traffic Analytics naplózási sémája](./traffic-analytics-schema.md) a következő új mezőket tartalmazza: **SrcPublicIPs_s**, **DestPublicIPs_s**, **NSGRule_s**. Az új mezők a forrás-és cél IP-címekről nyújtanak információt, és leegyszerűsítik a lekérdezéseket.
 
 A következő néhány hónapban a következő régebbi mezők elavultak lesznek: **VMIP_s**, **Subscription_g**, **Region_s**, **NSGRules_s**, **Subnet_s**, **VM_s**, **NIC_s**, **PublicIPs_s**, **FlowCount_d**.
 
@@ -120,7 +120,7 @@ A következő feltételek szemléltetése:
 
 A feltételektől függően tudjuk, hogy a négy mező egyike lesz kitöltve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha választ szeretne kapni a gyakori kérdésekre, tekintse meg a [Traffic Analytics gyakori](traffic-analytics-faq.md)kérdések című témakört.
 - A funkciók részletes ismertetését itt találja: [Traffic Analytics dokumentáció](traffic-analytics.md).

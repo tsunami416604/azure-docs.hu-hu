@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: vinigam
-ms.openlocfilehash: 532f045233f26a9a2933a19ae7a0a893195ad33f
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: fa8b2d967a336343d23c5f6aa4477ebcf2396407
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94384127"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949037"
 ---
 # <a name="create-a-connection-monitor-using-powershell"></a>Figyelő létrehozása a PowerShell használatával
 
@@ -89,7 +89,7 @@ New-AzNetworkWatcherConnectionMonitor -NetworkWatcherName $nw -ResourceGroupName
 * Tesztelési csoportok
     * név – a tesztelési csoport neve.
     * testConfigurations – tesztelési konfigurációk, amelyek alapján a forrás-végpontok a cél végpontokhoz csatlakoznak
-    * források – válasszon a fent létrehozott végpontok közül. Az Azure-alapú forrás-végpontoknak telepíteniük kell az Azure Network Watcher bővítményt, és a nem Azure-alapú forrás-végpontoknak telepíteniük kell a haveAzure Log Analytics-ügynököt. A forráshoz tartozó ügynök telepítéséhez tekintse meg a [figyelési ügynökök telepítése](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#install-monitoring-agents)című témakört.
+    * források – válasszon a fent létrehozott végpontok közül. Az Azure-alapú forrás-végpontoknak telepíteniük kell az Azure Network Watcher bővítményt, és a nem Azure-alapú forrás-végpontoknak telepíteniük kell a haveAzure Log Analytics-ügynököt. A forráshoz tartozó ügynök telepítéséhez tekintse meg a [figyelési ügynökök telepítése](./connection-monitor-overview.md#install-monitoring-agents)című témakört.
     * célhelyek – válasszon a fent létrehozott végpontok közül. Az Azure-beli virtuális gépekhez vagy bármely végponthoz (nyilvános IP-címhez, URL-címhez vagy FQDN-hez) való csatlakozást célhelyként megadható módon figyelheti. Egyetlen tesztelési csoportban Azure-beli virtuális gépeket, Office 365 URL-címeket, Dynamics 365 URL-címeket és egyéni végpontokat adhat hozzá.
     * letiltás – ezzel a mezővel letilthatja az összes olyan forrás és cél figyelését, amelyet a tesztelési csoport meghatároz.
 
@@ -115,5 +115,5 @@ A hálózati figyelők a következő skálázási korlátokkal rendelkeznek:
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Ismerje meg [, hogyan elemezheti a figyelési és riasztási információkat](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#analyze-monitoring-data-and-set-alerts)
-* Útmutató a [hálózatban felmerülő problémák diagnosztizálásához](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#diagnose-issues-in-your-network)
+* Ismerje meg [, hogyan elemezheti a figyelési és riasztási információkat](./connection-monitor-overview.md#analyze-monitoring-data-and-set-alerts)
+* Útmutató a [hálózatban felmerülő problémák diagnosztizálásához](./connection-monitor-overview.md#diagnose-issues-in-your-network)

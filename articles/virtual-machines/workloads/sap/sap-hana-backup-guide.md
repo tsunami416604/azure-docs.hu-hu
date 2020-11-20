@@ -7,17 +7,18 @@ author: msjuergent
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: b5a83b3976dd3d3af1bfd5695815f7571d73dd9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 522af4bf6cc711bbfdfd30d0443ee58dad56b87e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88652185"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950023"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Az Azure-beli SAP HANA biztonsági mentési útmutatója Virtual Machines
 
@@ -116,12 +117,12 @@ A korábban leírtaknak megfelelően a Azure Backup, a fájlrendszer és az alka
 > Lemezes pillanatkép-alapú biztonsági másolatok SAP HANAhoz olyan központi telepítések esetén, ahol több adatbázis-tároló van használatban, a HANA 2,0 SP04 minimális kiadására van szükség
 > 
 
-Az Azure Storage nem biztosít fájlrendszerbeli konzisztenciát több lemezre vagy kötetre a pillanatkép-készítési folyamat során. Ez azt jelenti, hogy az alkalmazásnak konzisztensnek kell lennie az alkalmazásban, ebben az esetben SAP HANA magát. Az 2039883-es [SAP-Megjegyzés](https://launchpad.support.sap.com/#/notes/2039883) fontos információkat tartalmaz a tárolási pillanatképek SAP HANA biztonsági mentéséről. A XFS fájlrendszerek esetében például a **XFS \_ rögzítése** szükséges a tárolási pillanatkép elindításához az alkalmazás konzisztenciájának biztosítása érdekében (lásd: [XFS \_ Freeze (8) – Linux man oldal](https://linux.die.net/man/8/xfs_freeze) a **XFS \_ befagyasztásával**kapcsolatos részletekért.
+Az Azure Storage nem biztosít fájlrendszerbeli konzisztenciát több lemezre vagy kötetre a pillanatkép-készítési folyamat során. Ez azt jelenti, hogy az alkalmazásnak konzisztensnek kell lennie az alkalmazásban, ebben az esetben SAP HANA magát. Az 2039883-es [SAP-Megjegyzés](https://launchpad.support.sap.com/#/notes/2039883) fontos információkat tartalmaz a tárolási pillanatképek SAP HANA biztonsági mentéséről. A XFS fájlrendszerek esetében például a **XFS \_ rögzítése** szükséges a tárolási pillanatkép elindításához az alkalmazás konzisztenciájának biztosítása érdekében (lásd: [XFS \_ Freeze (8) – Linux man oldal](https://linux.die.net/man/8/xfs_freeze) a **XFS \_ befagyasztásával** kapcsolatos részletekért.
 
 Feltételezve, hogy a XFS fájlrendszer négy Azure virtuális lemezzel rendelkezik, a következő lépések egységes pillanatképet biztosítanak, amely a HANA-adatterületet jelöli:
 
 1. HANA-adatok pillanatkép-előkészítésének létrehozása
-1. Az összes lemez/kötet fájlrendszerének rögzítése (például **XFS \_ Freeze**használata)
+1. Az összes lemez/kötet fájlrendszerének rögzítése (például **XFS \_ Freeze** használata)
 1. Az összes szükséges blob-pillanatkép létrehozása az Azure-ban
 1. A fájlrendszer rögzítésének feloldása
 1. A HANA-adatok pillanatképének megerősítése (törli a pillanatképet)
@@ -146,6 +147,6 @@ A [biztonsági mentési és helyreállítási stratégia megtervezésére](https
 SAP HANA az adattitkosítást és a naplót is biztosítja. Ha SAP HANA adatokat és naplókat nem titkosítja a rendszer, akkor a biztonsági mentések alapértelmezés szerint nem lesznek titkosítva. A SAP HANA azonban egy különálló biztonsági mentési titkosítást biztosít [SAP HANA biztonsági mentési titkosításban](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.03/en-US/5f837a57ce5e468d9db21c8683bc84da.html)dokumentált módon. Ha a SAP HANA régebbi kiadásait futtatja, előfordulhat, hogy ellenőriznie kell, hogy a biztonsági másolat titkosítása a már megadott funkciók részét képezte-e.  
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [SAP HANA Azure Backup a fájl szintjén](sap-hana-backup-file-level.md) leírja a fájl alapú biztonsági mentési lehetőséget.
 * Ha meg szeretné tudni, hogyan hozhat létre magas rendelkezésre állást, és hogyan tervezheti meg az Azure-beli SAP HANA vész-helyreállítását (nagyméretű példányok), tekintse meg [a SAP HANA (nagyméretű példányok) magas rendelkezésre állását és a](hana-overview-high-availability-disaster-recovery.md)

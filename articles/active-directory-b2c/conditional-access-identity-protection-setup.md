@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb585e2ccf8c8ed071b5156961adf48d4e4b108d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 2472183673e5f06f5664a306a69d14c2eaf5f82d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309787"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949768"
 ---
 # <a name="set-up-identity-protection-and-conditional-access-in-azure-ad-b2c"></a>Az Identity Protection és a feltételes hozzáférés beállítása Azure AD B2C
 
@@ -26,7 +26,7 @@ Az Identity Protection folyamatos kockázati észlelést biztosít a Azure AD B2
 ## <a name="prerequisites"></a>Előfeltételek
 
 - A Azure AD B2C bérlőt [egy Azure ad-előfizetéshez kell kapcsolni](billing.md#link-an-azure-ad-b2c-tenant-to-a-subscription).
-- Azure AD B2C prémium P2 szükséges a bejelentkezéshez és a felhasználói kockázatos feltételes hozzáférés használatához. Ha szükséges, [módosítsa a Azure ad B2C díjszabási szintjét a prémium P2-](https://aka.ms/exid-pricing-tier)re. 
+- Azure AD B2C prémium P2 szükséges a bejelentkezéshez és a felhasználói kockázatos feltételes hozzáférés használatához. Ha szükséges, [módosítsa a Azure ad B2C díjszabási szintjét a prémium P2-](./billing.md)re. 
 - A B2C-bérlőben az Identitáskezelés és a feltételes hozzáférés kezeléséhez olyan fiókra van szüksége, amely a globális rendszergazdai szerepkörhöz vagy a biztonsági rendszergazdai szerepkörhöz van rendelve.
 - Ahhoz, hogy használhassa ezeket a szolgáltatásokat a bérlőben, először át kell váltania a Azure AD B2C Premium P2 díjszabási szintjére.
 
@@ -54,13 +54,13 @@ A következő kockázati észlelések jelenleg Azure AD B2C támogatottak:
 
 1. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 
-1. A Azure Portal keresse meg és válassza a **Azure ad B2C**lehetőséget.
+1. A Azure Portal keresse meg és válassza a **Azure ad B2C** lehetőséget.
 
-1. A **Biztonság**területen válassza a **kockázatos felhasználók (előzetes verzió)** lehetőséget.
+1. A **Biztonság** területen válassza a **kockázatos felhasználók (előzetes verzió)** lehetőséget.
 
    ![Kockázatos felhasználók](media/conditional-access-identity-protection-setup/risky-users.png)
 
-1. A **Biztonság**területen válassza a **kockázati észlelések (előzetes verzió)** lehetőséget.
+1. A **Biztonság** területen válassza a **kockázati észlelések (előzetes verzió)** lehetőséget.
 
    ![Kockázatészlelések](media/conditional-access-identity-protection-setup/risk-detections.png)
 
@@ -74,9 +74,9 @@ Ha feltételes hozzáférési szabályzatot szeretne hozzáadni az Identity Prot
 
 2. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 
-3. A Azure Portal keresse meg és válassza a **Azure Active Directory**lehetőséget.
+3. A Azure Portal keresse meg és válassza a **Azure Active Directory** lehetőséget.
 
-4. Válassza a **Tulajdonságok**lehetőséget, majd válassza a **biztonsági beállítások kezelése**lehetőséget.
+4. Válassza a **Tulajdonságok** lehetőséget, majd válassza a **biztonsági beállítások kezelése** lehetőséget.
 
    ![Biztonsági alapértékek letiltása](media/conditional-access-identity-protection-setup/disable-security-defaults.png)
 
@@ -90,9 +90,9 @@ Ha feltételes hozzáférési szabályzatot szeretne hozzáadni az Identity Prot
 
 1. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 
-1. A Azure Portal keresse meg és válassza a **Azure ad B2C**lehetőséget.
+1. A Azure Portal keresse meg és válassza a **Azure ad B2C** lehetőséget.
 
-1. A **Biztonság**területen válassza a **feltételes hozzáférés (előzetes verzió)** lehetőséget. Megnyílik a **feltételes hozzáférési szabályzatok** lap. 
+1. A **Biztonság** területen válassza a **feltételes hozzáférés (előzetes verzió)** lehetőséget. Megnyílik a **feltételes hozzáférési szabályzatok** lap. 
 
 1. Válassza az **új szabályzat** lehetőséget, majd az Azure ad feltételes hozzáférési dokumentációjában hozzon létre egy új szabályzatot. Például:
 
@@ -105,14 +105,14 @@ Ha feltételes hozzáférési szabályzatot szeretne hozzáadni az Identity Prot
 
 1. Hozzon létre egy feltételes hozzáférési szabályzatot a fentiekben leírtak szerint, a következő beállításokkal:
    
-   - **Felhasználók és csoportok**esetében válassza a teszt felhasználót. Ne jelölje ki az **összes felhasználót** , vagy tiltsa le a bejelentkezést.
-   - **Felhőalapú alkalmazások vagy műveletek**esetében válassza az **alkalmazások kiválasztása**lehetőséget, majd válassza ki a függő entitás alkalmazását.
-   - A feltételek beállításnál válassza a **bejelentkezési kockázat** és a **magas**, **közepes**és **alacsony** kockázati szintek lehetőséget.
-   - A **támogatás**mezőben válassza a **hozzáférés letiltása**lehetőséget.
+   - **Felhasználók és csoportok** esetében válassza a teszt felhasználót. Ne jelölje ki az **összes felhasználót** , vagy tiltsa le a bejelentkezést.
+   - **Felhőalapú alkalmazások vagy műveletek** esetében válassza az **alkalmazások kiválasztása** lehetőséget, majd válassza ki a függő entitás alkalmazását.
+   - A feltételek beállításnál válassza a **bejelentkezési kockázat** és a **magas**, **közepes** és **alacsony** kockázati szintek lehetőséget.
+   - A **támogatás** mezőben válassza a **hozzáférés letiltása** lehetőséget.
 
       ![A blokkolási hozzáférés kiválasztása](media/conditional-access-identity-protection-setup/test-conditional-access-policy.png)
 
-1. A **Létrehozás**lehetőség kiválasztásával engedélyezheti a feltételes hozzáférési szabályzat tesztelését.
+1. A **Létrehozás** lehetőség kiválasztásával engedélyezheti a feltételes hozzáférési szabályzat tesztelését.
 
 1. Kockázatos bejelentkezés szimulálása a [Tor-böngésző](https://www.torproject.org/download/)használatával. 
 
@@ -128,11 +128,11 @@ Feltételes hozzáférési esemény eredményének áttekintése:
 
 2. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 
-3. A Azure Portal keresse meg és válassza a **Azure ad B2C**lehetőséget.
+3. A Azure Portal keresse meg és válassza a **Azure ad B2C** lehetőséget.
 
-4. A **tevékenységek**területen válassza a **naplók**lehetőséget.
+4. A **tevékenységek** területen válassza a **naplók** lehetőséget.
 
-5. A napló szűréséhez állítsa a **Kategória** beállítást a **B2C** értékre, és állítsa be a **tevékenység erőforrástípus** **IdentityProtection**értékre. Ezután válassza az **Alkalmaz** lehetőséget.
+5. A napló szűréséhez állítsa a **Kategória** beállítást a **B2C** értékre, és állítsa be a **tevékenység erőforrástípus** **IdentityProtection** értékre. Ezután válassza az **Alkalmaz** lehetőséget.
 
 6. Tekintse át a naplózási tevékenységet az elmúlt 7 napban. A következő típusú tevékenységek tartoznak ide:
 

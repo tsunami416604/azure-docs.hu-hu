@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 888e2287c869200434e198204881d5bd5014f87d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 29db2214ddabeb6df2aa937c4ccd1f9938143969
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363861"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949445"
 ---
 # <a name="manage-azure-ad-b2c-custom-policies-with-azure-powershell"></a>Azure AD B2C egyéni házirendek kezelése a Azure PowerShell
 
@@ -31,7 +31,7 @@ A Azure PowerShell számos parancsmagot biztosít a parancssori és parancsfájl
 
 * [Azure ad B2C bérlő](tutorial-create-tenant.md)és a címtárbeli felhasználó hitelesítő adatai a [B2C IEF házirend-rendszergazdai](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator) szerepkörrel
 * A bérlőre feltöltött [Egyéni szabályzatok](custom-policy-get-started.md)
-* [Azure AD PowerShell a Graph **Preview modulhoz**](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
+* [Azure AD PowerShell a Graph **Preview modulhoz**](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
 
 ## <a name="connect-powershell-session-to-b2c-tenant"></a>PowerShell-munkamenet összekötése a B2C-Bérlővel
 
@@ -191,15 +191,15 @@ Message: Validation failed: 1 validation error(s) found in policy "B2C_1A_SIGNUP
 ...
 ```
 
-További információ az egyéni házirendek hibaelhárításáról: [Azure ad B2C egyéni szabályzatok és az identitások felhasználói felületének](active-directory-b2c-guide-troubleshooting-custom.md)hibaelhárítása.
+További információ az egyéni házirendek hibaelhárításáról: [Azure ad B2C egyéni szabályzatok és az identitások felhasználói felületének](./troubleshoot-custom-policies.md)hibaelhárítása.
 
 ## <a name="next-steps"></a>Következő lépések
 
 További információ arról, hogyan használható a PowerShell az egyéni házirendek folyamatos integrációs/folyamatos teljesítési (CI/CD) folyamat részeként történő telepítéséhez: [Egyéni szabályzatok telepítése Azure DevOps-folyamatból](deploy-custom-policies-devops.md).
 
 <!-- LINKS - External -->
-[Connect-AzureAD]: https://docs.microsoft.com/powershell/module/azuread/get-azureadmstrustframeworkpolicy
-[Get-AzureADMSTrustFrameworkPolicy]: https://docs.microsoft.com/powershell/module/azuread/get-azureadmstrustframeworkpolicy
-[New-AzureADMSTrustFrameworkPolicy]: https://docs.microsoft.com/powershell/module/azuread/new-azureadmstrustframeworkpolicy
-[Remove-AzureADMSTrustFrameworkPolicy]: https://docs.microsoft.com/powershell/module/azuread/remove-azureadmstrustframeworkpolicy
-[Set-AzureADMSTrustFrameworkPolicy]: https://docs.microsoft.com/powershell/module/azuread/set-azureadmstrustframeworkpolicy
+[Connect-AzureAD]: /powershell/module/azuread/get-azureadmstrustframeworkpolicy
+[Get-AzureADMSTrustFrameworkPolicy]: /powershell/module/azuread/get-azureadmstrustframeworkpolicy
+[New-AzureADMSTrustFrameworkPolicy]: /powershell/module/azuread/new-azureadmstrustframeworkpolicy
+[Remove-AzureADMSTrustFrameworkPolicy]: /powershell/module/azuread/remove-azureadmstrustframeworkpolicy
+[Set-AzureADMSTrustFrameworkPolicy]: /powershell/module/azuread/set-azureadmstrustframeworkpolicy

@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
-ms.custom: seodec18
-ms.openlocfilehash: cfd28171524ada5f5feea9e18e4b88a291254e88
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.custom: references_regions
+ms.openlocfilehash: a430333f57b3734e5977db5c104c8f6d37bfd3c4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616790"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949088"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Beszédfelismerési szolgáltatás nyelvi és hangalapú támogatása
 
@@ -86,7 +86,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 |Litván (Litvánia)             |`lt-LT` | Nyelvi modell                                   |
 |Máltai (Málta)                     |`mt-MT` | Nyelvi modell                                   |
 |Marathi (India)                    |`mr-IN` | Nyelvi modell                                   |
-|Norvég (BokmÃ ¥ l) (Norvégia)       |`nb-NO` | Nyelvi modell                                   |
+|norvég (bokmål, Norvégia)         |`nb-NO` | Nyelvi modell                                   |
 |Lengyel (Lengyelország)                    |`pl-PL` | Nyelvi modell                                   |
 |Portugál (Brazília)                |`pt-BR` | Akusztikai modell<br>Nyelvi modell<br>Kiejtése|
 |Portugál (Portugália)              |`pt-PT` | Nyelvi modell                                   |
@@ -134,83 +134,103 @@ A neurális szövegek és a beszédek egy új, mély neurális hálózatok álta
 
 A neurális hangokat felhasználhatja az csevegőrobotok-és hangsegédekkel való interakcióra, így természetesebb és vonzó, digitális szövegeket, például e-könyveket készíthet hangoskönyvekbe, és hatékonyabbá teheti az autós navigációs rendszereket. Az emberi jellegű természetes prosody és a szavak egyértelmű megfogalmazásával a neurális hangok jelentősen csökkentik a figyelési fáradtságot, amikor a felhasználók interakcióba lépnek az AI-rendszerekkel.
 
-További információ a regionális elérhetőségről: [régiók](regions.md#standard-and-neural-voices).
-
-|Nyelv  | Területi beállítás (BCP-47)          | Nem | Hang neve | Stílus támogatása |
-|--|--|--|--|--|
+| Nyelv | Területi beállítás | Nem | Hang neve | Stílus támogatása |
+|---|---|---|---|---|
 | Arab (Egyiptom) | `ar-EG` | Nő | `ar-EG-SalmaNeural` | Általános kérdések |
 | Arab (Szaúd-Arábia) | `ar-SA` | Nő | `ar-SA-ZariyahNeural` | Általános kérdések |
-| Bolgár (duzzadt) | `bg-BG` <sup>Új</sup> | Nő | `bg-BG-KalinaNeural` | Általános kérdések |
-| Kantoni (hagyományos kínai, Hongkong) | `zh-HK` | Nő | `zh-HK-HiuGaaiNeural` | Általános kérdések |
+| Bolgár (duzzadt) | `bg-BG` | Nő | `bg-BG-KalinaNeural` <sup>Új</sup> | Általános kérdések |
 | Katalán (Spanyolország) | `ca-ES` | Nő | `ca-ES-AlbaNeural` | Általános kérdések |
-| Horvát (Horvátország) | `hr-HR` <sup>Új</sup> | Nő | `hr-HR-GabrijelaNeural` | Általános kérdések |
-| Cseh (Cseh) | `cs-CZ` <sup>Új</sup> | Nő | `cs-CZ-VlastaNeural` | Általános kérdések |
+| Kínai (kantoni, hagyományos) | `zh-HK` | Nő | `zh-HK-HiuGaaiNeural` | Általános kérdések |
+| Kínai (mandarin, egyszerűsített) | `zh-CN` | Nő | `zh-CN-XiaoxiaoNeural` | Általános, több hangstílus érhető el [a SSML használatával](speech-synthesis-markup.md#adjust-speaking-styles) |
+| Kínai (mandarin, egyszerűsített) | `zh-CN` | Nő | `zh-CN-XiaoyouNeural` | A szövegegység elbeszéléséhez optimalizált, gyerek hang |
+| Kínai (mandarin, egyszerűsített) | `zh-CN` | Férfi   | `zh-CN-YunyangNeural` | A hírek olvasására optimalizált<br /> több hangstílus érhető el [a SSML használatával](speech-synthesis-markup.md#adjust-speaking-styles) |
+| Kínai (mandarin, egyszerűsített) | `zh-CN` | Férfi   | `zh-CN-YunyeNeural` | A történet elbeszéléséhez optimalizált |
+| Kínai (tajvani mandarin) | `zh-TW` | Nő | `zh-TW-HsiaoYuNeural` | Általános kérdések |
+| Horvát (Horvátország) | `hr-HR` | Nő | `hr-HR-GabrijelaNeural` <sup>Új</sup> | Általános kérdések |
+| Cseh (Cseh) | `cs-CZ` | Nő | `cs-CZ-VlastaNeural` <sup>Új</sup>    | Általános kérdések |
 | Dán (Dánia) | `da-DK` | Nő | `da-DK-ChristelNeural` | Általános kérdések |
 | Holland (Hollandia) | `nl-NL` | Nő | `nl-NL-ColetteNeural` | Általános kérdések |
 | Angol (Ausztrália) | `en-AU` | Nő | `en-AU-NatashaNeural` | Általános kérdések |
-| Angol (Ausztrália) | `en-AU` <sup>Új</sup> | Férfi | `en-AU-WilliamNeural` | Általános kérdések |
+| Angol (Ausztrália) | `en-AU` | Férfi   | `en-AU-WilliamNeural` <sup>Új</sup>  | Általános kérdések |
 | Angol (Kanada) | `en-CA` | Nő | `en-CA-ClaraNeural` | Általános kérdések |
 | Angol (India) | `en-IN` | Nő | `en-IN-NeerjaNeural` | Általános kérdések |
-| Angol (Írország) | `en-IE` <sup>Új</sup> | Nő | `en-IE-EmilyNeural` | Általános kérdések |
+| Angol (Írország) | `en-IE` | Nő | `en-IE-EmilyNeural` <sup>Új</sup> | Általános kérdések |
 | angol (Egyesült Királyság) | `en-GB` | Nő | `en-GB-LibbyNeural` | Általános kérdések |
 | angol (Egyesült Királyság) | `en-GB` | Nő | `en-GB-MiaNeural` | Általános kérdések |
-| angol (Egyesült Királyság) | `en-GB` <sup>Új</sup> | Férfi | `en-GB-RyanNeural` | Általános kérdések |
-| angol (Egyesült Államok) | `en-US` | Nő | `en-US-AriaNeural` | Általános, több hangstílus érhető el |
+| angol (Egyesült Királyság) | `en-GB` | Férfi | `en-GB-RyanNeural` <sup>Új</sup> | Általános kérdések |
+| angol (Egyesült Államok) | `en-US` | Nő | `en-US-AriaNeural` | Általános, több hangstílus érhető el [a SSML használatával](speech-synthesis-markup.md#adjust-speaking-styles) |
 | angol (Egyesült Államok) | `en-US` | Férfi | `en-US-GuyNeural` | Általános kérdések |
-| angol (Egyesült Államok) | `en-US` <sup>Új</sup> | Nő | `en-US-JennyNeural` | Általános, több hangstílus érhető el |
+| angol (Egyesült Államok) | `en-US` | Nő | `en-US-JennyNeural` <sup>Új</sup> | Általános, több hangstílus érhető el [a SSML használatával](speech-synthesis-markup.md#adjust-speaking-styles) |
 | Finn (Finnország) | `fi-FI` | Nő | `fi-FI-NooraNeural` | Általános kérdések |
 | Francia (Kanada) | `fr-CA` | Nő | `fr-CA-SylvieNeural` | Általános kérdések |
-| Francia (Kanada) | `fr-CA` <sup>Új</sup> | Férfi | `fr-CA-JeanNeural` | Általános kérdések |
+| Francia (Kanada) | `fr-CA` | Férfi | `fr-CA-JeanNeural` <sup>Új</sup> | Általános kérdések |
 | Francia (Franciaország) | `fr-FR` | Nő | `fr-FR-DeniseNeural` | Általános kérdések |
-| Francia (Franciaország) | `fr-FR` <sup>Új</sup> | Férfi | `fr-FR-HenriNeural` | Általános kérdések |
-| Francia (Svájc) | `fr-CH` <sup>Új</sup> | Nő | `fr-CH-ArianeNeural` | Általános kérdések |
-| Német (Ausztria) | `de-AT` <sup>Új</sup> | Nő | `de-AT-IngridNeural` | Általános kérdések |
+| Francia (Franciaország) | `fr-FR` | Férfi | `fr-FR-HenriNeural` <sup>Új</sup> | Általános kérdések |
+| Francia (Svájc) | `fr-CH` | Nő | `fr-CH-ArianeNeural` <sup>Új</sup> | Általános kérdések |
+| Német (Ausztria) | `de-AT` | Nő | `de-AT-IngridNeural` <sup>Új</sup> | Általános kérdések |
 | Német (Németország) | `de-DE` | Nő | `de-DE-KatjaNeural` | Általános kérdések |
-| Német (Németország) | `de-DE` <sup>Új</sup> | Férfi | `de-DE-ConradNeural` | Általános kérdések |
-| Német (Svájc) | `de-CH` <sup>Új</sup> | Nő | `de-CH-LeniNeural` | Általános kérdések |
-| Görög (Görögország) | `el-GR` <sup>Új</sup> | Nő | `el-GR-AthinaNeural` | Általános kérdések |
-| Héber (Izrael) | `he-IL` <sup>Új</sup> | Nő | `he-IL-HilaNeural` | Általános kérdések |
+| Német (Németország) | `de-DE` | Férfi | `de-DE-ConradNeural` <sup>Új</sup> | Általános kérdések |
+| Német (Svájc) | `de-CH` | Nő | `de-CH-LeniNeural` <sup>Új</sup> | Általános kérdések |
+| Görög (Görögország) | `el-GR` | Nő | `el-GR-AthinaNeural` <sup>Új</sup> | Általános kérdések |
+| Héber (Izrael) | `he-IL` | Nő | `he-IL-HilaNeural` <sup>Új</sup> | Általános kérdések |
 | Hindi (India) | `hi-IN` | Nő | `hi-IN-SwaraNeural` | Általános kérdések |
-| Magyar (Magyarország) | `hu-HU` <sup>Új</sup> | Nő | `hu-HU-NoemiNeural` | Általános kérdések |
-| Indonéz (Indonézia) | `id-ID` <sup>Új</sup> | Férfi | `id-ID-ArdiNeural` | Általános kérdések |
+| Magyar (Magyarország) | `hu-HU` | Nő | `hu-HU-NoemiNeural` <sup>Új</sup> | Általános kérdések |
+| Indonéz (Indonézia) | `id-ID` | Férfi | `id-ID-ArdiNeural` <sup>Új</sup> | Általános kérdések |
 | Olasz (Olaszország) | `it-IT` | Nő | `it-IT-ElsaNeural` | Általános kérdések |
-| Olasz (Olaszország) | `it-IT` <sup>Új</sup> | Nő | `it-IT-IsabellaNeural` | Általános kérdések |
-| Olasz (Olaszország) | `it-IT` <sup>Új</sup> | Férfi | `it-IT-DiegoNeural` | Általános kérdések |
+| Olasz (Olaszország) | `it-IT` | Nő | `it-IT-IsabellaNeural` <sup>Új</sup> | Általános kérdések |
+| Olasz (Olaszország) | `it-IT` | Férfi | `it-IT-DiegoNeural` <sup>Új</sup> | Általános kérdések |
 | Japán (Japán) | `ja-JP` | Nő | `ja-JP-NanamiNeural` | Általános kérdések |
-| Japán (Japán) | `ja-JP` <sup>Új</sup> | Férfi | `ja-JP-KeitaNeural` | Általános kérdések |
+| Japán (Japán) | `ja-JP` | Férfi | `ja-JP-KeitaNeural` <sup>Új</sup> | Általános kérdések |
 | Koreai (Dél-Korea) | `ko-KR` | Nő | `ko-KR-SunHiNeural` | Általános kérdések |
-| Koreai (Dél-Korea) | `ko-KR` <sup>Új</sup> | Férfi | `ko-KR-InJoonNeural` | Általános kérdések |
-| Maláj (Malajzia) | `ms-MY` <sup>Új</sup> | Nő | `ms-MY-YasminNeural` | Általános kérdések |
-| Mandarin (egyszerűsített kínai, Kína) | `zh-CN` | Nő | `zh-CN-XiaoxiaoNeural` | Általános, több hangstílus érhető el |
-| Mandarin (egyszerűsített kínai, Kína) | `zh-CN` | Nő | `zh-CN-XiaoyouNeural` | A szövegegység elbeszéléséhez optimalizált, gyerek hang |
-| Mandarin (egyszerűsített kínai, Kína) | `zh-CN` | Férfi | `zh-CN-YunyangNeural` | A hírek olvasására optimalizált, több hangstílus érhető el |
-| Mandarin (egyszerűsített kínai, Kína) | `zh-CN` | Férfi | `zh-CN-YunyeNeural` | A történet elbeszéléséhez optimalizált |
-| Mandarin (hagyományos kínai, Tajvan) | `zh-TW` | Nő | `zh-TW-HsiaoYuNeural` | Általános kérdések |
-| Norvég, BokmÃ ¥ l (Norvégia) | `nb-NO` | Nő | `nb-NO-IselinNeural` | Általános kérdések |
+| Koreai (Dél-Korea) | `ko-KR` | Férfi | `ko-KR-InJoonNeural` <sup>Új</sup> | Általános kérdések |
+| Maláj (Malajzia) | `ms-MY` | Nő | `ms-MY-YasminNeural` <sup>Új</sup> | Általános kérdések |
+| norvég (bokmål, Norvégia) | `nb-NO` | Nő | `nb-NO-IselinNeural` | Általános kérdések |
 | Lengyel (Lengyelország) | `pl-PL` | Nő | `pl-PL-ZofiaNeural` | Általános kérdések |
-| Portugál (Brazília) | `pt-BR` | Nő | `pt-BR-FranciscaNeural` | Általános, több hangstílus érhető el |
-| Portugál (Brazília) | `pt-BR` <sup>Új</sup> | Férfi | `pt-BR-AntonioNeural` | Általános kérdések |
+| Portugál (Brazília) | `pt-BR` | Nő | `pt-BR-FranciscaNeural` | Általános, több hangstílus érhető el [a SSML használatával](speech-synthesis-markup.md#adjust-speaking-styles) |
+| Portugál (Brazília) | `pt-BR` | Férfi | `pt-BR-AntonioNeural` <sup>Új</sup> | Általános kérdések |
 | Portugál (Portugália) | `pt-PT` | Nő | `pt-PT-FernandaNeural` | Általános kérdések |
-| Román (Románia) | `ro-RO` <sup>Új</sup> | Nő | `ro-RO-AlinaNeural` | Általános kérdések |
+| Román (Románia) | `ro-RO` | Nő | `ro-RO-AlinaNeural` <sup>Új</sup> | Általános kérdések |
 | Orosz (Oroszország) | `ru-RU` | Nő | `ru-RU-DariyaNeural` | Általános kérdések |
-| Szlovák (Szlovákia) | `sk-SK` <sup>Új</sup> | Nő | `sk-SK-ViktoriaNeural` | Általános kérdések |
-| Szlovén (Szlovénia) | `sl-SI` <sup>Új</sup> | Nő | `sl-SI-PetraNeural` | Általános kérdések |
+| Szlovák (Szlovákia) | `sk-SK` | Nő | `sk-SK-ViktoriaNeural` <sup>Új</sup> | Általános kérdések |
+| Szlovén (Szlovénia) | `sl-SI` | Nő | `sl-SI-PetraNeural` <sup>Új</sup> | Általános kérdések |
 | Spanyol (Mexikó) | `es-MX` | Nő | `es-MX-DaliaNeural` | Általános kérdések |
-| Spanyol (Mexikó) | `es-MX` <sup>Új</sup> | Férfi | `es-MX-JorgeNeural` | Általános kérdések |
+| Spanyol (Mexikó) | `es-MX` | Férfi | `es-MX-JorgeNeural` <sup>Új</sup> | Általános kérdések |
 | Spanyol (Spanyolország) | `es-ES` | Nő | `es-ES-ElviraNeural` | Általános kérdések |
-| Spanyol (Spanyolország) | `es-ES` <sup>Új</sup> | Férfi | `es-ES-AlvaroNeural` | Általános kérdések |
+| Spanyol (Spanyolország) | `es-ES` | Férfi | `es-ES-AlvaroNeural` <sup>Új</sup> | Általános kérdések |
 | Svéd (Svédország) | `sv-SE` | Nő | `sv-SE-HilleviNeural` | Általános kérdések |
-| Tamil (India) | `ta-IN` <sup>Új</sup> | Nő | `ta-IN-PallaviNeural` | Általános kérdések |
-| Telugu (India) | `te-IN` <sup>Új</sup> | Nő | `te-IN-ShrutiNeural` | Általános kérdések |
+| Tamil (India) | `ta-IN` | Nő | `ta-IN-PallaviNeural` <sup>Új</sup> | Általános kérdések |
+| Telugu (India) | `te-IN` | Nő | `te-IN-ShrutiNeural` <sup>Új</sup> | Általános kérdések |
 | Thai (Thaiföld) | `th-TH` | Nő | `th-TH-AcharaNeural` | Általános kérdések |
-| Thai (Thaiföld) | `th-TH` <sup>Új</sup> | Nő | `th-TH-PremwadeeNeural` | Általános kérdések |
+| Thai (Thaiföld) | `th-TH` | Nő | `th-TH-PremwadeeNeural` <sup>Új</sup> | Általános kérdések |
 | Török (Törökország) | `tr-TR` | Nő | `tr-TR-EmelNeural` | Általános kérdések |
 | Vietnámi (Vietnám) | `vi-VN` <sup>Új</sup> | Nő | `vi-VN-HoaiMyNeural` | Általános kérdések|
 
+#### <a name="neural-voices-in-preview"></a>Neurális hangok az előzetes verzióban
+
+Az alábbi neurális hangok nyilvános előzetes verzióban érhetők el. 
+
+| Nyelv                         | Területi beállítás  | Nem | Hang neve                             | Stílus támogatása |
+|----------------------------------|---------|--------|----------------------------------------|---------------|
+| Kínai (mandarin, egyszerűsített) | `zh-CN` | Férfi   | `zh-CN-YunxiNeural` <sup>Új</sup> | Általános, több stílus is elérhető [a SSML használatával](speech-synthesis-markup.md#adjust-speaking-styles) |
+| Kínai (mandarin, egyszerűsített) | `zh-CN` | Nő | `zh-CN-XiaohanNeural` <sup>Új</sup> | Általános, több stílus is elérhető [a SSML használatával](speech-synthesis-markup.md#adjust-speaking-styles) |
+| Kínai (mandarin, egyszerűsített) | `zh-CN` | Nő | `zh-CN-XiaoxuanNeural` <sup>Új</sup> | Általános, több szerepkör – lejátszás és [a SSML használatával elérhető stílusok](speech-synthesis-markup.md#adjust-speaking-styles) |
+| Kínai (mandarin, egyszerűsített) | `zh-CN` | Nő | `zh-CN-XiaomoNeural` <sup>Új</sup> | Általános, több szerepkör – lejátszás és [a SSML használatával elérhető stílusok](speech-synthesis-markup.md#adjust-speaking-styles) |
+| Kínai (mandarin, egyszerűsített) | `zh-CN` | Nő | `zh-CN-XiaoruiNeural` <sup>Új</sup> | Vezető hang, több stílus érhető el [a SSML használatával](speech-synthesis-markup.md#adjust-speaking-styles) |
+| észt (Észtország) | `et-EE` | Nő | `et-EE-AnuNeural` <sup>Új</sup> | Általános kérdések |
+| Gael (Írország) | `ga-IE` | Nő | `ga-IE-OrlaNeural` <sup>Új</sup> | Általános kérdések |
+| Litván (Litvánia) | `lt-LT` | Nő | `lt-LT-OnaNeural` <sup>Új</sup> | Általános kérdések |
+| Lett (Lettország) | `lv-LV` | Nő | `lv-LV-EveritaNeural` <sup>Új</sup> | Általános kérdések |
+| Máltai (Málta) | `mt-MT` | Nő | `mt-MT-GraceNeural` <sup>Új</sup> | Általános kérdések |
+
+> [!IMPORTANT]
+> A nyilvános előzetes verzióban elérhető hangok csak 3 szolgáltatási régióban érhetők el: USA keleti régiója, Nyugat-Európa és Délkelet-Ázsia.
+
+További információ a regionális elérhetőségről: [régiók](regions.md#standard-and-neural-voices).
+
+A következő témakörből megtudhatja, hogyan konfigurálhat és állíthat be neurális hangokat, például a beszéd stílusait: [beszéd szintézisének leíró nyelve](speech-synthesis-markup.md#adjust-speaking-styles).
+
 > [!IMPORTANT]
 > A hang a következőre `en-US-JessaNeural` változott: `en-US-AriaNeural` . Ha korábban a "Jessa" kifejezést használta, váltson át az "aria" kifejezésre.
-
-Ha szeretné megtudni, hogyan konfigurálhatja és módosíthatja a neurális hangokat, tekintse meg a [Speech szintézis Markup Language](speech-synthesis-markup.md#adjust-speaking-styles)című témakört.
 
 > [!TIP]
 > Továbbra is használhatja a teljes szolgáltatásnév leképezését (például "Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)") a beszédfelismerési kérelmekben.
@@ -221,84 +241,83 @@ Több mint 75 standard hang érhető el több mint 45 nyelven és területi beá
 
 | Nyelv | Területi beállítás (BCP-47) | Nem | Hang neve |
 |--|--|--|--|
-| Arab (arab)  |  `ar-EG`  |  Nő  |  `ar-EG-Hoda`|
-| Arab (Szaúd-Arábia)  |  `ar-SA`  |  Férfi  |  `ar-SA-Naayf`|
-| Bolgár (Bulgária)  |  `bg-BG`  |  Férfi  |  `bg-BG-Ivan`|
-| Kantoni (hagyományos kínai, Hongkong)  |  `zh-HK`  |  Férfi  |  `zh-HK-Danny`|
-| Kantoni (hagyományos kínai, Hongkong)  |  `zh-HK`  |  Nő  |  `zh-HK-TracyRUS`|
-| Katalán (Spanyolország)  |  `ca-ES`  |  Nő  |  `ca-ES-HerenaRUS`|
-| Horvát (Horvátország)  |  `hr-HR`  |  Férfi  |  `hr-HR-Matej`|
-| Cseh (Cseh Köztársaság)  |  `cs-CZ`  |  Férfi  |  `cs-CZ-Jakub`|
-| Dán (Dánia)  |  `da-DK`  |  Nő  |  `da-DK-HelleRUS`|
-| Holland (Hollandia)  |  `nl-NL`  |  Nő  |  `nl-NL-HannaRUS`|
-| Angol (Ausztrália)  |  `en-AU`  |  Nő  |  `en-AU-Catherine`|
-| Angol (Ausztrália)  |  `en-AU`  |  Nő  |  `en-AU-HayleyRUS`|
-| Angol (Kanada)  |  `en-CA`  |  Nő  |  `en-CA-HeatherRUS`|
-| Angol (Kanada)  |  `en-CA`  |  Nő  |  `en-CA-Linda`|
-| Angol (India)  |  `en-IN`  |  Nő  |  `en-IN-Heera`|
-| Angol (India)  |  `en-IN`  |  Nő  |  `en-IN-PriyaRUS`|
-| Angol (India)  |  `en-IN`  |  Férfi  |  `en-IN-Ravi`|
-| Angol (Írország)  |  `en-IE`  |  Férfi  |  `en-IE-Sean`|
-| angol (Egyesült Királyság)  |  `en-GB`  |  Férfi  |  `en-GB-George`|
-| angol (Egyesült Királyság)  |  `en-GB`  |  Nő  |  `en-GB-HazelRUS`|
-| angol (Egyesült Királyság)  |  `en-GB`  |  Nő  |  `en-GB-Susan`|
-| angol (Egyesült Államok)  |  `en-US`  |  Férfi  |  `en-US-BenjaminRUS`|
-| angol (Egyesült Államok)  |  `en-US`  |  Férfi  |  `en-US-GuyRUS`|
-| angol (Egyesült Államok)  |  `en-US`  |  Nő  |  `en-US-JessaRUS`|
-| angol (Egyesült Államok)  |  `en-US`  |  Nő  |  `en-US-ZiraRUS`|
-| Finn (Finnország)  |  `fi-FI`  |  Nő  |  `fi-FI-HeidiRUS`|
-| Francia (Kanada)  |  `fr-CA`  |  Nő  |  `fr-CA-Caroline`|
-| Francia (Kanada)  |  `fr-CA`  |  Nő  |  `fr-CA-HarmonieRUS`|
-| Francia (Franciaország)  |  `fr-FR`  |  Nő  |  `fr-FR-HortenseRUS`|
-| Francia (Franciaország)  |  `fr-FR`  |  Nő  |  `fr-FR-Julie`|
-| Francia (Franciaország)  |  `fr-FR`  |  Férfi  |  `fr-FR-Paul`|
-| Francia (Svájc)  |  `fr-CH`  |  Férfi  |  `fr-CH-Guillaume`|
-| Német (Ausztria)  |  `de-AT`  |  Férfi  |  `de-AT-Michael`|
-| Német (Németország)  |  `de-DE`  |  Nő  |  `de-DE-HeddaRUS`|
-| Német (Németország)  |  `de-DE`  |  Férfi  |  `de-DE-Stefan`|
-| Német (Svájc)  |  `de-CH`  |  Férfi  |  `de-CH-Karsten`|
-| Görög (Görögország)  |  `el-GR`  |  Férfi  |  `el-GR-Stefanos`|
-| Héber (Izrael)  |  `he-IL`  |  Férfi  |  `he-IL-Asaf`|
-| Hindi (India)  |  `hi-IN`  |  Férfi  |  `hi-IN-Hemant`|
-| Hindi (India)  |  `hi-IN`  |  Nő  |  `hi-IN-Kalpana`|
-| Magyar (Magyarország)  |  `hu-HU`  |  Férfi  |  `hu-HU-Szabolcs`|
-| Indonéz (Indonézia)  |  `id-ID`  |  Férfi  |  `id-ID-Andika`|
-| Olasz (Olaszország)  |  `it-IT`  |  Férfi  |  `it-IT-Cosimo`|
-| Olasz (Olaszország)  |  `it-IT`  |  Nő  |  `it-IT-LuciaRUS`|
-| Japán (Japán)  |  `ja-JP`  |  Nő  |  `ja-JP-Ayumi`|
-| Japán (Japán)  |  `ja-JP`  |  Nő  |  `ja-JP-HarukaRUS`|
-| Japán (Japán)  |  `ja-JP`  |  Férfi  |  `ja-JP-Ichiro`|
-| Koreai (Dél-Korea)  |  `ko-KR`  |  Nő  |  `ko-KR-HeamiRUS`|
-| Maláj (Malajzia)  |  `ms-MY`  |  Férfi  |  `ms-MY-Rizwan`|
-| Mandarin (egyszerűsített kínai, Kína)  |  `zh-CN`  |  Nő  |  `zh-CN-HuihuiRUS`|
-| Mandarin (egyszerűsített kínai, Kína)  |  `zh-CN`  |  Férfi  |  `zh-CN-Kangkang`|
-| Mandarin (egyszerűsített kínai, Kína)  |  `zh-CN`  |  Nő  |  `zh-CN-Yaoyao`|
-| Mandarin (hagyományos kínai, Tajvan)  |  `zh-TW`  |  Nő  |  `zh-TW-HanHanRUS`|
-| Mandarin (hagyományos kínai, Tajvan)  |  `zh-TW`  |  Nő  |  `zh-TW-Yating`|
-| Mandarin (hagyományos kínai, Tajvan)  |  `zh-TW`  |  Férfi  |  `zh-TW-Zhiwei`|
-| Norvég, BokmÃ ¥ l (Norvégia)  |  `nb-NO`  |  Nő  |  `nb-NO-HuldaRUS`|
-| Lengyel (Lengyelország)  |  `pl-PL`  |  Nő  |  `pl-PL-PaulinaRUS`|
-| Portugál (Brazília)  |  `pt-BR`  |  Férfi  |  `pt-BR-Daniel`|
-| Portugál (Brazília)  |  `pt-BR`  |  Nő  |  `pt-BR-HeloisaRUS`|
-| Portugál (Portugália)  |  `pt-PT`  |  Nő  |  `pt-PT-HeliaRUS`|
-| Román (Románia)  |  `ro-RO`  |  Férfi  |  `ro-RO-Andrei`|
-| Orosz (Oroszország)  |  `ru-RU`  |  Nő  |  `ru-RU-EkaterinaRUS`|
-| Orosz (Oroszország)  |  `ru-RU`  |  Nő  |  `ru-RU-Irina`|
-| Orosz (Oroszország)  |  `ru-RU`  |  Férfi  |  `ru-RU-Pavel`|
-| Szlovák (Szlovákia)  |  `sk-SK`  |  Férfi  |  `sk-SK-Filip`|
-| Szlovén (Szlovénia)  |  `sl-SI`  |  Férfi  |  `sl-SI-Lado`|
-| Spanyol (Mexikó)  |  `es-MX`  |  Nő  |  `es-MX-HildaRUS`|
-| Spanyol (Mexikó)  |  `es-MX`  |  Férfi  |  `es-MX-Raul`|
-| Spanyol (Spanyolország)  |  `es-ES`  |  Nő  |  `es-ES-HelenaRUS`|
-| Spanyol (Spanyolország)  |  `es-ES`  |  Nő  |  `es-ES-Laura`|
-| Spanyol (Spanyolország)  |  `es-ES`  |  Férfi  |  `es-ES-Pablo`|
-| Svéd (Svédország)  |  `sv-SE`  |  Nő  |  `sv-SE-HedvigRUS`|
-| Tamil (India)  |  `ta-IN`  |  Férfi  |  `ta-IN-Valluvar`|
-| Telugu (India)  |  `te-IN`  |  Nő  |  `te-IN-Chitra`|
-| Thai (Thaiföld)  |  `th-TH`  |  Férfi  |  `th-TH-Pattara`|
-| Török (Törökország)  |  `tr-TR`  |  Nő  |  `tr-TR-SedaRUS`|
-| Vietnámi (Vietnám)  |  `vi-VN`  |  Férfi  |  `vi-VN-An`  |
-
+| Arab (arab) | `ar-EG` | Nő | `ar-EG-Hoda`|
+| Arab (Szaúd-Arábia) | `ar-SA` | Férfi | `ar-SA-Naayf`|
+| Bolgár (Bulgária) | `bg-BG` | Férfi | `bg-BG-Ivan`|
+| Katalán (Spanyolország) | `ca-ES` | Nő | `ca-ES-HerenaRUS`|
+| Kínai (kantoni, hagyományos) | `zh-HK` | Férfi | `zh-HK-Danny`|
+| Kínai (kantoni, hagyományos) | `zh-HK` | Nő | `zh-HK-TracyRUS`|
+| Kínai (mandarin, egyszerűsített) | `zh-CN` | Nő | `zh-CN-HuihuiRUS`|
+| Kínai (mandarin, egyszerűsített) | `zh-CN` | Férfi | `zh-CN-Kangkang`|
+| Kínai (mandarin, egyszerűsített) | `zh-CN` | Nő | `zh-CN-Yaoyao`|
+| Kínai (tajvani mandarin) |  `zh-TW` | Nő | `zh-TW-HanHanRUS`|
+| Kínai (tajvani mandarin) |  `zh-TW` | Nő | `zh-TW-Yating`|
+| Kínai (tajvani mandarin) |  `zh-TW` | Férfi | `zh-TW-Zhiwei`|
+| Horvát (Horvátország) | `hr-HR` | Férfi | `hr-HR-Matej`|
+| Cseh (Cseh Köztársaság) | `cs-CZ` | Férfi | `cs-CZ-Jakub`|
+| Dán (Dánia) | `da-DK` | Nő | `da-DK-HelleRUS`|
+| Holland (Hollandia) | `nl-NL` | Nő | `nl-NL-HannaRUS`|
+| Angol (Ausztrália) | `en-AU` | Nő | `en-AU-Catherine`|
+| Angol (Ausztrália) | `en-AU` | Nő | `en-AU-HayleyRUS`|
+| Angol (Kanada) | `en-CA` | Nő | `en-CA-HeatherRUS`|
+| Angol (Kanada) | `en-CA` | Nő | `en-CA-Linda`|
+| Angol (India) | `en-IN` | Nő | `en-IN-Heera`|
+| Angol (India) | `en-IN` | Nő | `en-IN-PriyaRUS`|
+| Angol (India) | `en-IN` | Férfi | `en-IN-Ravi`|
+| Angol (Írország) | `en-IE` | Férfi | `en-IE-Sean`|
+| angol (Egyesült Királyság) | `en-GB` | Férfi | `en-GB-George`|
+| angol (Egyesült Királyság) | `en-GB` | Nő | `en-GB-HazelRUS`|
+| angol (Egyesült Királyság) | `en-GB` | Nő | `en-GB-Susan`|
+| angol (Egyesült Államok) | `en-US` | Férfi | `en-US-BenjaminRUS`|
+| angol (Egyesült Államok) | `en-US` | Férfi | `en-US-GuyRUS`|
+| angol (Egyesült Államok) | `en-US` | Nő | `en-US-JessaRUS`|
+| angol (Egyesült Államok) | `en-US` | Nő | `en-US-ZiraRUS`|
+| Finn (Finnország) | `fi-FI` | Nő | `fi-FI-HeidiRUS`|
+| Francia (Kanada) | `fr-CA` | Nő | `fr-CA-Caroline`|
+| Francia (Kanada) | `fr-CA` | Nő | `fr-CA-HarmonieRUS`|
+| Francia (Franciaország) | `fr-FR` | Nő | `fr-FR-HortenseRUS`|
+| Francia (Franciaország) | `fr-FR` | Nő | `fr-FR-Julie`|
+| Francia (Franciaország) | `fr-FR` | Férfi | `fr-FR-Paul`|
+| Francia (Svájc) | `fr-CH` | Férfi | `fr-CH-Guillaume`|
+| Német (Ausztria) | `de-AT` | Férfi | `de-AT-Michael`|
+| Német (Németország) | `de-DE` | Nő | `de-DE-HeddaRUS`|
+| Német (Németország) | `de-DE` | Férfi | `de-DE-Stefan`|
+| Német (Svájc) | `de-CH` | Férfi | `de-CH-Karsten`|
+| Görög (Görögország) | `el-GR` | Férfi | `el-GR-Stefanos`|
+| Héber (Izrael) | `he-IL` | Férfi | `he-IL-Asaf`|
+| Hindi (India) | `hi-IN` | Férfi | `hi-IN-Hemant`|
+| Hindi (India) | `hi-IN` | Nő | `hi-IN-Kalpana`|
+| Magyar (Magyarország) | `hu-HU` | Férfi | `hu-HU-Szabolcs`|
+| Indonéz (Indonézia) | `id-ID` | Férfi | `id-ID-Andika`|
+| Olasz (Olaszország) | `it-IT` | Férfi | `it-IT-Cosimo`|
+| Olasz (Olaszország) | `it-IT` | Nő | `it-IT-LuciaRUS`|
+| Japán (Japán) | `ja-JP` | Nő | `ja-JP-Ayumi`|
+| Japán (Japán) | `ja-JP` | Nő | `ja-JP-HarukaRUS`|
+| Japán (Japán) | `ja-JP` | Férfi | `ja-JP-Ichiro`|
+| Koreai (Dél-Korea) | `ko-KR` | Nő | `ko-KR-HeamiRUS`|
+| Maláj (Malajzia) | `ms-MY` | Férfi | `ms-MY-Rizwan`|
+| norvég (bokmål, Norvégia) | `nb-NO` | Nő | `nb-NO-HuldaRUS`|
+| Lengyel (Lengyelország) | `pl-PL` | Nő | `pl-PL-PaulinaRUS`|
+| Portugál (Brazília) | `pt-BR` | Férfi | `pt-BR-Daniel`|
+| Portugál (Brazília) | `pt-BR` | Nő | `pt-BR-HeloisaRUS`|
+| Portugál (Portugália) | `pt-PT` | Nő | `pt-PT-HeliaRUS`|
+| Román (Románia) | `ro-RO` | Férfi | `ro-RO-Andrei`|
+| Orosz (Oroszország) | `ru-RU` | Nő | `ru-RU-EkaterinaRUS`|
+| Orosz (Oroszország) | `ru-RU` | Nő | `ru-RU-Irina`|
+| Orosz (Oroszország) | `ru-RU` | Férfi | `ru-RU-Pavel`|
+| Szlovák (Szlovákia) | `sk-SK` | Férfi | `sk-SK-Filip`|
+| Szlovén (Szlovénia) | `sl-SI` | Férfi | `sl-SI-Lado`|
+| Spanyol (Mexikó) | `es-MX` | Nő | `es-MX-HildaRUS`|
+| Spanyol (Mexikó) | `es-MX` | Férfi | `es-MX-Raul`|
+| Spanyol (Spanyolország) | `es-ES` | Nő | `es-ES-HelenaRUS`|
+| Spanyol (Spanyolország) | `es-ES` | Nő | `es-ES-Laura`|
+| Spanyol (Spanyolország) | `es-ES` | Férfi | `es-ES-Pablo`|
+| Svéd (Svédország) | `sv-SE` | Nő | `sv-SE-HedvigRUS`|
+| Tamil (India) | `ta-IN` | Férfi | `ta-IN-Valluvar`|
+| Telugu (India) | `te-IN` | Nő | `te-IN-Chitra`|
+| Thai (Thaiföld) | `th-TH` | Férfi | `th-TH-Pattara`|
+| Török (Törökország) | `tr-TR` | Nő | `tr-TR-SedaRUS`|
+| Vietnámi (Vietnám) | `vi-VN` | Férfi | `vi-VN-An` |
 
 > [!IMPORTANT]
 > A hang a következőre `en-US-Jessa` változott: `en-US-Aria` . Ha korábban a "Jessa" kifejezést használta, váltson át az "aria" kifejezésre.
@@ -356,7 +375,7 @@ A **Speech Translation** API különböző nyelveket támogat a beszédfelismer�
 | Kiswahili               | `sw`          |
 | Klingon                 | `tlh-Latn`    |
 | Klingon (plqaD)         | `tlh-Piqd`    |
-| Koreai                  | `ko`          |
+| koreai                  | `ko`          |
 | Lett                 | `lv`          |
 | Litván              | `lt`          |
 | Malgas                | `mg`          |
@@ -365,9 +384,9 @@ A **Speech Translation** API különböző nyelveket támogat a beszédfelismer�
 | Máltai                 | `mt`          |
 | maori                   | `mi`          |
 | marathi                 | `mr`          |
-| Norvég               | `nb`          |
+| norvég               | `nb`          |
 | perzsa                 | `fa`          |
-| Lengyel                  | `pl`          |
+| lengyel                  | `pl`          |
 | Portugál (Brazília)     | `pt-br`       |
 | Portugál (Portugália)   | `pt-pt`       |
 | pandzsábi                 | `pa`          |
@@ -386,14 +405,14 @@ A **Speech Translation** API különböző nyelveket támogat a beszédfelismer�
 | telugu                  | `te`          |
 | Thai                    | `th`          |
 | Tongai                  | `to`          |
-| Török                 | `tr`          |
+| török                 | `tr`          |
 | Ukrán               | `uk`          |
 | urdu                    | `ur`          |
 | Vietnámi              | `vi`          |
 | walesi                   | `cy`          |
 | Yucatec Maya            | `yua`         |
 
-## <a name="speaker-recognition"></a>Speaker Recognition
+## <a name="speaker-recognition"></a>Beszélőfelismerés
 
 A különböző Speaker Recognition API-khoz támogatott nyelveket a következő táblázat tartalmazza. További információ a Speaker Recognitionról: [Áttekintés](speaker-recognition-overview.md) .
 
@@ -407,7 +426,7 @@ A különböző Speaker Recognition API-khoz támogatott nyelveket a következő
 |Francia (Kanada)     | fr – CA     | n/a     | igen |     igen|
 |Francia (Franciaország)     | fr-FR     | n/a     | igen     | igen|
 |Német (Németország)     | de-DE     | n/a     | igen     | igen|
-|Olasz | it-IT     |     n/a     | igen |     igen|
+|olasz | it-IT     |     n/a     | igen |     igen|
 |Japán     | ja-JP | n/a     | igen     | igen|
 |Portugál (Brazília) | pt-BR |     n/a |     igen |     igen|
 |Spanyol (Mexikó)     | es-MX     | n/a |     igen |     igen|

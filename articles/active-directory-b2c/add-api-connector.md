@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: 857429ab5fd2e2ea9a0cb0173015ceba4bb0bacb
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 47885e64b40db07ca3b4a7380389967a36abbd9e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92504111"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949836"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>API-összekötő hozzáadása egy regisztrációs felhasználói folyamathoz (előzetes verzió)
 
@@ -27,8 +27,8 @@ Az API- [Összekötők](api-connectors-overview.md)használatához először lé
 ## <a name="create-an-api-connector"></a>API-összekötő létrehozása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Az **Azure-szolgáltatások**területen válassza a **Azure ad B2C**lehetőséget.
-4. Válassza az **API-összekötők (előzetes verzió)** lehetőséget, majd válassza az **új API-összekötő**lehetőséget.
+2. Az **Azure-szolgáltatások** területen válassza a **Azure ad B2C** lehetőséget.
+4. Válassza az **API-összekötők (előzetes verzió)** lehetőséget, majd válassza az **új API-összekötő** lehetőséget.
 
    ![Új API-összekötő hozzáadása](./media/add-api-connector/api-connector-new.png)
 
@@ -36,13 +36,13 @@ Az API- [Összekötők](api-connectors-overview.md)használatához először lé
 6. Adja meg az API **-hívás végpontjának URL-címét** .
 7. Adja meg az API hitelesítési adatait.
 
-   - Jelenleg csak az alapszintű hitelesítés támogatott. Ha alapszintű hitelesítés nélküli API-t szeretne használni fejlesztési célokra, egyszerűen adja meg az API által figyelmen kívül hagyható "dummy" **felhasználónevet** és **jelszót** . Ha egy API-kulccsal rendelkező Azure-függvényt használ, a kódot lekérdezési paraméterként is megadhatja a **végpont URL-címében** (például https []() ://contoso.azurewebsites.NET/API/Endpoint<b>? Code = 0123456789</b>).
+   - Jelenleg csak az alapszintű hitelesítés támogatott. Ha alapszintű hitelesítés nélküli API-t szeretne használni fejlesztési célokra, egyszerűen adja meg az API által figyelmen kívül hagyható "dummy" **felhasználónevet** és **jelszót** . Ha egy API-kulccsal rendelkező Azure-függvényt használ, a kódot lekérdezési paraméterként is megadhatja a **végpont URL-címében** (például https []() ://contoso.azurewebsites.NET/API/Endpoint <b>? Code = 0123456789</b>).
 
    ![Új API-összekötő konfigurálása](./media/add-api-connector/api-connector-config.png)
-8. Válassza a **Mentés** lehetőséget.
+8. Kattintson a **Mentés** gombra.
 
 ## <a name="the-request-sent-to-your-api"></a>Az API-nak továbbított kérelem
-Az API-összekötők **http post** -kérelemként valósulnak meg, felhasználói attribútumok ("jogcímek") küldésével kulcs-érték párokként egy JSON-törzsben. Az attribútumok a [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/user#properties) felhasználó tulajdonságaihoz hasonlóan lesznek szerializálva. 
+Az API-összekötők **http post** -kérelemként valósulnak meg, felhasználói attribútumok ("jogcímek") küldésével kulcs-érték párokként egy JSON-törzsben. Az attribútumok a [Microsoft Graph](/graph/api/resources/user#properties) felhasználó tulajdonságaihoz hasonlóan lesznek szerializálva. 
 
 **Példakérelem**
 ```http
@@ -83,23 +83,23 @@ Emellett a **felhasználói felület területi beállítása ("ui_locales")** jo
 > Ha egy jogcím nem rendelkezik értékkel az API-végpont meghívásakor, a rendszer nem küldi el a jogcímet az API-nak. Az API-t úgy kell kialakítani, hogy explicit módon ellenőrizzék és kezeljék azt az esetet, amikor a kérelem nem szerepel a kérésben.
 
 > [!TIP] 
-> az API- [**k az identitások ("identitások")**](https://docs.microsoft.com/graph/api/resources/objectidentity) és az **e-mail-cím ("e-mail")** jogcímek használatával azonosíthatják a felhasználókat, mielőtt a bérlőben fiókkal rendelkeznek. 
+> az API- [**k az identitások ("identitások")**](/graph/api/resources/objectidentity) és az **e-mail-cím ("e-mail")** jogcímek használatával azonosíthatják a felhasználókat, mielőtt a bérlőben fiókkal rendelkeznek. 
 
 ## <a name="enable-the-api-connector-in-a-user-flow"></a>API-összekötő engedélyezése felhasználói folyamatokban
 
 Az alábbi lépéseket követve hozzáadhat egy API-összekötőt egy regisztrációs felhasználói folyamathoz.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Az **Azure-szolgáltatások**területen válassza a **Azure ad B2C**lehetőséget.
-4. Válassza a **felhasználói folyamatok**lehetőséget, majd válassza ki azt a felhasználói folyamatot, amelyhez hozzá kívánja adni az API-összekötőt.
-5. Válassza az **API-összekötők**lehetőséget, majd válassza ki azokat az API-végpontokat, amelyeket a felhasználói folyamat következő lépéseiben szeretne meghívni:
+2. Az **Azure-szolgáltatások** területen válassza a **Azure ad B2C** lehetőséget.
+4. Válassza a **felhasználói folyamatok** lehetőséget, majd válassza ki azt a felhasználói folyamatot, amelyhez hozzá kívánja adni az API-összekötőt.
+5. Válassza az **API-összekötők** lehetőséget, majd válassza ki azokat az API-végpontokat, amelyeket a felhasználói folyamat következő lépéseiben szeretne meghívni:
 
    - **Az identitás-szolgáltatóval való bejelentkezés után**
    - **A felhasználó létrehozása előtt**
 
    ![API-k hozzáadása a felhasználói folyamathoz](./media/add-api-connector/api-connectors-user-flow-select.png)
 
-6. Válassza a **Mentés** lehetőséget.
+6. Kattintson a **Mentés** gombra.
 
 ## <a name="after-signing-in-with-an-identity-provider"></a>Az identitás-szolgáltatóval való bejelentkezés után
 
@@ -242,7 +242,7 @@ Content-type: application/json
 | version                                            | Sztring            | Igen      | Az API verziója.                                                                                                                                                                                                                                                                |
 | művelet                                             | Sztring            | Igen      | Az értéknek a számnak kell lennie `Continue` .                                                                                                                                                                                                                                                              |
 | \<builtInUserAttribute>                            | \<attribute-type> | Nem       | A visszaadott értékek felülírhatják a felhasználó által összegyűjtött értékeket. Ha _ * Application jogcím * *-ként van kiválasztva, a jogkivonat is visszaküldhető.                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Nem       | A jogcímnek nem kell tartalmaznia `_<extensions-app-id>_` . A visszaadott értékek felülírhatják a felhasználó által összegyűjtött értékeket. A tokenben is visszaadhatók, ha **alkalmazási jogcímként**van kiválasztva.  |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Nem       | A jogcímnek nem kell tartalmaznia `_<extensions-app-id>_` . A visszaadott értékek felülírhatják a felhasználó által összegyűjtött értékeket. A tokenben is visszaadhatók, ha **alkalmazási jogcímként** van kiválasztva.  |
 
 ### <a name="example-of-a-blocking-response"></a>Blokkoló válasz – példa
 
