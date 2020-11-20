@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 11/15/2020
+ms.date: 11/17/2020
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: enterprise-users
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cac88e57ce0135295ac4b7078111102fa69e6838
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: e89793ed8404bf36f2857f228d94fdf2a8828d43
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646593"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94984260"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>A vendég hozzáférési engedélyei (előzetes verzió) korlátozása Azure Active Directory
 
@@ -47,7 +47,7 @@ Módosítottuk a vendég felhasználói engedélyeinek meglévő Azure Portal ve
 
     ![Az Azure AD külső együttműködési beállítások lapja](./media/users-restrict-guest-permissions/external-collaboration-settings.png)
 
-1. Válassza a **Mentés** lehetőséget. A módosítások akár 15 percet is igénybe vehetnek a vendég felhasználóinak érvénybe léptetéséhez.
+1. Kattintson a **Mentés** gombra. A módosítások akár 15 percet is igénybe vehetnek a vendég felhasználóinak érvénybe léptetéséhez.
 
 ## <a name="update-with-the-microsoft-graph-api"></a>Frissítés a Microsoft Graph API-val
 
@@ -155,7 +155,8 @@ Az aktuális támogatás nélküli szolgáltatás kompatibilitási problémákba
 Kérdés | Válasz
 -------- | ------
 Hová kell alkalmazni ezeket az engedélyeket? | Ezek a címtár-szintű engedélyek az Azure AD-szolgáltatások és-portálok esetében érvényesek, beleértve a Microsoft Graph, a PowerShell V2, a Azure Portal és a saját alkalmazások portált. Az együttműködési forgatókönyvekhez Microsoft 365 csoportokat kihasználó Microsoft 365-szolgáltatások is érintettek, különösen az Outlook, a Microsoft Teams és a SharePoint.
-A My apps portál mely részeit érinti ez a funkció? | A saját alkalmazások portál csoportok funkciója tiszteletben tartja ezeket az új engedélyeket. Ide tartozik a csoportok listájának és a csoporttagságok a saját alkalmazásokban való megtekintéséhez szükséges összes elérési út. Nem történt változás a csoport csempe rendelkezésre állása során. A csoport csempe rendelkezésre állását továbbra is az Azure felügyeleti portál meglévő csoport beállítása szabályozza.
+Hogyan befolyásolják a korlátozott engedélyek, hogy mely csoportok láthatják a vendégeket? | Az alapértelmezett vagy a korlátozott vendég engedélyeitől függetlenül a vendégek nem tudják enumerálni a csoportok vagy felhasználók listáját. Az engedélyektől függően a vendégek a Azure Portal és a saját alkalmazások portálon is megtekinthetik a csoportok tagjait:<li>**Alapértelmezett engedélyek**: Ha meg szeretné keresni azokat a csoportokat, amelyek tagjai a Azure Portalnak, a vendégnek a **minden felhasználó** listában meg kell KERESNIe az objektum azonosítóját, majd ki kell választania a **csoportokat**. Itt láthatják azoknak a csoportoknak a listáját, amelyeknek tagjai, beleértve az összes csoport részleteit, beleértve a nevet, az e-maileket stb. A saját alkalmazások portálon megtekinthetik azoknak a csoportoknak a listáját, amelyeknek a tulajdonosai és csoportjaik tagjai.</li><li>**Korlátozott vendég engedélyei**: a Azure Portalban továbbra is megtalálják azoknak a csoportoknak a listáját, amelyeknek a tagjai a minden felhasználó listában megkeresik a hozzájuk tartozó objektumazonosítók keresését, majd kiválasztja a csoportok lehetőséget. A csoportnak csak nagyon kevés részlete látható, különösen az objektumazonosító. A tervezés szerint a név és az e-mail-oszlopok üresek, és a csoport típusa nem ismerhető fel. A saját alkalmazások portálon nem férhetnek hozzá azok a csoportok, amelyeknek a tulajdonosai vagy csoportjaik tagjai.</li><br>A Graph APIből származó címtár-engedélyek részletesebb összehasonlítását lásd: [alapértelmezett felhasználói engedélyek](../fundamentals/users-default-permissions.md#member-and-guest-users).
+A My apps portál mely részeit érinti ez a funkció? | A saját alkalmazások portál csoportok funkciója tiszteletben tartja ezeket az új engedélyeket. Ide tartozik a csoportok listájának és a csoporttagságok a saját alkalmazásokban való megtekintéséhez szükséges összes elérési út. Nem történt változás a csoport csempe rendelkezésre állása során. A csoport csempe rendelkezésre állását továbbra is a Azure Portal meglévő csoportjának beállításai vezérlik.
 Felülbírálják ezeket az engedélyeket a SharePoint vagy a Microsoft Teams vendég beállításainak? | Nem. Ezek a meglévő beállítások továbbra is szabályozzák az alkalmazások élményét és elérését. Ha például problémát tapasztal a SharePointban, ellenőrizze a külső megosztási beállításokat.
 Mik a Planner és a Yammer ismert kompatibilitási problémái? | <li>Ha az engedélyek "korlátozott" értékre vannak beállítva, a Planner alkalmazásba bejelentkezett, vagy a Microsoft Teams-tervezőhöz való hozzáférés nem fog tudni hozzáférni a terveihez vagy a feladatokhoz.<li>A "korlátozott" értékre beállított engedélyek esetén a Yammer bejelentkezett vendégek nem hagyhatják el a csoportot.
 Módosulnak a meglévő vendég engedélyei a bérlőn? | Nem történt változás az aktuális beállításokban. A meglévő beállításokkal visszamenőleges kompatibilitást biztosítunk. Ön dönti el, hogy szeretne-e módosításokat végezni.

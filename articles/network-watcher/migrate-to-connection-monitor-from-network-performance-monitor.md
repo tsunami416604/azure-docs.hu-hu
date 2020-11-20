@@ -1,5 +1,5 @@
 ---
-title: Migrálás a Network Performance Monitorről a kapcsolódási figyelőbe
+title: Migrálás a kapcsolódási figyelőbe (előzetes verzió) Network Performance Monitor
 titleSuffix: Azure Network Watcher
 description: Megtudhatja, hogyan telepítheti át a Network Performance Monitorról a kapcsolódási figyelőre.
 services: network-watcher
@@ -12,16 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/20/2020
 ms.author: vinigam
-ms.openlocfilehash: 949f717c56892f8a1d0826e8e6f1f2164a4a142c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 38ea682b4f3894f373d16908b942b4fa578741c4
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94974838"
+ms.locfileid: "94985807"
 ---
-# <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>Migrálás a Network Performance Monitorről a kapcsolódási figyelőbe
+# <a name="migrate-to-connection-monitor-preview-from-network-performance-monitor"></a>Migrálás a kapcsolódási figyelőbe (előzetes verzió) Network Performance Monitor
 
 Network Performance Monitor (NPM) teszteit áttelepítheti az új, továbbfejlesztett kapcsolódási figyelőre egyetlen kattintással és nulla állásidővel. További információ az előnyökről: a [kapcsolódási figyelő](./connection-monitor-overview.md).
+
+> [!IMPORTANT]
+> A Csatlakozáskezelő jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 >[!NOTE]
 > A kapcsolódási figyelő csak a szolgáltatás-kapcsolati figyelőből származó teszteket lehet áttelepíteni.

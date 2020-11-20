@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 58e481e34d9f798b73b72b114b071cf035c3319f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f95df6fb74071dc16814f11fb48521f984c89778
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90967903"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94988035"
 ---
 # <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Oktatóanyag – új IoT átjáró-eszköz típusának meghatározása az Azure IoT Central-alkalmazásban
 
@@ -45,17 +45,17 @@ Ez az oktatóanyag egy **S1 szenzoros** eszközhöz és egy **RS40-befoglalási 
 
 Eszköz sablonjának létrehozása **S1 szenzoros** eszközhöz:
 
-1. A bal oldali panelen válassza az **eszközök sablonjai**elemet. Ezután válassza a lehetőséget **+** a sablon hozzáadásának megkezdéséhez.
+1. A bal oldali panelen válassza az **eszközök sablonjai** elemet. Ezután válassza a lehetőséget **+** a sablon hozzáadásának megkezdéséhez.
 
-1. Görgessen lefelé, amíg meg nem jelenik az **S1 érzékelő** eszköz csempéje. Válassza ki a csempét, majd válassza a **Tovább: testreszabás**lehetőséget.
+1. Görgessen lefelé, amíg meg nem jelenik az **S1 érzékelő** eszköz csempéje. Válassza ki a csempét, majd válassza a **Tovább: testreszabás** lehetőséget.
 
 1. A **felülvizsgálat** lapon válassza a **Létrehozás** lehetőséget az eszköz sablonjának az alkalmazáshoz való hozzáadásához. 
 
-Eszköz sablonjának létrehozása ***RS40 foglaltság érzékelő** eszközhöz:
+Eszköz sablonjának létrehozása **_RS40 foglaltság érzékelő_* eszközhöz:
 
-1. A bal oldali panelen válassza az **eszközök sablonjai**elemet. Ezután válassza a lehetőséget **+** a sablon hozzáadásának megkezdéséhez.
+1. A bal oldali panelen válassza az **eszközök sablonjai** elemet. Ezután válassza a lehetőséget **+** a sablon hozzáadásának megkezdéséhez.
 
-1. Görgessen lefelé, amíg meg nem jelenik a ***RS40 foglaltság érzékelő** eszköz csempéje. Válassza ki a csempét, majd válassza a **Tovább: testreszabás**lehetőséget.
+1. Görgessen lefelé, amíg meg nem jelenik a **_RS40 foglaltság érzékelő_* eszköz csempéje. Válassza ki a csempét, majd válassza a **Tovább: testreszabás** lehetőséget.
 
 1. A **felülvizsgálat** lapon válassza a **Létrehozás** lehetőséget az eszköz sablonjának az alkalmazáshoz való hozzáadásához. 
 
@@ -70,13 +70,13 @@ Ebben az oktatóanyagban egy eszköz sablonját hozza létre az átjáró-eszkö
 
 Új Gateway-eszköz sablonjának hozzáadása az alkalmazáshoz:
 
-1. A bal oldali panelen válassza az **eszközök sablonjai**elemet. Ezután válassza a lehetőséget **+** a sablon hozzáadásának megkezdéséhez.
+1. A bal oldali panelen válassza az **eszközök sablonjai** elemet. Ezután válassza a lehetőséget **+** a sablon hozzáadásának megkezdéséhez.
 
-1. A **sablon típusának kiválasztása** lapon válassza ki a **IoT-eszköz** csempéjét, majd válassza a **Tovább: testreszabás**lehetőséget.
+1. A **sablon típusának kiválasztása** lapon válassza ki a **IoT-eszköz** csempéjét, majd válassza a **Tovább: testreszabás** lehetőséget.
 
 1. Az **eszköz testreszabása** lapon jelölje be az **átjáró eszköz** jelölőnégyzetet.
 
-1. Az **Áttekintés** lapon válassza a **Létrehozás**lehetőséget. 
+1. Az **Áttekintés** lapon válassza a **Létrehozás** lehetőséget. 
 
 1. Adja meg az **intelligens Building Gateway eszközt** a sablon neveként.
 
@@ -88,9 +88,9 @@ Ebben az oktatóanyagban egy eszköz sablonját hozza létre az átjáró-eszkö
 
 Következő lépésként vegyen fel kapcsolatokat az alsóbb rétegbeli eszközök sablonjaihoz:
 
-1. Az **intelligens építési átjáró eszköz** sablonjában válassza a **kapcsolatok**lehetőséget.
+1. Az **intelligens építési átjáró eszköz** sablonjában válassza a **kapcsolatok** lehetőséget.
 
-1. Válassza a **+ kapcsolat hozzáadása**elemet. Adja meg a **környezeti érzékelőt** a megjelenítendő név mezőben, majd válassza az **S1 szenzor** lehetőséget célként.
+1. Válassza a **+ kapcsolat hozzáadása** elemet. Adja meg a **környezeti érzékelőt** a megjelenítendő név mezőben, majd válassza az **S1 szenzor** lehetőséget célként.
 
 1. Válassza a **+ kapcsolat hozzáadása** elemet. Adja meg a **kihasználtsági érzékelőt** a megjelenítendő név mezőben, és válassza ki a **RS40-kihasználtsági érzékelőt** célként.
 
@@ -104,14 +104,14 @@ Az átjáró-eszköz sablonja tartalmazhat Felhőbeli tulajdonságokat. A felhő
 
 Felhő tulajdonságainak hozzáadása az **intelligens felépítési átjáró eszköz** sablonhoz.
 
-1. Az **intelligens építési átjáró eszköz** sablonjában válassza a **felhő tulajdonságai**elemet.
+1. Az **intelligens építési átjáró eszköz** sablonjában válassza a **felhő tulajdonságai** elemet.
 
 1.  A következő táblázatban található információk segítségével két Felhőbeli tulajdonságot adhat hozzá az átjáró-eszköz sablonhoz.
 
     | Megjelenített név      | Szemantikai típus | Séma |
     | ----------------- | ------------- | ------ |
-    | Utolsó szervizelés dátuma | Nincsenek          | Dátum   |
-    | Ügyfél neve     | Nincsenek          | Sztring |
+    | Utolsó szervizelés dátuma | Nincs          | Date   |
+    | Ügyfél neve     | Nincs          | Sztring |
 
 2. Kattintson a **Mentés** gombra.
 
@@ -124,11 +124,11 @@ Felhő tulajdonságainak hozzáadása az **intelligens felépítési átjáró e
 
 Az **intelligens építési átjáró eszköz** sablonjának alapértelmezett nézeteinek előállítása:
 
-1. Az **intelligens építési átjáró eszköz** sablonjában válassza a **nézetek**elemet.
+1. Az **intelligens építési átjáró eszköz** sablonjában válassza a **nézetek** elemet.
 
 1. Válassza az **alapértelmezett nézetek előállítása** csempét, és győződjön meg arról, hogy az összes beállítás ki van választva.
 
-1. Válassza az **alapértelmezett irányítópult-nézet (ek) előállítása**lehetőséget.
+1. Válassza az **alapértelmezett irányítópult-nézet (ek) előállítása** lehetőséget.
 
 ## <a name="publish-the-device-template"></a>Az eszközsablon közzététele
 
@@ -140,9 +140,9 @@ Az átjáró-eszköz sablonjának közzététele:
 
 2. Kattintson a **Publish** (Közzététel) elemre.
 
-3. Az **eszköz sablonjának közzététele** párbeszédpanelen válassza a **Közzététel**lehetőséget.
+3. Az **eszköz sablonjának közzététele** párbeszédpanelen válassza a **Közzététel** lehetőséget.
 
-Egy sablon közzététele után az eszköz megjelenik az **eszközök** lapon és a kezelőben. Egy közzétett eszköz sablonjában nem szerkesztheti az eszköz képességeinek modelljét új verzió létrehozása nélkül. A közzétett eszköz sablonjában azonban frissítheti a felhő tulajdonságait, testreszabásait és nézeteit. Ezek a frissítések nem okozzák új verzió létrehozását. A módosítások elvégzése után válassza a **Közzététel**  lehetőséget a módosítások elküldéséhez az operátornak.
+Egy sablon közzététele után az eszköz megjelenik az **eszközök** lapon és a kezelőben. Egy közzétett eszköz sablonjában nem szerkesztheti az eszköz modelljét új verzió létrehozása nélkül. A közzétett eszköz sablonjában azonban frissítheti a felhő tulajdonságait, testreszabásait és nézeteit. Ezek a frissítések nem okozzák új verzió létrehozását. A módosítások elvégzése után válassza a **Közzététel**  lehetőséget a módosítások elküldéséhez az operátornak.
 
 ## <a name="create-the-simulated-devices"></a>Szimulált eszközök létrehozása
 
@@ -178,25 +178,25 @@ Most, hogy már rendelkezik a szimulált eszközökkel az alkalmazásban, létre
 
 1. Az **eszközök** lapon válassza az **S1 Sensor** elemet az eszközök listájában, majd válassza ki a szimulált **S1 érzékelő** eszközt.
 
-1. Válassza **a kapcsolódás átjáróhoz**lehetőséget.
+1. Válassza **a kapcsolódás átjáróhoz** lehetőséget.
 
 1. A **Kapcsolódás átjáróhoz** párbeszédpanelen válassza ki az **intelligens felépítési átjáró eszköz** sablonját, majd válassza ki a korábban létrehozott szimulált példányt.
 
-1. Válassza a **Csatlakozás**lehetőséget.
+1. Válassza a **Csatlakozás** lehetőséget.
 
 1. Az **eszközök** lapon válassza a **RS40-kihasználtsági érzékelő** elemet az eszközbeállítások listájában, majd válassza ki a szimulált **RS40 foglalási érzékelő** eszközt.
 
-1. Válassza **a kapcsolódás átjáróhoz**lehetőséget.
+1. Válassza **a kapcsolódás átjáróhoz** lehetőséget.
 
 1. A **Kapcsolódás átjáróhoz** párbeszédpanelen válassza ki az **intelligens felépítési átjáró eszköz** sablonját, majd válassza ki a korábban létrehozott szimulált példányt.
 
-1. Válassza a **Csatlakozás**lehetőséget.
+1. Válassza a **Csatlakozás** lehetőséget.
 
 A szimulált alsóbb szintű eszközök most már csatlakozva vannak a szimulált átjáró-eszközhöz. Ha az átjáró-eszközhöz tartozó **alsóbb rétegbeli eszközök** nézetre navigál, láthatja a kapcsolódó alsóbb rétegbeli eszközöket:
 
 ![Alsóbb rétegbeli eszközök nézet](./media/tutorial-define-gateway-device-type/downstream-device-view.png)
 
-Válassza ki az átjáró-eszköz sablonját és az átjáró eszköz példányát, és válassza a **Csatlakozás**lehetőséget.
+Válassza ki az átjáró-eszköz sablonját és az átjáró eszköz példányát, és válassza a **Csatlakozás** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 

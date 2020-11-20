@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: cc33d3c07461b5662e1454ec131dbc2b5f19a390
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 7b048581b29fa4244c42261810f382b229a627dd
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126173"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94985967"
 ---
 # <a name="azure-iot-central-architecture"></a>Az Azure IoT Central architektúrája
 
@@ -54,7 +54,7 @@ A IoT Central a következő képességeket teszi lehetővé IoT Edge eszközökh
   - Az egyes modulok telemetria.
   - Az egyes modulok által jelentett tulajdonságok
   - Az egyes modulok parancsai a következőre válaszolnak:.
-  - Az IoT Edge Gateway Device képesség modell és az alsóbb rétegbeli eszköz képességeinek modellje közötti kapcsolatok.
+  - IoT Edge átjáró-eszköz és az alsóbb rétegbeli eszköz közötti kapcsolatok.
   - A IoT Edge eszközön nem tárolt Felhőbeli tulajdonságok.
   - A IoT Central alkalmazás részét képező testreszabások, irányítópultok és űrlapok.
 
@@ -133,12 +133,12 @@ Egy Azure IoT Central-alkalmazásban az eszközök sablonjai határozzák meg az
 
 ![Sablon architektúrája](media/concepts-architecture/template-architecture.png)
 
-IoT Central alkalmazás-eszköz sablonjában a következőket tartalmazza:
+Egy IoT Central [eszköz sablonjában](concepts-device-templates.md) a következőket tartalmazza:
 
-- Az **eszköz képességeinek modelljei** határozzák meg az eszköz képességeit, például az általa küldött telemetria, az eszköz állapotát meghatározó tulajdonságokat, valamint azokat a parancsokat, amelyekre az eszköz válaszol. Az eszköz képességei egy vagy több interfészbe vannak rendezve.
+- Egy eszköz **modellje** , amely meghatározza egy eszköz képességeit, például az általa küldött telemetria, az eszköz állapotát meghatározó tulajdonságokat, valamint azokat a parancsokat, amelyekre az eszköz válaszol. Az eszköz képességei egy vagy több interfészbe vannak rendezve.
 - A **felhő tulajdonságai** határozzák meg az adott eszközhöz tartozó tulajdonságokat IoT Central. Ezek a tulajdonságok csak IoT Central tárolódnak, és soha nem lesznek elküldve egy eszközre.
 - A **nézetek** határozzák meg azokat az irányítópultokat és űrlapokat, amelyeket a készítő hoz létre, hogy az operátor figyelje és felügyelje az eszközöket.
-- A **testreszabások** lehetővé teszik, hogy a szerkesztő felülbírálja az eszköz képességeinek modelljét, hogy azok jobban megfeleljenek a IoT Central alkalmazásnak.
+- A **testreszabások** lehetővé teszik, hogy a szerkesztő felülbírálja az eszköz modelljében szereplő definíciók némelyikét, hogy azok jobban megfeleljenek a IoT Central alkalmazásnak.
 
 Egy alkalmazáshoz egy vagy több szimulált és valós eszköz tartozhat az egyes eszközök alapján.
 
@@ -152,7 +152,7 @@ Egy Azure IoT Central alkalmazásban [létrehozhat és futtathat feladatokat](ho
 
 ## <a name="role-based-access-control-rbac"></a>Szerepköralapú hozzáférés-vezérlés (RBAC)
 
-A [rendszergazdák meghatározhatnak](howto-manage-users-roles.md) egy Azure IoT Central alkalmazás hozzáférési szabályait az egyik előre definiált szerepkör használatával vagy egyéni szerepkör létrehozásával. A szerepkörök határozzák meg, hogy az alkalmazás mely területeihez férhet hozzá a felhasználók, és milyen műveleteket végezhetnek el.
+Minden IoT Central alkalmazás rendelkezik saját beépített RBAC rendszerrel. A [rendszergazdák meghatározhatnak](howto-manage-users-roles.md) egy Azure IoT Central alkalmazás hozzáférési szabályait az egyik előre definiált szerepkör használatával vagy egyéni szerepkör létrehozásával. A szerepkörök határozzák meg, hogy az alkalmazás mely területeihez férhet hozzá a felhasználók, és milyen műveleteket végezhetnek el.
 
 ## <a name="security"></a>Biztonság
 

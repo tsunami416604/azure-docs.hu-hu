@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 4392086146642e18b1fdef28a9e602bdbb5b0b18
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: b138b3eb52a0bfb6dca2ec6fdf0b855223bab698
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542184"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94984447"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Képek címkézése egy címkézési projektben 
 
@@ -82,7 +82,7 @@ Különösen a címkézési projekt korai szakaszában a gépi tanulási modell 
 
 Ha a projekt "képbesorolás többosztályos" típusú, akkor egyetlen címkét fog rendelni a teljes képhez. Ha bármikor át szeretné tekinteni az utasításokat, lépjen az **utasítások** lapra, és válassza a **részletes utasítások megtekintése** lehetőséget.
 
-Ha úgy látja, hogy hibát vétett, miután hozzárendelt egy címkét egy képhez, azt megteheti. A címke törléséhez válassza ki a képen látható " **X** " címkét. Vagy válassza ki a képet, és válasszon egy másik osztályt. Az újonnan kiválasztott érték a korábban alkalmazott címkét váltja fel.
+Ha úgy látja, hogy hibát vétett, miután hozzárendelt egy címkét egy képhez, azt megteheti. A címke törléséhez válassza ki a képen látható "**X**" címkét. Vagy válassza ki a képet, és válasszon egy másik osztályt. Az újonnan kiválasztott érték a korábban alkalmazott címkét váltja fel.
 
 ## <a name="tag-images-for-multi-label-classification"></a>Képek címkézése többcímkés besoroláshoz
 
@@ -96,7 +96,7 @@ Válassza ki a címkét, majd válassza ki a címkét. A címke az összes kijel
 
 ![Az animáció többcímkés folyamatot mutat be](./media/how-to-label-images/multilabel.gif)
 
-A hiba elhárításához kattintson az " **X** " elemre egy adott címke törléséhez, vagy válassza ki a képeket, majd válassza ki a címkét, amely törli a címkét az összes kijelölt rendszerképből. Ez a forgatókönyv itt látható. A "Land" elemre kattintva a rendszer törli a címkét a két kiválasztott rendszerképből.
+A hiba elhárításához kattintson az "**X**" elemre egy adott címke törléséhez, vagy válassza ki a képeket, majd válassza ki a címkét, amely törli a címkét az összes kijelölt rendszerképből. Ez a forgatókönyv itt látható. A "Land" elemre kattintva a rendszer törli a címkét a két kiválasztott rendszerképből.
 
 ![A képernyőképen több kijelölés látható](./media/how-to-label-images/multiple-deselection.png)
 
@@ -133,7 +133,7 @@ Ha a projekt "példány szegmentálása (sokszög)" típusú, akkor meg kell adn
 
 1. Válassza ki a létrehozni kívánt sokszög címkéjét.
 1. Válassza a **sokszög-régió rajzolása** eszköz ![ Rajzolás sokszög-régió eszközét ](./media/how-to-label-images/polygon-tool.png) , vagy válassza a "P" lehetőséget.
-3. Kattintson a sokszög minden pontjára.  Az alakzat befejezése után kattintson duplán a befejezéshez.
+1. Kattintson a sokszög minden pontjára.  Az alakzat befejezése után kattintson duplán a befejezéshez.
 
     :::image type="content" source="media/how-to-label-images/polygon.gif" alt-text="Sokszögek létrehozása a Cat és a Dog számára":::
 
@@ -158,3 +158,5 @@ Ha végzett a címkézéssel, válassza ki a nevét a címkézési portál jobb 
 ## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg a [képbesorolási modellek betanítását az Azure-ban](./tutorial-train-models-with-aml.md)
+
+

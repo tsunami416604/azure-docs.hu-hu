@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 04/14/2020
-ms.openlocfilehash: 42f6badabd27ceaa302f635a7a33b0161b870dc5
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3cab3b262f9116903d0b423cd5e4a0ebd03c46fa
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782858"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94984430"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>A biztonsági másolatok hosszú távú megőrzésének Azure SQL Database kezelése
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -100,7 +100,7 @@ A **Remove-AzSqlDatabaseLongTermRetentionBackup** esetében a következő szerep
 > [!NOTE]
 > A SQL Server közreműködő szerepkör nem rendelkezik engedéllyel a LTR biztonsági mentések törléséhez.
 
-RBAC engedélyek is megadhatók az *előfizetés* vagy az *erőforráscsoport* hatókörében. Az eldobott kiszolgálóhoz tartozó LTR biztonsági mentések eléréséhez azonban az engedélyt az adott kiszolgáló *előfizetési* hatókörében kell megadni.
+Az Azure RBAC engedélyei az *előfizetés* vagy az *erőforráscsoport* hatókörében is megadhatók. Az eldobott kiszolgálóhoz tartozó LTR biztonsági mentések eléréséhez azonban az engedélyt az adott kiszolgáló *előfizetési* hatókörében kell megadni.
 
 - Microsoft. SQL/Locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/delete
 

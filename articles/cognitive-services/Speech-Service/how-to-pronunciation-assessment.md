@@ -12,12 +12,12 @@ ms.date: 09/29/2020
 ms.author: yulili
 ms.custom: references_regions
 zone_pivot_groups: programming-languages-set-nineteen
-ms.openlocfilehash: 245a00acb07d1c0e769a243413fccdf64d544f5a
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 1cc313daf0e76ddd14865959410b07d9bdc189d7
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93133684"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94984921"
 ---
 # <a name="pronunciation-assessment"></a>Kiejtés értékelése
 
@@ -154,12 +154,12 @@ double pronunciationScore = pronunciationAssessmentResult.pronunciationScore;
 
 Ez a táblázat a kiejtési értékelés konfigurációs paramétereit sorolja fel.
 
-| Paraméter | Leírás | Kötelező/nem kötelező |
+| Paraméter | Leírás | Kötelező? |
 |-----------|-------------|---------------------|
 | ReferenceText | A kiejtés kiértékeléséhez használandó szöveg | Kötelező |
-| GradingSystem | A pontszám kalibrációs pontjának rendszere. Az elfogadott értékek: `FivePoint` és `HundredMark` . Az alapértelmezett beállítás: `FivePoint`. | Választható |
-| Részletesség | A kiértékelés részletessége. Az elfogadott értékek a teljes szöveges `Phoneme` , a Word-és a fonéma-szinten látható pontszám, amely a teljes szöveg `Word` és a szó szintjén mutatja a pontszámot, amely a `FullText` teljes szöveges szint pontszámát mutatja. Az alapértelmezett beállítás: `Phoneme`. | Választható |
-| EnableMiscue | Engedélyezi a gikszer számítását. Ha ez a beállítás engedélyezve van, a rendszer összehasonlítja a kiejtett szavakat a hivatkozási szöveggel, és az összehasonlítás alapján kihagyási/beszúrási művelettel jelöli meg őket. Az elfogadott értékek: `False` és `True` . Az alapértelmezett beállítás: `False`. | Választható |
+| GradingSystem | A pontszám kalibrációs pontjának rendszere. A `FivePoint` rendszer 0-5 lebegőpontos pontszámot ad, és `HundredMark` egy 0-100 lebegőpontos pontszámot ad. Alapértelmezett: `FivePoint`. | Választható |
+| Részletesség | A kiértékelés részletessége. Az elfogadott értékek a teljes szöveges `Phoneme` , a Word-és a fonéma-szinten látható pontszám, amely a teljes szöveg `Word` és a szó szintjén mutatja a pontszámot, amely a `FullText` teljes szöveges szint pontszámát mutatja. Alapértelmezett: `Phoneme`. | Választható |
+| EnableMiscue | Engedélyezi a gikszer számítását. Ha ez a beállítás engedélyezve van, a rendszer összehasonlítja a kiejtett szavakat a hivatkozási szöveggel, és az összehasonlítás alapján kihagyási/beszúrási művelettel jelöli meg őket. Az elfogadott értékek: `False` és `True` . Alapértelmezett: `False`. | Választható |
 | ScenarioId | Egy testreszabott pont rendszerét jelző GUID. | Választható |
 
 ### <a name="pronunciation-assessment-result-parameters"></a>Kiejtés értékelésének eredményei – paraméterek

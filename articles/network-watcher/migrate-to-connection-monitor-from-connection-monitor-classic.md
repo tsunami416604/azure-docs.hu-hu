@@ -1,5 +1,5 @@
 ---
-title: Migrálás a kapcsolódási figyelőbe a kapcsolódási figyelőből
+title: Migrálás a kapcsolódási figyelőbe (előzetes verzió) a kapcsolódási figyelőből
 titleSuffix: Azure Network Watcher
 description: Megtudhatja, hogyan telepítheti át a kapcsolódási figyelőt a Csatlakozáskezelő szolgáltatásból.
 services: network-watcher
@@ -12,16 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/20/2020
 ms.author: vinigam
-ms.openlocfilehash: 0ae1a1f36b9f81145b49245d8e6ace37ab36f834
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d785ecd48816150cd33d8e2f5fcce2ff36f1603f
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94974827"
+ms.locfileid: "94985790"
 ---
-# <a name="migrate-to-connection-monitor-from-connection-monitor-classic"></a>Migrálás a Csatlakozáskezelő szolgáltatásból (klasszikus)
+# <a name="migrate-to-connection-monitor-preview-from-connection-monitor-classic"></a>Migrálás a kapcsolódási figyelőbe (előzetes verzió) a kapcsolódási figyelőből (klasszikus)
 
-A meglévő kapcsolódási figyelőket áttelepítheti új, továbbfejlesztett, néhány kattintással és nulla leállás után. További információ az előnyökről: a [kapcsolódási figyelő](./connection-monitor-overview.md).
+A meglévő kapcsolódási figyelőket áttelepítheti új, továbbfejlesztett (előzetes verzió), és csak néhány kattintással és nulla állásidővel. További információ az előnyökről: a [kapcsolódási figyelő](./connection-monitor-overview.md).
+
+> [!IMPORTANT]
+> A Csatlakozáskezelő jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="key-points-to-note"></a>Jegyezze fel a legfontosabb pontokat
 

@@ -1,5 +1,5 @@
 ---
-title: Csatlakozáskezelő létrehozása – PowerShell
+title: Csatlakozáskezelő létrehozása (előzetes verzió) – PowerShell
 titleSuffix: Azure Network Watcher
 description: Ismerje meg, hogyan hozhatja létre a kapcsolódási figyelőt a PowerShell használatával.
 services: network-watcher
@@ -12,16 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: vinigam
-ms.openlocfilehash: fa8b2d967a336343d23c5f6aa4477ebcf2396407
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b1ffce75d5c38177c70db3ec1fc024a01821d3ab
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949037"
+ms.locfileid: "94984243"
 ---
-# <a name="create-a-connection-monitor-using-powershell"></a>Figyelő létrehozása a PowerShell használatával
+# <a name="create-a-connection-monitor-preview-using-powershell"></a>Csatlakozáskezelő (előzetes verzió) létrehozása a PowerShell használatával
 
 Ismerje meg, hogyan hozhat létre kapcsolati figyelőt az erőforrások közötti kommunikáció figyeléséhez a PowerShell használatával.
+
+> [!IMPORTANT]
+> A Csatlakozáskezelő jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="before-you-begin"></a>Előkészületek 
 
@@ -80,7 +84,7 @@ New-AzNetworkWatcherConnectionMonitor -NetworkWatcherName $nw -ResourceGroupName
 
 * Végpontok
     * név – az egyes végpontok egyedi neve
-    * resourceId – az Azure-végpontok esetében az erőforrás-azonosító a virtuális gépek Azure Resource Manager erőforrás-AZONOSÍTÓJÁRA hivatkozik. Nem Azure-végpontok esetén az erőforrás-azonosító az Azure Resource Manager erőforrás-AZONOSÍTÓját jelöli a nem Azure-ügynökökhöz társított Log Analytics munkaterülethez.
+    * resourceId – az Azure-végpontok esetében az erőforrás-azonosító a virtuális gépek Azure Resource Manager erőforrás-AZONOSÍTÓJÁRA hivatkozik. Nem Azure-végpontok esetén az erőforrás-azonosító a nem Azure-ügynökökhöz társított Log Analytics munkaterület Azure Resource Manager erőforrás-AZONOSÍTÓját jelöli.
     * címe – csak akkor alkalmazható, ha nincs megadva erőforrás-azonosító, vagy ha az erőforrás-azonosító Log Analytics munkaterület. Ha Log Analytics erőforrás-AZONOSÍTÓval használja, akkor a figyeléshez használható ügynök teljes tartománynevére utal. Ha erőforrás-azonosító nélkül használja, akkor ez lehet bármely nyilvános végpont URL-címe vagy IP-címe.
     * szűrő – nem Azure-végpontok esetén a szűrő használatával válassza ki az ügynököket Log Analytics munkaterületről, amelyet a rendszer a Csatlakozáskezelő erőforrás figyeléséhez fog használni. Ha a szűrők nincsenek beállítva, akkor a Log Analytics munkaterülethez tartozó összes ügynök használható figyelésre.
         * típus – típus megadása "ügynök címe"
@@ -100,6 +104,10 @@ New-AzNetworkWatcherConnectionMonitor -NetworkWatcherName $nw -ResourceGroupName
         * preferHTTPS – adja meg, hogy HTTPS protokollt használ-e HTTP-n keresztül
         * Port – adja meg az Ön által választott cél portot.
         * disableTraceRoute – ez olyan tesztelési csoportokra vonatkozik, amelyek TCP vagy ICMP protokollal rendelkeznek. Leállítja a forrásokat a topológia és a hop-by-hop RTT felfedéséhez.
+        * metódus – Ez azokra a tesztelési konfigurációkra vonatkozik, amelyek protokollja HTTP. Válassza ki a HTTP-kérelem módszert – vagy GET vagy POST
+        * elérési út – az URL-címhez hozzáfűzni kívánt elérésiút-paraméterek megadása
+        * validStatusCodes – válassza ki a megfelelő állapotkódot. Ha a válasz kódja nem egyezik a listával, a rendszer diagnosztikai üzenetet kap
+        * requestHeaders – adja meg az egyéni kérelmek fejlécének azon karakterláncait, amelyeket át kell adni a célhelynek
     * successThreshold – a következő hálózati paraméterek küszöbértékeit állíthatja be:
         * checksFailedPercent – az ellenőrzések százalékos arányának beállítása, ha a forrás a megadott feltételek alapján ellenőrzi a csatlakozást a célhelyekhez. A TCP vagy az ICMP protokoll esetében a sikertelen ellenőrzések százalékaránya a csomagok elvesztésének százalékában is egyenlő lehet. HTTP protokoll esetén ez a mező a nem válaszoló HTTP-kérelmek százalékos arányát jelöli.
         * roundTripTimeMs – állítsa be a RTT ezredmásodpercben, hogy mennyi ideig tart a források kapcsolódása a célhoz a tesztelési konfiguráción keresztül.

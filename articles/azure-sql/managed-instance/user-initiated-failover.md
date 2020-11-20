@@ -10,12 +10,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
 ms.date: 08/31/2020
-ms.openlocfilehash: 7bcdabdb4e49d198b9acb7a1c57312b31a5b4fff
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 51e9e66e2fd8ff60dd20c275a66fd13c047cc629
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842226"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94985518"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Felhasználó által kezdeményezett manuális feladatátvétel a felügyelt SQL-példányon
 
@@ -37,9 +37,9 @@ A következő okok miatt érdemes lehet [manuális feladatátvételt](../databas
 
 ## <a name="initiate-manual-failover-on-sql-managed-instance"></a>Manuális feladatátvétel kezdeményezése az SQL felügyelt példányán
 
-### <a name="rbac-permissions-required"></a>RBAC engedélyek szükségesek
+### <a name="azure-rbac-permissions-required"></a>Azure RBAC-engedélyek szükségesek
 
-A feladatátvételt kezdeményező felhasználónak a következő RBAC szerepkörök egyikével kell rendelkeznie:
+A feladatátvételt kezdeményező felhasználónak a következő Azure-szerepkörök egyikével kell rendelkeznie:
 
 - Előfizetés tulajdonosi szerepköre, vagy
 - Felügyelt példány közreműködői szerepköre, vagy

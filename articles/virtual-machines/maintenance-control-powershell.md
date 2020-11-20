@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 11/19/2020
 ms.author: cynthn
-ms.openlocfilehash: f4cb57eb8d3396667e6c9cb40b7e41b1e97622ed
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: f33cb7d4d005f15d0a5fcc70d56ebd4698f86694
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981187"
+ms.locfileid: "94988221"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>Frissítések vezérlése karbantartási vezérléssel és Azure PowerShell
 
@@ -69,7 +69,7 @@ Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
 
 ### <a name="create-a-maintenance-configuration-with-scheduled-window"></a>Karbantartási konfiguráció létrehozása ütemezett ablakkal
 
-A New-AzMaintenanceConfiguration használatával hozzon létre egy karbantartási konfigurációt egy ütemezett ablaktal, amikor az Azure alkalmazza a frissítéseket az erőforrásokon. Ez a példa egy konfig nevű karbantartási konfigurációt hoz létre, amelynek ütemezett ablaka 5 óra minden hónap negyedik hétfőjén. Miután létrehozott egy ütemezett ablakot, már nem kell manuálisan alkalmaznia a frissítéseket.
+Akkor is deklarálhat egy ütemezett időszakot, amikor az Azure alkalmazza a frissítéseket az erőforrásokra. Ez a példa egy konfig nevű karbantartási konfigurációt hoz létre, amelynek ütemezett ablaka 5 óra minden hónap negyedik hétfőjén. Miután létrehozott egy ütemezett ablakot, már nem kell manuálisan alkalmaznia a frissítéseket.
 
 ```azurepowershell-interactive
 $config = New-AzMaintenanceConfiguration `
@@ -85,12 +85,10 @@ $config = New-AzMaintenanceConfiguration `
 > [!IMPORTANT]
 > A karbantartási **időtartamnak** *2 óra* vagy hosszabbnak kell lennie. A karbantartási **ismétlődést** legalább 35 nap múlva be kell állítani.
 
-A karbantartási **Ismétlődés** a következőképpen lehet kifejezni:
- | Érték | Példa |
-      |-------|-------------|
-      | napi | recurEvery: nap **vagy** RecurEvery: 3days | 
-      | weekly | recurEvery: 3Weeks **vagy** RecurEvery: hét szombat, vasárnap | 
-      | havi | recurEvery: hónap day23, day24 **vagy** RecurEvery: hónap múlt vasárnap **vagy** RecurEvery: hónap negyedik hétfő | 
+A karbantartási **Ismétlődések** napi, heti vagy havi formában is megadhatók. Néhány példa:
+ - napi – "recurEvery: Day" **vagy** "RecurEvery: 3days" 
+ - hetente – "recurEvery: 3Weeks" **vagy** "RecurEvery: Week szombat, vasárnap" 
+ - havonta – "recurEvery: month day23, day24" **vagy** "RecurEvery: hónap múlt vasárnap" **vagy** "RecurEvery: month negyedik hétfő"  
       
 
 ## <a name="assign-the-configuration"></a>A konfiguráció kiosztása

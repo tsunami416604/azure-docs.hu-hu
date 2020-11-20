@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - device-developer
 - iot-edge
-ms.openlocfilehash: 5c51649e742f6e314e0e324ae19c38f1a83b02ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c4248246be845aa8608aac8b8a3ce761ea1ef86
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90016860"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94987048"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Azure IoT Edge-eszközök csatlakoztatása Azure IoT Central-alkalmazáshoz
 
@@ -63,9 +63,9 @@ Az Azure IoT Central-ban importálhat egy üzembe helyezési jegyzéket egy eszk
 
 A IoT Central IoT Edge eszköz modelljét az alábbiak szerint:
 
-* Minden IoT Edge eszköz-sablonhoz tartozik egy eszköz-képesség modell.
+* Minden IoT Edge eszköz-sablon rendelkezik egy eszköz modellel.
 * Az üzembe helyezési jegyzékben felsorolt összes egyéni modulhoz létrejön egy modul-képesség modell.
-* Létrejön egy kapcsolat az egyes modulok képességeinek modellje és az eszköz képességeinek modellje között.
+* Létrejön egy kapcsolat az egyes modulok képességeinek modellje és az eszköz modellje között.
 * A modul-képesség modell modul-illesztőfelületeket valósít meg.
 * Mindegyik modul felülete telemetria, tulajdonságokat és parancsokat tartalmaz.
 
@@ -73,7 +73,7 @@ A IoT Central IoT Edge eszköz modelljét az alábbiak szerint:
 
 ## <a name="iot-edge-gateway-devices"></a>Átjáró-eszközök IoT Edge
 
-Ha IoT Edge eszközt jelölt ki egy átjáró eszközként, az eszközhöz csatlakozni kívánó eszközökhöz hozzáadhat alsóbb rétegbeli kapcsolatokat az eszköz képességeinek modelljeihez.
+Ha IoT Edge eszközt jelölt ki egy átjáró eszközként, akkor az átjáró eszközhöz csatlakozni kívánó eszközökhöz hozzáadhat alsóbb rétegbeli kapcsolatokat az eszköz modelljeihez.
 
 ## <a name="next-steps"></a>Következő lépések
 

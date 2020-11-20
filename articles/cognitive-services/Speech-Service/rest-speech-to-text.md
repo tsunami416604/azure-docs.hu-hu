@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 98c42a61e65935446f948e35cb08ed2893dd0b7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bb66d8a197a33d6d0ad46502b510662f43ea1ca
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532517"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94988561"
 ---
 # <a name="speech-to-text-rest-api"></a>Diktálás REST API
 
@@ -64,7 +64,7 @@ Ezek a paraméterek szerepelhetnek a REST-kérelem lekérdezési karakterláncá
 
 Ez a táblázat a beszédfelismerési kérelmekhez szükséges és nem kötelező fejléceket sorolja fel.
 
-|Fejléc| Leírás | Kötelező/nem kötelező |
+|Fejléc| Description | Kötelező/nem kötelező |
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | A beszédfelismerési szolgáltatás előfizetési kulcsa. | Ez a fejléc vagy `Authorization` kötelező. |
 | `Authorization` | A szó előtt egy engedélyezési jogkivonat `Bearer` . További információért lásd: [Hitelesítés](#authentication). | Ez a fejléc vagy `Ocp-Apim-Subscription-Key` kötelező. |
@@ -90,12 +90,12 @@ A hang a HTTP-kérelem törzsében lesz elküldve `POST` . Ennek a táblázatnak
 
 Ez a táblázat a kiejtés értékeléséhez szükséges és választható paramétereket sorolja fel.
 
-| Paraméter | Leírás | Kötelező/nem kötelező |
+| Paraméter | Leírás | Kötelező? |
 |-----------|-------------|---------------------|
 | ReferenceText | A kiejtés kiértékeléséhez használandó szöveg | Kötelező |
-| GradingSystem | A pontszám kalibrációs pontjának rendszere. Az elfogadott értékek: `FivePoint` és `HundredMark` . Az alapértelmezett beállítás: `FivePoint`. | Választható |
+| GradingSystem | A pontszám kalibrációs pontjának rendszere. A `FivePoint` rendszer 0-5 lebegőpontos pontszámot ad, és `HundredMark` egy 0-100 lebegőpontos pontszámot ad. Alapértelmezett: `FivePoint`. | Választható |
 | Részletesség | A kiértékelés részletessége. Az elfogadott értékek a teljes szöveges `Phoneme` , a Word-és a fonéma-szinten látható pontszám, amely a teljes szöveg `Word` és a szó szintjén mutatja a pontszámot, amely a `FullText` teljes szöveges szint pontszámát mutatja. Az alapértelmezett beállítás: `Phoneme`. | Választható |
-| Méret | Meghatározza a kimeneti feltételeket. Az elfogadott értékek `Basic` , amelyek csak a pontossági pontszámot mutatják, `Comprehensive` több dimenzióban jelenítik meg a pontszámokat (pl. a teljes szöveges szinten a teljességi pontszám és a teljesség pontszáma, a hiba típusa a szó szintjén). Ellenőrizze a [Válasz paramétereit](#response-parameters) , és tekintse meg a különböző pontszám-dimenziók és a Word-hibák definícióit. Az alapértelmezett beállítás: `Basic`. | Választható |
+| Dimenzió | Meghatározza a kimeneti feltételeket. Az elfogadott értékek `Basic` , amelyek csak a pontossági pontszámot mutatják, `Comprehensive` több dimenzióban jelenítik meg a pontszámokat (pl. a teljes szöveges szinten a teljességi pontszám és a teljesség pontszáma, a hiba típusa a szó szintjén). Ellenőrizze a [Válasz paramétereit](#response-parameters) , és tekintse meg a különböző pontszám-dimenziók és a Word-hibák definícióit. Az alapértelmezett beállítás: `Basic`. | Választható |
 | EnableMiscue | Engedélyezi a gikszer számítását. Ha ez a beállítás engedélyezve van, a rendszer összehasonlítja a kiejtett szavakat a hivatkozási szöveggel, és az összehasonlítás alapján kihagyási/beszúrási művelettel jelöli meg őket. Az elfogadott értékek: `False` és `True` . Az alapértelmezett beállítás: `False`. | Választható |
 | ScenarioId | Egy testreszabott pont rendszerét jelző GUID. | Választható |
 

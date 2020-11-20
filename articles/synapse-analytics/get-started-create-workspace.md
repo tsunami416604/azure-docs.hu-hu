@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 10/07/2020
-ms.openlocfilehash: c15750a7a63293994ff7c6b68cb85a5066acee90
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: d22d70a360290e7fbfabf1d05fc49d4ef6eb8c83
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981136"
+ms.locfileid: "94986334"
 ---
 # <a name="creating-a-synapse-workspace"></a>Szinapszis-munkaterület létrehozása
 
@@ -67,7 +67,7 @@ A Spark-készlet azt mutatja be, hogy az Azure szinapszis hány Spark-erőforrá
 
 ## <a name="the-built-in-serverless-sql-pool"></a>A beépített kiszolgáló nélküli SQL-készlet
 
-Minden munkaterülethez **beépített, beépített** készlet tartozik. Ez a készlet nem törölhető. A kiszolgáló nélküli SQL-készlet lehetővé teszi az SQL használatát anélkül, hogy létre kellene hoznia egy kiszolgáló nélküli SQL-készletet az Azure Szinapszisban. A dedikált SQL-készletektől eltérően a kiszolgáló nélküli SQL-készlet számlázása a lekérdezés futtatásához beolvasott adatmennyiségen alapul, nem a lekérdezés végrehajtásához használt erőforrások számától.
+Minden munkaterülethez egy **beépített, beépített** kiszolgáló nélküli SQL-készlet tartozik. Ez a készlet nem törölhető. A kiszolgáló nélküli SQL-készletek lehetővé teszik az SQL-nélkül használatát, amelynek a kapacitása dedikált SQL-készletekkel van lefoglalva. A dedikált SQL-készletektől eltérően a kiszolgáló nélküli SQL-készlet számlázása a lekérdezés futtatásához beolvasott adatmennyiségen alapul, nem a készlethez lefoglalt kapacitás számán.
 
 ## <a name="next-steps"></a>Következő lépések
 

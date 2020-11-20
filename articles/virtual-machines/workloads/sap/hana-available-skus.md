@@ -12,15 +12,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/23/2020
+ms.date: 11/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fd979f553ff03d8373948d73c416a96bb140b544
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2732f9fc4b1b9251391180874a055e8ffd8d9e7a
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964762"
+ms.locfileid: "94985076"
 ---
 # <a name="available-skus-for-hana-large-instances"></a>Rendelkezésre álló SKU-a HANA nagyméretű példányaihoz
 
@@ -35,10 +35,13 @@ Az Azure (nagyméretű példányok) szolgáltatás 4. változatán alapuló SAP 
 
 - USA 2. nyugati régiója
 - USA keleti régiója
-- USA 2. keleti régiója
-- USA déli középső régiója
+
+BareMetal-infrastruktúra (SAP HANA számítási feladatokhoz) szolgáltatás, a 4,2-es kiadási bélyegek alapján. Több konfigurációban is elérhető az Azure-régiókban:
 - Nyugat-Európa
 - Észak-Európa
+- USA 2. keleti régiója
+- USA déli középső régiója
+
 
 
 
@@ -49,7 +52,7 @@ Az elérhető Azure-beli nagyméretű példányok listája, például a követke
 
 
 
-| SAP HANA tanúsított | Modellezés | Teljes memória | Memória DRAM | Memória Optane | Storage | Rendelkezésre állás |
+| SAP HANA tanúsított | Modellezés | Teljes memória | Memória DRAM | Memória Optane | Tárolás | Rendelkezésre állás |
 | --- | --- | --- | --- | --- | --- | --- |
 | IGEN <br />[OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2185), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2265) | SAP HANA az Azure S96<br /> – 2 x Intel® Xeon® processzor E7 – 8890 v4 <br /> 48 CPU-magok és 96 CPU-szálak |  768 GB | 768 GB | --- | 3,0 TB | Elérhető |
 | IGEN <br /> [OLAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2186), [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2269) | SAP HANA az Azure S224<br /> – 4 x Intel® Xeon® Platinum 8276 processzor <br /> 112 CPU-magok és 224 CPU-szálak |  3,0 TB | 3,0 TB | --- | 6,3 TB | Elérhető |

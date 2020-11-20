@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 11/16/2020
-ms.openlocfilehash: e91a3cc0a96add1f53d220e04fb98d63cc7c33f4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 0d2248b9c0a289f5e4f9f2f8e987365ab58c49c0
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841087"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94988544"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -142,15 +142,15 @@ A feladatátvételi csoport engedélyei az [Azure szerepköralapú hozzáférés
 
 ### <a name="create-failover-group"></a>Feladatátvételi csoport létrehozása
 
-A feladatátvételi csoport létrehozásához írási hozzáféréssel kell rendelkeznie az elsődleges és a másodlagos kiszolgálókhoz, valamint a feladatátvételi csoport összes adatbázisához is RBAC kell. SQL felügyelt példány esetén az elsődleges és másodlagos SQL felügyelt példányhoz is írási hozzáférésre van szükség, de az egyes adatbázisokra vonatkozó engedélyek nem relevánsak, mert az egyes SQL felügyelt példány-adatbázisok nem vehetők fel és nem távolíthatók el egy feladatátvételi csoportból a RBAC.
+Feladatátvételi csoport létrehozásához az Azure RBAC írási hozzáféréssel kell rendelkeznie az elsődleges és a másodlagos kiszolgálókhoz, valamint a feladatátvételi csoport összes adatbázisához. SQL felügyelt példány esetében az Azure RBAC írási hozzáférésre van szükség az elsődleges és másodlagos SQL felügyelt példányhoz, de az egyes adatbázisokra vonatkozó engedélyek nem relevánsak, mert az egyes SQL felügyelt példány-adatbázisok nem vehetők fel és nem távolíthatók el egy feladatátvételi csoportból.
 
 ### <a name="update-a-failover-group"></a>Feladatátvételi csoport frissítése
 
-A feladatátvételi csoport frissítéséhez írási hozzáféréssel kell rendelkeznie a feladatátvételi csoporthoz, és az aktuális elsődleges kiszolgálón vagy felügyelt példányon lévő összes adatbázishoz RBAC kell.  
+A feladatátvételi csoport frissítéséhez az Azure RBAC írási hozzáférésre van szüksége a feladatátvételi csoporthoz, valamint az aktuális elsődleges kiszolgálón vagy felügyelt példányon található összes adatbázishoz.  
 
 ### <a name="fail-over-a-failover-group"></a>Feladatátvételi csoport feladatátvétele
 
-A feladatátvételi csoport feladatátvételéhez írási hozzáféréssel kell rendelkeznie a feladatátvételi csoporthoz az új elsődleges kiszolgálón vagy a felügyelt példányon RBAC.
+Feladatátvevő csoport feladatátvételéhez az Azure RBAC írási hozzáférésre van szüksége az új elsődleges kiszolgálón vagy felügyelt példányon található feladatátvételi csoport számára.
 
 ## <a name="best-practices-for-sql-database"></a>Ajánlott eljárások SQL Database
 
@@ -409,7 +409,7 @@ Vegye figyelembe a következő korlátozásokat:
 
 ## <a name="programmatically-managing-failover-groups"></a>Feladatátvételi csoportok programozott kezelése
 
-Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és az aktív geo-replikáció programozott módon is felügyelhető Azure PowerShell és a REST API használatával. A következő táblázatok ismertetik az elérhető parancsok készletét. Az aktív geo-replikálás Azure Resource Manager API-kat tartalmaz a felügyelethez, beleértve a [Azure SQL Database REST API](/rest/api/sql/) és [Azure PowerShell parancsmagokat](/powershell/azure/). Ezek az API-k az erőforráscsoportok használatát igénylik, és támogatják a szerepköralapú biztonságot (RBAC). A hozzáférési szerepkörök megvalósításával kapcsolatos további információkért lásd: [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md).
+Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és az aktív geo-replikáció programozott módon is felügyelhető Azure PowerShell és a REST API használatával. A következő táblázatok ismertetik az elérhető parancsok készletét. Az aktív geo-replikálás Azure Resource Manager API-kat tartalmaz a felügyelethez, beleértve a [Azure SQL Database REST API](/rest/api/sql/) és [Azure PowerShell parancsmagokat](/powershell/azure/). Ezek az API-k az erőforráscsoportok használatát igénylik, és támogatják az Azure szerepköralapú hozzáférés-vezérlését (Azure RBAC). A hozzáférési szerepkörök megvalósításával kapcsolatos további információkért lásd: [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md).
 
 ### <a name="manage-sql-database-failover"></a>SQL Database feladatátvétel kezelése
 

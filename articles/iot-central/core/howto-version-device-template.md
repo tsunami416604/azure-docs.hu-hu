@@ -1,20 +1,19 @@
 ---
 title: Az Azure IoT Central-alkalmazások eszköz-sablon verziószámozásának ismertetése | Microsoft Docs
 description: Új verziók létrehozásával, valamint az élő csatlakoztatott eszközök hatása nélkül megismételheti az eszközök sablonjait
-author: philmea
-ms.author: philmea
-ms.date: 04/24/2020
+author: dominicbetts
+ms.author: dobett
+ms.date: 11/06/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-manager: peterpr
 ms.custom: device-developer
-ms.openlocfilehash: 3c13c0b8cb118df877642328fa1b5512be31cffa
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 93545c63013c95e3db498b079061da3d9b189efd
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014426"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94986446"
 ---
 # <a name="create-a-new-device-template-version"></a>Új sablon-verzió létrehozása
 
@@ -22,63 +21,39 @@ ms.locfileid: "92014426"
 
 Az eszköz sablonja tartalmaz egy sémát, amely leírja, hogyan működik az eszköz a IoT Central. Ezek az interakciók közé tartoznak a telemetria, a tulajdonságok és a parancsok. Az eszköz és a IoT Central alkalmazás is a séma közös megismerésére támaszkodik az információk cseréjére. Csak korlátozott módosításokat végezhet a sémában a szerződés megszakítása nélkül, ezért a legtöbb séma-módosításhoz szükség van az eszköz sablonjának új verziójára. Az eszköz verziószámozása lehetővé teszi, hogy a régebbi eszközök továbbra is a séma verziószámát használják, míg az újabb vagy frissített eszközök újabb verziójú sémát használnak.
 
-Az eszközbeállítások sémája az eszköz képességeinek modellje (DCM) és a hozzá tartozó felületeken van meghatározva. Az eszközök sablonjai más információkat is tartalmaznak, például a felhő tulajdonságait, a testreszabások megjelenítését és a nézeteket. Ha módosítja az eszköz azon részeit, amelyek nem határozzák meg, hogy az eszköz hogyan cseréli az adatcserét IoT Central, nem szükséges a sablon verziója.
+Az eszköz sémája az eszköz modelljében és a hozzá tartozó felületeken van meghatározva. Az eszközök sablonjai más információkat is tartalmaznak, például a felhő tulajdonságait, a testreszabások megjelenítését és a nézeteket. Ha módosítja az eszköz azon részeit, amelyek nem határozzák meg, hogy az eszköz hogyan cseréli az adatcserét IoT Central, nem szükséges a sablon verziója.
 
-Ahhoz, hogy a kezelő használhassa a verziót, közzé kell tennie minden olyan sablont, amely a verzió frissítésére is szükség van. IoT Central leállítja, hogy a sablon első verziószámozása nélkül tegye közzé az eszköz sablonjában feltörhető módosításokat.
+Ahhoz, hogy az operátor használni tudja, mindig közzé kell tennie egy frissített sablont. IoT Central leállítja, hogy a sablon első verziószámozása nélkül tegye közzé az eszköz sablonjában feltörhető módosításokat.
 
 > [!NOTE]
 > Az eszközök létrehozásával kapcsolatos további tudnivalókért tekintse meg az [eszköz sablonjának beállítása és kezelése](howto-set-up-template.md) című témakört.
 
 ## <a name="versioning-rules"></a>Verziószámozási szabályok
 
-Ez a szakasz az eszközök sablonjaira vonatkozó verziószámozási szabályokat összegzi. A DCMs és a illesztőfelületek verziószáma is szerepel. A következő kódrészlet a DCM-et mutatja be egy környezeti érzékelő eszközhöz. A DCM két csatolóval rendelkezik: **DeviceInformation** és **EnvironmentalSensor**. A verziószámok a mezők végén láthatók `@id` . Ha meg szeretné tekinteni ezeket az információkat a IoT Central felhasználói felületen, válassza az **identitás megtekintése** lehetőséget az eszköz sablonjának szerkesztőjében.
+Ez a szakasz az eszközök sablonjaira vonatkozó verziószámozási szabályokat összegzi. Mindkét eszköz modellje és illesztőfelülete verziószámmal rendelkezik. Az alábbi kódrészlet egy termosztátos eszköz eszközének modelljét jeleníti meg. Az eszköz modellje egyetlen illesztőfelülettel rendelkezik. A verziószámot a mező végén tekintheti meg `@id` .
 
 ```json
 {
-  "@id": "urn:contoso:sample_device:1",
-  "@type": "CapabilityModel",
-  "implements": [
-    {
-      "@id": "urn:contoso:sample_device:deviceinfo:1",
-      "@type": "InterfaceInstance",
-      "name": "deviceinfo",
-      "schema": {
-        "@id": "urn:azureiot:DeviceManagement:DeviceInformation:1",
-        "@type": "Interface",
-        "displayName": {
-          "en": "Device Information"
-        },
-        "contents": [...
-        ]
-      }
-    },
-    {
-      "@id": "urn:contoso:sample_device:sensor:1",
-      "@type": "InterfaceInstance",
-      "name": "sensor",
-      "schema": {
-        "@id": "urn:contoso:EnvironmentalSensor:2",
-        "@type": "Interface",
-        "displayName": {
-          "en": "Environmental Sensor"
-        },
-        "contents": [...
-        ]
-      }
-    }
-  ],
-  "displayName": {
-    "en": "Environment Sensor Capability Model"
-  },
-  "@context": [
-    "http://azureiot.com/v1/contexts/IoTModel.json"
+  "@context": "dtmi:dtdl:context;2",
+  "@id": "dtmi:com:example:Thermostat;1",
+  "@type": "Interface",
+  "displayName": "Thermostat",
+  "description": "Reports current temperature and provides desired temperature control.",
+  "contents": [
+    // ...
   ]
 }
 ```
 
-* A DCM közzététele után nem távolíthat el semmilyen felületet, még az eszköz sablonjának új verziójában sem.
-* A DCM közzététele után hozzáadhat egy felületet, ha létrehoz egy új verziót az eszköz sablonjában.
-* A DCM közzététele után lecserélheti a felületet egy újabb verzióra, ha az eszköz új verzióját hozza létre. Ha például az érzékelő v1-es eszköze a EnvironmentalSensor v1 felületet használja, létrehozhat egy, az EnvironmentalSensor v2 felületet használó Sensor v2-eszköz sablonját.
+Ha meg szeretné tekinteni ezeket az információkat a IoT Central felhasználói felületen, válassza az **identitás megtekintése** lehetőséget az eszköz sablonjának szerkesztőjében:
+
+:::image type="content" source="media/howto-version-device-template/view-identity.png" alt-text="Egy felület identitásának megtekintése a verziószám megtekintéséhez":::
+
+Az alábbi lista azokat a szabályokat mutatja be, amelyek meghatározzák, hogy mikor kell létrehoznia egy új verziót:
+
+* Egy eszköz-modell közzétételekor nem távolíthat el semmilyen felületet, még az eszköz sablonjának új verziójában sem.
+* Az eszköz-modell közzététele után hozzáadhat egy felületet, ha az eszköz új verzióját hozza létre.
+* Az eszköz-modell közzétételét követően lecserélheti a felületet egy újabb verzióra, ha létrehoz egy új verziót az eszköz sablonjában. Ha például az érzékelő v1-es eszköze a termosztát v1 felületet használja, létrehozhat egy, a termosztát v2 felületet használó Sensor v2-eszköz sablonját.
 * Egy felület közzététele után nem távolíthatja el az interfészek tartalmát, még az eszköz sablonjának új verziójában sem.
 * Egy felület közzétételét követően hozzáadhat elemeket egy felület tartalmához, ha új verziót hoz létre az adapterhez és az eszköz sablonhoz. Az illesztőfelületbe felvehető elemek közé tartoznak a telemetria, a tulajdonságok és a parancsok.
 * Miután közzétett egy felületet, a nem sémán belüli módosításokat is elvégezheti az illesztőfelület meglévő elemein, ha új verziót hoz létre az adapter és az eszköz sablonjában. Egy illesztőfelület nem sémájának részei közé tartozik a megjelenítendő név és a szemantikai típus. Egy olyan illesztőfelület-elem sémájának részei, amelyet nem lehet módosítani, név, képesség típusa és séma.
@@ -92,20 +67,20 @@ Az eszköz képességeinek bizonyos elemei szerkeszthetők, anélkül, hogy az e
 1. Nyissa meg az **eszközök sablonjai** lapot.
 1. Válassza ki a testreszabni kívánt sablont.
 1. Válassza a **Testreszabás** lapot.
-1. Itt jelennek meg az eszköz képességeinek modelljében meghatározott összes funkció. Az összes mezőt szerkesztheti, mentheti és használhatja, az eszköz sablonjának verziószámozása nélkül. Ha olyan mezőket szeretne szerkeszteni, amelyek csak olvashatók, akkor az eszköz sablonját kell megváltoztatnia. Válasszon ki egy szerkeszteni kívánt mezőt, és írjon be minden új értéket.
+1. Itt jelennek meg az eszköz modelljében definiált összes funkció. Az összes mezőt szerkesztheti, mentheti és használhatja, az eszköz sablonjának verziószámozása nélkül. Ha olyan mezőket szeretne szerkeszteni, amelyek csak olvashatók, akkor az eszköz sablonját kell megváltoztatnia. Válasszon ki egy szerkeszteni kívánt mezőt, és írjon be minden új értéket.
 1. Kattintson a **Mentés** gombra. Mostantól ezek az értékek felülbírálják az eszköz sablonjában eredetileg mentett és az alkalmazáson keresztül használt összes értéket.
 
 ## <a name="version-a-device-template"></a>Eszköz sablonjának verziója
 
-Az eszköz új verziójának létrehozása létrehoz egy Piszkozat-verziót a sablonból, amely az eszköz képességeinek modelljét szerkesztheti. A közzétett felületek minden esetben közzé maradnak, amíg az önálló verzió nem lesz. A közzétett illesztőfelületek módosításához először hozzon létre egy új sablon-verziót.
+Az eszköz új verziójának létrehozása létrehoz egy Piszkozat-verziót a sablonból, amelyben az eszköz modellje szerkeszthető lehet. A közzétett felületek minden esetben közzé maradnak, amíg az önálló verzió nem lesz. A közzétett illesztőfelületek módosításához először hozzon létre egy új sablon-verziót.
 
-Csak akkor használja az eszköz sablonját, ha a testreszabások szakaszban nem szerkeszthető eszköz-képesség modell egy részét próbálja szerkeszteni.
+Csak akkor használja az eszköz sablonját, ha az eszköz modelljének azon részét kísérli meg szerkeszteni, amelyet a testreszabások szakaszban nem lehet szerkeszteni.
 
 Eszköz sablonjának verziója:
 
 1. Nyissa meg az **eszközök sablonjai** lapot.
 1. Válassza ki azt az eszközt, amelyen a verziót szeretné.
-1. Kattintson a lap tetején található **Version (verzió** ) gombra, és adjon meg egy új nevet a sablonnak. IoT Central egy új nevet javasol, amelyet szerkeszthet.
+1. A lap tetején kattintson a **verzió** gombra, és adjon meg egy új nevet a sablonnak. IoT Central egy új nevet javasol, amelyet szerkeszthet.
 1. Kattintson a **Létrehozás** gombra.
 1. Most az eszköz sablonja vázlat módban van. Láthatja, hogy a felületek még mindig zárolva vannak. A módosítani kívánt felületek verziója.
 
@@ -117,7 +92,7 @@ Illesztőfelület verziója:
 
 1. Nyissa meg az **eszközök sablonjai** lapot.
 1. Válassza ki a Piszkozat módban lévő sablont.
-1. Válassza ki azt a felületet, amelyet közzé szeretne tenni, és szerkeszteni kívánja a közzétett módban.
+1. Válassza ki azt a felületet, amely a verzió és a szerkesztés céljából közzétett módban van.
 1. Kattintson a **verzió** gombra a csatoló oldal tetején.
 1. Kattintson a **Létrehozás** gombra.
 1. Most az illesztőfelület vázlat módban van. A meglévő testreszabások és nézetek megszakítása nélkül hozzáadhat vagy szerkesztheti a felület képességeit.
@@ -126,12 +101,10 @@ Illesztőfelület verziója:
 
 Az eszköz sablonjának több verzióját is létrehozhatja. Idővel több csatlakoztatott eszközt fog használni ezekhez az eszközökhöz. Az eszközöket áttelepítheti az eszköz sablonjának egyik verziójából egy másikba. Az alábbi lépések bemutatják, hogyan telepíthet át egy eszközt:
 
-1. Lépjen a **Device Explorer** lapra.
+1. Lépjen az **Eszközök** oldalra.
 1. Válassza ki az eszközt, amelyet át kell telepítenie egy másik verzióra.
-1. Válassza az **áttelepítés**lehetőséget.
-1. Válassza ki azt a verziószámot, amelyen át szeretné telepíteni az eszközt, majd válassza az **áttelepítés**lehetőséget.
-
-![Eszköz áttelepítésének módja](media/howto-version-device-template/pick-version.png)
+1. Az **áttelepítés** kiválasztása: :::image type="content" source="media/howto-version-device-template/migrate-device.png" alt-text="válassza az eszköz áttelepítésének megkezdése lehetőséget"::: .
+1. Válassza ki azt a verziószámot, amelyen át szeretné telepíteni az eszközt, majd válassza az **áttelepítés** lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 

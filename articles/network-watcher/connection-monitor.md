@@ -15,14 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: bef78766deb739791720838bb27649586da96152
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 667b07b3fe53ca6d88eba94faeaeeae074d71f1e
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94948794"
+ms.locfileid: "94984277"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Oktatóanyag: Két virtuális gép közötti hálózati kommunikáció monitorozása az Azure Portal használatával
+
+> [!NOTE]
+> Ez az oktatóanyag a kapcsolatok figyelőjét (klasszikus) fedi le. Próbálja ki az új és továbbfejlesztett [kapcsolat-figyelőt](connection-monitor-overview.md) a kapcsolatok figyelésének fokozása érdekében
 
 A virtuális gépek és a végpontok (pl. egy másik virtuális gép) közötti sikeres kommunikáció kulcsfontosságú lehet vállalata számára. Olykor előfordulhat, hogy egyes konfigurációs módosítások megszakítják a kommunikációt. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -33,6 +36,10 @@ A virtuális gépek és a végpontok (pl. egy másik virtuális gép) közötti 
 > * Virtuális gépek közötti kommunikációs probléma diagnosztizálása és a megoldás megismerése
 
 Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+> [!IMPORTANT]
+> A Csatlakozáskezelő jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -163,7 +170,7 @@ Alapértelmezés szerint az Azure minden porton engedélyezi a kommunikációt k
 
     Ha nem tudott róla, hogy valaki megvalósította a 4. lépésben létrehozott biztonsági szabályt, a kapcsolatfigyelőből megtudhatta, hogy ez a szabály okozza a kommunikációs problémát. Ezután módosíthatja, felülírhatja vagy eltávolíthatja a szabályt, és visszaállíthatja a virtuális gépek közötti kommunikációt.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot és a benne lévő összes erőforrást:
 

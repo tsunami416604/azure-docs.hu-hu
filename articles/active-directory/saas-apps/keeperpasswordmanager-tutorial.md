@@ -11,155 +11,155 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/13/2020
 ms.author: jeedes
-ms.openlocfilehash: 88f84fba43959ee5e5b8d93446e4985a75697813
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: ef49a8a3ac1779071a4d4906bfd053530063102d
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685868"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94984464"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager--digital-vault"></a>Oktatóanyag: Azure Active Directory integráció a Keeper Password Managerrel & Digital Vaulttal
 
 Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Keeper Password Managert & Digital Vaultba Azure Active Directory (Azure AD).
-A Keeper Password Manager & Digital Vault és az Azure AD integrálásával a következő előnyöket nyújtja:
+Ez az integráció az alábbi előnyöket nyújtja:
 
 * Az Azure AD-ben szabályozhatja, hogy ki férhet hozzá a Keeper Password Manager & Digital Vaulthoz.
-* Engedélyezheti a felhasználók számára, hogy automatikusan bejelentkezzenek, hogy az Azure AD-fiókjával & digitális tárolóban (egyszeri bejelentkezés) megőrizze a Password Managert.
-* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
+* Engedélyezheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Keeper Password Manager & digitális tárolóba (egyszeri bejelentkezés) az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti: a Azure Portal.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha az Azure AD-integrációt a Keeper Password Managerrel & Digital Vaulttal szeretné konfigurálni, a következő elemek szükségesek:
+Az Azure AD-integráció a Keeper Password Managerrel & Digital Vaulttal való konfigurálásához a következők szükségesek:
 
-* Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
-* A Keeper Password Manager & a digitális tár egyszeri bejelentkezésre engedélyezett előfizetését
+* Egy Azure AD-előfizetés. Ha nem rendelkezik Azure AD-környezettel, egy [hónapos próbaverziót](https://azure.microsoft.com/pricing/free-trial/)is beszerezhet.
+* A Keeper Password Manager & a digitális tár előfizetését, amely engedélyezve van az egyszeri bejelentkezéshez (SSO).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* A Keeper Password Manager & Digital Vault támogatja az **SP** által KEZDEMÉNYEZett SSO-t
+* A Keeper Password Manager & Digital Vault támogatja az SP által kezdeményezett egyszeri bejelentkezést.
 
-* A Keeper Password Manager & Digital Vault **a** felhasználók üzembe helyezését támogatja
+* A Keeper Password Manager & Digital Vault támogatja az igény szerinti felhasználói üzembe helyezést.
 
-## <a name="adding-keeper-password-manager--digital-vault-from-the-gallery"></a>A Keeper Password Manager & a digitális tár hozzáadása a katalógusból
+## <a name="add-keeper-password-manager--digital-vault-from-the-gallery"></a>A Keeper Password Manager & Digital Vault hozzáadása a katalógusból
 
-A Keeper Password Manager & Digital Vault Azure AD-ba való integrálásának konfigurálásához a Keeper Password Managert & Digital Vaultot a katalógusból a felügyelt SaaS-alkalmazások listájára kell felvennie.
+A Keeper Password Manager & Digital Vault Azure AD-ba való integrálásának konfigurálásához adja hozzá az alkalmazást a katalógusból a felügyelt szolgáltatott szoftver (SaaS) alkalmazásai listájához.
 
 1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
-1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. A bal oldali panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
-1. A **Hozzáadás a** katalógusból szakaszban írja be a **Keeper Password Manager & Digital Vault** kifejezést a keresőmezőbe.
+1. A **Hozzáadás a** katalógusból mezőbe írja be a **Keeper Password Manager & Digital Vault** kifejezést a keresőmezőbe.
 1. Válassza a **Keeper Password Manager & Digital Vault** az eredmények panelen, majd az alkalmazás hozzáadása lehetőséget. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-sso-for-keeper-password-manager--digital-vault"></a>Azure AD SSO konfigurálása és tesztelése a Keeper Password Manager & Digital Vaulthoz
 
-Konfigurálja és tesztelje az Azure AD SSO-t a Keeper Password Managerrel & Digital Vaultot egy **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és az érintett felhasználó között a Keeper Password Manager & Digital Vaultban.
+Konfigurálja és tesztelje az Azure AD SSO-t a Keeper Password Managerrel & Digital Vaultot egy **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy összekapcsolt kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Keeper Password Manager & Digital Vaultban.
 
-Az Azure AD SSO és a Keeper Password Manager & Digital Vault konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
+Az Azure AD SSO konfigurálása és tesztelése a Keeper Password Managerrel & Digital Vaulttal:
 
-1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+1. [Konfigurálja az Azure ad SSO](#configure-azure-ad-sso) -t, hogy a felhasználók használhatják ezt a funkciót.
 
-    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
-    * **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
+    * [Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user) az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
+    * [Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user) , hogy a Britta Simon engedélyezze az Azure ad egyszeri bejelentkezés használatát.
 
-1. A **[Keeper Password Manager & digitális tároló egyszeri bejelentkezésének konfigurálása](#configure-keeper-password-manager--digital-vault-sso)** – az egyes Sign-On beállításainak konfigurálása az alkalmazás oldalán.
-    * A **[Keeper Password manager & a digitális tár tesztelési felhasználójának létrehozása](#create-keeper-password-manager--digital-vault-test-user)** – hogy a Britta egy, a felhasználó Azure ad-képviseletéhez kapcsolódó, a Keeper Password Managerben található, a (& Digitális tárolóban található).
-1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
+1. [Konfigurálja a Keeper Password managert & Digital Vault SSO](#configure-keeper-password-manager--digital-vault-sso) -t az egyszeri bejelentkezés beállításainak konfigurálásához az alkalmazás oldalán.
+    * [Hozzon létre egy megtartó jelszavas kezelőt & a digitális tár tesztelési felhasználójának](#create-a-keeper-password-manager--digital-vault-test-user) , hogy a felhasználó Azure ad-Britta kapcsolódó, a Keeper Password & Managerben található Simon-t használja.
+1. Ellenőrizze az [SSO](#test-sso) -t annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
 ### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A Azure Portal a **Keeper Password Manager & Digital Vault** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. A Azure Portal a **Keeper Password Manager & Digital Vault** Application Integration oldalon keresse meg a **kezelés** szakaszt. Válassza az **egyszeri bejelentkezés** lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon válassza az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikont a beállítások szerkesztéséhez.
 
-   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+   ![Képernyőfelvétel: egyszeres Sign-On beállítása SAML-vel, a ceruza ikon kiemelve.](common/edit-urls.png)
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:
-    * **Felhőalapú egyszeri bejelentkezés** esetén:`https://keepersecurity.com/api/rest/sso/saml/sso/<CLOUD_INSTANCE_ID>`
-    * **Helyszíni SSO** esetén:`https://<KEEPER_FQDN>/sso-connect/saml/login`
+    a. A **bejelentkezési URL-cím** mezőbe írja be a következő mintát használó URL-címet:
+    * Felhőalapú egyszeri bejelentkezés esetén: `https://keepersecurity.com/api/rest/sso/saml/sso/<CLOUD_INSTANCE_ID>`
+    * Helyszíni SSO esetén: `https://<KEEPER_FQDN>/sso-connect/saml/login`
 
-    b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:
-    * **Felhőalapú egyszeri bejelentkezés** esetén:`https://keepersecurity.com/api/rest/sso/saml/<CLOUD_INSTANCE_ID>`
-    * **Helyszíni SSO** esetén:`https://<KEEPER_FQDN>/sso-connect`
+    b. Az **azonosító (entitás azonosítója)** mezőbe írjon be egy URL-címet, amely a következő mintát használja:
+    * Felhőalapú egyszeri bejelentkezés esetén: `https://keepersecurity.com/api/rest/sso/saml/<CLOUD_INSTANCE_ID>`
+    * Helyszíni SSO esetén: `https://<KEEPER_FQDN>/sso-connect`
 
-    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:
-    * **Felhőalapú egyszeri bejelentkezés** esetén:`https://keepersecurity.com/api/rest/sso/saml/sso/<CLOUD_INSTANCE_ID>`
-    * **Helyszíni SSO** esetén:`https://<KEEPER_FQDN>/sso-connect/saml/sso`
+    c. A **Válasz URL-cím** mezőbe írja be a következő mintát használó URL-címet:
+    * Felhőalapú egyszeri bejelentkezés esetén: `https://keepersecurity.com/api/rest/sso/saml/sso/<CLOUD_INSTANCE_ID>`
+    * Helyszíni SSO esetén: `https://<KEEPER_FQDN>/sso-connect/saml/sso`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Vegye fel a kapcsolatot a [Keeper Password managerrel & a digitális tároló ügyfél-támogatási csapatával](https://keepersecurity.com/contact.html) , hogy ezeket az értékeket kapja. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Ezeknek az értékeknek a beszerzéséhez lépjen kapcsolatba a [Keeper Password Manager & a digitális tároló ügyfél-támogatási csapatával](https://keepersecurity.com/contact.html). Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. A Keeper Password Manager & Digital Vault-alkalmazás megadott formátumban várja az SAML-jogcímeket, így egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
+1. A Keeper Password Manager & Digital Vault-alkalmazás megadott formátumban várja az SAML-jogcímeket, és ehhez egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
-    ![image](common/default-attributes.png)
+    ![Képernyőkép & jogcímek felhasználói attribútumairól.](common/default-attributes.png)
 
-1. A fentieken kívül a Keeper Password Manager & Digital Vault alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
+1. Emellett a Keeper Password Manager & Digital Vault alkalmazás néhány további attribútumot vár az SAML-válaszban való visszatéréshez. Ezek az alábbi táblázatban láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelmények szerint áttekinthetők.
 
-    | Név | Forrás attribútum|
+    | Name | Forrás attribútum|
     | ------------| --------- |
     | Első | User. givenName |
     | Utolsó | felhasználó. vezetéknév |
     | E-mail | User. mail |
 
-5. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+5. Az **egyszeri Sign-On SAML használatával történő beállításához** az **SAML aláíró tanúsítvány** szakaszban válassza a **Letöltés** lehetőséget. Ez letölti az **összevonási metaadatok XML-** fájlját a szükséges beállítások alapján, és elmenti a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
+    ![Képernyőkép az SAML-aláíró tanúsítványról, a letöltés kiemelve.](common/metadataxml.png)
 
-6. A **Keeper Password Manager beállítása & digitális** tároló szakaszban másolja ki a megfelelő URL-címeket (ek) a követelménynek megfelelően.
+6. A **Keeper Password Manager & digitális tároló beállítása** lapon másolja ki a megfelelő URL-címeket a követelmények szerint.
 
-    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
+    ![Képernyőkép a Keeper Password Manager & Digital Vault beállításáról, amely kiemelt URL-címekkel rendelkezik.](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
-Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal néven `B.Simon` .
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
-1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**  >  **felhasználók**  >  **minden felhasználó** lehetőséget.
+1. A képernyő felső részén válassza az **új felhasználó** lehetőséget.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
-   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
-   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. A **név** mezőbe írja be a következőt: `B.Simon` .  
+   1. A **Felhasználónév** mezőbe írja be a következőt: `username@companydomain.extension` . Például: `B.Simon@contoso.com`.
+   1. Válassza a **jelszó megjelenítése** lehetőséget, majd írja le a megjelenő értéket.
    1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a Keeper Password Manager & Digital Vaulthoz.
+Ebben a szakaszban engedélyezi a B. Simon számára az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a megtartó Password Managerhez & Digital Vaulthoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**  >  **minden alkalmazás** lehetőséget.
 1. Az alkalmazások listában válassza a **Keeper Password Manager & Digital Vault** elemet.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
-1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
-1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** legördülő listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, a "default Access" szerepkör van kiválasztva.
-1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+1. Válassza a **Felhasználó hozzáadása** elemet. A **hozzárendelés hozzáadása** területen válassza a **felhasználók és csoportok** lehetőséget.
+1. A **felhasználók és csoportok** területen válassza ki a felhasználók listájából a **B. Simon** elemet. Ezután válassza a **kijelölés** lehetőséget a képernyő alján.
+1. Ha a felhasználókhoz hozzárendelni kívánt szerepkört vár, kiválaszthatja a **szerepkör kiválasztása** listából. Ha nem állított be szerepkört ehhez az alkalmazáshoz, akkor az **alapértelmezett hozzáférési** szerepkör van kiválasztva.
+1. A **hozzárendelés hozzáadása** lapon válassza a **hozzárendelés** lehetőséget.
 
 
 ## <a name="configure-keeper-password-manager--digital-vault-sso"></a>A Keeper Password Manager konfigurálása a digitális tároló egyszeri bejelentkezésének &
 
-Ha be szeretné állítani az egyszeri bejelentkezést a **Keeper Password managerben & a digitális tároló konfigurációs** oldalát, kövesse az [Keeper támogatási útmutatójában](https://docs.keeper.io/sso-connect-guide/)megadott útmutatást.
+Az SSO az alkalmazáshoz való konfigurálásához tekintse meg a [Keeper támogatási útmutatójának](https://docs.keeper.io/sso-connect-guide/)útmutatásait.
 
-### <a name="create-keeper-password-manager--digital-vault-test-user"></a>A Keeper Password Manager létrehozása & Digital Vault test User
+### <a name="create-a-keeper-password-manager--digital-vault-test-user"></a>A Keeper Password Manager & a digitális tár tesztelési felhasználójának létrehozása
 
-Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Keeper Password Manager & digitális tárolóba, ki kell építeni őket a Keepers Password Manager & Digital Vaultba. Az alkalmazás a felhasználó üzembe helyezését támogatja, és a hitelesítéssel rendelkező felhasználók automatikusan jönnek létre az alkalmazásban. Ha manuálisan szeretné beállítani a felhasználókat, vegye fel a kapcsolatot a [Keeper támogatási szolgálatával](https://keepersecurity.com/contact.html).
+Ha engedélyezni szeretné, hogy az Azure AD-felhasználók bejelentkezzenek a Keeper Password Manager & digitális tárolóba, ki kell építenie azokat. Az alkalmazás támogatja az igény szerinti felhasználói üzembe helyezést, és a hitelesítéssel rendelkező felhasználók automatikusan jönnek létre az alkalmazásban. Ha manuálisan szeretné beállítani a felhasználókat, vegye fel a kapcsolatot a [Keeper támogatási szolgálatával](https://keepersecurity.com/contact.html).
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját. 
 
-* Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. Ez átirányítja a Keeper Password Manager & a digitális tár bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot. 
+* A Azure Portal válassza az **alkalmazás tesztelése** lehetőséget. Ez átirányítja a Keeper Password Manager & digitális tároló bejelentkezési URL-címére, ahol elindíthatja a bejelentkezést. 
 
-* Lépjen a Keeper Password Manager & Digital Vault bejelentkezési URL-címére közvetlenül, és onnan indítsa el a bejelentkezési folyamatot.
+* Közvetlenül az alkalmazás bejelentkezési URL-címére léphet, és elindíthatja a bejelentkezést onnan.
 
-* Használhatja a Microsoft Access panelt. Ha a hozzáférés panelen a Keeper Password Manager & a digitális tároló csempére kattint, a rendszer átirányítja a Keeper Password Manager & a digitális tár bejelentkezési URL-címére. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Használhatja a Microsoft Access panelt. Amikor kiválasztja a **Keeper Password Manager & a digitális** tárolót a hozzáférési panelen, a rendszer átirányítja az alkalmazás bejelentkezési URL-címére. További információ a hozzáférési panelről: [Bejelentkezés és alkalmazások indítása a saját alkalmazások portálján](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Miután konfigurálta a Keeper Password Managert & Digital Vaultot, kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
+Miután konfigurálta a Keeper Password Managert & Digital Vaultot, kényszerítheti a munkamenet-vezérlést. Ez valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. További információ: a [munkamenet-vezérlés kényszerített érvényesítése Microsoft Cloud app Security használatával](/cloud-app-security/proxy-deployment-aad).

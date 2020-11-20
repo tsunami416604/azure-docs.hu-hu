@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec45ce7634b7bc0a8f38f354112cdc2e172f1e17
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 58f0ffa8bd43a8428603334b6c89fa1cf36315b5
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288366"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94987337"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Gyakori kérdések az identitások védelméről Azure Active Directory
 
 ## <a name="dismiss-user-risk-known-issues"></a>Felhasználói kockázattal kapcsolatos ismert problémák bezárása
 
-A **felhasználói kockázat elvetése** a klasszikus Identity Protectionben az **Azure ad** -ben a felhasználó kockázati előzményeiben szereplő tulajdonost állítja be.
+A **felhasználói kockázat elvetése** a klasszikus Identity Protectionben az **Azure ad**-ben a felhasználó kockázati előzményeiben szereplő tulajdonost állítja be.
 
 A **felhasználói kockázat elvetése** az Identity Protection szolgáltatásban a felhasználó kockázati előzményeiben szereplő tulajdonost állítja be az Identity Protectionben **\<Admin’s name with a hyperlink pointing to user’s blade\>** .
 
@@ -95,6 +95,4 @@ Tekintettel arra, hogy a felhasználói kockázat kumulatív jellegű, és nem j
 
 A magas összesített kockázati pontszám a bejelentkezés más szolgáltatásain alapulhat, vagy az a tény, hogy a bejelentkezéshez egynél több észlelés történt. A bejelentkezés pedig akkor is előfordulhat, ha a bejelentkezési kockázat (aggregált) közepes, még akkor is, ha a bejelentkezéshez kapcsolódó észlelések nagy kockázatot jelentenek. 
 
-### <a name="why-is-the-detection-which-is-linked-to-a-risky-sign-in-have-a-different-risk-level-than-the-sign-in-risk-level-real-time"></a>Miért van a kockázatos bejelentkezéshez kapcsolódó észlelés eltérő kockázati szinttel, mint a bejelentkezési kockázati szint (valós idejű)? 
 
-Mostanában továbbfejlesztettük a valós idejű bejelentkezési kockázatok kiszámításának módját. A kockázatok észlelési szintje és a bejelentkezési kockázati szint között észlelt eltérés a változások eredménye. Vegye figyelembe, hogy a valós idejű bejelentkezési kockázat a házirendek kényszerítése során használt érték. 

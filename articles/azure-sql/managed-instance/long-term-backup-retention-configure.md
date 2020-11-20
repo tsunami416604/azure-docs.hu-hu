@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 04/29/2020
-ms.openlocfilehash: 8b0d6665b440516d29cc9aeb0b6e50f509528574
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: ec193eab02d937e9d93b8632fa171fec8227d6c2
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503436"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94987490"
 ---
 # <a name="manage-azure-sql-managed-instance-long-term-backup-retention-powershell"></a>Az Azure SQL felügyelt példányainak hosszú távú biztonsági mentési megőrzése (PowerShell) kezelése
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -24,13 +24,13 @@ ms.locfileid: "92503436"
 Az Azure SQL felügyelt példányain a [biztonsági mentés hosszú távú megőrzési](../database/long-term-retention-overview.md#sql-managed-instance-support) szabályzatát (ltr) korlátozott nyilvános előzetes verzióként is konfigurálhatja. Ez lehetővé teszi az adatbázis biztonsági másolatainak automatikus megőrzését különálló Azure Blob Storage-tárolókban akár 10 évig. Ezt követően a PowerShell használatával helyreállíthat egy adatbázist a biztonsági másolatokkal.
 
    > [!IMPORTANT]
-   > A felügyelt példányok LTR jelenleg korlátozott előzetes verzióban érhető el, és az EA-és CSP-előfizetések esetében eseti alapon érhető el. A regisztráció igényléséhez hozzon létre egy [Azure-támogatási jegyet](https://azure.microsoft.com/support/create-ticket/). A probléma típusa beállításnál válassza a technikai probléma, SQL Database felügyelt példány lehetőséget, majd a probléma típusa beállításnál válassza a **biztonsági mentés, visszaállítás és Üzletmenet-folytonosság/hosszú távú biztonsági mentés**lehetőséget. A kérelemben adja meg, hogy a felügyelt példányhoz tartozó LTR korlátozott nyilvános előzetes verziójával szeretne-e regisztrálni.
+   > A felügyelt példányok LTR jelenleg korlátozott előzetes verzióban érhető el, és az EA-és CSP-előfizetések esetében eseti alapon érhető el. A regisztráció igényléséhez hozzon létre egy [Azure-támogatási jegyet](https://azure.microsoft.com/support/create-ticket/). A probléma típusa beállításnál válassza a technikai probléma, SQL Database felügyelt példány lehetőséget, majd a probléma típusa beállításnál válassza a **biztonsági mentés, visszaállítás és Üzletmenet-folytonosság/hosszú távú biztonsági mentés** lehetőséget. A kérelemben adja meg, hogy a felügyelt példányhoz tartozó LTR korlátozott nyilvános előzetes verziójával szeretne-e regisztrálni.
 
 A következő részben bemutatjuk, hogyan használható a PowerShell a biztonsági másolatok hosszú távú megőrzésének konfigurálására, a biztonsági mentések megtekintésére az Azure SQL Storage szolgáltatásban, valamint az Azure SQL Storage biztonsági másolatából való visszaállítás.
 
 ## <a name="azure-roles-to-manage-long-term-retention"></a>Azure-szerepkörök a hosszú távú adatmegőrzés kezeléséhez
 
-A **Get-AzSqlInstanceDatabaseLongTermRetentionBackup** és a **Restore-AzSqlInstanceDatabase**esetében a következő szerepkörök egyikének kell lennie:
+A **Get-AzSqlInstanceDatabaseLongTermRetentionBackup** és a **Restore-AzSqlInstanceDatabase** esetében a következő szerepkörök egyikének kell lennie:
 
 - Előfizetés tulajdonosi szerepköre vagy
 - Felügyelt példány közreműködői szerepkör vagy
@@ -39,7 +39,7 @@ A **Get-AzSqlInstanceDatabaseLongTermRetentionBackup** és a **Restore-AzSqlInst
   - `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionManagedInstanceBackups/read`
   - `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/read`
 
-A **Remove-AzSqlInstanceDatabaseLongTermRetentionBackup**esetében a következő szerepkörök egyikének kell lennie:
+A **Remove-AzSqlInstanceDatabaseLongTermRetentionBackup** esetében a következő szerepkörök egyikének kell lennie:
 
 - Előfizetés tulajdonosi szerepköre vagy
 - Egyéni szerepkör a következő engedélyekkel:
@@ -48,7 +48,7 @@ A **Remove-AzSqlInstanceDatabaseLongTermRetentionBackup**esetében a következő
 > [!NOTE]
 > A felügyelt példány közreműködői szerepkör nem rendelkezik engedéllyel a LTR biztonsági mentések törléséhez.
 
-RBAC engedélyek is megadhatók az *előfizetés* vagy az *erőforráscsoport* hatókörében. Az eldobott példányhoz tartozó LTR biztonsági mentések eléréséhez azonban az engedélyt az adott példány *előfizetési* hatókörében kell megadni.
+Az Azure RBAC engedélyei az *előfizetés* vagy az *erőforráscsoport* hatókörében is megadhatók. Az eldobott példányhoz tartozó LTR biztonsági mentések eléréséhez azonban az engedélyt az adott példány *előfizetési* hatókörében kell megadni.
 
 - `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/delete`
 

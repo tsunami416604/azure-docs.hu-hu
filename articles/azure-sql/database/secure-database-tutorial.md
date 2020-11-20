@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: ''
 ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: b9afb35a0e8a1c2513ce032030271599d181cd14
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 77ed71d74e75abfdf7f84aee9b116f1d9d2ccc9d
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792684"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94985858"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Oktatóanyag: adatbázis biztonságossá tétele Azure SQL Databaseban
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -78,11 +78,11 @@ Kiszolgáló szintű tűzfalszabály beállítása:
     ![kiszolgálói tűzfalszabály](./media/secure-database-tutorial/server-name.png)
 
     > [!NOTE]
-    > Ügyeljen arra, hogy a teljes kiszolgálónevet (például *YourServer.database.Windows.net* ) másolja az oktatóanyag későbbi részében való használatra.
+    > Ügyeljen arra, hogy a teljes kiszolgálónevet (például *YourServer.database.Windows.net*) másolja az oktatóanyag későbbi részében való használatra.
 
 1. Az **Áttekintés** lapon válassza a **kiszolgáló tűzfalának beállítása** lehetőséget. Ekkor megnyílik a kiszolgáló **tűzfalbeállítások** lapja.
 
-   1. Válassza az **ügyfél IP-** címének hozzáadása lehetőséget az eszköztáron az aktuális IP-cím új tűzfalszabályként való hozzáadásához. A szabály az 1433-as portot egyetlen IP-cím vagy IP-címtartomány számára nyithatja meg. Válassza a **Mentés** lehetőséget.
+   1. Válassza az **ügyfél IP-** címének hozzáadása lehetőséget az eszköztáron az aktuális IP-cím új tűzfalszabályként való hozzáadásához. A szabály az 1433-as portot egyetlen IP-cím vagy IP-címtartomány számára nyithatja meg. Kattintson a **Mentés** gombra.
 
       ![kiszolgálótűzfal-szabály beállítása](./media/secure-database-tutorial/server-firewall-rule2.png)
 
@@ -131,7 +131,7 @@ Az Azure AD-rendszergazda beállítása:
     ![rendszergazda kiválasztása](./media/secure-database-tutorial/admin-select.png)
 
     > [!IMPORTANT]
-    > A szerepköralapú hozzáférés-vezérlés (RBAC) csak a portálra vonatkozik, és a rendszer nem propagálja SQL Serverra.
+    > Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) csak a portálra vonatkozik, és a rendszer nem propagálja SQL Serverra.
 
 1. A **Active Directory-rendszergazda** lap tetején válassza a **Mentés** lehetőséget.
 
@@ -155,9 +155,9 @@ Az adatbázis-hozzáférés kezeléséhez felhasználókat adhat hozzá az adatb
 
 Felhasználók hozzáadásához válassza ki az adatbázis-hitelesítés típusát:
 
-- **SQL-hitelesítés** , Felhasználónév és jelszó használata a bejelentkezésekhez, és csak a kiszolgálón belüli adott adatbázis kontextusában érvényesek.
+- **SQL-hitelesítés**, Felhasználónév és jelszó használata a bejelentkezésekhez, és csak a kiszolgálón belüli adott adatbázis kontextusában érvényesek.
 
-- **Azure ad-hitelesítés** , az Azure ad által felügyelt identitások használata
+- **Azure ad-hitelesítés**, az Azure ad által felügyelt identitások használata
 
 ### <a name="sql-authentication"></a>SQL-hitelesítés
 
@@ -280,19 +280,19 @@ A naplózás engedélyezése:
 
    1. Válassza ki a **napló célhelyét** az alábbi módon:
 
-       - **Storage** , egy Azure Storage-fiók, amely az eseménynaplókat menti, és *. xel* fájlként tölthető le.
+       - **Storage**, egy Azure Storage-fiók, amely az eseménynaplókat menti, és *. xel* fájlként tölthető le.
 
           > [!TIP]
           > Ugyanazt a Storage-fiókot használja az összes auditált adatbázishoz, hogy a lehető legtöbbet hozza ki a jelentési sablonokból.
 
-       - **Log Analytics** , amely automatikusan tárolja az eseményeket lekérdezés vagy további elemzés céljából
+       - **Log Analytics**, amely automatikusan tárolja az eseményeket lekérdezés vagy további elemzés céljából
 
            > [!NOTE]
            > **Log Analytics munkaterület** szükséges a speciális funkciók, például az elemzés, az egyéni riasztási szabályok és az Excel-vagy Power bi-exportálás támogatásához. Munkaterület nélkül csak a lekérdezés-szerkesztő érhető el.
 
-       - **Event hub** , amely lehetővé teszi, hogy az események más alkalmazásokban való használatra legyenek átirányítva
+       - **Event hub**, amely lehetővé teszi, hogy az események más alkalmazásokban való használatra legyenek átirányítva
 
-   1. Válassza a **Mentés** lehetőséget.
+   1. Kattintson a **Mentés** gombra.
 
       ![Naplózási beállítások](./media/secure-database-tutorial/audit-settings.png)
 
@@ -317,7 +317,7 @@ Az adatmaszkolás engedélyezése:
 
     ![Maszk beállításai](./media/secure-database-tutorial/mask-settings.png)
 
-1. Válassza a **Mentés** lehetőséget. A kiválasztott információk mostantól az adatvédelem során maszkoltak.
+1. Kattintson a **Mentés** gombra. A kiválasztott információk mostantól az adatvédelem során maszkoltak.
 
     ![Példa maszkra](./media/secure-database-tutorial/mask-query.png)
 
@@ -331,7 +331,7 @@ A titkosítás engedélyezése vagy ellenőrzése:
 
 1. A **Biztonság** szakaszban válassza az **transzparens adattitkosítás** lehetőséget.
 
-1. Ha szükséges, állítsa be az **adattitkosítást** **a** következőre:. Válassza a **Mentés** lehetőséget.
+1. Ha szükséges, állítsa be az **adattitkosítást** **a** következőre:. Kattintson a **Mentés** gombra.
 
     ![Transzparens adattitkosítás](./media/secure-database-tutorial/encryption-settings.png)
 

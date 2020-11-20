@@ -1,5 +1,5 @@
 ---
-title: Csatlakozáskezelő létrehozása – ARMClient
+title: Csatlakozáskezelő létrehozása (előzetes verzió) – ARM-sablon
 titleSuffix: Azure Network Watcher
 description: Megtudhatja, hogyan hozhat létre ARMClient a kapcsolódási figyelő használatával.
 services: network-watcher
@@ -12,16 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: vinigam
-ms.openlocfilehash: c80f2aaf26c0f0e89014c997151599c8bddbe903
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: e1a0ecd85d07aa4fdf5482c5104c17eb4a068688
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/20/2020
-ms.locfileid: "94948816"
+ms.locfileid: "94984226"
 ---
-# <a name="create-a-connection-monitor-using-the-armclient"></a>ARMClient használatával létesített figyelő létrehozása
+# <a name="create-a-connection-monitor-using-the-arm-template"></a>Figyelő létrehozása ARM-sablonnal
 
 Ismerje meg, hogyan hozhat létre kapcsolati figyelőt az erőforrások közötti kommunikáció figyeléséhez a ARMClient használatával. Támogatja a hibrid és az Azure-beli Felhőbeli üzembe helyezést.
+
+> [!IMPORTANT]
+> A Csatlakozáskezelő jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="before-you-begin"></a>Előkészületek 
 

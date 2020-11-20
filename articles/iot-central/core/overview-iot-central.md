@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 3952736af9cf7c3b720769cee6a58e3fc52a6111
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: b62a0da7074676787b7e1c0182ca7588b83cdbe0
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127403"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94985042"
 ---
 # <a name="what-is-azure-iot-central"></a>Mi az az Azure IoT Central?
 
@@ -58,7 +58,7 @@ Megoldás-szerkesztőként a webalapú eszközök használatával hozzon létre 
 
 Ez az [eszköz](howto-set-up-template.md) a következőket tartalmazza:
 
-- Egy _eszköz-képesség modell_ , amely leírja az eszköz által megvalósított képességeket. Az eszköz képességei a következők:
+- Az eszköz által megvalósított képességeket ismertető _eszköz modellje_ . Az eszköz képességei a következők:
 
   - A IoT Central telemetria.
   - A csak olvasható tulajdonságok a jelentés állapotát IoT Central.
@@ -72,9 +72,9 @@ Ez az [eszköz](howto-set-up-template.md) a következőket tartalmazza:
 
 Megoldás-szerkesztőként több lehetőség közül választhat az eszközök sablonjainak létrehozásához:
 
-- Tervezze meg IoT Central az eszköz sablonját, majd implementálja az eszköz képességeinek modelljét az eszköz kódjában.
-- Hozzon létre egy eszköz-képesség modellt a Visual Studio Code használatával, és tegye közzé a modellt egy adattárban. Implementálja az eszköz kódját a modellből, és kapcsolja össze az eszközt a IoT Central alkalmazással. IoT Central megkeresi az eszköz képességeinek modelljét a tárházból, és létrehoz egy egyszerű eszközt a sablonhoz.
-- Eszköz-képesség modell létrehozása a Visual Studio Code használatával. Implementálja az eszköz kódját a modellből. Manuálisan importálja az eszköz képességeinek modelljét a IoT Central alkalmazásba, majd adja hozzá a IoT Central alkalmazás igényeinek megfelelő Felhőbeli tulajdonságokat, testreszabásokat és irányítópultokat.
+- Tervezze meg IoT Central az eszköz sablonját, majd implementálja az eszköz modelljét az eszköz kódjában.
+- Hozzon létre egy eszköz modellt a Visual Studio Code használatával, és tegye közzé a modellt egy adattárban. Implementálja az eszköz kódját a modellből, és kapcsolja össze az eszközt a IoT Central alkalmazással. IoT Central megkeresi az eszköz modelljét a tárházból, és létrehoz egy egyszerű eszközt a sablonhoz.
+- Hozzon létre egy eszköz modellt a Visual Studio Code használatával. Implementálja az eszköz kódját a modellből. Manuálisan importálja az eszköz modelljét a IoT Central alkalmazásba, majd adja hozzá a IoT Central alkalmazás igényeinek megfelelő Felhőbeli tulajdonságokat, testreszabásokat és irányítópultokat.
 
 Megoldás-szerkesztőként a IoT Central segítségével programkódot hozhatja meg az eszközök teszteléséhez az eszköz sablonjainak ellenőrzéséhez.
 
@@ -151,7 +151,6 @@ Minden Azure-előfizetéshez tartozik alapértelmezett kvóta, amely hatással l
 - A tömb sémájának típusai nem támogatottak.
 - Csak a C eszközoldali SDK és a Node.js eszköz és a szolgáltatás SDK-k támogatottak.
 - IoT Central jelenleg a Egyesült Államok, Európa, Ázsia és a Csendes-óceáni térség, Ausztrália, Egyesült Királyság és Japán helyszíneken érhető el.
-- Az eszköz képességeinek modelljeinek minden, ugyanabban a fájlban definiált illesztőfelülettel kell rendelkezniük.
 
 ## <a name="next-steps"></a>Következő lépések
 

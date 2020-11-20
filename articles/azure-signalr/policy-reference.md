@@ -1,18 +1,18 @@
 ---
 title: Beépített szabályzat-definíciók az Azure szignáló számára
 description: Felsorolja Azure Policy az Azure-jelzőhöz tartozó beépített szabályzat-definíciókat. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 author: sffamily
 ms.author: zhshang
 ms.service: signalr
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 8c87bcbfbc78f349d8743cd4440a4d9028dddb27
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 58f7ba384dc4b2c51eb9e2a675584682a91791f3
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94745605"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94985015"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-signalr"></a>Az Azure Signaler beépített definíciói Azure Policy
 

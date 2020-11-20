@@ -7,12 +7,12 @@ ms.author: viviali
 ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 812fd0c10b63cfe469a10a99069f201fcc2cc658
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 9e5f4fd14f56f0a2dff45dd2650ea552b07fecd7
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126737"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94987354"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-legacy"></a>IoT-adatexportálás a Felhőbeli célhelyekre az adatexportálás használatával (örökölt)
 
@@ -22,7 +22,7 @@ ms.locfileid: "92126737"
 > - Az új előzetes verziójú adatexportálási funkciókkal kapcsolatos további információkért lásd: [IoT-adatok exportálása a Felhőbeli célhelyekre az adatok exportálása használatával](./howto-export-data.md).
 > - Az előzetes verziójú adatexportálás és az örökölt adatexportálási funkciók közötti különbségekről az [összehasonlítási táblázatban](./howto-export-data.md#comparison-of-legacy-data-export-and-data-export)talál további információt.
 
-Ez a cikk az Azure IoT Central adatexportálási funkciójának használatát ismerteti. Ezzel a szolgáltatással folyamatosan exportálhatja az adatait az **azure Event Hubsba**, **Azure Service Busba**vagy **Azure Blob Storage** -példányba. Az adatexportálás JSON-formátumot használ, és tartalmazhatja a telemetria, az eszköz adatait és az eszköz sablonjának adatait. Az exportált adatértékek használata:
+Ez a cikk az Azure IoT Central adatexportálási funkciójának használatát ismerteti. Ezzel a szolgáltatással folyamatosan exportálhatja az adatait az **azure Event Hubsba**, **Azure Service Busba** vagy **Azure Blob Storage** -példányba. Az adatexportálás JSON-formátumot használ, és tartalmazhatja a telemetria, az eszköz adatait és az eszköz sablonjának adatait. Az exportált adatértékek használata:
 
 - Meleg elérésű elemzések és elemzések. Ez a beállítás magában foglalja az egyéni szabályok beindítását a Azure Stream Analyticsban, az egyéni munkafolyamatok aktiválását a Azure Logic Appsban, vagy átadja a Azure Functions át.
 - A Microsoft Power BI-ban a ritka elérésű elemzések, például a Azure Machine Learning vagy a hosszú távú trendek elemzése során betanítási modellek.
@@ -55,7 +55,7 @@ Ha nem rendelkezik meglévő Service Bus-névtérrel az exportáláshoz, kövess
 1. Hozzon létre egy [új Service Bus névteret a Azure Portalban](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5). [Azure Service Bus dokumentációban](../../service-bus-messaging/service-bus-create-namespace-portal.md)bővebben is olvashat.
 2. Válasszon előfizetést. Az olyan egyéb előfizetésekben is exportálhat adatexportálást, amelyek nem ugyanabban az előfizetésben vannak, mint a IoT Central alkalmazás. Ebben az esetben kapcsolati sztringet használ.
 
-3. Az exportáláshoz használandó üzenetsor vagy témakör létrehozásához nyissa meg a Service Bus névteret, és válassza a **+ üzenetsor** vagy a **+ témakör**lehetőséget.
+3. Az exportáláshoz használandó üzenetsor vagy témakör létrehozásához nyissa meg a Service Bus névteret, és válassza a **+ üzenetsor** vagy a **+ témakör** lehetőséget.
 
 Ha a Service Bus exportálás célhelyként választja, akkor a várólisták és a témakörök nem rendelkezhetnek a munkamenetek és az ismétlődő észlelések engedélyezésével. Ha ezek bármelyike engedélyezve van, néhány üzenet nem érkezik meg a várólistán vagy a témakörben.
 
@@ -72,7 +72,7 @@ Ha nem rendelkezik meglévő Azure Storage-fiókkal az exportáláshoz, kövesse
     |Standard|Blob Storage|
     |Prémium|BLOB Storage letiltása|
 
-2. Hozzon létre egy tárolót a Storage-fiókban. Nyissa meg a Storage-fiókját. A **blob szolgáltatás**alatt válassza a **Tallózás Blobok**lehetőséget. Egy új tároló létrehozásához kattintson a felül található **+ tároló** elemre.
+2. Hozzon létre egy tárolót a Storage-fiókban. Nyissa meg a Storage-fiókját. A **blob szolgáltatás** alatt válassza a **Tallózás Blobok** lehetőséget. Egy új tároló létrehozásához kattintson a felül található **+ tároló** elemre.
 
 ## <a name="set-up-data-export"></a>Az adatexportálás beállítása
 
@@ -80,12 +80,12 @@ Most, hogy van egy célhelye az adatexportáláshoz, az alábbi lépéseket köv
 
 1. Jelentkezzen be IoT Central alkalmazásba.
 
-2. A bal oldali panelen válassza az **adatexportálás**elemet.
+2. A bal oldali panelen válassza az **adatexportálás** elemet.
 
     > [!Tip]
     > Ha nem látja az **adatexportálást** a bal oldali ablaktáblán, akkor nincs engedélye az adatexportálás konfigurálására az alkalmazásban. Az adatexportálás beállításához forduljon a rendszergazdához.
 
-3. Kattintson az **+ új** gombra. Válassza ki az **azure blob Storage**, az **azure Event Hubs**, **Azure Service Bus üzenetsor**vagy a **Azure Service Bus témakör** egyikét az Exportálás céljának megfelelően. Az alkalmazáson keresztüli exportálások maximális száma öt.
+3. Kattintson az **+ új** gombra. Válassza ki az **azure blob Storage**, az **azure Event Hubs**, **Azure Service Bus üzenetsor** vagy a **Azure Service Bus témakör** egyikét az Exportálás céljának megfelelően. Az alkalmazáson keresztüli exportálások maximális száma öt.
 
 4. Adja meg az Exportálás nevét. A legördülő listában válassza ki a **névteret**, vagy **adjon meg egy kapcsolatok karakterláncot**.
 
@@ -96,22 +96,22 @@ Most, hogy van egy célhelye az adatexportáláshoz, az alábbi lépéseket köv
 
 5. Válassza ki az Event hub, a várólista, a témakör vagy a tároló elemet a legördülő listából.
 
-6. Választható Ha a **kapcsolódási karakterlánc megadása**lehetőséget választotta, a rendszer egy új mezőt jelenít meg a kapcsolódási karakterlánc beillesztéséhez. A következőhöz tartozó kapcsolódási karakterlánc lekérése:
+6. Választható Ha a **kapcsolódási karakterlánc megadása** lehetőséget választotta, a rendszer egy új mezőt jelenít meg a kapcsolódási karakterlánc beillesztéséhez. A következőhöz tartozó kapcsolódási karakterlánc lekérése:
 
     - Event Hubs vagy Service Bus keresse meg a névteret a Azure Portalban:
         - A teljes névtérhez tartozó kapcsolódási karakterlánc használata:
-            1. A **Beállítások**területen válassza a **megosztott elérési szabályzatok** elemet.
+            1. A **Beállítások** területen válassza a **megosztott elérési szabályzatok** elemet.
             2. Hozzon létre egy új kulcsot, vagy válasszon olyan meglévő kulcsot, amely rendelkezik **küldési** engedéllyel.
             3. Az elsődleges vagy a másodlagos kapcsolatok karakterláncának másolása
-        - Ha a kapcsolati karakterláncot egy adott Event hub-példányhoz vagy Service Bus üzenetsor vagy témakörhöz szeretné használni, lépjen az **entitások > Event Hubs** vagy **entitások > várólisták** vagy **entitások > témakörök**elemre. Válasszon egy adott példányt, és kövesse a fenti lépéseket a kapcsolódási karakterlánc beszerzéséhez.
+        - Ha a kapcsolati karakterláncot egy adott Event hub-példányhoz vagy Service Bus üzenetsor vagy témakörhöz szeretné használni, lépjen az **entitások > Event Hubs** vagy **entitások > várólisták** vagy **entitások > témakörök** elemre. Válasszon egy adott példányt, és kövesse a fenti lépéseket a kapcsolódási karakterlánc beszerzéséhez.
     - Storage-fiók, nyissa meg a Azure Portal Storage-fiókját:
         - Csak a teljes Storage-fiókhoz tartozó kapcsolatok karakterláncai támogatottak. Az egyetlen tárolóra kiterjedő kapcsolódási karakterláncok nem támogatottak.
-          1. A **Beállítások**területen válassza a **hozzáférési kulcsok** elemet.
+          1. A **Beállítások** területen válassza a **hozzáférési kulcsok** elemet.
           2. Másolja a key1-vagy a key2-kapcsolatok karakterláncát
 
     Illessze be a kapcsolatok karakterláncát. Írja be a példányt vagy a kis-és nagybetűket megkülönböztető **tároló nevét**.
 
-7. Az **exportálni**kívánt adat területen válassza ki az exportálandó adattípusokat **, ha a**típust be értékre állítja.
+7. Az **exportálni** kívánt adat területen válassza ki az exportálandó adattípusokat **, ha a** típust be értékre állítja.
 
 8. Az adatexportálás bekapcsolásához ellenőrizze, **hogy be van**-e kapcsolva az **engedélyezve** váltógomb. Kattintson a **Mentés** gombra.
 
@@ -382,7 +382,6 @@ Ez a példa egy üzenetet jelenít meg az Event hub vagy Service Bus üzenetsor 
                           {
                               "@id": "<id>",
                               "@type": ["Command"],
-                              "commandType": "synchronous",
                               "request": {
                                   "@id": "<id>",
                                   "@type": ["SchemaField"],
@@ -506,7 +505,6 @@ Ez a példa egy olyan üzenetet mutat be, amely a blob Storage-ban lévő eszkö
                           {
                               "@id": "<id>",
                               "@type": ["Command"],
-                              "commandType": "synchronous",
                               "request": {
                                   "@id": "<id>",
                                   "@type": ["SchemaField"],
@@ -559,13 +557,13 @@ Ha az előnézeti alkalmazásban már van egy meglévő adatexportálás az *esz
 
 A 2020. február 3-án kezdődően az eszközökön és az eszközök sablonjain lévő összes új Exportálás a fent ismertetett adatformátummal fog rendelkezni. Az ezen dátum előtt létrehozott összes exportálás a régi adatformátumban, 2020. június 30-ig marad, ekkor a rendszer automatikusan áttelepíti ezeket az exportálásokat az új adatformátumba. Az új adatformátum megegyezik a IoT Central nyilvános API-ban található [eszköz](/rest/api/iotcentral/devices/get), [eszköz tulajdonság](/rest/api/iotcentral/devices/getproperties), [eszköz felhő tulajdonság](/rest/api/iotcentral/devices/getcloudproperties)és [eszköz sablon](/rest/api/iotcentral/devicetemplates/get) objektumokkal.
 
-Az **eszközök**esetében a régi adatformátum és az új adatformátum közötti jelentős különbségek a következők:
+Az **eszközök** esetében a régi adatformátum és az új adatformátum közötti jelentős különbségek a következők:
 - `@id` az eszköz eltávolításakor a `deviceId` rendszer átnevezi `id` 
 - `provisioned` a jelző megjelenik az eszköz kiépítési állapotának leírásához.
 - `approved` a jelző megjelenik az eszköz jóváhagyási állapotának leírásához.
 - `properties` az eszköz és a felhő tulajdonságait is beleértve, a nyilvános API-ban lévő entitásokra illeszkedik
 
-Az **eszközök sablonjai**esetében a régi adatformátum és az új adatformátum közötti jelentős különbségek a következők:
+Az **eszközök sablonjai** esetében a régi adatformátum és az új adatformátum közötti jelentős különbségek a következők:
 
 - `@id` az eszköz sablonjának neve: `id`
 - `@type` a rendszer átnevezi az eszköz sablonját `types` , és mostantól egy tömb

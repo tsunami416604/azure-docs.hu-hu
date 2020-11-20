@@ -5,12 +5,12 @@ ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.custom: devx-track-js
-ms.openlocfilehash: d1d3ad94957e791b2178b6c60d4c7debdec2b391
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5bbfca4d890440574ee6717ca910969226fc781a
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91283428"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94987065"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Ethereum proof-of-Authority Consortium megoldási sablon üzembe helyezése az Azure-ban
 
@@ -48,7 +48,7 @@ Mindegyik konzorciumi tag üzembe helyezése a következőket foglalja magában:
 * Azure Monitor a naplók és a teljesítménnyel kapcsolatos statisztikák összesítéséhez
 * VNet-átjáró (nem kötelező) a VPN-kapcsolatok privát virtuális hálózatok való engedélyezéséhez
 
-Alapértelmezés szerint az RPC-és a társítási végpontok elérhetők a nyilvános IP-címeken keresztül az előfizetések és a felhők közötti egyszerűsített kapcsolat engedélyezéséhez. Az alkalmazás szintű hozzáférés-vezérléshez használhatja a [paritás jogosultsági szerződéseit](https://wiki.parity.io/Permissioning). A VPN mögött üzembe helyezett hálózatok, amelyek a VNet-átjárókat használják az előfizetések közötti kapcsolathoz, támogatottak. Mivel a VPN-és VNet-telepítések összetettebbek, érdemes lehet nyilvános IP-modellel kezdeni a megoldás prototípusakor.
+Alapértelmezés szerint az RPC-és a társítási végpontok elérhetők a nyilvános IP-címeken keresztül az előfizetések és a felhők közötti egyszerűsített kapcsolat engedélyezéséhez. Az alkalmazás szintű hozzáférés-vezérléshez használhatja a paritás jogosultsági szerződéseit. A VPN mögött üzembe helyezett hálózatok, amelyek a VNet-átjárókat használják az előfizetések közötti kapcsolathoz, támogatottak. Mivel a VPN-és VNet-telepítések összetettebbek, érdemes lehet nyilvános IP-modellel kezdeni a megoldás prototípusakor.
 
 A Docker-tárolók a megbízhatóság és a modularitás érdekében használatosak. A Azure Container Registry az egyes központi telepítések részeként a verzióval ellátott rendszerképek tárolására és kiszolgálására szolgál. A tárolók képei a következőkből állnak:
 
@@ -72,7 +72,7 @@ Ebben az útmutatóban feltételezzük, hogy többrésztvevős Ethereum Consorti
 1. Három tag mindegyike Ethereum-fiókot hoz MetaMask használatával
 1. *Az a tag* üzembe helyezi a Ethereum cselekvési tervét, és megadja a Ethereum nyilvános címeit
 1. Az *a tag* megadja a konzorcium URL-címét a *B* és *C* tag számára
-1. *B. tag* és *C. tag* üzembe helyezése, Ethereum PoA, a Ethereum nyilvános címe és *a tag*konzorciumi URL-címének megadása
+1. *B. tag* és *C. tag* üzembe helyezése, Ethereum PoA, a Ethereum nyilvános címe és *a tag* konzorciumi URL-címének megadása
 1. *Tag a* *B taghoz* tartozó szavazatot rendszergazdaként
 1. Az *A* és *B* tag, a *C* tagot pedig rendszergazdaként
 
@@ -84,11 +84,11 @@ A [Azure Portal](https://portal.azure.com)válassza az **erőforrás létrehozá
 
 Válassza a **Blockchain**  >  **Ethereum-szolgáltatói konzorcium (előzetes verzió)** lehetőséget.
 
-### <a name="basics"></a>Alapvető beállítások
+### <a name="basics"></a>Alapbeállítások
 
-Az **alapértékek területen minden**központi telepítéshez meg kell adnia a szabványos paraméterek értékét.
+Az **alapértékek területen minden** központi telepítéshez meg kell adnia a szabványos paraméterek értékét.
 
-![Alapvető beállítások](./media/ethereum-poa-deployment/basic-blade.png)
+![Alapbeállítások](./media/ethereum-poa-deployment/basic-blade.png)
 
 Paraméter | Leírás | Példaérték
 ----------|-------------|--------------
@@ -101,11 +101,11 @@ Előfizetés | Az előfizetés, amelyre a konzorcium-hálózatot telepíteni kel
 Erőforráscsoport| Az az erőforráscsoport, amelyre a konzorcium-hálózatot telepíteni kell. | myResourceGroup
 Hely | Az erőforráscsoport Azure-régiója. | USA 2. nyugati régiója
 
-Kattintson az **OK** gombra.
+Válassza az **OK** lehetőséget.
 
 ### <a name="deployment-regions"></a>Központi telepítési régiók
 
-A *központi telepítési régiók*területen határozza meg az egyes régiók és helyszínek számát. Legfeljebb öt régióban helyezhető üzembe. Az első régiónak meg kell egyeznie az erőforráscsoport helyével az *alapok* szakaszban. A fejlesztési és tesztelési hálózatok esetében egyetlen régiót használhat tagként. Éles környezetben a magas rendelkezésre állás érdekében helyezzen üzembe két vagy több régióban.
+A *központi telepítési régiók* területen határozza meg az egyes régiók és helyszínek számát. Legfeljebb öt régióban helyezhető üzembe. Az első régiónak meg kell egyeznie az erőforráscsoport helyével az *alapok* szakaszban. A fejlesztési és tesztelési hálózatok esetében egyetlen régiót használhat tagként. Éles környezetben a magas rendelkezésre állás érdekében helyezzen üzembe két vagy több régióban.
 
 ![központi telepítési régiók](./media/ethereum-poa-deployment/deployment-regions.png)
 
@@ -115,11 +115,11 @@ Régió (k) száma|A konzorcium-hálózat üzembe helyezéséhez szükséges ré
 Első régió | A konzorcium-hálózat üzembe helyezésének első régiója | USA 2. nyugati régiója
 Második régió | A konzorcium-hálózat üzembe helyezésének második régiója. A további régiók akkor is láthatók, ha a régiók száma kettő vagy nagyobb. | USA 2. keleti régiója
 
-Kattintson az **OK** gombra.
+Válassza az **OK** lehetőséget.
 
 ### <a name="network-size-and-performance"></a>Hálózati méret és teljesítmény
 
-A *hálózati méret és teljesítmény*területen válassza a konzorciumi hálózat méretének bemeneteit. Az érvényesítő csomópont tárolási mérete a blockchain lehetséges méretét határozza meg. A méret módosítható az üzembe helyezés után.
+A *hálózati méret és teljesítmény* területen válassza a konzorciumi hálózat méretének bemeneteit. Az érvényesítő csomópont tárolási mérete a blockchain lehetséges méretét határozza meg. A méret módosítható az üzembe helyezés után.
 
 ![Hálózati méret és teljesítmény](./media/ethereum-poa-deployment/network-size-and-performance.png)
 
@@ -137,11 +137,11 @@ F1|Standard SSD|alacsony|alacsony|magas
 D2_v3|Standard SSD|közepes|közepes|közepes
 F16s|Prémium SSD|magas|magas|alacsony
 
-Kattintson az **OK** gombra.
+Válassza az **OK** lehetőséget.
 
 ### <a name="ethereum-settings"></a>Ethereum-beállítások
 
-A *Ethereum beállításai*területen válassza a Ethereum kapcsolatos konfigurációs beállításokat.
+A *Ethereum beállításai* területen válassza a Ethereum kapcsolatos konfigurációs beállításokat.
 
 ![Ethereum-beállítások](./media/ethereum-poa-deployment/ethereum-settings.png)
 
@@ -156,7 +156,7 @@ Gáz korlátjának letiltása | A hálózat indítási blokkjának gáz-korlátj
 Visszazárási időszak blokkolása (mp) | Az üres blokkok létrehozásának gyakorisága, ha nincsenek tranzakciók a hálózaton. A magasabb szintű gyakoriság gyorsabb lesz, de nagyobb a tárolási költségek. | 15
 Tranzakciós engedély szerződése | A tranzakció bytecode vonatkozó szerződés. Az intelligens szerződések üzembe helyezésének és végrehajtásának korlátozása a Ethereum-fiókok engedélyezett listájára. |
 
-Kattintson az **OK** gombra.
+Válassza az **OK** lehetőséget.
 
 ### <a name="monitoring"></a>Figyelés
 
@@ -172,9 +172,9 @@ Hely | Az új példányt telepítő régió | USA keleti régiója
 Meglévő log Analytics-munkaterület azonosítója (Csatlakozás meglévő Azure Monitor naplókhoz = csatlakozás meglévőhöz)|A meglévő Azure Monitor naplók példányának munkaterület-azonosítója||NA
 Meglévő log Analytics elsődleges kulcs (Csatlakozás meglévő Azure Monitor naplókhoz = csatlakozás meglévőhöz)|A meglévő Azure Monitor naplók példányához való kapcsolódáshoz használt elsődleges kulcs||NA
 
-Kattintson az **OK** gombra.
+Válassza az **OK** lehetőséget.
 
-### <a name="summary"></a>Összefoglalás
+### <a name="summary"></a>Összegzés
 
 Az összefoglalás segítségével tekintse át a megadott bemeneteket, és futtassa az alapszintű telepítés előtti ellenőrzést. A telepítése előtt letöltheti a sablont és a paramétereket.
 
@@ -197,7 +197,7 @@ Ha e-mail-címet ([alapismeretek szakaszt](#basics)) ad meg, a rendszer elküld 
 Miután az üzembe helyezés sikeresen befejeződött, és az összes erőforrás kiépítése megtörtént, megtekintheti az erőforráscsoport kimeneti paramétereit.
 
 1. Nyissa meg az erőforráscsoportot a portálon.
-1. Válassza az **áttekintés > üzemelő példányok**lehetőséget.
+1. Válassza az **áttekintés > üzemelő példányok** lehetőséget.
 
     ![Erőforráscsoport – áttekintés](./media/ethereum-poa-deployment/resource-group-overview.png)
 
@@ -333,7 +333,7 @@ Biztonsági okokból az SSH-port elérését alapértelmezés szerint egy háló
 
 1. Kattintson a **Mentés** gombra. A módosítások alkalmazása eltarthat néhány percig.
 
-A megadott rendszergazdai felhasználónévvel és jelszóval/SSH-kulccsal távolról csatlakozhat az érvényesítő csomópontok virtuális gépei számára az SSH-n keresztül. Az első érvényesítő csomópont elérésére szolgáló SSH-parancs megjelenik a sablon központi telepítési kimenetében. Példa:
+A megadott rendszergazdai felhasználónévvel és jelszóval/SSH-kulccsal távolról csatlakozhat az érvényesítő csomópontok virtuális gépei számára az SSH-n keresztül. Az első érvényesítő csomópont elérésére szolgáló SSH-parancs megjelenik a sablon központi telepítési kimenetében. Például:
 
 ``` bash
 ssh -p 4000 poaadmin\@leader4vb.eastus.cloudapp.azure.com.
@@ -341,7 +341,7 @@ ssh -p 4000 poaadmin\@leader4vb.eastus.cloudapp.azure.com.
 
 További tranzakciós csomópontok megszerzéséhez növelje a portszámot eggyel.
 
-Ha egynél több régiót telepít, módosítsa a parancsot az adott régióban lévő terheléselosztó DNS-nevére vagy IP-címére. A többi régió DNS-nevének vagy IP-címének megkereséséhez keresse meg az erőforrást a (z) ** \* \* \* \* \* - \# lbpip-reg** elnevezési konvencióval, és tekintse meg a DNS-név és az IP-cím tulajdonságait.
+Ha egynél több régiót telepít, módosítsa a parancsot az adott régióban lévő terheléselosztó DNS-nevére vagy IP-címére. A többi régió DNS-nevének vagy IP-címének megkereséséhez keresse meg az erőforrást a (z) **\* \* \* \* \* - \# lbpip-reg** elnevezési konvencióval, és tekintse meg a DNS-név és az IP-cím tulajdonságait.
 
 ## <a name="azure-traffic-manager-load-balancing"></a>Az Azure Traffic Manager terheléselosztása
 
@@ -354,7 +354,7 @@ Ha úgy dönt, hogy létrehoz egy Traffic Manager profilt, használhatja a profi
 ### <a name="creating-a-traffic-manager-profile"></a>Traffic Manager-profil létrehozása
 
 1. A [Azure Portal](https://portal.azure.com)válassza az **erőforrás létrehozása** lehetőséget a bal felső sarokban.
-1. **Traffic Manager profil**keresése.
+1. **Traffic Manager profil** keresése.
 
     ![Azure-Traffic Manager keresése](./media/ethereum-poa-deployment/traffic-manager-search.png)
 
@@ -370,7 +370,7 @@ Ha úgy dönt, hogy létrehoz egy Traffic Manager profilt, használhatja a profi
 
 1. Válassza a **végpontok** fület, és kattintson a **Hozzáadás** gombra.
 1. Adjon egyedi nevet a végpontnak.
-1. A **cél erőforrástípus mezőben**válassza a **nyilvános IP-cím**elemet.
+1. A **cél erőforrástípus mezőben** válassza a **nyilvános IP-cím** elemet.
 1. Válassza ki az első régió Load balancerének nyilvános IP-címét.
 
     ![Útválasztási Traffic Manager](./media/ethereum-poa-deployment/traffic-manager-routing.png)
@@ -523,7 +523,7 @@ Ha Ön a hálózaton üzembe helyezett első tag, akkor automatikusan rendszerga
 
 ### <a name="candidates"></a>Jelöltek
 
-A **jelöltek** lapon a jelölt rendszergazdák aktuális készletét láthatja.  Ha a jelölt a jelenlegi adminisztrátorok többsége eléri a szavazatot, a pályázót egy rendszergazdának kell előléptetni.  A jelöltre való szavazáshoz válassza ki a sort, és válassza a **szavazás a következőben:**. Ha meggondolja magát szavazásra, válassza ki a jelöltet, és válassza a **szavazás**törlése lehetőséget.
+A **jelöltek** lapon a jelölt rendszergazdák aktuális készletét láthatja.  Ha a jelölt a jelenlegi adminisztrátorok többsége eléri a szavazatot, a pályázót egy rendszergazdának kell előléptetni.  A jelöltre való szavazáshoz válassza ki a sort, és válassza a **szavazás a következőben:**. Ha meggondolja magát szavazásra, válassza ki a jelöltet, és válassza a **szavazás** törlése lehetőséget.
 
 ![Jelöltek](./media/ethereum-poa-deployment/governance-dapp-candidates.png)
 
@@ -582,7 +582,7 @@ Az intelligens szerződések fordítása és üzembe helyezése előtt létre ke
 Hozzon létre intelligens szerződéseket a szarvasgomba-projekt **szerződések** alkönyvtárában.
 
 1. Hozzon létre egy fájlt a `postBox.sol` szarvasgomba-projekt **szerződések** alkönyvtárában található nevű fájlban.
-1. Adja hozzá a következő szilárdsági kódot a **postBox. Sol**elemhez.
+1. Adja hozzá a következő szilárdsági kódot a **postBox. Sol** elemhez.
 
     ```javascript
     pragma solidity ^0.5.0;
@@ -605,7 +605,7 @@ A szarvasgomba-projektek konfigurációs fájlt tartalmaznak a blockchain háló
 > [!WARNING]
 > Soha ne küldje el a Ethereum titkos kulcsát a hálózaton keresztül. Győződjön meg arról, hogy minden tranzakció helyileg van aláírva, és az aláírt tranzakciót a hálózaton keresztül küldik.
 
-1. Szüksége lesz a [blockchain-hálózat telepítésekor használt Ethereum rendszergazdai fiók](#ethereum-settings)hívóbetűje kifejezésére. Ha a MetaMask használatával hozza létre a fiókot, a hívóbetűje a MetaMask kérheti le. Válassza ki a rendszergazdai fiók ikont a MetaMask-bővítmény jobb felső sarkában, és válassza a **beállítások > biztonsági & adatvédelem > a vetőmag szavainak megjelenítése**lehetőséget.
+1. Szüksége lesz a [blockchain-hálózat telepítésekor használt Ethereum rendszergazdai fiók](#ethereum-settings)hívóbetűje kifejezésére. Ha a MetaMask használatával hozza létre a fiókot, a hívóbetűje a MetaMask kérheti le. Válassza ki a rendszergazdai fiók ikont a MetaMask-bővítmény jobb felső sarkában, és válassza a **beállítások > biztonsági & adatvédelem > a vetőmag szavainak megjelenítése** lehetőséget.
 1. Cserélje le a `truffle-config.js` szarvasgomba-projekt tartalmát a következő tartalomra. Cserélje le a helyőrző végpontot és a hívóbetűje értékeket.
 
     ```javascript
@@ -654,7 +654,7 @@ A szarvasgomba áttelepítési parancsfájlok használatával telepíti az intel
 Most, hogy üzembe helyezte az intelligens szerződést, tranzakciót küldhet egy függvény hívásához.
 
 1. A szarvasgomba-projekt könyvtárában hozzon létre egy nevű új fájlt `sendtransaction.js` .
-1. Adja hozzá a következő tartalmakat **sendtransaction.jshoz **.
+1. Adja hozzá a következő tartalmakat **sendtransaction.jshoz**.
 
     ``` javascript
     var postBox = artifacts.require("postBox");
@@ -685,7 +685,7 @@ Most, hogy üzembe helyezte az intelligens szerződést, tranzakciót küldhet e
 
 ## <a name="webassembly-wasm-support"></a>Webszerelvény (WASM) támogatása
 
-A webszerelvények támogatása már engedélyezve van az újonnan üzembe helyezett PoA-hálózatokon. Lehetővé teszi az intelligens szerződések fejlesztését bármilyen nyelven, amelyet a Web-Assembly transpiles (Rust, C, C++). További információkért lásd: a paritásos [műszaki](https://github.com/paritytech/pwasm-tutorial) [webszerelvények és oktatóanyagok paritásos áttekintése](https://wiki.parity.io/WebAssembly-Home)
+A webszerelvények támogatása már engedélyezve van az újonnan üzembe helyezett PoA-hálózatokon. Lehetővé teszi az intelligens szerződések fejlesztését bármilyen nyelven, amelyet a Web-Assembly transpiles (Rust, C, C++). További információ: [oktatóanyag a paritásos technológiáról](https://github.com/paritytech/pwasm-tutorial).
 
 ## <a name="faq"></a>GYIK
 
