@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
-ms.openlocfilehash: 9da94f80f9a9c1b3cba7b8e3ac4fef7e717918c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e976199730ec74f9e76b9f4199e90e192916474
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88042751"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966717"
 ---
 # <a name="what-is-the-autoregistration-feature-of-azure-dns-private-zones"></a>Mi az Azure DNS privát zónák automatikus regisztrálási funkciója
 
@@ -29,7 +29,7 @@ Az automatikus regisztráció engedélyezése lehetőségre kattintva engedélye
 
 * Az automatikus regisztráció csak a virtuális gépek esetében működik. Minden más erőforráshoz, például a belső terheléselosztóekhez, stb. a virtuális hálózathoz társított magánhálózati DNS-zónában manuálisan hozhat létre DNS-rekordokat.
 * A DNS-rekordok csak az elsődleges virtuális gép hálózati adapteréhez jönnek létre automatikusan. Ha a virtuális gépek több hálózati ADAPTERrel rendelkeznek, a DNS-rekordokat manuálisan is létrehozhatja más hálózati adapterekhez.
-* A DNS-rekordok csak akkor jönnek létre automatikusan, ha az elsődleges virtuális gép hálózati adaptere DHCP-t használ. Ha statikus IP-címek vannak konfigurálva (például [több IP-cím használatára az Azure-ban](https://docs.microsoft.com/azure/virtual-network/virtual-network-multiple-ip-addresses-portal#os-config)), az automatikus regisztráció nem hoz létre rekordokat az adott virtuális géphez.
+* A DNS-rekordok csak akkor jönnek létre automatikusan, ha az elsődleges virtuális gép hálózati adaptere DHCP-t használ. Ha statikus IP-címek vannak konfigurálva (például [több IP-cím használatára az Azure-ban](../virtual-network/virtual-network-multiple-ip-addresses-portal.md#os-config)), az automatikus regisztráció nem hoz létre rekordokat az adott virtuális géphez.
 * Az IPv6 (AAAA rekordok) automatikus regisztrálása nem támogatott.
 
 ## <a name="next-steps"></a>Következő lépések

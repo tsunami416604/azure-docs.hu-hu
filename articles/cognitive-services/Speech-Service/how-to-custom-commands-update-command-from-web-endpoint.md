@@ -1,7 +1,7 @@
 ---
-title: Parancs frissítése webes végpontról
+title: Parancsok frissítése webes végpontról
 titleSuffix: Azure Cognitive Services
-description: parancs frissítése webes végpontról
+description: Megtudhatja, hogyan frissítheti egy parancs állapotát egy webes végpont hívásával.
 services: cognitive-services
 author: encorona-ms
 manager: yetian
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/20/2020
 ms.author: encorona
-ms.openlocfilehash: 4432843ac93002bc92068db191706352234d76e6
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: a24f1337a68f38db273688e9a91c65ac2f4736b4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94571250"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963606"
 ---
-# <a name="update-a-command-from-a-web-endpoint"></a>Parancs frissítése webes végpontról
+# <a name="update-a-command-from-a-web-endpoint"></a>Parancsok frissítése webes végpontról
 
-Ha az ügyfélalkalmazás olyan folyamatban lévő parancs állapotának frissítését igényli, amely hangbemenet nélkül fut, a parancs frissítéséhez használhatja a webes végpont hívását is.
+Ha az ügyfélalkalmazás a hangbemenet nélküli folyamatban lévő parancs állapotának frissítését igényli, a parancs futtatásával a webes végpont hívásával frissítheti a parancsot.
 
-Ebből a cikkből megtudhatja, hogyan frissítheti a folyamatban lévő parancsot egy webes végpontról.
+Ebből a cikkből megtudhatja, hogyan frissítheti a folyamatban lévő parancsokat egy webes végpontról.
 
 ## <a name="prerequisites"></a>Előfeltételek
 > [!div class = "checklist"]
@@ -29,7 +29,7 @@ Ebből a cikkből megtudhatja, hogyan frissítheti a folyamatban lévő parancso
 
 ## <a name="create-an-azure-function"></a>Azure-függvény létrehozása 
 
-Ebben a példában egy HTTP-Triggered [Azure-függvényre](https://docs.microsoft.com/azure/azure-functions/) van szükségünk, amely támogatja a következő bemenetet (vagy a bemenet egy részhalmazát).
+Ebben a példában egy HTTP-triggert használó [Azure-függvényre](https://docs.microsoft.com/azure/azure-functions/) lesz szüksége, amely a következő bemenetet (vagy a bemenet egy részhalmazát) támogatja:
 
 ```JSON
 {
@@ -48,16 +48,16 @@ Ebben a példában egy HTTP-Triggered [Azure-függvényre](https://docs.microsof
 }
 ```
 
-Lehetővé teszi a bemenet legfontosabb attribútumainak áttekintését.
+Tekintsük át a bemenet főbb attribútumait:
 
 | Attribútum | Magyarázat |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| **Beszélgetésazonosító** | a "beszélgetésazonosító" a beszélgetés egyedi azonosítója, amely azt jelzi, hogy ez az azonosító az ügyfélalkalmazás alapján hozható létre. |
-| **currentCommand** | a "currentCommand" az a parancs, amely jelenleg aktív a beszélgetésben. |
-| **név** | a "Name" a parancs neve, a "parameters" pedig egy Térkép a paraméterek aktuális értékeivel. |
-| **currentGlobalParameters** | a "currentGlobalParameters" olyan Térkép is, mint a "parameters", de a globális paraméterekhez van használatban. |
+| **Beszélgetésazonosító** | A beszélgetés egyedi azonosítója. Vegye figyelembe, hogy ez az azonosító az ügyfélalkalmazás alapján hozható létre. |
+| **currentCommand** | A beszélgetésben jelenleg aktív parancs. |
+| **név** | A parancs neve. Az `parameters` attribútum egy Térkép a paraméterek aktuális értékeivel. |
+| **currentGlobalParameters** | Például a `parameters` globális paraméterekhez használt Térkép. |
 
-Az Azure-függvény kimenetének a következő formátumot kell támogatnia.
+Az Azure-függvény kimenetének a következő formátumot kell támogatnia:
 
 ```JSON
 {
@@ -74,9 +74,9 @@ Az Azure-függvény kimenetének a következő formátumot kell támogatnia.
 }
 ```
 
-Ezt a formátumot felismerheti, mivel ez ugyanaz, mint a [parancs ügyfélről való frissítésekor](./how-to-custom-commands-update-command-from-client.md). 
+Ezt a formátumot felismerheti, mert ugyanaz, mint amit a parancs az [ügyfélről való frissítésekor](./how-to-custom-commands-update-command-from-client.md)használt. 
 
-Most hozzon létre egy Azure-függvényt a NodeJS alapján, és másolja be ezt a kódot.
+Most hozzon létre egy Azure-függvényt Node.js alapján. A kód másolása/beillesztése:
 
 ```nodejs
 module.exports = async function (context, req) {
@@ -94,35 +94,35 @@ module.exports = async function (context, req) {
 }
 ```
 
-Ha ezt az Azure-függvényt egyéni parancsokból hívjuk, elküldjük a beszélgetés aktuális értékeit, és visszaállítjuk a frissíteni kívánt paramétereket, vagy ha az aktuális parancsot szeretnénk megszakítani.
+Ha ezt az Azure-függvényt egyéni parancsokból hívja meg, akkor a beszélgetés aktuális értékeit kell elküldenie. Visszaküldi a frissíteni kívánt paramétereket, vagy ha meg szeretné szakítani az aktuális parancsot.
 
 ## <a name="update-the-existing-custom-commands-app"></a>A meglévő egyéni parancsok alkalmazás frissítése
 
-Most hozzon létre egy Azure-függvényt a meglévő egyéni parancsok alkalmazással.
+Ismerkedjen meg az Azure-függvénysel a meglévő egyéni parancsok alkalmazással:
 
-1. Adjon hozzá egy új, IncrementCounter nevű parancsot.
-1. Vegyen fel csak egy példa mondatot a "növekmény" értékkel.
-1. Adjon hozzá egy, a számláló nevű új paramétert (a fenti Azure-függvényben megadott nevet), amelynek alapértelmezett értéke 0.
-1. Adjon hozzá egy IncrementEndpoint nevű új webes végpontot az Azure-függvény URL-címével, és engedélyezze a távoli frissítéseket.
+1. Adjon hozzá egy nevű új parancsot `IncrementCounter` .
+1. Vegyen fel csak egy példa mondatot az értékkel `increment` .
+1. Adja hozzá a (z) nevű új paramétert `Counter` (az Azure-függvényben megadott nevet), `Number` amelynek alapértelmezett értéke a következő: `0` .
+1. Adjon hozzá egy nevű új webes végpontot `IncrementEndpoint` Az Azure-függvény URL-címével, és **engedélyezze** a **távoli frissítések** beállítást.
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-commands/set-web-endpoint-with-remote-updates.png" alt-text="Webes végpont beállítása a távoli frissítésekkel":::
-1. Hozzon létre egy "IncrementRule" nevű új kapcsolatitevékenység-szabályt, és adjon hozzá egy hívás webes végpont műveletet.
+    > :::image type="content" source="./media/custom-commands/set-web-endpoint-with-remote-updates.png" alt-text="A webes végpontok távoli frissítésekkel való beállítását bemutató képernyőkép.":::
+1. Hozzon létre egy **IncrementRule** nevű új kapcsolatitevékenység-szabályt, és adjon hozzá egy **hívás webes végpont** műveletet.
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-commands/increment-rule-web-endpoint.png" alt-text="Növekményes szabály":::
-1. A művelet konfigurációjában válassza ki a IncrementEndpoint, és állítsa be a sikerességet, hogy a beszéd választ küldjön a számláló értékével és hibaüzenettel ellátott hibával.
+    > :::image type="content" source="./media/custom-commands/increment-rule-web-endpoint.png" alt-text="A kapcsolatitevékenység-szabály létrehozását bemutató képernyőkép.":::
+1. A művelet konfigurációjában válassza a elemet `IncrementEndpoint` . A **sikeres** konfigurálással **elküldheti a beszédfelismerési választ a (z)** értékkel `Counter` , és egy hibaüzenettel konfigurálhatja **a** hibát.
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-commands/set-increment-counter-call-endpoint.png" alt-text="Növekményes számláló hívási végpontjának beállítása":::
-1. A szabály végrehajtás utáni állapotának beállítása a felhasználó bevitelére való várakozáshoz
+    > :::image type="content" source="./media/custom-commands/set-increment-counter-call-endpoint.png" alt-text="A webes végpontok meghívására szolgáló növekmény számláló beállítását bemutató képernyőkép.":::
+1. Állítsa be a szabály végrehajtás utáni állapotát, hogy **várjon a felhasználó bemenetére**.
 
 ## <a name="test-it"></a>Tesztelje
 
-1. Az alkalmazás mentése és betanítása
-1. Kattintson a teszt gombra
-1. Küldje el néhányszor a "növekményt" (amely a IncrementCounter parancs példája)
+1. Az alkalmazás mentése és betanítása.
+1. Válassza a **Tesztelés** lehetőséget.
+1. Küldjön `increment` néhányszor (amely a parancshoz tartozó példa mondata `IncrementCounter` ).
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-commands/increment-counter-example.png" alt-text="Növekmény számláló – példa":::
+    > :::image type="content" source="./media/custom-commands/increment-counter-example.png" alt-text="A növekményes számláló példáját bemutató képernyőkép.":::
 
-Figyelje meg, hogy a számláló paraméter értéke eggyel növekszik az Azure-függvény minden egyes bekapcsolásakor.
+Figyelje meg, hogy az Azure-függvény az `Counter` egyes körökben a paraméter értékét növeli.
 
 ## <a name="next-steps"></a>További lépések
 

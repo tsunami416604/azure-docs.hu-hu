@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 1f15a3b4d8f51ec79fffce09bc006942d08096a6
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 17b978d3f4faebd3870868bceeea4572288ecb07
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427462"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965357"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>SAP BusinessObjects BI platformtelepítési útmutató Linuxhoz az Azure-on
 
@@ -36,7 +37,7 @@ Ebben a példában a termék verziója és a fájlrendszer elrendezése van hasz
 - Azure Database for MySQL (verzió: 8.0.15)
 - MySQL C API-összekötő – libmysqlclient (verzió: 6.1.11)
 
-| Fájlrendszer        | Description                                                                                                               | Méret (GB)             | Tulajdonos  | Csoport  | Tárolás                    |
+| Fájlrendszer        | Leírás                                                                                                               | Méret (GB)             | Tulajdonos  | Csoport  | Storage                    |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------|-----------------------|--------|--------|----------------------------|
 | /usr/sap           | Az SAP BOBI-példány, az alapértelmezett tomcat-webalkalmazás és az adatbázis-illesztőprogramok telepítéséhez használt fájlrendszer (ha szükséges) | SAP-Méretezési irányelvek | bl1adm | sapsys | Felügyelt prémium lemez – SSD |
 | /usr/sap/frsinput  | A csatlakoztatási könyvtár a megosztott fájlok között minden olyan BOBI-gazdagépen megtalálható, amelyet bemeneti adattárként fog használni.  | Üzleti igények         | bl1adm | sapsys | Azure NetApp Files         |
@@ -113,7 +114,7 @@ Az SAP BOBI platform file adattár-kiszolgáló Azure NetApp Files létrehozása
 
 Az ebben a szakaszban szereplő lépések az alábbi előtagokat használják:
 
-**[A]** : a lépés az összes gazdagépre vonatkozik.
+**[A]**: a lépés az összes gazdagépre vonatkozik.
 
 ### <a name="format-and-mount-sap-file-system"></a>SAP fájlrendszer formázása és csatlakoztatása
 
@@ -395,15 +396,15 @@ Ahhoz, hogy az SAP BOBI Application Server hozzáférhessen az adatbázishoz, ad
 
 Az ebben a szakaszban szereplő lépések az alábbi előtagokat használják:
 
-**[A]** : a lépés az összes gazdagépre vonatkozik.
+**[A]**: a lépés az összes gazdagépre vonatkozik.
 
 1. **[A]** a Linux-íz (SLES vagy RHEL) alapján be kell állítania a rendszermag paramétereit, és telepítenie kell a szükséges kódtárakat. Tekintse meg a UNIX rendszerhez készült [Business Intelligence platform telepítési útmutatójának](https://help.sap.com/viewer/65018c09dbe04052b082e6fc4ab60030/4.3/en-US) **rendszerkövetelmények** című szakaszát.
 
 2. **[A]** ellenőrizze, hogy a számítógép időzónája helyesen van-e beállítva. A telepítési útmutató [további UNIX-és Linux-követelmények című szakasza tartalmaz további](https://help.sap.com/viewer/65018c09dbe04052b082e6fc4ab60030/4.3/en-US/46b143336e041014910aba7db0e91070.html) információt.
 
-3. **[A]** hozzon létre egy felhasználói fiókot ( **BL1** adm) és csoportot (sapsys), amely alatt a szoftver háttérben futó folyamatai futnak. Ezzel a fiókkal hajthatja végre a telepítést, és futtathatja a szoftvert. A fiók nem követeli meg a gyökérszintű jogosultságokat.
+3. **[A]** hozzon létre egy felhasználói fiókot (**BL1** adm) és csoportot (sapsys), amely alatt a szoftver háttérben futó folyamatai futnak. Ezzel a fiókkal hajthatja végre a telepítést, és futtathatja a szoftvert. A fiók nem követeli meg a gyökérszintű jogosultságokat.
 
-4. **[A]** állítsa be a felhasználói fiók ( **BL1** adm) környezetét egy támogatott UTF-8 területi beállítás használatára, és győződjön meg arról, hogy a konzol szoftvere támogatja az UTF-8 karakterkészleteket. Annak biztosítása érdekében, hogy az operációs rendszer a megfelelő területi beállítást használja, állítsa a LC_ALL és a LANG környezeti változót a kívánt területi beállításra ( **BL1** adm) felhasználói környezetében.
+4. **[A]** állítsa be a felhasználói fiók (**BL1** adm) környezetét egy támogatott UTF-8 területi beállítás használatára, és győződjön meg arról, hogy a konzol szoftvere támogatja az UTF-8 karakterkészleteket. Annak biztosítása érdekében, hogy az operációs rendszer a megfelelő területi beállítást használja, állítsa a LC_ALL és a LANG környezeti változót a kívánt területi beállításra (**BL1** adm) felhasználói környezetében.
 
    ```bash
    # This configuration is for bash shell. If you are using any other shell for sidadm, kindly set environment variable accordingly.
@@ -413,7 +414,7 @@ Az ebben a szakaszban szereplő lépések az alábbi előtagokat használják:
    export LC_ALL=en_US.utf8
    ```
 
-5. **[A]** felhasználói fiók konfigurálása ( **BL1** adm).
+5. **[A]** felhasználói fiók konfigurálása (**BL1** adm).
 
    ```bash
    # Set ulimit for bl1adm to unlimited
@@ -584,7 +585,7 @@ Ennek a megoldásnak a megvalósítása az Azure rendszerbeállításainak term�
 
 A magas rendelkezésre állás olyan technológiákra utal, amelyek csökkenthetik az IT-zavarokat azáltal, hogy redundáns, hibatűrő vagy feladatátvételsel védett összetevőkön keresztül biztosítják az alkalmazások/szolgáltatások üzleti folytonosságát ugyanazon az adatközponton belül. Ebben az esetben az adatközpontok egy Azure-régión belül találhatók. A [magas rendelkezésre állást biztosító architektúra és az SAP-forgatókönyvek](sap-high-availability-architecture-scenarios.md) az Azure-beli SAP-alkalmazásokhoz kínált különböző magas rendelkezésre állású technikák és javaslatok kezdeti betekintést nyújtanak, amely az ebben a szakaszban ismertetett utasításokat fogja tartalmazni.
 
-Az SAP BOBI platform méretezési eredménye alapján meg kell terveznie a tájat, és meg kell határoznia a BI-összetevők elosztását az Azure-Virtual Machines és az alhálózatokon. Az elosztott architektúrában a redundancia szintje a szükséges üzleti helyreállítási idő célkitűzéstől (RTO) és a helyreállítási időcélkitűzéstől (RPO) függ. Az SAP BOBI platform különböző szinteket és összetevőket tartalmaz az egyes csomagokhoz, így redundancia valósítható meg. Így ha az egyik összetevő meghibásodik, az SAP BOBI-alkalmazásának nem kell megszakadnia. Például:
+Az SAP BOBI platform méretezési eredménye alapján meg kell terveznie a tájat, és meg kell határoznia a BI-összetevők elosztását az Azure-Virtual Machines és az alhálózatokon. Az elosztott architektúrában a redundancia szintje a szükséges üzleti helyreállítási idő célkitűzéstől (RTO) és a helyreállítási időcélkitűzéstől (RPO) függ. Az SAP BOBI platform különböző szinteket és összetevőket tartalmaz az egyes csomagokhoz, így redundancia valósítható meg. Így ha az egyik összetevő meghibásodik, az SAP BOBI-alkalmazásának nem kell megszakadnia. Példa:
 
 - Redundáns alkalmazás-kiszolgálók, például a BI-alkalmazások és a webkiszolgálók
 - Egyedi összetevők, mint például a CMS-adatbázis, a file repository-kiszolgáló, Load Balancer

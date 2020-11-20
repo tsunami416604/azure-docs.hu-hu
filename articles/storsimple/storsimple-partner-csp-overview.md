@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 358399426798ac20897d207c93a8874357e8b781
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c96dcc2bae03b1bd05fb3d1512dba757f180eed8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88182000"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964915"
 ---
 # <a name="what-is-storsimple-for-cloud-solutions-providers-program"></a>Mi a StorSimple a Cloud Solutions Providers programhoz?
 
@@ -30,7 +30,7 @@ A Microsoft Azure StorSimple a nagyvállalati tárolók egyedi megközelítése 
 
 A StorSimple Virtual Array for Cloud Solutions Provider (CSP) lehetővé teszi a partnerek számára, hogy kihasználják ezt a lehetőséget. A partnerek a Microsoft felhőalapú szolgáltatásainak közvetlen üzembe helyezésével, számlázásával és támogatásával rendelkeznek a teljes körű ügyfél-életciklussal. Röviden, a partnerek mostantól a StorSimple együtt a szolgáltatásaikat is felhasználhatják az ügyfeleknek.
 
-A CSP StorSimple kapcsolatos további információkért tekintse meg az [Azure CSP áttekintés](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview) oldalát.
+A CSP StorSimple kapcsolatos további információkért tekintse meg az [Azure CSP áttekintés](/azure/cloud-solution-provider/overview/azure-csp-overview) oldalát.
 
 A számlázással, díjszabással, ösztönzőkkel és a CSP támogatásával kapcsolatos további információkért nyissa meg a [StorSimple a CSP-ben: GYIK](storsimple-partner-csp-faq.md). 
 

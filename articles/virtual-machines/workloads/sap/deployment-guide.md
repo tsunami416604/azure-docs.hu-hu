@@ -10,17 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 1c4f1951-3613-4a5a-a0af-36b85750c84e
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: 4494af89ac35a391f7dc6097b14d135a911d99dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed30c271e4c2458a33784cbcfc682001b542f2b6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91359613"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964949"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines üzembe helyezés az SAP NetWeaver-ben
 
@@ -421,10 +422,10 @@ A következő folyamatábra egy virtuális gép Azure piactéren való üzembe h
 
 Az Azure Marketplace-ről rendszerképpel rendelkező új virtuális gép létrehozásának legegyszerűbb módja a Azure Portal használata.
 
-1.  Nyissa meg a következőt: <https://portal.azure.com/#create/hub>.  Vagy a Azure Portal menüben válassza az **+ új**lehetőséget.
-1.  Válassza a **számítás**lehetőséget, majd válassza ki a telepíteni kívánt operációs rendszer típusát. Például: Windows Server 2012 R2, SUSE Linux Enterprise Server 12 (SLES 12), Red Hat Enterprise Linux 7,2 (RHEL 7,2) vagy Oracle Linux 7,2. Az alapértelmezett listanézet nem jeleníti meg az összes támogatott operációs rendszert. Válassza az összes megjelenítése lehetőséget a teljes lista **megtekintéséhez** . További információ az SAP-szoftverek központi telepítéséhez támogatott operációs rendszerekről: SAP-Megjegyzés [1928533].
+1.  Nyissa meg a következőt: <https://portal.azure.com/#create/hub>.  Vagy a Azure Portal menüben válassza az **+ új** lehetőséget.
+1.  Válassza a **számítás** lehetőséget, majd válassza ki a telepíteni kívánt operációs rendszer típusát. Például: Windows Server 2012 R2, SUSE Linux Enterprise Server 12 (SLES 12), Red Hat Enterprise Linux 7,2 (RHEL 7,2) vagy Oracle Linux 7,2. Az alapértelmezett listanézet nem jeleníti meg az összes támogatott operációs rendszert. Válassza az összes megjelenítése lehetőséget a teljes lista **megtekintéséhez** . További információ az SAP-szoftverek központi telepítéséhez támogatott operációs rendszerekről: SAP-Megjegyzés [1928533].
 1.  A következő oldalon tekintse át a használati feltételeket.
-1.  A **telepítési modell kiválasztása** mezőben válassza a **Resource Manager**lehetőséget.
+1.  A **telepítési modell kiválasztása** mezőben válassza a **Resource Manager** lehetőséget.
 1.  Kattintson a **Létrehozás** gombra.
 
 A varázsló végigvezeti a virtuális gép létrehozásához szükséges paraméterek beállításán, az összes szükséges erőforráson, például a hálózati adaptereken és a Storage-fiókokon kívül. A paraméterek némelyike a következő:
@@ -505,7 +506,7 @@ A Azure Portal adja meg a következő paramétereket a sablonhoz:
       * [A Microsoft Azure Storage bemutatása][storage-introduction]
    * **Rendszergazdai Felhasználónév** és **rendszergazdai jelszó**: Felhasználónév és jelszó.
      A rendszer létrehoz egy új felhasználót a virtuális gépre való bejelentkezéshez.
-   * **Új vagy meglévő alhálózat**: meghatározza, hogy a rendszer új virtuális hálózatot és alhálózatot hozzon-e létre, vagy egy meglévő alhálózatot használ-e. Ha már van olyan virtuális hálózata, amely a helyszíni hálózathoz csatlakozik, válassza a **meglévő**lehetőséget.
+   * **Új vagy meglévő alhálózat**: meghatározza, hogy a rendszer új virtuális hálózatot és alhálózatot hozzon-e létre, vagy egy meglévő alhálózatot használ-e. Ha már van olyan virtuális hálózata, amely a helyszíni hálózathoz csatlakozik, válassza a **meglévő** lehetőséget.
    * **Alhálózati azonosító**: Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben egy alhálózat van megadva, a virtuális gépet hozzá kell rendelni, nevezze el az adott alhálózat azonosítóját. Az azonosító általában a következőképpen néz ki:/Subscriptions/ &lt; előfizetés azonosítója>/resourceGroups/ &lt; erőforráscsoport neve>/Providers/Microsoft.Network/virtualNetworks/ &lt; virtuális hálózat neve>/subnets/ &lt; alhálózat neve>
 
 1. **Feltételek és kikötések**:  
@@ -564,7 +565,7 @@ A következő folyamatábra a virtuális gép egyéni rendszerképből történ�
 
 Az új virtuális gép felügyelt lemezképből való létrehozásának legegyszerűbb módja a Azure Portal használata. A lemezképek kezelésével kapcsolatos további információkért olvassa el az [általánosított virtuális gép felügyelt rendszerképének rögzítése az Azure-ban](../../windows/capture-image-resource.md) című témakört.
 
-1.  Nyissa meg a következőt: <https://ms.portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Compute%2Fimages>. Vagy a Azure Portal menüben válassza a **képek**elemet.
+1.  Nyissa meg a következőt: <https://ms.portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Compute%2Fimages>. Vagy a Azure Portal menüben válassza a **képek** elemet.
 1.  Válassza ki a felügyelt lemezképet, amelyet központilag telepíteni szeretne, és kattintson a **virtuális gép létrehozása** elemre.
 
 A varázsló végigvezeti a virtuális gép létrehozásához szükséges paraméterek beállításán, az összes szükséges erőforráson, például a hálózati adaptereken és a Storage-fiókokon kívül. A paraméterek némelyike a következő:
@@ -645,7 +646,7 @@ A Azure Portal adja meg a következő paramétereket a sablonhoz:
    * **Rendszergazdai Felhasználónév** és **rendszergazdai jelszó**: a Felhasználónév és a jelszó.
 
      A rendszer létrehoz egy új felhasználót a virtuális gépre való bejelentkezéshez.
-   * **Új vagy meglévő alhálózat**: meghatározza, hogy a rendszer új virtuális hálózatot és alhálózatot hoz-e létre, vagy egy meglévő alhálózatot használ-e. Ha már van olyan virtuális hálózata, amely a helyszíni hálózathoz csatlakozik, válassza a **meglévő**lehetőséget.
+   * **Új vagy meglévő alhálózat**: meghatározza, hogy a rendszer új virtuális hálózatot és alhálózatot hoz-e létre, vagy egy meglévő alhálózatot használ-e. Ha már van olyan virtuális hálózata, amely a helyszíni hálózathoz csatlakozik, válassza a **meglévő** lehetőséget.
    * **Alhálózati azonosító**: Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben egy alhálózat van megadva, a virtuális gépet hozzá kell rendelni, nevezze el az adott alhálózat azonosítóját. Az azonosító általában a következőképpen néz ki:/Subscriptions/ &lt; előfizetés azonosítója>/resourceGroups/ &lt; erőforráscsoport neve>/Providers/Microsoft.Network/virtualNetworks/ &lt; virtuális hálózat neve>/subnets/ &lt; alhálózat neve>
 
 1. **Feltételek és kikötések**:  
@@ -733,7 +734,7 @@ A Azure Portal adja meg a következő paramétereket a sablonhoz:
       * [A Microsoft Azure Storage bemutatása][storage-introduction]
    * **Operációsrendszer-lemez VHD URI-ja** (csak nem felügyelt sablon): a magánhálózati operációsrendszer-lemez URI-ja, például https:// &lt; accountname>. blob.Core.Windows.net/VHDs/osdisk.vhd.
    * **Operációsrendszer-lemez felügyelt lemezének azonosítója** (csak felügyelt lemezes sablon): a felügyelt lemez operációsrendszer-lemezének azonosítója,/Subscriptions/92d102f7-81a5-4df7-9877-54987ba97dd9/resourceGroups/Group/Providers/Microsoft.Compute/Disks/Win
-   * **Új vagy meglévő alhálózat**: meghatározza, hogy az új virtuális hálózat és alhálózat létrehozása megtörtént-e, vagy egy meglévő alhálózat van-e használatban. Ha már van olyan virtuális hálózata, amely a helyszíni hálózathoz csatlakozik, válassza a **meglévő**lehetőséget.
+   * **Új vagy meglévő alhálózat**: meghatározza, hogy az új virtuális hálózat és alhálózat létrehozása megtörtént-e, vagy egy meglévő alhálózat van-e használatban. Ha már van olyan virtuális hálózata, amely a helyszíni hálózathoz csatlakozik, válassza a **meglévő** lehetőséget.
    * **Alhálózati azonosító**: Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben egy alhálózat van megadva, a virtuális gépet hozzá kell rendelni, nevezze el az adott alhálózat azonosítóját. Az azonosító általában a következőképpen néz ki:/Subscriptions/ &lt; előfizetés azonosítója>/resourceGroups/ &lt; erőforráscsoport neve>/Providers/Microsoft.Network/virtualNetworks/ &lt; virtuális hálózat neve>/subnets/ &lt; alhálózat neve>
 
 1. **Feltételek és kikötések**:  
@@ -854,14 +855,14 @@ A proxy Windowson történő konfigurálásának lépései eltérnek a proxy Lin
 
 A proxybeállításokat helyesen kell beállítani ahhoz, hogy a helyi rendszerfiók hozzáférjen az internethez. Ha a proxybeállításokat nem a Csoportházirend állítja be, beállíthatja a helyi rendszerfiók beállításait.
 
-1. Lépjen a **Start menüre**, írja be a **gpedit. msc parancsot**, majd kattintson az **ENTER**gombra.
-1. Válassza a **Számítógép konfigurációja**  >  **Felügyeleti sablonok**  >  **Windows-összetevők**  >  **Internet Explorer**lehetőséget. Győződjön meg arról, hogy a **Proxybeállítások beállítása számítógépenkénti (nem felhasználónként)** beállítás le van tiltva vagy nincs konfigurálva.
-1. A **Vezérlőpulton**lépjen a **hálózati és megosztási központ**  >  **internetes beállítások**elemre.
+1. Lépjen a **Start menüre**, írja be a **gpedit. msc parancsot**, majd kattintson az **ENTER** gombra.
+1. Válassza a **Számítógép konfigurációja**  >  **Felügyeleti sablonok**  >  **Windows-összetevők**  >  **Internet Explorer** lehetőséget. Győződjön meg arról, hogy a **Proxybeállítások beállítása számítógépenkénti (nem felhasználónként)** beállítás le van tiltva vagy nincs konfigurálva.
+1. A **Vezérlőpulton** lépjen a **hálózati és megosztási központ**  >  **internetes beállítások** elemre.
 1. A **kapcsolatok** lapon kattintson a LAN- **Beállítások** gombra.
 1. Törölje **A beállítások automatikus észlelése** jelölőnégyzet kijelölését.
 1. Jelölje be a **proxykiszolgáló használata a helyi hálózaton** jelölőnégyzetet, majd adja meg a proxy címe és a port mezőt.
 1. Kattintson a **speciális** gombra.
-1. A **kivételek** mezőben adja meg az IP- **168.63.129.16**. Kattintson az **OK** gombra.
+1. A **kivételek** mezőben adja meg az IP- **168.63.129.16**. Válassza az **OK** lehetőséget.
 
 #### <a name="linux"></a>Linux
 
@@ -876,7 +877,7 @@ Konfigurálja a helyes proxyt a Microsoft Azure vendég ügynök konfigurációs
 
    ```
 
-1. **Http-proxy portja**. Állítsa be például a **80**értékre.
+1. **Http-proxy portja**. Állítsa be például a **80** értékre.
 
    ```console
    HttpProxy.Port=<port of the proxy host>
@@ -933,7 +934,7 @@ Az Azure-bővítmény telepítése az SAP-hez a PowerShell használatával:
 
 1. Győződjön meg arról, hogy telepítette a Azure PowerShell parancsmag legújabb verzióját. További információ: Azure PowerShell- [parancsmagok telepítése][deployment-guide-4.1].  
 1. Futtassa az alábbi PowerShell-parancsmagot.
-    Az elérhető környezetek listájához futtassa a parancsmagot `Get-AzEnvironment` . Ha globális Azure-t szeretne használni, a környezet **AzureCloud**. Az Azure China 21Vianet válassza a **AzureChinaCloud**lehetőséget.
+    Az elérhető környezetek listájához futtassa a parancsmagot `Get-AzEnvironment` . Ha globális Azure-t szeretne használni, a környezet **AzureCloud**. Az Azure China 21Vianet válassza a **AzureChinaCloud** lehetőséget.
 
     ```powershell
     $env = Get-AzEnvironment -Name <name of the environment>
@@ -1030,7 +1031,7 @@ Az SAP új virtuálisgép-bővítménye a virtuális géphez hozzárendelt felü
 1. Győződjön meg arról, hogy az SAP virtuálisgép-bővítményének aktuális verzióját távolítja el. Nem támogatott az SAP-hez készült virtuálisgép-bővítmény mindkét verziójának telepítése ugyanarra a virtuális gépre.
 1. Győződjön meg arról, hogy telepítette a Azure PowerShell parancsmag legújabb verzióját (legalább 4.3.0). További információ: Azure PowerShell- [parancsmagok telepítése][deployment-guide-4.1].
 1. Futtassa az alábbi PowerShell-parancsmagot.
-    Az elérhető környezetek listájához futtassa a parancsmagot `Get-AzEnvironment` . Ha globális Azure-t szeretne használni, a környezet **AzureCloud**. Az Azure China 21Vianet válassza a **AzureChinaCloud**lehetőséget.
+    Az elérhető környezetek listájához futtassa a parancsmagot `Get-AzEnvironment` . Ha globális Azure-t szeretne használni, a környezet **AzureCloud**. Az Azure China 21Vianet válassza a **AzureChinaCloud** lehetőséget.
 
     ```powershell
     $env = Get-AzEnvironment -Name <name of the environment>
@@ -1104,7 +1105,7 @@ Ez az ellenőrzés ellenőrzi, hogy az SAP-alkalmazáson belül megjelenő össz
 1. Nyisson meg egy parancssori ablakot.
 1. A parancssorban módosítsa a könyvtárat az SAP: C: \\ Packages \\ plugins \\ Microsoft. AzureCAT. AzureEnhancedMonitoring. AzureCATExtensionHandler verziójának telepítési mappájába, \\ &lt;>\\ drop
 
-   A bővítmény elérési útjának *verziója* eltérő lehet. Ha a bővítmény több verziójához tartozó mappák láthatók a telepítési mappában, ellenőrizze a AzureEnhancedMonitoring Windows-szolgáltatás konfigurációját, majd váltson a *végrehajtható fájl elérési útjaként*megjelölt mappára.
+   A bővítmény elérési útjának *verziója* eltérő lehet. Ha a bővítmény több verziójához tartozó mappák láthatók a telepítési mappában, ellenőrizze a AzureEnhancedMonitoring Windows-szolgáltatás konfigurációját, majd váltson a *végrehajtható fájl elérési útjaként* megjelölt mappára.
 
    ![Az SAP-hez készült Azure-bővítményt futtató szolgáltatás tulajdonságai][deployment-guide-figure-1000]
 
@@ -1134,9 +1135,9 @@ Az eredményül kapott értékeket a következőképpen értelmezheti:
 
 | Azperflib.exe eredmény értékei | Azure-bővítmény az SAP Health status szolgáltatáshoz |
 | --- | --- |
-| **API-hívások – nem érhető el** | Előfordulhat, hogy a nem elérhető számlálók nem alkalmazhatók a virtuális gép konfigurációjához, vagy hibásak. **Állapot**megtekintése. |
+| **API-hívások – nem érhető el** | Előfordulhat, hogy a nem elérhető számlálók nem alkalmazhatók a virtuális gép konfigurációjához, vagy hibásak. **Állapot** megtekintése. |
 | **Összes számláló – üres** |A következő két Azure Storage-számláló lehet üres: <ul><li>Tárolás olvasási op késési kiszolgáló MS</li><li>Tárolási olvasási op késés E2E MS</li></ul>Minden más számlálónak értékkel kell rendelkeznie. |
-| **Állapot** |Csak az OK, ha a visszatérési állapot **az OK gombra**mutat. |
+| **Állapot** |Csak az OK, ha a visszatérési állapot **az OK gombra** mutat. |
 | **Diagnosztika** |Az állapottal kapcsolatos részletes információk. |
 
 Ha az **Állapot értéke nem megfelelő,** kövesse az Azure-BŐVÍTMÉNY az [SAP-konfigurációra vonatkozó állapot-ellenőrzési beállítását][deployment-guide-5.2]ismertető témakört. **OK**
@@ -1210,7 +1211,7 @@ Ez az ellenőrzés ellenőrzi, hogy az SAP-alkalmazáson belül megjelenő össz
 
 Az elérhető XML-fájl tartalmazza az összes, az http://127.0.0.1:11812/azure4sap/metrics SAP számára kitöltött Azure-teljesítményszámlálókat. Az SAP-hez készült Azure-bővítmény állapotának összegzését és állapotát is tartalmazza.
 
-A **szolgáltató állapota Description** elem értékének bejelölése. Ha az érték nem megfelelő **, kövesse**az [állapot-ellenőrzési új Azure-bővítmény az SAP-konfigurációhoz][deployment-guide-5.2-new]című témakör utasításait.
+A **szolgáltató állapota Description** elem értékének bejelölése. Ha az érték nem megfelelő **, kövesse** az [állapot-ellenőrzési új Azure-bővítmény az SAP-konfigurációhoz][deployment-guide-5.2-new]című témakör utasításait.
 
 #### <a name="run-the-readiness-check-on-a-linux-vm"></a>A készültségi vizsgálat futtatása Linux rendszerű virtuális gépen
 
@@ -1266,7 +1267,7 @@ Ha ezek közül bármelyik ellenőrzés meghiúsul, és a bővítmény újbóli 
 Ha bizonyos infrastruktúra-információk nem jelennek meg megfelelően az [Azure-bővítmény az SAP-hez való készültségének ellenőrzése][deployment-guide-5.1]című témakörben leírtak szerint, futtassa a `Test-AzVMAEMExtension` parancsmagot annak ellenőrzéséhez, hogy az Azure-infrastruktúra és az SAP-bővítmény megfelelően van-e konfigurálva.
 
 1. Győződjön meg arról, hogy telepítette a Azure PowerShell parancsmag legújabb verzióját a [Azure PowerShell parancsmagok telepítése][deployment-guide-4.1]című cikkben leírtak szerint.
-1. Futtassa az alábbi PowerShell-parancsmagot. Az elérhető környezetek listájához futtassa a parancsmagot `Get-AzEnvironment` . A globális Azure használatához válassza ki a **AzureCloud** -környezetet. Az Azure China 21Vianet válassza a **AzureChinaCloud**lehetőséget.
+1. Futtassa az alábbi PowerShell-parancsmagot. Az elérhető környezetek listájához futtassa a parancsmagot `Get-AzEnvironment` . A globális Azure használatához válassza ki a **AzureCloud** -környezetet. Az Azure China 21Vianet válassza a **AzureChinaCloud** lehetőséget.
 
    ```powershell
    $env = Get-AzEnvironment -Name <name of the environment>
@@ -1279,7 +1280,7 @@ Ha bizonyos infrastruktúra-információk nem jelennek meg megfelelően az [Azur
 
    ![Az SAP-hez készült Azure-bővítmény sikeres tesztelésének kimenete][deployment-guide-figure-1300]
 
-Győződjön meg arról, hogy minden állapot-ellenőrzési eredmény **rendben**van. Ha egyes ellenőrzések nem jelenítik meg az **OK gombot**, futtassa a frissítési parancsmagot az [Azure-BŐVÍTMÉNY konfigurálása az SAP-hez][deployment-guide-4.5]című részben leírtak szerint. Várjon 15 percet, és ismételje meg az Azure- [bővítményre vonatkozó készültség-ellenőrzés az SAP][deployment-guide-5.1] -hez és az Azure-bővítmény az SAP-hez való [konfigurálásához][deployment-guide-5.2]című témakörben ismertetett ellenőrzéseket. Ha az ellenőrzések továbbra is problémát jeleznek egy vagy több számlálóval kapcsolatban, tekintse [meg az SAP-hez készült Azure-bővítmény hibaelhárítása][deployment-guide-5.3]című témakört.
+Győződjön meg arról, hogy minden állapot-ellenőrzési eredmény **rendben** van. Ha egyes ellenőrzések nem jelenítik meg az **OK gombot**, futtassa a frissítési parancsmagot az [Azure-BŐVÍTMÉNY konfigurálása az SAP-hez][deployment-guide-4.5]című részben leírtak szerint. Várjon 15 percet, és ismételje meg az Azure- [bővítményre vonatkozó készültség-ellenőrzés az SAP][deployment-guide-5.1] -hez és az Azure-bővítmény az SAP-hez való [konfigurálásához][deployment-guide-5.2]című témakörben ismertetett ellenőrzéseket. Ha az ellenőrzések továbbra is problémát jeleznek egy vagy több számlálóval kapcsolatban, tekintse [meg az SAP-hez készült Azure-bővítmény hibaelhárítása][deployment-guide-5.3]című témakört.
 
 > [!Note]
 > Bizonyos figyelmeztetések olyan esetekben is előfordulhatnak, amikor felügyelt szabványos Azure-lemezeket használ. A figyelmeztetések az "OK" kifejezés helyett a tesztek után jelennek meg. Ez normális, és a lemez típusa esetén szükséges. Lásd még: [az SAP-hez készült Azure-bővítmény hibaelhárítása][deployment-guide-5.3]
@@ -1293,7 +1294,7 @@ Győződjön meg arról, hogy minden állapot-ellenőrzési eredmény **rendben*
 Ha bizonyos infrastruktúra-információk nem jelennek meg megfelelően az [Azure-bővítmény az SAP-hez való készültségi ellenőrzése][deployment-guide-5.1-new]című témakörben leírtak szerint, futtassa a `Get-AzVMExtension` parancsmagot annak ellenőrzéséhez, hogy telepítve van-e az Azure-bővítmény az SAP-hoz. A `Test-AzVMAEMExtension` még nem támogatja az új bővítményt. Miután a parancsmag támogatja az új bővítményt, frissíteni fogjuk ezt a cikket.
 
 1. Győződjön meg arról, hogy telepítette a Azure PowerShell parancsmag legújabb verzióját a [Azure PowerShell parancsmagok telepítése][deployment-guide-4.1]című cikkben leírtak szerint.
-1. Futtassa az alábbi PowerShell-parancsmagot. Az elérhető környezetek listájához futtassa a parancsmagot `Get-AzEnvironment` . A globális Azure használatához válassza ki a **AzureCloud** -környezetet. Az Azure China 21Vianet válassza a **AzureChinaCloud**lehetőséget.
+1. Futtassa az alábbi PowerShell-parancsmagot. Az elérhető környezetek listájához futtassa a parancsmagot `Get-AzEnvironment` . A globális Azure használatához válassza ki a **AzureCloud** -környezetet. Az Azure China 21Vianet válassza a **AzureChinaCloud** lehetőséget.
 
    ```powershell
    $env = Get-AzEnvironment -Name <name of the environment>

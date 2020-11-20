@@ -8,20 +8,20 @@ ms.topic: reference
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8eb4e49e6c0e3f011015d40b8eca036d5218674c
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 4284956138002d209ab0934cdd052748ef8aab78
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891699"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966275"
 ---
 # <a name="stylesobject-schema-reference-guide-for-dynamic-maps"></a>StylesObject-séma – útmutató dinamikus térképekhez
 
-Ez a cikk egy útmutató a JSON-sémához és szintaxisához `StylesObject` . A a `StylesObject` `StyleObject` stateset-stílusokat jelképező tömb. A Azure Maps Creator [szolgáltatás állapotának szolgáltatásával](/rest/api/maps/featurestate) alkalmazhatja a stateset stílusait a beltéri Térkép adatszolgáltatásaira. Miután létrehozta a stateset stílusait, és hozzárendelte őket a beltéri térképi funkciókhoz, használhatja őket dinamikus beltéri térképek létrehozásához. A dinamikus beltéri térképek létrehozásával kapcsolatos további információkért lásd: [dinamikus stílus implementálása a Creator beltéri térképekhez](indoor-map-dynamic-styling.md).
+ A a `StylesObject` `StyleObject` stateset-stílusokat jelképező tömb. A Azure Maps Creator [szolgáltatás állapotának szolgáltatásával](/rest/api/maps/featurestate) alkalmazhatja a stateset stílusait a beltéri Térkép adatszolgáltatásaira. Miután létrehozta a stateset stílusait, és hozzárendelte őket a beltéri térképi funkciókhoz, használhatja őket dinamikus beltéri térképek létrehozásához. A dinamikus beltéri térképek létrehozásával kapcsolatos további információkért lásd: [dinamikus stílus implementálása a Creator beltéri térképekhez](indoor-map-dynamic-styling.md).
 
 ## <a name="styleobject"></a>StyleObject
 
-A a `StyleObject` [`BooleanTypeStyleRule`](#booleantypestylerule) vagy a vagy a [`NumericTypeStyleRule`](#numerictypestylerule) .
+A `StyleObject` [`BooleanTypeStyleRule`](#booleantypestylerule) vagy a vagy a [`NumericTypeStyleRule`](#numerictypestylerule) .
 
 Az alábbi JSON egy névvel ellátott `BooleanTypeStyleRule` `occupied` és egy névvel ellátott nevet mutat be `NumericTypeStyleRule` `temperature` .
 
@@ -74,7 +74,7 @@ Az alábbi JSON egy névvel ellátott `BooleanTypeStyleRule` `occupied` és egy 
 
 A egy `NumberRuleObject` [`RangeObject`](#rangeobject) és egy `color` tulajdonságot tartalmaz. Ha az *állapot* értéke a tartományba esik, a megjelenített szín a tulajdonságban megadott szín lesz `color` .
 
-Ha több átfedésben lévő tartományt határoz meg, a választott szín az első tartományba tartozó szín lesz.
+Ha több átfedésben lévő tartományt határoz meg, akkor a választott szín az első megtalált tartományban megadott szín lesz.
 
 A következő JSON-mintában mindkét tartomány igaz értéket fog tartani, ha az *állapot* értéke 50-60. Azonban a használni kívánt szín a `#343deb` lista első olyan tartománya, amely teljesült.
 

@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 738d62d60ad06431bd77cd99343fc8835c4c5685
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: a36b37c1f0118055d931f785f570a10041e2dbfc
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330172"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965697"
 ---
 # <a name="how-to-protect-private-dns-zones-and-records"></a>Privát DNS-zónák és-rekordok elleni védelem
 
@@ -34,7 +34,7 @@ Az erőforráscsoport *myPrivateDNS* öt zónát tartalmaz a contoso Corporation
 
 Az Azure RBAC engedélyek hozzárendelésének legegyszerűbb módja [a Azure Portalon keresztül](../role-based-access-control/role-assignments-portal.md)történik.  
 
-Nyissa meg az erőforráscsoport **hozzáférés-vezérlés (iam)** elemét, válassza a **Hozzáadás**lehetőséget, majd válassza ki a **saját DNS zóna közreműködői** szerepkört. Válassza ki a szükséges felhasználókat vagy csoportokat az engedélyek megadásához.
+Nyissa meg az erőforráscsoport **hozzáférés-vezérlés (iam)** elemét, válassza a **Hozzáadás** lehetőséget, majd válassza ki a **saját DNS zóna közreműködői** szerepkört. Válassza ki a szükséges felhasználókat vagy csoportokat az engedélyek megadásához.
 
 ![Az Azure RBAC erőforráscsoport-szintje a Azure Portal használatával](./media/dns-protect-private-zones-recordsets/rbac1.png)
 
@@ -65,9 +65,9 @@ az role assignment create \
 
 Az Azure RBAC-szabályok egy előfizetésre, egy erőforráscsoport vagy egy adott erőforrásra is alkalmazhatók. Ez az erőforrás lehet egy egyedi DNS-zóna vagy egy különálló rekordazonosító.
 
-A *myPrivateDNS* erőforráscsoport például a *Private.contoso.com* zónát és egy alzónát *customers.Private.contoso.com*tartalmaz. A CNAME rekordok mindegyik ügyfél-fiókhoz jönnek létre. A CNAME rekordok kezeléséhez használt rendszergazdai fiók engedélyeket kap a rekordok létrehozásához a *customers.Private.contoso.com* zónában. A fiók csak *customers.Private.contoso.com* tud kezelni.
+A *myPrivateDNS* erőforráscsoport például a *Private.contoso.com* zónát és egy alzónát *customers.Private.contoso.com* tartalmaz. A CNAME rekordok mindegyik ügyfél-fiókhoz jönnek létre. A CNAME rekordok kezeléséhez használt rendszergazdai fiók engedélyeket kap a rekordok létrehozásához a *customers.Private.contoso.com* zónában. A fiók csak *customers.Private.contoso.com* tud kezelni.
 
-A zóna szintű Azure RBAC engedélyek a Azure Portalon keresztül adhatók meg.  Nyissa meg a zóna **hozzáférés-vezérlés (iam)** elemét, válassza a **Hozzáadás**lehetőséget, majd válassza ki a **saját DNS zóna közreműködői** szerepkört. Válassza ki a szükséges felhasználókat vagy csoportokat az engedélyek megadásához.
+A zóna szintű Azure RBAC engedélyek a Azure Portalon keresztül adhatók meg.  Nyissa meg a zóna **hozzáférés-vezérlés (iam)** elemét, válassza a **Hozzáadás** lehetőséget, majd válassza ki a **saját DNS zóna közreműködői** szerepkört. Válassza ki a szükséges felhasználókat vagy csoportokat az engedélyek megadásához.
 
 ![DNS-zóna szintű Azure-RBAC a Azure Portal használatával](./media/dns-protect-private-zones-recordsets/rbac2.png)
 
@@ -200,11 +200,11 @@ Két típusú erőforrás-zárolás létezik: **CanNotDelete** és **readonly**.
 
 A változtatások elkerülése érdekében alkalmazzon írásvédett zárolást a zónára. Ez a zárolás megakadályozza, hogy új rekordhalmazok jöjjenek létre, és a meglévő rekordhalmazok módosítva vagy törölve legyenek.
 
-A zóna szintű erőforrás-zárolások a Azure Portal használatával hozhatók létre.  A DNS-zóna lapon válassza a **zárolások**, majd a **+ Hozzáadás**lehetőséget:
+A zóna szintű erőforrás-zárolások a Azure Portal használatával hozhatók létre.  A DNS-zóna lapon válassza a **zárolások**, majd a **+ Hozzáadás** lehetőséget:
 
 ![A zóna szintű erőforrások zárolása a Azure Portal keresztül](./media/dns-protect-private-zones-recordsets/locks1.png)
 
-A zóna szintű erőforrások zárolása [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock?view=latest)használatával is létrehozható:
+A zóna szintű erőforrások zárolása [Azure PowerShell](/powershell/module/az.resources/new-azresourcelock?view=latest)használatával is létrehozható:
 
 ```azurepowershell-interactive
 # Lock a DNS zone
@@ -218,7 +218,7 @@ $rsg = "<resource group name>"
 New-AzResourceLock -LockLevel $lvl -LockName $lnm -ResourceName $rsc -ResourceType $rty -ResourceGroupName $rsg
 ```
 
-Az egyenértékű parancs az [Azure CLI-n keresztül is elérhető](https://docs.microsoft.com/cli/azure/lock?view=azure-cli-latest#az-lock-create):
+Az egyenértékű parancs az [Azure CLI-n keresztül is elérhető](/cli/azure/lock?view=azure-cli-latest#az-lock-create):
 
 ```azurecli-interactive
 # Lock a DNS zone
@@ -285,7 +285,7 @@ Az egyéni szerepkör a fiókok által elért összes zónára vonatkozóan műk
 
 Mindkét módszert – erőforrás-zárolásokat és egyéni szerepköröket – egyszerre is használhatja, a DNS-zónák védelmének mélyreható megközelítésével.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az Azure RBAC használatáról: [Mi az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md).
 * További információ az erőforrás-zárolások használatáról: [erőforrások zárolása Azure Resource Managersal](../azure-resource-manager/management/lock-resources.md).

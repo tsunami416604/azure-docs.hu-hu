@@ -9,18 +9,19 @@ editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 999d63ee-890e-432e-9391-25b3fc6cde28
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 00cb63f63ffb1f2e10a276cfdeee9c5e8e1022de
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 565f98126cea8cc03874bb4f83ecdc2c65f8d5fb
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427377"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966054"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Virtuálisgép-bővítmények és-szolgáltatások a Windows rendszerhez
 
@@ -61,7 +62,7 @@ A lehető legjobb élmény biztosítása érdekében az ügynöknek minimális v
 A Windows vendég ügynök több operációs rendszeren fut, de a kiterjesztések keretrendszere korláttal rendelkezik a bővítmények számára. További információkért tekintse meg [ezt a cikket](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems
 ).
 
-Egyes bővítmények nem támogatottak az összes operációs rendszeren, és a *51-es hibakódot (nem támogatott operációs rendszert* ) bocsátják ki. Az egyes bővítmények dokumentációjában tájékozódhat a támogatásról.
+Egyes bővítmények nem támogatottak az összes operációs rendszeren, és a *51-es hibakódot (nem támogatott operációs rendszert*) bocsátják ki. Az egyes bővítmények dokumentációjában tájékozódhat a támogatásról.
 
 #### <a name="network-access"></a>Hálózati hozzáférés
 
@@ -92,7 +93,7 @@ A következő módszerek használhatók a bővítmények egy meglévő virtuáli
 
 ### <a name="powershell"></a>PowerShell
 
-Több PowerShell-parancs létezik az egyes bővítmények futtatásához. A lista megtekintéséhez használja a [Get-Command](/powershell/module/microsoft.powershell.core/get-command) és a Filter on *bővítményt* :
+Több PowerShell-parancs létezik az egyes bővítmények futtatásához. A lista megtekintéséhez használja a [Get-Command](/powershell/module/microsoft.powershell.core/get-command) és a Filter on *bővítményt*:
 
 ```powershell
 Get-Command Set-Az*Extension* -Module Az.Compute
@@ -142,7 +143,7 @@ A `Set-AzVMExtension` parancs használatával bármely virtuálisgép-bővítmé
 
 ### <a name="azure-portal"></a>Azure Portal
 
-A virtuálisgép-bővítmények a Azure Portal használatával alkalmazhatók egy meglévő virtuális gépre. Válassza ki a virtuális gépet a portálon, válassza a **bővítmények** , majd a **Hozzáadás** lehetőséget. Válassza ki a kívánt bővítményt az elérhető bővítmények listájából, és kövesse a varázsló utasításait.
+A virtuálisgép-bővítmények a Azure Portal használatával alkalmazhatók egy meglévő virtuális gépre. Válassza ki a virtuális gépet a portálon, válassza a **bővítmények**, majd a **Hozzáadás** lehetőséget. Válassza ki a kívánt bővítményt az elérhető bővítmények listájából, és kövesse a varázsló utasításait.
 
 Az alábbi példa a Microsoft antimalware bővítmény telepítését mutatja be a Azure Portalról:
 
@@ -294,7 +295,7 @@ A futtatott verziót a [telepített Windows-ügynök észlelése](agent-windows.
 
 #### <a name="extension-updates"></a>Bővítmények frissítései
 
-Ha elérhető egy bővítmény frissítése, a Windows vendég ügynök letölti és frissíti a bővítményt. Az automatikus bővítmény frissítései lehetnek *kisebbek* vagy *gyorsjavítások*. A bővítmények kiépítésekor engedélyezheti vagy letilthatja a bővítmények *másodlagos* frissítéseit. Az alábbi példa bemutatja, hogyan lehet automatikusan frissíteni a alverziókat egy Resource Manager-sablonban a *autoUpgradeMinorVersion ": true"* :
+Ha elérhető egy bővítmény frissítése, a Windows vendég ügynök letölti és frissíti a bővítményt. Az automatikus bővítmény frissítései lehetnek *kisebbek* vagy *gyorsjavítások*. A bővítmények kiépítésekor engedélyezheti vagy letilthatja a bővítmények *másodlagos* frissítéseit. Az alábbi példa bemutatja, hogyan lehet automatikusan frissíteni a alverziókat egy Resource Manager-sablonban a *autoUpgradeMinorVersion ": true"*:
 
 ```json
     "properties": {
@@ -322,7 +323,7 @@ A virtuálisgép-modellből megtekintheti, hogy a bővítmény a "autoUpgradeMin
  $vm.Extensions
 ```
 
-A következő példa kimenete azt mutatja, hogy a *autoUpgradeMinorVersion* értéke *true (igaz* ):
+A következő példa kimenete azt mutatja, hogy a *autoUpgradeMinorVersion* értéke *true (igaz*):
 
 ```powershell
 ForceUpdateTag              :
@@ -336,7 +337,7 @@ AutoUpgradeMinorVersion     : True
 
 Ha meg szeretné tekinteni, hogy mikor történt frissítés a bővítményre, tekintse át az ügynök naplóit a virtuális gépen a következő címen: *C:\WindowsAzure\Logs\WaAppAgent.log*
 
-A következő példában a virtuális gépnek *Microsoft. számítási. CustomScriptExtension 1,8* telepítve van. A *1,9* -es verzióhoz elérhető gyorsjavítás:
+A következő példában a virtuális gépnek *Microsoft. számítási. CustomScriptExtension 1,8* telepítve van. A *1,9*-es verzióhoz elérhető gyorsjavítás:
 
 ```powershell
 [INFO]  Getting plugin locations for plugin 'Microsoft.Compute.CustomScriptExtension'. Current Version: '1.8', Requested Version: '1.9'
@@ -421,7 +422,7 @@ A bővítményeket a következőképpen is eltávolíthatja a Azure Portalban:
 4. Válassza az **Eltávolítás** lehetőséget.
 
 ## <a name="common-vm-extensions-reference"></a>Gyakori virtuálisgép-bővítmények ismertetése
-| Kiterjesztés neve | Description | További információ |
+| Kiterjesztés neve | Leírás | További információ |
 | --- | --- | --- |
 | Egyéniszkript-bővítmény Windows rendszerre |Parancsfájlok futtatása Azure-beli virtuális gépeken |[Egyéniszkript-bővítmény Windows rendszerre](custom-script-windows.md) |
 | DSC-bővítmény a Windowshoz |PowerShell DSC (kívánt állapot konfiguráció) bővítmény |[DSC-bővítmény a Windowshoz](dsc-overview.md) |

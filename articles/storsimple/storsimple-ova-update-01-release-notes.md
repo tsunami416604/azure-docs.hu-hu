@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/16/2016
 ms.author: alkohli
-ms.openlocfilehash: 95386f36340aca470769c920e40bbb70e09d34fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67d3fafb9b4b93ae52bdb09d673bf65cad30b816
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80397881"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966156"
 ---
 # <a name="storsimple-virtual-array-update-02-and-01-release-notes"></a>StorSimple Virtual Array Update 0,2 és 0,1 kibocsátási megjegyzések
 ## <a name="overview"></a>Áttekintés
@@ -27,7 +27,7 @@ A következő kibocsátási megjegyzések azonosítják a kritikus nyitott probl
 
 A kibocsátási megjegyzések folyamatosan frissülnek, és olyan kritikus fontosságú problémák észlelhetők, amelyek megkerülő megoldást igényelnek. A StorSimple virtuális eszköz üzembe helyezése előtt alaposan tekintse át a kibocsátási megjegyzésekben található információkat.
 
-Az 0,2-es frissítés megfelel a szoftver **10.0.10280.0**; Az 0,1-es frissítés a **10.0.10279.0**verziója. Az alábbi szakaszban az egyes frissítések változásai láthatók. 
+Az 0,2-es frissítés megfelel a szoftver **10.0.10280.0**; Az 0,1-es frissítés a **10.0.10279.0** verziója. Az alábbi szakaszban az egyes frissítések változásai láthatók. 
 
 > [!NOTE]
 > A frissítések zavaróak, és újraindítják az eszközt. Ha az I/O folyamatban van, az eszköz állásidőt von maga után.
@@ -37,14 +37,14 @@ Az 0,2-es frissítés megfelel a szoftver **10.0.10280.0**; Az 0,1-es frissíté
 ## <a name="issues-fixed-in-the-update-02"></a>Az 0,2-es frissítésben rögzített problémák
 Az 0,2-es frissítés a 0,1-es frissítés összes módosítását tartalmazza az alábbi táblázatban ismertetett javítás mellett:
 
-| Szolgáltatás | Probléma |
+| Funkció | Probléma |
 | --- | --- |
 | Frissítések |A legutóbbi kiadásban a frissítések nem észlelhetők automatikusan a klasszikus Azure-portálon, ezért a helyi webes felhasználói felületet kell használnia a frissítések telepítéséhez. Ez a probléma ebben a kiadásban van kijavítva. Az 0,2-es frissítés telepítése után a klasszikus Azure portál használatával telepítheti a jövőbeli frissítéseket. |
 
 ## <a name="whats-new-in-the-update-01"></a>Az 0,1-es frissítés újdonságai
 Az 0,1-es frissítés a következő hibajavításokat és javításokat tartalmazza. 
 
-* **Továbbfejlesztett rugalmasság a Felhőbeli kimaradások**terén: ebben a kiadásban számos hibajavítás található a vész-helyreállítás, a biztonsági mentés, a visszaállítás és a rétegek megszakadása esetén a Felhőbeli kapcsolat megszakadása esetén. 
+* **Továbbfejlesztett rugalmasság a Felhőbeli kimaradások** terén: ebben a kiadásban számos hibajavítás található a vész-helyreállítás, a biztonsági mentés, a visszaállítás és a rétegek megszakadása esetén a Felhőbeli kapcsolat megszakadása esetén. 
 * **Továbbfejlesztett visszaállítási teljesítmény**: ebben a kiadásban olyan hibajavítások vannak, amelyek jelentősen csökkentették a visszaállítási feladatok befejezési idejét.
 * **Automatizált lemezterület-visszanyerési optimalizálás**: Ha a rendszer törli az adatmennyiséget a dinamikusan kiosztott köteteken, a fel nem használt tárolási blokkokat vissza kell állítani. Ez a kiadás javította a terület visszanyerésének folyamatát a felhőből, ami azt eredményezi, hogy a fel nem használt terület gyorsabban elérhetővé válik az előző verziókhoz képest.
 * **Új virtuális lemez lemezképei**: új VHD-, VHDX-és VMDK érhetők el a klasszikus Azure portálon keresztül. Ezeket a lemezképeket letöltheti a 0,1-es frissítés új eszközeinek kiépítéséhez.
@@ -54,7 +54,7 @@ Az 0,1-es frissítés a következő hibajavításokat és javításokat tartalma
 ## <a name="issues-fixed-in-the-update-01"></a>Az 0,1-es frissítésben rögzített problémák
 A következő táblázat az ebben a kiadásban kijavított problémák összegzését tartalmazza.
 
-| Nem. | Szolgáltatás | Probléma |
+| Nem. | Funkció | Probléma |
 | --- | --- | --- |
 | 1 |VMDK |Egyes VMware-verziók esetében az operációsrendszer-lemez ritka riasztást okoz, és megszakad a normál működés. Ez a kiadásban megoldódott. |
 | 2 |iSCSI-kiszolgáló |A legutóbbi kiadásban a felhasználónak meg kell adnia egy átjárót a StorSimple virtuális eszköz minden engedélyezett hálózati adapteréhez. Ez a verzió úgy módosul, hogy a felhasználónak legalább egy átjárót be kell állítania az összes engedélyezett hálózati adapterhez. |
@@ -65,7 +65,7 @@ A következő táblázat az ebben a kiadásban kijavított problémák összegz�
 ## <a name="known-issues-in-the-update-01"></a>Az 0,1-es frissítés ismert problémái
 Az alábbi táblázat összefoglalja a StorSimple virtuális tömb ismert problémáit, és tartalmazza az előző kiadásokból megjelent problémákat. **Az ebben a kiadásban feljegyzett problémák csillaggal vannak megjelölve. A listában szereplő összes probléma csaknem a StorSimple Virtual Array GA-kiadásával történt.**
 
-| Nem. | Szolgáltatás | Probléma | Áthidaló megoldás/megjegyzések |
+| Nem. | Funkció | Probléma | Áthidaló megoldás/megjegyzések |
 | --- | --- | --- | --- |
 | **1.** |Frissítések |Az előzetes verzióban létrehozott virtuális eszközök nem frissíthetők támogatott általánosan elérhető verzióra. |Ezeket a virtuális eszközöket egy vész-helyreállítási (DR) munkafolyamat használatával kell átadni az általános elérhetőségi kiadáshoz. |
 | **2.** |Kiépített adatlemez |Miután kiépített egy adott méretű adatlemezt, és létrehozta a megfelelő StorSimple virtuális eszközt, az adatlemezt nem szabad kibontani vagy csökkentenie. Ennek eredményeképpen az eszköz helyi szintjein lévő összes érték elvesztését fogja eredményezni. | |
@@ -83,5 +83,4 @@ Az alábbi táblázat összefoglalja a StorSimple virtuális tömb ismert probl�
 | **14.** |Fájlkiszolgáló * |Ha egy mappában található fájlhoz egy másodlagos adatfolyam (ADS) tartozik, a HIRDETÉSEKET a rendszer nem készíti el, és nem állítja vissza a vész-helyreállítási, a klónozási és az elemszintű helyreállítás használatával. | |
 
 ## <a name="next-step"></a>Következő lépés
-[Telepítse a frissítéseket](storsimple-ova-install-update-01.md) a StorSimple virtuális tömbbe.
-
+[Telepítse a frissítéseket](./storsimple-virtual-array-install-update-06.md) a StorSimple virtuális tömbbe.

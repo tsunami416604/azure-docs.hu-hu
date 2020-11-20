@@ -1,7 +1,7 @@
 ---
-title: Parancsok frissítése az ügyfélalkalmazásból
+title: Parancs frissítése ügyfélalkalmazás alapján
 titleSuffix: Azure Cognitive Services
-description: parancs frissítése az ügyfélalkalmazás alapján
+description: Megtudhatja, hogyan frissítheti a parancsokat egy ügyfélalkalmazás használatával.
 services: cognitive-services
 author: encorona-ms
 manager: yetian
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/20/2020
 ms.author: encorona
-ms.openlocfilehash: 1bffb09d0f49bbd0059e8a528d67bfe215f0650d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 765bcbd0521f93bacb0799595e6fbef565d0f313
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94654347"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963623"
 ---
-# <a name="update-a-command-from-the-client"></a>Parancs frissítése az ügyfélről
+# <a name="update-a-command-from-a-client-app"></a>Parancs frissítése ügyfélalkalmazás alapján
 
 Ebből a cikkből megtudhatja, hogyan frissítheti az ügyfélalkalmazások egy folyamatban lévő parancsát.
 
@@ -27,9 +27,9 @@ Ebből a cikkből megtudhatja, hogyan frissítheti az ügyfélalkalmazások egy 
 
 ## <a name="update-the-state-of-a-command"></a>Parancs állapotának frissítése
 
-Ha az ügyfélalkalmazás a folyamatban lévő parancs hangbemenet nélküli állapotának frissítését igényli, küldhet egy eseményt a parancs frissítéséhez.
+Ha az ügyfélalkalmazás megköveteli, hogy egy folyamatban lévő parancs állapotát a hangbemenet nélkül frissítse, küldhet egy eseményt a parancs frissítéséhez.
 
-Ha ezt a forgatókönyvet szeretné bemutatni, egy folyamatban lévő parancs (TurnOnOff) állapotának frissítéséhez a következő eseményt küldheti el. 
+A forgatókönyv szemléltetéséhez küldje el a következő esemény-tevékenységet egy folyamatban lévő parancs () állapotának frissítéséhez `TurnOnOff` : 
 
 ```json
 {
@@ -49,36 +49,36 @@ Ha ezt a forgatókönyvet szeretné bemutatni, egy folyamatban lévő parancs (T
 }
 ```
 
-Lehetővé teszi ennek a tevékenységnek a fő attribútumainak áttekintését.
+Tekintsük át a tevékenység főbb attribútumait:
 
 | Attribútum | Magyarázat |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| **típusa** | A tevékenység "Event" típusú, az esemény nevének pedig "RemoteUpdate" értéknek kell lennie. |
-| **value** | A "value" attribútum az aktuális parancs frissítéséhez szükséges attribútumokat tartalmazza. |
-| **updatedCommand** | A "updatedCommand" attribútum tartalmazza a parancs nevét, a "updatedParameters" pedig a paraméterek nevével és a frissített értékekkel rendelkező térképet. |
-| **Mégse** | Ha a folyamatban lévő parancsot meg kell szüntetni, állítsa a "Mégse" attribútumot igaz értékre. |
-| **updatedGlobalParameters** | A "updatedGlobalParameters" attribútum egy Térkép is, ugyanúgy, mint a "updatedParameters", de a globális paraméterekhez használatos. |
-| **processTurn** | Ha a turnön a tevékenység elküldése után kell feldolgozni, állítsa a "processTurn" attribútumot igaz értékre. |
+| **típusa** | A tevékenység típusa `"event"` , és az esemény nevének kell lennie `"RemoteUpdate"` . |
+| **value** | Az attribútum az `"value"` aktuális parancs frissítéséhez szükséges attribútumokat tartalmazza. |
+| **updatedCommand** | Az attribútum a `"updatedCommand"` parancs nevét tartalmazza. Az attribútumon belül `"updatedParameters"` egy Térkép a paraméterek nevével és a frissített értékekkel. |
+| **Mégse** | Ha a folyamatban lévő parancsot meg kell szüntetni, állítsa az attribútumot a következőre: `"cancel"` `true` . |
+| **updatedGlobalParameters** | Az attribútum `"updatedGlobalParameters"` egy Térkép, hasonlóan a `"updatedParameters"` globális paraméterekhez. |
+| **processTurn** | Ha a turnt fel kell dolgozni a tevékenység elküldése után, állítsa az attribútumot a következőre: `"processTurn"` `true` . |
 
-Ezt a forgatókönyvet az egyéni parancsok portálon ellenőrizheti.
+Ezt a forgatókönyvet az egyéni parancsok portálon ellenőrizheti:
 
-1. Nyissa meg a korábban létrehozott Custom Commands-alkalmazást. 
-1. Kattintson a betanítás, majd a tesztelés elemre.
-1. Küldés "turn" (bekapcsolás).
-1. Nyissa meg az oldalsó panelt, és kattintson a tevékenység-szerkesztő elemre.
-1. Írja be és küldje el az előző szakaszban megadott RemoteCommand eseményt.
+1. Nyissa meg a korábban létrehozott egyéni parancsok alkalmazást. 
+1. Válassza ki a **betanítás** lehetőséget, majd **tesztelje**.
+1. Küldés `turn` .
+1. Nyissa meg az oldalsó panelt, és válassza a **tevékenység-szerkesztő** elemet.
+1. Írja be és küldje `RemoteCommand` el az előző szakaszban megadott eseményt.
     > [!div class="mx-imgBorder"]
-    > ![Távoli parancs küldése](media/custom-commands/send-remote-command-activity.png)
+    > ![Képernyőkép, amely egy távoli parancs eseményét jeleníti meg.](media/custom-commands/send-remote-command-activity.png)
 
-Figyelje meg, hogy a "javítás OnOff" paraméter értéke "on" értékre van állítva, ha az ügyfél tevékenységét beszéd vagy szöveg helyett használja.
+Figyelje meg, hogy a paraméter értéke nem `"OnOff"` `"on"` beszéd vagy szöveg helyett az ügyfél által végzett tevékenységre lett beállítva.
 
 ## <a name="update-the-catalog-of-the-parameter-for-a-command"></a>Egy parancs paraméterének katalógusának frissítése
 
 Egy paraméter érvényes beállításainak listájának konfigurálásakor a paraméter értékei globálisan vannak meghatározva az alkalmazáshoz. 
 
-A példánkban a SubjectDevice paraméter a támogatott értékek rögzített listáját fogja tartalmazni, függetlenül a beszélgetéstől.
+A példánkban a (z `SubjectDevice` ) paraméter a támogatott értékek rögzített listáját fogja tartalmazni a beszélgetéstől függetlenül.
 
-Ha új bejegyzéseket kell hozzáadnia a paraméter katalógusához, akkor a következő tevékenység elküldésére van szükség.
+Ha új bejegyzéseket szeretne hozzáadni a paraméter katalógusához, a következő tevékenység elküldésére van lehetősége:
 
 ```json
 {
@@ -103,48 +103,49 @@ Ha új bejegyzéseket kell hozzáadnia a paraméter katalógusához, akkor a kö
   }
 }
 ```
-Ezzel a tevékenységgel hozzáadtak egy "sztereó" bejegyzést a "SubjectDevice" paraméter katalógusához a "TurnOnOff" parancsban.
+Ezzel a tevékenységgel hozzáadta a bejegyzést a `"stereo"` parancshoz tartozó paraméter katalógusához `"SubjectDevice"` `"TurnOnOff"` .
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/custom-commands/update-catalog-with-remote-activity.png" alt-text="Frissítési katalógus":::
+> :::image type="content" source="./media/custom-commands/update-catalog-with-remote-activity.png" alt-text="A katalógus frissítését bemutató képernyőkép.":::
 
-Jegyezzen fel néhány dolgot.
-1. Ezt a tevékenységet csak egyszer kell elküldeni (ideális esetben közvetlenül a kapcsolódás megkezdése után).
-1. A tevékenység elküldése után meg kell várnia, hogy az esemény ParameterCatalogsUpdated vissza lehessen küldeni az ügyfélnek.
+Vegye figyelembe, hogy néhány dolog:
+- Ezt a tevékenységet csak egyszer kell elküldeni (ideális esetben közvetlenül a kapcsolatok megkezdése után).
+- A tevékenység elküldése után meg kell várnia, hogy az eseményt `ParameterCatalogsUpdated` vissza lehessen küldeni az ügyfélnek.
 
-## <a name="add-additional-context-from-the-client-application"></a>További környezet hozzáadása az ügyfélalkalmazás számára
+## <a name="add-more-context-from-the-client-application"></a>További környezet hozzáadása az ügyfélalkalmazás számára
 
 Az ügyfélalkalmazás további kontextusát is beállíthatja, amely később az egyéni parancsok alkalmazásban használható. 
 
 Gondoljon például arra a forgatókönyvre, amelyben el szeretné küldeni az egyéni parancsok alkalmazáshoz csatlakoztatott eszköz AZONOSÍTÓját és nevét.
 
-A forgatókönyv teszteléséhez hozzon létre egy új parancsot az aktuális alkalmazásban.
-1. Hozzon létre egy új, GetDeviceInfo nevű parancsot.
-1. Vegyen fel egy példa mondatot az "eszköz adatainak beolvasása" kifejezésre.
-1. A befejezési szabály "kész" részében adjon hozzá egy beszédfelismerési válasz küldése műveletet, amely tartalmazza a clientContext attribútumait.
-    > ![Beszédfelismerési válasz küldése a kontextussal](media/custom-commands/send-speech-response-context.png)
+A forgatókönyv teszteléséhez hozzon létre egy új parancsot az aktuális alkalmazásban:
+1. Hozzon létre egy nevű új parancsot `GetDeviceInfo` .
+1. Adjon meg egy példát a mondatra `get device info` .
+1. A befejezési szabályban vegyen fel egy **beszédfelismerési válasz küldése** **műveletet, amely** tartalmazza a attribútumait `clientContext` .
+   ![Képernyőkép, amely a beszéd kontextusban való küldésére vonatkozó választ jeleníti meg.](media/custom-commands/send-speech-response-context.png)
 1. Az alkalmazás mentése, betanítása és tesztelése.
-1. A tesztelési ablakban egy tevékenység elküldésével frissítheti az ügyfél környezetét.
-    > ```json
-    >{
-    >   "type": "event",
-    >   "name": "RemoteUpdate",
-    >   "value": {
-    >     "clientContext": {
-    >       "deviceId": "12345",
-    >       "deviceName": "My device"
-    >     },
-    >     "processTurn": false
-    >   }
-    >}
-    > ```
-1. Küldje el az "eszköz adatainak beolvasása" szöveget.
-    > ![Ügyfél-környezeti tevékenység küldése](media/custom-commands/send-client-context-activity.png)
+1. A tesztelési ablakban küldjön egy tevékenységet az ügyfél környezetének frissítéséhez.
 
-Jegyezze fel néhány dolgot.
-1. Ezt a tevékenységet csak egyszer kell elküldeni (ideális esetben közvetlenül a kapcsolódás megkezdése után).
-1. Összetett objektumokat használhat a clientContext.
-1. A clientContext a beszédfelismerési válaszok, a tevékenységek küldésére és a webes végpontok meghívására használhatja.
+    ```json
+    {
+       "type": "event",
+       "name": "RemoteUpdate",
+       "value": {
+         "clientContext": {
+           "deviceId": "12345",
+           "deviceName": "My device"
+         },
+         "processTurn": false
+       }
+    }
+    ```
+1. A szöveg elküldése `get device info` .
+   ![Képernyőfelvétel: az ügyfél-környezet küldését bemutató tevékenység.](media/custom-commands/send-client-context-activity.png)
+
+Vegye figyelembe, hogy néhány dolog:
+- Ezt a tevékenységet csak egyszer kell elküldeni (ideális esetben közvetlenül a kapcsolatok megkezdése után).
+- Összetett objektumokat használhat a következőhöz: `clientContext` .
+- `clientContext`A beszédfelismerési válaszokat, a tevékenységek küldését és a webes végpontok meghívását is használhatja.
 
 ## <a name="next-steps"></a>Következő lépések
 

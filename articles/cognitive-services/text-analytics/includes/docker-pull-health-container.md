@@ -10,14 +10,14 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 519625f6468372ec7ace523dae7648212f4f3203
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0b2c9548f9c1289ae0abd61a72d7146a3bbca29
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779483"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965161"
 ---
-Töltse ki és küldje el a [Cognitive Services tárolók kérelem űrlapját](https://aka.ms/csgate) , hogy hozzáférést Kérjen a tárolóhoz.
+Töltse ki és küldje el a [Cognitive Services kérelem űrlapját](https://aka.ms/csgate) , hogy hozzáférést kérjen a Text Analytics for Health nyilvános előzetes verziójához.  Ez az alkalmazás a tárolóra és az üzemeltetett webes API nyilvános előzetes verziójára is érvényes.
 Az űrlap adatokat kér Önnek, a vállalatnak és a felhasználói forgatókönyvnek, amelyhez a tárolót fogja használni. Miután elküldte az űrlapot, az Azure Cognitive Services csapata ellenőrzi, hogy megfelelnek-e a Private Container registryhez való hozzáférés feltételeinek.
 
 > [!IMPORTANT]
@@ -25,7 +25,7 @@ Az űrlap adatokat kér Önnek, a vállalatnak és a felhasználói forgatókön
 > * A tároló futtatásához használt Azure-erőforrást a jóváhagyott Azure-előfizetés azonosítójával kell létrehozni. 
 > * A Microsofttól származó alkalmazás állapotával kapcsolatos frissítésekért keresse meg az e-mail-címét (a beérkezett fájlok és a levélszemét mappáját is).
 
-A bevezetési e-mailben megadott hitelesítő adatokkal a Docker login paranccsal csatlakozhat a Cognitive Services tárolók saját tároló-beállításjegyzékéhez.
+A jóváhagyást követően a rendszer e-mailt küld a hitelesítő adatokkal a privát tároló beállításjegyzékének eléréséhez.  A bevezetési e-mailben megadott hitelesítő adatokkal a Docker login paranccsal csatlakozhat a Cognitive Services tárolók saját tároló-beállításjegyzékéhez.
 
 
 ```Docker

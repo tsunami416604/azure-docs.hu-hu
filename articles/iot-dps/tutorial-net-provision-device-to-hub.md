@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 55195949cfaa741389f38deaea69806c568c0ce6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9a14ee6ee3e10b36d64ec11fc23807efe2bfaf2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89008267"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966564"
 ---
 # <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Oktatóanyag: az eszköz regisztrálása egy IoT hubhoz az Azure IoT Hub-létesítési szolgáltatás ügyfelének használatával (.NET)
 
@@ -42,12 +42,12 @@ Ez az oktatóanyag a hardvergyártási folyamat közbeni vagy az azutáni idősz
 Ennek a lépésnek a részét képezi az eszköz egyedi biztonsági összetevőinek a Device Provisioning Service-hez adása. Ezek a biztonsági összetevők a következők:
 
 - TPM-alapú eszközök esetén:
-    - Az egyes TPM-lapkákhoz vagy szimulációkhoz tartozó egyedi *ellenőrzőkulcs*. További információkért olvassa el a [TPM-ellenőrzőkulcsot ismertető](https://technet.microsoft.com/library/cc770443.aspx) szakaszt.
+    - Az egyes TPM-lapkákhoz vagy szimulációkhoz tartozó egyedi *ellenőrzőkulcs*. További információkért olvassa el a [TPM-ellenőrzőkulcsot ismertető](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770443(v=ws.11)) szakaszt.
     - A névtérben/hatókörben lévő eszköz egyedi azonosítására használt *regisztrációs azonosító*. Ez nem feltétlenül egyezik meg az eszköz azonosítójával. Az azonosító minden eszközhöz kötelező. TPM-alapú eszközök esetén a regisztrációs azonosító magából a TPM-ből származhat, például a TPM-ellenőrzőkulcs SHA-256 kivonata lehet.
 
 - X.509-alapú eszközök esetén:
-    - Az [eszközhöz kiadott X.509-tanúsítvány](https://msdn.microsoft.com/library/windows/desktop/bb540819.aspx)*.pem* vagy *.cer* fájlformátumban. Egyéni regisztrációhoz az X.509 rendszer *levéltanúsítványát*, míg regisztrációs csoportok esetén a *főtanúsítványt vagy egy egyenértékű *aláíró tanúsítványt* kell használni*.
-    - A névtérben/hatókörben lévő eszköz egyedi azonosítására használt *regisztrációs azonosító*. Ez nem feltétlenül egyezik meg az eszköz azonosítójával. Az azonosító minden eszközhöz kötelező. Az X.509-alapú eszközök esetén a regisztrációs azonosító a tanúsítvány köznapi nevéből (CN) származik. A követelményekkel kapcsolatos további információkért tekintse meg az [eszközökkel kapcsolatos alapelveket ismertető](https://docs.microsoft.com/azure/iot-dps/concepts-device) témakört.
+    - Az [eszközhöz kiadott X.509-tanúsítvány](/windows/win32/seccertenroll/about-x-509-public-key-certificates)*.pem* vagy *.cer* fájlformátumban. Egyéni regisztrációhoz az X.509 rendszer *levéltanúsítványát*, míg regisztrációs csoportok esetén a *főtanúsítványt vagy egy egyenértékű* aláíró tanúsítványt *kell használni*.
+    - A névtérben/hatókörben lévő eszköz egyedi azonosítására használt *regisztrációs azonosító*. Ez nem feltétlenül egyezik meg az eszköz azonosítójával. Az azonosító minden eszközhöz kötelező. Az X.509-alapú eszközök esetén a regisztrációs azonosító a tanúsítvány köznapi nevéből (CN) származik. A követelményekkel kapcsolatos további információkért tekintse meg az [eszközökkel kapcsolatos alapelveket ismertető](./concepts-service.md) témakört.
 
 A következő két módon regisztrálható az eszköz a Device Provisioning Service-ben:
 
@@ -129,7 +129,7 @@ A következő két módon regisztrálható az eszköz a Device Provisioning Serv
     Console.ReadLine();
     ```
         
-1. A Visual Studio Megoldáskezelő kattintson a jobb gombbal a megoldásra, majd kattintson az **indítási projektek beállítása.**.. elemre. Válassza az **egyetlen indítási projekt**lehetőséget, majd a legördülő menüben válassza ki a **DeviceProvisioning** projektet.  
+1. A Visual Studio Megoldáskezelő kattintson a jobb gombbal a megoldásra, majd kattintson az **indítási projektek beállítása.**.. elemre. Válassza az **egyetlen indítási projekt** lehetőséget, majd a legördülő menüben válassza ki a **DeviceProvisioning** projektet.  
 
 1. Futtassa a **DeviceProvisiong** .NET-eszközalkalmazást. Az eszközalkalmazás beállítja az eszköz kiépítését: 
 

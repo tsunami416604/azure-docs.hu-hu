@@ -11,23 +11,23 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: damendo
-ms.openlocfilehash: 18023f5a5b36dd971080d7a62fdd44698a205bb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f9b9e91cda93a986fdaaf0f53d8987544e783a2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88272535"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966462"
 ---
 # <a name="read-nsg-flow-logs"></a>NSG-forgalom naplóinak olvasása
 
 Ismerje meg, hogyan olvashatja el a NSG flow-naplók bejegyzéseit a PowerShell használatával.
 
-A NSG egy Storage-fiókban tárolódnak, amely [blokkolja a blobokat](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs). A blokkos Blobok kisebb blokkokból állnak. Minden napló egy különálló blokk-blob, amely óránként jön létre. Az új naplók óránként jönnek létre, a naplók a legújabb adatokkal néhány percenként frissülnek az új bejegyzésekkel. Ebből a cikkből megtudhatja, hogyan olvashatja el a flow-naplók egyes részeit.
+A NSG egy Storage-fiókban tárolódnak, amely [blokkolja a blobokat](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs). A blokkos Blobok kisebb blokkokból állnak. Minden napló egy különálló blokk-blob, amely óránként jön létre. Az új naplók óránként jönnek létre, a naplók a legújabb adatokkal néhány percenként frissülnek az új bejegyzésekkel. Ebből a cikkből megtudhatja, hogyan olvashatja el a flow-naplók egyes részeit.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Használati eset
 
 A következő esetben egy Storage-fiókban tárolt folyamat naplója van. Megtudhatja, hogyan olvashatja el a legújabb eseményeket a NSG flow naplóiban. Ebben a cikkben a PowerShellt használja, azonban a cikkben tárgyalt fogalmak nem korlátozódnak a programozási nyelvre, és alkalmazhatók az Azure Storage API-k által támogatott összes nyelvre.
 
@@ -37,7 +37,7 @@ Mielőtt elkezdené, a fiókjában egy vagy több hálózati biztonsági csoport
 
 ## <a name="retrieve-the-block-list"></a>A blokkok listájának beolvasása
 
-A következő PowerShell beállítja azokat a változókat, amelyek szükségesek a NSG folyamat naplófájljának lekérdezéséhez, és a blokkokat a [CloudBlockBlob](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblockblob) blokk blobján belül listázza. Frissítse a parancsfájlt, hogy érvényes értékeket tartalmazzon a környezetéhez.
+A következő PowerShell beállítja azokat a változókat, amelyek szükségesek a NSG folyamat naplófájljának lekérdezéséhez, és a blokkokat a [CloudBlockBlob](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob) blokk blobján belül listázza. Frissítse a parancsfájlt, hogy érvényes értékeket tartalmazzon a környezetéhez.
 
 ```powershell
 function Get-NSGFlowLogCloudBlockBlob {
@@ -189,6 +189,6 @@ Ez a forgatókönyv egy példa arra, hogyan olvashat be bejegyzéseket a NSG flo
 
 Látogasson el a [rugalmas verem használatára](network-watcher-visualize-nsg-flow-logs-open-source-tools.md), [használja a Grafana](network-watcher-nsg-grafana.md), és a [Graylog](network-watcher-analyze-nsg-flow-logs-graylog.md) használatával további információkat tudhat meg a NSG-folyamatok megtekintésének módjairól. Itt talál egy nyílt forráskódú Azure-függvényt, amely a Blobok közvetlen felhasználására és különböző log Analytics-felhasználókra való kibocsátására szolgál: az [Azure Network WATCHER NSG flow naplók összekötője](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector).
 
-Az [Azure Traffic Analytics](https://docs.microsoft.com/azure/network-watcher/traffic-analytics) használatával bepillantást nyerhet a forgalmi folyamatokra. A Traffic Analytics a [log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) használatával teszi elérhetővé a forgalom folyamatát.
+Az [Azure Traffic Analytics](./traffic-analytics.md) használatával bepillantást nyerhet a forgalmi folyamatokra. A Traffic Analytics a [log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md) használatával teszi elérhetővé a forgalom folyamatát.
 
 További információ a Storage-Blobok látogatásáról: [Azure functions blob Storage-kötések](../azure-functions/functions-bindings-storage-blob.md)

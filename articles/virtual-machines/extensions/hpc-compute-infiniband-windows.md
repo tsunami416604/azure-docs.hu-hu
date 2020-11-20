@@ -7,17 +7,18 @@ author: vermagit
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: amverma
-ms.openlocfilehash: ccc9df8078bb7fec8be7d72b0ae18ed416bb10ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0ec18ae4a7d6020299660adbeba6f993cd4eeca
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87096743"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966020"
 ---
 # <a name="infiniband-driver-extension-for-windows"></a>A Windows InfiniBand-illesztőprogram-bővítménye
 
@@ -69,7 +70,7 @@ A következő JSON a bővítmény sémáját jeleníti meg.
 
 ### <a name="properties"></a>Tulajdonságok
 
-| Name (Név) | Érték/példa | Adattípus |
+| Name | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | dátum |
 | közzétevő | Microsoft. HpcCompute | sztring |
@@ -137,7 +138,7 @@ az vm extension set \
 
 ### <a name="add-extension-to-a-virtual-machine-scale-set"></a>Bővítmény hozzáadása virtuálisgép-méretezési csoporthoz
 
-A következő példa telepíti a legújabb 1,2 InfiniBandDriverWindows-bővítményt az összes RDMA-kompatibilis virtuális gépen egy *myVMSS* nevű, meglévő virtuálisgép-méretezési csoportban, amely a *myResourceGroup*nevű erőforráscsoporthoz van telepítve:
+A következő példa telepíti a legújabb 1,2 InfiniBandDriverWindows-bővítményt az összes RDMA-kompatibilis virtuális gépen egy *myVMSS* nevű, meglévő virtuálisgép-méretezési csoportban, amely a *myResourceGroup* nevű erőforráscsoporthoz van telepítve:
 
   ```powershell
   $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
@@ -183,7 +184,7 @@ A következő táblázat a bővítmény telepítési folyamatának kilépési k�
 
 Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/community/)is. Másik lehetőségként az [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/)is bejelentkezhet támogatási incidensek. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az InfiniBand-kompatibilis ("r" méretekről): [H-sorozatú](../sizes-hpc.md) és [N sorozatú](../sizes-gpu.md) virtuális gépek.
 
 > [!div class="nextstepaction"]

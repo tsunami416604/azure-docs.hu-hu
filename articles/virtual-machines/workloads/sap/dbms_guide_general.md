@@ -3,16 +3,17 @@ title: Az Azure Virtual Machines adatbázis-kezelő üzembe helyezésének szemp
 description: Az Azure Virtual Machines adatbázis-kezelő üzembe helyezésének szempontjai az SAP-munkaterheléshez
 author: msjuergent
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 09/20/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: 1f71d95d61e401e12c76ca5589368eed6cc29ce6
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 38f6cf039de2404c7b3eeecc74ee33233f4a2058
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993291"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965289"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Az Azure Virtual Machines adatbázis-kezelő üzembe helyezésének szempontjai az SAP-munkaterheléshez
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -55,7 +56,7 @@ A dokumentum teljes egészében a következő kifejezéseket használjuk:
 * **SAP-környezet**: egy vagy több SAP-összetevő logikailag csoportosítva olyan üzleti funkciók végrehajtásához, mint a fejlesztés, a minőségbiztosítás, a képzés, a vész-helyreállítás vagy a gyártás.
 * **SAP-környezet**: Ez a kifejezés a teljes SAP-eszközre vonatkozik az ügyfél informatikai környezetében. Az SAP-környezet minden éles és nem üzemi környezetet magában foglal.
 * **SAP-rendszer**: az adatbázis-kezelő réteg és az alkalmazási réteg kombinációja, például egy SAP ERP fejlesztési rendszer, egy SAP Business Warehouse test rendszer vagy egy SAP CRM termelési rendszer. Az Azure üzemelő példányok esetében a két réteget a helyszíni és az Azure közötti felosztás nem támogatja. Ennek eredményeképpen az SAP-rendszer üzembe helyezése a helyszínen történik, vagy az Azure-ban van üzembe helyezve. Az SAP-környezetek különböző rendszereit üzembe helyezheti az Azure-ban vagy a helyszínen. Például üzembe helyezheti az SAP CRM fejlesztési és tesztelési rendszereit az Azure-ban, de üzembe helyezheti az SAP CRM üzemi rendszerét a helyszínen.
-* **Létesítmények**közötti: olyan forgatókönyv, amelyben a virtuális gépeket egy olyan Azure-előfizetéshez telepítik, amely helyek közötti, többhelyes vagy Azure ExpressRoute kapcsolattal rendelkezik a helyszíni adatközpontok és az Azure között. A közös Azure-dokumentációban az ilyen típusú központi telepítések a létesítmények közötti forgatókönyvekben is szerepelnek. 
+* **Létesítmények** közötti: olyan forgatókönyv, amelyben a virtuális gépeket egy olyan Azure-előfizetéshez telepítik, amely helyek közötti, többhelyes vagy Azure ExpressRoute kapcsolattal rendelkezik a helyszíni adatközpontok és az Azure között. A közös Azure-dokumentációban az ilyen típusú központi telepítések a létesítmények közötti forgatókönyvekben is szerepelnek. 
 
     A kapcsolódás oka a helyszíni tartományok, a helyszíni Active Directory és a helyszíni DNS kiterjesztése az Azure-ba. A helyszíni környezet az előfizetés Azure-eszközeire van kiterjesztve. Ezzel a bővítménnyel a virtuális gépek a helyszíni tartomány részei lehetnek. A helyszíni tartomány tartományi felhasználói hozzáférhetnek a kiszolgálókhoz, és szolgáltatásokat futtathatnak ezeken a virtuális gépeken, például az adatbázis-kezelő szolgáltatásokban. A helyszíni és az Azure-ban üzembe helyezett virtuális gépek közötti kommunikáció és névfeloldás lehetséges. Ez a forgatókönyv az SAP-eszközök Azure-beli üzembe helyezéséhez használt leggyakoribb forgatókönyv. További információ: [a VPN Gateway tervezése és kialakítása](../../../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
@@ -157,7 +158,7 @@ Ha a IOPS-követelmény meghaladja az egy virtuális merevlemezt, akkor az adatb
 >
 > ![Linux-tárolók csíkozása][Logo_Linux] Linux
 >
-> Csak a MDADM és a Logical Volume Manager (LVM) támogatott a szoftveres RAID Linuxon való létrehozásához. További információkért lásd:
+> Csak a MDADM és a Logical Volume Manager (LVM) támogatott a szoftveres RAID Linuxon való létrehozásához. További információ:
 >
 > - [Szoftveres RAID konfigurálása Linux rendszeren a](../../linux/configure-raid.md) MDADM használatával
 > - [Az LVM konfigurálása linuxos virtuális gépen az Azure-ban az](../../linux/configure-lvm.md) LVM használatával
@@ -209,7 +210,7 @@ A következő javaslatok ezeket az I/O-tulajdonságokat feltételezik a szabván
 
 A standard szintű tároláshoz a lehetséges gyorsítótár-típusok a következők:
 
-* Nincsenek
+* Nincs
 * Olvasás
 * Olvasás/írás
 
@@ -217,13 +218,13 @@ A konzisztens és determinisztikus teljesítmény érdekében állítsa be a sza
 
 Az Azure Premium Storage esetében a következő gyorsítótárazási lehetőségek léteznek:
 
-* Nincsenek
+* Nincs
 * Olvasás
 * Olvasás/írás
 * Nincs + írásgyorsító, amely csak az Azure M sorozatú virtuális gépekhez használható
 * Olvasási és írásgyorsító, amely csak az Azure M sorozatú virtuális gépekhez használható
 
-A Premium Storage esetében javasoljuk, hogy az olvasási gyorsítótárazást használja az SAP-adatbázis **adatfájljaihoz** , és válassza **a nincs gyorsítótárazás lehetőséget a naplófájl (ok) lemezei**számára.
+A Premium Storage esetében javasoljuk, hogy az olvasási gyorsítótárazást használja az SAP-adatbázis **adatfájljaihoz** , és válassza **a nincs gyorsítótárazás lehetőséget a naplófájl (ok) lemezei** számára.
 
 Az M sorozatú üzemelő példányok esetében ajánlott az Azure írásgyorsító használata az adatbázis-kezelő üzembe helyezéséhez. Az Azure írásgyorsító részleteiről, korlátozásáról és üzembe helyezéséről az [Írásgyorsító engedélyezése](../../how-to-enable-write-accelerator.md)című témakörben olvashat.
 

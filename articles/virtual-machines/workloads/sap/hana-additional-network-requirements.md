@@ -7,18 +7,19 @@ author: msjuergent
 manager: bburns
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 66bbd8b462ac35756be0fae6eba940ba0aba6c4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44e9712466734c0e42fd2bea05c5110cbff6924b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77614578"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964796"
 ---
 # <a name="additional-network-requirements-for-large-instances"></a>A nagyméretű példányok további hálózati követelményei
 
@@ -66,6 +67,6 @@ Annak érdekében, hogy eltávolítsa a mindent, törölje a ExpressRoute, a vir
 
 Ha el szeretne távolítani egy további SAP HANAt az Azure-beli (nagyméretű példányok) ExpressRoute áramkörön, nyisson meg egy Azure-támogatási kérelmet a SAP HANA a Microsoft Service Management szolgáltatásban. Az áramkör törlésére vonatkozó kérés. Az Azure-előfizetésen belül szükség esetén törölheti vagy megtarthatja a virtuális hálózatot. Azonban a HANA Large instances ExpressRoute áramkör és a társított virtuális hálózati átjáró közötti kapcsolatot törölnie kell.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az SAP HANA (nagy méretű példányok) telepítése és konfigurálása az Azure-ban](hana-installation.md)

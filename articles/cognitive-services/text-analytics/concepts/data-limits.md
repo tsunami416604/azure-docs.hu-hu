@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 08/14/2020
+ms.date: 11/19/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 905dde6932afb440c34bcccb563bfda98f23eb7c
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: c60adb09da05ba945bcf6ccb55e71c395f064211
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363833"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965102"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Az Text Analytics API vonatkozó adatforgalmi és díjszabási korlátok
 <a name="data-limits"></a>
@@ -31,24 +31,28 @@ Ebből a cikkből megtudhatja, hogy mekkora a mérete, és milyen arányban kül
 
 | Korlát | Érték |
 |------------------------|---------------|
-| Az egyes dokumentumok maximális mérete | 5 120 karakter a [StringInfo. LengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements)alapján mérve. Az állapot-tároló Text Analytics is vonatkozik. |
-| Teljes kérés maximális mérete | 1 MB. Az állapot-tároló Text Analytics is vonatkozik. |
+| Az egyes dokumentumok maximális mérete | 5 120 karakter a [StringInfo. LengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements)alapján mérve. A Text Analytics az állapotra is érvényes. |
+| Egyetlen dokumentum maximális mérete ( `/analyze` végpont)  | a 125K a [StringInfo. LengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements)alapján mért karaktereket. Nem vonatkozik az állapotra Text Analytics. |
+| Teljes kérés maximális mérete | 1 MB. A Text Analytics az állapotra is érvényes. |
 
-Az egyetlen kérelemben elküldhető dokumentumok maximális száma a használt API-verziótól és szolgáltatástól függ.
+Az egyetlen kérelemben elküldhető dokumentumok maximális száma a használt API-verziótól és szolgáltatástól függ. A `/analyze` végpont elutasítja a teljes kérelmet, ha bármelyik dokumentum meghaladja a maximális méretet (125K karakter)
 
 #### <a name="version-3"></a>[3\. verzió](#tab/version-3)
 
-A következő korlátok módosultak az API v3-as verziójában. Az alábbi korlátok túllépése a HTTP 400 hibakódot eredményezi.
+Az aktuális V3 API-ra a következő korlátozások vonatkoznak. Az alábbi korlátok túllépése a HTTP 400 hibakódot eredményezi.
 
 
 | Funkció | Dokumentumok maximális száma kérelem szerint | 
 |----------|-----------|
 | Nyelvfelismerés | 1000 |
 | Hangulatelemzés | 10 |
+| Vélemény bányászata | 10 |
 | Kulcskifejezések kinyerése | 10 |
 | Megnevezett entitások felismerése | 5 |
 | Entitáskapcsolás | 5 |
-| Text Analytics az állapotfigyelő tárolóhoz | 1000 |
+| Egészségügyi Text Analytics  | 10 a web-alapú API-hoz, 1000 a tárolóhoz. |
+| Végpont elemzése | 25 az összes művelethez. |
+
 #### <a name="version-2"></a>[2-es verzió](#tab/version-2)
 
 | Funkció | Dokumentumok maximális száma kérelem szerint | 
@@ -74,10 +78,10 @@ A díjszabási korlátja az Ön [díjszabási szintjétől](https://azure.micros
 | S3            | 500                 | 500                 |
 | S4            | 1000                | 1000                |
 
-A kérelmeket külön kell mérni az egyes Text Analytics szolgáltatásokhoz. Elküldheti például az árképzési szintjére vonatkozó kérések maximális számát az egyes szolgáltatásokhoz, egyszerre.  
+A kérelmek díjait külön kell mérni az egyes Text Analytics szolgáltatások esetében. Az árképzési szintjére vonatkozó kérések maximális számát az egyes szolgáltatásokra vonatkozóan küldheti el egyszerre. Ha például a szinten van, és az `S` 1000-es kérelmeket egyszerre küldi el, akkor nem fog tudni másik kérelmet küldeni a 59 másodpercre.
 
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Mi a Text Analytics API](../overview.md)
 * [Díjszabás részletei](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)

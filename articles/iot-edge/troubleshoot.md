@@ -4,16 +4,16 @@ description: Ebből a cikkből megtudhatja, hogyan sajátíthatja el a Azure IoT
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 04/27/2020
+ms.date: 11/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 540c4394a73ceff1f68a613561c034ca3bc7efc5
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: daae45c9eca45022225ea47aa048815d5eff70c4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046570"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964507"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>A IoT Edge eszköz hibáinak megoldása
 
@@ -46,6 +46,8 @@ A hibaelhárító eszköz sok olyan ellenőrzést futtat, amelyek a következő 
 * A *kapcsolat ellenőrzi* , hogy a IoT Edge futtatókörnyezet hozzáférhet-e a gazdagép-eszköz portjaihoz, és hogy az összes IoT Edge-összetevő csatlakozni tud-e a IoT hubhoz. Ez az ellenőrzés hibákat ad vissza, ha a IoT Edge eszköz proxy mögött van.
 * Az *éles üzemi készültségi ellenőrzések* az ajánlott éles környezetek, például az eszközök hitelesítésszolgáltatói tanúsítványai és a modul naplófájljai konfigurációjának állapotát keresik.
 
+A IoT Edge-ellenőrzési eszköz tárolót használ a diagnosztika futtatásához. A tároló képe `mcr.microsoft.com/azureiotedge-diagnostics:latest` a [Microsoft Container Registryon](https://github.com/microsoft/containerregistry)keresztül érhető el. Ha az internethez való közvetlen hozzáférés nélkül kell ellenőriznie az eszközt, az eszköznek hozzá kell férnie a tároló rendszerképéhez.
+
 További információ az eszköz által futtatott diagnosztikai ellenőrzésekről, beleértve a teendőket, ha hibaüzenetet vagy figyelmeztetést kap: [IoT Edge-hibakeresési ellenőrzés](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md).
 
 ## <a name="gather-debug-information-with-support-bundle-command"></a>Hibakeresési adatok összegyűjtése a "support-Bundle" paranccsal
@@ -66,6 +68,8 @@ Windows rendszeren:
 iotedge support-bundle --since 6h
 ```
 
+[Közvetlen metódussal](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics) is meghívhatja az eszközt, hogy feltöltse a support-Bundle parancs kimenetét az Azure Blob Storageba.
+
 > [!WARNING]
 > A parancs kimenete `support-bundle` tartalmazhatja a gazdagép, az eszköz és a modul nevét, a modulok által naplózott adatokat stb. Kérjük, vegye figyelembe, hogy ha a kimenetet egy nyilvános fórumon osztja meg.
 
@@ -74,6 +78,23 @@ iotedge support-bundle --since 6h
 Ha az IoT Edge egy régebbi verzióját futtatja, az új verzióra történő frissítés megoldhatja a problémát. Az `iotedge check` eszköz ellenőrzi, hogy a IoT Edge biztonsági démon a legújabb verzió-e, de nem ellenőrzi az IoT Edge hub és az ügynök moduljainak verzióját. Az eszközön futó futásidejű modulok verziójának vizsgálatához használja a parancsokat és a `iotedge logs edgeAgent` parancsot `iotedge logs edgeHub` . A verziószámot a rendszer a naplókban határozza meg a modul indításakor.
 
 Az eszköz frissítésével kapcsolatos utasításokért tekintse meg [a IoT Edge biztonsági démon és futtatókörnyezet frissítése](how-to-update-iot-edge.md)című témakört.
+
+## <a name="verify-the-installation-of-iot-edge-on-your-devices"></a>IoT Edge telepítésének ellenőrzése az eszközökön
+
+Az eszközökön IoT Edge telepítésének ellenőrzéséhez tekintse meg [a edgeAgent-modul Twin](https://docs.microsoft.com/azure/iot-edge/how-to-monitor-module-twins)utasításait.
+
+Ha a legújabb edgeAgent-modult szeretné beszerezni, futtassa a következő parancsot [Azure Cloud Shell](https://shell.azure.com/):
+
+   ```azurecli-interactive
+   az iot hub module-twin show --device-id <edge_device_id> --module-id $edgeAgent --hub-name <iot_hub_name>
+   ```
+
+Ezzel a paranccsal a rendszer az összes [jelentett edgeAgent-tulajdonságot](https://docs.microsoft.com/azure/iot-edge/module-edgeagent-edgehub)megjeleníti. Íme néhány hasznos funkció az eszköz állapotának figyeléséhez:
+
+* futtatókörnyezet állapota
+* futtatókörnyezet indítási ideje
+* futtatókörnyezet utolsó kilépésének időpontja
+* futásidejű újraindítások száma
 
 ## <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>A IoT Edge Security Manager és a naplók állapotának ellenõrzése
 
@@ -192,6 +213,8 @@ Ha a IoT Edge biztonsági démon fut, tekintse meg a tárolók naplóit a probl�
 ```cmd
 iotedge logs <container name>
 ```
+
+Az eszközön található egyik modulhoz is használhat [közvetlen metódust](how-to-retrieve-iot-edge-logs.md#upload-module-logs) , hogy feltöltse a modul naplóit az Azure Blob Storageba.
 
 ## <a name="view-the-messages-going-through-the-iot-edge-hub"></a>Az IoT Edge hub-on keresztül haladó üzenetek megtekintése
 

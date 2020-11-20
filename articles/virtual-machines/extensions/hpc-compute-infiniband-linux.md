@@ -7,17 +7,18 @@ author: vermagit
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: amverma
-ms.openlocfilehash: eb06f98d1a6e9b76c321e3d202043d656a2d94eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a5aa8983e6cbb0745e05ce275edeadeccb60736
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87829050"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966037"
 ---
 # <a name="infiniband-driver-extension-for-linux"></a>InfiniBand-illesztőprogram-bővítmény Linux rendszerhez
 
@@ -69,7 +70,7 @@ A következő JSON a bővítmény sémáját jeleníti meg.
 
 ### <a name="properties"></a>Tulajdonságok
 
-| Name (Név) | Érték/példa | Adattípus |
+| Name | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | dátum |
 | közzétevő | Microsoft. HpcCompute | sztring |
@@ -137,7 +138,7 @@ az vm extension set \
 
 ### <a name="add-extension-to-a-virtual-machine-scale-set"></a>Bővítmény hozzáadása virtuálisgép-méretezési csoporthoz
 
-A következő példa telepíti a legújabb 1,1 InfiniBandDriverLinux-bővítményt az összes RDMA-kompatibilis virtuális gépen egy *myVMSS* nevű, meglévő virtuálisgép-méretezési csoportban, amely a *myResourceGroup*nevű erőforráscsoporthoz van telepítve:
+A következő példa telepíti a legújabb 1,1 InfiniBandDriverLinux-bővítményt az összes RDMA-kompatibilis virtuális gépen egy *myVMSS* nevű, meglévő virtuálisgép-méretezési csoportban, amely a *myResourceGroup* nevű erőforráscsoporthoz van telepítve:
 
   ```powershell
   $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"

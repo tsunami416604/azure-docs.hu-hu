@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 2f606a2ff036c6bc3b4e3c508632d48ae8d40f15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36b96581d98465b860b630fe2f9a8aa64cf0f64f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400043"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964932"
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>StorSimple a Cloud Solutions szolgáltatói programhoz: gyakori kérdések
 
@@ -59,7 +59,7 @@ A CSP StorSimple virtuális tömbje minden olyan piacon elérhető, ahol a StorS
 Több megoldás létezik:
 
 - A partnerek eladják a StorSimple virtuális tömböt. 
-- A partnerek a StorSimple és más Azure-szolgáltatások vagy harmadik féltől származó szoftverek köré épülő megoldásokat is képesek biztosítani. További információkért tekintse át a [StorSimple körüli lehetséges megoldásokat](https://aka.ms/storsimple-build-solutions).
+- A partnerek a StorSimple és más Azure-szolgáltatások vagy harmadik féltől származó szoftverek köré épülő megoldásokat is képesek biztosítani. További információkért tekintse át a [StorSimple körüli lehetséges megoldásokat](./storsimple-disaster-recovery-using-azure-site-recovery.md).
 - Az új üzleti modelleket a felügyelt szolgáltatások nyújtásával is felfedezhetik.
 
 ### <a name="what-are-the-incentives-available-for-storsimple-csp-partners-do-i-qualify-for-any-csp-program-incentives"></a>Mik a StorSimple CSP-partnerek számára elérhető ösztönzők? Van-e jogosultsága a CSP programokra vonatkozó ösztönzőknek?
@@ -86,7 +86,7 @@ Igen. A végfelhasználók számára a partner Sales Executive és a Customer Ac
 ## <a name="support-for-storsimple-and-csp"></a>A StorSimple és a CSP támogatása
 
 ### <a name="are-there-any-forums-to-get-additional-support-for-csp-partners-to-deploy-and-manage-storsimple"></a>Vannak olyan fórumok, amelyek további támogatást kapnak a CSP-partnerek számára a StorSimple üzembe helyezéséhez és kezeléséhez?
-A StorSimple a CSP-fórumon találhatja meg az egyes gyakran feltett kérdésekre adott válaszokat. Először csatlakoztatnia kell az [Azure Advisors Yammer-csoportot](https://www.yammer.com/azureadvisors) . Ezután keresse meg és csatlakozzon a Group- **StorSimple partner Advisors**szolgáltatáshoz.
+A StorSimple a CSP-fórumon találhatja meg az egyes gyakran feltett kérdésekre adott válaszokat. Először csatlakoztatnia kell az [Azure Advisors Yammer-csoportot](https://www.yammer.com/azureadvisors) . Ezután keresse meg és csatlakozzon a Group- **StorSimple partner Advisors** szolgáltatáshoz.
 
 ### <a name="how-does-the-support-work-for-storsimple-for-csp"></a>Hogyan működik a támogatás a StorSimple for CSP esetében? 
 A CSP-ben a StorSimple támogatási modellje megegyezik a CSP-ben lévő többi Azure-szolgáltatással. További információkért keresse fel a [CSP ügyfélszolgálatát](/partner-center/csp-overview).

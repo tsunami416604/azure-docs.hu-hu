@@ -8,14 +8,14 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: jushiman
-ms.openlocfilehash: 7234c02d387e2fbf21a7f6002e44f84deb851133
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0aedcc3be4cb319dc24990507d85756bd77777e4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977595"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963827"
 ---
-# <a name="support-for-generation-2-vms-on-azure"></a>2. generációs virtuális gépek támogatása az Azure-ban
+# <a name="support-for-generation-2-vms-on-azure"></a>2. generációs virtuális gépek támogatása az Azure-on
 
 A 2. generációs virtuális gépek (VM-EK) támogatása már elérhető az Azure-ban. A virtuális gép generációját a létrehozása után nem módosíthatja, ezért a létrehozás előtt tekintse át az ezen a lapon található szempontokat.
 
@@ -85,7 +85,7 @@ Az Azure jelenleg nem támogatja a 2. generációs virtuális gépekhez a helysz
 
 ### <a name="generation-1-vs-generation-2-features"></a>1. generációs, 2. generációs funkciók
 
-| Szolgáltatás | 1. generációs | 2. generációs |
+| Funkció | 1. generációs | 2. generációs |
 |---------|--------------|--------------|
 | Indítás             | PCAT                      | UEFI                               |
 | Lemezvezérlő-vezérlők | IDE                       | SCSI                               |
@@ -101,11 +101,12 @@ Az Azure jelenleg nem támogatja a 2. generációs virtuális gépekhez a helysz
 | Azure Site Recovery               | :heavy_check_mark: | :heavy_check_mark: |
 | Biztonsági mentés/visszaállítás                    | :heavy_check_mark: | :heavy_check_mark: |
 | Közös Képtár              | :heavy_check_mark: | :heavy_check_mark: |
-| Azure Disk Encryption             | :heavy_check_mark: | x                |
+| [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md)             | :heavy_check_mark: | x                |
+| [Kiszolgálóoldali titkosítás](disk-encryption.md)            | :heavy_check_mark: | :heavy_check_mark: |
 
 ## <a name="creating-a-generation-2-vm"></a>2. generációs virtuális gép létrehozása
 
-### <a name="marketplace-image"></a>Piactéri rendszerkép
+### <a name="marketplace-image"></a>Marketplace-beli rendszerkép
 
 A Azure Portal vagy az Azure CLI-ben létrehozhat 2. generációs virtuális gépeket az UEFI rendszerindítást támogató piactér-rendszerképből.
 
@@ -119,7 +120,7 @@ Az alábbi lépéseket követve hozhat létre 2. generációs (Gen2) virtuális 
 1. Válasszon olyan képet, amely támogatja a Gen2.
 1. Kattintson a **Létrehozás** gombra.
 1. A **speciális** lapon, a **virtuális gép létrehozása** szakaszban válassza a 2. **generációs** lehetőséget.
-1. Az **alapvető beállítások** lap **példány részletei**területén válassza a **méret** elemet, és nyissa meg a **virtuális gép méretének kiválasztása panelt** .
+1. Az **alapvető beállítások** lap **példány részletei** területén válassza a **méret** elemet, és nyissa meg a **virtuális gép méretének kiválasztása panelt** .
 1. Válasszon egy [támogatott 2. generációs virtuális gépet](#generation-2-vm-sizes).
 1. A virtuális gép létrehozásának befejezéséhez ugorjon végig a többi oldalon.
 
@@ -146,7 +147,7 @@ A támogatott Piactéri rendszerképek aktuális listáját a [szolgáltatások 
 
 #### <a name="azure-cli"></a>Azure CLI
 
-Azt is megteheti, hogy az Azure CLI használatával megtekintheti a **kiadó**által megjelenített 2. generációs képeket.
+Azt is megteheti, hogy az Azure CLI használatával megtekintheti a **kiadó** által megjelenített 2. generációs képeket.
 
 ```azurecli
 az vm image list --publisher Canonical --sku gen2 --output table --all
@@ -192,7 +193,7 @@ A 2. generációs virtuális gépeket virtuálisgép-méretezési csoportok hasz
   1. A Azure Portal nyissa meg a virtuális gép tulajdonságai lapot.
   1. A virtuális gép leállításához és felszabadításához kattintson a **Leállítás** gombra.
   1. A **lemezek** szakaszban válassza ki a bővíteni kívánt operációsrendszer-lemezt.
-  1. A **lemezek** szakaszban válassza a **Konfigurálás**lehetőséget, majd frissítse a **méretet** a kívánt értékre.
+  1. A **lemezek** szakaszban válassza a **Konfigurálás** lehetőséget, majd frissítse a **méretet** a kívánt értékre.
   1. Lépjen vissza a virtuális gép tulajdonságai lapra, és **indítsa el** a virtuális gépet.
   
   Előfordulhat, hogy a rendszer a 2 TiB-nál nagyobb operációsrendszer-lemezekre vonatkozó figyelmeztetést jelenít meg. A figyelmeztetés nem vonatkozik a 2. generációs virtuális gépekre. A 4 TiB-nál nagyobb méretű operációsrendszer-lemezek azonban nem támogatottak.

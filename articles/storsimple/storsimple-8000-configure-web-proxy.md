@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: alkohli
-ms.openlocfilehash: 62c052f2293c670b43f1c77363c8bbbcc03d0de2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48671e7558ea1bd613d33372c96fa3c563407e81
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514288"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966224"
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>Webproxy konfigurálása a StorSimple-eszközhöz
 
@@ -62,13 +62,13 @@ A telepítővarázsló segítségével végigvezeti a webproxy konfigurálásán
 1. A soros konzol menüjében válassza az 1. lehetőséget, **Jelentkezzen be a teljes hozzáférés** lehetőséggel, és adja meg az **eszköz rendszergazdai jelszavát**. A telepítővarázsló-munkamenet elindításához írja be a következő parancsot:
    
     `Invoke-HcsSetupWizard`
-2. Ha első alkalommal használja az eszköz regisztrálásához szükséges varázslót, az összes szükséges hálózati beállítást konfigurálnia kell, amíg el nem éri a webproxy konfigurációját. Ha az eszköz már regisztrálva van, fogadja el az összes konfigurált hálózati beállítást, amíg el nem éri a webproxy konfigurációját. Ha a telepítő varázsló kéri a webproxy beállításainak konfigurálását, írja be az **Igen**értéket.
-3. A **webproxy URL-címéhez**adja meg a webproxy-kiszolgáló IP-címét vagy teljes tartománynevét (FQDN), valamint azt a TCP-portszámot, amelyet az eszköznek a felhővel való kommunikációhoz használni kíván. Használja az alábbi formátumot:
+2. Ha első alkalommal használja az eszköz regisztrálásához szükséges varázslót, az összes szükséges hálózati beállítást konfigurálnia kell, amíg el nem éri a webproxy konfigurációját. Ha az eszköz már regisztrálva van, fogadja el az összes konfigurált hálózati beállítást, amíg el nem éri a webproxy konfigurációját. Ha a telepítő varázsló kéri a webproxy beállításainak konfigurálását, írja be az **Igen** értéket.
+3. A **webproxy URL-címéhez** adja meg a webproxy-kiszolgáló IP-címét vagy teljes tartománynevét (FQDN), valamint azt a TCP-portszámot, amelyet az eszköznek a felhővel való kommunikációhoz használni kíván. Használja az alábbi formátumot:
    
     `http://<IP address or FQDN of the web proxy server>:<TCP port number>`
    
     Alapértelmezés szerint a 8080-as számú TCP-port van megadva.
-4. Válassza a hitelesítési típust **NTLM**, **Basic**vagy **none**értékre. Az alapszintű a proxykiszolgáló konfigurációjának legkevésbé biztonságos hitelesítése. Az NT LAN Manager (NTLM) egy nagyon biztonságos és összetett hitelesítési protokoll, amely egy háromutas üzenetkezelő rendszert használ (esetenként négy, ha további integritásra van szükség) egy felhasználó hitelesítéséhez. Az alapértelmezett hitelesítés az NTLM. További információ: [Alapszintű](https://hc.apache.org/httpclient-3.x/authentication.html) és [NTLM-hitelesítés](https://hc.apache.org/httpclient-3.x/authentication.html). 
+4. Válassza a hitelesítési típust **NTLM**, **Basic** vagy **none** értékre. Az alapszintű a proxykiszolgáló konfigurációjának legkevésbé biztonságos hitelesítése. Az NT LAN Manager (NTLM) egy nagyon biztonságos és összetett hitelesítési protokoll, amely egy háromutas üzenetkezelő rendszert használ (esetenként négy, ha további integritásra van szükség) egy felhasználó hitelesítéséhez. Az alapértelmezett hitelesítés az NTLM. További információ: [Alapszintű](https://hc.apache.org/httpclient-3.x/authentication.html) és [NTLM-hitelesítés](https://hc.apache.org/httpclient-3.x/authentication.html). 
    
    > [!IMPORTANT]
    > **A StorSimple Eszközkezelő szolgáltatásban az eszköz figyelési diagramjai nem működnek, ha az alapszintű vagy az NTLM-hitelesítés engedélyezve van az eszköz proxykiszolgáló-konfigurációjában. A figyelési diagramok működéséhez gondoskodnia kell arról, hogy a hitelesítés a NONE értékre legyen állítva.**
@@ -86,7 +86,7 @@ A webproxy már engedélyezve van. Kihagyhatja a [webproxy engedélyezése](#ena
 A webproxy-beállítások konfigurálásának másik módja a Windows PowerShell StorSimple-bővítménye-parancsmagok használatával történik. A webproxy konfigurálásához hajtsa végre a következő lépéseket.
 
 #### <a name="to-configure-web-proxy-via-cmdlets"></a>A webproxy konfigurálása a parancsmagok használatával
-1. A soros konzol menüjében válassza az 1. lehetőséget, majd **Jelentkezzen be a teljes hozzáférés**lehetőséggel. Ha a rendszer kéri, adja meg az **eszköz rendszergazdai jelszavát**. Az alapértelmezett jelszó: `Password1` .
+1. A soros konzol menüjében válassza az 1. lehetőséget, majd **Jelentkezzen be a teljes hozzáférés** lehetőséggel. Ha a rendszer kéri, adja meg az **eszköz rendszergazdai jelszavát**. Az alapértelmezett jelszó: `Password1` .
 2. A parancssorba írja be a következőt:
    
     `Set-HcsWebProxy -Authentication NTLM -ConnectionURI "<http://<IP address or FQDN of web proxy server>:<TCP port number>" -Username "<Username for web proxy server>"`
@@ -108,7 +108,7 @@ A webproxy alapértelmezés szerint le van tiltva. Miután konfigurálta a WebPr
 A webproxy eszközön való engedélyezéséhez hajtsa végre a következő lépéseket a Windows PowerShell StorSimple-bővítményeban:
 
 #### <a name="to-enable-web-proxy"></a>A webproxy engedélyezése
-1. A soros konzol menüjében válassza az 1. lehetőséget, majd **Jelentkezzen be a teljes hozzáférés**lehetőséggel. Ha a rendszer kéri, adja meg az **eszköz rendszergazdai jelszavát**. Az alapértelmezett jelszó: `Password1` .
+1. A soros konzol menüjében válassza az 1. lehetőséget, majd **Jelentkezzen be a teljes hozzáférés** lehetőséggel. Ha a rendszer kéri, adja meg az **eszköz rendszergazdai jelszavát**. Az alapértelmezett jelszó: `Password1` .
 2. A parancssorba írja be a következőt:
    
     `Enable-HcsWebProxy`
@@ -122,7 +122,7 @@ A webproxy eszközön való engedélyezéséhez hajtsa végre a következő lép
 A webproxy beállításai a Windows PowerShell felületén keresztül konfigurálhatók, és nem módosíthatók a portálon belülről. Megtekintheti azonban ezeket a konfigurált beállításokat a portálon. A webproxy megtekintéséhez hajtsa végre a következő lépéseket.
 
 #### <a name="to-view-web-proxy-settings"></a>A webproxy beállításainak megtekintése
-1. Navigáljon a **StorSimple Eszközkezelő service > eszközök**elemre. Válasszon ki egy eszközt, majd kattintson az **eszközbeállítások > hálózat**lehetőségre.
+1. Navigáljon a **StorSimple Eszközkezelő service > eszközök** elemre. Válasszon ki egy eszközt, majd kattintson az **eszközbeállítások > hálózat** lehetőségre.
 
     ![Kattintson a hálózat lehetőségre](./media/storsimple-8000-configure-web-proxy/view-web-proxy-1.png)
 
@@ -153,7 +153,6 @@ Ha a webproxy beállításai helytelenül vannak konfigurálva, hibaüzenetek je
 > * A hibaüzenetek fenti listája nem teljes.
 > * A webproxy beállításaival kapcsolatos hibák nem jelennek meg a StorSimple Eszközkezelő szolgáltatásának Azure Portal. Ha a konfiguráció befejezése után probléma van a webproxyval, az eszköz állapota **offline módra** változik a klasszikus portálon. |
 
-## <a name="next-steps"></a>További lépések
-* Ha problémákat tapasztal az eszköz telepítésekor vagy a webproxy beállításainak konfigurálásakor, tekintse meg a [StorSimple-eszköz központi telepítésének hibaelhárítása](storsimple-troubleshoot-deployment.md)című témakört.
+## <a name="next-steps"></a>Következő lépések
+* Ha problémákat tapasztal az eszköz telepítésekor vagy a webproxy beállításainak konfigurálásakor, tekintse meg a [StorSimple-eszköz központi telepítésének hibaelhárítása](./storsimple-8000-troubleshoot-deployment.md)című témakört.
 * Ha szeretné megtudni, hogyan használhatja a StorSimple Eszközkezelő szolgáltatást, a [StorSimple-eszköz felügyeletéhez használja a StorSimple Eszközkezelő szolgáltatását](storsimple-8000-manager-service-administration.md).
-

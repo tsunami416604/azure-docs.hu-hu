@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: 3032585c6f0a5cc6143eee06b12b6def50cd7cd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dcaa83980210a1f5449e8a2e0982cb8e39ff03d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80297713"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966190"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000-es sorozatú szoftverek, magas rendelkezésre állás és hálózati követelmények
 
@@ -63,7 +63,7 @@ A következő szoftverek követelményei a választható StorSimple-összetevők
 
 A StorSimple-eszköz egy zárolt eszköz. A tűzfalon azonban meg kell nyitni a portokat az iSCSI-, a felhő-és a felügyeleti forgalom engedélyezéséhez. A következő táblázat felsorolja azokat a portokat, amelyeket meg kell nyitni a tűzfalon. A (z) *in* vagy a *bejövő* tábla a bejövő ügyfelek által az eszközhöz való hozzáférést kérő irányt jelöli. A *kimenő vagy kimenő* állapot arra utal, hogy a StorSimple-eszköz hogyan küldi *el az* adatokat külsőleg, az üzembe helyezésen kívül: például az internet felé.
 
-| Portszám:<sup>1, 2</sup> | Be vagy ki | Port hatóköre | Kötelező | Jegyzetek |
+| Portszám:<sup>1, 2</sup> | Be vagy ki | Port hatóköre | Kötelező | Megjegyzések |
 | --- | --- | --- | --- | --- |
 | TCP 80 (HTTP)<sup>3</sup> |Ki |WAN |Nem |<ul><li>A rendszer a kimenő portot használja az internet-hozzáféréshez a frissítések lekéréséhez.</li><li>A kimenő webes proxy a felhasználó által konfigurálható.</li><li>A rendszerfrissítések engedélyezéséhez ezt a portot is meg kell nyitni a vezérlő rögzített IP-címei számára.</li></ul> |
 | TCP 443 (HTTPS)<sup>3</sup> |Ki |WAN |Igen |<ul><li>A kimenő port a felhőben tárolt adatok elérésére szolgál.</li><li>A kimenő webes proxy a felhasználó által konfigurálható.</li><li>A rendszerfrissítések engedélyezéséhez ezt a portot is meg kell nyitni a vezérlő rögzített IP-címei számára.</li><li>Ezt a portot is használja a rendszer az adattárolók begyűjtésére szolgáló vezérlőn is.</li></ul> |
@@ -122,7 +122,7 @@ Javasoljuk, hogy a legtöbb esetben a StorSimple rögzített IP-címek alapján 
 
 Az útválasztási metrika társítva van az interfészekhez és az átjáróhoz, amely az adatokat a megadott hálózatokra irányítja. Az útválasztási metrikát az útválasztási protokoll használja az adott célhelyhez tartozó legjobb elérési út kiszámításához, ha több elérési út is létezik ugyanarra a célhelyre. Minél alacsonyabb az útválasztási metrika, annál magasabb a preferencia.
 
-A StorSimple kontextusában, ha több hálózati adapter és átjáró van konfigurálva a forgalom továbbítására, az útválasztási mérőszámok lejátszásra kerülnek, hogy meghatározzák azt a relatív sorrendet, amelyben a rendszer használni fogja a csatolókat. A felhasználó nem módosíthatja az útválasztási metrikákat. A parancsmag segítségével azonban `Get-HcsRoutingTable` kinyomtathatja az útválasztási táblázatot (és metrikákat) a StorSimple-eszközön. További információ a Get-HcsRoutingTable parancsmagról a [StorSimple telepítésének hibaelhárítása című](storsimple-troubleshoot-deployment.md)témakörben.
+A StorSimple kontextusában, ha több hálózati adapter és átjáró van konfigurálva a forgalom továbbítására, az útválasztási mérőszámok lejátszásra kerülnek, hogy meghatározzák azt a relatív sorrendet, amelyben a rendszer használni fogja a csatolókat. A felhasználó nem módosíthatja az útválasztási metrikákat. A parancsmag segítségével azonban `Get-HcsRoutingTable` kinyomtathatja az útválasztási táblázatot (és metrikákat) a StorSimple-eszközön. További információ a Get-HcsRoutingTable parancsmagról a [StorSimple telepítésének hibaelhárítása című](./storsimple-8000-troubleshoot-deployment.md)témakörben.
 
 A 2. frissítéshez és újabb verziókhoz használt útválasztási metrikai algoritmust a következő módon lehet megmagyarázni.
 
@@ -244,10 +244,10 @@ Körültekintően tekintse át az ajánlott eljárásokat a StorSimple-eszközh�
 * Konfigurálja az StorSimple [-t két csomópontos fájlkiszolgálói fürt-konfigurációval][1]. Ha eltávolítja az egyes meghibásodási pontokat, és a gazdagép oldalon redundancia-felépítést készít, a teljes megoldás rendkívül elérhetővé válik.
 * A Windows Server 2012 (SMB 3,0) szolgáltatásban elérhető folyamatos rendelkezésre állású (CA) megosztások használata a tárolási vezérlők feladatátvétele során. A fájlkiszolgáló-fürtök és a folyamatosan rendelkezésre álló megosztások Windows Server 2012-ben történő konfigurálásával kapcsolatos további információkért tekintse meg ezt a [videót bemutató](https://channel9.msdn.com/Events/IT-Camps/IT-Camps-On-Demand-Windows-Server-2012/DEMO-Continuously-Available-File-Shares)részt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A StorSimple rendszerkorlátainak megismerése](storsimple-8000-limits.md).
 * [Ismerje meg, hogyan helyezheti üzembe a StorSimple-megoldást](storsimple-8000-deployment-walkthrough-u2.md).
 
 <!--Reference links-->
-[1]: https://technet.microsoft.com/library/cc731844(v=WS.10).aspx
+[1]: /previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731844(v=ws.10)

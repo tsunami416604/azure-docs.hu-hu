@@ -7,13 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: f84201de1f63704fefcf5de4041b95ed8c2122cd
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 015aadb791172f5033bf0198caad567c9bc03221
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094058"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965051"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Az Azure Spring Cloud metrikáinak ismertetése
 
@@ -38,7 +37,7 @@ Az egyes alkalmazások **alkalmazás-áttekintő** lapja egy mérőszámokat tar
 
 Az Azure Spring Cloud az alábbi öt diagramot biztosítja a percenként frissülő metrikákkal:
 
-* **Http-kiszolgálóhiba: hibák**száma az alkalmazás http-kéréseinél
+* **Http-kiszolgálóhiba: hibák** száma az alkalmazás http-kéréseinél
 * **Adat**: az alkalmazás által fogadott bájtok száma
 * **Kimenő adatmennyiség**: az alkalmazás által elküldett bájtok száma
 * **Kérelmek**: az alkalmazás által fogadott kérelmek
@@ -69,7 +68,7 @@ Az időtartomány az elmúlt 30 percről az utolsó 30 napra vagy egy egyéni id
 
 ![Metrika módosítása](media/metrics/metrics-6.png)
 
-Az alapértelmezett nézet magában foglalja az Azure Spring Cloud Service összes application's metrikáját. Egy alkalmazás vagy példány metrikája szűrhető a kijelzőn.  Kattintson a **szűrő hozzáadása**gombra, állítsa a tulajdonságot **alkalmazás**értékre, majd válassza ki a figyelni kívánt célalkalmazás **értékét az értékek** szövegmezőben. 
+Az alapértelmezett nézet magában foglalja az Azure Spring Cloud Service összes application's metrikáját. Egy alkalmazás vagy példány metrikája szűrhető a kijelzőn.  Kattintson a **szűrő hozzáadása** gombra, állítsa a tulajdonságot **alkalmazás** értékre, majd válassza ki a figyelni kívánt célalkalmazás **értékét az értékek** szövegmezőben. 
 
 Kétféle szűrőt használhat (Tulajdonságok):
 * Alkalmazás: szűrés az alkalmazás neve szerint
@@ -82,7 +81,7 @@ Használhatja a **felosztás alkalmazása** lehetőséget is, amely egy alkalmaz
 ![Metrika felosztása](media/metrics/metrics-8.png)
 
 >[!TIP]
-> Saját diagramokat hozhat létre a metrikák lapon, és rögzítheti őket az **irányítópulton**. Először nevezze el a diagramot.  Ezután válassza **a rögzítés az irányítópulton lehetőséget a jobb felső sarokban**. Mostantól a portál **irányítópultján**is megtekintheti az alkalmazását.
+> Saját diagramokat hozhat létre a metrikák lapon, és rögzítheti őket az **irányítópulton**. Először nevezze el a diagramot.  Ezután válassza **a rögzítés az irányítópulton lehetőséget a jobb felső sarokban**. Mostantól a portál **irányítópultján** is megtekintheti az alkalmazását.
 
 ## <a name="user-metrics-options"></a>Felhasználói mérőszámok beállításai
 
@@ -90,13 +89,13 @@ Az alábbi táblázatokban az elérhető metrikák és részletek láthatók.
 
 ### <a name="error"></a>Hiba
 >[!div class="mx-tdCol2BreakAll"]
->| Név | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
+>| Name | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
 >|----|----|----|------------|
 >| tomcat. Global. error | tomcat. Global. error | Darabszám | A feldolgozott kérelmekben előforduló hibák száma |
 
 ### <a name="performance"></a>Teljesítmény
 >[!div class="mx-tdCol2BreakAll"]
->| Név | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
+>| Name | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
 >|----|----|----|------------|
 >| System. CPU. használat | System. CPU. használat | Százalék | A legújabb CPU-használat a teljes rendszer számára. Ez az érték a [0.0, 1.0] intervallumban megjelenő Double. A 0,0 érték azt jelenti, hogy az összes CPU tétlen volt a legutóbbi megfigyelt időszakban, míg a 1,0 érték azt jelenti, hogy minden CPU aktívan futtatta az idő 100%-át az elmúlt időszak során.|
 >| Process. CPU. használat | Alkalmazás CPU-kihasználtságának százalékos aránya | Százalék | A Java virtuális gép folyamat legutóbbi CPU-használata. Ez az érték a [0.0, 1.0] intervallumban megjelenő Double. A 0,0 érték azt jelenti, hogy egyik processzor sem futtatott szálakat a JVM folyamat során a legutóbbi megfigyelt időszakban, míg a 1,0 érték azt jelenti, hogy minden CPU aktívan futtatta a szálakat a JVM 100%-ában az elmúlt időszak során. A JVM található szálak közé tartoznak az alkalmazási szálak, valamint a JVM belső szálak.|
@@ -110,11 +109,10 @@ Az alábbi táblázatokban az elérhető metrikák és részletek láthatók.
 >| JVM. GC. pause. Total. Count | JVM. GC. pause (összesen-Count) | Darabszám | A JMV elindítását követő összes GC-szám, beleértve a fiatal és a régi GC-t. |
 >| JVM. GC. pause. Total. Time | JVM. GC. pause (teljes idő) | Ezredmásodpercben | A JMV elindítását követően felhasznált teljes GC-idő, beleértve a fiatal és a régi GC-t. |
 
-::: zone pivot="programming-language-csharp"
 ### <a name="performance-net"></a>Teljesítmény (.NET)
 
 >[!div class="mx-tdCol2BreakAll"]
->| Név | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
+>| Name | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
 >|------|-----------------------------|------|---------|
 >| Processzorhasználat       | CPU – használat      | Ezredmásodpercben | A folyamat által használt CPU-mennyiség. |
 >| Munkakészlet     | munkakészlet    | Megabájtban    | A folyamat által használt munkakészlet mennyisége. |
@@ -136,22 +134,20 @@ Az alábbi táblázatokban az elérhető metrikák és részletek láthatók.
 >| Aktív Időzítők száma               | aktív – időzítő – darabszám               | Darabszám | A jelenleg aktív Időzítők száma. Az aktív időzítő olyan, amely a jövőben egy adott időpontban van regisztrálva, és még nem lett megszakítva. |
 
 További információ: DotNet- [számlálók](/dotnet/core/diagnostics/dotnet-counters).
-::: zone-end
 
 ### <a name="request"></a>Kérés
 >[!div class="mx-tdCol2BreakAll"]
->| Név | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
+>| Name | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
 >|----|----|----|------------|
 >| tomcat. Global. elküldve | tomcat. Global. elküldve | Bájt | Elküldve a Tomcat-webkiszolgálók mennyisége |
 >| tomcat. Global. Received | tomcat. Global. Received | Bájt | A lekéréses tomcat-webkiszolgáló mennyisége |
 >| tomcat. Global. Request. Total. Count | tomcat. Global. Request (összesen-Count) | Darabszám | A Tomcat webkiszolgáló által feldolgozott kérelmek teljes száma |
 >| tomcat. Global. Request. max | tomcat. Global. Request. max | Ezredmásodpercben | A Tomcat-webkiszolgáló maximális ideje a kérelem feldolgozására |
 
-::: zone pivot="programming-language-csharp"
 ### <a name="request-net"></a>Kérelem (.NET)
 
 >[!div class="mx-tdCol2BreakAll"]
->| Név | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
+>| Name | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
 >|------|-----------------------------|------|---------|
 >| Kérések száma másodpercenként | kérelmek/másodperc | Darabszám | Kérelmek gyakorisága. |
 >| Összes kérelem | kérelmek összesen | Darabszám | Kérelmek száma összesen |
@@ -159,11 +155,10 @@ További információ: DotNet- [számlálók](/dotnet/core/diagnostics/dotnet-co
 >| Sikertelen kérelmek | Sikertelen – kérelmek | Darabszám | Sikertelen kérelmek száma. |
 
 További információ: DotNet- [számlálók](/dotnet/core/diagnostics/dotnet-counters).
-::: zone-end
 
 ### <a name="session"></a>Munkamenet
 >[!div class="mx-tdCol2BreakAll"]
->| Név | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
+>| Name | Rugós indítószerkezet metrikájának neve | Egység | Részletek |
 >|----|----|----|------------|
 >| tomcat. Sessions. Active. max | tomcat. Sessions. Active. max | Darabszám | Egy időben aktív munkamenetek maximális száma |
 >| tomcat. Sessions. Alive. max | tomcat. Sessions. Alive. max | Ezredmásodpercben | A lejárt munkamenet élettartamának leghosszabb ideje (másodpercben) |
@@ -172,7 +167,7 @@ További információ: DotNet- [számlálók](/dotnet/core/diagnostics/dotnet-co
 >| tomcat. Sessions. elutasítva | tomcat. Sessions. elutasítva | Darabszám | Azon munkamenetek száma, amelyek nem lettek létrehozva, mert elérte az aktív munkamenetek maximális számát. |
 >| tomcat. Sessions. Active. Current | tomcat. Sessions. Active. Current | Darabszám | Tomcat-munkamenet aktív száma |
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Gyors útmutató: Azure Spring Cloud-alkalmazások figyelése naplókkal, metrikákkal és nyomkövetéssel](spring-cloud-quickstart-logs-metrics-tracing.md)
 

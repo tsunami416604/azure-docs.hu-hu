@@ -7,18 +7,18 @@ ms.service: dns
 ms.topic: troubleshooting
 ms.date: 09/20/2019
 ms.author: rohink
-ms.openlocfilehash: a63a0c1e0044f5dcd6babb4941e1f4409404cdd2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fae63c61949302e25c9dee2899577fa4f0d2a975
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84711187"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965578"
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS hibaelhárítási útmutató
 
 Ez a cikk a gyakori Azure DNS kérdésekre vonatkozó hibaelhárítási információkat tartalmaz.
 
-Ha ezek a lépések nem oldják meg a problémát, megkeresheti vagy közzéteheti a problémát a [Microsoft Q&a közösségi támogatással kapcsolatos kérdéseit](https://docs.microsoft.com/answers/topics/azure-virtual-network.html)is. Vagy egy Azure-támogatási kérést is megnyithat.
+Ha ezek a lépések nem oldják meg a problémát, megkeresheti vagy közzéteheti a problémát a [Microsoft Q&a közösségi támogatással kapcsolatos kérdéseit](/answers/topics/azure-virtual-network.html)is. Vagy egy Azure-támogatási kérést is megnyithat.
 
 
 ## <a name="i-cant-create-a-dns-zone"></a>Nem tudok DNS-zónát létrehozni
@@ -34,7 +34,7 @@ A leggyakoribb hibák elhárításához próbálja ki az alábbi lépéseket:
 ### <a name="recommended-articles"></a>Ajánlott cikkek
 
 * [DNS-zónák és -rekordok](dns-zones-records.md)
-* [DNS-zóna létrehozása](dns-getstarted-create-dnszone-portal.md)
+* [DNS-zóna létrehozása](./dns-getstarted-portal.md)
 
 ## <a name="i-cant-create-a-dns-record"></a>Nem tudok létrehozni egy DNS-rekordot
 
@@ -50,7 +50,7 @@ A leggyakoribb hibák elhárításához próbálja ki az alábbi lépéseket:
 ### <a name="recommended-articles"></a>Ajánlott cikkek
 
 * [DNS-zónák és -rekordok](dns-zones-records.md)
-* [DNS-zóna létrehozása](dns-getstarted-create-dnszone-portal.md)
+* [DNS-zóna létrehozása](./dns-getstarted-portal.md)
 
 
 
@@ -85,13 +85,12 @@ Példák az SRV-rekordnevekre („sip” szolgáltatásnév, „tcp” protokoll
 ### <a name="recommended-articles"></a>Ajánlott cikkek
 
 * [DNS-zónák és -rekordok](dns-zones-records.md)
-* [DNS-rekordhalmazok és -rekordok létrehozása az Azure Portal használatával](dns-getstarted-create-recordset-portal.md)
+* [DNS-rekordhalmazok és -rekordok létrehozása az Azure Portal használatával](./dns-getstarted-portal.md)
 * [SRV rekordtípus (Wikipédia)](https://en.wikipedia.org/wiki/SRV_record)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tudnivalók [Azure DNS zónákról és rekordokról](dns-zones-records.md)
-* A Azure DNS használatának megkezdéséhez Ismerje meg, hogyan [hozhat létre DNS-zónát](dns-getstarted-create-dnszone-portal.md) , és hogyan [hozhat létre DNS-rekordokat](dns-getstarted-create-recordset-portal.md).
+* A Azure DNS használatának megkezdéséhez Ismerje meg, hogyan [hozhat létre DNS-zónát](./dns-getstarted-portal.md) , és hogyan [hozhat létre DNS-rekordokat](./dns-getstarted-portal.md).
 * Meglévő DNS-zóna áttelepítéséhez tekintse meg [a DNS-zónafájl importálását és exportálását](dns-import-export.md)ismertető témakört.
-

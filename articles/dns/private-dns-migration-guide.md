@@ -8,12 +8,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 06/18/2019
 ms.author: rohink
-ms.openlocfilehash: 9302e922d509f3145fd7913835ce896a6da860fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63bd1d01adf66f33a8ee5349f35063473429b007
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84699464"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964779"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>Örökölt Azure DNS privát zónák áttelepítése új erőforrás-modellbe
 
@@ -102,21 +102,21 @@ Ha úgy találja, hogy a DNS-lekérdezések nem oldhatók fel, várjon néhány 
 
 Ez a lépés törli a régi DNS-zónákat, és csak azt követően kell végrehajtani, hogy ellenőrizte, hogy a DNS-feloldás a várt módon működik-e. A rendszer felszólítja az egyes privát DNS-zónák törlésére. Ha ellenőrzi, hogy az adott zóna DNS-feloldása megfelelően működik-e, írja be az "Y" értéket minden kérdésnél.
 
-![A fölöslegessé vált elemek eltávolítása](./media/private-dns-migration-guide/cleanup-migration-script.png)
+![A feleslegessé vált elemek eltávolítása](./media/private-dns-migration-guide/cleanup-migration-script.png)
 
 ## <a name="update-your-automation"></a>Az automatizálás frissítése
 
 Ha automatizálást használ, beleértve a sablonokat, a PowerShell-parancsfájlokat vagy az SDK használatával fejlesztett egyéni kódokat, frissítenie kell az automationt, hogy az új erőforrás-modellt használja a magánhálózati DNS-zónákhoz. Alább láthatók az új privát DNS CLI/PS/SDK dokumentációra mutató hivatkozások.
-* [Azure DNS privát zónák REST API](https://docs.microsoft.com/rest/api/dns/privatedns/privatezones)
-* [Privát zónák Azure DNS parancssori felület](https://docs.microsoft.com/cli/azure/ext/privatedns/network/private-dns?view=azure-cli-latest)
-* [Privát zónák Azure DNS PowerShell](https://docs.microsoft.com/powershell/module/az.privatedns/?view=azps-2.3.2)
-* [Azure DNS Private Zones SDK](https://docs.microsoft.com/dotnet/api/overview/azure/privatedns/management?view=azure-dotnet-preview)
+* [Azure DNS privát zónák REST API](/rest/api/dns/privatedns/privatezones)
+* [Privát zónák Azure DNS parancssori felület](/cli/azure/ext/privatedns/network/private-dns?view=azure-cli-latest)
+* [Privát zónák Azure DNS PowerShell](/powershell/module/az.privatedns/?view=azps-2.3.2)
+* [Azure DNS Private Zones SDK](/dotnet/api/overview/azure/privatedns/management?view=azure-dotnet-preview)
 
 ## <a name="need-further-help"></a>További segítségre van szüksége
 
 Hozzon létre egy támogatási jegyet, ha további segítségre van szüksége az áttelepítési folyamathoz, vagy valamilyen okból kifolyólag a fenti felsorolt lépések nem működnek. Adja meg a PowerShell-parancsfájl által a támogatási jegyhez létrehozott átirat-fájlt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan hozhat létre saját zónát Azure DNS a [Azure PowerShell](./private-dns-getstarted-powershell.md) vagy az [Azure CLI](./private-dns-getstarted-cli.md)használatával.
 

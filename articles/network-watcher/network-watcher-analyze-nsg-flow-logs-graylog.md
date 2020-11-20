@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: damendo
-ms.openlocfilehash: 62f4a06ec729d896dc11a290bc7a5ccc7c321683
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b363d90d05e95b017c3a655b57dbabc3712a155
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90984063"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965544"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Hálózati biztonsági csoport folyamatábráinak kezelése és elemzése az Azure-ban Network Watcher és Graylog használatával
 
@@ -30,7 +30,7 @@ A hálózatban számos hálózati biztonsági csoporttal rendelkezhet, amelyeken
 > [!Warning]
 > Az alábbi lépések a flow-naplók 1-es verziójával működnek. Részletekért lásd: a [hálózati biztonsági csoportok flow-naplózásának bemutatása](network-watcher-nsg-flow-logging-overview.md). A következő utasítások nem fognak működni a naplófájlok 2-es verziójával, módosítás nélkül.
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Használati eset
 
 A hálózati biztonsági csoport folyamatábrái engedélyezve vannak a Network Watcher használatával. A flow-naplók beáramlanak az Azure Blob Storage-ba. A Logstash beépülő modul a blob Storage-ból való kapcsolódáshoz és feldolgozáshoz, valamint a Graylog való elküldéséhez használható. A flow-naplók Graylog való tárolása után a rendszer elemezheti és testre szabhatja a testreszabott irányítópultok megjelenítését.
 
@@ -40,7 +40,7 @@ A hálózati biztonsági csoport folyamatábrái engedélyezve vannak a Network 
 
 ### <a name="enable-network-security-group-flow-logging"></a>Hálózati biztonsági csoport adatfolyam-naplózásának engedélyezése
 
-Ebben a forgatókönyvben a hálózati biztonsági csoport flow-naplózási szolgáltatásának engedélyezve kell lennie legalább egy hálózati biztonsági csoportban a fiókjában. A hálózati biztonsági csoport folyamatábráinak engedélyezésével kapcsolatos utasításokért tekintse meg az alábbi cikket a [hálózati biztonsági csoportok folyamatábrájának naplózása](network-watcher-nsg-flow-logging-overview.md)című cikkben.
+Ebben a forgatókönyvben a hálózati biztonsági csoport flow-naplózási szolgáltatásának engedélyezve kell lennie legalább egy hálózati biztonsági csoportban a fiókjában. A hálózati biztonsági csoport folyamatábráinak engedélyezésével kapcsolatos utasításokért tekintse meg az alábbi cikket a [hálózati biztonsági csoportok folyamatábrájának naplózása](network-watcher-nsg-flow-logging-overview.md)című cikkben.
 
 ### <a name="setting-up-graylog"></a>Graylog beállítása
 
@@ -53,7 +53,7 @@ Ez a példa a minimális Graylog-telepítőt használja (azaz a Graylog egyetlen
 
 A Graylog több módon is telepíthető a platformtól és a beállításoktól függően. A lehetséges telepítési módszerek teljes listájáért tekintse meg a Graylog hivatalos [dokumentációját](https://docs.graylog.org/en/2.2/pages/installation.html). A Graylog Server-alkalmazás Linux-disztribúción fut, és a következő előfeltételekkel rendelkezik:
 
--  Java SE 8 vagy újabb – a [Azul Azure JDK dokumentációja](https://aka.ms/azure-jdks)
+-  Java SE 8 vagy újabb – a [Azul Azure JDK dokumentációja](/azure/developer/java/fundamentals/java-jdk-long-term-support)
 -  Rugalmas keresés 2. x (2.1.0 vagy újabb) – a [Elasticsearch telepítési dokumentációja](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/_installation.html)
 -  MongoDB 2,4 vagy újabb – [MongoDB telepítési dokumentáció](https://docs.mongodb.com/manual/administration/install-on-linux/)
 
@@ -177,7 +177,7 @@ Most, hogy létrehozott egy kapcsolódást a folyamat naplóihoz a Logstash hasz
 
 1. Navigáljon a Graylog-kiszolgáló webes felületéhez a konfigurált URL-cím használatával. A felületet úgy érheti el, hogy a böngészőt a következőre irányítja: `http://<graylog-server-ip>:9000/`
 
-2. A konfiguráció lapra való navigáláshoz válassza a jobb oldali navigációs sáv **rendszer** legördülő menüjét, majd kattintson a **bemenetek**elemre.
+2. A konfiguráció lapra való navigáláshoz válassza a jobb oldali navigációs sáv **rendszer** legördülő menüjét, majd kattintson a **bemenetek** elemre.
    Másik lehetőségként navigáljon a `http://<graylog-server-ip>:9000/system/inputs`
 
    ![Első lépések](./media/network-watcher-analyze-nsg-flow-logs-graylog/getting-started.png)
@@ -246,4 +246,4 @@ A Network Watcher és a Graylog integrálásával mostantól kényelmes és köz
 
 ## <a name="next-steps"></a>Következő lépések
 
-Megtudhatja, hogyan jelenítheti meg a hálózati biztonsági csoport folyamatának naplóit Power BI a [hálózati biztonsági csoport adatforgalmának naplófájljainak Power bi](network-watcher-visualize-nsg-flow-logs-power-bi.md)használatával történő megjelenítésével.
+Megtudhatja, hogyan jelenítheti meg a hálózati biztonsági csoport folyamatának naplóit Power BI a [hálózati biztonsági csoport adatforgalmának naplófájljainak Power bi](network-watcher-visualize-nsg-flow-logs-power-bi.md)használatával történő megjelenítésével.

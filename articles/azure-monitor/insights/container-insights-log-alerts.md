@@ -3,12 +3,12 @@ title: Riasztások naplózása Azure Monitorről a tárolók számára | Microso
 description: Ez a cikk bemutatja, hogyan hozhat létre egyéni naplózási riasztásokat a memóriához és a CPU-használathoz a Azure Monitor for containers szolgáltatásban.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: ddf898978bdaf51cb81a95c3209855c51212280f
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: e9b0e01ca4c0ccb24d0d1b04a4d17ec06db253b6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995255"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966251"
 ---
 # <a name="how-to-create-log-alerts-from-azure-monitor-for-containers"></a>Naplóbeli riasztások létrehozása Azure Monitorból tárolók számára
 
@@ -17,7 +17,7 @@ A tárolók Azure Monitor figyeli a felügyelt vagy önállóan felügyelt Kuber
 - Ha a fürt csomópontjain a CPU vagy a memória kihasználtsága meghaladja a küszöbértéket
 - Ha a processzor vagy a memória kihasználtsága egy vezérlőn belül bármely tárolón meghaladja a küszöbértéket, a megfelelő erőforráson beállított korláthoz képest
 - A nem *Feltaposott* állapot-csomópontok száma
-- *Sikertelen*, *függőben lévő*, *ismeretlen*, *futó*vagy *sikeres* Pod-Phase Counts
+- *Sikertelen*, *függőben lévő*, *ismeretlen*, *futó* vagy *sikeres* Pod-Phase Counts
 - Ha a fürtcsomópontok szabad lemezterülete meghaladja a küszöbértéket
 
 Ha magas CPU-vagy memóriahasználat-kihasználtságot szeretne használni, vagy kevés a szabad lemezterület a fürtcsomópontokon, használja a metrikai riasztás vagy metrika-mérési riasztás létrehozásához megadott lekérdezéseket. Habár a metrikák riasztásai alacsonyabb késéssel rendelkeznek, mint a naplózási riasztások, a riasztások speciális lekérdezéseket és kifinomultabb kifinomultságot biztosítanak. A naplózási riasztási lekérdezések összehasonlítják a DateTime-et a jelen értékkel a *Now* operátor használatával, és egy óra múlva. (A tárolók Azure Monitor az összes dátumot az egyezményes világidő (UTC) formátumában tárolja.)
@@ -207,14 +207,14 @@ KubeNodeInventory
             NotReadyCount = todouble(NotReadyCount) / ClusterSnapshotCount
 | order by ClusterName asc, Computer asc, TimeGenerated desc
 ```
-A következő lekérdezés a pod fázisok számát adja vissza az összes fázis alapján: *sikertelen*, *függőben lévő*, *ismeretlen*, *futó*vagy *sikeres*.  
+A következő lekérdezés a pod fázisok számát adja vissza az összes fázis alapján: *sikertelen*, *függőben lévő*, *ismeretlen*, *futó* vagy *sikeres*.  
 
 ```kusto
-let endDateTime = now();
-    let startDateTime = ago(1h);
-    let trendBinSize = 1m;
-    let clusterName = '<your-cluster-name>';
-    KubePodInventory
+let endDateTime = now(); 
+let startDateTime = ago(1h);
+let trendBinSize = 1m;
+let clusterName = '<your-cluster-name>';
+KubePodInventory
     | where TimeGenerated < endDateTime
     | where TimeGenerated >= startDateTime
     | where ClusterName == clusterName
@@ -224,13 +224,13 @@ let endDateTime = now();
         KubePodInventory
         | where TimeGenerated < endDateTime
         | where TimeGenerated >= startDateTime
-        | distinct ClusterName, Computer, PodUid, TimeGenerated, PodStatus
+        | summarize PodStatus=any(PodStatus) by TimeGenerated, PodUid, ClusterId
         | summarize TotalCount = count(),
                     PendingCount = sumif(1, PodStatus =~ 'Pending'),
                     RunningCount = sumif(1, PodStatus =~ 'Running'),
                     SucceededCount = sumif(1, PodStatus =~ 'Succeeded'),
                     FailedCount = sumif(1, PodStatus =~ 'Failed')
-                 by ClusterName, bin(TimeGenerated, trendBinSize)
+                by ClusterName, bin(TimeGenerated, trendBinSize)
     ) on ClusterName, TimeGenerated
     | extend UnknownCount = TotalCount - PendingCount - RunningCount - SucceededCount - FailedCount
     | project TimeGenerated,
@@ -244,7 +244,7 @@ let endDateTime = now();
 ```
 
 >[!NOTE]
->Bizonyos Pod fázisok (például *függő*, *sikertelen*vagy *ismeretlen*) riasztásához módosítsa a lekérdezés utolsó sorát. Például a *FailedCount* való riasztáshoz használja a következőt: <br/>`| summarize AggregatedValue = avg(FailedCount) by bin(TimeGenerated, trendBinSize)`
+>Bizonyos Pod fázisok (például *függő*, *sikertelen* vagy *ismeretlen*) riasztásához módosítsa a lekérdezés utolsó sorát. Például a *FailedCount* való riasztáshoz használja a következőt: <br/>`| summarize AggregatedValue = avg(FailedCount) by bin(TimeGenerated, trendBinSize)`
 
 A következő lekérdezés a fürtcsomópontok lemezeit adja vissza, amelyek meghaladják a felhasznált 90%-os szabad területet. A fürt AZONOSÍTÓjának lekéréséhez először futtassa a következő lekérdezést, és másolja az értéket a `ClusterId` tulajdonságból:
 
@@ -292,10 +292,10 @@ Ez a szakasz egy mérőszám-mérési riasztási szabály létrehozását mutatj
 9. A riasztást a következőképpen állíthatja be:
 
     1. A legördülő lista **alapján** válassza a **metrika mértékét**. A metrikák mérése riasztást hoz létre a lekérdezés minden olyan objektumához, amelynek értéke a megadott küszöbérték felett van.
-    1. A **feltétel**beállításnál válassza a **nagyobb, mint**lehetőséget, és adja meg a **75** értéket kezdeti alapértékként **a CPU** -és memória-kihasználtsági riasztásokhoz. A kevés lemezterülettel kapcsolatos riasztáshoz adja meg a **90**értéket. Vagy adjon meg egy másik értéket, amely megfelel a feltételnek.
-    1. Az **trigger riasztás alapján** szakaszban válassza az **egymást követő szabálysértések**lehetőséget. A legördülő listában válassza a nagyobb, **mint**lehetőséget, és írja be a **2**értéket.
-    1. Ha riasztást szeretne beállítani a tároló PROCESSZORához vagy a memória kihasználtságához, az Összesítés területen válassza **a** **ContainerName**lehetőséget. A fürt csomópontjának alacsony lemezes riasztásának konfigurálásához válassza a **ClusterId**lehetőséget.
-    1. A **kiértékelt alapján** szakaszban állítsa **60 percre**az **időszak** értékét. A szabály 5 percenként fut, és az aktuális időponton belül az elmúlt órában létrehozott rekordokat adja vissza. Az időszak beállítása széles ablakos fiókok számára az esetleges adatkésés érdekében. Azt is biztosítja, hogy a lekérdezés az adatok visszaadása után elkerülje a hamis negatív értéket, ha a riasztás soha nem következik be.
+    1. A **feltétel** beállításnál válassza a **nagyobb, mint** lehetőséget, és adja meg a **75** értéket kezdeti alapértékként **a CPU** -és memória-kihasználtsági riasztásokhoz. A kevés lemezterülettel kapcsolatos riasztáshoz adja meg a **90** értéket. Vagy adjon meg egy másik értéket, amely megfelel a feltételnek.
+    1. Az **trigger riasztás alapján** szakaszban válassza az **egymást követő szabálysértések** lehetőséget. A legördülő listában válassza a nagyobb, **mint** lehetőséget, és írja be a **2** értéket.
+    1. Ha riasztást szeretne beállítani a tároló PROCESSZORához vagy a memória kihasználtságához, az Összesítés területen válassza **a** **ContainerName** lehetőséget. A fürt csomópontjának alacsony lemezes riasztásának konfigurálásához válassza a **ClusterId** lehetőséget.
+    1. A **kiértékelt alapján** szakaszban állítsa **60 percre** az **időszak** értékét. A szabály 5 percenként fut, és az aktuális időponton belül az elmúlt órában létrehozott rekordokat adja vissza. Az időszak beállítása széles ablakos fiókok számára az esetleges adatkésés érdekében. Azt is biztosítja, hogy a lekérdezés az adatok visszaadása után elkerülje a hamis negatív értéket, ha a riasztás soha nem következik be.
 
 10. A riasztási szabály befejezéséhez válassza a **kész** lehetőséget.
 11. Adjon meg egy nevet a **riasztási szabály neve** mezőben. Adja meg azt a **leírást** , amely a riasztás részleteit tartalmazza. Válassza ki a megfelelő súlyossági szintet a megadott beállítások közül.

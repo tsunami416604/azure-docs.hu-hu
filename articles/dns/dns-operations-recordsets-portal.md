@@ -7,22 +7,22 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 10/6/2018
 ms.author: rohink
-ms.openlocfilehash: 111d94db1cbec658daabfb1a4c38c8160d6f50b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22ceba69ecf865d906021068a39a9d273b842ca2
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84696831"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965731"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>DNS-rekordok és-rekordhalmazok kezelése a Azure Portal használatával
 
 Ebből a cikkből megtudhatja, hogyan kezelheti a DNS-zónához tartozó rekordhalmazokat és rekordokat a Azure Portal használatával.
 
-Fontos megérteni a DNS-rekordhalmazok és az egyes DNS-rekordok közötti különbséget. A rekordhalmaz olyan rekordok gyűjteménye, amelyek azonos nevű és azonos típusú zónában találhatók. További információ: [DNS-rekordhalmazok és-rekordok létrehozása a Azure Portal használatával](dns-getstarted-create-recordset-portal.md).
+Fontos megérteni a DNS-rekordhalmazok és az egyes DNS-rekordok közötti különbséget. A rekordhalmaz olyan rekordok gyűjteménye, amelyek azonos nevű és azonos típusú zónában találhatók. További információ: [DNS-rekordhalmazok és-rekordok létrehozása a Azure Portal használatával](./dns-getstarted-portal.md).
 
 ## <a name="create-a-new-record-set-and-record"></a>Új rekordazonosító és rekord létrehozása
 
-Ha egy rekordhalmazt szeretne létrehozni a Azure Portalban, tekintse meg [a DNS-rekordok létrehozása a Azure Portal használatával](dns-getstarted-create-recordset-portal.md)című témakört.
+Ha egy rekordhalmazt szeretne létrehozni a Azure Portalban, tekintse meg [a DNS-rekordok létrehozása a Azure Portal használatával](./dns-getstarted-portal.md)című témakört.
 
 ## <a name="view-a-record-set"></a>Rekord megtekintése
 
@@ -70,7 +70,7 @@ A rekord mentését követően a **DNS-zóna** panelen beállított rekord ért�
 A rekordokat a Azure Portal használatával távolíthatja el. Vegye figyelembe, hogy a rekordok utolsó rekordjának eltávolítása nem törli a készletet.
 
 1. A rekord készlet **tulajdonságai** paneljén keresse meg a rekordot.
-2. Kattintson arra a rekordra, amelyet el szeretne távolítani. Ezután válassza az **Eltávolítás**lehetőséget.
+2. Kattintson arra a rekordra, amelyet el szeretne távolítani. Ezután válassza az **Eltávolítás** lehetőséget.
 
     ![Rekord eltávolítása](./media/dns-operations-recordsets-portal/removerecord500.png)
 
@@ -79,12 +79,12 @@ A rekordokat a Azure Portal használatával távolíthatja el. Vegye figyelembe,
 
 ## <a name="delete-a-record-set"></a><a name="delete"></a>Rekord törlése
 
-1. A rekord készlet **Tulajdonságok** paneljén kattintson a **Törlés**elemre.
+1. A rekord készlet **Tulajdonságok** paneljén kattintson a **Törlés** elemre.
 
     ![Rekord törlése](./media/dns-operations-recordsets-portal/deleterecordset500.PNG)
 
 2. Megjelenik egy üzenet, amely megkérdezi, hogy szeretné-e törölni a rekordot.
-3. Ellenőrizze, hogy a név megegyezik-e a törölni kívánt rekorddal, majd kattintson az **Igen**gombra.
+3. Ellenőrizze, hogy a név megegyezik-e a törölni kívánt rekorddal, majd kattintson az **Igen** gombra.
 4. A **DNS-zóna** panelen ellenőrizze, hogy a rekord már nem látható-e.
 
 ## <a name="work-with-ns-and-soa-records"></a>NS-és SOA-rekordok használata
@@ -107,7 +107,7 @@ Vegye figyelembe, hogy ez csak a zóna csúcsán beállított NS-rekordra vonatk
 
 A SOA és az NS rekordhalmaz nem törölhető a zóna \@ létrehozásakor automatikusan létrehozott (név = "") zónában. A zóna törlésekor a rendszer automatikusan törli őket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a Azure DNSről: [Azure DNS áttekintése](dns-overview.md).
 * A DNS automatizálásával kapcsolatos további információkért lásd: [DNS-zónák és-rekordhalmazok létrehozása a .net SDK használatával](dns-sdk.md).

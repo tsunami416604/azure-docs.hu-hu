@@ -9,17 +9,18 @@ editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 52f5d0ec-8f75-49e7-9e15-88d46b420e63
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
-ms.openlocfilehash: 283eb9b9cbdc03813cf7c765c9ef3be5965919eb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 129897d3288a900803efbfba8abf86c276077fa8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978339"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966071"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Virtuálisgép-bővítmények és-funkciók Linux rendszerhez
 
@@ -85,7 +86,7 @@ A következő módszerek használhatók a bővítmények egy meglévő virtuáli
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Az Azure virtuálisgép-bővítmények egy meglévő virtuális gépre is futtathatók az az [VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) paranccsal. A következő példa egy *myVM* nevű virtuális gépen futtatja az egyéni szkriptek bővítményét egy *myResourceGroup*nevű erőforráscsoporthoz. Cserélje le az erőforráscsoport nevét, a virtuális gép nevét és a parancsfájlt a futtatáshoz (https: \/ /RAW.githubusercontent.com/Me/Project/Hello.sh) a saját adataival. 
+Az Azure virtuálisgép-bővítmények egy meglévő virtuális gépre is futtathatók az az [VM Extension set](/cli/azure/vm/extension#az-vm-extension-set) paranccsal. A következő példa egy *myVM* nevű virtuális gépen futtatja az egyéni szkriptek bővítményét egy *myResourceGroup* nevű erőforráscsoporthoz. Cserélje le az erőforráscsoport nevét, a virtuális gép nevét és a parancsfájlt a futtatáshoz (https: \/ /RAW.githubusercontent.com/Me/Project/Hello.sh) a saját adataival. 
 
 ```azurecli
 az vm extension set `
@@ -107,7 +108,7 @@ info:    vm extension set command OK
 
 ### <a name="azure-portal"></a>Azure Portal
 
-A virtuálisgép-bővítmények a Azure Portal használatával alkalmazhatók egy meglévő virtuális gépre. Válassza ki a virtuális gépet a portálon, válassza a **bővítmények**, majd a **Hozzáadás**lehetőséget. Válassza ki a kívánt bővítményt az elérhető bővítmények listájából, és kövesse a varázsló utasításait.
+A virtuálisgép-bővítmények a Azure Portal használatával alkalmazhatók egy meglévő virtuális gépre. Válassza ki a virtuális gépet a portálon, válassza a **bővítmények**, majd a **Hozzáadás** lehetőséget. Válassza ki a kívánt bővítményt az elérhető bővítmények listájából, és kövesse a varázsló utasításait.
 
 Az alábbi képen látható, hogyan telepíthető a Linux Custom script bővítmény a Azure Portalról:
 
@@ -233,7 +234,7 @@ A kiadók különböző időpontokban teszik elérhetővé a frissítéseket a r
 
 A Linux rendszerű virtuális gép ügynöke egy csomagban található *kiépítési ügynök kódját* és a *bővítmények kezelésére szolgáló kódot*  tartalmaz, amely nem választható el egymástól. Ha a Cloud-init használatával szeretné kiépíteni az Azure-t, letilthatja a *kiépítési ügynököt* . Ehhez lásd: [a Cloud-init használata](../linux/using-cloud-init.md).
 
-Az ügynökök támogatott verziói az automatikus frissítéseket használhatják. Az egyetlen módosítható kód a *bővítmények kezelési*kódja, nem pedig a kiépítési kód. A *kiépítési ügynök kódja* egyszeri futtatású kód.
+Az ügynökök támogatott verziói az automatikus frissítéseket használhatják. Az egyetlen módosítható kód a *bővítmények kezelési* kódja, nem pedig a kiépítési kód. A *kiépítési ügynök kódja* egyszeri futtatású kód.
 
 A *bővítmények kezelésére szolgáló kód* felelős az Azure-hálóval való kommunikációért, valamint a virtuálisgép-bővítmények műveleteinek, például a telepítés, a jelentéskészítési állapot, az egyes bővítmények frissítésének és eltávolításának kezeléséért. A frissítések biztonsági javításokat, hibajavításokat és továbbfejlesztett funkciókat tartalmaznak a *bővítmények kezelési kódjához*.
 
@@ -336,7 +337,7 @@ Az alábbi hibaelhárítási lépések minden virtuálisgép-bővítményre érv
 
 1. A Linux-ügynök naplójának vizsgálatához tekintse meg a tevékenységet, amikor a bővítményt kiépítte a */var/log/waagent.log* -ben
 
-2. A */var/log/Azure/ \<extensionName> * kapcsolatos további részletekért olvassa el a tényleges kiterjesztési naplókat
+2. A */var/log/Azure/ \<extensionName>* kapcsolatos további részletekért olvassa el a tényleges kiterjesztési naplókat
 
 3. A bővítményekre vonatkozó dokumentációs hibaelhárítási szakaszt a hibakódok, az ismert problémák stb. című szakaszban tekintheti meg.
 
@@ -381,7 +382,7 @@ A kimenet a következő példában látható kimenethez hasonló:
   }
 ```
 
-A bővítmény végrehajtási állapota a Azure Portalban is megtalálható. Egy bővítmény állapotának megtekintéséhez válassza ki a virtuális gépet, válassza a **bővítmények**lehetőséget, majd válassza ki a kívánt kiterjesztést.
+A bővítmény végrehajtási állapota a Azure Portalban is megtalálható. Egy bővítmény állapotának megtekintéséhez válassza ki a virtuális gépet, válassza a **bővítmények** lehetőséget, majd válassza ki a kívánt kiterjesztést.
 
 ### <a name="rerun-a-vm-extension"></a>Virtuálisgép-bővítmény újrafuttatása
 
@@ -397,13 +398,13 @@ az vm extension delete \
 A bővítményeket a következőképpen is eltávolíthatja a Azure Portalban:
 
 1. Válasszon ki egy virtuális gépet.
-2. Válassza a **bővítmények**lehetőséget.
+2. Válassza a **bővítmények** lehetőséget.
 3. Válassza ki a kívánt kiterjesztést.
-4. Válassza az **Eltávolítás**lehetőséget.
+4. Válassza az **Eltávolítás** lehetőséget.
 
 ## <a name="common-vm-extension-reference"></a>Általános virtuálisgép-bővítmény leírása
 
-| Kiterjesztés neve | Description | További információ |
+| Kiterjesztés neve | Leírás | További információ |
 | --- | --- | --- |
 | Egyéni parancsfájl-kiterjesztés Linux rendszerhez |Parancsfájlok futtatása Azure-beli virtuális gépeken |[Egyéni parancsfájl-kiterjesztés Linux rendszerhez](custom-script-linux.md) |
 | Virtuálisgép-hozzáférési bővítmény |Azure-beli virtuális gép hozzáférésének visszanyerése |[Virtuálisgép-hozzáférési bővítmény](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |

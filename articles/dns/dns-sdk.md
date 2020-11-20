@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: rohink
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 92509ff96af0ed2a7d77799edca8447ff6839ab6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8e116096afbd01af4914be49d5675881724d5069
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019657"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965595"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>DNS-zónák és-rekordhalmazok létrehozása a .NET SDK használatával
 
@@ -45,7 +45,7 @@ A Azure DNS .NET SDK használatához telepítenie kell a **Azure DNS Management 
 
 1. Nyisson meg egy projektet vagy egy új projektet a **Visual Studióban**.
 2. Válassza a **Tools** **>** **NuGet csomagkezelő** **>** **NuGet-csomagok kezelése a megoldáshoz...** lehetőséget.
-3. Kattintson a **Tallózás**gombra, engedélyezze az **előzetes kiadás belefoglalása** jelölőnégyzetet, és írja be a **Microsoft. Azure. Management. DNS** kifejezést a keresőmezőbe.
+3. Kattintson a **Tallózás** gombra, engedélyezze az **előzetes kiadás belefoglalása** jelölőnégyzetet, és írja be a **Microsoft. Azure. Management. DNS** kifejezést a keresőmezőbe.
 4. Válassza ki a csomagot, majd a **telepítés** gombra kattintva adja hozzá a Visual Studio-projekthez.
 5. A fenti folyamat megismétlésével telepítse a következő csomagokat is: **Microsoft. Rest. ClientRuntime. Azure. Authentication** és **Microsoft. Azure. Management. erőforráskezelő**.
 
@@ -79,7 +79,7 @@ Ha a zónát ténylegesen szeretné létrehozni vagy frissíteni Azure DNSban, a
 > [!NOTE]
 > A DnsManagementClient három működési módot támogat: szinkron ("CreateOrUpdate"), aszinkron ("CreateOrUpdateAsync"), vagy aszinkron módon a HTTP-válaszhoz való hozzáféréssel ("CreateOrUpdateWithHttpMessagesAsync").  Az alkalmazás igényeitől függően bármelyik mód közül választhat.
 
-Azure DNS támogatja a [etagek](dns-getstarted-create-dnszone.md)nevű optimista egyidejűséget. Ebben a példában a "Ha-None-Match" fejlécnél a "*" értéket kell megadnia, amely azt jelzi, hogy az Azure DNS DNS-zónát hoz létre, ha még nem létezik ilyen.  A hívás sikertelen, ha a megadott nevű zóna már létezik a megadott erőforráscsoporthoz.
+Azure DNS támogatja a [etagek](./dns-getstarted-powershell.md)nevű optimista egyidejűséget. Ebben a példában a "Ha-None-Match" fejlécnél a "*" értéket kell megadnia, amely azt jelzi, hogy az Azure DNS DNS-zónát hoz létre, ha még nem létezik ilyen.  A hívás sikertelen, ha a megadott nevű zóna már létezik a megadott erőforráscsoporthoz.
 
 ```cs
 // Create zone parameters

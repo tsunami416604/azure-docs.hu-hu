@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 5aa6906f7f06e109342d81db6171773a68642e0c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 76695d4d8dbc3e3a6b04b89b8f34e41b83a92963
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342280"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965187"
 ---
 # <a name="working-with-security-policies"></a>Biztonsági szabályzatok használata
 
@@ -44,9 +44,9 @@ Security Center a következő lehetőségeket kínálja a biztonsági házirende
 
 Biztonsági szabályzatok megtekintése a Security Centerben:
 
-1. A **Security Center** irányítópulton válassza a **biztonsági házirend**elemet.
+1. A **Security Center** irányítópulton válassza a **biztonsági házirend** elemet.
 
-    :::image type="content" source="./media/security-center-policies/security-center-policy-mgt.png" alt-text="A házirend-kezelés lap&quot;:::
+    :::image type="content" source="./media/security-center-policies/security-center-policy-mgt.png" alt-text="A házirend-kezelés lap":::
 
    A **házirend kezelése** képernyőn láthatja a felügyeleti csoportok, előfizetések és munkaterületek számát, valamint a felügyeleti csoport struktúráját.
 
@@ -57,29 +57,18 @@ Biztonsági szabályzatok megtekintése a Security Centerben:
    ![házirend lap](./media/tutorial-security-policy/security-policy-page.png)
 
     > [!NOTE]
-    > Ha az alapértelmezett szabályzat mellett &quot;MG örökölt" címkével rendelkezik, az azt jelenti, hogy a szabályzat hozzá van rendelve egy felügyeleti csoporthoz, és a megtekintett előfizetés örökli.
+    > Ha az alapértelmezett szabályzat mellett "MG örökölt" címkével rendelkezik, az azt jelenti, hogy a szabályzat hozzá van rendelve egy felügyeleti csoporthoz, és a megtekintett előfizetés örökli.
 
 
 1. Válasszon az ezen az oldalon elérhető lehetőségek közül:
 
-    1. Az iparági szabályzatokkal való munkavégzéshez válassza a **további szabványok hozzáadása**lehetőséget. További információ: [frissítés a dinamikus megfelelőségi csomagokra](update-regulatory-compliance-packages.md).
+    1. Az iparági szabályzatokkal való munkavégzéshez válassza a **további szabványok hozzáadása** lehetőséget. További információ: [frissítés a dinamikus megfelelőségi csomagokra](update-regulatory-compliance-packages.md).
 
-    1. Egyéni kezdeményezések hozzárendeléséhez és kezeléséhez válassza az **Egyéni kezdeményezések hozzáadása**lehetőséget. További információ: [egyéni biztonsági házirendek használata](custom-security-policies.md).
+    1. Egyéni kezdeményezések hozzárendeléséhez és kezeléséhez válassza az **Egyéni kezdeményezések hozzáadása** lehetőséget. További információ: [egyéni biztonsági házirendek használata](custom-security-policies.md).
 
     1. Az alapértelmezett házirend megtekintéséhez és szerkesztéséhez válassza a **hatályos házirend megtekintése** lehetőséget, és folytassa az alább leírtak szerint. 
 
-        :::image type="content" source="./media/security-center-policies/policy-screen.png" alt-text="A házirend-kezelés lap&quot;:::
-
-   A **házirend kezelése** képernyőn láthatja a felügyeleti csoportok, előfizetések és munkaterületek számát, valamint a felügyeleti csoport struktúráját.
-
-1. Válassza ki azt az előfizetést vagy felügyeleti csoportot, amelynek a szabályzatait meg szeretné tekinteni.
-
-1. Megjelenik az adott előfizetés vagy felügyeleti csoport biztonsági szabályzat lapja. Megjeleníti az elérhető és hozzárendelt házirendeket.
-
-   ![házirend lap](./media/tutorial-security-policy/security-policy-page.png)
-
-    > [!NOTE]
-    > Ha az alapértelmezett szabályzat mellett &quot;MG örökölt":::
+        :::image type="content" source="./media/security-center-policies/policy-screen.png" alt-text="Érvényes házirend képernyő":::
 
        Ez a **biztonsági házirend** képernyő a kiválasztott előfizetéshez vagy felügyeleti csoporthoz hozzárendelt szabályzatok által végrehajtott műveletet tükrözi.
        
@@ -97,10 +86,10 @@ Biztonsági szabályzatok megtekintése a Security Centerben:
 
 A biztonsági szabályzatokat a Azure Policy-portálon, REST API vagy a Windows PowerShell használatával szerkesztheti.
 
-A Security Center Role-Based Access Controlt (RBAC) használ, amely beépített szerepköröket biztosít az Azure-felhasználókhoz,-csoportokhoz és-szolgáltatásokhoz. Security Center megnyitásakor a felhasználók csak az elérhető erőforrásokhoz kapcsolódó információkat látják. Ez azt jelenti, hogy a felhasználók a *tulajdonos*, *közreműködő*vagy *olvasó* szerepkört rendelik hozzá az erőforrás előfizetéséhez. Két konkrét Security Center szerepkör is létezik:
+A Security Center Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) használ, amely beépített szerepköröket biztosít az Azure-felhasználók,-csoportok és-szolgáltatások számára. Security Center megnyitásakor a felhasználók csak az elérhető erőforrásokhoz kapcsolódó információkat látják. Ez azt jelenti, hogy a felhasználók a *tulajdonos*, *közreműködő* vagy *olvasó* szerepkört rendelik hozzá az erőforrás előfizetéséhez. Két konkrét Security Center szerepkör is létezik:
 
 - **Biztonsági olvasó**: jogosult a Security Center elemek, például javaslatok, riasztások, szabályzatok és állapotok megtekintésére. Nem lehet módosítani.
-- **Biztonsági rendszergazda**: a *biztonsági olvasóval*megegyező megtekintési jogosultsággal rendelkezik. A a biztonsági házirend frissítése és a riasztások elvetése is megtehető.
+- **Biztonsági rendszergazda**: a *biztonsági olvasóval* megegyező megtekintési jogosultsággal rendelkezik. A a biztonsági házirend frissítése és a riasztások elvetése is megtehető.
 
 
 ## <a name="disable-security-policies-and-disable-recommendations"></a>Biztonsági házirendek letiltása és javaslatok letiltása
@@ -111,7 +100,7 @@ A letiltani kívánt javaslat továbbra is megjelenik, ha a Security Center szab
 
 A javaslatokkal kapcsolatos további információkért lásd: [biztonsági javaslatok kezelése](security-center-recommendations.md).
 
-1. Security Center a **házirend & megfelelőség** szakaszban válassza a **biztonsági házirend**elemet.
+1. Security Center a **házirend & megfelelőség** szakaszban válassza a **biztonsági házirend** elemet.
 
    ![házirendek kezelése](./media/tutorial-security-policy/policy-management.png)
 
@@ -120,7 +109,7 @@ A javaslatokkal kapcsolatos további információkért lásd: [biztonsági javas
    > [!NOTE]
    > A felügyeleti csoport az előfizetésekre alkalmazza a szabályzatokat. Így ha letiltja egy előfizetés szabályzatát, az előfizetés pedig egy olyan felügyeleti csoporthoz tartozik, amely ugyanazt a szabályzatot alkalmazza, továbbra is megkapja a szabályzatra vonatkozó javaslatokat. A rendszer továbbra is a felügyeleti szinten alkalmazza a szabályzatot, valamint létrehoz javaslatokat.
 
-1. Válassza a **hatályos szabályzat megtekintése**lehetőséget.
+1. Válassza a **hatályos szabályzat megtekintése** lehetőséget.
 
    ![házirend megtekintése](./media/tutorial-security-policy/view-effective-policy.png)
 
@@ -132,7 +121,7 @@ A javaslatokkal kapcsolatos további információkért lásd: [biztonsági javas
 
    ![házirend letiltása](./media/tutorial-security-policy/disable-policy.png)
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
    > [!NOTE]
    > A házirend-letiltási módosítások érvénybe léptetéséhez akár 12 órát is igénybe vehet.

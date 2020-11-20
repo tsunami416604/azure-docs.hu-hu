@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/03/2017
 ms.author: damendo
-ms.openlocfilehash: a16e99df57da66d2633947f8aecdf1d2cef9ab15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 115adb7a71d820a75261837f4c14b1b84adb98da
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84737410"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965527"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-portal"></a>Az Azure Network Watcher-kapcsolatok hibáinak megoldása a Azure Portal használatával
 
@@ -37,13 +37,13 @@ Ez a cikk feltételezi, hogy rendelkezik a következő erőforrásokkal:
 * Virtuális gépek a szolgáltatással való kapcsolódási hibák megoldásához.
 
 > [!IMPORTANT]
-> A kapcsolati hibákhoz az szükséges, hogy a rendszer a virtuálisgép- `AzureNetworkWatcherExtension` bővítményt telepítse. A bővítmény Windows rendszerű virtuális gépen való telepítéséhez látogasson el az [azure Network Watcher Agent virtuálisgép-bővítmény a Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) rendszerhez és a Linux rendszerű virtuális gépekhez látogasson el az [Azure Network Watcher Agent virtuálisgép-bővítménye Linuxra](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). A cél végponton nem szükséges a kiterjesztés.
+> A kapcsolati hibákhoz az szükséges, hogy a rendszer a virtuálisgép- `AzureNetworkWatcherExtension` bővítményt telepítse. A bővítmény Windows rendszerű virtuális gépen való telepítéséhez látogasson el az [azure Network Watcher Agent virtuálisgép-bővítmény a Windows](../virtual-machines/extensions/network-watcher-windows.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json) rendszerhez és a Linux rendszerű virtuális gépekhez látogasson el az [Azure Network Watcher Agent virtuálisgép-bővítménye Linuxra](../virtual-machines/extensions/network-watcher-linux.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json). A cél végponton nem szükséges a kiterjesztés.
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>Virtuális géphez való csatlakozás ellenőrzése
 
 Ez a példa az 80-es porton keresztül ellenőrzi a cél virtuális géphez való kapcsolódást.
 
-Navigáljon a Network Watcher, és kattintson a **kapcsolódási hibák**lehetőségre. Válassza ki azt a virtuális gépet, amelyről meg szeretné nézni a kapcsolatot. A **cél** szakaszban válassza a **virtuális gép kiválasztása** lehetőséget, majd válassza ki a megfelelő virtuális gépet és portot a teszteléshez.
+Navigáljon a Network Watcher, és kattintson a **kapcsolódási hibák** lehetőségre. Válassza ki azt a virtuális gépet, amelyről meg szeretné nézni a kapcsolatot. A **cél** szakaszban válassza a **virtuális gép kiválasztása** lehetőséget, majd válassza ki a megfelelő virtuális gépet és portot a teszteléshez.
 
 Ha a **Check (ellenőrzés**) gombra kattint, a megadott porton lévő virtuális gépek közötti kapcsolat be van jelölve. A példában a cél virtuális gép nem érhető el, az ugrások listája látható.
 
@@ -51,11 +51,11 @@ Ha a **Check (ellenőrzés**) gombra kattint, a megadott porton lévő virtuáli
 
 ## <a name="check-remote-endpoint-connectivity"></a>Távoli végpont kapcsolatának ellenőrzése
 
-Ha szeretné megnézni a kapcsolatot és a késést egy távoli végponton, akkor a **cél** szakaszban válassza a **manuális megadása** választógombot, adja meg az URL-címet és a portot, majd kattintson az **ellenőrzése**gombra.  Ez a távoli végpontok, például a webhelyek és a tárolási végpontok esetében használatos.
+Ha szeretné megnézni a kapcsolatot és a késést egy távoli végponton, akkor a **cél** szakaszban válassza a **manuális megadása** választógombot, adja meg az URL-címet és a portot, majd kattintson az **ellenőrzése** gombra.  Ez a távoli végpontok, például a webhelyek és a tárolási végpontok esetében használatos.
 
 ![Webhely csatlakozási eredményeinek ellenőrzése][2]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan automatizálható a csomagok rögzítése a virtuálisgép-riasztásokkal a [riasztások által aktivált csomagok létrehozása](network-watcher-alert-triggered-packet-capture.md) funkció megtekintésével
 

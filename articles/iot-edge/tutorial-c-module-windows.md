@@ -9,18 +9,18 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 59656db2bbb8a6898ae08a168dbbc7e0a6a82aec
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: d9cffcadcb95b6c8c61205d458610f402fa7286d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044717"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964592"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Oktatóanyag: C IoT Edge modul fejlesztése Windows-eszközökhöz
 
 A Visual Studióval fejlesztheti C-kódját, és telepítheti azt egy Azure IoT Edge rendszert futtató Windows-eszközre.
 
-Az Azure IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. Az oktatóanyag a következőket ismerteti:
+Az Azure IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -33,7 +33,7 @@ Az ebben az oktatóanyagban létrehozott IoT Edge-modul szűri az eszköze álta
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="solution-scope"></a>Megoldás hatóköre
+## <a name="prerequisites"></a>Előfeltételek
 
 Ez az oktatóanyag bemutatja, hogyan fejleszthet a **C** modult a **Visual Studio 2019** használatával, és hogyan telepítheti azt egy **Windows-eszközre**. Ha Linux-eszközökhöz fejleszt modulokat, ugorjon [a C IoT Edge modul fejlesztése Linux-eszközökhöz](tutorial-c-module.md) című lépésre.
 
@@ -42,8 +42,6 @@ A következő táblázat segítségével megismerheti a C modulok Windows-eszkö
 | C# | Visual Studio Code | Visual Studio 2017/2019 |
 | -- | ------------------ | ------------------ |
 | **Windows AMD64** |  | ![C modulok fejlesztése a WinAMD64 a Visual Studióban](./media/tutorial-c-module/green-check.png) |
-
-## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag megkezdése előtt el kellett volna végeznie az előző oktatóanyagot a Windows-tárolók fejlesztéséhez szükséges fejlesztési környezet beállításához: [IoT Edge-modulok fejlesztése Windows-eszközökhöz](tutorial-develop-for-windows.md). Az oktatóanyag befejezése után a következő előfeltételek szükségesek:
 
@@ -73,7 +71,7 @@ A következő lépések egy IoT Edge modul-projektet hoznak létre, amely a Visu
 
 Létrehozhat egy C-megoldást, amelyet a saját kódjával testreszabhat.
 
-1. Indítsa el a Visual Studio 2019 alkalmazást, és válassza az **új projekt létrehozása**lehetőséget.
+1. Indítsa el a Visual Studio 2019 alkalmazást, és válassza az **új projekt létrehozása** lehetőséget.
 
 2. Keresse meg **IoT Edge** , és válassza ki a **Azure IoT Edge (Windows amd64)** projektet. Kattintson a **Tovább** gombra.
 
@@ -87,7 +85,7 @@ Létrehozhat egy C-megoldást, amelyet a saját kódjával testreszabhat.
 
    | Mező | Érték |
    | ----- | ----- |
-   | Sablon kiválasztása | Válassza a **C modul**lehetőséget. |
+   | Sablon kiválasztása | Válassza a **C modul** lehetőséget. |
    | Modul projekt neve | A modulnak adja a **CModule** nevet. |
    | Docker-rendszerkép tárháza | Egy rendszerképadattár a tárolóregisztrációs adatbázis nevét és a tárolórendszerkép nevét tartalmazza. A tároló képe előre fel van töltve a modul projekt neve értékből. Cserélje le a **localhost: 5000** értéket a **bejelentkezési kiszolgáló** értékére az Azure Container registryben. A bejelentkezési kiszolgálót a tároló beállításjegyzékének áttekintés lapjáról kérheti le a Azure Portal. <br><br> A rendszerkép utolsó tárháza a következőhöz hasonlít: \<registry name\> . azurecr.IO/cmodule. |
 
@@ -336,7 +334,7 @@ A fejlesztői gép most már rendelkezik hozzáféréssel a tároló beállítá
 
 1. A Visual Studio Solution Explorerben kattintson a jobb gombbal a létrehozni kívánt projekt nevére. Az alapértelmezett név a **AzureIotEdgeApp1**. Ebben az oktatóanyagban a **CTutorialApp** nevet választották. Mivel Windows-modult épít, a bővítménynek **Windows. Amd64**-nek kell lennie.
 
-2. Válassza ki **az IoT Edge-modulok kiépítése és leküldése**lehetőséget.
+2. Válassza ki **az IoT Edge-modulok kiépítése és leküldése** lehetőséget.
 
    A build és a push parancs három műveletet indít el. Először létrehoz egy új mappát a **konfigurációban** , amely tartalmazza a teljes telepítési jegyzékfájlt, kiépítve a központi telepítési sablonban található információkat, és egyéb megoldásokat is tartalmaz. Másodszor, futtatja `docker build` a tároló rendszerképét a célként megadott architektúra megfelelő Docker alapján. Ezután futtatja, `docker push` hogy leküldi a rendszerkép-tárházat a tároló-beállításjegyzékbe.
 
@@ -353,7 +351,7 @@ Ellenőrizze, hogy a IoT Edge eszköz működik-e.
 
 2. Kattintson a jobb gombbal annak a IoT Edge eszköznek a nevére, amelyről szeretné fogadni a központi telepítést.
 
-3. Válassza a **központi telepítés létrehozása**lehetőséget.
+3. Válassza a **központi telepítés létrehozása** lehetőséget.
 
 4. A Fájlkezelőben válassza ki a **Deployment. Windows-amd64** fájlt a megoldás konfigurációs mappájába.
 
@@ -367,7 +365,7 @@ A IoT Edge Tools bővítmény használatával megtekintheti az üzeneteket, ahog
 
 1. A Visual Studio Cloud Explorerben válassza ki a IoT Edge eszköz nevét.
 
-2. A **műveletek** listában válassza a **figyelés beépített esemény végpontjának elindítása**lehetőséget.
+2. A **műveletek** listában válassza a **figyelés beépített esemény végpontjának elindítása** lehetőséget.
 
 3. Megtekintheti a IoT Hub érkező üzeneteket. Eltarthat egy ideig, amíg az üzenetek megérkeznek, mivel a IoT Edge eszköznek meg kell kapnia az új központi telepítést, és el kell indítania az összes modult. Ezután megvárja a CModule-kód módosításait, amíg a gép hőmérséklete 25 fokkal nem éri el az üzenetek küldését. Az üzenet típusú **riasztást** is hozzáadja az adott hőmérsékleti küszöbértéket elérő üzenetekhez.
 

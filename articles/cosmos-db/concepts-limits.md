@@ -5,15 +5,16 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: 503d3d5ed9b099e01a88ee40ef80e88105beb340
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.date: 11/19/2020
+ms.openlocfilehash: f1a7ffc8225ea20b48df4e1d9a049655ca4776a4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917732"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964660"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB szolgáltatási kvóták
+
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Ez a cikk áttekintést nyújt az Azure Cosmos DB különböző erőforrásaihoz ajánlott alapértelmezett kvótákról.
@@ -194,8 +195,8 @@ Azure Cosmos DB az egyes fiókok rendszermetaadatainak karbantartását. Ez a me
 
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
-|Gyűjtemény maximális létrehozási sebessége percenként|    5|
-|Adatbázis maximális létrehozási sebessége percenként|    5|
+|Gyűjtemény maximális létrehozási sebessége percenként|    100|
+|Adatbázis maximális létrehozási sebessége percenként|    100|
 |Maximális kiosztott átviteli sebesség percenkénti frissítése|    5|
 
 ## <a name="limits-for-autoscale-provisioned-throughput"></a>Az autoscale kiépített átviteli sebességre vonatkozó korlátok

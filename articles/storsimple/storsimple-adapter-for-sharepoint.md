@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: alkohli
-ms.openlocfilehash: a33e01d68a31585e216faa51ac8af193d86c6123
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 639efab3a9eaef400b3fbe3d0b134d02f458b865
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90053276"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966292"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>A SharePointhoz készült StorSimple-adapter telepítése és konfigurálása
 ## <a name="overview"></a>Áttekintés
@@ -53,7 +53,7 @@ Az RBS Microsoft Azure StorSimple megvalósítása a következő előnyöket biz
 A BLOB tartalmának a fájlrendszerbe való áthelyezése további költségmegtakarítást és előnyöket biztosít. Az RBS használata például csökkentheti a költséges 1. szintű tárolók szükségességét, mivel ez csökkenti a tartalom-adatbázist, az RBS csökkentheti a SharePoint-kiszolgálófarm számára szükséges adatbázisok számát. Azonban más tényezők, például az adatbázis méretére vonatkozó korlátozások és a nem RBS-tartalom mennyisége is befolyásolhatja a tárolási követelményeket. További információ az RBS használatának költségeiről és előnyeiről: az [RBS tervezése (SharePoint Foundation 2010)][4] , valamint az [RBS használatának eldöntése a SharePoint 2013-ben][5].
 
 ### <a name="capacity-and-performance-limits"></a>Kapacitás és teljesítménybeli korlátok
-Mielőtt fontolóra veszi az RBS használatát a SharePoint-megoldásban, ismernie kell a SharePoint Server 2010 és a SharePoint Server 2013 tesztelt teljesítmény-és kapacitási korlátait, valamint azt, hogy ezek a korlátok hogyan kapcsolódnak az elfogadható teljesítményhez. További információ: [a szoftver határai és korlátai a SharePoint 2013-](https://technet.microsoft.com/library/cc262787.aspx)hoz.
+Mielőtt fontolóra veszi az RBS használatát a SharePoint-megoldásban, ismernie kell a SharePoint Server 2010 és a SharePoint Server 2013 tesztelt teljesítmény-és kapacitási korlátait, valamint azt, hogy ezek a korlátok hogyan kapcsolódnak az elfogadható teljesítményhez. További információ: [a szoftver határai és korlátai a SharePoint 2013-](/SharePoint/install/software-boundaries-and-limits-0)hoz.
 
 Az RBS konfigurálása előtt tekintse át a következőket:
 
@@ -137,9 +137,9 @@ Győződjön meg arról, hogy a SharePoint-kiszolgálófarm megfelelően van kon
   
   1. Az Internet Explorer összes példányának lezárása.
   2. Indítsa el a Kiszolgálókezelő alkalmazást.
-  3. A bal oldali ablaktáblán kattintson a **helyi kiszolgáló**elemre.
-  4. A jobb oldali ablaktáblán, az **Internet Explorer fokozott biztonsági beállításai**mellett kattintson **a be**gombra.
-  5. A **rendszergazdák**területen kattintson a **ki**gombra.
+  3. A bal oldali ablaktáblán kattintson a **helyi kiszolgáló** elemre.
+  4. A jobb oldali ablaktáblán, az **Internet Explorer fokozott biztonsági beállításai** mellett kattintson **a be** gombra.
+  5. A **rendszergazdák** területen kattintson a **ki** gombra.
   6. Kattintson az **OK** gombra.
 
 ## <a name="remote-blob-storage-rbs-prerequisites"></a>Távoli BLOB Storage-(RBS-) előfeltételek
@@ -221,12 +221,12 @@ A SharePoint szoftverhez készült StorSimple-adapter eltávolítása előtt át
 
 #### <a name="to-move-the-blobs-back-to-the-content-databases"></a>A Blobok visszahelyezése a tartalom-adatbázisba
 1. Töltse le a külsőleg kihelyezett objektumokat.
-2. Nyissa meg a **Központi SharePoint-felügyelet** oldalt, és keresse meg a **Rendszerbeállítások**lapot.
-3. Az **Azure StorSimple**alatt kattintson a **StorSimple-adapter konfigurálása**elemre.
+2. Nyissa meg a **Központi SharePoint-felügyelet** oldalt, és keresse meg a **Rendszerbeállítások** lapot.
+3. Az **Azure StorSimple** alatt kattintson a **StorSimple-adapter konfigurálása** elemre.
 4. Az **StorSimple-adapter konfigurálása** lapon kattintson a **Letiltás** gombra az egyes tartalmi adatbázisok alatt, amelyeket el szeretne távolítani a külső blob-tárolóból. 
 5. Törölje az objektumokat a SharePointból, majd töltse fel újra.
 
-Másik lehetőségként használhatja a `RBS Migrate()` sharepointhoz mellékelt Microsoft PowerShell-parancsmagot is. További információ: [tartalom migrálása az RBS-be vagy](https://technet.microsoft.com/library/ff628255.aspx)abból.
+Másik lehetőségként használhatja a `RBS Migrate()` sharepointhoz mellékelt Microsoft PowerShell-parancsmagot is. További információ: [tartalom migrálása az RBS-be vagy](/previous-versions/office/sharepoint-foundation-2010/ff628255(v=office.14))abból.
 
 Miután visszahelyezte a blobokat a tartalom-adatbázisba, ugorjon a következő lépésre: [távolítsa el az adaptert](#uninstall-the-adapter).
 
@@ -250,16 +250,16 @@ Miután visszahelyezte a blobokat a SQL Server tartalom-adatbázisba, az alábbi
 6. Az Eltávolítás befejezésekor megjelenik a Befejezés lap. A telepítővarázsló bezárásához kattintson a **Befejezés** gombra.
 
 #### <a name="to-use-the-control-panel-to-uninstall-the-adapter"></a>A Vezérlőpult használata az adapter eltávolításához
-1. Nyissa meg a Vezérlőpultot, majd kattintson a **programok és szolgáltatások**elemre.
-2. Válassza **a StorSimple-adapter a sharepointhoz**lehetőséget, majd kattintson az **Eltávolítás**gombra.
+1. Nyissa meg a Vezérlőpultot, majd kattintson a **programok és szolgáltatások** elemre.
+2. Válassza **a StorSimple-adapter a sharepointhoz** lehetőséget, majd kattintson az **Eltávolítás** gombra.
 
 ## <a name="next-steps"></a>Következő lépések
 [További információ a StorSimple](storsimple-overview.md).
 
 <!--Reference links-->
 [1]: https://www.microsoft.com/download/details.aspx?id=44073
-[2]: https://technet.microsoft.com/library/ff628583(v=office.15).aspx
-[3]: https://technet.microsoft.com/library/ff628583(v=office.14).aspx
-[4]: https://technet.microsoft.com/library/ff628569(v=office.14).aspx
-[5]: https://technet.microsoft.com/library/ff628583(v=office.15).aspx
-[8]: https://technet.microsoft.com/library/ff943565.aspx
+[2]: /SharePoint/administration/rbs-planning
+[3]: /previous-versions/office/sharepoint-server-2010/ff628583(v=office.14)
+[4]: /previous-versions/office/sharepoint-foundation-2010/ff628569(v=office.14)
+[5]: /SharePoint/administration/rbs-planning
+[8]: /SharePoint/administration/maintain-rbs

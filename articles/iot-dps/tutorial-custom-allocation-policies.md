@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: e20183356655668750cb1450338d4c8af1ee2d8c
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 4cab1765a387bbae61c9c242a8e7a1ca881ea1f5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951706"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966649"
 ---
 # <a name="tutorial-use-custom-allocation-policies-with-device-provisioning-service-dps"></a>Oktatóanyag: egyéni foglalási szabályzatok használata az eszközök kiépítési szolgáltatásával (DPS)
 
@@ -46,7 +46,7 @@ Ebben az oktatóanyagban az alábbiakat fogja elvégezni:
 
 * A [Git](https://git-scm.com/download/) legújabb verziójának telepített példánya.
 
-* Windowsos fejlesztési környezetben a [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019-es verziójának használatakor engedélyezve van az ["asztali fejlesztés C++](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) -ban" beállítás. A Visual Studio 2015 és a Visual Studio 2017 is támogatott.
+* Windowsos fejlesztési környezetben a [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019-es verziójának használatakor engedélyezve van az ["asztali fejlesztés C++](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development) -ban" beállítás. A Visual Studio 2015 és a Visual Studio 2017 is támogatott.
 
 * Linux vagy macOS esetén tekintse meg a [fejlesztési környezet előkészítése](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) dokumentációjának megfelelő szakaszát.
 
@@ -57,11 +57,11 @@ Ebben az oktatóanyagban az alábbiakat fogja elvégezni:
 
 Ebben a szakaszban egy Azure-függvényt hoz létre, amely megvalósítja az egyéni foglalási szabályzatot. Ez a függvény eldönti, hogy az eszköz regisztrálva van-e a IoT Hub, attól függően, hogy a regisztrációs azonosítója tartalmazza-e a **contoso-kenyérpirító karakterlánc-** előtagot.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). A kezdőlapon válassza az **+ erőforrás létrehozása**lehetőséget.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). A kezdőlapon válassza az **+ erőforrás létrehozása** lehetőséget.
 
-2. A *Keresés a piactéren* mezőbe írja be a "függvényalkalmazás" kifejezést. A legördülő listában válassza a **függvényalkalmazás**lehetőséget, majd válassza a **Létrehozás**lehetőséget.
+2. A *Keresés a piactéren* mezőbe írja be a "függvényalkalmazás" kifejezést. A legördülő listában válassza a **függvényalkalmazás** lehetőséget, majd válassza a **Létrehozás** lehetőséget.
 
-3. **Függvényalkalmazás** Létrehozás lap **alapok** lapján adja meg az új Function alkalmazás következő beállításait, majd válassza a **felülvizsgálat + létrehozás**lehetőséget:
+3. **Függvényalkalmazás** Létrehozás lap **alapok** lapján adja meg az új Function alkalmazás következő beállításait, majd válassza a **felülvizsgálat + létrehozás** lehetőséget:
 
     **Előfizetés**: Ha több előfizetéssel rendelkezik, és a kívánt előfizetés nincs kiválasztva, válassza ki a használni kívánt előfizetést.
 
@@ -73,14 +73,14 @@ Ebben a szakaszban egy Azure-függvényt hoz létre, amely megvalósítja az egy
 
     **Futásidejű verem**: válassza a **.net Core** elemet a legördülő menüből.
 
-    **Régió**: válassza ki ugyanazt a régiót, mint az erőforráscsoportot. Ez a példa az **USA nyugati**régióját használja.
+    **Régió**: válassza ki ugyanazt a régiót, mint az erőforráscsoportot. Ez a példa az **USA nyugati** régióját használja.
 
     > [!NOTE]
     > Alapértelmezés szerint a Application Insights engedélyezve van. A Application Insights nem szükséges ehhez a cikkhez, de segíthet megérteni és megvizsgálni az egyéni foglalással kapcsolatban felmerülő problémákat. Ha szeretné, letilthatja Application Insights a **figyelés** lapon, majd a **nem** lehetőséget választva **engedélyezheti a Application Insights**.
 
     ![Azure-függvényalkalmazás létrehozása az egyéni foglalási funkció üzemeltetéséhez](./media/tutorial-custom-allocation-policies/create-function-app.png)
 
-4. Az **Összefoglalás** lapon válassza a **Létrehozás** lehetőséget a Function alkalmazás létrehozásához. Az üzembe helyezés eltarthat néhány percig. Ha befejeződik, válassza **az Ugrás erőforráshoz**lehetőséget.
+4. Az **Összefoglalás** lapon válassza a **Létrehozás** lehetőséget a Function alkalmazás létrehozásához. Az üzembe helyezés eltarthat néhány percig. Ha befejeződik, válassza **az Ugrás erőforráshoz** lehetőséget.
 
 5. A függvény bal oldali ablaktábláján **kattintson a** **függvények** elemre, majd a **+ Hozzáadás** lehetőségre egy új függvény hozzáadásához.
 
@@ -88,7 +88,7 @@ Ebben a szakaszban egy Azure-függvényt hoz létre, amely megvalósítja az egy
 
 7. Kattintson az új függvény **Code + test (kód + tesztelés** ) elemére. A portál megjeleníti a **Run. CSX** fájl tartalmát. 
 
-8. Cserélje le a **HttpTrigger1** függvény kódját a következő kódra, majd válassza a **Mentés**lehetőséget. Az egyéni foglalási kód készen áll a használatra.
+8. Cserélje le a **HttpTrigger1** függvény kódját a következő kódra, majd válassza a **Mentés** lehetőséget. Az egyéni foglalási kód készen áll a használatra.
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -181,7 +181,7 @@ Ebben a szakaszban egy új beléptetési csoportot fog létrehozni, amely az egy
 
 2. Válassza a **regisztrációk kezelése** lehetőséget a bal oldali ablaktáblán, majd kattintson a **regisztrációs csoport hozzáadása** gombra az oldal tetején.
 
-3. A **regisztrációs csoport hozzáadása**oldalon adja meg az alábbi táblázatban szereplő információkat, majd kattintson a **Save (Mentés** ) gombra.
+3. A **regisztrációs csoport hozzáadása** oldalon adja meg az alábbi táblázatban szereplő információkat, majd kattintson a **Save (Mentés** ) gombra.
 
     | Mező | Leírás és/vagy javasolt érték |
     | :---- | :----------------------------- |
@@ -296,7 +296,7 @@ Ez a szakasz a Windows-alapú munkaállomás irányába mutat. Linux-példaként
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
 
-    Ha `cmake` nem találja a C++ fordítót, előfordulhat, hogy a parancs futtatásakor hibákat fog kiépíteni. Ha ez történik, próbálja meg futtatni a parancsot a [Visual Studio-parancssorban](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs).
+    Ha `cmake` nem találja a C++ fordítót, előfordulhat, hogy a parancs futtatásakor hibákat fog kiépíteni. Ha ez történik, próbálja meg futtatni a parancsot a [Visual Studio-parancssorban](/dotnet/framework/tools/developer-command-prompt-for-vs).
 
     A sikeres létrehozást követően a kimenet utolsó sorai a következőhöz hasonlóan néznek majd ki:
 
@@ -347,7 +347,7 @@ Ez a mintakód szimulál egy eszköz rendszerindítási sorozatot, amely elküld
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. A `main()` függvényben keresse meg a hívást a következőhöz: `Prov_Device_Register_Device()` . Közvetlenül a hívás előtt adja hozzá a következő sornyi kódot, amely használatával [`Prov_Device_Set_Provisioning_Payload()`](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/prov-device-client-h/prov-device-set-provisioning-payload) Egyéni JSON-adattartalmat adhat át a kiépítés során. Ezzel további információkat adhat meg az egyéni foglalási funkciókhoz. Ez az eszköz típusának átadására is használható a regisztrációs azonosító vizsgálata helyett.
+6. A `main()` függvényben keresse meg a hívást a következőhöz: `Prov_Device_Register_Device()` . Közvetlenül a hívás előtt adja hozzá a következő sornyi kódot, amely használatával [`Prov_Device_Set_Provisioning_Payload()`](/azure/iot-hub/iot-c-sdk-ref/prov-device-client-h/prov-device-set-provisioning-payload) Egyéni JSON-adattartalmat adhat át a kiépítés során. Ezzel további információkat adhat meg az egyéni foglalási funkciókhoz. Ez az eszköz típusának átadására is használható a regisztrációs azonosító vizsgálata helyett.
 
     ```c
     // An example custom payload
@@ -380,7 +380,7 @@ Ez a mintakód szimulál egy eszköz rendszerindítási sorozatot, amely elküld
 
     Mentse a fájlt.
 
-2. A Visual Studio menüjében válassza a **hibakeresés**  >  **Indítás hibakeresés nélkül** lehetőséget a megoldás futtatásához. A projekt újraépítésének megadásához válassza az **Igen**lehetőséget, ha a Futtatás előtt szeretné újraépíteni a projektet.
+2. A Visual Studio menüjében válassza a **hibakeresés**  >  **Indítás hibakeresés nélkül** lehetőséget a megoldás futtatásához. A projekt újraépítésének megadásához válassza az **Igen** lehetőséget, ha a Futtatás előtt szeretné újraépíteni a projektet.
 
     A következő szöveg például a Toaster-eszközön futó egyéni foglalási függvény kódjának naplózási kimenetét jeleníti meg. Figyelje meg, hogy egy központi központ sikeresen ki van választva egy kenyérpirító eszköz számára. Figyelje meg azt a `payload` tagot is, amely a kódhoz hozzáadott egyéni JSON-tartalmat tartalmazza. Ez elérhető a kód számára a alkalmazásban `deviceRuntimeContext` .
 
@@ -461,11 +461,11 @@ Ez a mintakód szimulál egy eszköz rendszerindítási sorozatot, amely elküld
     Press enter key to exit:    
     ```
     
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha azt tervezi, hogy folytatja a jelen cikkben létrehozott erőforrásokkal való munkát, meghagyhatja őket. Ha nem tervezi tovább használni az erőforrásokat, a következő lépésekkel törölheti az ebben a cikkben létrehozott összes erőforrást a szükségtelen költségek elkerülése érdekében.
 
-Az itt leírt lépések azt feltételezik, hogy a cikkben szereplő összes erőforrást a **contoso-US-Resource-Group**nevű erőforráscsoport utasításai szerint hozta létre.
+Az itt leírt lépések azt feltételezik, hogy a cikkben szereplő összes erőforrást a **contoso-US-Resource-Group** nevű erőforráscsoport utasításai szerint hozta létre.
 
 > [!IMPORTANT]
 > Az erőforráscsoport törlése nem vonható vissza. Az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen, nehogy véletlenül rossz erőforráscsoportot vagy erőforrásokat töröljön. Ha az IoT Hubot egy meglévő, megtartani kívánt erőforrásokat tartalmazó erőforráscsoportban hozta létre, az erőforráscsoport törlése helyett törölheti csak magát az IoT Hub-erőforrást.
@@ -475,13 +475,13 @@ Az erőforráscsoport törlése név szerint:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), és válassza az **Erőforráscsoportok** elemet.
 
-2. A **szűrés név szerint...** szövegmezőbe írja be az erőforrásokat tartalmazó erőforráscsoport nevét, a **contoso-US-Resource-Group**nevet. 
+2. A **szűrés név szerint...** szövegmezőbe írja be az erőforrásokat tartalmazó erőforráscsoport nevét, a **contoso-US-Resource-Group** nevet. 
 
-3. Az erőforráscsoport jobb oldalán, az eredmények listájában válassza a **...** , majd az **erőforráscsoport törlése**elemet.
+3. Az erőforráscsoport jobb oldalán, az eredmények listájában válassza a **...** , majd az **erőforráscsoport törlése** elemet.
 
-4. A rendszer kérni fogja, hogy erősítse meg az erőforráscsoport törlését. A megerősítéshez írja be ismét az erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget. A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
+4. A rendszer kérni fogja, hogy erősítse meg az erőforráscsoport törlését. A megerősítéshez írja be ismét az erőforráscsoport nevét, majd válassza a **Törlés** lehetőséget. A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Részletesebb egyéni kiosztási [szabályzatot például az egyéni foglalási házirendek használata](how-to-use-custom-allocation-policies.md)című témakörben talál.
 * További információ: [IoT hub eszköz](concepts-device-reprovision.md)újraépítése.

@@ -11,19 +11,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
-ms.openlocfilehash: cae3072a3468b232e95d7c1949948b71059695ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6411e019d77b219e40bd91da973e00afda0ff18b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84708943"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965485"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Az Azure-Network Watcher kapcsolódási hibáinak bemutatása
 
 A Network Watcher kapcsolódási hibáinak elhárítása lehetővé teszi a közvetlen TCP-kapcsolatok ellenőrzését egy virtuális gépről egy virtuális gépre (VM), a teljes tartománynévre (FQDN), az URI-ra vagy az IPv4-címekre. A hálózati forgatókönyvek összetettek, a hálózati biztonsági csoportokkal, tűzfalakkal, felhasználó által megadott útvonalakkal és az Azure által biztosított erőforrásokkal valósíthatók meg. Az összetett konfigurációk hibaelhárítást tesznek a kapcsolódási problémákkal kapcsolatban. Network Watcher segít csökkenteni a kapcsolódási problémák megtalálásának és észlelésének időtartamát. A visszaadott eredmények révén betekintést nyerhet, hogy a kapcsolódási problémát egy platform vagy egy felhasználói konfigurációs probléma okozza-e. A kapcsolat ellenőrizhető a [PowerShell](network-watcher-connectivity-powershell.md), az [Azure CLI](network-watcher-connectivity-cli.md)és a [REST API](network-watcher-connectivity-rest.md)használatával.
 
 > [!IMPORTANT]
-> A kapcsolati hibákhoz az szükséges, hogy a rendszer a virtuálisgép- `AzureNetworkWatcherExtension` bővítményt telepítse. A bővítmény Windows rendszerű virtuális gépen való telepítéséhez látogasson el az [azure Network Watcher Agent virtuálisgép-bővítmény a Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) rendszerhez és a Linux rendszerű virtuális gépekhez látogasson el az [Azure Network Watcher Agent virtuálisgép-bővítménye Linuxra](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). A cél végponton nem szükséges a kiterjesztés.
+> A kapcsolati hibákhoz az szükséges, hogy a rendszer a virtuálisgép- `AzureNetworkWatcherExtension` bővítményt telepítse. A bővítmény Windows rendszerű virtuális gépen való telepítéséhez látogasson el az [azure Network Watcher Agent virtuálisgép-bővítmény a Windows](../virtual-machines/extensions/network-watcher-windows.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json) rendszerhez és a Linux rendszerű virtuális gépekhez látogasson el az [Azure Network Watcher Agent virtuálisgép-bővítménye Linuxra](../virtual-machines/extensions/network-watcher-linux.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json). A cél végponton nem szükséges a kiterjesztés.
 
 ## <a name="response"></a>Reagálás
 
@@ -38,7 +38,7 @@ A következő táblázat azokat a tulajdonságokat mutatja be, amelyeket a rends
 |ProbesSent     | Az ellenőrzés során eljuttatott mintavételek száma. A maximális érték 100.        |
 |ProbesFailed     | Az ellenőrzés során meghiúsult mintavételek száma. A maximális érték 100.        |
 |Ugrások     | Ugrás a forrás és a cél között a hop útvonalon.        |
-|Ugrások []. Típusa     | Az erőforrás típusa. A lehetséges értékek a következők: **forrás**, **VirtualAppliance**, **VnetLocal**és **Internet**.        |
+|Ugrások []. Típusa     | Az erőforrás típusa. A lehetséges értékek a következők: **forrás**, **VirtualAppliance**, **VnetLocal** és **Internet**.        |
 |Ugrások []. ID | Az Ugrás egyedi azonosítója.|
 |Ugrások []. Cím | Az ugrás IP-címe.|
 |Ugrások []. ResourceId | ResourceID, ha az Ugrás egy Azure-erőforrás. Ha ez egy internetes erőforrás, a ResourceID az **Internet**. |
@@ -81,6 +81,6 @@ A kapcsolatok hibaelhárítása a kapcsolatban fellépő hibák típusait adja v
 |NetworkSecurityRule    | Egy NSG szabály blokkolta a forgalmat (a rendszer visszaadja a szabályt)        |
 |UserDefinedRoute|A rendszer egy felhasználó által definiált vagy rendszerútvonal miatt eldobott forgalmat. |
 
-### <a name="next-steps"></a>További lépések
+### <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan lehet a [Azure Portal](network-watcher-connectivity-portal.md), a [PowerShell](network-watcher-connectivity-powershell.md), az [Azure CLI](network-watcher-connectivity-cli.md)vagy a [REST API](network-watcher-connectivity-rest.md)használatával a kapcsolatokat elhárítani.

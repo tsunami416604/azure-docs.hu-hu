@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 020208a8b67d248c02fc659d4dc48fa22d333839
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5970e82619667a47ba160c84df2cdeb145b0dab8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80298821"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966173"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>A StorSimple virtuális tömb rendszerkövetelményei
 
@@ -29,7 +29,7 @@ A rendszerkövetelmények a következők:
 
 Az ebben a cikkben közzétett StorSimple rendszerkövetelményekkel kapcsolatos információk csak a StorSimple virtuális tömbökre vonatkoznak.
 
-* Az 8000 sorozatú eszközökhöz lépjen a [StorSimple 8000 Series eszköz rendszerkövetelményei](storsimple-system-requirements.md)között.
+* Az 8000 sorozatú eszközökhöz lépjen a [StorSimple 8000 Series eszköz rendszerkövetelményei](./storsimple-8000-system-requirements.md)között.
 * Az 7000 sorozatú eszközökhöz lépjen a [StorSimple 5000-7000 Series eszköz rendszerkövetelményei](http://onlinehelp.storsimple.com/1_StorSimple_System_Requirements)között.
 
 ## <a name="software-requirements"></a>Szoftverkövetelmények
@@ -84,7 +84,7 @@ A következő szoftver-követelmények azokra az SMB-ügyfelekre vonatkoznak, am
 
 
 ### <a name="supported-storage-format"></a>Támogatott tárolási formátum
-Csak az Azure Block blob Storage támogatott. Az oldal Blobok nem támogatottak. További információ [a blobok és a Blobok blokkolásáról](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
+Csak az Azure Block blob Storage támogatott. Az oldal Blobok nem támogatottak. További információ [a blobok és a Blobok blokkolásáról](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
 
 ## <a name="networking-requirements"></a>Hálózati követelmények
 A következő táblázat felsorolja azokat a portokat, amelyeket meg kell nyitni a tűzfalon az iSCSI-, SMB-, felhő-vagy felügyeleti forgalom engedélyezéséhez. A (z) *in* vagy a *bejövő* tábla a bejövő ügyfelek által az eszközhöz való hozzáférést kérő irányt jelöli. A *kimenő vagy kimenő* állapot arra utal, hogy a StorSimple-eszköz hogyan küldi *el az* adatokat külsőleg, az üzembe helyezésen kívül: például az internet felé.
@@ -129,5 +129,5 @@ Javasoljuk, hogy a legtöbb esetben a StorSimple rögzített IP-címek alapján 
 | `https://*.partners.extranet.microsoft.com/*` |Támogatási csomag |
 | `https://*.data.microsoft.com` |Telemetria szolgáltatás a Windowsban: [frissítés a felhasználói élmény és a diagnosztikai telemetria](https://support.microsoft.com/en-us/kb/3068708) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A portál előkészítése a StorSimple virtuális tömb üzembe helyezéséhez](storsimple-virtual-array-deploy1-portal-prep.md)

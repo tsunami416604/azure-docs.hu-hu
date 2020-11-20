@@ -10,17 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 1ba6a19b271943c7ecbe2254ef2544a5f576ad3d
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 3827fa7a98cef9358db0ee102925586bce97fae6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167423"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965238"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>Magas rendelkezésre állás az SAP NetWeaver Azure-beli virtuális gépeken SUSE Linux Enterprise Server for SAP Applications multi-SID Guide
 
@@ -96,7 +97,7 @@ A magas rendelkezésre állás eléréséhez az SAP NetWeaver magas rendelkezés
 ![SAP NetWeaver – magas rendelkezésre állás – áttekintés](./media/high-availability-guide-suse/ha-suse-multi-sid.png)
 
 > [!IMPORTANT]
-> Az Azure-beli virtuális gépeken futó SUSE Linux rendszerű, az SAP ASCS és a több SID-fürtözés támogatásának támogatása ugyanazon a fürtön **öt** SAP-SID-re korlátozódik. Minden új SID növeli a bonyolultságot. Az SAP sorba helyezni Replication Server 1 és a sorba helyezni Replication Server 2 együttes használata **nem támogatott**ugyanazon a fürtön. A többszörös SID-fürtszolgáltatás több SAP ASCS/ERS példány telepítését ismerteti különböző SID-kiszolgálókkal egy pacemaker-fürtben. Jelenleg a többszörös SID-fürtszolgáltatás csak ASCS/ERS esetén támogatott.  
+> Az Azure-beli virtuális gépeken futó SUSE Linux rendszerű, az SAP ASCS és a több SID-fürtözés támogatásának támogatása ugyanazon a fürtön **öt** SAP-SID-re korlátozódik. Minden új SID növeli a bonyolultságot. Az SAP sorba helyezni Replication Server 1 és a sorba helyezni Replication Server 2 együttes használata **nem támogatott** ugyanazon a fürtön. A többszörös SID-fürtszolgáltatás több SAP ASCS/ERS példány telepítését ismerteti különböző SID-kiszolgálókkal egy pacemaker-fürtben. Jelenleg a többszörös SID-fürtszolgáltatás csak ASCS/ERS esetén támogatott.  
 
 > [!TIP]
 > Az SAP ASCS/ERS több SID-fürtszolgáltatása nagyobb komplexitású megoldás. A megvalósítás összetettebb. Emellett a karbantartási tevékenységek (például az operációs rendszer javításai) végrehajtásakor is magasabb adminisztrációs erőfeszítéssel jár. A tényleges megvalósítás megkezdése előtt Szánjon időt arra, hogy gondosan tervezze meg az üzembe helyezést és az összes érintett összetevőt, például a virtuális gépeket, az NFS-csatlakoztatásokat, a VIP-ket és a terheléselosztó konfigurációját  
@@ -112,7 +113,7 @@ A következő lista az (A) SCS és ERS Load Balancer konfigurációját mutatja 
   * A NW2 IP-címe: 10.3.1.16
   * A NW3 IP-címe: 10.3.1.13
 * Mintavételi portok
-  * 620**00****10** **20** -es port, ezért a NW1, a NW2 és a NW3 mintavételi portok esetében 620 00, 620 10 és 620 20<strong> &lt; &gt; </strong>
+  * 620 **00****10** **20** -es port, ezért a NW1, a NW2 és a NW3 mintavételi portok esetében 620 00, 620 10 és 620 20 <strong> &lt; &gt;</strong>
 * Terheléselosztási szabályok – 
 * hozzon létre egyet minden példányhoz, azaz: NW1/ASCS, NW2/ASCS és NW3/ASCS.
   * Ha standard Load Balancer használ, válassza a **hektár portok** elemet.
@@ -132,7 +133,7 @@ A következő lista az (A) SCS és ERS Load Balancer konfigurációját mutatja 
   * A NW2 10.3.1.17 IP-címe
   * A NW3 10.3.1.19 IP-címe
 * Mintavételi port
-  * 621**02****12** **22** -es port, ezért a NW1, a NW2 és a N # mintavételi portok esetében 621 02, 621 12 és 621 22<strong> &lt; &gt; </strong>
+  * 621 **02****12** **22** -es port, ezért a NW1, a NW2 és a N # mintavételi portok esetében 621 02, 621 12 és 621 22 <strong> &lt; &gt;</strong>
 * Terheléselosztási szabályok – hozzon létre egyet az egyes példányok, azaz a NW1/ERS, a NW2/ERS és a NW3/ERS esetében.
   * Ha standard Load Balancer használ, válassza a **hektár portok** elemet.
   * Ha alapszintű Load Balancer használ, hozzon létre terheléselosztási szabályokat a következő portokhoz
@@ -152,7 +153,7 @@ A következő lista az (A) SCS és ERS Load Balancer konfigurációját mutatja 
 > Ha a nyilvános IP-címek nélküli virtuális gépek a belső (nincs nyilvános IP-cím) standard Azure Load Balancer háttér-készletbe kerülnek, nem lesz kimenő internetkapcsolat, kivéve, ha további konfigurálást végeznek a nyilvános végpontok útválasztásának engedélyezéséhez. A kimenő kapcsolatok elérésével kapcsolatos részletekért lásd: [nyilvános végpontú kapcsolat Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben](./high-availability-guide-standard-load-balancer-outbound-connections.md).  
 
 > [!IMPORTANT]
-> Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a paramétert a **0**értékre **net.IPv4.tcp_timestamps** . Részletekért lásd: [Load Balancer Health](../../../load-balancer/load-balancer-custom-probe-overview.md)-tesztek.
+> Ne engedélyezze a TCP-időbélyegeket a Azure Load Balancer mögött elhelyezett Azure-beli virtuális gépeken. A TCP-időbélyegek engedélyezése az állapot-mintavételek meghibásodását eredményezi. Állítsa a paramétert a **0** értékre **net.IPv4.tcp_timestamps** . Részletekért lásd: [Load Balancer Health](../../../load-balancer/load-balancer-custom-probe-overview.md)-tesztek.
 
 ## <a name="sap-nfs-shares"></a>SAP NFS-megosztások
 
@@ -290,7 +291,7 @@ A dokumentáció a következőket feltételezi:
 
 2. **[1]** az SAP NetWeaver ASCS telepítése  
 
-   Telepítse az SAP NetWeaver-ASCS root-ként, egy virtuális állomásnév használatával, amely a ASCS tartozó terheléselosztó előtér-konfigurációjának IP-címét képezi le. A rendszer **NW2**például a virtuális állomásnév a <b>msnw2ascs</b>, a <b>10.3.1.16</b> és a terheléselosztó mintavételéhez használt példány száma, például <b>10</b>. a rendszer **NW3**a virtuális állomásnév a <b>msnw3ascs</b>, a <b>10.3.1.13</b> és a terheléselosztó mintavételéhez használt példány száma, például <b>20</b>.
+   Telepítse az SAP NetWeaver-ASCS root-ként, egy virtuális állomásnév használatával, amely a ASCS tartozó terheléselosztó előtér-konfigurációjának IP-címét képezi le. A rendszer **NW2** például a virtuális állomásnév a <b>msnw2ascs</b>, a <b>10.3.1.16</b> és a terheléselosztó mintavételéhez használt példány száma, például <b>10</b>. a rendszer **NW3** a virtuális állomásnév a <b>msnw3ascs</b>, a <b>10.3.1.13</b> és a terheléselosztó mintavételéhez használt példány száma, például <b>20</b>.
 
    A sapinst paraméterrel SAPINST_REMOTE_ACCESS_USER engedélyezheti, hogy a nem root felhasználó csatlakozhasson a sapinst. A (z) SAPINST_USE_HOSTNAME paraméter használatával telepítheti az SAP-t a virtuális gazdagép nevével.  
 
@@ -298,7 +299,7 @@ A dokumentáció a következőket feltételezi:
       sudo swpm/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin SAPINST_USE_HOSTNAME=virtual_hostname
      ```
 
-   Ha a telepítés során nem sikerül almappát létrehozni a/usr/SAP/**SID**/ASCS-**példányában**, próbálja meg a tulajdonost **SID**adm-re állítani, és a ASCS-**példány** sapsys, majd próbálkozzon újra.
+   Ha a telepítés során nem sikerül almappát létrehozni a/usr/SAP/**SID**/ASCS-**példányában**, próbálja meg a tulajdonost **SID** adm-re állítani, és a ASCS-**példány** sapsys, majd próbálkozzon újra.
 
 3. **[1]** hozzon létre egy virtuális IP-és állapot-mintavételi fürt erőforrásait a fürtre TELEPÍTENDŐ további SAP-rendszer ERS-példányához. Az itt látható példa a **NW2** és a **NW3** -esekre, a magasan rendelkezésre álló NFS-kiszolgáló használatával. 
 
@@ -340,7 +341,7 @@ A dokumentáció a következőket feltételezi:
 
 4. **[2]** SAP NETWEAVER-ERS telepítése
 
-   Telepítse az SAP NetWeaver-ket root-ként a másik csomóponton, egy virtuális állomásnév használatával, amely a terheléselosztó előtér-konfigurációjának IP-címét képezi le az ERS-hoz. Például a rendszerszintű **NW2**a virtuális állomásnév a <b>msnw2ers</b>, a <b>10.3.1.17</b> és a terheléselosztó mintavételéhez használt példány száma, például <b>12</b>. A rendszer **NW3**a virtuális állomásnév <b>msnw3ers</b>, a <b>10.3.1.19</b> és a terheléselosztó mintavételéhez használt példány számát, például <b>22</b>. 
+   Telepítse az SAP NetWeaver-ket root-ként a másik csomóponton, egy virtuális állomásnév használatával, amely a terheléselosztó előtér-konfigurációjának IP-címét képezi le az ERS-hoz. Például a rendszerszintű **NW2** a virtuális állomásnév a <b>msnw2ers</b>, a <b>10.3.1.17</b> és a terheléselosztó mintavételéhez használt példány száma, például <b>12</b>. A rendszer **NW3** a virtuális állomásnév <b>msnw3ers</b>, a <b>10.3.1.19</b> és a terheléselosztó mintavételéhez használt példány számát, például <b>22</b>. 
 
    A sapinst paraméterrel SAPINST_REMOTE_ACCESS_USER engedélyezheti, hogy a nem root felhasználó csatlakozhasson a sapinst. A (z) SAPINST_USE_HOSTNAME paraméter használatával telepítheti az SAP-t a virtuális gazdagép nevével.  
 
@@ -351,9 +352,9 @@ A dokumentáció a következőket feltételezi:
    > [!NOTE]
    > Használja az SWPM SP 20 PL 05-es vagy újabb verzióját. Az alacsonyabb verziók nem tudják megfelelően beállítani az engedélyeket, és a telepítés sikertelen lesz.
 
-   Ha a telepítés nem tud almappát létrehozni a/usr/SAP/**NW2**/ERS-**példányban**, próbálja meg beállítani a tulajdonost a **SID**adm-re, és a csoportot az ERS-**példány #** mappa sapsys, és próbálkozzon újra.
+   Ha a telepítés nem tud almappát létrehozni a/usr/SAP/**NW2**/ERS-**példányban**, próbálja meg beállítani a tulajdonost a **SID** adm-re, és a csoportot az ERS-**példány #** mappa sapsys, és próbálkozzon újra.
 
-   Ha szükséges, hogy áttelepítse az újonnan telepített SAP-rendszer ERS-csoportját egy másik fürtcsomóponton, ne felejtse el eltávolítani az ERS csoporthoz tartozó hely megkötését. A korlátozást a következő parancs futtatásával távolíthatja el (ez a példa az SAP Systems **NW2** és a **NW3**esetében van megadva).  
+   Ha szükséges, hogy áttelepítse az újonnan telepített SAP-rendszer ERS-csoportját egy másik fürtcsomóponton, ne felejtse el eltávolítani az ERS csoporthoz tartozó hely megkötését. A korlátozást a következő parancs futtatásával távolíthatja el (ez a példa az SAP Systems **NW2** és a **NW3** esetében van megadva).  
 
     ```
       crm resource unmigrate g-NW2_ERS
@@ -772,7 +773,7 @@ A bemutatott tesztek egy két csomóponton, több SID-fürtön, három SAP-rends
          rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started slesmsscl1
    ```
 
-   Futtassa a következő parancsokat a **NW2**adm használatával a NW2 ASCS-példány áttelepíteni.
+   Futtassa a következő parancsokat a **NW2** adm használatával a NW2 ASCS-példány áttelepíteni.
 
    ```
     slesmsscl2:nw2adm 53> sapcontrol -nr 10 -host msnw2ascs -user nw2adm password -function HAFailoverToNode ""
@@ -970,7 +971,7 @@ A bemutatott tesztek egy két csomóponton, több SID-fürtön, három SAP-rends
          rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started slesmsscl2
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]

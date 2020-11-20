@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: SAP, Azure, Oracle, adatvédelem
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e72c9d64a71fceb90d0a6ae9984997f73c1b5c6
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 3e99b3a8960eb49856e9a016eb054eed41eccde9
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963533"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965255"
 ---
 # <a name="azure-virtual-machines-oracle-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines Oracle adatbázis-kezelő üzembe helyezése SAP-munkaterheléshez
 
@@ -359,7 +360,7 @@ Tekintse meg az [Azure Storage-beli tárolási típusait az SAP](./planning-guid
 
 Erősen ajánlott az [Azure Managed Disks](../../managed-disks-overview.md)használata. Javasoljuk továbbá, hogy az [Azure Premium Storage-t vagy az Azure Ultra diskt](../../disks-types.md) használja a Oracle Database üzemelő példányokhoz.
 
-A hálózati meghajtók vagy távoli megosztások, például az Azure file Services nem támogatottak Oracle Database fájlok esetében. További információkért lásd:
+A hálózati meghajtók vagy távoli megosztások, például az Azure file Services nem támogatottak Oracle Database fájlok esetében. További információ:
 
 - [Introducing Microsoft Azure File Service (A Microsoft Azure File szolgáltatás bemutatása)](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
@@ -376,10 +377,10 @@ A minimális konfiguráció a következő:
 
 | Összetevő | Lemez | Gyorsítótárazás | Storage-készlet |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA & mirrlogB | Prémium vagy Ultra Disk | Nincsenek | Nem szükséges |
-| \oracle \<SID> \origlogaB & mirrlogA | Prémium vagy Ultra Disk | Nincsenek | Nem szükséges |
+| \oracle \<SID> \origlogaA & mirrlogB | Prémium vagy Ultra Disk | Nincs | Nem szükséges |
+| \oracle \<SID> \origlogaB & mirrlogA | Prémium vagy Ultra Disk | Nincs | Nem szükséges |
 | \oracle \<SID> \sapdata1... n | Prémium vagy Ultra Disk | Csak olvasható | Prémium szintű használatra is használható |
-| \oracle \<SID> \oraarch | Standard | Nincsenek | Nem szükséges |
+| \oracle \<SID> \oraarch | Standard | Nincs | Nem szükséges |
 | Oracle Home, `saptrace` ,... | OPERÁCIÓSRENDSZER-lemez (prémium) | | Nem szükséges |
 
 
@@ -389,13 +390,13 @@ A teljesítmény konfigurációja a következő:
 
 | Összetevő | Lemez | Gyorsítótárazás | Storage-készlet |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható  |
-| \oracle \<SID> \origlogaB | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható |
-| \oracle \<SID> \mirrlogAB | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható |
-| \oracle \<SID> \mirrlogBA | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható |
+| \oracle \<SID> \origlogaA | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható  |
+| \oracle \<SID> \origlogaB | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható |
+| \oracle \<SID> \mirrlogAB | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható |
+| \oracle \<SID> \mirrlogBA | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható |
 | \oracle \<SID> \sapdata1... n | Prémium vagy Ultra Disk | Csak olvasható | Prémium szintű ajánlott  |
-| \oracle\SID\sapdata (n + 1) * | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható |
-| \oracle \<SID> \oraarch * | Prémium vagy Ultra Disk | Nincsenek | Nem szükséges |
+| \oracle\SID\sapdata (n + 1) * | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható |
+| \oracle \<SID> \oraarch * | Prémium vagy Ultra Disk | Nincs | Nem szükséges |
 | Oracle Home, `saptrace` ,... | OPERÁCIÓSRENDSZER-lemez (prémium) | Nem szükséges |
 
 * (n + 1): üzemeltetési rendszerek, TEMP és visszavonás tablespaces. A rendszer és a visszavonási eszközök I/O-mintája eltér más, az alkalmazásadatok futtatására szolgáló tablespace-modelltől. A rendszer teljesítményének és az tablespace-EK visszavonásának legjobb lehetősége a gyorsítótárazás.
@@ -468,10 +469,10 @@ Minimális konfiguráció:
 
 | Összetevő | Lemez | Gyorsítótárazás | Csíkot |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA & mirrlogB | Prémium vagy Ultra Disk | Nincsenek | Nem szükséges |
-| /Oracle/ \<SID> /origlogaB & mirrlogA | Prémium vagy Ultra Disk | Nincsenek | Nem szükséges |
+| /Oracle/ \<SID> /origlogaA & mirrlogB | Prémium vagy Ultra Disk | Nincs | Nem szükséges |
+| /Oracle/ \<SID> /origlogaB & mirrlogA | Prémium vagy Ultra Disk | Nincs | Nem szükséges |
 | /Oracle/ \<SID> /sapdata1... n | Prémium vagy Ultra Disk | Csak olvasható | Prémium szintű használatra is használható |
-| /Oracle/ \<SID> /oraarch | Standard | Nincsenek | Nem szükséges |
+| /Oracle/ \<SID> /oraarch | Standard | Nincs | Nem szükséges |
 | Oracle Home, `saptrace` ,... | OPERÁCIÓSRENDSZER-lemez (prémium) | | Nem szükséges |
 
 * Kiszerelés: LVM Stripe vagy MDADM a RAID0 használatával
@@ -482,13 +483,13 @@ Teljesítmény konfigurációja:
 
 | Összetevő | Lemez | Gyorsítótárazás | Csíkot |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható  |
-| /Oracle/ \<SID> /origlogaB | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható |
-| /Oracle/ \<SID> /mirrlogAB | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható |
-| /Oracle/ \<SID> /mirrlogBA | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható |
+| /Oracle/ \<SID> /origlogaA | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható  |
+| /Oracle/ \<SID> /origlogaB | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható |
+| /Oracle/ \<SID> /mirrlogAB | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható |
+| /Oracle/ \<SID> /mirrlogBA | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható |
 | /Oracle/ \<SID> /sapdata1... n | Prémium vagy Ultra Disk | Csak olvasható | Prémium szintű ajánlott  |
-| /Oracle/ \<SID> /sapdata (n + 1) * | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható |
-| /Oracle/ \<SID> /oraarch * | Prémium vagy Ultra Disk | Nincsenek | Nem szükséges |
+| /Oracle/ \<SID> /sapdata (n + 1) * | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható |
+| /Oracle/ \<SID> /oraarch * | Prémium vagy Ultra Disk | Nincs | Nem szükséges |
 | Oracle Home, `saptrace` ,... | OPERÁCIÓSRENDSZER-lemez (prémium) | Nem szükséges |
 
 * Kiszerelés: LVM Stripe vagy MDADM a RAID0 használatával

@@ -11,19 +11,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2017
 ms.author: rohink
-ms.openlocfilehash: 9b6cac64d2e3def673f6d7c27e80bd64eead9e97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51e17812e1116f1e625685d5a818c18e25cdb2da
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84689163"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965799"
 ---
 # <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>DNS-zónák kezelése a Azure Portal
 
 > [!div class="op_single_selector"]
 > * [Portál](dns-operations-dnszones-portal.md)
 > * [PowerShell](dns-operations-dnszones.md)
-> * [Klasszikus Azure CLI](dns-operations-dnszones-cli-nodejs.md)
+> * [Klasszikus Azure CLI](./dns-operations-dnszones-cli.md)
 > * [Azure CLI](dns-operations-dnszones-cli.md)
 
 Ez a cikk bemutatja, hogyan kezelheti a DNS-zónákat a Azure Portal használatával. A DNS-zónákat a platformfüggetlen [Azure CLI](dns-operations-dnszones-cli.md) vagy az Azure [PowerShell](dns-operations-dnszones.md)használatával is kezelheti.
@@ -50,14 +50,14 @@ Ez a cikk bemutatja, hogyan kezelheti a DNS-zónákat a Azure Portal használat�
 
 ## <a name="list-dns-zones"></a>DNS-zónák listázása
 
-A Azure Portal navigáljon a **További szolgáltatások**  >  **hálózatkezelés**  >  **DNS-zónákhoz**. A DNS-zónák a saját erőforrásai, és a nézetből megtekinthető információk, például a rekordhalmazok és a névkiszolgálók száma. Az oszlopnév- **kiszolgálók** nem az alapértelmezett nézetben vannak. A hozzáadásához kattintson az **oszlopok**elemre **, válassza a névkiszolgálók lehetőséget**, majd kattintson a **kész**gombra.
+A Azure Portal navigáljon a **További szolgáltatások**  >  **hálózatkezelés**  >  **DNS-zónákhoz**. A DNS-zónák a saját erőforrásai, és a nézetből megtekinthető információk, például a rekordhalmazok és a névkiszolgálók száma. Az oszlopnév- **kiszolgálók** nem az alapértelmezett nézetben vannak. A hozzáadásához kattintson az **oszlopok** elemre **, válassza a névkiszolgálók lehetőséget**, majd kattintson a **kész** gombra.
 
 ![DNS-zónák listázása](./media/dns-operations-dnszones-portal/listzones.png)
 
 ## <a name="delete-a-dns-zone"></a>DNS-zóna törlése
 
-Navigáljon egy DNS-zónához a portálon. A **DNS-zóna** panelen kattintson a **zóna törlése**elemre. Ekkor a rendszer felszólítja, hogy erősítse meg, hogy törölni szeretné a DNS-zónát. A DNS-zónák törlésével a zónában található összes rekord is törlődik.
+Navigáljon egy DNS-zónához a portálon. A **DNS-zóna** panelen kattintson a **zóna törlése** elemre. Ekkor a rendszer felszólítja, hogy erősítse meg, hogy törölni szeretné a DNS-zónát. A DNS-zónák törlésével a zónában található összes rekord is törlődik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan használhatja a DNS-zónát és-rekordokat [a Azure DNS használatának első lépéseiben a Azure Portal használatával](dns-getstarted-portal.md).

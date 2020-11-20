@@ -1,14 +1,14 @@
 ---
 title: Oktatóanyag – vSphere-fürt üzembe helyezése az Azure-ban
-description: Ismerje meg, hogyan helyezhet üzembe egy vSphere-fürtöt az Azure-ban az Azure VMWare megoldás használatával
+description: Ismerje meg, hogyan helyezhet üzembe egy vSphere-fürtöt az Azure-ban az Azure VMware-megoldás használatával
 ms.topic: tutorial
-ms.date: 09/21/2020
-ms.openlocfilehash: b673a67fac734c9cb63e96b6a0c3dc9182f4b994
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.date: 11/19/2020
+ms.openlocfilehash: 93937f8ca0918494810885f5cb45de571a6e1529
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952284"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966309"
 ---
 # <a name="tutorial-deploy-an-azure-vmware-solution-private-cloud-in-azure"></a>Oktatóanyag: Azure VMware-megoldás saját Felhőbeli üzembe helyezése az Azure-ban
 
@@ -16,7 +16,7 @@ Az Azure VMware megoldás lehetővé teszi, hogy vSphere-fürtöt helyezzen üze
 
 Mivel az Azure VMware-megoldás nem teszi lehetővé, hogy az indításkor a helyszíni vCenter kezelhesse saját felhőjét, további konfigurálásra van szükség. Ezek az eljárások és a kapcsolódó előfeltételek az oktatóanyagban találhatók.
 
-Az oktatóanyag a következőket ismerteti:
+Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 
 > [!div class="checklist"]
 > * Azure VMware-megoldás saját felhő létrehozása
@@ -51,7 +51,7 @@ Válassza a **kipróbálás** lehetőséget a kódrészlet jobb felső sarkában
 
 #### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *eastus* helyen:
+Hozzon létre egy erőforráscsoportot az `[az group create](/cli/azure/group)` paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *eastus* helyen:
 
 ```azurecli-interactive
 
@@ -77,7 +77,7 @@ az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --locati
 
 ## <a name="delete-an-azure-vmware-solution-private-cloud"></a>Azure VMware-megoldás saját felhő törlése
 
-Ha rendelkezik olyan Azure VMware-megoldással, amelyet már nem kell használnia, törölheti. Az Azure VMware-megoldás saját felhője egy elkülönített hálózati tartományt, egy vagy több dedikált vSphere-fürtöt, és általában sok virtuális gépet tartalmaz. Ha töröl egy privát felhőt, a rendszer törli az összes virtuális gépet, az adatmennyiséget és a fürtöket. A dedikált operációs rendszer nélküli csomópontok biztonságosan törlődnek, és az ingyenes készletbe kerülnek vissza. Az ügyfél számára kiosztott hálózati tartomány törölve lett.  
+Ha rendelkezik olyan Azure VMware-megoldással, amelyet már nem kell használnia, törölheti. Az Azure VMware-megoldás saját felhője egy elkülönített hálózati tartományt, egy vagy több kiosztott vSphere-fürtöt tartalmaz dedikált kiszolgálói gazdagépeken és több virtuális gépen. Ha töröl egy privát felhőt, a rendszer törli az összes virtuális gépet, az adatmennyiséget és a fürtöket. A dedikált operációs rendszer nélküli gazdagépek biztonságosan törlődnek, és az ingyenes készletbe kerülnek vissza. Az ügyfél számára kiosztott hálózati tartomány törölve lett.  
 
 > [!CAUTION]
 > A privát felhő törlése visszafordíthatatlan művelet. A privát felhő törlése után az adatok nem állíthatók helyre, mivel leállítja az összes futó munkaterhelést és összetevőt, és megsemmisíti az összes titkos Felhőbeli adat-és konfigurációs beállítást, beleértve a nyilvános IP-címeket is.
@@ -92,13 +92,13 @@ A privát felhő törlése után nem lehet helyreállítani a virtuális gépeke
 
 2. Válassza ki a törölni kívánt privát felhőt.
  
-3. Adja meg a privát felhő nevét, és válassza az **Igen**lehetőséget. A törlési folyamat néhány órán belül befejeződik.  
+3. Adja meg a privát felhő nevét, és válassza az **Igen** lehetőséget. A törlési folyamat néhány órán belül befejeződik.  
 
 ## <a name="azure-vmware-commands"></a>Azure VMware-parancsok
 
 Az Azure VMware megoldással használható parancsok listáját itt találja: [Azure VMware-parancsok](/cli/azure/ext/vmware/vmware).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

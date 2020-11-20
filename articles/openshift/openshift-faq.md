@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 07/31/2020
-ms.openlocfilehash: c09f741b37e06010a0bfbab40317980793240e29
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 3a474228776c689dbbd6f15ddd926f29383400ce
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683505"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964711"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift – gyakori kérdések
 
@@ -21,7 +21,7 @@ Ez a cikk a Microsoft Azure Red Hat OpenShift kapcsolatos gyakori kérdéseket (
 
 ### <a name="which-azure-regions-are-supported"></a>Mely Azure-régiók támogatottak?
 
-Az Azure Red Hat OpenShift 4. x támogatott régiói listáját az [elérhető régiók](https://docs.openshift.com/aro/4/welcome/index.html#available-regions)részben tekintheti meg.
+Az Azure Red Hat OpenShift 4. x támogatott régiói listáját az [elérhető régiók](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all)részben tekintheti meg.
 
 Az Azure Red Hat OpenShift 3,11 támogatott régiói listáját itt tekintheti meg: [régiókban elérhető termékek](supported-resources.md#azure-regions).
 
@@ -127,7 +127,7 @@ További információ: a [Pod elhelyezésének szabályozása](https://docs.open
 
 3,11-fürtök esetén a Docker-rendszerkép beállításjegyzéke elérhető. A Docker-beállításjegyzék elérhető innen: `https://docker-registry.apps.<clustername>.<region>.azmosa.io/` . Azure Container Registry is használhatja.
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 ### <a name="can-i-deploy-a-cluster-into-an-existing-virtual-network"></a>Telepíthetek fürtöt meglévő virtuális hálózatra?
 

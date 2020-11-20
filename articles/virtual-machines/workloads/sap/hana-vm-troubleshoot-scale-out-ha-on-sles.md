@@ -7,17 +7,18 @@ author: hermanndms
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: 5c3a24bc9d754a15a0b372667fbcd689365a9aec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7cf18e2d375d7a45c3641876b8a3ed5974882927
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87088308"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965425"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>A kibővíthető magas rendelkezésre állású telepítés ellenőrzése és SAP HANA megoldása a SLES 12 SP3 rendszeren 
 
@@ -111,7 +112,7 @@ inet addr:10.0.2.42  Bcast:10.0.2.255  Mask:255.255.255.0
 </code></pre>
 
 
-Ezután ellenőrizze a SAP HANA portokat a névkiszolgáló és a HSR számára. SAP HANA figyelnie kell a megfelelő alhálózatokat. A SAP HANA példány számától függően módosítania kell a parancsokat. A tesztelési rendszer esetében a példány száma **00**volt. Többféle módon is megtudhatja, hogy mely portok vannak használatban. 
+Ezután ellenőrizze a SAP HANA portokat a névkiszolgáló és a HSR számára. SAP HANA figyelnie kell a megfelelő alhálózatokat. A SAP HANA példány számától függően módosítania kell a parancsokat. A tesztelési rendszer esetében a példány száma **00** volt. Többféle módon is megtudhatja, hogy mely portok vannak használatban. 
 
 A következő SQL-utasítás a példány AZONOSÍTÓját, a példány számát és az egyéb információkat adja vissza:
 
@@ -137,7 +138,7 @@ nc -vz 10.0.1.40 30001
 nc -vz 10.0.2.40 30001
 </code></pre>
 
-Annak bizonyításához, hogy a csomópontok közötti kommunikáció a **10.0.2.0/24**alhálózatot használja, az eredménynek a következő minta kimenethez hasonlóan kell kinéznie.
+Annak bizonyításához, hogy a csomópontok közötti kommunikáció a **10.0.2.0/24** alhálózatot használja, az eredménynek a következő minta kimenethez hasonlóan kell kinéznie.
 Csak a **10.0.2.0/24** alhálózaton keresztüli kapcsolatok sikeresek legyenek:
 
 <pre><code>
@@ -154,7 +155,7 @@ nc -vz 10.0.1.40 40002
 nc -vz 10.0.2.40 40002
 </code></pre>
 
-Annak bizonyításához, hogy a HSR-kommunikáció a **10.0.1.0/24**alhálózatot használja, az eredménynek a következő minta kimenetéhez hasonlóan kell kinéznie.
+Annak bizonyításához, hogy a HSR-kommunikáció a **10.0.1.0/24** alhálózatot használja, az eredménynek a következő minta kimenetéhez hasonlóan kell kinéznie.
 Csak a **10.0.1.0/24** alhálózaton keresztüli kapcsolatok sikeresek legyenek:
 
 <pre><code>
@@ -172,7 +173,7 @@ A **Corosync** konfigurációs fájljának helyesnek kell lennie a fürt minden 
 
 Egy példa a **Corosync. conf** fájl tartalmára a tesztelési rendszerből.
 
-Az első szakasz a **Totem**, a [fürt telepítése](./high-availability-guide-suse-pacemaker.md#cluster-installation)című részben leírtak szerint, 11. lépés. Figyelmen kívül hagyhatja a **mcastaddr**értékét. Csak tartsa meg a meglévő bejegyzést. A **jogkivonatra** és a **konszenzusra** vonatkozó bejegyzéseket a [Microsoft Azure SAP HANA dokumentációjának][sles-pacemaker-ha-guide]megfelelően kell beállítani.
+Az első szakasz a **Totem**, a [fürt telepítése](./high-availability-guide-suse-pacemaker.md#cluster-installation)című részben leírtak szerint, 11. lépés. Figyelmen kívül hagyhatja a **mcastaddr** értékét. Csak tartsa meg a meglévő bejegyzést. A **jogkivonatra** és a **konszenzusra** vonatkozó bejegyzéseket a [Microsoft Azure SAP HANA dokumentációjának][sles-pacemaker-ha-guide]megfelelően kell beállítani.
 
 <pre><code>
 totem {
@@ -220,7 +221,7 @@ logging {
 }
 </code></pre>
 
-A harmadik szakasz a **nodeList**mutatja. A fürt összes csomópontjának meg kell jelenítenie a **nodeId**:
+A harmadik szakasz a **nodeList** mutatja. A fürt összes csomópontjának meg kell jelenítenie a **nodeId**:
 
 <pre><code>
 nodelist {
@@ -255,7 +256,7 @@ nodelist {
 }
 </code></pre>
 
-Az utolsó szakaszban a **kvórumot**fontos a **expected_votes** helyes értékének beállítása. A csomópontok számának kell lennie, beleértve a többségi készítő csomópontot. **Two_node** értékének pedig **0**értékűnek kell lennie. Ne távolítsa el teljesen a bejegyzést. Állítsa az értéket **0-ra**.
+Az utolsó szakaszban a **kvórumot** fontos a **expected_votes** helyes értékének beállítása. A csomópontok számának kell lennie, beleértve a többségi készítő csomópontot. **Two_node** értékének pedig **0** értékűnek kell lennie. Ne távolítsa el teljesen a bejegyzést. Állítsa az értéket **0-ra**.
 
 <pre><code>
 quorum {
@@ -370,7 +371,7 @@ systemctl restart iscsid
 </code></pre>
 
 
-Bármely csomópontból megtekintheti, hogy az összes csomópont **törölve**van-e. Győződjön meg arról, hogy az eszköz helyes nevét használja egy adott csomóponton:
+Bármely csomópontból megtekintheti, hogy az összes csomópont **törölve** van-e. Győződjön meg arról, hogy az eszköz helyes nevét használja egy adott csomóponton:
 
 <pre><code>
 sbd -d /dev/sdm list
@@ -389,7 +390,7 @@ A kimenetnek **egyértelműnek** kell lennie a fürt minden csomópontján:
 </code></pre>
 
 
-Egy másik SBD-ellenőrzési lehetőség a **SBD** parancs **dump** kapcsolója. Ebben a minta-és kimenetben a többségi készítő csomópontból az eszköz neve **SDD**volt, nem **SDM**:
+Egy másik SBD-ellenőrzési lehetőség a **SBD** parancs **dump** kapcsolója. Ebben a minta-és kimenetben a többségi készítő csomópontból az eszköz neve **SDD** volt, nem **SDM**:
 
 <pre><code>
 sbd -d /dev/sdd dump
@@ -454,7 +455,7 @@ A tesztelés és az ellenőrzés során egy virtuális gép újraindítása utá
 2. Válassza ki a **Network Services** a bal oldalon.
 3. Görgessen le a jobb oldalon az **iSCSI-kezdeményezőre** , és jelölje ki.
 4. A **szolgáltatás** lap következő képernyőjén megjelenik a csomópont egyedi kezdeményező neve.
-5. A kezdeményező neve fölött ellenőrizze, hogy a **szolgáltatás indítási** értéke a **rendszerindítás során**van-e beállítva.
+5. A kezdeményező neve fölött ellenőrizze, hogy a **szolgáltatás indítási** értéke a **rendszerindítás során** van-e beállítva.
 6. Ha nem, akkor állítsa be, hogy a **manuális** **Indítás** helyett
 7. Ezután váltson a felső lapra a **csatlakoztatott célokhoz**.
 8. A **csatlakoztatott célok** képernyőn megjelenik egy bejegyzés a SBD-eszközhöz, például a következő mintának: **10.0.0.19:3260 IQN. 2006-04. dbhso. local: dbhso**.
@@ -472,7 +473,7 @@ Miután minden megfelelően beállította a beállításokat, a következő para
 systemctl status pacemaker
 </code></pre>
 
-A kimenet tetején a következő mintához hasonlóan kell kinéznie. Fontos, hogy az **aktív** állapot után **betöltött** és **aktív (futó)** állapot jelenjen meg. A **Betöltés** utáni állapotot **engedélyezve**értékként kell megjeleníteni.
+A kimenet tetején a következő mintához hasonlóan kell kinéznie. Fontos, hogy az **aktív** állapot után **betöltött** és **aktív (futó)** állapot jelenjen meg. A **Betöltés** utáni állapotot **engedélyezve** értékként kell megjeleníteni.
 
 <pre><code>
   pacemaker.service - Pacemaker High Availability Cluster Manager
@@ -504,7 +505,7 @@ A pacemaker összes konfigurált erőforrásának megtekintéséhez futtassa a k
 crm status
 </code></pre>
 
-A kimenetnek az alábbi példához hasonlóan kell kinéznie. Nagyon fontos, hogy a **CLN** és az **MSL** -erőforrások a többségi gyártó virtuális gépen, a **hso-Hana-DM**-ben leállítottként jelenjenek meg. Nincs SAP HANA telepítés a többségi gyártó csomópontján. Így a **CLN** és az **MSL** -erőforrások leálltként jelennek meg. Fontos, hogy a virtuális gépek megfelelő teljes számát jelenítse meg, **7**. A fürt részét képező összes virtuális gépnek az **online**állapottal kell szerepelnie. Az aktuális elsődleges főcsomópontot helyesen kell azonosítani. Ebben a példában ez a **hso-Hana-VM-S1-0**:
+A kimenetnek az alábbi példához hasonlóan kell kinéznie. Nagyon fontos, hogy a **CLN** és az **MSL** -erőforrások a többségi gyártó virtuális gépen, a **hso-Hana-DM**-ben leállítottként jelenjenek meg. Nincs SAP HANA telepítés a többségi gyártó csomópontján. Így a **CLN** és az **MSL** -erőforrások leálltként jelennek meg. Fontos, hogy a virtuális gépek megfelelő teljes számát jelenítse meg, **7**. A fürt részét képező összes virtuális gépnek az **online** állapottal kell szerepelnie. Az aktuális elsődleges főcsomópontot helyesen kell azonosítani. Ebben a példában ez a **hso-Hana-VM-S1-0**:
 
 <pre><code>
 Stack: corosync
@@ -538,7 +539,7 @@ A pacemaker egyik fontos funkciója a karbantartási mód. Ebben a módban módo
 crm configure property maintenance-mode=true
 </code></pre>
 
-A **CRM állapotának**ellenőrzésekor a kimenetben láthatja, hogy az összes erőforrás nem **kezeltként**van megjelölve. Ebben az állapotban a fürt nem reagál olyan változásokra, mint a SAP HANA elindítása vagy leállítása.
+A **CRM állapotának** ellenőrzésekor a kimenetben láthatja, hogy az összes erőforrás nem **kezeltként** van megjelölve. Ebben az állapotban a fürt nem reagál olyan változásokra, mint a SAP HANA elindítása vagy leállítása.
 A következő minta a **CRM status** parancs kimenetét mutatja be, miközben a fürt karbantartási módban van:
 
 <pre><code>
@@ -550,7 +551,7 @@ Last change: Wed Sep 12 07:46:54 2018 by root via cibadmin on hso-hana-vm-s2-1
 7 nodes configured
 17 resources configured
 
-              *** Resource management is DISABLED ***
+              **_ Resource management is DISABLED _*_
   The cluster will not attempt to start, stop or recover services
 
 Online: [ hso-hana-dm hso-hana-vm-s1-0 hso-hana-vm-s1-1 hso-hana-vm-s1-2 hso-hana-vm-s2-0 hso-hana-vm-s2-1 hso-hana-vm-s2-2 ]
@@ -586,7 +587,7 @@ crm configure property maintenance-mode=false
 </code></pre>
 
 
-Egy másik **CRM** -parancs beolvassa a fürt teljes konfigurációját egy Szerkesztőbe, így szerkesztheti azt. A módosítások mentése után a fürt elindítja a megfelelő műveleteket:
+Egy másik _ *CRM** parancs beolvassa a teljes fürtkonfiguráció egy Szerkesztőbe, így szerkesztheti. A módosítások mentése után a fürt elindítja a megfelelő műveleteket:
 
 <pre><code>
 crm configure edit
@@ -600,7 +601,7 @@ crm configure show
 
 
 
-A fürt erőforrásainak meghibásodása után a **CRM status** parancs a **sikertelen műveletek**listáját jeleníti meg. Tekintse meg a kimenet következő mintáját:
+A fürt erőforrásainak meghibásodása után a **CRM status** parancs a **sikertelen műveletek** listáját jeleníti meg. Tekintse meg a kimenet következő mintáját:
 
 
 <pre><code>
@@ -680,9 +681,9 @@ watch SAPHanaSR-showAttr
 
 Emellett segít megtekinteni az SAP Python-szkriptből érkező SAP HANA tájképi állapotot. A fürt beállítása az állapot értékét keresi. Egyértelművé válik, ha a feldolgozó csomópont hibáját gondolja. Ha egy feldolgozó csomópont leáll, SAP HANA nem ad vissza azonnal hibát a teljes kibővíthető rendszer állapotára vonatkozóan. 
 
-A szükségtelen feladatátvételek elkerülése érdekében újrapróbálkozik. A fürt csak akkor működik, ha az állapot az **OK**, a **4**. visszatérési érték, a **hiba**, az **1**. visszaadott érték változik. Ezért helyes, ha a **SAPHanaSR-showAttr** kimenete **Offline**állapotú virtuális gépet mutat be. Azonban még nincs tevékenység az elsődleges és a másodlagos váltáshoz. Nem indul el a fürt tevékenysége, amíg SAP HANA nem ad vissza hibát.
+A szükségtelen feladatátvételek elkerülése érdekében újrapróbálkozik. A fürt csak akkor működik, ha az állapot az **OK**, a **4**. visszatérési érték, a **hiba**, az **1**. visszaadott érték változik. Ezért helyes, ha a **SAPHanaSR-showAttr** kimenete **Offline** állapotú virtuális gépet mutat be. Azonban még nincs tevékenység az elsődleges és a másodlagos váltáshoz. Nem indul el a fürt tevékenysége, amíg SAP HANA nem ad vissza hibát.
 
-Az SAP Python-szkriptet az alábbi módon figyelheti a SAP HANA fekvő állapotának felhasználói ** \<HANA SID\> adm** -ként való meghívásával. Lehetséges, hogy az elérési utat módosítania kell:
+Az SAP Python-szkriptet az alábbi módon figyelheti a SAP HANA fekvő állapotának felhasználói **\<HANA SID\> adm** -ként való meghívásával. Lehetséges, hogy az elérési utat módosítania kell:
 
 <pre><code>
 watch python /hana/shared/HSO/exe/linuxx86_64/HDB_2.00.032.00.1533114046_eeaf4723ec52ed3935ae0dc9769c9411ed73fec5/python_support/landscapeHostConfiguration.py
@@ -762,13 +763,13 @@ INFO: Move constraint created for msl_SAPHanaCon_HSO_HDB00
 </code></pre>
 
 
-A feladatátvételi folyamatot a **SAPHanaSR-showAttr**parancs használatával vizsgálja meg. A fürt állapotának figyeléséhez nyisson meg egy dedikált rendszerhéj-ablakot, és indítsa el a parancsot az **óra**használatával:
+A feladatátvételi folyamatot a **SAPHanaSR-showAttr** parancs használatával vizsgálja meg. A fürt állapotának figyeléséhez nyisson meg egy dedikált rendszerhéj-ablakot, és indítsa el a parancsot az **óra** használatával:
 
 <pre><code>
 watch SAPHanaSR-showAttr
 </code></pre>
 
-A kimenetnek a manuális feladatátvételt kell mutatnia. A korábbi másodlagos főcsomópont **előléptetve**lett, ebben a példában a **hso-Hana-VM-S2-0**. A korábbi elsődleges hely le lett állítva, **1** . **licencszolgáltatóval** érték a korábbi elsődleges főcsomóponthoz **hso-Hana-VM-S1-0**: 
+A kimenetnek a manuális feladatátvételt kell mutatnia. A korábbi másodlagos főcsomópont **előléptetve** lett, ebben a példában a **hso-Hana-VM-S2-0**. A korábbi elsődleges hely le lett állítva, **1** . **licencszolgáltatóval** érték a korábbi elsődleges főcsomóponthoz **hso-Hana-VM-S1-0**: 
 
 <pre><code>
 Global cib-time                 prim  sec srHook sync_state
@@ -860,7 +861,7 @@ drwxr-xr-x 3 root root   4096 Sep 13 09:01 hso-hana-vm-s2-2
 </code></pre>
 
 
-A megadott időtartományon belül az aktuális fő csomópont **hso-Hana-VM-S1-0** lett leállítva. Az eseményhez kapcsolódó bejegyzéseket a **Journal. log naplófájlban**találja:
+A megadott időtartományon belül az aktuális fő csomópont **hso-Hana-VM-S1-0** lett leállítva. Az eseményhez kapcsolódó bejegyzéseket a **Journal. log naplófájlban** találja:
 
 <pre><code>
 2018-09-13T07:38:01+0000 hso-hana-vm-s2-1 su[93494]: (to hsoadm) root on none
@@ -882,7 +883,7 @@ A megadott időtartományon belül az aktuális fő csomópont **hso-Hana-VM-S1-
 2018-09-13T07:38:03+0000 hso-hana-vm-s2-1 su[93494]: pam_unix(su-l:session): session closed for user hsoadm
 </code></pre>
 
-Egy másik példa a pacemaker naplófájl a másodlagos főkiszolgálón, amely az új elsődleges főkiszolgáló lett. Ez a részlet azt mutatja, hogy a megölt elsődleges főcsomópont állapota **Offline**értékre lett állítva:
+Egy másik példa a pacemaker naplófájl a másodlagos főkiszolgálón, amely az új elsődleges főkiszolgáló lett. Ez a részlet azt mutatja, hogy a megölt elsődleges főcsomópont állapota **Offline** értékre lett állítva:
 
 <pre><code>
 Sep 13 07:38:02 [4178] hso-hana-vm-s2-0 stonith-ng:     info: pcmk_cpg_membership:      Node 3 still member of group stonith-ng (peer=hso-hana-vm-s1-2, counter=5.1)
@@ -963,11 +964,11 @@ Ez a példa a fürterőforrás-áttelepítés által a [tervezett karbantartás]
 ![A Hawk List korlátozásai](media/hana-vm-scale-out-HA-troubleshooting/hawk-2.png)
 
 
-A Hawk ( **hb_report** ) kimenetét is feltöltheti az **Előzmények**alatt, a következőképpen jelenik meg. A naplófájlok gyűjtéséhez hb_report tekintse meg a következőt: 
+A Hawk ( **hb_report** ) kimenetét is feltöltheti az **Előzmények** alatt, a következőképpen jelenik meg. A naplófájlok gyűjtéséhez hb_report tekintse meg a következőt: 
 
 ![Hawk feltöltési hb_report kimenete](media/hana-vm-scale-out-HA-troubleshooting/hawk-3.png)
 
-Az **Előzmények Explorerrel**a **hb_report** kimenetben található összes fürt átváltását áttekintheti:
+Az **Előzmények Explorerrel** a **hb_report** kimenetben található összes fürt átváltását áttekintheti:
 
 ![A Hawk-átmenetek a hb_report kimenetében](media/hana-vm-scale-out-HA-troubleshooting/hawk-4.png)
 
@@ -976,6 +977,6 @@ Ez a végső képernyőkép egy átmeneti átmenet **részleteit** mutatja be. A
 ![Hawk Single Transition](media/hana-vm-scale-out-HA-troubleshooting/hawk-5.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a hibaelhárítási útmutató a SAP HANA magas rendelkezésre állását ismerteti a kibővíthető konfigurációban. Az adatbázison kívül az SAP-környezet egy másik fontos összetevője az SAP NetWeaver stack. Ismerje meg az [SAP NetWeaver magas rendelkezésre állását a SUSE Enterprise Linux Servert használó Azure-beli virtuális gépeken][sap-nw-ha-guide-sles].

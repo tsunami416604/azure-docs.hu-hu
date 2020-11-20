@@ -4,16 +4,17 @@ description: Ez a cikk bemutatja, hogyan telepítheti és konfigurálhatja a Tre
 author: axayjo
 tags: azure-service-management
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: akjosh
-ms.openlocfilehash: bed1d567aa48a11c01ae952e6a4a2028e260e6e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d6d80287d05517933f066d5e49fa31e78a48943
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87288523"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966379"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>A Trend Micro Deep Security telepítése és konfigurálása Windows rendszerű virtuális gépen
 
@@ -40,7 +41,7 @@ A varázsló **Beállítások** paneljén hajtsa végre a következő lépéseke
 
    ![A bővítmény hozzáadásának megkezdése][1]
 
-2. Az **új erőforrás** ablaktáblán válassza a **Deep Security Agent** lehetőséget. A Deep Security Agent ablaktáblán kattintson a **Létrehozás**elemre.
+2. Az **új erőforrás** ablaktáblán válassza a **Deep Security Agent** lehetőséget. A Deep Security Agent ablaktáblán kattintson a **Létrehozás** elemre.
 
    ![Mélyreható biztonsági ügynök azonosítása][2]
 
@@ -65,7 +66,7 @@ write-host $vm.VM.ProvisionGuestAgent
 
 Ha nem ismeri a Cloud Service-t és a virtuális gépet, futtassa a **Get-AzureVM** parancsot a jelenlegi előfizetésben lévő összes virtuális gép adatainak megjelenítéséhez.
 
-Ha a **Write-Host** parancs **igaz**értéket ad vissza, a rendszer telepíti a virtuálisgép-ügynököt. Ha **hamis**értéket ad vissza, tekintse meg az utasításokat és a letöltésre mutató hivatkozást az Azure [-beli VM-ügynök és-bővítmények – 2. rész](https://go.microsoft.com/fwlink/p/?LinkId=403947).
+Ha a **Write-Host** parancs **igaz** értéket ad vissza, a rendszer telepíti a virtuálisgép-ügynököt. Ha **hamis** értéket ad vissza, tekintse meg az utasításokat és a letöltésre mutató hivatkozást az Azure [-beli VM-ügynök és-bővítmények – 2. rész](https://go.microsoft.com/fwlink/p/?LinkId=403947).
 
 Ha a virtuálisgép-ügynök telepítve van, futtassa ezeket a parancsokat.
 
@@ -75,7 +76,7 @@ $Agent = Get-AzureVMAvailableExtension TrendMicro.DeepSecurity -ExtensionName Tr
 Set-AzureVMExtension -Publisher TrendMicro.DeepSecurity –Version $Agent.Version -ExtensionName TrendMicroDSA -VM $vm | Update-AzureVM
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Néhány percet vesz igénybe, amíg az ügynök elindul a telepítéskor. Ezt követően aktiválnia kell a mély biztonságot a virtuális gépen, hogy azt egy Deep Security Manager kezelje. További útmutatásért tekintse meg a következő cikkeket:
 
 * A trendről szóló cikk a megoldásról, [az azonnali Felhőbeli biztonságról Microsoft Azure](https://go.microsoft.com/fwlink/?LinkId=404101)

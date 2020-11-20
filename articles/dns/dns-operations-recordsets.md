@@ -12,18 +12,18 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: rohink
-ms.openlocfilehash: 07776e0361b8221cf3aca9f06c66478aa6127f53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4e713f54ab4702b21763dc9fc6c7b606f94a945
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84701749"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965714"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>DNS-rekordok és-rekordhalmazok kezelése a Azure DNS használatával Azure PowerShell
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](dns-operations-recordsets-portal.md)
-> * [Klasszikus Azure CLI](dns-operations-recordsets-cli-nodejs.md)
+> * [Klasszikus Azure CLI](./dns-operations-recordsets-cli.md)
 > * [Azure CLI](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
@@ -33,7 +33,7 @@ A cikkben szereplő példák feltételezik, hogy már [telepítette Azure PowerS
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 
 Mielőtt létrehozná a DNS-rekordokat Azure DNS-ben, tisztában kell lennie azzal, hogyan rendezi az Azure DNS DNS-rekordhalmazokba a DNS-rekordokat.
 
@@ -142,7 +142,7 @@ New-AzDnsRecordSet -Name 10 -RecordType PTR -ZoneName "my-arpa-zone.com" -Resour
 
 ### <a name="create-an-srv-record-set-with-a-single-record"></a>Egyetlen rekordot tartalmazó SRV típusú rekordhalmaz létrehozása
 
-[SRV-rekordok](dns-zones-records.md#srv-records)létrehozásakor adja meg a * \_ szolgáltatást* és a * \_ protokollt* a rekord készletének nevében. \@Ha SRV-rekordhalmazt hoz létre a zóna csúcspontján, a rekordhalmaz nevében nem szükséges a "" belefoglalása.
+[SRV-rekordok](dns-zones-records.md#srv-records)létrehozásakor adja meg a *\_ szolgáltatást* és a *\_ protokollt* a rekord készletének nevében. \@Ha SRV-rekordhalmazt hoz létre a zóna csúcspontján, a rekordhalmaz nevében nem szükséges a "" belefoglalása.
 
 ```powershell
 New-AzDnsRecordSet -Name "_sip._tls" -RecordType SRV -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Priority 0 -Weight 5 -Port 8080 -Target "sip.contoso.com") 
@@ -230,7 +230,7 @@ Rekord meglévő készlethez való hozzáadásához kövesse az alábbi három l
 
 A használatával `Set-AzDnsRecordSet` *lecseréli* a meglévő rekordhalmazt Azure DNS (és a benne található összes rekord) a megadott rekordhalmazra. A [ETAG-ellenőrzésekkel](dns-zones-records.md#etags) biztosítható, hogy az egyidejű módosítások ne legyenek felülírva. `-Overwrite`Ezeket az ellenőrzéseket a választható kapcsoló használatával tilthatja le.
 
-A műveletek ezen sorozata *vezetékes*is lehet, ami azt jelenti, hogy a rekord-készlet objektumot a cső használatával adja át, nem pedig paraméterként.
+A műveletek ezen sorozata *vezetékes* is lehet, ami azt jelenti, hogy a rekord-készlet objektumot a cső használatával adja át, nem pedig paraméterként.
 
 ```powershell
 Get-AzDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Add-AzDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzDnsRecordSet
@@ -390,7 +390,7 @@ A jelenlegi `$ConfirmPreference` beállítás a `-Confirm` paraméter használat
 
 A `-Confirm` és `$ConfirmPreference` értékekkel kapcsolatos további információt [a preferenciaváltozók bemutatását](/powershell/module/microsoft.powershell.core/about/about_preference_variables) tartalmazó részben talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [Azure DNS található zónákkal és rekordokkal](dns-zones-records.md)kapcsolatban.
 <br>

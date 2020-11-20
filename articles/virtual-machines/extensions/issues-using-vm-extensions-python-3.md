@@ -9,22 +9,23 @@ manager: dcscontentpm
 editor: ''
 tags: top-support-issue,azure-resource-manager
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/25/2020
 ms.assetid: 3cd520fd-eaf7-4ef9-b4d3-4827057e5028
-ms.openlocfilehash: 15ece836e172b8316222ea606ca638650795d5d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5593257fa17944eebce6346a1eb9e88e7af2c06
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88852598"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965952"
 ---
 # <a name="issues-using-vm-extensions-in-python-3-enabled-linux-azure-virtual-machines-systems"></a>A Python 3-kompatibilis Linux Azure Virtual Machines rendszerek virtuálisgép-bővítményeit használó problémák
 
 > [!NOTE]
-> A Microsoft arra biztatja a felhasználókat, hogy csak akkor fogadjanak el **Python 3. x** rendszert, ha a számítási feladathoz a **Python 2. x** támogatása szükséges. Ilyen követelmény például az örökölt felügyeleti parancsfájlok, illetve a **Azure Disk Encryption** és a **Azure monitor**bővítmények lehetnek.
+> A Microsoft arra biztatja a felhasználókat, hogy csak akkor fogadjanak el **Python 3. x** rendszert, ha a számítási feladathoz a **Python 2. x** támogatása szükséges. Ilyen követelmény például az örökölt felügyeleti parancsfájlok, illetve a **Azure Disk Encryption** és a **Azure monitor** bővítmények lehetnek.
 >
 > A **Python 2. x** éles környezetben való telepítése előtt vegye figyelembe a Python 2. x hosszú távú támogatásának kérdését, különösen a biztonsági frissítések fogadásának lehetőségét. Termékként, beleértve az említett bővítmények némelyikét, a **python 3,8** -támogatással való frissítéssel a Python 2. x verziójának használatát kell megszüntetnie.
 
@@ -47,7 +48,7 @@ A bővítmények telepítése előtt vegye figyelembe ezeket az általános ajá
 
 1. A bővítmény telepítése előtt állítsa vissza a `/usr/bin/python` symlink-t a Linux Distribution gyártó által biztosított módszer használatával.
 
-   - Például a **Python 2,7**esetén használja a következőt: `sudo apt update && sudo apt install python-is-python2`
+   - Például a **Python 2,7** esetén használja a következőt: `sudo apt update && sudo apt install python-is-python2`
 
 1. Ez az ajánlat az Azure-ügyfelekre vonatkozik, és nem támogatott a Azure Stackban:
 
@@ -90,6 +91,6 @@ A bővítmények telepítése előtt vegye figyelembe ezeket az általános ajá
        },
      ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információért tekintse meg a további [alaprendszer-változásokat a 18,04 LTS – Python 3 óta](https://wiki.ubuntu.com/FocalFossa/ReleaseNotes#Python3_by_default) .

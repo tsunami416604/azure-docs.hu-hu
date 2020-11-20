@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: a9ad018980784a1f809ad28a77dacf9f0328fffa
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 4e2bcb683c9d4c5248315549bf6d6ee26b2a51ac
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873896"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965034"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Nagyvállalati biztonság és irányítási Azure Machine Learning
 
@@ -28,7 +28,7 @@ Ha Cloud Service-t használ, az ajánlott eljárás a hozzáférés korlátozás
 
 ## <a name="authentication--authorization"></a>Hitelesítés & engedélyezése
 
-A Azure Machine Learning erőforrásokhoz való legtöbb hitelesítés a hitelesítéshez Azure Active Directory (Azure AD), az engedélyezéshez pedig szerepköralapú hozzáférés-vezérlést (Azure RBAC) használ. A kivételek a következők:
+A Azure Machine Learning erőforrásokhoz való legtöbb hitelesítés a hitelesítéshez Azure Active Directory (Azure AD), valamint az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatát használja az engedélyezéshez. A kivételek a következők:
 
 * __SSH__: engedélyezheti az SSH-hozzáférést bizonyos számítási erőforrásokhoz, például Azure Machine learning számítási példányhoz. Az SSH-hozzáférés kulcs alapú hitelesítést használ. Az SSH-kulcsok létrehozásával kapcsolatos további információkért lásd: [ssh-kulcsok létrehozása és kezelése](../virtual-machines/linux/create-ssh-keys-detailed.md). További információ az SSH-hozzáférés engedélyezéséről: [Azure Machine learning számítási példány létrehozása és kezelése](how-to-create-manage-compute-instance.md).
 * __Webszolgáltatásként üzembe helyezett modellek: a__ webszolgáltatás központi telepítései a __kulcs__ -vagy __jogkivonat__-alapú hozzáférés-vezérlést is használhatják. A kulcsok statikus karakterláncok. A tokeneket egy Azure AD-fiók használatával kéri le a rendszer. További információkért lásd: [webszolgáltatásként üzembe helyezett modellek hitelesítésének konfigurálása](how-to-authenticate-web-service.md).
@@ -49,7 +49,7 @@ További információ: Azure Machine Learning- [munkaterület hitelesítése](ho
 
 ### <a name="azure-rbac"></a>Azure RBAC-vel
 
-Több munkaterületet is létrehozhat, és az egyes munkaterületek több személy számára is megoszthatók. Az Azure AD-fiók Azure RBAC-szerepkörökhöz való hozzárendelésével szabályozhatja, hogy a munkaterület felhasználói milyen szolgáltatásokat és műveleteket érhetik el. A beépített szerepkörök a következők:
+Több munkaterületet is létrehozhat, és az egyes munkaterületek több személy számára is megoszthatók. Az Azure AD-fiók Azure-szerepkörökhöz való hozzárendelésével szabályozhatja, hogy a munkaterület felhasználói milyen szolgáltatásokat és műveleteket érhetik el. A beépített szerepkörök a következők:
 
 * Tulajdonos
 * Közreműködő

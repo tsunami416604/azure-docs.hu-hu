@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: timlt
-ms.openlocfilehash: 64f91263154f7e65238acdcef9d97e5f2d09aad5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9c7a2df83e9d630ce2b4635a830fb941180c758
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87006024"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965000"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 sorozat: hibrid felhőalapú tárolási megoldás
 
@@ -39,7 +39,7 @@ A Storage kezelése mellett a StorSimple adatvédelmi funkciói lehetővé teszi
 ## <a name="why-use-storsimple"></a>Miért érdemes használni a StorSimple?
 Az alábbi táblázat a Microsoft Azure StorSimple által biztosított főbb előnyöket ismerteti.
 
-| Szolgáltatás | Előny |
+| Funkció | Előny |
 | --- | --- |
 | Transzparens integráció |Az iSCSI protokollt használja az adattárolási létesítmények láthatatlan csatolásához. Ez biztosítja, hogy a felhőben, az adatközpontban vagy távoli kiszolgálókon tárolt adattárolók egyetlen helyen legyenek tárolva. |
 | Csökkentett tárolási költségek |Elegendő helyi vagy Felhőbeli tárterületet foglal le a jelenlegi igények kielégítéséhez, és csak szükség esetén terjeszti ki a felhőalapú tárhelyet. A szolgáltatás tovább csökkenti a tárolási követelményeket és a költségeket azáltal, hogy megszünteti az azonos adatmennyiségek redundáns verzióit (deduplikálás) és a tömörítést. |
@@ -48,7 +48,7 @@ Az alábbi táblázat a Microsoft Azure StorSimple által biztosított főbb el�
 | Adatmobilitás |A Microsoft Azure Cloud Services szolgáltatásba feltöltött adatok a helyreállítási és áttelepítési célból más helyekről is elérhetők. Emellett a StorSimple használatával is konfigurálhatja a Microsoft Azure rendszerű virtuális gépeken futó StorSimple felhőalapú készülékeit. A virtuális gépek ezután a virtuális eszközök segítségével érhetik el a tárolt, tesztelésre vagy helyreállításra szolgáló eszközöket. |
 | Az üzletmenet folytonossága |Lehetővé teszi, hogy a StorSimple 5000-7000 sorozat felhasználói áttelepítsenek az StorSimple 8000 Series-eszközre. |
 | Rendelkezésre állás a Azure Government portálon |A StorSimple a Azure Government portálon érhető el. További információ: [helyszíni StorSimple-eszköz üzembe helyezése a kormányzati portálon](storsimple-8000-deployment-walkthrough-gov-u2.md). |
-| Adatvédelem és rendelkezésre állás |A StorSimple 8000 sorozat a helyileg redundáns tárolás (LRS) és a Geo-redundáns tárolás (GRS) mellett támogatja a zóna redundáns tárolását (ZRS). Tekintse [meg ezt a cikket az Azure Storage redundancia-beállításairól](https://azure.microsoft.com/documentation/articles/storage-redundancy/) a ZRS részleteinek megtekintéséhez. |
+| Adatvédelem és rendelkezésre állás |A StorSimple 8000 sorozat a helyileg redundáns tárolás (LRS) és a Geo-redundáns tárolás (GRS) mellett támogatja a zóna redundáns tárolását (ZRS). Tekintse [meg ezt a cikket az Azure Storage redundancia-beállításairól](../storage/common/storage-redundancy.md) a ZRS részleteinek megtekintéséhez. |
 | Kritikus alkalmazások támogatása |A StorSimple lehetővé teszi a megfelelő kötetek helyi rögzítettként való azonosítását, ami viszont biztosítja, hogy a kritikus fontosságú alkalmazások által igényelt adatmennyiség ne legyen a felhőbe bontva. A helyileg rögzített kötetek nem vonatkoznak a Felhőbeli késésekre vagy a kapcsolódási problémákra. További információ a helyileg rögzített kötetekről: [a kötetek kezelésére szolgáló StorSimple Eszközkezelő szolgáltatás használata](storsimple-8000-manage-volumes-u2.md). |
 | Kis késleltetés és nagy teljesítmény |Létrehozhat olyan felhőalapú berendezéseket, amelyek kihasználják az Azure Premium Storage nagy teljesítményű, kis késleltetésű funkcióit. További információ a StorSimple prémium szintű felhőalapú készülékekről: [StorSimple Cloud Appliance üzembe helyezése és kezelése az Azure-ban](storsimple-8000-cloud-appliance-u2.md). |
 
@@ -208,7 +208,7 @@ A deduplikálás csökkenti a tárolt adatkészletben lévő redundancia megszü
 ## <a name="storsimple-workload-summary"></a>StorSimple munkaterhelés összegzése
 Az alábbi táblázat a támogatott StorSimple-számítási feladatok összefoglalóját mutatja be.
 
-| Forgatókönyv | Számítási feladat | Támogatott | Korlátozások | Verzió |
+| Használati eset | Számítási feladat | Támogatott | Korlátozások | Verzió |
 | --- | --- | --- | --- | --- |
 | Együttműködés |Fájlmegosztás |Igen | |Az összes verzió |
 | Együttműködés |Elosztott fájlmegosztás |Igen | |Az összes verzió |
@@ -235,7 +235,7 @@ A StorSimple 8000 sorozatú eszközök nem támogatják a következő munkaterhe
 
 A következő lista a StorSimple által támogatott infrastruktúra-összetevőket tartalmazza.
 
-| Forgatókönyv | Számítási feladat | Támogatott | Korlátozások | Verzió |
+| Használati eset | Számítási feladat | Támogatott | Korlátozások | Verzió |
 | --- | --- | --- | --- | --- |
 | Általános kérdések |Express Route |Igen | |Az összes verzió |
 | Általános kérdések |DataCore FC |Igen* |Támogatott a DataCore SANsymphony |Az összes verzió |
@@ -313,6 +313,5 @@ A Microsoft Azure StorSimple-megoldás üzembe helyezése előtt javasoljuk, hog
 | Kötet árnyékmásolata szolgáltatás (VSS) |Egy Windows Server operációs rendszer szolgáltatás, amely megkönnyíti az alkalmazások konzisztenciáját a VSS-t támogató alkalmazásokkal való kommunikációval, hogy összehangolja a növekményes pillanatképek létrehozását. A VSS biztosítja, hogy az alkalmazások a pillanatképek elkészítésekor átmenetileg inaktívak legyenek. |
 | Windows PowerShell StorSimple-bővítménye |A StorSimple-eszköz üzemeltetéséhez és kezeléséhez használt Windows PowerShell-alapú parancssori felület. A Windows PowerShell néhány alapszintű funkciójának fenntartása mellett ez az illesztő további dedikált parancsmagokkal rendelkezik, amelyek a StorSimple-eszközök felügyeletére irányulnak. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A [StorSimple biztonság](storsimple-8000-security.md)megismerése.
-

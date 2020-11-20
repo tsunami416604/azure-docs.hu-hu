@@ -7,18 +7,19 @@ author: saghorpa
 manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0967c5e354c3b0e433753cf89d830dc2101741af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b34a7665770308b45732711f5d8328eb1d0a785f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91363120"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965068"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>Magas rendelkezésre állás beállítása SUSE rendszeren a STONITH használatával
 Ez a dokumentum részletes útmutatást nyújt a SUSE operációs rendszer magas rendelkezésre állásának beállításához a STONITH eszköz használatával.
@@ -75,7 +76,7 @@ A Microsoft Service Management ezt a karakterláncot adja meg. Módosítsa a fá
 
 ![Képernyőfelvétel: egy csomópont InitiatorName értékeit tartalmazó initiatorname-fájl.](media/HowToHLI/HASetupWithStonith/initiatorname.png)
 
-1,2 módosítsa a */etc/iSCSI/iscsid.conf*: állítsa be *Node.Session.Timeo.replacement_timeout = 5* és *Node. Startup = automatikus*beállítást. Módosítsa a fájlt **mindkét** csomóponton.
+1,2 módosítsa a */etc/iSCSI/iscsid.conf*: állítsa be *Node.Session.Timeo.replacement_timeout = 5* és *Node. Startup = automatikus* beállítást. Módosítsa a fájlt **mindkét** csomóponton.
 
 1,3 a felderítési parancs végrehajtása négy munkamenetet mutat be. Futtassa azt mindkét csomóponton.
 
@@ -99,7 +100,7 @@ rescan-scsi-bus.sh
 ```
 ![A képernyőképen egy konzolablak látható a szkript eredményeivel.](media/HowToHLI/HASetupWithStonith/rescanscsibus.png)
 
-1,6 az eszköz nevének lekéréséhez futtassa az *fdisk – l*parancsot. Futtassa azt mindkét csomóponton. Válassza ki az eszközt a **178 MIB**mérettel.
+1,6 az eszköz nevének lekéréséhez futtassa az *fdisk – l* parancsot. Futtassa azt mindkét csomóponton. Válassza ki az eszközt a **178 MIB** mérettel.
 
 ```
   fdisk –l
@@ -134,7 +135,7 @@ zypper in SAPHanaSR SAPHanaSR-doc
  ![ A képernyőképen a SAPHanaSR-doc parancs eredményét bemutató konzolablak látható.](media/HowToHLI/HASetupWithStonith/zypperpatternSAPHANASR-doc.png)
 
 ### <a name="32-setting-up-the-cluster"></a>3,2 a fürt beállítása
-3.2.1 használhatja a *Ha-cluster-init* parancsot is, vagy a YaST2 varázslóval állíthatja be a fürtöt. Ebben az esetben a rendszer a YaST2 varázslót használja. Ezt a lépést **csak az elsődleges csomóponton**hajthatja végre.
+3.2.1 használhatja a *Ha-cluster-init* parancsot is, vagy a YaST2 varázslóval állíthatja be a fürtöt. Ebben az esetben a rendszer a YaST2 varázslót használja. Ezt a lépést **csak az elsődleges csomóponton** hajthatja végre.
 
 Kövesse a YaST2> magas rendelkezésre állás >-fürt ![ képernyőképét, amely a magas rendelkezésre állást és a fürttel rendelkező YaST-vezérlőt mutatja. ](media/HowToHLI/HASetupWithStonith/yast-control-center.png)
  ![ Képernyőfelvétel: a telepítési és a megszakítási beállításokat tartalmazó párbeszédpanel.](media/HowToHLI/HASetupWithStonith/yast-hawk-install.png)
@@ -260,7 +261,7 @@ A *crm_mon* parancs futtatásával győződjön **meg** arról, hogy a csomópon
 crm_mon
 ```
 ![A képernyőfelvételen a c r m_mon eredményeit tartalmazó konzolablak látható.](media/HowToHLI/HASetupWithStonith/crm-mon.png)
-A https://való bejelentkezéshez a következőt is bejelentkezhet a Hawk-ba * \<node IP> : 7630*. Az alapértelmezett felhasználó a hacluster, a jelszó pedig Linux. Ha szükséges, módosíthatja a jelszót a *passwd* paranccsal.
+A https://való bejelentkezéshez a következőt is bejelentkezhet a Hawk-ba *\<node IP> : 7630*. Az alapértelmezett felhasználó a hacluster, a jelszó pedig Linux. Ha szükséges, módosíthatja a jelszót a *passwd* paranccsal.
 
 ## <a name="7-configure-cluster-properties-and-resources"></a>7. a fürt tulajdonságainak és erőforrásainak konfigurálása 
 Ez a szakasz a fürt erőforrásainak konfigurálásához szükséges lépéseket ismerteti.
@@ -322,10 +323,10 @@ crm configure load update crm-vip.txt
 
 ### <a name="74-validate-the-resources"></a>7,4 az erőforrások ellenőrzése
 
-A Command *crm_mon*futtatásakor Itt láthatja a két erőforrást.
+A Command *crm_mon* futtatásakor Itt láthatja a két erőforrást.
 ![A képernyőfelvételen két erőforrást tartalmazó konzolablak látható.](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
 
-Emellett az állapotot a következő helyen tekintheti meg * \<node IP address> : https://: 7630/CIB/Live/State*
+Emellett az állapotot a következő helyen tekintheti meg *\<node IP address> : https://: 7630/CIB/Live/State*
 
 ![A képernyőfelvételen a két erőforrás állapota látható.](media/HowToHLI/HASetupWithStonith/hawlk-status-page.png)
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 6a7b4d8c3d2e2b33d8e2a9936670992b1c922b6a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30a07957a75bfe82d8ce350675f0d29b2f03e069
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84737359"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966139"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Hálózati behatolás-észlelés végrehajtása Network Watcher és nyílt forráskódú eszközökkel
 
@@ -26,7 +26,7 @@ A csomagok rögzítése kulcsfontosságú összetevő a hálózati behatolás-é
 
 Az egyik ilyen nyílt forráskódú eszköz a Suricata, egy szabályrendszerek használó azonosító motor, amely figyeli a hálózati forgalmat, és riasztást küld, amikor gyanús események történnek. A Suricata többszálas motort kínál, ami azt jelenti, hogy a hálózati forgalom elemzése nagyobb sebességgel és hatékonysággal végezhető. A Suricata és képességeivel kapcsolatos további információkért látogasson el a webhelyére a webhelyén https://suricata-ids.org/ .
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Használati eset
 
 Ez a cikk azt ismerteti, hogyan állíthatja be a környezetet hálózati behatolás-észlelés végrehajtásához Network Watcher, Suricata és a rugalmas verem használatával. Network Watcher biztosítja a hálózati behatolás-észlelés végrehajtásához használt csomagok rögzítését. A Suricata feldolgozza a csomagot, és elindítja a riasztásokat az adott fenyegetéseknek megfelelő csomagok alapján. Ezeket a riasztásokat a helyi számítógépen található naplófájlban tárolja a rendszer. A rugalmas verem használatával a Suricata által generált naplók indexelve lehetnek, és felhasználhatók egy Kibana-irányítópult létrehozására, amely lehetővé teszi a naplók vizuális megjelenítését, valamint az esetleges hálózati biztonsági rések gyors elemzését.  
 
@@ -80,7 +80,7 @@ Míg a Suricata által előállított naplók értékes információkat tartalma
 
 #### <a name="install-elasticsearch"></a>A Elasticsearch telepítése
 
-1. A 5,0-es és újabb verziókhoz tartozó rugalmas verem Java 8-at igényel. Futtassa a parancsot a `java -version` verziójának vizsgálatához. Ha nincs telepítve a Java, tekintse meg az [Azure-suppored JDK](https://aka.ms/azure-jdks)dokumentációját.
+1. A 5,0-es és újabb verziókhoz tartozó rugalmas verem Java 8-at igényel. Futtassa a parancsot a `java -version` verziójának vizsgálatához. Ha nincs telepítve a Java, tekintse meg az [Azure-suppored JDK](/azure/developer/java/fundamentals/java-jdk-long-term-support)dokumentációját.
 
 1. Töltse le a rendszerének megfelelő bináris csomagot:
 
@@ -280,7 +280,7 @@ Az egyéni vizualizációk és irányítópultok létrehozásával kapcsolatos t
 
 A Network Watcher és a nyílt forráskódú azonosító eszközök, például a Suricata által biztosított csomagok rögzítésének kombinálásával a fenyegetések széles köre miatt hálózati behatolás-észlelést is végezhet. Ezek az irányítópultok lehetővé teszik a hálózaton belüli trendek és anomáliák gyors észlelését, valamint az adatgyűjtést a riasztások, például rosszindulatú felhasználói ügynökök vagy sebezhető portok kiváltó okainak felderítésére. Ezzel a kinyert adatokkal tájékozott döntéseket hozhat arról, hogyan reagálhat a hálózatra, és hogyan védhető meg a kártékony behatolási kísérletek, és hogyan hozhat létre szabályokat a hálózatra irányuló jövőbeli behatolások megelőzése érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan válthat ki a riasztások alapján a csomagok rögzítése a következővel: [proaktív hálózati figyelés a Azure functions](network-watcher-alert-triggered-packet-capture.md)
 

@@ -6,15 +6,16 @@ documentationcenter: ''
 author: trinadhkotturu
 manager: gwallace
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.date: 10/15/2020
 ms.author: trinadhk
-ms.openlocfilehash: d771c6dd114b252c070a0e56ba3ab23c597ad5aa
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 1d1342cffc6bc8743c34cb4c028c0790de91dc50
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088856"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965867"
 ---
 # <a name="vm-snapshot-windows-extension-for-azure-backup"></a>Virtuális gép pillanatképének Windows-bővítménye Azure Backup
 
@@ -59,9 +60,9 @@ A következő JSON a virtuális gép pillanatkép-bővítményének sémáját m
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Név | Érték/példa | Adattípus |
+| Name | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | date |
+| apiVersion | 2015-06-15 | dátum |
 | taskId | e07354cf-041e-4370-929f-25a319ce8933_1 | sztring |
 | commandStartTimeUTCTicks | 6.36458 e + 17 | sztring |
 | területi beállítás | hu-hu | sztring |

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: bdf69a9ff7b3260b47042f296a47826e3c52387b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71b018da6b54ebf2b45a261378ea521a397159e5
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81460647"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964983"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>A StorSimple Virtual Array ajánlott eljárásai
 
@@ -119,7 +119,7 @@ Ha a virtuális tömb tartományhoz van csatlakoztatva, akkor a csoportházirend
 Ezért javasoljuk, hogy:
 
 * Győződjön meg arról, hogy a virtuális tömb a Active Directory saját szervezeti egységében (OU) van.
-* Győződjön meg arról, hogy a virtuális tömbhöz nincsenek alkalmazva csoportházirend-objektumok (GPO-k). Az öröklés letiltásával biztosíthatja, hogy a virtuális tömb (gyermek csomópont) ne örökölje automatikusan a szülő csoportházirend-objektumait. További információkért keresse fel az [öröklés tiltása](https://technet.microsoft.com/library/cc731076.aspx)lehetőséget.
+* Győződjön meg arról, hogy a virtuális tömbhöz nincsenek alkalmazva csoportházirend-objektumok (GPO-k). Az öröklés letiltásával biztosíthatja, hogy a virtuális tömb (gyermek csomópont) ne örökölje automatikusan a szülő csoportházirend-objektumait. További információkért keresse fel az [öröklés tiltása](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731076(v=ws.11))lehetőséget.
 
 ### <a name="networking"></a>Hálózat
 A virtuális tömb hálózati konfigurációja a helyi webes felületen keresztül történik. A virtuális hálózati adapter azon a hypervisoron keresztül engedélyezhető, amelyben a virtuális tömb ki van építve. A [hálózati beállítások](storsimple-virtual-array-deploy3-fs-setup.md) lapon konfigurálhatja a virtuális hálózati adapter IP-címét, alhálózatát és átjáróját.  Az eszköz elsődleges és másodlagos DNS-kiszolgálóját, időbeállításait és opcionális proxybeállításait is megadhatja. A hálózati konfiguráció többsége egyszeri beállítás. A virtuális tömb üzembe helyezése előtt tekintse át a [StorSimple hálózati követelményeit](storsimple-ova-system-requirements.md#networking-requirements) .
@@ -137,7 +137,7 @@ A virtuális tömb üzembe helyezésekor javasoljuk, hogy kövesse az alábbi aj
   * Statikus IP-címek konfigurálása. Konfigurálnia kell egy elsődleges és egy másodlagos DNS-kiszolgálót.
   * Ha több hálózati adaptert határoz meg a virtuális tömbben, csak az első hálózati adapter (alapértelmezés szerint ez az adapter **Ethernet**) érheti el a felhőt. A forgalom típusának szabályozásához létrehozhat több virtuális hálózati adaptert a virtuális tömbben (iSCSI-kiszolgálóként konfigurálva), és összekapcsolhatja ezeket a csatolókat a különböző alhálózatokhoz.
 * A csak a Felhőbeli sávszélesség (a virtuális tömb által használt) szabályozásához konfigurálja a szabályozást az útválasztón vagy a tűzfalon. Ha a szabályozást a hypervisorban definiálja, az a Felhőbeli sávszélesség helyett az iSCSI-és az SMB-protokollt is szabályozza.
-* Győződjön meg arról, hogy a hypervisors időszinkronizálása engedélyezve van. Ha a Hyper-V-t használja, válassza ki a virtuális tömböt a Hyper-V kezelőjében, lépjen a **Beállítások &gt; Integration Services**elemre, és ellenőrizze, hogy az **idő szinkronizálása** be van-e jelölve.
+* Győződjön meg arról, hogy a hypervisors időszinkronizálása engedélyezve van. Ha a Hyper-V-t használja, válassza ki a virtuális tömböt a Hyper-V kezelőjében, lépjen a **Beállítások &gt; Integration Services** elemre, és ellenőrizze, hogy az **idő szinkronizálása** be van-e jelölve.
 
 ### <a name="storage-accounts"></a>Tárfiókok
 A StorSimple virtuális tömb társítható egyetlen Storage-fiókkal is. Ez a Storage-fiók lehet egy automatikusan létrehozott Storage-fiók, egy olyan fiók, amely ugyanabban az előfizetésben van, mint a szolgáltatás, vagy egy másik előfizetéshez kapcsolódó Storage-fiók. További információ: a [virtuális tömb Storage-fiókjainak kezelése](storsimple-virtual-array-manage-storage-accounts.md).
@@ -287,6 +287,5 @@ Előfordulhat, hogy több virtuális tömböt kell központilag telepíteni ahho
 * Több virtuális tömb üzembe helyezése esetén javasolt a terheléselosztási perspektívából a tömböt a különböző hypervisor-gazdagépekre terjeszteni.
 * Több virtuális tömb (ha fájlkiszolgáló vagy iSCSI-kiszolgálóként van konfigurálva) elosztott fájlrendszer névtérben is üzembe helyezhető. A részletes lépésekért látogasson el a [hibrid felhőalapú tárolás telepítési útmutatóját a elosztott fájlrendszer névtér megoldásához](https://www.microsoft.com/download/details.aspx?id=45507). Elosztott fájlrendszer replikáció használata jelenleg nem ajánlott a virtuális tömbben való használathoz. 
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 Ismerje meg, hogyan [felügyelheti a StorSimple virtuális tömböt](storsimple-virtual-array-manager-service-administration.md) a StorSimple Manager szolgáltatáson keresztül.
-
