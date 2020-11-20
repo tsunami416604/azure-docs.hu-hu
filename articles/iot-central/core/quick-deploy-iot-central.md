@@ -3,18 +3,17 @@ title: Rövid útmutató – Azure IoT Central-alkalmazás létrehozása | Micro
 description: Rövid útmutató – új Azure IoT Central-alkalmazás létrehozása. Hozza létre az alkalmazást az ingyenes díjszabási csomag vagy az egyik standard díjszabási csomag használatával.
 author: viv-liu
 ms.author: viviali
-ms.date: 07/30/2020
+ms.date: 11/16/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
-ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 477da41bab48ee49727ec2a8c029e748d6e7f863
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: afe3e9812271f4b8e049fb2a53efd45fe746e514
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90987385"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992811"
 ---
 # <a name="quickstart---create-an-azure-iot-central-application"></a>Rövid útmutató – Azure IoT Central-alkalmazás létrehozása
 
@@ -43,15 +42,15 @@ Hozzon létre egy új alkalmazást az iparághoz kapcsolódó IoT Central sablon
     ![Azure IoT Central számlázási adatok](media/quick-deploy-iot-central/iotcentralcreate-billinginfo.png)
 
     > [!NOTE]
-    > Ha az előző oldalon az **egyéni alkalmazás** lehetőséget választotta, megjelenik egy alkalmazás- **sablon** legördülő lista. Előfordulhat, hogy a legördülő menü más sablonokat is tartalmaz, amelyeket a szervezete számára elérhetővé tettek. 
+    > Ha az előző oldalon az **egyéni alkalmazás** lehetőséget választotta, megjelenik egy alkalmazás- **sablon** legördülő lista. Előfordulhat, hogy a legördülő menü más sablonokat is tartalmaz, amelyeket a szervezete számára elérhetővé tettek.
 
     >[!IMPORTANT]
-    >Az **egyéni alkalmazás (örökölt)** sablon (v2) ki lett vonva, mivel az örökölt alkalmazás sablonjában korábban elérhető lehetőségek már elérhetők a legújabb **egyéni alkalmazás** sablonjában (v3). 
-    
+    >Az **egyéni alkalmazás (örökölt)** sablon (v2) ki lett vonva, mivel az örökölt alkalmazás sablonjában korábban elérhető lehetőségek már elérhetők a legújabb **egyéni alkalmazás** sablonjában (v3).
+
 1. Válassza ezt az alkalmazást a 7 napos ingyenes próbaverzió díjszabási csomagjának használatával, vagy a standard díjszabási csomagok valamelyikével:
 
     - Az *ingyenes* csomag használatával létrehozott alkalmazások hét napig ingyenesen használhatók, és legfeljebb öt eszközt támogatnak. Egy standard díjszabási csomag használatára a lejárat előtt bármikor átalakítható.
-    - A *standard* csomag használatával létrehozott alkalmazások számlázása eszközönként történik, a **standard 1** vagy **Standard 2** díjszabási csomaggal pedig az első két eszköz ingyenesen használható. Az ingyenes és standard díjszabási csomagokról az [Azure IoT Central díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/iot-central/)tájékozódhat. Ha standard díjszabási csomag használatával hoz létre alkalmazást, ki kell választania a *címtárat*, az *Azure-előfizetést*és a *helyet*:
+    - A *standard* csomag használatával létrehozott alkalmazások számlázása eszközönként történik, a **standard 1** vagy **Standard 2** díjszabási csomaggal pedig az első két eszköz ingyenesen használható. Az ingyenes és standard díjszabási csomagokról az [Azure IoT Central díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/iot-central/)tájékozódhat. Ha standard díjszabási csomag használatával hoz létre alkalmazást, ki kell választania a *címtárat*, az *Azure-előfizetést* és a *helyet*:
         - A *könyvtár* az a Azure Active Directory, amelyben létrehozza az alkalmazást. A Azure Active Directory felhasználói identitásokat, hitelesítő adatokat és egyéb szervezeti adatokat tartalmaz. Ha nincs Azure Active Directory, akkor létrejön egy Azure-előfizetés létrehozásakor.
         - Az *Azure-előfizetéssel* Azure-szolgáltatások példányait hozhatja létre. IoT Central az előfizetéshez tartozó erőforrásokat. Ha nem rendelkezik Azure-előfizetéssel, az [Azure regisztrációs oldalán](https://aka.ms/createazuresubscription)ingyenesen létrehozhat egyet. Az Azure-előfizetés létrehozása után váltson vissza az **új alkalmazás** lapra. Az új előfizetés mostantól megjelenik az **Azure-előfizetés** legördülő menüjében.
         - A hely az a [földrajzi](https://azure.microsoft.com/global-infrastructure/geographies/) *hely* , ahol létre szeretné hozni az alkalmazást. Az optimális teljesítmény érdekében általában ki kell választania az eszközökhöz legközelebb eső helyet. Ha kiválasztott egy helyet, később nem helyezheti át az alkalmazást egy másik helyre.
@@ -60,7 +59,7 @@ Hozzon létre egy új alkalmazást az iparághoz kapcsolódó IoT Central sablon
 
     ![Azure IoT Central-alkalmazás](media/quick-deploy-iot-central/iotcentral-application.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy IoT Central-alkalmazást. A következő lépés a IoT Central megismerésének folytatása:
 

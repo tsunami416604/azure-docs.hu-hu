@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 07/31/2020
-ms.openlocfilehash: b3919cbbe0ba7a796a21ae566afb8e2d9fa784db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0362c9ed4f736474dbd49e1bfaf1373e0f48acd6
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88716673"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992709"
 ---
 # <a name="transform-json-and-xml-using-liquid-templates-as-maps-in-azure-logic-apps"></a>A JSON és az XML átalakítása folyékony sablonokkal Azure Logic Apps
 
@@ -72,7 +72,7 @@ Ez a cikk bemutatja, hogyan hajthatja végre ezeket a feladatokat:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókja hitelesítő adataival.
 
-1. A Azure Portal a keresőmezőbe írja be a kifejezést `integration accounts` , majd válassza az **integrációs fiókok**elemet.
+1. A Azure Portal a keresőmezőbe írja be a kifejezést `integration accounts` , majd válassza az **integrációs fiókok** elemet.
 
    !["Integrációs fiókok" keresése](./media/logic-apps-enterprise-integration-liquid-transform/find-integration-accounts.png)
 
@@ -80,7 +80,7 @@ Ez a cikk bemutatja, hogyan hajthatja végre ezeket a feladatokat:
 
    ![Integrációs fiók kiválasztása](./media/logic-apps-enterprise-integration-liquid-transform/select-integration-account.png)
 
-1. Az **Áttekintés** ablaktábla **összetevők**területén válassza a **Maps**elemet.
+1. Az **Áttekintés** ablaktábla **összetevők** területén válassza a **Maps** elemet.
 
     ![A "Maps" csempe kiválasztása](./media/logic-apps-enterprise-integration-liquid-transform/select-maps-tile.png)
 
@@ -89,7 +89,7 @@ Ez a cikk bemutatja, hogyan hajthatja végre ezeket a feladatokat:
    | Tulajdonság | Érték | Leírás |
    |----------|-------|-------------|
    | **Név** | `JsonToJsonTemplate` | A Térkép neve, amely ebben a példában "JsonToJsonTemplate". |
-   | **Térkép típusa** | **folyékony** | A Térkép típusa A JSON-ből a JSON-átalakításhoz ki kell választania a **folyadék**elemet. |
+   | **Térkép típusa** | **folyékony** | A Térkép típusa A JSON-ből a JSON-átalakításhoz ki kell választania a **folyadék** elemet. |
    | **Térkép** | `SimpleJsonToJsonTemplate.liquid` | Ebben a példában a "SimpleJsonToJsonTemplate. Liquid" nevű meglévő likvid sablon vagy leképezési fájl, amely az átalakításhoz használható. A fájl megkereséséhez használhatja a fájl-választót. A Térkép méretének korlátaival kapcsolatban lásd: [korlátok és konfiguráció](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits). |
    |||
 
@@ -101,7 +101,7 @@ Ez a cikk bemutatja, hogyan hajthatja végre ezeket a feladatokat:
 
 1. A Logic app Designerben adja hozzá a [kérelem-triggert](../connectors/connectors-native-reqres.md#add-request) a logikai alkalmazáshoz.
 
-1. Az trigger alatt válassza az **új lépés**lehetőséget. A keresőmezőbe írja be szűrőként a kifejezést, `liquid` majd válassza a következő műveletet: **JSON átalakítása JSON-Liquid**
+1. Az trigger alatt válassza az **új lépés** lehetőséget. A keresőmezőbe írja be szűrőként a kifejezést, `liquid` majd válassza a következő műveletet: **JSON átalakítása JSON-Liquid**
 
    ![Likvid művelet keresése és kiválasztása](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 
@@ -112,13 +112,13 @@ Ez a cikk bemutatja, hogyan hajthatja végre ezeket a feladatokat:
    Ha a térképek lista üres, valószínűleg a logikai alkalmazás nem kapcsolódik az integrációs fiókhoz. 
    Ha a logikai alkalmazást a folyékony sablonnal vagy a leképezéssel rendelkező integrációs fiókhoz szeretné kapcsolni, kövesse az alábbi lépéseket:
 
-   1. A logikai alkalmazás menüjében válassza a **munkafolyamat-beállítások**lehetőséget.
+   1. A logikai alkalmazás menüjében válassza a **munkafolyamat-beállítások** lehetőséget.
 
-   1. Az **integrációs fiók kiválasztása** listából válassza ki az integrációs fiókot, majd kattintson a **Mentés**gombra.
+   1. Az **integrációs fiók kiválasztása** listából válassza ki az integrációs fiókot, majd kattintson a **Mentés** gombra.
 
       ![Logikai alkalmazás összekapcsolása integrációs fiókkal](./media/logic-apps-enterprise-integration-liquid-transform/link-integration-account.png)
 
-1. Most adja hozzá a **Content** tulajdonságot ehhez a művelethez. Nyissa meg az **új paraméter hozzáadása** listát, és válassza a **tartalom**elemet.
+1. Most adja hozzá a **Content** tulajdonságot ehhez a művelethez. Nyissa meg az **új paraméter hozzáadása** listát, és válassza a **tartalom** elemet.
 
    ![A "Content" tulajdonság hozzáadása művelethez](./media/logic-apps-enterprise-integration-liquid-transform/add-content-property-to-action.png)
 
@@ -150,9 +150,9 @@ A [Poster](https://www.getpostman.com/postman) vagy egy hasonló eszköz haszná
 
     A DotLiquid nem ismeri natív módon a JSON-t, ezért ügyeljen arra, hogy elkerülje a fordított perjel karaktert ( `\` ) és minden más fenntartott JSON-karaktert.
 
-  * Ha a sablon [folyadék-szűrőket](https://shopify.github.io/liquid/basics/introduction/#filters)használ, ügyeljen arra, hogy kövesse a [DotLiquid és a C# elnevezési konvenciókat](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers#filter-and-output-casing), amelyek a *mondatot*használják. Az összes likvid átalakító esetében ügyeljen arra, hogy a sablonban lévő szűrők nevei a mondatot is használják. Ellenkező esetben a szűrők nem működnek.
+  * Ha a sablon [folyadék-szűrőket](https://shopify.github.io/liquid/basics/introduction/#filters)használ, ügyeljen arra, hogy kövesse a [DotLiquid és a C# elnevezési konvenciókat](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers#filter-and-output-casing), amelyek a *mondatot* használják. Az összes likvid átalakító esetében ügyeljen arra, hogy a sablonban lévő szűrők nevei a mondatot is használják. Ellenkező esetben a szűrők nem működnek.
 
-    A szűrő használatakor például a következőt `replace` használja: `Replace` `replace` . Ugyanez a szabály vonatkozik arra az esetre, ha a [DotLiquid online](http://dotliquidmarkup.org/try-online)-ban kipróbál példákat. További információ: [Shopify Liquid Filters](https://shopify.dev/docs/themes/liquid/reference/filters) and [DotLiquid Liquid Filters](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Developers#create-your-own-filters). A Shopify-specifikáció példákat tartalmaz az egyes szűrőkhöz, így összehasonlítás céljából kipróbálhatja ezeket a példákat a [DotLiquid-Try online](https://dotliquidmarkup.org/try-online)szolgáltatásban.
+    A szűrő használatakor például a következőt `replace` használja: `Replace` `replace` . Ugyanez a szabály vonatkozik arra az esetre, ha a [DotLiquid online](http://dotliquidmarkup.org/try-online)-ban kipróbál példákat. További információ: [Shopify Liquid Filters](https://shopify.dev/docs/themes/liquid/reference/filters) and [DotLiquid Liquid Filters](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Developers#create-your-own-filters). A Shopify-specifikáció példákat tartalmaz az egyes szűrőkhöz, így összehasonlítás céljából kipróbálhatja ezeket a példákat a [DotLiquid-Try online](http://dotliquidmarkup.org/try-online)szolgáltatásban.
 
   * A `json` Shopify-bővítmény szűrőinek szűrője jelenleg [nincs implementálva a DotLiquid-ben](https://github.com/dotliquid/dotliquid/issues/384). Ezt a szűrőt általában a JSON-karakterláncok elemzésére szolgáló szöveg kimenetének előkészítésére használhatja, ehelyett inkább a szűrőt kell használnia `Replace` .
 
@@ -240,11 +240,11 @@ Itt látható a példaként használt likvid sablon:
 
 ![Példa kimeneti XML-szövegre](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltotext.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Shopify-alapú folyékony nyelv és példák](https://shopify.github.io/liquid/basics/introduction/)
 * [DotLiquid](http://dotliquidmarkup.org/)
-* [DotLiquid – online kipróbálás](https://dotliquidmarkup.org/try-online)
+* [DotLiquid – online kipróbálás](http://dotliquidmarkup.org/try-online)
 * [DotLiquid GitHub](https://github.com/dotliquid/dotliquid)
 * [DotLiquid GitHub-problémák](https://github.com/dotliquid/dotliquid/issues/)
 * További információ a [mapsről](../logic-apps/logic-apps-enterprise-integration-maps.md)
