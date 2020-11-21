@@ -12,12 +12,12 @@ ms.date: 11/03/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
 zone_pivot_groups: keyword-quickstart
-ms.openlocfilehash: 2d15da55c0bab42571d2a9660156a780c5d27881
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 49ac70b6881085f48c8bc3a12e31e4a1aa220c6a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305892"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021949"
 ---
 # <a name="get-started-with-custom-keyword"></a>Bevezetés az egyéni kulcsszavak használatába
 
@@ -39,7 +39,7 @@ Egyéni kulcsszó használata előtt létre kell hoznia egy kulcsszót a [Speech
 
 1. Az [egyéni kulcsszó](https://aka.ms/sdsdk-wakewordportal) lapon hozzon létre egy **új projektet**. 
 
-1. Adjon meg egy **nevet** , egy opcionális **leírást** , és válassza ki a nyelvet. Nyelvenként egy projektre van szüksége, és a támogatás jelenleg a `en-US` nyelvre korlátozódik.
+1. Adjon meg egy **nevet**, egy opcionális **leírást**, és válassza ki a nyelvet. Nyelvenként egy projektre van szüksége, és a támogatás jelenleg a `en-US` nyelvre korlátozódik.
 
     ![A kulcsszavas projekt leírása](media/custom-keyword/custom-kws-portal-new-project.png)
 
@@ -49,7 +49,7 @@ Egyéni kulcsszó használata előtt létre kell hoznia egy kulcsszót a [Speech
 
 1. Új kulcsszó-modell létrehozásához kattintson a **betanítási modell** elemre.
 
-1. Adja meg a modell **nevét** , a választható **leírást** , valamint az Ön által választott **kulcsszót** , majd kattintson a **tovább** gombra. Tekintse meg a hatályos kulcsszó kiválasztására [vonatkozó útmutatást](speech-devices-sdk-kws-guidelines.md#choose-an-effective-keyword) .
+1. Adja meg a modell **nevét** , a választható **leírást**, valamint az Ön által választott **kulcsszót** , majd kattintson a **tovább** gombra. Tekintse meg a hatályos kulcsszó kiválasztására [vonatkozó útmutatást](./custom-keyword-overview.md#choose-an-effective-keyword) .
 
     ![Adja meg a kulcsszót](media/custom-keyword/custom-kws-portal-new-model.png)
 
@@ -79,4 +79,4 @@ Egyéni kulcsszó használata előtt létre kell hoznia egy kulcsszót a [Speech
 
 ## <a name="next-steps"></a>Következő lépések
 
-Tesztelje egyéni kulcsszavait a [Speech Devices SDK](https://aka.ms/sdsdk-quickstart)rövid útmutatójában.
+Tesztelje egyéni kulcsszavait a [Speech Devices SDK](./speech-devices-sdk-quickstart.md?pivots=platform-android)rövid útmutatójában.

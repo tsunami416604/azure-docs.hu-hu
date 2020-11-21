@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ef5384abd63dcd9aeb4789dc4955f4b80068d330
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d239b89aaf0bc140916d38583f4263f7bf660f1a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88921239"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023616"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Oktatóanyag: fordítási alkalmazás létrehozása WPF-mel
 
-Ebben az oktatóanyagban egy olyan [Windows megjelenítési alaprendszer (WPF)](https://docs.microsoft.com/visualstudio/designers/getting-started-with-wpf?view=vs-2019) alkalmazást fog létrehozni, amely az Azure Cognitive Servicest használja a szöveges fordításhoz, a nyelvfelismerés és a helyesírás-ellenőrzéshez egyetlen előfizetési kulccsal. Az alkalmazás az API-kat a fordítótól és a [Bing spell Checktól](https://azure.microsoft.com/services/cognitive-services/spell-check/)hívja meg.
+Ebben az oktatóanyagban egy olyan [Windows megjelenítési alaprendszer (WPF)](/visualstudio/designers/getting-started-with-wpf?view=vs-2019) alkalmazást fog létrehozni, amely az Azure Cognitive Servicest használja a szöveges fordításhoz, a nyelvfelismerés és a helyesírás-ellenőrzéshez egyetlen előfizetési kulccsal. Az alkalmazás az API-kat a fordítótól és a [Bing spell Checktól](https://azure.microsoft.com/services/cognitive-services/spell-check/)hívja meg.
 
 Mi az a WPF? Ez egy felhasználói felületi keretrendszer, amely asztali ügyfélprogramokat hoz létre. A WPF fejlesztői platform számos alkalmazás-fejlesztési funkciót támogat, többek között az alkalmazás-modellt, az erőforrásokat, a vezérlőket, a grafikát, az elrendezést, az adatkötéseket, a dokumentumokat és a biztonságot. Ez a .NET-keretrendszer egy részhalmaza, így ha korábban a ASP.NET vagy a Windows Forms használatával már létrehozott alkalmazásokat a .NET-keretrendszerrel, a programozási élménynek ismerősnek kell lennie. A WPF az Extensible app Markup Language (XAML) használatával biztosít egy deklaratív modellt az alkalmazások programozásához, amelyet a következő szakaszokban fogunk áttekinteni.
 
@@ -38,18 +38,18 @@ Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 
 Ez a lista tartalmazza az oktatóanyagban használt Cognitive Services. Az egyes szolgáltatásokhoz tartozó API-referenciák tallózásához kövesse a hivatkozást.
 
-| Szolgáltatás | Szolgáltatás | Leírás |
+| Szolgáltatás | Funkció | Leírás |
 |---------|---------|-------------|
-| Fordító | [Nyelvek beolvasása](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | A szöveges fordításhoz támogatott nyelvek teljes listájának beolvasása. |
-| Fordító | [Fordítása](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Szöveg fordítása több mint 70 nyelvre. |
-| Fordító | [Kinyomoz](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | A bemeneti szöveg nyelvének észlelése. Az észlelés megbízhatósági pontszámát tartalmazza. |
-| Bing – Helyesírás-ellenőrzés | [Spell Check](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | A fordítási pontosság javítása érdekében javítsa a helyesírási hibákat. |
+| Translator | [Nyelvek beolvasása](./reference/v3-0-languages.md) | A szöveges fordításhoz támogatott nyelvek teljes listájának beolvasása. |
+| Translator | [Fordítása](./reference/v3-0-translate.md) | Szöveg fordítása több mint 70 nyelvre. |
+| Translator | [Kinyomoz](./reference/v3-0-detect.md) | A bemeneti szöveg nyelvének észlelése. Az észlelés megbízhatósági pontszámát tartalmazza. |
+| Bing – Helyesírás-ellenőrzés | [Spell Check](/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | A fordítási pontosság javítása érdekében javítsa a helyesírási hibákat. |
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A folytatás előtt a következőkre lesz szüksége:
 
-* Azure Cognitive Services-előfizetés. [Cognitive Services kulcs beolvasása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#create-a-new-azure-cognitive-services-resource).
+* Azure Cognitive Services-előfizetés. [Cognitive Services kulcs beolvasása](../cognitive-services-apis-create-account.md#create-a-new-azure-cognitive-services-resource).
 * Windows rendszerű gép
 * [Visual Studio 2019](https://www.visualstudio.com/downloads/) – Közösség vagy vállalat
 
@@ -60,10 +60,10 @@ A folytatás előtt a következőkre lesz szüksége:
 
 Első lépésként be kell állítania a projektjét a Visual Studióban.
 
-1. Nyissa meg a Visual Studiót. Válassza **az új projekt létrehozása**lehetőséget.
+1. Nyissa meg a Visual Studiót. Válassza **az új projekt létrehozása** lehetőséget.
 1. A **create a New Project (új projekt létrehozása**) területen keresse meg és válassza ki a **WPF-alkalmazást (.NET-keretrendszer)**. Kiválaszthatja a C# **nyelvről** lehetőséget, és szűkítheti a beállításokat.
-1. Válassza a **tovább**lehetőséget, majd nevezze el a projektet `MSTranslatorDemo` .
-1. Állítsa a keretrendszer verzióját a **.NET-keretrendszer 4.7.2** vagy újabb verzióra, majd válassza a **Létrehozás**lehetőséget.
+1. Válassza a **tovább** lehetőséget, majd nevezze el a projektet `MSTranslatorDemo` .
+1. Állítsa a keretrendszer verzióját a **.NET-keretrendszer 4.7.2** vagy újabb verzióra, majd válassza a **Létrehozás** lehetőséget.
    ![Adja meg a név és a keretrendszer verzióját a Visual Studióban](media/name-wpf-project-visual-studio.png)
 
 A projekt létrejött. Megfigyelheti, hogy két lap van megnyitva: `MainWindow.xaml` és `MainWindow.xaml.cs` . Ebben az oktatóanyagban programkódot adunk hozzá a két fájlhoz. Módosítjuk `MainWindow.xaml` az alkalmazás felhasználói felületét. A `MainWindow.xaml.cs` fordítói és Bing spell Checki hívások esetében módosítjuk.
@@ -79,30 +79,30 @@ A projekthez szükség van a .NET-keretrendszer néhány szerelvényére és New
 
 Vegyünk fel szerelvényeket a projektbe objektumok szerializálásához és deszerializálásához, valamint a HTTP-kérések és válaszok kezeléséhez.
 
-1. Keresse meg a projektet a Visual Studio Megoldáskezelőban. Kattintson a jobb gombbal a projektre, majd válassza a **> hivatkozás hozzáadása**lehetőséget, amely megnyitja a **Reference Managert**.
+1. Keresse meg a projektet a Visual Studio Megoldáskezelőban. Kattintson a jobb gombbal a projektre, majd válassza a **> hivatkozás hozzáadása** lehetőséget, amely megnyitja a **Reference Managert**.
 1. A **szerelvények** lapon az összes rendelkezésre álló .NET-keretrendszer-szerelvény szerepel. A hivatkozások kereséséhez használja a jobb felső sarokban található keresési sávot.
    ![Szerelvény-hivatkozások hozzáadása](media/add-assemblies-2019.png)
 1. Válassza ki az alábbi hivatkozásokat a projekthez:
-   * [System.Runtime.Serialization](https://docs.microsoft.com/dotnet/api/system.runtime.serialization)
-   * [System.Web](https://docs.microsoft.com/dotnet/api/system.web)
+   * [System.Runtime.Serialization](/dotnet/api/system.runtime.serialization)
+   * [System.Web](/dotnet/api/system.web)
    * System.Web.Extensions
-   * [System. Windows](https://docs.microsoft.com/dotnet/api/system.windows)
-1. Miután hozzáadta ezeket a hivatkozásokat a projekthez, a **Reference Manager**bezárásához kattintson **az OK** gombra.
+   * [System. Windows](/dotnet/api/system.windows)
+1. Miután hozzáadta ezeket a hivatkozásokat a projekthez, a **Reference Manager** bezárásához kattintson **az OK** gombra.
 
 > [!NOTE]
-> Ha többet szeretne megtudni a szerelvények hivatkozásairól, tekintse meg a következő témakört [: útmutató: hivatkozás hozzáadása vagy eltávolítása a Reference Manager használatával](https://docs.microsoft.com/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2019).
+> Ha többet szeretne megtudni a szerelvények hivatkozásairól, tekintse meg a következő témakört [: útmutató: hivatkozás hozzáadása vagy eltávolítása a Reference Manager használatával](/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2019).
 
 ### <a name="install-newtonsoftjson"></a>NewtonSoft.Jstelepítése
 
 Az alkalmazás a NewtonSoft.Json használatával deszerializálja a JSON-objektumokat. A csomag telepítéséhez kövesse az alábbi utasításokat.
 
-1. Keresse meg a projektet a Visual Studio Megoldáskezelőban, és kattintson a jobb gombbal a projektre. Válassza a **NuGet-csomagok kezelése**lehetőséget.
+1. Keresse meg a projektet a Visual Studio Megoldáskezelőban, és kattintson a jobb gombbal a projektre. Válassza a **NuGet-csomagok kezelése** lehetőséget.
 1. Keresse meg és válassza ki a **Tallózás** lapot.
 1. Adja meg [NewtonSoft.Js](https://www.nuget.org/packages/Newtonsoft.Json/) be a keresési sávon.
 
     ![NewtonSoft.Jsmegkeresése és telepítése](media/nuget-package-manager.png)
 
-1. Válassza ki a csomagot, majd kattintson a **telepítés**gombra.
+1. Válassza ki a csomagot, majd kattintson a **telepítés** gombra.
 1. A telepítés befejezésekor kattintson a lap bezárásához.
 
 ## <a name="create-a-wpf-form-using-xaml"></a>WPF-űrlap létrehozása a XAML használatával
@@ -115,7 +115,7 @@ Nézzük meg, hogy mi építünk.
 
 A felhasználói felület a következő összetevőket tartalmazza:
 
-| Név | Típus | Leírás |
+| Név | Típus | Description |
 |------|------|-------------|
 | `FromLanguageComboBox` | ComboBox | Megjeleníti a Microsoft Translator által a szöveges fordításhoz támogatott nyelvek listáját. A felhasználó kiválasztja azt a nyelvet, amelyről a fordítás történik. |
 | `ToLanguageComboBox` | ComboBox | Ugyanazokat a nyelveket jeleníti meg, mint a `FromComboBox` , de azon nyelv kiválasztására szolgál, amelyet a felhasználó lefordít. |
@@ -251,7 +251,7 @@ Az összes projekt be van ágyazva a `MainWindow : Window` osztályba. Kezdjük 
 
 Ebben a kódrészletben két, a fordításhoz elérhető nyelvekkel kapcsolatos információt tartalmazó tag-változót jelentettünk be:
 
-| Változó | Típus | Leírás |
+| Változó | Típus | Description |
 |----------|------|-------------|
 |`languageCodes` | Karakterláncok tömbje |A nyelvkódokat gyorsítótárazza. A Translator szolgáltatás rövid kódokat használ a nyelvek azonosítására (például: `en` = angol). |
 |`languageCodesAndTitles` | Rendezett szótár | A felhasználói felületen megjelenő „felhasználóbarát” neveket képezi le az API által használt rövid kódokra. Az elemeket betűrendbe rendezi, és nem veszi figyelembe a nagy- és kisbetűket. |
@@ -269,7 +269,7 @@ A Translator jelenleg több mint 70 nyelvet támogat. Mivel az új nyelvi támog
 Ebben a szakaszban egy `GET` , a Languages (nyelvek) erőforrásra vonatkozó kérelmet hozunk létre, amely azt határozza meg, hogy szeretnénk-e a fordításhoz elérhető nyelvek listáját használni.
 
 > [!NOTE]
-> A nyelvek erőforrás lehetővé teszi a nyelvi támogatás szűrését a következő lekérdezési paraméterekkel: az írás, a szótár és a fordítás. További információ: API- [referenciák](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).
+> A nyelvek erőforrás lehetővé teszi a nyelvi támogatás szűrését a következő lekérdezési paraméterekkel: az írás, a szótár és a fordítás. További információ: API- [referenciák](./reference/v3-0-languages.md).
 
 Mielőtt továbblépne, vessünk egy pillantást a minta kimenetre a languages erőforrás meghívásához:
 
@@ -560,7 +560,7 @@ Az utolsó lépés az, hogy létre kell hozni egy metódust, amely akkor lép fe
    }
    ```
 
-Az első lépés a "from" és a "to" nyelv, valamint a felhasználó által az űrlapba beírt szöveg beolvasása. Ha a forrás nyelve **észlelésre**van beállítva, a `DetectLanguage()` rendszer meghívja a forrás szöveg nyelvét. Előfordulhat, hogy a szöveg olyan nyelven van, amelyet a fordító nem támogat. Ebben az esetben egy üzenet jelenik meg, amely tájékoztatja a felhasználót, és a szöveg fordítása nélkül visszakerül.
+Az első lépés a "from" és a "to" nyelv, valamint a felhasználó által az űrlapba beírt szöveg beolvasása. Ha a forrás nyelve **észlelésre** van beállítva, a `DetectLanguage()` rendszer meghívja a forrás szöveg nyelvét. Előfordulhat, hogy a szöveg olyan nyelven van, amelyet a fordító nem támogat. Ebben az esetben egy üzenet jelenik meg, amely tájékoztatja a felhasználót, és a szöveg fordítása nélkül visszakerül.
 
 Amennyiben a forrásnyelv az angol (akár megadja ezt, akár a rendszer maga ismeri fel), a `CorrectSpelling()` használatával ellenőrizheti, valamint szükség esetén javíthatja a helyesírást. A javított szöveg visszakerül a szövegmezőbe, így a felhasználó úgy látja, hogy helyesbítés történt.
 
@@ -578,7 +578,7 @@ A projekt forráskódja elérhető a GitHubon.
 
 * [A forráskód megismerése](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp-Tutorial)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [A Microsoft Translator dokumentációja](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
+> [A Microsoft Translator dokumentációja](./reference/v3-0-reference.md)

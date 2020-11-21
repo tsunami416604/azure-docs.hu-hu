@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: overview
 ms.date: 5/22/2020
 ms.author: derekol
-ms.openlocfilehash: 3ffef24d459a2864ffd3f2271e6bca9e4bc638cc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 717a8c87c6a1c22d3f75cd4e3054bfdf0c4b5f9a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "83849382"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023445"
 ---
 # <a name="internet-peering-vs-peering-service"></a>Internetes társviszony-létesítés vagy Peering Service
 
@@ -51,7 +51,7 @@ A globális vállalat egyes fiókirodái a fenti ábrán a partner hálózatán 
 ## <a name="faq"></a>GYIK
 A gyakori kérdésekért lásd: [peering Service – gyakori](service-faqs.md)kérdések.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* További információ az ügyfelek által nyújtott előnyökről a [partneri szolgáltatással](https://docs.microsoft.com/azure/peering-service/).
+* További információ az ügyfelek által nyújtott előnyökről a [partneri szolgáltatással](../peering-service/index.yml).
 * Ismerje meg, hogy miként engedélyezhető a közvetlen társ-kezelés a társ-szolgáltatási [partneri útmutatóban](walkthrough-peering-service-all.md).

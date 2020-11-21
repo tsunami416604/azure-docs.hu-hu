@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 06/11/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0391102683ebafba63c429072c8afa9f24223955
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66617afee11b02eae0ba5e36d9ff91cbdf21911f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88009426"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023105"
 ---
 # <a name="tutorial-set-up-service-alerts"></a>Oktatóanyag: szolgáltatási riasztások beállítása
 
@@ -25,7 +25,7 @@ Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 > [!div class="checklist"]
 > * Szolgáltatási riasztások létrehozása és konfigurálása.
 
-Ha többet szeretne megtudni a Azure Service Healthről, tekintse meg az [Azure Health dokumentációját](https://docs.microsoft.com/azure/service-health/).
+Ha többet szeretne megtudni a Azure Service Healthről, tekintse meg az [Azure Health dokumentációját](../service-health/index.yml).
 
 ## <a name="create-service-alerts"></a>Szolgáltatás-riasztások létrehozása
 
@@ -46,9 +46,9 @@ A szolgáltatási riasztások konfigurálása:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Válassza a **Service Health lehetőséget.**
-3. A riasztások és értesítések beállításához kövesse a [műveletnapló riasztások létrehozása a szolgáltatás értesítéseiben](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log-service-notifications?toc=%2Fazure%2Fservice-health%2Ftoc.json#alert-and-new-action-group-using-azure-portal) című témakör utasításait.
+3. A riasztások és értesítések beállításához kövesse a [műveletnapló riasztások létrehozása a szolgáltatás értesítéseiben](../service-health/alerts-activity-log-service-notifications-portal.md?toc=%2fazure%2fservice-health%2ftoc.json) című témakör utasításait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből az oktatóanyagból megtudhatta, hogyan állíthatja be és használhatja a Azure Service Health a szolgáltatással kapcsolatos problémák és a Windows rendszerű virtuális asztalok állapot-tanácsadói figyelésére. Ha szeretné megtudni, hogyan jelentkezhet be a Windows rendszerű virtuális asztalra, folytassa a Kapcsolódás a Windows rendszerű virtuális asztali gépekhez című témakört.
 

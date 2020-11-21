@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/03/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f89dd6b7926baf6c1c64cff81e8b613461a3e925
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: b9ed43019e7af0cb810c3e0fc849281a458a43e1
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345499"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023633"
 ---
 # <a name="how-to-use-batch-transcription"></a>A Batch-átírás használata
 
@@ -46,7 +46,7 @@ Ahogy a Speech Service összes funkciója esetében, létrehozhat egy előfizet�
 >[!NOTE]
 > A Batch-átírás használatához standard előfizetés (S0) szükséges a Speech Service-hez. Az ingyenes előfizetés kulcsa (F0) nem fog működni. További információ: [díjszabás és korlátok](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
-Ha azt tervezi, hogy testreszabja a modelleket, kövesse az [akusztikai Testreszabás](how-to-customize-acoustic-models.md) és a [nyelvi Testreszabás](how-to-customize-language-model.md)lépéseit. Ha a létrehozott modelleket a Batch-átírásban szeretné használni, szüksége lesz a modell helyére. A modell helyét a modell (tulajdonság) részleteinek vizsgálatával kérheti le `self` . A Batch átíró szolgáltatáshoz *nem szükséges* egy telepített egyéni végpont.
+Ha azt tervezi, hogy testreszabja a modelleket, kövesse az [akusztikai Testreszabás](./how-to-custom-speech-train-model.md) és a [nyelvi Testreszabás](./how-to-custom-speech-train-model.md)lépéseit. Ha a létrehozott modelleket a Batch-átírásban szeretné használni, szüksége lesz a modell helyére. A modell helyét a modell (tulajdonság) részleteinek vizsgálatával kérheti le `self` . A Batch átíró szolgáltatáshoz *nem szükséges* egy telepített egyéni végpont.
 
 >[!NOTE]
 > A REST API részeként a Batch-átírás [kvótákat és korlátokat](speech-services-quotas-and-limits.md#batch-transcription)tartalmaz, amelyeket javasoljuk, hogy tekintse át. Ha szeretné kihasználni a Batch átírási képességét, hogy hatékonyan átmásolja a nagy mennyiségű hangfájlt, javasoljuk, hogy mindig több fájlt küldjön, vagy mutasson egy Blob Storage tárolóra a hangfájlok segítségével. A szolgáltatás az átfutási idő csökkentése érdekében egyszerre fogja átírni a fájlokat. Egyetlen kérelemben több fájl használata nagyon egyszerű és egyértelmű – lásd a [konfigurációs](#configuration) szakaszt. 
@@ -180,9 +180,9 @@ Ezeket a választható tulajdonságokat az átírás konfigurálásához haszná
       Opcionális URL-cím a [Service ad hoc sas](../../storage/common/storage-sas-overview.md) -vel egy írható tárolóba az Azure-ban. Az eredmény ebben a tárolóban tárolódik. A tárolt hozzáférési házirenddel rendelkező SAS **nem** támogatott. Ha nincs megadva, a Microsoft az eredményeket a Microsoft által kezelt tároló tárolóban tárolja. Ha az átírást törli az [átírás](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)meghívásával, a rendszer törli az eredményül kapott adatértéket is.
 :::row-end:::
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Tárolás
 
-A Batch-átírás képes a nyilvánosan látható internetes URI-n keresztül olvasni a hanganyagot, és az [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)-t használó sas URI-val képes hang-és írási átírásokat olvasni.
+A Batch-átírás képes a nyilvánosan látható internetes URI-n keresztül olvasni a hanganyagot, és az [Azure Blob Storage](../../storage/blobs/storage-blobs-overview.md)-t használó sas URI-val képes hang-és írási átírásokat olvasni.
 
 ## <a name="batch-transcription-result"></a>Köteg átírásának eredménye
 

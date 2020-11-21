@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 61c31b24b01b40da4d73a308a4f304f6ff242e41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 729e22f8ad94d2119d0f3f3e9fc474cc83a493a8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88691411"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023071"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>A Windows rendszerű virtuális asztali (klasszikus) diagnosztika eszköz üzembe helyezése
 
@@ -94,10 +94,10 @@ A PowerShell-parancsfájl futtatása:
 2.  Nyissa meg az [RDS-templates GitHub-](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts) tárházat, és futtassa a **CreateLogAnalyticsWorkspaceforDiagnostics.ps1** szkriptet a PowerShellben.
 3. Adja meg a következő értékeket a paraméterekhez:
 
-    - A **ResourceGroupName**mezőben adja meg az erőforráscsoport nevét.
-    - A **LogAnalyticsWorkspaceName**mezőben adjon meg egy egyedi nevet a log Analytics munkaterülethez.
-    - A **hely**mezőben adja meg az Ön által használt Azure-régiót.
-    - Adja meg az **Azure-előfizetés azonosítóját**, amelyet a Azure Portal az **előfizetések**területen talál.
+    - A **ResourceGroupName** mezőben adja meg az erőforráscsoport nevét.
+    - A **LogAnalyticsWorkspaceName** mezőben adjon meg egy egyedi nevet a log Analytics munkaterülethez.
+    - A **hely** mezőben adja meg az Ön által használt Azure-régiót.
+    - Adja meg az **Azure-előfizetés azonosítóját**, amelyet a Azure Portal az **előfizetések** területen talál.
 
 4. Adja meg a delegált rendszergazdai hozzáféréssel rendelkező felhasználó hitelesítő adatait.
 5. Jelentkezzen be a Azure Portalba ugyanazzal a felhasználó hitelesítő adataival.
@@ -112,7 +112,7 @@ Az ajánlott teljesítményszámlálók manuális konfigurálását a következ�
 
 1. Nyissa meg az Internet böngészőt, és jelentkezzen be a [Azure Portalba](https://portal.azure.com/) a rendszergazdai fiókjával.
 2. Ezután lépjen **log Analytics munkaterületek** elemre a konfigurált Windows-teljesítményszámlálók áttekintéséhez.
-3. A **Beállítások** szakaszban válassza a  **Speciális beállítások**lehetőséget.
+3. A **Beállítások** szakaszban válassza a  **Speciális beállítások** lehetőséget.
 4. Ezt követően navigáljon az **Data**  >  **adatwindows-teljesítményszámlálók** elemhez, és adja hozzá a következő számlálókat:
 
     -   LogicalDisk ( \* ) \\ % szabad terület
@@ -121,7 +121,7 @@ Az ajánlott teljesítményszámlálók manuális konfigurálását a következ�
     -   Processzor adatai ( \* ) \\ processzoridő
     -   Felhasználói bemeneti késleltetés/munkamenet ( \* ) \\ maximális bemeneti késleltetése
 
-További információ a teljesítményszámlálók a [Azure monitor Windows-és Linux-teljesítményű adatforrásaiban](/azure/azure-monitor/platform/data-sources-performance-counters).
+További információ a teljesítményszámlálók a [Azure monitor Windows-és Linux-teljesítményű adatforrásaiban](../../azure-monitor/platform/data-sources-performance-counters.md).
 
 >[!NOTE]
 >A konfigurált további számlálók nem jelennek meg a diagnosztikai eszközben. Ahhoz, hogy megjelenjen a diagnosztika eszközben, konfigurálnia kell az eszköz konfigurációs fájlját. A speciális felügyelettel kapcsolatos utasítások később a GitHubon lesznek elérhetők.
@@ -136,7 +136,7 @@ Győződjön meg arról, hogy az alkalmazás regisztrációja API-engedélyekkel
 
 1. Nyisson meg egy böngészőt, és kapcsolódjon a [Azure Portalhoz](https://portal.azure.com/) a rendszergazdai fiókjával.
 2. Lépjen **Azure Active Directory**.
-3. Nyissa meg **Alkalmazásregisztrációk** és válassza a **minden alkalmazás**lehetőséget.
+3. Nyissa meg **Alkalmazásregisztrációk** és válassza a **minden alkalmazás** lehetőséget.
 4. Keresse meg az Azure AD-alkalmazás regisztrációját ugyanazzal az alkalmazással, amelyet a [Azure Active Directory alkalmazás regisztrációjának](deploy-diagnostics.md#create-an-azure-active-directory-app-registration)5. lépésében megadott.
 
 ### <a name="review-your-log-analytics-workspace"></a>Tekintse át Log Analytics munkaterületét
@@ -144,8 +144,8 @@ Győződjön meg arról, hogy az alkalmazás regisztrációja API-engedélyekkel
 Győződjön meg arról, hogy a Log Analytics munkaterület előre konfigurált Windows-teljesítményszámlálókat tartalmaz:
 
 1. A [Azure Portal](https://portal.azure.com/)válassza a **log Analytics munkaterületek** lehetőséget a konfigurált Windows-teljesítményszámlálók áttekintéséhez.
-2. A **Beállítások**területen válassza a **Speciális beállítások**lehetőséget.
-3. Ezután nyissa **meg a**következőt:  >  **adatwindows-teljesítményszámlálók**.
+2. A **Beállítások** területen válassza a **Speciális beállítások** lehetőséget.
+3. Ezután nyissa **meg a** következőt:  >  **adatwindows-teljesítményszámlálók**.
 4. Győződjön meg arról, hogy a következő számlálók előre vannak konfigurálva:
 
    - LogicalDisk ( \* ) \\ % szabad terület: a lemezen lévő teljes felhasználható terület szabad területének mennyiségét jeleníti meg százalékban.
@@ -160,9 +160,9 @@ A virtuális gépek állapotának megtekintéséhez engedélyeznie kell a Log An
 
 1. Nyisson meg egy böngészőt, és jelentkezzen be a [Azure Portalba](https://portal.azure.com/) a rendszergazdai fiókjával.
 2. Lépjen a Log Analytics munkaterületre.
-3. A bal oldali panel munkaterület-adatforrások területén válassza a **virtuális gépek**lehetőséget.
+3. A bal oldali panel munkaterület-adatforrások területén válassza a **virtuális gépek** lehetőséget.
 4. Válassza ki annak a virtuális gépnek a nevét, amelyhez csatlakozni szeretne.
-5. Kattintson a **Csatlakozás** gombra.
+5. Válassza a **Kapcsolódás** lehetőséget.
 
 ## <a name="deploy-the-diagnostics-tool"></a>A diagnosztikai eszköz üzembe helyezése
 
@@ -175,7 +175,7 @@ Az Azure Resource Management-sablon üzembe helyezése a diagnosztikai eszközö
     -   Client-Secret
     -   A Log Analytics-munkaterület azonosítója
 
-3.  Ha megadja a bemeneti paramétereket, fogadja el a használati feltételeket, majd válassza a **vásárlás**lehetőséget.
+3.  Ha megadja a bemeneti paramétereket, fogadja el a használati feltételeket, majd válassza a **vásárlás** lehetőséget.
 
 Az üzembe helyezés 2 – 3 percet vesz igénybe. A sikeres telepítést követően nyissa meg az erőforráscsoportot, és győződjön meg arról, hogy a webalkalmazás és az App Service-csomag erőforrásai vannak.
 
@@ -188,7 +188,7 @@ Az átirányítási URI beállítása:
 1.  A [Azure Portal](https://portal.azure.com/)lépjen a **app Services** elemre, és keresse meg a létrehozott alkalmazást.
 2.  Lépjen az Áttekintés lapra, és másolja az ott található URL-címet.
 3.  Navigáljon az **alkalmazások regisztrálásához** , és válassza ki a telepíteni kívánt alkalmazást.
-4.  A bal oldali panel kezelés területén válassza a **hitelesítés**lehetőséget.
+4.  A bal oldali panel kezelés területén válassza a **hitelesítés** lehetőséget.
 5.  Adja meg a kívánt átirányítási URI-t az **átirányítási URI** szövegmezőbe, majd kattintson a menü bal felső sarkában található **Mentés** elemre.
 6. A típus alatt válassza a **web** lehetőséget a legördülő menüben.
 7. Adja meg az URL-címet az alkalmazás áttekintés lapjáról, és adja hozzá a **/Security/signin-callback** a végéhez. Például: `https://<yourappname>.azurewebsites.net/security/signin-callback`.
@@ -204,7 +204,7 @@ Az átirányítási URI beállítása:
 
 Mielőtt a diagnosztikai eszközt elérhetővé tenné a felhasználók számára, győződjön meg arról, hogy a következő engedélyek vannak:
 
-- A felhasználóknak olvasási hozzáféréssel kell rendelkezniük a log analyticshez. További információ: Ismerkedés [a szerepkörökkel, az engedélyekkel és a biztonsággal a Azure monitor](/azure/azure-monitor/platform/roles-permissions-security).
+- A felhasználóknak olvasási hozzáféréssel kell rendelkezniük a log analyticshez. További információ: Ismerkedés [a szerepkörökkel, az engedélyekkel és a biztonsággal a Azure monitor](../../azure-monitor/platform/roles-permissions-security.md).
 -  A felhasználóknak olvasási hozzáférésre is szükségük van a Windows rendszerű virtuális asztali bérlőhöz (RDS olvasó szerepkör). További információ: [delegált hozzáférés a Windows rendszerű virtuális asztalon](delegated-access-virtual-desktop-2019.md).
 
 A következő információkat is meg kell adnia a felhasználóknak:
@@ -264,7 +264,7 @@ A munkamenet-gazdagépen lévő felhasználókkal is dolgozhat:
 
     - Küszöbérték: a 2000 MS-nál nagyobb érték van megjelölve sérültként.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan figyelheti a tevékenységek naplóit a [használatban lévő diagnosztika log Analytics használatával](diagnostics-log-analytics-2019.md).
 - További információ a gyakori hibákról, valamint a [problémák azonosítására és diagnosztizálására szolgáló hibák](diagnostics-role-service-2019.md)elhárításáról.

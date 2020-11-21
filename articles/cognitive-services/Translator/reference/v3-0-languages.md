@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 1f4dfc4b80aff01e4b7fe7ebae4850b28cd6a498
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d9abd1f305e47eca743dc9274e0ec1f0a950dd6a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83588598"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021269"
 ---
 # <a name="translator-30-languages"></a>Translator 3,0: nyelvek
 
@@ -34,7 +34,7 @@ A lekérdezési karakterláncon átadott kérési paraméterek a következők:
 
 <table width="100%">
   <th width="20%">Lekérdezési paraméter</th>
-  <th>Leírás</th>
+  <th>Description</th>
   <tr>
     <td>api-verzió</td>
     <td><em>Kötelező paraméter</em>.<br/>Az ügyfél által kért API-verzió. Az értéknek a számnak kell lennie `3.0` .</td>
@@ -49,7 +49,7 @@ A kérelem fejlécei:
 
 <table width="100%">
   <th width="20%">Fejlécek</th>
-  <th>Leírás</th>
+  <th>Description</th>
   <tr>
     <td>Accept-Language</td>
     <td>A *kérelem fejléce nem kötelező*.<br/>A felhasználói felület sztringjeihez használni kívánt nyelv. A válasz mezői a nyelvek nevei vagy a régiók nevei. Ezzel a paraméterrel határozhatja meg, hogy a rendszer milyen nyelven adja vissza ezeket a neveket. A nyelvet úgy kell megadni, hogy megfelelően formázott BCP 47 nyelvi címkét adjon meg. Például a `fr` nevek francia nyelven való meghívásához használja az értéket, vagy használja a `zh-Hant` nevet a hagyományos kínai nyelven.<br/>A nevek az angol nyelven jelennek meg, ha a célként megadott nyelv nincs megadva, vagy ha a honosítás nem érhető el.
@@ -230,7 +230,7 @@ A támogatott nyelvek listája nem változik gyakran. Ha menteni szeretné a há
 
 <table width="100%">
   <th width="20%">Fejlécek</th>
-  <th>Leírás</th>
+  <th>Description</th>
   <tr>
     <td>ETag</td>
     <td>A támogatott nyelvek kért csoportjaihoz tartozó entitás címkéje aktuális értéke. A későbbi kérelmek hatékonyabbá tételéhez az ügyfél elküldheti az `ETag` értéket egy `If-None-Match` fejléc mezőjében.
@@ -248,7 +248,7 @@ A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők:
 
 <table width="100%">
   <th width="20%">Állapotkód</th>
-  <th>Leírás</th>
+  <th>Description</th>
   <tr>
     <td>200</td>
     <td>Sikeres művelet.</td>
@@ -275,7 +275,7 @@ A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők:
   </tr>
 </table> 
 
-Ha hiba történik, a kérés JSON-hibaüzenetet is ad vissza. A hibakód egy 6 számjegyből álló szám, amely a 3 számjegyből álló HTTP-állapotkódot kombinálja, majd egy 3 számjegyű számot, amely további kategorizálja a hibát. Gyakori hibakódok a [v3 Translator Reference oldalon](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)találhatók. 
+Ha hiba történik, a kérés JSON-hibaüzenetet is ad vissza. A hibakód egy 6 számjegyből álló szám, amely a 3 számjegyből álló HTTP-állapotkódot kombinálja, majd egy 3 számjegyű számot, amely további kategorizálja a hibát. Gyakori hibakódok a [v3 Translator Reference oldalon](./v3-0-reference.md#errors)találhatók. 
 
 ## <a name="examples"></a>Példák
 

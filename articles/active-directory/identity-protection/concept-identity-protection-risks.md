@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32d9683012a5900569740080d61ac21b464a5cd4
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: d0da8755199645b12e9c6ed75a42881fe86e70b5
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490610"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023037"
 ---
 # <a name="what-is-risk"></a>Mit jelent a kockázat?
 
@@ -74,7 +74,7 @@ Ezek a kockázatok valós időben vagy a Microsoft belső és külső veszélyfo
 
 ### <a name="risk-levels"></a>Kockázati szintek
 
-Az Identity Protection három szinten kategorizálja a kockázatot: alacsony, közepes és magas. 
+Az Identity Protection három szinten kategorizálja a kockázatot: alacsony, közepes és magas. [Egyéni Identity Protection-házirendek](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-policies#custom-conditional-access-policy)konfigurálásakor azt is beállíthatja, hogy ne legyen **kockázati** szint. Nincs kockázat azt jelenti, hogy a felhasználó személyazonossága nem sérült.
 
 Habár a Microsoft nem ad meg konkrét részleteket a kockázatok kiszámításáról, azt fogjuk mondani, hogy minden szint nagyobb megbízhatóságot biztosít a felhasználó vagy a bejelentkezés biztonsága szempontjából. Előfordulhat például, hogy egy felhasználó ismeretlen bejelentkezési tulajdonságainak egy példánya nem fenyegeti a kiszivárgott hitelesítő adatokat egy másik felhasználó számára.
 
@@ -107,7 +107,7 @@ Ha még nem látott kiszivárgott hitelesítőadat-kockázati eseményt, az a k�
 
 A hitelesítő adatok feldolgozása közvetlenül a megtalálása után történik, általában naponta több kötegben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A kockázatok enyhítésére rendelkezésre álló szabályzatok](concept-identity-protection-policies.md)
 - [Biztonsági áttekintés](concept-identity-protection-security-overview.md)

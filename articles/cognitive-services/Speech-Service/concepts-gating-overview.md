@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: shlo
-ms.openlocfilehash: 73e6e4e69a245485ca473f048bbeafef21dbbf37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d66c02b58da295c74a38fb921a081cc4036763a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73836791"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021915"
 ---
 # <a name="custom-neural-voice-gating-overview"></a>Egyéni neurális hangalapú kapuzás – áttekintés
 
@@ -28,7 +28,7 @@ A Microsoft a felelős AI megtervezése iránti elkötelezettségének részeké
 ### <a name="guidance-for-deploying-custom-neural-voice"></a>Útmutatás az egyéni neurális hang üzembe helyezéséhez
 
 - A [felelősségteljes üzembe helyezésre vonatkozó irányelvek](concepts-guidelines-responsible-deployment-synthetic.md): a kutatáson alapuló legfontosabb javaslatok
-- A [Hangtehetségek nyilvánosságra hozatala](https://aka.ms/disclosure-voice-talent): mit kell tudnia, és tájékoztatnia kell a hangfelvételről a technológiáról a felelősségteljes használat érdekében
+- A [Hangtehetségek nyilvánosságra hozatala](/legal/cognitive-services/speech-service/disclosure-voice-talent): mit kell tudnia, és tájékoztatnia kell a hangfelvételről a technológiáról a felelősségteljes használat érdekében
 - [Közzétételi terv](concepts-disclosure-guidelines.md): Hogyan tervezhet tapasztalatokat, hogy a felhasználók tisztában legyenek a szintetikus hang használatakor és a szolgáltatás megbízhatóságában
 
 ### <a name="why-custom-neural-voice-is-a-gated-technology"></a>Miért van az egyéni neurális hang egy levezérelt technológia
@@ -41,14 +41,14 @@ Az egyéni neurális hangokhoz való hozzáféréshez először ki kell tölteni
 
 Az egyéni neurális hangszolgáltatáshoz való hozzáférésre a Microsoft saját belátása szerint a jogosultsági feltételek, a folyamat és a rendelkezésre állás alapján korlátozott számú ügyfél támogatására jogosult
 
-Az alkalmazási folyamat részeként el kell végeznie, hogy a hangtehetségek létrehozásának megkezdése előtt explicit írásos engedélyt kapjon a hangfelvételhez, ami magában foglalja a [hangfelvételek közzétételének](https://aka.ms/disclosure-voice-talent)megosztását is. Azt is el kell fogadnia, hogy a hangbetűkészlet telepítésekor a megvalósítás a szolgáltatás [szintetikus jellegét](concepts-disclosure-guidelines.md) a felhasználók számára kiadja, a Microsoft szintetikus beszédfelismerési szolgáltatását a szolgáltatási feltételekben, és támogatja a visszajelzési csatornát, amely lehetővé teszi, hogy a szolgáltatás felhasználói a Microsofttal kapcsolatos problémákat jelentsenek és osszanak meg. A használati feltételekről [itt](https://aka.ms/custom-neural-code-of-conduct)olvashat bővebben.
+Az alkalmazási folyamat részeként el kell végeznie, hogy a hangtehetségek létrehozásának megkezdése előtt explicit írásos engedélyt kapjon a hangfelvételhez, ami magában foglalja a [hangfelvételek közzétételének](/legal/cognitive-services/speech-service/disclosure-voice-talent)megosztását is. Azt is el kell fogadnia, hogy a hangbetűkészlet telepítésekor a megvalósítás a szolgáltatás [szintetikus jellegét](concepts-disclosure-guidelines.md) a felhasználók számára kiadja, a Microsoft szintetikus beszédfelismerési szolgáltatását a szolgáltatási feltételekben, és támogatja a visszajelzési csatornát, amely lehetővé teszi, hogy a szolgáltatás felhasználói a Microsofttal kapcsolatos problémákat jelentsenek és osszanak meg. A használati feltételekről [itt](/legal/cognitive-services/speech-service/tts-code-of-conduct)olvashat bővebben.
 
 ## <a name="reference-docs"></a>Dokumentációs dokumentumok
 
-* [Hangszolgáltatókra vonatkozó nyilatkozat](https://aka.ms/disclosure-voice-talent)
+* [Hangszolgáltatókra vonatkozó nyilatkozat](/legal/cognitive-services/speech-service/disclosure-voice-talent)
 * [Útmutató a szintetikus hangtechnológia felelős üzembe helyezéséhez](concepts-guidelines-responsible-deployment-synthetic.md)
 * [A közzététel módja](concepts-disclosure-guidelines.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Útmutató a szintetikus hangtechnológia felelős üzembe helyezéséhez](concepts-guidelines-responsible-deployment-synthetic.md)

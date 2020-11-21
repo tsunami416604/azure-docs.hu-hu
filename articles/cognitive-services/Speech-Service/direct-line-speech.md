@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 2b0bb997ecea55d25748152bab7bb6963d67657f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8c7e21b0784aacc85bd02e3c1702e1a710e76ab
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357641"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021881"
 ---
 # <a name="what-is-direct-line-speech"></a>Mi az a Direct Line Speech?
 
@@ -37,9 +37,9 @@ Emellett olyan gyors útmutatókat is kínálunk, amelyekkel a kód futtatásáv
 
 | Gyorsútmutató | Platform | API-referencia |
 |------------|----------|---------------|
-| C#, UWP | Windows | [Tallózás](https://aka.ms/csspeech/csharpref) |
-| Java | Windows, macOS, Linux | [Tallózás](https://aka.ms/csspeech/javaref) |
-| Java | Android | [Tallózás](https://aka.ms/csspeech/javaref) |
+| C#, UWP | Windows | [Tallózás](/dotnet/api/microsoft.cognitiveservices.speech) |
+| Java | Windows, macOS, Linux | [Tallózás](/java/api/com.microsoft.cognitiveservices.speech) |
+| Java | Android | [Tallózás](/java/api/com.microsoft.cognitiveservices.speech) |
 
 ## <a name="sample-code"></a>Mintakód
 
@@ -50,21 +50,21 @@ Hangsegéd létrehozásához használható mintakód a GitHubon érhető el. Eze
 
 ## <a name="customization"></a>Testreszabás
 
-A beszédfelismerési szolgáltatással készített hangsegédek teljes körű testreszabási lehetőségeket használhatnak a [beszéd-szöveg](speech-to-text.md), a [szöveg-beszéd](text-to-speech.md)és az [Egyéni kulcsszavak kiválasztásához](speech-devices-sdk-create-kws.md).
+A beszédfelismerési szolgáltatással készített hangsegédek teljes körű testreszabási lehetőségeket használhatnak a [beszéd-szöveg](speech-to-text.md), a [szöveg-beszéd](text-to-speech.md)és az [Egyéni kulcsszavak kiválasztásához](./custom-keyword-basics.md).
 
 > [!NOTE]
-> A testreszabási lehetőségek nyelv/területi beállítás szerint változnak (lásd a [támogatott nyelveket](supported-languages.md)).
+> A testreszabási lehetőségek nyelv/területi beállítás szerint változnak (lásd a [támogatott nyelveket](./language-support.md)).
 
-A közvetlen vonalas beszéd és a hozzá tartozó funkciók a hangsegédek számára ideális kiegészítőek a [virtuális asszisztensi megoldáshoz és a vállalati sablonhoz](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview). Habár a közvetlen vonalas beszéd bármilyen kompatibilis robottal működhet, ezek az erőforrások újrafelhasználható alapkonfigurációt biztosítanak a kiváló minőségű beszélgetési élményekhez, valamint a gyors kezdéshez szükséges általános támogatási képességeket és modelleket.
+A közvetlen vonalas beszéd és a hozzá tartozó funkciók a hangsegédek számára ideális kiegészítőek a [virtuális asszisztensi megoldáshoz és a vállalati sablonhoz](/azure/bot-service/bot-builder-enterprise-template-overview). Habár a közvetlen vonalas beszéd bármilyen kompatibilis robottal működhet, ezek az erőforrások újrafelhasználható alapkonfigurációt biztosítanak a kiváló minőségű beszélgetési élményekhez, valamint a gyors kezdéshez szükséges általános támogatási képességeket és modelleket.
 
 ## <a name="reference-docs"></a>Dokumentációs dokumentumok
 
-* [Beszéd SDK](speech-sdk-reference.md)
-* [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
+* [Beszéd SDK](./speech-sdk.md)
+* [Azure Bot Service](/azure/bot-service/?view=azure-bot-service-4.0)
 
 ## <a name="next-steps"></a>Következő lépések
 
 * [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](overview.md#try-the-speech-service-for-free)
 * [A Speech SDK beszerzése](speech-sdk.md)
-* [Alapszintű robot létrehozása és üzembe helyezése](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+* [Alapszintű robot létrehozása és üzembe helyezése](/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 * [A virtuális asszisztens megoldás és a vállalati sablon beszerzése](https://github.com/Microsoft/AI)

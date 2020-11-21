@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: cb673efb3e5d14e72e945bcf8c23d57495823720
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 56d5eb981aa02d9da83973d49e8df79fcd9c7e9c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394951"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021014"
 ---
 # <a name="securing-azure-sql-edge"></a>Az Azure SQL Edge védelme
 
@@ -34,14 +34,14 @@ A platform biztonságának megvalósítása a jogosulatlan felhasználók a hál
 - Az Azure SQL Edge-hez használt gazdagép-portok meghatározása és korlátozása
 - Annak biztosítása, hogy a megfelelő hozzáférés-vezérlés minden olyan adatköteten érvényesüljenek, amely az Azure SQL Edge-alapú adatmennyiséget tárolja. 
 
-Az Azure SQL Edge hálózati protokollokkal és TDS-végpontokkal kapcsolatos további információkért lásd: [hálózati protokollok és TDS-végpontok](//previous-versions/sql/sql-server-2008-r2/ms191220(v=sql.105)).
+Az Azure SQL Edge hálózati protokollokkal és TDS-végpontokkal kapcsolatos további információkért lásd: [hálózati protokollok és TDS-végpontok](/previous-versions/sql/sql-server-2008-r2/ms191220(v=sql.105)).
 
 ## <a name="authentication-and-authorization"></a>Hitelesítés és engedélyezés 
 
 ### <a name="authentication"></a>Hitelesítés  
 A hitelesítés az a folyamat, amellyel a felhasználó igazolni kívánja. Az Azure SQL Edge jelenleg csak a `SQL Authentication` mechanizmust támogatja.
 
-- *SQL-hitelesítés* :
+- *SQL-hitelesítés*:
 
     Az SQL-hitelesítés a felhasználó hitelesítését jelenti, amikor az Azure SQL Edge-hez csatlakozik felhasználónévvel és jelszóval. Az SQL- **rendszergazdai** bejelentkezési jelszót meg kell adni az SQL Edge üzembe helyezése során. Ezt követően további SQL-bejelentkezéseket és felhasználókat hozhat létre a kiszolgáló rendszergazdája, amely lehetővé teszi a felhasználók számára a Felhasználónév és a jelszó használatával történő kapcsolódást.
 
@@ -107,7 +107,7 @@ A biztonsági információk több, a teljesítményre és a segédprogramra opti
 Az Azure SQL Edge ugyanazokat a naplózási mechanizmusokat biztosítja, mint a SQL Server. További információ: [SQL Server audit (adatbázismotor)](/sql/relational-databases/security/auditing/sql-server-audit-database-engine).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Első lépések biztonsági funkciókkal](/sql/linux/sql-server-linux-security-get-started)
 - [Az Azure SQL Edge futtatása nem legfelső szintű felhasználóként](configure.md#run-azure-sql-edge-as-non-root-user)

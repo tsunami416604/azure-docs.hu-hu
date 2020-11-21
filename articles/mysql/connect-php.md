@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/28/2020
-ms.openlocfilehash: ae767905e24e2d7ddf3b8e12ec77b1efe782cf85
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: b93bc4d1adfa2787f14106707b3848ebfe5c57bc
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535605"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021201"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-mysql"></a>Rövid útmutató: a PHP használatával csatlakozhat és lekérdezheti Azure Database for MySQL
 Ebben a gyors útmutatóban azt szemléltetjük, hogy miként lehet [PHP](https://secure.php.net/manual/intro-whatis.php)-alkalmazás használatával csatlakozni a MySQL-hez készült Azure Database-hez. Bemutatjuk, hogy az SQL-utasítások használatával hogyan kérdezhetők le, illeszthetők be, frissíthetők és törölhetők az adatok az adatbázisban.
@@ -24,13 +24,13 @@ Ehhez a rövid útmutatóhoz a következőkre lesz szüksége:
 - Azure Database for MySQL önálló kiszolgáló létrehozása [Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md) használatával <br/> vagy az [Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md) -vel, ha még nem rendelkezik ilyennel.
 - Attól függően, hogy nyilvános vagy privát hozzáférést használ-e, a kapcsolat engedélyezéséhez hajtsa végre az alábbi műveletek **egyikét** .
 
-    |Művelet| Kapcsolati mód|Útmutató|
+    |Műveletek| Kapcsolati mód|Útmutató|
     |:--------- |:--------- |:--------- |
     | **Tűzfalszabályok konfigurálása** | Nyilvános | [Portál](./howto-manage-firewall-using-portal.md) <br/> [Parancssori felület](./howto-manage-firewall-using-cli.md)|
     | **Szolgáltatási végpont konfigurálása** | Nyilvános | [Portál](./howto-manage-vnet-using-portal.md) <br/> [Parancssori felület](./howto-manage-vnet-using-cli.md)|
     | **Privát hivatkozás konfigurálása** | Személyes | [Portál](./howto-configure-privatelink-portal.md) <br/> [Parancssori felület](./howto-configure-privatelink-cli.md) |
 
-- [Adatbázis és nem rendszergazda felhasználó létrehozása](/howto-create-users?tabs=single-server)
+- [Adatbázis és nem rendszergazda felhasználó létrehozása](/azure/mysql/howto-create-users?tabs=single-server)
 - Az operációs rendszer legújabb PHP-verziójának telepítése
     - [PHP macOS rendszeren](https://secure.php.net/manual/install.macosx.php)
     - [PHP Linuxon](https://secure.php.net/manual/install.unix.php)
@@ -46,7 +46,7 @@ Az adatbázis-kiszolgáló csatlakoztatási információit a Azure Portal a köv
 2. Navigáljon a MySQL-hez készült Azure-adatbázisok oldalára. Megkeresheti és kiválaszthatja a **Azure Database for MySQL**.
 :::image type="content" source="./media/quickstart-create-mysql-server-database-using-azure-portal/find-azure-mysql-in-portal.png" alt-text="Azure Database for MySQL keresése":::
 
-2. Válassza ki a MySQL-kiszolgálót (például **mydemoserver** ).
+2. Válassza ki a MySQL-kiszolgálót (például **mydemoserver**).
 3. Az **Áttekintés** lapon másolja a teljes **kiszolgálónevet és a** rendszergazdai felhasználónevet a **kiszolgáló-rendszergazdai bejelentkezési név** mellett. A kiszolgálónév vagy az állomásnév másolásához vigye a kurzort a fölé, és válassza a **Másolás** ikont.
 
 > [!IMPORTANT]

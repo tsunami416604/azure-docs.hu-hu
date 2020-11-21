@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: b186c2d2c4b5efc8e1e052a63505549e860b5619
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b512a80fcfc26efbe5c008884509aebfd86ed3e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460828"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020844"
 ---
 # <a name="data-storage"></a>Adattárolás
 
@@ -27,7 +27,7 @@ Azure Time Series Insights Gen2-környezet létrehozásakor a következő lehet�
 
 * Hideg adattárolás:
   * Hozzon létre egy új Azure Storage-erőforrást az előfizetésben és a régióban, amelyet kiválasztott a környezetéhez.
-  * Egy már meglévő Azure Storage-fiók csatolása. Ez a beállítás csak Azure Resource Manager [sablonból](https://docs.microsoft.com/azure/templates/microsoft.timeseriesinsights/allversions)telepíthető, és nem látható a Azure Portalban.
+  * Egy már meglévő Azure Storage-fiók csatolása. Ez a beállítás csak Azure Resource Manager [sablonból](/azure/templates/microsoft.timeseriesinsights/allversions)telepíthető, és nem látható a Azure Portalban.
 * Meleg adattárolás:
   * A meleg tároló nem kötelező, és a kiépítés ideje alatt vagy után is engedélyezhető vagy letiltható. Ha úgy dönt, hogy egy későbbi időpontban engedélyezi a meleg tárolást, és a hűtőházi tárolóban már van [ilyen](concepts-storage.md#warm-store-behavior) , a várt működés megismeréséhez tekintse át az alábbi szakaszt. A meleg tároló adatmegőrzési ideje 7 – 31 nap lehet, és szükség szerint módosítható.
 
@@ -40,14 +40,14 @@ Egy esemény betöltése esetén a rendszer a meleg tárolóban (ha engedélyezv
 
 ## <a name="data-availability"></a>Adatok rendelkezésre állása
 
-Azure Time Series Insights Gen2 partíciókat és indexeli az optimális lekérdezési teljesítményt. Az adatok elérhetővé válnak mind a meleg (ha engedélyezve), mind a hűtőházi tároló lekérdezéséhez az indexelés után. A betöltött adatok mennyisége és a partíción belüli átviteli sebesség is befolyásolhatja a rendelkezésre állást. Tekintse át az eseményforrás [átviteli sebességére vonatkozó korlátozásokat](./concepts-streaming-ingress-throughput-limits.md) és [ajánlott eljárásokat](./concepts-streaming-ingestion-event-sources.md#streaming-ingestion-best-practices) a legjobb teljesítmény érdekében. Egy késési [riasztást](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts) is beállíthat, ha értesítést szeretne kapni, ha a környezete problémákat tapasztal az adatfeldolgozás során.
+Azure Time Series Insights Gen2 partíciókat és indexeli az optimális lekérdezési teljesítményt. Az adatok elérhetővé válnak mind a meleg (ha engedélyezve), mind a hűtőházi tároló lekérdezéséhez az indexelés után. A betöltött adatok mennyisége és a partíción belüli átviteli sebesség is befolyásolhatja a rendelkezésre állást. Tekintse át az eseményforrás [átviteli sebességére vonatkozó korlátozásokat](./concepts-streaming-ingress-throughput-limits.md) és [ajánlott eljárásokat](./concepts-streaming-ingestion-event-sources.md#streaming-ingestion-best-practices) a legjobb teljesítmény érdekében. Egy késési [riasztást](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts) is beállíthat, ha értesítést szeretne kapni, ha a környezete problémákat tapasztal az adatfeldolgozás során.
 
 > [!IMPORTANT]
 > Előfordulhat, hogy az adatmennyiség akár 60 másodpercig is eltarthat, amíg az adatmennyiség elérhetővé válik. Ha 60 másodpercen túli jelentős késés tapasztalható, küldjön egy támogatási jegyet a Azure Portalon keresztül.
 
 ## <a name="warm-store"></a>Meleg tároló
 
-A meleg tárolóban tárolt adatai csak a [Time Series lekérdezési API](./time-series-insights-update-tsq.md)-kon, az [Azure Time Series Insights ÁME explorerben](./time-series-insights-update-explorer.md)vagy az [Power bi-összekötőn](./how-to-connect-power-bi.md)keresztül érhetők el. A meleg áruházbeli lekérdezések ingyenesek, és nincs kvóta, de legfeljebb [30](https://docs.microsoft.com/rest/api/time-series-insights/reference-api-limits#query-apis---limits) egyidejű kérés van.
+A meleg tárolóban tárolt adatai csak a [Time Series lekérdezési API](./concepts-query-overview.md)-kon, az [Azure Time Series Insights ÁME explorerben](./concepts-ux-panels.md)vagy az [Power bi-összekötőn](./how-to-connect-power-bi.md)keresztül érhetők el. A meleg áruházbeli lekérdezések ingyenesek, és nincs kvóta, de legfeljebb [30](/rest/api/time-series-insights/reference-api-limits#query-apis---limits) egyidejű kérés van.
 
 ### <a name="warm-store-behavior"></a>Meleg tárolási viselkedés
 
@@ -77,9 +77,9 @@ A lekérdezés teljesítményének és az adatelérhetőségnek a biztosításá
 
 #### <a name="accessing-cold-store-data"></a>A hűtőházi adattárolási adatok elérése
 
-Az adatoknak a [Azure Time Series Insights Explorer](./time-series-insights-update-explorer.md) és az [idősorozat lekérdezési API](./time-series-insights-update-tsq.md)-kkal való elérésén kívül az adatok közvetlenül a hűtőházi tárolóban tárolt Parquet-fájlokból is elérhetők. Például elolvashatja, átalakíthatja és megtisztíthatja az Jupyter-jegyzetfüzetben tárolt adatait, majd felhasználhatja a Azure Machine Learning modellnek ugyanabban a Spark-munkafolyamatban való betanításához.
+Az adatoknak a [Azure Time Series Insights Explorer](./concepts-ux-panels.md) és az [idősorozat lekérdezési API](./concepts-query-overview.md)-kkal való elérésén kívül az adatok közvetlenül a hűtőházi tárolóban tárolt Parquet-fájlokból is elérhetők. Például elolvashatja, átalakíthatja és megtisztíthatja az Jupyter-jegyzetfüzetben tárolt adatait, majd felhasználhatja a Azure Machine Learning modellnek ugyanabban a Spark-munkafolyamatban való betanításához.
 
-Az adatok közvetlenül az Azure Storage-fiókból való eléréséhez olvasási hozzáféréssel kell rendelkeznie a Azure Time Series Insights Gen2-adatok tárolására használt fiókhoz. Ezután a Parquet fájl létrehozási ideje alapján elolvashatja a kiválasztott adatmennyiséget az `PT=Time` alább ismertetett mappában található parketta- [fájl formátuma](#parquet-file-format-and-folder-structure) szakaszban.  A Storage-fiókhoz való olvasási hozzáférés engedélyezésével kapcsolatos további információkért lásd: [a Storage-fiók erőforrásaihoz való hozzáférés kezelése](../storage/blobs/storage-manage-access-to-resources.md).
+Az adatok közvetlenül az Azure Storage-fiókból való eléréséhez olvasási hozzáféréssel kell rendelkeznie a Azure Time Series Insights Gen2-adatok tárolására használt fiókhoz. Ezután a Parquet fájl létrehozási ideje alapján elolvashatja a kiválasztott adatmennyiséget az `PT=Time` alább ismertetett mappában található parketta- [fájl formátuma](#parquet-file-format-and-folder-structure) szakaszban.  A Storage-fiókhoz való olvasási hozzáférés engedélyezésével kapcsolatos további információkért lásd: [a Storage-fiók erőforrásaihoz való hozzáférés kezelése](../storage/blobs/anonymous-read-access-configure.md).
 
 #### <a name="data-deletion"></a>Adattörlés
 
@@ -123,6 +123,6 @@ Azure Time Series Insights Gen2-események a következő módon vannak leképezv
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További információ az [adatmodellezésről](./time-series-insights-update-tsm.md).
+* További információ az [adatmodellezésről](./concepts-model-overview.md).
 
-* Tervezze meg [Azure Time Series Insights Gen2-környezetét](./time-series-insights-update-plan.md).
+* Tervezze meg [Azure Time Series Insights Gen2-környezetét](./how-to-plan-your-environment.md).

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: dc39c1e43580c5cf302e85664783dba4509889af
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d3033af32229be238831740c11a1112513259a43
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842634"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023156"
 ---
 # <a name="security-best-practices"></a>Ajánlott biztonsági eljárások
 
@@ -29,16 +29,16 @@ A Windows rendszerű virtuális asztali környezetében a következő biztonság
 
 | Biztonsági igények | Az ügyfél felelős erre? |
 |---------------|:-------------------------:|
-|Identitás|Igen|
-|Felhasználói eszközök (mobil és PC)|Igen|
-|Alkalmazás biztonsága|Igen|
-|Munkamenet-gazda operációs rendszer|Igen|
-|Központi telepítés konfigurálása|Igen|
-|Hálózati vezérlők|Igen|
-|Virtualizációs vezérlő síkja|Nem|
-|Fizikai gazdagépek|Nem|
-|Fizikai hálózat|Nem|
-|Fizikai adatközpont|Nem|
+|Identitás|Yes|
+|Felhasználói eszközök (mobil és PC)|Yes|
+|Alkalmazás biztonsága|Yes|
+|Munkamenet-gazda operációs rendszer|Yes|
+|Központi telepítés konfigurálása|Yes|
+|Hálózati vezérlők|Yes|
+|Virtualizációs vezérlő síkja|No|
+|Fizikai gazdagépek|No|
+|Fizikai hálózat|No|
+|Fizikai adatközpont|No|
 
 Az ügyfél nem felelős a Microsoft által kezelt biztonsági követelményeknek.
 
@@ -62,7 +62,7 @@ További információ: Azure- [előfizetése Security Center Standard](../securi
 
 ### <a name="improve-your-secure-score"></a>A biztonsági pontszám javítása
 
-A biztonságos pontszám ajánlásokat és gyakorlati tanácsokat tartalmaz a teljes biztonság javítására. Ezek a javaslatok prioritást élveznek a legfontosabb elemek kiválasztásához, és a gyors javítási lehetőségek segítenek a lehetséges sebezhetőségek gyors megoldásában. Ezek az ajánlások az idő múlásával is frissülnek, és naprakészen tartanak a környezet biztonságának legjobb módjaival. További információ: [a biztonságos pontszám javítása Azure Security Centerban](../security-center/security-center-secure-score.md).
+A biztonságos pontszám ajánlásokat és gyakorlati tanácsokat tartalmaz a teljes biztonság javítására. Ezek a javaslatok prioritást élveznek a legfontosabb elemek kiválasztásához, és a gyors javítási lehetőségek segítenek a lehetséges sebezhetőségek gyors megoldásában. Ezek az ajánlások az idő múlásával is frissülnek, és naprakészen tartanak a környezet biztonságának legjobb módjaival. További információ: [a biztonságos pontszám javítása Azure Security Centerban](../security-center/secure-score-security-controls.md).
 
 ## <a name="windows-virtual-desktop-security-best-practices"></a>Ajánlott Windowsos virtuális asztali biztonsági eljárások
 
@@ -74,13 +74,13 @@ A többtényezős hitelesítés megkövetelése a Windows virtuális asztal mind
 
 ### <a name="enable-conditional-access"></a>Feltételes hozzáférés engedélyezése
 
-A [feltételes hozzáférés](../active-directory/conditional-access/best-practices.md) engedélyezése lehetővé teszi a kockázatok kezelését, mielőtt hozzáférést biztosít a felhasználóknak a Windows rendszerű virtuális asztali környezethez. Annak eldöntéséhez, hogy mely felhasználók férhetnek hozzá a szolgáltatáshoz, javasoljuk, hogy vegye figyelembe, hogy ki a felhasználó, hogyan jelentkeznek be és milyen eszközön használják.
+A [feltételes hozzáférés](../active-directory/conditional-access/overview.md) engedélyezése lehetővé teszi a kockázatok kezelését, mielőtt hozzáférést biztosít a felhasználóknak a Windows rendszerű virtuális asztali környezethez. Annak eldöntéséhez, hogy mely felhasználók férhetnek hozzá a szolgáltatáshoz, javasoljuk, hogy vegye figyelembe, hogy ki a felhasználó, hogyan jelentkeznek be és milyen eszközön használják.
 
 ### <a name="collect-audit-logs"></a>Naplók összegyűjtése
 
 A naplózás engedélyezésével megtekintheti a Windows rendszerű virtuális asztallal kapcsolatos felhasználói és rendszergazdai tevékenységeket. Néhány példa a legfontosabb naplókra:
 
--   [Azure-tevékenységnapló](../azure-monitor/platform/activity-log-collect.md)
+-   [Azure-tevékenységnapló](../azure-monitor/platform/activity-log.md)
 -   [Azure Active Directory tevékenység naplója](../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)
 -   [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)
 -   [Munkamenet-gazdagépek](../azure-monitor/platform/agent-windows.md)
@@ -93,7 +93,7 @@ A naplózás engedélyezésével megtekintheti a Windows rendszerű virtuális a
 
 ### <a name="monitor-usage-with-azure-monitor"></a>Használat figyelése Azure Monitor
 
-A Windows rendszerű virtuális asztali szolgáltatások használatának és rendelkezésre állásának figyelése [Azure monitor](https://azure.microsoft.com/services/monitor/)használatával. Vegye fontolóra a [szolgáltatás-állapottal kapcsolatos riasztások](../service-health/alerts-activity-log-service-notifications.md) létrehozását a Windows Virtual Desktop szolgáltatás számára, hogy értesítést kapjon, amikor valamilyen szolgáltatás hatással van egy eseményre.
+A Windows rendszerű virtuális asztali szolgáltatások használatának és rendelkezésre állásának figyelése [Azure monitor](https://azure.microsoft.com/services/monitor/)használatával. Vegye fontolóra a [szolgáltatás-állapottal kapcsolatos riasztások](../service-health/alerts-activity-log-service-notifications-portal.md) létrehozását a Windows Virtual Desktop szolgáltatás számára, hogy értesítést kapjon, amikor valamilyen szolgáltatás hatással van egy eseményre.
 
 ## <a name="session-host-security-best-practices"></a>A munkamenet-gazdagép biztonsági eljárásai – ajánlott eljárások
 

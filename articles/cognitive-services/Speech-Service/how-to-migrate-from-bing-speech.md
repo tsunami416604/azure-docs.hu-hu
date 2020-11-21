@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: nitinme
-ms.openlocfilehash: 81c4c26f252cdd9eb302a7f8f362c8bf52e48629
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b7950759914724234ec89e6eaee13b48e735ec9
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825590"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024313"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Áttelepítés Bing Speechról a beszédfelismerési szolgáltatásba
 
@@ -28,7 +28,7 @@ Egyetlen Speech Service-előfizetési kulcs biztosítja az alábbi funkciók el�
 * [Diktálás](speech-to-text.md)
 * [Egyéni beszédfelismerés](https://cris.ai)
 * [Szövegfelolvasás](text-to-speech.md)
-* [Egyéni szövegfelolvasási hangok](how-to-customize-voice-font.md)
+* [Egyéni szövegfelolvasási hangok](./how-to-custom-voice-create-voice.md)
 * [Tolmácsolás](speech-translation.md) (nem tartalmaz [szövegfordítást](../translator/translator-info-overview.md))
 
 A [SPEECH SDK](speech-sdk.md) a Bing Speech ügyféloldali kódtárak funkcionális cseréje, de más API-t használ.
@@ -37,7 +37,7 @@ A [SPEECH SDK](speech-sdk.md) a Bing Speech ügyféloldali kódtárak funkcioná
 
 A beszédfelismerési szolgáltatás nagymértékben hasonló a Bing Speechhoz, a következő eltérésekkel.
 
-| Szolgáltatás | Bing – Beszédfelismerés | Speech szolgáltatás | Részletek |
+| Funkció | Bing – Beszédfelismerés | Speech szolgáltatás | Részletek |
 |--|--|--|--|
 | C# SDK | :heavy_check_mark: | :heavy_check_mark: | A Speech Service támogatja a Windows 10, a Univerzális Windows-platform (UWP) és a .NET Standard 2,0. |
 | C++ SDK | : heavy_minus_sign: | :heavy_check_mark: | A Speech Service támogatja a Windowst és a Linuxot. |
@@ -63,7 +63,7 @@ A beszédfelismerési szolgáltatás időalapú árképzési modellt használ (n
 
 Ha Ön vagy a szervezete olyan fejlesztést vagy éles környezetben futó alkalmazásokat használ, amelyek Bing Speech API használnak, a lehető leghamarabb frissítse őket a beszédfelismerési szolgáltatás használatára. Tekintse meg a [beszédfelismerési szolgáltatás dokumentációját](index.yml) , amely tartalmazza az elérhető SDK-kat, a kódot és az oktatóanyagokat.
 
-A beszédfelismerési szolgáltatás [REST API](rest-apis.md) -jai kompatibilisek a Bing Speech API-kkal. Ha jelenleg a Bing Speech REST API-kat használja, csak a REST-végpontot kell módosítania, és váltania kell egy Speech Service-előfizetési kulcsra.
+A beszédfelismerési szolgáltatás [REST API](./overview.md#reference-docs) -jai kompatibilisek a Bing Speech API-kkal. Ha jelenleg a Bing Speech REST API-kat használja, csak a REST-végpontot kell módosítania, és váltania kell egy Speech Service-előfizetési kulcsra.
 
 Ha egy Bing Speech ügyféloldali függvénytárat használ egy adott programozási nyelvhez, a [SPEECH SDK](speech-sdk.md) -ba való Migrálás megköveteli az alkalmazás módosítását, mivel az API különbözik. A beszédfelismerési SDK lehetővé teszi a kód egyszerűbb használatát, miközben az új funkciókhoz is hozzáférést biztosít. A Speech SDK számos programozási nyelven elérhető. Az API-k minden platformon hasonlóak, és megkönnyítik a többplatformos fejlesztést.
 
@@ -72,14 +72,14 @@ A beszédfelismerési szolgáltatás nem biztosít globális végpontot. Állap�
 Ismerkedés a Speech SDK-val:
 
 1. Töltse le a [SPEECH SDK](speech-sdk.md)-t.
-1. A Speech Service rövid [útmutatók](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet) és [oktatóanyagok](how-to-recognize-intents-from-speech-csharp.md)használata. Tekintse meg a [kód mintáit](samples.md) is, és ismerkedjen meg az új API-kkal.
+1. A Speech Service rövid [útmutatók](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnet) és [oktatóanyagok](how-to-recognize-intents-from-speech-csharp.md)használata. Tekintse meg a [kód mintáit](./speech-sdk.md#sample-source-code) is, és ismerkedjen meg az új API-kkal.
 1. Az alkalmazás frissítése a beszédfelismerési szolgáltatás használatára.
 
 ## <a name="support"></a>Támogatás
 
 Bing Speech ügyfeleknek [támogatási jegy](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)megnyitásával kell felvenniük a kapcsolatot az ügyfélszolgálattal. Ha [technikai támogatási csomagra](https://azure.microsoft.com/support/plans/)van szüksége, vegye fel velünk a kapcsolatot is.
 
-A Speech Service, az SDK és az API támogatásához látogasson el a Speech Service [támogatási oldalára](support.md).
+A Speech Service, az SDK és az API támogatásához látogasson el a Speech Service [támogatási oldalára](../cognitive-services-support-options.md?context=%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext%253fcontext%253d%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext).
 
 ## <a name="next-steps"></a>Következő lépések
 

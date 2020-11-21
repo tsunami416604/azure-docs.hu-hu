@@ -7,18 +7,17 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 0edcdbfec07c032f095cc03eb91be8cf0785b58a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 53884c2f6d9f2e8cbb5676e9ac10e8fb15ed919e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844846"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024279"
 ---
 # <a name="use-circuit-breaker-dashboard-with-azure-spring-cloud"></a>Az áramkör-megszakító irányítópultjának használata az Azure Spring Cloud használatával
 
 **Ez a cikk a következőkre vonatkozik:** ✔️ Java
 
-::: zone pivot="programming-language-java"
 A Spring [Cloud Netflix turbina](https://github.com/Netflix/Turbine) széles körben használatos több [Hystrix](https://github.com/Netflix/Hystrix) mérőszámok összesítésére, így a streamek egyetlen nézetben figyelhetők meg a Hystrix-irányítópult használatával. Ez az oktatóanyag bemutatja, hogyan használhatja őket az Azure Spring Cloud-on.
 > [!NOTE]
 > A Netflix Hystrix széles körben használatos számos meglévő Spring Cloud-alkalmazásban, de már nem aktív fejlesztés alatt áll. Ha új projektet fejleszt, használja inkább a Spring Cloud Circuit megszakító implementációit, például a [resilience4j](https://github.com/resilience4j/resilience4j)-t. Az ebben az oktatóanyagban láthatótól eltérő, az új Spring Cloud Circuit Breaker-keretrendszer egyesíti a metrikák adatfolyamatának összes implementációját a mikrométerbe. Továbbra is dolgozunk a Mikrométerek támogatásán az Azure Spring Cloud-ban, ezért ez az oktatóanyag nem vonatkozik rá.
@@ -84,4 +83,4 @@ Webalkalmazásként a Hystrix irányítópultjának kell működnie `test-endpoi
 ## <a name="next-steps"></a>Következő lépések
 * [Szolgáltatási példány kiépítése az Azure CLI-ben](./spring-cloud-quickstart.md#provision-an-instance-of-azure-spring-cloud)
 * [Java Spring-alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez](./spring-cloud-tutorial-prepare-app-deployment.md)
-::: zone-end
+

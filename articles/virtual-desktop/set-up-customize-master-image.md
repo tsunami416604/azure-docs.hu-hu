@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 175b2268727364040640b319c24019bdf9b48df9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e4cb4fe8a701600290d24c055e2be5187a711c5
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89433704"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023394"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Fő VHD-rendszerkép létrehozása és testreszabása
 
@@ -33,7 +33,7 @@ Virtuális gép létrehozása a másolt VHD-vel:
 
 1. Nyissa meg az **új virtuális gép varázslót**.
 
-2. A generáció megadása lapon válassza az **1. generáció**lehetőséget.
+2. A generáció megadása lapon válassza az **1. generáció** lehetőséget.
 
     > [!div class="mx-imgBorder"]
     > ![Képernyőkép a létrehozási lap megadásáról. Az "1. generáció" beállítás van kiválasztva.](media/a41174fd41302a181e46385e1e701975.png)
@@ -89,7 +89,7 @@ Ha többet szeretne megtudni arról, hogyan konfigurálhatja a Windows Defendert
 Az automatikus frissítések letiltása helyi Csoportházirend használatával:
 
 1. Nyissa meg **Helyicsoportházirend-szerkesztő \\ Felügyeleti sablonok \\ Windows-összetevők \\ Windows Update**.
-2. Kattintson a jobb gombbal az **automatikus frissítés konfigurálása** elemre, és állítsa **le a Letiltva**értékre.
+2. Kattintson a jobb gombbal az **automatikus frissítés konfigurálása** elemre, és állítsa **le a Letiltva** értékre.
 
 A parancssorban a következő parancsot is futtathatja az automatikus frissítések letiltásához.
 
@@ -113,8 +113,8 @@ Időzónák átirányítása:
 
 1. A Active Directory-kiszolgálón nyissa meg a **csoportházirend-kezelő konzol**.
 2. Bontsa ki a tartományt és Csoportházirend objektumokat.
-3. Kattintson a jobb gombbal a csoportházirend-beállításokhoz létrehozott **csoportházirend objektumra** , és válassza a **Szerkesztés**lehetőséget.
-4. A **csoportházirend-felügyeleti szerkesztő**navigáljon a **számítógép-konfigurációs**  >  **házirendek**  >  **Felügyeleti sablonok**  >  **Windows-összetevők**  >  **Távoli asztali szolgáltatások**  >  **Távoli asztal munkamenet-gazdagép**  >  **eszköz és erőforrás-átirányítás**elemre.
+3. Kattintson a jobb gombbal a csoportházirend-beállításokhoz létrehozott **csoportházirend objektumra** , és válassza a **Szerkesztés** lehetőséget.
+4. A **csoportházirend-felügyeleti szerkesztő** navigáljon a **számítógép-konfigurációs**  >  **házirendek**  >  **Felügyeleti sablonok**  >  **Windows-összetevők**  >  **Távoli asztali szolgáltatások**  >  **Távoli asztal munkamenet-gazdagép**  >  **eszköz és erőforrás-átirányítás** elemre.
 5. Engedélyezze az **időzóna-átirányítás engedélyezése** beállítást.
 
 Ezt a parancsot a fő lemezképen is futtathatja az időzónák átirányításához:
@@ -125,7 +125,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnab
 
 ### <a name="disable-storage-sense"></a>Tárolási értelem letiltása
 
-A Windows 10 Enterprise vagy a Windows 10 Enterprise multi-session hostt használó Windowsos virtuális asztali munkamenetgazda esetében ajánlott letiltani a tárterületet. Az alábbi képernyőképen látható beállítások menüben letilthatja **a tárolási**érzékelést:
+A Windows 10 Enterprise vagy a Windows 10 Enterprise multi-session hostt használó Windowsos virtuális asztali munkamenetgazda esetében ajánlott letiltani a tárterületet. Az alábbi képernyőképen látható beállítások menüben letilthatja **a tárolási** érzékelést:
 
 > [!div class="mx-imgBorder"]
 > ![Képernyőfelvétel a beállítások területen a tárolási menüről. A "tárolási értelem" beállítás ki van kapcsolva.](media/storagesense.png)
@@ -138,7 +138,7 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\
 
 ### <a name="include-additional-language-support"></a>További nyelvi támogatás
 
-Ez a cikk nem tárgyalja a nyelvi és a regionális támogatás konfigurálásának módját. További információkért tekintse át a következő cikkeket:
+Ez a cikk nem tárgyalja a nyelvi és a regionális támogatás konfigurálásának módját. További információért tekintse át a következő cikkeket:
 
 - [Nyelvek hozzáadása Windows-lemezképekhez](/windows-hardware/manufacture/desktop/add-language-packs-to-windows/)
 - [Igény szerinti szolgáltatások](/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities/)
@@ -189,7 +189,7 @@ Az alábbi útmutatást követve megtudhatja, hogyan töltheti fel a fő lemezk�
 
 1. Ha még nem tette meg, alakítsa át a virtuális gép rendszerképét (VHD). Ha nem alakítja át a képet Rögzítettre, nem tudja sikeresen létrehozni a rendszerképet.
 
-2. Töltse fel a VHD-t egy blob-tárolóba a Storage-fiókjában. Gyorsan feltöltheti az [Storage Explorer eszközzel](https://azure.microsoft.com/features/storage-explorer/). Ha többet szeretne megtudni a Storage Explorer eszközről, tekintse meg [ezt a cikket](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows).
+2. Töltse fel a VHD-t egy blob-tárolóba a Storage-fiókjában. Gyorsan feltöltheti az [Storage Explorer eszközzel](https://azure.microsoft.com/features/storage-explorer/). Ha többet szeretne megtudni a Storage Explorer eszközről, tekintse meg [ezt a cikket](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows).
 
     > [!div class="mx-imgBorder"]
     > ![A Microsoft Azure Storage Explorer eszköz keresési ablakának képernyőképe. A "feltöltés. vhd vagy vhdx fájlok blobként (ajánlott)" jelölőnégyzet be van jelölve.](media/897aa9a9b6acc0aa775c31e7fd82df02.png)

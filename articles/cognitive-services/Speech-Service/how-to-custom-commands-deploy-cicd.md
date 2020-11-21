@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: bd1ab5110313380c90e71ed161935c7274a845b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dda50a443babca88a0a650fde60df0744d0a1d2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839248"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021830"
 ---
 # <a name="continuous-deployment-with-azure-devops"></a>Folyamatos üzembe helyezés az Azure DevOps használatával
 
@@ -25,7 +25,7 @@ Ebből a cikkből megtudhatja, hogyan állíthatja be a folyamatos üzembe helye
 > [!div class = "checklist"]
 > * Egyéni parancsokat fejlesztőknek (DEV)
 > * Egyéni parancsok alkalmazása éles környezethez (PROD)
-> * Regisztráció az [Azure-folyamatokra](https://docs.microsoft.com/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops)
+> * Regisztráció az [Azure-folyamatokra](/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops)
 
 ## <a name="exportimportpublish"></a>Exportálás/Importálás/közzététel
 
@@ -79,8 +79,8 @@ A szkriptek a [Cognitive Services Voice Assistant – Custom parancsokban](https
 ### <a name="hook-up-the-pipeline-with-your-application"></a>A folyamat összekapcsolása az alkalmazással
 
 1. Navigáljon a folyamat főoldalára.
-1. A jobb felső sarokban legördülő menüben válassza a **folyamat szerkesztése**lehetőséget. Egy YAML-szerkesztőbe kerül. 
-1. A "Futtatás" gomb melletti jobb felső sarokban válassza a **változók**lehetőséget. Kattintson az **új változó**elemre.
+1. A jobb felső sarokban legördülő menüben válassza a **folyamat szerkesztése** lehetőséget. Egy YAML-szerkesztőbe kerül. 
+1. A "Futtatás" gomb melletti jobb felső sarokban válassza a **változók** lehetőséget. Kattintson az **új változó** elemre.
 1. Adja hozzá ezeket a változókat:
     
     | Változó | Leírás |
@@ -99,7 +99,7 @@ A szkriptek a [Cognitive Services Voice Assistant – Custom parancsokban](https
 
 ## <a name="deploy-from-source-code"></a>Üzembe helyezés forráskódból
 
-Ha meg szeretné őrizni az alkalmazás definícióját egy adattárban, a forráskódból történő üzembe helyezéshez biztosítunk parancsfájlokat. Mivel a szkriptek a bashben vannak, a Windows használata esetén telepítenie kell a [Linux alrendszert](https://docs.microsoft.com/windows/wsl/install-win10).
+Ha meg szeretné őrizni az alkalmazás definícióját egy adattárban, a forráskódból történő üzembe helyezéshez biztosítunk parancsfájlokat. Mivel a szkriptek a bashben vannak, a Windows használata esetén telepítenie kell a [Linux alrendszert](/windows/wsl/install-win10).
 
 A szkriptek a [Cognitive Services Voice Assistant – Custom parancsokban](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/tree/master/custom-commands)vannak tárolva. A bash-címtárban lévő parancsfájlok klónozása a tárházba. Győződjön meg arról, hogy ugyanazt az útvonalat tartja karban.
 
@@ -110,7 +110,7 @@ A szkriptek a [Cognitive Services Voice Assistant – Custom parancsokban](https
     ```BASH
     bash/export.sh -r <region> -s <subscriptionkey> -c en-us -a <appid> -f apps/myapp.json
     ```
-    | Argumentumok | Leírás |
+    | Argumentumok | Description |
     | ------- | --------------- | ----------- |
     | régió | az alkalmazás régiója, pl. westus2. |
     | subscriptionkey | a beszédfelismerési erőforrás előfizetési kulcsa. |
@@ -155,8 +155,8 @@ A szkriptek a [Cognitive Services Voice Assistant – Custom parancsokban](https
 ### <a name="hook-up-the-pipeline-with-your-target-applications"></a>A folyamat összekapcsolása a megcélzott alkalmazásokkal
 
 1. Navigáljon a folyamat főoldalára.
-1. A jobb felső sarokban legördülő menüben válassza a **folyamat szerkesztése**lehetőséget. Egy YAML-szerkesztőbe kerül. 
-1. A "Futtatás" gomb melletti jobb felső sarokban válassza a **változók**lehetőséget. Kattintson az **új változó**elemre.
+1. A jobb felső sarokban legördülő menüben válassza a **folyamat szerkesztése** lehetőséget. Egy YAML-szerkesztőbe kerül. 
+1. A "Futtatás" gomb melletti jobb felső sarokban válassza a **változók** lehetőséget. Kattintson az **új változó** elemre.
 1. Adja hozzá ezeket a változókat:
 
     | Változó | Leírás |

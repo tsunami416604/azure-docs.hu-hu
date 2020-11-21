@@ -4,47 +4,65 @@ description: Ismerje meg, hogyan hozhat létre olyan Java-alkalmazásokat és-sz
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/19/2017
+ms.date: 11/18/2020
 ms.custom: devx-track-java
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 977777aff4aa32bf6876e1d573970d71ec71584e
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 25baa278961b93b04e60f2e997b98753cb6cf3ab
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629767"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024109"
 ---
 # <a name="develop-for-azure-files-with-java"></a>Fejlesztés az Azure Files szolgáltatáshoz Javával
+
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
+
+Ismerkedjen meg az olyan Java-alkalmazások fejlesztésének alapjaival, amelyek az adattárolást Azure Files használják. Hozzon létre egy konzolszoftver-alkalmazást, és ismerkedjen meg az alapszintű műveletekkel Azure Files API-kkal
+
+- Azure-fájlmegosztás létrehozása és törlése
+- Könyvtárak létrehozása és törlése
+- Fájlok és könyvtárak enumerálása Azure-fájlmegosztás esetén
+- Fájl feltöltése, letöltése és törlése
 
 [!INCLUDE [storage-check-out-samples-java](../../../includes/storage-check-out-samples-java.md)]
 
-## <a name="about-this-tutorial"></a>Az oktatóanyag ismertetése
-Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre olyan alkalmazásokat vagy szolgáltatásokat a Java használatával, amelyek a fájlok tárolására Azure Files használnak. Ebben az oktatóanyagban létrehozunk egy konzolszoftver-alkalmazást, és bemutatjuk, hogyan lehet alapszintű műveleteket végrehajtani a Java és a Azure Files használatával:
-
-* Azure-fájlmegosztás létrehozása és törlése
-* Könyvtárak létrehozása és törlése
-* Fájlok és könyvtárak enumerálása Azure-fájlmegosztás esetén
-* Fájl feltöltése, letöltése és törlése
-
-> [!Note]  
-> Mivel Azure Files az SMB protokollon keresztül érhető el, az Azure-fájlmegosztás szabványos Java I/O-osztályok használatával való elérésére szolgáló alkalmazások írhatók. Ez a cikk leírja, hogyan írhatók az Azure Storage Java SDK-t használó alkalmazások, amelyek a [Azure Files REST API](/rest/api/storageservices/file-service-rest-api) használatával kommunikálnak a Azure Filesekkel.
-
 ## <a name="create-a-java-application"></a>Java-alkalmazás létrehozása
-A minták létrehozásához szüksége lesz a Java Development Kit (JDK) és a [Javához készült Azure Storage SDK](https://github.com/Azure/azure-storage-java)-ra. Létre kell hoznia egy Azure Storage-fiókot is.
+
+A minták létrehozásához szüksége lesz a Java Development Kit (JDK) és a [Javához készült Azure Storage SDK](https://github.com/azure/azure-sdk-for-java)-ra. Létre kell hoznia egy Azure Storage-fiókot is.
 
 ## <a name="set-up-your-application-to-use-azure-files"></a>Az alkalmazás beállítása Azure Files használatára
-Az Azure Storage API-k használatához adja hozzá a következő utasítást a Java-fájl elejéhez, ahová a Storage szolgáltatást szeretné elérni.
+
+A Azure Files API-k használatához adja hozzá a következő kódot a Java-fájl elejéhez, ahonnan el szeretné érni a Azure Files.
+
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+:::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_ImportStatements":::
+
+# <a name="java-v11"></a>[Java v11](#tab/java11)
 
 ```java
-// Include the following imports to use blob APIs.
+// Include the following imports to use Azure Files APIs v11
 import com.microsoft.azure.storage.*;
 import com.microsoft.azure.storage.file.*;
 ```
 
+---
+
 ## <a name="set-up-an-azure-storage-connection-string"></a>Azure Storage-beli kapcsolatok karakterláncának beállítása
-Azure Files használatához csatlakoznia kell az Azure Storage-fiókjához. Az első lépés egy kapcsolati karakterlánc konfigurálása, amelyet a rendszer a Storage-fiókhoz való kapcsolódáshoz használ. Hozzunk létre egy statikus változót ehhez.
+
+Azure Files használatához csatlakoznia kell az Azure Storage-fiókjához. Konfigurálja a kapcsolati karakterláncot, és használja azt a Storage-fiókhoz való kapcsolódáshoz. Definiáljon egy statikus változót a kapcsolódási sztring tárolásához.
+
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+Cserélje *\<storage_account_name\>* le *\<storage_account_key\>* a és a értéket a Storage-fiókjához tartozó tényleges értékekre.
+
+:::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_ConnectionString":::
+
+# <a name="java-v11"></a>[Java v11](#tab/java11)
+
+Cserélje le a *your_storage_account_name* és a *your_storage_account_keyt* a Storage-fiók tényleges értékeire.
 
 ```java
 // Configure the connection-string with your values
@@ -54,13 +72,19 @@ public static final String storageConnectionString =
     "AccountKey=your_storage_account_key";
 ```
 
-> [!NOTE]
-> Cserélje le a your_storage_account_name és a your_storage_account_keyt a Storage-fiók tényleges értékeire.
-> 
-> 
+---
 
-## <a name="connecting-to-an-azure-storage-account"></a>Csatlakozás Azure Storage-fiókhoz
-A Storage-fiókhoz való kapcsolódáshoz a **CloudStorageAccount** objektumot kell használnia, amely a kapcsolati karakterláncot átadja az **elemzési** metódusának.
+## <a name="access-azure-files-storage"></a>Hozzáférés Azure Files tárolóhoz
+
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+Azure Files eléréséhez hozzon létre egy [ShareClient](/java/api/com.azure.storage.file.share.shareclient) objektumot. Új **ShareClient** -objektum létrehozásához használja a [ShareClientBuilder](/java/api/com.azure.storage.file.share.shareclientbuilder) osztályt.
+
+:::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_createClient":::
+
+# <a name="java-v11"></a>[Java v11](#tab/java11)
+
+A Storage-fiók eléréséhez használja a **CloudStorageAccount** objektumot, és adja át a kapcsolati karakterláncot az **elemzési** módszernek.
 
 ```java
 // Use the CloudStorageAccount object to connect to your storage account
@@ -73,8 +97,21 @@ try {
 
 A **CloudStorageAccount. Parse** egy InvalidKeyException dob, így azt egy try/catch blokkban kell elhelyeznie.
 
-## <a name="create-an-azure-file-share"></a>Azure-fájlmegosztás létrehozása
-A Azure Files összes fájlja és könyvtára egy **megosztás** nevű tárolóban található. A Storage-fiókja annyi megosztással rendelkezhet, amennyit a fiók kapacitása lehetővé tesz. Egy megosztáshoz és annak tartalmához való hozzáféréshez Azure Files-ügyfelet kell használnia.
+---
+
+## <a name="create-a-file-share"></a>Fájlmegosztás létrehozása
+
+Azure Files összes fájlját és könyvtárát egy megosztás nevű tároló tárolja.
+
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+A [ShareClient. Create](/java/api/com.azure.storage.file.share.shareclient.create) metódus kivételt vet fel, ha a megosztás már létezik. A hívást **hozzon létre** egy `try/catch` blokkban, és kezelje a kivételt.
+
+:::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_createFileShare":::
+
+# <a name="java-v11"></a>[Java v11](#tab/java11)
+
+Egy megosztáshoz és annak tartalmához való hozzáféréshez hozzon létre egy Azure Files ügyfelet.
 
 ```java
 // Create the Azure Files client.
@@ -88,7 +125,7 @@ A Azure Files ügyfél használatával megszerezheti a megosztásra mutató hiva
 CloudFileShare share = fileClient.getShareReference("sampleshare");
 ```
 
-A megosztás tényleges létrehozásához használja a CloudFileShare objektum **createifnotexists metódust** metódusát.
+A megosztás tényleges létrehozásához használja a **CloudFileShare** objektum **createifnotexists metódust** metódusát.
 
 ```java
 if (share.createIfNotExists()) {
@@ -96,10 +133,23 @@ if (share.createIfNotExists()) {
 }
 ```
 
-Ezen a ponton a **megosztás** egy **sampleshare** nevű megosztásra mutató hivatkozást tárol.
+Ezen a ponton a **megosztás** egy **minta megosztás** nevű megosztásra mutató hivatkozást tárol.
 
-## <a name="delete-an-azure-file-share"></a>Azure-fájlmegosztás törlése
-Egy megosztás törléséhez hívja meg a **deleteifexists paranccsal** metódust egy CloudFileShare objektumon. Az alábbi mintakód erre a kódra vonatkozik.
+---
+
+## <a name="delete-a-file-share"></a>Fájlmegosztás törlése
+
+A következő mintakód törli a fájlmegosztást.
+
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+A [ShareClient. Delete](/java/api/com.azure.storage.file.share.shareclient.delete) metódus meghívásával törölje a megosztást.
+
+:::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_deleteFileShare":::
+
+# <a name="java-v11"></a>[Java v11](#tab/java11)
+
+Egy megosztás törléséhez hívja meg a **deleteifexists paranccsal** metódust egy **CloudFileShare** objektumon.
 
 ```java
 try
@@ -121,8 +171,21 @@ try
 }
 ```
 
+---
+
 ## <a name="create-a-directory"></a>Könyvtár létrehozása
-A tárolót úgy is rendszerezheti, hogy az alkönyvtárakban helyez el fájlokat, ahelyett, hogy mindegyiket a gyökérkönyvtárba helyezné. Azure Files lehetővé teszi, hogy annyi könyvtárat hozzon létre, amennyit a fiókja engedélyezni fog. Az alábbi kód létrehoz egy **sampledir** nevű alkönyvtárat a gyökérkönyvtár alatt.
+
+A tárterületet úgy szervezheti meg, hogy az alkönyvtárakon belül helyezi el a fájlokat, ahelyett, hogy mindegyiket a gyökérkönyvtárba helyezné.
+
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+A következő kód egy könyvtárat hoz létre a [ShareDirectoryClient. Create](/java/api/com.azure.storage.file.share.sharedirectoryclient.create)parancs meghívásával. A példa metódus egy értéket ad vissza `Boolean` , amely azt jelzi, hogy sikeresen létrehozta-e a könyvtárat.
+
+:::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_createDirectory":::
+
+# <a name="java-v11"></a>[Java v11](#tab/java11)
+
+A következő kód létrehoz egy **sampledir** nevű alkönyvtárat a gyökérkönyvtárban.
 
 ```java
 //Get a reference to the root directory for the share.
@@ -138,8 +201,19 @@ if (sampleDir.createIfNotExists()) {
 }
 ```
 
+---
+
 ## <a name="delete-a-directory"></a>Könyvtár törlése
-A címtár törlése egyszerű feladat, bár érdemes megjegyezni, hogy nem törölhet olyan könyvtárat, amely továbbra is tartalmaz fájlokat vagy más címtárakat.
+
+A címtár törlése egyszerű feladat. Nem törölhet olyan könyvtárat, amely továbbra is tartalmaz fájlokat vagy alkönyvtárakat.
+
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+A [ShareDirectoryClient. Delete](/java/api/com.azure.storage.file.share.sharedirectoryclient.delete) metódus kivételt jelez, ha a könyvtár nem létezik vagy nem üres. Helyezze a **törlési** hívást egy `try/catch` blokkba, és kezelje a kivételt.
+
+:::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_deleteDirectory":::
+
+# <a name="java-v11"></a>[Java v11](#tab/java11)
 
 ```java
 // Get a reference to the root directory for the share.
@@ -154,8 +228,19 @@ if ( containerDir.deleteIfExists() ) {
 }
 ```
 
+---
+
 ## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Fájlok és könyvtárak enumerálása Azure-fájlmegosztás esetén
-Egy megosztáson belüli fájlok és könyvtárak listájának beszerzése egyszerűen elvégezhető a **ListFilesAndDirectories** CloudFileDirectory-hivatkozással való meghívásával. A metódus visszaadja a ListFileItem objektumok listáját, amelyeket megadhat. Az alábbi kód például a gyökérkönyvtárban található fájlokat és könyvtárakat sorolja fel.
+
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+A [ShareDirectoryClient. listFilesAndDirectories](/java/api/com.azure.storage.file.share.sharedirectoryclient.listfilesanddirectories)meghívásával lekérheti a fájlok és könyvtárak listáját. A metódus a [ShareFileItem](/java/api/com.azure.storage.file.share.models.sharefileitem) objektumok listáját adja vissza, amelyeken megismételhető. A következő kód felsorolja a *könyvtárnév* paraméter által megadott könyvtárban található fájlokat és könyvtárakat.
+
+:::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_enumerateFilesAndDirs":::
+
+# <a name="java-v11"></a>[Java v11](#tab/java11)
+
+A **ListFilesAndDirectories** **CloudFileDirectory** -hivatkozással való meghívásával lekérheti a fájlok és könyvtárak listáját. A metódus a **ListFileItem** objektumok listáját adja vissza, amelyeken megismételhető. A következő kód a gyökérkönyvtárban található fájlokat és könyvtárakat sorolja fel.
 
 ```java
 //Get a reference to the root directory for the share.
@@ -166,10 +251,21 @@ for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
 }
 ```
 
-## <a name="upload-a-file"></a>Fájl feltöltése
-Ebből a szakaszból megtudhatja, hogyan tölthet fel egy fájlt a helyi tárolóból egy megosztás gyökérkönyvtárára.
+---
 
-A fájlok feltöltésének első lépéseként be kell szereznie egy hivatkozást arra a könyvtárba, ahol a fájl található. Ezt úgy teheti meg, hogy meghívja a megosztás objektum **getRootDirectoryReference** metódusát.
+## <a name="upload-a-file"></a>Fájl feltöltése
+
+Megtudhatja, hogyan tölthet fel egy fájlt a helyi tárolóból.
+
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+A következő kód feltölt egy helyi fájlt az Azure file Storage-ba az [ShareFileClient. uploadFromFile](/java/api/com.azure.storage.file.share.sharefileclient.uploadfromfile) metódus meghívásával. A következő példa egy értéket ad vissza `Boolean` , amely azt jelzi, hogy sikeresen feltöltötte-e a megadott fájlt.
+
+:::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_uploadFile":::
+
+# <a name="java-v11"></a>[Java v11](#tab/java11)
+
+A megosztás objektum **getRootDirectoryReference** metódusának meghívásával szerezze be azt a könyvtárat, ahová a fájl fel lesz töltve.
 
 ```java
 //Get a reference to the root directory for the share.
@@ -179,15 +275,28 @@ CloudFileDirectory rootDir = share.getRootDirectoryReference();
 Most, hogy már van egy hivatkozása a megosztás gyökérkönyvtárára, feltöltheti a fájlt a következő kód használatával.
 
 ```java
-        // Define the path to a local file.
-        final String filePath = "C:\\temp\\Readme.txt";
-    
-        CloudFile cloudFile = rootDir.getFileReference("Readme.txt");
-        cloudFile.uploadFromFile(filePath);
+// Define the path to a local file.
+final String filePath = "C:\\temp\\Readme.txt";
+
+CloudFile cloudFile = rootDir.getFileReference("Readme.txt");
+cloudFile.uploadFromFile(filePath);
 ```
 
+---
+
 ## <a name="download-a-file"></a>Fájl letöltése
-Az Azure Files a fájlok letöltésének egyik leggyakoribb művelete. A következő példában a kód letölti SampleFile.txt és megjeleníti annak tartalmát.
+
+Az egyik leggyakoribb művelet a fájlok Azure Files tárolóból való letöltése.
+
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+A következő példa letölti a megadott fájlt a *destDir* paraméterben megadott helyi könyvtárba. A példa metódus a letöltött fájlnevet a dátum és idő függvényében egyedivé teszi.
+
+:::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_downloadFile":::
+
+# <a name="java-v11"></a>[Java v11](#tab/java11)
+
+A következő példa letölti SampleFile.txt és megjeleníti a tartalmát.
 
 ```java
 //Get a reference to the root directory for the share.
@@ -203,8 +312,21 @@ CloudFile file = sampleDir.getFileReference("SampleFile.txt");
 System.out.println(file.downloadText());
 ```
 
+---
+
 ## <a name="delete-a-file"></a>Fájl törlése
-Egy másik gyakori Azure Files művelet a fájl törlése. A következő kód törli a **sampledir** nevű könyvtárban tárolt SampleFile.txt nevű fájlt.
+
+Egy másik gyakori Azure Files művelet a fájl törlése.
+
+# <a name="java-v12"></a>[Java V12](#tab/java)
+
+A következő kód törli a megadott fájlt. Először a példa egy [ShareDirectoryClient](/java/api/com.azure.storage.file.share.sharedirectoryclient) hoz létre a *könyvtárnév* paraméter alapján. Ezután a kód egy [ShareFileClient](/java/api/com.azure.storage.file.share.sharefileclient) kap a Directory-ügyféltől a *filename* paraméter alapján. Végül a példa metódus meghívja a [ShareFileClient. Delete](/java/api/com.azure.storage.file.share.sharefileclient.delete) fájlt a fájl törléséhez.
+
+:::code language="java" source="~/azure-storage-snippets/files/howto/java/java-v12/files-howto-v12/src/main/java/com/files/howto/App.java" id="Snippet_deleteFile":::
+
+# <a name="java-v11"></a>[Java v11](#tab/java11)
+
+A következő kód törli a **sampledir** nevű könyvtárban tárolt SampleFile.txt nevű fájlt.
 
 ```java
 // Get a reference to the root directory for the share.
@@ -222,14 +344,17 @@ if ( file.deleteIfExists() ) {
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+---
+
+## <a name="next-steps"></a>Következő lépések
+
 Ha többet szeretne megtudni az Azure Storage API-król, kövesse az alábbi hivatkozásokat.
 
-* [Azure Java-fejlesztőknek](/java/azure)/)
-* [Javához készült Azure Storage SDK](https://github.com/azure/azure-storage-java)
-* [Androidhoz készült Azure Storage SDK](https://github.com/azure/azure-storage-android)
-* [Azure Storage ügyféloldali SDK-referencia](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)
-* [Az Azure Storage-szolgáltatások REST API-ja](/rest/api/storageservices/)
-* [Az Azure Storage csapat blogja](/archive/blogs/windowsazurestorage/)
-* [Adatok átvitele a AzCopy Command-Line segédprogrammal](../common/storage-use-azcopy-v10.md)
-* [Azure Files-problémák hibaelhárítása – Windows](storage-troubleshoot-windows-file-connection-problems.md)
+- [Azure Java-fejlesztőknek](/azure/developer/java)
+- [Javához készült Azure SDK](https://github.com/azure/azure-sdk-for-java)
+- [Androidhoz készült Azure SDK](https://github.com/azure/azure-sdk-for-android)
+- [Azure file share ügyféloldali kódtár a Java SDK-hoz – dokumentáció](/java/api/overview/azure/storage-file-share-readme)
+- [Az Azure Storage-szolgáltatások REST API-ja](/rest/api/storageservices/)
+- [Az Azure Storage csapat blogja](https://azure.microsoft.com/blog/topics/storage-backup-and-recovery/)
+- [Adatok átvitele a AzCopy Command-Line segédprogrammal](../common/storage-use-azcopy-v10.md)
+- [Azure Files-problémák hibaelhárítása – Windows](storage-troubleshoot-windows-file-connection-problems.md)

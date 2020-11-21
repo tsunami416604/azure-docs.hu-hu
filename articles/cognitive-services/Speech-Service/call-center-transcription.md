@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: c592055be1987786b94623bde5352e2a3cc0e092
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 19d4cc388494e149b7f258a8e9f154041a3dd070
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630151"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021966"
 ---
 # <a name="speech-service-for-telephony-data"></a>Beszédfelismerési szolgáltatás a telefonos adatkezeléshez
 
@@ -60,7 +60,7 @@ Nem ritka, hogy egy támogatási hívás 35%-ában a nem beszélgetési időpont
 
 ### <a name="translation"></a>Fordítás
 
-Néhány vállalat kísérletezik az idegen nyelvi támogatási hívások fordításával, így a kézbesítő vezetők megismerhetik az ügyfelek globális felhasználói élményét. A [fordítási](/azure/cognitive-services/speech-service/speech-translation) képességek felülmúlhatatlanok. Nagy számú területi beállításhoz hang-hang vagy hang-szöveg is fordítható.
+Néhány vállalat kísérletezik az idegen nyelvi támogatási hívások fordításával, így a kézbesítő vezetők megismerhetik az ügyfelek globális felhasználói élményét. A [fordítási](./speech-translation.md) képességek felülmúlhatatlanok. Nagy számú területi beállításhoz hang-hang vagy hang-szöveg is fordítható.
 
 ### <a name="text-to-speech"></a>Text to Speech
 
@@ -94,7 +94,7 @@ Egy tipikus megoldás ezeket a szolgáltatásokat használja:
 
 - A beszédfelismerési szolgáltatás a beszédfelismerés szövegének átírására szolgál. A Batch-átírási API használatához szabványos előfizetés (S0) szükséges a beszédfelismerési szolgáltatáshoz. Az ingyenes előfizetések (F0-EK) nem fognak működni.
 - Az [Azure Storage](https://azure.microsoft.com/services/storage/) szolgáltatás a telefonos és a Batch-átírási API által visszaadott átiratok tárolására szolgál. Ennek a Storage-fióknak az értesítéseket kell használnia, különösen az új fájlok hozzáadásakor. Ezek az értesítések az átírási folyamat elindítására szolgálnak.
-- A [Azure functions](https://docs.microsoft.com/azure/azure-functions/) a közös hozzáférésű aláírások (SAS) URI-azonosítójának létrehozására szolgál az egyes rögzítésekhez, és a http post-kérés elindításával indíthatja el az átírást. Emellett Azure Functions a Batch-átírási API-val történő átírások beolvasására és törlésére vonatkozó kérések létrehozására szolgál.
+- A [Azure functions](../../azure-functions/index.yml) a közös hozzáférésű aláírások (SAS) URI-azonosítójának létrehozására szolgál az egyes rögzítésekhez, és a http post-kérés elindításával indíthatja el az átírást. Emellett Azure Functions a Batch-átírási API-val történő átírások beolvasására és törlésére vonatkozó kérések létrehozására szolgál.
 
 Belsőleg a fenti technológiákat használjuk a Microsoft ügyfél-hívások kötegelt módban történő támogatásához.
 :::image type="content" source="media/scenarios/call-center-batch-pipeline.png" alt-text="A Microsoft ügyfél-hívások kötegelt módban történő támogatásához használt technológiák.":::
@@ -111,7 +111,7 @@ Belsőleg a fenti technológiákat használjuk a Microsoft ügyfeleinek valós i
 
 ## <a name="a-word-on-ivrs"></a>Egy szó a IVRs
 
-A beszédfelismerési szolgáltatás egyszerűen integrálható bármilyen megoldásba a [SPEECH SDK](speech-sdk.md) vagy a [REST API](rest-apis.md)használatával. A Call Center átirata azonban további technológiákat igényelhet. Általában az IVR rendszer és az Azure közötti kapcsolat szükséges. Habár nem kínálunk ilyen összetevőket, itt látható az a leírás, hogy az IVR-kapcsolatok hogyan járnak.
+A beszédfelismerési szolgáltatás egyszerűen integrálható bármilyen megoldásba a [SPEECH SDK](speech-sdk.md) vagy a [REST API](./overview.md#reference-docs)használatával. A Call Center átirata azonban további technológiákat igényelhet. Általában az IVR rendszer és az Azure közötti kapcsolat szükséges. Habár nem kínálunk ilyen összetevőket, itt látható az a leírás, hogy az IVR-kapcsolatok hogyan járnak.
 
 Számos IVR-vagy telefonos szolgáltatási termék (például a Genesys vagy a AudioCodes) olyan integrációs képességeket kínál, amelyek lehetővé teszik a bejövő és kimenő hangtovábbítást az Azure-szolgáltatásba. Az egyéni Azure-szolgáltatás alapvetően egy adott felületet biztosít a telefonhívási munkamenetek definiálásához (például a hívás indítására vagy a hívás végére), és elérhetővé tehet egy WebSocket API-t, amely a beszédfelismerési szolgáltatással használt bejövő stream-hang fogadására szolgál. A kimenő válaszok, például a beszélgetés átírása vagy a bot-keretrendszerrel létesített kapcsolatok a Microsoft szöveg-beszéd szolgáltatásával állíthatók be, és visszatérhetnek az IVR-hoz a lejátszáshoz.
 
@@ -121,12 +121,12 @@ Egy másik forgatókönyv a közvetlen integráció a munkamenet-kezdeményező 
 
  A beszédfelismerési szolgáltatás a beépített modellekkel jól működik. Azonban érdemes lehet tovább testreszabni és hangolni a termék vagy a környezet élményét. A testreszabási lehetőségek köre az akusztikus modell finomhangolása és a márka egyedi hangbetűkészletei között. Miután létrehozott egy egyéni modellt, a beszédfelismerési szolgáltatás bármelyik szolgáltatásával valós időben vagy batch módban használhatja azt.
 
-| Speech szolgáltatás | Modell | Leírás |
+| Speech szolgáltatás | Modellezés | Description |
 | -------------- | ----- | ----------- |
-| Diktálás | [Akusztikai modell](how-to-customize-acoustic-models.md) | Hozzon létre egy egyéni akusztikai modellt olyan alkalmazásokhoz, eszközökhöz vagy eszközökhöz, amelyeket az adott környezetben, például autóban vagy gyári szinten használnak, és amelyek külön rögzítési feltételekkel rendelkeznek. Ilyenek például az ékezetes beszédek, a konkrét háttérzajok, vagy egy adott mikrofon használata a rögzítéshez. |
-|                | [Nyelvi modell](how-to-customize-language-model.md) | Hozzon létre egy egyéni nyelvi modellt, amellyel javítható az iparágra jellemző szókincs és nyelvtan, például az orvosi szakkifejezések vagy az informatikai szakzsargonk átírása. |
-|                | [Kiejtési modell](how-to-customize-pronunciation.md) | Egyéni kiejtési modellel megadhatja a fonetikus űrlapot, és megjelenítheti egy szót vagy kifejezést. Ez hasznos a testreszabott kifejezések, például a terméknév vagy a betűszók kezelésére. Mindössze annyit kell tennie, hogy megkezdi a kiejtési fájlt, amely egy egyszerű `.txt` fájl. |
-| Szövegfelolvasás | [Hangtípusok](how-to-customize-voice-font.md) | Az egyéni hangbetűkészletek lehetővé teszik a márka felismerhető, egyfajta hangjának létrehozását. A kezdéshez csak kis mennyiségű adat szükséges. Minél több, az Ön által megadott információ, annál természetesebb és emberi – például a hangbetűkészletek is megszólalnak. |
+| Diktálás | [Akusztikai modell](./how-to-custom-speech-train-model.md) | Hozzon létre egy egyéni akusztikai modellt olyan alkalmazásokhoz, eszközökhöz vagy eszközökhöz, amelyeket az adott környezetben, például autóban vagy gyári szinten használnak, és amelyek külön rögzítési feltételekkel rendelkeznek. Ilyenek például az ékezetes beszédek, a konkrét háttérzajok, vagy egy adott mikrofon használata a rögzítéshez. |
+|                | [Nyelvi modell](./how-to-custom-speech-train-model.md) | Hozzon létre egy egyéni nyelvi modellt, amellyel javítható az iparágra jellemző szókincs és nyelvtan, például az orvosi szakkifejezések vagy az informatikai szakzsargonk átírása. |
+|                | [Kiejtési modell](./how-to-custom-speech-train-model.md) | Egyéni kiejtési modellel megadhatja a fonetikus űrlapot, és megjelenítheti egy szót vagy kifejezést. Ez hasznos a testreszabott kifejezések, például a terméknév vagy a betűszók kezelésére. Mindössze annyit kell tennie, hogy megkezdi a kiejtési fájlt, amely egy egyszerű `.txt` fájl. |
+| Szövegfelolvasás | [Hangtípusok](./how-to-custom-voice-create-voice.md) | Az egyéni hangbetűkészletek lehetővé teszik a márka felismerhető, egyfajta hangjának létrehozását. A kezdéshez csak kis mennyiségű adat szükséges. Minél több, az Ön által megadott információ, annál természetesebb és emberi – például a hangbetűkészletek is megszólalnak. |
 
 ## <a name="sample-code"></a>Mintakód
 
@@ -138,7 +138,7 @@ A mintakód a GitHubon érhető el a beszédfelismerési szolgáltatás egyes fu
 
 ## <a name="reference-docs"></a>Dokumentációs dokumentumok
 
-- [Beszéd SDK](speech-sdk-reference.md)
+- [Beszéd SDK](./speech-sdk.md)
 - [Beszédeszközök SDK](speech-devices-sdk.md)
 - [REST API: beszéd – szöveg](rest-speech-to-text.md)
 - [REST API: szövegről beszédre](rest-text-to-speech.md)

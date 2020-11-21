@@ -11,33 +11,33 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2b83433a135fec486701b4538793f0c3e0a6fa6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a9115b5400cc6d6c1ecc5740af796d831f5dee3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611826"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023258"
 ---
 # <a name="send-events-to-an-azure-time-series-insights-gen1-environment-by-using-an-event-hub"></a>Események küldése egy Azure Time Series Insights Gen1-környezetbe az Event hub használatával
 
 > [!CAUTION]
 > Ez egy Gen1-cikk.
 
-Ez a cikk bemutatja, hogyan hozhat létre és konfigurálhat egy Event hub-t az Azure Event Hubsban. Azt is leírja, hogyan futtathat egy minta alkalmazást, hogy leküldéses eseményeket Azure Time Series Insights a Event Hubsról. Ha van egy meglévő Event hub JSON formátumú eseményekkel, ugorja át ezt az oktatóanyagot, és tekintse meg a környezetét [Azure Time Series Insightsban](./time-series-insights-update-create-environment.md).
+Ez a cikk bemutatja, hogyan hozhat létre és konfigurálhat egy Event hub-t az Azure Event Hubsban. Azt is leírja, hogyan futtathat egy minta alkalmazást, hogy leküldéses eseményeket Azure Time Series Insights a Event Hubsról. Ha van egy meglévő Event hub JSON formátumú eseményekkel, ugorja át ezt az oktatóanyagot, és tekintse meg a környezetét [Azure Time Series Insightsban](./tutorials-set-up-tsi-environment.md).
 
 ## <a name="configure-an-event-hub"></a>Eseményközpont konfigurálása
 
-1. Az Event hub létrehozásának megismeréséhez olvassa el a [Event Hubs dokumentációját](https://docs.microsoft.com/azure/event-hubs/).
-1. A keresőmezőbe keressen **Event Hubs**. A visszaadott listában válassza a **Event Hubs**lehetőséget.
+1. Az Event hub létrehozásának megismeréséhez olvassa el a [Event Hubs dokumentációját](../event-hubs/index.yml).
+1. A keresőmezőbe keressen **Event Hubs**. A visszaadott listában válassza a **Event Hubs** lehetőséget.
 1. Válassza ki az Event hub-t.
-1. Az Event hub létrehozásakor egy Event hub-névteret hoz létre. Ha még nem hozott létre egy Event hubot a névtéren belül, a menüben az **entitások**alatt hozzon létre egy Event hubot.  
+1. Az Event hub létrehozásakor egy Event hub-névteret hoz létre. Ha még nem hozott létre egy Event hubot a névtéren belül, a menüben az **entitások** alatt hozzon létre egy Event hubot.  
 
     [![Az Event hubok listája](media/send-events/tsi-connect-event-hub-namespace.png)](media/send-events/tsi-connect-event-hub-namespace.png#lightbox)
 
 1. Az Event hub létrehozása után válassza ki azt az Event hubok listájában.
-1. A menü **entitások**területén válassza a **Event Hubs**lehetőséget.
+1. A menü **entitások** területén válassza a **Event Hubs** lehetőséget.
 1. Válassza ki az Event hub nevét a konfiguráláshoz.
-1. Az **Áttekintés**területen válassza a **fogyasztói csoportok**lehetőséget, majd válassza a **fogyasztói csoport**elemet.
+1. Az **Áttekintés** területen válassza a **fogyasztói csoportok** lehetőséget, majd válassza a **fogyasztói csoport** elemet.
 
     [![Fogyasztói csoport létrehozása](media/send-events/add-event-hub-consumer-group.png)](media/send-events/add-event-hub-consumer-group.png#lightbox)
 
@@ -46,29 +46,29 @@ Ez a cikk bemutatja, hogyan hozhat létre és konfigurálhat egy Event hub-t az 
     > [!IMPORTANT]
     > Győződjön meg arról, hogy a fogyasztói csoportot nem használja más szolgáltatás, például Azure Stream Analytics vagy más Azure Time Series Insights-környezet. Ha a fogyasztói csoportot más szolgáltatások használják, az olvasási műveletek negatív hatással vannak erre a környezetre és más szolgáltatásokra. Ha a **$Defaultt** használja fogyasztói csoportként, a többi olvasó esetleg újra felhasználhatja a fogyasztói csoportot.
 
-1. A menü **Beállítások**területén válassza a **megosztott elérési házirendek**elemet, majd kattintson a **Hozzáadás**gombra.
+1. A menü **Beállítások** területén válassza a **megosztott elérési házirendek** elemet, majd kattintson a **Hozzáadás** gombra.
 
     [![Válassza a megosztott hozzáférési házirendek lehetőséget, majd kattintson a Hozzáadás gombra.](media/send-events/add-shared-access-policy.png)](media/send-events/add-shared-access-policy.png#lightbox)
 
-1. Az **új megosztott elérési házirend hozzáadása** panelen hozzon létre egy **MySendPolicy**nevű közös hozzáférést. Ezt a közös hozzáférési szabályzatot használja a jelen cikk későbbi, a C#-példákban szereplő események küldéséhez.
+1. Az **új megosztott elérési házirend hozzáadása** panelen hozzon létre egy **MySendPolicy** nevű közös hozzáférést. Ezt a közös hozzáférési szabályzatot használja a jelen cikk későbbi, a C#-példákban szereplő események küldéséhez.
 
     [![A házirend neve mezőbe írja be a MySendPolicy](media/send-events/configure-shared-access-policy-confirm.png)](media/send-events/configure-shared-access-policy-confirm.png#lightbox)
 
-1. A **jogcím**területen jelölje be a **Küldés** jelölőnégyzetet.
+1. A **jogcím** területen jelölje be a **Küldés** jelölőnégyzetet.
 
 ## <a name="add-an-azure-time-series-insights-instance"></a>Azure Time Series Insights-példány hozzáadása
 
-Azure Time Series Insights Gen2 az idősorozat-modell (TSM) használatával a bejövő telemetria is hozzáadhat kontextusbeli adataikat. A TSM a címkéket vagy jeleket *példányoknak nevezzük,* és a kontextusban tárolt adatait is tárolhatja a *példány mezőiben.* Az adatai egy **Idősorozat-azonosító**használatával csatlakoznak a lekérdezési időponthoz. A jelen cikk későbbi részében használt minta szélmalmok projekt **idősorozat-azonosítója** `id` . Ha többet szeretne megtudni az adattárolásról a példány mezőiben, olvassa el az [Idősorozat-modell](./concepts-model-overview.md) áttekintését.
+Azure Time Series Insights Gen2 az idősorozat-modell (TSM) használatával a bejövő telemetria is hozzáadhat kontextusbeli adataikat. A TSM a címkéket vagy jeleket *példányoknak nevezzük,* és a kontextusban tárolt adatait is tárolhatja a *példány mezőiben.* Az adatai egy **Idősorozat-azonosító** használatával csatlakoznak a lekérdezési időponthoz. A jelen cikk későbbi részében használt minta szélmalmok projekt **idősorozat-azonosítója** `id` . Ha többet szeretne megtudni az adattárolásról a példány mezőiben, olvassa el az [Idősorozat-modell](./concepts-model-overview.md) áttekintését.
 
 ### <a name="create-an-azure-time-series-insights-event-source"></a>Azure Time Series Insights eseményforrás létrehozása
 
-1. Ha még nem hozott létre egy eseményforrás, hajtsa végre az [eseményforrás létrehozásához](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)szükséges lépéseket.
+1. Ha még nem hozott létre egy eseményforrás, hajtsa végre az [eseményforrás létrehozásához](./how-to-ingest-data-event-hub.md)szükséges lépéseket.
 
 1. Állítsa be a értékét `timeSeriesId` . Ha többet szeretne megtudni az **idősorozat-azonosítóról**, olvassa el a [Time Series-modelleket](./concepts-model-overview.md).
 
 ### <a name="push-events-to-windmills-sample"></a>Leküldéses események a szélmalmok mintába
 
-1. A keresési sávban keressen **Event Hubs**. A visszaadott listában válassza a **Event Hubs**lehetőséget.
+1. A keresési sávban keressen **Event Hubs**. A visszaadott listában válassza a **Event Hubs** lehetőséget.
 
 1. Válassza ki az Event hub-példányt.
 
@@ -84,7 +84,7 @@ Azure Time Series Insights Gen2 az idősorozat-modell (TSM) használatával a be
 1. Válassza **a Start gombra**.
 
     > [!TIP]
-    > A szélmalom-szimulátor emellett olyan JSON-t is létrehoz, amelyet hasznos adattartalomként használhat a [Azure Time Series INSIGHTS GA lekérdezési API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query)-kkal.
+    > A szélmalom-szimulátor emellett olyan JSON-t is létrehoz, amelyet hasznos adattartalomként használhat a [Azure Time Series INSIGHTS GA lekérdezési API](/rest/api/time-series-insights/gen1-query)-kkal.
 
     > [!NOTE]
     > A szimulátor továbbra is küldi az adatküldést, amíg be nem zárul a böngésző lapja.
@@ -208,4 +208,4 @@ Azure Time Series Insights Gen2 az idősorozat-modell (TSM) használatával a be
 
 * [Tekintse meg a környezetet](https://insights.timeseries.azure.com) a Azure Time Series Insights Explorerben.
 
-* További információ a [IoT hub eszköz üzeneteiről](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)
+* További információ a [IoT hub eszköz üzeneteiről](../iot-hub/iot-hub-devguide-messages-construct.md)

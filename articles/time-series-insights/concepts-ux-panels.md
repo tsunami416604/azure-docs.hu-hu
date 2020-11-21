@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5810bea7920dbfe91a836814124cbe4c7f6f3bee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: edfbbdd1b30cba74cf4f63d6b5e84c2e616e1a0f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653791"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020980"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights Explorer
 
@@ -25,11 +25,11 @@ Ez a cikk a Azure Time Series Insights Gen2 [bemutató környezetében](https://
 
 A Azure Time Series Insights Explorer megkezdéséhez a következőket kell tennie:
 
-* Azure Time Series Insights Gen2-környezet van kiépítve. További információ a példányok üzembe helyezéséről: [Azure Time Series Insights Gen2](./time-series-insights-update-create-environment.md) oktatóanyag.
-* Adja meg a fiókhoz létrehozott Azure Time Series Insights Gen2-környezet [adathozzáférését](./time-series-insights-data-access.md) . Mások számára is biztosíthat hozzáférést.
+* Azure Time Series Insights Gen2-környezet van kiépítve. További információ a példányok üzembe helyezéséről: [Azure Time Series Insights Gen2](./tutorials-set-up-tsi-environment.md) oktatóanyag.
+* Adja meg a fiókhoz létrehozott Azure Time Series Insights Gen2-környezet [adathozzáférését](./concepts-access-policies.md) . Mások számára is biztosíthat hozzáférést.
 * Adjon hozzá egy eseményforrás a Azure Time Series Insights Gen2-környezethez az adatküldés a környezetbe:
-  * További információ az [Event hub-hoz való kapcsolódásról](./time-series-insights-how-to-add-an-event-source-eventhub.md)
-  * További információ az [IoT hub-hoz való kapcsolódásról](./time-series-insights-how-to-add-an-event-source-iothub.md)
+  * További információ az [Event hub-hoz való kapcsolódásról](./how-to-ingest-data-event-hub.md)
+  * További információ az [IoT hub-hoz való kapcsolódásról](./how-to-ingest-data-iot-hub.md)
 
 ## <a name="explore-the-azure-time-series-insights-explorer"></a>Ismerkedés a Azure Time Series Insights Explorerrel
 
@@ -133,7 +133,7 @@ A **nagyítási** művelet elvégzése után a kiválasztott adatkészlet jeleni
 
   [![Átfedésben lévő diagram beállítása](media/v2-update-explorer/tsi-preview-explorer-overlapping-chart.png)](media/v2-update-explorer/tsi-preview-explorer-overlapping-chart.png#lightbox)
 
-A **További műveletek** gomb kibontja a **Letöltés CSV-ként**való megjelenítését, a **Power BIhoz való kapcsolódást**, a **diagram adatai táblázatként**való megjelenítését és a **nyers események beállításainak megismerését** .
+A **További műveletek** gomb kibontja a **Letöltés CSV-ként** való megjelenítését, a **Power BIhoz való kapcsolódást**, a **diagram adatai táblázatként** való megjelenítését és a **nyers események beállításainak megismerését** .
 
   [![További műveletek lehetőség](media/v2-update-explorer/more-actions-icon.png)](media/v2-update-explorer/more-actions-icon.png#lightbox)
 
@@ -160,7 +160,7 @@ A következő webes vezérlők Azure Time Series Insights Gen2 érhetők el a mu
 
 1. **Külső dátumtartomány csúszka vezérlő**: a végpont vezérlőelemekkel kiválaszthatja a külső dátumtartományt, amely a belső dátumtartomány vezérlőelemhez lesz elérhető.
 
-1. **Időtartomány csúszka vezérlő**: Ezzel gyorsan válthat az előre beállított időtartományok kiválasztásai között, például az elmúlt **30 percben**, az **utolsó 12 órában**vagy egy **Egyéni tartományon**. Az érték módosítása az intervallum-méret csúszka eszközben tárgyalt elérhető intervallum-tartományokat is megváltoztatja.
+1. **Időtartomány csúszka vezérlő**: Ezzel gyorsan válthat az előre beállított időtartományok kiválasztásai között, például az elmúlt **30 percben**, az **utolsó 12 órában** vagy egy **Egyéni tartományon**. Az érték módosítása az intervallum-méret csúszka eszközben tárgyalt elérhető intervallum-tartományokat is megváltoztatja.
 
    [![A és a kiválasztása a kiválasztási panelen](media/v2-update-explorer/to-and-from-element.png)](media/v2-update-explorer/to-and-from-element.png#lightbox)
 
@@ -186,7 +186,7 @@ Az új **megosztás** ikon kiválasztásával megoszthatja az URL-hivatkozást a
 
 ### <a name="theme-selection"></a>Téma kiválasztása
 
-Új téma kiválasztásához válassza a jobb felső sarokban található profil ikont. Ezután válassza a **téma módosítása**lehetőséget.
+Új téma kiválasztásához válassza a jobb felső sarokban található profil ikont. Ezután válassza a **téma módosítása** lehetőséget.
 
   [![Téma kiválasztása](media/v2-update-explorer/tsi-preview-theme-selection.png)](media/v2-update-explorer/tsi-preview-theme-selection.png#lightbox)
 
@@ -221,7 +221,7 @@ A Azure Time Series Insights Gen2 feltételek szerkesztő panelje a következő 
 | `IN` | Karakterlánc, bool, Double, DateTime, TimeSpan, NULL | Az összes operandusnak azonos típusúnak vagy NULL konstansnak kell lennie. |
 | `HAS` | Sztring | A jobb oldalon csak konstans karakterlánc-literálok engedélyezettek. Üres karakterlánc és NULL érték nem engedélyezett. |
 
-Ha többet szeretne megtudni a támogatott lekérdezési műveletekről és az adattípusokról, olvassa el a [Time Series kifejezés (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)című témakört.
+Ha többet szeretne megtudni a támogatott lekérdezési műveletekről és az adattípusokról, olvassa el a [Time Series kifejezés (TSX)](/rest/api/time-series-insights/reference-time-series-expression-syntax)című témakört.
 
 ### <a name="examples-of-where-clauses"></a>Példák a WHERE záradékokra
 
@@ -233,7 +233,7 @@ Ha többet szeretne megtudni a támogatott lekérdezési műveletekről és az a
 
   [![Lekérdezés és szűrt nézet](media/v2-update-explorer/s1-s2-preview-filtered-view.png)](media/v2-update-explorer/s1-s2-preview-filtered-view.png#lightbox)
 
-A diagram panel elemeinek megjelenítéséhez és elrejtéséhez válassza a látható ikont, ahogy az alábbi képen is látható. A lekérdezések teljes eltávolításához válassza a piros **X**elemet.
+A diagram panel elemeinek megjelenítéséhez és elrejtéséhez válassza a látható ikont, ahogy az alábbi képen is látható. A lekérdezések teljes eltávolításához válassza a piros **X** elemet.
 
   [![Lekérdezett és szűrt lehetőség megszakítása](media/v2-update-explorer/s1-s2-preview-filtered-view-cancel.png)](media/v2-update-explorer/s1-s2-preview-filtered-view-cancel.png#lightbox)
 
@@ -245,4 +245,4 @@ A diagram panel elemeinek megjelenítéséhez és elrejtéséhez válassza a lá
 
 * További információ az [adatmodellezésről](./concepts-model-overview.md) Azure Time Series Insights Gen2.
 
-* Ismerje meg, [Hogyan diagnosztizálhatja és elháríthatja](./time-series-insights-update-how-to-troubleshoot.md) a környezetét.
+* Ismerje meg, [Hogyan diagnosztizálhatja és elháríthatja](./how-to-diagnose-troubleshoot.md) a környezetét.

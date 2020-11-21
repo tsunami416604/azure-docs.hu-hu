@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 211ad590ab01d0be26d799064e1227accc619585
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 2c143c299cec1d48dd5438d5350c818d5cc93800
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496952"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023718"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Áttelepítési Áttekintés: SQL Server a felügyelt SQL-példányhoz
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -63,7 +63,7 @@ Néhány általános útmutató, amely segítséget nyújt az SQL felügyelt pé
 Az üzembe helyezés során kiválaszthatja a számítási és tárolási erőforrásokat, majd a [Azure Portal](../../database/scale-resources.md) használata után megváltoztathatja azokat anélkül, hogy állásidőt kellene használni az alkalmazáshoz. 
 
 > [!IMPORTANT]
-> A [felügyelt példányok virtuális hálózati követelményeinek](/../../managed-instance/connectivity-architecture-overview.md#network-requirements) bármilyen eltérése megakadályozhatja, hogy új példányokat hozzon létre vagy meglévőket használjon. További információ a meglévő hálózatok [létrehozásáról](/../../managed-instance/virtual-network-subnet-create-arm-template?branch=release-ignite-arc-data)   és [konfigurálásáról](/../../managed-instance/vnet-existing-add-subnet?branch=release-ignite-arc-data)   . 
+> A [felügyelt példányok virtuális hálózati követelményeinek](/azure/azure-sql/managed-instance/connectivity-architecture-overview#network-requirements) bármilyen eltérése megakadályozhatja, hogy új példányokat hozzon létre vagy meglévőket használjon. További információ a meglévő hálózatok [létrehozásáról](/azure/azure-sql/managed-instance/virtual-network-subnet-create-arm-template?branch=release-ignite-arc-data)   és [konfigurálásáról](/azure/azure-sql/managed-instance/vnet-existing-add-subnet?branch=release-ignite-arc-data)   . 
 
 ### <a name="sql-server-vm-alternative"></a>SQL Server VM alternatív megoldás
 
@@ -214,7 +214,7 @@ További segítségért tekintse meg az alábbi, a valós migrációs projektekh
 Ezek az erőforrások az Azure adatcsoport-mérnöki csapat által szponzorált adatsql ninja program részeként lettek kifejlesztve. Az adatelemzési program alapszintű alapokmánya az, hogy feloldja az összetett modernizációt, és az adatplatform-migrációs lehetőségeket a Microsoft Azure-beli adatplatformján is felgyorsítja. Ha úgy gondolja, hogy a szervezete szeretne részt venni az adatsql ninja programban, forduljon a fiókhoz, és kérje meg, hogy küldje el a jelölést.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az SQL Server Azure SQL felügyelt példányra való áttelepítésének megkezdéséhez tekintse meg a [SQL Server az SQL felügyelt példány áttelepítési Útmutatóját](sql-server-to-managed-instance-guide.md).
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 01/21/2020
 ms.author: swmachan
-ms.openlocfilehash: a1d86ac354524cb4d7bf9f9776b8605f244d92f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fe5a5669173733e3d0cf1b56b9997d15a3ff138
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83592508"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021303"
 ---
 # <a name="translator-30-dictionary-examples"></a>Translator 3,0: példák a szótárra
 
@@ -33,7 +33,7 @@ https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.
 
 A lekérdezési karakterláncon átadott kérési paraméterek a következők:
 
-| Lekérdezési paraméter | Leírás |
+| Lekérdezési paraméter | Description |
 | --------- | ----------- |
 | api-verzió <img width=200/> | **Kötelező paraméter**.<br/>Az ügyfél által kért API-verzió. Az értéknek a számnak kell lennie `3.0` . |
 | a | **Kötelező paraméter**.<br/>Megadja a bemeneti szöveg nyelvét. A forrás nyelvének a hatókörben szereplő [támogatott nyelvek](./v3-0-languages.md) egyikének kell lennie `dictionary` . |
@@ -41,9 +41,9 @@ A lekérdezési karakterláncon átadott kérési paraméterek a következők:
 
 A kérelem fejlécei a következők:
 
-| Fejlécek  | Leírás |
+| Fejlécek  | Description |
 | ------ | ----------- |
-| Hitelesítési fejléc (ek) <img width=200/>  | **Kötelező kérelem fejléce**<br/>Tekintse <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">meg a hitelesítés elérhető beállításait</a>. |
+| Hitelesítési fejléc (ek) <img width=200/>  | **Kötelező kérelem fejléce**<br/>Tekintse <a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">meg a hitelesítés elérhető beállításait</a>. |
 | Content-Type | **Kötelező kérelem fejléce**<br/>Megadja az adattartalom tartalomtípusát. A lehetséges értékek a következők: `application/json` . |
 | Content-Length   | **Kötelező kérelem fejléce**<br/>A kérelem törzsének hossza |
 | X – ClientTraceId   | Nem **kötelező**.<br/>Ügyfél által generált GUID a kérelem egyedi azonosításához. Kihagyhatja ezt a fejlécet, ha a lekérdezési karakterláncban szerepel a nyomkövetési azonosító a nevű lekérdezési paraméter használatával `ClientTraceId` . |

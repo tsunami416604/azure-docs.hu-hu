@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: shlo
-ms.openlocfilehash: 7df082cd5044f142d8d5900ec1fff6c182262bd9
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 348277d42c543bc45cf98bfeaf7ea8313afe8f6f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425109"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021983"
 ---
 # <a name="disclosure-design-patterns"></a>Közzététel-tervezési minták
 Most, hogy&#39;ve meghatározta a szintetikus hangalapú felhasználói felület megfelelő [szintű közzétételét](concepts-disclosure-guidelines.md#disclosure-assessment) , jó időt&#39;s a lehetséges tervezési minták megismerésére.
@@ -241,17 +241,17 @@ A közzétételi lehetőség használata a zökkenőmentes működés érdekébe
 
 ## <a name="additional-resources"></a>További források
 - [Microsoft bot-irányelvek](https://www.microsoft.com/research/uploads/prod/2018/11/Bot_Guidelines_Nov_2018.pdf)
-- [Cortana kialakítási útmutató](https://docs.microsoft.com/cortana/voice-commands/voicecommand-design-guidelines)
-- [Microsoft Windows UWP – beszédfelismerési tervezési irányelvek](https://docs.microsoft.com/windows/uwp/design/input/speech-interactions)
-- [A Microsoft Windows vegyes valóság hangutasításokra vonatkozó utasításai](https://docs.microsoft.com/windows/mixed-reality/voice-design#top-things-users-should-know-about-speech-in-mixed-reality)
+- [Cortana kialakítási útmutató](/cortana/voice-commands/voicecommand-design-guidelines)
+- [Microsoft Windows UWP – beszédfelismerési tervezési irányelvek](/windows/uwp/design/input/speech-interactions)
+- [A Microsoft Windows vegyes valóság hangutasításokra vonatkozó utasításai](/windows/mixed-reality/voice-design#top-things-users-should-know-about-speech-in-mixed-reality)
 
 ## <a name="reference-docs"></a>Dokumentációs dokumentumok
 
-* [A hangalapú tehetségek közzététele](https://aka.ms/disclosure-voice-talent)
+* [A hangalapú tehetségek közzététele](/legal/cognitive-services/speech-service/disclosure-voice-talent)
 * [Útmutató a szintetikus hangtechnológia felelős üzembe helyezéséhez](concepts-guidelines-responsible-deployment-synthetic.md)
 * [A kapuzás áttekintése](concepts-gating-overview.md)
 * [A közzététel módja](concepts-disclosure-guidelines.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [A hangalapú tehetségek közzététele](https://aka.ms/disclosure-voice-talent)
+* [A hangalapú tehetségek közzététele](/legal/cognitive-services/speech-service/disclosure-voice-talent)

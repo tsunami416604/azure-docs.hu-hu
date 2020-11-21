@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d02642b49951b4b116eaae6dbea490ef2720c15d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 126a8e48a8db1c41299a7cb7a34f172342110667
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90084413"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023122"
 ---
 # <a name="host-pool-creation"></a>Gazdagépkészlet létrehozása
 
@@ -57,9 +57,9 @@ Javítás: a felhasználókat újra hozzá kell rendelnie az alkalmazás-csoport
 
 A Azure Resource Manager-sablonok és a PowerShell DSC nem sikeres központi telepítésének hibakereséséhez kövesse az alábbi utasításokat.
 
-1. Tekintse át az üzemelő példány hibáit a Azure Resource Manager használatával történő [központi telepítési műveletek megtekintésével](../azure-resource-manager/resource-manager-deployment-operations.md).
-2. Ha nem találhatók hibák az üzemelő példányban, tekintse át a tevékenység naplójának hibáit a tevékenységek [megtekintése az erőforrásokon végzett naplózási műveleteknél](../azure-resource-manager/resource-group-audit.md).
-3. A hiba észlelése után használja a hibaüzenetet és az erőforrásokat az [Azure telepítési hibáinak elhárításához Azure Resource Manager](../azure-resource-manager/resource-manager-common-deployment-errors.md) a probléma megoldásához.
+1. Tekintse át az üzemelő példány hibáit a Azure Resource Manager használatával történő [központi telepítési műveletek megtekintésével](../azure-resource-manager/templates/deployment-history.md).
+2. Ha nem találhatók hibák az üzemelő példányban, tekintse át a tevékenység naplójának hibáit a tevékenységek [megtekintése az erőforrásokon végzett naplózási műveleteknél](../azure-resource-manager/management/view-activity-logs.md).
+3. A hiba észlelése után használja a hibaüzenetet és az erőforrásokat az [Azure telepítési hibáinak elhárításához Azure Resource Manager](../azure-resource-manager/templates/common-deployment-errors.md) a probléma megoldásához.
 4. Törölje az előző központi telepítés során létrehozott erőforrásokat, majd próbálkozzon újra a sablon üzembe helyezésével.
 
 ### <a name="error-your-deployment-failedhostnamejoindomain"></a>Hiba: a telepítés nem sikerült.... \<hostname> /JoinDomain
@@ -85,13 +85,13 @@ Nyers hiba – példa:
 
 **2. javítás:** Lásd a [következő hibát: a tartomány neve nem oldható](troubleshoot-vm-configuration.md#error-domain-name-doesnt-resolve) fel a munkamenet-gazdagép virtuálisgép- [konfigurációjában](troubleshoot-vm-configuration.md).
 
-**3. ok:** A virtuális hálózat (VNET) DNS-konfigurációja **alapértelmezett**értékre van állítva.
+**3. ok:** A virtuális hálózat (VNET) DNS-konfigurációja **alapértelmezett** értékre van állítva.
 
 A probléma megoldásához tegye a következőket:
 
 1. Nyissa meg a Azure Portal, és lépjen a **Virtual Networks (virtuális hálózatok** ) lapra.
-2. Keresse meg a VNET, majd válassza a **DNS-kiszolgálók**lehetőséget.
-3. A DNS-kiszolgálók menünek a képernyő jobb oldalán kell megjelennie. Az adott menüben válassza az **Egyéni**lehetőséget.
+2. Keresse meg a VNET, majd válassza a **DNS-kiszolgálók** lehetőséget.
+3. A DNS-kiszolgálók menünek a képernyő jobb oldalán kell megjelennie. Az adott menüben válassza az **Egyéni** lehetőséget.
 4. Győződjön meg arról, hogy a DNS-kiszolgálók szerepelnek a tartományvezérlő vagy a Active Directory tartomány egyéni egyeztetése területén. Ha nem látja a DNS-kiszolgálót, akkor adja hozzá az értékét a **DNS-kiszolgáló hozzáadása** mezőben.
 
 ### <a name="error-your-deployment-failedunauthorized"></a>Hiba: Your deployment failed...\Unauthorized (Sikertelen üzembe helyezés...\Jogosulatlan)

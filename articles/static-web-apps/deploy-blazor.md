@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: cshoe
-ms.openlocfilehash: 60e62228e33d2d86bb407e45802f5c0621a94049
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80a48a948c70db7344ac9cbc20474177309bd909
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761090"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024228"
 ---
 # <a name="tutorial-building-a-static-web-app-with-blazor-in-azure-static-web-apps"></a>Oktatóanyag: statikus Webalkalmazás létrehozása az Azure statikus Web Apps villámgyors szolgáltatásával
 
@@ -33,7 +33,7 @@ Az Azure statikus Web Apps lehetővé teszi a kiszolgáló nélküli háttér á
 
 Az oktatóanyagban szereplő alkalmazás három különböző Visual Studio-projektből áll:
 
-- **API**: a C# Azure functions alkalmazás, amely megvalósítja az API-végpontot, amely időjárási információkat biztosít a statikus alkalmazásnak. Az [`WeatherForecastFunction`](https://github.com/ssdeepak/blazor/blob/main/Api/WeatherForecastFunction.cs) objektumok tömbjét adja vissza `WeatherForecast` .
+- **API**: a C# Azure functions alkalmazás, amely megvalósítja az API-végpontot, amely időjárási információkat biztosít a statikus alkalmazásnak. A **WeatherForecastFunction** objektumok tömbjét adja vissza `WeatherForecast` .
 
 - **Client**: az előtér-webszolgáltatások webes szerelvényének projektje. A rendszer egy [tartalék útvonalat](#fallback-route) vezet be annak biztosítására, hogy az összes útvonal a _index.html_ -fájlt szolgálja ki.
 
@@ -79,7 +79,7 @@ Most, hogy létrejött a tárház, hozzon létre egy statikus webalkalmazást a 
 
 Az _alapok_ szakaszban kezdje az új alkalmazás konfigurálásával és a GitHub-tárházhoz való csatolásával.
 
-:::image type="content" source="media/deploy-blazor/basics.png" alt-text="A Blazer-alkalmazás befejezése":::
+:::image type="content" source="media/deploy-blazor/basics.png" alt-text="Alapbeállítások lap":::
 
 1. Azure- _előfizetés_ kiválasztása
 1. Válasszon ki vagy hozzon létre egy új _erőforráscsoportot_
@@ -91,29 +91,29 @@ Az _alapok_ szakaszban kezdje az új alkalmazás konfigurálásával és a GitHu
 
 Miután bejelentkezett a GitHubba, adja meg a tárház adatait.
 
-:::image type="content" source="media/deploy-blazor/repository-details.png" alt-text="A Blazer-alkalmazás befejezése":::
+:::image type="content" source="media/deploy-blazor/repository-details.png" alt-text="Adattár részletei":::
 
 1. Válassza ki az előnyben részesített _szervezetet_
 1. Válassza ki az **én-első-static-Blazer-alkalmazást** az _adattár_ legördülő menüből
 1. Válassza ki a **fő** elemet az _ág_ legördülő menüből
 
-    Ha nem lát tárházat, lehetséges, hogy engedélyeznie kell az Azure statikus Web Apps a GitHubon. Keresse meg a GitHub-tárházat, és lépjen a **beállítások > alkalmazások > a OAuth-alkalmazások engedélyezve**lehetőségre, válassza az **Azure statikus Web Apps**lehetőséget, majd válassza a **támogatás**lehetőséget. A szervezeti adattárak esetében a szervezet tulajdonosának kell lennie az engedélyek megadásához.
+    Ha nem lát tárházat, lehetséges, hogy engedélyeznie kell az Azure statikus Web Apps a GitHubon. Keresse meg a GitHub-tárházat, és lépjen a **beállítások > alkalmazások > a OAuth-alkalmazások engedélyezve** lehetőségre, válassza az **Azure statikus Web Apps** lehetőséget, majd válassza a **támogatás** lehetőséget. A szervezeti adattárak esetében a szervezet tulajdonosának kell lennie az engedélyek megadásához.
 
 1. A _Build Details (részletek összeállítása_ ) szakaszban adja meg a Blazer-specifikus konfigurációs adatokat.
 
     - Válassza a **Blazer** elemet a _Build alapkészletek_ legördülő menüből, és tartsa meg az összes alapértelmezett értéket.
 
-1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
-    :::image type="content" source="media/deploy-blazor/review-create.png" alt-text="A Blazer-alkalmazás befejezése":::
+    :::image type="content" source="media/deploy-blazor/review-create.png" alt-text="A létrehozás gomb áttekintése":::
 
 1. Kattintson a **Létrehozás** gombra.
 
-    :::image type="content" source="media/deploy-blazor/create-button.png" alt-text="A Blazer-alkalmazás befejezése":::
+    :::image type="content" source="media/deploy-blazor/create-button.png" alt-text="Létrehozás gomb":::
 
 1. Válassza az **Erőforrás megnyitása** lehetőséget.
 
-    :::image type="content" source="media/deploy-blazor/resource-button.png" alt-text="A Blazer-alkalmazás befejezése":::
+    :::image type="content" source="media/deploy-blazor/resource-button.png" alt-text="Erőforrás megnyitása gomb":::
 
 ## <a name="view-the-website"></a>Webhely megtekintése
 
@@ -123,13 +123,13 @@ Az új statikus helyhez való csatlakozás előtt az üzembe helyezési buildnek
 
 A statikus Web Apps áttekintése ablak a webalkalmazással való interakciót segítő hivatkozásokat jelenít meg.
 
-:::image type="content" source="./media/deploy-blazor/overview-window.png" alt-text="A Blazer-alkalmazás befejezése":::
+:::image type="content" source="./media/deploy-blazor/overview-window.png" alt-text="Áttekintő ablak":::
 
 1. A szalagcímre kattintva _megtekintheti a GitHub-műveletek_ futtatásának állapotát a tárházon futó GitHub-műveletekkel. Miután meggyőződött arról, hogy befejeződött a telepítési feladatok befejezése, a generált URL-címen keresztül megnyithatja a webhelyet.
 
 2. Miután befejeződött a GitHub-műveletek munkafolyamata, kiválaszthatja az _URL-_ hivatkozást a webhely új lapon való megnyitásához.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha nem folytatja az alkalmazás használatát, az alábbi lépésekkel törölheti az Azure statikus Web Apps példányát:
 
@@ -139,7 +139,7 @@ Ha nem folytatja az alkalmazás használatát, az alábbi lépésekkel törölhe
 1. Válassza a **Törlés** gombot
 1. Válassza az **Igen** lehetőséget a törlési művelet megerősítéséhez
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Hitelesítés és engedélyezés](./authentication-authorization.md)

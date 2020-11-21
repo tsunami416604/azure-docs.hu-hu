@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 01/21/2020
 ms.author: swmachan
-ms.openlocfilehash: b2d111f22b8ef36b20b93b65ff1ea6f7b52ea8f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ada9c06f0befbea4b9aa85f95651e96dec595b7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83584739"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021286"
 ---
 # <a name="translator-30-dictionary-lookup"></a>Translator 3,0: szótár keresése
 
@@ -33,7 +33,7 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
 
 A lekérdezési karakterláncon átadott kérési paraméterek a következők:
 
-| Lekérdezési paraméter  | Leírás |
+| Lekérdezési paraméter  | Description |
 | ------ | ----------- |
 | api-verzió <img width=200/>   | **Kötelező paraméter**.<br/>Az ügyfél által kért API-verzió. Az értéknek szerepelnie kell `3.0` |
 | a | **Kötelező paraméter**.<br/>Megadja a bemeneti szöveg nyelvét. A forrás nyelvének a hatókörben szereplő [támogatott nyelvek](./v3-0-languages.md) egyikének kell lennie `dictionary` . |
@@ -42,9 +42,9 @@ A lekérdezési karakterláncon átadott kérési paraméterek a következők:
 
 A kérelem fejlécei a következők:
 
-| Fejlécek  | Leírás |
+| Fejlécek  | Description |
 | ------ | ----------- |
-| Hitelesítési fejléc (ek) <img width=200/>  | **Kötelező kérelem fejléce**<br/>Tekintse <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">meg a hitelesítés elérhető beállításait</a>. |
+| Hitelesítési fejléc (ek) <img width=200/>  | **Kötelező kérelem fejléce**<br/>Tekintse <a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">meg a hitelesítés elérhető beállításait</a>. |
 | Content-Type | **Kötelező kérelem fejléce**<br/>Megadja az adattartalom tartalomtípusát. A lehetséges értékek a következők: `application/json` . |
 | Content-Length   | **Kötelező kérelem fejléce**<br/>A kérelem törzsének hossza |
 | X – ClientTraceId   | Nem **kötelező**.<br/>Ügyfél által generált GUID a kérelem egyedi azonosításához. Kihagyhatja ezt a fejlécet, ha a lekérdezési karakterláncban szerepel a nyomkövetési azonosító a nevű lekérdezési paraméter használatával `ClientTraceId` . |
@@ -80,7 +80,7 @@ A sikeres válasz egy JSON-tömb, amely egyetlen eredménnyel rendelkezik a beme
 
     * `posTag`: Ez a kifejezés egy beszédfelismerési címkével társítja ezt a kifejezést.
 
-        | Címke neve | Leírás  |
+        | Címke neve | Description  |
         |----------|--------------|
         | ADJ      | Melléknevek   |
         | ADV      | Határozószók      |

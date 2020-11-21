@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 09/28/2020
-ms.openlocfilehash: a04712a22536b5811b2465e56995d7b161a15c6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b6631415c32358cf445fab534b9524c88b6432e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460883"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020878"
 ---
 # <a name="connect-azure-time-series-insights-gen-2-to-power-bi"></a>A 2. generációs Azure Time Series Insights összekötése Power BI  
 
@@ -65,4 +65,4 @@ A Power BIon belüli speciális lekérdezési és szerkesztési funkciókhoz has
 
 * Töltse le [Power bi Desktopot](https://powerbi.microsoft.com/desktop/) , és kezdje el az adatai összekapcsolását.
 
-* További információ a [Power BIról](https://docs.microsoft.com/power-bi/).
+* További információ a [Power BIról](/power-bi/).

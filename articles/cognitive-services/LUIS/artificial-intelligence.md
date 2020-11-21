@@ -6,12 +6,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.date: 08/07/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 2586bf2d31ef28c662ad88bde3718541bb21a31c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39f73dd002091451ae832516d525499eae98564d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327204"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021371"
 ---
 # <a name="artificial-intelligence-in-language-understanding-luis"></a>Mesterséges intelligencia a Language Understandingban (LUIS)
 
@@ -38,7 +38,7 @@ A természetes nyelvi feldolgozás a következő módokon érhető el a LUIS-alk
 * Konfigurálható NLP-szempontok a LUIS-ben:
     * [Jogkivonatok létrehozása](luis-language-support.md#tokenization)
     * Mellékjelek, írásjelek és Word Forms [API-beállítások](luis-reference-application-settings.md) használatával történő morfológia
-* Az egyéb [Cognitive Services](../Welcome.md) által nyújtott lekérdezés előzetes vagy utólagos feldolgozása, például:
+* Az egyéb [Cognitive Services](../what-are-cognitive-services.md) által nyújtott lekérdezés előzetes vagy utólagos feldolgozása, például:
     * [Fordítás](../translator/translator-info-overview.md)
 
 ## <a name="natural-language-understanding-nlu"></a>Természetes nyelvi megértés (NLU)

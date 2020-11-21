@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 231f2e4df1445c60378ac06aab0d0e56f410c1c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15f2ff5aaa1d731c13125d0a3ab4ac32acb9276c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530136"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023275"
 ---
 # <a name="diagnose-and-solve-issues-in-your-azure-time-series-insights-gen1-environment"></a>A Azure Time Series Insights Gen1-környezet problémáinak diagnosztizálása és megoldása
 
@@ -37,7 +37,7 @@ Ha a [Azure Time Series Insights Explorerben](https://insights.timeseries.azure.
 
 ### <a name="cause-a-event-source-data-isnt-in-json-format"></a>A ok: az eseményforrás-adatforrások nem JSON formátumúak
 
-A Azure Time Series Insights csak a JSON-fájlokat támogatja. JSON-minták esetében lásd: [támogatott JSON-alakzatok](./how-to-shape-query-json.md).
+A Azure Time Series Insights csak a JSON-fájlokat támogatja. JSON-minták esetében lásd: [támogatott JSON-alakzatok](./concepts-json-flattening-escaping-rules.md).
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>B ok: az eseményforrás kulcsa hiányzik egy szükséges engedély
 
@@ -51,7 +51,7 @@ A Azure Time Series Insights csak a JSON-fájlokat támogatja. JSON-minták eset
 
 ### <a name="cause-c-the-provided-consumer-group-isnt-exclusive-to-azure-time-series-insights"></a>C ok: a megadott fogyasztói csoport nem kizárólag Azure Time Series Insights
 
-IoT hub vagy Event hub regisztrálása esetén fontos beállítani az adatolvasáshoz használni kívánt fogyasztói csoportot. Ez a fogyasztói csoport *nem*osztható meg. Ha a fogyasztói csoport meg van osztva, a mögöttes IoT hub vagy Event hub automatikusan és véletlenszerűen bontja le az egyik olvasót. Adjon meg egy egyedi fogyasztói csoportot, amelyből a Azure Time Series Insights olvasható.
+IoT hub vagy Event hub regisztrálása esetén fontos beállítani az adatolvasáshoz használni kívánt fogyasztói csoportot. Ez a fogyasztói csoport *nem* osztható meg. Ha a fogyasztói csoport meg van osztva, a mögöttes IoT hub vagy Event hub automatikusan és véletlenszerűen bontja le az egyik olvasót. Adjon meg egy egyedi fogyasztói csoportot, amelyből a Azure Time Series Insights olvasható.
 
 ### <a name="cause-d-the-environment-has-just-been-provisioned"></a>D ok: a környezet üzembe helyezése megtörtént
 
@@ -85,7 +85,7 @@ Képzeljen el egy olyan környezetet, amely egy Event hub üzeneteit tölti be. 
 
 A 3 kapacitású S1 SKU-környezetek percenként csak 2 100 eseményt tudnak beáramlani (naponta 1 000 000 esemény = 700 esemény percenként három egységben = 2 100 esemény percenként).
 
-Ha szeretné megismerni, hogyan működik az összevonási logika, tekintse meg a [támogatott JSON-alakzatokat](./how-to-shape-query-json.md).
+Ha szeretné megismerni, hogyan működik az összevonási logika, tekintse meg a [támogatott JSON-alakzatokat](./concepts-json-flattening-escaping-rules.md).
 
 #### <a name="recommended-resolutions-for-excessive-throttling"></a>Ajánlott megoldások a túlzott szabályozáshoz
 
@@ -115,7 +115,7 @@ Ha az új kulccsal szeretné frissíteni a Azure Time Series Insights környezet
 
    [![Eseményforrás kiválasztása](media/diagnose-and-solve-problems/update-hub-key-step-1.png)](media/diagnose-and-solve-problems/update-hub-key-step-1.png#lightbox)
 
-Válassza ki azt az eseményforrás vagy forrást, amelyből a betöltés leállt, illessze be az új kulcsot, majd válassza a **Mentés**lehetőséget:
+Válassza ki azt az eseményforrás vagy forrást, amelyből a betöltés leállt, illessze be az új kulcsot, majd válassza a **Mentés** lehetőséget:
 
    [![Beillesztés az új kulcsba](media/diagnose-and-solve-problems/update-hub-key-step-2.png)](media/diagnose-and-solve-problems/update-hub-key-step-2.png#lightbox)
 
@@ -125,9 +125,9 @@ Győződjön meg arról, hogy az eseményforrás egy JSON-karakterláncként kap
 
 Ne feledje, hogy az időbélyeg-tulajdonság neve megkülönbözteti a kis-és nagybetűket.
 
-Az időbélyeg-tulajdonságnév rögzítésének és megfelelő működésének legegyszerűbb módja a Azure Time Series Insights Explorer használata. A Azure Time Series Insights Explorerben a diagramot használva válasszon ki egy időszakot, miután megadta az időbélyeg-tulajdonság nevét. Kattintson a jobb gombbal a kijelölésre, majd válassza az **események feltárása**lehetőséget.
+Az időbélyeg-tulajdonságnév rögzítésének és megfelelő működésének legegyszerűbb módja a Azure Time Series Insights Explorer használata. A Azure Time Series Insights Explorerben a diagramot használva válasszon ki egy időszakot, miután megadta az időbélyeg-tulajdonság nevét. Kattintson a jobb gombbal a kijelölésre, majd válassza az **események feltárása** lehetőséget.
 
-Az első oszlop fejlécének az időbélyeg-tulajdonságnév kell lennie. A Word **időbélyeg**mellett **($TS)** jelenik meg.
+Az első oszlop fejlécének az időbélyeg-tulajdonságnév kell lennie. A Word **időbélyeg** mellett **($TS)** jelenik meg.
 
 A következő értékek nem jelennek meg:
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6dcd2005971927de30ca96173cb2bdb063e46663
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8578f8aef779ff80f3965fc21b24b785f11226d0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89397430"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024143"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>Azure Automation-feladat adatainak továbbítása az Azure Monitor-naplói felé
 
@@ -41,7 +41,7 @@ Az Automation-naplók Azure Monitor naplókba való küldésének megkezdéséhe
     Get-AzResource -ResourceType "Microsoft.Automation/automationAccounts"
     ```
 
-2. Másolja a **ResourceId**értékét.
+2. Másolja a **ResourceId** értékét.
 
 3. A Log Analytics munkaterület erőforrás-AZONOSÍTÓjának megkereséséhez használja a következő parancsot:
 
@@ -50,7 +50,7 @@ Az Automation-naplók Azure Monitor naplókba való küldésének megkezdéséhe
     Get-AzResource -ResourceType "Microsoft.OperationalInsights/workspaces"
     ```
 
-4. Másolja a **ResourceId**értékét.
+4. Másolja a **ResourceId** értékét.
 
 Egy adott erőforráscsoport eredményeinek visszaadásához adja meg a `-ResourceGroupName` paramétert. További információ: [Get-AzResource](/powershell/module/az.resources/get-azresource).
 
@@ -58,7 +58,7 @@ Ha több Automation-fiókkal vagy-munkaterülettel rendelkezik az előző paranc
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A Azure Portal válassza ki az Automation-fiókját az **Automation-fiókok** oldalon.
-1. A kiválasztott Automation-fiók lapjának **Fiókbeállítások**területén válassza a **Tulajdonságok**lehetőséget.
+1. A kiválasztott Automation-fiók lapjának **Fiókbeállítások** területén válassza a **Tulajdonságok** lehetőséget.
 1. A **Tulajdonságok** lapon jegyezze fel az alább látható adatokat.
 
     ![Automation-fiók tulajdonságai](media/automation-manage-send-joblogs-log-analytics/automation-account-properties.png).
@@ -134,7 +134,7 @@ A következő lépések bemutatják, hogyan állíthatja be a riasztásokat a Az
 
 Riasztási szabály létrehozásához először hozzon létre egy naplót a runbook-feladatokhoz, amelyeknek meg kell hívniuk a riasztást. A riasztási szabály létrehozásához és konfigurálásához kattintson a **riasztás** gombra.
 
-1. A Log Analytics munkaterület áttekintés lapján kattintson a **naplók megtekintése**elemre.
+1. A Log Analytics munkaterület áttekintés lapján kattintson a **naplók megtekintése** elemre.
 
 2. Hozzon létre egy naplóbeli keresési lekérdezést a riasztáshoz úgy, hogy beírja a következő keresést a lekérdezés mezőbe: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")`<br><br>A runbook neve a használatával is csoportosítható: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
 
@@ -146,7 +146,7 @@ Riasztási szabály létrehozásához először hozzon létre egy naplót a runb
 
 A hibákkal kapcsolatos riasztások mellett megkeresheti, hogy egy runbook-feladatokhoz ne kelljen megszakítást okozó hiba. Ezekben az esetekben a PowerShell egy hibát okozó adatfolyamot hoz létre, de a megszakítás nélküli hibák miatt a feladat felfüggesztése vagy meghibásodása sikertelen lesz.
 
-1. A Log Analytics munkaterületen kattintson a **naplók**elemre.
+1. A Log Analytics munkaterületen kattintson a **naplók** elemre.
 
 2. A lekérdezés mezőbe írja be a következőt: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobStreams" and StreamType_s == "Error" | summarize AggregatedValue = count() by JobId_g` .
 
@@ -177,9 +177,9 @@ AzureDiagnostics
 
 ### <a name="filter-job-status-output-converted-into-a-json-object"></a>A feladatok állapotának szűrése egy JSON-objektumba
 
-A közelmúltban módosítottuk az Automation-naplóban lévő adatnak a Log Analytics szolgáltatásban található táblába való beírásának viselkedését `AzureDiagnostics` , ahol a JSON-tulajdonságokat a továbbiakban nem bontja külön mezőkre. Ha úgy konfigurálta a runbook, hogy az objektumokat JSON formátumban formázza a kimeneti adatfolyamban, akkor a tulajdonságok eléréséhez újra kell konfigurálnia a lekérdezéseket, hogy az adott mezőt egy JSON-objektumba elemezze. Ezt a [parseJSON](../azure-monitor/log-query/json-data-structures.md#parsejson) használatával lehet elérni egy ismert elérési úton található JSON-elem eléréséhez.
+A közelmúltban módosítottuk az Automation-naplóban lévő adatnak a Log Analytics szolgáltatásban található táblába való beírásának viselkedését `AzureDiagnostics` , ahol a JSON-tulajdonságokat a továbbiakban nem bontja külön mezőkre. Ha úgy konfigurálta a runbook, hogy az objektumokat JSON formátumban formázza a kimeneti adatfolyamban, akkor a tulajdonságok eléréséhez újra kell konfigurálnia a lekérdezéseket, hogy az adott mezőt egy JSON-objektumba elemezze. Ezt a [parseJSON](https://docs.microsoft.com/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#parsejson) használatával lehet elérni egy ismert elérési úton található JSON-elem eléréséhez.
 
-Egy runbook például a *ResultDescription* tulajdonságot a kimeneti adatfolyamban, JSON formátumban formázza több mezővel. Ha olyan feladatok állapotát szeretné megkeresni, amelyek **állapota "állapot**" nevű mezőben van megadva, akkor a példában szereplő lekérdezéssel a **sikertelen**állapotú *ResultDescription* keresheti meg a következőt:
+Egy runbook például a *ResultDescription* tulajdonságot a kimeneti adatfolyamban, JSON formátumban formázza több mezővel. Ha olyan feladatok állapotát szeretné megkeresni, amelyek **állapota "állapot**" nevű mezőben van megadva, akkor a példában szereplő lekérdezéssel a **sikertelen** állapotú *ResultDescription* keresheti meg a következőt:
 
 ```kusto
 AzureDiagnostics

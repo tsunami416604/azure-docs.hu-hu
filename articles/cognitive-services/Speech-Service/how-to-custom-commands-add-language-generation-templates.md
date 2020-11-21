@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 0cbc57922b31f1b3879bb2cad8a988a1ba4cc368
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40c5e3474d3992108ef61d34e745bc63c1f7a713
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85307832"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020946"
 ---
 # <a name="add-language-generation-templates-for-speech-responses"></a>Nyelvlétrehozási sablonok hozzáadása Speech-válaszokhoz
 
@@ -34,7 +34,7 @@ A következő cikkekben ismertetett lépéseket kell végrehajtania:
 
 ## <a name="language-generation-templates-overview"></a>Nyelvi létrehozási sablonok – áttekintés
 
-Az egyéni parancsok sablonjai a Botframework témakörben [LG-sablonjain](https://aka.ms/speech/cc-lg-format)alapulnak. Mivel az egyéni parancsok szükség esetén új LG-sablont hoznak létre (azaz a paraméterekben vagy műveletekben való beszédfelismerési válaszokhoz), nem kell megadnia az LG-sablon nevét. Tehát ahelyett, hogy a sablont a következőképpen definiálja:
+Az egyéni parancsok sablonjai a Botframework témakörben [LG-sablonjain](/azure/bot-service/file-format/bot-builder-lg-file-format#templates)alapulnak. Mivel az egyéni parancsok szükség esetén új LG-sablont hoznak létre (azaz a paraméterekben vagy műveletekben való beszédfelismerési válaszokhoz), nem kell megadnia az LG-sablon nevét. Tehát ahelyett, hogy a sablont a következőképpen definiálja:
 
  ```
     # CompletionAction
@@ -51,7 +51,7 @@ A sablon törzsét csak a név nélkül kell meghatároznia, az alábbiak szerin
 
 Ez a módosítás bevezeti az ügyfélnek küldött beszédfelismerési válaszok változásait. Tehát a megfelelő beszéd választ véletlenszerűen kiválaszthatja a rendelkezésre álló lehetőségek közül.
 
-Az LG-sablonok kihasználása lehetővé teszi, hogy az adaptív kifejezéseket használó parancsok összetett beszédes válaszait is meghatározhatja. További részletekért tekintse meg az [LG-sablonok formátumát](https://aka.ms/speech/cc-lg-format) . Az egyéni parancsok alapértelmezés szerint a következő kisebb eltérésekkel rendelkező összes képességet támogatják:
+Az LG-sablonok kihasználása lehetővé teszi, hogy az adaptív kifejezéseket használó parancsok összetett beszédes válaszait is meghatározhatja. További részletekért tekintse meg az [LG-sablonok formátumát](/azure/bot-service/file-format/bot-builder-lg-file-format#templates) . Az egyéni parancsok alapértelmezés szerint a következő kisebb eltérésekkel rendelkező összes képességet támogatják:
 
 * Az LG-sablonok entitások $ {entityName} néven jelennek meg. Az egyéni parancsokban nem használunk entitásokat, de a paraméterek használhatók változókként a következő ábrázolások egyikével: $ {parameterName} vagy {parameterName}
 * Az egyéni parancsok nem támogatják a sablonok összeállítását és bővítését. Ennek az az oka, hogy soha nem szerkeszti a `.lg` fájlt közvetlenül, de csak az automatikusan létrehozott sablonokra adott válaszokat.
@@ -64,7 +64,7 @@ Módosítsa a **TurnOnOff** parancsot új paraméter hozzáadásához a követke
 
 | Beállítás            | Ajánlott érték       | 
 | ------------------ | --------------------- | 
-| Név               | `SubjectContext`         | 
+| Name               | `SubjectContext`         | 
 | Globális          | nincs bejelölve             | 
 | Kötelező           | nincs bejelölve               | 
 | Típus               | Sztring                |
@@ -110,12 +110,12 @@ Az egyéni parancsok válaszának egy másik módja az egyéni kimeneti hang kiv
 > ![Minta mondatok paraméterekkel](media/custom-commands/select-custom-voice.png)
 
 > [!NOTE]
-> - A **nyilvános hangok**esetében az **neurális típusok** csak bizonyos régiókban érhetők el. A rendelkezésre állás ellenőrzéséhez tekintse meg a [standard és a neurális hangok régiónként/végpont szerint](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)című témakört.
-> - Az **Egyéni hangokat**az egyéni hangprojektek lapról lehet létrehozni. Lásd: Ismerkedés [az egyéni hanggal](./how-to-custom-voice.md).
+> - A **nyilvános hangok** esetében az **neurális típusok** csak bizonyos régiókban érhetők el. A rendelkezésre állás ellenőrzéséhez tekintse meg a [standard és a neurális hangok régiónként/végpont szerint](./regions.md#standard-and-neural-voices)című témakört.
+> - Az **Egyéni hangokat** az egyéni hangprojektek lapról lehet létrehozni. Lásd: Ismerkedés [az egyéni hanggal](./how-to-custom-voice.md).
 
 Mostantól az alkalmazás az alapértelmezett hang helyett a kiválasztott hangon fog válaszolni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyéni parancsok integrálása a SPEECH SDK használatával](./how-to-custom-commands-setup-speech-sdk.md).

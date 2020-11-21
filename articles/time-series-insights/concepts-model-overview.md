@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: a61dd6c17ad4d11c6dd7294c9a4f96270748c16a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c201ce984a216a5cc62e221c0433f83a7eeabae
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630661"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021762"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Idősorozat-modell Azure Time Series Insights Gen2
 
@@ -24,7 +24,7 @@ Ez a cikk az idősorozat-modellt, a képességeket, valamint a saját modellek A
 > [!TIP]
 >
 > * Nyissa meg a [contoso szélerőműpark bemutató](https://insights.timeseries.azure.com/preview/samples) környezetét egy élő idősorozat-modellre példaként.
-> * Ismerje meg, [Hogyan dolgozhat a Time Series modellel](/azure/time-series-insights/how-to-edit-your-model) a Azure Time Series Insights Explorerrel.
+> * Ismerje meg, [Hogyan dolgozhat a Time Series modellel](./how-to-edit-your-model.md) a Azure Time Series Insights Explorerrel.
 
 ## <a name="summary"></a>Összegzés
 
@@ -61,7 +61,7 @@ Azzal a céllal, hogy az idősorozat-contextualization egyszerű és könnyen ke
 
 * Létrehozhat és kezelhet számításokat vagy képleteket a skaláris függvények, az összesítési műveletek és így tovább.
 * Szülő-gyermek kapcsolatok definiálása a Navigálás, a keresés és a hivatkozás engedélyezéséhez.
-* Definiálja a példányokhoz társított tulajdonságokat, a *példány mezőinek*meghatározását, és használja őket a hierarchiák létrehozásához.
+* Definiálja a példányokhoz társított tulajdonságokat, a *példány mezőinek* meghatározását, és használja őket a hierarchiák létrehozásához.
 
 ### <a name="components"></a>Összetevők
 
@@ -75,15 +75,15 @@ Ezek az összetevők össze vannak egyesítve egy idősorozat-modell megadásáh
 
 [![Idősorozat-modell áttekintő diagramja](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-Az idősorozat-modell a [Azure Time Series Insights Explorerben](/azure/time-series-insights/concepts-model-overview)hozható létre és kezelhető. Az idősorozat-modell beállításai a [Model Settings API](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis)használatával kezelhetők.
+Az idősorozat-modell a [Azure Time Series Insights Explorerben]()hozható létre és kezelhető. Az idősorozat-modell beállításai a [Model Settings API](/rest/api/time-series-insights/reference-model-apis)használatával kezelhetők.
 
 ## <a name="time-series-model-instances"></a>Idősorozat-modell példányai
 
 Az idősorozat-modell *példányai* magukban foglalhatják magukban az idősorozatok virtuális ábrázolását.
 
-A legtöbb esetben a példányokat az **deviceId** vagy a **assetid**egyedileg azonosítják, amelyek idősorozat-azonosítóként lesznek mentve.
+A legtöbb esetben a példányokat az **deviceId** vagy a **assetid** egyedileg azonosítják, amelyek idősorozat-azonosítóként lesznek mentve.
 
-A példányok a *példány tulajdonságaihoz*tartozó, például egy idősorozat-azonosító, típus, név, leírás, hierarchia és példány mezőkhöz rendelt leíró információkat rendelkeznek. A példányok minimális tulajdonságai között a hierarchia adatai szerepelnek.
+A példányok a *példány tulajdonságaihoz* tartozó, például egy idősorozat-azonosító, típus, név, leírás, hierarchia és példány mezőkhöz rendelt leíró információkat rendelkeznek. A példányok minimális tulajdonságai között a hierarchia adatai szerepelnek.
 
 A *példány mezői* olyan leíró információk gyűjteményei, amelyek a hierarchia szintjeire, valamint a gyártóra, a kezelőre és így továbbra is tartalmazhatnak értékeket.
 
@@ -95,13 +95,13 @@ A [contoso szélerőműpark bemutatója](https://insights.timeseries.azure.com/p
 
 ### <a name="instance-properties"></a>Példány tulajdonságai
 
-A példányokat a **timeSeriesId**, a **typeId**, a **Name**, a **description**, a **hierarchyIds**és a **instanceFields**határozza meg. Az egyes példányok csak egyetlen *típusra*és egy vagy több *hierarchiára*mutatnak.
+A példányokat a **timeSeriesId**, a **typeId**, a **Name**, a **description**, a **hierarchyIds** és a **instanceFields** határozza meg. Az egyes példányok csak egyetlen *típusra* és egy vagy több *hierarchiára* mutatnak.
 
 | Tulajdonság | Leírás |
 | --- | ---|
 | timeSeriesId | Azon idősorozat egyedi azonosítója, amelyhez a példány társítva van. A legtöbb esetben a példányokat egyedileg azonosítják egy olyan tulajdonság, mint például az deviceId vagy a assetId. Bizonyos esetekben egy összetettebb összetett azonosító is használható, amely legfeljebb 3 tulajdonságot egyesít. |
 | typeId | Az idősorozat-modell típusának kis-és nagybetűket megkülönböztető egyedi karakterlánc-azonosítója, amelyhez a példány társítva van. Alapértelmezés szerint az összes felderített új példány egy alapértelmezett típushoz van társítva.
-| name | A **Name** tulajdonság nem kötelező, és megkülönbözteti a kis-és nagybetűket. Ha a **név** nem érhető el, az alapértelmezett érték a **timeSeriesId**. Ha megadja a nevet, a **timeSeriesId** továbbra [is elérhető.](time-series-insights-update-explorer.md#4-time-series-well) |
+| name | A **Name** tulajdonság nem kötelező, és megkülönbözteti a kis-és nagybetűket. Ha a **név** nem érhető el, az alapértelmezett érték a **timeSeriesId**. Ha megadja a nevet, a **timeSeriesId** továbbra [is elérhető.](./concepts-ux-panels.md#4-time-series-well) |
 | leírás | A példány szöveges leírása. |
 | hierarchyIds | Meghatározza, hogy mely hierarchiák tartoznak a példányhoz. |
 | instanceFields | Egy példány tulajdonságai és a példányt definiáló statikus adatmennyiség. A hierarchia vagy a hierarchián kívüli tulajdonságok értékeit határozzák meg, miközben a keresési műveletek végrehajtásához is támogatják az indexelést. |
@@ -129,7 +129,7 @@ A példányok a következő JSON-ábrázolással rendelkeznek:
 ```
 
 > [!TIP]
-> Például az API létrehozása, olvasása, frissítése és törlése (szifilisz) támogatásához olvassa el az [Adatlekérdezési](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) cikket és a [példány API Rest dokumentációját](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#instances-api).
+> Például az API létrehozása, olvasása, frissítése és törlése (szifilisz) támogatásához olvassa el az [Adatlekérdezési](./concepts-query-overview.md#time-series-model-query-tsm-q-apis) cikket és a [példány API Rest dokumentációját](/rest/api/time-series-insights/reference-model-apis#instances-api).
 
 ## <a name="time-series-model-hierarchies"></a>Idősorozat-modell hierarchiái
 
@@ -143,7 +143,7 @@ A [contoso szélerőmű-bemutató](https://insights.timeseries.azure.com/preview
 
 ### <a name="hierarchy-definition"></a>Hierarchia definíciója
 
-A hierarchiákat a hierarchia **azonosítója**, **neve**és **forrása**határozza meg.
+A hierarchiákat a hierarchia **azonosítója**, **neve** és **forrása** határozza meg.
 
 | Tulajdonság | Leírás |
 | ---| ---|
@@ -186,7 +186,7 @@ Az előző JSON-példában:
 * `ManufactureDate` szülővel és gyermekgel rendelkező hierarchia definiálása `year` `month` . Mindegyiknek `ManufactureDate` több is lehet `years` , ami viszont több is lehet `months` .
 
 > [!TIP]
-> A hierarchia API létrehozása, olvasása, frissítése és törlése (szifilisz) támogatásához olvassa el az [Adatlekérdezési](concepts-query-overview.md#time-series-model-query-tsm-q-apis) cikket és a [hierarchia API Rest dokumentációját](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#hierarchies-api).
+> A hierarchia API létrehozása, olvasása, frissítése és törlése (szifilisz) támogatásához olvassa el az [Adatlekérdezési](concepts-query-overview.md#time-series-model-query-tsm-q-apis) cikket és a [hierarchia API Rest dokumentációját](/rest/api/time-series-insights/reference-model-apis#hierarchies-api).
 
 ### <a name="hierarchy-example"></a>Példahierarchia
 
@@ -216,7 +216,7 @@ Az előző definícióban és a több idősorozatban használt példány mezők 
 | ID4 | "Building" = "1000", "Floor" = "10"  |
 | ID5 | A "Building", a "Floor" vagy a "Room" nincs beállítva. |
 
-Az idősorozat **ID1** és **id4** a **H1** hierarchia részeként jelennek meg a [Azure Time Series Insights Explorerben](time-series-insights-update-explorer.md) , mert teljes mértékben definiálva és megfelelően rendezték a *Létrehozás*, a *padló*és a *szoba* paramétereit.
+Az idősorozat **ID1** és **id4** a **H1** hierarchia részeként jelennek meg a [Azure Time Series Insights Explorerben](./concepts-ux-panels.md) , mert teljes mértékben definiálva és megfelelően rendezték a *Létrehozás*, a *padló* és a *szoba* paramétereit.
 
 A többiek a nem *szülő példányok* alá vannak sorolva, mert nem felelnek meg a megadott adathierarchiának.
 
@@ -224,18 +224,18 @@ A többiek a nem *szülő példányok* alá vannak sorolva, mert nem felelnek me
 
 Az idősorozat *-modellek segítségével* változók vagy képletek definiálhatók a számítások végrehajtásához. A típusok egy adott példánnyal vannak társítva.
 
-Egy típus egy vagy több változóval is rendelkezhet. Egy idősorozat-modell példánya például lehet *hőmérséklet-érzékelő*, amely az *átlagos hőmérsékletet*, a *minimális hőmérsékletet*és a *maximális hőmérsékletet*tartalmazza.
+Egy típus egy vagy több változóval is rendelkezhet. Egy idősorozat-modell példánya például lehet *hőmérséklet-érzékelő*, amely az *átlagos hőmérsékletet*, a *minimális hőmérsékletet* és a *maximális hőmérsékletet* tartalmazza.
 
 A [contoso szélerőműpark bemutatója](https://insights.timeseries.azure.com/preview/samples) több idősorozat-modellt jelenít meg a saját példányaihoz társítva.
 
 [![Példa az idősorozat-modell típusára](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
 
 > [!TIP]
-> Az API-k létrehozása, olvasása, frissítése és törlése (szifilisz) támogatásához olvassa el az [Adatlekérdezési](concepts-query-overview.md#time-series-model-query-tsm-q-apis) cikket és a [Type API Rest dokumentációt](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#types-api).
+> Az API-k létrehozása, olvasása, frissítése és törlése (szifilisz) támogatásához olvassa el az [Adatlekérdezési](concepts-query-overview.md#time-series-model-query-tsm-q-apis) cikket és a [Type API Rest dokumentációt](/rest/api/time-series-insights/reference-model-apis#types-api).
 
 ### <a name="type-properties"></a>Típus tulajdonságai
 
-Az idősorozat-modell típusait **azonosító**, **név**, **Leírás**és **változók**határozzák meg.
+Az idősorozat-modell típusait **azonosító**, **név**, **Leírás** és **változók** határozzák meg.
 
 | Tulajdonság | Leírás |
 | ---| ---|
@@ -288,7 +288,7 @@ Az idősorozat-modell típusai számos változót tartalmazhatnak, amelyek a ké
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A modell API-kon keresztüli szerkesztésével kapcsolatos további információkért olvassa el a [Time Series Model](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis) Reference dokumentációját.
+* A modell API-kon keresztüli szerkesztésével kapcsolatos további információkért olvassa el a [Time Series Model](/rest/api/time-series-insights/reference-model-apis) Reference dokumentációját.
 
 * Az [idősorozat-modell változókkal](./concepts-variables.md) létrehozott képletek és számítások megismerése
 

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.custom: devx-track-python, devx-track-js
-ms.openlocfilehash: 41d7fe8e22b39d8755f86e5ee490aa6e7dff97fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1cbe4d44f5e1c8b34a3d7bb9d05b9546f320b81c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330621"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023468"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Oktatóanyag: lombik-alkalmazás létrehozása az Azure Cognitive Services
 
@@ -60,11 +60,11 @@ Tekintsük át az oktatóanyaghoz szükséges szoftvereket és előfizetési kul
 ## <a name="create-an-account-and-subscribe-to-resources"></a>Hozzon létre egy fiókot, és fizessen elő az erőforrásokra
 
 Ahogy korábban említettük, három előfizetési kulcsra lesz szüksége ehhez az oktatóanyaghoz. Ez azt jelenti, hogy létre kell hoznia egy erőforrást az Azure-fiókjában a következőkhöz:
-* Fordító
-* Szövegelemzés
+* Translator
+* Text Analytics
 * Beszédszolgáltatások
 
-Erőforrások létrehozásához használja [a Cognitive Services fiók létrehozása a Azure Portalban](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) című témakört.
+Erőforrások létrehozásához használja [a Cognitive Services fiók létrehozása a Azure Portalban](../cognitive-services-apis-create-account.md) című témakört.
 
 > [!IMPORTANT]
 > Ebben az oktatóanyagban hozza létre az erőforrásokat az USA nyugati régiójában. Ha más régiót használ, minden Python-fájlban módosítania kell az alap URL-címet.
@@ -475,7 +475,7 @@ Nyomja le a **CTRL + c** billentyűkombinációt az alkalmazás leöléséhez, m
 
 ## <a name="analyze-sentiment"></a>Vélemények elemzése
 
-A [text Analytics API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) az érzelmek elemzéséhez, a szövegből kinyert fő kifejezésekhez vagy a forrás nyelvének észleléséhez használható. Ebben az alkalmazásban az érzelmek elemzését fogjuk használni annak megállapításához, hogy a megadott szöveg pozitív, semleges vagy negatív. Az API egy 0 és 1 közötti számértéket ad vissza. Az 1. ponthoz közeledő pontszámok pozitív és negatív eredményt jeleznek.
+A [text Analytics API](../text-analytics/overview.md) az érzelmek elemzéséhez, a szövegből kinyert fő kifejezésekhez vagy a forrás nyelvének észleléséhez használható. Ebben az alkalmazásban az érzelmek elemzését fogjuk használni annak megállapításához, hogy a megadott szöveg pozitív, semleges vagy negatív. Az API egy 0 és 1 közötti számértéket ad vissza. Az 1. ponthoz közeledő pontszámok pozitív és negatív eredményt jeleznek.
 
 Ebben a szakaszban néhány dolgot kell tennie:
 
@@ -659,7 +659,7 @@ Nyomja le a **CTRL + c** billentyűkombinációt az alkalmazás leöléséhez, m
 
 ## <a name="convert-text-to-speech"></a>Szöveg átalakítása beszéddé
 
-A [text-to-SPEECH API](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech) lehetővé teszi, hogy az alkalmazás a szöveget természetes emberi – például szintetizált beszédre alakítsa át. A szolgáltatás támogatja a standard, a neurális és az egyéni hangokat. A minta alkalmazásunk egy maroknyi elérhető hangokat használ a teljes listához: [támogatott nyelvek](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech).
+A [text-to-SPEECH API](../speech-service/text-to-speech.md) lehetővé teszi, hogy az alkalmazás a szöveget természetes emberi – például szintetizált beszédre alakítsa át. A szolgáltatás támogatja a standard, a neurális és az egyéni hangokat. A minta alkalmazásunk egy maroknyi elérhető hangokat használ a teljes listához: [támogatott nyelvek](../speech-service/language-support.md#text-to-speech).
 
 Ebben a szakaszban néhány dolgot kell tennie:
 
@@ -954,14 +954,14 @@ Navigáljon a megadott kiszolgálócím-címre. Írja be a szövegbeviteli terü
 > [!TIP]
 > Ha a végrehajtott módosítások nem jelennek meg, vagy az alkalmazás nem a várt módon működik, próbálja meg törölni a gyorsítótárat, vagy nyisson meg egy privát/inkognitóban ablakot.
 
-Így van egy működő alkalmazása, amely elvégzi a fordításokat, elemzi a hangulatát és a szintetizált beszédet. Nyomja le a **CTRL + c** billentyűkombinációt az alkalmazás leöléséhez. Mindenképpen tekintse meg a többi [Azure-Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/).
+Így van egy működő alkalmazása, amely elvégzi a fordításokat, elemzi a hangulatát és a szintetizált beszédet. Nyomja le a **CTRL + c** billentyűkombinációt az alkalmazás leöléséhez. Mindenképpen tekintse meg a többi [Azure-Cognitive Services](../index.yml).
 
 ## <a name="get-the-source-code"></a>A forráskód lekérése
 
 A projekt forráskódja elérhető a [githubon](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Flask-App-Tutorial).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Fordítói dokumentáció](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
+* [Fordítói dokumentáció](./reference/v3-0-reference.md)
 * [Text Analytics API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)
-* [Szöveg – beszéd API-hivatkozás](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech)
+* [Szöveg – beszéd API-hivatkozás](../speech-service/rest-text-to-speech.md)

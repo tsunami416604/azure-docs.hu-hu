@@ -3,12 +3,12 @@ title: Ügyfél előkészítése az Azure Lighthouse-hoz
 description: Ismerje meg, hogyan végezheti el az ügyfelek Azure világítótoronyba való bevezetését, így az erőforrásaik a saját bérlőn keresztül érhetők el és kezelhetők az Azure-beli delegált erőforrás-kezelés használatával.
 ms.date: 09/24/2020
 ms.topic: how-to
-ms.openlocfilehash: d80fef21e4b7cf1705b67df3c8d08f91bac589bf
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 43f28073c996167c82e241476020bdc341486b26
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042861"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024296"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Ügyfél előkészítése az Azure Lighthouse-hoz
 
@@ -211,8 +211,8 @@ Az üzembe helyezés a Azure Portal a PowerShell vagy az Azure CLI használatáv
 ### <a name="azure-portal"></a>Azure Portal
 
 1. A [GitHub](https://github.com/Azure/Azure-Lighthouse-samples/)-tárházban válassza az **üzembe helyezés az Azure** -ban gombot, amely a használni kívánt sablon mellett látható. A sablon az Azure Portalon fog megnyílni.
-1. Adja meg az **MSP-ajánlat neve** , az **MSP-ajánlat leírása** , a **bérlői azonosító** és a **jogosultságok** által kezelt értékeket. Ha szeretné, a **Paraméterek szerkesztése** lehetőség kiválasztásával megadhatja a,,, `mspOfferName` `mspOfferDescription` `managedbyTenantId` és `authorizations` közvetlenül a paraméter fájljának értékét. Ne felejtse el frissíteni ezeket az értékeket a sablon alapértelmezett értékeinek használata helyett.
-1. Válassza a **felülvizsgálat és létrehozás** , majd a **Létrehozás** lehetőséget.
+1. Adja meg az **MSP-ajánlat neve**, az **MSP-ajánlat leírása**, a **bérlői azonosító** és a **jogosultságok** által kezelt értékeket. Ha szeretné, a **Paraméterek szerkesztése** lehetőség kiválasztásával megadhatja a,,, `mspOfferName` `mspOfferDescription` `managedbyTenantId` és `authorizations` közvetlenül a paraméter fájljának értékét. Ne felejtse el frissíteni ezeket az értékeket a sablon alapértelmezett értékeinek használata helyett.
+1. Válassza a **felülvizsgálat és létrehozás**, majd a **Létrehozás** lehetőséget.
 
 Néhány perc elteltével megjelenik egy értesítés arról, hogy a telepítés befejeződött.
 
@@ -286,6 +286,11 @@ Az ügyfél bérlője:
 # Log in first with Connect-AzAccount if you're not using Cloud Shell
 
 Get-AzContext
+
+# Confirm successful onboarding for Azure Lighthouse
+
+Get-AzManagedServicesDefinition
+Get-AzManagedServicesAssignment
 ```
 
 ### <a name="azure-cli"></a>Azure CLI

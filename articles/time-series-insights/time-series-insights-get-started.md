@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 401d22ee68ba0652eb684b03b06fddf0b0fe3d72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61af7922318514a7b86a349d1970c59d4d168d85
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569465"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023326"
 ---
 # <a name="create-a-new-azure-time-series-insights-gen1-environment-in-the-azure-portal"></a>Új Azure Time Series Insights Gen1-környezet létrehozása a Azure Portal
 
@@ -35,11 +35,11 @@ A következő lépések végrehajtásával hozhat létre környezetet:
 
 1. Válassza az **+ erőforrás létrehozása** gombot.
 
-1. Válassza ki a **eszközök internetes hálózata** kategóriát, és válassza a **Time Series Insights**lehetőséget.
+1. Válassza ki a **eszközök internetes hálózata** kategóriát, és válassza a **Time Series Insights** lehetőséget.
 
    [![A Azure Time Series Insights-környezet létrehozása](media/time-series-insights-get-started/tsi-create-new-environment.png)](media/time-series-insights-get-started/tsi-create-new-environment.png#lightbox)
 
-1. A **Time Series Insights** lapon válassza a **Létrehozás**lehetőséget.
+1. A **Time Series Insights** lapon válassza a **Létrehozás** lehetőséget.
 
 1. Adja meg a szükséges paramétereket. Az alábbi táblázat az egyes paramétereket ismerteti:
 
@@ -60,7 +60,7 @@ A következő lépések végrehajtásával hozhat létre környezetet:
 
    [![Az értesítések megtekintése](media/time-series-insights-get-started/tsi-deploy-notifications.png)](media/time-series-insights-get-started/tsi-deploy-notifications.png#lightbox)
 
-1. Az erőforrás- **áttekintésben**ellenőrizze az üzembe helyezés konfigurációs beállításait.
+1. Az erőforrás- **áttekintésben** ellenőrizze az üzembe helyezés konfigurációs beállításait.
 
    [![A Azure Time Series Insights PIN-kód létrehozása az irányítópulton](media/time-series-insights-get-started/tsi-verify-deployment.png)](media/time-series-insights-get-started/tsi-verify-deployment.png#lightbox)
 
@@ -68,9 +68,9 @@ A következő lépések végrehajtásával hozhat létre környezetet:
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Adja meg az adatelérési szabályzatokat](time-series-insights-data-access.md) a környezet biztonságossá tételéhez.
+* [Adja meg az adatelérési szabályzatokat](./concepts-access-policies.md) a környezet biztonságossá tételéhez.
 
-* [Adja hozzá az Event hub-esemény forrását](time-series-insights-how-to-add-an-event-source-eventhub.md) a Azure Time Series Insights-környezethez.
+* [Adja hozzá az Event hub-esemény forrását](./how-to-ingest-data-event-hub.md) a Azure Time Series Insights-környezethez.
 
 * [Események küldése](time-series-insights-send-events.md) az esemény forrásának.
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2020
 ms.author: trbye
-ms.openlocfilehash: c4195ff1b81097a3620f68939f32147a26e16d60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f547b353091cc81816f0974fced8d4dc836d22b2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85391604"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023820"
 ---
 # <a name="quickstart-getting-a-luis-endpoint-key"></a>Gyors útmutató: LUIS Endpoint kulcs beszerzése
 
@@ -37,7 +37,7 @@ A LUIS háromféle kulcsot használ:
 |Kezdő|Lehetővé teszi a LUIS-alkalmazás tesztelését csak szöveg használatával|
 |Végpont |Engedélyezi a hozzáférést egy adott LUIS-alkalmazáshoz|
 
-Ebben az oktatóanyagban a végponti kulcs típusát kell megadnia. Az oktatóanyag a példa Home Automation LUIS alkalmazást használja, amelyet az [előre elkészített Home Automation-alkalmazás használata](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) című rövid útmutatóban hozhat létre. Ha saját LUIS-alkalmazást hozott létre, azt használhatja helyette.
+Ebben az oktatóanyagban a végponti kulcs típusát kell megadnia. Az oktatóanyag a példa Home Automation LUIS alkalmazást használja, amelyet az [előre elkészített Home Automation-alkalmazás használata](../../luis/luis-get-started-create-app.md) című rövid útmutatóban hozhat létre. Ha saját LUIS-alkalmazást hozott létre, azt használhatja helyette.
 
 LUIS-alkalmazás létrehozásakor a LUIS automatikusan létrehoz egy alapszintű kulcsot, amellyel szöveges lekérdezések használatával tesztelheti az alkalmazást. Ez a kulcs nem engedélyezi a beszédfelismerési szolgáltatás integrációját, és nem fog működni ezzel az Oktatóanyaggal. Hozzon létre egy LUIS-erőforrást az Azure irányítópulton, és rendelje hozzá a LUIS alkalmazáshoz. Az oktatóanyaghoz használhatja az ingyenes előfizetési szintet.
 
@@ -47,12 +47,12 @@ Miután létrehozta a LUIS-erőforrást az Azure-irányítópulton, jelentkezzen
 
 A **kulcsok és végpont beállításai** lapon:
 
-1. Görgessen le az **erőforrások és kulcsok** szakaszhoz, majd válassza az **erőforrás kiosztása**elemet.
+1. Görgessen le az **erőforrások és kulcsok** szakaszhoz, majd válassza az **erőforrás kiosztása** elemet.
 1. A **kulcs kiosztása az alkalmazáshoz** párbeszédpanelen végezze el a következő módosításokat:
 
-   * A **bérlő**területen válassza a **Microsoft**lehetőséget.
-   * Az **előfizetés neve**területen válassza ki azt az Azure-előfizetést, amely a használni kívánt Luis-erőforrást tartalmazza.
-   * A **kulcs**alatt válassza ki az alkalmazással használni kívánt Luis-erőforrást.
+   * A **bérlő** területen válassza a **Microsoft** lehetőséget.
+   * Az **előfizetés neve** területen válassza ki azt az Azure-előfizetést, amely a használni kívánt Luis-erőforrást tartalmazza.
+   * A **kulcs** alatt válassza ki az alkalmazással használni kívánt Luis-erőforrást.
 
    Az új előfizetés hamarosan megjelenik a lap alján található táblázatban.
 
@@ -61,7 +61,7 @@ A **kulcsok és végpont beállításai** lapon:
 ![A LUIS-app előfizetési kulcsai](~/articles/cognitive-services/Speech-Service/media/sdk/luis-keys-assigned.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Leképezések felismerése](~/articles/cognitive-services/Speech-Service/quickstarts/intent-recognition.md)

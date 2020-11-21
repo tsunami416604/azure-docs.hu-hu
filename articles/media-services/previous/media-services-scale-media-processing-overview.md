@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: 8867e680be0aba187daf83bc538dd47c582c71fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5353cf841663d70f2fce6662964358b7828610d8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618505"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020895"
 ---
 # <a name="media-reserved-units"></a>Fenntartott médiaegységek
 
@@ -30,7 +30,7 @@ A Azure Media Services lehetővé teszi a médiafájlok feldolgozását a Media 
 
 A következő táblázat segít dönteni a különböző kódolási sebességek kiválasztásakor.  Egy 7 perces, a használatban lévő MRU-től függően 1080p-videóként jeleníti meg a kódolás időtartamát.
 
-|RU-típus|Forgatókönyv|Példa a 7 perces 1080p videó eredményeire |
+|RU-típus|Használati eset|Példa a 7 perces 1080p videó eredményeire |
 |---|---|---|
 | **S1**|Egyetlen bitráta kódolása. <br/>A fájlok SD-vagy alacsonyabb felbontásban, nem érzékenyek, alacsonyak.|A "H264 Single bitráta SD 16x9" használatával az egyetlen sávszélességű SD-feloldási MP4-fájl kódolása körülbelül 7 percet vesz igénybe.|
 | **S2**|Egyetlen bitráta és több bitráta-kódolás.<br/>Normál használat SD és HD kódoláshoz.|A "H264 Single bitráta 720p" beállítású kódolás körülbelül 6 percet vesz igénybe.<br/><br/>A "H264 Multiple bitráta 720p" beállítású kódolás körülbelül 12 percet vesz igénybe.|
@@ -59,5 +59,5 @@ Próbálja ki a médiafájlok feldolgozását az alábbi technológiák egyikév
 [.Net](media-services-dotnet-encoding-units.md) 
  [Portál](media-services-portal-scale-media-processing.md) 
  [Rest](/rest/api/media/operations/encodingreservedunittype) 
- [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples) 
+ [Java](https://github.com/rnrneverdies/azure-sdk-for-media-services-java-samples) 
  [Php](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)

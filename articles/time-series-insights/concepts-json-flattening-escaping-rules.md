@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/28/2020
-ms.openlocfilehash: a1f633548ed36320f40e485f540923c8e3045a99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0839d2c734418824952f37cb177490e56e1133c5
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460866"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023309"
 ---
 # <a name="json-flattening-escaping-and-array-handling"></a>JSON-egybesimítás, escape-karaktersorozat és tömbkezelés
 
@@ -22,18 +22,18 @@ A Azure Time Series Insights Gen2-környezet dinamikusan létrehozza a meleg és
 
 > [!IMPORTANT]
 >
-> * Tekintse át az alábbi szabályokat, mielőtt kiválasztja az [Idősorozat-azonosító tulajdonságot](time-series-insights-update-how-to-id.md) , és/vagy az eseményforrás [timestamp (IES)](concepts-streaming-ingestion-event-sources.md#event-source-timestamp). Ha a terminálszolgáltatási azonosító vagy időbélyeg egy beágyazott objektumon belül van, vagy egy vagy több speciális karakterből áll, akkor fontos, hogy az Ön által megadott tulajdonságnév megfeleljen az oszlop nevének a betöltési szabályok alkalmazása *után* . Lásd a lenti [B](concepts-json-flattening-escaping-rules.md#example-b) példát.
+> * Tekintse át az alábbi szabályokat, mielőtt kiválasztja az [Idősorozat-azonosító tulajdonságot](./how-to-select-tsid.md) , és/vagy az eseményforrás [timestamp (IES)](concepts-streaming-ingestion-event-sources.md#event-source-timestamp). Ha a terminálszolgáltatási azonosító vagy időbélyeg egy beágyazott objektumon belül van, vagy egy vagy több speciális karakterből áll, akkor fontos, hogy az Ön által megadott tulajdonságnév megfeleljen az oszlop nevének a betöltési szabályok alkalmazása *után* . Lásd a lenti [B](concepts-json-flattening-escaping-rules.md#example-b) példát.
 
-| Szabály | Példa JSON-ra | [Idősorozat-kifejezés szintaxisa](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) | Tulajdonság oszlopának neve a parkettában
+| Szabály | Példa JSON-ra | [Idősorozat-kifejezés szintaxisa](/rest/api/time-series-insights/reference-time-series-expression-syntax) | Tulajdonság oszlopának neve a parkettában
 |---|---|---|---|
 | A Azure Time Series Insights Gen2 adattípusa az oszlopnév végéhez lesz hozzáfűzve "_" értékként. \<dataType\> | ```"type": "Accumulated Heat"``` | `$event.type.String` |`type_string` |
 | Az eseményforrás [timestamp tulajdonsága](concepts-streaming-ingestion-event-sources.md#event-source-timestamp) Azure Time Series Insights Gen2 lesz mentve a tárolóban, és az UTC szerint tárolt érték. Az eseményforrás (ok) timestamp tulajdonsága testreszabható úgy, hogy megfeleljen a megoldás igényeinek, de az oszlop neve a meleg és a hideg tárolóban "Timestamp". Más datetime JSON-tulajdonságok, amelyek nem az eseményforrás időbélyege, az oszlopnév "_datetime" lesz mentve, ahogy az a fenti szabályban szerepel.  | ```"ts": "2020-03-19 14:40:38.318"``` |  `$event.$ts` | `timestamp` |
 | A speciális karaktereket tartalmazó JSON-tulajdonságok neve. [\ és "a (z) [" és "] használatával kerül megmenekülésre  |  ```"id.wasp": "6A3090FD337DE6B"``` |  `$event['id.wasp'].String` | `['id.wasp']_string` |
 | A (z) ["és"] keretben további Escape-értékekkel és fordított perjelekkel rendelkezik. A rendszer egy idézőjelet (\) ír, a fordított perjelet pedig \\\ | ```"Foo's Law Value": "17.139999389648"``` | `$event['Foo\'s Law Value'].Double` | `['Foo\'s Law Value']_double` |
 | A beágyazott JSON-objektumok az elválasztó ponttal vannak lelapulva. A legfeljebb 10 szint beágyazását támogatja. |  ```"series": {"value" : 316 }``` | `$event.series.value.Long`, `$event['series']['value'].Long` vagy `$event.series['value'].Long` |  `series.value_long` |
-| Az egyszerű típusok tömbjét dinamikus típusként tárolja a rendszer. |  ```"values": [154, 149, 147]``` | A dinamikus típusok csak a [GetEvents](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents) API használatával kérhetők le | `values_dynamic` |
+| Az egyszerű típusok tömbjét dinamikus típusként tárolja a rendszer. |  ```"values": [154, 149, 147]``` | A dinamikus típusok csak a [GetEvents](/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents) API használatával kérhetők le | `values_dynamic` |
 | Az objektumokat tartalmazó tömbök két viselkedése függ az objektum tartalmától: Ha a TS-azonosító (k) vagy a timestamp tulajdonság (ok) egy tömb objektumain belül van, akkor a tömb úgy lesz kivezetve, hogy a kezdeti JSON-adattartalom több eseményt állít elő. Ez lehetővé teszi több esemény egy JSON-struktúrába való kötegelt feldolgozását. A rendszer minden olyan legfelső szintű tulajdonságot, amely a tömbhöz csatlakozik, a rendszer minden egyes unrolled objektummal menti. Ha a TS-azonosító (k) és az időbélyeg *nem* a tömbön belül van, akkor a rendszer az egészet dinamikus típusként menti. | Lásd az alábbi példákat: [A](concepts-json-flattening-escaping-rules.md#example-a), [B](concepts-json-flattening-escaping-rules.md#example-b)és [C](concepts-json-flattening-escaping-rules.md#example-c)
-| A vegyes elemeket tartalmazó tömbök nem lapított. |  ```"values": ["foo", {"bar" : 149}, 147]``` | A dinamikus típusok csak a [GetEvents](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents) API használatával kérhetők le | `values_dynamic` |
+| A vegyes elemeket tartalmazó tömbök nem lapított. |  ```"values": ["foo", {"bar" : 149}, 147]``` | A dinamikus típusok csak a [GetEvents](/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents) API használatával kérhetők le | `values_dynamic` |
 | 512 karakter a JSON-tulajdonság nevének korlátja. Ha a név hossza meghaladja az 512 karaktert, a rendszer csonkolja a 512 és a "_< kivonatoló kódot tartalmazó" > "utótagot. **Vegye figyelembe** , hogy ez az objektum által összefűzött, beágyazott objektum elérési útját jelölő tulajdonságok neveire is vonatkozik. |``"data.items.datapoints.values.telemetry<...continuing to over 512 chars>" : 12.3440495`` |`"$event.data.items.datapoints.values.telemetry<...continuing to include all chars>.Double"` | `data.items.datapoints.values.telemetry<...continuing to 512 chars>_912ec803b2ce49e4a541068d495ab570_double` |
 
 ## <a name="understanding-the-dual-behavior-for-arrays"></a>A tömbök kettős viselkedésének megértése
@@ -44,7 +44,7 @@ Bizonyos esetekben azonban az objektumokat tartalmazó tömbök csak más érté
 
 ### <a name="how-to-know-if-my-array-of-objects-will-produce-multiple-events"></a>Honnan tudhatja meg, hogy az objektumok tömbje több eseményt fog-e létrehozni
 
-Ha egy vagy több idősorozat-azonosító (IES) be van ágyazva egy tömb objektumaiba, *vagy* ha az eseményforrás timestamp tulajdonsága be van ágyazva, a betöltési motor kibontja a több esemény létrehozásához. A terminálszolgáltatási azonosító (k) hoz és/vagy az időbélyeghez megadott tulajdonságok neveinek a fenti simítási szabályokat kell követniük, és ezért a JSON-alakot jelölik. Tekintse meg az alábbi példákat, és tekintse meg az [Idősorozat-azonosító tulajdonság kiválasztásának](time-series-insights-update-how-to-id.md) útmutatóját.
+Ha egy vagy több idősorozat-azonosító (IES) be van ágyazva egy tömb objektumaiba, *vagy* ha az eseményforrás timestamp tulajdonsága be van ágyazva, a betöltési motor kibontja a több esemény létrehozásához. A terminálszolgáltatási azonosító (k) hoz és/vagy az időbélyeghez megadott tulajdonságok neveinek a fenti simítási szabályokat kell követniük, és ezért a JSON-alakot jelölik. Tekintse meg az alábbi példákat, és tekintse meg az [Idősorozat-azonosító tulajdonság kiválasztásának](./how-to-select-tsid.md) útmutatóját.
 
 ### <a name="example-a"></a>Példa
 

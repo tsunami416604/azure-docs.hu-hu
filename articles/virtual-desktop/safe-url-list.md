@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 90db861a4ef4fc951844d3ae82a51d20cf9dc8c5
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 3d19a60fd6a22eb9245722c6ff69d3b39c05d29e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875104"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023173"
 ---
 # <a name="safe-url-list"></a>Biztonságos URL-címek listája
 
@@ -34,7 +34,7 @@ A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli vi
 |mrsglobalsteus2prod.blob.core.windows.net|443|Ügynök-és SXS-verem frissítései|AzureCloud|
 |wvdportalstorageblob.blob.core.windows.net|443|Azure Portal támogatás|AzureCloud|
 | 169.254.169.254 | 80 | [Azure-példány metaadatainak szolgáltatási végpontja](../virtual-machines/windows/instance-metadata-service.md) | N.A. |
-| 168.63.129.16 | 80 | [Munkamenet-gazdagép állapotának figyelése](../virtual-network/security-overview.md#azure-platform-considerations) | N.A. |
+| 168.63.129.16 | 80 | [Munkamenet-gazdagép állapotának figyelése](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | N.A. |
 
 >[!IMPORTANT]
 >A Windows virtuális asztal mostantól támogatja a FQDN címkét. További információ: [a Azure Firewall használata a Windows rendszerű virtuális asztali környezetek elleni védelemhez](../firewall/protect-windows-virtual-desktop.md).
@@ -56,19 +56,19 @@ A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli vi
 |mrsglobalstugviffx.core.usgovcloudapi.net|443|Ügynök-és SXS-verem frissítései|AzureCloud|
 |wvdportalstorageblob.blob.core.usgovcloudapi.net|443|Azure Portal támogatás|AzureCloud|
 | 169.254.169.254 | 80 | [Azure-példány metaadatainak szolgáltatási végpontja](../virtual-machines/windows/instance-metadata-service.md) | N.A. |
-| 168.63.129.16 | 80 | [Munkamenet-gazdagép állapotának figyelése](../virtual-network/security-overview.md#azure-platform-considerations) | N.A. |
+| 168.63.129.16 | 80 | [Munkamenet-gazdagép állapotának figyelése](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | N.A. |
 
 A következő táblázat felsorolja azokat az opcionális URL-címeket, amelyekhez az Azure-beli virtuális gépek hozzáférhetnek:
 
 |Cím|Kimenő TCP-port|Cél|Azure gov|
 |---|---|---|---|
 |*.microsoftonline.com|443|Hitelesítés a Microsoft Online Services szolgáltatásban|login.microsoftonline.us|
-|*. events.data.microsoft.com|443|Telemetria szolgáltatás|Nincsenek|
-|www.msftconnecttest.com|443|Észleli, ha az operációs rendszer csatlakozik az internethez|Nincsenek|
-|*. prod.do.dsp.mp.microsoft.com|443|Windows Update|Nincsenek|
+|*. events.data.microsoft.com|443|Telemetriai szolgáltatás|Nincs|
+|www.msftconnecttest.com|443|Észleli, ha az operációs rendszer csatlakozik az internethez|Nincs|
+|*. prod.do.dsp.mp.microsoft.com|443|Windows Update|Nincs|
 |login.windows.net|443|Bejelentkezés a Microsoft Online Servicesbe, Microsoft 365|login.microsoftonline.us|
 |*. sfx.ms|443|OneDrive-ügyfélszoftver frissítései|oneclient.sfx.ms|
-|*. digicert.com|443|Tanúsítvány visszavonásának ellenőrzése|Nincsenek|
+|*. digicert.com|443|Tanúsítvány visszavonási állapotának ellenőrzése|Nincs|
 
 >[!NOTE]
 >A Windows virtuális asztal jelenleg nem tartalmaz olyan IP-címtartományok listáját, amelyekkel engedélyezhető a hálózati forgalom. Jelenleg csak bizonyos URL-címek blokkolását támogatjuk.
@@ -89,11 +89,11 @@ A használt Távoli asztal ügyfeleknek hozzáféréssel kell rendelkezniük a k
 |---|---|---|---|---|
 |*. wvd.microsoft.com|443|Szolgáltatás forgalma|Mind|*. wvd.microsoft.us|
 |*.servicebus.windows.net|443|Hibaelhárítási hibák|Mind|*. servicebus.usgovcloudapi.net|
-|go.microsoft.com|443|Microsoft-Fwlinkek|Mind|Nincsenek|
-|aka.ms|443|Microsoft URL-rövidített|Mind|Nincsenek|
-|docs.microsoft.com|443|Dokumentáció|Mind|Nincsenek|
-|privacy.microsoft.com|443|Adatvédelmi nyilatkozat|Mind|Nincsenek|
-|query.prod.cms.rt.microsoft.com|443|Ügyfelek frissítései|Windows asztali rendszer|Nincsenek|
+|go.microsoft.com|443|Microsoft-Fwlinkek|Mind|Nincs|
+|aka.ms|443|Microsoft URL-rövidített|Mind|Nincs|
+|docs.microsoft.com|443|Dokumentáció|Mind|Nincs|
+|privacy.microsoft.com|443|Adatvédelmi nyilatkozat|Mind|Nincs|
+|query.prod.cms.rt.microsoft.com|443|Ügyfelek frissítései|Windows asztali rendszer|Nincs|
 
 >[!IMPORTANT]
 >Az URL-címek megnyitása elengedhetetlen a megbízható ügyfél-élményhez. Az ezekhez az URL-címekhez való hozzáférés letiltása nem támogatott, és a szolgáltatás funkcióit is befolyásolja.

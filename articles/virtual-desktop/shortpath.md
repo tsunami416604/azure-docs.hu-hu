@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: ee37ab90910058378172223a3435047346f5fe7c
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 6ffe631dc237e7efaf1d6bfd9ac79ab7431c7371
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701784"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023139"
 ---
 # <a name="windows-virtual-desktop-rdp-shortpath-preview"></a>Windows rendszerű virtuális asztali RDP-Shortpath (előzetes verzió)
 
@@ -36,7 +36,7 @@ Az RDP-Shortpath kiterjeszti az RDP több átviteli képességet. Nem helyettes�
 
 Az 3390-es UDP-port csak a fordított kapcsolaton keresztül hitelesített bejövő Shortpath-forgalomhoz használatos. Az RDP-Shortpath figyelő figyelmen kívül hagyja a figyelő összes kapcsolódási kísérletét, kivéve, ha azok megfelelnek a fordított csatlakozási munkamenetnek.
 
-Az RDP-Shortpath TLS-kapcsolatot használ az ügyfél és a munkamenet-állomás között a munkamenet-gazdagép tanúsítványainak használatával. Alapértelmezés szerint az RDP-titkosításhoz használt tanúsítványt az operációs rendszer saját maga hozza létre a telepítés során. Ha kívánja, az ügyfelek központilag felügyelt tanúsítványokat telepíthetnek a vállalati hitelesítésszolgáltató által kiadott tanúsítványok alapján. A tanúsítvány-konfigurációkról további információt a [Windows Server dokumentációjában](/troubleshoot/windows-server/remote/remote-desktop-listener-certificate-configurations.md)talál.
+Az RDP-Shortpath TLS-kapcsolatot használ az ügyfél és a munkamenet-állomás között a munkamenet-gazdagép tanúsítványainak használatával. Alapértelmezés szerint az RDP-titkosításhoz használt tanúsítványt az operációs rendszer saját maga hozza létre a telepítés során. Ha kívánja, az ügyfelek központilag felügyelt tanúsítványokat telepíthetnek a vállalati hitelesítésszolgáltató által kiadott tanúsítványok alapján. A tanúsítvány-konfigurációkról további információt a [Windows Server dokumentációjában](/troubleshoot/windows-server/remote/remote-desktop-listener-certificate-configurations)talál.
 
 ## <a name="rdp-shortpath-connection-sequence"></a>RDP Shortpath-kapcsolati folyamat
 
@@ -187,7 +187,7 @@ Lehetséges értékek:
 * **0** – a felhasználói kapcsolat nem használ RDP-Shortpath
 * **1** – a felhasználói kapcsolat RDP-Shortpath használ
   
-A következő lekérdezési lista lehetővé teszi a kapcsolatok adatainak áttekintését. Ezt a lekérdezést a [log Analytics lekérdezés-szerkesztőben](../azure-monitor/log-query/get-started-portal.md#write-and-run-basic-queries)futtathatja. Minden lekérdezésnél cserélje le a helyére a `userupn` megkeresni kívánt felhasználó egyszerű felhasználónevét.
+A következő lekérdezési lista lehetővé teszi a kapcsolatok adatainak áttekintését. Ezt a lekérdezést a [log Analytics lekérdezés-szerkesztőben](../azure-monitor/log-query/log-analytics-tutorial.md#write-a-query)futtathatja. Minden lekérdezésnél cserélje le a helyére a `userupn` megkeresni kívánt felhasználó egyszerű felhasználónevét.
 
 ```kusto
 let Events = WVDConnections | where UserName == "userupn" ;

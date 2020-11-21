@@ -3,17 +3,17 @@ title: Blob Storage használata ellenőrzőpont-tárolóként Azure Stack hub-on
 description: Ez a cikk azt ismerteti, hogyan használható a Blob Storage ellenőrzőpont-tárolóként a Event Hubs Azure Stack hub (előzetes verzió) szolgáltatásban.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 1c876ed36be6aec9395a1acba3a1deb25a47de2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9da525decfb7b972f05af17c259836d0b17bb21e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87039225"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021235"
 ---
 # <a name="use-blob-storage-as-checkpoint-store---event-hubs-on-azure-stack-hub-preview"></a>Blob Storage használata ellenőrzőpont-tárolóként – Event Hubs az Azure Stack hub-on (előzetes verzió)
 Ha az Azure Blob Storaget használja ellenőrzőpont-tárolóként olyan környezetben, amely támogatja a Storage blob SDK eltérő verzióját, mint amilyeneket az Azure-ban általában elérhető, akkor programkódot kell használnia a Storage szolgáltatás API-verziójának módosítására az adott környezet által támogatott adott verzióra. Ha például [egy 2002-es Azure stack hub-os verzióban](/azure-stack/user/event-hubs-overview)futtatja az Event Hubs-t, a Storage szolgáltatás legmagasabb rendelkezésre álló verziója a 2017-11-09-es verzió. Ebben az esetben programkódot kell használnia a Storage szolgáltatás API-verziójának 2017-11-09-re való célzásához. Az adott tárolási API-verzió célzására vonatkozó példát a GitHubon található példákban talál: 
 
-- [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)
+- [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/)
 - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java). 
 - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) vagy  [írógéppel](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts) 
 - Python – [szinkron](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py), [aszinkron](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py)
@@ -57,6 +57,6 @@ The exception is HttpResponseError('The value for one of the HTTP headers is not
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg az alábbi cikket a particionálással és az ellenőrzőponttal kapcsolatban: [a partíciók terhelésének elosztása az alkalmazás több példánya között](event-processor-balance-partition-load.md)

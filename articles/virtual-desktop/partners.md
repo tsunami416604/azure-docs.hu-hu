@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fcbcaab7b5cd050e072aaded3e2c09a94a451072
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: bf314510a8569a825ccd309ec855e3ff186bba86
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578535"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023377"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows rendszerű virtuális asztali partner-integrációk
 
@@ -350,7 +350,7 @@ Az SSH2 egy Windows rendszerű virtuális asztali értéknövelt szolgáltatáso
 a appCURE rögzíti az alkalmazás adatait a futó alkalmazásokból, így biztosítva, hogy minden olyan pont értelmezhető legyen, amely hatással lehet a végfelhasználó alkalmazásaira. a appCURE ezután frissíti és továbbítja azokat az új Windows-beli virtuális asztalhoz. A jelenlegi környezet összes alkalmazás-integrációs pontjának rögzítésével a appCURE biztosítja a sebességet az IT-erőforrások optimalizálásához és a Migrálás jobb és gyorsabb megtervezéséhez, mint eddig, így lehetővé téve a szervezetek számára a gyorsabb éles működést.
 
 - [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4Fs38).
-- [Lépjen a partner oldalra](/azure/virtual-desktop/partners#ssh2).
+- [Lépjen a partner oldalra](#ssh2).
 
 ## <a name="thinprint"></a>ThinPrint
 

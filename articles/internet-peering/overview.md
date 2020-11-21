@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: overview
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 576bc3e37711851acd7d6c7ac811a10e40080710
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 34d340881e4f612544f4b3d68d3c1f3da598cab3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "75908913"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023428"
 ---
 # <a name="internet-peering-overview"></a>Internetes peering – áttekintés
 
@@ -41,7 +41,7 @@ A Microsoft Azure PowerShell vagy portál használatával való összevonását 
 * Az összes kapcsolat állapot-és sávszélesség-adatai nyomon követése.
 * Használhatja ugyanazt az előfizetést az Azure-Cloud Services eléréséhez.
 
-Ha már rendelkezik a Microsofttal létesített összevonásokkal, a rendszer **örökölt**társításként hivatkozik rá. Úgy is dönthet, hogy az ilyen típusú és az Azure-erőforrást is kezeli, hogy kihasználhassa a fenti előnyöket. A **következő lépések** című szakaszban található hivatkozásokra kattintva elküldheti az új kéréseket, vagy átalakíthatja az örökölt társ-hozzárendelést az Azure-erőforrásra.
+Ha már rendelkezik a Microsofttal létesített összevonásokkal, a rendszer **örökölt** társításként hivatkozik rá. Úgy is dönthet, hogy az ilyen típusú és az Azure-erőforrást is kezeli, hogy kihasználhassa a fenti előnyöket. A **következő lépések** című szakaszban található hivatkozásokra kattintva elküldheti az új kéréseket, vagy átalakíthatja az örökölt társ-hozzárendelést az Azure-erőforrásra.
 
 ## <a name="peering-policy"></a>Társviszony-létesítési szabályzat
 A Microsoft szelektív, de általában nyitott társítási szabályzattal rendelkezik. A társak kiválasztása a teljesítmény, a képesség és a kölcsönös előnyök alapján történik, és bizonyos technikai, kereskedelmi és jogi követelmények vonatkoznak rájuk. Részletekért lásd: társítási [házirend](policy.md).
@@ -49,8 +49,8 @@ A Microsoft szelektív, de általában nyitott társítási szabályzattal rende
 ## <a name="faq"></a>GYIK
 A peering szolgáltatással kapcsolatos gyakori kérdésekért lásd: [internetes társközi – gyakori](faqs.md)kérdések.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha szeretne többet megtudni a Microsofttal való közvetlen együttműködés beállításához szükséges lépésekről, kövesse a [Direct peering](walkthrough-direct-all.md) bemutatót
 * A Microsofttal való Exchange-társítás beállításával kapcsolatos lépésekért kövesse az [Exchange-partneri útmutató](walkthrough-exchange-all.md) lépéseit
-* Ebben a dokumentumban az Azure egyéb lényeges [hálózat képességeivel](https://docs.microsoft.com/azure/networking/networking-overview) ismerkedhet meg.
+* Ebben a dokumentumban az Azure egyéb lényeges [hálózat képességeivel](../networking/networking-overview.md) ismerkedhet meg.

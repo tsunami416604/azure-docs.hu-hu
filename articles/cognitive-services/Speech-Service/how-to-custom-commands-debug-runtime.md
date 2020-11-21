@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 1c9b0b48c7862990cfa2c8ba38bde0851058a228
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49d9b91df896646da7bf36e077d9f3c9187137dd
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86023023"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021796"
 ---
 # <a name="debug-errors-when-running-a-custom-commands-application"></a>Hibakeresési hibák egyéni parancsok alkalmazásának futtatásakor
 
@@ -58,9 +58,9 @@ Az egyéni parancsok alkalmazás futtatásakor a párbeszédpanel megszakításr
 
 - Ha teszteli az alkalmazást a portálon, akkor közvetlenül megjeleníti a lemondási leírást, és kipróbálhatja a hiba earcon. 
 
-- Ha az alkalmazást a [Windows Voice Assistant-ügyféllel](./how-to-custom-commands-developer-flow-test.md)futtatja, akkor a rendszer hibát earcon. A következő esemény található **: CancelledDialog** a **tevékenység naplófájljai**alatt.
+- Ha az alkalmazást a [Windows Voice Assistant-ügyféllel](./how-to-custom-commands-developer-flow-test.md)futtatja, akkor a rendszer hibát earcon. A következő esemény található **: CancelledDialog** a **tevékenység naplófájljai** alatt.
 
-- Ha az ügyfélalkalmazás példáját [(a SPEECH SDK-val)](./how-to-custom-commands-setup-speech-sdk.md)követi, a hiba earcon. A következő esemény található **: CancelledDialog** az **állapot**alatt.
+- Ha az ügyfélalkalmazás példáját [(a SPEECH SDK-val)](./how-to-custom-commands-setup-speech-sdk.md)követi, a hiba earcon. A következő esemény található **: CancelledDialog** az **állapot** alatt.
 
 - Ha saját ügyfélalkalmazás épül fel, bármikor megtervezheti a kívánt logikát a CancelledDialog-események kezeléséhez.
 
@@ -92,7 +92,7 @@ Language Understanding (LUIS) korlátozza az erőforrás-használatot. Általáb
 
     Ha F0 előrejelzési erőforrást tartalmaz, legfeljebb 10 ezer/hónap, 5 lekérdezés/másodperc értékre van korlátozva.
 
-A LUIS erőforrás-korlátokkal kapcsolatos további részletekért lásd: [Language Understanding erőforrás-használat és-korlát](https://docs.microsoft.com/azure/cognitive-services/luis/luis-limits#resource-usage-and-limits)
+A LUIS erőforrás-korlátokkal kapcsolatos további részletekért lásd: [Language Understanding erőforrás-használat és-korlát](../luis/luis-limits.md#resource-usage-and-limits)
 
 ### <a name="connection-to-the-recognizer-failed"></a>Nem sikerült csatlakozni a felismerőhöz
 Ez általában azt jelenti, hogy az átmeneti kapcsolódási hiba Language Understanding (LUIS) felismerő. Próbálja ki újra, és a problémát fel kell oldani.
@@ -123,7 +123,7 @@ A váratlan válaszok több dolgot is okozhatnak. Néhány ellenőrzés a követ
 
     A LUIS-felismerés pontossága akkor is hatással lehet, ha két parancs hasonló szándékokkal és példákkal van megosztva. Megpróbálkozhat a parancsok működésével és a mondatok a lehető legeltérővé tételével.
 
-    Az elismerési pontosság javításának ajánlott gyakorlata a [Luis ajánlott eljárása](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices).
+    Az elismerési pontosság javításának ajánlott gyakorlata a [Luis ajánlott eljárása](../luis/luis-concept-best-practices.md).
 
 - Párbeszédablak megszakítva
     
@@ -135,7 +135,7 @@ A beszédfelismerési válaszban nem definiált paramétert használ a rendszer.
 ### <a name="object-reference-not-set-to-an-instance-of-an-object"></a>Az objektum hivatkozása nem az objektum egy példányára van beállítva
 Üres paraméter szerepel a **Küldés tevékenység küldése az ügyfélnek** művelethez megadott JSON-adattartalomban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Minták megtekintése a GitHubon](https://aka.ms/speech/cc-samples)
