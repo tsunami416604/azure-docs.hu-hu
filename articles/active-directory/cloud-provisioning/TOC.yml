@@ -19,7 +19,7 @@
 - name: Alapelvek
   items:
     - name: Mi az a jelszókivonat szinkronizálása?
-      href: ../hybrid/whatis-phs.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcloud-provisioning-context
+      href: ../hybrid/whatis-phs.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcloud-provisioning-context
     - name: 'Az Azure AD-séma, -attribútumok és -kifejezések ismertetése'
       href: concept-attributes.md
     - name: Kifejezések írása attribútumleképezéshez az Azure Active Directoryban
@@ -63,10 +63,10 @@
 - name: Referencia
   items:
     - name: Az Azure AD Connect felhőalapú jogosultságkiosztási ügynök verzióelőzményei
-      href: ../app-provisioning/provisioning-agent-release-version-history.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
+      href: ../app-provisioning/provisioning-agent-release-version-history.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
     - name: Azure AD Connect felhőalapú jogosultságkiosztás – gyakori kérdések
       href: reference-cloud-provisioning-faq.md
     - name: Szinkronizált attribútumok
-      href: ../hybrid/reference-connect-sync-attributes-synchronized.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
+      href: ../hybrid/reference-connect-sync-attributes-synchronized.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
     - name: Alapszintű Active Directory és Azure AD-környezet
       href: tutorial-basic-ad-azure.md

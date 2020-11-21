@@ -7,9 +7,9 @@
 - name: Rövid útmutatók
   items:
     - name: Felhasználók hozzáadása az Azure AD-hez
-      href: ../fundamentals/add-users-azure-active-directory.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+      href: ../fundamentals/add-users-azure-active-directory.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
     - name: Licencek hozzárendelése felhasználókhoz
-      href: /azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/enterprise-users/context/ugr-context
+      href: /azure/active-directory/fundamentals/license-users-groups?context=%2fazure/active-directory/enterprise-users/context/ugr-context
     - name: Csoportok lejáratának beállítása
       href: groups-quickstart-expiration.md
     - name: Csoportelnevezési szabályzat beállítása
@@ -22,34 +22,34 @@
   expanded: true
   items:
     - name: Alapértelmezett felhasználói engedélyek összehasonlítása
-      href: ../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+      href: ../fundamentals/users-default-permissions.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
     - name: A csoportalapú licencelés alapjai
-      href: ../fundamentals/active-directory-licensing-whatis-azure-portal.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+      href: ../fundamentals/active-directory-licensing-whatis-azure-portal.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
     - name: Hozzáférések kezelése csoportokkal
-      href: ../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+      href: ../fundamentals/active-directory-manage-groups.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
 - name: Útmutatók
   expanded: true
   items:
     - name: Felhasználók kezelése
       items:
         - name: Felhasználók létrehozása
-          href: ../fundamentals/add-users-azure-active-directory.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+          href: ../fundamentals/add-users-azure-active-directory.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
         - name: Felhasználók tömeges létrehozása
           href: users-bulk-add.md
         - name: Felhasználói profilok kezelése
-          href: ../fundamentals/active-directory-users-profile-azure-portal.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+          href: ../fundamentals/active-directory-users-profile-azure-portal.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
         - name: Felhasználóinformációk letöltése
           href: users-bulk-download.md
         - name: Felhasználói fiókok megosztása
           href: users-sharing-accounts.md
         - name: Felhasználók hozzárendelése rendszergazdai szerepkörökhöz
-          href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+          href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
         - name: A felhasználókezelés fejlesztései
           href: users-search-enhanced.md
         - name: Felhasználók tömeges törlése
           href: users-bulk-delete.md
         - name: Törölt felhasználó visszaállítása
-          href: ../fundamentals/active-directory-users-restore.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+          href: ../fundamentals/active-directory-users-restore.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
         - name: Felhasználók tömeges visszaállítása
           href: users-bulk-restore.md
         - name: Felhasználó jogosultságának visszavonása
@@ -57,17 +57,17 @@
         - name: Nem felügyelt könyvtárban található fiók bezárása
           href: users-close-account.md
         - name: Vendégfelhasználók hozzáadása
-          href: /azure/active-directory/b2b/what-is-b2b?context=azure/active-directory/enterprise-users/context/ugr-context
+          href: /azure/active-directory/b2b/what-is-b2b?context=%2fazure/active-directory/enterprise-users/context/ugr-context
         - name: Szerepkörök hozzárendelése vendégfelhasználókhoz
-          href: /azure/active-directory/b2b/add-guest-to-role?context=azure/active-directory/enterprise-users/context/ugr-context
+          href: /azure/active-directory/b2b/add-guest-to-role?context=%2fazure/active-directory/enterprise-users/context/ugr-context
         - name: Vendégfelhasználók hozzáférésének korlátozása
           href: users-restrict-guest-permissions.md
         - name: Dinamikus csoportok és vendégek
-          href: /azure/active-directory/b2b/use-dynamic-groups?context=azure/active-directory/enterprise-users/context/ugr-context
+          href: /azure/active-directory/b2b/use-dynamic-groups?context=%2fazure/active-directory/enterprise-users/context/ugr-context
     - name: A szervezet kezelése
       items:
         - name: Azure AD-szervezetek
-          href: ../fundamentals/active-directory-whatis.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+          href: ../fundamentals/active-directory-whatis.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
         - name: Tartománynevek kezelése
           href: domains-manage.md
         - name: Az altartományok felügyeletének igazolása
@@ -81,13 +81,13 @@
         - name: Címtár átvétele
           href: domains-admin-takeover.md
         - name: Azure AD Connect
-          href: ../hybrid/whatis-hybrid-identity.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+          href: ../hybrid/whatis-hybrid-identity.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
     - name: Csoportok kezelése
       items:
         - name: Hozzáférések kezelése csoportokkal
-          href: ../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+          href: ../fundamentals/active-directory-manage-groups.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
         - name: Csoport létrehozása (Azure Portal)
-          href: ../fundamentals/active-directory-groups-create-azure-portal.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+          href: ../fundamentals/active-directory-groups-create-azure-portal.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
         - name: Csoportok kezelése a PowerShell for Graph (v2) modullal
           href: groups-settings-v2-cmdlets.md
         - name: Csoportok kezelése a PowerShell MSOnline-nal
@@ -95,7 +95,7 @@
         - name: Csoportok és tagok listáinak keresése
           href: groups-members-owners-search.md
         - name: Csoporttagok hozzáadása és eltávolítása
-          href: ../fundamentals/active-directory-groups-members-azure-portal.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+          href: ../fundamentals/active-directory-groups-members-azure-portal.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
         - name: Dinamikus csoportok
           items:
             - name: Dinamikus csoport létrehozása
@@ -117,11 +117,11 @@
         - name: Törölt csoportok visszaállítása
           href: groups-restore-deleted.md
         - name: Csoportbeállítások kezelése
-          href: ../fundamentals/active-directory-groups-settings-azure-portal.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+          href: ../fundamentals/active-directory-groups-settings-azure-portal.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
         - name: Csoporttulajdonosok kezelése
-          href: ../fundamentals/active-directory-accessmanagement-managing-group-owners.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+          href: ../fundamentals/active-directory-accessmanagement-managing-group-owners.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
         - name: Csoportokon belüli csoportok kezelése
-          href: ../fundamentals/active-directory-groups-membership-azure-portal.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+          href: ../fundamentals/active-directory-groups-membership-azure-portal.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
         - name: Csoportszintű hozzáférés biztosítása az SaaS-alkalmazásokhoz
           href: groups-saasapps.md
         - name: Csoportelnevezési szabályzat beállítása
@@ -135,7 +135,7 @@
     - name: Licencek hozzárendelése
       items:
         - name: Licencek hozzárendelése felhasználókhoz
-          href: ../fundamentals/license-users-groups.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+          href: ../fundamentals/license-users-groups.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
         - name: Licencek hozzárendelése egy csoporthoz
           href: licensing-groups-assign.md
         - name: Csoportlicenccel kapcsolatos problémák megoldása
@@ -153,7 +153,7 @@
     - name: Bejelentkezés kezelése
       items:
         - name: Vállalati védjegyezés testreszabása
-          href: ../fundamentals/customize-branding.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+          href: ../fundamentals/customize-branding.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
         - name: Bejelentkezési beállítások
           href: signin-account-support.md
         - name: Kezdőtartomány felderítése
@@ -167,7 +167,7 @@
     - name: Hibaelhárítás
       items:
         - name: Támogatás kérése az Azure AD-hez
-          href: ../fundamentals/active-directory-troubleshooting-support-howto.md?context=azure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
+          href: ../fundamentals/active-directory-troubleshooting-support-howto.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
         - name: Csoportokkal kapcsolatos hibaelhárítás
           href: groups-troubleshooting.md
         - name: Csoportalapú licenceléssel kapcsolatos hibaelhárítás

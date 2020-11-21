@@ -201,7 +201,7 @@
             - name: Integrálás alkalmazásproxyval PingAccess használatával
               href: application-proxy-ping-access-publishing-guide.md
             - name: Integrálás az Azure AD Domain Serviceszel
-              href: ../../active-directory-domain-services/deploy-azure-app-proxy.md?context=azure%252factive-directory%252fmanage-apps%252fcontext%252fmanage-apps-context
+              href: ../../active-directory-domain-services/deploy-azure-app-proxy.md?context=%2fazure%2factive-directory%2fmanage-apps%2fcontext%2fmanage-apps-context
             - name: Integrálás a Power BI-jal
               href: application-proxy-integrate-with-power-bi.md
             - name: Integrálás a Cloud App Security alkalmazással
@@ -281,7 +281,7 @@
 - name: További források
   items:
     - name: Támogatási és súgó lehetőségek fejlesztőknek
-      href: ../develop/developer-support-help-options.md?context=azure%252factive-directory%252fmanage-apps%252fcontext%252fmanage-apps-context
+      href: ../develop/developer-support-help-options.md?context=%2fazure%2factive-directory%2fmanage-apps%2fcontext%2fmanage-apps-context
     - name: Azure visszajelzési fórum
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
     - name: Microsoft Q&A kérdések oldala

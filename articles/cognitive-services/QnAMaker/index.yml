@@ -11,12 +11,12 @@ metadata:
   services: cognitive-services
   title: A QnA Maker dokumentációja
   description: A QnA Maker egy olyan felhőalapú API-szolgáltatás, amely egy beszélgetés típusú, kérdésekből és válaszokból álló réteget hoz létre az adatok alapján. A QnA Maker lehetővé teszi egy kérdés-válasz szolgáltatás működtetését olyan félig strukturált tartalomból, mint a GYIK-dokumentumok, URL-címek és termékútmutatók. A QnA Maker szolgáltatás egyezteti a felhasználók természetes nyelvi kérdéseit a Tudásbázisban szereplő kérdésekkel és válaszokkal, majd a lehető legjobban megfelelő választ adja vissza.
-  ms.openlocfilehash: d82dcd03ce64c76a84811b5789ee5460ba089641
-  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+  ms.openlocfilehash: 487e783aa0c3ac5ad294c34f8522ee54fbfd6aea
+  ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/22/2020
-  ms.locfileid: "92372072"
+  ms.lasthandoff: 11/21/2020
+  ms.locfileid: "95021337"
 landingContent:
 - title: A QnA Maker bemutatása
   linkLists:
@@ -111,7 +111,7 @@ landingContent:
     - text: API-k készítése
       url: https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase
     - text: Válasz API-k létrehozása
-      url: https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime
+      url: https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/Runtime
     - text: A .Net SDK referenciadokumentációja
       url: https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet
     - text: Azure PowerShell

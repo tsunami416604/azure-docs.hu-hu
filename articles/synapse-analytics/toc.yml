@@ -1,5 +1,5 @@
 - name: Azure Synapse (munkaterületek előzetes verziója)
-  href: sql-data-warehouse/index.yml
+  href: overview-what-is.md
 - name: Váltás az Azure Synapse-re (korábban SQL DW)
   href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md
 - name: Áttekintés
@@ -7,10 +7,8 @@
     - name: Mi az az Azure Synapse?
       href: overview-what-is.md
       displayName: overview
-    - name: Hasznos tanácsok
-      href: overview-cheat-sheet.md
-    - name: GYIK
-      href: overview-faq.md
+    - name: Terminológia
+      href: overview-terminology.md
     - name: Kibocsátási megjegyzések
       href: release-notes.md
 - name: Rövid útmutatók

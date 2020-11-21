@@ -49,7 +49,7 @@
         - name: Konfiguráció exportálása és importálása
           href: export-import-provisioning-configuration.md
         - name: Üzembehelyezési jelentések
-          href: ../reports-monitoring/concept-provisioning-logs.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
+          href: ../reports-monitoring/concept-provisioning-logs.md?context=%2fazure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
     - name: Automatikus konfigurálás az MS Graph használatával
       href: 'https://docs.microsoft.com/graph/application-provisioning-configure-api'
     - name: Az alkalmazás üzembe helyezésének hibaelhárítása
@@ -65,7 +65,7 @@
         - name: Hiányzó forrásattribútum
           href: user-provisioning-sync-attributes-for-mapping.md
         - name: Üzembehelyezési naplók
-          href: ../reports-monitoring/concept-provisioning-logs.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
+          href: ../reports-monitoring/concept-provisioning-logs.md?context=%2fazure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
 - name: Referencia
   items:
     - name: SCIM 2.0 protokoll szerinti megfelelőség

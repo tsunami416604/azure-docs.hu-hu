@@ -47,7 +47,7 @@
         - name: Üzembe helyezés a Kubernetesben
           href: deploy-kubernetes.md
         - name: Üzembe helyezés az Azure Data Studióval
-          href: /sql/azure-data-studio/deploy-azure-sql-edge?toc=%252fazure%252fazure-sql-edge%252ftoc.json
+          href: /sql/azure-data-studio/deploy-azure-sql-edge?toc=%2fazure%2fazure-sql-edge%2ftoc.json
     - name: Gépi tanulás
       items:
         - name: Gépi tanulás és mesterséges intelligencia az ONNX-szel
@@ -91,9 +91,9 @@
         - name: DATE_BUCKET (Transact-SQL)
           href: date-bucket-tsql.md
         - name: FIRST_VALUE (Transact-SQL)
-          href: /sql/t-sql/functions/first-value-transact-sql?toc=%252fazure%252fazure-sql-edge%252ftoc.json
+          href: /sql/t-sql/functions/first-value-transact-sql?toc=%2fazure%2fazure-sql-edge%2ftoc.json
         - name: LAST_VALUE (Transact-SQL)
-          href: /sql/t-sql/functions/last-value-transact-sql?toc=%252fazure%252fazure-sql-edge%252ftoc.json
+          href: /sql/t-sql/functions/last-value-transact-sql?toc=%2fazure%2fazure-sql-edge%2ftoc.json
         - name: Adatmegőrzés és -törlés
           items:
             - name: Adatmegőrzés áttekintése
@@ -109,11 +109,11 @@
         - name: Biztonsági áttekintés
           href: security-overview.md
         - name: Biztonsági funkciók
-          href: /sql/linux/sql-server-linux-security-get-started?toc=%252fazure%252fazure-sql-edge%252ftoc.json
+          href: /sql/linux/sql-server-linux-security-get-started?toc=%2fazure%2fazure-sql-edge%2ftoc.json
         - name: Kapcsolatok titkosítása
-          href: /sql/linux/sql-server-linux-encrypted-connections?toc=%252fazure%252fazure-sql-edge%252ftoc.json
+          href: /sql/linux/sql-server-linux-encrypted-connections?toc=%2fazure%2fazure-sql-edge%2ftoc.json
         - name: Azure Security Center for IoT
-          href: ../defender-for-iot/overview.md?bc=%252fazure%252fazure-sql-edge%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fazure-sql-edge%252ftoc.json
+          href: ../defender-for-iot/overview.md?bc=%2fazure%2fazure-sql-edge%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fazure-sql-edge%2ftoc.json
 - name: Útmutató
   items:
     - name: Az SQL Edge konfigurálása
@@ -142,7 +142,7 @@
   items:
     - name: Transact-SQL- (T-SQL-) referencia
       href: /sql/t-sql/language-reference
-- name: További források
+- name: Források
   items:
     - name: Partnerek
       items:

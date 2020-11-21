@@ -4,7 +4,7 @@
   items:
     - name: Mi az a Translator?
       href: translator-info-overview.md
-    - name: Első lépések
+    - name: Gyorsútmutató
       href: quickstart-translator.md
     - name: Nyelvi támogatás
       href: language-support.md
@@ -23,7 +23,7 @@
     - name: Útmutatók
       items:
         - name: Regisztrálás a Translatorra
-          href: translator-text-how-to-signup.md
+          href: ./translator-how-to-signup.md
         - name: Áttérés a Text API 3-as verziójára
           href: migrate-to-v3.md
         - name: Profanitásszűrés hozzáadása

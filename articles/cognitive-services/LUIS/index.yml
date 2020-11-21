@@ -12,12 +12,12 @@ metadata:
   title: A Language Understanding (LUIS) dokumentációja
   titleSuffix: Azure Cognitive Services
   description: A Language Understanding (LUIS) szolgáltatás lehetővé teszi az alkalmazás számára, hogy megértse egy személy saját szavakkal megfogalmazott utasításait. A LUIS gépi tanulást használ, lehetővé téve a fejlesztők számára, hogy olyan alkalmazásokat hozzanak létre, amelyek képesek a felhasználók természetes nyelvi bevitelét fogadni és megérteni.
-  ms.openlocfilehash: 3bae2e6e0a79dbc0106dc71a9510aa4dc318650c
-  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+  ms.openlocfilehash: ff928f1879f8cfd356fa020ff6afaa68b72f63c5
+  ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/22/2020
-  ms.locfileid: "92364184"
+  ms.lasthandoff: 11/21/2020
+  ms.locfileid: "95019381"
 landingContent:
 - title: A Language Understanding (LUIS) bemutatása
   linkLists:
@@ -70,7 +70,7 @@ landingContent:
     - text: Szándék hozzáadása példa beszédelemekkel
       url: luis-how-to-add-intents.md
     - text: Entitások hozzáadása
-      url: luis-how-to-add-example-utterances.md
+      url: ./luis-how-to-add-entities.md
     - text: Kifejezéslista-funkció hozzáadása
       url: luis-how-to-add-features.md
 - title: Verziószámozás, betanítás, tesztelés és közzététel
@@ -78,7 +78,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: Verziókezelés
-      url: luis-concept-version.md
+      url: ./luis-concept-app-iteration.md
     - text: Interaktív tesztelés
       url: luis-concept-test.md
     - text: Kötegelt tesztelés
@@ -110,15 +110,15 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: A C# és a REST használatával
-      url: luis-get-started-cs-get-intent.md
+      url: ./luis-get-started-get-intent-from-rest.md
     - text: A Go és a REST használatával
-      url: luis-get-started-go-get-intent.md
+      url: ./luis-get-started-get-intent-from-rest.md
     - text: A Java és a REST használatával
-      url: luis-get-started-java-get-intent.md
+      url: ./luis-get-started-get-intent-from-rest.md
     - text: A Node.js és a REST használatával
-      url: luis-get-started-node-get-intent.md
+      url: ./luis-get-started-get-intent-from-rest.md
     - text: A Python és a REST használatával
-      url: luis-get-started-python-get-intent.md
+      url: ./luis-get-started-get-intent-from-rest.md
 - title: Referencia
   linkLists:
   - linkListType: reference

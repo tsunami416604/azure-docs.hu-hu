@@ -176,15 +176,15 @@
         - name: Biztonsági alapkonfiguráció
           href: security-baseline.md
         - name: Javaslatok
-          href: ../iot-fundamentals/security-recommendations.md?context=azure%252fiot-hub%252frc%252frc
+          href: ../iot-fundamentals/security-recommendations.md?context=%2fazure%2fiot-hub%2frc%2frc
         - name: Biztonság az alapoktól
-          href: ../iot-fundamentals/iot-security-ground-up.md?context=azure%252fiot-hub%252frc%252frc
+          href: ../iot-fundamentals/iot-security-ground-up.md?context=%2fazure%2fiot-hub%2frc%2frc
         - name: Ajánlott biztonsági eljárások
-          href: ../iot-fundamentals/iot-security-best-practices.md?context=azure%252fiot-hub%252frc%252frc
+          href: ../iot-fundamentals/iot-security-best-practices.md?context=%2fazure%2fiot-hub%2frc%2frc
         - name: Biztonsági architektúra
-          href: ../iot-fundamentals/iot-security-architecture.md?context=azure%252fiot-hub%252frc%252frc
+          href: ../iot-fundamentals/iot-security-architecture.md?context=%2fazure%2fiot-hub%2frc%2frc
         - name: Az IoT üzemelő példányának védelme
-          href: ../iot-fundamentals/iot-security-deployment.md?context=azure%252fiot-hub%252frc%252frc
+          href: ../iot-fundamentals/iot-security-deployment.md?context=%2fazure%2fiot-hub%2frc%2frc
         - name: Az Azure Policy biztonsági vezérlői
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md

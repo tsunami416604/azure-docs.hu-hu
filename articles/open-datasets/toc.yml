@@ -9,9 +9,9 @@
 - name: Oktatóanyag
   items:
     - name: Regresszió automatizált gépi tanulással
-      href: ../machine-learning/tutorial-auto-train-models.md?bc=%252fazure%252fopen-datasets%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fopen-datasets%252ftoc.json
+      href: ../machine-learning/tutorial-auto-train-models.md?bc=%2fazure%2fopen-datasets%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fopen-datasets%2ftoc.json
     - name: Képbesorolási modell bővítése
-      href: ../machine-learning/tutorial-train-models-with-aml.md?bc=%252fazure%252fopen-datasets%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fopen-datasets%252ftoc.json
+      href: ../machine-learning/tutorial-train-models-with-aml.md?bc=%2fazure%2fopen-datasets%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fopen-datasets%2ftoc.json
 - name: Útmutatók
   items:
     - name: Adathalmazok az Azure Machine Learningben

@@ -76,23 +76,23 @@
       href: environment-setup.md
       items:
         - name: Azure Storage-fiókok
-          href: ../../storage/common/storage-account-create.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
+          href: ../../storage/common/storage-account-create.md?context=%2fazure%2fmachine-learning%2fteam-data-science-process%2fcontext%2fml-context
         - name: Platformok és eszközök
           href: platforms-and-tools.md
         - name: R és Python a HDInsight-fürtökön
           items:
             - name: A HDInsight-alapú Spark bemutatása
-              href: ../../hdinsight/spark/apache-spark-overview.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
+              href: ../../hdinsight/spark/apache-spark-overview.md?context=%2fazure%2fmachine-learning%2fteam-data-science-process%2fcontext%2fml-context
             - name: Apache Spark-fürt létrehozása az Azure HDInsightban
-              href: ../../hdinsight/spark/apache-spark-jupyter-spark-sql.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
+              href: ../../hdinsight/spark/apache-spark-jupyter-spark-sql.md?context=%2fazure%2fmachine-learning%2fteam-data-science-process%2fcontext%2fml-context
             - name: PySpark-kernelek Jupyter notebookokhoz
-              href: ../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
+              href: ../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md?context=%2fazure%2fmachine-learning%2fteam-data-science-process%2fcontext%2fml-context
             - name: R Server a HDInsightban
-              href: ../../hdinsight/r-server/r-server-overview.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
+              href: ../../hdinsight/r-server/r-server-overview.md?context=%2fazure%2fmachine-learning%2fteam-data-science-process%2fcontext%2fml-context
             - name: R Server a HDInsightban – első lépések
-              href: ../../hdinsight/r-server/r-server-overview.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
+              href: ../../hdinsight/r-server/r-server-overview.md?context=%2fazure%2fmachine-learning%2fteam-data-science-process%2fcontext%2fml-context
         - name: Machine Learning Studio- (klasszikus) munkaterület
-          href: ../classic/create-workspace.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
+          href: ../classic/create-workspace.md?context=%2fazure%2fmachine-learning%2fteam-data-science-process%2fcontext%2fml-context
     - name: Üzleti igények elemzése
       items:
         - name: A szituáció azonosítása
@@ -113,7 +113,7 @@
                 - name: Az AzCopy használata
                   href: ../../storage/common/storage-use-azcopy-v10.md
                 - name: A Python használata
-                  href: ../../storage/blobs/storage-quickstart-blobs-python.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
+                  href: ../../storage/blobs/storage-quickstart-blobs-python.md?context=%2fazure%2fmachine-learning%2fteam-data-science-process%2fcontext%2fml-context
                 - name: Az SSIS használata
                   href: move-data-to-azure-blob-using-ssis.md
             - name: Áthelyezés virtuális gépen futó SQL-be
@@ -181,9 +181,9 @@
         - name: Modellek létrehozása és betanítása
           items:
             - name: Algoritmusok kiválasztása
-              href: ../how-to-select-algorithms.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
+              href: ../how-to-select-algorithms.md?context=%2fazure%2fmachine-learning%2fteam-data-science-process%2fcontext%2fml-context
             - name: Algoritmus-adatlap
-              href: ../algorithm-cheat-sheet.md?context=azure%252fmachine-learning%252fteam-data-science-process%252fcontext%252fml-context
+              href: ../algorithm-cheat-sheet.md?context=%2fazure%2fmachine-learning%2fteam-data-science-process%2fcontext%2fml-context
     - name: Modellek üzembe helyezése éles környezetben
       href: deploy-models-in-production.md
 - name: Kapcsolódó témakörök

@@ -21,6 +21,10 @@
       href: work-remotely-support.md
     - name: Bastion és virtuális hálózatok közötti társviszony
       href: vnet-peering.md
+    - name: Biztonság
+      items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
 - name: Útmutatók
   items:
     - name: Gazdagép létrehozása
