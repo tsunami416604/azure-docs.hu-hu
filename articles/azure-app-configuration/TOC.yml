@@ -100,6 +100,8 @@
           href: concept-enable-rbac.md
         - name: Azure Managed Identity hozzárendelése
           href: overview-managed-identity.md
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
     - name: Magas rendelkezésre állás
       items:
         - name: Rugalmasság és vészhelyreállítás
