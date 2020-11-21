@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 12693fb11556380e62df277be093ce20c02ff372
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: fd7499bd5e216f2a625d87ea13996da851a1889e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018032"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019211"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Adattárolás és eltávolítás Language Understanding (LUIS) Cognitive Services
 A LUIS a kulcs által meghatározott régiónak megfelelő Azure-adattárban tárolja a titkosított adatmennyiséget. Ezeket az adatkészleteket 30 napig tároljuk. 
@@ -26,7 +26,7 @@ A felhasználók teljes körű hozzáféréssel rendelkeznek az alkalmazás [exp
 
 A hosszúságú kimondott szöveg két különböző helyen is tárolhatók. 
 
-* **A szerzői folyamat**során a rendszer létrehozza és tárolja a hosszúságú kimondott szöveg a szándékban. A sikeres LUIS-alkalmazáshoz hosszúságú kimondott szöveg szükséges. Miután közzétette az alkalmazást, és fogadja a lekérdezéseket a végponton, a végponti kérelem querystring határozza meg, `log=false` hogy a végpontok kivonása van-e tárolva. Ha a rendszer tárolja a végpontot, az a portál **összeállítás** szakaszában található aktív tanulási hosszúságú kimondott szöveg részévé válik az **Endpoint hosszúságú kimondott szöveg áttekintése** szakaszban. 
+* **A szerzői folyamat** során a rendszer létrehozza és tárolja a hosszúságú kimondott szöveg a szándékban. A sikeres LUIS-alkalmazáshoz hosszúságú kimondott szöveg szükséges. Miután közzétette az alkalmazást, és fogadja a lekérdezéseket a végponton, a végponti kérelem querystring határozza meg, `log=false` hogy a végpontok kivonása van-e tárolva. Ha a rendszer tárolja a végpontot, az a portál **összeállítás** szakaszában található aktív tanulási hosszúságú kimondott szöveg részévé válik az **Endpoint hosszúságú kimondott szöveg áttekintése** szakaszban. 
 * Ha **áttekinti a végpont hosszúságú kimondott szöveg**, és felvesz egy leképezést, a rendszer már nem tárolja a megjelölést az áttekinthető végponti hosszúságú kimondott szöveg részeként. A rendszer hozzáadja az alkalmazás szándékához. 
 
 <a name="utterances-in-an-intent"></a>
@@ -55,7 +55,7 @@ Ha nem telepíti át a rendszert, törölheti a fiókját, és az összes alkalm
 A fiók törlése a **Beállítások** lapon érhető el. Válassza ki a fiók nevét a jobb felső navigációs sávon a **Beállítások** lapra való lekéréshez.
 
 ## <a name="delete-an-authoring-resource"></a>Szerzői erőforrás törlése
-Ha [egy szerzői erőforrásra migrált](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring), a Azure Portal törli az erőforráshoz társított összes alkalmazást, valamint a hozzájuk tartozó hosszúságú kimondott szöveg és naplókat is. Az adat megőrzése 90 nappal a végleges törlés előtt történik.    
+Ha [egy szerzői erőforrásra migrált](./luis-migration-authoring.md), a Azure Portal törli az erőforráshoz társított összes alkalmazást, valamint a hozzájuk tartozó hosszúságú kimondott szöveg és naplókat is. Az adat megőrzése 90 nappal a végleges törlés előtt történik.    
 
 Az erőforrás törléséhez nyissa meg a [Azure Portal](https://ms.portal.azure.com/#home) , és válassza ki a Luis authoring-erőforrását. Nyissa meg az **Áttekintés** lapot, és kattintson a lap tetején található **Törlés** gombra. Ezután erősítse meg, hogy az erőforrás törölve lett. 
 

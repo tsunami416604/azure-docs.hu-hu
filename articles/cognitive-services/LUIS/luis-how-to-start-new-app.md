@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/18/2020
-ms.openlocfilehash: fcc803e87b2efd3e94b90eb17258ab3bb156359f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2dd06a7b4c8e6296cda747d17fd3d5be5db0af6b
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541432"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018888"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Új LUIS-alkalmazás létrehozása a LUIS portálon
 A LUIS-alkalmazások többféleképpen is létrehozhatók. Luis-alkalmazást a LUIS-portálon vagy a LUIS authoring [API](developer-reference-resource.md)-kon keresztül hozhat létre.
@@ -24,7 +24,7 @@ A LUIS-alkalmazások többféleképpen is létrehozhatók. Luis-alkalmazást a L
 Több módon is létrehozhat egy új alkalmazást a portálon:
 
 * Kezdjen egy üres alkalmazással, és hozzon létre leképezéseket, hosszúságú kimondott szöveg és entitásokat.
-* Kezdjen egy üres alkalmazással, és adjon hozzá egy [előre elkészített tartományt](luis-how-to-use-prebuilt-domains.md).
+* Kezdjen egy üres alkalmazással, és adjon hozzá egy [előre elkészített tartományt](./howto-add-prebuilt-models.md).
 * Olyan vagy fájlból származó LUIS-alkalmazás importálása, `.lu` `.json` amely már tartalmaz szándékokat, hosszúságú kimondott szöveg és entitásokat.
 
 ## <a name="using-the-authoring-apis"></a>A szerzői API-k használata
@@ -43,7 +43,7 @@ Több módon is létrehozhat egy új alkalmazást a szerzői API-kkal:
 
 ## <a name="create-new-app-in-luis"></a>Új alkalmazás létrehozása a LUIS-ban
 
-1. A **saját alkalmazások** oldalon válassza ki az **előfizetését**, és **hozzon létre**egy **erőforrást** , majd a + létrehozás elemet. 
+1. A **saját alkalmazások** oldalon válassza ki az **előfizetését**, és **hozzon létre** egy **erőforrást** , majd a + létrehozás elemet. 
 
 > [!div class="mx-imgBorder"]
 > ![LUIS-alkalmazások listája](./media/create-app-in-portal.png)
@@ -52,7 +52,7 @@ Több módon is létrehozhat egy új alkalmazást a szerzői API-kkal:
 
     ![Új alkalmazás létrehozása párbeszédpanel](./media/create-pizza-tutorial-app-in-portal.png)
 
-1. Válassza ki az alkalmazás kulturális környezetét, majd válassza a **kész**lehetőséget. A leírás és az előrejelzési erőforrás ezen a ponton nem kötelező. Ezt követően bármikor megadhatja a portál **kezelés** szakaszában.
+1. Válassza ki az alkalmazás kulturális környezetét, majd válassza a **kész** lehetőséget. A leírás és az előrejelzési erőforrás ezen a ponton nem kötelező. Ezt követően bármikor megadhatja a portál **kezelés** szakaszában.
 
     > [!NOTE]
     > A kulturális környezet az alkalmazás létrehozása után nem módosítható.
@@ -75,4 +75,4 @@ A környezeti eszköztár más műveleteket is tartalmaz:
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha az alkalmazás kialakítása magában foglalja a szándék észlelését, [hozzon létre új leképezéseket](luis-how-to-add-intents.md), és adja hozzá például a hosszúságú kimondott szöveg. Ha az alkalmazás kialakítása csak az kibontást tartalmazza, adjon hozzá például hosszúságú kimondott szöveg a none szándékhoz, majd [hozzon létre entitásokat](luis-how-to-add-example-utterances.md), és címkézze fel a példát a hosszúságú kimondott szöveg.
+Ha az alkalmazás kialakítása magában foglalja a szándék észlelését, [hozzon létre új leképezéseket](luis-how-to-add-intents.md), és adja hozzá például a hosszúságú kimondott szöveg. Ha az alkalmazás kialakítása csak az kibontást tartalmazza, adjon hozzá például hosszúságú kimondott szöveg a none szándékhoz, majd [hozzon létre entitásokat](./luis-how-to-add-entities.md), és címkézze fel a példát a hosszúságú kimondott szöveg.

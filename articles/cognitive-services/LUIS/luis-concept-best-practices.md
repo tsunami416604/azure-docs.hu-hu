@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/17/2020
-ms.openlocfilehash: a16267b0bc5d9b550c73dc4e1dafee8304ec0237
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc4475eb64744688e901d2b37e30632d044b0115
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541821"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019313"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Ajánlott eljárások a Language Understanding (LUIS) alkalmazások létrehozásához
 A LUIS-alkalmazás létrehozásához használja az alkalmazás-létrehozási folyamatot:
@@ -87,7 +87,7 @@ Ismerkedjen meg a [hatékony gépi megtanult entitásokkal](luis-concept-entity-
 
 ## <a name="do-build-your-app-iteratively-with-versions"></a>Készítse el az alkalmazás iteratív a verziókkal
 
-Minden authoring ciklusnak egy meglévő verzióról klónozott új [verzióba](luis-concept-version.md)kell esnie.
+Minden authoring ciklusnak egy meglévő verzióról klónozott új [verzióba](./luis-concept-app-iteration.md)kell esnie.
 
 ## <a name="do-build-for-model-decomposition"></a>Build a Model dekompozícióhoz
 

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: b305be693f59b65a62570f656a0132f4f03cf099
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 42a9caff0433808734ee853cbad90a2088bf4e1e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541798"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019245"
 ---
 # <a name="convert-data-format-of-utterances"></a>Hosszúságú kimondott szöveg adatformátumának konvertálása
 A LUIS a következő konverziókat biztosítja a felhasználók teljes leírásához az előrejelzés előtt: "
@@ -26,7 +26,7 @@ A LUIS a következő konverziókat biztosítja a felhasználók teljes leírás�
 A beszéd szövege a LUIS-nal való integrációként van megadva.
 
 ### <a name="intent-conversion-concepts"></a>Szándék-átalakítási fogalmak
-Ha a LUIS szövegre konvertálja a szöveget, lehetővé teszi a szóbeli hosszúságú kimondott szöveg küldését egy végpontra, és megkapta a LUIS-előrejelzési választ. A folyamat a [Speech](https://docs.microsoft.com/azure/cognitive-services/Speech) Service és a Luis közötti integráció. További információ a beszédfelismerési szándékról az [oktatóanyaghoz](../speech-service/how-to-recognize-intents-from-speech-csharp.md).
+Ha a LUIS szövegre konvertálja a szöveget, lehetővé teszi a szóbeli hosszúságú kimondott szöveg küldését egy végpontra, és megkapta a LUIS-előrejelzési választ. A folyamat a [Speech](/azure/cognitive-services/Speech) Service és a Luis közötti integráció. További információ a beszédfelismerési szándékról az [oktatóanyaghoz](../speech-service/how-to-recognize-intents-from-speech-csharp.md).
 
 ### <a name="key-requirements"></a>Fő követelmények
 Ehhez az integrációhoz nem kell **Bing Speech API** kulcsot létrehoznia. Az integrációhoz a Azure Portalban létrehozott **Language Understanding** kulcs működik. Ne használja a LUIS Starter-kulcsot.
@@ -41,4 +41,3 @@ További információ: [kulcs korlátai](luis-limits.md#key-limits) .
 
 > [!div class="nextstepaction"]
 > [Adatok kinyerése](luis-concept-data-extraction.md)
-

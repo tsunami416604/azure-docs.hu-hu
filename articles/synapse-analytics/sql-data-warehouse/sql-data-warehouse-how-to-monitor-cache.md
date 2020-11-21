@@ -7,34 +7,34 @@ manager: craigg
 ms.service: synapse-analytics
 ms.subservice: sql-dw
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: fa5025e0a2bd260adeb23b4ab7c4d5f8bd83a43a
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 041751b5b23dbb3153f1ae638303579a860c0e5b
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026802"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020163"
 ---
-# <a name="how-to-monitor-the-gen2-cache"></a>A Gen2 cache figyelése
+# <a name="how-to-monitor-the-adaptive-cache"></a>Az adaptív gyorsítótár figyelése
 
-Ez a cikk bemutatja, hogyan figyelheti és elháríthatja a lassú lekérdezési teljesítményt, ha meghatározza, hogy a munkaterhelés optimálisan kihasználja-e a Gen2 cache-gyorsítótárat.
+Ez a cikk bemutatja, hogyan figyelheti és elháríthatja a lassú lekérdezési teljesítményt azzal, hogy meghatározza, hogy a számítási feladatok optimálisan hasznosítják-e a dedikált SQL-készletek adaptív gyorsítótárát.
 
-A Gen2-tároló architektúrája automatikusan lekéri a leggyakrabban lekérdezett oszlopcentrikus-szegmenseket a NVMe-alapú SSD-meghajtókon alapuló, Gen2 adattárházak számára tervezett gyorsítótárban. Nagyobb teljesítmény érhető el, ha a lekérdezések a gyorsítótárban lévő szegmenseket kérik le.
+A dedikált SQL-készlet tárolási architektúrája automatikusan lekéri a leggyakrabban lekérdezett oszlopcentrikus-szegmenseket a NVMe-alapú SSD-k által használt gyorsítótárban. Nagyobb teljesítményre lesz szüksége, ha a lekérdezések a gyorsítótárban lévő szegmenseket kérik le.
  
 ## <a name="troubleshoot-using-the-azure-portal"></a>Hibakeresés a Azure Portal használatával
 
-Az Azure Monitor használatával megtekintheti a Gen2 gyorsítótár-metrikáit a lekérdezés teljesítményének hibakereséséhez. Először lépjen a Azure Portalra, és kattintson a **figyelés** , a **metrikák** és a **+ hatókör kijelölése** elemre:
+A Azure Monitor használatával megtekintheti a gyorsítótár-metrikákat a lekérdezés teljesítményének hibakereséséhez. Először lépjen a Azure Portalra, és kattintson a **figyelés**, a **metrikák** és a **+ hatókör kijelölése** elemre:
 
 ![A képernyőképen a Azure Portal Metrikái közül kiválasztott hatókör kiválasztása látható.](./media/sql-data-warehouse-how-to-monitor-cache/cache-0.png)
 
-Az adattárház megkereséséhez használja a keresési és a legördülő sávokat. Ezután válassza az alkalmaz lehetőséget.
+A keresés és a legördülő sávok segítségével keresse meg a dedikált SQL-készletet. Ezután válassza az alkalmaz lehetőséget.
 
 ![A képernyőképen a hatókör kiválasztása panel látható, ahol kiválaszthatja az adattárházat.](./media/sql-data-warehouse-how-to-monitor-cache/cache-1.png)
 
-A Gen2 gyorsítótár hibaelhárításának legfontosabb mérőszámai a **gyorsítótár-találatok százalékos aránya** és a **gyorsítótárban használt százalék** . Válassza a **gyorsítótár találati százaléka** lehetőséget, majd a **metrika hozzáadása** gombbal adja hozzá a **gyorsítótár használt százalékát** . 
+A gyorsítótárral kapcsolatos hibaelhárítás fő mérőszámai a **gyorsítótár-találatok százalékos aránya** és a **gyorsítótárban használt százalék**. Válassza a **gyorsítótár találati százaléka** lehetőséget, majd a **metrika hozzáadása** gombbal adja hozzá a **gyorsítótár használt százalékát**. 
 
 ![Gyorsítótár Metrikái](./media/sql-data-warehouse-how-to-monitor-cache/cache-2.png)
 

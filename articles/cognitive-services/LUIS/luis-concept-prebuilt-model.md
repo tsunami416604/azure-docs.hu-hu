@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.openlocfilehash: 32755ea9dccd2a7d4a0e727c7a006491d5ea3521
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6642e59c2957b298d54bc587853752b9fce74686
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535883"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019143"
 ---
 # <a name="prebuilt-models"></a>Előre összeállított modellek
 
@@ -32,7 +32,7 @@ A LUIS három típusú előre elkészített modellt biztosít. Minden modell bá
 
 ## <a name="prebuilt-domains"></a>Előre összeállított tartományok
 
-Language Understanding (LUIS) előre *elkészített tartományokat*biztosít, amelyek előre betanított [minták és](luis-how-to-add-intents.md) [entitások](luis-concept-entity-types.md) , amelyek együttesen működnek a tartományokban vagy az ügyfélalkalmazások általános csoportjaiban. 
+Language Understanding (LUIS) előre *elkészített tartományokat* biztosít, amelyek előre betanított [minták és](luis-how-to-add-intents.md) [entitások](luis-concept-entity-types.md) , amelyek együttesen működnek a tartományokban vagy az ügyfélalkalmazások általános csoportjaiban. 
 
 Az előre elkészített tartományokat betanítják, és készen állnak a LUIS-alkalmazásba való felvételre. Az előre elkészített tartományhoz tartozó szándékok és entitások teljes mértékben testreszabhatók az alkalmazáshoz való hozzáadásuk után. 
 
@@ -61,4 +61,4 @@ Ha egy előre összeépített entitás szerepel az alkalmazásban, az előrejelz
 
 ## <a name="next-steps"></a>Következő lépések
 
-Megtudhatja, hogyan [adhat hozzá előre elkészített entitásokat](luis-prebuilt-entities.md) az alkalmazáshoz.
+Megtudhatja, hogyan [adhat hozzá előre elkészített entitásokat](./howto-add-prebuilt-models.md) az alkalmazáshoz.

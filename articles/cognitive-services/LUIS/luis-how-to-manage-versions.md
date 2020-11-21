@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.openlocfilehash: 3cf4ce5dc7061065ea501ae1c00cd5b9e5404770
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b93e9fd4047ee3731ef6fe4652bb92ce5145987d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540863"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018820"
 ---
 # <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>Verziók használata az átmeneti vagy éles alkalmazások befolyásolása nélkül
 
-A verziók segítségével különböző modelleket hozhat létre és tehet közzé. A modell módosítása előtt célszerű a jelenlegi aktív modell klónozását az alkalmazás egy másik [verziójára](luis-concept-version.md) .
+A verziók segítségével különböző modelleket hozhat létre és tehet közzé. A modell módosítása előtt célszerű a jelenlegi aktív modell klónozását az alkalmazás egy másik [verziójára](./luis-concept-app-iteration.md) .
 
 Az aktív verzió az a verzió, amelyet a LUIS Portal **Build** szakasza tartalmaz, amely céljait, entitásait, funkcióit és mintáit tartalmazza. A szerzői API-k használatakor nem kell beállítania az aktív verziót, mert a verzióra vonatkozó REST API hívások tartalmazzák az útvonalon található verziót.
 
@@ -64,6 +64,5 @@ Importálhatja `.json` az alkalmazás egy vagy `.lu` több verzióját is.
 ## <a name="other-actions"></a>Egyéb műveletek
 
 * Ha **törölni** szeretne egy verziót, válasszon ki egy verziót a listából, majd válassza a **Törlés** lehetőséget az eszköztárból. Kattintson az **OK** gombra.
-* Egy verzió **átnevezéséhez** válasszon egy verziót a listából, majd válassza az **Átnevezés** lehetőséget az eszköztárból. Adja meg az új nevet, és válassza a **kész**lehetőséget.
+* Egy verzió **átnevezéséhez** válasszon egy verziót a listából, majd válassza az **Átnevezés** lehetőséget az eszköztárból. Adja meg az új nevet, és válassza a **kész** lehetőséget.
 * Egy verzió **exportálásához** válasszon ki egy verziót a listából, majd válassza az **alkalmazás exportálása** lehetőséget az eszköztárból. Válassza a JSON vagy a LU lehetőséget, ha biztonsági mentést szeretne exportálni, vagy a forrás vezérlőelemben szeretné menteni a fájlt, majd válassza az **Exportálás tárolóba** lehetőséget az [alkalmazás egy Luis-tárolóban való használatához](luis-container-howto.md)
-

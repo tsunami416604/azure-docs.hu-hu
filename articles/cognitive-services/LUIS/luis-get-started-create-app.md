@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 10/13/2020
-ms.openlocfilehash: 60151e97c64a3d61044e4b82299573ee59951d46
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 2048079a9b1eb5234d03c6fe57073228bd892d53
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128151"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019160"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Rövid útmutató: Előre összeállított otthonautomatizálási alkalmazás használata
 
@@ -33,10 +33,10 @@ A megjelenő ablakban adja meg a következő adatokat:
 |---------|---------|
 |AName     | Az alkalmazás neve. Például: "Home Automation".        |
 |Kultúra     | A nyelv, amelyet az alkalmazás megértett és beszél.   |
-|Leírás | Az alkalmazás leírása.
+|Description | Az alkalmazás leírása.
 |Előrejelzési erőforrás | Az előrejelzési erőforrás, amely a lekérdezéseket fogja kapni. |
 
-Válassza a **Done** (Kész) lehetőséget.
+Válassza a **Kész** lehetőséget.
 
 >[!NOTE]
 >A kulturális környezet az alkalmazás létrehozása után nem módosítható.
@@ -77,7 +77,7 @@ Miután betanította az alkalmazását, tesztelheti is.
 
 1. Válassza a **teszt** lehetőséget a jobb felső navigációs sávon.
 
-1. Írjon be egy tesztet `Turn off the lights` , például az interaktív teszt ablaktáblába, és nyomja le az ENTER billentyűt. *Kikapcsolhatja például a fények kikapcsolását* .
+1. Írjon be egy tesztet `Turn off the lights` , például az interaktív teszt ablaktáblába, és nyomja le az ENTER billentyűt. *Kikapcsolhatja például a fények kikapcsolását*.
 
     Ebben a példában `Turn off the lights` helyesen van azonosítva, mint a **HomeAutomation. kanyart** legfelső pontozási szándéka.
 
@@ -214,7 +214,7 @@ Ahhoz, hogy a LUIS-előrejelzést egy csevegési robot vagy más ügyfélalkalma
     További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
 
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
@@ -223,4 +223,4 @@ Ahhoz, hogy a LUIS-előrejelzést egy csevegési robot vagy más ügyfélalkalma
 Behívhatja a végpontot kódból:
 
 > [!div class="nextstepaction"]
-> [LUIS-végpont hívása kóddal](luis-get-started-cs-get-intent.md)
+> [LUIS-végpont hívása kóddal](./luis-get-started-get-intent-from-rest.md)

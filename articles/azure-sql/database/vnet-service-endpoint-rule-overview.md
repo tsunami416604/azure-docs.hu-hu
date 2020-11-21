@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 5c5276f11da687f14630bafd007532d172ef3737
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 97be3bf0ecec20c4bf2e1633f893c9aa0d9ba49d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990805"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020282"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Virtuális hálózati szolgáltatási végpontok és szabályok használata a Azure SQL Database-kiszolgálókon
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -80,6 +80,7 @@ Azure SQL Database esetében a virtuális hálózati szabályok funkció a köve
 
 - A virtuális hálózati szolgáltatási végpontok bekapcsolásával Azure SQL Database a MySQL és a PostgreSQL Azure-szolgáltatások végpontját is engedélyezi. A-végpontok esetében azonban sikertelen lehet a végpontokról a MySQL-vagy PostgreSQL-példányokhoz való kapcsolódás.
   - A mögöttes ok az, hogy a MySQL és a PostgreSQL valószínűleg nincs konfigurálva virtuális hálózati szabály. Konfigurálnia kell egy virtuális hálózati szabályt a Azure Database for MySQL és a PostgreSQL-hez, és a kapcsolatok sikeresek lesznek.
+  - Ha olyan SQL logikai kiszolgálón szeretné definiálni a VNet, amely már privát végpontokkal van konfigurálva, állítsa a **nem** értékre a **nyilvános hálózati hozzáférés megtagadása** beállítást.
 
 - A tűzfalon az IP-címtartományok a következő hálózati elemekre vonatkoznak, a virtuális hálózati szabályok azonban nem:
   - [Helyek közötti (S2S) virtuális magánhálózat (VPN)][vpn-gateway-indexmd-608y]

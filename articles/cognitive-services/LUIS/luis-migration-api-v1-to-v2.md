@@ -9,18 +9,18 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 04/02/2019
-ms.openlocfilehash: e1e9ac4ceef843712cc2e39f26ff0aca5341e201
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 867ae2cc7567077786bb0840cd11c47b786be423
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541322"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018752"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>API v1 – v2 áttelepítési útmutató LUIS-alkalmazásokhoz
 Az 1-es verziójú [végpont](https://aka.ms/v1-endpoint-api-docs) és a [szerzői](https://aka.ms/v1-authoring-api-docs) API-k elavultak. Ebből az útmutatóból megtudhatja, hogyan telepítheti át a 2. verziójú [végpontra](https://go.microsoft.com/fwlink/?linkid=2092356) és az API-k [létrehozására](https://go.microsoft.com/fwlink/?linkid=2092087) .
 
 ## <a name="new-azure-regions"></a>Új Azure-régiók
-A LUIS API-kkal új [régiók](https://aka.ms/LUIS-regions) vannak megadva. A LUIS egy másik portált biztosít a régiók csoportjai számára. Az alkalmazást a lekérdezni kívánt régióban kell létrehozni. Az alkalmazások nem telepítik át automatikusan a régiókat. Exportálja az alkalmazást az egyik régióból, majd importálja egy másikba, hogy elérhető legyen egy új régióban.
+A LUIS API-kkal új [régiók](./luis-reference-regions.md) vannak megadva. A LUIS egy másik portált biztosít a régiók csoportjai számára. Az alkalmazást a lekérdezni kívánt régióban kell létrehozni. Az alkalmazások nem telepítik át automatikusan a régiókat. Exportálja az alkalmazást az egyik régióból, majd importálja egy másikba, hogy elérhető legyen egy új régióban.
 
 ## <a name="authoring-route-changes"></a>Az útvonal változásainak létrehozása
 A szerzői művelet API-útvonala megváltozott a **prog** útvonal használatával az **API** -útvonal használatával.
@@ -132,7 +132,7 @@ Számos, a LUIS-metaadatokat visszaadó API új névvel rendelkezik.
 
 
 ## <a name="sample-renamed-to-suggest"></a>"Sample" átnevezve erre: "javaslat"
-A LUIS a meglévő [végpontok hosszúságú kimondott szöveg](luis-how-to-review-endpoint-utterances.md) hosszúságú kimondott szöveg javasolja, amelyek növelhetik a modellt. Az előző verzióban a neve **minta**volt. Az új verzióban a név a **minta alapján módosul.** Ezt nevezzük **[felülvizsgálati végpont hosszúságú kimondott szöveg](luis-how-to-review-endpoint-utterances.md)** a Luis webhelyén.
+A LUIS a meglévő [végpontok hosszúságú kimondott szöveg](luis-how-to-review-endpoint-utterances.md) hosszúságú kimondott szöveg javasolja, amelyek növelhetik a modellt. Az előző verzióban a neve **minta** volt. Az új verzióban a név a **minta alapján módosul.** Ezt nevezzük **[felülvizsgálati végpont hosszúságú kimondott szöveg](luis-how-to-review-endpoint-utterances.md)** a Luis webhelyén.
 
 | version | route |
 |--|--|
@@ -143,7 +143,7 @@ A LUIS a meglévő [végpontok hosszúságú kimondott szöveg](luis-how-to-revi
 
 
 ## <a name="create-app-from-prebuilt-domains"></a>Alkalmazás létrehozása előre elkészített tartományokból
-Az előre [elkészített tartományok](luis-how-to-use-prebuilt-domains.md) előre definiált tartományi modellt biztosítanak. Az előre elkészített tartományok lehetővé teszik, hogy gyorsan fejlessze a LUIS alkalmazást a közös tartományokhoz. Ez az API lehetővé teszi, hogy egy előre elkészített tartományon alapuló új alkalmazást hozzon létre. A válasz az új appID.
+Az előre [elkészített tartományok](./howto-add-prebuilt-models.md) előre definiált tartományi modellt biztosítanak. Az előre elkészített tartományok lehetővé teszik, hogy gyorsan fejlessze a LUIS alkalmazást a közös tartományokhoz. Ez az API lehetővé teszi, hogy egy előre elkészített tartományon alapuló új alkalmazást hozzon létre. A válasz az új appID.
 
 |v2 útvonal|művelet|
 |--|--|
@@ -154,7 +154,7 @@ Az előre [elkészített tartományok](luis-how-to-use-prebuilt-domains.md) elő
 Az exportált 1. x alkalmazás JSON-je néhány olyan területtel rendelkezik, amelyet a [LUIS][LUIS] 2,0-ba való importálás előtt módosítania kell.
 
 ### <a name="prebuilt-entities"></a>Előre összeállított entitások
-Az [előre elkészített entitások](luis-prebuilt-entities.md) módosultak. Győződjön meg arról, hogy a v2 előre elkészített entitásokat használja. Ide tartozik a [datetimeV2](luis-reference-prebuilt-datetimev2.md)használata a DateTime helyett.
+Az [előre elkészített entitások](./howto-add-prebuilt-models.md) módosultak. Győződjön meg arról, hogy a v2 előre elkészített entitásokat használja. Ide tartozik a [datetimeV2](luis-reference-prebuilt-datetimev2.md)használata a DateTime helyett.
 
 ### <a name="actions"></a>Műveletek
 A műveletek tulajdonság már nem érvényes. Üresnek kell lennie
@@ -169,4 +169,4 @@ Lásd: [Luis API Response Codes](luis-reference-response-codes.md).
 
 A v2 API dokumentációjának használatával frissítheti a meglévő REST-hívásokat a LUIS- [végpontra](https://go.microsoft.com/fwlink/?linkid=2092356) és a [szerzői](https://go.microsoft.com/fwlink/?linkid=2092087) API-kra.
 
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
+[LUIS]: ./luis-reference-regions.md

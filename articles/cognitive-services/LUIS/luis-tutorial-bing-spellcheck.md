@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/19/2019
-ms.openlocfilehash: 120852c3e66594b1cf5cd28bb52ce06634211060
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d2a1702ea131e9b1b4bf5e586f4290db3aff7ff
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541092"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018769"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Helytelenül írt szavak kijavítása Bing Spell Check
 
@@ -26,7 +26,7 @@ A Luis-alkalmazást [Bing Spell Check API v7](https://azure.microsoft.com/servic
 
 Ha Bing Spell Check erőforrást szeretne létrehozni a Azure Portalban, kövesse az alábbi utasításokat:
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com).
 
 2. Válassza az **erőforrás létrehozása** lehetőséget a bal felső sarokban.
 
@@ -97,4 +97,4 @@ Két megoldás a következők:
 A [közzétételi](luis-how-to-publish-app.md) lapon engedélyezve van a **Bing helyesírás-ellenőrző engedélyezése** jelölőnégyzet. Ez a kulcs létrehozása és a végpont URL-címének megváltozása. Továbbra is a megfelelő végponti paramétereket kell használnia ahhoz, hogy a helyesírás kijavítva legyen az egyes részleteknél.
 
 > [!div class="nextstepaction"]
-> [További információ a példa hosszúságú kimondott szöveg](luis-how-to-add-example-utterances.md)
+> [További információ a példa hosszúságú kimondott szöveg](./luis-how-to-add-entities.md)

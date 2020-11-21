@@ -11,19 +11,19 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: fb0c29fb68d0bcd2405cc031008c1c8e5035476f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d6f0e5230fb3c59cab690620e837f476f3392a48
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569393"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020078"
 ---
 # <a name="manage-reference-data-for-an-azure-time-series-insights-gen-1-environment-using-c-sharp"></a>Azure Time Series Insights 1. generációs környezethez tartozó referenciák kezelése C Sharp használatával
 
 > [!CAUTION]
 > Ez egy Gen1-cikk.
 
-Ez a cikk bemutatja, hogyan egyesítheti a C#, a [MSAL.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)és a Azure Active Directoryt, hogy programozott API-kéréseket lehessen készíteni a Azure Time Series Insights Gen 1 [Reference adatkezelés API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api)-hoz.
+Ez a cikk bemutatja, hogyan egyesítheti a C#, a [MSAL.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)és a Azure Active Directoryt, hogy programozott API-kéréseket lehessen készíteni a Azure Time Series Insights Gen 1 [Reference adatkezelés API](/rest/api/time-series-insights/gen1-reference-data-api)-hoz.
 
 > [!TIP]
 > A GA C# kód mintáinak megtekintése a következő helyen: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen1-sample/csharp-tsi-gen1-sample) .
@@ -32,9 +32,9 @@ Ez a cikk bemutatja, hogyan egyesítheti a C#, a [MSAL.net](https://github.com/A
 
 Az alábbi mintakód a következő funkciókat mutatja be:
 
-* Hozzáférési jogkivonat beszerzése a [MSAL.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **PublicClientApplication**használatával.
-* Szekvenciális létrehozási, OLVASÁSI, frissítési és TÖRLÉSi műveletek az 1. generációs [hivatkozási adatkezelés API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api)-hoz.
-* Gyakori válasz-kódok, beleértve a [gyakori hibakódokat](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api#validation-and-error-handling).
+* Hozzáférési jogkivonat beszerzése a [MSAL.net](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **PublicClientApplication** használatával.
+* Szekvenciális létrehozási, OLVASÁSI, frissítési és TÖRLÉSi műveletek az 1. generációs [hivatkozási adatkezelés API](/rest/api/time-series-insights/gen1-reference-data-api)-hoz.
+* Gyakori válasz-kódok, beleértve a [gyakori hibakódokat](/rest/api/time-series-insights/gen1-reference-data-api#validation-and-error-handling).
 
     A Reference adatkezelés API egyenként dolgozza fel az egyes elemeket, és egy adott elemmel kapcsolatos hiba miatt nem akadályozza meg, hogy a többi sikeres befejezést hajtson végre. Ha például a kérelem 100 elemet tartalmaz, és egy elem hibát tartalmaz, akkor a 99-es elemek írása megtörténik, és a rendszer elutasítja az egyiket.
 
@@ -42,7 +42,7 @@ Az alábbi mintakód a következő funkciókat mutatja be:
 
 A mintakód fordítása és futtatása előtt végezze el a következő lépéseket:
 
-1. Hozzon létre [egy 1. generációs Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started
+1. Hozzon létre [egy 1. generációs Azure Time Series Insights](./time-series-insights-get-started.md
 ) környezetet.
 
 1. [Hozzon létre egy hivatkozási adatkészletet](time-series-insights-add-reference-data-set.md) a környezetében. Használja a következő hivatkozási adatsémát:
@@ -61,7 +61,7 @@ A mintakód fordítása és futtatása előtt végezze el a következő lépése
 
 ## <a name="project-dependencies"></a>Projekt függőségei
 
-Javasoljuk, hogy a Visual Studio és a **NETCore. app**legújabb verzióját használja:
+Javasoljuk, hogy a Visual Studio és a **NETCore. app** legújabb verzióját használja:
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) – 16.4.2 + verzió
 * [NETCore. app](https://www.nuget.org/packages/Microsoft.NETCore.App/2.2.8) -Version 2.2.8
@@ -313,4 +313,4 @@ namespace CsharpTsiMsalGaSample
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Olvassa el az 1. generációs [referenciát adatkezelés API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api) -dokumentációt.
+* Olvassa el az 1. generációs [referenciát adatkezelés API](/rest/api/time-series-insights/gen1-reference-data-api) -dokumentációt.

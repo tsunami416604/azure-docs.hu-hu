@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: v-demjoh
 keywords: szándék-felismerés
-ms.openlocfilehash: 0d718459e0fd0ea410232d3a165b560aa8c59cd1
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 215b25e440b8cad76e0656e47d32b184edf4ac66
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92174635"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018701"
 ---
 # <a name="what-is-intent-recognition"></a>Mi a szándék-felismerés?
 
@@ -29,7 +29,7 @@ A szándék-felismerés használatával az alkalmazások, eszközök és eszköz
 
 * A LUIS integrálható a Speech Service szolgáltatással a beszédből való szándékfelismerés céljából. Ehhez nincs szükség Speech Service-előfizetésre, csak a LUIS-ra.
 * A beszédfelismerési szándék-felismerés integrálva van az SDK-val. A Speech Service-ben LUIS-kulcsot is használhat.
-* A Speech SDK-n keresztüli szándék-felismerést a [Luis által támogatott régiók egy részhalmaza kínálja](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#intent-recognition).
+* A Speech SDK-n keresztüli szándék-felismerést a [Luis által támogatott régiók egy részhalmaza kínálja](./regions.md#intent-recognition).
 
 ## <a name="get-started"></a>Bevezetés
 
@@ -39,8 +39,8 @@ Tekintse [meg az első lépéseket a szándék](quickstarts/intent-recognition.m
 
 Mintakód a szándék-felismeréshez:
 
-* [Rövid útmutató: Előre összeállított otthonautomatizálási alkalmazás használata](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app)
-* [Beszédfelismerési szándék felismerése a C Speech SDK használatával #](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)
+* [Rövid útmutató: Előre összeállított otthonautomatizálási alkalmazás használata](../luis/luis-get-started-create-app.md)
+* [Beszédfelismerési szándék felismerése a C Speech SDK használatával #](./how-to-recognize-intents-from-speech-csharp.md)
 * [Szándék-felismerés és egyéb Speech Services a C egységben #](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/unity/speechrecognizer)
 * [Leképezések felismerése a Pythonhoz készült Speech SDK használatával](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/python/console)
 * [Szándék-felismerés és egyéb Speech Services a C++ nyelvhez készült Speech SDK használatával Windows rendszeren](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/cpp/windows/console)
@@ -49,7 +49,7 @@ Mintakód a szándék-felismeréshez:
 
 ## <a name="reference-docs"></a>Dokumentációs dokumentumok
 
-* [Beszéd SDK](speech-sdk-reference.md)
+* [Beszéd SDK](./speech-sdk.md)
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: b994e8ce34319da4827d389b49e23ed6e5bcde95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d26a0ef86ab96940f3d5bb96d87340b77f1faca
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653757"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016836"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>Azure Time Series Insights Gen2-környezet diagnosztizálása és megoldása
 
@@ -39,7 +39,7 @@ Számos gyakori oka lehet annak, hogy az adatai nem jelennek meg az [Azure Time 
 
 - Az eseményforrás-adatforrás nem JSON formátumú.
 
-    A Time Series Insights csak a JSON-fájlokat támogatja. JSON-minták esetén olvassa el a [támogatott JSON-alakzatokat](./how-to-shape-query-json.md).
+    A Time Series Insights csak a JSON-fájlokat támogatja. JSON-minták esetén olvassa el a [támogatott JSON-alakzatokat](./concepts-json-flattening-escaping-rules.md).
 
 - Az eseményforrás kulcsa hiányzik egy szükséges engedély.
 
@@ -61,13 +61,13 @@ Számos gyakori oka lehet annak, hogy az adatai nem jelennek meg az [Azure Time 
 
 - A kiépítés idején megadott idősorozat-azonosító tulajdonság helytelen, hiányzó vagy NULL értékű.
 
-    Ez a probléma akkor fordulhat elő, ha az idősorozat-azonosító tulajdonságot helytelenül konfigurálták a környezet kiépítés időpontjában. További információ: [ajánlott eljárások az idősorozat-azonosító kiválasztásához](./time-series-insights-update-how-to-id.md). Jelenleg nem frissíthet meglévő Time Series Insights környezetet más idősorozat-azonosító használatára.
+    Ez a probléma akkor fordulhat elő, ha az idősorozat-azonosító tulajdonságot helytelenül konfigurálták a környezet kiépítés időpontjában. További információ: [ajánlott eljárások az idősorozat-azonosító kiválasztásához](./how-to-select-tsid.md). Jelenleg nem frissíthet meglévő Time Series Insights környezetet más idősorozat-azonosító használatára.
 
 ## <a name="problem-some-data-shows-but-some-is-missing"></a>Probléma: egyes adatértékek, de hiányoznak
 
 Előfordulhat, hogy az idősorozat-azonosító nélkül küld adatokat.
 
-- Ez a probléma akkor fordulhat elő, ha a hasznos adatok idősorozat-azonosítója mező nélkül küld eseményeket. További információért olvassa el a [támogatott JSON-alakzatok](./how-to-shape-query-json.md)című témakört.
+- Ez a probléma akkor fordulhat elő, ha a hasznos adatok idősorozat-azonosítója mező nélkül küld eseményeket. További információért olvassa el a [támogatott JSON-alakzatok](./concepts-json-flattening-escaping-rules.md)című témakört.
 - Ez a probléma akkor fordulhat elő, ha a környezetét szabályozzák.
 
     > [!NOTE]
@@ -111,7 +111,7 @@ Ha az időbélyegző tulajdonság nincs explicit módon megadva, az esemény IoT
 
 - Lehet, hogy egy Time Series Insights S1 vagy S2 környezethez fér hozzá.
 
-   Az idősorozat-modellek csak utólagos elszámolású környezetekben támogatottak. Az S1 vagy S2 környezet Time Series Insights Gen2 Explorerben való elérésével kapcsolatos további információkért olvassa el [az adatok megjelenítése az Explorerben című részt](./time-series-insights-update-explorer.md).
+   Az idősorozat-modellek csak utólagos elszámolású környezetekben támogatottak. Az S1 vagy S2 környezet Time Series Insights Gen2 Explorerben való elérésével kapcsolatos további információkért olvassa el [az adatok megjelenítése az Explorerben című részt](./concepts-ux-panels.md).
 
    [![Nincsenek események a környezetben.](media/preview-troubleshoot/troubleshoot-no-events.png)](media/preview-troubleshoot/troubleshoot-no-events.png#lightbox)
 
@@ -121,7 +121,7 @@ Ha az időbélyegző tulajdonság nincs explicit módon megadva, az esemény IoT
 
 ## <a name="problem-all-my-instances-in-the-gen2-explorer-lack-a-parent"></a>Probléma: a Gen2 Explorerben a saját példányok nem rendelkeznek szülővel
 
-Ez a probléma akkor fordulhat elő, ha a környezet nem rendelkezik meghatározott idősorozat-modell hierarchiával. További információért olvassa el a [Time Series-modellek használata](/azure/time-series-insights/time-series-insights-overview)című témakört.
+Ez a probléma akkor fordulhat elő, ha a környezet nem rendelkezik meghatározott idősorozat-modell hierarchiával. További információért olvassa el a [Time Series-modellek használata](./time-series-insights-overview.md)című témakört.
 
   [![A nem szülő példányok figyelmeztetést jelenítenek meg.](media/preview-troubleshoot/unparented-instances.png)](media/preview-troubleshoot/unparented-instances.png#lightbox)
 
@@ -135,8 +135,8 @@ Ez a probléma akkor fordulhat elő, ha nem a Power BI-összekötő legújabb ve
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Olvassa el, hogyan [dolgozhat a Time Series-modellekkel](/azure/time-series-insights/time-series-insights-overview).
+- Olvassa el, hogyan [dolgozhat a Time Series-modellekkel](./time-series-insights-overview.md).
 
-- További információ a [támogatott JSON-alakzatokról](./how-to-shape-query-json.md).
+- További információ a [támogatott JSON-alakzatokról](./concepts-json-flattening-escaping-rules.md).
 
-- Tekintse át Azure Time Series Insights Gen2 [megtervezését és korlátozásait](./time-series-insights-update-plan.md) .
+- Tekintse át Azure Time Series Insights Gen2 [megtervezését és korlátozásait](./how-to-plan-your-environment.md) .

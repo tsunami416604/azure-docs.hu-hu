@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/30/2020
 keywords: Java, jakartaee, JavaEE, profil, Open-Liberty, WebSphere-Liberty, ARO, openshift, Red Hat
-ms.openlocfilehash: ee4baf8eed26a43728fa52289bce86108c9e8c4a
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 41891b58942efbfd705747cc16219185f2a2daa2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94414577"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018392"
 ---
 # <a name="deploy-a-java-application-with-open-libertywebsphere-liberty-on-an-azure-red-hat-openshift-4-cluster"></a>Java-alkalmazás üzembe helyezése Open Liberty/WebSphere Liberty-vel egy Azure Red Hat OpenShift 4 fürtön
 
@@ -38,7 +38,7 @@ Az útmutató lépéseinek végrehajtásához hajtsa végre az alábbi előfelt�
 
    Bár a "Red Hat pull-kulcs beolvasása" lépés opcionálisként van megjelölve, ez a **cikk szükséges**.  A lekéréses titok lehetővé teszi, hogy az Azure Red Hat OpenShift-fürt megtalálja a nyílt Liberty-kezelőt.
 
-   Ha memória-igényű alkalmazásokat szeretne futtatni a fürtön, a paraméter használatával adja meg a munkavégző csomópontok megfelelő virtuálisgép-méretét `--worker-vm-size` . Például `Standard_E4s_v3` a virtuális gép minimális mérete, hogy a Elasticsearch-kezelőt egy fürtön telepítse. További információ:
+   Ha memória-igényű alkalmazásokat szeretne futtatni a fürtön, a paraméter használatával adja meg a munkavégző csomópontok megfelelő virtuálisgép-méretét `--worker-vm-size` . Például `Standard_E4s_v3` a virtuális gép minimális mérete, hogy a Elasticsearch-kezelőt egy fürtön telepítse. További információkért lásd:
 
    * [Azure CLI fürt létrehozásához](https://docs.microsoft.com/cli/azure/aro?view=azure-cli-latest&preserve-view=true#az-aro-create)
    * [A virtuális gépek támogatott méretei a memória optimalizálása esetén](/azure/openshift/support-policies-v4#memory-optimized)
@@ -98,7 +98,7 @@ Miután létrehozta és csatlakoztatta a fürtöt, telepítse az Open Liberty op
 2. Navigáljon a **kezelők**  >  **OperatorHub** , és keresse **meg a nyílt Liberty operátort**.
 3. Válassza a **szabadság-kezelő megnyitása** lehetőséget a keresési eredmények közül.
 4. Válassza a **Telepítés** lehetőséget.
-5. Az előugró **ablak létrehozása-kezelő előfizetésben** a **fürt összes névterét (alapértelmezett)** a **telepítési mód** , a **bétaverzió** a **frissítési csatornához** és az **automatikus** **jóváhagyási stratégia** esetében:
+5. Az előugró **ablak létrehozása-kezelő előfizetésben** a **fürt összes névterét (alapértelmezett)** a **telepítési mód**, a **bétaverzió** a **frissítési csatornához** és az **automatikus** **jóváhagyási stratégia** esetében:
 
    ![kezelői előfizetés létrehozása a nyílt Liberty-kezelőhöz](./media/howto-deploy-java-liberty-app/install-operator.png)
 6. Válassza az **előfizetés** lehetőséget, és várjon egy percet, amíg meg nem jelenik a nyílt Liberty operátor.
@@ -126,7 +126,7 @@ Ha az alkalmazást nyitott szabadságon szeretné futtatni, létre kell hoznia e
    [INFO] Source compilation was successful.
    ```
 
-1. A böngészőben nyissa meg [http://localhost:9080/](http://localhost:9080/) az alkalmazás kezdőlapját. Az alkalmazás az alábbi képhez hasonlóan fog kinézni:
+1. A böngészőben nyissa meg `http://localhost:9080/` az alkalmazás kezdőlapját. Az alkalmazás az alábbi képhez hasonlóan fog kinézni:
 
    ![JavaEE Cafe webes felhasználói felület](./media/howto-deploy-java-liberty-app/javaee-cafe-web-ui.png)
 1. Nyomja le a **Control-C** billentyűt az alkalmazás leállításához és a Liberty-kiszolgáló megnyitásához.
@@ -164,7 +164,7 @@ Mielőtt telepítené a tároló alkalmazást egy távoli fürtön, futtassa a h
 
 1. Futtassa a parancsot a `docker run -it --rm -p 9080:9080 javaee-cafe-simple:1.0.0` konzolon.
 2. Várjon, amíg a Liberty-kiszolgáló elindul, és az alkalmazás üzembe helyezése sikeresen megtörtént.
-3. A böngészőben nyissa meg [http://localhost:9080/](http://localhost:9080/) az alkalmazás kezdőlapját.
+3. A böngészőben nyissa meg `http://localhost:9080/` az alkalmazás kezdőlapját.
 4. Nyomja le a **Control-C** billentyűt az alkalmazás és a Liberty-kiszolgáló leállításához.
 
 ### <a name="push-the-image-to-the-container-image-registry"></a>A rendszerkép leküldése a tároló rendszerképének Hivatalához
@@ -233,7 +233,7 @@ Most már üzembe helyezheti a minta Liberty-alkalmazást az előfeltételeken v
 Mivel a Liberty-alkalmazások kezeléséhez a nyílt Liberty operátort használjuk, létre kell hozni az *egyéni erőforrás-definíció* egy példányát, amelynek típusa "OpenLibertyApplication". A kezelő ezt követően gondoskodik az üzembe helyezéshez szükséges OpenShift-erőforrások kezelésének minden aspektusáról.
 
 1. Jelentkezzen be a OpenShift webkonzolra a böngészőjében az Azure AD-felhasználó hitelesítő adataival.
-1. Bontsa ki a **Home (Kezdőlap** ) lehetőséget, és válassza a **Projects**  >  **Open-Liberty-bemutató** projektet.
+1. Bontsa ki a **Home (Kezdőlap**) lehetőséget, és válassza a **Projects**  >  **Open-Liberty-bemutató** projektet.
 1. Navigáljon a **kezelők** által  >  **telepített operátorokhoz**.
 1. A lap közepén válassza a **szabadság-kezelő megnyitása** lehetőséget.
 1. A lap közepén válassza a **szabadság alkalmazás megnyitása** lehetőséget.  A felhasználói felületen lévő elemek navigációja a használatban lévő technológiák tényleges betárolási hierarchiáját tükrözi.
@@ -316,7 +316,7 @@ oc delete -f openlibertyapplication.yaml
 
 Törölje az ARO-fürtöt az [oktatóanyag: Azure Red Hat OpenShift 4-fürt törlése](/azure/openshift/tutorial-delete-cluster) című témakör lépéseit követve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az útmutatóban megtanulta, hogyan teheti meg a következőket:
 > [!div class="checklist"]

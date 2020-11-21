@@ -11,12 +11,12 @@ ms.date: 9/25/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 60fb258fe2c6063b9b9a3ced0f4ba5f71ffd9d7c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ead3393218255808eb67983251fcf9f2561c82c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449530"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020180"
 ---
 # <a name="use-azure-stream-analytics-with-azure-synapse-analytics"></a>Az Azure Stream Analytics használata az Azure Stream Analyticsszel
 
@@ -32,7 +32,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja az adattárházat kimeneti f
     2. Event Generator-alkalmazás konfigurálása és elindítása
     3. Stream Analytics-feladatok kiépítése
     4. A feladatok bemenetének és lekérdezésének megadása
-* Azure szinapszis SQL-készlet az adattárházhoz – új adattárház létrehozásához kövesse a rövid útmutató lépéseit [egy új adattárház létrehozásához](create-data-warehouse-portal.md).
+* Szinapszis dedikált SQL-készlet az adattárházhoz – új adattárház létrehozásához kövesse a rövid útmutató lépéseit [egy új adattárház létrehozásához](create-data-warehouse-portal.md).
 
 ## <a name="specify-streaming-output-to-point-to-your-data-warehouse"></a>Adja meg az adatraktárra mutató folyamatos átviteli kimenetet
 
@@ -52,8 +52,8 @@ Kattintson a **Hozzáadás** gombra, és válassza az **Azure szinapszis Analyti
 
 * *Kimeneti alias*: adjon meg egy rövid nevet a feladatok kimenetének.
 * *Előfizetés*:
-  * Ha az adattárház ugyanabban az előfizetésben található, mint a Stream Analytics-feladatokkal, kattintson az ***Azure szinapszis Analytics kiválasztása az előfizetések közül***.
-  * Ha az adattárház egy másik előfizetésben található, kattintson az Azure szinapszis Analytics beállításainak manuális megadása lehetőségre.
+  * Ha az adattárháza ugyanabban az előfizetésben van, mint a Stream Analytics-feladatot, kattintson a * az **Azure szinapszis Analytics kiválasztása az előfizetések közül**.
+  _ Ha az adattárház egy másik előfizetésben található, kattintson az Azure szinapszis Analytics beállításainak manuális megadása lehetőségre.
 * *Adatbázis*: válassza ki a célként szolgáló adatbázist a legördülő listából.
 * *Felhasználónév*: adja meg egy olyan fiók felhasználónevét, amely rendelkezik írási engedéllyel az adatbázishoz.
 * *Password (jelszó*): adja meg a megadott felhasználói fiók jelszavát.
@@ -100,23 +100,23 @@ WITH (DISTRIBUTION = ROUND_ROBIN)
 
 ### <a name="step-5"></a>5. lépés
 
-A Azure Portal Stream Analytics feladatokhoz kattintson a feladatokra.  Kattintson a ***teszt*** gombra a ***kimenet részletei*** ablaktáblán.
+A Azure Portal Stream Analytics feladatokhoz kattintson a feladatokra.  Kattintson a **_test_* _ gombra a _*_kimenet részletei_*_ ablaktáblán.
 
 ![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asatest.png)Ha az adatbázishoz való csatlakozás sikeres volt, megjelenik egy értesítés a portálon.
 
 ### <a name="step-6"></a>6. lépés
 
-Kattintson a ***lekérdezés*** menü ***feladatok topológiája*** elemére, és módosítsa a lekérdezést, hogy adatokat helyezzen be a létrehozott stream-kimenetbe.  A lekérdezés teszteléséhez kattintson a ***kiválasztott lekérdezés tesztelése*** gombra.  Ha a lekérdezési teszt sikeres, kattintson a ***lekérdezés mentése*** gombra.
+Kattintson a _*_lekérdezés_*_ menü _*_feladatok topológiája_*_ elemére, és módosítsa a lekérdezést, hogy adatokat helyezzen be a létrehozott stream-kimenetbe.  A lekérdezés teszteléséhez kattintson a _*_kiválasztott lekérdezés tesztelése_*_ gombra.  Ha a lekérdezési teszt sikeres, kattintson a _*_lekérdezés mentése_*_ gombra.
 
 ![Lekérdezés mentése](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaquery.png)
 
 ### <a name="step-7"></a>7. lépés
 
-Indítsa el a Azure Stream Analytics feladatot.  Kattintson a ***Start*** gombra az ***Áttekintés*** menüben.
+Indítsa el a Azure Stream Analytics feladatot.  Kattintson a _*_Start_*_ gombra az _*_Áttekintés_*_ menüben.
 
 ![Stream Analytics-feladat indítása](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastart.png)
 
-Kattintson a ***Start gombra a kezdési*** feladatok ablaktáblán.
+Kattintson az _ *_Start_** gombra a kezdési feladatok ablaktáblán.
 
 ![Kattintson a Start gombra](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastartconfirm.png)
 

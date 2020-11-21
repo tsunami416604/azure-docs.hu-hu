@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 86e3422cbd1cbf92a0d0d218267001c934403753
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: cc3a08f383368b189e41bebd204707f2483e77c0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930696"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018307"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>A gazdagépek RDP protokoll (RDP) tulajdonságainak testreszabása
 
@@ -20,7 +20,7 @@ ms.locfileid: "91930696"
 
 A gazdagépek RDP protokoll (RDP) tulajdonságainak (például a többmonitoros élmény és a hangátirányítás) testreszabása lehetővé teszi, hogy a felhasználók igényei alapján optimális élményt nyújtson a felhasználóknak. Az RDP-tulajdonságokat a Windows rendszerű virtuális asztali számítógépeken a Azure Portal vagy az **Update-AzWvdHostPool** parancsmag *-CustomRdpProperty* paraméter használatával szabhatja testre.
 
-A támogatott tulajdonságok és az alapértelmezett értékek teljes listájáért tekintse meg a [támogatott RDP-fájlok beállításait](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context) .
+A támogatott tulajdonságok és az alapértelmezett értékek teljes listájáért tekintse meg a [támogatott RDP-fájlok beállításait](/windows-server/remote/remote-desktop-services/clients/rdp-files?context=%2fazure%2fvirtual-desktop%2fcontext%2fcontext) .
 
 ## <a name="default-rdp-file-properties"></a>Az RDP-fájl alapértelmezett tulajdonságai
 
@@ -42,7 +42,7 @@ Az RDP-tulajdonságok konfigurálása a Azure Portalban:
 
 1. Jelentkezzen be az Azure-ba <https://portal.azure.com> .
 2. Adja meg a **Windows rendszerű virtuális asztalt** a keresősávban.
-3. A szolgáltatások területen válassza a **Windows virtuális asztal**elemet.
+3. A szolgáltatások területen válassza a **Windows virtuális asztal** elemet.
 4. A Windows rendszerű virtuális asztal lapon a képernyő bal oldalán található menüben válassza a **gazdagép-készletek** elemet.
 5. Válassza ki a frissíteni kívánt **gazdagép-készlet nevét** .
 6. A képernyő bal oldalán található menüben válassza az **RDP-tulajdonságok** lehetőséget.

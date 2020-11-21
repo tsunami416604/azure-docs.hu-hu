@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0f40c91672310d5963dab01180ea92633e970c5c
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: eda648a4d00a0ab4a51c66510060ce16421972ff
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055366"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020010"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Útmutató: áttelepítés az Azure Access Control Service
 
@@ -103,7 +103,7 @@ Az ebben a szakaszban ismertetett lépéseket követve megállapíthatja, hogy m
 
     Ha például az egyik névtér a contoso-test, ugorjon a következőre: `https://contoso-test.accesscontrol.windows.net`
 
-2. A **megbízhatósági kapcsolatok**területen válassza a **függő entitások alkalmazások** lehetőséget, hogy megtekintse azon alkalmazások LISTÁJÁT, amelyeket az ACS-nyugdíjazás érint.
+2. A **megbízhatósági kapcsolatok** területen válassza a **függő entitások alkalmazások** lehetőséget, hogy megtekintse azon alkalmazások LISTÁJÁT, amelyeket az ACS-nyugdíjazás érint.
 3. Ismételje meg a 1-2. lépést minden más ACS-névtérnél.
 
 ## <a name="retirement-schedule"></a>Nyugdíjazási ütemterv
@@ -148,7 +148,7 @@ Minden olyan Microsoft Cloud Service, amely elfogadja a Access Control által ki
 
 A SharePoint 2013, a 2016 és a SharePoint Online ügyfelei hosszú ideig használják az ACS-t a felhőben, a helyszínen és a hibrid forgatókönyvekben használt hitelesítési célokra. A SharePoint egyes funkcióit és használati eseteit az ACS-nyugdíjazás fogja érinteni, míg mások nem. Az alábbi táblázat az ACS-t használó legnépszerűbb SharePoint-funkciók áttelepítési Útmutatóját foglalja össze:
 
-| Szolgáltatás | Útmutató |
+| Funkció | Útmutató |
 | ------- | -------- |
 | Felhasználók hitelesítése az Azure AD-ből | Korábban az Azure AD nem támogatta a SharePoint által a hitelesítéshez szükséges SAML 1,1-tokeneket, és az ACS-t olyan közvetítőként használták, amely az Azure AD-tokenek formátumával kompatibilis a SharePoint rendszerrel. Mostantól [közvetlenül kapcsolódhat a sharepointhoz az Azure ad-hez az Azure ad alkalmazás Gallery SharePoint helyszíni alkalmazás használatával](../saas-apps/sharepoint-on-premises-tutorial.md). |
 | [Alkalmazás-hitelesítés & kiszolgáló – kiszolgáló hitelesítés a helyszíni SharePointban](/SharePoint/security-for-sharepoint-server/authentication-overview) | Az ACS-nyugdíjazás nem érinti; nincs szükség módosításra. | 
@@ -287,7 +287,7 @@ A [Auth0](https://auth0.com/acs) egy rugalmas felhőalapú Identitáskezelő szo
 
 ![Ez a rendszerkép a ping Identity emblémát jeleníti meg](./media/active-directory-acs-migration/rsz-ping.png)
 
-A [ping Identity](https://www.pingidentity.com) két, az ACS-hez hasonló megoldást kínál. A PingOne egy felhőalapú identitás-szolgáltatás, amely az ACS számos szolgáltatását támogatja, és a PingFederate egy hasonló a helyszíni Identity termékhez, amely nagyobb rugalmasságot biztosít. A termékek használatával kapcsolatos további információkért tekintse meg a [ping ACS-kivonulási útmutatóját](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) .
+A [ping Identity](https://www.pingidentity.com) két, az ACS-hez hasonló megoldást kínál. A PingOne egy felhőalapú identitás-szolgáltatás, amely az ACS számos szolgáltatását támogatja, és a PingFederate egy hasonló a helyszíni Identity termékhez, amely nagyobb rugalmasságot biztosít. A termékek használatával kapcsolatos további információkért tekintse meg a [ping ACS-kivonulási útmutatóját](https://www.pingidentity.com/en/company/blog/posts/2017/migrating-from-microsoft-acs-to-ping-identity.html) .
 
 Célunk, hogy a ping Identity és Auth0 használatával biztosítható legyen, hogy minden Access Control ügyfél áttelepítési útvonala legyen az alkalmazásokhoz és szolgáltatásokhoz, amelyek minimálisra csökkentsék a Access Controlból való áttéréshez szükséges munkát.
 
@@ -351,7 +351,7 @@ Ezekben az esetekben érdemes lehet áttelepíteni a webalkalmazást egy másik 
 A [Auth0](https://auth0.com/acs) egy rugalmas felhőalapú Identitáskezelő szolgáltatás, amely [magas szintű áttelepítési útmutatót hozott létre a Access Control ügyfelei számára](https://auth0.com/acs), és szinte minden olyan funkciót támogat, amelyet az ACS tesz.
 
 ![Ez a képen látható, hogy a ping Identity embléma ](./media/active-directory-acs-migration/rsz-ping.png)
- [ping Identity](https://www.pingidentity.com) két, az ACS-hez hasonló megoldást kínál. A PingOne egy felhőalapú identitás-szolgáltatás, amely az ACS számos szolgáltatását támogatja, és a PingFederate egy hasonló a helyszíni Identity termékhez, amely nagyobb rugalmasságot biztosít. A termékek használatával kapcsolatos további információkért tekintse meg a [ping ACS-kivonulási útmutatóját](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) .
+ [ping Identity](https://www.pingidentity.com) két, az ACS-hez hasonló megoldást kínál. A PingOne egy felhőalapú identitás-szolgáltatás, amely az ACS számos szolgáltatását támogatja, és a PingFederate egy hasonló a helyszíni Identity termékhez, amely nagyobb rugalmasságot biztosít. A termékek használatával kapcsolatos további információkért tekintse meg a [ping ACS-kivonulási útmutatóját](https://www.pingidentity.com/en/company/blog/posts/2017/migrating-from-microsoft-acs-to-ping-identity.html) .
 
 Célunk, hogy a ping Identity és Auth0 használatával biztosítható legyen, hogy minden Access Control ügyfél áttelepítési útvonala legyen az alkalmazásokhoz és szolgáltatásokhoz, amelyek minimálisra csökkentsék a Access Controlból való áttéréshez szükséges munkát.
 

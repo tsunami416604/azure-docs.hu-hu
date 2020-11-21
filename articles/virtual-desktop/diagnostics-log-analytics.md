@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a3fccc934fafd8ff7db2cffbd6ba641329ba8de2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d8b696b175c4ef841eef1a51f1d357d1781cba7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89006805"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018290"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Log Analytics használata a diagnosztikai szolgáltatáshoz
 
@@ -46,7 +46,7 @@ Azure Monitor lehetővé teszi a Windows rendszerű virtuális asztali adatelemz
 A Log Analytics használata előtt létre kell hoznia egy munkaterületet. Ehhez kövesse az alábbi két cikk utasításait:
 
 - Ha inkább a Azure Portal használatát kívánja használni, tekintse meg [a log Analytics munkaterület létrehozása a Azure Portalban](../azure-monitor/learn/quick-create-workspace.md)című témakört.
-- Ha inkább a PowerShellt szeretné megtekinteni, olvassa el [a log Analytics munkaterület létrehozása a PowerShell használatával](../azure-monitor/learn/quick-create-workspace-posh.md)című témakört.
+- Ha inkább a PowerShellt szeretné megtekinteni, olvassa el [a log Analytics munkaterület létrehozása a PowerShell használatával](../azure-monitor/platform/powershell-workspace-configuration.md)című témakört.
 
 Miután létrehozta a munkaterületet, kövesse a [Windows rendszerű számítógépek Összekapcsolásának Azure monitor](../azure-monitor/platform/log-analytics-agent.md#workspace-id-and-key) a következő információk beszerzéséhez című témakör utasításait:
 
@@ -78,12 +78,12 @@ Log Analytics beállítása egy új objektumhoz:
      >[!IMPORTANT]
      >Ne feledje, hogy minden egyes figyelni kívánt Azure Resource Manager-objektum esetében engedélyezze a diagnosztika engedélyezését. Az adatműveletek a diagnosztika engedélyezése után lesznek elérhetők a tevékenységekhez. Az első beállítás után néhány órát is igénybe vehet.
 
-5. Adja meg a beállítások konfigurációjának nevét, majd kattintson a **küldés log Analytics**lehetőségre. A használt névnek nem tartalmazhat szóközt, és meg kell felelnie az [Azure elnevezési konvencióinak](../azure-resource-manager/management/resource-name-rules.md). A naplók részeként kiválaszthatja a Log Analyticsba felvenni kívánt beállításokat, például az ellenőrzőpontot, a hibát, a felügyeletet és így tovább.
+5. Adja meg a beállítások konfigurációjának nevét, majd kattintson a **küldés log Analytics** lehetőségre. A használt névnek nem tartalmazhat szóközt, és meg kell felelnie az [Azure elnevezési konvencióinak](../azure-resource-manager/management/resource-name-rules.md). A naplók részeként kiválaszthatja a Log Analyticsba felvenni kívánt beállításokat, például az ellenőrzőpontot, a hibát, a felügyeletet és így tovább.
 
 6. Kattintson a **Mentés** gombra.
 
 >[!NOTE]
->Log Analytics lehetővé teszi az adatok adatfolyamként való továbbítását [Event Hubs](../event-hubs/event-hubs-about.md) vagy archiválását egy Storage-fiókba. A szolgáltatással kapcsolatos további tudnivalókért tekintse meg az [Azure monitoring-adatok továbbítása az Event hub](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) -ba és az Azure-beli [erőforrás-naplók archiválása a Storage-fiókba](../azure-monitor/platform/resource-logs-collect-storage.md)című
+>Log Analytics lehetővé teszi az adatok adatfolyamként való továbbítását [Event Hubs](../event-hubs/event-hubs-about.md) vagy archiválását egy Storage-fiókba. A szolgáltatással kapcsolatos további tudnivalókért tekintse meg az [Azure monitoring-adatok továbbítása az Event hub](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) -ba és az Azure-beli [erőforrás-naplók archiválása a Storage-fiókba](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)című
 
 ## <a name="how-to-access-log-analytics"></a>Hozzáférés Log Analytics
 
@@ -91,30 +91,30 @@ Log Analytics munkaterületeket a Azure Portal vagy a Azure Monitorban érheti e
 
 ### <a name="access-log-analytics-on-a-log-analytics-workspace"></a>Log Analytics elérése Log Analytics munkaterületen
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 
-2. **Log Analytics munkaterület**keresése.
+2. **Log Analytics munkaterület** keresése.
 
-3. A szolgáltatások területen válassza a **log Analytics munkaterületek**lehetőséget.
+3. A szolgáltatások területen válassza a **log Analytics munkaterületek** lehetőséget.
 
 4. A listából válassza ki azt a munkaterületet, amelyet a Windows rendszerű virtuális asztali objektumhoz konfigurált.
 
-5. A munkaterületen kattintson a **naplók**elemre. A menüparancsokat kiszűrheti a **keresési** függvénnyel.
+5. A munkaterületen kattintson a **naplók** elemre. A menüparancsokat kiszűrheti a **keresési** függvénnyel.
 
 ### <a name="access-log-analytics-on-azure-monitor"></a>Hozzáférési Log Analytics Azure Monitor
 
 1. Bejelentkezés az Azure Portalra
 
-2. Keresse meg és válassza a **figyelő**elemet.
+2. Keresse meg és válassza a **figyelő** elemet.
 
-3. Válassza a **naplók**lehetőséget.
+3. Válassza a **naplók** lehetőséget.
 
 4. A lekérdezés hatókörének beállításához kövesse a naplózás lapon megjelenő utasításokat.
 
 5. Készen áll a diagnosztika lekérdezésére. Az összes diagnosztikai tábla "WVD" előtaggal rendelkezik.
 
 >[!NOTE]
->A Azure Monitor-naplókban tárolt táblázatokkal kapcsolatos részletesebb információkért tekintse meg a [Azure monitor az adatok újrakerítése](https://docs.microsoft.com/azure/azure-monitor/reference/)című témakört. A Windows rendszerű virtuális asztallal kapcsolatos összes tábla "WVD" címkével rendelkezik.
+>A Azure Monitor-naplókban tárolt táblázatokkal kapcsolatos részletesebb információkért tekintse meg a [Azure monitor az adatok újrakerítése](/azure/azure-monitor/reference/)című témakört. A Windows rendszerű virtuális asztallal kapcsolatos összes tábla "WVD" címkével rendelkezik.
 
 ## <a name="cadence-for-sending-diagnostic-events"></a>A diagnosztikai események küldésének ritmusa
 
@@ -129,14 +129,14 @@ Log Analytics csak a közbenső állapotú jelentések a kapcsolódási tevéken
 ## <a name="example-queries"></a>Példa a lekérdezésekre
 
 Az Azure Monitor Log Analytics felhasználói felületén keresztül érheti el például a lekérdezéseket:
-1. Lépjen a Log Analytics munkaterületre, majd válassza a **naplók**lehetőséget. A példaként szolgáló lekérdezés felhasználói felülete automatikusan megjelenik.
+1. Lépjen a Log Analytics munkaterületre, majd válassza a **naplók** lehetőséget. A példaként szolgáló lekérdezés felhasználói felülete automatikusan megjelenik.
 1. Módosítsa a szűrőt **kategóriára**.
 1. Válassza a **Windows virtuális asztal** lehetőséget az elérhető lekérdezések áttekintéséhez.
 1. Válassza a **Futtatás** lehetőséget a kijelölt lekérdezés futtatásához.
 
-További információ a [Azure Monitor log Analytics mentett lekérdezésekben](../azure-monitor/log-query/saved-queries.md)található minta lekérdezési felületről.
+További információ a [Azure Monitor log Analytics mentett lekérdezésekben](../azure-monitor/log-query/example-queries.md)található minta lekérdezési felületről.
 
-A következő lekérdezési lista lehetővé teszi egy adott felhasználó kapcsolatainak vagy problémáinak áttekintését. Ezeket a lekérdezéseket a [log Analytics lekérdezés-szerkesztőben](../azure-monitor/log-query/get-started-portal.md#write-and-run-basic-queries)futtathatja. Minden lekérdezésnél cserélje le a helyére a `userupn` megkeresni kívánt felhasználó egyszerű felhasználónevét.
+A következő lekérdezési lista lehetővé teszi egy adott felhasználó kapcsolatainak vagy problémáinak áttekintését. Ezeket a lekérdezéseket a [log Analytics lekérdezés-szerkesztőben](../azure-monitor/log-query/log-analytics-tutorial.md#write-a-query)futtathatja. Minden lekérdezésnél cserélje le a helyére a `userupn` megkeresni kívánt felhasználó egyszerű felhasználónevét.
 
 
 Egyetlen felhasználóhoz tartozó összes kapcsolat megkeresése:

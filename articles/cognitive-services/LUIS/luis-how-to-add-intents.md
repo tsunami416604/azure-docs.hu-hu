@@ -9,25 +9,25 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
 ms.service: cognitive-services
-ms.openlocfilehash: c2802f1b41ed2842e12c808a8c380ebd646ffa03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2401c032f0fc90024e0049fad5f696b8a184544
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540931"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018939"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>Leképezések hozzáadása a hosszúságú kimondott szöveg felhasználói szándékának meghatározásához
 
 Vegyen fel [leképezéseket](luis-concept-intent.md) a Luis-alkalmazásba, hogy azonosítsa az azonos szándékú kérdések vagy parancsok csoportjait.
 
-A LUIS-portálon a leképezések a felső navigációs sáv **Build** szakaszán, majd a bal oldali panel **céljainak**megfelelően kezelhetők.
+A LUIS-portálon a leképezések a felső navigációs sáv **Build** szakaszán, majd a bal oldali panel **céljainak** megfelelően kezelhetők.
 
 ## <a name="add-an-intent-to-your-app"></a>Szándék hozzáadása az alkalmazáshoz
 
 1. Jelentkezzen be a [Luis-portálra](https://www.luis.ai), és válassza ki az **előfizetését** és a **szerzői erőforrást** , hogy megtekintse az adott szerzői erőforráshoz rendelt alkalmazásokat.
 1. Nyissa meg az alkalmazást úgy, hogy kiválasztja a nevét a **saját alkalmazások** oldalon.
-1. A **leképezések** lapon válassza a **+ Létrehozás**elemet.
-1. Az **Új leképezés létrehozása** párbeszédpanelen adja meg a leképezés nevét (például `ModifyOrder` ), majd válassza a **kész**lehetőséget.
+1. A **leképezések** lapon válassza a **+ Létrehozás** elemet.
+1. Az **Új leképezés létrehozása** párbeszédpanelen adja meg a leképezés nevét (például `ModifyOrder` ), majd válassza a **kész** lehetőséget.
 
     > [!div class="mx-imgBorder"]
     > ![Leképezés hozzáadása](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
@@ -81,4 +81,4 @@ Miután hozzáadta, szerkeszti vagy eltávolítja a leképezéseket, [betanítja
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ a [példa hosszúságú kimondott szöveg](luis-how-to-add-example-utterances.md) az entitásokkal való hozzáadásáról.
+További információ a [példa hosszúságú kimondott szöveg](./luis-how-to-add-entities.md) az entitásokkal való hozzáadásáról.

@@ -6,16 +6,16 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 4d399dc9298c51906d62dabbc36650bf21f94af8
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: d070a03a81f70cdbf2c721cc67a3bc40c5d731fc
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542830"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018735"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Oktatóanyag: Language Understanding használatával engedélyezett webalkalmazás-robot használata Node.js
 
-A Language Understanding (LUIS) használatával integrált csevegési robot létrehozásához használja a Node.js. A robot az Azure [Web App bot](https://docs.microsoft.com/azure/bot-service/) Resource és a bot Framework v4-es [verziójával](https://github.com/Microsoft/botbuilder-dotnet) készült.
+A Language Understanding (LUIS) használatával integrált csevegési robot létrehozásához használja a Node.js. A robot az Azure [Web App bot](/azure/bot-service/) Resource és a bot Framework v4-es [verziójával](https://github.com/Microsoft/botbuilder-dotnet) készült.
 
 **Eben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
@@ -77,7 +77,7 @@ A bot Service létrehozási folyamata egy új LUIS-alkalmazást is létrehoz a s
 |Repülőjegy|`Travel to Paris`|
 |Mégse|`bye`|
 |GetWeather|`what's the weather like?`|
-|Nincsenek|Az app tartományán kívül bármi.|
+|Nincs|Az app tartományán kívül bármi.|
 
 ## <a name="test-the-bot-in-web-chat"></a>A robot tesztelése a webes csevegésben
 
@@ -377,7 +377,7 @@ Kérdezze meg a robotot a könyv repülési szándékáról.
 
 1. Indítsa el a bot Framework emulatort, és válassza a **robot megnyitása** lehetőséget.
 1. A **bot megnyitása** előugró ablakban adja meg a robot URL-címét, például: `http://localhost:3978/api/messages` . Az `/api/messages` útvonal a robot webes címe.
-1. Adja meg a **Microsoft-alkalmazás azonosítóját** és a **Microsoft-alkalmazás jelszavát** , amely a letöltött robot gyökerében található **. env** fájlban található.
+1. Adja meg a **Microsoft-alkalmazás azonosítóját** és a **Microsoft-alkalmazás jelszavát**, amely a letöltött robot gyökerében található **. env** fájlban található.
 
 1. A bot Framework emulatorban írja be `Book a flight from Seattle to Berlin tomorrow` és kérje le ugyanazt a választ az alapszintű robotra, mint amit a **teszt webes csevegésben** kapott.
 
@@ -395,4 +395,4 @@ Kérdezze meg a robotot a könyv repülési szándékáról.
 További [mintákat](https://github.com/microsoft/botframework-solutions) tekinthet meg a társalgási robotokkal.
 
 > [!div class="nextstepaction"]
-> [Language Understanding-alkalmazás létrehozása egyéni tárgyú tartománnyal](luis-quickstart-intents-only.md)
+> [Language Understanding-alkalmazás létrehozása egyéni tárgyú tartománnyal](./tutorial-intents-only.md)

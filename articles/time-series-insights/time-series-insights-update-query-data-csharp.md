@@ -11,16 +11,16 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 99cde78f0944544941224927e84e117bd0e660d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81725a28102caf0d69a9fb303eaccdcf2151587d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667843"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020027"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen2-environment-using-c-sharp"></a>Adatok lekérdezése a Azure Time Series Insights Gen2-környezetből C Sharp használatával
 
-Ez a C# példa azt szemlélteti, hogyan lehet lekérdezni a [Gen2 adatelérési API](https://docs.microsoft.com/rest/api/time-series-insights/reference-data-access-overview) -k adatait Azure Time Series Insights Gen2 környezetekben.
+Ez a C# példa azt szemlélteti, hogyan lehet lekérdezni a [Gen2 adatelérési API](/rest/api/time-series-insights/reference-data-access-overview) -k adatait Azure Time Series Insights Gen2 környezetekben.
 
 > [!TIP]
 > A C#-Gen2 megtekintése a következő helyen: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen2-sample/csharp-tsi-gen2-sample) .
@@ -33,22 +33,22 @@ Az alábbi mintakód a következő funkciókat mutatja be:
 * Hozzáférési token beszerzése Azure Active Directory a [Microsoft. IdentityModel. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)használatával.
 * A beszerzett hozzáférési jogkivonat átadása a `Authorization` későbbi adathozzáférési API-kérelmek fejlécében.
 * A minta egy konzol felületét mutatja be, amely bemutatja, hogyan történik a HTTP-kérések elvégzése a következő módon:
-  * [Gen2 Environments API](https://docs.microsoft.com/rest/api/time-series-insights/reference-environments-apis)
-    * A [környezet rendelkezésre állási API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/getavailability) beszerzése és az [Event Schema API beszerzése](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/geteventschema)
-  * [Gen2 lekérdezési API](https://docs.microsoft.com/rest/api/time-series-insights/reference-query-apis)
-    * Az [Events API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents)beszerzése, a [Series API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries)beolvasása és az [aggregált Series API beszerzése](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
-  * [Idősorozat-modell API-k](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
-    * [Hierarchiák API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies) -és [hierarchiáinak](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch) BEolvasása batch API
-    * [Get types API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes) és [TYPEs batch API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
-    * [Példányok API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances) -k és példányok beolvasása [Batch API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch)
+  * [Gen2 Environments API](/rest/api/time-series-insights/reference-environments-apis)
+    * A [környezet rendelkezésre állási API](/rest/api/time-series-insights/dataaccessgen2/query/getavailability) beszerzése és az [Event Schema API beszerzése](/rest/api/time-series-insights/dataaccessgen2/query/geteventschema)
+  * [Gen2 lekérdezési API](/rest/api/time-series-insights/reference-query-apis)
+    * Az [Events API](/rest/api/time-series-insights/dataaccessgen2/query/execute#getevents)beszerzése, a [Series API](/rest/api/time-series-insights/dataaccessgen2/query/execute#getseries)beolvasása és az [aggregált Series API beszerzése](/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
+  * [Idősorozat-modell API-k](/rest/api/time-series-insights/dataaccessgen2/query/execute#aggregateseries)
+    * [Hierarchiák API](/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies) -és [hierarchiáinak](/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch) BEolvasása batch API
+    * [Get types API](/rest/api/time-series-insights/dataaccessgen2/timeseriestypes) és [TYPEs batch API](/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
+    * [Példányok API](/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances) -k és példányok beolvasása [Batch API](/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch)
 
-* Speciális [keresési](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#search-features) és [TSX](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) képességek.
+* Speciális [keresési](/rest/api/time-series-insights/reference-model-apis#search-features) és [TSX](/rest/api/time-series-insights/reference-time-series-expression-syntax) képességek.
 
 ## <a name="prerequisites-and-setup"></a>Előfeltételek és beállítás
 
 A mintakód fordítása és futtatása előtt végezze el a következő lépéseket:
 
-1. [Gen2 Azure Time Series Insights-környezet kiépítése](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-how-to-manage#create-the-environment) .
+1. [Gen2 Azure Time Series Insights-környezet kiépítése](./how-to-provision-manage.md#create-the-environment) .
 1. Konfigurálja Azure Time Series Insights-környezetét Azure Active Directory a [hitelesítés és engedélyezés](time-series-insights-authentication-and-authorization.md)című témakörben leírtak szerint.
 1. Futtassa a [readme.MD](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClient/Readme.md) megadott [GenerateCode.bat](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClient/GenerateCode.bat) a Azure Time Series Insights Gen2-ügyfél függőségeinek létrehozásához.
 1. Nyissa meg a `TSIPreviewDataPlaneclient.sln` megoldást, és állítsa be `DataPlaneClientSampleApp` alapértelmezett projektként a Visual Studióban.
@@ -65,7 +65,7 @@ A mintakód több szükséges függőséggel rendelkezik, amelyek megtekinthető
 
 Töltse le a csomagokat a Visual Studio 2019-ban a **Build**  >  **Build megoldás** kiválasztásával.
 
-Másik lehetőségként vegyen fel minden csomagot az [NuGet 2.12 +](https://www.nuget.org/)használatával. Példa:
+Másik lehetőségként vegyen fel minden csomagot az [NuGet 2.12 +](https://www.nuget.org/)használatával. Például:
 
 * `dotnet add package Microsoft.IdentityModel.Clients.ActiveDirectory --version 4.5.1`
 
@@ -80,6 +80,6 @@ A C# mintakód eléréséhez tekintse meg az [Azure Time Series Insights](https:
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A lekérdezéssel kapcsolatos további információkért olvassa el a [lekérdezési API-referenciát](https://docs.microsoft.com/rest/api/time-series-insights/reference-query-apis).
+* A lekérdezéssel kapcsolatos további információkért olvassa el a [lekérdezési API-referenciát](/rest/api/time-series-insights/reference-query-apis).
 
 * Olvassa el, hogyan [csatlakozhat egy JavaScript-alkalmazást az ügyfél-SDK](https://github.com/microsoft/tsiclient) -val Azure Time Series Insights.

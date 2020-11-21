@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: dc759bb9af852fab5313686ebaffefda9220f45a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d80d97a609aa3a464b9b114439fe7f4058e287c3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614240"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020146"
 ---
 # <a name="create-a-reference-data-set-for-your-azure-time-series-insights-gen1-environment-using-the-azure-portal"></a>Hozzon létre egy hivatkozási adatkészletet a Azure Time Series Insights Gen1-környezethez a Azure Portal használatával
 
@@ -107,7 +107,7 @@ A hivatkozási adathalmazok nem csatlakoznak visszamenőlegesen. Így a rendszer
     > [!WARNING]
     > A hivatkozási adatkészletek között megosztott oszlopok vagy tulajdonságok egy **ismétlődő tulajdonságnév** -feltöltési hibát fognak megjeleníteni. A hiba nem fogja megakadályozni a hivatkozási adatkészletek sikeres feltöltését. A duplikált tulajdonság nevét megosztó sorok kombinálásával lehet eltávolítani.
 
-1. Válassza **a sor hozzáadása, a** **tömeges importálási sorok**vagy az **oszlop hozzáadása** lehetőséget a további hivatkozási adatértékek igény szerinti hozzáadásához.
+1. Válassza **a sor hozzáadása, a** **tömeges importálási sorok** vagy az **oszlop hozzáadása** lehetőséget a további hivatkozási adatértékek igény szerinti hozzáadásához.
 
     [![Sor hozzáadása, tömeges importálási sorok vagy oszlop hozzáadása.](media/add-reference-data-set/add-row-or-bulk-upload.png)](media/add-reference-data-set/add-row-or-bulk-upload.png#lightbox)
 
@@ -121,4 +121,4 @@ A hivatkozási adathalmazok nem csatlakoznak visszamenőlegesen. Így a rendszer
 
 - [Referencia-adatok kezelése](time-series-insights-manage-reference-data-csharp.md) programozott módon.
 
-- A teljes API-referenciáért olvassa el a [Reference-adatapi](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api) -dokumentum című dokumentumot.
+- A teljes API-referenciáért olvassa el a [Reference-adatapi](/rest/api/time-series-insights/gen1-reference-data-api) -dokumentum című dokumentumot.

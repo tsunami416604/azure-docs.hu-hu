@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 69f2048da0b4690d9de72e96e296edbd55c4cd9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66df23466694fe8b9caea4e56565cde6d8fd7416
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91309455"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018956"
 ---
 # <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>A LUIS-alkalmazás sémájának megtervezése a tulajdonos tartomány és az adatkiemelés alapján
 
@@ -21,7 +21,7 @@ A LUIS-alkalmazás sémája a tárgy [tartományához](luis-glossary.md#domain)k
 A LUIS-alkalmazások a tárgy tartomány körül vannak központosítva. Előfordulhat például, hogy rendelkezik egy utazási alkalmazással, amely a jegyek, a járatok, a szállodák és a bérelt autók foglalását kezeli. Egy másik alkalmazás a gyakorlásával, a fitness-erőfeszítések nyomon követésével és a célok beállításával kapcsolatos tartalmakat is biztosít. A tartomány azonosításával könnyebben megtalálhatja a tartományhoz kapcsolódó szavakat vagy kifejezéseket.
 
 > [!TIP]
-> A LUIS [előre elkészített tartományokat](luis-how-to-use-prebuilt-domains.md) kínál számos gyakori forgatókönyvhöz. Ellenőrizze, hogy használható-e előre összeépített tartomány az alkalmazás kiindulási pontjaként.
+> A LUIS [előre elkészített tartományokat](./howto-add-prebuilt-models.md) kínál számos gyakori forgatókönyvhöz. Ellenőrizze, hogy használható-e előre összeépített tartomány az alkalmazás kiindulási pontjaként.
 
 ## <a name="identify-your-intents"></a>A szándékok azonosítása
 
@@ -49,7 +49,7 @@ A példában hosszúságú kimondott szöveg azonosítsa a kibontani kívánt en
 Az alkalmazásban használni kívánt entitások meghatározásakor vegye figyelembe, hogy az Objektumtípusok közötti kapcsolatok rögzítéséhez különböző típusú entitások tartoznak. A [Luis-entitások](luis-concept-entity-types.md) részletesebben ismertetik a különböző típusokat.
 
 > [!TIP]
-> A LUIS [előre összeépített entitásokat](luis-prebuilt-entities.md) kínál a gyakori, társalgási felhasználói forgatókönyvekhez. Érdemes lehet előre elkészített entitásokat használni az alkalmazásfejlesztés kiindulási pontként.
+> A LUIS [előre összeépített entitásokat](./howto-add-prebuilt-models.md) kínál a gyakori, társalgási felhasználói forgatókönyvekhez. Érdemes lehet előre elkészített entitásokat használni az alkalmazásfejlesztés kiindulási pontként.
 
 ## <a name="resolution-with-intent-or-entity"></a>Feloldás a szándékkal vagy az entitással?
 
@@ -69,7 +69,7 @@ Ahelyett, hogy két külön szándékot kellene létrehoznia, hozzon létre egye
 Az `FlightAction` entitás a Machine learning-entitás és alentitások következő pszeudo-sémájában lesz strukturálva:
 
 * FlightAction
-    * Művelet
+    * Műveletek
     * Forrás
     * Cél
 
@@ -79,4 +79,3 @@ Az alentitások hozzáadási funkcióinak kibontásának elősegítése érdeké
 
 > [!div class="nextstepaction"]
 > [A LUIS fejlesztői lifecylce megismerése](luis-concept-app-iteration.md)
-

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: a5760db2d6e453d631680d6154e6d9a03ce55cd6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59cf250a9db5a1f6759495c1b5a3c48cb07cde15
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541339"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018786"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>Előrejelzési végpont módosításai v3 esetén
 
@@ -60,7 +60,7 @@ Ha tudja, hogy egyik ügyfélalkalmazás vagy integráció (bot Framework és Bi
 
 ### <a name="bing-spell-check"></a>Bing – Helyesírás-ellenőrzés
 
-Ez az API nem támogatott a v3 előrejelzési végpontban – továbbra is használja a v2 API-előrejelzési végpontot a helyesírási helyesbítésekhez. Ha a V3 API használatakor helyesírási korrekcióra van szüksége, az ügyfélalkalmazás meghívja a [Bing Spell Check](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/overview) API-t, és a szöveget a megfelelő helyesírásra módosítja, mielőtt elküldené a szöveget a Luis API-nak.
+Ez az API nem támogatott a v3 előrejelzési végpontban – továbbra is használja a v2 API-előrejelzési végpontot a helyesírási helyesbítésekhez. Ha a V3 API használatakor helyesírási korrekcióra van szüksége, az ügyfélalkalmazás meghívja a [Bing Spell Check](../bing-spell-check/overview.md) API-t, és a szöveget a megfelelő helyesírásra módosítja, mielőtt elküldené a szöveget a Luis API-nak.
 
 ## <a name="bot-framework-and-azure-bot-service-client-applications"></a>A bot Framework és Azure Bot Service ügyfélalkalmazások
 
@@ -109,7 +109,7 @@ Ha verzió alapján szeretne lekérdezni, először közzé kell tennie az [API-
 |`externalEntities`|array|Csak v3|Nem kötelező.|A [külső entitások](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time) lehetővé teszi, hogy a Luis-alkalmazás képes legyen az entitások azonosítására és címkézésére a futtatókörnyezet során, amely funkciókként használható a meglévő entitásokhoz. |
 |`options.datetimeReference`|sztring|Csak v3|Nincs alapértelmezett érték|A [datetimeV2 eltolásának](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)meghatározására szolgál. A datetimeReference formátuma [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).|
 |`options.preferExternalEntities`|boolean|Csak v3|hamis|Meghatározza, hogy a felhasználó [külső entitása (a meglévő entitás nevével megegyező névvel)](schema-change-prediction-runtime.md#override-existing-model-predictions) van-e használva, vagy a modellben lévő meglévő entitást használja-e a rendszer az előrejelzéshez. |
-|`query`|sztring|Csak v3|Kötelező.|A **v2-ben**az előre jelzett érték a `q` paraméterben szerepel. <br><br>A **v3**-as verzióban a funkció a `query` paraméterben lesz átadva.|
+|`query`|sztring|Csak v3|Kötelező.|A **v2-ben** az előre jelzett érték a `q` paraméterben szerepel. <br><br>A **v3**-as verzióban a funkció a `query` paraméterben lesz átadva.|
 
 ## <a name="response-changes"></a>Válasz módosításai
 
@@ -162,7 +162,7 @@ A válasz JSON-sémájának módosítása az alábbiakat teszi lehetővé:
 
 #### <a name="marking-placement-of-entities-in-utterances"></a>Entitások elhelyezésének megjelölése a hosszúságú kimondott szöveg-ben
 
-**A v2-ben**egy entitást jelölt ki a és a kifejezéssel `startIndex` `endIndex` .
+**A v2-ben** egy entitást jelölt ki a és a kifejezéssel `startIndex` `endIndex` .
 
 A **v3**-as verzióban az entitás a és a jelöléssel van megjelölve `startIndex` `entityLength` .
 
@@ -227,7 +227,7 @@ A v2-ben az entitás neve azonosítja az entitás _nevét_ az objektum tulajdons
 ]
 ```
 
-A v3-as verzióban az entitásra az _entitás szerepkör_hivatkozik, ha az előrejelzés a következő szerepkörre vonatkozik:
+A v3-as verzióban az entitásra az _entitás szerepkör_ hivatkozik, ha az előrejelzés a következő szerepkörre vonatkozik:
 
 ```JSON
 "entities":{

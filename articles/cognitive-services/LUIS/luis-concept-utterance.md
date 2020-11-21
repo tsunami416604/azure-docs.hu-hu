@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 4c3b5674fe039a89eb97b915d13b5d472a6a0568
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96b9754908f437ccf81e002e9e9dd17af0bab4e3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316392"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019075"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Ismerje meg, hogy a LUIS-alkalmazás milyen jó hosszúságú kimondott szöveg
 
@@ -29,7 +29,7 @@ Gyűjtse össze azokat a hosszúságú kimondott szöveg, amelyeket a felhaszná
 
 ## <a name="how-to-choose-varied-utterances"></a>Változatos hosszúságú kimondott szöveg kiválasztása
 
-Első lépésként vegyen fel [például hosszúságú kimondott szöveg](luis-how-to-add-example-utterances.md) a Luis-modellbe, és tekintse meg az alábbi alapelveket.
+Első lépésként vegyen fel [például hosszúságú kimondott szöveg](./luis-how-to-add-entities.md) a Luis-modellbe, és tekintse meg az alábbi alapelveket.
 
 ### <a name="utterances-arent-always-well-formed"></a>A hosszúságú kimondott szöveg nem mindig megfelelően formázott
 
@@ -147,5 +147,4 @@ Ha azt szeretné, hogy az esemény entitása az összes eseményt megkeresse, c�
 
 
 ## <a name="next-steps"></a>Következő lépések
-A felhasználói hosszúságú kimondott szöveg megismeréséhez lásd: [példa hosszúságú kimondott szöveg hozzáadása](luis-how-to-add-example-utterances.md) a Luis-alkalmazások betanításához.
-
+A felhasználói hosszúságú kimondott szöveg megismeréséhez lásd: [példa hosszúságú kimondott szöveg hozzáadása](./luis-how-to-add-entities.md) a Luis-alkalmazások betanításához.

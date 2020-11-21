@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 00a3c1d0a2a905e6435b811d5f2611c16a5de502
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: b60a6e53e8fecd71885204690231776ff69fc08f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328879"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018375"
 ---
 # <a name="configure-device-redirections"></a>Eszközátirányítások konfigurálása
 
@@ -19,11 +19,11 @@ A Windows rendszerű virtuális asztali környezethez tartozó eszközök átir�
 
 ## <a name="supported-device-redirections"></a>Támogatott eszközök átirányítása
 
-Minden ügyfél támogatja a különböző eszközök átirányítását. Tekintse meg az [ügyfelek összevetését](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-app-compare) az egyes ügyfelek támogatott eszköz-átirányításának teljes listájához.
+Minden ügyfél támogatja a különböző eszközök átirányítását. Tekintse meg az [ügyfelek összevetését](/windows-server/remote/remote-desktop-services/clients/remote-desktop-app-compare) az egyes ügyfelek támogatott eszköz-átirányításának teljes listájához.
 
 ## <a name="customizing-rdp-properties-for-a-host-pool"></a>A gazdagépek RDP-tulajdonságainak testreszabása
 
-Ha többet szeretne megtudni a gazdagépek RDP-tulajdonságainak testreszabásáról a PowerShell vagy a Azure Portal használatával, tekintse meg az [RDP-tulajdonságokat](customize-rdp-properties.md). A támogatott RDP-tulajdonságok teljes listájáért lásd: [támogatott RDP-fájl beállításai](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context).
+Ha többet szeretne megtudni a gazdagépek RDP-tulajdonságainak testreszabásáról a PowerShell vagy a Azure Portal használatával, tekintse meg az [RDP-tulajdonságokat](customize-rdp-properties.md). A támogatott RDP-tulajdonságok teljes listájáért lásd: [támogatott RDP-fájl beállításai](/windows-server/remote/remote-desktop-services/clients/rdp-files?context=%2fazure%2fvirtual-desktop%2fcontext%2fcontext).
 
 ## <a name="setup-device-redirections"></a>Eszköz átirányításának beállítása
 
@@ -78,7 +78,7 @@ Először állítsa be a következő RDP-tulajdonságot az USB-eszközök átir�
 
 Másodszor állítsa be a következő Csoportházirend a felhasználó helyi eszközén:
 
-- Navigáljon a **számítógép-konfigurációs**  >  **házirendek** >  **Felügyeleti sablonok**  >  **Windows-összetevők**  >  **Távoli asztali szolgáltatások**  >  **Távoli asztali kapcsolat ügyfél**távoli elérési útjának  >  **USB-eszközök átirányítása**.
+- Navigáljon a **számítógép-konfigurációs**  >  **házirendek** >  **Felügyeleti sablonok**  >  **Windows-összetevők**  >  **Távoli asztali szolgáltatások**  >  **Távoli asztali kapcsolat ügyfél** távoli elérési útjának  >  **USB-eszközök átirányítása**.
 - Válassza a **más támogatott távoli USB-eszközök RDP-átirányítása a számítógépről lehetőséget**.
 - Válassza az **engedélyezve** lehetőséget, majd válassza ki a **rendszergazdákat és a felhasználókat a távoli USB-átirányítás hozzáférési jogosultságok** mezőben.
 - Válassza az **OK** lehetőséget.

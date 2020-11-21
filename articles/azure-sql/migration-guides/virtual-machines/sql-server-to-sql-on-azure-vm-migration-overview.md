@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: d47abaade13958b4e28d3ad5f62b88e8a53e89a9
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: a910edfbbe1ad07dca806026396c506f7e90e6e7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917841"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019432"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>Áttelepítési Áttekintés: az Azure-beli virtuális gépeken SQL Server SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -65,7 +65,7 @@ Az alábbi táblázat a két áttelepítési stratégia különbségeit ismertet
 | **Migrálási stratégia** | **Leírás** | **A következő esetekben használja** |
 | --- | --- | --- |
 | **& eltolásának emelése** | A lift és a SHIFT áttelepítési stratégiával áthelyezheti a teljes fizikai vagy virtuális SQL Server a jelenlegi helyükről az Azure-beli virtuális GÉPEN lévő SQL Server egy példányára, az operációs rendszer vagy a SQL Server verziójának módosítása nélkül. A felvonó és a váltás áttelepítésének befejezéséhez lásd: [Azure Migrate](../../../migrate/migrate-services-overview.md). <br /><br /> A forráskiszolgáló online és szolgáltatási kéréseket is biztosít, miközben a forrás-és a célkiszolgáló szinkronizálja az adatokat, így szinte zökkenőmentesen áttelepíthetők. | Egyetlen és nagyon nagy léptékű Migrálás esetén is használható, akár olyan forgatókönyvekre is, mint például az adatközpont kilépése. <br /><br /> A felhasználók SQL-adatbázisaihoz vagy-alkalmazásaihoz minimálisan szükséges programkódok módosítása, ami lehetővé teszi a gyorsabb teljes áttelepítést. <br /><br />Nincs szükség további lépésekre az üzleti intelligencia szolgáltatások, például a  [SSIS](/sql/integration-services/sql-server-integration-services), az [SSRS](/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports)és a [SSAS](/analysis-services/analysis-services-overview)áttelepítéséhez. |
-|**Migrálás** | Ha a cél SQL Server és/vagy az operációs rendszer verzióját szeretné frissíteni, használja az áttelepítési stratégiát. <br /> <br /> Válasszon ki egy Azure-beli virtuális gépet az Azure Marketplace-ről, vagy egy előkészített SQL Server rendszerképet, amely megfelel a forrás SQL Server verziójának. | Akkor használja, ha a SQL Server újabb verzióiban elérhető funkciókra van szükség, vagy ha a régebbi SQL Server és/vagy operációsrendszer-verziók frissítésére van szükség, amelyek már nem támogatottak.  <br /> <br /> Előfordulhat, hogy a SQL Server frissítésének támogatásához bizonyos alkalmazás-vagy felhasználói adatbázis-módosítások szükségesek. <br /><br />Az [üzleti intelligencia](#business-intelligence) szolgáltatásainak áttelepítésére további szempontokat is figyelembe kell venni, ha az áttelepítés hatálya alá esik. |
+|**Migrate** | Ha a cél SQL Server és/vagy az operációs rendszer verzióját szeretné frissíteni, használja az áttelepítési stratégiát. <br /> <br /> Válasszon ki egy Azure-beli virtuális gépet az Azure Marketplace-ről, vagy egy előkészített SQL Server rendszerképet, amely megfelel a forrás SQL Server verziójának. | Akkor használja, ha a SQL Server újabb verzióiban elérhető funkciókra van szükség, vagy ha a régebbi SQL Server és/vagy operációsrendszer-verziók frissítésére van szükség, amelyek már nem támogatottak.  <br /> <br /> Előfordulhat, hogy a SQL Server frissítésének támogatásához bizonyos alkalmazás-vagy felhasználói adatbázis-módosítások szükségesek. <br /><br />Az [üzleti intelligencia](#business-intelligence) szolgáltatásainak áttelepítésére további szempontokat is figyelembe kell venni, ha az áttelepítés hatálya alá esik. |
 
 
 ## <a name="lift-and-shift"></a>Átemelés  
@@ -75,9 +75,9 @@ Az alábbi táblázat ismerteti a **lift és a SHIFT** áttelepítési stratégi
 
 |**Metódus** | **A forrás minimális verziója** | **Cél minimális verziója** | **Forrás biztonsági mentési méretének korlátja** |  **Megjegyzések** |
 | --- | --- | --- | --- | --- |
-| [Azure Migrate](../../../migrate/index.yml) | SQL Server 2008 SP4| SQL Server 2008 SP4| [Azure VM-tároló korlátja](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |  Meglévő SQL Server áthelyezhető egy Azure-beli virtuális gépen lévő SQL Server-példányra. Akár 35 000 virtuális gépre is méretezheti az áttelepítési feladatokat. <br /><br /> A forrás-kiszolgáló (k) a kiszolgáló adatainak szinkronizálása során online és karbantartási kérelmeket is megtarthat, minimalizálva az állásidőt. <br /><br /> **Automation & parancsfájlkezelés**: [Azure site Recovery szkriptek](../../../migrate/how-to-migrate-at-scale.md) és [példa az Azure-ra méretezett áttelepítésre és tervezésre](/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)|
+| [Azure Migrate](../../../migrate/index.yml) | SQL Server 2008 SP4| SQL Server 2008 SP4| [Azure VM-tároló korlátja](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |  Meglévő SQL Server áthelyezhető egy Azure-beli virtuális gépen lévő SQL Server-példányra. Akár 35 000 virtuális gépre is méretezheti az áttelepítési feladatokat. <br /><br /> A forrás-kiszolgáló (k) a kiszolgáló adatainak szinkronizálása során online és karbantartási kérelmeket is megtarthat, minimalizálva az állásidőt. <br /><br /> **Automation & parancsfájlkezelés**: [Azure site Recovery szkriptek](../../../migrate/how-to-migrate-at-scale.md) és [példa az Azure-ra méretezett áttelepítésre és tervezésre](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)|
 
-## <a name="migrate"></a>Migrálás  
+## <a name="migrate"></a>Migrate  
 
 A könnyű telepítés miatt a javasolt áttelepítési módszer a natív SQL Server [biztonsági mentés helyi mentése](/sql/t-sql/statements/backup-transact-sql) , majd a fájl másolása az Azure-ba. Ez a módszer támogatja a nagyobb adatbázisok (>1 TB) használatát a SQL Server összes verziójához, amely a 2008-es és nagyobb adatbázis-biztonsági mentéstől (>1 TB). Azonban a SQL Server 2014-től kezdődő, 1 TB-nál kisebb, és az Azure-hoz való jó kapcsolattal rendelkező adatbázisok esetében a jobb megközelítés [SQL Server biztonsági mentés az URL-címre](/sql/relational-databases/backup-restore/sql-server-backup-to-url) . 
 

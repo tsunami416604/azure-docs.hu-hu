@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: bad9757bb62d5175e725bfe8e005155040dccf36
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 9e0b438e0cfa729300099463086248780c69484c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458931"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019840"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>Oktatóanyag: Azure Active Directory integráció a Kontiki
 
@@ -52,25 +52,25 @@ A Kontiki és az Azure AD integrálásához hozzá kell adnia a Kontiki a felüg
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. A bal oldali menüben válassza a **Azure Active Directory**lehetőséget.
+1. A bal oldali menüben válassza a **Azure Active Directory** lehetőséget.
 
     ![Az Azure Active Directory lehetőség](common/select-azuread.png)
 
-1. Válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
+1. Válassza a **vállalati alkalmazások**  >  **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
-1. Alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 
     ![Az új alkalmazás lehetőség](common/add-new-app.png)
 
-1. A keresőmezőbe írja be a **Kontiki**kifejezést. A keresési eredmények között válassza a **Kontiki**lehetőséget, majd kattintson a **Hozzáadás**gombra.
+1. A keresőmezőbe írja be a **Kontiki** kifejezést. A keresési eredmények között válassza a **Kontiki** lehetőséget, majd kattintson a **Hozzáadás** gombra.
 
     ![Kontiki az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Kontiki-mel konfigurálja és teszteli a **Britta Simon**nevű teszt felhasználó alapján. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy összekapcsolt kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között a Kontiki-ben.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az Kontiki-mel konfigurálja és teszteli a **Britta Simon** nevű teszt felhasználó alapján. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy összekapcsolt kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között a Kontiki-ben.
 
 Az Azure AD egyszeri bejelentkezés Kontiki való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
@@ -87,7 +87,7 @@ Az Azure AD egyszeri bejelentkezés Kontiki való konfigurálásához és teszte
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja a Azure Portal Kontiki.
 
-1. Az [Azure Portal](https://portal.azure.com/) **Kontiki** alkalmazás-integráció paneljén válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az [Azure Portal](https://portal.azure.com/) **Kontiki** alkalmazás-integráció paneljén válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési lehetőség konfigurálása](common/select-sso.png)
 
@@ -104,7 +104,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja a Azure Po
     ![Kontiki tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-signonurl.png)
 
     > [!NOTE]
-    > A megfelelő érték beszerzéséhez forduljon a Kontiki ügyfélszolgálati [csapatához](https://customersupport.kontiki.com/enterprise/contactsupport.html) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > A megfelelő érték beszerzéséhez forduljon a Kontiki ügyfélszolgálati [csapatához](https://kollective.com/support/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 1. Az **egyszeres Sign-On beállítása az SAML** -panellel panelen az **SAML aláíró tanúsítvány** szakaszban válassza a **Letöltés** az **összevonási metaadatok XML-** je mellett lehetőséget. A követelmények alapján válasszon egy letöltési lehetőséget. Mentse a tanúsítványt a számítógépére.
 
@@ -120,17 +120,17 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja a Azure Po
 
 ### <a name="configure-kontiki-single-sign-on"></a>Kontiki egyszeri bejelentkezés konfigurálása
 
-Ha az egyszeri bejelentkezést szeretné konfigurálni a Kontiki oldalon, küldje el a letöltött összevonási metaadatok XML-fájlját és a Azure Portalból a [Kontiki-támogatási csapatba](https://customersupport.kontiki.com/enterprise/contactsupport.html)másolt releváns URL-címeket. A Kontiki-támogatási csapat az Ön által küldött adatokat az SAML egyszeri bejelentkezési kapcsolatok mindkét oldalon való megfelelő beállításával biztosítja.
+Ha az egyszeri bejelentkezést szeretné konfigurálni a Kontiki oldalon, küldje el a letöltött összevonási metaadatok XML-fájlját és a Azure Portalból a [Kontiki-támogatási csapatba](https://kollective.com/support/)másolt releváns URL-címeket. A Kontiki-támogatási csapat az Ön által küldött adatokat az SAML egyszeri bejelentkezési kapcsolatok mindkét oldalon való megfelelő beállításával biztosítja.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
 Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azure Portal.
 
-1. A Azure Portal válassza a **Azure Active Directory**  >  **felhasználók**  >  **minden felhasználó**lehetőséget.
+1. A Azure Portal válassza a **Azure Active Directory**  >  **felhasználók**  >  **minden felhasználó** lehetőséget.
 
     ![A felhasználók és az összes felhasználó lehetőség](common/users.png)
 
-1. Válassza az **új felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget.
 
     ![Az új felhasználói beállítás](common/new-user.png)
 
@@ -138,7 +138,7 @@ Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azur
 
     1. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    1. A **Felhasználónév** mezőbe írja be a **brittasimon \@ \<your-company-domain> . \<extension> **. Például **brittasimon \@ contoso.com**.
+    1. A **Felhasználónév** mezőbe írja be a **brittasimon \@ \<your-company-domain> . \<extension>**. Például **brittasimon \@ contoso.com**.
 
     1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet. Jegyezze fel a **jelszó** mezőben megjelenő értéket.
 
@@ -150,19 +150,19 @@ Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azur
 
 Ebben a szakaszban Simon Britta-hozzáférést biztosít a Kontiki, így az Azure egyszeri bejelentkezést is használhatja.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**  >  **minden alkalmazás**  >  **Kontiki**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**  >  **minden alkalmazás**  >  **Kontiki** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
-1. Az alkalmazások listában válassza a **Kontiki**lehetőséget.
+1. Az alkalmazások listában válassza a **Kontiki** lehetőséget.
 
     ![Kontiki az alkalmazások listájában](common/all-applications.png)
 
-1. A menüben válassza a **felhasználók és csoportok**lehetőséget.
+1. A menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználók és csoportok beállítás](common/users-groups-blade.png)
 
-1. Válassza a **Felhasználó hozzáadása** elemet. Ezután a **hozzárendelés hozzáadása** panelen válassza a **felhasználók és csoportok**lehetőséget.
+1. Válassza a **Felhasználó hozzáadása** elemet. Ezután a **hozzárendelés hozzáadása** panelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
@@ -170,7 +170,7 @@ Ebben a szakaszban Simon Britta-hozzáférést biztosít a Kontiki, így az Azur
 
 1. Ha az SAML-állításban a szerepkör értékét várja, a **szerepkör kiválasztása** panelen válassza ki a megfelelő szerepkört a listáról a felhasználó számára. Válassza a **Kiválasztás** lehetőséget
 
-1. A **hozzárendelés hozzáadása** panelen válassza a **hozzárendelés**lehetőséget.
+1. A **hozzárendelés hozzáadása** panelen válassza a **hozzárendelés** lehetőséget.
 
 ### <a name="create-a-kontiki-test-user"></a>Kontiki-teszt felhasználó létrehozása
 
@@ -182,7 +182,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Miután beállította az egyszeri bejelentkezést, a **Kontiki** kiválasztása után a saját alkalmazások portálon automatikusan bejelentkezik a Kontiki. További információ a saját alkalmazások portálján: [alkalmazások elérése és használata a saját alkalmazások portálon](../user-help/my-apps-portal-end-user-access.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információért tekintse át a következő cikkeket:
 

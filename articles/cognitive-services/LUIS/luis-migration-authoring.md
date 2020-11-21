@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 08/13/2020
-ms.openlocfilehash: 926b79e672c14249ec7c2b053dba7eb3a31443a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 455c7d66748740ae6e2cc11c6a44bbf30c1cbced
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536043"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018837"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrálás Azure Resource authoring-kulcsba
 
@@ -40,7 +40,7 @@ Az áttelepítést a LUIS portálról kell elvégezni. Ha például a LUIS CLI h
 * A rendszer a tulajdonosoktól kéri az e-mailek küldését a közreműködők számára, hogy tájékoztassa őket az áttelepítésről.
 * Az alkalmazások nem lesznek áttelepítve, ha Ön az alkalmazásban közreműködő.
 * A tulajdonos nem tudja, hogy a közreműködők migrálva vannak.
-* Az áttelepítés nem gyűjt automatikusan közreműködőket, és nem helyezi át vagy adja hozzá őket az Azure authoring-erőforráshoz. Az alkalmazás tulajdonosa az, akinek az áttelepítés után el kell végeznie ezt a lépést. Ehhez a lépéshez [engedélyekre van szükség az Azure authoring-erőforráshoz](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-collaborate).
+* Az áttelepítés nem gyűjt automatikusan közreműködőket, és nem helyezi át vagy adja hozzá őket az Azure authoring-erőforráshoz. Az alkalmazás tulajdonosa az, akinek az áttelepítés után el kell végeznie ezt a lépést. Ehhez a lépéshez [engedélyekre van szükség az Azure authoring-erőforráshoz](./luis-how-to-collaborate.md).
 * Miután a közreműködők hozzá lettek rendelve az Azure-erőforráshoz, át kell térniük az alkalmazásokhoz való hozzáférésre. Ellenkező esetben nem férhetnek hozzá az alkalmazások létrehozásához.
 * Az áttelepített felhasználók nem vehetők fel az alkalmazás munkatársának.
 * Ha egy másik felhasználó tulajdonában lévő alkalmazásokhoz társított előrejelzési kulcsok vannak rendelve, ez letiltja a tulajdonos és a közreműködők áttelepítését. Tekintse meg a cikk későbbi részében ismertetett javaslatokat.
@@ -72,7 +72,7 @@ Az áttelepítést a LUIS portálról kell elvégezni. Ha például a LUIS CLI h
    > [!div class="mx-imgBorder"]
    > ![Áttelepítés ikonja](./media/migrate-authoring-key/migration-button.png)
 
-2. Az áttelepítés előugró ablakával folytathatja az áttelepítést, vagy később is áttelepítheti azokat. Válassza az **áttelepítés most**lehetőséget.
+2. Az áttelepítés előugró ablakával folytathatja az áttelepítést, vagy később is áttelepítheti azokat. Válassza az **áttelepítés most** lehetőséget.
 
    > [!div class="mx-imgBorder"]
    > ![Az áttelepítési folyamat első előugró ablaka, ahol az áttelepítés most lehetőséget választja](./media/migrate-authoring-key/prompt-when-migrating-2.png)
@@ -129,7 +129,7 @@ A szerzői erőforrás létrehozásakor megjelenik a siker üzenet. Az előugró
 
 ### <a name="use-existing-authoring-resource-to-migrate"></a>Meglévő authoring-erőforrás használata az áttelepíteni
 
-Ha az előfizetése már társítva van egy LUIS authoring Azure-erőforrással, vagy ha létrehozott egy erőforrást a Azure Portalból, és nem egy újat szeretne létrehozni, válassza a **meglévő authoring Resource használata**lehetőséget. Adja meg a következő adatokat a következő ablakban, majd válassza a **kész**lehetőséget.
+Ha az előfizetése már társítva van egy LUIS authoring Azure-erőforrással, vagy ha létrehozott egy erőforrást a Azure Portalból, és nem egy újat szeretne létrehozni, válassza a **meglévő authoring Resource használata** lehetőséget. Adja meg a következő adatokat a következő ablakban, majd válassza a **kész** lehetőséget.
 
 > [!div class="mx-imgBorder"]
 >![Meglévő authoring-erőforrás módosítására szolgáló ablak](./media/migrate-authoring-key/choose-existing-authoring-resource-2.png)
@@ -174,7 +174,7 @@ Ha programozott módon szeretné szerkeszteni az alkalmazásokat, szüksége les
 
 Ismerje meg [, hogyan adhat hozzá közreműködőket](luis-how-to-collaborate.md) a szerzői erőforrásokhoz. A közreműködők hozzáférhetnek az adott erőforráshoz tartozó összes alkalmazáshoz.
 
-Az adott erőforrás **Access Control (iam)** lapján hozzáadhat közreműködőket a szerzői erőforráshoz Azure Portal. További információ: [közreműködői hozzáférés hozzáadása](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource).
+Az adott erőforrás **Access Control (iam)** lapján hozzáadhat közreműködőket a szerzői erőforráshoz Azure Portal. További információ: [közreműködők hozzáadása az alkalmazáshoz](luis-how-to-collaborate.md).
 
 > [!Note]
 > Ha a LUIS-alkalmazás tulajdonosa át lett telepítve, és hozzáadta a közreműködőt az Azure-erőforráshoz, akkor a közreműködő továbbra sem férhet hozzá az alkalmazáshoz, kivéve, ha azok migrálása is megtörténik.
@@ -214,7 +214,7 @@ Ha együttműködik az alkalmazásokkal, és egy előrejelzési/futtatókörnyez
 
 A következő megoldást javasoljuk:
 * Alkalmazások exportálása biztonsági másolatként. Ez egy opcionális lépés az áttelepítési folyamatban.
-* Az előrejelzési erőforrások hozzárendelésének megszüntetése **Manage**az  >  **Azure-erőforrások** kezelése lapon.
+* Az előrejelzési erőforrások hozzárendelésének megszüntetése **Manage** az  >  **Azure-erőforrások** kezelése lapon.
 * Az áttelepítési folyamaton át kell esnie.
 * Alkalmazások importálása az áttelepítés után.
 * Az **Manage**  >  **Azure-erőforrások** kezelése oldalon rendelje hozzá az előrejelzési kulcsokat az alkalmazásaihoz.
@@ -229,7 +229,7 @@ Amikor megkísérli az áttelepítést, de nem találja az Azure-előfizetését
 * Győződjön meg arról, hogy az érvényes előfizetéséhez társított megfelelő bérlő van. Ezen az eszköztáron átválthatja a bérlőket az avatárról balra: az ![ eszköztáron, ahol átválthatja a bérlőket](./media/migrate-authoring-key/switch-user-tenant-2.png)
 
 Ha meglévő authoring-erőforrással rendelkezik, de nem találja, akkor a **meglévő authoring Resource használata** lehetőség kiválasztásával:
-* Az erőforrás valószínűleg olyan helyen lett létrehozva, amely eltér a portálon, ahol be van jelentkezve. Keresse meg a [Luis authoring régiókat és portálokat](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-authoring-regions).
+* Az erőforrás valószínűleg olyan helyen lett létrehozva, amely eltér a portálon, ahol be van jelentkezve. Keresse meg a [Luis authoring régiókat és portálokat](./luis-reference-regions.md#luis-authoring-regions).
 * Ehelyett hozzon létre egy új erőforrást a LUIS-portálon.
 
 Ha bejelöli az **új szerzői erőforrás létrehozása** lehetőséget, és a következő hibaüzenet jelenik meg: "nem sikerült beolvasni a felhasználó Azure-adatait, próbálkozzon újra később":

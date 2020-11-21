@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 06/04/2020
-ms.openlocfilehash: 5ef681e335cf49a1759a096766b5ccd70545e60a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c855be6d31a1ee46434ecadbeae7a36dd6a3ff95
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324705"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018803"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>A LUIS-modell és-kulcsok korlátai
 LUIS több korlátozási területtel rendelkezik. Az első a [modell korlátja](#model-limits), amely a Luis szándékait, entitásait és szolgáltatásait vezérli. A második régió a kulcs típusa alapján [korlátozza a kvótákat](#key-limits) . A határértékek harmadik területe a LUIS webhely vezérlésére szolgáló [billentyűkombináció](#keyboard-controls) . A negyedik terület az a [régió](luis-reference-regions.md) , amely a Luis authoring webhelye és a Luis [Endpoint](luis-glossary.md#endpoint) API-k között van.
@@ -32,16 +32,16 @@ Ha az alkalmazása meghaladja a LUIS-modell korlátait, érdemes lehet [Luis kü
 | [Entitások listázása](./luis-concept-entity-types.md) | Szülő: 50, gyermek: 20 000 elem. A Canonical neve * alapértelmezett karakter max. A szinonimák értékeinek hossza nem korlátozza a korlátot. |
 | [gépi tanulási entitások + szerepkörök](./luis-concept-entity-types.md):<br> összetett<br>egyszerű<br>entitás szerepköre|Legfeljebb 100 szülő entitás vagy 330 entitás, amely a felhasználó által elsőként megjelenő korlátot korlátozza. A szerepkör entitásként számít a korlát szempontjából. Ilyen például egy egyszerű entitást tartalmazó kompozit, amely 2 szerepkörrel rendelkezik: 1 kompozit + 1 egyszerű + 2 szerepkör = 4 az 330 entitások közül.<br>Az alentitások akár 5 szintre is ágyazhatók.|
 |Modell szolgáltatásként| Egy adott modell funkcióként használható modelljeinek maximális száma 10 modell. Egy adott modellhez funkcióként használt kifejezések listájának maximális száma 10 kifejezéses felsorolás.|
-| [Előnézet – dinamikus lista entitásai](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|2 a ~ 1k/Query előrejelzési végpontra vonatkozó kérelem listája|
+| [Előnézet – dinamikus lista entitásai](./luis-migration-api-v3.md)|2 a ~ 1k/Query előrejelzési végpontra vonatkozó kérelem listája|
 | [Minták](luis-concept-patterns.md)|500 minta alkalmazásként.<br>A minta maximális hossza 400 karakter.<br>3 minta. minden entitás/minta<br>Legfeljebb 2 beágyazott opcionális szöveg a mintában|
 | [Minta. any](./luis-concept-entity-types.md)|100/alkalmazás, 3 minta. bármely entitás/minta |
 | [Kifejezések listája][phrase-list]|500-kifejezések listája. 10 globális kifejezések listája a modellnek köszönhetően a szolgáltatás korlátja. A nem felcserélhető kifejezések listája legfeljebb 5 000 kifejezést tartalmaz. A felcserélhető kifejezések listája legfeljebb 50 000 kifejezést tartalmaz. Az 500 000-mondatok alkalmazásával kapcsolatos teljes mondatok maximális száma.|
-| [Előre összeállított entitások](./luis-prebuilt-entities.md) | korlátlan|
+| [Előre összeállított entitások](./howto-add-prebuilt-models.md) | korlátlan|
 | [Reguláriskifejezés-entitások](./luis-concept-entity-types.md)|20 entitás<br>500 karakter max. /reguláris kifejezési entitás mintája|
-| [Szerepkörök](luis-concept-roles.md)|300 szerepkör egy alkalmazásban. 10 szerepkör/entitás|
+| [Szerepkörök](./luis-concept-entity-types.md)|300 szerepkör egy alkalmazásban. 10 szerepkör/entitás|
 | [Kimondott szöveg][utterances] | 500 karakter<br><br>Ha ezen a karakternél hosszabb szöveg van, a kiírást a LUIS-be való bevitel előtt kell megadnia, és minden szegmensre külön szándékot kell kapnia. Nyilvánvaló megszakítások is használhatók, például írásjelek és a beszéd hosszú szüneteltetése.|
 | [Példák a teljes kifejezésekre][utterances] | 15 000/alkalmazás – a hosszúságú kimondott szöveg száma nem korlátozható a szándék alapján<br><br>Ha több példával kell betanítania az alkalmazást, használja a [küldő](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch) modell megközelítését. Az egyes LUIS-alkalmazásokat (más néven alárendelt alkalmazásokat a fölérendelt küldő alkalmazásba) egy vagy több szándékkal kell elképeznie, majd betanítani egy olyan küldő alkalmazást, amely az egyes gyermek LUIS-alkalmazások hosszúságú kimondott szöveg mintákat küld, hogy az előrejelzési kérést a megfelelő alárendelt alkalmazásra irányítsa. |
-| [Versions](luis-concept-version.md) (Verziók)| 100 verzió/alkalmazás |
+| [Versions](./luis-concept-app-iteration.md) (Verziók)| 100 verzió/alkalmazás |
 | [Verzió neve][luis-how-to-manage-versions] | 128 karakter |
 
 * Az alapértelmezett karakter Max 50 karakter.
@@ -56,7 +56,7 @@ Az objektumok nevének egyedinek kell lennie, ha az azonos szint más objektumai
 |--|--|
 |Szándék, entitás|Az összes leképezésnek és az entitás nevének egyedinek kell lennie az alkalmazás egy verziójában.|
 |ML entitás-összetevők|Az adott entitáson belül minden gépi tanulási entitás-összetevőnek (gyermek entitásnak) egyedinek kell lennie az azonos szinten lévő összetevőkhöz.|
-|Szolgáltatások | Az összes megnevezett funkciónak, például a kifejezések listájának egyedinek kell lennie az alkalmazás egy verzióján belül.|
+|Funkciók | Az összes megnevezett funkciónak, például a kifejezések listájának egyedinek kell lennie az alkalmazás egy verzióján belül.|
 |Entitásszerepkörök|Az entitás vagy entitás összetevő összes szerepkörének egyedinek kell lennie, ha ugyanazon az entitás szintjén (szülő, gyermek, unoka stb.) vannak.|
 
 ## <a name="object-naming"></a>Objektum elnevezése
@@ -108,7 +108,7 @@ A [beszédfelismerési funkció](../speech-service/how-to-recognize-intents-from
 
 ## <a name="keyboard-controls"></a>Billentyűzet vezérlőelem
 
-|Billentyűzet bemenete | Leírás |
+|Billentyűzet bemenete | Description |
 |--|--|
 |Vezérlő + E|a jogkivonatok és entitások közötti váltás a hosszúságú kimondott szöveg listán|
 
@@ -116,12 +116,12 @@ A [beszédfelismerési funkció](../speech-service/how-to-recognize-intents-from
 
 A bejelentkezési hozzáférés **60 perc**. Ezt a hibát a következő időszak után kapja meg. Újra be kell jelentkeznie.
 
-[luis-get-started-create-app]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app
-[batch-testing]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-test#batch-testing
-[intents]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-intent
-[phrase-list]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-feature
-[utterances]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-utterance
-[luis-how-to-manage-versions]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions
+[luis-get-started-create-app]: ./luis-get-started-create-app.md
+[batch-testing]: ./luis-concept-test.md#batch-testing
+[intents]: ./luis-concept-intent.md
+[phrase-list]: ./luis-concept-feature.md
+[utterances]: ./luis-concept-utterance.md
+[luis-how-to-manage-versions]: ./luis-how-to-manage-versions.md
 [pricing]: https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/
 <!-- TBD: fix this link -->
 [speech-to-intent-pricing]: https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/

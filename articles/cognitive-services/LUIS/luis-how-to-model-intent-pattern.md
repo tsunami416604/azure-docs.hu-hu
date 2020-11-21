@@ -9,15 +9,15 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.openlocfilehash: 914ca77b18d0469c3ea926848be4c60aab04c9c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5e1cc5cdda921e63315c2904d560b7ad3939776
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539104"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018854"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Mintázatok hozzáadása az előrejelzési pontosság növeléséhez
-Miután a LUIS-alkalmazás végponti hosszúságú kimondott szöveg kap, egy [mintázattal](luis-concept-patterns.md) növelheti az előrejelzés pontosságát olyan hosszúságú kimondott szöveg esetében, amelyek felfedik a mintázatot a Word-sorrend és a szó választása alapján. A minták az adott [szintaxist](luis-concept-patterns.md#pattern-syntax) használják a következő helyének jelzésére: [entitások](luis-concept-entity-types.md), entitások [szerepkörei](luis-concept-roles.md)és opcionális szöveg.
+Miután a LUIS-alkalmazás végponti hosszúságú kimondott szöveg kap, egy [mintázattal](luis-concept-patterns.md) növelheti az előrejelzés pontosságát olyan hosszúságú kimondott szöveg esetében, amelyek felfedik a mintázatot a Word-sorrend és a szó választása alapján. A minták az adott [szintaxist](luis-concept-patterns.md#pattern-syntax) használják a következő helyének jelzésére: [entitások](luis-concept-entity-types.md), entitások [szerepkörei](./luis-concept-entity-types.md)és opcionális szöveg.
 
 > [!CAUTION]
 > A minták csak a gépi tanulási entitások szülei, nem alentitások.
@@ -26,7 +26,7 @@ Miután a LUIS-alkalmazás végponti hosszúságú kimondott szöveg kap, egy [m
 
 1. Jelentkezzen be a [Luis-portálra](https://www.luis.ai), és válassza ki az **előfizetését** és a **szerzői erőforrást** , hogy megtekintse az adott szerzői erőforráshoz rendelt alkalmazásokat.
 1. Nyissa meg az alkalmazást úgy, hogy kiválasztja a nevét a **saját alkalmazások** oldalon.
-1. A bal oldali panelen válassza a **mintázatok** lehetőséget az **alkalmazás teljesítményének javítása**lehetőségnél.
+1. A bal oldali panelen válassza a **mintázatok** lehetőséget az **alkalmazás teljesítményének javítása** lehetőségnél.
 
 1. Válassza ki a minta megfelelő szándékát.
 
@@ -35,7 +35,7 @@ Miután a LUIS-alkalmazás végponti hosszúságú kimondott szöveg kap, egy [m
     > [!div class="mx-imgBorder"]
     > ![A minta entitás képernyőképe](./media/luis-how-to-model-intent-pattern/patterns-3.png)
 
-    Ha az entitás tartalmaz egy [szerepkört](luis-concept-roles.md), jelölje ki a szerepkört egyetlen kettősponttal, `:` az entitás neve után, például: `{Location:Origin}` . Az entitások szerepköreinek listája megjelenik a listában. Válassza ki a szerepkört, majd kattintson az ENTER gombra.
+    Ha az entitás tartalmaz egy [szerepkört](./luis-concept-entity-types.md), jelölje ki a szerepkört egyetlen kettősponttal, `:` az entitás neve után, például: `{Location:Origin}` . Az entitások szerepköreinek listája megjelenik a listában. Válassza ki a szerepkört, majd kattintson az ENTER gombra.
 
     > [!div class="mx-imgBorder"]
     > ![A szerepkörrel rendelkező entitás képernyőképe](./media/luis-how-to-model-intent-pattern/patterns-4.png)
@@ -51,9 +51,9 @@ Miután a LUIS-alkalmazás végponti hosszúságú kimondott szöveg kap, egy [m
 
 1. Jelentkezzen be a [Luis-portálra](https://www.luis.ai), és válassza ki az **előfizetését** és a **szerzői erőforrást** , hogy megtekintse az adott szerzői erőforráshoz rendelt alkalmazásokat.
 1. Nyissa meg az alkalmazást úgy, hogy kiválasztja a nevét a **saját alkalmazások** oldalon.
-1. A **build (létrehozás** ) szakaszban válassza az **entitások** lehetőséget a bal oldali panelen, majd válassza a **+ Létrehozás**elemet.
+1. A **build (létrehozás** ) szakaszban válassza az **entitások** lehetőséget a bal oldali panelen, majd válassza a **+ Létrehozás** elemet.
 
-1. Az **entitás típusának kiválasztása** párbeszédpanelen adja meg az entitás nevét a **név** mezőben, majd válassza a minta lehetőséget **. bármely** **típusnál** válassza a **Létrehozás**lehetőséget.
+1. Az **entitás típusának kiválasztása** párbeszédpanelen adja meg az entitás nevét a **név** mezőben, majd válassza a minta lehetőséget **. bármely** **típusnál** válassza a **Létrehozás** lehetőséget.
 
     Miután [létrehozta a mintázatot](luis-how-to-model-intent-pattern.md) az entitás használatával, az entitást egy kombinált gépi tanulási és szöveg-egyeztetési algoritmussal kell kibontani.
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/28/2020
-ms.openlocfilehash: e49b713aca23c0373fa71d772ef7567372abe456
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 9e322ac89d8ecad93c2002aa302c155f895911f4
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990567"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019194"
 ---
 # <a name="devops-practices-for-luis"></a>DevOps eljárások a LUIS számára
 
@@ -18,7 +18,7 @@ A Language Understanding (LUIS) alkalmazást fejlesztő szoftverfejlesztők DevO
 
 ## <a name="source-control-and-branch-strategies-for-luis"></a>A LUIS verziókövetési és elágaztatási stratégiái
 
-A DevOps sikerességének egyik fő tényezője a [verziókövetés](https://docs.microsoft.com/azure/devops/user-guide/source-control?view=azure-devops). A verziókövetés rendszer lehetővé teszi a fejlesztők számára, hogy a kódban működjenek együtt, és nyomon kövessék a módosításokat. Az ágak használata lehetővé teszi a fejlesztők számára a kód különböző verzióinak közötti váltást, és a csapat többi tagjától függetlenül működnek. Ha a fejlesztők egy [lekéréses kérelmet](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) állítanak elő a frissítések egyik ágban a másikba való előléptetéséhez, vagy ha a változások egyesülnek, akkor az [automatizált](luis-concept-devops-automation.md) buildek számára a kód kiépítéséhez és folyamatos teszteléséhez használható trigger lehet.
+A DevOps sikerességének egyik fő tényezője a [verziókövetés](/azure/devops/user-guide/source-control?view=azure-devops). A verziókövetés rendszer lehetővé teszi a fejlesztők számára, hogy a kódban működjenek együtt, és nyomon kövessék a módosításokat. Az ágak használata lehetővé teszi a fejlesztők számára a kód különböző verzióinak közötti váltást, és a csapat többi tagjától függetlenül működnek. Ha a fejlesztők egy [lekéréses kérelmet](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) állítanak elő a frissítések egyik ágban a másikba való előléptetéséhez, vagy ha a változások egyesülnek, akkor az [automatizált](luis-concept-devops-automation.md) buildek számára a kód kiépítéséhez és folyamatos teszteléséhez használható trigger lehet.
 
 A jelen dokumentumban ismertetett fogalmakat és útmutatást követve kifejlesztheti a LUIS-alkalmazást, miközben nyomon követheti a verziókövetés rendszerének változásait, és követheti ezeket a szoftveres mérnöki ajánlott eljárásokat:
 
@@ -42,13 +42,13 @@ A jelen dokumentumban ismertetett fogalmakat és útmutatást követve kifejlesz
 
 ## <a name="source-control"></a>Verziókövetés
 
-Ha a LUIS-alkalmazás [alkalmazás-sémájának definícióját](https://docs.microsoft.com/azure/cognitive-services/luis/app-schema-definition) szeretné karbantartani egy forráskód-felügyeleti rendszeren, használja az alkalmazás [LUDown Format ( `.lu` )](https://docs.microsoft.com/azure/bot-service/file-format/bot-builder-lu-file-format?view=azure-bot-service-4.0)  reprezentációját. `.lu` a formátum inkább a `.json` formátum, mert az ember számára olvasható, így könnyebben lehet elvégezni és áttekinteni a kérelmek változásait.
+Ha a LUIS-alkalmazás [alkalmazás-sémájának definícióját](./app-schema-definition.md) szeretné karbantartani egy forráskód-felügyeleti rendszeren, használja az alkalmazás [LUDown Format ( `.lu` )](/azure/bot-service/file-format/bot-builder-lu-file-format?view=azure-bot-service-4.0)  reprezentációját. `.lu` a formátum inkább a `.json` formátum, mert az ember számára olvasható, így könnyebben lehet elvégezni és áttekinteni a kérelmek változásait.
 
 ### <a name="save-a-luis-app-using-the-ludown-format"></a>LUIS-alkalmazás mentése a LUDown formátum használatával
 
 A LUIS-alkalmazás `.lu` formátumba való mentéséhez és a verziókövetés alá helyezéséhez:
 
-- VAGY: [exportálja az alkalmazás verzióját](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions#other-actions) `.lu` a [Luis-portálról](https://www.luis.ai/) , és adja hozzá a forrás-ellenőrzési adattárhoz
+- VAGY: [exportálja az alkalmazás verzióját](./luis-how-to-manage-versions.md#other-actions) `.lu` a [Luis-portálról](https://www.luis.ai/) , és adja hozzá a forrás-ellenőrzési adattárhoz
 
 - VAGY: egy szövegszerkesztővel hozzon létre egy `.lu` fájlt a Luis-alkalmazáshoz, és adja hozzá a forrás-ellenőrzési adattárhoz
 
@@ -58,9 +58,9 @@ A LUIS-alkalmazás `.lu` formátumba való mentéséhez és a verziókövetés a
 
 ### <a name="build-the-luis-app-from-source"></a>A LUIS-alkalmazás létrehozása a forrástól
 
-Egy LUIS-alkalmazás esetében a *forrásból való kiépítéshez* [egy új Luis-alkalmazás verziójának létrehozásához a `.lu` forrás importálásával](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions#import-version) , [a verzió betanításához](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) és a [közzétételéhez](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-publish-app). Ezt a LUIS portálon vagy a parancssorban teheti meg:
+Egy LUIS-alkalmazás esetében a *forrásból való kiépítéshez* [egy új Luis-alkalmazás verziójának létrehozásához a `.lu` forrás importálásával](./luis-how-to-manage-versions.md#import-version) , [a verzió betanításához](./luis-how-to-train.md) és a [közzétételéhez](./luis-how-to-publish-app.md). Ezt a LUIS portálon vagy a parancssorban teheti meg:
 
-- A LUIS portál használatával [importálhatja az alkalmazás `.lu` verzióját](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions#import-version) a forrás vezérlőelemből, és [betaníthatja](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) és [közzéteheti](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-publish-app) az alkalmazást.
+- A LUIS portál használatával [importálhatja az alkalmazás `.lu` verzióját](./luis-how-to-manage-versions.md#import-version) a forrás vezérlőelemből, és [betaníthatja](./luis-how-to-train.md) és [közzéteheti](./luis-how-to-publish-app.md) az alkalmazást.
 
 - Használja a [bot Framework parancssori felületét a Luis-hez](https://github.com/microsoft/botbuilder-tools/tree/master/packages/LUIS) a parancssorban vagy egy CI/CD-munkafolyamatban az alkalmazás verziójának a forrás-vezérlőelemből egy Luis-alkalmazásba való [importálásához](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luisversionimport) `.lu` , valamint az alkalmazás [betanításához](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luistrainrun) és [közzétételéhez](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luisapplicationpublish) .
 
@@ -72,7 +72,7 @@ A LUIS-alkalmazás következő típusú fájljait kell fenntartani a verzióköv
 
 - [Egység test definition Files](luis-concept-devops-testing.md#writing-tests) (hosszúságú kimondott szöveg és várt eredmények)
 
-- A teszteléshez használt [Batch](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-batch-test#batch-file-format) -hosszúságú kimondott szöveg (és várt eredmények)
+- A teszteléshez használt [Batch](./luis-concept-batch-test.md#batch-file-format) -hosszúságú kimondott szöveg (és várt eredmények)
 
 ### <a name="credentials-and-keys-are-not-checked-in"></a>A hitelesítő adatok és kulcsok nincsenek bejelölve
 
@@ -81,7 +81,7 @@ Ne foglalja bele az előfizetési kulcsokat vagy a hasonló bizalmas értékeket
 - LUIS authoring és előrejelzési kulcsok
 - LUIS authoring és előrejelzési végpontok
 - Azure-előfizetési kulcsok
-- Hozzáférési tokenek, például az Automation-hitelesítéshez használt Azure- [szolgáltatásnév](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest) jogkivonata
+- Hozzáférési tokenek, például az Automation-hitelesítéshez használt Azure- [szolgáltatásnév](/cli/azure/ad/sp?view=azure-cli-latest) jogkivonata
 
 #### <a name="strategies-for-securely-managing-secrets"></a>Stratégiák a titkok biztonságos kezeléséhez
 
@@ -92,7 +92,7 @@ A titkok biztonságos kezelésére szolgáló stratégiák a következők:
 
 ## <a name="branching-and-merging"></a>Elágazás és egyesítés
 
-Az elosztott verziókövető rendszerek, például a git rugalmasságot biztosítanak a csapattagok által a másokkal megosztott fejlesztési ágakon keresztül történő közzétételi, megosztási, felülvizsgálati és iterációs lépések során. A csapatának megfelelő [git-elágazási stratégia](https://docs.microsoft.com/azure/devops/repos/git/git-branching-guidance) bevezetése.
+Az elosztott verziókövető rendszerek, például a git rugalmasságot biztosítanak a csapattagok által a másokkal megosztott fejlesztési ágakon keresztül történő közzétételi, megosztási, felülvizsgálati és iterációs lépések során. A csapatának megfelelő [git-elágazási stratégia](/azure/devops/repos/git/git-branching-guidance) bevezetése.
 
 Az Ön által elfogadott elágazási stratégia egyik legfontosabb elve, hogy a csapattagok a megoldáson belül dolgozhatnak az adott *szolgáltatási ágban* , függetlenül attól, hogy milyen munkát végeznek más ágakban.
 
@@ -110,7 +110,7 @@ A fejlesztők a következő módon dolgozhatnak a LUIS-alkalmazások frissítés
 
 1. Egy szolgáltatási ág létrehozása a fő ágban (a fiókirodai stratégia, általában a Master vagy a fejlesztés) alapján.
 
-1. [Hozzon létre egy új Luis-alkalmazást a Luis-portálon](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-start-new-app) (a "*dev Branch app*") kizárólag a szolgáltatás üzletágban végzett munka támogatásához.
+1. [Hozzon létre egy új Luis-alkalmazást a Luis-portálon](./luis-how-to-start-new-app.md) (a "*dev Branch app*") kizárólag a szolgáltatás üzletágban végzett munka támogatásához.
 
    * Ha a `.lu` megoldás forrása már létezik a ágban, mert a projekt korábbi részében történt munka után lett mentve, a fájl importálásával hozza létre a dev Branch Luis alkalmazást `.lu` .
 
@@ -120,11 +120,11 @@ A fejlesztők a következő módon dolgozhatnak a LUIS-alkalmazások frissítés
 
 1. A frissítések tesztelése – lásd: a [Luis DevOps tesztelése](luis-concept-devops-testing.md) a fejlesztői ág alkalmazásának tesztelésével kapcsolatos részletekért.
 
-1. Exportálja a dev Branch alkalmazás aktív verzióját `.lu` a [verziók listából](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions).
+1. Exportálja a dev Branch alkalmazás aktív verzióját `.lu` a [verziók listából](./luis-how-to-manage-versions.md).
 
 1. Tekintse át a frissítéseket, és hívja meg a frissítések partneri áttekintését. Ha a GitHubot használja, egy [lekéréses kérelmet](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests)fog felhívni.
 
-1. Ha jóváhagyja a módosításokat, egyesítse a frissítéseket a fő ágra. Ezen a ponton a *Master* Luis alkalmazás egy új [verzióját](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions) fogja létrehozni a frissített `.lu` főkiszolgáló használatával. A verzió nevének beállításával kapcsolatos megfontolásokat lásd: [verziószámozás](#versioning) .
+1. Ha jóváhagyja a módosításokat, egyesítse a frissítéseket a fő ágra. Ezen a ponton a *Master* Luis alkalmazás egy új [verzióját](./luis-how-to-manage-versions.md) fogja létrehozni a frissített `.lu` főkiszolgáló használatával. A verzió nevének beállításával kapcsolatos megfontolásokat lásd: [verziószámozás](#versioning) .
 
 1. A szolgáltatási ág törlését követően érdemes törölni a szolgáltatás-ág működéséhez létrehozott fejlesztői ág LUIS-alkalmazását.
 
@@ -144,9 +144,9 @@ Egyszerre több fejlesztő is dolgozhat ugyanazon a szolgáltatási ágban:
 
 - Ha követi a fent ismertetett mintát a [fejlesztőktől független ágakból](#developers-can-work-from-independent-branches), akkor ez az ág egy egyedi Luis-alkalmazást fog használni a fejlesztés támogatásához. A "dev Branch" LUIS-alkalmazást a fejlesztői csapat első tagja hozza létre, aki elkezd dolgozni a szolgáltatási ágban.
 
-- [Csoporttagok hozzáadása közreműködőként](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-collaborate) a dev Branch Luis alkalmazáshoz.
+- [Csoporttagok hozzáadása közreműködőként](./luis-how-to-collaborate.md) a dev Branch Luis alkalmazáshoz.
 
-- Ha a szolgáltatási ág működése befejeződött, exportálja a dev Branch LUIS alkalmazás aktív verzióját `.lu` a [verziók listáról](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions), mentse a frissített `.lu` fájlt a tárházba, és jelentkezzen be, és hajtsa végre a módosításokat.
+- Ha a szolgáltatási ág működése befejeződött, exportálja a dev Branch LUIS alkalmazás aktív verzióját `.lu` a [verziók listáról](./luis-how-to-manage-versions.md), mentse a frissített `.lu` fájlt a tárházba, és jelentkezzen be, és hajtsa végre a módosításokat.
 
 ### <a name="incorporating-changes-from-one-branch-to-another-with-rebase-or-merge"></a>Az egyik ág és a másik közötti változások átépítése vagy egyesítése
 
@@ -183,7 +183,7 @@ A LUDown-formátumú LUIS-alkalmazások emberi olvasást biztosítanak, amely t�
 
 ## <a name="versioning"></a>Verziókezelés
 
-Az alkalmazások több összetevőből állnak, amelyek olyan dolgokból állhatnak, mint például a [Azure bot Service](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0), a [QnA Maker](https://www.qnamaker.ai/), az [Azure Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/overview)és más eszközökön futó robot. A lazán összekapcsolt alkalmazások céljának eléréséhez használja a [verziókövetés](https://docs.microsoft.com/azure/devops/learn/git/what-is-version-control) használatát, hogy az alkalmazás minden összetevője egymástól függetlenül legyen elvégezve, így a fejlesztők csak a verziószám alapján tudják felderíteni a feltörési változásokat vagy a frissítéseket. A LUIS-alkalmazás más összetevőktől függetlenül is egyszerűbb, ha a saját tárházában tartja karban.
+Az alkalmazások több összetevőből állnak, amelyek olyan dolgokból állhatnak, mint például a [Azure bot Service](/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0), a [QnA Maker](https://www.qnamaker.ai/), az [Azure Speech Service](../speech-service/overview.md)és más eszközökön futó robot. A lazán összekapcsolt alkalmazások céljának eléréséhez használja a [verziókövetés](/azure/devops/learn/git/what-is-version-control) használatát, hogy az alkalmazás minden összetevője egymástól függetlenül legyen elvégezve, így a fejlesztők csak a verziószám alapján tudják felderíteni a feltörési változásokat vagy a frissítéseket. A LUIS-alkalmazás más összetevőktől függetlenül is egyszerűbb, ha a saját tárházában tartja karban.
 
 A Master ág LUIS-alkalmazásának verziószámozási sémával kell rendelkeznie. Ha egy LUIS-alkalmazáshoz egyesíti a frissítéseket a `.lu` Master-be, ezt a frissített forrást egy új verzióba importálhatja a Master ág Luis-alkalmazásában.
 
@@ -195,7 +195,7 @@ A verziószám minden frissítése az utolsó számjegynél nő.
 
 A fő/alverzió használatával jelezheti a LUIS-alkalmazás funkcióinak változási körét:
 
-* Főverzió: jelentős változás, például egy új [szándék](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-intent) vagy [entitás](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-entity-types) támogatása
+* Főverzió: jelentős változás, például egy új [szándék](./luis-concept-intent.md) vagy [entitás](./luis-concept-entity-types.md) támogatása
 * Alverzió: visszamenőlegesen kompatibilis kisebb változás, például a jelentős új képzés után
 * Build: nincs funkcionalitás-változás, csak egy másik Build.
 

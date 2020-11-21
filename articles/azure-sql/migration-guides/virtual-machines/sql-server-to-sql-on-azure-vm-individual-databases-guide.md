@@ -10,17 +10,17 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: c7a62bb3ed07ffbd8cfef520e5d504c810d11e5a
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 1558c396566b2fcfc098a749407d5e7a28316b6f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496909"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019449"
 ---
 # <a name="migration-guide-sql-server-to-sql-server-on-azure-vms"></a>Áttelepítési útmutató: az Azure-beli virtuális gépeken SQL Server SQL Server 
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
 
-Ez az áttelepítési útmutató bemutatja, hogyan **derítheti fel** , **értékelheti** és **telepítheti át** a felhasználói adatbázisokat a SQL Serverról SQL Server Azure-beli Virtual Machines (VM)-példányra a biztonsági mentési és visszaállítási, valamint a naplózási szolgáltatással az [adatbázis Migration Assistant (DMA)](/sql/dma/dma-overview) használatával történő értékeléshez. 
+Ez az áttelepítési útmutató bemutatja, hogyan **derítheti fel**, **értékelheti** és **telepítheti át** a felhasználói adatbázisokat a SQL Serverról SQL Server Azure-beli Virtual Machines (VM)-példányra a biztonsági mentési és visszaállítási, valamint a naplózási szolgáltatással az [adatbázis Migration Assistant (DMA)](/sql/dma/dma-overview) használatával történő értékeléshez. 
 
 A helyszíni vagy a szolgáltatásban futó SQL Server áttelepíthetők:
 
@@ -40,7 +40,7 @@ Az Azure-beli virtuális gépeken SQL Server áttelepítéshez a következők sz
 - [Adatbázis Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595).
 - Egy [Azure Migrate projekt](/azure/migrate/create-manage-projects).
 - Egy előkészített cél [SQL Server az Azure-beli virtuális gépen](/azure/azure-sql/virtual-machines/windows/create-sql-vm-portal) , amely a forrás-SQL Server megegyező vagy újabb verziójú.
-- [Kapcsolódás az Azure és a](/architecture/reference-architectures/hybrid-networking)helyszíni környezet között.
+- [Kapcsolódás az Azure és a](/azure/architecture/reference-architectures/hybrid-networking)helyszíni környezet között.
 - [Megfelelő áttelepítési stratégia kiválasztása](sql-server-to-sql-on-azure-vm-migration-overview.md#migrate).
 
 ## <a name="pre-migration"></a>A migrálás előtt
@@ -59,7 +59,7 @@ További felderítési eszközök: az adatáttelepítési forgatókönyvekhez el
 
 ### <a name="assess"></a>Kiértékelés
 
-Miután felderítette az összes adatforrást, a [Data Migration Assistant (DMA)](/dma/dma-overview) segítségével mérje fel a helyszíni SQL Server példányokat, amelyek áttelepíthetők az Azure-beli virtuális gépen SQL Server példányára, hogy megértse a forrás-és a cél példányok közötti hézagokat. 
+Miután felderítette az összes adatforrást, a [Data Migration Assistant (DMA)](/sql/dma/dma-overview) segítségével mérje fel a helyszíni SQL Server példányokat, amelyek áttelepíthetők az Azure-beli virtuális gépen SQL Server példányára, hogy megértse a forrás-és a cél példányok közötti hézagokat. 
 
 
 > [!NOTE]
@@ -123,7 +123,7 @@ A következő lépésekkel végezheti el a normál áttelepítést a biztonsági
 1. Az áttelepítésre szánt adatbázisokat használó alkalmazások szüneteltetése/leállítása. 
 1. Győződjön meg arról, hogy a felhasználói adatbázis (ok) inaktív az [egyfelhasználós módban](/sql/relational-databases/databases/set-a-database-to-single-user-mode). 
 1. Teljes adatbázis biztonsági mentése egy helyszíni helyre.
-1. Másolja a helyszíni biztonságimásolat-fájl (oka) t a virtuális gépre a távoli asztal, az [Azure adatkezelő](/data-explorer/data-explorer-overview)vagy a [AZCopy parancssori segédprogram](../../../storage/common/storage-use-azcopy-v10.md) (> 2 TB biztonsági mentés ajánlott) használatával.
+1. Másolja a helyszíni biztonságimásolat-fájl (oka) t a virtuális gépre a távoli asztal, az [Azure adatkezelő](/azure/data-explorer/data-explorer-overview)vagy a [AZCopy parancssori segédprogram](../../../storage/common/storage-use-azcopy-v10.md) (> 2 TB biztonsági mentés ajánlott) használatával.
 1. A teljes adatbázis biztonsági másolatának visszaállítása az Azure-beli virtuális gépen lévő SQL Serverra.
 
 ### <a name="log-shipping--minimize-downtime"></a>Napló szállítása (az állásidő csökkentése)
@@ -133,7 +133,7 @@ A következő lépésekkel végezheti el a minimális állásidő-áttelepítés
 1. A követelmények alapján állítsa be a kapcsolatot az Azure-beli virtuális gépen a TARGET SQL Serverhoz. Lásd: [kapcsolódás SQL Server virtuális géphez az Azure-ban (Resource Manager)](../../virtual-machines/windows/ways-to-connect-to-sql.md).
 1. Győződjön meg arról, hogy az áttelepítendő helyszíni felhasználói adatbázis (ok) teljes vagy tömegesen naplózott helyreállítási modellben van.
 1. Az adatbázis teljes biztonsági mentését elvégezheti egy helyszíni helyre, és módosíthatja a meglévő teljes adatbázis-biztonsági mentések feladatait, hogy [COPY_ONLY](/sql/relational-databases/backup-restore/copy-only-backups-sql-server) kulcsszót használjanak a naplózási lánc megőrzése érdekében.
-1. Másolja a helyszíni biztonságimásolat-fájl (oka) t a virtuális gépre a távoli asztal, az [Azure adatkezelő](/data-explorer/data-explorer-overview)vagy a [AZCopy parancssori segédprogram](../../../storage/common/storage-use-azcopy-v10.md) (>1 TB biztonsági másolatok ajánlott) használatával.
+1. Másolja a helyszíni biztonságimásolat-fájl (oka) t a virtuális gépre a távoli asztal, az [Azure adatkezelő](/azure/data-explorer/data-explorer-overview)vagy a [AZCopy parancssori segédprogram](../../../storage/common/storage-use-azcopy-v10.md) (>1 TB biztonsági másolatok ajánlott) használatával.
 1. Az Azure-beli virtuális gépen lévő SQL Server teljes adatbázis-biztonsági mentése (i) visszaállítása.
 1. Állítsa be a [naplózást](/sql/database-engine/log-shipping/configure-log-shipping-sql-server) a helyszíni adatbázis és a cél-SQL Server között az Azure-beli virtuális gépen. Győződjön meg arról, hogy az adatbázis (ok) újrainicializálása nem történt meg, mert ez már befejeződött az előző lépésekben.
 1. A rendszer **átvágja** a célkiszolgálóra. 
@@ -150,7 +150,7 @@ Előfordulhat, hogy további SQL Server objektumokat kell megadnia a felhasznál
 A következő táblázat egy lista-összetevőket és ajánlott áttelepítési módszereket tartalmaz, amelyeket a felhasználói adatbázisok áttelepítése előtt vagy után is el lehet végezni: 
 
 
-| **Jellemző** | **Összetevő** | **Áttelepítési módszer (ek)** |
+| **Funkció** | **Összetevő** | **Áttelepítési módszer (ek)** |
 | --- | --- | --- |
 | **Adatbázisok** | Modellezés  | Parancsfájl SQL Server Management Studio |
 || TempDB | Tervezze meg a TempDB áthelyezését az [Azure VM ideiglenes lemezére (SSD](../../virtual-machines/windows/performance-guidelines-best-practices.md#temporary-disk)) a legjobb teljesítmény érdekében. Ügyeljen arra, hogy olyan virtuálisgép-méretet válasszon, amely elegendő helyi SSD-vel rendelkezik a TempDB való alkalmazkodáshoz. |
@@ -205,7 +205,7 @@ További információt ezekről a problémákról és az azok enyhítésére szo
 - [A teljesítmény finomhangolása az Azure SQL Virtual Machinesban](../../virtual-machines/windows/performance-guidelines-best-practices.md).
 - [Azure Cost-optimalizálási központ](https://azure.microsoft.com/overview/cost-optimization/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A SQL Server alkalmazandó szolgáltatások rendelkezésre állásának vizsgálatához tekintse meg az [Azure globális infrastruktúra-központot](https://azure.microsoft.com/global-infrastructure/services/?regions=all&amp;products=synapse-analytics,virtual-machines,sql-database)
 
@@ -213,7 +213,7 @@ További információt ezekről a problémákról és az azok enyhítésére szo
 
 - További információ az Azure SQL-ről:
    - [Üzembe helyezési lehetőségek](../../azure-sql-iaas-vs-paas-what-is-overview.md)
-   - [SQL Server Azure-beli virtuális gépeken](../../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
+   - [Azure-beli virtuális gépeken futó SQL Server](../../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
    - [Az Azure teljes tulajdonlási költsége kalkulátor](https://azure.microsoft.com/pricing/tco/calculator/) 
 
 

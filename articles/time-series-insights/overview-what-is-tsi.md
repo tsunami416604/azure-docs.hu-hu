@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: fa0416db440e6433829b8077b6988eeaa6a596ad
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8fdbb42d06f26849d14e093c340c6d2457ee6ec9
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91667061"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020095"
 ---
 # <a name="what-is-azure-time-series-insights-gen2"></a>Mi az Azure Time Series Insights Gen2
 
@@ -83,18 +83,18 @@ Ezeknek a kulcsfontosságú ipari IoT képességeknek a bevezetésével a Azure 
 | Többrétegű tárolás IoT-méretezési idősorozat-adatsorokhoz | Egy megosztott adatfeldolgozási folyamattal az adatbevitelhez a meleg és a hűtőházi tárolóba is betöltheti az adatmennyiséget. A nagyméretű adatmennyiségek tárolásához használjon meleg tárolót interaktív lekérdezésekhez és hideg tároláshoz. Ha többet szeretne megtudni arról, hogyan használhatja ki a nagy teljesítményű eszközökön alapuló lekérdezéseket, tekintse meg a [lekérdezéseket](./concepts-query-overview.md). |
 | Idősorozat-modell a nyers telemetria contextualize, és az eszköz-alapú adatfelismerések származtatása | Az idősorozat-modell használatával példányokat, hierarchiákat, típusokat és változókat hozhat létre az idősoros adataihoz. Ha többet szeretne megtudni a Time Series-modellről, tekintse meg a [Time Series Model](./concepts-model-overview.md)című témakört.  |
 | Zökkenőmentes és folyamatos integráció más adatmegoldásokkal | A Azure Time Series Insights Gen2-beli tárolt fájlok a nyílt forráskódú Apache Parquet-fájlokban vannak [tárolva](./concepts-storage.md) . Ez lehetővé teszi az adatintegrációt más adatmegoldásokkal (1. vagy harmadik felekkel) olyan forgatókönyvek esetén, amelyek üzleti intelligenciát, speciális gépi tanulást és prediktív elemzést tartalmaznak. |
-| Közel valós idejű adatelemzés | A [Azure Time Series Insights Gen2 Explorer](./time-series-insights-update-explorer.md) felhasználói élmény vizualizációt biztosít a betöltési folyamaton keresztüli összes adatfolyamhoz. Az eseményforrás összekapcsolását követően megtekintheti, feltárhatja és lekérdezheti az események adatforrásait. Ily módon ellenőrizheti, hogy az eszköz az elvárt módon bocsát-e ki adatforrásokat. Egy IoT-eszközt is nyomon követheti az állapot, a termelékenység és az általános hatékonyság érdekében. |
+| Közel valós idejű adatelemzés | A [Azure Time Series Insights Gen2 Explorer](./concepts-ux-panels.md) felhasználói élmény vizualizációt biztosít a betöltési folyamaton keresztüli összes adatfolyamhoz. Az eseményforrás összekapcsolását követően megtekintheti, feltárhatja és lekérdezheti az események adatforrásait. Ily módon ellenőrizheti, hogy az eszköz az elvárt módon bocsát-e ki adatforrásokat. Egy IoT-eszközt is nyomon követheti az állapot, a termelékenység és az általános hatékonyság érdekében. |
 | Bővíthetőség és integráció | Az Power BI Connector integrációja közvetlenül a Time Series Explorer felhasználói felületén érhető el az **exportálási** lehetőséggel, így az ügyfelek a felhasználói élményben létrehozott idősorozat-lekérdezéseket közvetlenül a Power bi asztalra, a más bi Analytics szolgáltatással pedig az idősorozat-diagramokat is megtekinthetik. Ez megnyitja az ajtót egy új forgatókönyvnek az olyan ipari IoT vállalatok számára, akik befektettek a Power BIba a különböző adatforrásokból, például a IoT-sorozatokból származó elemzések egyetlen paneljét biztosítva. |
 | Az Azure Time Series Insights Gen2 platformra épülő egyéni alkalmazások | Azure Time Series Insights Gen2 támogatja a [JavaScript SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)-t. Az SDK sokoldalú vezérlőket és egyszerűsített hozzáférést biztosít a lekérdezésekhez. Az SDK használatával egyéni IoT-alkalmazásokat hozhat létre Azure Time Series Insights Gen2, hogy megfeleljen az üzleti igényeinek. A Azure Time Series Insights Gen2- [lekérdezési API-kat](./concepts-query-overview.md) közvetlenül is használhatja az egyéni IoT-alkalmazásokba való adattovábbításhoz. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerkedés a Azure Time Series Insights Gen2:
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató](./time-series-insights-update-quickstart.md)
+> [Rövid útmutató](./quickstart-explore-tsi.md)
 
 Tudnivalók a használati esetekről:
 
 > [!div class="nextstepaction"]
-> [Azure Time Series Insights Gen2 használati esetei](./time-series-insights-update-use-cases.md)
+> [Azure Time Series Insights Gen2 használati esetei](./overview-use-cases.md)

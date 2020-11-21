@@ -11,19 +11,19 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: a7dd67387a541ff62bfa85a7afc2f1bbf31c6180
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 724bc80f8887ff2c47db93ecfc4cd2e20be7e7f8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596430"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020044"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen1-environment-using-c-sharp"></a>Adatok lekérdezése a Azure Time Series Insights Gen1-környezetből C Sharp használatával
 
 > [!CAUTION]
 > Ez egy Gen1-cikk.
 
-Ez a C# példa azt szemlélteti, hogyan használható a [Gen1 lekérdezési API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query) -k Azure Time Series Insights Gen1-környezetből származó adatok lekérdezéséhez.
+Ez a C# példa azt szemlélteti, hogyan használható a [Gen1 lekérdezési API](/rest/api/time-series-insights/gen1-query) -k Azure Time Series Insights Gen1-környezetből származó adatok lekérdezéséhez.
 
 > [!TIP]
 > A C#-Gen1 megtekintése a következő helyen: [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen1-sample/csharp-tsi-gen1-sample) .
@@ -37,22 +37,22 @@ Az alábbi mintakód a következő funkciókat mutatja be:
 * A beszerzett hozzáférési jogkivonat átadása a `Authorization` következő lekérdezési API-kérelmek fejlécében.
 
 * A minta meghívja az egyes Gen1-lekérdezési API-kat, amelyek azt mutatják be, hogyan történik a HTTP-kérelmek elvégzése:
-  * A [környezetek API beszerzése](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environments-api) azon környezetek visszaküldéséhez, amelyekhez a felhasználónak hozzáférése van
-  * [Környezet rendelkezésre állási API-k beolvasása](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-availability-api)
-  * [Környezeti metaadatok](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-metadata-api) beolvasása a környezeti metaadatok lekéréséhez
-  * [Környezetek eseményeinek beolvasása API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-events-api)
-  * [Környezeti összesítések beolvasása API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api)
+  * A [környezetek API beszerzése](/rest/api/time-series-insights/gen1-query-api#get-environments-api) azon környezetek visszaküldéséhez, amelyekhez a felhasználónak hozzáférése van
+  * [Környezet rendelkezésre állási API-k beolvasása](/rest/api/time-series-insights/gen1-query-api#get-environment-availability-api)
+  * [Környezeti metaadatok](/rest/api/time-series-insights/gen1-query-api#get-environment-metadata-api) beolvasása a környezeti metaadatok lekéréséhez
+  * [Környezetek eseményeinek beolvasása API](/rest/api/time-series-insights/gen1-query-api#get-environment-events-api)
+  * [Környezeti összesítések beolvasása API](/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api)
 
 * A Gen1 lekérdezési API-k használata a WSS használatával a következő üzenettel:
 
-  * [Környezeti események beolvasása – adatfolyamként továbbított API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-events-streamed-api)
-  * [Környezet összesített adatfolyamának beolvasása](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-streamed-api)
+  * [Környezeti események beolvasása – adatfolyamként továbbított API](/rest/api/time-series-insights/gen1-query-api#get-environment-events-streamed-api)
+  * [Környezet összesített adatfolyamának beolvasása](/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-streamed-api)
 
 ## <a name="prerequisites-and-setup"></a>Előfeltételek és beállítás
 
 A mintakód fordítása és futtatása előtt végezze el a következő lépéseket:
 
-1. [Gen1 Azure Time Series Insights-környezet kiépítése](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started) .
+1. [Gen1 Azure Time Series Insights-környezet kiépítése](./time-series-insights-get-started.md) .
 1. Konfigurálja Azure Time Series Insights-környezetét Azure Active Directory a [hitelesítés és engedélyezés](time-series-insights-authentication-and-authorization.md)című témakörben leírtak szerint.
 1. Telepítse a szükséges projekt-függőségeket.
 1. Szerkessze az alábbi mintakód összes **#DUMMY #** helyére a megfelelő környezeti azonosítóval.
@@ -82,7 +82,7 @@ A C# mintakód eléréséhez tekintse meg a [Azure Time Series Insights](https:/
 
 ## <a name="next-steps"></a>Következő lépések
 
-* A lekérdezéssel kapcsolatos további információkért olvassa el a [lekérdezési API-referenciát](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api).
+* A lekérdezéssel kapcsolatos további információkért olvassa el a [lekérdezési API-referenciát](/rest/api/time-series-insights/gen1-query-api).
 
 * Olvassa el, hogyan [csatlakozhat egy JavaScript-alkalmazást az ügyfél-SDK](https://github.com/microsoft/tsiclient) -val Time Series Insights.
 Azure-Samples/Azure-Time-Series-bepillantást/gen1-Sample/csharp-ÁME-gen1-Sample/program. cs
