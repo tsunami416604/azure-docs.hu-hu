@@ -3,15 +3,15 @@ author: Julia
 ms.author: juliako
 ms.date: 10/30/2020
 ms.topic: include
-ms.openlocfilehash: a07e4c8ae222aa2a1f6ce43fd1dabe193f8cf6e8
-ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
+ms.openlocfilehash: d2eff2720d4a8d7b18bb52c827c86bc883ff1dfb
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148283"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95095234"
 ---
-Ha Ön rendszergazda vagy labor tulajdonosa, aki több Azure AD-bérlő tagja, akkor a Azure Lab Services portálon (a jobb felső sarokban) navigálhat a bérlők között. 
+Ha a rendszergazda vagy a labor tulajdonosi szerepköre két vagy több Azure AD-bérlőben található, válthat a Azure Lab Services-portálon a bérlők között úgy, hogy a jobb felső sarokban lévő vezérlőelemet választja, ahogy az alábbi képernyőképen is látható: 
 
-![Bérlő kiválasztása](../media/multi-tenant-support/picker.png)
+![Képernyőkép a bérlők közötti váltáshoz a Azure Lab Services portálon.](../media/multi-tenant-support/picker.png)
 
-Miután kiválasztotta a bérlőt, válasszon egy Lab-fiókot a Azure Active Directory (Azure AD) bérlőn belül a bal felső sarokban.
+Miután kiválasztott egy Azure AD-bérlőt, nyissa meg a labor-fiókját a bal felső sarokban található vezérlő kiválasztásával.

@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: fcfefb2b6cd5c23e9b77d7d27413d1ff6d775bfe
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7b691dc408c65b2152c60276dbea826042ecb0d8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89321619"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95097264"
 ---
-[Dokumentáció](https://docs.microsoft.com/javascript/api/@azure/arm-cognitiveservices/?view=azure-node-latest)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices)  |  [Csomag (NPM)](https://www.npmjs.com/package/@azure/arm-cognitiveservices)  |  [Példák](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices#sample-code)
+[Dokumentáció](/javascript/api/@azure/arm-cognitiveservices/?view=azure-node-latest)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices)  |  [Csomag (NPM)](https://www.npmjs.com/package/@azure/arm-cognitiveservices)  |  [Példák](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/arm-cognitiveservices#sample-code)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -104,7 +104,7 @@ A következő függvény törli a megadott erőforrást az adott erőforráscsop
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/azure_management_service/create_delete_resource.js?name=snippet_delete)]
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 Adja hozzá a következő kódot a parancsfájl aljához, hogy a fő `quickstart` függvényt a hibakezelés során hívja meg.
 
@@ -118,7 +118,7 @@ node index.js
 
 ## <a name="see-also"></a>Lásd még
 
-* [Az Azure Management SDK dokumentációja](https://docs.microsoft.com/javascript/api/@azure/arm-cognitiveservices/?view=azure-node-latest)
-* [Mi az Azure Cognitive Services?](../../Welcome.md)
+* [Az Azure Management SDK dokumentációja](/javascript/api/@azure/arm-cognitiveservices/?view=azure-node-latest)
+* [Mi az Azure Cognitive Services?](../../what-are-cognitive-services.md)
 * [Kérelmek hitelesítése az Azure Cognitive Services](../../authentication.md)
 * [Új erőforrás létrehozása az Azure Portal használatával](../../cognitive-services-apis-create-account.md)

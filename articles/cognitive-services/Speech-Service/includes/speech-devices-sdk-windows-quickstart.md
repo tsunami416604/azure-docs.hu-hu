@@ -5,18 +5,18 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: 0fae0172467bb4499c2710c49553d9134a32fa9b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: c9ed54f11cade20af67a1c9bfe948b03e9d7b0d3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135769"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95096150"
 ---
-Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Windows beszédfelismerési eszközökhöz készült SDK-t egy beszédfelismerésre alkalmas termék létrehozásához vagy [beszélgetéses átírási](../conversation-transcription-service.md) eszközként való használatához. A beszélgetések átírásához csak az [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) támogatott. Más beszédekhez a mikrofonos tömb geometriáját biztosító lineáris MIC-tömbök támogatottak.
+Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Windows beszédfelismerési eszközökhöz készült SDK-t egy beszédfelismerésre alkalmas termék létrehozásához vagy [beszélgetéses átírási](../conversation-transcription.md) eszközként való használatához. A beszélgetések átírásához csak az [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) támogatott. Más beszédekhez a mikrofonos tömb geometriáját biztosító lineáris MIC-tömbök támogatottak.
 
 Az alkalmazás a Speech SDK csomaggal, valamint az Eclipse Java IDE (v4) a 64 bites Windows rendszeren készült. és 64 bites Java 8 futtatókörnyezetben (JRE) fut.
 
-Ehhez az útmutatóhoz egy Speech Service-erőforrással rendelkező [Azure Cognitive Services](../get-started.md) -fiókra van szükség.
+Ehhez az útmutatóhoz egy Speech Service-erőforrással rendelkező [Azure Cognitive Services](../overview.md#try-the-speech-service-for-free) -fiókra van szükség.
 
 A [minta alkalmazás](https://aka.ms/sdsdk-download-JRE) forráskódját a Speech Devices SDK tartalmazza. [A githubon is elérhető](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
@@ -29,14 +29,14 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 * [Eclipse Java IDE](https://www.eclipse.org/downloads/)
 * Csak [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) vagy [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html) esetén.
 * [Microsoft Visual C++ újraterjeszthető csomag](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
-* Egy Azure-előfizetési kulcs a beszédfelismerési szolgáltatáshoz. [Szerezze be az egyiket ingyenesen](../get-started.md).
+* Egy Azure-előfizetési kulcs a beszédfelismerési szolgáltatáshoz. [Szerezze be az egyiket ingyenesen](../overview.md#try-the-speech-service-for-free).
 * Töltse le a Javához készült [Speech Devices SDK](https://aka.ms/sdsdk-download-JRE) legújabb verzióját, és bontsa ki a. zip fájlt a munkakönyvtárba.
    > [!NOTE]
    > Ez a rövid útmutató azt feltételezi, hogy az alkalmazást a rendszer kinyeri a C:\SDSDK\JRE-Sample-Release
 
 A beszélgetés átírása jelenleg csak az "en-US" és a "zh-CN" esetében érhető el az "CentralUS" és a "eastasia" régióban. A beszélgetés átírásának használatához az egyik régióban kell lennie egy beszédfelismerési kulcsnak.
 
-Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language Understanding Service (Luis)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) előfizetésre. Ha többet szeretne megtudni a LUIS és a szándék-felismerésről, tekintse meg a következőt: [beszédfelismerési szándékok felismerése Luis-vel, C#](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp). Ehhez az alkalmazáshoz egy [minta Luis-modell](https://aka.ms/sdsdk-luis) érhető el.
+Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language Understanding Service (Luis)](../../luis/luis-how-to-azure-subscription.md) előfizetésre. Ha többet szeretne megtudni a LUIS és a szándék-felismerésről, tekintse meg a következőt: [beszédfelismerési szándékok felismerése Luis-vel, C#](../how-to-recognize-intents-from-speech-csharp.md). Ehhez az alkalmazáshoz egy [minta Luis-modell](https://aka.ms/sdsdk-luis) érhető el.
 
 ## <a name="create-and-configure-the-project"></a>A projekt létrehozása és konfigurálása
 
@@ -108,7 +108,7 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
 1. Az alapértelmezett kulcsszó (kulcsszó) a "Computer". Kipróbálhatja a többi megadott kulcsszót is, például a "Machine" vagy a "Assistant" kifejezést. Ezen alternatív kulcsszavak erőforrásai a Speech Devices SDK-ban, a Kulcsszóválasztó mappában találhatók. Például `C:\SDSDK\JRE-Sample-Release\keyword\Computer` a "számítógép" kulcsszóhoz használt fájlokat tartalmazza.
 
     > [!TIP]
-    > [Egyéni kulcsszó is létrehozható](../speech-devices-sdk-create-kws.md).
+    > [Egyéni kulcsszó is létrehozható](../custom-keyword-basics.md).
 
     Új kulcsszó használatához frissítse a következő sort a-ben `FunctionsList.java` , és másolja a kulcsszót az alkalmazásba. Ha például a "Machine" kulcsszót szeretné használni a Kulcsszóválasztó csomagból `machine.zip` :
 
@@ -121,7 +121,7 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
 
 ## <a name="run-the-sample-application-from-eclipse"></a>A minta alkalmazás futtatása az Eclipse-ből
 
-1. Az Eclipse menüsávban futtassa a **Run**  >  **Run as**  >  **Java-alkalmazást** . Ezután válassza a **FunctionsList** és **az OK gombot** .
+1. Az Eclipse menüsávban futtassa a **Run**  >  **Run as**  >  **Java-alkalmazást**. Ezután válassza a **FunctionsList** és **az OK gombot**.
 
    ![A Java-alkalmazás kiválasztása – képernyőfelvétel](../media/speech-devices-sdk/eclipse-run-sample.png)
 
@@ -129,7 +129,7 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
 
    ![Képernyőkép egy példa Speech Devices SDK-alkalmazásról és-lehetőségekről.](../media/speech-devices-sdk/java-sample-app-windows.png)
 
-1. Próbálja ki az új **beszélgetés átiratának** bemutatóját. Kezdje el az átírást a **munkamenet**  >  **elindításával** . Alapértelmezés szerint mindenki a vendég. Ha azonban a résztvevő hangaláírásai vannak, akkor `participants.properties` a projekt mappájában a **cél/osztályok** fájlba helyezhetők. A hangaláírás létrehozásához tekintse meg a beszélgetések átírása [(SDK) című témakört](../how-to-use-conversation-transcription-service.md).
+1. Próbálja ki az új **beszélgetés átiratának** bemutatóját. Kezdje el az átírást a **munkamenet**  >  **elindításával**. Alapértelmezés szerint mindenki a vendég. Ha azonban a résztvevő hangaláírásai vannak, akkor `participants.properties` a projekt mappájában a **cél/osztályok** fájlba helyezhetők. A hangaláírás létrehozásához tekintse meg a beszélgetések átírása [(SDK) című témakört](../how-to-use-conversation-transcription.md).
 
    ![Képernyőkép a bemutató beszélgetés átiratának alkalmazásáról.](../media/speech-devices-sdk/cts-sample-app-windows.png)
 
@@ -141,7 +141,7 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
 
    ![Képernyőfelvétel: az Exportálás ablak, ahol kiválasztja a futtatható JAR-fájlt.](../media/speech-devices-sdk/eclipse-export-windows.png)
 
-1. Megjelenik a **FUTTATHATÓ jar-fájl exportálása** ablak. Válassza ki az alkalmazás **exportálási célját** , majd kattintson a **Befejezés gombra** .
+1. Megjelenik a **FUTTATHATÓ jar-fájl exportálása** ablak. Válassza ki az alkalmazás **exportálási célját** , majd kattintson a **Befejezés gombra**.
 
    ![Képernyőkép, amely megjeleníti a futtatható JAR fájl exportálási ablakát, ahol az Exportálás célhelyét választja.](../media/speech-devices-sdk/eclipse-export-jar-windows.png)
 

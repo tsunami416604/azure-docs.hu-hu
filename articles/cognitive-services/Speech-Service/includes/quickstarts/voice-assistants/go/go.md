@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/25/2020
 ms.author: trrwilson
-ms.openlocfilehash: b05e63dc549fdf1fec4485e27086bb32251b41d8
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: c37637ba1cb5154bbd56f7fd22bbbca62b8c3438
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135884"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95096826"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -18,7 +18,7 @@ Az első lépések előtt:
 > [!div class="checklist"]
 > * [Azure Speech-erőforrás létrehozása](../../../../overview.md#try-the-speech-service-for-free)
 > * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](../../../../quickstarts/setup-platform.md)
-> * Hozzon létre egy olyan robotot, amely a [közvetlen vonalas beszéd csatornához](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) csatlakozik
+> * Hozzon létre egy olyan robotot, amely a [közvetlen vonalas beszéd csatornához](/azure/bot-service/bot-service-channel-connect-directlinespeech) csatlakozik
 > * Győződjön meg arról, hogy van hozzáférése egy mikrofonhoz a hangrögzítéshez
 >
   > [!NOTE]
@@ -108,7 +108,7 @@ Cserélje le a `YOUR_SUBSCRIPTION_KEY` és az `YOUR_BOT_REGION` értékeket a t�
    > Tekintse meg [a támogatott régiók listáját a hangsegédek számára](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) , és gondoskodjon arról, hogy az erőforrások az egyik régióban legyenek telepítve.
 
    > [!NOTE]
-   > A robot konfigurálásával kapcsolatos információkért tekintse meg a [közvetlen vonalas beszéd csatorna](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)robot Framework dokumentációját.
+   > A robot konfigurálásával kapcsolatos információkért tekintse meg a [közvetlen vonalas beszéd csatorna](/azure/bot-service/bot-service-channel-connect-directlinespeech)robot Framework dokumentációját.
 
 ## <a name="code-explanation"></a>Kód magyarázata
 A beszédfelismerési konfigurációs objektum létrehozásához a Speech előfizetési kulcs és a régió szükséges. A beszédfelismerési objektum létrehozásához a konfigurációs objektum szükséges.

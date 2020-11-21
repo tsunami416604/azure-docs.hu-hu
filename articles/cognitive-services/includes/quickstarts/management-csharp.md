@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: d8da5fcffa6ff02bed76973021b8a69c6c250821
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1b50fbfa0ec4116f7d0b5988e5be70d0db086732
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89321638"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95095915"
 ---
-[Dokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/management?view=azure-dotnet)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Microsoft.Azure.Management.CognitiveServices)  |  [Csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Management.CognitiveServices/)  |  [Példák](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Microsoft.Azure.Management.CognitiveServices/tests)
+[Dokumentáció](/dotnet/api/overview/azure/cognitiveservices/management?view=azure-dotnet)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Microsoft.Azure.Management.CognitiveServices)  |  [Csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Management.CognitiveServices/)  |  [Példák](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Microsoft.Azure.Management.CognitiveServices/tests)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -114,7 +114,7 @@ A következő metódus törli a megadott erőforrást az adott erőforráscsopor
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/azure_management_service/create_delete_resource.cs?name=snippet_delete)]
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 Futtassa az alkalmazást az alkalmazás könyvtárából a `dotnet run` paranccsal.
 
@@ -124,7 +124,7 @@ dotnet run
 
 ## <a name="see-also"></a>Lásd még
 
-* [Az Azure Management SDK dokumentációja](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/management?view=azure-dotnet)
-* [Mi az Azure Cognitive Services?](../../Welcome.md)
+* [Az Azure Management SDK dokumentációja](/dotnet/api/overview/azure/cognitiveservices/management?view=azure-dotnet)
+* [Mi az Azure Cognitive Services?](../../what-are-cognitive-services.md)
 * [Kérelmek hitelesítése az Azure Cognitive Services](../../authentication.md)
 * [Új erőforrás létrehozása az Azure Portal használatával](../../cognitive-services-apis-create-account.md)

@@ -4,21 +4,21 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
-ms.openlocfilehash: 38e6bae69710dc9e1dbc8789ee9ccb636193c7f7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8ee14b94977b3152e0aab853fa3919a739d0dfdd
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "80671906"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95097641"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az első lépések előtt ügyeljen a következőre:
 
 > [!div class="checklist"]
-> * [Azure Speech-erőforrás létrehozása](~/articles/cognitive-services/speech-service/get-started.md)
+> * [Azure Speech-erőforrás létrehozása](../../../../overview.md#try-the-speech-service-for-free)
 > * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=jre&pivots=programming-language-java)
-> * Hozzon létre egy olyan robotot, amely a [közvetlen vonalas beszéd csatornához](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) csatlakozik
+> * Hozzon létre egy olyan robotot, amely a [közvetlen vonalas beszéd csatornához](/azure/bot-service/bot-service-channel-connect-directlinespeech) csatlakozik
 > * Győződjön meg arról, hogy van hozzáférése egy mikrofonhoz a hangrögzítéshez
 
   > [!NOTE]
@@ -40,7 +40,7 @@ Emellett a naplózás engedélyezéséhez frissítse a _pom.xml_ fájlt, hogy az
 
 ## <a name="add-sample-code"></a>Mintakód hozzáadása
 
-1. Ha új üres osztályt szeretne hozzáadni a Java-projekthez, válassza a **fájl**  >  **új**  >  **osztály**elemet.
+1. Ha új üres osztályt szeretne hozzáadni a Java-projekthez, válassza a **fájl**  >  **új**  >  **osztály** elemet.
 
 1. Az **új Java-osztály** ablakban adja meg a _speechsdk._ gyors értéket a **csomag** mezőben _és a_ főértékben a **név** mezőben.
 
@@ -115,7 +115,7 @@ Emellett a naplózás engedélyezéséhez frissítse a _pom.xml_ fájlt, hogy az
 
 1. A `main` metódusban először konfigurálja `DialogServiceConfig` és használja egy példány létrehozásához `DialogServiceConnector` . Ez a példány csatlakozik a közvetlen vonalas beszédfelismerési csatornához, hogy együttműködjön a robottal. `AudioConfig`A rendszer egy példányt is használ a hangbemenet forrásának megadására. Ebben a példában az alapértelmezett mikrofon van használatban `AudioConfig.fromDefaultMicrophoneInput()` .
 
-   - Cserélje le a karakterláncot az `YourSubscriptionKey` előfizetési kulcsra, amelyet a [webhelyről](~/articles/cognitive-services/speech-service/get-started.md)szerezhet be.
+   - Cserélje le a karakterláncot az `YourSubscriptionKey` előfizetési kulcsra, amelyet a [webhelyről](../../../../overview.md#try-the-speech-service-for-free)szerezhet be.
    - Cserélje le a karakterláncot `YourServiceRegion` az előfizetéséhez társított [régióra](~/articles/cognitive-services/speech-service/regions.md) .
 
    > [!NOTE]
@@ -185,7 +185,7 @@ Emellett a naplózás engedélyezéséhez frissítse a _pom.xml_ fájlt, hogy az
 
 1. Mentse a fájl módosításait `Main` .
 
-1. A válaszok lejátszásának támogatásához adjon hozzá egy további osztályt, amely átalakítja a getAudio () API által visszaadott PullAudioOutputStream objektumot egy Java-InputStream a könnyű kezelhetőség érdekében. Ez `ActivityAudioStream` egy speciális osztály, amely a Direct line Speech Channel hangválaszait kezeli. Hozzáférést biztosít a lejátszáshoz szükséges hangformátum-információk lekéréséhez. Ehhez válassza a **fájl**  >  **új**  >  **osztály**elemet.
+1. A válaszok lejátszásának támogatásához adjon hozzá egy további osztályt, amely átalakítja a getAudio () API által visszaadott PullAudioOutputStream objektumot egy Java-InputStream a könnyű kezelhetőség érdekében. Ez `ActivityAudioStream` egy speciális osztály, amely a Direct line Speech Channel hangválaszait kezeli. Hozzáférést biztosít a lejátszáshoz szükséges hangformátum-információk lekéréséhez. Ehhez válassza a **fájl**  >  **új**  >  **osztály** elemet.
 
 1. Az **új Java-osztály** ablakban írja be a _Speechsdk. Gyorsindítás_ nevet a **csomag** mezőbe, és a _ActivityAudioStream_ értéket a **név** mezőbe.
 
@@ -434,12 +434,12 @@ Emellett a naplózás engedélyezéséhez frissítse a _pom.xml_ fájlt, hogy az
 
 ## <a name="build-and-run-the-app"></a>Készítsen buildet és futtassa az alkalmazást
 
-Válassza az F11 lehetőséget, **Run**vagy válassza a  >  **hibakeresés**futtatása lehetőséget.
+Válassza az F11 lehetőséget, **Run** vagy válassza a  >  **hibakeresés** futtatása lehetőséget.
 A konzolon megjelenik a "Say valami" üzenet.
 Ezen a ponton beszéljen egy angol nyelvű kifejezéssel vagy mondattal, amelyet a robotja tud megérteni. A beszédet a robot a közvetlen vonalas beszéd csatornán keresztül továbbítja, ahol a robot felismeri és dolgozza fel. A válasz tevékenységként lesz visszaadva. Ha a robot válaszként adja vissza a beszédet, a hang a osztály használatával lesz visszajátszva `AudioPlayer` .
 
 ![Képernyőkép a konzolról a sikeres felismerést követően](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-08-console-output.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]

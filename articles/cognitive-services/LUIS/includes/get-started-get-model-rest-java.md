@@ -8,18 +8,18 @@ ms.subservice: language-understanding
 ms.topic: include
 ms.date: 06/03/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 33efca9ab3c24ebd0a3d1c76924f2c1f4ee89581
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5ece29b7189f31654056ec357f522b59ccb16587
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91534672"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95098568"
 ---
 [Dokumentáció](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c45)  |  [Minta](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/LUIS/java-model-with-rest/Model.java)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [JDK SE](https://aka.ms/azure-jdks) (Java fejlesztői készlet, Standard Edition)
+* [JDK SE](/azure/developer/java/fundamentals/java-jdk-long-term-support) (Java fejlesztői készlet, Standard Edition)
 * A [Visual Studio Code](https://code.visualstudio.com/) vagy a kedvenc ide
 
 ## <a name="example-utterances-json-file"></a>Kimondott példaszövegek JSON-fájlja
@@ -42,7 +42,7 @@ ms.locfileid: "91534672"
 
 1. Cserélje le az értékeket a `YOUR-` saját értékeivel kezdődő értékekre.
 
-    |Tájékoztatás|Rendeltetés|
+    |Információ|Cél|
     |--|--|
     |`YOUR-APP-ID`| A LUIS-alkalmazás azonosítója. |
     |`YOUR-AUTHORING-KEY`|Az 32 karakteres szerzői kulcs.|
@@ -151,11 +151,11 @@ ms.locfileid: "91534672"
     ]
     ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha elkészült a rövid útmutatóval, törölje a Project mappát a fájlrendszerből.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ajánlott eljárások az alkalmazásokhoz](../luis-concept-best-practices.md)

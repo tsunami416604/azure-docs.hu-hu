@@ -5,16 +5,16 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: 5e83650bc9861f982c4905e26fbb674abbd4de97
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: c341ba20ece26e15255faf086e5bd2904fbaa797
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135521"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95095473"
 ---
-Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az Androidhoz készült Speech Devices SDK-t, hogy beszédfelismerésre alkalmas terméket hozzon létre, vagy [beszélgetéses átírási](../conversation-transcription-service.md) eszközként használja azt.
+Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az Androidhoz készült Speech Devices SDK-t, hogy beszédfelismerésre alkalmas terméket hozzon létre, vagy [beszélgetéses átírási](../conversation-transcription.md) eszközként használja azt.
 
-Ehhez az útmutatóhoz egy Speech Service-erőforrással rendelkező [Azure Cognitive Services](../get-started.md) -fiókra van szükség.
+Ehhez az útmutatóhoz egy Speech Service-erőforrással rendelkező [Azure Cognitive Services](../overview.md#try-the-speech-service-for-free) -fiókra van szükség.
 
 A minta alkalmazás forráskódját a Speech Devices SDK tartalmazza. [A githubon is elérhető](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
@@ -24,18 +24,18 @@ A Speech Devices SDK használatának megkezdése előtt a következőket kell te
 
 - Kövesse a [fejlesztői csomag](../get-speech-devices-sdk.md) utasításait az eszköz bekapcsolásához.
 
-- Töltse le a [Speech Devices SDK](https://aka.ms/sdsdk-download)legújabb verzióját, és bontsa ki a. zip fájlt a munkakönyvtárba.
+- Töltse le a [Speech Devices SDK](../speech-devices-sdk.md)legújabb verzióját, és bontsa ki a. zip fájlt a munkakönyvtárba.
 
   > [!NOTE]
   > Ez a rövid útmutató azt feltételezi, hogy az alkalmazást a rendszer kinyeri a C:\SDSDK\Android-Sample-Release
 
-- [Azure-előfizetési kulcs beszerzése a Speech Service-hez](../get-started.md)
+- [Azure-előfizetési kulcs beszerzése a Speech Service-hez](../overview.md#try-the-speech-service-for-free)
 
 - Ha azt tervezi, hogy a beszélgetés átírását használja, [körkörös mikrofonos eszközt](../get-speech-devices-sdk.md) kell használnia, és ez a funkció jelenleg csak az "en-us" és a "zh-CN" esetében érhető el a (z) "CentralUS" és a "eastasia" régióban. A beszélgetés átírásának használatához az egyik régióban kell lennie egy beszédfelismerési kulcsnak.
 
-- Ha azt tervezi, hogy a Speech Service segítségével azonosítja a szándékokat (vagy műveleteket) a felhasználói hosszúságú kimondott szöveg, szüksége lesz egy [Language Understanding Service (Luis)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) előfizetésre. Ha többet szeretne megtudni a LUIS és a szándék-felismerésről, tekintse meg a következőt: [beszédfelismerési szándékok felismerése Luis-vel, C#](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp).
+- Ha azt tervezi, hogy a Speech Service segítségével azonosítja a szándékokat (vagy műveleteket) a felhasználói hosszúságú kimondott szöveg, szüksége lesz egy [Language Understanding Service (Luis)](../../luis/luis-how-to-azure-subscription.md) előfizetésre. Ha többet szeretne megtudni a LUIS és a szándék-felismerésről, tekintse meg a következőt: [beszédfelismerési szándékok felismerése Luis-vel, C#](../how-to-recognize-intents-from-speech-csharp.md).
 
-  [Létrehozhat egy egyszerű Luis-modellt](https://docs.microsoft.com/azure/cognitive-services/luis/) , vagy használhatja a (z) LUIS-example.jsLuis modellt is. A LUIS-modell a [Speech Devices SDK letöltési webhelyéről](https://aka.ms/sdsdk-luis)érhető el. A modell JSON-fájljának a Luis- [portálra](https://www.luis.ai/home)való feltöltéséhez válassza az **új alkalmazás importálása** lehetőséget, majd válassza ki a JSON-fájlt.
+  [Létrehozhat egy egyszerű Luis-modellt](../../luis/index.yml) , vagy használhatja a (z) LUIS-example.jsLuis modellt is. A LUIS-modell a [Speech Devices SDK letöltési webhelyéről](https://aka.ms/sdsdk-luis)érhető el. A modell JSON-fájljának a Luis- [portálra](https://www.luis.ai/home)való feltöltéséhez válassza az **új alkalmazás importálása** lehetőséget, majd válassza ki a JSON-fájlt.
 
 - Telepítse a [Android Studio](https://developer.android.com/studio/) és a [Vysor](https://vysor.io/download/) a számítógépre.
 
@@ -122,7 +122,7 @@ A fejlesztői csomag telepítésének ellenőrzéséhez hozza létre és telepí
 1. Az alapértelmezett kulcsszó a "Computer". Kipróbálhatja a többi megadott kulcsszót is, például a "Machine" vagy a "Assistant" kifejezést. Ezen alternatív kulcsszavak erőforrásai a Speech Devices SDK-ban, a Kulcsszóválasztó mappában találhatók. Például a C:\SDSDK\Android-Sample-Release\keyword\Computer tartalmazza a "Computer" kulcsszóhoz használt fájlokat.
 
    > [!TIP]
-   > [Egyéni kulcsszó is létrehozható](../speech-devices-sdk-create-kws.md).
+   > [Egyéni kulcsszó is létrehozható](../custom-keyword-basics.md).
 
    Új kulcsszó használatához frissítse a következő két sort a `MainActivity.java` alkalmazásban, és másolja a kulcsszó-csomagot az alkalmazásba. Ha például a "Machine" kulcsszót szeretné használni a Kulcsszóválasztó csomag kws-machine.zip:
 
@@ -162,7 +162,7 @@ A fejlesztői csomag telepítésének ellenőrzéséhez hozza létre és telepí
 
    ![Példa a beszédfelismerési eszközök SDK-alkalmazására és lehetőségeire](../media/speech-devices-sdk/qsg-8.png)
 
-1. Próbálja ki az új beszélgetés átiratának bemutatóját. A "kezdési munkamenet" megkezdése. Alapértelmezés szerint mindenki a vendég. Ha azonban a résztvevő hang-aláírása is van, akkor az eszközön található fájlba helyezhetők `/video/participants.properties` . A hangaláírás létrehozásához tekintse meg a beszélgetések átírása [(SDK) című témakört](../how-to-use-conversation-transcription-service.md).
+1. Próbálja ki az új beszélgetés átiratának bemutatóját. A "kezdési munkamenet" megkezdése. Alapértelmezés szerint mindenki a vendég. Ha azonban a résztvevő hang-aláírása is van, akkor az eszközön található fájlba helyezhetők `/video/participants.properties` . A hangaláírás létrehozásához tekintse meg a beszélgetések átírása [(SDK) című témakört](../how-to-use-conversation-transcription.md).
 
    ![Bemutató beszélgetés átirata alkalmazás](../media/speech-devices-sdk/qsg-15.png)
 

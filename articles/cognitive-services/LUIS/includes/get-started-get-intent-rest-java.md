@@ -7,18 +7,18 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: include
 ms.date: 06/03/2020
-ms.openlocfilehash: 0212ad8aad4d9eb9603869e6a83302534509752b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 785d0afa666534c0b6dc0a8d93efbef4a6d1d9f5
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91545163"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95098335"
 ---
 [Dokumentáció](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c08)  |  [Minta](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/LUIS/java-predict-with-rest/Predict.java)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [JDK SE](https://aka.ms/azure-jdks) (Java fejlesztői készlet, Standard Edition)
+* [JDK SE](/azure/developer/java/fundamentals/java-jdk-long-term-support) (Java fejlesztői készlet, Standard Edition)
 * A [Visual Studio Code](https://code.visualstudio.com/) vagy a kedvenc ide
 
 ## <a name="create-pizza-app"></a>Pizza-alkalmazás létrehozása
@@ -43,7 +43,7 @@ A Java használatával lekérdezheti az [előrejelzési végpontot](https://aka.
 
 1. Cserélje le az értékeket a `YOUR-` saját értékeivel kezdődő értékekre.
 
-    |Tájékoztatás|Rendeltetés|
+    |Információ|Cél|
     |--|--|
     |`YOUR-APP-ID`|Az alkalmazás azonosítója. A LUIS-portálon, az alkalmazás Alkalmazásbeállítások lapján található.
     |`YOUR-PREDICTION-KEY`|Az 32 karakteres előrejelzési kulcs. A LUIS-portálon, az alkalmazás Azure-erőforrások lapján található.
@@ -227,11 +227,11 @@ A Java használatával lekérdezheti az [előrejelzési végpontot](https://aka.
     }
     ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha elkészült a rövid útmutatóval, törölje a Project mappát a fájlrendszerből.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Hosszúságú kimondott szöveg és-képzés hozzáadása Javával](../get-started-get-model-rest-apis.md)

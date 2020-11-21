@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/01/2020
 ms.author: pafarley
-ms.openlocfilehash: 346854d5990ac6861bd4eb93914bb1745b90bfa5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a7fc96127d4449cfe0333ba81532d3c5c4ec19fe
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89321599"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95097747"
 ---
-[Dokumentáció](https://docs.microsoft.com/java/api/com.microsoft.azure.management.cognitiveservices?view=azure-java-stable)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/mgmt-v2017_04_18/src/main/java/com/microsoft/azure/management/cognitiveservices/v2017_04_18)  |  [Csomag (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-mgmt-cognitiveservices)
+[Dokumentáció](/java/api/com.microsoft.azure.management.cognitiveservices?view=azure-java-stable)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/mgmt-v2017_04_18/src/main/java/com/microsoft/azure/management/cognitiveservices/v2017_04_18)  |  [Csomag (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-mgmt-cognitiveservices)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -42,7 +42,7 @@ Futtassa a `gradle init` parancsot a munkakönyvtárból. Ez a parancs alapvető
 gradle init --type basic
 ```
 
-Amikor a rendszer rákérdez a **DSL**kiválasztására, válassza a **Kotlin**lehetőséget.
+Amikor a rendszer rákérdez a **DSL** kiválasztására, válassza a **Kotlin** lehetőséget.
 
 A munkakönyvtárból futtassa a következő parancsot:
 
@@ -74,13 +74,13 @@ dependencies {
 
 ### <a name="import-libraries"></a>Kódtárak importálása
 
-Navigáljon az új **src/Main/Java** mappára, és hozzon létre egy *Management. Java*nevű fájlt. Nyissa meg a kívánt szerkesztőben vagy IDE, és adja hozzá a következő `import` utasításokat:
+Navigáljon az új **src/Main/Java** mappára, és hozzon létre egy *Management. Java* nevű fájlt. Nyissa meg a kívánt szerkesztőben vagy IDE, és adja hozzá a következő `import` utasításokat:
 
 [!code-java[](~/cognitive-services-quickstart-code/java/azure_management_service/quickstart.java?name=snippet_imports)]
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-Vegyen fel egy osztályt a *Management. Java*fájlba, majd adja hozzá a következő mezőket és azok értékeit. A létrehozott egyszerű szolgáltatásnév és a többi Azure-fiók adatai alapján feltöltheti értékeit.
+Vegyen fel egy osztályt a *Management. Java* fájlba, majd adja hozzá a következő mezőket és azok értékeit. A létrehozott egyszerű szolgáltatásnév és a többi Azure-fiók adatai alapján feltöltheti értékeit.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/azure_management_service/quickstart.java?name=snippet_constants)]
 
@@ -126,7 +126,7 @@ A következő metódus törli a megadott erőforrást az adott erőforráscsopor
 
 ## <a name="see-also"></a>Lásd még
 
-* [Az Azure Management SDK dokumentációja](https://docs.microsoft.com/java/api/com.microsoft.azure.management.cognitiveservices?view=azure-java-stable)
-* [Mi az Azure Cognitive Services?](../../Welcome.md)
+* [Az Azure Management SDK dokumentációja](/java/api/com.microsoft.azure.management.cognitiveservices?view=azure-java-stable)
+* [Mi az Azure Cognitive Services?](../../what-are-cognitive-services.md)
 * [Kérelmek hitelesítése az Azure Cognitive Services](../../authentication.md)
 * [Új erőforrás létrehozása az Azure Portal használatával](../../cognitive-services-apis-create-account.md)

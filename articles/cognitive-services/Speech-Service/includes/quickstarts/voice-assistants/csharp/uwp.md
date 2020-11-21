@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e2d43290946969643b10d2ecad2f076df208a5d0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ea7ea08fc07a895bc038b27701d7038a5f76c26f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88925414"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95097738"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az első lépések előtt ügyeljen a következőre:
 
 > [!div class="checklist"]
-> * [Azure Speech-erőforrás létrehozása](~/articles/cognitive-services/speech-service/get-started.md)
+> * [Azure Speech-erőforrás létrehozása](../../../../overview.md#try-the-speech-service-for-free)
 > * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=uwp&pivots=programming-language-csharp)
-> * Hozzon létre egy olyan robotot, amely a [közvetlen vonalas beszéd csatornához](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) csatlakozik
+> * Hozzon létre egy olyan robotot, amely a [közvetlen vonalas beszéd csatornához](/azure/bot-service/bot-service-channel-connect-directlinespeech) csatlakozik
 > * Győződjön meg arról, hogy van hozzáférése egy mikrofonhoz a hangrögzítéshez
 > 
   > [!NOTE]
@@ -33,7 +33,7 @@ Első lépésként győződjön meg arról, hogy a projekt meg van nyitva a Visu
 
 Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez.
 
-1. A **megoldáskezelő**megnyitásához nyissa meg a t `MainPage.xaml` .
+1. A **megoldáskezelő** megnyitásához nyissa meg a t `MainPage.xaml` .
 
 1. A tervező XAML nézetében cserélje le a teljes tartalmat a következő kódrészletre, amely egy kezdetleges felhasználói felületet definiál:
 
@@ -84,7 +84,7 @@ Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez.
 
 A Tervező nézet frissül az alkalmazás felhasználói felületének megjelenítéséhez.
 
-1. A **megoldáskezelő**nyissa meg a kód mögötti forrásfájlt `MainPage.xaml.cs` . (Ez a következő alá van csoportosítva: `MainPage.xaml` .) Cserélje le a fájl tartalmát az alábbira, amely a következőket tartalmazza:
+1. A **megoldáskezelő** nyissa meg a kód mögötti forrásfájlt `MainPage.xaml.cs` . (Ez a következő alá van csoportosítva: `MainPage.xaml` .) Cserélje le a fájl tartalmát az alábbira, amely a következőket tartalmazza:
 
 - `using` a és a `Speech` `Speech.Dialog` névterek utasításai
 - Egyszerű implementáció a mikrofon elérésének biztosításához, amely a gomb kezelőjéhez van kötve
@@ -277,7 +277,7 @@ A Tervező nézet frissül az alkalmazás felhasználói felületének megjelen�
    > Tekintse meg [a támogatott régiók listáját a hangsegédek számára](~/articles/cognitive-services/speech-service/regions.md#voice-assistants) , és gondoskodjon arról, hogy az erőforrások az egyik régióban legyenek telepítve.
 
    > [!NOTE]
-   > A robot konfigurálásával kapcsolatos információkért tekintse meg a [közvetlen vonalas beszéd csatorna](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)robot Framework dokumentációját.
+   > A robot konfigurálásával kapcsolatos információkért tekintse meg a [közvetlen vonalas beszéd csatorna](/azure/bot-service/bot-service-channel-connect-directlinespeech)robot Framework dokumentációját.
 
 1. Cserélje le a karakterláncokat `YourSpeechSubscriptionKey` és a `YourServiceRegion` saját értékeit a beszédfelismerési előfizetéshez és a [régióhoz](~/articles/cognitive-services/speech-service/regions.md).
 
@@ -371,16 +371,16 @@ Most már készen áll az alkalmazás létrehozására és az egyéni hangsegéd
 
 1. Az alkalmazás létrehozásához a menüsávon válassza a **Build**  >  **Build megoldás** elemet. A kód fordításának hiba nélkül végbe kell mennie.
 
-1. **Debug**  >  Az alkalmazás indításához válassza a hibakeresés**indítása hibakeresést** (vagy nyomja le az **F5**billentyűt). Megjelenik a **HelloWorld** ablak.
+1. **Debug**  >  Az alkalmazás indításához válassza a hibakeresés **indítása hibakeresést** (vagy nyomja le az **F5** billentyűt). Megjelenik a **HelloWorld** ablak.
 
    ![Minta UWP hangsegéd alkalmazás a C#-ben – gyors útmutató](~/articles/cognitive-services/Speech-Service/media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
 
-1. Válassza a **mikrofon engedélyezése**lehetőséget, és ha a hozzáférési engedély kérése megjelenik, válassza az **Igen**lehetőséget.
+1. Válassza a **mikrofon engedélyezése** lehetőséget, és ha a hozzáférési engedély kérése megjelenik, válassza az **Igen** lehetőséget.
 
    ![Mikrofon-hozzáférési engedély kérése](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-10-access-prompt.png)
 
-1. Válassza **a beszélgetés a robottal**lehetőséget, és beszéljen egy angol kifejezéssel vagy mondattal az eszköz mikrofonjában. A beszéd a közvetlen vonalas beszéd csatornába kerül, és szövegbe kerül, amely az ablakban jelenik meg.
+1. Válassza **a beszélgetés a robottal** lehetőséget, és beszéljen egy angol kifejezéssel vagy mondattal az eszköz mikrofonjában. A beszéd a közvetlen vonalas beszéd csatornába kerül, és szövegbe kerül, amely az ablakban jelenik meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]

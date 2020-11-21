@@ -5,18 +5,18 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: 5766eb821800568b567350e1360ca4cf5403be6d
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 3c093539301f3f4e3309094f0b53a1f0e8393150
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135559"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95098150"
 ---
-Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Linux Speech Devices SDK-t egy beszédfelismerésre alkalmas termék létrehozásához vagy [beszélgetéses átírási](../conversation-transcription-service.md) eszközként való használatához. Jelenleg csak az [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) támogatott.
+Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Linux Speech Devices SDK-t egy beszédfelismerésre alkalmas termék létrehozásához vagy [beszélgetéses átírási](../conversation-transcription.md) eszközként való használatához. Jelenleg csak az [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) támogatott.
 
 Az alkalmazás a Speech SDK csomaggal, valamint az Eclipse Java IDE (v4) a 64 bites Linux rendszeren (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 7/8, CentOS 7/8) készült. és 64 bites Java 8 futtatókörnyezetben (JRE) fut.
 
-Ehhez az útmutatóhoz egy Speech Service-erőforrással rendelkező [Azure Cognitive Services](../get-started.md) -fiókra van szükség. 
+Ehhez az útmutatóhoz egy Speech Service-erőforrással rendelkező [Azure Cognitive Services](../overview.md#try-the-speech-service-for-free) -fiókra van szükség. 
 
 A [minta alkalmazás](https://aka.ms/sdsdk-download-JRE) forráskódját a Speech Devices SDK tartalmazza. [A githubon is elérhető](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
@@ -28,7 +28,7 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 * [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)
 * [Eclipse Java IDE](https://www.eclipse.org/downloads/)
 * Csak [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) vagy [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html) esetén.
-* Egy Azure-előfizetési kulcs a beszédfelismerési szolgáltatáshoz. [Szerezze be az egyiket ingyenesen](../get-started.md).
+* Egy Azure-előfizetési kulcs a beszédfelismerési szolgáltatáshoz. [Szerezze be az egyiket ingyenesen](../overview.md#try-the-speech-service-for-free).
 * Töltse le a Javához készült [Speech Devices SDK](https://aka.ms/sdsdk-download-JRE) legújabb verzióját, és bontsa ki a. zip fájlt a munkakönyvtárba.
    > [!NOTE]
    > Ez a rövid útmutató azt feltételezi, hogy az alkalmazást a rendszer kinyeri a/home/wcaltest/JRE-Sample-Release
@@ -62,7 +62,7 @@ Az Eclipse elindítása előtt győződjön meg róla, hogy ezek a függőségek
 
 A beszélgetés átírása jelenleg csak az "en-US" és a "zh-CN" esetében érhető el az "CentralUS" és a "eastasia" régióban. A beszélgetés átírásának használatához az egyik régióban kell lennie egy beszédfelismerési kulcsnak.
 
-Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language Understanding Service (Luis)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) előfizetésre. Ha többet szeretne megtudni a LUIS és a szándék-felismerésről, tekintse meg a következőt: [beszédfelismerési szándékok felismerése Luis-vel, C#](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp). Ehhez az alkalmazáshoz egy [minta Luis-modell](https://aka.ms/sdsdk-luis) érhető el.
+Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language Understanding Service (Luis)](../../luis/luis-how-to-azure-subscription.md) előfizetésre. Ha többet szeretne megtudni a LUIS és a szándék-felismerésről, tekintse meg a következőt: [beszédfelismerési szándékok felismerése Luis-vel, C#](../how-to-recognize-intents-from-speech-csharp.md). Ehhez az alkalmazáshoz egy [minta Luis-modell](https://aka.ms/sdsdk-luis) érhető el.
 
 ## <a name="create-and-configure-the-project"></a>A projekt létrehozása és konfigurálása
 
@@ -105,9 +105,9 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
     </dependencies>
    ```
 
-1. A **Package Explorerben** kattintson a jobb gombbal a projektre. Válassza a **Tulajdonságok** , majd az új **Beállítások futtatása/hibakeresés**  >  **..** . lehetőséget. > **Java-alkalmazás** . 
+1. A **Package Explorerben** kattintson a jobb gombbal a projektre. Válassza a **Tulajdonságok**, majd az új **Beállítások futtatása/hibakeresés**  >  **..** . lehetőséget. > **Java-alkalmazás**. 
 
-1. Megjelenik a **konfiguráció szerkesztése** ablak. A **név** mezőbe írja be a **Main** értéket, és a **fő osztály** **keresése** elemre kattintva keresse meg és válassza ki a következőt: **com. microsoft. cognitiveservices. Speech. Samples. FunctionsList** .
+1. Megjelenik a **konfiguráció szerkesztése** ablak. A **név** mezőbe írja be a **Main** értéket, és a **fő osztály** **keresése** elemre kattintva keresse meg és válassza ki a következőt: **com. microsoft. cognitiveservices. Speech. Samples. FunctionsList**.
 
    ![Képernyőkép – indítási konfiguráció szerkesztése](../media/speech-devices-sdk/eclipse-edit-launch-configuration-linux.png)
 
@@ -143,7 +143,7 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
 1. Az alapértelmezett kulcsszó (kulcsszó) a "Computer". Kipróbálhatja a többi megadott kulcsszót is, például a "Machine" vagy a "Assistant" kifejezést. Ezen alternatív kulcsszavak erőforrásai a Speech Devices SDK-ban, a Kulcsszóválasztó mappában találhatók. Például `/home/wcaltest/JRE-Sample-Release/keyword/Computer` a "számítógép" kulcsszóhoz használt fájlokat tartalmazza.
 
    > [!TIP]
-   > [Egyéni kulcsszó is létrehozható](../speech-devices-sdk-create-kws.md).
+   > [Egyéni kulcsszó is létrehozható](../custom-keyword-basics.md).
 
     Új kulcsszó használatához frissítse a következő sort a-ben `FunctionsList.java` , és másolja a kulcsszót az alkalmazásba. Ha például a "Machine" kulcsszót szeretné használni a Kulcsszóválasztó csomagból `machine.zip` :
 
@@ -163,7 +163,7 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
 
    ![A Speech Devices SDK-példa alkalmazást és beállításokat bemutató képernyőkép.](../media/speech-devices-sdk/java-sample-app-linux.png)
 
-1. Próbálja ki az új **beszélgetés átiratának** bemutatóját. Kezdje el az átírást a **munkamenet**  >  **elindításával** . Alapértelmezés szerint mindenki a vendég. Ha azonban a résztvevő hangaláírásai vannak, akkor `participants.properties` a projekt mappájában lévő **cél/osztályokba** helyezhetők. A hangaláírás létrehozásához tekintse meg a beszélgetések átírása [(SDK) című témakört](../how-to-use-conversation-transcription-service.md).
+1. Próbálja ki az új **beszélgetés átiratának** bemutatóját. Kezdje el az átírást a **munkamenet**  >  **elindításával**. Alapértelmezés szerint mindenki a vendég. Ha azonban a résztvevő hangaláírásai vannak, akkor `participants.properties` a projekt mappájában lévő **cél/osztályokba** helyezhetők. A hangaláírás létrehozásához tekintse meg a beszélgetések átírása [(SDK) című témakört](../how-to-use-conversation-transcription.md).
 
    ![Képernyőkép, amely bemutatja a bemutató beszélgetési alkalmazás átiratát.](../media/speech-devices-sdk/cts-sample-app-linux.png)
 
@@ -174,7 +174,7 @@ Ha azt tervezi, hogy használja a leképezéseket, szüksége lesz egy [Language
 
    ![Az exportálási ablakot megjelenítő képernyőkép.](../media/speech-devices-sdk/eclipse-export-linux.png) 
 
-1. Megjelenik a **FUTTATHATÓ jar-fájl exportálása** ablak. Válassza ki az alkalmazás **exportálási célját** , majd kattintson a **Befejezés gombra** .
+1. Megjelenik a **FUTTATHATÓ jar-fájl exportálása** ablak. Válassza ki az alkalmazás **exportálási célját** , majd kattintson a **Befejezés gombra**.
  
    ![A futtatható JAR-fájl exportálási ablakát megjelenítő képernyőkép.](../media/speech-devices-sdk/eclipse-export-jar-linux.png)
 

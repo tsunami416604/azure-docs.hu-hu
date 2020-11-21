@@ -10,21 +10,21 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
-ms.openlocfilehash: fbfc6bf9c50257c2683522913503bf9b29450d94
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bc27c73fbf9e827ce9a95c8aaaddc82ffb0aec53
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86226427"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95096123"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az első lépések előtt ügyeljen a következőre:
 
 > [!div class="checklist"]
-> * [Azure Speech-erőforrás létrehozása](~/articles/cognitive-services/speech-service/get-started.md)
+> * [Azure Speech-erőforrás létrehozása](../../../../overview.md#try-the-speech-service-for-free)
 > * [Állítsa be a fejlesztési környezetet, és hozzon létre egy üres projektet](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=android&pivots=programming-language-java)
-> * Hozzon létre egy olyan robotot, amely a [közvetlen vonalas beszéd csatornához](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) csatlakozik
+> * Hozzon létre egy olyan robotot, amely a [közvetlen vonalas beszéd csatornához](/azure/bot-service/bot-service-channel-connect-directlinespeech) csatlakozik
 > * Győződjön meg arról, hogy van hozzáférése egy mikrofonhoz a hangrögzítéshez
 
   > [!NOTE]
@@ -257,9 +257,9 @@ A felhasználói felület szöveg-és grafikus ábrázolásának ekkor a követk
 
 1. Csatlakoztassa az Android-eszközt a fejlesztői számítógéphez. Győződjön meg róla, hogy engedélyezte a [fejlesztői módot és az USB-hibakeresést](https://developer.android.com/studio/debug/dev-options) az eszközön.
 
-1. Az alkalmazás létrehozásához nyomja le a CTRL + F9 billentyűkombinációt **Build**, vagy válassza  >  a menüsávon a létrehozás**projekt** létrehozása lehetőséget.
+1. Az alkalmazás létrehozásához nyomja le a CTRL + F9 billentyűkombinációt **Build**, vagy válassza  >  a menüsávon a létrehozás **projekt** létrehozása lehetőséget.
 
-1. Az alkalmazás elindításához nyomja le a SHIFT + F10 billentyűkombinációt, **vagy válassza az**  >  **alkalmazás futtatása**parancsot.
+1. Az alkalmazás elindításához nyomja le a SHIFT + F10 billentyűkombinációt, **vagy válassza az**  >  **alkalmazás futtatása** parancsot.
 
 1. A megjelenő, az üzembehelyezési cél megadására szolgáló ablakban válassza ki az Android-eszközt.
 
@@ -269,7 +269,6 @@ Az alkalmazás és a tevékenység elindítása után a gombra kattintva megkezd
 
 ![Az Android-alkalmazás képernyőképe](~/articles/cognitive-services/speech-service/media/sdk/qs-java-android-assistant-completed-turn.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [footer](./footer.md)]
-
