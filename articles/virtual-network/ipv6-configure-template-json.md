@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 51d43a1cdb24455c12717f4db50955fc7bc738f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a02dc3b9fb1305aea9430aa1494cce2437ef6091
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84707446"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016122"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-with-basic-load-balancer-in-azure---template"></a>IPv6-alapú Dual stack-alkalmazás üzembe helyezése alapszintű Load Balancer az Azure-ban – sablon
 
@@ -80,8 +80,8 @@ A sablon szakasza, melyet hozzá szeretne adni:
               "protocol": "Tcp",
               "sourcePortRange": "33819-33829",
               "destinationPortRange": "5000-6000",
-              "sourceAddressPrefix": "ace:cab:deca:deed::/64",
-              "destinationAddressPrefix": "cab:ace:deca:deed::/64",
+              "sourceAddressPrefix": "2001:db8:deca:deed::/64",
+              "destinationAddressPrefix": "2001:db8:deca:deed::/64",
               "access": "Allow",
               "priority": 1003,
               "direction": "Inbound"
@@ -103,9 +103,9 @@ Ha hálózati virtuális készüléket használ, adja hozzá az IPv6-útvonalaka
           {
             "name": "v6route",
             "properties": {
-              "addressPrefix": "ace:cab:deca:deed::/64",
+              "addressPrefix": "2001:db8:deca:deed::/64",
               "nextHopType": "VirtualAppliance",
-              "nextHopIpAddress": "deca:cab:ace:f00d::1"
+              "nextHopIpAddress": "2001:db8:ace:f00d::1"
             }
 ```
 
@@ -180,6 +180,6 @@ Ha hálózati virtuális készüléket használ, adja hozzá az IPv6-útvonalaka
 ## <a name="sample-vm-template-json"></a>Minta virtuálisgép-sablon JSON
 Ha Azure Resource Manager sablonnal szeretne üzembe helyezni egy IPv6-alapú kettős verembeli alkalmazást, amely alapszintű Load Balancer az Azure Virtual Network szolgáltatásban, tekintse meg a [minta sablont.](https://azure.microsoft.com/resources/templates/ipv6-in-vnet/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [nyilvános IP-címekre](https://azure.microsoft.com/pricing/details/ip-addresses/), a [hálózati sávszélességre](https://azure.microsoft.com/pricing/details/bandwidth/)vagy a [Load Balancer](https://azure.microsoft.com/pricing/details/load-balancer/)díjszabására vonatkozó részletekért tekintse meg a következőt:.

@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: beszéd – szöveg, beszéd – szöveges szoftver
-ms.openlocfilehash: f4392881c2f572b1e53d7c283ef5c1debc1d20ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f26d896397a950bc2c5f5d1f66dca6a01da045d7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91359936"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015222"
 ---
 # <a name="what-is-speech-to-text"></a>Mi az a diktálás?
 
@@ -48,7 +48,7 @@ A Speech SDK mintakód a GitHubon érhető el. Ezek a minták olyan gyakori forg
 
 ## <a name="customization"></a>Testreszabás
 
-A standard Speech Service-modellen kívül egyéni modelleket is létrehozhat. A testreszabással leküzdheti a beszédfelismerési akadályokat, például a beszéd stílusát, a szókincset és a háttérzajt, lásd: [Custom Speech](how-to-custom-speech.md). A testreszabási lehetőségek nyelv/területi beállítás szerint változnak, a támogatás ellenőrzéséhez lásd a [támogatott nyelveket](supported-languages.md) .
+A standard Speech Service-modellen kívül egyéni modelleket is létrehozhat. A testreszabással leküzdheti a beszédfelismerési akadályokat, például a beszéd stílusát, a szókincset és a háttérzajt, lásd: [Custom Speech](how-to-custom-speech.md). A testreszabási lehetőségek nyelv/területi beállítás szerint változnak, a támogatás ellenőrzéséhez lásd a [támogatott nyelveket](./language-support.md) .
 
 ## <a name="batch-transcription"></a>Kötegelt átírás
 

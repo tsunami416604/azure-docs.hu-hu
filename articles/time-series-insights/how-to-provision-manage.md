@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: e54e8e9de1df4c8a1c870285d36e4580daaa698a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c38c57a8480ef2addde494b94d70bd2eb679373
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667826"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016768"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 kiépítése és kezelése
 
@@ -31,8 +31,8 @@ Azure Time Series Insights Gen2-környezet kiépítésekor ezeket az Azure-erőf
 
 > [!TIP]
 >
-> * Ismerje meg [, hogyan tervezze meg a környezetét](./time-series-insights-update-plan.md).
-> * További információ az [Event hub-források hozzáadásáról](./time-series-insights-how-to-add-an-event-source-eventhub.md) , illetve [az IoT hub-forrás hozzáadásáról](./time-series-insights-how-to-add-an-event-source-iothub.md).
+> * Ismerje meg [, hogyan tervezze meg a környezetét](./how-to-plan-your-environment.md).
+> * További információ az [Event hub-források hozzáadásáról](./how-to-ingest-data-event-hub.md) , illetve [az IoT hub-forrás hozzáadásáról](./how-to-ingest-data-iot-hub.md).
 
 Az alábbiakat fogja elsajátítani:
 
@@ -57,18 +57,18 @@ Azure Time Series Insights 2. generációs környezet létrehozása:
 
     > [!NOTE]
     >
-    > * Az idősorozat-azonosító *megkülönbözteti a kis-* *és*nagybetűket. (Ez a beállítás után nem módosítható.)
+    > * Az idősorozat-azonosító *megkülönbözteti a kis-* *és* nagybetűket. (Ez a beállítás után nem módosítható.)
     > * Az idősorozat-azonosítók legfeljebb *három* kulccsal rendelkezhetnek. Gondoljon rá elsődleges kulcsként egy adatbázisban, amely egyedileg jelöli az összes olyan érzékelőt, amely az adott környezetnek küldi az adatküldést. Ez lehet egy tulajdonság vagy akár három tulajdonság kombinációja is.
-    > * További információ az [idősorozat-azonosítók kiválasztásáról](time-series-insights-update-how-to-id.md)
+    > * További információ az [idősorozat-azonosítók kiválasztásáról](./how-to-select-tsid.md)
 
-1. Hozzon létre egy Azure Storage-fiókot a Storage-fióknév, a fióktípus és a [replikálási](https://docs.microsoft.com/azure/storage/common/redundancy-migration?tabs=portal) választás kijelölésével. Ezzel automatikusan létrehoz egy Azure Storage-fiókot. Alapértelmezés szerint a rendszer az [általános célú v2](https://docs.microsoft.com/azure/storage/common/storage-account-overview) -fiókot hozza létre. A fiók ugyanabban a régióban jön létre, mint a korábban kiválasztott Azure Time Series Insights Gen2-környezet.
+1. Hozzon létre egy Azure Storage-fiókot a Storage-fióknév, a fióktípus és a [replikálási](../storage/common/redundancy-migration.md?tabs=portal) választás kijelölésével. Ezzel automatikusan létrehoz egy Azure Storage-fiókot. Alapértelmezés szerint a rendszer az [általános célú v2](../storage/common/storage-account-overview.md) -fiókot hozza létre. A fiók ugyanabban a régióban jön létre, mint a korábban kiválasztott Azure Time Series Insights Gen2-környezet.
 Azt is megteheti, hogy az új Azure Time Series Gen2-környezet létrehozásakor saját tárolót (BYOS) is használhat [ARM-sablonon](./time-series-insights-manage-resources-using-azure-resource-manager-template.md) keresztül.
 
 1. **(Nem kötelező)** Ha szeretné, hogy a környezetében a legutóbbi adatmennyiségnél gyorsabban és korlátlanul lehessen lekérdezéseket használni, engedélyezze a meleg tárolást a környezet számára. Egy Azure Time Series Insights Gen2-környezet létrehozása után a bal oldali navigációs ablaktáblán a **tárolási konfiguráció** lehetőséggel is létrehozhat vagy törölhet egy meleg áruházat.
 
 1. **(Nem kötelező)** Most hozzáadhat egy eseményforrás-forrást. Azt is megvárhatja, amíg a példány üzembe lett helyezve.
 
-   * Azure Time Series Insights támogatja az [azure IoT hub](./time-series-insights-how-to-add-an-event-source-iothub.md) és az [Azure Event Hubs](./time-series-insights-how-to-add-an-event-source-eventhub.md) használatát az eseményforrás lehetőségeinek megfelelően. Bár a környezet létrehozásakor csak egyetlen eseményforrás adhatók hozzá, később további eseményforrás is felvehető.
+   * Azure Time Series Insights támogatja az [azure IoT hub](./how-to-ingest-data-iot-hub.md) és az [Azure Event Hubs](./how-to-ingest-data-event-hub.md) használatát az eseményforrás lehetőségeinek megfelelően. Bár a környezet létrehozásakor csak egyetlen eseményforrás adhatók hozzá, később további eseményforrás is felvehető.
 
      Az eseményforrás hozzáadásakor kiválaszthat egy meglévő felhasználói csoportot, vagy létrehozhat egy új fogyasztói csoportot is. Vegye figyelembe, hogy az eseményforrás egy egyedi fogyasztói csoportot igényel ahhoz, hogy a környezete adatait beolvassa.
 
@@ -92,19 +92,19 @@ Azure Time Series Insights Gen2-környezetét a Azure Portal használatával kez
   * A rendszer eltávolítja a kapacitást, mert az nem vonatkozik a Gen2-környezetekre.
   * A rendszer hozzáadja az **idősorozat-azonosító** tulajdonságot. Meghatározza, hogyan particionálja az adatait.
   * A rendszer eltávolítja a hivatkozási adatkészleteket.
-  * A megjelenített URL-cím a [Azure Time Series Insights Explorerre](./time-series-insights-update-explorer.md)irányítja.
+  * A megjelenített URL-cím a [Azure Time Series Insights Explorerre](./concepts-ux-panels.md)irányítja.
   * Megjelenik az Azure Storage-fiók neve.
 
 * A Azure Portal a **configure (Konfigurálás** ) panel el lesz távolítva, mivel a skálázási egységek nem vonatkoznak Azure Time Series Insights Gen2 környezetekre. A **tárolási konfigurációval** azonban az újonnan bevezetett meleg tárolót is konfigurálhatja.
 
-* A Azure Portal **hivatkozási** adatpanelje el lett távolítva a Azure Time Series Insights Gen2, mert a hivatkozási adatkoncepciót a [Time Series Model (TSM)](/azure/time-series-insights/concepts-model-overview)váltotta fel.
+* A Azure Portal **hivatkozási** adatpanelje el lett távolítva a Azure Time Series Insights Gen2, mert a hivatkozási adatkoncepciót a [Time Series Model (TSM)](./concepts-model-overview.md)váltotta fel.
 
 [![Azure Time Series Insights Gen2-környezet a Azure Portal](media/v2-update-manage/create-and-manage-overview-confirm.png)](media/v2-update-manage/create-and-manage-overview-confirm.png#lightbox)
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További információ Azure Time Series Insights általánosan elérhető környezetekről és Gen2 környezetekről a [környezet megtervezése](./time-series-insights-update-plan.md)című témakörben olvasható.
+* További információ Azure Time Series Insights általánosan elérhető környezetekről és Gen2 környezetekről a [környezet megtervezése](./how-to-plan-your-environment.md)című témakörben olvasható.
 
-* Ismerje meg, hogyan [adhat hozzá egy Event hub-forrást](./time-series-insights-how-to-add-an-event-source-eventhub.md).
+* Ismerje meg, hogyan [adhat hozzá egy Event hub-forrást](./how-to-ingest-data-event-hub.md).
 
-* [IoT hub-forrás](./time-series-insights-how-to-add-an-event-source-iothub.md)konfigurálása.
+* [IoT hub-forrás](./how-to-ingest-data-iot-hub.md)konfigurálása.

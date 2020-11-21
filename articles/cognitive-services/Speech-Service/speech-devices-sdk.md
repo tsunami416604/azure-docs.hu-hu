@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: 560c156c8e2c3d69c099b2ad573fa0d214f3f80b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0309329b37436022dc88f8951853c4bb09a2c080
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91355074"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015273"
 ---
 # <a name="what-is-the-speech-devices-sdk"></a>Mi a Speech Devices SDK?
 
@@ -29,9 +29,9 @@ A Speech Devices SDK a következőket nyújtja:
 
 A Speech Devices SDK a [SPEECH SDK](speech-sdk.md)-t használja. Speciális hangfeldolgozási algoritmusok használatával az eszköz mikrofon-tömbje segítségével elküldheti a hanganyagot a [beszédfelismerési szolgáltatásnak](overview.md). A szolgáltatás precízen segíti a széles körű [beszédfelismerést](speech-to-text.md) a zajcsökkentés, az ECHO-lemondás, a beamforming és a visszhang használatával.
 
-A Speech Devices SDK használatával olyan környezeti eszközöket is létrehozhat, amelyek saját [testreszabott kulcsszóval](speech-devices-sdk-create-kws.md)rendelkeznek. Az egyéni kulcsszavak egy olyan végszót biztosítanak, amely a márka egyedi felhasználói beavatkozását indítja el.
+A Speech Devices SDK használatával olyan környezeti eszközöket is létrehozhat, amelyek saját [testreszabott kulcsszóval](./custom-keyword-basics.md)rendelkeznek. Az egyéni kulcsszavak egy olyan végszót biztosítanak, amely a márka egyedi felhasználói beavatkozását indítja el.
 
-A Speech Devices SDK többféle hang-kompatibilis forgatókönyvet tesz lehetővé, például a [hangsegédeket](https://aka.ms/bots/speech/va), a meghajtó-átrendezési rendszereket, a [társalgási átírást](conversation-transcription-service.md)és az intelligens hangszórókat. Válaszolhat a felhasználókra szöveggel, visszaállíthatja őket egy alapértelmezett vagy [Egyéni hangon](how-to-customize-voice-font.md), megadhatja a keresési eredményeket, [lefordíthat](speech-translation.md) más nyelvekre, és így tovább. Várjuk, hogy lássuk, mit épít!
+A Speech Devices SDK többféle hang-kompatibilis forgatókönyvet tesz lehetővé, például a [hangsegédeket](./voice-assistants.md), a meghajtó-átrendezési rendszereket, a [társalgási átírást](./conversation-transcription.md)és az intelligens hangszórókat. Válaszolhat a felhasználókra szöveggel, visszaállíthatja őket egy alapértelmezett vagy [Egyéni hangon](./how-to-custom-voice-create-voice.md), megadhatja a keresési eredményeket, [lefordíthat](speech-translation.md) más nyelvekre, és így tovább. Várjuk, hogy lássuk, mit épít!
 
 ## <a name="get-the-speech-devices-sdk"></a>Beszédeszközök SDK letöltése
 

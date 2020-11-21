@@ -12,12 +12,12 @@ ms.date: 09/02/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: hangszórók felismerése, hangvezérelt biometry
-ms.openlocfilehash: 5001ac166b37f3a3852bc14261a5b5d199d778cd
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d07a9960c8a586fa137b4b717afbf91740c265d3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844566"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015324"
 ---
 # <a name="what-is-speaker-recognition-preview"></a>Mi az Speaker Recognition (előzetes verzió)?
 
@@ -70,10 +70,10 @@ Akárcsak az összes Cognitive Services erőforrás esetében, a Speaker Recogni
 | Melyek a támogatott hangformátumok? | 16 bites monó, 16kHz PCM-kódolású WAV |
 | A válaszok **elfogadása** és **elutasítása** nem pontos, hogyan hangolhatja be a küszöbértéket? | Mivel az optimális küszöbérték nagy mértékben eltér az alkalmazási helyzettől, az API eldönti, hogy az "elfogadás" vagy az "elutasítás" egyszerűen a 0,5 alapértelmezett küszöbértékén alapul-e. A speciális felhasználóknak javasoljuk, hogy bírálják felül az alapértelmezett döntést, és a saját forgatókönyv alapján végezze el az eredmény finomhangolását. |
 | Többször is regisztrálhat egy beszélőt? | Igen, a szövegtől függő ellenőrzéshez akár 50 alkalommal is regisztrálhat egy beszélőt. Szövegtől független ellenőrzés vagy beszélő azonosítása esetén akár 300 másodpercig is regisztrálhat. |
-| Milyen adattárolók tárolódnak az Azure-ban? | A beléptetési hang a szolgáltatásban tárolódik, amíg a hangprofil nem [törlődik](speaker-recognition-basics.md#deleting-voice-profile-enrollments). Az felismerő hangmintákat nem őrzi meg vagy tárolja a rendszer. |
+| Milyen adattárolók tárolódnak az Azure-ban? | A beléptetési hang a szolgáltatásban tárolódik, amíg a hangprofil nem [törlődik](./get-started-speaker-recognition.md#deleting-voice-profile-enrollments). Az felismerő hangmintákat nem őrzi meg vagy tárolja a rendszer. |
 
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> * Az alkalmazásokban használható általános tervezési minták futtatásához hajtsa végre a Speaker Recognition [alapjaival](speaker-recognition-basics.md) foglalkozó cikket.
+> * Az alkalmazásokban használható általános tervezési minták futtatásához hajtsa végre a Speaker Recognition [alapjaival](./get-started-speaker-recognition.md) foglalkozó cikket.
 > * Tekintse meg a szöveg-független hangszórók ellenőrzésének [videós oktatóanyagát](https://azure.microsoft.com/resources/videos/speaker-recognition-text-independent-verification-developer-tutorial/) .

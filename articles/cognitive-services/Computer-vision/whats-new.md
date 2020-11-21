@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: e4c56700e75eb5bc7e5e7faec073fe7157e5df88
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 1ef317ee3917172d0de204adafe5d5bf21a2a9ac
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976368"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014509"
 ---
 # <a name="whats-new-in-computer-vision"></a>A Computer Vision újdonságai
 
@@ -80,7 +80,7 @@ Most lehetősége van arra, hogy az olvasási API 3,0-es verzióját használja 
 * Minden kinyert szó megbízhatósági pontszáma
 * A spanyol és az angol nyelv támogatása a további nyelvi paraméterrel
 
-A 3,0 API használatának megkezdéséhez kövesse a [kinyerési szöveg](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text?tabs=version-3) rövid útmutatóját.
+A 3,0 API használatának megkezdéséhez kövesse a [kinyerési szöveg](./quickstarts/csharp-hand-text.md?tabs=version-3) rövid útmutatóját.
 
 ## <a name="cognitive-service-updates"></a>A kognitív szolgáltatás frissítései
 

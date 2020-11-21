@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan hívhat meg üzleti folyamatokat a App Service 
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 5aa563e55c64893d57522dd1154a64c7e90a1690
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8072a941cd89290af3e25cc63c4fccccce705df9
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397436"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014662"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Oktatóanyag: e-mail küldése és más üzleti folyamatok meghívása App Service
 
@@ -55,14 +55,14 @@ Helyezzen üzembe egy alkalmazást az Ön által választott nyelvi keretrendsze
 ## <a name="create-the-logic-app"></a>A logikai alkalmazás létrehozása
 
 1. A [Azure Portal](https://portal.azure.com)hozzon létre egy üres logikai alkalmazást a [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md#create-your-logic-app)című témakör útmutatásai alapján. Amikor megjelenik a **Logic apps Designer**, térjen vissza ehhez az oktatóanyaghoz.
-1. A Logic Apps Designer Splash (kikapcsolt) oldalán válassza ki, hogy **mikor érkezik HTTP-kérelem** a **Start és a Common trigger együttes**használata esetén.
+1. A Logic Apps Designer Splash (kikapcsolt) oldalán válassza ki, hogy **mikor érkezik HTTP-kérelem** a **Start és a Common trigger együttes** használata esetén.
 
     ![Képernyőkép, amely megjeleníti a Logic Apps Designer Splash lapját, ha egy H T t P-kérelem kiemelése megtörtént.](./media/tutorial-send-email/receive-http-request.png)
-1. A **http-kérés fogadásakor**a párbeszédpanelen válassza a **minta hasznos adatok használata a séma létrehozásához**lehetőséget.
+1. A **http-kérés fogadásakor** a párbeszédpanelen válassza a **minta hasznos adatok használata a séma létrehozásához** lehetőséget.
 
     ![Képernyőkép, amely megjeleníti a H T T P-kérések párbeszédpanelét, valamint a minta hasznos adatok használatával létrehozott séma-opion. ](./media/tutorial-send-email/generate-schema-with-payload.png)
 
-1. Másolja a következő minta JSON-t a szövegmezőbe, majd válassza a **kész**lehetőséget.
+1. Másolja a következő minta JSON-t a szövegmezőbe, majd válassza a **kész** lehetőséget.
 
     ```json
     {
@@ -73,7 +73,7 @@ Helyezzen üzembe egy alkalmazást az Ön által választott nyelvi keretrendsze
     ```
 
     A rendszer most létrehozta a sémát a kívánt kérelemhez. A gyakorlatban egyszerűen rögzítheti az alkalmazás kódjának tényleges kérelmi adatait, és lehetővé teszi, hogy az Azure létrehozza a JSON-sémát. 
-1. A Logic Apps Designer tetején válassza a **Mentés**lehetőséget. 
+1. A Logic Apps Designer tetején válassza a **Mentés** lehetőséget. 
 
     Ekkor megjelenik a HTTP-kérelem triggerének URL-címe. A másolás ikonra kattintva másolja azt későbbi használatra.
 
@@ -81,7 +81,7 @@ Helyezzen üzembe egy alkalmazást az Ön által választott nyelvi keretrendsze
 
     Ez a HTTP-kérelem definíciója minden olyan trigger, amelyet a logikai alkalmazásban szeretne elvégezni, legyen az Gmail vagy bármi más. Később meg fogja hívni ezt az URL-címet a App Service alkalmazásban. További információ a kérelem-triggerről: http- [kérés/-válasz hivatkozása](../connectors/connectors-native-reqres.md).
 
-1. A tervező alján kattintson az **új lépés**gombra, írja be a **Gmail** kifejezést a műveletek keresőmezőbe, és keresse meg és válassza az **e-mail küldése (v2)** lehetőséget.
+1. A tervező alján kattintson az **új lépés** gombra, írja be a **Gmail** kifejezést a műveletek keresőmezőbe, és keresse meg és válassza az **e-mail küldése (v2)** lehetőséget.
     
     > [!TIP]
     > Más típusú integrációkat is kereshet, például a SendGrid, a MailChimp, a Microsoft 365 és a SalesForce. További információ: [Logic apps dokumentáció](../logic-apps/index.yml).
@@ -92,31 +92,31 @@ Helyezzen üzembe egy alkalmazást az Ön által választott nyelvi keretrendsze
 
 1. Miután bejelentkezett, kattintson a **to** szövegmezőbe, és a dinamikus tartalom párbeszédablak automatikusan megnyílik.
 
-1. A HTTP- **kérelem fogadása** művelet mellett válassza a **továbbiak**lehetőséget.
+1. A HTTP- **kérelem fogadása** művelet mellett válassza a **továbbiak** lehetőséget.
 
     ![Képernyőkép: a továbbiak gomb melletti, ha egy H T t P-kérelem érkezik művelet.](./media/tutorial-send-email/expand-dynamic-content.png)
 
     Ekkor megjelenik a korábban használt JSON-adatok három tulajdonsága. Ebben a lépésben ezeket a tulajdonságokat a HTTP-kérelemből használhatja e-mailek létrehozásához.
-1. Mivel kiválasztja a **to** mező értékét, válassza az **e-mail**lehetőséget. Ha szeretné, a dinamikus tartalom **hozzáadása**gombra kattintva kapcsolja ki a dinamikus tartalom párbeszédpanelt.
+1. Mivel kiválasztja a **to** mező értékét, válassza az **e-mail** lehetőséget. Ha szeretné, a dinamikus tartalom **hozzáadása** gombra kattintva kapcsolja ki a dinamikus tartalom párbeszédpanelt.
 
     ![Képernyőkép, amely megjeleníti az e-mail-beállítást, és kiemelte a dinamikus tartalom hozzáadása lehetőséget.](./media/tutorial-send-email/hide-dynamic-content.png)
 
-1. Az **új paraméter hozzáadása** legördülő menüben válassza a **Tárgy** és a **törzs**lehetőséget.
+1. Az **új paraméter hozzáadása** legördülő menüben válassza a **Tárgy** és a **törzs** lehetőséget.
 
-1. Kattintson a **Tárgy** szövegmezőre, és válassza a **feladat**lehetőséget. A kurzor továbbra is a **Tárgy** mezőbe írja be a következőt *: létrehozva*. 
+1. Kattintson a **Tárgy** szövegmezőre, és válassza a **feladat** lehetőséget. A kurzor továbbra is a **Tárgy** mezőbe írja be a következőt *: létrehozva*. 
 
-1. Kattintson a **törzsre**, és ugyanígy válassza a **megfelelő**lehetőséget. Vigye a kurzort a **megfelelő** értékre, és írja be *ezt a munkaelemet*.
+1. Kattintson a **törzsre**, és ugyanígy válassza a **megfelelő** lehetőséget. Vigye a kurzort a **megfelelő** értékre, és írja be *ezt a munkaelemet*.
 
     > [!TIP]
     > Ha közvetlenül az e-mail szövegtörzsében szeretné szerkeszteni a HTML-tartalmat, válassza a Logic Apps Designer ablak tetején található **kód nézet** lehetőséget. Ügyeljen rá, hogy megőrizze a dinamikus tartalom kódját (például: `@{triggerBody()?['due']}` ).
     >
     > ![Képernyőkép, amely bemutatja, hogy a rendszer hogyan jeleníti meg a H T M L tartalom megtekintését közvetlenül az e-mail törzsében.](./media/tutorial-send-email/edit-rich-html-email.png) 
 
-1. Ezután adjon hozzá egy aszinkron HTTP-választ a HTTP-triggerhez. A HTTP-trigger és a Gmail művelet között kattintson a **+** jelre, majd válassza a **párhuzamos ág hozzáadása**elemet.
+1. Ezután adjon hozzá egy aszinkron HTTP-választ a HTTP-triggerhez. A HTTP-trigger és a Gmail művelet között kattintson a **+** jelre, majd válassza a **párhuzamos ág hozzáadása** elemet.
 
     ![Képernyőkép, amely megjeleníti a + jelet, és hozzáad egy párhuzamos ág lehetőséget.](./media/tutorial-send-email/add-http-response.png)
 
-1. A keresőmezőbe írja be a **Válasz**kifejezést, majd válassza ki a **Válasz** műveletet.
+1. A keresőmezőbe írja be a **Válasz** kifejezést, majd válassza ki a **Válasz** műveletet.
 
     ![Képernyőkép, amely a keresősáv és a válasz művelet kiemelését jeleníti meg.](./media/tutorial-send-email/choose-response-action.png)
 
@@ -296,7 +296,7 @@ Ha ezt a kódot a minta alkalmazásban a következő [oktatóanyagban teszteli: 
 
 ### <a name="ruby"></a>[Ruby](#tab/ruby)
 
-A Ruby szolgáltatásban egyszerűen elküldheti a HTTP-Postot a [JSONClient](https://www.rubydoc.info/gems/httpclient/JSONClient). Például:
+A Ruby szolgáltatásban egyszerűen elküldheti a HTTP-Postot a JSONClient. Például:
 
 ```ruby
 clnt = JSONClient.new

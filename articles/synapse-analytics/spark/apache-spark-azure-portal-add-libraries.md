@@ -9,12 +9,12 @@ ms.date: 10/16/2020
 ms.author: euang
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: fbcc7ffbde49acfd9afc180418d618060eb923c1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 6f777b605c5050b7fa4b3b9e3671f3638ad67372
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313530"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016258"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Apache Spark kódtárainak kezelése az Azure szinapszis Analyticsben
 
@@ -92,9 +92,9 @@ Függvénytár telepítése Spark-készletre (előzetes verzió) közvetlenül a
 A következő kód futtatásával ellenőrizheti, hogy telepítve vannak-e a megfelelő kódtárak megfelelő verziói
 
 ```python
-import pip #needed to use the pip functions
-for i in pip.get_installed_distributions(local_only=True):
-    print(i)
+import pkg_resources
+for d in pkg_resources.working_set:
+     print(d)
 ```
 ### <a name="update-python-packages"></a>Python-csomagok frissítése
 A csomagok bármikor hozzáadhatók vagy módosíthatók a munkamenetek között. Új csomag-konfigurációs fájl feltöltésekor a rendszer felülírja a meglévő csomagokat és verziókat.  

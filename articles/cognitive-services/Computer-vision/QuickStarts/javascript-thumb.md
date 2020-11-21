@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-js
-ms.openlocfilehash: 64ec7bfa400edceb0f638b1862b9057d104c7904
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: ccb82b141733910552fadd2fe9fb6402924265ce
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542745"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95013959"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-javascript"></a>Gyors útmutató: miniatűr létrehozása a Computer Vision REST API és a JavaScript használatával
 
@@ -166,4 +166,4 @@ A rendszer bináris formátumban adja vissza a sikeres választ, ahol a bináris
 Ismerjen meg egy JavaScript-alkalmazást, amely a Computer Vision segítségével végez optikai karakterfelismerést (OCR), és amellyel intelligens körbevágású miniatűröket hozhat létre, valamint képek vizuális jellemzőit, például arcokat észlelhet, kategorizálhat, címkézhet és írhat le. A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b/console).
 
 > [!div class="nextstepaction"]
-> [Computer Vision API – JavaScript-oktatóanyag](../Tutorials/javascript-tutorial.md)
+> [Computer Vision API – JavaScript-oktatóanyag](https://github.com/Azure-Samples/cognitive-services-javascript-computer-vision-tutorial)

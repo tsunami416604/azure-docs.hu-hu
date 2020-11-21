@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 089c59c041110209e55cc3fb10b1c5adf54bd13e
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 6d85498b0e76997a1f0f989f4ea0f30acc0e8443
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538274"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95013732"
 ---
 # <a name="face-detection-with-computer-vision"></a>Arcfelismerés Computer Vision
 
 A Computer Vision képes észlelni az emberi arcokat egy képen belül, és az összes észlelt arc esetében az életkor, a nemre és a téglalapot is létrehozza. 
 
 > [!NOTE]
-> Ezt a funkciót az Azure [Face](/azure/cognitive-services/face/) szolgáltatás is felkínálja. További részletekért tekintse meg ezt az alternatívát, többek között az arcfelismerés és az észlelést. 
+> Ezt a funkciót az Azure [Face](../face/index.yml) szolgáltatás is felkínálja. További részletekért tekintse meg ezt az alternatívát, többek között az arcfelismerés és az észlelést. 
 
 ## <a name="face-detection-examples"></a>Arcfelismerés – példák
 

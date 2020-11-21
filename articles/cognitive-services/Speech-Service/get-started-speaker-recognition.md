@@ -13,12 +13,12 @@ ms.author: trbye
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-twenty-five
 keywords: hangszórók felismerése, hangvezérelt biometry
-ms.openlocfilehash: b831dfb0ff7989e52fcc2a1ab62ddb6f2e22a5e2
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 57c7ad220ada89e5848cf49b7fb68547bc7ad1cb
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166335"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015483"
 ---
 # <a name="get-started-with-speaker-recognition"></a>Bevezetés a Speaker Recognition használatába
 
@@ -38,8 +38,8 @@ ms.locfileid: "92166335"
 [!INCLUDE [JavaScript Basics include](includes/how-to/speaker-recognition-basics/speaker-recognition-basics-curl.md)]
 ::: zone-end
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Az osztályok és függvények részletes ismertetését az Speaker Recognition [dokumentációjában](https://docs.microsoft.com/rest/api/speakerrecognition/) találja.
+* Az osztályok és függvények részletes ismertetését az Speaker Recognition [dokumentációjában](/rest/api/speakerrecognition/) találja.
 
 * Lásd: [C#](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet/speaker-recognition) és [C++](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp/windows/speaker-recognition) minták a githubon.

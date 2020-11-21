@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: aahi
-ms.openlocfilehash: 24d4dd4d0caa49b9514bf19f707ea87b0b071a79
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 9b9390b498f28fc8f9029f1c11805b970aaca73d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357096"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014560"
 ---
 # <a name="how-to-deploy-a-people-counting-web-application"></a>Útmutató: webes alkalmazások leltározása
 
@@ -31,7 +31,7 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
-* Az Azure IoT Edge telepítési konfigurációk és az [Azure IoT hub](https://docs.microsoft.com/azure/iot-hub/) alapszintű ismerete
+* Az Azure IoT Edge telepítési konfigurációk és az [Azure IoT hub](../../iot-hub/index.yml) alapszintű ismerete
 * Egy konfigurált [gazdaszámítógép](spatial-analysis-container.md).
 
 ## <a name="deploy-the-spatial-analysis-container"></a>A térbeli elemzési tároló üzembe helyezése
@@ -65,7 +65,7 @@ az iot hub device-identity create --hub-name "<IoT Hub Name>" --device-id "<Edge
 
 Telepítse a térbeli elemzési tárolót IoT-modulként a gazdaszámítógépen az Azure CLI használatával. Az üzembe helyezési folyamathoz egy telepítési jegyzékfájl szükséges, amely az üzemelő példányhoz szükséges tárolókat, változókat és konfigurációkat ismerteti. Megtalálhatja a [Azure stack Edge-specifikus telepítési jegyzékfájlt](https://github.com/Azure-Samples/cognitive-services-rest-api-samples/) , valamint egy [nem Azure stack Edge-specifikus telepítési jegyzéket](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) a githubon, amely tartalmazza a *térbeli elemzési* tároló alapszintű üzembe helyezési konfigurációját. 
 
-Azt is megteheti, hogy a Visual Studio Code-hoz készült Azure IoT-bővítményekkel műveleteket hajt végre az IoT hub használatával. További információért nyissa meg a [Visual Studio Code Azure IoT Edge-modulok üzembe helyezése című](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-vscode) témakört.
+Azt is megteheti, hogy a Visual Studio Code-hoz készült Azure IoT-bővítményekkel műveleteket hajt végre az IoT hub használatával. További információért nyissa meg a [Visual Studio Code Azure IoT Edge-modulok üzembe helyezése című](../../iot-edge/how-to-deploy-modules-vscode.md) témakört.
 
 > [!NOTE] 
 > A *térbeli analízis – a-Graf* és a *térbeli analízis – diagnosztikai* tárolók nem kötelezőek. Dönthet úgy, hogy eltávolítja őket a fájl *DeploymentManifest.js* . További információ: [telemetria és hibaelhárítási](./spatial-analysis-logging.md) cikk. A githubon lévő fájlokra két minta *DeploymentManifest.js* található [Azure stack Edge-eszközök](https://go.microsoft.com/fwlink/?linkid=2142179) vagy más [asztali gépek](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) számára
@@ -196,7 +196,7 @@ Nyissa meg az Azure-webalkalmazást, és ellenőrizze, hogy a telepítés sikere
 ## <a name="get-the-personcount-source-code"></a>A PersonCount forráskódjának beolvasása
 Ha szeretné megtekinteni vagy módosítani az alkalmazás forráskódját, megkeresheti azt [a githubon](https://github.com/Azure-Samples/cognitive-services-spatial-analysis).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Térbeli elemzési műveletek konfigurálása](./spatial-analysis-operations.md)
 * [Naplózás és hibaelhárítás](spatial-analysis-logging.md)

@@ -7,12 +7,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 53304f14286577bf0bc25b2a66442286527c5140
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a7f5ec0231612a2cee2a9435144c886527c228e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90972435"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014475"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Oktatóanyag: csatlakoztatott hulladékgazdálkodási alkalmazás létrehozása IoT Central
 
@@ -55,7 +55,7 @@ Ebben a szakaszban az Azure IoT Central **csatlakoztatott hulladékgazdálkodás
 
 1. Válassza ki a **csatlakoztatott hulladékkezelési** alkalmazás sablonját. Ez a sablon magában foglalja a minta csatlakoztatott hulladékgyűjtő tároló eszköz sablonját, a szimulált eszközt, az operátor irányítópultját és az előre konfigurált figyelési szabályokat.    
 
-2. Kattintson az alkalmazás **létrehozása**elemre, amely megnyitja az **új alkalmazás** -létrehozási űrlapot a következő mezőkkel:
+2. Kattintson az alkalmazás **létrehozása** elemre, amely megnyitja az **új alkalmazás** -létrehozási űrlapot a következő mezőkkel:
     * Az **alkalmazás neve**. Alapértelmezés szerint az alkalmazás *csatlakoztatott hulladékgazdálkodást* használ, majd egy egyedi azonosító karakterláncot, amelyet IoT Central generál. Igény szerint válasszon egy felhasználóbarát nevet. Az alkalmazás neve később is módosítható.
     * **URL** – opcionálisan megadhatja a kívánt URL-címet. Az URL-címet később is megváltoztathatja. 
     * Ha Azure-előfizetéssel rendelkezik, adja meg a *címtárat, az Azure-előfizetést és a régiót*. Ha nem rendelkezik előfizetéssel, engedélyezheti a **7 napos ingyenes próbaidőszakot** , és elvégezheti a szükséges kapcsolattartási adatokat.  
@@ -69,7 +69,7 @@ Ebben a szakaszban az Azure IoT Central **csatlakoztatott hulladékgazdálkodás
     ![Azure IoT Central kapcsolódó számlázási adatok létrehozása](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement-billinginfo.png)
 
  
-6. Ezzel létrehozott egy csatlakoztatott hulladékgazdálkodási alkalmazást az Azure IoT Central **csatlakoztatott hulladékgazdálkodási sablon**használatával. 
+6. Ezzel létrehozott egy csatlakoztatott hulladékgazdálkodási alkalmazást az Azure IoT Central **csatlakoztatott hulladékgazdálkodási sablon** használatával. 
 
 Gratulálunk! Az újonnan létrehozott alkalmazás előre konfigurálva van:
 * Minta operátor irányítópultok
@@ -81,7 +81,7 @@ Gratulálunk! Az újonnan létrehozott alkalmazás előre konfigurálva van:
 Ez az alkalmazás, és bármikor módosítható. Most Ismerkedjen meg az alkalmazással, és végezze el a testreszabást.  
 
 ## <a name="explore-and-customize-operator-dashboard"></a>Az operátor irányítópultjának megismerése és testreszabása 
-Miután létrehozta az alkalmazást, a **széles körben csatlakoztatott hulladékgazdálkodási felügyeleti irányítópulton**kell lennie.
+Miután létrehozta az alkalmazást, a **széles körben csatlakoztatott hulladékgazdálkodási felügyeleti irányítópulton** kell lennie.
 
    ![Csatlakoztatott hulladékgazdálkodási irányítópult](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard1.png)
 
@@ -92,18 +92,18 @@ Miután létrehozta az alkalmazást, a **széles körben csatlakoztatott hullad�
 
 Az irányítópult különböző típusú csempéket tartalmaz:
 
-* ***Wide World hulladék segédprogram képcsempe***: az irányítópult első csempéje egy fiktív hulladékkezelési segédprogram "Wide World hulladék" nevű képcsempe. Testreszabhatja a csempét, és elhelyezheti saját képét, vagy eltávolíthatja azt. 
+* ***Wide World hulladék segédprogram képcsempe** _: az irányítópult első csempe egy fiktív hulladékkezelési segédprogram "Wide World hulladék" nevű képcsempe. Testreszabhatja a csempét, és elhelyezheti saját képét, vagy eltávolíthatja azt. 
 
-* ***Hulladék bin képcsempe***: a kép és a tartalom csempék segítségével vizuálisan jelenítheti meg a figyelt eszközt a leíró szöveggel együtt. 
+_ ***Hulladék bin képcsempe** _: a képek és a tartalmak csempéi segítségével vizuálisan ábrázolhatja a figyelt eszközt a leíró szöveggel együtt. 
 
-* ***Kitöltési szint KPI-csempe***: a csempe egy *kitöltési szintű* érzékelő által jelentett értéket jelenít meg egy adattárolóban. A *kitöltési szint* és az egyéb érzékelők (például a *szag-mérő* vagy a *súlyozás* ) távolról is megfigyelhetők. Az operátorok olyan műveleteket végezhetnek, mint például a trash Collection Truck elküldése. 
+_ ***Kitöltési szint KPI csempe** _: a csempe egy _fill szintű * érzékelő által jelentett értéket jelenít meg egy adattárolóban. A *kitöltési szint* és az egyéb érzékelők (például a *szag-mérő* vagy a *súlyozás* ) távolról is megfigyelhetők. Az operátorok olyan műveleteket végezhetnek, mint például a trash Collection Truck elküldése. 
 
-*  A ***hulladék megfigyelési területének leképezése***: a Térkép Azure Maps használ, amelyet közvetlenül az Azure IoT Central konfigurálhat. A Térkép csempén az eszköz helye jelenik meg. Próbáljon rámutatni a térképre, és próbálja ki a vezérlőket a térképen, például a nagyításhoz, a nagyításhoz vagy a kibővítéshez.
+*  *A **hulladék figyelési területe** _: a Térkép Azure Maps használ, amelyet közvetlenül az Azure IoT Central konfigurálhat. A Térkép csempén az eszköz helye jelenik meg. Próbáljon rámutatni a térképre, és próbálja ki a vezérlőket a térképen, például a nagyításhoz, a nagyításhoz vagy a kibővítéshez.
 
      ![Csatlakoztatott hulladékgazdálkodási irányítópult-Térkép](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard-map.png)
 
 
-* ***Kitöltés, szag, súlyozási szint**sávdiagram: megjelenítheti egy vagy több telemetria-adategységet. A sávdiagram kibontása is megadható.  
+_ ***Fill, szag, súlyozási szint sávdiagram**: egy vagy több telemetria-adategységet jeleníthet meg. A sávdiagram kibontása is megadható.  
 
   ![Csatlakoztatott hulladékgazdálkodási irányítópult oszlopdiagram](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard-barchart.png)
 
@@ -114,7 +114,7 @@ Az irányítópult különböző típusú csempéket tartalmaz:
 ### <a name="customize-dashboard"></a>Irányítópult testreszabása 
 
 Építőként testreszabhatja a nézeteket az irányítópulton a kezelők számára. A következőket teheti meg:
-1. Kattintson a **Szerkesztés** gombra a **Wide World Connected hulladékgazdálkodási irányítópult**testreszabásához. A **Szerkesztés** menüre kattintva testreszabhatja az irányítópultot. Ha az irányítópult **szerkesztési** módban van, új csempéket adhat hozzá, vagy beállíthatja 
+1. Kattintson a **Szerkesztés** gombra a **Wide World Connected hulladékgazdálkodási irányítópult** testreszabásához. A **Szerkesztés** menüre kattintva testreszabhatja az irányítópultot. Ha az irányítópult **szerkesztési** módban van, új csempéket adhat hozzá, vagy beállíthatja 
 
     ![Irányítópult szerkesztése](./media/tutorial-connectedwastemanagement/edit-dashboard.png)
 
@@ -135,7 +135,7 @@ Az eszköz sablonjának megtekintése:
 
 2. Az eszközök listájában megjelenik a **csatlakoztatott hulladék tároló**. Megnyitásához kattintson a névre.
 
-3. Ismerkedjen meg az eszköz sablonjának funkcióival. Láthatja, hogy meghatározza az érzékelőket, például a *kitöltési szintet*, a *szag mérőjét*, a *súlyozást*, a *helyet*és egyebeket.
+3. Ismerkedjen meg az eszköz sablonjának funkcióival. Láthatja, hogy meghatározza az érzékelőket, például a *kitöltési szintet*, a *szag mérőjét*, a *súlyozást*, a *helyet* és egyebeket.
 
    ![A csatlakoztatott hulladéktároló eszköz sablonjának részleteit ábrázoló képernyőkép](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
 
@@ -153,7 +153,7 @@ Próbálja testre szabni a következőket:
 ### <a name="add-a-cloud-property"></a>Felhőbeli tulajdonság hozzáadása 
 
 1. Navigáljon a **Cloud tulajdonságra** az eszköz sablonja menüben
-2. Vegyen fel egy új Felhőbeli tulajdonságot a **+ Cloud Property**elemre kattintva. A IoT Centralban hozzáadhat egy olyan tulajdonságot, amely az eszközhöz szükséges, de nem várható, hogy az eszköz elküldje őket. A Felhőbeli tulajdonság például lehet a telepítési területre, az eszköz adataira vagy a karbantartási információkra jellemző riasztási küszöbérték, valamint egyéb információk. 
+2. Vegyen fel egy új Felhőbeli tulajdonságot a **+ Cloud Property** elemre kattintva. A IoT Centralban hozzáadhat egy olyan tulajdonságot, amely az eszközhöz szükséges, de nem várható, hogy az eszköz elküldje őket. A Felhőbeli tulajdonság például lehet a telepítési területre, az eszköz adataira vagy a karbantartási információkra jellemző riasztási küszöbérték, valamint egyéb információk. 
 3. Módosítások **mentése** 
  
 ### <a name="views"></a>Nézetek 
@@ -197,7 +197,7 @@ A **csatlakoztatott hulladékkezelési** alkalmazáshoz két szimulált eszköz 
 
 ## <a name="explore-and-configure-rules"></a>Szabályok megismerése és konfigurálása
 
-Az Azure IoT Central-ban létrehozhat olyan szabályokat, amelyek automatikusan figyelik az eszköz telemetria, és elindítják a műveleteket, ha egy vagy több feltétel teljesül. A műveletek közé tartozhatnak az e-mail-értesítések küldése, egy Microsoft Flow művelet elindítása vagy egy webhook művelet, amely adatokat küld más szolgáltatásoknak.
+Az Azure IoT Central-ban létrehozhat olyan szabályokat, amelyek automatikusan figyelik az eszköz telemetria, és elindítják a műveleteket, ha egy vagy több feltétel teljesül. A műveletek tartalmazhatnak e-mailes értesítéseket, automatizálják az automatizálási műveleteket, vagy egy webhook műveletet, amely adatokat küld más szolgáltatásoknak.
 
 A **csatlakoztatott hulladékkezelési** alkalmazásnak négy minta szabálya van.
 
@@ -218,7 +218,7 @@ Most hozzon létre egy e-mail-műveletet.
 
 ### <a name="create-an-email-action"></a>E-mail művelet létrehozása
 E-mail művelet beállítása a szabály műveletek listájában:
-1. Válassza a **+ e-mail**lehetőséget. 
+1. Válassza a **+ e-mail** lehetőséget. 
 2. Adja meg a *magas pH-riasztást* a művelet felhasználóbarát **megjelenítendő neveként** .
 3. Adja meg a **IoT Central-** fiókjához tartozó e-mail-címet a alkalmazásban. 
 4. Szükség esetén megadhat egy, az e-mail-szövegbe felvenni kívánt megjegyzést is.
@@ -247,8 +247,8 @@ IoT Central a feladatok lehetővé teszik az eszköz vagy a felhő tulajdonsága
 
 ### <a name="to-change-the-application-theme"></a>Az alkalmazás témájának módosítása:
 
-1. Nyissa meg az **adminisztráció > az alkalmazás testreszabása**lehetőséget.
-3. A **módosítás** gombbal kiválaszthatja az **alkalmazás emblémájának**feltöltendő képet.
+1. Nyissa meg az **adminisztráció > az alkalmazás testreszabása** lehetőséget.
+3. A **módosítás** gombbal kiválaszthatja az **alkalmazás emblémájának** feltöltendő képet.
 4. A **módosítás** gomb használatával kiválaszthatja a böngésző lapjain megjelenő **böngészőablak-ikont** .
 5. Az alapértelmezett **böngésző színeit** HTML hexadecimális színkódok hozzáadásával is lecserélheti.
 
@@ -258,14 +258,14 @@ IoT Central a feladatok lehetővé teszik az eszköz vagy a felhő tulajdonsága
 7. Végül az alkalmazás fejlécén található **Beállítások** elemre kattintva módosíthatja a **témát** is.
 
   
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha nem folytatja az alkalmazás használatát, törölje az alkalmazást az alábbi lépésekkel:
 
 1. Nyissa meg az adminisztráció lapot a IoT Central alkalmazás bal oldali paneljén.
 2. Válassza az Alkalmazásbeállítások lehetőséget, majd kattintson a lap alján található Törlés gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ
  

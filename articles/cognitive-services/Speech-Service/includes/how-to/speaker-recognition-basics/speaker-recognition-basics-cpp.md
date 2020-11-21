@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: v-jawe
 ms.custom: references_regions
-ms.openlocfilehash: dd23bf0528a27f599058271decbf1820084c9a43
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 489514068d83f7b2953732415ba066a2d4555df8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875445"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015490"
 ---
 Ebben a rövid útmutatóban megtudhatja, milyen alapszintű tervezési mintákat Speaker Recognition a Speech SDK használatával, beleértve a következőket:
 
@@ -47,13 +47,13 @@ A cikkben szereplő példák futtatásához adja hozzá a következő utasítás
 
 ## <a name="create-a-speech-configuration"></a>Beszédfelismerési konfiguráció létrehozása
 
-A beszédfelismerési szolgáltatás a Speech SDK használatával történő meghívásához létre kell hoznia egy [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) . Ez az osztály az előfizetésével kapcsolatos információkat tartalmaz, például a kulcsot és a társított régiót, végpontot, gazdagépet vagy engedélyezési jogkivonatot.
+A beszédfelismerési szolgáltatás a Speech SDK használatával történő meghívásához létre kell hoznia egy [`SpeechConfig`](/cpp/cognitive-services/speech/speechconfig) . Ez az osztály az előfizetésével kapcsolatos információkat tartalmaz, például a kulcsot és a társított régiót, végpontot, gazdagépet vagy engedélyezési jogkivonatot.
 
 :::code language="cpp" source="~/cognitive-services-quickstart-code/cpp/speech/speaker-recognition.cpp" id="get_speech_config":::
 
 ## <a name="text-dependent-verification"></a>Szövegtől függő ellenőrzés
 
-Speaker Verification az a szabály, amely megerősíti, hogy egy beszélő ismert vagy **regisztrált** hangra illeszkedik. Az első **lépés a** hangprofil beléptetése, hogy a szolgáltatásnak van-e összehasonlítani a jövőbeli hangmintákkal. Ebben a példában egy **szövegtől függő** stratégia használatával regisztrálja a profilt, amelyhez a regisztrációhoz és ellenőrzéshez egy adott jelszó szükséges. A támogatott hozzáférési kódok listáját a [dokumentációs](https://docs.microsoft.com/rest/api/speakerrecognition/) dokumentációban tekintheti meg.
+Speaker Verification az a szabály, amely megerősíti, hogy egy beszélő ismert vagy **regisztrált** hangra illeszkedik. Az első **lépés a** hangprofil beléptetése, hogy a szolgáltatásnak van-e összehasonlítani a jövőbeli hangmintákkal. Ebben a példában egy **szövegtől függő** stratégia használatával regisztrálja a profilt, amelyhez a regisztrációhoz és ellenőrzéshez egy adott jelszó szükséges. A támogatott hozzáférési kódok listáját a [dokumentációs](/rest/api/speakerrecognition/) dokumentációban tekintheti meg.
 
 ### <a name="textdependentverification-function"></a>TextDependentVerification függvény
 
@@ -61,7 +61,7 @@ Először hozza létre a `TextDependentVerification` függvényt.
 
 :::code language="cpp" source="~/cognitive-services-quickstart-code/cpp/speech/speaker-recognition.cpp" id="text_dependent_verification":::
 
-Ez a függvény létrehoz egy [VoiceProfile](https://docs.microsoft.com/cpp/cognitive-services/speech/voiceprofile) objektumot a [CreateProfileAsync](https://docs.microsoft.com/cpp/cognitive-services/speech/voiceprofileclient#createprofileasync) metódussal. Vegye figyelembe, hogy háromféle [típus](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace#enum-voiceprofiletype) létezik `VoiceProfile` :
+Ez a függvény létrehoz egy [VoiceProfile](/cpp/cognitive-services/speech/voiceprofile) objektumot a [CreateProfileAsync](/cpp/cognitive-services/speech/voiceprofileclient#createprofileasync) metódussal. Vegye figyelembe, hogy háromféle [típus](/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace#enum-voiceprofiletype) létezik `VoiceProfile` :
 
 - TextIndependentIdentification
 - TextDependentVerification
@@ -69,7 +69,7 @@ Ez a függvény létrehoz egy [VoiceProfile](https://docs.microsoft.com/cpp/cogn
 
 Ebben az esetben a következőnek kell megfelelnie: `VoiceProfileType::TextDependentVerification` `CreateProfileAsync` .
 
-Ezután hívja meg a következő két segítő függvényt, amelyeket meg fog határozni `AddEnrollmentsToTextDependentProfile` `SpeakerVerify` . Végezetül a [DeleteProfileAsync](https://docs.microsoft.com/cpp/cognitive-services/speech/voiceprofileclient#deleteprofileasync) meghívásával törölje a profilt.
+Ezután hívja meg a következő két segítő függvényt, amelyeket meg fog határozni `AddEnrollmentsToTextDependentProfile` `SpeakerVerify` . Végezetül a [DeleteProfileAsync](/cpp/cognitive-services/speech/voiceprofileclient#deleteprofileasync) meghívásával törölje a profilt.
 
 ### <a name="addenrollmentstotextdependentprofile-function"></a>AddEnrollmentsToTextDependentProfile függvény
 
@@ -77,7 +77,7 @@ Adja meg a következő függvényt a hangprofil regisztrálásához.
 
 :::code language="cpp" source="~/cognitive-services-quickstart-code/cpp/speech/speaker-recognition.cpp" id="add_enrollments_dependent":::
 
-Ebben a függvényben olyan hangmintákat regisztrál egy `while` hurokban, amelyek nyomon követik a beléptetéshez szükséges és a szükséges mintákat. Az egyes iterációkban a [EnrollProfileAsync](https://docs.microsoft.com/cpp/cognitive-services/speech/voiceprofileclient#enrollprofileasync) felszólítja, hogy beszéljen a jelszót a mikrofonba, és hozzáadja a mintát a hangprofilhoz.
+Ebben a függvényben olyan hangmintákat regisztrál egy `while` hurokban, amelyek nyomon követik a beléptetéshez szükséges és a szükséges mintákat. Az egyes iterációkban a [EnrollProfileAsync](/cpp/cognitive-services/speech/voiceprofileclient#enrollprofileasync) felszólítja, hogy beszéljen a jelszót a mikrofonba, és hozzáadja a mintát a hangprofilhoz.
 
 ### <a name="speakerverify-function"></a>SpeakerVerify függvény
 
@@ -85,9 +85,9 @@ Adja meg `SpeakerVerify` a következőt:
 
 :::code language="cpp" source="~/cognitive-services-quickstart-code/cpp/speech/speaker-recognition.cpp" id="speaker_verify":::
 
-Ebben a függvényben létrehoz egy [SpeakerVerificationModel](https://docs.microsoft.com/cpp/cognitive-services/speech/speakerverificationmodel) objektumot a [SpeakerVerificationModel:: FromProfile](https://docs.microsoft.com/cpp/cognitive-services/speech/speakerverificationmodel#fromprofile) metódussal, amely a korábban létrehozott [VoiceProfile](https://docs.microsoft.com/cpp/cognitive-services/speech/voiceprofile) objektumba kerül.
+Ebben a függvényben létrehoz egy [SpeakerVerificationModel](/cpp/cognitive-services/speech/speakerverificationmodel) objektumot a [SpeakerVerificationModel:: FromProfile](/cpp/cognitive-services/speech/speakerverificationmodel#fromprofile) metódussal, amely a korábban létrehozott [VoiceProfile](/cpp/cognitive-services/speech/voiceprofile) objektumba kerül.
 
-Next, [SpeechRecognizer:: RecognizeOnceAsync](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer#recognizeonceasync) megkéri, hogy ismét beszéljen a jelszóval, de ezúttal érvényesíti a hangprofilját, és egy hasonlósági pontszámot ad vissza a 0,0-1.0-tól kezdve. A [SpeakerRecognitionResult](https://docs.microsoft.com/cpp/cognitive-services/speech/speakerrecognitionresult) objektum a vagy a függvényt is megadja `Accept` `Reject` , attól függően, hogy a jelszó egyezik-e.
+Next, [SpeechRecognizer:: RecognizeOnceAsync](/cpp/cognitive-services/speech/speechrecognizer#recognizeonceasync) megkéri, hogy ismét beszéljen a jelszóval, de ezúttal érvényesíti a hangprofilját, és egy hasonlósági pontszámot ad vissza a 0,0-1.0-tól kezdve. A [SpeakerRecognitionResult](/cpp/cognitive-services/speech/speakerrecognitionresult) objektum a vagy a függvényt is megadja `Accept` `Reject` , attól függően, hogy a jelszó egyezik-e.
 
 ## <a name="text-independent-verification"></a>Szövegtől független ellenőrzés
 
@@ -102,11 +102,11 @@ Először hozza létre a `TextIndependentVerification` függvényt.
 
 :::code language="cpp" source="~/cognitive-services-quickstart-code/cpp/speech/speaker-recognition.cpp" id="text_independent_verification":::
 
-A `TextDependentVerification` függvényhez hasonlóan ez a függvény létrehoz egy [VoiceProfile](https://docs.microsoft.com/cpp/cognitive-services/speech/voiceprofile) objektumot a [CreateProfileAsync](https://docs.microsoft.com/cpp/cognitive-services/speech/voiceprofileclient#createprofileasync) metódussal.
+A `TextDependentVerification` függvényhez hasonlóan ez a függvény létrehoz egy [VoiceProfile](/cpp/cognitive-services/speech/voiceprofile) objektumot a [CreateProfileAsync](/cpp/cognitive-services/speech/voiceprofileclient#createprofileasync) metódussal.
 
 Ebben az esetben a következőnek kell megfelelnie: `VoiceProfileType::TextIndependentVerification` `CreateProfileAsync` .
 
-Ezután hívja meg a következő két segítő függvényt: `AddEnrollmentsToTextIndependentProfile` , amelyet a Next (tovább) és a (z `SpeakerVerify` ) már definiált. Végezetül a [DeleteProfileAsync](https://docs.microsoft.com/cpp/cognitive-services/speech/voiceprofileclient#deleteprofileasync) meghívásával törölje a profilt.
+Ezután hívja meg a következő két segítő függvényt: `AddEnrollmentsToTextIndependentProfile` , amelyet a Next (tovább) és a (z `SpeakerVerify` ) már definiált. Végezetül a [DeleteProfileAsync](/cpp/cognitive-services/speech/voiceprofileclient#deleteprofileasync) meghívásával törölje a profilt.
 
 ### <a name="addenrollmentstotextindependentprofile"></a>AddEnrollmentsToTextIndependentProfile
 
@@ -114,7 +114,7 @@ Adja meg a következő függvényt a hangprofil regisztrálásához.
 
 :::code language="cpp" source="~/cognitive-services-quickstart-code/cpp/speech/speaker-recognition.cpp" id="add_enrollments_independent":::
 
-Ebben a függvényben olyan hangmintákat regisztrál a `while` hurokban, amelyek nyomon követik a beléptetéshez szükséges hangmennyiséget és a szükséges időt. Az egyes iterációkban a [EnrollProfileAsync](https://docs.microsoft.com/cpp/cognitive-services/speech/voiceprofileclient#enrollprofileasync) felszólítja, hogy beszéljen a mikrofonba, és hozzáadja a mintát a hangprofilhoz.
+Ebben a függvényben olyan hangmintákat regisztrál a `while` hurokban, amelyek nyomon követik a beléptetéshez szükséges hangmennyiséget és a szükséges időt. Az egyes iterációkban a [EnrollProfileAsync](/cpp/cognitive-services/speech/voiceprofileclient#enrollprofileasync) felszólítja, hogy beszéljen a mikrofonba, és hozzáadja a mintát a hangprofilhoz.
 
 ## <a name="speaker-identification"></a>Beszélőazonosítás
 
@@ -126,11 +126,11 @@ Először hozza létre a `TextIndependentIdentification` függvényt.
 
 :::code language="cpp" source="~/cognitive-services-quickstart-code/cpp/speech/speaker-recognition.cpp" id="text_independent_indentification":::
 
-A `TextDependentVerification` és a `TextIndependentVerification` függvényekhez hasonlóan ez a függvény létrehoz egy [VoiceProfile](https://docs.microsoft.com/cpp/cognitive-services/speech/voiceprofile) objektumot a [CreateProfileAsync](https://docs.microsoft.com/cpp/cognitive-services/speech/voiceprofileclient#createprofileasync) metódussal.
+A `TextDependentVerification` és a `TextIndependentVerification` függvényekhez hasonlóan ez a függvény létrehoz egy [VoiceProfile](/cpp/cognitive-services/speech/voiceprofile) objektumot a [CreateProfileAsync](/cpp/cognitive-services/speech/voiceprofileclient#createprofileasync) metódussal.
 
 Ebben az esetben a következőnek kell megfelelnie: `VoiceProfileType::TextIndependentIdentification` `CreateProfileAsync` .
 
-Ezután hívja meg a következő két segítő függvényt: `AddEnrollmentsToTextIndependentProfile` , amelyet már definiált, és `SpeakerIdentify` amelynél a Next (tovább) értéket fogja meghatározni. Végezetül a [DeleteProfileAsync](https://docs.microsoft.com/cpp/cognitive-services/speech/voiceprofileclient#deleteprofileasync) meghívásával törölje a profilt.
+Ezután hívja meg a következő két segítő függvényt: `AddEnrollmentsToTextIndependentProfile` , amelyet már definiált, és `SpeakerIdentify` amelynél a Next (tovább) értéket fogja meghatározni. Végezetül a [DeleteProfileAsync](/cpp/cognitive-services/speech/voiceprofileclient#deleteprofileasync) meghívásával törölje a profilt.
 
 ### <a name="speakeridentify-function"></a>SpeakerIdentify függvény
 
@@ -138,9 +138,9 @@ Adja meg a `SpeakerIdentify` függvényt az alábbiak szerint.
 
 :::code language="cpp" source="~/cognitive-services-quickstart-code/cpp/speech/speaker-recognition.cpp" id="speaker_identify":::
 
-Ebben a függvényben létrehoz egy [SpeakerIdentificationModel](https://docs.microsoft.com/cpp/cognitive-services/speech/speakeridentificationmodel) objektumot a [SpeakerIdentificationModel:: FromProfiles](https://docs.microsoft.com/cpp/cognitive-services/speech/speakeridentificationmodel#fromprofiles) metódussal. `SpeakerIdentificationModel::FromProfiles` a [VoiceProfile](https://docs.microsoft.com/cpp/cognitive-services/speech/voiceprofile) objektumok listáját fogadja el. Ebben az esetben csak a `VoiceProfile` korábban létrehozott objektumot adja meg. Ha azonban azt szeretné, több objektumot is átadhat `VoiceProfile` , amelyek mindegyike más hangmintákkal van regisztrálva.
+Ebben a függvényben létrehoz egy [SpeakerIdentificationModel](/cpp/cognitive-services/speech/speakeridentificationmodel) objektumot a [SpeakerIdentificationModel:: FromProfiles](/cpp/cognitive-services/speech/speakeridentificationmodel#fromprofiles) metódussal. `SpeakerIdentificationModel::FromProfiles` a [VoiceProfile](/cpp/cognitive-services/speech/voiceprofile) objektumok listáját fogadja el. Ebben az esetben csak a `VoiceProfile` korábban létrehozott objektumot adja meg. Ha azonban azt szeretné, több objektumot is átadhat `VoiceProfile` , amelyek mindegyike más hangmintákkal van regisztrálva.
 
-Következő, [SpeechRecognizer:: RecognizeOnceAsync](https://docs.microsoft.com/cpp/cognitive-services/speech/speechrecognizer#recognizeonceasync) megkéri, hogy beszéljen újra. Ezúttal összehasonlítja a hangját a regisztrált hangprofilokkal, és visszaadja a leginkább hasonló hangprofilt.
+Következő, [SpeechRecognizer:: RecognizeOnceAsync](/cpp/cognitive-services/speech/speechrecognizer#recognizeonceasync) megkéri, hogy beszéljen újra. Ezúttal összehasonlítja a hangját a regisztrált hangprofilokkal, és visszaadja a leginkább hasonló hangprofilt.
 
 ## <a name="main-function"></a>Fő függvény
 
@@ -148,7 +148,7 @@ Végül adja meg a `main` függvényt az alábbiak szerint.
 
 :::code language="cpp" source="~/cognitive-services-quickstart-code/cpp/speech/speaker-recognition.cpp" id="main":::
 
-Ez a függvény egyszerűen meghívja a korábban definiált függvényeket. Először is létrehoz egy [VoiceProfileClient](https://docs.microsoft.com/cpp/cognitive-services/speech/voiceprofileclient) objektumot és egy [SpeakerRecognizer](https://docs.microsoft.com/cpp/cognitive-services/speech/speakerrecognizer) objektumot.
+Ez a függvény egyszerűen meghívja a korábban definiált függvényeket. Először is létrehoz egy [VoiceProfileClient](/cpp/cognitive-services/speech/voiceprofileclient) objektumot és egy [SpeakerRecognizer](/cpp/cognitive-services/speech/speakerrecognizer) objektumot.
 
 ```
 auto speech_config = GetSpeechConfig();
@@ -172,4 +172,4 @@ erre:
 auto audio_config = Audio::AudioConfig::FromWavFileInput(path/to/your/file.wav);
 ```
 
-Vagy cserélje le a `audio_config` [hanganyag használatát:: AudioConfig:: FromWavFileInput](https://docs.microsoft.com/cpp/cognitive-services/speech/audio-audioconfig#fromwavfileinput). Vegyes bemeneteket is használhat, ha például egy mikrofont használ a regisztráláshoz és a fájlok ellenőrzéséhez.
+Vagy cserélje le a `audio_config` [hanganyag használatát:: AudioConfig:: FromWavFileInput](/cpp/cognitive-services/speech/audio-audioconfig#fromwavfileinput). Vegyes bemeneteket is használhat, ha például egy mikrofont használ a regisztráláshoz és a fájlok ellenőrzéséhez.

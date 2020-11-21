@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
-ms.openlocfilehash: 8154ef7a90011da8c15f52870eebb6c80ebaebca
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: dd1b6d216f6225a13d86aa2435b5b1c807547ec3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496108"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014577"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetria és hibaelhárítás
 
@@ -51,7 +51,7 @@ Bemenetek
 Kimenetek
 1. Azure Monitor
 
-A megadott térbeli analízis-kezelő modul a térbeli elemzési tároló által kibocsátott összes telemetria-adatmennyiséget Azure Monitor teszi közzé. Az előfizetéshez Azure Monitor hozzáadásával kapcsolatos információkért tekintse meg a [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) .
+A megadott térbeli analízis-kezelő modul a térbeli elemzési tároló által kibocsátott összes telemetria-adatmennyiséget Azure Monitor teszi közzé. Az előfizetéshez Azure Monitor hozzáadásával kapcsolatos információkért tekintse meg a [Azure monitor](../../azure-monitor/overview.md) .
 
 A Azure Monitor beállítása után létre kell hoznia a hitelesítő adatokat, amelyek lehetővé teszik a modul számára a telemetria küldését. A Azure Portal használatával létrehozhat egy új szolgáltatásnevet, vagy az alábbi Azure CLI-paranccsal hozhat létre egyet.
 
@@ -103,9 +103,9 @@ Miután telepítette a Service Graf modult, a jelentett metrikák a Azure Monito
 
 ### <a name="system-health-events"></a>Rendszerállapot-események
 
-| Esemény neve | Leírás|
+| Esemény neve | Description|
 |------|---------|
-|archon_exit    |Akkor lett elindítva *, amikor a felhasználó a térbeli* elemzési modul állapotát *Leállítva*állapotra módosítja.  |
+|archon_exit    |Akkor lett elindítva *, amikor a felhasználó a térbeli* elemzési modul állapotát *Leállítva* állapotra módosítja.  |
 |archon_error   |A tárolóban lévő folyamatok összeomlásakor lett elküldve. Ez egy kritikus hiba.  |
 |InputRate  |Az a sebesség, amellyel a gráf feldolgozza a videó bemenetét. 5 percenként jelentett jelentést. | 
 |OutputRate     |Az a sebesség, amellyel a gráf kiadja az AI-bepillantást. 5 percenként jelentett jelentést. |
@@ -121,7 +121,7 @@ Miután telepítette a Service Graf modult, a jelentett metrikák a Azure Monito
 
 ##  <a name="troubleshooting-an-iot-edge-device"></a>IoT Edge eszköz hibaelhárítása
 
-A `iotedge` futó modulok állapotát és naplóit a parancssori eszközzel is megtekintheti. Példa:
+A `iotedge` futó modulok állapotát és naplóit a parancssori eszközzel is megtekintheti. Például:
 * `iotedge list`: A futó modulok listáját jelenti. 
   A következővel további hibákat is megtudhat `iotedge logs edgeAgent` . Ha `iotedge` elakad, próbálkozzon újra a használatával `iotedge restart edgeAgent`
 * `iotedge logs <module-name>`
@@ -199,7 +199,7 @@ A IoT Edge portálon válassza ki az eszközt, majd a **diagnosztikai** modult. 
 **Az Azure-ba való feltöltés konfigurálása Blob Storage**
 
 1. Ha még nem tette meg, hozza létre saját Azure Blob Storage-fiókját.
-2. Szerezze be a Storage-fiókhoz tartozó **kapcsolatok karakterláncát** a Azure Portal. A **hozzáférési kulcsokban**fog megjelenni.
+2. Szerezze be a Storage-fiókhoz tartozó **kapcsolatok karakterláncát** a Azure Portal. A **hozzáférési kulcsokban** fog megjelenni.
 3. A rendszer automatikusan feltölti a térbeli elemzési naplókat egy *rtcvlogs* nevű blob Storage tárolóba a következő fájlnév-formátummal: `{CONTAINER_NAME}/{START_TIME}-{END_TIME}-{QUERY_TIME}.log` .
 
 ```json
@@ -215,8 +215,8 @@ A IoT Edge portálon válassza ki az eszközt, majd a **diagnosztikai** modult. 
 A naplók feltöltése igény szerint történik a `getRTCVLogs` IoT Edge metódussal, a `diagnostics` modulban. 
 
 
-1. Lépjen a IoT Hub-portál lapra, válassza az **Edge-eszközök**lehetőséget, majd válassza ki az eszközt és a diagnosztikai modult. 
-2. Nyissa meg a modul részletek lapját, és kattintson a **_közvetlen metódus_*_ lapra.
+1. Lépjen a IoT Hub-portál lapra, válassza az **Edge-eszközök** lehetőséget, majd válassza ki az eszközt és a diagnosztikai modult. 
+2. Nyissa meg a modul részletek lapját, és kattintson a **_közvetlen metódus_* _ lapra.
 3. Írja be `getRTCVLogs` a metódus nevét, és egy JSON formátumú karakterláncot a hasznos adatok között. Megadhatja `{}` , amely üres adattartalom. 
 4. Állítsa be a kapcsolat és a metódus időtúllépését, majd kattintson az _ * metódus meghívása * * elemre.
 5. Válassza ki a tárolót, és hozzon létre egy hasznos adattartalom JSON-karakterláncot a **naplózási szintaxis** szakaszban leírt paraméterek használatával. A kérelem végrehajtásához kattintson a **metódus meghívása** elemre.
@@ -224,7 +224,7 @@ A naplók feltöltése igény szerint történik a `getRTCVLogs` IoT Edge metód
 >[!NOTE]
 > Ha a `getRTCVLogs` metódust üres adattartalommal hívja meg, az eszközön telepített összes tároló listáját fogja visszaadni. A metódus neve megkülönbözteti a kis-és nagybetűket. Ha a metódus neve nem megfelelő, akkor 501-as hibaüzenetet kap.
 
-:::image type="content" source="./media/spatial-analysis/direct-log-collection.png" alt-text="Azure Monitor telemetria jelentés":::
+:::image type="content" source="./media/spatial-analysis/direct-log-collection.png" alt-text="A getRTCVLogs metódus meghívása ":::
 ![getRTCVLogs Direct metódus lapja](./media/spatial-analysis/direct-log-collection.png)
 
  
@@ -232,7 +232,7 @@ A naplók feltöltése igény szerint történik a `getRTCVLogs` IoT Edge metód
 
 Az alábbi táblázat felsorolja a naplók lekérdezéséhez használható paramétereket.
 
-| Kulcsszó | Leírás | Alapértelmezett érték |
+| Kulcsszó | Description | Alapértelmezett érték |
 |--|--|--|
 | StartTime | A kívánt naplók kezdő időpontja ezredmásodpercben (UTC). | `-1`, a tároló futtatókörnyezetének kezdete. Amikor `[-1.-1]` időtartományként használja az API-t, az elmúlt egy órában visszaadja a naplókat.|
 | EndTime | A kívánt naplók befejezési időpontja ezredmásodpercben (UTC). | `-1`, az aktuális idő. `[-1.-1]`Az időtartomány használatakor az API az elmúlt egy óra naplóit adja vissza. |
@@ -243,9 +243,9 @@ Az alábbi táblázat felsorolja a naplók lekérdezéséhez használható param
 
 A következő táblázat a lekérdezési válasz attribútumait sorolja fel.
 
-| Kulcsszó | Leírás|
+| Kulcsszó | Description|
 |--|--|
-|DoPost| *Igaz* vagy *hamis*. Azt jelzi, hogy a naplók feltöltése megtörtént-e. Ha úgy dönt, hogy nem tölt fel naplókat, az API a ***szinkron**_ adatokat adja vissza. Ha a naplók feltöltését választja, az API a 200 értéket adja vissza, ha a kérelem érvényes, és a naplók _*_aszinkron_*_ feltöltését indítja el.|
+|DoPost| *Igaz* vagy *hamis*. Azt jelzi, hogy a naplók feltöltése megtörtént-e. Ha úgy dönt, hogy nem tölt fel naplókat, az API a ***szinkron** _ adatokat adja vissza. Ha a naplók feltöltését választja, az API a 200 értéket adja vissza, ha a kérelem érvényes, és a naplók _*_aszinkron_*_ feltöltését indítja el.|
 |TimeFilter| A naplókra alkalmazott Időszűrő.|
 |ValueFilters| A naplókra alkalmazott kulcsszavak szűrői. |
 |Időbélyeg| Metódus végrehajtásának kezdési ideje. |
@@ -316,8 +316,8 @@ A következő szakasz segítséget nyújt az Azure Stack Edge-eszköz állapotá
 
 ### <a name="access-the-kubernetes-api-endpoint"></a>Hozzáférés a Kubernetes API-végponthoz. 
 
-1. Az eszköz helyi felhasználói felületén nyissa meg az _*eszközök** lapot. 
-2. Másolja a Kubernetes API szolgáltatás végpontját az **eszközök végpontjai**területen. Ez a végpont egy karakterlánc a következő formátumban: `https://compute..[device-IP-address]` .
+1. Az eszköz helyi felhasználói felületén nyissa meg az _ *eszközök** lapot. 
+2. Másolja a Kubernetes API szolgáltatás végpontját az **eszközök végpontjai** területen. Ez a végpont egy karakterlánc a következő formátumban: `https://compute..[device-IP-address]` .
 3. Mentse a végponti karakterláncot. Ezt később fogja használni `kubectl` , amikor a Kubernetes-fürthöz való hozzáférést konfigurálja.
 
 ### <a name="connect-to-powershell-interface"></a>Kapcsolódás a PowerShell-felülethez
@@ -326,7 +326,7 @@ Távolról, kapcsolódjon egy Windows-ügyfélről. A Kubernetes-fürt létrehoz
 
 > [!TIP]
 > * Mielőtt elkezdené, győződjön meg arról, hogy a Windows-ügyfél a Windows PowerShell 5,0-es vagy újabb verzióját futtatja.
-> * [A PowerShell Linuxon is elérhető](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-linux).
+> * [A PowerShell Linuxon is elérhető](/powershell/scripting/install/installing-powershell-core-on-linux).
 
 1. Futtasson egy Windows PowerShell-munkamenetet rendszergazdaként. 
     1. Győződjön meg arról, hogy a Windows távfelügyeleti szolgáltatása fut az ügyfélen. A parancssorba írja be a következőt: `winrm quickconfig` .
@@ -357,7 +357,7 @@ A Kubernetes-fürt létrehozása után a `kubectl` parancssori eszköz használa
     New-HcsKubernetesNamespace -Namespace
     ```
 
-2. Hozzon létre egy felhasználót, és szerezzen be egy konfigurációs fájlt. Ez a parancs a Kubernetes-fürthöz tartozó konfigurációs adatokat fogja kiadni. Másolja ezt az információt, és mentse egy *config*nevű fájlba. Ne mentse a fájlt fájlkiterjesztésként.
+2. Hozzon létre egy felhasználót, és szerezzen be egy konfigurációs fájlt. Ez a parancs a Kubernetes-fürthöz tartozó konfigurációs adatokat fogja kiadni. Másolja ezt az információt, és mentse egy *config* nevű fájlba. Ne mentse a fájlt fájlkiterjesztésként.
     
     ```powershell
     New-HcsKubernetesUser -UserName
@@ -397,7 +397,7 @@ kubectl logs <pod-name> -n <namespace> --all-containers
 
 |Parancs  |Leírás  |
 |---------|---------|
-|`Get-HcsKubernetesUserConfig -AseUser`     | Létrehoz egy Kubernetes-konfigurációs fájlt. A parancs használatakor másolja az adatokat egy *config*nevű fájlba. Ne mentse a fájlt kiterjesztéssel.        |
+|`Get-HcsKubernetesUserConfig -AseUser`     | Létrehoz egy Kubernetes-konfigurációs fájlt. A parancs használatakor másolja az adatokat egy *config* nevű fájlba. Ne mentse a fájlt kiterjesztéssel.        |
 | `Get-HcsApplianceInfo` | Az eszközre vonatkozó adatokat ad vissza. |
 | `Enable-HcsSupportAccess` | Hozzáférési hitelesítő adatokat hoz létre a támogatási munkamenet elindításához. |
 

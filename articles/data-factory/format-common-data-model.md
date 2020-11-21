@@ -1,18 +1,18 @@
 ---
 title: Common Data Model formátum
 description: Adatok átalakítása a Common adatmodell metaadat-rendszerén keresztül
-author: djpmsft
+author: kromerm
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/13/2020
-ms.author: daperlov
-ms.openlocfilehash: 452aa3406ac09dd8342d8ade0b56b126067b7582
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/20/2020
+ms.author: makromer
+ms.openlocfilehash: 7fc3a63f841a88451746d088a527a41d756e711f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636408"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015171"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Közös adatmodell-formátum a Azure Data Factoryban
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -37,10 +37,10 @@ Az alábbi táblázatban a CDM-forrás által támogatott tulajdonságok szerepe
 
 | Név | Leírás | Kötelező | Megengedett értékek | Adatfolyam-parancsfájl tulajdonsága |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Formátum | A formátumot kötelező megadni `cdm` | igen | `cdm` | formátumban |
-| Metaadatok formátuma | Ahol az entitás az adatelemre hivatkozik. Ha a CDM 1,0-es verzióját használja, válassza a jegyzékfájlt. Ha 1,0 előtti CDM-verziót használ, válassza a model.jslehetőséget. | Igen | `'manifest'` vagy `'model'` | manifestType |
-| Gyökér helye: tároló | A CDM-mappa tárolójának neve | igen | Sztring | Fájlrendszer |
-| Gyökér helye: mappa elérési útja | A CDM-mappa gyökérmappa helye | igen | Sztring | folderPath |
+| Formátum | A formátumot kötelező megadni `cdm` | yes | `cdm` | formátumban |
+| Metaadatok formátuma | Ahol az entitás az adatelemre hivatkozik. Ha a CDM 1,0-es verzióját használja, válassza a jegyzékfájlt. Ha 1,0 előtti CDM-verziót használ, válassza a model.jslehetőséget. | Yes | `'manifest'` vagy `'model'` | manifestType |
+| Gyökér helye: tároló | A CDM-mappa tárolójának neve | yes | Sztring | Fájlrendszer |
+| Gyökér helye: mappa elérési útja | A CDM-mappa gyökérmappa helye | yes | Sztring | folderPath |
 | Manifest-fájl: entitás elérési útja | Az entitás mappájának elérési útja a gyökérkönyvtáron belül | nem | Sztring | entityPath |
 | Manifest-fájl: jegyzékfájl neve | A jegyzékfájl neve. Alapértelmezett érték: "default"  | Nem | Sztring | manifestName |
 | Szűrés utoljára módosítva | Válassza ki a fájlok szűrését az utolsó módosításuk alapján | nem | Timestamp | modifiedAfter <br> modifiedBefore | 
@@ -49,10 +49,14 @@ Az alábbi táblázatban a CDM-forrás által támogatott tulajdonságok szerepe
 | Entitás-hivatkozási adattár | GitHub-adattár neve | igen, ha a GitHubon és a corpuson használja a GitHubot | Sztring | github_repository |
 | Entitás hivatkozási ága | GitHub-tárház ág | igen, ha a GitHubon és a corpuson használja a GitHubot | Sztring |  github_branch |
 | Corpus-mappa | a corpus gyökerének helye | igen, ha a jegyzékfájlt használja | Sztring | corpusPath |
-| Corpus-entitás | Entitás hivatkozásának elérési útja | igen | Sztring | entitás |
+| Corpus-entitás | Entitás hivatkozásának elérési útja | yes | Sztring | entitás |
 | Nem található fájlok engedélyezése | Ha az értéke igaz, a rendszer nem dobja el a hibát, ha nem található fájl | nem | `true` vagy `false` | ignoreNoFilesFound |
 
-Ha a forrás-átalakításban használni kívánt entitás definíciója ugyanabban a könyvtárban található, mint az adatmappa, akkor törölje a "entitás használata a corpus használatával" lehetőséget, és egyszerűen írja be annak az entitásnak a entitását, amelyet az entitás-hivatkozásként kíván használni.
+Ha a forrás-és a fogadó átalakításban is kiválasztja az "Entity Reference" lehetőséget, a következő három lehetőség közül választhat az entitás-hivatkozás helyeként:
+
+* A helyi használja az ADF által már használt jegyzékfájlban definiált entitást.
+* Az egyéni parancs arra kéri, hogy mutasson egy olyan entitási jegyzékfájlra, amely eltér a jegyzékfájl ADF-fájljának a használatával
+* A standard a alkalmazásban fenntartott CDM-entitások szabványos könyvtárából származó entitásokra mutató hivatkozást fog használni ```Github``` .
 
 ### <a name="sink-settings"></a>Fogadó beállításai
 
@@ -116,17 +120,17 @@ Az alábbi táblázatban a CDM-fogadó által támogatott tulajdonságok szerepe
 
 | Név | Leírás | Kötelező | Megengedett értékek | Adatfolyam-parancsfájl tulajdonsága |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Formátum | A formátumot kötelező megadni `cdm` | igen | `cdm` | formátumban |
-| Gyökér helye: tároló | A CDM-mappa tárolójának neve | igen | Sztring | Fájlrendszer |
-| Gyökér helye: mappa elérési útja | A CDM-mappa gyökérmappa helye | igen | Sztring | folderPath |
+| Formátum | A formátumot kötelező megadni `cdm` | yes | `cdm` | formátumban |
+| Gyökér helye: tároló | A CDM-mappa tárolójának neve | yes | Sztring | Fájlrendszer |
+| Gyökér helye: mappa elérési útja | A CDM-mappa gyökérmappa helye | yes | Sztring | folderPath |
 | Manifest-fájl: entitás elérési útja | Az entitás mappájának elérési útja a gyökérkönyvtáron belül | nem | Sztring | entityPath |
 | Manifest-fájl: jegyzékfájl neve | A jegyzékfájl neve. Alapértelmezett érték: "default" | Nem | Sztring | manifestName |
-| Séma-társított szolgáltatás | A társított szolgáltatás, ahol a corpus található | igen | `'adlsgen2'` vagy `'github'` | corpusStore | 
+| Séma-társított szolgáltatás | A társított szolgáltatás, ahol a corpus található | yes | `'adlsgen2'` vagy `'github'` | corpusStore | 
 | Entitás-hivatkozási tároló | A Container Corpus a | igen, ha a corpus ADLS Gen2 | Sztring | adlsgen2_fileSystem |
 | Entitás-hivatkozási adattár | GitHub-adattár neve | igen, ha Corpus a GitHubban | Sztring | github_repository |
 | Entitás hivatkozási ága | GitHub-tárház ág | igen, ha Corpus a GitHubban | Sztring |  github_branch |
-| Corpus-mappa | a corpus gyökerének helye | igen | Sztring | corpusPath |
-| Corpus-entitás | Entitás hivatkozásának elérési útja | igen | Sztring | entitás |
+| Corpus-mappa | a corpus gyökerének helye | yes | Sztring | corpusPath |
+| Corpus-entitás | Entitás hivatkozásának elérési útja | yes | Sztring | entitás |
 | Partíció elérési útja | A partíció írásának helye | nem | Sztring | partitionPath |
 | Mappa törlése | Ha a célmappa az írás előtt törlődik | nem | `true` vagy `false` | truncate |
 | Formátum típusa | Válassza a parketta formátumának megadása lehetőséget. | nem | `parquet` Ha meg van adva | alformátum |

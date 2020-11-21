@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 1a32e485dfc9cd465f6dd6d50abdb166737dc3aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73eb1225ffc5fd01f9a27ca99ad2b059d45a36cf
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87387982"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015290"
 ---
 # <a name="device-roobo-smart-audio-dev-kit"></a>Eszköz: Roobo Smart audio dev Kit
 
@@ -67,10 +67,10 @@ Ez a cikk a Roobo Smart audio dev Kit eszközre vonatkozó információkat tarta
 
 További fejlesztési információk: [Roobo fejlesztői útmutató](http://dwn.roo.bo/server_upload/ddk/ROOBO%20Dev%20Kit-User%20Guide.pdf).
 
-## <a name="audio"></a>Hang
+## <a name="audio"></a>Audió
 
 A Roobo olyan eszközt biztosít, amely rögzíti az összes hang-és flash-memóriát. Hasznos lehet a hangproblémák elhárításában. Az eszköz egy verzióját az egyes fejlesztői csomagokhoz tartozó konfigurációkhoz biztosítjuk. A  [Roobo oldalon](http://ddk.roobo.com/)válassza ki az eszközt, majd kattintson a lap alján található **Roobo-eszközök** hivatkozásra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Az Android-minta alkalmazás futtatása](speech-devices-sdk-android-quickstart.md)
+* [Az Android-minta alkalmazás futtatása](./speech-devices-sdk-quickstart.md?pivots=platform-android%253fpivots%253dplatform-android)

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: 80f0d29de6b3013ad02ed1a5d34bebdf81a8766b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9d1b6e20bf2decfe051e79e073736f71181260fa
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91628213"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014543"
 ---
 # <a name="spatial-analysis-operations"></a>Térbeli elemzési műveletek
 
@@ -23,7 +23,7 @@ A térbeli elemzés lehetővé teszi a kameraeszközök videóinak valós idejű
 
 A térbeli elemzési tároló a következő műveleteket hajtja végre:
 
-| Műveleti azonosító| Leírás|
+| Műveleti azonosító| Description|
 |---------|---------|
 | cognitiveservices. vízió. spatialanalysis – personcount | Egy kijelölt zónában lévő személyeket számít a kamera mezőjében. <br> Kibocsátja a kezdeti _personCountEvent_ eseményt, majd _personCountEvent_ az eseményeket a számlálás megváltozásakor.  |
 | cognitiveservices. vízió. spatialanalysis – personcrossingline | Nyomon követi, hogy egy személy Mikor halad át egy kijelölt vonalat a kamera mezőjében. <br>_PersonLineEvent_ eseményt bocsát ki, amikor a személy átlépi a vonalat, és útmutatást nyújt. 
@@ -32,18 +32,18 @@ A térbeli elemzési tároló a következő műveleteket hajtja végre:
 
 Az összes művelet a `.debug` verzióban is elérhető, amely képes megjeleníteni a képkockákat a feldolgozás során. A `xhost +` képkockák és események megjelenítésének engedélyezéséhez futtatnia kell a gazdagépen.
 
-| Műveleti azonosító| Leírás|
+| Műveleti azonosító| Description|
 |---------|---------|
 | cognitiveservices. vízió. spatialanalysis-personcount. debug | Egy kijelölt zónában lévő személyeket számít a kamera mezőjében. <br> Kibocsátja a kezdeti _personCountEvent_ eseményt, majd _personCountEvent_ az eseményeket a számlálás megváltozásakor.  |
 | cognitiveservices. vízió. spatialanalysis-personcrossingline. debug | Nyomon követi, hogy egy személy Mikor halad át egy kijelölt vonalat a kamera mezőjében. <br>_PersonLineEvent_ eseményt bocsát ki, amikor a személy átlépi a vonalat, és útmutatást nyújt. 
 | cognitiveservices. vízió. spatialanalysis-personcrossingpolygon. debug | Nyomon követi, hogy egy személy Mikor halad át egy kijelölt vonalat a kamera mezőjében. <br> _PersonLineEvent_ eseményt bocsát ki, amikor a személy átlépi a zónát, és útmutatást nyújt. |
 | cognitiveservices. vízió. spatialanalysis-persondistance. debug | Nyomon követi, ha a felhasználók nem sértik a távolsági szabályt. <br> Rendszeresen bocsát ki egy _personDistanceEvent_ az egyes távolságok megsértésének helyén. |
 
-A térbeli elemzések videó AI-modulként is futtathatók [élő video Analytics](https://aka.ms/lva-spatial-analysis) használatával. 
+A térbeli elemzések videó AI-modulként is futtathatók [élő video Analytics](../../media-services/live-video-analytics-edge/spatial-analysis-tutorial.md) használatával. 
 
 <!--more details on the setup can be found in the [LVA Setup page](LVA-Setup.md). Below is the list of the operations supported with Live Video Analytics. -->
 
-| Műveleti azonosító| Leírás|
+| Műveleti azonosító| Description|
 |---------|---------|
 | cognitiveservices. vízió. spatialanalysis-personcount. livevideoanalytics | Egy kijelölt zónában lévő személyeket számít a kamera mezőjében. <br> Kibocsátja a kezdeti _personCountEvent_ eseményt, majd _personCountEvent_ az eseményeket a számlálás megváltozásakor.  |
 | cognitiveservices. vízió. spatialanalysis-personcrossingline. livevideoanalytics | Nyomon követi, hogy egy személy Mikor halad át egy kijelölt vonalat a kamera mezőjében. <br>_PersonLineEvent_ eseményt bocsát ki, amikor a személy átlépi a vonalat, és útmutatást nyújt. 
@@ -57,7 +57,7 @@ Az élő videó elemzési műveletei a verzióban is elérhetők `.debug` (pl. c
 
 Ezek a térbeli elemzési műveletek által igényelt paraméterek.
 
-| Üzemeltetési paraméterek| Leírás|
+| Üzemeltetési paraméterek| Description|
 |---------|---------|
 | Művelet azonosítója | A fenti tábla műveleti azonosítója.|
 | engedélyezve | Boolean: true vagy FALSE|
@@ -88,7 +88,7 @@ Ezek a térbeli elemzési műveletek által igényelt paraméterek.
 }
 ```
 
-| Név | Típus| Leírás|
+| Név | Típus| Description|
 |---------|---------|---------|
 | `zones` | list| Zónák listája. |
 | `name` | sztring| A zóna rövid neve.|
@@ -121,7 +121,7 @@ Ez egy példa egy olyan JSON-bemenetre a SPACEANALYTICS_CONFIG paraméter szám�
 }
 ```
 
-| Név | Típus| Leírás|
+| Név | Típus| Description|
 |---------|---------|---------|
 | `lines` | list| Sorok listája.|
 | `name` | sztring| A sor rövid neve.|
@@ -152,7 +152,7 @@ Ez egy példa a SPACEANALYTICS_CONFIG paraméter JSON-bemenetére, amely egy zó
 }
 ```
 
-| Név | Típus| Leírás|
+| Név | Típus| Description|
 |---------|---------|---------|
 | `zones` | list| Zónák listája. |
 | `name` | sztring| A zóna rövid neve.|
@@ -163,7 +163,7 @@ Ez egy példa a SPACEANALYTICS_CONFIG paraméter JSON-bemenetére, amely egy zó
 
 ### <a name="zone-configuration-for-cognitiveservicesvisionspatialanalysis-persondistance"></a>Cognitiveservices. vízió. spatialanalysis – persondistance
 
-Ez egy példa a SPACEANALYTICS_CONFIG paraméter JSON-bemenetére, amely egy zónát konfigurál a **cognitiveservices. vízió. spatialanalysis-persondistance**számára. A művelethez több zóna is konfigurálható.
+Ez egy példa a SPACEANALYTICS_CONFIG paraméter JSON-bemenetére, amely egy zónát konfigurál a **cognitiveservices. vízió. spatialanalysis-persondistance** számára. A művelethez több zóna is konfigurálható.
 
 ```json
 {
@@ -184,7 +184,7 @@ Ez egy példa a SPACEANALYTICS_CONFIG paraméter JSON-bemenetére, amely egy zó
 }
 ```
 
-| Név | Típus| Leírás|
+| Név | Típus| Description|
 |---------|---------|---------|
 | `zones` | list| Zónák listája. |
 | `name` | sztring| A zóna rövid neve.|
@@ -638,8 +638,8 @@ Példa a JSON-ra a művelet észlelési kimenetéhez.
 
 Előfordulhat, hogy integrálni szeretné a térbeli elemzési észlelést vagy az eseményeket az alkalmazásba. A következő szempontokat érdemes figyelembe venni: 
 
-* Használja az Azure Event hub SDK-t a kiválasztott programozási nyelvhez az Azure IoT Hub-végponthoz való kapcsolódáshoz és az események fogadásához. További információért lásd: [eszközről a felhőbe irányuló üzenetek olvasása a beépített végpontról](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin) . 
-* Állítsa be az **üzenet-útválasztást** az Azure-IoT hub az események más végpontoknak való elküldéséhez, vagy mentse az eseményeket az adattárba. További információ: [IoT hub üzenet-útválasztás](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c) . 
+* Használja az Azure Event hub SDK-t a kiválasztott programozási nyelvhez az Azure IoT Hub-végponthoz való kapcsolódáshoz és az események fogadásához. További információért lásd: [eszközről a felhőbe irányuló üzenetek olvasása a beépített végpontról](../../iot-hub/iot-hub-devguide-messages-read-builtin.md) . 
+* Állítsa be az **üzenet-útválasztást** az Azure-IoT hub az események más végpontoknak való elküldéséhez, vagy mentse az eseményeket az adattárba. További információ: [IoT hub üzenet-útválasztás](../../iot-hub/iot-hub-devguide-messages-d2c.md) . 
 * Állítson be egy Azure Stream Analytics feladatot az események valós idejű feldolgozásához, amikor megérkeznek és vizualizációkat hoznak létre. 
 
 ## <a name="deploying-spatial-analysis-operations-at-scale-multiple-cameras"></a>Térbeli elemzési műveletek nagy léptékű üzembe helyezése (több kamera)
@@ -725,7 +725,7 @@ A GPU-k legjobb teljesítményének és kihasználtságának kihasználása érd
       }
   }
   ```
-| Név | Típus| Leírás|
+| Név | Típus| Description|
 |---------|---------|---------|
 | `batch_size` | int | A műveletben használt fényképezőgépek számát jelzi. |
 

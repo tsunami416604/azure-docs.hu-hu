@@ -14,12 +14,12 @@ ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
 keywords: Computer vízió, Computer víziós alkalmazások, számítógépes jövőkép szolgáltatás
-ms.openlocfilehash: aeaa10870b8b40b907da1d1660e77ebf0271c300
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 1603aa05d8bde6d4c3edba2d49120fa3545d3fd0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629750"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014645"
 ---
 # <a name="what-is-computer-vision"></a>Mi a Computer Vision?
 
@@ -64,7 +64,7 @@ Leírást hoz létre a teljes képhez a felhasználók által is olvasható nyel
 
 ### <a name="detect-faces"></a>Arcfelismerés
 
-Felismeri a képen található arcokat, és információval szolgál minden felismert arccal kapcsolatban. A Computer Vision visszaküldi az arcok koordinátáit, a téglalapot és a képen szereplő személy nemét és életkorát.<br/>Computer Vision a [Face](/azure/cognitive-services/face/) szolgáltatás funkcióinak egy részét biztosítja. A Face szolgáltatást részletesebb elemzésre is használhatja, például az arc azonosítására és az észlelésre. [Arcfelismerés](concept-detecting-faces.md)
+Felismeri a képen található arcokat, és információval szolgál minden felismert arccal kapcsolatban. A Computer Vision visszaküldi az arcok koordinátáit, a téglalapot és a képen szereplő személy nemét és életkorát.<br/>Computer Vision a [Face](../face/index.yml) szolgáltatás funkcióinak egy részét biztosítja. A Face szolgáltatást részletesebb elemzésre is használhatja, például az arc azonosítására és az észlelésre. [Arcfelismerés](concept-detecting-faces.md)
 
 ### <a name="detect-image-types"></a>Képek típusának észlelése
 
@@ -111,7 +111,7 @@ A Computer Vision a következő követelményeknek megfelelő képeket képes el
 
 Akárcsak az összes Cognitive Services esetében, a Computer Vision szolgáltatást használó fejlesztőknek ismerniük kell a Microsoft adatkezelési szabályzatait. További információért tekintse meg a Microsoft adatvédelmi központjának [Cognitive Services lapját](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Computer Vision használatának első lépései a következő útmutatóban olvashatók az előnyben részesített fejlesztői nyelven:
 

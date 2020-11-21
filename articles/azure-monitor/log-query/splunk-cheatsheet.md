@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2018
-ms.openlocfilehash: 00fdaf93553c97112c67caa66cb2246756b63c33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c59b5646e011afa6b8487e8145a1cb07e6e2a8ff
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207477"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015580"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>Splunk Azure Monitor naplózási lekérdezés
 
@@ -26,14 +26,14 @@ A következő táblázat összehasonlítja a splunk és az Azure Monitor-naplók
  | Üzembe helyezési egység  | cluster |  cluster |  A Azure Monitor lehetővé teszi a fürtök tetszőleges típusú lekérdezését. A splunk nem. |
  | Adatgyorsítótárak |  vödör  |  Gyorsítótárazási és adatmegőrzési szabályzatok |  Az adatpontok és a gyorsítótárazási szint szabályozása. Ez a beállítás közvetlenül befolyásolja a lekérdezések teljesítményét és a telepítés költségeit. |
  | Az adatlogikai partíció  |  index  |  adatbázis  |  Lehetővé teszi az adatmennyiségek logikai elkülönítését. Mindkét implementáció lehetővé teszi a szakszervezetek és az ezekhez való csatlakozást a partíciók között. |
- | Strukturált esemény metaadatainak | N/A | tábla |  A splunk nem rendelkezik az esemény metaadatainak keresési nyelvén elérhető koncepcióval. Azure Monitor a naplók egy tábla fogalmával rendelkeznek, amelynek vannak oszlopai. Minden Event-példány egy sorra van leképezve. |
+ | Strukturált esemény metaadatainak | N.A. | table |  A splunk nem rendelkezik az esemény metaadatainak keresési nyelvén elérhető koncepcióval. Azure Monitor a naplók egy tábla fogalmával rendelkeznek, amelynek vannak oszlopai. Minden Event-példány egy sorra van leképezve. |
  | Adatrekord | esemény | sor |  Csak a terminológia módosul. |
  | Adatrekord-attribútum | mező |  oszlop |  A Azure Monitorban ez a tábla struktúrájának részeként van definiálva. A splunk minden esemény saját mezőket tartalmaz. |
  | Típusok | adattípus |  adattípus |  Azure Monitor adattípusok világosabbak, mert az oszlopokra vannak beállítva. Mindkettő képes dinamikusan dolgozni az adattípusokkal és nagyjából egyenértékű adattípusokkal, beleértve a JSON-támogatást is. |
  | Lekérdezés és keresés  | keresés | lekérdezés |  A fogalmak lényegében azonosak a Azure Monitor és a splunk között. |
  | Esemény betöltésének ideje | Rendszeridő | ingestion_time() |  A splunk-ben minden esemény az esemény indexelésének időpontjának időbélyegét kapja meg. Azure Monitorban megadhat egy ingestion_time nevű szabályzatot, amely egy olyan rendszeroszlopt tesz elérhetővé, amely a ingestion_time () függvénnyel hivatkozhat. |
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Függvények
 
 A következő táblázat a splunk függvényekkel egyenértékű Azure Monitor függvényeit határozza meg.
 
@@ -123,7 +123,7 @@ Azure Monitor az `project-rename` operátor használatával nevezi át a mezőt.
 | **Azure Monitor** | **projekt**<br>**projekt – vendég** | <code>Office_Hub_OHubBGTaskError<br>&#124; project exception, state</code> |
 
 ### <a name="aggregation"></a>Összesítés
-Tekintse meg az összesítéseket Azure Monitor a különböző aggregációs függvények [naplózási lekérdezéseit](aggregations.md) .
+Tekintse meg az összesítéseket Azure Monitor a különböző aggregációs függvények [naplózási lekérdezéseit](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#aggregations) .
 
 | | Operátor | Példa |
 |:---|:---|:---|
@@ -171,6 +171,6 @@ A Azure Portal Log Analyticsban csak az első oszlop van kitéve. Az összes osz
 | **Splunk** | **deduplikáció** |  <code>Event.Rule=330009.2<br>&#124; dedup device_id sortby -batterylife</code> |
 | **Azure Monitor** | **összefoglalás arg_max ()** | <code>Office_Excel_BI_PivotTableCreate<br>&#124; summarize arg_max(batterylife, *) by device_id</code> |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ugorjon végig egy leckét a [Azure monitor írási napló lekérdezéséhez](get-started-queries.md).

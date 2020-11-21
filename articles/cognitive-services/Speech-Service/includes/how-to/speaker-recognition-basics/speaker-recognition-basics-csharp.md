@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: v-jawe
 ms.custom: references_regions
-ms.openlocfilehash: 5be99ba09032020abf777c80307e347658a6e037
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 2b5a34e8f3e7132a16ad3683b846d57e9ece2cb6
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92470646"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015469"
 ---
 Ebben a rövid útmutatóban megtudhatja, milyen alapszintű tervezési mintákat Speaker Recognition a Speech SDK használatával, beleértve a következőket:
 
@@ -51,7 +51,7 @@ using Microsoft.CognitiveServices.Speech.Audio;
 
 ## <a name="create-a-speech-configuration"></a>Beszédfelismerési konfiguráció létrehozása
 
-A beszédfelismerési szolgáltatás a Speech SDK használatával történő meghívásához létre kell hoznia egy [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet&preserve-view=true) . Ebben a példában egy [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet&preserve-view=true) előfizetési kulcsot és egy régiót hoz létre. Emellett a cikk további részében is létrehozhat egy alapszintű, a különböző testreszabási beállításokkal módosítható egyszerű kiírási kódot.
+A beszédfelismerési szolgáltatás a Speech SDK használatával történő meghívásához létre kell hoznia egy [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-dotnet) . Ebben a példában egy [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-dotnet) előfizetési kulcsot és egy régiót hoz létre. Emellett a cikk további részében is létrehozhat egy alapszintű, a különböző testreszabási beállításokkal módosítható egyszerű kiírási kódot.
 
 Vegye figyelembe, hogy a régió úgy van beállítva, hogy az `westus` egyetlen támogatott régió a szolgáltatás számára.
 
@@ -70,7 +70,7 @@ public class Program
 
 ## <a name="text-dependent-verification"></a>Szövegtől függő ellenőrzés
 
-Speaker Verification az a szabály, amely megerősíti, hogy egy beszélő ismert vagy **regisztrált** hangra illeszkedik. Az első **lépés a** hangprofil beléptetése, hogy a szolgáltatásnak van-e összehasonlítani a jövőbeli hangmintákkal. Ebben a példában egy **szövegtől függő** stratégia használatával regisztrálja a profilt, amelyhez a beléptetéshez és ellenőrzéshez egy adott pass-mondat szükséges. A támogatott pass-mondatok listáját a [dokumentációban](https://docs.microsoft.com/rest/api/speakerrecognition/) tekintheti meg.
+Speaker Verification az a szabály, amely megerősíti, hogy egy beszélő ismert vagy **regisztrált** hangra illeszkedik. Az első **lépés a** hangprofil beléptetése, hogy a szolgáltatásnak van-e összehasonlítani a jövőbeli hangmintákkal. Ebben a példában egy **szövegtől függő** stratégia használatával regisztrálja a profilt, amelyhez a beléptetéshez és ellenőrzéshez egy adott pass-mondat szükséges. A támogatott pass-mondatok listáját a [dokumentációban](/rest/api/speakerrecognition/) tekintheti meg.
 
 Először hozza létre a következő függvényt az `Program` osztályban a hangprofil regisztrálásához.
 
@@ -232,7 +232,7 @@ Verified voice profile for speaker Your Name, score is 0.849409
 
 A Speaker Identification segítségével megállapítható, hogy **ki** beszél a regisztrált hangok adott csoportjából. A folyamat nagyon hasonlít a **szövegtől független ellenőrzéshez**, és a fő különbség, hogy egyszerre több hangprofillal is képes ellenőrizni, nem pedig egyetlen profilon.
 
-Hozzon létre egy függvényt `IdentificationEnroll` több hangprofil regisztrálásához. Az egyes profilok beléptetési folyamata megegyezik a beléptetési folyamattal, amely a **szövegtől független ellenőrzéshez**szükséges, és minden profilhoz 20 másodpercet igényel. Ez a függvény elfogadja a karakterláncok listáját `profileNames` , és létrehoz egy új hangprofilt a listában szereplő minden névhez. A függvény az objektumok listáját adja vissza `VoiceProfile` , amelyet a következő függvényben használ a beszélő azonosításához.
+Hozzon létre egy függvényt `IdentificationEnroll` több hangprofil regisztrálásához. Az egyes profilok beléptetési folyamata megegyezik a beléptetési folyamattal, amely a **szövegtől független ellenőrzéshez** szükséges, és minden profilhoz 20 másodpercet igényel. Ez a függvény elfogadja a karakterláncok listáját `profileNames` , és létrehoz egy új hangprofilt a listában szereplő minden névhez. A függvény az objektumok listáját adja vissza `VoiceProfile` , amelyet a következő függvényben használ a beszélő azonosításához.
 
 ```csharp
 public static async Task<List<VoiceProfile>> IdentificationEnroll(SpeechConfig config, List<string> profileNames, Dictionary<string, string> profileMapping)

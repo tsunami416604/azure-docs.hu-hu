@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: 2c415fc92d2d338c568c422b1db2579563527839
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: f07efcc18f3eff7e40232941befb563cd236266b
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442055"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95013029"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Munkaterületek létrehozása Azure Machine Learninghez Azure Resource Manager sablon használatával
 
@@ -39,6 +39,10 @@ További információ: [alkalmazások központi telepítése Azure Resource Mana
 
     További információ: a [kvóták kezelése és növelése](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
 
+## <a name="limitations"></a>Korlátozások
+
+* Új munkaterület létrehozásakor engedélyezheti a munkaterületnek, hogy automatikusan létrehozza a szükséges Azure-szolgáltatásokat, vagy megadjon meglévő szolgáltatásokat. A meglévő szolgáltatások megadásakor ezeknek a szolgáltatásoknak mind ugyanabban az Azure-előfizetésben kell lenniük, mint a munkaterületnek.
+
 ## <a name="workspace-resource-manager-template"></a>Munkaterület Resource Manager-sablon
 
 Az ebben a dokumentumban használt Azure Resource Manager sablon az Azure Gyorsindítás sablonok GitHub-tárházának [201-Machine-learning-Advanced](https://github.com/Azure/azure-quickstart-templates/blob/master/201-machine-learning-advanced/azuredeploy.json) könyvtárában található.
@@ -59,7 +63,7 @@ A példa sablon két **kötelező** paraméterrel rendelkezik:
 
     A sablon a legtöbb erőforráshoz kiválasztott helyet fogja használni. A kivétel a Application Insights szolgáltatás, amely nem érhető el a többi szolgáltatás összes helyén. Ha olyan helyet választ, ahol nem érhető el, a szolgáltatás az USA déli középső régiójában lesz létrehozva.
 
-* A **workspaceName** , amely a Azure Machine learning munkaterület rövid neve.
+* A **workspaceName**, amely a Azure Machine learning munkaterület rövid neve.
 
     > [!NOTE]
     > A munkaterület neve megkülönbözteti a kis-és nagybetűket.
@@ -254,7 +258,7 @@ New-AzResourceGroupDeployment `
 
 Ügyfél által felügyelt kulcs használatakor Azure Machine Learning létrehoz egy másodlagos erőforráscsoportot, amely tartalmazza a Cosmos DB példányt. További információ: [titkosítás a REST-Cosmos DBon](concept-data-encryption.md#encryption-at-rest).
 
-Az adatai számára további konfigurációt adhat meg, ha a **confidential_data** paramétert True ( **igaz** ) értékre állítja. Ezzel a következő műveleteket hajtja végre:
+Az adatai számára további konfigurációt adhat meg, ha a **confidential_data** paramétert True ( **igaz**) értékre állítja. Ezzel a következő műveleteket hajtja végre:
 
 * Elindítja a Azure Machine Learning számítási fürtök helyi lemezeinek titkosítását, így még nem hozott létre korábbi fürtöket az előfizetésében. Ha korábban már létrehozott egy fürtöt az előfizetésben, nyisson meg egy támogatási jegyet, hogy a számítási fürtökön engedélyezve legyen a lemez titkosítása.
 * A helyi kaparós lemez tisztítása a futtatások között.
@@ -549,7 +553,7 @@ New-AzResourceGroupDeployment `
    * Régió: válassza ki azt az Azure-régiót, ahol létre kívánja hozni az erőforrásokat.
    * Munkaterület neve: a létrehozandó Azure Machine Learning munkaterület nevét fogja használni. A munkaterület nevének 3 és 33 karakter közöttinek kell lennie. Csak alfanumerikus karaktereket és "-" karaktert tartalmazhat.
    * Hely: válassza ki azt a helyet, ahová létre kívánja hozni az erőforrásokat.
-1. Válassza a __Felülvizsgálat + létrehozás__ lehetőséget.
+1. Válassza az __Áttekintés + létrehozás__ lehetőséget.
 1. A __felülvizsgálat + létrehozás__ képernyőn fogadja el a felsorolt feltételeket és kikötéseket, majd válassza a __Létrehozás__ lehetőséget.
 
 További információ: [erőforrások központi telepítése egyéni sablonból](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
@@ -679,7 +683,7 @@ Egy másik munkaterületet és privát végpontot tartalmazó virtuális hálóz
     az network private-dns link vnet create --name mylinkname --registration-enabled true --resource-group myresourcegroup --virtual-network myvirtualnetworkid --zone-name privatelink.api.azureml.ms
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és Resource Manager-Rest APIokkal](../azure-resource-manager/templates/deploy-rest.md).
 * [Azure-erőforráscsoportok létrehozása és üzembe helyezése a Visual Studióval](../azure-resource-manager/templates/create-visual-studio-deployment-project.md).

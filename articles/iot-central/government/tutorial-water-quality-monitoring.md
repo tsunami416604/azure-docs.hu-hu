@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: a80fe998c1ab241e35bee195b927846e264dec59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07f0e66888eaa909dfce14924e9186bcb9b876b4
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90972366"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014492"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Oktatóanyag: vízminőség-figyelési alkalmazás létrehozása az Azure-ban IoT Central
 
@@ -56,7 +56,7 @@ Ebben a szakaszban az Azure IoT Central **vízminőség-figyelési** sablonnal h
 
     * **Alkalmazásnév**: alapértelmezés szerint az alkalmazás neve a **víz minőségének monitorozása** , amelyet az Azure IOT Central által generált egyedi azonosító sztring követ. Ha szeretné, megadhatja a megjelenítendő nevet, vagy később módosíthatja az alkalmazás nevét.
     * **URL**: bármilyen URL-címet megadhat, vagy később módosíthatja az URL-címet.
-    * Ha rendelkezik Azure-előfizetéssel, adja meg a **címtár**, az **Azure-előfizetés**és a **régió**értékeit. Ha nem rendelkezik előfizetéssel, bekapcsolhatja a **7 napos ingyenes próbaverziót** , és elvégezheti a szükséges kapcsolattartási adatokat.
+    * Ha rendelkezik Azure-előfizetéssel, adja meg a **címtár**, az **Azure-előfizetés** és a **régió** értékeit. Ha nem rendelkezik előfizetéssel, bekapcsolhatja a **7 napos ingyenes próbaverziót** , és elvégezheti a szükséges kapcsolattartási adatokat.
 
     További információ a címtárakról és az előfizetésekről: [alkalmazás létrehozása](../core/quick-deploy-iot-central.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) – rövid útmutató.
 
@@ -127,7 +127,7 @@ A létrehozott vízminőség-figyelési alkalmazáshoz tartozik egy vízminősé
 Az eszköz sablonjának megtekintése:
 
 1. Válassza ki az **eszköz sablonjait** az alkalmazás bal szélső paneljén az Azure IoT Centralban.
-1. Az eszközök listájában válassza a **vízminőség-figyelő**elemet. Megnyílik az eszköz sablonja.
+1. Az eszközök listájában válassza a **vízminőség-figyelő** elemet. Megnyílik az eszköz sablonja.
 
     ![Az eszköz sablonja](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-devicetemplate.png)
 
@@ -135,16 +135,16 @@ Az eszköz sablonjának megtekintése:
 
 A következő eszközbeállítások beállításainak testreszabása:
 
-1. Az eszköz sablonja menüben válassza a **Testreszabás**lehetőséget.
+1. Az eszköz sablonja menüben válassza a **Testreszabás** lehetőséget.
 1. Lépjen a **hőmérséklet** telemetria típusra.
-1. Módosítsa a **megjelenített név** értékét a **jelentett hőmérséklet**értékre.
+1. Módosítsa a **megjelenített név** értékét a **jelentett hőmérséklet** értékre.
 1. Módosítsa a mértékegységet, vagy állítsa be a **minimális értéket** és a **maximális értéket**.
 1. Kattintson a **Mentés** gombra.
 
 #### <a name="add-a-cloud-property"></a>Felhőbeli tulajdonság hozzáadása
 
-1. Az eszköz sablonja menüben válassza a **Cloud Property**elemet.
-1. Új Felhőbeli tulajdonság hozzáadásához válassza a **+ Cloud Property hozzáadása**elemet. Az Azure IoT Centralban hozzáadhat egy olyan tulajdonságot, amely egy eszközhöz kapcsolódik, de az nem várható, hogy az eszköz elküldje őket. Ilyen tulajdonság például a telepítési területre, az eszköz adataira vagy a karbantartási információkra jellemző riasztási küszöbérték.
+1. Az eszköz sablonja menüben válassza a **Cloud Property** elemet.
+1. Új Felhőbeli tulajdonság hozzáadásához válassza a **+ Cloud Property hozzáadása** elemet. Az Azure IoT Centralban hozzáadhat egy olyan tulajdonságot, amely egy eszközhöz kapcsolódik, de az nem várható, hogy az eszköz elküldje őket. Ilyen tulajdonság például a telepítési területre, az eszköz adataira vagy a karbantartási információkra jellemző riasztási küszöbérték.
 1. Kattintson a **Mentés** gombra.
 
 ### <a name="explore-views"></a>Nézetek megismerése
@@ -176,11 +176,11 @@ Az alkalmazás sablonjában létrehozott víz minőség-figyelési alkalmazás k
 
     ![1. eszköz kiválasztása](./media/tutorial-waterqualitymonitoring/waterqualitymonitor-device1.png)
 
-1. A **felhő tulajdonságai** lapon módosítsa a **savasság (pH) küszöbértékét** **8** – **9**értékre.
+1. A **felhő tulajdonságai** lapon módosítsa a **savasság (pH) küszöbértékét** **8** – **9** értékre.
 1. Fedezze fel az **eszköz tulajdonságai** lapot és az **eszköz irányítópultját** .
 
 > [!NOTE]
-> Minden lap a **sablon nézeteiből**lett konfigurálva.
+> Minden lap a **sablon nézeteiből** lett konfigurálva.
 
 ### <a name="add-new-devices"></a>Új eszközök hozzáadása
 
@@ -188,7 +188,7 @@ Az alkalmazás sablonjában létrehozott víz minőség-figyelési alkalmazás k
 
 ## <a name="explore-and-configure-rules"></a>Szabályok megismerése és konfigurálása
 
-Az Azure IoT Centralban olyan szabályokat hozhat létre, amelyek automatikusan figyelik az eszközök telemetria. Ezek a szabályok egy műveletet aktiválnak, ha bármelyik feltétel teljesül. Az egyik lehetséges művelet az e-mail-értesítések küldése. A további lehetőségek közé tartozik egy Microsoft Flow művelet vagy egy webhook művelet, amellyel az adatküldés más szolgáltatásoknak.
+Az Azure IoT Centralban olyan szabályokat hozhat létre, amelyek automatikusan figyelik az eszközök telemetria. Ezek a szabályok egy műveletet aktiválnak, ha bármelyik feltétel teljesül. Az egyik lehetséges művelet az e-mail-értesítések küldése. A további lehetőségek közé tartozik az automatizálási művelet vagy egy webhook művelet, amellyel az adatküldés más szolgáltatásoknak.
 
 A létrehozott vízminőség-figyelési alkalmazásnak két előre konfigurált szabálya van.
 
@@ -198,7 +198,7 @@ A létrehozott vízminőség-figyelési alkalmazásnak két előre konfigurált 
 
    ![Szabályok](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-rules.png)
 
-1. Válassza a **magas pH-riasztás**lehetőséget, amely az alkalmazás előre konfigurált szabályainak egyike.
+1. Válassza a **magas pH-riasztás** lehetőséget, amely az alkalmazás előre konfigurált szabályainak egyike.
 
    ![A magas pH-riasztási szabály](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-highphalert.png)
 
@@ -206,7 +206,7 @@ A létrehozott vízminőség-figyelési alkalmazásnak két előre konfigurált 
 
 Ezután adjon hozzá egy e-mail-műveletet a szabályhoz:
 
-1. Válassza a **+ e-mail**lehetőséget.
+1. Válassza a **+ e-mail** lehetőséget.
 1. A **megjelenítendő név** mezőbe írja be a **magas pH-riasztást**.
 1. A **to** mezőben adja meg az Azure IoT Central-fiókjához társított e-mail-címet.
 1. Szükség esetén megadhat egy megjegyzést, amely az e-mail szövegében szerepel.
@@ -218,7 +218,7 @@ Néhány percen belül e-mailt kell kapnia a beállított feltétel teljesülés
 > [!NOTE]
 > Az alkalmazás minden alkalommal küld e-mailt, amikor egy feltétel teljesül. Válassza a **Letiltás** lehetőséget egy szabályhoz, hogy ne kapjon automatikus e-mailt az adott szabálytól.
   
-Új szabály létrehozásához válassza a **szabályok** elemet az alkalmazás bal szélső paneljén, majd válassza az **+ új**lehetőséget.
+Új szabály létrehozásához válassza a **szabályok** elemet az alkalmazás bal szélső paneljén, majd válassza az **+ új** lehetőséget.
 
 ## <a name="configure-jobs"></a>Feladatok konfigurálása
 
@@ -232,20 +232,20 @@ Az Azure IoT Central-feladatokkal több eszközön is aktiválhatja a frissíté
 Építőként több beállítást is módosíthat az alkalmazás felhasználói felületének testreszabásához.
 
 1. Válassza **Administration**  >  **az adminisztráció testre szabása alkalmazást**.
-1. Az **alkalmazás emblémája**területen válassza a **módosítás** lehetőséget, hogy kiválassza a logóként feltölteni kívánt képet.
-1. A **böngésző ikonja**alatt válassza a **módosítás** lehetőséget a böngésző lapjain megjelenő rendszerkép kiválasztásához.
-1. A **böngésző színei**területen lecserélheti az alapértelmezett értékeket HTML hexadecimális színkódokkal.
-1. Válassza a **Beállítások** lehetőséget a **téma**értékének módosításához.
+1. Az **alkalmazás emblémája** területen válassza a **módosítás** lehetőséget, hogy kiválassza a logóként feltölteni kívánt képet.
+1. A **böngésző ikonja** alatt válassza a **módosítás** lehetőséget a böngésző lapjain megjelenő rendszerkép kiválasztásához.
+1. A **böngésző színei** területen lecserélheti az alapértelmezett értékeket HTML hexadecimális színkódokkal.
+1. Válassza a **Beállítások** lehetőséget a **téma** értékének módosításához.
 
    ![Az alkalmazás testreszabása](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-customize-your-application1.png)
 
 ### <a name="update-the-application-image"></a>Az alkalmazás rendszerképének frissítése
 
-1. Válassza az **adminisztrációs**  >  **alkalmazás beállításai**lehetőséget.
+1. Válassza az **adminisztrációs**  >  **alkalmazás beállításai** lehetőséget.
 
 1. A **rendszerkép kiválasztása** gomb használatával kiválaszthatja az alkalmazási képként feltölteni kívánt képet.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha nem folytatja az alkalmazás használatát, törölje az alkalmazást az alábbi lépésekkel:
 
@@ -254,7 +254,7 @@ Ha nem folytatja az alkalmazás használatát, törölje az alkalmazást az alá
 
     ![Az alkalmazás törlése](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-application-settings-delete-app1.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ 
 

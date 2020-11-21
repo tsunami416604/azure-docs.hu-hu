@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: lyhughes
-ms.openlocfilehash: 320d92ef0ad6d02dbe7c31b883eb7f73472378ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56a1d5aab2f665f9c5bd8f6fa322f35e55483c7b
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667809"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016717"
 ---
 # <a name="upcoming-changes-to-json-flattening-and-escaping-rules-for-new-environments"></a>Az új környezetekhez tartozó JSON-összeolvasztás és-Escape-szabályok közelgő módosításai
 
@@ -44,17 +44,17 @@ Az objektumok tömbje mindig össze van egyengetve, így több esemény is létr
 
 Minden új központi telepítésnek meg kell egyeznie az új betöltési szabályokkal. Ha például a TS `telemetry_tagId` -azonosítója, frissítenie kell a Azure Resource Manager sablonokat, vagy automatikus központi telepítésű parancsfájlokat kell konfigurálnia `telemetry.tagId` a környezet TS-azonosítójának konfigurálásához. Ezt a módosítást a beágyazott JSON-ban található eseményforrás-időbélyegek esetében is meg kell adni.
 
-### <a name="if-your-payload-contains-nested-json-or-special-characters-and-you-automate-authoring-time-series-model-variable-expressions"></a>Ha a hasznos adatok beágyazott JSON-vagy speciális karaktereket tartalmaznak, és automatizálja az [idősorozat-modell](.\time-series-insights-update-tsm.md) változó kifejezéseit.
+### <a name="if-your-payload-contains-nested-json-or-special-characters-and-you-automate-authoring-time-series-model-variable-expressions"></a>Ha a hasznos adatok beágyazott JSON-vagy speciális karaktereket tartalmaznak, és automatizálja az [idősorozat-modell](./concepts-model-overview.md) változó kifejezéseit.
 
-Frissítse a [TypesBatchPut](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput) -t végrehajtó ügyfél kódját az új betöltési szabályoknak megfelelően. Egy korábbi [Idősorozat-kifejezést](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax) például a `"value": {"tsx": "$event.series_value.Double"}` következő lehetőségek egyikére kell frissíteni:
+Frissítse a [TypesBatchPut](/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput) -t végrehajtó ügyfél kódját az új betöltési szabályoknak megfelelően. Egy korábbi [Idősorozat-kifejezést](/rest/api/time-series-insights/reference-time-series-expression-syntax) például a `"value": {"tsx": "$event.series_value.Double"}` következő lehetőségek egyikére kell frissíteni:
 
 * `"value": {"tsx": "$event.series.value.Double"}`
 * `"value": {"tsx": "$event['series']['value'].Double"}`
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Ismerkedjen meg [Azure Time Series Insights Gen2-tárolóval és a bejövő](./time-series-insights-update-storage-ingress.md)forgalommal.
+* Ismerkedjen meg [Azure Time Series Insights Gen2-tárolóval és a bejövő](./concepts-ingestion-overview.md)forgalommal.
 
 * Megtudhatja, hogyan kérdezheti le az adatait a [Time Series lekérdezési API](./concepts-query-overview.md)-k használatával.
 
-* További információ az [új Idősorozat-kifejezés szintaxisáról](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax).
+* További információ az [új Idősorozat-kifejezés szintaxisáról](/rest/api/time-series-insights/reference-time-series-expression-syntax).

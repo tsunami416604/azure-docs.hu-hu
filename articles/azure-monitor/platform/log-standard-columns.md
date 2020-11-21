@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/09/2020
-ms.openlocfilehash: 695b0b0ac06e63912ca0a471be3d96c148458c29
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: dc3d119479d2dce45b286463f3d6a76410220dd0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104240"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014220"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Szabványos oszlopok a Azure Monitor-naplókban
 Azure Monitor naplókban lévő adatokat egy [log Analytics munkaterületen vagy Application Insights alkalmazásban található rekordok halmaza tárolja](./data-platform-logs.md), amelyek mindegyike egy adott adattípussal rendelkezik, amely egyedi oszlopokkal rendelkezik. Számos adattípus szabványos oszlopokat tartalmaz, amelyek több típusra is jellemzőek. Ez a cikk ezeket az oszlopokat ismerteti, és példákat tartalmaz arra, hogyan használhatja őket a lekérdezésekben.
@@ -48,7 +48,7 @@ exceptions
 ```
 
 ## <a name="_timereceived"></a>\_TimeReceived
-A ** \_ TimeReceived** oszlop azt a dátumot és időpontot tartalmazza, ameddig a rekord az Azure-felhőben lévő Azure monitor betöltési ponttól érkezett. Ez hasznos lehet az adatforrás és a felhő közötti késési problémák azonosításához. Ilyen például egy hálózati probléma, ami késlelteti az ügynöktől küldött adatok késését. További részletekért lásd: a [naplózási adatok betöltési ideje Azure monitorban](data-ingestion-time.md) .
+A **\_ TimeReceived** oszlop azt a dátumot és időpontot tartalmazza, ameddig a rekord az Azure-felhőben lévő Azure monitor betöltési ponttól érkezett. Ez hasznos lehet az adatforrás és a felhő közötti késési problémák azonosításához. Ilyen például egy hálózati probléma, ami késlelteti az ügynöktől küldött adatok késését. További részletekért lásd: a [naplózási adatok betöltési ideje Azure monitorban](data-ingestion-time.md) .
 
 Az alábbi lekérdezés átlagos késést biztosít egy ügynöktől származó esemény-rekordok esetében óránként. Ez magában foglalja az ügynök és a felhő közötti időt, valamint azt, hogy a rekord teljes ideje elérhető legyen a naplók lekérdezéséhez.
 
@@ -74,11 +74,11 @@ search *
 
 ```
 ## <a name="_itemid"></a>\_Elemazonosító
-A ** \_ elemazonosító** oszlop a rekord egyedi azonosítóját tartalmazza.
+A **\_ elemazonosító** oszlop a rekord egyedi azonosítóját tartalmazza.
 
 
 ## <a name="_resourceid"></a>\_ResourceId
-A ** \_ ResourceId** oszlop az erőforrás egyedi azonosítóját tartalmazza, amelyhez a rekord társítva van. Ez egy szabványos oszlopot biztosít a lekérdezés hatóköréhez, amely csak egy adott erőforrás rekordjaira vonatkozik, vagy a kapcsolódó adatok több táblán való összekapcsolására.
+A **\_ ResourceId** oszlop az erőforrás egyedi azonosítóját tartalmazza, amelyhez a rekord társítva van. Ez egy szabványos oszlopot biztosít a lekérdezés hatóköréhez, amely csak egy adott erőforrás rekordjaira vonatkozik, vagy a kapcsolódó adatok több táblán való összekapcsolására.
 
 Az Azure-erőforrások esetében **_ResourceId** értéke az [Azure-erőforrás azonosítójának URL-címe](../../azure-resource-manager/templates/template-functions-resource.md). Az oszlop jelenleg csak az Azure-erőforrásokra korlátozódik, de az Azure-on kívüli erőforrásokra, például a helyszíni számítógépekre is kiterjeszthető.
 
@@ -124,7 +124,7 @@ union withsource = tt *
 Ezeket a `union withsource = tt *` lekérdezéseket takarékosan használhatja az adattípusok megkereséséhez.
 
 ## <a name="_isbillable"></a>\_Számlázható
-A ** \_ számlázható** oszlop meghatározza, hogy a betöltött adatmennyiség számlázható-e. A ** \_ számlázható** egyenlő mennyiségű adatok `false` gyűjtése ingyenesen történik, és nem számítjuk fel az Azure-fiókját.
+A **\_ számlázható** oszlop meghatározza, hogy a betöltött adatmennyiség számlázható-e. A **\_ számlázható** egyenlő mennyiségű adatok `false` gyűjtése ingyenesen történik, és nem számítjuk fel az Azure-fiókját.
 
 ### <a name="examples"></a>Példák
 A számlázott adattípusokat küldő számítógépek listájának lekéréséhez használja a következő lekérdezést:
@@ -151,7 +151,7 @@ union withsource = tt *
 ```
 
 ## <a name="_billedsize"></a>\_BilledSize
-A ** \_ BilledSize** oszlop az Azure-fiókba felszámított adatmennyiség bájtban kifejezett méretét adja meg, ha a ** \_ számlázható** értéke igaz.
+A **\_ BilledSize** oszlop az Azure-fiókba felszámított adatmennyiség bájtban kifejezett méretét adja meg, ha a **\_ számlázható** értéke igaz.
 
 
 ### <a name="examples"></a>Példák
@@ -207,8 +207,8 @@ union withsource = tt *
 | summarize count() by tt | sort by count_ nulls last 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure monitor naplózási adatainak tárolásáról](../log-query/log-query-overview.md).
 - Vegyen fel egy leckét a [naplók írásához](../log-query/get-started-queries.md).
-- Bemutatjuk [, hogyan csatlakozhatnak táblákhoz a naplók lekérdezésében](../log-query/joins.md).
+- Bemutatjuk [, hogyan csatlakozhatnak táblákhoz a naplók lekérdezésében](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#joins).

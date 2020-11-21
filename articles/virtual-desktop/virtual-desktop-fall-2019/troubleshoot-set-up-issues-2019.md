@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 31219fda04095d48b55165f59c27f3dee85485a9
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8c6d26de62364b6aca671d1e4283a01c1b78c397
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843638"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014832"
 ---
 # <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>Bérlői és gazdagépi készlet létrehozása a Windows Virtual Desktopban (klasszikus)
 
@@ -49,7 +49,7 @@ Contact your IT Admin to review the configuration of your service subscriptions.
 
 **OK:** Az Azure Active Directory-példányban nem adható meg a Windows rendszerű virtuális asztal.
 
-**Javítás:** [kövesse ezt az útmutatót](https://docs.microsoft.com/azure/virtual-desktop/virtual-desktop-fall-2019/tenant-setup-azure-active-directory#grant-permissions-to-windows-virtual-desktop) a jóváhagyás megadásához.
+**Javítás:** [kövesse ezt az útmutatót](./tenant-setup-azure-active-directory.md#grant-permissions-to-windows-virtual-desktop) a jóváhagyás megadásához.
 
 ### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Hiba: The user isn't authorized to query the management service (A felhasználónak nincs jogosultsága a kezelési szolgáltatás lekérdezéséhez)
 
@@ -140,9 +140,9 @@ Ha a műveleti sablon túllépi a kvóta korlátját, akkor a következő művel
 
 A Azure Resource Manager-sablonok és a PowerShell DSC nem sikeres központi telepítésének hibakereséséhez kövesse az alábbi utasításokat.
 
-1. Tekintse át az üzemelő példány hibáit a Azure Resource Manager használatával történő [központi telepítési műveletek megtekintésével](../../azure-resource-manager/resource-manager-deployment-operations.md).
-2. Ha nem találhatók hibák az üzemelő példányban, tekintse át a tevékenység naplójának hibáit a tevékenységek [megtekintése az erőforrásokon végzett naplózási műveleteknél](../../azure-resource-manager/resource-group-audit.md).
-3. A hiba észlelése után használja a hibaüzenetet és az erőforrásokat az [Azure telepítési hibáinak elhárításához Azure Resource Manager](../../azure-resource-manager/resource-manager-common-deployment-errors.md) a probléma megoldásához.
+1. Tekintse át az üzemelő példány hibáit a Azure Resource Manager használatával történő [központi telepítési műveletek megtekintésével](../../azure-resource-manager/templates/deployment-history.md).
+2. Ha nem találhatók hibák az üzemelő példányban, tekintse át a tevékenység naplójának hibáit a tevékenységek [megtekintése az erőforrásokon végzett naplózási műveleteknél](../../azure-resource-manager/management/view-activity-logs.md).
+3. A hiba észlelése után használja a hibaüzenetet és az erőforrásokat az [Azure telepítési hibáinak elhárításához Azure Resource Manager](../../azure-resource-manager/templates/common-deployment-errors.md) a probléma megoldásához.
 4. Törölje az előző központi telepítés során létrehozott erőforrásokat, majd próbálkozzon újra a sablon üzembe helyezésével.
 
 ### <a name="error-your-deployment-failedhostnamejoindomain"></a>Hiba: a telepítés nem sikerült.... \<hostname> /JoinDomain

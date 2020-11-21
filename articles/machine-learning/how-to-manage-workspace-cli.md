@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 7de78a52482b2f07cb4e5e036509e0f9e402a3f4
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: aa85822b433e2d8128df9ae3664411ea3fcddec4
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576274"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95012932"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Munkaterület létrehozása Azure Machine Learninghoz az Azure CLI-vel
 
@@ -29,6 +29,10 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre Azure Machine Learning munka
 * Ha a jelen dokumentumban a CLI-parancsokat a **helyi környezetből** szeretné használni, szüksége lesz az [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)-re.
 
     Ha a [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/)használja, a CLI a böngészőn keresztül érhető el, és a felhőben él.
+
+## <a name="limitations"></a>Korlátozások
+
+* Új munkaterület létrehozásakor engedélyezheti a munkaterületnek, hogy automatikusan létrehozza a szükséges Azure-szolgáltatásokat, vagy megadjon meglévő szolgáltatásokat. A meglévő szolgáltatások megadásakor ezeknek a szolgáltatásoknak mind ugyanabban az Azure-előfizetésben kell lenniük, mint a munkaterületnek.
 
 ## <a name="connect-the-cli-to-your-azure-subscription"></a>A CLI összekötése az Azure-előfizetéssel
 
@@ -71,7 +75,7 @@ A Azure Machine Learning munkaterület a következő Azure-szolgáltatásokra va
 | Szolgáltatás | Paraméter egy meglévő példány megadásához |
 | ---- | ---- |
 | **Azure-erőforráscsoport** | `-g <resource-group-name>`
-| **Azure Storage-fiók** | `--storage-account <service-id>` |
+| **Azure Storage-tárfiók neve** | `--storage-account <service-id>` |
 | **Azure Application Insights** | `--application-insights <service-id>` |
 | **Azure Key Vault** | `--keyvault <service-id>` |
 | **Azure Container Registry** | `--container-registry <service-id>` |
@@ -107,7 +111,7 @@ További információ az erőforráscsoportok használatáról: [az Group](/cli/
 
 ### <a name="automatically-create-required-resources"></a>Szükséges erőforrások automatikus létrehozása
 
-Ha új munkaterületet szeretne létrehozni, amelyben a __szolgáltatások automatikusan létrejönnek__ , használja a következő parancsot:
+Ha új munkaterületet szeretne létrehozni, amelyben a __szolgáltatások automatikusan létrejönnek__, használja a következő parancsot:
 
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name>
@@ -189,7 +193,7 @@ Meglévő erőforrásokat használó munkaterület létrehozásához meg kell ad
 > [!IMPORTANT]
 > Nem kell megadnia az összes meglévő erőforrást. Megadhat egyet vagy többet is. Megadhat például egy meglévő Storage-fiókot, és a munkaterület létrehozza a többi erőforrást is.
 
-+ **Azure Storage-fiók** : `az storage account show --name <storage-account-name> --query "id"`
++ **Azure Storage-fiók**: `az storage account show --name <storage-account-name> --query "id"`
 
     A parancs válasza az alábbi szöveghez hasonló, és a Storage-fiók azonosítója:
 
@@ -198,7 +202,7 @@ Meglévő erőforrásokat használó munkaterület létrehozásához meg kell ad
     > [!IMPORTANT]
     > Ha meglévő Azure Storage-fiókot szeretne használni, akkor nem lehet prémium szintű fiók (Premium_LRS és Premium_GRS). Emellett nem lehet hierarchikus névtér (Azure Data Lake Storage Gen2). Sem a Premium Storage, sem a hierarchikus névtér nem támogatott a munkaterület _alapértelmezett_ Storage-fiókjával. A Premium Storage vagy a hierarchikus névtér _nem alapértelmezett Storage-_ fiókokkal használható.
 
-+ **Azure Application Insights** :
++ **Azure Application Insights**:
 
     1. Telepítse az Application Insight bővítményt:
 
@@ -216,13 +220,13 @@ Meglévő erőforrásokat használó munkaterület létrehozásához meg kell ad
 
         `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/microsoft.insights/components/<application-insight-name>"`
 
-+ **Azure Key Vault** : `az keyvault show --name <key-vault-name> --query "ID"`
++ **Azure Key Vault**: `az keyvault show --name <key-vault-name> --query "ID"`
 
     A parancs válasza az alábbi szöveghez hasonló, és a Key Vault azonosítója:
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<key-vault-name>"`
 
-+ **Azure Container Registry** : `az acr show --name <acr-name> -g <resource-group-name> --query "id"`
++ **Azure Container Registry**: `az acr show --name <acr-name> -g <resource-group-name> --query "id"`
 
     A parancs válasza az alábbi szöveghez hasonló, és a tároló-beállításjegyzék azonosítója:
 

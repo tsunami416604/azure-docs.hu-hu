@@ -11,17 +11,17 @@ ms.topic: quickstart
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-dotnet
-ms.openlocfilehash: ce75b5465d18f988d9dfd2b329c4157bab41ded9
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: f61ca23157bd34669f4e7fa9ed1ead429e1d1674
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534517"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014169"
 ---
 # <a name="quickstart-extract-text-using-the-computer-vision-20-rest-api-ocr-operation-and-c"></a>Gyors útmutató: szöveg kinyerése a Computer Vision 2,0 REST API OCR-művelet és C #
 
 > [!IMPORTANT]
-> Angol, holland, francia, német, olasz, portugál, spanyol vagy egyszerűsített kínai (előzetes verzió) szöveg kinyerése esetén azt javasoljuk, hogy használja az újabb [olvasási műveletet](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text). [C#](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text) gyors útmutató érhető el. 
+> Angol, holland, francia, német, olasz, portugál, spanyol vagy egyszerűsített kínai (előzetes verzió) szöveg kinyerése esetén azt javasoljuk, hogy használja az újabb [olvasási műveletet](../concept-recognizing-text.md). [C#](./csharp-hand-text.md) gyors útmutató érhető el. 
 
 Ebben a rövid útmutatóban Kinyeri a nyomtatott szöveget egy képből a Computer Vision REST API [OCR-művelet](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d) funkció használatával. Ezzel a művelettel észlelhetők a képeken lévő kinyomtatott szövegek, és kinyerhetik a felismert karaktereket egy gépi használatú adatfolyamba.
 
@@ -32,7 +32,7 @@ Ebben a rövid útmutatóban Kinyeri a nyomtatott szöveget egy képből a Compu
 * Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" hozzon létre egy Computer Vision erőforrást, "  target="_blank"> és hozzon létre egy Computer Vision-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése** elemre.
     * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Computer Vision szolgáltatáshoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
     * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
-* [Hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és a végpont URL-címéhez, illetve a nevet `COMPUTER_VISION_SUBSCRIPTION_KEY` `COMPUTER_VISION_ENDPOINT` .
+* [Hozzon létre környezeti változókat](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) a kulcs és a végpont URL-címéhez, illetve a nevet `COMPUTER_VISION_SUBSCRIPTION_KEY` `COMPUTER_VISION_ENDPOINT` .
 
 ## <a name="create-and-run-the-sample-application"></a>A mintaalkalmazás létrehozása és futtatása
 

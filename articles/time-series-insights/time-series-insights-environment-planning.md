@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 546c53334b7700ab73c22edb2d82b324bfad61a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e0f1ea42aa2ba888b89dd652d3397a3a2163a3e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91569439"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016207"
 ---
 # <a name="plan-your-azure-time-series-insights-gen1-environment"></a>A Azure Time Series Insights Gen1-környezet megtervezése
 
@@ -67,7 +67,7 @@ Az adatmegőrzés és a váltás a Azure Portal környezet konfigurációs lapj�
 
 1. A [Azure Portal](https://portal.azure.com)válassza ki Time Series Insights-környezetét.
 
-1. A **Time Series Insights környezet** ablaktáblán a **Beállítások**területen válassza a **tárolási konfiguráció**elemet.
+1. A **Time Series Insights környezet** ablaktáblán a **Beállítások** területen válassza a **tárolási konfiguráció** elemet.
 
 1. Az **adatmegőrzési idő (nap)** mezőben adjon meg egy 1 és 400 közötti értéket.
 
@@ -92,7 +92,7 @@ A szabályozás és a késés percenkénti kapacitásban játszik szerepet. Ha v
 
 Ha például egyetlen S1 SKU-val rendelkezik, az adatforgalom percenként 720 eseményt, az adatforgalom pedig kevesebb, mint egy órán keresztül, 1 440 esemény vagy annál kevesebb értékre van kiterjedően, a környezetében nincs észrevehető késés. Ha azonban több mint egy óráig meghaladja az 1 440 eseményt, akkor valószínű, hogy a környezetben megjelenített és lekérdezésre rendelkezésre álló adatmennyiség késést tapasztal.
 
-Előfordulhat, hogy nem tudja előre, hogy mennyi adattal kell leküldeni. Ebben az esetben az [azure IoT hub](../iot-hub/iot-hub-metrics.md) és az [Azure Event Hubs](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/) adattelemetria az Azure Portal-előfizetésében találhatja meg. A telemetria segítségével eldöntheti, hogyan építheti ki a környezetet. A megfelelő eseményforrás megjelenítéséhez használja a Azure Portal **metrika** ablaktábláját a telemetria megtekintéséhez. Ha megérti az eseményforrás mérőszámait, hatékonyabban megtervezheti és kiépítheti Azure Time Series Insights-környezetét.
+Előfordulhat, hogy nem tudja előre, hogy mennyi adattal kell leküldeni. Ebben az esetben az [azure IoT hub](../iot-hub/monitor-iot-hub.md) és az [Azure Event Hubs](/archive/blogs/cloud_solution_architect/using-the-azure-rest-apis-to-retrieve-event-hub-metrics) adattelemetria az Azure Portal-előfizetésében találhatja meg. A telemetria segítségével eldöntheti, hogyan építheti ki a környezetet. A megfelelő eseményforrás megjelenítéséhez használja a Azure Portal **metrika** ablaktábláját a telemetria megtekintéséhez. Ha megérti az eseményforrás mérőszámait, hatékonyabban megtervezheti és kiépítheti Azure Time Series Insights-környezetét.
 
 ### <a name="calculate-ingress-requirements"></a>Bejövő forgalomra vonatkozó követelmények kiszámítása
 
@@ -128,6 +128,6 @@ Ha szeretne többet megtudni arról, hogyan hozhatók létre, tölthetők fel é
 
 - Első lépésként hozzon létre [egy új Azure Time Series Insights környezetet a Azure Portal](time-series-insights-get-started.md).
 
-- Megtudhatja, hogyan [adhat hozzá egy Event Hubs eseményforrás](time-series-insights-how-to-add-an-event-source-eventhub.md) Azure Time Series Insightshoz.
+- Megtudhatja, hogyan [adhat hozzá egy Event Hubs eseményforrás](./how-to-ingest-data-event-hub.md) Azure Time Series Insightshoz.
 
-- További információ az [IoT hub eseményforrás konfigurálásáról](time-series-insights-how-to-add-an-event-source-iothub.md).
+- További információ az [IoT hub eseményforrás konfigurálásáról](./how-to-ingest-data-iot-hub.md).

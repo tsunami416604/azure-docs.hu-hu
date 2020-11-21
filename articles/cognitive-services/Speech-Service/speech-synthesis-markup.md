@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 9ed4e47cf946827e2e4b9aaeb14d9668e96aeaa5
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: e76612c6c1b83ddb7e88377824902fe6290e7aaf
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873777"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015239"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>A szintézis fejlesztése a Speech szintézis Markup Language (SSML) nyelvvel
 
@@ -48,7 +48,7 @@ Minden SSML-dokumentum SSML elemekkel (vagy címkékkel) jön létre. Ezek az el
 
 `speak` a gyökérelem, és minden SSML-dokumentum esetében **kötelező** . Az `speak` elem fontos információkat tartalmaz, például a verziót, a nyelvet és a Markup szókincs definícióját.
 
-**Szintaxis**
+**Syntax**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="string"></speak>
@@ -66,7 +66,7 @@ Minden SSML-dokumentum SSML elemekkel (vagy címkékkel) jön létre. Ezek az el
 
 Az `voice` elem megadása kötelező. A szövegről beszédre használt hang megadására szolgál.
 
-**Szintaxis**
+**Syntax**
 
 ```xml
 <voice name="string">
@@ -219,7 +219,7 @@ Az alábbi neurális hangok esetében jelenleg támogatott a szerepkör-lejátsz
 
 A fenti módosítások a mondat szintjén lesznek alkalmazva, a stílusok és a szerepkör pedig hangon is változhat. Ha a stílus vagy a szerepkör lejátszása nem támogatott, a szolgáltatás a beszédet az alapértelmezett semleges beszéd módon fogja visszaadni. A [hanglista API](rest-text-to-speech.md#get-a-list-of-voices) -n keresztül, illetve a kód nélküli [hangtartalom-létrehozási](https://aka.ms/audiocontentcreation) platformon megtekintheti, hogy milyen stílusok és szerepjátékok támogatottak minden hangon.
 
-**Szintaxis**
+**Syntax**
 
 ```xml
 <mstts:express-as style="string"></mstts:express-as>
@@ -243,7 +243,7 @@ A fenti módosítások a mondat szintjén lesznek alkalmazva, a stílusok és a 
 
 Ebből a táblázatból megállapíthatja, hogy az egyes neurális hangfelismerések milyen beszélő stílusokat támogatnak.
 
-| Hang                   | Stílus                     | Leírás                                                 |
+| Hang                   | Stílus                     | Description                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
 | `en-US-AriaNeural`      | `style="newscast-formal"` | Formális, magabiztos és mérvadó hangvételt ad a hírek kézbesítéséhez |
 |                         | `style="newscast-casual"` | Sokoldalú és hétköznapi hangvételt nyújt az általános hírekhez        |
@@ -369,7 +369,7 @@ Az `break` elem használatával szüneteltetheti a szavak közötti szüneteltet
 > [!NOTE]
 > Ezzel az elemmel felülbírálhatja egy szó vagy kifejezés szöveg-beszédre (TTS) vonatkozó alapértelmezett viselkedését, ha az adott szó vagy kifejezés szintetizált beszéde természetellenesen hangzik. Állítsa a értékre `strength` `none` , hogy megakadályozza a prosodic-töréspontot, amelyet a rendszer automatikusan beszúr a szöveg-beszéd szolgáltatásba.
 
-**Szintaxis**
+**Syntax**
 
 ```xml
 <break strength="string" />
@@ -383,7 +383,7 @@ Az `break` elem használatával szüneteltetheti a szavak közötti szüneteltet
 | `strength` | Meghatározza a Szüneteltetés relatív időtartamát az alábbi értékek egyikének használatával:<ul><li>Nincs</li><li>x – gyenge</li><li>gyenge</li><li>közepes (alapértelmezett)</li><li>erős</li><li>x – erős</li></ul> | Választható |
 | `time` | Megadja a szünet időtartamát másodpercben vagy ezredmásodpercben, ez az érték kisebb, mint 5000ms. Példák érvényes értékekre, `2s` és `500ms` | Választható |
 
-| Erősségét                      | Leírás |
+| Erősségét                      | Description |
 |-------------------------------|-------------|
 | Nincs, vagy ha nincs megadva érték | 0 MS        |
 | x – gyenge                        | 250 MS      |
@@ -409,7 +409,7 @@ Az `mstts:silence` elem használatával szüneteltetheti a szüneteltetéseket s
 >A és a közötti különbség a `mstts:silence` `break` `break` szöveg bármely helyére felvehető, de a csend csak a bemeneti szöveg elején vagy végén, vagy a két szomszédos mondat határán működik.  
 
 
-**Szintaxis**
+**Syntax**
 
 ```xml
 <mstts:silence  type="string"  value="string"/>
@@ -441,7 +441,7 @@ Az `p` elem tartalmazhat szöveget és a következő elemeket:,,,,,, `audio` `br
 
 Az `s` elem tartalmazhat szöveget és a következő elemeket:,,,,, `audio` `break` `phoneme` `prosody` `say-as` `mstts:express-as` és `sub` .
 
-**Szintaxis**
+**Syntax**
 
 ```XML
 <p></p>
@@ -474,7 +474,7 @@ A fonetikus ábécék olyan telefonokból állnak, amelyek betűkből, számokb�
 > [!NOTE]
 > A fonémák címke nem támogatott ebben az 5 hangban (et-EE-AnuNeural, GA-IE-OrlaNeural, lt-LT-OnaNeural, LV-LV-EveritaNeural és MT-MT-GarceNeural).
 
-**Szintaxis**
+**Syntax**
 
 ```XML
 <phoneme alphabet="string" ph="string"></phoneme>
@@ -524,7 +524,7 @@ Előfordulhat, hogy a szöveg-beszéd szolgáltatás nem tudja pontosan kiejteni
 > Az egyéni lexikon nem támogatott ebben az 5 hangban (et-EE-AnuNeural, GA-IE-OrlaNeural, lt-LT-OnaNeural, LV-LV-EveritaNeural és MT-MT-GarceNeural).
 
 
-**Szintaxis**
+**Syntax**
 
 ```XML
 <lexicon uri="string"/>
@@ -587,7 +587,7 @@ Azt is megteheti, hogy közvetlenül `alias` a betűszóhoz vagy rövidített ki
 
 További információ az egyéni lexikon-fájlról: a [kiejtési lexikon specifikációjának (pls) 1,0-es verziója](https://www.w3.org/TR/pronunciation-lexicon/).
 
-Ezután tegye közzé az egyéni lexikon-fájlt. Habár nem rendelkezünk korlátozásokkal a fájl tárolásához, az [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)használatát javasoljuk.
+Ezután tegye közzé az egyéni lexikon-fájlt. Habár nem rendelkezünk korlátozásokkal a fájl tárolásához, az [Azure Blob Storage](../../storage/blobs/storage-quickstart-blobs-portal.md)használatát javasoljuk.
 
 Miután közzétette az egyéni lexikont, hivatkozhat rá a SSML.
 
@@ -647,7 +647,7 @@ Ezzel a beállítással `prosody` adható meg a szöveg és a beszéd kimenetén
 
 Mivel a prosodic-attribútumok értékei a széles skálán változhatnak, a beszédfelismerő felismeri a hozzárendelt értékeket arra a javaslatra, hogy a kiválasztott hang tényleges prosodic értékei legyenek. A szöveg-beszéd szolgáltatás korlátozza vagy helyettesíti a nem támogatott értékeket. Példa a nem támogatott értékekre: 1 MHz vagy 120-es kötet.
 
-**Szintaxis**
+**Syntax**
 
 ```XML
 <prosody pitch="value" contour="value" range="value" rate="value" duration="value" volume="value"></prosody>
@@ -730,7 +730,7 @@ A szurok módosítása a Word vagy a mondat szintjén is alkalmazható a standar
 
 `say-as` egy opcionális elem, amely megadja az elem szövegének típusát (például szám vagy dátum). Ez útmutatást nyújt a beszédfelismerési motornak a szöveg kiejtéséről.
 
-**Szintaxis**
+**Syntax**
 
 ```XML
 <say-as interpret-as="string" format="digit string" detail="string"> <say-as>
@@ -792,7 +792,7 @@ A SSML-dokumentumban szereplő összes hangnak meg kell felelnie a következő k
 * Az egyetlen válaszban lévő összes szöveges és hangfájl együttes teljes ideje nem lehet nagyobb, mint 90 (90) másodperc.
 * Az MP3 nem tartalmazhat ügyfél-specifikus vagy más bizalmas információt.
 
-**Szintaxis**
+**Syntax**
 
 ```xml
 <audio src="string"/></audio>
@@ -828,7 +828,7 @@ Ha a megadott háttérbeli hang rövidebb, mint a szöveg-beszéd vagy a Halván
 
 SSML-dokumentumok esetében csak egy háttér-hangfájl engedélyezett. `audio`Az elemen belüli címkéket azonban intersperse is `voice` felvehet, ha további hanganyagot szeretne hozzáadni a SSML-dokumentumhoz.
 
-**Szintaxis**
+**Syntax**
 
 ```XML
 <mstts:backgroundaudio src="string" volume="string" fadein="string" fadeout="string"/>

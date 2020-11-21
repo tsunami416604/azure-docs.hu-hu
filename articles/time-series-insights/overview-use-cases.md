@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: b5b6233c0978f15aad94b7f66f8935c2d6f6f1c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8f13a20232fab61dc082c1b12b7ddaa11807554
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91666959"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016190"
 ---
 # <a name="azure-time-series-insights-gen2-use-cases"></a>Azure Time Series Insights Gen2 használati esetei
 
@@ -52,13 +52,13 @@ Az ügyfelek gyorsan kihasználhatják az eszközökhöz kapcsolódó problémá
 
 A Azure Time Series Insights Gen2 tárolt adatkezelés három fő módon használható:
 
-* Első és legegyszerűbb módja a Azure Time Series Insights Gen2 Explorer. A segítségével gyorsan megjelenítheti az összes IoT-adatait egy helyen. Olyan eszközöket biztosít, mint például a hő-Térkép, amely segít az adatrendellenességek kiépítésében. Emellett perspektivikus nézetet is biztosít. Ezzel a beállítással akár négy nézetet is összehasonlíthat egy vagy több Azure Time Series Insights Gen2-környezetből egyetlen irányítópulton. Az irányítópulton megtekintheti az idősoros adatait az összes helyen. További információ a [Azure Time Series Insights Gen2 Explorer böngészőről](./time-series-insights-update-explorer.md). A környezet megtervezéséhez olvassa el [Azure Time Series Insights Gen2 tervezését](./time-series-insights-update-plan.md).
+* Első és legegyszerűbb módja a Azure Time Series Insights Gen2 Explorer. A segítségével gyorsan megjelenítheti az összes IoT-adatait egy helyen. Olyan eszközöket biztosít, mint például a hő-Térkép, amely segít az adatrendellenességek kiépítésében. Emellett perspektivikus nézetet is biztosít. Ezzel a beállítással akár négy nézetet is összehasonlíthat egy vagy több Azure Time Series Insights Gen2-környezetből egyetlen irányítópulton. Az irányítópulton megtekintheti az idősoros adatait az összes helyen. További információ a [Azure Time Series Insights Gen2 Explorer böngészőről](./concepts-ux-panels.md). A környezet megtervezéséhez olvassa el [Azure Time Series Insights Gen2 tervezését](./how-to-plan-your-environment.md).
 
 * A második módszer a JavaScript SDK használata a hatékony diagramok és diagramok gyors beágyazásához a webalkalmazásban. A kód mindössze néhány sornyi kódot használhat a hatékony lekérdezések létrehozásához. A táblázatok, a tortadiagramok, a sávdiagramok, a Heat Maps és az adatrácsok feltöltésére használhatók. Ezen elemek mindegyike az SDK használatával létezik. Az SDK absztrakt Azure Time Series Insights Gen2 lekérdezési API-kat is. Az SQL-hez hasonló predikátumok létrehozásához használhatja őket az irányítópulton megjeleníteni kívánt adatlekérdezéshez. A hibrid megjelenítési rétegbeli megoldások esetében Azure Time Series Insights Gen2 paraméteres URL-címeket kínál. Zökkenőmentes csatlakozási pontokat biztosítanak a Azure Time Series Insights Gen2 Explorer segítségével, amelyek részletesen megtekinthetik az adatvesztést.
 
   * A JavaScript SDK-val kapcsolatos további információért olvassa el a [js ügyféloldali kódtár](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) és a [minta ügyfél](https://github.com/Microsoft/tsiclient) dokumentációját.
 
-  * További információ az URL-címek és az új felhasználói felület megosztásáról: [az Azure Time Series Insights Gen2 Explorer adatainak megjelenítése](time-series-insights-update-explorer.md).
+  * További információ az URL-címek és az új felhasználói felület megosztásáról: [az Azure Time Series Insights Gen2 Explorer adatainak megjelenítése](./concepts-ux-panels.md).
 
 * A harmadik módszer a hatékony API-k használata Azure Time Series Insights Gen2 tárolt adatlekérdezéshez. Azure Time Series Insights Gen2 olyan ideiglenes operátorokkal rendelkezik, mint a `from` ,, `to` `first` és `last` . Olyan összesítésekkel és átalakításokkal rendelkezik, mint a,,,, `average` `sum` `min` `max` `time-weighted average` `time-weighted sum` stb. Emellett lehetővé teszi a szűrést, a aritmetikai és a logikai operátorok, a skaláris függvények stb. Ezek az operátorok lehetővé teszik, hogy az alárendelt alkalmazások gyorsan megtalálják az adataikban érdekes trendeket és mintákat. Felhasználhatja a betöltött vizualizációk kitöltését a rendellenességek észlelésére.
 
@@ -100,6 +100,6 @@ Azure Time Series Insights Gen2 két egyszerű és költséghatékony módszert 
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További információ a [Azure Time Series Insights Gen2 Explorer böngészőről](./time-series-insights-update-explorer.md).
-* A környezet megtervezéséhez olvassa el [Azure Time Series Insights Gen2 ajánlott eljárásokat](./time-series-insights-update-plan.md) .
+* További információ a [Azure Time Series Insights Gen2 Explorer böngészőről](./concepts-ux-panels.md).
+* A környezet megtervezéséhez olvassa el [Azure Time Series Insights Gen2 ajánlott eljárásokat](./how-to-plan-your-environment.md) .
 * Olvassa el a [minta ügyfél](https://github.com/Microsoft/tsiclient) dokumentációját.

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-js
-ms.openlocfilehash: 573937638ac0ba1c9db6f1410b9a09f4d79e0056
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: f4ea9091543ee9905e7112a87b83bb431a5f27c7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542796"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014002"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-javascript-in-computer-vision"></a>Rövid útmutató: Távoli kép elemzése a REST API és a JavaScript használatával a Computer Visionben
 
@@ -211,4 +211,4 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A mintaweblap elemz
 Ismerjen meg egy JavaScript-alkalmazást, amely a Computer Vision segítségével végez optikai karakterfelismerést (OCR), és amellyel intelligens körbevágású miniatűröket hozhat létre, valamint képek vizuális jellemzőit, például arcokat észlelhet, kategorizálhat, címkézhet és írhat le. A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b/console).
 
 > [!div class="nextstepaction"]
-> [Computer Vision API – JavaScript-oktatóanyag](../Tutorials/javascript-tutorial.md)
+> [Computer Vision API – JavaScript-oktatóanyag](https://github.com/Azure-Samples/cognitive-services-javascript-computer-vision-tutorial)

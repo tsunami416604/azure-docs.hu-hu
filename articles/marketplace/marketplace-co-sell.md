@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
-ms.date: 11/17/2020
-ms.openlocfilehash: 730178d974ba95db968332ac669f701486b513bd
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.date: 11/20/2020
+ms.openlocfilehash: 9d6970331024ea0cd08e890cc62507d9eb230678
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94738526"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016333"
 ---
 # <a name="co-sell-partner-engagement"></a>Együttes értékesítési partnerek bevonása
 
@@ -85,6 +85,13 @@ Az alábbi lépéseket követve közvetlenül a partner Centerben kezdheti meg a
         :::image type="content" source="media/co-sell/co-sell-request-review.png" alt-text="Ez a rendszerkép a CED legördülő listáját jeleníti meg a közös értékesítések felülvizsgálatának kéréséhez.":::
 
     A folyamat elvégzéséhez a CED fogja elérni.
+
+## <a name="see-your-offers-co-sell-status"></a>Az ajánlat közös értékesítéssel kapcsolatos állapotának megtekintése
+
+A [partner Centerben a közös értékesítés lehetőséggel](./partner-center-portal/commercial-marketplace-co-sell.md)rendelkező ajánlatok esetében az ajánlat áttekintés lapján láthatja az ajánlat aktuális közös értékesítésének állapotát:
+
+ :::image type="content" source="media/co-sell/co-sell-status.png" alt-text="Ez a rendszerkép az ajánlatok aktuális közös értékesítési állapotát jeleníti meg.":::
+
 
 ## <a name="next-steps"></a>Következő lépések
 

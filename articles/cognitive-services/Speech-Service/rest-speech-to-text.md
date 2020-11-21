@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2bb66d8a197a33d6d0ad46502b510662f43ea1ca
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 89e5fa180b011cbedebc25a5e5d555a2190805f8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94988561"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015358"
 ---
 # <a name="speech-to-text-rest-api"></a>Diktálás REST API
 
@@ -30,7 +30,7 @@ A beszéd – szöveg REST API használata előtt vegye figyelembe a következő
 Ha a hosszú hang küldése az alkalmazásra vonatkozó követelmény, érdemes lehet használni a [SPEECH SDK](speech-sdk.md) -t vagy egy file-alapú REST API, például a [Batch átírását](batch-transcription.md).
 
 > [!TIP]
-> Lásd: az Azure Government [dokumentációja](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure) a Government Cloud (FairFax) végpontokhoz.
+> Lásd: az Azure Government [dokumentációja](../../azure-government/compare-azure-government-global-azure.md) a Government Cloud (FairFax) végpontokhoz.
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
@@ -307,5 +307,5 @@ Egy tipikus válasz az elismeréshez a kiejtés értékelésével:
 ## <a name="next-steps"></a>Következő lépések
 
 - [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/cognitive-services/)
-- [Akusztikai modellek testreszabása](how-to-customize-acoustic-models.md)
-- [Nyelvi modellek testreszabása](how-to-customize-language-model.md)
+- [Akusztikai modellek testreszabása](./how-to-custom-speech-train-model.md)
+- [Nyelvi modellek testreszabása](./how-to-custom-speech-train-model.md)

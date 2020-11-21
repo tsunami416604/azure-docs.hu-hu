@@ -11,28 +11,28 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-java
-ms.openlocfilehash: ad14eec6bcebcb144d73581ebc15479a489ad333
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: cb0c3545dc5082587c93534f8f938441af2a4abb
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542847"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014029"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-java"></a>Gyors útmutató: nyomtatott szöveg (OCR) kinyerése a Computer Vision REST API és a Java használatával
 
 > [!NOTE]
-> Angol nyelvű szöveg kinyerése esetén érdemes lehet az új [olvasási műveletet](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)használni. A [Java](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/java-hand-text) rövid útmutató érhető el. 
+> Angol nyelvű szöveg kinyerése esetén érdemes lehet az új [olvasási műveletet](../concept-recognizing-text.md)használni. A [Java](./java-hand-text.md) rövid útmutató érhető el. 
 
 Ebben a rövid útmutatóban az optikai karakterfelismerés (OCR) segítségével Kinyeri a nyomtatott szöveget az Computer Vision REST API használatával. Az [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d) módszer használatával felderítheti a képeken található nyomtatott szöveget, és kinyerheti a felismert karaktereket egy gépi használatú adatfolyamba.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
-* [Java &trade; Platform, Standard Edition Development Kit 7 vagy 8](https://aka.ms/azure-jdks) (JDK 7 vagy 8)
+* [Java &trade; Platform, Standard Edition Development Kit 7 vagy 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) (JDK 7 vagy 8)
 * Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" hozzon létre egy Computer Vision erőforrást, "  target="_blank"> és hozzon létre egy Computer Vision-erőforrást <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése** elemre.
     * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Computer Vision szolgáltatáshoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
     * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
-* [Hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és a végpont URL-címéhez, illetve a nevet `COMPUTER_VISION_SUBSCRIPTION_KEY` `COMPUTER_VISION_ENDPOINT` .
+* [Hozzon létre környezeti változókat](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) a kulcs és a végpont URL-címéhez, illetve a nevet `COMPUTER_VISION_SUBSCRIPTION_KEY` `COMPUTER_VISION_ENDPOINT` .
 
 ## <a name="create-and-run-the-sample-application"></a>A mintaalkalmazás létrehozása és futtatása
 
@@ -215,6 +215,6 @@ REST Response:
 Ismerkedjen meg egy olyan Java Swing-alkalmazással, amely a Computer Visiont használja az optikai karakterfelismerés (OCR) végrehajtásához; intelligens vágású miniatűrök létrehozása; a képek vizuális funkcióinak felismerése, kategorizálása, címkézése és leírása.
 
 > [!div class="nextstepaction"]
-> [Computer Vision API – Java-oktatóanyag](../Tutorials/java-tutorial.md)
+> [Computer Vision API – Java-oktatóanyag](https://github.com/Azure-Samples/cognitive-services-java-computer-vision-tutorial)
 
 * A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b/console).

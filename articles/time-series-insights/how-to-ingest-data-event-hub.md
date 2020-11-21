@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: c7f811991cdc325a3901a696216af21883f02fdb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d672da30a4d81ead9115fc6b829c35aeab3ee6a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91596239"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016819"
 ---
 # <a name="add-an-event-hub-event-source-to-your-azure-time-series-insights-environment"></a>Event hub-eseményforrás hozzáadása a Azure Time Series Insights-környezethez
 
@@ -27,7 +27,7 @@ Ez a cikk azt ismerteti, hogyan használható a Azure Portal egy olyan eseményf
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Hozzon létre egy Azure Time Series Insights környezetet a [Azure Time Series Insights-környezet létrehozása](./time-series-insights-update-create-environment.md)című témakörben leírtak szerint.
+- Hozzon létre egy Azure Time Series Insights környezetet a [Azure Time Series Insights-környezet létrehozása](./tutorials-set-up-tsi-environment.md)című témakörben leírtak szerint.
 - Eseményközpont létrehozása. [A Azure Portal használatával olvassa el a Event Hubs névtér és az Event hub létrehozása című cikk utasításait](../event-hubs/event-hubs-create.md).
 - Az Event hub-nak aktív üzenetküldési eseményekkel kell rendelkeznie. Ismerje meg, hogyan [küldhet eseményeket az Azure Event Hubs a .NET-keretrendszer használatával](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md).
 - Hozzon létre egy dedikált fogyasztói csoportot az Event hub-ban, amelyet a Azure Time Series Insights-környezet képes használni. Minden Azure Time Series Insights eseményforrás saját dedikált fogyasztói csoportjának kell lennie, amely nincs más fogyasztóval megosztva. Ha több olvasó is felhasználja az azonos fogyasztói csoportból származó eseményeket, az összes olvasó valószínűleg hibákat fog kimutatni. Az Event hub-ban legfeljebb 20 fogyasztói csoport lehet. Részletekért olvassa el a [Event Hubs programozási útmutatót](../event-hubs/event-hubs-programming-guide.md).
@@ -42,13 +42,13 @@ Az alkalmazások fogyasztói csoportokat használnak az adatok Azure-Event Hubsb
 
     [![Az Event hub-névtér megnyitása](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-connect-event-hub-namespace.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-connect-event-hub-namespace.png#lightbox)
 
-1. Az Event hub-példányban válassza az **entitások > fogyasztói csoportok**lehetőséget. Ezután válassza a **+ fogyasztói csoport** lehetőséget egy új fogyasztói csoport hozzáadásához.
+1. Az Event hub-példányban válassza az **entitások > fogyasztói csoportok** lehetőséget. Ezután válassza a **+ fogyasztói csoport** lehetőséget egy új fogyasztói csoport hozzáadásához.
 
    [![Event hub – fogyasztói csoport hozzáadása](media/time-series-insights-how-to-add-an-event-source-eventhub/add-event-hub-consumer-group.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/add-event-hub-consumer-group.png#lightbox)
 
    Ellenkező esetben válasszon ki egy meglévő fogyasztói csoportot, és ugorjon a következő szakaszra.
 
-1. A **fogyasztói csoportok** lapon adjon meg egy új egyedi értéket a **név**mezőben.  Akkor használja ezt a nevet, amikor új eseményforrás hoz létre a Azure Time Series Insights környezetben.
+1. A **fogyasztói csoportok** lapon adjon meg egy új egyedi értéket a **név** mezőben.  Akkor használja ezt a nevet, amikor új eseményforrás hoz létre a Azure Time Series Insights környezetben.
 
 1. Kattintson a **Létrehozás** gombra.
 
@@ -56,19 +56,19 @@ Az alkalmazások fogyasztói csoportokat használnak az adatok Azure-Event Hubsb
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. Keresse meg a meglévő Azure Time Series Insights-környezetét. A bal oldali menüben válassza a **minden erőforrás**lehetőséget, majd válassza ki a Azure Time Series Insights-környezetet.
+1. Keresse meg a meglévő Azure Time Series Insights-környezetét. A bal oldali menüben válassza a **minden erőforrás** lehetőséget, majd válassza ki a Azure Time Series Insights-környezetet.
 
-1. Válassza az **eseményforrás**lehetőséget, majd kattintson a **Hozzáadás**gombra.
+1. Válassza az **eseményforrás** lehetőséget, majd kattintson a **Hozzáadás** gombra.
 
    [![Az eseményforrás területen válassza a Hozzáadás gombot](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-add-an-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-add-an-event-source.png#lightbox)
 
 1. Adjon meg egy értéket az **eseményforrás neve** számára, amely egyedi a Azure Time Series Insights környezetben, például: `Contoso-TSI-Gen 1-Event-Hub-ES` .
 
-1. A **forrás**mezőben válassza az **Event hub**elemet.
+1. A **forrás** mezőben válassza az **Event hub** elemet.
 
 1. Válassza ki a megfelelő értékeket az **importálási beállításhoz**:
 
-   - Ha az egyik előfizetésében van egy meglévő Event hub, válassza az **Event hub használata az elérhető előfizetések közül**lehetőséget. Ez a lehetőség a legegyszerűbb megközelítés.
+   - Ha az egyik előfizetésében van egy meglévő Event hub, válassza az **Event hub használata az elérhető előfizetések közül** lehetőséget. Ez a lehetőség a legegyszerűbb megközelítés.
 
      [![Válasszon egy eseményforrás-importálási lehetőséget](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-event-hub-select-import-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-event-hub-select-import-option.png#lightbox)
 
@@ -84,7 +84,7 @@ Az alkalmazások fogyasztói csoportokat használnak az adatok Azure-Event Hubsb
        | Event hub-házirend értéke | Válassza ki a kívánt megosztott hozzáférési szabályzatot. A megosztott elérési szabályzatot az Event hub configure (esemény központ **konfigurálása** ) lapon lehet létrehozni. Minden megosztott hozzáférési házirend rendelkezik egy névvel, a beállított engedélyekkel és a hozzáférési kulcsokkal. Az eseményforrás megosztott hozzáférési házirendjének **olvasási** engedélyekkel *kell* rendelkezniük. |
        | Event hub-házirend kulcsa | Előre kitöltve a kiválasztott Event hub-házirend értékéről. |
 
-   - Ha az Event hub kívül esik az előfizetéseken, vagy ha a speciális beállításokat szeretné kiválasztani, válassza az **Event hub-beállítások manuális megadása**lehetőséget.
+   - Ha az Event hub kívül esik az előfizetéseken, vagy ha a speciális beállításokat szeretné kiválasztani, válassza az **Event hub-beállítások manuális megadása** lehetőséget.
 
        Az alábbi táblázat ismerteti az **Event hub-beállítások manuális** megadása beállítás szükséges tulajdonságait:
 
@@ -113,7 +113,7 @@ Az alkalmazások fogyasztói csoportokat használnak az adatok Azure-Event Hubsb
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Adathozzáférési szabályzatok definiálása](time-series-insights-data-access.md) az adatvédelme érdekében.
+- [Adathozzáférési szabályzatok definiálása](./concepts-access-policies.md) az adatvédelme érdekében.
 
 - [Események küldése](time-series-insights-send-events.md) az esemény forrásának.
 

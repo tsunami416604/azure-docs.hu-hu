@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 8480299c2c889a243150028ac9651f4b62656aec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d399507499a320116ff1c732a1ffc0ad84b5731
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74110342"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015442"
 ---
 # <a name="voice-assistants-frequently-asked-questions"></a>Hangvezérelt asszisztensek – gyakori kérdések
 
-Ha a jelen dokumentumban nem talál választ a kérdéseire, tekintse meg az [egyéb támogatási lehetőségeket](support.md).
+Ha a jelen dokumentumban nem talál választ a kérdéseire, tekintse meg az [egyéb támogatási lehetőségeket](../cognitive-services-support-options.md?context=%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext%253fcontext%253d%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext).
 
 ## <a name="general"></a>Általános kérdések
 
@@ -35,9 +35,9 @@ Ha a jelen dokumentumban nem talál választ a kérdéseire, tekintse meg az [eg
 
 **A:** A legjobb módszer az egyéni parancsok (előzetes verzió) alkalmazás vagy az alapszintű bot Framework bot létrehozásához.
 
-- [Egyéni parancsok (előzetes verzió) alkalmazás létrehozása](quickstart-custom-speech-commands-create-new.md)
-- [Alapszintű robot-keretrendszer robot létrehozása](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
-- [Robot összekötése a közvetlen vonalas beszéd csatornával](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [Egyéni parancsok (előzetes verzió) alkalmazás létrehozása](./quickstart-custom-commands-application.md)
+- [Alapszintű robot-keretrendszer robot létrehozása](/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+- [Robot összekötése a közvetlen vonalas beszéd csatornával](/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
 ## <a name="debugging"></a>Hibakeresés
 
@@ -62,13 +62,13 @@ Részletesebb útmutatásért tekintse meg az [oktatóanyag című szakaszt](tut
 **A:** Ez a hiba kommunikációs problémát jelez a segéd és a hangsegéd szolgáltatás között.
 
 - Egyéni parancsok (előzetes verzió) esetén győződjön meg arról, hogy az egyéni parancsok (előzetes verzió) alkalmazás közzé van téve
-- A közvetlen vonalas beszédhez győződjön meg arról, hogy [csatlakoztatta a robotot a közvetlen vonalas hangcsatornához](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech), [hozzáadta a folyamatos átviteli protokoll támogatását](https://aka.ms/botframework/addstreamingprotocolsupport) a robothoz (a kapcsolódó webes szoftvercsatorna-támogatással), majd ellenőrizze, hogy a robot válaszol-e a csatorna bejövő kéréseire.
+- A közvetlen vonalas beszédhez győződjön meg arról, hogy [csatlakoztatta a robotot a közvetlen vonalas hangcsatornához](/azure/bot-service/bot-service-channel-connect-directlinespeech), [hozzáadta a folyamatos átviteli protokoll támogatását](/azure/bot-service/directline-speech-bot) a robothoz (a kapcsolódó webes szoftvercsatorna-támogatással), majd ellenőrizze, hogy a robot válaszol-e a csatorna bejövő kéréseire.
 
 **K: Ez a kód továbbra sem működik, és/vagy más hibaüzenetet kapok a használatakor `DialogServiceConnector` . Mit tegyek?**
 
 **A:** A fájl alapú naplózás lényegesen több részletet biztosít, és a támogatási kérelmek felgyorsítását is segíti. A funkció engedélyezéséhez tekintse meg a [fájlok naplózásának használata](how-to-use-logging.md)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hibaelhárítás](troubleshooting.md)
 - [Kibocsátási megjegyzések](releasenotes.md)

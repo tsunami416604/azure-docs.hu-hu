@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: fb409673e028375812551ec146b43c27e3755d2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3f6f6a5ac1068f2eabca351e85376b8e16d1058
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91595524"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016751"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Az idősor-azonosító kiválasztásának ajánlott eljárásai
 
@@ -32,11 +32,11 @@ A megfelelő idősorozat-azonosító kiválasztása kritikus. Az idősorozat-azo
 > * Nem *módosítható tulajdonság:* a létrehozás után nem módosítható.
 
 > [!TIP]
-> Ha az eseményforrás egy IoT hub, az idősorozat-azonosító valószínűleg ***iothub-kapcsolat-eszköz-azonosító***lesz.
+> Ha az eseményforrás egy IoT hub, az idősorozat-azonosító valószínűleg ***iothub-kapcsolat-Device-ID** _ lesz.
 
 Az alábbi legfontosabb ajánlott eljárások a következők:
 
-* Válasszon egy olyan partíciót, amely sok különböző értékkel rendelkezik (például több száz vagy ezer). Sok esetben ez lehet az eszköz azonosítója, az érzékelő azonosítója vagy a címke azonosítója a JSON-ban.
+_ Válasszon egy olyan partíciót, amely sok különböző értékkel rendelkezik (például több száz vagy ezer). Sok esetben ez lehet az eszköz azonosítója, az érzékelő azonosítója vagy a címke azonosítója a JSON-ban.
 * Az idősorozat-AZONOSÍTÓnak egyedinek kell lennie az [Idősorozat-modell](./concepts-model-overview.md)levél csomópontjának szintjén.
 * Az idősorozat-azonosító tulajdonságának Name karakterláncának karakteres korlátja 128. Az idősorozat-azonosító tulajdonságának értékeként a karakteres korlát 1 024.
 * Ha hiányzik az idősorozat-azonosító egyedi tulajdonságának értéke, akkor a rendszer null értékként kezeli, és az egyediségi megkötésre vonatkozó szabályt követi.
@@ -53,15 +53,15 @@ Az alábbi forgatókönyvek több Key tulajdonság kiválasztását írják le i
 ### <a name="example-1-time-series-id-with-a-unique-key"></a>1. példa: idősorozat-azonosító egyedi kulccsal
 
 * Régi típusú flottája van. Mindegyik egyedi kulccsal rendelkezik.
-* Az egyik flottát a **deviceId**tulajdonság egyedileg azonosítja. Egy másik flotta esetében az egyedi tulajdonság a **objectId**. Egyik flotta sem tartalmazza a másik flotta egyedi tulajdonságát. Ebben a példában két kulcsot, **deviceId** és **objectId**választ ki egyedi kulcsként.
+* Az egyik flottát a **deviceId** tulajdonság egyedileg azonosítja. Egy másik flotta esetében az egyedi tulajdonság a **objectId**. Egyik flotta sem tartalmazza a másik flotta egyedi tulajdonságát. Ebben a példában két kulcsot, **deviceId** és **objectId** választ ki egyedi kulcsként.
 * A rendszer null értékeket fogad el, és a tulajdonság jelenlétének hiánya az esemény-adattartalomban null értéknek számít. Ez azt is lehetővé teszi, hogy az adatküldés két eseményforrás számára legyen kezelhető, ahol az egyes eseményforrás-forrásokban lévő adatok egyedi idősorozat-AZONOSÍTÓval rendelkeznek.
 
 ### <a name="example-2-time-series-id-with-a-composite-key"></a>2. példa: idősorozat-azonosító összetett kulccsal
 
 * Több tulajdonságot is meg kell adni az azonos adatflottaon belül.
-* Az intelligens épületek gyártója és az érzékelők üzembe helyezése minden helyiségben. Minden helyiségben általában ugyanazok az értékek szerepelnek a **sensorId**. Ilyenek például a következők: **sensor1**, **sensor2**és **sensor3**.
-* Az épület átfedésben van az alapszintű és a szobai számokkal a **flrRm**tulajdonságban található helyek között. Ezek a számok olyan értékekkel rendelkeznek, mint az **1a**, **2b**és **3A**.
-* Van egy tulajdonsága, **helye**, amely olyan értékeket tartalmaz, mint a **Redmond**, a **Barcelona**és a **Tokió**. Az egyediség létrehozásához a következő három tulajdonságot kell kijelölnie idősorozat-azonosító kulcsaiként: **sensorId**, **flrRm**és **Location**.
+* Az intelligens épületek gyártója és az érzékelők üzembe helyezése minden helyiségben. Minden helyiségben általában ugyanazok az értékek szerepelnek a **sensorId**. Ilyenek például a következők: **sensor1**, **sensor2** és **sensor3**.
+* Az épület átfedésben van az alapszintű és a szobai számokkal a **flrRm** tulajdonságban található helyek között. Ezek a számok olyan értékekkel rendelkeznek, mint az **1a**, **2b** és **3A**.
+* Van egy tulajdonsága, **helye**, amely olyan értékeket tartalmaz, mint a **Redmond**, a **Barcelona** és a **Tokió**. Az egyediség létrehozásához a következő három tulajdonságot kell kijelölnie idősorozat-azonosító kulcsaiként: **sensorId**, **flrRm** és **Location**.
 
 Példa nyers eseményre:
 
@@ -86,4 +86,4 @@ A Azure Portal az alábbi módon adhatja meg az összetett kulcsot:
 
 * Olvassa el a [JSON-összeolvasztási és-Escape-szabályokat](./concepts-json-flattening-escaping-rules.md) , hogy megtudja, hogyan lesznek tárolva az események.
 
-* Tervezze meg [Azure Time Series Insights Gen2-környezetét](./time-series-insights-update-plan.md).
+* Tervezze meg [Azure Time Series Insights Gen2-környezetét](./how-to-plan-your-environment.md).

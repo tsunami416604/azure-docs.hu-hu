@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 08/20/2020
 ms.author: trbye
-ms.openlocfilehash: 7d31649e18f8cc687a9716c8ecafe556fa250de6
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 14b9429de5432680e5203e392827efa32e2a2a38
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377887"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015396"
 ---
 # <a name="what-is-the-speech-service"></a>Mi az a beszédszolgáltatás?
 
-A beszédfelismerési szolgáltatás a beszéd-szöveg, a szöveg és a beszéd egyesítése, valamint a beszédfelismerés egyetlen Azure-előfizetésbe való fordítása. A Speech [parancssori](spx-overview.md)felülettel, a Speech [SDK](speech-sdk-reference.md)-val, a Speech [Device SDK](https://aka.ms/sdsdk-quickstart)-val, a [Speech Studióval](https://speech.microsoft.com/)és a [REST API](rest-apis.md)-kkal egyszerűen elvégezheti az alkalmazások, eszközök és eszközök használatát.
+A beszédfelismerési szolgáltatás a beszéd-szöveg, a szöveg és a beszéd egyesítése, valamint a beszédfelismerés egyetlen Azure-előfizetésbe való fordítása. A Speech [parancssori](spx-overview.md)felülettel, a Speech [SDK](./speech-sdk.md)-val, a Speech [Device SDK](./speech-devices-sdk-quickstart.md?pivots=platform-android)-val, a [Speech Studióval](https://speech.microsoft.com/)és a [REST API](#reference-docs)-kkal egyszerűen elvégezheti az alkalmazások, eszközök és eszközök használatát.
 
 > [!IMPORTANT]
 > A Speech szolgáltatás leváltotta Bing Speech API és Translator Speech. Az áttelepítési utasításokért tekintse meg az _áttelepítési_ szakaszt.
@@ -28,16 +28,16 @@ A következő funkciók a Speech Service részét képezik. A táblázatban tal�
 
 | Szolgáltatás | Funkció | Leírás | SDK | REST |
 |---------|---------|-------------|-----|------|
-| [Beszéd – szöveg](speech-to-text.md) | Valós idejű beszéd – szöveg | A beszéd-szöveg szöveggé alakítja át vagy lefordítja a hangadatfolyamokat vagy helyi fájlokat valós időben, hogy az alkalmazások, eszközök vagy eszközök képesek legyenek a felhasználásra vagy a megjelenítésre. A beszéd-szöveg és a [Language Understanding (Luis)](https://docs.microsoft.com/azure/cognitive-services/luis/) használatával származtatott beszédből származó felhasználói leképezéseket származtathat, és hangparancsokat alkalmazhat. | [Igen](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Igen](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| | [Batch – beszéd – szöveg](batch-transcription.md) | A Batch-beszédfelismerés lehetővé teszi, hogy az Azure Blob Storageban tárolt nagy mennyiségű hangalapú beszéd-szöveg átírása aszinkron módon történjen. A beszédfelismerési hang szövegre való konvertálása mellett a Batch beszéd-szöveg is lehetővé teszi a diarization és a hangulat-elemzést. | Nem | [Igen](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) |
+| [Beszéd – szöveg](speech-to-text.md) | Valós idejű beszéd – szöveg | A beszéd-szöveg szöveggé alakítja át vagy lefordítja a hangadatfolyamokat vagy helyi fájlokat valós időben, hogy az alkalmazások, eszközök vagy eszközök képesek legyenek a felhasználásra vagy a megjelenítésre. A beszéd-szöveg és a [Language Understanding (Luis)](../luis/index.yml) használatával származtatott beszédből származó felhasználói leképezéseket származtathat, és hangparancsokat alkalmazhat. | [Igen](./speech-sdk.md) | [Igen](#reference-docs) |
+| | [Batch – beszéd – szöveg](batch-transcription.md) | A Batch-beszédfelismerés lehetővé teszi, hogy az Azure Blob Storageban tárolt nagy mennyiségű hangalapú beszéd-szöveg átírása aszinkron módon történjen. A beszédfelismerési hang szövegre való konvertálása mellett a Batch beszéd-szöveg is lehetővé teszi a diarization és a hangulat-elemzést. | No | [Igen](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) |
 | | [Több eszközre kiterjedő beszélgetés](multi-device-conversation.md) | Több eszköz vagy ügyfél csatlakoztatása egy beszélgetésben beszéd-vagy szöveges üzenetek küldéséhez egyszerű támogatással a transzkripció és a fordítás számára| Igen | Nem |
-| | [Beszélgetés átirata](conversation-transcription-service.md) | Lehetővé teszi a valós idejű beszédfelismerést, a hangszórók azonosítását és a diarization. A személyes értekezletek átírása tökéletes választás a hangszórók megkülönböztetésére. | Igen | Nem |
-| | [Custom Speech modellek létrehozása](#customize-your-speech-experience) | Ha egy egyedi környezetben beszéd-szövegeket használ az elismeréshez és az átíráshoz, létrehozhat és betaníthat egyéni akusztikai, nyelvi és kiejtési modelleket a környezeti zajok vagy az iparági specifikus szókincsek kezeléséhez. | Nem | [Igen](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) |
-| [Szöveg – beszéd](text-to-speech.md) | Szövegfelolvasás | A szöveg és a beszéd szöveggé alakítja át a bemeneti szöveget az emberi környezetbe, például a [Speech szintézis Markup Language (SSML)](speech-synthesis-markup.md)használatával. A standard hangok és a neurális hangok közül választhat (lásd a [nyelvi támogatást](language-support.md)). | [Igen](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Igen](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| | [Egyéni hangok létrehozása](#customize-your-speech-experience) | Egyedi hangbetűkészletek létrehozása a márka vagy a termék számára. | Nem | [Igen](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Beszédfordítás](speech-translation.md) | Beszédfordítás | A beszédfelismerés valós idejű, többnyelvű fordítást tesz lehetővé alkalmazásaihoz, eszközeihez és eszközeihez. Használja ezt a szolgáltatást beszéd – beszéd és beszéd – szöveg fordításához. | [Igen](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | Nem |
-| [Hangvezérelt asszisztensek](voice-assistants.md) | Hangvezérelt asszisztensek | A beszédfelismerési szolgáltatást használó hangsegédek lehetővé teszik a fejlesztők számára, hogy természetes, emberi jellegű társalgási felületet hozzanak létre alkalmazásaikban és tapasztalataikban. A hangsegéd szolgáltatás gyors, megbízható interakciót biztosít egy eszköz és egy asszisztens implementáció között, amely a bot Framework közvetlen vonalas vagy integrált egyéni parancsait (előzetes verzió) használja a feladatok befejezéséhez. | [Igen](voice-assistants.md) | Nem |
-| [Speaker Recognition](speaker-recognition-overview.md) | A hangszórók ellenőrzése & azonosítása | A Speaker Recognition szolgáltatás olyan algoritmusokat biztosít, amelyek egyedi hangtulajdonságokkal rendelkeznek a hangszórók ellenőrzéséhez és azonosításához. Speaker Recognition a "ki beszél?" kérdésre válaszol. | Igen | [Igen](https://docs.microsoft.com/rest/api/speakerrecognition/) |
+| | [Beszélgetés átirata](./conversation-transcription.md) | Lehetővé teszi a valós idejű beszédfelismerést, a hangszórók azonosítását és a diarization. A személyes értekezletek átírása tökéletes választás a hangszórók megkülönböztetésére. | Igen | Nem |
+| | [Custom Speech modellek létrehozása](#customize-your-speech-experience) | Ha egy egyedi környezetben beszéd-szövegeket használ az elismeréshez és az átíráshoz, létrehozhat és betaníthat egyéni akusztikai, nyelvi és kiejtési modelleket a környezeti zajok vagy az iparági specifikus szókincsek kezeléséhez. | No | [Igen](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) |
+| [Szöveg – beszéd](text-to-speech.md) | Szövegfelolvasás | A szöveg és a beszéd szöveggé alakítja át a bemeneti szöveget az emberi környezetbe, például a [Speech szintézis Markup Language (SSML)](speech-synthesis-markup.md)használatával. A standard hangok és a neurális hangok közül választhat (lásd a [nyelvi támogatást](language-support.md)). | [Igen](./speech-sdk.md) | [Igen](#reference-docs) |
+| | [Egyéni hangok létrehozása](#customize-your-speech-experience) | Egyedi hangbetűkészletek létrehozása a márka vagy a termék számára. | No | [Igen](#reference-docs) |
+| [Speech Translation](speech-translation.md) | Beszédfordítás | A beszédfelismerés valós idejű, többnyelvű fordítást tesz lehetővé alkalmazásaihoz, eszközeihez és eszközeihez. Használja ezt a szolgáltatást beszéd – beszéd és beszéd – szöveg fordításához. | [Igen](./speech-sdk.md) | No |
+| [Hangvezérelt asszisztensek](voice-assistants.md) | Hangvezérelt asszisztensek | A beszédfelismerési szolgáltatást használó hangsegédek lehetővé teszik a fejlesztők számára, hogy természetes, emberi jellegű társalgási felületet hozzanak létre alkalmazásaikban és tapasztalataikban. A hangsegéd szolgáltatás gyors, megbízható interakciót biztosít egy eszköz és egy asszisztens implementáció között, amely a bot Framework közvetlen vonalas vagy integrált egyéni parancsait (előzetes verzió) használja a feladatok befejezéséhez. | [Igen](voice-assistants.md) | No |
+| [Speaker Recognition](speaker-recognition-overview.md) | A hangszórók ellenőrzése & azonosítása | A Speaker Recognition szolgáltatás olyan algoritmusokat biztosít, amelyek egyedi hangtulajdonságokkal rendelkeznek a hangszórók ellenőrzéséhez és azonosításához. Speaker Recognition a "ki beszél?" kérdésre válaszol. | Yes | [Igen](/rest/api/speakerrecognition/) |
 
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
@@ -63,7 +63,7 @@ A Speech Service-erőforrások (ingyenes vagy fizetős szintek) hozzáadása az 
 
 1. Az **új** ablakban írja be a "Speech" kifejezést a keresőmezőbe, majd nyomja le az ENTER billentyűt.
 
-1. A keresési eredmények között válassza a **Speech (beszéd** ) lehetőséget.
+1. A keresési eredmények között válassza a **Speech (beszéd**) lehetőséget.
 
    ![beszédfelismerési találatok](media/index/speech-search.png)
 
@@ -104,15 +104,15 @@ A legnépszerűbb programozási nyelveken olyan gyors útmutatókat találunk, a
 
 * [Diktálás – gyorsútmutató](get-started-speech-to-text.md)
 * [Szövegfelolvasás – gyorsútmutató](get-started-text-to-speech.md)
-* [Beszédfordítási gyorsútmutató](speech-translation-basics.md)
+* [Beszédfordítási gyorsútmutató](./get-started-speech-translation.md)
 * [Szándékfelismerés gyorsútmutatója](quickstarts/intent-recognition.md)
-* [A hangszórók felismerésének rövid útmutatója](speaker-recognition-basics.md)
+* [A hangszórók felismerésének rövid útmutatója](./get-started-speaker-recognition.md)
 
 A beszédfelismerési szolgáltatás használatának megkezdése után próbálja ki az oktatóanyagokat, amelyek bemutatják, Hogyan oldhatók meg a különböző forgatókönyvek.
 
 - [Oktatóanyag: beszédfelismerési szándékok felismerése a Speech SDK és a LUIS, C használatával #](how-to-recognize-intents-from-speech-csharp.md)
 - [Oktatóanyag: hang engedélyezése a robotnak a Speech SDK-val, C #](tutorial-voice-enable-your-bot-speech-sdk.md)
-- [Oktatóanyag: a szöveg fordítását, a hangulat elemzését és a fordítás szövegét beszédre, REST-re alakító lombik-alkalmazás létrehozása](https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json&toc=%2Fen-us%2Fazure%2Fcognitive-services%2Fspeech-service%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
+- [Oktatóanyag: a szöveg fordítását, a hangulat elemzését és a fordítás szövegét beszédre, REST-re alakító lombik-alkalmazás létrehozása](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%252fazure%252fcognitive-services%252fspeech-service%252fbreadcrumb%252ftoc.json%252c%252fen-us%252fazure%252fbread%252ftoc.json&toc=%252fazure%252fcognitive-services%252fspeech-service%252ftoc.json%252c%252fen-us%252fazure%252fcognitive-services%252fspeech-service%252ftoc.json)
 
 ## <a name="get-sample-code"></a>Mintakód letöltése
 
@@ -136,7 +136,7 @@ Más termékek olyan beszédfelismerési modelleket ajánlanak, mint például a
 
 ## <a name="reference-docs"></a>Dokumentációs dokumentumok
 
-- [Beszéd SDK](speech-sdk-reference.md)
+- [Beszéd SDK](./speech-sdk.md)
 - [Beszédeszközök SDK](speech-devices-sdk.md)
 - [REST API: beszéd – szöveg](rest-speech-to-text.md)
 - [REST API: szövegről beszédre](rest-text-to-speech.md)
@@ -145,5 +145,5 @@ Más termékek olyan beszédfelismerési modelleket ajánlanak, mint például a
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Ismerkedés a beszédfelismerési szöveggel](speech-to-text-basics.md) 
+> [Ismerkedés a beszédfelismerési szöveggel](./get-started-speech-to-text.md) 
 >  [Ismerkedés a szöveg és a beszéd](get-started-text-to-speech.md) között

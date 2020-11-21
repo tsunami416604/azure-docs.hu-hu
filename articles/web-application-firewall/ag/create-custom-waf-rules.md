@@ -6,20 +6,22 @@ services: web-application-firewall
 ms.topic: article
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/14/2019
+ms.date: 11/20/2020
 ms.author: victorh
-ms.openlocfilehash: bfa6690c636e15fa933f50698cd81359600b5c05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f164418c29e9838928f3d03519342ebef40e16e7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77368304"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015697"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules-on-application-gateway"></a>Webalkalmazási tűzfal v2 egyéni szabályainak létrehozása és használata Application Gateway
 
 Az Azure Application Gateway webalkalmazási tűzfal (WAF) v2 szolgáltatása védelmet biztosít a webalkalmazások számára. Ezt a védelmet az Open Web Application Security Project (OWASP) alapszintű szabálykészlet (CRS) adja meg. Bizonyos esetekben előfordulhat, hogy saját egyéni szabályokat kell létrehoznia az adott igények kielégítése érdekében. További információ az egyéni WAF-szabályokról: [Egyéni webalkalmazási tűzfalszabályok – áttekintés](custom-waf-rules-overview.md).
 
 Ez a cikk néhány példát mutat be a v2-WAF létrehozásához és használatához használható egyéni szabályokról. Ha szeretné megtudni, hogyan helyezhet üzembe egy WAF egyéni szabállyal Azure PowerShell használatával, tekintse meg a [webalkalmazási tűzfal egyéni szabályainak konfigurálása a Azure PowerShell használatával](configure-waf-custom-rules.md)című témakört.
+
+A cikkben látható JSON-kódrészletek egy [ApplicationGatewayWebApplicationFirewallPolicies](/templates/microsoft.network/applicationgatewaywebapplicationfirewallpolicies) -erőforrásból származnak.
 
 >[!NOTE]
 > Ha az Application Gateway nem a WAF szintet használja, akkor a jobb oldali ablaktáblán megjelenik az Application Gateway WAF szintre való frissítésének lehetősége.
@@ -227,7 +229,7 @@ Itt látható a megfelelő JSON:
 
 Megfelelő CRS-szabály: `SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:7001,deny"`
 
-## <a name="example-4"></a>4. példa
+## <a name="example-4"></a>4\. példa
 
 Ebben a példában szeretné letiltani User-Agent *evilbot*, és a 192.168.5.0/24 tartományon belüli forgalmat. Ennek elvégzéséhez két különálló egyeztetési feltételt hozhat létre, és mindkettőt ugyanabban a szabályban helyezheti el. Ez gondoskodik arról, hogy ha a User-Agent fejlécben **és** az IP-címekben is szerepelnek a 192.168.5.0/24 tartomány *evilbot* , a rendszer letiltja a kérést.
 
@@ -299,9 +301,9 @@ Itt látható a megfelelő JSON:
   } 
 ```
 
-## <a name="example-5"></a>5. példa
+## <a name="example-5"></a>5\. példa
 
-Ebben a példában le szeretné tiltani, hogy a kérelem vagy a *192.168.5.0/24*IP-címtartomány kívül esik-e, vagy a felhasználói ügynök karakterlánca nem a *Chrome* (azaz a felhasználó nem használja a Chrome böngészőt). Mivel ez a logika **vagy**a-t használja, a két feltétel külön szabályokban szerepel, ahogy az alábbi példában is látható. a *SajátSzabály1* és a *SajátSzabály2* egyaránt meg kell egyezniük a forgalom blokkolásával.
+Ebben a példában le szeretné tiltani, hogy a kérelem vagy a *192.168.5.0/24* IP-címtartomány kívül esik-e, vagy a felhasználói ügynök karakterlánca nem a *Chrome* (azaz a felhasználó nem használja a Chrome böngészőt). Mivel ez a logika **vagy** a-t használja, a két feltétel külön szabályokban szerepel, ahogy az alábbi példában is látható. a *SajátSzabály1* és a *SajátSzabály2* egyaránt meg kell egyezniük a forgalom blokkolásával.
 
 Logika: **nem** (p **és** q) = **nem** p **vagy nem** q.
 
@@ -386,9 +388,9 @@ $rule2 = New-AzApplicationGatewayFirewallCustomRule `
   }
 ```
 
-## <a name="example-6"></a>6. példa
+## <a name="example-6"></a>6\. példa
 
-Le szeretné tiltani az egyéni SQLI. Mivel az itt használt logika **vagy**, és az összes érték a *RequestUri*található, az összes *MatchValues* vesszővel tagolt listában lehet.
+Le szeretné tiltani az egyéni SQLI. Mivel az itt használt logika **vagy**, és az összes érték a *RequestUri* található, az összes *MatchValues* vesszővel tagolt listában lehet.
 
 Logic: p **vagy** q **vagy** r
 
@@ -543,7 +545,7 @@ Megfelelő JSON:
   }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az egyéni szabályok létrehozása után megtudhatja, hogyan tekintheti meg a WAF-naplókat. További információ: [Application Gateway diagnosztika](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging).
 

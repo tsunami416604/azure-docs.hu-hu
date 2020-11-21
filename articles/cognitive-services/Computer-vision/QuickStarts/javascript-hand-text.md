@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/23/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-js
-ms.openlocfilehash: 79d9c0e4a1e820ca30e8434e87fd0e40622291d4
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: c9c4a96259f939e4732c182c690f47735bc0e3e8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542779"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95013986"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-javascript"></a>Gyors útmutató: nyomtatott és kézírásos szöveg kinyerése a Computer Vision REST API és a JavaScript használatával
 
@@ -389,6 +389,6 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A mintaweblap elemz
 Az optikai karakterfelismerés (OCR) elvégzéséhez Computer Visiont használó JavaScript-alkalmazás megismerése intelligens vágású miniatűrök létrehozása; a képek vizuális funkcióinak felismerése, kategorizálása, címkézése és leírása. 
 
 > [!div class="nextstepaction"]
-> [Computer Vision API – JavaScript-oktatóanyag](../Tutorials/javascript-tutorial.md)
+> [Computer Vision API – JavaScript-oktatóanyag](https://github.com/Azure-Samples/cognitive-services-javascript-computer-vision-tutorial)
 
 * A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b/console).

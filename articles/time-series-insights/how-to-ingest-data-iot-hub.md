@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 28a1990155e1406bf9b79572b3e5307cadfb8076
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09ee98bf8bbe0067f9c79ce4767f3cf68b83fb43
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91665922"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016802"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-azure-time-series-insight-environment"></a>IoT hub-eseményforrás hozzáadása az Azure Time Series Insight-környezethez
 
@@ -27,7 +27,7 @@ Ez a cikk azt ismerteti, hogyan használható a Azure Portal egy olyan eseményf
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Hozzon létre egy [Azure Time Series Insights környezetet](time-series-insights-update-create-environment.md).
+* Hozzon létre egy [Azure Time Series Insights környezetet](./tutorials-set-up-tsi-environment.md).
 * Hozzon létre egy [IoT hubot a Azure Portal használatával](../iot-hub/iot-hub-create-through-portal.md).
 * Az IoT hub-nak aktív üzenetküldési eseményekkel kell rendelkeznie.
 * Hozzon létre egy dedikált fogyasztói csoportot az IoT hub-ban az Azure Time Series Insight-környezet számára, hogy az a következőt használja:. Minden Azure-beli idősorozat-betekintési esemény forrásának saját dedikált fogyasztói csoportjának kell lennie, amely nincs más fogyasztóval megosztva. Ha több olvasó is felhasználja az azonos fogyasztói csoportból származó eseményeket, az összes olvasó valószínűleg hibákat fog kimutatni. Részletekért olvassa el az [Azure IoT hub fejlesztői útmutatóját](../iot-hub/iot-hub-devguide.md).
@@ -40,11 +40,11 @@ Az alkalmazások fogyasztói csoportokat használnak az adatok Azure-IoT Hubból
 
 1. A [Azure Portal](https://portal.azure.com)keresse meg és nyissa meg az IoT hubot.
 
-1. A **Beállítások**területen válassza a **beépített végpontok**lehetőséget, majd válassza ki az **események** végpontot.
+1. A **Beállítások** területen válassza a **beépített végpontok** lehetőséget, majd válassza ki az **események** végpontot.
 
    [![A beépített végpontok lapon kattintson az események gombra.](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-connect-iot-hub.png)](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-connect-iot-hub.png#lightbox)
 
-1. A **fogyasztói csoportok**területen adjon meg egy egyedi nevet a fogyasztói csoport számára. Az új eseményforrás létrehozásakor használja ugyanezt a nevet az Azure Time Series Insight-környezetében.
+1. A **fogyasztói csoportok** területen adjon meg egy egyedi nevet a fogyasztói csoport számára. Az új eseményforrás létrehozásakor használja ugyanezt a nevet az Azure Time Series Insight-környezetében.
 
 1. Kattintson a **Mentés** gombra.
 
@@ -54,17 +54,17 @@ Az alkalmazások fogyasztói csoportokat használnak az adatok Azure-IoT Hubból
 
 1. A bal oldali menüben válassza ki a **Minden erőforrás** elemet. Válassza ki az Azure Time Series Insight-környezetét.
 
-1. A **Beállítások**területen válassza az **eseményforrás**lehetőséget, majd kattintson a **Hozzáadás**gombra.
+1. A **Beállítások** területen válassza az **eseményforrás** lehetőséget, majd kattintson a **Hozzáadás** gombra.
 
    [![Válassza az eseményforrás lehetőséget, majd kattintson a Hozzáadás gombra.](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-add-event-source.png)](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-add-event-source.png#lightbox)
 
-1. Az **új eseményforrás** ablaktáblán az **eseményforrás neve**mezőben adjon meg egy olyan nevet, amely egyedi az Azure Time Series Insight-környezetében. Adja meg például az **Event-stream**értéket.
+1. Az **új eseményforrás** ablaktáblán az **eseményforrás neve** mezőben adjon meg egy olyan nevet, amely egyedi az Azure Time Series Insight-környezetében. Adja meg például az **Event-stream** értéket.
 
-1. A **forrás**mezőben válassza a **IoT hub**lehetőséget.
+1. A **forrás** mezőben válassza a **IoT hub** lehetőséget.
 
-1. Válassza ki az **importálási beállítás**értékét:
+1. Válassza ki az **importálási beállítás** értékét:
 
-   * Ha az egyik előfizetésében már van egy IoT hub, válassza a **IoT hub használata az elérhető előfizetések közül**lehetőséget. Ez a lehetőség a legegyszerűbb megközelítés.
+   * Ha az egyik előfizetésében már van egy IoT hub, válassza a **IoT hub használata az elérhető előfizetések közül** lehetőséget. Ez a lehetőség a legegyszerűbb megközelítés.
 
      [![Válassza ki a beállításokat az új esemény forrása ablaktáblán](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-select-an-import-option.png)](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-select-an-import-option.png#lightbox)
 
@@ -79,9 +79,9 @@ Az alkalmazások fogyasztói csoportokat használnak az adatok Azure-IoT Hubból
        | IoT hub-házirend neve | Válassza ki a megosztott elérési házirendet. A megosztott hozzáférési szabályzatot az IoT hub beállításai lapon találja. Minden megosztott hozzáférési házirend rendelkezik egy névvel, a beállított engedélyekkel és a hozzáférési kulcsokkal. Az eseményforrás megosztott hozzáférési házirendjének rendelkeznie *kell* a **szolgáltatás csatlakozási** engedélyeivel. |
        | IoT hub-házirend kulcsa | A kulcs előre van feltöltve. |
 
-   * Ha az IoT hub kívül esik az előfizetéseken, vagy ha a speciális beállításokat szeretné választani, válassza a **IoT hub beállítások manuális**megadása lehetőséget.
+   * Ha az IoT hub kívül esik az előfizetéseken, vagy ha a speciális beállításokat szeretné választani, válassza a **IoT hub beállítások manuális** megadása lehetőséget.
 
-      A következő táblázat ismerteti a **IoT hub beállítások manuális**megadása kötelező tulajdonságait:
+      A következő táblázat ismerteti a **IoT hub beállítások manuális** megadása kötelező tulajdonságait:
 
        | Tulajdonság | Leírás |
        | --- | --- |
@@ -107,7 +107,7 @@ Az alkalmazások fogyasztói csoportokat használnak az adatok Azure-IoT Hubból
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Adathozzáférési szabályzatok definiálása](time-series-insights-data-access.md) az adatvédelme érdekében.
+* [Adathozzáférési szabályzatok definiálása](./concepts-access-policies.md) az adatvédelme érdekében.
 
 * [Események küldése](time-series-insights-send-events.md) az esemény forrásának.
 

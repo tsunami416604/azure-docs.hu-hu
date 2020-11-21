@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 10/23/2020
 ms.author: aahi
-ms.openlocfilehash: 14b4e7217b6e902023e5e82f8dbd404e43b36ef0
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 1616a0149ae56de8afe0e9ab485af4bf76326d86
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676154"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014611"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>Migrálás az olvasási v3. x OCR-tárolóba
 
@@ -35,7 +35,7 @@ Az olvasási v 3.1-es tároló a Computer Vision API 3. verzióját használja, 
 * `/vision/v3.1-preview.2/read/analyze`
 * `/vision/v3.1-preview.2/read/syncAnalyze`
 
-Az alkalmazások a felhőalapú olvasási API-k 3. verziójának használatára való frissítésével kapcsolatos részletes információkért tekintse meg az [Computer Vision v3 REST API áttelepítési útmutatót](https://docs.microsoft.com/azure/cognitive-services/computer-vision/upgrade-api-versions) . Ezek az adatok a tárolóra is érvényesek. Vegye figyelembe, hogy a szinkronizálási műveletek csak a tárolók esetében támogatottak.
+Az alkalmazások a felhőalapú olvasási API-k 3. verziójának használatára való frissítésével kapcsolatos részletes információkért tekintse meg az [Computer Vision v3 REST API áttelepítési útmutatót](./upgrade-api-versions.md) . Ezek az adatok a tárolóra is érvényesek. Vegye figyelembe, hogy a szinkronizálási műveletek csak a tárolók esetében támogatottak.
 
 ## <a name="memory-requirements"></a>Memóriakövetelmények
 
@@ -66,8 +66,8 @@ A tároló v3. x verziójában a RabbitMQ jelenleg nem támogatott. A támogatot
 | Implementálás | Futásidejű argumentum (ok) | Rendeltetésszerű használat |
 |---------|---------|-------|
 | A memóriában (alapértelmezett) | Nincs szükség futásidejű argumentumokra. | Fejlesztés és tesztelés |
-| Azure Queues | `Queue:Azure:ConnectionString={AzureStorageConnectionString}` | Production |
-| RabbitMQ    | Nem érhető el | Production |
+| Azure Queues | `Queue:Azure:ConnectionString={AzureStorageConnectionString}` | Éles környezet |
+| RabbitMQ    | Nem érhető el | Éles környezet |
 
 A hozzáadott redundancia érdekében az olvasási v3. x tároló egy láthatósági időzítőt használ annak biztosítására, hogy a kérések sikeresen feldolgozhatók összeomlás esetén, ha egy többtárolós beállítás fut. 
 

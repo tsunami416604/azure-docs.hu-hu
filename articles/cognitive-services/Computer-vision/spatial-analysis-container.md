@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: aahi
-ms.openlocfilehash: 6ebc1831b990b540bcb9a3856c380c28142af536
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 2f03746a6a5afc388db2beeff84b3ab4cbd393b5
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357113"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014594"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>A térbeli elemzési tároló telepítése és futtatása (előzetes verzió)
 
@@ -34,7 +34,7 @@ A térbeli elemzési tároló futtatásához egy [NVIDIA Tesla T4 GPU](https://w
 
 #### <a name="azure-stack-edge-device"></a>[Azure Stack Edge-eszköz](#tab/azure-stack-edge)
 
-Az Azure Stack Edge egy szolgáltatásként nyújtott hardveres megoldás, és egy hálózati adatátviteli képességekkel rendelkező AI-kompatibilis Edge számítástechnikai eszköz. A részletes előkészítési és beállítási utasításokért tekintse meg az [Azure stack Edge dokumentációját](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-prep).
+Az Azure Stack Edge egy szolgáltatásként nyújtott hardveres megoldás, és egy hálózati adatátviteli képességekkel rendelkező AI-kompatibilis Edge számítástechnikai eszköz. A részletes előkészítési és beállítási utasításokért tekintse meg az [Azure stack Edge dokumentációját](../../databox-online/azure-stack-edge-deploy-prep.md).
 
 #### <a name="desktop-machine"></a>[Asztali gép](#tab/desktop-machine)
 
@@ -59,7 +59,7 @@ Ebben a cikkben a következő szoftvercsomagok letöltésére és telepítésér
 * [NVIDIA grafikus illesztőprogramok](https://docs.nvidia.com/datacenter/tesla/tesla-installation-notes/index.html) és [NVIDIA CUDA Toolkit](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)
 * Az [NVIDIA MPS](https://docs.nvidia.com/deploy/pdf/CUDA_Multi_Process_Service_Overview.pdf) (többfolyamatos szolgáltatás) beállításai.
 * [Docker CE](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-engine---community-1) és [NVIDIA – Docker2](https://github.com/NVIDIA/nvidia-docker) 
-* [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) futtatókörnyezet.
+* [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) futtatókörnyezet.
 
 ---
 
@@ -93,7 +93,7 @@ Azt javasoljuk, hogy a gazdaszámítógéphez használjon Azure Stack Edge-eszk�
  
 A térbeli elemzés a Azure Stack Edge számítási funkcióit használja egy AI-megoldás futtatásához. A számítási funkciók engedélyezéséhez győződjön meg a következőket: 
 
-* [Csatlakoztatta és aktiválta](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-deploy-connect-setup-activate) Azure stack Edge-eszközét. 
+* [Csatlakoztatta és aktiválta](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md) Azure stack Edge-eszközét. 
 * Az eszköz eléréséhez a PowerShell 5,0-es vagy újabb verzióját futtató Windows rendszerű ügyfélrendszer van.  
 * Kubernetes-fürt üzembe helyezéséhez konfigurálnia kell az Azure Stack Edge-eszközt a [Azure Portal](https://portal.azure.com/) **helyi felhasználói felületén** : 
   1. Engedélyezze a számítási funkciót az Azure Stack Edge-eszközön. A számítás engedélyezéséhez nyissa meg az eszköz webes felületének **számítás** lapját. 
@@ -117,7 +117,7 @@ Amikor a peremhálózati eszközön beállította a peremhálózat számítási 
 
 > [!NOTE]
 > * A IoT Edge-eszközök jelenleg csak a Linux platformot támogatják. Az Azure Stack Edge-eszköz hibaelhárításával kapcsolatos segítségért lásd a [naplózási és hibaelhárítási](spatial-analysis-logging.md) cikket.
-> * Ha többet szeretne megtudni arról, hogyan konfigurálható IoT Edge eszköz egy proxykiszolgálón keresztüli kommunikációra, tekintse meg a [IoT Edge-eszköz konfigurálása proxykiszolgálón keresztüli kommunikációhoz](https://docs.microsoft.com/azure/iot-edge/how-to-configure-proxy-support#azure-portal) című témakört.
+> * Ha többet szeretne megtudni arról, hogyan konfigurálható IoT Edge eszköz egy proxykiszolgálón keresztüli kommunikációra, tekintse meg a [IoT Edge-eszköz konfigurálása proxykiszolgálón keresztüli kommunikációhoz](../../iot-edge/how-to-configure-proxy-support.md#azure-portal) című témakört.
 
 ###  <a name="enable-mps-on-azure-stack-edge"></a>MPS engedélyezése Azure Stack Edge-ben 
 
@@ -129,7 +129,7 @@ Amikor a peremhálózati eszközön beállította a peremhálózat számítási 
     winrm quickconfig
     ```
     
-    Ha a tűzfalra vonatkozó kivételek jelennek meg, ellenőrizze a hálózati kapcsolatok típusát, és tekintse meg a [rendszerfelügyeleti](https://docs.microsoft.com/windows/win32/winrm/installation-and-configuration-for-windows-remote-management) webszolgáltatások dokumentációját.
+    Ha a tűzfalra vonatkozó kivételek jelennek meg, ellenőrizze a hálózati kapcsolatok típusát, és tekintse meg a [rendszerfelügyeleti](/windows/win32/winrm/installation-and-configuration-for-windows-remote-management) webszolgáltatások dokumentációját.
 
 3. Rendeljen hozzá egy változót az eszköz IP-címéhez. 
     
@@ -246,7 +246,7 @@ sudo systemctl --now enable nvidia-mps.service
 
 ## <a name="configure-azure-iot-edge-on-the-host-computer"></a>Azure IoT Edge konfigurálása a gazdaszámítógépen
 
-A térbeli elemzési tároló a gazdagépen való üzembe helyezéséhez hozzon létre egy [Azure IoT hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal) szolgáltatás egy példányát a standard (S1) vagy az ingyenes (F0) árképzési szint használatával. Ha a gazdaszámítógép Azure Stack Edge, használja ugyanazt az előfizetést és erőforráscsoportot, amelyet az Azure Stack Edge-erőforrás használ.
+A térbeli elemzési tároló a gazdagépen való üzembe helyezéséhez hozzon létre egy [Azure IoT hub](../../iot-hub/iot-hub-create-through-portal.md) szolgáltatás egy példányát a standard (S1) vagy az ingyenes (F0) árképzési szint használatával. Ha a gazdaszámítógép Azure Stack Edge, használja ugyanazt az előfizetést és erőforráscsoportot, amelyet az Azure Stack Edge-erőforrás használ.
 
 Azure IoT Hub-példány létrehozása az Azure CLI használatával. Szükség esetén cserélje le a paramétereket. Azt is megteheti, hogy az Azure-IoT Hub is létrehozhatja a [Azure Portal](https://portal.azure.com/).
 
@@ -261,7 +261,7 @@ az iot hub create --name "test-iot-hub-123" --sku S1 --resource-group "test-reso
 az iot hub device-identity create --hub-name "test-iot-hub-123" --device-id "my-edge-device" --edge-enabled
 ```
 
-Ha a gazdaszámítógép nem Azure Stack peremhálózati eszköz, akkor telepítenie kell a [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux) 1.0.9 verzióját. A megfelelő verzió letöltéséhez kövesse az alábbi lépéseket:
+Ha a gazdaszámítógép nem Azure Stack peremhálózati eszköz, akkor telepítenie kell a [Azure IoT Edge](../../iot-edge/how-to-install-iot-edge.md) 1.0.9 verzióját. A megfelelő verzió letöltéséhez kövesse az alábbi lépéseket:
 
 Ubuntu Server 18,04:
 ```bash
@@ -292,7 +292,7 @@ A 1.0.9 kiadásának telepítése:
 sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 ```
 
-A következő lépésként regisztrálja a gazdagépet IoT Edge eszközként a IoT Hub-példányban egy [kapcsolatok karakterlánc](https://docs.microsoft.com/azure/iot-edge/how-to-register-device#register-in-the-azure-portal)használatával.
+A következő lépésként regisztrálja a gazdagépet IoT Edge eszközként a IoT Hub-példányban egy [kapcsolatok karakterlánc](../../iot-edge/how-to-manual-provision-symmetric-key.md?view=iotedge-2018-06)használatával.
 
 Az IoT Edge eszközt az Azure-IoT Hubhoz kell kötnie. A korábban létrehozott IoT Edge eszközről kell másolnia a kapcsolódási karakterláncot. Azt is megteheti, hogy az alábbi parancsot futtatja az Azure CLI-ben.
 
@@ -306,7 +306,7 @@ Nyissa meg a gazdagépet a  `/etc/iotedge/config.yaml` szerkesztéshez. Cserélj
 sudo systemctl restart iotedge
 ```
 
-Telepítse a térbeli elemzési tárolót IoT-modulként a gazdagépen a [Azure Portal](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-portal) vagy az [Azure CLI](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli)használatával. Ha a portált használja, állítsa a rendszerkép URI-JÁT a Azure Container Registry helyére. 
+Telepítse a térbeli elemzési tárolót IoT-modulként a gazdagépen a [Azure Portal](../../iot-edge/how-to-deploy-modules-portal.md) vagy az [Azure CLI](../../iot-edge/how-to-deploy-modules-cli.md)használatával. Ha a portált használja, állítsa a rendszerkép URI-JÁT a Azure Container Registry helyére. 
 
 Az alábbi lépések segítségével helyezheti üzembe a tárolót az Azure CLI használatával.
 
@@ -335,7 +335,7 @@ A következő táblázat a IoT Edge modul által használt különféle környez
 > [!IMPORTANT]
 > A `Eula` , a `Billing` és a `ApiKey` beállításokat meg kell adni a tároló futtatásához; egyéb esetben a tároló nem indul el.  További információ: [számlázás](#billing).
 
-Miután frissítette az [Azure stack Edge-eszközök](https://go.microsoft.com/fwlink/?linkid=2142179) vagy [egy asztali gép](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) üzembe helyezési jegyzékét a saját beállításaival és a műveletek kiválasztásával, az alábbi [Azure CLI](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli) -paranccsal telepítheti a tárolót a gazdagépen IoT Edge modulként.
+Miután frissítette az [Azure stack Edge-eszközök](https://go.microsoft.com/fwlink/?linkid=2142179) vagy [egy asztali gép](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) üzembe helyezési jegyzékét a saját beállításaival és a műveletek kiválasztásával, az alábbi [Azure CLI](../../iot-edge/how-to-deploy-modules-cli.md) -paranccsal telepítheti a tárolót a gazdagépen IoT Edge modulként.
 
 ```azurecli
 az login
@@ -354,7 +354,7 @@ Ez a parancs elindítja az üzemelő példányt. Az üzembe helyezés állapotá
 
 ## <a name="validate-that-the-deployment-is-successful"></a>A telepítés sikerességének ellenőrzése
 
-Több módon is ellenőrizheti, hogy a tároló fut-e. Keresse meg a *futásidejű állapotot* az Azure IoT hub-példányban található térbeli elemzési modul **IoT Edge moduljának beállításainál** a Azure Portal. Ellenőrizze, hogy a *futásidejű állapot* **kívánt értéke** és a **jelentett érték** *fut* -e.
+Több módon is ellenőrizheti, hogy a tároló fut-e. Keresse meg a *futásidejű állapotot* az Azure IoT hub-példányban található térbeli elemzési modul **IoT Edge moduljának beállításainál** a Azure Portal. Ellenőrizze, hogy a *futásidejű állapot* **kívánt értéke** és a **jelentett érték** *fut*-e.
 
 ![Példa a központi telepítés ellenőrzésére](./media/spatial-analysis/deployment-verification.png)
 
@@ -366,14 +366,14 @@ Miután a telepítés befejeződött, és a tároló fut, a **gazdaszámítógé
 
 ## <a name="redeploy-or-delete-the-deployment"></a>Az üzemelő példány újbóli üzembe helyezése vagy törlése
 
-Ha frissítenie kell az üzemelő példányt, meg kell győződnie arról, hogy a korábbi központi telepítések sikeresen telepítve vannak, vagy törölnie kell IoT Edge eszköz központi telepítését, amely nem fejeződött be. Ellenkező esetben ezek a központi telepítések továbbra is folytatódnak, így a rendszer rossz állapotban marad. Használhatja a Azure Portal vagy az [Azure CLI](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment)-t.
+Ha frissítenie kell az üzemelő példányt, meg kell győződnie arról, hogy a korábbi központi telepítések sikeresen telepítve vannak, vagy törölnie kell IoT Edge eszköz központi telepítését, amely nem fejeződött be. Ellenkező esetben ezek a központi telepítések továbbra is folytatódnak, így a rendszer rossz állapotban marad. Használhatja a Azure Portal vagy az [Azure CLI](/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment)-t.
 
 ## <a name="use-the-output-generated-by-the-container"></a>A tároló által generált kimenet használata
 
 Ha el szeretné kezdeni a tároló által generált kimenet felhasználását, tekintse meg a következő cikkeket:
 
-*   Használja az Azure Event hub SDK-t a kiválasztott programozási nyelvhez az Azure IoT Hub-végponthoz való kapcsolódáshoz és az események fogadásához. További információért lásd: [eszközről a felhőbe irányuló üzenetek olvasása a beépített végpontról](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin) . 
-*   Állítsa be az üzenet-útválasztást az Azure-IoT Hub az események más végpontoknak való elküldéséhez, vagy mentse az eseményeket az Azure-Blob Storageba stb.). További információ: [IoT hub üzenet-útválasztás](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c) . 
+*   Használja az Azure Event hub SDK-t a kiválasztott programozási nyelvhez az Azure IoT Hub-végponthoz való kapcsolódáshoz és az események fogadásához. További információért lásd: [eszközről a felhőbe irányuló üzenetek olvasása a beépített végpontról](../../iot-hub/iot-hub-devguide-messages-read-builtin.md) . 
+*   Állítsa be az üzenet-útválasztást az Azure-IoT Hub az események más végpontoknak való elküldéséhez, vagy mentse az eseményeket az Azure-Blob Storageba stb.). További információ: [IoT hub üzenet-útválasztás](../../iot-hub/iot-hub-devguide-messages-d2c.md) . 
 
 ## <a name="running-spatial-analysis-with-a-recorded-video-file"></a>Térbeli elemzés futtatása rögzített videofájl-fájllal
 
@@ -418,7 +418,7 @@ A térbeli elemzési tároló számlázási adatokat küld az Azure-nak az Azure
 Az Azure Cognitive Services-tárolók nem rendelkeznek licenccel a mérési/számlázási végponthoz való csatlakozás nélkül. Engedélyeznie kell a tárolókat, hogy mindig a számlázási végponttal kommunikáljanak a számlázási adatokkal. Cognitive Services tárolók nem küldenek ügyféladatokat, például az elemzett videót vagy képet a Microsoftnak.
 
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ebben a cikkben megtanulta a térbeli elemzési tároló letöltésére, telepítésére és futtatására vonatkozó fogalmakat és munkafolyamatokat. Összegezve:
 
@@ -427,7 +427,7 @@ Ebben a cikkben megtanulta a térbeli elemzési tároló letöltésére, telepí
 * A Container images szolgáltatás IoT-modulként fut Azure IoT Edgeban.
 * A tároló konfigurálása és üzembe helyezése a gazdagépen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Felhasználók üzembe helyezése webes alkalmazásokban](spatial-analysis-web-app.md)
 * [Térbeli elemzési műveletek konfigurálása](spatial-analysis-operations.md)

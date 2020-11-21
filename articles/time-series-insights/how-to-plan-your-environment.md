@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: cb12777a6a4fa1e75cd65bc597c87442d592aad5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8d96d7b5952c020493af278ee1ea8ad5ff46716
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91598106"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016785"
 ---
 # <a name="plan-your-azure-time-series-insights-gen2-environment"></a>A Azure Time Series Insights Gen2-környezet megtervezése
 
@@ -45,7 +45,7 @@ A kiépítési folyamat részeként meg kell adnia, hogy szeretné-e engedélyez
 A melegen tárolt lekérdezések ingyenesek, míg a hűtőházi tárolással kapcsolatos lekérdezések költségekkel járnak. Fontos megérteni a lekérdezési mintákat, és ennek megfelelően tervezze meg a meleg tároló konfigurációját. Azt javasoljuk, hogy az interaktív elemzések a legújabb, a meleg áruházban található és a minták elemzése, valamint a hosszú távú trendek esetében is naprakészek legyenek.
 
 > [!NOTE]
-> Ha többet szeretne megtudni a meleg adatainak lekérdezéséről, olvassa el az [API-referenciát](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute#uri-parameters).
+> Ha többet szeretne megtudni a meleg adatainak lekérdezéséről, olvassa el az [API-referenciát](/rest/api/time-series-insights/dataaccessgen2/query/execute#uri-parameters).
 
 A kezdéshez három további elemre van szükség:
 
@@ -64,7 +64,7 @@ A kezdéshez három további elemre van szükség:
 > [!IMPORTANT]
 > Az idősorozat-azonosítókat *később nem lehet módosítani*. Győződjön meg róla, hogy a végső kiválasztás és az első használat előtt ellenőrizzen egyet.
 
-Az erőforrások egyedi megkülönböztetéséhez legfeljebb három kulcsot választhat ki. További információ: [ajánlott eljárások az idősorozat-azonosító és a betöltési szabályok kiválasztásához](./time-series-insights-update-how-to-id.md) . [Ingestion rules](concepts-json-flattening-escaping-rules.md)
+Az erőforrások egyedi megkülönböztetéséhez legfeljebb három kulcsot választhat ki. További információ: [ajánlott eljárások az idősorozat-azonosító és a betöltési szabályok kiválasztásához](./how-to-select-tsid.md) . [Ingestion rules](concepts-json-flattening-escaping-rules.md)
 
 Az **időbélyeg** tulajdonság szintén fontos. Ezt a tulajdonságot az eseményforrás hozzáadásakor lehet kijelölni. Minden eseményforrás egy nem kötelező időbélyeg-tulajdonsággal rendelkezik, amely az események időbeli alakulásának nyomon követésére szolgál. Az időbélyegző értékei megkülönböztetik a kis-és nagybetűket, és az egyes eseményforrás egyedi leírását kell formázni.
 
@@ -74,7 +74,7 @@ Ha üresen hagyja, a rendszer az eseményt várólistán lévő az IoT Hub vagy 
 
 Mostantól konfigurálhatja Azure Time Series Insights környezete idősorozat-modelljét. Az új modell segítségével könnyedén megtalálhatja és elemezheti a IoT-adatbázisokat. Lehetővé teszi a Time Series-adatgyűjtési és-bővítési feladatok elvégzését, és segít a felhasználó által készített adatkészletek előkészítésében. A modell idősorozat-azonosítókat használ, amelyek olyan példányhoz képezhetők le, amely társítja az egyedi erőforrást változókkal, más néven típusokkal és hierarchiákkal. További információért olvassa el az [idősorozat-modell](./concepts-model-overview.md) áttekintését.
 
-A modell dinamikus, így bármikor létrehozható. A gyors kezdéshez hozza létre és töltse fel az adatoknak a Azure Time Series Insightsba való kitolása előtt. A modell létrehozásához olvassa el [az idősorozat-modell használatát](/azure/time-series-insights/concepts-model-overview)ismertetőt.
+A modell dinamikus, így bármikor létrehozható. A gyors kezdéshez hozza létre és töltse fel az adatoknak a Azure Time Series Insightsba való kitolása előtt. A modell létrehozásához olvassa el [az idősorozat-modell használatát](./concepts-model-overview.md)ismertetőt.
 
 Sok ügyfél esetében az idősorozat-modell egy már meglévő eszköz-modellel vagy ERP-rendszerrel van leképezve. Ha nem rendelkezik meglévő modellel, a rendszer előre elkészített felhasználói élményt [biztosít](https://github.com/Microsoft/tsiclient) a gyors üzembe helyezéshez. Ha szeretné elképzelni, hogyan segíthet a modell, tekintse meg a [minta bemutató környezetét](https://insights.timeseries.azure.com/preview/demo).
 

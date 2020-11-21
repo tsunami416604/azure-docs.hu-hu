@@ -11,17 +11,17 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-js
-ms.openlocfilehash: d3b16101cec242ad2cc470f90b37ab0f19848918
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 79d448def1a1970892f295741f1f16ceeaa6bb1d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542762"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014067"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-javascript"></a>Gyors útmutató: nyomtatott szöveg (OCR) kinyerése a Computer Vision REST API és a JavaScript használatával
 
 > [!NOTE]
-> Angol nyelvű szöveg kinyerése esetén érdemes lehet az új [olvasási műveletet](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)használni. [JavaScript](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/javascript-hand-text) -útmutató érhető el.
+> Angol nyelvű szöveg kinyerése esetén érdemes lehet az új [olvasási műveletet](../concept-recognizing-text.md)használni. [JavaScript](./javascript-hand-text.md) -útmutató érhető el.
 
 Ebben a rövid útmutatóban az optikai karakterfelismerés (OCR) segítségével Kinyeri a nyomtatott szöveget az Computer Vision REST API használatával. Az [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d) módszer használatával felderítheti a képeken található nyomtatott szöveget, és kinyerheti a felismert karaktereket egy gépi használatú adatfolyamba.
 
@@ -248,6 +248,6 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A mintaweblap elemz
 Ezután Ismerkedjen meg egy JavaScript-alkalmazással, amely a Computer Visiont használja az optikai karakterfelismerés (OCR) végrehajtásához; intelligens vágású miniatűrök létrehozása; a képek vizuális funkcióinak felismerése, kategorizálása, címkézése és leírása. 
 
 > [!div class="nextstepaction"]
-> [Computer Vision API – JavaScript-oktatóanyag](../Tutorials/javascript-tutorial.md)
+> [Computer Vision API – JavaScript-oktatóanyag](https://github.com/Azure-Samples/cognitive-services-javascript-computer-vision-tutorial)
 
 * A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b/console).

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0e4a6d9180d2a9949cebc40cf30edffac73ef9d0
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 6c899b4f0dd7a3b91521c6d78b531d1c804ac105
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94653538"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015307"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Speech Service-tárolók – gyakori kérdések (GYIK)
 
@@ -292,7 +292,7 @@ Segíthet az alábbi tesztelési mérőszámok kitöltésében, beleértve a tes
 
 | Végpont                                                | Funkcionális teszt                                                   | SDK | REST API |
 |---------------------------------------------------------|-------------------------------------------------------------------|-----|----------|
-| `/speech/synthesize/cognitiveservices/v1`               | Szintetizáló szöveg (szöveg – beszéd)                                  |     | Igen      |
+| `/speech/synthesize/cognitiveservices/v1`               | Szintetizáló szöveg (szöveg – beszéd)                                  |     | Yes      |
 | `/speech/recognition/dictation/cognitiveservices/v1`    | Cognitive Services on-Prem diktálás v1 WebSocket-végpont        | Igen | Nem       |
 | `/speech/recognition/interactive/cognitiveservices/v1`  | A Cognitive Services on-Prem Interactive v1 WebSocket-végpont  |     |          |
 | `/speech/recognition/conversation/cognitiveservices/v1` | A kognitív szolgáltatások on-Prem beszélgetés v1 WebSocket-végpont |     |          |
@@ -324,7 +324,7 @@ https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d
 <b>Milyen módot érdemes használni a különböző hangfájlokhoz?</b>
 </summary>
 
-**Válasz:** Íme egy rövid útmutató a [Python használatával](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-python). A docs webhelyhez csatolt más nyelveket is megtalálhatja.
+**Válasz:** Íme egy rövid útmutató a [Python használatával](./get-started-speech-to-text.md?pivots=programming-language-python). A docs webhelyhez csatolt más nyelveket is megtalálhatja.
 
 Csak hogy tisztázza az interaktív, a beszélgetést és a diktálást; Ez egy speciális módszer, amely meghatározza, hogy a szolgáltatás milyen módon fogja kezelni a beszédfelismerési kérést. Sajnos a helyszíni tárolók esetében meg kell adni a teljes URI-t (mivel ez tartalmazza a helyi gépet is), így a rendszer ezt az információt kiszivárgott az absztrakcióból. Az SDK-csapattal dolgozunk, hogy ezt a jövőben is használhatóvá tegye.
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: 59e064dc2b9d33bda966eb50544c8383b0394dd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15f20bab91a4feab056a9f8cd6b012792f036be2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566602"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016547"
 ---
 # <a name="translator-30-translate"></a>Translator 3,0: fordítás
 
@@ -37,7 +37,7 @@ A lekérdezési karakterláncon átadott kérési paraméterek a következők:
 
 <table width="100%">
   <th width="20%">Lekérdezési paraméter</th>
-  <th>Leírás</th>
+  <th>Description</th>
   <tr>
     <td>api-verzió</td>
     <td><em>Kötelező paraméter</em>.<br/>Az ügyfél által kért API-verzió. Az értéknek a számnak kell lennie <code>3.0</code> .</td>
@@ -52,10 +52,10 @@ A lekérdezési karakterláncon átadott kérési paraméterek a következők:
 
 <table width="100%">
   <th width="20%">Lekérdezési paraméter</th>
-  <th>Leírás</th>
+  <th>Description</th>
   <tr>
     <td>a</td>
-    <td>Nem <em>kötelező paraméter</em>.<br/>Megadja a bemeneti szöveg nyelvét. A hatókör használatával megkeresheti, hogy mely nyelvek érhetők el a <a href="./v3-0-languages.md">támogatott nyelvek</a> közül <code>translation</code> . Ha a <code>from</code> paraméter nincs megadva, a rendszer az automatikus nyelvfelismerés alapján határozza meg a forrás nyelvét. <br/><br/>A <code>from</code> <a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">dinamikus szótár</a> funkció használatakor az automatikus észlelés helyett a (z) paramétert kell használnia.</td>
+    <td>Nem <em>kötelező paraméter</em>.<br/>Megadja a bemeneti szöveg nyelvét. A hatókör használatával megkeresheti, hogy mely nyelvek érhetők el a <a href="./v3-0-languages.md">támogatott nyelvek</a> közül <code>translation</code> . Ha a <code>from</code> paraméter nincs megadva, a rendszer az automatikus nyelvfelismerés alapján határozza meg a forrás nyelvét. <br/><br/>A <code>from</code> <a href="/azure/cognitive-services/translator/dynamic-dictionary">dinamikus szótár</a> funkció használatakor az automatikus észlelés helyett a (z) paramétert kell használnia.</td>
   </tr>  
   <tr>
     <td>textType</td>
@@ -63,7 +63,7 @@ A lekérdezési karakterláncon átadott kérési paraméterek a következők:
   </tr>
   <tr>
     <td>category</td>
-    <td>Nem <em>kötelező paraméter</em>.<br/>A fordítás kategóriáját (tartományát) megadó karakterlánc. Ezzel a paraméterrel az <a href="../customization.md">Egyéni fordítóval</a>létrehozott testreszabott rendszerből származó fordítások olvashatók be. Adja hozzá a kategória AZONOSÍTÓját az egyéni fordítói <a href="https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">projekt részleteiből</a> ehhez a paraméterhez az üzembe helyezett testreszabott rendszer használatához. Az alapértelmezett érték: <code>general</code> .</td>
+    <td>Nem <em>kötelező paraméter</em>.<br/>A fordítás kategóriáját (tartományát) megadó karakterlánc. Ezzel a paraméterrel az <a href="../customization.md">Egyéni fordítóval</a>létrehozott testreszabott rendszerből származó fordítások olvashatók be. Adja hozzá a kategória AZONOSÍTÓját az egyéni fordítói <a href="/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">projekt részleteiből</a> ehhez a paraméterhez az üzembe helyezett testreszabott rendszer használatához. Az alapértelmezett érték: <code>general</code> .</td>
   </tr>
   <tr>
     <td>profanityAction</td>
@@ -104,10 +104,10 @@ A kérelem fejlécei a következők:
 
 <table width="100%">
   <th width="20%">Fejlécek</th>
-  <th>Leírás</th>
+  <th>Description</th>
   <tr>
     <td>Hitelesítési fejléc (ek)</td>
-    <td><em>Kötelező kérelem fejléce</em><br/>Tekintse <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">meg a hitelesítés elérhető beállításait</a>.</td>
+    <td><em>Kötelező kérelem fejléce</em><br/>Tekintse <a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">meg a hitelesítés elérhető beállításait</a>.</td>
   </tr>
   <tr>
     <td>Content-Type</td>
@@ -182,7 +182,7 @@ Példa a JSON-válaszokra a [példák](#examples) szakaszban.
 
 <table width="100%">
   <th width="20%">Fejlécek</th>
-  <th>Leírás</th>
+  <th>Description</th>
     <tr>
     <td>X – kérelemazonosító</td>
     <td>A szolgáltatás által a kérelem azonosítására generált érték. Hibaelhárítási célokra szolgál.</td>
@@ -199,7 +199,7 @@ A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők:
 
 <table width="100%">
   <th width="20%">Állapotkód</th>
-  <th>Leírás</th>
+  <th>Description</th>
   <tr>
     <td>200</td>
     <td>Sikeres művelet.</td>
@@ -234,7 +234,7 @@ A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők:
   </tr>
 </table> 
 
-Ha hiba történik, a kérés JSON-hibaüzenetet is ad vissza. A hibakód egy 6 számjegyből álló szám, amely a 3 számjegyből álló HTTP-állapotkódot kombinálja, majd egy 3 számjegyű számot, amely további kategorizálja a hibát. Gyakori hibakódok a [v3 Translator Reference oldalon](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)találhatók. 
+Ha hiba történik, a kérés JSON-hibaüzenetet is ad vissza. A hibakód egy 6 számjegyből álló szám, amely a 3 számjegyből álló HTTP-állapotkódot kombinálja, majd egy 3 számjegyű számot, amely további kategorizálja a hibát. Gyakori hibakódok a [v3 Translator Reference oldalon](./v3-0-reference.md#errors)találhatók. 
 
 ## <a name="examples"></a>Példák
 
@@ -364,7 +364,7 @@ Ha el szeretné kerülni a káromkodást a fordításban, függetlenül attól, 
 
 <table width="100%">
   <th width="20%">ProfanityAction</th>
-  <th>Művelet</th>
+  <th>Műveletek</th>
   <tr>
     <td><code>NoAction</code></td>
     <td>Ez az alapértelmezett viselkedés. A káromkodás a forrás és a cél között lesz továbbítva.<br/><br/>
@@ -391,7 +391,7 @@ A (z) esetében a <code>ProfanityMarker=Tag</code> profán szavakat az XML-címk
   </tr>
 </table> 
 
-Példa:
+Például:
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"

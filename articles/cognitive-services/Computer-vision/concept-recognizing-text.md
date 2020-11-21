@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 4eb2835bd09e6548149ee90cb7232bf230de0300
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 73887515eea344e920455e3c24f3eae3d5ad515a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538750"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95013748"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optikai karakterfelismerés (OCR)
 
@@ -138,7 +138,7 @@ Ismerkedjen meg a [Computer Vision Read OCR SDK](./quickstarts-sdk/client-librar
 ## <a name="supported-languages-for-print-text"></a>A nyomtatási szöveghez támogatott nyelvek
 Az [OLVASÁSI API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) támogatja a nyomtatott szövegek angol, spanyol, német, francia, olasz, portugál és holland nyelvű kinyerését.
 
-Az OCR által támogatott nyelvek teljes listájáért tekintse meg a [támogatott nyelveket](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) .
+Az OCR által támogatott nyelvek teljes listájáért tekintse meg a [támogatott nyelveket](./language-support.md#optical-character-recognition-ocr) .
 
 ### <a name="read-32-preview-adds-simplified-chinese-and-japanese"></a>Az 3,2-es olvasási előnézet egyszerűsített kínai és japán nyelvű
 A [Read 3,2 API nyilvános előzetes verziója](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005) támogatja az egyszerűsített kínai és Japán nyelveket. Ha a forgatókönyv további nyelvek támogatását igényli, tekintse meg az [OCR API](#ocr-api) című szakaszt. 
@@ -150,7 +150,7 @@ Az olvasási művelet jelenleg kizárólag angol nyelven támogatja a kézzel í
 Az [olvasás 3. x REST API](./QuickStarts/CSharp-hand-text.md) az előnyben részesített lehetőség a legtöbb ügyfél számára, mivel a könnyű integráció és a gyors termelékenység a box-ban. Az Azure és a Computer Vision szolgáltatás kezeli a méretezést, a teljesítményt, az adatbiztonságot és a megfelelőségi igényeket, miközben az ügyfelek igényeinek kielégítésére koncentrál.
 
 ## <a name="deploy-on-premise-with-docker-containers"></a>Helyszíni üzembe helyezés Docker-tárolókkal
-Az [olvasási Docker-tároló (előzetes verzió)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers) lehetővé teszi az új OCR-funkciók üzembe helyezését a saját helyi környezetében. A tárolók kiválóan alkalmasak adott biztonsági és adatszabályozási követelményekhez.
+Az [olvasási Docker-tároló (előzetes verzió)](./computer-vision-how-to-install-containers.md) lehetővé teszi az új OCR-funkciók üzembe helyezését a saját helyi környezetében. A tárolók kiválóan alkalmasak adott biztonsági és adatszabályozási követelményekhez.
 
 ## <a name="example-outputs"></a>Példa kimenetekre
 
@@ -186,7 +186,7 @@ Az olvasási API olyan képeket és dokumentumokat támogat, amelyek több kül�
 
 ## <a name="ocr-api"></a>OCR API
 
-Az [OCR API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d) egy régebbi felismerési modellt használ, csak a képeket támogatja, és szinkron módon hajtja végre az észlelt szöveggel való azonnali visszatérést. Lásd az [OCR által támogatott nyelvek](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) , majd az API olvasása című témakört.
+Az [OCR API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d) egy régebbi felismerési modellt használ, csak a képeket támogatja, és szinkron módon hajtja végre az észlelt szöveggel való azonnali visszatérést. Lásd az [OCR által támogatott nyelvek](./language-support.md#optical-character-recognition-ocr) , majd az API olvasása című témakört.
 
 ## <a name="data-privacy-and-security"></a>Adatvédelem és biztonság
 

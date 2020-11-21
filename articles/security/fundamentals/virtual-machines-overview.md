@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: d22ce3941b00903be8532caaa36a9ce55e2f2c6f
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 91dfb3cb07cca8ec89c77dea43f1cd075db11bbf
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409790"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014764"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Az Azure Virtual Machines biztonsági áttekintése
 Ez a cikk áttekintést nyújt a virtuális gépekkel használható alapvető Azure-beli biztonsági funkciókról.
@@ -109,15 +109,15 @@ A szervezet BCDR-stratégiájának fontos részét képezi, hogyan tarthatja nap
 Site Recovery:
 
 * **Egyszerűsíti a BCDR stratégiát: a** site Recovery megkönnyíti a több üzleti számítási feladat és alkalmazás replikálásának, feladatátvételének és helyreállításának kezelését egyetlen helyről. Site Recovery összehangolja a replikációt és a feladatátvételt, de nem veszi fel az alkalmazásadatok adatait, vagy nem rendelkezik vele kapcsolatos információkkal.
-* **Rugalmas replikációt biztosít** : site Recovery használatával replikálhatja a Hyper-V virtuális gépeken, a VMWare virtuális gépeken és a Windows/Linux rendszerű fizikai kiszolgálókon futó számítási feladatokat.
-* **Támogatja a feladatátvételt és a helyreállítást** : a site Recovery teszt feladatátvételeket biztosít a vész-helyreállítási gyakorlatok támogatásához anélkül, hogy ez hatással lenne az éles környezetekre. Nulla adatvesztéssel járó tervezett feladatátvételeket is futtathat várt leállások esetére, illetve (a replikáció gyakoriságától függően) minimális adatvesztéssel járó nem tervezett feladatátvételeket a váratlan vészhelyzetek esetére. A feladatátvétel után visszatérhet az elsődleges helyekhez. A Site Recovery olyan helyreállítási terveket biztosít, amelyek parancsfájlokat és Azure Automation-munkafüzeteket tartalmazhatnak, így testre szabhatja a többrétegű alkalmazások feladatátvételét és helyreállítását.
+* **Rugalmas replikációt biztosít**: site Recovery használatával replikálhatja a Hyper-V virtuális gépeken, a VMWare virtuális gépeken és a Windows/Linux rendszerű fizikai kiszolgálókon futó számítási feladatokat.
+* **Támogatja a feladatátvételt és a helyreállítást**: a site Recovery teszt feladatátvételeket biztosít a vész-helyreállítási gyakorlatok támogatásához anélkül, hogy ez hatással lenne az éles környezetekre. Nulla adatvesztéssel járó tervezett feladatátvételeket is futtathat várt leállások esetére, illetve (a replikáció gyakoriságától függően) minimális adatvesztéssel járó nem tervezett feladatátvételeket a váratlan vészhelyzetek esetére. A feladatátvétel után visszatérhet az elsődleges helyekhez. A Site Recovery olyan helyreállítási terveket biztosít, amelyek parancsfájlokat és Azure Automation-munkafüzeteket tartalmazhatnak, így testre szabhatja a többrétegű alkalmazások feladatátvételét és helyreállítását.
 * **Másodlagos adatközpontok** kihagyása: replikálhat egy másodlagos helyszíni helyre vagy az Azure-ba. Ha az Azure-t használja a vész-helyreállítási célhelyként, a másodlagos hely fenntartásának költségeit és összetettségét kizárja. A replikált adattárolók tárolása az Azure Storage szolgáltatásban történik.
-* **Integrálható a meglévő BCDR-technológiákkal** : site Recovery partnereket más alkalmazásokkal, BCDR funkciókkal. A Site Recovery segítségével például megvédheti a vállalati munkaterhelések SQL Server háttérrendszer-végpontját. Ez magában foglalja a rendelkezésre állási csoportok feladatátvételének kezeléséhez szükséges SQL Server natív támogatását.
+* **Integrálható a meglévő BCDR-technológiákkal**: site Recovery partnereket más alkalmazásokkal, BCDR funkciókkal. A Site Recovery segítségével például megvédheti a vállalati munkaterhelések SQL Server háttérrendszer-végpontját. Ez magában foglalja a rendelkezésre állási csoportok feladatátvételének kezeléséhez szükséges SQL Server natív támogatását.
 
 További információ:
 
 * [Mi az Azure Site Recovery?](../../site-recovery/site-recovery-overview.md)
-* [Hogy működik az Azure Site Recovery?](/azure/security/fundamentals/azure-to-azure-architecture)
+* [Hogy működik az Azure Site Recovery?](/azure/site-recovery/azure-to-azure-architecture)
 * [Milyen számítási feladatokat véd a Azure Site Recovery?](../../site-recovery/site-recovery-workload.md)
 
 ## <a name="virtual-networking"></a>Virtuális hálózat
@@ -169,6 +169,6 @@ További információ:
 * [Az Azure bizalmas számítástechnika bemutatása](https://azure.microsoft.com/blog/introducing-azure-confidential-computing/)  
 * [Azure Confidential Computing](https://azure.microsoft.com/blog/azure-confidential-computing/)  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A virtuális gépek és operációs rendszerek [biztonsági eljárásainak](iaas.md) megismerése.

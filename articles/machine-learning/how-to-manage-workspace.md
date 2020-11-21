@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 1a7204fea1a77dbca57ffc7d512f81e46c4d3b5f
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 9524577d40c3b6b65bb3c3c8ff9e257b015ed90d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873393"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95012947"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Azure Machine Learning-munkaterületek létrehozása és kezelése 
 
@@ -25,8 +25,12 @@ Az igények változásának vagy az automatizálásra vonatkozó követelmények
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 * Ha a Python SDK-t használja, [telepítse az SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)-t.
+
+## <a name="limitations"></a>Korlátozások
+
+* Új munkaterület létrehozásakor engedélyezheti a munkaterületnek, hogy automatikusan létrehozza a szükséges Azure-szolgáltatásokat, vagy megadjon meglévő szolgáltatásokat. A meglévő szolgáltatások megadásakor ezeknek a szolgáltatásoknak mind ugyanabban az Azure-előfizetésben kell lenniük, mint a munkaterületnek.
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
 
@@ -130,7 +134,7 @@ Ha problémája merül fel az előfizetés elérésekor, tekintse [meg a Azure M
    Munkaterület neve |Adjon meg egy egyedi nevet, amely azonosítja a munkaterületet. Ebben a példában a **docs-ws-** t használjuk. A névnek egyedinek kell lennie az erőforráscsoport között. Használjon könnyen felhívható nevet, és a mások által létrehozott munkaterületek megkülönböztetését. A munkaterület neve megkülönbözteti a kis-és nagybetűket.
    Előfizetés |Válassza ki a használni kívánt Azure-előfizetést.
    Erőforráscsoport | Az előfizetés valamelyik meglévő erőforráscsoportját használja, vagy adjon meg egy nevet új erőforráscsoport létrehozásához. Egy erőforráscsoport kapcsolódó erőforrásokat tárol egy Azure-megoldáshoz. Ebben a példában a **docs-pénzmosást** használjuk. Meglévő erőforráscsoport használatához *közreműködői* vagy *tulajdonosi* szerepkörre van szükség.  További információ a hozzáférésről: [Azure Machine learning munkaterület hozzáférésének kezelése](how-to-assign-roles.md).
-   Régió | Válassza ki a felhasználókhoz legközelebb eső Azure-régiót, valamint az adatforrásokat a munkaterület létrehozásához.
+   Region | Válassza ki a felhasználókhoz legközelebb eső Azure-régiót, valamint az adatforrásokat a munkaterület létrehozásához.
    | Tárfiók | A munkaterület alapértelmezett Storage-fiókja. Alapértelmezés szerint a rendszer létrehoz egy újat. |
    | Key Vault | A munkaterület által használt Azure Key Vault. Alapértelmezés szerint a rendszer létrehoz egy újat. |
    | Application Insights | A munkaterület Application Insight-példánya. Alapértelmezés szerint a rendszer létrehoz egy újat. |
@@ -359,7 +363,7 @@ A [Azure Portal](https://portal.azure.com/)a törölni kívánt munkaterület te
 
 ---
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 

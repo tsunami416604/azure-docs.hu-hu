@@ -10,16 +10,16 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: dpalled
-ms.openlocfilehash: c3948a5bdfce583384992fb87bf40e9e7251974d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d02a6e3eb2aef4a02c90360b2016e64af579081
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91344009"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014730"
 ---
 # <a name="model-synchronization-between-azure-digital-twins-and-time-series-insights-gen2"></a>Modellszinkronizálás az Azure Digital Twins és a Time Series Insights Gen2 között
 
-Ez a cikk azokat az ajánlott eljárásokat és eszközöket ismerteti, amelyekkel az eszköz modelljét az Azure Digital Twins (ADT) modellben fordíthatja át Azure Time Series Insights (ÁME).  Ez a cikk egy kétrészes oktatóanyag-sorozat második része, amely az Azure Digital Twins és a Azure Time Series Insights integrációját ismerteti. Az Azure Digital Twins és a Time Series Insights integrációja lehetővé teszi az archiválást és a digitális ikrek telemetriáiról és számított tulajdonságainak nyomon követését. Ez az oktatóanyag-Sorozat olyan fejlesztők számára készült, akik a Time Series Insights Azure digitális Twins-nal való integrálására törekednek. Az 1. rész ismerteti  [az adatfolyamatok létrehozását, amely az Azure Digital Twins-ból származó tényleges idősorozat-adatokat hozza Time Series Insightsba](https://docs.microsoft.com/azure/digital-twins/how-to-integrate-time-series-insights) , és ez az oktatóanyag-sorozat második része az Azure Digital Twins és a Time Series Insights közötti adatmodell-szinkronizálást ismerteti. Ez az oktatóanyag ismerteti az idősorozat-azonosító (TS ID) elnevezési konvenció kiválasztásának és létrehozásának ajánlott eljárásait, valamint a hierarchiák manuális létrehozását a Time Series-modellben (TSM).
+Ez a cikk azokat az ajánlott eljárásokat és eszközöket ismerteti, amelyekkel az eszköz modelljét az Azure Digital Twins (ADT) modellben fordíthatja át Azure Time Series Insights (ÁME).  Ez a cikk egy kétrészes oktatóanyag-sorozat második része, amely az Azure Digital Twins és a Azure Time Series Insights integrációját ismerteti. Az Azure Digital Twins és a Time Series Insights integrációja lehetővé teszi az archiválást és a digitális ikrek telemetriáiról és számított tulajdonságainak nyomon követését. Ez az oktatóanyag-Sorozat olyan fejlesztők számára készült, akik a Time Series Insights Azure digitális Twins-nal való integrálására törekednek. Az 1. rész ismerteti  [az adatfolyamatok létrehozását, amely az Azure Digital Twins-ból származó tényleges idősorozat-adatokat hozza Time Series Insightsba](../digital-twins/how-to-integrate-time-series-insights.md) , és ez az oktatóanyag-sorozat második része az Azure Digital Twins és a Time Series Insights közötti adatmodell-szinkronizálást ismerteti. Ez az oktatóanyag ismerteti az idősorozat-azonosító (TS ID) elnevezési konvenció kiválasztásának és létrehozásának ajánlott eljárásait, valamint a hierarchiák manuális létrehozását a Time Series-modellben (TSM).
 
 ## <a name="choosing-a-time-series-id"></a>Idősorozat-azonosító kiválasztása
 
@@ -29,7 +29,7 @@ Az idősorozat-azonosító egy egyedi azonosító, amely a Time Series Insightsb
 
 ## <a name="contextualizing-time-series"></a>Contextualizing idő sorozata
 
-A Time Series Insightsben lévő Contextualization (főként a természet térbeli jellege) az adategység-hierarchiák révén valósul meg, és a Time Series Insights Explorer fanézetében az adatnavigációhoz is ugyanezt az értéket használja. Az idősorozat-típusok és a hierarchiák definiálása a Time Series Model (TSM) használatával történik Time Series Insightsban. A TSM súgójában a változók definiálása, míg a hierarchia szintjei és a példány mezői a fanézet létrehozásához használatosak a Time Series Insights Explorerben. A TSM kapcsolatos további információkért tekintse meg az [online Time Series Insights dokumentációját](https://docs.microsoft.com/azure/time-series-insights/concepts-model-overview).
+A Time Series Insightsben lévő Contextualization (főként a természet térbeli jellege) az adategység-hierarchiák révén valósul meg, és a Time Series Insights Explorer fanézetében az adatnavigációhoz is ugyanezt az értéket használja. Az idősorozat-típusok és a hierarchiák definiálása a Time Series Model (TSM) használatával történik Time Series Insightsban. A TSM súgójában a változók definiálása, míg a hierarchia szintjei és a példány mezői a fanézet létrehozásához használatosak a Time Series Insights Explorerben. A TSM kapcsolatos további információkért tekintse meg az [online Time Series Insights dokumentációját](./concepts-model-overview.md).
 
 Az Azure Digital Twins szolgáltatásban az eszközök közötti kapcsolat kettős kapcsolatokkal van kifejezve. A kettős kapcsolatok egyszerűen a csatlakoztatott eszközök gráfja. Az idősorozatok betekintése azonban az adategységek közötti kapcsolatok hierarchikus jellegűek. Ez azt jelzi, hogy az eszközök osztoznak egy szülő-gyermek típusú od-kapcsolaton, és fastruktúrát használnak. Az Azure Digital Twins kapcsolati információinak Time Series Insights hierarchiába való lefordításához ki kell választania az Azure Digital Twins megfelelő hierarchikus kapcsolatait. Az Azure Digital Twins egy nyílt szabványú, Digital Twin Definition Language (DTDL) nevű modellezési nyelvet használ. A DTDL-modellekben JSON-LD néven a JSON egyik változatát használjuk. A specifikációval kapcsolatos részletes információkért tekintse meg a [DTDL dokumentációját](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) .
 
@@ -82,7 +82,7 @@ Az alábbi kódrészlet azt mutatja be, hogy az ügyfélalkalmazás hogyan tudot
 
 > [!Note]
 >
-> A kódrészlet példája feltételezi, hogy az olvasók ismerik az oktatóanyag [1. részét](https://docs.microsoft.com/azure/digital-twins/tutorial-end-to-end#set-up-the-sample-function-app) , és ez a kód változása a "ProcessHubToDTEvents" függvényen belül történt.
+> A kódrészlet példája feltételezi, hogy az olvasók ismerik az oktatóanyag [1. részét](../digital-twins/tutorial-end-to-end.md#set-up-the-sample-function-app) , és ez a kód változása a "ProcessHubToDTEvents" függvényen belül történt.
 
 ```csharp
 if (propertyPath.Equals("/Flow"))
@@ -114,7 +114,7 @@ relationship for " + twinId);
 
 ## <a name="updating-instance-fields-using-apis"></a>A példány mezőinek frissítése API-kkal
 
-Az oktatóanyag ezen szakasza azt mutatja be, hogyan lehet megfigyelni a modell változásait az Azure-beli digitális Ikrekben, például az ikrek létrehozását, törlését, illetve az ikrek közötti kapcsolatok változását, valamint a példányok és a hierarchiák a Time Series Insights Model API-k használatával Az Time Series Insights modell frissítésének ezt a módszerét általában az Azure functions szolgáltatáson keresztül érheti el. Az Azure digitális Ikrekben az olyan eseményekről szóló értesítések, mint például a Twin-Hozzáadás vagy a törlések átirányíthatók az alárendelt szolgáltatások, például a Event Hubs, amelyek az Azure functions szolgáltatásba is bekapcsolhatók. Az események útválasztásával és szűrésével kapcsolatos további részleteket [itt talál](https://docs.microsoft.com/azure/digital-twins/how-to-manage-routes-portal).  A szakasz hátralévő részében a Time Series Insights Model API-k használata az Azure functions szolgáltatásban című cikkből megtudhatja, hogyan frissítheti Time Series Insights modellt a Twin (modell módosítása) válaszként az Azure digitális Twins szolgáltatásban.
+Az oktatóanyag ezen szakasza azt mutatja be, hogyan lehet megfigyelni a modell változásait az Azure-beli digitális Ikrekben, például az ikrek létrehozását, törlését, illetve az ikrek közötti kapcsolatok változását, valamint a példányok és a hierarchiák a Time Series Insights Model API-k használatával Az Time Series Insights modell frissítésének ezt a módszerét általában az Azure functions szolgáltatáson keresztül érheti el. Az Azure digitális Ikrekben az olyan eseményekről szóló értesítések, mint például a Twin-Hozzáadás vagy a törlések átirányíthatók az alárendelt szolgáltatások, például a Event Hubs, amelyek az Azure functions szolgáltatásba is bekapcsolhatók. Az események útválasztásával és szűrésével kapcsolatos további részleteket [itt talál](../digital-twins/how-to-manage-routes-portal.md).  A szakasz hátralévő részében a Time Series Insights Model API-k használata az Azure functions szolgáltatásban című cikkből megtudhatja, hogyan frissítheti Time Series Insights modellt a Twin (modell módosítása) válaszként az Azure digitális Twins szolgáltatásban.
 
 ### <a name="receiving-and-identifying-twin-addition-event-notification"></a>A Twin kiegészítő esemény értesítésének fogadása és azonosítása
 
@@ -227,4 +227,4 @@ private async Task<TimeSeriesInstance> AddHierarchyToInstanceAsync(TimeSeriesIns
 
 ## <a name="next-steps"></a>Következő lépések
 
-A harmadik az oktatóanyagok sorozatában azt mutatja be, hogyan lehet lekérdezni az Azure digitális Twins korábbi adatait Time Series Insights API-k használatával. Ez a folyamat folyamatban van, és készen áll a szakasz frissítésére. Addig is javasoljuk, hogy olvassa el az olvasókat a [Time Series Insights Adatlekérdezési API dokumentációjában](https://docs.microsoft.com/azure/time-series-insights/concepts-query-overview).
+A harmadik az oktatóanyagok sorozatában azt mutatja be, hogyan lehet lekérdezni az Azure digitális Twins korábbi adatait Time Series Insights API-k használatával. Ez a folyamat folyamatban van, és készen áll a szakasz frissítésére. Addig is javasoljuk, hogy olvassa el az olvasókat a [Time Series Insights Adatlekérdezési API dokumentációjában](./concepts-query-overview.md).

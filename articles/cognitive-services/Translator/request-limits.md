@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: dff69f00833cc3f8004befd330d144f4da0e332d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8841c55d8f276f048db53a531bd2e9218e498b34
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89566585"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016496"
 ---
 # <a name="request-limits-for-translator"></a>Fordítói kérelmek korlátai
 
@@ -52,17 +52,17 @@ Ha eléri vagy meghaladja ezeket a korlátokat, vagy a kvóta egy részének rö
 | S3/C3 | 120 000 000 karakter/óra |
 | S4/C4 | 200 000 000 karakter/óra |
 
-A [több szolgáltatásra vonatkozó előfizetések](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication) korlátai megegyeznek az S1 szinttel.
+A [több szolgáltatásra vonatkozó előfizetések](./reference/v3-0-reference.md#authentication) korlátai megegyeznek az S1 szinttel.
 
 Ezek a korlátok a Microsoft szabványos fordítási modelljeire korlátozódnak. Az egyéni fordítót használó egyéni fordítási modellek másodpercenként 1 800 karakterre vannak korlátozva.
 
 ## <a name="latency"></a>Késés
 
-A fordító a standard modellekkel és az 120 másodperces késleltetéssel 15 másodperces késést használ egyéni modellek használata esetén. A *100 karakternél hosszabb szövegre* adott válaszokat a rendszer a 150 ezredmásodpercben, 300 ezredmásodpercben adja vissza. Az egyéni fordítói modellek hasonló késési jellemzőkkel rendelkeznek a tartós kérelmek arányában, és nagyobb késéssel járhatnak, ha a kérések sebessége időszakos. A válaszidő a kérelem és a nyelvi pár méretétől függően változhat. Ha nem kap fordítást vagy [hibaüzenetet](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors) az adott időkereten belül, ellenőrizze a kódot, a hálózati kapcsolatokat, és próbálkozzon újra. 
+A fordító a standard modellekkel és az 120 másodperces késleltetéssel 15 másodperces késést használ egyéni modellek használata esetén. A *100 karakternél hosszabb szövegre* adott válaszokat a rendszer a 150 ezredmásodpercben, 300 ezredmásodpercben adja vissza. Az egyéni fordítói modellek hasonló késési jellemzőkkel rendelkeznek a tartós kérelmek arányában, és nagyobb késéssel járhatnak, ha a kérések sebessége időszakos. A válaszidő a kérelem és a nyelvi pár méretétől függően változhat. Ha nem kap fordítást vagy [hibaüzenetet](./reference/v3-0-reference.md#errors) az adott időkereten belül, ellenőrizze a kódot, a hálózati kapcsolatokat, és próbálkozzon újra. 
 
 ## <a name="sentence-length-limits"></a>Mondat hosszának korlátai
 
-A [BreakSentence](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence) függvény használatakor a mondat hossza 275 karakterre van korlátozva. Ezekhez a nyelvekhez kivételek tartoznak:
+A [BreakSentence](./reference/v3-0-break-sentence.md) függvény használatakor a mondat hossza 275 karakterre van korlátozva. Ezekhez a nyelvekhez kivételek tartoznak:
 
 | Nyelv | Code | Karakteres korlát |
 |----------|------|-----------------|
@@ -80,5 +80,5 @@ A [BreakSentence](https://docs.microsoft.com/azure/cognitive-services/translator
 ## <a name="next-steps"></a>Következő lépések
 
 * [Díjszabás](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
-* [Régiónkénti rendelkezésre állás](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
-* [3-as verziójú Translator-referencia](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)
+* [Regionális elérhetőség](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
+* [3-as verziójú Translator-referencia](./reference/v3-0-reference.md)

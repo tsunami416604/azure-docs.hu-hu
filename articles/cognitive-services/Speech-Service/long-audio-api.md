@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: trbye
-ms.openlocfilehash: be38d3e78108a15c9f7875a15156e0eeba5a6211
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a538deb3b7da19261e1bc2b7c0d29f35315f786
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88167759"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015413"
 ---
 # <a name="long-audio-api-preview"></a>Long audio API (előzetes verzió)
 
@@ -27,7 +27,7 @@ A hosszú hang API további előnyei:
 * Nincs szükség hang-végpont üzembe helyezésére, mert a hangokat nem valós idejű batch-módban szintetizálja.
 
 > [!NOTE]
-> A Long audio API mostantól támogatja a [nyilvános neurális hangokat](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices) és az [Egyéni neurális hangokat](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice#custom-neural-voices)is.
+> A Long audio API mostantól támogatja a [nyilvános neurális hangokat](./language-support.md#neural-voices) és az [Egyéni neurális hangokat](./how-to-custom-voice.md#custom-neural-voices)is.
 
 ## <a name="workflow"></a>Munkafolyamat
 
@@ -44,7 +44,7 @@ A szövegfájl előkészítésekor győződjön meg róla, hogy:
 * Egyszerű szöveges (. txt) vagy SSML szöveg (. txt)
 * Kódolása [UTF-8, byte Order Mark (BOM)](https://www.w3.org/International/questions/qa-utf8-bom.en#bom) értékkel
 * Egyetlen fájl, nem zip
-* Több mint 400 karaktert [tartalmaz az egyszerű szöveges vagy a 400](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech#pricing-note) -es SSML-szövegekhez, és kisebb, mint 10 000 bekezdés
+* Több mint 400 karaktert [tartalmaz az egyszerű szöveges vagy a 400](./text-to-speech.md#pricing-note) -es SSML-szövegekhez, és kisebb, mint 10 000 bekezdés
   * Egyszerű szöveg esetén az egyes bekezdéseket az ENTER/Return – [egyszerű szöveges beviteli példa](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt) **megadásával** választjuk el.
   * A SSML szövegek esetében az egyes SSML-darabok bekezdésnek tekintendők. A SSML-darabokat különböző bekezdések szerint kell elválasztani – a [SSML szövegének](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt) megjelenítése – példa
 > [!NOTE]
@@ -114,7 +114,7 @@ Ha a **PublicVoice** paraméter értéke **true (igaz**), a hang a nyilvános ne
 Készítse elő a bemeneti szövegfájlt egyszerű szöveges vagy SSML szövegben, majd adja hozzá az alábbi kódot a következőhöz `voice_synthesis_client.py` :
 
 > [!NOTE]
-> a "concatenateResult" paraméter nem kötelező. Ha ez a paraméter nincs megadva, a rendszer a hangkimeneteket egy bekezdés alapján hozza létre. A hanganyagot 1 kimenetre is összefűzheti a paraméter beállításával. Alapértelmezés szerint a hang kimenete a riff-16khz-16bit-mono-PCM értékre van beállítva. További információ a támogatott hangkimenetekről: [hang kimeneti formátumai](https://docs.microsoft.com/azure/cognitive-services/speech-service/long-audio-api#audio-output-formats).
+> a "concatenateResult" paraméter nem kötelező. Ha ez a paraméter nincs megadva, a rendszer a hangkimeneteket egy bekezdés alapján hozza létre. A hanganyagot 1 kimenetre is összefűzheti a paraméter beállításával. Alapértelmezés szerint a hang kimenete a riff-16khz-16bit-mono-PCM értékre van beállítva. További információ a támogatott hangkimenetekről: [hang kimeneti formátumai](#audio-output-formats).
 
 ```python
 parser.add_argument('--submit', action="store_true", default=False, help='submit a synthesis request')
@@ -278,14 +278,14 @@ A következő táblázat a REST API HTTP-válaszait és üzeneteit részletezi.
 |        | 404 | A hangszintézis definíciójában deklarált modell nem található: {modelID}. | Győződjön meg arról, hogy a ({modelID}) helyes. |
 |        | 429 | Túllépi az aktív hangszintézis korlátot. Várjon, amíg néhány kérelem befejeződik. | A kiszolgáló az egyes Azure-fiókokhoz legfeljebb 120 kérelem futtatására és várólistára helyezésére jogosult. Várjon, és ne küldje el az új kéréseket, amíg néhány kérelem be nem fejeződik. |
 | Mind       | 429 | Túl sok kérés van. | Az ügyfél legfeljebb 5 kérést küldhet a kiszolgálónak másodpercenként minden egyes Azure-fiókhoz. Csökkentse a kérések másodpercenkénti számát. |
-| Törlés    | 400 | A hangszintézisi feladat még használatban van. | Csak a **befejezett** vagy **sikertelen**kéréseket lehet törölni. |
+| Törlés    | 400 | A hangszintézisi feladat még használatban van. | Csak a **befejezett** vagy **sikertelen** kéréseket lehet törölni. |
 | GetByID   | 404 | A megadott entitás nem található. | Győződjön meg arról, hogy a szintézis azonosítója helyes. |
 
 ## <a name="regions-and-endpoints"></a>Régiók és végpontok
 
 A hosszú hang API több régióban is elérhető egyedi végpontokkal.
 
-| Régió | Végpont |
+| Region | Végpont |
 |--------|----------|
 | Kelet-Ausztrália | `https://australiaeast.customvoice.api.speech.microsoft.com` |
 | Közép-Kanada | `https://canadacentral.customvoice.api.speech.microsoft.com` |

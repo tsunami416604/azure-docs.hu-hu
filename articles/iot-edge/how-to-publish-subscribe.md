@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: ef92895374f07c79f8ba8d626a0aab3d89733f40
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 1ace40098e1d53c6199accea755ffb6969781663
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629648"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015663"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>Közzététel és előfizetés Azure IoT Edge
 
@@ -31,7 +31,7 @@ Az üzenetek közzétételéhez és előfizetéséhez Azure IoT Edge MQTT Broker
 - Egy, az F1, S1, S2 vagy S3 értékű SKU- **IoT hub** .
 - Az **1,2-es vagy újabb verzióval rendelkező IoT Edge-eszköz**. Mivel IoT Edge MQTT Broker jelenleg nyilvános előzetes verzióban érhető el, a MQTT-átvitelszervező engedélyezéséhez állítsa az alábbi környezeti változókat True értékre a edgeHub-tárolón:
 
-   | Név | Érték |
+   | Name | Érték |
    | - | - |
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__mqttBrokerEnabled` | `true` |
@@ -209,7 +209,7 @@ Most, hogy megértette, hogyan csatlakozhat a IoT Edge MQTT-közvetítőhöz, l�
 
 ## <a name="publish-and-subscribe-on-user-defined-topics"></a>Közzététel és előfizetés felhasználó által definiált témakörökre
 
-Ebben a cikkben egy **sub_client** nevű ügyfelet fog használni, amely előfizet egy témakörre, és egy **pub_client** nevű másik ügyfelet, amely egy témakört tesz közzé. A [szimmetrikus kulcsos hitelesítést](how-to-authenticate-downstream-device.md#symmetric-key-authentication) fogjuk használni, de ugyanezt [x. 509 önaláírt hitelesítéssel](how-to-authenticate-downstream-device.md#x509-self-signed-authentication) vagy [x. 509 önaláírt hitelesítéssel](./how-to-authenticate-downstream-device.md#x509-self-signed-authentication)is elvégezheti.
+Ebben a cikkben egy **sub_client** nevű ügyfelet fog használni, amely előfizet egy témakörre, és egy **pub_client** nevű másik ügyfelet, amely egy témakört tesz közzé. A [szimmetrikus kulcsos hitelesítést](how-to-authenticate-downstream-device.md#symmetric-key-authentication) fogjuk használni, de ugyanezt [x. 509 önaláírt hitelesítéssel](how-to-authenticate-downstream-device.md#x509-self-signed-authentication) vagy [x. 509 hitelesítésszolgáltató által aláírt hitelesítéssel](./how-to-authenticate-downstream-device.md#x509-ca-signed-authentication)is elvégezheti.
 
 ### <a name="create-publisher-and-subscriber-clients"></a>Közzétevő és előfizetői ügyfelek létrehozása
 
@@ -439,6 +439,6 @@ Az alábbi példa egy olyan IoT Edge MQTT híd-konfigurációra mutat példát, 
 Egyéb megjegyzések a IoT Edge hub MQTT-hídhoz:
 - Az MQTT protokollt a rendszer automatikusan az upstream protokollként használja a MQTT-közvetítő használatakor, valamint azt, hogy a IoT Edge egy beágyazott konfigurációban, például egy megadott módon legyen használatban `parent_hostname` . A felsőbb rétegbeli protokollokkal kapcsolatos további tudnivalókért tekintse meg a [felhőalapú kommunikációt](iot-edge-runtime.md#cloud-communication)ismertető témakört. További információ a beágyazott konfigurációkról: [alsóbb rétegbeli IoT Edge eszköz csatlakoztatása Azure IoT Edge-átjáróhoz](how-to-connect-downstream-iot-edge-device.md#configure-iot-edge-on-devices).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az IoT Edge hub ismertetése](iot-edge-runtime.md#iot-edge-hub)

@@ -9,97 +9,180 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 07/17/2020
+ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 5ba1804630649044d29dd2919ef8375265a69a08
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: cf89532fc41b10d6fbcba57963ebe30a361a2e6f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320880"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95012979"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Munkaterület használata tűzfal mögött Azure Machine Learning
 
-Ebből a cikkből megtudhatja, hogyan konfigurálhatja a Azure Firewallt a Azure Machine Learning-munkaterülethez és a nyilvános internethez való hozzáférés szabályozásához.   Ha többet szeretne megtudni a Azure Machine Learning biztonságossá tételéről, tekintse meg a [vállalati biztonság Azure Machine learning](concept-enterprise-security.md)
+Ebből a cikkből megtudhatja, hogyan konfigurálhatja a Azure Firewallt a Azure Machine Learning-munkaterülethez és a nyilvános internethez való hozzáférés szabályozásához. Ha többet szeretne megtudni a Azure Machine Learning biztonságossá tételéről, tekintse meg a [vállalati biztonság Azure Machine learning](concept-enterprise-security.md)
 
-Míg a dokumentumban található információk a [Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)használatára épülnek, a többi tűzfallal is használható. Ha kérdése van a tűzfalon keresztüli kommunikáció engedélyezésével kapcsolatban, tekintse meg az Ön által használt tűzfal dokumentációját.
+## <a name="azure-firewall"></a>Azure Firewall
 
-## <a name="application-rules"></a>Alkalmazásszabályok
+Azure Firewall használatakor a __cél hálózati címfordítás (DNAT)__ használatával hozzon létre NAT-szabályokat a bejövő forgalom számára. A kimenő forgalom esetében hozzon létre __hálózati__ és/vagy __alkalmazási__ szabályokat. Ezek a szabálygyűjtemény-gyűjtemények részletesebben ismertetik a [Azure Firewall fogalmakat](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts)ismertető témakört.
 
-A tűzfalon hozzon létre egy olyan _szabályt_ , amely engedélyezi a jelen cikkben szereplő címekre irányuló és onnan érkező forgalmat.
+### <a name="inbound-configuration"></a>Bejövő konfiguráció
 
-> [!TIP]
-> A hálózati szabály hozzáadásakor állítsa a __protokollt__ bármelyik értékre, és a portokat a következőre: `*` .
->
-> A Azure Firewall konfigurálásával kapcsolatos további információkért lásd: [Azure Firewall telepítése és konfigurálása](../firewall/tutorial-firewall-deploy-portal.md#configure-an-application-rule).
+Ha Azure Machine Learning __számítási példányt__ vagy __számítási fürtöt__ használ, adjon hozzá egy [felhasználó által megadott útvonalakat (UDR)](../virtual-network/virtual-networks-udr-overview.md) a Azure Machine learning erőforrásokat tartalmazó alhálózathoz. Ez __az útvonal__ a és az erőforrások IP-címeiről továbbítja a forgalmat `BatchNodeManagement` `AzureMachineLearning` a számítási példány és a számítási fürt nyilvános IP-címére.
 
-## <a name="routes"></a>Útvonalak
+Ezek a UDR lehetővé teszik a Batch szolgáltatás számára a feladatütemezés számítási csomópontjaival való kommunikációját. Adja hozzá azt a Azure Machine Learning-szolgáltatáshoz tartozó IP-címet is, ahol az erőforrások léteznek, mivel ez szükséges a számítási példányokhoz való hozzáféréshez. A Batch szolgáltatás és a Azure Machine Learning szolgáltatás IP-címeinek listájának megjelenítéséhez használja a következő módszerek egyikét:
 
-A Azure Machine Learning erőforrásokat tartalmazó alhálózat kimenő útvonalának konfigurálásakor a betanítási környezet biztonságossá tételéhez használja a [kényszerített bújtatás](how-to-secure-training-vnet.md#forced-tunneling) szakasz útmutatását.
+* Töltse le az [Azure IP-címtartományok és a szolgáltatás címkéit](https://www.microsoft.com/download/details.aspx?id=56519) , és keresse meg a és a fájlt `BatchNodeManagement.<region>` `AzureMachineLearning.<region>` , ahol `<region>` az az Azure-régió.
 
-## <a name="microsoft-hosts"></a>Microsoft-gazdagépek
+* Az adatok letöltéséhez használja az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) -t. Az alábbi példa letölti az IP-cím adatait, és kiszűri az USA 2. keleti régiójának információit:
 
-Ha nincs megfelelően konfigurálva, a tűzfal problémákat okozhat a munkaterület használatával. A Azure Machine Learning munkaterület egyaránt használ különböző állomásnévket.
+    ```azurecli-interactive
+    az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
+    az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='eastus2']"
+    ```
 
-Az ebben a szakaszban található gazdagépek a Microsoft tulajdonában vannak, és biztosítják a munkaterület megfelelő működéséhez szükséges szolgáltatásokat.
+    > [!TIP]
+    > Ha az USA-Virginia, US-Arizona régiókat vagy a kínai – Kelet-2 régiót használja, ezek a parancsok nem adnak vissza IP-címet. Ehelyett használja az alábbi hivatkozások egyikét az IP-címek listájának letöltéséhez:
+    >
+    > * [Azure IP-címtartományok és szolgáltatás-címkék Azure Government](https://www.microsoft.com/download/details.aspx?id=57063)
+    > * [Azure IP-címtartományok és szolgáltatás-címkék az Azure China-hoz](https://www.microsoft.com//download/details.aspx?id=57062)
 
-| **Állomásnév** | **Rendeltetés** |
-| ---- | ---- |
-| **login.microsoftonline.com** | Hitelesítés |
-| **management.azure.com** | A munkaterület adatainak beolvasásához használatos |
-| **\*. batchai.core.windows.net** | Csoportok betanítása |
-| **ml.azure.com** | Azure Machine Learning Studio |
-| **default.exp-tas.com** | A Azure Machine Learning Studio használja |
-| **\*. azureml.ms** | Azure Machine Learning API-k használják |
-| **\*. experiments.azureml.net** | A Azure Machine Learningban futó kísérletek használják |
-| **\*. modelmanagement.azureml.net** | Modellek regisztrálásához és üzembe helyezéséhez használatos|
-| **mlworkspace.azure.ai** | A munkaterületek megtekintésekor használt Azure Portal |
-| **\*. aether.ms** | Azure Machine Learning folyamatok futtatásakor használatos |
-| **\*. instances.azureml.net** | Számítási példányok Azure Machine Learning |
-| **\*. instances.azureml.ms** | Azure Machine Learning számítási példányok, ha a munkaterület saját hivatkozás engedélyezve van |
-| **windows.net** | Azure Blob Storage |
-| **vault.azure.net** | Azure Key Vault |
-| **azurecr.io** | Azure Container Registry |
-| **mcr.microsoft.com** | Microsoft Container Registry az alapszintű Docker-rendszerképekhez |
-| **your-acr-server-name.azurecr.io** | Csak akkor szükséges, ha a Azure Container Registry a virtuális hálózat mögött van. Ebben a konfigurációban a Microsoft-környezetből a saját előfizetésében található ACR-példányhoz privát hivatkozás jön létre. Használja az ACR-kiszolgáló nevét az Azure Machine Learning munkaterülethez. |
-| **\*. notebooks.azure.net** | Azure Machine Learning Studióban található jegyzetfüzetek szükségesek. |
-| **\*. file.core.windows.net** | A fájlkezelő a Azure Machine Learning Studióban szükséges. |
-| **\*. dfs.core.windows.net** | A fájlkezelő a Azure Machine Learning Studióban szükséges. |
-| **graph.windows.net** | Jegyzetfüzetekhez szükséges |
+A UDR hozzáadásakor adja meg az útvonalat az egyes kapcsolódó batch IP-címek előtagjaként, és állítsa be a __következő ugrás típusát__ az __Internet__ értékre. Az alábbi képen látható példa erre a UDR mutat a Azure Portalban:
+
+![UDR – példa a címek előtagjaként való használatra](./media/how-to-enable-virtual-network/user-defined-route.png)
+
+> [!IMPORTANT]
+> Az IP-címek idővel változhatnak.
+
+További információ: [Azure batch készlet létrehozása egy virtuális hálózaton](../batch/batch-virtual-network.md#user-defined-routes-for-forced-tunneling).
+
+### <a name="outbound-configuration"></a>Kimenő konfiguráció
+
+1. Adja hozzá a __hálózati szabályokat__, és engedélyezze a következő szolgáltatási címkékre __irányuló__ és __onnan érkező__ forgalmat:
+
+    * AzureActiveDirectory
+    * AzureMachineLearning
+    * AzureResourceManager
+    * Storage. region
+    * Kulcstartó. régió
+    * ContainerRegistry. region
+
+    Ha a Microsoft által biztosított alapértelmezett Docker-rendszerképeket szeretné használni, és engedélyezi a felhasználó által felügyelt függőségeket, akkor a következő szolgáltatási címkéket is hozzá kell adnia:
+
+    * MicrosoftContainerRegistry. region
+    * AzureFrontDoor.FirstParty
+
+    A-t tartalmazó bejegyzések esetében `region` cserélje le a elemet az Ön által használt Azure-régióra. Például: `keyvault.westus`.
+
+    A __protokoll__ esetében válassza a lehetőséget `TCP` . A forrás és a cél __portok__ esetében válassza a lehetőséget `*` .
+
+1. Adja hozzá az __alkalmazáshoz tartozó szabályokat__ a következő gazdagépekhez:
+
+    > [!NOTE]
+    > Ez nem teljes lista az interneten található összes Python-erőforráshoz szükséges gazdagépekről, csak a leggyakrabban használt. Ha például hozzá kell férnie egy GitHub-adattárhoz vagy egy másik gazdagéphez, meg kell adnia és hozzá kell adnia a szükséges gazdagépeket az adott forgatókönyvhöz.
+
+    | **Állomásnév** | **Cél** |
+    | ---- | ---- |
+    | **anaconda.com**</br>**\*. anaconda.com** | Az alapértelmezett csomagok telepítéséhez használatos. |
+    | **\*. anaconda.org** | A tárház-adatgyűjtéshez használatos. |
+    | **pypi.org** | Az alapértelmezett indexből származó függőségek listázására használatos, és az indexet a felhasználói beállítások nem írják felül. Ha a rendszer felülírja az indexet, a **\* . pythonhosted.org** is engedélyeznie kell. |
+    | **cloud.r-project.org** | Az R-fejlesztéshez használt CRAN-csomagok telepítésekor használatos. |
+    | **\*pytorch.org** | A PyTorch alapján néhány példa használ. |
+    | **\*. tensorflow.org** | A Tensorflow alapján néhány példa használ. |
+
+    A __protokoll: Port__ beállításnál válassza a __http használata, HTTPS__ lehetőséget.
+
+    Az alkalmazási szabályok konfigurálásával kapcsolatos további információkért lásd: [Azure Firewall telepítése és konfigurálása](../firewall/tutorial-firewall-deploy-portal.md#configure-an-application-rule).
+
+1. Az Azure Kubernetes szolgáltatásban (ak) üzembe helyezett modellekhez való hozzáférés korlátozása: [a kimenő forgalom korlátozása az Azure Kubernetes szolgáltatásban](../aks/limit-egress-traffic.md).
+
+## <a name="other-firewalls"></a>Egyéb tűzfalak
+
+Az ebben a szakaszban található útmutatás általános, mivel minden egyes tűzfal saját terminológiával és specifikus konfigurációval rendelkezik. Ha kérdése van a tűzfalon keresztüli kommunikáció engedélyezésével kapcsolatban, tekintse meg az Ön által használt tűzfal dokumentációját.
+
+Ha nincs megfelelően konfigurálva, a tűzfal problémákat okozhat a munkaterület használatával. A Azure Machine Learning munkaterület egyaránt használ különböző állomásnévket. A következő fejezetei a Azure Machine Learningához szükséges gazdagépeket sorolja fel.
+
+### <a name="microsoft-hosts"></a>Microsoft-gazdagépek
+
+Az ebben a szakaszban található gazdagépek a Microsoft tulajdonában vannak, és biztosítják a munkaterület megfelelő működéséhez szükséges szolgáltatásokat. Az alábbi táblázatok felsorolják az Azure Public, Azure Government és az Azure China 21Vianet-régiók állomásneveit.
+
+**Általános Azure-gazdagépek**
+
+| **Kötelező ehhez:** | **Azure – nyilvános** | **Azure Government** | **Azure China 21Vianet** |
+| ----- | ----- | ----- | ----- |
+| Azure Active Directory | login.microsoftonline.com | login.microsoftonline.us | login.chinacloudapi.cn |
+| Azure Portal | management.azure.com | management.azure.us | management.azure.cn |
+
+**Gazdagépek Azure Machine Learning**
+
+| **Kötelező ehhez:** | **Azure – nyilvános** | **Azure Government** | **Azure China 21Vianet** |
+| ----- | ----- | ----- | ----- |
+| Azure Machine Learning Studio | ml.azure.com | ml.azure.us | studio.ml.azure.cn |
+| API |\*. azureml.ms | \*. ml.azure.us | \*. ml.azure.cn |
+| Kísérletezés, előzmények, HyperDrive, címkézés | \*. experiments.azureml.net | \*. ml.azure.us | \*. ml.azure.cn |
+| Modellkezelés | \*. modelmanagement.azureml.net | \*. ml.azure.us | \*. ml.azure.cn |
+| Folyamat | \*. aether.ms | \*. ml.azure.us | \*. ml.azure.cn |
+| Designer (Studio szolgáltatás) | \*. studioservice.azureml.com | \*. ml.azure.us | \*. ml.azure.cn |
+| Integrált jegyzetfüzet | \*. notebooks.azure.net | \*. notebooks.usgovcloudapi.net |\*. notebooks.chinacloudapi.cn |
+| Integrált jegyzetfüzet | \*. file.core.windows.net | \*. file.core.usgovcloudapi.net | \*. file.core.chinacloudapi.cn |
+| Integrált jegyzetfüzet | \*. dfs.core.windows.net | \*. dfs.core.usgovcloudapi.net | \*. dfs.core.chinacloudapi.cn |
+| Integrált jegyzetfüzet | \*.blob.core.windows.net | \*. blob.core.usgovcloudapi.net | \*. blob.core.chinacloudapi.cn |
+| Integrált jegyzetfüzet | graph.microsoft.com | graph.microsoft.us | graph.chinacloudapi.cn |
+| Integrált jegyzetfüzet | \*. aznbcontent.net |  | |
+
+**Azure Machine Learning számítási példány és számítási fürt gazdagépei**
+
+| **Kötelező ehhez:** | **Azure – nyilvános** | **Azure Government** | **Azure China 21Vianet** |
+| ----- | ----- | ----- | ----- |
+| Számítási fürt/példány | \*. batchai.core.windows.net | \*. batchai.core.usgovcloudapi.net |\*. batchai.ml.azure.cn |
+| Számítási példány | \*. instances.azureml.net | \*. instances.azureml.us | \*. instances.azureml.cn |
+| Számítási példány | \*. instances.azureml.ms |  |  |
+
+**Az Azure Machine Learning által használt társított erőforrások**
+
+| **Kötelező ehhez:** | **Azure – nyilvános** | **Azure Government** | **Azure China 21Vianet** |
+| ----- | ----- | ----- | ----- |
+| Azure Storage-tárfiók neve | core.windows.net | core.usgovcloudapi.net | core.chinacloudapi.cn |
+| Azure Key Vault | vault.azure.net | vault.usgovcloudapi.net | vault.azure.cn |
+| Azure Container Registry | azurecr.io | azurecr.us | azurecr.cn |
+| Microsoft Container Registry | mcr.microsoft.com | mcr.microsoft.com | mcr.microsoft.com |
+
 
 > [!TIP]
 > Ha összevont identitást szeretne használni, kövesse az [ajánlott eljárásokat Active Directory összevonási szolgáltatások (AD FS) cikk biztonságossá tételéhez](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs) .
 
-## <a name="python-hosts"></a>Python-gazdagépek
+Továbbá a [kényszerített Bújtatásban](how-to-secure-training-vnet.md#forced-tunneling) található információk használatával adja hozzá a és a IP-címeit `BatchNodeManagement` `AzureMachineLearning` .
+
+További információ az Azure Kubernetes szolgáltatásban (ak) üzembe helyezett modellekhez való hozzáférés korlátozásáról: [a kimenő forgalom korlátozása az Azure Kubernetes szolgáltatásban](../aks/limit-egress-traffic.md).
+
+### <a name="python-hosts"></a>Python-gazdagépek
 
 Az ebben a szakaszban található gazdagépek a Python-csomagok telepítéséhez használatosak. A fejlesztés, a képzés és a telepítés során szükségesek. 
 
-| **Állomásnév** | **Rendeltetés** |
+> [!NOTE]
+> Ez nem teljes lista az interneten található összes Python-erőforráshoz szükséges gazdagépekről, csak a leggyakrabban használt. Ha például hozzá kell férnie egy GitHub-adattárhoz vagy egy másik gazdagéphez, meg kell adnia és hozzá kell adnia a szükséges gazdagépeket az adott forgatókönyvhöz.
+
+| **Állomásnév** | **Cél** |
 | ---- | ---- |
 | **anaconda.com**</br>**\*. anaconda.com** | Az alapértelmezett csomagok telepítéséhez használatos. |
 | **\*. anaconda.org** | A tárház-adatgyűjtéshez használatos. |
 | **pypi.org** | Az alapértelmezett indexből származó függőségek listázására használatos, és az indexet a felhasználói beállítások nem írják felül. Ha a rendszer felülírja az indexet, a **\* . pythonhosted.org** is engedélyeznie kell. |
+| **\*pytorch.org** | A PyTorch alapján néhány példa használ. |
+| **\*. tensorflow.org** | A Tensorflow alapján néhány példa használ. |
 
-## <a name="r-hosts"></a>R-gazdagépek
+### <a name="r-hosts"></a>R-gazdagépek
 
 A jelen szakaszban található gazdagépek az R-csomagok telepítéséhez használatosak. A fejlesztés, a képzés és a telepítés során szükségesek.
 
-> [!IMPORTANT]
-> Belsőleg az R SDK for Azure Machine Learning Python-csomagokat használ. Így a Python-gazdagépeket is engedélyeznie kell a tűzfalon.
+> [!NOTE]
+> Ez a lista nem tartalmazza az interneten található összes R-erőforráshoz szükséges gazdagépek teljes listáját, csak a leggyakrabban használt. Ha például hozzá kell férnie egy GitHub-adattárhoz vagy egy másik gazdagéphez, meg kell adnia és hozzá kell adnia a szükséges gazdagépeket az adott forgatókönyvhöz.
 
-| **Állomásnév** | **Rendeltetés** |
+| **Állomásnév** | **Cél** |
 | ---- | ---- |
 | **cloud.r-project.org** | A CRAN-csomagok telepítésekor használatos. |
 
-## <a name="azure-government-region"></a>Azure Government régió
-
-A Azure Government-régiókhoz szükséges URL-címek.
-
-| **Állomásnév** | **Rendeltetés** |
-| ---- | ---- |
-| **usgovarizona.api.ml.azure.us** | Az US-Arizona régió |
-| **usgovvirginia.api.ml.azure.us** | Az US-Virginia régió |
-
+> [!IMPORTANT]
+> Belsőleg az R SDK for Azure Machine Learning Python-csomagokat használ. Így a Python-gazdagépeket is engedélyeznie kell a tűzfalon.
 ## <a name="next-steps"></a>Következő lépések
 
 * [Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon](../firewall/tutorial-firewall-deploy-portal.md)

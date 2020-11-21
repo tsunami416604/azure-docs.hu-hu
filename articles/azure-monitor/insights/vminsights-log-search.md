@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 64884f07bc59e5ff2b29eac645ddb469ef3db465
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b3fdf052ce7f0d6a5c3497aa1ac971d9249546a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87325185"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015592"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>Naplók lekérdezése Azure Monitor for VMs
 
@@ -30,7 +30,7 @@ Mivel a megadott időtartományban több rekord is létezhet egy adott folyamat 
 
 ### <a name="connections-and-ports"></a>Kapcsolatok és portok
 
-A kapcsolatok Metrikái szolgáltatás két új táblát vezet be Azure Monitor naplókba – VMConnection és VMBoundPort. Ezek a táblák a számítógépek kapcsolatairól (bejövő és kimenő), valamint a rajtuk nyitott/aktív kiszolgáló-portokról nyújtanak információt. A ConnectionMetrics API-kon keresztül is elérhetők, amelyek lehetővé teszik egy adott metrika egy adott időszakra való beszerzését. A figyelő szoftvercsatornán való *elfogadást* EREDMÉNYEZő TCP-kapcsolatok bejövőek, míg az adott IP-címhez *való csatlakozással* és a porttal való kapcsolat kimenő. A kapcsolatok irányát az Direction tulajdonság jelképezi, amely beállítható **bejövő** vagy **kimenő**értékre. 
+A kapcsolatok Metrikái szolgáltatás két új táblát vezet be Azure Monitor naplókba – VMConnection és VMBoundPort. Ezek a táblák a számítógépek kapcsolatairól (bejövő és kimenő), valamint a rajtuk nyitott/aktív kiszolgáló-portokról nyújtanak információt. A ConnectionMetrics API-kon keresztül is elérhetők, amelyek lehetővé teszik egy adott metrika egy adott időszakra való beszerzését. A figyelő szoftvercsatornán való *elfogadást* EREDMÉNYEZő TCP-kapcsolatok bejövőek, míg az adott IP-címhez *való csatlakozással* és a porttal való kapcsolat kimenő. A kapcsolatok irányát az Direction tulajdonság jelképezi, amely beállítható **bejövő** vagy **kimenő** értékre. 
 
 A táblázatokban szereplő rekordok a Dependency Agent által jelentett adatokból jönnek létre. Minden rekord egy 1 perces időszakra vonatkozó megfigyelést jelöl. A TimeGenerated tulajdonság az időintervallum kezdetét jelzi. Minden rekord tartalmaz információt a megfelelő entitás, azaz a csatlakozás vagy a port, valamint az entitáshoz társított metrikák azonosítására. Jelenleg csak a TCP protokollt használó hálózati tevékenységek jelentik a jelentést. 
 
@@ -88,7 +88,7 @@ Néhány fontos szempontot figyelembe kell venni:
 1. Ha egy folyamat ugyanazon az IP-címen, de több hálózati adapteren keresztül fogad kapcsolatokat, a rendszer minden egyes csatolóhoz külön rekordot fog jelenteni. 
 2. A helyettesítő karakteres IP-címmel rendelkező rekordok nem tartalmaznak tevékenységet. A szolgáltatás tartalmazza azt a tényt, hogy a gépen lévő port nyitva van a bejövő forgalom számára.
 3. A részletesség és az adatmennyiség csökkentése érdekében a helyettesítő karakteres IP-címekkel rendelkező rekordok kimaradnak, ha egy adott IP-címmel rendelkező egyező rekord van (ugyanahhoz a folyamathoz, porthoz és protokollhoz). Ha nincs megadva helyettesítő IP-rekord, a IsWildcardBind Record tulajdonsága az adott IP-címmel "true" (igaz) értékre lesz állítva, amely jelzi, hogy a port a jelentéskészítő gép összes felületén elérhetővé válik.
-4. Azokat a portokat, amelyek csak egy adott csatolón vannak kötve, a IsWildcardBind *hamis*értékre van állítva.
+4. Azokat a portokat, amelyek csak egy adott csatolón vannak kötve, a IsWildcardBind *hamis* értékre van állítva.
 
 #### <a name="naming-and-classification"></a>Elnevezés és besorolás
 
@@ -112,8 +112,8 @@ A *VMConnection* táblában lévő összes RemoteIp-tulajdonságot a rendszer az
 |:--|:--|
 |MaliciousIp |A RemoteIp címe |
 |IndicatorThreadType |Az észlelt veszélyforrás a következő értékek egyike: *botnet*, *C2*, *CryptoMining*, *Darknet*, *DDos*, *MaliciousUrl*, *malware*, *phishing*, *proxy*, *PUA*, *List*.   |
-|Leírás |A megfigyelt fenyegetés leírása. |
-|TLPLevel |A forgalmi lámpa protokoll (TLP) szintje az egyik definiált érték, a *fehér*, a *zöld*, a *sárga*és a *vörös*. |
+|Description |A megfigyelt fenyegetés leírása. |
+|TLPLevel |A forgalmi lámpa protokoll (TLP) szintje az egyik definiált érték, a *fehér*, a *zöld*, a *sárga* és a *vörös*. |
 |Megbízhatóság |Az értékek *0 – 100*. |
 |Súlyosság |Az értékek *0 – 5*, ahol az *5* a legsúlyosabb, a *0* pedig egyáltalán nem súlyos. Az alapértelmezett érték *3*.  |
 |FirstReportedDateTime |Az első alkalommal, amikor a szolgáltató jelentette a kijelzőt. |
@@ -149,8 +149,8 @@ Néhány fontos szempontot figyelembe kell venni:
 
 - Ha egy folyamat ugyanazon az IP-címen, de több hálózati adapteren keresztül fogad kapcsolatokat, a rendszer minden egyes csatolóhoz külön rekordot fog jelenteni.  
 - A helyettesítő karakteres IP-címmel rendelkező rekordok nem tartalmaznak tevékenységet. A szolgáltatás tartalmazza azt a tényt, hogy a gépen lévő port nyitva van a bejövő forgalom számára. 
-- A részletesség és az adatmennyiség csökkentése érdekében a helyettesítő karakteres IP-címekkel rendelkező rekordok kimaradnak, ha egy adott IP-címmel rendelkező egyező rekord van (ugyanahhoz a folyamathoz, porthoz és protokollhoz). Helyettesítő karakteres IP-rekord kihagyása esetén az adott IP-címmel rendelkező rekord *IsWildcardBind* tulajdonsága *igaz*értékre lesz állítva.  Ez azt jelzi, hogy a port a jelentéskészítő gép minden felületén elérhető. 
-- Azokat a portokat, amelyek csak egy adott csatolón vannak kötve, a IsWildcardBind *hamis*értékre van állítva. 
+- A részletesség és az adatmennyiség csökkentése érdekében a helyettesítő karakteres IP-címekkel rendelkező rekordok kimaradnak, ha egy adott IP-címmel rendelkező egyező rekord van (ugyanahhoz a folyamathoz, porthoz és protokollhoz). Helyettesítő karakteres IP-rekord kihagyása esetén az adott IP-címmel rendelkező rekord *IsWildcardBind* tulajdonsága *igaz* értékre lesz állítva.  Ez azt jelzi, hogy a port a jelentéskészítő gép minden felületén elérhető. 
+- Azokat a portokat, amelyek csak egy adott csatolón vannak kötve, a IsWildcardBind *hamis* értékre van állítva. 
 
 ### <a name="vmcomputer-records"></a>VMComputer-rekordok
 
@@ -230,10 +230,10 @@ A *VMProcess* rendelkező rekordok a függőségi ügynökkel rendelkező kiszol
 |ExecutableName | A folyamat végrehajtható fájljának neve | 
 |DisplayName | Folyamat megjelenítendő neve |
 |Szerepkör | Szerepkör feldolgozása: *webkiszolgáló*, *appServer*, *databaseServer*, *ldapServer*, *smbServer* |
-|Group | A feldolgozó csoport neve. Az ugyanabban a csoportban lévő folyamatok logikailag kapcsolódnak egymáshoz, például ugyanannak a terméknek vagy rendszerösszetevőnek a része. |
+|Csoport | A feldolgozó csoport neve. Az ugyanabban a csoportban lévő folyamatok logikailag kapcsolódnak egymáshoz, például ugyanannak a terméknek vagy rendszerösszetevőnek a része. |
 |StartTime | A folyamat készletének kezdési ideje |
 |FirstPid | A folyamat első PID-je |
-|Leírás | A folyamat leírása |
+|Description | A folyamat leírása |
 |CompanyName | A vállalat neve |
 |InternalName | A belső név |
 |TermékNév | A termék neve |
@@ -442,7 +442,7 @@ A *InsightsMetrics* rendelkező rekordok a virtuális gép vendég operációs r
 |Computer | A számítógép teljes tartományneve | 
 |Forrás | *vm.azm.ms* |
 |Névtér | A teljesítményszámláló kategóriája | 
-|Name (Név) | A teljesítményszámláló neve |
+|Name | A teljesítményszámláló neve |
 |Val | Összegyűjtött érték | 
 |Címkék | A rekorddal kapcsolatos részletek. Az alábbi táblázatban láthatja a különböző bejegyzéstípusokkal használt címkéket.  |
 |Ügynökazonosító | Az egyes számítógépek ügynökének egyedi azonosítója |
@@ -471,9 +471,9 @@ A jelenleg a *InsightsMetrics* táblába összegyűjtött teljesítményszámlá
 | LogicalDisk | BytesPerSecond        | Logikai lemez bájtjai másodpercenként             | BytesPerSecond | az eszköz mountId-csatlakoztatási azonosítója |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha a Azure Monitor naplóbeli lekérdezések írásakor új, tekintse át a következő [témakört: log Analytics használata](../log-query/get-started-portal.md) a Azure Portal a naplók írásához.
 
-* További információ a [keresési lekérdezések írásához](../log-query/search-queries.md).
+* További információ a [keresési lekérdezések írásához](/azure/azure-monitor/log-query/get-started-queries).
 

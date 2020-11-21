@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: erhopf
-ms.openlocfilehash: eace63effdbd62d8f08395aa16683627b475a963
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 698a1d52af6c2472d6c025851ead1a0b6a6dff82
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86232525"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015341"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Beszédfelismerési eszközök SDK mikrofon tömb javaslatai
 
@@ -97,7 +97,7 @@ A következő, architektúrára vonatkozó irányelvek szükségesek a mikrofono
 | Mintavételi óra      | Az eszköz hangjának szabad vibrálása és eldobása alacsony driftgel |
 | Rögzítési képesség   | Az eszköznek képesnek kell lennie az egyes csatornán lévő nyers adatfolyamok egyidejű rögzítésére |
 | USB                 | Az összes USB hangbeviteli eszköznek az [USB-hangeszközök Rev3 specifikációjának](https://www.usb.org/document-library/usb-audio-devices-rev-30-and-adopters-agreement) megfelelően kell beállítania a leírót. |
-| Mikrofon geometriája | Az illesztőprogramoknak helyesen kell bevezetniük a [mikrofon tömb geometriájának leíróit](https://docs.microsoft.com/windows-hardware/drivers/audio/ksproperty-audio-mic-array-geometry) |
+| Mikrofon geometriája | Az illesztőprogramoknak helyesen kell bevezetniük a [mikrofon tömb geometriájának leíróit](/windows-hardware/drivers/audio/ksproperty-audio-mic-array-geometry) |
 | Felfedező     | Az eszközök nem rendelkezhetnek a nem felderíthető vagy nem ellenőrizhető hardver-, belső vezérlőprogram-vagy harmadik féltől származó szoftveres, nem lineáris hangfeldolgozási algoritmusokkal az eszközre. |
 | Rögzítési formátum      | A rögzítési formátumoknak a minimális mintavételezési sebességet kell használniuk 16 kHz és ajánlott 24 bites mélység |
 
@@ -109,7 +109,7 @@ A hardveres összetevők, például a PDM-TDM átalakításnak biztosítaniuk ke
 
 A nagy sebességű, 2,0-es USB-hangosztályt minden audio MCU támogatnia kell, hogy a szükséges sávszélességet akár hét csatornán, nagyobb mintavételi sebességgel és kis mélységgel lehessen biztosítani.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [További információ a Speech Devices SDK-ról](speech-devices-sdk.md)
