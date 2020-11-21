@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: trbye
-ms.openlocfilehash: 5d95525c7dfecd44758c86903ca4a96c2290df52
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c27493748381a3aced92aab41745f352f228c50e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487779"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024993"
 ---
 # <a name="what-is-conversation-transcription-in-meetings-preview"></a>Mi a beszélgetési átirat az értekezletekben (előzetes verzió)?
 
@@ -34,7 +34,7 @@ A beszélgetés átirata egy [beszéd-szöveg](speech-to-text.md) típusú megol
 > [!NOTE]
 > Bár a beszélgetés átirata nem korlátozza a beszélők számát a helyiségben, a 2-10 Beszélők száma munkamenetre van optimalizálva.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 A kezdéshez tekintse [meg a](how-to-use-conversation-transcription.md) valós idejű beszélgetés átiratának rövid útmutatóját.
 
@@ -54,7 +54,7 @@ Ez magas szintű áttekintést nyújt a beszélgetések átírásának működé
 
 ## <a name="expected-inputs"></a>Várt bemenetek
 
-- **Többcsatornás hangstream** – a specifikáció és a kialakítás részleteiért lásd: [Microsoft Speech Device SDK mikrofon](https://aka.ms/cts/microphone). További információért vagy a fejlesztői csomag megvásárlásához lásd: [Microsoft Speech Device SDK](https://aka.ms/cts/getsdk)beszerzése.
+- **Többcsatornás hangstream** – a specifikáció és a kialakítás részleteiért lásd: [Microsoft Speech Device SDK mikrofon](./speech-devices-sdk-microphone.md). További információért vagy a fejlesztői csomag megvásárlásához lásd: [Microsoft Speech Device SDK](./get-speech-devices-sdk.md)beszerzése.
 - **Felhasználói hangminták** – a beszélgetés átirata felhasználói profilokat igényel a beszélgetés előtt. Az egyes felhasználóktól származó hangfelvételeket kell összegyűjtenie, majd a hangfelvételeket az aláírás-létrehozási [szolgáltatásba](https://aka.ms/cts/signaturegenservice) kell küldenie, hogy érvényesítse a hangot, és létrehozza a felhasználói profilokat.
 
 > [!NOTE]

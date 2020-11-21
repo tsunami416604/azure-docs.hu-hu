@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 9bcc3d08fa29109cf4178f8eb0c3efe661323ef0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6f01354bb5aa2b78d3c9962bac49be39dd2c81f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541781"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025993"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Adatok kinyerése a teljes szövegből szándékok és entitások alapján
 A LUIS lehetővé teszi a felhasználók természetes nyelvi hosszúságú kimondott szöveg származó információk beszerzését. Az adatok kinyerése oly módon történik, hogy egy program, egy alkalmazás vagy egy csevegési bot is felhasználja a műveletet. A következő részekben megismerheti, hogy a rendszer milyen adatokhoz adja vissza a leképezéseket és entitásokat a JSON-példákkal.
@@ -232,9 +232,9 @@ A [PersonName](luis-reference-prebuilt-person.md) és a [GeographyV2](luis-refer
 
 ### <a name="names-of-people"></a>Személyek nevei
 
-A nyelvtől és a kulturális környezettől függően előfordulhat, hogy a személyek neve némileg eltérő lehet. Használjon egy előre elkészített **[personName](luis-reference-prebuilt-person.md)** -entitást vagy egy olyan **[egyszerű entitást](luis-concept-entity-types.md#simple-entity)** , amely a vezetéknév és az utónév [szerepkörrel](luis-concept-roles.md) rendelkezik.
+A nyelvtől és a kulturális környezettől függően előfordulhat, hogy a személyek neve némileg eltérő lehet. Használjon egy előre elkészített **[personName](luis-reference-prebuilt-person.md)** -entitást vagy egy olyan **[egyszerű entitást](luis-concept-entity-types.md)** , amely a vezetéknév és az utónév szerepkörrel rendelkezik.
 
-Ha az egyszerű entitást használja, ügyeljen arra, hogy olyan példákat adjon meg, amelyek az utónév és a vezetéknév különböző részeiben használják a hosszúságú kimondott szöveg, és hosszúságú kimondott szöveg az összes szándékot, beleértve a none szándékot is. Rendszeresen [tekintse át](luis-how-to-review-endoint-utt.md) a végpontok hosszúságú kimondott szöveg a nem megfelelően előre jelzett nevek címkézéséhez.
+Ha az egyszerű entitást használja, ügyeljen arra, hogy olyan példákat adjon meg, amelyek az utónév és a vezetéknév különböző részeiben használják a hosszúságú kimondott szöveg, és hosszúságú kimondott szöveg az összes szándékot, beleértve a none szándékot is. Rendszeresen [tekintse át](./luis-how-to-review-endpoint-utterances.md) a végpontok hosszúságú kimondott szöveg a nem megfelelően előre jelzett nevek címkézéséhez.
 
 ### <a name="names-of-places"></a>Helyek nevei
 
@@ -242,17 +242,17 @@ A helyek nevei be vannak állítva és ismertek, például városok, megyék, Á
 
 ### <a name="new-and-emerging-names"></a>Új és feltörekvő nevek
 
-Néhány alkalmazásnak képesnek kell lennie új és újonnan megjelenő nevek, például termékek vagy vállalatok megtalálására. Az ilyen típusú nevek a legnehezebb kinyerési típus. Kezdje egy **[egyszerű entitással](luis-concept-entity-types.md#simple-entity)** , és adjon hozzá egy [kifejezést tartalmazó listát](luis-concept-feature.md). Rendszeresen [tekintse át](luis-how-to-review-endoint-utt.md) a végpontok hosszúságú kimondott szöveg a nem megfelelően előre jelzett nevek címkézéséhez.
+Néhány alkalmazásnak képesnek kell lennie új és újonnan megjelenő nevek, például termékek vagy vállalatok megtalálására. Az ilyen típusú nevek a legnehezebb kinyerési típus. Kezdje egy **[egyszerű entitással](luis-concept-entity-types.md#simple-entity)** , és adjon hozzá egy [kifejezést tartalmazó listát](luis-concept-feature.md). Rendszeresen [tekintse át](./luis-how-to-review-endpoint-utterances.md) a végpontok hosszúságú kimondott szöveg a nem megfelelően előre jelzett nevek címkézéséhez.
 
 ## <a name="patternany-entity-data"></a>Minta. az entitások összes adathalmaza
 
 [Minta.](reference-entity-pattern-any.md) a változó hosszúságú helyőrző csak a minta sablonjának megjelölésére szolgál, amely jelzi, hogy az entitás hol kezdődik és végződik. A mintában használt entitásnak a minta alkalmazásához szükségesnek kell lennie.
 
 ## <a name="sentiment-analysis"></a>Hangulatelemzés
-Ha a visszajelzések elemzése a [Közzététel](luis-how-to-publish-app.md#sentiment-analysis)során van konfigurálva, a Luis JSON-válasz tartalmazza a hangulat elemzését. További információ az [text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) dokumentációjában található érzelmek elemzéséről.
+Ha a visszajelzések elemzése a [Közzététel](luis-how-to-publish-app.md#sentiment-analysis)során van konfigurálva, a Luis JSON-válasz tartalmazza a hangulat elemzését. További információ az [text Analytics](../text-analytics/index.yml) dokumentációjában található érzelmek elemzéséről.
 
 ## <a name="key-phrase-extraction-entity-data"></a>A Key kifejezés kinyerő entitások adathalmaza
-A [kulcs kifejezés](luis-reference-prebuilt-keyphrase.md) kinyerő entitása a [text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/)által megadott, a teljes szövegben szereplő kulcsfontosságú kifejezéseket adja vissza.
+A [kulcs kifejezés](luis-reference-prebuilt-keyphrase.md) kinyerő entitása a [text Analytics](../text-analytics/index.yml)által megadott, a teljes szövegben szereplő kulcsfontosságú kifejezéseket adja vissza.
 
 ## <a name="data-matching-multiple-entities"></a>Több entitásnak megfelelő adathalmaz
 

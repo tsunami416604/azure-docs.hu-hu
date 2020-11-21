@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4c1284c13d1516ac4061319287adb64ab7e14ff5
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 73902cf53d9995f7dfc1991e3b7ed7c7c469bf2a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579470"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026661"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Az Azure Cognitive Search újdonságai
 
@@ -23,7 +23,7 @@ Ismerje meg a szolgáltatás újdonságait. Könyvjelző ezen az oldalon naprak�
 
 |Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategória | Leírás | Rendelkezésre állás  |
 |------------------------------|----------|-------------|---------------|
-|[az ügyfél által felügyelt kulcs titkosítása indexelő, adatforrások és szakértelmével felett](search-security-manage-encryption-keys.md) | Biztonság | Ez a kiegészítés kiterjeszti az ügyfél által felügyelt titkosítást a keresési szolgáltatás által létrehozott és kezelt eszközök teljes skáláján. Ne felejtse el, hogy a CMK-támogatás egy további titkosítási réteget is felvesz a Microsoft által kezelt és felügyelt alapszintű titkosításhoz. | Általánosan elérhető a REST API-verzió = 2020-06-30 |  
+|[Az ügyfél által felügyelt kulcs titkosítása indexelő, adatforrások és szakértelmével felett](search-security-manage-encryption-keys.md) | Biztonság | Ez a kiegészítés kiterjeszti az ügyfél által felügyelt titkosítást a keresési szolgáltatás által létrehozott és kezelt eszközök teljes skáláján. Ne felejtse el, hogy az ügyfél által felügyelt kulcs támogatása egy további titkosítási réteget is felvesz a Microsoft által kezelt és felügyelt alapszintű titkosításhoz. | Általánosan elérhető a REST API-verzió = 2020-06-30 |  
 
 ## <a name="september-2020"></a>2020. szeptember
 
@@ -41,7 +41,7 @@ Hozzon létre egy Azure Active Directory keresési szolgáltatás identitását,
 
 |Vonás&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Kategória | Leírás | Rendelkezésre állás  |
 |---------|------------------|-------------|---------------|
-| [dupla titkosítás](search-security-overview.md#encryption) | Biztonság | Engedélyezze a dupla titkosítást a tárolási rétegben az ügyfél által felügyelt kulcs (CMK) titkosításának az új keresési szolgáltatásokban történő konfigurálásával. Hozzon létre egy új szolgáltatást, [konfigurálja és alkalmazza az ügyfél által felügyelt kulcsokat](search-security-manage-encryption-keys.md) indexekre vagy szinonimára, és használja ki az adott tartalomra vonatkozó kettős titkosítás előnyeit. | Általánosan elérhető minden olyan keresési szolgáltatáshoz, amely 2020. augusztus 1-től a következő régiókban lett létrehozva: USA 2. nyugati régiója, USA keleti régiója, USA déli középső régiója, US Gov Virginia, US Gov Arizona. A szolgáltatás létrehozásához használja a portált, a felügyeleti REST API-kat vagy az SDK-kat. |
+| [dupla titkosítás](search-security-overview.md#encryption) | Biztonság | Engedélyezze a dupla titkosítást a tárolási rétegben az ügyfél által felügyelt kulcs titkosításának az új keresési szolgáltatásokban való konfigurálásával. Hozzon létre egy új szolgáltatást, [konfigurálja és alkalmazza az ügyfél által felügyelt kulcsokat](search-security-manage-encryption-keys.md) indexekre vagy szinonimára, és használja ki az adott tartalomra vonatkozó kettős titkosítás előnyeit. | Általánosan elérhető minden olyan keresési szolgáltatáshoz, amely 2020. augusztus 1-től a következő régiókban lett létrehozva: USA 2. nyugati régiója, USA keleti régiója, USA déli középső régiója, US Gov Virginia, US Gov Arizona. A szolgáltatás létrehozásához használja a portált, a felügyeleti REST API-kat vagy az SDK-kat. |
 
 ## <a name="july-2020"></a>2020. július
 

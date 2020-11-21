@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 81b4ffc8f77673e52bb78f891e3de618b67e0d1b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1d62d36d5cc48edc198e5d7bfc49f7f31b89a2c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74806062"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025616"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Emberi címkével ellátott átiratok létrehozása
 
@@ -162,9 +162,9 @@ A következő normalizálás szabályok automatikusan érvényesek az átíráso
 | ¡ Eine Frag!     | Eine-Frag               |
 | Wir, a Hegedűs       | Wir-Hegedűs                |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Az adatfeldolgozás előkészítése és tesztelése](how-to-custom-speech-test-data.md)
+- [Az adatfeldolgozás előkészítése és tesztelése](./how-to-custom-speech-test-and-train.md)
 - [Az adatai ellenőrzése](how-to-custom-speech-inspect-data.md)
 - [Az adatai kiértékelése](how-to-custom-speech-evaluate-data.md)
 - [A modell betanítása](how-to-custom-speech-train-model.md)

@@ -5,18 +5,18 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 04/20/2020
+ms.date: 11/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 67e33732574d2a6c173675d5adf0a7d1c2050688
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d94cd649df9da6b36ac484d4fc1e6acef7a21bb7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90528176"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026165"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>Frissítések kezelése a karbantartási ellenőrzés és az Azure CLI használatával
 
-A karbantartási ellenőrzéssel eldöntheti, hogy mikor alkalmazza a frissítéseket az elkülönített virtuális gépekre és az Azure dedikált gazdagépekre. Ez a témakör a karbantartási vezérlők Azure CLI-beállításait ismerteti. További információ a karbantartási ellenőrzés, a hozzá tartozó korlátozások és egyéb felügyeleti lehetőségek használatáról: a [platform frissítéseinek kezelése a karbantartási ellenőrzéssel](maintenance-control.md).
+A karbantartási vezérléssel eldöntheti, hogy mikor alkalmazza a platform frissítéseit az elkülönített virtuális gépek és az Azure dedikált gazdagépek infrastruktúrájának üzemeltetésére. Ez a témakör a karbantartási vezérlők Azure CLI-beállításait ismerteti. További információ a karbantartási ellenőrzés, a hozzá tartozó korlátozások és egyéb felügyeleti lehetőségek használatáról: a [platform frissítéseinek kezelése a karbantartási ellenőrzéssel](maintenance-control.md).
 
 ## <a name="create-a-maintenance-configuration"></a>Karbantartási konfiguráció létrehozása
 
@@ -28,14 +28,14 @@ az group create \
    --name myMaintenanceRG
 az maintenance configuration create \
    -g myMaintenanceRG \
-   --name myConfig \
-   --maintenanceScope host\
+   --resource-name myConfig \
+   --maintenance-scope host\
    --location eastus
 ```
 
 Másolja a konfigurációs azonosítót a kimenetből későbbi használatra.
 
-A használatával `--maintenanceScope host` biztosíthatja, hogy a rendszer a karbantartási konfigurációt használja a gazdagép frissítéseinek vezérlésére.
+A használata `--maintenance-scope host` biztosítja, hogy a rendszer a karbantartási konfigurációt használja a gazdagép-infrastruktúra frissítéseinek szabályozására.
 
 Ha azonos nevű konfigurációt próbál létrehozni, de egy másik helyen, hibaüzenetet fog kapni. A konfigurációs névnek egyedinek kell lennie az erőforráscsoport számára.
 
@@ -44,6 +44,30 @@ Az elérhető karbantartási konfigurációk lekérdezését a használatával v
 ```azurecli-interactive
 az maintenance configuration list --query "[].{Name:name, ID:id}" -o table 
 ```
+
+### <a name="create-a-maintenance-configuration-with-scheduled-window"></a>Karbantartási konfiguráció létrehozása ütemezett ablakkal
+Akkor is deklarálhat egy ütemezett időszakot, amikor az Azure alkalmazza a frissítéseket az erőforrásokra. Ez a példa egy konfig nevű karbantartási konfigurációt hoz létre, amelynek ütemezett ablaka 5 óra minden hónap negyedik hétfőjén. Miután létrehozott egy ütemezett ablakot, már nem kell manuálisan alkalmaznia a frissítéseket.
+
+```azurecli-interactive
+az maintenance configuration create \
+   -g myMaintenanceRG \
+   --resource-name myConfig \
+   --maintenance-scope host \
+   --location eastus \
+   --maintenance-window-duration "05:00" \
+   --maintenance-window-recur-every "Month Fourth Monday" \
+   --maintenance-window-start-date-time "2020-12-30 08:00" \
+   --maintenance-window-time-zone "Pacific Standard Time"
+```
+
+> [!IMPORTANT]
+> A karbantartási **időtartamnak** *2 óra* vagy hosszabbnak kell lennie. A karbantartási **ismétlődést** legalább 35 nap múlva be kell állítani.
+
+A karbantartási ismétlődések napi, heti vagy havi formában is megadhatók. Néhány példa:
+- **napi** karbantartás-ablak-ismétlődés-minden: "nap" **vagy** "3days"
+- **heti**-karbantartás-ablak-ismétlődés-minden: "3Weeks" **vagy** "Week szombat, vasárnap"
+- **havi**-karbantartás-ablak-ismétlődés – minden: "hónap day23, day24" **vagy** "hónap utolsó vasárnapján" **vagy** "hónap negyedik hétfője"
+
 
 ## <a name="assign-the-configuration"></a>A konfiguráció kiosztása
 
@@ -251,7 +275,7 @@ az maintenance applyupdate get \
 az maintenance configuration delete \
    --subscription 1111abcd-1a11-1a2b-1a12-123456789abc \
    -g myResourceGroup \
-   --name myConfig
+   --resource-name myConfig
 ```
 
 ## <a name="next-steps"></a>Következő lépések

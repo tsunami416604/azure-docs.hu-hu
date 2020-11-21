@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/05/2020
-ms.openlocfilehash: c4a564834166686e8280f1117269742b489fc62c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 398324099f923a5141b172d61f9fd41a69dbf069
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334752"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025293"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>Oktatóanyag: LUIS-alkalmazás létrehozása a felhasználói szándékok meghatározásához
 
@@ -51,7 +51,7 @@ A rendszer a felhasználói hosszúságú kimondott szöveg a természetes nyelv
 
 A Kimondás besorolásához a szándéknak példákat kell besorolnia a felhasználói hosszúságú kimondott szöveg.
 
-1. A létrehozás **szakaszban a** **szándékok** lapon válassza a **+ Létrehozás** lehetőséget egy új leképezés létrehozásához. Adja meg az új leképezés nevét, `OrderPizza` majd válassza a **kész**lehetőséget.
+1. A létrehozás **szakaszban a** **szándékok** lapon válassza a **+ Létrehozás** lehetőséget egy új leképezés létrehozásához. Adja meg az új leképezés nevét, `OrderPizza` majd válassza a **kész** lehetőséget.
 
     A `OrderPizza` szándék azt jelzi, hogy egy felhasználó szeretne-e pizzát rendelni.
 
@@ -193,10 +193,10 @@ Miután a LUIS visszaadja a JSON-választ, a LUIS nem foglalkozik tovább a kér
 * [Betanítás](luis-how-to-train.md)
 * [Közzétételi útmutató](luis-how-to-publish-app.md)
 * [Tesztelés a LUIS portálon](luis-interactive-test.md)
-* [Azure-robot](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
+* [Azure-robot](/azure/bot-service/?view=azure-bot-service-4.0)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Felbomló entitás hozzáadása az alkalmazáshoz](tutorial-machine-learned-entity.md)

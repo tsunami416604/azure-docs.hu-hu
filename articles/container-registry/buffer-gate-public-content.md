@@ -4,13 +4,13 @@ description: Eljárások és munkafolyamatok a Azure Container Registry a Docker
 author: dlepow
 ms.topic: article
 ms.author: danlep
-ms.date: 10/29/2020
-ms.openlocfilehash: def1c3a9b8a1086f453c7e71d766ab0dd89b0c2d
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.date: 11/20/2020
+ms.openlocfilehash: 0c92899528d417f9c91f8f8930ca4932dc74e850
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347522"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024738"
 ---
 # <a name="manage-public-content-with-azure-container-registry"></a>Nyilvános tartalom kezelése Azure Container Registry
 
@@ -26,6 +26,8 @@ A megfelelő vezérlők nélkül a nyilvános beállításjegyzékbeli tartalomm
 ## <a name="authenticate-with-docker-hub"></a>Hitelesítés a Docker hub használatával
 
 Első lépésként, ha jelenleg a Docker hub nyilvános lemezképeit egy Build vagy üzembe helyezési munkafolyamat részeként kéri le, javasoljuk, hogy a névtelen lekéréses kérelem helyett [Docker hub-fiókkal végezzen hitelesítést](https://docs.docker.com/docker-hub/download-rate-limit/#how-do-i-authenticate-pull-requests) .
+
+Gyakori névtelen lekéréses kérelmek esetében előfordulhat, hogy a hibák elkerülése érdekében a Docker-hubhoz hasonló, vagy az ahhoz való hitelesítéshez szükséges Docker-hibák jelennek meg `ERROR: toomanyrequests: Too Many Requests.` `You have reached your pull rate limit.` .
 
 > [!NOTE]
 > 2020. november 2. [között a letöltési sebességre vonatkozó korlátozások](https://docs.docker.com/docker-hub/download-rate-limit) a Docker ingyenes csomag fiókjaiban a Docker hub névtelen és hitelesített kéréseire vonatkoznak, és az IP-cím és a Docker-azonosító alapján érvényesítik azokat. 
@@ -46,21 +48,21 @@ Számos Azure-szolgáltatás, többek között a App Service és a Azure Contain
 
 **APP SERVICE**
 
-* **Rendszerkép forrása** : Docker hub
-* **Tárház-hozzáférés** : privát
-* **Bejelentkezés** : \<Docker Hub username>
-* **Jelszó** : \<Docker Hub token>
+* **Rendszerkép forrása**: Docker hub
+* **Tárház-hozzáférés**: privát
+* **Bejelentkezés**: \<Docker Hub username>
+* **Jelszó**: \<Docker Hub token>
 
 Részletekért lásd: [Docker hub hitelesített lekérések app Serviceon](https://azure.github.io/AppService/2020/10/15/Docker-Hub-authenticated-pulls-on-App-Service.html).
 
 **Azure Container Instances**
 
-* **Rendszerkép forrása** : Docker hub vagy más beállításjegyzék
-* **Rendszerkép típusa** : Private
-* **Rendszerkép-beállításjegyzék bejelentkezési kiszolgálója** : Docker.IO
-* **Rendszerkép-beállításjegyzékbeli Felhasználónév** : \<Docker Hub username>
-* **Rendszerkép beállításjegyzékbeli jelszava** : \<Docker Hub token>
-* **Rendszerkép** : Docker.IO/ \<repo name\> :\<tag>
+* **Rendszerkép forrása**: Docker hub vagy más beállításjegyzék
+* **Rendszerkép típusa**: Private
+* **Rendszerkép-beállításjegyzék bejelentkezési kiszolgálója**: Docker.IO
+* **Rendszerkép-beállításjegyzékbeli Felhasználónév**: \<Docker Hub username>
+* **Rendszerkép beállításjegyzékbeli jelszava**: \<Docker Hub token>
+* **Rendszerkép**: Docker.IO/ \<repo name\> :\<tag>
 
 ## <a name="import-images-to-an-azure-container-registry"></a>Lemezképek importálása Azure Container registrybe
  

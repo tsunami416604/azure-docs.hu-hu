@@ -10,17 +10,17 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: erhopf
-ms.openlocfilehash: c55d69e99715a0c646c4e836df06cf105f9770bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3ff2a1f92cabb61f58d70b732738e613afa7cd9
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319116"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025633"
 ---
 # <a name="inspect-custom-speech-data"></a>Custom Speech-adatok vizsgálata
 
 > [!NOTE]
-> Ez az oldal azt feltételezi, hogy elolvasta a [Custom Speechi tesztelési adatokat](how-to-custom-speech-test-data.md) , és feltöltött egy adatkészletet a vizsgálathoz.
+> Ez az oldal azt feltételezi, hogy elolvasta a [Custom Speechi tesztelési adatokat](./how-to-custom-speech-test-and-train.md) , és feltöltött egy adatkészletet a vizsgálathoz.
 
 A Custom Speech olyan eszközöket biztosít, amelyekkel vizuálisan ellenőrizheti a modell felismerési minőségét a hangadatoknak a megfelelő felismerési eredménnyel való összehasonlításával. A [Custom Speech-portálon](https://speech.microsoft.com/customspeech)lejátszhatja a feltöltött hangot, és megállapíthatja, hogy a megadott felismerési eredmény helyes-e. Ez az eszköz segít megvizsgálni a Microsoft alapszintű beszéd-szöveg modelljét, megvizsgálja a betanított egyéni modellt, vagy összehasonlítja a két modellből való átírást.
 
@@ -31,11 +31,11 @@ Ebből a dokumentumból megtudhatja, hogyan vizsgálhatja meg a Microsoft alapve
 Teszt létrehozásához kövesse az alábbi utasításokat:
 
 1. Jelentkezzen be a [Custom Speech portálra](https://speech.microsoft.com/customspeech).
-2. Navigáljon a **beszéd – szöveg > Custom Speech > [a projekt neve] > tesztelése**elemre.
-3. Kattintson a **teszt hozzáadása**gombra.
+2. Navigáljon a **beszéd – szöveg > Custom Speech > [a projekt neve] > tesztelése** elemre.
+3. Kattintson a **teszt hozzáadása** gombra.
 4. Válassza a **minőség vizsgálata (csak hangalapú adatok)** lehetőséget. Adja meg a teszt nevét, leírását, és válassza ki a hangkészletet.
 5. Válasszon legfeljebb két modellt, amelyeket szeretne tesztelni.
-6. Kattintson a **Létrehozás** lehetőségre.
+6. Kattintson a **Létrehozás** gombra.
 
 Egy teszt sikeres létrehozása után megtekintheti, hogy egy modell hogyan írja át a megadott hangkészletet, vagy összehasonlítja a két modell eredményeit egymás mellett.
 
@@ -104,4 +104,4 @@ Az adatba exportált fájlok teljesen új adatkészletként lesznek felhasználv
 
 ## <a name="additional-resources"></a>További források
 
-- [Custom Speech tesztelési célú adatfeldolgozása](how-to-custom-speech-test-data.md)
+- [Custom Speech tesztelési célú adatfeldolgozása](./how-to-custom-speech-test-and-train.md)

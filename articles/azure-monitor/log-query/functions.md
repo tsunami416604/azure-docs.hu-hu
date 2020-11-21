@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/31/2020
-ms.openlocfilehash: 155f27b9f04db74955640aad8f582fdf05539368
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 678a6f0dc19d966f3d15e713008c19c8fbb96f5e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87511938"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024364"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Függvények használata Azure Monitor log-lekérdezésekben
 
@@ -23,10 +23,10 @@ A **Save (Mentés** ) gombra kattintva hozzon létre egy Azure Portal log Analyt
 
 | Beállítás | Leírás |
 |:---|:---|
-| Name (Név)           | A lekérdezés megjelenített neve a **query Explorerben**. |
+| Név           | A lekérdezés megjelenített neve a **query Explorerben**. |
 | Mentés másként        | Függvény |
 | Függvény aliasa | A függvény más lekérdezésekben való használatának rövid neve. A nem tartalmazhat szóközt, és egyedinek kell lennie. |
-| Kategória       | A **lekérdezési Explorerben**mentett lekérdezések és függvények rendszerezésének kategóriája. |
+| Kategória       | A **lekérdezési Explorerben** mentett lekérdezések és függvények rendszerezésének kategóriája. |
 
 
 
@@ -53,13 +53,13 @@ Hozzon létre egy másik lekérdezést, és hivatkozzon a _security_updates_last
 security_updates_last_day | where Title contains "SQL"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Monitor log-lekérdezések írásához további leckéket talál:
 
-- [Sztringműveletek](string-operations.md)
-- [Dátum és idő típusú adatokkal végzett műveletek](datetime-operations.md)
-- [Aggregátumfüggvények](aggregations.md)
-- [Speciális aggregátumok](advanced-aggregations.md)
-- [JSON és adatstruktúrák](json-data-structures.md)
-- [Illesztések](joins.md)
-- [Diagramok](charts.md)
+- [Sztringműveletek](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#string-operations)
+- [Dátum és idő típusú adatokkal végzett műveletek](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#date-and-time-operations)
+- [Aggregátumfüggvények](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#aggregations)
+- [Speciális aggregátumok](/azure/data-explorer/write-queries#advanced-aggregations)
+- [JSON és adatstruktúrák](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#json-and-data-structures)
+- [Illesztések](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#joins)
+- [Diagramok](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#charts)

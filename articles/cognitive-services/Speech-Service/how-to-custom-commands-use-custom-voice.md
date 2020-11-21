@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: sausin
-ms.openlocfilehash: b1e488653f210089ee5ed6757fb2f3d1e4fb0fe4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a5c14909606dcb862fcf53d99bc5bc00fba63bd
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87294297"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025684"
 ---
 # <a name="use-custom-commands-with-custom-voice"></a>Egyéni parancsok használata Custom Voice szolgáltatással
 
@@ -32,7 +32,7 @@ Ebből a cikkből megtudhatja, hogyan választhatja ki az egyéni parancsok alka
 > ![Minta mondatok paraméterekkel](media/custom-commands/select-custom-voice.png)
 
 > [!NOTE]
-> - A **nyilvános hangok**esetében az **neurális típusok** csak bizonyos régiókban érhetők el. A rendelkezésre állás ellenőrzéséhez tekintse meg a [standard és a neurális hangok régiónként/végpont szerint](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)című témakört.
-> - Az **Egyéni hangokat**az egyéni hangprojektek lapról lehet létrehozni. Lásd: Ismerkedés [az egyéni hanggal](./how-to-custom-voice.md).
+> - A **nyilvános hangok** esetében az **neurális típusok** csak bizonyos régiókban érhetők el. A rendelkezésre állás ellenőrzéséhez tekintse meg a [standard és a neurális hangok régiónként/végpont szerint](./regions.md#standard-and-neural-voices)című témakört.
+> - Az **Egyéni hangokat** az egyéni hangprojektek lapról lehet létrehozni. Lásd: Ismerkedés [az egyéni hanggal](./how-to-custom-voice.md).
 
 Mostantól az alkalmazás az alapértelmezett hang helyett a kiválasztott hangon fog válaszolni.

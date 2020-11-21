@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 0e2406cd35fb2d4dd99da4f5139a9f0f80697912
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: e50d7aba5cc5b3d5d620d844cc9ad169ad8b3bf6
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566248"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025891"
 ---
 # <a name="set-up-web-endpoints"></a>Webes végpontok beállítása
 
@@ -49,10 +49,10 @@ Ebből a cikkből megismerheti, hogyan állíthat be webes végpontokat Custom C
    | Fejlécek | Kulcs: alkalmazás, Érték: az applicationId első 8 számjegye | A kérelemfejlécben megadandó fejlécparaméterek.|
 
     > [!NOTE]
-    > - Az [Azure Function](https://docs.microsoft.com/azure/azure-functions/) használatával létrehozott webes végpontpélda, amely ahhoz az adatbázishoz csatlakozik, amely menti a televízió és a ventilátor eszközállapotát
+    > - Az [Azure Function](../../azure-functions/index.yml) használatával létrehozott webes végpontpélda, amely ahhoz az adatbázishoz csatlakozik, amely menti a televízió és a ventilátor eszközállapotát
     > - A javasolt fejléc csak a példavégponthoz szükséges
     > - Annak érdekében, hogy a fejléc értéke egyedi legyen a példában szereplő végpontban, használja az applicationId első 8 számjegyét
-    > - Valós helyzetben a webes végpont az eszközeit kezelő [IoT Hub](https://docs.microsoft.com/azure/iot-hub/about-iot-hub) végpontja lehet.
+    > - Valós helyzetben a webes végpont az eszközeit kezelő [IoT Hub](../../iot-hub/about-iot-hub.md) végpontja lehet.
 
 1. Kattintson a **Mentés** gombra.
 

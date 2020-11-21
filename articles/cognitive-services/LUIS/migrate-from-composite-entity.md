@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 5c3ac14af6eb863daa9eadd32727f4fb53d2185f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46e9ece70d9f980065c719ee1205eb46591b45c0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322857"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025242"
 ---
 # <a name="upgrade-composite-entity-to-machine-learning-entity"></a>Összetett entitás frissítése gépi tanulási entitásra
 
@@ -29,7 +29,7 @@ A frissítési folyamat:
     * Ha a gyermek entitás összetett, _és_ különálló entitásként (például hosszúságú kimondott szöveg) van használatban, akkor a rendszer a verziót entitásként és alentitásként adja hozzá az új gépi tanulási entitáshoz.
     * Ha az alárendelt entitás egy szerepkört használ, a rendszer minden egyes szerepkört egy azonos nevű alentitásba konvertál.
     * Ha az alárendelt entitás nem gépi tanulásra szolgáló entitás (reguláris kifejezés, entitás vagy előre összeállított entitás), egy új alentitás jön létre ugyanazzal a névvel, és az új alentitás rendelkezik a nem gépi tanulást használó entitással, a szükséges funkcióval kiegészítve.
-* A nevek megmaradnak, de az alentitás/testvér szintjén egyedinek kell lenniük. Tekintse meg az [egyedi elnevezési korlátokat](luis-boundaries.md#name-uniqueness).
+* A nevek megmaradnak, de az alentitás/testvér szintjén egyedinek kell lenniük. Tekintse meg az [egyedi elnevezési korlátokat](./luis-limits.md#name-uniqueness).
 * A hosszúságú kimondott szöveg található feliratok az új gépi tanulási entitásra vannak átváltva alentitásokkal.
 
 A modell változásának megismeréséhez használja a következő diagramot:
@@ -38,7 +38,7 @@ A modell változásának megismeréséhez használja a következő diagramot:
 |--|--|--|
 |Összetett entitás|gépi tanulási entitás szerkezettel|Mindkét objektum szülő objektum.|
 |Az összetett gyermek entitás **egyszerű entitás**|alentitás|Mindkét objektum alárendelt objektum.|
-|Az összetett gyermek entitás **előre összeépített entitás** , például szám|az előre összeállított entitások, például a szám és az alentitás neve az előre felépített számú entitás _funkciójának_ értéke _true_értékre van állítva.|az alentitás az alentitások szintjén megkötéssel rendelkező funkciót tartalmaz.|
+|Az összetett gyermek entitás **előre összeépített entitás** , például szám|az előre összeállított entitások, például a szám és az alentitás neve az előre felépített számú entitás _funkciójának_ értéke _true_ értékre van állítva.|az alentitás az alentitások szintjén megkötéssel rendelkező funkciót tartalmaz.|
 |Az összetett gyermek entitás előre összeállított **entitás** , például szám, és az előre elkészített entitás **szerepköre**|a szerepkör nevű alentitás és az alentitás az előre elkészített Number entitás funkcióját a korlátozási beállítás értéke TRUE (igaz) értékre van állítva.|az alentitás az alentitások szintjén megkötéssel rendelkező funkciót tartalmaz.|
 |Szerepkör|alentitás|A szerepkör neve az alentitás neve lesz. Az alentitás a gépi tanulási entitás közvetlen leszármazottja.|
 
@@ -54,11 +54,11 @@ A frissítés előtt ügyeljen a következőre:
     > [!div class="mx-imgBorder"]
     > ![Frissítés megkezdése értesítésekről](./media/update-composite-entity/notification-begin-update.png)
 
-1. Az előugró ablakban válassza a **Frissítés most**lehetőséget.
+1. Az előugró ablakban válassza a **Frissítés most** lehetőséget.
 
-1. Tekintse át **, hogy mi történik az adatok frissítésekor,** majd válassza a **Folytatás**lehetőséget.
+1. Tekintse át **, hogy mi történik az adatok frissítésekor,** majd válassza a **Folytatás** lehetőséget.
 
-1. Válassza ki az összetett entitásokat a listából a frissítéshez, majd válassza a **Folytatás**lehetőséget.
+1. Válassza ki az összetett entitásokat a listából a frissítéshez, majd válassza a **Folytatás** lehetőséget.
 
 1. A nem betanított módosításokat a jelenlegi verzióról a frissített verzióra helyezheti át a jelölőnégyzet bejelölésével.
 

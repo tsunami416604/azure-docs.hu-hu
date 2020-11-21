@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: fbcb262fee6a2cc62bfe64e8a8589c92b4fe2b17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e8b009ecc2181edfaad5da3d8d05ad0c1909051
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82997446"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024755"
 ---
 # <a name="voice-assistants-on-windows"></a>Hangsegédek Windows rendszeren
 
@@ -37,7 +37,7 @@ Ha a felhasználó egy kulcsszót beszél, akkor a rendszeren a szoftver vagy a 
 
 ### <a name="registration"></a>Regisztráció
 
-Amikor a rendszer első alkalommal futtatja a hangvezérelt alkalmazást, a ConversationalAgent API-kon regisztrálja az alkalmazás AZONOSÍTÓját és a kulcsszavas információit. Az éves jelentés regisztrálja a globális leképezés összes konfigurációját a rendszeren található hardveres vagy szoftveres kulcsszóval, és lehetővé teszi számukra az alkalmazás kulcsszavainak észlelését. Az alkalmazás a [háttérben futó szolgáltatással is regisztrál](https://docs.microsoft.com/windows/uwp/launch-resume/register-a-background-task).
+Amikor a rendszer első alkalommal futtatja a hangvezérelt alkalmazást, a ConversationalAgent API-kon regisztrálja az alkalmazás AZONOSÍTÓját és a kulcsszavas információit. Az éves jelentés regisztrálja a globális leképezés összes konfigurációját a rendszeren található hardveres vagy szoftveres kulcsszóval, és lehetővé teszi számukra az alkalmazás kulcsszavainak észlelését. Az alkalmazás a [háttérben futó szolgáltatással is regisztrál](/windows/uwp/launch-resume/register-a-background-task).
 
 Vegye figyelembe, hogy ez azt jelenti, hogy az alkalmazás nem aktiválható hangon, amíg egyszer nem futtatták, és a regisztráció nem fejeződött be.
 
@@ -53,7 +53,7 @@ Az éves tevékenység továbbra is jelzi az aktív alkalmazásokat, amikor a ku
 
 A kulcsszó-modell leegyszerűsítése révén az alkalmazás indítását kiváltó kulcsszó megkezdi az alacsony energiafogyasztást. Ez lehetővé teszi, hogy a kulcsszó "mindig on" legyen a nagy teljesítményű hatás nélkül, de ez azt is jelenti, hogy a felderítő kulcsszó valószínűleg nagy számú "hamis elfogadást" tartalmaz, ahol egy kulcsszót észlelt, de nem beszélt. Ezért indítja el a hangaktiválási rendszer az alkalmazást a háttérben: az alkalmazásnak lehetősége van arra, hogy ellenőrizze, hogy a kulcsszót a felhasználó aktuális munkamenetének megszakítása előtt adta-e meg. Az éves tevékenység elmenti a hangot néhány másodperc múlva, mielőtt a kulcsszót kiszúrták, és elérhetővé teszi az alkalmazás számára. Az alkalmazás használatával megbízhatóbb kulcsszavas Felderítőt futtathat ugyanazon a hangon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - **Tekintse át a tervezési irányelveket:** A [tervezési irányelvek](windows-voice-assistants-best-practices.md) alapján megállapítható, hogy a Windows 10-es hangalapú aktiválás lehető legjobb élményét biztosítja a legfontosabb munka.
 - **Látogasson el a első lépések oldalra:** [Itt](how-to-windows-voice-assistants-get-started.md) megkezdheti a hangsegédek Windows rendszeren való megvalósításának megkezdéséhez szükséges lépéseket, a fejlesztési környezet beállításával a megvalósítási útmutató bevezetésével.

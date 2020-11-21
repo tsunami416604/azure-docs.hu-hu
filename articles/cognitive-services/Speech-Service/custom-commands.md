@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: c9f7168bc0524b483413ade9792af18ff9cfebfa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40736764cf9cec6f652e0147eb25d83f15c5bee2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358542"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024942"
 ---
 # <a name="what-is-custom-commands"></a>Mik azok az egyéni parancsok?
 
@@ -28,7 +28,7 @@ Az egyéni parancsok a feladatok befejezéséhez és a parancs-és vezérlési f
 > [!TIP]
 > Tekintse meg a kezdőlapon található minta bemutatókat [https://speech.microsoft.com/customcommands](https://speech.microsoft.com/customcommands) .
 
-Ha szeretne összetett társalgási alkalmazásokat kiépíteni, javasoljuk, hogy próbálja ki a bot Framework-et a [virtuális asszisztens megoldás](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview)használatával. Közvetlenül is hozzáadhat hangokat bármelyik bot Framework-robothoz közvetlen vonalas beszéd használatával.
+Ha szeretne összetett társalgási alkalmazásokat kiépíteni, javasoljuk, hogy próbálja ki a bot Framework-et a [virtuális asszisztens megoldás](/azure/bot-service/bot-builder-enterprise-template-overview)használatával. Közvetlenül is hozzáadhat hangokat bármelyik bot Framework-robothoz közvetlen vonalas beszéd használatával.
 
 Az egyéni parancsok jó jelöltje egy rögzített, jól definiált változóval rendelkező szókincs. A Home Automation-feladatok, például a Termosztátok szabályozása ideális megoldás.
 

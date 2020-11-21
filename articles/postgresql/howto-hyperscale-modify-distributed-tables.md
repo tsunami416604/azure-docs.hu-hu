@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 8/10/2020
-ms.openlocfilehash: 628944f9763dc79148e0b64c97158064208412bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf9f9ca5b8690a38c6e5aa6f519378c0a2e3a4f2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88136936"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026437"
 ---
 # <a name="distribute-and-modify-tables"></a>Táblák elosztása és módosítása
 
@@ -140,11 +140,11 @@ Ha egy új tábla nem kapcsolódik másokhoz, akkor a következőt kell megadnia
 SELECT create_distributed_table('A', 'foo', colocate_with => 'none');
 ```
 
-A nem kapcsolódó tábláknak a saját közös elhelyezésű csoportjaiba való felosztása növeli a szegmensek közötti [újrakiegyensúlyozási](howto-hyperscale-scaling.md#rebalance-shards) teljesítményt, mert az ugyanabban a csoportban lévő szegmenseket együtt kell áthelyezni.
+A nem kapcsolódó tábláknak a saját közös elhelyezésű csoportjaiba való felosztása növeli a szegmensek közötti [újrakiegyensúlyozási](howto-hyperscale-scale-rebalance.md) teljesítményt, mert az ugyanabban a csoportban lévő szegmenseket együtt kell áthelyezni.
 
 Ha a táblák valóban kapcsolódnak egymáshoz (például amikor csatlakozni fognak), érdemes lehet explicit módon megkeresni őket. A megfelelő elhelyezési költségek sokkal fontosabbak, mint bármely más terheléselosztás.
 
-Ha explicit módon több táblát szeretne elhelyezni, terjesszen egyet, majd helyezze el a többiet a közös elhelyezési csoportba. Példa:
+Ha explicit módon több táblát szeretne elhelyezni, terjesszen egyet, majd helyezze el a többiet a közös elhelyezési csoportba. Például:
 
 ```postgresql
 -- distribute stores

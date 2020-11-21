@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/3/2020
-ms.openlocfilehash: c41e9fe1f197334bce27241ab9f28309c92f7e0a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3017d0dec5acd3494600c42bef410ed346fead1a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316545"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025942"
 ---
 # <a name="testing-for-luis-devops"></a>A LUIS DevOps tesztelése
 
@@ -25,10 +25,10 @@ A tesztek a [CI/CD-munkafolyamatok](luis-concept-devops-automation.md)kritikus r
 A folyamatos integrációs munkafolyamatokban két különböző típusú tesztet kell végrehajtania a LUIS-alkalmazáshoz:
 
 - **Unit-tesztek** – a Luis-alkalmazás legfontosabb funkcióit ellenőrző viszonylag egyszerű tesztek. Az egység tesztelése akkor megy át, amikor a várt szándék és a várt entitások visszakerülnek egy adott tesztre. A teszt futtatásának sikeres befejezéséhez minden egység tesztnek meg kell felelnie.  
-Ez a fajta tesztelés hasonló a [Luis-portálon](https://www.luis.ai/)elvégezhető [interaktív teszteléshez](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-test) .
+Ez a fajta tesztelés hasonló a [Luis-portálon](https://www.luis.ai/)elvégezhető [interaktív teszteléshez](./luis-concept-test.md) .
 
 - **Batch-tesztek** – a Batch Testing egy átfogó teszt a jelenlegi betanított modellen a teljesítmény méréséhez. Az egységgel végzett tesztektól eltérően a Batch-tesztelés nem halad át | sikertelen tesztelés. A Batch-tesztelés várhatóan nem minden teszt a várt szándékú és várt entitásokat fogja visszaadni. Ehelyett egy batch-teszt segít megtekinteni az egyes szándékok és entitások pontosságát az alkalmazásban, és segít összehasonlítani az idő múlásával a fejlesztés során.  
-Ez a fajta tesztelés megegyezik a [kötegelt teszteléssel](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-batch-test) , amelyet interaktív módon végezhet el a Luis-portálon.
+Ez a fajta tesztelés megegyezik a [kötegelt teszteléssel](./luis-concept-batch-test.md) , amelyet interaktív módon végezhet el a Luis-portálon.
 
 A projekt elejéről is alkalmazhat egységes tesztelést. A Batch-tesztelés csak akkor igazán értékes, ha a LUIS-alkalmazás sémáját fejlesztette, és dolgozik a pontosságának javításán.
 
@@ -42,7 +42,7 @@ Ha teszteket ír, minden teszthez meg kell határoznia a következőket:
 * Várt szándék
 * Várt entitások.
 
-A LUIS [batch-fájl szintaxisával](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-batch-test#batch-syntax-template-for-intents-with-entities) meghatározhatja a tesztek egy csoportját egy JSON-formátumú fájlban. Példa:
+A LUIS [batch-fájl szintaxisával](./luis-concept-batch-test.md#batch-syntax-template-for-intents-with-entities) meghatározhatja a tesztek egy csoportját egy JSON-formátumú fájlban. Például:
 
 ```JSON
 [
@@ -76,7 +76,7 @@ Az egyes egységeken végzett tesztekben a következőket teheti:
 
 * A megfelelő szándék visszaadásának tesztelése
 * Tesztelje, hogy a "Key" entitások – amelyek kritikus fontosságúak a megoldásban – a rendszer visszaadja.
-* Ellenőrizze, hogy a szándék és az entitások [előrejelzési pontszáma](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-prediction-score) meghaladja-e az Ön által meghatározott küszöbértéket. Dönthet például úgy, hogy csak akkor veszi figyelembe a tesztet, ha a szándék és a kulcsfontosságú entitások előrejelzési pontszáma meghaladja a 0,75-ot.
+* Ellenőrizze, hogy a szándék és az entitások [előrejelzési pontszáma](./luis-concept-prediction-score.md) meghaladja-e az Ön által meghatározott küszöbértéket. Dönthet például úgy, hogy csak akkor veszi figyelembe a tesztet, ha a szándék és a kulcsfontosságú entitások előrejelzési pontszáma meghaladja a 0,75-ot.
 
 Az egységbeli tesztek során érdemes tesztelni, hogy a kulcsfontosságú entitások visszakerültek-e az előrejelzési válaszba, de figyelmen kívül hagyja a hamis pozitív értékeket. A *hamis pozitív érték* az előrejelzési válaszban található entitások, amelyek nincsenek meghatározva a teszt várt eredményei között. Ha figyelmen kívül hagyja a hamis pozitív értékeket, kevésbé terheli az egység-tesztek elkészítését, miközben továbbra is lehetővé teszi, hogy a megoldáshoz tartozó, a megoldáshoz tartozó adatmennyiséget előrejelzési válaszként adja vissza.
 
@@ -85,15 +85,15 @@ Az egységbeli tesztek során érdemes tesztelni, hogy a kulcsfontosságú entit
 
 #### <a name="designing-batch-tests"></a>Batch-tesztek tervezése
 
-A Batch-tesztek nagy számú tesztelési esetet tartalmaznak, amelyek az összes cél és a LUIS-alkalmazás összes entitásának tesztelésére szolgálnak. A Batch-tesztkörnyezet definiálásával kapcsolatos információkért lásd: [Batch-tesztelés a Luis portálon](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-batch-test) .
+A Batch-tesztek nagy számú tesztelési esetet tartalmaznak, amelyek az összes cél és a LUIS-alkalmazás összes entitásának tesztelésére szolgálnak. A Batch-tesztkörnyezet definiálásával kapcsolatos információkért lásd: [Batch-tesztelés a Luis portálon](./luis-concept-batch-test.md) .
 
 ### <a name="running-tests"></a>Tesztek futtatása
 
 A LUIS-portál olyan funkciókat kínál, amelyek segítenek az interaktív tesztelésben:
 
-* Az [**interaktív tesztelés**](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-test) lehetővé teszi, hogy beküldjön egy mintát, és választ KAPJON a Luis által felismert szándékokról és entitásokról. A teszt sikerességét a vizuális vizsgálat ellenőrzi.
+* Az [**interaktív tesztelés**](./luis-concept-test.md) lehetővé teszi, hogy beküldjön egy mintát, és választ KAPJON a Luis által felismert szándékokról és entitásokról. A teszt sikerességét a vizuális vizsgálat ellenőrzi.
 
-* A [**Batch**](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-batch-test) Testing egy batch-tesztoldalt használ bemenetként, hogy érvényesítse az aktív betanított verziót az előrejelzési pontosság méréséhez. A Batch-tesztek segítségével megtekintheti az egyes szándékok és entitások pontosságát az aktív verzióban, és megjelenítheti az eredményeket egy diagrammal.
+* A [**Batch**](./luis-concept-batch-test.md) Testing egy batch-tesztoldalt használ bemenetként, hogy érvényesítse az aktív betanított verziót az előrejelzési pontosság méréséhez. A Batch-tesztek segítségével megtekintheti az egyes szándékok és entitások pontosságát az aktív verzióban, és megjelenítheti az eredményeket egy diagrammal.
 
 #### <a name="running-tests-in-an-automated-build-workflow"></a>Tesztek futtatása automatizált Build-munkafolyamatokban
 
@@ -109,7 +109,7 @@ A LUIS-portálon elérhető tesztelési képességek nem igényelnek közzétett
 
 > [!TIP]
 > * Ha saját tesztelési megoldást használ, és kódot ír a hosszúságú kimondott szöveg egy végpontra való küldéséhez, ne feledje, hogy ha a LUIS authoring Key-t használja, akkor az engedélyezett tranzakciós sebesség a 5TPS korlátozódik. A küldési arány szabályozása vagy az előrejelzési kulcs használata.
-> * Ha tesztelési lekérdezéseket küld egy végpontra, ne felejtse el használni az `log=false` előrejelzési kérelem lekérdezési karakterláncában. Ez biztosítja, hogy a teszt hosszúságú kimondott szöveg ne jelentkezzen be a LUIS, és fejezze be a LUIS [Active learning](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-review-endpoint-utterances) funkció által bemutatott Endpoint hosszúságú kimondott szöveg felülvizsgálati listát, így véletlenül bekerül az alkalmazás betanítási hosszúságú kimondott szöveg.
+> * Ha tesztelési lekérdezéseket küld egy végpontra, ne felejtse el használni az `log=false` előrejelzési kérelem lekérdezési karakterláncában. Ez biztosítja, hogy a teszt hosszúságú kimondott szöveg ne jelentkezzen be a LUIS, és fejezze be a LUIS [Active learning](./luis-concept-review-endpoint-utterances.md) funkció által bemutatott Endpoint hosszúságú kimondott szöveg felülvizsgálati listát, így véletlenül bekerül az alkalmazás betanítási hosszúságú kimondott szöveg.
 
 #### <a name="running-unit-tests-at-the-command-line-and-in-cicd-workflows"></a>Az egységnyi tesztek futtatása a parancssorban és a CI/CD-munkafolyamatokban
 
@@ -123,13 +123,13 @@ Használhatja a [NLU. DevOps](https://github.com/microsoft/NLU.DevOps) -csomag t
 Használhatja a NLU is. DevOps-csomag a Batch-tesztek parancssorból való futtatásához.
 
 * Használja a NLU. A DevOps [teszt paranccsal](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Test.md) teszteket küldhet egy adott végpontnak, és a tényleges előrejelzési eredményeket rögzítheti egy fájlban, ugyanúgy, mint az egységes tesztek esetében.
-* Használja a NLU. Az alkalmazás teljesítményének méréséhez DevOps- [összehasonlító parancsot kell összehasonlítania](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md) a teljesítmény [tesztelési módban](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md#performance-test-mode) , például az alkalmazás teljesítményének összehasonlítására az alapteljesítményre vonatkozó teljesítményteszt alapján, például a legutóbbi véglegesítés a főkiszolgálóra vagy a jelenlegi kiadásra. A teljesítmény tesztelése módban a `compare` parancs a NUnit teszt kimenetét és a [Batch-teszt eredményét](https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#batch-test) JSON formátumban hozza létre.
+* Használja a NLU. Az alkalmazás teljesítményének méréséhez DevOps- [összehasonlító parancsot kell összehasonlítania](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md) a teljesítmény [tesztelési módban](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md#performance-test-mode) , például az alkalmazás teljesítményének összehasonlítására az alapteljesítményre vonatkozó teljesítményteszt alapján, például a legutóbbi véglegesítés a főkiszolgálóra vagy a jelenlegi kiadásra. A teljesítmény tesztelése módban a `compare` parancs a NUnit teszt kimenetét és a [Batch-teszt eredményét](./luis-glossary.md#batch-test) JSON formátumban hozza létre.
 
 ## <a name="luis-non-deterministic-training-and-the-effect-on-testing"></a>LUIS nem determinisztikus képzés és a tesztelés hatása
 
 Ha a LUIS egy modellt, például egy szándékot használ, pozitív adatokra is szüksége van – a címkézett betanítási hosszúságú kimondott szöveg, amelyet az alkalmazás a modellhez való betanításához, illetve negatív adatadatokhoz adott meg, amelyek *nem* érvényesek példák a modell használatára. A betanítás során LUIS létrehoz egy modell negatív adatait a többi modellhez megadott pozitív adatokból, de bizonyos esetekben adategyensúlyhiányt eredményezhet. Az egyensúlyhiány elkerüléséhez LUIS a negatív adat egy részhalmazát a nem determinisztikus módon, a jobb teljesítmény és a gyorsabb képzés érdekében optimalizálja.
 
-Ennek a nem determinisztikus-képzésnek az eredménye az, hogy a [különböző betanítási eseményekhez némileg eltérő előrejelzési választ](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-prediction-score)kaphat, általában olyan szándékok és/vagy entitások esetén, ahol az [előrejelzési pontszám](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-prediction-score) nem magas.
+Ennek a nem determinisztikus-képzésnek az eredménye az, hogy a [különböző betanítási eseményekhez némileg eltérő előrejelzési választ](./luis-concept-prediction-score.md)kaphat, általában olyan szándékok és/vagy entitások esetén, ahol az [előrejelzési pontszám](./luis-concept-prediction-score.md) nem magas.
 
 Ha szeretné letiltani a nem determinisztikus betanítást azon LUIS-alkalmazások esetében, amelyek tesztelés céljából készülnek, használja a [Version Settings API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) -t a `UseAllTrainingData` beállítás értékeként `true` .
 

@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.author: wellsi
-ms.openlocfilehash: a2652bed6c8e7dec0a6fe8f9471793c3873646bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf0580c96f5bf78f0444b2bb39088f2a417fd658
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82781756"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025061"
 ---
 # <a name="how-to-configure-a-microphone-array"></a>Mikrofonsor konfigurálásának módja
 
-Ebből a cikkből megtudhatja, hogyan konfigurálhat egy [mikrofonos tömböt](https://aka.ms/sdsdk-microphone). Ez magában foglalja a munkaszög beállítását, valamint azt, hogy a Speech Devices SDK melyik mikrofont használja.
+Ebből a cikkből megtudhatja, hogyan konfigurálhat egy [mikrofonos tömböt](./speech-devices-sdk-microphone.md). Ez magában foglalja a munkaszög beállítását, valamint azt, hogy a Speech Devices SDK melyik mikrofont használja.
 
-A Speech Devices SDK a legjobb megoldás egy olyan mikrofonos tömb, amely az [irányelveknek](https://aka.ms/sdsdk-microphone)megfelelően lett kialakítva. A mikrofon-tömb konfigurációját az operációs rendszer adhatja meg, vagy az alábbi módszerek egyikével biztosítható.
+A Speech Devices SDK a legjobb megoldás egy olyan mikrofonos tömb, amely az [irányelveknek](./speech-devices-sdk-microphone.md)megfelelően lett kialakítva. A mikrofon-tömb konfigurációját az operációs rendszer adhatja meg, vagy az alábbi módszerek egyikével biztosítható.
 
 A Speech Devices SDK eredetileg a mikrofon-tömböket támogatja, a konfigurációk rögzített készletének kiválasztásával.
 
@@ -44,12 +44,12 @@ A Speech Devices SDK-ban a Microsoft audio stack csak a 16 KHz-es integrált min
 ## <a name="linux"></a>Linux
 Linux rendszeren a mikrofon geometriájának adatait meg kell adni. A használata `DeviceGeometry` és `SelectedGeometry` továbbra is támogatott. A tulajdonság használatával a JSON-fájlon keresztül is megadható `MicArrayGeometryConfigFile` . A Windowshoz hasonlóan a beamforming tartományt is megadhatja a JSON-fájl.
 
-Ha egy mikrofon-tömb van megadva a használatával `AudioConfig::FromMicrophoneInput` , akkor a megadott mikrofont használjuk. Ha nincs megadva a mikrofon vagy a `AudioConfig::FromDefaultMicrophoneInput` neve, akkor a rendszer az *alapértelmezett*nevű ALSA-eszközről rögzíti a rekordot. Alapértelmezés szerint az *alapértelmezett érték* mindig a 0. eszközre mutat, de a felhasználók módosíthatják a `asound.conf` fájlban. 
+Ha egy mikrofon-tömb van megadva a használatával `AudioConfig::FromMicrophoneInput` , akkor a megadott mikrofont használjuk. Ha nincs megadva a mikrofon vagy a `AudioConfig::FromDefaultMicrophoneInput` neve, akkor a rendszer az *alapértelmezett* nevű ALSA-eszközről rögzíti a rekordot. Alapértelmezés szerint az *alapértelmezett érték* mindig a 0. eszközre mutat, de a felhasználók módosíthatják a `asound.conf` fájlban. 
 
 A Speech Devices SDK-ban a Microsoft audio stack csak a 16 KHz-es integrált adatmennyiségek esetében támogatja a leegyszerűsítést. Emellett a következő formátumok támogatottak: 32 bites IEEE little endian float, 32 bites kis endian aláírt int, 24 bites kis endian aláírt int, 16 bites kis endian aláírt int, és 8 bites aláírt int.
 
 ## <a name="android"></a>Android
-A Speech Devices SDK jelenleg csak a [Roobo v1](speech-devices-sdk-android-quickstart.md) -t támogatja. A viselkedés ugyanaz, mint a korábbi verziók, `MicArrayGeometryConfigFile` a Now tulajdonság kivételével a beamforming-tartományt tartalmazó JSON-fájl megadására is használható.
+A Speech Devices SDK jelenleg csak a [Roobo v1](./speech-devices-sdk-quickstart.md?pivots=platform-android%253fpivots%253dplatform-android) -t támogatja. A viselkedés ugyanaz, mint a korábbi verziók, `MicArrayGeometryConfigFile` a Now tulajdonság kivételével a beamforming-tartományt tartalmazó JSON-fájl megadására is használható.
 
 ## <a name="microphone-array-configuration-json"></a>Mikrofon tömb konfigurációjának JSON
 
@@ -109,7 +109,7 @@ Vagy
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Beszédfelismerési eszköz kiválasztása](get-speech-devices-sdk.md)

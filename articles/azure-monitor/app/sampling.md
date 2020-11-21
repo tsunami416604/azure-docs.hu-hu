@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e4c5000adb2339d3fd0f828781a60f75c75894b5
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 87e33940d927fc9116c03345011e21398384d484
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168596"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024415"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights-mintavétel
 
@@ -25,7 +25,7 @@ Ha a mérőszámok a portálon jelennek meg, akkor a rendszer a mintavétel sor�
 * A rögzített méretű mintavételezés a ASP.NET, a ASP.NET Core, a Java (az ügynök és az SDK), valamint a Python Application Insights SDK-k legújabb verzióiban érhető el.
 * A betöltési mintavételezés a Application Insights szolgáltatási végponton működik. Ez csak akkor érvényes, ha más mintavételezés nem érvényes. Ha az SDK mintákat vesz fel a telemetria, a betöltési mintavételezés le van tiltva.
 * Webalkalmazások esetén, ha egyéni eseményeket naplóz, és meg kell győződnie arról, hogy az események egy csoportjának megőrzése vagy elvetése együtt történik, az eseményeknek azonos `OperationId` értékkel kell rendelkezniük.
-* Ha elemzési lekérdezéseket ír, [vegye figyelembe a mintavételezést](../log-query/aggregations.md). Különösen a rekordok számbavétele helyett használja a parancsot `summarize sum(itemCount)` .
+* Ha elemzési lekérdezéseket ír, [vegye figyelembe a mintavételezést](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#aggregations). Különösen a rekordok számbavétele helyett használja a parancsot `summarize sum(itemCount)` .
 * Egyes telemetria-típusok, beleértve a teljesítménymutatókat és az egyéni metrikákat, mindig attól függetlenül tartanak, hogy engedélyezve van-e a mintavételezés.
 
 A következő táblázat összefoglalja az egyes SDK-típusokhoz és az alkalmazások típusaihoz elérhető mintavételi típusokat:
@@ -78,7 +78,7 @@ A-ben [`ApplicationInsights.config`](./configuration-with-applicationinsights-co
 
 * `<MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond>`
   
-    Az adaptív algoritmus által az **egyes kiszolgálók gazdagépén**összegyűjtött [logikai műveletek](./correlation.md#data-model-for-telemetry-correlation) céljának aránya. Ha a webalkalmazás sok gazdagépen fut, csökkentse ezt az értéket úgy, hogy a Application Insights portálon maradjon a forgalmi arányon belül.
+    Az adaptív algoritmus által az **egyes kiszolgálók gazdagépén** összegyűjtött [logikai műveletek](./correlation.md#data-model-for-telemetry-correlation) céljának aránya. Ha a webalkalmazás sok gazdagépen fut, csökkentse ezt az értéket úgy, hogy a Application Insights portálon maradjon a forgalmi arányon belül.
 
 * `<EvaluationInterval>00:00:15</EvaluationInterval>` 
   
@@ -586,7 +586,7 @@ A fix sebességű mintavételezés az SDK egyik funkciója, amely a 2.0.0 és a 
 
 A v 2.5.0 előtt – a ASP.NET SDK Beta2, valamint a ASP.NET Core SDK-hoz készült v 2.2.0-beta3 a mintavételi döntés alapjául a felhasználói azonosító kivonata a "user" (azaz a leggyakoribb webalkalmazások) definiáló alkalmazásokhoz. Azon alkalmazások típusai esetében, amelyek nem határoznak meg felhasználókat (például webszolgáltatásokat), a mintavételi döntés a kérelem műveleti AZONOSÍTÓján alapul. A ASP.NET és ASP.NET Core SDK-k legújabb verziói a mintavételi döntés műveleti AZONOSÍTÓját használják.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [szűréssel](./api-filtering-sampling.md) szigorúbban VEZÉRELHETI az SDK által küldött adatokat.
 * Olvassa el a fejlesztői hálózat című cikket a [telemetria optimalizálása Application Insightsával](/archive/msdn-magazine/2017/may/devops-optimize-telemetry-with-application-insights).

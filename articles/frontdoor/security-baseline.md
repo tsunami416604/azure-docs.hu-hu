@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 9e9eca3bb230bbfc969a5a429f664e602ad0d78b
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 6d6a392d25aa96ab9b4dbb7763b37c1021db71aa
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888317"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026284"
 ---
 # <a name="azure-security-baseline-for-azure-front-door"></a>Azure biztonsági alapkonfiguráció Azure-beli bejárati ajtóhoz
 
@@ -202,7 +202,7 @@ Azt javasoljuk, hogy az ügyfél hozzon létre egy folyamatot az attribútum és
 
 ## <a name="logging-and-threat-detection"></a>Naplózás és fenyegetések észlelése
 
-*További információt az [Azure biztonsági teljesítményteszt: naplózás és fenyegetések észlelése](/azure/security/benchmarks/security-controls-v2-logging-threat-protection)című témakörben talál.*
+*További információt az [Azure biztonsági teljesítményteszt: naplózás és fenyegetések észlelése](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)című témakörben talál.*
 
 ### <a name="lt-3-enable-logging-for-azure-network-activities"></a>LT-3: az Azure hálózati tevékenységek naplózásának engedélyezése
 
@@ -338,7 +338,7 @@ Emellett a címkék használatával megjelölheti az erőforrásokat, és létre
 
 ## <a name="posture-and-vulnerability-management"></a>A testtartás és a sebezhetőségek kezelése
 
-*További információt az [Azure biztonsági teljesítményteszt: testtartás és sebezhetőség kezelése](/azure/security/benchmarks/security-controls-v2-vulnerability-management)című témakörben talál.*
+*További információt az [Azure biztonsági teljesítményteszt: testtartás és sebezhetőség kezelése](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)című témakörben talál.*
 
 ### <a name="pv-3-establish-secure-configurations-for-compute-resources"></a>PV-3: biztonságos konfigurációk létrehozása számítási erőforrásokhoz
 
@@ -409,7 +409,7 @@ További információ a hivatkozott hivatkozásokon érhető el.
 
 - [Az Azure biztonsági alapjai – Azure-adatbiztonság, titkosítás és tárolás](../security/fundamentals/encryption-overview.md)
 
-- [Azure biztonsági teljesítményteszt – adatvédelem](/azure/security/benchmarks/security-benchmark-v2-data-protection)
+- [Azure biztonsági teljesítményteszt – adatvédelem](/azure/security/benchmarks/security-controls-v2-data-protection)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -437,7 +437,7 @@ Győződjön meg arról, hogy a szegmentálási stratégia következetesen van i
 
 **Útmutató**: az egyes eszközökre és a szolgáltatásban üzemeltetett környezetre vonatkozó kockázatok folyamatos mérése és enyhítése. Rangsorolja a nagy értékű eszközöket és a nagy teljesítményű támadási felületeket, például a közzétett alkalmazásokat, a hálózati bejövő és kimenő pontokat, a felhasználói és rendszergazdai végpontokat stb.
 
-- [Azure biztonsági teljesítményteszt – a testtartás és a sebezhetőségek kezelése](/azure/security/benchmarks/security-benchmark-v2-posture-vulnerability-management)
+- [Azure biztonsági teljesítményteszt – a testtartás és a sebezhetőségek kezelése](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -479,7 +479,7 @@ További információ a hivatkozott hivatkozásokon érhető el.
 
 - [Azure Security – ajánlott eljárás 11 – architektúra. Egyetlen egységes biztonsági stratégia](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
-- [Azure biztonsági teljesítményteszt – hálózati biztonság](/azure/security/benchmarks/security-benchmark-v2-network-security)
+- [Azure biztonsági teljesítményteszt – hálózati biztonság](/azure/security/benchmarks/security-controls-v2-network-security)
 
 - [Az Azure hálózati biztonság áttekintése](../security/fundamentals/network-overview.md)
 
@@ -505,9 +505,9 @@ Ennek a stratégiának tartalmaznia kell a következő elemek dokumentált útmu
 
 További információkért tekintse meg a következő referenciákat:
 
-- [Azure biztonsági teljesítményteszt – Identitáskezelés](/azure/security/benchmarks/security-benchmark-v2-identity-management)
+- [Azure biztonsági teljesítményteszt – Identitáskezelés](/azure/security/benchmarks/security-controls-v2-identity-management)
 
-- [Azure biztonsági teljesítményteszt – emelt szintű hozzáférés](/azure/security/benchmarks/security-benchmark-v2-privileged-access)
+- [Azure biztonsági teljesítményteszt – emelt szintű hozzáférés](/azure/security/benchmarks/security-controls-v2-privileged-access)
 
 - [Azure Security – ajánlott eljárás 11 – architektúra. Egyetlen egységes biztonsági stratégia](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
@@ -539,9 +539,9 @@ Ennek a stratégiának tartalmaznia kell a következő elemek dokumentált útmu
 
 További információ a hivatkozott hivatkozásokon érhető el.
 
-- [Azure biztonsági teljesítményteszt – naplózás és fenyegetések észlelése](/azure/security/benchmarks/security-benchmark-v2-logging-threat-detection)
+- [Azure biztonsági teljesítményteszt – naplózás és fenyegetések észlelése](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
 
-- [Azure biztonsági teljesítményteszt – incidens válasza](/azure/security/benchmarks/security-benchmark-v2-incident-response)
+- [Azure biztonsági teljesítményteszt – incidens válasza](/azure/security/benchmarks/security-controls-v2-incident-response)
 
 - [Azure Security – ajánlott eljárás 4 – folyamat. Incidensek frissítési folyamatainak frissítése a felhőben](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 

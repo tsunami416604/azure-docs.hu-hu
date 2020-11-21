@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: d43a72db385d282ee189c179254cfc270929dbbf
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 8b3b6a41da6e3100739da920472d582711d1e9b1
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207189"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024381"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Ismerkedés az Azure Monitor-naplólekérdezésekkel
 
@@ -83,7 +83,7 @@ SecurityEvent
 
 Ez azonban túl sok eredményt adhat vissza, és előfordulhat, hogy hosszabb időt is igénybe vehet. A fenti lekérdezés a TimeGenerated oszlop alapján rendezi *a teljes* SecurityEvent táblát. Az elemzési portál ezt követően korlátozza a megjelenítést, hogy csak a 10 000-es rekordokat jelenítse meg. Ez a megközelítés természetesen nem optimális.
 
-A legjobb megoldás, ha csak a legújabb 10 rekordot szeretné lekérni, a **Top**értéket használja, amely a kiszolgáló oldalán rendezi a teljes táblázatot, majd visszaadja a legfontosabb rekordokat:
+A legjobb megoldás, ha csak a legújabb 10 rekordot szeretné lekérni, a **Top** értéket használja, amely a kiszolgáló oldalán rendezi a teljes táblázatot, majd visszaadja a legfontosabb rekordokat:
 
 ```Kusto
 SecurityEvent
@@ -172,7 +172,7 @@ A **Project** használatával is átnevezheti az oszlopokat, és újakat is megh
 
 * Csak a *számítógép* -és *TimeGenerated* eredeti oszlopainak kiválasztása.
 * A *tevékenység* oszlopot jeleníti meg *EventDetails*.
-* Hozzon létre egy új, *EventCode*nevű oszlopot. Az **alkarakterlánc ()** függvény csak az első négy karakter beolvasására szolgál a tevékenység mezőből.
+* Hozzon létre egy új, *EventCode* nevű oszlopot. Az **alkarakterlánc ()** függvény csak az első négy karakter beolvasására szolgál a tevékenység mezőből.
 
 
 ```Kusto
@@ -192,7 +192,7 @@ SecurityEvent
 ## <a name="summarize-aggregate-groups-of-rows"></a>Összefoglalás: sorok összesített csoportjai
 Az **Összefoglalás** használatával azonosíthatja a rekordok csoportjait egy vagy több oszlop szerint, és összesítéseket alkalmazhat rájuk. Az **összegzések** leggyakoribb használata a *Count*, amely az egyes csoportok eredményeinek számát adja vissza.
 
-A következő lekérdezés az elmúlt óra összes *teljesítményszámláló* -rekordját áttekinti, csoportosítja őket *ObjectName*szerint, és megszámolja az egyes csoportok rekordjait: 
+A következő lekérdezés az elmúlt óra összes *teljesítményszámláló* -rekordját áttekinti, csoportosítja őket *ObjectName* szerint, és megszámolja az egyes csoportok rekordjait: 
 ```Kusto
 Perf
 | where TimeGenerated > ago(1h)
@@ -215,7 +215,7 @@ Perf
 | summarize avg(CounterValue) by Computer
 ```
 
-Sajnos a lekérdezés eredményei értelmetlenek, mivel összekevertük a különböző teljesítményszámlálókat. A *CounterName* és a *számítógép*minden kombinációja esetében az átlagot külön kell kiszámítani:
+Sajnos a lekérdezés eredményei értelmetlenek, mivel összekevertük a különböző teljesítményszámlálókat. A *CounterName* és a *számítógép* minden kombinációja esetében az átlagot külön kell kiszámítani:
 
 ```Kusto
 Perf
@@ -226,7 +226,7 @@ Perf
 ### <a name="summarize-by-a-time-column"></a>Összesítés egy időoszlop alapján
 A csoportosítási eredmények egy időoszlopon vagy egy másik folytonos értéken is alapulhatnak. Egyszerűen Összefoglalva `by TimeGenerated` , bár az adott időtartományon belül minden egyes ezredmásodperchez létrehozhatnak csoportokat, mivel ezek egyedi értékek. 
 
-Ha folytonos értékek alapján szeretne csoportokat létrehozni, érdemes lehet a tartományt a **bin**használatával felügyelt egységekre bontani. A következő lekérdezés az adott számítógépen a szabad memóriát (*rendelkezésre álló MB*-ot) mérni kívánó teljesítmény *-rekordokat* elemzi. Kiszámítja az 1 órás időszak átlagos értékét az elmúlt 7 napban:
+Ha folytonos értékek alapján szeretne csoportokat létrehozni, érdemes lehet a tartományt a **bin** használatával felügyelt egységekre bontani. A következő lekérdezés az adott számítógépen a szabad memóriát (*rendelkezésre álló MB*-ot) mérni kívánó teljesítmény *-rekordokat* elemzi. Kiszámítja az 1 órás időszak átlagos értékét az elmúlt 7 napban:
 
 ```Kusto
 Perf 
@@ -244,7 +244,7 @@ A kimeneti világosabb kiválasztásához jelölje ki, ha idődiagramként szere
 
 ## <a name="next-steps"></a>Következő lépések
 
-- További információ a sztringek használatával végzett naplózási lekérdezésekben a karakterláncok használata [Azure monitor a naplók lekérdezésében](string-operations.md).
-- További információ az adatösszesítések naplózási lekérdezésekben való összesítéséről [Azure monitor log-lekérdezések speciális összesítései között](advanced-aggregations.md).
-- Megtudhatja, hogyan csatlakozhat több táblázatból származó adatokhoz [Azure monitor log-lekérdezések](joins.md)összekapcsolásával.
+- További információ a sztringek használatával végzett naplózási lekérdezésekben a karakterláncok használata [Azure monitor a naplók lekérdezésében](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#string-operations).
+- További információ az adatösszesítések naplózási lekérdezésekben való összesítéséről [Azure monitor log-lekérdezések speciális összesítései között](/azure/data-explorer/write-queries#advanced-aggregations).
+- Megtudhatja, hogyan csatlakozhat több táblázatból származó adatokhoz [Azure monitor log-lekérdezések](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#joins)összekapcsolásával.
 - Kérje le a dokumentációt a teljes Kusto lekérdezési nyelvre a [KQL nyelvi](/azure/kusto/query/)dokumentációjában.

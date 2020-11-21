@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
-ms.openlocfilehash: 16c3a45e0d88a0546772b3fdc855c90f2e450d14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f324ef44d002f50bf27c08072e904c1d92b5512f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250331"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026233"
 ---
 # <a name="functions-in-the-hyperscale-citus-sql-api"></a>Függvények a nagy kapacitású (Citus) SQL API-ban
 
@@ -40,7 +40,7 @@ Ez a függvény lecseréli a Master \_ create \_ Distributed \_ Table () függv�
 
 **közös keresés \_ a** következővel: (nem kötelező) egy másik tábla közös elhelyezési csoportjában lévő aktuális tábla belefoglalása. Alapértelmezés szerint a táblázatok abban az esetben helyezkednek el, ha azonos típusú oszlopokban vannak elosztva, és ugyanazzal a replikálási tényezővel rendelkeznek. A lehetséges értékei a `colocate_with` következők: `default` `none` új közös elhelyezési csoport elindítása vagy egy másik tábla neve, amely a táblázattal együtt található.  (Lásd: [táblázatos elhelyezés](concepts-hyperscale-colocation.md).)
 
-Ne feledje, hogy az alapértelmezett érték az `colocate_with` implicit elhelyezés. A közös [elhelyezés](concepts-hyperscale-colocation.md) nagyszerű dolog lehet, ha a táblák kapcsolódnak vagy csatlakozva lesznek.  Ha azonban két tábla nem kapcsolódik egymáshoz, de a terjesztési oszlopokhoz ugyanazt az adattípust használja, akkor véletlenül egymással is csökkentheti a teljesítményt a szegmensek közötti [újraelosztás](howto-hyperscale-scaling.md#rebalance-shards)során.  A tábla szegmensei szükségtelenül lesznek áthelyezve egy \" lépcsőzetesen.\"
+Ne feledje, hogy az alapértelmezett érték az `colocate_with` implicit elhelyezés. A közös [elhelyezés](concepts-hyperscale-colocation.md) nagyszerű dolog lehet, ha a táblák kapcsolódnak vagy csatlakozva lesznek.  Ha azonban két tábla nem kapcsolódik egymáshoz, de a terjesztési oszlopokhoz ugyanazt az adattípust használja, akkor véletlenül egymással is csökkentheti a teljesítményt a szegmensek közötti [újraelosztás](howto-hyperscale-scale-rebalance.md)során.  A tábla szegmensei szükségtelenül lesznek áthelyezve egy \" lépcsőzetesen.\"
 
 Ha egy új elosztott tábla nem kapcsolódik más táblákhoz, érdemes megadnia a legjobbat `colocate_with => 'none'` .
 
@@ -470,7 +470,7 @@ szegmensek **maximális \_ \_ áthelyezése:** (nem kötelező) az áthelyezni k
 > -   `force_logical`: Logikai replikáció használata akkor is, ha a tábla nem rendelkezik replika-identitással. A replikáció során a táblázat minden egyidejű frissítési/törlési utasítása sikertelen lesz.
 > -   `block_writes`: Használja a másolás (írások blokkolása) műveletet az elsődleges kulcs vagy a replika identitását nélkülöző táblákhoz.
 
-** \_ csak ürítés:** (nem kötelező) Ha igaz, akkor a `shouldhaveshards` [pg_dist_nodeban](reference-hyperscale-metadata.md#worker-node-table)hamis értékre beállított munkavégző csomópontokon helyezze át a szegmenseket; ne helyezzen át más szegmenseket.
+**\_ csak ürítés:** (nem kötelező) Ha igaz, akkor a `shouldhaveshards` [pg_dist_nodeban](reference-hyperscale-metadata.md#worker-node-table)hamis értékre beállított munkavégző csomópontokon helyezze át a szegmenseket; ne helyezzen át más szegmenseket.
 
 **újraelosztási \_ stratégia:** (nem kötelező) a stratégia neve [pg_dist_rebalance_strategyban](reference-hyperscale-metadata.md#rebalancer-strategy-table).
 Ha ez az argumentum nincs megadva, a függvény kiválasztja az alapértelmezett stratégiát, ahogy azt a táblázat is jelzi.
@@ -527,7 +527,7 @@ N.A.
 Az alábbi oszlopokat tartalmazó rekordok:
 
 -   **munkamenet**-azonosító: a postgres PID azonosítója
--   **Táblanév \_ **: az a tábla, amelynek a szegmensei át vannak mozgatva
+-   **Táblanév \_**: az a tábla, amelynek a szegmensei át vannak mozgatva
 -   **shardid**: a szóban forgó szilánk
 -   **szegmens \_ mérete**: méret bájtban
 -   **SourceName**: a forrás csomópont állomásneve

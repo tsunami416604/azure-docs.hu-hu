@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a529875536c2feafe05695e5d20daed0873a95e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0503e0bf2fe152296ca6890e14503d05bd3bbeef
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934446"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024772"
 ---
 # <a name="implementing-voice-assistants-on-windows"></a>Hangsegédek implementálása Windows rendszeren
 
@@ -30,15 +30,15 @@ Ez az útmutató végigvezeti a Windowson futó hangsegédek létrehozásának f
 
 #### <a name="ensure-that-the-microphone-is-available-and-accessible-then-monitor-its-state"></a>Győződjön meg arról, hogy a mikrofon elérhető és elérhető, majd figyelje az állapotát
 
-A MVA szüksége van egy mikrofonra, és elérhetővé válik, hogy képes legyen a hangalapú aktiválás észlelésére. A [AppCapability](https://docs.microsoft.com/uwp/api/windows.security.authorization.appcapabilityaccess.appcapability?view=winrt-18362), a [DeviceWatcher](https://docs.microsoft.com/uwp/api/windows.devices.enumeration.devicewatcher?view=winrt-18362)és a [MediaCapture](https://docs.microsoft.com/uwp/api/windows.media.capture.mediacapture?view=winrt-18362) osztály használatával megkeresheti a mikrofon adatvédelmi hozzáférését, az eszköz jelenlétét és az eszköz állapotát (például Volume és Mute).
+A MVA szüksége van egy mikrofonra, és elérhetővé válik, hogy képes legyen a hangalapú aktiválás észlelésére. A [AppCapability](/uwp/api/windows.security.authorization.appcapabilityaccess.appcapability?view=winrt-18362), a [DeviceWatcher](/uwp/api/windows.devices.enumeration.devicewatcher?view=winrt-18362)és a [MediaCapture](/uwp/api/windows.media.capture.mediacapture?view=winrt-18362) osztály használatával megkeresheti a mikrofon adatvédelmi hozzáférését, az eszköz jelenlétét és az eszköz állapotát (például Volume és Mute).
 
 ### <a name="register-the-application-with-the-background-service"></a>Az alkalmazás regisztrálása a háttérben futó szolgáltatásban
 
-Ahhoz, hogy a MVA az alkalmazást a háttérben indítsa el, az alkalmazást regisztrálni kell a háttérben futó szolgáltatásban. A háttérben futó szolgáltatás regisztrálásával kapcsolatban [itt](https://docs.microsoft.com/windows/uwp/launch-resume/register-a-background-task)talál teljes körű útmutatót.
+Ahhoz, hogy a MVA az alkalmazást a háttérben indítsa el, az alkalmazást regisztrálni kell a háttérben futó szolgáltatásban. A háttérben futó szolgáltatás regisztrálásával kapcsolatban [itt](/windows/uwp/launch-resume/register-a-background-task)talál teljes körű útmutatót.
 
 ### <a name="unlock-the-limited-access-feature"></a>A korlátozott hozzáférés funkció zárolásának feloldása
 
-A hangsegéd funkció zárolásának feloldásához használja a Microsoft által biztosított korlátozott hozzáférésű szolgáltatás kulcsát. Ehhez használja a Windows SDK [LimitedAccessFeature](https://docs.microsoft.com/uwp/api/windows.applicationmodel.limitedaccessfeatures?view=winrt-18362) osztályát.
+A hangsegéd funkció zárolásának feloldásához használja a Microsoft által biztosított korlátozott hozzáférésű szolgáltatás kulcsát. Ehhez használja a Windows SDK [LimitedAccessFeature](/uwp/api/windows.applicationmodel.limitedaccessfeatures?view=winrt-18362) osztályát.
 
 ### <a name="register-the-keyword-for-the-application"></a>Az alkalmazáshoz tartozó kulcsszó regisztrálása
 
@@ -86,7 +86,7 @@ Ha a hangügynök alkalmazást a hang aktiválja, a következő lépés annak el
 
 ### <a name="retrieve-activation-audio"></a>Aktiválási hang beolvasása
 
-Hozzon létre egy [AudioGraph](https://docs.microsoft.com/uwp/api/windows.media.audio.audiograph) , és adja át a következőnek: `CreateAudioDeviceInputNodeAsync` `ConversationalAgentSession` . Ezzel betölti a gráf hangpufferét, amely *körülbelül 3 másodpercet vesz igénybe, mielőtt a rendszer észlelte a kulcsszót*. Ez a további vezető hang a kulcsszó hosszának és a beszélő sebességének széles választékát tartalmazza. Ezt követően az [QuantumStarted](https://docs.microsoft.com/uwp/api/windows.media.audio.audiograph.quantumstarted?view=winrt-18362) eseményt a hanggráfból kezelheti a hangadatok lekéréséhez.
+Hozzon létre egy [AudioGraph](/uwp/api/windows.media.audio.audiograph) , és adja át a következőnek: `CreateAudioDeviceInputNodeAsync` `ConversationalAgentSession` . Ezzel betölti a gráf hangpufferét, amely *körülbelül 3 másodpercet vesz igénybe, mielőtt a rendszer észlelte a kulcsszót*. Ez a további vezető hang a kulcsszó hosszának és a beszélő sebességének széles választékát tartalmazza. Ezt követően az [QuantumStarted](/uwp/api/windows.media.audio.audiograph.quantumstarted?view=winrt-18362) eseményt a hanggráfból kezelheti a hangadatok lekéréséhez.
 
 ```csharp
 var inputNode = await agentSession.CreateAudioDeviceInputNodeAsync(audioGraph);
@@ -118,7 +118,7 @@ Az alábbi lépések azokat a követelményeket ismertetik, amelyek lehetővé t
 
 A zárolási tapasztalatok megtervezésével kapcsolatos útmutatásért tekintse meg az [ajánlott eljárásokat ismertető útmutatót](windows-voice-assistants-best-practices.md).
 
-Ha egy alkalmazás a zárolás fölött egy nézetet jelenít meg, akkor azt "kioszk módban" tekinti. A kioszk üzemmódot használó alkalmazások megvalósításával kapcsolatos további információkért tekintse meg a [kioszk mód dokumentációját](https://docs.microsoft.com/windows-hardware/drivers/partnerapps/create-a-kiosk-app-for-assigned-access).
+Ha egy alkalmazás a zárolás fölött egy nézetet jelenít meg, akkor azt "kioszk módban" tekinti. A kioszk üzemmódot használó alkalmazások megvalósításával kapcsolatos további információkért tekintse meg a [kioszk mód dokumentációját](/windows-hardware/drivers/partnerapps/create-a-kiosk-app-for-assigned-access).
 
 ### <a name="transitioning-above-lock"></a>Áttérés a fenti zárolás felett
 
@@ -149,7 +149,7 @@ A Hangaktiválás adatvédelmi beállításai oldalon található alkalmazás be
 Ha programozott módon szeretné bezárni az alkalmazást a zárolás felett vagy alatt, használja az `WindowService.CloseWindow()` API-t. Ez elindítja az összes UWP életciklus-módszert, beleértve a OnSuspend is, amelyek lehetővé teszik az alkalmazás számára, hogy a lezárás előtt ártalmatlanítsa a `ConversationalAgentSession` példányát.
 
 > [!NOTE]
-> Az alkalmazás bezárható az [alábbi zárolási példány](https://docs.microsoft.com/windows-hardware/drivers/partnerapps/create-a-kiosk-app-for-assigned-access#add-a-way-out-of-assigned-access-)bezárása nélkül. Ebben az esetben a fenti zárolási nézetet a "tisztítás" értékre kell állítani, így biztosítva, hogy a képernyő zárolása után ne kelljen a fenti zárolási nézetet módosítani.
+> Az alkalmazás bezárható az [alábbi zárolási példány](/windows-hardware/drivers/partnerapps/create-a-kiosk-app-for-assigned-access#add-a-way-out-of-assigned-access-)bezárása nélkül. Ebben az esetben a fenti zárolási nézetet a "tisztítás" értékre kell állítani, így biztosítva, hogy a képernyő zárolása után ne kelljen a fenti zárolási nézetet módosítani.
 
 ## <a name="next-steps"></a>Következő lépések
 

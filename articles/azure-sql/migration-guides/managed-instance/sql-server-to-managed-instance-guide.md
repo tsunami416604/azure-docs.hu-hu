@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 0aba809fd18dfd74a344a32b2335aba9426c9845
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 5c20fbbe25b51160f42f233d30c39ccaec0f5cac
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496733"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026058"
 ---
 # <a name="migration-guide-sql-server-to-sql-managed-instance"></a>Áttelepítési útmutató: SQL Server a felügyelt SQL-példányhoz
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -99,7 +99,7 @@ Ha össze kell hasonlítani a számítási feladatok teljesítményét egy SQL f
 
 ### <a name="create-sql-managed-instance"></a>Felügyelt SQL-példány létrehozása 
 
-A felderítési és felmérési fázisban található információk alapján hozzon létre egy megfelelő méretű SQL felügyelt példányt. Ezt a [Azure Portal](../../managed-instance/instance-create-quickstart.md), a [PowerShell](../../managed-instance/scripts/create-configure-managed-instance-powershell.md)vagy egy [Azure Resource Manager (ARM) sablon](/../../managed-instance/create-template-quickstart.md)használatával teheti meg. 
+A felderítési és felmérési fázisban található információk alapján hozzon létre egy megfelelő méretű SQL felügyelt példányt. Ezt a [Azure Portal](../../managed-instance/instance-create-quickstart.md), a [PowerShell](../../managed-instance/scripts/create-configure-managed-instance-powershell.md)vagy egy [Azure Resource Manager (ARM) sablon](/azure/azure-sql/managed-instance/create-template-quickstart)használatával teheti meg. 
 
 
 ## <a name="migrate"></a>Migrate
@@ -117,7 +117,7 @@ Az áttelepítés a DMS használatával történő végrehajtásához kövesse a
 1. Regisztrálja a **Microsoft. DataMigration** erőforrás-szolgáltatót az előfizetésben, ha első alkalommal végezi el ezt.
 1. Hozzon létre egy Azure Database Migration Service-példányt az Ön által választott kívánt helyen (lehetőleg ugyanabban a régióban, mint a cél Azure SQL felügyelt példánya), majd válasszon ki egy meglévő virtuális hálózatot, vagy hozzon létre egy újat a DMS-példány üzemeltetéséhez.
 1. A DMS-példány létrehozása után hozzon létre egy új áttelepítési projektet, és adja meg a forráskiszolgáló típusát **SQL Server** és a célkiszolgáló típusát **Azure SQL Database felügyelt példányként**. Válassza ki a tevékenység típusát a projekt létrehozása panelen – online vagy offline adatáttelepítés. 
-1.  Az áttelepítési **cél** részletei lapon válassza ki a forrás SQL Server részleteit az **áttelepítési forrás** részletei lapon, valamint a cél Azure SQL felügyelt példányának részleteit. Válassza a **Tovább** gombot.
+1.  Az áttelepítési **cél** részletei lapon válassza ki a forrás SQL Server részleteit az **áttelepítési forrás** részletei lapon, valamint a cél Azure SQL felügyelt példányának részleteit. Kattintson a **Tovább** gombra.
 1. Válassza ki az áttelepíteni kívánt adatbázist. 
 1. Adja meg a konfigurációs beállításokat az adatbázis biztonságimásolat-fájljait tartalmazó **SMB hálózati megosztás** megadásához. Használja a Windows felhasználói hitelesítő adatait a DMS használatával, amely hozzáfér a hálózati megosztáshoz. Adja meg az **Azure Storage-fiók adatait**. 
 1. Tekintse át az áttelepítési összegzést, majd kattintson az **áttelepítés futtatása** elemre. Ezután figyelheti az áttelepítési tevékenységet, és ellenőrizheti az adatbázis áttelepítésének folyamatát.
@@ -142,7 +142,7 @@ Az alábbi ábra a folyamat magas szintű áttekintését tartalmazza:
 
 A biztonsági mentés és a visszaállítás használatával történő Migrálás lépései: 
 
-1. Készítse elő az adatbázis biztonsági mentését az Azure Blob Storage-ba. Használja például a [SQL Server Management Studio](/ssms/download-sql-server-management-studio-ssms) [URL-címére történő biztonsági mentést](/sql/relational-databases/backup-restore/sql-server-backup-to-url) . A [Microsoft Azure eszköz](https://go.microsoft.com/fwlink/?LinkID=324399) használatával SQL Server 2012 SP1 CU2 korábbi verziókban is támogathatja az adatbázisokat. 
+1. Készítse elő az adatbázis biztonsági mentését az Azure Blob Storage-ba. Használja például a [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) [URL-címére történő biztonsági mentést](/sql/relational-databases/backup-restore/sql-server-backup-to-url) . A [Microsoft Azure eszköz](https://go.microsoft.com/fwlink/?LinkID=324399) használatával SQL Server 2012 SP1 CU2 korábbi verziókban is támogathatja az adatbázisokat. 
 1. Kapcsolódjon az Azure SQL felügyelt példányához SQL Server Management Studio használatával. 
 1. Hozzon létre egy hitelesítő adatot egy közös hozzáférési aláírás használatával, hogy hozzáférjen az Azure Blob Storage-fiókhoz az adatbázis biztonsági másolatai segítségével. Például:
 
@@ -191,10 +191,10 @@ Miután áttelepítette az adatátvitelt a cél környezetbe, az összes olyan a
 
 Az adatbázis-áttelepítés tesztelési módszere a következő tevékenységekből áll:
 
-1. **Ellenőrzési tesztek fejlesztése** : az adatbázisok áttelepítésének TESZTELÉSéhez SQL-lekérdezéseket kell használnia. Létre kell hoznia az érvényesítési lekérdezéseket a forrás-és a célként megadott adatbázisokon való futtatáshoz. Az érvényesítési lekérdezéseknek le kell fedniük a definiált hatókört.
-1. **Tesztkörnyezet beállítása** : a tesztkörnyezet a forrás-adatbázis és a céladatbázis másolatát is tartalmazza. Ügyeljen arra, hogy elkülönítse a tesztkörnyezet.
-1. **Ellenőrzési tesztek futtatása** : futtassa az ellenőrző teszteket a forráson és a célhelyen, majd elemezze az eredményeket.
-1. **Teljesítménytesztek futtatása** : futtasson teljesítménytesztet a forráson és a célhelyen, majd elemezze és hasonlítsa össze az eredményeket.
+1. **Ellenőrzési tesztek fejlesztése**: az adatbázisok áttelepítésének TESZTELÉSéhez SQL-lekérdezéseket kell használnia. Létre kell hoznia az érvényesítési lekérdezéseket a forrás-és a célként megadott adatbázisokon való futtatáshoz. Az érvényesítési lekérdezéseknek le kell fedniük a definiált hatókört.
+1. **Tesztkörnyezet beállítása**: a tesztkörnyezet a forrás-adatbázis és a céladatbázis másolatát is tartalmazza. Ügyeljen arra, hogy elkülönítse a tesztkörnyezet.
+1. **Ellenőrzési tesztek futtatása**: futtassa az ellenőrző teszteket a forráson és a célhelyen, majd elemezze az eredményeket.
+1. **Teljesítménytesztek futtatása**: futtasson teljesítménytesztet a forráson és a célhelyen, majd elemezze és hasonlítsa össze az eredményeket.
 
    > [!NOTE]
    > A Migrálás utáni ellenőrzési tesztek fejlesztésére és futtatására vonatkozó segítségért vegye figyelembe a partner [QuerySurge](https://www.querysurge.com/company/partners/microsoft)elérhető adatminőségi megoldást. 
@@ -210,7 +210,7 @@ Az adatbázis-áttelepítés tesztelési módszere a következő tevékenységek
 Néhány SQL Server funkció csak akkor érhető el, ha az [adatbázis kompatibilitási szintje](/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database) a legújabb kompatibilitási szintre módosul (150). 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Microsoft és a harmadik féltől származó szolgáltatások és eszközök egyik mátrixa, amely a különböző adatbázis-és adatáttelepítési forgatókönyvek, valamint a speciális feladatok elvégzéséhez nyújt segítséget, lásd: [szolgáltatás és eszközök az adatok áttelepítéséhez](../../../dms/dms-tools-matrix.md).
 

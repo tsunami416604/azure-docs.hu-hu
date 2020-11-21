@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/20/2020
 ms.author: trbye
 zone_pivot_groups: acs-js-csharp
-ms.openlocfilehash: 6cb338e8b7baa45e1c84f59a5730a9a500e71a79
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ae3d7b329c55ce0be101cee73e1fc7674a2d75aa
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486785"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026539"
 ---
 # <a name="get-started-with-real-time-conversation-transcription"></a>Ismerkedés a valós idejű Társalgások átírásával
 
@@ -25,7 +25,7 @@ A Speech SDK **ConversationTranscriber** API-jával több résztvevő hozzáadá
 ## <a name="limitations"></a>Korlátozások
 
 * Csak a következő előfizetési régiókban érhető el:,, `centralus` `eastasia` `eastus` , `westeurope`
-* 7 mikrofonos körkörös multi-mikrofonos tömböt igényel egy lejátszási hivatkozási adatfolyammal. A mikrofon tömbnek meg kell felelnie a [specifikációnak](https://aka.ms/sdsdk-microphone).
+* 7 mikrofonos körkörös multi-mikrofonos tömböt igényel egy lejátszási hivatkozási adatfolyammal. A mikrofon tömbnek meg kell felelnie a [specifikációnak](./speech-devices-sdk-microphone.md).
 * A [Speech Devices SDK](speech-devices-sdk.md) megfelelő eszközöket és egy minta alkalmazást biztosít, amely a beszélgetés átírását szemlélteti.
 
 ## <a name="prerequisites"></a>Előfeltételek

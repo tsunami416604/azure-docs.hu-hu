@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: cavoeg
-ms.openlocfilehash: 609bd01e8dcb0e9202d1d9dbe1d1fc1a01cac550
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 71097f13fffbbe5cb57a69c98fb0ab272e16af5c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368281"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026301"
 ---
 # <a name="features"></a>Funkciók
 
@@ -29,22 +29,22 @@ A korábbi verziók jelenleg is támogatottak: `3.0.2`
 
 | API                            | Támogatott – Péter | Támogatott-OSS (SQL) | Támogatott-OSS (Cosmos DB) | Megjegyzés                                             |
 |--------------------------------|-----------|-----------|-----------|-----------------------------------------------------|
-| olvasás                           | Igen       | Igen       | Igen       |                                                     |
-| vread                          | Igen       | Igen       | Igen       |                                                     |
-| update                         | Igen       | Igen       | Igen       |                                                     |
-| frissítés optimista zárolással | Igen       | Igen       | Igen       |                                                     |
-| frissítés (feltételes)           | Igen       | Igen       | Igen       |                                                     |
+| olvasás                           | Igen       | Igen       | Yes       |                                                     |
+| vread                          | Igen       | Igen       | Yes       |                                                     |
+| update                         | Igen       | Igen       | Yes       |                                                     |
+| frissítés optimista zárolással | Igen       | Igen       | Yes       |                                                     |
+| frissítés (feltételes)           | Igen       | Igen       | Yes       |                                                     |
 | javítás                          | Nem        | Nem        | Nem        |                                                     |
-| delete                         | Igen       | Igen       | Igen       |                                                     |
+| delete                         | Igen       | Igen       | Yes       |                                                     |
 | Törlés (feltételes)           | Nem        | Nem        | Nem        |                                                     |
-| előzmények                        | Igen       | Igen       | Igen       |                                                     |
-| létrehozás                         | Igen       | Igen       | Igen       | Mind a POST, mind a PUT támogatása                               |
-| létrehozás (feltételes)           | Igen       | Igen       | Igen       | Probléma [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
+| előzmények                        | Igen       | Igen       | Yes       |                                                     |
+| létrehozás                         | Igen       | Igen       | Yes       | Mind a POST, mind a PUT támogatása                               |
+| létrehozás (feltételes)           | Igen       | Igen       | Yes       | Probléma [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
 | keresés                         | Részleges   | Részleges   | Részleges   | Lásd lent                                           |
 | láncolt keresés                 | Nem        | Igen       | Nem        |                                           |
 | fordított láncolt keresés         | Nem        | Nem        | Nem        |                                            |
-| képességek                   | Igen       | Igen       | Igen       |                                                     |
-| kötegelt                          | Igen       | Igen       | Igen       |                                                     |
+| képességek                   | Igen       | Igen       | Yes       |                                                     |
+| kötegelt                          | Igen       | Igen       | Yes       |                                                     |
 | tranzakció                    | Nem        | Igen       | Nem        |                                                     |
 | lapozófájl                         | Részleges   | Részleges   | Részleges   | `self` és `next` támogatottak                     |
 | közvetítők                 | Nem        | Nem        | Nem        |                                                     |
@@ -55,14 +55,14 @@ Az összes keresési paraméter típusa támogatott.
 
 | Keresési paraméter típusa | Támogatott – Péter | Támogatott-OSS (SQL) | Támogatott-OSS (Cosmos DB) | Megjegyzés |
 |-----------------------|-----------|-----------|-----------|---------|
-| Szám                | Igen       | Igen       | Igen       |         |
+| Szám                | Igen       | Igen       | Yes       |         |
 | Dátum/dátum/idő         | Igen       | Igen       | Igen       |         |
-| Sztring                | Igen       | Igen       | Igen       |         |
-| Jogkivonat                 | Igen       | Igen       | Igen       |         |
-| Referencia             | Igen       | Igen       | Igen       |         |
-| Kompozit             | Igen       | Igen       | Igen       |         |
-| Mennyiség              | Igen       | Igen       | Igen       |         |
-| URI                   | Igen       | Igen       | Igen       |         |
+| Sztring                | Igen       | Igen       | Yes       |         |
+| Jogkivonat                 | Igen       | Igen       | Yes       |         |
+| Referencia             | Igen       | Igen       | Yes       |         |
+| Kompozit             | Igen       | Igen       | Yes       |         |
+| Mennyiség              | Igen       | Igen       | Yes       |         |
+| URI                   | Igen       | Igen       | Yes       |         |
 | Speciális               | Nem        | Nem        | Nem        |         |
 
 
@@ -71,7 +71,7 @@ Az összes keresési paraméter típusa támogatott.
 |`:missing`             | Igen       | Igen       | Igen       |         |
 |`:exact`               | Igen       | Igen       | Igen       |         |
 |`:contains`            | Igen       | Igen       | Igen       |         |
-|`:text`                | Igen       | Igen       | Igen       |         |
+|`:text`                | Igen       | Igen       | Yes       |         |
 |`:in` jogkivonat          | Nem        | Nem        | Nem        |         |
 |`:below` jogkivonat       | Nem        | Nem        | Nem        |         |
 |`:above` jogkivonat       | Nem        | Nem        | Nem        |         |
@@ -99,9 +99,9 @@ Az összes keresési paraméter típusa támogatott.
 | Keresési eredmények paraméterei | Támogatott – Péter | Támogatott-OSS (SQL) | Támogatott-OSS (Cosmos DB) | Megjegyzés |
 |-------------------------|-----------|-----------|-----------|---------|
 | `_sort`                 | Részleges        | Részleges   | Részleges        |   `_sort=_lastUpdated` támogatott       |
-| `_count`                | Igen       | Igen       | Igen       | `_count` legfeljebb 100 karakter hosszú lehet. Ha 100-nél magasabbra van állítva, akkor a rendszer csak 100 értéket ad vissza, és a kötegben figyelmeztetést ad vissza. |
-| `_include`              | Nem        | Igen       | Nem        |         |
-| `_revinclude`           | Nem        | Igen       | Nem        | A tartalmazott elemek 100-re korlátozódnak. |
+| `_count`                | Igen       | Igen       | Yes       | `_count` legfeljebb 100 karakter hosszú lehet. Ha 100-nél magasabbra van állítva, akkor a rendszer csak 100 értéket ad vissza, és a kötegben figyelmeztetést ad vissza. |
+| `_include`              | Igen       | Igen       | Yes       |A tartalmazott elemek 100-re korlátozódnak. A (z) Cosmos DB nem tartalmazza a (z) és az OSS-t a következőn: iteráció támogatása.|
+| `_revinclude`           | Igen       | Igen       | Yes       | A tartalmazott elemek 100-re korlátozódnak. A (z) Cosmos DB nem tartalmazza a (z) és az OSS-t a következőn: iteráció támogatása.|
 | `_summary`              | Részleges   | Részleges   | Részleges   | `_summary=count` támogatott |
 | `_total`                | Részleges   | Részleges   | Részleges   | _total = nem és _total = pontos      |
 | `_elements`             | Igen       | Igen       | Igen       |         |
@@ -115,9 +115,9 @@ A REST API-t kiterjesztő összes támogatott művelet.
 
 | Keresési paraméter típusa | Támogatott – Péter | Támogatott-OSS (SQL) | Támogatott-OSS (Cosmos DB) | Megjegyzés |
 |------------------------|-----------|-----------|-----------|---------|
-| $export (teljes rendszeren) | Igen       | Igen       | Igen       |         |
-| Beteg/$export        | Igen       | Igen       | Igen       |         |
-| Csoport/$export          | Igen       | Igen       | Igen       |         |
+| $export (teljes rendszeren) | Igen       | Igen       | Yes       |         |
+| Beteg/$export        | Igen       | Igen       | Yes       |         |
+| Csoport/$export          | Igen       | Igen       | Yes       |         |
 
 ## <a name="persistence"></a>Kitartás
 
@@ -132,6 +132,27 @@ A Cosmos DB egy globálisan elosztott, többmodelles (SQL API-, MongoDB API-stb.
 A FHIR-kiszolgáló [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) használ a hozzáférés-vezérléshez. Pontosabban, Role-Based Access Control (RBAC) kényszerítve van, ha a `FhirServer:Security:Enabled` konfigurációs paraméter értéke `true` , és a FHIR-kiszolgálónak küldött összes kérelemnek (kivéve `/metadata` ) a `Authorization` kérelem fejlécének kell lennie `Bearer <TOKEN>` . A tokennek tartalmaznia kell egy vagy több, a jogcímben definiált szerepkört `roles` . A rendszer akkor fogadja a kérést, ha a jogkivonat olyan szerepkört tartalmaz, amely engedélyezi a megadott műveletet a megadott erőforráson.
 
 Jelenleg az adott szerepkörre vonatkozó engedélyezett műveletek *globálisan* lesznek alkalmazva az API-ra.
+
+## <a name="service-limits"></a>Szolgáltatási korlátozások
+
+* [**Kérelmek egységei (RUS)**](https://docs.microsoft.com/azure/cosmos-db/concepts-limits) – a FHIR-hez készült Azure API-portálon akár 10 000 RUs is konfigurálható. Legalább 400 RUs vagy 10 RUs/GB szükséges, attól függően, hogy melyik a nagyobb. Ha 10 000 RUs-nál többre van szüksége, a megnövelt támogatási jegybe helyezhető. Az elérhető maximális érték 1 000 000.
+
+* **Egyidejű kapcsolatok** és **példányok** – a dafault öt párhuzamos kapcsolatot biztosít a fürt két példányán (összesen 10 egyidejű kérelem esetén). Ha úgy gondolja, hogy több egyidejű kérésre van szüksége, nyisson meg egy támogatási jegyet az igényeinek megfelelő részletekkel.
+
+* **Köteg mérete** – minden köteg 500 elemre van korlátozva.
+
+* **Adatméret** – az adatmennyiségnek és a dokumentumoknak egyenként 2 MB-nál kisebbnek kell lenniük.
+
+## <a name="performance-expectations"></a>Teljesítményre vonatkozó elvárások
+
+A rendszer teljesítménye az RUs, az egyidejű kapcsolatok és a végrehajtott műveletek (Put, post stb.) számától függ. Az alábbiakban a konfigurált RUs alapján várhatóan megjelenő általános tartományok láthatók. Általánosságban elmondható, hogy a teljesítmény lineárisan növekszik az RUs növekedésével:
+
+| RUs száma | Erőforrások/mp |
+|----------|---------------|
+| 400      | 5-10          |
+| 1,000    | 100-150       |
+| 10,000   | 225-400       |
+| 100.000  | 2500 – 4000   |
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: sausin
-ms.openlocfilehash: 8c7cb1e9f39b1de7897da29467a607953b42bb24
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 77ade17803a35491712ec6df70aed9eb7b4883eb
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565738"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025874"
 ---
 # <a name="export-custom-commands-application-as-a-remote-skill"></a>Egyéni parancsok alkalmazás exportálása távoli képességként
 
@@ -23,9 +23,9 @@ Ebből a cikkből megtudhatja, hogyan exportálhat egy egyéni parancs-alkalmaz�
 
 ## <a name="prerequisites"></a>Előfeltételek
 > [!div class="checklist"]
-> * [A bot Framework ismeretének megismerése](https://aka.ms/speech/cc-skill-overview)
+> * [A bot Framework ismeretének megismerése](/azure/bot-service/skills-conceptual)
 > * [A szaktudás jegyzékének megismerése](https://aka.ms/speech/cc-skill-manifest)
-> * [A robot-keretrendszer robotja által létrehozott szaktudás meghívása](https://aka.ms/speech/cc-skill-consumer)
+> * [A robot-keretrendszer robotja által létrehozott szaktudás meghívása](/azure/bot-service/skills-about-skill-consumers)
 > * Egy meglévő egyéni parancsok alkalmazása. Ha nem rendelkezik egyéni parancsokat használó alkalmazással, próbálja ki a- [Gyorsindítás: hangsegéd létrehozása egyéni parancsokkal](quickstart-custom-commands-application.md)
 
 ## <a name="custom-commands-as-remote-skills"></a>Egyéni parancsok távoli képességekként

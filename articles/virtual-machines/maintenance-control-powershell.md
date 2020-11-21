@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 11/19/2020
 ms.author: cynthn
-ms.openlocfilehash: f33cb7d4d005f15d0a5fcc70d56ebd4698f86694
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 2cc935e81e867609159b5c150b6ee7c346bb9f8e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94988221"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026148"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>Frissítések vezérlése karbantartási vezérléssel és Azure PowerShell
 
-A karbantartási ellenőrzéssel eldöntheti, hogy mikor alkalmazza a frissítéseket az elkülönített virtuális gépekre és az Azure dedikált gazdagépekre. Ez a témakör a karbantartás-vezérlés Azure PowerShell beállításait ismerteti. További információ a karbantartási ellenőrzés, a hozzá tartozó korlátozások és egyéb felügyeleti lehetőségek használatáról: a [platform frissítéseinek kezelése a karbantartási ellenőrzéssel](maintenance-control.md).
+A karbantartási vezérléssel eldöntheti, hogy mikor alkalmazza a platform frissítéseit az elkülönített virtuális gépek és az Azure dedikált gazdagépek gazdagép-infrastruktúráján. Ez a témakör a karbantartás-vezérlés Azure PowerShell beállításait ismerteti. További információ a karbantartási ellenőrzés, a hozzá tartozó korlátozások és egyéb felügyeleti lehetőségek használatáról: a [platform frissítéseinek kezelése a karbantartási ellenőrzéssel](maintenance-control.md).
  
 ## <a name="enable-the-powershell-module"></a>A PowerShell-modul engedélyezése
 
@@ -86,9 +86,9 @@ $config = New-AzMaintenanceConfiguration `
 > A karbantartási **időtartamnak** *2 óra* vagy hosszabbnak kell lennie. A karbantartási **ismétlődést** legalább 35 nap múlva be kell állítani.
 
 A karbantartási **Ismétlődések** napi, heti vagy havi formában is megadhatók. Néhány példa:
- - napi – "recurEvery: Day" **vagy** "RecurEvery: 3days" 
- - hetente – "recurEvery: 3Weeks" **vagy** "RecurEvery: Week szombat, vasárnap" 
- - havonta – "recurEvery: month day23, day24" **vagy** "RecurEvery: hónap múlt vasárnap" **vagy** "RecurEvery: month negyedik hétfő"  
+ - **napi** RecurEvery "nap" **vagy** "3days" 
+ - **hetente** RecurEvery "3Weeks" **vagy** "hét szombat, vasárnap" 
+ - **havi** RecurEvery "hónap day23, day24" **vagy** "hónap múlt vasárnap" **vagy** "hónap negyedik hétfő"  
       
 
 ## <a name="assign-the-configuration"></a>A konfiguráció kiosztása

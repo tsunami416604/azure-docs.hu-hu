@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 91c7c19fddab2a4372f183c90532b24e774277d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24d27859aad7642392a5702ab7ddbb727b538d51
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88008049"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025010"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>A Windows 10 Enterprise több munkamenetes használata – gyakori kérdések
 
@@ -80,8 +80,8 @@ Ennek az az oka, hogy a Windows 10 Enterprise több munkamenetet használ egy pr
 A legtöbb virtualizált környezet alapértelmezés szerint úgy van konfigurálva, hogy megakadályozza, hogy a felhasználók további alkalmazásokat telepítsenek a profiljába. Ha meg szeretné győződni arról, hogy az alkalmazás nem szűnik meg, amikor a felhasználó kijelentkezik a Windows rendszerű virtuális asztalról, az alkalmazást a környezetében lévő összes felhasználói profilhoz ki kell építenie. Az alkalmazásokkal kapcsolatos további információkért tekintse meg ezeket az erőforrásokat:
 
 - [Beépített alkalmazások közzététele a Windows rendszerű virtuális asztalon](publish-apps.md)
-- [DISM-alkalmazáscsomag karbantartási parancssori kapcsolói](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-app-package--appx-or-appxbundle--servicing-command-line-options)
-- [Add-AppxProvisionedPackage](https://docs.microsoft.com/powershell/module/dism/add-appxprovisionedpackage?view=win10-ps)
+- [DISM-alkalmazáscsomag karbantartási parancssori kapcsolói](/windows-hardware/manufacture/desktop/dism-app-package--appx-or-appxbundle--servicing-command-line-options)
+- [Add-AppxProvisionedPackage](/powershell/module/dism/add-appxprovisionedpackage?view=win10-ps)
 
 ## <a name="how-do-i-make-sure-users-dont-download-and-install-apps-from-the-microsoft-store"></a>Hogyan győződjön meg arról, hogy a felhasználók nem töltik le és nem telepítik az alkalmazásokat a Microsoft Storeból?
 
@@ -90,11 +90,11 @@ A Microsoft Store alkalmazás letiltásával meggyőződhet arról, hogy a felha
 Az áruházbeli alkalmazás letiltása:
 
 1. Hozzon létre egy új Csoportházirend.
-2. Válassza ki a **Számítógép konfigurációja**  >  **Felügyeleti sablonok**  >  **Windows-összetevők**elemet.
-3. Válassza az **áruház**lehetőséget.
-4. Válassza az **áruházbeli alkalmazás**lehetőséget.
-5. Válassza a **Letiltva**lehetőséget, majd kattintson **az OK gombra**.
-6. Kattintson az **Alkalmaz** gombra.
+2. Válassza ki a **Számítógép konfigurációja**  >  **Felügyeleti sablonok**  >  **Windows-összetevők** elemet.
+3. Válassza az **áruház** lehetőséget.
+4. Válassza az **áruházbeli alkalmazás** lehetőséget.
+5. Válassza a **Letiltva** lehetőséget, majd kattintson **az OK gombra**.
+6. Kattintson az **Alkalmaz** elemre.
 
 ## <a name="next-steps"></a>Következő lépések
 

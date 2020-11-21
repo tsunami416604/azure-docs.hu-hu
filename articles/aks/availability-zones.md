@@ -5,12 +5,12 @@ services: container-service
 ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
 ms.date: 09/04/2020
-ms.openlocfilehash: 2f7132ffa1fa55d1dfd8043677bf9695a589b7af
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 43b57d0b58c9268482ca27fd51040c7152ecdc25
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043026"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026051"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Rendelkezésre állási zónákat használó Azure Kubernetes-szolgáltatásbeli (ak-) fürt létrehozása
 
@@ -30,12 +30,15 @@ Az AK-fürtök jelenleg rendelkezésre állási zónák használatával hozható
 
 * Kelet-Ausztrália
 * Közép-Kanada
-* Central US
+* USA középső régiója
+* USA keleti régiója 
 * USA 2. keleti régiója
-* USA keleti régiója
 * Közép-Franciaország
+* Középnyugat-Németország
 * Kelet-Japán
 * Észak-Európa
+* Dél-Afrika északi régiója
+* USA déli középső régiója
 * Délkelet-Ázsia
 * Az Egyesült Királyság déli régiója
 * Nyugat-Európa
@@ -72,7 +75,7 @@ Amikor az az [AK Create][az-aks-create] paranccsal hoz létre fürtöt, a param�
 
 Ha nem ad meg zónát az alapértelmezett ügynök készletéhez, amikor egy AK-fürtöt hoz létre, a vezérlési sík összetevői nem garantáltak a rendelkezésre állási zónák között. További csomópont-készleteket az [az AK nodepool Add][az-aks-nodepool-add] paranccsal adhat hozzá, és megadhatja `--zones` az új csomópontokat, de a vezérlő síkja nem változik meg a zónák közötti eloszlásban. A rendelkezésre állási zóna beállításai csak a fürt vagy a csomópont-készlet létrehozási ideje alatt definiálhatók.
 
-A következő példában létrehozunk egy *myAKSCluster* nevű AK-fürtöt az *myResourceGroup* nevű erőforráscsoport-csoportban. Összesen *3* csomópont jön létre – egy ügynök az *1* . zónában, egyet *2* -ban, majd egyet *3* -ban.
+A következő példában létrehozunk egy *myAKSCluster* nevű AK-fürtöt az *myResourceGroup* nevű erőforráscsoport-csoportban. Összesen *3* csomópont jön létre – egy ügynök az *1*. zónában, egyet *2*-ban, majd egyet *3*-ban.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus2

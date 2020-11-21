@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: 272367d5311952b45c73febe0e05b1ec2d225261
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ae164b1300119481e495e647dd491beafdd5241
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88056686"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025078"
 ---
 # <a name="get-started-with-custom-voice"></a>Bevezetés a Custom Voice szolgáltatásba
 
@@ -42,7 +42,7 @@ Az alábbi ábra az egyéni hangmodellek [Egyéni hangportál](https://aka.ms/cu
 A neurális hang testreszabási funkciója jelenleg nyilvános előzetes verzióban érhető el, és csak a kiválasztott ügyfelekre korlátozódik. Az első lépésekhez töltse ki az [alkalmazás űrlapját](https://go.microsoft.com/fwlink/?linkid=2108737) .
 
 > [!NOTE]
-> A Microsoft a felelős AI megtervezése iránti elkötelezettségének részeként célunk az egyének és a társadalom jogainak védelme, valamint az átlátható emberi számítógépes interakciók elősegítése. Ezért az egyéni neurális hang általában nem érhető el minden ügyfél számára. Csak az alkalmazások felülvizsgálatát követően férhet hozzá a technológiához, és Ön kötelezte magát arra, hogy az etikai alapelveivel való összhangban használja. További információ az [alkalmazás kapuzás folyamatáról](https://aka.ms/custom-neural-gating-overview).
+> A Microsoft a felelős AI megtervezése iránti elkötelezettségének részeként célunk az egyének és a társadalom jogainak védelme, valamint az átlátható emberi számítógépes interakciók elősegítése. Ezért az egyéni neurális hang általában nem érhető el minden ügyfél számára. Csak az alkalmazások felülvizsgálatát követően férhet hozzá a technológiához, és Ön kötelezte magát arra, hogy az etikai alapelveivel való összhangban használja. További információ az [alkalmazás kapuzás folyamatáról](./concepts-gating-overview.md).
 
 ## <a name="set-up-your-azure-account"></a>Azure-fiók beállítása
 
@@ -62,7 +62,7 @@ Miután létrehozott egy Azure-fiókot és egy Speech Service-előfizetést, be 
 
 A tartalmak, például az adattípusok, modellek, tesztek és végpontok az egyéni hangportálon belüli **projektekben** vannak rendszerezve. Minden projekt egy adott országra/nyelvre és a létrehozni kívánt hang nemre vonatkozik. Létrehozhat például egy projektet a Call Center csevegési robotok számára, amelyek az angol nyelvet használják a Egyesült Államokban (en-US).
 
-Az első projekt létrehozásához válassza a **szöveg – beszéd/egyéni hang** fület, majd kattintson az **új projekt**elemre. A projekt létrehozásához kövesse a varázsló utasításait. A projekt létrehozása után négy lap jelenik meg: **az adatkezelés**, a **képzés**, a **tesztelés**és az **üzembe helyezés**. Az egyes lapok használatának megismeréséhez használja a [következő lépések](#next-steps) hivatkozásait.
+Az első projekt létrehozásához válassza a **szöveg – beszéd/egyéni hang** fület, majd kattintson az **új projekt** elemre. A projekt létrehozásához kövesse a varázsló utasításait. A projekt létrehozása után négy lap jelenik meg: **az adatkezelés**, a **képzés**, a **tesztelés** és az **üzembe helyezés**. Az egyes lapok használatának megismeréséhez használja a [következő lépések](#next-steps) hivatkozásait.
 
 > [!IMPORTANT]
 > Az [Egyéni hangportált](https://aka.ms/custom-voice) nemrég frissítették! Ha korábban létrehozott, modelleket, teszteket és közzétett végpontokat hozott létre a CRIS.ai-portálon vagy API-kkal, létre kell hoznia egy új projektet az új portálon a régi entitásokhoz való kapcsolódáshoz.

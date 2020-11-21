@@ -14,12 +14,12 @@ ms.date: 06/08/2020
 ms.author: RamaKoni
 ms.reviewer: sqlblt, daleche
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a0ecc36d78ffde002dac971a749889104ff10073
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: b9223ffc564620804b36f6f0e71602b3888a9f42
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556454"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025378"
 ---
 # <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>Az Azure-beli virtuális gépen SQL Server verzió helyben történő módosítása
 
@@ -66,7 +66,7 @@ A SQL Server verziójának frissítéséhez szerezze be a SQL Server telepítés
 
    :::image type="content" source="./media/change-sql-server-version/upgrade.png" alt-text="SQL Server verziójának frissítésére szolgáló kijelölés":::
 
-1. A **termékkulcs** lapon válassza ki azt a lehetőséget, amely azt jelzi, hogy a SQL Server ingyenes kiadására szeretne-e frissíteni, vagy a termék éles verziójának PID-kulcsa van. További információ: [SQL Server 2019 (15. x)](/sql/sql-server/editions-and-components-of-sql-server-version-155) és a [támogatott verzió és kiadás frissítései (SQL Server 2016)](/sql/database-engine/install-windows/supported-version-and-edition-upgrades)támogatott szolgáltatásai.
+1. A **termékkulcs** lapon válassza ki azt a lehetőséget, amely azt jelzi, hogy a SQL Server ingyenes kiadására szeretne-e frissíteni, vagy a termék éles verziójának PID-kulcsa van. További információ: [SQL Server 2019 (15. x)](/sql/sql-server/editions-and-components-of-sql-server-version-15) és a [támogatott verzió és kiadás frissítései (SQL Server 2016)](/sql/database-engine/install-windows/supported-version-and-edition-upgrades)támogatott szolgáltatásai.
 1. Kattintson a **tovább** gombra, amíg el nem éri a **frissítésre kész** lapot, majd válassza a **frissítés** lehetőséget. A módosítás érvénybe léptetéséhez a telepítési ablak több percig is leállhat. A **teljes** oldal megerősíti, hogy a frissítés befejeződött. A frissítéshez szükséges lépésenkénti eljárásért tekintse meg [a teljes eljárást](/sql/database-engine/install-windows/upgrade-sql-server-using-the-installation-wizard-setup#procedure).
 
    :::image type="content" source="./media/change-sql-server-version/complete-page.png" alt-text="Teljes oldal":::
@@ -118,7 +118,7 @@ A SQL Server verziójának módosítása után ismét regisztrálja SQL Server V
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információkat az következő cikkekben talál:
+További információért tekintse át a következő cikkeket:
 
 - [Windows rendszerű virtuális gépek SQL Server áttekintése](sql-server-on-azure-vm-iaas-what-is-overview.md)
 - [Windows rendszerű virtuális gépen SQL Server gyakori kérdések](frequently-asked-questions-faq.md)

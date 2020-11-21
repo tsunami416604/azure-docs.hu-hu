@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 3/16/2020
-ms.openlocfilehash: 7e455565a0cd5e1fc96a6fe7d9e0502da3214fcf
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 73705434aef3ee438c02fbfd6502d30e7620b695
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909913"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026454"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>A Azure Database for PostgreSQL-nagy kapacitású (Citus) metrikáinak beállítása a Azure Portal használatával
 
@@ -41,9 +41,13 @@ A riasztási szabályokkal kapcsolatos információkat a használatával konfigu
 
 4. Megnyílik a **szabály létrehozása** lap az alább látható módon. Adja meg a kötelező adatokat:
 
-   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/4-add-rule-form.png" alt-text="Riasztási szabályok kiválasztása" lehetőséget.
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/4-add-rule-form.png" alt-text="Metrikus riasztási űrlap hozzáadása":::
+
+5. A **feltétel** szakaszban válassza a **Hozzáadás** lehetőséget.
+
+6. Válasszon ki egy mérőszámot azon jelek listájáról, amelyekről riasztást szeretne kapni. Ebben a példában válassza a "tárolási százalék" lehetőséget.
    
-   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/6-configure-signal-logic.png" alt-text="Riasztási szabályok kiválasztása":::
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/6-configure-signal-logic.png" alt-text="Képernyőfelvétel: a jel logikai beállítása oldal, ahol több jel is megtekinthető.":::
 
 7. A riasztás logikájának konfigurálása:
 
@@ -54,17 +58,25 @@ A riasztási szabályokkal kapcsolatos információkat a használatával konfigu
    
    A Befejezés gombra kattintva válassza a **kész** lehetőséget.
 
-   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/7-set-threshold-time.png" alt-text="Riasztási szabályok kiválasztása" űrlapot névvel, rövid névvel, előfizetéssel és erőforráscsoporthoz.
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/7-set-threshold-time.png" alt-text="Képernyőfelvétel: a panel, amelyen beállíthatja a riasztási logikát.":::
 
-    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/9-add-action-group.png" alt-text="Riasztási szabályok kiválasztása" lehetőséget, ha értesítéseket szeretne küldeni az előfizetés-tulajdonosoknak, közreműködőknek és olvasóknak.
+8. A **műveleti csoportok** szakaszban válassza az **új létrehozása** lehetőséget egy új csoport létrehozásához, hogy értesítést kapjon a riasztásról.
+
+9. Töltse ki a "műveleti csoport hozzáadása" űrlapot névvel, rövid névvel, előfizetéssel és erőforráscsoporthoz.
+
+    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/9-add-action-group.png" alt-text="A képernyőképen a műveleti csoport hozzáadása űrlap látható, ahol megadhatja a leírt értékeket.":::
+
+10. **E-mail/SMS/leküldéses/** hangműveletek típusának konfigurálása.
+    
+    Válassza az "e-mail-Azure Resource Manager szerepkör" lehetőséget, ha értesítéseket szeretne küldeni az előfizetés-tulajdonosoknak, közreműködőknek és olvasóknak.
    
     Ha elkészült, kattintson **az OK gombra** .
 
-    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/10-action-group-type.png" alt-text="Riasztási szabályok kiválasztása":::
+    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/10-action-group-type.png" alt-text="Képernyőfelvétel: az e-mailek/mp-EK/leküldés/hang panel.":::
 
 11. Adja meg a riasztási szabály nevét, leírását és súlyosságát.
 
-    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/11-name-description-severity.png" alt-text="Riasztási szabályok kiválasztása"::: 
+    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/11-name-description-severity.png" alt-text="Képernyőfelvétel: a riasztás részletei ablaktábla."::: 
 
 12. A riasztás létrehozásához válassza a **riasztási szabály létrehozása** lehetőséget.
 
@@ -89,8 +101,8 @@ Javasoljuk, hogy a lemezterület-riasztásokat az összes kiszolgálócsoport mi
 Mivel a lemez megközelíti a lemezterület korlátját, próbálja ki a következő technikákat, hogy több szabad terület álljon rendelkezésre:
 
 * Tekintse át az adatmegőrzési szabályzatot. Ha lehetséges, helyezze át a régi adattárolást a hűtőházi tárolóba.
-* Érdemes lehet [csomópontokat hozzáadni](howto-hyperscale-scaling.md#add-worker-nodes) a kiszolgálócsoport és a szegmensek újrakiegyensúlyozásához. Az újrakiegyensúlyozás több számítógép között osztja el az adatmegosztást.
-* Vegye fontolóra a munkavégző csomópontok [kapacitásának növekedését](howto-hyperscale-scaling.md#increase-or-decrease-vcores-on-nodes) . Minden dolgozó legfeljebb 2 TiB tárterületet tartalmazhat. A csomópontok átméretezése előtt azonban meg kell adni a csomópontok hozzáadását, mivel a csomópontok hozzáadása gyorsabban megtörtént.
+* Érdemes lehet [csomópontokat hozzáadni](howto-hyperscale-scale-grow.md#add-worker-nodes) a kiszolgálócsoport és a szegmensek újrakiegyensúlyozásához. Az újrakiegyensúlyozás több számítógép között osztja el az adatmegosztást.
+* Vegye fontolóra a munkavégző csomópontok [kapacitásának növekedését](howto-hyperscale-scale-grow.md#increase-or-decrease-vcores-on-nodes) . Minden dolgozó legfeljebb 2 TiB tárterületet tartalmazhat. A csomópontok átméretezése előtt azonban meg kell adni a csomópontok hozzáadását, mivel a csomópontok hozzáadása gyorsabban megtörtént.
 
 ### <a name="cpu-usage"></a>Processzorhasználat
 

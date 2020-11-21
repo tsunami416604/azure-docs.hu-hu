@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 49922599adb30e6c631f29b4831fda60cc000a40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa3a6d16b79800043bdcd3f183dd86fa278dd1a9
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91360123"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026027"
 ---
 # <a name="integrate-with-a-client-application-using-speech-sdk"></a>Integráció egy ügyfélalkalmazás használatával a Speech SDK-val
 
@@ -35,15 +35,15 @@ A következőkre is szüksége lesz:
 > [!div class = "checklist"]
 > * A [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) -es vagy újabb verziója. Ez az útmutató a Visual Studio 2019-alapú.
 > * Egy Azure-előfizetési kulcs a Speech Serviceshez. [Szerezze be ingyen](overview.md#try-the-speech-service-for-free) , vagy hozza létre a [Azure Portal](https://portal.azure.com)
-> * [Az eszköz fejlesztésének engedélyezése](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)
+> * [Az eszköz fejlesztésének engedélyezése](/windows/uwp/get-started/enable-your-device-for-development)
 
 ## <a name="step-1-publish-custom-commands-application"></a>1. lépés: egyéni parancsok alkalmazásának közzététele
 
 1. A korábban létrehozott egyéni parancsok alkalmazás megnyitása
-1. Lépjen a **Beállítások**elemre, és válassza a **Luis erőforrás** elemet.
+1. Lépjen a **Beállítások** elemre, és válassza a **Luis erőforrás** elemet.
 1. Ha az **előrejelzési erőforrás** nincs hozzárendelve, válasszon egy lekérdezés-előrejelző kulcsot, vagy hozzon létre újat
 
-    Az alkalmazás közzététele előtt mindig szükség van a lekérdezés-előrejelzési kulcsra. További információ a LUIS-erőforrásokról: a [Luis-erőforrás](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-azure-subscription) referenciája
+    Az alkalmazás közzététele előtt mindig szükség van a lekérdezés-előrejelzési kulcsra. További információ a LUIS-erőforrásokról: a [Luis-erőforrás](../luis/luis-how-to-azure-subscription.md) referenciája
 
 1. Lépjen vissza a parancsok szerkesztéséhez, és válassza a **Közzététel** lehetőséget.
 
@@ -65,7 +65,7 @@ Ebben a lépésben hozzáadjuk az alkalmazás felhasználói felületét meghat�
 
 Hozza létre az alkalmazás felhasználói felületét a XAML kód hozzáadásával.
 
-1. A **megoldáskezelő**megnyitásához nyissa meg a `MainPage.xaml`
+1. A **megoldáskezelő** megnyitásához nyissa meg a `MainPage.xaml`
 
 1. A tervező XAML-nézetében cserélje le a teljes tartalmat a következő kódrészletre:
 
@@ -129,7 +129,7 @@ Adja hozzá a forráskód mögötti forrást, hogy az alkalmazás a várt módon
 
 Adja hozzá a forráskód mögötti forrást az alábbiak szerint:
 
-1. A **megoldáskezelő**nyissa meg a kód mögötti forrásfájlt `MainPage.xaml.cs` (a alatt csoportosítva `MainPage.xaml` )
+1. A **megoldáskezelő** nyissa meg a kód mögötti forrásfájlt `MainPage.xaml.cs` (a alatt csoportosítva `MainPage.xaml` )
 
 1. Cserélje le a fájl tartalmát a következő kódra: 
 
@@ -300,7 +300,7 @@ Adja hozzá a forráskód mögötti forrást az alábbiak szerint:
     > [!NOTE]
     > Ha a következő hibaüzenet jelenik meg: "az objektum típusa nem hivatkozott szerelvényben van definiálva"
     > 1. A jobb ügyfél a megoldás.
-    > 1. Válassza **a megoldás NuGet-csomagok kezelése**lehetőséget, majd válassza a **frissítések** lehetőséget. 
+    > 1. Válassza **a megoldás NuGet-csomagok kezelése** lehetőséget, majd válassza a **frissítések** lehetőséget. 
     > 1. Ha a frissítés listán a **Microsoft. NETCore. UniversalWindowsPlatform** található, frissítse a **Microsoft. NETCore. UniversalWindowsPlatform** verziót a legújabb verzióra.
 
 1. Adja hozzá a következő kódot a metódus törzséhez `InitializeDialogServiceConnector`
@@ -404,19 +404,19 @@ Adja hozzá a forráskód mögötti forrást az alábbiak szerint:
 
 1. A menüsávban válassza a **fájl**  >  **Mentés az összes mentése** lehetőséget a módosítások mentéséhez
 
-## <a name="try-it-out"></a>Próba
+## <a name="try-it-out"></a>Próbálja ki
 
 1. Az alkalmazás létrehozásához a menüsávon válassza a **Build**  >  **Build megoldás** elemet. A kód fordításának hiba nélkül kell végbe mennie.
 
-1. **Debug**  >  Az alkalmazás indításához válassza a hibakeresés**indítása hibakeresést** (vagy nyomja le az **F5**billentyűt). Megjelenik a **HelloWorld** ablak.
+1. **Debug**  >  Az alkalmazás indításához válassza a hibakeresés **indítása hibakeresést** (vagy nyomja le az **F5** billentyűt). Megjelenik a **HelloWorld** ablak.
 
    ![Minta UWP virtuális asszisztensi alkalmazás C#-ban – gyors útmutató](media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
 
-1. Válassza a **mikrofon engedélyezése**lehetőséget. Ha a hozzáférési engedély kérése megjelenik, válassza az **Igen**lehetőséget.
+1. Válassza a **mikrofon engedélyezése** lehetőséget. Ha a hozzáférési engedély kérése megjelenik, válassza az **Igen** lehetőséget.
 
    ![Mikrofon-hozzáférési engedély kérése](media/sdk/qs-csharp-uwp-10-access-prompt.png)
 
-1. Válassza a **Talk**lehetőséget, és beszéljen egy angol kifejezéssel vagy mondattal az eszköz mikrofonjában. A beszéd a közvetlen vonalas beszéd csatornába kerül, és szövegbe kerül, amely az ablakban jelenik meg.
+1. Válassza a **Talk** lehetőséget, és beszéljen egy angol kifejezéssel vagy mondattal az eszköz mikrofonjában. A beszéd a közvetlen vonalas beszéd csatornába kerül, és szövegbe kerül, amely az ablakban jelenik meg.
 
 ## <a name="next-steps"></a>Következő lépések
 

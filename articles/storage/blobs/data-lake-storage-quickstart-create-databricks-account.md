@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/12/2020
 ms.reviewer: jeking
-ms.openlocfilehash: 908bf21d2fe101731b11e3a8ad783f17728c8ed3
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 5bdf1cd510ed0d997e5e59c6492117a4d567c43e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677334"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024602"
 ---
 # <a name="quickstart-analyze-data-with-databricks"></a>Gyors útmutató: az adatelemzés a Databricks
 
@@ -23,7 +23,7 @@ Ebben a rövid útmutatóban egy Apache Spark feladatot futtat Azure Databricks 
 
 * Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-* A Azure Data Lake Gen2-fiókjának neve. [Hozzon létre egy Azure Data Lake Storage Gen2 Storage-fiókot](data-lake-storage-quickstart-create-account.md).
+* Egy olyan Storage-fiók, amelyen engedélyezve van a hierarchikus névtér funkció. A létrehozáshoz tekintse meg [a Storage-fiók létrehozása a Azure Data Lake Storage Gen2 használatával](create-data-lake-storage-account.md)című témakört.
 
 * Egy Azure-szolgáltatásnév bérlői azonosítója, alkalmazás-azonosítója és jelszava, amely a **Storage blob-Adatközreműködőhöz** hozzárendelt szerepkörrel rendelkezik. [Egyszerű szolgáltatásnév létrehozása](../../active-directory/develop/howto-create-service-principal-portal.md).
 
@@ -49,12 +49,12 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
     |**Munkaterület neve**     | Adja meg a Databricks-munkaterület nevét.        |
     |**Előfizetés**     | Válassza ki a legördülő menüből a saját Azure-előfizetését.        |
     |**Erőforráscsoport**     | Adja meg, hogy új erőforráscsoportot kíván-e létrehozni, vagy egy meglévőt szeretne használni. Az erőforráscsoport olyan tároló, amely egy adott Azure-megoldás kapcsolódó erőforrásait tartalmazza. További információért olvassa el az [Azure-erőforráscsoportok áttekintését](../../azure-resource-manager/management/overview.md). |
-    |**Hely**     | Válassza az **USA 2. nyugati régióját** . Nyugodtan választhat egy másik nyilvános régiót is igény szerint.        |
+    |**Hely**     | Válassza az **USA 2. nyugati régióját**. Nyugodtan választhat egy másik nyilvános régiót is igény szerint.        |
     |**Tarifacsomag**     |  Válassza a **Standard** vagy a **Prémium** előfizetést. További információkért a csomagokkal kapcsolatban tekintse meg a [Databricks díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/databricks/).       |
 
 3. A fiók létrehozása eltarthat néhány percig. A művelet állapotának figyeléséhez tekintse meg a felső folyamatjelző sávot.
 
-4. Válassza a **Rögzítés az irányítópulton** , majd a **Létrehozás** lehetőséget.
+4. Válassza a **Rögzítés az irányítópulton**, majd a **Létrehozás** lehetőséget.
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Spark-fürt létrehozása a Databricks használatával
 
@@ -162,7 +162,7 @@ A következő feladatok végrehajtásával futtathat Spark SQL-feladatot az adat
 
     ![JSON-adatminta](./media/data-lake-storage-quickstart-create-databricks-account/databricks-sample-csv-data.png "JSON-adatminta")
 
-    Egyebek között a mintaadatok rögzítik a rádiós csatorna közönségét (oszlopnév, **nem),** valamint azt, hogy az előfizetésük ingyenes vagy fizetős-e (oszlopnév, **szint** ).
+    Egyebek között a mintaadatok rögzítik a rádiós csatorna közönségét (oszlopnév, **nem),** valamint azt, hogy az előfizetésük ingyenes vagy fizetős-e (oszlopnév, **szint**).
 
 4. A következőkben vizuálisan jelenítjük meg ezeket az adatokat annak megfelelően, hogy az egyes nemek szerint hány felhasználó rendelkezik ingyenes fiókkal, illetve hányan fizetnek az előfizetésért. A táblázatos kimenet alján kattintson az **Oszlopdiagram** ikonra, majd az **Ábrázolási beállítások** elemre.
 
@@ -183,7 +183,7 @@ A következő feladatok végrehajtásával futtathat Spark SQL-feladatot az adat
 
      ![Oszlopdiagram testreszabása](./media/data-lake-storage-quickstart-create-databricks-account/databricks-sql-query-output-bar-chart.png "Oszlopdiagram testreszabása")
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha elkészült ezzel a cikkel, leállíthatja a fürtöt. Az Azure Databricks-munkaterületen kattintson a **Fürtök** elemre, majd keresse meg a leállítani kívánt fürtöt. Vigye az egérmutatót a **Műveletek** oszlopban a három pont fölé, és kattintson a **Leállítás** ikonra.
 

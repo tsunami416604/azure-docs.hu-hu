@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
-ms.openlocfilehash: 03ece391b6f33b47f34705cec1c5907602ac7b23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 198ba23920179e71e095e498ee2173d7f0111d42
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400179"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026729"
 ---
 # <a name="azure-peering-service-overview"></a>Az Azure-partneri szolgáltatás áttekintése
 
@@ -45,7 +45,7 @@ Az egyenrangú szolgáltatás:
 Az egyenrangú szolgáltatás nem egy magánhálózati kapcsolati termék, például az Azure ExpressRoute vagy egy VPN-termék.
 
 > [!NOTE]
-> A ExpressRoute kapcsolatos további információkért lásd a [ExpressRoute dokumentációját](https://docs.microsoft.com/azure/expressroute/).
+> A ExpressRoute kapcsolatos további információkért lásd a [ExpressRoute dokumentációját](../expressroute/index.yml).
 >
 
 ## <a name="background"></a>Háttér
@@ -57,7 +57,7 @@ A Microsoft és a partner szolgáltatók gondoskodnak arról, hogy a társ-szolg
 ![Microsoft-hálózat és nyilvános kapcsolat](./media/peering-service-about/peering-service-background-final.png)
 
 > [!NOTE]
-> A Microsoft globális hálózattal kapcsolatos további információkért lásd: [Microsoft Global Network](https://docs.microsoft.com/azure/networking/microsoft-global-network).
+> A Microsoft globális hálózattal kapcsolatos további információkért lásd: [Microsoft Global Network](../networking/microsoft-global-network.md).
 >
 
 ## <a name="why-use-peering-service"></a>Miért érdemes az egyenrangú szolgáltatást használni?

@@ -10,20 +10,20 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: kaprochi
-ms.openlocfilehash: de0065abaf5669859e864186fc9a3fb88219414b
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: f82ea154d5949f4d229ac76e7a7ce2a89d15ac13
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555821"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025667"
 ---
 # <a name="cicd-for-custom-speech"></a>CI/CD a Custom Speechhez
 
 Az automatizált betanítási, tesztelési és kiadási felügyelet megvalósítása lehetővé teszi a Custom Speech-modellek folyamatos fejlesztését, miközben a frissítéseket alkalmazza a képzési és tesztelési célokra. A CI/CD-munkafolyamatok hatékony megvalósításával gondoskodhat arról, hogy a legjobb teljesítményű Custom Speech modell végpontja mindig elérhető legyen.
 
-A [folyamatos integráció](https://docs.microsoft.com/azure/devops/learn/what-is-continuous-integration) (CI) olyan mérnöki gyakorlat, amely egy megosztott tárházban gyakran véglegesíti a frissítéseket, és automatizált felépítést végez rajta. A CI-munkafolyamatok a Custom Speech betanítják az új modellt az adatforrásaiból, és automatizált tesztelést végeznek az új modellen, így biztosítva, hogy az a korábbi modellnél jobb teljesítményt nyújt.
+A [folyamatos integráció](/azure/devops/learn/what-is-continuous-integration) (CI) olyan mérnöki gyakorlat, amely egy megosztott tárházban gyakran véglegesíti a frissítéseket, és automatizált felépítést végez rajta. A CI-munkafolyamatok a Custom Speech betanítják az új modellt az adatforrásaiból, és automatizált tesztelést végeznek az új modellen, így biztosítva, hogy az a korábbi modellnél jobb teljesítményt nyújt.
 
-A [folyamatos teljesítés](https://docs.microsoft.com/azure/devops/learn/what-is-continuous-delivery) (CD) a CI folyamat modelljeit veszi alapul, és minden továbbfejlesztett Custom Speech modellhez létrehoz egy végpontot. A CD lehetővé teszi, hogy a végpontok könnyen elérhetők legyenek a megoldásokba való integráláshoz.
+A [folyamatos teljesítés](/azure/devops/learn/what-is-continuous-delivery) (CD) a CI folyamat modelljeit veszi alapul, és minden továbbfejlesztett Custom Speech modellhez létrehoz egy végpontot. A CD lehetővé teszi, hogy a végpontok könnyen elérhetők legyenek a megoldásokba való integráláshoz.
 
 Az egyéni CI/CD-megoldások lehetségesek, de robusztus, előre elkészített megoldásként használja a [Speech DevOps-sablon tárházát](https://github.com/Azure-Samples/Speech-Service-DevOps-Template), amely a GitHub-műveletek használatával hajtja végre a CI/CD-munkafolyamatokat.
 
@@ -73,7 +73,7 @@ A legtöbb csapatnak manuális felülvizsgálati és jóváhagyási folyamatra v
 
 A következő eszközök használhatók a Custom Speech CI/CD Automation munkafolyamataihoz:
 
-- Azure [CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) az Azure-szolgáltatás egyszerű hitelesítésének létrehozásához, az Azure-előfizetések lekérdezéséhez és a tesztelési eredmények tárolásához az Azure blobban.
+- Azure [CLI](/cli/azure/?view=azure-cli-latest) az Azure-szolgáltatás egyszerű hitelesítésének létrehozásához, az Azure-előfizetések lekérdezéséhez és a tesztelési eredmények tárolásához az Azure blobban.
 - Az [Azure SPEECH CLI](spx-overview.md) segítségével a parancssorból vagy egy automatizált munkafolyamatból dolgozhat a Speech szolgáltatással.
 
 ## <a name="devops-solution-for-custom-speech-using-github-actions"></a>DevOps-megoldás a Custom Speech GitHub-műveletek használatával
@@ -84,7 +84,7 @@ A [beszédfelismerési DevOps-sablon](https://github.com/Azure-Samples/Speech-Se
 
 - Másolja a sablon tárházát a GitHub-fiókjába, majd hozzon létre Azure-erőforrásokat és egy [egyszerű szolgáltatásnevet](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) a GitHub-műveletek CI/CD-munkafolyamataihoz.
 - Végigvezeti a "[dev Inner loop](https://mitchdenny.com/the-inner-loop/)"-t. Frissítheti a betanítási és tesztelési adatait egy adott szolgáltatási ágra, tesztelheti a módosításokat egy ideiglenes fejlesztési modellel, és lekéréses kérelmet hozhat létre, és áttekintheti a módosításokat.
-- Ha a betanítási adatok egy lekéréses kérelemben frissülnek a *Master* -be, a modellek betanítása a GitHub Actions CI-munkafolyamattal
+- Ha a betanítási adatok egy lekéréses kérelemben frissülnek a *Master*-be, a modellek betanítása a GitHub Actions CI-munkafolyamattal
 - Automatizált pontossági tesztelést végezhet a modell [Word-hibák arányának](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy) (WER) létrehozásához. A teszt eredményeinek tárolása az Azure blobban.
 - Futtassa a CD-munkafolyamatot, és hozzon létre egy végpontot, amikor a WER fejleszti.
 

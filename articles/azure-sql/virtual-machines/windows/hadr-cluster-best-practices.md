@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 86db8c88fae7a5fd1ec4828d8936c6cb8172a61c
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 446731e084084ca301b350f6fec0c4065485a40f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564565"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026624"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>A fürtkonfiguráció ajánlott eljárásai (SQL Server Azure-beli virtuális gépeken)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -33,7 +33,7 @@ Egyetlen NIC-kiszolgálót (fürtcsomópont) és egyetlen alhálózatot használ
 
 ### <a name="tuning-failover-cluster-network-thresholds"></a>Feladatátvevő fürt hálózati küszöbértékének finomhangolása
 
-Ha SQL Server AlwaysOn rendelkező Azure-beli virtuális gépeken futtatja a Windows feladatátvevő fürt csomópontjait, ajánlott a fürt beállításának módosítása egy nyugodtabb figyelési állapotra.  Ez sokkal stabilabb és megbízhatóbb lesz a fürt számára.  További részletekért lásd: [IaaS és SQL AlwaysOn – a feladatátvevő fürt hálózati küszöbértékének finomhangolása](/windows-server/troubleshoot/iaas-sql-failover-cluser).
+Ha SQL Server AlwaysOn rendelkező Azure-beli virtuális gépeken futtatja a Windows feladatátvevő fürt csomópontjait, ajánlott a fürt beállításának módosítása egy nyugodtabb figyelési állapotra.  Ez sokkal stabilabb és megbízhatóbb lesz a fürt számára.  További részletekért lásd: [IaaS és SQL AlwaysOn – a feladatátvevő fürt hálózati küszöbértékének finomhangolása](/windows-server/troubleshoot/iaas-sql-failover-cluster).
 
 ## <a name="quorum"></a>Kvórumerőforrás
 
@@ -60,7 +60,7 @@ Konfiguráljon egy Azure-beli megosztott lemezt a tanúsító lemezként.
 Első lépésként tekintse meg [a tanúsító lemez konfigurálása](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)című témakört.
 
 
-**Támogatott operációs rendszer** : mind   
+**Támogatott operációs rendszer**: mind   
 
 
 ### <a name="cloud-witness"></a>Felhőbeli tanúsító
@@ -70,7 +70,7 @@ A Felhőbeli tanúsító a feladatátvevő fürt Kvórumának olyan típusa, ame
 Első lépésként tekintse meg [a Felhőbeli tanúsító konfigurálása](/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp)című témakört.
 
 
-**Támogatott operációs rendszer** : Windows Server 2016 és újabb verziók   
+**Támogatott operációs rendszer**: Windows Server 2016 és újabb verziók   
 
 
 ### <a name="file-share-witness"></a>Tanúsító fájlmegosztás
@@ -82,7 +82,7 @@ Ha Azure-fájlmegosztást fog használni, csatlakoztathatja a [prémium fájlmeg
 Első lépésként tekintse [meg a tanúsító fájlmegosztás konfigurálása](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)című témakört.
 
 
-**Támogatott operációs rendszer** : Windows Server 2012 és újabb verziók   
+**Támogatott operációs rendszer**: Windows Server 2012 és újabb verziók   
 
 ## <a name="connectivity"></a>Kapcsolatok
 
@@ -108,9 +108,9 @@ A terheléselosztó használata során enyhe feladatátvételi késleltetés tö
 
 Első lépésként ismerje meg, hogyan konfigurálhatja Azure Load Balancer a [feladatátvevő fürt példányára](failover-cluster-instance-vnn-azure-load-balancer-configure.md) vagy egy [rendelkezésre állási csoportra](availability-group-vnn-azure-load-balancer-configure.md)
 
-**Támogatott operációs rendszer** : mind   
-**Támogatott SQL-verzió** : ALL   
-**Támogatott HADR-megoldás** : feladatátvevő fürt példánya és rendelkezésre állási csoport   
+**Támogatott operációs rendszer**: mind   
+**Támogatott SQL-verzió**: ALL   
+**Támogatott HADR-megoldás**: feladatátvevő fürt példánya és rendelkezésre állási csoport   
 
 
 ### <a name="distributed-network-name-dnn"></a>Elosztott hálózat neve (DNN)
@@ -128,9 +128,9 @@ A legtöbb SQL Server a funkciók a DNN használatakor transzparens módon műk�
 
 Első lépésként ismerje meg, hogyan konfigurálhatja az elosztott hálózati név erőforrást [egy feladatátvevő fürt](failover-cluster-instance-distributed-network-name-dnn-configure.md) vagy egy [rendelkezésre állási csoport](availability-group-distributed-network-name-dnn-listener-configure.md) számára.
 
-**Támogatott operációs rendszer** : Windows Server 2016 és újabb verziók   
-**Támogatott SQL-verzió** : SQL Server 2019 CU2 (Version) és SQL Server 2019 CU8 (AG)   
-**Támogatott HADR-megoldás** : feladatátvevő fürt példánya és rendelkezésre állási csoport   
+**Támogatott operációs rendszer**: Windows Server 2016 és újabb verziók   
+**Támogatott SQL-verzió**: SQL Server 2019 CU2 (Version) és SQL Server 2019 CU8 (AG)   
+**Támogatott HADR-megoldás**: feladatátvevő fürt példánya és rendelkezésre állási csoport   
 
 
 ## <a name="limitations"></a>Korlátozások

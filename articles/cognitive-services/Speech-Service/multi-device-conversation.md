@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 15b69e664ae9a01635afb44d7b6b7c24d7551ce9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c2dbaf8f65208126c52617d4b89d901b3670dac
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87921418"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025174"
 ---
 # <a name="what-is-multi-device-conversation-preview"></a>Mi a multi-Device beszélgetés (előzetes verzió)?
 
 A **többeszközes beszélgetés** révén egyszerűen hozhat létre beszéd-vagy szöveges beszélgetést több ügyfél között, és koordinálhatja a közöttük küldött üzeneteket.
 
-A **több eszközre kiterjedő beszélgetésekkel**a következőket teheti:
+A **több eszközre kiterjedő beszélgetésekkel** a következőket teheti:
 
 - Több ügyfelet is összekapcsolhat ugyanahhoz a beszélgetéshez, és kezelheti a közöttük lévő üzenetek küldését és fogadását.
 - Egyszerűen átmásolhatja az egyes ügyfelek hangait, és elküldheti az átírást a többinek, a választható fordítással.
@@ -72,7 +72,7 @@ Minden ügyfél küldhet hang-vagy azonnali üzeneteket. A szolgáltatás a besz
 
 ## <a name="overview-of-conversation-host-and-participant"></a>A beszélgetés, a gazdagép és a résztvevő áttekintése
 
-A **beszélgetés** egy olyan munkamenet, amelyet az egyik felhasználó elindít a többi résztvevő felhasználótól a csatlakozáshoz. Minden ügyfél az öt betűs **beszélgetési kóddal**csatlakozik a beszélgetéshez.
+A **beszélgetés** egy olyan munkamenet, amelyet az egyik felhasználó elindít a többi résztvevő felhasználótól a csatlakozáshoz. Minden ügyfél az öt betűs **beszélgetési kóddal** csatlakozik a beszélgetéshez.
 
 Mindegyik beszélgetés olyan metaadatokat hoz létre, amelyek a következőket tartalmazzák:
 -    A beszélgetés elindításának és befejezésének időbélyege
@@ -105,7 +105,7 @@ Beszélgetés létrehozásakor vagy azokhoz való csatlakozáskor minden felhasz
 Kétféle nyelv létezik: **beszéd – szöveg** és **csak szöveg**:
 - Ha a felhasználó az elsődleges nyelvként **beszéd-szöveg** nyelvet választ, akkor a beszélgetésben a beszéd és a szövegbevitel is használható.
 
-- Ha a felhasználó csak **szöveges** nyelvet választ, akkor csak szöveges bevitelt tud használni, és azonnali üzeneteket küldhet a beszélgetésbe. A szöveges fordításhoz támogatott nyelvek csak szövegként használhatók, a szöveg szövegét azonban nem. Az elérhető nyelveket a [nyelvi támogatás](supported-languages.md) oldalon tekintheti meg.
+- Ha a felhasználó csak **szöveges** nyelvet választ, akkor csak szöveges bevitelt tud használni, és azonnali üzeneteket küldhet a beszélgetésbe. A szöveges fordításhoz támogatott nyelvek csak szövegként használhatók, a szöveg szövegét azonban nem. Az elérhető nyelveket a [nyelvi támogatás](./language-support.md) oldalon tekintheti meg.
 
 Az elsődleges nyelvtől függetlenül minden résztvevő további nyelveket is megadhat a beszélgetés fordításához.
 
@@ -119,7 +119,7 @@ Az alábbi összefoglalás azt mutatja be, hogy a felhasználó hogyan teheti me
 | A beszélgetés fordítása | ✔️ | ✔️ |
 
 > [!NOTE]
-> Az elérhető beszéd-szöveg és szöveges fordítási nyelvek listáját a [támogatott nyelvek](supported-languages.md)című részben tekintheti meg.
+> Az elérhető beszéd-szöveg és szöveges fordítási nyelvek listáját a [támogatott nyelvek](./language-support.md)című részben tekintheti meg.
 
 
 

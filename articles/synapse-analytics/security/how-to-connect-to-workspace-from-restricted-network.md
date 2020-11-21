@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 10/25/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7cff2d8245095489fbba3b7af24b416885995e4d
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 55ec8be176dc7274a3b9a1feca53726d57eeb422
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637132"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024465"
 ---
 # <a name="connect-to-workspace-resources-from-a-restricted-network"></a>Kapcsolódás a munkaterület erőforrásaihoz egy korlátozott hálózatról
 
@@ -21,9 +21,9 @@ Tegyük fel, hogy Ön rendszergazda, aki a szervezete korlátozott hálózatát 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure-előfizetés** : Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) .
-* **Azure szinapszis Analytics-munkaterület** : létrehozhat egyet az Azure szinapszis Analytics használatával. A munkaterület nevét a 4. lépésben kell megadnia.
-* **Korlátozott hálózat** : a rendszergazda megtartja a szervezet korlátozott hálózatát, és jogosult a hálózati házirend konfigurálására. A 3. lépésben a virtuális hálózat neve és az alhálózata szükséges.
+* **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) .
+* **Azure szinapszis Analytics-munkaterület**: létrehozhat egyet az Azure szinapszis Analytics használatával. A munkaterület nevét a 4. lépésben kell megadnia.
+* **Korlátozott hálózat**: a rendszergazda megtartja a szervezet korlátozott hálózatát, és jogosult a hálózati házirend konfigurálására. A 3. lépésben a virtuális hálózat neve és az alhálózata szükséges.
 
 
 ## <a name="step-1-add-network-outbound-security-rules-to-the-restricted-network"></a>1. lépés: hálózati kimenő biztonsági szabályok hozzáadása a korlátozott hálózathoz
@@ -38,13 +38,13 @@ Az alábbi képernyőképen a Azure Resource Manager Kimenő szabály részletei
 
 ![Képernyőkép a Azure Resource Manager szolgáltatás címkéjének részleteiről.](./media/how-to-connect-to-workspace-from-restricted-network/arm-servicetag.png)
 
-A másik három szabály létrehozásakor cserélje le a **AzureFrontDoor. frontend** , a **AzureActiveDirectory** vagy a **AzureMonitor** értékre a **célként megadott szolgáltatási címkét** a listáról.
+A másik három szabály létrehozásakor cserélje le a **AzureFrontDoor. frontend**, a **AzureActiveDirectory** vagy a **AzureMonitor** értékre a **célként megadott szolgáltatási címkét** a listáról.
 
-További információ: szolgáltatás- [címkék áttekintése](/azure/virtual-network/service-tags-overview.md).
+További információ: szolgáltatás- [címkék áttekintése](/azure/virtual-network/service-tags-overview).
 
 ## <a name="step-2-create-private-link-hubs"></a>2. lépés: magánhálózati kapcsolati hubok létrehozása
 
-Következő lépésként hozzon létre privát kapcsolati hubokat a Azure Portal. A portálon megkeresheti az *Azure szinapszis Analytics (Private link hubok) szolgáltatást* , majd kitöltheti a szükséges információkat a létrehozásához. 
+Következő lépésként hozzon létre privát kapcsolati hubokat a Azure Portal. A portálon megkeresheti az *Azure szinapszis Analytics (Private link hubok) szolgáltatást*, majd kitöltheti a szükséges információkat a létrehozásához. 
 
 > [!Note]
 > Győződjön meg arról, hogy a **régió** értéke ugyanaz, mint az Azure szinapszis Analytics-munkaterülete.
@@ -78,7 +78,7 @@ A magánhálózati kapcsolat végpontjának létrehozása után elérheti az Azu
 Az Azure szinapszis Analytics Studio Workspace-erőforráson belüli erőforrások eléréséhez létre kell hoznia a következőket:
 
 - Legalább egy titkos kapcsolati végpont, amely a **cél alerőforrásának** **fejlesztői** típusát adja meg.
-- Két további opcionális privát csatolási végpont **SQL** -vagy **SqlOnDemand** -típussal attól függően, hogy milyen erőforrásokat szeretne elérni a munkaterületen.
+- Két további opcionális privát csatolási végpont **SQL** -vagy **SqlOnDemand**-típussal attól függően, hogy milyen erőforrásokat szeretne elérni a munkaterületen.
 
 A létrehozás hasonló ahhoz, ahogy az előző lépésben létrehozza a végpontot.  
 
@@ -119,7 +119,7 @@ A végpont létrehozása után a jóváhagyási állapot **függőben** állapot
 
 Most pedig minden beállítás. Elérheti az Azure szinapszis Analytics Studio Workspace-erőforrást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [felügyelt munkaterület virtuális hálózatáról](./synapse-workspace-managed-vnet.md).
 

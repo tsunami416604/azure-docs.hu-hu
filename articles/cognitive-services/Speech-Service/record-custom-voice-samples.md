@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: erhopf
-ms.openlocfilehash: 2897fe2e0cc8aeb929b0a33f5cdaba9c60f2a244
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dae7b8e0485c1a2456b85e0910f60b2164d4e41c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81261584"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026318"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Hangminták rögzítése egyéni hang létrehozásához
 
@@ -71,7 +71,7 @@ A szkriptben található hosszúságú kimondott szöveg bárhonnan elérhető: 
 
 A hosszúságú kimondott szöveg nem kell ugyanabból a forrásból vagy azonos forrásból származnia. Még semmit sem kell tenniük egymással. Ha azonban beállított kifejezéseket fog használni (például "sikeresen bejelentkezett") a beszédfelismerési alkalmazásban, ügyeljen rá, hogy a szkriptben szerepeljenek bennük. Így az egyéni hang nagyobb eséllyel kimondhatja ezeket a kifejezéseket. Ha azonban úgy dönt, hogy a szintetizált beszéd helyett egy felvételt használ, akkor már ugyanazt a hangot fogja látni.
 
-Habár a hangtehetségek kiválasztásának kulcsa a konzisztencia, a Variety egy jó parancsfájl fémjelzi. A szkriptnek számos különböző szót és mondatot kell tartalmaznia, különböző mondatokkal, struktúrákkal és hangulatokkal. A nyelv minden hangjának többször és számos kontextusban kell szerepelnie ( *fonetikus lefedettségnek*nevezik).
+Habár a hangtehetségek kiválasztásának kulcsa a konzisztencia, a Variety egy jó parancsfájl fémjelzi. A szkriptnek számos különböző szót és mondatot kell tartalmaznia, különböző mondatokkal, struktúrákkal és hangulatokkal. A nyelv minden hangjának többször és számos kontextusban kell szerepelnie ( *fonetikus lefedettségnek* nevezik).
 
 Emellett a szövegnek tartalmaznia kell egy adott hang írásos megjelenítésének összes módját, és az egyes hangokat a mondatokban különböző helyeken helyezheti el. A deklaratív mondatokat és kérdéseket is bele kell foglalni, és a megfelelő hanglejtéssel kell olvasni.
 
@@ -104,7 +104,7 @@ A szerzői jogi törvények szerint a szerzői jog által védett szöveg elolva
 
 Szerencsére lehetséges elkerülni ezeket a problémákat. A szöveg számos forrást használhat engedély vagy licenc nélkül.
 
-|Szöveges forrás|Leírás|
+|Szöveges forrás|Description|
 |-|-|
 |[CMU Arctic Corpus](http://festvox.org/cmu_arctic/)|Az out-of-Copyright által kiválasztott 1100 mondatok kifejezetten a beszédfelismerési projektekben használhatók. Kiváló kiindulási pont.|
 |Már nem működik<br>szerzői jog|A általában a 1923-nél korábbi verziókban van közzétéve. Angol nyelven a [Project Gutenberg](https://www.gutenberg.org/) több tízezer ilyen munkát kínál. Érdemes lehet az újabb verzióra összpontosítani, mivel a nyelv közelebb lesz a modern angolhoz.|
@@ -138,7 +138,7 @@ A regisztráló berendezést üzemeltető személy – a mérnök – a tehetsé
 
 A rögzítésnek a lehető legkevesebb zajt kell tartalmaznia, amelynek célja egy 80-db jel-zaj arány vagy jobb.
 
-Hallgassa meg szorosan a "standján" lévő csend rögzítését, és állapítsa meg, hogy hol található a zaj, és ne zárja ki az okot. A zaj gyakori forrásai a légszellőzők, a fluoreszkáló fényanyagok, a közeli utakon lévő forgalom és a berendezések rajongói (még a notebookos számítógépek is rendelkezhetnek). A mikrofonok és a kábelek a közeli AC-vezetékektől, általában a zümmögéstől vagy a Buzz-tól származó elektromos zajt is választhatnak. A zümmögés oka egy *körkörös hurok*is lehet, amelyet a berendezések több elektromos áramkörhöz való csatlakoztatása okoz.
+Hallgassa meg szorosan a "standján" lévő csend rögzítését, és állapítsa meg, hogy hol található a zaj, és ne zárja ki az okot. A zaj gyakori forrásai a légszellőzők, a fluoreszkáló fényanyagok, a közeli utakon lévő forgalom és a berendezések rajongói (még a notebookos számítógépek is rendelkezhetnek). A mikrofonok és a kábelek a közeli AC-vezetékektől, általában a zümmögéstől vagy a Buzz-tól származó elektromos zajt is választhatnak. A zümmögés oka egy *körkörös hurok* is lehet, amelyet a berendezések több elektromos áramkörhöz való csatlakoztatása okoz.
 
 > [!TIP]
 > Bizonyos esetekben lehet, hogy egy Hangszínszabályzót vagy egy zajcsökkentő szoftveres beépülő modult használ a felvételekből származó zaj eltávolításához, de mindig a legjobb, ha leállítja a forrását.
@@ -211,13 +211,13 @@ Hallgassa meg figyelmesen az egyes fájlokat. Ebben a szakaszban szerkesztheti a
 
 Konvertálja az egyes fájlokat 16 bitesre, a Mentés előtt pedig 16 kHz-es mintavételezési sebességet, és ha rögzítette a Studio csevegést, távolítsa el a második csatornát. Mentse az összes fájlt WAV formátumban, nevezze el a fájlokat a szkriptből a teljes számmal.
 
-Végül hozza létre azt az *átiratot* , amely az egyes WAV-fájlokat a megfelelő kifejezés szöveges verziójával társítja. Az [Egyéni hangbetűkészletek létrehozása](how-to-customize-voice-font.md) a szükséges formátum részleteit tartalmazza. A szöveget közvetlenül a szkriptből is másolhatja. Ezután hozzon létre egy zip-fájlt a WAV-fájlokból és a szöveges átiratból.
+Végül hozza létre azt az *átiratot* , amely az egyes WAV-fájlokat a megfelelő kifejezés szöveges verziójával társítja. Az [Egyéni hangbetűkészletek létrehozása](./how-to-custom-voice-create-voice.md) a szükséges formátum részleteit tartalmazza. A szöveget közvetlenül a szkriptből is másolhatja. Ezután hozzon létre egy zip-fájlt a WAV-fájlokból és a szöveges átiratból.
 
 Ha később szüksége van rájuk, archiválja az eredeti felvételeket biztonságos helyen. Őrizze meg a parancsfájlt és a jegyzeteket is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Készen áll a felvételek feltöltésére és az egyéni hang létrehozására.
 
 > [!div class="nextstepaction"]
-> [Egyéni hangbetűkészletek létrehozása](how-to-customize-voice-font.md)
+> [Egyéni hangbetűkészletek létrehozása](./how-to-custom-voice-create-voice.md)

@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: affbf57fcda5ff9fb56e148c2fa8769e7aa775e6
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: b8b3a0aa6d9790dbb5900eac2d79074f44a749d2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555804"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025650"
 ---
-# <a name="evaluate-and-improve-custom-speech-accuracy"></a>Custom Speech pontosságának kiértékelése és javítása
+# <a name="evaluate-and-improve-custom-speech-accuracy"></a>A Custom Speech pontosságának értékelése és javítása
 
 Ebből a cikkből megtudhatja, hogyan mérjük és javíthatja a Microsoft beszéd-szöveg modelljeinek és saját egyéni modelljeinek pontosságát. A hang-és az emberi-címkével ellátott átírási adatoknak a pontosság teszteléséhez, valamint 30 perc és 5 órányi reprezentatív hang megadása szükséges.
 
@@ -68,7 +68,7 @@ A teszt befejezése után az állapot változása *sikeres* volt, a tesztben sze
 
 A beszédfelismerési forgatókönyvek a hangminőség és a nyelv (szókincs és beszéd stílus) szerint változnak. A következő táblázat a négy gyakori forgatókönyvet vizsgálja:
 
-| Használati példa | Hangminőség | Szókincs | Beszéd stílusa |
+| Használati eset | Hangminőség | Szókincs | Beszéd stílusa |
 |----------|---------------|------------|----------------|
 | Call Center | Az alacsony, 8 kHz-es lehet 2 ember 1 hangcsatornán, tömörítve | Keskeny, egyedi tartományhoz és termékekhez | Társalgási, lazán strukturált |
 | Hangsegéd (például Cortana vagy áteresztő ablak) | Magas, 16 kHz | Entitás – nehéz (Song titles, Products, locations) | Egyértelműen megadott szavak és kifejezések |
@@ -77,7 +77,7 @@ A beszédfelismerési forgatókönyvek a hangminőség és a nyelv (szókincs é
 
 A különböző forgatókönyvek eltérő minőségi eredményeket hoznak létre. Az alábbi táblázat azt vizsgálja, hogy a négy forgatókönyv tartalma milyen arányban szerepel a [Word Error Rate (WER)](how-to-custom-speech-evaluate-data.md)alapján. A táblázat az egyes forgatókönyvekben leggyakrabban használt hibákat mutatja.
 
-| Használati példa | Beszédfelismerési minőség | Beszúrási hibák | Törlési hibák | Helyettesítési hibák |
+| Használati eset | Beszédfelismerési minőség | Beszúrási hibák | Törlési hibák | Helyettesítési hibák |
 |----------|----------------------------|------------------|-----------------|---------------------|
 | Call Center | Közepes (< 30% WER) | Alacsony, kivéve, ha mások a háttérben beszélgetnek | Magas lehet. A Call Centers lehet zajos, az átfedésben lévő hangszórók pedig megzavarják a modellt | Közepes. A termékek és a személyek nevei okozhatják ezeket a hibákat |
 | Hangvezérelt asszisztens | Magas (lehet < 10% WER) | Alacsony | Alacsony | Közepes, a dalok címei, terméknév vagy helyei miatt |
@@ -114,7 +114,7 @@ Tekintse meg az alábbi adatokat:
 
 ### <a name="add-new-words-with-pronunciation"></a>Új szavak hozzáadása a kiejtéssel
 
-A létrehozott vagy különösen specializált szavak egyedi kiejtésekkel rendelkezhetnek. Ezeket a szavakat fel lehet ismerni, ha a szó kisebb szavakra bontható. Ha például fel szeretné ismerni az **xboxot** , "as **X Box** ". Ez a megközelítés nem növeli az általános pontosságot, de a kulcsszavak felismerését is növelheti.
+A létrehozott vagy különösen specializált szavak egyedi kiejtésekkel rendelkezhetnek. Ezeket a szavakat fel lehet ismerni, ha a szó kisebb szavakra bontható. Ha például fel szeretné ismerni az **xboxot**, "as **X Box**". Ez a megközelítés nem növeli az általános pontosságot, de a kulcsszavak felismerését is növelheti.
 
 > [!NOTE]
 > Ez a technika jelenleg csak bizonyos nyelvekhez érhető el. A részletekért tekintse meg a kiejtés testreszabását [a beszédfelismerési táblázatban](language-support.md) .
@@ -123,7 +123,7 @@ A létrehozott vagy különösen specializált szavak egyedi kiejtésekkel rende
 
 A következő táblázat a hangfelismerési forgatókönyveket mutatja be, és felsorolja azokat a forrás anyagokat, amelyeket figyelembe kell venni a fent felsorolt három képzési tartalom kategóriáján belül.
 
-| Használati példa | Kapcsolódó szöveges mondatok | Hang + emberi – címkézett átiratok | Új szavak a kiejtéssel |
+| Használati eset | Kapcsolódó szöveges mondatok | Hang + emberi – címkézett átiratok | Új szavak a kiejtéssel |
 |----------|------------------------|------------------------------|------------------------------|
 | Call Center             | marketing dokumentumok, webhely, a Call Center tevékenységgel kapcsolatos termékekkel kapcsolatos felülvizsgálatok | az emberek által átadott Call Center-hívások | nem egyértelmű kiejtésekkel rendelkező kifejezések (lásd a fenti Xbox-t) |
 | Hangvezérelt asszisztens         | mondatok listázása a parancsok és entitások összes kombinációjának használatával | hangokat rögzíthet az eszközön, és szöveget is leír | egyedi kiejtésekkel rendelkező nevek (filmek, dalok, termékek) |
@@ -136,5 +136,5 @@ A következő táblázat a hangfelismerési forgatókönyveket mutatja be, és f
 
 ## <a name="additional-resources"></a>További források
 
-* [Az adatfeldolgozás előkészítése és tesztelése](how-to-custom-speech-test-data.md)
+* [Az adatfeldolgozás előkészítése és tesztelése](./how-to-custom-speech-test-and-train.md)
 * [Az adatai ellenőrzése](how-to-custom-speech-inspect-data.md)

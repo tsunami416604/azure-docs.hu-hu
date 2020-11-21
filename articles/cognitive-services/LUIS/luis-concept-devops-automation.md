@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/5/2020
-ms.openlocfilehash: a74ad7b995f0112346e2212866655107f72c03e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 370dade1b74634649c9de44864a0fd9f5cac988f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324807"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025976"
 ---
 # <a name="continuous-integration-and-continuous-delivery-workflows-for-luis-devops"></a>Folyamatos integráció és folyamatos kézbesítési munkafolyamatok LUIS DevOps
 
@@ -27,9 +27,9 @@ A forráskód-kezelési (SCM) rendszerekben konfigurálja az automatizált Build
 
 A **CI/CD munkafolyamat** két kiegészítő fejlesztési folyamatot egyesít:
 
-* A [folyamatos integráció](https://docs.microsoft.com/azure/devops/learn/what-is-continuous-integration) (CI) olyan mérnöki gyakorlat, amely egy megosztott tárházban gyakran véglegesíti a kódot, és automatizált felépítést végez rajta. Az automatizált [tesztelési](luis-concept-devops-testing.md) módszerekkel párosítva a folyamatos integráció lehetővé teszi, hogy minden frissítés esetében ellenőrizze, hogy az LUDown-forrás továbbra is érvényes-e, és hogy egy Luis-alkalmazásba importálható-e, de azt is, hogy a betanított alkalmazást a megoldáshoz szükséges szándékok és entitások azonosítására szolgáló tesztek egy csoportja adja át.
+* A [folyamatos integráció](/azure/devops/learn/what-is-continuous-integration) (CI) olyan mérnöki gyakorlat, amely egy megosztott tárházban gyakran véglegesíti a kódot, és automatizált felépítést végez rajta. Az automatizált [tesztelési](luis-concept-devops-testing.md) módszerekkel párosítva a folyamatos integráció lehetővé teszi, hogy minden frissítés esetében ellenőrizze, hogy az LUDown-forrás továbbra is érvényes-e, és hogy egy Luis-alkalmazásba importálható-e, de azt is, hogy a betanított alkalmazást a megoldáshoz szükséges szándékok és entitások azonosítására szolgáló tesztek egy csoportja adja át.
 
-* A [folyamatos teljesítés](https://docs.microsoft.com/azure/devops/learn/what-is-continuous-delivery) (CD) továbbra is a folyamatos integrációs koncepciót alkalmazza az alkalmazás olyan környezetbe való automatikus üzembe helyezéséhez, ahol alaposabb tesztelést végezhet. A CD lehetővé teszi, hogy a lehető leggyorsabban megismerje a változásokkal kapcsolatos előre nem látható problémákat, valamint a tesztelési lefedettség hiányosságainak megismerését is.
+* A [folyamatos teljesítés](/azure/devops/learn/what-is-continuous-delivery) (CD) továbbra is a folyamatos integrációs koncepciót alkalmazza az alkalmazás olyan környezetbe való automatikus üzembe helyezéséhez, ahol alaposabb tesztelést végezhet. A CD lehetővé teszi, hogy a lehető leggyorsabban megismerje a változásokkal kapcsolatos előre nem látható problémákat, valamint a tesztelési lefedettség hiányosságainak megismerését is.
 
 A folyamatos integráció és a folyamatos teljesítés célja annak biztosítása, hogy a "főkiszolgáló mindig shippable". A LUIS-alkalmazások esetében ez azt jelenti, hogy ha szükséges, a fő ág LUIS-alkalmazásból, és az éles környezetben szállítjuk.
 
@@ -41,7 +41,7 @@ Az alábbi eszközöket használhatja a LUIS-alapú automatizálási munkafolyam
 
 * A [bot Framework Tools Luis CLI](https://github.com/microsoft/botbuilder-tools/tree/master/packages/LUIS) a Luis-alkalmazásokkal és-verziókkal,-kiképzéssel, teszteléssel és a Luis szolgáltatáson belüli közzétételével használható.
 
-* Azure [CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) az Azure-előfizetések lekérdezéséhez, a Luis Authoring and előrejelzési kulcsok beolvasásához, valamint az Automation-hitelesítéshez használt Azure- [szolgáltatás](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest) létrehozásához.
+* Azure [CLI](/cli/azure/?view=azure-cli-latest) az Azure-előfizetések lekérdezéséhez, a Luis Authoring and előrejelzési kulcsok beolvasásához, valamint az Automation-hitelesítéshez használt Azure- [szolgáltatás](/cli/azure/ad/sp?view=azure-cli-latest) létrehozásához.
 
 * [NLU. DevOps](https://github.com/microsoft/NLU.DevOps) eszköz a [Luis-alkalmazások teszteléséhez](luis-concept-devops-testing.md) és a tesztek eredményeinek elemzéséhez.
 
@@ -70,7 +70,7 @@ Ennek a munkafolyamatnak a következőket kell tennie:
 * A LUIS-alkalmazás verziójának betanítása és közzététele.
 
   > [!NOTE]
-  > Ahogy azt a [tesztek futtatása egy automatizált Build-munkafolyamatban](luis-concept-devops-testing.md#running-tests-in-an-automated-build-workflow) kifejtette, a teszt alatt közzé kell tennie a Luis-alkalmazás verziószámát, hogy az eszközök, például a NLU. A DevOps elérheti. A LUIS csak két elnevezett közzétételi tárolóhelyet támogat, az *előkészítést* és a *gyártást* egy Luis-alkalmazáshoz, de [közvetlenül is közzéteheti a verziót](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luisapplicationpublish) , és megtekintheti [a verziószámot.](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-api-v3#changes-by-slot-name-and-version-name) Használja az automatizálási munkafolyamatokban a közvetlen verziók közzétételét, hogy elkerülje, hogy az elnevezett közzétételi tárolóhelyek használatára korlátozódjon.
+  > Ahogy azt a [tesztek futtatása egy automatizált Build-munkafolyamatban](luis-concept-devops-testing.md#running-tests-in-an-automated-build-workflow) kifejtette, a teszt alatt közzé kell tennie a Luis-alkalmazás verziószámát, hogy az eszközök, például a NLU. A DevOps elérheti. A LUIS csak két elnevezett közzétételi tárolóhelyet támogat, az *előkészítést* és a *gyártást* egy Luis-alkalmazáshoz, de [közvetlenül is közzéteheti a verziót](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luisapplicationpublish) , és megtekintheti [a verziószámot.](./luis-migration-api-v3.md#changes-by-slot-name-and-version-name) Használja az automatizálási munkafolyamatokban a közvetlen verziók közzétételét, hogy elkerülje, hogy az elnevezett közzétételi tárolóhelyek használatára korlátozódjon.
 
 * Futtassa az összes [egység tesztet](luis-concept-devops-testing.md).
 
@@ -84,13 +84,13 @@ Ennek a munkafolyamatnak a következőket kell tennie:
 
 A CI/CD-munkafolyamatokban a CD-feladatok feltételesen a build és az automatizált egység tesztek sikerén futnak. Feladata, hogy automatikusan telepítse a LUIS alkalmazást egy olyan környezetre, ahol további tesztelést végezhet.
 
-A LUIS-alkalmazás üzembe helyezéséhez a legjobb megoldás, ha a projekthez megfelelő folyamatot kell megvalósítani. A [Luis DevOps-sablon](https://github.com/Azure-Samples/LUIS-DevOps-Template) tárháza egy egyszerű megoldást valósít meg, amely az [új Luis-alkalmazás verziójának közzététele](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-publish-app) az *éles* közzétételi tárolóhelyen. Ez egy egyszerű beállítás. Ha azonban számos különböző éles környezetben működő környezetet kell támogatnia, mint például a *fejlesztés*, az *előkészítés* és a *ellenőrzését*, akkor az alkalmazáson belül a két elnevezett közzétételi tárolóhely korlátja elégtelennek bizonyul.
+A LUIS-alkalmazás üzembe helyezéséhez a legjobb megoldás, ha a projekthez megfelelő folyamatot kell megvalósítani. A [Luis DevOps-sablon](https://github.com/Azure-Samples/LUIS-DevOps-Template) tárháza egy egyszerű megoldást valósít meg, amely az [új Luis-alkalmazás verziójának közzététele](./luis-how-to-publish-app.md) az *éles* közzétételi tárolóhelyen. Ez egy egyszerű beállítás. Ha azonban számos különböző éles környezetben működő környezetet kell támogatnia, mint például a *fejlesztés*, az *előkészítés* és a *ellenőrzését*, akkor az alkalmazáson belül a két elnevezett közzétételi tárolóhely korlátja elégtelennek bizonyul.
 
 Az alkalmazások verziójának központi telepítésének egyéb lehetőségei a következők:
 
 * Hagyja meg az alkalmazás verziószámát a közvetlen verzió végpontján, és hajtson végre egy folyamatot, amely az alsóbb rétegbeli éles környezeteket szükség szerint konfigurálja a közvetlen verziójú végponttal.
 * Az egyes éles környezetekben különböző LUIS-alkalmazásokat tarthat fenn, és írhat automatizálási lépéseket az új verzióra történő importálásához a `.lu` Luis alkalmazásban a cél éles környezetben, a betanításhoz és a közzétételhez.
-* Exportálja a tesztelt LUIS-alkalmazás verzióját egy [Luis Docker-tárolóba](https://docs.microsoft.com/azure/cognitive-services/luis/luis-container-howto?tabs=v3) , és telepítse a Luis-tárolót az Azure [Container instances](https://docs.microsoft.com/azure/container-instances/)szolgáltatásba.
+* Exportálja a tesztelt LUIS-alkalmazás verzióját egy [Luis Docker-tárolóba](./luis-container-howto.md?tabs=v3) , és telepítse a Luis-tárolót az Azure [Container instances](../../container-instances/index.yml)szolgáltatásba.
 
 ## <a name="release-management"></a>Kiadáskezelés
 

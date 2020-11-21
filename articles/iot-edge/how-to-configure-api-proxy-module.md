@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: f7536034eeac8548304f6a7f861910a99cd72a27
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 894398d63e326db3c6ee9de9bebc426a6e621600
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447766"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024670"
 ---
 # <a name="configure-the-api-proxy-module-for-your-gateway-hierarchy-scenario-preview"></a>Az API-proxy modul konfigurálása az átjáró-hierarchia forgatókönyvéhez (előzetes verzió)
 
@@ -113,7 +113,7 @@ Ehhez a forgatókönyvhöz az alsóbb rétegbeli IoT Edge-eszközöknek a tartom
 
 Ez a használati eset az oktatóanyagban az [átjárók használatával IoT Edge-eszközök hierarchiájának létrehozása](tutorial-nested-iot-edge.md)című cikkben látható.
 
-Konfigurálja a következő modulokat a **felső rétegben** :
+Konfigurálja a következő modulokat a **felső rétegben**:
 
 * Docker beállításjegyzék-modul
   * Konfigurálja a modult egy emlékezetes névvel, például a *beállításjegyzéktel* , és tegyen elérhetővé egy portot a modulban a kérések fogadásához.
@@ -173,7 +173,7 @@ Az API-proxy modul egy másik felhasználási esete az, hogy az alacsonyabb rét
 
 Ez a forgatókönyv az [Azure Blob Storage IoT Edge](https://azuremarketplace.microsoft.com/marketplace/apps/azure-blob-storage.edge-azure-blob-storage) modul felső rétegében a Blobok létrehozásának és feltöltésének kezelésére használja.
 
-Konfigurálja a következő modulokat a **felső rétegben** :
+Konfigurálja a következő modulokat a **felső rétegben**:
 
 * Egy Azure-Blob Storage IoT Edge modulban.
 * API-proxy modul
@@ -263,12 +263,12 @@ Amikor az API-proxy modul elemzi a proxy konfigurációját, az először a-ben 
 
 A proxy konfigurációjának dinamikus frissítéséhez kövesse az alábbi lépéseket:
 
-1. Írja be a konfigurációs fájlt. Ezt az alapértelmezett sablont használhatja hivatkozásként: [nginx_default_config. conf](hhttps://github.com/Azure/iotedge/blob/master/edge-modules/api-proxy-module/templates/nginx_default_config.conf)
+1. Írja be a konfigurációs fájlt. Ezt az alapértelmezett sablont használhatja hivatkozásként: [nginx_default_config. conf](https://github.com/Azure/iotedge/blob/master/edge-modules/api-proxy-module/templates/nginx_default_config.conf)
 1. Másolja a konfigurációs fájl szövegét, és alakítsa át Base64-re.
 1. Illessze be a kódolt konfigurációs fájlt a `proxy_config` különálló modul kívánt tulajdonságának értékeként.
 
    ![Kódolt konfigurációs fájl beillesztése proxy_config tulajdonság értékeként](./media/how-to-configure-api-proxy-module/change-config.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Egy alsóbb rétegbeli IoT Edge eszköz Azure IoT Edge átjáróhoz való csatlakoztatásához](how-to-connect-downstream-iot-edge-device.md)használja az API-proxy modult.

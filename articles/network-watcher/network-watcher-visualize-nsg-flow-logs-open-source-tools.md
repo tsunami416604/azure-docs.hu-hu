@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 18ffc5aa9c56451099afc4ddbe8b6ac5bd588974
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: aca8c75f262e472cbc770c052b86d6e760ee449a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94948765"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026471"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>Azure Network Watcher NSG-forgalomnaplók vizualizációja nyílt forráskódú eszközök használatával
 
@@ -207,7 +207,7 @@ Töltse le az [irányítópult-fájlt](https://aka.ms/networkwatchernsgflowlogda
 
 A Kibana **felügyelet** lapján navigáljon a **mentett objektumokhoz** , és importálja mindhárom fájlt. Ezután az **irányítópult** lapon megnyithatja és betöltheti a minta irányítópultot.
 
-Saját igényei szerint saját vizualizációkat és irányítópultokat is létrehozhat. További információ a Kibana-vizualizációk létrehozásáról a Kibana [hivatalos dokumentációjában](https://www.elastic.co/guide/en/kibana/current/visualize.html)olvasható.
+Saját igényei szerint saját vizualizációkat és irányítópultokat is létrehozhat. További információ a Kibana-vizualizációk létrehozásáról a Kibana [hivatalos dokumentációjában](https://www.tutorialspoint.com/kibana/kibana_create_visualization.htm)olvasható.
 
 ### <a name="visualize-nsg-flow-logs"></a>NSG-naplók megjelenítése
 

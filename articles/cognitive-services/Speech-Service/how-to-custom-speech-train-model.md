@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: 34c0703ee7c335ca904a21bcce6ed44abc6dc13f
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 9193da2f3841bb94aa395399c31d7fe826c395e0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555787"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025599"
 ---
-# <a name="train-and-deploy-a-custom-speech-model"></a>Custom Speech modell betanítása és üzembe helyezése
+# <a name="train-and-deploy-a-custom-speech-model"></a>A Custom Speech-modellek betanítása és üzembe helyezése
 
 Ebből a cikkből megtudhatja, hogyan végezheti el a Custom Speech modellek betanítását és üzembe helyezését. A beszédfelismerési modell betanítása javíthatja a Microsoft alapmodelljének felismerési pontosságát. A modell emberi címkével ellátott átírásokkal és kapcsolódó szöveggel van betanítva. Ezek az adatkészletek a korábban feltöltött hangadatokkal együtt a beszéd-szöveg modell pontosítására és betanítására szolgálnak.
 
@@ -33,7 +33,7 @@ Ha az alapmodellel észlelt felismerési problémák merülnek fel, az emberi c�
 
 ## <a name="train-and-evaluate-a-model"></a>Modell betanítása és kiértékelése
 
-A modellek betanításának első lépése a betanítási adatok feltöltése. Az emberi címkével ellátott átiratok és a kapcsolódó szövegek (hosszúságú kimondott szöveg és kiejtések) előkészítéséhez használja az [előkészítés és a tesztelés](how-to-custom-speech-test-data.md) részletes útmutatását. A betanítási adatai feltöltése után kövesse az alábbi utasításokat a modell képzésének megkezdéséhez:
+A modellek betanításának első lépése a betanítási adatok feltöltése. Az emberi címkével ellátott átiratok és a kapcsolódó szövegek (hosszúságú kimondott szöveg és kiejtések) előkészítéséhez használja az [előkészítés és a tesztelés](./how-to-custom-speech-test-and-train.md) részletes útmutatását. A betanítási adatai feltöltése után kövesse az alábbi utasításokat a modell képzésének megkezdéséhez:
 
 1. Jelentkezzen be a [Custom Speech portálra](https://speech.microsoft.com/customspeech).
 2. Navigáljon a **beszéd – szöveg > Custom Speech > [projekt neve] > képzés** elemre.
@@ -77,6 +77,6 @@ A naplózási adatok letölthetők a **Endpoint > részletei** területen.
 
 ## <a name="additional-resources"></a>További források
 
-- [Az adatfeldolgozás előkészítése és tesztelése](how-to-custom-speech-test-data.md)
+- [Az adatfeldolgozás előkészítése és tesztelése](./how-to-custom-speech-test-and-train.md)
 - [Az adatai ellenőrzése](how-to-custom-speech-inspect-data.md)
 - [Az adatai kiértékelése](how-to-custom-speech-evaluate-data.md)

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: erhopf
-ms.openlocfilehash: 87832057e955f8408b369e2f55096a713780e965
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 5c4f02eff06c08f1829f9f1c74d1dcb09ee57905
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410776"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024789"
 ---
 # <a name="speech-service-whats-new-in-docs"></a>Beszédfelismerési szolgáltatás: a docs újdonságai
 
@@ -38,17 +38,17 @@ Ha szeretne többet megtudni a Speech Service, a Speech SDK, a Speech Devices SD
 
 * [Tudnivalók a SPEECH SDK hangbemeneti stream API-ról – az](how-to-use-audio-input-streams.md) engedélyezett minták másodpercenkénti frissítése.
 * [Beszédfelismerés és szöveg közötti automatikus nyelvfelismerés](how-to-automatic-language-detection.md) – a dokumentációhoz hozzáadott Objective-C utasítások.
-* [Beszédfelismerési mód kiválasztása](how-to-choose-recognition-mode.md) – JavaScript-utasítások hozzáadása a dokumentációhoz.
+* [Beszédfelismerési mód kiválasztása](./get-started-speech-to-text.md) – JavaScript-utasítások hozzáadása a dokumentációhoz.
 * [A RHEL/CentOS 7-es beállítása a SPEECH SDK](how-to-configure-rhel-centos-7.md) -hoz – továbbfejlesztett beállítási utasítások.
-* [Kifejezések listája a beszédfelismerési szöveghez](how-to-phrase-lists.md) – a dokumentációhoz hozzáadott JavaScript-utasítások.
-* Gyors útmutató [: a hosszú formátumú hang aszinkron szintézise a Pythonban (előzetes verzió)](quickstarts/text-to-speech/async-synthesis-long-form-audio.md) – a rendszer a nyilvános neurális hangok támogatásával és a hozzájuk tartozó paraméterekkel frissült.
-* Gyors útmutató [: beszédfelismerési funkció felismerése hangfájl](quickstarts/speech-to-text-from-file.md) használatával – JavaScript-utasítások hozzáadása a dokumentációhoz.
-* Gyors útmutató [: a beszédfelismerési funkció felismerése egy mikrofon](quickstarts/speech-to-text-from-microphone.md ) használatával – a további tudnivalókat és JavaScript-utasításokat a dokumentációban találja.
+* [Kifejezések listája a beszédfelismerési szöveghez](./get-started-speech-to-text.md) – a dokumentációhoz hozzáadott JavaScript-utasítások.
+* Gyors útmutató [: a hosszú formátumú hang aszinkron szintézise a Pythonban (előzetes verzió)](./long-audio-api.md) – a rendszer a nyilvános neurális hangok támogatásával és a hozzájuk tartozó paraméterekkel frissült.
+* Gyors útmutató [: beszédfelismerési funkció felismerése hangfájl](./get-started-speech-to-text.md) használatával – JavaScript-utasítások hozzáadása a dokumentációhoz.
+* Gyors útmutató [: a beszédfelismerési funkció felismerése egy mikrofon](./get-started-speech-to-text.md) használatával – a további tudnivalókat és JavaScript-utasításokat a dokumentációban találja.
 * Rövid útmutató [: a blob Storage-ban tárolt beszéd felismerése](quickstarts/from-blob.md) – JavaScript-utasítások hozzáadása a dokumentációhoz.
 * [Gyors útmutató: beszédek, szándékok és entitások felismerése Language Understanding (LUIS)](quickstarts/intent-recognition.md)
 * Gyors útmutató [: telepítési fejlesztési környezet](quickstarts/setup-platform.md) – JavaScript-utasítások hozzáadása a dokumentációhoz.
-* Gyors útmutató [: a beszédfelismerés hangfájlba való szintézise](quickstarts/text-to-speech-audio-file.md) – JavaScript-utasítások hozzáadása a dokumentációhoz.
-* Gyors útmutató [: beszéd készítése a beszélőhöz](quickstarts/text-to-speech.md) – JavaScript-utasítások hozzáadása a dokumentációhoz.
+* Gyors útmutató [: a beszédfelismerés hangfájlba való szintézise](./get-started-text-to-speech.md) – JavaScript-utasítások hozzáadása a dokumentációhoz.
+* Gyors útmutató [: beszéd készítése a beszélőhöz](./get-started-text-to-speech.md) – JavaScript-utasítások hozzáadása a dokumentációhoz.
 * [Mi az a kulcsszó?](custom-keyword-overview.md) – Frissített első lépések tartalom és hivatkozások.
 * [Szöveg nyelvének megadása a beszédfelismeréshez](how-to-specify-source-language.md) – a JavaScript és a Objective-C utasítások a dokumentációhoz.
 
@@ -58,7 +58,7 @@ Ezek a problémák májusban lettek megnyitva. Ez a táblázat felsorolja azt a 
 
 Ez a tábla havonta frissül, és csak a májusában megnyitott problémákat tükrözi.  
 
-|ID (Azonosító)|Felhasználó|Leírás|Megnyitott|Állapot|Típus|
+|ID (Azonosító)|Felhasználó|Description|Megnyitott|Állapot|Típus|
 | :--- | :--- | :--- | :--- | :--- | :--- |
 |[56045](https://github.com/MicrosoftDocs/azure-docs/issues/56045)|rhalaly|A tevékenység el lett dobva, mert hiányzik a robot végpontja|2020-05-31|Lezárt|Probléma|
 |[56038](https://github.com/MicrosoftDocs/azure-docs/issues/56038)|rhalaly|Helytelen közzétételi robot-lépések|2020-05-31|Megnyitás|Probléma|

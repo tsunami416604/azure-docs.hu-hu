@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.openlocfilehash: cf138248e878b21531df2035dfeda1b90162ea99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bf5ab7361c84fb787366c7c361829e52362fe427
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536103"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025908"
 ---
 # <a name="intents-in-your-luis-app"></a>Szándékok a LUIS-alkalmazásban
 
@@ -32,7 +32,7 @@ Utazási alkalmazások leképezése   |   Példák kimondott szövegekre   |
 Minden alkalmazás a "[nincs](#none-intent)" előre definiált szándékkal, azaz a tartalék szándékkal van ellátva.
 
 ## <a name="prebuilt-domains-provide-intents"></a>Az előre elkészített tartományok biztosítanak leképezéseket
-A definiált szándékon kívül az előre [elkészített tartományok](luis-how-to-use-prebuilt-domains.md)egyikének előre összekészített leképezéseit is használhatja.
+A definiált szándékon kívül az előre [elkészített tartományok](./howto-add-prebuilt-models.md)egyikének előre összekészített leképezéseit is használhatja.
 
 ## <a name="return-all-intents-scores"></a>Az összes leképezési pontszám visszaküldése
 A teljes hozzárendelést egyetlen szándékhoz rendeli. Ha a LUIS a végpontra vonatkozó kiírást kap, alapértelmezés szerint a rendszer visszaadja az adott kifejezéshez legfelső szándékot.
@@ -59,7 +59,7 @@ Hozzon létre egy szándékot, ha a felhasználó _szándéka_ egy műveletet in
 
 ## <a name="prebuilt-domain-intents"></a>Előre elkészített tartományi leképezések
 
-Az [előre elkészített tartományok](luis-how-to-use-prebuilt-domains.md) a hosszúságú kimondott szöveg-vel való leképezéseket biztosítanak.
+Az [előre elkészített tartományok](./howto-add-prebuilt-models.md) a hosszúságú kimondott szöveg-vel való leképezéseket biztosítanak.
 
 ## <a name="none-intent"></a>A None szándék
 

@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: f06fda777cbebd8034ac4fd9254a4bd172d011a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89ddbca7a216421aad7240890a697f861d14fd1f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88661503"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026352"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>Text to Speech gyakori kérdések
 
-Ha nem talál választ a kérdéseire ebben a GYIK-ban, tekintse meg az [egyéb támogatási lehetőségeket](support.md).
+Ha nem talál választ a kérdéseire ebben a GYIK-ban, tekintse meg az [egyéb támogatási lehetőségeket](../cognitive-services-support-options.md?context=%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext%253fcontext%253d%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext).
 
 ## <a name="general"></a>Általános kérdések
 
@@ -29,11 +29,11 @@ Ha nem talál választ a kérdéseire ebben a GYIK-ban, tekintse meg az [egyéb 
 
 **K: hol kezdjek, ha szabványos hangmodellt szeretnék használni?**
 
-**A**: a több mint 80 standard hangmodell több mint 45 nyelven érhető el http-kéréseken keresztül. Először szerezze be az [előfizetési kulcsot](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started). Az előtelepített hangmodellek REST-hívásainak meghívásához tekintse meg a [REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
+**A**: a több mint 80 standard hangmodell több mint 45 nyelven érhető el http-kéréseken keresztül. Először szerezze be az [előfizetési kulcsot](./overview.md#try-the-speech-service-for-free). Az előtelepített hangmodellek REST-hívásainak meghívásához tekintse meg a [REST API](./overview.md#reference-docs).
 
 **K: ha testreszabott hangmodellt kívánok használni, az API ugyanaz, mint amit a standard hangokhoz használ?**
 
-**A**: egyéni hangmodell létrehozása és üzembe helyezése esetén a modell egyedi végpontot kap. Ha a hangját szeretné használni az alkalmazásokban, meg kell adnia a végpontot a HTTP-kérésekben. A Text to Speech szolgáltatás REST API elérhető funkciói az egyéni végponthoz is elérhetők. Megtudhatja, hogyan [hozhat létre és használhat egyéni végpontot](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font#create-and-use-a-custom-voice-endpoint).
+**A**: egyéni hangmodell létrehozása és üzembe helyezése esetén a modell egyedi végpontot kap. Ha a hangját szeretné használni az alkalmazásokban, meg kell adnia a végpontot a HTTP-kérésekben. A Text to Speech szolgáltatás REST API elérhető funkciói az egyéni végponthoz is elérhetők. Megtudhatja, hogyan [hozhat létre és használhat egyéni végpontot](./how-to-custom-voice-create-voice.md#create-and-use-a-custom-voice-endpoint).
 
 **K: elő kell készíteni a betanítási adataikat egyéni hangmodellek létrehozásához saját?**
 
@@ -41,7 +41,7 @@ Válasz **: igen**, a betanítási adatot saját kezűleg kell előkészítenie 
 
 A testreszabott hangmodell létrehozásához beszédfelismerési adatgyűjtemény szükséges. Ez a gyűjtemény a hanganyagokból álló hangfájlok, valamint az egyes hangfájlok átírására szolgáló szövegfájlok készletét tartalmazza. A digitális hang eredménye nagy mértékben támaszkodik a betanítási adatai minőségére. A jó szöveg-beszéd hang létrehozásához fontos, hogy a felvételek egy csendes helyen legyenek, magas színvonalú, állandó mikrofonnal. A hangvezéreltség, a beszéd és a hangvételi arány, valamint a beszéd kifejező színterének konzisztenciája elengedhetetlen a nagyszerű digitális hang létrehozásához. Javasoljuk, hogy rögzítse a hangokat egy regisztráló Studióban.
 
-Jelenleg nem biztosítunk online rögzítési támogatást, vagy nem rendelkezik Studióval kapcsolatos javaslatokkal. A formátumra vonatkozó követelményekért lásd: [felvételek és átiratok előkészítése](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice-create-voice).
+Jelenleg nem biztosítunk online rögzítési támogatást, vagy nem rendelkezik Studióval kapcsolatos javaslatokkal. A formátumra vonatkozó követelményekért lásd: [felvételek és átiratok előkészítése](./how-to-custom-voice-create-voice.md).
 
 **K: milyen szkripteket kell használni az egyéni hangképzéshez használt beszédfelismerési adatok rögzítéséhez?**
 
@@ -55,13 +55,13 @@ További szolgáltatásokat biztosítunk a parancsfájlok rögzítésére való 
 
 **K: le tudom tölteni a modellt, és helyileg futtatom?**
 
-**A: a**modellek nem tölthetők le és nem hajthatók végre helyileg.
+**A: a** modellek nem tölthetők le és nem hajthatók végre helyileg.
 
 **K: a kérelmek szabályozva vannak?**
 
 **A**: lásd a [Speech Services kvótáit és korlátozásait](speech-services-quotas-and-limits.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hibaelhárítás](troubleshooting.md)
 - [Kibocsátási megjegyzések](releasenotes.md)

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 44a7a89740be3d6d502c5d22c79b46582034d88a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cda71c6e825ff27ba9b03e1306ccb287663e8613
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535958"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025959"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>A minták az előrejelzési pontosságot javítják
 A minták úgy vannak kialakítva, hogy javítsák a pontosságot, ha több hosszúságú kimondott szöveg nagyon hasonló.  A minta lehetővé teszi, hogy nagyobb pontosságot szerezzen egy szándékhoz anélkül, hogy sok további hosszúságú kimondott szöveg lenne.
@@ -48,7 +48,7 @@ A mintázat elsődleges célja, hogy segítse a szándékok és a szerepkörök 
 Ne várja meg a továbbfejlesztett entitások előrejelzését, ha több hosszúságú kimondott szöveg összecsuk egyetlen mintára. Az egyszerű entitások a hosszúságú kimondott szöveg hozzáadásához vagy a listához tartozó entitások használata más, mint a minta nem fog tüzet használni.
 
 ## <a name="patterns-use-entity-roles"></a>A minták entitás-szerepköröket használnak
-Ha a mintában két vagy több entitás kontextussal kapcsolatos kapcsolatban áll, a minták az entitások környezetfüggő információinak kinyeréséhez használják az entitás- [szerepköröket](luis-concept-roles.md) .
+Ha a mintában két vagy több entitás kontextussal kapcsolatos kapcsolatban áll, a minták az entitások környezetfüggő információinak kinyeréséhez használják az entitás- [szerepköröket](./luis-concept-entity-types.md) .
 
 ## <a name="prediction-scores-with-and-without-patterns"></a>Előrejelzési pontszámok és mintázatok nélkül
 Mivel a hosszúságú kimondott szöveg-hez elég példa, a LUIS a minták nélkül is növelheti az előrejelzési megbízhatóságot. A minták megnövelik a megbízhatósági pontszámot anélkül, hogy annyi hosszúságú kimondott szöveg kellene biztosítania.

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
-ms.openlocfilehash: 55c5e6c5b718dc2de295b9b4418ddc8607a69f8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95ce90dbbf47ffe527fe6f25704d9cd28b834ea9
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84872049"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026695"
 ---
 # <a name="peering-service-faq"></a>Peering Service – gyakori kérdések
 
@@ -36,7 +36,7 @@ A. Igen, az ügyfelek megtehetik. Válassza ki a partner ISP-t régiónként, am
 
 **Q. Mi a Microsoft Edge PoP?**
 
-A. Ez egy olyan fizikai hely, ahol a Microsoft összekapcsolódik más hálózatokkal. A Microsoft Edge PoP-helyen a szolgáltatások, például az Azure bejárati ajtó és a Azure CDN üzemeltetve vannak. További információ: [Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-features).
+A. Ez egy olyan fizikai hely, ahol a Microsoft összekapcsolódik más hálózatokkal. A Microsoft Edge PoP-helyen a szolgáltatások, például az Azure bejárati ajtó és a Azure CDN üzemeltetve vannak. További információ: [Azure CDN](../cdn/cdn-features.md).
 
 ## <a name="peering-service-unique-characteristics"></a>Társ-szolgáltatási szolgáltatás: egyedi jellemzők
 
@@ -48,7 +48,7 @@ A. A Microsoft-partneri szolgáltatással regisztrált partnereink a Microsoftta
 
 A. Az Azure ExpressRoute egy privát, dedikált, egy vagy több ügyfél-helyről származó szolgáltatás. Míg a társ-szolgáltatás optimalizált nyilvános kapcsolattal rendelkezik, és nem támogatja a magánhálózati kapcsolatokat, a helyi internetes kitörésekhez optimalizált kapcsolódást is biztosít.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A társ-kezelés szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [peering Service áttekintése](about.md)című témakört.
 - A szolgáltató megtalálásához tekintse meg a következő témakört: [társ-szolgáltatási partnerek és helyszínek](location-partners.md).

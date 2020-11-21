@@ -10,18 +10,18 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: dpalled
-ms.openlocfilehash: 2cf86ed4fd4305a37d27bf7a88e8493821ef085c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3460cd8a88733ede041f6c0635ba40797675ed03
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629097"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025327"
 ---
 # <a name="adding-support-for-long-data-type-in-azure-time-series-insights-gen2"></a>Hosszú adattípusok támogatásának hozzáadása a Azure Time Series Insights Gen2
 
 A hosszú adattípusok támogatásának kiegészítése befolyásolja, hogy a numerikus adatok csak Azure Time Series Insights Gen2-környezetekben legyenek tárolva és indexelve. Ha Gen1-környezettel rendelkezik, figyelmen kívül hagyhatja ezeket a módosításokat.
 
-Az 2020-tól június 29-én vagy június 30-án kezdődően a régiótól függően az adatai **hosszúak** és **kétszeresak**lesznek indexelve.  Ha bármilyen kérdése vagy problémája van a változással kapcsolatban, küldjön egy támogatási jegyet a Azure Portal és megemlítjük ezt a kommunikációt.
+Az 2020-tól június 29-én vagy június 30-án kezdődően a régiótól függően az adatai **hosszúak** és **kétszeresak** lesznek indexelve.  Ha bármilyen kérdése vagy problémája van a változással kapcsolatban, küldjön egy támogatási jegyet a Azure Portal és megemlítjük ezt a kommunikációt.
 
 Ha a következő esetek valamelyikét érinti, végezze el az ajánlott módosításokat:
 
@@ -42,11 +42,11 @@ A IoT-megoldástól és a megkötéstől függően előfordulhat, hogy nem láth
 - A javasolt módosításokat megelőző jelleggel teheti az összes numerikus címkén.
 - Az események egy részhalmazát ideiglenesen átirányíthatja a tárolóba a séma jobb megismerése és megismerése érdekében.
 
-Az események tárolásához kapcsolja be az Azure Event Hubs az [esemény-rögzítést](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview) , vagy a IoT hub az Azure Blob Storage-ba [irányítsa](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c#azure-storage) .
+Az események tárolásához kapcsolja be az Azure Event Hubs az [esemény-rögzítést](../event-hubs/event-hubs-capture-overview.md) , vagy a IoT hub az Azure Blob Storage-ba [irányítsa](../iot-hub/iot-hub-devguide-messages-d2c.md#azure-storage-as-a-routing-endpoint) .
 
-Az adatkezelés az [Event hub Explorerben](https://marketplace.visualstudio.com/items?itemName=Summer.azure-event-hub-explorer)vagy az [Event Processor Host](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send#receive-events)használatával is megfigyelhető.
+Az adatkezelés az [Event hub Explorerben](https://marketplace.visualstudio.com/items?itemName=Summer.azure-event-hub-explorer)vagy az [Event Processor Host](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md#receive-events)használatával is megfigyelhető.
 
-Ha IoT Hub használ, ugorjon az [eszközről a felhőbe irányuló üzenetek olvasására a beépített végpontról](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin) a beépített végpont eléréséhez.
+Ha IoT Hub használ, ugorjon az [eszközről a felhőbe irányuló üzenetek olvasására a beépített végpontról](../iot-hub/iot-hub-devguide-messages-read-builtin.md) a beépített végpont eléréséhez.
 
 > [!NOTE]
 > Ha nem hajtja végre az ajánlott módosításokat, előfordulhat, hogy a rendszer megszakítja a folyamatot. Például a lekérdezési API-kon keresztül elért érintett Time Series Insights változók, vagy a Time Series Insights Explorer **Null értéket** ad vissza (azaz nem jeleníti meg az adatkezelőt).
@@ -64,9 +64,9 @@ Ha jelenleg az egész telemetria adatait küldi el, az adatai két oszlopba lesz
 - **propertyValue_double**
 - **propertyValue_long**
 
-Az egész számú adatot a **propertyValue_longba**írja. A korábban betöltött (és a jövőben betöltött) numerikus adatot **propertyValue_double** nem másolja át a rendszer.
+Az egész számú adatot a **propertyValue_longba** írja. A korábban betöltött (és a jövőben betöltött) numerikus adatot **propertyValue_double** nem másolja át a rendszer.
 
-Ha a **tulajdonságérték** tulajdonság ezen két oszlopán keresztül szeretné lekérdezni az adatait, akkor az **Egyesítés ()** skaláris függvényt kell használnia a TSX. A függvény elfogadja az azonos **adattípusú** argumentumokat, és az első nem null értéket adja vissza az argumentumok listájában. További információ: [Azure Time Series Insights Gen2 adatelérési fogalmai](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#other-functions).
+Ha a **tulajdonságérték** tulajdonság ezen két oszlopán keresztül szeretné lekérdezni az adatait, akkor az **Egyesítés ()** skaláris függvényt kell használnia a TSX. A függvény elfogadja az azonos **adattípusú** argumentumokat, és az első nem null értéket adja vissza az argumentumok listájában. További információ: [Azure Time Series Insights Gen2 adatelérési fogalmai](/rest/api/time-series-insights/reference-time-series-expression-syntax#other-functions).
 
 #### <a name="variable-definition-in-tsx---numeric"></a>Változó definíciója a TSX – numerikus
 
@@ -78,7 +78,7 @@ Ha a **tulajdonságérték** tulajdonság ezen két oszlopán keresztül szeretn
 
 [![Képernyőfelvétel: az új változó hozzáadása párbeszédpanel az tulajdonságérték változóhoz egyéni értékkel (numerikus).](media/time-series-insights-long-data-type/var-def.png)](media/time-series-insights-long-data-type/var-def.png#lightbox)
 
-Az **Egyesítés ($Event. tulajdonságérték. Double, a toDouble ($Event. tulajdonságérték. Long))** is használható az egyéni [Idősorozat-kifejezésként](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax).
+Az **Egyesítés ($Event. tulajdonságérték. Double, a toDouble ($Event. tulajdonságérték. Long))** is használható az egyéni [Idősorozat-kifejezésként](/rest/api/time-series-insights/reference-time-series-expression-syntax).
 
 #### <a name="inline-variable-definition-using-tsx-query-apis---numeric"></a>Beágyazott változó definíciója a TSX lekérdezési API-k használatával – numerikus
 
@@ -126,7 +126,7 @@ Az **Egyesítés ($Event. tulajdonságérték. Double, a toDouble ($Event. tulaj
 }
 ```
 
-Az **Egyesítés ($Event. tulajdonságérték. Double, a toDouble ($Event. tulajdonságérték. Long))** is használható az egyéni [Idősorozat-kifejezésként](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax).
+Az **Egyesítés ($Event. tulajdonságérték. Double, a toDouble ($Event. tulajdonságérték. Long))** is használható az egyéni [Idősorozat-kifejezésként](/rest/api/time-series-insights/reference-time-series-expression-syntax).
 
 > [!NOTE]
 > Azt javasoljuk, hogy minden olyan helyen frissítse ezeket a változókat, amelyeket érdemes használni. Ezen helyek közé tartozik a Time Series-modell, a mentett lekérdezések és az Power BI-összekötő lekérdezései.
@@ -145,9 +145,9 @@ Ha jelenleg olyan kategorikus változókat használ, amelyek egész értékeket 
 
 [![Képernyőfelvétel: az új változó hozzáadása párbeszédpanel a tulajdonságérték változóhoz egyéni értékkel, kategorikus.](media/time-series-insights-long-data-type/var-def-cat.png)](media/time-series-insights-long-data-type/var-def-cat.png#lightbox)
 
-Az **Egyesítés ($Event. tulajdonságérték. Double, a toDouble ($Event. tulajdonságérték. Long))** is használható az egyéni [Idősorozat-kifejezésként](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
+Az **Egyesítés ($Event. tulajdonságérték. Double, a toDouble ($Event. tulajdonságérték. Long))** is használható az egyéni [Idősorozat-kifejezésként](/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
 
-A kategorikus változók esetében az értéknek egész típusúnak kell lennie. Az **Egyesítés ()** összes argumentumának **adattípusa** csak **hosszú** lehet az egyéni [idősorozat kifejezésében.](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)
+A kategorikus változók esetében az értéknek egész típusúnak kell lennie. Az **Egyesítés ()** összes argumentumának **adattípusa** csak **hosszú** lehet az egyéni [idősorozat kifejezésében.](/rest/api/time-series-insights/reference-time-series-expression-syntax)
 
 #### <a name="inline-variable-definition-using-tsx-query-apis---categorical"></a>Beágyazott változó definíciója a TSX Query API-k használatával – kategorikus
 
@@ -227,7 +227,7 @@ A kategorikus változók esetében az értéknek egész típusúnak kell lennie.
 }
 ```
 
-A kategorikus változók esetében az értéknek egész típusúnak kell lennie. Az **Egyesítés ()** összes argumentumának **adattípusa** csak **hosszú** lehet az egyéni [idősorozat kifejezésében](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax).
+A kategorikus változók esetében az értéknek egész típusúnak kell lennie. Az **Egyesítés ()** összes argumentumának **adattípusa** csak **hosszú** lehet az egyéni [idősorozat kifejezésében](/rest/api/time-series-insights/reference-time-series-expression-syntax).
 
 > [!NOTE]
 > Azt javasoljuk, hogy minden olyan helyen frissítse ezeket a változókat, amelyeket érdemes használni. Ezen helyek közé tartozik a Time Series-modell, a mentett lekérdezések és az Power BI-összekötő lekérdezései.

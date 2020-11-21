@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 30a07957a75bfe82d8ce350675f0d29b2f03e069
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 6834f9cc8202f49f53c20f3941945bba4a4b2efd
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966139"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026746"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Hálózati behatolás-észlelés végrehajtása Network Watcher és nyílt forráskódú eszközökkel
 
@@ -246,7 +246,7 @@ Ebben a cikkben egy minta-irányítópultot kaptunk a riasztások trendjeinek é
 
 1. A Kibana **felügyelet** lapján navigáljon a **mentett objektumokhoz** , és importálja mindhárom fájlt. Ezután az **irányítópult** lapon megnyithatja és betöltheti a minta irányítópultot.
 
-Saját igényei szerint saját vizualizációkat és irányítópultokat is létrehozhat. További információ a Kibana-vizualizációk létrehozásáról a Kibana [hivatalos dokumentációjában](https://www.elastic.co/guide/en/kibana/current/visualize.html)olvasható.
+Saját igényei szerint saját vizualizációkat és irányítópultokat is létrehozhat. További információ a Kibana-vizualizációk létrehozásáról a Kibana [hivatalos dokumentációjában](https://www.tutorialspoint.com/kibana/kibana_create_visualization.htm)olvasható.
 
 ![kibana-irányítópult][2]
 

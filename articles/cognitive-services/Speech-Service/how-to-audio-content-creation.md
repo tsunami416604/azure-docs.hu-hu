@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: 5685a2553b95308a1c18c3e490737338f609b594
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 7d4d1acac591bfe6ce40efcf6166357d43718363
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94330937"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024959"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>A hanganyag-létrehozási eszközzel fejlesztheti a szintézist
 
@@ -33,13 +33,13 @@ A hangtartalom létrehozása ingyenes eszköz, azonban a felhasznált Azure Spee
 
 ### <a name="step-1---create-an-azure-account"></a>1. lépés – Azure-fiók létrehozása
 
-A hangtartalom létrehozásához rendelkeznie kell egy [Microsoft-fiók](https://account.microsoft.com/account) és egy [Azure-fiókkal](https://azure.microsoft.com/free/ai/). [A fiók beállításához](get-started.md#new-resource)kövesse az alábbi utasításokat. 
+A hangtartalom létrehozásához rendelkeznie kell egy [Microsoft-fiók](https://account.microsoft.com/account) és egy [Azure-fiókkal](https://azure.microsoft.com/free/ai/). [A fiók beállításához](./overview.md#try-the-speech-service-for-free)kövesse az alábbi utasításokat. 
 
 [Azure Portal](https://portal.azure.com/) a központi hely az Azure-fiók kezeléséhez. Létrehozhatja a beszédfelismerési erőforrást, kezelheti a termék hozzáférését, és megfigyelheti az egyszerű webalkalmazások és az összetett Felhőbeli üzembe helyezések összes elemét. 
 
 ### <a name="step-2---create-a-speech-resource"></a>2. lépés – beszédfelismerési erőforrás létrehozása
 
-Miután regisztrált az Azure-fiókra, létre kell hoznia egy beszédfelismerési erőforrást az Azure-fiókjában a Speech Services eléréséhez. Megtekintheti a [beszédfelismerési erőforrások létrehozásának](https://docs.microsoft.com/azure/cognitive-services/speech-service/overview#create-the-azure-resource)utasításait. 
+Miután regisztrált az Azure-fiókra, létre kell hoznia egy beszédfelismerési erőforrást az Azure-fiókjában a Speech Services eléréséhez. Megtekintheti a [beszédfelismerési erőforrások létrehozásának](./overview.md#create-the-azure-resource)utasításait. 
 
 Az új beszédfelismerési erőforrás üzembe helyezése néhány percet vesz igénybe. Az üzembe helyezés befejezését követően elkezdheti a hangtartalom létrehozási menetét. 
 
@@ -63,7 +63,7 @@ Ez az ábra azokat a lépéseket mutatja be, amelyek a szöveg-beszéd kimenetek
 2. [Hozzon létre egy hang-hangolási fájlt](#create-an-audio-tuning-file) egyszerű SZÖVEGES vagy SSML szkriptek használatával. Írja be vagy töltse fel a tartalmat a hangtartalom létrehozásához.
 3. Válassza ki a parancsfájl tartalmának hangját és nyelvét. A hangtartalom létrehozása magában foglalja az összes [Microsoft szöveg-beszéd hangokat](language-support.md#text-to-speech). Használhatja a standard, a neurális vagy a saját egyéni hangját is.
    >[!NOTE]
-   > Az egyéni neurális hangok számára elérhető a vezérelt hozzáférés, amely lehetővé teszi, hogy a természetes hangú beszédhez hasonló, nagy felbontású hangokat hozzon létre. További részletekért lásd: [kapuzás folyamat](https://aka.ms/ignite2019/speech/ethics).
+   > Az egyéni neurális hangok számára elérhető a vezérelt hozzáférés, amely lehetővé teszi, hogy a természetes hangú beszédhez hasonló, nagy felbontású hangokat hozzon létre. További részletekért lásd: [kapuzás folyamat](./text-to-speech.md).
 
 4. Kattintson a **Lejátszás** ikonra (egy háromszögre) az alapértelmezett szintézis kimenetének megtekintéséhez. Ezután javítsa a kimenetet a kiejtés, a törés, a szurok, a sebesség, a hanglejtés, a hangstílus és más beállítások módosításával. A beállítások teljes listájáért lásd: [Speech szintézis Markup Language](speech-synthesis-markup.md). Itt látható egy [videó](https://www.youtube.com/watch?v=O1wIJ7mts_w) , amely bemutatja, hogyan finomíthatja a beszédfelismerési kimenetet hanggal a tartalom létrehozásával. 
 5. [A beállított hang](#export-tuned-audio)mentése és exportálása. Ha menti a hangolási sávot a rendszeren, folytathatja a munkát, és megismételheti a kimenetet. Ha elégedett a kimenettel, létrehozhat egy hang-létrehozási feladatot az exportálási funkcióval. Megfigyelheti az exportálási feladat állapotát, és letöltheti a kimenetet az alkalmazásaival és termékeivel való használatra.
@@ -160,9 +160,9 @@ Ha azt szeretné, hogy az egyik felhasználó hozzáférjen más felhasználókh
 
 ## <a name="see-also"></a>Lásd még
 
-* [Hosszú hang API](https://aka.ms/long-audio-api)
+* [Hosszú hang API](./long-audio-api.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Speech Studio](https://speech.microsoft.com)
