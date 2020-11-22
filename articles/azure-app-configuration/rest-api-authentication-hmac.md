@@ -6,33 +6,33 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 236670cb59a98ee097baaeb35174489d66e6e786
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 4171155f5a9f72ef0c021bd0e37fe4ec2f206646
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424191"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95253354"
 ---
 # <a name="hmac-authentication---rest-api-reference"></a>HMAC-hitelesítés – REST API referenciája
 
-A HTTP-kérések hitelesítése a **HMAC-sha256** hitelesítési séma használatával lehetséges. Ezeket a kérelmeket TLS protokollon keresztül kell továbbítani.
+A HTTP-kérelmeket a HMAC-SHA256 hitelesítési séma használatával hitelesítheti. (A HMAC a kivonatoló üzenet hitelesítési kódját jelöli.) Ezeket a kérelmeket TLS protokollon keresztül kell továbbítani.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - **Hitelesítőadat** - \<Access Key ID\>
 - **Titkos** Base64 dekódolású hozzáférési kulcs értéke. ``base64_decode(<Access Key Value>)``
 
-A hitelesítő adatok (más néven "id") és a titkos kulcs (más néven "érték") értékét az Azure app Configuration-példányból kell beszerezni, amely a [Azure Portal](https://portal.azure.com) vagy az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true)használatával végezhető el.
+A hitelesítő adatok (más néven `id` ) és a titkos kulcs (más néven) értékeit `value` Az Azure-alkalmazás konfigurációjának példánya alapján kell beolvasni. Ezt a [Azure Portal](https://portal.azure.com) vagy az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true)használatával teheti meg.
 
 Adja meg az összes kérelmet a hitelesítéshez szükséges összes HTTP-fejléctel. A minimálisan szükséges érték a következők:
 
 |  Kérelem fejléce | Leírás  |
 | --------------- | ------------ |
-| **Állomás** | Internetes állomás és portszám. Lásd: [3.2.2](https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.2.2) . szakasz |
-| **Date** | A kérelem eredetének dátuma és időpontja. A jelenlegi GMT-ből 15 percen belül nem lehet hosszabb. Az érték egy HTTP-dátum, a [3.3.1](https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.3.1) . szakaszban leírtak szerint.
-| **x-MS-Date** | Ugyanaz, mint a ```Date``` fenti. Ehelyett akkor használható, ha az ügynök nem tud közvetlenül hozzáférni a ```Date``` kérelem fejlécéhez, vagy a proxy módosítja azt. Ha ```x-ms-date``` és ```Date``` mindkettő meg van adva, ```x-ms-date``` elsőbbséget élvez. |
+| **Állomás** | Internetes állomás és portszám. További információ:  [3.2.2](https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.2.2). szakasz. |
+| **Date** | A kérelem eredetének dátuma és időpontja. A jelenlegi egyezményes világidő (greenwichi idő) 15 percnél nem lehet hosszabb. Az érték egy HTTP-dátum, a [3.3.1](https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.3.1). szakaszban leírtak szerint.
+| **x-MS-Date** | Ugyanaz, mint a ```Date``` fenti. Ehelyett akkor használhatja, ha az ügynök nem tud közvetlenül hozzáférni a ```Date``` kérelem fejlécéhez, vagy a proxy módosítja azt. Ha ```x-ms-date``` és ```Date``` mindkettő meg van adva, ```x-ms-date``` elsőbbséget élvez. |
 | **x-MS-Content-sha256** | a kérelem törzsének Base64 kódolású SHA256 kivonata. Akkor is meg kell adni, ha nincs törzs. ```base64_encode(SHA256(body))```|
-| **Engedélyezés** | A **HMAC-sha256** séma által igényelt hitelesítési adatok. A formátum és a részletek magyarázata alább látható. |
+| **Engedélyezés** | A HMAC-SHA256 sémához szükséges hitelesítési adatok. A formátumot és a részleteket a cikk későbbi részében ismertetjük. |
 
 **Példa**
 
@@ -51,18 +51,18 @@ Authorization: HMAC-SHA256 Credential={Access Key ID}&SignedHeaders=x-ms-date;ho
 
 |  Argumentum | Leírás  |
 | ------ | ------ |
-| **HMAC – SHA256** | Engedélyezési séma _(kötelező)_ |
+| **HMAC – SHA256** | Engedélyezési séma. _szükséges_ |
 | **Hitelesítőadat** | Az aláírás kiszámításához használt hozzáférési kulcs azonosítója. _szükséges_ |
 | **SignedHeaders** | A HTTP-kérések fejlécei hozzá lettek adva az aláíráshoz. _szükséges_ |
-| **Aláírás** | Base64 kódolású HMACSHA256 **karakterlánc-aláírással**. _szükséges_|
+| **Aláírás** | Base64 kódolású HMACSHA256 karakterlánc-aláírással. _szükséges_|
 
 ### <a name="credential"></a>Hitelesítő adat
 
-Az **aláírás** kiszámításához használt hozzáférési kulcs azonosítója.
+Az aláírás kiszámításához használt hozzáférési kulcs azonosítója.
 
 ### <a name="signed-headers"></a>Aláírt fejlécek
 
-Pontosvesszővel elválasztott HTTP-kérelem fejlécének neve szükséges a kérelem aláírásához. Ezeket a HTTP-fejléceket is helyesen kell megadni a kéréshez. **Ne használjon szóközt**.
+A HTTP-kérelem fejlécének neve pontosvesszővel elválasztva, a kérelem aláírásához szükséges. Ezeket a HTTP-fejléceket is helyesen kell megadni a kéréshez. Ne használjon szóközöket.
 
 ### <a name="required-http-request-headers"></a>Kötelező HTTP-kérelmek fejlécei
 
@@ -76,7 +76,7 @@ x-MS-Date; gazdagép; x-MS-Content-sha256; ```Content-Type``` ;```Accept```
 
 ### <a name="signature"></a>Aláírás
 
-Base64 kódolású HMACSHA256 kivonata a következő által azonosított hozzáférési kulccsal: **karakterlánc-jel** `Credential` .
+Base64 kódolású HMACSHA256 kivonata a karakterlánc-aláíráshoz. A által azonosított hozzáférési kulcsot használja `Credential` .
 ```base64_encode(HMACSHA256(String-To-Sign, Secret))```
 
 ### <a name="string-to-sign"></a>Karakterlánc-aláírás
@@ -89,9 +89,9 @@ _Karakterlánc – aláírás =_
 
 |  Argumentum | Leírás  |
 | ------ | ------ |
-| **HTTP_METHOD** | A kérelemben használt nagybetűs HTTP-metódus neve. Lásd: [9. szakasz](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html) |
-|**path_and_query** | A kérelem abszolút URI elérési útjának és lekérdezési karakterláncának összefűzése. Lásd: [3,3. szakasz](https://tools.ietf.org/html/rfc3986#section-3.3).
-| **signed_headers_values** | A **SignedHeaders** összes HTTP-kérelem fejlécének pontosvesszővel elválasztott értékei. A formátum a **SignedHeaders** szemantikai formáját követi. |
+| **HTTP_METHOD** | A kéréshez használt nagybetűs HTTP-metódus neve. További információ: 9. [szakasz](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). |
+|**path_and_query** | A kérelem abszolút URI elérési útjának és lekérdezési karakterláncának összefűzése. További információ: 3,3. [szakasz](https://tools.ietf.org/html/rfc3986#section-3.3).
+| **signed_headers_values** | Az összes HTTP-kérelem fejlécében szereplő pontosvesszővel tagolt érték `SignedHeaders` . A formátum a `SignedHeaders` szemantikat követi. |
 
 **Példa**
 
@@ -111,15 +111,17 @@ WWW-Authenticate: HMAC-SHA256, Bearer
 ```
 
 **OK:** Nincs megadva az engedélyezési kérelem fejléce HMAC-SHA256 sémával.
-**Megoldás:** Érvényes ```Authorization``` http-kérelem fejlécének megadása
+
+**Megoldás:** Adjon meg egy érvényes ```Authorization``` http-kérelem fejlécét.
 
 ```http
 HTTP/1.1 401 Unauthorized
 WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="The access token has expired", Bearer
 ```
 
-**OK:** ```Date``` vagy ```x-ms-date``` a kérelem fejléce több mint 15 percet vesz igénybe az aktuális GMT-időpontból.
-**Megoldás:** Adja meg a megfelelő dátumot és időt
+**OK:** ```Date``` vagy ```x-ms-date``` a kérelem fejléce több mint 15 percet vesz igénybe a jelenlegi egyezményes világidő (greenwichi középidő) alapján.
+
+**Megoldás:** Adja meg a megfelelő dátumot és időt.
 
 
 ```http
@@ -127,14 +129,14 @@ HTTP/1.1 401 Unauthorized
 WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="Invalid access token date", Bearer
 ```
 
-**OK:** Hiányzó vagy érvénytelen ```Date``` vagy ```x-ms-date``` kérelem fejléce
+**OK:** Hiányzó vagy érvénytelen ```Date``` vagy ```x-ms-date``` kérelem fejléce.
 
 ```http
 HTTP/1.1 401 Unauthorized
 WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="[Credential][SignedHeaders][Signature] is required", Bearer
 ```
 
-**OK:** Hiányzik egy kötelező paraméter a ```Authorization``` kérelem fejlécében
+**OK:** Hiányzik egy kötelező paraméter a ```Authorization``` kérelem fejlécében.
 
 ```http
 HTTP/1.1 401 Unauthorized
@@ -142,7 +144,8 @@ WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="Invalid C
 ```
 
 **OK:** A megadott [ ```Host``` ]/[hozzáférési kulcs azonosítója] nem található.
-**Megoldás:** Ellenőrizze a ```Credential``` ```Authorization``` kérelem fejlécének paraméterét, és győződjön meg arról, hogy az érvényes hozzáférési kulcs azonosítója. Győződjön meg arról ```Host``` , hogy a fejléc a regisztrált fiókra mutat.
+
+**Megoldás:** Keresse meg a ```Credential``` ```Authorization``` kérelem fejlécének paraméterét. Ellenőrizze, hogy érvényes-e a hozzáférési kulcs azonosítója, és ellenőrizze, hogy a ```Host``` fejléc a regisztrált fiókra mutat-e.
 
 ```http
 HTTP/1.1 401 Unauthorized
@@ -150,14 +153,16 @@ WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="Invalid S
 ```
 
 **OK:** A ```Signature``` megadott érték nem egyezik a kiszolgáló által várt értékkel.
-**Megoldás:** Győződjön meg arról ```String-To-Sign``` , hogy a helyes. Győződjön meg arról ```Secret``` , hogy a helyes és megfelelően van használatban (a Base64 dekódolása a használata előtt). Lásd: **példák** szakasz.
+
+**Megoldás:** Győződjön meg arról ```String-To-Sign``` , hogy a helyes. Győződjön meg arról ```Secret``` , hogy a helyes és megfelelően van használatban (a Base64 dekódolása a használata előtt).
 
 ```http
 HTTP/1.1 401 Unauthorized
 WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="Signed request header 'xxx' is not provided", Bearer
 ```
 
-**OK:** Hiányzó kérelem-fejléc szükséges a (z ```SignedHeaders``` ) paraméterben a ```Authorization``` fejlécben.
+**OK:** Hiányzó kérelem fejléce szükséges a (z ```SignedHeaders``` ) paraméterben a  ```Authorization``` fejlécben.
+
 **Megoldás:** Adja meg a szükséges fejlécet a megfelelő értékkel.
 
 ```http
@@ -166,13 +171,14 @@ WWW-Authenticate: HMAC-SHA256 error="invalid_token" error_description="XXX is re
 ```
 
 **OK:** Hiányzó paraméter a-ben ```SignedHeaders``` .
-**Megoldás:** Az **aláírt fejlécek** minimális követelményeit vizsgálja meg.
+
+**Megoldás:** Az aláírt fejlécek minimális követelményeit vizsgálja meg.
 
 ## <a name="code-snippets"></a>Kódrészletek
 
 ### <a name="javascript"></a>JavaScript
 
-*Előfeltételek* : [kriptográfia – js](https://code.google.com/archive/p/crypto-js/)
+*Előfeltételek*: [kriptográfia – js](https://code.google.com/archive/p/crypto-js/)
 
 ```js
 function signRequest(host, 
@@ -362,7 +368,7 @@ import (
     "time"
 )
 
-//SignRequest Setup the auth header for accessing Azure AppConfiguration service
+//SignRequest Setup the auth header for accessing Azure App Configuration service
 func SignRequest(id string, secret string, req *http.Request) error {
     method := req.Method
     host := req.URL.Host
@@ -537,7 +543,7 @@ Invoke-RestMethod -Uri $uri -Method $method -Headers $headers -Body $body
 
 ### <a name="bash"></a>Bash
 
-*Előfeltételek* :
+*Előfeltételek*:
 
 | Előfeltétel | Parancs | Tesztelt verziók |
 | ------------ | ------- | --------------- |

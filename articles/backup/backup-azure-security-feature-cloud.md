@@ -3,12 +3,12 @@ title: Azure Backup helyreállítható törlés
 description: Megtudhatja, hogyan teheti biztonságosabbá a biztonsági mentéseket a Azure Backup biztonsági funkciói segítségével.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: d7998c7f9def6ce9965ded3b6ec700f7975891eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da473b1d886ec2fe95a7baae76b09aff38fb3cd7
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91271545"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95254049"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Azure Backup helyreállítható törlés
 
@@ -36,8 +36,8 @@ Fontos megjegyezni, hogy ha a Soft delete le van tiltva, a szolgáltatás le van
 A Soft delete letiltásához kövesse az alábbi lépéseket:
 
 1. A Azure Portal nyissa meg a tárolót, majd lépjen a **Beállítások**  ->  **Tulajdonságok menüpontra**.
-2. A Tulajdonságok ablaktáblán válassza a **biztonsági beállítások**  ->  **frissítés**lehetőséget.  
-3. A biztonsági beállítások ablaktábla **Soft delete**területén válassza a **Letiltás**lehetőséget.
+2. A Tulajdonságok ablaktáblán válassza a **biztonsági beállítások**  ->  **frissítés** lehetőséget.  
+3. A biztonsági beállítások ablaktábla **Soft delete** területén válassza a **Letiltás** lehetőséget.
 
 ![Nem kötelező törlés letiltása](./media/backup-azure-security-feature-cloud/disable-soft-delete.png)
 
@@ -77,23 +77,23 @@ Kövesse az alábbi lépéseket:
 
    ![A nem törölt elem kiválasztása](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
-3. Válassza a **Törlés**visszavonása lehetőséget.
+3. Válassza a **Törlés** visszavonása lehetőséget.
 
    ![Törlés visszavonása](./media/backup-azure-security-feature-cloud/choose-undelete.png)
 
-4. Ekkor megjelenik egy ablak. Válassza a **Törlés**visszavonása lehetőséget.
+4. Ekkor megjelenik egy ablak. Válassza a **Törlés** visszavonása lehetőséget.
 
    ![Törlés visszavonása](./media/backup-azure-security-feature-cloud/undelete-vm.png)
 
 5. Válassza a **biztonsági mentési adattörlés** lehetőséget a biztonsági másolati adatbázis végleges törléséhez.
 
-   ![Válassza a biztonsági másolatok törlése lehetőséget.](/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
+   ![Válassza a biztonsági másolatok törlése lehetőséget.](./media/backup-azure-manage-vms/delete-backup-button.png)
 
 6. Írja be a biztonsági mentési tétel nevét annak megerősítéséhez, hogy törölni kívánja a helyreállítási pontokat.
 
-   ![Írja be a biztonsági másolati tétel nevét](/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
+   ![Írja be a biztonsági másolati tétel nevét](./media/backup-azure-manage-vms/delete-backup-data.png)
 
-7. Az elemhez tartozó biztonsági másolati elemek törléséhez válassza a **Törlés**lehetőséget. Egy értesítési üzenetből megtudhatja, hogy a biztonsági mentési információ törölve lett.
+7. Az elemhez tartozó biztonsági másolati elemek törléséhez válassza a **Törlés** lehetőséget. Egy értesítési üzenetből megtudhatja, hogy a biztonsági mentési információ törölve lett.
 
 ### <a name="using-azure-powershell"></a>Az Azure PowerShell használata
 

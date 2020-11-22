@@ -6,20 +6,20 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 4f11e6edcd4bc128f815db7e93b00b72bf990ea8
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: db9553c2c9c79a6beb9c66d0cb1a1a60435b2abd
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424347"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95253337"
 ---
 # <a name="real-time-consistency"></a>Valós idejű konzisztencia
 
-Egyes elosztott rendszerek jellegéből adódóan a kérelmek közötti valós idejű konzisztencia nem bizonyulhat implicit módon. A megoldás lehetővé teszi a protokollok támogatását több **szinkronizációs jogkivonat** formájában. A szinkronizálási tokenek nem kötelezőek.
+Egyes elosztott rendszerek jellegéből adódóan a kérelmek közötti valós idejű konzisztencia nem bizonyulhat implicit módon. A megoldás lehetővé teszi a protokollok támogatását több szinkronizációs jogkivonat formájában. A szinkronizálási tokenek nem kötelezőek.
 
 ## <a name="initial-request"></a>Kezdeti kérelem
 
-A különböző ügyfél-példányok és kérelmek közötti valós idejű konzisztencia garantálása érdekében az opcionális `Sync-Token` kérés/válasz fejléceket kell használnia.
+A különböző ügyfél-példányok és kérelmek közötti valós idejű konzisztencia biztosításához használja az opcionális `Sync-Token` kérések és válaszok fejléceit.
 
 Szintaxis:
 
@@ -30,8 +30,8 @@ Sync-Token: <id>=<value>;sn=<sn>
 |Paraméter|Leírás|
 |--|--|
 | `<id>` | Jogkivonat-azonosító (átlátszatlan) |
-| `<value>` | Jogkivonat értéke (átlátszatlan). Base64 kódolású karakterlánc engedélyezése |
-| `<sn>` | Jogkivonat-sorszám (verzió). Magasabb az azonos jogkivonat újabb verziója. Lehetővé teszi a jobb párhuzamosságot és az ügyfél-gyorsítótárazást. Az ügyfél dönthet úgy, hogy csak a token utolsó verzióját használja, mivel a jogkivonat-verziók tartalmazzák a szolgáltatást. A kérésekhez nem szükséges. |
+| `<value>` | Jogkivonat értéke (átlátszatlan). Lehetővé teszi a Base64 kódolású karakterláncok használatát. |
+| `<sn>` | Jogkivonat-sorszám (verzió). A magasabb érték azt jelenti, hogy ugyanazon jogkivonat újabb verziója van. Lehetővé teszi a jobb párhuzamosságot és az ügyfél-gyorsítótárazást. Az ügyfél dönthet úgy, hogy csak a jogkivonat utolsó verzióját használja, mivel a jogkivonat-verziók tartalmazzák a szolgáltatást. Ez a paraméter nem szükséges a kérelmekhez. |
 
 ## <a name="response"></a>Reagálás
 
@@ -43,17 +43,17 @@ Sync-Token: jtqGc1I4=MDoyOA==;sn=28
 
 ## <a name="subsequent-requests"></a>További kérelmek
 
-Minden további kérelem **valós idejű** konzisztens választ biztosít a megadott értékhez képest `Sync-Token` .
+Minden további kérelem valós idejű konzisztens választ biztosít a megadott értékhez képest `Sync-Token` .
 
 ```http
 Sync-Token: <id>=<value>
 ```
 
-Ha a `Sync-Token` fejléc ki van hagyva a kérelemből, akkor lehetséges, hogy a szolgáltatás a gyorsítótárazott adatokkal válaszol a rövid idő alatt (akár néhány másodpercig), mielőtt a rendszer belsőleg rendezi. Ez a viselkedés inkonzisztens olvasást okozhat, ha a módosítások közvetlenül az olvasás előtt történtek.
+Ha elhagyja a `Sync-Token` fejlécet a kérelemből, akkor lehetséges, hogy a szolgáltatás a gyorsítótárazott adatokkal válaszol a rövid idő alatt (akár néhány másodpercig), mielőtt a rendszer berendezi a belsőt. Ez a viselkedés inkonzisztens olvasást okozhat, ha a módosítások azonnal megtörténnek az olvasás előtt.
 
 ## <a name="multiple-sync-tokens"></a>Több szinkronizálási token
 
-A kiszolgáló több szinkronizálási jogkivonattal is reagálhat egyetlen kérelemre. A következő kérelem **valós idejű** konzisztenciájának megőrzése érdekében az ügyfélnek az összes fogadott szinkronizálási jogkivonattal kell válaszolnia. /RFC esetében több fejléc értékének vesszővel elválasztva kell lennie.
+Előfordulhat, hogy a kiszolgáló több szinkronizálási jogkivonattal válaszol egyetlen kérelemre. A következő kérelem valós idejű konzisztenciájának megőrzése érdekében az ügyfélnek az összes fogadott szinkronizálási jogkivonattal kell válaszolnia. Több fejléc értékének vesszővel elválasztva kell lennie.
 
 ```http
 Sync-Token: <token1-id>=<value>,<token2-id>=<value>

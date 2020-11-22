@@ -2,17 +2,17 @@
 title: Csomópontok és készletek a Azure Batchban
 description: Ismerje meg a számítási csomópontokat és készleteket, valamint azt, hogyan használják őket egy Azure Batch munkafolyamatban fejlesztési szempontból.
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: 77f3a1c954f5591537436c9ee747052b3a642ec4
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 11/20/2020
+ms.openlocfilehash: 880a956a2d839483c59578afad1b62146799578a
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537611"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95243069"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Csomópontok és készletek a Azure Batchban
 
-Egy Azure Batch munkafolyamatban egy *számítási csomópont* (vagy *csomópont* ) egy olyan virtuális gép, amely az alkalmazás munkaterhelésének egy részét dolgozza fel. A *készlet* ezen csomópontok gyűjteménye, amelyeken az alkalmazás fut. Ez a cikk további tudnivalókat tartalmaz a csomópontokról és a készletekről, valamint a Azure Batch munkafolyamatokban való létrehozásával és használatával kapcsolatos szempontokat.
+Egy Azure Batch munkafolyamatban egy *számítási csomópont* (vagy *csomópont*) egy olyan virtuális gép, amely az alkalmazás munkaterhelésének egy részét dolgozza fel. A *készlet* ezen csomópontok gyűjteménye, amelyeken az alkalmazás fut. Ez a cikk további tudnivalókat tartalmaz a csomópontokról és a készletekről, valamint a Azure Batch munkafolyamatokban való létrehozásával és használatával kapcsolatos szempontokat.
 
 ## <a name="nodes"></a>Csomópontok
 
@@ -40,7 +40,7 @@ A készlethez adott minden csomóponthoz egyedi név és IP-cím van rendelve. A
 
 A készleteket kizárólag az a Batch-fiók használhatja, amelyben létrehozták őket. A Batch-fiókok több készletet is létrehozhatnak, hogy megfeleljenek a futtatni kívánt alkalmazások erőforrás-követelményeinek.
 
-A készletet manuálisan vagy automatikusan is létrehozhatja a Batch szolgáltatás, ha megadja a elvégzendő munkát. Készlet létrehozásakor a következő attribútumokat adhatja meg:
+A készletet manuálisan vagy automatikusan is létrehozhatja [a Batch szolgáltatás](#autopools) , ha megadja a elvégzendő munkát. Készlet létrehozásakor a következő attribútumokat adhatja meg:
 
 - [Csomópont operációs rendszere és verziója](#operating-system-and-version)
 - [Csomópont típusa és a csomópontok célként megadott száma](#node-type-and-target)
@@ -105,7 +105,7 @@ Az alacsony prioritású csomópontok akkor is előzik, ha az Azure-ban nincs el
 
 Ugyanabban a készletben alacsony prioritású és dedikált csomópontok is lehetnek. A csomópontok minden típusa saját célértéket tartalmaz, amelynél megadhatja a csomópontok kívánt számát.
 
-A számítási csomópontok számát azért nevezzük *cél* -értéknek, mert előfordulhat, hogy a készletben nem lehet a kívánt számú csomópontot alkalmazni. Egy készlet például nem érheti el a célértéket, ha először a Batch-fiók [magkvótáját](batch-quota-limit.md) éri el. Vagy előfordulhat, hogy a készlet nem éri el a célt, ha egy automatikus skálázási képletet alkalmazott a készlethez, amely korlátozza a csomópontok maximális számát.
+A számítási csomópontok számát azért nevezzük *cél*-értéknek, mert előfordulhat, hogy a készletben nem lehet a kívánt számú csomópontot alkalmazni. Egy készlet például nem érheti el a célértéket, ha először a Batch-fiók [magkvótáját](batch-quota-limit.md) éri el. Vagy előfordulhat, hogy a készlet nem éri el a célt, ha egy automatikus skálázási képletet alkalmazott a készlethez, amely korlátozza a csomópontok maximális számát.
 
 Az alacsony prioritású és a dedikált csomópontok díjszabásáról a [Batch díjszabása](https://azure.microsoft.com/pricing/details/batch/)című témakörben olvashat.
 
@@ -184,6 +184,10 @@ Az egyik szélsőség, ha azt állítja be, hogy a rendszer hozza létre a kész
 A másik végletet akkor érdemes választani, ha a feladatok azonnali indítása a legfontosabb: ilyenkor a feladatok elküldése előtt hozza létre a készletet, és tegye elérhetővé a csomópontokat. Ebben a megoldásban a tevékenységek azonnal indulhatnak, de a csomópontok tétlenek lehetnek a tevékenységek hozzárendeléséig.
 
 A változó, de folyamatos terhelések kezeléséhez általában egy kombinált módszert használunk. Rendelkezhet olyan készlettel, amelyben több feladat is elküldhető, és a feladatok terhelésének megfelelően méretezheti a csomópontok számát. Ez reaktív módon, az aktuális terhelés alapján is elvégezhető, de proaktív módszert is használhat, ha a terhelés előrejelezhető. További információ: [automatikus skálázási szabályzat](#automatic-scaling-policy).
+
+## <a name="autopools"></a>Alapkészletek
+
+Az [autopool](/rest/api/batchservice/job/add#autopoolspecification) olyan készlet, amelyet a Batch szolgáltatás a feladat elküldésekor hoz létre, nem pedig a készletben futtatandó feladatok előtt. A Batch szolgáltatás az Ön által megadott jellemzők szerint fogja kezelni az autopool élettartamát. A legtöbb esetben ezek a készletek a feladatok befejezését követően automatikusan törlésre is vannak beállítva.
 
 ## <a name="security-with-certificates"></a>Biztonság tanúsítványokkal
 

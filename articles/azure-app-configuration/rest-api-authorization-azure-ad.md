@@ -6,23 +6,23 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: bebab7c06062726f7b5c7868f984cadda3b4c98e
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 89c51e69a4274affcecb4d967deb96dcebcfd70f
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424182"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95253370"
 ---
 # <a name="azure-active-directory-authorization---rest-api-reference"></a>Azure Active Directory Authorization-REST API referenciája
 
-Ha Azure Active Directory (Azure AD-) hitelesítést használ, az engedélyezést az Azure szerepköralapú Access Control (RBAC) kezeli. Az Azure RBAC használatához a felhasználóknak hozzá kell rendelniük a szerepköröket az erőforrásokhoz való hozzáférés biztosítása érdekében. Minden szerepkör olyan műveleteket tartalmaz, amelyeket a szerepkörhöz rendelt felhasználók el tudnak végezni.
+Ha Azure Active Directory (Azure AD) hitelesítést használ, az engedélyezést szerepköralapú hozzáférés-vezérléssel (RBAC) kezeli a rendszer. A RBAC használatához a felhasználóknak hozzá kell rendelniük a szerepköröket az erőforrásokhoz való hozzáférés biztosítása érdekében. Minden szerepkör olyan műveleteket tartalmaz, amelyeket a szerepkörhöz rendelt felhasználók képesek végrehajtani.
 
 ## <a name="roles"></a>Szerepkörök
 
-A következő szerepkörök olyan beépített szerepkörök, amelyek alapértelmezés szerint az Azure-előfizetésekben érhetők el:
+Alapértelmezés szerint az alábbi szerepkörök érhetők el az Azure-előfizetésekben:
 
-- **Azure-alkalmazás konfigurációs adatának tulajdonosa** : Ez a szerepkör teljes hozzáférést biztosít az összes művelethez.
-- **Azure-alkalmazás konfigurációs Adatolvasója** : Ez a szerepkör lehetővé teszi az olvasási műveleteket.
+- **Azure-alkalmazás konfigurációs adatának tulajdonosa**: Ez a szerepkör teljes hozzáférést biztosít az összes művelethez.
+- **Azure-alkalmazás konfigurációs Adatolvasója**: Ez a szerepkör lehetővé teszi az olvasási műveleteket.
 
 ## <a name="actions"></a>Műveletek
 
@@ -30,9 +30,9 @@ A szerepkörök tartalmazzák az adott szerepkörhöz rendelt felhasználók ál
 
 - `Microsoft.AppConfiguration/configurationStores/keyValues/read`: Ez a művelet lehetővé teszi az alkalmazás-konfigurációs kulcs-érték erőforrások, például a/KV és a/labels. olvasási hozzáférését
 - `Microsoft.AppConfiguration/configurationStores/keyValues/write`: Ez a művelet lehetővé teszi az írási hozzáférést az alkalmazás konfigurációs kulcs-érték erőforrásaihoz.
-- `Microsoft.AppConfiguration/configurationStores/keyValues/delete`: Ez a művelet lehetővé teszi az alkalmazások konfigurációs kulcs-érték erőforrásainak törlését. Megjegyzés: az erőforrás törlése visszaadja a törölt kulcs-értéket.
+- `Microsoft.AppConfiguration/configurationStores/keyValues/delete`: Ez a művelet lehetővé teszi az alkalmazások konfigurációs kulcs-érték erőforrásainak törlését. Vegye figyelembe, hogy egy erőforrás törlése visszaadja a törölt kulcs-értéket.
 
-## <a name="errors"></a>Hibák
+## <a name="error"></a>Hiba
 
 ```http
 HTTP/1.1 403 Forbidden
@@ -43,4 +43,4 @@ HTTP/1.1 403 Forbidden
 
 ## <a name="managing-role-assignments"></a>Szerepkör-hozzárendelések kezelése
 
-A szerepkör-hozzárendelések kezelése az [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) eljárásainak használatával történik, amelyek az összes Azure-szolgáltatásban standard szintűek. Ez az Azure CLI-vel, a PowerShell-lel, a Azure Portalsal és egyebekkel is lehetséges. A szerepkör-hozzárendelések létrehozásáról az [itt](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)található hivatalos dokumentációban olvashat.
+A szerepkör-hozzárendeléseket az összes Azure-szolgáltatásban szabványos [RBAC eljárások](https://docs.microsoft.com/azure/role-based-access-control/overview) segítségével kezelheti. Ezt az Azure CLI, a PowerShell és a Azure Portal használatával teheti meg. További információ: [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).

@@ -3,12 +3,12 @@ title: Ajánlott eljárások
 description: Ismerje meg az ajánlott eljárásokat és hasznos tippeket a Azure Batch-megoldások fejlesztéséhez.
 ms.date: 11/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: a799aa7de19b9d5b0b8e085252cb172efebd05dc
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 6aaed76ad398b5278850dd66ce1da6d5bd33807f
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94916865"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95254663"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch ajánlott eljárások
 
@@ -38,7 +38,7 @@ A [készletek](nodes-and-pools.md#pools) a Batch szolgáltatásban a feladatok v
 
 ### <a name="pool-lifetime-and-billing"></a>Készlet élettartama és számlázása
 
-A készlet élettartama eltérő lehet a készlet-konfigurációra alkalmazott foglalási és beállítási módtól függően. A készletek tetszőleges időtartammal rendelkezhetnek, és a készletben lévő számítási csomópontok száma bármikor megadható. Az Ön felelőssége, hogy a készletben lévő számítási csomópontokat explicit módon, vagy a szolgáltatás által biztosított szolgáltatások (az autoscale vagy az autopool) segítségével kezelje.
+A készlet élettartama eltérő lehet a készlet-konfigurációra alkalmazott foglalási és beállítási módtól függően. A készletek tetszőleges időtartammal rendelkezhetnek, és a készletben lévő számítási csomópontok száma bármikor megadható. Az Ön felelőssége, hogy a készletben lévő számítási csomópontokat explicit módon, vagy a szolgáltatás által biztosított szolgáltatások (az[autoscale](nodes-and-pools.md#automatic-scaling-policy) vagy az [autopool](nodes-and-pools.md#autopools)) segítségével kezelje.
 
 - **A készletek frissen tartása.**
     Méretezze át a készleteket néhány havonta nulla értékre, hogy meggyőződjön arról, hogy a [csomópont-ügynök legújabb frissítései és](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md)hibajavításai megtalálhatók. A készlet nem kapja meg a csomópont-ügynök frissítéseit, kivéve, ha újból létrehozták, vagy 0 számítási csomópontra méretezi át őket. A készlet újbóli létrehozása vagy átméretezése előtt javasoljuk, hogy [a csomópontok szakaszban](#nodes) ismertetett módon letöltse a csomóponti ügynökök naplóit a hibakereséshez.
@@ -93,7 +93,7 @@ A [feladatok](jobs-and-tasks.md#tasks) olyan egyedi Munkaegységek, amelyek fela
 
 ### <a name="save-task-data"></a>Tevékenységadatok mentése
 
-A számítási csomópontok természetüknél fogva elmúlóak. A Batch számos funkciója van, például az autopool és az autoscale, amelyek megkönnyítik a csomópontok eltűnnek. Ha a csomópontok elhagyják a készletet (az átméretezés vagy a készlet törlése miatt), akkor a csomópontokon lévő összes fájl is törlődik. Emiatt a tevékenységnek át kell helyeznie a kimenetét a-on futó csomópontból, és egy tartós tárolóba kell helyeznie, mielőtt befejeződik. Hasonlóképpen, ha egy feladat meghibásodik, akkor át kell helyeznie a naplókat, amelyek szükségesek a tartós tár hibáinak diagnosztizálásához.
+A számítási csomópontok természetüknél fogva elmúlóak. A Batch számos funkciója van, például az [autopool](nodes-and-pools.md#autopools) és az [autoscale](nodes-and-pools.md#automatic-scaling-policy) , amely megkönnyíti a csomópontok eltűnését. Ha a csomópontok egy készletet hagynak (átméretezés vagy készlet törlése miatt), akkor a csomópontokon lévő összes fájl is törlődik. Emiatt a tevékenységnek át kell helyeznie a kimenetét a-on futó csomópontból, és egy tartós tárolóba kell helyeznie, mielőtt befejeződik. Hasonlóképpen, ha egy feladat meghibásodik, akkor át kell helyeznie a naplókat, amelyek szükségesek a tartós tár hibáinak diagnosztizálásához.
 
 A Batch integrált támogatást nyújt az Azure Storage-hoz az adatok [OutputFiles](batch-task-output-files.md)-n keresztüli feltöltéséhez, valamint számos megosztott fájlrendszerhez, vagy a feladatokban a feltöltéshez is.
 

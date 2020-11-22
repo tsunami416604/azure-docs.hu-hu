@@ -4,12 +4,12 @@ description: A Batch támogatja az Azure AD-t a Batch szolgáltatásban történ
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 685b84f1e628ea67689d3de8bf64c9641edba6fc
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 784e92eaa2cd672d511177066befcfd7effc7ca4
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920508"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95252640"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch szolgáltatási megoldások hitelesítése Active Directory
 
@@ -144,7 +144,7 @@ A következő Azure RBAC-műveletekhez egyéni szerepkörrel adhat engedélyeket
 - Microsoft.BatCH/batchAccounts/Read (bármilyen olvasási művelethez)
 - Microsoft.BatCH/batchAccounts/Listkeys műveletének beolvasása/Action (bármilyen művelethez)
 
-Az egyéni szerepkörök az Azure AD által hitelesített felhasználókra vonatkoznak, nem a Batch-fiók hitelesítő adataival (megosztott kulcs). Vegye figyelembe, hogy a Batch-fiók hitelesítő adatai teljes hozzáférést biztosítanak a Batch-fiókhoz. Azt is vegye figyelembe, hogy az autopoolt használó feladatok készlet szintű engedélyeket igényelnek.
+Az egyéni szerepkörök az Azure AD által hitelesített felhasználókra vonatkoznak, nem a Batch-fiók hitelesítő adataival (megosztott kulcs). Vegye figyelembe, hogy a Batch-fiók hitelesítő adatai teljes hozzáférést biztosítanak a Batch-fiókhoz. Azt is vegye figyelembe, hogy az [autopoolt](nodes-and-pools.md#autopools) használó feladatok készlet szintű engedélyeket igényelnek.
 
 > [!NOTE]
 > Bizonyos szerepkör-hozzárendeléseket meg kell adni a művelet mezőben, míg másokat meg kell adni a DataAction mezőben. További információ: [Azure erőforrás-szolgáltatói műveletek](../role-based-access-control/resource-provider-operations.md#microsoftbatch).

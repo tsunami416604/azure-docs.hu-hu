@@ -9,22 +9,22 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: overview
-ms.openlocfilehash: 55555d81eb531ae5a4d946fa3f661796b3294897
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 6a7301fd878eb65e4c1dd540275611bcf9348afc
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94365499"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95241743"
 ---
 # <a name="what-is-custom-translator"></a>Mi a Custom Translator?
 
-Az [Egyéni Translator](https://portal.customtranslator.azure.ai) a Microsoft Translator Service egyik funkciója, amely lehetővé teszi a fordító vállalatok, az alkalmazások fejlesztői és a nyelvi szolgáltatók számára a testreszabott neurális gépi fordítási (NMT-) rendszerek készítését. A testreszabott fordítási rendszerek zökkenőmentesen integrálva vannak a meglévő alkalmazásokkal, munkafolyamatokkal és webhelyekkel. A [Custom Translator](https://portal.customtranslator.azure.ai/) hasonló funkciókat kínál a [Microsoft Translator hub](https://hub.microsofttranslator.com/) számára a statisztikai gépi fordításhoz (SMT), de kizárólag neurális gépi fordítási (NMT) rendszerekhez.
+Az [Egyéni Translator](https://portal.customtranslator.azure.ai) a Microsoft Translator Service egyik funkciója, amely lehetővé teszi a fordító vállalatok, az alkalmazások fejlesztői és a nyelvi szolgáltatók számára a testreszabott neurális gépi fordítási (NMT-) rendszerek készítését. A testreszabott fordítási rendszerek zökkenőmentesen integrálva vannak a meglévő alkalmazásokkal, munkafolyamatokkal és webhelyekkel.
 
 Az [Egyéni fordítóval](https://portal.customtranslator.azure.ai) létrehozott fordítási rendszerek ugyanazon a felhőalapú, [biztonságos](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality), nagy teljesítményű, rugalmasan MÉRETEZHETŐ Microsoft Translator [text API v3](../reference/v3-0-translate.md?tabs=curl)-as verzión keresztül érhetők el, amely naponta több milliárd fordítást biztosít.
 
 Az egyéni Translator több mint három tucat nyelvet támogat, és közvetlenül a NMT elérhető nyelvekhez nyújt térképeket. A teljes listát lásd:  [Microsoft Translator languages](../language-support.md#customization).
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 Az egyéni Translator különböző funkciókat biztosít az egyéni fordítási rendszerek létrehozásához, majd ezt követően azt is elérheti.
 
@@ -60,7 +60,7 @@ A tartalmak fordítására szolgáló egyéni modell használatának díja a fel
 
 Az egyéni rendszerek zökkenőmentesen érhetők el és integrálhatók bármilyen termék-vagy üzleti munkafolyamatba, illetve bármely eszközön a Microsoft Translator Text API a szabványos REST-technológián keresztül.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Olvassa át a [díjszabási részleteket](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/).
 

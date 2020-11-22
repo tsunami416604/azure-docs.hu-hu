@@ -7,33 +7,38 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/06/2019
+ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dbdd5153186ee47e37856637eac16d6d450cc5a
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 5f6c5985c16875e263f2494f56636abb4d4e980d
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695180"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95237255"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Az Azure AD Connect felhőalapú jogosultságkiosztás előfeltételei
 Ez a cikk útmutatást nyújt a Azure Active Directory (Azure AD) és a felhőalapú kiépítés a személyazonossági megoldáshoz való kiválasztásához és használatához.
 
-
-
 ## <a name="cloud-provisioning-agent-requirements"></a>A felhőalapú kiépítési ügynökre vonatkozó követelmények
 Azure AD Connect felhőalapú kiépítés használatához a következőkre lesz szüksége:
-    
+
+- Tartományi rendszergazda vagy vállalati rendszergazdai hitelesítő adatok a Azure AD Connect Cloud Sync gMSA (csoportosan felügyelt szolgáltatásfiók) létrehozásához az ügynök szolgáltatás futtatásához. 
 - Egy hibrid identitás-rendszergazdai fiók az Azure AD-bérlőhöz, amely nem vendég felhasználó.
 - Helyszíni kiszolgáló a kiépítési ügynökhöz Windows 2012 R2 vagy újabb rendszerrel.  A kiszolgálónak a [Active Directory felügyeleti rétegek modellje](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)alapján 0. rétegű kiszolgálónak kell lennie.
 - Helyszíni tűzfal-konfigurációk.
 
->[!NOTE]
->A kiépítési ügynök jelenleg csak angol nyelvű kiszolgálókon telepíthető. Egy angol nyelvi csomag nem angol nyelvű kiszolgálón való telepítése nem érvényes Áthidaló megoldás, ezért az ügynök nem lesz telepítve. 
+## <a name="group-managed-service-accounts"></a>Csoportosan felügyelt szolgáltatásfiókok
+A csoportosan felügyelt szolgáltatásfiók egy felügyelt tartományi fiók, amely automatikus jelszavas kezelést, egyszerűsített egyszerű szolgáltatásnév (SPN) felügyeletet, a felügyelet más rendszergazdák számára való delegálását, valamint a funkció több kiszolgálón való kibővítését is lehetővé teszi.  Azure AD Connect a Cloud Sync támogatja, és gMSA használ az ügynök futtatásához.  A fiók létrehozásához a rendszer kérni fogja a rendszergazdai hitelesítő adatok megadását a telepítés során.  A fiók a következőképpen fog megjelenni: (domain\provAgentgMSA $).  További információ a gMSA: [csoportosan felügyelt szolgáltatásfiókok](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) 
 
-A dokumentum további részében részletes útmutatót talál az előfeltételekhez.
+### <a name="prerequisites-for-gmsa"></a>A gMSA előfeltételei:
+1.  A gMSA tartomány erdő Active Directory sémáját frissíteni kell a Windows Server 2012-re.
+2.  [POWERSHELL RSAT-modulok](https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools) egy tartományvezérlőn
+3.  A tartomány legalább egy tartományvezérlőjén a Windows Server 2012 operációs rendszernek kell futnia.
+4.  Egy tartományhoz csatlakoztatott kiszolgáló, amelyen az ügynök telepítve van, Windows Server 2012 vagy újabb rendszernek kell lennie.
+
+A meglévő ügynökök gMSA-fiók használatára való frissítésének lépései a [csoportosan felügyelt szolgáltatásfiókok](how-to-install.md#group-managed-service-accounts)című részben olvashatók.
 
 ### <a name="in-the-azure-active-directory-admin-center"></a>A Azure Active Directory felügyeleti központban
 
@@ -57,7 +62,9 @@ A [IdFix eszköz](/office365/enterprise/prepare-directory-attributes-for-synch-w
         | --- | --- |
         | **80** | Letölti a visszavont tanúsítványok listáját (CRL) a TLS/SSL-tanúsítvány ellenőrzése közben.  |
         | **443** | A szolgáltatással folytatott összes kimenő kommunikációt kezeli. |
+        |**8082**|A telepítéshez szükséges, és ha be szeretné állítani az adminisztrációs API-t.  Ez a port eltávolítható az ügynök telepítése után, és ha nem tervezi az API használatát.   |
         | **8080** (nem kötelező) | Az ügynökök 10 percenként jelentik az állapotukat az 8080-as porton keresztül, ha a 443-es port nem érhető el. Ez az állapot az Azure AD-portálon jelenik meg. |
+   
      
    - Ha a tűzfal a kezdeményező felhasználók alapján kényszeríti a szabályokat, nyissa meg ezeket a portokat a hálózati szolgáltatásként futtató Windows-szolgáltatások forgalmára.
    - Ha a tűzfal vagy proxy lehetővé teszi a biztonságos utótagok megadását, vegyen fel kapcsolatokat a \* . msappproxy.net és a \* . servicebus.Windows.net. Ha nem, engedélyezze a hozzáférést az [Azure Datacenter IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653), amelyek hetente frissülnek.
@@ -66,6 +73,8 @@ A [IdFix eszköz](/office365/enterprise/prepare-directory-attributes-for-synch-w
 
 >[!NOTE]
 > A felhőalapú kiépítési ügynök telepítése a Windows Server Core rendszerre nem támogatott.
+
+
 
 
 ### <a name="additional-requirements"></a>További követelmények
@@ -91,24 +100,6 @@ A TLS 1,2 engedélyezéséhez kövesse az alábbi lépéseket.
 
 1. Indítsa újra a kiszolgálót.
 
-## <a name="known-limitations"></a>Ismert korlátozások
-A következő ismert korlátozások érvényesek:
-
-### <a name="delta-synchronization"></a>Különbözeti szinkronizálás
-
-- A csoport hatókör-szűrése a különbözeti szinkronizáláshoz nem támogatja a 1500-nál több tagot
-- Ha egy csoport-hatóköri szűrő részeként használt csoportot töröl, a csoportba tartozó felhasználók nem lesznek törölve. 
-- Ha átnevezi a hatókörben lévő szervezeti egységet vagy csoportot, a különbözeti szinkronizálás nem fogja eltávolítani a felhasználókat
-
-### <a name="provisioning-logs"></a>Üzembehelyezési naplók
-- A kiépítési naplók nem különböztetik meg egyértelműen a létrehozási és frissítési műveletek közötti különbséget.  A létrehozáshoz egy frissítéshez és egy frissítési művelethez is megjelenhet egy létrehozási művelet.
-
-### <a name="cross-domain-references"></a>Tartományok közötti hivatkozások
-- Ha egy másik tartományban tag-hivatkozásokkal rendelkező felhasználók vannak, a rendszer nem szinkronizálja a felhasználó jelenlegi tartomány-szinkronizálásának részeként. 
-- (Példa: a szinkronizálni kívánt felhasználó jászola a B tartományban van, és a felhasználó az A tartományba esik. Ha az A és a B tartományt is szinkronizálja, a rendszer szinkronizálja őket, de a felhasználó-kezelő nem fogja végrehajtani a feladatokat.
-
-### <a name="group-re-naming-or-ou-re-naming"></a>Csoportos Átnevezés vagy szervezeti egység átnevezése
-- Ha olyan csoportot vagy szervezeti egységet nevez át az AD-ben, amely egy adott konfiguráció hatókörében van, akkor a felhőalapú kiépítési feladatok nem tudják felismerni a nevet az AD-ben. A feladatokra nem kerül a karanténba helyezés, és kifogástalan marad
 
 
 

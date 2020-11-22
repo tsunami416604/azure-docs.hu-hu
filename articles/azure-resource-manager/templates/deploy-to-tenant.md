@@ -2,13 +2,13 @@
 title: Erőforrások üzembe helyezése a bérlőn
 description: Ismerteti, hogyan lehet erőforrásokat telepíteni a bérlői hatókörben egy Azure Resource Manager sablonban.
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: 854ccbd43509b6c0b5a04357844c78c32b7e6396
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/20/2020
+ms.openlocfilehash: 65a5e90616f8883b338d22fa31eee6932452b5fd
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92668694"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95242661"
 ---
 # <a name="tenant-deployments-with-arm-templates"></a>Bérlői üzemelő példányok ARM-sablonokkal
 
@@ -36,11 +36,19 @@ Felügyeleti csoportok létrehozásához használja a következőt:
 
 * [managementGroups](/azure/templates/microsoft.management/managementgroups)
 
+Az előfizetések létrehozásához használja a következőt:
+
+* [aliasok](/azure/templates/microsoft.subscription/aliases)
+
 A költségek kezeléséhez használja a következőt:
 
 * [billingProfiles](/azure/templates/microsoft.billing/billingaccounts/billingprofiles)
 * [utasításokat](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/instructions)
 * [invoiceSections](/azure/templates/microsoft.billing/billingaccounts/billingprofiles/invoicesections)
+
+A portál konfigurálásához használja a következőt:
+
+* [tenantConfigurations](/azure/templates/microsoft.portal/tenantconfigurations)
 
 ## <a name="schema"></a>Séma
 
@@ -123,12 +131,12 @@ További információt az üzembe helyezési parancsokról és az ARM-sablonok �
 
 ## <a name="deployment-scopes"></a>Központi telepítési hatókörök
 
-Felügyeleti csoportba való központi telepítés esetén az erőforrások a következőre helyezhetők:
+Bérlőre való központi telepítés esetén a következő erőforrások helyezhetők üzembe:
 
 * a bérlő
 * a bérlőn belüli felügyeleti csoportok
 * előfizetések
-* erőforráscsoportok (két beágyazott üzemelő példányon keresztül)
+* erőforráscsoportok
 * a [bővítmény erőforrásai](scope-extension-resources.md) alkalmazhatók az erőforrásokra
 
 A sablont telepítő felhasználónak hozzáféréssel kell rendelkeznie a megadott hatókörhöz.
@@ -155,6 +163,14 @@ A bérlőn belüli előfizetés célzásához használjon egy beágyazott telep�
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-subscription.json" highlight="10,18":::
 
+### <a name="scope-to-resource-group"></a>Hatókör az erőforráscsoporthoz
+
+Az erőforráscsoportok a bérlőn belül is megadhatók. A sablont telepítő felhasználónak hozzáféréssel kell rendelkeznie a megadott hatókörhöz.
+
+Egy erőforráscsoport a bérlőn belüli megcélzásához használjon egy beágyazott telepítést. Adja meg a `subscriptionId` és a `resourceGroup` tulajdonságokat. Ne állítson be helyet a beágyazott központi telepítéshez, mert az az erőforráscsoport helyén van üzembe helyezve.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/tenant-to-rg.json" highlight="9,10,18":::
+
 ## <a name="deployment-location-and-name"></a>Központi telepítés helye és neve
 
 Bérlői szintű központi telepítések esetén meg kell adnia egy helyet a központi telepítéshez. A központi telepítés helye nem azonos a telepített erőforrások helyétől. A központi telepítés helye határozza meg, hogy hol tárolja a telepítési adatforrásokat.
@@ -165,71 +181,15 @@ Az egyes központi telepítési nevek esetében a hely nem módosítható. A kö
 
 ## <a name="create-management-group"></a>Felügyeleti csoport létrehozása
 
-A [következő sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-deployments/new-mg) létrehoz egy felügyeleti csoportot.
+A következő sablon létrehoz egy felügyeleti csoportot.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "mgName": {
-      "type": "string",
-      "defaultValue": "[concat('mg-', uniqueString(newGuid()))]"
-    }
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Management/managementGroups",
-      "apiVersion": "2019-11-01",
-      "name": "[parameters('mgName')]",
-      "properties": {
-      }
-    }
-  ]
-}
-```
+:::code language="json" source="~/quickstart-templates/tenant-deployments/new-mg/azuredeploy.json":::
 
 ## <a name="assign-role"></a>Szerepkör hozzárendelése
 
-A [következő sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-deployments/tenant-role-assignment) egy szerepkört rendel a bérlői hatókörhöz.
+A következő sablon egy szerepkört rendel a bérlői hatókörhöz.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "principalId": {
-      "type": "string",
-      "metadata": {
-        "description": "principalId if the user that will be given contributor access to the resourceGroup"
-      }
-    },
-    "roleDefinitionId": {
-      "type": "string",
-      "defaultValue": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
-      "metadata": {
-        "description": "roleDefinition for the assignment - default is owner"
-      }
-    }
-  },
-  "variables": {
-    // This creates an idempotent guid for the role assignment
-    "roleAssignmentName": "[guid('/', parameters('principalId'), parameters('roleDefinitionId'))]"
-  },
-  "resources": [
-    {
-      "name": "[variables('roleAssignmentName')]",
-      "type": "Microsoft.Authorization/roleAssignments",
-      "apiVersion": "2019-04-01-preview",
-      "properties": {
-        "roleDefinitionId": "[tenantResourceId('Microsoft.Authorization/roleDefinitions', parameters('roleDefinitionId'))]",
-        "principalId": "[parameters('principalId')]",
-        "scope": "/"
-      }
-    }
-  ]
-}
-```
+:::code language="json" source="~/quickstart-templates/tenant-deployments/tenant-role-assignment/azuredeploy.json":::
 
 ## <a name="next-steps"></a>Következő lépések
 

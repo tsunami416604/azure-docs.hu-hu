@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: ce438ad0725aff677f897a635a0cd32d92bbbdbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb828eeb408a170b93ffc73b58f14b3f7a883cc4
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91265469"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95247234"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>Jogcímek konfigurálása az alkalmazásokhoz Azure Active Directory
 
@@ -74,7 +74,7 @@ A Azure Active Directory konfigurálásának két lépése van Active Directory 
 
 ## <a name="add-group-claims-to-tokens-for-saml-applications-using-sso-configuration"></a>Jogcímek hozzáadása az SAML-alkalmazások tokenekhez SSO-konfiguráció használatával
 
-Egy katalógus vagy nem katalógus SAML-alkalmazás csoportos jogcímeinek konfigurálásához nyissa meg a **vállalati alkalmazásokat**, kattintson a listában szereplő alkalmazásra, válassza az **egyszeri bejelentkezés konfigurálása**lehetőséget, majd válassza a **felhasználói attribútumok & jogcímek**lehetőséget.
+Egy katalógus vagy nem katalógus SAML-alkalmazás csoportos jogcímeinek konfigurálásához nyissa meg a **vállalati alkalmazásokat**, kattintson a listában szereplő alkalmazásra, válassza az **egyszeri bejelentkezés konfigurálása** lehetőséget, majd válassza a **felhasználói attribútumok & jogcímek** lehetőséget.
 
 Kattintson a **Csoport hozzáadása** elemre.  
 
@@ -144,10 +144,11 @@ Az érvényes értékek a következők:
 |----------|-------------|
 | **Összes** | Biztonsági csoportokat, terjesztési listát és szerepköröket bocsát ki |
 | **"SecurityGroup"** | Biztonsági csoportokat bocsát ki, a felhasználó tagja a groups jogcímnek |
-| **"DirectoryRole** | Ha a felhasználóhoz címtárbeli szerepkörök vannak hozzárendelve, a rendszer "wids" jogcímként bocsátja ki őket (a csoportok jogcíme nem lesz kibocsátva) |
-| **"Alkalmazáscsoport** | Csak azokat a csoportokat bocsátja ki, amelyek kifejezetten az alkalmazáshoz vannak rendelve, és a felhasználó tagja |
+| **"DirectoryRole"** | Ha a felhasználóhoz címtárbeli szerepkörök vannak hozzárendelve, a rendszer "wids" jogcímként bocsátja ki őket (a csoportok jogcíme nem lesz kibocsátva) |
+| **Alkalmazáscsoport** | Csak azokat a csoportokat bocsátja ki, amelyek kifejezetten az alkalmazáshoz vannak rendelve, és a felhasználó tagja |
+| **NEz egy** | A rendszer nem ad vissza csoportokat. (A nem sensetive, így nem is működik, és közvetlenül az alkalmazás jegyzékfájljában is megadható.) |
 
-   Példa:
+   Például:
 
    ```json
    "groupMembershipClaims": "SecurityGroup"

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: b-juche
-ms.openlocfilehash: 95c1202fb56e882554d40926e9d5ecec7be49086
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a14656bc1abc42fdc3e948fdae1ca07469681d21
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90708808"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95249852"
 ---
 # <a name="display-health-status-of-replication-relationship"></a>Replikációs kapcsolat állapotának megjelenítése 
 
@@ -58,5 +58,6 @@ Megtekintheti a replikálás állapotát a forrás köteten vagy a célként meg
 * [Régiók közötti replikáció](cross-region-replication-introduction.md)
 * [Vészhelyreállítás kezelése](cross-region-replication-manage-disaster-recovery.md)
 * [Kötet replikációs metrikái](azure-netapp-files-metrics.md#replication)
+* [Kötetek replikálásának vagy köteteinek törlése](cross-region-replication-delete.md)
 * [Régiók közötti replikáció hibaelhárítása](troubleshoot-cross-region-replication.md)
 

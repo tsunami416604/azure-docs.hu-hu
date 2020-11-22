@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 95cb4aa5827190abf125669f2423c808cf8c92a5
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 9c4410cb2b9550bc111da96204ada15313867fb1
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368933"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95238088"
 ---
 # <a name="customize-your-text-translations"></a>A szöveges fordítások testreszabása
 
@@ -39,29 +39,7 @@ A megfelelő típusú és mennyiségű betanítási adat miatt nem ritka, hogy 5
 
 Az elérhető adatok alapján történő Testreszabás különböző szintjeiről további részleteket az [Egyéni Translator felhasználói útmutatójában](./custom-translator/overview.md)találhat.
 
-
-## <a name="microsoft-translator-hub"></a>Microsoft Translator hub
-
-> [!NOTE]
-> Az örökölt Microsoft Translator hub 2019. május 17-én megszűnik. [Tekintse meg a fontos áttelepítési információkat és dátumokat](https://www.microsoft.com/translator/business/hub/).  
-
-## <a name="custom-translator-versus-hub"></a>Egyéni fordító és hub
-
-| Funkció | Hub | Custom Translator |
-| ------- | :-: | :---------------: |
-|Testreszabási funkció állapota    | Általános elérhetőség    | Általános elérhetőség |
-| Szöveges API-verzió    | Csak v2    | Csak v3 |
-| SMT testreszabása    | Igen    | Nem |
-| NMT testreszabása    | Nem    | Igen |
-| Új Unified Speech Services testreszabása    | Nem    | Igen |
-| [Nincs nyomkövetés](https://www.aka.ms/notrace) | Igen    | Igen |
-
-## <a name="collaborative-translations-framework"></a>Együttműködésen alapuló fordítási keretrendszer
-
-> [!NOTE]
-> A 2018. február 1-től a AddTranslation () és a AddTranslationArray () már nem használható a Translator v 2.0-s verziójával. Ezek a metódusok sikertelenek lesznek, és semmi sem íródik. A Translator v 3.0 nem támogatja ezeket a metódusokat.
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Testreszabott nyelvi rendszer beállítása egyéni Translator használatával](./custom-translator/overview.md)

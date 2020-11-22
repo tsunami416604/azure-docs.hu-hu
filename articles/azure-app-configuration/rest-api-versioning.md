@@ -6,28 +6,26 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 90d131cdc7c496853f2520951c95b9903d69f8fb
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 3a7f50b26d59501d2be3a0147fe89919819b50e6
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424264"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95246367"
 ---
 # <a name="versioning"></a>Verziókezelés
 
-API-Version: 1,0
-
-Minden ügyfél-kérelemnek explicit API-verziót kell megadnia lekérdezési karakterlánc paraméterként. Például: `https://{myconfig}.azconfig.io/kv?api-version=1.0`
+Minden ügyfél-kérelemnek explicit API-verziót kell megadnia lekérdezési karakterlánc paraméterként. Például: `https://{myconfig}.azconfig.io/kv?api-version=1.0`.
 
 `api-version` SemVer (főverzió. alverzió) formátumban van kifejezve. A tartomány vagy a verzió egyeztetése nem támogatott.
 
-## <a name="error-response"></a>Hiba válasza
+Ez a cikk a 1,0-es API-verzióra vonatkozik.
 
 A következő összefoglalja a kiszolgáló által visszaadott lehetséges hibaüzenetek összegzését, ha a kért API-verzió nem egyezik.
 
-### <a name="api-version-unspecified"></a>Nem meghatározott API-verzió
+## <a name="api-version-unspecified"></a>Nem meghatározott API-verzió
 
-Akkor következik be, amikor az ügyfél egy API-verzió megadása nélkül kezdeményezi a kérést.
+Ez a hiba akkor fordul elő, amikor egy ügyfél egy API-verzió megadása nélkül kezdeményezi a kérést.
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -41,9 +39,9 @@ Content-Type: application/problem+json; charset=utf-8
 }
 ```
 
-### <a name="unsupported-api-version"></a>Nem támogatott API-verzió
+## <a name="unsupported-api-version"></a>Nem támogatott API-verzió
 
-Akkor következik be, amikor az ügyfél által kért API-verzió nem felel meg a kiszolgáló által támogatott API-verzióknak.
+Ez a hiba akkor fordul elő, ha az ügyfél által kért API-verzió nem felel meg a kiszolgáló által támogatott API-verzióknak.
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -57,9 +55,9 @@ Content-Type: application/problem+json; charset=utf-8
 }
 ```
 
-### <a name="invalid-api-version"></a>Érvénytelen API-verzió
+## <a name="invalid-api-version"></a>Érvénytelen API-verzió
 
-Akkor következik be, amikor az ügyfél egy API-verzióval kezdeményezi a kérést, de az érték hibás, vagy a kiszolgáló nem tudja értelmezni.
+Ez a hiba akkor fordul elő, amikor az ügyfél egy API-verzióval rendelkező kérelmet küld, de az érték helytelen formátumú, vagy a kiszolgáló nem tudja elemezni.
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -73,9 +71,9 @@ Content-Type: application/problem+json; charset=utf-8
 }
 ```
 
-### <a name="ambiguous-api-version"></a>Nem egyértelmű API-verzió
+## <a name="ambiguous-api-version"></a>Nem egyértelmű API-verzió
 
-Akkor következik be, amikor egy ügyfél olyan API-verziót kér, amely nem egyértelmű a kiszolgálón. Például több különböző érték.
+Ez a hiba akkor fordul elő, amikor az ügyfél olyan API-verziót kér, amely nem egyértelmű a kiszolgálón (például több különböző érték).
 
 ```http
 HTTP/1.1 400 Bad Request

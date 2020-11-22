@@ -8,12 +8,12 @@ ms.date: 12/02/2019
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 94cf1f34db590abeb084c5e95367781e50c85efc
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: fa7292d423d8b716ffd75a1a20431fb5a79bbf96
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94650097"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95237340"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>Felhőalapú kiépítés – hibaelhárítás
 
@@ -124,40 +124,17 @@ A probléma megoldásához módosítsa a PowerShell végrehajtási szabályzatai
 
 ### <a name="log-files"></a>Naplófájlok
 
-Alapértelmezés szerint az ügynök minimális hibaüzeneteket és hívásláncadatokat bocsát ki. Ezeket a nyomkövetési naplókat az AD- *kapcsolat létesítési Agent\Trace* mappájában találja meg C:\ProgramData\Microsoft\Azure.
+Alapértelmezés szerint az ügynök minimális hibaüzeneteket és hívásláncadatokat bocsát ki. Ezeket a nyomkövetési naplókat az AD- **kapcsolat létesítési Agent\Trace** mappájában találja meg C:\ProgramData\Microsoft\Azure.
 
 Az ügynökkel kapcsolatos problémák elhárításához kövesse az alábbi lépéseket.
 
-1. Állítsa le a szolgáltatás Microsoft Azure AD a létesítési **ügynök összekapcsolását**.
-1. Hozza létre az eredeti konfigurációs fájl másolatát: *C:\Program Files\Microsoft Azure ad Connect kiépítési Agent\AADConnectProvisioningAgent.exe.config*.
-1. Cserélje le a meglévő `<system.diagnostics>` szakaszt a következőre, és az összes nyomkövetési üzenet a *ProvAgentTrace. log* fájlra lép.
+1.  Telepítse a AADCloudSyncTools PowerShell-modult az [itt](reference-powershell.md#install-the-aadcloudsynctools-powershell-module)leírtak szerint.
+2. Az `Export-AADCloudSyncToolsLogs` adatok rögzítéséhez használja a PowerShell-parancsmagot.  Az adatgyűjtés finomhangolásához a következő kapcsolók használhatók.
+      - A SkipVerboseTrace csak az aktuális naplókat exportálja a részletes naplók rögzítése nélkül (alapértelmezett = hamis)
+      - TracingDurationMins eltérő rögzítési időtartam megadásához (alapértelmezett = 3 perc)
+      - OutputPath másik kimeneti elérési út megadásához (alapértelmezett = felhasználó dokumentumai)
 
-   ```xml
-     <system.diagnostics>
-         <sources>
-         <source name="AAD Connect Provisioning Agent">
-             <listeners>
-             <add name="console"/>
-             <add name="etw"/>
-             <add name="textWriterListener"/>
-             </listeners>
-         </source>
-         </sources>
-         <sharedListeners>
-         <add name="console" type="System.Diagnostics.ConsoleTraceListener" initializeData="false"/>
-         <add name="etw" type="System.Diagnostics.EventLogTraceListener" initializeData="Azure AD Connect Provisioning Agent">
-             <filter type="System.Diagnostics.EventTypeFilter" initializeData="All"/>
-         </add>
-         <add name="textWriterListener" type="System.Diagnostics.TextWriterTraceListener" initializeData="C:/ProgramData/Microsoft/Azure AD Connect Provisioning Agent/Trace/ProvAgentTrace.log"/>
-         </sharedListeners>
-     </system.diagnostics>
-    
-   ```
-1. Indítsa el a szolgáltatást **Microsoft Azure ad a kiépítési ügynök összekapcsolását**.
-1. A fájl-és hibakeresési problémák kitöltéséhez használja az alábbi parancsot. 
-    ```
-    Get-Content “C:/ProgramData/Microsoft/Azure AD Connect Provisioning Agent/Trace/ProvAgentTrace.log” -Wait
-    ```
+
 ## <a name="object-synchronization-problems"></a>Objektum-szinkronizálási problémák
 
 A következő szakasz az objektumok szinkronizálásával kapcsolatos hibaelhárítással kapcsolatos információkat tartalmaz.
@@ -203,6 +180,22 @@ Az állapot kiválasztásával további információkat tekinthet meg a karanté
   Használja az alábbi kérelmet:
  
   `POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart`
+
+## <a name="repairing-the-the-cloud-sync-service-account"></a>A Cloud Sync Service-fiók javítása
+Ha a Cloud Sync Service-fiókot kell kijavítania, használhatja a t `Repair-AADCloudSyncToolsAccount` .  
+
+
+   1.  Az [itt](reference-powershell.md#install-the-aadcloudsynctools-powershell-module) ismertetett telepítési lépéseket követve kezdje el, majd folytassa a többi lépéssel.
+   2.  Egy rendszergazdai jogosultságokkal rendelkező Windows PowerShell-munkamenetből írja be vagy másolja be a következőt: 
+    ```
+    Connect-AADCloudSyncTools
+    ```  
+   3. Adja meg az Azure AD globális rendszergazdai hitelesítő adatait
+   4. Írja be vagy másolja be a következőt: 
+    ```
+    Repair-AADCloudSyncToolsAccount
+    ```  
+   5. Ha ez befejeződik, azt kell mondanunk, hogy a fiók javítása sikeres volt.
 
 ## <a name="next-steps"></a>Következő lépések 
 

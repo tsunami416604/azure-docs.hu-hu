@@ -1,28 +1,27 @@
 ---
 title: Azure app Configuration REST API – kulcs-érték változatok
-description: A kulcs-érték változatok Azure app Configuration REST API használatával történő használatához kapcsolódó lapok
+description: A kulcs-érték változatokkal való munkavégzésre szolgáló lapok az Azure-alkalmazás konfigurációjának használatával REST API
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 7d1990d6bc524a69de2b22b4f7c5aeec88c3ce9d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 668345da8bb89412f7b1dd36975c5bed6f229580
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424272"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95246384"
 ---
 # <a name="key-value-revisions"></a>Kulcs-érték változatok
 
-API-Version: 1,0
+A *kulcs-érték változat* a kulcs-érték erőforrás korábbi megjelenítését határozza meg. A változatok érvényessége 7 nap után lejár az ingyenes, a standard szintű áruházak esetében pedig 30 nap. A változatok támogatják a `List` műveletet.
 
-A **kulcs-érték változat** a kulcs-érték erőforrás korábbi megjelenítését határozza meg. A változatok érvényessége 7 nap után lejár az ingyenes, a standard szintű áruházak esetében pedig 30 nap. A változatok a következő műveleteket támogatják:
+Az összes művelet esetében ``key`` egy opcionális paraméter. Ha nincs megadva, az azt jelenti, hogy az egyik kulcs.
 
-- Lista
+Az összes művelet esetében ``label`` egy opcionális paraméter. Ha nincs megadva, az azt jelenti, hogy bármilyen címkét tartalmaz.
 
-Az összes művelet esetében ``key`` egy opcionális paraméter. Ha nincs megadva, az azt jelenti, hogy **az egyik** kulcs.
-Az összes művelet esetében ``label`` egy opcionális paraméter. Ha nincs megadva, az azt jelenti, hogy bármilyen címkét **tartalmaz** .
+Ez a cikk a 1,0-es API-verzióra vonatkozik.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -62,7 +61,7 @@ Accept-Ranges: items
 
 ## <a name="pagination"></a>Oldalra tördelés
 
-Ha a visszaadott elemek száma meghaladja a válasz korlátot, a rendszer oldalszámozást jelenít meg. Kövesse a választható ``Link`` Válasz fejlécét, és használja ``rel="next"`` a navigáláshoz.  Azt is megteheti, hogy a tartalom egy következő hivatkozást tartalmaz a ``@nextLink`` tulajdonság formájában.
+Ha a visszaadott elemek száma meghaladja a válasz korlátot, a rendszer oldalszámozást jelenít meg. Kövesse a választható ``Link`` Válasz fejlécét, és használja ``rel="next"`` a navigáláshoz. Azt is megteheti, hogy a tartalom egy következő hivatkozást biztosít a ``@nextLink`` tulajdonság formájában.
 
 ```http
 GET /revisions?api-version={api-version} HTTP/1.1
@@ -88,7 +87,7 @@ Link: <{relative uri}>; rel="next"
 
 ## <a name="list-subset-of-revisions"></a>Változatok részhalmaza
 
-Használja a `Range` kérelem fejlécét. A válasz fejlécet fog tartalmazni `Content-Range` . Ha a kiszolgáló nem tudja kielégíteni a kért tartományt, a rendszer válaszol a HTTP protokollal `416` (RangeNotSatisfiable)
+Használja a `Range` kérelem fejlécét. A válasz tartalmaz egy `Content-Range` fejlécet. Ha a kiszolgáló nem tudja kielégíteni a kért tartományt, a a HTTP `416` () protokollal válaszol `RangeNotSatisfiable` .
 
 ```http
 GET /revisions?api-version={api-version} HTTP/1.1
@@ -135,6 +134,8 @@ GET /revisions?key={key}&label={label}&api-version={api-version}
 
 ### <a name="reserved-characters"></a>Fenntartott karakterek
 
+A fenntartott karakterek a következők:
+
 `*`, `\`, `,`
 
 Ha egy foglalt karakter az érték része, akkor azt a használatával kell megmenekülnie `\{Reserved Character}` . A nem fenntartott karaktereket is el lehet menekülni.
@@ -160,19 +161,19 @@ Content-Type: application/problem+json; charset=utf-8
 
 ### <a name="examples"></a>Példák
 
-- Mind
+- Összes
 
     ```http
     GET /revisions
     ```
 
-- Elemek, ahol a kulcsnév **ABC** -val kezdődik
+- Azok az elemek, amelyekben a kulcs neve **ABC**-val kezdődik:
 
     ```http
     GET /revisions?key=abc*&api-version={api-version}
     ```
 
-- Azok az elemek, amelyekben a kulcsnév **ABC** vagy **XYZ** , és a címkék tartalmazzák a **ter** -t
+- **Olyan elemek**, amelyekben a kulcsnév **ABC** vagy **XYZ**, a címkék pedig a következők:
 
     ```http
     GET /revisions?key=abc,xyz&label=*prod*&api-version={api-version}
@@ -186,9 +187,9 @@ Használja az opcionális `$select` lekérdezési karakterlánc paramétert, és
 GET /revisions?$select=value,label,last_modified&api-version={api-version} HTTP/1.1
 ```
 
-## <a name="time-based-access"></a>Time-Based hozzáférés
+## <a name="time-based-access"></a>Időalapú hozzáférés
 
-Az eredmény megjelenítésének beszerzése az elmúlt időpontban. Lásd: [2.1.1](https://tools.ietf.org/html/rfc7089#section-2.1) . szakasz
+Az eredmény megjelenítésének beszerzése az elmúlt időpontban. További információkért lásd: [http-keretrendszer Time-Based erőforrás-állapotokhoz való hozzáféréshez – emlékeztető](https://tools.ietf.org/html/rfc7089#section-2.1), 2.1.1. szakasz.
 
 ```http
 GET /revisions?api-version={api-version} HTTP/1.1

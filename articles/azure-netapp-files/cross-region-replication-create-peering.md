@@ -1,5 +1,5 @@
 ---
-title: Replikációs társítás létrehozása a Azure NetApp Fileshoz | Microsoft Docs
+title: Kötetek replikálásának létrehozása a Azure NetApp Fileshoz | Microsoft Docs
 description: Ismerteti, hogyan lehet kötet-replikációs társítást létrehozni a Azure NetApp Files számára a régiók közötti replikáció beállításához.
 services: azure-netapp-files
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: b-juche
-ms.openlocfilehash: df70f8a37a7223119068afd323583ea6126ca542
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 412724a072bfc03a67bf1005173702f757c6fdf4
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90708827"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95249937"
 ---
-# <a name="create-replication-peering-for-azure-netapp-files"></a>Replikációs társítás létrehozása a Azure NetApp Fileshoz
+# <a name="create-volume-replication-for-azure-netapp-files"></a>Kötet-replikálás létrehozása Azure NetApp Fileshoz
 
 > [!IMPORTANT]
 > A régiók közötti replikációs szolgáltatás jelenleg nyilvános előzetes verzióban érhető el. Be kell küldenie egy várólistára vonatkozó kérelmet a szolgáltatás eléréséhez a [Azure NetApp Files régiók közötti replikációs várólista-küldési lapon](https://aka.ms/anfcrrpreviewsignup). Várjon egy hivatalos visszaigazoló e-mailt a Azure NetApp Files csapattól a régiók közötti replikációs szolgáltatás használata előtt.
@@ -82,7 +82,7 @@ Az NFS protokoll esetében győződjön meg arról, hogy az exportálási házir
 
     ![Kötet replikálásának létrehozása](../media/azure-netapp-files/cross-region-replication-create-volume-replication.png)
 
-9. Kattintson a **felülvizsgálat + létrehozás**elemre, majd kattintson a **Létrehozás** gombra az adatreplikálási kötet létrehozásához.   
+9. Kattintson a **felülvizsgálat + létrehozás** elemre, majd kattintson a **Létrehozás** gombra az adatreplikálási kötet létrehozásához.   
 
     ![Replikáció áttekintése és létrehozása](../media/azure-netapp-files/cross-region-replication-review-create-replication.png)
 
@@ -100,11 +100,11 @@ A replikáció engedélyezéséhez be kell szereznie a replikálási cél kötet
  
 4. A Azure NetApp Filesban nyissa meg a replikációs forrás fiókját és a forrás kapacitása készletet. 
 
-5. Keresse meg a replikálási forrás kötetét, és jelölje ki. Nyissa meg a **replikálás** a Storage szolgáltatás területen, majd kattintson az **Engedélyezés**elemre.
+5. Keresse meg a replikálási forrás kötetét, és jelölje ki. Nyissa meg a **replikálás** a Storage szolgáltatás területen, majd kattintson az **Engedélyezés** elemre.
 
     ![Replikáció engedélyezése](../media/azure-netapp-files/cross-region-replication-authorize.png) 
 
-6. Az engedélyezés mezőben illessze be a 3. lépésben beszerzett cél replikálási kötet erőforrás-AZONOSÍTÓját, majd kattintson **az OK**gombra.
+6. Az engedélyezés mezőben illessze be a 3. lépésben beszerzett cél replikálási kötet erőforrás-AZONOSÍTÓját, majd kattintson **az OK** gombra.
 
 ## <a name="next-steps"></a>Következő lépések  
 
@@ -113,5 +113,6 @@ A replikáció engedélyezéséhez be kell szereznie a replikálási cél kötet
 * [Replikációs kapcsolat állapotának megjelenítése](cross-region-replication-display-health-status.md)
 * [Kötet replikációs metrikái](azure-netapp-files-metrics.md#replication)
 * [Vészhelyreállítás kezelése](cross-region-replication-manage-disaster-recovery.md)
+* [Kötetek replikálásának vagy köteteinek törlése](cross-region-replication-delete.md)
 * [Régiók közötti replikáció – replikálás](troubleshoot-cross-region-replication.md)
 

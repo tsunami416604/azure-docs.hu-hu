@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: 613cf7d9b68fe42c26f2c01cb1fb5dd1da1e1fb5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f67df45b6b663584e848983251031146cdf8df60
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947142"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95247693"
 ---
 # <a name="overview-of-azure-stream-analytics-cluster-preview"></a>Azure Stream Analytics-fürt áttekintése (előzetes verzió)
 
@@ -69,9 +69,9 @@ A Stream Analytics-fürtök díját a kiválasztott SU-kapacitás alapján szám
 
 ### <a name="which-inputs-and-outputs-can-i-privately-connect-to-from-my-stream-analytics-cluster"></a>Mely bemenetek és kimenetek kapcsolódhatnak a saját Stream Analytics-fürthöz?
 
-Stream Analytics támogatja a különböző bemeneti és kimeneti típusokat. Az Azure Private-hivatkozásokat támogató szolgáltatások bármelyike magántulajdonban tud csatlakozni a feladatokhoz. Létrehozhat olyan [magánhálózati végpontokat](private-endpoints.md) a fürtben, amelyek lehetővé teszik a feladatok számára a bemeneti és kimeneti erőforrások elérését.
+Stream Analytics támogatja a különböző bemeneti és kimeneti típusokat. Létrehozhat olyan [magánhálózati végpontokat](private-endpoints.md) a fürtben, amelyek lehetővé teszik a feladatok számára a bemeneti és kimeneti erőforrások elérését. Jelenleg Azure SQL Database, az Azure Storage, a Azure Data Lake Storage Gen2, az Azure Event hub és a Azure Service Bus támogatott szolgáltatások és egyéb típusok hamarosan elérhetők lesznek. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most már áttekintheti Azure Stream Analytics-fürtöt. Ezután létrehozhatja a fürtöt, és futtathatja a Stream Analytics feladatot: 
 

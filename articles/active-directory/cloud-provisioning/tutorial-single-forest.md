@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce5658fb79a893e0aca9d78faf090a886a2ee591
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: ad5147971fc42e65e4621c8a3f0a98e01f2e0339
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651464"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95237296"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>Oktatóanyag: egyetlen erdő integrálása egyetlen Azure AD-Bérlővel
 
@@ -67,7 +67,7 @@ Az oktatóanyagban létrehozott környezetet tesztelésre vagy a Felhőbeli kié
 7. A művelet befejezése után elindul a konfigurációs varázsló.  Jelentkezzen be az Azure AD globális rendszergazdai fiókjával.  Vegye figyelembe, hogy ha az Internet Explorer fokozott biztonsági funkciója engedélyezve van, ez letiltja a bejelentkezést.  Ebben az esetben zárjuk le a telepítést, tiltsa le az IE fokozott biztonságát a Kiszolgálókezelőben, majd kattintson a **HRE-létesítési ügynök varázslóra** a telepítés újraindításához.
 8. A **Active Directory összekapcsolása** képernyőn kattintson a **könyvtár hozzáadása** lehetőségre, majd jelentkezzen be a Active Directory tartományi rendszergazdai fiókjával.  Megjegyzés: a tartományi rendszergazdai fióknak nem kell módosítania a jelszó-módosítási követelményeket. Abban az esetben, ha a jelszó lejár vagy megváltozik, újra kell konfigurálnia az ügynököt az új hitelesítő adatokkal. Ezzel a művelettel a helyszíni címtárat fogja felvenni.  Kattintson a **Tovább** gombra.
 
-   ![A "kapcsolat Active Directory" képernyő képernyőképe.](media/how-to-install/install-3.png)
+   ![A "kapcsolat Active Directory" képernyő képernyőképe.](media/how-to-install/install-3a.png)
 
 9. A **konfiguráció kész** képernyőn kattintson a **Confirm (megerősítés**) gombra.  Ez a művelet regisztrálja és újraindítja az ügynököt.
 

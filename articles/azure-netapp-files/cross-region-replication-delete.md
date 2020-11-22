@@ -1,5 +1,5 @@
 ---
-title: Replikálások törlése Azure NetApp Files régiók közötti replikációhoz | Microsoft Docs
+title: Kötetek replikálásának vagy köteteinek törlése Azure NetApp Files régiók közötti replikációhoz | Microsoft Docs
 description: Útmutató olyan replikációs kapcsolat törléséhez, amely már nem szükséges a forrás és a cél kötetek között.
 services: azure-netapp-files
 documentationcenter: ''
@@ -12,23 +12,41 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 11/18/2020
 ms.author: b-juche
-ms.openlocfilehash: e08b69271ba9d115c26418bc5e421ee6c94b031d
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 5ce7a591acd8203775808457219b0ec392cd696e
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695707"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95249893"
 ---
-# <a name="delete-replications"></a>Replikációk törlése
+# <a name="delete-volume-replications-or-volumes"></a>Kötetek replikálásának vagy köteteinek törlése
 
-A replikálási kapcsolatot a forrás és a cél kötetek között a kötetek replikálásának törlésével állíthatja le. A törlési műveletet a forrás vagy a cél kötetről is végrehajthatja. A törlési művelet csak a replikálás engedélyezését távolítja el; nem távolítja el a forrást vagy a célként megadott kötetet. 
+Ez a cikk a kötetek replikálásának törlését ismerteti. Emellett leírja a forrás vagy a cél kötetének törlését is.
 
-## <a name="steps"></a>Lépések
+## <a name="delete-volume-replications"></a>Kötetek replikálásának törlése
 
-1. A kötetek replikálásának törlése előtt győződjön meg arról, hogy a replikálási társítás megszakadt.    
-    Lásd: [a replikációs kapcsolat](cross-region-replication-display-health-status.md) állapotának megjelenítése és a [replikálási társítás megszakítása](cross-region-replication-manage-disaster-recovery.md#break-replication-peering-to-activate-the-destination-volume).  
+A replikálási kapcsolatot a forrás és a cél kötetek között a kötetek replikálásának törlésével állíthatja le. Törölnie kell a replikálást a cél kötetről. A törlési művelet csak a replikálás engedélyezését távolítja el; nem távolítja el a forrást vagy a célként megadott kötetet. 
+
+1. A kötetek replikálásának törlése előtt győződjön meg arról, hogy a replikálási társítás megszakadt. A replikálási társítás megszüntetése: 
+
+    1. Válassza ki a *cél* kötetet. Kattintson a **replikálás** lehetőségre a Storage szolgáltatás alatt.  
+
+    2.  A folytatás előtt keresse meg a következő mezőket:  
+        * Győződjön meg arról, hogy a tükrözött állapot a ***tükrözött** _-t jeleníti meg.   
+            Ne próbálkozzon a replikálási társítás megszakításával, ha a tükrözés állapota _Uninitialized *.
+        * Győződjön meg arról, hogy a kapcsolat állapota a ***tétlen** _ értékre mutat.   
+            Ne kísérelje meg a replikálási társítások megszakítását, ha a kapcsolat állapota _Transferring *.   
+
+        Lásd: [a replikációs kapcsolat](cross-region-replication-display-health-status.md)állapotának megjelenítése. 
+
+    3.  Kattintson a társítás **megszakítása** elemre.  
+
+    4.  Ha a rendszer kéri, írja be az **Igen** értéket, és kattintson a **töréspont** 
+
+        ![Replikációs társítás megszakítása](../media/azure-netapp-files/cross-region-replication-break-replication-peering.png)
+
 
 1. A kötetek replikálásának törléséhez válassza a forrás vagy a cél kötet **replikáció** elemét.  
 
@@ -37,6 +55,16 @@ A replikálási kapcsolatot a forrás és a cél kötetek között a kötetek re
 3. A törlés megerősítéséhez írja be az **Igen értéket** , és kattintson a **Törlés** gombra.   
 
     ![Replikáció törlése](../media/azure-netapp-files/cross-region-replication-delete-replication.png)
+
+## <a name="delete-source-or-destination-volumes"></a>Forrás vagy cél kötetek törlése
+
+Ha törölni szeretné a forrás vagy a cél kötetet, a következő lépéseket kell elvégeznie a leírt sorrendben. Ellenkező esetben a `Volume with replication cannot be deleted` hiba történik.  
+
+1. A cél köteten [törölje a kötet replikálását](#delete-volume-replications).   
+
+2. Szükség szerint törölje a cél vagy a forrás kötetet, majd kattintson a jobb gombbal a kötet nevére, és válassza a **Törlés** lehetőséget.   
+
+    ![Képernyőkép, amely egy kötet jobb kattintásos menüjét jeleníti meg.](../media/azure-netapp-files/cross-region-replication-delete-volume.png)
 
 ## <a name="next-steps"></a>Következő lépések  
 

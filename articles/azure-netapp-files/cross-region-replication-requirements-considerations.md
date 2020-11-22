@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/16/2020
 ms.author: b-juche
-ms.openlocfilehash: f2a50872fdb71419a0c3f068712ec67523a098e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b664dcd1cb12808960ffacf91c6d02d58632c4e
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90708787"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95243137"
 ---
 # <a name="requirements-and-considerations-for-using-cross-region-replication"></a>A régiók közötti replikáció használatára vonatkozó követelmények és szempontok 
 
@@ -38,12 +38,14 @@ Vegye figyelembe az alábbi követelményeket és szempontokat a Azure NetApp Fi
 * A kötet replikálásának beállítása pillanatképből létrehozott források esetében jelenleg nem támogatott.
 * A régiók közötti replikáció beállítása után a replikációs folyamat *snapmirror-pillanatképeket* hoz létre a forrás kötet és a cél kötete közötti hivatkozások biztosításához. A snapmirror-Pillanatképek automatikusan bekerülnek, amikor egy újat hoznak létre minden növekményes átvitelhez. A snapmirror-Pillanatképek nem törölhetők, amíg a replikációs kapcsolat és a kötet nem törlődik. 
 * Ha a replikációs kapcsolat aktív vagy megszakadt, a replikálási kapcsolat törlését követően manuálisan is törölheti a replikálási kapcsolat forrás kötetén található manuális pillanatképeket. A cél kötethez tartozó manuális Pillanatképek nem törölhetők, amíg a replikálási kapcsolat megszakad.
+* Nem lehet visszaállítani olyan pillanatképet, amely a replikálási cél kötetének létrehozása előtt lett elvégezve.
 
 ## <a name="next-steps"></a>Következő lépések
-* [Replikációs társviszony létrehozása](cross-region-replication-create-peering.md)
+* [Kötet replikálásának létrehozása](cross-region-replication-create-peering.md)
 * [Replikációs kapcsolat állapotának megjelenítése](cross-region-replication-display-health-status.md)
 * [Vészhelyreállítás kezelése](cross-region-replication-manage-disaster-recovery.md)
 * [Kötet replikációs metrikái](azure-netapp-files-metrics.md#replication)
+* [Kötetek replikálásának vagy köteteinek törlése](cross-region-replication-delete.md)
 * [Régiók közötti replikáció hibaelhárítása](troubleshoot-cross-region-replication.md)
 
 

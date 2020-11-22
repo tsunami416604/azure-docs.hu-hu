@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 11/16/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3b32e7a1df0dbbf4d43a73f1e3e409a904ab88a3
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 8d70a45b89142f6f9c6990fdbb4b79751c82275f
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660083"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95237476"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-sql"></a>Gyors útmutató: tömeges betöltés a szinapszis SQL-sel
 
@@ -39,7 +39,8 @@ Mostantól egyszerűen, a szinapszis Studióban az alábbi területekre kattintv
 
 ### <a name="steps"></a>Lépések
 
-1. Válassza ki a Storage-fiókot és a betöltéshez használt fájlt vagy mappát a forrás tárolási hely paneljén. A varázsló automatikusan megkísérli a parketta-fájlok észlelését. Ha a Parquet fájltípust nem lehet megerősíteni, a rendszer alapértelmezés szerint tagolt szöveget (CSV) fog használni. 
+1. Válassza ki a Storage-fiókot és a betöltéshez használt fájlt vagy mappát a forrás tárolási hely paneljén. A varázsló automatikusan megkísérli a parketta-fájlok észlelését. Ha a Parquet fájltípust nem lehet megerősíteni, a rendszer alapértelmezés szerint tagolt szöveget (CSV) fog használni.
+
    ![Forrás helyének kiválasztása](./sql/media/bulk-load/bulk-load-source-location.png)
 
 2. Válassza ki a fájlformátum beállításait, beleértve azt a Storage-fiókot, ahol el szeretné írni az elutasított sorokat (hibakód). Jelenleg csak a CSV-és a parketta-fájlok támogatottak.

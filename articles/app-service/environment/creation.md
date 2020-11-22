@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a0d474208f11c203ca65e9ac296fa381d8633a8b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 12c9fd43933f9f54e013752c5fe482ce31650536
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663569"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95238394"
 ---
 # <a name="create-an-app-service-environment"></a>App Service Environment létrehozása
 
@@ -48,7 +48,7 @@ A ASEv3 csak a kiválasztott régiókban érhető el. További régiók lesznek 
 
 ## <a name="creating-an-ase-in-the-portal"></a>A bekészítés létrehozása a portálon
 
-1. ASEv3 létrehozásához keresse meg a piactéren **app Service Environment v3**.  
+1. ASEv3 létrehozásához keresse meg a piactéren a **app Service Environment (előzetes verzió)** lehetőséget.  
 2. Alapismeretek: válassza ki az előfizetést, válassza ki vagy hozza létre az erőforráscsoportot, majd adja meg a beadás nevét.  A betekintő neve a bevezetés tartományának utótagját is felhasználja.  Ha a szolgáltatás neve *contoso* , akkor a tartomány utótagja *contoso.appserviceenvironment.net* lesz.  Ez a név automatikusan be lesz állítva a vnet által használt Azure DNS privát zónában. 
 
     ![App Service Environment alapok létrehozása lap](./media/creation/creation-basics.png)

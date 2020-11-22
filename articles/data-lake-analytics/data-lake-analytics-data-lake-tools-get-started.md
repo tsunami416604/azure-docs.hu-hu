@@ -5,12 +5,12 @@ ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 08/30/2019
-ms.openlocfilehash: 83384dd24141cfeb7b03f388e6e3505fea8f496e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: d3812cb27d2d9ea7a49038f566f8b4cc5d779172
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221077"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95241692"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>U-SQL-parancsfájlok fejlesztése a Data Lake Tools for Visual Studio használatával
 
@@ -51,11 +51,11 @@ Ehhez az oktatóanyaghoz feltétel, hogy telepítve legyen a Data Lake Tools for
 
 1. Nyissa meg a Visual Studiót.
 
-1. Nyissa meg a **Server Explorert** a **View**  >  **Server Explorer**megtekintése lehetőség kiválasztásával.
+1. Nyissa meg **Data Lake Analytics Explorert** az **View**  >  **Data Lake Analytics Explorer** megtekintése lehetőség kiválasztásával.
 
-1. Kattintson a jobb gombbal az **Azure**elemre, majd válassza **a kapcsolódás Microsoft Azure előfizetéshez**lehetőséget. **Jelentkezzen be a fiókjába**, és kövesse az utasításokat.
+1. Kattintson a jobb gombbal az **Azure** elemre, majd válassza **a kapcsolódás Microsoft Azure előfizetéshez** lehetőséget. **Jelentkezzen be a fiókjába**, és kövesse az utasításokat.
 
-1. A **Server Explorerben**válassza az **Azure**  >  **Data Lake Analytics**elemet. Ekkor megjelenik a Data Lake Analytics-fiókok listája.
+1. A **Server Explorerben** válassza az **Azure**  >  **Data Lake Analytics** elemet. Ekkor megjelenik a Data Lake Analytics-fiókok listája.
 
 ## <a name="write-your-first-u-sql-script"></a>Az első U-SQL parancsfájl megírása
 
@@ -78,17 +78,17 @@ OUTPUT @a
 
 ## <a name="submit-a-data-lake-analytics-job"></a>Data Lake Analytics-feladat küldése
 
-1. A Visual Studióban válassza a **fájl**  >  **új**  >  **projekt**lehetőséget.
+1. A Visual Studióban válassza a **fájl**  >  **új**  >  **projekt** lehetőséget.
 
-1. Válassza ki a **U-SQL-projekt** típusát, majd kattintson a **tovább**gombra. Az **új projekt konfigurálása**lapon válassza a **Létrehozás**lehetőséget.
+1. Válassza ki a **U-SQL-projekt** típusát, majd kattintson a **tovább** gombra. Az **új projekt konfigurálása** lapon válassza a **Létrehozás** lehetőséget.
 
    A Visual Studio létrehoz egy olyan megoldást, amely egy **script. usql** fájlt tartalmaz.
 
 1. Illessze be a szkriptet az [első U-SQL-szkript írásához](#write-your-first-u-sql-script) a **script. usql** ablakba.
 
-1. A **megoldáskezelő**kattintson a jobb gombbal a **script. usql**elemre, majd válassza a **parancsfájl küldése**lehetőséget.
+1. A **megoldáskezelő** kattintson a jobb gombbal a **script. usql** elemre, majd válassza a **parancsfájl küldése** lehetőséget.
 
-1. A **küldési feladatokban**válassza ki a Data Lake Analytics fiókját, és válassza a **Küldés**lehetőséget.
+1. A **küldési feladatokban** válassza ki a Data Lake Analytics fiókját, és válassza a **Küldés** lehetőséget.
 
    ![U-SQL Visual Studio-projekt elküldése](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-submit-job-vs2019.png)
 
@@ -104,11 +104,11 @@ A feladat beküldése után megnyílik a **Feladat nézet** lap, amelyen megteki
 
 ![U-SQL Visual Studio Data Lake Analytics-feladat teljesítménygrafikonja](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-performance-graph.png)
 
-A legutóbbi feladatok állapotának megtekintéséhez és a képernyő frissítéséhez válassza a **frissítés**lehetőséget.
+A legutóbbi feladatok állapotának megtekintéséhez és a képernyő frissítéséhez válassza a **frissítés** lehetőséget.
 
 ## <a name="check-job-status"></a>Feladat állapotának ellenőrzése
 
-1. A **Server Explorerben**válassza az **Azure**  >  **Data Lake Analytics**elemet.
+1. A **Server Explorerben** válassza az **Azure**  >  **Data Lake Analytics** elemet.
 
 1. Bontsa ki a Data Lake Analytics-fiók nevét.
 
@@ -118,7 +118,7 @@ A legutóbbi feladatok állapotának megtekintéséhez és a képernyő frissít
 
 ## <a name="see-the-job-output"></a>Feladat kimenetének megtekintése
 
-1. A **Server Explorerben**keresse meg az elküldött feladatot.
+1. A **Server Explorerben** keresse meg az elküldött feladatot.
 
 1. Kattintson az **Adatok** lapra.
 

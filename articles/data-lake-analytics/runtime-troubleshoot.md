@@ -5,12 +5,12 @@ ms.reviewer: jasonh
 ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.date: 10/10/2019
-ms.openlocfilehash: c20333c83275edb90a266afec3ec3756ae1e0e7e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 41b7c80c85331f288343351749e6b2e5292b30c6
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216266"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95241607"
 ---
 # <a name="learn-how-to-troubleshoot-u-sql-runtime-failures-due-to-runtime-changes"></a>Ismerje meg, hogy miként lehet elhárítani a futásidejű változások miatti U-SQL futásidejű hibákat
 
@@ -32,8 +32,8 @@ Ritka esetekben a Microsoft ügyfélszolgálata a futtatókörnyezet egy másik 
 Megtekintheti, hogy a korábbi feladatok melyik futásidejű verzióját használták a fiókjában a Visual Studio böngésző vagy a Azure Portal feladat előzményein keresztül.
 
 1. A Azure Portal lépjen a Data Lake Analytics-fiókra.
-2. Válassza **az összes feladat megtekintése**lehetőséget. Megjelenik a fiók összes aktív és legutóbb befejezett feladatának listája.
-3. A **szűrő** lehetőségre kattintva megkeresheti a feladatokat az **időtartomány**, a **feladat neve**és a **Szerző** értékei alapján.
+2. Válassza **az összes feladat megtekintése** lehetőséget. Megjelenik a fiók összes aktív és legutóbb befejezett feladatának listája.
+3. A **szűrő** lehetőségre kattintva megkeresheti a feladatokat az **időtartomány**, a **feladat neve** és a **Szerző** értékei alapján.
 4. Láthatja a befejezett feladatokban használt futtatókörnyezetet.
 
 ![A korábbi feladatok futtatókörnyezet-verziójának megjelenítése](./media/runtime-troubleshoot/prior-job-usql-runtime-version-.png)
@@ -51,7 +51,21 @@ A futásidejű verziók két lehetséges problémája merülhet fel:
 
 1. Egy parancsfájl vagy valamilyen felhasználói kód megváltoztatja az egyik kiadás viselkedését a következőre. Az ilyen jellegű feltörési változások általában a kibocsátási megjegyzések közzétételével kapcsolatos idő előtt kerülnek közlésre. Ha ilyen jellegű változást tapasztal, forduljon a Microsoft ügyfélszolgálatahoz, és jelentse ezt a feltörési viselkedést (ha még nincs dokumentálva), és küldje el a feladatokat a régebbi futtatókörnyezet-verzióra.
 
-2. Nem alapértelmezett futtatókörnyezetet használ explicit módon vagy implicit módon, amikor a fiókjában rögzítette, és a futtatókörnyezetet némi idő múlva eltávolították. Ha hiányzó futtatókörnyezetekkel találkozik, frissítse a parancsfájlokat az aktuális alapértelmezett futtatókörnyezettel való futtatáshoz. Ha további időre van szüksége, vegye fel a kapcsolatot Microsoft ügyfélszolgálata
+2. Nem alapértelmezett futtatókörnyezetet használ explicit módon vagy implicit módon, amikor a fiókjában rögzítette, és a futtatókörnyezetet némi idő múlva eltávolították. Ha hiányzó futtatókörnyezetekkel találkozik, frissítse a parancsfájlokat az aktuális alapértelmezett futtatókörnyezettel való futtatásra. Ha további időre van szüksége, lépjen kapcsolatba Microsoft ügyfélszolgálata
+
+## <a name="known-issues"></a>Ismert problémák
+
+* Ha egy USQL-parancsfájl 12.0.3 vagy újabb verziójára Newtonsoft.Jshivatkozik, akkor a következő fordítási hiba fog megjelenni:
+
+    *"Sajnos a Data Lake Analytics-fiókban futó feladatok valószínűleg lassabban futnak, vagy a művelet nem fejeződik be. Egy váratlan probléma miatt nem tudjuk automatikusan visszaállítani a funkciót a Azure Data Lake Analytics-fiókjába. Azure Data Lake mérnököket felvettek a vizsgálatba. "*  
+
+    A hívási verem a következőket fogja tartalmazni:  
+    `System.IndexOutOfRangeException: Index was outside the bounds of the array.`  
+    `at Roslyn.Compilers.MetadataReader.PEFile.CustomAttributeTableReader.get_Item(UInt32 rowId)`  
+    `...`
+
+    **Megoldás**: használja a Newtonsoft.Jsfájlt a v 12.0.2 vagy az alacsonyabb fájlnál.
+
 
 ## <a name="see-also"></a>Lásd még
 

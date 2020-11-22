@@ -1,37 +1,35 @@
 ---
 title: Azure-alkalmazás konfigurációs REST API – zárolások
-description: A kulcs-érték zárolások Azure app Configuration REST API használatával való használatához kapcsolódó lapok
+description: A kulcs-érték zárolások az Azure app Configuration REST API használatával történő használatához kapcsolódó lapok
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 4949db646c54d75f60d29d3c631d0f4ee8d7c26e
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 7e63b48f2119c48cd43717acee7b13b1701e0032
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424308"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95241267"
 ---
 # <a name="locks"></a>Zárolások
 
-API-Version: 1,0
-
-Ez az API a kulcs-érték erőforrás zárolási/feloldási szemantikai funkcióját biztosítja. A következő műveleteket támogatja:
+Ez az API (1,0-es verzió) a kulcs-érték erőforrás zárolását és zárolásának feloldását teszi lehetővé. A következő műveleteket támogatja:
 
 - Hely zárolása
 - Zárolás eltávolítása
 
-Ha van, `label` explicit címke értéknek kell lennie ( **nem** helyettesítő karakter). Az összes művelethez ez egy opcionális paraméter. Ha nincs megadva, az azt jelenti, hogy nincs címke.
+Ha van, `label` explicit címke értéknek kell lennie (nem helyettesítő karakter). Minden művelet esetén ez egy opcionális paraméter. Ha nincs megadva, az azt jelenti, hogy nincs címke.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-rest-api-prereqs.md)]
 
-## <a name="lock-key-value"></a>Zárolás Key-Value
+## <a name="lock-key-value"></a>Kulcs zárolása – érték
 
-- **Kötelező:** ``{key}`` , ``{api-version}``  
-- Nem *kötelező:*``label``
+- Kötelező: ``{key}`` , ``{api-version}``  
+- Választható ``label``
 
 ```http
 PUT /locks/{key}?label={label}&api-version={api-version} HTTP/1.1
@@ -63,10 +61,10 @@ Ha a kulcs-érték nem létezik, a rendszer a következő választ adja vissza:
 HTTP/1.1 404 Not Found
 ```
 
-## <a name="unlock-key-value"></a>Key-Value zárolásának feloldása
+## <a name="unlock-key-value"></a>Kulcs-érték feloldása
 
-- **Kötelező:** ``{key}`` , ``{api-version}``  
-- Nem *kötelező:*``label``
+- Kötelező: ``{key}`` , ``{api-version}``  
+- Választható ``label``
 
 ```http
 DELETE /locks/{key}?label={label}?api-version={api-version} HTTP/1.1
@@ -98,9 +96,9 @@ Ha a kulcs-érték nem létezik, a rendszer a következő választ adja vissza:
 HTTP/1.1 404 Not Found
 ```
 
-## <a name="conditional-lockunlock"></a>Feltételes zárolás/zárolás feloldása
+## <a name="conditional-lock-and-unlock"></a>Feltételes zárolás és feloldás
 
-A verseny feltételeinek megelőzése érdekében használjon `If-Match` vagy `If-None-Match` kérjen fejléceket. Az `etag` argumentum a kulcs ábrázolásának részét képezi. Ha `If-Match` vagy ki `If-None-Match` van hagyva, a művelet feltétel nélkül jelenik meg.
+A verseny feltételeinek megelőzése érdekében használjon `If-Match` vagy `If-None-Match` kérjen fejléceket. Az `etag` argumentum a kulcs ábrázolásának részét képezi. Ha `If-Match` vagy `If-None-Match` nincs megadva, a művelet feltétel nélküli.
 
 A következő kérelem csak akkor alkalmazza a műveletet, ha az aktuális kulcs-érték ábrázolás megegyezik a megadott értékkel `etag` :
 

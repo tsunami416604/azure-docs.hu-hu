@@ -12,18 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/12/2020
+ms.date: 11/18/2020
 ms.author: b-juche
-ms.openlocfilehash: c64bc8bf265a8e3cc3c490827bdbd79661e3528a
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 03b7941385517fe694f0743194655a1b6a1c0e1e
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591757"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95253558"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Pillanatképek kezelése az Azure NetApp Filesszal
 
 Azure NetApp Files támogatja az igény szerinti pillanatképek létrehozását és a pillanatkép-szabályzatok használatát az automatikus pillanatkép-létrehozás ütemezéséhez. Új kötetre is visszaállíthat egy pillanatképet, visszaállíthat egyetlen fájlt egy ügyféllel, vagy visszaállíthat egy meglévő kötetet egy pillanatkép használatával.
+
+> [!NOTE] 
+> A régiók közötti replikáció pillanatkép-kezelésével kapcsolatos megfontolásokat a [régiók közötti replikáció használatára vonatkozó követelmények és megfontolások](cross-region-replication-requirements-considerations.md)című témakörben talál.
 
 ## <a name="create-an-on-demand-snapshot-for-a-volume"></a>Igény szerinti pillanatkép létrehozása kötethez
 
@@ -77,7 +80,7 @@ A pillanatkép-szabályzat lehetővé teszi a pillanatképek létrehozásának g
 
 2.  A pillanatkép-házirend ablakban állítsa be a házirend állapotát **engedélyezve** értékre. 
 
-3.  Óránkénti, napi, heti vagy havi pillanatkép-szabályzatok létrehozásához kattintson az **óránként** , **naponta** , **hetente** vagy **havonta** fülre. A **megőrizni kívánt Pillanatképek számának** meghatározása.  
+3.  Óránkénti, napi, heti vagy havi pillanatkép-szabályzatok létrehozásához kattintson az **óránként**, **naponta**, **hetente** vagy **havonta** fülre. A **megőrizni kívánt Pillanatképek számának** meghatározása.  
 
     Tekintse meg a kötetek számára engedélyezett maximális számú pillanatképet tartalmazó [Azure NetApp Files erőforrás-korlátozásait](azure-netapp-files-resource-limits.md) . 
 
@@ -243,7 +246,7 @@ A hangerő visszaállítása lehetőség a kötetek Pillanatképek menüjében t
 
     ![Képernyőkép a pillanatképek jobb gombbal kattintásos menüjéről](../media/azure-netapp-files/snapshot-right-click-menu.png) 
 
-2. A kötet visszaállítása Pillanatképbe ablakba írja be a kötet nevét, majd kattintson a **REVERT** (helyreállítás) elemre.   
+2. A kötet visszaállítása Pillanatképbe ablakba írja be a kötet nevét, majd kattintson a **REVERT**(helyreállítás) elemre.   
 
     A kötet most már vissza lett állítva a kiválasztott pillanatkép időpontjára.
 

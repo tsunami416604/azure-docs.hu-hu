@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 07537e26b169414e3f8ec35cc32945c20f7eb7ce
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d7b198790b1ecc884321ad42c97eb5cf0c239b7e
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843281"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95241981"
 ---
 # <a name="analyze-with-apache-spark"></a>Elemzés a Apache Spark
 
@@ -93,22 +93,7 @@ A **SQLPOOL1** egy táblájában elérhetők az adatkészletek. Töltse be egy *
 
 1. A cella eredményei között válassza a **diagram** lehetőséget az információk vizualizációjának megtekintéséhez.
 
-## <a name="customize-data-visualization-with-spark-and-notebooks"></a>Az adatvizualizációk testreszabása a Spark és a notebook használatával
 
-Beállíthatja, hogy a diagramok hogyan legyenek megjelenítve jegyzetfüzetek használatával. Az alábbi kód egy egyszerű példát mutat be. A **matplotlib** és a **Seaborn** népszerű kódtárakat használja. A kód ugyanolyan típusú diagramot jelenít meg, mint a korábban futtatott SQL-lekérdezések.
-
-```py
-%%pyspark
-import matplotlib.pyplot
-import seaborn
-
-seaborn.set(style = "whitegrid")
-df = spark.sql("SELECT * FROM nyctaxi.passengercountstats")
-df = df.toPandas()
-seaborn.lineplot(x="PassengerCount", y="SumTripDistance" , data = df)
-seaborn.lineplot(x="PassengerCount", y="AvgTripDistance" , data = df)
-matplotlib.pyplot.show()
-```
 
 
 

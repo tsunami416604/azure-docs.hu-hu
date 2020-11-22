@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/30/2020
+ms.date: 11/20/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 66ad9f84985c7f35d410c6b1c3508efd33526c83
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 0b2d18165bf2c5a4f70f1cbc555db79020ce988f
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147722"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95250617"
 ---
 # <a name="create-a-service-sas-for-a-container-or-blob"></a>Szolgáltatás SAS létrehozása tárolóhoz vagy blobhoz
 
@@ -32,7 +32,7 @@ A következő mintakód egy tárolóhoz hoz létre SAS-t. Ha egy meglévő táro
 
 A Service SAS a fiók hozzáférési kulcsával van aláírva. A [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) osztály használatával hozza létre az SAS aláírásához használt hitelesítő adatokat. Ezután hozzon létre egy új [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) objektumot, és hívja meg a [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) az SAS-jogkivonat karakterláncának beolvasásához.
 
-:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetContainerSasUri":::
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetServiceSasUriForContainer":::
 
 ### <a name="net-v11"></a>[\.NETTÓ v11](#tab/dotnetv11)
 
@@ -114,13 +114,13 @@ function getContainerSasUri(containerClient, sharedKeyCredential, storedPolicyNa
 
 A következő kódrészlet egy blobon létrehoz egy SAS-t. Ha egy meglévő tárolt hozzáférési szabályzat neve van megadva, akkor ez a házirend a SAS-hoz van társítva. Ha nincs megadva tárolt hozzáférési szabályzat, a kód létrehoz egy ad hoc SAS-t a blobon.
 
-### <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
+# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
 A Service SAS a fiók hozzáférési kulcsával van aláírva. A [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) osztály használatával hozza létre az SAS aláírásához használt hitelesítő adatokat. Ezután hozzon létre egy új [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) objektumot, és hívja meg a [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) az SAS-jogkivonat karakterláncának beolvasásához.
 
-:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetBlobSasUri":::
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetServiceSasUriForBlob":::
 
-### <a name="net-v11"></a>[\.NETTÓ v11](#tab/dotnetv11)
+# <a name="net-v11"></a>[\.NETTÓ v11](#tab/dotnetv11)
 
 Az [CloudBlob. GetSharedAccessSignature](/dotnet/api/microsoft.azure.storage.blob.cloudblob.getsharedaccesssignature) metódust a blobhoz tartozó Service sas létrehozásához hívja meg.
 
@@ -203,6 +203,14 @@ function getBlobSasUri(containerClient, blobName, sharedKeyCredential, storedPol
 ```
 
 ---
+
+## <a name="create-a-service-sas-for-a-directory"></a>Service SAS létrehozása egy címtárhoz
+
+Egy olyan Storage-fiókban, amelyen engedélyezve van a hierarchikus névtér, létrehozhat egy Service SAS-t a címtárhoz. A szolgáltatás SAS létrehozásához ellenőrizze, hogy telepítette-e az [Azure. Storage. files. DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/) csomag 12.5.0 vagy újabb verzióját.
+
+Az alábbi példa bemutatja, hogyan hozhat létre egy Service SAS-t egy olyan címtárhoz, amely a V12-es .NET-ügyfél kódtára:
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetServiceSasUriForDirectory":::
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 

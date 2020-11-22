@@ -14,38 +14,38 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: b-juche
-ms.openlocfilehash: ad006279a656758ba856cd3f39c17b0410e525e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eab55f881c250c2e07717604d4ba00587a8b6031
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90708788"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95243205"
 ---
 # <a name="manage-disaster-recovery-using-cross-region-replication"></a>Vész-helyreállítás kezelése a régiók közötti replikációval 
 
-A forrás és a cél kötetek közötti folyamatos replikáció (lásd: [replikálási társítás létrehozása](cross-region-replication-create-peering.md)) előkészíti a vész-helyreállítási eseményre. 
+A forrás és a cél kötetek közötti folyamatos replikáció (lásd: [kötetek replikálásának létrehozása](cross-region-replication-create-peering.md)) előkészíti a vész-helyreállítási eseményre. 
 
-Ilyen esemény esetén feladatátvételt hajthat végre [a cél kötetre](#break-replication-peering-to-activate-the-destination-volume), így az ügyfél olvasási és írási lehetőséget biztosít a célként megadott kötetnek. 
+Ilyen esemény esetén a feladat átadható [a cél kötetre](#fail-over-to-destination-volume), így az ügyfél beolvashatja és írhatja a célként megadott kötetet. 
 
-A vész-helyreállítás után visszatérhet a forrás kötethez egy [újraszinkronizálási művelettel](#resync-replication-to-reactivate-the-source-volume) , amely felülírja a forrás kötet adatát a cél kötet adataival.  Ezután újra [létre kell hoznia a forrás-cél replikálást](#reestablish-source-to-destination-replication) , és újra kell csatlakoztatnia az ügyfél számára a forrás-kötetet. 
+A vész-helyreállítás után [újraszinkronizálási](#resync-replication) műveletet hajthat végre a forrás kötetre való visszatéréshez. Ezután újra [létre kell hoznia a forrás-cél replikálást](#reestablish-source-to-destination-replication) , és újra kell csatlakoztatnia az ügyfél számára a forrás-kötetet. 
 
 A részleteket az alábbiakban ismertetjük. 
 
-## <a name="break-replication-peering-to-activate-the-destination-volume"></a>Replikációs társítás megszakítása a cél kötet aktiválásához
+## <a name="fail-over-to-destination-volume"></a>Feladatátvétel a cél kötetre
 
 Ha aktiválni kell a célként megadott kötetet (például ha feladatátvételt szeretne végezni a célhelyre), meg kell szüntetnie a replikálási társítást, majd csatlakoztatnia kell a célként megadott kötetet.  
 
 1. A replikálási társítás megszakításához válassza ki a cél kötetet. Kattintson a **replikálás** lehetőségre a Storage szolgáltatás alatt.  
 
 2.  A folytatás előtt keresse meg a következő mezőket:  
-    * Győződjön meg arról, hogy a tükrözési állapot ***tükrözöttként***jelenik meg.   
-        Ne kísérelje meg a replikálási társítások megszakítását, ha a tükrözés állapota nem *inicializált*.
-    * Győződjön meg arról, hogy a kapcsolat állapota ***inaktív***.   
-        Ne kísérelje meg a replikálási társítások megszakítását, ha a kapcsolat állapota *átadást*mutat.   
+    * Győződjön meg arról, hogy a tükrözött állapot a ***tükrözött** _-t jeleníti meg.   
+        Ne próbálkozzon a replikálási társítás megszakításával, ha a tükrözés állapota _Uninitialized *.
+    * Győződjön meg arról, hogy a kapcsolat állapota a ***tétlen** _ értékre mutat.   
+        Ne kísérelje meg a replikálási társítások megszakítását, ha a kapcsolat állapota _Transferring *.   
 
     Lásd: [a replikációs kapcsolat](cross-region-replication-display-health-status.md)állapotának megjelenítése. 
 
-3.  Kattintson a társítás **megszakítása**elemre.  
+3.  Kattintson a társítás **megszakítása** elemre.  
 
 4.  Ha a rendszer kéri, írja be az **Igen** értéket, és kattintson a **töréspont** gombra. 
 
@@ -54,16 +54,16 @@ Ha aktiválni kell a célként megadott kötetet (például ha feladatátvételt
 5.  Csatlakoztassa a célként megadott kötetet a [Windows vagy Linux rendszerű virtuális gépekhez való csatlakoztatás vagy a kötet leválasztása](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)című témakör lépéseit követve.   
     Ez a lépés lehetővé teszi, hogy az ügyfél hozzáférjen a célként megadott kötethez.
 
-## <a name="resync-replication-to-reactivate-the-source-volume"></a>Replikálás újraszinkronizálása a forrás kötet újraaktiválásához   
+## <a name="resync-volumes-after-disaster-recovery"></a><a name="resync-replication"></a>Kötetek újraszinkronizálása a katasztrófa utáni helyreállítás után
 
 A vész-helyreállítás után újraaktiválhatja a forrás kötetet egy újraszinkronizálási művelet elvégezve.  Az újraszinkronizálási művelet megfordítja a replikációs folyamatot, és szinkronizálja az adatokat a cél kötetről a forrás kötetre.  
 
 > [!IMPORTANT] 
 > Az újraszinkronizálási művelet felülírja a forrás kötetre vonatkozó adatmennyiséget a célként megadott mennyiségű adattal.  A felhasználói felület figyelmezteti az adatvesztés lehetőségére. A rendszer kérni fogja, hogy erősítse meg az újraszinkronizálási műveletet a művelet elkezdése előtt.
 
-1. A replikáció újraszinkronizálásához válassza ki a *forrás* kötetet. Kattintson a **replikálás** lehetőségre a Storage szolgáltatás alatt. Ezután kattintson az **Újraszinkronizálás**elemre.  
+1. A replikáció újraszinkronizálásához válassza ki a *forrás* kötetet. Kattintson a **replikálás** lehetőségre a Storage szolgáltatás alatt. Ezután kattintson az **Újraszinkronizálás** elemre.  
 
-2. Ha a rendszer kéri, írja be az **Igen** értéket, és kattintson az **Újraszinkronizálás** gombra. 
+2. Ha a rendszer kéri, írja be az **Igen** értéket, és kattintson az **Újraszinkronizálás** gombra 
  
     ![Replikáció újraszinkronizálása](../media/azure-netapp-files/cross-region-replication-resync-replication.png)
 
@@ -80,18 +80,18 @@ Miután befejeződött az újraszinkronizálási művelet a célhelyről a forr�
 1. A replikálási társítás megszüntetése:  
     a. Válassza ki a *cél* kötetet. Kattintson a **replikálás** lehetőségre a Storage szolgáltatás alatt.  
     b. A folytatás előtt keresse meg a következő mezőket:   
-    * Győződjön meg arról, hogy a tükrözési állapot ***tükrözöttként***jelenik meg.   
-    Ne kísérelje meg a replikálási társítások megszakítását, ha a tükrözés állapota nem *inicializált*.  
-    * Győződjön meg arról, hogy a kapcsolat állapota ***inaktív***.   
-    Ne kísérelje meg a replikálási társítások megszakítását, ha a kapcsolat állapota *átadást*mutat.    
+    * Győződjön meg arról, hogy a tükrözött állapot a ***tükrözött** _-t jeleníti meg.   
+    Ne próbálkozzon a replikálási társítás megszakításával, ha a tükrözés állapota _uninitialized *.  
+    * Győződjön meg arról, hogy a kapcsolat állapota a ***tétlen** _ értékre mutat.   
+    Ne kísérelje meg a replikálási társítások megszakítását, ha a kapcsolat állapota _transferring *.    
 
         Lásd: [a replikációs kapcsolat](cross-region-replication-display-health-status.md)állapotának megjelenítése. 
 
-    c. Kattintson a társítás **megszakítása**elemre.   
+    c. Kattintson a társítás **megszakítása** elemre.   
     d. Ha a rendszer kéri, írja be az **Igen** értéket, és kattintson a **töréspont** gombra.  
 
 2. Szinkronizálja újra a forrás kötetet a célként megadott kötettel:  
-    a. Válassza ki a *cél* kötetet. Kattintson a **replikálás** lehetőségre a Storage szolgáltatás alatt. Ezután kattintson az **Újraszinkronizálás**elemre.   
+    a. Válassza ki a *cél* kötetet. Kattintson a **replikálás** lehetőségre a Storage szolgáltatás alatt. Ezután kattintson az **Újraszinkronizálás** elemre.   
     b. Ha a rendszer kéri, írja be az **Igen** értéket, és kattintson az **Újraszinkronizálás** gombra.
 
 3. Csatlakoztassa újra a forrás kötetet a [Windows vagy Linux rendszerű virtuális gépekhez való csatlakoztatás vagy a kötet leválasztása](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)című témakör lépéseit követve.  
@@ -103,5 +103,6 @@ Miután befejeződött az újraszinkronizálási művelet a célhelyről a forr�
 * [A régiók közötti replikáció használatára vonatkozó követelmények és szempontok](cross-region-replication-requirements-considerations.md)
 * [Replikációs kapcsolat állapotának megjelenítése](cross-region-replication-display-health-status.md)
 * [Kötet replikációs metrikái](azure-netapp-files-metrics.md#replication)
+* [Kötetek replikálásának vagy köteteinek törlése](cross-region-replication-delete.md)
 * [Régiók közötti replikáció hibaelhárítása](troubleshoot-cross-region-replication.md)
 

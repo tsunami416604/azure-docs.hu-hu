@@ -11,22 +11,22 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3610fa5ea442e5ccb15255d8a1ddcee211871aeb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be72c2152bdb8e1155d2dd29547f93ba3605d462
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84463943"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95251093"
 ---
 # <a name="how-to-investigate-risk"></a>Útmutató: Kockázat vizsgálata
 
-Az Identity Protection három jelentéssel rendelkező szervezeteket biztosít, amelyek segítségével megvizsgálhatja az identitás kockázatait a környezetében. Ezek a jelentések a **kockázatos felhasználók**, a **kockázatos bejelentkezések**és a **kockázati észlelések**. Az események vizsgálata kulcsfontosságú a biztonsági stratégiában található gyenge pontok jobb megismerése és azonosítása érdekében.
+Az Identity Protection három jelentéssel rendelkező szervezeteket biztosít, amelyek segítségével megvizsgálhatja az identitás kockázatait a környezetében. Ezek a jelentések a **kockázatos felhasználók**, a **kockázatos bejelentkezések** és a **kockázati észlelések**. Az események vizsgálata kulcsfontosságú a biztonsági stratégiában található gyenge pontok jobb megismerése és azonosítása érdekében.
 
 Mindhárom jelentés lehetővé teszi az események letöltését a alkalmazásban. CSV-formátum a Azure Portalon kívüli további elemzéshez. A kockázatos felhasználók és a kockázatos bejelentkezések jelentései lehetővé teszik a legfrissebb 2500-bejegyzések letöltését, míg a kockázati észlelési jelentés lehetővé teszi a legfrissebb 5000-rekordok letöltését.
 
 A szervezetek kihasználhatják a Microsoft Graph API-integrációját, hogy más forrásokkal összesítsék az adatokat, és ez a szervezet számára is elérhető.
 
-A három jelentés a **Azure Portal**  >  **Azure Active Directory**  >  **biztonsági**szolgáltatásban található.
+A három jelentés a **Azure Portal**  >  **Azure Active Directory**  >  **biztonsági** szolgáltatásban található.
 
 ## <a name="navigating-the-reports"></a>Navigálás a jelentésekben
 
@@ -91,7 +91,11 @@ A kockázati észlelések jelentés által biztosított információkkal a rends
 
 A rendszergazdák ezután dönthetnek úgy, hogy visszatérnek a felhasználó kockázati vagy bejelentkezési jelentéséhez, hogy a gyűjtött információk alapján hajtsák végre a műveleteket.
 
-## <a name="next-steps"></a>További lépések
+> [!NOTE] 
+> A rendszer észlelheti, hogy a kockázati felhasználói kockázati pontszámhoz hozzájáruló kockázati esemény hamis pozitív, vagy a felhasználói kockázat a házirend-kényszerítéssel lett szervizelve, például MFA-kérdés vagy biztonságos jelszó-módosítás elvégzése. Ezért a rendszer elveti a kockázati állapotot, és a "mesterséges intelligencia által megerősített bejelentkezések" kockázati részleteit felszínre hozza, és a továbbiakban nem járul hozzá a felhasználó kockázatához. 
+
+
+## <a name="next-steps"></a>Következő lépések
 
 - [A kockázatok enyhítésére rendelkezésre álló szabályzatok](concept-identity-protection-policies.md)
 
