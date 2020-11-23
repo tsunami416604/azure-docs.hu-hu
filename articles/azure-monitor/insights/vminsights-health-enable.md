@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
-ms.openlocfilehash: 6033ca5b0eaf6845d14407832c776dd8e006226b
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 647256949d1f8f13439a0a5db87f3b02d697d32b
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686976"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95318133"
 ---
 # <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>Azure Monitor for VMs vendég állapotának engedélyezése (előzetes verzió)
 Azure Monitor for VMs vendég állapota lehetővé teszi egy virtuális gép állapotának megtekintését, amelyet a rendszeres időközönként mintavételnek alávetett teljesítmény-mérések határoznak meg. Ez a cikk bemutatja, hogyan engedélyezheti ezt a funkciót az előfizetésében, és hogyan engedélyezheti a vendég figyelését az egyes virtuális gépeken.
@@ -24,12 +24,18 @@ Azure Monitor for VMs vendég állapota a nyilvános előzetes verzióban a köv
   - Ubuntu 16,04 LTS, Ubuntu 18,04 LTS
   - Windows Server 2012 vagy újabb
 - A virtuális gépnek az alábbi régiók egyikében kell elhelyezkednie:
+  - Kelet-Ausztrália
   - Délkelet-Ausztrália
+  - Közép-India
   - USA középső régiója
   - USA keleti régiója
   - USA 2. keleti régiója
   - USA 2. keleti – EUAP
+  - Középnyugat-Németország
+  - Kelet-Japán
+  - USA északi középső régiója
   - Észak-Európa
+  - USA déli középső régiója
   - Délkelet-Ázsia
   - Az Egyesült Királyság déli régiója
   - Nyugat-Európa

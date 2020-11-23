@@ -1,17 +1,17 @@
 ---
 title: Resource Manager-sablonok – minták az ügynökökhöz
-description: Példa Azure Resource Manager sablonokra Log Analytics ügynök és diagnosztikai bővítmény üzembe helyezéséhez és konfigurálásához Azure Monitorban.
+description: Példa Azure Resource Manager sablonokat a virtuálisgép-ügynökök üzembe helyezéséhez és konfigurálásához a Azure Monitorban.
 ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
-ms.date: 05/18/2020
-ms.openlocfilehash: 8b0673e534826acb5ff2d3747053f58fb39ff285
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/17/2020
+ms.openlocfilehash: 00d6635b7bb322d28f0fe3df509ce0cb03e19f3d
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83854449"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95308664"
 ---
 # <a name="resource-manager-template-samples-for-agents-in-azure-monitor"></a>Resource Manager-sablonok – minták a Azure Monitor lévő ügynökökhöz
 Ez a cikk minta [Azure Resource Manager sablonokat](../../azure-resource-manager/templates/template-syntax.md) tartalmaz a [log Analytics-ügynök](../platform/log-analytics-agent.md) és a [diagnosztikai bővítmény](../platform/diagnostics-extension-overview.md) üzembe helyezéséhez és konfigurálásához a Azure monitor-ben. Mindegyik minta tartalmaz egy sablonfájlt és egy, a sablonhoz adni kívánt minta értékeket tartalmazó paramétereket tartalmazó fájlt.
@@ -19,10 +19,218 @@ Ez a cikk minta [Azure Resource Manager sablonokat](../../azure-resource-manager
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
 
-## <a name="windows-log-analytics-agent"></a>Windows Log Analytics ügynök
+## <a name="azure-monitor-agent-preview"></a>Azure Monitor-ügynök (előzetes verzió)
+Az ebben a szakaszban szereplő minták a Windows-és Linux-ügynökök Azure Monitor ügynökének (előzetes verzió). Ide tartozik az ügynök telepítése az Azure-beli virtuális gépeken, valamint az Azure arc-kompatibilis kiszolgálók is. 
+
+### <a name="windows-azure-virtual-machine"></a>Windows Azure virtuális gép
+A következő minta telepíti a Azure Monitor ügynököt egy Windows Azure-beli virtuális gépre.
+
+#### <a name="template-file"></a>Sablonfájl
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+          "type": "string"
+      },
+      "location": {
+          "type": "string"
+      }
+  },
+  "resources": [
+      {
+          "name": "[concat(parameters('vmName'),'/AzureMonitorWindowsAgent')]",
+          "type": "Microsoft.Compute/virtualMachines/extensions",
+          "location": "[parameters('location')]",
+          "apiVersion": "2020-06-01",
+          "properties": {
+              "publisher": "Microsoft.Azure.Monitor",
+              "type": "AzureMonitorWindowsAgent",
+              "typeHandlerVersion": "1.0",
+              "autoUpgradeMinorVersion": true
+          }
+      }
+  ]
+}
+```
+
+#### <a name="parameter-file"></a>Paraméter fájlja
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+        "value": "my-windows-vm"
+      },
+      "location": {
+        "value": "eastus"
+      }
+  }
+}
+```
+
+### <a name="linux-azure-virtual-machine"></a>Linux Azure-beli virtuális gép
+Az alábbi példa telepíti a Azure Monitor Agent ügynököt egy Linux Azure-beli virtuális gépre.
+
+#### <a name="template-file"></a>Sablonfájl
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+          "type": "string"
+      },
+      "location": {
+          "type": "string"
+      }
+  },
+  "resources": [
+      {
+          "name": "[concat(parameters('vmName'),'/AzureMonitorLinuxAgent')]",
+          "type": "Microsoft.Compute/virtualMachines/extensions",
+          "location": "[parameters('location')]",
+          "apiVersion": "2020-06-01",
+          "properties": {
+              "publisher": "Microsoft.Azure.Monitor",
+              "type": "AzureMonitorLinuxAgent",
+              "typeHandlerVersion": "1.5",
+              "autoUpgradeMinorVersion": true
+          }
+      }
+  ]
+}
+```
+
+#### <a name="parameter-file"></a>Paraméter fájlja
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+        "value": "my-linux-vm"
+      },
+      "location": {
+        "value": "eastus"
+      }
+  }
+}
+```
+
+### <a name="windows-azure-arc-enabled-server"></a>Windows Azure arc-kompatibilis kiszolgáló
+A következő minta telepíti a Azure Monitor ügynököt egy Windows Azure arc-kompatibilis kiszolgálóra.
+
+#### <a name="template-file"></a>Sablonfájl
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+          "type": "string"
+      },
+      "location": {
+          "type": "string"
+      }
+  },
+  "resources": [
+      {
+          "name": "[concat(parameters('vmName'),'/AzureMonitorWindowsAgent')]",
+          "type": "Microsoft.HybridCompute/machines/extensions",
+          "location": "[parameters('location')]",
+          "apiVersion": "2019-08-02-preview",
+          "properties": {
+              "publisher": "Microsoft.Azure.Monitor",
+              "type": "AzureMonitorWindowsAgent",
+              "autoUpgradeMinorVersion": true
+          }
+      }
+  ]
+}
+```
+
+#### <a name="parameter-file"></a>Paraméter fájlja
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+        "value": "my-windows-vm"
+      },
+      "location": {
+        "value": "eastus"
+      }
+  }
+}
+```
+
+### <a name="linux-azure-arc-enabled-server"></a>Linux Azure arc-kompatibilis kiszolgáló
+A következő minta telepíti a Azure Monitor ügynököt egy Linux Azure arc-kompatibilis kiszolgálóra.
+
+#### <a name="template-file"></a>Sablonfájl
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+          "type": "string"
+      },
+      "location": {
+          "type": "string"
+      }
+  },
+  "resources": [
+      {
+          "name": "[concat(parameters('vmName'),'/AzureMonitorLinuxAgent')]",
+          "type": "Microsoft.HybridCompute/machines/extensions",
+          "location": "[parameters('location')]",
+          "apiVersion": "2019-08-02-preview",
+          "properties": {
+              "publisher": "Microsoft.Azure.Monitor",
+              "type": "AzureMonitorLinuxAgent",
+              "autoUpgradeMinorVersion": true
+          }
+      }
+  ]
+}
+```
+
+#### <a name="parameter-file"></a>Paraméter fájlja
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+      "vmName": {
+        "value": "my-linux-vm"
+      },
+      "location": {
+        "value": "eastus"
+      }
+  }
+}
+```
+
+## <a name="log-analytics-agent"></a>Log Analytics-ügynök
+Az ebben a szakaszban szereplő minták telepítik a Log Analytics ügynököt az Azure-beli Windows-és Linux-alapú virtuális gépeken, és összekapcsolják azt egy Log Analytics munkaterülettel.
+
+###  <a name="windows"></a>Windows
 A következő minta telepíti a Log Analytics ügynököt egy Windows Azure-beli virtuális gépre. Ez a [Windows log Analytics virtuálisgép-bővítményének](../../virtual-machines/extensions/oms-windows.md)engedélyezésével végezhető el.
 
-### <a name="template-file"></a>Sablonfájl
+#### <a name="template-file"></a>Sablonfájl
 
 ```json
 {
@@ -90,7 +298,7 @@ A következő minta telepíti a Log Analytics ügynököt egy Windows Azure-beli
 
 ```
 
-### <a name="parameter-file"></a>Paraméter fájlja
+#### <a name="parameter-file"></a>Paraméter fájlja
 
 ```json
 {
@@ -114,10 +322,10 @@ A következő minta telepíti a Log Analytics ügynököt egy Windows Azure-beli
 ```
 
 
-## <a name="linux-log-analytics-agent"></a>Linux Log Analytics ügynök
+### <a name="linux"></a>Linux
 Az alábbi példa telepíti a Log Analytics Agent ügynököt egy Linux Azure-beli virtuális gépre. Ez a [Windows log Analytics virtuálisgép-bővítményének](../../virtual-machines/extensions/oms-linux.md)engedélyezésével végezhető el.
 
-### <a name="template-file"></a>Sablonfájl
+#### <a name="template-file"></a>Sablonfájl
 
 ```json
 {
@@ -184,7 +392,7 @@ Az alábbi példa telepíti a Log Analytics Agent ügynököt egy Linux Azure-be
 }
 ```
 
-### <a name="parameter-file"></a>Paraméter fájlja
+#### <a name="parameter-file"></a>Paraméter fájlja
 
 ```json
 {
@@ -209,10 +417,13 @@ Az alábbi példa telepíti a Log Analytics Agent ügynököt egy Linux Azure-be
 
 
 
-## <a name="windows-diagnostic-extension"></a>Windows diagnosztikai bővítmény
+## <a name="diagnostic-extension"></a>Diagnosztikai bővítmény
+Az ebben a szakaszban szereplő minták telepítik a diagnosztikai bővítményt az Azure-beli Windows-és Linux-alapú virtuális gépeken, és az adatgyűjtéshez konfigurálja azokat.
+
+### <a name="windows"></a>Windows
 A következő minta engedélyezi és konfigurálja a diagnosztikai bővítményt egy Windows Azure-beli virtuális gépen. A konfiguráció részleteit lásd: a [Windows Diagnostics bővítmény sémája](../platform/diagnostics-extension-schema-windows.md).
 
-### <a name="template-file"></a>Sablonfájl
+#### <a name="template-file"></a>Sablonfájl
 
 ```json
 {
@@ -345,7 +556,7 @@ A következő minta engedélyezi és konfigurálja a diagnosztikai bővítményt
 }
 ```
 
-### <a name="parameter-file"></a>Paraméter fájlja
+#### <a name="parameter-file"></a>Paraméter fájlja
 
 ```json
 {
@@ -374,10 +585,10 @@ A következő minta engedélyezi és konfigurálja a diagnosztikai bővítményt
 }
 ```
 
-## <a name="linux-diagnostic-setting"></a>Linux diagnosztikai beállítás
+### <a name="linux"></a>Linux
 A következő minta lehetővé teszi a diagnosztikai bővítmény használatát egy Linux Azure-beli virtuális gépen. A konfiguráció részleteit lásd: a [Windows Diagnostics bővítmény sémája](../../virtual-machines/extensions/diagnostics-linux.md).
 
-### <a name="template-file"></a>Sablonfájl
+#### <a name="template-file"></a>Sablonfájl
 
 ```json
 {
@@ -565,7 +776,7 @@ A következő minta lehetővé teszi a diagnosztikai bővítmény használatát 
 }
 ```
 
-### <a name="parameter-file"></a>Paraméter fájlja
+#### <a name="parameter-file"></a>Paraméter fájlja
 
 ```json
 {
@@ -594,7 +805,7 @@ A következő minta lehetővé teszi a diagnosztikai bővítmény használatát 
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További Azure monitor-sablonok beszerzése](resource-manager-samples.md).
 * [További információ a log Analytics-ügynökről](../platform/log-analytics-agent.md).

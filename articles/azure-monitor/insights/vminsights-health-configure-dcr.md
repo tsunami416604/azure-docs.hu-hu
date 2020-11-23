@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2020
-ms.openlocfilehash: fd131798352aaccaea66c242e92d550c98d7c86f
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 2bbc57d8ddc004c1926da7e0037efdc1fcf2d76e
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94687015"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95318099"
 ---
 # <a name="configure-monitoring-in-azure-monitor-for-vms-guest-health-using-data-collection-rules-preview"></a>A figyelés konfigurálása Azure Monitor for VMs vendég állapota adatgyűjtési szabályokkal (előzetes verzió)
 [Azure monitor for VMS vendég állapota](vminsights-health-overview.md) lehetővé teszi egy virtuális gép állapotának megtekintését, amelyet a rendszeres időközönként mintavételnek alávetett teljesítmény-mérések határoznak meg. Ez a cikk azt ismerteti, hogyan módosíthatja az alapértelmezett figyelést több virtuális gépen az adatgyűjtési szabályok használatával.
@@ -57,7 +57,7 @@ A következő táblázat felsorolja az egyes figyelők alapértelmezett konfigur
 ## <a name="overrides"></a>Felülbírálások
 A *felülbírálás* egy adott figyelő egy vagy több tulajdonságát módosítja. Egy felülbírálás például letilthatja az alapértelmezés szerint engedélyezett figyelőt, megadhatja a figyelő figyelmeztetési feltételeit, vagy módosíthatja a figyelő kritikus küszöbértékét. 
 
-A felülbírálások egy [adatgyűjtési szabályban (DCR)](../platform/data-collection-rule-overview.md)vannak definiálva. Több DCR is létrehozhat különböző felülbírálásokkal, és alkalmazhatja őket több virtuális gépre. A DCR-t egy virtuális gépre alkalmazza úgy, hogy létrehoz egy társítást az [adatgyűjtési szolgáltatás konfigurálása a Azure monitor ügynökhöz (előzetes verzió)](../platform/data-collection-rule-azure-monitor-agent.md#dcr-associations)című témakörben leírtak szerint.
+A felülbírálások egy [adatgyűjtési szabályban (DCR)](../platform/data-collection-rule-overview.md)vannak definiálva. Több DCR is létrehozhat különböző felülbírálásokkal, és alkalmazhatja őket több virtuális gépre. A DCR-t egy virtuális gépre alkalmazza úgy, hogy létrehoz egy társítást az [adatgyűjtési szolgáltatás konfigurálása a Azure monitor ügynökhöz (előzetes verzió)](../platform/data-collection-rule-azure-monitor-agent.md#data-collection-rule-associations)című témakörben leírtak szerint.
 
 
 ## <a name="multiple-overrides"></a>Több felülbírálás

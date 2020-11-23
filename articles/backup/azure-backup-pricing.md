@@ -44,7 +44,7 @@ Az Azure-beli virtuális gépek vagy helyszíni kiszolgálók Azure Backuppal v�
 
   - Válassza az **Alacsony** vagy a **Közepes** értéket a fájlkiszolgálókhoz, és a **Magas** értéket, ha adatbázisokat futtat.
 
-  - Ha ismeri a **változás százalékát** , használhatja a **saját adatváltozási százalék megadására** szolgáló lehetőséget.
+  - Ha ismeri a **változás százalékát**, használhatja a **saját adatváltozási százalék megadására** szolgáló lehetőséget.
 
 - Válassza ki a biztonsági mentési szabályzatot
 
@@ -82,7 +82,7 @@ Az Azure-beli virtuális gépeken futó SQL-kiszolgálók Azure Backuppal végze
 
 - Mi az SQL-kiszolgálók biztonsági mentési adatainak várt tömörítési aránya?
 
-  - A legtöbb Azure Backup-ügyfél azt tapasztalja, hogy a biztonsági mentési adatok tömörítése 80%-os az SQL-kiszolgáló méretéhez képest, amikor az SQL-tömörítés **engedélyezve van** .
+  - A legtöbb Azure Backup-ügyfél azt tapasztalja, hogy a biztonsági mentési adatok tömörítése 80%-os az SQL-kiszolgáló méretéhez képest, amikor az SQL-tömörítés **engedélyezve van**.
 
   - Ha más tömörítési arányt szeretne, írja be a számot ebbe a mezőbe.
 
@@ -94,13 +94,13 @@ Az Azure-beli virtuális gépeken futó SQL-kiszolgálók Azure Backuppal végze
 
   - Általában az adatbázisokon „magas” az adatváltozás mértéke.
 
-  - Ha ismeri a **változás százalékát** , használhatja a **saját adatváltozási százalék megadására** szolgáló lehetőséget.
+  - Ha ismeri a **változás százalékát**, használhatja a **saját adatváltozási százalék megadására** szolgáló lehetőséget.
 
 - Válassza ki a biztonsági mentési szabályzatot
 
   - Biztonsági mentés típusa
 
-    - A leghatékonyabb választható szabályzat a **Napi különbözeti** , heti/havi/éves teljes biztonsági mentésekkel. Az Azure Backup egyetlen kattintással visszaállítást tud végezni a különbözeti mentésekből.
+    - A leghatékonyabb választható szabályzat a **Napi különbözeti**, heti/havi/éves teljes biztonsági mentésekkel. Az Azure Backup egyetlen kattintással visszaállítást tud végezni a különbözeti mentésekből.
 
     - Napi/heti/havi/éves teljes biztonsági mentést megkövetelő szabályzatot is választhat. Ez a lehetőség kissé több tárhelyet foglal, mint az első.
 
@@ -134,10 +134,10 @@ Az Azure-beli virtuális gépeken futó SAP HANA-kiszolgálók Azure Backuppal v
 - Mi a várt napi adatváltozás ezeken a kiszolgálókon?
   - A % az átlagos napi adatváltozási méretet jelzi azon SAP HANA-adatbázisok teljes méretének százalékaként megadva, amelyekről biztonsági másolatot készít a SAP HANA-kiszolgálón.
   - Általában az adatbázisokon „magas” az adatváltozás mértéke.
-  - Ha ismeri a **változás százalékát** , használhatja a **saját adatváltozási százalék megadására** szolgáló lehetőséget.
+  - Ha ismeri a **változás százalékát**, használhatja a **saját adatváltozási százalék megadására** szolgáló lehetőséget.
 - Válassza ki a biztonsági mentési szabályzatot
   - Biztonsági mentés típusa
-    - A leghatékonyabb választható szabályzat a **Napi különbözeti** , **heti/havi/éves** teljes biztonsági mentésekkel. Az Azure Backup egyetlen kattintással visszaállítást tud végezni a különbözeti mentésekből.
+    - A leghatékonyabb választható szabályzat a **Napi különbözeti**, **heti/havi/éves** teljes biztonsági mentésekkel. Az Azure Backup egyetlen kattintással visszaállítást tud végezni a különbözeti mentésekből.
     - **Napi/heti/havi/éves** teljes biztonsági mentést megkövetelő szabályzatot is választhat. Ez a lehetőség kissé több tárhelyet foglal, mint az első.
   - Várhatóan mennyi ideig lesznek megőrizve a „naplók” biztonsági másolatai? (napokban) [7-35]
   - Várhatóan mennyi ideig lesznek megőrizve a „napi” biztonsági másolatok? (napokban)
@@ -155,14 +155,14 @@ Az Azure-beli virtuális gépeken futó SAP HANA-kiszolgálók Azure Backuppal v
 
 Az Azure-fájlmegosztások Azure Backup által nyújtott [pillanatkép-alapú biztonsági mentési megoldással](azure-file-share-backup-overview.md) végzett mentési költségeinek megbecsléséhez a következő paraméterekre lesz szüksége:
 
-- Azon fájlmegosztások mérete ( **GB-ban** ), amelyekről biztonsági másolatot szeretne készíteni.
+- Azon fájlmegosztások mérete (**GB-ban**), amelyekről biztonsági másolatot szeretne készíteni.
 
 - Ha több tárfiók között megoszló fájlmegosztásokról szeretne biztonsági másolatot készíteni, adja meg a fenti méretű fájlmegosztásokat futtató tárfiókok számát.
 
 - Azon fájlmegosztások adatváltozásának várt mennyisége, amelyekről biztonsági másolatot szeretne készíteni. <br>Az adatváltozás azt jelenti, hogy milyen mennyiségű adatmódosítás várható, és közvetlen hatással van a pillanatkép tárolóméretére. Ha például egy fájlmegosztáson 200 GB adatról szeretne biztonsági másolatot készíteni, és ebből 10 GB változik minden nap, akkor a napi változás 5%.
   - A magasabb mértékű adatváltozás azt jelenti, hogy a fájlmegosztás tartalmában minden nap nagy mennyiségű adat változik, így a (csak az adatváltozásokat rögzítő) növekményes pillanatkép mérete is nagyobb lesz.
   - A fájlmegosztás jellemzői és használati adatai alapján válassza az Alacsony (1%), Közepes (3%) vagy Magas (5%) értéket.
-  - Ha ismeri a fájlmegosztás pontos **változási százalékát** , kiválaszthatja a **saját adatváltozási százalék megadására** szolgáló lehetőséget a legördülő listából. Határozza meg a napi, heti, havi és éves adatváltozási értékeket (%-ban).
+  - Ha ismeri a fájlmegosztás pontos **változási százalékát**, kiválaszthatja a **saját adatváltozási százalék megadására** szolgáló lehetőséget a legördülő listából. Határozza meg a napi, heti, havi és éves adatváltozási értékeket (%-ban).
 
 - A tárfiók típusa (standard vagy prémium) és a biztonsági mentési fájlmegosztást tartalmazó tárfiók tárhely-redundanciájának beállítása. <br>Az Azure-fájlmegosztások jelenlegi biztonsági mentési megoldásában a pillanatképeket ugyanaz a tárfiók tárolja, mint a biztonsági mentési fájlmegosztást. Így a pillanatképekkel társított tárolási költség az Azure Files számláiban van feltüntetve, és a biztonsági mentési fájlmegosztást és pillanatképeket tartalmazó tárfiók fióktípusának és redundancia-beállításának megfelelő pillanatkép-díjszabáson alapul.
 

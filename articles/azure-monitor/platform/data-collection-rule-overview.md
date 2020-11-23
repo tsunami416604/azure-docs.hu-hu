@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 64dfc7400380505c882979e68a3bf0adcb8942a0
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 048068a74151bb986392b5cb27787385fc0f5363
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107963"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95315532"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Adatgyűjtés szabályai a Azure Monitorban (előzetes verzió)
 Az adatgyűjtési szabályok (DCR) a Azure Monitorba érkező, illetve az adatküldés és-tárolás helyét adja meg. Ez a cikk áttekintést nyújt az adatgyűjtési szabályokról, beleértve azok tartalmát és szerkezetét, valamint azt, hogy miként hozhat létre és dolgozhat velük.
@@ -49,19 +49,7 @@ Minden adatforrás típusa adatforrással rendelkezik. Mindegyik típus egyedi t
 
 
 ## <a name="limits"></a>Korlátok
-A következő táblázat felsorolja az egyes adatgyűjtési szabályokra jelenleg érvényes korlátokat.
-
-| Korlát | Érték |
-|:---|:---|
-| Adatforrások maximális száma | 10 |
-| Számláló megadásának maximális száma a teljesítményszámláló esetében | 100 |
-| A rendelkezésre állási nevek maximális száma a syslog-ben | 20 |
-| XPath-lekérdezések maximális száma az eseménynaplóban | 100 |
-| Adatforgalom maximális száma | 10 |
-| Adatfolyamok maximális száma | 10 |
-| Bővítmények maximális száma | 10 |
-| A bővítmények beállításainak maximális mérete | 32 KB |
-| Log Analytics munkaterületek maximális száma | 10 |
+Az egyes adatgyűjtési szabályokra vonatkozó korlátokat a [Azure monitor szolgáltatási korlátok](../service-limits.md#data-collection-rules)című részben tekintheti meg.
 
 
 ## <a name="create-a-dcr"></a>DCR létrehozása
@@ -196,6 +184,6 @@ Az alábbi minta adatgyűjtési szabály az Azure felügyeleti ügynökkel rende
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hozzon létre egy adatgyűjtési szabályt](data-collection-rule-azure-monitor-agent.md) , és társítsa azt egy virtuális gépről a Azure monitor ügynök használatával.

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/27/2020
+ms.date: 11/21/2020
 ms.author: memildin
-ms.openlocfilehash: 79dcc645ecff00b3189dc90dcf34e042a78ed318
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9b715ea890c7c85161a9e360bc16f9a2a608d64b
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949326"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95320988"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -39,6 +39,8 @@ A novemberi frissítések a következők:
 - [NIST SP 800 171 R2 hozzáadva a Security Center szabályozási megfelelőségi irányítópulthoz](#nist-sp-800-171-r2-added-to-security-centers-regulatory-compliance-dashboard)
 - [A javaslatok listája mostantól szűrőket is tartalmaz](#recommendations-list-now-includes-filters)
 - [Továbbfejlesztett és bővített automatikus üzembe helyezési élmény](#auto-provisioning-experience-improved-and-expanded)
+- [A biztonságos pontszám már elérhető a folyamatos exportálásban (előzetes verzió)](#secure-score-is-now-available-in-continuous-export-preview)
+- ["A rendszerfrissítéseket telepíteni kell a gépekre" javaslat mostantól aljavaslatokat is tartalmaz](#system-updates-should-be-installed-on-your-machines-recommendation-now-includes-sub-recommendations)
 
 ### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>29 előzetes javaslat hozzáadva az Azure biztonsági teljesítményteszt lefedettségének növeléséhez
 
@@ -103,6 +105,41 @@ Mostantól konfigurálhatja az automatikus kiépítés lehetőségeit:
 - Új Microsoft függőségi ügynök
 
 További információ: [Azure Security Centerból származó automatikus kiépítési ügynökök és bővítmények](security-center-enable-data-collection.md).
+
+
+### <a name="secure-score-is-now-available-in-continuous-export-preview"></a>A biztonságos pontszám már elérhető a folyamatos exportálásban (előzetes verzió)
+
+A biztonságos pontszám folyamatos exportálásával valós időben továbbíthatja a pontszám változásait az Azure Event Hubs vagy egy Log Analytics-munkaterületre. Ezt a képességet a következő célra használhatja:
+
+- a biztonságos pontszám időbeli követése dinamikus jelentésekkel
+- biztonságos pontszám-adatértékek exportálása az Azure Sentinelbe (vagy bármely más SIEM)
+- integrálja ezeket az összes olyan folyamattal, amelyet esetleg már használ a biztonságos pontszám figyeléséhez a szervezetében
+
+További információ a [Security Center adatainak folyamatos exportálásáról](continuous-export.md).
+
+
+### <a name="system-updates-should-be-installed-on-your-machines-recommendation-now-includes-sub-recommendations"></a>"A rendszerfrissítéseket telepíteni kell a gépekre" javaslat mostantól aljavaslatokat is tartalmaz
+
+A **rendszerfrissítéseket telepíteni kell a Machines** javaslatra. Az új verzió az egyes hiányzó frissítésekre vonatkozó aljavaslatokat tartalmaz, és a következő újításokat tartalmazza:
+
+- Egy újratervezett élmény a Azure Portal Azure Security Center lapjain. A **rendszerfrissítésekre** vonatkozó ajánlás részletei lapon telepíteni kell a számítógépeken az alább látható megállapításokat tartalmazó listát. Egyetlen keresés kiválasztásakor megnyílik a részletek ablaktábla a Szervizelési információkra mutató hivatkozással és az érintett erőforrások listájával.
+
+    :::image type="content" source="./media/upcoming-changes/system-updates-should-be-installed-subassessment.png" alt-text="A frissített javaslathoz tartozó alárendelt javaslatok egyikének megnyitása a portálon":::
+
+- Dúsított adatok az Azure Resource Graph (ARG) javaslatához. Az ARG egy olyan Azure-szolgáltatás, amely hatékony erőforrás-feltárást tesz lehetővé. Az ARG használatával nagy léptékű lekérdezéseket végezhet az adott előfizetések között, így hatékonyan szabályozhatja a környezetét. 
+
+    Azure Security Center esetében az ARG és a [Kusto lekérdezési nyelv (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/) használatával kérdezheti le a biztonsági testhelyzetek széles körét.
+
+    Korábban, ha a jelen ajánlást az ARG-ben kérdezte le, az egyetlen elérhető információ az volt, hogy a javaslatot szervizelni kell egy gépen. A továbbfejlesztett verzió következő lekérdezése visszaküldi a hiányzó rendszerfrissítéseket a számítógép szerint csoportosítva.
+
+    ```kusto
+    securityresources
+    | where type =~ "microsoft.security/assessments/subassessments"
+    | where extract(@"(?i)providers/Microsoft.Security/assessments/([^/]*)", 1, id) == "4ab6e3c5-74dd-8b35-9ab9-f61b30875b27"
+    | where properties.status.code == "Unhealthy"
+    ```
+
+
 
 ## <a name="october-2020"></a>2020. október
 

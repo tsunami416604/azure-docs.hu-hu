@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: 76f541a45c56669d17103f16997f3d036955b773
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: cf64deb17bea508637debb5612231d355d523fbb
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94919682"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95315583"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure Monitor-ügynök áttekintése (előzetes verzió)
 A Azure Monitor ügynök (AMA) figyeli a virtuális gépek vendég operációs rendszerének figyelési adatait, és a Azure Monitor számára biztosítja azt. Ez a cikk áttekintést nyújt a Azure Monitor-ügynökről, beleértve a telepítésének módját és az adatgyűjtés konfigurálását.
@@ -54,7 +54,7 @@ A Azure Monitor ügynök nyilvános előzetes verziója a következő korlátoz�
 
 - A Azure Monitor ügynök nem támogatja a megoldásokat és az adatAzure Monitor for VMsokat, például a és a Azure Security Center. Az egyetlen jelenleg támogatott forgatókönyv az adatok gyűjtése a konfigurált adatgyűjtési szabályok használatával. 
 - Az adatgyűjtési szabályokat ugyanabban a régióban kell létrehozni, mint a célhelyként használt Log Analytics munkaterület.
-- Jelenleg csak az Azure-beli virtuális gépek támogatottak. A helyszíni virtuális gépek, a virtuálisgép-méretezési csoportok, az arc a kiszolgálók, az Azure Kubernetes szolgáltatás és más számítási erőforrástípusok jelenleg nem támogatottak.
+- Az Azure Virtual Machines és az Azure arc-kompatibilis kiszolgálók jelenleg támogatottak. A virtuálisgép-méretezési csoportok, az Azure Kubernetes szolgáltatás és más számítási erőforrástípusok jelenleg nem támogatottak.
 - A virtuális gépnek hozzá kell férnie a következő HTTPS-végpontokhoz:
   - *.ods.opinsights.azure.com
   - *. ingest.monitor.azure.com
@@ -91,53 +91,11 @@ A Azure Monitor ügynök által jelenleg támogatott Windows és Linux operáci�
 ## <a name="security"></a>Biztonság
 A Azure Monitor ügynöknek nincs szüksége kulcsra, de a [rendszerhez rendelt felügyelt identitásra](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity)van szükség. Az ügynök telepítése előtt minden virtuális gépen engedélyezve kell lennie egy rendszerhez rendelt felügyelt identitásnak.
 
-## <a name="networking"></a>Hálózat
+## <a name="networking"></a>Hálózatkezelés
 Az Azure Monitor ügynök támogatja az Azure-szolgáltatás címkéit (a AzureMonitor és a AzureResourceManager címkét is kötelező megadni), de még nem működik Azure Monitor magánhálózati vagy közvetlen proxykkal.
 
-## <a name="install-the-azure-monitor-agent"></a>A Azure Monitor ügynök telepítése
-A Azure Monitor ügynök Azure-beli virtuálisgép- [bővítményként](../../virtual-machines/extensions/overview.md) van megvalósítva, és a következő táblázatban található adatokat tartalmazza. 
 
-| Tulajdonság | Windows | Linux |
-|:---|:---|:---|
-| Publisher | Microsoft. Azure. monitor  | Microsoft. Azure. monitor |
-| Típus      | AzureMonitorWindowsAgent | AzureMonitorLinuxAgent  |
-| TypeHandlerVersion  | 1,0 | 1.5 |
+## <a name="next-steps"></a>Következő lépések
 
-Telepítse a Azure Monitor-ügynököt a virtuálisgép-ügynökök telepítésének bármely módszerével, beleértve az alábbiakat a PowerShell vagy a parancssori felület használatával. Azt is megteheti, hogy telepítheti az ügynököt, és az Azure-előfizetésben lévő virtuális gépeken is konfigurálhatja az adatgyűjtést a portálon az [adatgyűjtés konfigurálása a Azure monitor ügynökhöz (előzetes verzió)](data-collection-rule-azure-monitor-agent.md#create-using-the-azure-portal)című szakaszban ismertetett eljárással.
-
-### <a name="windows"></a>Windows
-
-# <a name="cli"></a>[Parancssori felület](#tab/CLI1)
-
-```azurecli
-az vm extension set --name AzureMonitorWindowsAgent --publisher Microsoft.Azure.Monitor --ids {resource ID of the VM}
-
-```
-
-# <a name="powershell"></a>[PowerShell](#tab/PowerShell1)
-
-```powershell
-Set-AzVMExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus
-```
----
-
-
-### <a name="linux"></a>Linux
-
-# <a name="cli"></a>[Parancssori felület](#tab/CLI2)
-
-```azurecli
-az vm extension set --name AzureMonitorLinuxAgent --publisher Microsoft.Azure.Monitor --ids {resource ID of the VM}
-
-```
-
-# <a name="powershell"></a>[PowerShell](#tab/PowerShell2)
-
-```powershell
-Set-AzVMExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus -TypeHandlerVersion 1.5
-```
----
-
-## <a name="next-steps"></a>További lépések
-
+- [Telepítse Azure monitor Agent ügynököt](azure-monitor-agent-install.md) Windows és Linux rendszerű virtuális gépekre.
 - [Hozzon létre egy adatgyűjtési szabályt](data-collection-rule-azure-monitor-agent.md) , amely adatokat gyűjt az ügynöktől, és elküldi azt a Azure monitornak.
