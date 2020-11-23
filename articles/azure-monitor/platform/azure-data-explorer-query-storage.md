@@ -7,12 +7,12 @@ ms.author: bwren
 ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: b3ab711f6d324c6d49eda0dccd88a3f2ac939eb5
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8710e0cdd6c930338009fb2b7f3bd98fafcfad3e
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461583"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95411563"
 ---
 # <a name="query-exported-data-from-azure-monitor-using-azure-data-explorer-preview"></a>Azure Monitor exportált adatok lekérdezése az Azure Adatkezelő használatával (előzetes verzió)
 Az adatok a Azure Monitorból egy Azure Storage-fiókba való exportálása lehetővé teszi az alacsony költségeket és a naplók más régiókban való újrafoglalását. Az Azure Adatkezelő segítségével lekérdezheti az Log Analytics-munkaterületekről exportált adatok lekérdezését. A konfigurálást követően a munkaterületekről egy Azure Storage-fiókba küldendő támogatott táblák az Azure Adatkezelő adatforrásként lesznek elérhetők.
@@ -43,7 +43,7 @@ Azure Monitor naplókat az alábbi lehetőségek bármelyikével exportálhatja 
 
 A hivatkozás létrehozásához az exportált tábla sémájának kell megegyeznie. Használja az [GetSchema](/azure/data-explorer/kusto/query/getschemaoperator) operátort a log Analyticsból az adatok lekéréséhez, beleértve a tábla oszlopait és adattípusait is.
 
-:::image type="content" source="media\azure-data-explorer-query-storage\exported-data-map-schema.jpg" alt-text="Az Azure Adatkezelő exportált Adatlekérdezési folyamat.":::
+:::image type="content" source="media\azure-data-explorer-query-storage\exported-data-map-schema.jpg" alt-text="Log Analytics tábla sémája.":::
 
 Mostantól a kimenet használatával létrehozhatja a Kusto-lekérdezést a külső tábla létrehozásához.
 Az [Azure Storage vagy Azure Data Lake külső tábláinak létrehozása és módosítása](/azure/data-explorer/kusto/management/external-tables-azurestorage-azuredatalake)című témakör útmutatását követve hozzon létre egy külső táblát JSON formátumban, majd futtassa a lekérdezést az Azure adatkezelő-adatbázisból.
@@ -56,12 +56,12 @@ A következő PowerShell-szkript hozza létre a tábla és a leképezés [létre
 ```powershell
 PARAM(
     $resourcegroupname, #The name of the Azure resource group
-    $TableName, # The log lanlyics table you wish to convert to external table
+    $TableName, # The Log Analytics table you wish to convert to external table
     $MapName, # The name of the map
     $subscriptionId, #The ID of the subscription
-    $WorkspaceId, # The log lanlyics WorkspaceId
-    $WorkspaceName, # The log lanlyics workspace name
-    $BlobURL, # The Blob URL where to save
+    $WorkspaceId, # The Log Analytics WorkspaceId
+    $WorkspaceName, # The Log Analytics workspace name
+    $BlobURL, # The Blob URL where the data is saved
     $ContainerAccessKey, # The blob container Access Key (Option to add a SAS url)
     $ExternalTableName = $null # The External Table name, null to use the same name
 )
@@ -116,12 +116,13 @@ Write-Host -ForegroundColor Green $createMapping
 
 Az alábbi képen a kimenet látható.
 
-:::image type="content" source="media/azure-data-explorer-query-storage/external-table-create-command-output.png" alt-text="Az Azure Adatkezelő exportált Adatlekérdezési folyamat.":::
+:::image type="content" source="media/azure-data-explorer-query-storage/external-table-create-command-output.png" alt-text="ExternalTable Create parancs kimenete.":::
 
 [![Példa kimenetre](media/azure-data-explorer-query-storage/external-table-create-command-output.png)](media/azure-data-explorer-query-storage/external-table-create-command-output.png#lightbox)
 
 >[!TIP]
->Másolja, illessze be, majd futtassa a szkript kimenetét az Azure Adatkezelő-ügyfél eszközén a tábla és a leképezés létrehozásához.
+>* Másolja, illessze be, majd futtassa a szkript kimenetét az Azure Adatkezelő-ügyfél eszközén a tábla és a leképezés létrehozásához.
+>* Ha a tárolóban lévő összes adatmennyiséget szeretné használni, módosíthatja a parancsfájlt, és módosíthatja az URL-címet a következőre: " https://your.blob.core.windows.net/containername ; SecKey'
 
 ## <a name="query-the-exported-data-from-azure-data-explorer"></a>Az exportált adatok lekérdezése az Azure Adatkezelő 
 
@@ -133,6 +134,6 @@ external_table("HBTest","map") | take 10000
 
 [![Az exportált adatLog Analytics lekérdezése](media/azure-data-explorer-query-storage/external-table-query.png)](media/azure-data-explorer-query-storage/external-table-query.png#lightbox)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [írhat lekérdezéseket az Azure-ban adatkezelő](https://docs.microsoft.com/azure/data-explorer/write-queries)

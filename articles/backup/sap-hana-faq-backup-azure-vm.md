@@ -3,12 +3,12 @@ title: Gyakori kérdések – SAP HANA-adatbázisok biztonsági mentése Azure-b
 description: Ebből a cikkből megismerheti a SAP HANA adatbázisok a Azure Backup szolgáltatással történő biztonsági mentésével kapcsolatos gyakori kérdésekre adott válaszokat.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 24eb4abaaabe166ceb3e6bdb99f9446d398d03a1
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: bf662600bafcd18b00c8f8d3b673fc3f9c110aca
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686106"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95400207"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Gyakori kérdések – SAP HANA adatbázisok biztonsági mentése Azure-beli virtuális gépeken
 
@@ -52,6 +52,10 @@ Az előzetes regisztrációs parancsfájl futtatásakor a szükséges engedélye
 ### <a name="will-backups-work-after-migrating-sap-hana-from-sdc-to-mdc"></a>A biztonsági mentések a SDC-ről a MDC-be való SAP HANA Migrálás után fognak működni?
 
 Tekintse át a hibaelhárítási útmutató [ezen szakaszát](./backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-a-change-in-sid) .
+
+### <a name="what-should-be-done-while-upgrading-within-the-same-version"></a>Mi a teendő, ha ugyanazon a verzión belül kell frissíteni?
+
+Tekintse át [ezt a szakaszt](backup-azure-sap-hana-database-troubleshoot.md#sdc-version-upgrade-or-mdc-version-upgrade-on-the-same-vm) a hibaelhárítási útmutatóban.
 
 ### <a name="can-azure-hana-backup-be-set-up-against-a-virtual-ip-load-balancer-and-not-a-virtual-machine"></a>Be lehet állítani az Azure HANA Backup szolgáltatást egy virtuális IP-cím (terheléselosztó) és nem virtuális gép között?
 

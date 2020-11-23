@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: b03d559b8952a61896fa79a568fb8200b3618fed
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: ea0e8c148a847ecc23bab5e87a1dc60a626cf0c1
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968638"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95411614"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Az Azure-ban elérhető Red Hat Enterprise Linux-(RHEL-) rendszerképek
 Az Azure különféle RHEL-rendszerképeket kínál különböző használati esetekhez.
@@ -27,7 +27,7 @@ Ez az Azure-ban elérhető RHEL-lemezképek listája. Ha másként nincs megadva
 > [!NOTE]
 > A nyers képek már nem jönnek létre az LVM-particionált lemezképek javára. Az LVM számos előnyt biztosít a régebbi nyers (nem LVM) particionálási sémához képest, beleértve a jóval rugalmasabb partíció-átméretezési lehetőségeket.
 
-Ajánlat| Termékváltozat | Particionálás | Kiépítés | Megjegyzések
+Ajánlat| Termékváltozat | Particionálás | Kiépítés | Jegyzetek
 :----|:----|:-------------|:-------------|:-----
 RHEL          | 6.7      | NYERS    | Linux-ügynök | Meghosszabbított életciklus-támogatás érhető el december 1-től. [További részletek.](redhat-extended-lifecycle-support.md)
 |             | 6.8      | NYERS    | Linux-ügynök | Meghosszabbított életciklus-támogatás érhető el december 1-től. [További részletek.](redhat-extended-lifecycle-support.md)
@@ -55,12 +55,14 @@ RHEL          | 6.7      | NYERS    | Linux-ügynök | Meghosszabbított életci
 |             | 8 – LVM – Gen2| LVM    | Linux-ügynök | Hyper-V Generation 2 – RHEL 8. x rendszerképek. Normál adattárakhoz csatolva.
 |             | 8        | LVM    | Linux-ügynök | RHEL 8,0 lemezképek.
 |             | 8 – Gen2   | LVM    | Linux-ügynök | Hyper-V generációs 2 – RHEL 8,0 lemezképek.
-|             | 8.1      | LVM    | Linux-ügynök | RHEL 8,2 lemezképek. Jelenleg normál adattárakhoz van csatolva.
-|             | 81gen2   | LVM    | Linux-ügynök | Hyper-V generációs 2 – RHEL 8,1 lemezképek. Jelenleg normál adattárakhoz van csatolva.
-|             | 8,1 – CI   | LVM    | Linux-ügynök | A RHEL 8,1 rendszerképeket használ kiépítési ügynökként a Cloud-init használatával. Jelenleg normál adattárakhoz van csatolva.
-|             | 81 – CI-Gen2| LVM    | Linux-ügynök | Hyper-V generációs 2 – RHEL 8,1 lemezképek a kiépítési ügynökként a Cloud-init használatával. Jelenleg normál adattárakhoz van csatolva.
-|             | 8.2      | LVM    | Linux-ügynök | RHEL 8,2 lemezképek. Jelenleg normál adattárakhoz van csatolva.
-|             | 82gen2   | LVM    | Linux-ügynök | Hyper-V generációs 2 – RHEL 8,1 lemezképek. Jelenleg normál adattárakhoz van csatolva.
+|             | 8.1      | LVM    | Linux-ügynök | Alapértelmezés szerint csatolva van a EUS-adattárakhoz.
+|             | 81gen2   | LVM    | Linux-ügynök | Hyper-V 2. generációs, EUS-adattárakhoz csatolva november 2020.
+|             | 8,1 – CI   | LVM    | Linux-ügynök | A EUS-adattárakhoz van csatolva november 2020.
+|             | 81 – CI-Gen2| LVM    | Linux-ügynök | Hyper-V 2. generációs, EUS-adattárakhoz csatolva november 2020.
+|             | 8.2      | LVM    | Linux-ügynök | A EUS-adattárakhoz van csatolva november 2020.
+|             | 82gen2   | LVM    | Linux-ügynök | Hyper-V 2. generációs, EUS-adattárakhoz csatolva november 2020.
+|             | 8.3   | LVM    | Linux-ügynök |  Csatolva a normál adattárakhoz (a RHEL 8,3 EUS nem érhető el)
+|             | 83 – Gen2   | LVM    | Linux-ügynök |Hyper-V 2. generációs – normál adattárakhoz csatolva (a EUS nem érhető el a RHEL 8,3 esetében)
 RHEL – SAP      | 7,4      | LVM    | Linux-ügynök | RHEL 7,4 SAP HANA és üzleti alkalmazásokhoz. A E4S-adattárakhoz csatolva díjat számítunk fel az SAP és a RHEL, valamint az alap számítási díj után.
 |             | 74sap – Gen2| LVM    | Linux-ügynök | RHEL 7,4 SAP HANA és üzleti alkalmazásokhoz. 2. generációs rendszerkép. A E4S-adattárakhoz csatolva díjat számítunk fel az SAP és a RHEL, valamint az alap számítási díj után.
 |             | 7,5       | LVM    | Linux-ügynök | RHEL 7,5 SAP HANA és üzleti alkalmazásokhoz. A E4S-adattárakhoz csatolva díjat számítunk fel az SAP és a RHEL, valamint az alap számítási díj után.
@@ -76,6 +78,11 @@ RHEL – SAP-APPS | 6.8       | NYERS    | Linux-ügynök | RHEL 6,8 az SAP Busi
 |             | 7,4       | LVM    | Linux-ügynök | RHEL 7,4 az SAP Business Applicationshoz.
 |             | 7.6       | LVM    | Linux-ügynök | RHEL 7,6 az SAP Business Applicationshoz.
 |             | 7.7       | LVM    | Linux-ügynök | RHEL 7,7 az SAP Business Applicationshoz.
+|             | 77 – Gen2       | LVM    | Linux-ügynök | RHEL 7,7 az SAP Business Applicationshoz. 2. generációs rendszerkép
+|             | 8.1       | LVM    | Linux-ügynök | RHEL 8,1 az SAP Business Applicationshoz.
+|             | 81 – Gen2      | LVM    | Linux-ügynök | RHEL 8,1 az SAP Business Applicationshoz. 2. generációs rendszerkép.
+|             | 8.2       | LVM    | Linux-ügynök | RHEL 8,2 az SAP Business Applicationshoz.
+|             | 82 – Gen2      | LVM    | Linux-ügynök | RHEL 8,2 az SAP Business Applicationshoz. 2. generációs rendszerkép.
 RHEL – HA       | 7,4       | LVM    | Linux-ügynök | RHEL 7,4, HA a bővítmény be van kapcsolva. Díjat számítunk fel, és a RHEL az alap számítási díj alapján kell fizetni. Elavult a RHEL-SAP-HA lemezképek mellett.
 |             | 7,5       | LVM    | Linux-ügynök | RHEL 7,5, HA a bővítmény be van kapcsolva. Díjat számítunk fel, és a RHEL az alap számítási díj alapján kell fizetni. Elavult a RHEL-SAP-HA lemezképek mellett.
 |             | 7.6       | LVM    | Linux-ügynök | RHEL 7,6, HA a bővítmény be van kapcsolva. Díjat számítunk fel, és a RHEL az alap számítási díj alapján kell fizetni. Elavult a RHEL-SAP-HA lemezképek mellett.
@@ -86,6 +93,10 @@ RHEL – SAP-HA   | 7,4          | LVM    | Linux-ügynök | RHEL 7,4 for SAP az
 |             | 76sapha – Gen2 | LVM    | Linux-ügynök | RHEL 7,6 for SAP az HA és a Update Services szolgáltatással. 2. generációs rendszerkép. E4S-adattárakhoz csatolva. Az alapszintű számítási díjak mellett az SAP és a HA-adattárak, valamint a RHEL díját is felszámítjuk.
 |             | 7.7          | LVM    | Linux-ügynök | RHEL 7,7 for SAP az HA és a Update Services szolgáltatással. E4S-adattárakhoz csatolva. Az alapszintű számítási díjak mellett az SAP és a HA-adattárak, valamint a RHEL díját is felszámítjuk.
 |             | 77sapha – Gen2 | LVM    | Linux-ügynök | RHEL 7,7 for SAP az HA és a Update Services szolgáltatással. 2. generációs rendszerkép. E4S-adattárakhoz csatolva. Az alapszintű számítási díjak mellett az SAP és a HA-adattárak, valamint a RHEL díját is felszámítjuk.
+|             | 8.1          | LVM    | Linux-ügynök | RHEL 8,1 for SAP az HA és a Update Services szolgáltatással. E4S-adattárakhoz csatolva. Az alapszintű számítási díjak mellett az SAP és a HA-adattárak, valamint a RHEL díját is felszámítjuk.
+|             | 81sapha – Gen2          | LVM    | Linux-ügynök | RHEL 8,1 for SAP az HA és a Update Services szolgáltatással. E4S-adattárakhoz csatolt 2. generációs lemezképek. Az alapszintű számítási díjak mellett az SAP és a HA-adattárak, valamint a RHEL díját is felszámítjuk.
+|             | 8.2          | LVM    | Linux-ügynök | RHEL 8,2 for SAP az HA és a Update Services szolgáltatással. Az alapszintű számítási díjak mellett az SAP és a HA-adattárak, valamint a RHEL díját is felszámítjuk.
+|             | 82sapha – Gen2          | LVM    | Linux-ügynök | RHEL 8,2 for SAP az HA és a Update Services szolgáltatással. E4S-adattárakhoz csatolt 2. generációs lemezképek. Az alapszintű számítási díjak mellett az SAP és a HA-adattárak, valamint a RHEL díját is felszámítjuk.
 RHEL – BYOS     |RHEL – lvm74| LVM    | Linux-ügynök | A RHEL 7,4 BYOS-lemezképek, amelyek nem kapcsolódnak a frissítések valamelyikéhez, nem számítanak fel RHEL prémium díjat.
 |             |RHEL – lvm75| LVM    | Linux-ügynök | A RHEL 7,5 BYOS-lemezképek, amelyek nem kapcsolódnak a frissítések valamelyikéhez, nem számítanak fel RHEL prémium díjat.
 |             |RHEL – lvm76| LVM    | Linux-ügynök | A RHEL 7,6 BYOS-lemezképek, amelyek nem kapcsolódnak a frissítések valamelyikéhez, nem számítanak fel RHEL prémium díjat.

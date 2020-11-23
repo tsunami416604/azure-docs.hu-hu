@@ -4,12 +4,12 @@ description: Összefoglalja az Azure-beli virtuális gépek Azure Backup szolgá
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: cff5c68803d0930bbf3310a385ffa0132bcbb3b1
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2c38af9a2e1c4c71bb2d5661758f663efe13a946
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95017026"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95414079"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure-beli virtuális gépek biztonsági mentésének támogatási mátrixa
 
@@ -160,7 +160,7 @@ Adatlemez mérete | Az egyes lemezek mérete legfeljebb 32 TB lehet, és a virtu
 Tárolási típus | Standard HDD, standard SSD, prémium SSD.
 Felügyelt lemezek | Támogatott.
 Titkosított lemezek | Támogatott.<br/><br/> A Azure Disk Encryption használatával engedélyezett Azure virtuális gépek biztonsági mentése (az Azure AD-alkalmazással vagy anélkül).<br/><br/> A titkosított virtuális gépek nem állíthatók helyre a fájl/mappa szintjén. A teljes virtuális gépet helyre kell állítani.<br/><br/> Engedélyezheti a titkosítást a Azure Backup által már védett virtuális gépeken.
-írásgyorsító engedélyezett lemezek | Nem támogatott.<br/><br/> A Azure Backup automatikusan kizárja a lemezeket, amelyeken a írásgyorsító (WA) engedélyezve van a biztonsági mentés során. Mivel nem készít biztonsági mentést, nem állíthatja vissza ezeket a lemezeket a virtuális gép helyreállítási pontjairól. <br><br> **Fontos megjegyzés**: a WA lemezekkel rendelkező virtuális gépeknek internetkapcsolatra van szükségük a sikeres biztonsági mentéshez (annak ellenére, hogy ezek a lemezek ki vannak zárva a biztonsági mentésből.)
+írásgyorsító engedélyezett lemezek | 2020 november 23-án a Korea középső régiójában (KRC) és Észak-Afrikában (SAN) is támogatott.<br/><br/> Azure Backup biztonsági másolatot készít a virtuális gépekről, amelyek lemezei a biztonsági mentés során engedélyezve vannak az írási Accelarted (WA).  
 Biztonsági mentés & deduplikált virtuális gépek/lemezek visszaállítása | A Azure Backup nem támogatja a lemásolást. További információkért tekintse meg ezt a [cikket](./backup-support-matrix.md#disk-deduplication-support) <br/> <br/>  -Azure Backup nem távolítja el a virtuális gépeket a Recovery Services-tárolóban <br/> <br/>  – Ha a visszaállítás során a rendszer lemásolja a virtuális gépeket, a fájlok nem állíthatók vissza, mert a tároló nem érti a formátumot. A virtuális gép teljes visszaállítását azonban sikeresen elvégezheti.
 Lemez hozzáadása a védett virtuális géphez | Támogatott.
 Lemez átméretezése védett virtuális gépen | Támogatott.
@@ -208,10 +208,10 @@ Az adatbiztonságot:
 
 **Gép** | **Átvitel közben** | **Nyugalmi állapotban**
 --- | --- | ---
-Helyszíni Windows rendszerű gépek DPM/MABS nélkül | ![Igen][green] | ![Yes][green]
-Azure-beli virtuális gépek | ![Igen][green] | ![Yes][green]
-Helyszíni/Azure-beli virtuális gépek DPM-mel | ![Igen][green] | ![Yes][green]
-Helyszíni/Azure-beli virtuális gépek MABS-mel | ![Igen][green] | ![Yes][green]
+Helyszíni Windows rendszerű gépek DPM/MABS nélkül | ![Igen][green] | ![Igen][green]
+Azure-beli virtuális gépek | ![Igen][green] | ![Igen][green]
+Helyszíni/Azure-beli virtuális gépek DPM-mel | ![Igen][green] | ![Igen][green]
+Helyszíni/Azure-beli virtuális gépek MABS-mel | ![Igen][green] | ![Igen][green]
 
 ## <a name="vm-compression-support"></a>VM-tömörítés támogatása
 
@@ -224,7 +224,7 @@ A Backup a következő táblázatban összefoglalt biztonsági mentési forgalom
 --- | --- | ---
 Helyszíni Windows rendszerű gépek DPM/MABS nélkül | NA | ![Igen][green]
 Azure-beli virtuális gépek | NA | NA
-Helyszíni/Azure-beli virtuális gépek DPM-mel | ![Igen][green] | ![Yes][green]
+Helyszíni/Azure-beli virtuális gépek DPM-mel | ![Igen][green] | ![Igen][green]
 Helyszíni/Azure-beli virtuális gépek MABS-mel | ![Igen][green] | ![Igen][green]
 
 ## <a name="next-steps"></a>Következő lépések

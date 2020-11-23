@@ -3,12 +3,12 @@ title: Az adatbázisok biztonsági mentésével kapcsolatos hibák elhárítása
 description: Leírja, hogy miként lehet elhárítani a SAP HANA-adatbázisok biztonsági mentésekor Azure Backup használata során előforduló gyakori hibákat.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 5cdad55ef849b9ced31646466e2c2c170ebf0827
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9fa73ee38e337a547816432212bc68d419f40bb
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89377684"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95411325"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>SAP HANA-adatbázisok Azure-beli biztonsági mentésének hibáinak megoldása
 
@@ -74,7 +74,7 @@ A biztonsági mentések konfigurálása előtt tekintse át az [előfeltételeke
 | Hibaüzenet      | <span style="font-weight:normal">A rendszer érvénytelen backint-konfigurációt észlelt</span>                       |
 | ------------------ | ------------------------------------------------------------ |
 | **Lehetséges okok**    | Helytelenül vannak megadva a háttérbeli paraméterek Azure Backup |
-| **Javasolt művelet** | Ellenőrizze, hogy a következő (backint) paraméterek be vannak-e állítva:<br/>\* [catalog_backup_using_backint: true]<br/>\* [enable_accumulated_catalog_backup: FALSE]<br/>\* [parallel_data_backup_backint_channels: 1]<br/>\* [log_backup_timeout_s: 900)]<br/>\* [backint_response_timeout: 7200]<br/>Ha backint paraméterek találhatók a GAZDAGÉPen, távolítsa el őket. Ha a paraméterek nem találhatók meg a GAZDAGÉP szintjén, de az adatbázis szintjén manuálisan lettek módosítva, állítsa azokat a megfelelő értékekre a korábban leírtak szerint. Vagy futtassa a [védelem leállítása és a biztonsági mentési adatok megőrzése](./sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) a Azure Portal, majd válassza a **biztonsági mentés folytatása**lehetőséget. |
+| **Javasolt művelet** | Ellenőrizze, hogy a következő (backint) paraméterek be vannak-e állítva:<br/>\* [catalog_backup_using_backint: true]<br/>\* [enable_accumulated_catalog_backup: FALSE]<br/>\* [parallel_data_backup_backint_channels: 1]<br/>\* [log_backup_timeout_s: 900)]<br/>\* [backint_response_timeout: 7200]<br/>Ha backint paraméterek találhatók a GAZDAGÉPen, távolítsa el őket. Ha a paraméterek nem találhatók meg a GAZDAGÉP szintjén, de az adatbázis szintjén manuálisan lettek módosítva, állítsa azokat a megfelelő értékekre a korábban leírtak szerint. Vagy futtassa a [védelem leállítása és a biztonsági mentési adatok megőrzése](./sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) a Azure Portal, majd válassza a **biztonsági mentés folytatása** lehetőséget. |
 
 ### <a name="usererrorincompatiblesrctargetsystemsforrestore"></a>UserErrorIncompatibleSrcTargetSystemsForRestore
 
@@ -153,7 +153,7 @@ Az operációs rendszer, a SDC verziójának változása vagy a MDC változása 
 - Győződjön meg arról, hogy az új operációsrendszer-verzió, a SDC vagy a MDC verziója jelenleg [támogatott a Azure Backup](sap-hana-backup-support-matrix.md#scenario-support)
 - A [védelem leállítása](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) az adatbázis megőrzése érdekében
 - A frissítés vagy a frissítés végrehajtása
-- Futtassa újra az előzetes regisztrációs parancsfájlt. A frissítési folyamat általában eltávolítja a szükséges szerepköröket. Az előzetes regisztrációs parancsfájl futtatása segít ellenőrizni az összes szükséges szerepkört.
+- Futtassa újra az előzetes regisztrációs parancsfájlt. A frissítési folyamat gyakran el is távolíthatja [a szükséges szerepköröket](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does). Az előzetes regisztrációs szkript futtatása segít ellenőrizni az összes szükséges szerepkört.
 - Az adatbázis védelmének újbóli folytatása
 
 ## <a name="sdc-to-mdc-upgrade-with-no-change-in-sid"></a>SDC a MDC frissítéséhez a SID módosítása nélkül

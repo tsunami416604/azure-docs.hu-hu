@@ -839,9 +839,9 @@
             - name: Az Azure Event Hubs és az Azure Storage
               href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
             - name: A Spring Boot Starter használata
-              href: /azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?context=%252fazure%252fcosmos-db%252fcontext%252fcontext
+              href: /azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?context=%2fazure%2fcosmos-db%2fcontext%2fcontext
             - name: Spring Data fejlesztői útmutató
-              href: /azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb?context=%252fazure%252fcosmos-db%252fcontext%252fcontext
+              href: /azure/developer/java/spring-framework/how-to-guides-spring-data-cosmosdb?context=%2fazure%2fcosmos-db%2fcontext%2fcontext
             - name: ODBC-illesztő
               href: odbc-driver.md
     - name: Referencia
@@ -958,7 +958,7 @@
           displayName: 'request units, RUs, RU, charge, consumption'
           href: find-request-unit-charge-cassandra.md
         - name: A Spring Data tárolása és kezelése
-          href: /azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?context=%252fazure%252fcosmos-db%252fcontext%252fcontext
+          href: /azure/developer/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?context=%2fazure%2fcosmos-db%2fcontext%2fcontext
         - name: Cassandra és Spark
           items:
             - name: Introduction (Bevezetés)
@@ -1094,7 +1094,7 @@
         - name: Lekérdezési teljesítmény hibaelhárítása
           href: mongodb-troubleshoot-query.md
         - name: A Spring Data tárolása és kezelése
-          href: /azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?context=%252fazure%252fcosmos-db%252fcontext%252fcontext
+          href: /azure/developer/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?context=%2fazure%2fcosmos-db%2fcontext%2fcontext
         - name: A MongoDB bővítmény parancsai
           href: mongodb-custom-commands.md
           displayName: custom commands
@@ -1175,7 +1175,7 @@
         - name: Gráfadatok vizualizációja
           href: graph-visualization.md
         - name: A Spring Data tárolása és kezelése
-          href: /azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?context=%252fazure%252fcosmos-db%252fcontext%252fcontext
+          href: /azure/developer/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?context=%2fazure%2fcosmos-db%2fcontext%2fcontext
         - name: Kezelés Resource Manager-sablonokkal
           href: templates-samples-gremlin.md
           displayName: ARM

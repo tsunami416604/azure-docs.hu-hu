@@ -3,26 +3,26 @@ title: AMQP 1,0 Azure Service Bus és Event Hubs protokoll útmutatójában | Mi
 description: A Azure Service Bus és Event Hubs AMQP 1,0-es kifejezésekre és leírására vonatkozó protokoll-útmutató
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: ffccd49d37dbf2a8fc404e9895b648e53007675c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32e71211ed1574cade0567f7944b154eea062b24
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88064536"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95396875"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1,0 Azure Service Bus és Event Hubs protokoll útmutatója
 
-Az 1,0-as speciális üzenetsor-kezelési protokoll egy szabványosított kialakítási és adatátviteli protokoll a két fél közötti üzenetek aszinkron, biztonságos és megbízható átviteléhez. Ez az Azure Service Bus üzenetkezelés és az Azure Event Hubs elsődleges protokollja. Mindkét szolgáltatás támogatja a HTTPS protokollt is. A védett SBMP protokoll is támogatott a AMQP mellett.
+Az 1,0-as speciális üzenetsor-kezelési protokoll egy szabványosított kialakítási és adatátviteli protokoll a két fél közötti üzenetek aszinkron, biztonságos és megbízható átviteléhez. Ez az Azure Service Bus üzenetkezelés és az Azure Event Hubs elsődleges protokollja.  
 
-A AMQP 1,0 az olyan széleskörű iparági együttműködés eredménye, amely többek között a Microsoft és a Red Hat köztes, a nagyvállalati szintű üzenetkezeléssel rendelkező felhasználókkal, például a JP Morgan Chasetel közösen egyesítve a pénzügyi szolgáltatások iparágát. A AMQP protokoll és a bővítmények specifikációinak technikai szabványosítási fóruma az OASIS, és nemzetközi szabványként, ISO/IEC 19494-ként megszerezte a formális jóváhagyást.
+A AMQP 1,0 az olyan széleskörű iparági együttműködés eredménye, amely többek között a Microsoft és a Red Hat köztes, a nagyvállalati szintű üzenetkezeléssel rendelkező felhasználókkal, például a JP Morgan Chasetel közösen egyesítve a pénzügyi szolgáltatások iparágát. A AMQP protokoll és a bővítmények specifikációinak technikai szabványosítási fóruma az OASIS, és nemzetközi szabványként, ISO/IEC 19494:2014-ként megszerezte a formális jóváhagyást. 
 
 ## <a name="goals"></a>Célok
 
-Ez a cikk röviden összefoglalja az AMQP 1,0 üzenetkezelési specifikációjának alapvető fogalmait, valamint az AMQP technikai bizottságban jelenleg véglegesítésre kerülő draft-bővítményekre vonatkozó specifikációkat, valamint ismerteti, hogy a Azure Service Bus hogyan implementálja és építi ezeket a specifikációkat.
+Ez a cikk összefoglalja az AMQP 1,0 üzenetkezelési specifikációjának alapvető fogalmait az [Oasis AMQP technikai Bizottsága](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp) által fejlesztett kiterjesztési specifikációk és a Azure Service Bus megvalósításának és a specifikációk alapján történő összeállításának módját ismerteti.
 
 A cél minden olyan fejlesztő számára, aki bármilyen platformon meglévő AMQP 1,0-alapú ügyfélszoftvert használ, hogy a AMQP 1,0-on keresztül képes legyen kommunikálni a Azure Service Bus használatával.
 
-Az általános célú AMQP 1,0 stackek, például az Apache proton vagy a AMQP.NET Lite, már implementálják az összes Core AMQP 1,0-protokollt. Ezek az alapvető kézmozdulatok időnként magasabb szintű API-val vannak becsomagolva; Az Apache proton még két, a kötelező Messenger API-t és a reaktív reaktor API-t is kínálja.
+Az általános célú AMQP 1,0-stackek, például az [Apache csontos proton](https://qpid.apache.org/proton/index.html) vagy a [AMQP.net Lite](https://github.com/Azure/amqpnetlite), implementálják az összes alapvető AMQP 1,0, például a munkameneteket és a hivatkozásokat. Ezeket az alapvető elemeket esetenként egy magasabb szintű API-val burkoltuk. Az Apache proton még két, a kötelező Messenger API-t és a reaktív reaktor API-t is kínálja.
 
 A következő vitában feltételezzük, hogy a AMQP-kapcsolatok,-munkamenetek és-hivatkozások, valamint a keretek és a folyamatok vezérlésének kezelése a megfelelő verem (például Apache proton-C) alapján történik, és nem igényel sok figyelmet az alkalmazás fejlesztőitől. Absztraktan feltételezzük, hogy létezik néhány API-primitív, például a csatlakozás lehetősége, valamint a *küldő* és a *fogadó* absztrakciós objektumok valamilyen formájának létrehozása, amelyek ezután valamilyen formában `send()` és `receive()` művelettel rendelkeznek.
 
@@ -30,7 +30,7 @@ A Azure Service Bus speciális képességeinek, például az üzenetek böngész
 
 ## <a name="what-is-amqp"></a>Mi az a AMQP?
 
-A AMQP egy keretezési és adatátviteli protokoll. A keretezés azt jelenti, hogy olyan bináris adatfolyamok szerkezetét biztosítja, amelyek a hálózati kapcsolatok bármelyik irányában áramlanak. A struktúra körvonalazza az *adatkeretek*elnevezésű különböző adatblokkokat a csatlakoztatott felek között. Az átvitel képességei biztosítják, hogy mindkét kommunikációs fél közösen megértse a keretek átadásának időpontját, és az átvitelek teljesnek tekintendők.
+A AMQP egy keretezési és adatátviteli protokoll. A keretezés azt jelenti, hogy olyan bináris adatfolyamok szerkezetét biztosítja, amelyek a hálózati kapcsolatok bármelyik irányában áramlanak. A struktúra körvonalazza az *adatkeretek* elnevezésű különböző adatblokkokat a csatlakoztatott felek között. Az átvitel képességei biztosítják, hogy mindkét kommunikációs fél közösen megértse a keretek átadásának időpontját, és az átvitelek teljesnek tekintendők.
 
 A AMQP munkacsoport által a korábbi lejárt verzióktól eltérően, amelyeket továbbra is használ néhány üzenet-közvetítő, a munkacsoport végleges és szabványosított AMQP 1,0-es protokollja nem írja elő az üzenet-átvitelszervező jelenlétét, illetve az egyes entitások egy adott topológiáját.
 
@@ -46,7 +46,7 @@ A leghitelesebb forrás, amelyből megismerheti, hogy a AMQP hogyan működik a 
 
 ### <a name="connections-and-sessions"></a>Kapcsolatok és munkamenetek
 
-A AMQP meghívja a kommunikáló programok *tárolóit*; Ezek olyan *csomópontokat*tartalmaznak, amelyek a tárolóban lévő entitásokat kommunikálják. A várólista lehet egy csomópont. A AMQP lehetővé teszi a többszörös használatot, így egyetlen kapcsolat használható a csomópontok közötti számos kommunikációs útvonalhoz. egy alkalmazás-ügyfél például egyidejűleg tud fogadni egy várólistából, és ugyanazon a hálózati kapcsolaton keresztül küld egy másik várólistára.
+A AMQP meghívja a kommunikáló programok *tárolóit*; Ezek olyan *csomópontokat* tartalmaznak, amelyek a tárolóban lévő entitásokat kommunikálják. A várólista lehet egy csomópont. A AMQP lehetővé teszi a többszörös használatot, így egyetlen kapcsolat használható a csomópontok közötti számos kommunikációs útvonalhoz. egy alkalmazás-ügyfél például egyidejűleg tud fogadni egy várólistából, és ugyanazon a hálózati kapcsolaton keresztül küld egy másik várólistára.
 
 ![A tárolók közötti munkameneteket és kapcsolatokat bemutató diagram.][1]
 
@@ -63,7 +63,7 @@ A szállítási kapcsolat létrejötte után a tárolók kinyilvánítják a max
 
 Azt is nyilatkozzák, hogy hány párhuzamos csatorna támogatott. A csatorna egy egyirányú, kimenő, virtuális átviteli útvonal a kapcsolatok tetején. A munkamenetek minden összekapcsolt tárolóból egy kétirányú kommunikációs útvonalat alkotnak.
 
-A munkamenetek ablakos folyamat-ellenőrzési modellel rendelkeznek; a munkamenetek létrehozásakor mindkét fél kijelenti, hogy hány képkockát szeretne fogadni a fogadási ablakába. Ahogy a felek Exchange-keretek, az átvitt keretek kitöltik az ablakot, és az átvitel leáll, amikor az ablak megtelt, és amíg az ablak alaphelyzetbe nem áll a *flow performatív* (a*performatív* a két fél között cserélt protokoll szintű kézmozdulatok AMQP kifejezése).
+A munkamenetek ablakos folyamat-ellenőrzési modellel rendelkeznek; a munkamenetek létrehozásakor mindkét fél kijelenti, hogy hány képkockát szeretne fogadni a fogadási ablakába. Ahogy a felek Exchange-keretek, az átvitt keretek kitöltik az ablakot, és az átvitel leáll, amikor az ablak megtelt, és amíg az ablak alaphelyzetbe nem áll a *flow performatív* (a *performatív* a két fél között cserélt protokoll szintű kézmozdulatok AMQP kifejezése).
 
 Ez az ablak alapú modell nagyjából hasonlít az ablakos folyamatok vezérlésének TCP-fogalmára, de a szoftvercsatornán belüli munkamenet szintjén. A protokoll azon koncepciója, amely lehetővé teszi több egyidejű munkamenet használatát, így a magas prioritású forgalmat a korábbi, az országúti expressz sávban, például a normál forgalomnál lehet kirohanni.
 
@@ -77,14 +77,14 @@ A TCP protokollon keresztül AMQP-kapcsolatokat használó ügyfeleknek a helyi 
 
 ![Cél portok listája][4]
 
-A .NET-ügyfelek meghiúsulnak a SocketException ("a hozzáférési engedélyeik által tiltott szoftvercsatornák elérésére tett kísérlet"), ha a tűzfal blokkolja ezeket a portokat. A szolgáltatás letiltható `EnableAmqpLinkRedirect=false` a történt karakterlánc beállításával, amely arra kényszeríti az ügyfeleket, hogy az 5671-as porton keresztül kommunikáljanak a távoli szolgáltatással.
+A .NET-ügyfelek meghiúsulnak a SocketException ("a hozzáférési engedélyeik által tiltott szoftvercsatornák elérésére tett kísérlet"), ha a tűzfal blokkolja ezeket a portokat. A szolgáltatás letiltható `EnableAmqpLinkRedirect=false` a kapcsolati karakterlánc beállításával, amely arra kényszeríti az ügyfeleket, hogy az 5671-as porton keresztül kommunikáljanak a távoli szolgáltatással.
 
 
 ### <a name="links"></a>Hivatkozások
 
 A AMQP a hivatkozásokon keresztül továbbítja az üzeneteket. A hivatkozás egy munkameneten keresztül létrehozott kommunikációs útvonal, amely lehetővé teszi, hogy az üzeneteket az egyik irányba vigye át. az átvitel állapotának egyeztetése a kapcsolaton keresztül történik, és kétirányú a csatlakoztatott felek között.
 
-![Képernyőfelvétel: a munkamenet carryign két tároló közötti kapcsolati kapcsolatot mutat.][2]
+![Képernyőfelvétel a két tároló közötti kapcsolati kapcsolattal rendelkező munkamenetről.][2]
 
 A hivatkozásokat a tárolók bármikor létrehozhatják egy meglévő munkamenet során, így a AMQP számos más protokolltól, például a HTTP-től és a MQTT-tól eltérő módon hozhatók létre, ahol az átvitel és az átadás útvonalának megkezdése kizárólagos jogosultságot biztosít a szoftvercsatorna-kapcsolatot létrehozó fél számára.
 
@@ -108,7 +108,7 @@ A rendszeres eset az, hogy az üzeneteket a rendszer nem rendezi, és a fogadó 
 
 Az elutasítás egy speciális formája a *felszabadított* állapot, amely azt jelzi, hogy a fogadó nem rendelkezik technikai kifogással az átvitelhez, de nem érdekli az átvitel rendezése is. Ez az eset például akkor áll fenn, ha egy üzenetet egy Service Bus ügyfélnek küldenek, és az ügyfél úgy dönt, hogy "elhagyja" az üzenetet, mert nem tudja végrehajtani az üzenet feldolgozásával létrejövő munkát. az üzenet kézbesítése nem vétkes. Ennek az állapotnak a variációja a *módosított* állapot, amely lehetővé teszi, hogy az üzenet a megjelenésének megfelelően módosítható legyen. A Service Bus jelenleg nem használja ezt az állapotot.
 
-A AMQP 1,0 specifikáció a *kapott*további állapotot határozza meg, amely különösen segít a kapcsolat helyreállításának kezelésében. A link Recovery lehetővé teszi egy hivatkozás állapotának, valamint az új kapcsolaton és munkameneten felüli függőben lévő kézbesítések helyreállítását, ha az előző kapcsolat és a munkamenet megszakadt.
+A AMQP 1,0 specifikáció a *kapott* további állapotot határozza meg, amely különösen segít a kapcsolat helyreállításának kezelésében. A link Recovery lehetővé teszi egy hivatkozás állapotának, valamint az új kapcsolaton és munkameneten felüli függőben lévő kézbesítések helyreállítását, ha az előző kapcsolat és a munkamenet megszakadt.
 
 Service Bus nem támogatja a csatolások helyreállítását; Ha az ügyfél elveszíti a kapcsolatot, hogy Service Bus egy nem teljesített üzenetküldési folyamatban, az üzenet átvitele megszakad, és az ügyfélnek újra kell kapcsolódnia, újra létre kell hoznia a hivatkozást, majd újra kell próbálkoznia az átvitelsel.
 
@@ -120,7 +120,7 @@ A lehetséges duplikált küldések kompenzálása érdekében a Service Bus tá
 
 A korábban tárgyalt munkamenet-szintű folyamat-vezérlési modellen kívül minden hivatkozás saját flow-vezérlési modellel rendelkezik. A munkamenet-szintű folyamat vezérlése megvédi a tárolót attól, hogy egyszerre túl sok képkockát kezeljen, a kapcsolati szintű flow-vezérlés pedig az alkalmazás felügyeletét, hogy hány üzenetet szeretne kezelni egy hivatkozásról és mikor.
 
-![A forrás, a cél, a forrásport, a célport és a protokoll nevét bemutató napló képernyőképe. A fiest sorban a 10401-as célként megadott port (0x28 A 1) feketén van.][4]
+![A forrás, a cél, a forrásport, a célport és a protokoll nevét bemutató napló képernyőképe. Az első sorban a 10401-as célport (0x28 A 1) feketén van.][4]
 
 Egy hivatkozáson az átvitelek csak akkor történnek, ha a küldőnek van elegendő *hivatkozása*. A link Credit a fogadó által a *flow* performatív használatával beállított számláló, amely egy hivatkozásra terjed ki. Ha a küldőhöz hivatkozás-jóváírás van hozzárendelve, az üzenetek kézbesítésével megkísérli ezt a jóváírást használni. Minden üzenet kézbesítése eggyel csökkenti a fennmaradó hivatkozás-jóváírást. A hivatkozás felhasználása után a kézbesítések leállnak.
 
@@ -130,7 +130,7 @@ A küldő szerepkörben Service Bus üzeneteket küld az összes függőben lév
 
 Az API szintjén a "Receive" hívás egy olyan *folyamatot* performatív, amelyet az ügyfél Service Bus küld, és Service Bus a hitelkeretet az első elérhető, kinyitott üzenet alapján, zárolással és a sorból való átvitelsel. Ha nincs elérhető üzenet a kézbesítéshez, az adott entitással létesített bármelyik kapcsolatra vonatkozó, az adott entitáshoz tartozó fennmaradó kreditet az érkezési sorrendben rögzíti a rendszer, és az üzenetek zárolva lesznek, és az elérhetővé válnak, hogy a rendelkezésre álló krediteket használják.
 
-Az üzenet zárolása akkor jelenik meg, ha az átvitel bekerül az egyik olyan terminál-állapotba, amelyet *elfogadtak*, *visszautasítanak*vagy *felszabadítanak*. Az üzenet el lesz távolítva Service Bus a terminál állapotának *elfogadásakor*. Service Bus marad, és a következő fogadónak küldi el, amikor az átvitel eléri a többi állapotot. Service Bus automatikusan áthelyezi az üzenetet az entitás kézbesítetlen levelek-sorába, amikor eléri az entitás számára engedélyezett maximális kézbesítési értéket az ismételt elutasítás vagy kiadás miatt.
+Az üzenet zárolása akkor jelenik meg, ha az átvitel bekerül az egyik olyan terminál-állapotba, amelyet *elfogadtak*, *visszautasítanak* vagy *felszabadítanak*. Az üzenet el lesz távolítva Service Bus a terminál állapotának *elfogadásakor*. Service Bus marad, és a következő fogadónak küldi el, amikor az átvitel eléri a többi állapotot. Service Bus automatikusan áthelyezi az üzenetet az entitás kézbesítetlen levelek-sorába, amikor eléri az entitás számára engedélyezett maximális kézbesítési értéket az ismételt elutasítás vagy kiadás miatt.
 
 Annak ellenére, hogy a Service Bus API-k közvetlenül nem tesznek elérhetővé ilyen lehetőséget, az alacsonyabb szintű AMQP protokoll-ügyfél a link-Credit modellt használva a "lekéréses" interakciót az egyes fogadási kérelmek egy "leküldéses stílusú" modellbe való kiküldésére használhatja, ha nagyszámú hivatkozás-jóváírást bocsát ki, majd a további interakció nélkül elérhetővé válik. A leküldéses szolgáltatás a [MessagingFactory. PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) vagy a [MessageReceiver. PrefetchCount](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) tulajdonság beállításain keresztül támogatott. Ha nem nulla, a AMQP-ügyfél a hivatkozási jóváírásként használja.
 
@@ -222,7 +222,7 @@ Az alkalmazás által definiált összes tulajdonságot le kell képezni a AMQP 
 | --- | --- | --- |
 | üzenet-azonosító |Az üzenet alkalmazás által definiált, szabad formátumú azonosítója. Ismétlődő észleléshez használatos. |[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | felhasználói azonosító |Az alkalmazás által definiált felhasználói azonosító, Service Bus nem értelmezhető. |Nem érhető el a Service Bus API-n keresztül. |
-| a következőre: |Az alkalmazás által definiált cél-azonosító, amelyet a Service Bus nem értelmez. |[Művelet](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| a következőre: |Az alkalmazás által definiált cél-azonosító, amelyet a Service Bus nem értelmez. |[Hogy](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | tulajdonos |Az alkalmazás által definiált üzenet céljának azonosítója Service Bus szerint nem értelmezhető. |[Címke](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | Válasz címzettje |Az alkalmazás által definiált válasz-elérésiút jelző, amelyet a Service Bus nem értelmez. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | korrelációs azonosító |Az alkalmazás által definiált korrelációs azonosító Service Bus nem értelmezhető. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
@@ -319,7 +319,7 @@ Ez a szakasz az Azure Service Bus fejlett képességeit mutatja be, amelyek a AM
 
 ### <a name="amqp-management"></a>AMQP-kezelés
 
-A AMQP-felügyeleti specifikáció a jelen cikkben tárgyalt draft-bővítmények közül az első. Ez a specifikáció olyan protokollok készletét határozza meg, amelyek a AMQP protokollon felül vannak, amelyek lehetővé teszik a felügyeleti interakciót a AMQP-en keresztül az üzenetkezelési infrastruktúrával. A specifikáció általános műveleteket (például *Létrehozás*, *olvasás*, *frissítés*és *Törlés* ) határoz meg az üzenetkezelési infrastruktúrán belüli entitások és a lekérdezési műveletek készletének kezeléséhez.
+A AMQP-felügyeleti specifikáció a jelen cikkben tárgyalt draft-bővítmények közül az első. Ez a specifikáció olyan protokollok készletét határozza meg, amelyek a AMQP protokollon felül vannak, amelyek lehetővé teszik a felügyeleti interakciót a AMQP-en keresztül az üzenetkezelési infrastruktúrával. A specifikáció általános műveleteket (például *Létrehozás*, *olvasás*, *frissítés* és *Törlés* ) határoz meg az üzenetkezelési infrastruktúrán belüli entitások és a lekérdezési műveletek készletének kezeléséhez.
 
 Ezek a kézmozdulatok az ügyfél és az üzenetkezelési infrastruktúra közötti kérés/válasz interakciót igénylik, ezért a specifikáció meghatározza, hogyan modellezhető az interakciós minta a AMQP: az ügyfél csatlakozik az üzenetkezelési infrastruktúrához, elindítja a munkamenetet, majd létrehoz egy pár hivatkozást. Egy hivatkozáson az ügyfél feladóként működik, a másik pedig fogadóként viselkedik, így egy pár olyan hivatkozást hoz létre, amely kétirányú csatornaként működhet.
 
@@ -351,7 +351,7 @@ A AMQP SASL-integrációja két hátránya van:
 
 A Service Bus által megvalósított AMQP CBS-specifikáció lehetővé teszi a két probléma elegáns megkerülő megoldását: lehetővé teszi, hogy az ügyfél a hozzáférési jogkivonatokat társítsa az egyes csomópontokhoz, és a jogkivonatokat a lejáratuk előtt frissítse, anélkül, hogy az üzenet áramlását megszakítja.
 
-A CBS definiál egy *$CBS*nevű virtuális felügyeleti csomópontot, amelyet az üzenetkezelési infrastruktúra biztosít. A felügyeleti csomópont az üzenetkezelési infrastruktúra bármely más csomópontjának nevében fogadja el a jogkivonatokat.
+A CBS definiál egy *$CBS* nevű virtuális felügyeleti csomópontot, amelyet az üzenetkezelési infrastruktúra biztosít. A felügyeleti csomópont az üzenetkezelési infrastruktúra bármely más csomópontjának nevében fogadja el a jogkivonatokat.
 
 A protokoll-kézmozdulat a felügyeleti specifikáció által meghatározott kérelem/válasz típusú Exchange. Ez azt jelenti, hogy az ügyfél összekapcsolja az *$CBS* csomópontot, majd átadja a kérést a kimenő hivatkozáson, majd megvárja a választ a bejövő hivatkozáson.
 

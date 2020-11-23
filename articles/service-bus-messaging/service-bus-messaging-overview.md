@@ -2,13 +2,13 @@
 title: Az Azure Service Bus-üzenetkezelés áttekintése | Microsoft Docs
 description: Ez a cikk átfogó áttekintést nyújt a Azure Service Busről, amely egy teljes körűen felügyelt Enterprise Integration Message Broker.
 ms.topic: overview
-ms.date: 06/23/2020
-ms.openlocfilehash: 478dd0debb5117e76cf8d0ab6599dcf363c12ab3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 11/20/2020
+ms.openlocfilehash: febb25474f84819b0afc9ab1f9af96e93489ab54
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87501474"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95415286"
 ---
 # <a name="what-is-azure-service-bus"></a>Mi az Azure Service Bus?
 
@@ -19,7 +19,7 @@ Az adatok különböző alkalmazások és szolgáltatások közötti átvitele a
 Néhány gyakori üzenetküldési forgatókönyv:
 
 * *Üzenetküldés*. Üzleti adatok (például értékesítési vagy beszerzési rendelések, naplók vagy leltározási mozgások) továbbítása.
-* *Alkalmazások*leválasztása. Az alkalmazások és szolgáltatások megbízhatóságának és méretezhetőségének javítása. Az ügyfélnek és a szolgáltatásnak nem kell egyszerre online állapotban lennie.
+* *Alkalmazások* leválasztása. Az alkalmazások és szolgáltatások megbízhatóságának és méretezhetőségének javítása. Az ügyfélnek és a szolgáltatásnak nem kell egyszerre online állapotban lennie.
 * *Témakörök és előfizetések*. 1:*n* kapcsolatok engedélyezése a kiadók és az előfizetők között.
 * *Üzenet-munkamenetek*. Olyan munkafolyamatok implementálása, amelyekhez üzenet-rendezés vagy üzenetek halasztása szükséges.
 
@@ -43,7 +43,7 @@ Az üzenetek küldéséhez és fogadásához *témaköröket* is használhat. Am
 
 A témaköröknek több független előfizetése is lehet. Egy adott témakör előfizetője az adott témakörben küldött összes üzenetről kaphat másolatot. Az előfizetések névvel ellátott entitások. Az előfizetések továbbra is megmaradnak, de lejárnak vagy az autodeletenek is
 
-Előfordulhat, hogy nem szeretné, hogy az egyes előfizetések megkapják a témakörbe küldött összes üzenetet. Ha igen, a *szabályok* és *szűrők* segítségével meghatározhatja a választható *műveleteket*kiváltó feltételeket. A megadott üzeneteket szűrheti, és beállíthatja vagy módosíthatja az üzenet tulajdonságait. További információ: a [szűrők és a műveletek](topic-filters.md)témakör.
+Előfordulhat, hogy nem szeretné, hogy az egyes előfizetések megkapják a témakörbe küldött összes üzenetet. Ha igen, a *szabályok* és *szűrők* segítségével meghatározhatja a választható *műveleteket* kiváltó feltételeket. A megadott üzeneteket szűrheti, és beállíthatja vagy módosíthatja az üzenet tulajdonságait. További információ: a [szűrők és a műveletek](topic-filters.md)témakör.
 
 ## <a name="advanced-features"></a>Speciális funkciók
 
@@ -89,34 +89,51 @@ Az automatikus törlés üresjáratban beállítással megadhatja azt az üresj�
 
 Egy hiba miatt előfordulhat, hogy az ügyfél kétségbe vonja a küldési művelet eredményét. A duplikált észlelés lehetővé teszi, hogy a küldő ugyanazzal az üzenettel küldje újra. Egy másik lehetőség, hogy a várólista vagy a témakör elvesse az ismétlődő másolatokat. További információ: [duplikált észlelés](duplicate-detection.md).
 
-### <a name="security-protocols"></a>Biztonsági protokollok
-<a name="sas-rbac-and-managed-identities-for-azure-resources"></a>
-
-Service Bus támogatja a biztonsági protokollokat, például a [közös hozzáférésű aláírásokat](service-bus-sas.md) (SAS), az [Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)](authenticate-application.md) és [Az Azure-erőforrások felügyelt identitásait](service-bus-managed-service-identity.md).
-
 ### <a name="geo-disaster-recovery"></a>Geo-vészhelyreállítás
 
-Az Azure-régiók vagy adatközpontok leállása esetében a Geo-vészhelyreállítás lehetővé teszi az adatfeldolgozási művelet folytatását egy másik régióban vagy adatközpontban. További információ: [Azure Service Bus földrajzi katasztrófa utáni helyreállítás](service-bus-geo-dr.md).
+Ha az Azure-régiók vagy-adatközpontok leállást tapasztalnak, a földrajzilag elosztott vész-helyreállítási funkció lehetővé teszi az adatfeldolgozást, hogy egy másik régióban vagy adatközpontban folytassa a működését További információ: [Azure Service Bus földrajzi katasztrófa utáni helyreállítás](service-bus-geo-dr.md).
 
 ### <a name="security"></a>Biztonság
 
-A Service Bus támogatja a szabványos [AMQP 1.0](service-bus-amqp-overview.md) és [HTTP/REST](/rest/api/servicebus/) protokollokat.
+Service Bus támogatja a standard [AMQP 1,0](service-bus-amqp-overview.md) , valamint a [http/Rest](/rest/api/servicebus/) protokollokat és a hozzájuk tartozó biztonsági létesítményeket, beleértve a TRANSPORT Level Security (TLS) szolgáltatást. Az ügyfelek számára engedélyezhető a Service Bus natív [közös hozzáférésű aláírási](service-bus-sas.md) modell vagy a [Azure Active Directory](service-bus-authentication-and-authorization.md) Szerepköralapú biztonság használatával történő hozzáférés a normál szolgáltatásfiókok vagy az Azure által felügyelt identitások használatával. 
+
+A nemkívánatos forgalom elleni védelem érdekében Service Bus számos [hálózati biztonsági funkciót](network-security.md)biztosít, beleértve az IP-szűrési tűzfalat és az Azure-beli és a helyszíni virtuális hálózatokkal való integrációt.
 
 ## <a name="client-libraries"></a>Ügyfélkódtárak
 
-A Service Bus támogatja a [.net](https://github.com/Azure/azure-service-bus-dotnet/tree/master), a [Java](https://github.com/Azure/azure-service-bus-java/tree/master)és a [JMS](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/qpid-jms-client)-hez készült ügyféloldali kódtárakat.
+Az Azure SDK-n keresztül teljes mértékben támogatott Service Bus ügyféloldali kódtárak érhetők el.
+
+- [.NET-Azure Service Bus](https://docs.microsoft.com/dotnet/api/overview/azure/service-bus?view=azure-dotnet&preserve-view=true)
+- [Java-kódtárak Azure Service Bus](https://docs.microsoft.com/java/api/overview/azure/servicebus?view=azure-java-stable&preserve-view=true)
+- [Azure Service Bus-szolgáltató a Java JMS 2,0-hez](how-to-use-java-message-service-20.md)
+- [A JavaScript és az írógéppel Azure Service Bus moduljai](https://docs.microsoft.com/javascript/api/overview/azure/service-bus?view=azure-node-latest&preserve-view=true)
+- [Azure Service Bus kódtárak a Pythonhoz](https://docs.microsoft.com/python/api/overview/azure/servicebus?view=azure-python&preserve-view=true)
+
+[Azure Service Bus ' az elsődleges protokoll a AMQP 1,0](service-bus-amqp-overview.md) , és bármely AMQP 1,0-kompatibilis protokoll-ügyfélről használható. Számos nyílt forráskódú AMQP-ügyfél olyan mintákat tartalmaz, amelyek kifejezetten bemutatják Service Bus együttműködési képességet. Tekintse át az [AMQP 1,0 protokoll útmutatóját](service-bus-amqp-protocol-guide.md) , amelyből megtudhatja, hogyan használhatja a AMQP 1,0-ügyfeleket közvetlenül a Service Bus funkcióit.
+
+| Nyelv | Kódtár |
+| --- | --- |
+| Java | [Apache csontos-proton – J](https://qpid.apache.org/proton/index.html) |
+| C/C++ |[Azure UAMQP C](https://github.com/azure/azure-uamqp-c/), [Apache csontos-proton – c](https://qpid.apache.org/proton/index.html) |
+| Python |[Azure uAMQP for Python](https://github.com/azure/azure-uamqp-python/), [Apache csontos proton Python](https://qpid.apache.org/releases/qpid-proton-0.32.0/proton/python/docs/overview.html) |
+| PHP | [A PHP-hez készült Azure uAMQP](https://github.com/vsouz4/azure-uamqp-php/) |
+| Ruby | [Apache csontos proton Ruby](https://github.com/apache/qpid-proton/tree/master/ruby) |
+| Indítás | [Azure go AMQP](https://github.com/Azure/go-amqp), [Apache csontos proton go](https://github.com/apache/qpid-proton/tree/master/go/examples)
+| C#/F #/VB | [AMQP .net Lite](https://github.com/Azure/amqpnetlite), [Apache AMQP](https://github.com/apache/activemq-nms-amqp)|
+| JavaScript/Node | [Rhea](https://github.com/grs/rhea) |
 
 ## <a name="integration"></a>Integráció
 
-A Service Bus teljes mértékben integrálható a következő Azure-szolgáltatásokkal:
+Service Bus teljes mértékben integrálható a Microsoft és az Azure számos szolgáltatásával, például:
 
 * [Event Grid](https://azure.microsoft.com/services/event-grid/)
 * [Logic Apps](https://azure.microsoft.com/services/logic-apps/)
 * [Azure Functions](https://azure.microsoft.com/services/functions/)
+* [Power Platform](https://powerplatform.microsoft.com/)
 * [Dynamics 365](https://dynamics.microsoft.com)
 * [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Service Bus-üzenetküldéssel való megismerkedéshez tekintse meg a következő cikkeket:
 
