@@ -178,7 +178,7 @@ Az Azure szinapszis Analytics a T-SQL-t használja a lekérdezési nyelvként. A
 
    ![A dbo.dimCustomer lekérdezés](./media/create-data-warehouse-portal/query-customer.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az adatraktár-egységek és az SQL-készletben tárolt adatmennyiség után kell fizetnie. Ezek a számítási és tárolási erőforrások elkülönítve lesznek kiszámlázva.
 
@@ -190,7 +190,7 @@ Kövesse az alábbi lépéseket a már nem szükséges erőforrások törléséh
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és válassza ki az SQL-készletet.
 
-   ![Erőforrások felszabadítása](./media/create-data-warehouse-portal/clean-up-resources.png)
+   ![Az erőforrások eltávolítása](./media/create-data-warehouse-portal/clean-up-resources.png)
 
 2. A számítás szüneteltetéséhez kattintson a **szüneteltetés** gombra. Ha az SQL-készlet fel van függesztve, a **Folytatás** gomb jelenik meg. A számítás folytatásához válassza a **Folytatás** lehetőséget.
 
@@ -204,6 +204,6 @@ Szeretné optimalizálni és menteni a Felhőbeli kiadásait?
 
 [!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni az SQL-készletbe való betöltésről, folytassa az [adatgyűjtés az SQL-készletbe](load-data-from-azure-blob-storage-using-polybase.md) című cikket.

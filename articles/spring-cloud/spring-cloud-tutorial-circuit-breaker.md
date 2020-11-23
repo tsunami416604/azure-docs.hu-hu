@@ -80,7 +80,7 @@ A Hystrix metrikái streamek is elérhetők innen: `test-endpoint` . Háttérbel
 
 Webalkalmazásként a Hystrix irányítópultjának kell működnie `test-endpoint` . Ha nem működik megfelelően, két ok lehet: először a (z) vagy a `test-endpoint` (z) alapurl-címének módosítása a `/ to /<APP-NAME>/<DEPLOYMENT-NAME>` (z) vagy a másodperc alapján, a webalkalmazás a statikus erőforrás abszolút elérési útját használja. A működésének megkezdéséhez `test-endpoint` Előfordulhat, hogy manuálisan kell szerkesztenie az <base> előtér-fájlokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Szolgáltatási példány kiépítése az Azure CLI-ben](./spring-cloud-quickstart.md#provision-an-instance-of-azure-spring-cloud)
 * [Java Spring-alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez](./spring-cloud-tutorial-prepare-app-deployment.md)
 

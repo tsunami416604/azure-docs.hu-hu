@@ -49,7 +49,7 @@ A Microsoft szelektív, de általában nyitott társítási szabályzattal rende
 ## <a name="faq"></a>GYIK
 A peering szolgáltatással kapcsolatos gyakori kérdésekért lásd: [internetes társközi – gyakori](faqs.md)kérdések.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha szeretne többet megtudni a Microsofttal való közvetlen együttműködés beállításához szükséges lépésekről, kövesse a [Direct peering](walkthrough-direct-all.md) bemutatót
 * A Microsofttal való Exchange-társítás beállításával kapcsolatos lépésekért kövesse az [Exchange-partneri útmutató](walkthrough-exchange-all.md) lépéseit

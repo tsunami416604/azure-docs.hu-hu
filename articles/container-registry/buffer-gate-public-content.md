@@ -96,7 +96,7 @@ Részletes példaként tekintse meg a [nyilvános tartalmak felhasználása és 
 > [!NOTE]
 > Egyetlen előre konfigurált feladat automatikusan újraépítheti az összes olyan alkalmazás-rendszerképet, amely egy függő alaprendszerképre hivatkozik. 
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
  
 * További információ az [ACR-feladatokról](container-registry-tasks-overview.md) az Azure-beli tároló-lemezképek létrehozásához, futtatásához, leküldéséhez és javításához.
 * Tekintse meg a [nyilvános tartalmak felhasználását és karbantartását Azure Container Registry feladatokkal](tasks-consume-public-content.md) egy automatizált kapuzás-munkafolyamathoz az alaplemezképek környezetbe való frissítéséhez. 

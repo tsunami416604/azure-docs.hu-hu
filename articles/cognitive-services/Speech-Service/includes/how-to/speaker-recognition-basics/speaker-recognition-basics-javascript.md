@@ -153,7 +153,7 @@ Ebben a függvényben meghívja a `GetAudioConfigFromFile` korábban definiált 
 
 ## <a name="speaker-identification"></a>Beszélőazonosítás
 
-A Speaker Identification segítségével megállapítható, hogy **ki** beszél a regisztrált hangok adott csoportjából. A folyamat hasonló a **szövegtől független ellenőrzéshez** , és a fő különbség, hogy egyszerre több hangprofillal is képes ellenőrizni, nem pedig egyetlen profilon.
+A Speaker Identification segítségével megállapítható, hogy **ki** beszél a regisztrált hangok adott csoportjából. A folyamat hasonló a **szövegtől független ellenőrzéshez**, és a fő különbség, hogy egyszerre több hangprofillal is képes ellenőrizni, nem pedig egyetlen profilon.
 
 ### <a name="textindependentidentification-function"></a>TextIndependentIdentification függvény
 

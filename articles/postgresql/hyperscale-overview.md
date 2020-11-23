@@ -29,7 +29,7 @@ A nagy kapacitású (Citus) a következőket biztosítja:
 
 A PostgreSQL-re épülő alkalmazások [a standard szintű](./concepts-connection-libraries.md) nagy kapacitású (Citus) elosztott lekérdezéseket futtathatnak, és minimális módosításokat hajtanak végre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Első lépésként [hozza létre első](./quickstart-create-hyperscale-portal.md) Azure Database for PostgreSQL-nagy kapacitású (Citus) kiszolgálócsoportét.
 - Tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/postgresql/) a Cost-összehasonlításokhoz és a számológépekhez. A nagy kapacitású (Citus) előre fizetett, fenntartott példányokra vonatkozó kedvezményeket is kínál, további részletekért lásd a [nagy kapacitású (Citus) ri díjszabási](concepts-hyperscale-reserved-pricing.md) oldalát.

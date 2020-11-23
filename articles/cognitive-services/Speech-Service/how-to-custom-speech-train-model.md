@@ -71,7 +71,7 @@ A naplózási adatok letölthetők a **Endpoint > részletei** területen.
 > [!NOTE]
 >A naplózási adatai 30 napig elérhetők a Microsoft tulajdonában lévő tárolóban, és ezt követően el lesznek távolítva. Abban az esetben, ha egy ügyfél tulajdonában lévő Storage-fiók kapcsolódik a kognitív szolgáltatások előfizetéséhez, a rendszer nem törli automatikusan a naplózási adataikat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg [, hogyan használhatja az egyéni modellt](how-to-specify-source-language.md).
 

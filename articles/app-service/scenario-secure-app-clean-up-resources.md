@@ -21,7 +21,7 @@ ms.locfileid: "95025361"
 
 Ha befejezte az ebben a többrészes oktatóanyagban szereplő összes lépést, létrehozott egy app Service-üzemeltetési csomagot és egy erőforráscsoporthoz tartozó Storage-fiókot. A Azure Active Directoryban is létrehozott egy alkalmazás-regisztrációt. Ha már nincs rá szükség, törölje ezeket az erőforrásokat és az alkalmazás regisztrációját, hogy ne folytassa a költségek felmerülésével.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 >

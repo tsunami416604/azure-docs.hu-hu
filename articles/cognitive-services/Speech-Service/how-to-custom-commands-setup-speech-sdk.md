@@ -418,7 +418,7 @@ Adja hozzá a forráskód mögötti forrást az alábbiak szerint:
 
 1. Válassza a **Talk** lehetőséget, és beszéljen egy angol kifejezéssel vagy mondattal az eszköz mikrofonjában. A beszéd a közvetlen vonalas beszéd csatornába kerül, és szövegbe kerül, amely az ablakban jelenik meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Útmutató: tevékenység küldése ügyfélalkalmazás számára (előzetes verzió)](./how-to-custom-commands-send-activity-to-client.md)

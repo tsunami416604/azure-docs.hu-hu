@@ -66,7 +66,7 @@ A következő lépések végrehajtásával hozhat létre környezetet:
 
 1. **(Nem kötelező)** Válassza a jobb felső sarokban található **rögzítés ikont** , hogy a későbbiekben könnyen hozzáférhessen a Azure Time Series Insights-környezethez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Adja meg az adatelérési szabályzatokat](./concepts-access-policies.md) a környezet biztonságossá tételéhez.
 

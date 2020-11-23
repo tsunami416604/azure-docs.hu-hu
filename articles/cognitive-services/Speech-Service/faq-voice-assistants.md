@@ -21,7 +21,7 @@ ms.locfileid: "95015442"
 
 Ha a jelen dokumentumban nem talál választ a kérdéseire, tekintse meg az [egyéb támogatási lehetőségeket](../cognitive-services-support-options.md?context=%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext%253fcontext%253d%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext).
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 **K: Mi az a hangsegéd?**
 
@@ -68,7 +68,7 @@ Részletesebb útmutatásért tekintse meg az [oktatóanyag című szakaszt](tut
 
 **A:** A fájl alapú naplózás lényegesen több részletet biztosít, és a támogatási kérelmek felgyorsítását is segíti. A funkció engedélyezéséhez tekintse meg a [fájlok naplózásának használata](how-to-use-logging.md)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Hibaelhárítás](troubleshooting.md)
 - [Kibocsátási megjegyzések](releasenotes.md)

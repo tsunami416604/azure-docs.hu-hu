@@ -196,7 +196,7 @@ Nyissa meg az Azure-webalkalmazást, és ellenőrizze, hogy a telepítés sikere
 ## <a name="get-the-personcount-source-code"></a>A PersonCount forráskódjának beolvasása
 Ha szeretné megtekinteni vagy módosítani az alkalmazás forráskódját, megkeresheti azt [a githubon](https://github.com/Azure-Samples/cognitive-services-spatial-analysis).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Térbeli elemzési műveletek konfigurálása](./spatial-analysis-operations.md)
 * [Naplózás és hibaelhárítás](spatial-analysis-logging.md)

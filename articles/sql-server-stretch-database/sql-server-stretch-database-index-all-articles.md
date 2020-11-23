@@ -23,7 +23,7 @@ ms.locfileid: "95024211"
 # <a name="all-topics-for-azure-sql-server-stretch-database-service"></a>Az Azure SQL Server Stretch Database Service összes témaköre
 Ez a témakör felsorolja az Azure **SQL Server stretch Database** szolgáltatásával kapcsolatos összes témakört. A kulcsszavakat a **CTRL + F** billentyűkombinációval keresheti meg, és megkeresheti az aktuális érdeklődéshez kapcsolódó témaköröket.
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 | Cím | Leírás |
 |:--- |:--- |
 |[Stretch Database adatbázisok és táblák azonosítása Stretch Database Advisor futtatásával](/sql/sql-server/stretch-database/stretch-database-databases-and-tables-stretch-database-advisor) |Megtudhatja, hogyan azonosíthatók a Stretch Database számára jelölt adatbázisok és táblák. |

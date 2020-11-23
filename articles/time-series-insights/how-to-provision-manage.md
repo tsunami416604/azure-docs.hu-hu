@@ -101,7 +101,7 @@ Azure Time Series Insights Gen2-környezetét a Azure Portal használatával kez
 
 [![Azure Time Series Insights Gen2-környezet a Azure Portal](media/v2-update-manage/create-and-manage-overview-confirm.png)](media/v2-update-manage/create-and-manage-overview-confirm.png#lightbox)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ Azure Time Series Insights általánosan elérhető környezetekről és Gen2 környezetekről a [környezet megtervezése](./how-to-plan-your-environment.md)című témakörben olvasható.
 

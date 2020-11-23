@@ -115,7 +115,7 @@ New-AzDisk -Disk $diskConfig `
    -DiskName myManagedDataDisk
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A felügyelt lemezekről az [Azure CLI](image-version-managed-image-cli.md) vagy a [PowerShell](image-version-managed-image-powershell.md)használatával is létrehozhat lemezkép-verziót.
 

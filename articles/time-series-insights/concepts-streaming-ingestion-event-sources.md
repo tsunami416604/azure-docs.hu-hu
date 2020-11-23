@@ -80,7 +80,7 @@ Az időzóna-eltolást a következők egyikének kell megformáznia:
 ± HH: PP</br>
 ± HH: MMZ</br>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Olvassa el a [JSON-összeolvasztási és-Escape-szabályokat](./concepts-json-flattening-escaping-rules.md) , hogy megtudja, hogyan lesznek tárolva az események.
 

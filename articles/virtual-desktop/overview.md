@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 03566dccbb453aa06a2b5f86bd02b86d85d61b28
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0fe9b3ddaee41802ced30e1898b46cefa2566771
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91322053"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023190"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Mit takar a Windows Virtual Desktop?
 
@@ -71,7 +71,7 @@ A következő operációs rendszereket támogatjuk, ezért győződjön meg arr�
 
 Az infrastruktúrának a következő dolgokra van szüksége a Windows rendszerű virtuális asztalok támogatásához:
 
-* Egy [Azure Active Directory](/azure/active-directory/).
+* Egy [Azure Active Directory](../active-directory/index.yml).
 * A Windows Server Active Directory Azure Active Directorysal szinkronizálva. Ezt a Azure AD Connect (hibrid szervezetek esetében) vagy Azure AD Domain Services (hibrid vagy Felhőbeli szervezetek esetében) használatával is konfigurálhatja.
   * A Windows Server AD Azure Active Directory szinkronizálva. A felhasználó a Windows Server AD-ből származik, és a Windows rendszerű virtuális asztali gép a Windows Server AD-tartományhoz van csatlakoztatva.
   * A Windows Server AD Azure Active Directory szinkronizálva. A felhasználó a Windows Server AD-ből származik, és a Windows rendszerű virtuális asztali gép csatlakoztatva van Azure AD Domain Services tartományhoz.
@@ -85,7 +85,7 @@ A Windows rendszerű virtuális asztalhoz való kapcsolódásra vonatkozó felha
 
 A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli virtuális gépeknek a következőknek kell lenniük:
 
-* [Szabványos tartományhoz csatlakoztatott](../active-directory-domain-services/active-directory-ds-comparison.md) vagy [hibrid ad-csatlakozás](../active-directory/devices/hybrid-azuread-join-plan.md). A virtuális gépek nem csatlakoztathatók Azure AD-hez.
+* [Szabványos tartományhoz csatlakoztatott](../active-directory-domain-services/compare-identity-solutions.md) vagy [hibrid ad-csatlakozás](../active-directory/devices/hybrid-azuread-join-plan.md). A virtuális gépek nem csatlakoztathatók Azure AD-hez.
 * A következő [támogatott operációsrendszer-lemezképek](#supported-virtual-machine-os-images)egyikének futtatása.
 
 >[!NOTE]
@@ -101,7 +101,7 @@ Az optimális teljesítmény érdekében győződjön meg arról, hogy a hálóz
 * A hálózati forgalom az ország/régió határain kívül is eltarthat, amikor asztali számítógépeket és alkalmazásokat futtató virtuális gépek csatlakoznak a felügyeleti szolgáltatáshoz.
 * A hálózati teljesítmény optimalizálása érdekében javasoljuk, hogy a munkamenet-gazdagép virtuális gépei a közös elhelyezésű azonos Azure-régióban legyenek.
 
-Az [architektúra documenation](https://docs.microsoft.com/azure/architecture/example-scenario/wvd/windows-virtual-desktop)megtekintheti a vállalati Windows virtuális asztal tipikus építészeti beállításait.
+Az [architektúra documenation](/azure/architecture/example-scenario/wvd/windows-virtual-desktop)megtekintheti a vállalati Windows virtuális asztal tipikus építészeti beállításait.
 
 ## <a name="supported-remote-desktop-clients"></a>Támogatott Távoli asztal ügyfelek
 

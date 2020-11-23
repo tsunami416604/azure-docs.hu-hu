@@ -110,7 +110,7 @@ A szkriptek a [Cognitive Services Voice Assistant – Custom parancsokban](https
     ```BASH
     bash/export.sh -r <region> -s <subscriptionkey> -c en-us -a <appid> -f apps/myapp.json
     ```
-    | Argumentumok | Description |
+    | Argumentumok | Leírás |
     | ------- | --------------- | ----------- |
     | régió | az alkalmazás régiója, pl. westus2. |
     | subscriptionkey | a beszédfelismerési erőforrás előfizetési kulcsa. |
@@ -168,7 +168,7 @@ A szkriptek a [Cognitive Services Voice Assistant – Custom parancsokban](https
 1. Kattintson a Futtatás elemre, majd kattintson a "Job" (Futtatás) elemre.
     A következőt tartalmazó feladatok listája jelenik meg: "alkalmazás importálása" & "betanítás és alkalmazás közzététele"
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Minták megtekintése a GitHubon](https://aka.ms/speech/cc-samples)

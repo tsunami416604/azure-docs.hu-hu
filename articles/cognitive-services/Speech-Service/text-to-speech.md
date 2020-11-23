@@ -41,7 +41,7 @@ Ebben az áttekintésben megismerheti a szöveg és a beszéd közötti szolgál
 
 * Speech szintézis Markup Language (SSML) – XML-alapú leíró nyelv, amely a beszédfelismerési kimenetek testreszabására szolgál. A SSML beállíthatja a Pitch, a szüneteltetések hozzáadását, a kiejtés növelését, a sebesség növelését vagy lelassulását, a kötetek növelését és csökkentését, valamint több hang megadását egyetlen dokumentumra. Lásd: [SSML](speech-synthesis-markup.md).
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 
 Tekintse [meg az első lépéseket a szöveg](get-started-text-to-speech.md) és a beszéd megismeréséhez. A szöveg-beszéd szolgáltatás a [SPEECH SDK](speech-sdk.md), a [REST API](rest-text-to-speech.md)és a [Speech CLI](spx-overview.md) használatával érhető el.
 
@@ -75,7 +75,7 @@ Részletes információkat a [díjszabásban](https://azure.microsoft.com/pricin
 - [Beszéd SDK](speech-sdk.md)
 - [REST API: szövegről beszédre](rest-text-to-speech.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Ingyenes beszédfelismerési szolgáltatás előfizetésének beszerzése](overview.md#try-the-speech-service-for-free)
 - [A Speech SDK beszerzése](speech-sdk.md)

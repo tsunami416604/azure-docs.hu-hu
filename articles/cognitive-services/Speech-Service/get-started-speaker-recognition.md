@@ -38,7 +38,7 @@ ms.locfileid: "95015483"
 [!INCLUDE [JavaScript Basics include](includes/how-to/speaker-recognition-basics/speaker-recognition-basics-curl.md)]
 ::: zone-end
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az osztályok és függvények részletes ismertetését az Speaker Recognition [dokumentációjában](/rest/api/speakerrecognition/) találja.
 

@@ -133,7 +133,7 @@ Ez a probléma akkor fordulhat elő, ha nem a Power BI-összekötő legújabb ve
 
 - Ellenőrizze a Power BI Desktop verzióját, és győződjön meg arról, hogy a júliusi 2020-es verziót használja. Ha nem, frissítse a Power BI Desktop, majd futtassa újra az összekötőt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Olvassa el, hogyan [dolgozhat a Time Series-modellekkel](./time-series-insights-overview.md).
 

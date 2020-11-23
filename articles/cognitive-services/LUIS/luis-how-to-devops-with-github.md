@@ -35,7 +35,7 @@ A [Luis DevOps-sablon](https://github.com/Azure-Samples/LUIS-DevOps-Template) t�
 * **A Luis-alkalmazás üzembe helyezése** – [folyamatos kézbesítési (CD) feladatok](luis-concept-devops-automation.md#continuous-delivery-cd) végrehajtása a Luis-alkalmazás közzétételéhez.
 * **A tárház használata saját projekttel** – elmagyarázza, hogyan használhatja a tárházat saját Luis-alkalmazásával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A [Luis DevOps-sablon](https://github.com/Azure-Samples/LUIS-DevOps-Template) -tárház használatával DevOps alkalmazhat a saját projekttel.
 * [A LUIS verziókövetési és elágaztatási stratégiái](luis-concept-devops-sourcecontrol.md)

@@ -59,7 +59,7 @@ Ha Ön vagy a szervezete rendelkezik olyan alkalmazásokkal, amelyeket a Transla
 
 * A Translator Speech APItól eltérően a beszédfelismerési szolgáltatás több nyelven is elvégezheti a fordítást egyetlen kérelemben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Próbálja ki ingyenesen a Speech szolgáltatást](overview.md#try-the-speech-service-for-free)
 * [Gyors útmutató: beszédfelismerés felismerése UWP-alkalmazásban a Speech SDK használatával](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=uwp)

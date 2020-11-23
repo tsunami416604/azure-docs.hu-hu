@@ -38,7 +38,7 @@ Néhány Azure IoT-szolgáltatás beépített üzleti katasztrófa-helyreállít
 
 - [Azure IoT hub magas rendelkezésre állású vész-helyreállítás](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr), amely a régión belüli redundanciát is magában foglalja
 - [Azure Event Hubs házirendek](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr)
-- [Azure Storage-redundancia](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+- [Redundancia az Azure Storage szolgáltatásban](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 
 A Azure Time Series Insights más szolgáltatásokkal való integrálása további vész-helyreállítási lehetőségeket biztosít. Előfordulhat például, hogy az telemetria eljuttatott értesítéseket a Backup Azure Blob Storage-adatbázisa őrzi meg.
 

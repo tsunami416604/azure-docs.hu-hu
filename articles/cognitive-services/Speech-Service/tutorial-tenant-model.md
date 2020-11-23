@@ -25,7 +25,7 @@ A bérlői modell (Custom Speech Microsoft 365 adatokkal) olyan Microsoft 365 v�
 > [!IMPORTANT]
 > Ha a szervezet a bérlői modell szolgáltatással regisztrálja magát, a beszédfelismerési szolgáltatás elérheti a szervezet nyelvi modelljét. A modell Microsoft 365 nyilvános csoportbeli e-mailekről és dokumentumokból jön létre, amelyeket bárki láthat a szervezetében. A szervezet rendszergazdája be-és kikapcsolhatja a szervezeti szintű nyelvi modell használatát a felügyeleti portálról.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Regisztrálás a bérlői modellben a Microsoft 365 felügyeleti központ használatával
@@ -304,7 +304,7 @@ Ezután újra kell építenie és futtatnia a projektet a parancssorból. A para
 
 Ebben az oktatóanyagban megtanulta, hogyan használhatja a Microsoft 365-adatelemzést egy egyéni beszédfelismerési modell létrehozásához, üzembe helyezéséhez és a Speech SDK-val való használathoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Speech Studio](https://speech.microsoft.com/)
 * [Beszéd SDK](speech-sdk.md)

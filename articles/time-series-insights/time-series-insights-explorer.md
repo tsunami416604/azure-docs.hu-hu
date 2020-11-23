@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 49a763af8d936ec9fd15c59c908ba9015f803930
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 639f2ef12d190a56e04a9b48d96ea0a6537d243c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568638"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020112"
 ---
 # <a name="azure-time-series-insights-gen1-explorer"></a>Azure Time Series Insights Gen1 Explorer
 
@@ -45,8 +45,8 @@ Az Azure Time Series Insights egy teljes körűen felügyelt elemző, tároló �
 A Azure Time Series Insights Explorer használata előtt a következőket kell tennie:
 
 - Hozzon létre egy Azure Time Series Insights környezetet. További információért olvassa el a [Azure Time Series Insights első lépéseit](./time-series-insights-get-started.md)ismertető témakört.
-- [Hozzáférés biztosítása](time-series-insights-data-access.md) a fiókhoz a környezetben.
-- Adjon hozzá egy [IoT hub](time-series-insights-how-to-add-an-event-source-iothub.md) -vagy [Event hub](time-series-insights-how-to-add-an-event-source-eventhub.md) -esemény forrását.
+- [Hozzáférés biztosítása](./concepts-access-policies.md) a fiókhoz a környezetben.
+- Adjon hozzá egy [IoT hub](./how-to-ingest-data-iot-hub.md) -vagy [Event hub](./how-to-ingest-data-event-hub.md) -esemény forrását.
 
 ## <a name="explore-and-query-data"></a>Adatgyűjtés és adatlekérdezés
 
@@ -54,7 +54,7 @@ Az eseményforrás a Azure Time Series Insights-környezethez való csatlakoztat
 
 1. A kezdéshez nyissa meg a [Azure Time Series Insights Explorert](https://insights.timeseries.azure.com/) a böngészőben. Az ablak bal oldalán válasszon ki egy környezetet. Minden olyan környezet, amelyhez hozzáférése van, betűrendben jelenik meg.
 
-1. Miután kiválasztott egy környezetet, vagy használja a **from** és **a** konfigurációt a felső részen, vagy válassza ki és húzza át a kívánt TimeSpan. Válassza ki a Nagyítót a jobb felső sarokban, vagy kattintson a jobb gombbal a kiválasztott TimeSpan, és válassza a **Keresés**lehetőséget.
+1. Miután kiválasztott egy környezetet, vagy használja a **from** és **a** konfigurációt a felső részen, vagy válassza ki és húzza át a kívánt TimeSpan. Válassza ki a Nagyítót a jobb felső sarokban, vagy kattintson a jobb gombbal a kiválasztott TimeSpan, és válassza a **Keresés** lehetőséget.
 
 1. A rendelkezésre állást automatikusan is frissítheti percenként, ha az **Automatikus bekapcsolás** gombra kattint. Az **Automatikus bekapcsolás** gomb csak a rendelkezésre állási diagramra vonatkozik, nem a fő vizualizáció tartalmára.
 
@@ -67,7 +67,7 @@ Az eseményforrás a Azure Time Series Insights-környezethez való csatlakoztat
     - **Feltételek szerkesztő panel**: az a terület, ahol lekérdezheti a környezetét. A képernyő bal oldalán található:
       - **Mérték**: Ez a legördülő lista az összes numerikus oszlopot (**Double**) jeleníti meg.
       - **Felosztás**: Ez a legördülő lista kategorikus oszlopokat (**karakterláncokat**) jelenít meg.
-      - Engedélyezheti a lépésenkénti interpolációt, megtekintheti a minimális és a maximális értéket, és módosíthatja az y tengelyt a vezérlő paneljén a **mérték**elem mellett. Azt is beállíthatja, hogy a megjelenített adatmennyiség darabszám, átlag vagy összeg-e.
+      - Engedélyezheti a lépésenkénti interpolációt, megtekintheti a minimális és a maximális értéket, és módosíthatja az y tengelyt a vezérlő paneljén a **mérték** elem mellett. Azt is beállíthatja, hogy a megjelenített adatmennyiség darabszám, átlag vagy összeg-e.
       - Akár öt kifejezést is hozzáadhat ugyanazon az x tengelyen. Válassza a **Hozzáadás** lehetőséget egy új kifejezés hozzáadásához, vagy a **jelen kifejezés klónozása** gomb használatával vegye fel egy meglévő kifejezés másolatát.
 
         [![Feltételek kiválasztása, szűrése és lekérdezési panel](media/time-series-insights-explorer/tsi-ga-explorer-add-or-clone.png)](media/time-series-insights-explorer/tsi-ga-explorer-add-or-clone.png#lightbox)
@@ -126,7 +126,7 @@ Az eseményforrás a Azure Time Series Insights-környezethez való csatlakoztat
 
 Most, hogy megismerte az Azure Time Series Insights Explorer webalkalmazásban elérhető főbb funkciókat, konfigurációs beállításokat és megjelenítési beállításokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan [diagnosztizálhatja és megoldhatja a Azure Time Series Insights-környezetben felmerülő problémákat](time-series-insights-diagnose-and-solve-problems.md) .
 

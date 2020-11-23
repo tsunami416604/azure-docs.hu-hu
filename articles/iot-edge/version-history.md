@@ -31,13 +31,13 @@ A webhelyhez tartozó IoT Edge dokumentáció a termék két különböző verzi
 
 Ez a táblázat a IoT Edge csomagok kiadásának legújabb verzióit tartalmazza, és kiemeli az egyes verziókra vonatkozó dokumentációs frissítéseket.
 
-| Kibocsátási megjegyzések és eszközök | Típus | Date | Legfontosabb tudnivalók |
+| Kibocsátási megjegyzések és eszközök | Típus | Dátum | Legfontosabb tudnivalók |
 | ------------------------ | ---- | ---- | ---------- |
 | [1,2 – RC1](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc1) | Előnézet | 2020. november | [Az átjárók mögött IoT Edge eszközök](how-to-connect-downstream-iot-edge-device.md?view=iotedge-2020-11&preserve-view=true)<br>[IoT Edge MQTT-közvetítő](how-to-publish-subscribe.md?view=iotedge-2020-11&preserve-view=true) |
 | [1.0.10](https://github.com/Azure/azure-iotedge/releases/tag/1.0.10) | Stable | 2020. október | [UploadSupportBundle Direct metódus](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics)<br>[Futásidejű mérőszámok feltöltése](how-to-access-built-in-metrics.md)<br>[Útvonal prioritása és élettartama](module-composition.md#priority-and-time-to-live)<br>[Modul indítási sorrendje](module-composition.md#configure-modules)<br>[X. 509 manuális kiépítés](how-to-manual-provision-x509.md) |
 | [1.0.9](https://github.com/Azure/azure-iotedge/releases/tag/1.0.9) | Stable | 2020. március | [X. 509 automatikus kiépítés a DPS-vel](how-to-auto-provision-x509-certs.md)<br>[RestartModule Direct metódus](how-to-edgeagent-direct-method.md#restart-module)<br>[támogatás – Bundle parancs](troubleshoot.md#gather-debug-information-with-support-bundle-command) |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az összes Azure IoT Edge-kiadás megtekintése](https://github.com/Azure/azure-iotedge/releases)
 * [Szolgáltatási kérelmek elkészítése vagy áttekintése a visszajelzési fórumban](https://feedback.azure.com/forums/907045-azure-iot-edge)

@@ -109,7 +109,7 @@ Vagy
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Beszédfelismerési eszköz kiválasztása](get-speech-devices-sdk.md)

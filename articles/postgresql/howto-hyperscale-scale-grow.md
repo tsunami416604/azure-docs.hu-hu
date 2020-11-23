@@ -38,7 +38,7 @@ Az új csomópontok hozzáadásán kívül növelheti a meglévő csomópontok k
 
 Ha módosítani szeretné az összes munkavégző csomópont virtuális mag, állítsa be a **virtuális mag** csúszkát a **konfiguráció alatt (munkavégző csomópont)**. A koordinátor csomópontjának virtuális mag egymástól függetlenül is módosítható. Állítsa be a **virtuális mag** csúszkát a  **konfiguráció (koordinátor csomópont)** alatt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a kiszolgálói csoportok [teljesítményének lehetőségeiről](concepts-hyperscale-configuration-options.md).
 - [Elosztott tábla szegmensek újraelosztása](howto-hyperscale-scale-rebalance.md) , hogy az összes feldolgozó csomópont részt vehessen a párhuzamos lekérdezésekben

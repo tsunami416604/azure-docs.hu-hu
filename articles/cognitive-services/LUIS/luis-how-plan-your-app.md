@@ -69,13 +69,13 @@ Ahelyett, hogy két külön szándékot kellene létrehoznia, hozzon létre egye
 Az `FlightAction` entitás a Machine learning-entitás és alentitások következő pszeudo-sémájában lesz strukturálva:
 
 * FlightAction
-    * Műveletek
+    * Művelet
     * Forrás
     * Cél
 
 Az alentitások hozzáadási funkcióinak kibontásának elősegítése érdekében. A funkciók a felhasználói hosszúságú kimondott szöveg és az előrejelzési válaszban visszaadott értékek alapján lesznek kiválasztva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [A LUIS fejlesztői lifecylce megismerése](luis-concept-app-iteration.md)

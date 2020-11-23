@@ -72,7 +72,7 @@ Akárcsak az összes Cognitive Services erőforrás esetében, a Speaker Recogni
 | Többször is regisztrálhat egy beszélőt? | Igen, a szövegtől függő ellenőrzéshez akár 50 alkalommal is regisztrálhat egy beszélőt. Szövegtől független ellenőrzés vagy beszélő azonosítása esetén akár 300 másodpercig is regisztrálhat. |
 | Milyen adattárolók tárolódnak az Azure-ban? | A beléptetési hang a szolgáltatásban tárolódik, amíg a hangprofil nem [törlődik](./get-started-speaker-recognition.md#deleting-voice-profile-enrollments). Az felismerő hangmintákat nem őrzi meg vagy tárolja a rendszer. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > * Az alkalmazásokban használható általános tervezési minták futtatásához hajtsa végre a Speaker Recognition [alapjaival](./get-started-speaker-recognition.md) foglalkozó cikket.

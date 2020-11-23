@@ -94,7 +94,7 @@ A következő szolgáltatások érhetők el, ha a .NET-et használja a Apache Sp
 * A Spark-feladatok kimenetének a különböző diagramok (például a vonal, a sáv vagy a hisztogram) és az elrendezés (például egyetlen, átfedésben lévő stb.) használatával történő megjelenítésének támogatása a `XPlot.Plotly` könyvtár segítségével.
 * NuGet-csomagok belefoglalása a C# jegyzetfüzetbe.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [.NET Apache Spark dokumentációhoz](/dotnet/spark/)
 * [.NET Apache Spark interaktív útmutatókhoz](/dotnet/spark/how-to-guides/dotnet-interactive-udf-issue)

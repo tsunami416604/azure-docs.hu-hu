@@ -59,6 +59,6 @@ Ha egy előre összeépített entitás szerepel az alkalmazásban, az előrejelz
 > [!NOTE]
 > a **beépített. datetime** elavult. A rendszer helyébe a [**beépített. datetimeV2**](luis-reference-prebuilt-datetimev2.md), amely a dátum-és időtartományok felismerését, valamint a kétértelmű dátumok és időpontok jobb felismerését is lehetővé teszi.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan [adhat hozzá előre elkészített entitásokat](./howto-add-prebuilt-models.md) az alkalmazáshoz.

@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: b9b76b2eb5e9536561f73a92b6911a2f82122a1b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa0fe33dff0161767b74546aad49003d8fc70c16
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078095"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015256"
 ---
 # <a name="speech-service-encryption-of-data-at-rest"></a>A beszédfelismerési szolgáltatás inaktív adatok titkosítása
 
@@ -33,11 +33,11 @@ A Custom Speech és az egyéni hang használatakor a beszédfelismerési szolgá
 
 Alapértelmezés szerint az adatai a Microsoft tárolójában tárolódnak, és az előfizetése a Microsoft által felügyelt titkosítási kulcsokat használja. Lehetősége van saját Storage-fiók előkészítésére is. Az áruházhoz való hozzáférést a felügyelt identitás kezeli, és a beszédfelismerési szolgáltatás nem tud közvetlenül hozzáférni a saját adataihoz, például a beszédfelismerési adatokhoz, a testreszabási adatokhoz és az egyéni modellekhez.
 
-A felügyelt identitással kapcsolatos további információkért lásd: [Mik a felügyelt identitások](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+A felügyelt identitással kapcsolatos további információkért lásd: [Mik a felügyelt identitások](../../active-directory/managed-identities-azure-resources/overview.md).
 
 ## <a name="bring-your-own-storage-byos-for-customization-and-logging"></a>Saját tároló (BYOS) használata a testreszabáshoz és a naplózáshoz
 
-Ha hozzáférést szeretne kérni a saját tárterületének eléréséhez, töltse ki és küldje el a [beszédfelismerési szolgáltatást – a saját tároló (BYOS) kérelmi űrlapját](https://aka.ms/cogsvc-cmk). A jóváhagyást követően létre kell hoznia a saját Storage-fiókját a testreszabáshoz és a naplózáshoz szükséges adattároláshoz. Storage-fiók hozzáadásakor a Speech Service-erőforrás engedélyezi a rendszer által hozzárendelt felügyelt identitást. Ha engedélyezve van a rendszerhez rendelt felügyelt identitás, az erőforrás regisztrálva lesz Azure Active Directory (HRE). A regisztrálást követően a felügyelt identitás hozzáférést kap a Storage-fiókhoz. A felügyelt identitásokról itt talál további információt. A felügyelt identitással kapcsolatos további információkért lásd: [Mik a felügyelt identitások](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+Ha hozzáférést szeretne kérni a saját tárterületének eléréséhez, töltse ki és küldje el a [beszédfelismerési szolgáltatást – a saját tároló (BYOS) kérelmi űrlapját](https://aka.ms/cogsvc-cmk). A jóváhagyást követően létre kell hoznia a saját Storage-fiókját a testreszabáshoz és a naplózáshoz szükséges adattároláshoz. Storage-fiók hozzáadásakor a Speech Service-erőforrás engedélyezi a rendszer által hozzárendelt felügyelt identitást. Ha engedélyezve van a rendszerhez rendelt felügyelt identitás, az erőforrás regisztrálva lesz Azure Active Directory (HRE). A regisztrálást követően a felügyelt identitás hozzáférést kap a Storage-fiókhoz. A felügyelt identitásokról itt talál további információt. A felügyelt identitással kapcsolatos további információkért lásd: [Mik a felügyelt identitások](../../active-directory/managed-identities-azure-resources/overview.md).
 
 > [!IMPORTANT]
 > Ha letiltja a rendszerhez rendelt felügyelt identitásokat, a Storage-fiókhoz való hozzáférés el lesz távolítva. Ez azt eredményezi, hogy a beszédfelismerési szolgáltatás azon részei, amelyek hozzáférést igényelnek a Storage-fiókhoz a működésének leállásához.  
@@ -47,7 +47,7 @@ A beszédfelismerési szolgáltatás jelenleg nem támogatja a Ügyfélszéf. Az
 > [!IMPORTANT]
 > A Microsoft **nem** használja fel az ügyféladatokat, hogy javítsa a beszédfelismerési modelljeit. Emellett, ha a végpont-naplózás le van tiltva, és nem használ testreszabást, akkor a rendszer nem tárolja az ügyféladatokat. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Beszédfelismerési szolgáltatás – saját tároló (BYOS) kérésének űrlapja](https://aka.ms/cogsvc-cmk)
-* [Mik azok a felügyelt identitások](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+* [Mik azok a felügyelt identitások](../../active-directory/managed-identities-azure-resources/overview.md).

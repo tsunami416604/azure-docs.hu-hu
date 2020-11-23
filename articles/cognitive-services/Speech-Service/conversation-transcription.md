@@ -34,7 +34,7 @@ A beszélgetés átirata egy [beszéd-szöveg](speech-to-text.md) típusú megol
 > [!NOTE]
 > Bár a beszélgetés átirata nem korlátozza a beszélők számát a helyiségben, a 2-10 Beszélők száma munkamenetre van optimalizálva.
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 
 A kezdéshez tekintse [meg a](how-to-use-conversation-transcription.md) valós idejű beszélgetés átiratának rövid útmutatóját.
 
@@ -81,7 +81,7 @@ A rendszer a hangadatokat élő módon dolgozza fel az előadói azonosító és
 
 A társalgási átirat jelenleg a következő régiókban támogatja az [összes beszéd és szöveg nyelvét](language-support.md#speech-to-text) :,,  `centralus` `eastasia` `eastus` , `westeurope` . Ha további területi támogatásra van szüksége, lépjen kapcsolatba a [beszélgetés átirata szolgáltatás legénységével](mailto:CTSFeatureCrew@microsoft.com).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Beszélgetések valós idejű átírása](how-to-use-conversation-transcription.md)

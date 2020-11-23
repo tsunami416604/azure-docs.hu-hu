@@ -48,7 +48,7 @@ A. A Microsoft-partneri szolgáltatással regisztrált partnereink a Microsoftta
 
 A. Az Azure ExpressRoute egy privát, dedikált, egy vagy több ügyfél-helyről származó szolgáltatás. Míg a társ-szolgáltatás optimalizált nyilvános kapcsolattal rendelkezik, és nem támogatja a magánhálózati kapcsolatokat, a helyi internetes kitörésekhez optimalizált kapcsolódást is biztosít.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A társ-kezelés szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [peering Service áttekintése](about.md)című témakört.
 - A szolgáltató megtalálásához tekintse meg a következő témakört: [társ-szolgáltatási partnerek és helyszínek](location-partners.md).

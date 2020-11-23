@@ -74,7 +74,7 @@ A küldő alkalmazásnak 500 elküldési forrása van, amely 500 szándékkal eg
 * [Küldési CLI](https://github.com/Microsoft/botbuilder-tools)
 * Küldési modell bot Sample- [.net](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch), [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Útmutató [a Batch teszteléséhez](luis-how-to-batch-test.md)
 

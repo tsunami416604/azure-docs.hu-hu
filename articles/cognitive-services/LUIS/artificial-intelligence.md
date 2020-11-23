@@ -55,6 +55,6 @@ LUIS kevéssé vagy egyáltalán nem ismeri a szélesebb körű _NLP_ -szemponto
 * vásárlása
 * vásárolta
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg a LUIS-alkalmazás [fejlesztési életciklusát](luis-concept-app-iteration.md)

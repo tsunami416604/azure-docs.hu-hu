@@ -34,7 +34,7 @@ A szövegbeviteli és a beszéd-szöveges szolgáltatás további hivatkozásokk
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Első lépések
 
 Tekintse [meg a gyors](get-started-speech-to-text.md) üzembe helyezési útmutatót. A szolgáltatás a [SPEECH SDK](speech-sdk.md), a [REST API](rest-speech-to-text.md#pronunciation-assessment-parameters)és a [Speech CLI](spx-overview.md)használatával érhető el.
 
@@ -56,7 +56,7 @@ A Batch átírása REST API művelet, amely lehetővé teszi nagy mennyiségű h
 
 [!INCLUDE [speech-reference-doc-links](includes/speech-reference-doc-links.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](overview.md#try-the-speech-service-for-free)
 - [A Speech SDK beszerzése](speech-sdk.md)

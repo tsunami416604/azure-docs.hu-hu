@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 10/02/2020
-ms.openlocfilehash: 9cd1a6059360c948229a1da00780cd6cb40b7f35
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3956f8d91793367f7200d2f349a8713aff3d2f59
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91666534"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016224"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-gen2-demo-environment"></a>Gyors útmutató: Ismerkedés a Azure Time Series Insights Gen2 bemutató környezettel
 
@@ -38,7 +38,7 @@ A Azure Time Series Insights Gen2 Explorer az előzmények és a kiváltó okok 
 
 ## <a name="work-with-historical-data"></a>Korábbi adatmennyiségek használata
 
-1. A **contoso-üzem 1**. részében tekintse meg a Wind gázturbinás **W7**című részt.  
+1. A **contoso-üzem 1**. részében tekintse meg a Wind gázturbinás **W7** című részt.  
 
    1. Módosítsa a nézet tartományát **1/1/17 20:00:00.00 – 3/10/17 20:00:00.00 (UTC) értékre**.
    1. Ha ki szeretne választani egy érzékelőt, válassza ki a **contoso Plant 1**  >  .**W7**-  >  **generátor rendszer**  >  **GeneratorSpeed**. Ezután tekintse át a megjelenített értékeket.
@@ -48,14 +48,14 @@ A Azure Time Series Insights Gen2 Explorer az előzmények és a kiváltó okok 
 1. Az utóbbi időben a contoso tüzet észlelt a Wind Turbine **W7**-ben. A vélemények eltérőek lehetnek a tüzet kiváltó okok miatt. Azure Time Series Insights Gen2 a Fire riasztási érzékelő, amely a tűz alatt aktiválódik, megjelenik.
 
    1. Módosítsa a nézet tartományát **3/9/17 20:00:00.00 – 3/10/17 20:00:00.00 (UTC) értékre**.
-   1. Válassza a **biztonsági rendszerek**  >  **FireAlert**lehetőséget.
+   1. Válassza a **biztonsági rendszerek**  >  **FireAlert** lehetőséget.
 
       [![A contoso tüzet észlelt a Wind gázturbinás W7-ben](media/v2-update-quickstart/quick-start-fire-alert.png)](media/v2-update-quickstart/quick-start-fire-alert.png#lightbox)
 
 1. Tekintse át a további eseményeket a tűz idején, hogy megértse, mi történt. Az olajnyomás és az aktív figyelmeztetések közvetlenül a tűz előtt vannak megszegve.
 
-   1. Válassza a **pitch System**  >  **HydraulicOilPressure**elemet.
-   1. Válassza a **pitch System**  >  **ActiveWarning**elemet.
+   1. Válassza a **pitch System**  >  **HydraulicOilPressure** elemet.
+   1. Válassza a **pitch System**  >  **ActiveWarning** elemet.
 
       [![Tekintse át a többi eseményt egy időben](media/v2-update-quickstart/quick-start-active-warning.png)](media/v2-update-quickstart/quick-start-active-warning.png#lightbox)
 
@@ -82,15 +82,15 @@ A Azure Time Series Insights Gen2 és az érzékelő telemetria használatával 
 1. Egyes forgatókönyvek kifinomult elemzést igényelnek az adatokban található nyomok feltárásához. Válassza ki a szélmalom **W6** a **6/25**. időpontban.
 
     1. Módosítsa a nézet tartományát **6/1/17 20:00:00.00 – 7/1/17 20:00:00.00 (UTC) értékre**.
-    1. Válassza a **contoso növény 1**  >  **W6**  >  **biztonsági rendszerek**  >  **VoltageActuatorSwitchWarning**lehetőséget.
+    1. Válassza a **contoso növény 1**  >  **W6**  >  **biztonsági rendszerek**  >  **VoltageActuatorSwitchWarning** lehetőséget.
 
        [![A nézet tartományának módosítása és a W6 kiválasztása](media/v2-update-quickstart/quick-start-voltage-switch-warning.png)](media/v2-update-quickstart/quick-start-voltage-switch-warning.png#lightbox)
 
 1. A figyelmeztetés a generátortól kapott feszültséggel kapcsolatos hibát jelez. A generátor teljes teljesítménye az aktuális intervallumban található normál paramétereken belül van. Az intervallum növelésével egy másik minta jön létre. A legördülő lista egyértelmű.
 
     1. Távolítsa el a **VoltageActuatorSwitchWarning** -érzékelőt.
-    1. Válassza ki a **Generator System**  >  **ActivePower**elemet.
-    1. Módosítsa az intervallumot a **3D**értékre.
+    1. Válassza ki a **Generator System**  >  **ActivePower** elemet.
+    1. Módosítsa az intervallumot a **3D** értékre.
 
        [![Az intervallum módosítása a 3D értékre](media/v2-update-quickstart/quick-start-interval-change.png)](media/v2-update-quickstart/quick-start-interval-change.png#lightbox)
 
@@ -102,7 +102,7 @@ A Azure Time Series Insights Gen2 és az érzékelő telemetria használatával 
 
 1. Más szenzor-adatpontok is hozzáadhatók a nagyobb kontextus érdekében. Minél több érzékelők is megtekinthetők, a probléma megismertetését. A tényleges értékek megjelenítéséhez dobjunk egy jelölőt.
 
-    1. Válassza a **Generátorrendszer**lehetőséget, majd válassza ki a három érzékelőt: **GridVoltagePhase1**, **GridVoltagePhase2**és **GridVoltagePhase3**.
+    1. Válassza a **Generátorrendszer** lehetőséget, majd válassza ki a három érzékelőt: **GridVoltagePhase1**, **GridVoltagePhase2** és **GridVoltagePhase3**.
     1. Dobjon egy jelölőt a látható terület utolsó adatpontjára.
 
        [![Jelölő eldobása](media/v2-update-quickstart/quick-start-drop-marker.png)](media/v2-update-quickstart/quick-start-drop-marker.png#lightbox)
@@ -119,7 +119,7 @@ A Azure Time Series Insights Gen2 és az érzékelő telemetria használatával 
 
 Most, hogy elvégezte a gyors üzembe helyezést, törölje a létrehozott erőforrásokat:
 
-1. A [Azure Portal](https://portal.azure.com)bal oldali menüjében válassza a **minden erőforrás**lehetőséget, és keresse meg a Azure Time Series Insights Gen2 erőforráscsoportot.
+1. A [Azure Portal](https://portal.azure.com)bal oldali menüjében válassza a **minden erőforrás** lehetőséget, és keresse meg a Azure Time Series Insights Gen2 erőforráscsoportot.
 1. Törölje a teljes erőforráscsoportot (és az abban található összes erőforrást) úgy, hogy kiválasztja az egyes erőforrások **törlését** vagy eltávolítását.
 
 ## <a name="next-steps"></a>További lépések
@@ -127,9 +127,9 @@ Most, hogy elvégezte a gyors üzembe helyezést, törölje a létrehozott erőf
 Készen áll saját Azure Time Series Insights Gen2-környezet létrehozására. Kezdés:
 
 > [!div class="nextstepaction"]
-> [A Azure Time Series Insights Gen2-környezet megtervezése](time-series-insights-update-plan.md)
+> [A Azure Time Series Insights Gen2-környezet megtervezése](./how-to-plan-your-environment.md)
 
 Ismerje meg a bemutató és funkcióinak használatát:
 
 > [!div class="nextstepaction"]
-> [A Azure Time Series Insights Gen2 Explorer](time-series-insights-update-explorer.md)
+> [A Azure Time Series Insights Gen2 Explorer](./concepts-ux-panels.md)

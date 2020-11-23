@@ -70,7 +70,7 @@ Ismerje meg az [ajánlott eljárásokat](luis-concept-best-practices.md).
 
 A minta szintaxisának ismertetése a [minta szintaxisának](reference-pattern-syntax.md)leírásában.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a mintákról:
 

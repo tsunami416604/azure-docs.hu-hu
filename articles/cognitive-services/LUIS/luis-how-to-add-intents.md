@@ -79,6 +79,6 @@ A környezeti eszköztár más műveleteket is tartalmaz:
 
 Miután hozzáadta, szerkeszti vagy eltávolítja a leképezéseket, [betanítja](luis-how-to-train.md) és [közzéteszi](luis-how-to-publish-app.md) az alkalmazást, hogy a módosítások a végponti lekérdezésekre legyenek alkalmazva. Ne végezze el a betanítást minden egyes módosítás után. Betanítás egy csoport módosítása után.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a [példa hosszúságú kimondott szöveg](./luis-how-to-add-entities.md) az entitásokkal való hozzáadásáról.

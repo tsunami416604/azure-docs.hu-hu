@@ -195,7 +195,7 @@ Akárcsak az összes kognitív szolgáltatás esetében, az olvasási/OCR szolg�
 > [!NOTE]
 > A vison 2,0 RecognizeText művelet folyamatban van a jelen cikkben ismertetett új olvasási API Javához. A meglévő ügyfeleknek [át kell térniük az olvasási műveletek használatára](upgrade-api-versions.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerkedjen meg a [Computer Vision Read SDK](./quickstarts-sdk/client-library.md) -gyors útmutatóval C#, Java, JavaScript vagy Python nyelven.
 - A REST API-k használatával megtudhatja, hogyan használhatja a [Beolvasás REST API](./QuickStarts/CSharp-hand-text.md) a C#, a Java, a JavaScript vagy a Python használatával.

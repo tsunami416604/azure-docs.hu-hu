@@ -95,7 +95,7 @@ Az adatkészletek az **adatok** lapra való exportálásához navigáljon az ada
 
 Az adatba exportált fájlok teljesen új adatkészletként lesznek felhasználva, és nem érintik a meglévő adat/képzés/tesztelési entitásokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az adatai kiértékelése](how-to-custom-speech-evaluate-data.md)
 - [A modell betanítása](how-to-custom-speech-train-model.md)

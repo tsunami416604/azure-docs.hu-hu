@@ -62,7 +62,7 @@ A közvetlen vonalas beszéd és a hozzá tartozó funkciók a hangsegédek szá
 * [Beszéd SDK](./speech-sdk.md)
 * [Azure Bot Service](/azure/bot-service/?view=azure-bot-service-4.0)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Beszédfelismerési szolgáltatás előfizetési kulcsának beszerzése ingyenesen](overview.md#try-the-speech-service-for-free)
 * [A Speech SDK beszerzése](speech-sdk.md)

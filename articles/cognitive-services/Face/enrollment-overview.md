@@ -48,6 +48,6 @@ A beléptetési folyamat megtervezése előtt gondolja át, hogy az Ön által l
 |Felhasználói adatvédelem |Számos regisztrációs lehetőséget biztosít a különböző adatvédelmi vonatkozások kezeléséhez. Ne bízzon arra, hogy az emberek személyes eszközeiket használják a beléptetésre egy Arcfelismerés rendszerbe. </br></br>Lehetővé teheti a felhasználók számára, hogy bármikor és bármilyen oknál fogva újra regisztrálják, visszavonják a beleegyezést, és törölhetik az adatait a beléptetési alkalmazásból. |
 |Akadálymentesség |Kövesse a kisegítő lehetőségeket (például az [Ada](https://www.ada.gov/regs2010/2010ADAStandards/2010ADAstandards.htm) -t vagy a [W3C](https://www.w3.org/TR/WCAG21/)-t) annak biztosításához, hogy az alkalmazás a mobilitással vagy a vizualizációk által biztosított személyek által is használható legyen |
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 Kövesse a [beléptetési alkalmazás létrehozása](build-enrollment-app.md) útmutatót a minta-beléptetési alkalmazás első lépéseihez. Ezután testreszabhatja vagy megírhatja saját alkalmazását a termék igényeinek megfelelően.

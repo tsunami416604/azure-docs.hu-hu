@@ -52,7 +52,7 @@ A számlázás a fiókban a Media szolgáltatás számára fenntartott egységek
 
 A kvótákkal és korlátozásokkal, valamint a támogatási jegyek megnyitásával kapcsolatos információkért lásd: [kvóták és korlátozások](media-services-quotas-and-limitations.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Próbálja ki a médiafájlok feldolgozását az alábbi technológiák egyikével:
 

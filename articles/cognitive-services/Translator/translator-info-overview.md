@@ -12,26 +12,26 @@ ms.date: 09/11/2020
 ms.author: swmachan
 ms.custom: cog-serv-seo-aug-2020
 keywords: fordító, szöveg fordítása, gépi fordítás, fordítási szolgáltatás
-ms.openlocfilehash: 32ae7f75c1b953e8af7dfef83c1971c2f78b0b62
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8016c79cbe7f78bdaa18274f8873548e3982df2f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90530335"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95016471"
 ---
 # <a name="what-is-the-translator-service"></a>Mi a Translator Service?
 
-A Translator egy felhőalapú gépi fordítási szolgáltatás, amely az intelligens alkalmazások készítéséhez használt, a kognitív API-k [Cognitive Services](https://docs.microsoft.com/azure/?pivot=products&panel=ai) családjának részét képezi. A Translator egyszerűen integrálható alkalmazásaiba, webhelyeire, eszközeibe és megoldásaiba. Lehetővé teszi a többnyelvű felhasználói élmény [több mint 70 nyelven](languages.md)való hozzáadását, és bármilyen hardveres platformon használható bármilyen operációs rendszerrel a szöveges fordításhoz.
+A Translator egy felhőalapú gépi fordítási szolgáltatás, amely az intelligens alkalmazások készítéséhez használt, a kognitív API-k [Cognitive Services](../../index.yml?panel=ai&pivot=products) családjának részét képezi. A Translator egyszerűen integrálható alkalmazásaiba, webhelyeire, eszközeibe és megoldásaiba. Lehetővé teszi a többnyelvű felhasználói élmény [több mint 70 nyelven](./language-support.md)való hozzáadását, és bármilyen hardveres platformon használható bármilyen operációs rendszerrel a szöveges fordításhoz.
 
 ## <a name="about-microsoft-translator"></a>A Microsoft Translator ismertetése
 
 A Translator számos Microsoft-terméket és-szolgáltatást felhasznál, és világszerte több ezer vállalat használja alkalmazásaikban és munkafolyamataiban, ami lehetővé teszi, hogy a tartalmak globális közönséget érjenek el.
 
-A fordító által működtetett beszéd fordítás az [Azure Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/)-en keresztül is elérhető. Egyesíti a Translator Speech API és a Custom Speech Service funkcióit egy egységes és teljes mértékben testreszabható szolgáltatásban. 
+A fordító által működtetett beszéd fordítás az [Azure Speech Service](../speech-service/index.yml)-en keresztül is elérhető. Egyesíti a Translator Speech API és a Custom Speech Service funkcióit egy egységes és teljes mértékben testreszabható szolgáltatásban. 
 
 ## <a name="language-support"></a>Nyelvi támogatás
 
-A fordító többnyelvű támogatást biztosít a szöveg fordításához, az íráshoz, a nyelvfelismerés és a szótárakhoz. A teljes listát a [nyelvi támogatást](language-support.md) ismertető szakaszban, vagy programozott módon a [REST API-t](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) megnyitva találja.  
+A fordító többnyelvű támogatást biztosít a szöveg fordításához, az íráshoz, a nyelvfelismerés és a szótárakhoz. A teljes listát a [nyelvi támogatást](language-support.md) ismertető szakaszban, vagy programozott módon a [REST API-t](./reference/v3-0-languages.md) megnyitva találja.  
 
 ## <a name="microsoft-translator-neural-machine-translation"></a>Microsoft Translator – neurális gépi fordítás
 
@@ -49,11 +49,11 @@ A fordítói szolgáltatás bővítménye, az egyéni fordító a fordítóval e
 
 A Custom Translator használatával olyan fordítási rendszereket állíthat össze, amelyek kezelik a vállalkozásában vagy az iparágban alkalmazott terminológiát. A testreszabott fordítási rendszer ezután egyszerűen integrálható a meglévő alkalmazásaiba, munkafolyamataiba és webhelyeibe, a normál fordítón keresztül, a kategória paraméter használatával.
 
-További információ az [Egyéni fordítóról](customization.md).
+További információ a [Custom Translatorről](customization.md).
 
 ## <a name="next-steps"></a>További lépések
 
-- [Regisztráljon](translator-text-how-to-signup.md) egy hozzáférési kulcsra.
+- [Regisztráljon](./translator-how-to-signup.md) egy hozzáférési kulcsra.
 - Próbálja ki [a](quickstart-translator.md) fordítói szolgáltatást gyorsan meghívó rövid útmutatóban.
-- Az [API-referenciák](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference) az API-k műszaki dokumentációját biztosítják.
+- Az [API-referenciák](./reference/v3-0-reference.md) az API-k műszaki dokumentációját biztosítják.
 - [Díjszabás részletei](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)

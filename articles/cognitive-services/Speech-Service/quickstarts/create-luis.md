@@ -61,7 +61,7 @@ A **kulcsok és végpont beállításai** lapon:
 ![A LUIS-app előfizetési kulcsai](~/articles/cognitive-services/Speech-Service/media/sdk/luis-keys-assigned.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Leképezések felismerése](~/articles/cognitive-services/Speech-Service/quickstarts/intent-recognition.md)

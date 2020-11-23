@@ -31,7 +31,7 @@ Teljes virtuális mag: Ha a munkamennyiség a RAM-ban található, akkor a nagy 
 
 Feldolgozó RAM: a legjobb eset elegendő memória biztosítása lenne, amelyben a munkakészlet többsége elfér. Az alkalmazás által használt lekérdezések típusa befolyásolja a memória követelményeit. Az ELEMZÉSek MAGYARÁZATának futtatásával határozhatja meg, hogy mennyi memóriát igényel. Ne feledje, hogy a virtuális mag és a RAM méretezése a [nagy kapacitású (Citus) konfigurációs beállításai](concepts-hyperscale-configuration-options.md) című cikkben leírtak szerint történik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Kiszolgálócsoport skálázása](howto-hyperscale-scale-grow.md)
 - További információ a kiszolgálói csoportok [teljesítményének lehetőségeiről](concepts-hyperscale-configuration-options.md).

@@ -85,7 +85,7 @@ Szerzőként érdemes lehet megszabni, hogy a példák milyen **mondatokat** has
 > Ha az alkalmazás közzétételével kapcsolatos problémákba ütközik, és a hiba a hosszúságú kimondott szöveg-t kiváltó készségekre irányítja, ellenőrizze újra az **engedélyezett parancsok** konfigurációját. Az összes elérhető parancsnak rendelkeznie kell legalább egy érvényes kiváltó kiírással.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Parancs frissítése az ügyfélről](./how-to-custom-commands-update-command-from-client.md)

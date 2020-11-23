@@ -73,6 +73,6 @@ A környezeti eszköztár más műveleteket is tartalmaz:
 * Végponti naplók exportálása `.csv` Offline elemzéshez
 * Alkalmazás törlése
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha az alkalmazás kialakítása magában foglalja a szándék észlelését, [hozzon létre új leképezéseket](luis-how-to-add-intents.md), és adja hozzá például a hosszúságú kimondott szöveg. Ha az alkalmazás kialakítása csak az kibontást tartalmazza, adjon hozzá például hosszúságú kimondott szöveg a none szándékhoz, majd [hozzon létre entitásokat](./luis-how-to-add-entities.md), és címkézze fel a példát a hosszúságú kimondott szöveg.

@@ -57,6 +57,6 @@ The exception is HttpResponseError('The value for one of the HTTP headers is not
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg az alábbi cikket a particionálással és az ellenőrzőponttal kapcsolatban: [a partíciók terhelésének elosztása az alkalmazás több példánya között](event-processor-balance-partition-load.md)

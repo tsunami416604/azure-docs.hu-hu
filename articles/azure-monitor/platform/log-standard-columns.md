@@ -207,7 +207,7 @@ union withsource = tt *
 | summarize count() by tt | sort by count_ nulls last 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [Azure monitor naplózási adatainak tárolásáról](../log-query/log-query-overview.md).
 - Vegyen fel egy leckét a [naplók írásához](../log-query/get-started-queries.md).

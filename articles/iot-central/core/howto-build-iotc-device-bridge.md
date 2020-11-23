@@ -42,7 +42,7 @@ Az utasításokat a GitHub-adattár README fájljában találja meg részletesen
 ## <a name="pricing"></a>Díjszabás
 Az Azure-erőforrások az Azure-előfizetésében lesznek üzemeltetve. A díjszabással kapcsolatos további információkért tekintse meg a [Readme fájlt](https://aka.ms/iotcentralgithubdevicebridge).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy megismerte, hogyan hozhatja létre a IoT Central-eszköz hidat, itt látható a javasolt következő lépés:
 
 > [!div class="nextstepaction"]

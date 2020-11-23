@@ -74,7 +74,7 @@ A hangbemeneti streamek használatakor a következő lépések szükségesek:
   var text = result.GetText();
   ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/cognitive-services/)
 - [Lásd: beszéd felismerése a C-ben #](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnet)

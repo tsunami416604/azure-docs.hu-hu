@@ -52,7 +52,7 @@ Más programozási nyelvekhez és platformokhoz:
 - [Beszédfelismerési SDK programozási nyelvek, platformok, forgatókönyvek kapacitása](./speech-sdk.md)
 - [A hangsegéd mintáinak kódjai](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Minták megtekintése a GitHubon](https://aka.ms/speech/cc-samples)

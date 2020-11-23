@@ -82,7 +82,7 @@ A Azure Portal az alábbi módon adhatja meg az összetett kulcsot:
   > A Azure Portalban ne adja meg a tulajdonságok vesszővel tagolt nevét egy texbox, ellenkező esetben a rendszer egyetlen, vesszőt tartalmazó tulajdonságnévként kezeli azt.
   > Adja meg a tulajdonságok nevét a saját texbox.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Olvassa el a [JSON-összeolvasztási és-Escape-szabályokat](./concepts-json-flattening-escaping-rules.md) , hogy megtudja, hogyan lesznek tárolva az események.
 
