@@ -945,6 +945,8 @@
               href: oracle-migrate-cosmos-db-blitzz.md
             - name: Migrálás – Az Apache Cassandrából a Cassandra API-ba a Blitzz használatával
               href: cassandra-migrate-cosmos-db-blitzz.md
+            - name: Migrálás – Az Apache Cassandrából a Cassandra API-ba a Databricks használatával
+              href: cassandra-migrate-cosmos-db-databricks.md
         - name: Csatorna módosítása
           href: cassandra-change-feed.md
         - name: Tároló létrehozása – Cassandra API

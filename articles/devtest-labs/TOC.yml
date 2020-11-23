@@ -191,6 +191,8 @@
           href: use-managed-identities-environments.md
         - name: Környezetek biztonsági riasztásai
           href: environment-security-alerts.md
+        - name: Alkalmazás-központú környezet létrehozása
+          href: create-application-centric-environment.md
     - name: Újrahasznosítható sablonok kezelése
       items:
         - name: Egyéni rendszerképek kontra képletek
