@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 10/23/2020
 ms.author: aahi
-ms.openlocfilehash: 1616a0149ae56de8afe0e9ab485af4bf76326d86
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 0ae7bb9acde3cc8552a23db12d208a82ba0fb2f3
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014611"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95800878"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>Migrálás az olvasási v3. x OCR-tárolóba
 
@@ -29,11 +29,11 @@ Ha az OCR-tároló Computer Vision 2. verzióját használja, ebből a cikkből 
 
 ## <a name="api-changes"></a>API-változások
 
-Az olvasási v 3.1-es tároló a Computer Vision API 3. verzióját használja, és a következő végpontokkal rendelkezik:
+Az olvasási v 3.2 tároló a Computer Vision API 3. verzióját használja, és a következő végpontokkal rendelkezik:
 
-* `/vision/v3.1-preview.2/read/analyzeResults/{operationId}`
-* `/vision/v3.1-preview.2/read/analyze`
-* `/vision/v3.1-preview.2/read/syncAnalyze`
+* `/vision/v3.2-preview.1/read/analyzeResults/{operationId}`
+* `/vision/v3.2-preview.1/read/analyze`
+* `/vision/v3.2-preview.1/read/syncAnalyze`
 
 Az alkalmazások a felhőalapú olvasási API-k 3. verziójának használatára való frissítésével kapcsolatos részletes információkért tekintse meg az [Computer Vision v3 REST API áttelepítési útmutatót](./upgrade-api-versions.md) . Ezek az adatok a tárolóra is érvényesek. Vegye figyelembe, hogy a szinkronizálási műveletek csak a tárolók esetében támogatottak.
 
@@ -43,7 +43,7 @@ A követelmények és javaslatok a másodpercenként egy egyszeri kéréssel ren
 
 |Tároló  |Minimális | Ajánlott  |
 |---------|---------|------|
-|Olvasás 3,1 – előzetes verzió | 8 mag, 16 GB memória         | 8 mag, 24 GB memória |
+|Olvasás 3,2 – előzetes verzió | 8 mag, 16 GB memória         | 8 mag, 24 GB memória |
 
 Minden mag legalább 2,6 gigahertz (GHz) vagy gyorsabb lehet.
 
@@ -66,8 +66,8 @@ A tároló v3. x verziójában a RabbitMQ jelenleg nem támogatott. A támogatot
 | Implementálás | Futásidejű argumentum (ok) | Rendeltetésszerű használat |
 |---------|---------|-------|
 | A memóriában (alapértelmezett) | Nincs szükség futásidejű argumentumokra. | Fejlesztés és tesztelés |
-| Azure Queues | `Queue:Azure:ConnectionString={AzureStorageConnectionString}` | Éles környezet |
-| RabbitMQ    | Nem érhető el | Éles környezet |
+| Azure Queues | `Queue:Azure:ConnectionString={AzureStorageConnectionString}` | Production |
+| RabbitMQ    | Nem érhető el | Production |
 
 A hozzáadott redundancia érdekében az olvasási v3. x tároló egy láthatósági időzítőt használ annak biztosítására, hogy a kérések sikeresen feldolgozhatók összeomlás esetén, ha egy többtárolós beállítás fut. 
 
@@ -78,7 +78,7 @@ A hozzáadott redundancia érdekében az olvasási v3. x tároló egy láthatós
 | 30000 |    120000 |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A [tárolók konfigurálásának](computer-vision-resource-container-config.md) áttekintése konfigurációs beállításokhoz
 * A nyomtatott és a kézírásos szöveg felismerésével kapcsolatos további információkért tekintse át [Computer Vision áttekintést](overview.md)

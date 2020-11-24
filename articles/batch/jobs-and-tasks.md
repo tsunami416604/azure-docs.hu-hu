@@ -2,13 +2,13 @@
 title: Feladatok és feladatok a Azure Batchban
 description: Ismerje meg a feladatokat és a feladatokat, valamint azt, hogyan használják őket egy Azure Batch munkafolyamatban fejlesztési szempontból.
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.openlocfilehash: 5120b76f34e81c2ceeba88767a656b5ee0d40c2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/23/2020
+ms.openlocfilehash: e1ca721ec7527d9d042c129c22cf0266e57c32e9
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85955369"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95808592"
 ---
 # <a name="jobs-and-tasks-in-azure-batch"></a>Feladatok és feladatok a Azure Batchban
 
@@ -18,15 +18,17 @@ Azure Batch a *feladat* számítási egységet jelöl. A *feladat* ezen feladato
 
 A feladatok tevékenységek gyűjteményei. A feladatok határozzák meg, hogyan végezzék el a hozzájuk tartozó tevékenységek a számítási feladatokat a készlet számítási csomópontjaiban.
 
-A feladatok azt a [készletet](nodes-and-pools.md#pools) határozzák meg, amelyben a munkafolyamatot futtatni szeretné. Az egyes feladatokhoz saját készletet hozhat létre, de egyetlen készletet is használhat több feladathoz. A feladatütemezésbe tartozó egyes feladatokhoz külön-külön készletet hozhat létre, vagy létrehozhat egy készletet, amely a feladatütemezésbe tartozó összes feladatot tartalmazza.
+A feladatok azt a [készletet](nodes-and-pools.md#pools) határozzák meg, amelyben a munkafolyamatot futtatni szeretné. Az egyes feladatokhoz saját készletet hozhat létre, de egyetlen készletet is használhat több feladathoz. Létrehozhat egy készletet minden egyes feladathoz, amely [egy feladatütemezés társítva van, vagy](#scheduled-jobs)egy készletet a feladatütemezés összes feladatához.
 
 ### <a name="job-priority"></a>A feladatok prioritása
 
-Az Ön által létrehozott feladatokhoz választható feladat-prioritást rendelhet. A Batch szolgáltatás a feladat prioritási értékével határozza meg a feladatütemezés sorrendjét a fiókokon belül (ez nem tévesztendő össze az [ütemezett feladatokkal](#scheduled-jobs)). A prioritási értékek –1000 és 1000 közöttiek, ahol a –1000 a legalacsonyabb prioritás, az 1000 pedig a legmagasabb. A feladatok prioritásának frissítése a [Feladat tulajdonságainak frissítése](/rest/api/batchservice/job/update) művelettel (Batch REST) vagy a [CloudJob.Priority](/dotnet/api/microsoft.azure.batch.cloudjob) tulajdonság (Batch .NET) módosításával lehetséges.
+Az Ön által létrehozott feladatokhoz választható feladat-prioritást rendelhet. A Batch szolgáltatás a feladat prioritási értékével határozza meg az ütemezés sorrendjét (a feladaton belüli összes feladathoz), wtihin az egyes készleteket.
 
-Egy adott fiókban a magasabb prioritású feladatok élveznek elsőbbséget az ütemezésben az alacsonyabb prioritású feladatokkal szemben. Egy fiók magasabb prioritási értékű feladatai nem élveznek elsőbbséget egy másik fiók alacsonyabb prioritási értékű másik feladatával szemben. Ezek azonban nem előzik meg a már futó alacsonyabb prioritású feladat tevékenységeit.
+Egy feladat prioritásának frissítéséhez hívja meg a feladat (batch REST) [tulajdonságainak frissítését](/rest/api/batchservice/job/update) , vagy módosítsa a [CloudJob. priority](/dotnet/api/microsoft.azure.batch.cloudjob) (Batch .net) tulajdonságot. A prioritási értékek a-1000 (legalacsonyabb prioritás) és a 1000 (a legmagasabb prioritás) közé esnek.
 
-A készletek között a feladatok ütemezése egymástól független. Különböző készletek között nem garantált, hogy a rendszer egy magasabb prioritású feladatot előbbre ütemez, ha annak társított készletében nincsenek tétlen csomópontok. Egy adott készletben az azonos prioritású munkák ütemezésére ugyanannyi esély van.
+Ugyanazon a készleten belül a magasabb prioritású feladatok ütemezési elsőbbséget élveznek az alacsonyabb prioritású feladatokkal szemben. A már futó alacsonyabb prioritású feladatokhoz tartozó feladatokat nem előzik egy magasabb prioritású feladat feladatai. Az azonos prioritási szinttel rendelkező feladatok ütemezése és a feladat-végrehajtás sorrendje nincs meghatározva.
+
+Az egyik készletben futó, magas prioritású értékkel rendelkező feladatok nem befolyásolják a különálló készletben vagy egy másik batch-fiókban futó feladatok ütemezését. A feladat prioritása nem vonatkozik a feladat elküldésekor létrehozott [autopoolokra](nodes-and-pools.md#autopools).
 
 ### <a name="job-constraints"></a>Feladatok megkötései
 
@@ -39,9 +41,9 @@ A feladatok korlátozásai segítségével korlátokat szabhat a feladatokhoz:
 
 Tevékenységeket az ügyfélalkalmazás is adhat a feladatokhoz, vagy megadhat egy [feladatkezelői tevékenységet](#job-manager-task) is. A feladatkezelői tevékenységek tartalmazzák a feladatok tevékenységeinek létrehozásához szükséges információkat, és a készlet egyik számítási csomópontján futnak. A Feladatkezelő feladatot kifejezetten a Batch kezeli. a rendszer azonnal várólistára helyezi a feladatot, ha az nem sikerül. A feladatütemezés által létrehozott feladatok esetében szükség van egy Feladatkezelő-feladatra [, mert](#scheduled-jobs)ez az egyetlen módszer a feladatok definiálására a feladat példányainak létrehozása előtt.
 
-Alapértelmezés szerint a feladatok akkor is aktív állapotban maradnak, ha már a hozzájuk tartozó összes tevékenység lefutott. Ezt módosíthatja, és beállíthatja, hogy a rendszer automatikusan megszüntesse a feladatot, amikor az ahhoz tartozó összes tevékenység befejeződött. Állítsa a feladat **onAllTasksComplete** tulajdonságát ([OnAllTasksComplete](/dotnet/api/microsoft.azure.batch.cloudjob) a Batch .NET-ben) a *terminatejob* értékre, ha azt szeretné, hogy a rendszer automatikusan megszüntesse a feladatot, amikor a hozzá tartozó összes tevékenység befejezett állapotba kerül.
+Alapértelmezés szerint a feladatok akkor is aktív állapotban maradnak, ha már a hozzájuk tartozó összes tevékenység lefutott. Ezt módosíthatja, és beállíthatja, hogy a rendszer automatikusan megszüntesse a feladatot, amikor az ahhoz tartozó összes tevékenység befejeződött. Állítsa be a feladat **onAllTasksComplete** tulajdonságát ([onAllTasksComplete](/dotnet/api/microsoft.azure.batch.cloudjob) a Batch .net-ben) a `terminatejob` * "értékre a feladat automatikus leállításához, ha az összes tevékenység befejeződött állapotban van.
 
-A Batch szolgáltatás olyan feladatot tekint, amely *nem* teljesíti az összes feladatot. Ezért ezt a funkciót általában egy [feladatkezelői tevékenységgel](#job-manager-task) használjuk. Ha feladatkezelő nélkül szeretné használni az automatikus feladatmegszüntetési funkciót, először állítsa az új feladat **onAllTasksComplete** tulajdonságát a *noaction* értékre, és csak akkor állítsa be a *terminatejob* értéket, ha már az összes kívánt tevékenységet hozzáadta a feladathoz.
+A Batch szolgáltatás olyan feladatot tekint, amely *nem* teljesíti az összes feladatot. Ezért ezt a funkciót általában egy [feladatkezelői tevékenységgel](#job-manager-task) használjuk. Ha az automatikus feladat-leállítást a Feladatkezelő nélkül szeretné használni, először állítsa be az új feladat **onAllTasksComplete** tulajdonságát a értékre `noaction` , majd állítsa a `terminatejob` * "értékre, miután befejezte a feladatok hozzáadását a feladathoz.
 
 ### <a name="scheduled-jobs"></a>Ütemezett feladatok
 
@@ -145,8 +147,8 @@ A szolgáltatás használatához először engedélyeznie kell a [feladat függ�
 
 A tevékenységfüggőségekkel a következőkhöz hasonló forgatókönyveket konfigurálhat:
 
-- a *taskB* a *Taska* függvénytől függ (a*taskB* nem kezdi meg a végrehajtást, amíg a *taske* nem fejeződött be).
-- a *taskC* a *Taska* és a *taskB*függvénytől függ.
+- a *taskB* a *Taska* függvénytől függ (a *taskB* nem kezdi meg a végrehajtást, amíg a *taske* nem fejeződött be).
+- a *taskC* a *Taska* és a *taskB* függvénytől függ.
 - A *taskD* egy tevékenységtartománytól függ, például az *1* – *10.* tevékenység befejeződéséig nem hajtja végre a rendszer.
 
 További részletekért tekintse meg az [Azure-batch-Samples](https://github.com/Azure-Samples/azure-batch-samples) GitHub-tárházban található [feladatok függőségei a Azure batch](batch-task-dependencies.md) és a [TaskDependencies](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp/ArticleProjects/TaskDependencies) kód mintát.

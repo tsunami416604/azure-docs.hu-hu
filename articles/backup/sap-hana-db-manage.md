@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépeken lévő SAP HANA adatbázisok biztonsági m
 description: Ebből a cikkből megtudhatja, hogyan kezelheti és figyelheti az Azure-beli virtuális gépeken futó SAP HANA adatbázisok felügyeletére és figyelésére vonatkozó általános feladatokat.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: e257aa7771f6f76a4d53f16255c2f3cbb80c8967
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c8dc80c7b48217e40d5325b75752e21174ecaae
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89377454"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95811951"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Biztonsági másolattal rendelkező SAP HANA-adatbázisok kezelése és monitorozása
 
@@ -33,7 +33,7 @@ A figyeléssel kapcsolatos további információkért tekintse meg [a Azure Port
 A riasztások a SAP HANA adatbázisok biztonsági mentésének egyszerű figyelését jelentik. A riasztások segítséget nyújtanak a lehető legtöbbet a biztonsági másolatok által generált események sokaságának elvesztése nélkül. Azure Backup lehetővé teszi a riasztások beállítását, és a következőképpen figyelhetők:
 
 * Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-* A tároló irányítópultján válassza a **biztonsági mentési riasztások**lehetőséget.
+* A tároló irányítópultján válassza a **biztonsági mentési riasztások** lehetőséget.
 
   ![Biztonsági mentési riasztások a tároló irányítópultján](./media/sap-hana-db-manage/backup-alerts-dashboard.png)
 
@@ -62,9 +62,9 @@ A Azure Backup egy biztonsági másolattal rendelkező SAP HANA adatbázis felü
 A biztonsági mentések a szabályzat ütemezésével összhangban futnak. Az igény szerinti biztonsági mentést az alábbi módon futtathatja:
 
 1. A tároló menüben válassza a **biztonsági másolati elemek elemet**.
-2. A **biztonsági másolati elemek**területen válassza ki a SAP HANA adatbázist futtató virtuális gépet, majd válassza a **biztonsági mentés**lehetőséget.
-3. A **biztonsági mentés**területen válassza ki a végrehajtani kívánt biztonsági mentés típusát. Ezután válassza az **OK** gombot. Ezt a biztonsági mentést a biztonsági másolathoz tartozó szabályzatnak megfelelően megőrzi a rendszer.
-4. A portál értesítéseinek figyelése. A feladat előrehaladását a tároló irányítópultján követheti nyomon > **biztonsági mentési feladatok**  >  **folyamatban**vannak. Az adatbázis méretétől függően a kezdeti biztonsági mentés hosszabb időt is igénybe vehet.
+2. A **biztonsági másolati elemek** területen válassza ki a SAP HANA adatbázist futtató virtuális gépet, majd válassza a **biztonsági mentés** lehetőséget.
+3. A **biztonsági mentés** területen válassza ki a végrehajtani kívánt biztonsági mentés típusát. Ez után válassza az **OK** gombot. Ezt a biztonsági mentést a biztonsági másolathoz tartozó szabályzatnak megfelelően megőrzi a rendszer.
+4. A portál értesítéseinek figyelése. A feladat előrehaladását a tároló irányítópultján követheti nyomon > **biztonsági mentési feladatok**  >  **folyamatban** vannak. Az adatbázis méretétől függően a kezdeti biztonsági mentés hosszabb időt is igénybe vehet.
 
 Alapértelmezés szerint az igény szerinti biztonsági mentések megőrzése 45 nap.
 
@@ -84,22 +84,41 @@ Ezek az igény szerinti biztonsági másolatok a visszaállítási pontok listá
 
 #### <a name="restore"></a>Visszaállítás
 
-A HANA Native-ügyfelektől ( **Backint**használatával) indított visszaállítások a **biztonsági mentési feladatok** lapról is [megfigyelhetők](#monitor-manual-backup-jobs-in-the-portal) .
+A HANA Native-ügyfelektől ( **Backint** használatával) indított visszaállítások a **biztonsági mentési feladatok** lapról is [megfigyelhetők](#monitor-manual-backup-jobs-in-the-portal) .
 
-### <a name="run-sap-hana-native-client-backup-on-a-database-with-azure-backup-enabled"></a>SAP HANA natív ügyfél biztonsági mentésének futtatása Azure Backup engedélyezve lévő adatbázison
+### <a name="run-sap-hana-native-client-backup-to-local-disk-on-a-database-with-azure-backup-enabled"></a>SAP HANA natív ügyfél biztonsági mentésének futtatása a helyi lemezre egy olyan adatbázison, amelyen engedélyezve van a Azure Backup
 
 Ha helyi biztonsági mentést szeretne készíteni (a HANA Studio/cockpit használatával) egy olyan adatbázisról, amelyről biztonsági mentés készül Azure Backupsal, tegye a következőket:
 
 1. Várjon, amíg befejeződik az adatbázis teljes vagy naplózott biztonsági mentése. Az állapot ellenõrzése SAP HANA Studio/pilótafülkében.
-2. Tiltsa le a naplók biztonsági mentését, és állítsa a biztonsági mentési katalógust a fájlrendszerre a megfelelő adatbázishoz.
-3. Ehhez kattintson duplán a **systemdb**-konfiguráció elemre, majd  >  **Configuration**  >  **válassza az adatbázis**  >  **-szűrő (napló)** lehetőséget.
-4. A **enable_auto_log_backup** beállítása **nem**értékre.
-5. **Log_backup_using_backint** beállítása **hamis**értékre.
-6. Igény szerint készítsen teljes biztonsági mentést az adatbázisról.
-7. Várjon, amíg befejeződik a teljes biztonsági mentés és a katalógus biztonsági mentése.
-8. A korábbi beállítások visszaállítása az Azure-ba:
-   * Állítsa **enable_auto_log_backup** a Enable_auto_log_backup **értéket igen**értékre.
-   * A **log_backup_using_backint** beállítása **igaz**értékre.
+2. az érintett ADATBÁZIShoz
+    1. A backint paramétereinek törlése. Ehhez kattintson duplán a **systemdb**-konfiguráció elemre, majd  >  **Configuration**  >  **válassza az adatbázis**  >  **-szűrő (napló)** lehetőséget.
+        * enable_auto_log_backup: nem
+        * log_backup_using_backint: false
+        * catalog_backup_using_backint: false
+3. Igény szerinti teljes biztonsági mentés készítése az adatbázisról
+4. Ezután hajtsa végre a lépések megfordítását. A fent említett érintett adatbázis esetében
+    1. az backint paramétereinek újbóli engedélyezése
+        1. catalog_backup_using_backint: true
+        1. log_backup_using_backint: true
+        1. enable_auto_log_backup: igen
+
+### <a name="manage-or-clean-up-the-hana-catalog-for-a-database-with-azure-backup-enabled"></a>A HANA-katalógus kezelése vagy törlése a Azure Backup engedélyezése esetén
+
+Ha szerkeszteni vagy törölni szeretné a biztonsági mentési katalógust, tegye a következőket:
+
+1. Várjon, amíg befejeződik az adatbázis teljes vagy naplózott biztonsági mentése. Az állapot ellenõrzése SAP HANA Studio/pilótafülkében.
+2. az érintett ADATBÁZIShoz
+    1. A backint paramétereinek törlése. Ehhez kattintson duplán a **systemdb**-konfiguráció elemre, majd  >  **Configuration**  >  **válassza az adatbázis**  >  **-szűrő (napló)** lehetőséget.
+        * enable_auto_log_backup: nem
+        * log_backup_using_backint: false
+        * catalog_backup_using_backint: false
+3. Szerkessze a katalógust, és távolítsa el a régebbi bejegyzéseket
+4. Ezután hajtsa végre a lépések megfordítását. A fent említett érintett adatbázis esetében
+    1. az backint paramétereinek újbóli engedélyezése
+        1. catalog_backup_using_backint: true
+        1. log_backup_using_backint: true
+        1. enable_auto_log_backup: igen
 
 ### <a name="change-policy"></a>Házirend módosítása
 
@@ -122,9 +141,9 @@ Megváltoztathatja egy SAP HANA biztonsági másolati elem alapjául szolgáló 
 
   ![Válassza ki a szabályzatot a legördülő listából](./media/sap-hana-db-manage/choose-backup-policy.png)
 
-* A módosítások mentése
+* Mentse a módosításokat.
 
-  ![A módosítások mentése](./media/sap-hana-db-manage/save-changes.png)
+  ![Mentse a módosításokat.](./media/sap-hana-db-manage/save-changes.png)
 
 * A szabályzat módosítása hatással lesz az összes kapcsolódó biztonsági mentési elemre, és elindítja a megfelelő **Konfigurálás-védelmi** feladatokat.
 
@@ -144,9 +163,9 @@ Módosítsa a szabályzatot a biztonsági mentési típusok, a gyakoriságok és
 
    ![Válassza ki a szerkeszteni kívánt szabályzatot](./media/sap-hana-db-manage/manage-backup-policies.png)
 
-1. Válassza a **módosítás**lehetőséget.
+1. Válassza a **módosítás** lehetőséget.
 
-   ![Módosítás kiválasztása](./media/sap-hana-db-manage/modify-policy.png)
+   ![Válassza a Módosítás lehetőséget](./media/sap-hana-db-manage/modify-policy.png)
 
 1. Válassza ki a biztonsági mentési típusok gyakoriságát.
 
@@ -179,8 +198,8 @@ Ha úgy dönt, hogy kihagyja a helyreállítási pontokat, tartsa szem előtt az
 
 Az adatbázis védelmének leállítása:
 
-* A tároló irányítópultján válassza a **biztonsági másolati elemek**lehetőséget.
-* A **biztonsági mentési felügyelet típusa**területen válassza **a SAP HANA lehetőséget az Azure virtuális gépen**
+* A tároló irányítópultján válassza a **biztonsági másolati elemek** lehetőséget.
+* A **biztonsági mentési felügyelet típusa** területen válassza **a SAP HANA lehetőséget az Azure virtuális gépen**
 
   ![SAP HANA kiválasztása az Azure-beli virtuális gépen](./media/sap-hana-db-manage/sap-hana-azure-vm.png)
 
@@ -188,7 +207,7 @@ Az adatbázis védelmének leállítása:
 
   ![Válassza ki az adatbázist a védelem leállításához](./media/sap-hana-db-manage/select-database.png)
 
-* Az adatbázis menüben válassza a **biztonsági mentés leállítása**lehetőséget.
+* Az adatbázis menüben válassza a **biztonsági mentés leállítása** lehetőséget.
 
   ![Válassza a biztonsági mentés leállítása lehetőséget.](./media/sap-hana-db-manage/stop-backup.png)
 
@@ -196,7 +215,7 @@ Az adatbázis védelmének leállítása:
 
   ![Az adatmegőrzés vagy-törlés kiválasztása](./media/sap-hana-db-manage/retain-backup-data.png)
 
-* Válassza a **biztonsági mentés leállítása**lehetőséget.
+* Válassza a **biztonsági mentés leállítása** lehetőséget.
 
 ### <a name="resume-protection-for-an-sap-hana-database"></a>SAP HANA-adatbázis védelmének folytatása
 
@@ -204,11 +223,11 @@ Ha leállítja a SAP HANA-adatbázis védelmét, ha bejelöli a **biztonsági me
 
 SAP HANA-adatbázis védelmének folytatása:
 
-* Nyissa meg a biztonsági mentési elemet, és válassza a **biztonsági mentés folytatása**lehetőséget.
+* Nyissa meg a biztonsági mentési elemet, és válassza a **biztonsági mentés folytatása** lehetőséget.
 
    ![Válassza a biztonsági mentés folytatása lehetőséget.](./media/sap-hana-db-manage/resume-backup.png)
 
-* A **biztonsági mentési házirend** menüben válasszon ki egy házirendet, majd kattintson a **Mentés**gombra.
+* A **biztonsági mentési házirend** menüben válasszon ki egy házirendet, majd kattintson a **Mentés** gombra.
 
 ### <a name="upgrading-from-sdc-to-mdc"></a>Frissítés SDC-ről MDC-re
 
@@ -218,11 +237,15 @@ Ismerje meg, hogyan folytathatja a biztonsági mentést egy SAP HANA adatbázisr
 
 Ismerje meg, hogy miként folytathatja a SAP HANA adatbázis biztonsági mentését, amelynek SID-je a [SDC-ről a MDC-re való frissítés után nem változott](backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-no-change-in-sid)
 
+### <a name="upgrading-to-a-new-version-in-either-sdc-or-mdc"></a>Frissítés a SDC vagy a MDC új verziójára
+
+Megtudhatja, hogyan folytathatja az olyan SAP HANA-adatbázisok biztonsági mentését, [amelyek verziófrissítése folyamatban van](backup-azure-sap-hana-database-troubleshoot.md#sdc-version-upgrade-or-mdc-version-upgrade-on-the-same-vm).
+
 ### <a name="unregister-an-sap-hana-instance"></a>SAP HANA példány regisztrációjának törlése
 
 A védelem letiltása, de a tár törlése előtt törölje a SAP HANA példány regisztrációját:
 
-* A tároló irányítópultjának **kezelés**területén válassza a **biztonsági mentési infrastruktúra**elemet.
+* A tároló irányítópultjának **kezelés** területén válassza a **biztonsági mentési infrastruktúra** elemet.
 
    ![Biztonsági mentési infrastruktúra kiválasztása](./media/sap-hana-db-manage/backup-infrastructure.png)
 
@@ -230,9 +253,9 @@ A védelem letiltása, de a tár törlése előtt törölje a SAP HANA példány
 
    ![A biztonsági mentési felügyelet típusának kiválasztása Munkaterhelésként az Azure-beli virtuális gépen](./media/sap-hana-db-manage/backup-management-type.png)
 
-* A **védett kiszolgálók**lapon válassza ki a regisztrálni kívánt példányt. A tár törléséhez meg kell szüntetnie az összes kiszolgáló/példány regisztrációját.
+* A **védett kiszolgálók** lapon válassza ki a regisztrálni kívánt példányt. A tár törléséhez meg kell szüntetnie az összes kiszolgáló/példány regisztrációját.
 
-* Kattintson a jobb gombbal a védett példányra, majd válassza a **Regisztráció törlése**lehetőséget.
+* Kattintson a jobb gombbal a védett példányra, majd válassza a **Regisztráció törlése** lehetőséget.
 
    ![Regisztráció törlése](./media/sap-hana-db-manage/unregister.png)
 
@@ -242,6 +265,6 @@ Előfordulhat, hogy a virtuális gépen a munkaterhelés-bővítmény az egyik o
 
 Ezt a beállítást körültekintően használhatja: Ha egy már kifogástalan állapotú virtuális gépen aktiválódik, ez a művelet a bővítmény újraindítását eredményezi. Ennek hatására előfordulhat, hogy az összes folyamatban lévő feladat meghiúsul. Az újbóli regisztrálási művelet elindítása előtt keressen egy vagy több [tünetet](backup-azure-sap-hana-database-troubleshoot.md#re-registration-failures) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, hogy miként lehet [elhárítani a SAP HANA adatbázisok biztonsági mentése során felmerülő gyakori problémákat.](./backup-azure-sap-hana-database-troubleshoot.md)

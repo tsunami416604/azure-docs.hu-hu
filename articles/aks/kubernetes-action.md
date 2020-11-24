@@ -4,18 +4,28 @@ description: Ismerje meg, hogyan helyezhet üzembe a tárolót a GitHub-művelet
 services: container-service
 author: azooinmyluggage
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 11/06/2020
 ms.author: atulmal
-ms.openlocfilehash: 7743a3a8d6e77affd6229b648ab79b5b2f07a0af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: github-actions-azure
+ms.openlocfilehash: a0f64b0d19dd3f65d883237e9ead2c9f1303adaf
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564100"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95794789"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>A Kubernetes szolgáltatás üzembe helyezéséhez szükséges GitHub-műveletek
 
-A [GitHub-műveletek](https://help.github.com/en/articles/about-github-actions) révén rugalmasan hozhat létre automatizált szoftverfejlesztési életciklus-munkafolyamatot. A Kubernetes művelet [azure/aks-set-context@v1](https://github.com/Azure/aks-set-context) megkönnyíti az Azure Kubernetes Service-fürtök üzembe helyezését. A művelet beállítja a cél AK-alapú fürt kontextusát, amelyet más műveletek, például az [Azure/k8s-Deploy](https://github.com/Azure/k8s-deploy/tree/master), az [Azure/k8s-Create-Secret](https://github.com/Azure/k8s-create-secret/tree/master) stb. használhatnak, vagy futtathatnak bármilyen kubectl-parancsot.
+A [GitHub-műveletek](https://help.github.com/en/articles/about-github-actions) révén rugalmasan hozhat létre automatizált szoftverfejlesztési életciklus-munkafolyamatot. Több Kubernetes műveletet is használhat a Azure Container Registry tárolók számára az Azure Kubernetes Service-be a GitHub-műveletekkel való üzembe helyezéshez. 
+
+## <a name="prerequisites"></a>Előfeltételek 
+
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Egy GitHub-fiók. Ha még nem rendelkezik ilyennel, regisztráljon [ingyenesen](https://github.com/join).  
+- Egy működő Kubernetes-fürt
+    - [Oktatóanyag: alkalmazás előkészítése az Azure Kubernetes Service-hez](tutorial-kubernetes-prepare-app.md)
+
+## <a name="workflow-file-overview"></a>A munkafolyamat-fájl áttekintése
 
 A munkafolyamatot egy YAML-(. YML) fájl határozza meg a `/.github/workflows/` tárház elérési útjában. Ez a definíció a munkafolyamatot alkotó különböző lépéseket és paramétereket tartalmazza.
 
@@ -24,14 +34,14 @@ Az AK-t tartalmazó munkafolyamatok esetében a fájl három szakaszt tartalmaz:
 |Section  |Feladatok  |
 |---------|---------|
 |**Hitelesítés** | Bejelentkezés a Private Container registrybe (ACR) |
-|**Építeni** | Build & a tároló rendszerképének leküldése  |
+|**Létrehozás** | Build & a tároló rendszerképének leküldése  |
 |**Telepítés** | 1. a cél AK-fürt beállítása |
 | |2. hozzon létre egy általános/Docker-beállításjegyzékbeli titkot a Kubernetes-fürtben  |
 ||3. üzembe helyezés a Kubernetes-fürtön|
 
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
-[Egyszerű szolgáltatásnév](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) létrehozásához használja az az [ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) parancsot az [Azure CLI](/cli/azure/)-ben. Ezt a parancsot a Azure Portal [Azure Cloud Shell](https://shell.azure.com/) használatával vagy a **kipróbálás** gombra kattintva futtathatja.
+[Egyszerű szolgáltatásnév](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) létrehozásához használja az az [ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) parancsot az [Azure CLI](/cli/azure/)-ben. Ezt a parancsot a Azure Portal [Azure Cloud Shell](https://shell.azure.com/) használatával vagy a **kipróbálás** gombra kattintva futtathatja.
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP> --sdk-auth
@@ -54,7 +64,7 @@ Másolja ezt a JSON-objektumot, amelyet a GitHubról történő hitelesítéshez
 
 A titkok konfigurálásához kövesse a következő lépéseket:
 
-1. A [githubon](https://github.com/)tallózással keresse meg a tárházat, válassza a **beállítások > titkok > új titok hozzáadása**lehetőséget.
+1. A [githubon](https://github.com/)tallózással keresse meg a tárházat, válassza a **beállítások > titkok > új titok hozzáadása** lehetőséget.
 
     ![Képernyőfelvétel: az új titkos kulcs hozzáadása egy adattárhoz.](media/kubernetes-action/secrets.png)
 
@@ -71,7 +81,40 @@ A titkok konfigurálásához kövesse a következő lépéseket:
 
 ##  <a name="build-a-container-image-and-deploy-to-azure-kubernetes-service-cluster"></a>Tároló lemezképének létrehozása és üzembe helyezése az Azure Kubernetes Service-fürtön
 
-A tároló lemezképek felépítésének és leküldésének lépései a művelet használatával hajthatók végre `Azure/docker-login@v1` . Ha a Container-lemezképet AK-ba szeretné telepíteni, akkor a műveletet kell használnia `Azure/k8s-deploy@v1` . Ehhez a művelethez öt paraméter tartozik:
+A tároló lemezképek felépítésének és leküldésének lépései a művelet használatával hajthatók végre `Azure/docker-login@v1` . 
+
+
+```yml
+env:
+  REGISTRY_NAME: {registry-name}
+  CLUSTER_NAME: {cluster-name}
+  CLUSTER_RESOURCE_GROUP: {resource-group-name}
+  NAMESPACE: {namespace-name}
+  APP_NAME: {app-name}
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    
+    # Connect to Azure Container registry (ACR)
+    - uses: azure/docker-login@v1
+      with:
+        login-server: ${{ env.REGISTRY_NAME }}.azurecr.io
+        username: ${{ secrets.REGISTRY_USERNAME }} 
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+    
+    # Container build and push to a Azure Container registry (ACR)
+    - run: |
+        docker build . -t ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
+        docker push ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
+
+```
+
+### <a name="deploy-to-azure-kubernetes-service-cluster"></a>Üzembe helyezés az Azure Kubernetes Service-fürtben
+
+Ha a Container-lemezképet AK-ba szeretné telepíteni, akkor a műveletet kell használnia `Azure/k8s-deploy@v1` . Ehhez a művelethez öt paraméter tartozik:
 
 | **Paraméter**  | **Magyarázat**  |
 |---------|---------|
@@ -81,68 +124,109 @@ A tároló lemezképek felépítésének és leküldésének lépései a művele
 | **imagepullsecrets** | Választható Egy olyan Docker-beállításjegyzékbeli titok neve, amely már be van állítva a fürtön belül. Az egyes titkos nevek a imagePullSecrets mezőben találhatók a bemeneti jegyzékfájlban található munkaterhelések esetében. |
 | **kubectl – verzió** | Választható A kubectl bináris fájl egy adott verzióját telepíti. |
 
-### <a name="deploy-to-azure-kubernetes-service-cluster"></a>Üzembe helyezés az Azure Kubernetes Service-fürtben
 
-Végpontok közötti munkafolyamat a tároló lemezképek létrehozásához és az Azure Kubernetes Service-fürtön való üzembe helyezéshez.
+Az AK-ra való üzembe helyezés előtt be kell állítania a TARGET Kubernetes-névteret, és létre kell hoznia egy rendszerkép-lekérési titkot. A képek húzásának működéséről további információt a [képek lekérése egy Azure Container registryből egy Kubernetes-fürtre](../container-registry/container-registry-auth-kubernetes.md)című témakörben talál. 
 
 ```yaml
+  # Create namespace if doesn't exist
+  - run: |
+      kubectl create namespace ${{ env.NAMESPACE }} --dry-run -o json | kubectl apply -f -
+  
+  # Create image pull secret for ACR
+  - uses: azure/k8s-create-secret@v1
+    with:
+      container-registry-url: ${{ env.REGISTRY_NAME }}.azurecr.io
+      container-registry-username: ${{ secrets.REGISTRY_USERNAME }}
+      container-registry-password: ${{ secrets.REGISTRY_PASSWORD }}
+      secret-name: ${{ env.SECRET }}
+      namespace: ${{ env.NAMESPACE }}
+      force: true
+```
+
+
+Fejezze be a telepítést a `k8s-deploy` művelettel. Cserélje le a környezeti változókat az alkalmazás értékeire. 
+
+```yaml
+
 on: [push]
 
+# Environment variables available to all jobs and steps in this workflow
+env:
+  REGISTRY_NAME: {registry-name}
+  CLUSTER_NAME: {cluster-name}
+  CLUSTER_RESOURCE_GROUP: {resource-group-name}
+  NAMESPACE: {namespace-name}
+  SECRET: {secret-name}
+  APP_NAME: {app-name}
+  
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
     
-    - uses: Azure/docker-login@v1
+    # Connect to Azure Container registry (ACR)
+    - uses: azure/docker-login@v1
       with:
-        login-server: contoso.azurecr.io
-        username: ${{ secrets.REGISTRY_USERNAME }}
+        login-server: ${{ env.REGISTRY_NAME }}.azurecr.io
+        username: ${{ secrets.REGISTRY_USERNAME }} 
         password: ${{ secrets.REGISTRY_PASSWORD }}
     
+    # Container build and push to a Azure Container registry (ACR)
     - run: |
-        docker build . -t contoso.azurecr.io/k8sdemo:${{ github.sha }}
-        docker push contoso.azurecr.io/k8sdemo:${{ github.sha }}
-      
-    # Set the target AKS cluster.
-    - uses: Azure/aks-set-context@v1
+        docker build . -t ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
+        docker push ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
+    
+    # Set the target Azure Kubernetes Service (AKS) cluster. 
+    - uses: azure/aks-set-context@v1
       with:
         creds: '${{ secrets.AZURE_CREDENTIALS }}'
-        cluster-name: contoso
-        resource-group: contoso-rg
-        
-    - uses: Azure/k8s-create-secret@v1
+        cluster-name: ${{ env.CLUSTER_NAME }}
+        resource-group: ${{ env.CLUSTER_RESOURCE_GROUP }}
+    
+    # Create namespace if doesn't exist
+    - run: |
+        kubectl create namespace ${{ env.NAMESPACE }} --dry-run -o json | kubectl apply -f -
+    
+    # Create image pull secret for ACR
+    - uses: azure/k8s-create-secret@v1
       with:
-        container-registry-url: contoso.azurecr.io
+        container-registry-url: ${{ env.REGISTRY_NAME }}.azurecr.io
         container-registry-username: ${{ secrets.REGISTRY_USERNAME }}
         container-registry-password: ${{ secrets.REGISTRY_PASSWORD }}
-        secret-name: demo-k8s-secret
-
-    - uses: Azure/k8s-deploy@v1
+        secret-name: ${{ env.SECRET }}
+        namespace: ${{ env.NAMESPACE }}
+        force: true
+    
+    # Deploy app to AKS
+    - uses: azure/k8s-deploy@v1
       with:
         manifests: |
           manifests/deployment.yml
           manifests/service.yml
         images: |
-          demo.azurecr.io/k8sdemo:${{ github.sha }}
+          ${{ env.REGISTRY_NAME }}.azurecr.io/${{ env.APP_NAME }}:${{ github.sha }}
         imagepullsecrets: |
-          demo-k8s-secret
+          ${{ env.SECRET }}
+        namespace: ${{ env.NAMESPACE }}
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-A GitHubon különböző adattárakban találhatja meg a műveleteket, melyek mindegyike dokumentációt és példákat tartalmaz, amelyek segítséget nyújtanak a GitHub a CI/CD-hez való használatához és az alkalmazások Azure-beli üzembe helyezéséhez.
+Ha a Kubernetes-fürt, a tároló-beállításjegyzék és a tárház már nem szükséges, a telepített erőforrások tisztításához törölje az erőforráscsoportot és a GitHub-tárházat. 
 
-- [telepítő – kubectl](https://github.com/Azure/setup-kubectl)
+## <a name="next-steps"></a>További lépések
 
-- [k8s – környezet beállítása](https://github.com/Azure/k8s-set-context)
+> [!div class="nextstepaction"]
+> [További tudnivalók az Azure Kubernetes szolgáltatásról](/azure/architecture/reference-architectures/containers/aks-start-here)
 
-- [AK-set-Context](https://github.com/Azure/aks-set-context)
+### <a name="more-kubernetes-github-actions"></a>További Kubernetes GitHub-műveletek
 
-- [k8s – titkos kód létrehozása](https://github.com/Azure/k8s-create-secret)
-
-- [k8s – üzembe helyezés](https://github.com/Azure/k8s-deploy)
-
-- [webapps – tároló – üzembe helyezés](https://github.com/Azure/webapps-container-deploy)
-
-- [műveletek – munkafolyamat – minták](https://github.com/Azure/actions-workflow-samples)
+* [Kubectl Tool Installer](https://github.com/Azure/setup-kubectl) ( `azure/setup-kubectl` ): a Kubectl adott verzióját telepíti a futón.
+* [Kubernetes set Context](https://github.com/Azure/k8s-set-context) ( `azure/k8s-set-context` ): állítsa be azt a cél Kubernetes-fürtöt, amelyet más műveletek használni fognak, vagy futtasson bármely kubectl-parancsot.
+* [AK set Context](https://github.com/Azure/aks-set-context) ( `azure/aks-set-context` ): állítsa be a cél Azure Kubernetes szolgáltatás-fürt környezetét.
+* [Kubernetes Create Secret](https://github.com/Azure/k8s-create-secret) ( `azure/k8s-create-secret` ): hozzon létre egy általános titkos vagy Docker-beállításjegyzékbeli titkot a Kubernetes-fürtben.
+* [Kubernetes üzembe helyezése](https://github.com/Azure/k8s-deploy) ( `azure/k8s-deploy` ): a Kubernetes-fürtökhöz tartozó jegyzékfájlok sütni és üzembe helyezése.
+* [Setup Helm](https://github.com/Azure/setup-helm) ( `azure/setup-helm` ): telepítse a Helm bináris egy adott verzióját a futóra.
+* [Kubernetes Bake](https://github.com/Azure/k8s-bake) ( `azure/k8s-bake` ): a helm2, kustomize vagy kompose használatával üzemelő példányokhoz használandó manifest-fájl.
+* [Kubernetes](https://github.com/azure/k8s-lint) ( `azure/k8s-lint` ): a jegyzékfájlok érvényességének ellenőrzése/beadása.

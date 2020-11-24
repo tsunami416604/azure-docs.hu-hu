@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/28/2020
+ms.date: 11/09/2020
 ms.author: jeedes
-ms.openlocfilehash: c2f2e86a3080b0edfcb0a699ac9b3a78ee1b5a52
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 9bebb11c3a1162a0a7b72140f7d3812f86f793ce
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519418"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95791368"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>Oktatóanyag: az Azure AD egyszeri bejelentkezés (SSO) integrálása a NetSuite-nal
 
@@ -25,8 +25,6 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a NetSuite-t a Azu
 * A NetSuite-hez hozzáférő Azure AD-beli vezérlés.
 * Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a NetSuite-ba az Azure AD-fiókjával.
 * A fiókokat egy központi helyen, a Azure Portal kezelheti.
-
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -44,7 +42,6 @@ A NetSuite a következőket támogatja:
 * IDENTITÁSSZOLGÁLTATÓ által kezdeményezett egyszeri bejelentkezés.
 * JIT (igény szerinti) felhasználó kiépítés.
 * [Automatikus felhasználó-kiépítés](NetSuite-provisioning-tutorial.md).
-* A NetSuite konfigurálása után kikényszerítheti a munkamenet-vezérlést, amely a szervezet bizalmas adatainak valós idejű kiszűrése és beszivárgását teszi elérhetővé. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáférésből. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)
 
 > [!NOTE]
 > Mivel az alkalmazás azonosítója egy rögzített karakterlánc-érték, csak egy példány konfigurálható egyetlen bérlőn.
@@ -53,16 +50,16 @@ A NetSuite a következőket támogatja:
 
 A NetSuite Azure AD-ba való integrálásának konfigurálásához adja hozzá a NetSuite-t a katalógusból a felügyelt SaaS-alkalmazások listájához a következő módon:
 
-1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók.
+1. Jelentkezzen be a Azure Portal munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók.
 1. A bal oldali ablaktáblán válassza ki a **Azure Active Directory** szolgáltatást.
-1. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **NetSuite** kifejezést a keresőmezőbe.
-1. Az eredmények ablaktábláján válassza a **NetSuite**lehetőséget, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+1. Az eredmények ablaktábláján válassza a **NetSuite** lehetőséget, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-netsuite"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a NetSuite-hoz
 
-Konfigurálja és tesztelje az Azure AD SSO-t a NetSuite használatával egy **B. Simon**nevű teszt felhasználó segítségével. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a NetSuite-beli kapcsolódó felhasználó között.
+Konfigurálja és tesztelje az Azure AD SSO-t a NetSuite használatával egy **B. Simon** nevű teszt felhasználó segítségével. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a NetSuite-beli kapcsolódó felhasználó között.
 
 Az Azure AD SSO és a NetSuite konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
@@ -77,9 +74,9 @@ Az Azure AD SSO és a NetSuite konfigurálásához és teszteléséhez hajtsa v�
 
 Ha engedélyezni szeretné az Azure AD SSO használatát a Azure Portalban, tegye a következőket:
 
-1. A [Azure Portal](https://portal.azure.com/)a **NetSuite** Application Integration oldalon keresse meg a **kezelés** szakaszt, majd válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** ablaktáblán válassza az **SAML**lehetőséget.
-1. Az **egyszeri Sign-On beállítása az SAML-vel** panelen válassza az **ALAPszintű SAML-konfiguráció**melletti **Szerkesztés** ("ceruza") ikont.
+1. A Azure Portal a **NetSuite** Application Integration oldalon keresse meg a **kezelés** szakaszt, majd válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** ablaktáblán válassza az **SAML** lehetőséget.
+1. Az **egyszeri Sign-On beállítása az SAML-vel** panelen válassza az **ALAPszintű SAML-konfiguráció** melletti **Szerkesztés** ("ceruza") ikont.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -107,7 +104,7 @@ Ha engedélyezni szeretné az Azure AD SSO használatát a Azure Portalban, tegy
 
 1. A fentieken kívül a NetSuite alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Name | Forrás attribútum |
+    | Név | Forrás attribútum |
     | ---------------| --------------- |
     | account  | `account id` |
 
@@ -126,7 +123,7 @@ Ha engedélyezni szeretné az Azure AD SSO használatát a Azure Portalban, tegy
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**  >  **felhasználók**  >  **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**  >  **felhasználók**  >  **minden felhasználó** lehetőséget.
 
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 
@@ -141,17 +138,11 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 
 Ebben a szakaszban engedélyezheti a B. Simon felhasználó számára az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a NetSuite-hoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **NetSuite**elemet.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **NetSuite** elemet.
 1. Az Áttekintés ablaktáblán keresse meg a **kezelés** szakaszt, majd válassza a **felhasználók és csoportok** hivatkozást.
-
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
-
-1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** panelen válassza a **felhasználók és csoportok**lehetőséget.
-
-    ![A "felhasználó hozzáadása" gomb](common/add-assign-user.png)
-
-1. A **felhasználók és csoportok** ablaktábla **felhasználók** legördülő listájában válassza ki a **B. Simon**elemet, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** panelen válassza a **felhasználók és csoportok** lehetőséget.
+1. A **felhasználók és csoportok** ablaktábla **felhasználók** legördülő listájában válassza ki a **B. Simon** elemet, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. Ha az SAML-állításban bármilyen szerepkör-értéket vár, tegye a következőket:
 
    a. A **szerepkör kiválasztása** ablaktáblában, a legördülő listából válassza ki a megfelelő szerepkört a felhasználó számára.  
@@ -162,41 +153,41 @@ Ebben a szakaszban engedélyezheti a B. Simon felhasználó számára az Azure e
 
 1. Nyisson meg egy új fület a böngészőben, és jelentkezzen be a NetSuite vállalati webhelyre rendszergazdaként.
 
-2. A felső navigációs sávon válassza a **beállítás**lehetőséget, majd válassza a **vállalat**  >  **engedélyezése funkciók**lehetőséget.
+2. A felső navigációs sávon válassza a **beállítás** lehetőséget, majd válassza a **vállalat**  >  **engedélyezése funkciók** lehetőséget.
 
     ![A képernyőképen a vállalattól kiválasztott szolgáltatások engedélyezése látható.](./media/NetSuite-tutorial/ns-setupsaml.png)
 
-3. Az oldal közepén található eszköztáron válassza a **SuiteCloud**lehetőséget.
+3. Az oldal közepén található eszköztáron válassza a **SuiteCloud** lehetőséget.
 
     ![A képernyőképen a kiválasztott SuiteCloud látható.](./media/NetSuite-tutorial/ns-suitecloud.png)
 
-4. A **hitelesítés kezelése**területen jelölje be az **SAML egyszeri bejelentkezés** jelölőnégyzetet az SAML egyszeri bejelentkezés beállítás engedélyezéséhez a NetSuite-ban.
+4. A **hitelesítés kezelése** területen jelölje be az **SAML egyszeri bejelentkezés** jelölőnégyzetet az SAML egyszeri bejelentkezés beállítás engedélyezéséhez a NetSuite-ban.
 
     ![Képernyőfelvétel: az SAML egyszeri bejelentkezés kiválasztásához használható hitelesítés kezelése.](./media/NetSuite-tutorial/ns-ticksaml.png)
 
-5. A felső navigációs sávon válassza a **telepítés**lehetőséget.
+5. A felső navigációs sávon válassza a **telepítés** lehetőséget.
 
     ![Képernyőfelvétel: a rendszer a NETSUITE navigációs sávon kiválasztott telepítőt jeleníti meg.](./media/NetSuite-tutorial/ns-setup.png)
 
-6. A **beállítási feladatok** listában válassza az **integráció**lehetőséget.
+6. A **beállítási feladatok** listában válassza az **integráció** lehetőséget.
 
     ![A képernyőképen a telepítési feladatokból kiválasztott integráció látható.](./media/NetSuite-tutorial/ns-integration.png)
 
-7. A **hitelesítés kezelése**területen válassza az **SAML egyszeri bejelentkezés**lehetőséget.
+7. A **hitelesítés kezelése** területen válassza az **SAML egyszeri bejelentkezés** lehetőséget.
 
     ![Képernyőfelvétel: a beállítási feladatok integrációs eleméből kiválasztott SAML egyszeri bejelentkezés.](./media/NetSuite-tutorial/ns-saml.png)
 
-8. Az **SAML beállítása** ablaktábla **NetSuite konfigurálása**területén tegye a következőket:
+8. Az **SAML beállítása** ablaktábla **NetSuite konfigurálása** területén tegye a következőket:
 
     ![Képernyőfelvétel: SAML-beállítás, ahol megadhatja a leírt értékeket.](./media/NetSuite-tutorial/ns-saml-setup.png)
   
     a. Jelölje be az **elsődleges hitelesítési módszer** jelölőnégyzetet.
 
-    b. Az **SAMLV2-szolgáltató metaadatainak**területén válassza a **identitásszolgáltató-metaadatok feltöltése**lehetőséget, majd a **Tallózás** gombra kattintva töltse fel a letöltött metaadat-fájlt a Azure Portal.
+    b. Az **SAMLV2-szolgáltató metaadatainak** területén válassza a **identitásszolgáltató-metaadatok feltöltése** lehetőséget, majd a **Tallózás** gombra kattintva töltse fel a letöltött metaadat-fájlt a Azure Portal.
 
     c. Válassza a **Küldés** lehetőséget.
 
-9. A NetSuite felső navigációs sávban válassza a **beállítás**, majd a **vállalati**  >  **vállalati adatok**elemet.
+9. A NetSuite felső navigációs sávban válassza a **beállítás**, majd a **vállalati**  >  **vállalati adatok** elemet.
 
     ![A képernyőképen a vállalattól kiválasztott vállalati információk láthatók.](./media/NetSuite-tutorial/ns-com.png)
 
@@ -206,41 +197,43 @@ Ebben a szakaszban engedélyezheti a B. Simon felhasználó számára az Azure e
 
     c. Illessze be a NetSuite-fiókból másolt **fiók azonosítóját** az Azure ad **attribútum érték** mezőjébe.
 
+    ![Képernyőfelvétel – a fiókazonosító értékének hozzáadása](./media/netsuite-tutorial/attribute-value.png)
+
 10. Ahhoz, hogy a felhasználók egyszeri bejelentkezést tudjanak végezni a NetSuite-ba, először hozzá kell rendelni a megfelelő engedélyeket a NetSuite-ban. Az engedélyek hozzárendeléséhez tegye a következőket:
 
-    a. A felső navigációs sávon válassza a **telepítés**lehetőséget.
+    a. A felső navigációs sávon válassza a **telepítés** lehetőséget.
 
     ![Képernyőfelvétel: a rendszer a NETSUITE navigációs sávon kiválasztott telepítőt jeleníti meg.](./media/NetSuite-tutorial/ns-setup.png)
 
-    b. A bal oldali ablaktáblán válassza a **felhasználók/szerepkörök**, majd a **Szerepkörök kezelése**lehetőséget.
+    b. A bal oldali ablaktáblán válassza a **felhasználók/szerepkörök**, majd a **Szerepkörök kezelése** lehetőséget.
 
     ![Képernyőfelvétel: a Szerepkörök kezelése panel, ahol új szerepkört választhat.](./media/NetSuite-tutorial/ns-manage-roles.png)
 
-    c. Válassza az **Új szerepkör**lehetőséget.
+    c. Válassza az **Új szerepkör** lehetőséget.
 
     d. Adja meg az új szerepkör **nevét** .
 
     ![Képernyőfelvétel: a telepítéskezelő, ahol megadhatja a szerepkör nevét.](./media/NetSuite-tutorial/ns-new-role.png)
 
-    e. Válassza a **Mentés** lehetőséget.
+    e. Kattintson a **Mentés** gombra.
 
-    f. A felső navigációs sávon válassza az **engedélyek**lehetőséget. Ezután válassza a **telepítés**lehetőséget.
+    f. A felső navigációs sávon válassza az **engedélyek** lehetőséget. Ezután válassza a **telepítés** lehetőséget.
 
     ![Képernyőfelvétel: a telepítés lap, amelyen megadhatja a leírt értékeket.](./media/NetSuite-tutorial/ns-sso.png)
 
-    : Válassza az **SAML egyszeri bejelentkezés**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
+    : Válassza az **SAML egyszeri bejelentkezés** lehetőséget, majd válassza a **Hozzáadás** lehetőséget.
 
-    h. Válassza a **Mentés** lehetőséget.
+    h. Kattintson a **Mentés** gombra.
 
-    i. A felső navigációs sávon válassza a **beállítás**, majd a **telepítéskezelő**lehetőséget.
+    i. A felső navigációs sávon válassza a **beállítás**, majd a **telepítéskezelő** lehetőséget.
 
     ![Képernyőfelvétel: a rendszer a NETSUITE navigációs sávon kiválasztott telepítőt jeleníti meg.](./media/NetSuite-tutorial/ns-setup.png)
 
-    j. A bal oldali ablaktáblán válassza a **felhasználók/szerepkörök**lehetőséget, majd válassza a **felhasználók kezelése**lehetőséget.
+    j. A bal oldali ablaktáblán válassza a **felhasználók/szerepkörök** lehetőséget, majd válassza a **felhasználók kezelése** lehetőséget.
 
     ![Képernyőfelvétel: a felhasználók kezelése panel, ahol kiválaszthatja a Suite demó csapatát.](./media/NetSuite-tutorial/ns-manage-users.png)
 
-    k. Válasszon ki egy teszt felhasználót, válassza a **Szerkesztés**lehetőséget, majd válassza a **hozzáférés** lapot.
+    k. Válasszon ki egy teszt felhasználót, válassza a **Szerkesztés** lehetőséget, majd válassza a **hozzáférés** lapot.
 
     ![Képernyőfelvétel: a felhasználók kezelése panel, ahol a szerkesztés lehetőséget választhatja.](./media/NetSuite-tutorial/ns-edit-user.png)
 
@@ -248,7 +241,7 @@ Ebben a szakaszban engedélyezheti a B. Simon felhasználó számára az Azure e
 
     ![A képernyőképen az alkalmazottak közül kiválasztott rendszergazda látható.](./media/NetSuite-tutorial/ns-add-role.png)
 
-    m. Válassza a **Mentés** lehetőséget.
+    m. Kattintson a **Mentés** gombra.
 
 ### <a name="create-the-netsuite-test-user"></a>A NetSuite test felhasználó létrehozása
 
@@ -256,16 +249,13 @@ Ebben a szakaszban egy B. Simon nevű felhasználó jön létre a NetSuite-ban. 
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egyszeri bejelentkezés konfigurációját.
 
-Ha a hozzáférési panelen kiválasztja a NetSuite csempét, akkor automatikusan be kell jelentkeznie arra a NetSuite-ra, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+- Kattintson az alkalmazás tesztelése Azure Portal lehetőségre, és automatikusan be kell jelentkeznie arra a NetSuite-ra, amelyhez be szeretné állítani az egyszeri bejelentkezést
 
-## <a name="additional-resources"></a>További források
+- Használhatja a Microsoft saját alkalmazásait. Amikor a saját alkalmazások NetSuite csempére kattint, automatikusan be kell jelentkeznie arra a NetSuite-ra, amelyhez be szeretné állítani az egyszeri bejelentkezést. A saját alkalmazásokkal kapcsolatos további információkért lásd: [Bevezetés a saját alkalmazások](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)használatába.
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
-- [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
-- [A NetSuite kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
-- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](/cloud-app-security/proxy-intro-aad)
 
-- [A NetSuite védelem speciális láthatósággal és vezérlőkkel](/cloud-app-security/proxy-intro-aad)
+## <a name="next-steps"></a>További lépések
+
+A NetSuite konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáféréstől. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)

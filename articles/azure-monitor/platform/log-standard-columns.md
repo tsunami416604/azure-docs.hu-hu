@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/09/2020
-ms.openlocfilehash: dc3d119479d2dce45b286463f3d6a76410220dd0
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2370f76bacb8645f1b343da4f056c8bcf06a26dd
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014220"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95796725"
 ---
 # <a name="standard-columns-in-azure-monitor-logs"></a>Szabványos oszlopok a Azure Monitor-naplókban
 Azure Monitor naplókban lévő adatokat egy [log Analytics munkaterületen vagy Application Insights alkalmazásban található rekordok halmaza tárolja](./data-platform-logs.md), amelyek mindegyike egy adott adattípussal rendelkezik, amely egyedi oszlopokkal rendelkezik. Számos adattípus szabványos oszlopokat tartalmaz, amelyek több típusra is jellemzőek. Ez a cikk ezeket az oszlopokat ismerteti, és példákat tartalmaz arra, hogyan használhatja őket a lekérdezésekben.
@@ -80,7 +80,7 @@ A **\_ elemazonosító** oszlop a rekord egyedi azonosítóját tartalmazza.
 ## <a name="_resourceid"></a>\_ResourceId
 A **\_ ResourceId** oszlop az erőforrás egyedi azonosítóját tartalmazza, amelyhez a rekord társítva van. Ez egy szabványos oszlopot biztosít a lekérdezés hatóköréhez, amely csak egy adott erőforrás rekordjaira vonatkozik, vagy a kapcsolódó adatok több táblán való összekapcsolására.
 
-Az Azure-erőforrások esetében **_ResourceId** értéke az [Azure-erőforrás azonosítójának URL-címe](../../azure-resource-manager/templates/template-functions-resource.md). Az oszlop jelenleg csak az Azure-erőforrásokra korlátozódik, de az Azure-on kívüli erőforrásokra, például a helyszíni számítógépekre is kiterjeszthető.
+Az Azure-erőforrások esetében **_ResourceId** értéke az [Azure-erőforrás azonosítójának URL-címe](../../azure-resource-manager/templates/template-functions-resource.md). Az oszlop az Azure-erőforrások, például az [Azure arc](../../azure-arc/overview.md) -erőforrások, illetve az erőforrás-azonosítót a betöltés során jelzett egyéni naplókra korlátozódik.
 
 > [!NOTE]
 > Egyes adattípusok már rendelkeznek olyan mezőkkel, amelyek tartalmazzák az Azure Resource ID-t, vagy legalább egy részét, például az előfizetés-azonosítót. Habár ezek a mezők a visszamenőleges kompatibilitás érdekében is megmaradnak, javasoljuk, hogy a _ResourceId használatával végezze el a korrelációt, mivel az konzisztensebb lesz.
@@ -111,17 +111,47 @@ AzureActivity
 ) on _ResourceId  
 ```
 
-Az alábbi lekérdezés az Azure-előfizetések által **_ResourceId** és összesített számlázott adatmennyiséget elemez.
+A következő lekérdezés elemzi a **_ResourceId** és összesíti az Azure-erőforráscsoport által számlázott adatmennyiséget.
 
 ```Kusto
 union withsource = tt * 
 | where _IsBillable == true 
 | parse tolower(_ResourceId) with "/subscriptions/" subscriptionId "/resourcegroups/" 
     resourceGroup "/providers/" provider "/" resourceType "/" resourceName   
-| summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last 
+| summarize Bytes=sum(_BilledSize) by resourceGroup | sort by Bytes nulls last 
 ```
 
 Ezeket a `union withsource = tt *` lekérdezéseket takarékosan használhatja az adattípusok megkereséséhez.
+
+Mindig hatékonyabb a \_ SubscriptionId oszlop használata, mint a kinyerése a \_ ResourceId oszlop elemzésével.
+
+## <a name="_substriptionid"></a>\_SubstriptionId
+A **\_ SubscriptionId** oszlop tartalmazza annak az erőforrásnak az előfizetési azonosítóját, amelyhez a rekord társítva van. Ez egy szabványos oszlopot biztosít, amellyel a lekérdezés hatókörét csak egy adott előfizetésből származó rekordokra vagy a különböző előfizetések összehasonlítására használhatja.
+
+Az Azure-erőforrások esetében **__SubscriptionId** értéke az [Azure Resource id URL-cím](../../azure-resource-manager/templates/template-functions-resource.md)előfizetés része. Az oszlop az Azure-erőforrások, például az [Azure arc](../../azure-arc/overview.md) -erőforrások, illetve az erőforrás-azonosítót a betöltés során jelzett egyéni naplókra korlátozódik.
+
+> [!NOTE]
+> Egyes adattípusok esetében már van olyan mező, amely tartalmazza az Azure-előfizetés AZONOSÍTÓját. Habár ezek a mezők a visszamenőleges kompatibilitás érdekében is megmaradnak, ajánlott a \_ SubscriptionId oszlopot használni a kereszthivatkozások végrehajtásához, mivel az konzisztens lesz.
+### <a name="examples"></a>Példák
+Az alábbi lekérdezés egy adott előfizetéshez tartozó számítógépek teljesítményadatokat vizsgálja. 
+
+```Kusto
+Perf 
+| where TimeGenerated > ago(24h) and CounterName == "memoryAllocatableBytes"
+| where _SubscriptionId == "57366bcb3-7fde-4caf-8629-41dc15e3b352"
+| summarize avgMemoryAllocatableBytes = avg(CounterValue) by Computer
+```
+
+Az alábbi lekérdezés az Azure-előfizetések által **_ResourceId** és összesített számlázott adatmennyiséget elemez.
+
+```Kusto
+union withsource = tt * 
+| where _IsBillable == true 
+| summarize Bytes=sum(_BilledSize) by _SubscriptionId | sort by Bytes nulls last 
+```
+
+Ezeket a `union withsource = tt *` lekérdezéseket takarékosan használhatja az adattípusok megkereséséhez.
+
 
 ## <a name="_isbillable"></a>\_Számlázható
 A **\_ számlázható** oszlop meghatározza, hogy a betöltött adatmennyiség számlázható-e. A **\_ számlázható** egyenlő mennyiségű adatok `false` gyűjtése ingyenesen történik, és nem számítjuk fel az Azure-fiókját.
@@ -168,8 +198,7 @@ Az előfizetéshez tartozó számlázható események méretének megtekintésé
 ```Kusto
 union withsource=table * 
 | where _IsBillable == true 
-| parse _ResourceId with "/subscriptions/" SubscriptionId "/" *
-| summarize Bytes=sum(_BilledSize) by  SubscriptionId | sort by Bytes nulls last 
+| summarize Bytes=sum(_BilledSize) by  _SubscriptionId | sort by Bytes nulls last 
 ```
 
 Ha szeretné megtekinteni, hogy mekkora a számlázható események száma egy erőforráscsoport esetében, használja a következő lekérdezést:
@@ -178,7 +207,7 @@ Ha szeretné megtekinteni, hogy mekkora a számlázható események száma egy e
 union withsource=table * 
 | where _IsBillable == true 
 | parse _ResourceId with "/subscriptions/" SubscriptionId "/resourcegroups/" ResourceGroupName "/" *
-| summarize Bytes=sum(_BilledSize) by  SubscriptionId, ResourceGroupName | sort by Bytes nulls last 
+| summarize Bytes=sum(_BilledSize) by  _SubscriptionId, ResourceGroupName | sort by Bytes nulls last 
 
 ```
 

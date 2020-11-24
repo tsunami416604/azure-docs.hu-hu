@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 01d7d29e9fffff3be2c98c0ec52c01774439e3f7
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: bc17b63ef8f83e4086262d52334a518ec85f4fc6
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341188"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95792598"
 ---
 # <a name="pricing-of-azure-security-center"></a>A Azure Security Center díjszabása
-Az Azure Security Center egységes biztonsági felügyeletet és fejlett fenyegetésvédelmet biztosít az Azure-ban, a helyszínen és egyéb felhőszolgáltatásokban futó számítási feladatokhoz. Lehetővé teszi a hibrid Felhőbeli számítási feladatok, az aktív védelem és a fenyegetések kialakulásának csökkentését, valamint az intelligens észlelést, amely megkönnyíti a gyors fejlődést okozó cyber-támadásokkal szembeni lépést.
+Az Azure Security Center egységes biztonsági felügyeletet és fejlett fenyegetésvédelmet biztosít az Azure-ban, a helyszínen és egyéb felhőszolgáltatásokban futó számítási feladatokhoz. Lehetővé teszi a hibrid Felhőbeli számítási feladatok, az aktív védelem és a fenyegetések kialakulásának csökkentését, valamint az intelligens észlelést, amely megkönnyíti a gyors fejlődést jelentő számítógépes kockázatok megtartását.
 
 
 ## <a name="free-option-vs-azure-defender-enabled"></a>Ingyenes lehetőség és Azure Defender engedélyezve
@@ -35,24 +35,22 @@ Security Center két üzemmódban érhető el:
     - **Microsoft Defender for Endpoint** – az Azure Defender for Servers tartalmazza a [Microsoft Defender for](https://www.microsoft.com/microsoft-365/security/endpoint-defender) végpontot a végpontok átfogó észleléséhez és válaszához (EDR). További információ a Microsoft Defender és a végpont együttes használatának előnyeiről az Azure Defender [használata Security Center integrált EDR megoldásával](security-center-wdatp.md).
     - **Biztonsági rések keresése a virtuális gépek és a tárolók** beállításjegyzékében – egyszerűen üzembe helyezhet egy képolvasót az összes olyan virtuális gépen, amely az iparág legfejlettebb megoldást nyújt a biztonsági rések kezelésére. Megtekintheti, megvizsgálhatja és elháríthatja az eredményeket közvetlenül a Security Centeron belül. 
     - **Hibrid biztonság** – az összes helyszíni és Felhőbeli számítási feladatra kiterjedő egységes biztonsági nézet. Alkalmazza a biztonsági házirendeket, és folyamatosan mérje fel a hibrid Felhőbeli számítási feladatok biztonságát a biztonsági normáknak való megfelelés biztosítása érdekében. Több forrásból származó biztonsági adatok gyűjtése, keresése és elemzése, beleértve a tűzfalakat és más partneri megoldásokat.
-    - **Veszélyforrások elleni védelem – riasztások** – a fejlett viselkedési elemzések és a Microsoft intelligens biztonsági gráf a fejlődő Cyber-támadásokat biztosítanak. A támadásokat és a napi használatot lehetővé téve a beépített viselkedés-elemzés és a gépi tanulás kihasználása. Figyelheti a hálózatokat, a gépeket és a Felhőbeli szolgáltatásokat a beérkező támadásokhoz és a szabálysértés utáni tevékenységekhez. Egyszerűsítse a nyomozást az interaktív eszközökkel és a kontextusbeli fenyegetések intelligenciával.
-    - **Hozzáférés-és alkalmazás-vezérlőelemek** – a kártevők és más nemkívánatos alkalmazások letiltása a gépi tanulásra vonatkozó, a konkrét munkaterhelésekhez igazított, engedélyezési és letiltási listát létrehozó javaslatok alkalmazásával. Csökkentse a hálózati támadási felületet az Azure-beli virtuális gépeken található felügyeleti portokra vonatkozó, igény szerinti, vezérelt hozzáféréssel. Ez drasztikusan csökkenti a találgatásos és más hálózati támadásoknak való kitettséget.
-    - **Tároló-biztonsági funkciók** – a biztonsági rések kezelése és a valós idejű veszélyforrások elleni védelem kihasználása a tároló környezetekben. Ha engedélyezi az **Azure Defender számára a tároló**-beállításjegyzékek használatát, akkor akár 12hrs is eltarthat, amíg az összes funkció be nem fejeződik. A díjak a csatlakoztatott beállításjegyzékbe leküldett egyedi tároló-lemezképek számától függenek. Ha egyszer már megvizsgálta a képet, a rendszer nem számítja fel újra, hacsak nem módosítják, és még egyszer leküldik. 
+    - **Veszélyforrások elleni védelem – riasztások** – a fejlett viselkedési elemzések és a Microsoft intelligens biztonsági gráf a fejlődő Cyber-támadásokat biztosítanak. A beépített viselkedési elemzések és gépi tanulás képes azonosítani a támadásokat és a napi kihasználat. Figyelheti a hálózatokat, a gépeket és a Felhőbeli szolgáltatásokat a beérkező támadásokhoz és a szabálysértés utáni tevékenységekhez. Egyszerűsítse a nyomozást az interaktív eszközökkel és a kontextusbeli fenyegetések intelligenciával.
+    - **Hozzáférés és alkalmazás-vezérlőelemek** (AAC) – a kártevők és más nemkívánatos alkalmazások blokkolása gépi tanulásra alkalmas, az engedélyezési és letiltási listát létrehozó munkaterhelésekhez igazított gépi tanulási javaslatokat alkalmazva. Csökkentse a hálózati támadási felületet az Azure-beli virtuális gépeken található felügyeleti portokra vonatkozó, igény szerinti, vezérelt hozzáféréssel. Az AAC drasztikusan csökkenti a találgatásos támadásokat és más hálózati támadások kockázatát.
+    - **Tároló-biztonsági funkciók** – a biztonsági rések kezelése és a valós idejű veszélyforrások elleni védelem kihasználása a tároló környezetekben. Ha engedélyezi az **Azure Defender számára a tároló**-beállításjegyzékek használatát, akár 12 óráig is eltarthat, amíg az összes funkció be nem fejeződik. A díjak a csatlakoztatott beállításjegyzékbe leküldett egyedi tároló-lemezképek számától függenek. Ha egyszer már megvizsgálta a képet, a rendszer nem számítja fel újra, hacsak nem módosítják, és még egyszer leküldik. 
 
 ## <a name="try-azure-defender-free-for-30-days"></a>Próbálja ki az Azure Defendert ingyen 30 napig
-
 Az Azure Defender az első 30 napon belül díjmentes. 30 nap elteltével a szolgáltatás használatának folytatásához automatikusan elindul a használati díj.
 
 ## <a name="enable-azure-defender"></a>Az Azure Defender engedélyezése
-
 Az Azure Defender teljes Azure-előfizetését védelemmel láthatja el, és az előfizetésben lévő összes erőforrás örökli a védelmet.
 
 Az Azure Defender engedélyezése:
 
-1. A Security Center főmenüjében válassza a **díjszabás & beállítások**lehetőséget.
+1. A Security Center főmenüjében válassza a **díjszabás & beállítások** lehetőséget.
 1. Válassza ki a frissíteni kívánt előfizetést.
 1. A frissítéshez válassza az **Azure Defender** lehetőséget.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 Az alábbi példa egy előfizetésre vonatkozó díjszabási oldalt mutat be. Megfigyelheti, hogy az Azure Defender minden csomagja külön díjszabású, és egyénileg be-és kikapcsolható.
 
@@ -66,8 +64,58 @@ Az alábbi példa egy előfizetésre vonatkozó díjszabási oldalt mutat be. Me
 > Az **Azure Database for MariaDB/MySQL/PostgreSQL** veszélyforrások elleni védelmét csak az erőforrás szintjén engedélyezheti.
 
 
-## <a name="next-steps"></a>Következő lépések
-Ebben a cikkben a Security Center díjszabását vezették be. Kapcsolódó anyagok esetében lásd:
+## <a name="faq---pricing-and-billing"></a>Gyakori kérdések – díjszabás és számlázás 
+
+### <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-azure-security-center"></a>Hogyan követhetem nyomon a szervezetem, hogy az Azure Defender milyen változásokat engedélyezett Azure Security Center
+Az Azure-előfizetések több rendszergazdai jogosultsággal rendelkezhetnek a díjszabási beállítások módosításához. Ha szeretné megtudni, hogy melyik felhasználó módosította a változást, használja az Azure-tevékenység naplóját.
+
+Ha a felhasználó adatai nem szerepelnek az oszlop **által kezdeményezett eseményben** , tekintse át az eseményt a vonatkozó részletekért.
+
+:::image type="content" source="media/security-center-pricing/logged-change-to-pricing.png" alt-text="Az Azure eseménynaplója egy árképzési változási eseményt mutat be":::
+
+
+### <a name="what-are-the-plans-offered-by-security-center"></a>Mik a Security Center által kínált csomagok? 
+Security Center két ajánlattal rendelkezik: 
+
+- Az Azure Security Center ingyenes verziója 
+- Azure Defender  
+
+### <a name="how-do-i-enable-azure-defender-for-my-subscription"></a>Hogyan engedélyezhetem az Azure Defendert az előfizetéshez? 
+Az előfizetéshez az alábbi módokon engedélyezheti az Azure Defender használatát: 
+
+|Metódus  |Utasítások  |
+|---------|---------|
+|A Azure Portal Azure Security Center lapja|[Az Azure Defender engedélyezése](#enable-azure-defender)|
+|REST API|[Díjszabási API](https://docs.microsoft.com/rest/api/securitycenter/pricings)|
+|Azure CLI|[az Security díjszabása](https://docs.microsoft.com/cli/azure/security/pricing)|
+|PowerShell|[Set-AzSecurityPricing](https://docs.microsoft.com/powershell/module/az.security/set-azsecuritypricing)|
+|Azure Policy|[Csomagok díjszabása](https://github.com/Azure/Azure-Security-Center/tree/master/Pricing%20%26%20Settings/Azure%20Policy%20definitions/Bundle%20Pricings)|
+|||
+
+### <a name="can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription"></a>Engedélyezhetem az Azure Defendert kiszolgálók részhalmazában lévő kiszolgálókhoz az előfizetésben?
+Nem. Ha engedélyezi az [Azure Defender számára](defender-for-servers-introduction.md) az előfizetéshez tartozó kiszolgálókat, az előfizetésben lévő összes kiszolgálót az Azure Defender fogja védeni. 
+
+Egy másik lehetőség az Azure Defender engedélyezése a kiszolgálók számára a Log Analytics munkaterület szintjén. Ha ezt teszi, csak az adott munkaterületre jelentett kiszolgálók lesznek védve és számlázva. Számos funkció azonban elérhetetlenné válik. Ezek közé tartozik az igény szerinti virtuális gépekhez való hozzáférés, a hálózati észlelések, a szabályozások megfelelősége, az adaptív hálózat megerősítése, az adaptív alkalmazások vezérlése és egyebek. 
+
+
+### <a name="my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers"></a>Engedélyezve van-e az Azure Defender for Servers előfizetése, ha nem futó kiszolgálókat fizetnem? 
+Nem. Ha engedélyezi [Az Azure Defender számára az előfizetéshez tartozó kiszolgálókat](defender-for-servers-introduction.md) , óradíjat kell fizetnie a kiszolgálók futtatásához. A kikapcsolt kiszolgálók után nem számítunk fel díjat. 
+
+> [!TIP]
+> Ez a Security Center által védett egyéb erőforrástípusok esetében is érvényes. 
+
+### <a name="will-i-be-charged-for-machines-without-the-log-analytics-agent-installed"></a>A Log Analytics ügynök nélküli gépek után kell díjat fizetni?
+Igen. Ha engedélyezi az [Azure Defender számára az előfizetéshez tartozó kiszolgálókat](defender-for-servers-introduction.md) , az adott előfizetésben lévő gépek akkor is különböző védelmet kapnak, ha még nem telepítette a log Analytics ügynököt.
+
+### <a name="if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice"></a>Ha egy Log Analytics ügynök több munkaterületre jelent jelentést, akkor kétszer kell fizetnem? 
+Igen. Ha úgy konfigurálta a Log Analytics-ügynököt, hogy két vagy több különböző Log Analytics-munkaterületre küldje el az adatküldés adatait, akkor minden olyan munkaterületért fizetnie kell, amelyhez telepítve van a "biztonság" vagy az "antimalware" megoldás. 
+
+### <a name="if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them"></a>Ha egy Log Analytics-ügynök több munkaterületre is jelentést készít, a 500 MB-os ingyenes adatfeldolgozás az összes rajtuk elérhető?
+Igen. Ha úgy konfigurálta a Log Analytics-ügynököt, hogy két vagy több különböző Log Analytics-munkaterületre küldje el az adatküldés adatait, 500 MB szabad adatfeldolgozást fog kapni. A rendszer minden olyan munkaterületre kiszámítja, amelyet jelentettek, naponta, és minden olyan munkaterület számára elérhető, amelyeken telepítve van a "biztonság" vagy az "antimalware" megoldás. A 500 MB-nál nagyobb mennyiségű adatot kell fizetnie.
+
+
+## <a name="next-steps"></a>További lépések
+Ez a cikk a Security Center díjszabási lehetőségeit ismerteti. Kapcsolódó anyagok esetében lásd:
 
 - [Az Azure számítási feladatok költségeinek optimalizálása](https://azure.microsoft.com/blog/how-to-optimize-your-azure-workload-costs/)
 - [A választott pénznem díjszabása és a régiójuk szerint](https://azure.microsoft.com/pricing/details/security-center/)

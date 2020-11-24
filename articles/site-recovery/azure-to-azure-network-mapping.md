@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: harshacs
-ms.openlocfilehash: b5ae68dea228e834b2449152bd3ef357f2a74e83
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff1f80641dc3db1f6b69fc0223c60022f8cf8435
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90069492"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95811630"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Hálózatleképezés és IP-cím beállítása virtuális hálózatokhoz
 
@@ -26,11 +26,11 @@ A hálózatok leképezése előtt [Azure virtuális hálózatok](../virtual-netw
 
 A hálózatokat a következőképpen kell leképezni:
 
-1. **Site Recovery infrastruktúrában**kattintson a **+ hálózati leképezés**elemre.
+1. **Site Recovery infrastruktúrában** kattintson a **+ hálózati leképezés** elemre.
 
     ![ Hálózati leképezés létrehozása](./media/site-recovery-network-mapping-azure-to-azure/network-mapping1.png)
 
-3. A **hálózati leképezés hozzáadása**lapon válassza ki a forrás-és célhelyeket. A példánkban a forrás virtuális gép a Kelet-Ázsia régióban fut, és replikálja a Délkelet-ázsiai régióba.
+3. A **hálózati leképezés hozzáadása** lapon válassza ki a forrás-és célhelyeket. A példánkban a forrás virtuális gép a Kelet-Ázsia régióban fut, és replikálja a Délkelet-ázsiai régióba.
 
     ![Forrás és cél kiválasztása](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
 3. Most hozzon létre egy hálózati leképezést az ellenkező irányba. Példánkban a forrás mostantól Délkelet-Ázsiában lesz, és a cél Kelet-Ázsia lesz.
@@ -85,14 +85,14 @@ Eltérő címterület | A célként megadott alhálózat következő elérhető 
 **Célként megadott hálózat** | **Részletek**
 --- | ---
 A célként megadott hálózat a feladatátvételi VNet | – A cél IP-cím statikus lesz ugyanazzal az IP-címmel. <br/><br/>  -Ha ugyanaz az IP-cím már hozzá van rendelve, akkor az alhálózat tartományának végén az IP-cím lesz a következő. Például: Ha a forrás IP-címe 10.0.0.19, és a feladatátvételi hálózat a 10.0.0.0/24 tartományt használja, akkor a célként megadott virtuális géphez hozzárendelt következő IP-cím 10.0.0.254.
-A célként megadott hálózat nem a feladatátvételi VNet | – A cél IP-cím statikus lesz ugyanazzal az IP-címmel.<br/><br/>  -Ha ugyanaz az IP-cím már hozzá van rendelve, akkor az alhálózat tartományának végén az IP-cím lesz a következő.<br/><br/> Például: Ha a forrás statikus IP-címe 10.0.0.19, és a feladatátvétel olyan hálózaton található, amely nem a feladatátvételi hálózat, a 10.0.0.0/24 tartományon belül, akkor a cél statikus IP-címe 10.0.0.0.19, ha elérhető, és egyéb esetben 10.0.0.254 lesz.
+A célként megadott hálózat nem a feladatátvételi VNet | – A cél IP-cím statikus lesz ugyanazzal az IP-címmel.<br/><br/>  -Ha ugyanaz az IP-cím már hozzá van rendelve, akkor az alhálózat tartományának végén az IP-cím lesz a következő.<br/><br/> Például: Ha a forrás statikus IP-címe 10.0.0.19, és a feladatátvétel olyan hálózaton található, amely nem a feladatátvételi hálózat, a 10.0.0.0/24 tartományon belül, akkor a cél statikus IP-címe 10.0.0.19, ha elérhető, és egyéb esetben 10.0.0.254 lesz.
 
 - A feladatátvételi VNet a katasztrófa-helyreállítás beállításakor kiválasztott célként megadott hálózat.
 - Javasoljuk, hogy mindig használjon nem éles hálózatot a feladatátvételi teszthez.
 - A cél IP-címet a virtuális gép **számítási és hálózati** beállításaiban módosíthatja.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át az Azure virtuális gép vész-helyreállítási [hálózati útmutatóját](./azure-to-azure-about-networking.md) .
 - [További](site-recovery-retain-ip-azure-vm-failover.md) információ az IP-címek megtartásáról a feladatátvétel után.

@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: f7b4a22c0473acb7da0708f095c25b4f3f78fe66
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5fd82105c94bb9be2d07c8843834465821acd8bc
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445591"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95803772"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>A prémium szintű Azure cache Virtual Network támogatásának konfigurálása a Redis-hez
 A Redis készült Azure cache különböző gyorsítótár-ajánlatokat tartalmaz, amelyek rugalmasságot biztosítanak a gyorsítótár méretének és funkcióinak, beleértve a prémium szintű funkciókat, például a fürtözést, az adatmegőrzést és a virtuális hálózatok támogatását. A VNet a felhőben található magánhálózat. Ha egy Azure cache for Redis-példány VNet van konfigurálva, nem nyilvánosan címezhető, és csak a VNet lévő virtuális gépekről és alkalmazásokról érhető el. Ez a cikk bemutatja, hogyan konfigurálhatja a virtuális hálózatok támogatását egy prémium szintű Azure cache-hez a Redis-példányhoz.
@@ -76,7 +76,7 @@ A Virtual Network (VNet) támogatása a gyorsítótár létrehozásakor a **Redi
 
 9. Szükség esetén a **címkék** lapon adja meg a nevet és az értéket, ha az erőforrást kategorizálni szeretné. 
 
-10. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. A felülvizsgálat + létrehozás lapon az Azure ellenőrzi a konfigurációt.
+10. Válassza az **Áttekintés + létrehozás** lehetőséget. A felülvizsgálat + létrehozás lapon az Azure ellenőrzi a konfigurációt.
 
 11. Ha megjelenik az átadott zöld érvényesítés üzenet, válassza a **Létrehozás** lehetőséget.
 
@@ -128,9 +128,9 @@ Ha a Redis tartozó Azure cache-t egy VNet üzemelteti, a rendszer a következő
 
 Kilenc kimenő portra vonatkozó követelmény van. Az ezekben a tartományokban lévő kimenő kérelmek vagy más olyan szolgáltatásoknak vannak kihagyva, amelyek szükségesek a gyorsítótár működéséhez vagy a belső Redis-alhálózathoz a csomópontok közötti kommunikációhoz. Földrajzi replikálás esetén további kimenő követelmények is léteznek az elsődleges és a replika gyorsítótár alhálózatai közötti kommunikációhoz.
 
-| Port(ok) | Irány | Átviteli protokoll | Rendeltetés | Helyi IP-cím | Távoli IP |
+| Port(ok) | Irány | Átviteli protokoll | Cél | Helyi IP-cím | Távoli IP |
 | --- | --- | --- | --- | --- | --- |
-| 80, 443 |Kimenő |TCP |Redis-függőségek az Azure Storage-ban/PKI-ben (Internet) | (Redis alhálózat) |* |
+| 80, 443 |Kimenő |TCP |Redis-függőségek az Azure Storage-ban/PKI-ben (Internet) | (Redis alhálózat) |* <sup>4</sup> |
 | 443 | Kimenő | TCP | Redis függőség Azure Key Vault és Azure Monitor | (Redis alhálózat) | AzureKeyVault, AzureMonitor <sup>1</sup> |
 | 53 |Kimenő |TCP/UDP |Redis-függőségek a DNS-ben (Internet/VNet) | (Redis alhálózat) | 168.63.129.16 és 169.254.169.254 <sup>2</sup> és bármely egyéni DNS-kiszolgáló a <sup>3</sup> . alhálózathoz |
 | 8443 |Kimenő |TCP |Belső kommunikáció a Redis | (Redis alhálózat) | (Redis alhálózat) |
@@ -146,6 +146,8 @@ Kilenc kimenő portra vonatkozó követelmény van. Az ezekben a tartományokban
 
 <sup>3</sup> nem szükséges egyéni DNS-kiszolgálót nem tartalmazó alhálózatokhoz vagy olyan újabb Redis cache-hez, amely figyelmen kívül hagyja az egyéni DNS-t.
 
+<sup>4</sup> további információ: [további VNET hálózati kapcsolatokra vonatkozó követelmények](#additional-vnet-network-connectivity-requirements).
+
 #### <a name="geo-replication-peer-port-requirements"></a>Georeplikációs társportok követelményei
 
 Ha az Azure Virtual Networks gyorsítótárai között replikáció használ, vegye figyelembe, hogy az ajánlott konfiguráció a teljes alhálózat 15000-15999-as portjának feloldása mind a bejövő, mind a kimenő irányban mindkét gyorsítótárban, így az alhálózat összes replika-összetevője közvetlenül tud kommunikálni egymással, akár egy jövőbeli földrajzi feladatátvétel esetén is.
@@ -154,15 +156,15 @@ Ha az Azure Virtual Networks gyorsítótárai között replikáció használ, ve
 
 Nyolc bejövő porttartomány-követelmény van. Az ezekben a tartományokban lévő bejövő kérelmek vagy más, ugyanazon a VNET üzemeltetett, vagy a Redis alhálózaton belüli kommunikációban lévő szolgáltatásokból érkeznek be.
 
-| Port(ok) | Irány | Átviteli protokoll | Rendeltetés | Helyi IP-cím | Távoli IP |
+| Port(ok) | Irány | Átviteli protokoll | Cél | Helyi IP-cím | Távoli IP |
 | --- | --- | --- | --- | --- | --- |
-| 6379, 6380 |Bejövő |TCP |Redis-alapú ügyfél-kommunikáció, Azure-terheléselosztás | (Redis alhálózat) | (Redis alhálózat), Virtual Network, Azure Load Balancer <sup>1</sup> |
+| 6379, 6380 |Bejövő |TCP |Redis-alapú ügyfél-kommunikáció, Azure-terheléselosztás | (Redis alhálózat) | (Redis alhálózat), (ügyfél-alhálózat), AzureLoadBalancer <sup>1</sup> |
 | 8443 |Bejövő |TCP |Belső kommunikáció a Redis | (Redis alhálózat) |(Redis alhálózat) |
-| 8500 |Bejövő |TCP/UDP |Azure-beli terheléselosztás | (Redis alhálózat) |Azure Load Balancer |
-| 10221-10231 |Bejövő |TCP |Ügyfél-kommunikáció a Redis-fürtökkel, belső kommunikáció a Redis | (Redis alhálózat) |(Redis alhálózat), Azure Load Balancer, (ügyfél-alhálózat) |
-| 13000-13999 |Bejövő |TCP |Ügyfél-kommunikáció Redis-fürtökkel, Azure-terheléselosztás | (Redis alhálózat) |Virtual Network, Azure Load Balancer |
-| 15000-15999 |Bejövő |TCP |Ügyfél-kommunikáció Redis-fürtökkel, Azure terheléselosztás és Geo-Replication | (Redis alhálózat) |Virtual Network, Azure Load Balancer, (Geo-replika társ alhálózat) |
-| 16001 |Bejövő |TCP/UDP |Azure-beli terheléselosztás | (Redis alhálózat) |Azure Load Balancer |
+| 8500 |Bejövő |TCP/UDP |Azure-beli terheléselosztás | (Redis alhálózat) | AzureLoadBalancer |
+| 10221-10231 |Bejövő |TCP |Ügyfél-kommunikáció a Redis-fürtökkel, belső kommunikáció a Redis | (Redis alhálózat) |(Redis alhálózat), AzureLoadBalancer, (ügyfél-alhálózat) |
+| 13000-13999 |Bejövő |TCP |Ügyfél-kommunikáció Redis-fürtökkel, Azure-terheléselosztás | (Redis alhálózat) | (Redis alhálózat), (ügyfél-alhálózat), AzureLoadBalancer |
+| 15000-15999 |Bejövő |TCP |Ügyfél-kommunikáció Redis-fürtökkel, Azure terheléselosztás és Geo-Replication | (Redis alhálózat) | (Redis alhálózat), (ügyfél-alhálózat), AzureLoadBalancer, (Geo-replika társ alhálózat) |
+| 16001 |Bejövő |TCP/UDP |Azure-beli terheléselosztás | (Redis alhálózat) | AzureLoadBalancer |
 | 20226 |Bejövő |TCP |Belső kommunikáció a Redis | (Redis alhálózat) |(Redis alhálózat) |
 
 <sup>1</sup> a NSG szabályok létrehozásához használhatja a "AzureLoadBalancer" (Resource Manager) (vagy a klasszikus) "AZURE_LOADBALANCER" nevű szolgáltatási címkét is.
@@ -171,10 +173,10 @@ Nyolc bejövő porttartomány-követelmény van. Az ezekben a tartományokban l�
 
 Az Azure cache hálózati kapcsolati követelményei olyan Redis esetében fordulnak elő, amelyek esetleg nem feltétlenül teljesülnek egy virtuális hálózaton. A Redis készült Azure cache használatához a következő elemek megfelelő működéséhez szükség van a virtuális hálózaton belüli használathoz.
 
-* A kimenő hálózati kapcsolat az Azure Storage-végpontokkal világszerte. Ide tartoznak a Redis-példányhoz tartozó Azure cache-vel azonos régióban található végpontok, valamint **más** Azure-régiókban található tárolási végpontok. Az Azure Storage-végpontok a következő DNS-tartományok alatt oldhatók fel: *table.Core.Windows.net* , *blob.Core.Windows.net* , *Queue.Core.Windows.net* és *file.Core.Windows.net*. 
-* Kimenő hálózati kapcsolat a *OCSP.Digicert.com* , a *crl4.digicert.com* , a *OCSP.msocsp.com* , a *mscrl.microsoft.com* , a *crl3.digicert.com* *, a cacerts.Digicert.com,* a *oneocsp.microsoft.com* és a *CRL.microsoft.com* használatával. Ez a kapcsolat szükséges a TLS/SSL-funkciók támogatásához.
+* A kimenő hálózati kapcsolat az Azure Storage-végpontokkal világszerte. Ide tartoznak a Redis-példányhoz tartozó Azure cache-vel azonos régióban található végpontok, valamint **más** Azure-régiókban található tárolási végpontok. Az Azure Storage-végpontok a következő DNS-tartományok alatt oldhatók fel: *table.Core.Windows.net*, *blob.Core.Windows.net*, *Queue.Core.Windows.net* és *file.Core.Windows.net*. 
+* Kimenő hálózati kapcsolat a *OCSP.Digicert.com*, a *crl4.digicert.com*, a *OCSP.msocsp.com*, a *mscrl.microsoft.com*, a *crl3.digicert.com* *, a cacerts.Digicert.com,* a *oneocsp.microsoft.com* és a *CRL.microsoft.com* használatával. Ez a kapcsolat szükséges a TLS/SSL-funkciók támogatásához.
 * A virtuális hálózat DNS-konfigurációjának képesnek kell lennie a korábbi pontokban említett összes végpont és tartomány feloldására. Ezek a DNS-követelmények teljesíthetők az érvényes DNS-infrastruktúra konfigurálásának és karbantartásának biztosításával a virtuális hálózat számára.
-* Kimenő hálózati kapcsolat az alábbi Azure Monitor-végpontokkal, amelyek a következő DNS-tartományok alatt oldhatók fel: *shoebox2-Black.shoebox2.Metrics.nsatc.net* , *North-prod2.prod2.Metrics.nsatc.net* , *azglobal-Black.azglobal.Metrics.nsatc.net* , *shoebox2-Red.shoebox2.Metrics.nsatc.net* , *East-prod2.prod2.Metrics.nsatc.net* , *azglobal-Red.azglobal.Metrics.nsatc.net*.
+* Kimenő hálózati kapcsolat az alábbi Azure Monitor-végpontokkal, amelyek a következő DNS-tartományok alatt oldhatók fel: *shoebox2-Black.shoebox2.Metrics.nsatc.net*, *North-prod2.prod2.Metrics.nsatc.net*, *azglobal-Black.azglobal.Metrics.nsatc.net*, *shoebox2-Red.shoebox2.Metrics.nsatc.net*, *East-prod2.prod2.Metrics.nsatc.net*, *azglobal-Red.azglobal.Metrics.nsatc.net*.
 
 ### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>Hogyan tudom ellenőrizni, hogy a gyorsítótár működik-e egy VNET?
 
@@ -218,19 +220,19 @@ Ha nem tudja feloldani a DNS-nevet, egyes ügyféloldali kódtárak olyan konfig
 A virtuális hálózatok csak Premium-gyorsítótárak használatával használható.
 
 ### <a name="why-does-creating-an-azure-cache-for-redis-fail-in-some-subnets-but-not-others"></a>Miért nem sikerül létrehozni egy Azure cache-t a Redis-hez egyes alhálózatokban, de másokat nem?
-Ha Azure-gyorsítótárat telepít a Redis egy Resource Manager-VNet, a gyorsítótárnak olyan dedikált alhálózaton kell lennie, amely nem tartalmaz más erőforrástípust. Ha kísérlet történt egy Azure-gyorsítótár üzembe helyezésére a Redis egy olyan Resource Manager VNet-alhálózatra, amely más erőforrásokat is tartalmaz, a telepítés meghiúsul. Ahhoz, hogy új Azure cache-t hozna létre a Redis számára, törölnie kell a meglévő erőforrásokat az alhálózaton belül.
+Ha egy Azure-gyorsítótárat telepít a Redis egy VNet, a gyorsítótárnak olyan dedikált alhálózaton kell lennie, amely nem tartalmaz más erőforrástípust. Ha kísérlet történt egy Azure cache üzembe helyezésére a Redis egy olyan Resource Manager VNet-alhálózatra, amely más erőforrásokat is tartalmaz (például az Application Gatewayt, a kimenő NAT-ot stb.), a központi telepítés általában sikertelen lesz. A Redis új Azure-gyorsítótárának létrehozása előtt törölnie kell más típusok meglévő erőforrásait.
 
-Több típusú erőforrást is üzembe helyezhet egy klasszikus VNet, ha elegendő IP-cím áll rendelkezésre.
+Az alhálózaton is elérhetőnek kell lennie elegendő IP-címmel.
 
 ### <a name="what-are-the-subnet-address-space-requirements"></a>Mik az alhálózati címtartomány követelményei?
 Az Azure egyes alhálózatokon belül fenntart néhány IP-címet, és ezeket a címeket nem lehet használni. Az alhálózatok első és utolsó IP-címe a protokoll-megfelelőség számára van fenntartva, valamint az Azure-szolgáltatásokhoz használt három további címet. További információ: az [IP-címek ezen alhálózatokon belüli használatára vonatkozó korlátozások?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
 
-Az Azure VNET-infrastruktúra által használt IP-címeken kívül az alhálózat minden Redis-példánya két IP-címet használ, és egy további IP-címet a terheléselosztó számára. A nem fürtözött gyorsítótár egy szegmensnek tekintendő.
+Az Azure VNET-infrastruktúra által használt IP-címeken kívül az alhálózat minden Redis-példánya két IP-címet használ a fürt szegmensében (plusz további IP-címeket a további replikákat, ha vannak ilyenek) és egy további IP-címet a terheléselosztó számára. A nem fürtözött gyorsítótár egy szegmensnek tekintendő.
 
 ### <a name="do-all-cache-features-work-when-hosting-a-cache-in-a-vnet"></a>Működik az összes gyorsítótár-funkció a gyorsítótár VNET való üzemeltetése során?
 Ha a gyorsítótár egy VNET része, akkor csak a VNET lévő ügyfelek férhetnek hozzá a gyorsítótárhoz. Ennek eredményeképpen a következő gyorsítótár-kezelési funkciók jelenleg nem működnek.
 
-* Redis-konzol – mivel a Redis-konzol a helyi böngészőben fut, amely kívül esik a VNET, nem tud csatlakozni a gyorsítótárhoz.
+* Redis-konzol – mivel a Redis-konzol a helyi böngészőben fut, ez általában olyan fejlesztői gépen történik, amely nem csatlakozik a VNET, ezért nem tud csatlakozni a gyorsítótárhoz.
 
 
 ## <a name="use-expressroute-with-azure-cache-for-redis"></a>A ExpressRoute használata az Azure cache használatával a Redis

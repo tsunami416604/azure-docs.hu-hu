@@ -5,31 +5,20 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 11/23/2020
+ms.date: 11/24/2020
 ms.author: victorh
-ms.openlocfilehash: 650cf1e9b0e9fbbadc5a783cad844898698bf017
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 73a07af0fa98adf66d6104f1ab545d31a0cfd6d7
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95509736"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95802033"
 ---
 # <a name="azure-firewall-manager-policy-overview"></a>Azure Firewall Manager-házirend áttekintése
 
 A tűzfalszabályok olyan Azure-erőforrások, amelyek NAT-, hálózat-és alkalmazás-szabály-gyűjteményeket, valamint fenyegetési intelligencia-beállításokat tartalmaznak. Ez egy globális erőforrás, amely a biztonságos virtuális hubok és a hub virtuális hálózatok több Azure Firewall példányára is használható. A szabályzatok a régiók és az előfizetések között működnek.
 
 ![Azure Firewall Manager-házirend](media/policy-overview/policy-overview.png)
-
-## <a name="availability"></a>Rendelkezésre állás
-
-A tűzfal-házirend egy magasan elérhető és automatikusan replikált erőforrás. Ha ritka regionális katasztrófa történik, a tűzfal-házirend műveletei feladatátvételt végeznek az Azure párosított régióiba. Helyreállítási műveletek utáni feladatátvétel az Azure elsődleges régiójába szinkron és aszinkron műveletekhez. 
-
-A párosított régiók számos előnnyel rendelkeznek, többek között:
-- fizikai elkülönítés legalább 300 mérföldrel elválasztva
-- gyorsabb helyreállítás katasztrófa esetén
-- az adattárolási követelmények teljesítése a földrajz alapján
-
-A párosított régiókkal kapcsolatos további információkért lásd [: Üzletmenet-folytonosság és vész-helyreállítási (BCDR): Azure párosított régiók](../best-practices-availability-paired-regions.md).
 
 ## <a name="policy-creation-and-association"></a>Házirend létrehozása és társítása
 
@@ -71,6 +60,6 @@ A Azure Firewall a hagyományos szabályokat és szabályzatokat is támogatja. 
 
 A szabályzatok a tűzfal-társítások alapján lesznek kiszámlázva. Egy nulla vagy egy tűzfal társítással rendelkező szabályzat díjmentes. A több tűzfallal foglalkozó szabályzatot rögzített díjszabás szerint számítjuk fel. További információ: [Azure Firewall Manager díjszabása](https://azure.microsoft.com/pricing/details/firewall-manager/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Azure Firewall telepítésének megismeréséhez tekintse meg [az oktatóanyag: a felhőalapú hálózat védelme a Azure Firewall Managerrel a Azure Portal használatával](secure-cloud-network.md)című témakört.

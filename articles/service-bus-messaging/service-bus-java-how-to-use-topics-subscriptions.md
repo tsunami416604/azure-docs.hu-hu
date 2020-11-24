@@ -1,455 +1,233 @@
 ---
-title: A Java használatával Azure Service Bus témaköröket és előfizetéseket használhat
-description: Ebben a rövid útmutatóban a Java-kódokat kell írnia, hogy üzeneteket küldjön egy Azure Service Bus témakörbe, majd üzeneteket fogadjon az előfizetésből az adott témakörbe.
+title: Azure Service Bus témakörök és előfizetések használata Javával (Azure-Messaging-servicebus)
+description: Ebben a rövid útmutatóban Java-kódokat ír az Azure-Messaging-servicebus csomag használatával, amely üzeneteket küld egy Azure Service Bus témakörnek, majd üzeneteket fogad az előfizetésből az adott témakörbe.
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 06/23/2020
-ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: b255c825e0576e983c821234c531a9442baf654b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 11/09/2020
+ms.openlocfilehash: 2e32213b5d2e405a48df4b3c89115fbd0bb90c43
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88065760"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95805803"
 ---
-# <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>Gyors útmutató: Service Bus témakörök és előfizetések használata Javával
+# <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-java"></a>Üzenetek küldése egy Azure Service Bus témakörnek, és üzenetek fogadása az előfizetésből a témakörbe (Java)
+Ebben a rövid útmutatóban Java-kódokat ír az Azure-Messaging-servicebus csomag használatával, amely üzeneteket küld egy Azure Service Bus témakörnek, majd üzeneteket fogad az előfizetésből az adott témakörbe.
 
-[!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
-
-Ebben a rövid útmutatóban a Java-kódokat kell írnia, hogy üzeneteket küldjön egy Azure Service Bus témakörbe, majd üzeneteket fogadjon az előfizetésből az adott témakörbe. 
+> [!IMPORTANT]
+> Ez a rövid útmutató az új Azure-Messaging-servicebus csomagot használja. A régi Azure-servicebus csomagot használó gyors útmutatóért lásd: [üzenetek küldése és fogadása az Azure-servicebus használatával](service-bus-java-how-to-use-topics-subscriptions-legacy.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja [Visual Studio-vagy MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) , vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Kövesse a rövid útmutató lépéseit [: a Azure Portal használatával hozzon létre egy Service Bus témakört és előfizetéseket a témakörbe](service-bus-quickstart-topics-subscriptions-portal.md) a következő feladatok elvégzéséhez:
-    1. Hozzon létre egy Service Bus **névteret**.
-    2. A **kapcsolatok karakterláncának**beolvasása.
-    3. Hozzon létre egy **témakört** a névtérben.
-    4. Hozzon létre **három előfizetést** a témakörben a névtérben.
-3. [Javához készült Azure SDK][Azure SDK for Java].
+- Azure-előfizetés. Az oktatóanyag elvégzéséhez egy Azure-fiókra lesz szüksége. Aktiválhatja [Visual Studio-vagy MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) , vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- Kövesse a rövid útmutató lépéseit [: a Azure Portal használatával hozzon létre egy Service Bus témakört és előfizetéseket a témakörbe](service-bus-quickstart-topics-subscriptions-portal.md). Jegyezze fel a kapcsolatok karakterláncát, a témakör nevét és az előfizetés nevét. Ehhez a rövid útmutatóhoz csak egy előfizetést fog használni. 
+- Telepítse [a Javához készült Azure SDK][Azure SDK for Java]-t. Ha az Eclipse-t használja, akkor telepítheti a Javához készült Azure SDK-t tartalmazó [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] . Ezután hozzáadhatja a **Javához készült Microsoft Azure kódtárakat** a projekthez. Ha a IntelliJ-t használja, tekintse meg [a Azure Toolkit for IntelliJ telepítését](/azure/developer/java/toolkit-for-intellij/installation)ismertető témakört. 
 
-## <a name="configure-your-application-to-use-service-bus"></a>Az alkalmazás konfigurálása Service Bus használatára
-A minta létrehozása előtt győződjön meg arról, hogy telepítette a [Javához készült Azure SDK][Azure SDK for Java] -t. Ha az Eclipse-t használja, akkor telepítheti a Javához készült Azure SDK-t tartalmazó [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] . Ezután hozzáadhatja a **javához Microsoft Azure kódtárakat** a projekthez:
-
-![A Java-hoz készült Microsoft Azure-kódtárak hozzáadása az Eclipse-projekthez](media/service-bus-java-how-to-use-topics-subscriptions/eclipse-azure-libraries-java.png)
-
-Emellett hozzá kell adnia a következő tégelyeket a Java Build elérési útjához:
-
-- gson-2.6.2. jar
-- Commons-CLI-1.4. jar
-- proton-j-0.21.0. jar
-
-Adjon hozzá egy **fő** metódussal rendelkező osztályt, majd adja hozzá a következő `import` utasításokat a Java-fájl elejéhez:
-
-```java
-import com.google.gson.reflect.TypeToken;
-import com.microsoft.azure.servicebus.*;
-import com.microsoft.azure.servicebus.primitives.ConnectionStringBuilder;
-import com.google.gson.Gson;
-import static java.nio.charset.StandardCharsets.*;
-import java.time.Duration;
-import java.util.*;
-import java.util.concurrent.*;
-import java.util.function.Function;
-import org.apache.commons.cli.*;
-import org.apache.commons.cli.DefaultParser;
-```
 
 ## <a name="send-messages-to-a-topic"></a>Üzenetek küldése egy üzenettémakörbe
-Frissítse a **Main** metódust egy **TopicClient** objektum létrehozásához, és hívja meg a segítő metódust, amely aszinkron módon küldi el a Service Bus témakört.
+Ebben a szakaszban létre fog hozni egy Java-konzol projektjét, és hozzá kell adnia egy kódot, amely üzeneteket küld a létrehozott témakörnek. 
 
-> [!NOTE] 
-> - A(z) `<NameOfServiceBusNamespace>` helyére írja be a Service Bus-névtér nevét. 
-> - Cserélje le a- `<AccessKey>` t a névtérhez tartozó hozzáférési kulcsra.
+### <a name="create-a-java-console-project"></a>Java-konzol projekt létrehozása
+Hozzon létre egy Java-projektet az Eclipse vagy egy tetszőleges eszköz használatával. 
 
-```java
-public class MyServiceBusTopicClient {
+### <a name="configure-your-application-to-use-service-bus"></a>Az alkalmazás konfigurálása Service Bus használatára
+Azure Service Bus könyvtárra mutató hivatkozás hozzáadása. A Service Bus Java-ügyféloldali könyvtára a [Maven Central adattárában](https://search.maven.org/search?q=a:azure-messaging-servicebus)érhető el. Ezt a kódtárat a következő függőségi deklarációval hivatkozhat a Maven-projektfájl használatával:
 
-    static final Gson GSON = new Gson();
-    
-    public static void main(String[] args) throws Exception, ServiceBusException {
-        // TODO Auto-generated method stub
-
-        TopicClient sendClient;
-        String connectionString = "Endpoint=sb://<NameOfServiceBusNamespace>.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=<AccessKey>";
-        sendClient = new TopicClient(new ConnectionStringBuilder(connectionString, "BasicTopic"));       
-        sendMessagesAsync(sendClient).thenRunAsync(() -> sendClient.closeAsync());
-    }
-
-    static CompletableFuture<Void> sendMessagesAsync(TopicClient sendClient) {
-        List<HashMap<String, String>> data =
-                GSON.fromJson(
-                        "[" +
-                                "{'name' = 'Einstein', 'firstName' = 'Albert'}," +
-                                "{'name' = 'Heisenberg', 'firstName' = 'Werner'}," +
-                                "{'name' = 'Curie', 'firstName' = 'Marie'}," +
-                                "{'name' = 'Hawking', 'firstName' = 'Steven'}," +
-                                "{'name' = 'Newton', 'firstName' = 'Isaac'}," +
-                                "{'name' = 'Bohr', 'firstName' = 'Niels'}," +
-                                "{'name' = 'Faraday', 'firstName' = 'Michael'}," +
-                                "{'name' = 'Galilei', 'firstName' = 'Galileo'}," +
-                                "{'name' = 'Kepler', 'firstName' = 'Johannes'}," +
-                                "{'name' = 'Kopernikus', 'firstName' = 'Nikolaus'}" +
-                                "]",
-                        new TypeToken<List<HashMap<String, String>>>() {
-                        }.getType());
-
-        List<CompletableFuture> tasks = new ArrayList<>();
-        for (int i = 0; i < data.size(); i++) {
-            final String messageId = Integer.toString(i);
-            Message message = new Message(GSON.toJson(data.get(i), Map.class).getBytes(UTF_8));
-            message.setContentType("application/json");
-            message.setLabel("Scientist");
-            message.setMessageId(messageId);
-            message.setTimeToLive(Duration.ofMinutes(2));
-            System.out.printf("Message sending: Id = %s\n", message.getMessageId());
-            tasks.add(
-                    sendClient.sendAsync(message).thenRunAsync(() -> {
-                        System.out.printf("\tMessage acknowledged: Id = %s\n", message.getMessageId());
-                    }));
-        }
-        return CompletableFuture.allOf(tasks.toArray(new CompletableFuture<?>[tasks.size()]));
-    }
-}
+```xml
+<dependency>
+    <groupId>com.azure</groupId>
+    <artifactId>azure-messaging-servicebus</artifactId>
+    <version>7.0.0-beta.7</version>
+</dependency>
 ```
 
-A Service Bus-üzenettémakörök a [Standard csomagban](service-bus-premium-messaging.md) legfeljebb 256 KB, a [Prémium csomagban](service-bus-premium-messaging.md) legfeljebb 1 MB méretű üzeneteket támogatnak. A szabványos és az egyéni alkalmazástulajdonságokat tartalmazó fejléc mérete legfeljebb 64 KB lehet. A témakörben tárolt üzenetek száma nincs korlátozva, de a témakörben tárolt üzenetek teljes mérete korlátozva van. A témakör ezen méretét a létrehozáskor kell meghatározni, és a felső korlátja 5 GB.
+### <a name="add-code-to-send-messages-to-the-topic"></a>Kód hozzáadása az üzenetek a témakörbe való küldéséhez
+1. Adja hozzá a következő `import` utasításokat a Java-fájl témaköréhez. 
 
-## <a name="how-to-receive-messages-from-a-subscription"></a>Üzenetek fogadása egy előfizetésből
-Frissítse a **Main** metódust három **SubscriptionClient** objektum létrehozásához három előfizetéshez, és hozzon létre egy segítő metódust, amely aszinkron módon fogad üzeneteket a Service Bus témakörből. A mintakód feltételezi, hogy létrehozott egy **BasicTopic** nevű témakört, valamint három előfizetést ( **Subscription1**, **előfizetés2**és **Subscription3**). Ha más neveket használt hozzájuk, akkor a tesztelés előtt frissítse a kódot. 
+    ```java
+    import com.azure.messaging.servicebus.*;
+    import com.azure.messaging.servicebus.models.*;
+    import java.util.concurrent.TimeUnit;
+    import java.util.function.Consumer;
+    import java.util.Arrays;
+    import java.util.List;
+    ```    
+5. A osztályban adja meg a kapcsolódási karakterlánc és a témakör nevét a következő ábrán látható változók alapján: 
+
+    ```java
+    static String connectionString = "<NAMESPACE CONNECTION STRING>";
+    static String topicName = "<TOPIC NAME>";    
+    static String subName = "<SUBSCRIPTION NAME>";
+    ```
+
+    Cserélje le a `<NAMESPACE CONNECTION STRING>` karakterláncot a Service Bus névtérhez tartozó kapcsolódási sztringre. És cserélje le a `<TOPIC NAME>` nevet a témakör nevére.
+3. Adjon hozzá egy nevű metódust `sendMessage` a osztályhoz, hogy egy üzenetet küldjön a témakörnek. 
+
+    ```java
+        static void sendMessage()
+    {
+        // create a Service Bus Sender client for the queue 
+        ServiceBusSenderClient senderClient = new ServiceBusClientBuilder()
+                .connectionString(connectionString)
+                .sender()
+                .topicName(topicName)
+                .buildClient();
+        
+        // send one message to the topic
+        senderClient.sendMessage(new ServiceBusMessage("Hello, World!"));
+        System.out.println("Sent a single message to the topic: " + topicName);        
+    }
+    ```
+1. Az üzenetek listájának létrehozásához vegyen fel egy nevű metódust `createMessages` a osztályban. Ezeket az üzeneteket általában az alkalmazás különböző részeiről szerezheti be. Itt a mintaadatok listáját fogjuk létrehozni.
+
+    ```java
+    static List<ServiceBusMessage> createMessages()
+    {
+        // create a list of messages and return it to the caller
+        ServiceBusMessage[] messages = {
+                new ServiceBusMessage("First message"),
+                new ServiceBusMessage("Second message"),
+                new ServiceBusMessage("Third message")
+        };
+        return Arrays.asList(messages);
+    }
+    ```
+1. Adjon hozzá egy metódus nevű metódust `sendMessageBatch` az üzenetek küldéséhez a létrehozott témakörbe. Ez a metódus létrehoz egy- `ServiceBusSenderClient` t a témakörhöz, meghívja a `createMessages` metódust az üzenetek listájának beolvasásához, előkészíti egy vagy több köteget, és elküldi a kötegeket a témakörnek. 
 
 ```java
-public class MyServiceBusTopicClient {
+    static void sendMessageBatch()
+    {
+        // create a Service Bus Sender client for the topic 
+        ServiceBusSenderClient senderClient = new ServiceBusClientBuilder()
+                .connectionString(connectionString)
+                .sender()
+                .topicName(topicName)
+                .buildClient();
 
-    static final Gson GSON = new Gson();
-    
-    public static void main(String[] args) throws Exception, ServiceBusException {
-        SubscriptionClient subscription1Client = new SubscriptionClient(new ConnectionStringBuilder(connectionString, "BasicTopic/subscriptions/Subscription1"), ReceiveMode.PEEKLOCK);
-        SubscriptionClient subscription2Client = new SubscriptionClient(new ConnectionStringBuilder(connectionString, "BasicTopic/subscriptions/Subscription2"), ReceiveMode.PEEKLOCK);
-        SubscriptionClient subscription3Client = new SubscriptionClient(new ConnectionStringBuilder(connectionString, "BasicTopic/subscriptions/Subscription3"), ReceiveMode.PEEKLOCK);        
-
-        registerMessageHandlerOnClient(subscription1Client);
-        registerMessageHandlerOnClient(subscription2Client);
-        registerMessageHandlerOnClient(subscription3Client);
-    }
-    
-    static void registerMessageHandlerOnClient(SubscriptionClient receiveClient) throws Exception {
-
-        // register the RegisterMessageHandler callback
-        IMessageHandler messageHandler = new IMessageHandler() {
-            // callback invoked when the message handler loop has obtained a message
-            public CompletableFuture<Void> onMessageAsync(IMessage message) {
-                // receives message is passed to callback
-                if (message.getLabel() != null &&
-                        message.getContentType() != null &&
-                        message.getLabel().contentEquals("Scientist") &&
-                        message.getContentType().contentEquals("application/json")) {
-
-                    byte[] body = message.getBody();
-                    Map scientist = GSON.fromJson(new String(body, UTF_8), Map.class);
-
-                    System.out.printf(
-                            "\n\t\t\t\t%s Message received: \n\t\t\t\t\t\tMessageId = %s, \n\t\t\t\t\t\tSequenceNumber = %s, \n\t\t\t\t\t\tEnqueuedTimeUtc = %s," +
-                                    "\n\t\t\t\t\t\tExpiresAtUtc = %s, \n\t\t\t\t\t\tContentType = \"%s\",  \n\t\t\t\t\t\tContent: [ firstName = %s, name = %s ]\n",
-                            receiveClient.getEntityPath(),
-                            message.getMessageId(),
-                            message.getSequenceNumber(),
-                            message.getEnqueuedTimeUtc(),
-                            message.getExpiresAtUtc(),
-                            message.getContentType(),
-                            scientist != null ? scientist.get("firstName") : "",
-                            scientist != null ? scientist.get("name") : "");
-                }
-                return receiveClient.completeAsync(message.getLockToken());
+        // Creates an ServiceBusMessageBatch where the ServiceBus.
+        ServiceBusMessageBatch messageBatch = senderClient.createMessageBatch();        
+        
+        // create a list of messages
+        List<ServiceBusMessage> listOfMessages = createMessages();
+        
+        // We try to add as many messages as a batch can fit based on the maximum size and send to Service Bus when
+        // the batch can hold no more messages. Create a new batch for next set of messages and repeat until all
+        // messages are sent.        
+        for (ServiceBusMessage message : listOfMessages) {
+            if (messageBatch.tryAddMessage(message)) {
+                continue;
             }
+
+            // The batch is full, so we create a new batch and send the batch.
+            senderClient.sendMessages(messageBatch);
+            System.out.println("Sent a batch of messages to the topic: " + topicName);
             
-            public void notifyException(Throwable throwable, ExceptionPhase exceptionPhase) {
-                System.out.printf(exceptionPhase + "-" + throwable.getMessage());
+            // create a new batch
+            messageBatch = senderClient.createMessageBatch();
+
+            // Add that message that we couldn't before.
+            if (!messageBatch.tryAddMessage(message)) {
+                System.err.printf("Message is too large for an empty batch. Skipping. Max size: %s.", messageBatch.getMaxSizeInBytes());
+            }
+        }
+
+        if (messageBatch.getCount() > 0) {
+            senderClient.sendMessages(messageBatch);
+            System.out.println("Sent a batch of messages to the topic: " + topicName);
+        }
+
+        //close the client
+        senderClient.close();
+    }
+```
+
+## <a name="receive-messages-from-a-subscription"></a>Üzenetek fogadása egy előfizetésből
+Ebben a szakaszban kód hozzáadásával kérheti le az üzeneteket egy előfizetésből a témakörbe. 
+
+1. Adjon hozzá egy nevű metódust az `receiveMessages` előfizetésből érkező üzenetek fogadásához. Ez a metódus létrehoz egy `ServiceBusProcessorClient` -előfizetést egy kezelő megadásával az üzenetek feldolgozásához, és egy másikat a hibák kezeléséhez. Ezután elindítja a processzort, megvárja a pár másodpercig, kinyomtatja a fogadott üzeneteket, majd leállítja és bezárja a processzort.
+
+    ```java
+    // handles received messages
+    static void receiveMessages() throws InterruptedException
+    {
+        // Consumer that processes a single message received from Service Bus
+        Consumer<ServiceBusReceivedMessageContext> messageProcessor = context -> {
+            ServiceBusReceivedMessage message = context.getMessage();
+            System.out.println("Received message: " + message.getBody().toString() + " from the subscription: " + subName);
+        };
+
+        // Consumer that handles any errors that occur when receiving messages
+        Consumer<Throwable> errorHandler = throwable -> {
+            System.out.println("Error when receiving messages: " + throwable.getMessage());
+            if (throwable instanceof ServiceBusReceiverException) {
+                ServiceBusReceiverException serviceBusReceiverException = (ServiceBusReceiverException) throwable;
+                System.out.println("Error source: " + serviceBusReceiverException.getErrorSource());
             }
         };
 
- 
-        receiveClient.registerMessageHandler(
-                    messageHandler,
-                    // callback invoked when the message handler has an exception to report
-                // 1 concurrent call, messages aren't auto-completed, auto-renew duration
-                new MessageHandlerOptions(1, false, Duration.ofMinutes(1)));
+        // Create an instance of the processor through the ServiceBusClientBuilder
+        ServiceBusProcessorClient processorClient = new ServiceBusClientBuilder()
+            .connectionString(connectionString)
+            .processor()
+            .topicName(topicName)
+            .subscriptionName(subName)
+            .processMessage(messageProcessor)
+            .processError(errorHandler)
+            .buildProcessorClient();
 
+        System.out.println("Starting the processor");
+        processorClient.start();
+
+        TimeUnit.SECONDS.sleep(10);
+        System.out.println("Stopping and closing the processor");
+        processorClient.close();        
     }
-}
-```
+    ```
+2. Frissítse a `main` metódust, hogy meghívja `sendMessage` , `sendMessageBatch` , és `receiveMessages` metódusokat, és dobja `InterruptedException` .     
 
-## <a name="run-the-program"></a>A program futtatása
+    ```java
+    public static void main(String[] args) throws InterruptedException {        
+        sendMessage();
+        sendMessageBatch();
+        receiveMessages();
+    }   
+    ```
+
+## <a name="run-the-app"></a>Az alkalmazás futtatása
 A program futtatásával tekintse meg a következő kimenethez hasonló kimenetet:
 
-```java
-Message sending: Id = 0
-Message sending: Id = 1
-Message sending: Id = 2
-Message sending: Id = 3
-Message sending: Id = 4
-Message sending: Id = 5
-Message sending: Id = 6
-Message sending: Id = 7
-Message sending: Id = 8
-Message sending: Id = 9
-    Message acknowledged: Id = 0
-    Message acknowledged: Id = 9
-    Message acknowledged: Id = 7
-    Message acknowledged: Id = 8
-    Message acknowledged: Id = 5
-    Message acknowledged: Id = 6
-    Message acknowledged: Id = 3
-    Message acknowledged: Id = 2
-    Message acknowledged: Id = 4
-    Message acknowledged: Id = 1
-
-                BasicTopic/subscriptions/Subscription1 Message received: 
-                        MessageId = 0, 
-                        SequenceNumber = 11, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.442Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.442Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Albert, name = Einstein ]
-
-                BasicTopic/subscriptions/Subscription2 Message received: 
-                        MessageId = 0, 
-                        SequenceNumber = 11, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.442Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.442Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Albert, name = Einstein ]
-
-                BasicTopic/subscriptions/Subscription1 Message received: 
-                        MessageId = 9, 
-                        SequenceNumber = 12, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Nikolaus, name = Kopernikus ]
-
-                BasicTopic/subscriptions/Subscription1 Message received: 
-                        MessageId = 8, 
-                        SequenceNumber = 13, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Johannes, name = Kepler ]
-
-                BasicTopic/subscriptions/Subscription3 Message received: 
-                        MessageId = 0, 
-                        SequenceNumber = 11, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.442Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.442Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Albert, name = Einstein ]
-
-                BasicTopic/subscriptions/Subscription2 Message received: 
-                        MessageId = 9, 
-                        SequenceNumber = 12, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Nikolaus, name = Kopernikus ]
-
-                BasicTopic/subscriptions/Subscription1 Message received: 
-                        MessageId = 7, 
-                        SequenceNumber = 14, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Galileo, name = Galilei ]
-
-                BasicTopic/subscriptions/Subscription3 Message received: 
-                        MessageId = 9, 
-                        SequenceNumber = 12, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Nikolaus, name = Kopernikus ]
-
-                BasicTopic/subscriptions/Subscription2 Message received: 
-                        MessageId = 8, 
-                        SequenceNumber = 13, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Johannes, name = Kepler ]
-
-                BasicTopic/subscriptions/Subscription1 Message received: 
-                        MessageId = 6, 
-                        SequenceNumber = 15, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Michael, name = Faraday ]
-
-                BasicTopic/subscriptions/Subscription3 Message received: 
-                        MessageId = 8, 
-                        SequenceNumber = 13, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Johannes, name = Kepler ]
-
-                BasicTopic/subscriptions/Subscription2 Message received: 
-                        MessageId = 7, 
-                        SequenceNumber = 14, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Galileo, name = Galilei ]
-
-                BasicTopic/subscriptions/Subscription1 Message received: 
-                        MessageId = 5, 
-                        SequenceNumber = 16, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Niels, name = Bohr ]
-
-                BasicTopic/subscriptions/Subscription3 Message received: 
-                        MessageId = 7, 
-                        SequenceNumber = 14, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Galileo, name = Galilei ]
-
-                BasicTopic/subscriptions/Subscription2 Message received: 
-                        MessageId = 6, 
-                        SequenceNumber = 15, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Michael, name = Faraday ]
-
-                BasicTopic/subscriptions/Subscription1 Message received: 
-                        MessageId = 4, 
-                        SequenceNumber = 17, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Isaac, name = Newton ]
-
-                BasicTopic/subscriptions/Subscription3 Message received: 
-                        MessageId = 6, 
-                        SequenceNumber = 15, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Michael, name = Faraday ]
-
-                BasicTopic/subscriptions/Subscription2 Message received: 
-                        MessageId = 5, 
-                        SequenceNumber = 16, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Niels, name = Bohr ]
-
-                BasicTopic/subscriptions/Subscription1 Message received: 
-                        MessageId = 3, 
-                        SequenceNumber = 18, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Steven, name = Hawking ]
-
-                BasicTopic/subscriptions/Subscription3 Message received: 
-                        MessageId = 5, 
-                        SequenceNumber = 16, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Niels, name = Bohr ]
-
-                BasicTopic/subscriptions/Subscription2 Message received: 
-                        MessageId = 4, 
-                        SequenceNumber = 17, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Isaac, name = Newton ]
-
-                BasicTopic/subscriptions/Subscription1 Message received: 
-                        MessageId = 2, 
-                        SequenceNumber = 19, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Marie, name = Curie ]
-
-                BasicTopic/subscriptions/Subscription3 Message received: 
-                        MessageId = 4, 
-                        SequenceNumber = 17, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Isaac, name = Newton ]
-
-                BasicTopic/subscriptions/Subscription2 Message received: 
-                        MessageId = 3, 
-                        SequenceNumber = 18, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Steven, name = Hawking ]
-
-                BasicTopic/subscriptions/Subscription1 Message received: 
-                        MessageId = 1, 
-                        SequenceNumber = 20, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Werner, name = Heisenberg ]
-
-                BasicTopic/subscriptions/Subscription2 Message received: 
-                        MessageId = 2, 
-                        SequenceNumber = 19, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Marie, name = Curie ]
-
-                BasicTopic/subscriptions/Subscription3 Message received: 
-                        MessageId = 3, 
-                        SequenceNumber = 18, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Steven, name = Hawking ]
-
-                BasicTopic/subscriptions/Subscription3 Message received: 
-                        MessageId = 2, 
-                        SequenceNumber = 19, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Marie, name = Curie ]
-
-                BasicTopic/subscriptions/Subscription2 Message received: 
-                        MessageId = 1, 
-                        SequenceNumber = 20, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Werner, name = Heisenberg ]
-
-                BasicTopic/subscriptions/Subscription3 Message received: 
-                        MessageId = 1, 
-                        SequenceNumber = 20, 
-                        EnqueuedTimeUtc = 2018-10-29T18:58:12.520Z,
-                        ExpiresAtUtc = 2018-10-29T19:00:12.520Z, 
-                        ContentType = "application/json",  
-                        Content: [ firstName = Werner, name = Heisenberg ]
+```console
+Sent a batch of messages to the topic: mytopic
+Starting the processor
+Received message: First message from the subscription: mysub
+Received message: Second message from the subscription: mysub
+Received message: Third message from the subscription: mysub
+Stopping and closing the processor
 ```
 
-> [!NOTE]
-> [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
+A Azure Portal Service Bus névterének **Áttekintés** lapján láthatók a **bejövő** és a **kimenő** üzenetek száma. Előfordulhat, hogy várnia kell egy percet, majd frissítenie kell a lapot a legfrissebb értékek megtekintéséhez. 
+
+:::image type="content" source="./media/service-bus-java-how-to-use-queues/overview-incoming-outgoing-messages.png" alt-text="Bejövő és kimenő üzenetek száma" lightbox="./media/service-bus-java-how-to-use-queues/overview-incoming-outgoing-messages.png":::
+
+Váltson a **témakörök** lapra a középső alsó ablaktáblán, és válassza ki a témakört, és tekintse meg a témakör **Service Bus témakör** lapját. Ezen az oldalon négy bejövő és négy kimenő üzenetet kell látnia az **üzenetek** diagramon. 
+
+:::image type="content" source="./media/service-bus-java-how-to-use-topics-subscriptions/topic-page-portal.png" alt-text="Bejövő és kimenő üzenetek" lightbox="./media/service-bus-java-how-to-use-topics-subscriptions/topic-page-portal.png":::
+
+Ha kiírja a `receiveMessages` hívást a `main` metódusban, és ismét futtatja az alkalmazást, akkor a **Service Bus témakör** oldalon 8 bejövő üzenet jelenik meg (4 új), de négy kimenő üzenet. 
+
+:::image type="content" source="./media/service-bus-java-how-to-use-topics-subscriptions/updated-topic-page.png" alt-text="Frissített témakör lap" lightbox="./media/service-bus-java-how-to-use-topics-subscriptions/updated-topic-page.png":::
+
+Ezen az oldalon, ha kijelöl egy előfizetést, a **Service Bus előfizetés** oldalra kerül. Ezen az oldalon megtekintheti az aktív üzenetek darabszámát, a kézbesítetlen üzenetek darabszámát és további információt. Ebben a példában négy olyan aktív üzenet van, amelyet a fogadó még nem fogadott el. 
+
+:::image type="content" source="./media/service-bus-java-how-to-use-topics-subscriptions/active-message-count.png" alt-text="Aktív üzenetek száma" lightbox="./media/service-bus-java-how-to-use-topics-subscriptions/active-message-count.png":::
 
 ## <a name="next-steps"></a>További lépések
-További információ: [Service Bus várólisták, témakörök és előfizetések][Service Bus queues, topics, and subscriptions].
+Tekintse meg a következő dokumentációt és mintákat:
+
+- [A Javához készült ügyféloldali kódtár Azure Service Bus – readme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/README.md)
+- [Példák a GitHubon](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/servicebus/azure-messaging-servicebus/src/samples)
+- [Java API-referenciák](https://docs.microsoft.com/java/api/overview/azure/servicebus?view=azure-java-preview&preserve-view=true)
+
 
 [Azure SDK for Java]: /java/api/overview/azure/
 [Azure Toolkit for Eclipse]: /azure/developer/java/toolkit-for-eclipse/installation
@@ -458,6 +236,3 @@ További információ: [Service Bus várólisták, témakörök és előfizetés
 [SqlFilter.SqlExpression]: /dotnet/api/microsoft.azure.servicebus.sqlfilter.sqlexpression
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 
-[0]: ./media/service-bus-java-how-to-use-topics-subscriptions/sb-queues-13.png
-[2]: ./media/service-bus-java-how-to-use-topics-subscriptions/sb-queues-04.png
-[3]: ./media/service-bus-java-how-to-use-topics-subscriptions/sb-queues-09.png

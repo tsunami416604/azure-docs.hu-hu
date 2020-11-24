@@ -1,123 +1,212 @@
 ---
-title: 'Gyors útmutató: Azure Service Bus várólisták használata a Python használatával'
-description: Ez a cikk bemutatja, hogyan használható a Python a Azure Service Bus várólistákból érkező üzenetek létrehozására, üzenetek küldésére és fogadására.
+title: Azure Service Bus Queues használata a Python Azure-servicebus csomag verziójával 7.0.0
+description: Ebből a cikkből megtudhatja, hogyan küldhet üzeneteket és fogadhat üzeneteket Azure Service Bus várólistákból a Python használatával.
 author: spelluru
 documentationcenter: python
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 06/23/2020
+ms.date: 11/18/2020
 ms.author: spelluru
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: a09f20b2c392dbf219750a76e9570239227dc865
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2b54b167413b0fcbe7022eab4bbbf34b37225be5
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89458561"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95810576"
 ---
-# <a name="quickstart-use-azure-service-bus-queues-with-python"></a>Gyors útmutató: Azure Service Bus várólisták használata a Python használatával
-
-[!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
-
-Ez a cikk bemutatja, hogyan használható a Python a Azure Service Bus várólistákból érkező üzenetek létrehozására, üzenetek küldésére és fogadására. 
-
-További információ a Python Azure Service Bus kódtárakkal kapcsolatban: [Service Bus kódtárak a Pythonhoz](/python/api/overview/azure/servicebus?view=azure-python).
+# <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-python"></a>Üzenetek küldése és fogadása Azure Service Bus várólistákból (Python)
+Ebből a cikkből megtudhatja, hogyan küldhet üzeneteket és fogadhat üzeneteket Azure Service Bus várólistákból a Python használatával. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 - Azure-előfizetés. Aktiválhatja [Visual Studio-vagy MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) , vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-- Egy Service Bus névtér, amely a gyors üzembe helyezés lépéseinek követésével jön létre [: a Azure Portal használatával hozzon létre egy Service Bus témakört és előfizetéseket](service-bus-quickstart-topics-subscriptions-portal.md). Másolja az elsődleges kapcsolati karakterláncot a **közös hozzáférésű házirendek** képernyőről a cikk későbbi részében való használatra. 
-- Python 3.4 x vagy újabb verzió, a [python Azure Service Bus][Python Azure Service Bus package] csomaggal. További információ: a [Python telepítési útmutatója](/azure/developer/python/azure-sdk-install). 
-
-## <a name="create-a-queue"></a>Üzenetsor létrehozása
-
-A **ServiceBusClient** objektum lehetővé teszi a várólistákkal való munkavégzést. A Service Bus programozott eléréséhez adja hozzá a következő sort a Python-fájl elejéhez:
-
-```python
-from azure.servicebus import ServiceBusClient
-```
-
-Adja hozzá a következő kódot egy **ServiceBusClient** objektum létrehozásához. Cserélje le az `<connectionstring>` értéket a Service Bus elsődleges kapcsolattípus értékére. Ezt az értéket a [Azure Portal][Azure portal]Service Bus névterében található **megosztott hozzáférési házirendek** területen találja.
-
-```python
-sb_client = ServiceBusClient.from_connection_string('<connectionstring>')
-```
-
-A következő kód a `create_queue` **ServiceBusClient** metódusát használja az `taskqueue` alapértelmezett beállításokkal rendelkező várólista létrehozásához:
-
-```python
-sb_client.create_queue("taskqueue")
-```
-
-A beállításokkal felülbírálhatja az alapértelmezett üzenetsor-beállításokat, például az üzenetek élettartamát (TTL) vagy a témakör maximális méretét. A következő kód egy nevű várólistát hoz létre, amely a `taskqueue` várólista maximális mérete 5 GB, a TTL értéke pedig 1 perc:
-
-```python
-sb_client.create_queue("taskqueue", max_size_in_megabytes=5120,
-                       default_message_time_to_live=datetime.timedelta(minutes=1))
-```
+- Ha nem rendelkezik várólistával, hogy működjön a szolgáltatással, a várólista létrehozásához kövesse az [Azure Portal használata Service Bus üzenetsor létrehozásához](service-bus-quickstart-portal.md) című cikket. Jegyezze **fel a Service Bus névtér és a létrehozott** **várólista** nevét.
+- Python 2,7 vagy újabb verzió, telepített [python Azure Service Bus](https://pypi.python.org/pypi/azure-servicebus) csomaggal. További információ: a [Python telepítési útmutatója](/azure/developer/python/azure-sdk-install). 
 
 ## <a name="send-messages-to-a-queue"></a>Üzenetek küldése egy üzenetsorba
 
-Ha üzenetet szeretne küldeni egy Service Bus üzenetsor számára, az alkalmazás meghívja a `send` metódust a **ServiceBusClient** objektumon. A következő kódrészlet egy üzenetsor-ügyfelet hoz létre, és Tesztüzenet küldése a `taskqueue` várólistára. Cserélje le az `<connectionstring>` értéket a Service Bus elsődleges kapcsolattípus értékére. 
+1. Adja hozzá a következő importálási utasítást. 
 
-```python
-from azure.servicebus import QueueClient, Message
+    ```python
+    from azure.servicebus import ServiceBusClient, ServiceBusMessage
+    ```
+2. Adja hozzá a következő állandókat. 
 
-# Create the QueueClient
-queue_client = QueueClient.from_connection_string("<connectionstring>", "taskqueue")
+    ```python
+    CONNECTION_STR = "<NAMESPACE CONNECTION STRING>"
+    QUEUE_NAME = "<QUEUE NAME>"
+    ```
 
-# Send a test message to the queue
-msg = Message(b'Test Message')
-queue_client.send(msg)
-```
+    > [!IMPORTANT]
+    > - Cserélje le a helyére `<NAMESPACE CONNECTION STRING>` a Service Bus névtérhez tartozó kapcsolatok karakterláncát.
+    > - Cserélje le a `<QUEUE NAME>` nevet a várólista nevére. 
+3. Adjon hozzá egy metódust egyetlen üzenet küldéséhez.
 
-### <a name="message-size-limits-and-quotas"></a>Az üzenet méretének korlátai és kvótái
+    ```python
+    def send_single_message(sender):
+        # create a Service Bus message
+        message = ServiceBusMessage("Single Message")
+        # send the message to the queue
+        sender.send_messages(message)
+        print("Sent a single message")
+    ```
 
-A Service Bus-üzenetsorok a [Standard csomagban](service-bus-premium-messaging.md) legfeljebb 256 KB, a [Prémium csomagban](service-bus-premium-messaging.md) legfeljebb 1 MB méretű üzeneteket támogatnak. A szabványos és az egyéni alkalmazástulajdonságokat tartalmazó fejléc mérete legfeljebb 64 KB lehet. A várólista által megtartható üzenetek száma nincs korlátozva, de a várólista által tárolt üzenetek teljes méretére vonatkozó korlát szerepel. A várólista mérete a létrehozáskor határozható meg, amelynek felső korlátja 5 GB. 
+    A küldő egy olyan objektum, amely ügyfélként funkcionál a létrehozott üzenetsor számára. Később létrehozhatja és elküldheti a függvény argumentumaként. 
+4. Adjon hozzá egy metódust az üzenetek listájának elküldéséhez.
 
-További információ a kvótákkal kapcsolatban: [Service Bus kvóták][Service Bus quotas].
+    ```python
+    def send_a_list_of_messages(sender):
+        # create a list of messages
+        messages = [ServiceBusMessage("Message in list") for _ in range(5)]
+        # send the list of messages to the queue
+        sender.send_messages(messages)
+        print("Sent a list of 5 messages")
+    ```
+5. Adjon hozzá egy metódust egy köteg üzenet küldéséhez.
 
+    ```python
+    def send_batch_message(sender):
+        # create a batch of messages
+        batch_message = sender.create_message_batch()
+        for _ in range(10):
+            try:
+                # add a message to the batch
+                batch_message.add_message(ServiceBusMessage("Message inside a ServiceBusMessageBatch"))
+            except ValueError:
+                # ServiceBusMessageBatch object reaches max_size.
+                # New ServiceBusMessageBatch object can be created here to send more data.
+                break
+        # send the batch of messages to the queue
+        sender.send_messages(batch_message)
+        print("Sent a batch of 10 messages")
+    ```
+6. Hozzon létre egy Service Bus ügyfelet, majd egy üzenetsor-küldő objektumot az üzenetek küldéséhez.
+
+    ```python
+    # create a Service Bus client using the connection string
+    servicebus_client = ServiceBusClient.from_connection_string(conn_str=CONNECTION_STR, logging_enable=True)
+    with servicebus_client:
+        # get a Queue Sender object to send messages to the queue
+        sender = servicebus_client.get_queue_sender(queue_name=QUEUE_NAME)
+        with sender:
+            # send one message        
+            send_single_message(sender)
+            # send a list of messages
+            send_a_list_of_messages(sender)
+            # send a batch of messages
+            send_batch_message(sender)
+    
+    print("Done sending messages")
+    print("-----------------------")
+    ```
+ 
 ## <a name="receive-messages-from-a-queue"></a>Üzenetek fogadása egy várólistából
-
-A várólista-ügyfél a `get_receiver` **ServiceBusClient** objektum metódusának használatával fogad üzeneteket egy várólistából. A következő kódrészlet létrehoz egy üzenetsor-ügyfelet, és üzenetet fogad a `taskqueue` várólistából. Cserélje le az `<connectionstring>` értéket a Service Bus elsődleges kapcsolattípus értékére. 
+Adja hozzá a következő kódot a Print utasítás után. Ez a kód folyamatosan fogad új üzeneteket, amíg az új üzenetek nem kapnak 5 ( `max_wait_time` ) másodpercet. 
 
 ```python
-from azure.servicebus import QueueClient
-
-# Create the QueueClient
-queue_client = QueueClient.from_connection_string("<connectionstring>", "taskqueue")
-
-# Receive the message from the queue
-with queue_client.get_receiver() as queue_receiver:
-    messages = queue_receiver.fetch_next(timeout=3)
-    for message in messages:
-        print(message)
-        message.complete()
+with servicebus_client:
+    # get the Queue Receiver object for the queue
+    receiver = servicebus_client.get_queue_receiver(queue_name=QUEUE_NAME, max_wait_time=5)
+    with receiver:
+        for msg in receiver:
+            print("Received: " + str(msg))
+            # complete the message so that the message is removed from the queue
+            receiver.complete_message(msg)
 ```
 
-### <a name="use-the-peek_lock-parameter"></a>A peek_lock paraméter használata
+## <a name="full-code"></a>Teljes kód
 
-A választható `peek_lock` paraméter `get_receiver` azt határozza meg, hogy Service Bus törli-e az üzeneteket a várólistáról az olvasáskor. Az üzenetek fogadásának alapértelmezett módja a *PeekLock*, vagy `peek_lock` **igaz**értékre van állítva, amely beolvassa (betekintést) és zárolja az üzeneteket anélkül, hogy törölné őket a várólistából. Ezután minden üzenetnek explicit módon el kell végeznie, hogy eltávolítsa azt a várólistából.
+```python
+# import os
+from azure.servicebus import ServiceBusClient, ServiceBusMessage
 
-Ha a várólistán lévő üzeneteket az olvasás során szeretné törölni, beállíthatja a `peek_lock` paramétert `get_receiver` **hamis**értékre. Ha a fogadási művelet részeként törli az üzeneteket, a legegyszerűbb modell, de csak akkor működik, ha az alkalmazás nem képes elviselni a hiányzó üzeneteket. Ennek a viselkedésnek a megismeréséhez Vegyünk egy olyan forgatókönyvet, amelyben a fogyasztó egy fogadási kérelmet bocsát ki, majd összeomlik a feldolgozás előtt. Ha a rendszer törölte az üzenetet a fogadáskor, amikor az alkalmazás újraindul, és megkezdi az üzenetek újrafelhasználását, az összeomlás előtt elmulasztotta a kapott üzenetet.
+CONNECTION_STR = "<NAMESPACE CONNECTION STRING>"
+QUEUE_NAME = "<QUEUE NAME>"
 
-Ha az alkalmazás nem tudja elviselni a kihagyott üzeneteket, a fogadás egy kétfázisú művelet. A PeekLock megkeresi a használni kívánt következő üzenetet, zárolja, hogy megakadályozza más fogyasztók számára a fogadást, és visszaadja az alkalmazásnak. Az üzenet feldolgozása vagy tárolása után az alkalmazás végrehajtja a fogadási folyamat második szakaszát úgy, hogy meghívja a `complete` metódust az **üzenet** objektumon.  A `complete` metódus felhasználja az üzenetet, és eltávolítja azt a várólistából.
+def send_single_message(sender):
+    message = ServiceBusMessage("Single Message")
+    sender.send_messages(message)
+    print("Sent a single message")
 
-## <a name="handle-application-crashes-and-unreadable-messages"></a>Alkalmazás-összeomlások és nem olvasható üzenetek kezelése
+def send_a_list_of_messages(sender):
+    messages = [ServiceBusMessage("Message in list") for _ in range(5)]
+    sender.send_messages(messages)
+    print("Sent a list of 5 messages")
 
-A Service Bus olyan funkciókat biztosít, amelyekkel zökkenőmentesen helyreállíthatja az alkalmazás hibáit vagy az üzenetek feldolgozásának nehézségeit. Ha egy fogadó alkalmazás valamilyen okból nem tud feldolgozni egy üzenetet, meghívja a `unlock` metódust az **üzenet** objektumon. Service Bus feloldja az üzenet zárolását a várólistán belül, és lehetővé teszi az újbóli fogadását, akár ugyanazon, akár egy másik alkalmazásban.
+def send_batch_message(sender):
+    batch_message = sender.create_message_batch()
+    for _ in range(10):
+        try:
+            batch_message.add_message(ServiceBusMessage("Message inside a ServiceBusMessageBatch"))
+        except ValueError:
+            # ServiceBusMessageBatch object reaches max_size.
+            # New ServiceBusMessageBatch object can be created here to send more data.
+            break
+    sender.send_messages(batch_message)
+    print("Sent a batch of 10 messages")
 
-A várólistán lévő üzenetek esetében is időtúllépés van. Ha egy alkalmazás nem tud feldolgozni egy üzenetet a zárolási időtúllépés lejárta előtt, például ha az alkalmazás összeomlik, Service Bus feloldja az üzenet automatikus zárolását, és elérhetővé teszi azt újra.
+servicebus_client = ServiceBusClient.from_connection_string(conn_str=CONNECTION_STR, logging_enable=True)
 
-Ha egy alkalmazás egy üzenet feldolgozása után összeomlik, de a metódus meghívása előtt `complete` , a rendszer az újraindításkor újra továbbítja az üzenetet az alkalmazásnak. Ezt a viselkedést gyakran egyszeri *feldolgozásnak*nevezik. Minden üzenet legalább egyszer fel van dolgozva, de bizonyos helyzetekben előfordulhat, hogy az üzenet újbóli kézbesítésre kerül. Ha a forgatókönyv nem tudja elviselni az ismétlődő feldolgozást, használhatja az üzenet **MessageID** tulajdonságát, amely állandó marad a kézbesítési kísérletek között, hogy kezelni tudja a duplikált üzenetek kézbesítését. 
+with servicebus_client:
+    sender = servicebus_client.get_queue_sender(queue_name=QUEUE_NAME)
+    with sender:
+        send_single_message(sender)
+        send_a_list_of_messages(sender)
+        send_batch_message(sender)
 
-> [!TIP]
-> [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. Service Bus Explorer lehetővé teszi egy Service Bus névtérhez való kapcsolódást és az üzenetkezelési entitások egyszerű felügyeletét. Az eszköz olyan speciális funkciókat biztosít, mint például az importálási/exportálási funkciók, a témakörök, a várólisták, az előfizetések, a továbbító szolgáltatások, az értesítési központok és az Event hub-eszközök tesztelése.
+print("Done sending messages")
+print("-----------------------")
+
+with servicebus_client:
+    receiver = servicebus_client.get_queue_receiver(queue_name=QUEUE_NAME, max_wait_time=5)
+    with receiver:
+        for msg in receiver:
+            print("Received: " + str(msg))
+            receiver.complete_message(msg)
+```
+
+## <a name="run-the-app"></a>Az alkalmazás futtatása
+Az alkalmazás futtatásakor a következő kimenetnek kell megjelennie: 
+
+```console
+Sent a single message
+Sent a list of 5 messages
+Sent a batch of 10 messages
+Done sending messages
+-----------------------
+Received: Single Message
+Received: Message in list
+Received: Message in list
+Received: Message in list
+Received: Message in list
+Received: Message in list
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+Received: Message inside a ServiceBusMessageBatch
+```
+
+A Azure Portal navigáljon a Service Bus-névtérhez. Az **Áttekintés** oldalon ellenőrizze, hogy a **bejövő** és a **kimenő** üzenetek száma 16. Ha nem látja a számlálást, frissítse az oldalt néhány perc várakozás után. 
+
+:::image type="content" source="./media/service-bus-python-how-to-use-queues/overview-incoming-outgoing-messages.png" alt-text="Bejövő és kimenő üzenetek száma":::
+
+Válassza ki a várólistát ezen az **áttekintő** lapon, és navigáljon a **Service Bus üzenetsor** lapra. Ezen a lapon a **bejövő** és a **kimenő** üzenetek száma is látható. Más információk is megjelennek, például a várólista **jelenlegi mérete** és az **aktív üzenetek száma**. 
+
+:::image type="content" source="./media/service-bus-python-how-to-use-queues/queue-details.png" alt-text="Üzenetsor részletei":::
+
 
 ## <a name="next-steps"></a>További lépések
+Tekintse meg a következő dokumentációt és mintákat: 
 
-Most, hogy megismerte Service Bus várólisták alapjait, további információt a [várólisták, témakörök és előfizetések][Queues, topics, and subscriptions] című témakörben talál.
+- [Azure Service Bus a Pythonhoz készült ügyféloldali kódtár](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus)
+- [Minták](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus/samples). 
+    - A **sync_samples** mappa olyan mintákat tartalmaz, amelyek bemutatják, hogyan kezelhető a Service Bus szinkron módon. Ebben a rövid útmutatóban ezt a módszert használta. 
+    - A **async_samples** mappa olyan mintákat tartalmaz, amelyek bemutatják, hogyan lehet aszinkron módon kommunikálni a Service Busokkal. 
+- [Az Azure-servicebus dokumentációja](https://docs.microsoft.com/python/api/azure-servicebus/azure.servicebus?view=azure-python-preview&preserve-view=true)
 
-[Azure portal]: https://portal.azure.com
-[Python Azure Service Bus package]: https://pypi.python.org/pypi/azure-servicebus  
-[Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-[Service Bus quotas]: service-bus-quotas.md

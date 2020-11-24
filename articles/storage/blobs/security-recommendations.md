@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: becaadda37cdc7cf25fb3881dda0961e8640ad12
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 64799013d8d71e63300a8b48e5ca5b0d4d02c634
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2020
-ms.locfileid: "95538359"
+ms.locfileid: "95808031"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Biztonsági javaslatok a blob Storage-hoz
 
@@ -71,7 +71,7 @@ Azure Security Center rendszeresen elemzi az Azure-erőforrások biztonsági ál
 | A kérések engedélyezésének nyomon követése | Az Azure Storage naplózásának engedélyezése az Azure Storage-ba irányuló kérelmek engedélyezésének nyomon követésére. A naplók azt jelzik, hogy egy kérelem névtelenül történt-e egy OAuth 2,0-token használatával, megosztott kulcs használatával vagy közös hozzáférésű aláírás (SAS) használatával. További információkért lásd: az [Azure Blob Storage figyelése Azure monitor](monitor-blob-storage.md) vagy az [Azure Storage Analytics naplózása klasszikus figyeléssel](../common/storage-analytics-logging.md). | - |
 | Riasztások beállítása Azure Monitorban | A riasztások naplózása lehetővé teszi, hogy a felhasználók egy Log Analytics lekérdezést használjanak, amellyel kiértékelheti az erőforrások összes készletének gyakoriságát, és az eredmények alapján kipróbálhatja a riasztásokat a [riasztások Azure monitor](../../azure-monitor/platform/alerts-unified-log.md). | - |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Az Azure biztonsági dokumentációja](//azure/security/)
+- [Az Azure biztonsági dokumentációja](../../security/index.yml)
 - [Biztonságos fejlesztői dokumentáció](../../security/develop/index.yml).

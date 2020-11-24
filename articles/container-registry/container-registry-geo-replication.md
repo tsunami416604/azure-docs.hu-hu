@@ -5,12 +5,12 @@ author: stevelas
 ms.topic: article
 ms.date: 07/21/2020
 ms.author: stevelas
-ms.openlocfilehash: a26a3a0902b76359dc7441d97fa2516989ec7f0b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 636896edf8180052508f366bcc548efe13dec1e2
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92486872"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95810052"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geo-replikálás Azure Container Registry
 
@@ -18,9 +18,9 @@ Azok a vállalatok, amelyek helyi jelenlétet vagy gyors biztonsági mentést k�
 
 A georeplikált regisztrációs adatbázis a következő előnyöket nyújtja:
 
-* Több régióban is ugyanazok az adatbázis-/rendszerkép-/címkenevek használhatók
-* A regisztrációs adatbázisok elérése hálózatközeli a regionálisan üzemelő példányokból
-* Nincsenek további forgalmi díjak, mivel a rendszerképek lekérése egy, a tárológazdagéppel egy régióban lévő helyi, replikált regisztrációs adatbázisból történik
+* Az önálló beállításjegyzék, a képek és a címkék nevei több régióban is használhatók
+* A regionális központi telepítések teljesítményének és megbízhatóságának javítása a beállításjegyzék bezárásával
+* Az adatátviteli költségek csökkentése a képrétegek helyi, replikált beállításjegyzékből való húzásával, a tároló gazdagépével megegyező vagy közeli régióban
 * A több régióra kiterjedő regisztrációs adatbázisok egy helyen felügyelhetők
 
 > [!NOTE]
@@ -56,8 +56,9 @@ Több beállításjegyzék tipikus kihívásai többek között a következők:
 A Azure Container Registry geo-replikációs funkciójának használatával ezek az előnyök megvalósulnak:
 
 * Egyetlen beállításjegyzék kezelése minden régióban: `contoso.azurecr.io`
-* A rendszerkép központi telepítésének egyetlen konfigurációját kezelheti, mivel az összes régió ugyanazt a képurl-címet használta: `contoso.azurecr.io/public/products/web:1.2`
-* Leküldés egyetlen beállításjegyzékbe, míg az ACR kezeli a Geo-replikálást. A regionális [webhookok](container-registry-webhook.md) konfigurálásával értesítéseket kaphat az adott replikákban lévő eseményekről.
+* A rendszerkép központi telepítésének egyetlen konfigurációjának kezelése, mivel az összes régió ugyanazt a rendszerkép-URL-címet használja: `contoso.azurecr.io/public/products/web:1.2`
+* Leküldés egyetlen beállításjegyzékbe, míg az ACR kezeli a Geo-replikálást. Az ACR csak egyedi rétegeket replikál, így csökkentve az adatátvitelt a régiók között. 
+* A regionális [webhookok](container-registry-webhook.md) konfigurálásával értesítheti az adott replikákban lévő eseményekről.
 
 ## <a name="configure-geo-replication"></a>Aktív georeplikáció konfigurálása
 
@@ -69,7 +70,7 @@ A Geo-replikáció a prémium szintű [kibocsátásiegység-forgalmi jegyzékek]
 
 A prémium szintű beállításjegyzék geo-replikációjának konfigurálásához jelentkezzen be a Azure Portalba a következő címen: https://portal.azure.com .
 
-Navigáljon a Azure Container Registryhoz, és válassza a **replikálások**lehetőséget:
+Navigáljon a Azure Container Registryhoz, és válassza a **replikálások** lehetőséget:
 
 ![Replikációk az Azure Portal tárolójegyzékeinek felhasználói felületén](media/container-registry-geo-replication/registry-services.png)
 
@@ -81,11 +82,11 @@ Megjelenik egy Térkép, amely az összes aktuális Azure-régiót megjeleníti:
 * A zöld hatszögek a lehetséges replika régiókat jelölik
 * A szürke hatszögek a replikáláshoz még nem elérhető Azure-régiókat jelölik
 
-A replika konfigurálásához válasszon ki egy zöld hatszöget, majd válassza a **Létrehozás**lehetőséget:
+A replika konfigurálásához válasszon ki egy zöld hatszöget, majd válassza a **Létrehozás** lehetőséget:
 
  ![Replikáció létrehozásának felhasználói felülete az Azure Portalon](media/container-registry-geo-replication/create-replication.png)
 
-További replikák konfigurálásához válassza a többi régió zöld hatszögét, majd kattintson a **Létrehozás**gombra.
+További replikák konfigurálásához válassza a többi régió zöld hatszögét, majd kattintson a **Létrehozás** gombra.
 
 Az ACR megkezdi a lemezképek szinkronizálását a konfigurált replikák között. Ha elkészült, a portál *készen áll*. A portálon lévő replika állapota nem frissül automatikusan. A frissítés gomb használatával tekintse meg a frissített állapotot.
 
@@ -104,8 +105,8 @@ Miután konfigurálta a beállításjegyzékhez egy replikát, bármikor töröl
 
 Replika törlése a Azure Portalban:
 
-1. Navigáljon a Azure Container Registry, és válassza a **replikációk**lehetőséget.
-1. Jelölje ki a replika nevét, majd válassza a **Törlés**lehetőséget. Erősítse meg, hogy törölni kívánja a replikát.
+1. Navigáljon a Azure Container Registry, és válassza a **replikációk** lehetőséget.
+1. Jelölje ki a replika nevét, majd válassza a **Törlés** lehetőséget. Erősítse meg, hogy törölni kívánja a replikát.
 
 Az USA keleti régiójában az *myregistry* -replika törléséhez az Azure CLI használatával:
 
@@ -151,7 +152,7 @@ az acr replication update --name westus \
   --region-endpoint-enabled true
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg a három részből álló oktatóanyag-sorozatot, a [geo-replikációt Azure Container Registryban](container-registry-tutorial-prepare-registry.md). Végigvezeti a földrajzilag replikált beállításjegyzék létrehozásán, a tároló kialakításán, majd egyetlen `docker push` paranccsal, több regionális Web Apps a tárolók példányain való üzembe helyezésével.
 

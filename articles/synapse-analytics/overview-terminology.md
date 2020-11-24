@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 11/18/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4d69c1d69de63dc0d4c3c8f8e46e73f9efc72933
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 20e635d606676a526fac4c3720931525beb66876
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95244718"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95790409"
 ---
 # <a name="azure-synapse-analytics-terminology"></a>Az Azure szinapszis Analytics terminológiája
 
@@ -22,7 +22,7 @@ ms.locfileid: "95244718"
 
 Ez a dokumentum végigvezeti az Azure szinapszis Analytics alapfogalmait.
 
-## <a name="basics"></a>Alapbeállítások
+## <a name="basics"></a>Alapvető beállítások
 
 A **szinapszis munkaterület** biztonságos együttműködési határ az Azure-beli felhőalapú vállalati elemzésekhez. A munkaterület egy adott régióban van üzembe helyezve, és rendelkezik egy társított ADLS Gen2 fiókkal és fájlrendszerrel (az ideiglenes adattárolók tárolásához). A munkaterület egy erőforráscsoport alatt található.
 
@@ -43,12 +43,18 @@ A **SZINAPSZIS SQL** lehetővé teszi a T-SQL-alapú elemzések elvégzését a 
 
 A Spark Analytics használatához hozzon létre és használjon **kiszolgáló nélküli Apache Spark készleteket** a szinapszis munkaterületen.
 
-* **Apache Spark a szinapszisok számára** – a Spark futási ideje kiszolgáló nélküli Spark-készletben használt. A jelenleg támogatott verzió a Spark 2,4 a Python 3.6.1, a Scala 2.11.12, a .NET-támogatás a Apache Spark 0,5 és a Delta Lake 0,3.  
 * **Apache Spark készlet** – 0 – N Spark által kiépített, a hozzájuk tartozó adatbázisokkal rendelkező erőforrások a munkaterületen helyezhetők üzembe. A Spark-készlet lehet automatikusan szüneteltethető, folytatható és méretezhető.  
 * **Spark-alkalmazás** – egy illesztőprogram-folyamatból és egy végrehajtó folyamatokból áll. A Spark-alkalmazások kiszolgáló nélküli Spark-készleten futnak.            
 * Spark- **munkamenet**– a Spark-alkalmazás egyesített belépési pontja. Lehetővé teszi a Spark különböző funkcióinak és kisebb számú szerkezetének kezelését. Jegyzetfüzet futtatásához létre kell hoznia egy munkamenetet. Egy munkamenet konfigurálható úgy, hogy egy adott méretű, meghatározott számú végrehajtón fusson. A notebook-munkamenet alapértelmezett konfigurációja 2 közepes méretű végrehajtón fut.
 * **Notebook** -interaktív és reaktív adatelemzési és-mérnöki felület, amely támogatja a Scala, a PySpark, a C# és a SparkSQL.
 * **Spark Job definition** – a felületet, amely a kódot és annak függőségeit tartalmazó szerelvény-jar-feladatokat küld el a Spark-feladatokhoz.
+
+Verzió támogatása:
+* Spark 2,4
+* Python 3.6.1
+* Scala 2.11.12
+* .NET Apache Spark 1,0
+* Delta-tó 0,3.  
 
 ## <a name="pipelines"></a>Pipelines
 
@@ -59,7 +65,7 @@ A Spark Analytics használatához hozzon létre és használjon **kiszolgáló n
 * **Trigger** – folyamat végrehajtása. Futtatható manuálisan vagy automatikusan (Schedule, bukdácsoló ablak vagy eseményvezérelt)
 * **Integrációs adatkészlet** – olyan adatok elnevezett nézete, amelyek egyszerűen rámutatnak vagy hivatkoznak egy tevékenységben bemenetként és kimenetként használandó adatokra. Egy társított szolgáltatáshoz tartozik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Ismerkedés az Azure szinapszis Analytics szolgáltatással](get-started.md)
 * [Munkaterület létrehozása](quickstart-create-workspace.md)

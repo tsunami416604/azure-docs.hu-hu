@@ -9,17 +9,32 @@ ms.subservice: ''
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
-ms.date: 09/22/2020
-ms.openlocfilehash: 543a71bc2a77f0a31f8ddaa0de13135b93db48ec
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.date: 11/24/2020
+ms.openlocfilehash: bb0c176ee8c145e1268827d79b453628e6f1bc28
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395036"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95808626"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Az Azure SQL Edge kibocsátási megjegyzései 
 
 Ez a cikk ismerteti az újdonságokat és az Azure SQL Edge minden új buildjét.
+
+## <a name="azure-sql-edge---101"></a>Azure SQL Edge – 1.0.1
+
+### <a name="sql-engine-build-number---15020001553"></a>SQL Engine Build száma – 15.0.2000.1553
+
+### <a name="whats-new"></a>Újdonságok
+
+- Számított oszlopokban definiált Datebucket-kifejezés engedélyezése
+
+### <a name="fixes"></a>Javítások
+
+- Adatmegőrzési szabályzat javítása az adatmegőrzési szabályzattal rendelkező, végtelen időkorlát
+- A DacFx üzembe helyezésének támogatása a folyamatos átviteli és adatmegőrzési házirend-funkciókhoz 
+- DacFx üzembe helyezési javítás az SAS URL-címben lévő beágyazott mappából való üzembe helyezés engedélyezéséhez 
+- A hosszú oszlopnevek támogatásának ELŐREJELZÉSe a hibaüzenetekben
 
 ## <a name="azure-sql-edge---100-rtm"></a>Azure SQL Edge – 1.0.0 (RTM)
 

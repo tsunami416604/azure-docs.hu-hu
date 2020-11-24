@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9b06024b7dc25f37f75c71b822f6aeea32c3e26a
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 07c04274829530942bab0e3267200f6524c4ddc7
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95509069"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95793406"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker üzembe helyezése
 
@@ -40,15 +40,15 @@ A hibrid Runbook feldolgozói szerepkörhöz a [log Analytics ügynök](../azure
 
 ### <a name="supported-linux-operating-systems"></a>Támogatott linuxos operációs rendszerek
 
-A hibrid Runbook Worker szolgáltatás a következő disztribúciókat támogatja:
+A hibrid Runbook Worker szolgáltatás a következő disztribúciókat támogatja. Az összes operációs rendszer x64-ként van feltételezve. az x86 semmilyen operációs rendszer esetén nem támogatott.
 
-* Amazon Linux 2012,09 – 2015,09 (x64)
-* CentOS Linux 5, 6 és 7 (x64)
-* Oracle Linux 5, 6 és 7 (x64)
-* Red Hat Enterprise Linux Server 5, 6 és 7 (x64)
-* Debian GNU/Linux 6, 7 és 8 (x64)
-* Ubuntu 12,04 LTS, 14,04 LTS, 16,04 LTS és 18,04 (x64)
-* SUSE Linux Enterprise Server 12 (x64)
+* Amazon Linux 2012,09 – 2015,09
+* CentOS Linux 5, 6 és 7
+* Oracle Linux 5, 6 és 7
+* Red Hat Enterprise Linux Server 5, 6 és 7
+* Debian GNU/Linux 6, 7 és 8
+* Ubuntu 12,04 LTS, 14,04 LTS, 16,04 LTS és 18,04 LTS
+* SUSE Linux Enterprise Server 12
 
 ### <a name="minimum-requirements"></a>Minimális követelmények
 
@@ -87,11 +87,11 @@ A linuxos hibrid Runbook-feldolgozók korlátozott számú Runbook-típust támo
 
 |Runbook típusa | Támogatott |
 |-------------|-----------|
-|Python 2 |Igen |
+|Python 2 |Yes |
 |PowerShell |Igen<sup>1</sup> |
-|PowerShell-munkafolyamat |Nem |
-|Grafikus |Nem |
-|Grafikus PowerShell-munkafolyamat |Nem |
+|PowerShell-munkafolyamat |No |
+|Grafikus |No |
+|Grafikus PowerShell-munkafolyamat |No |
 
 <sup>1</sup> A PowerShell-runbookok a PowerShell Core-t kell telepíteni a Linux rendszerű gépen. A telepítésének megismeréséhez lásd: [a PowerShell Core telepítése Linux rendszeren](/powershell/scripting/install/installing-powershell-core-on-linux) .
 
@@ -196,7 +196,7 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 
 Linux rendszerű gépek hibrid Runbook Worker csoportjának eltávolításához ugyanazokat a lépéseket kell használnia, mint a Windows Hybrid Worker-csoport esetében. Lásd: [hibrid feldolgozói csoport eltávolítása](automation-windows-hrw-install.md#remove-a-hybrid-worker-group).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha szeretné megtudni, hogyan konfigurálhatja a runbookok a helyszíni adatközpontban vagy más felhőalapú környezetben lévő folyamatok automatizálására, tekintse meg a [Runbookok futtatása hibrid Runbook-feldolgozón](automation-hrw-run-runbooks.md)című témakört.
 

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 11/17/2020
 ms.author: aahi
-ms.openlocfilehash: 90ac4891dbca34ff2d9bdb9653e27ad2a495b317
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 09a83c28d07540b8ecd813e7ab2f10ceee891d7a
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021252"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95792989"
 ---
 # <a name="azure-cognitive-services-container-image-tags-and-release-notes"></a>Azure Cognitive Services Container képcímkék és kibocsátási megjegyzések
 
@@ -52,6 +52,17 @@ Ehhez a tároló-rendszerképhez a következő címkék érhetők el. Megtalálh
 
 # <a name="latest-version"></a>[Legújabb verzió](#tab/current)
 
+Kibocsátási megjegyzések a következőhöz `3.2-preview.1` :
+
+* Új v 3.2 tároló
+
+| Képcímkék                    | Jegyzetek |
+|-------------------------------|:------|
+| `latest`                      |       |
+| `3.2-preview.1` |  |
+
+# <a name="previous-versions"></a>[Korábbi verziók](#tab/previous)
+
 Kibocsátási megjegyzések a következőhöz `v2.0.013250001-amd64-preview` :
 
 * A tároló memóriahasználat további csökkentése.
@@ -59,13 +70,6 @@ Kibocsátási megjegyzések a következőhöz `v2.0.013250001-amd64-preview` :
 * Rögzített hiányzó eredmények, ha a Redis cache be van állítva, és `ResultExpirationPeriod` 0 értékre van állítva.
 * Távolítsa el a kérelem törzsének korlátozását a 26MB. A tároló mostantól képes fogadni >26MB fájlokat.
 * Adja meg az időbélyeget, és készítsen verziót a konzol naplózásához.
-
-| Képcímkék                    | Jegyzetek |
-|-------------------------------|:------|
-| `latest`                      |       |
-| `2.0.013250001-amd64-preview` |  |
-
-# <a name="previous-versions"></a>[Korábbi verziók](#tab/previous)
 
 Kibocsátási megjegyzések a következőhöz: `1.1.013050001-amd64-preview`
 
@@ -88,6 +92,7 @@ Kibocsátási megjegyzések a következőhöz: `1.1.013050001-amd64-preview`
 
 | Képcímkék                    | Jegyzetek |
 |-------------------------------|:------|
+| `2.0.013250001-amd64-preview` |       |
 | `1.1.013050001-amd64-preview` |       |
 | `1.1.011580001-amd64-preview` |       |
 | `1.1.009920003-amd64-preview` |       |
@@ -150,7 +155,7 @@ A [Custom Speech – szöveg][sp-cstt] tároló rendszerképet a `mcr.microsoft.
 
 Kiadási Megjegyzés a következőhöz `2.7.0-amd64` :
 
-**Funkciók**
+**Szolgáltatások**
 * A központozás alapértelmezettként van beállítva.
 
 Vegye figyelembe, hogy a mellékelt kifejezések listája a tároló képének mérete miatt megnőtt.
@@ -164,7 +169,7 @@ Vegye figyelembe, hogy a mellékelt kifejezések listája a tároló képének m
 # <a name="previous-version"></a>[Előző verzió](#tab/previous)
 Kiadási Megjegyzés a következőhöz `2.6.0-amd64` :
 
-**Funkciók**
+**Szolgáltatások**
 * A phraselist v2 támogatása 
 * A kifejezések listáját a következő területi beállítások támogatják:
     * EN-au
@@ -185,7 +190,7 @@ Vegye figyelembe, hogy a mellékelt kifejezések listája a tároló képének m
 
 Kiadási Megjegyzés a következőhöz `2.5.0-amd64` :
 
-**Funkciók**
+**Szolgáltatások**
 * Egyéni kiejtés támogatása egyéni modelleken
 * Az Azure és az USA kormányzati felhő támogatása
 
@@ -219,7 +224,7 @@ Rendszeres havi kiadás
 # <a name="previous-version"></a>[Előző verzió](#tab/previous)
 Kiadási Megjegyzés a következőhöz `1.8.0-amd64` :
 
-**Funkciók**
+**Szolgáltatások**
 * Teljes mértékben áttelepítve a .NET 3,1-es verzióra
 
 Kiadási Megjegyzés a következőhöz `1.7.0-amd64` :
@@ -244,7 +249,7 @@ A beszédfelismerési v 2.5.0-ben a képek az USA-beli *közigazgatási Virginia
 
 Kiadási Megjegyzés a következőhöz `2.7.0-amd64-<locale>` :
 
-**Funkciók**
+**Szolgáltatások**
 * A következő új területi beállítások támogatása:
     * AR-BH, AR-IQ, AR-jo, AR-LB, AR-om, AR-Sy
     * bg-bg
@@ -362,7 +367,7 @@ Ehhez a tárolóhoz a következő területi beállítások állnak rendelkezésr
 
 Kiadási Megjegyzés a következőhöz `2.6.0-amd64-<locale>` :
 
-**Funkciók**
+**Szolgáltatások**
 * Frissítve a legújabb modellekre, és teljes mértékben migrálva a .NET 3,1-es verzióra
 * A phraselist v2 támogatása
 * A kifejezések listáját a következő területi beállítások támogatják:
@@ -383,7 +388,7 @@ Vegye figyelembe, hogy a mellékelt kifejezések listája a tároló képének m
 
 Kiadási Megjegyzés a következőhöz `2.5.0-amd64-<locale>` :
 
-**Funkciók**
+**Szolgáltatások**
 * Az Azure US government Cloud támogatása
 
 **Hibajavítások**

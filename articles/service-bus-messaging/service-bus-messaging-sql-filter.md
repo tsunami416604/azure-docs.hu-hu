@@ -1,22 +1,23 @@
 ---
-title: Azure Service Bus SQLFilter szintaxisának leírása | Microsoft Docs
-description: Ez a cikk a SQLFilter nyelvtani adatait ismerteti. A SqlFilter az SQL-92 szabvány egy részhalmazát támogatja.
+title: Azure Service Bus előfizetési szabály SQL-szűrő szintaxisa | Microsoft Docs
+description: Ez a cikk az SQL-szűrési nyelvtan részleteit ismerteti. Az SQL-szűrők az SQL-92 szabvány egy részhalmazát támogatják.
 ms.topic: article
-ms.date: 11/17/2020
-ms.openlocfilehash: 7f3c744b691e678ef18c8fa721ccfaecaee9c1e2
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.date: 11/24/2020
+ms.openlocfilehash: bd263e8177652165376d4f6fe9e231af71ebdcbe
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888470"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95805631"
 ---
-# <a name="sqlfilter-syntax"></a>SQLFilter-szintaxis
+# <a name="subscription-rule-sql-filter-syntax"></a>Előfizetési szabály SQL-szűrési szintaxisa
 
-A *SqlFilter* objektum a [SqlFilter osztály](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)egy példánya, amely egy SQL Language-alapú szűrési kifejezést jelöl, amelyet a rendszer az a alkalmazással értékel ki [`BrokeredMessage`](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) . A SqlFilter az SQL-92 szabvány egy részhalmazát támogatja.  
+Az *SQL-szűrő* a Service Bus témakör-előfizetések egyik elérhető szűrőtípus. Ez egy szöveges kifejezés, amely az SQL-92 szabvány egy részhalmazára támaszkodik. A szűrési kifejezések a `sqlExpression` Azure Resource Manager sablonban található Service Bus "sqlFilter" tulajdonságának elemével `Rule` vagy [Azure Resource Manager template](service-bus-resource-manager-namespace-topic-with-rule.md)az Azure CLI `az servicebus topic subscription rule create` parancs [`--filter-sql-expression`](https://docs.microsoft.com/cli/azure/servicebus/topic/subscription/rule?view=azure-cli-latest&preserve-view=true#az_servicebus_topic_subscription_rule_create) ARGUMENTUMával, valamint számos olyan SDK-függvénnyel használhatók, amelyek lehetővé teszik az előfizetés-szabályok kezelését.
+
+Az Service Bus Premium a [JMS SQL-üzenet választójának szintaxisát](https://docs.oracle.com/javaee/7/api/javax/jms/Message.html) is támogatja a JMS 2,0 API-n keresztül.
+
   
- Ez a témakör a SqlFilter nyelvtanának részleteit sorolja fel.  
-  
-```  
+``` 
 <predicate ::=  
       { NOT <predicate> }  
       | <predicate> AND <predicate>  
@@ -182,7 +183,7 @@ A logikai konstansokat a **true** vagy a **false** kulcsszó jelöli. Az érték
 
 A karakterlánc-konstansok szimpla idézőjelek közé vannak lefoglalva, és tartalmaznak bármilyen érvényes Unicode-karaktert. Egy karakterlánc-konstansba ágyazott idézőjelek két szimpla idézőjelet jelölnek.  
   
-## <a name="function"></a>függvény  
+## <a name="function"></a>A  függvény  
   
 ```  
 <function> :=  
@@ -320,8 +321,11 @@ sys.To NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','S
 C#-minta esetén tekintse [meg a githubon a témakör szűrők minta](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Azure.Messaging.ServiceBus/BasicSendReceiveTutorialwithFilters)című szakaszát.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [SQLFilter osztály (.NET-keretrendszer)](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
 - [SQLFilter osztály (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlfilter)
-- [SQLRuleAction osztály](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
+- [SqlFilter osztály (Java)](/java/api/com.microsoft.azure.servicebus.rules.SqlFilter)
+- [SqlRuleFilter (JavaScript)](/javascript/api/@azure/service-bus/sqlrulefilter)
+- [az servicebus topic előfizetés szabálya](/cli/azure/servicebus/topic/subscription/rule)
+- [Új – AzServiceBusRule](/powershell/module/az.servicebus/new-azservicebusrule)
