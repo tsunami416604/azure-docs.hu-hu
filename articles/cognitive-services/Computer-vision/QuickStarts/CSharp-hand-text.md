@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/11/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: d8e8df55f17c18308f9fdb34ccc5849bf349eeb4
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 60675d4e6979237ed0b2d28f81dace35e1fcb54c
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014186"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95752303"
 ---
 # <a name="quickstart-extract-text-using-the-computer-vision-31-rest-api-read-operation-and-c"></a>Gyors útmutató: szöveg kinyerése a Computer Vision 3,1 REST API olvasási művelet és C #
 
@@ -401,7 +401,7 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A mintaalkalmazás 
 }
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, törölje a Visual Studio-megoldást. Ehhez nyissa meg a Fájlkezelőt, lépjen a Visual Studio-megoldást tartalmazó mappára, majd törölje azt.
 

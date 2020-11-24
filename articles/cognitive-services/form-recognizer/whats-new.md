@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 92eda77d03e547e814cac85f5ac8bb03b552d135
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ed6d3b927254d44863b7fd0a597528813be791cf
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95506581"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95736609"
 ---
 # <a name="whats-new-in-form-recognizer"></a>A Form Recognizer újdonságai
 
@@ -38,13 +38,13 @@ Az űrlap-felismerő szolgáltatás folyamatosan frissül. Ebből a cikkből meg
   > [További információ az elrendezés kinyeréséről](concept-layout.md)
 
 - **Támogatott új nyelv: Japán** – a következő új nyelvek támogatottak:, `AnalyzeLayout` és `AnalyzeCustomForm` : Japán ( `ja` ). [Nyelvi támogatás](language-support.md)
-- **Szöveg vonaltípusának jelzése (kézírásos/nyomtatott) (csak latin nyelveken)** – az űrlap-felismerő mostantól egy olyan objektumot ad eredményül `appearance` , amely azt sorolja fel, hogy az egyes szövegfájlok kézírásos stílusúak-e, valamint a megbízhatósági pontszámmal együtt. Ez a funkció csak latin nyelveken támogatott.
+- **Szöveg vonaltípusának jelzése (kézírásos/egyéb) (csak latin nyelveken)** – az űrlap-felismerő mostantól egy olyan objektumot ad eredményül `appearance` , amely azt sorolja fel, hogy az egyes szövegfájlok kézírásos stílusúak-e, valamint a megbízhatósági pontszámmal együtt. Ez a funkció csak latin nyelveken támogatott.
 - **Minőség-tökéletesítések** – a kinyerési funkciók, beleértve az egyszámjegyű extrakciós funkciókat.
 - Az **űrlap-felismerő minta címkéző eszközének új, kipróbálható funkciója** , amellyel kipróbálhatja az előre elkészített számla-, bevételezési és névjegykártya-modelleket, valamint az elrendezési API-t az űrlap-felismerő minta feliratozási eszköz használatával. Megtudhatja, hogyan lesz kinyerve az adatai a kód írása nélkül.
 
   > [Próbálja ki az űrlap-felismerő minta eszközt](https://fott-preview.azurewebsites.net/)
 
-  ![FOTT példa](./media/fott-preview.jpg)
+  ![FOTT példa](./media/ui-preview.jpg)
 
 ## <a name="august-2020"></a>2020. augusztus
 
@@ -85,7 +85,7 @@ Az **új minták** a githubon érhetők el.
 * **Pénznem-támogatás** – globális pénznemű szimbólumok észlelése és kinyerése.
 * Az **Azure gov** -Form felismerő mostantól elérhető az Azure gov-ben is.
 * **Fokozott biztonsági funkciók**: 
-   * A **saját kulcs** -űrlap felismerője automatikusan titkosítja az adatait, amikor a felhőben megőrzi a védelmet, és segít a szervezeti biztonsági és megfelelőségi kötelezettségvállalások teljesítésében. Alapértelmezés szerint az előfizetés a Microsoft által felügyelt titkosítási kulcsokat használja. Mostantól a saját titkosítási kulcsaival is kezelheti az előfizetését. Az [ügyfél által felügyelt kulcsok (CMK) – más néven saját kulcs használata (BYOK)](./form-recognizer-encryption-of-data-at-rest.md)– nagyobb rugalmasságot biztosítanak a hozzáférés-vezérlések létrehozásához, forgatásához, letiltásához és visszavonásához. Továbbá az adatok védelméhez használt titkosítási kulcsok naplózására is lehetősége van.  
+   * A **saját kulcs** -űrlap felismerője automatikusan titkosítja az adatait, amikor a felhőben megőrzi a védelmet, és segít a szervezeti biztonsági és megfelelőségi kötelezettségvállalások teljesítésében. Alapértelmezés szerint az előfizetés a Microsoft által felügyelt titkosítási kulcsokat használja. Mostantól a saját titkosítási kulcsaival is kezelheti az előfizetését. Az [ügyfél által felügyelt kulcsok – más néven saját kulcs használata (BYOK)](./form-recognizer-encryption-of-data-at-rest.md)– nagyobb rugalmasságot biztosítanak a hozzáférés-vezérlések létrehozásához, forgatásához, letiltásához és visszavonásához. Továbbá az adatok védelméhez használt titkosítási kulcsok naplózására is lehetősége van.  
    * **Privát végpontok** – lehetővé teszi, hogy egy virtuális hálózaton (VNet) [biztonságosan hozzáférjenek az adathoz egy privát kapcsolaton keresztül.](../../private-link/private-link-overview.md)
 
 

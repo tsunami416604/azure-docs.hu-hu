@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/16/2020
+ms.date: 11/22/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: b66d0f20959d196fddeb8356d8171573f1243b58
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 940955c8ace956354a2747f5ad21430620c2a9d1
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842277"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95744568"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>A használat és a költségek felügyelete Azure Monitor-naplókkal    
 
@@ -90,7 +90,7 @@ A munkaterület Log Analytics díjszabási szintjének módosításához
 
 2. Tekintse át az egyes díjszabási szintek becsült költségeit. Ez a becslés az elmúlt 31 nap használaton alapul, ezért ez a költségbecslés az utolsó 31 napra támaszkodik, amely jellemző a szokásos használatra. Az alábbi példában láthatja, hogy az elmúlt 31 nap adatmintái alapján ez a munkaterület a 100 GB/nap kapacitás foglalási szintjéhez képest (#1) alacsonyabb, mint az utólagos elszámolású csomagnál (#2).  
 
-    ![Tarifacsomagok](media/manage-cost-storage/pricing-tier-estimated-costs.png)
+    ![Árképzési szintek](media/manage-cost-storage/pricing-tier-estimated-costs.png)
 
 3. A becsült költségeknek az utolsó 31 nap használaton alapuló áttekintése után, ha úgy dönt, hogy megváltoztatja az árképzési szintet, kattintson a **kiválasztás** elemre.  
 
@@ -415,17 +415,16 @@ find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillabl
 | summarize BillableDataBytes = sum(_BilledSize) by _ResourceId | sort by BillableDataBytes nulls last
 ```
 
-Az Azure-ban üzemeltetett csomópontokból származó adatok esetében az __Azure-előfizetések által__ beolvasott adatok **mérete** megszerezhető, és az előfizetés azonosítója a tulajdonság a következő `_ResourceId` :
+Az Azure-ban üzemeltetett csomópontokból származó adatok esetében az __Azure-előfizetések által__ beolvasott adatok **mérete** az alábbiak `_SubscriptionId` szerint használható:
 
 ```kusto
 find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillable
 | where _IsBillable == true 
 | summarize BillableDataBytes = sum(_BilledSize) by _ResourceId
-| extend subscriptionId = tostring(split(_ResourceId, "/")[2]) 
-| summarize BillableDataBytes = sum(BillableDataBytes) by subscriptionId | sort by BillableDataBytes nulls last
+| summarize BillableDataBytes = sum(BillableDataBytes) by _SubscriptionId | sort by BillableDataBytes nulls last
 ```
 
-Ehhez hasonlóan az erőforráscsoport adatmennyiségének lekéréséhez a következő lenne:
+Az adatmennyiség erőforráscsoport szerinti lekéréséhez elemezheti a `_ResourceId` következőket:
 
 ```kusto
 find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillable
@@ -482,7 +481,7 @@ Néhány javaslat a gyűjtött naplók mennyiségének csökkentésére:
 | Teljesítményszámlálók       | Módosítsa a [teljesítményszámlálók konfigurációját](data-sources-performance-counters.md): <br> – Csökkentse a gyűjtés gyakoriságát <br> – Csökkentse a teljesítményszámlálók számát |
 | Eseménynaplók                 | Módosítsa az [eseménynaplók konfigurációját](data-sources-windows-events.md): <br> – Csökkentse a gyűjtött eseménynaplók számát <br> – Csak a szükséges eseményszinteket gyűjtse. Ne gyűjtsön például *Tájékoztatás* szintű eseményeket |
 | Rendszernapló                     | Módosítsa a [rendszernapló konfigurációját](data-sources-syslog.md): <br> – Csökkentse a gyűjtésben részt vevő létesítmények számát <br> – Csak a szükséges eseményszinteket gyűjtse. Ne gyűjtsön például *Tájékoztatás* vagy *Hibakeresés* szintű eseményeket |
-| AzureDiagnostics           | Az erőforrásnapló-gyűjtés módosítása a következőre: <br> – Csökkentse a Log Analytics számára naplókat küldő erőforrások számát <br> – Csak a szükséges naplókat gyűjtse |
+| AzureDiagnostics           | [Erőforrás-napló gyűjteményének](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings#create-in-azure-portal) módosítása a következőre: <br> – Csökkentse a Log Analytics számára naplókat küldő erőforrások számát <br> – Csak a szükséges naplókat gyűjtse |
 | Megoldásadatok olyan számítógépekről, amelyeknek nincs szükségük a megoldásra | A [megoldás célcsoportja](../insights/solution-targeting.md) csak a szükséges számítógépek adatainak gyűjtésére használható. |
 
 ### <a name="getting-nodes-as-billed-in-the-per-node-pricing-tier"></a>Csomópontok beolvasása az egyes csomópontok díjszabási szintjei szerint

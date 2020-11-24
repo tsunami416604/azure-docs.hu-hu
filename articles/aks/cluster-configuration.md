@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 4252e3a7f8c3ff9d0ec782a2a9222553c063463c
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 88774450fb196da5de24bcad047ecdb8c424f653
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2020
-ms.locfileid: "95533276"
+ms.locfileid: "95736532"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS-fürt konfigurálása
 
@@ -276,7 +276,7 @@ az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-grou
 ```
 
 > [!IMPORTANT]
-> Az elmúló operációs rendszerrel a virtuális gépek és a példányok rendszerképeinek üzembe helyezése a virtuális gép gyorsítótárának méretétől függetlenül végezhető el. Az AK esetében az alapértelmezett csomópont operációsrendszer-lemez konfigurációja 100GiB használ, ami azt jelenti, hogy olyan virtuálisgép-méretre van szüksége, amelynek a gyorsítótára nagyobb, mint 100 GiB. Az alapértelmezett Standard_DS2_v2 gyorsítótárának mérete 86 GiB, ami nem elég nagy. A Standard_DS3_v2 gyorsítótárának mérete 172 GiB, ami elég nagy. A használatával csökkentheti az operációsrendszer-lemez alapértelmezett méretét is `--node-osdisk-size` . Az AK-lemezképek minimális mérete 30GiB. 
+> Az elmúló operációs rendszerrel a virtuális gépek és a példányok rendszerképeinek üzembe helyezése a virtuális gép gyorsítótárának méretétől függetlenül végezhető el. Az AK esetében az alapértelmezett csomópont operációsrendszer-lemez konfigurációja 128GB használ, ami azt jelenti, hogy olyan virtuálisgép-méretre van szüksége, amely nagyobb, mint a 128GB. Az alapértelmezett Standard_DS2_v2 gyorsítótárának mérete 86GB, ami nem elég nagy. A Standard_DS3_v2 gyorsítótárának mérete 172GB, ami elég nagy. A használatával csökkentheti az operációsrendszer-lemez alapértelmezett méretét is `--node-osdisk-size` . Az AK-képek minimális mérete 30 GB. 
 
 Ha hálózattal csatlakoztatott operációsrendszer-lemezekkel rendelkező csomópont-készleteket szeretne létrehozni, ezt megadhatja a következővel: `--node-osdisk-type Managed` .
 

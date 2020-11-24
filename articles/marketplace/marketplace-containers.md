@@ -7,24 +7,24 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 09/04/2020
-ms.openlocfilehash: c52fabcfc2ff22df2de6dd93f2543d625310baef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/30/2020
+ms.openlocfilehash: 83c575aa40b80d9a8e39263e89a5e7860c8f8774
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89484341"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95741661"
 ---
-# <a name="publishing-guide-for-container-offers"></a>A Container-ajánlatok közzétételi útmutatója
+# <a name="publishing-guide-for-azure-container-offers"></a>Az Azure Container-ajánlatok közzétételi útmutatója
 
-A Container segítségével közzéteheti a tárolók rendszerképét az Azure Marketplace-en. Az útmutató segítségével megismerheti az ajánlat követelményeit. 
+Az Azure Container segítséget nyújt a tárolók rendszerképének közzétételéhez az Azure Marketplace-en. Ebben az útmutatóban megismerheti az ajánlat típusának követelményeit.
 
-A tárolók az Azure Marketplace-en üzembe helyezett és számlázható tranzakciós ajánlatok. A felhasználó által megjelenő listázási lehetőség a "Letöltés most".
+Az Azure Container ajánlatok az Azure Marketplace-en üzembe helyezett és számlázható tranzakciós ajánlatok. A felhasználó által megjelenő listázási lehetőség a "Letöltés most".
 
-Ha a megoldás egy olyan Docker-tároló-rendszerkép, amely Kubernetes-alapú Azure Container Service-példányként van beállítva, használja a *Container* ajánlat típusát. 
+Ha a megoldás egy olyan Docker-tároló-rendszerkép, amely Kubernetes-alapú Azure Container-példányként van beállítva, használja az Azure Container ajánlat típusát.
 
 > [!NOTE]
-> Kubernetes-alapú Azure Container Service-példányok például az Azure Kubernetes Service vagy a Azure Container Instances, a Kubernetes-alapú tároló-futtatókörnyezethez választható Azure-ügyfelek.  
+> Az Azure Container instance egy futásidejű Docker-példány, amely a tárolók Azure-ban való futtatásának leggyorsabb és legegyszerűbb módját biztosítja anélkül, hogy virtuális gépeket kellene kezelnie, és nem kell magasabb szintű szolgáltatást alkalmaznia. A Container instances közvetlenül az Azure-ba helyezhető üzembe, vagy az Azure Kubernetes Services vagy az Azure Kubernetes Service Engine segítségével.  
 
 A Microsoft jelenleg támogatja az ingyenes és a saját licencű (BYOL) licencelési modelleket.
 
@@ -39,9 +39,6 @@ A Microsoft jelenleg támogatja az ingyenes és a saját licencű (BYOL) licence
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha még nem tette meg, Ismerje meg, hogyan [növelheti Felhőbeli üzletét az Azure Marketplace-szel](https://azuremarketplace.microsoft.com/sell).
+- Ha technikai eszközöket szeretne felkészíteni egy tárolóra, tekintse meg az [Azure Container technikai eszközeinek létrehozása](create-azure-container-technical-assets.md)című témakört.
 
-A partner Centerben való regisztráció és a használat megkezdése:
-
-- Az ajánlat létrehozásához vagy befejezéséhez [Jelentkezzen be a partner Centerben](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) .
-- További információt az [Azure Container-ajánlat létrehozása](./partner-center-portal/create-azure-container-offer.md) című témakörben talál.
+- Az Azure Container-ajánlat létrehozásával kapcsolatos további információkért lásd: [Azure Container-ajánlat létrehozása az Azure piactéren](create-azure-container-offer.md) .

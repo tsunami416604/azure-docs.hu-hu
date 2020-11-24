@@ -95,8 +95,10 @@
           href: public-ip-security-baseline.md
     - name: Biztonság
       items:
-        - name: Biztonsági alapkonfiguráció
+        - name: A virtuális hálózatok biztonsági alapkonfigurációja
           href: security-baseline.md
+        - name: A virtuális hálózatok NAT-biztonsági alapkonfigurációja
+          href: nat-security-baseline.md
         - name: Network security groups (Hálózati biztonsági csoportok)
           items:
             - name: Áttekintés

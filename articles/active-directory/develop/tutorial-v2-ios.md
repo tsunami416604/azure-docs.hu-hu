@@ -13,16 +13,16 @@ ms.date: 09/18/2020
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 70194c7adc55a00c5cb65928daac184499eb124d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aff89d49dec9bafedb3c9a5a76abdeb803740a12
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611112"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95746727"
 ---
 # <a name="tutorial-sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>Oktatóanyag: bejelentkezés a felhasználókba és Microsoft Graph meghívása iOS-vagy macOS-alkalmazásból
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhat egy iOS-vagy macOS-alkalmazást a Microsoft Identity platformmal. Az alkalmazás bejelentkezik egy felhasználóval, beolvas egy hozzáférési jogkivonatot a Microsoft Graph API meghívásához, és kérelmet készít a Microsoft Graph API-nak.
+Ebben az oktatóanyagban olyan iOS-vagy macOS-alkalmazást hoz létre, amely integrálható a Microsoft Identity platformmal a felhasználók aláírására és hozzáférési token beszerzésére a Microsoft Graph API meghívásához.
 
 Az útmutató elvégzése után az alkalmazás elfogadja a személyes Microsoft-fiókok (például a outlook.com, a live.com és mások) és a munkahelyi vagy iskolai fiókok bejelentkezési adatait bármely olyan vállalattól vagy szervezettől, amely Azure Active Directoryt használ. Ez az oktatóanyag az iOS-és macOS-alkalmazásokra is érvényes. Egyes lépések eltérnek a két platform között.
 
@@ -62,25 +62,25 @@ Ha le szeretné tölteni az oktatóanyagban felépített alkalmazás befejezett 
 
 ## <a name="create-a-new-project"></a>Új projekt létrehozása
 
-1. Nyissa meg a Xcode, és válassza **az új Xcode-projekt létrehozása**lehetőséget.
+1. Nyissa meg a Xcode, és válassza **az új Xcode-projekt létrehozása** lehetőséget.
 2. IOS-alkalmazások esetén válassza az **iOS**  >  **Egynézetű alkalmazás** lehetőséget, és kattintson a **Tovább gombra**.
 3. MacOS-alkalmazások esetén válassza a **MacOS**  >  **kakaó-alkalmazás** lehetőséget, majd kattintson a **Tovább gombra**.
 4. Adja meg a terméknév nevét.
-5. Állítsa a **nyelvet** a **Swift** értékre, és válassza a **tovább**lehetőséget.
-6. Válasszon egy mappát az alkalmazás létrehozásához, majd válassza a **Létrehozás**lehetőséget.
+5. Állítsa a **nyelvet** a **Swift** értékre, és válassza a **tovább** lehetőséget.
+6. Válasszon egy mappát az alkalmazás létrehozásához, majd válassza a **Létrehozás** lehetőséget.
 
 ## <a name="register-your-application"></a>Az alkalmazás regisztrálása
 
 1. Nyissa meg az [Azure Portalt](https://aka.ms/MobileAppReg)
-2. Nyissa meg a Alkalmazásregisztrációk panelt, és válassza az **+ új regisztráció**lehetőséget.
+2. Nyissa meg a Alkalmazásregisztrációk panelt, és válassza az **+ új regisztráció** lehetőséget.
 3. Adja meg az alkalmazás **nevét** , majd az átirányítási URI beállítása nélkül.
 4. Válassza **a fiókok lehetőséget bármely szervezeti címtárban (bármely Azure ad-címtár – több-bérlős) és személyes Microsoft-fiókok (például Skype, Xbox)** a **támogatott fióktípus** területen
 5. **Regisztráció** kiválasztása
-6. A megjelenő panel **kezelés** szakaszában válassza a **hitelesítés**lehetőséget.
+6. A megjelenő panel **kezelés** szakaszában válassza a **hitelesítés** lehetőséget.
 
-7. A képernyő felső részén található **új felület** kiválasztásával nyissa meg az új alkalmazás regisztrációs élményét, majd válassza az **+ új regisztráció**  >  **+ platform hozzáadása**  >  **iOS/MacOS**lehetőséget.
+7. A képernyő felső részén található **új felület** kiválasztásával nyissa meg az új alkalmazás regisztrációs élményét, majd válassza az **+ új regisztráció**  >  **+ platform hozzáadása**  >  **iOS/MacOS** lehetőséget.
     - Adja meg a projekt köteg-AZONOSÍTÓját. Ha letöltötte a kódot, akkor ez a következő: `com.microsoft.identitysample.MSALiOS` . Ha saját projektet hoz létre, válassza ki a projektet a Xcode-ben, és nyissa meg az **általános** lapot. A köteg azonosítója az Identity ( **identitás** ) szakaszban jelenik meg.
-8. Válassza ki `Configure` és mentse a **MSAL-konfiguráció** lapon megjelenő MSAL- **konfigurációt** , hogy később az alkalmazás konfigurálásakor is megadhatja. Válassza a **Done** (Kész) lehetőséget.
+8. Válassza ki `Configure` és mentse a **MSAL-konfiguráció** lapon megjelenő MSAL- **konfigurációt** , hogy később az alkalmazás konfigurálásakor is megadhatja. Válassza a **Kész** lehetőséget.
 
 ## <a name="add-msal"></a>MSAL hozzáadása
 
@@ -635,7 +635,7 @@ A frissített jogkivonat csendes beszerzéséhez adja hozzá a következő kódo
 
 Ha rendelkezik jogkivonattal, az alkalmazás a HTTP-fejlécben felhasználhatja, hogy jogosult kérést készítsen a Microsoft Graph:
 
-| fejléc kulcsa    | érték                 |
+| fejléc kulcsa    | value                 |
 | ------------- | --------------------- |
 | Engedélyezés | Tulajdonosi \<access-token> |
 
@@ -723,8 +723,8 @@ Alapértelmezés szerint a MSAL az iOS-vagy macOS-kulcstartóban gyorsítótára
 A jogkivonat-gyorsítótárazás engedélyezése:
 
 1. Győződjön meg arról, hogy az alkalmazás megfelelően van aláírva
-1. Lépjen a Xcode-projekt beállításai > **képességek lapon**a  >  **kulcstartó megosztásának engedélyezése** lehetőségre.
-1. Válassza ki **+** és adja meg a következő **kulcstartó-csoportok**egyikét:
+1. Lépjen a Xcode-projekt beállításai > **képességek lapon** a  >  **kulcstartó megosztásának engedélyezése** lehetőségre.
+1. Válassza ki **+** és adja meg a következő **kulcstartó-csoportok** egyikét:
     - iOS `com.microsoft.adalcache`
     - MacOS `com.microsoft.identity.universalstorage`
 
@@ -852,7 +852,7 @@ Amikor a felhasználó először jelentkezik be az alkalmazásba, a Microsoft Id
 
 A bejelentkezést követően az alkalmazás megjeleníti az Microsoft Graph végpont által visszaadott adatok megjelenítését `/me` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a védett webes API-kat meghívó mobil alkalmazások létrehozásáról a többrészes forgatókönyvek sorozatában.
 

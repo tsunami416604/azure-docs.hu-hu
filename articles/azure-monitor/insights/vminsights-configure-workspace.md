@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: d3bedfae88544d0b0ebd07868438559305279fed
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: a4380ae7fdb523f8b2f5bc14fefa094b6d96e547
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/24/2020
-ms.locfileid: "95530114"
+ms.locfileid: "95750532"
 ---
 # <a name="configure-log-analytics-workspace-for-azure-monitor-for-vms"></a>Azure Monitor for VMs Log Analytics munkaterület konfigurálása
 Azure Monitor for VMs adatokat gyűjt a Azure Monitor egy vagy több Log Analytics munkaterületéről. Az ügynökök bevezetését megelőzően létre kell hoznia és konfigurálnia kell egy munkaterületet. Ez a cikk a munkaterület követelményeit és a Azure Monitor for VMs konfigurálását ismerteti.
@@ -80,7 +80,7 @@ Ahhoz, hogy egy Log Analytics munkaterület használható legyen a Azure Monitor
 ### <a name="azure-portal"></a>Azure Portal
 A Azure Portal használatával három lehetőség közül választhat egy meglévő munkaterület konfigurálásához. Mindegyiket alább mutatjuk be.
 
-Egyetlen munkaterület konfigurálásához válassza a többi előkészítési **lehetőséget** , majd konfigurálja a **munkaterületet**. Válasszon egy előfizetést és egy munkaterületet, majd kattintson a **Konfigurálás** elemre.
+Egyetlen munkaterület konfigurálásához lépjen a **Azure monitor** menü **Virtual Machines** lehetőségére, válassza ki a többi bevezetési **lehetőséget**, majd **konfigurálja a munkaterületet**. Válasszon egy előfizetést és egy munkaterületet, majd kattintson a **Konfigurálás** elemre.
 
 [![Munkaterület konfigurálása](media/vminsights-enable-at-scale-policy/configure-workspace.png)](media/vminsights-enable-at-scale-policy/configure-workspace.png#lightbox)
 

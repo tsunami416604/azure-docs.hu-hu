@@ -97,13 +97,13 @@
       href: dynamic-change-volume-service-level.md
     - name: Régiók közötti replikációk kezelése
       items:
-        - name: Replikációs társviszony létrehozása
+        - name: Kötetreplikáció létrehozása
           href: cross-region-replication-create-peering.md
         - name: Replikációs kapcsolat állapotának megjelenítése
           href: cross-region-replication-display-health-status.md
         - name: Vészhelyreállítás kezelése
           href: cross-region-replication-manage-disaster-recovery.md
-        - name: Replikációk törlése
+        - name: Kötetreplikációk vagy kötetek törlése
           href: cross-region-replication-delete.md
     - name: Fejlesztés
       items:

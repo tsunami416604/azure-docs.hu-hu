@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: ed767055c1227d39fc29ac77a44c96b19030ad28
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8033117d9e3c31f8aa9bba06afb7c3b1b7bba67f
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535860"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95751028"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>Támogatott Azure Database for MySQL Server-verziók
 
@@ -46,7 +46,7 @@ Tekintse meg a MySQL [kibocsátási megjegyzéseit](https://dev.mysql.com/doc/re
 ## <a name="managing-updates-and-upgrades"></a>Frissítések és frissítések kezelése
 A szolgáltatás automatikusan kezeli a hibajavítások verziófrissítésének javítását. Például 5.7.20 telepítése a 5.7.21.  
 
-Az al- vagy a főverzió frissítései jelenleg nem támogatottak. Például a MySQL 5.6-os verzióról a MySQL 5.7-es verzióra történő frissítés nem támogatott. Ha az 5.6-os verzióról az 5.7-es verzióra szeretne frissíteni, készítsen [biztonsági másolatot, és végezzen visszaállítást](./concepts-migrate-dump-restore.md) az új motorverzióval létrehozott kiszolgálón.
+A szolgáltatás jelenleg a főverzió frissítését támogatja a MySQL v 5.6-ról v 5.7-re való frissítéshez. További részletekért tekintse [meg a főbb verziófrissítések elvégzését ismertető témakört](how-to-major-version-upgrade.md). Ha 5,7-ről 8,0-re kíván frissíteni, javasoljuk, hogy a [memóriaképet és a visszaállítást](./concepts-migrate-dump-restore.md) olyan kiszolgálóra végezze, amely az új motor verziójával lett létrehozva.
 
 ## <a name="next-steps"></a>Következő lépések
 

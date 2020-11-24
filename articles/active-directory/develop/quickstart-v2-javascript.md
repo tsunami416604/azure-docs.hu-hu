@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: f2a01c4e4d364494d271fa676bca5bfac2677395
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: f27822e5edd772b9f2c50f2e98a4804bf994881c
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592747"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95743259"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési jogkivonat beszerzése egy JavaScript SPA-ban
 
-Ebben a rövid útmutatóban egy kódrészletet tölt le és futtat, amely bemutatja, hogyan jelentkezhet be a JavaScript egyoldalas alkalmazás (SPA) a felhasználókba, és hogyan hívhat Microsoft Graph. A kód minta azt is bemutatja, hogyan szerezhet be hozzáférési jogkivonatot a Microsoft Graph API vagy bármely webes API meghívásához.
+Ebben a rövid útmutatóban egy kódrészletet tölt le és futtat, amely bemutatja, hogyan jelentkezhet be a JavaScript egyoldalas alkalmazás (SPA) a felhasználókba, és hogyan hívhat Microsoft Graph. A kód minta azt is bemutatja, hogyan kérhető le hozzáférési jogkivonat a Microsoft Graph API vagy bármely webes API meghívásához.
 
 Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 
@@ -85,7 +85,7 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-javascript-app"></a>3. lépés: a JavaScript-alkalmazás konfigurálása
 >
-> A *JavaScriptSPA* mappában szerkessze *authConfig.js* , majd állítsa be a `clientID` és `authority` a `redirectUri` értékeket `msalConfig` .
+> A *JavaScriptSPA* mappában szerkessze *authConfig.js*, majd állítsa be a `clientID` és `authority` a `redirectUri` értékeket `msalConfig` .
 >
 > ```javascript
 >
@@ -110,16 +110,16 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 
 > [!div renderon="docs"]
 >
-> Ebben a példában:
+> Kimenet:
 > - *\<Enter_the_Application_Id_Here>* a regisztrált alkalmazáshoz tartozó **alkalmazás (ügyfél) azonosítója** .
 > - *\<Enter_the_Cloud_Instance_Id_Here>* Az Azure-felhő példánya. A fő vagy a globális Azure-felhőhöz egyszerűen írja be a következőt: *https://login.microsoftonline.com* . Az **országos** felhők (például Kína) esetében lásd: [nemzeti felhők](./authentication-national-cloud.md).
 > - *\<Enter_the_Tenant_info_here>* az a következő lehetőségek egyikére van beállítva:
->    - Ha az alkalmazás támogatja a *szervezeti címtárban lévő fiókokat* , cserélje le ezt az értéket a **bérlői azonosítóra** vagy a **bérlő nevére** (például *contoso.microsoft.com* ).
->    - Ha az alkalmazás *minden szervezeti címtárban támogatja a fiókokat* , cserélje le ezt az értéket **szervezetekkel**.
->    - Ha az alkalmazás *minden szervezeti címtárban és személyes Microsoft-fiókban is támogatja a fiókokat* , cserélje le ezt az értéket **közösre**. Ha *csak a személyes Microsoft-fiókok* támogatását szeretné korlátozni, cserélje le ezt az értéket a **fogyasztókkal**.
+>    - Ha az alkalmazás támogatja a *szervezeti címtárban lévő fiókokat*, cserélje le ezt az értéket a **bérlői azonosítóra** vagy a **bérlő nevére** (például *contoso.microsoft.com*).
+>    - Ha az alkalmazás *minden szervezeti címtárban támogatja a fiókokat*, cserélje le ezt az értéket **szervezetekkel**.
+>    - Ha az alkalmazás *minden szervezeti címtárban és személyes Microsoft-fiókban is támogatja a fiókokat*, cserélje le ezt az értéket **közösre**. Ha *csak a személyes Microsoft-fiókok* támogatását szeretné korlátozni, cserélje le ezt az értéket a **fogyasztókkal**.
 >
 > > [!TIP]
-> > Az **alkalmazás (ügyfél) azonosítója** , a **címtár (bérlő) azonosítója** és a **támogatott fióktípusok** értékét az alkalmazás **Áttekintés** oldalán találja az Azure Portalon.
+> > Az **alkalmazás (ügyfél) azonosítója**, a **címtár (bérlő) azonosítója** és a **támogatott fióktípusok** értékét az alkalmazás **Áttekintés** oldalán találja az Azure Portalon.
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>3. lépés: az alkalmazás konfigurálva van, és készen áll a futtatásra
@@ -144,7 +144,7 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 
 > [!div renderon="docs"]
 >
-> Ebben a példában:
+> Kimenet:
 > - *\<Enter_the_Graph_Endpoint_Here>* a végpont az API-hívásokat fogja elvégezni. A fő vagy a globális Microsoft Graph API szolgáltatáshoz egyszerűen írja be a következőt: `https://graph.microsoft.com` . További információ: [belföldi Felhőbeli üzembe helyezés](/graph/deployments)
 >
 > #### <a name="step-4-run-the-project"></a>4. lépés: a projekt futtatása

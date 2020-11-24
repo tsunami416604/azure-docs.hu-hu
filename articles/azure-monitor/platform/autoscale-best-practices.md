@@ -4,12 +4,12 @@ description: Az Azure-ban Web Apps, virtuálisgép-méretezési csoportokhoz és
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 414716fbbb36167e52c4f3b98c70ae7696ffea8f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fdb3588833dd9bcf989e020cd1dd861c6e28f37
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327055"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95745316"
 ---
 # <a name="best-practices-for-autoscale"></a>Ajánlott eljárások az automatikus méretezéshez
 Azure Monitor az autoscale csak [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [app Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)és [API Management szolgáltatásokra](../../api-management/api-management-key-concepts.md)vonatkozik.
@@ -74,6 +74,9 @@ Ebben az esetben
 4. Az autoscale skálázási szabálya a végleges állapotot becsüli meg, ha a méretezés be volt. Például: 60 x 3 (aktuális példányszám) = 180/2 (a példányok végső száma, ha le van méretezve) = 90. Így az autoskálázás nem méretezhető, mert azonnal el kellene végeznie a méretezést. Ehelyett kihagyja a méretezést.
 5. A következő alkalommal, amikor az autoscale ellenőrzi, a processzor továbbra is 50-ra csökken. Az informatikai becslések ismét-50 x 3 példány = 150/2 példány = 75, amely a 80 kibővített küszöbértéke alá esik, ezért a rendszer sikeresen átméretezi a két példányt.
 
+> [!NOTE]
+> Ha az automatikus skálázási motor észleli a leválasztást a példányok megadására való skálázás eredményeképpen, azt is meg kell próbálni, hogy az aktuális szám és a cél száma között más példányokra lehessen méretezni a méretezést. Ha ezen a tartományon belül nem történik meg a csapkodás, az autoskálázás folytatja az új célként megadott méretezési műveletet.
+
 ### <a name="considerations-for-scaling-threshold-values-for-special-metrics"></a>A speciális metrikák küszöbértékeinek skálázásakor megfontolandó szempontok
  A speciális mérőszámok, például a Storage vagy a Service Bus üzenetsor hossza metrika esetén a küszöbérték az aktuális példányszámban elérhető üzenetek átlagos száma. Körültekintően válassza ki a metrika küszöbértékét.
 
@@ -116,7 +119,7 @@ Hasonlóképpen, amikor az autoscale visszavált az alapértelmezett profilra, e
 Egyes esetekben előfordulhat, hogy egy profilban több szabályt kell beállítania. A következő autoskálázási szabályokat használja az autoskálázási motor, ha több szabály van beállítva.
 
 A kibővített, az *autoskálázás fut*, ha bármely szabály teljesül.
-A *méretezési*szolgáltatásban az autoskálázás megköveteli az összes szabály teljesítését.
+A *méretezési* szolgáltatásban az autoskálázás megköveteli az összes szabály teljesítését.
 
 A bemutatóhoz tegyük fel, hogy a következő négy autoskálázási szabály van:
 
@@ -143,12 +146,14 @@ Ha a következő feltételek bármelyike teljesül, a rendszer közzéteszi az a
 * Az autoskálázási szolgáltatás nem végez méretezési műveletet.
 * A mérőszámok nem érhetők el az autoskálázási szolgáltatás számára a méretezési döntések elvégzéséhez.
 * A mérőszámok újra elérhetők (helyreállítás) a méretezési döntések elvégzéséhez.
+* Az autoscale észleli a feltörést, és megszakítja a méretezési kísérletet. Ebben az esetben a napló típusát fogja látni `Flapping` . Ha ezt látja, gondolja át, hogy a küszöbértékek túl keskenyek-e.
+* Az autoscale észleli a csapkodás, de továbbra is képes a méretezésre. Ebben az esetben a napló típusát fogja látni `FlappingOccurred` . Ha ezt látja, az autoskálázási motor megpróbálta méretezni a méretezést (például 4 példányról 2-re), de azt állapította meg, hogy ez csapkodás okozta. Ehelyett az autoskálázási motor különböző számú példányra (például 2.3 példány használatával) méretezhető, ami már nem okoz problémát, így az adott számú példányra méretezhető.
 
 Az autoskálázási motor állapotának figyeléséhez használhat egy műveletnapló-riasztást is. Íme néhány példa arra, hogy [hozzon létre egy műveletnapló-riasztást az előfizetésben lévő összes autoskálázási motor műveleteinek figyelésére](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert) , vagy [hozzon létre egy műveletnapló riasztást az előfizetésben lévő, illetve Felskálázási műveletek összes sikertelen, méretezési méretezésének figyeléséhez](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
 
 A műveletnapló értesítésein kívül az e-mail-vagy webhook-értesítéseket is konfigurálhatja, hogy a sikeres skálázási műveletekről értesítést kapjon az autoskálázási beállítás értesítések lapján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Hozzon létre egy műveletnapló-riasztást az előfizetésben lévő összes autoskálázási motor műveleteinek figyeléséhez.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [Eseménynapló-riasztás létrehozása az összes sikertelen, az előfizetésen belüli és a vertikális Felskálázási műveletek figyeléséhez](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
 

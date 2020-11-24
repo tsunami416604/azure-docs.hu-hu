@@ -139,7 +139,7 @@
           href: understand-spark-code-concepts.md
     - name: U-SQL-feladatok hibaelhárítása
       items:
-        - name: U-SQL-futtatókörnyezet hibái
+        - name: A U-SQL-futtatókörnyezet hibáinak és ismert problémáinak elhárítása
           href: runtime-troubleshoot.md
         - name: .NET-frissítések hibaelhárítása
           href: dotnet-upgrade-troubleshoot.md

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: mathapli
 ms.reviewer: cynthn
-ms.openlocfilehash: 71ff00dbf32ef32ead85be60cdbe53f23c8e35c7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1f31cc982e5e7f92cfe7e8adf588dd96628f2c6f
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957571"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95744041"
 ---
 # <a name="red-hat-enterprise-linux-rhel-extended-lifecycle-support"></a>Red Hat Enterprise Linux (RHEL) bővített életciklus-támogatás
 Ez a cikk a Red Hat Enterprise-lemezképek kiterjesztett életciklus-támogatásával kapcsolatos információkat tartalmaz:
@@ -22,6 +22,14 @@ Ez a cikk a Red Hat Enterprise-lemezképek kiterjesztett életciklus-támogatás
 ## <a name="red-hat-enterprise-linux-6-lifecycle"></a>Red Hat Enterprise Linux 6 életciklus
 A 2020. november 30-án kezdődően a Red Hat Enterprise Linux 6 a karbantartási fázis végére ér. A karbantartási fázist a hosszabb élettartam fázisa követi. Mivel Red Hat Enterprise Linux 6 átmenet a teljes/karbantartási fázisokból, erősen ajánlott Red Hat Enterprise Linux 7 vagy 8 verzióra frissíteni. Ha az ügyfeleknek a Red Hat Enterprise Linux 6 címen kell maradniük, javasoljuk, hogy adja hozzá a Red Hat Enterprise Linux Extended életciklus-támogatás (ELS) bővítményt.
 
+## <a name="steps-to-add-extended-lifecycle-support-on-marketplace-pay-as-you-go-vms"></a>A kiterjesztett életciklus támogatásának lépései a piactéren elvégezhető utólagos elszámolású virtuális gépeken
+1. Töltse ki az [itt elérhető els űrlapot](https://aka.ms/els-form) a kapcsolattartási adataival és azon virtuális gépek előfizetési adataival, amelyekhez az els támogatást szeretné hozzáadni. A Hozzáadás a díjszabásról részletek az űrlapon is elérhetők.
+1. Az Azure Red Hat Enterprise Linux csapatával az ELS támogatású virtuális gépek listája 1-2 munkanapon belül elérhetővé válik. Tekintse át a listát, és válaszoljon a Hozzáadás a díjszabáshoz című megjegyzésre.
+1. Az Azure Red Hat Enterprise Linux csapata megosztja azokat a lépéseket, amelyekkel hozzáadja az ELS-ügyfélszoftvert a virtuális gépekhez. Kövesse az e-mailben szereplő lépéseket, hogy továbbra is megkapja a szoftveres karbantartást (a hibák és a biztonsági javítások), valamint a Red Hat Enterprise Linux 6 támogatását.
+
+> [!Note]
+> Ne ossza meg azokat a lépéseket, amelyek segítségével a RHEL ELS Add-t használhatja a szervezeten kívüli személyekkel. AzureRedHatELS@microsoft.comKérjen támogatást vagy további kérdéseket.
+
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
 #### <a name="im-running-red-hat-enterprise-linux-6-and-cant-migrate-to-a-later-version-at-this-time-what-options-do-i-have"></a>Red Hat Enterprise Linux 6 rendszert futtatok, és jelenleg nem lehet áttérni egy újabb verzióra. Milyen lehetőségek vannak?
@@ -29,19 +37,8 @@ A 2020. november 30-án kezdődően a Red Hat Enterprise Linux 6 a karbantartás
 * A lehető leghamarabb telepítse át Red Hat Enterprise Linux 7 vagy 8 rendszerre.
 
 #### <a name="what-is-the-additional-charge-for-using-red-hat-enterprise-linux-extended-life-cycle-support-els-add-on"></a>Mi a kiegészítő díj a Red Hat Enterprise Linux kiterjesztett életciklus-támogatás (ELS) bővítmény használatához?
+A kiterjesztett életciklus-támogatással kapcsolatos költségek az [els űrlap](https://aka.ms/els-form) használatával találhatók
 
-|Virtuális gép mérete|További díjszabási idő kerete|További dollár összeg (USD)| Megjegyzések|
-|---|---|---|---|
-| Kis virtuális vendég (<= 4 mag) | Óránkénti kiegészítő díj | TBC | |
-|  | Havi kiegészítő díj | TBC | Fenntartott példányok esetén |
-|  | Éves kiegészítő díj | TBC | Fenntartott példányok esetén |
-| Nagyméretű virtuális vendég (>4 mag) | Óránkénti kiegészítő díj | TBC | |
-|  | Havi kiegészítő díj | TBC | Fenntartott példányok esetén |
-|  | Éves kiegészítő díj | TBC | Fenntartott példányok esetén |
-
-#### <a name="what-is-the-process-to-add-extended-life-cycle-support-els-repositories-to-continue-to-receive-software-maintenance-bug-and-security-fixes-and--support-for-red-hat-enterprise-linux-6"></a>Mi a folyamat a kiterjesztett életciklus-támogatási (ELS) Tárházak hozzáadásához, hogy továbbra is megkapja a szoftveres karbantartást (a hibák és a biztonsági javítások), valamint a Red Hat Enterprise Linux 6 támogatását?
-
-Az ELS-ra való regisztráció befejezését követően a befejezési folyamat hamarosan elérhető lesz (legkésőbb 2020 november 30-ig).
 
 ## <a name="next-steps"></a>Következő lépések
 

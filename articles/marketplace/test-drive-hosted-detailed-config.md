@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 11/06/2020
-ms.openlocfilehash: 0765c05e08dda782c084775fb83b22a52558fa0d
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 9e8aecfe8b16d8af755d3f4c3c71b875d4e8ec40
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491613"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95751249"
 ---
 # <a name="detailed-configuration-for-hosted-test-drives"></a>Az üzemeltetett tesztelési meghajtók részletes konfigurációja
 
@@ -29,7 +29,7 @@ Ez a cikk azt ismerteti, hogyan konfigurálható a Dynamics 365-hez az ügyfelek
 
     - **A tesztvezetés típusa** – válassza **a Microsoft által üzemeltetett (Dynamics 365 for Customer engagement & PowerApps)** lehetőséget. Ez azt jelzi, hogy a Microsoft fogja üzemeltetni és karbantartani a szolgáltatást, amely végrehajtja a tesztelési meghajtó felhasználó általi üzembe helyezését és megszüntetését.
 
-5. Adja meg Microsoft AppSource engedélyt a tesztoldal-felhasználók kiépítéséhez és kiépítéséhez a bérlőn [ezen utasítások](https://github.com/Microsoft/AppSource/blob/master/Microsoft%20Hosted%20Test%20Drive/Setup-your-Azure-subscription-for-Dynamics365-Microsoft-Hosted-Test-Drives.md)használatával. Ebben a lépésben a **Azure ad alkalmazás azonosítóját** és a **Azure ad alkalmazás legfontosabb** értékeket fogja előállítani.
+5. Adja meg Microsoft AppSource engedélyt a tesztoldal-felhasználók kiépítéséhez és kiépítéséhez a bérlőn [ezen utasítások](https://docs.microsoft.com/azure/marketplace/test-drive-azure-subscription-setup)használatával. Ebben a lépésben a **Azure ad alkalmazás azonosítóját** és a **Azure ad alkalmazás legfontosabb** értékeket fogja előállítani.
 6. Hajtsa végre ezeket a mezőket a **Test Drive technikai konfiguráció** lapján.
 
     [![A test Drive technikai konfigurációjának lapja.](media/test-drive/technical-config-details.png)](media/test-drive/technical-config-details.png#lightbox)

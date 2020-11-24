@@ -12,16 +12,16 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 643e3bcd50258e2b5e7f52646f231485f950d677
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 72d9aefcdda5d224b256c6e969b7a75259a97005
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94515545"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95750773"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési jogkivonat beszerzése egy szögletes egyoldalas alkalmazásban
 
-Ebben a rövid útmutatóban egy mintakód-mintát tölt le és futtat, amely bemutatja, hogyan jelentkezhet be egy szögletes egyoldalas alkalmazás (SPA) a felhasználókba, és hogyan hívhat Microsoft Graph. A kód minta bemutatja, hogyan szerezhet be hozzáférési jogkivonatot a Microsoft Graph API vagy bármely webes API meghívásához.
+Ebben a rövid útmutatóban egy mintakód-mintát tölt le és futtat, amely bemutatja, hogyan jelentkezhet be egy szögletes egyoldalas alkalmazás (SPA) a felhasználókba, és hogyan hívhat Microsoft Graph. A kód minta bemutatja, hogyan kérhet hozzáférési tokent a Microsoft Graph API vagy bármely webes API meghívásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -100,12 +100,12 @@ Ebben a rövid útmutatóban egy mintakód-mintát tölt le és futtat, amely be
 >|---------|---------|
 >|Enter_the_Application_Id_Here|Az alkalmazás regisztrációjának **Áttekintés** lapján ez az **alkalmazás (ügyfél) azonosítójának** értéke. |
 >|Enter_the_Cloud_Instance_Id_Here|Ez az Azure-felhő példánya. A fő vagy a globális Azure-felhőhöz írja be a következőt: **https://login.microsoftonline.com** . Az országos felhők (például Kína) esetében lásd: [nemzeti felhők](./authentication-national-cloud.md).|
->|Enter_the_Tenant_Info_Here| Állítsa be a következő lehetőségek egyikét: Ha az alkalmazás támogatja a *szervezeti címtárban lévő fiókokat* , cserélje le ezt az értéket a címtár (bérlő) vagy a bérlő nevére (például **contoso.microsoft.com** ). Ha az alkalmazás *minden szervezeti címtárban támogatja a fiókokat* , cserélje le ezt az értéket **szervezetekkel**. Ha az alkalmazás *minden szervezeti címtárban és személyes Microsoft-fiókban is támogatja a fiókokat* , cserélje le ezt az értéket **közösre**. Ha *csak a személyes Microsoft-fiókok* támogatását szeretné korlátozni, cserélje le ezt az értéket a **fogyasztókkal**. |
+>|Enter_the_Tenant_Info_Here| Állítsa be a következő lehetőségek egyikét: Ha az alkalmazás támogatja a *szervezeti címtárban lévő fiókokat*, cserélje le ezt az értéket a címtár (bérlő) vagy a bérlő nevére (például **contoso.microsoft.com**). Ha az alkalmazás *minden szervezeti címtárban támogatja a fiókokat*, cserélje le ezt az értéket **szervezetekkel**. Ha az alkalmazás *minden szervezeti címtárban és személyes Microsoft-fiókban is támogatja a fiókokat*, cserélje le ezt az értéket **közösre**. Ha *csak a személyes Microsoft-fiókok* támogatását szeretné korlátozni, cserélje le ezt az értéket a **fogyasztókkal**. |
 >|Enter_the_Redirect_Uri_Here|Cserélje le a-t **http://localhost:4200** .|
 >|cacheLocation  | Választható Állítsa be a böngésző tárterületét a hitelesítési állapothoz. Az alapértelmezett érték a **sessionStorage**.   |
 >|storeAuthStateInCookie  | Választható Azonosítsa a hitelesítési kérelem állapotát tároló könyvtárat. Ez az állapot szükséges a böngésző cookie-jai hitelesítési folyamatainak ellenőrzéséhez. Ez a cookie be van állítva az Internet Explorer és a Edge számára a két böngésző számára. További részletekért tekintse meg az [ismert problémákat](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues->on-IE-and-Edge-Browser#issues). |
 > > [!TIP]
-> > Az **alkalmazás (ügyfél) azonosítója** , a **címtár (bérlő) azonosítója** és a **támogatott fióktípusok** értékét az alkalmazás **Áttekintés** oldalán találja az Azure Portalon.
+> > Az **alkalmazás (ügyfél) azonosítója**, a **címtár (bérlő) azonosítója** és a **támogatott fióktípusok** értékét az alkalmazás **Áttekintés** oldalán találja az Azure Portalon.
 
 További információ az elérhető konfigurálható lehetőségekről: [ügyfélalkalmazások inicializálása](msal-js-initializing-client-applications.md).
 

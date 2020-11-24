@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 08/17/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6ff97e52d005ba1e91194b449377653317876163
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: ab251e9a156005d47a1516d23cb018fb1907ab6e
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912803"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95744772"
 ---
 # <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>Oktatóanyag: Windows Presentation Framework (WPF) alkalmazás létrehozása egy Rendszerképbeli Arcfelismerés megjelenítéséhez
 
@@ -51,7 +51,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 Az alábbi lépéseket követve hozzon létre egy új WPF-alkalmazás projektjét.
 
-1. A Visual Studióban nyissa meg az új projekt párbeszédpanelt. Bontsa ki a **telepített** , majd a **Visual C#** , majd a **WPF-alkalmazás (.NET-keretrendszer)** elemet.
+1. A Visual Studióban nyissa meg az új projekt párbeszédpanelt. Bontsa ki a **telepített**, majd a **Visual C#**, majd a **WPF-alkalmazás (.NET-keretrendszer)** elemet.
 1. Adja a **FaceTutorial** nevet az alkalmazásnak, majd kattintson az **OK** gombra.
 1. Szerezze be a szükséges NuGet-csomagokat. Kattintson a jobb gombbal a projektre a Megoldáskezelő, majd válassza a **NuGet-csomagok kezelése** lehetőséget. Ezután keresse meg és telepítse a következő csomagot:
     - [Microsoft. Azure. CognitiveServices. vízió. Face 2.6.0 – előzetes verzió. 1](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.6.0-preview.1)
@@ -80,7 +80,7 @@ Ezután adja hozzá a **MainWindow** konstruktort. Ellenőrzi a végpont URL-kar
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mainwindow_constructor)]
 
-Végül adja hozzá a **BrowseButton_Click** és a **FacePhoto_MouseMove** metódusokat a osztályhoz. Ezek a módszerek megfelelnek az *MainWindow. XAML* által deklarált eseménykezelőknek. A **BrowseButton_Click** metódus létrehoz egy **OpenFileDialog** , amely lehetővé teszi a felhasználó számára egy. jpg-rendszerkép kiválasztását. Ezután megjeleníti a rendszerképet a főablakban. A további kódokat be kell szúrni **BrowseButton_Click** és **FacePhoto_MouseMove** a későbbi lépésekben. Jegyezze fel a `faceList` &mdash; **DetectedFace** -objektumok listáját is. Ez a hivatkozás azt adja meg, hogy az alkalmazás hogyan fogja tárolni és meghívni a tényleges adatokat.
+Végül adja hozzá a **BrowseButton_Click** és a **FacePhoto_MouseMove** metódusokat a osztályhoz. Ezek a módszerek megfelelnek az *MainWindow. XAML* által deklarált eseménykezelőknek. A **BrowseButton_Click** metódus létrehoz egy **OpenFileDialog**, amely lehetővé teszi a felhasználó számára egy. jpg-rendszerkép kiválasztását. Ezután megjeleníti a rendszerképet a főablakban. A további kódokat be kell szúrni **BrowseButton_Click** és **FacePhoto_MouseMove** a későbbi lépésekben. Jegyezze fel a `faceList` &mdash; **DetectedFace** -objektumok listáját is. Ez a hivatkozás azt adja meg, hogy az alkalmazás hogyan fogja tárolni és meghívni a tényleges adatokat.
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_browsebuttonclick_start)]
 
@@ -106,7 +106,7 @@ Szúrja be a következő metódust a **MainWindow** osztályban a **FacePhoto_Mo
 
 ## <a name="draw-rectangles-around-faces"></a>Téglalapok rajzolása az arcok köré
 
-Ezután adja hozzá a kódot a képen látható összes észlelt arc körüli téglalap rajzolásához. A **MainWindow** osztályban szúrja be a következő kódot a **BrowseButton_Click** metódus végén a `FacePhoto.Source = bitmapSource` sor után. Ez a kód feltölti az észlelt arcok listáját a **UploadAndDetectFaces** -hívásból. Ezután egy téglalapot rajzol az egyes arcok körül, és megjeleníti a módosított képet a főablakban.
+Ezután adja hozzá a kódot a képen látható összes észlelt arc körüli téglalap rajzolásához. A **MainWindow** osztályban szúrja be a következő kódot a **BrowseButton_Click** metódus végén a `FacePhoto.Source = bitmapSource` sor után. Ez a kód feltölti az észlelt arcok listáját a **UploadAndDetectFaces**-hívásból. Ezután egy téglalapot rajzol az egyes arcok körül, és megjeleníti a módosított képet a főablakban.
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_browsebuttonclick_mid)]
 

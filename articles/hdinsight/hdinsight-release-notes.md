@@ -8,33 +8,33 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 1ae4e2a1e0d67a0a09c19b517245ffc6d92d17df
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 03874f76772d8722c7161ef43a2297c2e01b7da9
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629920"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95748835"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Az Azure HDInsight kibocsátási megjegyzései
 
 Ez a cikk az Azure HDInsight **legújabb** kiadási frissítéseivel kapcsolatos információkat tartalmaz. A korábbi kiadásokkal kapcsolatos információkért lásd: [HDInsight kibocsátási megjegyzések archívuma](hdinsight-release-notes-archive.md).
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Az Azure HDInsight az egyik legnépszerűbb szolgáltatás a nagyvállalati ügyfelek körében az Azure-beli nyílt forráskódú elemzésekhez.
 
 Ha a kibocsátási megjegyzésekre szeretne előfizetni, tekintse meg a [jelen GitHub-adattár](https://github.com/hdinsight/release-notes/releases)kiadásait.
 
-## <a name="release-date-11092020"></a>Kiadás dátuma: 11/09/2020
+## <a name="release-date-11182020"></a>Kiadás dátuma: 11/18/2020
 
 Ez a kiadás a 3,6-es és a HDInsight 4,0-es HDInsight egyaránt érvényes. A HDInsight-kiadás több napon keresztül elérhetővé válik minden régióban. A kiadás dátuma itt jelzi az első régió kiadásának dátumát. Ha nem látja az alábbi módosításokat, várja meg, amíg a kiadás több napon belül élő marad a régióban.
 
 ## <a name="new-features"></a>Új funkciók
-### <a name="hdinsight-identity-broker-hib-is-now-ga"></a>A HDInsight Identity Broker (HIB) mostantól
-A HDInsight Identity Broker (HIB), amely lehetővé teszi az ESP-fürtök OAuth-hitelesítését, már általánosan elérhető ebben a kiadásban. A jelen kiadás után létrehozott HIB-fürtök a legújabb HIB-funkciókat fogják tartalmazni:
-- Magas rendelkezésre állás (HA)
-- Multi-Factor Authentication (MFA) támogatása
-- Az összevont felhasználók a jelszó-kivonat szinkronizálása nélkül jelentkeznek be a HRE-DS-be további információért lásd a [hib dokumentációját](https://docs.microsoft.com/azure/hdinsight/domain-joined/identity-broker).
+### <a name="auto-key-rotation-for-customer-managed-key-encryption-at-rest"></a>Ügyfél által felügyelt kulcs titkosításának automatikus kulcsának elforgatása nyugalmi állapotban
+Ettől a kiadástól kezdődően az ügyfelek az Azure KeyValut-verzió-kevesebb titkosítási kulcs URL-címét használhatják az ügyfelek által felügyelt kulcs titkosítására nyugalmi állapotban. A HDInsight automatikusan elforgatja a kulcsokat, és lecseréli azokat új verzióra. További információt [itt talál](https://docs.microsoft.com/azure/hdinsight/disk-encryption).
+
+### <a name="ability-to-select-different-zookeeper-virtual-machine-sizes-for-spark-hadoop-and-ml-services"></a>A Spark, a Hadoop és a ML szolgáltatások Zookeeper eltérő virtuálisgép-méretek kiválasztásának lehetősége
+A HDInsight korábban nem támogatta a Zookeeper-csomópontok méretének testreszabását a Spark, a Hadoop és a ML Services típusú fürtök esetében. Alapértelmezés szerint A2_v2/a2 virtuálisgép-méreteket tartalmaz, amelyek díjmentesen állnak rendelkezésére. Ebből a kiadásból kiválaszthatja a forgatókönyvhöz leginkább megfelelő Zookeeper virtuális gépek méretét. A A2_v2/a2 eltérő virtuálisgép-mérettel rendelkező Zookeeper-csomópontokat a rendszer felszámítja. A A2_v2 és az A2-es virtuális gépek továbbra is díjmentesen elérhetők.
 
 ### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Áttérés Azure-beli virtuálisgép-méretezési csoportokra
 A HDInsight mostantól Azure-beli virtuális gépeket használ a fürt kiépítéséhez. Ettől a kiadástól kezdve a szolgáltatás fokozatosan migrálva lesz az [Azure virtuálisgép-méretezési csoportokra](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview). A teljes folyamat hónapokat is igénybe vehet. A régiók és az előfizetések migrálása után az újonnan létrehozott HDInsight-fürtök felhasználói műveletek nélkül futnak a virtuálisgép-méretezési csoportokban. A rendszer nem várt változást.
@@ -46,14 +46,11 @@ A HDInsight 3,6 ML Services-fürt típusa a támogatás végére kerül a 31 202
 ### <a name="disabled-vm-sizes"></a>Letiltott virtuálisgép-méretek
 A HDInsight november 16 2020-től kezdődően megakadályozza, hogy az új ügyfelek standand_A8, standand_A9, standand_A10 és standand_A11 virtuálisgép-méretekkel hozzanak létre fürtöket. Az elmúlt három hónapban ezeket a virtuálisgép-méreteket használó meglévő ügyfeleket nem érinti a rendszer. A HDInsight január 9 2021-től kezdődően a standand_A8, standand_A9, standand_A10 és standand_A11 virtuálisgép-méretek használatával letiltja a fürtöket létrehozó összes ügyfelet. A meglévő fürtök futtatása a következőképpen történik:. Vegye fontolóra a HDInsight 4,0-re való áttérést, hogy elkerülje a lehetséges rendszer/támogatás megszakadását.
 
-## <a name="behavior-changes"></a>Viselkedési változások
+### <a name="behavior-changes"></a>Viselkedési változások
 Ebben a kiadásban nem változik a viselkedés.
 
 ## <a name="upcoming-changes"></a>Közelgő változások
 A következő módosítások a közelgő kiadásokban fognak történni.
-
-### <a name="ability-to-select-different-zookeeper-virtual-machine-sizes-for-spark-hadoop-and-ml-services"></a>A Spark, a Hadoop és a ML szolgáltatások Zookeeper eltérő virtuálisgép-méretek kiválasztásának lehetősége
-A HDInsight jelenleg nem támogatja a Zookeeper-csomópontok méretének testreszabását a Spark, a Hadoop és a ML Services típusú fürtök esetében. Alapértelmezés szerint A2_v2/a2 virtuálisgép-méreteket tartalmaz, amelyek díjmentesen állnak rendelkezésére. A következő kiadásban kiválaszthatja a forgatókönyvhöz leginkább megfelelő Zookeeper virtuális gép méretét. A A2_v2/a2 eltérő virtuálisgép-mérettel rendelkező Zookeeper-csomópontokat a rendszer felszámítja. A A2_v2 és az A2-es virtuális gépek továbbra is díjmentesen elérhetők.
 
 ### <a name="default-cluster-version-will-be-changed-to-40"></a>A fürt alapértelmezett verziója 4,0-re változik
 Február 2021-én a HDInsight-fürt alapértelmezett verziója 3,6-ről 4,0-ra módosul. További információ az elérhető verziókról: [elérhető verziók](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#available-versions). További információ a [HDInsight 4,0](https://docs.microsoft.com/azure/hdinsight/hdinsight-version-release) újdonságáról
@@ -63,8 +60,6 @@ A HDInsight 3,6 támogatás megszűnik. A 30 2021. június megkezdése után az 
 
 ## <a name="bug-fixes"></a>Hibajavítások
 A HDInsight továbbra is a fürt megbízhatóságának és teljesítményének növelését teszi elérhetővé. 
-### <a name="fix-issue-for-restarting-vms-in-cluster"></a>A virtuális gépek fürtben való újraindításával kapcsolatos problémák elhárítása
-A virtuális gépeknek a fürtben való újraindításával kapcsolatos probléma javítva lett, a [PowerShell vagy a REST API használatával újra lehet indítani a fürt csomópontjait](https://docs.microsoft.com/azure/hdinsight/cluster-reboot-vm) .
 
 ## <a name="component-version-change"></a>Összetevő verziójának módosítása
 Ehhez a kiadáshoz nem módosult az összetevő verziószáma. A HDInsight 4,0 és a HDInsight 3,6 aktuális összetevő-verzióit ebben a [dokumentumban](./hdinsight-component-versioning.md)találja.

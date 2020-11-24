@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: b85b2d9b81e84ec6c6e09fef16c66a919aa30cd7
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: e5e344aa84bfc6912266720083f0cd15f575883c
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616756"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95740250"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Oktatóanyag: az Azure szolgáltatás emblémáinak felismerése kamerás képeken
 
@@ -154,7 +154,7 @@ Az alkalmazás futtatásához kövesse az alábbi lépéseket:
 1. Az első képernyőn adja meg az egyszerű szolgáltatás ügyfél-AZONOSÍTÓját, a bérlő AZONOSÍTÓját és a jelszót. Válassza a **Bejelentkezés** gombot.
 
     > [!NOTE]
-    > Egyes emulátorokban előfordulhat, hogy a **bejelentkezési** gomb nem aktiválódik ebben a lépésben. Ha ez történik, állítsa le az alkalmazást, nyissa meg a *Source/VisualProvision/Pages/LoginPage. XAML* fájlt, keresse meg a `Button` login (bejelentkezés) **gombot** , majd távolítsa el a következő sort, majd futtassa újra az alkalmazást.
+    > Egyes emulátorokban előfordulhat, hogy a **bejelentkezési** gomb nem aktiválódik ebben a lépésben. Ha ez történik, állítsa le az alkalmazást, nyissa meg a *Source/VisualProvision/Pages/LoginPage. XAML* fájlt, keresse meg a `Button` login (bejelentkezés) **gombot**, majd távolítsa el a következő sort, majd futtassa újra az alkalmazást.
     >  ```xaml
     >  IsEnabled="{Binding IsValid}"
     >  ```
@@ -178,7 +178,7 @@ Ha követte a forgatókönyv összes lépését, és az alkalmazást használta 
 
 Ha azt tervezi, hogy létrehoz egy saját objektum-észlelési projektet a Custom Vision, akkor érdemes törölni az oktatóanyagban létrehozott embléma-észlelési projektet. A Custom Vision ingyenes előfizetése csak két projektet tesz lehetővé. Az embléma-észlelési projekt törléséhez nyissa meg a [Custom Vision webhelyén](https://customvision.ai)a **projektek** elemet, majd válassza a Kuka ikont az **új projekt** területen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy teljes funkcionalitású Xamarin. Forms-alkalmazást állít be és vizsgál meg, amely a Custom Vision szolgáltatást használja a mobil kamera-lemezképekben található emblémák észlelésére. Következő lépésként Ismerkedjen meg a Custom Vision-modell létrehozásával kapcsolatos ajánlott eljárásokkal, hogy a saját alkalmazásaihoz hozzon létre egyet, így hatékony és pontos lehet.
 

@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 3c2e691d673b385d597957cf5a4ce3c3f18ba466
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: b489964e5ef8ea483cbe203be1ff665078a6d66a
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95511477"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95741729"
 ---
 # <a name="form-recognizer-layout-service"></a>Űrlap-felismerő elrendezési szolgáltatás
 
@@ -86,11 +86,10 @@ Az elrendezés kibontja a táblákat a dokumentumokból (PDF, TIFF) és képekb�
 
 Az elrendezés kibontja a dokumentumok kiválasztási jeleit is. Kinyert kijelölési jelek közé tartozik a határolókeret, a megbízhatóság és az állapot (kiválasztott/nem kijelölt). A kijelölési megjelölés adatai a JSON-kimenet szakaszában vannak kibontva `"readResults"` . 
 
-<<< a kiválasztási jelek hozzáadása példákat>>>
-
 ## <a name="next-steps"></a>Következő lépések
 
 - Saját elrendezés kinyerésének kipróbálása az [űrlap-felismerő minta felhasználói felületének](https://fott-preview.azurewebsites.net/) használatával
+- Töltse ki az [űrlap-felismerő ügyféloldali függvénytárának](quickstarts/client-library.md) gyors kezdését, hogy megkezdje az elrendezések kinyerését az Ön által választott nyelven.
 - Vagy kövesse az [elrendezési adatok](./QuickStarts/python-layout.md) kinyerése az elrendezési adatok kinyerése a Python és a REST API használatával történő megvalósításához című témakört.
 
 ## <a name="see-also"></a>Lásd még

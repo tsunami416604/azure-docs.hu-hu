@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: 01c5d4395eb584631efb9b3b956b9a987e46b0db
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: c77001707eda7c208ad19a014a1f0cff2b85b25d
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540620"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95736476"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Mi az Azure-SQL-adatszinkronizálás?
 
@@ -44,7 +44,7 @@ Az adatszinkronizálás sugarasan és küllős topológiával szinkronizálja az
 A szinkronizálási csoport a következő tulajdonságokkal rendelkezik:
 
 - A **szinkronizálási séma** leírja, hogy mely adatokat szinkronizálja a rendszer.
-- A **szinkronizálás iránya** lehet kétirányú, vagy csak egy irányba lehet flow. Vagyis a szinkronizálás iránya lehet a *tag* , a tag vagy a két *csomópont* is.
+- A **szinkronizálás iránya** lehet kétirányú, vagy csak egy irányba lehet flow. Vagyis a szinkronizálás iránya lehet a *tag*, a tag vagy a két *csomópont* is.
 - A szinkronizálási **időköz** leírja, hogy milyen gyakran történjen a szinkronizálás.
 - Az **ütközés-feloldási házirend** egy csoport szintű házirend, amely lehet *hub WINS* vagy *tag WINS*.
 
@@ -58,7 +58,7 @@ Az adatszinkronizálás olyan esetekben hasznos, amikor a Azure SQL Database vag
 
 Az adatszinkronizálás nem az előnyben részesített megoldás a következő esetekben:
 
-| Használati példa | Néhány ajánlott megoldás |
+| Használati eset | Néhány ajánlott megoldás |
 |----------|----------------------------|
 | Vészhelyreállítás | [Azure geo-redundáns biztonsági mentések](automated-backups-overview.md) |
 | Olvasási skála | [Csak olvasható replikák használata az írásvédett lekérdezési feladatok terheléselosztásához (előzetes verzió)](read-scale-out.md) |
@@ -81,7 +81,7 @@ Az adatszinkronizálás nem az előnyben részesített megoldás a következő e
 | | Adatszinkronizálás | Tranzakciós replikáció |
 |---|---|---|
 | **Előnyök** | – Aktív-aktív támogatás<br/>– A helyszíni és a Azure SQL Database közötti kétirányú irányítás | – Alacsonyabb késés<br/>– Tranzakciós konzisztencia<br/>-Meglévő topológia újrafelhasználása az áttelepítés után <br/>– Az Azure SQL felügyelt példányának támogatása |
-| **Hátrányok** | – 5 perces minimális gyakoriság a szinkronizálások között<br/>– Nincs tranzakciós konzisztencia<br/>– Nagyobb teljesítményre gyakorolt hatás | -Nem lehet közzétenni Azure SQL Database <br/>– Magas karbantartási díj |
+| **Hátrányok** | – Nincs tranzakciós konzisztencia<br/>– Nagyobb teljesítményre gyakorolt hatás | -Nem lehet közzétenni Azure SQL Database <br/>– Magas karbantartási díj |
 
 ## <a name="get-started"></a>Bevezetés 
 
@@ -150,7 +150,7 @@ A szinkronizálási csoport létrehozása, frissítése és törlése során a k
 
 #### <a name="unsupported-column-types"></a>Nem támogatott oszlopok típusai
 
-Az adatszinkronizálás nem tudja szinkronizálni a csak olvasható vagy a rendszer által létrehozott oszlopokat. Ilyenek többek között:
+Az adatszinkronizálás nem tudja szinkronizálni a csak olvasható vagy a rendszer által létrehozott oszlopokat. Például:
 
 - Számított oszlopok.
 - Rendszer által generált oszlopok az ideiglenes táblákhoz.
@@ -166,7 +166,6 @@ Az adatszinkronizálás nem tudja szinkronizálni a csak olvasható vagy a rends
 | Szinkronizálási csoport táblái                                          | 500                    | Több szinkronizálási csoport létrehozása |
 | Egy szinkronizálási csoportba tartozó tábla oszlopai                              | 1000                   |                             |
 | Tábla adatsorainak mérete                                        | 24 MB                  |                             |
-| Szinkronizálás minimális gyakorisági időköze (az előző szinkronizálás kezdete óta)     | 5 perc              |                             |
 
 > [!NOTE]
 > Egyetlen szinkronizálási csoportban akár 30 végpont is lehet, ha csak egy szinkronizálási csoport van. Ha több szinkronizálási csoport is van, akkor az összes szinkronizálási csoporton belüli végpontok száma nem haladhatja meg a 30-at. Ha egy adatbázis több szinkronizálási csoporthoz tartozik, a rendszer több végpontnak számít, nem egy.

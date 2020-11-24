@@ -62,10 +62,12 @@
           href: /office365/troubleshoot/administration/duplicate-attributes-prevent-dirsync
 - name: Referencia
   items:
-    - name: Az Azure AD Connect felhőalapú jogosultságkiosztási ügynök verzióelőzményei
-      href: ../app-provisioning/provisioning-agent-release-version-history.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
+    - name: Az Azure AD Connect felhőalapú szinkronizálási ügynök verzióelőzményei
+      href: reference-version-history.md
     - name: Azure AD Connect felhőalapú jogosultságkiosztás – gyakori kérdések
       href: reference-cloud-provisioning-faq.md
+    - name: AADCloudSyncTools PowerShell-modul
+      href: reference-powershell.md
     - name: Szinkronizált attribútumok
       href: ../hybrid/reference-connect-sync-attributes-synchronized.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
     - name: Alapszintű Active Directory és Azure AD-környezet

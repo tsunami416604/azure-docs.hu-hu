@@ -69,8 +69,12 @@
       href: ../../automation/security-baseline.md
     - name: Az Azure Advisor biztonsági alapkonfigurációja
       href: ../../advisor/security-baseline.md
+    - name: Az Azure App Configuration biztonsági alapkonfigurációja
+      href: ../../azure-app-configuration/security-baseline.md
     - name: Az Azure Backup biztonsági alapkonfigurációja
       href: ../../backup/security-baseline.md
+    - name: Az Azure Bastion biztonsági alapkonfigurációja
+      href: ../../bastion/security-baseline.md
     - name: Az Azure Cache for Redis biztonsági alapkonfigurációja
       href: ../../azure-cache-for-redis/security-baseline.md
     - name: Az Azure Cognitive Search biztonsági alapkonfigurációja
@@ -201,5 +205,7 @@
       href: ../../virtual-machines/windows/security-baseline.md
     - name: A virtuális hálózatok biztonsági alapkonfigurációja
       href: ../../virtual-network/security-baseline.md
+    - name: A virtuális hálózatok NAT-biztonsági alapkonfigurációja
+      href: ../../virtual-network/nat-security-baseline.md
     - name: A VPN Gateway biztonsági alapkonfigurációja
       href: ../../vpn-gateway/security-baseline.md

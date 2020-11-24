@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/19/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 24e3841abc9c397ab307e55405bdcc208815570e
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 6864502a9d338a786e1e77dbf9888a7818bb94e9
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444163"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95748648"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Webes API-kat meghívó Daemon-alkalmazás – kód konfigurálása
 
@@ -26,7 +26,7 @@ Megtudhatja, hogyan konfigurálhatja a webes API-kat meghívó Daemon-alkalmazá
 
 Ezek a Microsoft-kódtárak támogatják a Daemon-alkalmazásokat:
 
-  MSAL-könyvtár | Description
+  MSAL-könyvtár | Leírás
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | A .NET-keretrendszer és a .NET Core platform támogatott a Daemon-alkalmazások létrehozásához. (A UWP, a Xamarin. iOS és az Xamarin. Android nem támogatott, mert ezek a platformok nyilvános ügyfélalkalmazások létrehozásához használatosak.)
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Démon-alkalmazások támogatása a Pythonban.
@@ -36,9 +36,9 @@ Ezek a Microsoft-kódtárak támogatják a Daemon-alkalmazásokat:
 
 A Daemon-alkalmazások a delegált engedélyek helyett alkalmazás-engedélyeket használnak. Ezért a támogatott fióktípus nem lehet fiók bármilyen szervezeti címtárban vagy személyes Microsoft-fiók (például Skype, Xbox, Outlook.com). Nincs olyan bérlői rendszergazda, aki beleegyezik a Microsoft személyes fiókjához tartozó Daemon-alkalmazásba. A szervezetem vagy a fiókjaim *fiókjait* *minden szervezetnél* ki kell választania.
 
-Így az alkalmazás konfigurációjában megadott szolgáltatónak Bérlőnek kell lennie (a bérlő AZONOSÍTÓját vagy a szervezethez társított tartománynevet kell megadnia).
+Az alkalmazás konfigurációjában megadott szolgáltatónak Bérlőnek kell lennie (a bérlő AZONOSÍTÓját vagy a szervezethez társított tartománynevet kell megadnia).
 
-Ha Ön ISV, és szeretne biztosítani egy több-bérlős eszközt, használhatja a következőt: `organizations` . Ne feledje azonban, hogy az ügyfeleket is meg kell magyaráznia, hogy hogyan adhat meg rendszergazdai jóváhagyást. Részletekért lásd: a teljes bérlő belefoglalásának [kérelmezése](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant). A MSAL-ben jelenleg is van korlátozás: `organizations` csak akkor engedélyezett, ha az ügyfél hitelesítő adatai egy alkalmazás titkos kulcsa (nem tanúsítvány).
+Még ha több-bérlős eszközt is szeretne biztosítani, használja a bérlői azonosítót vagy a tartománynevet, **ne** `common` vagy ezzel a `organizations` folyamattal, mert a szolgáltatás nem tudja megbízhatóan kikövetkeztetni, hogy melyik bérlőt kell használni.
 
 ## <a name="configure-and-instantiate-the-application"></a>Az alkalmazás konfigurálása és példányának beállítása
 
@@ -348,7 +348,7 @@ ConfidentialClientApplication cca =
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 

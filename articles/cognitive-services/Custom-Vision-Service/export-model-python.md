@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: ee9f49463e8e6749d29c810afaf7337cc99a98e8
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: a47475ad55c5e6262dc8ba1a384d89b9721fd2e9
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616042"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95736425"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>Oktatóanyag: TensorFlow-modell futtatása Python nyelven
 
@@ -34,7 +34,7 @@ Az oktatóanyag használatához a következőket kell tennie:
 
 Ezután telepítenie kell a következő csomagokat:
 
-```
+```bash
 pip install tensorflow
 pip install pillow
 pip install numpy
@@ -43,7 +43,7 @@ pip install opencv-python
 
 ## <a name="load-your-model-and-tags"></a>A modell és a címkék betöltése
 
-A letöltött zip-fájl egy model.pb és egy labels.txt fájlt tartalmaz. Ezek a fájlok a betanított modellt és a besorolási címkéket jelölik. Első lépésként töltse be a modellt a projektbe.
+A letöltött. zip fájl egy _Model. PB_ és egy _labels.txt_ fájlt tartalmaz. Ezek a fájlok a betanított modellt és a besorolási címkéket jelölik. Első lépésként töltse be a modellt a projektbe. Adja hozzá a következő kódot egy új Python-parancsfájlhoz.
 
 ```Python
 import tensorflow as tf
@@ -126,6 +126,8 @@ augmented_image = crop_center(augmented_image, network_input_size, network_input
 
 ```
 
+### <a name="add-helper-functions"></a>Segítő függvények hozzáadása
+
 A fenti lépések az alábbi segítő függvényeket használják:
 
 ```Python
@@ -191,7 +193,7 @@ with tf.compat.v1.Session() as sess:
         exit(-1)
 ```
 
-## <a name="view-the-results"></a>Az eredmények megtekintése
+## <a name="display-the-results"></a>Az eredmények megjelenítése
 
 A képtenzor modellen történő átfuttatásának eredményeit ezután ismét meg kell feleltetni a címkéknek.
 
@@ -209,7 +211,7 @@ A képtenzor modellen történő átfuttatásának eredményeit ezután ismét m
         label_index += 1
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Következő lépésként megtudhatja, hogyan csomagolhatja be a modellt egy mobil alkalmazásba:
 * [Az exportált TensorFlow-modell használata Android-alkalmazásban](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)

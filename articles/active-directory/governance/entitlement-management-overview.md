@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 09/30/2020
+ms.date: 11/23/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: ecc25af19694c0befdd24b041807e2067db4f13b
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 163947268d79a0297eef3f3f6e97187a0aef6994
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886940"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95738142"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Mi az az Azure AD-jogosultságkezelés?
 
@@ -144,10 +144,10 @@ A speciális felhők, például az Azure Germany és az Azure China 21Vianet jel
 Győződjön meg arról, hogy a címtár legalább annyi prémium szintű Azure AD P2-licenctel rendelkezik, mint a következők:
 
 - Azok a felhasználók **, akik hozzáférési csomagot igényelhetnek** .
-- Egy hozzáférési csomagot <u>kérő</u> tag és vendég felhasználók.
-- Egy hozzáférési csomagra vonatkozó <u>kérelmeket jóváhagyó</u> tagok és vendég felhasználók.
+- Azok a felhasználók, akik hozzáférési csomagot <u>kérnek</u> .
+- A hozzáférési csomagra vonatkozó <u>kérelmeket jóváhagyó</u> tag felhasználók.
 - Azok a felhasználók, akik egy hozzáférési csomag <u>hozzárendeléseit vizsgálják felül</u> . 
-- Azon tagok és vendég felhasználók, akik <u>közvetlen hozzárendeléssel</u> rendelkeznek egy hozzáférési csomaghoz.
+- Azok a felhasználók, akik <u>közvetlen hozzárendeléssel</u> rendelkeznek egy hozzáférési csomaghoz.
 
 A vendég felhasználói számára a licencelési igények a használt [licencelési modelltől](../external-identities/external-identities-pricing.md) függenek. Az alábbi vendég felhasználói tevékenységek azonban prémium szintű Azure AD P2-használatnak tekintendők:
 - A hozzáférési csomagot <u>kérő</u> vendég felhasználók. 

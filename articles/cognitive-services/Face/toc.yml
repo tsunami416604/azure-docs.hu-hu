@@ -71,6 +71,16 @@
           href: Face-API-How-to-Topics/deploy-face-container-on-container-instances.md
         - name: Cognitive Services-tárolók – dokumentáció
           href: ../containers/index.yml
+- name: Forgatókönyvek részletes ismertetése
+  items:
+    - name: Arcadatok alapján történő beléptetés
+      items:
+        - name: Áttekintés
+          href: enrollment-overview.md
+        - name: Útmutatók
+          items:
+            - name: Beléptetési alkalmazás buildelése a Reacttel
+              href: build-enrollment-app.md
 - name: Referencia
   items:
     - name: Face API
@@ -85,7 +95,7 @@
           href: /java/api/overview/azure/cognitiveservices/client/faceapi?view=azure-java-stable
         - name: Node.js
           href: /javascript/api/@azure/cognitiveservices-face
-        - name: Indítás
+        - name: Go
           href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face'
 - name: További források
   items:

@@ -17,12 +17,12 @@ ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: 3f52b8d4e56ec854f93940ea77f09c3dff1d362e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 423a879889402d5d3df70a7fadae6451c8418238
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096002"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95743157"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Mik azok az Azure AD-hozzáférési felülvizsgálatok?
 
@@ -74,10 +74,18 @@ Attól függően, hogy mit szeretne áttekinteni, az Azure AD hozzáférési fel
 
 A címtár legalább annyi prémium szintű Azure AD P2-licencet igényel, mint a következő feladatokat végző alkalmazottak száma:
 
-- Felülvizsgáló hozzárendelt tagok és vendég felhasználók
-- Önellenőrzést végző tagok és vendég felhasználók
-- Hozzáférési felülvizsgálatot végző tulajdonosok csoportosítása
-- Hozzáférési felülvizsgálatot végző alkalmazások tulajdonosai
+-   Azok a felhasználók, akik felülvizsgálók vannak hozzárendelve
+-   Az önellenőrzést végző tagok felhasználói
+-   A tagok a hozzáférési felülvizsgálatot végző csoport tulajdonosai
+-   A felhasználók mint a hozzáférési felülvizsgálatot végző alkalmazások tulajdonosai
+
+A vendég felhasználói számára a licencelési igények a használt licencelési modelltől függenek. Az alábbi vendég felhasználói tevékenységek azonban prémium szintű Azure AD P2-használatnak tekintendők:
+
+-   Felülvizsgáló hozzárendelt vendég felhasználók
+-   Önellenőrzést végző vendég felhasználók
+-   Hozzáférési felülvizsgálatot végző csoport tulajdonosai
+-   A vendég felhasználói mint a hozzáférési felülvizsgálatot végző alkalmazások tulajdonosai
+
 
 Prémium szintű Azure AD P2-licencek **nem** szükségesek a globális rendszergazdai vagy felhasználói rendszergazdai szerepkörrel rendelkező felhasználók számára, akik hozzáférési felülvizsgálatokat állítanak be, konfigurálják a beállításokat, vagy alkalmazhatják a döntéseket a felülvizsgálatok alapján.
 

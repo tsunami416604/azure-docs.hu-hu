@@ -3,12 +3,12 @@ title: AMQP 1,0 Azure Service Bus és Event Hubs protokoll útmutatójában | Mi
 description: A Azure Service Bus és Event Hubs AMQP 1,0-es kifejezésekre és leírására vonatkozó protokoll-útmutató
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 32e71211ed1574cade0567f7944b154eea062b24
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: e001327c2c7da08cb9a3552f97fc9a7d8b7921a2
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95396875"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95736714"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1,0 Azure Service Bus és Event Hubs protokoll útmutatója
 
@@ -42,7 +42,7 @@ A AMQP 1,0 protokollt úgy tervezték, hogy kiterjeszthető legyen, és további
 
 Ez a szakasz a AMQP 1,0 alapszintű használatát ismerteti Azure Service Bus, amely magában foglalja a kapcsolatok, a munkamenetek és a hivatkozások létrehozását, valamint az üzenetek átvitelét Service Bus entitásokból, például várólistákból, témakörökből és előfizetésből.
 
-A leghitelesebb forrás, amelyből megismerheti, hogy a AMQP hogyan működik a AMQP 1,0 specifikációban, de a specifikációt a megvalósítás pontos útmutatója, és nem a protokoll tanítása érdekében írták. Ez a szakasz az AMQP 1,0-et használó Service Bus használatának leírásához szükséges nagy terminológia bevezetését ismerteti. A AMQP átfogóbb bevezetéséhez, valamint a AMQP 1,0 szélesebb körű megvitatására tekintse át [ezt a videó tanfolyamot][this video course].
+A leghitelesebb forrás, amelyből megismerheti, hogy a AMQP hogyan működik a [AMQP 1,0 specifikációban](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html), de a specifikációt a megvalósítás pontos útmutatója, és nem a protokoll tanítása érdekében írták. Ez a szakasz az AMQP 1,0-et használó Service Bus használatának leírásához szükséges nagy terminológia bevezetését ismerteti. A AMQP átfogóbb bevezetéséhez, valamint a AMQP 1,0 szélesebb körű megvitatására tekintse át [ezt a videó tanfolyamot][this video course].
 
 ### <a name="connections-and-sessions"></a>Kapcsolatok és munkamenetek
 
@@ -67,7 +67,7 @@ A munkamenetek ablakos folyamat-ellenőrzési modellel rendelkeznek; a munkamene
 
 Ez az ablak alapú modell nagyjából hasonlít az ablakos folyamatok vezérlésének TCP-fogalmára, de a szoftvercsatornán belüli munkamenet szintjén. A protokoll azon koncepciója, amely lehetővé teszi több egyidejű munkamenet használatát, így a magas prioritású forgalmat a korábbi, az országúti expressz sávban, például a normál forgalomnál lehet kirohanni.
 
-Azure Service Bus jelenleg pontosan egy munkamenetet használ az egyes kapcsolatokhoz. A Service Bus maximális mérete 262 144 bájt (256-K bájt) Service Bus standard és Event Hubs. A Service Bus Premium esetében 1 048 576 (1 MB). A Service Bus nem határoz meg egy adott munkamenet-szintű szabályozási időszakot, de a kapcsolati szintű folyamatvezérlés részeként rendszeresen alaphelyzetbe állítja az ablakot (lásd [a következő szakaszt](#links)).
+Azure Service Bus jelenleg pontosan egy munkamenetet használ az egyes kapcsolatokhoz. A Service Bus maximális mérete 262 144 bájt (256-K bájt) Service Bus standard. 1 048 576 (1 MB) Service Bus prémium és Event Hubs. A Service Bus nem határoz meg egy adott munkamenet-szintű szabályozási időszakot, de a kapcsolati szintű folyamatvezérlés részeként rendszeresen alaphelyzetbe állítja az ablakot (lásd [a következő szakaszt](#links)).
 
 A kapcsolatok, a csatornák és a munkamenetek elmúlóak. Ha az alapul szolgáló kapcsolat összeomlik, a kapcsolatok, a TLS-alagút, a SASL engedélyezési környezet, és a munkameneteket újra kell létrehozni.
 
@@ -359,10 +359,10 @@ A kérelem üzenete a következő alkalmazás-tulajdonságokkal rendelkezik:
 
 | Kulcs | Választható | Érték típusa | Érték tartalma |
 | --- | --- | --- | --- |
-| művelet |Nem |sztring |**Put-token** |
-| típus |Nem |sztring |A felhelyezni kívánt jogkivonat típusa. |
-| name |Nem |sztring |A "hallgatóság", amelyre a jogkivonat vonatkozik. |
-| lejárati |Igen |időbélyeg |A jogkivonat lejárati ideje. |
+| művelet |No |sztring |**Put-token** |
+| típus |No |sztring |A felhelyezni kívánt jogkivonat típusa. |
+| name |No |sztring |A "hallgatóság", amelyre a jogkivonat vonatkozik. |
+| lejárati |Yes |időbélyeg |A jogkivonat lejárati ideje. |
 
 A *Name (név* ) tulajdonság azonosítja azt az entitást, amelyhez a token társítva van. Service Bus a várólista elérési útja, vagy témakör/előfizetés. A *Type* tulajdonság azonosítja a jogkivonat típusát:
 
@@ -378,8 +378,8 @@ A válaszüzenet a következő *alkalmazás-tulajdonságok* értékekkel rendelk
 
 | Kulcs | Választható | Érték típusa | Érték tartalma |
 | --- | --- | --- | --- |
-| állapot kódja |Nem |int |HTTP-válasz kódja **[RFC2616]**. |
-| állapot – Leírás |Igen |sztring |Az állapot leírása. |
+| állapot kódja |No |int |HTTP-válasz kódja **[RFC2616]**. |
+| állapot – Leírás |Yes |sztring |Az állapot leírása. |
 
 Az ügyfél többször is meghívhatja a *put-tokent* , illetve az üzenetkezelési infrastruktúra bármely entitására. A jogkivonatok hatóköre az aktuális ügyfél, és az aktuális kapcsolatra van rögzítve, ami azt jelenti, hogy a kiszolgáló eldobja a megőrzött jogkivonatokat, amikor a kapcsolat megszakad.
 

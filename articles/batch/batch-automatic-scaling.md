@@ -2,14 +2,14 @@
 title: Számítási csomópontok automatikus méretezése egy Azure Batch-készletben
 description: A készletben lévő számítási csomópontok számának dinamikus beállításához engedélyezze a Felhőbeli készlet automatikus méretezését.
 ms.topic: how-to
-ms.date: 10/08/2020
+ms.date: 11/23/2020
 ms.custom: H1Hack27Feb2017, fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: 5774acbfc035ab61267dddb31b01b0e82689f690
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 033272f22b98b27c67e9a551bce952368d35a043
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91849792"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95737292"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Automatikus képlet létrehozása a számítási csomópontok méretezéséhez egy batch-készletben
 
@@ -135,6 +135,9 @@ A szolgáltatás által definiált változók értékének beszerzésével a Bat
 > [!TIP]
 > Ezek a csak olvasási szolgáltatás által definiált változók olyan *objektumok* , amelyek különböző módszereket biztosítanak az egyes adatbázisokhoz kapcsolódó adateléréshez. További információ: [Mintaadatok beszerzése](#obtain-sample-data) a cikk későbbi részében.
 
+> [!NOTE]
+> Akkor használja `$RunningTasks` , ha az adott időpontban futó feladatok száma alapján skálázást végez, és `$ActiveTasks` a méretezést a várólistára helyezett feladatok száma alapján hajtja végre.
+
 ## <a name="types"></a>Típusok
 
 Az autoskálázási képletek a következő típusokat támogatják:
@@ -163,7 +166,7 @@ Az autoskálázási képletek a következő típusokat támogatják:
   - TimeInterval_Week
   - TimeInterval_Year
 
-## <a name="operations"></a>Műveletek
+## <a name="operations"></a>Üzemeltetés
 
 Ezek a műveletek az előző szakaszban felsorolt típusoknál engedélyezettek.
 
@@ -188,7 +191,7 @@ Ezek a műveletek az előző szakaszban felsorolt típusoknál engedélyezettek.
 
 Ternáris operátorral () való dupla tesztelés esetén a nem `double ? statement1 : statement2` nulla érték **igaz**, és a nulla **hamis**.
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Függvények
 
 Ezeket az előre definiált **függvényeket** használhatja az autoscale-képletek definiálásához.
 
@@ -214,7 +217,7 @@ Ezeket az előre definiált **függvényeket** használhatja az autoscale-képle
 | idő (karakterlánc dateTime = "") |időbélyeg |Az aktuális idő időbélyegzőjét adja vissza, ha a rendszer nem ad át paramétereket, vagy ha a dateTime karakterlánc időbélyegzője sikeres. A támogatott dateTime formátumok a W3C-DTF és az RFC 1123. |
 | val (doubleVec v, dupla i) |double |A Vector v helyen található elem értékének visszaadása a nulla kezdő indexével. |
 
-Az előző táblázatban leírt függvények némelyike argumentumként is elfogadhatja a listát. A vesszővel tagolt lista a *kettős* és a *doubleVec*bármely kombinációját tartalmazza. Példa:
+Az előző táblázatban leírt függvények némelyike argumentumként is elfogadhatja a listát. A vesszővel tagolt lista a *kettős* és a *doubleVec* bármely kombinációját tartalmazza. Például:
 
 `doubleVecList := ( (double | doubleVec)+(, (double | doubleVec) )* )?`
 
@@ -226,7 +229,7 @@ Képletek definiálásakor az erőforrás és a tevékenység mérőszámait is 
 
 <table>
   <tr>
-    <th>Metrika</th>
+    <th>Metric</th>
     <th>Leírás</th>
   </tr>
   <tr>
@@ -281,7 +284,7 @@ $CPUPercent.GetSample(TimeInterval_Minute * 5)
 
 A következő módszerek használhatók a szolgáltatás által definiált változókra vonatkozó mintaadatok beszerzéséhez.
 
-| Módszer | Leírás |
+| Metódus | Leírás |
 | --- | --- |
 | GetSample() |A `GetSample()` metódus adatmintákból álló vektort ad vissza.<br/><br/>A minta a metrikák adataihoz tartozó 30 másodperc. Más szóval a mintákat 30 másodpercenként szerzi be a rendszer. De ahogy az alábbiakban is látható, a rendszer a mintavétel begyűjtésének és a képletek számára elérhetővé tételének késleltetését jelzi. Így az adott időszakra vonatkozóan nem minden minta lehet egy képlet alapján kiértékelésre.<ul><li>`doubleVec GetSample(double count)`: Meghatározza, hogy a rendszer hány mintát kapjon a legutóbbi összegyűjtött mintákból. `GetSample(1)` az utolsó elérhető mintát adja vissza. A hasonló mérőszámok esetében `$CPUPercent` azonban `GetSample(1)` nem ajánlott használni, mert a minta gyűjtése nem lehetséges. *when* Lehet, hogy a közelmúltban vagy a rendszerproblémák miatt sokkal régebbi lehet. Ilyen esetekben jobb, ha az alább látható időintervallumot használja.<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`: Meghatározza a mintaadatok gyűjtésének időkeretét. Azt is meghatározza, hogy a minták hány százalékát kell elérhetőnek lennie a kért időkeretben. Például a `$CPUPercent.GetSample(TimeInterval_Minute * 10)` 20 mintát kell visszaadnia, ha az elmúlt 10 percben az összes minta megtalálható az `CPUPercent` előzményekben. Ha a korábbi előzmények nem voltak elérhetők, csak 18 mintát ad vissza. Ebben az esetben `$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)` sikertelen lesz, mert a minták csak 90%-a érhető el, de `$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)` sikeres volt.<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`: Az adatgyűjtés időkeretét adja meg a kezdési és befejezési időponttal együtt. A fentiekben leírtaknak megfelelően a rendszer a mintavétel begyűjtése és a képletek elérhetővé válása között eltelt időt vesz igénybe. Ezt a késleltetést a metódus használatakor érdemes figyelembe venni `GetSample` . Lásd `GetSamplePercent` alább. |
 | GetSamplePeriod() |Egy korábbi mintaadatok-készletben szereplő minták időszakát adja vissza. |
@@ -309,7 +312,7 @@ Ehhez használja a következő `GetSample(interval look-back start, interval loo
 $runningTasksSample = $RunningTasks.GetSample(1 * TimeInterval_Minute, 6 * TimeInterval_Minute);
 ```
 
-Ha a fenti sort kiértékeli a Batch, a több mintát ad vissza az értékek vektora. Példa:
+Ha a fenti sort kiértékeli a Batch, a több mintát ad vissza az értékek vektora. Például:
 
 ```
 $runningTasksSample=[1,1,1,1,1,1,1,1,1,1];
@@ -381,7 +384,7 @@ $NodeDeallocationOption = taskcompletion;
 ```
 
 > [!NOTE]
-> Ha úgy dönt, hogy a lehetőséget választja, a képletek karakterláncában is szerepelhetnek megjegyzések és sortörések is.
+> Ha úgy dönt, hogy a lehetőséget választja, a képletek karakterláncában is szerepelhetnek megjegyzések és sortörések is. Azt is vegye figyelembe, hogy a hiányzó pontosvesszők kiértékelési hibákat okozhatnak.
 
 ## <a name="automatic-scaling-interval"></a>Automatikus skálázási időköz
 
@@ -423,7 +426,7 @@ await pool.CommitAsync();
 ```
 
 > [!IMPORTANT]
-> Amikor létrehoz egy autoscale-kompatibilis készletet, ne a _targetDedicatedNodes_ paramétert, vagy a _targetLowPriorityNodes_ paramétert a **CreatePool**hívására állítsa be. Ehelyett a **AutoScaleEnabled** és a **AutoScaleFormula** tulajdonságokat kell megadnia a készleten. Ezen tulajdonságok értékei határozzák meg az egyes csomópontok céljának számát.
+> Amikor létrehoz egy autoscale-kompatibilis készletet, ne a _targetDedicatedNodes_ paramétert, vagy a _targetLowPriorityNodes_ paramétert a **CreatePool** hívására állítsa be. Ehelyett a **AutoScaleEnabled** és a **AutoScaleFormula** tulajdonságokat kell megadnia a készleten. Ezen tulajdonságok értékei határozzák meg az egyes csomópontok céljának számát.
 >
 > Az automatikus méretezést engedélyező készlet (például a [BatchClient. PoolOperations. ResizePoolAsync](/dotnet/api/microsoft.azure.batch.pooloperations.resizepoolasync)) manuális átméretezéséhez először le kell tiltania az automatikus skálázást a készleten, majd át kell méreteznie.
 
@@ -473,7 +476,7 @@ response = batch_service_client.pool.enable_auto_scale(pool_id, auto_scale_formu
 
 ## <a name="enable-autoscaling-on-an-existing-pool"></a>Automatikus skálázás engedélyezése meglévő készleten
 
-Minden batch SDK lehetővé teszi az automatikus skálázást. Példa:
+Minden batch SDK lehetővé teszi az automatikus skálázást. Például:
 
 - [BatchClient. PoolOperations. EnableAutoScaleAsync](/dotnet/api/microsoft.azure.batch.pooloperations.enableautoscaleasync) (Batch .net)
 - [Automatikus skálázás engedélyezése egy készleten](/rest/api/batchservice/enable-automatic-scaling-on-a-pool) (REST API)
@@ -625,7 +628,7 @@ A Batch .NET-ben a [CloudPool. AutoScaleRun](/dotnet/api/microsoft.azure.batch.c
 
 A REST API a [készletre vonatkozó kérés információi](/rest/api/batchservice/get-information-about-a-pool) a készletre vonatkozó információkat adnak vissza, amely magában foglalja a legújabb automatikus skálázási futtatási információkat a [autoScaleRun](/rest/api/batchservice/get-information-about-a-pool) tulajdonságban.
 
-A következő C#-példa a Batch .NET-függvénytárat használja a készlet _myPool_utolsó automatikus skálázási futtatásával kapcsolatos információk nyomtatásához.
+A következő C#-példa a Batch .NET-függvénytárat használja a készlet _myPool_ utolsó automatikus skálázási futtatásával kapcsolatos információk nyomtatásához.
 
 ```csharp
 await Cloud pool = myBatchClient.PoolOperations.GetPoolAsync("myPool");
