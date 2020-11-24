@@ -4,18 +4,18 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: alkohli
-ms.openlocfilehash: 21c19027d21a87e199d74644cfc5c8f3cd52ba4c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1b56cfb85595b8a17dc18f69a0b162d504c04ec
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79128828"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95562416"
 ---
 Az eszköz visszaállításához biztonságosan törölnie kell az eszköz adatlemezén és rendszerindító lemezén található összes adatot. 
 
 A `Reset-HcsAppliance` parancsmag használatával törölje az adatlemezeket és a rendszerindító lemezt, vagy csak az adatlemezeket. A `ClearData` és `BootDisk` kapcsolók lehetővé teszik az adatlemezek és a rendszerindító lemez törlését.
 
-A `BootDisk` kapcsoló törli a rendszerindító lemezt, és használhatatlanná teszi az eszközt. Csak akkor érdemes használni, ha az eszközt vissza kell küldeni a Microsoftnak. További információ: [az eszköz visszaküldése a Microsoftnak](https://docs.microsoft.com/azure/databox-online/data-box-edge-return-device).
+A `BootDisk` kapcsoló törli a rendszerindító lemezt, és használhatatlanná teszi az eszközt. Csak akkor érdemes használni, ha az eszközt vissza kell küldeni a Microsoftnak. További információ: [az eszköz visszaküldése a Microsoftnak](../articles/databox-online/azure-stack-edge-return-device.md).
 
 Ha az eszköz visszaállításához a helyi webes felhasználói felületet használja, csak az adatlemezek biztonságos törlése megy végbe, a rendszerindító lemez pedig érintetlen marad. A rendszerindító lemez tartalmazza az eszköz konfigurációját.
 

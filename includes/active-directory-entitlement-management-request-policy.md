@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: active-directory
 author: msaburnley
 ms.service: active-directory
@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 239fcc1e57cb4bd56a8704f8a840689d44617fcf
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: b7029c5cdd004910caa83425536bbe481e4b01f3
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93029462"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95554252"
 ---
 ## <a name="for-users-in-your-directory"></a>A címtárban lévő felhasználók számára
 
-Kövesse az alábbi lépéseket, ha engedélyezni szeretné a címtárban lévő felhasználók számára a hozzáférési csomag igénylését. A kérelem szabályzatának meghatározásakor megadhat egyéni felhasználókat vagy gyakrabban felhasználói csoportokat. Előfordulhat például, hogy a szervezet már rendelkezik egy csoporttal, például az **összes alkalmazottal** .  Ha ez a csoport hozzá van adva a szabályzatban azon felhasználók számára, akik hozzáférést igényelhetnek, akkor a csoport bármelyik tagja hozzáférhet a hozzáféréshez.
+Kövesse az alábbi lépéseket, ha engedélyezni szeretné a címtárban lévő felhasználók számára a hozzáférési csomag igénylését. A kérelem szabályzatának meghatározásakor megadhat egyéni felhasználókat vagy gyakrabban felhasználói csoportokat. Előfordulhat például, hogy a szervezet már rendelkezik egy csoporttal, például az **összes alkalmazottal**.  Ha ez a csoport hozzá van adva a szabályzatban azon felhasználók számára, akik hozzáférést igényelhetnek, akkor a csoport bármelyik tagja hozzáférhet a hozzáféréshez.
 
 1. A **hozzáférést kérő felhasználók** területen kattintson a **címtárban lévő felhasználók** elemre.
 
@@ -33,7 +33,7 @@ Kövesse az alábbi lépéseket, ha engedélyezni szeretné a címtárban lévő
     | **Minden tag (a vendégek kivételével)** | Akkor válassza ezt a lehetőséget, ha azt szeretné, hogy a címtárban lévő összes tag felhasználó kérje ezt a hozzáférési csomagot. Ez a lehetőség nem tartalmazza a címtárban esetleg meghívott vendég felhasználókat. |
     | **Minden felhasználó (beleértve a vendégeket is)** | Akkor válassza ezt a lehetőséget, ha azt szeretné, hogy a címtár összes tagja és vendég felhasználója hozzáférhessen a hozzáférési csomaghoz. |
 
-    A vendég felhasználók a címtárban az [Azure ad B2B](../articles/active-directory/b2b/what-is-b2b.md)használatával meghívott külső felhasználókra vonatkoznak. A felhasználók és a vendég felhasználók közötti különbségekről a [Mi az alapértelmezett felhasználói engedélyek a Azure Active Directoryban?](../articles/active-directory/fundamentals/users-default-permissions.md)című témakörben talál további információt.
+    A vendég felhasználók a címtárban az [Azure ad B2B](../articles/active-directory/external-identities/what-is-b2b.md)használatával meghívott külső felhasználókra vonatkoznak. A felhasználók és a vendég felhasználók közötti különbségekről a [Mi az alapértelmezett felhasználói engedélyek a Azure Active Directoryban?](../articles/active-directory/fundamentals/users-default-permissions.md)című témakörben talál további információt.
 
 1. Ha **meghatározott felhasználókat és csoportokat adott** meg, kattintson a **felhasználók és csoportok hozzáadása** lehetőségre.
 
@@ -47,10 +47,10 @@ Kövesse az alábbi lépéseket, ha engedélyezni szeretné a címtárban lévő
 
 ## <a name="for-users-not-in-your-directory"></a>A címtárban nem szereplő felhasználók számára
 
- A **címtárban lévő felhasználók** egy másik Azure ad-címtárban vagy-tartományban lévő felhasználókra hivatkoznak. Előfordulhat, hogy ezek a felhasználók még nem voltak meghívva a címtárba. Az Azure AD-címtárakat úgy kell konfigurálni, hogy az **együttműködési korlátozásokban** engedélyezze a meghívásokat. További információkért tekintse meg a [külső B2B-együttműködés engedélyezése és a vendégek meghívására alkalmas személyek kezelése](../articles/active-directory/b2b/delegate-invitations.md)című témakört.
+ A **címtárban lévő felhasználók** egy másik Azure ad-címtárban vagy-tartományban lévő felhasználókra hivatkoznak. Előfordulhat, hogy ezek a felhasználók még nem voltak meghívva a címtárba. Az Azure AD-címtárakat úgy kell konfigurálni, hogy az **együttműködési korlátozásokban** engedélyezze a meghívásokat. További információkért tekintse meg a [külső B2B-együttműködés engedélyezése és a vendégek meghívására alkalmas személyek kezelése](../articles/active-directory/external-identities/delegate-invitations.md)című témakört.
 
 > [!NOTE]
-> Egy vendég felhasználói fiók jön létre egy olyan felhasználó számára, aki még nem szerepel a címtárban, amelynek a kérelmét jóváhagyták vagy automatikusan jóváhagyták. A vendég meghívásra kerül, de nem kap meghívót e-mailben. Ehelyett e-mailt kapnak a hozzáférési csomag hozzárendelésének megérkezése után. Alapértelmezés szerint később, amikor a vendég felhasználó már nem rendelkezik hozzáférési csomagbeli hozzárendelésekkel, mert az utolsó hozzárendelésük lejárt vagy meg lett szakítva, a vendég felhasználói fiók le lesz tiltva a bejelentkezésből, és azt követően törlődik. Ha azt szeretné, hogy a vendég felhasználók határozatlan ideig maradjanak a címtárban, akkor is, ha nem rendelkeznek hozzáférési csomag hozzárendeléseivel, módosíthatja a jogosultsági felügyeleti konfiguráció beállításait. További információ a vendég felhasználói objektumról: [Azure Active Directory B2B együttműködési felhasználó tulajdonságai](../articles/active-directory/b2b/user-properties.md).
+> Egy vendég felhasználói fiók jön létre egy olyan felhasználó számára, aki még nem szerepel a címtárban, amelynek a kérelmét jóváhagyták vagy automatikusan jóváhagyták. A vendég meghívásra kerül, de nem kap meghívót e-mailben. Ehelyett e-mailt kapnak a hozzáférési csomag hozzárendelésének megérkezése után. Alapértelmezés szerint később, amikor a vendég felhasználó már nem rendelkezik hozzáférési csomagbeli hozzárendelésekkel, mert az utolsó hozzárendelésük lejárt vagy meg lett szakítva, a vendég felhasználói fiók le lesz tiltva a bejelentkezésből, és azt követően törlődik. Ha azt szeretné, hogy a vendég felhasználók határozatlan ideig maradjanak a címtárban, akkor is, ha nem rendelkeznek hozzáférési csomag hozzárendeléseivel, módosíthatja a jogosultsági felügyeleti konfiguráció beállításait. További információ a vendég felhasználói objektumról: [Azure Active Directory B2B együttműködési felhasználó tulajdonságai](../articles/active-directory/external-identities/user-properties.md).
 
 Kövesse az alábbi lépéseket, ha engedélyezni szeretné a címtárában lévő felhasználók számára a következő hozzáférési csomag kérését:
 
@@ -81,7 +81,7 @@ Kövesse az alábbi lépéseket, ha engedélyezni szeretné a címtárában lév
 1. Miután kiválasztotta az összes csatlakoztatott szervezetet, kattintson a **kiválasztás** elemre.
 
     > [!NOTE]
-    > A kiválasztott csatlakoztatott szervezetek összes felhasználója ezt a hozzáférési csomagot fogja kérni. Ez magában foglalja az Azure AD-beli felhasználókat a szervezethez társított összes altartományból, kivéve, ha ezeket a tartományokat az Azure B2B engedélyezési vagy megtagadási listája blokkolja. További információ: a [vállalatközi felhasználók meghívásának engedélyezése vagy letiltása adott szervezetekben](../articles/active-directory/b2b/allow-deny-list.md).
+    > A kiválasztott csatlakoztatott szervezetek összes felhasználója ezt a hozzáférési csomagot fogja kérni. Ez magában foglalja az Azure AD-beli felhasználókat a szervezethez társított összes altartományból, kivéve, ha ezeket a tartományokat az Azure B2B engedélyezési vagy megtagadási listája blokkolja. További információ: a [vállalatközi felhasználók meghívásának engedélyezése vagy letiltása adott szervezetekben](../articles/active-directory/external-identities/allow-deny-list.md).
 
 1. Ugorjon a [jóváhagyás](#approval) szakaszra.
 
@@ -129,7 +129,7 @@ A következő lépésekkel adhatja hozzá a jóváhagyókat, miután kiválaszto
 
 ### <a name="single-stage-approval"></a>Egyfázisú jóváhagyás
 
-1. Adja hozzá az **első jóváhagyót** :
+1. Adja hozzá az **első jóváhagyót**:
     
     Ha a házirend úgy van beállítva, hogy a címtárban lévő felhasználók hozzáférését szabályozza, válassza a **felettes jóváhagyóként** lehetőséget. Vagy egy adott felhasználó hozzáadásához kattintson a **Jóváhagyók hozzáadása** lehetőségre, miután kiválasztotta a legördülő menüből a megadott jóváhagyók kiválasztása lehetőséget.
     
@@ -157,7 +157,7 @@ A következő lépésekkel adhatja hozzá a jóváhagyókat, miután kiválaszto
 
 Ha kétlépcsős jóváhagyást választott, hozzá kell adnia egy második jóváhagyót.
 
-1. Adja hozzá a **második jóváhagyót** : 
+1. Adja hozzá a **második jóváhagyót**: 
     
     Ha a felhasználók a címtárban vannak, vegyen fel egy adott felhasználót a második jóváhagyóként. ehhez kattintson a **Jóváhagyók hozzáadása** lehetőségre a megadott jóváhagyók területen.
 
@@ -167,7 +167,7 @@ Ha kétlépcsős jóváhagyást választott, hozzá kell adnia egy második jóv
 
     ![Hozzáférési csomag – kérelmek – a címtáron kívüli felhasználók számára – második jóváhagyó](./media/active-directory-entitlement-management-request-policy/out-directory-second-approver.png) 
 
-1. Itt adhatja meg, hogy hány nap elteltével kell jóváhagyni a második jóváhagyónak a kérést a mezőben a döntés alapján, **hány nap múlva kell meghoznia?** . 
+1. Itt adhatja meg, hogy hány nap elteltével kell jóváhagyni a második jóváhagyónak a kérést a mezőben a döntés alapján, **hány nap múlva kell meghoznia?**. 
 
 1. Állítsa be a jóváhagyó indoklásának megkövetelése **beállítást igen** vagy **nem** értékre.
 
@@ -223,7 +223,7 @@ Ha például az Alice és a Bob, mint az első jóváhagyó (k) szerepel, a Caro
 
     ![Hozzáférési csomag – házirend – honosított szöveg konfigurálása](./media/active-directory-entitlement-management-request-policy/add-localization-question.png)
 
-1. Válassza ki a **Válasz formátumát** , amelyben a kérelmezőknek válaszolniuk kell. A válaszok formátuma a következőkből áll: *rövid szöveg* , *több választási lehetőség* és *hosszú szöveg* .
+1. Válassza ki a **Válasz formátumát** , amelyben a kérelmezőknek válaszolniuk kell. A válaszok formátuma a következőkből áll: *rövid szöveg*, *több választási lehetőség* és *hosszú szöveg*.
  
     ![Hozzáférési csomag – házirend – több választási választ tartalmazó formátum megtekintése és szerkesztése](./media/active-directory-entitlement-management-request-policy/answer-format-view-edit.png)
  

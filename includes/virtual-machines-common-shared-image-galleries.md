@@ -1,17 +1,17 @@
 ---
-title: fájl belefoglalása
+title: fájlbefoglalás
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/14/2020
 ms.author: olayemio
 ms.custom: include file
-ms.openlocfilehash: b17480c1a2a0bd8588289627a51780999e1f311c
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 29cbb2f6a7f0faf91852e520f15b779b3fe229c8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897712"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95561730"
 ---
 A megosztott képkatalógus egy olyan szolgáltatás, amely segít felépíteni a lemezképek körét a szerkezet és a szervezet számára. A megosztott képtárak a következőket biztosítják:
 
@@ -45,7 +45,7 @@ A megosztott képkatalógus funkció több erőforrástípust tartalmaz:
 
 A rendszerkép-definíciók egy adott rendszerkép verzióihoz tartozó logikai Csoportosítások. A rendszerkép definíciója információt tartalmaz arról, hogy a rendszerkép hogyan lett létrehozva, melyik operációs rendszer, illetve a rendszerkép használatával kapcsolatos egyéb információk. A rendszerkép definíciója olyan, mint egy csomag, amely az adott rendszerkép létrehozásával kapcsolatos összes részletre vonatkozik. Nem telepít virtuális gépet lemezkép-definícióból, hanem a definícióból létrehozott lemezkép-verziókból.
 
-Az egyes képdefiníciók három paramétert használnak a **Publisherben** , az **ajánlatban** és az **SKU** -ban. Ezek egy adott rendszerkép-definíció megtalálására szolgálnak. Rendelkezhet egy vagy két, de nem mindhárom értékkel rendelkező képverzióval is.  Íme például három képdefiníció és értékeik:
+Az egyes képdefiníciók három paramétert használnak a **Publisherben**, az **ajánlatban** és az **SKU**-ban. Ezek egy adott rendszerkép-definíció megtalálására szolgálnak. Rendelkezhet egy vagy két, de nem mindhárom értékkel rendelkező képverzióval is.  Íme például három képdefiníció és értékeik:
 
 |Rendszerkép-definíció|Publisher|Ajánlat|SKU|
 |---|---|---|---|
@@ -71,7 +71,7 @@ A következő más paraméterek is megadhatók a képdefinícióban, így könny
 - Címke – címkéket adhat hozzá a rendszerkép definíciójának létrehozásakor. További információ a címkékkel kapcsolatban: [címkék használata az erőforrások rendszerezéséhez](../articles/azure-resource-manager/management/tag-resources.md)
 - Minimális és maximális vCPU és memória-javaslatok – ha a rendszerképnek van vCPU-és memória-javaslata, csatolhatja ezeket az információkat a rendszerkép-definícióhoz.
 - Nem engedélyezett lemezek típusai – a virtuális gép tárolási igényeivel kapcsolatos információkat adhat meg. Ha például a rendszerkép nem szabványos HDD-lemezekhez van kiválasztva, akkor azokat a letiltási listához adja.
-- A Piactéri rendszerképekre vonatkozó vásárlási terv adatai –, `-PurchasePlanPublisher` `-PurchasePlanName` és `-PurchasePlanProduct` . További információ a vásárlási tervekről: [rendszerképek keresése az Azure Marketplace](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage) -en, valamint a [lemezképek létrehozásakor az Azure Marketplace vásárlási terv információi](../articles/virtual-machines/marketplace-images.md).
+- A Piactéri rendszerképekre vonatkozó vásárlási terv adatai –, `-PurchasePlanPublisher` `-PurchasePlanName` és `-PurchasePlanProduct` . További információ a vásárlási tervekről: [rendszerképek keresése az Azure Marketplace](../articles/virtual-machines/windows/cli-ps-findimage.md) -en, valamint a [lemezképek létrehozásakor az Azure Marketplace vásárlási terv információi](../articles/virtual-machines/marketplace-images.md).
 
 
 ## <a name="image-versions"></a>Rendszerkép-verziók
@@ -110,7 +110,7 @@ Az erőforrások megosztott képtárakkal való üzembe helyezéséhez korlátok
 - 10 rendszerkép-verzió replikái, előfizetések régiónként
 - A lemezképhez csatolt minden lemeznek 1 TB-nál kisebbnek vagy azzal egyenlőnek kell lennie
 
-További információ: az [erőforrás-használat korlátainak korlátozása](https://docs.microsoft.com/azure/networking/check-usage-against-limits) példákkal a jelenlegi használat ellenõrzéséhez.
+További információ: az [erőforrás-használat korlátainak korlátozása](../articles/networking/check-usage-against-limits.md) példákkal a jelenlegi használat ellenõrzéséhez.
  
 ## <a name="scaling"></a>Méretezés
 A megosztott képkatalógus segítségével megadhatja, hogy az Azure hány replikát őrizzen meg a képeken. Ez segítséget nyújt a több virtuális gépre kiterjedő üzembe helyezési forgatókönyvekben, mivel a virtuális gépek központi telepítése különböző replikák számára lehetséges, ami csökkenti annak a valószínűségét, hogy egy replika túlterhelése miatt szabályozható a példány-létrehozási feldolgozás.
@@ -128,7 +128,7 @@ Mindig azt javasoljuk, hogy a replikák számát a képméret, a tartalom és az
 
 Az [Azure Zone redundáns tároló (ZRS)](https://azure.microsoft.com/blog/azure-zone-redundant-storage-in-public-preview/) rugalmasságot biztosít a rendelkezésre állási zóna meghibásodása esetén a régióban. A megosztott képkatalógus általános elérhetősége mellett dönthet úgy, hogy a rendszerképeket a ZRS-fiókokban tárolja a Availability Zones régiókban. 
 
-Kiválaszthatja az egyes célcsoportok fiókjának típusát is. Az alapértelmezett Storage-fióktípus Standard_LRS, de az Availability Zones-vel rendelkező régiók esetében Standard_ZRS is választhat. A ZRS regionális elérhetőségét [itt](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs)tekintheti meg.
+Kiválaszthatja az egyes célcsoportok fiókjának típusát is. Az alapértelmezett Storage-fióktípus Standard_LRS, de az Availability Zones-vel rendelkező régiók esetében Standard_ZRS is választhat. A ZRS regionális elérhetőségét [itt](../articles/storage/common/storage-redundancy.md)tekintheti meg.
 
 ![ZRS mutató ábra](./media/shared-image-galleries/zrs.png)
 
@@ -139,7 +139,7 @@ Az a régió, amelyet a megosztott rendszerkép replikál, a rendszer a létreho
 
 ![A képek replikálásának módját bemutató ábra](./media/shared-image-galleries/replication.png)
 
-## <a name="access"></a>Hozzáférés
+## <a name="access"></a>Access
 
 Mivel a megosztott képtára, a képdefiníció és a rendszerkép verziója minden erőforrás, a beépített natív Azure RBAC-vezérlőkkel is megoszthatók. A RBAC használatával ezeket az erőforrásokat megoszthatja más felhasználókkal, egyszerű szolgáltatásokkal és csoportokkal is. Akár a bérlőn kívüli személyekhez is megoszthatja a hozzáférést. Miután egy felhasználó hozzáfér a megosztott lemezkép verziójához, üzembe helyezhet egy virtuális gépet vagy egy virtuálisgép-méretezési készletet.  Itt látható a megosztási mátrix, amely segít megérteni, hogy a felhasználó milyen módon férhet hozzá:
 
@@ -183,11 +183,11 @@ Rendszerkép verziója:
 
 A következő SDK-k támogatják a megosztott képtárak létrehozását:
 
-- [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/virtualmachines/management?view=azure-dotnet)
-- [Java](https://docs.microsoft.com/java/azure/?view=azure-java-stable)
-- [Node.js](https://docs.microsoft.com/javascript/api/@azure/arm-compute)
-- [Python](https://docs.microsoft.com/python/api/overview/azure/virtualmachines?view=azure-python)
-- [Ugrás](https://docs.microsoft.com/azure/go/)
+- [.NET](/dotnet/api/overview/azure/virtualmachines/management?view=azure-dotnet)
+- [Java](/java/azure/?view=azure-java-stable)
+- [Node.js](/javascript/api/@azure/arm-compute)
+- [Python](/python/api/overview/azure/virtualmachines?view=azure-python)
+- [Ugrás](/azure/go/)
 
 ## <a name="templates"></a>Sablonok
 
@@ -244,8 +244,8 @@ Igen. A lemezképek típusain alapuló 3 forgatókönyv van.
 
  3. forgatókönyv: Ha a helyi fájlrendszerben virtuális merevlemezt használ, fel kell töltenie a virtuális merevlemezt egy felügyelt rendszerképbe, majd a rendszerkép-definíciót és a rendszerkép verzióját is létrehozhatja belőle.
 
-- Ha a VHD egy Windows rendszerű virtuális gép, tekintse meg [a virtuális merevlemez feltöltése](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)című témakört.
-- Ha a virtuális merevlemez Linux rendszerű virtuális gépen van, lásd: [virtuális merevlemez feltöltése](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)
+- Ha a VHD egy Windows rendszerű virtuális gép, tekintse meg [a virtuális merevlemez feltöltése](../articles/virtual-machines/windows/upload-generalized-managed.md)című témakört.
+- Ha a virtuális merevlemez Linux rendszerű virtuális gépen van, lásd: [virtuális merevlemez feltöltése](../articles/virtual-machines/linux/upload-vhd.md#option-1-upload-a-vhd)
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>Létrehozhatok lemezkép-verziót egy speciális lemezről?
 
@@ -310,4 +310,4 @@ A virtuális gépek és a virtuálisgép-méretezési csoport rendszerképeket h
 
 ### <a name="can-i-update-my-virtual-machine-scale-set-created-using-managed-image-to-use-shared-image-gallery-images"></a>Frissíthetem a felügyelt lemezkép használatával létrehozott virtuálisgép-méretezési csoportját a megosztott képgyűjteményi rendszerképek használatához?
 
-Igen, frissítheti a méretezési csoport képhivatkozását egy felügyelt lemezképből egy megosztott lemezkép-katalógusba, ha az operációs rendszer típusa, a Hyper-V generációja és az adatlemez elrendezése megegyezik a lemezképek között. 
+Igen, frissítheti a méretezési csoport képhivatkozását egy felügyelt lemezképből egy megosztott lemezkép-katalógusba, ha az operációs rendszer típusa, a Hyper-V generációja és az adatlemez elrendezése megegyezik a lemezképek között.

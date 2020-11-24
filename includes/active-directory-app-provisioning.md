@@ -1,19 +1,18 @@
 ---
-ms.openlocfilehash: 475a468977a976e2e7399c14df9329b31446d404
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: c400856546142353a7294a03fce6bbff1c258cc0
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135365"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95556272"
 ---
-
 Azure Active Directory (Azure AD) esetében az **alkalmazás üzembe** helyezésének kifejezése arra a felhasználói identitások és szerepkörök automatikus létrehozására utal, amelyekhez [SaaS](https://azure.microsoft.com/overview/what-is-saas/)a felhasználóknak hozzá kell férniük. A felhasználói identitások létrehozása mellett az automatikus kiépítés a felhasználói identitások karbantartását és eltávolítását is magában foglalja az állapot vagy a szerepkörök módosításakor. Gyakori forgatókönyvek például az Azure AD-felhasználók üzembe helyezése olyan alkalmazásokban, mint a [Dropbox](../articles/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial.md), a [Salesforce](../articles/active-directory/saas-apps/salesforce-provisioning-tutorial.md), a [ServiceNow](../articles/active-directory/saas-apps/servicenow-provisioning-tutorial.md)és még sok más.
 
 ![Kiépítés – áttekintés diagram](./media/active-directory-app-provisioning/provisioning-overview.png)
 
 Ez a funkció lehetővé teszi a következőket:
 
-- A **kiépítés automatizálása** : automatikusan hozzon létre új fiókokat a megfelelő rendszerekben az új személyekhez, amikor csatlakoznak a csapathoz vagy szervezethez.
+- A **kiépítés automatizálása**: automatikusan hozzon létre új fiókokat a megfelelő rendszerekben az új személyekhez, amikor csatlakoznak a csapathoz vagy szervezethez.
 - **Kiépítés automatizálása:** Automatikusan inaktiválja a fiókokat a megfelelő rendszerekben, amikor a felhasználók elhagyják a csapatot vagy a szervezetet.
 - **Az adatszinkronizálás a rendszerek között:** Győződjön meg arról, hogy az alkalmazásokban és rendszerekben lévő identitások naprakészek maradnak a címtár vagy az emberi erőforrások rendszerének változásai alapján.
 - **Csoportok kiépítése:** Csoportok kiépítése az azokat támogató alkalmazásokba.
@@ -42,13 +41,13 @@ Az Azure AD-felhasználók üzembe helyezése segíthet a problémák megoldás�
 
 Az Azure AD számos népszerű SaaS-alkalmazás és emberi erőforrásrendszer előre integrált támogatását, valamint általános támogatást nyújt a [SCIM 2,0 standard](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)részét képező alkalmazások számára.
 
-* **Előre integrált alkalmazások (Gallery SaaS-alkalmazások)** . Megtalálhatja az összes olyan alkalmazást, amelyhez az Azure AD támogatja a [felhasználó által kiépített alkalmazás-oktatóanyagokat](../articles/active-directory/saas-apps/tutorial-list.md)tartalmazó, előre integrált létesítési összekötőt. A katalógusban felsorolt előre integrált alkalmazások általában a SCIM 2,0-alapú felhasználói felügyeleti API-kat használják a kiépítés számára. 
+* **Előre integrált alkalmazások (Gallery SaaS-alkalmazások)**. Megtalálhatja az összes olyan alkalmazást, amelyhez az Azure AD támogatja a [felhasználó által kiépített alkalmazás-oktatóanyagokat](../articles/active-directory/saas-apps/tutorial-list.md)tartalmazó, előre integrált létesítési összekötőt. A katalógusban felsorolt előre integrált alkalmazások általában a SCIM 2,0-alapú felhasználói felügyeleti API-kat használják a kiépítés számára. 
 
    ![Salesforce embléma](./media/active-directory-app-provisioning/gallery-app-logos.png)
 
-   Ha új alkalmazást szeretne igényelni az üzembe helyezéshez, [kérheti, hogy az alkalmazás integrálva legyen](../articles/active-directory/azuread-dev/howto-app-gallery-listing.md)az alkalmazás-galériával. A felhasználó kiépítési kérelméhez az alkalmazásnak SCIM-kompatibilis végponttal kell rendelkeznie. Kérje meg, hogy az alkalmazás gyártója kövesse a SCIM standardot, így gyorsan üzembe helyezhetjük az alkalmazást a platformon.
+   Ha új alkalmazást szeretne igényelni az üzembe helyezéshez, [kérheti, hogy az alkalmazás integrálva legyen](../articles/active-directory/develop/v2-howto-app-gallery-listing.md)az alkalmazás-galériával. A felhasználó kiépítési kérelméhez az alkalmazásnak SCIM-kompatibilis végponttal kell rendelkeznie. Kérje meg, hogy az alkalmazás gyártója kövesse a SCIM standardot, így gyorsan üzembe helyezhetjük az alkalmazást a platformon.
 
-* **Az SCIM 2,0-et támogató alkalmazások** . Az SCIM 2,0-alapú felhasználói felügyeleti API-kat megvalósító alkalmazások általános összekapcsolásával kapcsolatos információkért lásd: [scim-végpont létrehozása és a felhasználók üzembe](../articles/active-directory/app-provisioning/use-scim-to-provision-users-and-groups.md)helyezésének konfigurálása.
+* **Az SCIM 2,0-et támogató alkalmazások**. Az SCIM 2,0-alapú felhasználói felügyeleti API-kat megvalósító alkalmazások általános összekapcsolásával kapcsolatos információkért lásd: [scim-végpont létrehozása és a felhasználók üzembe](../articles/active-directory/app-provisioning/use-scim-to-provision-users-and-groups.md)helyezésének konfigurálása.
 
 ## <a name="what-is-system-for-cross-domain-identity-management-scim"></a>Mi a rendszer a tartományok közötti Identitáskezelés kezelésére (SCIM)?
 
@@ -66,7 +65,7 @@ Az Azure AD-katalógusban található alkalmazások támogatják a két üzembe 
 
 * Az **automatikus** beállítás azt jelenti, hogy az alkalmazáshoz egy Azure ad-létesítési összekötő lett kifejlesztve. Kövesse az alkalmazás üzembe helyezésének beállítására vonatkozó telepítési oktatóanyagot. Az alkalmazás-oktatóanyagok az [SaaS-alkalmazások Azure Active Directory használatával történő integrálását ismertető oktatóanyagban](../articles/active-directory/saas-apps/tutorial-list.md)találhatók.
 
-Az Azure AD-katalógusban az automatikus kiépítés támogatására szolgáló alkalmazásokat **kiépítési** ikon jelöli. Váltson az új katalógus előzetes verziójára, és tekintse meg ezeket az ikonokat (az **alkalmazás hozzáadása lap** tetején található szalagcímben, majd válassza ki azt a hivatkozást, amely az **új és továbbfejlesztett alkalmazás-gyűjtemény kipróbálásához kattintson ide** ).
+Az Azure AD-katalógusban az automatikus kiépítés támogatására szolgáló alkalmazásokat **kiépítési** ikon jelöli. Váltson az új katalógus előzetes verziójára, és tekintse meg ezeket az ikonokat (az **alkalmazás hozzáadása lap** tetején található szalagcímben, majd válassza ki azt a hivatkozást, amely az **új és továbbfejlesztett alkalmazás-gyűjtemény kipróbálásához kattintson ide**).
 
 ![Kiépítési ikon az alkalmazás-gyűjteményben](./media/active-directory-app-provisioning/browse-gallery.png)
 

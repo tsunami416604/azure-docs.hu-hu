@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 01/28/2019
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: 5ebbac39c8850737ea6f9ef333e45d305a520655
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1327ac49920af353d6adbbe592ab4189417e60e8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79461214"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95561873"
 ---
 ## <a name="use-cli-shell"></a>A CLI-rendszerhéj használata
 
-A CLI-parancsok végrehajtásához a [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) használata javasolt. A **Cloud Shell** egy ingyenes, interaktív felület, amelyet a cikkben szereplő lépések futtatására használhat. A gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak a Cloud Shellben a fiókjával történő használathoz. Rugalmasságot nyújt a munkamódszeréhez leginkább illő héjfelület kiválasztásának lehetőségével. Linux-felhasználók választhatják a Bash-felületet, míg a Windows-felhasználók a PowerShellt részesíthetik előnyben.
+A CLI-parancsok végrehajtásához a [Azure Cloud Shell](../articles/cloud-shell/overview.md?view=azure-cli-latest) használata javasolt. A **Cloud Shell** egy ingyenes, interaktív felület, amelyet a cikkben szereplő lépések futtatására használhat. A gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak a Cloud Shellben a fiókjával történő használathoz. Rugalmasságot nyújt a munkamódszeréhez leginkább illő héjfelület kiválasztásának lehetőségével. Linux-felhasználók választhatják a Bash-felületet, míg a Windows-felhasználók a PowerShellt részesíthetik előnyben.
 
-A CLI-t helyileg is telepítheti. A platformra vonatkozó utasításokért lásd: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) .
+A CLI-t helyileg is telepítheti. A platformra vonatkozó utasításokért lásd: [Az Azure CLI telepítése](/cli/azure/install-azure-cli) .
 
 ### <a name="sign-in"></a>Bejelentkezés
 
@@ -29,11 +29,11 @@ Ha a CLI megnyithatja az alapértelmezett böngészőt, akkor megnyitja, és bet
 
 ### <a name="specify-location-of-files"></a>Fájlok helyének meghatározása
 
-Számos Media Services CLI-parancs lehetővé teszi, hogy egy paramétert egy fájlnévvel adjon át. Ha **Cloud Shell**használ, feltöltheti a fájlt a clouddrive (a bash vagy a PowerShell használatával). 
+Számos Media Services CLI-parancs lehetővé teszi, hogy egy paramétert egy fájlnévvel adjon át. Ha **Cloud Shell** használ, feltöltheti a fájlt a clouddrive (a bash vagy a PowerShell használatával). 
 
 ![Fájlok feltöltése]
 
-Akár helyi CLI-t, akár **Cloud Shell**használ, meg kell adnia a fájl elérési útját az Ön által használt operációs rendszer vagy Cloud shell (bash vagy PowerShell) alapján. Néhány példa:
+Akár helyi CLI-t, akár **Cloud Shell** használ, meg kell adnia a fájl elérési útját az Ön által használt operációs rendszer vagy Cloud shell (bash vagy PowerShell) alapján. Néhány példa:
 
 A fájl relatív elérési útja (minden operációs rendszer)
 

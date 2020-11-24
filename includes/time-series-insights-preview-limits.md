@@ -9,16 +9,16 @@ author: deepakpalled
 ms.author: dpalled
 manager: diviso
 ms.custom: include file
-ms.openlocfilehash: 5ec1f71d13d5d2fb3af86c1c63d5e61ce13d2c82
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: e7b5dfe9380612d56e591c3f619dfcb8582f8dee
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553239"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95554257"
 ---
 ### <a name="property-limits"></a>Tulajdonságok korlátai
 
-Azure Time Series Insights a tulajdonságok korlátai a meleg tárolás érdekében 1 000-ra növekedtek, és nem vonatkoznak a hűtőházi tárolásra vonatkozó tulajdonságértékek. A megadott esemény tulajdonságai a megfelelő JSON-, CSV-és diagram-oszlopokkal rendelkeznek, amelyeket megtekintheti a [Azure Time Series Insights Gen2 Explorerben](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart).
+Azure Time Series Insights a tulajdonságok korlátai a meleg tárolás érdekében 1 000-ra növekedtek, és nem vonatkoznak a hűtőházi tárolásra vonatkozó tulajdonságértékek. A megadott esemény tulajdonságai a megfelelő JSON-, CSV-és diagram-oszlopokkal rendelkeznek, amelyeket megtekintheti a [Azure Time Series Insights Gen2 Explorerben](../articles/time-series-insights/quickstart-explore-tsi.md).
 
 | Termékváltozat | Maximális tulajdonságok |
 | --- | --- |
@@ -36,4 +36,4 @@ Azure Time Series Insights a tulajdonságok korlátai a meleg tárolás érdeké
 
 ### <a name="api-limits"></a>API-korlátok
 
-A [REST API](https://docs.microsoft.com/rest/api/time-series-insights/preview#limits-1)dokumentációjában a Azure Time Series Insights Gen2 REST API korlátai vannak megadva.
+A [REST API](/rest/api/time-series-insights/preview#limits-1)dokumentációjában a Azure Time Series Insights Gen2 REST API korlátai vannak megadva.

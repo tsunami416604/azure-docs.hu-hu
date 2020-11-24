@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/01/2018
 ms.author: lizross
 ms.custom: include file
-ms.openlocfilehash: 968ebe89de65de5fa49e56a90a1bc92109a16861
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5bcc770c730b53a9523415a4978b439ac0079410
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75613761"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95554060"
 ---
 >[!Note]
->Ha szeretne többet megtudni a személyes adatok megtekintéséről vagy törléséről, olvassa el a Microsoft útmutatását a [Windows: GDPR-vonatkozású adattulajdonosi kérelmek](https://docs.microsoft.com/microsoft-365/compliance/gdpr-data-subject-requests) című weblapon. Ha a GDPR-ral kapcsolatos általános információkra kíváncsi, tekintse meg a [Szolgáltatásmegbízhatósági portál GDPR szakaszát](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).
+>Ha szeretne többet megtudni a személyes adatok megtekintéséről vagy törléséről, olvassa el a Microsoft útmutatását a [Windows: GDPR-vonatkozású adattulajdonosi kérelmek](/microsoft-365/compliance/gdpr-data-subject-requests) című weblapon. Ha a GDPR-ral kapcsolatos általános információkra kíváncsi, tekintse meg a [Szolgáltatásmegbízhatósági portál GDPR szakaszát](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).

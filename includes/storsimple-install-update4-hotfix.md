@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 89ad3dfffa82f062ef8bc808da19440adfa32f05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc42c22579346c272ee5a6f41147e6b5b09643ba
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86050323"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95562002"
 ---
 #### <a name="to-download-hotfixes"></a>Gyorsjavítások letöltése
 
@@ -26,7 +26,7 @@ Hajtsa végre a következő lépéseket a szoftverfrissítés a Microsoft Update
    
     ![Keresés a katalógusban](./media/storsimple-install-update2-hotfix/HCS_SearchCatalog1-include.png)
 
-4. Kattintson a **Letöltés**gombra. Adja meg vagy **tallózással** válassza ki a helyet, ahová a fájlokat le szeretné tölteni. Kattintson a fájlok a megadott helyre és mappára való letöltéséhez. A mappa átmásolható egy, az eszközről elérhető hálózati megosztásra is.
+4. Kattintson a **Letöltés** gombra. Adja meg vagy **tallózással** válassza ki a helyet, ahová a fájlokat le szeretné tölteni. Kattintson a fájlok a megadott helyre és mappára való letöltéséhez. A mappa átmásolható egy, az eszközről elérhető hálózati megosztásra is.
 5. Keresse meg a fenti táblázatban felsorolt további gyorsjavításokat (**4011841**), majd töltse le a megfelelő fájlokat az előző táblázatban látható módon az adott mappákba.
 
 > [!NOTE]
@@ -101,7 +101,7 @@ A normál módú gyorsjavítások telepítéséhez és ellenőrzéséhez hajtsa 
    * `FriendlySoftwareVersion: StorSimple 8000 Series Update 4.0`
    * `HcsSoftwareVersion: 6.3.9600.17820`
    
-     Ha a verziószám nem változik a frissítés telepítését követően, ez azt jelzi, hogy a gyorsjavítás nem lett telepítve. Ha ezt látja, további segítségért forduljon a [Microsoft támogatási szolgálatához](../articles/storsimple/storsimple-contact-microsoft-support.md).
+     Ha a verziószám nem változik a frissítés telepítését követően, ez azt jelzi, hogy a gyorsjavítás nem lett telepítve. Ha ezt látja, további segítségért forduljon a [Microsoft támogatási szolgálatához](../articles/storsimple/storsimple-8000-contact-microsoft-support.md).
      
      > [!IMPORTANT]
      > A következő frissítés alkalmazása előtt újra kell indítania az aktív vezérlőt a `Restart-HcsController` parancsmagon keresztül.
@@ -267,4 +267,3 @@ A lemezfirmware-frissítések telepítéséhez kövesse az alábbi utasításoka
    `Exit-HcsMaintenanceMode`
 
 5. A vezérlők újraindulnak, miután kilépett a karbantartási módból. A lemezfirmware-frissítések sikeres alkalmazását követően, miután az eszköz kilépett a karbantartási módból, térjen vissza a klasszikus Azure portálhoz. Vegye figyelembe, hogy a portálon esetleg még 24 órán keresztül nem jelenik meg, hogy a karbantartási módú frissítések telepítve lettek.
-

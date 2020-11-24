@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 7700f1c92aecab76dbc347814b7b161bc3d822a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 338332eb90fda9afe7655f9f2ad19ed726419b6c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67179175"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95554420"
 ---
 ### <a name="to-configure-and-register-the-device"></a>Az eszköz konfigurálása és regisztrálása
 1. Nyissa meg a Windows PowerShell felületet a StorSimple-eszköz soros konzoljában. Az erre vonatkozó utasítások [A PuTTY használata az eszköz soros konzoljához való csatlakozáshoz](../articles/storsimple/storsimple-8000-deployment-walkthrough-gov-u2.md#use-putty-to-connect-to-the-device-serial-console) című szakaszban találhatók. **Pontosan kövesse az ismertetett eljárást, különben nem fog tudni hozzáférni a konzolhoz.**
@@ -43,7 +43,7 @@ ms.locfileid: "67179175"
    4. Igény szerint konfigurálhatja a webproxy-kiszolgálót.
       
       > [!IMPORTANT]
-      > Bár a webproxy konfigurálása nem kötelező, vegye figyelembe, hogy ha webproxyt használ, azt csak itt tudja beállítani. További információ: [Configure web proxy for your device](../articles/storsimple/storsimple-configure-web-proxy.md) (Webproxy beállítása az eszközhöz).
+      > Bár a webproxy konfigurálása nem kötelező, vegye figyelembe, hogy ha webproxyt használ, azt csak itt tudja beállítani. További információ: [Configure web proxy for your device](../articles/storsimple/storsimple-8000-configure-web-proxy.md) (Webproxy beállítása az eszközhöz).
      
 6. Nyomja le a CTRL + C billentyűkombinációt a telepítővarázsló bezárásához.
 8. Futtassa az alábbi parancsmagot, hogy az eszközt a Microsoft Azure Government portálra mutasson (mivel alapértelmezés szerint a klasszikus Azure portálra mutat). Ezzel újraindul mindkét vezérlő. Javasoljuk, hogy két Putty munkamenetet használjon egyszerre mindkét vezérlőhöz való csatlakozáshoz, hogy az egyes vezérlők újraindításakor is megjelenjenek.
@@ -86,4 +86,3 @@ ms.locfileid: "67179175"
         Ha az eszköz néhány perc eltelte után is offline állapotú, akkor ellenőrizze, hogy a tűzfallal védett hálózat [a StorSimple-eszköz hálózati követelményeiben](../articles/storsimple/storsimple-8000-system-requirements.md) leírtak szerint van-e beállítva.
        
         Ellenőrizze, hogy a 9354-es port kimenő kommunikációra nyitva van-e, mivel az a StorSimple-eszközkezelő szolgáltatás és az eszköz közötti kommunikációt lebonyolító Service Bus működéséhez szükséges.
-

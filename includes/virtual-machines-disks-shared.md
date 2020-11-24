@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/14/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7831eaaa478a3f28ff158d5c9599abaf8a107c15
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 74c77356df4f35461a8b9f1459712cdcf7f77cbf
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684431"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95560538"
 ---
 Az Azure Shared Disks az Azure Managed Disks új funkciója, amely lehetővé teszi, hogy egyszerre több virtuális géphez (VM) csatolja a felügyelt lemezeket. A felügyelt lemezek több virtuális géphez való csatolásával új vagy meglévő fürtözött alkalmazásokat telepíthet át az Azure-ba.
 
@@ -41,7 +41,7 @@ A megosztott lemezek több operációs rendszert támogatnak. Tekintse meg a tá
 
 ### <a name="windows"></a>Windows
 
-Az Azure-beli megosztott lemezek a Windows Server 2008-es és újabb verzióiban támogatottak. A legtöbb Windows-alapú fürtözés a WSFC-ra épül, amely az összes alapvető infrastruktúrát kezeli a fürt csomópontjainak kommunikációjában, így az alkalmazások kihasználhatják a párhuzamos hozzáférési minták előnyeit. A WSFC a Windows Server verziójától függően a CSV- és nem CSV-alapú beállításokat is elérhetővé teszi. A részleteket lásd: [Feladatátvevő fürt létrehozásához](https://docs.microsoft.com/windows-server/failover-clustering/create-failover-cluster).
+Az Azure-beli megosztott lemezek a Windows Server 2008-es és újabb verzióiban támogatottak. A legtöbb Windows-alapú fürtözés a WSFC-ra épül, amely az összes alapvető infrastruktúrát kezeli a fürt csomópontjainak kommunikációjában, így az alkalmazások kihasználhatják a párhuzamos hozzáférési minták előnyeit. A WSFC a Windows Server verziójától függően a CSV- és nem CSV-alapú beállításokat is elérhetővé teszi. A részleteket lásd: [Feladatátvevő fürt létrehozásához](/windows-server/failover-clustering/create-failover-cluster).
 
 Néhány a WSFC-n futó népszerű alkalmazások közül:
 

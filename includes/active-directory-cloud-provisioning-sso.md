@@ -5,12 +5,12 @@ ms.subservice: cloud-provisioning
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: billmath
-ms.openlocfilehash: 3aa1571b46938b03f556fa124d3f0a2a70f2c5c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d95e40623f17a39145778a2fc067dccc68fd872
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79504275"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95562420"
 ---
 ## <a name="steps-to-enable-single-sign-on"></a>Az egyszeri bejelentkezés engedélyezésének lépései
 A Felhőbeli kiépítés egyszeri bejelentkezéssel működik.  Jelenleg nincs lehetőség az egyszeri bejelentkezés engedélyezésére az ügynök telepítésekor, azonban az alábbi lépésekkel engedélyezheti az egyszeri bejelentkezést, és használhatja azt. 
@@ -23,7 +23,7 @@ A Felhőbeli kiépítés egyszeri bejelentkezéssel működik.  Jelenleg nincs l
 
 ### <a name="step-2-import-the-seamless-sso-powershell-module"></a>2. lépés: a zökkenőmentes SSO PowerShell-modul importálása
 
-1. Töltse le és telepítse az [Azure ad PowerShellt](https://docs.microsoft.com/powershell/azure/active-directory/overview).
+1. Töltse le és telepítse az [Azure ad PowerShellt](/powershell/azure/active-directory/overview).
 2. Tallózással keresse meg a `%programfiles%\Microsoft Azure Active Directory Connect` mappát.
 3. Importálja a zökkenőmentes SSO PowerShell-modult a következő parancs használatával: `Import-Module .\AzureADSSO.psd1` .
 

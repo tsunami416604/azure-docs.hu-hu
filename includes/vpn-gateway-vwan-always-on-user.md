@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 17df5dca584b760cc52ddc171e92fb26b418c347
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b68fce603801c7bc1aee2af871df257b5f69197
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79500196"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95555552"
 ---
 1. Telepítse az Ügyféltanúsítványok szolgáltatást a Windows 10-es ügyfélre, ahogyan az ebben a [pont – hely VPN-ügyfél](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md) című cikkben látható. A tanúsítványnak az aktuális felhasználói tárolóban kell lennie.
 
-1. Konfigurálja az Always On VPN-ügyfelet a PowerShell, a Configuration Manager vagy az Intune használatával a [Windows 10-ügyfél konfigurálása mindig a VPN-kapcsolatokon](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections)című témakör útmutatását követve.
+1. Konfigurálja az Always On VPN-ügyfelet a PowerShell, a Configuration Manager vagy az Intune használatával a [Windows 10-ügyfél konfigurálása mindig a VPN-kapcsolatokon](/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections)című témakör útmutatását követve.
 
 ### <a name="example-configuration-for-the-user-tunnel"></a>Példa a felhasználói alagút konfigurációjának használatára
 
 Miután konfigurálta a virtuális hálózati átjárót, és telepítette az ügyféltanúsítványt a Windows 10-es ügyfél helyi számítógép tárolójába, konfigurálja az ügyfél-eszköz alagutat az alábbi példák használatával:
 
-1. Másolja a következő szöveget, és mentse *usercert.ps1ként *:
+1. Másolja a következő szöveget, és mentse *usercert.ps1ként*:
 
    ```
    Param(
@@ -75,7 +75,7 @@ Miután konfigurálta a virtuális hálózati átjárót, és telepítette az ü
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. Másolja a következő szöveget, és mentse *VPNProfile.xmlként * ugyanabban a mappában, mint *usercert.ps1*. Szerkessze a következő szöveget a környezetének megfelelően:
+1. Másolja a következő szöveget, és mentse *VPNProfile.xmlként* ugyanabban a mappában, mint *usercert.ps1*. Szerkessze a következő szöveget a környezetének megfelelően:
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers>  <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
    * `<Address>192.168.3.5</Address>  <= IP of resource in the vnet or the vnet address space`
@@ -128,6 +128,6 @@ Miután konfigurálta a virtuális hálózati átjárót, és telepítette az ü
    ```
    
    ![MachineCertTest](./media/vpn-gateway-vwan-always-on-user/p2s2.jpg)
-1. A **VPN-beállítások**területen keresse meg a **UserTest** bejegyzést, majd válassza a **Csatlakozás**lehetőséget.
+1. A **VPN-beállítások** területen keresse meg a **UserTest** bejegyzést, majd válassza a **Csatlakozás** lehetőséget.
 
 1. Ha a kapcsolatok sikeresek, sikeresen konfigurált egy mindig felhasználói alagutat.

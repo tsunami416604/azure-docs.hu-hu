@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: bastion
 author: cherylmc
 ms.service: bastion
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/05/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5d14068f6be4717f74e4917d6fccf1082cd0efd3
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 48a7912b1a6375111b6f9af1496cbbd41966202c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331758"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95555247"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>Mely régiók érhetők el?
 
@@ -62,8 +62,8 @@ Az Azure Bastion nem helyezi át és nem tárolja az ügyféladatokat a-ben üze
 A kapcsolatok létrehozásához a következő szerepkörök szükségesek:
 
 * Olvasó szerepkör a virtuális gépen
-* Olvasó szerepkör a virtuális gép magánhálózati IP-címével rendelkező hálózati adapteren
-* Olvasói szerepkör az Azure-beli megerősített erőforráson
+* Olvasó szerepkör a NIC-ben a virtuális gép privát IP-címével
+* Olvasó szerepkör az Azure Bastion-erőforrásban
 
 ### <a name="what-is-the-pricing"></a><a name="pricingpage"></a>Mi a díjszabás?
 
@@ -89,7 +89,7 @@ A munkamenetet csak a Azure Portal kezdeményezheti. Jelentkezzen be a Azure Por
 
 ### <a name="how-do-i-handle-deployment-failures"></a><a name="udr"></a>Hogyan kezeli az üzembe helyezési hibákat?
 
-Tekintse át a hibaüzeneteket, és szükség szerint [küldjön egy támogatási kérést a Azure Portal](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) . Az üzembe helyezési hibák az [Azure-előfizetések korlátozásait, kvótáit és megkötéseit](../articles/azure-resource-manager/management/azure-subscription-service-limits.md)okozhatják. Az ügyfelek az előfizetések által engedélyezett nyilvános IP-címek számának korlátozásával járhatnak, ami miatt az Azure Bastion üzembe helyezése sikertelen lesz.
+Tekintse át a hibaüzeneteket, és szükség szerint [küldjön egy támogatási kérést a Azure Portal](../articles/azure-portal/supportability/how-to-create-azure-support-request.md) . Az üzembe helyezési hibák az [Azure-előfizetések korlátozásait, kvótáit és megkötéseit](../articles/azure-resource-manager/management/azure-subscription-service-limits.md)okozhatják. Az ügyfelek az előfizetések által engedélyezett nyilvános IP-címek számának korlátozásával járhatnak, ami miatt az Azure Bastion üzembe helyezése sikertelen lesz.
 
 ### <a name="how-do-i-incorporate-azure-bastion-in-my-disaster-recovery-plan"></a><a name="dr"></a>Hogyan beépíteni az Azure Bastion-t a vész-helyreállítási tervbe?
 

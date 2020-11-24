@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 6e0612a017650f0c6e4c9f63d9a5fd097b0b92c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32978257c3e209dc78a29c6e8ae0d1c4ae016a5b
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89304083"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95562020"
 ---
 ## <a name="update-resources"></a>Erőforrások frissítése
 
@@ -36,7 +36,7 @@ Rendszerkép verziója:
 
 Ha a replika-régiók hozzáadását tervezi, ne törölje a forrás által felügyelt képet. A forrás által felügyelt rendszerkép a rendszerkép verziójának további régiókba való replikálásához szükséges. 
 
-A katalógus leírásának frissítéséhez használja az [Update-AzGallery](https://docs.microsoft.com/powershell/module/az.compute/update-azgallery).
+A katalógus leírásának frissítéséhez használja az [Update-AzGallery](/powershell/module/az.compute/update-azgallery).
 
 ```azurepowershell-interactive
 Update-AzGallery `
@@ -44,7 +44,7 @@ Update-AzGallery `
    -ResourceGroupName $resourceGroup.Name
 ```
 
-Ez a példa azt mutatja be, hogyan használható a [Update-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimagedefinition) a rendszerkép definíciójának élettartamának frissítésére.
+Ez a példa azt mutatja be, hogyan használható a [Update-AzGalleryImageDefinition](/powershell/module/az.compute/update-azgalleryimagedefinition) a rendszerkép definíciójának élettartamának frissítésére.
 
 ```azurepowershell-interactive
 Update-AzGalleryImageDefinition `
@@ -54,7 +54,7 @@ Update-AzGalleryImageDefinition `
    -EndOfLifeDate 01/01/2030
 ```
 
-Ez a példa azt mutatja be, hogyan használható a [Update-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimageversion) a lemezkép verziójának a *legújabb* rendszerképként való használatának kizárásához.
+Ez a példa azt mutatja be, hogyan használható a [Update-AzGalleryImageVersion](/powershell/module/az.compute/update-azgalleryimageversion) a lemezkép verziójának a *legújabb* rendszerképként való használatának kizárásához.
 
 ```azurepowershell-interactive
 Update-AzGalleryImageVersion `
@@ -65,7 +65,7 @@ Update-AzGalleryImageVersion `
    -PublishingProfileExcludeFromLatest
 ```
 
-Ez a példa bemutatja, hogyan használható a [Update-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/update-azgalleryimageversion) a lemezkép verziójának a *legújabb* rendszerképbe való felvételéhez.
+Ez a példa bemutatja, hogyan használható a [Update-AzGalleryImageVersion](/powershell/module/az.compute/update-azgalleryimageversion) a lemezkép verziójának a *legújabb* rendszerképbe való felvételéhez.
 
 ```azurepowershell-interactive
 Update-AzGalleryImageVersion `
@@ -103,4 +103,3 @@ Remove-AzGallery `
 
 Remove-AzResourceGroup -Name $resourceGroup
 ```
-

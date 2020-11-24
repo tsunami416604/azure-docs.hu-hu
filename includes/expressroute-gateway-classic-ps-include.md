@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 70ac106995324c758bde942d12191a01e3457e6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0c05eb88df27ba9e71c0f61bad75457d893a7ce
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67178853"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95558890"
 ---
 > [!NOTE]
 > Ezek a példák nem vonatkoznak a S2S/ExpressRoute egyazon konfigurációkra.
@@ -25,7 +25,7 @@ Ha a klasszikus erőforrás-modell használatával ad hozzá átjárót egy virt
 
 ### <a name="download-the-network-configuration-file"></a>A hálózati konfigurációs fájl letöltése
 
-1. Töltse le a hálózati konfigurációs fájlt a [hálózati konfigurációs fájl](../articles/virtual-network/virtual-networks-using-network-configuration-file.md) lépései című cikkben ismertetett lépések segítségével. Nyissa meg a fájlt egy szövegszerkesztő használatával.
+1. Töltse le a hálózati konfigurációs fájlt a [hálózati konfigurációs fájl](/previous-versions/azure/virtual-network/virtual-networks-using-network-configuration-file) lépései című cikkben ismertetett lépések segítségével. Nyissa meg a fájlt egy szövegszerkesztő használatával.
 2. Adjon hozzá egy helyi hálózati helyet a fájlhoz. Bármilyen érvényes címzési előtagot használhat. A VPN-átjáróhoz bármilyen érvényes IP-címet adhat hozzá. Az ebben a szakaszban szereplő ExpressRoute-műveletekhez nem használhatók, de a fájl érvényesítéséhez szükségesek. A példában a "fiók1" a hely neve. Használhat más nevet is, de ügyeljen arra, hogy ugyanazt az értéket használja a fájl átjáró szakaszában.
 
    ```

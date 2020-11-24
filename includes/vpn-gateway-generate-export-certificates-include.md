@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 10/29/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e8e3df77df53b887c4367e46b05d8a7ea4eed2f6
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 946ff043828034340ae3273fc0629e32de755540
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061616"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95554044"
 ---
 ## <a name="create-a-self-signed-root-certificate"></a><a name="rootcert"></a>Önaláírt főtanúsítvány létrehozása
 
-Önaláírt főtanúsítvány létrehozásához használja a New-SelfSignedCertificate parancsmagot. További információ a paraméterekről: [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
+Önaláírt főtanúsítvány létrehozásához használja a New-SelfSignedCertificate parancsmagot. További információ a paraméterekről: [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate).
 
 1. Windows 10 vagy Windows Server 2016 operációs rendszert futtató számítógépről nyisson meg egy emelt szintű jogosultságokkal rendelkező Windows PowerShell-konzolt. Ezek a példák nem működnek a "kipróbálás" Azure Cloud Shell. Ezeket a példákat helyileg kell futtatnia.
 1. A következő példa használatával hozza létre az önaláírt főtanúsítványt. A következő példa létrehoz egy "P2SRootCert" nevű önaláírt főtanúsítványt, amely automatikusan települ a "Certificates-current User\Personal\Certificates" tulajdonságban. A tanúsítványt a *certmgr. msc* megnyitásával vagy *felhasználói tanúsítványok kezelésével* tekintheti meg.
@@ -39,7 +39,7 @@ Minden, a virtuális hálózathoz pont–hely kapcsolattal csatlakozó ügyféls
 
 Az alábbi lépések végigvezetik az ügyféltanúsítvány önaláírt főtanúsítványból történő létrehozásán. Több ügyféltanúsítványt is létrehozhat ugyanahhoz a főtanúsítványhoz. Ha az alábbi lépésekkel állít elő ügyféltanúsítványt, az ügyféltanúsítvány automatikusan települ arra a számítógépre, amelyet a tanúsítvány létrehozásához használt. Ha egy másik ügyfélszámítógépen szeretné telepíteni az ügyféltanúsítványt, exportálhatja a tanúsítványt.
 
-A példák a New-SelfSignedCertificate parancsmagot használják olyan ügyféltanúsítvány létrehozásához, amely egy évig lejár. További paraméter-információk, például az ügyféltanúsítvány eltérő lejárati értékének beállítása: [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
+A példák a New-SelfSignedCertificate parancsmagot használják olyan ügyféltanúsítvány létrehozásához, amely egy évig lejár. További paraméter-információk, például az ügyféltanúsítvány eltérő lejárati értékének beállítása: [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate).
 
 ### <a name="example-1---powershell-console-session-still-open"></a>1. példa – a PowerShell-konzol munkamenete még nyitva van
 

@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 05/04/2020
 ms.author: glenga
-ms.openlocfilehash: 37a61e270f95ffdc420536046e0ce1eda1e489b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 826fccad043b067ce86d5f56eaebc6ee48b532d1
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85391482"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95560332"
 ---
 | Erőforrás |[Használatalapú csomag](../articles/azure-functions/functions-scale.md#consumption-plan)|[Prémium szintű csomag](../articles/azure-functions/functions-scale.md#premium-plan)|[Dedikált csomag](../articles/azure-functions/functions-scale.md#app-service-plan)|[ASE](../articles/app-service/environment/intro.md)| [Kubernetes](../articles/aks/quotas-skus-regions.md) |
 | --- | --- | --- | --- | --- | --- |
@@ -19,7 +19,7 @@ ms.locfileid: "85391482"
 | Kérelem maximális mérete (MB)<sup>3</sup> | 100 | 100 | 100 | 100 | A fürttől függ |
 | Lekérdezési karakterlánc maximális hossza<sup>3</sup> | 4096 | 4096 | 4096 | 4096 | A fürttől függ |
 | Kérelem maximális URL-címének maximális hossza<sup>3</sup> | 8192 | 8192 | 8192 | 8192 | A fürttől függ |
-|[ACU](../articles/virtual-machines/windows/acu.md) -példányok száma | 100 | 210-840 | 100-840 | 210-250<sup>8</sup> | [AK-díjszabás](https://azure.microsoft.com/pricing/details/container-service/) |
+|[ACU](../articles/virtual-machines/acu.md) -példányok száma | 100 | 210-840 | 100-840 | 210-250<sup>8</sup> | [AK-díjszabás](https://azure.microsoft.com/pricing/details/container-service/) |
 | Maximális memória (GB/példány) | 1.5 | 3,5 – 14 | 1,75 – 14 | 3,5 – 14 | Bármely csomópont támogatott |
 | Function Apps/csomag |100 |100 |nem kötött<sup>4</sup> | unbounded | unbounded |
 | [App Service-csomagok](../articles/app-service/overview-hosting-plans.md) | 100 [régiónként](https://azure.microsoft.com/global-infrastructure/regions/) |100/erőforráscsoport |100/erőforráscsoport | - | - |

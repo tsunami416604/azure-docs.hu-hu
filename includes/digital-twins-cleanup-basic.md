@@ -5,16 +5,16 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 8/13/2020
 ms.author: baanders
-ms.openlocfilehash: ab179c5f0c56a7d6fd2ebd41e13d27a832512b54
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 4c03ef942896dda63f678018cdd257024cfbb6d4
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358098"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95561420"
 ---
 Ha már nincs szüksége az oktatóanyagban létrehozott erőforrásokra, a következő lépésekkel törölheti őket.
 
-A [Azure Cloud Shell](https://shell.azure.com)használatával az erőforráscsoport összes Azure-erőforrását törölheti az az [Group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest&preserve-view=true#az-group-delete) paranccsal. Ez a parancs eltávolítja az erőforráscsoportot és az Azure Digital Twins-példányt.
+A [Azure Cloud Shell](https://shell.azure.com)használatával az erőforráscsoport összes Azure-erőforrását törölheti az az [Group delete](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-delete) paranccsal. Ez a parancs eltávolítja az erőforráscsoportot és az Azure Digital Twins-példányt.
 
 > [!IMPORTANT]
 > Az erőforráscsoport törlése nem vonható vissza. Az erőforráscsoport és a benne foglalt erőforrások véglegesen törlődnek. Figyeljen, nehogy véletlenül rossz erőforráscsoportot vagy erőforrásokat töröljön.

@@ -4,15 +4,15 @@ ms.service: service-bus
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
-ms.openlocfilehash: aec13c6beb8dbfcdd5f38e7f96b86bf03e42fa37
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5c2959a1bf6225c164f8538c3c437e464d834b96
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "80986674"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95554834"
 ---
 ## <a name="create-a-ruby-application"></a>Ruby-alkalmazás létrehozása
-Útmutatásért lásd: [Ruby-alkalmazás létrehozása az Azure](../articles/virtual-machines/linux/classic/ruby-rails-web-app.md)-ban.
+Útmutatásért lásd: [Ruby-alkalmazás létrehozása az Azure](/previous-versions/azure/virtual-machines/linux/classic/ruby-rails-web-app)-ban.
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Az alkalmazás konfigurálása Service Bus használatára
 Service Bus használatához töltse le és használja az Azure Ruby-csomagot, amely a tárolási REST-szolgáltatásokkal kommunikáló kényelmi könyvtárakat tartalmaz.

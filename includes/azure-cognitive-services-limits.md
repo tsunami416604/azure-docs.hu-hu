@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/30/2019
 ms.author: erhopf
-ms.openlocfilehash: ffefde7d692950fc272ab2502ad8afe254bf48f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9d73804484ea7cc72e0198b857099fd8fba46d5
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73590849"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95557959"
 ---
-Az alábbi korlátok az Azure-előfizetések Cognitive Services erőforrásainak száma. Minden Cognitive Services további korlátozásokkal rendelkezhet, további információ: [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/).
+Az alábbi korlátok az Azure-előfizetések Cognitive Services erőforrásainak száma. Minden Cognitive Services további korlátozásokkal rendelkezhet, további információ: [Azure Cognitive Services](../articles/cognitive-services/index.yml).
 
 | Típus | Korlát | Példa |
 |------|-------|---------|

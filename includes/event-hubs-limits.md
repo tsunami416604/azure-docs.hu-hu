@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/10/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 320fa542f2b786f0a256c22f2d2eb299c476dcae
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 1b5905046fdde4d5574fd4d39f40dce1bbf11e32
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94362757"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95562229"
 ---
 Az alábbi táblázatok az [Azure Event Hubsra](https://azure.microsoft.com/services/event-hubs/)vonatkozó kvótákat és korlátokat biztosítanak. További információ a Event Hubs díjszabásáról: [Event Hubs díjszabása](https://azure.microsoft.com/pricing/details/event-hubs/).
 
@@ -42,12 +42,12 @@ Az alábbi táblázat az alapszintű és a standard szintekhez eltérő korláto
 | Fogyasztói csoportok száma az Event hub-ban | &nbsp; |1 |20 |
 | AMQP-kapcsolatok száma névtérben | A további kapcsolatokra vonatkozó további kérelmeket a rendszer elutasítja, és a hívási kód kivételt kap. |100 |5000|
 | Esemény-adatok maximális megőrzési ideje | &nbsp; |1 nap |1-7 nap |
-| Maximális átviteli egységek |Ha túllépi ezt a korlátot, a rendszer leszabályozza az adatait, és létrehoz egy [kiszolgáló által foglalt kivételt](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception). Ha nagyobb számú átviteli egységet szeretne igényelni egy standard szintű csomaghoz, a [támogatási kérést](/azure/azure-portal/supportability/how-to-create-azure-support-request). A [további átviteli egységek](../articles/event-hubs/event-hubs-auto-inflate.md) 20 blokkban érhetők el egy véglegesített vásárlás alapján. |20 | 20 | 
+| Maximális átviteli egységek |Ha túllépi ezt a korlátot, a rendszer leszabályozza az adatait, és létrehoz egy [kiszolgáló által foglalt kivételt](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception). Ha nagyobb számú átviteli egységet szeretne igényelni egy standard szintű csomaghoz, a [támogatási kérést](../articles/azure-portal/supportability/how-to-create-azure-support-request.md). A [további átviteli egységek](../articles/event-hubs/event-hubs-auto-inflate.md) 20 blokkban érhetők el egy véglegesített vásárlás alapján. |20 | 20 | 
 
 ## <a name="dedicated-tier-vs-standard-tier"></a>Dedikált szint és standard szint
 Az dedikált Event Hubs ajánlat számlázása rögzített havi díjszabással történik, amely legalább 4 órányi használatot biztosít. A dedikált szint a standard csomag összes funkcióját felkínálja, de nagyvállalati kapacitást és korlátokat biztosít az ügyfelek számára igényes számítási feladatokkal. 
 
-Tekintse át ezt a [dokumentumot](https://docs.microsoft.com/azure/event-hubs/event-hubs-dedicated-cluster-create-portal) arról, hogyan hozhat létre dedikált Event Hubs-fürtöt a Azure Portal használatával.
+Tekintse át ezt a [dokumentumot](../articles/event-hubs/event-hubs-dedicated-cluster-create-portal.md) arról, hogyan hozhat létre dedikált Event Hubs-fürtöt a Azure Portal használatával.
 
 | Funkció | Standard | Dedikált |
 | --- |:---|:---|
@@ -83,8 +83,3 @@ Tekintse át ezt a [dokumentumot](https://docs.microsoft.com/azure/event-hubs/ev
 | A séma beállításjegyzékének mérete (névtér) Mega bájtban | 25 |  1024 |
 | Séma-beállításjegyzékben vagy névtérben lévő séma-csoportok száma | 1 – az alapértelmezett csoport kizárása | 1000 |
 | Séma-verziók száma az összes sémakezelő csoportban | 25 | 10000 |
-
-
-
-
-

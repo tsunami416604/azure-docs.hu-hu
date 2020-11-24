@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: eeda43b972e30c573743c8c59f75cfae61d7ee85
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 26a5537496d9e881ece135437c403baf4a4fd67c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413144"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95557406"
 ---
 Jelenleg az ultra-lemezek további korlátozásokkal rendelkeznek, ezek a következők:
 
@@ -40,7 +40,7 @@ Az alábbi táblázat az ultra lemezek régióit ismerteti, valamint a hozzájuk
 |Kelet-Ausztrália     |Három rendelkezésre állási zóna         |
 |Délkelet-Ázsia    |Három rendelkezésre állási zóna        |
 |Közép-Kanada *     |Három rendelkezésre állási zóna          |
-|USA középső régiója     |Három rendelkezésre állási zóna          |
+|Az USA középső régiója     |Három rendelkezésre állási zóna          |
 |USA keleti régiója     |Három rendelkezésre állási zóna          |
 |USA 2. keleti régiója     |Három rendelkezésre állási zóna         |
 |Közép-Franciaország    |Két rendelkezésre állási zóna        |
@@ -67,7 +67,7 @@ Az alábbi táblázat az ultra lemezek régióit ismerteti, valamint a hozzájuk
     - [Mv2](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
 - Nem minden virtuálisgép-méret érhető el minden olyan támogatott régióban, amely Ultra-lemezekkel rendelkezik.
 - Csak adatlemezként érhetők el. 
-- A 4k-os fizikai szektor méretének támogatása alapértelmezés szerint. a 512E szektor mérete általánosan elérhető ajánlatként érhető el, de regisztrálnia kell [rá](https://aka.ms/ultradisk512e). A legtöbb alkalmazás kompatibilis a 4k-os szektor méretével, de egyesek 512 bájtos szektort igényelnek. Az egyik példa Oracle Database, amely a 12,2-as vagy újabb kiadást igényli a 4k natív lemezek támogatásához. A Oracle DB régebbi verzióihoz a 512 bájtos szektor mérete szükséges.
+- A 4k-os fizikai szektor méretének támogatása alapértelmezés szerint. a 512E szektor mérete általánosan elérhető ajánlatként érhető el (nincs szükség regisztrációra), de jelenleg csak a CLI vagy a PowerShell használatával érhető el. A legtöbb alkalmazás kompatibilis a 4k-os szektor méretével, de egyesek 512 bájtos szektort igényelnek. Az egyik példa Oracle Database, amely a 12,2-as vagy újabb kiadást igényli a 4k natív lemezek támogatásához. A Oracle DB régebbi verzióihoz a 512 bájtos szektor mérete szükséges.
 - Csak üres lemezként hozható létre.
 - Jelenleg nem támogatja a lemezes pillanatképeket, a virtuálisgép-lemezképeket, a rendelkezésre állási csoportokat, az Azure dedikált gazdagépeket vagy az Azure Disk encryptiont.
 - Jelenleg nem támogatja a Azure Backup-vagy Azure Site Recovery-integrációt.

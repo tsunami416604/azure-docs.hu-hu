@@ -5,16 +5,16 @@ ms.subservice: heavy
 ms.topic: include
 ms.date: 06/24/2020
 ms.author: alkohli
-ms.openlocfilehash: acaebcea59e765f5544f1bfbd692c6508f66a84a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2868e5a53686cfa94dc206c1aab65fe866d19b6d
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91024803"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95559594"
 ---
 Itt láthatók a Storage-fiókba másolt adatmennyiség korlátai. Győződjön meg arról, hogy a feltöltött adatok megfelelnek a határértékeknek. A korlátozásokkal kapcsolatos legfrissebb információk: a [blob Storage skálázhatósági és teljesítményi céljai](../articles/storage/blobs/scalability-targets.md) , valamint a [méretezhetőség és a teljesítmény-Azure Files](../articles/storage/files/storage-files-scale-targets.md).
 
 | Az Azure Storage-fiókba másolt adatmennyiség                      | Alapértelmezett korlát          |
 |---------------------------------------------------------------------|------------------------|
-| BLOB és oldal blobjának letiltása                                            | A maximális korlát megegyezik az Azure- [előfizetéshez definiált tárolási korláttal](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#storage-limits) , és az összes forrásból, köztük a Data boxból származó adatokkal is rendelkezik. |
+| BLOB és oldal blobjának letiltása                                            | A maximális korlát megegyezik az Azure- [előfizetéshez definiált tárolási korláttal](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits) , és az összes forrásból, köztük a Data boxból származó adatokkal is rendelkezik. |
 | Azure Files                                                          | Data Box támogatja a nagyméretű fájlmegosztást (100TiB), ha engedélyezve van a Data Box rendelés létrehozása előtt. <br> Ha nincs engedélyezve a megrendelés létrehozása előtt, a maximális fájlmegosztás mérete 5 TiB. <br> A prémium fájlmegosztás még nem támogatott.<br> A *StorageAccount_AzureFiles* alatti összes mappának ezt a korlátot kell követnie. <br> További információ: [nagyméretű fájlmegosztás engedélyezése és létrehozása](../articles/storage/files/storage-files-how-to-create-large-file-share.md)      |

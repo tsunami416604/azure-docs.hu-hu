@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 1522bb133c7d8f877a334e47bf7929c533ea3465
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 8b827a80059cecadd7b76263f13dd4a0d141fc7a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93376185"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95562195"
 ---
 #### <a name="to-create-a-cloud-appliance"></a>Felhőalapú berendezés létrehozása
 
@@ -33,8 +33,7 @@ ms.locfileid: "93376185"
    7. A jelölőnégyzet bejelölésével jelezze, hogy tudomásul veszi, a felhőalapú berendezésen lévő adatokat egy Microsoft-adatközpont tárolja.
        * Amikor csak fizikai eszközt használ, a titkosítási kulcs az eszközön található, ezért a Microsoft nem tudja feloldani a titkosítást.
 
-       * Amikor felhőalapú berendezést használ, a titkosítási és a visszafejtési kulcs tárolása is a Microsoft Azure-ban történik. További információkért tekintse meg a [felhőalapú berendezések használatára vonatkozó biztonsági szempontokat](../articles/storsimple/storsimple-security.md).
+       * Amikor felhőalapú berendezést használ, a titkosítási és a visszafejtési kulcs tárolása is a Microsoft Azure-ban történik. További információkért tekintse meg a [felhőalapú berendezések használatára vonatkozó biztonsági szempontokat](../articles/storsimple/storsimple-8000-security.md).
    8. Kattintson a **Létrehozás** elemre a felhőalapú berendezés üzembe helyezéséhez. Az eszköz kiépítése körülbelül 30 percet vesz igénybe. A felhőalapú berendezés sikeres létrehozásáról értesítést kap. Lépjen az Eszközök panelre, ahol az eszközlista frissül, és megjelenik a felhőalapú berendezés. A berendezés állapota **Beállításra kész**.
       
       ![A StorSimple Cloud Appliance beállításra kész](./media/storsimple-8000-create-cloud-appliance-u2/sca-create3.png)
-

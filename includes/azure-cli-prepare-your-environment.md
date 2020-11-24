@@ -5,20 +5,19 @@ author: dbradish-microsoft
 ms.author: dbradish
 manager: barbkess
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e4eb2c108b5964bcc78049cbf355facc52738abd
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9483765453efae95820fbd69cdbb9fa6b8142fb0
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336731"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95555320"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Használja a [Azure Cloud shellt](/azure/cloud-shell/quickstart) a bash-környezet használatával.
+- Használja az [Azure Cloud Shellt](../articles/cloud-shell/quickstart.md) a Bash-környezet használatával.
 
-   [![Beágyazás elindítása](https://shell.azure.com/images/launchcloudshell.png "Az Azure Cloud Shell elindítása")](https://shell.azure.com)  
+   [![Indítás beágyazása](https://shell.azure.com/images/launchcloudshell.png "Az Azure Cloud Shell elindítása")](https://shell.azure.com)  
 - Ha szeretné, [telepítse](/cli/azure/install-azure-cli) az Azure CLI-t a CLI-hivatkozások parancsainak futtatásához.
-   - Ha helyi telepítést használ, jelentkezzen be az Azure CLI használatával az az [login](/cli/azure/reference-index#az-login) paranccsal.  A hitelesítési folyamat befejezéséhez kövesse a terminálon megjelenő lépéseket.  További bejelentkezési lehetőségekért lásd: [Bejelentkezés az Azure CLI-vel](/cli/azure/authenticate-azure-cli) .
-  - Amikor a rendszer kéri, telepítse az Azure CLI-bővítményeket az első használatkor.  További információ a bővítményekről: [bővítmények használata az Azure CLI-vel](/cli/azure/azure-cli-extensions-overview).
-  - Futtassa az az [Version](/cli/azure/reference-index?#az_version) parancsot, és keresse meg a telepített verziót és a függő könyvtárakat. A legújabb verzióra való frissítéshez futtassa az [az upgrade](/cli/azure/reference-index?#az_upgrade)parancsot.
-
+  - Ha helyi telepítést használ, jelentkezzen be az Azure CLI-vel az [az login](/cli/azure/reference-index#az-login) parancs futtatásával.  A hitelesítési folyamat befejezéséhez kövesse a terminálon megjelenő lépéseket.  További bejelentkezési lehetőségek megismeréséhez tekintse meg a [Bejelentkezés az Azure CLI használatával](/cli/azure/authenticate-azure-cli) című szakaszt.
+  - Ha a rendszer kéri, az első használatkor telepítse az Azure CLI-bővítményeket.  További információ a bővítményekről: [Bővítmények használata az Azure CLI-vel](/cli/azure/azure-cli-extensions-overview).
+  - Futtassa az [az version](/cli/azure/reference-index?#az_version) parancsot a telepített verzió és a függő kódtárak megkereséséhez. A legújabb verzióra az [az upgrade](/cli/azure/reference-index?#az_upgrade) paranccsal frissíthet.

@@ -5,18 +5,18 @@ ms.subservice: pod
 ms.topic: include
 ms.date: 09/git14/2020
 ms.author: alkohli
-ms.openlocfilehash: 91f91b1260cc445f90c2608fc5259ad61acd37ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25c2ea04cd062554a975c63aae9b97846e646d68
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90533197"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95554681"
 ---
-Itt látható a támogatott Storage-fiókok listája, valamint a Data Box eszköz tárolási típusai. A különböző típusú tárolási fiókok és azok teljes képességeinek teljes listáját a [Storage-fiókok típusai](/azure/storage/common/storage-account-overview#types-of-storage-accounts)című részben tekintheti meg.
+Itt látható a támogatott Storage-fiókok listája, valamint a Data Box eszköz tárolási típusai. A különböző típusú tárolási fiókok és azok teljes képességeinek teljes listáját a [Storage-fiókok típusai](../articles/storage/common/storage-account-overview.md#types-of-storage-accounts)című részben tekintheti meg.
 
 Importálási megrendelések esetén a következő táblázat a támogatott Storage-fiókokat mutatja be.
 
-| **Storage-fiók/támogatott tárolási típusok** | **Blokkblob** |**Oldal blobja*** |**Azure-fájlok** |**Megjegyzések**|
+| **Storage-fiók/támogatott tárolási típusok** | **Blokkblob** |**Oldal blob** _ |_ *Azure-fájlok** |**Megjegyzések**|
 | --- | --- | -- | -- | -- |
 | Klasszikus standard | Y | Y | Y |
 | Általános célú v1 standard  | Y | Y | Y | A gyakori és a ritka elérés is támogatott.|
@@ -29,7 +29,7 @@ Importálási megrendelések esetén a következő táblázat a támogatott Stor
 
 Az exportálási megrendelések esetében a következő táblázat a támogatott Storage-fiókokat mutatja be.
 
-| **Storage-fiók/támogatott tárolási típusok** | **Blokkblob** |**Oldal blobja*** |**Azure-fájlok** |**Támogatott hozzáférési szintek**|
+| **Storage-fiók/támogatott tárolási típusok** | **Blokkblob** |**Oldal blob** _ |_ *Azure-fájlok** |**Támogatott hozzáférési szintek**|
 | --- | --- | -- | -- | -- |
 | Klasszikus standard | Y | Y | Y | |
 | Általános célú v1 standard  | Y | Y | Y | Gyors elérésű, ritka|
@@ -47,5 +47,3 @@ Az exportálási megrendelések esetében a következő táblázat a támogatott
 > - Az oldal blobokra feltöltött adatmennyiségnek 512 bájtnak kell lennie, például VHD-k.
 > - Legfeljebb 80 TB lehet exportálni.
 > - A rendszer nem exportálja a fájl előzményeit és a blob-pillanatképeket.
-
-

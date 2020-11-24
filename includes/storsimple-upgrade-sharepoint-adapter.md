@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: b2dec95e0258933b50d4437f1cb317639b62883d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3467a5d5daa300f82c7b81641ab7e262259d9285
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67179162"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95561596"
 ---
 ### <a name="upgrade-sharepoint-2010-to-sharepoint-2013-and-then-install-the-storsomple-adapter-for-sharepoint"></a>Frissítse a SharePoint 2010-et a SharePoint 2013-re, majd telepítse a SharePointhoz készült StorSomple-adaptert
 > [!IMPORTANT]
@@ -20,7 +20,7 @@ ms.locfileid: "67179162"
 #### <a name="to-upgrade-sharepoint-2010-to-sharepoint-2013-and-then-install-the-adapter"></a>A SharePoint 2010 frissítése a SharePoint 2013-re, majd az adapter telepítése
 1. A SharePoint 2010-farmban jegyezze fel a külső Blobok BLOB-tárolójának elérési útját, valamint azokat a tartalmi adatbázisokat, amelyeken az RBS engedélyezve van. 
 2. Telepítse és konfigurálja az új SharePoint 2013-farmot. 
-3. Adatbázisok, alkalmazások és webhelycsoportok áthelyezése a SharePoint 2010-farmról az új SharePoint 2013-farmba. Útmutatásért [tekintse meg a frissítési folyamat áttekintése a SharePoint 2013-re](https://technet.microsoft.com/library/cc262483.aspx)című témakört.
+3. Adatbázisok, alkalmazások és webhelycsoportok áthelyezése a SharePoint 2010-farmról az új SharePoint 2013-farmba. Útmutatásért [tekintse meg a frissítési folyamat áttekintése a SharePoint 2013-re](/SharePoint/upgrade-and-update/overview-of-the-upgrade-process)című témakört.
 4. Telepítse a SharePointhoz készült StorSimple-adaptert az új farmon. Nyissa meg [a StorSimple-adapter sharepointhoz való telepítését](#install-the-storsimple-adapter-for-sharepoint) ismertető eljárást.
 5. Az 1. lépésben feljegyzett információk alapján engedélyezze az RBS-t ugyanahhoz a tartalom-adatbázishoz, és adja meg ugyanazt a BLOB-tároló elérési útját, amelyet a SharePoint 2010-telepítésben használt. Nyissa meg az [RBS konfigurálása](#configure-rbs) eljárásokhoz című témakört. A lépés elvégzése után a korábban kihelyezett fájlokat elérhetővé kell tenni az új farmról. 
 
@@ -29,7 +29,7 @@ ms.locfileid: "67179162"
 > Ezt a frissítést úgy kell ütemezni, hogy a tervezett karbantartási időszak során a következő okok miatt történjen:
 > 
 > * A korábban külsőleg elvégezhető tartalom addig nem lesz elérhető, amíg újra nem telepítik az adaptert.
-> * A webhelyre feltöltött bármely tartalom, miután eltávolította a SharePointhoz készült StorSimple-adapter előző verzióját, de az új verzió telepítése előtt a rendszer a tartalom-adatbázisban tárolja. Az új adapter telepítése után át kell helyeznie a tartalmat a StorSimple-eszközre. A `RBS Migrate()` sharepointhoz mellékelt Microsoft PowerShell-parancsmag használatával áttelepítheti a tartalmat. További információ: [tartalom migrálása az RBS-be vagy](https://technet.microsoft.com/library/ff628255.aspx)abból. 
+> * A webhelyre feltöltött bármely tartalom, miután eltávolította a SharePointhoz készült StorSimple-adapter előző verzióját, de az új verzió telepítése előtt a rendszer a tartalom-adatbázisban tárolja. Az új adapter telepítése után át kell helyeznie a tartalmat a StorSimple-eszközre. A `RBS Migrate()` sharepointhoz mellékelt Microsoft PowerShell-parancsmag használatával áttelepítheti a tartalmat. További információ: [tartalom migrálása az RBS-be vagy](/previous-versions/office/sharepoint-foundation-2010/ff628255(v=office.14))abból. 
 > 
 > 
 
@@ -41,4 +41,3 @@ ms.locfileid: "67179162"
    > 
    > 
 2. Telepítse az új StorSimple-adaptert a SharePointhoz. Az új adapter automatikusan felismeri az RBS-ben korábban engedélyezett vagy letiltott tartalmi adatbázisokat, és az előző beállításokat fogja használni.
-

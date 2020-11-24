@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 4f7ec9bbf7877d8067b3d8b1566a5cd2c2075281
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 234407e6973657ba3ad0d78189e7cb1d363c15e2
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86050367"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95557376"
 ---
 A eszközök internetes hálózata (IoT) egyedi biztonsági, adatvédelmi és megfelelőségi kihívásokat jelent a vállalkozások számára világszerte. A hagyományos számítógépes technológiától eltérően, ahol ezek a problémák a szoftvereket és azok megvalósítását tárgyalják, IoT, hogy mi történik, ha a Cyber és a fizikai világ konvergál. A IoT-megoldások védelme megköveteli az eszközök biztonságos kihelyezését, az eszközök és a felhő közötti biztonságos csatlakozást, valamint a Felhőbeli adatvédelem védelmét a feldolgozás és a tárolás során. Az ilyen funkciókkal való munka azonban erőforrás-korlátozott eszközök, a központi telepítések földrajzi eloszlása és a megoldáson belüli számos eszköz.
 
@@ -21,7 +21,7 @@ Ez a cikk azt mutatja be, hogy a IoT-megoldás gyorsítása hogyan nyújt bizton
 
 A megoldás-gyorsítók olyan egyedi funkciókat kínálnak, amelyek lehetővé teszik a IoT-eszközökről történő üzembe helyezést, csatlakozást és adattárolást egyszerűen és átlátható módon, valamint a legtöbbet a biztonság érdekében. Ez a cikk a biztonság, az adatvédelem és a megfelelőségi problémák megoldása érdekében megvizsgálja az Azure IoT megoldás-gyorsító biztonsági funkcióit és központi telepítési stratégiáit.
 
-## <a name="introduction"></a>Bevezetés
+## <a name="introduction"></a>Introduction (Bevezetés)
 
 A eszközök internetes hálózata (IoT) a jövő hulláma, amely azonnali és valós lehetőségeket kínál a vállalatok számára a költségek csökkentéséhez, a bevétel növeléséhez és a vállalat átalakításához. Sok vállalat azonban vonakodik üzembe helyezni a IoT a szervezetében a biztonsággal, az adatvédelemmel és a megfelelőséggel kapcsolatos probléma miatt. Fontos szempont a IoT-infrastruktúra egyedisége, amely egyesíti a Cyber-és a fizikai világokat, és összekeveri a két világ különböző kockázatait. A IoT biztonsága az eszközökön futó kódok integritásának biztosítására, az eszközök és a felhasználók hitelesítésének megadására, az eszközök (és az eszközök által létrehozott adatok) törlésére, valamint a számítógépes és fizikai támadások elleni védelemre vonatkozik.
 
@@ -39,11 +39,11 @@ A [biztonsági fejlesztési életciklus (SDL)](https://www.microsoft.com/sdl/) e
 
 A Microsoft Azure egy teljes körű felhőalapú megoldást kínál, amely az integrált Cloud Services, az elemzés, a gépi tanulás, a tárolás, a biztonság, a hálózat és a web folyamatosan bővülő gyűjteményét ötvözi, és piacvezető elkötelezettséggel rendelkezik az adatok védelme és védelme terén. A Microsoft által elkövetett [szabálysértési](https://azure.microsoft.com/blog/red-teaming-using-cutting-edge-threat-simulation-to-harden-the-microsoft-enterprise-cloud/) stratégia egy dedikált, a támadásokat szimuláló biztonsági szakértőkből álló *vörös csapatot* használ, amely az Azure által észlelt, a felmerülő fenyegetések elleni védekezést és a behatolások elleni védelmet vizsgálja. A Microsoft [globális incidensekre reagáló](https://www.microsoft.com/en-us/TrustCenter/Security/DesignOpSecurity) csapata éjjel-nappal működik a támadások és a rosszindulatú tevékenységek hatásának enyhítése érdekében. A csapat az incidensek kezelésével, a kommunikációval és a helyreállítással kapcsolatos eljárásokat követi, és a belső és külső partnerekkel használható, felderíthető és kiszámítható interfészeket használ.
 
-A Microsoft rendszerei folyamatos behatolás-észlelést és-megelőzést, a szolgáltatások támadásának megelőzését, a rendszeres behatolás-tesztelést, valamint a fenyegetések azonosítását és enyhítését segítő kriminalisztikai eszközöket biztosítanak. A [többtényezős hitelesítés](../articles/active-directory/authentication/multi-factor-authentication.md) további biztonsági réteget biztosít a végfelhasználók számára a hálózat eléréséhez. Az alkalmazás és a gazdagép szolgáltatója esetében a Microsoft hozzáférést biztosít a hozzáférés-vezérléshez, a figyeléshez, a kártevő szoftverekhez, a sebezhetőségek vizsgálatához, a javításokhoz és a konfiguráció kezeléséhez.
+A Microsoft rendszerei folyamatos behatolás-észlelést és-megelőzést, a szolgáltatások támadásának megelőzését, a rendszeres behatolás-tesztelést, valamint a fenyegetések azonosítását és enyhítését segítő kriminalisztikai eszközöket biztosítanak. A [többtényezős hitelesítés](../articles/active-directory/authentication/concept-mfa-howitworks.md) további biztonsági réteget biztosít a végfelhasználók számára a hálózat eléréséhez. Az alkalmazás és a gazdagép szolgáltatója esetében a Microsoft hozzáférést biztosít a hozzáférés-vezérléshez, a figyeléshez, a kártevő szoftverekhez, a sebezhetőségek vizsgálatához, a javításokhoz és a konfiguráció kezeléséhez.
 
 A megoldás-gyorsítók kihasználják az Azure platformon beépített biztonságot és adatvédelmet, valamint az SDL-és OSA-folyamatokat az összes Microsoft-szoftver biztonságos fejlesztéséhez és működtetéséhez. Ezek az eljárások biztosítják az infrastruktúra védelmét, a hálózati védelmet, valamint az olyan identitás-és felügyeleti funkciókat, amelyek alapvető fontosságúak a megoldások biztonsága szempontjából.
 
-Az [azure IoT hub](../articles/iot-hub/about-iot-hub.md) a [IoT megoldás-gyorsító](../articles/iot-fundamentals/iot-introduction.md) szolgáltatásban egy teljes körűen felügyelt szolgáltatást kínál, amely megbízható és biztonságos kétirányú kommunikációt tesz lehetővé a IoT-eszközök és az Azure-szolgáltatások, például a [Azure Machine learning](../articles/machine-learning/studio/what-is-machine-learning.md) és a [Azure stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) között, eszközönkénti biztonsági hitelesítő adatok és hozzáférés-vezérlés használatával.
+Az [azure IoT hub](../articles/iot-hub/about-iot-hub.md) a [IoT megoldás-gyorsító](../articles/iot-fundamentals/iot-introduction.md) szolgáltatásban egy teljes körűen felügyelt szolgáltatást kínál, amely megbízható és biztonságos kétirányú kommunikációt tesz lehetővé a IoT-eszközök és az Azure-szolgáltatások, például a [Azure Machine learning](../articles/machine-learning/classic/index.yml) és a [Azure stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) között, eszközönkénti biztonsági hitelesítő adatok és hozzáférés-vezérlés használatával.
 
 A jelen cikk az Azure IoT-megoldás-gyorsítók beépített biztonsági és adatvédelmi funkcióinak lehető legjobb kommunikációját ismerteti. Ez a cikk a három elsődleges biztonsági területre bontja fel a csomagot.
 
@@ -89,7 +89,7 @@ A Azure Active Directory (HRE) használata a felhasználói hitelesítéshez és
 
 Ha az adatfelhőben van, akkor a felhasználó által definiált munkafolyamatokban feldolgozható és tárolható. Az egyes részekhez való hozzáférést a használt tárolási szolgáltatástól függően Azure Active Directory szabályozza.
 
-A IoT-infrastruktúra által használt összes kulcsot a felhőben tároljuk a biztonságos tárolóban, és a kulcsokat át kell helyezni a kulcsok újraépítésének lehetőségével. Az [Azure Cosmos db](../articles/cosmos-db/introduction.md) vagy [SQL Database](../articles/sql-database/sql-database-faq.md)tárolt adatmennyiséget a kívánt biztonsági szint definíciójának engedélyezésével lehet tárolni. Emellett az Azure lehetővé teszi az adataihoz való összes hozzáférés monitorozását és naplózását, hogy riasztást küldjön bármilyen behatolási vagy jogosulatlan hozzáférésről.
+A IoT-infrastruktúra által használt összes kulcsot a felhőben tároljuk a biztonságos tárolóban, és a kulcsokat át kell helyezni a kulcsok újraépítésének lehetőségével. Az [Azure Cosmos db](../articles/cosmos-db/introduction.md) vagy [SQL Database](../articles/azure-sql/database/sql-database-paas-overview.md)tárolt adatmennyiséget a kívánt biztonsági szint definíciójának engedélyezésével lehet tárolni. Emellett az Azure lehetővé teszi az adataihoz való összes hozzáférés monitorozását és naplózását, hogy riasztást küldjön bármilyen behatolási vagy jogosulatlan hozzáférésről.
 
 ## <a name="conclusion"></a>Összegzés
 

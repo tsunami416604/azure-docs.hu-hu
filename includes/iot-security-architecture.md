@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: a2eafd6bb34b897f3492ddcffd6841f0fabc4ca7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28609ad27330ae4ea5ea7c0d02d5a61181fbe0df
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73034546"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95559341"
 ---
 A rendszer tervezésekor fontos megérteni a rendszer potenciális veszélyforrásait, és ennek megfelelően hozzá kell adnia a megfelelő védelmi lehetőségeket, ahogy a rendszert tervezték és felépíteni. Fontos, hogy megtervezze a terméket a kezdetektől a biztonsággal szem előtt tartva, mert megértette, hogy a támadók hogyan veszélyeztethetik a rendszereket, így biztosítható, hogy a megfelelő enyhítések a kezdetektől fogva megtörténjenek.
 
@@ -72,7 +72,7 @@ A veszélyforrások modellezésének négy fő eleme a következők:
 
 * Külső entitások (minden, ami a rendszerrel kommunikál, de nem az alkalmazás felügyelete alá tartozik, például a felhasználók és a műholdas csatornák)
 
-Az építészeti diagram minden eleme különböző fenyegetésekre vonatkozik; Ez a cikk a Stride hívóbetűje. Olvassa el [újra a veszélyforrások modellezését,](https://blogs.msdn.microsoft.com/larryosterman/2007/09/04/threat-modeling-again-stride/) és tekintse meg a lépéseket a lépéshossz elemek megismeréséhez.
+Az építészeti diagram minden eleme különböző fenyegetésekre vonatkozik; Ez a cikk a Stride hívóbetűje. Olvassa el [újra a veszélyforrások modellezését,](/archive/blogs/larryosterman/threat-modeling-again-stride) és tekintse meg a lépéseket a lépéshossz elemek megismeréséhez.
 
 Az alkalmazás diagramjának különböző elemei bizonyos átlépési fenyegetésekre vonatkoznak:
 
@@ -196,7 +196,7 @@ A **szolgáltatás megtagadása (D)**: az eszközök nem tudnak működni vagy k
 
 **Illetéktelen módosítás**: egy olyan megfigyelő kamera, amely egy üres folyosó látható spektrumú képét jeleníti meg, egy ilyen előszoba fényképét célozza meg. A füst-vagy tűzjelzők jelenthetnek olyan személyeket, akik könnyebben megtartják az informatikai szervezetet. Az eszköz mindkét esetben műszakilag teljesen megbízható a rendszer felé, de a manipulált információkat is jelenti.
 
-**Illetéktelen**hozzáférés: a támadó kinyerte a kulcsfontosságú anyagokat a kommunikációs útvonalon tárolt adatok elfogására és letiltására, valamint a lopott kulcsokkal hitelesített, hamis adatokra cserélve.
+**Illetéktelen** hozzáférés: a támadó kinyerte a kulcsfontosságú anyagokat a kommunikációs útvonalon tárolt adatok elfogására és letiltására, valamint a lopott kulcsokkal hitelesített, hamis adatokra cserélve.
 
 **Illetéktelen módosítás**: a támadó részben vagy teljesen lecserélheti az eszközön futó szoftvereket, ami lehetővé teszi, hogy a kicserélt szoftver kihasználja az eszköz valódi identitását, ha a kulcsfontosságú anyagok vagy a kulcsfontosságú anyagokat tároló kriptográfiai létesítmények elérhetővé válnak a tiltott program számára.
 
@@ -206,13 +206,13 @@ A **szolgáltatás megtagadása (D)**: az eszközök nem tudnak működni vagy k
 
 **Szolgáltatás megtagadása**: az eszköz kikapcsolható, vagy olyan üzemmódba kapcsolható, amelyben a kommunikáció nem lehetséges (ami számos iparági gépen szándékos).
 
-**Illetéktelen**hozzáférés: az eszköz újrakonfigurálható úgy, hogy az a vezérlőrendszer (az ismert kalibrációs paramétereken kívül) számára ismeretlen állapotba működjön, és így olyan adatokkal lássa el, amelyeket helytelenül lehet értelmezni.
+**Illetéktelen** hozzáférés: az eszköz újrakonfigurálható úgy, hogy az a vezérlőrendszer (az ismert kalibrációs paramétereken kívül) számára ismeretlen állapotba működjön, és így olyan adatokkal lássa el, amelyeket helytelenül lehet értelmezni.
 
 **Jogosultságszint-emelési jogosultság**: egy adott függvényt használó eszköz kényszeríthető más művelet végrehajtására. Például, ha egy olyan szelepet nyitunk meg, amely a nyílt félidőben van kiválasztva, megnyithatja az egész utat.
 
 **Szolgáltatásmegtagadás**: az eszköz olyan állapotba állítható be, amelyben a kommunikáció nem lehetséges.
 
-**Illetéktelen**hozzáférés: az eszköz újrakonfigurálható úgy, hogy a vezérlőrendszer ismeretlen állapotában működjön (az ismert kalibrációs paramétereken kívül), és így olyan adatokkal lássa el, amelyeket helytelenül lehet értelmezni.
+**Illetéktelen** hozzáférés: az eszköz újrakonfigurálható úgy, hogy a vezérlőrendszer ismeretlen állapotában működjön (az ismert kalibrációs paramétereken kívül), és így olyan adatokkal lássa el, amelyeket helytelenül lehet értelmezni.
 
 **Hamisítás/illetéktelen módosítás/megtagadás**: Ha nem védett (ami ritkán fordul elő a fogyasztó távvezérlésével), a támadók névtelenül kezelhetik az eszközök állapotát. A jó illusztráció olyan távoli vezérlők, amelyek bármilyen TV-t és népszerű tréfacsináló-eszközt is kikapcsolhatnak.
 
@@ -236,11 +236,11 @@ Az eszközök, az eszközök és a helyszíni átjárók, valamint az eszközök
 
 **Hamisítás**: a támadó feltartóztathatja vagy részlegesen felülbírálhatja a szórást, és meghamisíthatja a kezdeményezőt (az ember középen)
 
-**Illetéktelen**hozzáférés: a támadó elfoghatja vagy részlegesen felülbírálhatja a szórást, és hamis adatokat küldhet 
+**Illetéktelen** hozzáférés: a támadó elfoghatja vagy részlegesen felülbírálhatja a szórást, és hamis adatokat küldhet 
 
 **Információ-közzététel:** a támadók hallgatózik a szórást, és a szolgáltatás engedélyezési **szolgáltatásmegtagadás** nélkül szerezhetnek be adatokat: a támadó elakadhat a szórási jel, és megtagadhatja az információk terjesztését
 
-#### <a name="storage"></a>Storage
+#### <a name="storage"></a>Tárolás
 
 Minden eszköz és mező átjárója rendelkezik valamilyen tárolási formával (ideiglenes az adatok sorba állításához, az operációs rendszer (OS) rendszerképének tárolásához).
 
@@ -265,7 +265,7 @@ A köztes fizikai vezérlési felületek olyanok, amelyekben a logika szabályoz
 
 ## <a name="additional-resources"></a>További források
 
-További információkért tekintse át a következő cikkeket:
+További információért tekintse át a következő cikkeket:
 
 * [SDL Threat Modeling Tool](https://www.microsoft.com/sdl/adopt/threatmodeling.aspx)
 * [Microsoft Azure IoT-hivatkozás architektúrája](https://azure.microsoft.com/updates/microsoft-azure-iot-reference-architecture-available/)

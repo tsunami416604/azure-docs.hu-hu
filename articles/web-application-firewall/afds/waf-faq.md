@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: 5b60082db53b458adc53ac23d98731ad1c97b52b
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 5c2763112b1aa2d58f5dc57cea72a3d0bdea961e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563647"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545669"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Gyakori kérdések az Azure-webalkalmazási tűzfalról az Azure bejárati szolgáltatásában
 
@@ -57,6 +57,17 @@ A háttérbeli IP-Access Control listát úgy is konfigurálhatja, hogy csak a k
 
 A WAF-szabályzatok az Azure-ban való alkalmazása két lehetőséget kínál. A WAF az Azure bejárati ajtó egy globálisan elosztott, peremhálózati biztonsági megoldás. A Application Gateway WAF egy regionális, dedikált megoldás. Javasoljuk, hogy válasszon egy megoldást a teljes teljesítmény-és biztonsági követelmények alapján. További információ: terheléselosztás [Az Azure Application Delivery Suite](../../frontdoor/front-door-lb-with-azure-app-delivery-suite.md)szolgáltatással.
 
+## <a name="whats-the-recommended-approach-to-enabling-waf-on-front-door"></a>Mi a javasolt módszer a WAF bekapcsolásához?
+
+Ha engedélyezi a WAF egy meglévő alkalmazáson, az gyakran előfordul, hogy hamis pozitív észlelésekkel rendelkezik, ahol a WAF-szabályok fenyegetésként észlelik a legitim forgalmat. A felhasználókra gyakorolt hatás kockázatának csökkentése érdekében a következő folyamatot javasoljuk:
+
+* A WAF [ **észlelési** módban](./waf-front-door-create-portal.md#change-mode) való engedélyezésével biztosíthatja, hogy a WAF ne blokkolja a kérelmeket, amíg a folyamaton keresztül dolgozik.
+  > [!IMPORTANT]
+  > Ez a folyamat leírja, hogyan engedélyezheti a WAF egy új vagy meglévő megoldásban, ha a prioritása az alkalmazás felhasználóinak való zavarok csökkentése. Ha támadás vagy közelgő fenyegetés van, érdemes lehet Ehelyett azonnal telepíteni a **WAF, és** a hangolási folyamattal figyelheti és beállíthatja a WAF az idő múlásával. Ez valószínűleg azt eredményezi, hogy a megbízható adatforgalom blokkolva lesz, ezért csak akkor ajánljuk ezt, ha fenyegetést tapasztal.
+* Kövesse a [WAF hangolásához szükséges útmutatást](./waf-front-door-tuning.md). Ehhez a folyamathoz engedélyeznie kell a diagnosztikai naplózást, rendszeresen ellenőriznie kell a naplókat, és hozzá kell adnia a szabályok kizárását és egyéb enyhítéseket.
+* Ismételje meg ezt az egész folyamatot, rendszeresen ellenőrizze a naplókat, amíg nem meggyőződött arról, hogy a rendszer nem blokkolja a megbízható forgalmat. A teljes folyamat több hetet is igénybe vehet. Ideális esetben az egyes hangolási módosítások után kevesebb hamis pozitív észlelést kell látnia.
+* Végezetül engedélyezze a WAF **megelőzési módban**.
+* Még ha a WAF éles környezetben is futtatja, akkor a naplók figyelésével azonosítsa a többi hamis pozitív észlelést. A naplók rendszeres felülvizsgálata a blokkolt valódi támadási kísérletek azonosítását is lehetővé teszi.
 
 ## <a name="do-you-support-same-waf-features-in-all-integrated-platforms"></a>Minden integrált platformon ugyanazokat az WAF funkciókat támogatja?
 
