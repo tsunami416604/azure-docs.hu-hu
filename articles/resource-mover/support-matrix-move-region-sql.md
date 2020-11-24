@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: conceptual
 ms.date: 09/07/2020
 ms.author: raynew
-ms.openlocfilehash: fda41a22c9bd9c66dd691b283ece10ac044db3ed
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 573d52b836aef36063dd288bf5a5016b98d220ef
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324587"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95524130"
 ---
 # <a name="support-for-moving-azure-sql-resources-between-azure-regions"></a>Azure SQL-erőforrások Azure-régiók közötti áthelyezésének támogatása
 
@@ -27,16 +27,16 @@ A követelményeket a következő táblázat foglalja össze.
 **Azure SQL Database nagy kapacitású** | Nem támogatott | Az adatbázisok nem helyezhetők át az Azure SQL nagy kapacitású szolgáltatási szintjébe az erőforrás-mozgató szolgáltatással.
 **Zónaredundancia** | Támogatott |  Támogatott áthelyezési beállítások:<br/><br/> – A zóna redundanciát támogató régiók között.<br/><br/> – A zónák redundanciát nem támogató régiók között.<br/><br/> – Egy olyan régió között, amely támogatja a zóna-redundancia-t egy olyan régióban, amely nem támogatja a zóna-redundanciát.<br/><br/> – Egy olyan régió között, amely nem támogatja a zóna-redundancia támogatását egy olyan régióban, amely támogatja a zóna-redundanciát. 
 **Adatszinkronizálás** | Központ/szinkronizálási adatbázis: nem támogatott<br/><br/> Szinkronizálási tag: támogatott. | Szinkronizálási tag áthelyezésekor be kell állítania az adatszinkronizálást az új céladatbázis számára.
-**Meglévő geo-replikáció** | Támogatott | A meglévő földrajzi replikákat a rendszer a célként megadott régió új elsődleges részére rendeli hozzá.<br/><br/> A beültetést az áthelyezés után inicializálni kell. [További információ](/azure/sql-database/sql-database-active-geo-replication-portal)
+**Meglévő geo-replikáció** | Támogatott | A meglévő földrajzi replikákat a rendszer a célként megadott régió új elsődleges részére rendeli hozzá.<br/><br/> A beültetést az áthelyezés után inicializálni kell. [További információ](../azure-sql/database/active-geo-replication-configure-portal.md)
 **Transzparens adattitkosítás (TDE) Bring Your Own Key (BYOK)** | Támogatott | [További](../key-vault/general/move-region.md) információ a Key vaultok régiók közötti áthelyezéséről.
 **TDE szolgáltatás által felügyelt kulccsal** | Támogatott. |  [További](../key-vault/general/move-region.md) információ a Key vaultok régiók közötti áthelyezéséről.
-**Dinamikus adatmaszkolási szabályok** | Támogatott. | A rendszer automatikusan átmásolja a szabályokat a célként megadott régióba az áthelyezés részeként. [További információ](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started-portal).
-**Advanced Data Security** | Nem támogatott. | Áthidaló megoldás: állítsa be a SQL Server szinten a célként megadott régióban. [További információ](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security).
-**Tűzfalszabályok** | Nem támogatott. | Megkerülő megoldás: tűzfalszabályok beállítása a célként megadott régióban lévő SQL Serverhoz. Az adatbázis-szintű tűzfalszabályok a forráskiszolgálóról a célkiszolgálóra másolódnak. [További információ](https://docs.microsoft.com/azure/sql-database/sql-database-server-level-firewall-rule).
-**Naplózási házirendek** | Nem támogatott. | Az áthelyezés után a házirendek visszaállnak az alapértelmezett értékre. [Útmutató](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) az alaphelyzetbe állításához.
-**Biztonsági mentés megőrzése** | Támogatott. | A forrásadatbázis biztonsági mentési adatmegőrzési szabályzatait a rendszer átadja a céladatbázis számára. [Megtudhatja](/azure/sql-database/sql-database-long-term-backup-retention-configure) , hogyan módosíthatja a beállításokat az áthelyezés után.
-**Automatikus hangolás** | Nem támogatott. | Áthidaló megoldás: az áthelyezés után állítsa be az automatikus finomhangolási beállításokat. [További információ](https://docs.microsoft.com/azure/sql-database/sql-database-automatic-tuning-enable).
-**Adatbázis-riasztások** | Nem támogatott. | Megkerülő megoldás: az áthelyezés után riasztásokat állíthat be. [További információ](https://docs.microsoft.com/azure/sql-database/sql-database-insights-alerts-portal).
+**Dinamikus adatmaszkolási szabályok** | Támogatott. | A rendszer automatikusan átmásolja a szabályokat a célként megadott régióba az áthelyezés részeként. [További információk](../azure-sql/database/dynamic-data-masking-configure-portal.md).
+**Advanced Data Security** | Nem támogatott. | Áthidaló megoldás: állítsa be a SQL Server szinten a célként megadott régióban. [További információk](../azure-sql/database/azure-defender-for-sql.md).
+**Tűzfalszabályok** | Nem támogatott. | Megkerülő megoldás: tűzfalszabályok beállítása a célként megadott régióban lévő SQL Serverhoz. Az adatbázis-szintű tűzfalszabályok a forráskiszolgálóról a célkiszolgálóra másolódnak. [További információk](../azure-sql/database/firewall-create-server-level-portal-quickstart.md).
+**Naplózási házirendek** | Nem támogatott. | Az áthelyezés után a házirendek visszaállnak az alapértelmezett értékre. [Útmutató](../azure-sql/database/auditing-overview.md) az alaphelyzetbe állításához.
+**Biztonsági mentés megőrzése** | Támogatott. | A forrásadatbázis biztonsági mentési adatmegőrzési szabályzatait a rendszer átadja a céladatbázis számára. [Megtudhatja](../azure-sql/database/long-term-backup-retention-configure.md) , hogyan módosíthatja a beállításokat az áthelyezés után.
+**Automatikus hangolás** | Nem támogatott. | Áthidaló megoldás: az áthelyezés után állítsa be az automatikus finomhangolási beállításokat. [További információk](../azure-sql/database/automatic-tuning-enable.md).
+**Adatbázis-riasztások** | Nem támogatott. | Megkerülő megoldás: az áthelyezés után riasztásokat állíthat be. [További információk](../azure-sql/database/alerts-insights-configure-portal.md).
 **Azure SQL Server stretch Database** | Nem támogatott | Az SQL Server stretch Database-adatbázisok nem helyezhetők át az erőforrás-mozgatóval.
 **Azure Synapse Analytics** | Nem támogatott | A szinapszis Analytics (korábban SQL Data Warehouse) nem helyezhető át az erőforrás-mozgatóval.
 ## <a name="next-steps"></a>Következő lépések

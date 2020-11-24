@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: f920a937f4b9b51f9babd03ed0fb42dd3c7775d8
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 2477107105b6dbcab96db8d44ac982554dc0c48d
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217789"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543170"
 ---
 # <a name="quickstart-use-azure-storage-explorer-to-create-a-blob"></a>Gyors útmutató: Blobok létrehozása a Azure Storage Explorer használatával
 
@@ -78,7 +78,7 @@ Blobok az **Azure Storage Explorer** használatával való letöltéséhez jelö
 
 ## <a name="manage-snapshots"></a>Pillanatképek kezelése
 
-Az Azure Storage Explorer lehetővé teszi a blobokról készült [pillanatképek](storage-blob-snapshots.md) rögzítését és kezelését. Egy blob pillanatképének elkészítéséhez kattintson a jobb gombbal a blobra, majd válassza a **Pillanatkép létrehozása** lehetőséget. Egy blob pillanatképének megtekintéséhez kattintson a jobb gombbal a blobra, majd válassza a **Pillanatképek kezelése** lehetőséget. Az aktuális lapon megjelenik a blob pillanatképeinek listája.
+Az Azure Storage Explorer lehetővé teszi a blobokról készült [pillanatképek](./snapshots-overview.md) rögzítését és kezelését. Egy blob pillanatképének elkészítéséhez kattintson a jobb gombbal a blobra, majd válassza a **Pillanatkép létrehozása** lehetőséget. Egy blob pillanatképének megtekintéséhez kattintson a jobb gombbal a blobra, majd válassza a **Pillanatképek kezelése** lehetőséget. Az aktuális lapon megjelenik a blob pillanatképeinek listája.
 
 ![A Microsoft Azure Storage Explorerban található Blobok listáját bemutató képernyőkép.](media/storage-quickstart-blobs-storage-explorer/snapshots.png)
 
@@ -90,7 +90,7 @@ Válassza a **Hozzáadás** lehetőséget egy új hozzáférési szabályzat hoz
 
 ## <a name="work-with-shared-access-signatures"></a>Közös hozzáférésű jogosultságkódok használata
 
-A közös hozzáférésű jogosultságkódok (SAS) a Storage Exploreren keresztül kérhetők le. Kattintson a jobb gombbal a Storage-fiókra, a tárolóra vagy a blobra, majd válassza a **közös hozzáférésű aláírás beolvasása...** lehetőséget. Válassza ki a kezdő és a lejárati időt, valamint a SAS URL-címére vonatkozó engedélyeket, és válassza a **Létrehozás**lehetőséget. A lekérdezési sztringgel ellátott teljes URL-cím, illetve a lekérdezési sztring önmagában is megjelenik a következő képernyőn, ahonnan mindkettő másolható.
+A közös hozzáférésű jogosultságkódok (SAS) a Storage Exploreren keresztül kérhetők le. Kattintson a jobb gombbal a Storage-fiókra, a tárolóra vagy a blobra, majd válassza a **közös hozzáférésű aláírás beolvasása...** lehetőséget. Válassza ki a kezdő és a lejárati időt, valamint a SAS URL-címére vonatkozó engedélyeket, és válassza a **Létrehozás** lehetőséget. A lekérdezési sztringgel ellátott teljes URL-cím, illetve a lekérdezési sztring önmagában is megjelenik a következő képernyőn, ahonnan mindkettő másolható.
 
 ![Microsoft Azure Storage Explorer – Tárolóban lévő blobok listázása](media/storage-quickstart-blobs-storage-explorer/sharedaccesssignature.png)
 
@@ -99,4 +99,4 @@ A közös hozzáférésű jogosultságkódok (SAS) a Storage Exploreren kereszt�
 Ennek a rövid útmutatónak a segítségével megtanulta, hogyan vihetők át fájlok egy helyi lemez és az Azure Blob Storage között az **Azure Storage Explorer** használatával. Ha bővebb információra van szüksége a Blob Storage használatával kapcsolatban, lépjen tovább a Blob Storage használati útmutatójára.
 
 > [!div class="nextstepaction"]
-> [Blob Storage-műveletek használati útmutatója](storage-how-to-use-blobs-powershell.md)
+> [Blob Storage-műveletek használati útmutatója](./storage-quickstart-blobs-powershell.md)

@@ -7,12 +7,12 @@ ms.date: 11/14/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: f4016349e354c84e9e096ac6d5072a4870e9ef29
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bf0e868e9ee746da1dfe1b03403d21f7edb3bd5e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "68726459"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544649"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása a Go használatával
 
@@ -108,7 +108,7 @@ Az első teendő a referenciák létrehozása a Blob Storage-tárolóhoz való h
 A ContainerURL létrehozása után létrehozhatja a **BlobURL** objektum egy blobra mutató példányát, és elvégezheti a feltöltési, letöltési, másolási vagy egyéb műveleteket.
 
 > [!IMPORTANT]
-> A tárolók nevei csak kisbetűket tartalmazhatnak. A tárolók és blobok elnevezésével kapcsolatos részletekért lásd a [tárolók, blobok és metaadatok elnevezésével és hivatkozásával](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) foglalkozó cikket.
+> A tárolók nevei csak kisbetűket tartalmazhatnak. A tárolók és blobok elnevezésével kapcsolatos részletekért lásd a [tárolók, blobok és metaadatok elnevezésével és hivatkozásával](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) foglalkozó cikket.
 
 Ebben a szakaszban egy új tárolót hoz létre. A tároló neve **quickstartblobs-[véletlen sztring]**. 
 
@@ -149,9 +149,9 @@ A Blob Storage támogatja a blokkblobokat, a hozzáfűző blobokat és a lapblob
 
 Ha fel szeretne tölteni egy fájlt egy blobba, nyissa meg a fájlt az **os.Open** használatával. Ezután feltöltheti a fájlt a megadott útvonalra a következő REST API-k egyikével: Upload (PutBlob), StageBlock/CommitBlockList (PutBlock/PutBlockList). 
 
-Másik lehetőségként az SDK az alacsony szintű REST API-kra épülő [magas szintű API-kat](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go) is kínál. Az ***UploadFileToBlockBlob*** függvény például StageBlock (PutBlock) műveletekkel több darabban, egyszerre tölt fel egy fájlt az adatátvitel optimalizálása érdekében. Ha a fájl 256 MB-nál kisebb, a StageBlock (PutBlock) műveletek helyett az Upload (PutBlob) műveletet használja, és egy tranzakcióban hajtja végre az átvitelt.
+Másik lehetőségként az SDK az alacsony szintű REST API-kra épülő [magas szintű API-kat](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go) is kínál. Az **_UploadFileToBlockBlob_* _ függvény például a StageBlock (PutBlock) műveleteket használja az adattömbökben lévő fájlok egyidejű feltöltéséhez az átviteli sebesség optimalizálása érdekében. Ha a fájl 256 MB-nál kisebb, a StageBlock (PutBlock) műveletek helyett az Upload (PutBlob) műveletet használja, és egy tranzakcióban hajtja végre az átvitelt.
 
-A következő példa feltölti a fájlt a **quickstartblobs-[véletlen sztring]** nevű tárolóba.
+A következő példa feltölti a fájlt a tárolóba, amelynek neve: _ * quickstartblobs-[randomstring] * *.
 
 ```go
 // Create a file to test the upload and download.
@@ -244,6 +244,6 @@ Blob Storage-tárolókat alkalmazó Go-alkalmazások fejlesztéséhez tekintse �
 - Az Azure Storage-hoz készült [Go ügyféloldali kódtár forráskódját](https://github.com/Azure/azure-storage-blob-go) megtekintheti és telepítheti a GitHubról.
 - Tekintse át a Go ügyféloldali kódtár használatával írt [Blob Storage-mintákat](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#pkg-examples).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
  
 Ennek a rövid útmutatónak a segítségével megtanulta, hogyan vihetők át fájlok egy helyi lemez és az Azure Blob Storage között a Go használatával. Az Azure Storage Blob SDK-ról a [Forráskód](https://github.com/Azure/azure-storage-blob-go/) és [API-referencia](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob) szakaszban talál további információt.

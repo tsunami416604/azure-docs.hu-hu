@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 5c9d7faebe7fefdddbf194e3a9ad36b4644115e0
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 8ca670049b49500e6b6310bca25cb78ded31a294
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746452"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95537849"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Statikus webhely üzemeltetése az Azure Storage-ban
 
@@ -38,11 +38,11 @@ A statikus webhely üzemeltetése olyan szolgáltatás, amelyet engedélyeznie k
 
 4. Válassza az engedélyezve lehetőséget a statikus webhely-üzemeltetési **funkció** engedélyezéséhez a Storage-fiókhoz.
 
-5. Az **index dokumentum neve** mezőben adja meg az alapértelmezett index lapot (például: *index.html* ). 
+5. Az **index dokumentum neve** mezőben adja meg az alapértelmezett index lapot (például: *index.html*). 
 
    Az alapértelmezett index lap akkor jelenik meg, ha a felhasználó a statikus webhely gyökerére navigál.  
 
-6. A **hiba-dokumentum elérési útja** mezőben válasszon egy alapértelmezett hibaüzenetet (például: *404.html* ). 
+6. A **hiba-dokumentum elérési útja** mezőben válasszon egy alapértelmezett hibaüzenetet (például: *404.html*). 
 
    Az alapértelmezett hiba lap akkor jelenik meg, ha a felhasználó olyan oldalra próbál navigálni, amely nem szerepel a statikus webhelyén.
 
@@ -54,9 +54,9 @@ A statikus webhely üzemeltetése olyan szolgáltatás, amelyet engedélyeznie k
 
 <a id="cli"></a>
 
-Az [Azure Command-Line Interface (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)használatával engedélyezheti a statikus webhely üzemeltetését.
+Az [Azure Command-Line Interface (CLI)](/cli/azure/?view=azure-cli-latest)használatával engedélyezheti a statikus webhely üzemeltetését.
 
-1. Először nyissa meg a [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest), vagy ha helyileg [telepítette](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) az Azure CLI-t, nyisson meg egy parancssori alkalmazást, például a Windows PowerShellt.
+1. Először nyissa meg a [Azure Cloud Shell](../../cloud-shell/overview.md?view=azure-cli-latest), vagy ha helyileg [telepítette](/cli/azure/install-azure-cli?view=azure-cli-latest) az Azure CLI-t, nyisson meg egy parancssori alkalmazást, például a Windows PowerShellt.
 
 2. Ha az identitása egynél több előfizetéshez van társítva, akkor állítsa be az aktív előfizetést a statikus webhelyét futtató Storage-fiók előfizetésére.
 
@@ -136,7 +136,7 @@ A Azure PowerShell modul használatával engedélyezheti a statikus webhely üze
 
 ### <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Ezek az utasítások bemutatják, hogyan tölthet fel fájlokat a Azure Portalban megjelenő Storage Explorer verziójának használatával. Azonban használhatja a Azure Portalon kívül futó [Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) verzióját is. Használhatja a [AzCopy](../common/storage-use-azcopy-v10.md), a PowerShellt, a CLI-t vagy bármely olyan egyéni alkalmazást, amely képes fájlokat feltölteni a fiókja **$web** tárolóba. A fájloknak a Visual Studio Code használatával történő feltöltését bemutató lépésenkénti oktatóanyagért lásd [: oktatóanyag: statikus webhely üzemeltetése blob Storageon](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host).
+Ezek az utasítások bemutatják, hogyan tölthet fel fájlokat a Azure Portalban megjelenő Storage Explorer verziójának használatával. Azonban használhatja a Azure Portalon kívül futó [Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) verzióját is. Használhatja a [AzCopy](../common/storage-use-azcopy-v10.md), a PowerShellt, a CLI-t vagy bármely olyan egyéni alkalmazást, amely képes fájlokat feltölteni a fiókja **$web** tárolóba. A fájloknak a Visual Studio Code használatával történő feltöltését bemutató lépésenkénti oktatóanyagért lásd [: oktatóanyag: statikus webhely üzemeltetése blob Storageon](./storage-blob-static-website-host.md).
 
 1. Válassza a **Storage Explorer (előzetes verzió)** lehetőséget.
 
@@ -173,7 +173,7 @@ az storage blob upload-batch -s <source-path> -d '$web' --account-name <storage-
 > [!NOTE]
 > Ha az Azure CLI-t használja, az elérési utat használhatja a helyi számítógép bármely helyére (például: `C:\myFolder` ).
 >
-> Azure Cloud Shell használata esetén olyan fájlmegosztást kell hivatkoznia, amely látható a Cloud Shell számára. Ez a hely lehet a megosztott felhőalapú fájlmegosztás vagy egy meglévő fájlmegosztás, amelyet a Cloud Shell lehet csatlakoztatni. Ennek megismeréséhez tekintse meg [a fájlok megőrzése Azure Cloud Shellban](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage)című témakört.
+> Azure Cloud Shell használata esetén olyan fájlmegosztást kell hivatkoznia, amely látható a Cloud Shell számára. Ez a hely lehet a megosztott felhőalapú fájlmegosztás vagy egy meglévő fájlmegosztás, amelyet a Cloud Shell lehet csatlakoztatni. Ennek megismeréséhez tekintse meg [a fájlok megőrzése Azure Cloud Shellban](../../cloud-shell/persisting-shell-storage.md)című témakört.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -279,4 +279,3 @@ A metrikák engedélyezése után a **$web** tárolóban található fájlokra v
 ## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan konfigurálhat egy egyéni tartományt a statikus webhellyel. Lásd: [egyéni tartomány leképezése egy Azure Blob Storage-végpontra](storage-custom-domain-name.md).
-

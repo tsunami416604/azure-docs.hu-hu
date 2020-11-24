@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 2/1/2019
 ms.author: ripohane
 ms.reviewer: dineshm
-ms.openlocfilehash: 297595c6c4a9c82c3d0293f2cea2db66ea9ca54a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0de8d8d5ff0f14d0268dbcca743f4d06ed877903
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89180405"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544394"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>BLOB Storage csatlakoztatása fájlrendszerként a blobfuse-mel
 
@@ -23,12 +23,12 @@ A [Blobfuse](https://github.com/Azure/azure-storage-fuse) egy virtuális fájlre
 Ebből az útmutatóból megtudhatja, hogyan használhatja a blobfuse, és hogyan csatlakoztathat blob Storage-tárolót Linux rendszeren, és hogyan férhet hozzá az adatbázisokhoz. Ha többet szeretne megtudni a blobfuse, olvassa el a részleteket a [blobfuse-tárházban](https://github.com/Azure/azure-storage-fuse).
 
 > [!WARNING]
-> A Blobfuse nem garantálja a 100%-os POSIX-megfelelőséget, mivel egyszerűen a kérelmeket a [blob REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)-khoz fordítja. Például az átnevezési műveletek a POSIX-ben atomiak, de nem a blobfuse.
+> A Blobfuse nem garantálja a 100%-os POSIX-megfelelőséget, mivel egyszerűen a kérelmeket a [blob REST API](/rest/api/storageservices/blob-service-rest-api)-khoz fordítja. Például az átnevezési műveletek a POSIX-ben atomiak, de nem a blobfuse.
 > A natív fájlrendszer és a blobfuse közötti különbségek teljes listájáért látogasson el [a blobfuse-forráskód adattárára](https://github.com/azure/azure-storage-fuse).
 > 
 
 ## <a name="install-blobfuse-on-linux"></a>A blobfuse telepítése Linux rendszeren
-A Blobfuse bináris fájljai a Linux for Ubuntu és a RHEL disztribúciók [Microsoft-szoftverek tárházában](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software) érhetők el. A blobfuse az adott disztribúcióra való telepítéséhez konfigurálja az egyik tárházat a listából. A forráskód bináris fájljait az [Azure Storage telepítési lépéseit](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source) követve is létrehozhatja, ha nincs elérhető bináris fájl a terjesztéshez.
+A Blobfuse bináris fájljai a Linux for Ubuntu és a RHEL disztribúciók [Microsoft-szoftverek tárházában](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software) érhetők el. A blobfuse az adott disztribúcióra való telepítéséhez konfigurálja az egyik tárházat a listából. A forráskód bináris fájljait az [Azure Storage telepítési lépéseit](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source) követve is létrehozhatja, ha nincs elérhető bináris fájl a terjesztéshez.
 
 A Blobfuse támogatja az Ubuntu 14,04, 16,04 és 18,04 rendszereken való telepítést. Futtassa ezt a parancsot, és győződjön meg arról, hogy telepítve van-e a telepített verziók egyike:
 ```
@@ -36,7 +36,7 @@ lsb_release -a
 ```
 
 ### <a name="configure-the-microsoft-package-repository"></a>A Microsoft Package adattár konfigurálása
-A [Linux-csomagok tárházának konfigurálása a Microsoft-termékekhez](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software).
+A [Linux-csomagok tárházának konfigurálása a Microsoft-termékekhez](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software).
 
 Példa egy vállalati Linux 6 disztribúcióra:
 ```bash
@@ -144,5 +144,4 @@ echo "hello world" > test/blob.txt
 ## <a name="next-steps"></a>Következő lépések
 
 * [Blobfuse kezdőlapja](https://github.com/Azure/azure-storage-fuse#blobfuse)
-* [Blobfuse-problémák jelentése](https://github.com/Azure/azure-storage-fuse/issues) 
-
+* [Blobfuse-problémák jelentése](https://github.com/Azure/azure-storage-fuse/issues)

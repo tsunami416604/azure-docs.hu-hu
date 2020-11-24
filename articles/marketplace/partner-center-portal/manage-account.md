@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 11/02/2020
-ms.openlocfilehash: a9d2c10d665af6899ec79312353676467a623735
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 8b372cc0fc19c6bf163d9d4e61cde6ce74cb3f28
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628883"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95538383"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>A kereskedelmi piactér-fiók kezelése a partner Centerben
 
@@ -34,21 +34,23 @@ Ebben a cikkben bemutatjuk, hogyan kezelheti a partneri központ fiókját, töb
 ## <a name="access-your-account-settings"></a>Fiók beállításainak elérése
 
 Ha még nem tette meg, akkor (vagy a szervezet rendszergazdája) el kell érnie a fiókpartner fiókjának [beállításait](https://partner.microsoft.com/dashboard/account/management) a következőre:
-- A vállalat fiók-ellenőrzési állapotának ellenőrzése
-- Erősítse meg a Symantec-AZONOSÍTÓját, az eladó AZONOSÍTÓját, a Microsoft Partner Network (MPN) AZONOSÍTÓját, a közzétevő AZONOSÍTÓját és a kapcsolattartási adatokat, beleértve a vállalat jóváhagyóját és az értékesítői kapcsolatot.
-- Hozzon létre felhasználói fiókokat mindenki számára, aki az Ön üzleti fiókját fogja használni a partner Centerben
 
-### <a name="open-developer-settings"></a>Fejlesztői beállítások megnyitása
+- A vállalat fiók-ellenőrzési állapotának ellenőrzése.
+- Erősítse meg a Symantec-AZONOSÍTÓját, az eladó AZONOSÍTÓját, Microsoft Partner Network (MPN) AZONOSÍTÓját, a közzétevő AZONOSÍTÓját, valamint a kapcsolattartási adatokat, beleértve a vállalat jóváhagyóját és az értékesítői kapcsolatot.
+- Hozzon létre felhasználói fiókokat mindenki számára, aki az Ön üzleti fiókját fogja használni a partner Centerben.
 
-A [kereskedelmi piactér irányítópultján](https://partner.microsoft.com/dashboard/commercial-marketplace) a partner Centerben válassza a **Beállítások** (fogaskerék ikon) lehetőséget a jobb felső sarokban, majd a **fejlesztői beállítások** elemet.
+### <a name="open-account-settings"></a>Fiókbeállítások megnyitása
+
+A [kereskedelmi piactér irányítópultján](https://partner.microsoft.com/dashboard/commercial-marketplace) a partner Centerben válassza a **Beállítások** (fogaskerék ikon) lehetőséget a jobb felső sarokban, majd a **Fiókbeállítások** menüpontot.
 
 ![Fiókbeállítások menü a partner Centerben](./media/dashboard-developer-settings.png)
 
 A **Fiókbeállítások** megtekintheti a következőket:
-- **Fiók adatai** : fióktípus és fiók állapota
-- **Közzétevői azonosítók** : eladó azonosítója, felhasználói azonosító, közzétevő azonosítója, Azure ad-bérlők stb.
-- **Kapcsolattartási adatok** : közzétevő megjelenítendő neve, eladó kapcsolattartási neve, e-mail címe, telefonszáma és címe
-- **Követési GUID azonosítók** : a fiókhoz társított követési GUID azonosítók
+
+- **Fiók adatai**: fióktípus és fiók állapota
+- **Közzétevői azonosítók**: eladó azonosítója, felhasználói azonosító, közzétevő azonosítója, Azure ad-bérlők stb.
+- **Kapcsolattartási adatok**: közzétevő megjelenítendő neve, eladó kapcsolattartási neve, e-mail címe, telefonszáma és címe
+- **Követési GUID azonosítók**: a fiókhoz társított követési GUID azonosítók
 
 ### <a name="account-details"></a>Fiók adatai
 
@@ -56,11 +58,11 @@ A fiók részletei szakaszban megtekintheti az alapvető adatokat, például a *
 
 ### <a name="publisher-ids"></a>Közzétevő azonosítói
 
-A közzétevői azonosítók szakaszban megtekintheti a **Symantec-azonosítót** , az **eladó azonosítóját** , a **felhasználói azonosítót** , az **MPN-azonosítót** és az **Azure ad-bérlőket**. Ezeket az értékeket a Microsoft rendeli hozzá a fejlesztői fiók egyedi azonosításához, és nem szerkeszthető.
+A közzétevői azonosítók szakaszban megtekintheti a **Symantec-azonosítót**, az **eladó azonosítóját**, a **felhasználói azonosítót**, az **MPN-azonosítót** és az **Azure ad-bérlőket**. Ezeket az értékeket a Microsoft rendeli hozzá a fejlesztői fiók egyedi azonosításához, és nem szerkeszthető.
 
 ### <a name="contact-info"></a>Kapcsolattartási adatok
 
-A kapcsolattartási adatok szakaszban megtekintheti a **közzétevő megjelenítendő nevét** , az **eladó kapcsolattartási adatait** (a partner nevét, az e-mail-címet, a telefonszámot és a céges értékesítő címét), valamint a **vállalat jóváhagyóját** (az egyén nevét, e-mail-címét és telefonszámát a vállalat döntéseinek jóváhagyása céljából).
+A kapcsolattartási adatok szakaszban megtekintheti a **közzétevő megjelenítendő nevét**, az **eladó kapcsolattartási adatait** (a partner nevét, az e-mail-címet, a telefonszámot és a céges értékesítő címét), valamint a **vállalat jóváhagyóját** (az egyén nevét, e-mail-címét és telefonszámát a vállalat döntéseinek jóváhagyása céljából).
 
 #### <a name="payout-account"></a>Kifizetési fiók
 
@@ -70,8 +72,8 @@ A kifizetési fiók beállítása:
 
 1. Lépjen a [kereskedelmi piactér – áttekintés lapra](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) a partner Centerben.
 2. A profil szakaszban a **kifizetési profil** mellett válassza a **frissítés** lehetőséget.
-3. **Válasszon fizetési módot** : bankszámla vagy PayPal.
-4. **Fizetési adatok hozzáadása** : Ez magában foglalhatja a fiók típusának (ellenőrzés vagy megtakarítás), a fiók tulajdonosának nevét, a fiók számát, valamint az útválasztási számot, a számlázási címet, a telefonszámot vagy a PayPal e-mail-címét. * Ha többet szeretne megtudni a PayPal használatáról a fiók fizetési módjaként, és annak megállapításához, hogy az támogatott-e a piaci régióban, tekintse meg a [PayPal](/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info)-információkat.
+3. **Válasszon fizetési módot**: bankszámla vagy PayPal.
+4. **Fizetési adatok hozzáadása**: Ez magában foglalhatja a fiók típusának (ellenőrzés vagy megtakarítás), a fiók tulajdonosának nevét, a fiók számát, valamint az útválasztási számot, a számlázási címet, a telefonszámot vagy a PayPal e-mail-címét. * Ha többet szeretne megtudni a PayPal használatáról a fiók fizetési módjaként, és annak megállapításához, hogy az támogatott-e a piaci régióban, tekintse meg a [PayPal](/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info)-információkat.
 
 > [!IMPORTANT]
 > A kifizetési fiók módosítása akár egy fizetési ciklusban is késleltetheti a befizetését. Ez a késleltetés azért fordul elő, mert ellenőrizni kell a fiók változását, ugyanúgy, mint a kifizetési fiók első beállításakor. A fiók ellenőrzése után továbbra is a teljes összegért kell fizetnie. a rendszer a jelenlegi fizetési ciklus miatt esedékes összes kifizetést hozzáadja a következőhöz.  
@@ -113,7 +115,7 @@ Miután beállította a kifizetési állapotot **a be** értékre, a rendszer mi
 
 ### <a name="devices"></a>Eszközök
 
-Az eszközkezelés beállításai csak a UWP-közzétételre érvényesek. [További információ](/windows/uwp/publish/manage-account-settings-and-profile#additional-settings-and-info).
+Az eszközkezelés beállításai csak a UWP-közzétételre érvényesek. [További információk](/windows/uwp/publish/manage-account-settings-and-profile#additional-settings-and-info).
 
 ### <a name="tracking-guids"></a>Követési GUID-azonosítók
 
@@ -172,10 +174,10 @@ Felhasználók hozzáadása a partner Center-fiókhoz, amely már szerepel a vá
 
 Új felhasználói fiókok létrehozásához [**globális rendszergazdai**](../../active-directory/roles/permissions-reference.md) jogosultságokkal rendelkező fiókkal kell rendelkeznie.
 
-1. Nyissa meg a **felhasználók** (a **Fiókbeállítások** szakaszban), válassza a **felhasználók hozzáadása** , majd az **új felhasználók létrehozása** lehetőséget.
+1. Nyissa meg a **felhasználók** (a **Fiókbeállítások** szakaszban), válassza a **felhasználók hozzáadása**, majd az **új felhasználók létrehozása** lehetőséget.
 1. Adja meg az összes új felhasználó utónevét, vezetéknevét és felhasználónevét. 
 1. Ha azt szeretné, hogy az új felhasználó globális rendszergazdai fiókkal rendelkezzen a szervezet címtárában, jelölje be a **felhasználó globális rendszergazdaként való megjelölése az Azure ad-ben jelölőnégyzetet az összes címtár-erőforrás teljes körű vezérlése mellett**. Ez teljes hozzáférést biztosít a felhasználónak a vállalat Azure AD összes felügyeleti funkciójához. A szervezet munkahelyi fiókjában (Azure AD-bérlő) lévő felhasználók hozzáadhatók és kezelhetők, bár nem a partner Centerben, hacsak nem a megfelelő szerepkört/engedélyeket adja meg a fióknak.
-1. Ha bejelölte a jelölőnégyzetet, hogy a **felhasználó globális rendszergazda legyen** , **Jelszó-helyreállítási e-mailt** kell megadnia a felhasználónak, ha szükséges.
+1. Ha bejelölte a jelölőnégyzetet, hogy a **felhasználó globális rendszergazda legyen**, **Jelszó-helyreállítási e-mailt** kell megadnia a felhasználónak, ha szükséges.
 1. A **csoporttagság** szakaszban válassza ki azokat a csoportokat, amelyekhez az új felhasználót be szeretné állítani.
 1. A **szerepkörök** szakaszban határozza meg a felhasználó szerepkör (eke) t vagy a testreszabott engedélyeket.
 1. Kattintson a **Mentés** gombra.
@@ -261,7 +263,7 @@ A vállalat Azure Active Directory már meglévő alkalmazások hozzáadásához
 
 ### <a name="add-new-azure-ad-applications"></a>Új Azure AD-alkalmazások hozzáadása
 
-Ha egy új Azure AD-alkalmazáshoz szeretne hozzáférést adni a partneri Központ számára, létrehozhat egyet a **felhasználók** szakaszban. Ezzel létrehoz egy új fiókot a munkahelyi munkafiókjában (Azure AD-bérlő), nem csupán a partner Center-fiókban. Ha elsődlegesen ezt az Azure AD-alkalmazást használja a fiókpartner-hitelesítéshez, és nincs szükség arra, hogy a felhasználók közvetlenül hozzáférjenek, megadhat bármely érvényes címet a **Válasz URL** -címéhez és az **alkalmazás-azonosító URI azonosítóhoz** , feltéve, hogy ezeket az értékeket nem használja más Azure ad-alkalmazás a címtárában.
+Ha egy új Azure AD-alkalmazáshoz szeretne hozzáférést adni a partneri Központ számára, létrehozhat egyet a **felhasználók** szakaszban. Ezzel létrehoz egy új fiókot a munkahelyi munkafiókjában (Azure AD-bérlő), nem csupán a partner Center-fiókban. Ha elsődlegesen ezt az Azure AD-alkalmazást használja a fiókpartner-hitelesítéshez, és nincs szükség arra, hogy a felhasználók közvetlenül hozzáférjenek, megadhat bármely érvényes címet a **Válasz URL** -címéhez és az **alkalmazás-azonosító URI azonosítóhoz**, feltéve, hogy ezeket az értékeket nem használja más Azure ad-alkalmazás a címtárában.
 
 1. A **felhasználók** lapon (a **Fiókbeállítások** alatt) válassza az **Azure ad-alkalmazások hozzáadása** lehetőséget.
 2. A következő lapon válassza az **új Azure ad-alkalmazás** lehetőséget.
@@ -316,7 +318,7 @@ Másik Azure AD-bérlő hozzárendelése a partner Center-fiókhoz:
 
 1. A **bérlők** lapon (a **Fiókbeállítások** alatt) válassza a **másik Azure ad-bérlő hozzárendelése** lehetőséget.
 2. Adja meg a hozzárendelni kívánt bérlő Azure AD-beli hitelesítő adatait.
-3. Tekintse át az Azure AD-bérlő szervezetének és tartománynevének nevét. A társítás befejezéséhez kattintson a **Confirm (megerősítés** ) gombra.
+3. Tekintse át az Azure AD-bérlő szervezetének és tartománynevének nevét. A társítás befejezéséhez kattintson a **Confirm (megerősítés**) gombra.
 
 Ha a társítás sikeres, akkor készen áll a fiók felhasználóinak hozzáadására és felügyeletére a partner Center **felhasználók** szakaszában.
 
@@ -326,9 +328,9 @@ Ha a társítás sikeres, akkor készen áll a fiók felhasználóinak hozzáad�
 
 1. A **bérlők** lapon (a **Fiókbeállítások** alatt) válassza az **új Azure ad-bérlő létrehozása** lehetőséget.
 2. Adja meg az új Azure AD-címtár adatait:
-    - **Tartománynév** : az Azure ad-tartományhoz használni kívánt egyedi név, a ". onmicrosoft.com" névvel együtt. Ha például a "példa" kifejezést adta meg, az Azure AD-tartománya "example.onmicrosoft.com" lesz.
+    - **Tartománynév**: az Azure ad-tartományhoz használni kívánt egyedi név, a ". onmicrosoft.com" névvel együtt. Ha például a "példa" kifejezést adta meg, az Azure AD-tartománya "example.onmicrosoft.com" lesz.
     - **Kapcsolattartó e-mail** címe: e-mail-cím, ahol szükség esetén felveheti a kapcsolatot a fiókjával.
-    - **Globális rendszergazdai felhasználói fiók adatai** : az új globális rendszergazdai fiókhoz használni kívánt keresztnév, vezetéknév, Felhasználónév és jelszó.
+    - **Globális rendszergazdai felhasználói fiók adatai**: az új globális rendszergazdai fiókhoz használni kívánt keresztnév, vezetéknév, Felhasználónév és jelszó.
 3. A **Létrehozás** gombra kattintva erősítse meg az új tartomány és fiókadatok adatait.
 4. A [felhasználók hozzáadásának és kezelésének](#manage-users)megkezdéséhez jelentkezzen be az új Azure ad globális rendszergazdai felhasználónevével és jelszavával.
 

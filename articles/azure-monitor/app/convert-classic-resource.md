@@ -3,18 +3,18 @@ title: Azure Monitor Application Insights klasszikus erőforrás migrálása mun
 description: Ismerje meg a Azure Monitor Application Insights klasszikus erőforrás új munkaterület-alapú modellre való frissítéséhez szükséges lépéseket.
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 0d2c7d1b9ee57e6d201205c04557e1b5f5623eb0
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 709cff1326bb6393a14c594ea434a6c16fb80860
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930577"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536523"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>Áttelepítés munkaterületen alapuló Application Insights erőforrásokra
 
 Ez az útmutató végigvezeti a klasszikus Application Insights erőforrásnak a munkaterület-alapú erőforrásba való áttelepítésének folyamatán. A munkaterület-alapú erőforrások a Application Insights és Log Analytics közötti teljes integrációt támogatják. A munkaterület-alapú erőforrások Application Insights telemetria küldenek egy közös Log Analytics munkaterületre, amely lehetővé teszi [a Azure monitor legújabb funkcióinak](#new-capabilities) elérését, miközben az alkalmazások, az infrastruktúra és a platformok naplóit egyetlen konszolidált helyen tartja.
 
-A munkaterület-alapú erőforrások lehetővé teszik a közös Role-Based Access Control (RBAC) használatát az erőforrások között, és szükségtelenné teszi az alkalmazások közötti vagy munkaterület-lekérdezések szükségességét.
+A munkaterület-alapú erőforrások lehetővé teszik a közös Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) az erőforrások között, és szükségtelenné teszi az alkalmazások közötti vagy munkaterület-lekérdezések szükségességét.
 
 **A munkaterület-alapú erőforrások jelenleg minden kereskedelmi régióban és az Egyesült Államok kormányzati szerveiben érhetők el**
 
@@ -201,7 +201,7 @@ A `Update-AzApplicationInsights` PowerShell-parancs jelenleg nem támogatja a kl
 
 A munkaterület-alapú Application Insights erőforrás létrehozása után módosíthatja a társított Log Analytics munkaterületet.
 
-A Application Insights erőforrás ablaktáblán válassza a **Tulajdonságok**  >  **változás munkaterület**  >  **log Analytics munkaterületek**lehetőséget.
+A Application Insights erőforrás ablaktáblán válassza a **Tulajdonságok**  >  **változás munkaterület**  >  **log Analytics munkaterületek** lehetőséget.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -219,11 +219,11 @@ Ha a hozzáférés-vezérlési mód nem módosítható biztonsági okokból az a
 
 A örökölt folyamatos exportálás funkció nem támogatott a munkaterület-alapú erőforrások esetében. Az áttelepítés előtt le kell tiltania a folyamatos exportálást.
 
-1. A Application Insights erőforrás nézetében a configure ( **Konfigurálás** ) fejléc alatt válassza a **folyamatos exportálás**lehetőséget.
+1. A Application Insights erőforrás nézetében a configure ( **Konfigurálás** ) fejléc alatt válassza a **folyamatos exportálás** lehetőséget.
 
     ![Folyamatos exportálás menüpont](./media/convert-classic-resource/continuous-export.png)
 
-2. Válassza a **Letiltás**lehetőséget.
+2. Válassza a **Letiltás** lehetőséget.
 
     ![Folyamatos exportálás letiltása gomb](./media/convert-classic-resource/disable.png)
 
@@ -237,7 +237,7 @@ A örökölt folyamatos exportálás funkció nem támogatott a munkaterület-al
 
 Az áttelepítés előtt nem kell módosítania az összes módosítást, de ez az üzenet arra figyelmezteti, hogy az aktuális Application Insights megőrzési beállításai nem az alapértelmezett 90 napos megőrzési időtartamra vannak beállítva. Ez a figyelmeztető üzenet azt jelenti, hogy módosítani szeretné a Log Analytics munkaterület megőrzési beállításait a Migrálás és az új adatok betöltésének megkezdése előtt. 
 
-A log Analytics aktuális megőrzési beállításait az **általános**használat szakaszban tekintheti meg,  >  a**becsült költségek**  >  **Data Retention** pedig az log Analytics felhasználói felületen. Ez a beállítás befolyásolja, hogy mennyi ideig tárolja a rendszer az új betöltött adatot, miután áttelepítette Application Insights erőforrását.
+A log Analytics aktuális megőrzési beállításait az **általános** használat szakaszban tekintheti meg,  >  a **becsült költségek**  >  **Data Retention** pedig az log Analytics felhasználói felületen. Ez a beállítás befolyásolja, hogy mennyi ideig tárolja a rendszer az új betöltött adatot, miután áttelepítette Application Insights erőforrását.
 
 ## <a name="next-steps"></a>Következő lépések
 

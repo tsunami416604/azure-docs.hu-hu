@@ -7,12 +7,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/30/2020
 ms.custom: mvc, contperfq1
-ms.openlocfilehash: 1a83385c7f384f7727a0fd10e238c6511950abfe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31dd33bd8805ffcc677d5f0e98e81f2fa9e91ee2
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612726"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95537050"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Egyéni KPI irányítópultok létrehozása az Azure Application Insights használatával
 
@@ -47,11 +47,11 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 Egyazon irányítópult több alkalmazáshoz, erőforráscsoporthoz és előfizetéshez tartozó erőforrásokat is tartalmazhat.  Az oktatóanyag első lépéseként hozzon létre egy új irányítópultot az alkalmazásához.  
 
-1. A Azure Portal bal oldali legördülő menüjében válassza az **irányítópult**lehetőséget.
+1. A Azure Portal bal oldali legördülő menüjében válassza az **irányítópult** lehetőséget.
 
     ![Az Azure Portal menüjének legördülő listája](media/tutorial-app-dashboards/dashboard-from-menu.png)
 
-2. Az irányítópult ablaktáblán válassza az **új irányítópult** , majd az **üres irányítópult**elemet.
+2. Az irányítópult ablaktáblán válassza az **új irányítópult** , majd az **üres irányítópult** elemet.
 
    ![Új irányítópult](media/tutorial-app-dashboards/new-dashboard.png)
 
@@ -74,7 +74,7 @@ A statikus szöveget tartalmazó irányítópultok nem nagyon érdekesek, ezért
 3. A "rögzítés az irányítópulton" lapon válassza ki, hogy melyik irányítópulton szeretné felvenni a csempét, vagy hozzon létre egy újat.
  
 3. A jobb felső sarokban egy értesítés jelenik meg, amelyet a csempe rögzített az irányítópulton.  Az értesítésben válassza a rögzített elemet az **irányítópultra** , hogy visszatérjen az irányítópulthoz, vagy használja az irányítópult ablaktáblát.
-4. Ezzel a csempével most már hozzá lesz adva az irányítópulthoz. A csempe elhelyezésének módosításához válassza a **Szerkesztés** lehetőséget. Jelölje ki és húzza a pozícióba, majd válassza a **kész Testreszabás**lehetőséget. Az irányítópulton ezzel már van egy olyan csempe, amely hasznos információkat tartalmaz.
+4. Ezzel a csempével most már hozzá lesz adva az irányítópulthoz. A csempe elhelyezésének módosításához válassza a **Szerkesztés** lehetőséget. Jelölje ki és húzza a pozícióba, majd válassza a **kész Testreszabás** lehetőséget. Az irányítópulton ezzel már van egy olyan csempe, amely hasznos információkat tartalmaz.
 
     [![Irányítópult szerkesztési módban](media/tutorial-app-dashboards/dashboard-edit-mode.png)](media/tutorial-app-dashboards/dashboard-edit-mode.png#lightbox)
 
@@ -92,7 +92,7 @@ A **Metrika** panel segítségével az Application Insights által gyűjtött me
 
 3.  A jobb felső sarokban egy értesítés jelenik meg, amelyet a csempe rögzített az irányítópulton. Az értesítésben válassza a rögzített elemet az **irányítópultra** , hogy visszatérjen az irányítópulthoz, vagy használja az irányítópult lapot.
 
-4. Ezzel a csempével most már hozzá lesz adva az irányítópulthoz. A csempe elhelyezésének módosításához válassza a **Szerkesztés** lehetőséget. Jelölje ki és húzza a csempét a pozícióba, majd válassza a **Testreszabás kész**lehetőséget.
+4. Ezzel a csempével most már hozzá lesz adva az irányítópulthoz. A csempe elhelyezésének módosításához válassza a **Szerkesztés** lehetőséget. Jelölje ki és húzza a csempét a pozícióba, majd válassza a **Testreszabás kész** lehetőséget.
 
 ## <a name="add-logs-query"></a>Naplók hozzáadása lekérdezés
 
@@ -126,16 +126,16 @@ Az Azure Application Insights-naplók részletes lekérdezési nyelvet biztosít
     [![Perecdiagram a fenti lekérdezéssel](media/tutorial-app-dashboards/logs-doughnut.png)](media/tutorial-app-dashboards/logs-doughnut.png#lightbox)
 
 6. Válassza a gombostű ikont, ![Gombostű ikon](media/tutorial-app-dashboards/pushpin.png) a jobb felső sarokban rögzítse a diagramot az irányítópulton, majd térjen vissza az irányítópultra.
-7. A lekérdezések eredményei most megjelennek az irányítópulton a választott formátumban. Jelölje ki és húzza az egyeseket pozícióba, majd válassza a **Testreszabás kész**lehetőséget.
+7. A lekérdezések eredményei most megjelennek az irányítópulton a választott formátumban. Jelölje ki és húzza az egyeseket pozícióba, majd válassza a **Testreszabás kész** lehetőséget.
 8. Válassza a ceruza ikont ![Ceruza ikon](media/tutorial-app-dashboards/pencil.png) minden címben adjon meg egy leíró címet.
 
 ## <a name="share-dashboard"></a>Irányítópult megosztása
 
 1. Az irányítópult tetején válassza a **megosztás** lehetőséget a módosítások közzétételéhez.
-2. Meghatározhat adott felhasználókat, akiknek hozzáférést kíván biztosítani az irányítópulthoz. További információ: Azure- [irányítópultok megosztása Role-Based Access Control használatával](../../azure-portal/azure-portal-dashboard-share-access.md).
+2. Meghatározhat adott felhasználókat, akiknek hozzáférést kíván biztosítani az irányítópulthoz. További információ: Azure- [irányítópultok megosztása az Azure szerepköralapú hozzáférés-vezérlés használatával](../../azure-portal/azure-portal-dashboard-share-access.md).
 3. Kattintson a **Publish** (Közzététel) elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerkedett az egyéni irányítópultok létrehozásával, tekintse át az Application Insights dokumentációját, amely egy esettanulmányt is tartalmaz.
 

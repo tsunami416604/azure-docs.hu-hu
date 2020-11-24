@@ -3,18 +3,18 @@ title: Új Azure Monitor Application Insights munkaterület-alapú erőforrás l
 description: Ismerkedjen meg az új Azure Monitor Application Insights munkaterület-alapú erőforrások engedélyezéséhez szükséges lépésekkel.
 ms.topic: conceptual
 ms.date: 10/06/2020
-ms.openlocfilehash: 9b91e5065729bee6af3f8018c36930e132eb1a15
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: ecbac02bcb4d9b4f0db36eab854a91366c774d6c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945413"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536914"
 ---
 # <a name="workspace-based-application-insights-resources"></a>Munkaterület-alapú Application Insights erőforrások
 
 A munkaterület-alapú erőforrások a Application Insights és Log Analytics közötti teljes integrációt támogatják. Most már elküldheti Application Insights telemetria egy közös Log Analytics munkaterületre, amely teljes hozzáférést biztosít Log Analytics összes szolgáltatásához, miközben az alkalmazások, az infrastruktúra és a platformok naplóit egyetlen konszolidált helyen tartja.
 
-Ez lehetővé teszi a közös Role-Based Access Control (RBAC) használatát az erőforrásokon, és kiküszöböli az alkalmazások közötti vagy munkaterület-lekérdezések szükségességét.
+Ez a közös Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC) is lehetővé teszi az erőforrások között, és kiküszöböli az alkalmazások közötti vagy munkaterület-lekérdezések szükségességét.
 
 > [!NOTE]
 > A munkaterületen alapuló Application Insights erőforrások adatfeldolgozása és megőrzése a Log Analytics munkaterületen történik, ahol az adatok találhatók. [További]( ./pricing.md#workspace-based-application-insights) információ a munkaterület-alapú Application Insights erőforrások számlázásáról.
@@ -207,9 +207,9 @@ A örökölt folyamatos exportálás funkció nem támogatott a munkaterület-al
 
 > [!NOTE]
 > A telemetria-exportáláshoz jelenleg nem számítunk fel további díjakat. A szolgáltatás díjszabási információi a [Azure monitor díjszabási oldalán](https://azure.microsoft.com/pricing/details/monitor/)érhetők el.  A számlázás megkezdése előtt a rendszer értesítést küld. Ha úgy dönt, hogy továbbra is használja <feature name> a hirdetményt, akkor a megfelelő díjszabás alapján számítjuk fel a díjat. 
- 
+ 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Metrikák böngészése](../platform/metrics-charts.md)
 * [Analytics-lekérdezések](../log-query/log-query-overview.md)

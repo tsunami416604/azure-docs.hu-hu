@@ -1,5 +1,5 @@
 ---
-title: Migrálás a kapcsolódási figyelőbe (előzetes verzió) a kapcsolódási figyelőből
+title: Migrálás a kapcsolódási figyelőbe a kapcsolódási figyelőből
 titleSuffix: Azure Network Watcher
 description: Megtudhatja, hogyan telepítheti át a kapcsolódási figyelőt a Csatlakozáskezelő szolgáltatásból.
 services: network-watcher
@@ -10,22 +10,18 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/20/2020
+ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: d785ecd48816150cd33d8e2f5fcce2ff36f1603f
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: eed68ff7e6b002e7a5985b336686b646a1a9acee
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985790"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522950"
 ---
-# <a name="migrate-to-connection-monitor-preview-from-connection-monitor-classic"></a>Migrálás a kapcsolódási figyelőbe (előzetes verzió) a kapcsolódási figyelőből (klasszikus)
+# <a name="migrate-to-connection-monitor-from-connection-monitor-classic"></a>Migrálás a Csatlakozáskezelő szolgáltatásból (klasszikus)
 
-A meglévő kapcsolódási figyelőket áttelepítheti új, továbbfejlesztett (előzetes verzió), és csak néhány kattintással és nulla állásidővel. További információ az előnyökről: a [kapcsolódási figyelő](./connection-monitor-overview.md).
-
-> [!IMPORTANT]
-> A Csatlakozáskezelő jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+A meglévő kapcsolódási figyelőket áttelepítheti új, továbbfejlesztett, néhány kattintással és nulla leállás után. További információ az előnyökről: a [kapcsolódási figyelő](./connection-monitor-overview.md).
 
 ## <a name="key-points-to-note"></a>Jegyezze fel a legfontosabb pontokat
 
@@ -33,7 +29,7 @@ Az áttelepítés a következő eredményeket segíti elő:
 
 * Az ügynökök és a tűzfalbeállítások ugyanúgy működnek, mint a. Nincs szükség módosításra. 
 * A meglévő kapcsolódási figyelők le vannak képezve a > a test Group > tesztelési formátumára. A **Szerkesztés** lehetőség kiválasztásával megtekintheti és módosíthatja az új kapcsolat figyelője tulajdonságait, letölthet egy sablont a kapcsolati figyelő módosításához, és beküldheti azt Azure Resource Manager használatával. 
-* Az Network Watcher bővítménnyel rendelkező Azure-beli virtuális gépek adatokat küldenek a munkaterületnek és a mérőszámoknak. A Csatlakozáskezelő az új metrikák (ChecksFailedPercent [előzetes verzió] és RoundTripTimeMs [előzetes verzió]) révén elérhetővé teszi az adatokat a régi metrikák (ProbesFailedPercent és AverageRoundtripMs) helyett. 
+* Az Network Watcher bővítménnyel rendelkező Azure-beli virtuális gépek adatokat küldenek a munkaterületnek és a mérőszámoknak. A Csatlakozáskezelő az új metrikák (ChecksFailedPercent és RoundTripTimeMs) révén elérhetővé teszi az adatokat a régi metrikák (ProbesFailedPercent és AverageRoundtripMs) helyett. 
 * Adatfigyelés:
    * **Riasztások**: a rendszer automatikusan áttelepíti az új metrikákat.
    * **Irányítópultok és integrációk**: a beállított mérőszámok manuális szerkesztését igényli. 

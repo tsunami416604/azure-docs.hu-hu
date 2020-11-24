@@ -1,5 +1,5 @@
 ---
-title: Csatlakozáskezelő (előzetes verzió) az Azure-ban | Microsoft Docs
+title: Figyelő az Azure-ban | Microsoft Docs
 description: Ismerje meg, hogyan figyelheti a hálózati kommunikációt egy elosztott környezetben a kapcsolatkezelő használatával.
 services: network-watcher
 documentationcenter: na
@@ -12,24 +12,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/27/2020
+ms.date: 11/23/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: cb24cc55844d7c42d68e75d6f6ef947b1315a306
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: c5c3f8dedad47a819ce3648a0b81ffa3e65a1a1e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984362"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544887"
 ---
-# <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>Hálózati kapcsolat figyelése a kapcsolat figyelője (előzetes verzió)
+# <a name="network-connectivity-monitoring-with-connection-monitor"></a>Hálózati kapcsolat figyelése a kapcsolat figyelője szolgáltatással
 
 A kapcsolódási figyelő egységes végpontok közötti kapcsolatok figyelését teszi lehetővé az Azure Network Watcherban. A kapcsolódási figyelő funkció támogatja a hibrid és az Azure-beli Felhőbeli üzembe helyezést. A Network Watcher eszközöket biztosít az Azure-környezetek kapcsolattal kapcsolatos metrikáinak figyelésére, diagnosztizálására és megtekintésére.
 
-> [!IMPORTANT]
-> A Csatlakozáskezelő jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-> Íme néhány használati eset a kapcsolatkezelő esetében:
+Íme néhány használati eset a kapcsolatkezelő esetében:
 
 - Az előtér-webkiszolgáló virtuális gépe egy adatbázis-kiszolgáló virtuális géppel kommunikál egy többrétegű alkalmazásban. Szeretné megtekinteni a két virtuális gép közötti hálózati kapcsolatot.
 - Azt szeretné, hogy az USA keleti régiójában lévő virtuális gépek Pingelje a virtuális gépeket az USA középső régiójában, és szeretné összehasonlítani a régiók közötti hálózati késéseket.
@@ -134,10 +131,10 @@ A tesztelési csoportba felvett összes forrás, cél és tesztelési konfigurá
 | 6 | B | T | 2. konfiguráció |
 | 7 | B | E | 1. konfiguráció |
 | 8 | B | E | 2. konfiguráció |
-| 9 | C | T | 1. konfiguráció |
-| 10 | C | T | 2. konfiguráció |
-| 11 | C | E | 1. konfiguráció |
-| 12 | C | E | 2. konfiguráció |
+| 9 | C# | T | 1. konfiguráció |
+| 10 | C# | T | 2. konfiguráció |
+| 11 | C# | E | 1. konfiguráció |
+| 12 | C# | E | 2. konfiguráció |
 
 ### <a name="scale-limits"></a>Skálázási korlátok
 
@@ -274,7 +271,7 @@ A kapcsolatok figyelése előtt létrehozott AverageRoundtripMs a következő n�
 
 Metrikák használata esetén állítsa be az erőforrástípust a Microsoft. Network/networkWatchers/connectionMonitors
 
-| Metric | Megjelenített név | Egység | Összesítés típusa | Description | Dimenziók |
+| Metric | Megjelenített név | Egység | Összesítés típusa | Leírás | Dimenziók |
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent | %-Os mintavétel sikertelen | Százalék | Átlag | A kapcsolat figyelési mintavételének százalékos aránya meghiúsult. | Nincsenek méretek |
 | AverageRoundtripMs | Átlagos menetidő (MS) | Ezredmásodpercben | Átlag | A forrás és a cél között eljuttatott kapcsolat-figyelési mintavételek átlagos hálózati RTT. |             Nincsenek méretek |

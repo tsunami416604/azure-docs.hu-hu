@@ -4,13 +4,13 @@ description: A Language Understanding (LUIS) alkalmazás karbantartása a verzi�
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/28/2020
-ms.openlocfilehash: 9e322ac89d8ecad93c2002aa302c155f895911f4
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 11/18/2020
+ms.openlocfilehash: cf5c88df4e2ac6b95e99a3a78b1bf1e45bf534ed
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019194"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95535554"
 ---
 # <a name="devops-practices-for-luis"></a>DevOps eljárások a LUIS számára
 
@@ -53,7 +53,7 @@ A LUIS-alkalmazás `.lu` formátumba való mentéséhez és a verziókövetés a
 - VAGY: egy szövegszerkesztővel hozzon létre egy `.lu` fájlt a Luis-alkalmazáshoz, és adja hozzá a forrás-ellenőrzési adattárhoz
 
 > [!TIP]
-> Ha a LUIS-alkalmazás JSON-exportálásával dolgozik, a [botbuilder témakörben-Tools Luis CLI](https://github.com/microsoft/botbuilder-tools/tree/master/packages/LUIS)használatával [átalakíthatja a LUDown](https://github.com/microsoft/botframework-cli/tree/master/packages/luis#bf-luisconvert) . Ezzel a `--sort` beállítással biztosíthatja, hogy a szándékok és a hosszúságú kimondott szöveg betűrendben legyenek rendezve.  
+> Ha a LUIS-alkalmazás JSON-exportálásával dolgozik, [átalakíthatja a LUDown](https://github.com/microsoft/botframework-cli/tree/master/packages/luis#bf-luisconvert).  Ezzel a `--sort` beállítással biztosíthatja, hogy a szándékok és a hosszúságú kimondott szöveg betűrendben legyenek rendezve.  
 > Vegye figyelembe, hogy a **.** A Luis-portálba épített Lu-exportálási képesség már rendezi a kimenetet.
 
 ### <a name="build-the-luis-app-from-source"></a>A LUIS-alkalmazás létrehozása a forrástól

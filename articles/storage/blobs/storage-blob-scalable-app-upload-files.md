@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/08/2019
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: dd87e1a9bcff55813dff420976df58351386fb34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dc1f8b8a7c46a3d6ad6f62d93bc91753e42c3ae
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75371938"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545040"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Nagy mennyiségű véletlenszerű adat párhuzamos feltöltése az Azure Storage-ba
 
@@ -23,7 +23,7 @@ A sorozat második részében az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Kapcsolati sztring konfigurálása
 > * Az alkalmazás létrehozása
-> * Az alkalmazás futtatása
+> * Alkalmazás futtatása
 > * A kapcsolatok számának ellenőrzése
 
 Az Azure Blob Storage skálázható szolgáltatást biztosít adatainak tárolásához. Ahhoz, hogy az alkalmazás a lehető legjobb teljesítménnyel működhessen, ajánlatos megismerkedni a Blob Storage működésével. Az Azure-Blobok korlátainak ismerete fontos, ha többet szeretne megtudni ezekről a korlátokról, látogasson el a [blob Storage méretezhetőségi és teljesítménybeli céljaira](../blobs/scalability-targets.md).
@@ -52,7 +52,7 @@ setx storageconnectionstring "<storageConnectionString>" /m
 
 Ha végzett, nyissa meg újból a **parancssort**, lépjen be a `D:\git\storage-dotnet-perf-scale-app` mappába, és gépelje be a következő parancsot az alkalmazás buildeléséhez: `dotnet build`.
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
 Nyissa meg a `D:\git\storage-dotnet-perf-scale-app` címet.
 
@@ -62,7 +62,7 @@ Az alkalmazás futtatásához írja be a következőt: `dotnet run`. A `dotnet` 
 dotnet run
 ```
 
-Az alkalmazás öt, véletlenszerűen elnevezett tárolót hoz létre, és megkezdi az átmeneti könyvtárban lévő fájlok feltöltését a tárfiókba. Az alkalmazás a szálak minimális számát 100-ra állítja, a [DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit(v=vs.110).aspx) változó értékét pedig 100-ra annak érdekében, hogy az alkalmazás futtatása közben nagy számú párhuzamosan futó kapcsolat legyen futtatható.
+Az alkalmazás öt, véletlenszerűen elnevezett tárolót hoz létre, és megkezdi az átmeneti könyvtárban lévő fájlok feltöltését a tárfiókba. Az alkalmazás a szálak minimális számát 100-ra állítja, a [DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit) változó értékét pedig 100-ra annak érdekében, hogy az alkalmazás futtatása közben nagy számú párhuzamosan futó kapcsolat legyen futtatható.
 
 A szálkezelési és a kapcsolati korlátozások beállításán felül az [UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync) metódus [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) beállítása úgy van konfigurálva, hogy párhuzamosságot használjon és letiltsa az MD5-kivonat érvényesítését. A fájlok feltöltése 100 MB méretű blokkokban történik. Ez a konfiguráció jobb teljesítményt biztosít, a használata azonban gyengén teljesítő hálózaton nem ajánlott, mert hiba esetén a teljes 100 MB-os blokk feltöltését újra kell kezdeni.
 
@@ -180,14 +180,14 @@ C:\>netstat -a | find /c "blob:https"
 C:\>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A sorozat második részében megismerkedett a nagy mennyiségű véletlenszerű adat tárfiókba történő párhuzamos feltöltésével, többek között a következőkkel:
 
 > [!div class="checklist"]
 > * Kapcsolati sztring konfigurálása
 > * Az alkalmazás létrehozása
-> * Az alkalmazás futtatása
+> * Alkalmazás futtatása
 > * A kapcsolatok számának ellenőrzése
 
 A sorozat harmadik részében nagy mennyiségű adatot fog letölteni egy tárfiókból.

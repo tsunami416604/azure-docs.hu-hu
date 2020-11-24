@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: 6ee6d88b5247209d5628c7f85f1985507d53811d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 2e5edb0ccf20ab0dba14864487f2b2ddef7d57e7
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913721"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544207"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure Private-hivatkozás – gyakori kérdések (GYIK)
 
@@ -20,8 +20,8 @@ ms.locfileid: "92913721"
 
 ### <a name="what-is-azure-private-endpoint-and-azure-private-link-service"></a>Mi az Azure Private Endpoint és az Azure Private link Service?
 
-- **[Azure Private-végpont](private-endpoint-overview.md)** : az Azure Private Endpoint egy olyan hálózati adapter, amely az Azure Private-kapcsolaton keresztüli szolgáltatáshoz kapcsolódóan és biztonságosan csatlakozik az Ön számára. A privát végpontok használatával kapcsolódhat egy olyan Azure Pásti szolgáltatáshoz, amely támogatja a privát vagy a saját privát kapcsolati szolgáltatását.
-- **[Azure Private link Service](private-link-service-overview.md)** : az Azure Private link Service szolgáltató által létrehozott szolgáltatás. Jelenleg egy magánhálózati kapcsolati szolgáltatás csatlakoztatható egy standard Load Balancer előtérbeli IP-konfigurációjához. 
+- **[Azure Private-végpont](private-endpoint-overview.md)**: az Azure Private Endpoint egy olyan hálózati adapter, amely az Azure Private-kapcsolaton keresztüli szolgáltatáshoz kapcsolódóan és biztonságosan csatlakozik az Ön számára. A privát végpontok használatával kapcsolódhat egy olyan Azure Pásti szolgáltatáshoz, amely támogatja a privát vagy a saját privát kapcsolati szolgáltatását.
+- **[Azure Private link Service](private-link-service-overview.md)**: az Azure Private link Service szolgáltató által létrehozott szolgáltatás. Jelenleg egy magánhálózati kapcsolati szolgáltatás csatlakoztatható egy standard Load Balancer előtérbeli IP-konfigurációjához. 
 
 ### <a name="how-is-traffic-being-sent-when-using-private-link"></a>Hogyan történik a forgalom küldése a privát hivatkozás használatakor?
 A forgalmat a Microsoft gerincen keresztül küldjük el. Nem halad át az interneten. Az Azure Private link nem tárolja az ügyféladatokat.
@@ -69,8 +69,8 @@ Igen. Egy privát kapcsolati szolgáltatás több privát végpontról is fogadh
 ### <a name="how-should-i-control-the-exposure-of-my-private-link-service"></a>Hogyan szabályozható a privát kapcsolati szolgáltatás expozíciója?
 Az expozíciót a magánjellegű kapcsolat szolgáltatás láthatósági konfigurációjának használatával szabályozhatja. A láthatóság három beállítást támogat:
 
-- A nem csak a **RBAC-hozzáféréssel** rendelkező előfizetések megkereshetik a szolgáltatást. 
-- **Restrictive** A csak a jóváhagyott és a RBAC hozzáféréssel rendelkező előfizetések megkereshetik a szolgáltatást. 
+- A nem csak az Azure **RBAC-hozzáféréssel** rendelkező előfizetések megkereshetik a szolgáltatást. 
+- **Restrictive** A csak a jóváhagyott és az Azure RBAC hozzáféréssel rendelkező előfizetések megkereshetik a szolgáltatást. 
 - **Minden** – mindenki megtalálja a szolgáltatást. 
  
 ### <a name="can-i-create-a-private-link-service-with-basic-load-balancer"></a>Létrehozhatok egy alapszintű Load balancert tartalmazó privát hivatkozási szolgáltatást? 

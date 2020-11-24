@@ -3,12 +3,12 @@ title: Horizont üzembe helyezése az Azure VMware-megoldáson
 description: Ismerje meg, hogyan helyezhet üzembe VMware horizontot az Azure VMware-megoldáson.
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: fb5e5b4c5f5da4c140f8d3575b963545f3a57db8
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 6d5d8e12e358e2289128af9840660be18f5f217a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423103"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95537441"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Horizont üzembe helyezése az Azure VMware-megoldáson 
 
@@ -140,22 +140,6 @@ A táblázatok a VSI és a munkavégző munkaterhelések esetében az általáno
 
 :::image type="content" source="media/horizon/common-vdi-profiles-vsi-workloads-power.png" alt-text="Általános VDI-profilok táblázata a VMware Horizon-hez a bejelentkezési VSI-munkavégző munkaterhelések esetén" lightbox="media/horizon/common-vdi-profiles-vsi-workloads-power.png" border="false":::
 
-### <a name="azure-vmware-solution-host-instance"></a>Azure VMware Solution Host-példány
-
-* PowerEdge R640-kiszolgáló – DSS korlátozás
-
-* 36 mag \@ 2.3 GHz
-
-* 576 – GB RAM
-
-* HBA330 12 Gbps SAS HBA vezérlő (nem RAID)
-
-* 1,92 TB SSD SATA-kombináció 6 GB/s 512 2.5-ös verzióban használható a gyors plug AG-meghajtón, 3 DWPD, 10512 TBW
-
-* Intel 1,6 TB, NVMe, vegyes használat Express Flash, 2,5 SFF Drive, U. 2, P4600 a Carriertel
-
-* 2 vSAN: 1,6 x 4 (1.92 TB)
-
 ### <a name="horizon-sizing-inputs"></a>Horizont méretezési bemenetei
 
 A következőképpen kell összegyűjtenie a tervezett munkaterhelést:
@@ -224,5 +208,5 @@ A standard telepítési architektúra alapján a horizont infrastruktúra virtu�
 
 Az infrastruktúra virtuálisgép \$ -díja havonta 0,36, a fenti példában szereplő 2 000-Desktop üzembe helyezés esetén. Ez a példa az USA keleti Azure-példányának 2020-es díjszabását használja. A díjszabás a régiótól, a kiválasztott beállításoktól és az Időzítéstől függően változhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni az Azure VMware-megoldással kapcsolatos VMware Horizontról, olvassa el a [VMware Horizon – gyakori kérdések](https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/products/horizon/vmw-horizon-on-microsoft-azure-vmware-solution-faq.pdf)című témakört.

@@ -9,12 +9,12 @@ ms.date: 11/16/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 906df01587201561fbbfea0661d0885864042925
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: ddd19c90c8c47016497e2c3b00e04595a94e7715
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701313"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543068"
 ---
 # <a name="list-blobs-with-net"></a>Blobok listázása .NET-tel
 
@@ -61,7 +61,7 @@ A Blobok listájának szűréséhez a paraméterhez meg kell adni egy karakterl�
 
 A blob metaadatait az eredményekkel adhatja vissza.
 
-- Ha a .NET V12 SDK-t használja, akkor a [BlobTraits](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits) enumerálás **metaadat** értékét kell megadnia.
+- Ha a .NET V12 SDK-t használja, akkor a [BlobTraits](/dotnet/api/azure.storage.blobs.models.blobtraits) enumerálás **metaadat** értékét kell megadnia.
 
 - Ha a .NET v11 SDK-t használja, akkor a [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) enumerálás **metaadat** értékét kell megadnia. Az Azure Storage tartalmazza az összes visszaadott blob metaadatait, így nem kell meghívnia a kontextus egyik **FetchAttributes** metódusát a blob metaadatainak lekéréséhez.
 

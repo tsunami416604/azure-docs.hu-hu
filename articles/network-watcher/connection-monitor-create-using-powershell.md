@@ -1,5 +1,5 @@
 ---
-title: Csatlakozáskezelő létrehozása (előzetes verzió) – PowerShell
+title: Csatlakozáskezelő létrehozása – PowerShell
 titleSuffix: Azure Network Watcher
 description: Ismerje meg, hogyan hozhatja létre a kapcsolódási figyelőt a PowerShell használatával.
 services: network-watcher
@@ -10,22 +10,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/30/2020
+ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: b1ffce75d5c38177c70db3ec1fc024a01821d3ab
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 1a554177bf7084b9a7f4c413dbe82271b3ab6b3a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984243"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545533"
 ---
-# <a name="create-a-connection-monitor-preview-using-powershell"></a>Csatlakozáskezelő (előzetes verzió) létrehozása a PowerShell használatával
+# <a name="create-a-connection-monitor-using-powershell"></a>Figyelő létrehozása a PowerShell használatával
 
 Ismerje meg, hogyan hozhat létre kapcsolati figyelőt az erőforrások közötti kommunikáció figyeléséhez a PowerShell használatával.
 
-> [!IMPORTANT]
-> A Csatlakozáskezelő jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="before-you-begin"></a>Előkészületek 
 

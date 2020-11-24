@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
-ms.date: 7/14/2020
-ms.openlocfilehash: 653e6aad7f57b4d683f2f71ed22e402ed5d1fca8
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.date: 11/19/2020
+ms.openlocfilehash: a20c495553dfe9a16c34a2972575d21cc95eef44
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630294"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95537135"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>A Microsoft Business Applications független szoftverszállítói (ISV) Connect programjának előkészítési útmutatója
 
@@ -38,7 +38,7 @@ A programban való részvételhez meg kell vizsgálnia és el kell fogadnia a [B
 > Ehhez a lépéshez a fiókhoz tartozó *tulajdonosi* vagy *felettesi* szerepkörre van szükség a jogi szerződések aláírásához.
 
 1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard).
-1. Válassza a **Beállítások** (fogaskerék ikon), majd a **fejlesztői beállítások** elemet.
+1. Válassza a **Beállítások** (fogaskerék ikon) > **Fiókbeállítások** lehetőséget.
 1. Válassza a **szerződések** lehetőséget.
 1. Válassza ki a verzió hivatkozást, és tekintse meg a szerződést.
 1. A szerződés elfogadásához és elfogadásához válassza a **Szerződés elfogadása** lehetőséget.
@@ -51,8 +51,8 @@ Számlázási információk beállítása a Business Applications ISV csatlakoz�
 > Ehhez a lépéshez a fiókhoz tartozó *tulajdonosi* vagy *felettesi* szerepkör szükséges a számlázási információk frissítéséhez.
 
 1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard).
-1. Válassza a **Beállítások** (fogaskerék ikon), majd a **fejlesztői beállítások** elemet.
-1. A **Fiókbeállítások** területen válassza a **Számlázási profil** lehetőséget.
+1. Válassza a **Beállítások** (fogaskerék ikon) > **Fiókbeállítások** lehetőséget.
+1. A **szervezeti profil** területen válassza a **Számlázási profil** elemet, majd a **fejlesztő** lapot.
 1. Tekintse át az elsődleges kapcsolattartási és számlázási adatokat, amelyek a jogi személyből vannak feltöltve.
 1. A módosítások elvégzéséhez válassza a **frissítés** lehetőséget.
 1. Ha alkalmazható, adja meg az adóazonosító/ÁFA-azonosító beállításait.
@@ -73,7 +73,7 @@ A Business Applications ISV kapcsolódási programban való regisztráció utols
 > [!IMPORTANT]
 > 6 havonta újra hitelesítenie kell az alkalmazásait, hogy azok élő AppSource maradjanak. Részletekért lásd: Marketplace Policy [kereskedelmi piactér – minősítési házirendek](/legal/marketplace/certification-policies).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Kérje a fiókkezelő segítségét, vagy forduljon a [Microsoft partner támogatási szolgálatához](https://aka.ms/marketplacepublishersupport) a fiókjával kapcsolatos segítségért. Az Business Applications ISV csatlakozási program általános információit a következő témakörben tekintheti meg:
 

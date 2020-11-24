@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 352c057a74d1be5f440041b9f13127e8730edf82
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 4252e3a7f8c3ff9d0ec782a2a9222553c063463c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698070"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95533276"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS-fürt konfigurálása
 
@@ -237,47 +237,28 @@ az aks nodepool add --name gen2 --cluster-name myAKSCluster --resource-group myR
 Ha normál Gen1-csomópont-készleteket szeretne létrehozni, ezt az egyéni címke kihagyása mellett teheti meg `--aks-custom-headers` .
 
 
-## <a name="ephemeral-os-preview"></a>Ideiglenes operációs rendszer (előzetes verzió)
+## <a name="ephemeral-os"></a>Ideiglenes operációs rendszer
 
-Alapértelmezés szerint az Azure-beli virtuális gépek operációsrendszer-lemezét a rendszer automatikusan replikálja az Azure Storage-ba, így elkerülhető, hogy a virtuális gépnek másik gazdagépre kell áthelyeznie az adatvesztést. Mivel azonban a tárolók nem rendelkeznek helyi állapottal, ez a viselkedés korlátozott értéket kínál, miközben némi hátrányt biztosít, beleértve a csomópontok kiosztását és a magasabb olvasási/írási késést.
+Alapértelmezés szerint az Azure automatikusan replikálja egy virtuális gép operációsrendszer-lemezét az Azure Storage-ba, hogy elkerülje az adatvesztést, ha a virtuális gépet át kell helyezni egy másik gazdagépre. Mivel azonban a tárolók nem rendelkeznek helyi állapottal, ez a viselkedés korlátozott értéket kínál, miközben némi hátrányt biztosít, beleértve a csomópontok kiosztását és a magasabb olvasási/írási késést.
 
 Ezzel szemben az elmúló operációsrendszer-lemezeket csak a gazdagép tárolja, ugyanúgy, mint egy ideiglenes lemezzel. Ez alacsonyabb olvasási/írási késést biztosít, valamint a csomópontok gyorsabb skálázását és a fürtök frissítését.
 
 Az ideiglenes lemezhez hasonlóan a virtuális gép ára is tartalmaz egy időszakos operációsrendszer-lemezt, így további tárolási költségek nem merülnek fel.
 
-Regisztrálja a `EnableEphemeralOSDiskPreview` szolgáltatást:
+> [!IMPORTANT]
+>Ha a felhasználó nem ad ki explicit módon felügyelt lemezeket az operációs rendszer számára, az alapértelmezett érték az elmúló operációs rendszer, ha lehetséges, az adott nodepool-konfigurációhoz.
 
-```azurecli
-az feature register --name EnableEphemeralOSDiskPreview --namespace Microsoft.ContainerService
-```
+Az ideiglenes operációs rendszer használatakor az operációsrendszer-lemeznek a virtuális gép gyorsítótárába kell illeszkednie. A virtuális gépek gyorsítótárának mérete az IO-forgalom ("gyorsítótár mérete a GiB-ban") mellett zárójelben érhető el az [Azure dokumentációjában](../virtual-machines/dv3-dsv3-series.md) .
 
-Több percet is igénybe vehet, amíg az állapot **regisztrálva** jelenik meg. A regisztrációs állapotot az az [Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) parancs használatával tekintheti meg:
+A VM alapértelmezett virtuálisgép-méretének használata Standard_DS2_v2 az operációsrendszer-lemez alapértelmezett mérete 100 GB példaként, ez a virtuálisgép-méret támogatja az elmúló operációs rendszert, de csak a gyorsítótár 86GB rendelkezik. Ez a konfiguráció alapértelmezés szerint a felügyelt lemezeket fogja megadni, ha a felhasználó nem ad meg explicit módon. Ha egy felhasználó explicit módon kérelmezte az ideiglenes operációs rendszert, akkor a rendszer érvényesítési hibát kapna.
 
-```azurecli
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEphemeralOSDiskPreview')].{Name:name,State:properties.state}"
-```
+Ha egy felhasználó ugyanazokat a Standard_DS2_v2 60GB operációsrendszer-lemezzel kéri, akkor ez a konfiguráció alapértelmezés szerint elmúló operációs rendszert igényel: a 60GB kért mérete kisebb, mint a 86GB maximális gyorsítótár-mérete.
 
-Ha az állapot regisztrálva értékre van állítva, frissítse az `Microsoft.ContainerService` erőforrás-szolgáltató regisztrációját az az [Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) paranccsal:
+Ha Standard_D8s_v3t használ a 100 GB operációsrendszer-lemezzel, ez a virtuálisgép-méret támogatja az elmúló operációs rendszert, és 200GB a gyorsítótár területe. Ha a felhasználó nem adja meg az operációsrendszer-lemez típusát, a nodepool alapértelmezés szerint az elmúló operációs rendszert fogja kapni. 
 
-```azurecli
-az provider register --namespace Microsoft.ContainerService
-```
+Az elmúló operációs rendszerhez az Azure CLI legalább 2.15.0 kell rendelkeznie.
 
-Az időszakos operációs rendszerhez legalább az AK-előnézet CLI-bővítmény 0.4.63 van szükség.
-
-A következő Azure CLI-parancsokkal telepítheti az AK-előnézeti CLI-bővítményt:
-
-```azurecli
-az extension add --name aks-preview
-```
-
-A következő Azure CLI-parancsokkal frissítheti az AK-előnézeti CLI-bővítményt:
-
-```azurecli
-az extension update --name aks-preview
-```
-
-### <a name="use-ephemeral-os-on-new-clusters-preview"></a>Ideiglenes operációs rendszer használata új fürtökön (előzetes verzió)
+### <a name="use-ephemeral-os-on-new-clusters"></a>Ideiglenes operációs rendszer használata új fürtökön
 
 Konfigurálja úgy a fürtöt, hogy az elmúló operációsrendszer-lemezeket használja a fürt létrehozásakor. A `--node-osdisk-type` jelzővel állíthatja be az ideiglenes operációs rendszert az új fürt operációsrendszer-lemezének típusaként.
 
@@ -285,9 +266,9 @@ Konfigurálja úgy a fürtöt, hogy az elmúló operációsrendszer-lemezeket ha
 az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --node-osdisk-type Ephemeral
 ```
 
-Ha a hálózathoz csatlakoztatott operációsrendszer-lemezeket használó normál fürtöt szeretne létrehozni, ezt az egyéni címke kihagyása `--node-osdisk-type` vagy a megadásával teheti meg `--node-osdisk-type=Managed` . Azt is megteheti, hogy az alábbi módon további elmúló operációsrendszer-csomópont-készleteket ad hozzá.
+Ha a hálózatra csatlakoztatott operációsrendszer-lemezekkel szeretne normál fürtöt létrehozni, ezt megadhatja `--node-osdisk-type=Managed` . Azt is megteheti, hogy az alábbi módon további elmúló operációsrendszer-csomópont-készleteket ad hozzá.
 
-### <a name="use-ephemeral-os-on-existing-clusters-preview"></a>Ideiglenes operációs rendszer használata meglévő fürtökön (előzetes verzió)
+### <a name="use-ephemeral-os-on-existing-clusters"></a>Ideiglenes operációs rendszer használata meglévő fürtökön
 Új csomópont-készlet beállítása az ideiglenes operációsrendszer-lemezek használatára. Használja a `--node-osdisk-type` jelzőt az operációsrendszer-lemez típusaként az adott csomópont operációsrendszer-lemezének típusaként.
 
 ```azurecli
@@ -297,7 +278,7 @@ az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-grou
 > [!IMPORTANT]
 > Az elmúló operációs rendszerrel a virtuális gépek és a példányok rendszerképeinek üzembe helyezése a virtuális gép gyorsítótárának méretétől függetlenül végezhető el. Az AK esetében az alapértelmezett csomópont operációsrendszer-lemez konfigurációja 100GiB használ, ami azt jelenti, hogy olyan virtuálisgép-méretre van szüksége, amelynek a gyorsítótára nagyobb, mint 100 GiB. Az alapértelmezett Standard_DS2_v2 gyorsítótárának mérete 86 GiB, ami nem elég nagy. A Standard_DS3_v2 gyorsítótárának mérete 172 GiB, ami elég nagy. A használatával csökkentheti az operációsrendszer-lemez alapértelmezett méretét is `--node-osdisk-size` . Az AK-lemezképek minimális mérete 30GiB. 
 
-Ha hálózattal csatlakoztatott operációsrendszer-lemezekkel rendelkező csomópont-készleteket szeretne létrehozni, ezt az egyéni címke kihagyása mellett teheti meg `--node-osdisk-type` .
+Ha hálózattal csatlakoztatott operációsrendszer-lemezekkel rendelkező csomópont-készleteket szeretne létrehozni, ezt megadhatja a következővel: `--node-osdisk-type Managed` .
 
 ## <a name="custom-resource-group-name"></a>Egyéni erőforráscsoport neve
 

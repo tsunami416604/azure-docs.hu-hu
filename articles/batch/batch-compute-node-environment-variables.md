@@ -3,12 +3,12 @@ title: Feladat-futtatókörnyezet környezeti változói
 description: A feladat futásidejű környezeti változóinak útmutatója és referenciája Azure Batch elemzésekhez.
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 6b8ade312146802ede6e12181a082a8fcd3842fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2cab5011eb04586dc361bf1cec9c1f162d70117
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85960911"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95538529"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Azure Batch futtatókörnyezet környezeti változói
 
@@ -18,13 +18,13 @@ A környezeti változók batch használatával történő használatáról tová
 
 ## <a name="environment-variable-visibility"></a>Környezeti változó láthatósága
 
-Ezek a környezeti változók csak a **feladat felhasználójának**kontextusában láthatók, azon a csomóponton lévő felhasználói fióknál, amely alatt a feladat végre lett hajtva. Ha RDP vagy SSH segítségével [távolról csatlakozik](./error-handling.md#connect-to-compute-nodes) a számítási csomóponthoz, ezek a környezeti változók *nem* fognak megjelenni. Ez azért van, mert a távoli kapcsolat kialakításához használt felhasználói fiók nem egyezik a tevékenységhez használt fiókkal.
+Ezek a környezeti változók csak a **feladat felhasználójának** kontextusában láthatók, azon a csomóponton lévő felhasználói fióknál, amely alatt a feladat végre lett hajtva. Ha RDP vagy SSH segítségével [távolról csatlakozik](./error-handling.md#connect-to-compute-nodes) a számítási csomóponthoz, ezek a környezeti változók *nem* fognak megjelenni. Ez azért van, mert a távoli kapcsolat kialakításához használt felhasználói fiók nem egyezik a tevékenységhez használt fiókkal.
 
 Egy környezeti változó aktuális értékének lekéréséhez indítson el `cmd.exe` egy Windows számítási csomóponton vagy `/bin/sh` egy Linux-csomóponton:
 
 `cmd /c set <ENV_VARIABLE_NAME>`
 
-`/bin/sh printenv <ENV_VARIABLE_NAME>`
+`/bin/sh -c "printenv <ENV_VARIABLE_NAME>"`
 
 ## <a name="command-line-expansion-of-environment-variables"></a>Környezeti változók parancssori bővítése
 
@@ -32,7 +32,7 @@ A számítási csomópontokon végzett feladatok által végrehajtott parancssor
 
 `cmd /c MyTaskApplication.exe %MY_ENV_VAR%`
 
-`/bin/sh -c MyTaskApplication $MY_ENV_VAR`
+`/bin/sh -c "MyTaskApplication $MY_ENV_VAR"`
 
 ## <a name="environment-variables"></a>Környezeti változók
 

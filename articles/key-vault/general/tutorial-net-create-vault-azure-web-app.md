@@ -10,18 +10,18 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 77845a91ed2d185c0fe05e2f40e53b2edf3d1ca7
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 4ed999e282aa9bcd80b000f3db2ecf9a8386a489
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741395"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95537951"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>Oktatóanyag: felügyelt identitás használata a Key Vault Azure-webalkalmazáshoz való összekapcsolásához a .NET használatával
 
-Azure Key Vault lehetővé teszi a hitelesítő adatok és egyéb titkos kódok biztonságos tárolását, de a kódnak hitelesítenie kell a Key Vault, hogy beolvassa őket. A [felügyelt identitások az Azure-erőforrások áttekintésében](../../active-directory/managed-identities-azure-resources/overview.md) segít a probléma megoldásában azáltal, hogy az Azure-szolgáltatások automatikusan felügyelt identitást biztosítanak az Azure ad-ben. Ezt az identitást használhatja bármely olyan szolgáltatás hitelesítéséhez, amely támogatja az Azure AD-hitelesítést, beleértve a Key Vaultt, anélkül, hogy meg kellene adni a hitelesítő adatokat a kódban.
+[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview) lehetővé teszi a hitelesítő adatok és egyéb titkos kódok biztonságos tárolását, de a kódnak hitelesítenie kell a Key Vault, hogy beolvassa őket. A [felügyelt identitások az Azure-erőforrások áttekintésében](../../active-directory/managed-identities-azure-resources/overview.md) segít a probléma megoldásában azáltal, hogy az Azure-szolgáltatások automatikusan felügyelt identitást biztosítanak az Azure ad-ben. Ezt az identitást használhatja bármely olyan szolgáltatás hitelesítéséhez, amely támogatja az Azure AD-hitelesítést, beleértve a Key Vaultt, anélkül, hogy meg kellene adni a hitelesítő adatokat a kódban.
 
-Ez az oktatóanyag felügyelt identitást használ egy Azure-webalkalmazás hitelesítéséhez Azure Key Vault. Bár a lépések a [.net-hez készült Azure Key Vault v4 ügyféloldali kódtárat](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) és az [Azure CLI](/cli/azure/get-started-with-azure-cli)-t használják, ugyanazok az alapelvek érvényesek a választott fejlesztési nyelv, Azure PowerShell és/vagy a Azure Portal használatakor.
+Ez az oktatóanyag felügyelt identitást használ egy Azure-webalkalmazás hitelesítéséhez Azure Key Vault. Bár a lépések a [.net-hez készült Azure Key Vault v4 ügyféloldali kódtárat](/dotnet/api/overview/azure/key-vault) és az [Azure CLI](/cli/azure/get-started-with-azure-cli)-t használják, ugyanazok az alapelvek érvényesek a választott fejlesztési nyelv, Azure PowerShell és/vagy a Azure Portal használatakor.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -29,36 +29,13 @@ Az oktatóanyag elvégzéséhez:
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * A [.net Core 3,1 SDK vagy újabb verzió](https://dotnet.microsoft.com/download/dotnet-core/3.1).
-* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) vagy [Azure PowerShell](/powershell/azure/)
+* [Telepítse a git](https://www.git-scm.com/downloads)-t.
+* [Azure CLI](/cli/azure/install-azure-cli) vagy [Azure PowerShell](/powershell/azure/)
+* [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview). A Key Vault [Azure Portal](quick-create-portal.md), [Azure CLI](quick-create-cli.md)vagy [Azure PowerShell](quick-create-powershell.md)használatával hozható létre.
+* Key Vault [titok](https://docs.microsoft.com/azure/key-vault/secrets/about-secrets). Titkos kulcsot a [Azure Portal](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal), a [PowerShell](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-powershell)vagy az [Azure CLI](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-cli) használatával hozhat létre
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
-
-Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy erőforráscsoportot, amely a Key vaultot és a webalkalmazást is felkészíti az az [Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create) paranccsal:
-
-```azurecli-interactive
-az group create --name "myResourceGroup" -l "EastUS"
-```
-
-## <a name="set-up-your-key-vault"></a>A Key Vault beállítása
-
-Most létrehoz egy kulcstartót, és elhelyez egy titkos kulcsot az oktatóanyag későbbi részében való használatra.
-
-Kulcstartó létrehozásához használja az az Key [Vault Create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) parancsot:
-
-> [!Important]
-> Minden kulcstartónak egyedi névvel kell rendelkeznie. A következő példákban cserélje le <a-kulcstartó-Name> a Key Vault nevére.
-
-```azurecli-interactive
-az keyvault create --name "<your-keyvault-name>" -g "myResourceGroup"
-```
-
-Jegyezze fel a visszaadott értéket `vaultUri` , amely a "https:// &lt; Your-kulcstartó-name &gt; . Vault.Azure.net/" formátumban jelenik meg. Ezt a [kód frissítése](#update-the-code) lépésben fogjuk használni.
-
-[!INCLUDE [Create a secret](../../../includes/key-vault-create-secret.md)]
-
-## <a name="create-a-net-web-app"></a>.NET-alapú webalkalmazás létrehozása
-
-### <a name="create-a-local-app"></a>Helyi alkalmazás létrehozása
+## <a name="create-a-net-core-app-and-deploy-it-to-azure"></a>.NET Core-alkalmazás létrehozása és üzembe helyezése az Azure-ban
+Ebben a lépésben a helyi .NET Core-projektet állíthatja be.
 
 A gép egy terminálablakában hozzon létre egy `akvwebapp` nevű könyvtárat, és módosítsa erre a jelenlegi könyvtárat.
 
@@ -83,7 +60,11 @@ Nyisson meg egy webböngészőt, majd keresse fel az alkalmazást a következő 
 
 Ekkor megjelenik a **„Helló világ!” alkalmazás** üzenet az oldalon megjelenő minta alkalmazásból.
 
-### <a name="initialize-the-git-repository"></a>A git-Tárház inicializálása
+## <a name="deploy-app-to-azure"></a>Alkalmazás üzembe helyezése az Azure-ban
+
+Ebben a lépésben központilag telepíti a .NET Core-alkalmazást App Service a helyi git használatával. További információ az alkalmazások létrehozásáról és központi telepítéséről: [ASP.net Core Webalkalmazás létrehozása az Azure-ban](https://docs.microsoft.com/azure/app-service/quickstart-dotnetcore)
+
+### <a name="configure-local-git-deployment"></a>A Git helyi üzemelő példányának konfigurálása
 
 A terminálablakban nyomja le a **Ctrl+C** billentyűkombinációt a webkiszolgálóból történő kilépéshez.  Inicializáljon egy Git-adattárat a .NET Core-projekthez.
 
@@ -93,11 +74,9 @@ git add .
 git commit -m "first commit"
 ```
 
-### <a name="configure-a-deployment-user"></a>Üzembe helyező felhasználó konfigurálása
-
 Az FTP és a helyi git egy *üzembe helyezési felhasználó* használatával üzembe helyezhető egy Azure-webalkalmazásban. Miután konfigurálta az üzembe helyezési felhasználót, használhatja azt az összes Azure-környezetben. A fiók szintű központi telepítési felhasználóneve és jelszava eltér az Azure-előfizetés hitelesítő adataitól. 
 
-Az üzembe helyezési felhasználó konfigurálásához futtassa az az [WebApp Deployment User set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) parancsot. Válasszon egy felhasználónevet és egy jelszót, amely megfelel az alábbi irányelveknek: 
+Az üzembe helyezési felhasználó konfigurálásához futtassa az az [WebApp Deployment User set](/cli/azure/webapp/deployment/user?#az-webapp-deployment-user-set) parancsot. Válasszon egy felhasználónevet és egy jelszót, amely megfelel az alábbi irányelveknek: 
 
 - A felhasználónévnek egyedinek kell lennie az Azure-ban, a helyi git-leküldések esetében pedig nem tartalmazhatja a "@" szimbólumot. 
 - A jelszónak legalább nyolc karakterből kell állnia, és a következő három elem közül kettőnek kell lennie: betűk, számok és szimbólumok. 
@@ -110,9 +89,17 @@ A JSON-kimenet a jelszót jeleníti meg `null` . `'Conflict'. Details: 409` hiba
 
 Jegyezze fel a felhasználónevet és a jelszót a webalkalmazások üzembe helyezéséhez.
 
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+
+Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy erőforráscsoportot, amely a Key vaultot és a webalkalmazást is felkészíti az az [Group Create](/cli/azure/group?#az-group-create) paranccsal:
+
+```azurecli-interactive
+az group create --name "myResourceGroup" -l "EastUS"
+```
+
 ### <a name="create-an-app-service-plan"></a>App Service-csomag létrehozása
 
-Hozzon létre egy App Service tervet az Azure CLI-vel az [appservice Plan Create](/cli/azure/appservice/plan?view=azure-cli-latest) paranccsal. Az alábbi példa egy `myAppServicePlan` , az **ingyenes** díjszabási szinten elnevezett app Service-csomagot hoz létre:
+Hozzon létre egy [app Service tervet](https://docs.microsoft.com/azure/app-service/overview-hosting-plans) az Azure CLI-vel az [appservice Plan Create](/cli/azure/appservice/plan) paranccsal. Az alábbi példa egy `myAppServicePlan` , az **ingyenes** díjszabási szinten elnevezett app Service-csomagot hoz létre:
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE
@@ -138,10 +125,11 @@ Az App Service-csomag létrehozása után az Azure CLI az alábbi példához has
 } 
 </pre>
 
+További információ a App Service-csomag kezeléséről: [app Service-terv kezelése az Azure-ban](https://docs.microsoft.com/azure/app-service/app-service-plan-manage)
 
-### <a name="create-a-remote-web-app"></a>Távoli webes alkalmazás létrehozása
+### <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
-Hozzon létre egy [Azure-webalkalmazást](../../app-service/overview.md#app-service-on-linux) a `myAppServicePlan` app Service tervben. 
+Hozzon létre egy [Azure-webalkalmazást](../../app-service/overview.md) a `myAppServicePlan` app Service tervben. 
 
 > [!Important]
 > Az Key Vaulthoz hasonlóan az Azure-webalkalmazásoknak egyedi névvel kell rendelkezniük. Cserélje le a \<your-webapp-name\> nevet a webalkalmazás nevére a következő példákkal.
@@ -183,13 +171,13 @@ Ekkor megjelenik az újonnan létrehozott Azure-webalkalmazás alapértelmezett 
 
 ### <a name="deploy-your-local-app"></a>A helyi alkalmazás üzembe helyezése
 
-Lépjen vissza a helyi terminál ablakba, és adjon hozzá egy távoli Azure-t a helyi git-tárházhoz, és cserélje le a *\<deploymentLocalGitUrl-from-create-step>* [Távoli webes alkalmazás létrehozása](#create-a-remote-web-app) lépésből mentett git-távoli URL-címére.
+Lépjen vissza a helyi terminál ablakba, és adjon hozzá egy távoli Azure-t a helyi git-tárházhoz, és cserélje le a *\<deploymentLocalGitUrl-from-create-step>* [Webalkalmazás létrehozása](#create-a-web-app) lépésből mentett git-távirányító URL-címére.
 
 ```bash
 git remote add azure <deploymentLocalGitUrl-from-create-step>
 ```
 
-A távoli Azure-mappához történő küldéssel helyezze üzembe az alkalmazást a következő paranccsal. Ha a git Hitelesítőadat-kezelő kéri a hitelesítő adatok megadását, használja az [üzembe helyezés felhasználói lépés konfigurálása](#configure-a-deployment-user) lépésben létrehozott hitelesítő adatokat.
+A távoli Azure-mappához történő küldéssel helyezze üzembe az alkalmazást a következő paranccsal. Ha a git Hitelesítőadat-kezelő kéri a hitelesítő adatok megadását, használja a [helyi git-telepítés konfigurálása](#configure-local-git-deployment) lépésben létrehozott hitelesítő adatokat.
 
 ```bash
 git push azure master
@@ -230,10 +218,16 @@ http://<your-webapp-name>.azurewebsites.net
 ```
 
 Megjelenik a "„Helló világ!” alkalmazás!" a meglátogatás során korábban megjelenő üzenet `http://localhost:5000` .
+ 
+## <a name="configure-web-app-to-connect-to-key-vault"></a>Webalkalmazás konfigurálása Key Vaulthoz való kapcsolódáshoz
 
-## <a name="create-and-assign-a-managed-identity"></a>Felügyelt identitás létrehozása és társítása
+Ebben a szakaszban a Key Vault webes elérését és az alkalmazás kódjának frissítését fogja beállítani a Key vaultból való titkos kulcs lekéréséhez.
 
-Az Azure CLI-ben az alkalmazás identitásának létrehozásához futtassa az az [WebApp-Identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) parancsot:
+### <a name="create-and-assign-a-managed-identity"></a>Felügyelt identitás létrehozása és társítása
+
+Ebben az oktatóanyagban az alkalmazás által [felügyelt identitást](../../active-directory/managed-identities-azure-resources/overview.md) használjuk a Key vaultba való hitelesítéshez, amely automatikusan kezeli az alkalmazás hitelesítő adatait.
+
+Az Azure CLI-ben az alkalmazás identitásának létrehozásához futtassa az az [WebApp-Identity assign](/cli/azure/webapp/identity?#az-webapp-identity-assign) parancsot:
 
 ```azurecli-interactive
 az webapp identity assign --name "<your-webapp-name>" --resource-group "myResourceGroup"
@@ -249,16 +243,17 @@ A művelet a következő JSON-kódrészletet fogja visszaadni:
 }
 ```
 
-Ahhoz, hogy a webalkalmazás engedélyt kapjon a Key Vault **beolvasási** és **listázási** műveleteire, adja át a principalID az Azure CLI-hez az kulcstartó [set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) paranccsal:
+Ahhoz, hogy a webalkalmazás engedélyt kapjon a Key Vault **beolvasási** és **listázási** műveleteire, adja át a principalID az Azure CLI-hez az kulcstartó [set-Policy](/cli/azure/keyvault?#az-keyvault-set-policy) paranccsal:
 
 ```azurecli-interactive
 az keyvault set-policy --name "<your-keyvault-name>" --object-id "<principalId>" --secret-permissions get list
 ```
 
+Hozzáférési házirendeket [Azure Portal](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal) vagy [PowerShell](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-powershell)használatával is hozzárendelhet.
 
-## <a name="modify-the-app-to-access-your-key-vault"></a>Az alkalmazás módosítása a Key Vault eléréséhez
+### <a name="modify-the-app-to-access-your-key-vault"></a>Az alkalmazás módosítása a Key Vault eléréséhez
 
-### <a name="install-the-packages"></a>A csomagok telepítése
+#### <a name="install-the-packages"></a>A csomagok telepítése
 
 A terminál ablakban telepítse a .NET-csomagok Azure Key Vault ügyféloldali kódtárat:
 
@@ -267,7 +262,7 @@ dotnet add package Azure.Identity
 dotnet add package Azure.Security.KeyVault.Secrets
 ```
 
-### <a name="update-the-code"></a>A kód frissítése
+#### <a name="update-the-code"></a>A kód frissítése
 
 Keresse meg és nyissa meg a Startup.cs fájlt a akvwebapp-projektben. 
 
@@ -279,7 +274,7 @@ using Azure.Security.KeyVault.Secrets;
 using Azure.Core;
 ```
 
-Adja hozzá ezeket a sorokat a `app.UseEndpoints` hívás előtt, és frissítse az URI-t, hogy az tükrözze a `vaultUri` kulcstartót. Az alábbi kód az  ["DefaultAzureCredential ()"](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet) módszert használja a Key Vault hitelesítéséhez, amely tokent használ az alkalmazás által felügyelt identitástól a hitelesítéshez. Emellett exponenciális leállítási is használ az újrapróbálkozásokhoz a Key Vault szabályozása esetén.
+Adja hozzá ezeket a sorokat a `app.UseEndpoints` hívás előtt, és frissítse az URI-t, hogy az tükrözze a `vaultUri` kulcstartót. Az alábbi kód az  ["DefaultAzureCredential ()"](/dotnet/api/azure.identity.defaultazurecredential) módszert használja a Key Vault hitelesítéséhez, amely tokent használ az alkalmazás által felügyelt identitástól a hitelesítéshez. További információ a Key Vault hitelesítéséről: [fejlesztői útmutató](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code). Emellett exponenciális leállítási is használ az újrapróbálkozásokhoz a Key Vault szabályozása esetén. A Key Vault tranzakciós korlátaival kapcsolatos további információkért olvassa el [Azure Key Vault szabályozási útmutatót](https://docs.microsoft.com/azure/key-vault/general/overview-throttling)
 
 ```csharp
 SecretClientOptions options = new SecretClientOptions()
@@ -294,7 +289,7 @@ SecretClientOptions options = new SecretClientOptions()
     };
 var client = new SecretClient(new Uri("https://<your-unique-key-vault-name>.vault.azure.net/"), new DefaultAzureCredential(),options);
 
-KeyVaultSecret secret = client.GetSecret("mySecret");
+KeyVaultSecret secret = client.GetSecret("<mySecret>");
 
 string secretValue = secret.Value;
 ```
@@ -307,7 +302,7 @@ await context.Response.WriteAsync(secretValue);
 
 A következő lépés végrehajtása előtt mentse a módosításokat.
 
-### <a name="redeploy-your-web-app"></a>A webalkalmazás újbóli üzembe helyezése
+#### <a name="redeploy-your-web-app"></a>A webalkalmazás újbóli üzembe helyezése
 
 A kód frissítése után újra üzembe helyezheti azt az Azure-ban a következő git-parancsokkal:
 
@@ -317,7 +312,7 @@ git commit -m "Updated web app to access my key vault"
 git push azure master
 ```
 
-## <a name="visit-your-completed-web-app"></a>Az elkészült webalkalmazás meglátogatása
+### <a name="visit-your-completed-web-app"></a>Az elkészült webalkalmazás meglátogatása
 
 ```bash
 http://<your-webapp-name>.azurewebsites.net
@@ -327,10 +322,10 @@ A **„Helló világ!” alkalmazás** megkezdése előtt látnia kell a titkos 
 
 ## <a name="next-steps"></a>Következő lépések
 
+- [Azure Key Vault használata a .NET-ben virtuális gépre telepített alkalmazásokkal](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-virtual-machine)
 - További információ az [Azure-erőforrások felügyelt identitásáról](../../active-directory/managed-identities-azure-resources/overview.md)
 - További információ a [app Service felügyelt identitásáról](../../app-service/overview-managed-identity.md?tabs=dotnet)
-- Tekintse [meg a .NET API-hoz készült Azure Key Vault ügyféloldali kódtár dokumentációját](/dotnet/api/overview/azure/key-vault?view=azure-dotnet)
-- Tekintse [meg a .net forráskódjának Azure Key Vault ügyféloldali kódtárat](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault)
-- Lásd: [v4 Azure Key Vault ügyféloldali kódtár a .net NuGet csomaghoz](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
+- [Fejlesztői útmutató](https://docs.microsoft.com/azure/key-vault/general/developers-guide)
+- [Biztonságos hozzáférés a kulcstartóhoz](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault)
 
 

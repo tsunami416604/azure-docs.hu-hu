@@ -3,12 +3,12 @@ title: Az Azure Service Fabric-fürt beállításainak módosítása
 description: Ez a cikk a háló beállításait és a testre szabható háló-frissítési szabályzatokat ismerteti.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: a83d24b4badd78750756a3cb4564b1e53fd30593
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 1f16e89dd1131f6aea64e5e72a342b3b737f3728
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648225"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95542643"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric-fürt beállításainak testreszabása
 Ez a cikk a Service Fabric-fürthöz testreszabható különböző háló-beállításokat ismerteti. Az Azure-ban üzemeltetett fürtök esetében a beállításokat a [Azure Portal](https://portal.azure.com) vagy egy Azure Resource Manager sablon segítségével szabhatja testre. További információ: Azure- [fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-azure.md). Önálló fürtök esetén testreszabhatja a beállításokat, ha frissíti a *ClusterConfig.js* fájlt, és végrehajtja a fürtön a konfiguráció frissítését. További információ: [önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -141,6 +141,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |IsEnabled|bool, az alapértelmezett érték FALSE|Statikus|Engedélyezi vagy letiltja a DnsService. A DnsService alapértelmezés szerint le van tiltva, és ezt a konfigurációt be kell állítani az engedélyezéshez. |
 |PartitionPrefix|karakterlánc, az alapértelmezett érték a "--"|Statikus|A particionált szolgáltatásokhoz tartozó DNS-lekérdezésekben megadja a partíció-előtag karakterláncának értékét. Az érték: <ul><li>RFC-kompatibilisnek kell lennie, mert egy DNS-lekérdezés része lesz.</li><li>A nem tartalmazhat pontot ("."), mert a pont nem zavarja a DNS-utótag viselkedését.</li><li>Nem lehet hosszabb 5 karakternél.</li><li>Nem lehet üres karakterlánc.</li><li>Ha a PartitionPrefix beállítás felülbírálva van, akkor a PartitionSuffix felülbírálva kell lennie, és fordítva.</li></ul>További információ: [Service Fabric DNS-szolgáltatás.](service-fabric-dnsservice.md).|
 |PartitionSuffix|karakterlánc, az alapértelmezett érték: ""|Statikus|A particionált szolgáltatások DNS-lekérdezései esetében szabályozza a partíció utótagjának karakterlánc-értékét. Az érték: <ul><li>RFC-kompatibilisnek kell lennie, mert egy DNS-lekérdezés része lesz.</li><li>A nem tartalmazhat pontot ("."), mert a pont nem zavarja a DNS-utótag viselkedését.</li><li>Nem lehet hosszabb 5 karakternél.</li><li>Ha a PartitionPrefix beállítás felülbírálva van, akkor a PartitionSuffix felülbírálva kell lennie, és fordítva.</li></ul>További információ: [Service Fabric DNS-szolgáltatás.](service-fabric-dnsservice.md). |
+|RetryTransientFabricErrors|Bool, az alapértelmezett érték TRUE (igaz)|Statikus|A beállítás szabályozza az újrapróbálkozási képességeket Service Fabric API-k DnsService való meghívásakor. Ha ez a beállítás engedélyezve van, az újrapróbálkozások akár 3 alkalommal is újrapróbálkoznak, ha átmeneti hiba történik.|
 
 ## <a name="eventstoreservice"></a>EventStoreService
 
@@ -423,7 +424,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |AzureStorageMaxConnections | Int, alapértelmezett érték 5000 |Dinamikus|Az Azure Storage-hoz való egyidejű kapcsolatok maximális száma. |
 |AzureStorageMaxWorkerThreads | Int, az alapértelmezett érték 25 |Dinamikus|A feldolgozói szálak maximális száma párhuzamosan. |
 |AzureStorageOperationTimeout | Az idő másodpercben, az alapértelmezett érték 6000 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Időtúllépés a xstore művelet befejezéséhez. |
-|CleanupApplicationPackageOnProvisionSuccess|bool, az alapértelmezett érték FALSE |Dinamikus|Engedélyezheti vagy letilthatja az alkalmazáscsomag automatikus törlését a sikeres üzembe helyezéshez.<br/> *Ajánlott eljárás a használata `true` .*
+|CleanupApplicationPackageOnProvisionSuccess|bool, az alapértelmezett érték TRUE (igaz) |Dinamikus|Engedélyezheti vagy letilthatja az alkalmazáscsomag automatikus törlését a sikeres üzembe helyezéshez.
 |CleanupUnusedApplicationTypes|Bool, az alapértelmezett érték FALSE |Dinamikus|Ez a konfiguráció, ha engedélyezve van, lehetővé teszi a nem használt alkalmazások típusának regisztrációját a legújabb három nem használt verzió kihagyása mellett, így a rendszerkép-tárolóban foglalt lemezterület kivágása is megtörténik. Az automatikus tisztítás az adott alkalmazás típusának sikeres kiépítését követően aktiválódik, és az összes alkalmazás típusának naponta egyszer rendszeresen fut. A kihagyható verziók száma a "MaxUnusedAppTypeVersionsToKeep" paraméter használatával konfigurálható. <br/> *Ajánlott eljárás a használata `true` .*
 |DisableChecksumValidation | Bool, az alapértelmezett érték false |Statikus| Ezzel a konfigurációval engedélyezheti vagy letilthatja az ellenőrzőösszeg-érvényesítést az alkalmazás üzembe helyezése során. |
 |DisableServerSideCopy | Bool, az alapértelmezett érték false |Statikus|Ezzel a konfigurációval engedélyezheti vagy letilthatja az alkalmazáscsomag kiszolgálóoldali példányát a Lemezképtárolóba az alkalmazás üzembe helyezése során. |
@@ -520,6 +521,7 @@ Az alábbi lista a testre szabható, a szakasz alapján rendszerezhető háló-b
 |AutoDetectAvailableResources|bool, az alapértelmezett érték TRUE (igaz)|Statikus|Ez a konfiguráció elindítja a rendelkezésre álló erőforrások automatikus észlelését a csomóponton (CPU és memória), ha ez a konfiguráció igaz értékre van állítva. a valós kapacitások beolvasása után kijavítani fogjuk, ha a felhasználó hibás csomópont-kapacitást adott meg, vagy egyáltalán nem definiálta őket, ha a konfiguráció hamis értékre van állítva, a felhasználó által megadott hibás csomópont-kapacitások de nem fogjuk kijavítani őket; azt jelenti, hogy a felhasználó szeretné, hogy a csomópontok >ként legyenek meghatározva, mint a csomópont, vagy ha a kapacitás nincs meghatározva; a rendszer korlátlan kapacitást feltételez |
 |BalancingDelayAfterNewNode | Az idő másodpercben, az alapértelmezett érték 120 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Az új csomópont hozzáadása után ne kezdjen el kiegyenlíteni tevékenységeket ezen az időszakon belül. |
 |BalancingDelayAfterNodeDown | Az idő másodpercben, az alapértelmezett érték 120 |Dinamikus|Másodpercek alatt meg kell adni a TimeSpan. Az adott időszakon belül ne kezdjen el kiegyenlíteni tevékenységeket egy csomópont leállási eseménye után. |
+|BlockNodeInUpgradeConstraintPriority | Int, az alapértelmezett érték 0 |Dinamikus|Meghatározza a kapacitási megkötés prioritását: 0: nehéz; 1: lágy; negatív: figyelmen kívül hagyás  |
 |CapacityConstraintPriority | Int, az alapértelmezett érték 0 | Dinamikus|Meghatározza a kapacitási megkötés prioritását: 0: nehéz; 1: lágy; negatív: figyelmen kívül hagyás. |
 |ConsecutiveDroppedMovementsHealthReportLimit | Int, az alapértelmezett érték 20 | Dinamikus|Meghatározza, hogy a rendszer hány alkalommal ResourceBalancer el a kiállított mozgásokat a diagnosztika végrehajtása előtt, és az állapottal kapcsolatos figyelmeztetések kibocsátása megtörténjen. Negatív: nincsenek kibocsátva figyelmeztetések ebben a feltételben. |
 |ConstraintFixPartialDelayAfterNewNode | Az idő másodpercben, az alapértelmezett érték 120 |Dinamikus| Másodpercek alatt meg kell adni a TimeSpan. Az új csomópont hozzáadása után a DDo nem oldja meg a FaultDomain és a UpgradeDomain korlátozás megsértését ezen az időtartamon belül. |

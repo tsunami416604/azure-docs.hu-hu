@@ -9,19 +9,19 @@ ms.reviewer: dineshm
 ms.date: 09/11/2020
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 3adbc0a2d55a2adc2ab7c1f82b0a358542eefc2a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 799c0dbc3ddb673cafe0fe4962f7346a841bd4b7
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842447"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543102"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>GitHub-műveletek munkafolyamatának beállítása a statikus webhely üzembe helyezéséhez az Azure Storage-ban
 
 Ismerkedjen meg a [GitHub-műveletekkel](https://docs.github.com/en/actions) egy olyan munkafolyamat használatával, amely statikus helyet telepít egy Azure Storage-fiókba. A GitHub-műveletek munkafolyamatának beállítása után automatikusan üzembe helyezheti a helyet az Azure-ban a GitHubról, ha módosítja a webhely kódját.
 
 > [!NOTE]
-> Ha [Azure statikus Web Apps](https://docs.microsoft.com/azure/static-web-apps/)használ, nem kell manuálisan beállítania egy GitHub-művelet munkafolyamatot.
+> Ha [Azure statikus Web Apps](../../static-web-apps/index.yml)használ, nem kell manuálisan beállítania egy GitHub-művelet munkafolyamatot.
 > Az Azure statikus Web Apps automatikusan létrehoz egy GitHub-műveletek munkafolyamatot. 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -187,4 +187,4 @@ Ha a statikus webhelyre és a GitHub-tárházra már nincs szükség, távolíts
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [További tudnivalók az Azure statikus Web Apps](https://docs.microsoft.com/azure/static-web-apps/)
+> [További tudnivalók az Azure statikus Web Apps](../../static-web-apps/index.yml)

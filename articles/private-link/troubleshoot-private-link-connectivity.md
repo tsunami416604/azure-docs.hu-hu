@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: 1e5253d617c87d5869cebc817da6d265ebfdfa7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45a7a146dd929408b50a0045fe2598726ee05505
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77539467"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544309"
 ---
 # <a name="troubleshoot-azure-private-link-connectivity-problems"></a>Az Azure privát kapcsolati szolgáltatás csatlakoztathatósági problémáinak elhárítása
 
@@ -37,7 +37,7 @@ A privát hivatkozással elérhető csatlakozási forgatókönyvek a következő
 
 ## <a name="deployment-troubleshooting"></a>Üzembe helyezés hibaelhárítása
 
-A hibaelhárítási esetekben tekintse át a [hálózati házirendek letiltásával kapcsolatos információkat a privát kapcsolat szolgáltatásban](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy) , ahol nem tudja kijelölni a forrás IP-címet az Ön által választott alhálózatból a privát kapcsolati szolgáltatáshoz.
+A hibaelhárítási esetekben tekintse át a [hálózati házirendek letiltásával kapcsolatos információkat a privát kapcsolat szolgáltatásban](./disable-private-link-service-network-policy.md) , ahol nem tudja kijelölni a forrás IP-címet az Ön által választott alhálózatból a privát kapcsolati szolgáltatáshoz.
 
 Győződjön meg arról, hogy a **privateLinkServiceNetworkPolicies** beállítás le van tiltva azon alhálózat esetében, amelynek a forrás IP-címét kiválasztja.
 
@@ -51,7 +51,7 @@ Ha kapcsolódási problémák merülnek fel a privát kapcsolat beállításakor
 
       ![Privát kapcsolati központ](./media/private-link-tsg/private-link-center.png)
 
-    b. A bal oldali panelen válassza a **Private link Services**elemet.
+    b. A bal oldali panelen válassza a **Private link Services** elemet.
 
       ![Private link Services](./media/private-link-tsg/private-link-service.png)
 
@@ -59,11 +59,11 @@ Ha kapcsolódási problémák merülnek fel a privát kapcsolat beállításakor
 
     d. Tekintse át a magánhálózati végpontok kapcsolatait.
      - Győződjön meg arról, hogy a kapcsolatot kérő privát végpont **jóváhagyott** kapcsolati állapottal van listázva.
-     - Ha az állapot **függőben**van, válassza ki és hagyja jóvá.
+     - Ha az állapot **függőben** van, válassza ki és hagyja jóvá.
 
        ![Magánhálózati végpontok kapcsolatai](./media/private-link-tsg/pls-private-endpoint-connections.png)
 
-     - A név kiválasztásával nyissa meg azt a privát végpontot, amelyhez csatlakozni szeretne. Győződjön meg arról, hogy a kapcsolatok állapota **jóváhagyva**értékre van állítva.
+     - A név kiválasztásával nyissa meg azt a privát végpontot, amelyhez csatlakozni szeretne. Győződjön meg arról, hogy a kapcsolatok állapota **jóváhagyva** értékre van állítva.
 
        ![Privát végpontok kapcsolatainak áttekintése](./media/private-link-tsg/pls-private-endpoint-overview.png)
 
@@ -99,17 +99,17 @@ Ha kapcsolódási problémák merülnek fel a privát kapcsolat beállításakor
        - Ha a kapcsolat terheléselosztási szabályok szerint végzi a háttér-készletet, akkor a terheléselosztó működőképes.
        - A terheléselosztó metrikáját a Azure Monitor segítségével is ellenőrizheti, így ellenőrizheti, hogy az adatok áramlanak-e a terheléselosztó használatával.
 
-1. A [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) használatával megtekintheti, hogy folyik-e az adatforgalom.
+1. A [Azure monitor](../azure-monitor/overview.md) használatával megtekintheti, hogy folyik-e az adatforgalom.
 
-    a. A Private link Service-erőforrás lapon válassza a **metrikák**lehetőséget.
-     - Válassza ki **a bájtok vagy a** **bájtok**lehetőséget.
+    a. A Private link Service-erőforrás lapon válassza a **metrikák** lehetőséget.
+     - Válassza ki **a bájtok vagy a** **bájtok** lehetőséget.
      - Ellenőrizze, hogy a magánhálózati kapcsolati szolgáltatáshoz való kapcsolódási kísérlet során az adatforgalom áramlik-e. Körülbelül 10 perc késés várható.
 
        ![Privát kapcsolati szolgáltatás metrikáinak ellenőrzése](./media/private-link-tsg/pls-metrics.png)
 
 1. Ha a probléma továbbra is megoldatlan, forduljon az [Azure ügyfélszolgálatához](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) , és a kapcsolati probléma továbbra is fennáll.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
- * [Privát kapcsolati szolgáltatás (CLI) létrehozása](https://docs.microsoft.com/azure/private-link/create-private-link-service-cli)
+ * [Privát kapcsolati szolgáltatás (CLI) létrehozása](./create-private-link-service-cli.md)
  * [Azure Private Endpoint – hibaelhárítási útmutató](troubleshoot-private-endpoint-connectivity.md)

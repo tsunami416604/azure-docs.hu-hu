@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 5deece615e9d7de1e71e33164560c1c26212ec08
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 6c1d9b813db15900521968865c1036d53ad53f41
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676781"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544785"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>Felhőalapú tárolási alkalmazások monitorozása és hibaelhárítása
 
@@ -37,7 +37,7 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com)
 
 ## <a name="turn-on-logging-and-metrics"></a>A naplózás és a mérőszámok bekapcsolása
 
-A bal oldali menüben válassza az **Erőforráscsoportok** , a **myResourceGroup** elemet, majd válassza ki a tárfiókját az erőforrások listájából.
+A bal oldali menüben válassza az **Erőforráscsoportok**, a **myResourceGroup** elemet, majd válassza ki a tárfiókját az erőforrások listájából.
 
 A **Diagnosztikai beállítások (klasszikus)** területen állítsa az **Állapot** beállítást **Be** értékre. Győződjön meg arról, hogy a **Blob tulajdonságai** területen lévő összes beállítás engedélyezve van.
 
@@ -83,15 +83,15 @@ Az alábbi képen példa látható egy olyan riasztásra, amely az előző péld
 
 A Storage-naplók az adatok tárolását blobkészletek formájában végzik a tárfiók **$logs** nevű blobtárolójában. Ez a tároló nem jelenik meg a fiók összes blobtárolóját felsoroló listában, de ha közvetlenül nyitja meg, akkor megtekintheti annak tartalmát.
 
-Ebben az esetben a [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx) használatával kommunikálhat az Azure Storage-fiókkal.
+Ebben az esetben a [Microsoft Message Analyzer](/message-analyzer/microsoft-message-analyzer-operating-guide) használatával kommunikálhat az Azure Storage-fiókkal.
 
 ### <a name="download-microsoft-message-analyzer"></a>A Microsoft Message Analyzer letöltése
 
-Töltse le és telepítse a [Microsoft Message Analyzer](https://docs.microsoft.com/message-analyzer/installing-and-upgrading-message-analyzer) alkalmazást.
+Töltse le és telepítse a [Microsoft Message Analyzer](/message-analyzer/installing-and-upgrading-message-analyzer) alkalmazást.
 
 Indítsa el az alkalmazást, és válassza a **fájl**  >  **megnyitása**  >  **más forrásokból** lehetőséget.
 
-A **File Selector** (Fájl kiválasztása) párbeszédablakban válassza a **+ Add Azure Connection** (+ Azure-kapcsolat hozzáadása) lehetőséget. Adja meg a **tárfiók nevét** és a **fiókkulcsot** , majd kattintson az **OK** gombra.
+A **File Selector** (Fájl kiválasztása) párbeszédablakban válassza a **+ Add Azure Connection** (+ Azure-kapcsolat hozzáadása) lehetőséget. Adja meg a **tárfiók nevét** és a **fiókkulcsot**, majd kattintson az **OK** gombra.
 
 ![Microsoft Message Analyzer – Azure Storage-kapcsolat hozzáadása párbeszédpanel](media/storage-monitor-troubleshoot-storage-application/figure3.png)
 

@@ -7,18 +7,18 @@ ms.service: private-link
 ms.topic: tutorial
 ms.date: 10/20/2020
 ms.author: allensu
-ms.openlocfilehash: def14cec9d010104876acaf9588560722dd98884
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: a7eca29dc9390306ac6ad4e66eec75a25c2d33ff
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145667"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522158"
 ---
 # <a name="tutorial---connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-portal"></a>Oktatóanyag – kapcsolódás Azure SQL Serverhez Azure Private Endpoint-Azure Portal használatával
 
 Az Azure privát végpontja az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a virtuális gépek (VM-EK) számára, hogy magánjellegű módon kommunikáljanak a privát kapcsolati erőforrásokkal.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Hozzon létre egy virtuális hálózatot és egy megerősített gazdagépet.
@@ -52,7 +52,7 @@ A megerősített gazdagép a magánhálózati végpont teszteléséhez a virtuá
     | Erőforráscsoport   | **CreateSQLEndpointTutorial kiválasztása – RG** |
     | **Példány adatai** |                                                                 |
     | Name             | **MyVNet** megadása                                    |
-    | Régió           | Válassza ki az **USA keleti** régióját |
+    | Region           | Válassza ki az **USA keleti** régióját |
 
 3. Válassza az **IP-címek** lapot, vagy válassza a **következő: IP-címek** gombot az oldal alján.
 
@@ -71,7 +71,7 @@ A megerősített gazdagép a magánhálózati végpont teszteléséhez a virtuá
     | Alhálózat neve | **MySubnet** megadása |
     | Alhálózati címtartomány | Adja meg a **10.1.0.0/24** értéket |
 
-7. Válassza a **Mentés** lehetőséget.
+7. Kattintson a **Mentés** gombra.
 
 8. Válassza a **Biztonság** fület.
 
@@ -81,12 +81,12 @@ A megerősített gazdagép a magánhálózati végpont teszteléséhez a virtuá
     |--------------------|----------------------------|
     | Bástya neve | **MyBastionHost** megadása |
     | AzureBastionSubnet címterület | Adja meg a **10.1.1.0/24** értéket |
-    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. </br> A **név** mezőbe írja be a következőt: **myBastionIP** . </br> Válassza az **OK** lehetőséget. |
+    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. </br> A **név** mezőbe írja be a következőt: **myBastionIP**. </br> Válassza az **OK** lehetőséget. |
 
 
 8. Válassza a **felülvizsgálat + létrehozás** lapot, vagy kattintson a **felülvizsgálat + létrehozás** gombra.
 
-9. Válassza a **Létrehozás** lehetőséget.
+9. Kattintson a **Létrehozás** gombra.
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
@@ -103,7 +103,7 @@ Ebben a szakaszban létre fog hozni egy virtuális gépet, amely a privát végp
     | Erőforráscsoport | **CreateSQLEndpointTutorial** kiválasztása |
     | **Példány adatai** |  |
     | Virtuális gép neve | **MyVM** megadása |
-    | Régió | Válassza ki az **USA keleti** régióját |
+    | Region | Válassza ki az **USA keleti** régióját |
     | Rendelkezésre állási beállítások | Válassza az **infrastruktúra-redundancia nem szükséges** lehetőséget |
     | Kép | Válassza a **Windows Server 2019 Datacenter – Gen1** elemet. |
     | Azure Spot-példány | Válassza a **nem** lehetőséget |
@@ -113,7 +113,7 @@ Ebben a szakaszban létre fog hozni egy virtuális gépet, amely a privát végp
     | Jelszó | Adja meg a jelszót |
     | Jelszó megerősítése | Jelszó újbóli megadása |
 
-3. Válassza a **hálózatkezelés** lapot, vagy válassza a **Tovább: lemezek** , majd a **Tovább: hálózatkezelés** lehetőséget.
+3. Válassza a **hálózatkezelés** lapot, vagy válassza a **Tovább: lemezek**, majd a **Tovább: hálózatkezelés** lehetőséget.
   
 4. A hálózatkezelés lapon válassza ki vagy írja be a következőket:
 
@@ -126,7 +126,7 @@ Ebben a szakaszban létre fog hozni egy virtuális gépet, amely a privát végp
     | NIC hálózati biztonsági csoport | **Basic**|
     | Nyilvános bejövő portok | Válassza a **Nincs** lehetőséget. |
    
-5. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. 
+5. Válassza az **Áttekintés + létrehozás** lehetőséget. 
   
 6. Tekintse át a beállításokat, majd kattintson a **Létrehozás** gombra.
 
@@ -144,14 +144,14 @@ Ebben a szakaszban egy SQL Server-kiszolgálót fog létrehozni az Azure-ban.
     | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **CreateSQLEndpointTutorial** lehetőséget. Ezt az erőforráscsoportot az előző szakaszban hozta létre.|
     | **Adatbázis adatai** |  |
-    | Adatbázis neve  | Adja meg a **mysqldatabase** . Ha ezt a nevet hozza, hozzon létre egy egyedi nevet. |
+    | Adatbázis neve  | Adja meg a **mysqldatabase**. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet. |
     | Kiszolgáló | Válassza az **Új létrehozása** lehetőséget. |
 
 6. Az **új kiszolgáló** mezőbe írja be vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Kiszolgálónév  | Adja meg a **portra beállított mysqlserver** . Ha ezt a nevet hozza, hozzon létre egy egyedi nevet.|
+    | Kiszolgálónév  | Adja meg a **portra beállított mysqlserver**. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet.|
     | Kiszolgáló-rendszergazdai bejelentkezés | Adja meg a választott rendszergazda nevét. |
     | Jelszó | Adjon meg egy tetszőleges jelszót. A jelszónak legalább 8 karakter hosszúnak kell lennie, és meg kell felelnie a meghatározott követelményeknek. |
     | Hely | Válassza ki az **USA keleti** régióját |
@@ -165,7 +165,7 @@ Ebben a szakaszban egy SQL Server-kiszolgálót fog létrehozni az Azure-ban.
     | Beállítás | Érték |
     | ------- | ----- |
     | **Hálózati kapcsolat** | |
-    | Kapcsolati mód | Válasszon **privát végpontot** . |
+    | Kapcsolati mód | Válasszon **privát végpontot**. |
    
 10. Válassza a **+ privát végpont hozzáadása** **privát végpontok** lehetőséget.
 
@@ -176,14 +176,14 @@ Ebben a szakaszban egy SQL Server-kiszolgálót fog létrehozni az Azure-ban.
     | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **CreateSQLEndpointTutorial** lehetőséget. |
     | Hely | Válassza az **USA keleti régiója** lehetőséget. |
-    | Name | Adja meg a **myPrivateSQLendpoint** . |
+    | Name | Adja meg a **myPrivateSQLendpoint**. |
     | Célzott alerőforrás | Válassza a **SQLServer** lehetőséget. |
     | **Hálózat** |  |
     | Virtuális hálózat | Válassza a **myVNet** lehetőséget. |
     | Alhálózat | Válassza a **mySubnet** lehetőséget. |
     | **saját DNS integráció** | |
-    | Integrálás saját DNS-zónával | Hagyja meg az alapértelmezett **Igen értéket** . |
-    | Privát DNS-zóna | Hagyja meg az alapértelmezett **(új) privatelink.database.Windows.net** . |
+    | Integrálás saját DNS-zónával | Hagyja meg az alapértelmezett **Igen értéket**. |
+    | Privát DNS-zóna | Hagyja meg az alapértelmezett **(új) privatelink.database.Windows.net**. |
 
 12. Válassza az **OK** lehetőséget. 
 
@@ -224,9 +224,9 @@ Ebben a szakaszban az előző lépésben létrehozott virtuális gépet fogja ha
     A rendszer a **10.1.0.5** magánhálózati IP-címét adja vissza az SQL-kiszolgáló nevéhez.  Ez a címe a korábban létrehozott virtuális hálózat alhálózatában található.
 
 
-9. Telepítse a [SQL Server Management Studiot](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017&preserve-view=true) a **myVM** .
+9. Telepítse a [SQL Server Management Studiot](/sql/ssms/download-sql-server-management-studio-ssms?preserve-view=true&view=sql-server-2017) a **myVM**.
 
-10. Nyissa meg **SQL Server Management Studio** .
+10. Nyissa meg **SQL Server Management Studio**.
 
 4. A **Kapcsolódás a kiszolgálóhoz** lapon adja meg vagy válassza ki az alábbi adatokat:
 
@@ -241,10 +241,10 @@ Ebben a szakaszban az előző lépésben létrehozott virtuális gépet fogja ha
 
 1. Válassza a **Kapcsolódás** lehetőséget.
 2. A bal oldali menüben lévő adatbázisok tallózása.
-3. Opcionálisan Információk létrehozása vagy lekérdezése a **mysqldatabase** .
-4. A távoli asztali kapcsolat bezárásával **myVM** . 
+3. Opcionálisan Információk létrehozása vagy lekérdezése a **mysqldatabase**.
+4. A távoli asztali kapcsolat bezárásával **myVM**. 
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
 Ha végzett a magánhálózati végpont, az SQL Server és a virtuális gép használatával, törölje az erőforráscsoportot és az összes benne lévő erőforrást: 
 1. Adja meg a **CreateSQLEndpointTutorial** a portál tetején található **keresőmezőbe** , és válassza a **CreateSQLEndpointTutorial** lehetőséget a keresési eredmények közül. 
 2. Válassza az **Erőforráscsoport törlése** elemet. 

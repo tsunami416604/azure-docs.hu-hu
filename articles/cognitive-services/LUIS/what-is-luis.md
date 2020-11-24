@@ -5,14 +5,14 @@ keywords: Azure, mesterséges intelligencia, AI, természetes nyelvi feldolgozá
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 09/02/2020
+ms.date: 11/23/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: b4034f9b7a5a9ec856134e27b422736e2c98f04a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: fb36ab8a86a89d6383f93ad58c23956472841de2
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025191"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95539260"
 ---
 # <a name="what-is-language-understanding-luis"></a>Mi a Language Understanding (LUIS)?
 
@@ -33,7 +33,7 @@ Miután közzétette az Azure LUIS alkalmazást, egy ügyfélalkalmazás hosszú
 
 ![A LUIS elméleti ábrázolása a csevegő használatával a természetes nyelvi megértést (NLP) használó felhasználói szöveg előrejelzéséhez](./media/luis-overview/LUIS-chat-bot-request-response.svg "A LUIS-vel kapcsolatos elméleti képek a csevegő használatával a természetes nyelvi megértéssel (NLP")
 
-|Lépés|Műveletek|
+|Lépés|Művelet|
 |:--|:--|
 |1|Az ügyfélalkalmazás a következő felhasználói _kimondott szöveget_ (saját szavaikkal megfogalmazott szöveg) küldi el HTTP-kérésként a LUIS-végpontnak: „Fel szeretném hívni a HR képviselőmet.”|
 |2|A LUIS lehetővé teszi, hogy egyéni nyelvi modelljeit az alkalmazáshoz való intelligenciával bővítse. A gépi megtanult nyelvi modellek a felhasználó strukturálatlan bemeneti szövegét, és egy JSON-formátumú választ adnak vissza, amely a legfelső szándékot használja `HRContact` . A JSON-végpont minimális válasza tartalmazza a lekérdezési kimondott szöveget, valamint a legmagasabb pontszámú szándékot. Emellett olyan adatok kinyerésére is képes, mint például a _Contact Type_ entitás.|
@@ -116,7 +116,7 @@ Eszközök a LUIS robotokkal való gyors és egyszerű használatához:
 
 ## <a name="integrate-with-a-bot"></a>Integrálás robottal
 
-Használja az [Azure bot Service](/azure/bot-service/?view=azure-bot-service-4.0 "Azure bot Service") -t a [Microsoft bot Framework](https://dev.botframework.com/ "Microsoft Bot-keretrendszer") használatával egy csevegési robot létrehozásához és üzembe helyezéséhez. Megtervezheti és fejlesztheti a grafikus kezelőfelülettel, a [zeneszerzővel](/composer/ "Composer")vagy a leggyakoribb bot-forgatókönyvekhez tervezett [munkabot-mintákkal](https://github.com/microsoft/BotBuilder-Samples "működő bot-minták") .
+Használja az [Azure bot Service](/azure/bot-service/ "Azure bot Service") -t a [Microsoft bot Framework](https://dev.botframework.com/ "Microsoft Bot-keretrendszer") használatával egy csevegési robot létrehozásához és üzembe helyezéséhez. Megtervezheti és fejlesztheti a grafikus kezelőfelülettel, a [zeneszerzővel](/composer/ "Composer")vagy a leggyakoribb bot-forgatókönyvekhez tervezett [munkabot-mintákkal](https://github.com/microsoft/BotBuilder-Samples "működő bot-minták") .
 
 ## <a name="integrate-with-other-cognitive-services"></a>Integrálás más Cognitive Servicesokkal
 
@@ -130,6 +130,10 @@ A LUIS a meglévő LUIS-erőforrások részeként Text Analytics funkciókat biz
 
 Ismerje meg a LUIS-t gyakorlati útmutatókkal a [portál](get-started-portal-build-app.md "portál") és az [SDK ügyféloldali kódtárak](azure-sdk-quickstart.md "SDK-ügyféloldali kódtárak")használatával.
 
+
+## <a name="deploy-on-premises-using-docker-containers"></a>Helyszíni üzembe helyezés Docker-tárolók használatával
+
+A [Luis-tárolók használatával](luis-container-howto.md) üzembe helyezhet API-szolgáltatásokat a helyszínen. Ezek a Docker-tárolók lehetővé teszik, hogy a szolgáltatás a megfelelőségi, biztonsági vagy egyéb működési okokból közelebb kerüljön az adataihoz.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: cfc3c445595bec046de4256a57d566067fe3d29e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54023c8c4d13bb683ef2e53f2d6a49b23b3861a4
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82692442"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95537764"
 ---
 # <a name="verify-throughput-and-latency-metrics-for-a-storage-account"></a>Átviteli sebességgel és késéssel kapcsolatos mérőszámok ellenőrzése tárfiókok esetében
 
@@ -24,7 +24,7 @@ A sorozat negyedik részében az alábbiakkal fog megismerkedni:
 > * Diagramok konfigurálása az Azure Portalon
 > * Átviteli sebességgel és késéssel kapcsolatos mérőszámok ellenőrzése
 
-Az [Azure Storage mérőszámai](../common/monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) az Azure Monitor használatával adnak egységes képet a tárfiók teljesítményéről és rendelkezésre állásáról.
+Az [Azure Storage mérőszámai](./monitor-blob-storage.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) az Azure Monitor használatával adnak egységes képet a tárfiók teljesítményéről és rendelkezésre állásáról.
 
 ## <a name="configure-metrics"></a>Mérőszámok konfigurálása
 
@@ -36,7 +36,7 @@ A **METRIKA** területen válassza ki a következő táblázatban található m�
 
 Az alábbi mérőszámok segítségével képet kaphat az alkalmazás késésével és átviteli sebességével kapcsolatban. A portálon konfigurált mérőszámok egyperces átlagértékek. Ha egy tranzakció egy percen belül fejeződött be, akkor a percben megadott érték az átlag felére csökken. Az alkalmazásban a fel- és letöltési műveletek időzítve vannak, és a rendszer a kimenetek között megjeleníti a fájlok fel- és letöltéséhez szükséges tényleges időt. Ezek az információk és a portál mérőszámai együttesen teljes körűen értelmezhetővé teszik az átviteli sebességet.
 
-|Metrika|Meghatározás|
+|Metric|Definíció|
 |---|---|
 |**Sikeres kérések végpontok közötti késése**|A tárolási szolgáltatás vagy a megadott API-művelet számára elküldött sikeres kérések végpontok közötti késésének átlaga. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt.|
 |**Sikerességi kiszolgáló késése**|Az Azure Storage által sikeresen feldolgozott kérések átlagos feldolgozási ideje. Ez az érték nem tartalmazza a SuccessE2ELatency paraméterben megadott hálózati késleltetést. |
@@ -52,7 +52,7 @@ A diagramokhoz több mérőszám is társítható, ekkor azonban a rendszer leti
 
 ## <a name="dimensions"></a>Dimenziók
 
-A [Dimenziók](../common/monitor-storage-reference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#metrics-dimensions) segítségével részletesebben megismerhetők a diagramok, és részletesebb információk nyerhetők ki belőlük. A különböző metrikák eltérő dimenziókkal rendelkeznek. Az egyik rendelkezésre álló dimenzió az **API-név** dimenzió. Ez a dimenzió külön API-hívásokra osztja szét a diagramot. Az első alábbi képen egy tárfiókhoz tartozó összes tranzakció diagramjára látható példa. A második képen ugyanez a diagram látható, ezúttal viszont a kiválasztott API-név dimenzióval együtt. Ahogy látható, a listában szereplő tranzakciók mindegyike további részleteket biztosít az API-név által indított meghívások számával kapcsolatban.
+A [Dimenziók](./monitor-blob-storage-reference.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json#metrics-dimensions) segítségével részletesebben megismerhetők a diagramok, és részletesebb információk nyerhetők ki belőlük. A különböző metrikák eltérő dimenziókkal rendelkeznek. Az egyik rendelkezésre álló dimenzió az **API-név** dimenzió. Ez a dimenzió külön API-hívásokra osztja szét a diagramot. Az első alábbi képen egy tárfiókhoz tartozó összes tranzakció diagramjára látható példa. A második képen ugyanez a diagram látható, ezúttal viszont a kiválasztott API-név dimenzióval együtt. Ahogy látható, a listában szereplő tranzakciók mindegyike további részleteket biztosít az API-név által indított meghívások számával kapcsolatban.
 
 ![Tárfiókok mérőszámai – dimenzió nélküli tranzakciók](./media/storage-blob-scalable-app-verify-metrics/transactionsnodimensions.png)
 
@@ -62,7 +62,7 @@ A [Dimenziók](../common/monitor-storage-reference.md?toc=%2fazure%2fstorage%2fb
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást. Ehhez válassza ki a virtuális gép erőforráscsoportját, és kattintson a Törlés elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A sorozat negyedik részében megismerkedett a példamegoldáshoz tartozó mérőszámok megtekintésével, például a következőkkel:
 

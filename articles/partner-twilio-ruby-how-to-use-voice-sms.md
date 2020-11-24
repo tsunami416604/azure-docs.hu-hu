@@ -12,12 +12,12 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: 19372b30a5e56738230216777897c08b07a0a86a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49203195bf7746d0bff1b9543d1641f69ab23359
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86170700"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95542677"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>A Twilio használata a hang-és SMS-funkciókhoz a Rubyban
 Ez az útmutató bemutatja, hogyan hajthat végre általános programozási feladatokat az Azure Twilio API szolgáltatásával. A tárgyalt forgatókönyvek közé tartozik a telefonhívás kezdeményezése és egy rövid üzenetküldési szolgáltatás (SMS) üzenet küldése. A Twilio és a hang-és SMS-alkalmazások alkalmazásokban való használatáról további információt a [következő lépések](#NextSteps) című szakaszban talál.
@@ -48,27 +48,27 @@ Példaként a következő TwiML konvertálja a szöveget **„Helló világ!” 
 Minden TwiML-dokumentum `<Response>` legfelső szintű eleme. Innentől kezdve a Twilio-műveletek használatával határozhatja meg az alkalmazás viselkedését.
 
 ### <a name="twiml-verbs"></a><a id="Verbs"></a>TwiML-műveletek
-A Twilio-műveletek olyan XML-címkék, amelyek elmondják **a Twilio.** Például a ** &lt; Say &gt; ** művelet arra utasítja a Twilio, hogy hallhatóan kézbesítse az üzenetet egy híváson. 
+A Twilio-műveletek olyan XML-címkék, amelyek elmondják **a Twilio.** Például a **&lt; Say &gt;** művelet arra utasítja a Twilio, hogy hallhatóan kézbesítse az üzenetet egy híváson. 
 
 A következő lista az Twilio-műveletek listáját tartalmazza.
 
-* ** &lt; Dial &gt; **: a hívó csatlakoztatása egy másik telefonhoz.
-* Összegyűjtése: a telefon billentyűzetén megadott numerikus számjegyeket gyűjti. ** &lt; &gt; **
-* ** &lt; Vonalbontás &gt; **: egy hívást ér véget.
-* ** &lt; Lejátszás &gt; **: hangfájl lejátszása.
-* ** &lt; Szüneteltetés &gt; **: csendes várakozás a megadott számú másodpercre.
-* ** &lt; Rekord &gt; **: a hívó hangját rögzíti, és egy, a rögzítést tartalmazó fájl URL-címét adja vissza.
-* ** &lt; Átirányítás &gt; **: egy hívás vagy SMS átadása a TWIML egy másik URL-címen keresztül.
-* ** &lt; Elutasítás &gt; **: elutasítja a Twilio-szám bejövő hívását a számlázás nélkül
-* ** &lt; Tegyük &gt; **fel, hogy a szöveget a híváson végzett beszédre alakítja át.
-* ** &lt; SMS &gt; **: SMS-üzenet küldése.
+* **&lt; Dial &gt;**: a hívó csatlakoztatása egy másik telefonhoz.
+* Összegyűjtése: a telefon billentyűzetén megadott numerikus számjegyeket gyűjti. **&lt; &gt;**
+* **&lt; Vonalbontás &gt;**: egy hívást ér véget.
+* **&lt; Lejátszás &gt;**: hangfájl lejátszása.
+* **&lt; Szüneteltetés &gt;**: csendes várakozás a megadott számú másodpercre.
+* **&lt; Rekord &gt;**: a hívó hangját rögzíti, és egy, a rögzítést tartalmazó fájl URL-címét adja vissza.
+* **&lt; Átirányítás &gt;**: egy hívás vagy SMS átadása a TWIML egy másik URL-címen keresztül.
+* **&lt; Elutasítás &gt;**: elutasítja a Twilio-szám bejövő hívását a számlázás nélkül
+* **&lt; Tegyük &gt;** fel, hogy a szöveget a híváson végzett beszédre alakítja át.
+* **&lt; SMS &gt;**: SMS-üzenet küldése.
 
 A Twilio-műveletekkel, azok attribútumaival és TwiML kapcsolatos további információkért lásd: [TwiML][twiml]. A Twilio API-val kapcsolatos további információkért lásd: [TWILIO API][twilio_api].
 
 ## <a name="create-a-twilio-account"></a><a id="CreateAccount"></a>Twilio-fiók létrehozása
 Ha készen áll egy Twilio-fiók beszerzésére, regisztráljon a [Twilio kipróbálása][try_twilio]gombra. Elindíthat egy ingyenes fiókot, és később is frissítheti a fiókját.
 
-Amikor regisztrál egy Twilio-fiókra, ingyenes telefonszámot kap az alkalmazáshoz. A fiók biztonsági azonosítóját és hitelesítési jogkivonatát is megkapja. Mindkettőre szükség lesz a Twilio API-hívások létrehozásához. A fiókjához való jogosulatlan hozzáférés megakadályozása érdekében őrizze meg biztonságos hitelesítési tokenjét. A fiók biztonsági azonosítójának és hitelesítési jogkivonatának megtekinthető a [Twilio fiók lapján][twilio_account], a **fiók SID** és **hitelesítési jogkivonat**mezőjében.
+Amikor regisztrál egy Twilio-fiókra, ingyenes telefonszámot kap az alkalmazáshoz. A fiók biztonsági azonosítóját és hitelesítési jogkivonatát is megkapja. Mindkettőre szükség lesz a Twilio API-hívások létrehozásához. A fiókjához való jogosulatlan hozzáférés megakadályozása érdekében őrizze meg biztonságos hitelesítési tokenjét. A fiók biztonsági azonosítójának és hitelesítési jogkivonatának megtekinthető a [Twilio fiók lapján][twilio_account], a **fiók SID** és **hitelesítési jogkivonat** mezőjében.
 
 ### <a name="verify-phone-numbers"></a><a id="VerifyPhoneNumbers"></a>Telefonszámok ellenőrzése
 A Twilio által megadott számon túl ellenőrizheti, hogy az Ön által használt számokat (azaz a mobiltelefont vagy az otthoni telefonszámot) is megtekintheti az alkalmazásokban való használatra. 
@@ -206,4 +206,4 @@ Most, hogy megismerte a Twilio szolgáltatás alapjait, kövesse az alábbi hiva
 [twilio_support]: https://www.twilio.com/help/contact
 [twilio_quickstarts]: https://www.twilio.com/docs/quickstart
 [sinatra]: http://www.sinatrarb.com/
-[azure_vm_setup]: https://docs.microsoft.com/azure/virtual-machines/linux/classic/ruby-rails-web-app
+[azure_vm_setup]: /previous-versions/azure/virtual-machines/linux/classic/ruby-rails-web-app

@@ -1,19 +1,19 @@
 ---
-title: StylesObject dinamikus Azure Maps
-description: A dinamikus Azure Maps létrehozásához használt StylesObject tartozó JSON-séma és-szintaxis hivatkozási útmutatója.
+title: StylesObject séma-útmutató a dinamikus Azure Maps
+description: Útmutató a dinamikus Azure Maps StylesObject sémájának és szintaxisának áttekintéséhez.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 06/19/2020
+ms.date: 11/20/2020
 ms.topic: reference
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4284956138002d209ab0934cdd052748ef8aab78
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: f6bc4c62febf24dee790ac6136b1661426d4d619
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966275"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536948"
 ---
 # <a name="stylesobject-schema-reference-guide-for-dynamic-maps"></a>StylesObject-séma – útmutató dinamikus térképekhez
 
@@ -21,9 +21,15 @@ ms.locfileid: "94966275"
 
 ## <a name="styleobject"></a>StyleObject
 
-A `StyleObject` [`BooleanTypeStyleRule`](#booleantypestylerule) vagy a vagy a [`NumericTypeStyleRule`](#numerictypestylerule) .
+A a `StyleObject` következő stílusú szabályok egyike:
 
-Az alábbi JSON egy névvel ellátott `BooleanTypeStyleRule` `occupied` és egy névvel ellátott nevet mutat be `NumericTypeStyleRule` `temperature` .
+ * [`BooleanTypeStyleRule`](#booleantypestylerule)
+ * [`NumericTypeStyleRule`](#numerictypestylerule)
+ * [`StringTypeStyleRule`](#stringtypestylerule)
+
+Az alábbi JSON-példa a három stílus típusának használatát mutatja be.  A a `BooleanTypeStyleRule` szolgáltatás a dinamikus stílus meghatározására szolgál, amelynek a `occupied` tulajdonsága igaz és hamis.  A azon `NumericTypeStyleRule` szolgáltatások stílusának meghatározására szolgál, amelyek `temperature` tulajdonsága egy adott tartományon belül esik. Végül a a `StringTypeStyleRule` megadott stílusoknak megfelelőre van felhasználva `meetingType` .
+
+
 
 ```json
  "styles": [
@@ -56,6 +62,18 @@ Az alábbi JSON egy névvel ellátott `BooleanTypeStyleRule` `occupied` és egy 
               "color": "#eba834"
             }
         ]
+    },
+    {
+      "keyname": "meetingType",
+      "type": "string",
+      "rules": [
+        {
+          "private": "#FF0000",
+          "confidential": "#FF00AA",
+          "allHands": "#00FF00",
+          "brownBag": "#964B00"
+        }
+      ]
     }
 ]
 ```
@@ -66,7 +84,7 @@ Az alábbi JSON egy névvel ellátott `BooleanTypeStyleRule` `occupied` és egy 
 
 | Tulajdonság | Típus | Leírás | Kötelező |
 |-----------|----------|-------------|-------------|
-| `keyName` | sztring | Az *állapot* vagy a dinamikus tulajdonság neve. Az A `keyName` tömbön belül egyedinek kell lennie `StyleObject` .| Igen |
+| `keyName` | sztring | Az *állapot* vagy a dinamikus tulajdonság neve. Az értéknek `keyName` egyedinek kell lennie a `StyleObject` tömb belsejében.| Igen |
 | `type` | sztring | Az érték "numerikus". | Igen |
 | `rules` | [`NumberRuleObject`](#numberruleobject)[]| Numerikus stílusú tartományok tömbje, amelyekhez társított színek tartoznak. Az egyes tartományok olyan színeket határoznak meg, amelyeket akkor kell használni, ha az *állapot* megfelel a tartománynak.| Igen |
 
@@ -108,7 +126,7 @@ A következő JSON-mintában mindkét tartomány igaz értéket fog tartani, ha 
 
 ### <a name="rangeobject"></a>RangeObject
 
-A `RangeObject` meghatározza az a numerikus tartomány értékét [`NumberRuleObject`](#numberruleobject) . Ahhoz, hogy az *állapot* értéke a tartományba essen, az összes megadott feltételnek igaznak kell lennie. 
+A `RangeObject` meghatározza az a numerikus tartomány értékét [`NumberRuleObject`](#numberruleobject) . Ahhoz, hogy az *állapot* értéke a tartományba essen, az összes megadott feltételnek igaznak kell lennie.
 
 | Tulajdonság | Típus | Leírás | Kötelező |
 |-----------|----------|-------------|-------------|
@@ -144,13 +162,55 @@ A következő JSON egy `NumericTypeStyleRule` nevű *állapotot* ábrázol `temp
 }
 ```
 
+## <a name="stringtypestylerule"></a>StringTypeStyleRule
+
+A a `StringTypeStyleRule` [`StyleObject`](#styleobject) és a a következő tulajdonságokat tartalmazza:
+
+| Tulajdonság | Típus | Leírás | Kötelező |
+|-----------|----------|-------------|-------------|
+| `keyName` | sztring |  Az *állapot* vagy a dinamikus tulajdonság neve.  Az értéknek `keyName` egyedinek kell lennie a  `StyleObject` tömb belsejében.| Igen |
+| `type` | sztring |Az érték a "string". | Igen |
+| `rules` | [`StringRuleObject`](#stringruleobject)[]| N számú *állapotinformációkat* tartalmazó tömb.| Igen |
+
+### <a name="stringruleobject"></a>StringRuleObject
+
+A egy `StringRuleObject` akár N számú állapotinformációkat is tartalmaz, amelyek a funkció tulajdonságának lehetséges karakterlánc-értékei. Ha a szolgáltatás tulajdonságának értéke nem egyezik a definiált állapotok egyikével sem, akkor a funkció nem tartalmaz dinamikus stílust. Ha ismétlődő állapotinformációkat adnak meg, az első elsőbbséget élvez.
+
+A karakterlánc-érték egyeztetése megkülönbözteti a kis-és nagybetűket.
+
+| Tulajdonság | Típus | Leírás | Kötelező |
+|-----------|----------|-------------|-------------|
+| `stateValue1` | sztring | A szín, ha az érték karakterlánca stateValue1. | Nem |
+| `stateValue2` | sztring | A szín, ha az érték karakterlánca stateValue. | Nem |
+| `stateValueN` | sztring | A szín, ha az érték karakterlánca stateValueN. | Nem |
+
+### <a name="example-of-stringtypestylerule"></a>Példa StringTypeStyleRule
+
+A következő JSON `StringTypeStyleRule` azt szemlélteti, hogy az adott értekezlet-típusokhoz társított stílusok definiálva vannak.
+
+```json
+    {
+      "keyname": "meetingType",
+      "type": "string",
+      "rules": [
+        {
+          "private": "#FF0000",
+          "confidential": "#FF00AA",
+          "allHands": "#00FF00",
+          "brownBag": "#964B00"
+        }
+      ]
+    }
+
+```
+
 ## <a name="booleantypestylerule"></a>BooleanTypeStyleRule
 
 A a `BooleanTypeStyleRule` [`StyleObject`](#styleobject) és a a következő tulajdonságokat tartalmazza:
 
 | Tulajdonság | Típus | Leírás | Kötelező |
 |-----------|----------|-------------|-------------|
-| `keyName` | sztring |  Az *állapot* vagy a dinamikus tulajdonság neve.  Az értéknek `keyName` egyedinek kell lennie a Style tömbben.| Igen |
+| `keyName` | sztring |  Az *állapot* vagy a dinamikus tulajdonság neve.  Az értéknek `keyName` egyedinek kell lennie a `StyleObject`  tömb belsejében.| Igen |
 | `type` | sztring |Az érték "boolean". | Igen |
 | `rules` | [`BooleanRuleObject`](#booleanruleobject)1| Logikai pár, amely színekkel `true` és `false` *állapotokkal* rendelkezik.| Igen |
 

@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: routlaw
-ms.openlocfilehash: 6c1bbe48ca5205cf1db49d67a711e9a7523e1845
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f61f08f32ebb2b721846d3c3017405af99421104
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88077118"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95542218"
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>A Node.js modulok használata az Azure alkalmazásokkal
 Ez a dokumentum útmutatást nyújt Node.js modulok használatáról az Azure-ban üzemeltetett alkalmazásokkal. Útmutatást nyújt annak biztosításához, hogy az alkalmazás a modul egy adott verzióját használja, valamint natív modulokat használjon az Azure-ban.
@@ -40,14 +40,14 @@ A modulok olyan betölthető JavaScript-csomagok, amelyek konkrét funkciókat b
 
 A modulok telepítésekor a rendszer a Node modules ( **csomópont- \_ modulok** ) könyvtárban tárolja azokat az alkalmazási könyvtár struktúrájának gyökerében. A **csomópont \_ moduljainak** könyvtára minden modulja saját könyvtárat tart fenn, amely az általa függő modulokat tartalmazza, és ez a viselkedés minden modul esetében ismétlődik, egészen a függőségi láncig. Ez a környezet lehetővé teszi, hogy a telepített modulok saját verzióra vonatkozó követelményekkel rendelkezzenek a modulokra vonatkozóan, amelyektől függnek, azonban nagy méretű címtár-struktúrát eredményezhet.
 
-Ha az alkalmazás részeként helyezi üzembe a **Node \_ ** modules könyvtárat, a **package.js** vagy **npm-shrinkwrap.js** fájlon való összevetésével növeli a központi telepítés méretét, azonban garantálja, hogy az éles környezetben használt modulok verziói megegyeznek a fejlesztés során használt modulokkal.
+Ha az alkalmazás részeként helyezi üzembe a **Node \_** modules könyvtárat, a **package.js** vagy **npm-shrinkwrap.js** fájlon való összevetésével növeli a központi telepítés méretét, azonban garantálja, hogy az éles környezetben használt modulok verziói megegyeznek a fejlesztés során használt modulokkal.
 
 ### <a name="native-modules"></a>Natív modulok
-Habár a legtöbb modul egyszerűen egyszerű szöveges JavaScript-fájlok, egyes modulok platform-specifikus bináris lemezképek. Ezek a modulok a telepítéskor, általában a Python és a Node-GYP használatával vannak lefordítva. Mivel az Azure Cloud Services az alkalmazás részeként üzembe helyezett **Node \_ ** modules mappa használatára támaszkodik, a telepített modulok részét képező natív moduloknak működniük kell egy felhőalapú szolgáltatásban, feltéve, hogy a telepítése és lefordítása egy Windows-fejlesztési rendszeren történt.
+Habár a legtöbb modul egyszerűen egyszerű szöveges JavaScript-fájlok, egyes modulok platform-specifikus bináris lemezképek. Ezek a modulok a telepítéskor, általában a Python és a Node-GYP használatával vannak lefordítva. Mivel az Azure Cloud Services az alkalmazás részeként üzembe helyezett **Node \_** modules mappa használatára támaszkodik, a telepített modulok részét képező natív moduloknak működniük kell egy felhőalapú szolgáltatásban, feltéve, hogy a telepítése és lefordítása egy Windows-fejlesztési rendszeren történt.
 
 A Azure App Service nem támogatja az összes natív modult, és a modulok adott előfeltételekkel való fordításakor sikertelen lehet. Míg egyes népszerű modulok, például a MongoDB opcionális natív függőségekkel rendelkeznek, és ezek nélkül is működnek, két megkerülő megoldás sikeresnek bizonyult szinte minden jelenleg elérhető natív modul esetében:
 
-* Futtassa a **NPM-telepítést** olyan Windows rendszerű gépen, amelyen telepítve van az összes natív modul előfeltétele. Ezután telepítse az alkalmazás részeként a létrehozott **Node \_ ** modules mappát Azure app Service.
+* Futtassa a **NPM-telepítést** olyan Windows rendszerű gépen, amelyen telepítve van az összes natív modul előfeltétele. Ezután telepítse az alkalmazás részeként a létrehozott **Node \_** modules mappát Azure app Service.
 
   * A fordítás előtt győződjön meg arról, hogy a helyi Node.js telepítése megfelelő architektúrával rendelkezik, és a verzió a lehető leghamarabb elérhető az Azure-ban (az aktuális értékek a tulajdonságok **folyamat. Arch** és **Process. Version**).
 
@@ -55,9 +55,9 @@ A Azure App Service nem támogatja az összes natív modult, és a modulok adott
 
 ### <a name="using-a-packagejson-file"></a>package.jshasználata fájlon
 
-A fájl **package.js** az alkalmazás által igényelt legfelső szintű függőségek megadására van szükség, hogy az üzemeltetési platform telepíteni tudja a függőségeket, ahelyett, hogy a telepítés részeként bele kellene foglalni a Node modules mappát. ** \_ ** Az alkalmazás telepítése után a **NPM install** paranccsal elemezheti a **package.jsa** fájlban, és telepítheti az összes felsorolt függőséget.
+A fájl **package.js** az alkalmazás által igényelt legfelső szintű függőségek megadására van szükség, hogy az üzemeltetési platform telepíteni tudja a függőségeket, ahelyett, hogy a telepítés részeként bele kellene foglalni a Node modules mappát. **\_** Az alkalmazás telepítése után a **NPM install** paranccsal elemezheti a **package.jsa** fájlban, és telepítheti az összes felsorolt függőséget.
 
-A fejlesztés során a **--Save**, **--Save-dev**vagy a **--Save-opcionális** paramétereket használhatja a modulok telepítésekor, ha a modulhoz bejegyzést szeretne hozzáadni a **package.js** fájlból automatikusan. További információ: [NPM-install](https://docs.npmjs.com/cli/install).
+A fejlesztés során a **--Save**, **--Save-dev** vagy a **--Save-opcionális** paramétereket használhatja a modulok telepítésekor, ha a modulhoz bejegyzést szeretne hozzáadni a **package.js** fájlból automatikusan. További információ: [NPM-install](https://docs.npmjs.com/cli/install).
 
 A fájl **package.js** egyik lehetséges problémája, hogy csak a legfelső szintű függőségek verzióját adja meg. Az egyes telepített modulok esetleg nem határozzák meg, hogy milyen verziójú modulokra van szükség, és így lehetséges, hogy a fejlesztés során használttól eltérő függőségi láncot használ.
 
@@ -71,9 +71,9 @@ A fájl **package.js** egyik lehetséges problémája, hogy csak a legfelső szi
 >
 
 ### <a name="using-a-npm-shrinkwrapjson-file"></a>npm-shrinkwrap.jshasználata fájlon
-A fájl **npm-shrinkwrap.js** a fájlpackage.jsa modul verziószámozási korlátozásait próbálja ** meg** kezelni. Míg a fájl **package.js** csak a legfelső szintű modulok verzióit tartalmazza, a fájl **npm-shrinkwrap.js** a teljes modul függőségi láncának verziójának követelményeit tartalmazza.
+A fájl **npm-shrinkwrap.js** a fájlpackage.jsa modul verziószámozási korlátozásait próbálja **meg** kezelni. Míg a fájl **package.js** csak a legfelső szintű modulok verzióit tartalmazza, a fájl **npm-shrinkwrap.js** a teljes modul függőségi láncának verziójának követelményeit tartalmazza.
 
-Ha az alkalmazás készen áll az éles környezetben való használatra, zárolhatja a verziókra vonatkozó követelményeket, és létrehozhat egy **npm-shrinkwrap.js** fájlt a **NPM Shrinkwrap** parancs használatával. Ez a parancs a **Node \_ ** modules mappában jelenleg telepített verziókat fogja használni, és rögzíti ezeket a verziókat a fájl **npm-shrinkwrap.js** . Miután az alkalmazást telepítette az üzemeltetési környezetbe, a **NPM install** paranccsal elemezheti a **npm-shrinkwrap.jsa** fájlban, és telepítheti az összes felsorolt függőséget. További információ: [NPM-Shrinkwrap](https://docs.npmjs.com/cli/shrinkwrap).
+Ha az alkalmazás készen áll az éles környezetben való használatra, zárolhatja a verziókra vonatkozó követelményeket, és létrehozhat egy **npm-shrinkwrap.js** fájlt a **NPM Shrinkwrap** parancs használatával. Ez a parancs a **Node \_** modules mappában jelenleg telepített verziókat fogja használni, és rögzíti ezeket a verziókat a fájl **npm-shrinkwrap.js** . Miután az alkalmazást telepítette az üzemeltetési környezetbe, a **NPM install** paranccsal elemezheti a **npm-shrinkwrap.jsa** fájlban, és telepítheti az összes felsorolt függőséget. További információ: [NPM-Shrinkwrap](https://docs.npmjs.com/cli/shrinkwrap).
 
 > [!NOTE]
 > Ha a Azure App Servicere való központi telepítéskor a fájl <b>npm-shrinkwrap.js</b> natív modulra hivatkozik, az alkalmazás a git használatával történő közzétételekor az alábbi példához hasonló hibaüzenet jelenhet meg:
@@ -89,6 +89,6 @@ Most, hogy megértette, hogyan használhatja Node.js modulokat az Azure-ban, meg
 
 További információk: [Node.js fejlesztői központ](/azure/developer/javascript/).
 
-[specify the Node.js version]: nodejs-specify-node-version-azure-apps.md
+[specify the Node.js version]: ./app-service/overview.md
 [How to use the Azure Command-Line Interface for Mac and Linux]:cli-install-nodejs.md
 [Custom Website Deployment Scripts with Kudu]: https://channel9.msdn.com/Shows/Azure-Friday/Custom-Web-Site-Deployment-Scripts-with-Kudu-with-David-Ebbo

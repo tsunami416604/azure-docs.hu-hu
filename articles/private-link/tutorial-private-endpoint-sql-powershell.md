@@ -7,18 +7,18 @@ ms.service: private-link
 ms.topic: tutorial
 ms.date: 10/31/2020
 ms.author: allensu
-ms.openlocfilehash: 36b952131c2050230de89064adc586c5a2851b65
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 7448e003771bea1e235d4e0776ebce3cb1beae17
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146416"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544088"
 ---
 # <a name="tutorial---connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-powershell"></a>Oktatóanyag – kapcsolódás Azure SQL Serverhez Azure Private Endpoint-Azure PowerShell használatával
 
 Az Azure privát végpontja az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a virtuális gépek (VM-EK) számára, hogy magánjellegű módon kommunikáljanak a privát kapcsolati erőforrásokkal.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Hozzon létre egy virtuális hálózatot és egy megerősített gazdagépet.
@@ -31,7 +31,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 * Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Ha a PowerShell helyi telepítése és használata mellett dönt, ehhez a cikkhez az Azure PowerShell-modul 5.4.1-es vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor azt is futtatnia kell, `Connect-AzAccount` hogy létrehozza az Azure-hoz való kapcsolódást.
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -295,9 +295,9 @@ Ebben a szakaszban az előző lépésben létrehozott virtuális gépet fogja ha
     A rendszer a **10.0.0.5** magánhálózati IP-címét adja vissza az SQL-kiszolgáló nevéhez.  Ez a címe a korábban létrehozott virtuális hálózat alhálózatában található.
 
 
-10. Telepítse a [SQL Server Management Studiot](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017&preserve-view=true) a **myVM** .
+10. Telepítse a [SQL Server Management Studiot](/sql/ssms/download-sql-server-management-studio-ssms?preserve-view=true&view=sql-server-2017) a **myVM**.
 
-11. Nyissa meg **SQL Server Management Studio** .
+11. Nyissa meg **SQL Server Management Studio**.
 
 12. A **Kapcsolódás a kiszolgálóhoz** lapon adja meg vagy válassza ki az alábbi adatokat:
 
@@ -314,11 +314,11 @@ Ebben a szakaszban az előző lépésben létrehozott virtuális gépet fogja ha
 
 14. Az adatbázisok tallózása a bal oldali menüben.
 
-15. Opcionálisan Információk létrehozása vagy lekérdezése a **mysqldatabase** .
+15. Opcionálisan Információk létrehozása vagy lekérdezése a **mysqldatabase**.
 
 16. A **myVM** felé irányuló megerősített kapcsolódás lezárása. 
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
 Ha végzett a magánhálózati végpont, az SQL Server és a virtuális gép használatával, törölje az erőforráscsoportot és az összes benne lévő erőforrást: 
 
 1. Írja be a **CreateSQLEndpointTutorial-RG** kifejezést a portál felső részén található **keresőmezőbe** , és válassza ki a **CreateSQLEndpointTutorial-RG** elemet a keresési eredmények közül. 

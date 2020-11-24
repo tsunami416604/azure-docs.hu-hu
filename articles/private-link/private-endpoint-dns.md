@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: bb1f4b5e37cecc33cef115f26c44ad6375c7e327
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: d682495cb7add446adf1634de6e9ed6756d1468e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734378"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544377"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Az Azure privát végpont DNS-konfigurációja
 
@@ -125,7 +125,7 @@ Ez a modell bővíthető több, ugyanahhoz a privát végponthoz társított vir
 > [!IMPORTANT]
 > Ha egy másik előfizetéshez tartozó sugaras modellben használ privát végpontot, akkor ugyanazt a saját DNS-zónát használja a központban.
 
-Ebben a forgatókönyvben egy központilag [küllős](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) hálózati topológia van, és a küllős hálózatok közös privát végpontot használnak, és az összes küllős virtuális hálózat ugyanahhoz a magánhálózati DNS-zónához van csatolva. 
+Ebben a forgatókönyvben egy központilag [küllős](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) hálózati topológia van, és a küllős hálózatok közös privát végpontot használnak, és az összes küllős virtuális hálózat ugyanahhoz a magánhálózati DNS-zónához van csatolva. 
 
 :::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="Hub és küllő az Azure által biztosított DNS-sel":::
 
@@ -141,7 +141,7 @@ Az alábbi forgatókönyv olyan helyszíni hálózat számára megfelelő, amely
 A megfelelő konfigurálásához a következő erőforrásokra van szükség:
 
 - Helyszíni hálózat
-- A helyszíni környezethez [csatlakoztatott](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/) virtuális hálózat
+- A helyszíni környezethez [csatlakoztatott](/azure/architecture/reference-architectures/hybrid-networking/) virtuális hálózat
 - DNS-továbbító üzembe helyezése az Azure-ban 
 - Saját DNS zónák [privatelink.database.Windows.net](../dns/private-dns-privatednszone.md) [type A record](../dns/dns-zones-records.md#record-types)
 - Magánhálózati végpont adatai (FQDN-rekord neve és magánhálózati IP-cím)
@@ -158,7 +158,7 @@ Ez a konfiguráció bővíthető olyan helyszíni hálózatra, amely már rendel
 A megfelelő konfigurálásához a következő erőforrásokra van szükség:
 
 - Helyi hálózat egyéni DNS-megoldással 
-- A helyszíni környezethez [csatlakoztatott](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/) virtuális hálózat
+- A helyszíni környezethez [csatlakoztatott](/azure/architecture/reference-architectures/hybrid-networking/) virtuális hálózat
 - DNS-továbbító üzembe helyezése az Azure-ban
 - Saját DNS zónák [privatelink.database.Windows.net](../dns/private-dns-privatednszone.md) [type A record](../dns/dns-zones-records.md#record-types)
 - Magánhálózati végpont adatai (FQDN-rekord neve és magánhálózati IP-cím)
@@ -187,7 +187,7 @@ A DNS-továbbító feladata az összes DNS-lekérdezés feloldása egy kiszolgá
 A megfelelő konfigurálásához a következő erőforrásokra van szükség:
 
 - Helyszíni hálózat
-- A helyszíni környezethez [csatlakoztatott](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/) virtuális hálózat
+- A helyszíni környezethez [csatlakoztatott](/azure/architecture/reference-architectures/hybrid-networking/) virtuális hálózat
 - [Egyenrangú virtuális hálózat](../virtual-network/virtual-network-peering-overview.md) 
 - DNS-továbbító üzembe helyezése az Azure-ban
 - Saját DNS zónák [privatelink.database.Windows.net](../dns/private-dns-privatednszone.md) [type A record](../dns/dns-zones-records.md#record-types)

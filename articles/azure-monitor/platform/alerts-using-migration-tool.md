@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: e49525018a3e23ecbbf92d7a8b3f7c50804432b8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7bcf3e5c0b50d3d6eb8f71dc70f0ff064ff3465
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358661"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536030"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>A klasszikus riasztási szabályok áttelepítéséhez használja az önkéntes áttelepítési eszközt
 
@@ -43,9 +43,9 @@ Az áttelepítési folyamat a klasszikus riasztási szabályokat új, egyenért�
 
 A klasszikus riasztási szabályok áttelepítésének elindításához a Azure Portal hajtsa végre az alábbi lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com)területen válassza a **figyelés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)területen válassza a **figyelés** lehetőséget.
 
-1. Válassza a **riasztások**lehetőséget, majd a **riasztási szabályok kezelése** vagy a **klasszikus riasztások megtekintése**lehetőséget.
+1. Válassza a **riasztások** lehetőséget, majd a **riasztási szabályok kezelése** vagy a **klasszikus riasztások megtekintése** lehetőséget.
 
 1. Válassza az áttelepítés **új szabályokra** lehetőséget az áttelepítési kezdőlapra való ugráshoz. Ezen az oldalon az összes előfizetésének és a Migrálás állapotának listája látható:
 
@@ -56,7 +56,7 @@ A klasszikus riasztási szabályok áttelepítésének elindításához a Azure 
     > [!NOTE]
     > Az áttelepítési eszköz a klasszikus riasztási szabályokat használó összes előfizetés fázisában van. A bevezetés korai fázisaiban előfordulhat, hogy egyes előfizetések nem készen állnak az áttelepítésre.
 
-1. Válasszon ki egy vagy több előfizetést, majd válassza az **áttelepítés előnézete**lehetőséget.
+1. Válasszon ki egy vagy több előfizetést, majd válassza az **áttelepítés előnézete** lehetőséget.
 
     Az eredményül kapott oldal megjeleníti a klasszikus riasztási szabályok részleteit, amelyek egy adott előfizetéshez lesznek áttelepítve. Az **előfizetéshez tartozó áttelepítési adatok letöltésével** is kiválaszthatja a részleteket CSV formátumban.
 
@@ -64,7 +64,7 @@ A klasszikus riasztási szabályok áttelepítésének elindításához a Azure 
 
 1. Egy vagy több e-mail-címet kell megadnia az áttelepítési állapot értesítéséhez. E-mailt fog kapni, ha az áttelepítés befejeződik, vagy ha bármilyen műveletre szükség van.
 
-1. Válassza az **áttelepítés indítása**lehetőséget. Olvassa el a megerősítő párbeszédpanelen megjelenő információkat, és erősítse meg, hogy készen áll az áttelepítési folyamat elindítására.
+1. Válassza az **áttelepítés indítása** lehetőséget. Olvassa el a megerősítő párbeszédpanelen megjelenő információkat, és erősítse meg, hogy készen áll az áttelepítési folyamat elindítására.
 
     > [!IMPORTANT]
     > Miután elindította az áttelepítést egy előfizetéshez, nem szerkesztheti és nem hozhatja létre klasszikus riasztási szabályokat az adott előfizetéshez. Ez a korlátozás biztosítja, hogy a klasszikus riasztási szabályok módosítása ne vesszenek el az új szabályokba való áttelepítés során. Bár a klasszikus riasztási szabályok nem módosíthatók, a rendszer továbbra is futtatja, és a riasztásokat csak az áttelepítés előtt küldi el. Az előfizetéshez tartozó áttelepítés befejezése után már nem használhat klasszikus riasztási szabályokat.
@@ -83,7 +83,7 @@ Ha egy előfizetés készen áll az áttelepítésre, az előfizetés tulajdonos
 
 ### <a name="who-can-trigger-the-migration"></a>Kik indíthatják el az áttelepítést?
 
-Azok a felhasználók, akik az előfizetés szintjén hozzárendelt figyelési közreműködő szerepkörrel rendelkeznek, képesek elindítani az áttelepítést. [További információ az áttelepítési folyamat Role-Based Access Controláról](alerts-understand-migration.md#who-can-trigger-the-migration).
+Azok a felhasználók, akik az előfizetés szintjén hozzárendelt figyelési közreműködő szerepkörrel rendelkeznek, képesek elindítani az áttelepítést. [További információ az áttelepítési folyamat Azure szerepköralapú hozzáférés-vezérléséről](alerts-understand-migration.md#who-can-trigger-the-migration).
 
 ### <a name="how-long-will-the-migration-take"></a>Mennyi időt vesz igénybe az áttelepítés?
 

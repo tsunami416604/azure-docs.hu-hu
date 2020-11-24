@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: 3236e0a95c6a4b4f57ac38ed067011c3d6848b5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 176f12a0a06a5bcae601463e30189bc139d3531f
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89670544"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543850"
 ---
 # <a name="move-resources-across-regions-in-powershell"></a>Erőforrások áthelyezése a régiók között a PowerShellben
 
@@ -25,7 +25,7 @@ Ismerje meg, hogyan helyezhet át Azure-erőforrásokat egy másik régióba a P
 
 ## <a name="before-you-start"></a>Előkészületek
 
-- Az Azure-előfizetésnek hozzáféréssel kell rendelkeznie az erőforrás-Mozgatóhoz, és rendelkeznie kell [tulajdonosi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) vagy [felhasználói hozzáférés-rendszergazdai](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) jogosultságokkal az előfizetéshez.
+- Az Azure-előfizetésnek hozzáféréssel kell rendelkeznie az erőforrás-Mozgatóhoz, és rendelkeznie kell [tulajdonosi](../role-based-access-control/built-in-roles.md#owner) vagy [felhasználói hozzáférés-rendszergazdai](../role-based-access-control/built-in-roles.md#user-access-administrator) jogosultságokkal az előfizetéshez.
 - Az erőforrás-mozgató nem tudja követni a módosításokat és a frissítéseket, ezért az erőforrások áthelyezése előtt végezze el a szükséges módosításokat.
 - Ha az erőforrásokat a PowerShell-lel helyezi át, jelenleg nem szerkesztheti a célcsoportok beállításait. Módosítsa ezeket a beállításokat közvetlenül a portálon.
 - Ha erőforrásokat ad hozzá egy áthelyezési gyűjteményhez, a rendszer egy másik régióba helyezi át őket, az áthelyezéssel kapcsolatos metaadatokat egy erre a célra létrehozott erőforráscsoport tárolja. Jelenleg ez az erőforráscsoport az USA 2. keleti régiójában vagy Észak-Európában található. Az Azure-erőforrások bármely nyilvános régió között áthelyezhetők az ezen régiók egyikében található metaadatok használatával.
@@ -346,8 +346,8 @@ Invoke-AzResourceMoverInitiateMove -SubscriptionId <subscription-id> -ResourceGr
 
 A kezdeti áthelyezés után eldöntheti, hogy véglegesíteni kívánja-e az áthelyezést, vagy elveti azt. 
 
-- **Elvetés**: Ha teszteli a tesztet, elkerülheti az áthelyezést, és nem szeretné ténylegesen áthelyezni a forrás erőforrást. Az áthelyezés elvetése visszaadja az erőforrást a *függőben lévő áthelyezés indításának*állapotára. Ezután kezdeményezheti az áthelyezést, ha szükséges.
-- **Véglegesítés**: a véglegesítés befejezi az áthelyezést a célként megadott régióba. A véglegesítést követően a forrás erőforrás a *delete Source függőben*állapotba kerül, és eldöntheti, hogy szeretné-e törölni.
+- **Elvetés**: Ha teszteli a tesztet, elkerülheti az áthelyezést, és nem szeretné ténylegesen áthelyezni a forrás erőforrást. Az áthelyezés elvetése visszaadja az erőforrást a *függőben lévő áthelyezés indításának* állapotára. Ezután kezdeményezheti az áthelyezést, ha szükséges.
+- **Véglegesítés**: a véglegesítés befejezi az áthelyezést a célként megadott régióba. A véglegesítést követően a forrás erőforrás a *delete Source függőben* állapotba kerül, és eldöntheti, hogy szeretné-e törölni.
 
 ### <a name="discard"></a>Elvetés
 

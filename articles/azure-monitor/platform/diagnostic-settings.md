@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: 517de5c4003655c5fea2f2e7949fb513b1a3c381
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 950fcdc5cd6a5bbf3fa61ebd5e23be89691c4370
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842430"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95535792"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Diagnosztikai beállítások létrehozása a platformnaplók és -metrikák más célhelyekre való küldéséhez
 Az Azure [platform-naplói](platform-logs-overview.md) , beleértve az Azure-tevékenység naplóját és az erőforrás-naplókat, részletes diagnosztikai és naplózási információkat biztosítanak az Azure-erőforrásokhoz és az Azure-platformtól függenek. A [platform metrikáit](data-platform-metrics.md) a rendszer alapértelmezés szerint gyűjti, és általában a Azure monitor metrikai adatbázisban tárolja. Ez a cikk a diagnosztikai beállítások létrehozásával és konfigurálásával kapcsolatos részletes információkat tartalmaz a platform metrikáinak és a platformok naplóinak különböző célhelyekre küldéséhez.
@@ -52,7 +52,7 @@ A platform naplói és metrikái a következő táblázatban található célhel
 
 ### <a name="destination-requirements"></a>Célhelyre vonatkozó követelmények
 
-A diagnosztikai beállítások létrehozása előtt létre kell hozni a diagnosztikai beállítás célhelyeit. A célhelynek nem kell ugyanabban az előfizetésben lennie, mint az erőforrás-küldési naplók, feltéve, hogy a beállítást konfiguráló felhasználó mindkét előfizetéshez megfelelő RBAC-hozzáféréssel rendelkezik. Az alábbi táblázat az egyes rendeltetési helyekre vonatkozó egyedi követelményeket tartalmazza, beleértve a regionális korlátozásokat is.
+A diagnosztikai beállítások létrehozása előtt létre kell hozni a diagnosztikai beállítás célhelyeit. A célhelynek nem kell ugyanabban az előfizetésben lennie, mint az erőforrás-küldési naplók, feltéve, hogy a beállítást konfiguráló felhasználó mindkét előfizetéshez megfelelő Azure RBAC-hozzáféréssel rendelkezik. Az alábbi táblázat az egyes rendeltetési helyekre vonatkozó egyedi követelményeket tartalmazza, beleértve a regionális korlátozásokat is.
 
 | Cél | Követelmények |
 |:---|:---|

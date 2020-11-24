@@ -7,19 +7,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: b52cc38c40d8b6a39961ab28d9f0600ea7ee2201
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 391d9562bc73265a10976f485c78e3966aa4fe83
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841903"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536285"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor gyakori kérdések
 
 A Microsoft gyakori kérdései a Azure Monitorkal kapcsolatos gyakori kérdések listája. Ha további kérdése van, látogasson el a [vitafórumra](/answers/questions/topics/single/24223.html) , és tegye fel kérdéseit. Ha egy kérdést gyakran megkérdeznek, azt a cikkhez adja hozzá, hogy gyorsan és könnyen elérhető legyen.
 
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ### <a name="what-is-azure-monitor"></a>Mi az Azure Monitor?
 [Azure monitor](overview.md) egy Azure-szolgáltatás, amely teljesítmény-és rendelkezésre állási monitorozást biztosít az Azure-ban, más felhőalapú környezetekben vagy helyszíni környezetben futó alkalmazások és szolgáltatások számára. Azure Monitor a különböző forrásokból származó adatokat egy közös adatplatformba gyűjti, ahol elemezni lehet a trendeket és a rendellenességeket. A Azure Monitor gazdag funkciói segítenek gyorsan azonosítani és reagálni azokra a kritikus helyzetekre, amelyek hatással lehetnek az alkalmazásra.
@@ -412,7 +412,7 @@ Az új régióban az erőforráshoz gyakran manuálisan újra létre kell hozni 
 - Hozza létre újra az egyéni irányítópultokat és munkafüzeteket. 
 - Hozza létre újra vagy frissítse az egyéni log/metrikus riasztások hatókörét. 
 - Rendelkezésre állási riasztások újbóli létrehozása.
-- Hozza létre újra a felhasználók számára az új erőforrás eléréséhez szükséges egyéni Role-Based-Access Control (RBAC) beállításokat. 
+- Hozza létre újra a felhasználók számára az új erőforrás eléréséhez szükséges egyéni Azure szerepköralapú hozzáférés-vezérlési (Azure RBAC) beállításokat. 
 - Replikálja a betöltési mintavételezést, az adatmegőrzést, a napi korlátot és az egyéni metrikák engedélyezését érintő beállításokat. Ezeket a beállításokat a **használati és becsült költségek** panelen szabályozhatja.
 - Minden olyan integráció, amely az API-kulcsokra támaszkodik, például a [kibocsátási jegyzetek](/azure/azure-monitor/app/annotations), az [élő metrika biztonságos vezérlési csatornája](app/live-stream.md#secure-the-control-channel) stb. Új API-kulcsokat kell létrehoznia, és frissítenie kell a társított integrációt. 
 - A klasszikus erőforrások folyamatos exportálását újra kell konfigurálni.
@@ -680,9 +680,9 @@ A ContainerInventory tábla a leállított és futó tárolókkal kapcsolatos in
 
 Ha a **Microsoft. OperationsManagement előfizetés-regisztrációja hiányzik**, akkor a Microsoft. OperationsManagement erőforrás-szolgáltató regisztrálása az előfizetésben, ahol a munkaterület meg van adva, a **Microsoft.** . Ennek a dokumentációja [itt](../azure-resource-manager/templates/error-register-resource-provider.md)található.
 
-### <a name="is-there-support-for-rbac-enabled-aks-clusters"></a>Támogatja a RBAC-kompatibilis AK-fürtöket?
+### <a name="is-there-support-for-kubernetes-rbac-enabled-aks-clusters"></a>Támogatja a Kubernetes RBAC-kompatibilis AK-fürtöket?
 
-A tároló-figyelési megoldás nem támogatja a RBAC, de a tárolók esetében Azure Monitor is támogatott. Előfordulhat, hogy a megoldás részleteit tartalmazó lap nem jeleníti meg a megfelelő információkat a fürtök adatait megjelenítő pengék között.
+A tároló-figyelési megoldás nem támogatja a Kubernetes RBAC, de a tárolók esetében Azure Monitor is támogatott. Előfordulhat, hogy a megoldás részleteit tartalmazó lap nem jeleníti meg a megfelelő információkat a fürtök adatait megjelenítő pengék között.
 
 ### <a name="how-do-i-enable-log-collection-for-containers-in-the-kube-system-namespace-through-helm"></a>Hogyan lehetővé teszi a naplók gyűjtését a Kube-System névtérben a Helm használatával?
 

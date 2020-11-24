@@ -9,12 +9,12 @@ ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3a3395873d7655118e3fcc9c36cdfc3855f8f000
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14da8b6cb695703f1881b6b0b9858772bde386c5
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714821"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544751"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>A blob Storage teljesítmény-és méretezhetőségi ellenőrzőlistája
 
@@ -59,7 +59,7 @@ Ez a cikk bevált eljárásokat szervez a teljesítményre vonatkozóan a blob S
 
 Ha az alkalmazás megközelíti vagy túllépi a méretezhetőségi célokat, akkor a tranzakciós késések vagy a szabályozás nagyobb mértékben merülhet fel. Amikor az Azure Storage szabályozza az alkalmazást, a szolgáltatás megkezdi a 503 (foglalt kiszolgáló) vagy a 500 (művelet időtúllépése) hibakódok visszaadását. A méretezhetőségi célok korlátain belül maradó hibák elkerülésének fontos része az alkalmazás teljesítményének növelése.
 
-További információ a Queue szolgáltatás skálázhatósági céljairól: az [Azure Storage skálázhatósági és teljesítményi céljai](/azure/storage/queues/scalability-targets#scale-targets-for-queue-storage).
+További információ a Queue szolgáltatás skálázhatósági céljairól: az [Azure Storage skálázhatósági és teljesítményi céljai](../queues/scalability-targets.md#scale-targets-for-queue-storage).
 
 ### <a name="maximum-number-of-storage-accounts"></a>Storage-fiókok maximális száma
 
@@ -100,7 +100,7 @@ Annak megismerése, hogy az Azure Storage hogyan particionálja a blob adatait a
 
 A blob Storage egy tartományon alapuló particionálási sémát használ a skálázáshoz és a terheléselosztáshoz. Minden blobhoz tartozik egy partíciós kulcs, amely tartalmazza a blob teljes nevét (fiók + tároló + blob). A partíciós kulcs a blob-adattartományokra való particionálásra szolgál. A tartományok ezután terheléselosztást kapnak a blob Storage-ban.
 
-A tartományon alapuló particionálás azt jelenti, hogy a lexikális sorrendet (például *mypayroll*, *myperformance*, *myemployees*stb.) vagy időbélyegeket (*log20160101*, *log20160102*, *log20160102*stb.) használó elnevezési konvenciók nagyobb valószínűséggel eredményezik, hogy a partíciók ugyanazon a partíció-kiszolgálón helyezkednek el. , amíg a megnövekedett terhelésnek kisebb tartományokra kell bontania. A Blobok ugyanazon a partíciós kiszolgálón való közös elhelyezése javítja a teljesítményt, ezért a teljesítmény fokozásának fontos része a Blobok a leghatékonyabb módon történő megszervezését is magában foglalja.
+A tartományon alapuló particionálás azt jelenti, hogy a lexikális sorrendet (például *mypayroll*, *myperformance*, *myemployees* stb.) vagy időbélyegeket (*log20160101*, *log20160102*, *log20160102* stb.) használó elnevezési konvenciók nagyobb valószínűséggel eredményezik, hogy a partíciók ugyanazon a partíció-kiszolgálón helyezkednek el. , amíg a megnövekedett terhelésnek kisebb tartományokra kell bontania. A Blobok ugyanazon a partíciós kiszolgálón való közös elhelyezése javítja a teljesítményt, ezért a teljesítmény fokozásának fontos része a Blobok a leghatékonyabb módon történő megszervezését is magában foglalja.
 
 Egy tárolóban lévő összes blobot például egyetlen kiszolgáló is kiszolgálhat, amíg a Blobok terhelése a partíció-tartományok további kiegyensúlyozását igényli. Hasonlóképpen, a lexikális sorrendben elrendezett fiókokat tartalmazó csoportokat egyetlen kiszolgáló is kiszolgálhatja, amíg az egyik vagy az összes fiók terhelését meg kell osztani több partíciós kiszolgáló között.
 
@@ -112,7 +112,7 @@ Az ilyen műveletek gyakoriságának csökkentéséhez kövesse az ajánlott elj
 - Vizsgálja meg a fiókok, tárolók, blobok, táblák és várólisták elnevezési konvencióját. Vegye fontolóra a fiók, a tároló vagy a blob nevének előjavítását egy háromjegyű kivonattal, amely az igényeinek leginkább megfelelő kivonatoló függvényt használja.
 - Ha időbélyegek vagy numerikus azonosítók használatával rendezi az adatokat, ügyeljen arra, hogy ne használjon csak Hozzáfűzés (vagy csak előtag) típusú forgalmi mintát. Ezek a minták nem alkalmasak tartomány alapú particionálási rendszerekhez. Ezek a minták az egyetlen partícióra irányuló összes forgalomhoz vezethetnek, és a rendszernek a hatékony terheléselosztással való korlátozását eredményezhetik.
 
-    Ha például olyan napi műveletekkel rendelkezik, amelyek a blobot egy időbélyeggel (például *ééééhhnn*) használják, akkor az adott napi művelet minden forgalmát egyetlen blobra irányítja a rendszer, amelyet egyetlen partíciós kiszolgáló szolgáltat. Gondolja át, hogy a blob-korlátok és a partíciós korlátok megfelelnek-e az igényeinek, és szükség esetén vegye fontolóra a művelet több blobba való megtörését. Hasonlóképpen, ha a táblázatokban tárolja az idősoros adatokat, a rendszer az összes forgalmat a kulcs névterének utolsó részére irányítja. Ha numerikus azonosítókat használ, az azonosítót egy háromjegyű kivonattal kell előtagja. Ha timestamps-t használ, az időbélyeget a másodperc értékkel, például a *ssyyyymmdd*előtaggal kell elválasztani. Ha az alkalmazás rendszeresen végrehajtja a listázási és lekérdezési műveleteket, akkor válasszon egy kivonatoló függvényt, amely korlátozza a lekérdezések számát. Bizonyos esetekben elegendő lehet egy véletlenszerű előtag.
+    Ha például olyan napi műveletekkel rendelkezik, amelyek a blobot egy időbélyeggel (például *ééééhhnn*) használják, akkor az adott napi művelet minden forgalmát egyetlen blobra irányítja a rendszer, amelyet egyetlen partíciós kiszolgáló szolgáltat. Gondolja át, hogy a blob-korlátok és a partíciós korlátok megfelelnek-e az igényeinek, és szükség esetén vegye fontolóra a művelet több blobba való megtörését. Hasonlóképpen, ha a táblázatokban tárolja az idősoros adatokat, a rendszer az összes forgalmat a kulcs névterének utolsó részére irányítja. Ha numerikus azonosítókat használ, az azonosítót egy háromjegyű kivonattal kell előtagja. Ha timestamps-t használ, az időbélyeget a másodperc értékkel, például a *ssyyyymmdd* előtaggal kell elválasztani. Ha az alkalmazás rendszeresen végrehajtja a listázási és lekérdezési műveleteket, akkor válasszon egy kivonatoló függvényt, amely korlátozza a lekérdezések számát. Bizonyos esetekben elegendő lehet egy véletlenszerű előtag.
   
 - Az Azure Storage-ban használt particionálási sémával kapcsolatos további információkért lásd [: Azure Storage: magas rendelkezésre állású felhőalapú tárolási szolgáltatás erős konzisztencia](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf)használatával.
 
@@ -195,7 +195,7 @@ ServicePointManager.DefaultConnectionLimit = 100; //(Or More)
 
 Más programozási nyelvek esetében tekintse meg a dokumentációt, amely meghatározza, hogyan kell beállítani a kapcsolódási korlátot.  
 
-További információ [: a webszolgáltatások közzétételét ismertető webszolgáltatások: egyidejű kapcsolatok](https://blogs.msdn.microsoft.com/darrenj/2005/03/07/web-services-concurrent-connections/).  
+További információ [: a webszolgáltatások közzétételét ismertető webszolgáltatások: egyidejű kapcsolatok](/archive/blogs/darrenj/web-services-concurrent-connections).  
 
 ### <a name="increase-minimum-number-of-threads"></a>A szálak minimális számának megemelése
 
@@ -213,7 +213,7 @@ Míg a párhuzamosság kiválóan használható a teljesítmény szempontjából
 
 ## <a name="client-libraries-and-tools"></a>Ügyféloldali kódtárak és eszközök
 
-A legjobb teljesítmény érdekében mindig használja a Microsoft által biztosított legújabb ügyféloldali kódtárakat és eszközöket. Az Azure Storage ügyféloldali kódtárai különböző nyelveken érhetők el. Az Azure Storage a PowerShellt és az Azure CLI-t is támogatja. A Microsoft aktívan fejleszti ezeket az ügyfélszoftvereket és eszközöket a teljesítmény szem előtt tartásával, naprakészen tartja a legújabb verziókat, és gondoskodik arról, hogy a bevált teljesítményekkel kapcsolatos gyakorlatokat belsőleg kezeljék. További információt az [Azure Storage dokumentációjában](/azure/storage/#reference)talál.
+A legjobb teljesítmény érdekében mindig használja a Microsoft által biztosított legújabb ügyféloldali kódtárakat és eszközöket. Az Azure Storage ügyféloldali kódtárai különböző nyelveken érhetők el. Az Azure Storage a PowerShellt és az Azure CLI-t is támogatja. A Microsoft aktívan fejleszti ezeket az ügyfélszoftvereket és eszközöket a teljesítmény szem előtt tartásával, naprakészen tartja a legújabb verziókat, és gondoskodik arról, hogy a bevált teljesítményekkel kapcsolatos gyakorlatokat belsőleg kezeljék.
 
 ## <a name="handle-service-errors"></a>Szolgáltatás hibáinak kezelése
 
@@ -243,11 +243,11 @@ Ha ugyanazon a Storage-fiókon belül szeretne Adatmásolást készíteni, haszn
 
 ### <a name="use-azcopy"></a>Az AzCopy használata
 
-A AzCopy parancssori segédprogram egyszerű és hatékony megoldás a Blobok tömeges átvitelére a, a-ból és a különböző Storage-fiókokba. A AzCopy erre a forgatókönyvre van optimalizálva, és magas adatátviteli sebességet érhet el. A AzCopy 10-es verziója a `Put Block From URL` művelettel másolja át a blob-fájlokat a Storage-fiókok között. További információ: [adatok másolása vagy áthelyezése az Azure Storage-ba az AzCopy v10 használatával](/azure/storage/common/storage-use-azcopy-v10).  
+A AzCopy parancssori segédprogram egyszerű és hatékony megoldás a Blobok tömeges átvitelére a, a-ból és a különböző Storage-fiókokba. A AzCopy erre a forgatókönyvre van optimalizálva, és magas adatátviteli sebességet érhet el. A AzCopy 10-es verziója a `Put Block From URL` művelettel másolja át a blob-fájlokat a Storage-fiókok között. További információ: [adatok másolása vagy áthelyezése az Azure Storage-ba az AzCopy v10 használatával](../common/storage-use-azcopy-v10.md).  
 
 ### <a name="use-azure-data-box"></a>Azure Data Box használata
 
-Nagyméretű adatmennyiségek blob Storage-ba történő importálásához érdemes lehet a Azure Data Box családot használni az offline átvitelekhez. A Microsoft által biztosított Data Box eszközök használata jó választás a nagy mennyiségű adatforgalom Azure-ba történő áthelyezéséhez, ha az idő, a hálózat rendelkezésre állása vagy a költségek korlátozottak. További információt az [Azure DataBox dokumentációjában](/azure/databox/)talál.
+Nagyméretű adatmennyiségek blob Storage-ba történő importálásához érdemes lehet a Azure Data Box családot használni az offline átvitelekhez. A Microsoft által biztosított Data Box eszközök használata jó választás a nagy mennyiségű adatforgalom Azure-ba történő áthelyezéséhez, ha az idő, a hálózat rendelkezésre állása vagy a költségek korlátozottak. További információt az [Azure DataBox dokumentációjában](../../databox/index.yml)talál.
 
 ## <a name="content-distribution"></a>Tartalom terjesztése
 

@@ -4,12 +4,12 @@ description: Az Azure-beli riasztások áttekintése. Riasztások, klasszikus ri
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: e71f048a0a96323552b426663a235ed66fa2ef87
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: b8d24eab79bdf16e4d883549be00431bd5372af8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108796"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536047"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>A Microsoft Azure riasztásainak áttekintése 
 
@@ -72,7 +72,7 @@ Az [adatforrások figyelése](./data-sources.md)című témakörben leírtak sze
 
 ## <a name="manage-alerts"></a>Riasztások kezelése
 
-Beállíthatja egy riasztás állapotát, hogy meghatározza, hol található a megoldási folyamat. Ha a riasztási szabályban megadott feltételek teljesülnek, a rendszer riasztást hoz létre vagy tüzelt, és *új*állapottal rendelkezik. Megváltoztathatja az állapotot, amikor visszaigazolja a riasztást, és amikor bezárta. A rendszer az összes állapotjelzőt a riasztás előzményeiben tárolja.
+Beállíthatja egy riasztás állapotát, hogy meghatározza, hol található a megoldási folyamat. Ha a riasztási szabályban megadott feltételek teljesülnek, a rendszer riasztást hoz létre vagy tüzelt, és *új* állapottal rendelkezik. Megváltoztathatja az állapotot, amikor visszaigazolja a riasztást, és amikor bezárta. A rendszer az összes állapotjelzőt a riasztás előzményeiben tárolja.
 
 A következő riasztási állapotok támogatottak.
 
@@ -80,7 +80,7 @@ A következő riasztási állapotok támogatottak.
 |:---|:---|
 | Új | A rendszer észlelte a problémát, és még nem vizsgálta meg. |
 | Nyugtázva | A rendszergazda áttekintette a riasztást, és megkezdte a munkát. |
-| Zárt | A probléma megoldódott. A riasztások bezárása után újra megnyithatja azt egy másik állapotba való módosításával. |
+| Lezárt | A probléma megoldódott. A riasztások bezárása után újra megnyithatja azt egy másik állapotba való módosításával. |
 
 A *riasztási állapot* különbözik, és független a *figyelő feltételtől*. A riasztási állapotot a felhasználó állítja be. A figyelő feltételét a rendszer állítja be. Riasztás esetén a riasztás figyelési feltétele *"tüzelt"* lesz, és ha a riasztást a tüzet jelző mögöttes feltétel kiüríti, a figyelő feltétele *"megoldva"* értékűre van állítva. 
 
@@ -116,7 +116,7 @@ Válassza ki az alábbi értékeket a riasztások lap tetején egy másik oldal 
 
 
 ## <a name="manage-alert-rules"></a>Riasztási szabályok kezelése
-A **szabályok** megjelenítéséhez válassza a **riasztási szabályok kezelése**lehetőséget. A szabályok lap egyetlen helyet biztosít az összes riasztási szabály kezeléséhez az Azure-előfizetések között. Felsorolja az összes riasztási szabályt, és a cél erőforrásai, erőforráscsoportok, szabály neve vagy állapota alapján rendezhető. Ezen a lapon is szerkesztheti, engedélyezheti vagy letilthatja a riasztási szabályokat.  
+A **szabályok** megjelenítéséhez válassza a **riasztási szabályok kezelése** lehetőséget. A szabályok lap egyetlen helyet biztosít az összes riasztási szabály kezeléséhez az Azure-előfizetések között. Felsorolja az összes riasztási szabályt, és a cél erőforrásai, erőforráscsoportok, szabály neve vagy állapota alapján rendezhető. Ezen a lapon is szerkesztheti, engedélyezheti vagy letilthatja a riasztási szabályokat.  
 
  ![Képernyőfelvétel a szabályok lapról](./media/alerts-overview/alerts-preview-rules.png)
 
@@ -140,7 +140,7 @@ A riasztások több Azure monitoring-szolgáltatásban is elérhetők. További 
 
 
 ## <a name="all-alerts-page"></a>Minden riasztás lap 
-A **minden riasztás** lap megjelenítéséhez válassza az összes **riasztás**elemet. Itt megtekintheti a kiválasztott időpontban létrehozott riasztások listáját. Megtekintheti az egyes riasztások listáját vagy a riasztásokat tartalmazó intelligens csoportok listáját. Válassza ki az oldal tetején található szalagcímet a nézetek közötti váltáshoz.
+A **minden riasztás** lap megjelenítéséhez válassza az összes **riasztás** elemet. Itt megtekintheti a kiválasztott időpontban létrehozott riasztások listáját. Megtekintheti az egyes riasztások listáját vagy a riasztásokat tartalmazó intelligens csoportok listáját. Válassza ki az oldal tetején található szalagcímet a nézetek közötti váltáshoz.
 
 ![Képernyőkép az összes riasztás oldalról](media/alerts-overview/all-alerts-page.png)
 
@@ -169,13 +169,13 @@ A riasztás részletei lapon a következő témakörök találhatók:
 
 | Section | Leírás |
 |:---|:---|
-| Összegzés | Megjeleníti a riasztás tulajdonságait és egyéb fontos információit. |
+| Összefoglalás | Megjeleníti a riasztás tulajdonságait és egyéb fontos információit. |
 | Előzmények | Felsorolja a riasztás által végrehajtott műveleteket és a riasztáson végrehajtott módosításokat. Jelenleg csak az állapot változásaira korlátozódik. |
 | Diagnosztika | Az intelligens csoportra vonatkozó információk, amelyekben a riasztás szerepel. A *riasztások* száma az intelligens csoportba tartozó riasztások számára utal. Az adott intelligens csoportban lévő, az elmúlt 30 napban létrehozott riasztásokat is tartalmazza, a riasztások listája lapon lévő időszűrőtől függetlenül. Válasszon ki egy riasztást a részletes adatok megtekintéséhez. |
 
-## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>Szerepköralapú hozzáférés-vezérlés (RBAC) a riasztási példányokhoz
+## <a name="azure-role-based-access-control-azure-rbac-for-your-alert-instances"></a>Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) a riasztási példányokhoz
 
-A riasztási példányok felhasználása és kezelése megköveteli, hogy a felhasználó rendelkezzen az Azure beépített szerepköreivel a [figyelési közreműködő](../../role-based-access-control/built-in-roles.md#monitoring-contributor) vagy a [monitorozási olvasó](../../role-based-access-control/built-in-roles.md#monitoring-reader)számára. Ezek a szerepkörök bármely Azure Resource Manager hatókörön támogatottak, az előfizetési szinttől kezdve a részletes hozzárendelésekhez az erőforrás szintjén. Ha például egy felhasználó csak a figyelés közreműködői hozzáférését használja a virtuális géphez `ContosoVM1` , a felhasználó csak a által generált riasztásokat használhatja és kezelheti `ContosoVM1` .
+A riasztási példányok felhasználásához és kezeléséhez a felhasználónak [Figyelési közreműködő](../../role-based-access-control/built-in-roles.md#monitoring-contributor) vagy [Figyelési olvasó](../../role-based-access-control/built-in-roles.md#monitoring-reader) beépített Azure-szerepkörrel kell rendelkeznie. Ezek a szerepkörök az Azure Resource Manager minden hatókörén támogatottak, az előfizetési szinttől az erőforrásszinten lévő részletes hozzárendelésekig. Ha például egy felhasználó csak a figyelés közreműködői hozzáférését használja a virtuális géphez `ContosoVM1` , a felhasználó csak a által generált riasztásokat használhatja és kezelheti `ContosoVM1` .
 
 ## <a name="manage-your-alert-instances-programmatically"></a>Riasztási példányok programozott kezelése
 
@@ -206,7 +206,7 @@ Az [Alert Management REST API](/rest/api/monitor/alertsmanagement/alerts) segít
 
 Az intelligens csoportok a gépi tanulási algoritmusok alapján összesítik a riasztásokat, ami segít csökkenteni a riasztási zajt és a hibaelhárítási segítséget. [További információ az intelligens csoportokról](./alerts-smartgroups-overview.md?toc=%252fazure%252fazure-monitor%252ftoc.json) és [az intelligens csoportok kezeléséről](./alerts-managing-smart-groups.md?toc=%252fazure%252fazure-monitor%252ftoc.json).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [További információ az intelligens csoportokról](./alerts-smartgroups-overview.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
 - [A műveleti csoportok ismertetése](./action-groups.md)

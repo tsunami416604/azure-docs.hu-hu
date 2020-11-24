@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8ac69b442b06864fd45561b26909e1247674611a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddc9dbf77c04ea95e5b873c45de4c0df109514c7
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89458382"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544445"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>Oktatóanyag – Blobok titkosítása és visszafejtése Azure Key Vault használatával
 
@@ -234,10 +234,10 @@ SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
 
 Ennyi az egész. Jó munkát!
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információ a Microsoft Azure Storage C# használatával történő használatáról: [Microsoft Azure Storage ügyféloldali kódtára a .net-hez](https://msdn.microsoft.com/library/azure/dn261237.aspx).
+További információ a Microsoft Azure Storage C# használatával történő használatáról: [Microsoft Azure Storage ügyféloldali kódtára a .net-hez](/previous-versions/azure/dn261237(v=azure.100)).
 
-További információ a blob REST APIről: [blob Service REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx).
+További információ a blob REST APIről: [blob Service REST API](/rest/api/storageservices/Blob-Service-REST-API).
 
-A Microsoft Azure Storage legfrissebb információit a [Microsoft Azure Storage csapat blogjában](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)találja.
+A Microsoft Azure Storage legfrissebb információit a [Microsoft Azure Storage csapat blogjában](/archive/blogs/windowsazurestorage/)találja.

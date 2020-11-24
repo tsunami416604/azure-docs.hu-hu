@@ -1,5 +1,5 @@
 ---
-title: Csatlakozáskezelő létrehozása (előzetes verzió) – Azure Portal
+title: Csatlakozáskezelő létrehozása – Azure Portal
 titleSuffix: Azure Network Watcher
 description: Ez a cikk azt ismerteti, hogyan lehet figyelőt létrehozni a kapcsolódási figyelőben a Azure Portal használatával.
 services: network-watcher
@@ -10,22 +10,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/30/2020
+ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: f1ba23d53d79587c9d75c1d840c1d3857725d8dd
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: a6ba9c02b384c1b30977d962659983d600c7b2ac
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984379"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545720"
 ---
-# <a name="create-a-monitor-in-connection-monitor-preview-by-using-the-azure-portal"></a>Figyelő létrehozása a Csatlakozáskezelőben (előzetes verzió) a Azure Portal használatával
+# <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>Figyelő létrehozása a Csatlakozáskezelő Azure Portal használatával
 
 Ismerje meg, hogyan figyelheti az erőforrások közötti kommunikációt a kapcsolat figyelője használatával. Ez a cikk azt ismerteti, hogyan lehet figyelőt létrehozni a Azure Portal használatával. A kapcsolódási figyelő támogatja a hibrid és az Azure-beli Felhőbeli üzembe helyezést.
 
-> [!IMPORTANT]
-> A Csatlakozáskezelő jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="before-you-begin"></a>Előkészületek 
 

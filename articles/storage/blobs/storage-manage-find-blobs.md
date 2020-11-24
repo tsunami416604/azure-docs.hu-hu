@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions
-ms.openlocfilehash: 3174dbd36d9bb39ce606ec12f88397f795e91526
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4f84c3c2f6fc671a8cb6ac70313361540e3dd815
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832432"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95523280"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a>Azure Blob-adatkezelés és-keresés a blob-index címkékkel (előzetes verzió)
 
@@ -51,7 +51,7 @@ Ezek a Blobok a *tároló/virtuális mappa/blob neve* előtaggal vannak elválas
 A blob index címkéi olyan kulcs-érték attribútumok, amelyek alkalmazhatók a Storage-fiókjában lévő új vagy meglévő objektumokra is. A feltöltési folyamat során megadhat index címkéket a [put blob](/rest/api/storageservices/put-blob), a [tiltási lista](/rest/api/storageservices/put-block-list)vagy a [blob másolása](/rest/api/storageservices/copy-blob) és a nem kötelező `x-ms-tags` fejléc használatával. Ha már rendelkezik Blobokkal a Storage-fiókban, hívja [meg a blob-címkék beállítása](/rest/api/storageservices/set-blob-tags) a formázott XML-dokumentumot a kérelem törzsében szereplő index címkékkel.
 
 > [!IMPORTANT]
-> A blob-indexek címkéit a [Storage blob-Adattulajdonosa](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) , valamint a blob-címkék ( `t` sas-engedély) elérésére jogosult közös hozzáférési aláírással rendelkező felhasználók is elvégezheti.
+> A blob-indexek címkéit a [Storage blob-Adattulajdonosa](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) , valamint a blob-címkék ( `t` sas-engedély) elérésére jogosult közös hozzáférési aláírással rendelkező felhasználók is elvégezheti.
 >
 > Emellett az engedéllyel rendelkező felhasználók RBAC `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` is elvégezhetik ezt a műveletet.
 
@@ -87,7 +87,7 @@ A következő korlátozások vonatkoznak a blob index címkékre:
 A blob index címkéit alerőforrásként tárolja a rendszer a blob-adatok mellett, és az alapul szolgáló blob-adatoktól függetlenül is lekérhető. A blob-indexek címkéi egyetlen blobhoz a blob- [címkék beolvasása](/rest/api/storageservices/get-blob-tags) művelettel kérhetők le. A (z) paraméterrel rendelkező Blobok [listája](/rest/api/storageservices/list-blobs) a `include:tags` tárolón belüli összes blobot is visszaküldi a blob-index címkével együtt.
 
 > [!IMPORTANT]
-> A blob-indexek lekérése és listázása a [Storage blob-adatok tulajdonosa](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) és bárki számára olyan közös hozzáférésű aláírással végezhető el, amely jogosult a blob-címkék ( `t` sas-engedély) elérésére.
+> A blob-indexek lekérése és listázása a [Storage blob-adatok tulajdonosa](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) és bárki számára olyan közös hozzáférésű aláírással végezhető el, amely jogosult a blob-címkék ( `t` sas-engedély) elérésére.
 >
 > Emellett az engedéllyel rendelkező felhasználók RBAC `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read` is elvégezhetik ezt a műveletet.
 
@@ -100,7 +100,7 @@ Az indexelési motor a kulcs-érték attribútumokat több dimenziós indexbe he
 A [Blobok keresése címkék szerint](/rest/api/storageservices/find-blobs-by-tags) művelet lehetővé teszi olyan Blobok szűrt készletének lekérését, amelyek indexelési címkéi egy adott lekérdezési kifejezésnek felelnek meg. `Find Blobs by Tags` a a Storage-fiókban lévő összes tárolóban támogatja a szűrést, vagy a szűrést csak egyetlen tárolóra szűkítheti. Mivel az összes indexelő címke kulcsa és értéke karakterlánc, a lexikográfiai rendezést használ a viszonyítási operátorok.
 
 > [!IMPORTANT]
-> Az adatkeresés a blob-indexek használatával a [Storage blob-adattulajdonos](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) és a közös hozzáférési aláírással rendelkező felhasználók számára is végrehajtható, amely jogosult a Blobok címkék szerinti keresésére ( `f` sas-engedély).
+> Az adatkeresés a blob-indexek használatával a [Storage blob-adattulajdonos](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) és a közös hozzáférési aláírással rendelkező felhasználók számára is végrehajtható, amely jogosult a Blobok címkék szerinti keresésére ( `f` sas-engedély).
 >
 > Emellett az engedéllyel rendelkező felhasználók RBAC `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` is elvégezhetik ezt a műveletet.
 
@@ -235,7 +235,7 @@ Az [Azure ad-identitást](../common/storage-auth-aad.md) használó hívók a k�
 | [BLOB-címkék beolvasása](/rest/api/storageservices/get-blob-tags)           | Microsoft. Storage/storageAccounts/blobServices/containers/Blobok/címkék/olvasás     |
 | [Blobok keresése címkék alapján](/rest/api/storageservices/find-blobs-by-tags) | Microsoft. Storage/storageAccounts/blobServices/containers/Blobok/Filter/művelet |
 
-A mögöttes blob-adatoktól elkülönítve további engedélyek szükségesek az index címke műveleteihez. A [Storage blob-adatok tulajdonosi](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) szerepköre engedélyeket kap mind a három blob-index címkézési művelethez. A [Storage blob-Adatolvasó](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) csak a és a `Find Blobs by Tags` `Get Blob Tags` műveletekhez biztosít engedélyeket.
+A mögöttes blob-adatoktól elkülönítve további engedélyek szükségesek az index címke műveleteihez. A [Storage blob-adatok tulajdonosi](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) szerepköre engedélyeket kap mind a három blob-index címkézési művelethez. A [Storage blob-Adatolvasó](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader) csak a és a `Find Blobs by Tags` `Get Blob Tags` műveletekhez biztosít engedélyeket.
 
 ### <a name="sas-permissions"></a>SAS-engedélyek
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 7acd287964d25cc7e98c11ec1986c73d8ae265da
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 79e5b1ddde0ff5f0d09dc1c20e3b20ec4de3d925
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104138"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536676"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Naplóadatok és munkaterületek elérésének felügyelete az Azure Monitorban
 
@@ -23,7 +23,7 @@ Ez a cikk a naplókhoz való hozzáférés kezelését és az azokat tartalmazó
 * Azok a felhasználók, akiknek hozzáférésre van szükségük az adott erőforrásokból származó adatok naplózásához az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával – más néven [erőforrás-környezet](design-logs-deployment.md#access-mode)
 * Azok a felhasználók, akiknek hozzáférésre van szükségük a munkaterületen lévő adott tábla adataihoz az Azure RBAC használatával.
 
-A RBAC és a hozzáférési stratégiák körébe tartozó naplók megismeréséhez olvassa el a [Azure monitor naplók üzembe helyezésének tervezése](design-logs-deployment.md) című témakört.
+A naplók az Azure RBAC és a hozzáférési stratégiákkal kapcsolatos fogalmak megismeréséhez olvassa el [a Azure monitor naplók üzembe helyezésének megtervezése](design-logs-deployment.md) című témakört.
 
 ## <a name="configure-access-control-mode"></a>Hozzáférés-vezérlési mód konfigurálása
 
@@ -144,7 +144,7 @@ A Log Analytics olvasó szerepkör a következő Azure-műveleteket tartalmazza:
 
 A *Log Analytics közreműködő* szerepkör tagjai a következőket végezhetik el:
 
-* A *log Analytics olvasó szerepkör*összes jogosultságát tartalmazza, így a felhasználó beolvashatja az összes figyelési adatát
+* A *log Analytics olvasó szerepkör* összes jogosultságát tartalmazza, így a felhasználó beolvashatja az összes figyelési adatát
 * Automation-fiókok létrehozása és konfigurálása
 * Felügyeleti megoldások hozzáadása és eltávolítása
 
@@ -194,9 +194,9 @@ Ha a felhasználók erőforrás-kontextusos hozzáférés használatával kérde
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>Példák:<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | Képes megtekinteni az erőforrás összes naplózási adatforrását.  |
 | `Microsoft.Insights/diagnosticSettings/write` | A diagnosztikai beállítások konfigurálásának lehetősége az erőforráshoz tartozó naplók beállításának engedélyezéséhez. |
 
-`/read`az engedélyt általában olyan szerepkör biztosítja, amely _ \* /READ vagy_ _\*_ engedélyeket tartalmaz, például a beépített [olvasó](../../role-based-access-control/built-in-roles.md#reader) és [közreműködő](../../role-based-access-control/built-in-roles.md#contributor) szerepkört. Előfordulhat, hogy az adott műveleteket vagy a dedikált beépített szerepköröket tartalmazó egyéni szerepkörök nem tartalmazzák ezt az engedélyt.
+`/read`az engedélyt általában olyan szerepkör biztosítja, amely _\* /READ vagy_ _\*_ engedélyeket tartalmaz, például a beépített [olvasó](../../role-based-access-control/built-in-roles.md#reader) és [közreműködő](../../role-based-access-control/built-in-roles.md#contributor) szerepkört. Előfordulhat, hogy az adott műveleteket vagy a dedikált beépített szerepköröket tartalmazó egyéni szerepkörök nem tartalmazzák ezt az engedélyt.
 
-Ha eltérő hozzáférés-vezérlést szeretne létrehozni különböző táblákhoz, tekintse meg a [táblázatos hozzáférés-vezérlés meghatározása](#table-level-rbac) című szakaszt.
+Ha eltérő hozzáférés-vezérlést szeretne létrehozni különböző táblákhoz, tekintse meg a [táblázatos hozzáférés-vezérlés meghatározása](#table-level-azure-rbac) című szakaszt.
 
 ## <a name="custom-role-examples"></a>Egyéni szerepkörre vonatkozó példák
 
@@ -239,15 +239,15 @@ Ha eltérő hozzáférés-vezérlést szeretne létrehozni különböző táblá
 
     * Adja meg a felhasználók számára a következő engedélyeket az erőforrásokhoz: `*/read` , hozzárendelve az olvasó szerepkörhöz vagy `Microsoft.Insights/logs/*/read` . 
 
-## <a name="table-level-rbac"></a>Táblázat szintű RBAC
+## <a name="table-level-azure-rbac"></a>Táblázat szintű Azure-RBAC
 
-A **táblázat szintű RBAC** lehetővé teszi, hogy részletesebb szabályozást adjon meg egy log Analytics munkaterületen lévő adatokhoz a többi engedély mellett. Ez a vezérlő lehetővé teszi olyan konkrét adattípusok meghatározását, amelyek csak egy adott felhasználói csoport számára érhetők el.
+A **táblázat szintű Azure RBAC** lehetővé teszi, hogy részletesebb szabályozást adjon meg egy log Analytics munkaterületen lévő adatokhoz a többi engedély mellett. Ez a vezérlő lehetővé teszi olyan konkrét adattípusok meghatározását, amelyek csak egy adott felhasználói csoport számára érhetők el.
 
 A táblázatos hozzáférés-vezérlést az [Azure egyéni szerepköreivel](../../role-based-access-control/custom-roles.md) implementálva engedélyezheti a hozzáférést a munkaterület adott [tábláihoz](./data-platform-logs.md) . Ezeket a szerepköröket a rendszer a munkaterület vagy az erőforrás-környezet [hozzáférés-vezérlési móddal](design-logs-deployment.md#access-control-mode) rendelkező munkaterületekre alkalmazza, a felhasználó [hozzáférési módjától](design-logs-deployment.md#access-mode)függetlenül.
 
 Hozzon létre egy [Egyéni szerepkört](../../role-based-access-control/custom-roles.md) a következő műveletekkel a Table Access Control elérésének definiálásához.
 
-* Egy táblához való hozzáférés megadásához vegye fel azt a szerepkör-definíció **műveletek** szakaszába. Az engedélyezett **műveletekből**való kivonáshoz vegye fel **azt a** kizárások közé.
+* Egy táblához való hozzáférés megadásához vegye fel azt a szerepkör-definíció **műveletek** szakaszába. Az engedélyezett **műveletekből** való kivonáshoz vegye fel **azt a** kizárások közé.
 * Az összes tábla megadásához használja a Microsoft. OperationalInsights/workspaces/Query/* lekérdezést.
 
 Ha például egy olyan szerepkört szeretne létrehozni, amely hozzáféréssel rendelkezik a _szívverési_ és _AzureActivity_ táblákhoz, hozzon létre egy egyéni szerepkört a következő műveletek használatával:
@@ -302,13 +302,13 @@ Előfordulhat, hogy az egyéni naplók olyan forrásokból származnak, amelyek 
 
 ### <a name="considerations"></a>Megfontolandó szempontok
 
-* Ha a felhasználó globális olvasási engedéllyel rendelkezik a _ \* /READ_ műveletet tartalmazó szabványos olvasó vagy közreműködői szerepkörökkel, a rendszer felülbírálja a táblán belüli hozzáférés-vezérlést, és hozzáférést biztosít számukra az összes naplózási adathoz.
+* Ha a felhasználó globális olvasási engedéllyel rendelkezik a _\* /READ_ műveletet tartalmazó szabványos olvasó vagy közreműködői szerepkörökkel, a rendszer felülbírálja a táblán belüli hozzáférés-vezérlést, és hozzáférést biztosít számukra az összes naplózási adathoz.
 * Ha egy felhasználó számára engedélyezett a táblán belüli hozzáférés, de nincs más engedélye, akkor hozzáférhetnek a naplóbeli adatokhoz az API-ból, de nem a Azure Portal. A Azure Portal való hozzáférés biztosításához használja az Log Analytics olvasót alapszerepkörként.
 * Az előfizetés rendszergazdái és tulajdonosai minden más engedélytől függetlenül hozzáférhetnek az összes adattípushoz.
 * A munkaterület tulajdonosai úgy vannak kezelve, mint bármely más felhasználó a táblán belüli hozzáférés-vezérléshez.
 * Azt javasoljuk, hogy egyéni felhasználók helyett szerepköröket rendeljen a biztonsági csoportokhoz a hozzárendelések számának csökkentése érdekében. Ez segítséget nyújt a meglévő csoport-felügyeleti eszközök használatához a hozzáférés konfigurálásához és ellenőrzéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az adatközpontban vagy más felhőalapú környezetben található számítógépek adatainak összegyűjtéséhez tekintse meg [log Analytics ügynök áttekintését](./log-analytics-agent.md) .
 

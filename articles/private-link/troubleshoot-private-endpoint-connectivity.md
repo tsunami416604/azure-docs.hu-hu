@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: fcc482e6231bbd925fd500a37989052765dede58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f861f9efa6ecc1886647ed6c460b6718ff97e8a1
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77538534"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522328"
 ---
 # <a name="troubleshoot-azure-private-endpoint-connectivity-problems"></a>Az Azure privát végpont kapcsolati problémáinak hibaelhárítása
 
@@ -43,7 +43,7 @@ Tekintse át ezeket a lépéseket annak biztosításához, hogy az összes szok�
 
       ![Privát kapcsolati központ](./media/private-endpoint-tsg/private-link-center.png)
 
-    b. A bal oldali panelen válassza a **privát végpontok**lehetőséget.
+    b. A bal oldali panelen válassza a **privát végpontok** lehetőséget.
     
       ![Privát végpontok](./media/private-endpoint-tsg/private-endpoints.png)
 
@@ -56,9 +56,9 @@ Tekintse át ezeket a lépéseket annak biztosításához, hogy az összes szok�
     
        ![Virtuális hálózat és DNS-konfiguráció](./media/private-endpoint-tsg/vnet-dns-configuration.png)
     
-1. A [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) használatával megtekintheti, hogy folyik-e az adatforgalom.
+1. A [Azure monitor](../azure-monitor/overview.md) használatával megtekintheti, hogy folyik-e az adatforgalom.
 
-    a. A privát végpont erőforráson válassza a **figyelés**lehetőséget.
+    a. A privát végpont erőforráson válassza a **figyelés** lehetőséget.
      - Válassza ki az adatelemet vagy **a** **kimenő adatvesztést**. 
      - A magánhálózati végponthoz való kapcsolódáskor megtekintheti, hogy vannak-e adatfolyamok. Körülbelül 10 perc késés várható.
     
@@ -76,11 +76,11 @@ Tekintse át ezeket a lépéseket annak biztosításához, hogy az összes szok�
     
       ![Network Watcher – csatlakoztatási hibák](./media/private-endpoint-tsg/network-watcher-connection-troubleshoot.png)
 
-    d. Válassza **a teszt a teljes tartománynév alapján**lehetőséget.
+    d. Válassza **a teszt a teljes tartománynév alapján** lehetőséget.
      - Illessze be a teljes tartománynevet a privát végponti erőforrásból.
      - Adjon meg egy portot. Az Azure Storage vagy a Azure Cosmos DB és a 1336 for SQL esetében általában az 443-et használja.
 
-    e. Válassza a **teszt**lehetőséget, és ellenőrizze a teszt eredményeit.
+    e. Válassza a **teszt** lehetőséget, és ellenőrizze a teszt eredményeit.
     
       ![Network Watcher – teszteredmények](./media/private-endpoint-tsg/network-watcher-test-results.png)
     
@@ -93,7 +93,7 @@ Tekintse át ezeket a lépéseket annak biztosításához, hogy az összes szok�
        - Ellenőrizze, hogy létezik-e a saját DNS-zóna rekordja. Ha nem létezik, hozza létre.
      - Ha egyéni DNS-t használ:
        - Tekintse át az egyéni DNS-beállításokat, és ellenőrizze, hogy helyes-e a DNS-konfiguráció.
-       Útmutatásért lásd a [privát végpont áttekintése: DNS-konfiguráció](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)című témakört.
+       Útmutatásért lásd a [privát végpont áttekintése: DNS-konfiguráció](./private-endpoint-overview.md#dns-configuration)című témakört.
 
     b. Ha a hálózati biztonsági csoportok (NSG) vagy a felhasználó által megadott útvonalak miatt sikertelen volt a kapcsolat:
      - Tekintse át a NSG kimenő szabályait, és hozza létre a megfelelő kimenő szabályokat a forgalom engedélyezéséhez.
@@ -105,7 +105,7 @@ Tekintse át ezeket a lépéseket annak biztosításához, hogy az összes szok�
 
 1. Ha a probléma továbbra is megoldatlan, forduljon az [Azure ügyfélszolgálatához](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) , és a kapcsolati probléma továbbra is fennáll.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
- * [Hozzon létre egy privát végpontot a frissített alhálózaton (Azure Portal)](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal)
+ * [Hozzon létre egy privát végpontot a frissített alhálózaton (Azure Portal)](./create-private-endpoint-portal.md)
  * [Az Azure Private link hibaelhárítási útmutatója](troubleshoot-private-link-connectivity.md)

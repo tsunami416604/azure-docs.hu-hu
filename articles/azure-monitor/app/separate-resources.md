@@ -3,12 +3,12 @@ title: A Application Insights üzembe helyezésének megtervezése – egy vagy 
 description: A különböző erőforrásokhoz való közvetlen telemetria fejlesztési, tesztelési és üzemi bélyegzők.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 264cbe35e7af50577b345d686b639e47760f428d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49e9b8920af7333e0d95e23e6e5cf0828d448609
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88258726"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536353"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Hány Application Insights erőforrást kell üzembe helyezni
 
@@ -26,7 +26,7 @@ Minden Application Insights erőforráshoz elérhető metrikák tartoznak. Ha a 
 
 -   Együtt telepített alkalmazás-összetevők esetén. Általában egyetlen csapat fejleszti, és ugyanazokat a DevOps/ITOps felhasználók kezelik.
 -   Ha a fő teljesítménymutatók (KPI-k), például a válaszadási időtartamok, az irányítópulton található meghibásodási arányok és az ezekből származó hibák összevonására van lehetőség, alapértelmezés szerint (a Metrikaböngésző felhasználói felületén választhat a szerepkör neve alapján).
--   Ha nincs szükség a szerepköralapú Access Control (RBAC) kezelésére az alkalmazás-összetevők között.
+-   Ha az alkalmazás-összetevők között nem szükséges az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) kezelése.
 -   Ha nem szükségesek a metrikák riasztási feltételei, amelyek eltérőek az összetevők között.
 -   Ha nem kell a folyamatos exportálást a különböző összetevők között kezelni.
 -   Ha nem kell a számlázási/kvótákat az összetevőktől eltérő módon kezelni.

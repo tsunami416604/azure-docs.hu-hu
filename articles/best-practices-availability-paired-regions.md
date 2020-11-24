@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: barbkess
 ms.custom: references_regions
-ms.openlocfilehash: b720d9dd824018d885ccc9860ee9fd8a90a46051
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d42eabe3afeb738b0cbb011881678839fe0ba2d7
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84194315"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95539056"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Üzletmenet-folytonosság és vészhelyreállítás (BCDR): Az Azure párosított régiói
 
@@ -43,7 +43,7 @@ Nem. Míg egy adott Azure-szolgáltatás a regionális párokra támaszkodhat, m
 
 ## <a name="must-i-use-azure-regional-pairs"></a>Az Azure regionális párokat kell használniuk?
 
-Nem. Az Azure-szolgáltatásokkal az Azure-szolgáltatások rugalmas szolgáltatást állíthatnak be anélkül, hogy az Azure regionális párokra kellene támaszkodnia.  Azt javasoljuk azonban, hogy az üzletmenet-folytonossági vész-helyreállítást (BCDR) a regionális párokban konfigurálja, hogy kihasználhassa az [elkülönítést](./security/fundamentals/isolation-choices.md) és javítsa a [rendelkezésre állást](./availability-zones/az-overview.md). A több aktív régiót is támogató alkalmazások esetében, ahol lehetséges, a régiópárok mindkét tagjának használatát javasoljuk. Ez biztosítja az alkalmazások optimális rendelkezésre állását és a lehető legkevesebb helyreállítási időt vészhelyzet esetén. Amikor csak lehetséges, tervezze meg az alkalmazását a [rugalmasság](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview) és a könnyű [helyreállítás](https://docs.microsoft.com/azure/architecture/framework/resiliency/backup-and-recovery)érdekében.
+Nem. Az Azure-szolgáltatásokkal az Azure-szolgáltatások rugalmas szolgáltatást állíthatnak be anélkül, hogy az Azure regionális párokra kellene támaszkodnia.  Azt javasoljuk azonban, hogy az üzletmenet-folytonossági vész-helyreállítást (BCDR) a regionális párokban konfigurálja, hogy kihasználhassa az [elkülönítést](./security/fundamentals/isolation-choices.md) és javítsa a [rendelkezésre állást](./availability-zones/az-overview.md). A több aktív régiót is támogató alkalmazások esetében, ahol lehetséges, a régiópárok mindkét tagjának használatát javasoljuk. Ez biztosítja az alkalmazások optimális rendelkezésre állását és a lehető legkevesebb helyreállítási időt vészhelyzet esetén. Amikor csak lehetséges, tervezze meg az alkalmazását a [rugalmasság](/azure/architecture/framework/resiliency/overview) és a könnyű [helyreállítás](/azure/architecture/framework/resiliency/backup-and-recovery)érdekében.
 
 ## <a name="azure-regional-pairs"></a>Azure regionális párok
 
@@ -64,7 +64,7 @@ Nem. Az Azure-szolgáltatásokkal az Azure-szolgáltatások rugalmas szolgáltat
 | Japán |Kelet-Japán |Nyugat-Japán |
 | Dél-Korea |Dél-Korea középső régiója |Dél-Korea déli régiója |
 | Észak-Amerika |USA keleti régiója |USA nyugati régiója |
-| Észak-Amerika |USA 2. keleti régiója |USA középső régiója |
+| Észak-Amerika |USA 2. keleti régiója |Az USA középső régiója |
 | Észak-Amerika |USA északi középső régiója |USA déli középső régiója |
 | Észak-Amerika |USA 2. nyugati régiója |USA nyugati középső régiója |
 | Norvégia | Kelet-Norvégia | Norvégia nyugati régiója |
@@ -94,9 +94,9 @@ A 2. ábrán említettek szerint.
 
 1. **Azure-beli számítási (IaaS)** – további számítási erőforrásokat kell kiépíteni, hogy az erőforrások egy másik régióban is elérhetők legyenek a katasztrófák során. További információ: az [Azure rugalmasságával kapcsolatos technikai útmutató](https://github.com/uglide/azure-content/blob/master/articles/resiliency/resiliency-technical-guidance.md). 
 
-2. **Azure Storage** – ha felügyelt lemezeket használ, ismerkedjen meg a [régiók közötti biztonsági mentésekkel](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines) Azure Backupával, és [replikálja a virtuális gépeket](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication) az egyik régióból a másikba Azure site Recovery használatával. Ha Storage-fiókokat használ, a Geo-redundáns tárolás (GRS) alapértelmezés szerint be van állítva egy Azure Storage-fiók létrehozásakor. A GRS az adatai automatikusan replikálódnak az elsődleges régión belül, és háromszor a párosított régióban. További információ: [Azure Storage redundancia-beállítások](storage/common/storage-redundancy.md).
+2. **Azure Storage** – ha felügyelt lemezeket használ, ismerkedjen meg a [régiók közötti biztonsági mentésekkel](/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines) Azure Backupával, és [replikálja a virtuális gépeket](./site-recovery/azure-to-azure-tutorial-enable-replication.md) az egyik régióból a másikba Azure site Recovery használatával. Ha Storage-fiókokat használ, a Geo-redundáns tárolás (GRS) alapértelmezés szerint be van állítva egy Azure Storage-fiók létrehozásakor. A GRS az adatai automatikusan replikálódnak az elsődleges régión belül, és háromszor a párosított régióban. További információ: [Azure Storage redundancia-beállítások](storage/common/storage-redundancy.md).
 
-3. **Azure SQL Database** – a Azure SQL Database geo-replikációval a tranzakciók aszinkron replikációját konfigurálhatja a világ bármely régiójába. javasoljuk azonban, hogy ezeket az erőforrásokat egy párosított régióban telepítse a legtöbb vész-helyreállítási forgatókönyv esetében. További információ: [geo-replikáció a Azure SQL Databaseban](sql-database/sql-database-geo-replication-overview.md).
+3. **Azure SQL Database** – a Azure SQL Database geo-replikációval a tranzakciók aszinkron replikációját konfigurálhatja a világ bármely régiójába. javasoljuk azonban, hogy ezeket az erőforrásokat egy párosított régióban telepítse a legtöbb vész-helyreállítási forgatókönyv esetében. További információ: [geo-replikáció a Azure SQL Databaseban](./azure-sql/database/auto-failover-group-overview.md).
 
 4. **Azure Resource Manager** – A Resource Manager eredendően biztosítja az összetevők régiók közötti logikai elkülönítését. Ez azt jelenti, hogy az egyik régióban a logikai hibák valószínűleg kevésbé befolyásolják a másikat.
 

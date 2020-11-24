@@ -7,12 +7,12 @@ ms.date: 11/14/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 8c24c5f043d17b5f0e54ca1c2c6cf41a0d3fe9bc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0bde1b7be15d49d82818f26d07c2ec633dc4526c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "68726356"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95523263"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-ruby"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása a Ruby használatával
 
@@ -25,7 +25,7 @@ A rövid útmutató azt ismerteti, hogyan használható a Ruby blokkblobok felt�
 Győződjön meg arról, hogy a következő további előfeltételek vannak telepítve:
 
 * [Ruby](https://www.ruby-lang.org/en/downloads/)
-* [Azure Storage-kódtár a Ruby számára](https://docs.microsoft.com/azure/storage/blobs/storage-ruby-how-to-use-blob-storage)a rubygem-csomag használatával: 
+* [Azure Storage-kódtár a Ruby számára]()a rubygem-csomag használatával: 
 
     ```
     gem install azure-storage-blob
@@ -90,7 +90,7 @@ Az első teendő a referenciák létrehozása a Blob-tárolóhoz való hozzáfé
 A felhőbeli blobtároló létrehozása után létrehozhatja a **Block** blobobjektumot, amely pontosan arra a blobra mutat, amelyre kíváncsi, és elvégezheti a feltöltési, letöltési, másolási vagy egyéb műveleteket.
 
 > [!IMPORTANT]
-> A tárolók nevei csak kisbetűket tartalmazhatnak. A tárolók és blobok elnevezésével kapcsolatos részletekért lásd a [tárolók, blobok és metaadatok elnevezésével és hivatkozásával](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) foglalkozó cikket.
+> A tárolók nevei csak kisbetűket tartalmazhatnak. A tárolók és blobok elnevezésével kapcsolatos részletekért lásd a [tárolók, blobok és metaadatok elnevezésével és hivatkozásával](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) foglalkozó cikket.
 
 Ebben a szakaszban létre fogja hozni az Azure Storage-kliens és a blobszolgáltatás objektumának egy példányát, valamint egy új tárolót, majd beállítja annak engedélyeit úgy, hogy a blobok nyilvánosak legyenek. A tároló neve **quickstartblobs**. 
 
@@ -184,12 +184,12 @@ Blob Storage-tárolókat alkalmazó Ruby-alkalmazások fejlesztéséhez tekintse
 - Az Azure Storage-hoz készült [Ruby ügyféloldali kódtár forráskódját](https://github.com/Azure/azure-storage-ruby) a GitHubon tekintheti meg és töltheti le.
 - Tekintse át a Ruby ügyféloldali kódtár használatával írt [Blob Storage-mintákat](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=ruby&term=blob).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
  
 Ennek a rövid útmutatónak a segítségével megtanulta, hogyan vihetők át fájlok egy helyi lemez és az Azure Blob Storage között a Ruby használatával. Ha bővebb információra van szüksége a Blob Storage használatával kapcsolatban, lépjen tovább a Blob Storage használati útmutatójára.
 
 > [!div class="nextstepaction"]
-> [Blob Storage-műveletek használati útmutatója](./storage-ruby-how-to-use-blob-storage.md)
+> [Blob Storage-műveletek használati útmutatója]()
 
 
 További információk a Storage Explorerről és a blobokról: [Azure Blob Storage-erőforrások kezelése a Storage Explorer használatával](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).

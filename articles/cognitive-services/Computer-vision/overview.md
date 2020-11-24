@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 11/13/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
 keywords: Computer vízió, Computer víziós alkalmazások, számítógépes jövőkép szolgáltatás
-ms.openlocfilehash: 1603aa05d8bde6d4c3edba2d49120fa3545d3fd0
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 1b4768781c45733590639b4a382fecfdb02adf48
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014645"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95532290"
 ---
 # <a name="what-is-computer-vision"></a>Mi a Computer Vision?
 
@@ -90,13 +90,12 @@ Egy rendszerkép tartalmának elemzése a *fontos terület* koordinátáinak vis
 
 A Computer Vision használatával [felderítheti a felnőtt tartalmakat](concept-detecting-adult-content.md) egy rendszerképben, és a különböző besorolások megbízhatósági pontszámait is visszaküldheti. A tartalom megjelölésére vonatkozó küszöbérték beállítható egy csúszó skálán, hogy megfeleljenek a beállításoknak.
 
-## <a name="use-containers"></a>Tárolók használata
+## <a name="deploy-on-premises-using-docker-containers"></a>Helyszíni üzembe helyezés Docker-tárolók használatával
 
-Computer Vision Docker-tárolók használatával használhatja a szolgáltatást a helyszínen. Jelenleg két tároló érhető el:
+Computer Vision tárolók használatával telepítheti a helyszíni API-szolgáltatásokat. Ezek a Docker-tárolók lehetővé teszik, hogy a szolgáltatás a megfelelőségi, biztonsági vagy egyéb működési okokból közelebb kerüljön az adataihoz. Computer Vision a következő tárolókat kínálja:
 
-* A [Computer Vision olvasási tároló](computer-vision-how-to-install-containers.md) lehetővé teszi a nyomtatott és a kézírásos szöveg felismerését a képekben.
-
-* A [Computer Vision térbeli elemzési tároló](spatial-analysis-container.md) segítségével elemezheti a valós idejű streaming videót, hogy megértse a személyek közötti térbeli kapcsolatokat a fizikai környezeteken keresztül.
+* A [Computer Vision Read OCR Container (előzetes verzió)](computer-vision-how-to-install-containers.md) lehetővé teszi a nyomtatott és a kézírásos szöveg felismerését a képekben.
+* A [Computer Vision térbeli elemzési tároló (előzetes verzió)](spatial-analysis-container.md) lehetővé teszi a valós idejű adatfolyam-videók elemzését a személyek közötti térbeli kapcsolatok és a fizikai környezetek közötti mozgás megismerése érdekében.
 
 ## <a name="image-requirements"></a>A rendszerképre vonatkozó követelmények
 

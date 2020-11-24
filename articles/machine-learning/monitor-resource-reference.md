@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2020
-ms.openlocfilehash: bab74a1db04bb557aa6604fe76c05ba3d087f8c0
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: d231de8e262194cd7dda2462a3f54d7d531eb63c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540790"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95542082"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Az Azure Machine learning-adatreferenciák monitorozása
 
@@ -26,7 +26,7 @@ Ez a szakasz felsorolja a Azure Machine Learning összegyűjtött, automatikusan
 
 **Modellezés**
 
-| Metrika | Egység | Leírás |
+| Metric | Egység | Leírás |
 | ----- | ----- | ----- |
 | A modell üzembe helyezése nem sikerült | Darabszám | A sikertelen telepítési modellek száma. |
 | A modell üzembe helyezése elindult | Darabszám | A modell központi telepítésének száma megkezdődött. |
@@ -38,7 +38,7 @@ Ez a szakasz felsorolja a Azure Machine Learning összegyűjtött, automatikusan
 
 A kvóta adatai csak Azure Machine Learning számítási feladatokhoz használhatók.
 
-| Metrika | Egység | Leírás |
+| Metric | Egység | Leírás |
 | ----- | ----- | ----- |
 | Aktív magok | Darabszám | Az aktív számítási magok száma. |
 | Aktív csomópontok | Darabszám | Az aktív csomópontok száma. |
@@ -56,7 +56,7 @@ A kvóta adatai csak Azure Machine Learning számítási feladatokhoz használha
 
 **Erőforrás**
 
-| Metrika | Egység | Leírás |
+| Metric | Egység | Leírás |
 | ----- | ----- | ----- |
 | CpuUtilization | Százalék | A CPU százalékát használták egy adott csomóponthoz egy futtatási/feladatban. Ez a metrika csak akkor jelenik meg, ha egy művelet egy csomóponton fut. Egy adott feladattípus egy vagy több csomópontot is használhat. Ez a mérőszám egy csomóponton van közzétéve. |
 | GpuUtilization | Százalék | A GPU hány százalékát használták egy adott csomóponthoz egy futtatási/feladatban. Egy csomópont egy vagy több GPU-val rendelkezhet. Ez a mérőszám egy GPU-onként van közzétéve. |
@@ -65,7 +65,7 @@ A kvóta adatai csak Azure Machine Learning számítási feladatokhoz használha
 
 A képzések futtatásával kapcsolatos információk.
 
-| Metrika | Egység | Leírás |
+| Metric | Egység | Leírás |
 | ----- | ----- | ----- |
 | Befejezett futtatások | Darabszám | A befejezett futtatások száma. |
 | Sikertelen futtatások | Darabszám | A sikertelen futtatások száma. |
@@ -77,9 +77,9 @@ A metrikus dimenziókkal kapcsolatos további információkért lásd: [többdim
 
 A Azure Machine Learning a metrikához tartozó következő dimenziókkal rendelkezik.
 
-| Méret | Leírás |
+| Dimenzió | Leírás |
 | ---- | ---- |
-| Fürt neve | A számítási példány neve. Minden kvóta-metrika esetében elérhető. |
+| Fürt neve | A számítási fürt erőforrásának neve. Minden kvóta-metrika esetében elérhető. |
 | VM-család neve | A fürt által használt virtuálisgép-család neve. Elérhető a kvóta kihasználtsága százalékban. |
 | Virtuális gép prioritása | A virtuális gép prioritása. Elérhető a kvóta kihasználtsága százalékban.
 | CreatedTime | Csak CpuUtilization és GpuUtilization esetén érhető el. |

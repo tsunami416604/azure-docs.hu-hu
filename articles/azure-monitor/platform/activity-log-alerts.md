@@ -4,12 +4,12 @@ description: Értesítés küldése SMS-ben, webhookon, SMS-ben, e-mailben és m
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 7ed73678e0df1e068782c2a094846132be58cfe2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 836fc20b6c3d46766801dce0e2aeda83a217d6a3
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86516124"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536081"
 ---
 # <a name="alerts-on-activity-log"></a>Tevékenységnaplóval kapcsolatos riasztások
 
@@ -40,7 +40,7 @@ A műveletnapló riasztásai néhány gyakori lehetőséggel rendelkeznek:
     - Előfizetési szint: például az előfizetésben lévő összes virtuális gép (vagy) az előfizetés összes erőforrása
 - **Erőforráscsoport**: alapértelmezés szerint a rendszer a riasztási szabályt a hatókörben definiált célként megadott erőforrás-csoportba menti. A felhasználó megadhatja azt az erőforráscsoportot is, amelyben a riasztási szabályt tárolni szeretné.
 - **Erőforrás típusa**: erőforrás-kezelő által definiált névtér a riasztás céljához.
-- **Művelet neve**: a [Azure Resource Manager művelet](../../role-based-access-control/resource-provider-operations.md) neve Role-Based Access Control. A Azure Resource Managerban nem regisztrált műveletek nem használhatók a műveletnapló riasztási szabályaiban.
+- **Művelet neve**: az Azure- [erőforrás-szolgáltató műveleti](../../role-based-access-control/resource-provider-operations.md) neve az Azure szerepköralapú hozzáférés-vezérléshez lett kihasználva. A Azure Resource Managerban nem regisztrált műveletek nem használhatók a műveletnapló riasztási szabályaiban.
 - **Szint**: az esemény súlyossági szintje (tájékoztató, figyelmeztetés, hiba vagy kritikus).
 - **Állapot**: az esemény állapota, általában elindítva, sikertelen, vagy sikeres.
 - A (z) **által kezdeményezett esemény**, más néven "hívó". A műveletet végrehajtó felhasználó e-mail-címe vagy Azure Active Directory azonosítója.
@@ -56,7 +56,7 @@ Ha egy műveletnapló-riasztás aktiválva van, a műveletek vagy értesítések
 A műveleti csoportokkal kapcsolatos további információkért lásd: [műveleti csoportok létrehozása és kezelése a Azure Portalban](action-groups.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A riasztások áttekintése](alerts-overview.md).
 - Tudnivalók a [műveletnapló-riasztások létrehozásáról és módosításáról](alerts-activity-log.md).

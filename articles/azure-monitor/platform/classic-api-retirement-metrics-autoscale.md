@@ -4,12 +4,12 @@ description: A metrikák és a klasszikus API-k, más néven Azure Service Manag
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: 38a30f2adc0de7ccb9a9a3a4ba7ed53fd5fda3f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8900d238e7542864e3dc53f9d192e579e2c96d1
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87317382"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536693"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>A klasszikus üzembe helyezési modell API-jai kiAzure Monitor a metrikák és az autoskálázás számára
 
@@ -53,7 +53,7 @@ Ha nem biztos abban, hogy a kód vagy az egyéni eszközök meghívja a klasszik
 
 Az autoscale és a metrikák összes meglévő funkciója továbbra is az új API-kon keresztül fog működni.  
 
-Az újabb API-khoz való áttelepítéshez Resource Manager-alapú képességek tartoznak, mint például a konzisztens Role-Based Access Control (RBAC) támogatása az összes figyelési szolgáltatásban. A metrikák további funkcióit is megszerezheti: 
+Az újabb API-khoz való áttelepítéshez Resource Manager-alapú képességek tartoznak, például az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) támogatása az összes figyelési szolgáltatásban. A metrikák további funkcióit is megszerezheti: 
 
 - méretek támogatása
 - konzisztens 1 perces metrikai részletesség az összes szolgáltatáson belül 
@@ -74,7 +74,7 @@ A korábban felsorolt klasszikus API-kon érkező hívások sikertelenek lesznek
 
 Az autoscale esetében: *Ez az API elavult. A Azure Portal, a Azure Monitor SDK, a PowerShell, a CLI vagy a Resource Manager-sablonok segítségével kezelheti az autoskálázási beállításokat*.  
 
-Metrikák esetén: *Ez az API elavult. A metrikák lekérdezéséhez használja a Azure Portalt, Azure Monitor SDK-t, a PowerShellt*és a CLI-t.
+Metrikák esetén: *Ez az API elavult. A metrikák lekérdezéséhez használja a Azure Portalt, Azure Monitor SDK-t, a PowerShellt* és a CLI-t.
 
 ## <a name="email-notifications"></a>E-mail-értesítések
 

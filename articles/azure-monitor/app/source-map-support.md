@@ -6,12 +6,12 @@ author: markwolff
 ms.author: marwolff
 ms.date: 06/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 5b15492a36032a53ac81929eb55bce0bc70e040c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6403ecd534d17298a10ffcf8f089a2b010fa3a51
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91335131"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536455"
 ---
 # <a name="source-map-support-for-javascript-applications"></a>A JavaScript-alkalmazások forrás-hozzárendelési támogatása
 
@@ -58,7 +58,7 @@ A végpontok közötti tranzakció részletei lapon kattintson a *unkisebbít* p
 Ha szeretné konfigurálni vagy módosítani a Application Insights erőforráshoz csatolt Storage-fiókot vagy BLOB-tárolót, megtekintheti a Application Insights erőforrás *Tulajdonságok* lapját.
 
 1. Navigáljon a Application Insights erőforrás *Tulajdonságok* lapjára.
-2. Kattintson a *change Source Map blob-tároló*elemre.
+2. Kattintson a *change Source Map blob-tároló* elemre.
 3. Válasszon másik BLOB-tárolót a forrás Maps-tárolóként.
 4. Kattintson a `Apply` gombra.
 
@@ -67,7 +67,7 @@ Ha szeretné konfigurálni vagy módosítani a Application Insights erőforrásh
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-### <a name="required-role-based-access-control-rbac-settings-on-your-blob-container"></a>Szükséges szerepköralapú hozzáférés-vezérlés (RBAC) beállításai a blob-tárolón
+### <a name="required-azure-role-based-access-control-azure-rbac-settings-on-your-blob-container"></a>Szükséges Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) beállításai a blob-tárolón
 
 A portálon található bármely felhasználónak, amely ezt a funkciót használja, legalább [Storage blob-Adatolvasóként][storage blob data reader] kell hozzárendelni a blob-tárolóhoz. Ezt a szerepkört olyan másnak kell társítania, amely ezen a funkción keresztül fogja használni a forrás-leképezéseket.
 

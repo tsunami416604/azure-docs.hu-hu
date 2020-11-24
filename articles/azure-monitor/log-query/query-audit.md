@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/03/2020
-ms.openlocfilehash: 1c0247c5adfe60dc2436c832cf3d561882ae3a5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ce0aea6bb257f0a52a843ce53cc904ed0a775dd
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760161"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536200"
 ---
 # <a name="audit-queries-in-azure-monitor-logs-preview"></a>Lekérdezések naplózása Azure Monitor naplókban (előzetes verzió)
 A napló lekérdezési naplói a Azure Monitorban futtatott telemetria kapcsolatos információkat biztosítanak. Ez olyan információkat tartalmaz, mint például a lekérdezés futtatása, a futtatásuk, a használt eszköz, a lekérdezés szövege és a lekérdezés végrehajtását leíró teljesítmény-statisztika.
@@ -23,11 +23,11 @@ A lekérdezés naplózása a Log Analytics munkaterületen [diagnosztikai beáll
 ### <a name="azure-portal"></a>Azure Portal
 Egy Log Analytics munkaterület diagnosztikai beállításának elérése a Azure Portal a következő helyekről:
 
-- A **Azure monitor** menüben válassza a **diagnosztikai beállítások**elemet, majd keresse meg és válassza ki a munkaterületet.
+- A **Azure monitor** menüben válassza a **diagnosztikai beállítások** elemet, majd keresse meg és válassza ki a munkaterületet.
 
     [![Diagnosztikai beállítások Azure Monitor ](media/log-query-audit/diagnostic-setting-monitor.png)](media/log-query-audit/diagnostic-setting-monitor.png#lightbox) 
 
-- A **log Analytics munkaterületek** menüben válassza ki a munkaterületet, majd válassza a **diagnosztikai beállítások**lehetőséget.
+- A **log Analytics munkaterületek** menüben válassza ki a munkaterületet, majd válassza a **diagnosztikai beállítások** lehetőséget.
 
     [![Diagnosztikai beállítások Log Analytics munkaterület ](media/log-query-audit/diagnostic-setting-workspace.png)](media/log-query-audit/diagnostic-setting-workspace.png#lightbox) 
 
@@ -35,7 +35,7 @@ Egy Log Analytics munkaterület diagnosztikai beállításának elérése a Azur
 Egy példa Resource Manager-sablonra a [log Analytics munkaterület diagnosztikai beállításainál](../samples/resource-manager-diagnostic-settings.md#diagnostic-setting-for-log-analytics-workspace).
 
 ## <a name="audit-data"></a>Naplózási adatgyűjtés
-A rendszer minden alkalommal létrehoz egy naplózási rekordot, amikor egy lekérdezés fut. Ha Log Analytics-munkaterületre küldi az adatküldést, azt egy *LAQueryLogs*nevű táblában tárolja. A következő táblázat a naplózási adatok egyes rekordjainak tulajdonságait ismerteti.
+A rendszer minden alkalommal létrehoz egy naplózási rekordot, amikor egy lekérdezés fut. Ha Log Analytics-munkaterületre küldi az adatküldést, azt egy *LAQueryLogs* nevű táblában tárolja. A következő táblázat a naplózási adatok egyes rekordjainak tulajdonságait ismerteti.
 
 | Mező | Leírás |
 |:---|:---|
@@ -50,7 +50,7 @@ A rendszer minden alkalommal létrehoz egy naplózási rekordot, amikor egy lek�
 | QueryTimeRangeEnd     | A lekérdezéshez kiválasztott időtartomány vége. Ez bizonyos helyzetekben nem tölthető fel, például akkor, ha a lekérdezés Log Analyticsból indul el, és az időtartomány a lekérdezésen belül van megadva az időválasztó helyett.  |
 | QueryText             | A futtatott lekérdezés szövege. |
 | RequestTarget         | A lekérdezés elküldéséhez használt API URL-cím.  |
-| RequestContext        | Azoknak az erőforrásoknak a listája, amelyeken a lekérdezésre kérték. Legfeljebb három karakterlánc-tömböt tartalmaz: munkaterületeket, alkalmazásokat és erőforrásokat. Az előfizetés vagy az erőforráscsoport által megadott lekérdezések *erőforrásokként*jelennek meg. A RequestTarget által vélelmezett célként megadott célt is tartalmazza.<br>Ha feloldható, az egyes erőforrások erőforrás-azonosítója is szerepelni fog. Előfordulhat, hogy a rendszer nem tudja feloldani, ha az erőforráshoz való hozzáférés során hibaüzenetet ad vissza. Ebben az esetben a rendszer a lekérdezés megadott szövegét fogja használni.<br>Ha a lekérdezés nem egyértelmű nevet használ, például több előfizetésben létező munkaterület-nevet, a rendszer ezt a kétértelmű nevet fogja használni. |
+| RequestContext        | Azoknak az erőforrásoknak a listája, amelyeken a lekérdezésre kérték. Legfeljebb három karakterlánc-tömböt tartalmaz: munkaterületeket, alkalmazásokat és erőforrásokat. Az előfizetés vagy az erőforráscsoport által megadott lekérdezések *erőforrásokként* jelennek meg. A RequestTarget által vélelmezett célként megadott célt is tartalmazza.<br>Ha feloldható, az egyes erőforrások erőforrás-azonosítója is szerepelni fog. Előfordulhat, hogy a rendszer nem tudja feloldani, ha az erőforráshoz való hozzáférés során hibaüzenetet ad vissza. Ebben az esetben a rendszer a lekérdezés megadott szövegét fogja használni.<br>Ha a lekérdezés nem egyértelmű nevet használ, például több előfizetésben létező munkaterület-nevet, a rendszer ezt a kétértelmű nevet fogja használni. |
 | RequestContextFilters | A lekérdezés meghívásának részeként megadott szűrők halmaza. Legfeljebb három lehetséges karakterlánc-tömböt tartalmaz:<br>-ResourceTypes – a lekérdezés hatókörének korlátozására szolgáló erőforrás típusa<br>– Munkaterületek – a lekérdezésre korlátozni kívánt munkaterületek listája<br>-WorkspaceRegions – a lekérdezés korlátozására szolgáló munkaterület-régiók listája |
 | ResponseCode          | A lekérdezés elküldésekor visszaadott HTTP-válasz kódja. |
 | ResponseDurationMs    | A válasz eredményének időpontja.  |
@@ -66,7 +66,7 @@ A rendszer minden alkalommal létrehoz egy naplózási rekordot, amikor egy lek�
 
 - A lekérdezéseket csak akkor naplózza a rendszer, ha a végrehajtása felhasználói környezetben történik. Az Azure-on belül nem történik szolgáltatás-szolgáltatás naplózása. A kizáró lekérdezések két elsődleges csoportja a számlázási számítások és az automatizált riasztások végrehajtása. Riasztás esetén a rendszer csak az ütemezett riasztási lekérdezést fogja naplózni; a riasztás-létrehozási képernyőn a riasztás kezdeti végrehajtása felhasználói környezetben történik, és naplózási célokra elérhető lesz. 
 - A teljesítménnyel kapcsolatos statisztikák nem érhetők el az Azure Adatkezelő proxyról érkező lekérdezések esetén. A lekérdezésekre vonatkozó egyéb adatok továbbra is fel lesznek töltve.
-- A [sztringeket eltorzító](/azure/data-explorer/kusto/query/scalar-data-types/string#obfuscated-string-literals) karakterláncok *h* -célzása nem lesz hatással a lekérdezési naplókra. A lekérdezések pontosan úgy lesznek rögzítve, hogy a karakterlánc ne legyen elküldve. Győződjön meg arról, hogy csak a megfelelőségi jogokkal rendelkező felhasználók láthatják ezt az információt Log Analytics munkaterületeken elérhető különböző RBAC módok használatával.
+- A [sztringeket eltorzító](/azure/data-explorer/kusto/query/scalar-data-types/string#obfuscated-string-literals) karakterláncok *h* -célzása nem lesz hatással a lekérdezési naplókra. A lekérdezések pontosan úgy lesznek rögzítve, hogy a karakterlánc ne legyen elküldve. Győződjön meg arról, hogy csak a megfelelőségi jogosultsággal rendelkező felhasználók láthatják ezt az információt az Log Analytics munkaterületeken elérhető különböző Kubernetes-RBAC vagy Azure RBAC módok használatával.
 - Több munkaterület adatait tartalmazó lekérdezések esetén a lekérdezés csak azokon a munkaterületeken lesz rögzítve, amelyekhez a felhasználónak hozzáférése van.
 
 ## <a name="costs"></a>Költségek  

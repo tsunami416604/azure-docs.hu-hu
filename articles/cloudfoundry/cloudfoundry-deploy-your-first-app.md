@@ -7,12 +7,12 @@ ms.subservice: workloads
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: 18f9f62ba28595289d37975200352c26788e69cc
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: c8afc4f15f421a7b60b95d09b954e7742c24c66e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040032"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519676"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Az első alkalmazás üzembe helyezése Cloud Foundry on Microsoft Azure
 
@@ -64,7 +64,7 @@ cf target -o testorg -s dev
 Az alkalmazások központi telepítésekor a rendszer automatikusan létrehozza az új szervezetet és helyet. Annak ellenőrzéséhez, hogy az új szervezet/terület jelenleg nem rendelkezik alkalmazásokkal, írja be újra a következőt: `cf apps` .
 
 > [!NOTE] 
-> A szervezethez és a Spaces szolgáltatással, valamint a szerepköralapú hozzáférés-vezérlés (RBAC) használatával kapcsolatos további információkért tekintse meg az [Cloud Foundry dokumentációját][cf-orgs-spaces-docs].
+> A szervezethez és a Spaces szolgáltatással, valamint a Cloud Foundry szerepköralapú hozzáférés-vezérléssel (Cloud Foundry RBAC) kapcsolatos további információkért tekintse meg a [Cloud Foundry dokumentációját][cf-orgs-spaces-docs].
 
 ## <a name="deploy-an-application"></a>Alkalmazás üzembe helyezése
 
@@ -95,7 +95,7 @@ A legtöbb alkalmazást telepítheti Cloud Foundry a `push` paranccsal:
 cf push
 ```
 
-Egy alkalmazás *leküldésekor* Cloud Foundry észleli az alkalmazás típusát (ebben az esetben egy Java-alkalmazást), és azonosítja a függőségeit (ebben az esetben a Spring Framework). Ezután csomagokat helyez el a kód futtatásához egy önálló tároló-rendszerképbe, amely egy *feldolgozó* . Végezetül Cloud Foundry a környezet egyik elérhető számítógépén ütemezze az alkalmazást, és létrehoz egy URL-címet, ahol elérheti azt, amely a parancs kimenetében is elérhető.
+Egy alkalmazás *leküldésekor* Cloud Foundry észleli az alkalmazás típusát (ebben az esetben egy Java-alkalmazást), és azonosítja a függőségeit (ebben az esetben a Spring Framework). Ezután csomagokat helyez el a kód futtatásához egy önálló tároló-rendszerképbe, amely egy *feldolgozó*. Végezetül Cloud Foundry a környezet egyik elérhető számítógépén ütemezze az alkalmazást, és létrehoz egy URL-címet, ahol elérheti azt, amely a parancs kimenetében is elérhető.
 
 ![Kimenet a CF push parancsból][cf-push-output]
 

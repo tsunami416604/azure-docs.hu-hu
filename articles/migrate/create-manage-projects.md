@@ -2,52 +2,92 @@
 title: Azure Migrate-projektek létrehozása és kezelése
 description: Projektek keresése, létrehozása, kezelése és törlése Azure Migrateban.
 ms.topic: how-to
-ms.date: 07/23/2020
-ms.openlocfilehash: d60868f9d0d4c60291cfd92a9e8d11fd3f9a42b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/23/2020
+ms.openlocfilehash: 95f123188f7906cbd5c7a209c9fd01be006e9a7e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87071808"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95534923"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Azure Migrate-projektek létrehozása és kezelése
 
 Ez a cikk bemutatja, hogyan hozhat létre, kezelhet és törölhet [Azure Migrate](migrate-services-overview.md) projekteket.
 
+Azure Migrate-projekttel a rendszer az Ön által értékelt vagy áttelepíteni kívánt környezetből gyűjtött felderítési, értékelési és áttelepítési metaadatok tárolására szolgál. Egy projektben nyomon követheti a felderített eszközöket, kiértékelheti az Azure-ba való áttelepítést, és elvégezheti az áttelepítést.  
+
+## <a name="verify-permissions"></a>Engedélyek ellenőrzése
+
+Győződjön meg arról, hogy megfelelő engedélyekkel rendelkezik Azure Migrate projekt létrehozásához:
+
+1. A Azure Portal nyissa meg a megfelelő előfizetést, és válassza a **hozzáférés-vezérlés (iam)** lehetőséget.
+2. A **hozzáférés engedélyezése** lapon keresse meg a megfelelő fiókot, és válassza ki a megtekintési engedélyek lehetőséget. *Közreműködői* vagy *tulajdonosi* engedélyekkel kell rendelkeznie. 
+
 
 ## <a name="create-a-project-for-the-first-time"></a>Projekt létrehozása első alkalommal
 
-A Azure Migrate első beállításakor létre kell hoznia egy projektet, és hozzá kell adnia egy értékelési vagy áttelepítési eszközt. [Kövesse az alábbi utasításokat](how-to-add-tool-first-time.md) az első beállításához.
+Hozzon létre egy új Azure Migrate projektet egy Azure-előfizetésben.
+
+1. A Azure Portal keresse meg a *Azure Migrate*.
+2. A **szolgáltatások** területen válassza a **Azure Migrate** lehetőséget.
+3. Az **Áttekintés** területen válassza a **Kiszolgálók értékelése és migrálása** lehetőséget.
+
+    ![A kiszolgálók értékelésére és áttelepítésére szolgáló lehetőség az áttekintésben](./media/create-manage-projects/assess-migrate-servers.png)
+
+4. A **kiszolgálók** területen válassza a **create Project (projekt létrehozása**) lehetőséget.
+
+    ![A projekt létrehozásának megkezdéséhez szükséges gomb](./media/create-manage-projects/create-project.png)
+
+5. A **projekt létrehozása** lapon válassza ki az Azure-előfizetést és az erőforráscsoportot. Ha nem rendelkezik ilyennel, hozzon létre egy erőforráscsoportot.
+6. A **Project details**(projekt részletei) mezőben adja meg a projekt nevét és a földrajzot, amelyben létre kívánja hozni a projektet.
+    - A földrajzi hely csak a helyszíni gépekről összegyűjtött metaadatok tárolására szolgál. Bármelyik célhelyet kiválaszthatja az áttelepítéshez. 
+    - Tekintse át a nyilvános és a [kormányzati felhők](migrate-support-matrix.md#supported-geographies-azure-government)támogatott földrajzi [területeit](migrate-support-matrix.md#supported-geographies-public-cloud) .
+
+8. Kattintson a **Létrehozás** gombra.
+
+   ![A projekt beállításainak bevitelére szolgáló oldal](./media/create-manage-projects/project-details.png)
+
+
+Várjon néhány percet, amíg az Azure Migrate-projekt telepítése megtörténik.
+
+## <a name="create-a-project-in-a-specific-region"></a>Projekt létrehozása egy adott régióban
+
+A portálon kiválaszthatja a földrajzot, amelyben létre kívánja hozni a projektet. Ha a projektet egy adott Azure-régión belül szeretné létrehozni, a projekt létrehozásához használja a következő API-parancsot.
+
+```rest
+PUT /subscriptions/<subid>/resourceGroups/<rg>/providers/Microsoft.Migrate/MigrateProjects/<mymigrateprojectname>?api-version=2018-09-01-preview "{location: 'centralus', properties: {}}"
+``````
+
 
 ## <a name="create-additional-projects"></a>További projektek létrehozása
 
 Ha már rendelkezik Azure Migrate-projekttel, és szeretne egy további projektet létrehozni, tegye a következőket:  
 
 1. Az [Azure nyilvános portálon](https://portal.azure.com) vagy [Azure Government](https://portal.azure.us)keresse meg a **Azure Migrate**.
-2. A Azure Migrate irányítópulton > **kiszolgálók**lapon válassza a **módosítás** lehetőséget a jobb felső sarokban.
+2. A Azure Migrate irányítópulton > **kiszolgálók** lapon válassza a **módosítás** lehetőséget a jobb felső sarokban.
 
    ![Azure Migrate projekt módosítása](./media/create-manage-projects/switch-project.png)
 
 3. Új projekt létrehozásához válassza a **kattintson ide**.
-
-   ![Második Azure Migrate projekt létrehozása](./media/create-manage-projects/create-new-project.png)
 
 
 ## <a name="find-a-project"></a>Projekt keresése
 
 A következőképpen kereshet egy projektet:
 
-1. A [Azure Portal](https://portal.azure.com)keresse meg a **Azure Migrate**.
-2. A Azure Migrate irányítópulton > **kiszolgálók**lapon válassza a **módosítás** lehetőséget a jobb felső sarokban.
+1. A [Azure Portal](https://portal.azure.com)keresse meg a *Azure Migrate*.
+2. A Azure Migrate irányítópulton > **kiszolgálók** lapon válassza a **módosítás** lehetőséget a jobb felső sarokban.
 
     ![Váltás meglévő Azure Migrate projektre](./media/create-manage-projects/switch-project.png)
 
 3. Válassza ki a megfelelő előfizetést és Azure Migrate projektet.
 
 
+### <a name="find-a-legacy-project"></a>Örökölt projekt keresése
+
 Ha a projektet a Azure Migrate [előző verziójában](migrate-services-overview.md#azure-migrate-versions) hozta létre, a következőképpen keresheti meg:
 
-1. A [Azure Portal](https://portal.azure.com)keresse meg a **Azure Migrate**.
+1. A [Azure Portal](https://portal.azure.com)keresse meg a *Azure Migrate*.
 2. Ha a Azure Migrate-irányítópulton létrehozott egy projektet az előző verzióban, megjelenik egy régebbi projektekre hivatkozó szalagcím. Válassza ki a szalagcímet.
 
     ![Meglévő projektek elérése](./media/create-manage-projects/access-existing-projects.png)
@@ -60,7 +100,7 @@ Ha a projektet a Azure Migrate [előző verziójában](migrate-services-overview
 A következőképpen törölheti:
 
 1. Nyissa meg azt az Azure-erőforráscsoportot, amelyben a projekt létrejött.
-2. Az erőforráscsoport lapon válassza a **rejtett típusok megjelenítése**elemet.
+2. Az erőforráscsoport lapon válassza a **rejtett típusok megjelenítése** elemet.
 3. Válassza ki a törölni kívánt áttelepíthető projektet és a hozzá tartozó erőforrásokat.
     - Az erőforrástípus a **Microsoft. migrál/migrateprojects**.
     - Ha az erőforráscsoportot kizárólag az Azure Migrate-projekt használja, akkor törölheti a teljes erőforráscsoportot.
@@ -78,13 +118,13 @@ Vegye figyelembe:
 
 1. Tallózással keresse meg a projekthez csatolt Log Analytics munkaterületet.
 
-    - Ha nem törölte a Azure Migrate projektet, a munkaterületre mutató hivatkozást az **Essentials**-  >  **kiszolgáló értékelése**területen találja.
+    - Ha nem törölte a Azure Migrate projektet, a munkaterületre mutató hivatkozást az **Essentials**-  >  **kiszolgáló értékelése** területen találja.
        ![LA munkaterület ](./media/create-manage-projects/loganalytics-workspace.png) .
        
     - Ha már törölte a Azure Migrate projektet, válassza ki az **erőforráscsoportok** elemet a Azure Portal bal oldali ablaktábláján, és keresse meg a munkaterületet.
        
 2. A munkaterület törléséhez [kövesse az utasításokat](../azure-monitor/platform/delete-workspace.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Felmérési](how-to-assess.md) vagy [áttelepítési](how-to-migrate.md) eszközök hozzáadása Azure Migrate projektekhez.

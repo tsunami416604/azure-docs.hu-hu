@@ -1,6 +1,6 @@
 ---
-title: GPT-partícióval rendelkező operációsrendszer-lemez átméretezése | Microsoft Docs
-description: Ez a cikk a GPT-partícióval rendelkező operációsrendszer-lemezek átméretezésére vonatkozó utasításokat tartalmazza.
+title: GPT-partícióval rendelkező operációsrendszer-lemez átméretezése
+description: Ez a cikk útmutatást nyújt a GUID partíciós tábla (GPT) partícióval rendelkező operációsrendszer-lemezek átméretezéséhez Linux rendszerben.
 services: virtual-machines-linux
 documentationcenter: ''
 author: kailashmsft
@@ -14,17 +14,17 @@ ms.devlang: azurecli
 ms.date: 05/03/2020
 ms.author: kaib
 ms.custom: seodec18
-ms.openlocfilehash: 99b723322ce7636edce3ae5b59a69b96e288ca24
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 3565b165c669af3566667d9bdfa401d15fcce101
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93392690"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544156"
 ---
 # <a name="resize-an-os-disk-that-has-a-gpt-partition"></a>GPT-partícióval rendelkező operációsrendszer-lemez átméretezése
 
 > [!NOTE]
-> Ez a forgatókönyv csak a GUID partíciós tábla (GPT) partícióval rendelkező operációsrendszer-lemezekre vonatkozik.
+> Ez a cikk csak a GUID partíciós tábla (GPT) partícióval rendelkező operációsrendszer-lemezekre vonatkozik.
 
 Ez a cikk azt ismerteti, hogyan növelhető egy olyan operációsrendszer-lemez mérete, amely egy Linux rendszerű GPT-partícióval rendelkezik. 
 
@@ -78,14 +78,14 @@ Az alábbi utasítások a Linux által támogatott disztribúciók esetében ér
 
 ### <a name="ubuntu"></a>Ubuntu
 
-Az operációsrendszer-lemez méretének növeléséhez Ubuntu 16. x és 18. x esetén:
+Az operációsrendszer-lemez méretének növeléséhez az Ubuntu 16-ban. *x* és 18. *x*:
 
 1. Állítsa le a virtuális gépet.
 1. Növelje az operációsrendszer-lemez méretét a portálon.
 1. Indítsa újra a virtuális gépet, majd jelentkezzen be a virtuális gépre **root** felhasználóként.
 1. Győződjön meg arról, hogy az operációsrendszer-lemez megnövelt fájlrendszerbeli mérettel rendelkezik.
 
-Ahogy az az alábbi példában is látható, az operációsrendszer-lemez átméretezi a portálról a 100 GB-ra. A jelenleg csatlakoztatott **/dev/sda1** -fájlrendszer **/** 97 GB-ot jelenít meg.
+A következő példában az operációsrendszer-lemez átméretezi a portálról a 100 GB-ra. A jelenleg csatlakoztatott **/dev/sda1** -fájlrendszer **/** 97 GB-ot jelenít meg.
 
 ```
 user@myvm:~# df -Th
@@ -110,21 +110,21 @@ Az operációsrendszer-lemez méretének növeléséhez a SUSE 12 SP4, SUSE SLES
 1. Növelje az operációsrendszer-lemez méretét a portálon.
 1. Indítsa újra a virtuális gépet.
 
-Ha a virtuális gép újraindult, hajtsa végre a következő lépéseket:
+A virtuális gép újraindítása után végezze el a következő lépéseket:
 
-1. A következő parancs használatával érheti el a virtuális gépet **root** felhasználóként:
+1. Nyissa meg a virtuális gépet **root** -felhasználóként a következő parancs használatával:
 
    ```
    # sudo -i
    ```
 
-1. A következő parancs használatával telepítse a **growpart** csomagot, amely a partíció átméretezésére szolgál:
+1. A következő parancs használatával telepítse a **growpart** csomagot, amelyet a partíció átméretezéséhez fog használni:
 
    ```
    # zypper install growpart
    ```
 
-1. A parancs használatával keresse meg a `lsblk` fájlrendszer gyökeréhez csatlakoztatott partíciót ("/"). Ebben az esetben azt láthatjuk, hogy az SDA eszköz 4-es partíciója a következőre van csatlakoztatva:/:
+1. A `lsblk` parancs használatával keresse meg a fájlrendszer gyökeréhez csatlakoztatott partíciót ( **/** ). Ebben az esetben azt láthatjuk, hogy az **SDA** eszköz 4-es partíciója a következőre van csatlakoztatva **/** :
 
    ```
    # lsblk
@@ -138,7 +138,7 @@ Ha a virtuális gép újraindult, hajtsa végre a következő lépéseket:
    └─sdb1   8:17   0    4G  0 part /mnt/resource
    ```
 
-1. Méretezze át a szükséges partíciót a `growpart` paranccsal az előző lépésben található partíciók számának használatával.
+1. Méretezze át a szükséges partíciót a `growpart` parancs és az előző lépésben meghatározott partíció számának használatával:
 
    ```
    # growpart /dev/sda 4
@@ -200,7 +200,7 @@ Ha a virtuális gép újraindult, hajtsa végre a következő lépéseket:
    data blocks changed from 7470331 to 12188923
    ```
    
-   Az **ext4** esetében használja a következő parancsot:
+   Az **ext4** esetében használja ezt a parancsot:
    
    ```
    #resize2fs /dev/sda4
@@ -233,13 +233,13 @@ Ha a virtuális gép újraindult, hajtsa végre a következő lépéseket:
 
 ### <a name="rhel-with-lvm"></a>RHEL LVM-vel
 
-1. A következő parancs használatával érheti el a virtuális gépet **root** felhasználóként:
+1. Nyissa meg a virtuális gépet **root** -felhasználóként a következő parancs használatával:
 
    ```bash
    [root@dd-rhel7vm ~]# sudo -i
    ```
 
-1. A `lsblk` parancs használatával megkeresheti, hogy melyik logikai kötet (LV) legyen csatlakoztatva a fájlrendszer gyökeréhez ("/"). Ebben az esetben azt láthatjuk, hogy a **_rootvg-rootlv_*_ csatlakoztatva van az _* / -** hez.  Ha egy másik fájlrendszerre van szükség, cserélje le az LV-t és a csatlakoztatási pontot ezen a dokumentumon keresztül.
+1. A `lsblk` paranccsal meghatározhatja, hogy a rendszer melyik logikai kötetet (LV) csatlakoztatja a fájlrendszer gyökeréhez ( **/** ). Ebben az esetben azt láthatjuk, hogy a **rootvg-rootlv** csatlakoztatva van **/** . Ha egy másik fájlrendszerre van szüksége, cserélje le az LV-t és a csatlakoztatási pontot ebben a cikkben.
 
    ```shell
    [root@dd-rhel7vm ~]# lsblk -f
@@ -258,7 +258,7 @@ Ha a virtuális gép újraindult, hajtsa végre a következő lépéseket:
       └─rootvg-rootlv     xfs                 4f3e6f40-61bf-4866-a7ae-5c6a94675193   /
    ```
 
-1. Ellenőrizze, hogy van-e szabad terület a főpartíciót tartalmazó LVM kötet-csoportban.  Ha van szabad terület, ugorjon a **12** . lépésre
+1. Győződjön meg arról, hogy van-e szabad hely a főpartíciót tartalmazó LVM-kötet csoportban (VG). Ha van szabad terület, ugorjon a 12. lépésre.
 
    ```bash
    [root@dd-rhel7vm ~]# vgdisplay rootvg
@@ -284,17 +284,15 @@ Ha a virtuális gép újraindult, hajtsa végre a következő lépéseket:
    VG UUID               lPUfnV-3aYT-zDJJ-JaPX-L2d7-n8sL-A9AgJb
    ```
 
-   Ebben a példában az **ingyenes PE/size** érték azt jelzi, hogy a 38.02 GB szabad a kötet csoportban.  Nincs szükség a lemez átméretezésére a kötethez tartozó terület hozzáadása előtt
+   Ebben a példában a line **Free PE/size** érték azt mutatja, hogy a kötet csoportban a 38,02 GB ingyenes. Nincs szükség a lemez átméretezésére, mielőtt helyet ad hozzá a kötet csoportjához.
 
-1. Az operációsrendszer-lemez méretének növeléséhez az RHEL 7. x és az LVM használatával:
+1. Az operációsrendszer-lemez méretének növeléséhez a RHEL 7 rendszerben. *x* az LVM:
 
    1. Állítsa le a virtuális gépet.
    1. Növelje az operációsrendszer-lemez méretét a portálon.
    1. Indítsa el a virtuális gépet.
 
-1. Ha a virtuális gép újraindult, hajtsa végre a következő lépéseket:
-
-   1. Telepítse a **Cloud-utils-growpart** csomagot a **growpart** parancs megadásához, amely az operációsrendszer-lemez méretének növeléséhez szükséges.
+1. A virtuális gép újraindítása után telepítse a **Cloud-utils-growpart** csomagot a parancs beszerzéséhez `growpart` , amelyhez meg kell emelni az operációsrendszer-lemez méretét.
 
       Ez a csomag a legtöbb Azure Marketplace-lemezképen előre telepítve van.
 
@@ -302,14 +300,14 @@ Ha a virtuális gép újraindult, hajtsa végre a következő lépéseket:
       [root@dd-rhel7vm ~]# yum install cloud-utils-growpart
       ```
 
-1. Határozza meg, hogy melyik lemez és partíció tartalmazza az LVM fizikai kötet (eke) t a rootvg nevű kötet (VG) **pvscan** paranccsal.  Jegyezze fel a zárójelek között látható méretet és szabad területet **[]**.
+1. Határozza meg, hogy melyik lemez és partíció tartalmazza az LVM fizikai kötetet vagy köteteket (PV) a **rootvg** nevű kötetben a `pvscan` parancs használatával. Jegyezze fel a szögletes zárójelek (**[** és **]**) között megjelenő méretet és szabad területet.
 
    ```bash
    [root@dd-rhel7vm ~]# pvscan
      PV /dev/sda4   VG rootvg          lvm2 [<63.02 GiB / <38.02 GiB free]
    ```
 
-1. Ellenőrizze a partíció méretét a **lsblk**.  Tekintse meg a 
+1. Ellenőrizze a partíció méretét a használatával `lsblk` . 
 
    ```bash
    [root@dd-rhel7vm ~]# lsblk /dev/sda4
@@ -323,14 +321,14 @@ Ha a virtuális gép újraindult, hajtsa végre a következő lépéseket:
    └─rootvg-rootlv 253:6    0   2G  0 lvm  /
    ```
 
-1. Bontsa ki a PV-t tartalmazó partíciót a **growpart** , az eszköz neve és a partíció száma alapján.  Ezzel kibontja a megadott partíciót, hogy az az eszközön rendelkezésre álló összes szabad területet használhassa.
+1. Bontsa ki a PV-t tartalmazó partíciót `growpart` a használatával, az eszköz nevét és a partíció számát. Ezzel a művelettel kibontja a megadott partíciót, hogy az összes szabad folytonos területet használhassa az eszközön.
 
    ```bash
    [root@dd-rhel7vm ~]# growpart /dev/sda 4
    CHANGED: partition=4 start=2054144 old: size=132161536 end=134215680 new: size=199272414 end=201326558
    ```
 
-1. Győződjön meg arról, hogy a partíció mérete átméretezi a várt méretet a **lsblk** paranccsal.  Figyelje meg, hogy a példában szereplő sda4 megváltozott a 63G és a 95G között.
+1. A parancs ismételt használatával ellenőrizze, hogy a partíció mérete átméretezi-e a várt méretre `lsblk` . Figyelje meg, hogy a példában a **sda4** 63 GB-ról 95 GB-ra változott.
 
    ```bash
    [root@dd-rhel7vm ~]# lsblk /dev/sda4
@@ -344,7 +342,7 @@ Ha a virtuális gép újraindult, hajtsa végre a következő lépéseket:
    └─rootvg-rootlv 253:6    0   2G  0 lvm  /
    ```
 
-1. A PV kibontásával használhatja az újonnan kibontott partíció hátralévő részét
+1. A PV kibontásával az újonnan kibontott partíció hátralévő részét használhatja:
 
    ```bash
    [root@dd-rhel7vm ~]# pvresize /dev/sda4
@@ -352,14 +350,14 @@ Ha a virtuális gép újraindult, hajtsa végre a következő lépéseket:
    1 physical volume(s) resized or updated / 0 physical volume(s) not resized
    ```
 
-1. Ellenőrizze, hogy a PV új mérete a várt méret-e, összehasonlítva az eredeti **[méret/szabad]** értékekkel.
+1. Győződjön meg arról, hogy a PV új mérete a várt méret, az eredeti **[méret/szabad]** értékekkel összehasonlítva:
 
    ```bash
    [root@dd-rhel7vm ~]# pvscan
    PV /dev/sda4   VG rootvg          lvm2 [<95.02 GiB / <70.02 GiB free]
    ```
 
-1. Bontsa ki a kívánt logikai kötetet (LV) a kívánt mennyiséggel, ami nem feltétlenül szükséges a kötet csoportban lévő szabad területhez.  A következő példában a **/dev/Mapper/rootvg-rootlv** 2 GB-ról 12 GB-ra (a 10 GB-os növekedésre) átméretezi a következő parancs segítségével. A parancs átméretezi a fájlrendszert is.
+1. Bontsa ki a kívánt logikai kötetet (LV) a kívánt mennyiséggel. Az összegnek nem kell az összes szabad területnek lennie a kötet csoportban. A következő példában a **/dev/Mapper/rootvg-rootlv** mérete 2 GB-ról 12 GB-ra van átméretezve (10 GB-os növekedés). A parancs átméretezi a fájlrendszert is.
 
    ```bash
    [root@dd-rhel7vm ~]# lvresize -r -L +10G /dev/mapper/rootvg-rootlv
@@ -383,7 +381,7 @@ Ha a virtuális gép újraindult, hajtsa végre a következő lépéseket:
    data blocks changed from 524288 to 3145728
    ```
 
-1. A lvresize parancs automatikusan meghívja a megfelelő átméretezési parancsot az LV fájlrendszerben. A következő paranccsal ellenőrizze, hogy a csatlakoztatott **/dev/Mapper/rootvg-rootlv** **/** megnövelt fájlrendszerbeli mérettel rendelkezik-e:
+1. A `lvresize` parancs automatikusan meghívja a megfelelő átméretezési parancsot az LV fájlrendszerben. Győződjön meg arról, hogy a **/dev/Mapper/rootvg-rootlv**, amely csatlakoztatva van **/** , megnövelt fájlrendszer-mérettel rendelkezik a következő parancs használatával:
 
    ```shell
    [root@dd-rhel7vm ~]# df -Th /
@@ -399,26 +397,27 @@ Ha a virtuális gép újraindult, hajtsa végre a következő lépéseket:
    ```
 
 > [!NOTE]
-> Ha ugyanezt az eljárást szeretné használni az egyéb logikai kötetek átméretezéséhez, módosítsa a **12**. lépésben szereplő **lv** -nevet.
+> Ha ugyanezt az eljárást szeretné használni az egyéb logikai kötetek átméretezéséhez, módosítsa a 12. lépésben szereplő LV-nevet.
 
 ### <a name="rhel-raw"></a>RHEL NYERS
 >[!NOTE]
 >Mindig készítsen pillanatképet a virtuális gépről az operációsrendszer-lemez méretének növelése előtt.
 
-Az operációsrendszer-lemez méretének növeléséhez a RHEL és a nyers partíciót:
+Az operációsrendszer-lemez méretének növeléséhez egy RHEL nyers partícióban:
 
-Állítsa le a virtuális gépet.
-Növelje az operációsrendszer-lemez méretét a portálon.
-Indítsa el a virtuális gépet.
-Ha a virtuális gép újraindult, hajtsa végre a következő lépéseket:
+1. Állítsa le a virtuális gépet.
+1. Növelje az operációsrendszer-lemez méretét a portálon.
+1. Indítsa el a virtuális gépet.
 
-1. A következő parancs használatával érheti el a virtuális gépet **root** felhasználóként:
+A virtuális gép újraindítása után végezze el a következő lépéseket:
+
+1. Nyissa meg a virtuális gépet **root** -felhasználóként a következő parancs használatával:
  
    ```
    sudo su
    ```
 
-1. Telepítse a **gptfdisk** csomagot, amely az operációsrendszer-lemez méretének növeléséhez szükséges.
+1. Telepítse a **gptfdisk** csomagot, amelyre szüksége van az operációsrendszer-lemez méretének növeléséhez:
 
    ```
    yum install gdisk -y
@@ -429,70 +428,71 @@ Ha a virtuális gép újraindult, hajtsa végre a következő lépéseket:
     gdisk -l /dev/sda
     ```
 
-1. Ekkor megjelenik a partíció típusával kapcsolatos részletek. Győződjön meg arról, hogy GPT. Azonosítsa a legfelső szintű partíciót. Ne módosítsa vagy törölje a rendszerindító partíciót (BIOS rendszerindító partíció) és a rendszerpartíciót ("EFI rendszerpartíció").
+1. Ekkor megjelenik a partíció típusával kapcsolatos részletek. Győződjön meg arról, hogy GPT. Azonosítsa a legfelső szintű partíciót. Ne módosítsa vagy törölje a rendszerindító partíciót (BIOS rendszerindító partíció) vagy a rendszerpartíciót (EFI rendszerpartíció).
 
-1. Az alábbi parancs használatával indítsa el a particionálást első alkalommal. 
+1. Ezzel a paranccsal indíthatja el a particionálást az első alkalommal: 
     ```
     gdisk /dev/sda
     ```
 
-1. Most megjelenik egy üzenet, amely kéri a következő parancsot ("parancs:? Súgó "). 
+1. Ekkor megjelenik egy üzenet, amely felszólítja a következő parancsra: `Command: ? for help` . Válassza ki a **w** kulcsot:
 
    ```
    w
    ```
 
-1. Figyelmeztető üzenet jelenik meg. A másodlagos fejléc túl korán kerül a lemezre. Szeretné kijavítani ezt a problémát? (I/N): ". Az "Y" billentyűt kell megnyomnia
+1. A következő üzenet jelenik meg: `Warning! Secondary header is placed too early on the disk! Do you want to
+correct this problem? (Y/N)` . Válassza ki az **Y** kulcsot: 
 
    ```
    Y
    ```
 
-1. Ekkor megjelenik egy üzenet, amely tájékoztatja, hogy a végső ellenőrzés befejeződik, és megerősítést kér. Az "Y" gomb megnyomása
+1. Ekkor megjelenik egy üzenet, amely jelzi, hogy a végső ellenőrzések befejeződik, és megerősítést kér. Válassza ki az **Y** kulcsot:
 
    ```
    Y
    ```
 
-1. Ellenőrizze, hogy minden megfelelően megtörtént-e a partprobe parancs használatával
+1. A `partprobe` parancs használatával győződjön meg arról, hogy minden megfelelően történt-e:
 
    ```
    partprobe
    ```
 
-1. A fenti lépések biztosítják, hogy a másodlagos GPT-fejléc a végén legyen elhelyezve. A következő lépés az átméretezés folyamatának elindítása a GDisk eszköz újbóli használatával. Használja az alábbi parancsot.
+1. Az előző lépések végrehajtásával gondoskodhat arról, hogy a másodlagos GPT-fejléc a végén legyen elhelyezve. Ezután indítsa el az átméretezés folyamatát az `gdisk` eszköz újbóli használatával. Használja az alábbi parancsot:
 
    ```
    gdisk /dev/sda
    ```
-1. A parancs menüjében kattintson a "p" gombra a partíciók listájának megtekintéséhez. Azonosítsa a legfelső szintű partíciót (a lépésekben a sda2 tekinti a legfelső szintű partíciónak) és a rendszerindító partíciót (a lépésekben a sda3 a rendszerindító partíciónak számít). 
+1. A partíciók listájának megtekintéséhez a parancs menüben válassza a **p** billentyűt. Azonosítsa a legfelső szintű partíciót. (Az alábbi lépésekben a **sda2** a legfelső szintű partíciónak számít.) Azonosítsa a rendszerindító partíciót. (A következő lépésekben a **sda3** a rendszerindító partíciónak számít.) 
 
    ```
    p
    ```
-    ![Gyökérszintű partíció és rendszerindító partíció](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw1.png)
+    ![A gyökérszintű partíciót és a rendszerindító partíciót megjelenítő képernyőkép.](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw1.png)
 
-1. A 'd gomb megnyomásával törölheti a partíciót, és kiválaszthatja a rendszerindításhoz rendelt partíció számát (ebben a példában ez a "3").
+1. Válassza ki a **d** billentyűt a partíció törléséhez. Ezután válassza ki a rendszerindító partícióhoz rendelt partíció számát. (Ebben a példában ez **3**.)
    ```
    d
    3
    ```
-1. A 'd gomb megnyomásával törölheti a partíciót, és kiválaszthatja a rendszerindításhoz rendelt partíció számát (ebben a példában ez a "2").
+1. Válassza ki a **d** billentyűt a partíció törléséhez. Válassza ki a rendszerindító partícióhoz rendelt partíció számát. (Ebben a példában ez **2**.)
    ```
    d
    2
    ```
-    ![A gyökérszintű partíció és a rendszerindító partíció törlése](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw2.png)
+    ![A gyökér-és rendszerindító partíciók törlésének lépéseit bemutató képernyőkép.](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw2.png)
 
-1. Ha nagyobb mérettel szeretné újból létrehozni a főpartíciót, nyomja meg az n billentyűt, adja meg a korábban a root számára törölt ("2") partíció számát, és válassza az első szektort "alapértékként", utolsó szektorként "utolsó szektor értéke – rendszerindítási méret (4096 8300)
+1. Ha a legfelső szintű partíciót újra létre szeretné hozni a mérettel, válassza ki az **n** kulcsot, majd adja meg a gyökérben korábban törölt partíció számát (ebben a példában **2** ). Válassza ki `Default Value` az első szektort. Válassza `Last sector value -  boot size sector` az utolsó szektort ( `4096` ebben az esetben 2 MB-os rendszerindítást). Válassza ki `8300` a hexadecimális kódot.
    ```
    n
    2
    (Enter default)
-   (Calculateed value of Last sector value - 4096)
+   (Calculated value of Last sector value - 4096)
    8300
    ```
-1. A rendszerindító partíció újbóli létrehozásához nyomja le az "n" billentyűt, adja meg a korábban a rendszerindításhoz előzőleg törölt partíció számát (ebben a példában a "3"), majd válassza az első szektort "alapértelmezett érték", utolsó szektor as "default Value" és hex Code as "EF02" néven.
+1. A rendszerindító partíció újbóli létrehozásához válassza ki az **n** kulcsot, majd adja meg a rendszerindításhoz korábban törölt partíció számát (ebben a példában **3** ). Válassza ki az `Default Value` első szektort és az utolsó szektort. Válassza ki `EF02` a hexadecimális kódot.
    ```
    n
    3
@@ -501,29 +501,29 @@ Ha a virtuális gép újraindult, hajtsa végre a következő lépéseket:
    EF02
    ```
 
-1. Írja meg a módosításokat a "w" paranccsal, és erősítse meg az "Y" gombot.
+1. Írja be a módosításokat a `w` parancs használatával, majd `Y` erősítse meg a módosításokat:
    ```
    w
    Y
    ```
-1. Futtassa a "partprobe" parancsot a lemez stabilitásának vizsgálatához.
+1. Futtassa a `partprobe` parancsot a lemez stabilitásának vizsgálatához:
    ```
    partprobe
    ```
-1. A virtuális gép újraindítása és a gyökérszintű partíció méretének növelése
+1. Indítsa újra a virtuális gépet. Növelni kell a legfelső szintű partíció méretét.
    ```
    reboot
    ```
 
-   ![Új gyökérszintű partíció és rendszerindító partíció](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw3.png)
+   ![A rendszerindító partíció újbóli létrehozásához szükséges lépéseket bemutató képernyőkép.](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw3.png)
 
-1. Az átméretezéshez futtassa a xfs_growfs parancsot a partíción.
+1. Az `xfs_growfs` átméretezéshez futtassa a parancsot a partíción:
    ```
    xfs_growfs /dev/sda2
    ```
 
-   ![XFS Grow FS](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw4.png)
+   ![A xfs_growfs futtatásának eredményét bemutató képernyőkép.](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw4.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Lemez átméretezése](expand-disks.md)

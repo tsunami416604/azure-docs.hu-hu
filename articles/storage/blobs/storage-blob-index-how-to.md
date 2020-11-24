@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2e3e16b71d52edd9ab4eaf55651567b95e334b84
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 411815ca2f947c47b8dfb0d2e5d61f8ea18f3545
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94961787"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95541249"
 ---
 # <a name="use-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Az Azure-beli blob-indexek (előzetes verzió) használatával kezelhetők és megkereshetők az Azure Blob Storage
 
@@ -38,7 +38,7 @@ Mivel a blob-index előzetes verzióban érhető el, a .NET Storage-csomag megje
 
 2. A NuGet csomagkezelő eszközben keresse meg az **Azure. Storage. Blobs** csomagot, és telepítse a **12.7.0-preview. 1** vagy újabb verziót a projekthez. A PowerShell-parancsot is futtathatja: `Install-Package Azure.Storage.Blobs -Version 12.7.0-preview.1`
 
-   További információt a [csomagok keresése és telepítése](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package)című témakörben talál.
+   További információt a [csomagok keresése és telepítése](/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package)című témakörben talál.
 
 3. Adja hozzá a következő using utasításokat a fájl elejéhez.
 
@@ -56,7 +56,7 @@ Mivel a blob-index előzetes verzióban érhető el, a .NET Storage-csomag megje
 
 ## <a name="upload-a-new-blob-with-index-tags"></a>Új blob feltöltése tárgymutató-címkékkel
 
-Ezt a feladatot a [Storage blob-adatok tulajdonosa](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) vagy egy olyan rendszerbiztonsági tag hajthatja végre, amely `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` egy egyéni Azure-szerepkörön keresztül engedélyt kapott az [Azure erőforrás-szolgáltatói műveletre](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) .
+Ezt a feladatot a [Storage blob-adatok tulajdonosa](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) vagy egy olyan rendszerbiztonsági tag hajthatja végre, amely `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` egy egyéni Azure-szerepkörön keresztül engedélyt kapott az [Azure erőforrás-szolgáltatói műveletre](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) .
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -114,9 +114,9 @@ static async Task BlobIndexTagsOnCreate()
 
 ## <a name="get-set-and-update-blob-index-tags"></a>BLOB-index címkék beolvasása, beállítása és frissítése
 
-A blob-indexek címkéit a [Storage blob-adattulajdonosa](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) vagy egy olyan rendszerbiztonsági tag hajthatja végre, amely `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read` egy egyéni Azure-szerepkörön keresztül engedélyt kapott az [Azure erőforrás-szolgáltatói műveletre](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) .
+A blob-indexek címkéit a [Storage blob-adattulajdonosa](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) vagy egy olyan rendszerbiztonsági tag hajthatja végre, amely `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read` egy egyéni Azure-szerepkörön keresztül engedélyt kapott az [Azure erőforrás-szolgáltatói műveletre](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) .
 
-A blob-indexek beállítását és frissítését a [Storage blob-adattulajdonosa](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) vagy egy olyan rendszerbiztonsági tag hajthatja végre, amely `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` egy egyéni Azure-szerepkörön keresztül engedélyt kapott az [Azure erőforrás-szolgáltatói műveletre](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) .
+A blob-indexek beállítását és frissítését a [Storage blob-adattulajdonosa](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) vagy egy olyan rendszerbiztonsági tag hajthatja végre, amely `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` egy egyéni Azure-szerepkörön keresztül engedélyt kapott az [Azure erőforrás-szolgáltatói műveletre](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) .
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -193,7 +193,7 @@ static async Task BlobIndexTagsExample()
 
 ## <a name="filter-and-find-data-with-blob-index-tags"></a>Az Adatszűrés és-keresés a blob-index címkékkel
 
-Ezt a feladatot a [Storage blob-adatok tulajdonosa](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) vagy egy olyan rendszerbiztonsági tag hajthatja végre, amely `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` egy egyéni Azure-szerepkörön keresztül engedélyt kapott az [Azure erőforrás-szolgáltatói műveletre](/azure/role-based-access-control/resource-provider-operations.md#microsoftstorage) .
+Ezt a feladatot a [Storage blob-adatok tulajdonosa](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) vagy egy olyan rendszerbiztonsági tag hajthatja végre, amely `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` egy egyéni Azure-szerepkörön keresztül engedélyt kapott az [Azure erőforrás-szolgáltatói műveletre](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) .
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 

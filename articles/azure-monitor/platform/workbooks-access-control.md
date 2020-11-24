@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.openlocfilehash: 92ac1887aca8f30c551419ef9149073d79f333a5
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7d3bc13dc373cda510153099859cf4cd61b3dd69
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92143838"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95534534"
 ---
 # <a name="access-control"></a>Hozzáférés-vezérlés
 
@@ -32,7 +32,7 @@ A [figyelő közreműködői](../../role-based-access-control/built-in-roles.md#
 A "munkafüzetek közreműködői" felveszi a "munkafüzetek/írás" jogosultságokat egy objektumba a megosztott munkafüzetek mentéséhez.
 Nincs szükség különleges jogosultságra ahhoz, hogy a felhasználók olyan privát munkafüzeteket mentsenek, amelyeket csak láthatnak.
 
-Egyéni szerepköralapú hozzáférés-vezérléshez:
+Egyéni szerepkörök esetén:
 
 Hozzáadás `microsoft.insights/workbooks/write` a megosztott munkafüzetek mentéséhez. További részletekért tekintse meg a [munkafüzet közreműködői](../../role-based-access-control/built-in-roles.md#monitoring-contributor) szerepkört.
 
