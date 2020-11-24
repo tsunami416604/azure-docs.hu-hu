@@ -8,47 +8,45 @@
 - name: Oktatóanyagok
   expanded: true
   items:
-    - name: 1 – Azure Red Hat OpenShift 4-fürt létrehozása
+    - name: 1 – ARO-fürt létrehozása
       href: tutorial-create-cluster.md
-    - name: 2 – Csatlakozás Azure Red Hat OpenShift 4-fürthöz
+    - name: 2 – Csatlakozás egy ARO-fürthöz
       href: tutorial-connect-cluster.md
-    - name: 3 – Azure Red Hat OpenShift 4-fürt törlése
+    - name: 3 – ARO-fürt törlése
       href: tutorial-delete-cluster.md
 - name: Útmutatók
   items:
-    - name: Privát Azure Red Hat OpenShift 4-fürt létrehozása
-      href: howto-create-private-cluster-4x.md
-    - name: Azure Files StorageClass létrehozása az Azure Red Hat OpenShift 4-ben
-      href: howto-create-a-storageclass.md
-    - name: Lekérési kulcs frissítése egy Azure Red Hat OpenShift 4-fürthöz
-      href: howto-add-update-pull-secret.md
-    - name: DNS-továbbítás konfigurálása Azure Red Hat OpenShift 4-fürthöz
-      href: dns-forwarding.md
-    - name: Az Azure Red Hat OpenShift 4 beépített tárolóregisztrációs adatbázisának konfigurálása
-      href: built-in-container-registry.md
-    - name: Azure Active Directory-hitelesítés konfigurálása Azure Red Hat OpenShift 4-fürthöz
+    - name: Hálózatkezelés
+      items:
+        - name: Privát ARO-fürt létrehozása
+          href: howto-create-private-cluster-4x.md
+        - name: DNS-továbbítás konfigurálása
+          href: dns-forwarding.md
+    - name: Biztonság és hitelesítés
       items:
         - name: Az Azure Active Directory-fiókon alapuló hitelesítés konfigurálása (CLI)
           href: configure-azure-ad-cli.md
         - name: Az Azure Active Directory-fiókon alapuló hitelesítés konfigurálása (portál)
           href: configure-azure-ad-ui.md
-    - name: Biztonsági mentés létrehozása és alkalmazás visszaállítása a Veleróval
+        - name: Lekérési kulcs frissítése egy ARO-fürthöz
+          href: howto-add-update-pull-secret.md
+    - name: Biztonsági mentés és visszaállítás
       items:
         - name: Fürtalkalmazás biztonsági mentése a Veleróval
           href: howto-create-a-backup.md
         - name: Fürtalkalmazás visszaállítása a Veleróval
           href: howto-create-a-restore.md
-    - name: Monitorozás és naplózás az Azure Red Hat OpenShift 4-hez
+    - name: Monitorozás és naplózás
       items:
-        - name: Azure Monitor az Azure Red Hat OpenShift 4-ben lévő tárolókhoz (előzetes verzió)
+        - name: Azure Monitor tárolókhoz
           items:
-            - name: Az Azure Monitor konfigurálása az Azure Red Hat OpenShift 4-ben lévő tárolókhoz (előzetes verzió)
+            - name: ARO 4-tárolókhoz készült Azure Monitor konfigurálása (előzetes verzió)
               href: ../azure-monitor/insights/container-insights-azure-redhat4-setup.md
-            - name: Az Azure Monitor letiltása az Azure Red Hat OpenShift 3.11-ben lévő tárolókhoz (előzetes verzió)
+            - name: ARO 4-tárolókhoz készült Azure Monitor letiltása (előzetes verzió)
               href: ../azure-monitor/insights/container-insights-optout-openshift-v4.md
-    - name: Az Open Liberty/WebSphere Liberty megnyitása egy Azure Red Hat OpenShift 4-fürtön
+    - name: Alkalmazások fejlesztése és futtatása
       items:
-        - name: Open Liberty-/WebSphere Liberty-alkalmazás üzembe helyezése Azure Red Hat OpenShift 4-fürtökön
+        - name: Open Liberty-/WebSphere Liberty-alkalmazás üzembe helyezése
           href: howto-deploy-java-liberty-app.md
     - name: Azure Red Hat OpenShift 3.11
       items:
@@ -85,9 +83,9 @@
               href: cluster-administration-security-context-constraints.md
 - name: Alapelvek
   items:
-    - name: Hálózatkezelés az Azure Red Hat OpenShift 4-fürtökben
+    - name: Hálózatkezelés
       href: concepts-networking.md
-    - name: Migrálás az Azure Red Hat OpenShift 3.11-es verziójáról az Azure Red Hat OpenShift 4-es verziójára
+    - name: Migrálás az ARO 3.11-ről az ARO 4-re
       href: migration.md
 - name: Referencia
   items:
@@ -101,17 +99,15 @@
       href: openshift-faq.md
     - name: Hibaelhárítás
       href: troubleshoot.md
-    - name: Az Azure Red Hat OpenShift 3.11 támogatott erőforrásai
-      href: supported-resources.md
-    - name: Az Azure Red Hat OpenShift 4.3 támogatott erőforrásai
+    - name: Az ARO 4 támogatási szabályzatai
       href: support-policies-v4.md
-    - name: Az Azure Red Hat OpenShift 4 támogatási életciklusa
+    - name: Az ARO 4 támogatási életciklusa
       href: support-lifecycle.md
     - name: Régiónkénti rendelkezésre állás
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: Az Azure Red Hat OpenShift 4.3 dokumentációja
+    - name: A Red Hat OpenShift 4 dokumentációja
       href: 'https://docs.openshift.com/aro/4/welcome/index.html'
-    - name: Az Azure Red Hat OpenShift 3.11 dokumentációja
-      href: 'https://docs.openshift.com/aro/3/welcome/index.html'
     - name: Azure-ütemterv
       href: 'https://azure.microsoft.com/roadmap/'
+    - name: ARO-ütemterv
+      href: 'https://github.com/Azure/OpenShift/projects/1'

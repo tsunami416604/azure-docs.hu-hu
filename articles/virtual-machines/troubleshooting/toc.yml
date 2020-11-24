@@ -260,6 +260,8 @@
       href: install-vm-agent-offline.md
     - name: Windows rendszerű virtuálisgép-ügynök hibaelhárítása
       href: windows-azure-guest-agent.md
+    - name: Linux rendszerű virtuálisgép-ügynök hibaelhárítása
+      href: linux-azure-guest-agent.md
 - name: Biztonsági mentés és visszaállítás
   items:
     - name: Azure-beli virtuális gépek biztonsági mentési hibáinak elhárítása

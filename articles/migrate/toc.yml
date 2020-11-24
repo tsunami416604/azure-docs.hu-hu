@@ -32,10 +32,12 @@
           href: tutorial-discover-gcp.md
     - name: Értékelés
       items:
-        - name: VMware virtuális gépek felmérése Azure-beli virtuális gépekbe történő migráláshoz
-          href: tutorial-assess-vmware-azure-vm.md
-        - name: VMware virtuális gépek felmérése AVS-be történő migráláshoz
-          href: tutorial-assess-vmware-azure-vmware-solution.md
+        - name: VMware virtuális gépek felmérése
+          items:
+            - name: VMware virtuális gépek felmérése Azure-beli virtuális gépekbe történő migráláshoz
+              href: tutorial-assess-vmware-azure-vm.md
+            - name: VMware virtuális gépek felmérése AVS-be történő migráláshoz
+              href: tutorial-assess-vmware-azure-vmware-solution.md
         - name: A Hyper-V virtuális gépek felmérése az Azure-ba való migráláshoz
           href: tutorial-assess-hyper-v.md
         - name: Fizikai kiszolgálók felmérése az Azure-ba való migráláshoz
@@ -44,19 +46,19 @@
           href: tutorial-assess-aws.md
         - name: GCP-példányok felmérése az Azure-ba való migráláshoz
           href: tutorial-assess-gcp.md
-        - name: Importált kiszolgálók felmérése
+        - name: Importált kiszolgálók felmérése az Azure-ba való migráláshoz
           href: tutorial-discover-import.md
     - name: Migrate
       items:
         - name: VMware virtuális gépek migrálása
           items:
-            - name: A VMware virtuális gépek migrálási lehetőségeinek bemutatása
+            - name: A VMware virtuális gépek migrálási lehetőségei
               href: server-migrate-overview.md
-            - name: VMware virtuális gépek migrálása ügynök nélkül – Azure Portal
+            - name: Migrálás ügynök nélkül (portál)
               href: tutorial-migrate-vmware.md
-            - name: VMware virtuális gépek migrálása ügynökalapú migrálással
+            - name: Migrálás ügynökalapú migrálással
               href: tutorial-migrate-vmware-agent.md
-            - name: VMware virtuális gépek migrálása ügynök nélkül – PowerShell
+            - name: Migrálás ügynök nélkül (PowerShell)
               href: tutorial-migrate-vmware-powershell.md
         - name: Hyper-V virtuális gépek migrálása
           href: tutorial-migrate-hyper-v.md
@@ -68,128 +70,150 @@
           href: tutorial-migrate-gcp-virtual-machines.md
 - name: Alapelvek
   items:
-    - name: Migrálási terv összeállítása
-      href: concepts-migration-planning.md
-    - name: Támogatási mátrixok
+    - name: Általános
       items:
-        - name: Általános támogatás
+        - name: Az Azure Migrate támogatása
           href: migrate-support-matrix.md
-        - name: VMware-felmérés támogatása
+        - name: Biztonsági alapkonfiguráció az Azure Migrate-hez
+          href: security-baseline.md
+    - name: Felderítés
+      items:
+        - name: VMware-felderítés támogatása
           href: migrate-support-matrix-vmware.md
-        - name: VMware-migrálás támogatása
-          href: migrate-support-matrix-vmware-migration.md
-        - name: Hyper-V-felmérés támogatása
+        - name: Hyper-V-felderítés támogatása
           href: migrate-support-matrix-hyper-v.md
-        - name: Hyper-V-migrálás támogatása
-          href: migrate-support-matrix-hyper-v-migration.md
-        - name: Fizikaikiszolgáló-felmérés támogatása
+        - name: Fizikai kiszolgálók felderítésének támogatása
           href: migrate-support-matrix-physical.md
-        - name: Fizikaikiszolgáló-migrálás támogatása
-          href: migrate-support-matrix-physical-migration.md
         - name: Azure Migrate-berendezés követelményei
           href: migrate-appliance.md
+        - name: Az Azure Migrate-berendezés architektúrája
+          href: migrate-appliance-architecture.md
+        - name: Függőségelemzés áttekintése
+          href: concepts-dependency-visualization.md
+    - name: Kiértékelés
+      items:
+        - name: Felmérések áttekintése (migrálás Azure-beli virtuális gépre)
+          href: concepts-assessment-calculation.md
+        - name: Felmérések áttekintése (migrálás AVS-re)
+          href: concepts-azure-vmware-solution-assessment-calculation.md
+        - name: Felmérés ajánlott eljárásai
+          href: best-practices-assessment.md
+    - name: Migrate
+      items:
+        - name: Migrálási terv összeállítása
+          href: concepts-migration-planning.md
+        - name: VMware-migrálás támogatása
+          href: migrate-support-matrix-vmware-migration.md
+        - name: Hyper-V-migrálás támogatása
+          href: migrate-support-matrix-hyper-v-migration.md
+        - name: Fizikaikiszolgáló-migrálás támogatása
+          href: migrate-support-matrix-physical-migration.md
         - name: Replikációs berendezés követelményei
           href: migrate-replication-appliance.md
-    - name: Biztonság
-      items:
-        - name: Biztonsági alapkonfiguráció
-          href: security-baseline.md
-    - name: Az Azure Migrate-berendezés architektúrája
-      href: migrate-appliance-architecture.md
-    - name: A Hyper-V migrálási architektúrája
-      href: hyper-v-migration-architecture.md
-    - name: VMware ügynökalapú migrálási architektúra
-      href: agent-based-migration-architecture.md
-    - name: Felmérés áttekintése (migrálás Azure-beli virtuális gépre)
-      href: concepts-assessment-calculation.md
-    - name: Felmérések áttekintése (migrálás AVS-re)
-      href: concepts-azure-vmware-solution-assessment-calculation.md
-    - name: Ajánlott felmérési eljárások
-      href: best-practices-assessment.md
-    - name: Függőségelemzés áttekintése
-      href: concepts-dependency-visualization.md
+        - name: A Hyper-V migrálási architektúrája
+          href: hyper-v-migration-architecture.md
+        - name: VMware ügynökalapú migrálási architektúra
+          href: agent-based-migration-architecture.md
 - name: Útmutatók
   items:
     - name: Azure Migrate-projektek létrehozása és kezelése
       href: create-manage-projects.md
-    - name: Eszköz hozzáadása első alkalommal
-      href: how-to-add-tool-first-time.md
     - name: A független szoftverszállítótól származó eszközökkel vagy Moverével folytatott munka előkészítése
       href: prepare-isv-movere.md
-    - name: Felmérőeszközök hozzáadása
-      href: how-to-assess.md
-    - name: Az Azure Migrate-berendezés üzembe helyezése
+    - name: Felderítés
       items:
-        - name: Berendezés üzembe helyezése sablonnal (VMware)
-          href: how-to-set-up-appliance-vmware.md
-        - name: Berendezés üzembe helyezése sablonnal (Hyper-V)
-          href: how-to-set-up-appliance-hyper-v.md
-        - name: Berendezés üzembe helyezése szkripttel (VMware/Hyper-V)
-          href: deploy-appliance-script.md
-        - name: Berendezés üzembe helyezése fizikai kiszolgálókhoz
-          href: how-to-set-up-appliance-physical.md
-        - name: Berendezés üzembe helyezése az Azure Governmentben
-          href: deploy-appliance-script-government.md
-    - name: A VMware rendszerű virtuális gépek felderítési hatókörének korlátozása
-      href: set-discovery-scope.md
-    - name: Alkalmazások/szerepkörök/szolgáltatások felderítése
-      href: how-to-discover-applications.md
-    - name: Gépek csoportosítása felméréshez
-      href: how-to-create-a-group.md
-    - name: A gép függőségeinek elemzése (ügynökalapú)
-      href: how-to-create-group-machine-dependencies.md
-    - name: A gép függőségeinek elemzése (ügynök nélküli)
-      href: how-to-create-group-machine-dependencies-agentless.md
-    - name: Azure-beli virtuális gép felmérésének létrehozása
-      href: how-to-create-assessment.md
-    - name: AVS-felmérés létrehozása
-      href: how-to-create-azure-vmware-solution-assessment.md
-    - name: SQL Server-adatbázis értékelése
-      href: /sql/dma/dma-assess-sql-data-estate-to-sqldb
-    - name: Értékelés testreszabása
-      href: how-to-modify-assessment.md
-    - name: Migrálási eszközök hozzáadása
-      href: how-to-migrate.md
-    - name: VMware virtuális gépek migrálása Azure-beli virtuális gépekre SSE-vel és CMK-val
-      href: how-to-migrate-vmware-vms-with-cmk-disks.md
-    - name: Windows 2003-kiszolgálók előkészítése migrálásra
-      href: prepare-windows-server-2003-migration.md
-    - name: Gépek előkészítése migrálásra
-      href: prepare-for-migration.md
-    - name: Azure Migrate-projekt eltávolítása
-      href: how-to-delete-project.md
-    - name: Az előző verzió használata
-      href: migrate-v1.md
-    - name: Felmérés és migrálás skálázása
+        - name: Az Azure Migrate-berendezés üzembe helyezése
+          items:
+            - name: Berendezés üzembe helyezése sablonnal (VMware)
+              href: how-to-set-up-appliance-vmware.md
+            - name: Berendezés üzembe helyezése sablonnal (Hyper-V)
+              href: how-to-set-up-appliance-hyper-v.md
+            - name: Berendezés üzembe helyezése szkripttel (VMware/Hyper-V)
+              href: deploy-appliance-script.md
+            - name: Berendezés üzembe helyezése fizikai kiszolgálókhoz
+              href: how-to-set-up-appliance-physical.md
+            - name: Berendezés üzembe helyezése az Azure Governmentben
+              href: deploy-appliance-script-government.md
+        - name: A VMware rendszerű virtuális gépek felderítési hatókörének korlátozása
+          href: set-discovery-scope.md
+        - name: Alkalmazások/szerepkörök/szolgáltatások felderítése
+          href: how-to-discover-applications.md
+        - name: A gép függőségeinek elemzése (ügynökalapú)
+          href: how-to-create-group-machine-dependencies.md
+        - name: A gép függőségeinek elemzése (ügynök nélküli)
+          href: how-to-create-group-machine-dependencies-agentless.md
+    - name: Kiértékelés
       items:
-        - name: Hozzáférés nagy számú VMware virtuális géphez
-          href: scale-vmware-assessment.md
-        - name: Hozzáférés nagy számú Hyper-V virtuális géphez
-          href: scale-hyper-v-assessment.md
-        - name: Nagy számú fizikai kiszolgáló kiértékelése
-          href: scale-physical-assessment.md
-        - name: Nagy számú virtuális gép migrálásának automatizálása
-          href: how-to-migrate-at-scale.md
-        - name: VMWare-migrálás automatizálása
-          href: how-to-automate-migration.md
-        - name: Migrálási példák (Contoso-sorozat)
-          href: contoso-migration-overview.md
+        - name: Felmérőeszközök hozzáadása
+          href: how-to-assess.md
+        - name: Gépek csoportosítása felméréshez
+          href: how-to-create-a-group.md
+        - name: Azure-beli virtuális gép felmérésének létrehozása
+          href: how-to-create-assessment.md
+        - name: AVS-felmérés létrehozása
+          href: how-to-create-azure-vmware-solution-assessment.md
+        - name: SQL Server-adatbázis értékelése
+          href: /sql/dma/dma-assess-sql-data-estate-to-sqldb
+        - name: Értékelés testreszabása
+          href: how-to-modify-assessment.md
+        - name: Felmérés skálázása
+          items:
+            - name: Hozzáférés nagy számú VMware virtuális géphez
+              href: scale-vmware-assessment.md
+            - name: Hozzáférés nagy számú Hyper-V virtuális géphez
+              href: scale-hyper-v-assessment.md
+            - name: Nagy számú fizikai kiszolgáló kiértékelése
+              href: scale-physical-assessment.md
+    - name: Migrate
+      items:
+        - name: Migrálási eszközök hozzáadása
+          href: how-to-migrate.md
+        - name: Gépek előkészítése migrálásra
+          href: prepare-for-migration.md
+        - name: VMware virtuális gépek migrálása
+          items:
+            - name: VMware virtuális gépek migrálása titkosított Azure-beli virtuális gépekbe
+              href: how-to-migrate-vmware-vms-with-cmk-disks.md
+            - name: Windows 2003-kiszolgálók előkészítése migrálásra
+              href: prepare-windows-server-2003-migration.md
+        - name: Migrálás skálázása
+          items:
+            - name: Nagy számú virtuális gép migrálásának automatizálása
+              href: how-to-migrate-at-scale.md
+            - name: VMWare-migrálás automatizálása
+              href: how-to-automate-migration.md
+    - name: Kezelés
+      items:
+        - name: Azure Migrate-projekt eltávolítása
+          href: how-to-delete-project.md
+        - name: Az Azure Migrate előző verziójának használata
+          href: migrate-v1.md
 - name: Hibaelhárítás
   items:
-    - name: Az Azure Migrate hibaelhárítása
-      href: troubleshoot-general.md
-    - name: Azure Migrate-projektek hibaelhárítása
-      href: troubleshoot-project.md
-    - name: Azure Migrate-berendezés/felderítés hibaelhárítása
-      href: troubleshoot-appliance-discovery.md
-    - name: Értékelés/függőségek vizualizációjának hibaelhárítása
-      href: troubleshoot-assessment.md
-    - name: Ügynök nélküli VMWare-migrálások replikációval kapcsolatos problémáinak hibaelhárítása
-      href: troubleshoot-changed-block-tracking-replication.md
+    - name: Általános
+      items:
+        - name: Az Azure Migrate hibaelhárítása
+          href: troubleshoot-general.md
+        - name: Azure Migrate-projektek hibaelhárítása
+          href: troubleshoot-project.md
+    - name: Felderítés
+      items:
+        - name: Azure Migrate-berendezés/felderítés hibaelhárítása
+          href: troubleshoot-appliance-discovery.md
+    - name: Kiértékelés
+      items:
+        - name: Értékelés/függőségek vizualizációjának hibaelhárítása
+          href: troubleshoot-assessment.md
+    - name: Migrate
+      items:
+        - name: Ügynök nélküli VMWare-migrálások replikációval kapcsolatos problémáinak hibaelhárítása
+          href: troubleshoot-changed-block-tracking-replication.md
 - name: További források
   items:
     - name: Migrálás a felhőbevezetési keretrendszerbe
       href: /azure/cloud-adoption-framework/migrate/
+    - name: Contoso-migrálási példák
+      href: /azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-overview
     - name: REST API
       href: /rest/api/migrate/
     - name: Resource Manager-sablon

@@ -51,6 +51,8 @@
           href: tutorial-connect-device-nodejs.md
         - name: Eszköz csatlakoztatása (Python)
           href: tutorial-connect-device-python.md
+        - name: Eszköz csatlakoztatása (Java)
+          href: tutorial-connect-device-java.md
         - name: Átjáró-eszközsablon létrehozása
           href: tutorial-define-gateway-device-type.md
         - name: IoT Edge-eszköz csatlakoztatása

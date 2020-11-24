@@ -75,6 +75,8 @@
           href: spring-cloud-howto-launch-from-source.md
         - name: IntelliJ használata alkalmazások üzembe helyezéséhez
           href: spring-cloud-tutorial-intellij-deploy-apps.md
+        - name: Azure Spring Cloud üzembe helyezése az Azure PowerShell-lel
+          href: spring-cloud-howto-deploy-powershell.md
     - name: Konfigurálás
       items:
         - name: 'Alkalmazás indítása, leállítása és törlése'

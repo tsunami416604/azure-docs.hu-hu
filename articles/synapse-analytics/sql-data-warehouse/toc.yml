@@ -1,4 +1,4 @@
-- name: Azure Synapse (SQL DW)
+- name: Azure Synapse (korábban SQL DW)
   href: index.yml
 - name: Váltás az Azure Synapse-re (munkaterületek előzetes verziója)
   href: ../overview-what-is.md

@@ -603,8 +603,14 @@
           href: reference-hyperscale-metadata.md
     - name: Útmutatók
       items:
-        - name: Kiszolgálócsoport skálázása
-          href: howto-hyperscale-scaling.md
+        - name: Kiszolgálócsoport mérete
+          items:
+            - name: Kezdeti méret kiválasztása
+              href: howto-hyperscale-scale-initial.md
+            - name: Kiszolgálócsoport skálázása
+              href: howto-hyperscale-scale-grow.md
+            - name: Szegmensek újraegyensúlyozása
+              href: howto-hyperscale-scale-rebalance.md
         - name: Tűzfalszabályok
           items:
             - name: Azure Portal

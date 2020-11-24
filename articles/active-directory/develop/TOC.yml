@@ -539,6 +539,8 @@
           href: howto-handle-samesite-cookie-changes-chrome-browser.md
         - name: Az ITP kezelése a Safariban
           href: reference-third-party-cookies-spas.md
+        - name: Folyamatos hozzáférés-kiértékelési API-k használata
+          href: app-resilience-continuous-access-evaluation.md
     - name: Alkalmazáskonfiguráció
       displayName: App configuration
       items:

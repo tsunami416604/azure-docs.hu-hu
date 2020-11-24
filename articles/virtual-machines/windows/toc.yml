@@ -379,7 +379,7 @@
               href: dedicated-hosts-powershell.md
             - name: Portál
               href: ../dedicated-hosts-portal.md
-        - name: Spot virtuális gépek üzembe helyezése
+        - name: Kihasználatlan virtuális gépek üzembe helyezése
           items:
             - name: Portál
               href: ../spot-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json

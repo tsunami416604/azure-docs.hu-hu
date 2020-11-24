@@ -4,6 +4,8 @@
   items:
     - name: Az Azure Backup áttekintése
       href: backup-overview.md
+    - name: Az Azure Backup újdonságai
+      href: whats-new.md
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/backup/'
 - name: Rövid útmutatók
