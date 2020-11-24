@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: b7ec7273848b9e8bb5be809b9cf48cdc919d3949
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 81842fb3a9a68e818a3e8c94aa6db690cb1d94f5
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307972"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95486279"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-machine-learning-studio-classic"></a>Rövid útmutató: az első adatelemzési kísérlet létrehozása Machine Learning Studio (klasszikus)
 
-**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**a következőkre vonatkozik:** ![ Ez egy pipa, ami azt jelenti, hogy ez a cikk a Machine Learning Studio (klasszikus) elemre vonatkozik. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasszikus) ![ Ez egy X, ami azt jelenti, hogy ez a cikk Azure Machine learningre vonatkozik.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
@@ -78,7 +78,7 @@ Ebben az adatkészletben minden sor egy automobilt jelöl, és az egyes autókho
 
 ![Az autókra vonatkozó adatok megtekintése az adatokat megjelenítő ablakban](./media/create-experiment/visualize-auto-data.png)
 
-A jobb felső sarokban látható „ **x** ” gombra kattintva zárja be a képi megjelenítési ablakot.
+A jobb felső sarokban látható „**x**” gombra kattintva zárja be a képi megjelenítési ablakot.
 
 ## <a name="prepare-the-data"></a>Az adatok előkészítése
 
@@ -225,7 +225,7 @@ Az [Evaluate Model][evaluate-model] (Modell kiértékelése) modul eredményéne
 
 A következő statisztikák tekinthetők meg:
 
-- **Mean Absolute Error** (átlagos abszolút eltérés, MAE): az abszolút eltérések átlaga ( *eltérésnek* az előre jelzett érték és a tényleges érték közötti különbséget nevezzük).
+- **Mean Absolute Error** (átlagos abszolút eltérés, MAE): az abszolút eltérések átlaga (*eltérésnek* az előre jelzett érték és a tényleges érték közötti különbséget nevezzük).
 - **Root Mean Squared Error** (gyökátlagos négyzetes eltérés, RMSE): a tesztelési adathalmazon végzett előrejelzések eltéréseinek négyzetéből számított átlag négyzetgyöke.
 - **Relative Absolute Error** (relatív abszolút eltérés): a tényleges értékek és az összes tényleges értékek átlaga közötti különbségek abszolút eltérésének átlaga.
 - **Relative Squared Error** (relatív négyzetes eltérés): a négyzetes eltérések átlaga a tényleges értékek és az összes tényleges érték átlaga közötti különbség négyzetes értékéhez viszonyítva.

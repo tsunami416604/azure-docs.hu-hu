@@ -6,19 +6,18 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: enterprise-users
 ms.topic: how-to
 ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d70676e117a71fbd194e921b4755ba5d196871c7
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 158d8731965533b20917a25b72227a92c9638fa7
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94650308"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95488453"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>A LinkedIn-fiókok kapcsolatainak integrálása Azure Active Directory
 
@@ -94,7 +93,7 @@ Ha az Azure AD felügyeleti központban lévő LinkedIn Account Connections (Lin
 1. Hozzon létre egy csoportházirend objektumot a következő beállítással: **felhasználói konfiguráció**  >  **Felügyeleti sablonok**  >  **Microsoft Office 2016**  >  **egyebek**  >  **az Office-alkalmazások LinkedIn szolgáltatásainak megjelenítése**.
 1. Válassza az **engedélyezve** vagy a **Letiltva** lehetőséget.
   
-   Állapot | Hatás
+   Állam | Hatás
    ------ | ------
    **Engedélyezve** | Engedélyezve van az Office 2016-beállítások az Office- **alkalmazásokban beállítás a LinkedIn funkcióinak megjelenítése** lehetőség. A szervezet felhasználói a LinkedIn funkcióit használhatják az Office 2016-alkalmazásaikban.
    **Disabled** | A **LinkedIn funkcióinak megjelenítése** az Office-alkalmazások Office 2016-beállításokban beállítás le van tiltva, és a végfelhasználók nem változtathatják meg ezt a beállítást. A szervezet felhasználói nem használhatják a LinkedIn szolgáltatásait az Office 2016-alkalmazásokban.

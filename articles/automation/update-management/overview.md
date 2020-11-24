@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 09bd82225fb7d8a6eefe84b5a70660e4553a3070
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: abcc2b60fd796a80342fe48c3c9027388660476a
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360785"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95488147"
 ---
 # <a name="update-management-overview"></a>A frissítéskezelés áttekintése
 
@@ -132,7 +132,7 @@ Update Management az ebben a szakaszban ismertetett erőforrásokat használja. 
 
 A Update Management engedélyezése után a Log Analytics munkaterülethez közvetlenül csatlakoztatott Windows-gépeket a rendszer automatikusan hibrid Runbook-feldolgozóként konfigurálja a Update Management támogató runbookok támogatásához.
 
-Az Update Management által felügyelt összes Windows-gép a hibrid munkavégző csoportok ablaktáblán, az Automation-fiókhoz tartozó rendszer hibrid feldolgozói csoportként jelenik meg. A csoportok az `Hostname FQDN_GUID` elnevezési konvenciót használják. Ezek a csoportok nem állíthatók be a runbookok a fiókjában. Ha próbálkozik, a kísérlet sikertelen lesz. Ezek a csoportok kizárólag a Update Management támogatására szolgálnak. A hibrid Runbook-feldolgozóként konfigurált Windows-gépek listájának megtekintéséhez tekintse meg a [hibrid Runbook-feldolgozók megtekintése](../automation-hybrid-runbook-worker.md#view-hybrid-runbook-workers)című témakört.
+Az Update Management által felügyelt összes Windows-gép a hibrid munkavégző csoportok ablaktáblán, az Automation-fiókhoz tartozó rendszer hibrid feldolgozói csoportként jelenik meg. A csoportok az `Hostname FQDN_GUID` elnevezési konvenciót használják. Ezek a csoportok nem állíthatók be a runbookok a fiókjában. Ha próbálkozik, a kísérlet sikertelen lesz. Ezek a csoportok kizárólag a Update Management támogatására szolgálnak. A hibrid Runbook-feldolgozóként konfigurált Windows-gépek listájának megtekintéséhez tekintse meg a [hibrid Runbook-feldolgozók megtekintése](../automation-hybrid-runbook-worker.md#view-system-hybrid-runbook-workers)című témakört.
 
 A Windows rendszerű gépet hozzáadhatja az Automation-fiókjában lévő hibrid Runbook Worker csoporthoz az Automation-runbookok támogatásához, ha ugyanazt a fiókot használja a Update Management és a hibrid Runbook-feldolgozó csoport tagságához. Ez a funkció a hibrid Runbook-feldolgozó verziójának 7.2.12024.0 lett hozzáadva.
 
@@ -160,9 +160,9 @@ A következő táblázat ismerteti a Update Management által támogatott csatla
 
 | Csatlakoztatott forrás | Támogatott | Leírás |
 | --- | --- | --- |
-| Windows-ügynökök |Yes |Update Management adatokat gyűjt a Windows-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését. |
-| Linux-ügynökök |Yes |Update Management adatokat gyűjt a Linux-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését a támogatott disztribúciók esetében. |
-| Az Operations Manager felügyeleti csoportja |Yes |Update Management adatokat gyűjt a csatlakoztatott felügyeleti csoportban lévő ügynököktől származó rendszerfrissítésekről.<br/><br/>Nincs szükség közvetlen kapcsolódásra a Operations Manager ügynöktől a Azure Monitor naplókhoz. Az adatok továbbítása a felügyeleti csoportból a Log Analytics munkaterületre történik. |
+| Windows-ügynökök |Igen |Update Management adatokat gyűjt a Windows-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését. |
+| Linux-ügynökök |Igen |Update Management adatokat gyűjt a Linux-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését a támogatott disztribúciók esetében. |
+| Az Operations Manager felügyeleti csoportja |Igen |Update Management adatokat gyűjt a csatlakoztatott felügyeleti csoportban lévő ügynököktől származó rendszerfrissítésekről.<br/><br/>Nincs szükség közvetlen kapcsolódásra a Operations Manager ügynöktől a Azure Monitor naplókhoz. Az adatok továbbítása a felügyeleti csoportból a Log Analytics munkaterületre történik. |
 
 ### <a name="collection-frequency"></a>A gyűjtés gyakorisága
 

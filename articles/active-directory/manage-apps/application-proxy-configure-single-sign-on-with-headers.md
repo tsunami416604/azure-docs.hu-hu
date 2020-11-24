@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 61bff59114d25b2f3167a34100ec2f742036bb90
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: d39d72a79d4b273918986d0d350df4706592c77d
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663551"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95503182"
 ---
 # <a name="header-based-single-sign-on-for-on-premises-apps-with-azure-ad-app-proxy-preview"></a>Fejléc-alapú egyszeri bejelentkezés Azure AD alkalmazás proxyval rendelkező helyszíni alkalmazásokhoz (előzetes verzió)
 
@@ -85,7 +85,7 @@ Mielőtt megkezdené az egyszeri bejelentkezést a fejléc-alapú alkalmazásokh
 ## <a name="test-your-app"></a>Az alkalmazás tesztelése 
 
 Az összes lépés elvégzése után az alkalmazásnak futnia kell, és elérhetőnek kell lennie. Az alkalmazás tesztelése: 
-1. Nyisson meg egy böngészőt, és navigáljon a **külső URL-címhez**   az alkalmazásproxy beállításainál. 
+1. Nyisson meg egy új böngészőt vagy egy privát böngészőablakot, és győződjön meg róla, hogy a korábban gyorsítótárazott fejlécek törlődnek. Ezután keresse meg a **külső URL-címet**   az alkalmazásproxy beállításainál.
 2. Jelentkezzen be az alkalmazáshoz hozzárendelt tesztelési fiókkal. Ha az SSO használatával betölti és bejelentkezik az alkalmazásba, akkor Ön is jó! 
 
 

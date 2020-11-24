@@ -3,12 +3,12 @@ title: Hibrid gépek összekötése az Azure-ba a PowerShell használatával
 description: Ebből a cikkből megtudhatja, hogyan telepítheti az ügynököt, és hogyan csatlakoztatható egy gép az Azure-hoz az Azure arc-kompatibilis kiszolgálók használatával. Ezt a PowerShell használatával teheti meg.
 ms.date: 10/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: f85e2564b2e5b194d306ef4bad2269982331a7d4
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 0218235179e1a8a883360d0061e685c04079cbf4
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422773"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95492941"
 ---
 # <a name="connect-hybrid-machines-to-azure-by-using-powershell"></a>Hibrid gépek összekötése az Azure-ba a PowerShell használatával
 
@@ -45,13 +45,13 @@ A telepítés befejezésekor a következő üzenet jelenik meg:
     * Az Azure-hoz közvetlenül kommunikáló célszámítógépen található csatlakoztatott számítógép-ügynök telepítéséhez futtassa a következőt:
 
         ```azurepowershell
-        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -SubscriptionId 978ab182-6cf0-4de3-a58b-53c8d0a3235e
+        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region>
         ```
     
     * A csatlakoztatott számítógép ügynökének a proxykiszolgálón keresztül kommunikáló célszámítógépen való telepítéséhez futtassa a következőt:
         
         ```azurepowershell
-        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -SubscriptionId 978ab182-6cf0-4de3-a58b-53c8d0a3235e -proxy http://<proxyURL>:<proxyport>
+        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -Proxy http://<proxyURL>:<proxyport>
         ```
 
 Ha a telepítés befejezése után az ügynök nem indul el, ellenőrizze a naplókat a részletes hibaüzenetek megtekintéséhez. Windows rendszeren keresse meg a következő fájlt: *%ProgramData%\AzureConnectedMachineAgent\Log\himds.log*. Linux rendszeren keresse meg a következő fájlt: */var/opt/azcmagent/log/himds.log*.
@@ -64,20 +64,20 @@ Ebből a témakörből megtudhatja, hogyan konfigurálhat egy vagy több Windows
 
 2. Jelentkezzen be az Azure-ba a parancs futtatásával `Connect-AzAccount` .
 
-3. A csatlakoztatott számítógép ügynökének telepítéséhez használja `Connect-AzConnectedMachine` a, a `-Name` `-ResourceGroupName` és a `-Location` paramétereket. A `-SubscriptionId` paraméter használatával felülbírálhatja az alapértelmezett előfizetést a bejelentkezés után létrehozott Azure-környezet eredményeképpen.
+3. A csatlakoztatott számítógép ügynökének telepítéséhez használja `Connect-AzConnectedMachine` a és a `-ResourceGroupName` `-Location` paramétereket. Az Azure-erőforrások neve automatikusan az egyes kiszolgálók állomásnevét fogja használni. A `-SubscriptionId` paraméter használatával felülbírálhatja az alapértelmezett előfizetést a bejelentkezés után létrehozott Azure-környezet eredményeképpen.
 
     * A következő parancs futtatásával telepítheti a csatlakoztatott gépi ügynököt a célszámítógépen, amely közvetlenül tud kommunikálni az Azure-ban:
     
         ```azurepowershell
-        $session = Connect-PSSession -ComputerName myMachineName
-        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -PSSession $session
+        $sessions = New-PSSession -ComputerName myMachineName
+        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Location <region> -PSSession $sessions
         ```
     
     * Ha egyszerre több távoli gépen szeretné telepíteni a csatlakoztatott gépi ügynököt, vegyen fel egy listát a távoli gépek neveiről, amelyek mindegyike vesszővel elválasztva.
 
         ```azurepowershell
-        $session = Connect-PSSession -ComputerName myMachineName1, myMachineName2, myMachineName3
-        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Name myMachineName -Location <region> -PSSession $session
+        $sessions = New-PSSession -ComputerName myMachineName1, myMachineName2, myMachineName3
+        Connect-AzConnectedMachine -ResourceGroupName myResourceGroup -Location <region> -PSSession $sessions
         ```
 
     Az alábbi példa egy adott gépet célzó parancs eredményét jeleníti meg:
@@ -99,7 +99,7 @@ Miután telepítette és konfigurálta az ügynököt az Azure arc-kompatibilis 
 
 ![Képernyőkép a kiszolgálók irányítópultról, amely a kiszolgáló sikeres csatlakoztatását mutatja.](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha szükséges, tekintse meg a [csatlakoztatott gép ügynökével kapcsolatos útmutatót](troubleshoot-agent-onboard.md).
 

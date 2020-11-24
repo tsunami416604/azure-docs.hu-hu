@@ -1,19 +1,19 @@
 ---
 title: Horgonyzási kapcsolatok és útkeresés
 description: Ismerje meg a horgony kapcsolatai mögötti fogalmi modellt. Megtudhatja, hogyan csatlakoztathatók a horgonyok egy adott térben, és hogyan használhatók a közeli API-k a keresési forgatókönyvek teljesítéséhez.
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 02/24/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 13c85dff40e266287d893d9e45b32a66a33f027e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c321eae9451715077aa50d163b62b51ec88ce1a
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83006021"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95496885"
 ---
 # <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>Kapcsolatok és a kitalált módszer – keresés az Azure térbeli Horgonyokban
 
@@ -32,7 +32,7 @@ A következőhöz hasonló esetekben használhat csatlakoztatott horgonyokat:
 
 ## <a name="set-up-way-finding"></a>Keresési mód beállítása
 
-Egy olyan alkalmazás, amely a vonalak közötti irányt és a horgonyok közötti távolságot használja az útmutatás biztosításához, a *módszert*használja. A megoldási mód eltér a lépésenkénti navigálástól. A lépésenkénti Navigálás során a felhasználók a falakon, az ajtókon és a padlón keresztül vezérlik a felhasználókat. A kereséssel a felhasználó a célhely általános irányára mutató javaslatokat kap. A terület következtetéseit és ismereteit is segítheti a felhasználónak a szerkezetnek a célhelyre való átjárásában.
+Egy olyan alkalmazás, amely a vonalak közötti irányt és a horgonyok közötti távolságot használja az útmutatás biztosításához, a *módszert* használja. A megoldási mód eltér a lépésenkénti navigálástól. A lépésenkénti Navigálás során a felhasználók a falakon, az ajtókon és a padlón keresztül vezérlik a felhasználókat. A kereséssel a felhasználó a célhely általános irányára mutató javaslatokat kap. A terület következtetéseit és ismereteit is segítheti a felhasználónak a szerkezetnek a célhelyre való átjárásában.
 
 A felhasználói élmény kiépítéséhez először elő kell készítenie egy helyet a élményhez, és fejlesztenie kell egy alkalmazást, amellyel a felhasználók együttműködnek. Ezek a fogalmi lépések:
 
@@ -40,7 +40,7 @@ A felhasználói élmény kiépítéséhez először elő kell készítenie egy 
 2. **Horgonyok összekötése**: keresse meg a kiválasztott helyszíneket a térbeli horgonyok létrehozásához. Ezt a végfelhasználói alkalmazás rendszergazdai módjában vagy egy másik alkalmazásban teheti meg. Az egyes horgonyokat összekapcsolhatja a többivel, vagy kapcsolódhat hozzájuk. A szolgáltatás karbantartja ezeket a kapcsolatokat.
 3. **A végfelhasználói élmény elindítása**: a felhasználók az alkalmazás futtatásával megkereshetik a horgonyt, amely bármelyik kiválasztott helyen lehet. A teljes kialakításnak meg kell határoznia azokat a helyszíneket, ahol a felhasználók megadhatják a felhasználói élményt.
 4. **Közeli horgonyok keresése**: miután a felhasználó talál egy horgonyt, az alkalmazás kérheti a közeli horgonyokat. Ez az eljárás az eszköz és a horgonyok közötti értéket adja vissza.
-5. **Útmutató a felhasználó**számára: az alkalmazás a következőket használhatja az egyes horgonyokhoz, hogy útmutatást nyújtson a felhasználó általános irányáról és távolságáról. Előfordulhat például, hogy az alkalmazásban található kamera-hírcsatorna egy ikont és egy nyilat jelenít meg az egyes lehetséges célhelyek megjelenítéséhez, ahogy az alábbi képen látható.
+5. **Útmutató a felhasználó** számára: az alkalmazás a következőket használhatja az egyes horgonyokhoz, hogy útmutatást nyújtson a felhasználó általános irányáról és távolságáról. Előfordulhat például, hogy az alkalmazásban található kamera-hírcsatorna egy ikont és egy nyilat jelenít meg az egyes lehetséges célhelyek megjelenítéséhez, ahogy az alábbi képen látható.
 6. **Pontosítsa az útmutatót**: ahogy a felhasználó besétál, az alkalmazás rendszeres időközönként kiszámíthatja az eszköz és a cél horgonya közötti új problémát. Az alkalmazás továbbra is pontosítja azokat az útmutatókat, amelyek segítenek a felhasználónak megérkezni a célhelyen.
 
     ![Példa arra, hogy az alkalmazás hogyan jeleníti meg a módot – útmutatás keresése](./media/meeting-spot.png)

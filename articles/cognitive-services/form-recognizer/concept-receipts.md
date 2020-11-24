@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 5125fff0ef8987d313c6611e4d5de08d090f2263
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 769dea079339af2c6307d9230e047a654dc3d5dd
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913194"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95492210"
 ---
 # <a name="receipt-concepts"></a>Nyugtákra vonatkozó fogalmak
 
@@ -57,6 +57,13 @@ A beérkezési API a következő információkat is megadja:
 * OCR nyers szöveg (OCR – kinyert szöveges kimenet a teljes bevételezéshez)
 * Az egyes értékek, sorok és szavak határoló mezője
 
+## <a name="try-it-out"></a>Próbálja ki
+
+Az űrlap-felismerő beérkezési szolgáltatás kipróbálásához nyissa meg az online minta felhasználói felület eszközét:
+
+> [!div class="nextstepaction"]
+> [Előre elkészített modellek kipróbálása](https://fott-preview.azurewebsites.net/)
+
 ## <a name="input-requirements"></a>Bemeneti követelmények
 
 [!INCLUDE [input reqs](./includes/input-requirements-receipts.md)]
@@ -64,7 +71,7 @@ A beérkezési API a következő információkat is megadja:
 ## <a name="supported-locales"></a>Támogatott területi beállítások 
 
 * Az előre összeállított **beérkezési v 2.0** (GA) támogatja a Sales nyugtákat az en-us területi beállításban
-* A **Pre-Builder v 2.1 – preview. 1** (nyilvános előzetes verzió) további támogatást nyújt a következő en-bevételezési területi beállításokhoz: 
+* A **Pre-builded v 2.1 – preview. 2** (nyilvános előzetes verzió) további támogatást nyújt a következő en beérkezési területi beállításokhoz: 
   * EN-AU 
   * EN-CA 
   * EN-GB 
@@ -73,12 +80,12 @@ A beérkezési API a következő információkat is megadja:
   > [!NOTE]
   > Nyelvi bevitel 
   >
-  > Az előre összeállított nyugták v 2.1 – preview. 1 egy opcionális kérési paraméterrel megadhatja a további angol piacoktól érkező bevételezési területi beállításokat. Az ausztrál (EN-AU), Kanada (EN-CA), Nagy-Britannia (EN-GB) és India (en-IN) típusú értékesítési nyugták esetében megadhatja a területi beállításokat a jobb eredmények eléréséhez. Ha nincs megadva területi beállítás a v 2.1-ben – előzetes verzió. 1, a modell alapértelmezett értéke az EN-US modell lesz.
+  > Előre összeállított beérkezés: v 2.1 – előzetes verzió. 2 egy opcionális kérési paraméterrel megadható a további angol piacoktól érkező bevételezési területi beállítás. Az ausztrál (EN-AU), Kanada (EN-CA), Nagy-Britannia (EN-GB) és India (en-IN) típusú értékesítési nyugták esetében megadhatja a területi beállításokat a jobb eredmények eléréséhez. Ha nincs megadva területi beállítás a v 2.1-ben – előzetes verzió. 2, a modell alapértelmezett értéke az EN-US modell lesz.
 
 
 ## <a name="the-analyze-receipt-operation"></a>A Bevételezés elemzése művelet
 
-Az [elemzés visszaigazolása](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeReceiptAsync) egy nyugtát tartalmazó képet vagy PDF-fájlt vesz fel bemenetként, és Kinyeri a kamat és a szöveg értékeit. A hívás egy válasz fejléc nevű mezőt ad vissza `Operation-Location` . Az `Operation-Location` érték egy URL-cím, amely a következő lépésben használandó eredmény-azonosítót tartalmazza.
+Az [elemzés visszaigazolása](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeReceiptAsync) egy nyugtát tartalmazó képet vagy PDF-fájlt vesz fel bemenetként, és Kinyeri a kamat és a szöveg értékeit. A hívás egy válasz fejléc nevű mezőt ad vissza `Operation-Location` . Az `Operation-Location` érték egy URL-cím, amely a következő lépésben használandó eredmény-azonosítót tartalmazza.
 
 |Válasz fejléce| Eredmény URL-címe |
 |:-----|:----|
@@ -86,7 +93,7 @@ Az [elemzés visszaigazolása](https://westcentralus.dev.cognitive.microsoft.com
 
 ## <a name="the-get-analyze-receipt-result-operation"></a>Az elemzés visszaigazolási eredményének lekérése művelet
 
-A második lépés az [elemzés visszaigazolási eredményének beolvasása](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/GetAnalyzeReceiptResult) művelet hívása. Ez a művelet az elemzés-visszaigazolási művelettel létrehozott eredmény-azonosítót veszi figyelembe. Egy olyan JSON-választ ad vissza, amely tartalmazza az **állapot** mezőt a következő lehetséges értékekkel. Ezt a műveletet a iteratív hívja meg, amíg vissza nem tér a **sikeres** értékkel. A kérések másodpercenkénti (RPS) arányának meghaladása érdekében használjon 3 – 5 másodperces intervallumot.
+A második lépés az [elemzés visszaigazolási eredményének beolvasása](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeReceiptResult) művelet hívása. Ez a művelet az elemzés-visszaigazolási művelettel létrehozott eredmény-azonosítót veszi figyelembe. Egy olyan JSON-választ ad vissza, amely tartalmazza az **állapot** mezőt a következő lehetséges értékekkel. Ezt a műveletet a iteratív hívja meg, amíg vissza nem tér a **sikeres** értékkel. A kérések másodpercenkénti (RPS) arányának meghaladása érdekében használjon 3 – 5 másodperces intervallumot.
 
 |Mező| Típus | Lehetséges értékek |
 |:-----|:----:|:----|

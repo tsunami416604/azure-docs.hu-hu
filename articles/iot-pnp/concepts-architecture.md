@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: a87617e1cc6910b4c807aa90f413efe94b6e6953
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 2cccb1fdfe775250f80da6cc2ecdcc4ddaa3d88e
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920304"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95484083"
 ---
 # <a name="iot-plug-and-play-architecture"></a>IoT Plug and Play-architektúra
 
@@ -98,4 +98,4 @@ Most, hogy áttekinti a IoT Plug and Play megoldás architektúráját, a követ
 
 - [A modell tárháza](./concepts-model-repository.md)
 - [Digitális kettős modell integrációja](./concepts-model-discovery.md)
-- [Fejlesztés a IoT Plug and Play](./concepts-developer-guide-device-csharp.md)
+- [Fejlesztés a IoT Plug and Play](./concepts-developer-guide-device.md)

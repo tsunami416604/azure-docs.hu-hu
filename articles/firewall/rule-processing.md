@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 04/10/2020
+ms.date: 11/18/2020
 ms.author: victorh
-ms.openlocfilehash: 84110e749dac9267e994385aa5f6d05e3ba224a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01f7aa61d3bfb3c712320bbf138160a7ff8197c7
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87087543"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95502200"
 ---
 # <a name="configure-azure-firewall-rules"></a>Azure Firewall szabályok konfigurálása
 Megadhatja a NAT-szabályokat, a hálózati szabályokat és az alkalmazásokra vonatkozó szabályokat a Azure Firewall. A szabályok gyűjteményeit a rendszer a szabály típusa szerint dolgozza fel a prioritási sorrendben, a számok számát pedig a 100 – 65 000 értéknél nagyobb számra csökkenti. A szabálygyűjtemény neve csak betűket, számokat, aláhúzásokat, pontokat és kötőjeleket tartalmazhat. Betűvel vagy számmal kell kezdődnie, és betűvel, számmal vagy aláhúzással kell végződnie. A név maximális hossza 80 karakter.
@@ -26,7 +26,13 @@ Először a szabályok gyűjtésének prioritási számát 100-os (100, 200, 300
 
 ### <a name="network-rules-and-applications-rules"></a>Hálózati szabályok és alkalmazások szabályai
 
-A hálózati szabályok és az alkalmazás szabályainak konfigurálásakor a hálózati szabályok prioritási sorrendben lesznek alkalmazva az alkalmazás szabályai előtt. A szabályok leállnak. Így ha a rendszer egyezést talál egy hálózati szabályban, a rendszer nem dolgozza fel más szabályokat.  Ha nincs megfelelő hálózati szabály, és ha a protokoll HTTP, HTTPS vagy MSSQL, akkor a rendszer a csomagot prioritási sorrendben értékeli ki az alkalmazás szabályai alapján. Ha még mindig nem található egyezés, akkor a rendszer kiértékeli a csomagot az [infrastruktúra-szabálygyűjtemény](infrastructure-fqdns.md)alapján. És ha továbbra sincs egyezés, a tűzfal a csomagot alapértelmezés szerint elutasítja.
+A hálózati szabályok és az alkalmazás szabályainak konfigurálásakor a hálózati szabályok prioritási sorrendben lesznek alkalmazva az alkalmazás szabályai előtt. A szabályok leállnak. Így ha a rendszer egyezést talál egy hálózati szabályban, a rendszer nem dolgozza fel más szabályokat.  Ha nincs hálózati szabály, és ha a protokoll HTTP, HTTPS vagy MSSQL, akkor a csomagot a rendszer prioritási sorrendben értékeli ki az alkalmazás szabályai alapján. Ha még mindig nem található egyezés, akkor a rendszer kiértékeli a csomagot az [infrastruktúra-szabálygyűjtemény](infrastructure-fqdns.md)alapján. Ha még mindig nincs egyezés, akkor a csomag alapértelmezés szerint meg van tagadva.
+
+#### <a name="network-rule-protocol"></a>Hálózati szabály protokollja
+
+A hálózati szabályok **TCP**, **UDP**, **ICMP** vagy **bármely** IP protokollhoz konfigurálhatók. Minden IP-protokoll tartalmazza az [Internet Assigned Numbers Authority (IANA) protokoll számok](https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml) dokumentumában definiált összes IP-protokollt. Ha egy célport explicit módon van konfigurálva, a rendszer lefordítja a szabályt egy TCP + UDP-szabályra.
+
+November 9. előtt, 2020 **minden** jelentett **TCP**, **UDP** vagy **ICMP**. Így előfordulhat, hogy az adott dátum előtt már konfigurált egy szabályt a protokoll = any és a Destination ports = ' * ' beállítással. Ha ténylegesen nem kívánja engedélyezni az IP protokoll használatát a jelenleg definiált módon, akkor módosítsa a szabályt úgy, hogy explicit módon konfigurálja a kívánt protokoll (oka) t (TCP, UDP vagy ICMP).
 
 ## <a name="inbound-connectivity"></a>Bejövő kapcsolat
 
@@ -57,7 +63,7 @@ A google.com való kapcsolódás a megfelelő hálózati szabály miatt engedél
 
 - Művelet: Megtagadás
 
-|name  |Forrás típusa  |Forrás  |Protokoll: Port|Cél teljes tartománynevek|
+|name  |Forrás típusa  |Forrás  |Protokoll:Port|Cél teljes tartománynevek|
 |---------|---------|---------|---------|----------|----------|
 |Megtagadás – Google     |IP-cím|*|http: 80, https: 443|google.com
 
@@ -97,6 +103,6 @@ Az SSH-kapcsolatok megtagadva, mert egy magasabb prioritású hálózati szabál
 
 Ha módosít egy szabályt a korábban engedélyezett forgalom megtagadására, a rendszer minden kapcsolódó meglévő munkamenetet elvet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [helyezhet üzembe és konfigurálhat egy Azure Firewall](tutorial-firewall-deploy-portal.md).

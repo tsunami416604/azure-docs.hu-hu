@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 7e17cdca508db81551d988c795bd1235fa729e82
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: bb46bc18469638416ff76f84516498e0076c85fd
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636860"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95500322"
 ---
 # <a name="apache-kafka-with-confluent-schema-registry-in-azure-hdinsight"></a>Apache Kafka az Azure HDInsight-ben az Fluent séma beállításjegyzékével
 
@@ -34,7 +34,7 @@ Ebben a szakaszban egy HDInsight által felügyelt Kafka-fürtöt helyezünk üz
 
 1. Az Azure-ba való bejelentkezéshez és a Resource Manager-sablon megnyitásához válassza az alábbi **üzembe helyezés az Azure** -ban gombot.
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Farnabganguly%2FKafkaschemaregistry%2Fmaster%2Fazuredeploy.json" target="_blank">:::image type="icon" source="media/schema-registry/hdi-deploy-to-azure1.png":::</a>
+    [![Üzembe helyezés az Azure-ban](./media/schema-registry/hdi-deploy-to-azure1.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Farnabganguly%2FKafkaschemaregistry%2Fmaster%2Fazuredeploy.json)
 
 1. Az egyéni központi telepítési sablonban töltse fel a mezőket az alább leírtak szerint:
 
@@ -42,7 +42,7 @@ Ebben a szakaszban egy HDInsight által felügyelt Kafka-fürtöt helyezünk üz
     |---|---|
     |Előfizetés|A legördülő listában válassza ki a fürthöz használt Azure-előfizetést.|
     |Erőforráscsoport|A legördülő listából válassza ki a meglévő erőforráscsoportot, vagy válassza az **új létrehozása** lehetőséget.|
-    |Régió|A legördülő listából válassza ki azt a régiót, ahol a fürtöt létrehozták.|
+    |Region|A legördülő listából válassza ki azt a régiót, ahol a fürtöt létrehozták.|
     |Fürt neve|Adjon meg egy globálisan egyedi nevet. Vagy hagyja a következőt: az alapértelmezett név használata.|
     |Fürt bejelentkezési felhasználóneve|Adja meg a felhasználónevet, az alapértelmezett érték a **rendszergazda**.|
     |Fürt bejelentkezési jelszava|Adja meg a jelszót.|
@@ -276,6 +276,6 @@ Ebben a szakaszban beolvasjuk az adatokat a standard bemenetből, és egy Kafka-
     {"cust_id":3535353,"year":2011,"expenses":[761.35,92.18,14.41]}
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Apache Kafka producer és a fogyasztói API-k használata](apache-kafka-producer-consumer-api.md)

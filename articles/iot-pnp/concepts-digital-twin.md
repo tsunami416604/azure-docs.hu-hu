@@ -7,12 +7,12 @@ ms.date: 07/17/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: ea523045875e0abc9e14924c7bb388ea2cfcc2db
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: f13230c7bd88a9c3cf043fc1881a34f6b7ce6fe7
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046468"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95495321"
 ---
 # <a name="understand-iot-plug-and-play-digital-twins"></a>Az IoT Plug and Play digitális ikreinek ismertetése
 
@@ -382,6 +382,6 @@ content-encoding:utf-8
 Most, hogy megismerte a digitális ikreket, íme néhány további erőforrás:
 
 - [A IoT Plug and Play Digital Twin API-k használata](howto-manage-digital-twin.md)
-- [Kommunikáció egy eszközzel a megoldásból](quickstart-service-node.md)
+- [Kommunikáció egy eszközzel a megoldásból](quickstart-service.md)
 - [IoT Digital Twin REST API](/rest/api/iothub/service/digitaltwin)
 - [Azure IoT Explorer](howto-use-iot-explorer.md)

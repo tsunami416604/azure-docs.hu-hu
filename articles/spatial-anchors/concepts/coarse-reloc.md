@@ -1,24 +1,24 @@
 ---
 title: Durva újrahonosítás
 description: Ismerje meg, hogyan használhat durva áthonosítást a közeli horgonyok megtalálásához.
-author: bucurb
-manager: dacoghl
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: bobuc
-ms.date: 09/18/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 02f5c570b7400266ac648eaa257fb76d26819a40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a65b2ca4ba9f1912adeaf60df123bcd3c8833bd
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89003184"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95496902"
 ---
 # <a name="coarse-relocalization"></a>Durva helyzet-újrameghatározás
 
-A durva újrahonosítás egy olyan szolgáltatás, amely kezdeti választ ad a kérdésre: *Hol van az eszközem?* A válasz nem pontos, hanem a következő formában van: a *horgonyokhoz közeledik; próbáljon meg az egyiket*megkeresni.
+A durva újrahonosítás egy olyan szolgáltatás, amely kezdeti választ ad a kérdésre: *Hol van az eszközem?* A válasz nem pontos, hanem a következő formában van: a *horgonyokhoz közeledik; próbáljon meg az egyiket* megkeresni.
 
 A durva újrahonosítás úgy működik, hogy a különböző eszköz-érzékelőket társítja a horgonyok létrehozásával és lekérdezésével. A kültéri forgatókönyvek esetében az érzékelő adatok általában az eszköz GPS (globális helymeghatározási rendszer) pozíciója. Ha a GPS nem érhető el vagy nem megbízható (például beltérben), az érzékelői információ a hatótávolságon belül található WiFi hozzáférési pontokból és Bluetooth-figyelőből áll. Az összes összegyűjtött érzékelői adat hozzájárul a térbeli index fenntartásához. ezt az Azure térbeli horgonyok használják az eszköz körülbelül 100 méterén belüli horgonyok gyors meghatározásához.
 
@@ -659,7 +659,7 @@ A következő táblázat összefoglalja az egyes támogatott platformokon össze
 
 |                 | HoloLens | Android | iOS |
 |-----------------|----------|---------|-----|
-| **GPS**         | N/A | [LocationManager][3] API-kon keresztül támogatott (a GPS és a hálózat is) | [CLLocationManager][4] API-kon keresztül támogatott |
+| **GPS**         | N.A. | [LocationManager][3] API-kon keresztül támogatott (a GPS és a hálózat is) | [CLLocationManager][4] API-kon keresztül támogatott |
 | **Fi**        | 3 másodpercenként körülbelül egy vizsgálattal támogatott | Támogatott. A 28-as API-szinttől kezdve a Wi-Fi vizsgálat 2 percenként 4 hívásra van Leszabályozva. Az Android 10-es verzióban a szabályozás le lehet tiltani a fejlesztői beállítások menüből. További információt az [Android dokumentációjában][5]talál. | N/A – nincs nyilvános API |
 | **Egyazon figyelő** | [Eddystone][1] és [iBeacon][2] korlátozódik | [Eddystone][1] és [iBeacon][2] korlátozódik | [Eddystone][1] és [iBeacon][2] korlátozódik |
 

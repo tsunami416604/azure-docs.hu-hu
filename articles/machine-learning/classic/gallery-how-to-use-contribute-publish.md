@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: fc405c56538ab305d6e0b8a22c1095458cb1264e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: eacc7adae16785049022cd05f04904d97b0b3a6d
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309887"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95486126"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Erőforrások megosztása és felderítése a Azure AI Gallery
 
-**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**a következőkre vonatkozik:** ![ Ez egy pipa, ami azt jelenti, hogy ez a cikk a Machine Learning Studio (klasszikus) elemre vonatkozik. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasszikus) ![ Ez egy X, ami azt jelenti, hogy ez a cikk Azure Machine learningre vonatkozik.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 
@@ -48,12 +48,12 @@ A LinkedIn vagy a Twitter megosztási képességeivel, vagy egy hivatkozás e-ma
 
 Bejelentkezéskor a katalógus közösség tagjává válik. Ez lehetővé teszi az erőforrások letöltését vagy a saját katalógusbeli elemek beadását, így mások is kihasználhatják a felderített megoldások előnyeit.
 
-A saját elemzési megoldások fejlesztéséhez használható **kísérleteket** , **Egyéni modulokat** is letöltheti.
-A katalógusban **kísérletek** , **oktatóanyagok** és **gyűjtemények** is hozzájárulhatnak.
+A saját elemzési megoldások fejlesztéséhez használható **kísérleteket**, **Egyéni modulokat** is letöltheti.
+A katalógusban **kísérletek**, **oktatóanyagok** és **gyűjtemények** is hozzájárulhatnak.
 
 ## <a name="download-experiments-modules"></a>Kísérletek letöltése, modulok
 
-A **kísérleteket** , az **Egyéni modulokat** saját Machine learning Studio (klasszikus) munkaterületre is letöltheti saját megoldásai fejlesztéséhez.
+A **kísérleteket**, az **Egyéni modulokat** saját Machine learning Studio (klasszikus) munkaterületre is letöltheti saját megoldásai fejlesztéséhez.
 
 Erőforrás letöltése az AI-galériából:
 
@@ -65,7 +65,7 @@ Erőforrás letöltése az AI-galériából:
 Erőforrás letöltése a studióból (klasszikus):
 
 1. A Studio (klasszikus) területen válassza az **új** lehetőséget.
-1. Válassza a **modul** , **kísérlet** vagy **Jegyzetfüzet** lehetőséget.
+1. Válassza a **modul**, **kísérlet** vagy **Jegyzetfüzet** lehetőséget.
 1. Tallózással vagy kereséssel keresse meg a gyűjtemény erőforrását.
 1. Mutasson az egérrel az erőforráson, majd válassza a **Megnyitás a Studióban** lehetőséget.
     ![Galéria-kísérlet megnyitása Machine Learning Studio (klasszikus) belülről](./media/gallery-how-to-use-contribute-publish/open-experiment-from-studio.png)
@@ -108,7 +108,7 @@ Emellett olyan vitafórum-eszközzel is bejelentkezhet, mint például a Disqus,
 
 1. A **rendszerkép kiválasztása** lapon válassza ki a kísérlet miniatűr képét. A miniatűr képe a kísérlet részletei lap tetején, a kísérlet csempén jelenik meg. Más felhasználók láthatják a miniatűr képét, amikor megkeresik a katalógust. Feltölthet egy rendszerképet a számítógépről, vagy kiválaszthat egy Stock-rendszerképet a gyűjteményből.
 
-1. A **Beállítások** oldalon, a **láthatóság** területen válassza ki, hogy közzé kívánja-e tenni a tartalmat nyilvánosan ( **nyilvános** ), vagy csak olyan személyek számára legyen elérhető, akik az oldalra mutató hivatkozással rendelkeznek (fel van **listázva** ).
+1. A **Beállítások** oldalon, a **láthatóság** területen válassza ki, hogy közzé kívánja-e tenni a tartalmat nyilvánosan (**nyilvános**), vagy csak olyan személyek számára legyen elérhető, akik az oldalra mutató hivatkozással rendelkeznek (fel van **listázva**).
 
    > [!TIP]
    > Ha azt szeretné, hogy a dokumentációja még a nyilvánosan elérhetővé tétel előtt is megfelelő legyen, először közzéteheti a kísérletet a **listán**. Később módosíthatja a láthatósági beállítást **nyilvánosra** a kísérlet részletei oldalon. Vegye figyelembe, hogy miután megtörtént egy kísérlet **nyilvánosra** állítása, később nem módosítható a **listára**.
@@ -125,13 +125,13 @@ A kísérlethez a következő információk bármelyikét módosíthatja közvet
 * Összefoglalás vagy Leírás
 * Címkék
 * Kép
-* Láthatósági beállítás ( **nyilvános** vagy nem **listázva** )
+* Láthatósági beállítás (**nyilvános** vagy nem **listázva**)
 
 A kísérletet a katalógusból is törölheti.
 
 Ezeket a módosításokat elvégezheti, vagy törölheti a kísérletet, a kísérlet részletei lapon vagy a profil lapján a gyűjteményben.
 
-* A kísérlet részletei lapon a kísérlet részleteinek módosításához válassza a **Szerkesztés** lehetőséget. A Részletek lap szerkesztési módba lép. A módosítások elvégzéséhez válassza a **Szerkesztés** lehetőséget a kísérlet neve, összegzése vagy címkéje mellett. A módosítások végrehajtása után válassza a **kész** lehetőséget. Ha módosítani szeretné a kísérlet láthatósági beállításait ( **nyilvános** vagy nem **listázott** ), vagy a kísérletet törölni szeretné a katalógusból, válassza a **Beállítások** ikont.
+* A kísérlet részletei lapon a kísérlet részleteinek módosításához válassza a **Szerkesztés** lehetőséget. A Részletek lap szerkesztési módba lép. A módosítások elvégzéséhez válassza a **Szerkesztés** lehetőséget a kísérlet neve, összegzése vagy címkéje mellett. A módosítások végrehajtása után válassza a **kész** lehetőséget. Ha módosítani szeretné a kísérlet láthatósági beállításait (**nyilvános** vagy nem **listázott**), vagy a kísérletet törölni szeretné a katalógusból, válassza a **Beállítások** ikont.
 
 * A profil lapon válassza ki a kísérlethez tartozó lefelé mutató nyilat, majd válassza a **Szerkesztés** lehetőséget. Ekkor megjelenik a kísérlet részletes lapja szerkesztési módban. Ha végzett a módosítások végrehajtásával, válassza a **kész** lehetőséget. Ha törölni szeretné a kísérletet a katalógusból, válassza a **Törlés** lehetőséget.
 
@@ -202,6 +202,6 @@ A címke beírása után adjon meg egy másik címkét, nyomja meg a TAB billent
 
 Azt szeretnénk, hogy a katalógust a felhasználók és a felhasználók vezérlik. A jobb oldali smiley használatával mondja el nekünk, hogy mi a szeretete vagy a gyűlölete a katalógussal kapcsolatban.  
 
-![Visszajelzés](./media/gallery-how-to-use-contribute-publish/feedback.png)
+![A visszajelzési ablakban elküldheti a mosolyt, elküldheti a szövegét, vagy szöveget írhat be. Van egy Küldés gomb.](./media/gallery-how-to-use-contribute-publish/feedback.png)
 
 **[A KATALÓGUS >>](https://gallery.azure.ai)**

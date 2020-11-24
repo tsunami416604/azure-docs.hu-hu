@@ -7,12 +7,12 @@ ms.date: 07/23/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: dda0e3d6739e94df4ce5910938c164e3db336bce
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5f82206a7c86c5ae1e6477419faee0dca88ef883
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445574"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95495287"
 ---
 # <a name="use-iot-plug-and-play-models-in-an-iot-solution"></a>IoT-Plug and Play modellek használata IoT-megoldásokban
 
@@ -125,7 +125,7 @@ Miután azonosította a modell AZONOSÍTÓját egy új eszköz kapcsolataihoz, k
 
 1. A csatlakoztatott eszköz modell-definíciójának használatával enumerálhatja az eszköz képességeit.
 
-1. Az eszköz enumerálási képességeinek használatával lehetővé teheti a felhasználók számára [az eszköz interakcióját](quickstart-service-node.md).
+1. Az eszköz enumerálási képességeinek használatával lehetővé teheti a felhasználók számára [az eszköz interakcióját](quickstart-service.md).
 
 ### <a name="custom-store"></a>Egyéni tároló
 
@@ -137,12 +137,12 @@ Miután azonosította a modell AZONOSÍTÓját egy új eszköz kapcsolataihoz, k
 
 1. A csatlakoztatott eszköz modell-definíciójának használatával enumerálhatja az eszköz képességeit. 
 
-1. Az eszköz enumerálási képességeinek használatával lehetővé teheti a felhasználók számára [az eszköz interakcióját](quickstart-service-node.md).  
+1. Az eszköz enumerálási képességeinek használatával lehetővé teheti a felhasználók számára [az eszköz interakcióját](quickstart-service.md).  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan integrálhatja a IoT Plug and Play modelleket egy IoT-megoldásba, néhány javasolt következő lépés:
 
-- [Kommunikáció egy eszközzel a megoldásból](quickstart-service-node.md)
+- [Kommunikáció egy eszközzel a megoldásból](quickstart-service.md)
 - [IoT Digital Twin REST API](/rest/api/iothub/service/digitaltwin)
 - [Azure IoT Explorer](howto-use-iot-explorer.md)

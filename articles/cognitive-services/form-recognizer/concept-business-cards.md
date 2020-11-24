@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 82182c24f87a82df5ee040b7853588f74dda449f
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 76e19c36f0fa4096966c5dd23d2384b6b30f2271
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909947"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95498860"
 ---
 # <a name="business-card-concepts"></a>Névjegykártyákra vonatkozó fogalmak
 
@@ -52,15 +52,15 @@ A Business Card API az összes felismert szöveget visszaküldheti a névjegyká
 
 ## <a name="the-analyze-business-card-operation"></a>A névjegykártya elemzése művelet
 
-Az [elemzés](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) a névjegykártyán egy, a bevitt adatokhoz tartozó képet vagy PDF-fájlt vesz fel, és Kinyeri a kamat értékeit. A hívás egy válasz fejléc nevű mezőt ad vissza `Operation-Location` . Az `Operation-Location` érték egy URL-cím, amely a következő lépésben használandó eredmény-azonosítót tartalmazza.
+Az [elemzés](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync) a névjegykártyán egy, a bevitt adatokhoz tartozó képet vagy PDF-fájlt vesz fel, és Kinyeri a kamat értékeit. A hívás egy válasz fejléc nevű mezőt ad vissza `Operation-Location` . Az `Operation-Location` érték egy URL-cím, amely a következő lépésben használandó eredmény-azonosítót tartalmazza.
 
 |Válasz fejléce| Eredmény URL-címe |
 |:-----|:----|
-|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/businessCard/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
+|Operation-Location | `https://cognitiveservice/formrecognizer/v2.1-preview.2/prebuilt/businessCard/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
 
 ## <a name="the-get-analyze-business-card-result-operation"></a>Az elemzés az üzleti kártya eredményének lekérdezése művelet
 
-A második lépés a [Get elemezze névjegykártya-eredmény](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/GetAnalyzeBusinessCardResult) műveletének meghívása. Ez a művelet a névjegykártya elemzése művelet által létrehozott eredmény-azonosítót veszi figyelembe. Egy olyan JSON-választ ad vissza, amely tartalmazza az **állapot** mezőt a következő lehetséges értékekkel. Ezt a műveletet a iteratív hívja meg, amíg vissza nem tér a **sikeres** értékkel. A kérések másodpercenkénti (RPS) arányának meghaladása érdekében használjon 3 – 5 másodperces intervallumot.
+A második lépés a [Get elemezze névjegykártya-eredmény](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeBusinessCardResult) műveletének meghívása. Ez a művelet a névjegykártya elemzése művelet által létrehozott eredmény-azonosítót veszi figyelembe. Egy olyan JSON-választ ad vissza, amely tartalmazza az **állapot** mezőt a következő lehetséges értékekkel. Ezt a műveletet a iteratív hívja meg, amíg vissza nem tér a **sikeres** értékkel. A kérések másodpercenkénti (RPS) arányának meghaladása érdekében használjon 3 – 5 másodperces intervallumot.
 
 |Mező| Típus | Lehetséges értékek |
 |:-----|:----:|:----|
@@ -394,4 +394,4 @@ A Business Card API a [AIBuilder névjegykártya-feldolgozási funkciót](/ai-bu
 ## <a name="see-also"></a>Lásd még
 
 * [Mi a Form Recognizer?](./overview.md)
-* [REST API dokumentációs dokumentumok](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)
+* [REST API dokumentációs dokumentumok](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeBusinessCardAsync)

@@ -7,19 +7,18 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
 ms.topic: overview
-ms.date: 08/13/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1dc0429ae4507172e95618bc95e6a2c51034d352
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: bf5a06cf906084e3f87d5f56748476a26587ff17
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92379166"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95490731"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>A Azure Active Directory csoportok dinamikus tagsági szabályai
 
@@ -309,8 +308,8 @@ Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
 
 A következő tippek segíthetnek a szabály megfelelő használatához.
 
-- A **kezelő azonosítója** a felettes objektumazonosító. A kezelő **profiljában**található.
-- A szabály működéséhez győződjön meg arról, hogy a **felettes** tulajdonság helyesen van beállítva a szervezet felhasználói számára. A felhasználó **profiljában**megtekintheti az aktuális értéket.
+- A **kezelő azonosítója** a felettes objektumazonosító. A kezelő **profiljában** található.
+- A szabály működéséhez győződjön meg arról, hogy a **felettes** tulajdonság helyesen van beállítva a szervezet felhasználói számára. A felhasználó **profiljában** megtekintheti az aktuális értéket.
 - Ez a szabály csak a felettes közvetlen jelentéseit támogatja. Más szóval nem hozhat létre csoportot a felettes közvetlen jelentéseivel *és* jelentéseivel.
 - Ez a szabály nem kombinálható más tagsági szabályokkal.
 

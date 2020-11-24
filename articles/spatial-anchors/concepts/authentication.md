@@ -1,20 +1,20 @@
 ---
 title: Hitelesítés és engedélyezés
 description: Ismerje meg, hogy az alkalmazás vagy szolgáltatás milyen módon tud hitelesíteni az Azure térbeli Horgonyokban, és hogy milyen szintű vezérléssel kell eljutnia a térbeli horgonyokhoz.
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 10/08/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a3d88c8d5d42e3dec2142df1ede7a9ee50898e92
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 0166a3b6031f9e1d364a37db99be5bc5a65267df
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242347"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95484610"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Hitelesítés és engedélyezés az Azure térbeli horgonyokhoz
 
@@ -110,15 +110,15 @@ A Azure Active Directory felhasználókat célzó alkalmazások esetében javaso
    3.    Válassza a **Szerepkör-hozzárendelés hozzáadása** lehetőséget.
    1.    [Válasszon egy szerepkört](#azure-role-based-access-control).
    2.    A **kiválasztás** mezőbe írja be azoknak a felhasználóknak, csoportoknak és/vagy alkalmazásoknak a nevét, amelyekhez hozzáférést szeretne rendelni.
-   3.    Válassza a **Mentés** lehetőséget.
+   3.    Kattintson a **Mentés** gombra.
 
 **A kódban**
 1.    Ügyeljen arra, hogy a saját Azure AD-alkalmazásának alkalmazás-AZONOSÍTÓját és átirányítási URI azonosítóját használja az **ügyfél-azonosító** és az **RedirectUri** paraméterekhez a MSAL-ben.
 2.    Adja meg a bérlő adatait:
-        1.    Ha az alkalmazás **csak a saját szervezetet** támogatja, cserélje le ezt az értéket a **bérlői azonosítójával** vagy a **bérlő nevével** . Például: contoso.microsoft.com.
-        2.    Ha az alkalmazás **minden szervezeti címtárban támogatja a fiókokat** , cserélje le ezt az értéket **szervezetekkel** .
-        3.    Ha az alkalmazás támogatja az **összes Microsoft-fiók felhasználót** , cserélje le ezt az értéket **közösre** .
-3.    A jogkivonat-kérelemben állítsa a **hatókört** **" `https://sts.<account-domain>//.default` "** értékre, ahol a `<account-domain>` helyére az Azure térbeli horgonyok fiókjának **fiók tartománya** kerül. Az USA 2. keleti régiójában található Azure térbeli horgonyok fiókjának hatóköre: " **`https://sts.mixedreality.azure.com//.default` "** . Ez a hatókör jelzi az Azure AD számára, hogy az alkalmazás jogkivonatot kér a vegyes valóság biztonsági jogkivonat-szolgáltatás (STS) számára.
+        1.    Ha az alkalmazás **csak a saját szervezetet** támogatja, cserélje le ezt az értéket a **bérlői azonosítójával** vagy a **bérlő nevével**. Például: contoso.microsoft.com.
+        2.    Ha az alkalmazás **minden szervezeti címtárban támogatja a fiókokat**, cserélje le ezt az értéket **szervezetekkel**.
+        3.    Ha az alkalmazás támogatja az **összes Microsoft-fiók felhasználót**, cserélje le ezt az értéket **közösre**.
+3.    A jogkivonat-kérelemben állítsa a **hatókört** **" `https://sts.<account-domain>//.default` "** értékre, ahol a `<account-domain>` helyére az Azure térbeli horgonyok fiókjának **fiók tartománya** kerül. Az USA 2. keleti régiójában található Azure térbeli horgonyok fiókjának hatóköre: " **`https://sts.mixedreality.azure.com//.default` "**. Ez a hatókör jelzi az Azure AD számára, hogy az alkalmazás jogkivonatot kér a vegyes valóság biztonsági jogkivonat-szolgáltatás (STS) számára.
 
 A lépések elvégzése után az alkalmazásnak képesnek kell lennie az Azure AD-token MSAL való beszerzésére. Beállíthatja, hogy az Azure AD-jogkivonat a `authenticationToken` felhőalapú munkamenet-konfigurációs objektumon legyen:
 
@@ -186,18 +186,18 @@ Az Azure AD hozzáférési jogkivonatot a [MSAL](../../active-directory/develop/
         5.    A **Select (kiválasztás** ) mezőben adja meg azon alkalmazások nevét vagy nevét, amelyekhez hozzáférést szeretne hozzárendelni. Ha azt szeretné, hogy az alkalmazás felhasználói különböző szerepkörökkel rendelkezzenek a térbeli horgonyok fiókjában, regisztráljon több alkalmazást az Azure AD-ben, és rendeljen hozzá külön szerepkört. Ezután implementálja az engedélyezési logikát, hogy a megfelelő szerepkört használja a felhasználók számára.
 
               > [!NOTE]
-              > A **szerepkör-hozzárendelés hozzáadása** panelen, a **hozzáférés hozzárendelése** , válassza az **Azure ad-felhasználó, csoport vagy egyszerű szolgáltatásnév** lehetőséget.
+              > A **szerepkör-hozzárendelés hozzáadása** panelen, a **hozzáférés hozzárendelése**, válassza az **Azure ad-felhasználó, csoport vagy egyszerű szolgáltatásnév** lehetőséget.
 
-        6.    Válassza a **Mentés** lehetőséget.
+        6.    Kattintson a **Mentés** gombra.
 
 **A kódban**
 
 >[!NOTE]
 > Használhatja a GitHubon elérhető szolgáltatási mintát.
 
-1.    Ügyeljen arra, hogy a saját Azure AD-alkalmazásának alkalmazás-AZONOSÍTÓját, az alkalmazás titkos kulcsát és átirányítási URI-JÁT a MSAL **ügyfél-azonosító** , **titkos** és **RedirectUri** paramétereként használja.
+1.    Ügyeljen arra, hogy a saját Azure AD-alkalmazásának alkalmazás-AZONOSÍTÓját, az alkalmazás titkos kulcsát és átirányítási URI-JÁT a MSAL **ügyfél-azonosító**, **titkos** és **RedirectUri** paramétereként használja.
 2.    Állítsa be a bérlő AZONOSÍTÓját saját Azure AD-bérlői AZONOSÍTÓra a MSAL-ben a **Authority** paraméterben.
-3.    A jogkivonat-kérelemben állítsa a **hatókört** **" `https://sts.<account-domain>//.default` "** értékre, ahol a `<account-domain>` helyére az Azure térbeli horgonyok fiókjának **fiók tartománya** kerül. Az USA 2. keleti régiójában található Azure térbeli horgonyok fiókjának hatóköre: " **`https://sts.mixedreality.azure.com//.default` "** .
+3.    A jogkivonat-kérelemben állítsa a **hatókört** **" `https://sts.<account-domain>//.default` "** értékre, ahol a `<account-domain>` helyére az Azure térbeli horgonyok fiókjának **fiók tartománya** kerül. Az USA 2. keleti régiójában található Azure térbeli horgonyok fiókjának hatóköre: " **`https://sts.mixedreality.azure.com//.default` "**.
 
 A lépések elvégzése után a háttér-szolgáltatás lekérhet egy Azure AD-tokent. Ezután egy MR-tokenre cserélheti azt, amelyet vissza fog térni az ügyfélnek. A MR-tokenek lekéréséhez egy Azure AD-tokent kell használni REST-hívással. Íme egy példa a hívásra:
 
@@ -266,9 +266,9 @@ configuration.AccessToken(LR"(MyAccessToken)");
 
 A szolgáltatás alkalmazásaihoz, szolgáltatásaihoz vagy az Azure AD-felhasználókhoz nyújtott hozzáférés szintjének szabályozása érdekében a meglévő szerepköröket igény szerint hozzárendelheti az Azure térbeli horgonyok fiókjaihoz:
 
-- **Térbeli horgonyok fiókjának tulajdonosa** . Az ezzel a szerepkörrel rendelkező alkalmazások vagy felhasználók térbeli horgonyokat hozhatnak létre, lekérdezéseket végezhetnek, és törölhetik azokat. Ha a fiók kulcsainak használatával végzi a hitelesítést a fiókjával, a rendszer hozzárendeli a térbeli horgonyok fiók tulajdonosi szerepkörét a hitelesített rendszerbiztonsági tag számára.
-- **Térbeli horgonyok fiók közreműködője** . A szerepkörrel rendelkező alkalmazások vagy felhasználók térbeli horgonyokat és lekérdezéseket hozhatnak létre, de nem törölhetik őket.
-- **Térbeli horgonyok fiókjának olvasója** . Az ezzel a szerepkörrel rendelkező alkalmazások vagy felhasználók csak térbeli horgonyokat tudnak lekérdezni. Nem hozhatnak létre újakat, törölhetik a meglévőket, vagy frissíthetik a metaadatokat. Ez a szerepkör jellemzően olyan alkalmazásokhoz használatos, ahol egyes felhasználók a környezetet használják, de mások csak a környezetbe helyezett horgonyokat tudják visszahívni.
+- **Térbeli horgonyok fiókjának tulajdonosa**. Az ezzel a szerepkörrel rendelkező alkalmazások vagy felhasználók térbeli horgonyokat hozhatnak létre, lekérdezéseket végezhetnek, és törölhetik azokat. Ha a fiók kulcsainak használatával végzi a hitelesítést a fiókjával, a rendszer hozzárendeli a térbeli horgonyok fiók tulajdonosi szerepkörét a hitelesített rendszerbiztonsági tag számára.
+- **Térbeli horgonyok fiók közreműködője**. A szerepkörrel rendelkező alkalmazások vagy felhasználók térbeli horgonyokat és lekérdezéseket hozhatnak létre, de nem törölhetik őket.
+- **Térbeli horgonyok fiókjának olvasója**. Az ezzel a szerepkörrel rendelkező alkalmazások vagy felhasználók csak térbeli horgonyokat tudnak lekérdezni. Nem hozhatnak létre újakat, törölhetik a meglévőket, vagy frissíthetik a metaadatokat. Ez a szerepkör jellemzően olyan alkalmazásokhoz használatos, ahol egyes felhasználók a környezetet használják, de mások csak a környezetbe helyezett horgonyokat tudják visszahívni.
 
 ## <a name="next-steps"></a>Következő lépések
 

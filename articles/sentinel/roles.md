@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 0704f076ef7c5d1a39af67d3ec6ec2baece1fda5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 9c100ca82b751a050e74cce85e1794701a789288
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517301"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95498469"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Az Azure Sentinel engedélyei
 
@@ -54,11 +54,11 @@ Előfordulhat, hogy az adott feladatra vonatkozó követelményekkel rendelkező
 
 - A fenyegetésekre adott válaszok automatizálására szolgáló forgatókönyvek használata
 
-    **Az Azure** Sentinel olyan forgatókönyveket használ, amelyekkel automatizált fenyegetésekre reagálhat. A forgatókönyvek **Azure Logic Appsre**épülnek, és külön Azure-erőforrások. Előfordulhat, hogy a biztonsági műveletek csapatának meghatározott tagjaihoz szeretne hozzárendelni Logic Apps biztonsági előkészítési, automatizálási és reagálási (SZÁRNYALó) műveletekhez. A [logikai alkalmazás közreműködői](../role-based-access-control/built-in-roles.md#logic-app-contributor) szerepkörét vagy a [Logic app operátori](../role-based-access-control/built-in-roles.md#logic-app-operator) szerepkört használva explicit engedélyeket rendelhet a forgatókönyvek használatához.
+    **Az Azure** Sentinel olyan forgatókönyveket használ, amelyekkel automatizált fenyegetésekre reagálhat. A forgatókönyvek **Azure Logic Appsre** épülnek, és külön Azure-erőforrások. Előfordulhat, hogy a biztonsági műveletek csapatának meghatározott tagjaihoz szeretne hozzárendelni Logic Apps biztonsági előkészítési, automatizálási és reagálási (SZÁRNYALó) műveletekhez. A [logikai alkalmazás közreműködői](../role-based-access-control/built-in-roles.md#logic-app-contributor) szerepkörét vagy a [Logic app operátori](../role-based-access-control/built-in-roles.md#logic-app-operator) szerepkört használva explicit engedélyeket rendelhet a forgatókönyvek használatához.
 
 - Adatforrások összekapcsolása az Azure Sentinel szolgáltatással
 
-    Ahhoz, hogy egy felhasználó **adatösszekötőket**vegyen fel, hozzá kell rendelnie a felhasználó írási engedélyeit az Azure Sentinel munkaterületen. Emellett jegyezze fel a szükséges további engedélyeket az egyes összekötők számára, amint az a megfelelő összekötő lapon szerepel.
+    Ahhoz, hogy egy felhasználó **adatösszekötőket** vegyen fel, hozzá kell rendelnie a felhasználó írási engedélyeit az Azure Sentinel munkaterületen. Emellett jegyezze fel a szükséges további engedélyeket az egyes összekötők számára, amint az a megfelelő összekötő lapon szerepel.
 
 - Vendég felhasználói incidensek kiosztása
 
@@ -80,7 +80,7 @@ Ha például az Azure Sentinel **olvasó** szerepkörhöz hozzárendelt felhaszn
 
 Az alábbi táblázat a szerepköröket és az Azure Sentinelben engedélyezett műveleteket foglalja össze. 
 
-| Role | Forgatókönyvek létrehozása és futtatása| Munkafüzetek elemzési szabályok és más Azure Sentinel-erőforrások létrehozása | Incidensek kezelése (elutasítás, hozzárendelés stb.) | Információk, incidensek, munkafüzetek és egyéb Azure Sentinel-erőforrások megtekintése |
+| Szerepkör | Forgatókönyvek létrehozása és futtatása| Munkafüzetek elemzési szabályok és más Azure Sentinel-erőforrások létrehozása | Incidensek kezelése (elutasítás, hozzárendelés stb.) | Információk, incidensek, munkafüzetek és egyéb Azure Sentinel-erőforrások megtekintése |
 |---|---|---|---|---|
 | Azure Sentinel Reader | -- | -- | -- | &#10003; |
 | Azure Sentinel Responder | -- | -- | &#10003; | &#10003; |
@@ -91,7 +91,7 @@ Az alábbi táblázat a szerepköröket és az Azure Sentinelben engedélyezett 
 
 - Az Azure beépített szerepköreinek használatával vagy ahelyett, hogy az Azure Sentinelhez egyéni Azure-szerepköröket is létrehozhat. Az Azure Sentinel Azure-beli egyéni szerepkörei ugyanúgy jönnek létre, mint más [Egyéni Azure-szerepköröket](../role-based-access-control/custom-roles-rest.md#create-a-custom-role)az [Azure Sentinel](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights) és az [Azure log Analytics erőforrásaira](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights)adott engedélyek alapján.
 
-- Az Azure Sentinel-munkaterületen található összes adathoz használhatja a Log Analytics speciális szerepköralapú hozzáférés-vezérlést. Ez magában foglalja az adattípuson alapuló Azure-RBAC és az erőforrás-központú Azure-RBAC is. Log Analytics szerepkörökkel kapcsolatos további információkért lásd: [a naplózási adatok és munkaterületek kezelése a Azure monitorban](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions).
+- A Log Analytics Advanced Azure szerepköralapú hozzáférés-vezérlést az Azure Sentinel-munkaterület összes adatához használhatja. Ez magában foglalja az adattípuson alapuló Azure-RBAC és az erőforrás-központú Azure-RBAC is. Log Analytics szerepkörökkel kapcsolatos további információkért lásd: [a naplózási adatok és munkaterületek kezelése a Azure monitorban](../azure-monitor/platform/manage-access.md#manage-access-using-workspace-permissions).
 
 ## <a name="next-steps"></a>Következő lépések
 

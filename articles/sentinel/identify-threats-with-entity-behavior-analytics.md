@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 657221a2acbf592a56cb4659ced2199023bc5e5b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a0a677342534cd92d5530199076e3d2e7084134d
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658791"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95494777"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>A felhasználók és az entitások viselkedésének elemzésével (UEBA) kapcsolatos fejlett veszélyforrások azonosítása az Azure Sentinelben
 
@@ -88,7 +88,7 @@ Ennek kockázatának csökkentése érdekében győződjön meg arról, hogy az 
 Az Azure Sentinel jelenleg a következő típusú entitásokat azonosítja:
 
 - Felhasználói fiók (fiók)
-- Gazda
+- Gazdagép
 - IP-cím (IP)
 - Kártevő szoftver
 - Fájl
@@ -205,7 +205,7 @@ A felhasználói társak metaadatainak megjelenítéséhez használhatja az Azur
 
 Az engedélyek elemzése segít meghatározni, hogy egy támadó milyen hatással lehet egy szervezeti eszköz veszélyeztetése. Ez a hatás az objektum "Blast RADIUS" néven is ismert. A biztonsági elemzők ezeket az információkat a nyomozások és az incidensek kezelésének rangsorolására használhatják.
 
-Az Azure Sentinel meghatározza az adott felhasználó által az Azure-erőforrásokhoz biztosított közvetlen és tranzitív hozzáférési jogokat az Azure-előfizetések kiértékelésével, amelyet a felhasználó közvetlenül vagy csoportokon vagy egyszerű szolgáltatásokon keresztül érhet el. Ezt az információt, valamint a felhasználó Azure AD biztonsági csoportjának tagságának teljes listáját a **UserAccessAnalytics** táblában tárolja a rendszer. Az alábbi képernyőképen egy minta sor látható az Alex Johnson felhasználója számára a UserAccessAnalytics táblában. A **forrásoldali entitás** a felhasználói vagy egyszerű szolgáltatásnév, a **célként megadott entitás** pedig az az erőforrás, amelyhez a forrás entitás hozzáfér. A **hozzáférési szint** és a **hozzáférési típus** értékei a célként megadott entitás hozzáférés-vezérlési modelljétől függenek. Láthatja, hogy Alex közreműködői hozzáféréssel rendelkezik az Azure-előfizetés *contoso Hotels-bérlőhöz*. Az előfizetés hozzáférés-vezérlési modellje RBAC.   
+Az Azure Sentinel meghatározza az adott felhasználó által az Azure-erőforrásokhoz biztosított közvetlen és tranzitív hozzáférési jogokat az Azure-előfizetések kiértékelésével, amelyet a felhasználó közvetlenül vagy csoportokon vagy egyszerű szolgáltatásokon keresztül érhet el. Ezt az információt, valamint a felhasználó Azure AD biztonsági csoportjának tagságának teljes listáját a **UserAccessAnalytics** táblában tárolja a rendszer. Az alábbi képernyőképen egy minta sor látható az Alex Johnson felhasználója számára a UserAccessAnalytics táblában. A **forrásoldali entitás** a felhasználói vagy egyszerű szolgáltatásnév, a **célként megadott entitás** pedig az az erőforrás, amelyhez a forrás entitás hozzáfér. A **hozzáférési szint** és a **hozzáférési típus** értékei a célként megadott entitás hozzáférés-vezérlési modelljétől függenek. Láthatja, hogy Alex közreműködői hozzáféréssel rendelkezik az Azure-előfizetés *contoso Hotels-bérlőhöz*. Az előfizetés hozzáférés-vezérlési modellje az Azure RBAC.   
 
 :::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-access-analytics.png" alt-text="Képernyőfelvétel a felhasználói hozzáférés elemzési táblázatáról":::
 

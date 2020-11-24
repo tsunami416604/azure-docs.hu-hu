@@ -10,18 +10,17 @@ editor: ''
 ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
-ms.subservice: enterprise-users
 ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ec9a215d25ce1177b015b392c4f36d7547be521
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 0f6d472f52fa0acf791cc9b5998bf2ebf4e5951b
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647018"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95503112"
 ---
 # <a name="change-license-assignments-for-a-user-or-group-in-azure-active-directory"></a>Felhasználóra vagy csoportra vonatkozó licenc-hozzárendelések módosítása Azure Active Directory
 
@@ -54,7 +53,7 @@ Ha úgy látja, hogy egyes jelölőnégyzetek nem érhetők el, a **licenc-hozz�
 
     ![a licenc-hozzárendelések lapja, amely az Office 365 E1 és az Office 365 E3 jelölésű felhasználóra mutat](./media/licensing-groups-change-licenses/update-user-license-assignments.png)
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 Az Azure AD az új licenceket alkalmazza, és egyszerre eltávolítja a régi licenceket a szolgáltatás folytonosságának biztosításához.
 
@@ -69,7 +68,7 @@ Az Azure AD az új licenceket alkalmazza, és egyszerre eltávolítja a régi li
 
     ![Válassza a hozzárendelések parancsot egy felhasználói vagy csoportos licencek oldalon.](./media/licensing-groups-change-licenses/update-group-license-assignments.png)
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 A szolgáltatás folytonosságának biztosítása érdekében az Azure AD alkalmazza az új licenceket, és a csoport összes felhasználójára egyidejűleg eltávolítja a régi licenceket.
 

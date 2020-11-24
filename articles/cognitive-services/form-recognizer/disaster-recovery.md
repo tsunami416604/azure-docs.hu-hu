@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: ac934f88d00521b13fd2b134c80f19656c63117b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 79cf0ef059d96ac66f5918605e999d3936d589d2
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88718815"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95486517"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Az űrlap-felismerő modelljeinek biztonsági mentése és helyreállítása
 
@@ -41,7 +41,7 @@ Az egyéni modellek másolásának folyamata a következő lépésekből áll:
 1. Ha a művelet sikeres, a forrás-erőforrás hitelesítő adataival kérdezheti le a folyamatjelző URL-címet. Az új modell állapotának lekéréséhez az új modell AZONOSÍTÓját is lekérdezheti a cél erőforrásban.
 
 > [!CAUTION]
-> A copy API jelenleg nem támogatja a [komponált egyéni modellekhez](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/Compose)tartozó modell-azonosítókat. A Model levélírás egy előzetes verziójú funkció a v 2.1-ben – előzetes verzió. 1. 
+> A copy API jelenleg nem támogatja a [komponált egyéni modellekhez](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/Compose)tartozó modell-azonosítókat. A Model levélírás egy előzetes verziójú funkció a v 2.1-ben – előzetes verzió: 2. előzetes verzió. 
 
 ## <a name="generate-copy-authorization-request"></a>Másolási engedélyezési kérelem előállítása
 
@@ -162,7 +162,7 @@ curl -i -X POST "https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecogniz
 curl -i GET "https://<SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT>/formrecognizer/v2.0/custom/models/{SOURCE_MODELID}/copyResults/{RESULT_ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az útmutatóban megtanulta, hogyan használhatja a copy API-t az egyéni modellek másodlagos űrlap-felismerő erőforrásra történő biztonsági mentésére. Ezután tekintse meg az API-referenciák dokumentációját, hogy megtudja, mit tehet az űrlap-felismerővel.
 * [REST API dokumentáció](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)

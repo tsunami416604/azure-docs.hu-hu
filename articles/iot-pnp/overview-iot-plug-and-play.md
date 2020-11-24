@@ -9,12 +9,12 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: 4fd7a24edffbfb63adc830ddb83b45997743ad42
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: d6cba4bcb76094ed156ef35b1ea76cea7001c372
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421634"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95486296"
 ---
 # <a name="what-is-iot-plug-and-play"></a>Mi az IoT Plug and Play?
 
@@ -68,9 +68,9 @@ Eszköz-szerkesztőként olyan IoT-terméket fejleszthet, amely támogatja a IoT
 
 A [IoT Plug and Play eszköz minősítési program](howto-certify-device.md) ellenőrzi, hogy az eszköz megfelel-e a IoT Plug and Play minősítési követelményeinek. Hozzáadhat egy hitelesített eszközt az [Azure IoT-eszközök nyilvános minősítésére](https://aka.ms/devicecatalog).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette a IoT Plug and Play, a javasolt következő lépés az egyik rövid útmutató kipróbálása:
 
-- [Eszköz csatlakoztatása IoT Hubhoz (C)](./quickstart-connect-device-c.md)
-- [Kommunikáció egy eszközzel a megoldásból (Node.js)](./quickstart-service-node.md)
+- [Eszköz csatlakoztatása az IoT Hubhoz](./quickstart-connect-device.md)
+- [Kommunikáció egy eszközzel a megoldásból](./quickstart-service.md)

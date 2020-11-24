@@ -1,19 +1,19 @@
 ---
 title: 'Oktatóanyag: horgonyok megosztása Azure Cosmos DB'
 description: Ebből az oktatóanyagból megtudhatja, hogyan oszthatja meg az Azure térbeli horgonyok azonosítóit az Android/iOS-eszközökön a háttér-szolgáltatás és a Azure Cosmos DB segítségével.
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 07/31/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8ff431c27dd53e82f9003b658c82ceb3efb5d320
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff888cd98cc79f3e2d508b01f092102eaa038c86
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87810020"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95494760"
 ---
 # <a name="tutorial-sharing-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>Oktatóanyag: Azure térbeli horgonyok megosztása munkamenetek és eszközök között egy Azure Cosmos DB háttérrel
 
@@ -33,17 +33,17 @@ Másolja ki az-t `Connection String` , mert szüksége lesz rá.
 
 ## <a name="make-minor-changes-to-the-sharingservice-files"></a>A SharingService-fájlok kisebb módosításának elvégzése
 
-A **megoldáskezelő**megnyitásához nyissa meg a t `SharingService\Startup.cs` .
+A **megoldáskezelő** megnyitásához nyissa meg a t `SharingService\Startup.cs` .
 
 Keresse meg a `#define INMEMORY_DEMO` fájl elejét, és írja be a sort. Mentse a fájlt.
 
-A **megoldáskezelő**megnyitásához nyissa meg a t `SharingService\appsettings.json` .
+A **megoldáskezelő** megnyitásához nyissa meg a t `SharingService\appsettings.json` .
 
 Keresse meg a `StorageConnectionString` tulajdonságot, és állítsa be úgy az értéket, hogy megegyezzen az `Connection String` [adatbázis-fiók létrehozása lépésben](#create-a-database-account)másolt értékkel. Mentse a fájlt.
 
 Közzéteheti a megosztási szolgáltatást, és futtathatja a minta alkalmazást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban az Azure Cosmos DB használatával osztotta meg az egyes eszközökön a horgony azonosítóit. Ha többet szeretne megtudni arról, hogyan használhatók az Azure térbeli horgonyok egy új Unity HoloLens-alkalmazásban, folytassa a következő oktatóanyaggal.
 

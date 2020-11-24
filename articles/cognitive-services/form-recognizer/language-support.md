@@ -10,25 +10,26 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 10/23/2020
 ms.author: erhopf
-ms.openlocfilehash: e43572a321968a0436cb7900578e80086d5cbe4e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: f7a5fdd6535d7a70bce032fcc36a41677f8bafcc
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503300"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95493621"
 ---
 # <a name="language-support-for-form-recognizer"></a>Nyelvi támogatás az űrlap-felismerőhöz
 
-Ez a cikk az űrlap-felismerő szolgáltatás által támogatott emberi nyelveket sorolja fel.
+Ez a táblázat felsorolja az űrlap-felismerő szolgáltatás által támogatott emberi nyelveket.
 
 
 |Nyelv| Nyelvkód | Űrlap-felismerő v 2.0 | Űrlap felismerő v 2.1 – előzetes verzió|
 |:-----|:----:|:-----:|:---:|
-|Kínai (egyszerűsített) | `zh-Hans`| | ✔ |
-|holland | `nl` | | ✔ |
 |Angol (nyomtatott & kézzel írott) | `en` | ✔ | ✔|
-|francia | `fr` | | ✔ |
-|német | `de` | | ✔ |
-|olasz | `it` | | ✔ |
-|portugál | `pt` | | ✔ |
-|spanyol | `es` | | ✔ |
+|Kínai (egyszerűsített) | `zh-Hans`| | ✔ |
+|Japán | `ja` |  | ✔|
+|Holland | `nl` | | ✔ |
+|Francia | `fr` | | ✔ |
+|Német | `de` | | ✔ |
+|Olasz | `it` | | ✔ |
+|Portugál | `pt` | | ✔ |
+|Spanyol | `es` | | ✔ |

@@ -7,18 +7,18 @@ ms.date: 9/22/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: dc86340026ec7b85afc9e5208ea8ef8c32d8bac6
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 9ac616ddf1c3475f2ca3b3e8097bb74da72faa77
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421464"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95500271"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-module-c"></a>Oktatóanyag: IoT Plug and Play modul összekötése (C#)
 
 Ez az oktatóanyag bemutatja, hogyan csatlakozhat egy általános IoT Plug and Play [modulhoz](../iot-hub/iot-hub-devguide-module-twins.md).
 
-Az eszköz egy IoT Plug and Play eszköz, ha közzéteszi a modell AZONOSÍTÓját, amikor csatlakozik egy IoT hubhoz, és megvalósítja a modell azonosítója által azonosított digitális Twins Definition Language (DTDL) modellben ismertetett tulajdonságokat és metódusokat. Ha többet szeretne megtudni arról, hogy az eszközök hogyan használják a DTDL és a modell AZONOSÍTÓját, olvassa el a következőt: [IoT Plug and Play fejlesztői útmutató](./concepts-developer-guide-device-csharp.md). A modulok ugyanúgy használják a modell-azonosítókat és a DTDL modelleket.
+Az eszköz egy IoT Plug and Play eszköz, ha közzéteszi a modell AZONOSÍTÓját, amikor csatlakozik egy IoT hubhoz, és megvalósítja a modell azonosítója által azonosított digitális Twins Definition Language (DTDL) modellben ismertetett tulajdonságokat és metódusokat. Ha többet szeretne megtudni arról, hogy az eszközök hogyan használják a DTDL és a modell AZONOSÍTÓját, olvassa el a következőt: [IoT Plug and Play fejlesztői útmutató](./concepts-developer-guide-device.md). A modulok ugyanúgy használják a modell-azonosítókat és a DTDL modelleket.
 
 A IoT Plug and Play modul megvalósításának bemutatásához az oktatóanyag bemutatja, hogyan alakíthatja át a termosztát C# eszközének mintáját egy általános modulba.
 
@@ -33,7 +33,7 @@ Az oktatóanyag Windows rendszeren történő elvégzéséhez telepítse a köve
 
 Az Azure IoT Explorer eszköz használatával vegyen fel egy **saját modul-eszköz** nevű új eszközt az IoT hub-ba.
 
-Vegyen fel egy **My-Module** nevű modult a **saját modul-eszközre** :
+Vegyen fel egy **My-Module** nevű modult a **saját modul-eszközre**:
 
 1. Az Azure IoT Explorer eszközében navigáljon a **saját modul-eszköz** eszközre.
 
@@ -233,9 +233,9 @@ Az Azure IoT Explorer eszköz használatával a következőket tekintheti meg:
 * IoT Edge modul Twin Property frissítései a IoT Plug and Play értesítéseket aktiválják.
 * A IoT Edge modul reagál a IoT Plug and Play parancsokra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan csatlakoztathat egy IoT Plug and Play-eszközt egy IoT hub-modulhoz. Ha többet szeretne megtudni a IoT Plug and Play eszköz modelljeiről, tekintse meg a következőt:
 
 > [!div class="nextstepaction"]
-> [IoT Plug and Play modellezési fejlesztői útmutató](./concepts-developer-guide-device-csharp.md)
+> [IoT Plug and Play modellezési fejlesztői útmutató](./concepts-developer-guide-device.md)

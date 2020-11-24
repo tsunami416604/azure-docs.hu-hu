@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 09/30/2020
+ms.date: 11/23/2020
 ms.author: victorh
-ms.openlocfilehash: 00a84fbf694a58128712abf806ff12df96f0e5e9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 84ecea7764ddf48d68c983eaa5bccbac5f332d9b
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91596679"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95489694"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Mi az az Azure Firewall Manager?
 
@@ -25,7 +25,7 @@ A Firewall Manager két hálózati architektúra-típushoz biztosít biztonsági
    Az [Azure Virtual WAN hub](../virtual-wan/virtual-wan-about.md#resources) egy Microsoft által felügyelt erőforrás, amellyel könnyedén hozhat létre sugaras és küllős architektúrákat. Ha a biztonsági és útválasztási házirendek egy ilyen hubhoz vannak társítva, akkor azt a rendszer *[biztonságos virtuális központként](secured-virtual-hub.md)* említi. 
 - **Hub virtuális hálózata**
 
-   Ez egy szabványos Azure-beli virtuális hálózat, amelyet saját maga hozhat létre és kezelhet. Ha a biztonsági szabályzatok egy ilyen hubhoz vannak társítva, akkor azt *hub virtuális hálózatnak*nevezzük. Jelenleg csak Azure Firewall házirend támogatott. A munkaterhelési kiszolgálókat és szolgáltatásokat tartalmazó társ-küllős virtuális hálózatokat is használhatja. A tűzfalakat olyan önálló virtuális hálózatokban is kezelheti, amelyek nem rendelkeznek a küllős szolgáltatással.
+   Ez egy szabványos Azure-beli virtuális hálózat, amelyet saját maga hozhat létre és kezelhet. Ha a biztonsági szabályzatok egy ilyen hubhoz vannak társítva, akkor azt *hub virtuális hálózatnak* nevezzük. Jelenleg csak Azure Firewall házirend támogatott. A munkaterhelési kiszolgálókat és szolgáltatásokat tartalmazó társ-küllős virtuális hálózatokat is használhatja. A tűzfalakat olyan önálló virtuális hálózatokban is kezelheti, amelyek nem rendelkeznek a küllős szolgáltatással.
 
 A *biztonságos virtuális központ* és a *hub virtuális hálózati* architektúráinak részletes összehasonlítását lásd: [Mik a Azure Firewall Manager architektúra lehetőségei?](vhubs-and-vnets.md).
 
@@ -89,9 +89,10 @@ Azure Firewall Manager a következő ismert problémákkal rendelkezik:
 |Az alkalmazási szabályok nem működnek olyan biztonságos központban, amelyben az egyéni DNS (előzetes verzió) konfigurálva van.|Az egyéni DNS (előzetes verzió) nem működik olyan biztonságos központi telepítések és központi virtuális hálózati telepítések esetén, ahol a kényszerített bújtatás engedélyezve van.|Javítás a vizsgálat alatt.|
 |A DDoS Protection standard nem támogatott a biztonságos virtuális hubok esetében|A DDoS Protection standard nincs integrálva a vWANs.|Kivizsgálás|
 |A tevékenységek naplói nem teljes mértékben támogatottak|A tűzfalszabályok jelenleg nem támogatják a tevékenységek naplóit.|Kivizsgálás|
-|SNAT magánhálózati IP-címtartományok konfigurálása|A [magánhálózati IP-címtartomány beállításai](../firewall/snat-private-range.md) figyelmen kívül lesznek hagyva, ha Azure Firewall házirend konfigurálva van. A rendszer az alapértelmezett Azure Firewall viselkedést használja, ahol nem SNAT hálózati szabályokat, ha a célként megadott IP-cím egy [IANA RFC 1918](https://tools.ietf.org/html/rfc1918)-beli magánhálózati IP-címtartomány része.|Kivizsgálás
+|SNAT magánhálózati IP-címtartományok konfigurálása|A [magánhálózati IP-címtartomány beállításai](../firewall/snat-private-range.md) figyelmen kívül lesznek hagyva, ha Azure Firewall házirend konfigurálva van. A rendszer az alapértelmezett Azure Firewall viselkedést használja, ahol nem SNAT hálózati szabályokat, ha a célként megadott IP-cím egy [IANA RFC 1918](https://tools.ietf.org/html/rfc1918)-beli magánhálózati IP-címtartomány része.|Kivizsgálás|
+|Bizonyos tűzfalbeállítások nem települnek át, ha a tűzfalat a tűzfal-házirend használatára telepíti át.|A Availability Zones és a SNAT magánhálózati címeket a rendszer nem telepíti át Azure Firewall házirendre való Migrálás során.|Kivizsgálás| 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a [Azure Firewall Manager üzembe helyezésének áttekintését](deployment-overview.md)
 - A [biztonságos virtuális hubok](secured-virtual-hub.md)megismerése.

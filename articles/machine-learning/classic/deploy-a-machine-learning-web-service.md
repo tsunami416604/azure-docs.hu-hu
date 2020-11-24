@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 5a588195f2095b2d0cb261e1573eeb9ec881f2fd
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f77c0fb09dddd884335d31d630904ea6aeafeaf5
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322841"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95495202"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatás üzembe helyezése
 
-**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**a következőkre vonatkozik:** ![ Ez egy pipa, ami azt jelenti, hogy ez a cikk a Machine Learning Studio (klasszikus) elemre vonatkozik. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasszikus) ![ Ez egy X, ami azt jelenti, hogy ez a cikk Azure Machine learningre vonatkozik.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 A Azure Machine Learning Studio (klasszikus) lehetővé teszi prediktív elemzési megoldások készítését és tesztelését. Ezután webszolgáltatásként üzembe helyezheti a megoldást.
@@ -250,7 +250,7 @@ A Batch-végrehajtási szolgáltatás teszteléséhez kattintson a **teszt** el�
 
 A **konfiguráció** lapon módosíthatja a szolgáltatás megjelenítendő nevét, és megadhatja a leírását. A név és a leírás a webszolgáltatások kezelése [Azure Portalban](https://portal.azure.com/) jelenik meg.
 
-Megadhatja a bemeneti adatok, a kimeneti adatok és a webszolgáltatás paramétereinek leírását, ha megad egy karakterláncot minden oszlophoz a **bemeneti séma** , a **kimeneti séma** és a **webszolgáltatás paraméter** alatt. Ezeket a leírásokat a webszolgáltatáshoz megadott mintakód-dokumentációban lehet használni.
+Megadhatja a bemeneti adatok, a kimeneti adatok és a webszolgáltatás paramétereinek leírását, ha megad egy karakterláncot minden oszlophoz a **bemeneti séma**, a **kimeneti séma** és a **webszolgáltatás paraméter** alatt. Ezeket a leírásokat a webszolgáltatáshoz megadott mintakód-dokumentációban lehet használni.
 
 Engedélyezheti a naplózást a webszolgáltatás elérésekor észlelt hibák diagnosztizálásához. További információt a [Machine learning Studio (klasszikus) webszolgáltatások naplózásának engedélyezése](web-services-logging.md)című témakörben talál.
 

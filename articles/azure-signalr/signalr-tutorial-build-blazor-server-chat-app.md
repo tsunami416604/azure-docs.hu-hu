@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jixin
-ms.openlocfilehash: 16fd15a5939cc6c268a80e88401f05042a206075
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: ea55762aa40360d8eea94223a030f08aad504206
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516815"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95485392"
 ---
 # <a name="tutorial-build-a-blazor-server-chat-app"></a>Oktatóanyag: a blézer-kiszolgáló csevegési alkalmazásának létrehozása
 
@@ -39,7 +39,7 @@ A Visual Studio 2019 verzió 16.2.0 az Azure Signaler szolgáltatás beépített
    
    A Visual Studióban válassza az új projekt létrehozása – > Blazer App-> (az alkalmazás neve és a mappa kiválasztása) – > Blazer Server alkalmazást. Győződjön meg arról, hogy már telepítette a .NET Core SDK 3.0-s verzióját, hogy a Visual Studio helyesen felismerje a célként megadott keretrendszert.
 
-   [![Blazer – csevegés – létrehozás ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-create.png)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-create.png#lightbox)
+   [Az ![ új projekt létrehozása területen a Blazer-alkalmazások sablonjai vannak kiválasztva. ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-create.png)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-create.png#lightbox)
    
    Vagy futtassa a cmd parancsot
    ```dotnetcli
@@ -355,7 +355,7 @@ A Visual Studio 2019 verzió 16.2.0 az Azure Signaler szolgáltatás beépített
 
 1. Az alkalmazás futtatásához kattintson az <kbd>F5</kbd> gombra. Az alábbihoz hasonló módon cseveghet.
 
-   [![Blazer – csevegés ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif#lightbox)
+   [A ![ Bob és Alice közötti animált csevegés látható. Alice azt mondja, Hello, Bob, Szia. ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat.gif#lightbox)
    
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsblazor)
 
@@ -375,13 +375,13 @@ A Visual Studio 2019 verzió 16.2.0 az Azure Signaler szolgáltatás beépített
    * Konkrét cél: a **Azure app Service** összes típusa támogatott.
    * App Service: hozzon létre egy újat, vagy válasszon ki egy meglévő app Service-t.
 
-   [![Blazer – chat-profil ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-profile.gif)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-profile.gif#lightbox)
+   [![Az animáció az Azure kiválasztását célozza célként, majd az Azure app Service adott célként. ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-profile.gif)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-profile.gif#lightbox)
 
 1. Azure Signaler szolgáltatás-függőség hozzáadása
 
    A közzétett profil létrehozása után a **szolgáltatás függőségei** alatt egy javasolt üzenet jelenik meg. Kattintson a **Konfigurálás** gombra új létrehozásához, vagy válassza a meglévő Azure signaler szolgáltatást a panelen.
 
-   [![Blazer – csevegés – függőség ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png#lightbox)
+   [A ![ Közzététel lehetőségre kattintva Kiemelt a konfigurálandó hivatkozás. ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency.png#lightbox)
 
    A szolgáltatás függősége az alábbi műveleteket hajtja végre, hogy az alkalmazás automatikusan váltson az Azure Signaler szolgáltatásra az Azure-ban.
 
@@ -391,7 +391,7 @@ A Visual Studio 2019 verzió 16.2.0 az Azure Signaler szolgáltatás beépített
    * A titkok tárolásának beállítása a választott lehetőségektől függ.
    * Adja hozzá `appsettings` a konfigurációt, hogy az alkalmazás célja legyen a kiválasztott Azure signaler szolgáltatás.
 
-   [![Blazer-chat-függőség – összefoglalás ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency-summary.png)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency-summary.png#lightbox)
+   [A ![ változások Összefoglalásakor a jelölőnégyzetek az összes függőség kiválasztására szolgálnak. ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency-summary.png)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-dependency-summary.png#lightbox)
 
 1. Az alkalmazás közzététele
 
@@ -400,7 +400,7 @@ A Visual Studio 2019 verzió 16.2.0 az Azure Signaler szolgáltatás beépített
    > Előfordulhat, hogy a Azure App Service központi telepítésének késleltetése miatt nem működik azonnal, és a késleltetés érdekében próbálja meg frissíteni a lapot.
    > Emellett a böngésző hibakereső üzemmódját is használhatja az <kbd>F12</kbd> használatával annak ellenőrzéséhez, hogy a forgalom már át lett irányítva az Azure Signaler szolgáltatásba.
 
-   [![Blazer – csevegés – Azure ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png#lightbox)
+   [A ![ Blazer signaler csevegő mintában egy szövegmező szerepel a névben, valamint egy csevegés! gomb a csevegés indításához. ](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png)](media/signalr-tutorial-build-blazor-server-chat-app/blazor-chat-azure.png#lightbox)
    
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsblazor)
 
@@ -449,7 +449,7 @@ A Visual Studio 2019 verzió 16.2.0 az Azure Signaler szolgáltatás beépített
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsblazor)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha törölni szeretné a jelen oktatóanyag elvégzése során létrehozott erőforrásokat, törölje az erőforráscsoportot az Azure Portalon.
 
@@ -468,6 +468,6 @@ További információ a magas rendelkezésre állásról.
 > [!div class="nextstepaction"]
 > [Rugalmasság és vészhelyreállítás](signalr-concept-disaster-recovery.md)
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [ASP.NET Core Blazer](/aspnet/core/blazor)

@@ -9,17 +9,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 2d723a18bfe764b4e1459f72b00fa81db716dcdb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3afcf87c360651ac314450910fbf5ab72afd289a
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325653"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95503918"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>3. Oktatóanyag: kredit kockázati modell üzembe helyezése – Azure Machine Learning Studio (klasszikus)
 
-**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
-
+**a következőkre vonatkozik:** ![ Ez egy pipa, ami azt jelenti, hogy ez a cikk a Machine Learning Studio (klasszikus) elemre vonatkozik. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasszikus) ![ Ez egy X, ami azt jelenti, hogy ez a cikk Azure Machine learningre vonatkozik.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 Ez az oktatóanyag részletesen bemutatja a prediktív elemzési megoldások fejlesztésének folyamatát. Egy egyszerű modellt fejleszt Machine Learning Studio (klasszikus).  Ezután Azure Machine Learning webszolgáltatásként helyezheti üzembe a modellt.  Ez a központilag telepített modell új adatelemzést végezhet az előrejelzésekhez. Ez az oktatóanyag **egy háromrészes oktatóanyag-sorozat harmadik** része.
 
@@ -49,7 +48,7 @@ Fejezze be [az oktatóanyag második részét](tutorial-part2-credit-risk-train.
 ## <a name="prepare-for-deployment"></a>Felkészülés az üzembe helyezésre
 Annak érdekében, hogy a jelen oktatóanyagban fejlesztett prediktív modellt az Azure-ban, webszolgáltatásként is üzembe helyezheti.
 
-Ez a pont már kísérletezett a modell betanításával. Az üzembe helyezett szolgáltatás azonban már nem fog képzést végezni – az új előrejelzések létrehozásához a modellen alapuló felhasználó bemenetét kell megmutatnia. Ezért elvégezünk némi felkészülést, hogy a kísérletet a * **betanítási** _ kísérletből egy _*_prediktív_*_ kísérletre alakítsa át. 
+Ez a pont már kísérletezett a modell betanításával. Az üzembe helyezett szolgáltatás azonban már nem fog képzést végezni – az új előrejelzések létrehozásához a modellen alapuló felhasználó bemenetét kell megmutatnia. Ezért elvégezünk némi felkészülést, hogy a kísérletet a ***betanítási** _ kísérletből egy _*_prediktív_*_ kísérletre alakítsa át. 
 
 Az üzembe helyezés előkészítése egy három lépésből álló folyamat:  
 
@@ -130,7 +129,7 @@ A kísérlet utolsó futtatása (kattintson a **Futtatás** gombra.) Ha szeretn�
 A kísérletet klasszikus webszolgáltatásként vagy Azure Resource Manageron alapuló új webszolgáltatásként is telepítheti.
 
 ### <a name="deploy-as-a-classic-web-service"></a>Üzembe helyezés klasszikus webszolgáltatásként
-A kísérletből származtatott klasszikus webszolgáltatás üzembe helyezéséhez kattintson az **webszolgáltatás üzembe helyezése** a vászon alatt lehetőségre, majd válassza a **webszolgáltatás telepítése [klasszikus]** lehetőséget. Machine Learning Studio (klasszikus) a kísérletet webszolgáltatásként helyezi üzembe, és az adott webszolgáltatás irányítópultján viszi át. Ezen a lapon visszatérhet a kísérlethez ( **Pillanatkép megtekintése** vagy **legutóbbi megtekintése** ), és futtathatja a webszolgáltatás egyszerű tesztjét (lásd az alábbi **webszolgáltatások tesztelését** ). Itt tájékozódhat a webszolgáltatáshoz hozzáférő alkalmazások létrehozásáról is (erről bővebben az oktatóanyag következő lépésében talál).
+A kísérletből származtatott klasszikus webszolgáltatás üzembe helyezéséhez kattintson az **webszolgáltatás üzembe helyezése** a vászon alatt lehetőségre, majd válassza a **webszolgáltatás telepítése [klasszikus]** lehetőséget. Machine Learning Studio (klasszikus) a kísérletet webszolgáltatásként helyezi üzembe, és az adott webszolgáltatás irányítópultján viszi át. Ezen a lapon visszatérhet a kísérlethez (**Pillanatkép megtekintése** vagy **legutóbbi megtekintése**), és futtathatja a webszolgáltatás egyszerű tesztjét (lásd az alábbi **webszolgáltatások tesztelését** ). Itt tájékozódhat a webszolgáltatáshoz hozzáférő alkalmazások létrehozásáról is (erről bővebben az oktatóanyag következő lépésében talál).
 
 ![Webszolgáltatás irányítópultja](./media/tutorial-part3-credit-risk-deploy/publish6.png)
 

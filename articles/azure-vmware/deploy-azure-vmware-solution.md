@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan használhatja a tervezési szakaszban összegy�
 ms.topic: tutorial
 ms.author: tredavis
 ms.date: 11/09/2020
-ms.openlocfilehash: 264ad99b21150f391c367eba2da31f0d08f4ab08
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 47fc894fa1d6204a1bc2c912da7fcbb2394627fa
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94336335"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95484219"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Azure VMware-megoldás üzembe helyezése és konfigurálása
 
@@ -30,7 +30,7 @@ Használja az [Azure VMware megoldás üzembe helyezésének megtervezése](prod
 [!INCLUDE [create-avs-private-cloud-azure-portal](includes/create-private-cloud-azure-portal-steps.md)]
 
 >[!NOTE]
->Ennek a lépésnek a teljes körű áttekintéséhez tekintse meg az [Azure VMware-megoldást: üzembehelyezési](https://www.youtube.com/embed/1JLB3L2WDWI) videó. 
+>Ennek a lépésnek a teljes körű áttekintéséhez tekintse meg az [Azure VMware-megoldást: üzembehelyezési](https://www.youtube.com/embed/gng7JjxgayI) videó.
 
 ## <a name="create-the-jump-box"></a>A Jump Box létrehozása
 
@@ -127,7 +127,7 @@ Jelentkezzen be az előző lépésben létrehozott virtuális gépre, és ellen�
 >[!IMPORTANT]
 >Ezen a ponton az Azure VMware-megoldás működik, és sikeresen létesített kapcsolatot az Azure Virtual Network és az internet között.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő szakaszban az Azure VMware-megoldást a helyszíni hálózathoz a ExpressRoute-on keresztül kapcsolhatja össze.
 > [!div class="nextstepaction"]

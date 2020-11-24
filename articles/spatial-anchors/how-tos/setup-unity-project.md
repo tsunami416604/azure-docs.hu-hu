@@ -1,19 +1,19 @@
 ---
 title: Azure térbeli horgonyok telepítése Unity számára
 description: Unity-projekt konfigurálása az Azure térbeli horgonyok használatára
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 09/29/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: da983719dc66656aa28cab4aea0bae558c2a7162
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2330310b0bf4e165af71208477db128650a787cf
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530416"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95496943"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-unity-project"></a>Azure térbeli horgonyok konfigurálása Unity-projektben
 
@@ -54,7 +54,7 @@ Az Unity Azure térbeli Horgonyait jelenleg az Unity Package Manager (UPM) csoma
 
 #### <a name="android-only-configure-the-maintemplategradle-file"></a>Csak Android esetén: a mainTemplate. gradle fájl konfigurálása
 
-1. Lépjen a **Edit**  >  **Project Settings**  >  **Player**szerkesztése menüpontra.
+1. Lépjen a **Edit**  >  **Project Settings**  >  **Player** szerkesztése menüpontra.
 2. A **Player-beállítások** **ellenőr paneljén** válassza az **Android** ikont.
 3. A **build (létrehozás** ) szakaszban jelölje be az **Egyéni Gradle-sablon** jelölőnégyzetet az egyéni Gradle-sablon létrehozásához a következő helyen: `Assets\Plugins\Android\mainTemplate.gradle` .
 4. Nyissa meg a `mainTemplate.gradle` fájlt egy szövegszerkesztőben.
