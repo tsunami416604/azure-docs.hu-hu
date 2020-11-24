@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2020
-ms.openlocfilehash: bd6ba091b3715741af929613600a59511e7cdb0b
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 16292999bf8c01615a9125ffaa9f93fc4b2a8ec2
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94498331"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95756213"
 ---
 # <a name="log-analytics-tutorial"></a>Log Analytics-oktatóanyag
 A Log Analytics egy eszköz a Azure Portalban, amellyel szerkesztheti és futtathatja a Azure Monitor naplók által összegyűjtött adatokból származó naplózott lekérdezéseket, és interaktív módon elemezheti az eredményeket. Log Analytics lekérdezések használatával lekérheti az adott feltételeknek megfelelő rekordokat, azonosíthatja a trendeket, elemezheti a mintákat, és különféle elemzéseket biztosíthat az adataihoz. 
@@ -23,7 +23,7 @@ Ez az oktatóanyag végigvezeti a Log Analytics felületen, és megkezdi az alap
 > * Egyszerű lekérdezések írása és futtatása, valamint a lekérdezések időtartományának módosítása
 > * Lekérdezés eredményeinek szűrése, rendezése és csoportosítása
 > * A lekérdezési eredmények vizualizációinak megtekintése, módosítása és megosztása
-> * Lekérdezések és eredmények mentése, betöltése, exportálása és másolása
+> * Lekérdezések és eredmények betöltése, exportálása és másolása
 
 > [!IMPORTANT]
 > Ez az oktatóanyag a Log Analytics funkcióit használja egy lekérdezés létrehozásához és futtatásához a lekérdezés használata helyett. A Log Analytics-funkciók használatával egyetlen lekérdezést hozhat létre, és egy másik példa lekérdezést is használhat. Ha készen áll a lekérdezések szintaxisának megismerésére és a lekérdezés közvetlen szerkesztésének megkezdésére, folytassa a [Kusto lekérdezési nyelvének oktatóanyagával](/azure/data-explorer/kusto/query/tutorial?pivots=azuremonitor). Ez az oktatóanyag számos példás lekérdezést mutat be, amelyeket Log Analytics szerkeszthet és futtathat, és számos olyan funkciót kihasználhat, amelyeket ebben az oktatóanyagban elsajátíthat.
@@ -124,7 +124,7 @@ Ha a lekérdezés kimenetét táblaként szeretné megtekinteni, próbálkozzon 
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már ismeri a Log Analytics használatát, fejezze be az oktatóanyagot a naplók használatával.
 > [!div class="nextstepaction"]

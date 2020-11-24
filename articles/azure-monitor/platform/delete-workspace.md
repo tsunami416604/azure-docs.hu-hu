@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: 2ce048ea8c9a4414b1c9f049569251c39d931c9a
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 0858d448cf768dbe6ea48f07247725fac30da860
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92174154"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95758901"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Az Azure Log Analytics munkaterület törlése és helyreállítása
 
@@ -41,14 +41,16 @@ A munkaterület-törlési művelet eltávolítja a munkaterület Resource Manage
 > [!NOTE] 
 > A telepített megoldásokat és a társított szolgáltatásokat, például a Azure Automation fiókját véglegesen eltávolítja a munkaterületről a törlés időpontjában, és nem állítható helyre. Ezeket úgy kell konfigurálni, hogy a helyreállítási művelet után a munkaterület a korábban konfigurált állapotba kerüljön.
 
-A munkaterületeket a [PowerShell](/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0), a [REST API](/rest/api/loganalytics/workspaces/delete)vagy a [Azure Portal](https://portal.azure.com)használatával törölheti.
+A munkaterületeket a [PowerShell](/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0&preserve-view=true), a [REST API](/rest/api/loganalytics/workspaces/delete)vagy a [Azure Portal](https://portal.azure.com)használatával törölheti.
 
 ### <a name="azure-portal"></a>Azure Portal
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
-2. A Azure Portal válassza a **minden szolgáltatás**lehetőséget. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza **log Analytics munkaterületek**lehetőséget.
+2. A Azure Portal válassza a **minden szolgáltatás** lehetőséget. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza **log Analytics munkaterületek** lehetőséget.
 3. A Log Analytics munkaterületek listájában válasszon ki egy munkaterületet, majd kattintson a középső ablaktábla tetején található **Törlés**  elemre.
-4. Megjelenik egy megerősítő lap, amely megjeleníti az adatfeldolgozást a munkaterületre az elmúlt héten. A megerősítéshez írja be a munkaterület nevét, majd kattintson a **Törlés**gombra.
+4. Megjelenik egy megerősítő lap, amely megjeleníti az adatfeldolgozást a munkaterületre az elmúlt héten. 
+5. Ha véglegesen törölni szeretné a munkaterületet, hogy a későbbiekben helyreállítsa a beállítást, jelölje be a **munkaterület végleges törlése** jelölőnégyzetet.
+6. A megerősítéshez írja be a munkaterület nevét, majd kattintson a **Törlés** gombra.
 
    ![Munkaterület törlésének megerősítése](media/delete-workspace/workspace-delete.png)
 
@@ -60,11 +62,12 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 ## <a name="permanent-workspace-delete"></a>Állandó munkaterület törlése
 Előfordulhat, hogy a Soft-Delete metódus nem fér el bizonyos helyzetekben, például a fejlesztéshez és a teszteléshez, ahol meg kell ismételnie egy központi telepítést ugyanazzal a beállításokkal és a munkaterület nevével. Ilyen esetekben véglegesen törölheti a munkaterületet, és "felülbírálhatja" a Soft-delete időszakot. Az állandó munkaterület-törlési művelet kiadja a munkaterület nevét, és létrehoz egy új munkaterületet ugyanazzal a névvel.
 
-
 > [!IMPORTANT]
 > Az állandó munkaterület törlési műveletét körültekintően, a visszafordíthatatlan óta használhatja, és nem fogja tudni helyreállítani a munkaterületet és annak adatait.
 
-Adja hozzá a "-ForceDelete" címkét a munkaterület végleges törléséhez. A "-ForceDelete" lehetőség jelenleg az az. OperationalInsights 2.3.0 vagy újabb verzióban érhető el. 
+Ha a Azure Portal segítségével véglegesen törölni szeretne egy munkaterületet, jelölje be a **munkaterület végleges törlése** jelölőnégyzetet a **Törlés** gombra való kattintás előtt.
+
+Ha véglegesen törölni szeretne egy munkaterületet a PowerShell használatával, adja hozzá a "-ForceDelete" címkét a munkaterület végleges törléséhez. A "-ForceDelete" lehetőség jelenleg az az. OperationalInsights 2.3.0 vagy újabb verzióban érhető el. 
 
 ```powershell
 PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name" -ForceDelete
@@ -78,12 +81,12 @@ A munkaterületet helyreállíthatja a Soft-delete időszakban, beleértve az ad
 - Előfizetés azonosítója
 - Erőforráscsoport neve
 - Munkaterület neve
-- Régió
+- Region
 
 ### <a name="azure-portal"></a>Azure Portal
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
-2. A Azure Portal válassza a **minden szolgáltatás**lehetőséget. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza **log Analytics munkaterületek**lehetőséget. Megjelenik a kiválasztott hatókörben lévő munkaterületek listája.
+2. A Azure Portal válassza a **minden szolgáltatás** lehetőséget. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza **log Analytics munkaterületek** lehetőséget. Megjelenik a kiválasztott hatókörben lévő munkaterületek listája.
 3. Kattintson a bal felső menü **helyreállítás** elemére egy olyan oldal megnyitásához, amelyben munkaterületek állíthatók helyre a helyreállítható törlési állapotban.
 
    ![Képernyőfelvétel a Log Analytics munkaterületek képernyőről Azure Portal a menüsávon Kiemelt kiemeléssel.](media/delete-workspace/recover-menu.png)
@@ -115,6 +118,6 @@ A munkaterület törléséhez legalább *log Analytics közreműködői* engedé
     1. [Állítsa helyre](#recover-workspace) a munkaterületet.
     2. A munkaterület [végleges törlése](#permanent-workspace-delete) .
     3. Hozzon létre egy új munkaterületet ugyanazzal a munkaterület-névvel.
-* Ha olyan 204-hibakódot lát, amely *nem található erőforrást*mutat, az ok lehet egymást követő kísérlet a munkaterület törlése művelet használatára. a 204 egy üres válasz, amely általában azt jelenti, hogy az erőforrás nem létezik, így a törlés semmit nem végez.
+* Ha olyan 204-hibakódot lát, amely *nem található erőforrást* mutat, az ok lehet egymást követő kísérlet a munkaterület törlése művelet használatára. a 204 egy üres válasz, amely általában azt jelenti, hogy az erőforrás nem létezik, így a törlés semmit nem végez.
   Miután a törlési hívást sikeresen befejezte a háttérben, visszaállíthatja a munkaterületet, és elvégezheti az állandó törlési műveletet a korábban javasolt metódusok egyikében.
 

@@ -5,18 +5,18 @@ description: A Microsoft Identity platform által kényszerített átirányítá
 author: SureshJa
 ms.author: sureshja
 manager: CelesteDG
-ms.date: 10/29/2020
+ms.date: 11/23/2020
 ms.topic: conceptual
 ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: marsma, lenalepa, manrath
-ms.openlocfilehash: a2838e40844b83d1e90789439ce286f2738e22c4
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 30ea74b249937544a0bf9811cad60f02c1ca45c7
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331855"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95752786"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>Átirányítási URI (válasz URL-cím) korlátozásai és korlátozásai
 
@@ -51,25 +51,32 @@ Ha olyan HTTP-sémával rendelkező átirányítási URI-t szeretne hozzáadni, 
 
 A 8,3 és [7,3](https://tools.ietf.org/html/rfc8252#section-7.3), valamint a "loopback" vagy "localhost" átirányítási URI-k által [8252-es szakaszban](https://tools.ietf.org/html/rfc8252#section-8.3) két speciális szempontot kell figyelembe venni:
 
-1. `http` Az URI-sémák elfogadhatók, mert az átirányítás soha nem hagyja el az eszközt. Ezért mindkettő elfogadható:
-    - `http://127.0.0.1/myApp`
-    - `https://127.0.0.1/myApp`
-1. A natív alkalmazások által gyakran igényelt ideiglenes porttartomány miatt a rendszer figyelmen kívül hagyja a port összetevőjét (például `:5001` vagy `:443` ), mert az ÁTirányítási URI-t egyezteti. Ennek eredményeképpen ezek mindegyike egyenértékűnek tekintendő:
-    - `http://127.0.0.1/MyApp`
-    - `http://127.0.0.1:1234/MyApp`
-    - `http://127.0.0.1:5000/MyApp`
-    - `http://127.0.0.1:8080/MyApp`
+1. `http` Az URI-sémák elfogadhatók, mert az átirányítás soha nem hagyja el az eszközt. Ezért mindkét URI elfogadható:
+    - `http://localhost/myApp`
+    - `https://localhost/myApp`
+1. A natív alkalmazások által gyakran igényelt ideiglenes porttartomány miatt a rendszer figyelmen kívül hagyja a port összetevőjét (például `:5001` vagy `:443` ), mert az ÁTirányítási URI-t egyezteti. Ennek eredményeképpen az összes URI-azonosító egyenértékűnek tekintendő:
+    - `http://localhost/MyApp`
+    - `http://localhost:1234/MyApp`
+    - `http://localhost:5000/MyApp`
+    - `http://localhost:8080/MyApp`
 
 Fejlesztési szempontból ez néhány dolgot jelent:
 
 * Ne regisztráljon több átirányítási URI-t, ahol csak a port különbözik. A bejelentkezési kiszolgáló egy tetszőlegesen kiválasztható, és az átirányítási URI-hoz társított viselkedést (például az a `web` -, `native` -vagy a `spa` -Type átirányítás) használja.
 
     Ez különösen akkor fontos, ha ugyanazt az alkalmazás-regisztrációban eltérő hitelesítési folyamatokat kíván használni, például az engedélyezési kód engedélyezését és az implicit folyamatot. Ahhoz, hogy az egyes átirányítási URI-k megfelelő válaszait társítsa, a bejelentkezési kiszolgálónak képesnek kell lennie az átirányítási URI-k megkülönböztetésére, és nem teheti meg, ha csak a port különbözik.
-* Ha több átirányítási URI-t kell regisztrálnia a localhost-on a különböző folyamatok teszteléséhez a fejlesztés során, akkor az URI *elérési útja* összetevővel kell megkülönböztetni őket. A nem egyezik például a következővel: `http://127.0.0.1/MyWebApp` `http://127.0.0.1/MyNativeApp` .
+* Ha több átirányítási URI-t kell regisztrálnia a localhost-on a különböző folyamatok teszteléséhez a fejlesztés során, akkor az URI *elérési útja* összetevővel kell megkülönböztetni őket. A nem egyezik például a következővel: `http://localhost/MyWebApp` `http://localhost/MyNativeApp` .
 * Az IPv6-visszacsatolási cím ( `[::1]` ) jelenleg nem támogatott.
-* Ha meg szeretné akadályozni, hogy az alkalmazás hibás módon konfigurált tűzfalakkal vagy átnevezett hálózati adapterekkel megszakadjon, a helyett használja az `127.0.0.1` átirányítási URI-ban található IP-szövegkonstans-visszacsatolási címet `localhost` .
 
-    Ha a `http` sémát az IP-szövegkonstans visszacsatolási címével szeretné használni `127.0.0.1` , a [replyUrlsWithType](reference-app-manifest.md#replyurlswithtype-attribute) attribútumot jelenleg módosítania kell az [alkalmazás jegyzékfájljában](reference-app-manifest.md).
+#### <a name="prefer-127001-over-localhost"></a>A 127.0.0.1 előnyben részesítette a localhost felett
+
+Ha meg szeretné akadályozni, hogy az alkalmazás hibás módon konfigurált tűzfalakkal vagy átnevezett hálózati adapterekkel megszakadjon, a helyett használja az `127.0.0.1` átirányítási URI-ban található IP-szövegkonstans-visszacsatolási címet `localhost` . Például: `https://127.0.0.1`.
+
+A Azure Portal **átirányítási URI** -k szövegmezője azonban nem használható olyan visszacsatolási alapú átirányítási URI hozzáadásához, amely a `http` sémát használja:
+
+:::image type="content" source="media/reply-url/portal-01-no-http-loopback-redirect-uri.png" alt-text="A nem engedélyezett HTTP-alapú visszacsatolási átirányítási URI-t megjelenítő Azure Portal hiba párbeszédpanele":::
+
+Ha a sémát a visszacsatolási címhez használó átirányítási URI-t szeretne hozzáadni `http` `127.0.0.1` , akkor a [replyUrlsWithType](reference-app-manifest.md#replyurlswithtype-attribute) attribútumot jelenleg módosítania kell az [alkalmazás jegyzékfájljában](reference-app-manifest.md).
 
 ## <a name="restrictions-on-wildcards-in-redirect-uris"></a>Helyettesítő karakterek korlátozásai az átirányítási URI-k között
 
@@ -96,6 +103,6 @@ Ebben a megközelítésben:
 > [!WARNING]
 > Ez a módszer lehetővé teszi a feltört ügyfél számára, hogy módosítsa az állapot paraméterében eljuttatott további paramétereket, így átirányítja a felhasználót egy másik URL-címre, amely az RFC 6819-ben leírt [nyílt átirányító fenyegetés](https://tools.ietf.org/html/rfc6819#section-4.2.4) . Ezért az ügyfélnek meg kell védenie ezeket a paramétereket az állapot titkosításával vagy más módon történő ellenőrzésével, például az átirányítási URI-n lévő tartománynév érvényesítésével a tokenen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az alkalmazás-regisztrációs [alkalmazás jegyzékéről](reference-app-manifest.md).

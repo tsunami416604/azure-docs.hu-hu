@@ -13,16 +13,16 @@ ms.date: 1/15/2020
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 2aa786f78d3e730bb351d1fa84b0c7fbb32d6786
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 981d3a0c5d01d70625fc0d022318c5bc866f23a0
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611231"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95756400"
 ---
 # <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>Oktatóanyag: megosztott eszköz üzemmód használata Android-alkalmazásokban
 
-Ez az oktatóanyag útmutatást nyújt a fejlesztők és a bérlői rendszergazdák számára az Android-alkalmazások megosztott eszközének beállításához és támogatásához.
+Ebben az oktatóanyagban az Android-fejlesztők és a Azure Active Directory (Azure AD) bérlői rendszergazdák megismerhetik a kód, a hitelesítő alkalmazás és a bérlő beállításait, amelyek szükségesek az Android-alkalmazások megosztott eszköz üzemmódjának engedélyezéséhez.
 
 Ebben az oktatóanyagban:
 
@@ -220,17 +220,17 @@ Először regisztráljon az alkalmazást a szervezeti bérlőn belül. Ezután a
 Ennek módjáról az [alkalmazás regisztrálása](./tutorial-v2-android.md#register-your-application)című témakörben olvashat bővebben.
 
 > [!NOTE]
-> Az alkalmazás regisztrálása után a bal oldalon a gyors üzembe helyezési útmutatóban válassza az **Android**lehetőséget. Ez egy olyan oldalra mutat, amelyben meg kell adnia az alkalmazáshoz tartozó **csomag nevét** és **aláírási kivonatát** . Ezek nagyon fontosak annak biztosításához, hogy az alkalmazás konfigurációja működni fog. Ekkor megjelenik egy olyan konfigurációs objektum, amelyet használhat az alkalmazáshoz, amelyet a fájlra kivágja és beilleszt a auth_config.jsba.
+> Az alkalmazás regisztrálása után a bal oldalon a gyors üzembe helyezési útmutatóban válassza az **Android** lehetőséget. Ez egy olyan oldalra mutat, amelyben meg kell adnia az alkalmazáshoz tartozó **csomag nevét** és **aláírási kivonatát** . Ezek nagyon fontosak annak biztosításához, hogy az alkalmazás konfigurációja működni fog. Ekkor megjelenik egy olyan konfigurációs objektum, amelyet használhat az alkalmazáshoz, amelyet a fájlra kivágja és beilleszt a auth_config.jsba.
 
 :::image type="content" source="media/tutorial-v2-shared-device-mode/register-app.png" alt-text="Az Android-alkalmazások oldalának konfigurálása Azure Portal rövid útmutatóban":::
 
 Válassza a **módosítás elvégzése nekem** lehetőséget, majd adja meg azokat az értékeket, amelyeket a rövid útmutató kér a Azure Portal. Ha elkészült, a rendszer létrehozza az összes szükséges konfigurációs fájlt.
 
-:::image type="content" source="media/tutorial-v2-shared-device-mode/config-info.png" alt-text="Az Android-alkalmazások oldalának konfigurálása Azure Portal rövid útmutatóban":::
+:::image type="content" source="media/tutorial-v2-shared-device-mode/config-info.png" alt-text="A projekt oldalának konfigurálása Azure Portal rövid útmutatóban":::
 
 ## <a name="set-up-a-tenant"></a>Bérlő beállítása
 
-Tesztelési célból állítsa be a következőt a bérlőben: legalább két alkalmazott, egy felhőalapú eszköz rendszergazdája és egy globális rendszergazda. A Azure Portalban állítsa be a felhőalapú eszköz rendszergazdáját a szervezeti szerepkörök módosításával. A Azure Portal a szervezeti szerepköröket a **Azure Active Directory**  >  **szerepkörök és rendszergazdák**  >  **Felhőbeli eszköz rendszergazdája**lehetőség kiválasztásával érheti el. Adja hozzá azokat a felhasználókat, akik számára az eszköz megosztott módba helyezhető.
+Tesztelési célból állítsa be a következőt a bérlőben: legalább két alkalmazott, egy felhőalapú eszköz rendszergazdája és egy globális rendszergazda. A Azure Portalban állítsa be a felhőalapú eszköz rendszergazdáját a szervezeti szerepkörök módosításával. A Azure Portal a szervezeti szerepköröket a **Azure Active Directory**  >  **szerepkörök és rendszergazdák**  >  **Felhőbeli eszköz rendszergazdája** lehetőség kiválasztásával érheti el. Adja hozzá azokat a felhasználókat, akik számára az eszköz megosztott módba helyezhető.
 
 ## <a name="set-up-an-android-device-in-shared-mode"></a>Android-eszköz beállítása megosztott módban
 
@@ -242,25 +242,25 @@ Töltse le a Microsoft Authenticator alkalmazást a Google Play áruházból. Ha
 
 Indítsa el a hitelesítő alkalmazást, és navigáljon a főfiók lapra. Ha megjelenik a **fiók hozzáadása** lap, készen áll az eszköz megosztására.
 
-:::image type="content" source="media/tutorial-v2-shared-device-mode/authenticator-add-account.png" alt-text="Az Android-alkalmazások oldalának konfigurálása Azure Portal rövid útmutatóban":::
+:::image type="content" source="media/tutorial-v2-shared-device-mode/authenticator-add-account.png" alt-text="Hitelesítő fiók hozzáadása képernyő":::
 
-Nyissa meg a **Beállítások** ablaktáblát a jobb oldali menüsor használatával. Válassza az **eszköz regisztrálása** **munkahelyi & iskolai fiókok**alatt lehetőséget.
+Nyissa meg a **Beállítások** ablaktáblát a jobb oldali menüsor használatával. Válassza az **eszköz regisztrálása** **munkahelyi & iskolai fiókok** alatt lehetőséget.
 
-:::image type="content" source="media/tutorial-v2-shared-device-mode/authenticator-settings.png" alt-text="Az Android-alkalmazások oldalának konfigurálása Azure Portal rövid útmutatóban":::
+:::image type="content" source="media/tutorial-v2-shared-device-mode/authenticator-settings.png" alt-text="Hitelesítő beállítások képernyő":::
 
-Ha erre a gombra kattint, a rendszer arra kéri, hogy engedélyezze az eszköz névjegyeinek elérését. Ennek oka az, hogy az Android-fiók integrálva van az eszközön. Válassza az **Engedélyezés**lehetőséget.
+Ha erre a gombra kattint, a rendszer arra kéri, hogy engedélyezze az eszköz névjegyeinek elérését. Ennek oka az, hogy az Android-fiók integrálva van az eszközön. Válassza az **Engedélyezés** lehetőséget.
 
-:::image type="content" source="media/tutorial-v2-shared-device-mode/authenticator-allow-screen.png" alt-text="Az Android-alkalmazások oldalának konfigurálása Azure Portal rövid útmutatóban":::
+:::image type="content" source="media/tutorial-v2-shared-device-mode/authenticator-allow-screen.png" alt-text="Hitelesítő hozzáférés megerősítése képernyő":::
 
 A Felhőbeli eszköz rendszergazdájának meg kell adnia a szervezeti e-mail-címét **, vagy regisztrálnia kell megosztott eszközként**. Ezután kattintson a **regisztrálás megosztott eszközként** gombra, és adja meg a hitelesítő adataikat.
 
-:::image type="content" source="media/tutorial-v2-shared-device-mode/register-device.png" alt-text="Az Android-alkalmazások oldalának konfigurálása Azure Portal rövid útmutatóban":::
+:::image type="content" source="media/tutorial-v2-shared-device-mode/register-device.png" alt-text="Eszköz regisztrációs képernyője az alkalmazásban":::
 
-:::image type="content" source="media/tutorial-v2-shared-device-mode/sign-in.png" alt-text="Az Android-alkalmazások oldalának konfigurálása Azure Portal rövid útmutatóban":::
+:::image type="content" source="media/tutorial-v2-shared-device-mode/sign-in.png" alt-text="A Microsoft bejelentkezési lapját ábrázoló alkalmazás képernyőképe":::
 
 Az eszköz már megosztott módban van.
 
-:::image type="content" source="media/tutorial-v2-shared-device-mode/shared-device-mode-screen.png" alt-text="Az Android-alkalmazások oldalának konfigurálása Azure Portal rövid útmutatóban":::
+:::image type="content" source="media/tutorial-v2-shared-device-mode/shared-device-mode-screen.png" alt-text="Az alkalmazás képernyője, amelyen engedélyezve van a megosztott eszköz üzemmód":::
 
  Az eszközön a bejelentkezések és a kijelentkezések globálisak lesznek, ami azt jelenti, hogy minden olyan alkalmazásra érvényesek, amely integrálva van a MSAL és a Microsoft Authenticator az eszközön. Mostantól telepítheti az alkalmazásokat az eszközre, amely megosztott eszköz üzemmódú szolgáltatásokat használ.
 
@@ -268,15 +268,15 @@ Az eszköz már megosztott módban van.
 
 Az eszköz megosztott módban való üzembe helyezése után a rendszer a szervezete számára ismertté válik, és nyomon követheti a szervezeti bérlőn. A megosztott eszközök megtekintéséhez tekintse meg a Azure Portal Azure Active Directory paneljén található **JOIN (illesztés) típust** .
 
-:::image type="content" source="media/tutorial-v2-shared-device-mode/registered-device-screen.png" alt-text="Az Android-alkalmazások oldalának konfigurálása Azure Portal rövid útmutatóban":::
+:::image type="content" source="media/tutorial-v2-shared-device-mode/registered-device-screen.png" alt-text="A Azure Portalban látható összes eszköz panel":::
 
 ## <a name="running-the-sample-app"></a>A minta alkalmazás futtatása
 
 A minta alkalmazás egy egyszerű alkalmazás, amely meghívja a szervezet Graph APIét. Az első futtatáskor a rendszer megkéri, hogy az alkalmazás új legyen az alkalmazott fiókjában.
 
-:::image type="content" source="media/tutorial-v2-shared-device-mode/run-app-permissions-requested.png" alt-text="Az Android-alkalmazások oldalának konfigurálása Azure Portal rövid útmutatóban":::
+:::image type="content" source="media/tutorial-v2-shared-device-mode/run-app-permissions-requested.png" alt-text="Az alkalmazás konfigurációs adatai képernyő":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Microsoft Authentication Library és a megosztott eszköz mód használatáról Android-eszközökön:
 

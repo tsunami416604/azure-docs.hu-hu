@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 40929a165e7a3afbbc92a472c352172723745040
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 18b62e34ab57d1d7e937eb21b9ed2a7feffa758c
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533191"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95758948"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési token beszerzése egy JavaScript SPA-ban az Auth Code flow használatával
 
-Ebben a rövid útmutatóban egy kód mintát tölt le és futtat, amely bemutatja, hogyan jelentkezhet be a JavaScript-alapú egyoldalas alkalmazás (SPA) a felhasználókba, és meghívja a Microsoft Grapht az engedélyezési kód folyamatának használatával. A kód minta bemutatja, hogyan szerezhet be hozzáférési jogkivonatot a Microsoft Graph API vagy bármely webes API meghívásához. 
+Ebben a rövid útmutatóban egy kód mintát tölt le és futtat, amely bemutatja, hogyan jelentkezhet be a JavaScript-alapú egyoldalas alkalmazás (SPA) a felhasználókba, és meghívja a Microsoft Grapht az engedélyezési kód folyamatának használatával. A kód minta bemutatja, hogyan kérhet hozzáférési tokent a Microsoft Graph API vagy bármely webes API meghívásához. 
 
 Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 
@@ -114,9 +114,9 @@ Ez a rövid útmutató a MSAL.js 2,0-et használja az engedélyezési kód folya
 > - `Enter_the_Application_Id_Here` a regisztrált alkalmazáshoz tartozó **alkalmazás (ügyfél) azonosítója** .
 > - `Enter_the_Cloud_Instance_Id_Here` Az Azure-felhő példánya. A fő vagy a globális Azure-felhőhöz írja be a következőt: `https://login.microsoftonline.com/` . Az **országos** felhők (például Kína) esetében lásd: [nemzeti felhők](authentication-national-cloud.md).
 > - `Enter_the_Tenant_info_here` értéke a következők egyike lehet:
->   - Ha az alkalmazás támogatja a *szervezeti címtárban lévő fiókokat* , cserélje le ezt az értéket a **bérlői azonosítóra** vagy a **bérlő nevére**. Például: `contoso.microsoft.com`.
->   - Ha az alkalmazás *minden szervezeti címtárban támogatja a fiókokat* , cserélje le ezt az értéket a következőre: `organizations` .
->   - Ha az alkalmazás a *szervezeti címtárban és a személyes Microsoft-fiókokban is támogatja a fiókokat* , cserélje le ezt az értéket a következőre: `common` . Ehhez a rövid útmutatóhoz használja **a következőt:** `common` .
+>   - Ha az alkalmazás támogatja a *szervezeti címtárban lévő fiókokat*, cserélje le ezt az értéket a **bérlői azonosítóra** vagy a **bérlő nevére**. Például: `contoso.microsoft.com`.
+>   - Ha az alkalmazás *minden szervezeti címtárban támogatja a fiókokat*, cserélje le ezt az értéket a következőre: `organizations` .
+>   - Ha az alkalmazás a *szervezeti címtárban és a személyes Microsoft-fiókokban is támogatja a fiókokat*, cserélje le ezt az értéket a következőre: `common` . Ehhez a rövid útmutatóhoz használja **a következőt:** `common` .
 >   - A *személyes Microsoft-fiókok* támogatásának korlátozásához cserélje le ezt az értéket a következőre: `consumers` .
 > - A `Enter_the_Redirect_Uri_Here` értéke `http://localhost:3000/`.
 >
@@ -127,7 +127,7 @@ Ez a rövid útmutató a MSAL.js 2,0-et használja az engedélyezési kód folya
 > ```
 >
 > > [!TIP]
-> > Az **alkalmazás (ügyfél) azonosítójának** , **könyvtárának (BÉRLŐi) azonosítójának** és a **támogatott fióktípus** értékének megkereséséhez nyissa meg az alkalmazás regisztrációjának **Áttekintés** lapját a Azure Portal.
+> > Az **alkalmazás (ügyfél) azonosítójának**, **könyvtárának (BÉRLŐi) azonosítójának** és a **támogatott fióktípus** értékének megkereséséhez nyissa meg az alkalmazás regisztrációjának **Áttekintés** lapját a Azure Portal.
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>3. lépés: az alkalmazás konfigurálva van, és készen áll a futtatásra

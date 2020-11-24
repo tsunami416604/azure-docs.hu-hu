@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
-ms.date: 10/23/2020
+ms.date: 11/23/2020
 ms.author: pafarley
-ms.openlocfilehash: bb4b69902f73a22cbd2b0fd5ad97c547ceb76a5c
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 3ba08f11fb52fc0ffe3acda5e81e21b7e7629628
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912327"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95757420"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>Oktatóanyag: űrlap-feldolgozó alkalmazás létrehozása AI-szerkesztővel
 
@@ -23,7 +23,7 @@ Az [AI Builder](/ai-builder/overview) egy olyan energiagazdálkodási képesség
 > [!NOTE]
 > Ez a projekt [Microsoft Learn modulként](/learn/modules/get-started-with-form-processing/)is elérhető.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Űrlap-feldolgozási AI-modell létrehozása
@@ -43,7 +43,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 1. A bal oldali panelen válassza az **AI Builder**  >  **Build** elemet.
 1. Válassza ki az **űrlap feldolgozására** szolgáló kártyát.
 1. Adja meg a modell nevét.
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
 ## <a name="upload-and-analyze-documents"></a>Dokumentumok feltöltése és elemzése
 
@@ -89,8 +89,8 @@ A mező kiválasztása lapon válassza ki a kívánt mezőket:
 
     Ha egy észlelt mezőre kattint, az alábbi információk jelennek meg:
 
-    - **Mezőnév** : az észlelt mező feliratának neve.
-    - **Mező értéke** : az észlelt mező értéke.
+    - **Mezőnév**: az észlelt mező feliratának neve.
+    - **Mező értéke**: az észlelt mező értéke.
 
 > [!div class="mx-imgBorder"]
 > ![címkézés lap](./media/tutorial-ai-builder/select-fields-page.png)
