@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f4de7268f3384f86b7090dfe18576347311e048e
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 9cf503f374cd2fd1ca04aad6650b2c07abebbc46
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888674"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519353"
 ---
 # <a name="communication-services-notifications"></a>Kommunikációs szolgáltatások értesítései
 
@@ -77,7 +77,8 @@ A portálon navigáljon az Azure kommunikációs szolgáltatások erőforrásaih
 :::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="A leküldéses értesítések beállításait megjelenítő képernyőkép az Azure Portalon.":::
 
 > [!NOTE]
-> Ha az Azure Notification hub kapcsolati karakterláncát frissíti, a kommunikációs szolgáltatások erőforrását is frissíteni kell.
+> Ha az Azure Notification hub kapcsolati karakterláncát frissíti, a kommunikációs szolgáltatások erőforrását is frissíteni kell.  
+A hub összekapcsolásának minden változása az adatsíkon (azaz egy értesítés küldésekor) jelenik meg, legfeljebb ``10`` percen belül. Ez akkor is érvényes, ha a hub első alkalommal van társítva, **Ha** az értesítéseket korábban küldték.
 
 #### <a name="device-registration"></a>Eszközregisztráció 
 

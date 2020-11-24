@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 03/15/2020
 ms.author: matjazl
-ms.openlocfilehash: c62593251cb0e19c91d1c4877d1b33fe407ebd06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 096e4e3ecbcedaec674e074a2baccbb336e03c94
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87847006"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95524198"
 ---
 # <a name="configure-local-rbac-for-fhir"></a>A FHIR helyi RBAC konfigurálása 
 
@@ -23,7 +23,7 @@ Ez a cikk azt ismerteti, hogyan konfigurálhatja a FHIR készült Azure API-t k�
 
 ## <a name="add-service-principal"></a>Szolgáltatásnév hozzáadása
 
-A helyi RBAC lehetővé teszi, hogy külső Azure Active Directory bérlőt használjon a FHIR-kiszolgálóval. Annak érdekében, hogy a RBAC-rendszer a csoporttagság ezen a bérlőn legyen ellenőrizhető, a FHIR készült Azure API-nak rendelkeznie kell egy egyszerű szolgáltatással a bérlőben. Ez az egyszerű szolgáltatás automatikusan létrejön a FHIR Azure API-t üzembe helyező előfizetésekhez kötött bérlők számára, de abban az esetben, ha a bérlő nem rendelkezik előfizetéssel, akkor a bérlői rendszergazdának a következő parancsok egyikével kell létrehoznia ezt a szolgáltatásnevet:
+A helyi RBAC lehetővé teszi, hogy külső Azure Active Directory bérlőt használjon a FHIR-kiszolgálóval. Annak érdekében, hogy a helyi RBAC-rendszer engedélyezze a csoporttagság ellenőrzését ebben a bérlőben, a FHIR készült Azure API-nak rendelkeznie kell egy egyszerű szolgáltatással a bérlőben. Ez az egyszerű szolgáltatás automatikusan létrejön a FHIR Azure API-t üzembe helyező előfizetésekhez kötött bérlők számára, de abban az esetben, ha a bérlő nem rendelkezik előfizetéssel, akkor a bérlői rendszergazdának a következő parancsok egyikével kell létrehoznia ezt a szolgáltatásnevet:
 
 A `Az` PowerShell-modul használata:
 

@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: ca22def6bc152d03c3992ed7e94ac2b5ccf179e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27e7c899f0d22789c10541fc98a0d2c63a7843ec
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604478"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95533055"
 ---
 # <a name="modify-target-settings"></a>Célbeállítások módosítása
 
@@ -34,15 +34,15 @@ Azonban
 
 A módosítható konfigurációs beállítások összegzése a táblázatban látható.
 
-**Erőforrás** | **Lehetőségek** 
+**Erőforrás** | **Beállítások** 
 --- | --- | --- 
 **Virtuális gép neve** | Paraméterek:<br/><br/> – Hozzon létre egy új virtuális gépet ugyanazzal a névvel a célként megadott régióban.<br/><br/> – Hozzon létre egy új virtuális gépet egy másik névvel a célként megadott régióban.<br/><br/> – Használjon egy meglévő virtuális gépet a célként megadott régióban.<br/><br/> Ha új virtuális gépet hoz létre, a módosított beállítások kivételével az új célként megadott virtuális gép ugyanazokat a beállításokat rendeli hozzá, mint a forrás.
 **Virtuális gép rendelkezésre állási zónája** | A rendelkezésre állási zóna, amelyben a célként megadott virtuális gép el lesz helyezve. Ez akkor jelölhető meg, ha nem szeretné módosítani a forrás beállításait, **vagy ha nem** szeretné a virtuális gépet egy rendelkezésre állási zónában elhelyezni.
 **Virtuális gép termékváltozata** | A [virtuális gép típusa](https://azure.microsoft.com/pricing/details/virtual-machines/series/) (a célként megadott régióban elérhető), amelyet a cél virtuális géphez használni fog.<br/><br/> A kiválasztott cél virtuális gép nem lehet kisebb, mint a forrásoldali virtuális gép.
 **Hálózati erőforrások** | A Virtual Networks (virtuális hálózatok)/Network biztonsági csoportok/hálózati adapterek beállításai:<br/><br/> – Hozzon létre egy új erőforrást ugyanazzal a névvel a célként megadott régióban.<br/><br/> – Hozzon létre egy új erőforrást egy másik névvel a célként megadott régióban.<br/><br/> – Egy meglévő hálózati erőforrást használhat a célként megadott régióban.<br/><br/> Ha új cél-erőforrást hoz létre, a módosított beállítások kivételével a forrás erőforrással megegyező beállításokat rendel hozzá.
 **Nyilvános IP-cím neve** | Adja meg a nevet.
-**Nyilvános IP-cím SKU** | Határozza meg az [SKU](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku)-t.
-**Nyilvános IP-cím zóna** | A [zóna](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#standard) megadása a szabványos nyilvános IP-címekhez.<br/><br/> Ha azt szeretné, hogy a zóna redundáns legyen, adja meg a **zónát redundánsként**.
+**Nyilvános IP-cím SKU** | Határozza meg az [SKU](../virtual-network/public-ip-addresses.md#sku)-t.
+**Nyilvános IP-cím zóna** | A [zóna](../virtual-network/public-ip-addresses.md#standard) megadása a szabványos nyilvános IP-címekhez.<br/><br/> Ha azt szeretné, hogy a zóna redundáns legyen, adja meg a **zónát redundánsként**.
 **Terheléselosztó neve** | Adja meg a nevet.
 **Terheléselosztó SKU** | Alapszintű vagy standard. A standard használatát javasoljuk.
 **Terheléselosztó zónája** | Határozza meg a terheléselosztó zónáját. <br/><br/> Ha azt szeretné, hogy a zóna redundáns legyen, adja meg a **zónát redundánsként**.
@@ -62,7 +62,7 @@ Az erőforrás céljának beállításait az erőforrás-áthelyezési gyűjtem�
 Beállítások módosítása: 
 
 1. A **különböző régiók** oldalon > **cél konfigurációja** oszlopban kattintson az erőforrás bejegyzésére mutató hivatkozásra.
-2. A **konfigurációs beállítások**területen létrehozhat egy új virtuális gépet a célként megadott régióban.
+2. A **konfigurációs beállítások** területen létrehozhat egy új virtuális gépet a célként megadott régióban.
 3. Rendeljen hozzá egy új rendelkezésre állási zónát, rendelkezésre állási készletet vagy SKU-t a célként megadott virtuális géphez. **Rendelkezésre állási zóna** és **SKU**.
 
 Csak a szerkesztett erőforrás módosításait kell elvégezni. Minden függő erőforrást külön kell frissítenie.
@@ -90,8 +90,8 @@ Azure SQL Database erőforrások áthelyezésekor módosíthatja az áthelyezés
 
 Egy Azure SQL Database erőforráshoz tartozó cél beállításait a következőképpen módosíthatja: 
 
-1. Az **egyes régiókban**a módosítani kívánt erőforráshoz kattintson a **cél konfigurációs** bejegyzésre.
-2. A **konfigurációs beállítások**területen határozza meg a fenti táblázatban összefoglalt célként megadott beállításokat.
+1. Az **egyes régiókban** a módosítani kívánt erőforráshoz kattintson a **cél konfigurációs** bejegyzésre.
+2. A **konfigurációs beállítások** területen határozza meg a fenti táblázatban összefoglalt célként megadott beállításokat.
 
 ## <a name="next-steps"></a>Következő lépések
 

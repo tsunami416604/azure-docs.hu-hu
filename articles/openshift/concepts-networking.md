@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 06/22/2020
-ms.openlocfilehash: fb81405e85d6e2653e0cf6c007c363493992161a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3417b59d0be9e285f8793ef598abb7f98bda7549
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87419971"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95527989"
 ---
 # <a name="networking-in-azure-red-hat-on-openshift-4"></a>Hálózatkezelés az Azure Red Hat-on a OpenShift 4
 
@@ -98,10 +98,10 @@ A következő hálózati beállítások érhetők el az Azure Red Hat OpenShift 
     * "Nyilvános" – az API-kiszolgáló külső hálózatok számára érhető el.
     * "Private" – az API-kiszolgáló egy magánhálózati IP-címet rendelt a főhálózatból, csak csatlakoztatott hálózatokon (a fürt más alhálózatai között) érhető el. A rendszer létrehoz egy privát DNS-zónát az ügyfél nevében.
 * **Behatolás láthatósága** – az az [ARO Create parancs](tutorial-create-cluster.md#create-the-cluster)futtatásakor az API láthatóságát állíthatja be.
-    * A "nyilvános" útvonalak alapértelmezett értéke a nyilvános Azure standard Load Balancer (ez módosítható).
+    * A "nyilvános" útvonalak alapértelmezett értéke a nyilvános standard Load Balancer (ez módosítható).
     * A "privát" útvonalak alapértelmezett értéke a belső terheléselosztó (ez módosítható).
 
-## <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
+## <a name="network-security-groups"></a>Hálózati biztonsági csoportok
 A hálózati biztonsági csoportok a csomópont erőforráscsoport-csoportjában lesznek létrehozva, amely zárolva van. A hálózati biztonsági csoportok közvetlenül az alhálózatokhoz vannak rendelve, nem a csomópont hálózati adapterén. A hálózati biztonsági csoportok nem változtathatók meg, ami azt jelenti, hogy nincs engedélye a módosítására. 
 
 Nyilvánosan látható API-kiszolgálóval azonban nem hozhat létre hálózati biztonsági csoportokat, és hozzárendelheti azokat a hálózati adapterekhez.

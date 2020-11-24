@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 91bc7adaf7829766c471056c50c1c3abd70dda63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a53f947eb2a44cc8773be8ee2b2bd03ca899be22
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87828778"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95521002"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure Storage Explorer kibocsátási megjegyzések
 
@@ -86,7 +86,7 @@ A Storage Explorer korábbi verzióinak letöltéséhez látogasson el a GitHub-
 * A felügyelt lemezes szolgáltatások Azure Stack nem támogatottak.
 * Ha egy lemez feltöltése vagy beillesztése meghiúsul, és a hiba előtt új lemez lett létrehozva, akkor Storage Explorer nem törli a lemezt.
 * Attól függően, hogy mikor szakítja meg a lemez feltöltését vagy beillesztését, megsérült állapotban hagyhatja az új lemezt. Ha ez történik, törölnie kell az új lemezt, vagy manuálisan kell meghívnia a lemez API-jait a lemez tartalmának lecserélése érdekében, hogy az már ne legyen megsérült.
-* A RBAC használatakor Storage Explorer a tárolási erőforrások eléréséhez bizonyos felügyeleti rétegre vonatkozó engedélyeket igényel. További információért tekintse meg a [hibaelhárítási útmutatót](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
+* A RBAC használatakor Storage Explorer a tárolási erőforrások eléréséhez bizonyos felügyeleti rétegre vonatkozó engedélyeket igényel. További információért tekintse meg a [hibaelhárítási útmutatót](./storage/common/storage-explorer-troubleshooting.md) .
 * A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez csak frissítse a csoport csomópontot. További információ: #537.
 * Ha a VS for Mac-et használja, és korábban már létrehozott egy egyéni HRE-konfigurációt, előfordulhat, hogy nem tud bejelentkezni. A probléma megkerüléséhez törölje a ~/. IdentityService/AadConfigurations. Ha így tesz, azzal nem oldja fel a problémát.
 * A Azurite még nem teljes mértékben implementálta az összes tárolási API-t. Emiatt előfordulhat, hogy a Azurite fejlesztési tárolóhoz való használata váratlan hibákat vagy viselkedést okoz.
@@ -108,7 +108,7 @@ A Storage Explorer korábbi verzióinak letöltéséhez látogasson el a GitHub-
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* A Linuxon futó Storage Explorer futtatásához bizonyos függőségeket először telepíteni kell. További információért tekintse meg a Storage Explorer [hibaelhárítási útmutatóját](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) .
+* A Linuxon futó Storage Explorer futtatásához bizonyos függőségeket először telepíteni kell. További információért tekintse meg a Storage Explorer [hibaelhárítási útmutatóját](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies) .
 
 ## <a name="previous-releases"></a>Korábbi kiadások
 
@@ -176,7 +176,7 @@ A Storage Explorer korábbi verzióinak letöltéséhez látogasson el a GitHub-
   * Lemez pillanatképének létrehozása
 
 A lemezek feltöltését, letöltését és régiók közötti másolását a AzCopy v10 látja el.
-* A Storage Explorer mostantól a Linux rendszerhez tartozó snap-tárolón keresztül is telepíthető. Ha az illesztési tárolón keresztül telepíti az alkalmazást, a rendszer minden függőséget telepít Önnek, beleértve a .NET Core-t is. Jelenleg ellenőrizte, hogy Storage Explorer jól fut az Ubuntu és a CentOS platformon. Ha más Linux-disztribúciókban lévő snap Store-ból való telepítéssel kapcsolatos problémákat tapasztal, [Nyisson meg egy problémát a githubon](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=). Ha többet szeretne megtudni az snap áruházból történő telepítésről, tekintse meg az [első lépéseket ismertető útmutatót](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux). #68
+* A Storage Explorer mostantól a Linux rendszerhez tartozó snap-tárolón keresztül is telepíthető. Ha az illesztési tárolón keresztül telepíti az alkalmazást, a rendszer minden függőséget telepít Önnek, beleértve a .NET Core-t is. Jelenleg ellenőrizte, hogy Storage Explorer jól fut az Ubuntu és a CentOS platformon. Ha más Linux-disztribúciókban lévő snap Store-ból való telepítéssel kapcsolatos problémákat tapasztal, [Nyisson meg egy problémát a githubon](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=). Ha többet szeretne megtudni az snap áruházból történő telepítésről, tekintse meg az [első lépéseket ismertető útmutatót](./vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=linux). #68
 * Két jelentős módosítás történt a Azure Active Directory (Azure AD) csatlakoztatására, amelynek célja, hogy a funkció ADLS Gen2 felhasználók számára is hasznos legyen:
   * Most válassza ki azt a bérlőt, amelyhez az erőforrást csatlakoztatja. Ez azt jelenti, hogy már nem kell RBAC hozzáférni az erőforrás előfizetéséhez.
   * Ha ADLS Gen2 BLOB-tárolót csatlakoztat, most már csatolhatja a tároló egy adott elérési útját.
@@ -202,7 +202,7 @@ A lemezek feltöltését, letöltését és régiók közötti másolását a Az
 * Attól függően, hogy mikor szakítja meg a lemez feltöltését vagy beillesztését, megsérült állapotban hagyhatja az új lemezt. Ha ez történik, törölnie kell az új lemezt, vagy manuálisan kell meghívnia a lemez API-jait a lemez tartalmának lecserélése érdekében, hogy az már ne legyen megsérült.
 * Attól függően, hogy mikor szakítja meg a lemez feltöltését vagy beillesztését, megsérült állapotban hagyhatja az új lemezt. Ha ez történik, törölnie kell az új lemezt, vagy manuálisan kell meghívnia a lemez API-jait a lemez tartalmának lecserélése érdekében, hogy az már ne legyen megsérült.
 * A nem AzCopy Blobok letöltésének végrehajtásakor a nagyméretű fájlok MD5-hitelesítése nem történik meg. Ezt a Storage SDK hibája okozza. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* A RBAC használatakor Storage Explorer a tárolási erőforrások eléréséhez bizonyos felügyeleti rétegre vonatkozó engedélyeket igényel. További információért tekintse meg a [hibaelhárítási útmutatót](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
+* A RBAC használatakor Storage Explorer a tárolási erőforrások eléréséhez bizonyos felügyeleti rétegre vonatkozó engedélyeket igényel. További információért tekintse meg a [hibaelhárítási útmutatót](./storage/common/storage-explorer-troubleshooting.md) .
 * A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez csak frissítse a csoport csomópontot. További információ: #537.
 * Ha a VS for Mac-et használja, és korábban már létrehozott egy egyéni HRE-konfigurációt, előfordulhat, hogy nem tud bejelentkezni. A probléma megkerüléséhez törölje a ~/. IdentityService/AadConfigurations. Ha így tesz, azzal nem oldja fel a problémát.
 * A Azurite még nem teljes mértékben implementálta az összes tárolási API-t. Emiatt előfordulhat, hogy a Azurite fejlesztési tárolóhoz való használata váratlan hibákat vagy viselkedést okoz.
@@ -224,7 +224,7 @@ A lemezek feltöltését, letöltését és régiók közötti másolását a Az
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* A Linuxon futó Storage Explorer futtatásához bizonyos függőségeket először telepíteni kell. További információért tekintse meg a Storage Explorer [hibaelhárítási útmutatóját](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) .
+* A Linuxon futó Storage Explorer futtatásához bizonyos függőségeket először telepíteni kell. További információért tekintse meg a Storage Explorer [hibaelhárítási útmutatóját](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies) .
 
 
 ## <a name="version-1100"></a>1.10.0 verziója
@@ -250,7 +250,7 @@ A lemezek feltöltését, letöltését és régiók közötti másolását a Az
     * Lemez pillanatképének létrehozása
 
     A lemezek feltöltését, letöltését és régiók közötti másolását a AzCopy v10 látja el.
-* A Storage Explorer mostantól a Linux rendszerhez tartozó snap-tárolón keresztül is telepíthető. Ha az illesztési tárolón keresztül telepíti az alkalmazást, a rendszer minden függőséget telepít Önnek, beleértve a .NET Core-t is. Jelenleg ellenőrizte, hogy Storage Explorer jól fut az Ubuntu és a CentOS platformon. Ha más Linux-disztribúciókban lévő snap Store-ból való telepítéssel kapcsolatos problémákat tapasztal, [Nyisson meg egy problémát a githubon](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=). Ha többet szeretne megtudni az snap áruházból történő telepítésről, tekintse meg az [első lépéseket ismertető útmutatót](https://aka.ms/storageexplorer/snapinformation). [#68](https://www.github.com/Microsoft/AzureStorageExplorer/issues/68)
+* A Storage Explorer mostantól a Linux rendszerhez tartozó snap-tárolón keresztül is telepíthető. Ha az illesztési tárolón keresztül telepíti az alkalmazást, a rendszer minden függőséget telepít Önnek, beleértve a .NET Core-t is. Jelenleg ellenőrizte, hogy Storage Explorer jól fut az Ubuntu és a CentOS platformon. Ha más Linux-disztribúciókban lévő snap Store-ból való telepítéssel kapcsolatos problémákat tapasztal, [Nyisson meg egy problémát a githubon](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=). Ha többet szeretne megtudni az snap áruházból történő telepítésről, tekintse meg az [első lépéseket ismertető útmutatót](./vs-azure-tools-storage-manage-with-storage-explorer.md). [#68](https://www.github.com/Microsoft/AzureStorageExplorer/issues/68)
 * Két jelentős módosítás történt a Azure Active Directory (Azure AD) csatlakoztatására, amelynek célja, hogy a funkció ADLS Gen2 felhasználók számára is hasznos legyen: * Most válassza ki azt a bérlőt, amelyhez az erőforrást csatlakoztatja. Ez azt jelenti, hogy már nem kell RBAC hozzáférni az erőforrás előfizetéséhez.
         * Ha ADLS Gen2 BLOB-tárolót csatlakoztat, most már csatolhatja a tároló egy adott elérési útját.
 * ADLS Gen2 fájlokhoz és mappákhoz tartozó ACL-ek kezelésekor a Storage Explorer mostantól megjeleníti az ACL entitások rövid nevét. [#957](https://www.github.com/Microsoft/AzureStorageExplorer/issues/957)
@@ -276,7 +276,7 @@ A lemezek feltöltését, letöltését és régiók közötti másolását a Az
 * Ha egy lemez feltöltése vagy beillesztése meghiúsul, és a hiba előtt új lemez lett létrehozva, akkor Storage Explorer nem törli a lemezt.
 * Attól függően, hogy mikor szakítja meg a lemez feltöltését vagy beillesztését, megsérült állapotban hagyhatja az új lemezt. Ha ez történik, törölnie kell az új lemezt, vagy manuálisan kell meghívnia a lemez API-jait a lemez tartalmának lecserélése érdekében, hogy az már ne legyen megsérült.
 * A nem AzCopy Blobok letöltésének végrehajtásakor a nagyméretű fájlok MD5-hitelesítése nem történik meg. Ezt a Storage SDK hibája okozza. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* A RBAC használatakor Storage Explorer a tárolási erőforrások eléréséhez bizonyos felügyeleti rétegre vonatkozó engedélyeket igényel. További információért tekintse meg a [hibaelhárítási útmutatót](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
+* A RBAC használatakor Storage Explorer a tárolási erőforrások eléréséhez bizonyos felügyeleti rétegre vonatkozó engedélyeket igényel. További információért tekintse meg a [hibaelhárítási útmutatót](./storage/common/storage-explorer-troubleshooting.md) .
 * A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez csak frissítse a csoport csomópontot. További információ: #537.
 * Ha a VS for Mac-et használja, és korábban már létrehozott egy egyéni HRE-konfigurációt, előfordulhat, hogy nem tud bejelentkezni. A probléma megkerüléséhez törölje a ~/. IdentityService/AadConfigurations. Ha így tesz, azzal nem oldja fel a problémát.
 * A Azurite még nem teljes mértékben implementálta az összes tárolási API-t. Emiatt előfordulhat, hogy a Azurite fejlesztési tárolóhoz való használata váratlan hibákat vagy viselkedést okoz.
@@ -298,7 +298,7 @@ A lemezek feltöltését, letöltését és régiók közötti másolását a Az
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* A Linuxon futó Storage Explorer futtatásához bizonyos függőségeket először telepíteni kell. További információért tekintse meg a Storage Explorer [hibaelhárítási útmutatóját](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) .
+* A Linuxon futó Storage Explorer futtatásához bizonyos függőségeket először telepíteni kell. További információért tekintse meg a Storage Explorer [hibaelhárítási útmutatóját](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies) .
 
 ## <a name="version-190"></a>1.9.0 verziója
 7/1/2019
@@ -334,7 +334,7 @@ A lemezek feltöltését, letöltését és régiók közötti másolását a Az
 ### <a name="known-issues"></a>Ismert problémák
 
 * A nem AzCopy Blobok letöltésének végrehajtásakor a nagyméretű fájlok MD5-hitelesítése nem történik meg. Ezt a Storage SDK hibája okozza. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* A RBAC használatakor Storage Explorer a tárolási erőforrások eléréséhez bizonyos felügyeleti rétegre vonatkozó engedélyeket igényel. További információért tekintse meg a [hibaelhárítási útmutatót](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
+* A RBAC használatakor Storage Explorer a tárolási erőforrások eléréséhez bizonyos felügyeleti rétegre vonatkozó engedélyeket igényel. További információért tekintse meg a [hibaelhárítási útmutatót](./storage/common/storage-explorer-troubleshooting.md) .
 * Sikertelen volt a ADLS Gen2 Blobok elérésének megkísérlése a proxy mögött.
 * A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez csak frissítse a csoport csomópontot. További információ: #537.
 * Ha a VS for Mac-et használja, és korábban már létrehozott egy egyéni HRE-konfigurációt, előfordulhat, hogy nem tud bejelentkezni. A probléma megkerüléséhez törölje a ~/. IdentityService/AadConfigurations. Ha így tesz, azzal nem oldja fel a problémát.
@@ -356,7 +356,7 @@ A lemezek feltöltését, letöltését és régiók közötti másolását a Az
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* A Linuxon futó Storage Explorer futtatásához bizonyos függőségeket először telepíteni kell. További információért tekintse meg a Storage Explorer [hibaelhárítási útmutatóját](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) .
+* A Linuxon futó Storage Explorer futtatásához bizonyos függőségeket először telepíteni kell. További információért tekintse meg a Storage Explorer [hibaelhárítási útmutatóját](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies) .
 
 ## <a name="version-181"></a>1.8.1-es verzió
 5/13/2019
@@ -391,7 +391,7 @@ A lemezek feltöltését, letöltését és régiók közötti másolását a Az
 ### <a name="known-issues"></a>Ismert problémák
 
 * A nem AzCopy Blobok letöltésének végrehajtásakor a nagyméretű fájlok MD5-hitelesítése nem történik meg. Ezt a Storage SDK hibája okozza. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* A RBAC használatakor Storage Explorer a tárolási erőforrások eléréséhez bizonyos felügyeleti rétegre vonatkozó engedélyeket igényel. További információért tekintse meg a [hibaelhárítási útmutatót](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
+* A RBAC használatakor Storage Explorer a tárolási erőforrások eléréséhez bizonyos felügyeleti rétegre vonatkozó engedélyeket igényel. További információért tekintse meg a [hibaelhárítási útmutatót](./storage/common/storage-explorer-troubleshooting.md) .
 * Sikertelen volt a ADLS Gen2 Blobok elérésének megkísérlése a proxy mögött.
 * A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez csak frissítse a csoport csomópontot. További információ: #537.
 * Ha a VS for Mac-et használja, és korábban már létrehozott egy egyéni HRE-konfigurációt, előfordulhat, hogy nem tud bejelentkezni. A probléma megkerüléséhez törölje a ~/. IdentityService/AadConfigurations. Ha így tesz, azzal nem oldja fel a problémát.
@@ -413,7 +413,7 @@ A lemezek feltöltését, letöltését és régiók közötti másolását a Az
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* A Linuxon futó Storage Explorer futtatásához bizonyos függőségeket először telepíteni kell. További információért tekintse meg a Storage Explorer [hibaelhárítási útmutatóját](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) .
+* A Linuxon futó Storage Explorer futtatásához bizonyos függőségeket először telepíteni kell. További információért tekintse meg a Storage Explorer [hibaelhárítási útmutatóját](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies) .
 
 ## <a name="version-180"></a>1.8.0-verzió
 2019. 05. 01.
@@ -443,7 +443,7 @@ A lemezek feltöltését, letöltését és régiók közötti másolását a Az
 ### <a name="known-issues"></a>Ismert problémák
 
 * A nem AzCopy Blobok letöltésének végrehajtásakor a nagyméretű fájlok MD5-hitelesítése nem történik meg. Ezt a Storage SDK hibája okozza. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
-* A RBAC használatakor Storage Explorer a tárolási erőforrások eléréséhez bizonyos felügyeleti rétegre vonatkozó engedélyeket igényel. További információért tekintse meg a [hibaelhárítási útmutatót](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
+* A RBAC használatakor Storage Explorer a tárolási erőforrások eléréséhez bizonyos felügyeleti rétegre vonatkozó engedélyeket igényel. További információért tekintse meg a [hibaelhárítási útmutatót](./storage/common/storage-explorer-troubleshooting.md) .
 * Sikertelen volt a ADLS Gen2 Blobok elérésének megkísérlése a proxy mögött.
 * A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez csak frissítse a csoport csomópontot. További információ: #537.
 * Ha a VS for Mac-et használja, és korábban már létrehozott egy egyéni HRE-konfigurációt, előfordulhat, hogy nem tud bejelentkezni. A probléma megkerüléséhez törölje a ~/. IdentityService/AadConfigurations. Ha így tesz, azzal nem oldja fel a problémát.
@@ -465,7 +465,7 @@ A lemezek feltöltését, letöltését és régiók közötti másolását a Az
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* A Linuxon futó Storage Explorer futtatásához bizonyos függőségeket először telepíteni kell. További információért tekintse meg a Storage Explorer [hibaelhárítási útmutatóját](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) .
+* A Linuxon futó Storage Explorer futtatásához bizonyos függőségeket először telepíteni kell. További információért tekintse meg a Storage Explorer [hibaelhárítási útmutatóját](./storage/common/storage-explorer-troubleshooting.md?tabs=1804#linux-dependencies) .
 
 ## <a name="version-170"></a>1.7.0-ás verzió
 3/5/2019
@@ -499,7 +499,7 @@ A lemezek feltöltését, letöltését és régiók közötti másolását a Az
 
 ### <a name="known-issues"></a>Ismert problémák
 
-* A RBAC használatakor Storage Explorer a tárolási erőforrások eléréséhez bizonyos felügyeleti rétegre vonatkozó engedélyeket igényel. További információért tekintse meg a [hibaelhárítási útmutatót](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting) .
+* A RBAC használatakor Storage Explorer a tárolási erőforrások eléréséhez bizonyos felügyeleti rétegre vonatkozó engedélyeket igényel. További információért tekintse meg a [hibaelhárítási útmutatót](./storage/common/storage-explorer-troubleshooting.md) .
 * Sikertelen volt a ADLS Gen2 Blobok elérésének megkísérlése a proxy mögött.
 * A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez csak frissítse a csoport csomópontot. További információ: #537.
 * A SAS URI-n keresztül csatolt erőforrásból (például blob-tárolóból) való leválasztás olyan hibát okozhat, amely megakadályozza, hogy a többi melléklet helyesen legyen megjelenítve. A probléma megkerüléséhez csak frissítse a csoport csomópontot. További információ: #537.
@@ -559,7 +559,7 @@ A lemezek feltöltését, letöltését és régiók közötti másolását a Az
         
 ### <a name="new"></a>Új
 
-* Mostantól a Storage Explorer használatával férhet hozzá a blob-adataihoz a [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409)-on keresztül. Ha be van jelentkezve, és Storage Explorer nem tudja lekérni a Storage-fiók kulcsait, akkor a rendszer egy OAuth-tokent használ a hitelesítéshez az adataival való interakció során.
+* Mostantól a Storage Explorer használatával férhet hozzá a blob-adataihoz a [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json)-on keresztül. Ha be van jelentkezve, és Storage Explorer nem tudja lekérni a Storage-fiók kulcsait, akkor a rendszer egy OAuth-tokent használ a hitelesítéshez az adataival való interakció során.
 * A Storage Explorer mostantól támogatja a ADLS Gen2 Storage-fiókokat. Ha Storage Explorer észleli, hogy a hierarchikus névtér engedélyezve van egy Storage-fiókhoz, a Storage-fiók neve mellett "(ADLS Gen2 Preview)" jelenik meg. A Storage Explorer képes megállapítani, hogy a hierarchikus névtér engedélyezve van-e a bejelentkezéskor, vagy ha a Storage-fiókot a név és a kulcs használatával csatlakoztatta. ADLS Gen2 Storage-fiókok esetében a következőket használhatja Storage Explorer:
   * Tárolók létrehozása és törlése
   * Tároló tulajdonságainak és engedélyeinek kezelése (bal oldali)
@@ -628,7 +628,7 @@ A lemezek feltöltését, letöltését és régiók közötti másolását a Az
         
 ### <a name="new"></a>Új
 
-* Mostantól a Storage Explorer használatával férhet hozzá a blob-adataihoz a [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409)-on keresztül. Ha be van jelentkezve, és Storage Explorer nem tudja lekérni a Storage-fiók kulcsait, akkor a rendszer egy OAuth-tokent használ a hitelesítéshez az adataival való interakció során.
+* Mostantól a Storage Explorer használatával férhet hozzá a blob-adataihoz a [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json)-on keresztül. Ha be van jelentkezve, és Storage Explorer nem tudja lekérni a Storage-fiók kulcsait, akkor a rendszer egy OAuth-tokent használ a hitelesítéshez az adataival való interakció során.
 * A Storage Explorer mostantól támogatja a ADLS Gen2 Storage-fiókokat. Ha Storage Explorer észleli, hogy a hierarchikus névtér engedélyezve van egy Storage-fiókhoz, a Storage-fiók neve mellett "(ADLS Gen2 Preview)" jelenik meg. A Storage Explorer képes megállapítani, hogy a hierarchikus névtér engedélyezve van-e a bejelentkezéskor, vagy ha a Storage-fiókot a név és a kulcs használatával csatlakoztatta. ADLS Gen2 Storage-fiókok esetében a következőket használhatja Storage Explorer:
   * Tárolók létrehozása és törlése
   * Tároló tulajdonságainak és engedélyeinek kezelése (bal oldali)
@@ -683,7 +683,7 @@ A lemezek feltöltését, letöltését és régiók közötti másolását a Az
 
 ### <a name="new"></a>Új
 
-* Mostantól a Storage Explorer használatával férhet hozzá a blob-adataihoz a [RBAC](https://go.microsoft.com/fwlink/?linkid=2045904&clcid=0x409)-on keresztül. Ha be van jelentkezve, és Storage Explorer nem tudja lekérni a Storage-fiók kulcsait, akkor a rendszer egy OAuth-tokent használ a hitelesítéshez az adataival való interakció során.
+* Mostantól a Storage Explorer használatával férhet hozzá a blob-adataihoz a [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json)-on keresztül. Ha be van jelentkezve, és Storage Explorer nem tudja lekérni a Storage-fiók kulcsait, akkor a rendszer egy OAuth-tokent használ a hitelesítéshez az adataival való interakció során.
 * A Storage Explorer mostantól támogatja a ADLS Gen2 Storage-fiókokat. Ha Storage Explorer észleli, hogy a hierarchikus névtér engedélyezve van egy Storage-fiókhoz, a Storage-fiók neve mellett "(ADLS Gen2 Preview)" jelenik meg. A Storage Explorer képes megállapítani, hogy a hierarchikus névtér engedélyezve van-e a bejelentkezéskor, vagy ha a Storage-fiókot a név és a kulcs használatával csatlakoztatta. ADLS Gen2 Storage-fiókok esetében a következőket használhatja Storage Explorer:
   * Tárolók létrehozása és törlése
   * Tároló tulajdonságainak és engedélyeinek kezelése (bal oldali)
@@ -1144,7 +1144,7 @@ Végezetül a AzCopy és a fájlmegosztás használatának támogatása a jövő
 
 ### <a name="new"></a>Új
 * A Storage Explorer mostantól támogatja a Azurite használatát. Megjegyzés: a Azurite-hez való kapcsolódás az alapértelmezett fejlesztési végpontok hardcoded.
-* A Storage Explorer mostantól támogatja a csak a Blobokhoz és a GPV2 tartozó hozzáférési szinteket. További információ a hozzáférési szintekről [.](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)
+* A Storage Explorer mostantól támogatja a csak a Blobokhoz és a GPV2 tartozó hozzáférési szinteket. További információ a hozzáférési szintekről [.](./storage/blobs/storage-blob-storage-tiers.md)
 * SAS létrehozásakor már nincs szükség kezdő időpontra.
 
 ### <a name="fixes"></a>Javítások
@@ -1204,7 +1204,7 @@ Végezetül a AzCopy és a fájlmegosztás használatának támogatása a jövő
 * Storage Explorer visszajelzés most a GitHubon él. A problémák oldalát a bal alsó sarokban található visszajelzés gombra kattintva vagy a következő címen érheti el: [https://github.com/Microsoft/AzureStorageExplorer/issues](https://github.com/Microsoft/AzureStorageExplorer/issues) . Nyugodtan javaslatokat tehet, jelenthet problémákat, kérdéseket tehet fel, vagy bármilyen más visszajelzést is küldhet.
 * Ha TLS/SSL-tanúsítványokkal kapcsolatos problémákba ütközik, és nem találja a jogsértő tanúsítványt, most már elindíthatja a Storage Explorert a parancssorból a `--ignore-certificate-errors` jelzővel. Ha ezzel a jelzővel indul el, Storage Explorer figyelmen kívül hagyja a TLS/SSL-tanúsítvány hibáit.
 * A blob és a file items (helyi) menüjében már van egy "Letöltés" lehetőség.
-* Továbbfejlesztett kisegítő lehetőségek és képernyőolvasók támogatása. Ha a kisegítő lehetőségek valamelyikét használja, további információért tekintse meg a [kisegítő lehetőségek dokumentációját](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-accessibility) .
+* Továbbfejlesztett kisegítő lehetőségek és képernyőolvasók támogatása. Ha a kisegítő lehetőségek valamelyikét használja, további információért tekintse meg a [kisegítő lehetőségek dokumentációját](./vs-azure-tools-storage-explorer-accessibility.md) .
 * Storage Explorer mostantól az Electron 1.8.3-t használja
 
 ### <a name="breaking-changes"></a>Kompatibilitástörő változások

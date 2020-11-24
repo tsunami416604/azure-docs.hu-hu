@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: daa3f3b1687b01005f32cbd2665c84b933c993b8
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 706fa1666dc327955294fb350b673aed40d6bf48
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837617"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95520662"
 ---
 # <a name="continuous-access-evaluation"></a>Folyamatos hozzáférés-kiértékelés
 
@@ -26,7 +26,9 @@ Az ügyfelek a felhasználóra vonatkozó feltételek változása, például a h
 
 A Szabályzat megsértésével vagy biztonsági problémákkal kapcsolatos időben történő válaszadás esetén a token kiállítója, például az Azure AD és a függő entitás (például az Exchange Online) között "beszélgetésre van szükség. Ez a kétirányú beszélgetés két fontos képességet biztosít nekünk. A függő entitás megfigyelheti, hogy mikor változott meg a dolgok, például egy új helyről érkező ügyfél, és tájékoztassa a jogkivonat kiállítóját. Azt is megadja a jogkivonat kiállítójának, hogy elmondja, hogy a függő entitás leállítja a tokenek betartását egy adott felhasználó számára a fiókok veszélyeztetése, a nem megfelelőség vagy más problémák miatt. A beszélgetés mechanizmusa folyamatos hozzáférés kiértékelése (CAE). A cél az, hogy a válasz közel valós idejű legyen, de bizonyos esetekben az esemény propagálási ideje miatt akár 15 percet is megfigyelhető.
 
-A folyamatos hozzáférés kiértékelésének kezdeti megvalósítása az Exchange, a Teams és a SharePoint Online rendszerre összpontosít. 
+A folyamatos hozzáférés kiértékelésének kezdeti megvalósítása az Exchange, a Teams és a SharePoint Online rendszerre összpontosít.
+
+Az alkalmazások a CAE használatára való előkészítésével kapcsolatban lásd: a [folyamatos hozzáférés kiértékelése engedélyezett API-k használata az alkalmazásokban](/develop/app-resilience-continuous-access-evaluation.md).
 
 ### <a name="key-benefits"></a>Főbb előnyök
 

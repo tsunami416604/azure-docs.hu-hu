@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 3a5489241aa15ce105dbe4d89086aff00373ca55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f21db00ecc9ff2668698f53a4d20f5bae525721
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90603968"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95520441"
 ---
 # <a name="tutorial-move-azure-vms-across-regions"></a>Oktatóanyag: Azure-beli virtuális gépek áthelyezése régiók között
 
@@ -23,7 +23,7 @@ Ebből a cikkből megtudhatja, hogyan helyezheti át az Azure-beli virtuális g�
 > Az Azure-beli erőforrás-mozgató szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
 
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Az előfeltételek és a követelmények ellenőrzése.
@@ -37,14 +37,14 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!NOTE]
 > Az oktatóanyagok a forgatókönyvek kipróbálásának leggyorsabb elérési útját mutatják be, és az alapértelmezett beállításokat használják. 
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/), mielőtt hozzákezd. Ezután jelentkezzen be a [Azure Portalba](https://portal.azure.com).
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/). Ezután jelentkezzen be a [Azure Portalba](https://portal.azure.com).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 -  Győződjön meg arról, hogy *tulajdonosi* hozzáféréssel rendelkezik az áthelyezni kívánt erőforrásokat tartalmazó előfizetéshez.
     - Amikor először ad hozzá egy erőforrást egy adott forráshoz és célhoz egy Azure-előfizetésben, az erőforrás-mozgató létrehoz egy [rendszerhez rendelt felügyelt identitást](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (korábbi nevén felügyelt szolgáltatás azonosítása (MSI)), amelyet az előfizetés megbízhatónak tekint.
     - Az identitás létrehozásához, valamint a szükséges szerepkör (közreműködő vagy felhasználói hozzáférés rendszergazdája a forrás-előfizetésben) való hozzárendeléséhez az erőforrások hozzáadásához használt fióknak *tulajdonosi* engedélyekkel kell rendelkeznie az előfizetésben. [További](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) információ az Azure-szerepkörökről.
-- Az előfizetéshez elegendő kvóta szükséges ahhoz, hogy létrehozza a célhelyen áthelyezett erőforrásokat. Ha nem rendelkezik kvótával, [kérjen további korlátozásokat](/azure/azure-resource-manager/management/azure-subscription-service-limits).
+- Az előfizetéshez elegendő kvóta szükséges ahhoz, hogy létrehozza a célhelyen áthelyezett erőforrásokat. Ha nem rendelkezik kvótával, [kérjen további korlátozásokat](../azure-resource-manager/management/azure-subscription-service-limits.md).
 - Ellenőrizze, hogy a virtuális gépeket áthelyező cél régióhoz tartozó díjszabást és díjakat kell-e használni. A [díjszabási számológép](https://azure.microsoft.com/pricing/calculator/) használatával segítséget nyújthat.
     
 
@@ -71,29 +71,29 @@ Válassza ki az áthelyezni kívánt erőforrásokat.
 - A régiók közötti áthelyezéshez már hozzáadott erőforrások nem jelennek meg.
 - Az erőforrásokat egy olyan célcsoportba helyezi át, amely ugyanabban az előfizetésben található, mint a forrásoldali régió. Ha módosítani szeretné az előfizetést, ezt az erőforrások áthelyezése után teheti meg.
 
-1. A Azure Portal keresse meg az *erőforrás-mozgató*kifejezést. Ezután a **szolgáltatások**területen válassza az **Azure-erőforrás mozgató**lehetőséget.
+1. A Azure Portal keresse meg az *erőforrás-mozgató* kifejezést. Ezután a **szolgáltatások** területen válassza az **Azure-erőforrás mozgató** lehetőséget.
 
     ![Az erőforrás-mozgató keresési eredményei a Azure Portal](./media/tutorial-move-region-virtual-machines/search.png)
 
-2. Az **Áttekintés**területen kattintson az első **lépések**elemre.
+2. Az **Áttekintés** területen kattintson az első **lépések** elemre.
 
     ![Gomb egy másik régióba való áthelyezéshez szükséges erőforrások hozzáadásához](./media/tutorial-move-region-virtual-machines/get-started.png)
 
-3. Az **erőforrások áthelyezése**  >  **forrás + cél**területen válassza ki a forrás-előfizetést és a régiót.
-4. A **cél**mezőben válassza ki azt a régiót, amelyre át szeretné helyezni a virtuális gépeket. Ezután kattintson a **Tovább** gombra.
+3. Az **erőforrások áthelyezése**  >  **forrás + cél** területen válassza ki a forrás-előfizetést és a régiót.
+4. A **cél** mezőben válassza ki azt a régiót, amelyre át szeretné helyezni a virtuális gépeket. Ezután kattintson a **Tovább** gombra.
 
     ![A forrás és a cél régió kiválasztására szolgáló lap](./media/tutorial-move-region-virtual-machines/source-target.png)
 
-6. Az **áthelyezni kívánt erőforrások**területen kattintson az **erőforrások kiválasztása**elemre.
-7. Az **erőforrások kiválasztása**területen válassza ki a virtuális gépet. Csak [az áthelyezéshez támogatott erőforrásokat](#check-vm-requirements)adhat hozzá. Ezután kattintson a **kész**gombra.
+6. Az **áthelyezni kívánt erőforrások** területen kattintson az **erőforrások kiválasztása** elemre.
+7. Az **erőforrások kiválasztása** területen válassza ki a virtuális gépet. Csak [az áthelyezéshez támogatott erőforrásokat](#check-vm-requirements)adhat hozzá. Ezután kattintson a **kész** gombra.
 
     ![Az áthelyezni kívánt virtuális gépek kiválasztására szolgáló lap](./media/tutorial-move-region-virtual-machines/select-vm.png)
 
-8.  Az **áthelyezni kívánt erőforrásokhoz**kattintson a **tovább**gombra.
-9. A **felülvizsgálat + Hozzáadás**elemnél ellenőrizze a forrás-és a célhely beállításait. 
+8.  Az **áthelyezni kívánt erőforrásokhoz** kattintson a **tovább** gombra.
+9. A **felülvizsgálat + Hozzáadás** elemnél ellenőrizze a forrás-és a célhely beállításait. 
 
     ![Lap a beállítások áttekintéséhez és az áthelyezés folytatásához](./media/tutorial-move-region-virtual-machines/review.png)
-10. Az erőforrások hozzáadásának megkezdéséhez kattintson a **Folytatás**gombra.
+10. Az erőforrások hozzáadásának megkezdéséhez kattintson a **Folytatás** gombra.
 11. A hozzáadási folyamat sikeres befejeződése után kattintson az **erőforrások hozzáadása az áthelyezéshez** az értesítési ikonra.
 12. Az értesítésre való kattintás után tekintse át az erőforrásokat az **egyes régiók között** oldalon.
 
@@ -104,8 +104,8 @@ Válassza ki az áthelyezni kívánt erőforrásokat.
 ## <a name="resolve-dependencies"></a>Függőségek feloldása
 
 1. Ha az erőforrások egy *érvényesítési függőségek* üzenetet jelenítenek meg a **problémák** oszlopban, kattintson a **függőségek ellenőrzése** gombra. Az érvényesítési folyamat megkezdődik.
-2. Ha függőségek találhatók, kattintson a **függőségek hozzáadása**lehetőségre. 
-3. A **függőségek hozzáadása**területen válassza ki a függő erőforrásokat > **függőségek hozzáadása**elemet. Figyelje az értesítések állapotát.
+2. Ha függőségek találhatók, kattintson a **függőségek hozzáadása** lehetőségre. 
+3. A **függőségek hozzáadása** területen válassza ki a függő erőforrásokat > **függőségek hozzáadása** elemet. Figyelje az értesítések állapotát.
 
     ![Függőségek hozzáadása](./media/tutorial-move-region-virtual-machines/add-dependencies.png)
 
@@ -123,14 +123,14 @@ Válassza ki az áthelyezni kívánt erőforrásokat.
 
 A virtuális gépek előkészítése és áthelyezése előtt a virtuálisgép-erőforráscsoporthoz a célként megadott régióban kell lennie. 
 
-### <a name="prepare-to-move-the-source-resource-group"></a>Felkészülés a forrásoldali erőforráscsoport áthelyezésére
+### <a name="prepare-to-move-the-source-resource-group"></a>Felkészülés a forrásként szolgáló erőforráscsoport áthelyezésére
 
 Az előkészítési folyamat során az erőforrás-mozgató Azure Resource Manager (ARM) sablonokat hoz létre az erőforráscsoport-beállítások használatával. Az erőforráscsoport erőforrásai nem érintettek.
 
 Előkészítés a következőképpen történik:
 
-1. Az **egyes régiókban**válassza ki a forrásként szolgáló erőforráscsoportot > **előkészítése**.
-2. Az **erőforrások előkészítése**területen kattintson az **előkészítés**gombra.
+1. Az **egyes régiókban** válassza ki a forrásként szolgáló erőforráscsoportot > **előkészítése**.
+2. Az **erőforrások előkészítése** területen kattintson az **előkészítés** gombra.
 
     ![Erőforráscsoport előkészítése](./media/tutorial-move-region-virtual-machines/prepare-resource-group.png)
 
@@ -142,16 +142,16 @@ Előkészítés a következőképpen történik:
 
 Az áthelyezést a következőképpen indíthatja el:
 
-1. Az **egyes régiókban**válassza ki az erőforráscsoportot > **Áthelyezés kezdeményezése**
-2. ln **erőforrások áthelyezése**, kattintson az **Áthelyezés kezdeményezése**lehetőségre. Az erőforráscsoport *folyamatban* állapotba lép.
+1. Az **egyes régiókban** válassza ki az erőforráscsoportot > **Áthelyezés kezdeményezése**
+2. ln **erőforrások áthelyezése**, kattintson az **Áthelyezés kezdeményezése** lehetőségre. Az erőforráscsoport *folyamatban* állapotba lép.
 3. Az áthelyezés kezdeményezése után létrejön a célként megadott erőforráscsoport, amely a generált ARM-sablon alapján történik. A forrás erőforráscsoport egy véglegesített *Áthelyezés függő* állapotba kerül.
 
     ![Kattintson az áthelyezés kezdeményezése gombra](./media/tutorial-move-region-virtual-machines/commit-move-pending.png)
 
 Az áthelyezési folyamat véglegesítése és befejezése:
 
-1. Az **egyes régiókban**válassza ki az erőforráscsoportot > **véglegesíti az áthelyezést**.
-2. ln **erőforrások áthelyezése**, kattintson a **véglegesítés**elemre.
+1. Az **egyes régiókban** válassza ki az erőforráscsoportot > **véglegesíti az áthelyezést**.
+2. ln **erőforrások áthelyezése**, kattintson a **véglegesítés** elemre.
 
 > [!NOTE]
 > Miután véglegesíti az áthelyezést, a forrás erőforráscsoport *függő* állapotban van.
@@ -160,11 +160,11 @@ Az áthelyezési folyamat véglegesítése és befejezése:
 
 Most, hogy áthelyezte a forrás erőforráscsoportot, előkészítheti a többi erőforrás áthelyezését.
 
-1. Az **egyes régiókban**válassza ki az előkészíteni kívánt erőforrásokat. 
+1. Az **egyes régiókban** válassza ki az előkészíteni kívánt erőforrásokat. 
 
     ![Az egyéb erőforrások előkészítésének kiválasztására szolgáló lap](./media/tutorial-move-region-virtual-machines/prepare-other.png)
 
-2. Válassza az **előkészítés**lehetőséget. 
+2. Válassza az **előkészítés** lehetőséget. 
 
 > [!NOTE]
 > - Az előkészítési folyamat során a rendszer a Azure Site Recovery mobilitási ügynököt telepíti a virtuális gépekre a replikáláshoz.
@@ -179,8 +179,8 @@ Most, hogy áthelyezte a forrás erőforráscsoportot, előkészítheti a többi
 
 Az előkészített erőforrások segítségével most már elindíthatja az áthelyezést. 
 
-1. Az **egyes régiókban**válassza az állapot *elindítása függőben*állapotú erőforrások lehetőséget. Ezután kattintson az **Áthelyezés kezdeményezése**lehetőségre.
-2. Az **erőforrások áthelyezése**területen kattintson az **Áthelyezés kezdeményezése**lehetőségre.
+1. Az **egyes régiókban** válassza az állapot *elindítása függőben* állapotú erőforrások lehetőséget. Ezután kattintson az **Áthelyezés kezdeményezése** lehetőségre.
+2. Az **erőforrások áthelyezése** területen kattintson az **Áthelyezés kezdeményezése** lehetőségre.
 
     ![Kattintson az áthelyezés kezdeményezése gombra](./media/tutorial-move-region-virtual-machines/initiate-move.png)
 
@@ -198,16 +198,16 @@ Az előkészített erőforrások segítségével most már elindíthatja az áth
 
 A kezdeti áthelyezés után eldöntheti, hogy véglegesíteni kívánja-e az áthelyezést, vagy elveti azt. 
 
-- **Elvetés**: Ha teszteli a tesztet, elkerülheti az áthelyezést, és nem szeretné ténylegesen áthelyezni a forrás erőforrást. Az áthelyezés elvetése visszaadja az erőforrást a *függőben lévő áthelyezés indításának*állapotára.
-- **Véglegesítés**: a véglegesítés befejezi az áthelyezést a célként megadott régióba. A véglegesítést követően a forrás erőforrás a *delete Source függőben*állapotba kerül, és eldöntheti, hogy szeretné-e törölni.
+- **Elvetés**: Ha teszteli a tesztet, elkerülheti az áthelyezést, és nem szeretné ténylegesen áthelyezni a forrás erőforrást. Az áthelyezés elvetése visszaadja az erőforrást a *függőben lévő áthelyezés indításának* állapotára.
+- **Véglegesítés**: a véglegesítés befejezi az áthelyezést a célként megadott régióba. A véglegesítést követően a forrás erőforrás a *delete Source függőben* állapotba kerül, és eldöntheti, hogy szeretné-e törölni.
 
 
 ## <a name="discard-the-move"></a>Áthelyezés elvetése 
 
 Az áthelyezés a következőképpen törölhető:
 
-1. Az **egyes régiókban**válassza az állapot- *végrehajtási áthelyezés függőben*lévő erőforrások lehetőséget, majd kattintson az **Áthelyezés elvetése**lehetőségre.
-2. Az **Áthelyezés elvetése**területen kattintson az **Elvetés**gombra.
+1. Az **egyes régiókban** válassza az állapot- *végrehajtási áthelyezés függőben* lévő erőforrások lehetőséget, majd kattintson az **Áthelyezés elvetése** lehetőségre.
+2. Az **Áthelyezés elvetése** területen kattintson az **Elvetés** gombra.
 3. Nyomon követheti a folyamat lépéseit az értesítések sávján.
 
 
@@ -218,8 +218,8 @@ Az áthelyezés a következőképpen törölhető:
 
 Ha szeretné befejezni az áthelyezési folyamatot, véglegesítse az áthelyezést. 
 
-1. Az **egyes régiókban**válassza az állapot- *végrehajtási áthelyezés függőben*lévő erőforrások lehetőséget, majd kattintson az **Áthelyezés elkövetése**elemre.
-2. Az **erőforrások elkövetése**területen kattintson a **véglegesítés**elemre.
+1. Az **egyes régiókban** válassza az állapot- *végrehajtási áthelyezés függőben* lévő erőforrások lehetőséget, majd kattintson az **Áthelyezés elkövetése** elemre.
+2. Az **erőforrások elkövetése** területen kattintson a **véglegesítés** elemre.
 
     ![Az áthelyezni kívánt erőforrások véglegesítésére szolgáló oldal](./media/tutorial-move-region-virtual-machines/commit-resources.png)
 
@@ -242,8 +242,8 @@ Ha szeretné befejezni az áthelyezési folyamatot, véglegesítse az áthelyez�
 
 Az áthelyezést követően lehetőség van a forrás régió erőforrásainak törlésére is. 
 
-1. A **régiók között**kattintson a törölni kívánt forrás-erőforrások nevére.
-2. Az egyes erőforrások Tulajdonságok lapján válassza a **Törlés**lehetőséget.
+1. A **régiók között** kattintson a törölni kívánt forrás-erőforrások nevére.
+2. Az egyes erőforrások Tulajdonságok lapján válassza a **Törlés** lehetőséget.
 
 ## <a name="delete-additional-resources-created-for-move"></a>Az áthelyezéshez létrehozott további erőforrások törlése
 

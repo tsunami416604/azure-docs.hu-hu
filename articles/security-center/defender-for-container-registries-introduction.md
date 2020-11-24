@@ -7,18 +7,20 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 989115224489ff8fff360a34b27c338ea3e33058
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: d587c4dbdd8f46d6e098ff96f464d456fffc9ccf
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145820"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95529985"
 ---
-# <a name="introduction-to-azure-defender-for-container-registries"></a>Bevezetés az Azure Defender for Container-jegyzékbe
+# <a name="introduction-to-azure-defender-for-container-registries"></a>A tárolóregisztrációs adatbázisokhoz készült Azure Defender bemutatása
 
 A Azure Container Registry (ACR) egy felügyelt, privát Docker beállításjegyzék-szolgáltatás, amely egy központi beállításjegyzékben tárolja és kezeli az Azure-beli központi telepítésekhez tartozó tároló lemezképeit. Ez a nyílt forráskódú Docker beállításjegyzék 2,0-es adatbázisán alapul.
 
 Az előfizetéshez tartozó összes Azure Resource Manager-alapú nyilvántartó védelem érdekében engedélyezze az **Azure Defender számára a tároló** -beállításjegyzéket az előfizetés szintjén. A Security Center ezután beolvassa a beállításjegyzékbe beküldött, a beállításjegyzékbe importált képeket vagy az elmúlt 30 napban lekért képeket. Ez a funkció rendszerkép alapján van felszámítva.
+
+[!INCLUDE [Defender for container registries availability info](../../includes/security-center-availability-defender-for-container-registries.md)]
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-container-registries"></a>Milyen előnyökkel jár az Azure Defender a Container-jegyzékek esetében?
 
@@ -71,7 +73,7 @@ A rendszerkép a beállításjegyzékből lett kihúzva. Ezután egy elkülöní
 Security Center szűrők és a vizsgálati eredmények osztályozása. Ha egy rendszerkép kifogástalan állapotú, Security Center megjelöli. A Security Center csak olyan rendszerképekhez hoz létre biztonsági javaslatokat, amelyeknek feloldhatók a problémák. Ha csak akkor értesíti, ha problémák merülnek fel, Security Center csökkenti a nemkívánatos tájékoztatási riasztások lehetséges lehetőségét.
 
 ### <a name="can-i-get-the-scan-results-via-rest-api"></a>Lekérhetem a vizsgálat eredményeit REST APIon keresztül?
-Igen. Az eredmények az [alárendelt értékelések REST API](/rest/api/securitycenter/subassessments/list/)-ban találhatók. Emellett használhatja az Azure Resource Graph (ARG), a Kusto API-t az összes erőforráshoz: a lekérdezés egy adott vizsgálatot tud beolvasni.
+Igen. Az eredmények az [Alértékelések Rest API](/rest/api/securitycenter/subassessments/list/) szakaszban találhatók. Emellett használhatja az Azure Resource Graph (ARG), a Kusto API-t az összes erőforráshoz: a lekérdezés egy adott vizsgálatot tud beolvasni.
 
 ### <a name="what-registry-types-are-scanned-what-types-are-billed"></a>Milyen beállításjegyzék-típusok vannak beolvasva? Milyen típusú számlázást kell fizetni?
 Az Azure Defender által a Container nyilvántartók számára támogatott tároló-nyilvántartási típusok listáját a [rendelkezésre állás](defender-for-container-registries-usage.md#availability)című részben tekintheti meg.

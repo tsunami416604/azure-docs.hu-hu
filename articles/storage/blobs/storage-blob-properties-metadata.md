@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 19d20a208672667e5a4354fd1b7d185d0c00f8d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 984fb00e163a090534da1fb41850dcfef6c5d516
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399125"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95521529"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>BLOB-tulajdonságok és-metaadatok kezelése a .NET-tel
 
@@ -126,7 +126,7 @@ A metaadatokat egy vagy több név-érték párokkal is megadhatja blob vagy tá
 - [SetMetadataAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.setmetadataasync)
 ---
 
-A metaadatok neve/értéke párok érvényes HTTP-fejlécek, és meg kell felelniük a HTTP-fejléceket szabályozó összes korlátozásnak. A metaadatok nevének érvényes HTTP-fejléc-névnek és érvényes C#-azonosítónak kell lennie, csak ASCII-karaktereket tartalmazhat, és a kis-és nagybetűket nem megkülönböztetőként kell kezelni. [Base64-kódolás](https://docs.microsoft.com/dotnet/api/system.convert.tobase64string) vagy [URL-cím –](https://docs.microsoft.com/dotnet/api/system.web.httputility.urlencode) nem ASCII karaktereket tartalmazó metaadat-értékek kódolása.
+A metaadatok neve/értéke párok érvényes HTTP-fejlécek, és meg kell felelniük a HTTP-fejléceket szabályozó összes korlátozásnak. A metaadatok nevének érvényes HTTP-fejléc-névnek és érvényes C#-azonosítónak kell lennie, csak ASCII-karaktereket tartalmazhat, és a kis-és nagybetűket nem megkülönböztetőként kell kezelni. [Base64-kódolás](/dotnet/api/system.convert.tobase64string) vagy [URL-cím –](/dotnet/api/system.web.httputility.urlencode) nem ASCII karaktereket tartalmazó metaadat-értékek kódolása.
 
 A metaadatok nevének meg kell felelnie a C# azonosítók elnevezési konvencióinak. A metaadatok nevei megőrzik a létrehozásuk során használt esetet, de a kis-és nagybetűk nem különböznek a beállítás vagy a beolvasás során. Ha legalább két metaadat-fejlécet használ ugyanazzal a névvel, az Azure Blob Storage a 400-as HTTP-hibakódot (hibás kérés) adja vissza.
 

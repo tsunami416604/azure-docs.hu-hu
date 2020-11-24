@@ -1,14 +1,14 @@
 ---
 title: Mi az az Azure Lighthouse?
 description: Az Azure Lighthouse lehetővé teszi, hogy a szolgáltatók felügyelt szolgáltatásokat nyújtsanak ügyfeleiknek magasabb szintű automatizálással és hatékonysággal.
-ms.date: 10/19/2020
+ms.date: 11/12/2020
 ms.topic: overview
-ms.openlocfilehash: a76606ff48a09c0c31584882e3d2aa164ec97325
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: a8fd796218804a79c82a5723c0e5851af359cdea
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203789"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95528822"
 ---
 # <a name="what-is-azure-lighthouse"></a>Mi az az Azure Lighthouse?
 
@@ -36,6 +36,9 @@ Az Azure Lighthouse több módszert is kínál az elkötelezettség és a felüg
 - **Új Azure Portal tapasztalatok**: a bérlői információk megtekintése a Azure Portal [ **saját ügyfelek** lapján](how-to/view-manage-customers.md) . A kapcsolódó [ **szolgáltatók** lapon](how-to/view-manage-service-providers.md) megtekintheti és kezelheti a szolgáltatói hozzáférését.
 - **Azure Resource Manager sablonok**: az ARM-sablonokkal [delegált felhasználói erőforrásokat](how-to/onboard-customer.md) készíthet, és [több-bérlős felügyeleti feladatokat hajthat végre](samples/index.md).
 - **Felügyelt szolgáltatási ajánlatok az Azure Marketplace-** en: [a szolgáltatásokat](concepts/managed-services-offers.md) privát vagy nyilvános ajánlatokon keresztül kínálja ügyfeleinek, és automatikusan bevezetheti őket az Azure világítótoronyba.
+
+> [!TIP]
+> Egy hasonló ajánlat, [Microsoft 365 világítótorony](https://techcommunity.microsoft.com/t5/small-and-medium-business-blog/announcing-microsoft-365-lighthouse-for-managed-service/ba-p/1698181), segít az IT-partnereknek bevezetésben, felügyelni és felügyelni a Microsoft 365 ügyfeleiket a skálán. Microsoft 365 világítótorony jelenleg privát előzetes verzióban érhető el.
 
 ## <a name="next-steps"></a>További lépések
 

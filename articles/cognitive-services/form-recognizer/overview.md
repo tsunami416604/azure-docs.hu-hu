@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: overview
-ms.date: 09/21/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: automatizált adatfeldolgozás, dokumentumok feldolgozása, automatizált adatbevitel, űrlapok feldolgozása
-ms.openlocfilehash: 8b790da9eaa17cbb0fbdcbcc49682786deb319a0
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 05024b8d7f4cf76024d71a79cb1fce489d58ee70
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95492153"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519523"
 ---
 # <a name="what-is-form-recognizer"></a>Mi a Form Recognizer?
 
@@ -30,9 +30,9 @@ Az űrlap-felismerő a következő szolgáltatásokból áll:
 * **[Layout API](#layout-api)** – szöveg-, kiválasztási és táblázatos struktúrák kinyerése, valamint a hozzájuk tartozó mezők koordinátái a dokumentumokból.
 * **[Egyéni modellek](#custom-models)** – szöveg, kulcs/érték párok, kiválasztási jelek és táblák adatainak kinyerése űrlapokból. Ezek a modellek a saját adataival vannak betanítva, így az űrlapokra vannak szabva.
 * Előre **[elkészített modellek](#prebuilt-models)** – az egyedi űrlapokból származó adatok kinyerése előre elkészített modellek használatával. Jelenleg a következő előre elkészített modellek érhetők el
-    * [Számlák](./concept-invoices.md) 
+    * [Számlák](./concept-invoices.md)
     * [Értékesítési nyugták](./concept-receipts.md)
-    * [Névjegykártyák](./concept-business-cards.md) 
+    * [Névjegykártyák](./concept-business-cards.md)
 
 
 ## <a name="try-it-out"></a>Próbálja ki
@@ -50,7 +50,7 @@ Az űrlap-felismerő szolgáltatás kipróbálásához nyissa meg az online mint
 
 ---
 
-Az űrlap-felismerő szolgáltatás kipróbálásához szüksége lesz egy Azure-előfizetésre ([hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)) és egy [űrlap-felismerő erőforrás](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) -végpontot és kulcsot. 
+Az űrlap-felismerő szolgáltatás kipróbálásához szüksége lesz egy Azure-előfizetésre ([hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)) és egy [űrlap-felismerő erőforrás](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) -végpontot és kulcsot.
 
 ## <a name="layout-api"></a>Elrendezési API
 
@@ -125,8 +125,6 @@ Használja a [minta űrlap-felismerő eszközt](https://fott.azurewebsites.net/)
     * [Bevételezési adatok kinyerése – Python](quickstarts/python-receipts.md)
   * Adatok kinyerése névjegykártyákból
     * [Névjegykártya-adatok kinyerése – Python](quickstarts/python-business-cards.md)
- 
-
 
 ### <a name="review-the-rest-apis"></a>A REST API-k áttekintése
 
@@ -153,6 +151,10 @@ További információért olvassa el a [REST API dokumentációját](https://wes
 ## <a name="input-requirements"></a>Bemeneti követelmények
 
 [!INCLUDE [input requirements](./includes/input-requirements.md)]
+
+## <a name="deploy-on-premises-using-docker-containers"></a>Helyszíni üzembe helyezés Docker-tárolók használatával
+
+A helyszíni API-funkciók üzembe helyezéséhez [használjon űrlap-felismerő tárolókat (előzetes verzió)](form-recognizer-container-howto.md) . Ez a Docker-tároló lehetővé teszi, hogy a szolgáltatás a megfelelőségi, biztonsági vagy egyéb működési okokból közelebb kerüljön az adataihoz.
 
 ## <a name="data-privacy-and-security"></a>Adatvédelem és biztonság
 

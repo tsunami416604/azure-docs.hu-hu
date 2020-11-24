@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: ff82986b27d038c536872b07e1308b0d48fadaef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 404999cfac5037702eb61fdf74b2c5245ce9eb30
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74270226"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95526119"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>Blokkblobtárolás teljesítményszintjei
 
@@ -78,11 +78,11 @@ További információ: [Az Azure Blob Storage életciklusának kezelése](storag
 
 A prémium szintű blokk blob Storage-fiókban tárolt adatok nem helyezhetők át a gyakori, a ritka elérésű és az archív rétegek között. Egy blokk blob Storage-fiókból is másolhat blobokat egy *másik* fiókban lévő gyors elérési szinthez. Az adatok egy másik fiókba való másolásához használja a [put blokkot az URL](/rest/api/storageservices/put-block-from-url) API vagy a [AzCopy v10](../common/storage-use-azcopy-v10.md)használatával. A **put blokk from URL** API szinkron módon másolja az adatok a kiszolgálón. A hívás csak azt követően fejeződik be, hogy az összes adatok át lettek helyezve az eredeti kiszolgáló helyéről a célhelyre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Értékelje ki a GPv2-és blob Storage-fiókokban a gyakori, ritka elérésű és archív archívumokat.
 
 - [Tudnivalók a blob-adatok archiválási szintről való kiszárításáról](storage-blob-rehydration.md)
-- [Aktuális tárfiókjai használatának értékelése az Azure Storage mérőszámainak engedélyezésével](../common/storage-enable-and-view-metrics.md)
+- [Aktuális tárfiókjai használatának értékelése az Azure Storage mérőszámainak engedélyezésével](./monitor-blob-storage.md)
 - [Gyors, ritka és archív díjszabás a blob Storage-ban és a GPv2-fiókok régiónként](https://azure.microsoft.com/pricing/details/storage/)
 - [Az adatátviteli díjszabás megtekintése](https://azure.microsoft.com/pricing/details/data-transfers/)

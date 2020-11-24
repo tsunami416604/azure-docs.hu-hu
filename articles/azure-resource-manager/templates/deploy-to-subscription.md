@@ -2,13 +2,13 @@
 title: Erőforrások üzembe helyezése az előfizetésben
 description: Leírja, hogyan lehet erőforráscsoportot létrehozni egy Azure Resource Manager sablonban. Azt is bemutatja, hogyan helyezhet üzembe erőforrásokat az Azure-előfizetési hatókörben.
 ms.topic: conceptual
-ms.date: 10/26/2020
-ms.openlocfilehash: 7b0edde4f3571255e92c65d82429b4ddd1a689b8
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/23/2020
+ms.openlocfilehash: c87f6fa590e1f769816fb0ee3cba3aad1997de15
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92668890"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519863"
 ---
 # <a name="subscription-deployments-with-arm-templates"></a>Előfizetés üzembe helyezése ARM-sablonokkal
 
@@ -104,7 +104,7 @@ az deployment sub create \
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-A PowerShell üzembe helyezési parancsához használja a [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) vagy a **New-AzSubscriptionDeployment** . A következő példa egy sablont helyez üzembe egy erőforráscsoport létrehozásához:
+A PowerShell üzembe helyezési parancsához használja a [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) vagy a **New-AzSubscriptionDeployment**. A következő példa egy sablont helyez üzembe egy erőforráscsoport létrehozásához:
 
 ```azurepowershell-interactive
 New-AzSubscriptionDeployment `
@@ -131,20 +131,28 @@ További információt az üzembe helyezési parancsokról és az ARM-sablonok �
 Az előfizetések telepítésekor a következő erőforrások helyezhetők üzembe:
 
 * a művelethez tartozó cél-előfizetés
-* az előfizetésen belüli erőforráscsoportok
+* bármely előfizetés a bérlőn
+* az előfizetésben vagy más előfizetésekben található erőforráscsoportok
+* az előfizetés bérlője
 * a [bővítmény erőforrásai](scope-extension-resources.md) alkalmazhatók az erőforrásokra
 
-Nem telepíthet olyan előfizetésre, amely eltér a cél előfizetéstől. A sablont telepítő felhasználónak hozzáféréssel kell rendelkeznie a megadott hatókörhöz.
+A sablont telepítő felhasználónak hozzáféréssel kell rendelkeznie a megadott hatókörhöz.
 
 Ez a szakasz bemutatja, hogyan határozhat meg különböző hatóköröket. Ezeket a különböző hatóköröket egyetlen sablonban kombinálhatja.
 
-### <a name="scope-to-subscription"></a>Hatókör az előfizetéshez
+### <a name="scope-to-target-subscription"></a>Hatókör a cél előfizetéshez
 
 Ha erőforrásokat szeretne telepíteni a cél előfizetésre, adja hozzá ezeket az erőforrásokat a sablon erőforrások szakaszához.
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/default-sub.json" highlight="5":::
 
 Az előfizetésre való központi telepítésre vonatkozó Példákért lásd: [erőforráscsoportok létrehozása](#create-resource-groups) és [szabályzat-definíció kiosztása](#assign-policy-definition).
+
+### <a name="scope-to-other-subscription"></a>Hatókör más előfizetésre
+
+Ha olyan előfizetéshez szeretne erőforrásokat telepíteni, amely eltér a művelet előfizetéstől, adjon hozzá egy beágyazott központi telepítést. Állítsa be annak az `subscriptionId` előfizetésnek az azonosítóját, amelyre telepíteni kívánja a tulajdonságot. Állítsa be a beágyazott üzemelő `location` példány tulajdonságát.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/sub-to-sub.json" highlight="9,10,14":::
 
 ### <a name="scope-to-resource-group"></a>Hatókör az erőforráscsoporthoz
 
@@ -153,6 +161,18 @@ Ha erőforrásokat szeretne telepíteni az előfizetésben lévő erőforráscso
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/sub-to-resource-group.json" highlight="9,13":::
 
 Az erőforráscsoporthoz való központi telepítésre példát az [erőforráscsoport és erőforrások létrehozása](#create-resource-group-and-resources)című témakörben talál.
+
+### <a name="scope-to-tenant"></a>Hatókör a bérlőre
+
+A bérlőhöz erőforrásokat is létrehozhat, ha a beállítást a értékre állítja `scope` `/` . A sablont telepítő felhasználónak rendelkeznie kell a [bérlőn való üzembe helyezéshez szükséges hozzáféréssel](deploy-to-tenant.md#required-access).
+
+A és a beállítással beágyazott központi telepítést is használhat `scope` `location` .
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/subscription-to-tenant.json" highlight="9,10,14":::
+
+A hatókört `/` bizonyos erőforrástípusok, például a felügyeleti csoportok esetében is beállíthatja.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/subscription-create-mg.json" highlight="12,15":::
 
 ## <a name="deployment-location-and-name"></a>Központi telepítés helye és neve
 

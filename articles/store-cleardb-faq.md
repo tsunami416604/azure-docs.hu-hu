@@ -12,12 +12,12 @@ ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: references_regions
-ms.openlocfilehash: ced4e920936ad94c3d4140d51d5e7d4e867ee848
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cecb3a150de8c19d390cafbd163f287520c3a91d
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84196068"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519034"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Gyakori kérdések ClearDB MySql-adatbázisok Azure App Service
 Ez a gyakori kérdések az Azure Web Apps ClearDB MySQL-adatbázisainak használatával és megvásárlásával kapcsolatos gyakori kérdésekre adnak választ.
@@ -33,7 +33,7 @@ A szolgáltatással kapcsolatos legfrissebb információkért tekintse meg a [Cl
 Több más lehetőség is van a MySQL Azure-beli üzemeltetéséhez:
 * [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/)
 * [Azure-beli virtuális gépen futó MySQL-fürt](https://github.com/azure/azure-quickstart-templates/tree/master/mysql-replication)
-* [Egy Azure-beli virtuális gépen futó önálló MySQL-példány](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [Egy Azure-beli virtuális gépen futó önálló MySQL-példány](/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%252fazure%252fvirtual-machines%252fwindows%252fclassic%252ftoc.json)
 
 
 ## <a name="do-i-need-a-credit-card-for-the-web-app--mysql-template-in-the-azure-marketplace"></a>Szükségem van bankkártyára a Web App + MySQL-sablonhoz az Azure piactéren?
@@ -41,14 +41,14 @@ Ez a használt előfizetés típusától függ. Íme néhány gyakran használt 
 
 * [Fizetés menet](https://azure.microsoft.com/offers/ms-azr-0003p/)közben: hitelkártyát igényel, és fizetős MySQL-adatbázis vásárlása esetén bankkártyáját kell fizetni.
 * [Ingyenes próbaverzió](https://azure.microsoft.com/pricing/free-trial/): Microsoft Azure-szolgáltatásokkal való használatra szánt krediteket tartalmaz, de nem engedélyezi harmadik féltől származó erőforrások megvásárlását. Harmadik féltől származó szolgáltatások vagy fizetős MySQL-adatbázis vásárlásához bankkártya-kompatibilis előfizetést kell használnia. Web Apps létrehozhat egy ingyenes ClearDB MySQL-adatbázist.
-* Az MSDN- [előfizetés](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/) és az **MSDN dev-teszt**díja: az ingyenes PRÓBAVERZIÓhoz hasonlóan az MSDN-előfizetés használatához bankkártyával kell rendelkeznie a fizetős MySQL-megoldás ClearDB való megvásárlásához.
+* Az MSDN- [előfizetés](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/) és az **MSDN dev-teszt** díja: az ingyenes PRÓBAVERZIÓhoz hasonlóan az MSDN-előfizetés használatához bankkártyával kell rendelkeznie a fizetős MySQL-megoldás ClearDB való megvásárlásához.
 * [Nagyvállalati szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/): az nagyvállalati szerződéssel rendelkező ügyfeleket minden negyedévben az Azure Marketplace (harmadik féltől származó) vásárlások után külön, konszolidált számlán számoljuk el. A piactéren vásárolt vásárlásokra vonatkozó pénzügyi kötelezettségvállaláson kívüli díjat számítunk fel. Fontos megjegyezni, hogy jelenleg az Azure áruház nem érhető el az Azerbajdzsánban, Horvátországban, Norvégiában és Puerto Rico-ban regisztrált ügyfelek számára. 
 
 ## <a name="why-was-i-charged-350-for-a-web-app--mysql-from-the-azure-marketplace"></a>Miért számolok fel $3,50-ra egy webalkalmazást és egy MySQL-t az Azure piactéren?
 Az alapértelmezett adatbázis-beállítás a Titan, amely $3,50. Az adatbázis létrehozása során nem mutatjuk be a költségeket, és előfordulhat, hogy véletlenül megvásárolta a nem kívánt adatbázist. Megpróbáljuk megkeresni a felhasználói élmény javítását, de addig is meg kell adnia a webalkalmazás és az adatbázis kiválasztott díjszabását, mielőtt a **create (létrehozás** ) gombra kattintana, és megkezdi az erőforrások üzembe helyezését.
 
 ## <a name="i-am-running-mysql-on-my-own-azure-virtual-machine-can-i-connect-my-azure-web-app-to-my-database"></a>A saját Azure-beli virtuális gépén futtatom a MySQL-t. Összekapcsolhatom az Azure-webalkalmazást az adatbázishoz?
-Igen. Ha az Azure-beli virtuális gép távelérést kap a webalkalmazáshoz, a webalkalmazást az adatbázishoz is összekapcsolhatjuk. További információ: a [MySQL telepítése virtuális gépre](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Igen. Ha az Azure-beli virtuális gép távelérést kap a webalkalmazáshoz, a webalkalmazást az adatbázishoz is összekapcsolhatjuk. További információ: a [MySQL telepítése virtuális gépre](/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%252fazure%252fvirtual-machines%252fwindows%252fclassic%252ftoc.json).
 
 ## <a name="in-which-countriesregions-are-cleardb-premium-mysql-clusters-supported"></a>Mely országokban/régiókban támogatott a prémium szintű MySQL-fürtök ClearDB?
 A ClearDB Premium MySQL-fürtök az összes Azure-régióban elérhetők világszerte, India, Ausztrália, Dél-Brazília és Kína kivételével.
@@ -108,4 +108,3 @@ Vegye fel a kapcsolatot a [nagyvállalati ügyfélszolgálattal](https://aka.ms/
 
 ## <a name="more-information"></a>További információ
 [Azure Marketplace – Gyakori kérdések](https://azure.microsoft.com/marketplace/faq/)
-

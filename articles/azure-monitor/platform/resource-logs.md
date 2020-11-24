@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: a9423069b917c37e77b70a4466e489918cd330c4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a2f46440a4214e298bc6d2f3b9c2b5680437ead7
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92143916"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522702"
 ---
 # <a name="azure-resource-logs"></a>Azure-erőforrásnaplók
 Az Azure-erőforrás-naplók olyan [platform-naplók](platform-logs-overview.md) , amelyek betekintést nyújtanak az Azure-erőforrásokon belül végrehajtott műveletekre. Az erőforrás-naplók tartalma az Azure-szolgáltatás és az erőforrás típusa szerint változik. A rendszer alapértelmezés szerint nem gyűjti az erőforrás-naplókat. Minden egyes Azure-erőforráshoz létre kell hoznia egy diagnosztikai beállítást, hogy az erőforrás-naplókat egy Log Analytics munkaterületre küldje el, amelyet [Azure monitor naplók](data-platform-logs.md), az Azure Event Hubs az Azure-on kívüli továbbítására, illetve az Azure Storage-ba történő archiválásra kíván használni.
@@ -54,7 +54,7 @@ A AzureDiagnostics táblázat a következőképpen jelenik meg:
 | ... |
 
 ### <a name="resource-specific"></a>Erőforrás-specifikus
-Ebben a módban a kiválasztott munkaterület egyes táblái jönnek létre a diagnosztikai beállításban kiválasztott kategóriákhoz. Ez a módszer azért ajánlott, mert sokkal könnyebben használható a naplózott lekérdezések adataival, így a sémák és azok struktúrájának jobb észlelését teszi lehetővé, és javítja a teljesítményt a betöltési késés és a lekérdezési időpontok között, valamint lehetővé teszi, hogy RBAC jogokat biztosítson egy adott táblához. A rendszer az összes Azure-szolgáltatást végül áttelepíti a Resource-Specific módba. 
+Ebben a módban a kiválasztott munkaterület egyes táblái jönnek létre a diagnosztikai beállításban kiválasztott kategóriákhoz. Ez a módszer azért ajánlott, mert sokkal könnyebben használható a naplózott lekérdezések adataival, így a sémák és azok struktúrájának jobb észlelését, valamint a betöltési késés és a lekérdezési időpontok teljesítményének növelését, valamint az Azure RBAC jogosultságok egy adott táblára való megadásának lehetőségét is lehetővé teszi. A rendszer az összes Azure-szolgáltatást végül áttelepíti a Resource-Specific módba. 
 
 A fenti példa három tábla létrehozását eredményezi:
  

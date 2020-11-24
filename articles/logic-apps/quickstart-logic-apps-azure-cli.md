@@ -5,21 +5,21 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
-ms.custom: mvc, devx-track-azurecli
-ms.date: 10/28/2020
-ms.openlocfilehash: 0d7f455e748a52595839cc509720bf7ad5b9b617
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: mvc, devx-track-azurecli, contperfq2
+ms.date: 11/23/2020
+ms.openlocfilehash: f5b8497772a14e9613977c9cdc22025e8e58b92c
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099062"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95509470"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>Gyors útmutató: logikai alkalmazások létrehozása és kezelése az Azure CLI használatával
 
 Ez a rövid útmutató bemutatja, hogyan hozhat létre és kezelhet Logic apps-t az [Azure CLI Logic apps bővítmény](/cli/azure/ext/logic/logic) ( `az logic` ) használatával. A parancssorból létrehozhat egy logikai alkalmazást a logikai alkalmazások munkafolyamat-definíciójának JSON-fájljának használatával. Ezután kezelheti a logikai alkalmazást olyan műveletek futtatásával, mint `list` `show` a, ( `get` ), `update` és `delete` a parancssorból.
 
 > [!WARNING]
-> Az Azure CLI Logic Apps bővítménye jelenleg *kísérleti jellegű* , és *nem vonatkozik az ügyfélszolgálatra* . Ezt a CLI-bővítményt körültekintően használhatja, különösen akkor, ha a bővítményt éles környezetben használja.
+> Az Azure CLI Logic Apps bővítménye jelenleg *kísérleti jellegű* , és *nem vonatkozik az ügyfélszolgálatra*. Ezt a CLI-bővítményt körültekintően használhatja, különösen akkor, ha a bővítményt éles környezetben használja.
 
 Ha még nem ismeri a Logic Appst, megtudhatja, hogyan hozhatja létre az első logikai alkalmazásait [a Azure Portal](quickstart-create-first-logic-app-workflow.md), a [Visual Studióban](quickstart-create-logic-apps-with-visual-studio.md)és a [Visual Studio Code-ban](quickstart-create-logic-apps-visual-studio-code.md).
 

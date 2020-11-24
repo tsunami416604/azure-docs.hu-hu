@@ -4,15 +4,15 @@ description: Leírja az Azure HPC cache-t, amely egy fájl-hozzáférési gyors�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 09/03/2020
+ms.date: 11/23/2020
 ms.author: v-erkel
 ms.custom: references_regions
-ms.openlocfilehash: b51cd938747c1cfa82b397160f077474e176b2f5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0568d9b7fea2e4e048c0c1d1b2d6f81d64a9b114
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91612965"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519336"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Mi az az Azure HPC Cache?
 
@@ -65,7 +65,9 @@ Az [ügyfél által felügyelt kulcsok funkció](customer-keys.md) csak az aláb
 * USA-beli államigazgatás – Arizona
 * USA-beli államigazgatás – Virginia
 
-## <a name="next-steps"></a>További lépések
+Az Azure HPC cache egyetlen régióban található. Más régiókban tárolt adataihoz is hozzáférhet, ha az ott található blob-tárolóhoz csatlakozik. A gyorsítótár nem tárolja véglegesen az ügyféladatokat.
+
+## <a name="next-steps"></a>Következő lépések
 
 * A képességeivel kapcsolatos további információkért olvassa el az [Azure HPC cache-termék oldalát](https://azure.microsoft.com/services/hpc-cache)
 * További tudnivalók a termékek [előfeltételeiről](hpc-cache-prerequisites.md)

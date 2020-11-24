@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/04/2016
 ms.author: mimckitt
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 536a28801193cdbb4204ca1432892abdc7fb297e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22e0a19c0e2f5b29b35ebf43a3f250959c9b636d
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268485"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95521121"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>Telefonhívás kezdeményezése a Twilio használatával webes szerepkörben az Azure-ban
 Ez az útmutató bemutatja, hogyan használható a Twilio az Azure-ban üzemeltetett weblapokról. Az eredményül kapott alkalmazás felszólítja a felhasználót, hogy hívja meg a megadott számot és üzenetet, ahogy az alábbi képernyőképen is látható.
@@ -38,9 +38,9 @@ Ismernie kell egy alapszintű [webes szerepkör][azure_webroles_get_started]lét
 <a id="use_nuget"></a>A Twilio-kódtárak hozzáadása a webes szerepkör-projekthez:
 
 1. Nyissa meg a megoldást a Visual Studióban.
-2. Kattintson a jobb gombbal a **referenciák**elemre.
-3. Kattintson a **NuGet-csomagok kezelése**elemre.
-4. Kattintson az **online**lehetőségre.
+2. Kattintson a jobb gombbal a **referenciák** elemre.
+3. Kattintson a **NuGet-csomagok kezelése** elemre.
+4. Kattintson az **online** lehetőségre.
 5. A Keresés az interneten mezőbe írja be a következőt: *twilio*.
 6. Kattintson a **telepítés** gombra a Twilio-csomagban.
 
@@ -151,7 +151,7 @@ A rendszer meghívja a hívást, és megjeleníti a Twilio-végpontot, az API-ve
 További információ a TwiML a következő címen érhető el: [https://www.twilio.com/docs/api/twiml][twiml] . A &lt; Say &gt; and other Twilio utasítással kapcsolatos további információk a következő címen találhatók: [https://www.twilio.com/docs/api/twiml/say][twilio_say] .
 
 ## <a name="next-steps"></a><a id="nextsteps"></a>Következő lépések
-Ez a kód olyan alapszintű funkciókat mutat be, amelyek az Azure-ban egy ASP.NET webes szerepkör Twilio használatával rendelkeznek. Mielőtt éles környezetben üzembe helyezi az Azure-t, érdemes lehet további hibakezelés vagy más funkciókat hozzáadnia. Példa:
+Ez a kód olyan alapszintű funkciókat mutat be, amelyek az Azure-ban egy ASP.NET webes szerepkör Twilio használatával rendelkeznek. Mielőtt éles környezetben üzembe helyezi az Azure-t, érdemes lehet további hibakezelés vagy más funkciókat hozzáadnia. Például:
 
 * Webes űrlap helyett használhatja az Azure Blob Storage-t vagy egy Azure SQL Database példányt a telefonszámok és a hívás szövegének tárolására. További információ a Blobok Azure-beli használatáról: [Az Azure Blob Storage szolgáltatás használata a .net-ben][howto_blob_storage_dotnet]. További információ a SQL Database használatáról: a [Azure SQL Database használata .NET-alkalmazásokban][howto_sql_azure_dotnet].
 * A paranccsal `RoleEnvironment.getConfigurationSettings` lekérheti a Twilio-fiók azonosítóját és a hitelesítési tokent a központi telepítés konfigurációs beállításaiból, nem pedig az űrlapon lévő értékek rögzített kódolásával. További információ az `RoleEnvironment` osztályról: [Microsoft. WindowsAzure. ServiceRuntime névtér][azure_runtime_ref_dotnet].
@@ -186,5 +186,5 @@ Ez a kód olyan alapszintű funkciókat mutat be, amelyek az Azure-ban egy ASP.N
 [twilio_say]: https://www.twilio.com/docs/api/twiml/say
 
 
-[azure_runtime_ref_dotnet]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.serviceruntime.aspx
-[azure_webroles_get_started]: https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-get-started
+[azure_runtime_ref_dotnet]: /previous-versions/azure/reference/ee741722(v=azure.100)
+[azure_webroles_get_started]: ./cloud-services/cloud-services-dotnet-get-started.md

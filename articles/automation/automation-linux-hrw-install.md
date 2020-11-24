@@ -3,24 +3,26 @@ title: Linuxos hibrid Runbook-feldolgozó üzembe helyezése Azure Automation
 description: Ez a cikk azt ismerteti, hogyan telepíthet egy Azure Automation hibrid Runbook-feldolgozót a runbookok Linux-alapú gépeken való futtatásához a helyi adatközpontban vagy a felhőalapú környezetben.
 services: automation
 ms.subservice: process-automation
-ms.date: 10/06/2020
+ms.date: 11/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: c84f168104be4ba4cb8af2e31be82eed0e2ae83a
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 9b06024b7dc25f37f75c71b822f6aeea32c3e26a
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205184"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95509069"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker üzembe helyezése
 
-A Azure Automation Hybrid Runbook Worker szolgáltatásával a runbookok közvetlenül a szerepkört üzemeltető gépen és a környezet erőforrásain keresztül futtathatja a helyi erőforrások kezeléséhez. A Linux Hybrid Runbook Worker a runbookok-t olyan speciális felhasználóként hajtja végre, amely emelt szintű jogosultságszint-emelést igénylő parancsok futtatására használható. A Azure Automation a runbookok tárolja és felügyeli, majd egy vagy több kijelölt gépre továbbítja azokat. Ez a cikk bemutatja, hogyan telepítheti a hibrid Runbook-feldolgozót egy Linux rendszerű gépre, hogyan távolíthatja el a feldolgozót, és hogyan távolíthat el egy hibrid Runbook-feldolgozói csoportot.
+A Azure Automation User Hybrid Runbook Worker funkciójának használatával közvetlenül az Azure-beli vagy nem Azure-beli gépen futtathatja a runbookok, beleértve az [Azure arc-kompatibilis kiszolgálókon](../azure-arc/servers/overview.md)regisztrált kiszolgálókat is. A szerepkört üzemeltető gépről vagy kiszolgálóról a runbookok közvetlenül, illetve a környezetben lévő erőforrásokkal is futtathatja a helyi erőforrások kezeléséhez.
+
+A Linux Hybrid Runbook Worker a runbookok-t olyan speciális felhasználóként hajtja végre, amely emelt szintű jogosultságszint-emelést igénylő parancsok futtatására használható. A Azure Automation a runbookok tárolja és felügyeli, majd egy vagy több kijelölt gépre továbbítja azokat. Ez a cikk bemutatja, hogyan telepítheti a hibrid Runbook-feldolgozót egy Linux rendszerű gépre, hogyan távolíthatja el a feldolgozót, és hogyan távolíthat el egy hibrid Runbook-feldolgozói csoportot.
 
 A runbook-feldolgozó sikeres üzembe helyezése után tekintse át a [Runbookok futtatása hibrid runbook-feldolgozón](automation-hrw-run-runbooks.md) című témakört, amelyből megtudhatja, hogyan konfigurálhatja a runbookok a helyszíni adatközpontban vagy más felhőalapú környezetben lévő folyamatok automatizálására.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következőkkel:
+Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következőkkel.
 
 ### <a name="a-log-analytics-workspace"></a>Log Analytics munkaterület
 
@@ -28,23 +30,9 @@ A hibrid Runbook-feldolgozói szerepkör a szerepkör telepítéséhez és konfi
 
 Ha nem rendelkezik Azure Monitor Log Analytics munkaterülettel, tekintse át a [Azure monitor log tervezési útmutatót](../azure-monitor/platform/design-logs-deployment.md) a munkaterület létrehozása előtt.
 
-Ha van munkaterülete, de nem kapcsolódik az Automation-fiókjához, az automatizálási funkció lehetővé teszi a Azure Automation funkcióinak hozzáadását, beleértve a hibrid Runbook-feldolgozó támogatását is. Ha engedélyezi a Log Analytics munkaterület Azure Automation funkciójának egyikét, különösen a [Update Management](update-management/update-mgmt-overview.md) vagy a [change Tracking és a leltárt](change-tracking/overview.md), a rendszer automatikusan leküldi a munkavégző összetevőket az ügynök számítógépére.
-
-A Update Management szolgáltatás munkaterülethez való hozzáadásához futtassa a következő PowerShell-parancsmagot:
-
-```powershell-interactive
-    Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <logAnalyticsResourceGroup> -WorkspaceName <logAnalyticsWorkspaceName> -IntelligencePackName "Updates" -Enabled $true
-```
-
-A Change Tracking és a leltár funkciónak a munkaterülethez való hozzáadásához futtassa a következő PowerShell-parancsmagot:
-
-```powershell-interactive
-    Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <logAnalyticsResourceGroup> -WorkspaceName <logAnalyticsWorkspaceName> -IntelligencePackName "ChangeTracking" -Enabled $true
-```
-
 ### <a name="log-analytics-agent"></a>Log Analytics-ügynök
 
-A hibrid Runbook feldolgozói szerepkörhöz a [log Analytics ügynök](../azure-monitor/platform/log-analytics-agent.md) szükséges a támogatott Linux operációs rendszerhez.
+A hibrid Runbook feldolgozói szerepkörhöz a [log Analytics ügynök](../azure-monitor/platform/log-analytics-agent.md) szükséges a támogatott Linux operációs rendszerhez. Az Azure-on kívül üzemeltetett kiszolgálók vagy gépek esetében a Log Analytics-ügynököt az [Azure arc-kompatibilis kiszolgálók](../azure-arc/servers/overview.md)használatával telepítheti.
 
 >[!NOTE]
 >A Linux rendszerhez készült Log Analytics-ügynök telepítése után ne módosítsa a `sudoers.d` mappa vagy a tulajdonosának engedélyeit. Sudo engedély szükséges a **nxautomation** -fiókhoz, amely a hibrid Runbook-feldolgozót futtató felhasználói környezet. A rendszer nem távolítja el az engedélyeket. Ha bizonyos mappákra vagy parancsokra korlátozza ezt a korlátozást, előfordulhat, hogy a rendszer megszakítja a változást.
@@ -54,17 +42,17 @@ A hibrid Runbook feldolgozói szerepkörhöz a [log Analytics ügynök](../azure
 
 A hibrid Runbook Worker szolgáltatás a következő disztribúciókat támogatja:
 
-* Amazon Linux 2012,09 – 2015,09 (x86/x64)
-* CentOS Linux 5, 6 és 7 (x86/x64)
-* Oracle Linux 5, 6 és 7 (x86/x64)
-* Red Hat Enterprise Linux Server 5, 6 és 7 (x86/x64)
-* Debian GNU/Linux 6, 7 és 8 (x86/x64)
-* Ubuntu 12,04 LTS, 14,04 LTS, 16,04 LTS és 18,04 (x86/x64)
-* 12 SUSE Linux Enterprise Server (x86/x64)
+* Amazon Linux 2012,09 – 2015,09 (x64)
+* CentOS Linux 5, 6 és 7 (x64)
+* Oracle Linux 5, 6 és 7 (x64)
+* Red Hat Enterprise Linux Server 5, 6 és 7 (x64)
+* Debian GNU/Linux 6, 7 és 8 (x64)
+* Ubuntu 12,04 LTS, 14,04 LTS, 16,04 LTS és 18,04 (x64)
+* SUSE Linux Enterprise Server 12 (x64)
 
 ### <a name="minimum-requirements"></a>Minimális követelmények
 
-A Linux hibrid Runbook-feldolgozók minimális követelményei a következők:
+A Linux rendszer és a felhasználói hibrid Runbook-feldolgozó minimális követelményei a következők:
 
 * Két mag
 * 4 GB RAM
@@ -79,6 +67,13 @@ A Linux hibrid Runbook-feldolgozók minimális követelményei a következők:
 |PAM | Cserélhető hitelesítési modulok|
 | **Választható csomag** | **Leírás** | **Minimális verzió**|
 | PowerShell Core | A PowerShell-runbookok futtatásához telepíteni kell a PowerShell Core-t. A telepítésének megismeréséhez lásd: [a PowerShell Core telepítése Linux rendszeren](/powershell/scripting/install/installing-powershell-core-on-linux) . | 6.0.0 |
+
+### <a name="adding-a-machine-to-a-hybrid-runbook-worker-group"></a>Gép felvétele hibrid Runbook Worker-csoportba
+
+A munkavégző gépet hozzáadhatja egy hibrid Runbook Worker-csoporthoz az egyik Automation-fiókban. A Update Management által felügyelt, rendszerhibrid Runbook-feldolgozót futtató gépekhez hozzáadhatók egy hibrid Runbook Worker csoportjához. Azonban ugyanazt az Automation-fiókot kell használnia mind a Update Management, mind a hibrid Runbook-feldolgozói csoporttagság esetében.
+
+>[!NOTE]
+>Azure Automation [Update Management](update-management/update-mgmt-overview.md) automatikusan telepíti a hibrid Runbook-feldolgozót egy olyan Azure-beli vagy nem Azure-beli gépen, amely engedélyezve van a Update Management számára. Ez a feldolgozó azonban nincs regisztrálva az Automation-fiókjában található bármely hibrid Runbook Worker-csoportban. A runbookok ezen gépeken való futtatásához hozzá kell adnia őket egy hibrid Runbook-feldolgozói csoporthoz. Kövesse a 4. lépést a [Linux Hybrid Runbook Worker telepítése](#install-a-linux-hybrid-runbook-worker) című szakaszban a csoportba való felvételhez.
 
 ## <a name="supported-linux-hardening"></a>Támogatott Linux-megerősítés
 
@@ -100,15 +95,40 @@ A linuxos hibrid Runbook-feldolgozók korlátozott számú Runbook-típust támo
 
 <sup>1</sup> A PowerShell-runbookok a PowerShell Core-t kell telepíteni a Linux rendszerű gépen. A telepítésének megismeréséhez lásd: [a PowerShell Core telepítése Linux rendszeren](/powershell/scripting/install/installing-powershell-core-on-linux) .
 
+### <a name="network-configuration"></a>Hálózati konfiguráció
+
+A hibrid Runbook-feldolgozók hálózati követelményeivel kapcsolatban lásd: [a hálózat konfigurálása](automation-hybrid-runbook-worker.md#network-planning).
+
 ## <a name="install-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker telepítése
 
 A Linux Hybrid Runbook Worker telepítéséhez és konfigurálásához hajtsa végre az alábbi lépéseket.
 
-1. Telepítse a Log Analytics ügynököt a célszámítógépen.
+1. Engedélyezze a Azure Automation megoldást a Log Analytics munkaterületen, és futtassa a következő parancsot egy emelt szintű PowerShell-parancssorban vagy Cloud Shell a [Azure Portalban](https://portal.azure.com):
 
-    * Az Azure-beli virtuális gépek esetében telepítse a Linux rendszerhez készült Log Analytics-ügynököt a [linuxos virtuálisgép-bővítmény](../virtual-machines/extensions/oms-linux.md)használatával. A bővítmény telepíti a Log Analytics ügynököt az Azure Virtual Machines szolgáltatásban, és egy Azure Resource Manager sablon vagy az Azure CLI használatával regisztrálja a virtuális gépeket egy meglévő Log Analytics-munkaterületen. Miután telepítette az ügynököt, a virtuális gép hozzáadhatók az Automation-fiókjában lévő hibrid Runbook Worker csoportjához.
+    ```powershell
+    Set-AzOperationalInsightsIntelligencePack -ResourceGroupName <resourceGroupName> -WorkspaceName <workspaceName> -IntelligencePackName "AzureAutomation" -Enabled $true
+    ```
 
-    * A nem Azure-beli virtuális gépek esetében telepítse a Linux rendszerhez készült Log Analytics-ügynököt a [Linux rendszerű számítógépek összekötése a Azure monitor](../azure-monitor/platform/agent-linux.md) cikkhez című cikkben ismertetett telepítési beállításokkal. Ezt a folyamatot több gép esetében is megismételheti, ha több feldolgozót szeretne hozzáadni a környezethez. Az ügynök telepítése után a virtuális gépek hozzáadhatók az Automation-fiókjában lévő hibrid Runbook Worker csoportjához.
+2. Telepítse a Log Analytics ügynököt a célszámítógépen.
+
+    * Az Azure-beli virtuális gépek esetében telepítse a Linux rendszerhez készült Log Analytics-ügynököt a [linuxos virtuálisgép-bővítmény](../virtual-machines/extensions/oms-linux.md)használatával. A bővítmény telepíti a Log Analytics ügynököt az Azure Virtual Machines szolgáltatásban, és egy meglévő Log Analytics-munkaterületre regisztrálja a virtuális gépeket. Használhat Azure Resource Manager sablont, az Azure CLI-t vagy a Azure Policyt, hogy hozzárendelje az [üzembe helyezési log Analytics ügynököt a *Linux* vagy a *Windows rendszerű* virtuális gépek](../governance/policy/samples/built-in-policies.md#monitoring) beépített házirendjéhez. Miután telepítette az ügynököt, a gép hozzáadhatók az Automation-fiókjában lévő hibrid Runbook Worker csoportjához.
+
+    * A nem Azure-beli gépek esetében az Log Analytics-ügynököt az [Azure arc-kompatibilis kiszolgálók](../azure-arc/servers/overview.md)használatával telepítheti. Az arc-kompatibilis kiszolgálók a következő módszerekkel támogatják a Log Analytics ügynök telepítését:
+
+        - A VM-bővítmények keretrendszer használata.
+
+            Ez a funkció az Azure arc-kompatibilis kiszolgálókon lehetővé teszi, hogy az Log Analytics Agent virtuálisgép-bővítményt egy nem Azure-beli Windows-és/vagy Linux-kiszolgálóra telepítse. A virtuálisgép-bővítmények a következő módszerekkel kezelhetők a hibrid gépeken vagy az arc-kompatibilis kiszolgálók által felügyelt kiszolgálókon:
+
+            - A [Azure Portal](../azure-arc/servers/manage-vm-extensions-portal.md)
+            - Az [Azure CLI](../azure-arc/servers/manage-vm-extensions-cli.md)
+            - [Azure PowerShell](../azure-arc/servers/manage-vm-extensions-powershell.md)
+            - Azure [Resource Manager-sablonok](../azure-arc/servers/manage-vm-extensions-template.md)
+
+        - Azure Policy használata.
+
+            Ezzel a módszerrel a Azure Policy [log Analytics Agent üzembe helyezése Linux vagy a Windows Azure arc gépek](../governance/policy/samples/built-in-policies.md#monitoring) beépített házirendjének használatával naplózhatja, hogy az ív használatára képes kiszolgáló rendelkezik-e a log Analytics ügynökkel. Ha az ügynök nincs telepítve, az automatikusan szervizelési feladat használatával telepíti azt. Ha azt tervezi, hogy Azure Monitor for VMs használatával figyeli a gépeket, Ehelyett használja a [Azure monitor for VMS engedélyezése](../governance/policy/samples/built-in-initiatives.md#monitoring) kezdeményezést az log Analytics-ügynök telepítéséhez és konfigurálásához.
+
+        Javasoljuk, hogy Azure Policy használatával telepítse a Windows vagy Linux rendszerhez készült Log Analytics-ügynököt.
 
     > [!NOTE]
     > A hibrid Runbook-feldolgozói szerepkört a kívánt állapot-konfigurációval (DSC) támogató gépek konfigurációjának kezeléséhez a gépeket DSC-csomópontként kell hozzáadnia.
@@ -116,29 +136,29 @@ A Linux Hybrid Runbook Worker telepítéséhez és konfigurálásához hajtsa v�
     > [!NOTE]
     > A Linux Hybrid Worker telepítése során a megfelelő sudo engedélyekkel rendelkező [nxautomation-fióknak](automation-runbook-execution.md#log-analytics-agent-for-linux) jelen kell lennie. Ha megpróbálja telepíteni a munkavégzőt, és a fiók nem létezik, vagy nem rendelkezik a megfelelő engedélyekkel, a telepítés sikertelen lesz.
 
-2. Ellenőrizze, hogy az ügynök jelentést tesz-e a munkaterületre
+3. Ellenőrizze, hogy az ügynök jelentést tesz-e a munkaterületre
 
     A Linux Log Analytics-ügynöke csatlakoztatja a gépeket egy Azure Monitor Log Analytics-munkaterülethez. Amikor telepíti az ügynököt a gépre, és összekapcsolja a munkaterülettel, automatikusan letölti a hibrid Runbook-feldolgozóhoz szükséges összetevőket.
 
     Ha az ügynök néhány perc elteltével sikeresen csatlakozott a Log Analytics munkaterülethez, a következő lekérdezés futtatásával ellenőrizheti, hogy a rendszer a szívverési adatokat küldi a munkaterületre.
 
     ```kusto
-    Heartbeat 
+    Heartbeat
     | where Category == "Direct Agent"
     | where TimeGenerated > ago(30m)
     ```
 
     A keresési eredmények között meg kell jelennie a gép szívverési rekordjainak, ami azt jelzi, hogy csatlakoztatva van, és a szolgáltatáshoz jelent jelentést. Alapértelmezés szerint minden ügynök egy szívverési rekordot továbbít a hozzárendelt munkaterülethez.
 
-3. A következő parancs futtatásával vegye fel a gépet egy hibrid Runbook Worker-csoportba, adja meg a paraméterek, a, és a értékeit `-w` `-k` `-g` `-e` .
+4. A következő parancs futtatásával vegye fel a gépet egy hibrid Runbook Worker-csoportba, adja meg a paraméterek, a, és a értékeit `-w` `-k` `-g` `-e` .
 
     A paraméterekhez `-k` és az `-e` Automation-fiók **kulcsok** lapjáról kérheti le a szükséges információkat. A lap bal oldalán található **Fiókbeállítások** szakaszban válassza a **kulcsok** lehetőséget.
 
     ![Kulcsok kezelése lap](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
 
-    * A `-e` paraméter esetében másolja az **URL-cím**értékét.
+    * A `-e` paraméter esetében másolja az **URL-cím** értékét.
 
-    * A `-k` paraméter esetében másolja az **elsődleges elérési kulcs**értékét.
+    * A `-k` paraméter esetében másolja az **elsődleges elérési kulcs** értékét.
 
     * A `-g` paraméternél adja meg annak a hibrid Runbook-feldolgozó csoportnak a nevét, amelyhez az új Linux Hybrid Runbook Worker csatlakoznia kell. Ha ez a csoport már létezik az Automation-fiókban, az aktuális gép hozzá lesz adva. Ha ez a csoport nem létezik, akkor a rendszer ezt a nevet hozza létre.
 
@@ -148,7 +168,7 @@ A Linux Hybrid Runbook Worker telepítéséhez és konfigurálásához hajtsa v�
    sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/onboarding.py --register -w <logAnalyticsworkspaceId> -k <automationSharedKey> -g <hybridGroupName> -e <automationEndpoint>
    ```
 
-4. A parancs befejezése után az Automation-fiókjában lévő hibrid feldolgozói csoportok lap az új csoportot és a tagok számát jeleníti meg. Ha ez egy meglévő csoport, a tagok száma nő. Válassza ki a csoportot a hibrid munkavégző csoportok lapon a listából, és válassza a **hibrid feldolgozók** csempét. A hibrid dolgozók oldalon láthatja a csoport egyes tagjait.
+5. Ellenőrizze a telepítést a parancsfájl befejeződése után. Az Automation-fiók **Hybrid Runbook Worker** groups lapján a **felhasználó hibrid Runbook-feldolgozói csoport** lapon az új vagy a meglévő csoport és a tagok száma látható. Ha ez egy meglévő csoport, a tagok száma nő. A listából kiválaszthatja a kívánt csoportot a lap bal oldali menüjében a **hibrid feldolgozók** kiválasztása lehetőséggel. A **hibrid dolgozók** oldalon láthatja a csoport egyes tagjainak listáját.
 
     > [!NOTE]
     > Ha a Linux rendszerhez készült Log Analytics virtuálisgép-bővítményt használja az Azure-beli virtuális gépekhez, javasoljuk, `autoUpgradeMinorVersion` hogy a `false` verzió automatikus verziófrissítésének beállítása a hibrid Runbook-feldolgozóval kapcsolatos problémákat okozzon. A bővítmény manuális frissítéséről az [Azure CLI üzembe helyezésével](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment)foglalkozó témakörben olvashat bővebben.
@@ -161,7 +181,7 @@ A Linux Hybrid Runbook-feldolgozók alapértelmezés szerint aláírás-ellenőr
  sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --false <logAnalyticsworkspaceId>
  ```
 
-## <a name="remove-the-hybrid-runbook-worker-from-an-on-premises-linux-machine"></a><a name="remove-linux-hybrid-runbook-worker"></a>Hibrid Runbook-feldolgozó eltávolítása egy helyszíni linuxos gépről
+## <a name="remove-the-hybrid-runbook-worker"></a><a name="remove-linux-hybrid-runbook-worker"></a>A hibrid Runbook Worker eltávolítása
 
 A `ls /var/opt/microsoft/omsagent` hibrid Runbook-feldolgozón a parancs használatával kérheti le a munkaterület azonosítóját. A rendszer létrehoz egy nevű mappát a munkaterület-AZONOSÍTÓval.
 

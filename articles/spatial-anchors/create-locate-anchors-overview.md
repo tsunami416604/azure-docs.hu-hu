@@ -1,19 +1,19 @@
 ---
 title: Hozza létre & a horgonyok áttekintése
 description: Részletes magyarázat arról, hogyan hozhat létre és kereshet horgonyokat az Azure térbeli horgonyok használatával.
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 02/24/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 000fb50c002353982d128d6715ae5d8006d35177
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2f1888cf6db8eb1ff27a2381f282785d677ffe5f
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87037814"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95506981"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors"></a>Horgonyok létrehozása és megkeresése az Azure térbeli horgonyok használatával
 
@@ -21,7 +21,7 @@ Az Azure térbeli horgonyok lehetővé teszik, hogy a különböző eszközök k
 
 Számos különböző fejlesztési környezetet támogat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információért folytassa a fejlesztési környezet kiválasztásával:
 
 > [!div class="nextstepaction"]

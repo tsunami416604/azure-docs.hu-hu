@@ -5,20 +5,31 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 11/23/2020
 ms.author: victorh
-ms.openlocfilehash: 34134f2c790851d34db7b5327aa76350d54d137d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 650cf1e9b0e9fbbadc5a783cad844898698bf017
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89075463"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95509736"
 ---
 # <a name="azure-firewall-manager-policy-overview"></a>Azure Firewall Manager-házirend áttekintése
 
-A tűzfalszabályok olyan Azure-erőforrások, amelyek NAT-, hálózat-és alkalmazás-szabály-gyűjteményeket, valamint a fenyegetési intelligencia beállításait tartalmazzák. Ez egy globális erőforrás, amely a biztonságos virtuális hubok és a hub virtuális hálózatok több Azure Firewall példányára is használható. A szabályzatok a régiók és az előfizetések között működnek.
+A tűzfalszabályok olyan Azure-erőforrások, amelyek NAT-, hálózat-és alkalmazás-szabály-gyűjteményeket, valamint fenyegetési intelligencia-beállításokat tartalmaznak. Ez egy globális erőforrás, amely a biztonságos virtuális hubok és a hub virtuális hálózatok több Azure Firewall példányára is használható. A szabályzatok a régiók és az előfizetések között működnek.
 
 ![Azure Firewall Manager-házirend](media/policy-overview/policy-overview.png)
+
+## <a name="availability"></a>Rendelkezésre állás
+
+A tűzfal-házirend egy magasan elérhető és automatikusan replikált erőforrás. Ha ritka regionális katasztrófa történik, a tűzfal-házirend műveletei feladatátvételt végeznek az Azure párosított régióiba. Helyreállítási műveletek utáni feladatátvétel az Azure elsődleges régiójába szinkron és aszinkron műveletekhez. 
+
+A párosított régiók számos előnnyel rendelkeznek, többek között:
+- fizikai elkülönítés legalább 300 mérföldrel elválasztva
+- gyorsabb helyreállítás katasztrófa esetén
+- az adattárolási követelmények teljesítése a földrajz alapján
+
+A párosított régiókkal kapcsolatos további információkért lásd [: Üzletmenet-folytonosság és vész-helyreállítási (BCDR): Azure párosított régiók](../best-practices-availability-paired-regions.md).
 
 ## <a name="policy-creation-and-association"></a>Házirend létrehozása és társítása
 
@@ -34,7 +45,7 @@ A szabályzatok egy vagy több virtuális hubhoz vagy virtuális hálózatok is 
 
 A nem üres szülő házirendekkel létrehozott házirendek öröklik az összes szabályt a szülő házirendből. A szülő házirendből örökölt hálózati szabályok gyűjteményei mindig elsőbbséget élveznek az új szabályzat részeként definiált hálózati szabályok gyűjteményei felett. Ugyanez a logika vonatkozik az alkalmazási szabályok gyűjteményére is. A hálózati szabályok gyűjteményeit azonban a rendszer mindig feldolgozza az alkalmazási szabályok gyűjtése előtt, az örökléstől függetlenül.
 
-A fenyegetési intelligencia mód a szülő házirendből is örökölt. A fenyegetési intelligencia mód beállítható más értékre, hogy felülbírálja ezt a viselkedést, de nem kapcsolhatja ki. Csak szigorúbb értékkel lehet felülbírálni. Ha például a szülő házirend **csak riasztásra**van beállítva, a helyi házirendet beállíthatja **riasztásra és megtagadásre**.
+A fenyegetési intelligencia mód a szülő házirendből is örökölt. A fenyegetési intelligencia mód beállítható más értékre, hogy felülbírálja ezt a viselkedést, de nem kapcsolhatja ki. Csak szigorúbb értékkel lehet felülbírálni. Ha például a szülő házirend **csak riasztásra** van beállítva, a helyi házirendet beállíthatja **riasztásra és megtagadásre**.
 
 A veszélyforrások felderítési módjához hasonlóan a fenyegetések felderítésének engedélyezési listája örökli a szülő-házirendet. A gyermek házirend további IP-címeket is hozzáadhat az engedélyezési listához.
 

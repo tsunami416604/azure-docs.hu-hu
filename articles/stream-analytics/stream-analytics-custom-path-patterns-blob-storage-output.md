@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: b6d6838779d4f219a8ce10b2cf3ae6cd620762a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 72718285ff83a23acd21a5e29001ea96e1f061c8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317854"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95531355"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Egyéni blob kimeneti particionálás Azure Stream Analytics
 
@@ -25,15 +25,15 @@ Az egyéni mezők vagy a bemeneti attribútumok javítják az adatfeldolgozási 
 
 ### <a name="partition-key-options"></a>Partíciós kulcs beállításai
 
-A bemeneti adatok particionálásához használt partíciós kulcs vagy oszlopnév a kötőjeleket, aláhúzásokat és szóközöket tartalmazó alfanumerikus karaktereket tartalmazhat. A beágyazott mezőket nem lehet partíciós kulcsként használni, kivéve, ha aliasokkal együtt használják. A partíció kulcsának NVARCHAR (MAX) kell lennie.
+A bemeneti adatok particionálásához használt partíciós kulcs vagy oszlopnév a kötőjeleket, aláhúzásokat és szóközöket tartalmazó alfanumerikus karaktereket tartalmazhat. A beágyazott mezőket nem lehet partíciós kulcsként használni, kivéve, ha aliasokkal együtt használják. A partíció kulcsának NVARCHAR (MAX), BIGINT, FLOAT vagy BIT értékűnek kell lennie (1,2 kompatibilitási szint vagy magasabb). További információ: [Azure stream Analytics adattípusok](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics).
 
 ### <a name="example"></a>Példa
 
-Tegyük fel, hogy a feladatok olyan külső videojáték-szolgáltatáshoz csatlakoztatott élő felhasználói munkamenetek bemeneti adatait veszik át, ahol a betöltött adatok egy oszlopot tartalmaznak **client_id** a munkamenetek azonosítására. Az adatok **client_id**alapján történő particionálásához állítsa be a blob Path Pattern mezőt úgy, hogy felvegyen egy **{client_id}** partíciós tokent a blob kimeneti tulajdonságaiban a feladatok létrehozásakor. Ahogy a különböző **client_id** értékekkel rendelkező adatok a stream Analytics feladatokon keresztül áramlanak, a kimeneti adatok külön mappákba lesznek mentve, a mappa egyetlen **client_id** értéke alapján.
+Tegyük fel, hogy a feladatok olyan külső videojáték-szolgáltatáshoz csatlakoztatott élő felhasználói munkamenetek bemeneti adatait veszik át, ahol a betöltött adatok egy oszlopot tartalmaznak **client_id** a munkamenetek azonosítására. Az adatok **client_id** alapján történő particionálásához állítsa be a blob Path Pattern mezőt úgy, hogy felvegyen egy **{client_id}** partíciós tokent a blob kimeneti tulajdonságaiban a feladatok létrehozásakor. Ahogy a különböző **client_id** értékekkel rendelkező adatok a stream Analytics feladatokon keresztül áramlanak, a kimeneti adatok külön mappákba lesznek mentve, a mappa egyetlen **client_id** értéke alapján.
 
 ![Elérésiút-minta ügyfél-azonosítóval](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-path-pattern-client-id.png)
 
-Hasonlóképpen, ha a megadott feladatnak több millió érzékelőkből származó érzékelő adata volt, ahol az egyes érzékelők **sensor_id**voltak, akkor a Path minta **{sensor_id}** lenne, hogy az egyes érzékelők adatai különböző mappákba legyenek particionálva.  
+Hasonlóképpen, ha a megadott feladatnak több millió érzékelőkből származó érzékelő adata volt, ahol az egyes érzékelők **sensor_id** voltak, akkor a Path minta **{sensor_id}** lenne, hogy az egyes érzékelők adatai különböző mappákba legyenek particionálva.  
 
 
 A REST API használatával a kérelemhez használt JSON-fájl kimeneti szakasza a következőhöz hasonló lehet:  
@@ -62,6 +62,8 @@ Figyelje meg, hogy a blobban lévő összes rekordhoz tartozik egy **client_id**
 2. A partíciós kulcsok nem megkülönböztetik a kis-és nagybetűket, így a partíciós kulcsok, például a "John" és a "John" egyenértékűek Emellett a kifejezések nem használhatók partíciós kulcsként. Az **{columna + columnB}** például nem működik.  
 
 3. Ha egy bemeneti adatfolyam a 8000-es számú partíciós kulccsal rendelkező rekordokból áll, a rendszer hozzáfűzi a rekordokat a meglévő blobokhoz, és szükség esetén csak új blobokat hoz létre. Ha a kardinális értéke több mint 8000, a meglévő Blobok nem fognak megjelenni, és az új Blobok nem hozhatók létre tetszőleges számú rekordhoz ugyanazzal a partíciós kulccsal.
+
+4. Ha a blob kimenete nem módosítható, akkor a rendszer minden alkalommal létrehoz egy új blobot, amikor adatokat küld [a rendszer a](../storage/blobs/storage-blob-immutable-storage.md)stream Analytics.
 
 ## <a name="custom-datetime-path-patterns"></a>Egyéni DateTime elérésiút-minták
 

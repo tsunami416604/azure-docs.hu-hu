@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 4c9f74f5a9950a299b34e22c1e86dd91f8c82364
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9f95a5e85ec4eebf82cca707476750595331d73
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983598"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522668"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Adatok megjelenítése az Azure Monitorból
 Ez a cikk az Azure Monitorban tárolt napló-és metrikai adatok megjelenítéséhez használható módszerek összegzését tartalmazza.
@@ -49,7 +49,7 @@ Itt látható egy útmutató az irányítópultok létrehozásához.
 - Mélyreható integráció az Azure-ba. A vizualizációk több Azure-oldalról is rögzíthetők az irányítópultokon, például Metrikaböngésző, Log Analytics és Application Insights.
 - A a metrikákat és a naplókat is támogatja.
 - Több forrásból származó adatok egyesítése, beleértve a [metrikák Explorer](platform/metrics-charts.md), a [naplók](log-query/log-query-overview.md)és a [leképezések](app/app-map.md) kimenetét Application Insightsban.
-- Személyes vagy megosztott irányítópultok beállítása. Integrálva van az Azure [szerepköralapú hitelesítéssel (RBAC)](../role-based-access-control/overview.md).
+- Személyes vagy megosztott irányítópultok beállítása. Integrálva van az [Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC)](../role-based-access-control/overview.md).
 - Automatikus frissítés. A metrikák frissítése az időtartománytól függ, amely legalább öt percet vesz igénybe. A naplók óránként frissülnek, az adott vizualizáción található "frissítés" ikonra kattintva vagy a teljes irányítópult frissítésével igény szerint manuális frissítési lehetőséggel.
 - Parametrized metrikai irányítópultok timestamp és egyéni paraméterekkel.
 - Rugalmas elrendezési beállítások.

@@ -12,12 +12,12 @@ ms.date: 11/17/2020
 ms.author: aahi
 keywords: szöveg-adatbányászat, érzelmek elemzése, szöveges elemzés
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: a91be0798dc67bfb751807b385d638343b89562b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 14dfa6111bbda8750b175c8c9b2a96321e1af2c5
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957044"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519404"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Mi a Text Analytics API?
 
@@ -47,9 +47,14 @@ A nyelvfelismerés képes [észlelni, hogy egy szövegbeviteli szöveg beírásr
 
 Az elnevezett entitások felismerése képes [azonosítani és kategorizálni az entitásokat](how-tos/text-analytics-how-to-entity-linking.md) a szövegben, mivel a felhasználók, a helyek, a szervezetek, a mennyiségek és a jól ismert entitások is felismerhetők, és a weben található további információkhoz kapcsolódnak.
 
-## <a name="use-containers"></a>Tárolók használata
+## <a name="deploy-on-premises-using-docker-containers"></a>Helyszíni üzembe helyezés Docker-tárolók használatával
 
-[A Text Analytics tárolókat](how-tos/text-analytics-how-to-install-containers.md) helyszíni megoldásként használhatja a bányászati szövegekhez és az API-hoz. Ezek a Docker-tárolók lehetővé teszik a legfontosabb kifejezések kinyerését, a nyelv felismerését, valamint az adatokhoz való alaposabb elemzést.
+[Text Analytics tárolók használatával](how-tos/text-analytics-how-to-install-containers.md) telepítheti a helyszíni API-szolgáltatásokat. Ezek a Docker-tárolók lehetővé teszik, hogy a szolgáltatás a megfelelőségi, biztonsági vagy egyéb működési okokból közelebb kerüljön az adataihoz. Text Analytics a következő tárolókat kínálja:
+
+* hangulat elemzése
+* fő kifejezés kibontása (előzetes verzió)
+* nyelvfelismerés (előzetes verzió)
+* Text Analytics for Health (előzetes verzió)
 
 ## <a name="asynchronous-operations"></a>Aszinkron műveletek
 

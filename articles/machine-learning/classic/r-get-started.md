@@ -9,17 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: b7c442aaf6484e8e47bd6d00c91023fba43af75d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: bca2f0229a15f44ff8f3589a9c1e80032036b97c
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325016"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95507212"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>Első lépések az Azure Machine Learning Studio (klasszikus) az R-ben
 
-**a következőkre vonatkozik:** ![ igen ](../../../includes/media/aml-applies-to-skus/yes.png) Machine learning Studio (klasszikus) ![ nincs ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
-
+**a következőkre vonatkozik:** ![ Ez egy pipa, ami azt jelenti, hogy ez a cikk a Machine Learning Studio (klasszikus) elemre vonatkozik. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasszikus) ![ Ez egy X, ami azt jelenti, hogy ez a cikk Azure Machine learningre vonatkozik.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 <!-- Stephen F Elston, Ph.D. -->
 Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Azure Machine Learning Studio (klasszikus) t az R-kód létrehozásához, teszteléséhez és végrehajtásához. A végén egy teljes előrejelző megoldás fog megjelenni.
@@ -122,9 +121,9 @@ Ha jelenleg nem érti a kód utolsó sorát, olvassa el a következőt:. A cikk 
 
 A RStudio egy széles körben használt IDE az R-hez. Az útmutatóban használt R-kód némelyikének szerkesztéséhez, teszteléséhez és hibakereséséhez a RStudio-t fogjuk használni. Az R-kód tesztelése és elkészítése után a RStudio-szerkesztőből kivágással és beillesztéssel egy Machine Learning Studio (klasszikus) [r script][execute-r-script] modult használhat.
 
-Ha nincs telepítve az R programozási nyelv az asztali gépen, tegye meg most. A nyílt forráskódú R nyelv ingyenes letöltése a [teljes r Archive Network (Cran)](https://www.r-project.org/)nyelven érhető el. A letölthető fájlok Windows, Mac OS és Linux/UNIX rendszereken érhetők el. Válasszon egy közeli tükrözést, és kövesse a letöltési utasításokat. Emellett a CRAN számos hasznos elemzési és adatkezelési csomagot tartalmaz.
+Ha nincs telepítve az R programozási nyelv az asztali gépen, tegye meg most. A nyílt forráskódú R nyelv ingyenes letöltése a [teljes r Archive Network (Cran)](https://www.r-project.org/)nyelven érhető el. A letölthető fájlok Windows, macOS és Linux/UNIX rendszereken érhetők el. Válasszon egy közeli tükrözést, és kövesse a letöltési utasításokat. Emellett a CRAN számos hasznos elemzési és adatkezelési csomagot tartalmaz.
 
-Ha most ismerkedik a RStudio, töltse le és telepítse az asztali verziót. A RStudio Windows, Mac OS és Linux/UNIX rendszerű letöltéseit a következő helyen találja: [RStudio](http://www.rstudio.com/products/RStudio/). Kövesse a RStudio telepítéséhez szükséges utasításokat az asztali gépen.
+Ha most ismerkedik a RStudio, töltse le és telepítse az asztali verziót. A Windows, macOS és Linux/UNIX rendszerhez készült RStudio-letöltések a következő címen találhatók: [RStudio](http://www.rstudio.com/products/RStudio/). Kövesse a RStudio telepítéséhez szükséges utasításokat az asztali gépen.
 
 A RStudio oktatóanyagának bemutatása [a RSTUDIO ide használatával](https://support.rstudio.com/hc/sections/200107586-Using-RStudio)érhető el.
 
@@ -144,7 +143,7 @@ Először töltse be a **csdairydata.csv** -fájlt Machine learning Studio (klas
 
 1. Indítsa el a Machine Learning Studio (klasszikus) környezetet.
 1. Válassza az **+ új** lehetőséget a képernyő bal alsó részén, és válassza az **adatkészlet** lehetőséget.
-1. Válasszon a **helyi fájlból** , majd válassza a **Tallózás** lehetőséget a fájl kiválasztásához.
+1. Válasszon a **helyi fájlból**, majd válassza a **Tallózás** lehetőséget a fájl kiválasztásához.
 1. Ügyeljen arra, hogy az adatkészlethez tartozó **általános CSV-fájlt (fejléc (. csv)** adja meg.
 1. Jelölje be a pipa.
 1. Az adatkészlet feltöltése után az új adatkészlet jelenik meg, amikor kiválasztja az **adatkészletek** lapot.
@@ -159,8 +158,8 @@ Most, hogy Machine Learning Studio (klasszikus) adataink vannak, létre kell hoz
 1. Húzzon **csdairydata.csv adatkészletet** a kísérletre.
 1. A bal oldali ablaktábla felső részén található **kísérleti kísérletek keresése** mezőben írja be az [R-szkript végrehajtása][execute-r-script]elemet. A modul megjelenik a keresési listán.
 1. Húzza az [R szkript végrehajtása][execute-r-script] modult a raklapra.
-1. **csdairydata.csv adatkészlet** kimenetének csatlakoztatása a [végrehajtási R-szkript][execute-r-script]bal szélső bemenetéhez ( **DataSet1 elemet** ).
-1. Válassza a **Mentés** lehetőséget.
+1. **csdairydata.csv adatkészlet** kimenetének csatlakoztatása a [végrehajtási R-szkript][execute-r-script]bal szélső bemenetéhez (**DataSet1 elemet**).
+1. Kattintson a **Mentés** gombra.
 
 Ezen a ponton a kísérletnek ehhez a példához hasonlóan kell kinéznie.
 
@@ -233,7 +232,7 @@ Már beszéltünk az adathalmaz [betöltési](#loading)adatkészletének betölt
 
 1. Hozzon létre egy zip-fájlt, és másolja a szkriptet ebbe a zip-fájlba. A Windowsban kattintson a jobb gombbal a fájlra, és válassza a **Küldés**  >  **tömörített mappába** lehetőséget. Ez a művelet létrehoz egy új zip-fájlt, amely tartalmazza a **simpleplot. R** -fájl.
 
-1. Adja hozzá a fájlt a Machine Learning Studio (klasszikus) **adatkészletekhez** , és adja meg a típust **zip** -ként. Ekkor megjelenik a zip-fájl az adatkészletekben.
+1. Adja hozzá a fájlt a Machine Learning Studio (klasszikus) **adatkészletekhez** , és adja meg a típust **zip**-ként. Ekkor megjelenik a zip-fájl az adatkészletekben.
 
 1. Húzza a zip-fájlt az **adatkészletek** rajzsablonról a **ml Studio (klasszikus) vászonra**.
 
@@ -241,7 +240,7 @@ Már beszéltünk az adathalmaz [betöltési](#loading)adatkészletének betölt
 
 1. Adja meg a `source()` zip-fájl nevét tartalmazó függvényt az [R-szkript végrehajtása][execute-r-script] modul kódjának ablakában. Ebben az esetben a következőt írtunk be: `source("src/simpleplot.R")` .
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 A lépések elvégzése után az [r szkript végrehajtása][execute-r-script] modul végrehajtja az r-szkriptet a zip-fájlban a kísérlet futtatásakor. Ezen a ponton a kísérletnek ehhez a példához hasonlóan kell kinéznie.
 
@@ -404,7 +403,7 @@ Hajtsa végre ezt a kódot, és tekintse meg az R-szkript kimeneti naplóját. I
 [ModuleOutput] [1] "Saving the following item(s):  .maml.oport1"
 ```
 
-A hónap típusának mostantól a következő tényezőt kell tartalmaznia: **w/14 szint**. Ez a típus problémát jelent, mert az év során csak 12 hónap van. Azt is megtekintheti, hogy az eredményül kapott adatkészlet-port **megjelenítésének** típusa **kategorikus** -e.
+A hónap típusának mostantól a következő tényezőt kell tartalmaznia: **w/14 szint**. Ez a típus problémát jelent, mert az év során csak 12 hónap van. Azt is megtekintheti, hogy az eredményül kapott adatkészlet-port **megjelenítésének** típusa **kategorikus**-e.
 
 A probléma az, hogy a hónap oszlop nem lett szisztematikusan kódolva. Bizonyos esetekben egy hónapot április, mások pedig ápr rövidítenek. Ezt a problémát úgy oldhatja meg, hogy a sztringet három karakterre vágja. A kód most a következő példához hasonlóan jelenik meg.
 
@@ -1276,11 +1275,11 @@ Ezekből az eredményekből láthatjuk, hogy a modellhez tartozó szezonális t�
 
 A RStudio jól dokumentálva van. Íme néhány hivatkozás a RStudio dokumentációjának főbb részeire, hogy megismerkedjen az első lépésekkel.
 
-* **Projektek létrehozása** : a RStudio használatával rendszerezheti és kezelheti az R-kódját projektjeiben. További információ: [using Projects (projektek használata](https://support.rstudio.com/hc/articles/200526207-Using-Projects)). Kövesse ezeket az utasításokat, és hozzon létre egy projektet az R Code-példákhoz ebben a cikkben.
-* **R-kód szerkesztése és végrehajtása** : a RStudio integrált környezetet biztosít az r-kód szerkesztéséhez és végrehajtásához. További információ: [kód szerkesztése és végrehajtása](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code).
-* **Hibakeresés** : a RStudio hatékony hibakeresési képességeket tartalmaz. További információ ezekről a funkciókról: [hibakeresés a RStudio](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio)-mel. A Töréspont hibaelhárítási funkcióiról a [töréspont hibaelhárítása](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting)című témakörben talál további információt.
+* **Projektek létrehozása**: a RStudio használatával rendszerezheti és kezelheti az R-kódját projektjeiben. További információ: [using Projects (projektek használata](https://support.rstudio.com/hc/articles/200526207-Using-Projects)). Kövesse ezeket az utasításokat, és hozzon létre egy projektet az R Code-példákhoz ebben a cikkben.
+* **R-kód szerkesztése és végrehajtása**: a RStudio integrált környezetet biztosít az r-kód szerkesztéséhez és végrehajtásához. További információ: [kód szerkesztése és végrehajtása](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code).
+* **Hibakeresés**: a RStudio hatékony hibakeresési képességeket tartalmaz. További információ ezekről a funkciókról: [hibakeresés a RStudio](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio)-mel. A Töréspont hibaelhárítási funkcióiról a [töréspont hibaelhárítása](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting)című témakörben talál további információt.
 
-## <a name="further-reading"></a><a id="appendixb"></a>További információ
+## <a name="further-reading"></a><a id="appendixb"></a>További olvasnivalók
 
 Ez az R-programozási oktatóanyag ismerteti az alapismereteket, amelyekkel a Machine Learning Studio (klasszikus) R nyelvét kell használnia. Ha nem ismeri az R-t, két bevezető érhető el a CRAN-on:
 

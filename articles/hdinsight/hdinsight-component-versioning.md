@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 08/13/2020
-ms.openlocfilehash: 282f13c89c527b096573b67b5d539de821e89032
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 82297b81ebe99301574e99ef438cc81c711dbeff
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900795"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95533684"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Az Azure HDInsight elérhető Apache-összetevők és-verziók
 
@@ -32,7 +32,7 @@ A HDInsight-fürtökhöz társított verziók az alábbi táblázatban látható
 |------------------------|---------------|-----------------------------|
 | Apache Hadoop és fonal | 3.1.1         | 2.7.3                       |
 | Apache TEZ             | 0.9.1         | 0.7.0                       |
-| Apache Pig             | 0.16.0        | 0.16.0                      |
+| Apache Pig             | 0.16.1        | 0.16.0                      |
 | Apache Hive            | 3.1.0         | 1.2.1 (2.1.0 az ESP interaktív lekérdezésen) |
 | Apache TEZ Hive2       | -             | 0.8.4                       |
 | Apache Ranger          | 1.1.0         | 0.7.0                       |
@@ -119,7 +119,7 @@ Ez a táblázat felsorolja azokat a HDInsight-verziókat, amelyek nem érhetők 
 
 ## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>A HDInsight-fürt verzióira vonatkozó szolgáltatási szintű szerződés
 
-A szolgáltatói szerződés _támogatási ablakként_ van meghatározva. A támogatási időszak azt az időtartamot használja, ameddig a Microsoft ügyfélszolgálata és támogatása támogatja a HDInsight verzióját. Ha a verzió elérte a _támogatás lejárati dátumát_ , a HDInsight-fürt a támogatási ablakon kívül esik. A HDInsight X verziójának támogatása (újabb X + 1 verzió után) a következő:
+A szolgáltatói szerződés _támogatási ablakként_ van meghatározva. A támogatási időszak azt az időtartamot használja, ameddig a Microsoft ügyfélszolgálata és támogatása támogatja a HDInsight verzióját. Ha a verzió elérte a _támogatás lejárati dátumát_, a HDInsight-fürt a támogatási ablakon kívül esik. A HDInsight X verziójának támogatása (újabb X + 1 verzió után) a következő:
 
 - **1. képlet:** Adja hozzá a 180 napot a HDInsight-fürt X verziójának kiadási dátumához.
 - **2. képlet:** Adja hozzá a 90 nappal azt a dátumot, amikor a HDInsight-fürt X + 1 verziója elérhetővé válik a Azure Portal.

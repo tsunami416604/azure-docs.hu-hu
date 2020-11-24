@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 11/13/2020
 ms.author: matjazl
-ms.openlocfilehash: 3bb168cf3f642d22096c54b3f35c7833afaff769
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 386003d7dae80e086f523b2cebe61aa0eee7b89e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635143"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95527819"
 ---
 # <a name="what-is-azure-api-for-fhirreg"></a>Mi az a FHIR készült Azure API &reg; ?
 
@@ -24,7 +24,7 @@ A FHIR készült Azure API gyors adatcserét tesz lehetővé a gyors egészség�
 - Nagy teljesítményű, kis késleltetésű
 - A védett egészségügyi adatokat (PHI) biztonságos kezelése a megfelelő felhőalapú környezetben
 - INTELLIGENS on FHIR mobil-és webes megvalósításokhoz
-- Saját adatmennyiség szabályozása Role-Based Access Control (RBAC)
+- Saját adatai méretezése a szerepköralapú hozzáférés-vezérléssel (RBAC)
 - Naplózási naplók nyomon követése az egyes adattárokban való hozzáféréshez, létrehozáshoz, módosításhoz és olvasáshoz
 
 A FHIR készült Azure API lehetővé teszi, hogy percek alatt hozzon létre és helyezzen üzembe egy FHIR szolgáltatást, hogy kihasználja a felhő rugalmas méretét.  Csak a szükséges átviteli sebességért és tárterületért kell fizetnie. A Power Azure API-t a FHIR-hez készült Azure-szolgáltatások gyors teljesítményre tervezték, függetlenül attól, hogy milyen méretű adatkészleteket kezel.
@@ -53,7 +53,7 @@ A FHIR készült Azure API használata lehetővé teszi a kapcsolódást bármel
 
 ### <a name="control-data-access-at-scale"></a>Az adathozzáférés szabályozása méretezéskor
 
-Ön szabályozhatja az adatait. A Role-Based Access Control (RBAC) lehetővé teszi az adatai tárolásának és elérésének kezelését.  A fokozott biztonság és a felügyeleti munkaterhelés csökkentése révén meghatározhatja, hogy ki férhet hozzá a létrehozott adatkészletekhez a környezetéhez létrehozott szerepkör-definíciók alapján.  
+Ön szabályozhatja az adatait. A szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi az adattárolás és-hozzáférés kezelését.  A fokozott biztonság és a felügyeleti munkaterhelés csökkentése révén meghatározhatja, hogy ki férhet hozzá a létrehozott adatkészletekhez a környezetéhez létrehozott szerepkör-definíciók alapján.  
 
 ### <a name="audit-logs-and-tracking"></a>Naplók és nyomkövetés naplózása 
 

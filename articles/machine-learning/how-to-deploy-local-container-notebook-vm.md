@@ -11,12 +11,12 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: 05d810928a71aec0e3314c32051e5f3565413564
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 17b2d717ac6f244cb3ddddfdbc2f29581aa1f59f
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444605"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95527309"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Modell üzembe helyezése Azure Machine Learning számítási példányok számára
 
@@ -40,7 +40,7 @@ A számítási példány tartalmaz egy példaként szolgáló jegyzetfüzetet, a
 
 1. [Azure Machine learning Studióban](https://ml.azure.com)válassza ki a Azure Machine learning számítási példányokat.
 
-1. Nyissa meg az `samples-*` alkönyvtárat, majd nyissa meg a t `how-to-use-azureml/deploy-to-local/register-model-deploy-local.ipynb` . A Megnyitás után futtassa a jegyzetfüzetet.
+1. Nyissa meg az `samples-*` alkönyvtárat, majd nyissa meg a t `how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb` . A Megnyitás után futtassa a jegyzetfüzetet.
 
     ![Képernyőkép a futó helyi szolgáltatásról a notebookon](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service.png)
 
@@ -52,7 +52,7 @@ A számítási példány tartalmaz egy példaként szolgáló jegyzetfüzetet, a
     * Jegyzetfüzet virtuális gép: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.notebooks.azureml.net/score` . 
     * Számítási példány: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.instances.azureml.net/score` . 
 
-    Például: 
+    Példa: 
     * Jegyzetfüzet virtuális gép: `https://vm-name-6789.northcentralus.notebooks.azureml.net/score` 
     * Számítási példány: `https://vm-name-6789.northcentralus.instances.azureml.net/score`
 
@@ -93,7 +93,7 @@ resp = requests.post(service_url, test_sample, headers=headers)
 print("prediction:", resp.text)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Modell üzembe helyezése egyéni Docker-rendszerkép használatával](how-to-deploy-custom-docker-image.md)
 * [Üzembe helyezés hibaelhárítása](how-to-troubleshoot-deployment.md)

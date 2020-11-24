@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 71114b6663d010437e5778d288eacf4e120b3da5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d36a2804519e5728dd068cc6c06ad005244e8c95
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91395974"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95524096"
 ---
 # <a name="multitenant-applications-in-azure"></a>Több-bérlős alkalmazások az Azure-ban
 A több-bérlős alkalmazás olyan megosztott erőforrás, amely lehetővé teszi a "felhasználók számára a különböző bérlők számára", hogy megtekintsék az alkalmazást, mintha a tulajdonosa lenne. Egy tipikus forgatókönyv, amely egy több-bérlős alkalmazáshoz rendeli, a különböző bérlők által az alkalmazás összes felhasználója testreszabhatja a felhasználói élményt, de egyébként ugyanazok az alapvető üzleti követelmények. Többek között a nagyméretű több-bérlős alkalmazások Microsoft 365, a Outlook.com és a visualstudio.com.
@@ -43,7 +43,7 @@ A megfelelően megvalósított több-bérlős alkalmazás a következő előnyö
 
 Röviden, míg számos szempontot figyelembe kell vennie, hogy nagy mértékben skálázható szolgáltatást biztosítson, számos olyan célt és követelményt is igénybe vehetik, amelyek számos több-bérlős alkalmazás esetében közösek. Előfordulhat, hogy egyes helyzetekben nem relevánsak, és az egyes célok és követelmények fontossága eltérő lesz az egyes forgatókönyvekben. A több-bérlős alkalmazás szolgáltatója olyan célokat és követelményeket is tartalmaz, mint a bérlői célok és követelmények, a jövedelmezőség, a számlázás, a több szolgáltatási szint, a kiépítés, a karbantartási monitorozás és az automatizálás.
 
-További információ a több-bérlős alkalmazások tervezési szempontjairól: [több-bérlős alkalmazás üzemeltetése az Azure-][Hosting a Multi-Tenant Application on Azure]ban. A több bérlős szoftverszolgáltatás (SaaS) típusú adatbázis-alkalmazások általános adatarchitektúra-mintázataival kapcsolatos információk: [Tervminták több-bérlős SaaS-alkalmazásokhoz Azure SQL Database esetén](sql-database/sql-database-design-patterns-multi-tenancy-saas-applications.md). 
+További információ a több-bérlős alkalmazások tervezési szempontjairól: [több-bérlős alkalmazás üzemeltetése az Azure-][Hosting a Multi-Tenant Application on Azure]ban. A több bérlős szoftverszolgáltatás (SaaS) típusú adatbázis-alkalmazások általános adatarchitektúra-mintázataival kapcsolatos információk: [Tervminták több-bérlős SaaS-alkalmazásokhoz Azure SQL Database esetén](./azure-sql/database/saas-tenancy-app-design-patterns.md). 
 
 Az Azure számos funkciót kínál, amelyek lehetővé teszik a több-bérlős rendszer tervezésekor felmerülő problémák megoldását.
 
@@ -92,5 +92,5 @@ Az Azure számos lehetőséget kínál új bérlők kiépítésére az alkalmaz�
 
 <!--links-->
 
-[Hosting a Multi-Tenant Application on Azure]: https://msdn.microsoft.com/library/hh534480.aspx
+[Hosting a Multi-Tenant Application on Azure]: /previous-versions/msp-n-p/hh534480(v=pandp.10)
 [Designing Multitenant Applications on Azure]: https://msdn.microsoft.com/library/windowsazure/hh689716

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1f9e4fd2f7f55f916743074b57f89788c0d32f7d
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 636bc3c64dcd15ead36a9a4e969e802d49895dca
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427503"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522243"
 ---
 # <a name="azure-security-baseline-for-azure-private-link"></a>Azure biztonsági alapkonfiguráció az Azure Private linkhez
 
@@ -28,7 +28,7 @@ Ez a biztonsági alapkonfiguráció az [Azure biztonsági teljesítménytesztbő
 
 Hozzon létre riasztásokat a Azure Monitoron belül, amelyek akkor lépnek életbe, amikor a kritikus erőforrások változásai megváltoznak.
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](/azure/azure-monitor/platform/activity-log-view)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [Riasztások létrehozása a Azure Monitorban](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -68,7 +68,7 @@ Emellett a szervezeti üzleti követelmények alapján engedélyezheti és elkü
 
 - [Platform-naplók és-metrikák összegyűjtése Azure Monitor](../azure-monitor/platform/diagnostic-settings.md)
 
-- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](/azure/azure-monitor/platform/activity-log-view)
+- [Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [Naplózás és figyelés privát kapcsolathoz](private-link-overview.md#logging-and-monitoring)
 
@@ -96,7 +96,7 @@ Egy másik lehetőség, hogy lehetővé tegye az Azure Sentinel vagy egy harmadi
 
 - [Az Azure Sentinel előkészítése](../sentinel/quickstart-onboard.md)
 
-- [Log Analytics munkaterület ismertetése](../azure-monitor/log-query/get-started-portal.md)
+- [Log Analytics munkaterület ismertetése](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 - [Egyéni lekérdezések végrehajtása a Azure Monitorban](../azure-monitor/log-query/get-started-queries.md)
 
@@ -142,7 +142,7 @@ A szervezeti üzleti követelmények alapján engedélyezheti és elküldheti az
 
 Emellett engedélyezze az igény szerinti vagy elég egyszerűen elérhető hozzáférést a Azure Active Directory (Azure AD) Privileged Identity Management a Microsoft-szolgáltatásokhoz tartozó Kiemelt szerepkörök és a Azure Resource Manager használatával.
 
-- [További információ a Privileged Identity Management](/azure/active-directory/privileged-identity-management/)
+- [További információ a Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
 **Azure Security Center figyelés**: igen
 
@@ -188,7 +188,7 @@ Emellett engedélyezze az igény szerinti vagy elég egyszerűen elérhető hozz
 
 **Útmutató**: az Azure Active Directory (Azure ad) kockázati észlelési funkciójának használatával megtekintheti a kockázatos felhasználói viselkedésre vonatkozó riasztásokat és jelentéseket. Security Center kockázat észlelésével kapcsolatos riasztások betöltése Azure Monitor és egyéni riasztások/értesítések konfigurálása a műveleti csoportokkal.
 
-- [Azure Security Center kockázati észlelések ismertetése (gyanús tevékenység)](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Azure Security Center kockázati észlelések ismertetése (gyanús tevékenység)](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Azure-beli tevékenység-naplók integrálása a Azure Monitorba](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
@@ -222,7 +222,7 @@ Emellett engedélyezze az igény szerinti vagy elég egyszerűen elérhető hozz
 
 **Útmutató**: a Azure Active Directory naplókat biztosít az elavult fiókok felderítéséhez. Emellett az Azure Identity Access Reviews használatával hatékonyan kezelheti a csoporttagságok kezelését, a vállalati alkalmazásokhoz való hozzáférést és a szerepkör-hozzárendeléseket. A felhasználói hozzáférés rendszeresen felülvizsgálható, hogy csak a megfelelő felhasználók férhessenek hozzá.
 
-- [Az Azure AD jelentéskészítés ismertetése](/azure/active-directory/reports-monitoring/)
+- [Az Azure AD jelentéskészítés ismertetése](../active-directory/reports-monitoring/index.yml)
 
 - [Az Azure Identity hozzáférési felülvizsgálatok használata](../active-directory/governance/access-reviews-overview.md)
 
@@ -248,7 +248,7 @@ Az Azure AD-felhasználói fiókok diagnosztikai beállításainak létrehozás�
 
 További vizsgálat céljából betöltheti az Azure Sentinelbe.
 
-- [Az Azure AD kockázatos bejelentkezések megtekintése](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Az Azure AD kockázatos bejelentkezések megtekintése](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Az Identity Protection kockázati házirendjeinek konfigurálása és engedélyezése](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -270,11 +270,11 @@ Az üzleti követelmények alapján korlátozhatja az Azure-erőforrásokhoz val
 
 Azure-erőforrásokhoz való hozzáférés szabályozása az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával.
 
-- [További Azure-előfizetések létrehozása](/azure/billing/billing-create-subscription)
+- [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-- [Management Groups létrehozása](/azure/governance/management-groups/create)
+- [Management Groups létrehozása](../governance/management-groups/create-management-group-portal.md)
 
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -348,7 +348,7 @@ Győződjön meg arról, hogy megfelelő (olvasási) engedélyekkel rendelkezik 
 
 **Útmutató**: címkék alkalmazása az Azure-erőforrásokra metaadatok használatával logikailag rendszerezheti őket egy besorolásban.
 
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -360,11 +360,11 @@ Győződjön meg arról, hogy megfelelő (olvasási) engedélyekkel rendelkezik 
 
 Rendszeres időközönként egyeztetheti a leltárt, és gondoskodhat arról, hogy a jogosulatlan erőforrások törlése az előfizetésből időben történjen.
 
-- [További Azure-előfizetések létrehozása](/azure/billing/billing-create-subscription)
+- [További Azure-előfizetések létrehozása](../cost-management-billing/manage/create-subscription.md)
 
-- [Management Groups létrehozása](/azure/governance/management-groups/create)
+- [Management Groups létrehozása](../governance/management-groups/create-management-group-portal.md)
 
-- [Címkék létrehozása és használata](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -418,7 +418,7 @@ Az Azure Resource Graph használatával az előfizetéseken belüli erőforráso
 
 - [Azure Policy konfigurálása és kezelése](../governance/policy/tutorials/create-and-manage.md)
 
-- [Adott erőforrástípus megtagadása a következővel Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
+- [Adott erőforrástípus megtagadása a következővel Azure Policy](../governance/policy/samples/index.md)
 
 - [Azure Policy-minta beépített privát hivatkozás](../governance/policy/samples/built-in-policies.md)
 
@@ -634,7 +634,7 @@ Az ügyfél feladata, hogy rangsorolja a riasztások szervizelését az Azure-er
 
 - [Biztonsági riasztások az Azure Security Centerben](../security-center/security-center-alerts-overview.md)
 
-- [Címkék használata az Azure-erőforrások rendszerezéséhez](/azure/azure-resource-manager/resource-group-using-tags)
+- [Címkék használata az Azure-erőforrások rendszerezéséhez](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center figyelés**: igen
 
@@ -704,7 +704,7 @@ A Microsoft által felügyelt felhőalapú infrastruktúrával, szolgáltatások
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Lásd az [Azure biztonsági teljesítménytesztét](/azure/security/benchmarks/overview)
-- További információ az [Azure biztonsági alaptervekről](/azure/security/benchmarks/security-baselines-overview)
+- Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
+- További információ az [Azure biztonsági alaptervekről](../security/benchmarks/security-baselines-overview.md)

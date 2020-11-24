@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 6fd20cd9e3172d6ce80d2c18c2cfa41fcc044929
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8021d659c144bfb68c2714f1680b6ad27a51b56a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92508029"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95522345"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Mi az az Azure privát végpont?
 
@@ -28,7 +28,7 @@ Az Azure privát végpont egy hálózati adapter, amely privát és biztonságos
 |Alhálózat    |  A magánhálózati IP-címek virtuális hálózatról való üzembe helyezésére és lefoglalására szolgáló alhálózat. Az alhálózatra vonatkozó követelményekért tekintse meg a jelen cikk korlátozások című szakaszát.         |
 |Magánhálózati kapcsolat erőforrása    |   A privát kapcsolati erőforrás az erőforrás-AZONOSÍTÓval vagy az aliassal való kapcsolódáshoz az elérhető típusok listájából. Az erőforrásnak elküldett összes forgalomhoz egyedi hálózati azonosító jön létre.       |
 |Cél alerőforrás   |      A kapcsolódáshoz használandó alerőforrás. Minden egyes privát kapcsolati erőforrástípus különböző beállításokkal választható ki a megfelelő beállítás alapján.    |
-|A kapcsolatok jóváhagyási módszere    |  Automatikus vagy manuális. A szerepköralapú hozzáférés-vezérlési (RBAC) engedélyek alapján a magánhálózati végpontok automatikusan is jóváhagyva lesznek. Ha RBAC nélküli privát kapcsolati erőforráshoz próbál csatlakozni, a manuális módszerrel engedélyezheti, hogy az erőforrás tulajdonosa jóváhagyja a kapcsolatot.        |
+|A kapcsolatok jóváhagyási módszere    |  Automatikus vagy manuális. Az Azure szerepköralapú hozzáférés-vezérlési (Azure RBAC) engedélyei alapján a privát végpontok automatikusan is jóváhagyva lesznek. Ha aure RBAC nélkül próbál csatlakozni egy privát kapcsolati erőforráshoz, a manuális módszerrel engedélyezheti, hogy az erőforrás tulajdonosa jóváhagyja a kapcsolatot.        |
 |Kérelem üzenete     |  Megadhat egy üzenetet, hogy a kért kapcsolatok manuálisan legyenek jóváhagyva. Ez az üzenet egy adott kérelem azonosítására szolgál.        |
 |A kapcsolat állapota   |   Írásvédett tulajdonság, amely megadja, hogy a magánhálózati végpont aktív-e. A forgalom csak a jóváhagyott állapotú privát végpontok használatával küldhető el. További elérhető állapotok: <br>-**Jóváhagyva**: a rendszer automatikusan vagy manuálisan jóváhagyta a kapcsolódást, és készen áll a használatra.</br><br>-**Függőben**: a kapcsolat manuálisan lett létrehozva, és a privát hivatkozás erőforrás-tulajdonosa jóváhagyásra vár.</br><br>-**Visszautasítva**: a magánhálózati kapcsolat erőforrásának tulajdonosa elutasította a kapcsolatot.</br><br>-Kapcsolat **megszakítva**: a magánhálózati kapcsolat erőforrásának tulajdonosa eltávolította a kapcsolatot. A privát végpont informatív lesz, és törölni kell a tisztításhoz. </br>|
 
@@ -45,9 +45,9 @@ Az Azure privát végpont egy hálózati adapter, amely privát és biztonságos
  
 - Több privát végpont is létrehozható ugyanazzal a privát kapcsolati erőforrással. Egy közös DNS-kiszolgáló konfigurációját használó egyetlen hálózat esetében az ajánlott eljárás egyetlen magánhálózati végpont használata egy adott privát kapcsolati erőforráshoz a duplikált bejegyzések vagy a DNS-feloldási ütközések elkerülése érdekében. 
  
-- Több privát végpont is létrehozható ugyanazon a virtuális hálózaton belül ugyanazon vagy különböző alhálózatokon. Az előfizetésben létrehozható privát végpontok száma korlátozott. Részletekért lásd: az [Azure korlátai](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
+- Több privát végpont is létrehozható ugyanazon a virtuális hálózaton belül ugyanazon vagy különböző alhálózatokon. Az előfizetésben létrehozható privát végpontok száma korlátozott. Részletekért lásd: az [Azure korlátai](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
 
-- A privát kapcsolati erőforrás előfizetését is regisztrálni kell a Microsoft. Network erőforrás-szolgáltatóban. Részletekért lásd: [Azure Resource Providers](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types).
+- A privát kapcsolati erőforrás előfizetését is regisztrálni kell a Microsoft. Network erőforrás-szolgáltatóban. Részletekért lásd: [Azure Resource Providers](../azure-resource-manager/management/resource-providers-and-types.md).
 
  
 ## <a name="private-link-resource"></a>Magánhálózati kapcsolat erőforrása 
@@ -136,7 +136,7 @@ A következő táblázat tartalmazza a privát végpontok használatakor felisme
 - [Privát végpont létrehozása SQL Database a portál használatával](create-private-endpoint-portal.md)
 - [Privát végpont létrehozása SQL Databasehoz a PowerShell használatával](create-private-endpoint-powershell.md)
 - [Privát végpont létrehozása SQL Databasehoz a parancssori felület használatával](create-private-endpoint-cli.md)
-- [Privát végpont létrehozása a Storage-fiókhoz a portál használatával](create-private-endpoint-storage-portal.md)
+- [Privát végpont létrehozása a Storage-fiókhoz a portál használatával](./tutorial-private-endpoint-storage-portal.md)
 - [Privát végpont létrehozása az Azure Cosmos-fiókhoz a portál használatával](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Saját privát kapcsolati szolgáltatás létrehozása Azure PowerShell használatával](create-private-link-service-powershell.md)
 - [Saját privát hivatkozás létrehozása Azure Database for PostgreSQL-egyetlen kiszolgálóhoz a portál használatával](../postgresql/howto-configure-privatelink-portal.md)

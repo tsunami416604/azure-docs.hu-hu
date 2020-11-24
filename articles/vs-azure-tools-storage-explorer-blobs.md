@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2019
 ms.author: cawa
-ms.openlocfilehash: 07652f2ac88475664f30e8189204b5649f966d16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48f00d964a87790b8d8c9b1d8eceaed26d15199e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88033614"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95531967"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Azure Blob Storage-erőforrások kezelése Storage Explorer
 
 ## <a name="overview"></a>Áttekintés
 
-Az [Azure Blob Storage](storage/blobs/storage-dotnet-how-to-use-blobs.md) egy olyan szolgáltatás, amely nagy mennyiségű strukturálatlan adat, például szöveges vagy bináris adatok tárolására szolgál, amelyek http-vagy https-kapcsolaton keresztül bárhonnan elérhetők a világ bármely pontján.
+Az [Azure Blob Storage](./storage/blobs/storage-quickstart-blobs-dotnet.md) egy olyan szolgáltatás, amely nagy mennyiségű strukturálatlan adat, például szöveges vagy bináris adatok tárolására szolgál, amelyek http-vagy https-kapcsolaton keresztül bárhonnan elérhetők a világ bármely pontján.
 A Blob Storage segítségével bárki számára nyilvánosan elérhetővé tehet adatokat, vagy privát módon tárolhat alkalmazásadatokat. Ebből a cikkből megtudhatja, hogyan használható a Storage Explorer a blob-tárolók és a Blobok használatához.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -43,7 +43,7 @@ A következő lépések bemutatják, hogyan hozhat létre BLOB-tárolót Storage
 
 1. Nyissa meg a Storage Explorert.
 2. A bal oldali ablaktáblán bontsa ki azt a Storage-fiókot, amelyen létre kívánja hozni a BLOB-tárolót.
-3. Kattintson a jobb gombbal a **blob-tárolók**elemre, és a helyi menüből válassza a **blob-tároló létrehozása**lehetőséget.
+3. Kattintson a jobb gombbal a **blob-tárolók** elemre, és a helyi menüből válassza a **blob-tároló létrehozása** lehetőséget.
 
    ![BLOB-tárolók létrehozása helyi menü][0]
 4. A **blob-tárolók** mappa alatt egy szövegmező jelenik meg. Adja meg a blobtároló nevét. A blob-tárolók elnevezésével kapcsolatos szabályokról és korlátozásokról további információt a [tároló létrehozása](storage/blobs/storage-quickstart-blobs-dotnet.md#create-a-container) című témakörben talál.
@@ -62,7 +62,7 @@ A következő lépések bemutatják, hogyan tekintheti meg a blob-tárolók tart
 1. Nyissa meg a Storage Explorert.
 2. A bal oldali ablaktáblán bontsa ki a megtekinteni kívánt BLOB-tárolót tartalmazó Storage-fiókot.
 3. Bontsa ki a Storage-fiók **blob-tárolóit**.
-4. Kattintson a jobb gombbal a megtekinteni kívánt blob-tárolóra, majd a helyi menüből válassza a **blob Container Editor megnyitása**lehetőséget.
+4. Kattintson a jobb gombbal a megtekinteni kívánt blob-tárolóra, majd a helyi menüből válassza a **blob Container Editor megnyitása** lehetőséget.
    Azt is megteheti, hogy duplán kattint a megtekinteni kívánt blob-tárolóra.
 
    ![A blob Container Editor helyi menüjének megnyitása][19]
@@ -79,7 +79,7 @@ A következő lépések bemutatják, hogyan törölhet BLOB-tárolót Storage Ex
 1. Nyissa meg a Storage Explorert.
 2. A bal oldali ablaktáblán bontsa ki a megtekinteni kívánt BLOB-tárolót tartalmazó Storage-fiókot.
 3. Bontsa ki a Storage-fiók **blob-tárolóit**.
-4. Kattintson a jobb gombbal a törölni kívánt blob-tárolóra, és a helyi menüből válassza a **Törlés**lehetőséget.
+4. Kattintson a jobb gombbal a törölni kívánt blob-tárolóra, és a helyi menüből válassza a **Törlés** lehetőséget.
    A jelenleg kijelölt blob-tároló törléséhez a **delete** billentyűt is használhatja.
 
    ![BLOB-tároló helyi menüjének törlése][4]
@@ -96,16 +96,16 @@ A következő lépések bemutatják, hogyan másolhat BLOB-tárolót az egyik St
 1. Nyissa meg a Storage Explorert.
 2. A bal oldali ablaktáblán bontsa ki a másolni kívánt BLOB-tárolót tartalmazó Storage-fiókot.
 3. Bontsa ki a Storage-fiók **blob-tárolóit**.
-4. Kattintson a jobb gombbal a másolni kívánt blob-tárolóra, majd a helyi menüből válassza a **blob-tároló másolása**lehetőséget.
+4. Kattintson a jobb gombbal a másolni kívánt blob-tárolóra, majd a helyi menüből válassza a **blob-tároló másolása** lehetőséget.
 
    ![BLOB-tároló helyi menüjének másolása][6]
-5. Kattintson a jobb gombbal a kívánt "cél" Storage-fiókra, amelybe be kívánja illeszteni a BLOB-tárolót, majd a helyi menüből válassza a **blob-tároló beillesztése**lehetőséget.
+5. Kattintson a jobb gombbal a kívánt "cél" Storage-fiókra, amelybe be kívánja illeszteni a BLOB-tárolót, majd a helyi menüből válassza a **blob-tároló beillesztése** lehetőséget.
 
    ![BLOB-tároló helyi menüjének beillesztése][7]
 
 ## <a name="get-the-sas-for-a-blob-container"></a>SAS lekérése blob tárolóhoz
 
-A [közös hozzáférésű jogosultságkód (SAS)](storage/common/storage-dotnet-shared-access-signature-part-1.md) delegált hozzáférést biztosít a tárfiókon lévő erőforrásokhoz.
+A [közös hozzáférésű jogosultságkód (SAS)](./storage/common/storage-sas-overview.md) delegált hozzáférést biztosít a tárfiókon lévő erőforrásokhoz.
 Ez azt jelenti, hogy egy adott időszakra megadhatja az ügyfeleknek a tárfiókban lévő objektumokra vonatkozó engedélyek bizonyos készletét a tár hozzáférési kulcsainak megosztása nélkül.
 
 A következő lépések bemutatják, hogyan hozhatók létre SAS a blob-tárolóhoz:
@@ -113,7 +113,7 @@ A következő lépések bemutatják, hogyan hozhatók létre SAS a blob-tároló
 1. Nyissa meg a Storage Explorert.
 2. A bal oldali ablaktáblán bontsa ki azt a Storage-fiókot, amely tartalmazza azt a BLOB-tárolót, amelyhez SAS-t szeretne kapni.
 3. Bontsa ki a Storage-fiók **blob-tárolóit**.
-4. Kattintson a jobb gombbal a kívánt blob-tárolóra, és a helyi menüből válassza a **megosztott hozzáférés aláírásának beolvasása**elemet.
+4. Kattintson a jobb gombbal a kívánt blob-tárolóra, és a helyi menüből válassza a **megosztott hozzáférés aláírásának beolvasása** elemet.
 
    ![SAS helyi menü beolvasása][8]
 5. A **Közös hozzáférésű jogosultságkód** párbeszédpanelen adja meg a szabályzatot, a kezdési és a lejárati dátumokat, az időzónát és az erőforrás kívánt hozzáférési szintjeit.
@@ -133,7 +133,7 @@ A következő lépések bemutatják, hogyan kezelhetők a blob-tárolóhoz tarto
 1. Nyissa meg a Storage Explorert.
 2. A bal oldali ablaktáblán bontsa ki azt a Storage-fiókot, amely a kezelni kívánt hozzáférési házirendeket tartalmazó BLOB-tárolót tartalmazza.
 3. Bontsa ki a Storage-fiók **blob-tárolóit**.
-4. Válassza ki a kívánt BLOB-tárolót, és a helyi menüből válassza a **hozzáférési házirendek kezelése**lehetőséget.
+4. Válassza ki a kívánt BLOB-tárolót, és a helyi menüből válassza a **hozzáférési házirendek kezelése** lehetőséget.
 
    ![Hozzáférési szabályzatok kezelése helyi menü][11]
 5. A **hozzáférési házirendek** párbeszédpanel felsorolja a kiválasztott blob-tárolóhoz már létrehozott hozzáférési házirendeket.
@@ -142,7 +142,7 @@ A következő lépések bemutatják, hogyan kezelhetők a blob-tárolóhoz tarto
 6. A hozzáférésiszabályzat-kezelési feladattól függően kövesse az alábbi lépéseket:
 
    * **Új hozzáférési szabályzat hozzáadása** – Válassza a **Hozzáadás** lehetőséget. A **Hozzáférési szabályzatok** megjeleníti az újonnan létrehozott és hozzáadott hozzáférési szabályzatot (az alapértelmezett beállításokkal).
-   * **Hozzáférési szabályzat szerkesztése** – végezze el a kívánt módosításokat, majd kattintson a **Mentés**gombra.
+   * **Hozzáférési szabályzat szerkesztése** – végezze el a kívánt módosításokat, majd kattintson a **Mentés** gombra.
    * **Hozzáférési szabályzat eltávolítása** – Válassza az **Eltávolítás** parancsot az eltávolítani kívánt hozzáférési szabályzat mellett.
 
 ## <a name="set-the-public-access-level-for-a-blob-container"></a>BLOB-tároló nyilvános hozzáférési szintjének beállítása
@@ -154,13 +154,13 @@ A következő lépések bemutatják, hogyan lehet nyilvános hozzáférési szin
 1. Nyissa meg a Storage Explorert.
 2. A bal oldali ablaktáblán bontsa ki azt a Storage-fiókot, amely a kezelni kívánt hozzáférési házirendeket tartalmazó BLOB-tárolót tartalmazza.
 3. Bontsa ki a Storage-fiók **blob-tárolóit**.
-4. Válassza ki a kívánt BLOB-tárolót, és a helyi menüből válassza a **nyilvános hozzáférési szint beállítása**lehetőséget.
+4. Válassza ki a kívánt BLOB-tárolót, és a helyi menüből válassza a **nyilvános hozzáférési szint beállítása** lehetőséget.
 
    ![Nyilvános hozzáférési szint helyi menüjének beállítása][13]
 5. A **tároló nyilvános hozzáférési szintjének beállítása** párbeszédpanelen adja meg a kívánt hozzáférési szintet.
 
    ![Nyilvános hozzáférési szint beállításainak megadása][14]
-6. Kattintson az **Alkalmaz** gombra.
+6. Kattintson az **Alkalmaz** elemre.
 
 ## <a name="managing-blobs-in-a-blob-container"></a>Blobok kezelése blob-tárolóban
 
