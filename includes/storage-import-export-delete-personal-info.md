@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: cshoe
 ms.custom: include file
-ms.openlocfilehash: e6a0ded137162328fd446b65ddb4a15fa6f1db88
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 137aca7c6c857ee6e833c359b710e1c1848d15ed
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67179332"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95554220"
 ---
 ## <a name="deleting-personal-information"></a>Személyes adatok törlése
 
@@ -37,7 +37,7 @@ Importálási/exportálási feladatok létrehozásakor a felhasználók kapcsola
 
 A személyes kapcsolattartási adatokat a következő módokon lehet törölni:
 
-- A feladatokkal mentett adatok törlődnek a feladatokkal. A felhasználók manuálisan törölhetik a feladatokat, a befejezett feladatokat pedig 90 nap után automatikusan törli a rendszer. A feladatokat manuálisan törölheti a REST API vagy a Azure Portal használatával. Ha törölni szeretné a feladatot a Azure Portalban, lépjen az importálási/exportálási feladatokhoz, majd kattintson a *Törlés* elemre a parancssorból. Az importálási/exportálási feladatok REST API használatával történő törlésével kapcsolatos részletekért tekintse meg az [importálási/exportálási feladatok törlését](../articles/storage/common/storage-import-export-cancelling-and-deleting-jobs.md)ismertető témakört.
+- A feladatokkal mentett adatok törlődnek a feladatokkal. A felhasználók manuálisan törölhetik a feladatokat, a befejezett feladatokat pedig 90 nap után automatikusan törli a rendszer. A feladatokat manuálisan törölheti a REST API vagy a Azure Portal használatával. Ha törölni szeretné a feladatot a Azure Portalban, lépjen az importálási/exportálási feladatokhoz, majd kattintson a *Törlés* elemre a parancssorból. Az importálási/exportálási feladatok REST API használatával történő törlésével kapcsolatos részletekért tekintse meg az [importálási/exportálási feladatok törlését](/previous-versions/azure/storage/common/storage-import-export-cancelling-and-deleting-jobs)ismertető témakört.
 
 - A portál beállításaiban mentett kapcsolattartási adatokat a portál beállításainak törlésével lehet eltávolítani. A portál beállításait a következő lépésekkel törölheti:
   - Jelentkezzen be az [Azure Portalra](https://portal.azure.com).

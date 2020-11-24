@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 9f0a3c3a96a73bd71a9b0c769a3ceff85ae428f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94f248edfebd6c6fedb78a54eee220c0ef38b4ab
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89017617"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545864"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Ismerkedés az Azure Queue Storage-hez és a Visual Studióhoz kapcsolódó szolgáltatásokkal (felhőszolgáltatás-projektek)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "89017617"
 ## <a name="overview"></a>Áttekintés
 Ez a cikk azt ismerteti, hogyan kezdheti el az Azure üzenetsor-tárolás használatát a Visual Studióban, miután létrehozott vagy hivatkozott egy Azure Storage-fiókot a Cloud Services-projektben a Visual Studio **csatlakoztatott szolgáltatások hozzáadása** párbeszédpanel használatával.
 
-Bemutatjuk, hogyan hozhat létre egy várólistát a kódban. Azt is bemutatjuk, hogyan hajthat végre olyan alapszintű üzenetsor-műveleteket, mint például az üzenetsor-üzenetek hozzáadása, módosítása, olvasása és eltávolítása. A minták C#-kódban vannak megírva, és a [.net-hez készült Microsoft Azure Storage ügyféloldali kódtárat](https://msdn.microsoft.com/library/azure/dn261237.aspx)használják.
+Bemutatjuk, hogyan hozhat létre egy várólistát a kódban. Azt is bemutatjuk, hogyan hajthat végre olyan alapszintű üzenetsor-műveleteket, mint például az üzenetsor-üzenetek hozzáadása, módosítása, olvasása és eltávolítása. A minták C#-kódban vannak megírva, és a [.net-hez készült Microsoft Azure Storage ügyféloldali kódtárat](/previous-versions/azure/dn261237(v=azure.100))használják.
 
 A **csatlakoztatott szolgáltatások hozzáadása** művelet telepíti a megfelelő NuGet-csomagokat az Azure Storage-ba a projektben, és hozzáadja a Storage-fiókhoz tartozó kapcsolati karakterláncot a projekt konfigurációs fájljaihoz.
 
@@ -150,7 +150,7 @@ Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 ```
 
 ## <a name="use-the-async-await-pattern-with-common-azure-queue-apis"></a>Az Async-Await minta használata a közös Azure üzenetsor API-kkal
-Ez a példa azt szemlélteti, hogyan használható a Async-Await minta az általános Azure üzenetsor API-kkal. A minta meghívja az egyes metódusok aszinkron verzióját, ezt az egyes módszerek **aszinkron** utólagos javításával is megtekintheti. Aszinkron módszer használata esetén az aszinkron várakozási minta a helyi végrehajtás felfüggesztését hajtja végre, amíg a hívás be nem fejeződik. Ez a viselkedés lehetővé teszi, hogy az aktuális szál más munkát végezzen, ami segít elkerülni a teljesítmény szűk keresztmetszetét, és javítja az alkalmazás általános reagálását. További információk az Async-Await mintázat használatáról .NET-keretrendszerben: [Async and Await (C# and Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx) (Async és Await (C# és Visual Basic)).
+Ez a példa azt szemlélteti, hogyan használható a Async-Await minta az általános Azure üzenetsor API-kkal. A minta meghívja az egyes metódusok aszinkron verzióját, ezt az egyes módszerek **aszinkron** utólagos javításával is megtekintheti. Aszinkron módszer használata esetén az aszinkron várakozási minta a helyi végrehajtás felfüggesztését hajtja végre, amíg a hívás be nem fejeződik. Ez a viselkedés lehetővé teszi, hogy az aktuális szál más munkát végezzen, ami segít elkerülni a teljesítmény szűk keresztmetszetét, és javítja az alkalmazás általános reagálását. További információk az Async-Await mintázat használatáról .NET-keretrendszerben: [Async and Await (C# and Visual Basic)](/previous-versions/hh191443(v=vs.140)) (Async és Await (C# és Visual Basic)).
 
 ```csharp
 // Create a message to put in the queue
@@ -179,4 +179,3 @@ messageQueue.Delete();
 
 ## <a name="next-steps"></a>Következő lépések
 [!INCLUDE [vs-storage-dotnet-queues-next-steps](../../includes/vs-storage-dotnet-queues-next-steps.md)]
-

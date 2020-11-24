@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 12/05/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 754a47b3692847957de7f3d666f4dc09dc309d25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6684c4269f14b91ded651dadff3f0a2e0878a4f2
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91024901"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95563139"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Minden Azure VPN-átjáróhoz tartozó termékváltozat támogatja az egyéni IPsec/IKE-házirendet?
 Az Egyéni IPsec/IKE-házirendet az alapszintű SKU kivételével az összes Azure-beli SKU támogatja.
 
 ### <a name="how-many-policies-can-i-specify-on-a-connection"></a>Hány házirendeket adhatok meg egy kapcsolathoz?
-Egy adott kapcsolathoz csak ***egy*** házirendet adhat meg.
+Egy adott kapcsolatok esetében csak ***egy** házirend-kombinációt adhat meg.
 
 ### <a name="can-i-specify-a-partial-policy-on-a-connection-for-example-only-ike-algorithms-but-not-ipsec"></a>Megadhatok részleges házirendet egy kapcsolathoz? (például csak IKE-algoritmusokat, IPsec nélkül)
 Nem, minden algoritmust és paramétert meg kell adnia mind az IKE (Elsődleges mód), mind az IPsec (Gyors mód) esetében. A részleges házirend-megadás nem engedélyezett.
@@ -27,7 +27,7 @@ Nem, minden algoritmust és paramétert meg kell adnia mind az IKE (Elsődleges 
 ### <a name="what-are-the-algorithms-and-key-strengths-supported-in-the-custom-policy"></a>Milyen algoritmusokat és milyen erősségű kulcsokat támogat az egyéni házirend?
 Az alábbi táblázatban megtekintheti az ügyfelek által konfigurálható, támogatott titkosítási algoritmusokat és kulcserősségeket. Minden mezőhöz választania kell egy lehetőséget.
 
-| **IPsec/IKEv2**  | **Lehetőségek**                                                                   |
+| _ *IPSec/IKEv2**  | **Beállítások**                                                                   |
 | ---              | ---                                                                           |
 | IKEv2-titkosítás | AES256, AES192, AES128, DES3, DES                                             |
 | IKEv2-integritás  | SHA384, MD5, SHA1, SHA256                                                     |
@@ -107,7 +107,7 @@ Az alapértelmezett DPD-időkorlát 45 másodperc. Megadhat egy másik DPD időt
 Nem. Az IPsec/IKE-házirend csak az S2S VPN- és a virtuális hálózatok közötti kapcsolatokkal, az Azure VPN-átjárókon keresztül működik.
 
 ### <a name="how-do-i-create-connections-with-ikev1-or-ikev2-protocol-type"></a>Hogyan kapcsolatok létrehozása IKEv1 vagy IKEv2 protokoll-típussal?
-Az IKEv1-kapcsolatok az összes Útvonalalapú VPN-típuson hozhatók létre, kivéve az alapszintű SKU, standard SKU és más [örökölt SKU](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-skus-legacy#gwsku)-ket. Kapcsolatok létrehozásakor megadhatja a IKEv1 vagy a IKEv2 kapcsolati protokoll típusát is. Ha nem adja meg a kapcsolati protokoll típusát, a rendszer a IKEv2 alapértelmezett beállításként használja, ahol alkalmazható. További információt a [PowerShell-parancsmag](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkgatewayconnection?) dokumentációjában talál. Az SKU-típusok és a IKEv1/IKEv2 támogatásával kapcsolatban lásd: [átjárók csatlakoztatása házirend alapú VPN-eszközökhöz](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
+Az IKEv1-kapcsolatok az összes Útvonalalapú VPN-típuson hozhatók létre, kivéve az alapszintű SKU, standard SKU és más [örökölt SKU](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md#gwsku)-ket. Kapcsolatok létrehozásakor megadhatja a IKEv1 vagy a IKEv2 kapcsolati protokoll típusát is. Ha nem adja meg a kapcsolati protokoll típusát, a rendszer a IKEv2 alapértelmezett beállításként használja, ahol alkalmazható. További információt a [PowerShell-parancsmag](/powershell/module/az.network/new-azvirtualnetworkgatewayconnection) dokumentációjában talál. Az SKU-típusok és a IKEv1/IKEv2 támogatásával kapcsolatban lásd: [átjárók csatlakoztatása házirend alapú VPN-eszközökhöz](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
 
 ### <a name="is-transit-between-between-ikev1-and-ikev2-connections-allowed"></a>Engedélyezett a IKEv1 és a IKEv2 közötti kapcsolatok közötti átvitel?
 Igen. A IKEv1 és a IKEv2 kapcsolatok közötti átvitel támogatott.

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/15/2020
 ms.author: lbosq
 ms.custom: include file
-ms.openlocfilehash: 8d12645bd302a7ea808f13c07e2a72f66846bad7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 37cdb6b466417add8dae69464304ce2f32247c8d
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85121427"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95564276"
 ---
 Most már használhatja a Azure Portal Adatkezelő eszközét egy Azure Cosmos DB API MongoDB-adatbázis és-tároló létrehozásához. 
 
@@ -28,9 +28,9 @@ Most már használhatja a Azure Portal Adatkezelő eszközét egy Azure Cosmos D
     |Beállítás|Ajánlott érték|Leírás
     |---|---|---|
     |**Adatbázis-azonosító**|db|Adja *meg az adatbázist az új* adatbázis neveként. Az adatbázis nevének 1 és 255 karakter közöttinek kell lennie, és nem tartalmazhat `/, \\, #, ?` szóközt. Tekintse meg az **adatbázis átviteli sebességének** kiosztása lehetőséget, amellyel megoszthatja az adatbázison belül kiosztott átviteli sebességet az adatbázis összes tárolóján. Ez a lehetőség a költségmegtakarítást is segíti. |
-    |**Átviteli sebesség**|400|Az átviteli sebesség 400 adategység/másodperc (RU/s) esetén. Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében. Kiválaszthatja az [autoskálázási módot](https://docs.microsoft.com/azure/cosmos-db/provision-throughput-autoscale)is, amely az olyan ru/s-ket is megadja, amelyek szükség szerint dinamikusan növekednek és csökkennek.| 
+    |**Átviteli sebesség**|400|Az átviteli sebesség 400 adategység/másodperc (RU/s) esetén. Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében. Kiválaszthatja az [autoskálázási módot](../articles/cosmos-db/provision-throughput-autoscale.md)is, amely az olyan ru/s-ket is megadja, amelyek szükség szerint dinamikusan növekednek és csökkennek.| 
     |**Gyűjtemény azonosítója**|Coll|Adja meg `coll` az új tároló nevét. A tárolóazonosítók nevére ugyanazok a karakterkorlátozások vonatkoznak, mint az adatbázisnevekre.|
-    |**Tárkapacitás**|Rögzített (10 GB)|Adja meg a *rögzített (10gb)* értéket ehhez az alkalmazáshoz. Ha a *korlátlan*lehetőséget választja, létre kell hoznia egy `Shard Key` elemet, amelyhez a beszúrt elemek szükségesek.|
-    |**Szilánk kulcsa**| /_id| A cikkben ismertetett minta nem használ szegmens kulcsot, ezért a  *_id* az automatikusan generált azonosító mezőt fogja használni a szegmens kulcsaként. További információ a particionálásról, más néven particionálásról [Azure Cosmos db](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview)|
+    |**Tárkapacitás**|Rögzített (10 GB)|Adja meg a *rögzített (10gb)* értéket ehhez az alkalmazáshoz. Ha a *korlátlan* lehetőséget választja, létre kell hoznia egy `Shard Key` elemet, amelyhez a beszúrt elemek szükségesek.|
+    |**Szilánk kulcsa**| /_id| A cikkben ismertetett minta nem használ szegmens kulcsot, ezért a  *_id* az automatikusan generált azonosító mezőt fogja használni a szegmens kulcsaként. További információ a particionálásról, más néven particionálásról [Azure Cosmos db](../articles/cosmos-db/partitioning-overview.md)|
         
     Kattintson az **OK** gombra. Az Adatkezelő megjeleníti az új adatbázist és tárolót.

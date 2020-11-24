@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 726fc9cc0e4eb5a8f9bed5cca8dd4d3df588ac7c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8a72640ebe8daffedb196456df7d40bc41b7b1b
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79371552"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95563107"
 ---
 Az Azure Storage számos különböző típusú Storage-fiókot kínál. Mindegyik típus támogatja a különböző funkciókat, és saját díjszabási modellel rendelkezik. Vegye figyelembe ezeket a különbségeket, mielőtt létrehoz egy Storage-fiókot az alkalmazások számára legmegfelelőbb fiók típusának megállapításához. A Storage-fiókok típusai a következők:
 
@@ -33,14 +33,14 @@ Az alábbi táblázat a Storage-fiókok és azok képességeinek típusait ismer
 | FileStorage   | Csak fájl | Prémium                       | N.A.                            | LRS, ZRS<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div>                               | Resource Manager             | Titkosított              |
 | BlobStorage         | BLOB (csak a Blobok letiltása és a Blobok hozzáfűzése) | Standard                      | Gyors elérésű, ritka elérésű Archívum<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS, GRS, RA-GRS                  | Resource Manager             | Titkosított              |
 
-<div id="deployment-model"><sup>1</sup> A Azure Resource Manager üzembe helyezési modell használata ajánlott. A klasszikus üzemi modellt használó Storage-fiókok bizonyos helyszíneken is létrehozhatók, és a meglévő klasszikus fiókok továbbra is támogatottak. További információkért lásd: <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model">Azure Resource Manager a klasszikus üzembe helyezéssel kapcsolatban: az üzembe helyezési modellek és az erőforrások állapotának ismertetése</a>.</div><br/>
+<div id="deployment-model"><sup>1</sup> A Azure Resource Manager üzembe helyezési modell használata ajánlott. A klasszikus üzemi modellt használó Storage-fiókok bizonyos helyszíneken is létrehozhatók, és a meglévő klasszikus fiókok továbbra is támogatottak. További információkért lásd: <a href="/azure/azure-resource-manager/resource-manager-deployment-model">Azure Resource Manager a klasszikus üzembe helyezéssel kapcsolatban: az üzembe helyezési modellek és az erőforrások állapotának ismertetése</a>.</div><br/>
 
-<div id="encryption"><sup>2</sup> Az összes Storage-fiók titkosítása Storage Service Encryption (SSE) használatával történik a nyugalmi állapotban lévő adatokhoz. További információ: <a href="https://docs.microsoft.com/azure/storage/common/storage-service-encryption">Azure Storage Service encryption for</a>inaktív adatok.</div><br/>
+<div id="encryption"><sup>2</sup> Az összes Storage-fiók titkosítása Storage Service Encryption (SSE) használatával történik a nyugalmi állapotban lévő adatokhoz. További információ: <a href="/azure/storage/common/storage-service-encryption">Azure Storage Service encryption for</a>inaktív adatok.</div><br/>
 
-<div id="archive"><sup>3</sup> az Archive Storage és a blob szintű rétegek csak a blokk blobokat támogatják. Az archív szint csak egy egyedi blob szintjén érhető el, nem pedig a Storage-fiók szintjén. További információkért lásd <a href="https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers">: Azure Blob Storage: gyakori, ritka elérésű és archív tárolási szintek</a>.</div><br/>
+<div id="archive"><sup>3</sup> az Archive Storage és a blob szintű rétegek csak a blokk blobokat támogatják. Az archív szint csak egy egyedi blob szintjén érhető el, nem pedig a Storage-fiók szintjén. További információkért lásd <a href="/azure/storage/blobs/storage-blob-storage-tiers">: Azure Blob Storage: gyakori, ritka elérésű és archív tárolási szintek</a>.</div><br/>
 
-<div id="zone-redundant-storage"><sup>4</sup> A Zone-redundáns tárolás (ZRS) és a Geo-Zone-redundáns tárolás (GZRS/RA-GZRS) (előzetes verzió) csak a standard általános célú v2-, BlockBlobStorage-és FileStorage-fiókok esetében érhető el bizonyos régiókban. További információ az Azure Storage-redundancia lehetőségeiről: <a href="https://docs.microsoft.com/azure/storage/common/storage-redundancy">Azure Storage redundancia</a>.</div><br/>
+<div id="zone-redundant-storage"><sup>4</sup> A Zone-redundáns tárolás (ZRS) és a Geo-Zone-redundáns tárolás (GZRS/RA-GZRS) (előzetes verzió) csak a standard általános célú v2-, BlockBlobStorage-és FileStorage-fiókok esetében érhető el bizonyos régiókban. További információ az Azure Storage-redundancia lehetőségeiről: <a href="/azure/storage/common/storage-redundancy">Azure Storage redundancia</a>.</div><br/>
 
 <div id="premium-performance"><sup>5</sup> Az általános célú v2 és az általános célú v1-fiókok prémium szintű teljesítménye csak a lemezes és az oldal blobja esetében érhető el. A blokk-és hozzáfűző Blobok prémium szintű teljesítménye csak a BlockBlobStorage-fiókokon érhető el. A fájlok prémium szintű teljesítménye csak a FileStorage-fiókokon érhető el.</div><br/>
 
-<div id="data-lake-gen2"><sup>6</sup> A Azure Data Lake Storage Gen2 az Azure Blob Storage-ra épülő, big data Analytics szolgáltatáshoz dedikált képességek összessége. A Data Lake Storage Gen2 csak olyan általános célú v2-es Storage-fiókok esetében támogatott, amelyeken engedélyezve van a hierarchikus névtér. További információ a Data Lake Storage Gen2ről: a <a href="https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake Storage Gen2 bemutatása</a>.</div>
+<div id="data-lake-gen2"><sup>6</sup> A Azure Data Lake Storage Gen2 az Azure Blob Storage-ra épülő, big data Analytics szolgáltatáshoz dedikált képességek összessége. A Data Lake Storage Gen2 csak olyan általános célú v2-es Storage-fiókok esetében támogatott, amelyeken engedélyezve van a hierarchikus névtér. További információ a Data Lake Storage Gen2ről: a <a href="/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake Storage Gen2 bemutatása</a>.</div>

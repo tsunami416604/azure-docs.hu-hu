@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 8579efcee45e08fec3331df8f55b61618edb4f4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5e687b172b49fec5f77615e332d0a2204162c43
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000413"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545779"
 ---
 # <a name="getting-started-with-azure-table-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Ismerkedés az Azure Table Storage-hez és a Visual Studióhoz kapcsolódó szolgáltatásokkal (felhőszolgáltatás-projektek)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -28,11 +28,11 @@ Ez a cikk azt ismerteti, hogyan kezdheti el az Azure Table Storage használatát
 
 Az Azure Table Storage szolgáltatás lehetővé teszi nagy mennyiségű strukturált adattárolás tárolását. A szolgáltatás egy NoSQL-adattár, amely az Azure-felhőn belüli és kívüli hitelesített hívásokat fogadja el. Az Azure-táblák strukturált, nem relációs adatok tárolására alkalmasak.
 
-A kezdéshez először létre kell hoznia egy táblát a Storage-fiókban. Bemutatjuk, hogyan hozhat létre egy Azure-táblázatot a kódban, valamint hogyan végezhet el alapszintű táblákat és entitásokkal kapcsolatos műveleteket, például tábla entitások hozzáadását, módosítását, olvasását és olvasását. A minták C kódban vannak megírva \# , és a [.net-hez készült Microsoft Azure Storage ügyféloldali kódtárat](https://msdn.microsoft.com/library/azure/dn261237.aspx)használják.
+A kezdéshez először létre kell hoznia egy táblát a Storage-fiókban. Bemutatjuk, hogyan hozhat létre egy Azure-táblázatot a kódban, valamint hogyan végezhet el alapszintű táblákat és entitásokkal kapcsolatos műveleteket, például tábla entitások hozzáadását, módosítását, olvasását és olvasását. A minták C kódban vannak megírva \# , és a [.net-hez készült Microsoft Azure Storage ügyféloldali kódtárat](/previous-versions/azure/dn261237(v=azure.100))használják.
 
-**Megjegyzés:** Az Azure Storage-hívásokat végrehajtó API-k némelyike aszinkron módon történik. Lásd: [aszinkron programozás aszinkron módon, és](https://msdn.microsoft.com/library/hh191443.aspx) további információra számíthat. Az alábbi kód az aszinkron programozási módszerek használatát feltételezi.
+**Megjegyzés:** Az Azure Storage-hívásokat végrehajtó API-k némelyike aszinkron módon történik. Lásd: [aszinkron programozás aszinkron módon, és](/previous-versions/hh191443(v=vs.140)) további információra számíthat. Az alábbi kód az aszinkron programozási módszerek használatát feltételezi.
 
-* További információ a táblázatok programozással történő kezeléséről: az [Azure Table Storage használatának első lépései a .NET használatával](../storage/storage-dotnet-how-to-use-tables.md) .
+* További információ a táblázatok programozással történő kezeléséről: az [Azure Table Storage használatának első lépései a .NET használatával](../cosmos-db/tutorial-develop-table-dotnet.md) .
 * Az Azure Storage szolgáltatással kapcsolatos általános információkért lásd a [Storage dokumentációját](https://azure.microsoft.com/documentation/services/storage/) .
 * Az Azure Cloud Services általános információit [Cloud Services dokumentációban](https://azure.microsoft.com/documentation/services/cloud-services/) találja.
 * A ASP.NET-alkalmazások programozásával kapcsolatos további információkért lásd: [ASP.net](https://www.asp.net) .
@@ -101,7 +101,7 @@ public class CustomerEntity : TableEntity
 }
 ```
 
-Az entitásokat érintő tábla-műveletek a korábban a "hozzáférési táblázatok a kódban" című részében létrehozott **CloudTable** objektum használatával hajthatók végre. A **TableOperation** objektum a végrehajtani kívánt műveletet jelöli. A következő mintakód bemutatja, hogyan hozhat létre egy **CloudTable** objektumot és egy **CustomerEntity** objektumot. A művelet előkészítéséhez létrejön egy **TableOperation** , amely beszúrja az ügyfél entitást a táblába. Végezetül **CloudTable.ExecuteAsync**meghívásával hajtja végre a műveletet.
+Az entitásokat érintő tábla-műveletek a korábban a "hozzáférési táblázatok a kódban" című részében létrehozott **CloudTable** objektum használatával hajthatók végre. A **TableOperation** objektum a végrehajtani kívánt műveletet jelöli. A következő mintakód bemutatja, hogyan hozhat létre egy **CloudTable** objektumot és egy **CustomerEntity** objektumot. A művelet előkészítéséhez létrejön egy **TableOperation** , amely beszúrja az ügyfél entitást a táblába. Végezetül **CloudTable.ExecuteAsync** meghívásával hajtja végre a műveletet.
 
 ```csharp
 // Create a new customer entity.
@@ -118,7 +118,7 @@ await peopleTable.ExecuteAsync(insertOperation);
 
 
 ## <a name="insert-a-batch-of-entities"></a>Entitásköteg beszúrása
-Egyetlen írási művelettel több entitást is beszúrhat egy táblába. A következő mintakód két entitást hoz létre ("Jeff Smith" és "ben Smith"), hozzáadja őket egy **tablebatchoperation művelethez** objektumhoz az Insert metódus használatával, majd elindítja a műveletet **CloudTable.ExecuteBatchAsync**meghívásával.
+Egyetlen írási művelettel több entitást is beszúrhat egy táblába. A következő mintakód két entitást hoz létre ("Jeff Smith" és "ben Smith"), hozzáadja őket egy **tablebatchoperation művelethez** objektumhoz az Insert metódus használatával, majd elindítja a műveletet **CloudTable.ExecuteBatchAsync** meghívásával.
 
 ```csharp
 // Create the batch operation.
@@ -215,4 +215,3 @@ else
 
 ## <a name="next-steps"></a>Következő lépések
 [!INCLUDE [vs-storage-dotnet-tables-next-steps](../../includes/vs-storage-dotnet-tables-next-steps.md)]
-

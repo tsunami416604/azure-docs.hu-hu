@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 09c4420647043fccc408631fec75854667923721
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a442b5de7a256dd8bcf47da741bd41894709c3a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74085247"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95563846"
 ---
 A Microsoft Azure Cloud Service-szolgáltatással kapcsolatos problémák diagnosztizálásához a szolgáltatás naplófájljait a virtuális gépeken kell összegyűjtenie, amikor a probléma felmerül. Igény szerint használhatja a AzureLogCollector-bővítményt a naplók egy vagy több virtuális gépről (a webes szerepkörökből és a feldolgozói szerepkörökből) történő egyszeri gyűjtéséhez, és átviheti az összegyűjtött fájlokat egy Azure Storage-fiókba – mindezt anélkül, hogy távolról be kellene jelentkeznie bármelyik virtuális gépre.
 
@@ -44,11 +44,11 @@ A gyűjtési módokban további adatgyűjtési mappák is megadhatók a követke
 * Azure PowerShell. A telepítési utasításokért lásd: [install Azure PowerShell](/powershell/azure/install-az-ps)].
 
 ## <a name="add-the-extension"></a>A bővítmény hozzáadása
-A AzureLogCollector bővítmény hozzáadásához használhatja [Microsoft Azure PowerShell](https://msdn.microsoft.com/library/dn495240.aspx) parancsmagokat vagy a [Service Management REST API-kat](https://msdn.microsoft.com/library/ee460799.aspx) .
+A AzureLogCollector bővítmény hozzáadásához használhatja [Microsoft Azure PowerShell](/previous-versions/azure/dn495240(v=azure.100)) parancsmagokat vagy a [Service Management REST API-kat](/previous-versions/azure/ee460799(v=azure.100)) .
 
-Cloud Services esetében a **set-AzureServiceExtension**meglévő Azure PowerShell-parancsmag használatával engedélyezhető a bővítmény a Cloud Service szerepkör példányain. A bővítmény ezen a parancsmagon keresztül történő engedélyezésekor a rendszer a kiválasztott szerepkörök kiválasztott szerepkörű példányain indítja el a napló-gyűjteményt.
+Cloud Services esetében a **set-AzureServiceExtension** meglévő Azure PowerShell-parancsmag használatával engedélyezhető a bővítmény a Cloud Service szerepkör példányain. A bővítmény ezen a parancsmagon keresztül történő engedélyezésekor a rendszer a kiválasztott szerepkörök kiválasztott szerepkörű példányain indítja el a napló-gyűjteményt.
 
-Virtual Machines esetében a **set-AzureVMExtension**meglévő Azure PowerShell-parancsmag használatával engedélyezheti a bővítményt a Virtual Machinesn. Minden alkalommal, amikor a bővítmény engedélyezve van a parancsmagokon keresztül, a rendszer minden egyes példányon elindítja a naplózási gyűjteményt.
+Virtual Machines esetében a **set-AzureVMExtension** meglévő Azure PowerShell-parancsmag használatával engedélyezheti a bővítményt a Virtual Machinesn. Minden alkalommal, amikor a bővítmény engedélyezve van a parancsmagokon keresztül, a rendszer minden egyes példányon elindítja a naplózási gyűjteményt.
 
 Belsőleg ez a bővítmény a JSON-alapú PublicConfiguration és PrivateConfiguration használja. A következő egy példa JSON-minta a nyilvános és a privát konfigurációhoz.
 
@@ -526,6 +526,5 @@ else
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most már megvizsgálhatja vagy átmásolhatja a naplókat egy egyszerű helyről.
-

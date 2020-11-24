@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 36c05badb3b2292a29b8227c7f03b841474c97ad
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 24a07109fc8f4d6ebd283dee7ee00107f0eb49b7
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548081"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95564258"
 ---
-A végpontok állapotának beolvasásához használja a REST API a [végpont állapota](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) lehetőséget. Azt javasoljuk, hogy az útválasztási üzenet késéséhez kapcsolódó [IoT hub útválasztási metrikák](../articles/iot-hub/monitor-iot-hub-reference.md#routing-metrics) használatával azonosítsa és hibakeresési hibákat, amikor a végpont állapota halott vagy sérült, mivel a késés várhatóan magasabb, ha a végpont az egyik államban van. Ha többet szeretne megtudni IoT Hub metrikák használatáról, tekintse meg a [IoT hub figyelése](../articles/iot-hub/monitor-iot-hub.md)című témakört.
+A végpontok állapotának beolvasásához használja a REST API a [végpont állapota](/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) lehetőséget. Azt javasoljuk, hogy az útválasztási üzenet késéséhez kapcsolódó [IoT hub útválasztási metrikák](../articles/iot-hub/monitor-iot-hub-reference.md#routing-metrics) használatával azonosítsa és hibakeresési hibákat, amikor a végpont állapota halott vagy sérült, mivel a késés várhatóan magasabb, ha a végpont az egyik államban van. Ha többet szeretne megtudni IoT Hub metrikák használatáról, tekintse meg a [IoT hub figyelése](../articles/iot-hub/monitor-iot-hub.md)című témakört.
 
-|Állapotadatok|Description (Leírás)|
+|Állapotadatok|Leírás|
 |---|---|
 |kifogástalan|A végpont fogadja az üzeneteket a várt módon.|
 |sérült|A végpont nem fogad üzeneteket, és IoT Hub megpróbálja elküldeni az üzeneteket erre a végpontra.|

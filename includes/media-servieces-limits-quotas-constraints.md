@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: inhenkel
-ms.openlocfilehash: 84aa07ef282dd7100043f7e9bfcc97cb3b3673a5
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 59ff0ba854fa609e6d29f3473f662a89ab5f3dbc
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755824"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95563156"
 ---
 > [!NOTE]
 > A nem rögzített erőforrások esetében nyisson meg egy támogatási jegyet, amely a kvóták növekedését kéri. Ne hozzon létre további Azure Media Services fiókokat a magasabb korlátok beszerzésére tett kísérlet során.
@@ -81,7 +81,7 @@ A fiók 90 napnál régebbi feladatait automatikusan törli a rendszer, még akk
 | Streamelési szabályok | 100 <sup>(6)</sup> |
 | Egy adott eszközhöz társított egyedi streaming-lokátorok | 100<sup>(7)</sup> (rögzített) |
 
-<sup>6</sup> ha egyéni [folyamatos átviteli szabályzatot](https://docs.microsoft.com/rest/api/media/streamingpolicies)használ, a Media Service-fiókjához korlátozott készletet kell terveznie, és újra fel kell használni a StreamingLocators, amikor ugyanazok a titkosítási beállítások és protokollok szükségesek. Ne hozzon létre új folyamatos átviteli szabályzatot minden egyes adatfolyam-keresőhöz.
+<sup>6</sup> ha egyéni [folyamatos átviteli szabályzatot](/rest/api/media/streamingpolicies)használ, a Media Service-fiókjához korlátozott készletet kell terveznie, és újra fel kell használni a StreamingLocators, amikor ugyanazok a titkosítási beállítások és protokollok szükségesek. Ne hozzon létre új folyamatos átviteli szabályzatot minden egyes adatfolyam-keresőhöz.
 
 <sup>7</sup> a folyamatos átviteli lokátorok nem a felhasználónkénti hozzáférés-vezérlés kezelésére szolgálnak. Ha az egyes felhasználóknak különböző hozzáférési jogosultságokat szeretne biztosítani, válassza a digitális jogkezelési (DRM) megoldásokat.
 

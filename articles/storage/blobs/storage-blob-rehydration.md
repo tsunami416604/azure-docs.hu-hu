@@ -9,19 +9,19 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: a416c22c5b8e09104b20a17bc5042302fa56d8ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f74d4ffdd724039354a311234317dac889cd7cfe
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88035144"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545932"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>BLOB-adatok rehidratálása az archív szintről
 
 Míg a blob az archív hozzáférési szinten található, offline állapotba kerül, és nem olvasható és nem módosítható. A blob metaadatai online és elérhető állapotban maradnak, és lehetővé teszik a blob és a hozzá tartozó tulajdonságok listázását. A Blobok beolvasása és módosítása csak online szinteken érhető el, például a gyakori vagy a ritka elérésű. Az archív hozzáférési szinten tárolt adatok lekérdezésére és elérésére két lehetőség áll rendelkezésre.
 
-1. [Archivált Blobok rehidratálása online szintre](#rehydrate-an-archived-blob-to-an-online-tier) – az archív blobot gyors vagy ritka állapotba állíthatja, ha megváltoztatja a rétegét a [blob-réteg beállítása](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) művelettel.
-2. [Archivált blob másolása online szintre](#copy-an-archived-blob-to-an-online-tier) – hozzon létre egy archív blob új másolatát a [blob másolása](https://docs.microsoft.com/rest/api/storageservices/copy-blob) művelet használatával. Adjon meg egy másik blob-nevet és egy gyors vagy ritka elérésű célként megadott szintet.
+1. [Archivált Blobok rehidratálása online szintre](#rehydrate-an-archived-blob-to-an-online-tier) – az archív blobot gyors vagy ritka állapotba állíthatja, ha megváltoztatja a rétegét a [blob-réteg beállítása](/rest/api/storageservices/set-blob-tier) művelettel.
+2. [Archivált blob másolása online szintre](#copy-an-archived-blob-to-an-online-tier) – hozzon létre egy archív blob új másolatát a [blob másolása](/rest/api/storageservices/copy-blob) művelet használatával. Adjon meg egy másik blob-nevet és egy gyors vagy ritka elérésű célként megadott szintet.
 
  A rétegekkel kapcsolatos további információkért lásd [: Azure Blob Storage: gyakori, ritka elérésű és archív hozzáférési szintek](storage-blob-storage-tiers.md).
 
@@ -31,7 +31,7 @@ Míg a blob az archív hozzáférési szinten található, offline állapotba ke
 
 ## <a name="copy-an-archived-blob-to-an-online-tier"></a>Archivált blob másolása online szintre
 
-Ha nem szeretné kiszáradni az archív blobot, dönthet úgy, hogy [másolási blob](https://docs.microsoft.com/rest/api/storageservices/copy-blob) műveletet hajt végre. Az eredeti blob változatlan marad az archívumban, miközben új blob jön létre az online gyakori vagy ritka elérésű szinten, hogy működjön. A blob másolása műveletben az opcionális *x-MS-rehidratált-priority* tulajdonságot standard vagy magas értékre is állíthatja, hogy megadja, melyik prioritást kívánja létrehozni a blob-másolat létrehozásához.
+Ha nem szeretné kiszáradni az archív blobot, dönthet úgy, hogy [másolási blob](/rest/api/storageservices/copy-blob) műveletet hajt végre. Az eredeti blob változatlan marad az archívumban, miközben új blob jön létre az online gyakori vagy ritka elérésű szinten, hogy működjön. A blob másolása műveletben az opcionális *x-MS-rehidratált-priority* tulajdonságot standard vagy magas értékre is állíthatja, hogy megadja, melyik prioritást kívánja létrehozni a blob-másolat létrehozásához.
 
 A Blobok archívumból való másolása a kiválasztott rehidratálás prioritástól függően órákig elvégezhető. A háttérben a **blob másolása** művelet beolvassa az archív forrás blobját, hogy létrehozzon egy új online blobot a kiválasztott célhelyen. Előfordulhat, hogy az új blob látható a Blobok listázásakor, de az adatok nem érhetők el, amíg a forrás archív blobból való olvasás be nem fejeződik, és az adatok bekerülnek az új online cél blobba. Az új blob független másolat, és minden módosítás vagy törlés nem befolyásolja a forrás archív blobot.
 
@@ -63,17 +63,17 @@ Az archiválási szinten lévő blobokat legalább 180 napig kell tárolni. Az a
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. A Azure Portal keresse meg és válassza ki az **összes erőforrás**elemet.
+1. A Azure Portal keresse meg és válassza ki az **összes erőforrás** elemet.
 
 1. Válassza ki a tárfiókot.
 
 1. Válassza ki a tárolót, majd válassza ki a blobot.
 
-1. A **blob tulajdonságainál**válassza a lehetőség **módosítása**lehetőséget.
+1. A **blob tulajdonságainál** válassza a lehetőség **módosítása** lehetőséget.
 
 1. Válassza ki **a** gyakori **vagy ritka** elérésű hozzáférési szintet. 
 
-1. Válassza a **standard** vagy a **magas**rehidratálás prioritást.
+1. Válassza a **standard** vagy a **magas** rehidratálás prioritást.
 
 1. Kattintson a **Save (Mentés** ) gombra a lap alján.
 

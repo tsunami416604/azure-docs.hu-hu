@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/15/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 535ee447ff63aabb9af1f32252fb4e4dd2c392de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 764d75872eb1bad0647235cd70f9984ebd7789bd
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779731"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95563795"
 ---
 A következő táblázat a Azure Service Bus üzenetkezelésre vonatkozó kvóta-információkat sorolja fel. További információ a Service Bus díjszabásáról és egyéb kvótáról: [Service Bus díjszabása](https://azure.microsoft.com/pricing/details/service-bus/).
 
@@ -21,11 +21,11 @@ A következő táblázat a Azure Service Bus üzenetkezelésre vonatkozó kvóta
 | --- | --- | --- | --- |
 | Egy Azure-előfizetéshez tartozó alapszintű vagy standard névterek maximális száma |Névtér |A Azure Portal a további alapszintű vagy standard szintű névterek további kérelmeit a rendszer elutasítja. |100|
 | Prémium szintű névterek maximális száma az Azure-előfizetések esetében |Névtér |A portál a további prémium szintű névterek további kérelmeit is elutasítja. |100 |
-| Üzenetsor vagy témakör mérete |Entitás |A várólista vagy a témakör létrehozásakor van meghatározva. <br/><br/> A rendszer elutasítja a következő bejövő üzeneteket, és kivételt kap a hívó kód. |1, 2, 3, 4 GB vagy 5 GB.<br /><br />A prémium SKU-ban és a [particionálást](/azure/service-bus-messaging/service-bus-partitioning) engedélyező standard SKU esetében a maximális várólista vagy a témakör mérete 80 GB. |
+| Üzenetsor vagy témakör mérete |Entitás |A várólista vagy a témakör létrehozásakor van meghatározva. <br/><br/> A rendszer elutasítja a következő bejövő üzeneteket, és kivételt kap a hívó kód. |1, 2, 3, 4 GB vagy 5 GB.<br /><br />A prémium SKU-ban és a [particionálást](../articles/service-bus-messaging/service-bus-partitioning.md) engedélyező standard SKU esetében a maximális várólista vagy a témakör mérete 80 GB. |
 | Névtér egyidejű kapcsolatainak száma |Névtér |A további kapcsolatokra vonatkozó további kérelmeket a rendszer elutasítja, és a hívási kód kivételt kap. A REST-műveletek nem számítanak bele az egyidejű TCP-kapcsolatok irányába. |NET Messaging: 1 000.<br /><br />AMQP: 5 000. |
 | Egyidejű fogadási kérelmek száma egy üzenetsor, témakör vagy előfizetési entitás esetében |Entitás |A rendszer elutasítja a további fogadási kérelmeket, és a hívási kód kivételt kap. Ez a kvóta az egyidejű fogadási műveletek együttes számára vonatkozik a témakör összes előfizetésében. |5000 |
 | Témakörök vagy várólisták száma a névtérben |Névtér |Az új témakör vagy várólista a névtéren való létrehozására vonatkozó további kérelmeket a rendszer elutasítja. Ennek eredményeképpen, ha a [Azure Portalon][Azure portal]keresztül van konfigurálva, hibaüzenetet generál. Ha a felügyeleti API hívja meg, a hívási kód kivételt kap. |10 000 az alapszintű vagy a standard szinthez. A névtérben lévő témakörök és várólisták teljes száma nem lehet kisebb, mint 10 000. <br/><br/>A prémium szintű, 1 000/Messaging egységenként (MU). A maximális korlát 4 000. |
-| [Particionált témakörök vagy várólisták](/azure/service-bus-messaging/service-bus-partitioning) száma névtérben |Névtér |A rendszer elutasítja az új particionált témakör vagy várólista a névtéren való létrehozására vonatkozó további kérelmeket. Ennek eredményeképpen, ha a [Azure Portalon][Azure portal]keresztül van konfigurálva, hibaüzenetet generál. Ha a felügyeleti API-val hívja meg a hívást, a **quotaexceededexception osztályról** kivételt kap. |Alapszintű és standard csomag: 100.<br/><br/>A [prémium](../articles/service-bus-messaging/service-bus-premium-messaging.md) szint nem támogatja a particionált entitásokat.<br/><br />Mindegyik particionált üzenetsor vagy témakör a 1 000 entitások kvótáját adja meg névtérként. |
+| [Particionált témakörök vagy várólisták](../articles/service-bus-messaging/service-bus-partitioning.md) száma névtérben |Névtér |A rendszer elutasítja az új particionált témakör vagy várólista a névtéren való létrehozására vonatkozó további kérelmeket. Ennek eredményeképpen, ha a [Azure Portalon][Azure portal]keresztül van konfigurálva, hibaüzenetet generál. Ha a felügyeleti API-val hívja meg a hívást, a **quotaexceededexception osztályról** kivételt kap. |Alapszintű és standard csomag: 100.<br/><br/>A [prémium](../articles/service-bus-messaging/service-bus-premium-messaging.md) szint nem támogatja a particionált entitásokat.<br/><br />Mindegyik particionált üzenetsor vagy témakör a 1 000 entitások kvótáját adja meg névtérként. |
 | Az üzenetküldési entitás elérési útjának maximális mérete: üzenetsor vagy témakör |Entitás |- |260 karakter. |
 | Az üzenetküldési entitások nevének maximális mérete: névtér, előfizetés vagy előfizetési szabály |Entitás |- |50 karakter. |
 | [Üzenet azonosítójának](/dotnet/api/microsoft.azure.servicebus.message.messageid) maximális mérete | Entitás |- | 128 |

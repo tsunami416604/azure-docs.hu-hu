@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5558a57812414f6f1bb1be053a089af98533155a
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 39c1972eba84f4f1990c87112c5801c386849640
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288337"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545958"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Az Azure-oldal Blobok áttekintése
 
@@ -31,7 +31,7 @@ Az oldal Blobok csak a **lassú elérési** szintet használhatják, nem haszná
 
 ## <a name="sample-use-cases"></a>Használati példák
 
-Az Azure IaaS-lemezektől kezdődően néhány felhasználási esetet ismertetünk az oldal-Blobok esetében. Az Azure-oldal Blobok az Azure IaaS virtuális lemezek platformjának gerincét jelentik. Az Azure operációs rendszer és az adatlemezek is olyan virtuális lemezekként valósulnak meg, amelyekben az tartósan az Azure Storage platformon tárolják, majd a maximális teljesítmény érdekében a virtuális gépeknek továbbítják azokat. Az Azure-lemezek a Hyper-V [VHD formátumában](https://technet.microsoft.com/library/dd979539.aspx) tárolódnak, és az Azure Storage-ban [oldal blobként](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) vannak tárolva. A virtuális lemezek Azure IaaS-alapú virtuális gépekhez való használata mellett az oldal Blobok is engedélyezhetik a Pásti és a DBaaS forgatókönyveket, például az Azure SQL DB szolgáltatást, amely jelenleg az SQL-adatok tárolására szolgáló blobokat használ, és lehetővé teszi a gyors, véletlenszerű írási és olvasási műveleteket az adatbázis számára. Egy másik példa lenne, ha a közös hozzáférésű videoszerkesztő alkalmazásokhoz való megosztott média eléréséhez tartozó Péter-szolgáltatással rendelkezik, az oldal Blobok lehetővé teszik a gyors hozzáférést az adathordozón található véletlenszerű helyekhez. Emellett lehetővé teszi, hogy több felhasználó is gyorsan és hatékonyan szerkessze és egyesítse ugyanazt az adathordozót. 
+Az Azure IaaS-lemezektől kezdődően néhány felhasználási esetet ismertetünk az oldal-Blobok esetében. Az Azure-oldal Blobok az Azure IaaS virtuális lemezek platformjának gerincét jelentik. Az Azure operációs rendszer és az adatlemezek is olyan virtuális lemezekként valósulnak meg, amelyekben az tartósan az Azure Storage platformon tárolják, majd a maximális teljesítmény érdekében a virtuális gépeknek továbbítják azokat. Az Azure-lemezek a Hyper-V [VHD formátumában](/previous-versions/windows/it-pro/windows-7/dd979539(v=ws.10)) tárolódnak, és az Azure Storage-ban [oldal blobként](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) vannak tárolva. A virtuális lemezek Azure IaaS-alapú virtuális gépekhez való használata mellett az oldal Blobok is engedélyezhetik a Pásti és a DBaaS forgatókönyveket, például az Azure SQL DB szolgáltatást, amely jelenleg az SQL-adatok tárolására szolgáló blobokat használ, és lehetővé teszi a gyors, véletlenszerű írási és olvasási műveleteket az adatbázis számára. Egy másik példa lenne, ha a közös hozzáférésű videoszerkesztő alkalmazásokhoz való megosztott média eléréséhez tartozó Péter-szolgáltatással rendelkezik, az oldal Blobok lehetővé teszik a gyors hozzáférést az adathordozón található véletlenszerű helyekhez. Emellett lehetővé teszi, hogy több felhasználó is gyorsan és hatékonyan szerkessze és egyesítse ugyanazt az adathordozót. 
 
 Az első féltől származó Microsoft-szolgáltatások, mint például a Azure Site Recovery, a Azure Backup, valamint számos harmadik féltől származó fejlesztő implementálta piacvezető újdonságait az oldal blob REST-felületének használatával. Az alábbiakban néhány, az Azure-ban megvalósított egyedi forgatókönyvet ismertetünk: 
 
@@ -47,7 +47,7 @@ Az oldal-blobokhoz kínált mindkét típusú tárterület saját díjszabási m
 
 ### <a name="rest-api"></a>REST API
 
-Tekintse meg a következő dokumentumot, amelyből megismerheti az [oldal Blobok használatával történő fejlesztést](storage-dotnet-how-to-use-blobs.md). Példaként tekintse meg, hogyan érheti el az oldal blobokat a Storage ügyféloldali kódtára a .NET-hez. 
+Tekintse meg a következő dokumentumot, amelyből megismerheti az [oldal Blobok használatával történő fejlesztést](./storage-quickstart-blobs-dotnet.md). Példaként tekintse meg, hogyan érheti el az oldal blobokat a Storage ügyféloldali kódtára a .NET-hez. 
 
 A következő ábra a fiók, a tárolók és a Blobok közötti általános kapcsolatokat ismerteti.
 
@@ -63,7 +63,7 @@ Először szerezzen be egy hivatkozást egy tárolóra. Az oldal blobjának lét
 
 # <a name="net-v11"></a>[.NET-v11](#tab/dotnet11)
 
-Az oldal blobjának létrehozásához először hozzon létre egy **CloudBlobClient** objektumot a Storage-fiók blob Storage-hoz való hozzáféréséhez szükséges alap URI-val ( *pbaccount* az 1. ábrán) a **StorageCredentialsAccountAndKey** objektummal együtt, az alábbi példában látható módon. A példa ezután egy **CloudBlobContainer** objektumra mutató hivatkozást hoz létre, majd létrehozza a tárolót ( *testvhds* ), ha még nem létezik. Ezután a **CloudBlobContainer** objektum használatával hozzon létre egy **CloudPageBlob** objektumra mutató hivatkozást úgy, hogy megadhatja az oldal blobjának nevét (OS4. vhd) az eléréséhez. Az oldal blobjának létrehozásához hívja meg a [CloudPageBlob. Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create), és adja meg a blob létrehozásához szükséges maximális méretet. A *blobSize* 512 bájtos többszörösének kell lennie.
+Az oldal blobjának létrehozásához először hozzon létre egy **CloudBlobClient** objektumot a Storage-fiók blob Storage-hoz való hozzáféréséhez szükséges alap URI-val (*pbaccount* az 1. ábrán) a **StorageCredentialsAccountAndKey** objektummal együtt, az alábbi példában látható módon. A példa ezután egy **CloudBlobContainer** objektumra mutató hivatkozást hoz létre, majd létrehozza a tárolót (*testvhds*), ha még nem létezik. Ezután a **CloudBlobContainer** objektum használatával hozzon létre egy **CloudPageBlob** objektumra mutató hivatkozást úgy, hogy megadhatja az oldal blobjának nevét (OS4. vhd) az eléréséhez. Az oldal blobjának létrehozásához hívja meg a [CloudPageBlob. Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create), és adja meg a blob létrehozásához szükséges maximális méretet. A *blobSize* 512 bájtos többszörösének kell lennie.
 
 ```csharp
 using Microsoft.Azure;
