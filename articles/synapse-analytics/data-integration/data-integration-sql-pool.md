@@ -10,11 +10,11 @@ ms.date: 11/03/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
 ms.openlocfilehash: 44d17bafe534fea2d408c92a3a01efb699250a78
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317778"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95974425"
 ---
 # <a name="ingest-data-into-a-dedicated-sql-pool"></a>Az adat betöltése egy dedikált SQL-készletbe
 
@@ -22,9 +22,9 @@ Ebből a cikkből megtudhatja, hogyan végezheti el az adatok betöltését egy 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure-előfizetés** : Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) .
-* **Azure Storage-fiók** : a 2. generációs Azure Data Lake Storage használja *forrás* adattárként. Ha nem rendelkezik Storage-fiókkal, tekintse meg az [Azure Storage-fiók létrehozása](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) lépéseit.
-* **Azure szinapszis Analytics** : egy dedikált SQL-készletet használ fogadó *adattárként* . Ha nem rendelkezik Azure szinapszis Analytics-példánnyal, tekintse meg [a DEDIKÁLT SQL-készlet létrehozása](../../azure-sql/database/single-database-create-quickstart.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) című témakört a létrehozás lépéseihez.
+* **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) .
+* **Azure Storage-fiók**: a 2. generációs Azure Data Lake Storage használja *forrás* adattárként. Ha nem rendelkezik Storage-fiókkal, tekintse meg az [Azure Storage-fiók létrehozása](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) lépéseit.
+* **Azure szinapszis Analytics**: egy dedikált SQL-készletet használ fogadó *adattárként* . Ha nem rendelkezik Azure szinapszis Analytics-példánnyal, tekintse meg [a DEDIKÁLT SQL-készlet létrehozása](../../azure-sql/database/single-database-create-quickstart.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) című témakört a létrehozás lépéseihez.
 
 ## <a name="create-linked-services"></a>Társított szolgáltatások létrehozása
 
@@ -71,6 +71,6 @@ Ebben a lépésben az előző lépésben közzétett folyamatot manuálisan ind�
 1. Ellenőrizze, hogy az adatai helyesen vannak-e írva a dedikált SQL-készletben.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A szinapszis Analytics adatintegrálásával kapcsolatos további információkért lásd: adatok beolvasása [Azure Data Lake Storage Gen2 ](data-integration-data-lake.md) cikkbe.

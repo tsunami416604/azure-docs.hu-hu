@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 7d92cbc25411f5cc2d528ccf6ecec4539494d380
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84ae5f6adfe2a02f62b5d4b1e776d8b5ac1d731b
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87533274"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95975350"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Szerepkörök, engedélyek és biztonság a Azure Monitorban
 
@@ -68,7 +68,7 @@ A figyelő közreműködő szerepkörrel rendelkező személyek megtekinthetik a
 > 
 
 ## <a name="monitoring-permissions-and-azure-custom-roles"></a>Figyelési engedélyek és egyéni Azure-szerepkörök
-Ha a fenti beépített szerepkörök nem felelnek meg a csoport pontos igényeinek, létrehozhat egy részletesebb engedélyekkel rendelkező Azure-beli [Egyéni szerepkört](../../role-based-access-control/custom-roles.md) is. Alább láthatók a közös Azure Monitor RBAC műveletek a leírásokkal.
+Ha a fenti beépített szerepkörök nem felelnek meg a csoport pontos igényeinek, létrehozhat egy részletesebb engedélyekkel rendelkező Azure-beli [Egyéni szerepkört](../../role-based-access-control/custom-roles.md) is. Alább láthatók a közös Azure RBAC-műveletek, amelyekkel a leírásuk Azure Monitor.
 
 | Művelet | Leírás |
 | --- | --- |
@@ -135,7 +135,7 @@ $token = New-AzStorageAccountSASToken -ResourceType Service -Service Blob -Permi
 
 Ezután megadhatja a jogkivonatot az adott Storage-fiókból beolvasni kívánt entitásnak, valamint listázhatja és beolvashatja az adott Storage-fiókban lévő összes blobot.
 
-Ha ezt az engedélyt a RBAC-mel kell vezérelni, az adott tárolási fiókra vonatkozóan a Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/Action engedélyt is megadhatja. Ez olyan felhasználók számára szükséges, akiknek be kell tudniuk állítani a diagnosztikai beállításokat vagy a naplózási profilt egy Storage-fiókba való archiváláshoz. Létrehozhat például egy olyan felhasználóhoz vagy alkalmazáshoz a következő egyéni Azure-szerepkört, amelynek csak egy Storage-fiókból kell beolvasnia:
+Ha ezt az engedélyt az Azure RBAC-mel kell vezérelni, az adott tárolási fiókra vonatkozóan a Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/Action engedélyt is megadhatja. Ez olyan felhasználók számára szükséges, akiknek be kell tudniuk állítani a diagnosztikai beállításokat vagy a naplózási profilt egy Storage-fiókba való archiváláshoz. Létrehozhat például egy olyan felhasználóhoz vagy alkalmazáshoz a következő egyéni Azure-szerepkört, amelynek csak egy Storage-fiókból kell beolvasnia:
 
 ```powershell
 $role = Get-AzRoleDefinition "Reader"
@@ -159,7 +159,7 @@ New-AzRoleDefinition -Role $role
 Egy hasonló minta követhető az Event hubokban, de először létre kell hoznia egy dedikált figyelési engedélyezési szabályt. Ha meg szeretne adni egy olyan alkalmazáshoz való hozzáférést, amelynek csak figyelnie kell a figyeléssel kapcsolatos esemény-hubhoz, tegye a következőket:
 
 1. Hozzon létre egy megosztott hozzáférési szabályzatot azon az Event hub (ok) ban, amely a figyelési adattovábbításra lett létrehozva, csak a figyelési jogcímeket. Ezt a portálon teheti meg. Előfordulhat például, hogy "monitoringReadOnly"-t hív meg. Ha lehetséges, közvetlenül a fogyasztónak kell megadnia a kulcsot, és ki kell hagynia a következő lépést.
-2. Ha a fogyasztónak képesnek kell lennie az ad hoc kulcs lekérésére, a felhasználónak a Listkeys műveletének beolvasása műveletet kell megadnia az adott Event hub számára. Ez olyan felhasználók számára is szükséges, akiknek be kell tudniuk állítani a diagnosztikai beállításokat vagy a naplózási profilt az Event hubokba való továbbításhoz. Létrehozhat például egy RBAC szabályt:
+2. Ha a fogyasztónak képesnek kell lennie az ad hoc kulcs lekérésére, a felhasználónak a Listkeys műveletének beolvasása műveletet kell megadnia az adott Event hub számára. Ez olyan felhasználók számára is szükséges, akiknek be kell tudniuk állítani a diagnosztikai beállításokat vagy a naplózási profilt az Event hubokba való továbbításhoz. Létrehozhat például egy Azure RBAC-szabályt:
    
    ```powershell
    $role = Get-AzRoleDefinition "Reader"
@@ -187,6 +187,6 @@ A figyelési adatgyűjtést gyakran egy Storage-fiókba kell írni. Előfordulha
 További információ: [hálózati biztonság és Azure Storage](../../storage/common/storage-network-security.md)
 
 ## <a name="next-steps"></a>További lépések
-* [További információ a RBAC és az engedélyekről a Resource Managerben](../../role-based-access-control/overview.md)
+* [További információ az Azure RBAC és a Resource Manager engedélyeiről](../../role-based-access-control/overview.md)
 * [A monitorozás áttekintése az Azure-ban](../overview.md)
 

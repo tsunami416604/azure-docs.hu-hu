@@ -13,11 +13,11 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1f5f7f823d6c5f5860c2e78fe8cacdd1d788c581
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92892695"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95974119"
 ---
 # <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>Oktatóanyag: Többtényezős hitelesítés kényszerítése B2B vendégfelhasználók számára
 
@@ -47,15 +47,15 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
- - **Hozzáférés prémium szintű Azure ad kiadáshoz** , amely magában foglalja a feltételes hozzáférési házirend képességeit. Az MFA betartatásához létre kell hoznia egy Azure AD feltételes hozzáférési szabályzatot. Fontos megjegyezni, hogy az MFA-szabályzatok mindig kötelezőek lesznek az Ön cégénél, függetlenül attól, hogy a partner rendelkezik-e MFA-képeséggel vagy sem. Ha MFA-t állít be a saját cégénél, ellenőrizze, hogy rendelkezésre állnak-e a szükséges Azure AD Premium-licencek a vendégfelhasználók számára is. 
- - **Egy érvényes külső e-mail-fiók** , amelyet vendégfelhasználóként hozzá tud majd adni a bérlői címtárhoz, és amellyel be lehet majd jelentkezni. Ha nem tudja, hogyan lehet vendégfiókot létrehozni, olvassa el a [B2B-vendégfelhasználó hozzáadása az Azure Portalon](add-users-administrator.md) című cikket.
+ - **Hozzáférés prémium szintű Azure ad kiadáshoz**, amely magában foglalja a feltételes hozzáférési házirend képességeit. Az MFA betartatásához létre kell hoznia egy Azure AD feltételes hozzáférési szabályzatot. Fontos megjegyezni, hogy az MFA-szabályzatok mindig kötelezőek lesznek az Ön cégénél, függetlenül attól, hogy a partner rendelkezik-e MFA-képeséggel vagy sem. Ha MFA-t állít be a saját cégénél, ellenőrizze, hogy rendelkezésre állnak-e a szükséges Azure AD Premium-licencek a vendégfelhasználók számára is. 
+ - **Egy érvényes külső e-mail-fiók**, amelyet vendégfelhasználóként hozzá tud majd adni a bérlői címtárhoz, és amellyel be lehet majd jelentkezni. Ha nem tudja, hogyan lehet vendégfiókot létrehozni, olvassa el a [B2B-vendégfelhasználó hozzáadása az Azure Portalon](add-users-administrator.md) című cikket.
 
 ## <a name="create-a-test-guest-user-in-azure-ad"></a>Tesztelési célú vendégfelhasználó felvétele Azure AD-ben
 
 1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com/) Azure ad-rendszergazdaként.
 2. A bal oldali panelen válassza az **Azure Active Directory** lehetőséget.
 3.  A **Kezelés** menüpontban válassza a **Felhasználók** lehetőséget.
-4.  Válassza az **Új vendégfelhasználót** .
+4.  Válassza az **Új vendégfelhasználót**.
 
     ![Képernyőfelvétel az új vendég felhasználói lehetőség kiválasztásának helyéről](media/tutorial-mfa/tutorial-mfa-user-3.png)
 
@@ -73,7 +73,7 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 ## <a name="create-a-conditional-access-policy-that-requires-mfa"></a>MFA-t igénylő feltételes hozzáférési szabályzat létrehozása
 1.  Jelentkezzen be a [Azure Portal](https://portal.azure.com/) biztonsági rendszergazdaként vagy feltételes hozzáférésű rendszergazdaként.
-2.  A Azure Portal válassza a **Azure Active Directory** lehetőséget. 
+2.  Az Azure Portalon válassza az **Azure Active Directory** lehetőséget. 
 3.  A **Azure Active Directory** oldalon, a **Biztonság** szakaszban válassza a **feltételes hozzáférés** lehetőséget.
 4.  A **Feltételes hozzáférés** oldalon, a felső eszköztáron válassza az **Új szabályzat** lehetőséget.
 5.  Az **Új** lapon a **Név** szövegmezőben írja be az **MFA kötelező a B2B portál eléréséhez** szöveget.
@@ -81,7 +81,7 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 7.  A **Felhasználók és csoportok** lapon válassza a **Felhasználók és csoportok kiválasztása** lehetőséget, majd válassza ki a **Minden vendégfelhasználó (előzetes verzió)** lehetőséget.
 
     ![Az összes vendég felhasználó kijelölését bemutató képernyőkép](media/tutorial-mfa/tutorial-mfa-policy-6.png)
-9.  Válassza a **Done** (Kész) lehetőséget.
+9.  Válassza a **Kész** lehetőséget.
 10. A **Hozzárendelések** szakaszban az **Új** lapon válassza a **Felhőalkalmazások** lehetőséget.
 11. A **Felhőalkalmazások** lapon válassza az **Alkalmazások kiválasztása** elemet, majd válassza a **Kiválasztás** lehetőséget.
 
@@ -131,7 +131,7 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
  
 3.  Jelentkezzen ki.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha már nincs rá szükség, távolítsa el a teszt felhasználót és a feltételes hozzáférési szabályzat tesztelését.
 1.  Jelentkezzen be az [Azure Portalba](https://portal.azure.com/) Azure ad-rendszergazdaként.
 2.  A bal oldali panelen válassza az **Azure Active Directory** lehetőséget.
@@ -141,5 +141,5 @@ Ha már nincs rá szükség, távolítsa el a teszt felhasználót és a feltét
 6.  A **Biztonsági** alatt válassza a **Feltételes hozzáférés** lehetőséget.
 7.  A **Szabályzatnév** listában válassza a tesztszabályzathoz tartozó helyi menüt (...), majd kattintson a **Törlés** lehetőségre. Válassza az **Igen** lehetőséget a megerősítéshez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban létrehozott egy feltételes hozzáférési szabályzatot, amely megköveteli, hogy a vendég felhasználók az MFA-t használják az egyik felhőalapú alkalmazásba való bejelentkezéskor. Az együttműködő vendégfelhasználók hozzáadásáról további tudnivalók: [Azure Active Directory B2B együttműködő felhasználók hozzáadása az Azure portálon](add-users-administrator.md).

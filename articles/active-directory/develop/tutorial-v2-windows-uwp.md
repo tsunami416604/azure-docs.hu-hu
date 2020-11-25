@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: cbfb5c598a2a56b0b14a3a90cf29ce23366b9b6c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 774c17af88e45e25cf1e8edc0df60ab55fe53e0e
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627669"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95974330"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Oktatóanyag: a Microsoft Graph API meghívása egy Univerzális Windows-platform-(UWP-) alkalmazásból
 
-Ez az útmutató azt ismerteti, hogyan kérhető le egy natív Univerzális Windows-platform (UWP) alkalmazás hozzáférési tokent. Az alkalmazás ezután meghívja a Microsoft Graph API-t. Az útmutató más API-kra is vonatkozik, amelyek hozzáférési jogkivonatokat igényelnek a Microsoft Identity platform végpontján.
+Ebben az oktatóanyagban létrehoz egy natív Univerzális Windows-platform (UWP) alkalmazást, amely bejelentkezik a felhasználók számára, és lekéri a hozzáférési jogkivonatot a Microsoft Graph API meghívásához. 
 
 Az útmutató végén az alkalmazás személyes fiókok használatával meghívja a védett API-t. Ilyenek például a outlook.com, a live.com és mások. Az alkalmazás a munkahelyi és iskolai fiókokat is meghívja bármely olyan vállalattól vagy szervezettől, amely Azure Active Directory (Azure AD).
 
@@ -64,16 +64,16 @@ Ez az útmutató egy olyan alkalmazást hoz létre, amely lekérdezi az Microsof
 
 ### <a name="create-your-application"></a>Az alkalmazás létrehozása
 
-1. Nyissa meg a Visual studiót, és válassza **az új projekt létrehozása**lehetőséget.
-1. A **create a New Project (új projekt létrehozása**) területen válassza az **üres alkalmazás (univerzális Windows)** lehetőséget a C# és a **tovább**gombra.
-1. Az **új projekt konfigurálása**lapon adja meg az alkalmazás nevét, majd válassza a **Létrehozás**lehetőséget.
-1. Ha a rendszer kéri, az **új univerzális Windows-platform projektben**válassza ki a **cél** és a **minimális** verziók bármely verzióját, és kattintson **az OK gombra**.
+1. Nyissa meg a Visual studiót, és válassza **az új projekt létrehozása** lehetőséget.
+1. A **create a New Project (új projekt létrehozása**) területen válassza az **üres alkalmazás (univerzális Windows)** lehetőséget a C# és a **tovább** gombra.
+1. Az **új projekt konfigurálása** lapon adja meg az alkalmazás nevét, majd válassza a **Létrehozás** lehetőséget.
+1. Ha a rendszer kéri, az **új univerzális Windows-platform projektben** válassza ki a **cél** és a **minimális** verziók bármely verzióját, és kattintson **az OK gombra**.
 
    ![Minimális és a célként megadott verziók](./media/tutorial-v2-windows-uwp/select-uwp-target-minimum.png)
 
 ### <a name="add-microsoft-authentication-library-to-your-project"></a>Microsoft hitelesítési függvénytár hozzáadása a projekthez
 
-1. A Visual Studióban válassza az **eszközök**  >  **NuGet Package**Manager  >  **csomagkezelő konzolt**.
+1. A Visual Studióban válassza az **eszközök**  >  **NuGet Package** Manager  >  **csomagkezelő konzolt**.
 1. Másolja és illessze be a következő parancsokat a **Package Manager konzol** ablakában:
 
     ```powershell
@@ -348,22 +348,22 @@ Most regisztrálnia kell az alkalmazást:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza ki **Azure Active Directory**  >  **Alkalmazásregisztrációk**.
-1. Válassza az **új regisztráció**lehetőséget. Adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára, például *UWP-app-Calling-MSGraph*.
-1. A **támogatott fióktípus**területen válassza a **fiókok lehetőséget a szervezeti címtárban és a személyes Microsoft-fiókokban (például Skype, Xbox)**. Ezután válassza a **regisztráció** lehetőséget a folytatáshoz.
+1. Válassza az **új regisztráció** lehetőséget. Adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára, például *UWP-app-Calling-MSGraph*.
+1. A **támogatott fióktípus** területen válassza a **fiókok lehetőséget a szervezeti címtárban és a személyes Microsoft-fiókokban (például Skype, Xbox)**. Ezután válassza a **regisztráció** lehetőséget a folytatáshoz.
 1. Az Áttekintés oldalon keresse meg az **alkalmazás (ügyfél) azonosítójának** értékét, és másolja. Lépjen vissza a Visual studióba, nyissa meg a *MainPage.XAML.cs*, és cserélje le az értéket ezzel az `ClientId` értékkel.
 
 Az alkalmazás hitelesítésének konfigurálása:
 
-1. A [Azure Portal](https://portal.azure.com)vissza a **kezelés**alatt válassza a **hitelesítés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)vissza a **kezelés** alatt válassza a **hitelesítés** lehetőséget.
 1. Az **átirányítási URI**-  |  **k javasolt átirányítási URI-k a nyilvános ügyfelekhez (mobil, asztali)** szakaszban, a következőt: https://login.microsoftonline.com/common/oauth2/nativeclient .
 1. Kattintson a **Mentés** gombra.
 
 API-engedélyek konfigurálása az alkalmazáshoz:
 
-1. A **kezelés**területen válassza az **API-engedélyek**lehetőséget.
-1. Válassza az **engedély hozzáadása**lehetőséget, és győződjön meg arról, hogy a **Microsoft API-kat**választotta.
-1. Válassza a **Microsoft Graph**lehetőséget.
-1. Válassza a **delegált engedélyek**lehetőséget, keresse meg a *User. Read*parancsot, és ellenőrizze, hogy a **felhasználó. Read** van-e kiválasztva.
+1. A **kezelés** területen válassza az **API-engedélyek** lehetőséget.
+1. Válassza az **engedély hozzáadása** lehetőséget, és győződjön meg arról, hogy a **Microsoft API-kat** választotta.
+1. Válassza a **Microsoft Graph** lehetőséget.
+1. Válassza a **delegált engedélyek** lehetőséget, keresse meg a *User. Read* parancsot, és ellenőrizze, hogy a **felhasználó. Read** van-e kiválasztva.
 1. Ha módosította a módosításokat, válassza az **engedélyek hozzáadása** lehetőséget a mentéshez.
 
 ## <a name="enable-integrated-authentication-on-federated-domains-optional"></a>Integrált hitelesítés engedélyezése összevont tartományokon (nem kötelező)
@@ -371,7 +371,7 @@ API-engedélyek konfigurálása az alkalmazáshoz:
 Az integrált Windows-hitelesítés engedélyezéséhez összevont Azure AD-tartománnyal való használat esetén az alkalmazás jegyzékfájljának engedélyeznie kell a további képességeket. Térjen vissza az alkalmazáshoz a Visual Studióban.
 
 1. Nyissa meg a *Package. appxmanifest*.
-1. Válassza a **képességek**lehetőséget, és engedélyezze a következő beállításokat:
+1. Válassza a **képességek** lehetőséget, és engedélyezze a következő beállításokat:
 
    * **Vállalati hitelesítés**
    * **Magánhálózatok (ügyfél & kiszolgáló)**
@@ -448,7 +448,7 @@ Az alkalmazás teszteléséhez válassza az **F5** billentyűt a projekt futtat�
 
 ![Alkalmazás felhasználói felülete](./media/tutorial-v2-windows-uwp/testapp-ui-vs2019.png)
 
-Ha készen áll a tesztelésre, válassza a **Microsoft Graph API meghívása**lehetőséget. Ezután jelentkezzen be egy Azure AD-beli szervezeti fiókkal vagy egy Microsoft-fiók, például live.com vagy outlook.com használatával. Amikor a felhasználó először futtatja ezt a tesztet, az alkalmazás egy ablakot jelenít meg, amely arra kéri a felhasználót, hogy jelentkezzen be.
+Ha készen áll a tesztelésre, válassza a **Microsoft Graph API meghívása** lehetőséget. Ezután jelentkezzen be egy Azure AD-beli szervezeti fiókkal vagy egy Microsoft-fiók, például live.com vagy outlook.com használatával. Amikor a felhasználó először futtatja ezt a tesztet, az alkalmazás egy ablakot jelenít meg, amely arra kéri a felhasználót, hogy jelentkezzen be.
 
 ### <a name="consent"></a>Hozzájárulás
 
@@ -498,7 +498,7 @@ Az [integrált hitelesítést az összevont tartományokon](#enable-integrated-a
 
 **OK:** Ez a probléma a Windows 10-es asztali számítógépeken futó UWP-alkalmazásokban a web Authentication Broker ismert korlátozása. Jól működik a Windows 10 Mobile-ban.
 
-**Áthidaló megoldás:** Válassza **a bejelentkezés más beállításokkal lehetőséget**. Ezután válassza a **Bejelentkezés felhasználónévvel és jelszóval**lehetőséget. Válassza **a jelszó megadása**lehetőséget. Ezután folytassa a telefonos hitelesítési folyamaton.
+**Áthidaló megoldás:** Válassza **a bejelentkezés más beállításokkal lehetőséget**. Ezután válassza a **Bejelentkezés felhasználónévvel és jelszóval** lehetőséget. Válassza **a jelszó megadása** lehetőséget. Ezután folytassa a telefonos hitelesítési folyamaton.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

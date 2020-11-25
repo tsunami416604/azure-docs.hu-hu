@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d526394ac89e2d29b2002004736e8480bb15b954
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89279261"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973422"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: az eszköz visszaírási engedélyezése
 > [!NOTE]
@@ -44,14 +44,14 @@ Ez további biztonságot és garanciát nyújt, hogy az alkalmazásokhoz való h
 Azure AD Connect telepítése egyéni vagy expressz beállítások használatával. A Microsoft azt javasolja, hogy az eszköz visszaírási engedélyezése előtt az összes felhasználó és csoport szinkronizálása sikeresen megtörténjen.
 
 ## <a name="part-2-enable-device-writeback-in-azure-ad-connect"></a>2. rész: az eszköz visszaírási engedélyezése Azure AD Connect
-1. Futtassa újra a telepítővarázsló utasításait. Válassza az **eszközbeállítások konfigurálása lehetőséget** a további feladatok lapon, és kattintson a **tovább**gombra. 
+1. Futtassa újra a telepítővarázsló utasításait. Válassza az **eszközbeállítások konfigurálása lehetőséget** a további feladatok lapon, és kattintson a **tovább** gombra. 
 
     ![Eszközbeállítások konfigurálása](./media/how-to-connect-device-writeback/deviceoptions.png)
 
     >[!NOTE]
     > Az eszköz új konfigurálása lehetőség csak a 1.1.819.0 és újabb verziókban érhető el.
 
-2. Az eszközbeállítások lapon válassza az **eszköz visszaírási konfigurálása**lehetőséget. Az **eszköz visszaírási letiltására** szolgáló lehetőség nem lesz elérhető, amíg az eszköz visszaírási be nem kapcsol. A **tovább** gombra kattintva lépjen a varázsló következő lapjára.
+2. Az eszközbeállítások lapon válassza az **eszköz visszaírási konfigurálása** lehetőséget. Az **eszköz visszaírási letiltására** szolgáló lehetőség nem lesz elérhető, amíg az eszköz visszaírási be nem kapcsol. A **tovább** gombra kattintva lépjen a varázsló következő lapjára.
     ![Eszköz műveletének választása](./media/how-to-connect-device-writeback/configuredevicewriteback1.png)
 
 3. A visszaírási lapon a megadott tartományt fogja látni az alapértelmezett visszaírási erdőként.
@@ -97,7 +97,7 @@ Első lépések:
   * A Start menüben nyissa meg a **szinkronizálási szolgáltatást**.
   * Nyissa meg az **Összekötők** lapot.
   * Keresse meg a Active Directory tartományi szolgáltatások típusú összekötőt, és jelölje ki.
-  * A **műveletek**területen válassza a **Tulajdonságok**lehetőséget.
+  * A **műveletek** területen válassza a **Tulajdonságok** lehetőséget.
   * Lépjen a **kapcsolódás Active Directory erdőhöz**. Ellenőrizze, hogy az ezen a képernyőn megadott tartomány-és Felhasználónév megegyezik-e a parancsfájlhoz megadott fiókkal.
     ![Összekötő fiók szinkronizált Service Manager](./media/how-to-connect-device-writeback/connectoraccount.png)
 
@@ -129,5 +129,5 @@ Konfiguráció ellenőrzése Active Directoryban:
 * [Kockázatkezelés feltételes hozzáféréssel](../conditional-access/overview.md)
 * [Helyszíni feltételes hozzáférés beállítása Azure Active Directory Eszközregisztráció használatával](../devices/overview.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

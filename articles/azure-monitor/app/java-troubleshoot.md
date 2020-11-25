@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.custom: devx-track-java
 ms.openlocfilehash: 8d11eaa76f2133b9fdc66ba4e6bc91e2cc38c51c
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379536"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972862"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>Hibaelhárítás és Q és A for Application Insights for Java SDK
 
@@ -89,7 +89,7 @@ Az XML-metódus használatával újra kell indítania az alkalmazást az érték
 **Hogyan változtathatom meg, hogy a projekt melyik Azure-erőforráshoz küld adatokat?**
 
 * [Szerezze be az új erőforrás rendszerállapot-kulcsát.][java]
-* Ha a Azure Toolkit for Eclipse használatával adta hozzá Application Insights a projekthez, kattintson a jobb gombbal a webes projektre, válassza az **Azure** -t, **konfigurálja a Application Insights** , és módosítsa a kulcsot.
+* Ha a Azure Toolkit for Eclipse használatával adta hozzá Application Insights a projekthez, kattintson a jobb gombbal a webes projektre, válassza az **Azure**-t, **konfigurálja a Application Insights**, és módosítsa a kulcsot.
 * Ha a kialakítási kulcsot környezeti változóként konfigurálta, frissítse a környezeti változó értékét új Rendszerállapotkulcsot.
 * Ellenkező esetben frissítse a kulcsot ApplicationInsights.xml a projekt erőforrások mappájába.
 
@@ -183,7 +183,7 @@ Application Insights használja `org.apache.http` . Ez a névtér alatt Applicat
 >Ha engedélyezi a HIBAKERESÉSi szintű naplózást az alkalmazás összes névterében, a rendszer az összes végrehajtó modult tiszteletben tartja, beleértve a `org.apache.http` nevet is `com.microsoft.applicationinsights.core.dependencies.http` . A Application Insights nem fogja tudni alkalmazni ezeket a hívásokat, mert az Apache Library a napló hívását végzi. A HIBAKERESÉSi szint naplózása jelentős mennyiségű naplófájlt eredményez, és nem ajánlott éles üzemi példányok esetén.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 **Beállítottam Application Insights a Java Server-alkalmazáshoz. Mit tehetek?**
 
 * [Weblapok rendelkezésre állásának monitorozása][availability]

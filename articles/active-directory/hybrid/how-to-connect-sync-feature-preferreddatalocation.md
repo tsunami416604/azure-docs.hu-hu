@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4c456e7788280b7ca5328342e1cd848ba3a583a
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411133"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972759"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-microsoft-365-resources"></a>Azure Active Directory Connect Sync: Microsoft 365 erőforrások előnyben részesített adathelyének konfigurálása
 Ennek a témakörnek a célja, hogy megtudja, hogyan konfigurálhatja az attribútumot az előnyben részesített adathelyhez az Azure Active Directory (Azure AD) kapcsolódási szinkronizálásban. Ha valaki a Microsoft 365 több földrajzi funkcióját használja, ezzel az attribútummal jelölheti meg a felhasználó Microsoft 365-adatmennyiségének földrajzi helyét. (A feltételek *régiója* és a *földrajzi* terület szinonimaként használható.)
@@ -142,7 +142,7 @@ A bejövő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért
 
     | Attribútum | Érték | Részletek |
     | --- | --- | --- |
-    | Name | *Adjon meg egy nevet* | Például: "az AD-User preferredDataLocation" |
+    | Név | *Adjon meg egy nevet* | Például: "az AD-User preferredDataLocation" |
     | Leírás | *Egyéni Leírás megadása* |  |
     | Csatlakoztatott rendszerek | *A helyszíni Active Directory-összekötő kiválasztása* |  |
     | Csatlakoztatott rendszerobjektum típusa | **Felhasználó** |  |
@@ -151,7 +151,7 @@ A bejövő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért
     | Precedencia | *Válasszon egy 1 – 99 közötti számot* | az 1 – 99 egyéni szinkronizálási szabályok számára van fenntartva. Ne válasszon olyan értéket, amelyet egy másik szinkronizálási szabály használ. |
 
 5. Az összes objektum belefoglalásához hagyja üresen a **hatókör-szűrőt** . Előfordulhat, hogy a Azure AD Connect központi telepítésének megfelelően kell megcsípése a hatókör-szűrőt.
-6. Nyissa meg az **átalakítás lapot** , és hajtsa végre a következő átalakítási szabályt:
+6. Nyissa meg az **átalakítás lapot**, és hajtsa végre a következő átalakítási szabályt:
 
     | Folyamat típusa | Cél attribútum | Forrás | Egyszeri alkalmazás | Egyesítés típusa |
     | --- | --- | --- | --- | --- |
@@ -171,7 +171,7 @@ A kimenő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért�
 
     | Attribútum | Érték | Részletek |
     | ----- | ------ | --- |
-    | Name | *Adjon meg egy nevet* | Például: "az Azure AD – User preferredDataLocation" |
+    | Név | *Adjon meg egy nevet* | Például: "az Azure AD – User preferredDataLocation" |
     | Leírás | *Adja meg a leírást* ||
     | Csatlakoztatott rendszerek | *Válassza ki az Azure AD-összekötőt* ||
     | Csatlakoztatott rendszerobjektum típusa | **Felhasználó** ||
@@ -204,7 +204,7 @@ A kimenő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért�
 1. **Teljes importálás** futtatása a helyszíni Active Directory-összekötőn:
 
    1. Lépjen a Synchronization Service Manager **Operations (műveletek** ) lapjára.
-   2. Kattintson a jobb gombbal a helyszíni **Active Directory-összekötőre** , majd válassza a **Futtatás** lehetőséget.
+   2. Kattintson a jobb gombbal a helyszíni **Active Directory-összekötőre**, majd válassza a **Futtatás** lehetőséget.
    3. A párbeszédpanelen válassza a **teljes importálás** lehetőséget, majd kattintson **az OK gombra**.
    4. Várjon, amíg a művelet befejeződik.
 
@@ -213,7 +213,7 @@ A kimenő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért�
 
 2. **Teljes importálás** futtatása az Azure ad-összekötőn:
 
-   1. Kattintson a jobb gombbal az **Azure ad-összekötőre** , majd válassza a **Futtatás** lehetőséget.
+   1. Kattintson a jobb gombbal az **Azure ad-összekötőre**, majd válassza a **Futtatás** lehetőséget.
    2. A párbeszédpanelen válassza a **teljes importálás** lehetőséget, majd kattintson **az OK gombra**.
    3. Várjon, amíg a művelet befejeződik.
 
@@ -223,13 +223,13 @@ A kimenő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért�
 
 4. **Teljes szinkronizálás** futtatása a helyszíni Active Directory-összekötőn:
 
-   1. Kattintson a jobb gombbal a helyszíni **Active Directory-összekötőre** , majd válassza a **Futtatás** lehetőséget.
+   1. Kattintson a jobb gombbal a helyszíni **Active Directory-összekötőre**, majd válassza a **Futtatás** lehetőséget.
    2. A párbeszédpanelen válassza a **teljes szinkronizálás** lehetőséget, majd kattintson **az OK gombra**.
    3. Várjon, amíg a művelet befejeződik.
 
 5. Az Azure AD-re **irányuló függőben lévő exportálás** ellenőrzése:
 
-   1. Kattintson a jobb gombbal az **Azure ad-összekötőre** , majd válassza az **összekötő terület keresése** lehetőséget.
+   1. Kattintson a jobb gombbal az **Azure ad-összekötőre**, majd válassza az **összekötő terület keresése** lehetőséget.
    2. A **keresési összekötő területe** párbeszédpanelen:
 
         a. **Hatókör** beállítása **függőben lévő exportálásra**.<br>
@@ -239,7 +239,7 @@ A kimenő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért�
 
 6. **Exportálás** futtatása az **Azure ad Connectoron**
 
-   1. Kattintson a jobb gombbal az **Azure ad-összekötőre** , majd válassza a **Futtatás** lehetőséget.
+   1. Kattintson a jobb gombbal az **Azure ad-összekötőre**, majd válassza a **Futtatás** lehetőséget.
    2. Az **összekötő futtatása** párbeszédpanelen válassza az **Exportálás** lehetőséget, majd kattintson **az OK gombra**.
    3. Várjon, amíg a művelet befejeződik.
 

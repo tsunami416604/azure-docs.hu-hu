@@ -14,11 +14,11 @@ ms.reviewer: krbain
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3e4533334204a3a1cfd46ff27b04ff0c05350dfc
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371851"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973915"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>Hozzon létre egy alapszintű csoportot, és vegyen fel tagokat Azure Active Directory használatával
 Az Azure Active Directory (Azure AD) portálon létrehozhat alapszintű csoportot. A cikk céljaira az erőforrás tulajdonosa (rendszergazda) egy alapszintű csoportot ad az erőforráshoz, amely azokat a tagokat tartalmazza (alkalmazottak), akiknek az adott erőforrást el kell érniük. Az összetettebb eseteknél, beleértve a dinamikus csoporttagságot és szabályok létrehozását is, lásd az [Azure Active Directory felhasználókezelés dokumentációt](../enterprise-users/index.yml).
@@ -45,7 +45,7 @@ Az alapszintű csoport létrehozása és a tagok felvétele történhet egyszerr
 
 1. Keresse meg és válassza ki az **Azure Active Directoryt**.
 
-1. A **Active Directory** lapon válassza a **csoportok** lehetőséget, majd válassza az **új csoport**lehetőséget.
+1. A **Active Directory** lapon válassza a **csoportok** lehetőséget, majd válassza az **új csoport** lehetőséget.
 
     ![Azure AD-oldal, amelyben a csoportok láthatók](media/active-directory-groups-create-azure-portal/group-full-screen.png)
 
@@ -63,7 +63,7 @@ Az alapszintű csoport létrehozása és a tagok felvétele történhet egyszerr
 
 1. Válasszon egy előre definiált **tagsági típust (kötelező).** A tagsági típusokkal kapcsolatos további információkért lásd: [csoport-és tagsági típusok](#membership-types).
 
-1. Válassza a **Létrehozás** lehetőséget. A csoport létrehozása megtörtént és készen áll a tagok hozzáadására.
+1. Kattintson a **Létrehozás** gombra. A csoport létrehozása megtörtént és készen áll a tagok hozzáadására.
 
 1. Válassza ki a **Tagok** területet a **Csoport** lapon, és utána kezdje el megkeresni a csoportba felvenni kívánt tagokat a **Tagok kiválasztása** lapon.
 
@@ -79,7 +79,7 @@ Az alapszintű csoport létrehozása és a tagok felvétele történhet egyszerr
 
 Ha új Microsoft 365 csoportot hoz létre, akár dinamikus, akár statikus tagsággal rendelkezik, a rendszer a csoportba felvett összes felhasználóhoz üdvözlő értesítést küld. Ha a felhasználó vagy az eszköz bármely attribútuma megváltozik, a rendszer a szervezet összes dinamikus csoportjának szabályait feldolgozza a lehetséges tagsági változások miatt. A hozzáadott felhasználók megkapják az üdvözlő értesítést is. Ezt a viselkedést kikapcsolhatja az [Exchange PowerShellben](/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az SaaS-alkalmazásokhoz való hozzáférés kezelése csoportokkal](../enterprise-users/groups-saasapps.md)
 - [Csoportok kezelése PowerShell-parancsokkal](../enterprise-users/groups-settings-v2-cmdlets.md)

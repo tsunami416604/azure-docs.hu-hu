@@ -14,15 +14,15 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 28847ece3c08e93d14d381b35fc93fb16dad95a1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370865"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973898"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Egyéni tartománynév hozzáadása a Azure Active Directory portál használatával
 
-Minden új Azure AD-bérlő kezdeti tartománynevet, * \<domainname> . onmicrosoft.com*tartalmaz. A kezdeti tartománynév nem módosítható vagy törölhető, de felveheti a szervezet nevét. Az egyéni tartománynevek hozzáadásával a felhasználók számára ismerős felhasználónevek (például *alain \@ contoso.com*) hozhatók létre.
+Minden új Azure AD-bérlő kezdeti tartománynevet, *\<domainname> . onmicrosoft.com* tartalmaz. A kezdeti tartománynév nem módosítható vagy törölhető, de felveheti a szervezet nevét. Az egyéni tartománynevek hozzáadásával a felhasználók számára ismerős felhasználónevek (például *alain \@ contoso.com*) hozhatók létre.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -50,16 +50,16 @@ A címtár létrehozása után felveheti az egyéni tartománynevet.
 
 1. A címtár eléréséhez globális rendszergazdai fiókkal jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
-1. Keresse meg és válassza ki a *Azure Active Directory* bármely oldalon. Ezután válassza az **Egyéni tartománynevek**  >  **egyéni tartomány hozzáadása**elemet.
+1. Keresse meg és válassza ki a *Azure Active Directory* bármely oldalon. Ezután válassza az **Egyéni tartománynevek**  >  **egyéni tartomány hozzáadása** elemet.
 
     ![Custom Domain Names (egyéni tartománynevek) lap, amelyen az egyéni tartomány hozzáadása látható](media/add-custom-domain/add-custom-domain.png)
 
-1. Az **Egyéni tartománynév**mezőben adja meg a szervezet új nevét, ebben a példában a *contoso.com*. Válassza a **Tartomány hozzáadása** lehetőséget.
+1. Az **Egyéni tartománynév** mezőben adja meg a szervezet új nevét, ebben a példában a *contoso.com*. Válassza a **Tartomány hozzáadása** lehetőséget.
 
     ![Egyéni tartománynevek lap az egyéni tartomány hozzáadása oldalon](media/add-custom-domain/add-custom-domain-blade.png)
 
     >[!IMPORTANT]
-    >A megfelelő működéshez a *. com*, a *.net*vagy bármely más legfelső szintű bővítményt kell megadni.
+    >A megfelelő működéshez a *. com*, a *.net* vagy bármely más legfelső szintű bővítményt kell megadni.
 
     A nem ellenőrzött tartomány hozzá van adva. Megjelenik a **contoso.com** lap, amely a DNS-adatokat jeleníti meg. Mentse ezt az információt. Később szüksége lesz rá egy TXT-rekord létrehozásához a DNS konfigurálásához.
 
@@ -82,9 +82,9 @@ Az egyéni tartomány nevének ellenőrzéséhez kövesse az alábbi lépéseket
 
 1. A címtár eléréséhez globális rendszergazdai fiókkal jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
-1. Keresse meg és válassza ki a *Azure Active Directory* bármely lapon, majd válassza az **Egyéni tartománynevek**lehetőséget.
+1. Keresse meg és válassza ki a *Azure Active Directory* bármely lapon, majd válassza az **Egyéni tartománynevek** lehetőséget.
 
-1. Az **Egyéni tartománynevek**területen válassza ki az egyéni tartománynevet. Ebben a példában válassza a **contoso.com**lehetőséget.
+1. Az **Egyéni tartománynevek** területen válassza ki az egyéni tartománynevet. Ebben a példában válassza a **contoso.com** lehetőséget.
 
     ![Fabrikam – egyéni tartománynevek lap, a contoso kiemelve](media/add-custom-domain/custom-blade-with-contoso-highlighted.png)
 
@@ -108,7 +108,7 @@ Ha az Azure AD nem tudja ellenőrizni az egyéni tartománynevet, próbálkozzon
 
 - **Győződjön meg arról, hogy nem rendelkezik nem felügyelt Power BI Bérlővel.** Ha a felhasználók aktiválták Power BI az önkiszolgáló regisztráción keresztül, és létrehoztak egy nem felügyelt bérlőt a szervezet számára, akkor a PowerShell használatával belső vagy külső rendszergazdaként kell átvennie a felügyeletet. További információkért tekintse meg a [nem felügyelt címtár az Azure Active Directoryban rendszergazdaként történő átvételét](../enterprise-users/domains-admin-takeover.md) ismertető cikket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Adjon hozzá egy másik globális rendszergazdát a címtárhoz. További információ: [szerepkörök és rendszergazdák társítása](active-directory-users-assign-role-azure-portal.md).
 

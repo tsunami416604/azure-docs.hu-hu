@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b82193fda64f2cf265c879c5cda9141be1b576f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0408d43fe897882fe09f6dd61a22d46349f2978e
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627890"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95974391"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Oktatóanyag: a Microsoft Graph API meghívása egy Windowsos asztali alkalmazásból
 
-Ez az útmutató azt mutatja be, hogy a natív Windowsos asztali .NET-(XAML-) alkalmazások hogyan használják a hozzáférési jogkivonatot a Microsoft Graph API meghívásához. Az alkalmazás más API-khoz is hozzáférhet, amelyekhez hozzáférési jogkivonatok szükségesek a Microsoft Identity platformon.
+Ebben az oktatóanyagban létrehoz egy natív Windows asztali .NET-(XAML-) alkalmazást, amely bejelentkezik a felhasználók számára, és hozzáférési jogkivonatot kap a Microsoft Graph API meghívásához. 
 
 Az útmutató befejezése után az alkalmazás képes lesz meghívni egy védett API-t, amely személyes fiókokat (például outlook.com, live.com és másokat) használ. Az alkalmazás a Azure Active Directoryt használó vállalattól vagy szervezettől származó munkahelyi és iskolai fiókokat is használni fogja.
 
@@ -73,13 +73,13 @@ Az ezzel az útmutatóval létrehozott alkalmazás egy olyan gombot jelenít meg
 
 Az alkalmazás létrehozásához tegye a következőket:
 
-1. A Visual Studióban válassza a **fájl**  >  **új**  >  **projekt**lehetőséget.
-2. A **sablonok**területen válassza a **Visual C#** elemet.
+1. A Visual Studióban válassza a **fájl**  >  **új**  >  **projekt** lehetőséget.
+2. A **sablonok** területen válassza a **Visual C#** elemet.
 3. A használt Visual Studio-verziótól függően válassza a **WPF-alkalmazás (.NET-keretrendszer)** lehetőséget.
 
 ## <a name="add-msal-to-your-project"></a>MSAL hozzáadása a projekthez
 
-1. A Visual Studióban válassza az **eszközök**  >  **NuGet Package**Manager >  **csomagkezelő konzolt**.
+1. A Visual Studióban válassza az **eszközök**  >  **NuGet Package** Manager >  **csomagkezelő konzolt**.
 2. A csomagkezelő konzol ablakban illessze be a következő Azure PowerShell parancsot:
 
     ```powershell
@@ -107,7 +107,7 @@ Az alkalmazása regisztrálásához és az alkalmazás regisztrációs informác
 1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
 1. Navigáljon a Microsoft Identity platform for Developers [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) oldalára.
-1. Válassza az **új regisztráció**lehetőséget.
+1. Válassza az **új regisztráció** lehetőséget.
    - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `Win-App-calling-MsGraph`).
    - A **Támogatott fióktípusok** szakaszban jelölje be a **Tetszőleges szervezeti címtárban található fiókok és a Személyes Microsoft-fiókok (például Skype, Xbox, Outlook.com)** beállítást.
    - Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.

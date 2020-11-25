@@ -13,11 +13,11 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperfq1, identityplatformtop40
 ms.openlocfilehash: 9c8a911bef5fb92f5bf9aa447e9e810a85317208
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92365850"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95974153"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Engedélyek és hozzájárulás a Microsoft-identitásplatform végpontján
 
@@ -25,7 +25,7 @@ A Microsoft Identity platformmal integrált alkalmazások olyan engedélyezési 
 
 ## <a name="scopes-and-permissions"></a>Hatókörök és engedélyek
 
-A Microsoft Identity platform implementálja a [OAuth 2,0](active-directory-v2-protocols.md) hitelesítési protokollt. A OAuth 2,0 egy olyan módszer, amellyel a harmadik féltől származó alkalmazások a felhasználók nevében férhetnek hozzá a webkiszolgálók erőforrásaihoz. Bármely, a Microsoft Identity platformmal integrált webszolgáltatáshoz erőforrás-azonosító vagy *alkalmazás-azonosító URI*tartozik. Például a Microsoft számos webes erőforrása többek között:
+A Microsoft Identity platform implementálja a [OAuth 2,0](active-directory-v2-protocols.md) hitelesítési protokollt. A OAuth 2,0 egy olyan módszer, amellyel a harmadik féltől származó alkalmazások a felhasználók nevében férhetnek hozzá a webkiszolgálók erőforrásaihoz. Bármely, a Microsoft Identity platformmal integrált webszolgáltatáshoz erőforrás-azonosító vagy *alkalmazás-azonosító URI* tartozik. Például a Microsoft számos webes erőforrása többek között:
 
 * Microsoft Graph: `https://graph.microsoft.com`
 * Microsoft 365 mail API: `https://outlook.office.com`
@@ -42,7 +42,7 @@ Ugyanez érvényes a Microsoft Identity platformmal integrált, harmadik féltő
 
 Az ilyen típusú engedélyek meghatározásával az erőforrás részletesen szabályozhatja az adatmennyiségét, és az API-funkciók elérhetővé válnak. Egy harmadik féltől származó alkalmazás kérheti ezeket az engedélyeket a felhasználóktól és a rendszergazdáktól, akiknek jóvá kell hagynia a kérést, mielőtt az alkalmazás hozzáférhessen az adatokhoz, vagy a felhasználó nevében cselekszik. Az erőforrás funkcióinak kisebb engedélyezési készletekbe való darabolásával a harmadik féltől származó alkalmazások csak a működésük végrehajtásához szükséges konkrét engedélyeket kérhetik. A felhasználók és a rendszergazdák pontosan tudják, hogy milyen adathozzáférést biztosítanak az alkalmazáshoz, és biztosak lehetnek abban, hogy nem a kártékony szándékkal viselkednek. A fejlesztőknek mindig meg kell felelniük a legalacsonyabb jogosultsági szint koncepciójának, és csak azokat az engedélyeket kérik, amelyekre az alkalmazásoknak szüksége van.
 
-A OAuth 2,0-ben az ilyen típusú engedélyeket *hatóköröknek*nevezzük. Ezeket gyakran *engedélyeknek*is nevezzük. Az engedélyek a Microsoft Identity platformban karakterlánc-értékként jelennek meg. Ha folytatja a Microsoft Graph példát, az egyes engedélyek sztring értéke a következő:
+A OAuth 2,0-ben az ilyen típusú engedélyeket *hatóköröknek* nevezzük. Ezeket gyakran *engedélyeknek* is nevezzük. Az engedélyek a Microsoft Identity platformban karakterlánc-értékként jelennek meg. Ha folytatja a Microsoft Graph példát, az egyes engedélyek sztring értéke a következő:
 
 * A felhasználó naptárának beolvasása a következő használatával: `Calendars.Read`
 * Írás a felhasználó naptárába a következő használatával: `Calendars.ReadWrite`
@@ -113,7 +113,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 
 A `scope` paraméter az alkalmazás által kért delegált engedélyek szóközzel tagolt listája. Az engedélyek az erőforrás azonosítójának (az alkalmazás-azonosító URI-ja) hozzáfűzésével vannak jelezve. A kérelem példájában az alkalmazásnak engedéllyel kell rendelkeznie a felhasználó naptárának olvasásához és a levelezés felhasználóként való elküldéséhez.
 
-Miután a felhasználó beírja a hitelesítő adatait, a Microsoft Identity platform-végpont ellenőrzi a *felhasználói beleegyezési*rekordokat. Ha a felhasználó nem járult hozzá a korábban kért engedélyekhez, és a rendszergazda nem fogadta el ezeket az engedélyeket a teljes szervezet nevében, a Microsoft Identity platform végpontja kéri a felhasználót, hogy adja meg a kért engedélyeket.
+Miután a felhasználó beírja a hitelesítő adatait, a Microsoft Identity platform-végpont ellenőrzi a *felhasználói beleegyezési* rekordokat. Ha a felhasználó nem járult hozzá a korábban kért engedélyekhez, és a rendszergazda nem fogadta el ezeket az engedélyeket a teljes szervezet nevében, a Microsoft Identity platform végpontja kéri a felhasználót, hogy adja meg a kért engedélyeket.
 
 > [!NOTE]
 >Ebben az esetben a `offline_access` ("a hozzáférés megtartása az Ön által megadott adathozzáféréshez") és a `user.read` ("bejelentkezés és a profil olvasása") engedélyek automatikusan belekerülnek a kezdeti beleegyező alkalmazásba.  Ezek az engedélyek általában szükségesek az alkalmazás megfelelő működéséhez – lehetővé teszi, `offline_access` hogy az alkalmazás hozzáférjen a natív és a webes alkalmazások számára kritikus frissítési tokenekhez, miközben `user.read` hozzáférést biztosít a `sub` jogcímek számára, így az ügyfél vagy az alkalmazás helyesen azonosíthatja a felhasználót az idő függvényében, és elérheti az alapvető felhasználói adatokat.
@@ -132,7 +132,7 @@ Emellett az alkalmazásoknak a rendszergazdai engedélyezési végpontot kell ha
 
 ## <a name="admin-restricted-permissions"></a>Rendszergazdai hozzáférésre korlátozott engedélyek
 
-A Microsoft ökoszisztéma bizonyos magas jogosultsági szintű engedélyei a *rendszergazda által korlátozottra*állíthatók be. Ilyen típusú engedélyek például a következők:
+A Microsoft ökoszisztéma bizonyos magas jogosultsági szintű engedélyei a *rendszergazda által korlátozottra* állíthatók be. Ilyen típusú engedélyek például a következők:
 
 * Az összes felhasználó teljes profiljának olvasása a következő használatával: `User.Read.All`
 * Adatírás a szervezet könyvtárába a következő használatával: `Directory.ReadWrite.All`
@@ -144,7 +144,7 @@ Ha az alkalmazásnak hozzáférést kell biztosítania a szervezeteknek a rendsz
 
 Ha az alkalmazás magas jogosultságú delegált engedélyeket kér, és a rendszergazda a rendszergazdai hozzájárulási végponton keresztül engedélyezi ezeket az engedélyeket, akkor a bérlő összes felhasználója számára meg kell adni a hozzájárulást.
 
-Ha az alkalmazás alkalmazás-engedélyeket kér, és a rendszergazda a rendszergazdai hozzájárulási végponton keresztül engedélyezi ezeket az engedélyeket, az adott felhasználó nevében nem hajtja végre ezt az engedélyt. Ehelyett az ügyfélalkalmazás *közvetlenül*kap engedélyeket. Az ilyen típusú engedélyeket csak a Daemon Services és a háttérben futó egyéb nem interaktív alkalmazások használják.
+Ha az alkalmazás alkalmazás-engedélyeket kér, és a rendszergazda a rendszergazdai hozzájárulási végponton keresztül engedélyezi ezeket az engedélyeket, az adott felhasználó nevében nem hajtja végre ezt az engedélyt. Ehelyett az ügyfélalkalmazás *közvetlenül* kap engedélyeket. Az ilyen típusú engedélyeket csak a Daemon Services és a háttérben futó egyéb nem interaktív alkalmazások használják.
 
 ## <a name="using-the-admin-consent-endpoint"></a>A rendszergazdai engedélyezési végpont használata
 
@@ -322,7 +322,7 @@ Egyes erőforrás-URI-k záró perjeltel rendelkeznek ( `https://contoso.com/` e
 
 Ha Ön vagy az alkalmazás felhasználóinak váratlan hibába ütközik a beleegyező folyamat során, tekintse meg ezt a cikket a hibaelhárítási lépésekhez: [váratlan hiba történt az alkalmazáshoz való beleegyező művelet végrehajtásakor](../manage-apps/application-sign-in-unexpected-user-consent-error.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [AZONOSÍTÓ tokenek | Microsoft Identity platform](id-tokens.md)
 * [Hozzáférési tokenek | Microsoft Identity platform](access-tokens.md)

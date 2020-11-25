@@ -12,11 +12,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d7eed3e06ab42671d9674ad3893a88dfe9817e22
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85360180"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973456"
 ---
 # <a name="troubleshoot-azure-ad-connectivity-with-the-adconnectivitytool-powershell-module"></a>Az Azure AD-kapcsolat hibáinak megoldása a ADConnectivityTool PowerShell-modullal
 
@@ -73,7 +73,7 @@ Ha a felhasználó a probléma megoldása után futtatja ezt a funkciót (vagy h
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Azure AD Connect: Fiókok és engedélyek](reference-connect-accounts-permissions.md)
 - [Expressz telepítés](how-to-connect-install-express.md)
 - [Egyéni telepítés](how-to-connect-install-custom.md)

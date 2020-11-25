@@ -13,11 +13,11 @@ ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: b50c942d2e05d7f5234a17f1cf36137309c7ce97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89320953"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973711"
 ---
 # <a name="blocking-legacy-authentication"></a>Örökölt hitelesítés blokkolása
  
@@ -32,8 +32,8 @@ Napjainkban az összes kiegyezéses bejelentkezési kísérlet többsége örök
 
 Mielőtt blokkolni tudja az örökölt hitelesítést a címtárban, először meg kell értenie, hogy a felhasználók rendelkeznek-e örökölt hitelesítést használó alkalmazásokkal, és hogy ez milyen hatással van a teljes címtárra. Az Azure AD bejelentkezési naplói segítségével megtudhatja, hogy örökölt hitelesítést használ-e.
 
-1. Navigáljon a **Azure Portal**  >  **Azure Active Directory**a  >  **bejelentkezések**elemre.
-1. Ha nem látható, akkor adja hozzá az **ügyfélalkalmazás** oszlopot, ha az **oszlopok**   >  **ügyfélalkalmazás**elemre kattint.
+1. Navigáljon a **Azure Portal**  >  **Azure Active Directory** a  >  **bejelentkezések** elemre.
+1. Ha nem látható, akkor adja hozzá az **ügyfélalkalmazás** oszlopot, ha az  **oszlopok**   >  **ügyfélalkalmazás** elemre kattint.
 1. Az **ügyfélalkalmazás** szerinti szűrés > az **örökölt hitelesítési ügyfelek** által megjelenített összes beállítás ellenőrzéséhez.
 1. A szűrés **állapota**  >  **sikeres**. 
 1. Ha szükséges, bontsa ki a dátumtartományt **a Dátum szűrő használatával** .
@@ -96,7 +96,7 @@ A modern hitelesítés engedélyezésének lépései a következő cikkekben tal
 * [A helyszíni Exchange Server konfigurálása hibrid modern hitelesítés használatára](/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
 * [Modern hitelesítés (ADAL) használata a Skype vállalati verzióban](/skypeforbusiness/manage/authentication/use-adal)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A helyszíni Exchange Server konfigurálása hibrid modern hitelesítés használatára](/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)
 - [Modern hitelesítés (ADAL) használata a Skype vállalati verzióban](/skypeforbusiness/manage/authentication/use-adal)

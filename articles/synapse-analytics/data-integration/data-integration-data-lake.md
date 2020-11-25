@@ -10,11 +10,11 @@ ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
 ms.openlocfilehash: f06777e559187a57bfe0625cde700f30fb636a2b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309338"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95974459"
 ---
 # <a name="ingest-data-into-azure-data-lake-storage-gen2"></a>Adatbevitel a Azure Data Lake Storage Gen2ba 
 
@@ -22,8 +22,8 @@ Ebből a cikkből megtudhatja, hogyan végezheti el az adatok egyik helyről a m
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure-előfizetés** : Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) .
-* **Azure Storage-fiók** : a 2. generációs Azure Data Lake használja *forrás* adattárként. Ha nem rendelkezik Storage-fiókkal, tekintse meg az [Azure Storage-fiók létrehozása](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) lépéseit.
+* **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) .
+* **Azure Storage-fiók**: a 2. generációs Azure Data Lake használja *forrás* adattárként. Ha nem rendelkezik Storage-fiókkal, tekintse meg az [Azure Storage-fiók létrehozása](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) lépéseit.
 
 ## <a name="create-linked-services"></a>Társított szolgáltatások létrehozása
 
@@ -70,6 +70,6 @@ Ebben a lépésben az előző lépésben közzétett folyamatot manuálisan ind�
 1. Ellenőrizze, hogy az adatai helyesen vannak-e írva a dedikált SQL-készletben.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A szinapszis Analytics adatintegrálásával kapcsolatos további információkért tekintse meg az adatok betöltése [egy DEDIKÁLT SQL-készletbe](data-integration-sql-pool.md) című cikket.
