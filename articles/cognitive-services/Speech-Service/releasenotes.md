@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 18d228af5c162159d52b5583613d4449d1195af2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e786c4caae13ffaa541697d083158e17d42383fb
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "95894235"
+ms.locfileid: "96122566"
 ---
 # <a name="speech-service-release-notes"></a>Beszédfelismerési szolgáltatás kibocsátási megjegyzései
 
@@ -47,7 +47,7 @@ ms.locfileid: "95894235"
 https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?view=azure-dotnet).
 -  **C++/c #/Java/Python/Objective-C/Swift**: a `stopSpeakingAsync()` szöveg-beszéd szintézis leállítására szolgáló metódust adott hozzá. Olvassa el itt a dokumentációt ( [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace)), itt ( [C#)](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet), itt [(Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech), [itt (Python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech?view=azure-python)és [itt (Objective-C/Swift)](https://docs.microsoft.com/objectivec/cognitive-services/speech/).
 - **C#, C++, Java**: felvett egy `FromDialogServiceConnector()` függvényt a `Connection` osztályhoz, amely a kapcsolatok és a leválasztási események figyelésére használható `DialogServiceConnector` . Olvassa el itt a dokumentációt ( [C#)](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection?view=azure-dotnet), [itt (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/connection)és [itt (Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.connection).
-<!-- - **C++/C#/Java/Python/Objective-C/Swift**: Added support for Pronunciation Assessment, which evaluates speech pronunciation and gives speakers feedback on the accuracy and fluency of spoken audio. Read the documentation [here](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-pronunciation-assessment). -->
+- **C++/c #/Java/Python/Objective-C/Swift**: hozzáadva a kiejtés értékelésének támogatása, amely kiértékeli a beszédfelismerési kiejtést, és visszajelzést ad a beszélők pontosságáról és a beszélt hangról. Olvassa el [itt](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-pronunciation-assessment)a dokumentációt.
 
 **Változás megszakítása**
 - **JavaScript**: a PullAudioOutputStream. Read () visszatérési típusa egy belső ígéretből egy natív JavaScript-ígéretre vált.
@@ -73,7 +73,7 @@ https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audioda
 **Példák**
 - **ObjectiveC**: a kulcsszó-felismeréshez hozzáadott minta [itt](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/objective-c/ios/speech-samples).
 - **C#/JavaScript**: [itt (c#)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet/conversation-transcription) és [itt (JavaScript)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/conversation-transcription)is megjelent a beszélgetés átírásához.
-<!-- - **C++/C#/Java/Python/Swift/ObjectiveC**: Added sample for pronunciation assessment [here](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples) -->
+- **C++/c #/Java/Python/Swift/ObjectiveC**: a kiejtési [felméréshez](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples) hozzáadott minta
 - **Xamarin**: frissített gyors útmutató a legújabb Visual Studio [-sablonhoz](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/xamarin).
 
 **Ismert probléma**

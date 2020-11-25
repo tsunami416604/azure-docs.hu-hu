@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 11/18/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: c58ee46a608ccdcbb01a082ee278d9e0f8a07f6e
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 8fd7562d1f8e38c79f739fdd2db7031e772874bc
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030679"
+ms.locfileid: "96122636"
 ---
 # <a name="azure-synapse-analytics-terminology"></a>Az Azure szinapszis Analytics terminológiája
 
@@ -47,17 +47,11 @@ A (z)-ben kétféleképpen használhatja a Sparkot:
 * Az adatelemzést és-fejlesztést végző **Spark notebookok** a Scala, a PySpark, a C# és a SparkSQL használatával
 * **Spark-feladatdefiníciók** a Batch Spark-feladatok jar-fájlokkal történő futtatásához.
 
-Verzió támogatása:
-* Spark 2,4
-* Python 3.6.1
-* Scala 2.11.12
-* .NET Apache Spark 1,0
-* Delta-tó 0,3.  
-
 ## <a name="pipelines"></a>Pipelines
 
-* **Adatintegráció** – lehetővé teszi az adatgyűjtést a különböző források között, és a munkaterületen belül vagy a munkaterületen kívül futó tevékenységek szervezését.
-* **Adatfolyam** – teljes körű vizuális élményt nyújt Big Data átalakításhoz szükséges kódolás nélkül. Az optimalizálást és a végrehajtást kiszolgáló nélküli módon kezeljük.
+A folyamatok az Azure szinapszis adatintegrációját biztosítják – lehetővé teszi az adatáthelyezést a szolgáltatások és a tevékenységek között.
+
+* Az **adatfolyamatok** olyan adatátalakítást tesznek lehetővé, amely a szinapszis Spark-t használó adatátalakítást használja.
 * **Folyamat** – a tevékenységeket végrehajtó tevékenységek logikai csoportosítása.
 * **Tevékenység** – az adatokon végrehajtandó műveletek, például adatok másolása, jegyzetfüzetek vagy SQL-parancsfájlok futtatása.
 * **Trigger** – folyamat végrehajtása. Futtatható manuálisan vagy automatikusan (Schedule, bukdácsoló ablak vagy eseményvezérelt)

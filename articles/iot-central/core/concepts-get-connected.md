@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: abfd5fadcf553e73dca3f08bc8a0e377f2ace87d
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 1a050daa3a4b3ae9be5ef40961c40adaa90dc72b
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992658"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96121816"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Csatlakozás az Azure IoT Centralhoz
 
@@ -251,11 +251,11 @@ Ha az eszköz nem tudja használni a támogatott protokollokat, használja a Azu
 
 Az eszközök és az Azure-IoT Central között kicserélt összes adatforgalom titkosítva van. IoT Hub minden olyan eszközről hitelesíti a kérelmet, amely az eszközre irányuló IoT Hub végpontokhoz csatlakozik. A hitelesítő adatok vezetéken keresztüli cseréjének elkerüléséhez az eszköz aláírt jogkivonatokat használ a hitelesítéshez. További információ: [IoT hub hozzáférésének szabályozása](../../iot-hub/iot-hub-devguide-security.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha Ön egy eszköz fejlesztője, néhány javasolt lépés a következő:
 
-- Tekintse át a következő kódrészletet, amely bemutatja, hogyan használhatók az SAS-tokenek a [oktatóanyag: ügyfélalkalmazás létrehozása és csatlakoztatása az Azure IoT Central alkalmazáshoz (oktatóanyag – kapcsolat-eszköz-nodejs.md)
+- Tekintse át a következő kódrészletet, amely bemutatja, hogyan használhatók az SAS-tokenek az [oktatóanyagban: ügyfélalkalmazás létrehozása és összekötése az Azure IoT Central alkalmazással](tutorial-connect-device.md)
 - Ismerje meg, hogyan [csatlakoztathatók az X. 509 tanúsítvánnyal rendelkező eszközök a IoT Central alkalmazáshoz készült Node.js ESZKÖZOLDALI SDK-val](how-to-connect-devices-x509.md)
 - Ismerje meg, hogyan [figyelheti az eszközök kapcsolatát az Azure CLI használatával](./howto-monitor-devices-azure-cli.md)
 - Ismerje meg, hogyan [határozhat meg új IoT-típust az Azure IoT Central-alkalmazásban](./howto-set-up-template.md)

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: afe3e9812271f4b8e049fb2a53efd45fe746e514
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 313826e9e3fb5fd34d42dd735cf66259773084f7
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992811"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122341"
 ---
 # <a name="quickstart---create-an-azure-iot-central-application"></a>Rövid útmutató – Azure IoT Central-alkalmazás létrehozása
 
@@ -59,7 +59,7 @@ Hozzon létre egy új alkalmazást az iparághoz kapcsolódó IoT Central sablon
 
     ![Azure IoT Central-alkalmazás](media/quick-deploy-iot-central/iotcentral-application.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy IoT Central-alkalmazást. A következő lépés a IoT Central megismerésének folytatása:
 
@@ -68,4 +68,4 @@ Ebben a rövid útmutatóban létrehozott egy IoT Central-alkalmazást. A követ
 
 Ha Ön egy eszköz fejlesztője, és szeretne belemerülni egy kódra, a javasolt következő lépés:
 > [!div class="nextstepaction"]
-> [Ügyfélalkalmazás létrehozása és összekötése az Azure IoT Central-alkalmazással](./tutorial-connect-device-nodejs.md)
+> [Ügyfélalkalmazás létrehozása és összekötése az Azure IoT Central-alkalmazással](./tutorial-connect-device.md)

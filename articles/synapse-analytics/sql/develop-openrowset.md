@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2458b5f3f0c0091bb6ec24e62a1d5614e4e1ecd8
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 90a5afb19c9ba5061b9304c739914262bcdbee15
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888589"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122720"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>A OPENROWSET használata kiszolgáló nélküli SQL-készlettel (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
 
@@ -147,7 +147,7 @@ Ha az alábbi példában a unstructured_data_path = `https://mystorageaccount.df
 
 A WITH záradék segítségével megadhatja a fájlokból beolvasni kívánt oszlopokat.
 
-- CSV-adatfájlok esetén az összes oszlop olvasásához adja meg az oszlopnevek és az adattípusok nevét. Ha az oszlopok egy részhalmazát szeretné használni, a sorszámok használatával válassza ki az oszlopokat a származó adatfájlokból a sorszám alapján. Az oszlopokat a sorszám megjelölése fogja kötni. 
+- CSV-adatfájlok esetén az összes oszlop olvasásához adja meg az oszlopnevek és az adattípusok nevét. Ha az oszlopok egy részhalmazát szeretné használni, a sorszámok használatával válassza ki az oszlopokat a származó adatfájlokból a sorszám alapján. Az oszlopokat a sorszám megjelölése fogja kötni. Ha a HEADER_ROW = TRUE érték van használatban, az oszlop kötése a sorszám helyett az oszlop neve alapján történik.
     > [!TIP]
     > Kihagyhatja a záradékot a CSV-fájlokhoz is. Az adattípusok automatikusan kikövetkeztetve lesznek a fájl tartalmából. A HEADER_ROW argumentum használatával megadhatja a fejlécsor létezését, amelyben az oszlop neve beolvasható a fejlécsorból. A részletekért lásd: [automatikus séma-felderítés](#automatic-schema-discovery).
     
@@ -231,7 +231,7 @@ CSV-elemző 2,0-es verziójának sajátosságai:
 
 HEADER_ROW = {TRUE | HAMIS
 
-Meghatározza, hogy a CSV-fájl fejlécet tartalmaz-e. Az alapértelmezett érték a FALSE. PARSER_VERSION = "2.0" támogatja. Ha az értéke igaz, az oszlopok nevei az első sorból lesznek beolvasva a FIRSTROW argumentum alapján.
+Meghatározza, hogy a CSV-fájl fejlécet tartalmaz-e. Az alapértelmezett érték a FALSE. PARSER_VERSION = "2.0" támogatja. Ha az értéke igaz, az oszlopok nevei az első sorból lesznek beolvasva a FIRSTROW argumentum alapján. Ha az igaz és a séma a WITH paranccsal van megadva, az oszlopnevek kötése oszlop neve alapján történik, nem pedig a sorszámok.
 
 ADATFÁJLTÍPUS = {' char ' | "(widechar)"}
 
@@ -395,6 +395,6 @@ WITH (
 AS [r]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További példákat a [lekérdezési adattárolási](query-data-storage.md) útmutatóban talál, amelyből megtudhatja, hogyan használható a `OPENROWSET` [CSV](query-single-csv-file.md)-, a [parketta](query-parquet-files.md)-és a [JSON](query-json-files.md) -fájlformátumok olvasásához. [Ajánlott eljárások](best-practices-sql-on-demand.md) az optimális teljesítmény eléréséhez. Azt is megtudhatja, hogyan mentheti a lekérdezés eredményeit az Azure Storage-ba a [CETAS](develop-tables-cetas.md)használatával.

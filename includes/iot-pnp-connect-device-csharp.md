@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 02635c93f9fa7704429a75fad750320f10847cb3
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 13d0bdf82052ff2c61c5b2c6010956c8fb27574d
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95510596"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122465"
 ---
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre IoT Plug and Play-alkalmazást, hogyan csatlakoztathatja az IoT hubhoz, és az Azure IoT Explorer eszköz használatával megtekintheti az általa küldött telemetria. A minta alkalmazás C# nyelven íródott, és a C#-hoz készült Azure IoT-minták tartalmazzák. A megoldás-szerkesztő az Azure IoT Explorer eszköz használatával képes értelmezni egy IoT Plug and Play eszköz képességeit anélkül, hogy meg kellene tekintenie az eszköz kódját.
 
@@ -26,7 +26,7 @@ A rövid útmutató Windows rendszeren való elvégzéséhez a következő szoft
 
 Ebben a rövid útmutatóban egy fejlesztési környezetet készít elő, amellyel klónozott és felépítheti az Azure IoT-mintákat a C#-tárházhoz.
 
-Nyisson meg egy parancssort egy tetszőleges mappában. Futtassa az alábbi parancsot a [c# (.net) GitHub-tárház Microsoft Azure IoT-mintáinak](https://github.com/Azure-Samples/azure-iot-samples-csharp) klónozásához a következő helyre:
+Nyisson meg egy parancssort egy tetszőleges mappában. Futtassa az alábbi parancsot a [C# (.net) GitHub-tárház Microsoft Azure IoT-mintáinak](https://github.com/Azure-Samples/azure-iot-samples-csharp) klónozásához a következő helyre:
 
 ```cmd
 git clone  https://github.com/Azure-Samples/azure-iot-samples-csharp.git
@@ -40,7 +40,7 @@ Most már létrehozhatja a mintát a Visual Studióban, és hibakeresési módba
 
 1. A Visual Studióban navigáljon a **Project > termosztát tulajdonságai > hibakeresés** elemre. Ezután adja hozzá a következő környezeti változókat a projekthez:
 
-    | Name | Érték |
+    | Name (Név) | Érték |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | DPS |
     | IOTHUB_DEVICE_DPS_ENDPOINT | global.azure-devices-provisioning.net |

@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: 82818c8db326889079948cd2b32b2ed0be6ab50d
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: e33f48c9496ffa3cca9d8b1aa71d524be9a311bb
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990754"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122261"
 ---
 # <a name="iot-central-device-development-overview"></a>Az IoT Central-eszközfejlesztés áttekintése
 
@@ -135,14 +135,14 @@ Az eszköz működésének megvalósításához használja az [Azure IoT Device 
 
 További információ az eszközök sablonjainak szerepköréről: Mik az [eszközök sablonjai?](./concepts-device-templates.md).
 
-Néhány mintakód: [Node.js ügyfélalkalmazás létrehozása és összekötése](./tutorial-connect-device-nodejs.md) , illetve Python- [ügyfélalkalmazás létrehozása és összekapcsolása](./tutorial-connect-device-python.md).
+Néhány mintakód: [ügyfélalkalmazás létrehozása és összekapcsolása](./tutorial-connect-device.md).
 
 ### <a name="languages-and-sdks"></a>Nyelvek és SDK-k
 
 További információ a támogatott nyelvekről és SDK-k használatáról: az [Azure IoT hub Device SDK-k megismerése és használata](../../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ha Ön egy eszköz fejlesztője, és szeretne belemerülni egy kódra, a javasolt következő lépés egy [ügyfélalkalmazás létrehozása és csatlakoztatása az Azure IoT Central-alkalmazáshoz](./tutorial-connect-device-nodejs.md).
+Ha Ön egy eszköz fejlesztője, és szeretne belemerülni egy kódra, a javasolt következő lépés egy [ügyfélalkalmazás létrehozása és csatlakoztatása az Azure IoT Central-alkalmazáshoz](./tutorial-connect-device.md).
 
 Ha többet szeretne megtudni a IoT Central használatáról, a javasolt következő lépések az [Azure IoT Central-alkalmazás létrehozása](./quick-deploy-iot-central.md)című rövid útmutatók kipróbálása.

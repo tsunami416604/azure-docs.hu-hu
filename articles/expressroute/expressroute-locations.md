@@ -6,14 +6,14 @@ author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 10/26/2020
+ms.date: 11/25/2020
 ms.author: duau
-ms.openlocfilehash: 30d1fb62b661d898ba06548e5e3a2c7d31b97794
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8b344f38dd5effb34adec7943a444ce51ed513a9
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "95906483"
+ms.locfileid: "96122538"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute-kapcsolati partnerek és társviszony-létesítési helyszínek
 
@@ -108,10 +108,11 @@ Az alábbi táblázat a szolgáltatók szerint jeleníti meg a helyeket. Ha az e
 | **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Támogatott |Támogatott |Amszterdam, Atlanta, Berlin, Canberra2, Chicago, Dallas, Dubai2, Dublin, Frankfurt, Genf, Hongkong KKT, London, London2, Los Angeles, Los Angeles2, Melbourne, Miami, Milánó, New York, Oszaka, Párizs, Sao Paulo, Seattle, Szöul, Szilícium-völgy, Szingapúr, Stockholm, Sydney, Tokió, Toronto, Washington, D.C., Zürich |
 | **Etisalat UAE** |Támogatott |Támogatott |Dubai|
 | **[euNetworks](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |Támogatott |Támogatott |Amszterdam, Amsterdam2, Dublin, Frankfurt, London |
-| **FarEasTone** |Támogatott |Támogatott |Taipei|
+| **[FarEasTone](https://www.fetnet.net/corporate/en/Enterprise.html)** |Támogatott |Támogatott |Taipei|
 | **[Fastweb](https://www.fastweb.it/grandi-aziende/cloud/scheda-prodotto/fastcloud-interconnect/)** | Támogatott |Támogatott |Milánó|
-| **Fibrenoire** |Támogatott |Támogatott |Montreal|
-| **GÉANT** |Támogatott |Támogatott |Amszterdam, Amsterdam2, Dublin, Frankfurt, Marseille |
+| **[Fibrenoire](https://fibrenoire.ca/en/services/cloudextn-2/)** |Támogatott |Támogatott |Montreal|
+| **[GÉANT](https://www.geant.org/Networks)** |Támogatott |Támogatott |Amszterdam, Amsterdam2, Dublin, Frankfurt, Marseille |
+| **[GlobalConnect]()** | Támogatott |Támogatott | Oslo, Stavanger | 
 | **GTT** |Támogatott |Támogatott |London2 |
 | **[Global Cloud Xchange (GCX)](https://globalcloudxchange.com/cloud-platform/cloud-x-fusion/)** | Támogatott| Támogatott | Csennai, Mumbai |
 | **Intelsat** | Támogatott | Támogatott | Washington DC2 |
@@ -167,6 +168,7 @@ Az alábbi táblázat a szolgáltatók szerint jeleníti meg a helyeket. Ha az e
 | **[Telus](https://www.telus.com)** |Támogatott |Támogatott |Montreal, Seattle, Toronto, Vancouver |
 | **[Teraco](https://www.teraco.co.za/services/africa-cloud-exchange/)** |Támogatott |Támogatott |Fokváros, Johannesburg |
 | **[IDŐ dotCom](https://www.time.com.my/enterprise/connectivity/direct-cloud)** | Támogatott | Támogatott | Kuala Lumpur |
+| **[Tokai Communications](https://www.tokai-com.co.jp/en/)** | Támogatott | Támogatott | Osaka, Tokyo2 |
 | **[Transtelco](https://transtelco.net/enterprise-services/)** |Támogatott |Támogatott |Dallas, Queretaro (Mexikó)|
 | **T-Systems** |Támogatott |Támogatott |Frankfurt|
 | **[UOLDIVEO](https://www.uoldiveo.com.br/)** |Támogatott |Támogatott |Sao Paulo |

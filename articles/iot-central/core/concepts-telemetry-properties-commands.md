@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 24fbe347aeb0b47ffd1ba694f761d909ff2950f8
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 5b1bbce68be19c2dbb08f7d69611b719b450a370
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94989547"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96121769"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Telemetria, tulajdonságok és parancsok hasznos adatai
 
@@ -36,7 +36,7 @@ Mindegyik példa egy olyan kódrészletet mutat be az eszköz modelljéből, ame
 
 Az eszköz modelljét definiáló JSON-fájl a [Digital Twin Definition Language (DTDL) v2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)protokollt használja.
 
-A használatban lévő hasznos adattartalmakat bemutató minta-eszközhöz tekintse meg az [ügyfélalkalmazás létrehozása és csatlakoztatása azure IoT Central alkalmazáshoz (Node.js)](tutorial-connect-device-nodejs.md) című témakört, és [hozzon létre és csatlakoztasson egy ügyfélalkalmazás-alkalmazást az Azure IoT Central Application (Python)](tutorial-connect-device-python.md) oktatóanyagokhoz.
+A használatban lévő hasznos adattartalmakat bemutató minta-eszközhöz tekintse [meg az ügyfélalkalmazás létrehozása és csatlakoztatása az Azure IoT Central alkalmazáshoz](tutorial-connect-device.md) című oktatóanyagot.
 
 ## <a name="view-raw-data"></a>Nyers adattárolók megtekintése
 
@@ -717,7 +717,7 @@ IoT Central az eszköztől az írható tulajdonságok frissítéseire választ v
 
 `ac` egy numerikus mező, amely az alábbi táblázatban szereplő értékeket használja:
 
-| Érték | Címke | Description |
+| Érték | Címke | Leírás |
 | ----- | ----- | ----------- |
 | `'ac': 200` | Befejeződött | A tulajdonság-módosítási művelet sikeresen befejeződött. |
 | `'ac': 202`  vagy `'ac': 201` | Függőben | A tulajdonság-módosítási művelet függőben van vagy folyamatban van |
@@ -1000,6 +1000,6 @@ Amikor az eszköz befejezte a kérelem feldolgozását, a következő példához
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte az eszközök sablonjait, a következő lépésekből megtudhatja, hogyan regisztrálhat [Az Azure IoT Centralhoz](./concepts-get-connected.md) , és hogyan regisztrálja az eszközöket a IoT Central, és hogy miként IoT Central biztonságossá teszi az eszköz kapcsolatait.

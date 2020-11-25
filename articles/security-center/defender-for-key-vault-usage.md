@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 6a40ffab652a6ae8671d6cd1c0dd9336764ce2c4
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 67c556e44f07240b1ad1bcde61f40042da46def8
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791936"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122203"
 ---
 # <a name="respond-to-azure-defender-for-key-vault-alerts"></a>Válaszadás Key Vaulthoz készült Azure Defender-riasztásokra
 Ha értesítést kap a Key Vault Azure Defendertől, javasoljuk, hogy vizsgálja meg a riasztást, és válaszoljon az alább leírtak szerint. Az Azure Defender for Key Vault megvédi az alkalmazásokat és a hitelesítő adatokat, így még akkor is, ha már ismeri a riasztást kiváltó alkalmazást vagy felhasználót, fontos, hogy ellenőrizze az összes riasztást körülvevő helyzetet.  
@@ -23,7 +23,7 @@ Az Azure Defender által Key Vault összes riasztása a következő elemeket tar
 - A gyanús erőforrás egyszerű felhasználóneve vagy IP-címe
 
 > [!TIP]
-> A bekövetkezett hozzáférés *típusától* függően előfordulhat, hogy egyes mezők nem érhetők el. Ha például egy alkalmazás hozzáfért a kulcstartóhoz, akkor nem jelenik meg a hozzá tartozó egyszerű felhasználónév. Ha a forgalom az Azure-on kívülről származik, nem jelenik meg az objektum azonosítója.
+> A bekövetkezett hozzáférés *típusától* függően előfordulhat, hogy egyes mezők nem lesznek elérhetők. Ha például egy alkalmazás hozzáfért a kulcstartóhoz, akkor nem jelenik meg a hozzá tartozó egyszerű felhasználónév. Ha a forgalom az Azure-on kívülről származik, nem jelenik meg az objektum azonosítója.
 
 ## <a name="step-1-contact"></a>1. lépés Kapcsolattartó
 
@@ -66,7 +66,7 @@ Ha lefordította a gyanús felhasználó vagy alkalmazás által elért titkok, 
     1. Ha a feltört hitelesítő adatokat használták, az alkalmazás tulajdonosának azonosítania kell az elért adatokat, és csökkentenie kell a hatását.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oldal azt ismerteti, hogyan lehet reagálni az Azure Defender és a Key Vault közötti riasztásokra. A kapcsolódó információk a következő lapokon találhatók:
 

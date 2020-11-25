@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: b62a0da7074676787b7e1c0182ca7588b83cdbe0
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 41dba796327d7f5857098af6165be996bed226fb
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985042"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122699"
 ---
 # <a name="what-is-azure-iot-central"></a>Mi az az Azure IoT Central?
 
@@ -152,12 +152,12 @@ Minden Azure-előfizetéshez tartozik alapértelmezett kvóta, amely hatással l
 - Csak a C eszközoldali SDK és a Node.js eszköz és a szolgáltatás SDK-k támogatottak.
 - IoT Central jelenleg a Egyesült Államok, Európa, Ázsia és a Csendes-óceáni térség, Ausztrália, Egyesült Királyság és Japán helyszíneken érhető el.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy áttekintette a IoT Centralt, néhány javasolt lépés:
 
 - Ismerje meg az elérhető [Azure-technológiákat és-szolgáltatásokat a IoT-megoldások létrehozásához](../../iot-fundamentals/iot-services-and-technologies.md).
-- Ha Ön egy eszköz fejlesztője, és szeretne belemerülni egy kódra, a javasolt következő lépés egy [ügyfélalkalmazás létrehozása és csatlakoztatása az Azure IoT Central-alkalmazáshoz](./tutorial-connect-device-nodejs.md).
+- Ha Ön egy eszköz fejlesztője, és szeretne belemerülni egy kódra, a javasolt következő lépés egy [ügyfélalkalmazás létrehozása és csatlakoztatása az Azure IoT Central-alkalmazáshoz](./tutorial-connect-device.md).
 - Ismerkedés az [Azure IoT Central kezelőfelületével](overview-iot-central-tour.md).
 - [Egy Azure IoT Central-alkalmazás létrehozásának](quick-deploy-iot-central.md) első lépései.
 - Útmutató [Azure IoT Edge eszköz csatlakoztatásához](./tutorial-add-edge-as-leaf-device.md).

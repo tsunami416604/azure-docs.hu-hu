@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 09/15/2020
 ms.author: memildin
-ms.openlocfilehash: 0b80db15e4fafd5e5c63a4194039fbeca21d429b
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: d03416f390abb8656ac1aed81419864443122ce6
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900387"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122427"
 ---
 # <a name="additional-threat-protections-in-azure-security-center"></a>További veszélyforrások elleni védelem Azure Security Center
 A beépített [Azure Defender-védelem](azure-defender.md)mellett a Azure Security Center a következő veszélyforrások elleni védelmi képességeket is biztosítja.
@@ -29,7 +29,7 @@ A beépített [Azure Defender-védelem](azure-defender.md)mellett a Azure Securi
 ## <a name="threat-protection-for-azure-network-layer"></a>Veszélyforrások elleni védelem az Azure hálózati rétegben <a name="network-layer"></a>
 Security Center a hálózati rétegbeli elemzések a minta [IPFIX adatokon](https://en.wikipedia.org/wiki/IP_Flow_Information_Export)alapulnak, amelyek az Azure Core-útválasztók által gyűjtött csomagok fejlécei. Ezen adatcsatorna alapján a Security Center gépi tanulási modelleket használ a kártékony forgalmi tevékenységek azonosítására és megjelölésére. A Security Center a Microsoft Threat Intelligence-adatbázist is használja az IP-címek dúsítására.
 
-Bizonyos hálózati konfigurációk korlátozhatják Security Center a gyanús hálózati tevékenységekre vonatkozó riasztások generálását. A hálózati riasztások létrehozásához Security Center a következőket:
+Néhány hálózati konfiguráció korlátozza Security Center a riasztások gyanús hálózati tevékenységre való generálását. A hálózati riasztások létrehozásához Security Center a következőket:
 - A virtuális gép nyilvános IP-címmel rendelkezik (vagy egy nyilvános IP-címmel rendelkező terheléselosztó).
 - A virtuális gép hálózati kimenő forgalmát nem blokkolja külső azonosító megoldás.
 
@@ -58,14 +58,14 @@ A Azure Resource Manager (előzetes verzió) riasztások listáját a [riasztás
 
 1. Állítsa be azt a munkaterületet, amelyre telepíteni kívánja az ügynököt. Győződjön meg arról, hogy a munkaterület ugyanahhoz az előfizetéshez tartozik, amelyet Security Center használ, és hogy rendelkezik írási/olvasási engedéllyel a munkaterületen.
 
-1. Engedélyezze az **Azure Defendert** , majd válassza a **Mentés** lehetőséget.
+1. Engedélyezze az **Azure Defendert**, majd válassza a **Mentés** lehetőséget.
 
 
 ## <a name="threat-protection-for-azure-cosmos-db-preview"></a>Veszélyforrások elleni védelem Azure Cosmos DB (előzetes verzió)<a name="cosmos-db"></a>
 
 A Azure Cosmos DB riasztások szokatlan és potenciálisan ártalmas kísérletekkel jönnek létre Azure Cosmos DB fiókok eléréséhez vagy kiaknázásához.
 
-További információkért lásd:
+További információ:
 
 * [A Azure Cosmos DB komplex veszélyforrások elleni védelme (előzetes verzió)](../cosmos-db/cosmos-db-advanced-threat-protection.md)
 * [A veszélyforrások elleni védelmi riasztások listája Azure Cosmos DB (előzetes verzió)](alerts-reference.md#alerts-azurecosmos)
@@ -94,7 +94,7 @@ A DDoS-támadások elleni védelemhez vásároljon Azure DDoS Protection-licence
 A Azure DDoS Protection riasztások listáját a [riasztások hivatkozási táblájában](alerts-reference.md#alerts-azureddos)tekintheti meg.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha többet szeretne megtudni a veszélyforrások elleni védelmi funkciókkal kapcsolatos biztonsági riasztásokról, tekintse meg a következő cikkeket:
 
 * [Az összes Azure Security Center-riasztás hivatkozási táblázata](alerts-reference.md)

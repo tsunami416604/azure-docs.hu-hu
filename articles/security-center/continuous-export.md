@@ -8,16 +8,16 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: 59cfe7b990523e5cb165d1037291b3c1b1301624
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 43b66a59062a230aa2fba6909172deb5f1740b28
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289229"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122324"
 ---
 # <a name="continuously-export-security-center-data"></a>Security Center-adatfeldolgozás folyamatos exportálása
 
-Azure Security Center részletes biztonsági riasztásokat és javaslatokat hoz létre. Ezeket megtekintheti a portálon vagy a programozott eszközökön keresztül is. Előfordulhat, hogy ezen információk némelyikét vagy mindegyikét exportálnia kell, hogy nyomon kövesse a környezetben található többi figyelési eszközt. 
+Azure Security Center részletes biztonsági riasztásokat és javaslatokat hoz létre. Ezeket megtekintheti a portálon vagy a programozott eszközökön keresztül is. Előfordulhat, hogy ezen információk némelyikét vagy mindegyikét exportálnia kell a környezetben található egyéb figyelési eszközökkel. 
 
 A **folyamatos exportálással** teljes mértékben testreszabhatja, hogy *mi* történjen az exportálásban, és *hová* fog menni. Beállíthatja például, hogy:
 
@@ -61,7 +61,11 @@ Az alábbi lépések szükségesek, függetlenül attól, hogy folyamatos export
 1. A Security Center oldalsávján válassza a **díjszabás & beállítások** lehetőséget.
 1. Válassza ki azt az előfizetést, amelyhez be szeretné állítani az adatexportálást.
 1. Az előfizetés beállítások oldalának oldalsávján válassza a **folyamatos exportálás** lehetőséget.
-    A [ ![ Azure Security Center exportálási](media/continuous-export/continuous-export-options-page.png)](media/continuous-export/continuous-export-options-page.png#lightbox) lehetőségei itt láthatók az exportálási beállítások. Minden elérhető exportálási célponthoz van egy lap. 
+
+    :::image type="content" source="./media/continuous-export/continuous-export-options-page.png" alt-text="Exportálási beállítások a Azure Security Center":::
+
+    Itt láthatja az exportálási beállításokat. Minden elérhető exportálási célponthoz van egy lap. 
+
 1. Válassza ki az exportálni kívánt adattípust, és válasszon az egyes típusok szűrőinek közül (például csak a nagy súlyosságú riasztások exportálása).
 1. Ha a választás a következő négy javaslat egyikét tartalmazza, akkor a sebezhetőségi felmérés eredményei együttesen is felvehetők:
     - A sebezhetőségi felmérés eredményeit az SQL-adatbázisokban szervizelni kell
@@ -74,7 +78,7 @@ Az alábbi lépések szükségesek, függetlenül attól, hogy folyamatos export
     :::image type="content" source="./media/continuous-export/include-security-findings-toggle.png" alt-text="Biztonsági megállapítások bekapcsolása a folyamatos exportálási konfigurációban" :::
 
 1. Az "exportálási cél" területen válassza ki, hogy hová szeretné menteni az adatok mentését. Az adattárolók egy másik előfizetésben lévő célhelyre menthetők (például egy központi Event hub-példányon vagy egy központi Log Analytics munkaterületen).
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="use-the-rest-api"></a>[**A REST API használata**](#tab/rest-api)
 
@@ -163,7 +167,7 @@ Az exportált adattípusok esemény-sémáinak megtekintéséhez keresse fel a [
 
 ##  <a name="view-exported-alerts-and-recommendations-in-azure-monitor"></a>Az exportált riasztások és javaslatok megtekintése Azure Monitor
 
-Bizonyos esetekben dönthet úgy, hogy megtekinti az exportált biztonsági riasztásokat és/vagy javaslatokat [Azure monitorban](../azure-monitor/platform/alerts-overview.md). 
+Azt is megteheti, hogy megtekinti az exportált biztonsági riasztásokat és/vagy javaslatokat [Azure monitorban](../azure-monitor/platform/alerts-overview.md). 
 
 Azure Monitor egységes riasztási élményt nyújt számos Azure-riasztáshoz, beleértve a diagnosztikai naplót, a metrikus riasztásokat és az egyéni riasztásokat Log Analytics munkaterület-lekérdezések alapján.
 
@@ -230,7 +234,7 @@ Igen! Vegye figyelembe, hogy sok Security Center riasztás csak akkor érhető e
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan konfigurálhatja a javaslatok és riasztások folyamatos exportálását. Azt is megtanulta, hogyan töltheti le a riasztási adatait CSV-fájlként. 
 

@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 3a2de9b167fcbe9dc603d33fd816e70d5c3705e5
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 7aa65cb8e37ce48a59c276fdf2631f75397d3236
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372778"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122508"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>AWS-fiókok összekötése Azure Security Center
 
@@ -77,11 +77,11 @@ Az AWS-ben kétféleképpen engedélyezhető a Security Center hitelesítése:
 1. Válasszon **másik AWS-fiókot**.
 1. Adja meg a következő részleteket:
 
-    - **Fiókazonosító** – adja meg a Microsoft-fiók azonosítóját ( **158177204117** ), ahogyan az a Security Center AWS-összekötő lapján látható.
+    - **Fiókazonosító** – adja meg a Microsoft-fiók azonosítóját (**158177204117**), ahogyan az a Security Center AWS-összekötő lapján látható.
     - **Külső azonosító megkövetelése** – ki kell választani
     - **Külső azonosító** – adja meg az előfizetés azonosítóját, ahogyan az az AWS-összekötő oldalán látható Security Center 
 
-1. Válassza a **Tovább** gombot.
+1. Kattintson a **Tovább** gombra.
 1. Az **engedélyezési házirendek csatolása** szakaszban válassza ki a következő házirendeket:
 
     - SecurityAudit
@@ -89,7 +89,7 @@ Az AWS-ben kétféleképpen engedélyezhető a Security Center hitelesítése:
     - AWSSecurityHubReadOnlyAccess
 
 1. Opcionálisan hozzáadhat címkéket. A Címkék hozzáadása a felhasználóhoz nem befolyásolja a kapcsolódást.
-1. Válassza a **Tovább** gombot.
+1. Kattintson a **Tovább** gombra.
 
 1. A szerepkörök listában válassza ki a létrehozott szerepkört.
 
@@ -141,7 +141,7 @@ Az AWS Systems Manager szükséges a feladatok AWS-erőforrásokon keresztüli a
             OR
 
         - Válassza ki a **hitelesítő adatokat** , majd illessze be a **hozzáférési kulcsot** és a **titkos kulcsot** az [AWS-felhasználó létrehozása a Security Centerhoz](#create-an-aws-user-for-security-center)című. csv fájlból.
-1. Válassza a **Tovább** gombot.
+1. Kattintson a **Tovább** gombra.
 1. Adja meg a beállításokat az **Azure arc konfiguráció** lapján:
 
     Security Center felveszi a csatlakoztatott AWS-fiókban lévő EC2-példányokat, és az SSM-t használja az Azure-ív bevezetéséhez. 
@@ -152,7 +152,7 @@ Az AWS Systems Manager szükséges a feladatok AWS-erőforrásokon keresztüli a
     1. Válassza ki azt az **erőforráscsoportot** és **Azure-régiót** , amelyet a felderített AWS-EC2s a kijelölt előfizetésbe fog bevezetni.
     1. Adja meg az Azure-ív egyszerű szolgáltatás- **azonosítóját** és az **egyszerű szolgáltatás ügyfél-titkos kulcsát** , az itt leírtak szerint [: egyszerű szolgáltatás létrehozása a méretezéshez](../azure-arc/servers/onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)
     1. Ha a gép egy proxykiszolgálón keresztül csatlakozik az internethez, adja meg a proxykiszolgáló IP-címét, vagy azt a nevet és portszámot, amelyet a gép használ a proxykiszolgálóhoz való kommunikációhoz. Adja meg az értéket a formátumban ```http://<proxyURL>:<proxyport>```
-    1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
+    1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
         Az összegző információk áttekintése
 
