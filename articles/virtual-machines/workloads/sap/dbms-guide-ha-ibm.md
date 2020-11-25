@@ -9,11 +9,11 @@ ms.date: 10/16/2020
 ms.author: juergent
 ms.reviewer: cynthn
 ms.openlocfilehash: 0cd1458c90970e219f2929e26423e455ba647a28
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951315"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015111"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>Az IBM DB2-LUW magas rendelkezésre állása Azure-beli virtuális gépeken SUSE Linux Enterprise Server a pacemakerrel
 
@@ -492,7 +492,7 @@ A naplózási archiválást csak az elsődleges adatbázis hajtja végre. Ha meg
 
 Javasoljuk, hogy olyan közös NFS-megosztást állítson be, amelyben a naplók mindkét csomópontról íródnak. Az NFS-megosztásnak nagyon elérhetőnek kell lennie. 
 
-Használhatja a meglévő, magasan elérhető NFS-megosztásokat a szállításokhoz vagy a profilok címtárához. További információ:
+Használhatja a meglévő, magasan elérhető NFS-megosztásokat a szállításokhoz vagy a profilok címtárához. További információkért lásd:
 
 - [Magas rendelkezésre állás az NFS-en SUSE Linux Enterprise Server Azure-beli virtuális gépeken][nfs-ha] 
 - [Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver-hez SUSE Linux Enterprise Serveron Azure NetApp Files SAP-alkalmazásokhoz](./high-availability-guide-suse-netapp-files.md)
@@ -875,7 +875,7 @@ stonith-sbd     (stonith:external/sbd): Started azibmdb02
      Masters: [ azibmdb02 ]
      Slaves: [ azibmdb01 ]</code></pre>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Magas rendelkezésre állású architektúra és forgatókönyvek az SAP NetWeaver-hoz](./sap-high-availability-architecture-scenarios.md)
 - [A pacemaker beállítása SUSE Linux Enterprise Server az Azure-ban](./high-availability-guide-suse-pacemaker.md)
 

@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: bdafb4288bf818928aba43d09f15d4dd75092b24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85564239"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014839"
 ---
 # <a name="replace-an-ebod-controller-on-your-storsimple-device"></a>EBOD-vezérlő cseréje a StorSimple-eszközön
 
@@ -42,7 +42,7 @@ Mielőtt lecseréli a sikertelen EBOD vezérlő modult a StorSimple-eszközön, 
 
 #### <a name="to-remove-an-ebod-module"></a>EBOD-modul eltávolítása
 1. Nyissa meg az Azure Portalt.
-2. Nyissa meg az eszközt, és navigáljon a **Beállítások**  >  **hardver állapota**elemhez, és ellenőrizze, hogy az aktív EBOD vezérlő moduljának állapota zöld-e, és hogy a sikertelen EBOD vezérlő modulhoz tartozó LED piros színű-e.
+2. Nyissa meg az eszközt, és navigáljon a **Beállítások**  >  **hardver állapota** elemhez, és ellenőrizze, hogy az aktív EBOD vezérlő moduljának állapota zöld-e, és hogy a sikertelen EBOD vezérlő modulhoz tartozó LED piros színű-e.
 3. Keresse meg a sikertelen EBOD vezérlő modult az eszköz hátoldalán.
 4. Távolítsa el azokat a kábeleket, amelyek a EBOD-vezérlő modult csatlakoztatják a vezérlőhöz, mielőtt a EBOD-modult a rendszeren kívülre tenné.
 5. Jegyezze fel a vezérlőhöz csatlakoztatott EBOD vezérlő modul pontos SAS-portját. A EBOD modul cseréje után vissza kell állítania a rendszer erre a konfigurációra.

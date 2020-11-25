@@ -7,11 +7,11 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 10/30/2018
 ms.openlocfilehash: e88616f45c69d33234aa35333e0d82ad8cc59bb6
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219360"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015281"
 ---
 # <a name="best-practices-for-managing-u-sql-assemblies-in-a-cicd-pipeline"></a>Ajánlott eljárások a U-SQL-szerelvények CI/CD-folyamatban való kezeléséhez
 
@@ -31,13 +31,13 @@ Egy U-SQL Database-projekt hivatkozhat egy Class Library (U-SQL alkalmazás) pro
 
 A következő lépések végrehajtásával hozhat létre projekteket és adhat hozzá hivatkozásokat.
 
-1. Hozzon létre egy Class Library-projektet (U-SQL-alkalmazáshoz), és válassza a **fájl**  >  **új**  >  **projekt**lehetőséget. A projekt a **Azure Data Lake > U-SQL** csomópont alatt található.
+1. Hozzon létre egy Class Library-projektet (U-SQL-alkalmazáshoz), és válassza a **fájl**  >  **új**  >  **projekt** lehetőséget. A projekt a **Azure Data Lake > U-SQL** csomópont alatt található.
 
    ![Data Lake Tools for Visual Studio – C# Class Library-projekt létrehozása](./media/data-lake-analytics-cicd-manage-assemblies/create-c-sharp-class-library-project.png)
 
 1. Adja hozzá a felhasználó által megadott C#-kódot a Class Library (U-SQL alkalmazás) projekthez.
 
-1. Hozzon létre egy U-SQL-projektet a **fájl**  >  **új**  >  **projekt**lehetőség kiválasztásával. A projekt a **Azure Data Lake**  >  **U-SQL** csomópont alatt található.
+1. Hozzon létre egy U-SQL-projektet a **fájl**  >  **új**  >  **projekt** lehetőség kiválasztásával. A projekt a **Azure Data Lake**  >  **U-SQL** csomópont alatt található.
 
    ![Data Lake eszközök a Visual studióhoz – U-SQL Database-projekt létrehozása](media/data-lake-analytics-cicd-manage-assemblies/create-u-sql-database-project.png)
 
@@ -47,7 +47,7 @@ A következő lépések végrehajtásával hozhat létre projekteket és adhat h
 
    ![Data Lake Tools for Visual Studio – az U-SQL Database-projekt referenciájának hozzáadása](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-add-project-reference-wizard.png)
 
-1. Hozzon létre egy összeállítási parancsfájlt a U-SQL adatbázis-projektben, és kattintson a jobb gombbal a projektre, és válassza az **új elem hozzáadása**lehetőséget.
+1. Hozzon létre egy összeállítási parancsfájlt a U-SQL adatbázis-projektben, és kattintson a jobb gombbal a projektre, és válassza az **új elem hozzáadása** lehetőséget.
 
    ![A Visual Studio Data Lake eszközei – szerelvény-parancsfájl hozzáadása](media/data-lake-analytics-cicd-manage-assemblies/add-assembly-script.png)
 
@@ -55,9 +55,9 @@ A következő lépések végrehajtásával hozhat létre projekteket és adhat h
 
    ![Data Lake Tools for Visual Studio – szerelvény létrehozása hivatkozás alapján](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-create-assembly-from-reference.png)
 
-1. **Felügyelt függőségek** és **További fájlok**hozzáadása, ha vannak ilyenek. Ha további fájlokat ad hozzá, az eszköz a relatív elérési utat használja annak biztosítására, hogy a helyi gépen és a Build gépen később is megtalálja a szerelvényeket.
+1. **Felügyelt függőségek** és **További fájlok** hozzáadása, ha vannak ilyenek. Ha további fájlokat ad hozzá, az eszköz a relatív elérési utat használja annak biztosítására, hogy a helyi gépen és a Build gépen később is megtalálja a szerelvényeket.
 
-Az alján található szerkesztő ablak ** \@ _DeployTempDirectory** egy előre definiált változó, amely az eszközt a Build kimeneti mappájára mutat. A Build kimeneti mappájában minden szerelvényhez tartozik egy nevű almappa a szerelvény nevével. Az összes DLL-fájl és a további fájlok ebben az almappában találhatók.
+Az alján található szerkesztő ablak **\@ _DeployTempDirectory** egy előre definiált változó, amely az eszközt a Build kimeneti mappájára mutat. A Build kimeneti mappájában minden szerelvényhez tartozik egy nevű almappa a szerelvény nevével. Az összes DLL-fájl és a további fájlok ebben az almappában találhatók.
 
 ## <a name="build-a-u-sql-database-project"></a>U-SQL Database-projekt létrehozása
 
@@ -73,7 +73,7 @@ A U-SQL-adatbázist egy U-SQL adatbázis-projekt vagy egy `.usqldbpack` , a Visu
 
 #### <a name="deploy-by-using-a-u-sql-database-project"></a>Üzembe helyezés egy U-SQL Database-projekt használatával
 
-1. Kattintson a jobb gombbal a U-SQL adatbázis-projektre, majd válassza a **telepítés**lehetőséget.
+1. Kattintson a jobb gombbal a U-SQL adatbázis-projektre, majd válassza a **telepítés** lehetőséget.
 
 1. A **Deploy U-SQL Database** varázslóban válassza ki azt a **ADLA-fiókot** , amelyre telepíteni kívánja az adatbázist. A helyi fiókok és a ADLA-fiókok egyaránt támogatottak.
 
@@ -93,7 +93,7 @@ A U-SQL-adatbázist egy U-SQL adatbázis-projekt vagy egy `.usqldbpack` , a Visu
 
 Az Azure DevOps parancssori feladattal és az SDK-val egy automatizálási folyamatot állíthat be a U-SQL-adatbázis frissítéséhez. [További információ az SDK-ról és az U-SQL Database üzembe helyezéséhez szükséges CI/CD-folyamatok beállításáról](data-lake-analytics-cicd-overview.md#deploy-u-sql-database-through-azure-pipelines).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [CI/CD-folyamat beállítása Azure Data Lake Analyticshoz](data-lake-analytics-cicd-overview.md)
 - [A Azure Data Lake Analytics kód tesztelése](data-lake-analytics-cicd-test.md)

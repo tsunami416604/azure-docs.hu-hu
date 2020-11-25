@@ -17,11 +17,11 @@ ms.date: 03/18/2018
 ms.author: kaanan
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 8e3a56e4a6eb1fb6eb633021178ef78f8ac7287d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87488839"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014788"
 ---
 # <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>A virtuális hálózatok használata KOPPINTÁSsal az Azure CLI használatával
 
@@ -53,7 +53,7 @@ Az [Előfeltételek](virtual-network-tap-overview.md#prerequisites) beolvasása 
 
 4. Ha a virtuális hálózat célhelye a gyűjtő vagy elemzési eszköz hálózati virtuális berendezésének hálózati adaptere, akkor
 
-   - Kérje le a hálózati virtuális berendezés hálózati adapterének IP-konfigurációját egy későbbi lépésben használt változóra. Az azonosító a végpont, amely összesíti a TAP-forgalmat. A következő példa lekéri a *ipconfig1* IP-konfiguráció azonosítóját egy *myNetworkInterface*nevű hálózati adapterhez egy *myResourceGroup*nevű erőforráscsoport:
+   - Kérje le a hálózati virtuális berendezés hálózati adapterének IP-konfigurációját egy későbbi lépésben használt változóra. Az azonosító a végpont, amely összesíti a TAP-forgalmat. A következő példa lekéri a *ipconfig1* IP-konfiguráció azonosítóját egy *myNetworkInterface* nevű hálózati adapterhez egy *myResourceGroup* nevű erőforráscsoport:
 
       ```azurecli-interactive
        IpConfigId=$(az network nic ip-config show \
@@ -77,7 +77,7 @@ Az [Előfeltételek](virtual-network-tap-overview.md#prerequisites) beolvasása 
 
 5. Ha a virtuális hálózat célhelye egy belső Azure Load Balancer:
   
-   - Kérje le az Azure belső terheléselosztó előtér-IP-konfigurációját egy későbbi lépésben használt változóra. Az azonosító a végpont, amely összesíti a TAP-forgalmat. A következő példa lekéri a *myInternalLoadBalancer*nevű terheléselosztó *frontendipconfig1* előtér-IP-konfigurációjának azonosítóját egy *myResourceGroup*nevű erőforráscsoporthoz:
+   - Kérje le az Azure belső terheléselosztó előtér-IP-konfigurációját egy későbbi lépésben használt változóra. Az azonosító a végpont, amely összesíti a TAP-forgalmat. A következő példa lekéri a *myInternalLoadBalancer* nevű terheléselosztó *frontendipconfig1* előtér-IP-konfigurációjának azonosítóját egy *myResourceGroup* nevű erőforráscsoporthoz:
 
       ```azurecli-interactive
       FrontendIpConfigId=$(az network lb frontend-ip show \
@@ -109,7 +109,7 @@ Az [Előfeltételek](virtual-network-tap-overview.md#prerequisites) beolvasása 
 
 ## <a name="add-a-tap-configuration-to-a-network-interface"></a>KOPPINTÁS konfigurációjának hozzáadása hálózati adapterhez
 
-1. Egy meglévő virtuális hálózati KOPPINTó erőforrás AZONOSÍTÓjának beolvasása. A következő példa egy *myResourceGroup*nevű erőforráscsoport egy *myTap* nevű virtuális hálózatát kéri le:
+1. Egy meglévő virtuális hálózati KOPPINTó erőforrás AZONOSÍTÓjának beolvasása. A következő példa egy *myResourceGroup* nevű erőforráscsoport egy *myTap* nevű virtuális hálózatát kéri le:
 
    ```azurecli-interactive
    tapId=$(az network vnet tap show \
@@ -119,7 +119,7 @@ Az [Előfeltételek](virtual-network-tap-overview.md#prerequisites) beolvasása 
    --out tsv)
    ```
 
-2. Hozzon létre egy KOPPINTÁS konfigurációt a figyelt virtuális gép hálózati adapterén. A következő példa létrehoz egy *myNetworkInterface*nevű hálózati adapterhez tartozó koppintó konfigurációt:
+2. Hozzon létre egy KOPPINTÁS konfigurációt a figyelt virtuális gép hálózati adapterén. A következő példa létrehoz egy *myNetworkInterface* nevű hálózati adapterhez tartozó koppintó konfigurációt:
 
    ```azurecli-interactive
    az network nic vtap-config create \

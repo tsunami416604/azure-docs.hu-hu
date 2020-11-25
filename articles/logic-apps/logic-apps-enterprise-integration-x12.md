@@ -9,11 +9,11 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/29/2020
 ms.openlocfilehash: 61f3f2af61bc24f76d061de672a3eaacd54f7f0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87066123"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015196"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Exchange X12-üzenetek a B2B vállalati integrációhoz Azure Logic Appsban Enterprise Integration Pack
 
@@ -39,7 +39,7 @@ A Azure Logic Apps X12 üzeneteinek használatához használhatja az X12-összek
 
 A szerződés tulajdonságainak beállítása után beállíthatja, hogy a jelen Szerződés hogyan azonosítsa és kezeli a partnertől kapott bejövő üzeneteket a jelen szerződés alapján.
 
-1. A **Hozzáadás**területen válassza a **fogadási beállítások**lehetőséget.
+1. A **Hozzáadás** területen válassza a **fogadási beállítások** lehetőséget.
 
 1. Konfigurálja ezeket a tulajdonságokat a partnerrel kötött szerződése alapján, amely üzeneteket cserél Önnel. A **fogadási beállítások** a következő csoportokba vannak rendezve:
 
@@ -53,7 +53,7 @@ A szerződés tulajdonságainak beállítása után beállíthatja, hogy a jelen
 
    A tulajdonságok leírását a jelen szakasz tábláiban találja.
 
-1. Ha elkészült, győződjön meg arról, hogy az **OK gombra**kattintva menti a beállításokat.
+1. Ha elkészült, győződjön meg arról, hogy az **OK gombra** kattintva menti a beállításokat.
 
 <a name="inbound-identifiers"></a>
 
@@ -78,7 +78,7 @@ A szerződés tulajdonságainak beállítása után beállíthatja, hogy a jelen
 | Tulajdonság | Leírás |
 |----------|-------------|
 | **Várt TA1** | Technikai nyugtázás (TA1) visszaküldése a bankközi feladónak. |
-| **A FA várható** | Funkcionális nyugtázás (FA) visszaadása az adatcsere küldőjének. <p>Adja meg a 997-es vagy a 999-es beolvasást a (z) rendszerhez **a séma** verziója alapján. <p>Ha engedélyezni szeretné a AK2 hurkok létrehozását a funkcionális visszaigazolásokban az elfogadott tranzakciótípusok esetében, válassza a **AK2/IK2 hurok belefoglalása**lehetőséget. |
+| **A FA várható** | Funkcionális nyugtázás (FA) visszaadása az adatcsere küldőjének. <p>Adja meg a 997-es vagy a 999-es beolvasást a (z) rendszerhez **a séma** verziója alapján. <p>Ha engedélyezni szeretné a AK2 hurkok létrehozását a funkcionális visszaigazolásokban az elfogadott tranzakciótípusok esetében, válassza a **AK2/IK2 hurok belefoglalása** lehetőséget. |
 ||||
 
 <a name="inbound-schemas"></a>
@@ -127,7 +127,7 @@ Ebben a szakaszban válasszon ki egy [sémát](../logic-apps/logic-apps-enterpri
 
 ![Bejövő üzenetek érvényessége](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-validations.png)
 
-Az **alapértelmezett** sor az EDI-üzenetek típusához használt érvényesítési szabályokat jeleníti meg. Ha más szabályokat szeretne meghatározni, válassza ki azokat a dobozokat, amelyeken a szabályt **igaz**értékre szeretné állítani. Az egyes sorok befejezését követően automatikusan megjelenik egy új üres sor.
+Az **alapértelmezett** sor az EDI-üzenetek típusához használt érvényesítési szabályokat jeleníti meg. Ha más szabályokat szeretne meghatározni, válassza ki azokat a dobozokat, amelyeken a szabályt **igaz** értékre szeretné állítani. Az egyes sorok befejezését követően automatikusan megjelenik egy új üres sor.
 
 | Tulajdonság | Leírás |
 |----------|-------------|
@@ -161,7 +161,7 @@ Az **alapértelmezett** sor az EDI-üzenetek típusához használt érvényesít
 
 A szerződés tulajdonságainak beállítása után beállíthatja, hogy a jelen Szerződés hogyan azonosítsa és kezeli a partnernek a jelen szerződés keretében küldött kimenő üzeneteket.
 
-1. A **Hozzáadás**területen válassza a **küldési beállítások**lehetőséget.
+1. A **Hozzáadás** területen válassza a **küldési beállítások** lehetőséget.
 
 1. Konfigurálja ezeket a tulajdonságokat a partnerrel kötött szerződése alapján, amely üzeneteket cserél Önnel. A tulajdonságok leírását a jelen szakasz tábláiban találja.
 
@@ -176,7 +176,7 @@ A szerződés tulajdonságainak beállítása után beállíthatja, hogy a jelen
    * [Karakterkészletek és elválasztók](#outbound-character-sets-separators)
    * [Érvényesítés](#outbound-validation)
 
-1. Ha elkészült, győződjön meg arról, hogy az **OK gombra**kattintva menti a beállításokat.
+1. Ha elkészült, győződjön meg arról, hogy az **OK gombra** kattintva menti a beállításokat.
 
 <a name="outbound-identifiers"></a>
 
@@ -246,8 +246,8 @@ Ebben a szakaszban válasszon ki egy [sémát](../logic-apps/logic-apps-enterpri
 | **GS1** | Nem kötelező, válassza ki a funkcionális kódot. |
 | **GS2** | Nem kötelező megadni az alkalmazás feladóját. |
 | **GS3** | Nem kötelező megadni az alkalmazás fogadóját. |
-| **GS4** | Nem kötelező, válassza a **CCYYMMDD** vagy a **ÉÉHHNN**lehetőséget. |
-| **GS5** | Nem kötelező, válassza a **óópp**, a **HHMMSS**vagy a **HHMMSSdd**lehetőséget. |
+| **GS4** | Nem kötelező, válassza a **CCYYMMDD** vagy a **ÉÉHHNN** lehetőséget. |
+| **GS5** | Nem kötelező, válassza a **óópp**, a **HHMMSS** vagy a **HHMMSSdd** lehetőséget. |
 | **GS7** | Nem kötelező, válassza ki a felelős Ügynökség értékét. |
 | **GS8** | Nem kötelező megadni a séma dokumentumának verzióját. |
 |||
@@ -278,7 +278,7 @@ Az **alapértelmezett** sor azt a karakterkészletet jeleníti meg, amelyet hat�
 
 | Tulajdonság | Leírás |
 |----------|-------------|
-| **Használandó karakterkészlet** | A X12 karakterkészlete, amely **Alapszintű**, **bővített**vagy **UTF8**értékű. |
+| **Használandó karakterkészlet** | A X12 karakterkészlete, amely **Alapszintű**, **bővített** vagy **UTF8** értékű. |
 | **Séma** | A használni kívánt séma. A séma kiválasztása után válassza ki a használni kívánt karakterkészletet az alábbi elválasztó leírások alapján. |
 | **Bemenet típusa** | A karakterkészlet bemeneti típusa |
 | **Összetevő-elválasztó** | Egyetlen karakter, amely elkülöníti az összetett adatelemeket |
@@ -294,7 +294,7 @@ Az **alapértelmezett** sor azt a karakterkészletet jeleníti meg, amelyet hat�
 
 ![Kimenő üzenetek érvényesítési tulajdonságai](./media/logic-apps-enterprise-integration-x12/x12-send-settings-validation.png) 
 
-Az **alapértelmezett** sor az EDI-üzenetek típusához használt érvényesítési szabályokat jeleníti meg. Ha más szabályokat szeretne meghatározni, válassza ki azokat a dobozokat, amelyeken a szabályt **igaz**értékre szeretné állítani. Az egyes sorok befejezését követően automatikusan megjelenik egy új üres sor.
+Az **alapértelmezett** sor az EDI-üzenetek típusához használt érvényesítési szabályokat jeleníti meg. Ha más szabályokat szeretne meghatározni, válassza ki azokat a dobozokat, amelyeken a szabályt **igaz** értékre szeretné állítani. Az egyes sorok befejezését követően automatikusan megjelenik egy új üres sor.
 
 | Tulajdonság | Leírás |
 |----------|-------------|

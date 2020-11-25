@@ -10,11 +10,11 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
 ms.openlocfilehash: 99fb41542dff28997438881abad71da11e927a78
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898812"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014890"
 ---
 # <a name="clip-values"></a>Értékek levágása
 
@@ -32,11 +32,11 @@ A modul ugyanazokat a feltételeket és helyettesítő metódusokat alkalmazza a
 
 Ha egyes oszlopokra kivágási módszereket vagy különböző feltételeket kell alkalmaznia, akkor a hasonló oszlopok egyes készletei esetében a **klipek értékének** egy új példányát kell használnia.
 
-1.  Adja hozzá a **klip értékei** modult a folyamathoz, és kapcsolódjon a módosítani kívánt adatkészlethez. Ez a modul az **adatátalakítás**alatt, a **skálázás és a csökkentés** kategóriában található. 
+1.  Adja hozzá a **klip értékei** modult a folyamathoz, és kapcsolódjon a módosítani kívánt adatkészlethez. Ez a modul az **adatátalakítás** alatt, a **skálázás és a csökkentés** kategóriában található. 
   
-1.  Az **oszlopok listájában**válassza ki azokat az oszlopokat, amelyeken a rendszer a **klipek értékeit** alkalmazni kívánja.  
+1.  Az **oszlopok listájában** válassza ki azokat az oszlopokat, amelyeken a rendszer a **klipek értékeit** alkalmazni kívánja.  
   
-1.  A **küszöbértékek készletében**válassza az alábbi lehetőségek egyikét a legördülő listából. Ezek a beállítások határozzák meg, hogy az alsó és felső határok hogyan állíthatók be az elfogadható értékek és a kivágásra kerülő értékek között.  
+1.  A **küszöbértékek készletében** válassza az alábbi lehetőségek egyikét a legördülő listából. Ezek a beállítások határozzák meg, hogy az alsó és felső határok hogyan állíthatók be az elfogadható értékek és a kivágásra kerülő értékek között.  
   
     - **ClipPeaks**: Ha az értékeket csúcsok szerint ábrázolja, csak egy felső határt kell megadni. A határértéknél nagyobb érték lesz lecserélve.
   
@@ -50,13 +50,13 @@ Ha egyes oszlopokra kivágási módszereket vagy különböző feltételeket kel
     + **Felső küszöbérték**: csak akkor jelenik meg, ha **ClipPeaks** választ
     + **Küszöbérték**: csak akkor jelenik meg, ha **ClipPeaksAndSubPeaks** választ
 
-    Az egyes küszöbértékek esetében válassza az **állandó** vagy a **percentilis**értéket.
+    Az egyes küszöbértékek esetében válassza az **állandó** vagy a **percentilis** értéket.
 
-1. Ha az **állandó**lehetőséget választja, adja meg a maximális vagy a minimális értéket a szövegmezőben. Tegyük fel például, hogy ismeri a 999 értéket helyőrző értékként. Kiválaszthatja az **állandó** értéket a felső küszöbértékhez, és a 999-as típust **állandó értékként a felső küszöbértékhez**.
+1. Ha az **állandó** lehetőséget választja, adja meg a maximális vagy a minimális értéket a szövegmezőben. Tegyük fel például, hogy ismeri a 999 értéket helyőrző értékként. Kiválaszthatja az **állandó** értéket a felső küszöbértékhez, és a 999-as típust **állandó értékként a felső küszöbértékhez**.
   
-1. Ha a **percentilis**lehetőséget választja, akkor az oszlop értékeit egy percentilis tartományra kell korlátozni. 
+1. Ha a **percentilis** lehetőséget választja, akkor az oszlop értékeit egy percentilis tartományra kell korlátozni. 
 
-    Tegyük fel például, hogy csak az 10-80 percentilis tartomány értékeit kívánja megőrizni, és az összes többiet lecseréli. Válassza a **percentilis**lehetőséget, majd írja be a 10-es **értéket az alsó küszöbértéknél**, és írja be a 80 **értéket a felső küszöbértéknél a percentilis értékhez**. 
+    Tegyük fel például, hogy csak az 10-80 percentilis tartomány értékeit kívánja megőrizni, és az összes többiet lecseréli. Válassza a **percentilis** lehetőséget, majd írja be a 10-es **értéket az alsó küszöbértéknél**, és írja be a 80 **értéket a felső küszöbértéknél a percentilis értékhez**. 
 
     A percentilis-tartományok használatának néhány példája a [percentilis](#examples-for-clipping-using-percentiles) című szakaszban található.  
   
@@ -86,7 +86,7 @@ Ha egyes oszlopokra kivágási módszereket vagy különböző feltételeket kel
   
 1.  A folyamat elküldése.  
   
-    Kattintson a jobb gombbal a **klip értékei** modulra, válassza a **Megjelenítés** lehetőséget, vagy válassza ki a modult, és váltson a jobb oldali panel **outputs (kimenetek** ) lapjára, kattintson a **port kimenetében**található hisztogram ikonra, és ellenőrizze az értékeket, és győződjön meg arról, hogy a kivágási művelet megfelelt az elvárásainak.  
+    Kattintson a jobb gombbal a **klip értékei** modulra, válassza a **Megjelenítés** lehetőséget, vagy válassza ki a modult, és váltson a jobb oldali panel **outputs (kimenetek** ) lapjára, kattintson a **port kimenetében** található hisztogram ikonra, és ellenőrizze az értékeket, és győződjön meg arról, hogy a kivágási művelet megfelelt az elvárásainak.  
  
 ### <a name="examples-for-clipping-using-percentiles"></a>Példák a kivágásra a percentilis használatával
 
@@ -96,15 +96,15 @@ Annak megismeréséhez, hogy a százalékos értékek hogyan működnek, vegyün
   
 - Ha a százalékos arányt alacsonyabb küszöbértékként használja, a 10. százalékos értéknél az adatkészlet összes értékének 10 százalékának kisebbnek kell lennie ennél az értéknél.  
   
-1.  A **küszöbértékek készletében**válassza a **ClipPeaksAndSubPeaks**lehetőséget.  
+1.  A **küszöbértékek készletében** válassza a **ClipPeaksAndSubPeaks** lehetőséget.  
   
-1.  A **felső küszöbértéknél**válassza a **percentilis**lehetőséget, a **százalékos értéknél**pedig a 90 értéket.  
+1.  A **felső küszöbértéknél** válassza a **percentilis** lehetőséget, a **százalékos értéknél** pedig a 90 értéket.  
   
-1.  A **felső helyettesítő értéknél**válassza a **hiányzó érték**elemet.  
+1.  A **felső helyettesítő értéknél** válassza a **hiányzó érték** elemet.  
   
-1.  Az **alsó küszöbértéknél**válassza a **percentilis**lehetőséget, a **százalékos értéknél**pedig a 10-es értéket.  
+1.  Az **alsó küszöbértéknél** válassza a **percentilis** lehetőséget, a **százalékos értéknél** pedig a 10-es értéket.  
   
-1.  **Alacsonyabb helyettesítő érték**esetén válassza a **hiányzó érték**elemet.  
+1.  **Alacsonyabb helyettesítő érték** esetén válassza a **hiányzó érték** elemet.  
   
 1.  Törölje a jelölőnégyzet jelölését, és jelölje be a **jelző oszlop hozzáadása** **elemet.**  
   
@@ -118,6 +118,6 @@ Most próbálja meg ugyanazt a folyamatot a 60-as értékkel, mint a felső perc
 |-------------------|--------------------------|----------------------------|  
 |1<br /><br /> 2<br /><br /> 3<br /><br /> 4<br /><br /> 5<br /><br /> 6<br /><br /> 7<br /><br /> 8<br /><br /> 9<br /><br /> 10|IGAZ<br /><br /> IGAZ<br /><br /> 3, HAMIS<br /><br /> 4, HAMIS<br /><br /> 5, HAMIS<br /><br /> 6, HAMIS<br /><br /> 7, HAMIS<br /><br /> 8, HAMIS<br /><br /> 9, HAMIS<br /><br /> IGAZ|4, IGAZ<br /><br /> 4, IGAZ<br /><br /> 4, IGAZ<br /><br /> 4, IGAZ<br /><br /> 5, HAMIS<br /><br /> 6, HAMIS<br /><br /> 7, IGAZ<br /><br /> 7, IGAZ<br /><br /> 7, IGAZ<br /><br /> 7, IGAZ| 
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

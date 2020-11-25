@@ -1,19 +1,19 @@
 ---
 title: 'Gyors útmutató: Unity Android-alkalmazás létrehozása'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre a térbeli Horgonyokkal rendelkező Android-alkalmazást az Unity használatával.
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 09/29/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: c84ebfe9752b8594e97c7c72d706ee25c4852f6e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3c17eadfad71f58b4557f8115a0d1d3de392b4b9
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91538133"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96015128"
 ---
 # <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>Gyors útmutató: Unity Android-alkalmazás létrehozása az Azure térbeli Horgonyokkal
 
@@ -56,7 +56,7 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az
 
 [!INCLUDE [Export Unity Project](../../../includes/spatial-anchors-unity-export-project-snip.md)]
 
-Válassza ki az eszközt az **eszköz futtatása** területen, majd válassza a **Létrehozás és Futtatás**lehetőséget. A rendszer megkéri, hogy mentsen egy `.apk` fájlt, amelyből bármilyen nevet kiválaszthat.
+Válassza ki az eszközt az **eszköz futtatása** területen, majd válassza a **Létrehozás és Futtatás** lehetőséget. A rendszer megkéri, hogy mentsen egy `.apk` fájlt, amelyből bármilyen nevet kiválaszthat.
 
 Az alkalmazásban válassza a **BasicDemo** lehetőséget a nyilak használatával, majd nyomja meg a **Go!** gombra a bemutató futtatásához. A horgonyok elhelyezéséhez és felidézéséhez kövesse az utasításokat.
 
@@ -70,7 +70,7 @@ A horgonyok elhelyezéséhez és felidézéséhez kövesse az alkalmazás utasí
 
 ### <a name="rendering-issues"></a>Renderelési problémák
 
-Ha az alkalmazás futtatásakor nem látja a kamerát háttérként (például üres, kék vagy más textúra jelenik meg), akkor valószínűleg újra kell importálnia az egységben lévő eszközöket. Állítsa le az alkalmazást. Az egység felső menüjében válassza az **eszközök – > az összes újraimportálása**elemet. Ezután futtassa újra az alkalmazást.
+Ha az alkalmazás futtatásakor nem látja a kamerát háttérként (például üres, kék vagy más textúra jelenik meg), akkor valószínűleg újra kell importálnia az egységben lévő eszközöket. Állítsa le az alkalmazást. Az egység felső menüjében válassza az **eszközök – > az összes újraimportálása** elemet. Ezután futtassa újra az alkalmazást.
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

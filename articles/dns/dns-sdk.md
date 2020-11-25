@@ -16,11 +16,11 @@ ms.date: 09/19/2016
 ms.author: rohink
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 8e116096afbd01af4914be49d5675881724d5069
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965595"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015060"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>DNS-zónák és-rekordhalmazok létrehozása a .NET SDK használatával
 
@@ -165,6 +165,6 @@ while (page.NextPageLink != null)
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Töltse le a [Azure DNS .net SDK-minta projektet](https://www.microsoft.com/en-us/download/details.aspx?id=47268&WT.mc_id=DX_MVP4025064&e6b34bbe-475b-1abd-2c51-b5034bcdd6d2=True), amely további példákat tartalmaz a Azure DNS .net SDK használatáról, beleértve a más DNS-bejegyzéstípusokra vonatkozó példákat is.

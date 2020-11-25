@@ -8,11 +8,11 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 07/03/2018
 ms.openlocfilehash: 706457a602e20dd37e64e5f389948b351ac8ebcf
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219241"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015247"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>U-SQL Database-projekt használata a Azure Data Lake U-SQL-adatbázis fejlesztéséhez
 
@@ -24,13 +24,13 @@ A U-SQL Database projekt egy olyan projekt, amely a Visual Studióban segít a f
 
 ## <a name="create-a-u-sql-database-project"></a>U-SQL adatbázis-projekt létrehozása
 
-Azure Data Lake Tools for Visual Studio hozzáadott egy új, U-SQL Database-projekt nevű Project-sablont a 2.3.3000.0 verzió után. U-SQL-projekt létrehozásához válassza a **fájl > új > projekt**lehetőséget. Az U-SQL Database projekt a **Azure Data Lake > u-SQL csomópont**alatt található.
+Azure Data Lake Tools for Visual Studio hozzáadott egy új, U-SQL Database-projekt nevű Project-sablont a 2.3.3000.0 verzió után. U-SQL-projekt létrehozásához válassza a **fájl > új > projekt** lehetőséget. Az U-SQL Database projekt a **Azure Data Lake > u-SQL csomópont** alatt található.
 
 ![Data Lake eszközök a Visual studióhoz – U-SQL Database-projekt létrehozása](./media/data-lake-analytics-data-lake-tools-develop-usql-database/data-lake-tools-create-usql-database-project-creation.png)
 
 ## <a name="develop-u-sql-database-objects-by-using-a-database-project"></a>U-SQL Database-objektumok fejlesztése adatbázis-projekt használatával
 
-Kattintson a jobb gombbal a U-SQL adatbázis-projektre. Válassza a **hozzáadás > új elem**lehetőséget. Az új **elem hozzáadása** varázslóban megtekintheti az összes új támogatott objektumtípust.
+Kattintson a jobb gombbal a U-SQL adatbázis-projektre. Válassza a **hozzáadás > új elem** lehetőséget. Az új **elem hozzáadása** varázslóban megtekintheti az összes új támogatott objektumtípust.
 
 Egy nem szerelvényből álló objektum esetében (például egy táblázat értékű függvény) új U-SQL-szkript jön létre új elem hozzáadása után. A szerkesztőben megkezdheti az adott objektumhoz tartozó DDL-utasítás fejlesztését.
 
@@ -66,9 +66,9 @@ U-SQL-adatbázist a Visual Studióban egy U-SQL adatbázis-projekten vagy egy. u
 
 #### <a name="deploy-through-a-u-sql-database-project"></a>Üzembe helyezés egy U-SQL Database-projekten keresztül
 
-1. Kattintson a jobb gombbal a U-SQL adatbázis-projektre, majd válassza a **telepítés**lehetőséget.
+1. Kattintson a jobb gombbal a U-SQL adatbázis-projektre, majd válassza a **telepítés** lehetőséget.
 
-1. A **Deploy U-SQL Database varázslóban**válassza ki azt a **ADLA-fiókot** , amelyre telepíteni kívánja az adatbázist. A helyi fiókok és a ADLA-fiókok egyaránt támogatottak.
+1. A **Deploy U-SQL Database varázslóban** válassza ki azt a **ADLA-fiókot** , amelyre telepíteni kívánja az adatbázist. A helyi fiókok és a ADLA-fiókok egyaránt támogatottak.
 
 1. Az **adatbázis forrása** automatikusan ki van töltve, és a projekt Build kimeneti mappájában lévő. usqldbpack csomagra mutat.
 
@@ -84,7 +84,7 @@ U-SQL-adatbázist a Visual Studióban egy U-SQL adatbázis-projekten vagy egy. u
 
 1. Nyissa meg a **Server Explorert**. Ezután bontsa ki azt a **Azure Data Lake Analytics fiókot** , amelyre telepíteni kívánja az adatbázist.
 
-1. Kattintson a jobb gombbal az **U-SQL-adatbázisok**elemre, majd válassza az **adatbázis telepítése**lehetőséget.
+1. Kattintson a jobb gombbal az **U-SQL-adatbázisok** elemre, majd válassza az **adatbázis telepítése** lehetőséget.
 
 1. Állítsa be az **adatbázis forrását** az U-SQL adatbázis-telepítési csomag (. usqldbpack fájl) elérési útjára.
 
@@ -119,7 +119,7 @@ Egy U-SQL-projekt hivatkozhat egy U-SQL Database-projektre. A hivatkozás két m
 
     ![Data Lake Tools for Visual Studio adatbázis-projekt-hivatkozás hozzáadása varázsló](./media/data-lake-analytics-data-lake-tools-develop-usql-database/data-lake-tools-add-database-project-reference-wizard.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [CI/CD-folyamat beállítása Azure Data Lake Analyticshoz](data-lake-analytics-cicd-overview.md)
 - [A Azure Data Lake Analytics kód tesztelése](data-lake-analytics-cicd-test.md)

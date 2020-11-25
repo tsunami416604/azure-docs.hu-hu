@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 05/19/2018
 ms.subservice: alerts
 ms.openlocfilehash: c7dfbd60b7a668b849c3150bb16e40285c345634
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87844113"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015349"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Mik a Microsoft Azure klasszikus riasztásai?
 
@@ -68,7 +68,7 @@ Az Azure a következő kifejezéseket használja a klasszikus riasztások és a 
 ## <a name="how-do-i-receive-a-notification-from-an-azure-monitor-classic-alert"></a>Hogyan értesítést kap egy Azure Monitor klasszikus riasztásról?
 A különböző szolgáltatásokból származó Azure-riasztások a saját beépített értesítési módszereiket használták. 
 
-Azure Monitor létrehozta a *műveleti csoportok*nevű újrafelhasználható értesítési csoportot. A műveleti csoportok a fogadók készletét adják meg egy értesítéshez. Minden alkalommal, amikor egy riasztás aktiválva van, amely a műveleti csoportra hivatkozik, minden fogadó megkapja ezt az értesítést. A műveleti csoportok lehetővé teszik a fogadók (például a meghívásos mérnök-lista) egy csoporton belüli felhasználását számos riasztási objektumban. A műveleti csoportok az e-mail-címek, SMS-számok és számos más művelet mellett egy webhook URL-címére való közzétételsel támogatják az értesítést.  További információ: [Action groups](./action-groups.md). 
+Azure Monitor létrehozta a *műveleti csoportok* nevű újrafelhasználható értesítési csoportot. A műveleti csoportok a fogadók készletét adják meg egy értesítéshez. Minden alkalommal, amikor egy riasztás aktiválva van, amely a műveleti csoportra hivatkozik, minden fogadó megkapja ezt az értesítést. A műveleti csoportok lehetővé teszik a fogadók (például a meghívásos mérnök-lista) egy csoporton belüli felhasználását számos riasztási objektumban. A műveleti csoportok az e-mail-címek, SMS-számok és számos más művelet mellett egy webhook URL-címére való közzétételsel támogatják az értesítést.  További információ: [Action groups](./action-groups.md). 
 
 A régebbi klasszikus műveletnapló riasztásai a műveleti csoportokat használják.
 
@@ -82,7 +82,7 @@ A webhookok lehetővé teszik az automatizálást és a szervizelést, például
 - Azure logikai alkalmazás
 - harmadik féltől származó szolgáltatás
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Információk kérése a riasztási szabályokról és a konfigurálásuk a használatával:
 
 * További információ a [metrikákkal](data-platform.md) kapcsolatban

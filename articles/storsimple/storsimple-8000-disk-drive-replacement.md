@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 8/25/2017
 ms.author: alkohli
 ms.openlocfilehash: a5a7a31c174271f963bb005f10b8376a59133d36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85513131"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014873"
 ---
 # <a name="replace-a-disk-drive-on-your-storsimple-8000-series-device"></a>Lemezmeghajtó cseréje StorSimple 8000 sorozatú eszközökön
 
@@ -103,7 +103,7 @@ Ha egy meghajtó meghiúsult a StorSimple-eszközön, és eltávolította azt, k
     **6. ábra**  A meghajtó szállítójának elcsúsztatása a váz számára
 3. Ha beszúrta a meghajtót, zárja be a lemezmeghajtó-kezelőt, miközben továbbra is leküldi a meghajtó szállítóját az alvázra, amíg a meghajtó szolgáltatója nem kattan be egy zárolt pozícióba.
 4. Használja a Microsoft által biztosított zárolási kulcsot (tamperproof TORX csavarhúzó) a hordozófrekvencia a helyükre való biztonságossá tételéhez úgy, hogy a zárolási csavar egy negyedévre van bekapcsolva.
-5. Ellenőrizze, hogy a csere sikeres volt-e, és hogy a meghajtó működőképes-e. Nyissa meg a Azure Portal, és navigáljon az **eszközbeállítások**  >  **hardver állapota**menüponthoz. A **megosztott összetevők** vagy a **megosztott összetevők EBOD**a meghajtó állapota legyen zöld, ami azt jelzi, hogy kifogástalan.
+5. Ellenőrizze, hogy a csere sikeres volt-e, és hogy a meghajtó működőképes-e. Nyissa meg a Azure Portal, és navigáljon az **eszközbeállítások**  >  **hardver állapota** menüponthoz. A **megosztott összetevők** vagy a **megosztott összetevők EBOD** a meghajtó állapota legyen zöld, ami azt jelzi, hogy kifogástalan.
 
    
    > [!NOTE]

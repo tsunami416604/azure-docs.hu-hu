@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 07/31/2020
 ms.author: jeedes
 ms.openlocfilehash: b89ae74a1f4ead568a5454c9494d4a82b0eeea3e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521339"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015179"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect-or-cloudlink-platform"></a>Oktatóanyag: Azure Active Directory integráció a Mitel MiCloud csatlakozással vagy a CloudLink platformmal
 
@@ -47,11 +47,11 @@ Ebben az oktatóanyagban az Azure AD egyszeri bejelentkezést (SSO) konfigurálj
 
 A Mitel az Azure AD-be való csatlakozásának konfigurálásához hozzá kell adnia a Mitel csatlakozást a katalógusból a felügyelt SaaS-alkalmazások listájához a Azure Portal.
 
-1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png)
 
-2. Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
+2. Válassza a **vállalati alkalmazások** lehetőséget, majd válassza **a minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -59,7 +59,7 @@ A Mitel az Azure AD-be való csatlakozásának konfigurálásához hozzá kell a
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. Írja be a **Mitel-kapcsolat** kifejezést a Keresés mezőbe, válassza a **Mitel-kapcsolat** az eredmények panelen lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
+4. Írja be a **Mitel-kapcsolat** kifejezést a Keresés mezőbe, válassza a **Mitel-kapcsolat** az eredmények panelen lehetőséget, majd válassza a **Hozzáadás** lehetőséget.
 
      ![Mitel-kapcsolat az eredmények listájában](common/search-new-app.png)
 
@@ -88,11 +88,11 @@ A MiCloud az Azure AD-vel való összekapcsolásának konfigurálásához a lege
 
 1. A [Azure Portal](https://portal.azure.com/)konfiguráció oldalának megnyitása:
 
-    1. A **Mitel csatlakozás** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+    1. A **Mitel csatlakozás** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
        ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-    1. Az **egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza az **SAML**lehetőséget.
+    1. Az **egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza az **SAML** lehetőséget.
     
        ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
     
@@ -100,9 +100,9 @@ A MiCloud az Azure AD-vel való összekapcsolásának konfigurálásához a lege
 
 2. A Mitel-fiók portálon a konfiguráció párbeszédpanel megnyitásához:
 
-    1. A **telefonos rendszer** menüben válassza a **kiegészítő funkciók**lehetőséget.
+    1. A **telefonos rendszer** menüben válassza a **kiegészítő funkciók** lehetőséget.
 
-    1. Az **egyszeri bejelentkezéstől**jobbra válassza az **aktiválás** vagy a **Beállítások**lehetőséget.
+    1. Az **egyszeri bejelentkezéstől** jobbra válassza az **aktiválás** vagy a **Beállítások** lehetőséget.
     
     Megjelenik az önálló Sign-On-beállítások összekötése párbeszédpanel.
     
@@ -154,7 +154,7 @@ A MiCloud az Azure AD-vel való összekapcsolásának konfigurálásához a lege
 
 Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azure Portal.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -178,19 +178,19 @@ Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azur
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a Mitel kapcsolódáshoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Mitel-kapcsolat**lehetőséget.
+2. Az alkalmazások listában válassza a **Mitel-kapcsolat** lehetőséget.
 
     ![Az Mitel kapcsolódási hivatkozása az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+4. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
@@ -198,7 +198,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 6. Ha az SAML-kijelentésben bármelyik szerepkör értékét várja, válassza ki a megfelelő szerepkört a felhasználó számára a **szerepkör kiválasztása** párbeszédpanelen, majd válassza a **kiválasztás** lehetőséget a képernyő alján.
 
-7. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés**lehetőséget.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés** lehetőséget.
 
 ### <a name="create-a-mitel-micloud-connect-test-user"></a>Mitel-MiCloud csatlakozási teszt felhasználó létrehozása
 
@@ -231,11 +231,11 @@ Ha a CloudLink platformot egyszeri bejelentkezéssel szeretné konfigurálni az 
 
 1. A [Azure Portal](https://portal.azure.com/)konfiguráció oldalának megnyitása:
 
-    1. A **Mitel csatlakozás** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+    1. A **Mitel csatlakozás** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
        ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-    1. Az **egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza az **SAML**lehetőséget.
+    1. Az **egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza az **SAML** lehetőséget.
 
        ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
     
@@ -247,15 +247,15 @@ Ha a CloudLink platformot egyszeri bejelentkezéssel szeretné konfigurálni az 
 
     1. Lépjen annak az ügyfél-fióknak a **fiók adatai** lapjára, amelyen engedélyezni szeretné az integrációt.
 
-    1. Az **integrációk** szakaszban válassza az **+ új hozzáadása**elemet. Az előugró képernyő az **integrációk** panelt jeleníti meg.
+    1. Az **integrációk** szakaszban válassza az **+ új hozzáadása** elemet. Az előugró képernyő az **integrációk** panelt jeleníti meg.
 
-    1. Válassza ki a **harmadik féltől származó** lapot. Megjelenik a támogatott harmadik féltől származó alkalmazások listája. Válassza az **Azure ad egyszeri bejelentkezéshez**társított **Hozzáadás** gombot, és válassza a **kész**lehetőséget.
+    1. Válassza ki a **harmadik féltől származó** lapot. Megjelenik a támogatott harmadik féltől származó alkalmazások listája. Válassza az **Azure ad egyszeri bejelentkezéshez** társított **Hozzáadás** gombot, és válassza a **kész** lehetőséget.
 
        ![Képernyőfelvétel: az integrációs oldal, amelyen hozzáadhatja az Azure D egyszeri bejelentkezést.](./media/mitel-connect-tutorial/mitel-cloudlink-integrations.png)
 
        Az **Azure ad egyszeri bejelentkezés** engedélyezve van az ügyfél fiókjához, és a rendszer hozzáadja a **fiók adatai** lap **integrációk** szakaszához.   
 
-   1. Válassza a **telepítés befejezése**lehetőséget.
+   1. Válassza a **telepítés befejezése** lehetőséget.
     
       ![A képernyőképen az Azure A D egyszeri bejelentkezéshez használható teljes telepítési lehetőség látható.](./media/mitel-connect-tutorial/mitel-cloudlink-complete-setup.png)
       
@@ -309,7 +309,7 @@ Ha a CloudLink platformot egyszeri bejelentkezéssel szeretné konfigurálni az 
 
 Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azure Portal.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -333,19 +333,19 @@ Ebben a szakaszban egy Britta Simon nevű teszt felhasználót hoz létre a Azur
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést azáltal, hogy hozzáférést biztosít a Mitel kapcsolódáshoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Mitel-kapcsolat**lehetőséget.
+2. Az alkalmazások listában válassza a **Mitel-kapcsolat** lehetőséget.
 
     ![Az Mitel kapcsolódási hivatkozása az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-4. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+4. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
@@ -353,7 +353,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 6. Ha az SAML-kijelentésben bármelyik szerepkör értékét várja, válassza ki a megfelelő szerepkört a felhasználó számára a **szerepkör kiválasztása** párbeszédpanelen, majd válassza a **kiválasztás** lehetőséget a képernyő alján.
 
-7. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés**lehetőséget.
+7. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés** lehetőséget.
 
 ### <a name="create-a-cloudlink-test-user"></a>CloudLink-teszt felhasználó létrehozása
 

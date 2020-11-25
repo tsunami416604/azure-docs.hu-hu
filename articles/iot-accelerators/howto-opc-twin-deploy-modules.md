@@ -10,11 +10,11 @@ ms.custom: devx-track-azurecli
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 075f6f83e5af43cde3886f637a8ee326309e4218
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071506"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015043"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>OPC Twin modul és függőségek üzembe helyezése a semmiből
 
@@ -127,7 +127,7 @@ A modulok Azure IoT Edge átjáró eszközre történő központi telepítésén
 
 3. Kattintson a céleszköz AZONOSÍTÓJÁRA az eszközök listájából.
 
-4. Válassza a **modulok beállítása**lehetőséget.
+4. Válassza a **modulok beállítása** lehetőséget.
 
 5. A lap **központi telepítési modulok** szakaszában válassza a **Hozzáadás** és **IoT Edge modul elemet.**
 
@@ -137,7 +137,7 @@ A modulok Azure IoT Edge átjáró eszközre történő központi telepítésén
    mcr.microsoft.com/iotedge/opc-twin:latest
    ```
 
-   A *tároló létrehozása lehetőségnél*használja a következő JSON-t:
+   A *tároló létrehozása lehetőségnél* használja a következő JSON-t:
 
    ```json
    {"NetworkingConfig": {"EndpointsConfig": {"host": {}}}, "HostConfig": {"NetworkMode": "host" }}
@@ -153,7 +153,7 @@ A modulok Azure IoT Edge átjáró eszközre történő központi telepítésén
    mcr.microsoft.com/iotedge/opc-publisher:latest
    ```
 
-   A *tároló létrehozása lehetőségnél*használja a következő JSON-t:
+   A *tároló létrehozása lehetőségnél* használja a következő JSON-t:
 
    ```json
    {"Hostname":"publisher","Cmd":["publisher","--pf=./pn.json","--di=60","--tm","--aa","--si=0","--ms=0"],"ExposedPorts":{"62222/tcp":{}},"HostConfig":{"PortBindings":{"62222/tcp":[{"HostPort":"62222"}] }}}
@@ -205,7 +205,7 @@ A modulok Azure IoT Edge átjáró eszközre történő központi telepítésén
 
    A Device ID paraméter megkülönbözteti a kis-és nagybetűket. ![az IOT hub modul-Identity List output](/azure/iot-edge/media/how-to-deploy-cli/list-modules.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megtanulta, hogyan helyezhet üzembe az OPC Twin-et, itt látható a következő lépés:
 

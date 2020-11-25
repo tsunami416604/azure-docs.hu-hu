@@ -11,11 +11,11 @@ ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
 ms.openlocfilehash: 0000e7690ab92f469a7417e82cb375c524e0b343
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90016843"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014762"
 ---
 # <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>Rigado Cascade 500-átjáró eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz
 
@@ -41,17 +41,17 @@ A Cascade 500 Gateway-eszköz Azure IoT Central Application-példányba való be
 
 Lépcsőzetes 500-eszköz sablonjának hozzáadása: 
 
-1. Navigáljon a bal oldali ablaktáblán található ***eszközök*** lapra, majd válassza a **+ új**: ![ új eszköz sablon létrehozása elemet.](./media/howto-connect-rigado-cascade-500/device-template-new.png)
-1. Az oldalon lehetőség van ***egyéni sablon létrehozására*** vagy ***egy előre konfigurált sablon használatára***
+1. Navigáljon a bal oldali ablaktábla ***eszközök sablonok** _ lapjára, majd válassza az _ * + új * *: ![ új sablon létrehozása elemet.](./media/howto-connect-rigado-cascade-500/device-template-new.png)
+1. Az oldalon lehetősége van *_egyéni sablon létrehozására_*, vagy _*_egy előre konfigurált eszköz használatára_*_
 1. Válassza ki a C500 az előre konfigurált eszközök listájából az alább látható módon: ![ válassza a C500-eszköz sablonja lehetőséget.](./media/howto-connect-rigado-cascade-500/device-template-preconfigured.png)
-1. A ***Tovább gombra*** kattintva folytassa a következő lépéssel. 
-1. A következő képernyőn válassza a ***Létrehozás*** elemet a C500-eszköz sablonjának a IoT Central alkalmazásba való beléptetéséhez.
+1. A _*_Tovább gombra_*_ kattintva folytassa a következő lépéssel. 
+1. A következő képernyőn válassza a _*_Létrehozás_*_ elemet a C500-eszköz sablonjának a IoT Central alkalmazásba való beléptetéséhez.
 
 ## <a name="retrieve-application-connection-details"></a>Alkalmazás-kapcsolat részleteinek beolvasása
 
-Most le kell kérnie az Azure IoT Central-alkalmazás **hatókör-azonosítóját** és **elsődleges kulcsát** a lépcsőzetes 500-eszköz csatlakoztatásához. 
+Most le kell kérnie az Azure IoT Central-alkalmazás _ *hatókör-azonosítóját** és **elsődleges kulcsát** a lépcsőzetes 500-eszköz csatlakoztatásához. 
 
-1. Navigáljon a **felügyelet**  elemre a bal oldali ablaktáblán, és kattintson az **eszköz csatlakoztatása**elemre. 
+1. Navigáljon a **felügyelet**  elemre a bal oldali ablaktáblán, és kattintson az **eszköz csatlakoztatása** elemre. 
 2. Jegyezze fel IoT Central alkalmazás **hatókör-azonosítóját** .
 ![Alkalmazás-hatókör azonosítója](./media/howto-connect-rigado-cascade-500/app-scope-id.png)
 3. Most kattintson a **kulcsok megtekintése** elemre, és jegyezze fel az elsődleges **kulcs** 
@@ -69,7 +69,7 @@ Ez a frissítés alkalmazza a IoT Central kapcsolat részleteit a lépcsőzetes 
 
 Most már készen áll a C500-eszköz használatára a IoT Central alkalmazásban!
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha Ön egy eszköz fejlesztője, néhány javasolt lépés a következő:
 

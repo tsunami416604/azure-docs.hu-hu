@@ -1,18 +1,18 @@
 ---
 title: Az Azure Virtual Network beépített szabályzat-definíciói
 description: Az Azure Virtual Network beépített szabályzat-definícióit sorolja fel Azure Policy. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 11/17/2020
+ms.date: 11/20/2020
 ms.topic: reference
 author: KumudD
 ms.author: kumud
 ms.service: virtual-network
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 269749ae517c8207357ae3a073285fd0db026730
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 17a434b071a7aa4e48c511257a2fef93f33312e5
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734499"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "96014805"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-virtual-network"></a>Az Azure Virtual Network beépített definíciói Azure Policy
 
@@ -28,7 +28,7 @@ Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-defi
 
 [!INCLUDE [azure-policy-reference-policies-tags](../../includes/policy/reference/bycat/policies-tags.md)]
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 [!INCLUDE [azure-policy-reference-policies-general](../../includes/policy/reference/bycat/policies-general.md)]
 

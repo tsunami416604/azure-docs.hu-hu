@@ -6,11 +6,11 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 12/05/2016
 ms.openlocfilehash: d2764e5e3994eb7b80a8e7cf62fb7f437323c97e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219394"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015298"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>Webhelynaplók elemzése az Azure Data Lake Analytics használatával
 Megtudhatja, hogyan elemezheti a webhelyek naplóit a Data Lake Analytics használatával, különösen annak megállapításához, hogy mely hivatkozó hibák léptek fel a webhelyre.
@@ -26,7 +26,7 @@ Megtudhatja, hogyan elemezheti a webhelyek naplóit a Data Lake Analytics haszn�
 
   * [U-SQL-szkript fejlesztése a Visual studióhoz készült Data Lake Tools használatával](data-lake-analytics-data-lake-tools-get-started.md).
 * **Egy Data Lake Analytics-fiók.**  Lásd: [Azure Data Lake Analytics fiók létrehozása](data-lake-analytics-get-started-portal.md).
-* **A mintaadatok telepítése.** Az Azure Portalon nyissa meg Data Lake Analytics fiókot, és kattintson a bal oldali menüben a **minta parancsfájlok** elemre, majd kattintson a **mintaadatok másolása**lehetőségre. 
+* **A mintaadatok telepítése.** Az Azure Portalon nyissa meg Data Lake Analytics fiókot, és kattintson a bal oldali menüben a **minta parancsfájlok** elemre, majd kattintson a **mintaadatok másolása** lehetőségre. 
 
 ## <a name="connect-to-azure"></a>Csatlakozás az Azure szolgáltatáshoz
 A U-SQL-parancsfájlok létrehozása és tesztelése előtt először csatlakoznia kell az Azure-hoz.
@@ -34,13 +34,13 @@ A U-SQL-parancsfájlok létrehozása és tesztelése előtt először csatlakozn
 ### <a name="to-connect-to-data-lake-analytics"></a>A Data Lake Analytics szolgáltatáshoz való kapcsolódáshoz
 
 1. Nyissa meg a Visual Studiót.
-2. Kattintson **Data Lake > lehetőségek és beállítások**elemre.
-3. Kattintson a **Bejelentkezés**gombra, vagy **változtassa** meg a felhasználót, ha valaki bejelentkezett, és kövesse az utasításokat.
+2. Kattintson **Data Lake > lehetőségek és beállítások** elemre.
+3. Kattintson a **Bejelentkezés** gombra, vagy **változtassa** meg a felhasználót, ha valaki bejelentkezett, és kövesse az utasításokat.
 4. A beállítások és beállítások párbeszédpanel bezárásához kattintson **az OK** gombra.
 
 ### <a name="to-browse-your-data-lake-analytics-accounts"></a>A Data Lake Analytics-fiókok tallózása
 
-1. A Visual studióból nyissa meg a **Server Explorert** a **CTRL + ALT + S**billentyűkombinációval.
+1. A Visual studióból nyissa meg a **Server Explorert** a **CTRL + ALT + S** billentyűkombinációval.
 2. A **Server Explorer** eszközben bontsa ki az **Azure** elemet, majd a **Data Lake Analytics** elemet. Ekkor megjelenik a Data Lake Analytics-fiókok listája, ha vannak ilyenek. A studióból nem hozhatók létre Data Lake Analytics fiókok. Fiók létrehozásához tekintse meg az első [lépések a Azure Data Lake Analytics az Azure Portal használatával](data-lake-analytics-get-started-portal.md) vagy a [Azure Data Lake Analytics használatának első lépései a Azure PowerShell használatával](data-lake-analytics-get-started-powershell.md)című témakört.
 
 ## <a name="develop-u-sql-application"></a>U-SQL-alkalmazás fejlesztése
@@ -50,7 +50,7 @@ Hozzáadhat további felhasználó által definiált operátorokat is az alkalma
 
 ### <a name="to-create-and-submit-a-data-lake-analytics-job"></a>Data Lake Analytics-feladat létrehozása és elküldése
 
-1. Kattintson a **fájl > új > projekt**elemre.
+1. Kattintson a **fájl > új > projekt** elemre.
 
 2. Válassza ki a U-SQL projekt típust.
 
@@ -169,16 +169,16 @@ Hozzáadhat további felhasználó által definiált operátorokat is az alkalma
 
     ![a adatközpont-elemzési webnaplók webnaplóinak elemzése](./media/data-lake-analytics-analyze-weblogs/data-lake-analytics-analyze-weblogs-job-completed.png)
 
-11. Most ismételje meg a 7-10-es lépést a **Script1. usql**esetében.
+11. Most ismételje meg a 7-10-es lépést a **Script1. usql** esetében.
 
 ### <a name="to-see-the-job-output"></a>Feladat kimenetének megtekintése
 
 1. A **Server Explorer** eszközben bontsa ki az **Azure** elemet, majd a **Data Lake Analytics** elemet, bontsa ki a saját Data Lake Analytics-fiókjait, bontsa ki a **Storage Accounts** (Tárfiókok) elemet, kattintson a jobb gombbal az alapértelmezett Data Lake-tárfiókra, majd kattintson az **Explorer** elemre.
-2. A mappa megnyitásához kattintson duplán a **minták** elemre, majd kattintson duplán a **kimenetek**elemre.
+2. A mappa megnyitásához kattintson duplán a **minták** elemre, majd kattintson duplán a **kimenetek** elemre.
 3. Kattintson duplán a **UnsuccessfulResponses. log naplófájlra**.
 4. Azt is megteheti, hogy duplán kattint a kimeneti fájlra a feladatok gráf nézetében, hogy közvetlenül a kimenetre navigáljon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Data Lake Analytics különböző eszközökkel való használatának megismeréséhez lásd:
 
 * [Ismerkedés a Data Lake Analytics az Azure Portal használatával](data-lake-analytics-get-started-portal.md)
