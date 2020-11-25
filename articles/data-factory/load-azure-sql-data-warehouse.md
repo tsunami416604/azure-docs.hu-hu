@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/30/2020
 ms.openlocfilehash: dcf3db33818448116da53d8a01d0c62aca7bc1af
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280167"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000079"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Az Azure szinapszis Analyticsbe való betöltés Azure Data Factory használatával
 
@@ -28,10 +28,10 @@ Az Azure szinapszis Analytics használatának első lépései mostantól minden 
 
 Azure Data Factory a következő előnyöket biztosítja az Azure szinapszis Analyticsbe való betöltéshez:
 
-* **Egyszerűen beállítható** : egy intuitív 5 lépésből álló varázsló, amely nem igényel parancsfájlt.
-* **Gazdag adattár-támogatás** : beépített támogatás a helyszíni és felhőalapú adattárak gazdag készletéhez. Részletes listát a [támogatott adattárakkal](copy-activity-overview.md#supported-data-stores-and-formats)foglalkozó táblázatban talál.
-* **Biztonságos és megfelelő** : az adatátvitel HTTPS-vagy ExpressRoute-kapcsolaton keresztül történik. A globális szolgáltatás jelenléte biztosítja, hogy az adatai soha nem hagyják el a földrajzi határt.
-* **Páratlan teljesítmény a Base használatával** : a Base a leghatékonyabb módszer az adatok Azure szinapszis-elemzésbe való áthelyezésére. Az átmeneti blob funkcióval nagy terhelési sebességet érhet el minden típusú adattárból, beleértve az Azure Blob Storage-t és a Data Lake Storet is. (A Base alapértelmezés szerint támogatja az Azure Blob Storage-t és a Azure Data Lake Store.) Részletekért lásd: [másolási tevékenység teljesítménye](copy-activity-performance.md).
+* **Egyszerűen beállítható**: egy intuitív 5 lépésből álló varázsló, amely nem igényel parancsfájlt.
+* **Gazdag adattár-támogatás**: beépített támogatás a helyszíni és felhőalapú adattárak gazdag készletéhez. Részletes listát a [támogatott adattárakkal](copy-activity-overview.md#supported-data-stores-and-formats)foglalkozó táblázatban talál.
+* **Biztonságos és megfelelő**: az adatátvitel HTTPS-vagy ExpressRoute-kapcsolaton keresztül történik. A globális szolgáltatás jelenléte biztosítja, hogy az adatai soha nem hagyják el a földrajzi határt.
+* **Páratlan teljesítmény a Base használatával**: a Base a leghatékonyabb módszer az adatok Azure szinapszis-elemzésbe való áthelyezésére. Az átmeneti blob funkcióval nagy terhelési sebességet érhet el minden típusú adattárból, beleértve az Azure Blob Storage-t és a Data Lake Storet is. (A Base alapértelmezés szerint támogatja az Azure Blob Storage-t és a Azure Data Lake Store.) Részletekért lásd: [másolási tevékenység teljesítménye](copy-activity-performance.md).
 
 Ebből a cikkből megtudhatja, hogyan _tölthetők be a Azure SQL Databaseból származó adatok az Azure szinapszis Analytics_ szolgáltatásba a Data Factory adatok másolása eszköz használatával. Az adatok más típusú adattárakból történő másolásához hasonló lépéseket kell követnie.
 
@@ -47,15 +47,15 @@ Ebből a cikkből megtudhatja, hogyan _tölthetők be a Azure SQL Databaseból s
 
 ## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
-1. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **adatok és Analitika**  >  **Data Factory** :
+1. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **adatok és Analitika**  >  **Data Factory**:
 
 2. Az **új adatok előállítója** lapon adja meg a következő elemek értékeit:
 
-    * **Név** : írja be a *LoadSQLDWDemo* nevet. Az adatelőállító nevének * globálisan egyedinek kell lennie. Ha a "LoadSQLDWDemo" nevű "nem érhető el" hibaüzenet jelenik meg, adjon meg egy másik nevet az adatelőállítónak. Használhatja például a _**sajátneve**_**ADFTutorialDataFactory** nevet. Próbálkozzon újra az adatelőállító létrehozásával. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
-    * **Előfizetés** : válassza ki azt az Azure-előfizetést, amelyben létre kívánja hozni az adatelőállítót. 
-    * **Erőforráscsoport** : válasszon ki egy meglévő erőforráscsoportot a legördülő listából, vagy válassza az **új létrehozása** lehetőséget, és adja meg az erőforráscsoport nevét. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
-    * **Verzió** : Válassza a **V2** lehetőséget.
-    * **Hely** : válassza ki az adatelőállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. A Refactory által használt adattárak más helyszíneken és régiókban is lehetnek. Ezek az adattárak a következők: Azure Data Lake Store, Azure Storage, Azure SQL Database stb.
+    * **Név**: írja be a *LoadSQLDWDemo* nevet. Az adatelőállító nevének * globálisan egyedinek kell lennie. Ha a "LoadSQLDWDemo" nevű "nem érhető el" hibaüzenet jelenik meg, adjon meg egy másik nevet az adatelőállítónak. Használhatja például a _**sajátneve**_**ADFTutorialDataFactory** nevet. Próbálkozzon újra az adatelőállító létrehozásával. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
+    * **Előfizetés**: válassza ki azt az Azure-előfizetést, amelyben létre kívánja hozni az adatelőállítót. 
+    * **Erőforráscsoport**: válasszon ki egy meglévő erőforráscsoportot a legördülő listából, vagy válassza az **új létrehozása** lehetőséget, és adja meg az erőforráscsoport nevét. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
+    * **Verzió**: Válassza a **V2** lehetőséget.
+    * **Hely**: válassza ki az adatelőállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. A Refactory által használt adattárak más helyszíneken és régiókban is lehetnek. Ezek az adattárak a következők: Azure Data Lake Store, Azure Storage, Azure SQL Database stb.
 
 3. Kattintson a **Létrehozás** gombra.
 4. A létrehozás befejezése után nyissa meg az adatait a gyárban. Megjelenik a **Data Factory** kezdőlapja, ahogy az a következő képen látható:
@@ -97,7 +97,7 @@ Ebből a cikkből megtudhatja, hogyan _tölthetők be a Azure SQL Databaseból s
 
 6. A **cél adattár** oldalon hajtsa végre a következő lépéseket:
     >[!TIP]
-    >Ebben az oktatóanyagban az *SQL-hitelesítést* használja a célhely-adattár hitelesítési típusaként, de más támogatott hitelesítési módszereket is választhat: *egyszerű szolgáltatásnév* és *felügyelt identitás* használata, ha szükséges. A részletekért tekintse meg a [cikk](./connector-azure-sql-data-warehouse.md#linked-service-properties) megfelelő részeit.
+    >Ebben az oktatóanyagban az *SQL-hitelesítést* használja a célhely-adattár hitelesítési típusaként, de más támogatott hitelesítési módszereket is választhat:*egyszerű szolgáltatásnév* és *felügyelt identitás* használata, ha szükséges. A részletekért tekintse meg a [cikk](./connector-azure-sql-data-warehouse.md#linked-service-properties) megfelelő részeit.
     >Az adattárak titkos kulcsainak biztonságos tárolásához ajánlott egy Azure Key Vault is használni. A részletes illusztrációkat [ebben a cikkben](./store-credentials-in-key-vault.md) találja.
 
     a. Kapcsolat hozzáadásához kattintson a **+ Új kapcsolat létrehozása** lehetőségre
@@ -149,7 +149,7 @@ Ebből a cikkből megtudhatja, hogyan _tölthetők be a Azure SQL Databaseból s
 
     ![Tevékenység-futtatási részletek figyelése – második](./media/load-azure-sql-data-warehouse/monitor-activity-run-details-2.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkből megismerheti az Azure szinapszis Analytics támogatását:
 

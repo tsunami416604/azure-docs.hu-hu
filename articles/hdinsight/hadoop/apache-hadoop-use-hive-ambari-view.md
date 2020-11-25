@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: cc04a891bb32ede6c7bb72a339b728642cf343ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207826"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000521"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Apache Ambari Hive-nézet használata Apache Hadooppal a HDInsightban
 
@@ -29,9 +29,9 @@ Hadoop-fürt a HDInsight-on. Lásd: Ismerkedés [a HDInsight Linux rendszeren](.
 
 1. A [Azure Portal](https://portal.azure.com/)válassza ki a fürtöt.  Útmutatásért lásd: [fürtök listázása és megjelenítése](../hdinsight-administer-use-portal-linux.md#showClusters) . A fürt új portál nézetben nyílik meg.
 
-1. A **fürt irányítópultok**területen válassza a **Ambari nézetek**elemet. Amikor a rendszer kéri a hitelesítést, használja a fürt `admin` létrehozásakor megadott bejelentkezési (alapértelmezett) fióknevet és jelszót. Azt is megnyithatja a böngészőben, ahol a a `https://CLUSTERNAME.azurehdinsight.net/#/main/views` `CLUSTERNAME` fürt neve.
+1. A **fürt irányítópultok** területen válassza a **Ambari nézetek** elemet. Amikor a rendszer kéri a hitelesítést, használja a fürt `admin` létrehozásakor megadott bejelentkezési (alapértelmezett) fióknevet és jelszót. Azt is megnyithatja a böngészőben, ahol a a `https://CLUSTERNAME.azurehdinsight.net/#/main/views` `CLUSTERNAME` fürt neve.
 
-1. A nézetek listájában válassza a __struktúra nézet__lehetőséget.
+1. A nézetek listájában válassza a __struktúra nézet__ lehetőséget.
 
     ![Apache Ambari – Apache Hive nézet kiválasztása](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
 
@@ -62,14 +62,14 @@ Hadoop-fürt a HDInsight-on. Lásd: Ismerkedés [a HDInsight Linux rendszeren](.
 
     |Utasítás | Leírás |
     |---|---|
-    |TÁBLÁZAT ELDOBÁSA|Törli a táblát és az adatfájlt arra az esetre, ha a tábla már létezik.|
+    |DROP TABLE|Törli a táblát és az adatfájlt arra az esetre, ha a tábla már létezik.|
     |KÜLSŐ TÁBLA LÉTREHOZÁSA|Létrehoz egy új "külső" táblát a kaptárban. A külső táblák csak a struktúra tábla definícióját tárolják. Az adatmező az eredeti helyen marad.|
     |SOR FORMÁTUMA|Megjeleníti az adat formázásának módját. Ebben az esetben az egyes naplók mezői szóközzel vannak elválasztva.|
     |TEXTFILE HELYEN TÁROLVA|Megjeleníti az adattárolás helyét, valamint a szövegként tárolt fájlokat.|
     |SELECT|Kiválasztja az összes olyan sor számát, ahol a T4 oszlop tartalmazza a [hiba] értéket.|
 
    > [!IMPORTANT]  
-   > Hagyja meg az __adatbázis__ __alapértelmezett__beállítását. A jelen dokumentumban szereplő példák a HDInsight alapértelmezett adatbázisát használják.
+   > Hagyja meg az __adatbázis__ __alapértelmezett__ beállítását. A jelen dokumentumban szereplő példák a HDInsight alapértelmezett adatbázisát használják.
 
 1. A lekérdezés elindításához válassza a **végrehajtás** a munkalap alatt lehetőséget. A gomb a narancssárga színűre változik, és a szöveg **leáll**.
 
@@ -125,11 +125,11 @@ A **lekérdezés** lapon igény szerint mentheti a lekérdezéseket. A lekérdez
 
 A struktúrát a felhasználó által definiált függvények (UDF) használatával is kiterjesztheti. Az UDF használatával olyan funkciót vagy logikát alkalmazhat, amely nem könnyen modellezhető a HiveQL-ben.
 
-Deklaráljon és mentsen egy UDF a kaptár nézet tetején található **UDF** lapon. Ezek a UDF a **lekérdezés-szerkesztővel**is használhatók.
+Deklaráljon és mentsen egy UDF a kaptár nézet tetején található **UDF** lapon. Ezek a UDF a **lekérdezés-szerkesztővel** is használhatók.
 
 ![Apache Hive megtekintés UDF lap megjelenítése](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
 
-Megjelenik a **UDF beszúrása** gomb a **lekérdezési szerkesztő**alján. Ez a bejegyzés a kaptár nézetben definiált UDF legördülő listáját jeleníti meg. Az UDF kiválasztásával HiveQL-utasítások adhatók hozzá a lekérdezéshez az UDF engedélyezéséhez.
+Megjelenik a **UDF beszúrása** gomb a **lekérdezési szerkesztő** alján. Ez a bejegyzés a kaptár nézetben definiált UDF legördülő listáját jeleníti meg. Az UDF kiválasztásával HiveQL-utasítások adhatók hozzá a lekérdezéshez az UDF engedélyezéséhez.
 
 Ha például egy UDF-t definiált a következő tulajdonságokkal:
 
@@ -141,7 +141,7 @@ Ha például egy UDF-t definiált a következő tulajdonságokkal:
 
 * UDF-osztálynév: com. myudfs. Awesome
 
-A **UDF beszúrása** gomb a **myudfs**nevű bejegyzést jeleníti meg, és az adott erőforráshoz definiált összes UDF számára egy másik legördülő listát. Ebben az esetben ez a **myawesomeudf**. A bejegyzés kiválasztásával hozzáadja a következőt a lekérdezés elejéhez:
+A **UDF beszúrása** gomb a **myudfs** nevű bejegyzést jeleníti meg, és az adott erőforráshoz definiált összes UDF számára egy másik legördülő listát. Ebben az esetben ez a **myawesomeudf**. A bejegyzés kiválasztásával hozzáadja a következőt a lekérdezés elejéhez:
 
 ```hiveql
 add jar /myudfs.jar;

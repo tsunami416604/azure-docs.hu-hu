@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
-ms.openlocfilehash: 17b070fea422268ec12e0ccd3357ae0549a78916
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: e803fa393d85f7f0b4849aed96356b7a4e77d83f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566265"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96000130"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding – Gyakori kérdések (GYIK)
 
@@ -108,7 +108,7 @@ A megoldások a következők:
 
 * [Megnövelheti az árképzési szintet](luis-how-to-azure-subscription.md#change-the-pricing-tier), ha nem a legmagasabb szintű szinten van.
 * Ha a használat meghaladja a legmagasabb szintű díjszabást, vegyen fel további Language Understanding erőforrásokat egy terheléselosztó elé. A Kubernetes vagy Docker-összeállítással rendelkező [Language Understanding-tároló](luis-container-howto.md) segíthet ennek elvégzésében.
-* Az ügyfélalkalmazás kérelmeit megadhatja az [újrapróbálkozási szabályzattal](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) , amelyet Ön saját maga is végrehajthat, amikor megkapja ezt az állapotkódot.
+* Az ügyfélalkalmazás kérelmeit megadhatja az [újrapróbálkozási szabályzattal](/azure/architecture/best-practices/transient-faults#general-guidelines) , amelyet Ön saját maga is végrehajthat, amikor megkapja ezt az állapotkódot.
 
 ### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>A végponti lekérdezés nem várt eredményt adott vissza. Mit tegyek?
 
@@ -278,7 +278,7 @@ Ha a Azure Bot Service használja, és a probléma az, hogy a **webes csevegésb
 1. Nyissa meg az online Kódszerkesztő alkalmazást.
 1. A felső, kék navigációs sávban válassza ki a robot nevét (a második elem jobbra).
 1. Az eredményül kapott legördülő listában válassza a **kudu-konzol megnyitása** lehetőséget.
-1. Válassza ki a **LogFiles** elemet, majd válassza az **alkalmazás** lehetőséget. Tekintse át az összes naplófájlt. Ha nem látja a hibát az alkalmazás mappájában, tekintse át az összes naplófájlt a **LogFiles (naplófájlok** ) területen.
+1. Válassza ki a **LogFiles** elemet, majd válassza az **alkalmazás** lehetőséget. Tekintse át az összes naplófájlt. Ha nem látja a hibát az alkalmazás mappájában, tekintse át az összes naplófájlt a **LogFiles (naplófájlok**) területen.
 1. Ne felejtse el újraépíteni a projektet, ha olyan lefordított nyelvet használ, mint például a C#.
 
 > [!Tip]
@@ -286,7 +286,7 @@ Ha a Azure Bot Service használja, és a probléma az, hogy a **webes csevegésb
 
 #### <a name="resolve-issue-while-debugging-on-local-machine-with-bot-framework"></a>Probléma megoldása a helyi gépen a bot Framework-mel való hibakeresés során.
 
-Ha többet szeretne megtudni a robot helyi hibakereséséről, olvassa el [a robot hibakeresése](https://docs.microsoft.com/azure/bot-service/bot-service-debug-bot?view=azure-bot-service-4.0)című témakört.
+Ha többet szeretne megtudni a robot helyi hibakereséséről, olvassa el [a robot hibakeresése](/azure/bot-service/bot-service-debug-bot?view=azure-bot-service-4.0)című témakört.
 
 ## <a name="integrating-luis"></a>A LUIS integrálása
 
@@ -296,7 +296,7 @@ Ha kijelöl egy LUIS-sablont, majd kiválasztja a **kiválasztás** gombot a sab
 ![LUIS-sablon webalkalmazásának bot-régiója](./media/luis-faq/web-app-bot-location.png)
 
 ### <a name="what-luis-regions-support-bot-framework-speech-priming"></a>Milyen LUIS-régiók támogatják a bot Framework Speech alapozót?
-A [beszédfelismerési](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming) alapszolgáltatások csak a Central (US) példányban található Luis-alkalmazásokhoz támogatottak.
+A [beszédfelismerési](/bot-framework/bot-service-manage-speech-priming) alapszolgáltatások csak a Central (US) példányban található Luis-alkalmazásokhoz támogatottak.
 
 ## <a name="api-programming-strategies"></a>API programozási stratégiák
 
@@ -330,8 +330,8 @@ Videók:
 
 * [Az Azure társalgási AI használata az üzlet méretezésére a következő generáció számára](https://www.youtube.com/watch?v=_k97jd-csuk&feature=youtu.be)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A LUIS-vel kapcsolatos további tudnivalókért tekintse meg a következő forrásokat:
 * [A LUIS-mel kapcsolatos kérdések Stack Overflow](https://stackoverflow.com/questions/tagged/luis)
-* [Microsoft Q&az MSDN Language Understanding intelligens szolgáltatások (LUIS) kérdésének oldalát](https://docs.microsoft.com/answers/topics/azure-language-understanding.html)
+* [Microsoft Q&az MSDN Language Understanding intelligens szolgáltatások (LUIS) kérdésének oldalát](/answers/topics/azure-language-understanding.html)

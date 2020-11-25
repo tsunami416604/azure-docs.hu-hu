@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1138a970bf7c52182f13d0fd14d0178a2d0cfeba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93a3adf00203e317be912e3e72de7a3f7ca666c6
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88918791"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96001096"
 ---
 # <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>A beszédfelismerés céljainak felismerése a C Speech SDK használatával #
 
-A Cognitive Services [SPEECH SDK](speech-sdk.md) a [Language Understanding szolgáltatással (Luis)](https://www.luis.ai/home) integrálódik a **szándék-felismerés**biztosításához. A szándék az, amit a felhasználó tenni szeretne: például repülőutat foglalni, megnézni az időjárást vagy telefonhívást indítani. A felhasználó bármilyen kifejezést használhat, amely számára természetes. A Machine learning használatával a LUIS leképezi a felhasználói kéréseket a definiált szándékokra.
+A Cognitive Services [SPEECH SDK](speech-sdk.md) a [Language Understanding szolgáltatással (Luis)](https://www.luis.ai/home) integrálódik a **szándék-felismerés** biztosításához. A szándék az, amit a felhasználó tenni szeretne: például repülőutat foglalni, megnézni az időjárást vagy telefonhívást indítani. A felhasználó bármilyen kifejezést használhat, amely számára természetes. A Machine learning használatával a LUIS leképezi a felhasználói kéréseket a definiált szándékokra.
 
 > [!NOTE]
 > A LUIS alkalmazás meghatározza a felismerni kívánt szándékokat és entitásokat. Az alkalmazás elkülönül a Speech Service szolgáltatást használó C#-alkalmazástól. Ebben a cikkben az „app” program kifejezés a LUIS-alkalmazásra, az „alkalmazás” kifejezés pedig a C#-kódra utal.
@@ -55,7 +55,7 @@ A LUIS háromféle kulcsot használ:
 | Kezdő   | Lehetővé teszi a LUIS-alkalmazás tesztelését csak szöveg használatával   |
 | Végpont  | Engedélyezi a hozzáférést egy adott LUIS-alkalmazáshoz            |
 
-Ebben az útmutatóban a végponti kulcs típusát kell megadnia. Ez az útmutató a példaként szolgáló Home Automation LUIS alkalmazást használja, amelyet az [előre elkészített Home Automation-alkalmazás használatának](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) első lépésein hozhat létre. Ha saját LUIS-alkalmazást hozott létre, azt használhatja helyette.
+Ebben az útmutatóban a végponti kulcs típusát kell megadnia. Ez az útmutató a példaként szolgáló Home Automation LUIS alkalmazást használja, amelyet az [előre elkészített Home Automation-alkalmazás használatának](../luis/luis-get-started-create-app.md) első lépésein hozhat létre. Ha saját LUIS-alkalmazást hozott létre, azt használhatja helyette.
 
 LUIS-alkalmazás létrehozásakor a LUIS automatikusan létrehoz egy alapszintű kulcsot, amellyel szöveges lekérdezések használatával tesztelheti az alkalmazást. Ez a kulcs nem engedélyezi a beszédfelismerési szolgáltatás integrációját, és nem fog működni ezzel az útmutatóval. Hozzon létre egy LUIS-erőforrást az Azure irányítópulton, és rendelje hozzá a LUIS alkalmazáshoz. Ehhez az útmutatóhoz használhatja az ingyenes előfizetési szintet.
 
@@ -65,12 +65,12 @@ Miután létrehozta a LUIS-erőforrást az Azure-irányítópulton, jelentkezzen
 
 A **kulcsok és végpont beállításai** lapon:
 
-1. Görgessen le az **erőforrások és kulcsok** szakaszhoz, majd válassza az **erőforrás kiosztása**elemet.
+1. Görgessen le az **erőforrások és kulcsok** szakaszhoz, majd válassza az **erőforrás kiosztása** elemet.
 1. A **kulcs kiosztása az alkalmazáshoz** párbeszédpanelen végezze el a következő módosításokat:
 
-   - A **bérlő**területen válassza a **Microsoft**lehetőséget.
-   - Az **előfizetés neve**területen válassza ki azt az Azure-előfizetést, amely a használni kívánt Luis-erőforrást tartalmazza.
-   - A **kulcs**alatt válassza ki az alkalmazással használni kívánt Luis-erőforrást.
+   - A **bérlő** területen válassza a **Microsoft** lehetőséget.
+   - Az **előfizetés neve** területen válassza ki azt az Azure-előfizetést, amely a használni kívánt Luis-erőforrást tartalmazza.
+   - A **kulcs** alatt válassza ki az alkalmazással használni kívánt Luis-erőforrást.
 
    Az új előfizetés hamarosan megjelenik a lap alján található táblázatban.
 
@@ -86,7 +86,7 @@ A **kulcsok és végpont beállításai** lapon:
 
 Ezután adja hozzá a projekthez egy kódot.
 
-1. A **megoldáskezelő**nyissa meg a **program.cs**fájlt.
+1. A **megoldáskezelő** nyissa meg a **program.cs** fájlt.
 
 1. Cserélje le az utasítások blokkját a `using` fájl elejére a következő deklarációkkal:
 
@@ -119,7 +119,7 @@ Ezután adja hozzá a projekthez egy kódot.
 
    | Helyőrző | Csere erre |
    | ----------- | ------------ |
-   | `YourLanguageUnderstandingSubscriptionKey` | A LUIS végpontkulcsa. Ezt az elemet újra be kell szereznie az Azure-irányítópultról, nem pedig "kezdő kulcs". A [Luis portálon](https://www.luis.ai/home)megtalálhatja az alkalmazás **kulcsai és végpontok** lapján (a **kezelés**alatt). |
+   | `YourLanguageUnderstandingSubscriptionKey` | A LUIS végpontkulcsa. Ezt az elemet újra be kell szereznie az Azure-irányítópultról, nem pedig "kezdő kulcs". A [Luis portálon](https://www.luis.ai/home)megtalálhatja az alkalmazás **kulcsai és végpontok** lapján (a **kezelés** alatt). |
    | `YourLanguageUnderstandingServiceRegion` | Annak a régiónak a rövid azonosítója, amelyben a LUIS-előfizetése van, például az USA nyugati régiója esetén `westus`. Lásd: [Régiók](regions.md). |
    | `YourLanguageUnderstandingAppId` | A LUIS-app azonosítója. A [Luis portálon](https://www.luis.ai/home)megtalálhatja az alkalmazás **Beállítások** lapján. |
 
@@ -198,7 +198,7 @@ Ha például a "fények kikapcsolása", a pause, majd a "fények bekapcsolása" 
 [!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 Keresse meg a kódot ebből a cikkből a **Samples/csharp/sharedcontent/Console** mappában.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Gyors útmutató: beszéd felismerése mikrofonból](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)
+> [Gyors útmutató: beszéd felismerése mikrofonból](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnetcore)

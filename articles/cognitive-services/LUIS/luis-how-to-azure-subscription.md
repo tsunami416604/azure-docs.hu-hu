@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 07a274bd4ac227b6260f7891b24dad0eacdfb4f7
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: a71c1a0df1a72e3831fa54a041539f62b38a0aca
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561529"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95999909"
 ---
 # <a name="create-luis-resources"></a>LUIS-erőforrások létrehozása
 
@@ -29,8 +29,8 @@ A LUIS három típusú Azure-erőforrást és egy nem Azure-erőforrást is lehe
 
 |Erőforrás|Rendeltetés|Kognitív szolgáltatás `kind`|Kognitív szolgáltatás `type`|
 |--|--|--|--|
-|Erőforrás létrehozása|Lehetővé teszi az alkalmazások létrehozását, kezelését, betanítását, tesztelését és közzétételét. [Hozzon létre egy Luis authoring-erőforrást](luis-how-to-azure-subscription.md#create-luis-resources-in-the-azure-portal) , ha a Luis-alkalmazásokat programozott módon vagy a Luis-portálon szeretné létrehozni. [Telepítenie kell a Luis-fiókját](luis-migration-authoring.md#what-is-migration) , mielőtt összekapcsolja az Azure authoring-erőforrásait az alkalmazásával. A szerzői erőforrás engedélyeit a [közreműködő szerepkörrel](#contributions-from-other-authors)rendelkező személyek hozzárendelésével szabályozhatja. <br><br> A LUIS authoring Resource egyik szintje elérhető:<br> <ul> <li>**Ingyenes F0 authoring Resource** , amely 1 000 000 ingyenes szerzői tranzakciókat és 1 000 ingyenes tesztelési előrejelzési végpontot biztosít havonta. |`LUIS.Authoring`|`Cognitive Services`|
-|Előrejelzési erőforrás| A LUIS-alkalmazás közzététele után az előrejelzési erőforrás/kulcs használatával kérdezheti le az előrejelzési végpontok kéréseit. Hozzon létre egy LUIS-előrejelzési erőforrást, mielőtt az ügyfélalkalmazás a szerzői vagy kezdő erőforrás által biztosított 1 000-kérelmeken kívüli előrejelzéseket kér. <br><br> Az előrejelzési erőforráshoz két szint érhető el:<br><ul> <li> **Ingyenes F0 előrejelzési erőforrás** , amely 10 000 ingyenes előrejelzési végpontot biztosít havonta.<br> <li> **Standard S0 előrejelzési erőforrás** , amely a fizetős szint. [További információ a díjszabásról.](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
+|Erőforrás létrehozása|Lehetővé teszi az alkalmazások létrehozását, kezelését, betanítását, tesztelését és közzétételét. [Hozzon létre egy Luis authoring-erőforrást](luis-how-to-azure-subscription.md#create-luis-resources-in-the-azure-portal) , ha a Luis-alkalmazásokat programozott módon vagy a Luis-portálon szeretné létrehozni. [Telepítenie kell a Luis-fiókját](luis-migration-authoring.md#what-is-migration) , mielőtt összekapcsolja az Azure authoring-erőforrásait az alkalmazásával. A szerzői erőforrás engedélyeit a [közreműködő szerepkörrel](#contributions-from-other-authors)rendelkező személyek hozzárendelésével szabályozhatja. <br><br> A LUIS authoring Resource egyik szintje elérhető:<br> <ul> <li>**Ingyenes F0 authoring Resource**, amely 1 000 000 ingyenes szerzői tranzakciókat és 1 000 ingyenes tesztelési előrejelzési végpontot biztosít havonta. |`LUIS.Authoring`|`Cognitive Services`|
+|Előrejelzési erőforrás| A LUIS-alkalmazás közzététele után az előrejelzési erőforrás/kulcs használatával kérdezheti le az előrejelzési végpontok kéréseit. Hozzon létre egy LUIS-előrejelzési erőforrást, mielőtt az ügyfélalkalmazás a szerzői vagy kezdő erőforrás által biztosított 1 000-kérelmeken kívüli előrejelzéseket kér. <br><br> Az előrejelzési erőforráshoz két szint érhető el:<br><ul> <li> **Ingyenes F0 előrejelzési erőforrás**, amely 10 000 ingyenes előrejelzési végpontot biztosít havonta.<br> <li> **Standard S0 előrejelzési erőforrás**, amely a fizetős szint. [További információ a díjszabásról.](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/)|`LUIS`|`Cognitive Services`|
 |Kezdő/próbaverziós erőforrás|Lehetővé teszi az alkalmazások létrehozását, kezelését, betanítását, tesztelését és közzétételét. Ez az erőforrás alapértelmezés szerint jön létre, ha az alapszintű erőforrás lehetőséget választja, amikor először bejelentkezik a LUIS-be. Az alapszintű kulcs végül elavulttá válik. Minden LUIS felhasználónak [át kell telepítenie a fiókját](luis-migration-authoring.md#what-is-migration) , és hozzá kell kapcsolnia a Luis-alkalmazásait egy authoring-erőforráshoz. A szerzői erőforrástól eltérően ez az erőforrás nem ad Önnek engedélyeket az Azure szerepköralapú hozzáférés-vezérléséhez. <br><br> A szerzői erőforráshoz hasonlóan a kezdő erőforrás 1 000 000 ingyenes szerzői tranzakciókat és a 1 000 ingyenes tesztelési végponti kéréseket biztosít.|-|Nem Azure-erőforrás.|
 |[Cognitive Services több szolgáltatásból származó erőforrás kulcsa](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|A lekérdezés előrejelzési végpontjának kérelmei megosztva a LUIS és más támogatott kognitív szolgáltatásokkal.|`CognitiveServices`|`Cognitive Services`|
 
@@ -176,7 +176,7 @@ Megadhatja, hogy ki láthatja a LUIS előrejelzési futtatókörnyezet végpontj
 
 ### <a name="create-resources-in-the-azure-cli"></a>Erőforrások létrehozása az Azure CLI-ben
 
-Az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) használatával egyenként hozhatja létre az erőforrásokat.
+Az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) használatával egyenként hozhatja létre az erőforrásokat.
 
 Erőforrás `kind` :
 
@@ -224,7 +224,7 @@ Létrehozhat egy authoring-erőforrást egyetlen alkalmazáshoz vagy a LUIS öss
 Ezzel az eljárással hozhat létre szerzői vagy előrejelzési erőforrásokat, vagy hozzárendelhet egyet egy alkalmazáshoz: 
 
 1. Jelentkezzen be a [Luis portálra](https://www.luis.ai). Válasszon ki egy alkalmazást a **saját alkalmazások** listából.
-1. Ugrás az Azure-erőforrások **kezeléséhez**  >  **Azure Resources** :
+1. Ugrás az Azure-erőforrások **kezeléséhez**  >  **Azure Resources**:
 
     ![Képernyőkép, amely az Azure-erőforrások oldalt jeleníti meg.](./media/luis-how-to-azure-subscription/manage-azure-resources-prediction.png)
 
@@ -319,7 +319,7 @@ Ha tudni szeretné, hogy mikor ér el egy bizonyos tranzakciós küszöbértéke
 
 Adjon hozzá egy metrikai riasztást a **hívások teljes** metrikája számára egy adott időtartamra vonatkozóan. Adja meg az összes olyan személy e-mail-címét, akik számára meg kell kapnia a riasztást. A riasztást fogadó összes rendszerhez adjon hozzá webhookokat. Egy logikai alkalmazást is futtathat a riasztás elindítása után.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Megtudhatja [, hogyan használhatja a verzióit](luis-how-to-manage-versions.md) az alkalmazás életciklusának szabályozására.
 * Migrálás az új [szerzői erőforrásba](luis-migration-authoring.md).

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 08/30/2019
 ms.author: wolfma
 ms.openlocfilehash: c7332177795a45331749225e0f3dc3856e28a6a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "71327064"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001097"
 ---
 A Windows-fejlesztéshez készült Visual Studio-projekt létrehozásához létre kell hoznia a projektet, be kell állítania a Visual studiót a .NET Desktop-fejlesztéshez, telepítenie kell a Speech SDK-t, és ki kell választania a cél architektúrát.
 
@@ -19,13 +19,13 @@ A kezdéshez hozza létre a projektet a Visual Studióban, és győződjön meg 
 
 1. Nyissa meg a Visual Studio 2019 alkalmazást.
 
-1. A Start ablakban válassza az **új projekt létrehozása**lehetőséget. 
+1. A Start ablakban válassza az **új projekt létrehozása** lehetőséget. 
 
-1. Az **új projekt létrehozása** ablakban válassza a **Console app (.NET-keretrendszer)** lehetőséget, majd kattintson a **tovább**gombra.
+1. Az **új projekt létrehozása** ablakban válassza a **Console app (.NET-keretrendszer)** lehetőséget, majd kattintson a **tovább** gombra.
 
-1. Az **új projekt konfigurálása** ablakban írja be a *HelloWorld* nevet a **projekt neve**mezőbe, válassza ki vagy hozza létre a könyvtár elérési útját a **helyen**, majd válassza a **Létrehozás**lehetőséget.
+1. Az **új projekt konfigurálása** ablakban írja be a *HelloWorld* nevet a **projekt neve** mezőbe, válassza ki vagy hozza létre a könyvtár elérési útját a **helyen**, majd válassza a **Létrehozás** lehetőséget.
 
-1. A Visual Studio menüsávban válassza az **eszközök**  >  **beolvasása eszközök és szolgáltatások**elemet, amely megnyitja a Visual Studio telepítőjét, és megjeleníti a **módosítás** párbeszédpanelt.
+1. A Visual Studio menüsávban válassza az **eszközök**  >  **beolvasása eszközök és szolgáltatások** elemet, amely megnyitja a Visual Studio telepítőjét, és megjeleníti a **módosítás** párbeszédpanelt.
 
 1. Győződjön meg arról, hogy elérhető-e a **.net Desktop fejlesztői** munkaterhelése. Ha a munkaterhelés még nincs telepítve, jelölje be a jelölőnégyzetet, majd kattintson a **módosítás** gombra a telepítés elindításához. A letöltése és telepítése néhány percet is igénybe vehet.
 
@@ -45,7 +45,7 @@ A következő lépés a [SPEECH SDK NuGet-csomag](https://aka.ms/csspeech/nuget)
 
 1. A jobb felső sarokban keresse meg a **csomag forrása** legördülő listát, és ellenőrizze, hogy a **nuget.org** van-e kiválasztva.
 
-1. A bal felső sarokban válassza a **Tallózás**lehetőséget.
+1. A bal felső sarokban válassza a **Tallózás** lehetőséget.
 
 1. A keresőmezőbe írja be a *Microsoft. CognitiveServices. Speech* kifejezést, és válassza az **ENTER billentyűt**.
 
@@ -61,14 +61,14 @@ A következő lépés a [SPEECH SDK NuGet-csomag](https://aka.ms/csspeech/nuget)
 
 A konzol alkalmazás létrehozásához és futtatásához hozzon létre egy, a számítógép architektúrájának megfelelő platform-konfigurációt.
 
-1. A menüsávban válassza a **Build**  >  **Configuration Manager**elemet. Megjelenik a **Configuration Manager** párbeszédpanel.
+1. A menüsávban válassza a **Build**  >  **Configuration Manager** elemet. Megjelenik a **Configuration Manager** párbeszédpanel.
 
    ![Configuration Manager párbeszédpanel](../articles/cognitive-services/speech-service/media/sdk/vs-configuration-manager-dialog-box.png)
 
-1. Az **aktív megoldási platform** legördülő listában válassza az **új**lehetőséget. Megjelenik az **új megoldás-platform** párbeszédpanel.
+1. Az **aktív megoldási platform** legördülő listában válassza az **új** lehetőséget. Megjelenik az **új megoldás-platform** párbeszédpanel.
 
 1. A **típus vagy a válassza ki az új platform** legördülő listát:
-   - Ha 64 bites Windows rendszert futtat, válassza az **x64**elemet.
-   - Ha 32 bites Windows rendszert futtat, válassza az **x86**lehetőséget.
+   - Ha 64 bites Windows rendszert futtat, válassza az **x64** elemet.
+   - Ha 32 bites Windows rendszert futtat, válassza az **x86** lehetőséget.
 
-1. Válassza **az OK** , majd a **Bezárás**lehetőséget.
+1. Válassza **az OK** , majd a **Bezárás** lehetőséget.

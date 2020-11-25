@@ -4,11 +4,11 @@ description: A Azure Functions OpenAPI-támogatásának áttekintése
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.openlocfilehash: 499d4f685e3802fcc37c8a3050ae367207f192d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87385823"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000205"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>OpenAPI 2,0 metaadat-támogatás a Azure Functionsban (előzetes verzió)
 A OpenAPI 2,0 (korábban hencegés) metaadatainak támogatása Azure Functions egy előzetes funkció, amellyel OpenAPI 2,0-definíciót írhat a Function alkalmazásban. Ezt a fájlt ezután a Function alkalmazás használatával futtathatja.
@@ -24,7 +24,7 @@ A [OpenAPI-metaadatok](https://swagger.io/) lehetővé teszik, hogy egy olyan f�
 >Javasoljuk, hogy kezdje a [kezdeti lépéseket ismertető oktatóanyaggal](./functions-openapi-definition.md) , majd térjen vissza ehhez a dokumentumhoz, és tudjon meg többet az egyes funkciókról.
 
 ## <a name="enable-openapi-definition-support"></a><a name="enable"></a>OpenAPI-definíció támogatásának engedélyezése
-A Function app **platform funkcióinak**API- **definíciós** lapján az összes OpenAPI beállításait konfigurálhatja.
+A Function app **platform funkcióinak** API- **definíciós** lapján az összes OpenAPI beállításait konfigurálhatja.
 
 > [!NOTE]
 > A függvény API-definíciós funkciója jelenleg nem támogatott a bétaverziós futtatókörnyezet esetében.

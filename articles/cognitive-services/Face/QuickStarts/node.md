@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: f77282502a0032a5b1811e32d9aa47d9b4ede569
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: a245dae4405706c37b3c142963d325925d089830
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912820"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96001439"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>Rövid útmutató: az arcok észlelése egy képpel a Face REST API és Node.js használatával
 
@@ -34,7 +34,7 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 ## <a name="set-up-the-node-environment"></a>A csomópont-környezet beállítása
 
-Nyissa meg azt a mappát, amelyben létre szeretné hozni a projektet, és hozzon létre egy új fájlt, *facedetection.js* . Ezután telepítse a `axios` modult a projektbe. Ez lehetővé teszi a parancsfájlok számára a HTTP-kérések elvégzését.
+Nyissa meg azt a mappát, amelyben létre szeretné hozni a projektet, és hozzon létre egy új fájlt, *facedetection.js*. Ezután telepítse a `axios` modult a projektbe. Ez lehetővé teszi a parancsfájlok számára a HTTP-kérések elvégzését.
 
 ```shell
 npm install axios --save
@@ -42,7 +42,7 @@ npm install axios --save
 
 ## <a name="write-the-nodejs-script"></a>A Node.js parancsfájl írása
 
-Illessze be a következő kódot a *facedetection.jsba* . Ezek a mezők határozzák meg, hogyan csatlakozhat a Face szolgáltatáshoz, és honnan szerezhető be a bemeneti adatok. [Hozzon létre környezeti változókat](../../cognitive-services-apis-create-account.md?tabs=multiservice%252cwindows#configure-an-environment-variable-for-authentication) , és adja hozzá a Face előfizetés kulcsát és végpontját. Előfordulhat, hogy módosítani szeretné a `imageUrl` mezőt úgy, hogy a saját bemeneti képére mutasson.
+Illessze be a következő kódot a *facedetection.jsba*. Ezek a mezők határozzák meg, hogyan csatlakozhat a Face szolgáltatáshoz, és honnan szerezhető be a bemeneti adatok. [Hozzon létre környezeti változókat](../../cognitive-services-apis-create-account.md?tabs=multiservice%252cwindows#configure-an-environment-variable-for-authentication) , és adja hozzá a Face előfizetés kulcsát és végpontját. Előfordulhat, hogy módosítani szeretné a `imageUrl` mezőt úgy, hogy a saját bemeneti képére mutasson.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -60,7 +60,7 @@ A módosítások elvégzése után nyisson meg egy parancssort, és futtassa a f
 node facedetection.js
 ```
 
-A sikeres válasz egy könnyen olvasható JSON formátumban jeleníti meg az Arcfelismerés. Példa:
+A sikeres válasz egy könnyen olvasható JSON formátumban jeleníti meg az Arcfelismerés. Például:
 
 ```json
 [
@@ -88,7 +88,7 @@ A Face attribútumok kinyeréséhez használja az 1. észlelési modellt, és ad
     },
 ```
 
-A válasz mostantól a Face attribútumokat is tartalmazza. Példa:
+A válasz mostantól a Face attribútumokat is tartalmazza. Például:
 
 ```json
 [
@@ -269,9 +269,9 @@ A válasz mostantól a Face attribútumokat is tartalmazza. Példa:
 ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban egy Node.js parancsfájlt írt, amely meghívja az Azure Face Service-t, hogy felderítse az arcokat egy képben, és visszaadja az attribútumokat. További információért olvassa el a Face API dokumentációját.
 
 > [!div class="nextstepaction"]
-> [Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
+> [Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) 

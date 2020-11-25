@@ -6,11 +6,11 @@ ms.subservice: process-automation
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.openlocfilehash: 2f1c703f2bd2e90e15c566b7e04e8a878c16f6de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91772821"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001269"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Runbookok futtatása hibrid runbook-feldolgozón
 
@@ -86,16 +86,16 @@ A következő eljárással adhatja meg a futtató fiókot egy hibrid Runbook Wor
 
 1. Hozzon létre egy [hitelesítő eszközt](./shared-resources/credentials.md) a helyi erőforrásokhoz való hozzáféréssel.
 2. Nyissa meg az Automation-fiókot a Azure Portal.
-3. Válassza a **hibrid feldolgozói csoportok**lehetőséget, majd válassza ki az adott csoportot.
-4. Válassza a **minden beállítás**elemet, majd a **hibrid feldolgozói csoport beállításait**.
-5. Módosítsa a **Futtatás** **alapértelmezett** értékét az **Egyéni**értékre.
-6. Válassza ki a hitelesítő adatokat, majd kattintson a **Mentés**gombra.
+3. Válassza a **hibrid feldolgozói csoportok** lehetőséget, majd válassza ki az adott csoportot.
+4. Válassza a **minden beállítás** elemet, majd a **hibrid feldolgozói csoport beállításait**.
+5. Módosítsa a **Futtatás** **alapértelmezett** értékét az **Egyéni** értékre.
+6. Válassza ki a hitelesítő adatokat, majd kattintson a **Mentés** gombra.
 
 ## <a name="install-run-as-account-certificate"></a><a name="runas-script"></a>Futtató fiók tanúsítványának telepítése
 
 Az erőforrások Azure-ban való üzembe helyezéséhez szükséges automatizált felépítési folyamat részeként szükség lehet a helyszíni rendszerekhez való hozzáférésre, hogy támogassa a feladatait vagy lépéseit a telepítési sorozatban. Ha a futtató fiók használatával szeretne hitelesítést biztosítani az Azure-ban, telepítenie kell a futtató fiók tanúsítványát.
 
-A következő PowerShell-runbook, az **export-RunAsCertificateToHybridWorker néven exportálja**a futtató tanúsítványt a Azure Automation-fiókjából. A runbook letölti és importálja a tanúsítványt a helyi számítógép tanúsítványtárolójában egy olyan hibrid Runbook-feldolgozón, amely ugyanahhoz a fiókhoz csatlakozik. Miután befejezte ezt a lépést, a runbook ellenőrzi, hogy a feldolgozó sikeresen tud-e hitelesíteni az Azure-ban a futtató fiók használatával.
+A következő PowerShell-runbook, az **export-RunAsCertificateToHybridWorker néven exportálja** a futtató tanúsítványt a Azure Automation-fiókjából. A runbook letölti és importálja a tanúsítványt a helyi számítógép tanúsítványtárolójában egy olyan hibrid Runbook-feldolgozón, amely ugyanahhoz a fiókhoz csatlakozik. Miután befejezte ezt a lépést, a runbook ellenőrzi, hogy a feldolgozó sikeresen tud-e hitelesíteni az Azure-ban a futtató fiók használatával.
 
 >[!NOTE]
 >Ez a PowerShell-runbook nem úgy van kialakítva, hogy az Automation-fiókon kívül fusson a célszámítógépen.
@@ -263,7 +263,7 @@ A GPG kulcstartó és a kulcspár létrehozásához használja a hibrid Runbook 
     sudo su – nxautomation
     ```
 
-2. A **nxautomation**használata után létrehozza a GPG-kulcspárt. A GPG végigvezeti Önt a lépéseken. Meg kell adnia a nevet, az e-mail-címet, a lejárati időt és a hozzáférési kódot. Ezután várjon, amíg nincs elég entrópia a gépen a kulcs generálásához.
+2. A **nxautomation** használata után létrehozza a GPG-kulcspárt. A GPG végigvezeti Önt a lépéseken. Meg kell adnia a nevet, az e-mail-címet, a lejárati időt és a hozzáférési kódot. Ezután várjon, amíg nincs elég entrópia a gépen a kulcs generálásához.
 
     ```bash
     sudo gpg --generate-key
@@ -299,7 +299,7 @@ Miután konfigurálta az aláírás-ellenőrzést, a következő GPG-paranccsal 
 gpg –-clear-sign <runbook name>
 ```
 
-Az aláírt runbook neve ** <runbook name> . ASC**.
+Az aláírt runbook neve **<runbook name> . ASC**.
 
 Most már feltöltheti az aláírt runbook Azure Automation, és végrehajthatja, mint egy normál runbook.
 
@@ -307,7 +307,7 @@ Most már feltöltheti az aláírt runbook Azure Automation, és végrehajthatja
 
 [Runbook elindítása Azure Automation](start-runbooks.md) ismerteti a runbook indításának különböző módszereit. A hibrid Runbook-feldolgozók runbook indítása olyan **futtatási** lehetőséget használ, amely lehetővé teszi a hibrid runbook-feldolgozói csoport nevének megadását. Ha meg van adva egy csoport, a csoport egyik feldolgozója kéri le és futtatja a runbook. Ha a runbook nem adja meg ezt a beállítást, Azure Automation a szokásos módon futtatja a runbook.
 
-Amikor elindít egy runbook a Azure Portalban, megjelenik a **Futtatás** lehetőség, amelyen kiválaszthatja az **Azure** -t vagy a **hibrid feldolgozót**. Ha a **hibrid feldolgozót**választja, kiválaszthatja a hibrid Runbook Worker csoportot egy legördülő listából.
+Amikor elindít egy runbook a Azure Portalban, megjelenik a **Futtatás** lehetőség, amelyen kiválaszthatja az **Azure** -t vagy a **hibrid feldolgozót**. Ha a **hibrid feldolgozót** választja, kiválaszthatja a hibrid Runbook Worker csoportot egy legördülő listából.
 
 Amikor a PowerShell használatával indítja el a runbook, használja a `RunOn` paramétert a [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) parancsmaggal. Az alábbi példa a Windows PowerShell használatával indítja el a **test-runbook** nevű Runbook egy MyHybridGroup nevű hibrid runbook Worker csoporton.
 
@@ -323,7 +323,7 @@ A hibrid runbook-feldolgozón futó runbookok kapcsolatos problémák elhárít�
 
 * Linux rendszeren a felhasználó hibrid feldolgozói naplókat talál a következő helyen: `/home/nxautomation/run/worker.log` , és a System runbook Worker naplói a következő címen találhatók: `/var/opt/microsoft/omsagent/run/automationworker/worker.log` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha a runbookok nem fejeződik be sikeresen, tekintse át a [runbook-végrehajtási hibák](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails)hibaelhárítási útmutatóját.
 * További információ a PowerShellről, beleértve a nyelvi referenciákat és a tanulási modulokat is: [PowerShell-dokumentumok](/powershell/scripting/overview).

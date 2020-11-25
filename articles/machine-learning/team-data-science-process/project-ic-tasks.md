@@ -11,11 +11,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4ecb5fef9c9b14bde72de29a45e29d7e16131bd1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321913"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000997"
 ---
 # <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>A csoportos adatelemzési folyamat egyes közreműködői által feldolgozható feladatok
 
@@ -55,7 +55,7 @@ A Tárházak klónozása és a tartalom módosítása a helyi gépen vagy DSVM, 
 
 Ha helyileg kívánja dolgozni a tárházait, és a változtatásokat a megosztott csapat és a projekt adattárházában küldi el, először másolja vagy *klónozottan* másolja a tárházat a helyi gépre. 
 
-1. Az Azure DevOps nyissa meg a csapat projekt-összefoglalás oldalát *https: \/ / \<server name> / \<organization name> / \<team name>* , például **https: \/ /dev.Azure.com/DataScienceUnit/MyTeam**.
+1. Az Azure DevOps nyissa meg a csapat projekt-összefoglalás oldalát *https: \/ / \<server name> / \<organization name> / \<team name>*, például **https: \/ /dev.Azure.com/DataScienceUnit/MyTeam**.
    
 1. Válassza a **repók** lehetőséget a bal oldali navigációs menüben, majd az oldal tetején válassza ki a klónozott tárházat.
    
@@ -96,7 +96,7 @@ Ha helyileg kívánja dolgozni a tárházait, és a változtatásokat a megoszto
 
 Ha a csapata vagy projektje megosztott eszközöket tartalmaz az Azure file Storage-ban, csatlakoztassa a file Storage-t a helyi géphez vagy DSVM. Kövesse az [Azure file Storage csatlakoztatása a helyi gépen vagy DSVM](team-lead-tasks.md#mount-azure-file-storage-on-your-local-machine-or-dsvm)című témakör utasításait.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbiakban a csoportos adatelemzési folyamat által meghatározott egyéb szerepkörök és feladatok részletes ismertetésére talál hivatkozásokat:
 

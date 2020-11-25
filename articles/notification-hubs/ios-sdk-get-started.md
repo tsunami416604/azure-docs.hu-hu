@@ -9,11 +9,11 @@ ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
 ms.openlocfilehash: c920c9b3b28df7f5bf3bf169ef88ab967f23649e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085377"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001320"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Oktatóanyag: leküldéses értesítések küldése iOS-alkalmazásokba az Azure Notification Hubs használatával
 
@@ -51,22 +51,22 @@ A tanúsítvány-aláírási kérelem (CSR) fájljának létrehozása, amelyet a
 
 1. Futtassa a Kulcskarika-elérés eszközt Mac számítógépén. Megnyitható a **segédprogramok** mappából vagy a Kezdőpanel **másik** mappájából is.
 
-2. Válassza a **kulcstartó-hozzáférés** , majd a **tanúsítvány** kibontása elemet, majd válassza **a tanúsítvány kérése a** hitelesítésszolgáltatótól lehetőséget.
+2. Válassza a **kulcstartó-hozzáférés**, majd a **tanúsítvány** kibontása elemet, majd válassza **a tanúsítvány kérése a** hitelesítésszolgáltatótól lehetőséget.
 
    :::image type="content" source="media/ios-sdk-get-started/image1.png" alt-text="Képernyőfelvétel: a tanúsítvány kérése a hitelesítésszolgáltató menüjéből.":::
 
    > [!NOTE]
    > Alapértelmezés szerint a kulcstartó-hozzáférés kiválasztja a lista első elemét. Ez akkor lehet probléma, ha a **tanúsítványok** kategória és az **Apple Worldwide fejlesztői kapcsolatok hitelesítésszolgáltatója** nem a lista első eleme. Győződjön meg arról, hogy rendelkezik egy nem kulcsfontosságú elemmel, vagy az **Apple Worldwide fejlesztői kapcsolatok hitelesítésszolgáltató** kulcs van kiválasztva a CSR (tanúsítvány-aláírási kérelem) létrehozása előtt.
 
-3. Válassza ki a **felhasználói e-mail-címét** , írja be a **köznapi név** értékét, győződjön meg róla, hogy a **lemezre mentve** van, majd válassza a **Folytatás** lehetőséget. Hagyja üresen a **CA e-mail-címét** , mert nincs rá szükség.
+3. Válassza ki a **felhasználói e-mail-címét**, írja be a **köznapi név** értékét, győződjön meg róla, hogy a **lemezre mentve** van, majd válassza a **Folytatás** lehetőséget. Hagyja üresen a **CA e-mail-címét** , mert nincs rá szükség.
 
-   :::image type="content" source="media/ios-sdk-get-started/image2.png" alt-text="Képernyőfelvétel: a tanúsítvány kérése a hitelesítésszolgáltató menüjéből.":::
+   :::image type="content" source="media/ios-sdk-get-started/image2.png" alt-text="Szükséges tanúsítványinformációk":::
 
-4. Adja meg a CSR-fájl nevét a **Mentés másként** lehetőségnél, válassza ki a helyet a **hol** , majd válassza a **Mentés** lehetőséget.
+4. Adja meg a CSR-fájl nevét a **Mentés másként** lehetőségnél, válassza ki a helyet a **hol**, majd válassza a **Mentés** lehetőséget.
 
-   :::image type="content" source="media/ios-sdk-get-started/image3.png" alt-text="Képernyőfelvétel: a tanúsítvány kérése a hitelesítésszolgáltató menüjéből.":::
+   :::image type="content" source="media/ios-sdk-get-started/image3.png" alt-text="Fájlnév kiválasztása":::
 
-   Ez a művelet menti a CSR-fájlt a kiválasztott helyen. Az alapértelmezett hely az **asztali** . Jegyezze meg a fájlhoz választott helyet.
+   Ez a művelet menti a CSR-fájlt a kiválasztott helyen. Az alapértelmezett hely az **asztali**. Jegyezze meg a fájlhoz választott helyet.
 
 Ezután regisztrálja alkalmazását az Apple-szel, engedélyezze a leküldéses értesítéseket, és töltse fel az exportált CSR-t egy leküldéses tanúsítvány létrehozásához.
 
@@ -76,28 +76,28 @@ Ha leküldéses értesítéseket szeretne küldeni egy iOS-alkalmazásnak, regis
 
 1. Ha még nem regisztrálta az alkalmazást, keresse meg az [iOS-es kiépítési portált](https://go.microsoft.com/fwlink/p/?LinkId=272456) az Apple fejlesztői központban. Jelentkezzen be a portálra az Apple ID azonosítójával, és válassza az **azonosítók** lehetőséget. Ezután válassza **+** az új alkalmazás regisztrálását.
 
-   :::image type="content" source="media/ios-sdk-get-started/image4.png" alt-text="Képernyőfelvétel: a tanúsítvány kérése a hitelesítésszolgáltató menüjéből.":::
+   :::image type="content" source="media/ios-sdk-get-started/image4.png" alt-text="Alkalmazás-azonosítók lap":::
 
 2. Az **új azonosító regisztrálása** képernyőn válassza az alkalmazás- **azonosítók** választógombot. Ezután válassza a **Folytatás** elemet.
 
-   :::image type="content" source="media/ios-sdk-get-started/image5.png" alt-text="Képernyőfelvétel: a tanúsítvány kérése a hitelesítésszolgáltató menüjéből.":::
+   :::image type="content" source="media/ios-sdk-get-started/image5.png" alt-text="Új azonosító oldal regisztrálása":::
 
 3. Frissítse a következő három értéket az új alkalmazáshoz, majd kattintson a **Folytatás** gombra:
 
-   - **Leírás** : adjon meg egy leíró nevet az alkalmazásnak.
-   - **Csomag azonosítója** : adja meg az űrlap **szervezeti azonosítójának** egy köteg-azonosítóját. a terméknév az [alkalmazás-terjesztési útmutatóban](https://help.apple.com/xcode/mac/current/#/dev91fe7130a)említett. A **szervezet azonosítójának** és a **terméknév** értékének meg kell egyeznie a Xcode-projekt létrehozásakor használt szervezeti azonosítóval és terméknév-névvel. Az alábbi képernyőképen a **NotificationHubs** érték a szervezet azonosítója, a **GetStarted** pedig a termék neve lesz. Győződjön meg arról, hogy a **csomag azonosítójának** értéke megegyezik a Xcode projekt értékével, hogy a Xcode a megfelelő közzétételi profilt használja.
+   - **Leírás**: adjon meg egy leíró nevet az alkalmazásnak.
+   - **Csomag azonosítója**: adja meg az űrlap **szervezeti azonosítójának** egy köteg-azonosítóját. a terméknév az [alkalmazás-terjesztési útmutatóban](https://help.apple.com/xcode/mac/current/#/dev91fe7130a)említett. A **szervezet azonosítójának** és a **terméknév** értékének meg kell egyeznie a Xcode-projekt létrehozásakor használt szervezeti azonosítóval és terméknév-névvel. Az alábbi képernyőképen a **NotificationHubs** érték a szervezet azonosítója, a **GetStarted** pedig a termék neve lesz. Győződjön meg arról, hogy a **csomag azonosítójának** értéke megegyezik a Xcode projekt értékével, hogy a Xcode a megfelelő közzétételi profilt használja.
 
-      :::image type="content" source="media/ios-sdk-get-started/image6.png" alt-text="Képernyőfelvétel: a tanúsítvány kérése a hitelesítésszolgáltató menüjéből.":::
+      :::image type="content" source="media/ios-sdk-get-started/image6.png" alt-text="Alkalmazás-azonosító regisztrálása":::
 
-   - **Leküldéses értesítések** : a **képességek** szakaszban keresse meg a **leküldéses értesítések** lehetőséget.
+   - **Leküldéses értesítések**: a **képességek** szakaszban keresse meg a **leküldéses értesítések** lehetőséget.
 
-      :::image type="content" source="media/ios-sdk-get-started/image7.png" alt-text="Képernyőfelvétel: a tanúsítvány kérése a hitelesítésszolgáltató menüjéből.":::
+      :::image type="content" source="media/ios-sdk-get-started/image7.png" alt-text="Új alkalmazás-azonosító regisztrálása":::
 
       Ez a művelet létrehozza az alkalmazás AZONOSÍTÓját, és kéri, hogy erősítse meg az adatokat. Válassza a **Folytatás** lehetőséget, majd válassza a **regisztráció** lehetőséget az új alkalmazás azonosítójának megerősítéséhez.
 
-      :::image type="content" source="media/ios-sdk-get-started/image8.png" alt-text="Képernyőfelvétel: a tanúsítvány kérése a hitelesítésszolgáltató menüjéből.":::
+      :::image type="content" source="media/ios-sdk-get-started/image8.png" alt-text="Új alkalmazás AZONOSÍTÓjának megerősítése":::
 
-      Miután kiválasztotta a **regisztrációt** , megjelenik az új alkalmazás-azonosító a **tanúsítványok, azonosítók & profilok** lapon.
+      Miután kiválasztotta a **regisztrációt**, megjelenik az új alkalmazás-azonosító a **tanúsítványok, azonosítók & profilok** lapon.
 
 4. A **tanúsítványok, azonosítók & profilok** lapon az **azonosítók** területen keresse meg az imént létrehozott app ID sort, és válassza ki annak sorát az **alkalmazás-azonosító konfigurációjának szerkesztése** képernyő megjelenítéséhez.
 
@@ -106,7 +106,7 @@ Ha leküldéses értesítéseket szeretne küldeni egy iOS-alkalmazásnak, regis
 > [!NOTE]
 > Az iOS 13 kiadásával csak a jogkivonat-alapú hitelesítés használatával fogadhat csendes értesítéseket. Ha tanúsítványalapú hitelesítést használ a APNS hitelesítő adataihoz, a jogkivonat-alapú hitelesítés használatára kell váltania.
 
-Egy tanúsítványra van szükség ahhoz, hogy az értesítési központ működjön a **APNS** . Ezt kétféleképpen teheti meg:
+Egy tanúsítványra van szükség ahhoz, hogy az értesítési központ működjön a **APNS**. Ezt kétféleképpen teheti meg:
 
 - Hozzon létre egy **. P12** fájlt, amely közvetlenül a Notification Hubs tölthető fel.
 
@@ -118,11 +118,11 @@ A második lehetőség számos előnnyel jár a tanúsítványok használata sor
 
 1. Görgessen le a **leküldéses értesítések** lehetőséghez, majd válassza a **Konfigurálás** lehetőséget a tanúsítvány létrehozásához.
 
-   :::image type="content" source="media/ios-sdk-get-started/image9.png" alt-text="Képernyőfelvétel: a tanúsítvány kérése a hitelesítésszolgáltató menüjéből.":::
+   :::image type="content" source="media/ios-sdk-get-started/image9.png" alt-text="Alkalmazásazonosító":::
 
 2. Megjelenik az **Apple push Notification szolgáltatás SSL-tanúsítványainak** ablaka. Kattintson a **tanúsítvány létrehozása** gombra a **fejlesztési SSL-tanúsítvány** szakaszban.
 
-   :::image type="content" source="media/ios-sdk-get-started/image10.png" alt-text="Képernyőfelvétel: a tanúsítvány kérése a hitelesítésszolgáltató menüjéből.":::
+   :::image type="content" source="media/ios-sdk-get-started/image10.png" alt-text="Tanúsítvány létrehozása":::
 
    Megjelenik az **új tanúsítvány létrehozása** képernyő.
 
@@ -133,23 +133,23 @@ A második lehetőség számos előnnyel jár a tanúsítványok használata sor
 
 4. Miután a portál létrehozza a tanúsítványt, kattintson a **Letöltés** gombra. Mentse a tanúsítványt, és jegyezze meg a helyet, ahová a rendszer mentette.
 
-   :::image type="content" source="media/ios-sdk-get-started/image11.png" alt-text="Képernyőfelvétel: a tanúsítvány kérése a hitelesítésszolgáltató menüjéből.":::
+   :::image type="content" source="media/ios-sdk-get-started/image11.png" alt-text="Tanúsítvány letöltése":::
 
    A rendszer letölti és menti a tanúsítványt a **letöltések** mappába.
 
-   :::image type="content" source="media/ios-sdk-get-started/image12.png" alt-text="Képernyőfelvétel: a tanúsítvány kérése a hitelesítésszolgáltató menüjéből.":::
+   :::image type="content" source="media/ios-sdk-get-started/image12.png" alt-text="Tanúsítványfájl keresése":::
 
-   Alapértelmezés szerint a letöltött fejlesztési tanúsítvány neve **aps_development. cer** .
+   Alapértelmezés szerint a letöltött fejlesztési tanúsítvány neve **aps_development. cer**.
 
 5. Kattintson duplán a letöltött leküldéses tanúsítvány **APS \_ Development. cer** elemre. Ez a művelet telepíti az új tanúsítványt a kulcsláncba, ahogy az alábbi képen látható:
 
-   :::image type="content" source="media/ios-sdk-get-started/image13.png" alt-text="Képernyőfelvétel: a tanúsítvány kérése a hitelesítésszolgáltató menüjéből.":::
+   :::image type="content" source="media/ios-sdk-get-started/image13.png" alt-text="Kulcstartó-hozzáférés":::
 
    Bár a tanúsítványban szereplő név eltérő lehet, a név az **Apple Development iOS Leküldéses szolgáltatásaival** előtaggal lesz ellátva.
 
 6. A kulcslánc-hozzáférési oldalon kattintson a jobb egérgombbal az új leküldéses tanúsítványra, melyet a **Certificates** (Tanúsítványok) kategóriában létrehozott. Válassza az **Exportálás** lehetőséget, nevezze el a fájlt, válassza ki a **. P12** formátumot, majd válassza a **Mentés** lehetőséget.
 
-   :::image type="content" source="media/ios-sdk-get-started/image14.png" alt-text="Képernyőfelvétel: a tanúsítvány kérése a hitelesítésszolgáltató menüjéből.":::
+   :::image type="content" source="media/ios-sdk-get-started/image14.png" alt-text="Tanúsítvány exportálása":::
 
    Megadhatja, hogy a tanúsítvány jelszavas védelemmel legyen ellátva, de ez nem kötelező. Kattintson **az OK** gombra, ha meg szeretné kerülni a jelszó létrehozását. Jegyezze fel az exportált .p12 tanúsítvány nevét és helyét. A rendszer a APNS használatával engedélyezi a hitelesítést.
 
@@ -160,10 +160,10 @@ A második lehetőség számos előnnyel jár a tanúsítványok használata sor
 
 1. Jegyezze fel az alábbi adatokat:
 
-   - **Alkalmazás azonosítójának előtagja** (ez a **csapat azonosítója** )
+   - **Alkalmazás azonosítójának előtagja** (ez a **csapat azonosítója**)
    - **Csomagazonosító**
 
-2. Vissza a **tanúsítványok, azonosítók & profilok** területen kattintson a **kulcsok** elemre. Ha már van konfigurált kulcs a **APNS** -hez, újra használhatja a. P8-tanúsítványt, amelyet a létrehozása után közvetlenül letöltött. Ha igen, figyelmen kívül hagyhatja a 3 – 5. lépést.
+2. Vissza a **tanúsítványok, azonosítók & profilok** területen kattintson a **kulcsok** elemre. Ha már van konfigurált kulcs a **APNS**-hez, újra használhatja a. P8-tanúsítványt, amelyet a létrehozása után közvetlenül letöltött. Ha igen, figyelmen kívül hagyhatja a 3 – 5. lépést.
 
 3. Az **+** új kulcs létrehozásához kattintson a gombra (vagy a **kulcs létrehozása** gombra).
 
@@ -201,15 +201,15 @@ Ezeknek a lépéseknek a végén a következő információkat kell használnia 
 
 2. Válassza az **iOS-alkalmazások fejlesztése** lehetőséget a **fejlesztés** alatt a létesítési profil típusa területen, majd válassza a **Folytatás** lehetőséget.
 
-   :::image type="content" source="media/ios-sdk-get-started/image15.png" alt-text="Képernyőfelvétel: a tanúsítvány kérése a hitelesítésszolgáltató menüjéből.":::
+   :::image type="content" source="media/ios-sdk-get-started/image15.png" alt-text="Üzembehelyezési profillista":::
 
 3. Ezután válassza ki az **alkalmazás-azonosító** legördülő LISTÁBÓL létrehozott azonosítót, majd válassza a **Folytatás** lehetőséget.
 
-   :::image type="content" source="media/ios-sdk-get-started/image16.png" alt-text="Képernyőfelvétel: a tanúsítvány kérése a hitelesítésszolgáltató menüjéből.":::
+   :::image type="content" source="media/ios-sdk-get-started/image16.png" alt-text="Alkalmazás AZONOSÍTÓjának kiválasztása":::
 
 4. A **tanúsítványok kiválasztása** ablakban válassza ki a kód aláírásához használt fejlesztési tanúsítványt, és válassza a **Folytatás** lehetőséget. Ez a tanúsítvány nem a létrehozott leküldéses tanúsítvány. Ha az egyik nem létezik, létre kell hoznia. Ha egy tanúsítvány létezik, ugorjon a következő lépésre. Fejlesztési tanúsítvány létrehozása, ha az egyik nem létezik:
 
-   1. Ha **nem érhető el tanúsítvány** , válassza a **tanúsítvány létrehozása** lehetőséget.
+   1. Ha **nem érhető el tanúsítvány**, válassza a **tanúsítvány létrehozása** lehetőséget.
    2. A **szoftver** szakaszban válassza az **Apple Development** elemet. Ezután válassza a **Folytatás** elemet.
    3. Az **új tanúsítvány létrehozása** képernyőn válassza a **fájl kiválasztása** lehetőséget.
    4. Keresse meg a korábban létrehozott **tanúsítvány-aláírási kérelem** tanúsítványát, jelölje ki, majd kattintson a **Megnyitás** gombra.
@@ -222,9 +222,9 @@ Ezeknek a lépéseknek a végén a következő információkat kell használnia 
 
 7. Ezután válassza ki a teszteléshez használni kívánt eszközöket, majd válassza a **Folytatás** lehetőséget.
 
-8. Végül válassza ki a profil nevét a **létesítési profil nevében** , majd válassza a **Létrehozás** lehetőséget.
+8. Végül válassza ki a profil nevét a **létesítési profil nevében**, majd válassza a **Létrehozás** lehetőséget.
 
-   :::image type="content" source="media/ios-sdk-get-started/image17.png" alt-text="Képernyőfelvétel: a tanúsítvány kérése a hitelesítésszolgáltató menüjéből.":::
+   :::image type="content" source="media/ios-sdk-get-started/image17.png" alt-text="Kiépítési profil nevének kiválasztása":::
 
 9. Az új létesítési profil létrehozásakor válassza a **Letöltés** lehetőséget. Jegyezze meg a helyet, ahol a mentésre kerül.
 
@@ -236,34 +236,34 @@ Ebben a szakaszban létrehoz egy értesítési központot, és konfigurálja a h
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. A bal oldali menüben válassza a **minden szolgáltatás** lehetőséget, majd a **mobil** szakaszban válassza a **Notification Hubs** lehetőséget. A szolgáltatás neve melletti csillag ikonra kattintva adja hozzá a szolgáltatást a **Kedvencek** szakaszhoz a bal oldali menüben. Miután hozzáadta **Notification Hubs** a **kedvencekhez** , válassza ki.
+2. A bal oldali menüben válassza a **minden szolgáltatás** lehetőséget, majd a **mobil** szakaszban válassza a **Notification Hubs** lehetőséget. A szolgáltatás neve melletti csillag ikonra kattintva adja hozzá a szolgáltatást a **Kedvencek** szakaszhoz a bal oldali menüben. Miután hozzáadta **Notification Hubs** a **kedvencekhez**, válassza ki.
 
-   :::image type="content" source="media/ios-sdk-get-started/image18.png" alt-text="Képernyőfelvétel: a tanúsítvány kérése a hitelesítésszolgáltató menüjéből.":::
+   :::image type="content" source="media/ios-sdk-get-started/image18.png" alt-text="Azure Portal":::
 
 3. A **Notification Hubs** lapon válassza a **Hozzáadás** lehetőséget az eszköztáron.
 
-   :::image type="content" source="media/ios-sdk-get-started/image19.png" alt-text="Képernyőfelvétel: a tanúsítvány kérése a hitelesítésszolgáltató menüjéből.":::
+   :::image type="content" source="media/ios-sdk-get-started/image19.png" alt-text="Eszköztár hozzáadása gomb":::
 
 4. A **Notification Hubs** oldalon hajtsa végre a következő lépéseket:
 
-   1. Adjon meg egy nevet az **értesítési központban** .
+   1. Adjon meg egy nevet az **értesítési központban**.
    2. Adjon meg egy nevet az **új névtér létrehozása** mezőben. A névtér egy vagy több értesítési központot tartalmaz.
    3. Válasszon egy értéket a **hely** legördülő listából. Ez az érték határozza meg azt a helyet, amelyben létre kívánja hozni az értesítési központot.
-   4. Válasszon ki egy meglévő erőforráscsoportot az **erőforráscsoporthoz** , vagy hozzon létre egy új erőforráscsoportot.
-   5. Válassza a **Létrehozás** lehetőséget.
+   4. Válasszon ki egy meglévő erőforráscsoportot az **erőforráscsoporthoz**, vagy hozzon létre egy új erőforráscsoportot.
+   5. Kattintson a **Létrehozás** gombra.
 
-   :::image type="content" source="media/ios-sdk-get-started/image20.png" alt-text="Képernyőfelvétel: a tanúsítvány kérése a hitelesítésszolgáltató menüjéből.":::
+   :::image type="content" source="media/ios-sdk-get-started/image20.png" alt-text="Tulajdonságok beállítása":::
 
 5. Válassza az **értesítések** (harang ikon) lehetőséget, majd válassza **az Ugrás az erőforráshoz** lehetőséget. A listát a **Notification Hubs** oldalon is frissítheti, és kiválaszthatja a hubot.
 
-   :::image type="content" source="media/ios-sdk-get-started/image21.png" alt-text="Képernyőfelvétel: a tanúsítvány kérése a hitelesítésszolgáltató menüjéből.":::
+   :::image type="content" source="media/ios-sdk-get-started/image21.png" alt-text="Portál értesítései":::
 
 6. A listáról válassza a **Hozzáférési szabályzatok** lehetőséget. Vegye figyelembe, hogy a két kapcsolódási karakterlánc elérhető az Ön számára. A leküldéses értesítések kezeléséhez később szüksége lesz rájuk.
 
    > [!IMPORTANT]
    > Ne használja az **DefaultFullSharedAccessSignature** szabályzatot az alkalmazásban. Ezt csak a háttérben való használatra szántuk.
 
-   :::image type="content" source="media/ios-sdk-get-started/image22.png" alt-text="Képernyőfelvétel: a tanúsítvány kérése a hitelesítésszolgáltató menüjéből.":::
+   :::image type="content" source="media/ios-sdk-get-started/image22.png" alt-text="Kapcsolati sztringek":::
 
 ## <a name="configure-the-notification-hub-with-apns-information"></a>Az értesítési központ konfigurálása APNS-adatokkal
 
@@ -284,9 +284,9 @@ A **Notification Services** alatt válassza az **Apple (APNS)** lehetőséget, m
 
 5. Válassza a **Védőfal** módot.
 
-   :::image type="content" source="media/ios-sdk-get-started/image23.png" alt-text="Képernyőfelvétel: a tanúsítvány kérése a hitelesítésszolgáltató menüjéből.":::
+   :::image type="content" source="media/ios-sdk-get-started/image23.png" alt-text="Konfigurálás":::
 
-6. Válassza a **Mentés** lehetőséget.
+6. Kattintson a **Mentés** gombra.
 
 ### <a name="option-2-use-token-based-authentication"></a>2. lehetőség: jogkivonat-alapú hitelesítés használata
 
@@ -301,11 +301,11 @@ A **Notification Services** alatt válassza az **Apple (APNS)** lehetőséget, m
 
 3. Válassza ki a **homokozót**
 
-4. Válassza a **Mentés** lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
 Most már konfigurálta az értesítési központot a APNS. Az alkalmazás regisztrálásához és leküldéses értesítések küldéséhez is szükség van a kapcsolódási karakterláncokra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozott és konfigurált egy értesítési központot az Azure-ban, és úgy konfigurálta, hogy engedélyezze az értesítések küldését az alkalmazásnak Apple Push Notification Service (APNS) használatával. Ezután létrehozunk egy minta iOS-alkalmazást, és integráljuk az Azure Notifications hubok SDK-t úgy, hogy az a Azure Portalon keresztül küldött leküldéses értesítéseket fogadhasson. Folytassa a következő oktatóanyaggal a választott nyelv alapján:
 

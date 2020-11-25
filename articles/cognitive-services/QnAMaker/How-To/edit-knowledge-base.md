@@ -6,11 +6,11 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.openlocfilehash: 3940f060209ea5ba55957a3673020656d45de9e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776544"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000096"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>QnA-párok szerkesztése a Tudásbázisban
 
@@ -60,7 +60,7 @@ A válasz szövegének gazdag szöveges szerkesztése lehetővé teszi, hogy egy
     |--|--|
     |Váltás a Rich Text szerkesztő és a Markdown között. `</>`|CTRL+M|
     |Félkövér. **B**|CTR és LB|
-    |Dőlt, dőlt betűvel jelezve ** _I_**|CTRL+I|
+    |Dőlt, dőlt betűvel jelezve **_I_**|CTRL+I|
     |Rendezetlen listák||
     |Rendezett lista||
     |Bekezdés stílusa||
@@ -112,7 +112,7 @@ A válasz metaadataiban nem lehet összekapcsolni a QnA párokat.
 
 ## <a name="add-metadata"></a>Metaadatok hozzáadása
 
-Adja hozzá a metaadatokat úgy, hogy először kiválasztja a **megtekintési beállításokat**, majd kiválasztja a **metaadatok megjelenítése**lehetőséget. Ekkor megjelenik a metaadatok oszlop. Ezután válassza ki a **+** jelet egy metaadat-pár hozzáadásához. Ez a pár egy kulcsból és egy értékből áll.
+Adja hozzá a metaadatokat úgy, hogy először kiválasztja a **megtekintési beállításokat**, majd kiválasztja a **metaadatok megjelenítése** lehetőséget. Ekkor megjelenik a metaadatok oszlop. Ezután válassza ki a **+** jelet egy metaadat-pár hozzáadásához. Ez a pár egy kulcsból és egy értékből áll.
 
 További információ a metaadatokat a QnA Maker-portálon a metaadatokkal kapcsolatban:
 * [Szerzői metaadatok hozzáadása a QnA-párokhoz](../quickstarts/add-question-metadata-portal.md#add-metadata-to-filter-the-answers)
@@ -130,7 +130,7 @@ A válaszok [gazdag szövegű szerkesztése](#add-an-editorial-qna-set) lehetőv
 
 A [Markdown](../reference-markdown-format.md) jobb eszköz, ha automatikusan létre kell hoznia egy tartalmat a CI/CD-folyamat vagy a [Batch-tesztelés](../Quickstarts/batch-testing.md)részeként importálandó tudásbázisok létrehozásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Együttműködés a tudásbázison](./collaborate-knowledge-base.md)

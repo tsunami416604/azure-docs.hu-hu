@@ -4,11 +4,11 @@ description: Megtudhatja, hogyan hozhat létre labor-fiókot, megtekintheti az �
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 33e5e42f65fdd34bb37b12947b5173700ad7970c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91251660"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999501"
 ---
 # <a name="create-and-manage-lab-accounts"></a>Tesztkörnyezeti fiókok létrehozása és felügyelete
 Azure Lab Services a labor-fiók a felügyelt labor típusok, például a tanterem Labs tárolója. A rendszergazda létrehoz egy Azure Lab Services, és hozzáférést biztosít a labor tulajdonosai számára, akik a fiókban létrehozhatnak laborokat. Ez a cikk bemutatja, hogyan hozhat létre labor-fiókot, megtekintheti az összes tesztkörnyezet fiókját, vagy törölhet egy labor-fiókot.
@@ -17,7 +17,7 @@ Azure Lab Services a labor-fiók a felügyelt labor típusok, például a tanter
 A következő lépések bemutatják, hogyan használhatja az Azure Portalt tesztkörnyezetfiók létrehozására az Azure Lab Services szolgáltatásban. 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben. A **DevOps** szakaszban válassza a **labor-fiókok** lehetőséget. Ha a csillag () lehetőséget választja a `*` **labor-fiókok**mellett, a rendszer hozzáadja a bal oldali menü **Kedvencek** szakaszához. A következő időponttól kezdve válassza a **labor-fiókok** lehetőséget a **Kedvencek**alatt.
+2. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben. A **DevOps** szakaszban válassza a **labor-fiókok** lehetőséget. Ha a csillag () lehetőséget választja a `*` **labor-fiókok** mellett, a rendszer hozzáadja a bal oldali menü **Kedvencek** szakaszához. A következő időponttól kezdve válassza a **labor-fiókok** lehetőséget a **Kedvencek** alatt.
 
     ![Minden szolgáltatás – > Lab-fiókok](./media/tutorial-setup-lab-account/select-lab-accounts-service.png)
 3. A **labor-fiókok** lapon válassza a **Hozzáadás** lehetőséget az eszköztáron, vagy **hozzon létre egy Lab-fiókot** az oldalon. 
@@ -34,7 +34,7 @@ A következő lépések bemutatják, hogyan használhatja az Azure Portalt teszt
 5. Válassza a **Tovább: speciális** lehetőséget az oldal alján a **speciális** lapra való ugráshoz, majd hajtsa végre a következő lépéseket: 
     1. Válasszon ki egy meglévő **megosztott képtárat** , vagy hozzon létre egyet. A sablon virtuális gépet a megosztott rendszerkép-katalógusba mentheti, amelyet mások is felhasználhatnak. A megosztott képtárakkal kapcsolatos részletes információkért lásd: [közös rendszerkép-katalógus használata Azure Lab Servicesban](how-to-use-shared-image-gallery.md).
     2. Itt adhatja meg, hogy a rendszer **automatikusan leállítsa-e a Windows virtuális gépeket** , amikor a felhasználók lecsatlakoznak róluk. Annak megadása, hogy a virtuális gépek meddig várjon a felhasználó újrakapcsolódására az automatikus leállítás előtt. 
-    3. A **társ virtuális hálózat**területen válasszon ki egy társ virtuális hálózatot (VNet) a tesztkörnyezet hálózatához. A fiókban létrehozott laborok kapcsolódnak a kiválasztott VNet, és hozzáférnek a kiválasztott VNet lévő erőforrásokhoz. További információ: [a tesztkörnyezet virtuális hálózatának összekötése egyenrangú virtuális hálózattal](how-to-connect-peer-virtual-network.md).    
+    3. A **társ virtuális hálózat** területen válasszon ki egy társ virtuális hálózatot (VNet) a tesztkörnyezet hálózatához. A fiókban létrehozott laborok kapcsolódnak a kiválasztott VNet, és hozzáférnek a kiválasztott VNet lévő erőforrásokhoz. További információ: [a tesztkörnyezet virtuális hálózatának összekötése egyenrangú virtuális hálózattal](how-to-connect-peer-virtual-network.md).    
     8. Válasszon **címtartományt** a virtuális gépek számára a laborban. A címtartomány legyen az osztály nélküli tartományok közötti útválasztás (CIDR) jelölése (például: 10.20.0.0/23). A laborban található virtuális gépek ebben a címtartományból lesznek létrehozva. További információ: [címtartomány megadása virtuális gépekhez a tesztkörnyezetben](how-to-connect-peer-virtual-network.md#specify-an-address-range-for-vms-in-the-lab-account)  
 
         > [!NOTE]
@@ -45,12 +45,12 @@ A következő lépések bemutatják, hogyan használhatja az Azure Portalt teszt
 
     ![Képernyőkép, amely a "Lab-fiók létrehozása" lapot mutatja a Címkék lapon kiemelve.](./media/how-to-manage-lab-accounts/create-lab-account-tags.png)
 7. Kattintson a lap alján található **felülvizsgálat + létrehozás** gombra a **felülvizsgálat + létrehozás** lapra való váltáshoz. 
-4. Tekintse át az ezen a lapon található összegző információkat, majd kattintson a **Létrehozás**gombra. 
+4. Tekintse át az ezen a lapon található összegző információkat, majd kattintson a **Létrehozás** gombra. 
 
     ![Lab-fiók létrehozása – > Címkék](./media/how-to-manage-lab-accounts/create-lab-account-review-create.png)
-5. Várjon, amíg befejeződik az üzembe helyezés, bontsa ki a **következő lépések**elemet, majd válassza az **Ugrás az erőforráshoz** lehetőséget az alábbi képen látható módon: 
+5. Várjon, amíg befejeződik az üzembe helyezés, bontsa ki a **következő lépések** elemet, majd válassza az **Ugrás az erőforráshoz** lehetőséget az alábbi képen látható módon: 
 
-    A **harang ikont** is kiválaszthatja az eszköztáron (**értesítések**), ellenőrizheti, hogy az üzembe helyezés sikeres volt-e, majd válassza az **erőforrás keresése**lehetőséget. 
+    A **harang ikont** is kiválaszthatja az eszköztáron (**értesítések**), ellenőrizheti, hogy az üzembe helyezés sikeres volt-e, majd válassza az **erőforrás keresése** lehetőséget. 
 
     Másik lehetőségként válassza a **labor-fiókok** lapon a **frissítés** lehetőséget, majd válassza ki a létrehozott labor-fiókot. 
 
@@ -62,7 +62,7 @@ A következő lépések bemutatják, hogyan használhatja az Azure Portalt teszt
 ## <a name="view-lab-accounts"></a>Tesztkörnyezet-fiókok megtekintése
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza ki az **összes erőforrás** elemet a menüből. 
-3. Válassza a **típushoz**tartozó **labor-fiókok** lehetőséget. 
+3. Válassza a **típushoz** tartozó **labor-fiókok** lehetőséget. 
     Az előfizetés, az erőforráscsoport, a helyszínek és a címkék alapján is szűrhető. 
 
     ![Minden erőforrás – > Lab-fiókok](./media/how-to-manage-lab-accounts/all-resources-lab-accounts.png)
@@ -83,5 +83,5 @@ Kövesse az előző szakasz utasításait, amely a listában szereplő Lab-fiók
 > [!NOTE]
 > A Lab-fiókok kezeléséhez az az. LabServices PowerShell-modult (előzetes verzió) is használhatja. További információ: az az [. LabServices Kezdőlap a githubon](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Modules/Library).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse meg a következő cikkeket **: útmutató a**(z) tartalomjegyzék  ->  (**Lab-fiók tulajdonosa) szakaszának létrehozásához és konfigurálásához** . 

@@ -9,11 +9,11 @@ ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
 ms.openlocfilehash: 3fff58c240341776a3bb99c059c179cc4f9d96e9
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966870"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999144"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Az Oracle Golden Gate megvalósítása Azure Linux rendszerű virtuális gépen 
 
@@ -813,7 +813,7 @@ Ha már nincs rá szükség, az alábbi parancs használatával távolíthatja e
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Magas rendelkezésre állású virtuális gép létrehozása oktatóanyag](../../linux/create-cli-complete.md)
 

@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 2ec88e4e97d45b27c0226198491b3adec6448496
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94960240"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000895"
 ---
 # <a name="storsimple-virtual-array-update-10-release-notes"></a>StorSimple Virtual Array Update 1,0 kibocsátási megjegyzések
 
@@ -80,10 +80,10 @@ Az alábbi táblázat összefoglalja a StorSimple virtuális tömb ismert probl�
 | **18.** |Frissítések |Ha a helyi webes KEZELŐFELÜLETtel telepíti az 1. frissítést a virtuális tömbön, meg kell győződnie arról, hogy az 0,6-es frissítést futtatja. Ha a 0,6-es frissítésnél kisebb verziót futtat, először telepítenie kell a 0,6-es frissítést, majd az 1. frissítést kell alkalmaznia. Ha közvetlenül telepíti a 1,0-es frissítést egy előzetes verziójú 0,6-es verzióról, néhány frissítést nem fog tudni kihagyni, és a figyelési diagramok nem fognak működni.   | |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Telepítse a 1,0](storsimple-virtual-array-install-update-1.md) -es frissítést a StorSimple virtuális tömbbe.
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 Régebbi kiadási megjegyzést keres? Ugrás:
 *  [StorSimple Virtual Array Update 0,6 kibocsátási megjegyzések](storsimple-virtual-array-update-06-release-notes.md)
 * [StorSimple Virtual Array Update 0,5 kibocsátási megjegyzések](storsimple-virtual-array-update-05-release-notes.md)

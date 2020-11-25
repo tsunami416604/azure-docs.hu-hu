@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 26f0006ad2b26757e335ba1819c2b82ba519f8cc
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 95560801d4132735435e4d45e8a588476636ec38
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491443"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96001235"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure üzenetsor-tárolási trigger a Azure Functionshoz
 
@@ -97,6 +97,22 @@ public static void Run(CloudQueueMessage myQueueItem,
 
 A [használat](#usage) szakasz ismerteti `myQueueItem` , amelyet a (z `name` ) function.jstulajdonsága nevez el.  Az [üzenet metaadatainak szakasza](#message-metadata) a többi megjelenített változót ismerteti.
 
+# <a name="java"></a>[Java](#tab/java)
+
+A következő Java-példa egy Storage üzenetsor-kiváltó függvényt mutat be, amely naplózza az aktivált üzenetet a várólistára helyezve `myqueuename` .
+
+ ```java
+ @FunctionName("queueprocessor")
+ public void run(
+    @QueueTrigger(name = "msg",
+                   queueName = "myqueuename",
+                   connection = "myconnvarname") String message,
+     final ExecutionContext context
+ ) {
+     context.getLogger().info(message);
+ }
+ ```
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Az alábbi példa egy üzenetsor-trigger kötést mutat be egy *function.jsa* fájlban, és egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvény lekérdezi a `myqueue-items` várólistát, és minden alkalommal beírja a naplót, amikor feldolgozzák a várólista-elemeket.
@@ -141,6 +157,42 @@ module.exports = async function (context, message) {
 ```
 
 A [használat](#usage) szakasz ismerteti `myQueueItem` , amelyet a (z `name` ) function.jstulajdonsága nevez el.  Az [üzenet metaadatainak szakasza](#message-metadata) a többi megjelenített változót ismerteti.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Az alábbi példa azt szemlélteti, hogyan lehet beolvasni egy függvénynek egy trigger használatával átadott üzenetsor-üzenetet.
+
+A tárolási várólista-trigger *function.jsazon* fájlon van definiálva, ahol a `type` be van állítva `queueTrigger` .
+
+```json
+{
+  "bindings": [
+    {
+      "name": "QueueItem",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "messages",
+      "connection": "MyStorageConnectionAppSetting"
+    }
+  ]
+}
+```
+
+A *Run.ps1* fájlban található kód deklarál egy paramétert `$QueueItem` , amely lehetővé teszi a várólista-üzenet olvasását a függvényben.
+
+```powershell
+# Input bindings are passed in via param block.
+param([string] $QueueItem, $TriggerMetadata)
+
+# Write out the queue message and metadata to the information log.
+Write-Host "PowerShell queue trigger function processed work item: $QueueItem"
+Write-Host "Queue item expiration time: $($TriggerMetadata.ExpirationTime)"
+Write-Host "Queue item insertion time: $($TriggerMetadata.InsertionTime)"
+Write-Host "Queue item next visible time: $($TriggerMetadata.NextVisibleTime)"
+Write-Host "ID: $($TriggerMetadata.Id)"
+Write-Host "Pop receipt: $($TriggerMetadata.PopReceipt)"
+Write-Host "Dequeue count: $($TriggerMetadata.DequeueCount)"
+```
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -189,22 +241,6 @@ def main(msg: func.QueueMessage):
 
     logging.info(result)
 ```
-
-# <a name="java"></a>[Java](#tab/java)
-
-A következő Java-példa egy Storage üzenetsor-kiváltó függvényt mutat be, amely naplózza az aktivált üzenetet a várólistára helyezve `myqueuename` .
-
- ```java
- @FunctionName("queueprocessor")
- public void run(
-    @QueueTrigger(name = "msg",
-                   queueName = "myqueuename",
-                   connection = "myconnvarname") String message,
-     final ExecutionContext context
- ) {
-     context.getLogger().info(message);
- }
- ```
 
  ---
 
@@ -270,14 +306,6 @@ A használandó Storage-fiók a következő sorrendben van meghatározva:
 
 A C# parancsfájl nem támogatja az attribútumokat.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-A JavaScript nem támogatja az attribútumokat.
-
-# <a name="python"></a>[Python](#tab/python)
-
-A Python nem támogatja az attribútumokat.
-
 # <a name="java"></a>[Java](#tab/java)
 
 A `QueueTrigger` jegyzet hozzáférést biztosít a függvényt kiváltó várólistához. A következő példa az üzenetsor-üzenetet a paraméter használatával elérhetővé teszi a függvény számára `message` .
@@ -305,13 +333,25 @@ public class QueueTriggerDemo {
 |`queueName`  | Deklarálja a várólista nevét a Storage-fiókban. |
 |`connection` | A Storage-fiók kapcsolódási karakterláncára mutat. |
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+A JavaScript nem támogatja az attribútumokat.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+A PowerShell nem támogatja az attribútumokat.
+
+# <a name="python"></a>[Python](#tab/python)
+
+A Python nem támogatja az attribútumokat.
+
 ---
 
 ## <a name="configuration"></a>Konfiguráció
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `QueueTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**típusa** | n/a| Értékre kell állítani `queueTrigger` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
 |**irányba**| n/a | Csak a fájl *function.js* . Értékre kell állítani `in` . Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
@@ -327,7 +367,7 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 
 Az üzenet adatai egy metódus-paraméter (például) használatával érhetők el `string paramName` . A következő típusokhoz köthető:
 
-* Objektum – a függvények futtatókörnyezete deszerializál egy JSON-adattartalmat a kódban definiált tetszőleges osztály egy példányára. 
+* Objektum – a függvények futtatókörnyezete deszerializál egy JSON-adattartalmat a kódban definiált tetszőleges osztály egy példányára.
 * `string`
 * `byte[]`
 * [CloudQueueMessage]
@@ -345,17 +385,21 @@ Az üzenet adatai egy metódus-paraméter (például) használatával érhetők 
 
 Ha egy hibaüzenetet próbál meg kötni `CloudQueueMessage` , és hibaüzenetet kap, ellenőrizze, hogy rendelkezik-e [a megfelelő Storage SDK-verzióra](functions-bindings-storage-queue.md#azure-storage-sdk-version-in-functions-1x)mutató hivatkozással.
 
+# <a name="java"></a>[Java](#tab/java)
+
+A [QueueTrigger](/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable&preserve-view=true) jegyzet hozzáférést biztosít a függvényt kiváltó üzenetsor-üzenethez.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A várólista-elem hasznos tartalma elérhető, `context.bindings.<NAME>` ahol a `<NAME>` megegyezik a *function.js* által megadott névvel. Ha a hasznos adat JSON, az érték deszerializálása egy objektumba történik.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Nyissa meg az üzenetsor-üzenetet karakterlánc-paraméterrel, amely megegyezik a kötés paraméterében megadott névvel a `name` fájl *function.js* .
+
 # <a name="python"></a>[Python](#tab/python)
 
-Nyissa meg az üzenetsor-üzenetet a [QueueMessage](/python/api/azure-functions/azure.functions.queuemessage?view=azure-python)típussal megadott paraméterrel.
-
-# <a name="java"></a>[Java](#tab/java)
-
-A [QueueTrigger](/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable) jegyzet hozzáférést biztosít a függvényt kiváltó üzenetsor-üzenethez.
+Nyissa meg az üzenetsor-üzenetet a [QueueMessage](/python/api/azure-functions/azure.functions.queuemessage?view=azure-python&preserve-view=true)típussal megadott paraméterrel.
 
 ---
 
@@ -363,7 +407,7 @@ A [QueueTrigger](/java/api/com.microsoft.azure.functions.annotation.queuetrigger
 
 A várólista-trigger számos [metaadat-tulajdonságot](./functions-bindings-expressions-patterns.md#trigger-metadata)biztosít. Ezek a tulajdonságok a más kötésekben lévő kötési kifejezések vagy a kódban szereplő paraméterek részeként is használhatók. A tulajdonságok a [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) osztály tagjai.
 
-|Tulajdonság|Típus|Description|
+|Tulajdonság|Típus|Leírás|
 |--------|----|-----------|
 |`QueueTrigger`|`string`|Várólista-adattartalom (ha érvényes karakterlánc). Ha az üzenetsor-üzenet tartalma egy karakterlánc, akkor a `QueueTrigger` `name` *function.js* tulajdonságban megnevezett változóval megegyező értékkel rendelkezik.|
 |`DequeueCount`|`int`|Azon alkalmak száma, amikor az üzenet el lett küldve.|

@@ -4,11 +4,11 @@ description: Ez az útmutató segít a rendszergazdáknak, hogy Azure Lab Servic
 ms.topic: article
 ms.date: 10/20/2020
 ms.openlocfilehash: 08d2fea719ad67f666ea9da09721dc3f7ab54768
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024636"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999280"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services – rendszergazdai útmutató
 Az Egyetem Felhőbeli erőforrásait kezelő informatikai rendszergazdák általában felelősek az iskolájuk labor-fiókjának beállításához. Miután beállított egy labor-fiókot, a rendszergazdák vagy a pedagógusok létrehozzák a fiókban található laborokat. Ez a cikk átfogó áttekintést nyújt az érintett Azure-erőforrásokról és a létrehozásához szükséges útmutatóról.
@@ -271,7 +271,7 @@ A labor-fiókok rendszergazdái számára fontos, hogy a katalógusból rendszer
 
 Ne törölje a replikálást meghatározott régiókba úgy, hogy csökkentse a költségeket, bár ez a lehetőség a megosztott rendszerkép-katalógusban található. Előfordulhat, hogy a replikációs módosítások kedvezőtlen hatással vannak a Azure Lab Services a megosztott képtárban mentett rendszerképekből származó virtuális gépek közzétételére.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A laborok beállításával és kezelésével kapcsolatos további információkért lásd:
 

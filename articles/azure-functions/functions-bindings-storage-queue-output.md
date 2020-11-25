@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 1d86009d593ef7e594ec2981132bcfb856569c31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 087073437fe9d6159422799c04ce095c0aae5eca
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317225"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96001252"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Az Azure üzenetsor-tároló kimeneti kötései Azure Functions
 
@@ -100,6 +100,24 @@ public static void Run(
 }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+ Az alábbi példa egy Java-függvényt mutat be, amely üzenetsor-üzenetet hoz létre a HTTP-kérések indításakor.
+
+```java
+@FunctionName("httpToQueue")
+@QueueOutput(name = "item", queueName = "myqueue-items", connection = "MyStorageConnectionAppSetting")
+ public String pushToQueue(
+     @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
+     final String message,
+     @HttpOutput(name = "response") final OutputBinding<String> result) {
+       result.setValue(message + " has been added.");
+       return message;
+ }
+```
+
+A [Java functions runtime library](/java/api/overview/azure/functions/runtime)-ben használja a `@QueueOutput` Megjegyzés azon paramétereket, amelyek értékét a várólista-tárolóba kívánja írni.  A paraméternek a következőnek kell lennie: `OutputBinding<T>` , ahol a egy `T` POJO natív Java-típusa.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Az alábbi példa egy HTTP trigger kötést mutat be egy *function.jsa* fájlban, és egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvény minden fogadott HTTP-kérelemhez létrehoz egy üzenetsor-tételt.
@@ -151,11 +169,84 @@ module.exports = function(context) {
 };
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Az alábbi példák azt mutatják be, hogyan lehet egy üzenetsor-üzenetet egy HTTP által aktivált függvényből kimenetként megjeleníteni. A konfigurációs szakasza `type` `queue` meghatározza a kimeneti kötést.
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "Request",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "Response"
+    },
+    {
+      "type": "queue",
+      "direction": "out",
+      "name": "Msg",
+      "queueName": "outqueue",
+      "connection": "MyStorageConnectionAppSetting"
+    }
+  ]
+}
+```
+
+A kötési konfiguráció használatával egy PowerShell-függvény létrehoz egy üzenetsor-üzenetet a használatával `Push-OutputBinding` . Ebben a példában egy üzenet jön létre egy lekérdezési sztringből vagy egy szövegtörzsből.
+
+```powershell
+using namespace System.Net
+
+# Input bindings are passed in via param block.
+param($Request, $TriggerMetadata)
+
+# Write to the Azure Functions log stream.
+Write-Host "PowerShell HTTP trigger function processed a request."
+
+# Interact with query parameters or the body of the request.
+$message = $Request.Query.Message
+Push-OutputBinding -Name Msg -Value $message
+Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
+    StatusCode = 200
+    Body = "OK"
+})
+```
+
+Ha egyszerre több üzenetet szeretne küldeni, Definiáljon egy üzenetet, és használja az `Push-OutputBinding` üzeneteket az üzenetsor kimeneti kötéseinek küldéséhez.
+
+```powershell
+using namespace System.Net
+
+# Input bindings are passed in via param block.
+param($Request, $TriggerMetadata)
+
+# Write to the Azure Functions log stream.
+Write-Host "PowerShell HTTP trigger function processed a request."
+
+# Interact with query parameters or the body of the request.
+$message = @("message1", "message2")
+Push-OutputBinding -Name Msg -Value $message
+Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
+    StatusCode = 200
+    Body = "OK"
+})
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 Az alábbi példa bemutatja, hogyan lehet egy és több értéket kiadni a tárolási várólistáknak. A *function.jshoz* szükséges konfiguráció ugyanaz, mint az egyik módja.
 
-A tárolási várólista kötése olyanfunction.jsvan definiálva, ahol * a* *típus* értékre van állítva `queue` .
+A tárolási várólista kötése olyanfunction.jsvan definiálva, ahol *a* *típus* értékre van állítva `queue` .
 
 ```json
 {
@@ -214,24 +305,6 @@ def main(req: func.HttpRequest, msg: func.Out[typing.List[str]]) -> func.HttpRes
     return 'OK'
 ```
 
-# <a name="java"></a>[Java](#tab/java)
-
- Az alábbi példa egy Java-függvényt mutat be, amely üzenetsor-üzenetet hoz létre a HTTP-kérések indításakor.
-
-```java
-@FunctionName("httpToQueue")
-@QueueOutput(name = "item", queueName = "myqueue-items", connection = "MyStorageConnectionAppSetting")
- public String pushToQueue(
-     @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
-     final String message,
-     @HttpOutput(name = "response") final OutputBinding<String> result) {
-       result.setValue(message + " has been added.");
-       return message;
- }
-```
-
-A [Java functions runtime library](/java/api/overview/azure/functions/runtime)-ben használja a `@QueueOutput` Megjegyzés azon paramétereket, amelyek értékét a várólista-tárolóba kívánja írni.  A paraméternek a következőnek kell lennie: `OutputBinding<T>` , ahol a egy `T` POJO natív Java-típusa.
-
 ---
 
 ## <a name="attributes-and-annotations"></a>Attribútumok és jegyzetek
@@ -270,14 +343,6 @@ Az `StorageAccount` attribútummal megadhatja a Storage-fiókot az osztály, a m
 
 A C# parancsfájl nem támogatja az attribútumokat.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-A JavaScript nem támogatja az attribútumokat.
-
-# <a name="python"></a>[Python](#tab/python)
-
-A Python nem támogatja az attribútumokat.
-
 # <a name="java"></a>[Java](#tab/java)
 
 A `QueueOutput` jegyzet lehetővé teszi a függvények kimenetének megírását. Az alábbi példa egy HTTP által aktivált függvényt mutat be, amely üzenetsor-üzenetet hoz létre.
@@ -308,6 +373,18 @@ public class HttpTriggerQueueOutput {
 |`connection` | A Storage-fiók kapcsolódási karakterláncára mutat. |
 
 A jegyzethez társított paraméter `QueueOutput` [OutputBinding \<T\> ](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/OutputBinding.java) -példányként van beírva.
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+A JavaScript nem támogatja az attribútumokat.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+A PowerShell nem támogatja az attribútumokat.
+
+# <a name="python"></a>[Python](#tab/python)
+
+A Python nem támogatja az attribútumokat.
 
 ---
 
@@ -345,7 +422,7 @@ A C# és C# parancsfájlban több üzenetsor-üzenetet is írhat a következő t
 
 # <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-Egyetlen üzenetsor-üzenetet írhat egy metódus-paraméter (például `out T paramName` ) használatával. A `paramName` értéke `name` *function.json*tulajdonságában megadott érték. Paraméter helyett a metódus visszatérési típusát is használhatja `out` , és a `T` következő típusok bármelyike lehet:
+Egyetlen üzenetsor-üzenetet írhat egy metódus-paraméter (például `out T paramName` ) használatával. A `paramName` értéke `name` *function.json* tulajdonságában megadott érték. Paraméter helyett a metódus visszatérési típusát is használhatja `out` , és a `T` következő típusok bármelyike lehet:
 
 * Egy, JSON-ként szerializálható objektum
 * `string`
@@ -359,18 +436,6 @@ A C# és C# parancsfájlban több üzenetsor-üzenetet is írhat a következő t
 * `ICollector<T>` vagy `IAsyncCollector<T>`
 * [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-A kimeneti várólista elem elérhető, `context.bindings.<NAME>` ahol a `<NAME>` megegyezik a *function.js*által megadott névvel. A várólista-elem hasznos adatainak karakterláncot vagy JSON-szerializálható objektumot is használhat.
-
-# <a name="python"></a>[Python](#tab/python)
-
-A várólista-üzenetek egy függvényből való üzembe helyezésének két lehetősége van:
-
-- Visszaadott **érték**: állítsa be `name` *function.js* tulajdonságát a értékre `$return` . Ezzel a konfigurációval a függvény visszatérési értéke üzenetsor-tárolási üzenetként is megmarad.
-
-- **Elengedhetetlen**: adjon meg egy értéket a [set](/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) metódusnak, amely [kimenő](/python/api/azure-functions/azure.functions.out?view=azure-python) típusként van deklarálva. Az átadott értéket `set` üzenetsor-tárolási üzenetként őrzi meg a rendszer.
-
 # <a name="java"></a>[Java](#tab/java)
 
 Az üzenetsor-üzenetek egy függvényből való kiosztására két lehetőség áll rendelkezésre a [QueueOutput](/java/api/com.microsoft.azure.functions.annotation.queueoutput) jegyzet használatával:
@@ -378,6 +443,22 @@ Az üzenetsor-üzenetek egy függvényből való kiosztására két lehetőség 
 - Visszaadott **érték**: Ha a jegyzetet a függvényhez alkalmazza, a függvény visszatérési értéke üzenetsor-üzenetként marad.
 
 - **Elengedhetetlen**: Ha explicit módon be szeretné állítani az üzenet értékét, alkalmazza a jegyzetet egy adott paraméterre [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) , ahol a egy `T` POJO vagy bármely natív Java-típus. Ezzel a konfigurációval a metódus értékének átadásakor a rendszer `setValue` várólista-üzenetként is megőrzi az értéket.
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+A kimeneti várólista elem elérhető, `context.bindings.<NAME>` ahol a `<NAME>` megegyezik a *function.js* által megadott névvel. A várólista-elem hasznos adatainak karakterláncot vagy JSON-szerializálható objektumot is használhat.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+A várólista-üzenet kimenete elérhető, `Push-OutputBinding` ahol olyan argumentumokat ad át, amelyek megfelelnek a kötés paraméterében megadott névnek a `name` fájl *function.js* .
+
+# <a name="python"></a>[Python](#tab/python)
+
+A várólista-üzenetek egy függvényből való üzembe helyezésének két lehetősége van:
+
+- Visszaadott **érték**: állítsa be `name` *function.js* tulajdonságát a értékre `$return` . Ezzel a konfigurációval a függvény visszatérési értéke üzenetsor-tárolási üzenetként is megmarad.
+
+- **Elengedhetetlen**: adjon meg egy értéket a [set](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true#set-val--t-----none) metódusnak, amely [kimenő](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true) típusként van deklarálva. Az átadott értéket `set` üzenetsor-tárolási üzenetként őrzi meg a rendszer.
 
 ---
 
@@ -421,7 +502,7 @@ Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat 
 |maxDequeueCount|5|Azon alkalmak száma, amelyekkel az üzenetek feldolgozására kerül sor, mielőtt a rendszer áthelyezi azt a Megmérgező várólistára.|
 |newBatchThreshold|batchSize/2|Ha az egyidejűleg feldolgozható üzenetek száma leállítja ezt a számot, a futtatókörnyezet egy másik köteget kérdez le.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Függvény futtatása üzenetsor-tárolási adatváltozásként (trigger)](./functions-bindings-storage-queue-trigger.md)
 

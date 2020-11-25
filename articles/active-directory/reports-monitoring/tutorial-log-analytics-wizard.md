@@ -12,16 +12,16 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9e6b03a2f9dd0089b1112000804e46f3d214cd3c
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131292"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000759"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>Oktatóanyag: a log Analytics varázsló konfigurálása
 
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Log Analytics-munkaterület konfigurálása a naplózási és bejelentkezési naplókhoz
@@ -66,7 +66,7 @@ A log Analytics-munkaterület konfigurálása két fő lépésből áll:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) globális rendszergazdaként.
 
-2. Keresse meg a **log Analytics-munkaterületeket** .
+2. Keresse meg a **log Analytics-munkaterületeket**.
 
     ![Erőforrás-szolgáltatások és dokumentumok keresése](./media/tutorial-log-analytics-wizard/search-services.png)
 
@@ -94,7 +94,7 @@ A log Analytics-munkaterület konfigurálása két fő lépésből áll:
 
     ![Létrehozás](./media/tutorial-log-analytics-wizard/create-workspace.png)
 
-7. Keresse meg az **Azure Active Directoryt** .
+7. Keresse meg az **Azure Active Directoryt**.
 
     ![A képernyőképen az Azure Search Azure Active Directory látható.](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
@@ -126,7 +126,7 @@ Ez az eljárás bemutatja, hogyan futtathat lekérdezéseket a **Kusto lekérdez
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) globális rendszergazdaként.
 
-2. Keresse meg az **Azure Active Directoryt** .
+2. Keresse meg az **Azure Active Directoryt**.
 
     ![A képernyőképen az Azure Search Azure Active Directory látható.](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
@@ -134,7 +134,7 @@ Ez az eljárás bemutatja, hogyan futtathat lekérdezéseket a **Kusto lekérdez
 
 4. A **naplók** lapon kattintson az első **lépések** elemre.
 
-5. A * *Keresés* szövegmezőbe írja be a lekérdezést.
+5. A **Keresés* szövegmezőbe írja be a lekérdezést.
 
 6. Kattintson a **Futtatás** elemre.  
 
@@ -208,7 +208,7 @@ Ez az eljárás bemutatja, hogyan küldhet riasztásokat a breakglass-fiók hasz
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) globális rendszergazdaként.
 
-2. Keresse meg az **Azure Active Directoryt** .
+2. Keresse meg az **Azure Active Directoryt**.
 
     ![A képernyőképen az Azure Search Azure Active Directory látható.](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
@@ -234,7 +234,7 @@ Ez az eljárás bemutatja, hogyan küldhet riasztásokat a breakglass-fiók hasz
 
     ![Riasztási logika](./media/tutorial-log-analytics-wizard/alert-logic.png)
 
-    1. **A alapján** válassza ki **az eredmények számát** .
+    1. **A alapján** válassza ki **az eredmények számát**.
 
     2. As **operátorként** válassza a **nagyobb, mint** lehetőséget.
 
@@ -246,7 +246,7 @@ Ez az eljárás bemutatja, hogyan küldhet riasztásokat a breakglass-fiók hasz
 
     1. Az **időtartam (perc)** mezőben válassza az **5** lehetőséget.
 
-    2. **Gyakoriság (perc)** , válassza az **5** lehetőséget.
+    2. **Gyakoriság (perc)**, válassza az **5** lehetőséget.
 
     3. Kattintson a **Kész** gombra. 
 
@@ -275,7 +275,7 @@ Ez az eljárás bemutatja, hogyan küldhet riasztásokat a breakglass-fiók hasz
 
     ![Műveletek testreszabása](./media/tutorial-log-analytics-wizard/customize-actions.png)
 
-    1. Válassza ki az **e-mail tárgyát** .
+    1. Válassza ki az **e-mail tárgyát**.
 
     2. A **Tárgy** mezőbe írja be a következőt: `Breakglass account has been used`
 
@@ -299,7 +299,7 @@ Ez az eljárás bemutatja, hogyan hozhat létre egy új munkafüzetet a gyors ü
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) globális rendszergazdaként.
 
-2. Keresse meg az **Azure Active Directoryt** .
+2. Keresse meg az **Azure Active Directoryt**.
 
     ![A képernyőképen az Azure Search Azure Active Directory látható.](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
@@ -324,7 +324,7 @@ Ez az eljárás bemutatja, hogyan hozhat létre egy új munkafüzetet a gyors ü
 
     ![Munkafüzet szövege](./media/tutorial-log-analytics-wizard/workbook-text.png)
 
-8. Az új munkafüzetben kattintson a **Hozzáadás** , majd a **lekérdezés hozzáadása** lehetőségre.
+8. Az új munkafüzetben kattintson a **Hozzáadás**, majd a **lekérdezés hozzáadása** lehetőségre.
 
     ![Lekérdezés hozzáadása](./media/tutorial-log-analytics-wizard/add-query.png)
 
@@ -351,7 +351,7 @@ Ez az eljárás bemutatja, hogyan adhat hozzá egy lekérdezést egy meglévő m
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) globális rendszergazdaként.
 
-2. Keresse meg az **Azure Active Directoryt** .
+2. Keresse meg az **Azure Active Directoryt**.
 
     ![A képernyőképen az Azure Search Azure Active Directory látható.](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
@@ -367,7 +367,7 @@ Ez az eljárás bemutatja, hogyan adhat hozzá egy lekérdezést egy meglévő m
 
     ![A képernyőképen a Szerkesztés gomb látható.](./media/tutorial-log-analytics-wizard/edit-workbook-template.png)
 
-6. Az eszköztáron kattintson a három pontra, majd **adja hozzá** , majd **adja hozzá a lekérdezést** .
+6. Az eszköztáron kattintson a három pontra, majd **adja hozzá**, majd **adja hozzá a lekérdezést**.
 
     ![Munkafüzet-lekérdezés hozzáadása](./media/tutorial-log-analytics-wizard/add-custom-workbook-query.png)
 
@@ -392,7 +392,7 @@ Ez az eljárás bemutatja, hogyan adhat hozzá egy lekérdezést egy meglévő m
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkből megtudhatja, hogyan kezelheti az eszközök identitásait a Azure Portal használatával.
 > [!div class="nextstepaction"]

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: gwallace
 ms.openlocfilehash: 8e60ac5065c2f9543a641daf4f62299c00c61fc8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260189"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000657"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Rendszerállapot-jelentések használata a hibaelhárítás során
 Az Azure Service Fabric-összetevők rendszerállapot-jelentéseket biztosítanak a fürtben lévő összes entitáshoz, közvetlenül a jelölőnégyzetből. A [Health Store](service-fabric-health-introduction.md#health-store) a rendszerjelentések alapján hozza létre és törli az entitásokat. Azt is megszervezi egy hierarchiában, amely rögzíti az entitások interakcióit.
@@ -77,7 +77,7 @@ A fürt állapotától függően eltarthat egy ideig a probléma megoldásában.
 Service Fabric önálló fürt esetében a figyelmeztetési jelentés törléséhez az összes vetőmag-csomópontnak Kifogástalan állapotba kell állítania. Attól függően, hogy a magok miért nem kifogástalanok, különböző műveleteket kell végrehajtania: Ha a mag csomópontja nem működik, a felhasználóknak be kell állítania a mag csomópontot; Ha a vetőmag-csomópont el van távolítva vagy ismeretlen, akkor ezt a vetőmag-csomópontot [el kell távolítani a fürtből](./service-fabric-cluster-windows-server-add-remove-nodes.md).
 A figyelmeztetési jelentés automatikusan törlődik, amikor az összes vetőmag-csomópont Kifogástalan állapotba kerül.
 
-A 6,5-nál régebbi Service Fabric verziót futtató fürtök esetében: ebben az esetben a figyelmeztetési jelentést manuálisan kell törölni. **A jelentés törlése előtt győződjön meg arról, hogy az összes mag-csomópont kifogástalan**állapotba kerül: Ha a magok csomópontja nem működik, a felhasználóknak el kell érniük a mag csomópontot; ha a vetőmag-csomópontot eltávolítja vagy ismeretlen, a vetőmag-csomópontot el kell távolítani a fürtből.
+A 6,5-nál régebbi Service Fabric verziót futtató fürtök esetében: ebben az esetben a figyelmeztetési jelentést manuálisan kell törölni. **A jelentés törlése előtt győződjön meg arról, hogy az összes mag-csomópont kifogástalan** állapotba kerül: Ha a magok csomópontja nem működik, a felhasználóknak el kell érniük a mag csomópontot; ha a vetőmag-csomópontot eltávolítja vagy ismeretlen, a vetőmag-csomópontot el kell távolítani a fürtből.
 Miután az összes vetőmag-csomópont Kifogástalan állapotba került, a Powershellből a következő parancs használatával [törölje a figyelmeztetési jelentést](/powershell/module/servicefabric/send-servicefabricclusterhealthreport):
 
 ```powershell
@@ -116,7 +116,7 @@ HealthEvents          :
 
 
 ### <a name="certificate-expiration"></a>Tanúsítvány lejárata
-A **System. FabricNode** figyelmeztetést küld, ha a csomópont által használt tanúsítványok közelében lejárnak. Egy csomóponton három tanúsítvány van: **Certificate_cluster**, **Certificate_server**és **Certificate_default_client**. Ha a lejárat legalább két hét múlva lejár, a jelentés állapota OK. Ha a lejárat két héten belül van, a jelentés típusa figyelmeztetés. Az események ÉLETTARTAMa végtelen, és akkor törlődnek, ha egy csomópont elhagyja a fürtöt.
+A **System. FabricNode** figyelmeztetést küld, ha a csomópont által használt tanúsítványok közelében lejárnak. Egy csomóponton három tanúsítvány van: **Certificate_cluster**, **Certificate_server** és **Certificate_default_client**. Ha a lejárat legalább két hét múlva lejár, a jelentés állapota OK. Ha a lejárat két héten belül van, a jelentés típusa figyelmeztetés. Az események ÉLETTARTAMa végtelen, és akkor törlődnek, ha egy csomópont elhagyja a fürtöt.
 
 * **SourceId forrásazonosító**: System. FabricNode
 * **Tulajdonság**: a **tanúsítvánnyal** kezdődik, és további információkat tartalmaz a tanúsítvány típusáról.
@@ -126,7 +126,7 @@ A **System. FabricNode** figyelmeztetést küld, ha a csomópont által használ
 A Service Fabric Load Balancer figyelmeztetést küld, ha a csomópont kapacitása megsértését észleli.
 
 * **SourceId forrásazonosító**: System. PLB
-* **Tulajdonság**: a **kapacitással**kezdődik.
+* **Tulajdonság**: a **kapacitással** kezdődik.
 * **Következő lépések**: Tekintse át a megadott metrikákat, és tekintse meg az aktuális kapacitást a csomóponton.
 
 ### <a name="node-capacity-mismatch-for-resource-governance-metrics"></a>Csomópont-kapacitás nem egyezik az erőforrás-irányítási mérőszámok esetében
@@ -144,7 +144,7 @@ A System.CM-jelentések az alkalmazás létrehozásakor vagy frissítésekor OKk
 
 * **SourceId forrásazonosító**: System.cm
 * **Tulajdonság**: állapot.
-* **Következő lépések**: Ha az alkalmazást létrehozták vagy frissítették, tartalmaznia kell a Fürtfelügyelő állapotjelentést. Ellenkező esetben egy lekérdezés kiadásával vizsgálja meg az alkalmazás állapotát. Használja például a **Get-ServiceFabricApplication-ApplicationName** *ApplicationName*PowerShell-parancsmagot.
+* **Következő lépések**: Ha az alkalmazást létrehozták vagy frissítették, tartalmaznia kell a Fürtfelügyelő állapotjelentést. Ellenkező esetben egy lekérdezés kiadásával vizsgálja meg az alkalmazás állapotát. Használja például a **Get-ServiceFabricApplication-ApplicationName** *ApplicationName* PowerShell-parancsmagot.
 
 Az alábbi példa a **Fabric:/WordCount** alkalmazás állapotjelző eseményét mutatja be:
 
@@ -425,10 +425,10 @@ Ez a tulajdonság a replikák megnyitása, a replika lezárása vagy egy replika
 Ezek az állapot-figyelmeztetések akkor következnek be, amikor a művelet a házirendtől függően bizonyos számú alkalommal újra helyire próbálkozik. Service Fabric újrapróbálkozik a művelettel a maximális küszöbértékig. A maximális küszöbérték elérésekor előfordulhat, hogy a rendszer megpróbálta kijavítani a helyzetet. Ez a kísérlet azt eredményezheti, hogy ezek a figyelmeztetések törölve lettek, mivel a művelet ezen a csomóponton is elérhető. Ha például egy replika nem tud megnyitni egy csomóponton, a Service Fabric állapot figyelmeztetést vált ki. Ha a replika továbbra sem fog megnyílni, Service Fabric önálló javítást hajt végre. Előfordulhat, hogy ez a művelet egy másik csomóponton próbálkozik. Ez a kísérlet azt eredményezi, hogy a rendszer törli a replika figyelmeztetését. 
 
 * **SourceId forrásazonosító**: System. ra
-* **Tulajdonság**: **ReplicaOpenStatus**, **ReplicaCloseStatus**és **ReplicaChangeRoleStatus**.
+* **Tulajdonság**: **ReplicaOpenStatus**, **ReplicaCloseStatus** és **ReplicaChangeRoleStatus**.
 * **Következő lépések**: vizsgálja meg a szolgáltatási kódot vagy az összeomlási memóriaképeket, hogy megtudja, miért sikertelen a művelet.
 
-Az alábbi példa egy olyan replika állapotát mutatja, amely a `TargetInvocationException` nyitott metódusból származik. A leírás tartalmazza a meghibásodási pontot, a **IStatefulServiceReplica. Open**, a kivétel típusát **TargetInvocationException**és a verem nyomkövetését.
+Az alábbi példa egy olyan replika állapotát mutatja, amely a `TargetInvocationException` nyitott metódusból származik. A leírás tartalmazza a meghibásodási pontot, a **IStatefulServiceReplica. Open**, a kivétel típusát **TargetInvocationException** és a verem nyomkövetését.
 
 ```powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 337cf1df-6cab-4825-99a9-7595090c0b1b -ReplicaOrInstanceId 131483509874784794
@@ -678,7 +678,7 @@ A **System. replikátor** figyelmeztetést küld, ha a replikációs várólista
 A **System. NamingService** az elsődleges replikájának állapotát jelzi, ha az elnevezési művelet hosszabb időt vesz igénybe. Példák az elnevezési műveletekre: [CreateServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) vagy [DeleteServiceAsync](/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync). További módszerek találhatók a FabricClient alatt. Ezek lehetnek például a [Service Management metódusok](/dotnet/api/system.fabric.fabricclient.servicemanagementclient) vagy a [Tulajdonságok felügyeleti módszerei](/dotnet/api/system.fabric.fabricclient.propertymanagementclient)alatt.
 
 > [!NOTE]
-> Az elnevezési szolgáltatás a fürt egyik helyére oldja fel a szolgáltatás nevét. A felhasználók a szolgáltatás nevét és tulajdonságait kezelhetik. Ez egy Service Fabric particionált megőrzött szolgáltatás. Az egyik partíció a *hatóság tulajdonosát*jelöli, amely a Service Fabric nevekkel és szolgáltatásokkal kapcsolatos metaadatokat tartalmaz. A Service Fabric neveket a rendszer a különböző partíciók, *nevük tulajdonosa* partíciók néven rendeli hozzá, így a szolgáltatás bővíthető. További információ az [elnevezési szolgáltatásról](service-fabric-architecture.md).
+> Az elnevezési szolgáltatás a fürt egyik helyére oldja fel a szolgáltatás nevét. A felhasználók a szolgáltatás nevét és tulajdonságait kezelhetik. Ez egy Service Fabric particionált megőrzött szolgáltatás. Az egyik partíció a *hatóság tulajdonosát* jelöli, amely a Service Fabric nevekkel és szolgáltatásokkal kapcsolatos metaadatokat tartalmaz. A Service Fabric neveket a rendszer a különböző partíciók, *nevük tulajdonosa* partíciók néven rendeli hozzá, így a szolgáltatás bővíthető. További információ az [elnevezési szolgáltatásról](service-fabric-architecture.md).
 > 
 > 
 
@@ -791,13 +791,13 @@ A System. hosting jelentések OK, ha a szolgáltatási csomag aktiválása siker
 * **Következő lépések**: vizsgálja meg, miért nem sikerült az aktiválás.
 
 ### <a name="code-package-activation"></a>Csomag aktiválása
-A rendszer. az aktiválás sikeressége esetén az egyes kódokhoz a System. hosting jelentéseket kell megtekintenie. Ha az aktiválás sikertelen, a rendszer a konfigurált figyelmeztetést jeleníti meg. Ha a **CodePackage** nem tudja aktiválni vagy leállítani a konfigurált **CodePackageHealthErrorThreshold**meghaladó hibát, akkor a szolgáltató hibát jelez. Ha egy szolgáltatáscsomag több csomagot tartalmaz, a rendszer aktiválási jelentést hoz létre mindegyikhez.
+A rendszer. az aktiválás sikeressége esetén az egyes kódokhoz a System. hosting jelentéseket kell megtekintenie. Ha az aktiválás sikertelen, a rendszer a konfigurált figyelmeztetést jeleníti meg. Ha a **CodePackage** nem tudja aktiválni vagy leállítani a konfigurált **CodePackageHealthErrorThreshold** meghaladó hibát, akkor a szolgáltató hibát jelez. Ha egy szolgáltatáscsomag több csomagot tartalmaz, a rendszer aktiválási jelentést hoz létre mindegyikhez.
 
 * **SourceId forrásazonosító**: System. hosting
 * **Tulajdonság**: a **CodePackageActivation** előtagot használja, és a kód és a belépési pont nevét tartalmazza *CodePackageActivation: CodePackageName: SetupEntryPoint/BelépésiPont*. Például **CodePackageActivation: code: SetupEntryPoint**.
 
 ### <a name="service-type-registration"></a>Szolgáltatás típusának regisztrálása
-A System. hosting jelentések OK, ha a szolgáltatástípus regisztrálása sikeresen megtörtént. Hibát jelez, ha a regisztráció nem történt meg időben, ahogy a **ServiceTypeRegistrationTimeout**használatával konfigurálták. Ha a futtatókörnyezet be van zárva, a szolgáltatás nem regisztrálja a csomópontot, és egy figyelmeztetést küld a jelentésekről.
+A System. hosting jelentések OK, ha a szolgáltatástípus regisztrálása sikeresen megtörtént. Hibát jelez, ha a regisztráció nem történt meg időben, ahogy a **ServiceTypeRegistrationTimeout** használatával konfigurálták. Ha a futtatókörnyezet be van zárva, a szolgáltatás nem regisztrálja a csomópontot, és egy figyelmeztetést küld a jelentésekről.
 
 * **SourceId forrásazonosító**: System. hosting
 * **Tulajdonság**: a **ServiceTypeRegistration** előtagot használja, és a szolgáltatástípus nevét tartalmazza. Például **ServiceTypeRegistration: FileStoreServiceType**.

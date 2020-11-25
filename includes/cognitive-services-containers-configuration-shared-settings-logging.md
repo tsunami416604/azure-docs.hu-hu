@@ -4,12 +4,12 @@ ms.author: dapine
 ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
-ms.openlocfilehash: 873fd8cbc211f098c93b8fb3fbe701e4a34d8487
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bfb700ac5c220b780c05c8d415a4506c7a2f871
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "68320518"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001173"
 ---
 A `Logging` Beállítások kezelik ASP.net Core naplózási támogatást a tárolóhoz. Ugyanazokat a konfigurációs beállításokat és értékeket használhatja a tárolóhoz, amelyeket egy ASP.NET Core alkalmazáshoz használ. 
 
@@ -17,8 +17,8 @@ A tároló a következő naplózási szolgáltatókat támogatja:
 
 |Szolgáltató|Cél|
 |--|--|
-|[Console](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#console-provider)|A ASP.NET Core `Console` naplózási szolgáltató. A naplózási szolgáltató összes ASP.NET Core konfigurációs beállítása és alapértelmezett értéke támogatott.|
-|[Hibakeresés](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#debug-provider)|A ASP.NET Core `Debug` naplózási szolgáltató. A naplózási szolgáltató összes ASP.NET Core konfigurációs beállítása és alapértelmezett értéke támogatott.|
+|[Console](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#console-provider)|A ASP.NET Core `Console` naplózási szolgáltató. A naplózási szolgáltató összes ASP.NET Core konfigurációs beállítása és alapértelmezett értéke támogatott.|
+|[Hibakeresés](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#debug-provider)|A ASP.NET Core `Debug` naplózási szolgáltató. A naplózási szolgáltató összes ASP.NET Core konfigurációs beállítása és alapértelmezett értéke támogatott.|
 |[Lemez](#disk-logging)|A JSON-naplózási szolgáltató. Ez a naplózási szolgáltató a naplófájlba írja az adatokat a kimeneti csatlakoztatásba.|
 
 Ez a tároló parancs JSON formátumban tárolja a naplózási adatokat a kimeneti csatlakoztatásra:
@@ -50,10 +50,9 @@ Logging:Console:LogLevel:Default=Debug
 
 A `Disk` naplózási szolgáltató a következő konfigurációs beállításokat támogatja:
 
-| Name (Név) | Adattípus | Leírás |
+| Név | Adattípus | Leírás |
 |------|-----------|-------------|
 | `Format` | Sztring | A naplófájlok kimeneti formátuma.<br/> **Megjegyzés:** Ezt az értéket úgy kell beállítani, hogy `json` engedélyezze a naplózási szolgáltatót. Ha ez az érték meg van adva, anélkül, hogy a kimeneti csatlakoztatást is megadja egy tároló példányának létrehozásakor, hiba történik. |
 | `MaxFileSize` | Egész szám | Egy naplófájl maximális mérete megabájtban (MB). Ha az aktuális naplófájl mérete megfelel vagy meghaladja ezt az értéket, a naplózási szolgáltató elindít egy új naplófájlt. Ha a-1 érték van megadva, a naplófájl méretét csak a kimeneti csatlakoztatáshoz tartozó Maximális fájlméret korlátozza. Az alapértelmezett érték az 1. |
 
-További információ a ASP.NET Core naplózási támogatásának konfigurálásáról: [beállítások fájl konfigurálása](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1).
-
+További információ a ASP.NET Core naplózási támogatásának konfigurálásáról: [beállítások fájl konfigurálása](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1).

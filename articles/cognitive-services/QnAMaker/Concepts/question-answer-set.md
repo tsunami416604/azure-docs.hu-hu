@@ -6,11 +6,11 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: c21c82b5fd024598da30f4ac7b1ed01e64561e3b
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576189"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000113"
 ---
 # <a name="question-and-answer-pair-concepts"></a>Kérdések és válaszok – pár fogalmak
 
@@ -28,8 +28,8 @@ Az egyes párokat **azonosítók** jelölik.
 A párok **opcionális** beállításai a következők:
 
 * **A kérdés alternatív formái** – ez segít QnA Maker a megfelelő választ visszaadni a kérdéses szövegezések széles körére
-* **Metaadatok** : a metaadatok egy QnA-párral vannak társítva, és kulcs-érték párokként jelennek meg. A metaadatok címkéi a QnA párok szűrésére és a lekérdezési egyeztetést végző készlet korlátozására használhatók.
-* Többfordulatú **kérések** , amelyek a több fordulatos beszélgetés folytatására szolgálnak
+* **Metaadatok**: a metaadatok egy QnA-párral vannak társítva, és kulcs-érték párokként jelennek meg. A metaadatok címkéi a QnA párok szűrésére és a lekérdezési egyeztetést végző készlet korlátozására használhatók.
+* Többfordulatú **kérések**, amelyek a több fordulatos beszélgetés folytatására szolgálnak
 
 ![QnA Maker tudásbázisok](../media/qnamaker-concepts-knowledgebase/knowledgebase.png)
 
@@ -45,7 +45,7 @@ Exportálja a tudásbázist a **Beállítások** lapról, majd szerkessze a tud�
 
 Miután végzett a szerkesztéssel, importálja újra a TSV-fájlt a **Beállítások** lapról. Ez teljes mértékben lecseréli az aktuális tudásbázist az importált tudásbázisba.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Tudásbázis életciklusa QnA Maker](./development-lifecycle-knowledge-base.md)

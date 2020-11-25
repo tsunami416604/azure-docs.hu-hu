@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: 29457f2f5021fed9d8785f5764c4119de4be1fa9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87089549"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999212"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Az Azure Site Recovery Deployment Planner költségbecslési jelentése 
 
@@ -167,7 +167,7 @@ eastus, eastus2, westus, centralus, northcentralus, southcentralus, northeurope,
 ## <a name="supported-currencies"></a>Támogatott pénznemek
 A Site Recovery Deployment Planner az alábbi pénznemek bármelyikének használatával létre tudja hozni a költségjelentést.
 
-|Pénznem|Name (Név)|Pénznem|Name (Név)|Pénznem|Name (Név)|
+|Pénznem|Név|Pénznem|Név|Pénznem|Név|
 |---|---|---|---|---|---|---|---|
 |ARS|Argentin peso ($)|AUD|Ausztrál dollár ($)|BRL|Brazil real (R$)|
 |CAD|Kanadai dollár ($)|CHF|Svájci frank (CHF)|DKK|Dán korona (kr)|

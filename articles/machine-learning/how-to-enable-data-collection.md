@@ -12,11 +12,11 @@ ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to, data4ml
 ms.openlocfilehash: c6b9dc95e1d50481ac5353460910032ca1711ab1
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94532817"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000453"
 ---
 # <a name="collect-data-from-models-in-production"></a>Adatok gyűjtése üzemi modellből
 
@@ -173,7 +173,7 @@ A blob Storage-ban összegyűjtött adatok elemzéséhez kiválaszthatja a kív�
 
     [![Power BI tartalom](./media/how-to-enable-data-collection/pbiContent.png)](././media/how-to-enable-data-collection/pbiContent.png#lightbox)
 
-1. Kattintson az **OK** gombra. Az adatelőre betöltött sorok.
+1. Válassza az **OK** lehetőséget. Az adatelőre betöltött sorok.
 
     [![Power BI fájlok egyesítése](./media/how-to-enable-data-collection/pbiCombine.png)](././media/how-to-enable-data-collection/pbiCombine.png#lightbox)
 
@@ -208,6 +208,6 @@ A blob Storage-ban összegyűjtött adatok elemzéséhez kiválaszthatja a kív�
 
 1. Az adatai megtekintéséhez és elemzéséhez kövesse a sablon lépéseit.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A gyűjtött adatokra vonatkozó [adateltolódás észlelése](how-to-monitor-datasets.md) .

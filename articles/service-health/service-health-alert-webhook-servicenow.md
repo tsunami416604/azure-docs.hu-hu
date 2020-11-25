@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 06/10/2019
 ms.custom: devx-track-js
 ms.openlocfilehash: f120e9d950cc349d0331a476dbfbfe9d7e599f0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91307568"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000640"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>Azure szolgáltatásbeli állapottal kapcsolatos riasztások küldése a ServiceNow webhookok használatával
 
@@ -33,7 +33,7 @@ Ez a cikk bemutatja, hogyan integrálhatja az Azure szolgáltatás állapotával
 
     ![A "REST API beállítások" a ServiceNow](./media/webhook-alerts/servicenow-restapi-settings.png)
 
-1.  Válassza ki a létrehozott REST API, majd az **erőforrások** lapon válassza az **új**lehetőséget.
+1.  Válassza ki a létrehozott REST API, majd az **erőforrások** lapon válassza az **új** lehetőséget.
 
     ![A ServiceNow erőforrás lapja](./media/webhook-alerts/servicenow-resources-tab.png)
 
@@ -132,7 +132,7 @@ Ez a cikk bemutatja, hogyan integrálhatja az Azure szolgáltatás állapotával
     })(request, response);
     ```
 
-1.  A biztonság lapon törölje a **hitelesítést** , majd válassza a **Küldés**lehetőséget. A `<secret>` beállította ezt az API-t.
+1.  A biztonság lapon törölje a **hitelesítést** , majd válassza a **Küldés** lehetőséget. A `<secret>` beállította ezt az API-t.
 
     ![A "hitelesítés szükséges" jelölőnégyzet a ServiceNow](./media/webhook-alerts/servicenow-resource-settings.png)
 
@@ -150,7 +150,7 @@ Ez a cikk bemutatja, hogyan integrálhatja az Azure szolgáltatás állapotával
 ### <a name="for-a-new-action-group"></a>Új műveleti csoport esetén:
 1. Kövesse a [cikk](./alerts-activity-log-service-notifications-portal.md) 1 – 8. lépését, hogy riasztást hozzon létre egy új műveleti csoporttal.
 
-1. Definiálás a **műveletek**listájában:
+1. Definiálás a **műveletek** listájában:
 
     a. **Művelet típusa:** *webhook*
 
@@ -161,13 +161,13 @@ Ez a cikk bemutatja, hogyan integrálhatja az Azure szolgáltatás állapotával
 1. A riasztás létrehozásához válassza a **Mentés** lehetőséget.
 
 ### <a name="for-an-existing-action-group"></a>Meglévő műveleti csoport esetén:
-1. A [Azure Portal](https://portal.azure.com/)válassza a **figyelő**elemet.
+1. A [Azure Portal](https://portal.azure.com/)válassza a **figyelő** elemet.
 
-1. A **Beállítások** szakaszban válassza a **műveleti csoportok**lehetőséget.
+1. A **Beállítások** szakaszban válassza a **műveleti csoportok** lehetőséget.
 
 1. Keresse meg és válassza ki a szerkeszteni kívánt műveleti csoportot.
 
-1. Hozzáadás a **műveletek**listájához:
+1. Hozzáadás a **műveletek** listájához:
 
     a. **Művelet típusa:** *webhook*
 
@@ -193,7 +193,7 @@ Ez a cikk bemutatja, hogyan integrálhatja az Azure szolgáltatás állapotával
 
 1. Nyissa meg a [ServiceNow](https://www.servicenow.com/) , és ellenőrizze, hogy sikeresen beállította-e az integrációt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Megtudhatja, hogyan [konfigurálhat webhook-értesítéseket a meglévő probléma-felügyeleti rendszerekhez](service-health-alert-webhook-guide.md).
 - Tekintse át a [tevékenység naplójának riasztása webhook sémáját](../azure-monitor/platform/activity-log-alerts-webhook.md). 
 - Tudnivalók a [szolgáltatás állapotával kapcsolatos értesítésekről](./service-notifications.md).

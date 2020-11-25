@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
 ms.openlocfilehash: cec44bbabdb7d528c30a8d3396b819f2eb3c5386
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93235883"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999439"
 ---
-A szolgáltatás egyszerűen beállítható, de ez nem jelenti azt, hogy a probléma ingyenes lesz. Ha problémák merülnek fel a kívánt végpont elérésekor, néhány segédprogram segítségével tesztelheti a kapcsolatot az alkalmazás-konzolról. Két konzolt használhat. Az egyik a kudu-konzol, a másik pedig a Azure Portal konzolja. A kudu-konzol alkalmazásból való eléréséhez nyissa meg az **eszközök**  >  **kudu** . A Kudo-konzolt a következő helyen is elérheti: [sitename]. SCM. azurewebsites. net. A webhely betöltése után lépjen a **Debug konzol** lapra. Ha az alkalmazásból szeretné beolvasni a Azure Portal által üzemeltetett konzolt, lépjen az **eszközök**  >  **konzolra** .
+A szolgáltatás egyszerűen beállítható, de ez nem jelenti azt, hogy a probléma ingyenes lesz. Ha problémák merülnek fel a kívánt végpont elérésekor, néhány segédprogram segítségével tesztelheti a kapcsolatot az alkalmazás-konzolról. Két konzolt használhat. Az egyik a kudu-konzol, a másik pedig a Azure Portal konzolja. A kudu-konzol alkalmazásból való eléréséhez nyissa meg az **eszközök**  >  **kudu**. A Kudo-konzolt a következő helyen is elérheti: [sitename]. SCM. azurewebsites. net. A webhely betöltése után lépjen a **Debug konzol** lapra. Ha az alkalmazásból szeretné beolvasni a Azure Portal által üzemeltetett konzolt, lépjen az **eszközök**  >  **konzolra**.
 
 #### <a name="tools"></a>Eszközök
-Natív Windows-alkalmazásokban a **ping** , az **nslookup** és a **tracert** eszköz nem fog működni a konzolon a biztonsági korlátozások miatt ( [Egyéni Windows-tárolókban](../articles/app-service/quickstart-custom-container.md)működnek). Az üresség kitöltéséhez két különálló eszközt adnak hozzá. A DNS-funkciók teszteléséhez hozzáadott egy **nameresolver.exe** nevű eszközt. A szintaxis a következő:
+Natív Windows-alkalmazásokban a **ping**, az **nslookup** és a **tracert** eszköz nem fog működni a konzolon a biztonsági korlátozások miatt ( [Egyéni Windows-tárolókban](../articles/app-service/quickstart-custom-container.md)működnek). Az üresség kitöltéséhez két különálló eszközt adnak hozzá. A DNS-funkciók teszteléséhez hozzáadott egy **nameresolver.exe** nevű eszközt. A szintaxis a következő:
 
 ```console
 nameresolver.exe hostname [optional: DNS Server]
@@ -68,7 +68,7 @@ Nem tudja, milyen címet használ ténylegesen az alkalmazás. Az integrációs 
 
 További hibakeresési lépések a következők:
 
-* Kapcsolódjon a virtuális hálózatban található virtuális GÉPHEZ, és próbálja meg elérni az erőforrás-gazdagépet: innen a port. A TCP-hozzáférés teszteléséhez használja a következő PowerShell **-parancsot: test-NETCONNECTION** . A szintaxis a következő:
+* Kapcsolódjon a virtuális hálózatban található virtuális GÉPHEZ, és próbálja meg elérni az erőforrás-gazdagépet: innen a port. A TCP-hozzáférés teszteléséhez használja a következő PowerShell **-parancsot: test-NETCONNECTION**. A szintaxis a következő:
 
 ```powershell
 test-netconnection hostname [optional: -Port]

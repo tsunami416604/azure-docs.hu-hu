@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
 ms.openlocfilehash: ad5e91a6dcdb61e09a64e61a27f12148ec28168e
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490576"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000742"
 ---
 # <a name="log-analytics-agent-data-sources-in-azure-monitor"></a>Log Analytics Agent adatforrások a Azure Monitor
 Az [log Analytics](log-analytics-agent.md) ügynököt használó virtuális gépekről Azure monitor gyűjtött adatokat az [log Analytics munkaterületen](data-platform-logs.md)konfigurált adatforrások határozzák meg.   Minden adatforrás egy adott típusú rekordokat hoz létre, amelyek mindegyike rendelkezik saját tulajdonságokkal.

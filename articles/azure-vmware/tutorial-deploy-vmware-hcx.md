@@ -3,18 +3,21 @@ title: Oktatóanyag – VMware HCX üzembe helyezése és konfigurálása
 description: Ismerje meg, hogyan helyezhet üzembe és konfigurálhat VMware HCX-megoldást az Azure VMware-megoldás privát felhője számára.
 ms.topic: tutorial
 ms.date: 11/18/2020
-ms.openlocfilehash: 57bcf1bd3023e56f6a64b5d82d8f1fc90be9dd47
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: afb5c653ce7c4b4a453a4031c5664042357de6c0
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888742"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95999627"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>A VMware HCX üzembe helyezése és konfigurálása
 
 Ez a cikk bemutatja, hogyan helyezheti üzembe és konfigurálhatja a helyszíni VMware HCX-összekötőt az Azure VMware-megoldás privát felhője számára. A VMware HCX használatával áttelepítheti VMware-alapú számítási feladatait az Azure VMware-megoldásba és más csatlakoztatott webhelyekre különböző áttelepítési típusok használatával. Mivel az Azure VMware-megoldás üzembe helyezi és konfigurálja a HCX Cloud Managert, le kell töltenie, aktiválnia és konfigurálnia kell a HCX-összekötőt a helyszíni VMware Datacenter-ben.
 
 A VMware HCX Advanced Connector előre telepítve van az Azure VMware megoldásban. Legfeljebb három helyszíni kapcsolatot támogat (a helyszínen a felhőben vagy a felhőben). Ha három helynél több kapcsolatra van szüksége, küldjön egy [támogatási kérést](https://portal.azure.com/#create/Microsoft.Support) a [VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) bővítmény engedélyezéséhez. A bővítmény jelenleg előzetes verzióban érhető el. 
+
+>[!Note]
+>Bár a VMware-konfiguráció maximális eszköze azt írja le, hogy a helyszíni párok legfeljebb 25-re vannak lefoglalva a helyszíni és a Cloud Manager között, a licencelés ismét 3-ra korlátozza a speciális és a 10 for Enterprise kiadást.
 
 >[!NOTE]
 >A VMware HCX Enterprise előzetes verziójú szolgáltatásként érhető el az Azure VMware megoldásban. Ingyenes, és az előzetes verziójú szolgáltatás használati feltételeinek hatálya alá tartozik. A VMware HCX Enterprise szolgáltatás általánosan elérhetővé tétele után 30 napos értesítést kap, hogy a számlázás át fog térni. Lehetősége van a szolgáltatás kikapcsolására vagy letiltására is. A VMware HCX Enterprise és a VMware HCX Advanced közötti egyszerű visszalépési útvonal nem érhető el. Ha úgy dönt, hogy visszalépést végez, újra kell telepítenie az állásidőt.
@@ -354,7 +357,7 @@ Ha a helyszíni környezetből származó hálózatokat az Azure VMware megoldá
 Az eljárás végpontok közötti áttekintéséhez tekintse meg az [Azure VMware-megoldás: hálózati bővítmény](https://www.youtube.com/embed/cNlp0f_tTr0) videóját.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha a készülék összekötő-alagútjának állapota felfelé és zöldre van **állítva** , a VMware HCX használatával áttelepítheti és védetté teheti az Azure VMware megoldás virtuális gépeket. Az Azure VMware-megoldás támogatja a munkaterhelések áttelepítését (hálózati bővítménnyel vagy anélkül). A számítási feladatokat továbbra is áttelepítheti a vSphere-környezetbe, valamint a hálózatok helyszíni létrehozását és a virtuális gépek központi telepítését a hálózatokra.  
 

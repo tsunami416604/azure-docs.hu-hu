@@ -9,11 +9,11 @@ ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
 ms.openlocfilehash: e5593d530891e39404e0b9760861f2f22ae333d3
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952693"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999994"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Az Oracle ASM beállítása Azure Linux rendszerű virtuális gépen  
 
@@ -574,7 +574,7 @@ Sikeresen konfigurálta az Oracle automatizált tárolók kezelését a Oracle D
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Oktatóanyag: Oracle-DataGuard konfigurálása konfigurálása](configure-oracle-dataguard.md)
 

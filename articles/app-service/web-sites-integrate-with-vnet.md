@@ -8,11 +8,11 @@ ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 764e0262c8a26511c55740aa1797b5ec9b59cc8e
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150137"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999440"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Alkalmazás integrálása egy Azure-beli virtuális hálózattal
 
@@ -24,9 +24,9 @@ Azure App Service két változattal rendelkezik a VNet-integrációs szolgáltat
 
 ## <a name="enable-vnet-integration"></a>VNet-integráció engedélyezése
 
-1. Nyissa meg a **hálózati** felhasználói felületet a app Service portálon. A **VNet-integráció**területen válassza **a kattintson ide a konfiguráláshoz**lehetőséget.
+1. Nyissa meg a **hálózati** felhasználói felületet a app Service portálon. A **VNet-integráció** területen válassza **a kattintson ide a konfiguráláshoz** lehetőséget.
 
-1. Válassza a **VNet hozzáadása**lehetőséget.
+1. Válassza a **VNet hozzáadása** lehetőséget.
 
    ![VNet-integráció kiválasztása][1]
 
@@ -36,7 +36,7 @@ Azure App Service két változattal rendelkezik a VNet-integrációs szolgáltat
 
    * Ha a VNet ugyanabban a régióban található, hozzon létre egy új alhálózatot, vagy válasszon ki egy üres, már meglévő alhálózatot.
    * Egy másik régióban lévő VNet kiválasztásához rendelkeznie kell olyan VNet-átjáróval, amelynél engedélyezve van a pont – hely.
-   * A klasszikus VNet való integráláshoz a **Virtual Network** legördülő lista kiválasztása helyett válassza a **kattintson ide a klasszikus VNet való kapcsolódáshoz**lehetőséget. Válassza ki a kívánt klasszikus virtuális hálózatot. A célként megadott VNet már rendelkeznie kell egy, a pont – hely kapcsolattal rendelkező Virtual Network átjáróval.
+   * A klasszikus VNet való integráláshoz a **Virtual Network** legördülő lista kiválasztása helyett válassza a **kattintson ide a klasszikus VNet való kapcsolódáshoz** lehetőséget. Válassza ki a kívánt klasszikus virtuális hálózatot. A célként megadott VNet már rendelkeznie kell egy, a pont – hely kapcsolattal rendelkező Virtual Network átjáróval.
 
     ![Klasszikus VNet kiválasztása][3]
 
@@ -116,15 +116,15 @@ Ha a regionális VNet-integrációval való társítást használ, nincs szüks�
 
 Ha átjáróval megkövetelt VNet-integrációt használ a társításhoz, néhány további elemet is be kell állítania. Az alkalmazással való együttműködés konfigurálása:
 
-1. Adjon hozzá egy egyenrangú kapcsolatot azon a VNet, amelyhez az alkalmazás csatlakozik. A társítási kapcsolat hozzáadásakor engedélyezze a **virtuális hálózati hozzáférés** engedélyezése beállítást, és válassza a **továbbított forgalom** engedélyezése és az **átjáró átvitelének**engedélyezése lehetőséget.
-1. Hozzon létre egy egyenrangú kapcsolatot a VNet, amely a csatlakoztatott VNet van csatlakoztatva. Amikor hozzáadja a társítási kapcsolatot a cél VNet, engedélyezze a **virtuális hálózati hozzáférés** engedélyezése és a **továbbított forgalom** engedélyezése és a **távoli átjárók engedélyezése**beállítást.
+1. Adjon hozzá egy egyenrangú kapcsolatot azon a VNet, amelyhez az alkalmazás csatlakozik. A társítási kapcsolat hozzáadásakor engedélyezze a **virtuális hálózati hozzáférés** engedélyezése beállítást, és válassza a **továbbított forgalom** engedélyezése és az **átjáró átvitelének** engedélyezése lehetőséget.
+1. Hozzon létre egy egyenrangú kapcsolatot a VNet, amely a csatlakoztatott VNet van csatlakoztatva. Amikor hozzáadja a társítási kapcsolatot a cél VNet, engedélyezze a **virtuális hálózati hozzáférés** engedélyezése és a **továbbított forgalom** engedélyezése és a **távoli átjárók engedélyezése** beállítást.
 1. Nyissa meg a **app Service terv**  >  **hálózatkezelés**  >  **VNet-integráció** felhasználói felületét a portálon. Válassza ki azt a VNet, amelyhez az alkalmazás csatlakozik. Az Útválasztás szakaszban adja meg annak a VNet a VNet, amelyhez az alkalmazás csatlakoztatva van.
 
-## <a name="manage-vnet-integration"></a>VNet-integráció kezelése
+## <a name="manage-vnet-integration"></a>Virtuálishálózat-integráció kezelése
 
 A VNet való csatlakozás és a kapcsolat bontása alkalmazási szinten történik. A több alkalmazás közötti VNet-integrációt befolyásoló műveletek a App Servicei csomag szintjén találhatók. Az alkalmazás > **hálózatkezelés**  >  **VNet-integrációs** portálján megtekintheti a VNet adatait. A app Servicei terv szintjén hasonló információkat tekinthet meg a **App Service plan**  >  **hálózatkezelés**  >  **VNet-integrációs** portál app Service megtervezése című témakörben.
 
-Az egyetlen művelet, amelyet a VNet-integrációs példány alkalmazás nézetében elvégezhet, az alkalmazás leválasztása a VNet, amelyhez jelenleg csatlakozik. Az alkalmazás VNet való leválasztásához válassza a **Leválasztás**lehetőséget. Az alkalmazás újraindul, amikor leválaszt egy VNet. A kapcsolat bontása nem módosítja a VNet. Az alhálózat vagy átjáró nem törlődik. Ha ezt követően törölni szeretné a VNet, először válassza le az alkalmazást a VNet, és törölje az abban lévő erőforrásokat, például az átjárókat.
+Az egyetlen művelet, amelyet a VNet-integrációs példány alkalmazás nézetében elvégezhet, az alkalmazás leválasztása a VNet, amelyhez jelenleg csatlakozik. Az alkalmazás VNet való leválasztásához válassza a **Leválasztás** lehetőséget. Az alkalmazás újraindul, amikor leválaszt egy VNet. A kapcsolat bontása nem módosítja a VNet. Az alhálózat vagy átjáró nem törlődik. Ha ezt követően törölni szeretné a VNet, először válassza le az alkalmazást a VNet, és törölje az abban lévő erőforrásokat, például az átjárókat.
 
 A App Service terv VNet-integrációs felhasználói felülete megjeleníti az App Service-csomagban lévő alkalmazások által használt összes VNet-integrációt. Az egyes VNet részleteinek megtekintéséhez válassza ki azt a VNet, amelyre kíváncsi. Az átjárók számára szükséges VNet-integráció két műveletet hajt végre:
 
@@ -137,7 +137,7 @@ A VNet meghatározott útvonalak az alkalmazásból a VNet irányuló forgalom i
 ### <a name="gateway-required-vnet-integration-certificates"></a>Átjáró – kötelező VNet integrációs tanúsítványok
 Ha az átjáróval megkövetelt VNet-integráció engedélyezve van, a tanúsítványok biztonságának biztosításához szükség van a tanúsítványok cseréjére. A tanúsítványokkal együtt a DNS-konfiguráció, az útvonalak és más hasonló, a hálózatot leíró dolgok.
 
-Ha a tanúsítványok vagy a hálózati adatok módosulnak, válassza a **szinkronizálás hálózat**lehetőséget. Ha a **szinkronizálási hálózat**lehetőséget választja, az alkalmazás és a VNet közötti kapcsolat rövid kimaradást okoz. Az alkalmazás nem indul újra, a kapcsolat elvesztése miatt előfordulhat, hogy a hely nem működik megfelelően.
+Ha a tanúsítványok vagy a hálózati adatok módosulnak, válassza a **szinkronizálás hálózat** lehetőséget. Ha a **szinkronizálási hálózat** lehetőséget választja, az alkalmazás és a VNet közötti kapcsolat rövid kimaradást okoz. Az alkalmazás nem indul újra, a kapcsolat elvesztése miatt előfordulhat, hogy a hely nem működik megfelelően.
 
 ## <a name="pricing-details"></a>Díjszabás részletei
 A regionális VNet-integrációs szolgáltatás nem számít fel további díjat a App Service csomag díjszabási díjain túli használatért.

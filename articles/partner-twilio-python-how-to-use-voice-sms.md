@@ -14,11 +14,11 @@ ms.date: 02/19/2015
 ms.author: gwallace
 ms.custom: devx-track-python
 ms.openlocfilehash: ba93591ade730c4e9c9bdb6a42232e71e10d6469
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87850151"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000436"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>A Twilio használata a hang-és SMS-funkciókhoz a Pythonban
 Ez az útmutató bemutatja, hogyan hajthat végre általános programozási feladatokat az Azure Twilio API szolgáltatásával. A tárgyalt forgatókönyvek közé tartozik a telefonhívás kezdeményezése és egy rövid üzenetküldési szolgáltatás (SMS) üzenet küldése. A Twilio és a hang-és SMS-alkalmazások alkalmazásokban való használatáról további információt a [következő lépések](#NextSteps) című szakaszban talál.
@@ -41,21 +41,21 @@ A Twilio API egy REST-alapú API, amely hang-és SMS-funkciókat biztosít az al
 A Twilio API legfontosabb szempontjai a Twilio-műveletek és a Twilio Markup Language (TwiML).
 
 ### <a name="twilio-verbs"></a><a id="Verbs"></a>Twilio-műveletek
-Az API a Twilio-műveletek használatát teszi lehetővé; például a ** &lt; Say &gt; ** művelet arra utasítja a Twilio, hogy hallhatóan kézbesítse az üzenetet egy híváson.
+Az API a Twilio-műveletek használatát teszi lehetővé; például a **&lt; Say &gt;** művelet arra utasítja a Twilio, hogy hallhatóan kézbesítse az üzenetet egy híváson.
 
 A következő lista az Twilio-műveletek listáját tartalmazza. Ismerje meg a többi műveletet és képességeket a [Twilio Markup Language dokumentációján][twiml]keresztül.
 
-* ** &lt; Dial &gt; **: a hívó csatlakoztatása egy másik telefonhoz.
-* Összegyűjtése: a telefon billentyűzetén megadott numerikus számjegyeket gyűjti. ** &lt; &gt; **
-* ** &lt; Vonalbontás &gt; **: egy hívást ér véget.
-* ** &lt; Szüneteltetés &gt; **: csendes várakozás a megadott számú másodpercre.
-* ** &lt; Lejátszás &gt; **: hangfájl lejátszása.
-* ** &lt; Üzenetsor &gt; **: adja hozzá a-t a hívók várólistához.
-* ** &lt; Rekord &gt; **: a hívó hangját rögzíti, és egy, a rögzítést tartalmazó fájl URL-címét adja vissza.
-* ** &lt; Átirányítás &gt; **: egy hívás vagy SMS átadása a TWIML egy másik URL-címen keresztül.
-* ** &lt; Elutasítás &gt; **: elutasítja a Twilio-szám bejövő hívását a számlázás nélkül.
-* ** &lt; Tegyük &gt; **fel, hogy a szöveget a híváson végzett beszédre alakítja át.
-* ** &lt; SMS &gt; **: SMS-üzenet küldése.
+* **&lt; Dial &gt;**: a hívó csatlakoztatása egy másik telefonhoz.
+* Összegyűjtése: a telefon billentyűzetén megadott numerikus számjegyeket gyűjti. **&lt; &gt;**
+* **&lt; Vonalbontás &gt;**: egy hívást ér véget.
+* **&lt; Szüneteltetés &gt;**: csendes várakozás a megadott számú másodpercre.
+* **&lt; Lejátszás &gt;**: hangfájl lejátszása.
+* **&lt; Üzenetsor &gt;**: adja hozzá a-t a hívók várólistához.
+* **&lt; Rekord &gt;**: a hívó hangját rögzíti, és egy, a rögzítést tartalmazó fájl URL-címét adja vissza.
+* **&lt; Átirányítás &gt;**: egy hívás vagy SMS átadása a TWIML egy másik URL-címen keresztül.
+* **&lt; Elutasítás &gt;**: elutasítja a Twilio-szám bejövő hívását a számlázás nélkül.
+* **&lt; Tegyük &gt;** fel, hogy a szöveget a híváson végzett beszédre alakítja át.
+* **&lt; SMS &gt;**: SMS-üzenet küldése.
 
 ### <a name="twiml"></a><a id="TwiML"></a>TwiML
 A TwiML XML-alapú utasításokat tartalmaz a Twilio műveletek alapján, amelyek tájékoztatják a Twilio, hogy hogyan dolgozzák fel a hívást vagy az SMS-t.
@@ -76,7 +76,7 @@ A Twilio-műveletekkel, azok attribútumaival és TwiML kapcsolatos további inf
 ## <a name="create-a-twilio-account"></a><a id="CreateAccount"></a>Twilio-fiók létrehozása
 Ha készen áll egy Twilio-fiók beszerzésére, regisztráljon a [Twilio kipróbálása][try_twilio]gombra. Elindíthat egy ingyenes fiókot, és később is frissítheti a fiókját.
 
-Amikor regisztrál egy Twilio-fiókra, megkapja a fiók biztonsági azonosítóját és egy hitelesítési jogkivonatot. Mindkettőre szükség lesz a Twilio API-hívások létrehozásához. A fiókjához való jogosulatlan hozzáférés megakadályozása érdekében őrizze meg biztonságos hitelesítési tokenjét. A fiók biztonsági azonosítója és hitelesítési jogkivonata a [Twilio-konzolon][twilio_console], a **fiók SID** és **hitelesítési jogkivonat**mezőjében látható.
+Amikor regisztrál egy Twilio-fiókra, megkapja a fiók biztonsági azonosítóját és egy hitelesítési jogkivonatot. Mindkettőre szükség lesz a Twilio API-hívások létrehozásához. A fiókjához való jogosulatlan hozzáférés megakadályozása érdekében őrizze meg biztonságos hitelesítési tokenjét. A fiók biztonsági azonosítója és hitelesítési jogkivonata a [Twilio-konzolon][twilio_console], a **fiók SID** és **hitelesítési jogkivonat** mezőjében látható.
 
 ## <a name="create-a-python-application"></a><a id="create_app"></a>Python-alkalmazás létrehozása
 A Twilio szolgáltatást használó és az Azure-ban futó Python-alkalmazások nem különböznek a Twilio szolgáltatást használó más Python-alkalmazástól. Habár a Twilio-szolgáltatások REST-alapúak, és a Python számos módon hívhatók meg, ez a cikk a Twilio-szolgáltatások a [githubról a Pythonhoz készült Twilio-kódtár][twilio_python]használatával történő használatát ismerteti. További információ a Pythonhoz készült Twilio-függvénytár használatáról: [https://www.twilio.com/docs/libraries/python][twilio_lib_docs] .
@@ -86,7 +86,7 @@ Először is, [új Azure Linux virtuális gép beállítása] [azure_vm_setup], 
 ### <a name="add-an-incoming-rule"></a>Bejövő szabály hozzáadása
   1. Nyissa meg a [hálózati biztonsági csoport] [azure_nsg] lapot.
   2. Válassza ki azt a hálózati biztonsági csoportot, amely megfelel a virtuális gépnek.
-  3. A 80-es **porthoz**tartozó hozzáadási és **Kimenő szabály** . Ügyeljen arra, hogy bármely címről engedélyezze a bejövő adatforrást.
+  3. A 80-es **porthoz** tartozó hozzáadási és **Kimenő szabály** . Ügyeljen arra, hogy bármely címről engedélyezze a bejövő adatforrást.
 
 ### <a name="set-the-dns-name-label"></a>A DNS-név címke beállítása
   1. Lépjen a [Nyilvános IP-címek] [azure_ips] lapra.

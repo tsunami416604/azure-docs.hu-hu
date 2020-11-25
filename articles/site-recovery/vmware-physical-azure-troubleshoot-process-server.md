@@ -8,11 +8,11 @@ ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
 ms.openlocfilehash: ad1bec66edaa3fcc6049f4911684f6e6d6c3e366
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369403"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999186"
 ---
 # <a name="troubleshoot-the-process-server"></a>A folyamat kiszolgálójának hibáinak megoldása
 
@@ -71,7 +71,7 @@ A folyamat-kiszolgálón futó szolgáltatásokat a következő táblázat fogla
 
 A Microsoft Azure Recovery Services ügynök (obengine) kivételével az összes szolgáltatás esetében győződjön meg arról, hogy a StartType **automatikus** vagy **automatikus (Késleltetett indítás)** értékre van beállítva.
  
-**Üzembe helyezés** | **Futó szolgáltatások**
+**Környezet** | **Futó szolgáltatások**
 --- | ---
 **Kiszolgáló feldolgozása a konfigurációs kiszolgálón** | ProcessServer; ProcessServerMonitor; cxprocessserver Inmage-PushInstall; Napló feltöltési szolgáltatása (LogUpload); Inmage Scout Application szolgáltatás; Microsoft Azure Recovery Services ügynök (obengine); Inmage Scout VX-ügynök – Sentinel/Outpost (svagents); tmansvc World Wide Web közzétételi szolgáltatás (W3SVC); MySQL Microsoft Azure Site Recovery szolgáltatás (DRA)
 **Önálló kiszolgálóként futtató kiszolgáló feldolgozása** | ProcessServer; ProcessServerMonitor; cxprocessserver Inmage-PushInstall; Napló feltöltési szolgáltatása (LogUpload); Inmage Scout Application szolgáltatás; Microsoft Azure Recovery Services ügynök (obengine); Inmage Scout VX-ügynök – Sentinel/Outpost (svagents); tmansvc.
@@ -113,7 +113,7 @@ Győződjön meg arról, hogy a replikált gépen nem található víruskereső 
 3. Ellenőrizze, hogy a sikeres-e a kapcsolatok.
 
 
-**Kapcsolatok** | **Részletek** | **Művelet**
+**Kapcsolódás** | **Részletek** | **Művelet**
 --- | --- | ---
 **Sikeres** | A Telnet egy üres képernyőt jelenít meg, és a Process Server elérhető. | Nincs szükség további műveletre.
 **Sikertelen** | Nem lehet kapcsolatot létesíteni | Győződjön meg arról, hogy a (z) 9443 bejövő port engedélyezett a Process Serveren. Ha például egy peremhálózati hálózat vagy egy szűrt alhálózat van. A kapcsolat ismételt ellenőrzése.
@@ -168,7 +168,7 @@ Győződjön meg arról, hogy a Process Server aktívan küldi az Azure-ba irán
 
   1. A Process Serveren nyissa meg a Feladatkezelő eszközt (nyomja le a CTRL + SHIFT + ESC billentyűkombinációt).
   2. Válassza a **teljesítmény** fület > **Open erőforrás-figyelő**.
-  3. A **erőforrás-figyelő** lapon válassza a **hálózat** lapot. A **hálózati tevékenységgel rendelkező folyamatok**területen győződjön meg arról, hogy a cbengine.exe aktívan küld-e nagy mennyiségű adat.
+  3. A **erőforrás-figyelő** lapon válassza a **hálózat** lapot. A **hálózati tevékenységgel rendelkező folyamatok** területen győződjön meg arról, hogy a cbengine.exe aktívan küld-e nagy mennyiségű adat.
 
        ![Képernyőfelvétel: nagy mennyiségű kötet a hálózati tevékenységgel rendelkező folyamatokban.](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
 
@@ -176,8 +176,8 @@ Győződjön meg arról, hogy a Process Server aktívan küldi az Azure-ba irán
 
 ## <a name="step-9-check-the-process-server-connection-to-azure-blob-storage"></a>9. lépés: az Azure Blob Storage-hoz való kapcsolódási kiszolgáló keresése
 
-1. A erőforrás-figyelő területen válassza a **cbengine.exe**lehetőséget.
-2. A **TCP-kapcsolatok**területen ellenőrizze, hogy van-e kapcsolat a Process Server és az Azure Storage között.
+1. A erőforrás-figyelő területen válassza a **cbengine.exe** lehetőséget.
+2. A **TCP-kapcsolatok** területen ellenőrizze, hogy van-e kapcsolat a Process Server és az Azure Storage között.
 
   ![A cbengine.exe és az Azure Blob Storage URL-címéhez való kapcsolódást bemutató képernyőkép.](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
 
@@ -185,7 +185,7 @@ Győződjön meg arról, hogy a Process Server aktívan küldi az Azure-ba irán
 
 Ha nincs kapcsolat a Process Serverrel az Azure Blob Storage URL-címével, ellenőrizze, hogy a szolgáltatások futnak-e.
 
-1. A vezérlőpulton válassza a **szolgáltatások**lehetőséget.
+1. A vezérlőpulton válassza a **szolgáltatások** lehetőséget.
 2. Ellenőrizze, hogy a következő szolgáltatások futnak-e:
 
     - cxprocessserver
@@ -199,7 +199,7 @@ Ha nincs kapcsolat a Process Serverrel az Azure Blob Storage URL-címével, elle
 
 ## <a name="step-10-check-the-process-server-connection-to-azure-public-ip-address"></a>10. lépés: a Process Server Azure nyilvános IP-címhez való kapcsolódásának keresése
 
-1. A Process Server **%ProgramFiles%\Microsoft Azure Recovery Services Agent\Temp**nyissa meg a legújabb CBEngineCurr. errlog fájlt.
+1. A Process Server **%ProgramFiles%\Microsoft Azure Recovery Services Agent\Temp** nyissa meg a legújabb CBEngineCurr. errlog fájlt.
 2. A fájlban keresse meg a **443**, vagy a karakterlánc- **kapcsolódási kísérlet sikertelen volt**.
 
   ![A temp mappában található hibák naplói](./media/vmware-physical-azure-troubleshoot-process-server/logdetails1.png)
@@ -230,12 +230,12 @@ Győződjön meg arról, hogy az IP-cím alapú tűzfal blokkolja-e a hozzáfér
 
 ## <a name="step-12-verify-process-server-proxy-settings"></a>12. lépés: a folyamat-kiszolgáló proxy beállításainak ellenőrzése 
 
-1. Ha proxykiszolgálót használ, győződjön meg arról, hogy a proxykiszolgáló nevét feloldja a DNS-kiszolgáló. Tekintse meg a konfigurációs kiszolgáló beállításakor megadott értéket a **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure Site Recovery\ProxySettings**beállításkulcsban.
+1. Ha proxykiszolgálót használ, győződjön meg arról, hogy a proxykiszolgáló nevét feloldja a DNS-kiszolgáló. Tekintse meg a konfigurációs kiszolgáló beállításakor megadott értéket a **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure Site Recovery\ProxySettings** beállításkulcsban.
 2. Győződjön meg arról, hogy a Azure Site Recovery ügynök ugyanazokat a beállításokat használja az adatküldéshez.
 
     a) keressen **Microsoft Azure Backup**.
 
-    b) nyissa meg **Microsoft Azure Backup**, és válassza a **művelet**  >  **módosítása tulajdonságok**lehetőséget.
+    b) nyissa meg **Microsoft Azure Backup**, és válassza a **művelet**  >  **módosítása tulajdonságok** lehetőséget.
 
     c) a proxy **konfigurálása** lapon a proxy címnek meg kell egyeznie a beállításjegyzék-beállításokban megjelenő proxy-címtől. Ha nem, módosítsa azt ugyanarra a címekre.
 
@@ -244,7 +244,7 @@ Győződjön meg arról, hogy az IP-cím alapú tűzfal blokkolja-e a hozzáfér
 Növelje meg a folyamat-kiszolgáló és az Azure közötti sávszélességet, és győződjön meg arról, hogy a probléma továbbra is fennáll.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha további segítségre van szüksége, tegye fel kérdéseit a [Microsoft Q&a Azure site Recovery kérdését](/answers/topics/azure-site-recovery.html). 
 

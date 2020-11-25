@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 3/8/2019
 ms.openlocfilehash: 99d90e4d93f0e4a70350a5a33a65700c3e14acb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398323"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000810"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Új és módosított fájlok másolása a LastModifiedDate használatával Azure Data Factory
 
@@ -49,7 +49,7 @@ A sablon hat paramétert definiál:
 
     ![Új kapcsolódás létrehozása a célhoz](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate3.png)
 
-3. Válassza **a sablon használata**lehetőséget.
+3. Válassza **a sablon használata** lehetőséget.
 
     ![Sablon használata](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate4.png)
     
@@ -57,7 +57,7 @@ A sablon hat paramétert definiál:
 
     ![A folyamat megjelenítése](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate5.png)
 
-5. Válassza a **hibakeresés**elemet, írja be a **Paraméterek** értékét, majd válassza a **Befejezés**lehetőséget.  Az alábbi képen a paramétereket az alábbiak szerint állítja be.
+5. Válassza a **hibakeresés** elemet, írja be a **Paraméterek** értékét, majd válassza a **Befejezés** lehetőséget.  Az alábbi képen a paramétereket az alábbiak szerint állítja be.
    - **FolderPath_Source** = SourceFolder
    - **Directory_Source** = almappa
    - **FolderPath_Destination** = destinationfolder
@@ -73,23 +73,23 @@ A sablon hat paramétert definiál:
 
     ![Az eredmény áttekintése](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate7.png)
     
-7. Most hozzáadhat egy kieséses Windows-triggert a folyamat automatizálásához, így a folyamat a LastModifiedDate rendszeres időközönként csak az új és módosított fájlokat tudja másolni.  Válassza az **trigger hozzáadása**lehetőséget, és válassza az **új/szerkesztés**lehetőséget.
+7. Most hozzáadhat egy kieséses Windows-triggert a folyamat automatizálásához, így a folyamat a LastModifiedDate rendszeres időközönként csak az új és módosított fájlokat tudja másolni.  Válassza az **trigger hozzáadása** lehetőséget, és válassza az **új/szerkesztés** lehetőséget.
 
     ![Képernyőkép az új/szerkesztés menüpontra, amely az trigger hozzáadása lehetőség kiválasztásakor jelenik meg.](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate8.png)
     
-8. Az **Eseményindítók hozzáadása** ablakban válassza az **+ új**lehetőséget.
+8. Az **Eseményindítók hozzáadása** ablakban válassza az **+ új** lehetőséget.
 
 9. Az eseményindító típusának kiválasztásához válassza a kikapcsolás **ablakot** **15 percenként** , az ismétlődés (bármilyen intervallumra módosítható) értékre állítva. Válassza az **Igen** lehetőséget az aktivált mezőben, majd kattintson **az OK gombra**.
 
     ![Eseményindító létrehozása](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate10.png)    
     
-10. Állítsa be az **trigger futtatási paramétereinek** értékét az alábbiak szerint, majd válassza a **Befejezés**lehetőséget.
+10. Állítsa be az **trigger futtatási paramétereinek** értékét az alábbiak szerint, majd válassza a **Befejezés** lehetőséget.
     - **FolderPath_Source**  =  **SourceFolder**.  A mappát lecserélheti a forrás adattárban.
     - **Directory_Source**  =  **almappa**.  A helyére a forrás adattárban található almappát használhatja.
     - **FolderPath_Destination**  =  **destinationfolder**.  Lecserélheti a mappát a célhely adattárában.
     - **Directory_Destination**  =  **almappa**.  Az almappában lecserélheti a cél adattárban.
-    - **LastModified_From**  =   ** \@ trigger (). outputs. windowStartTime**.  Ez az a rendszerváltozó, amely azt határozza meg, hogy mikor indította el a folyamat az utolsó alkalommal.
-    - **LastModified_To**  =  ** \@ trigger (). outputs. windowEndTime**.  Ez egy rendszerváltozó az Indítóban, amely meghatározza, hogy a folyamat mikor aktiválja ezt az időt.
+    - **LastModified_From**  =   **\@ trigger (). outputs. windowStartTime**.  Ez az a rendszerváltozó, amely azt határozza meg, hogy mikor indította el a folyamat az utolsó alkalommal.
+    - **LastModified_To**  =  **\@ trigger (). outputs. windowEndTime**.  Ez egy rendszerváltozó az Indítóban, amely meghatározza, hogy a folyamat mikor aktiválja ezt az időt.
     
     ![Bemeneti paraméterek](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate11.png)
     
@@ -105,6 +105,6 @@ A sablon hat paramétert definiál:
 
     ![Képernyőkép, amely megjeleníti a folyamat indításakor visszaadott eredményeket.](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate15.png)
     
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Data Factory bemutatása](introduction.md)

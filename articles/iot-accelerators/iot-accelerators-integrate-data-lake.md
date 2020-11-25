@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: fce4da9cc9577bc9805289473d3df7647b1b0934
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670917"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000470"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>A távoli figyelési megoldás integrálása a Azure Data Lake Store
 
@@ -57,7 +57,7 @@ az iot hub consumer-group create --hub-name contoso-rm30263 --name streamanalyti
 
 Hozzon létre egy Azure Stream Analytics feladatot az IoT hub adatainak a Azure Data Lake áruházba való továbbításához.
 
-1. Kattintson az **erőforrás létrehozása** elemre, válassza ki eszközök internetes hálózata a piactéren, és kattintson **stream Analytics feladatokra** .
+1. Kattintson az **erőforrás létrehozása** elemre, válassza ki eszközök internetes hálózata a piactéren, és kattintson **stream Analytics feladatokra**.
 
     ![Új Stream Analytics-feladatok](./media/iot-accelerators-integrate-data-lake/new-stream-analytics-job.png)
 
@@ -85,7 +85,7 @@ Hozzon létre egy Azure Stream Analytics feladatot az IoT hub adatainak a Azure 
 
 1. Az új bemenet lapon adja meg a **IoTHub** bemeneti aliasát.
 
-1. A fogyasztói csoport legördülő menüben válassza ki a korábban létrehozott fogyasztói csoportot. Itt használjuk a **streamanalyticsjob** -t.
+1. A fogyasztói csoport legördülő menüben válassza ki a korábban létrehozott fogyasztói csoportot. Itt használjuk a **streamanalyticsjob**-t.
 
     ![Bemenet kiválasztása](./media/iot-accelerators-integrate-data-lake/stream-analytics-new-input.png)
 
@@ -103,7 +103,7 @@ Hozzon létre egy Azure Stream Analytics feladatot az IoT hub adatainak a Azure 
 
 1. Válassza ki az előző lépésekben létrehozott Data Lake Store fiókot, és adjon meg egy mappastruktúrát az adattárolóba való továbbításhoz.
 
-1. A Dátumformátum mezőben adja meg a **/Streaming/{DATE}/{Time}** . Hagyja meg az alapértelmezett dátumformátum (éééé/hh/nn) és a HH időformátumát.
+1. A Dátumformátum mezőben adja meg a **/Streaming/{DATE}/{Time}**. Hagyja meg az alapértelmezett dátumformátum (éééé/hh/nn) és a HH időformátumát.
 
     ![Mappa szerkezetének megadása](./media/iot-accelerators-integrate-data-lake/stream-analytics-new-output.png)
 

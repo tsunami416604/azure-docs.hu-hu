@@ -5,11 +5,11 @@ ms.date: 04/22/2020
 ms.topic: how-to
 ms.reviewer: sunri
 ms.openlocfilehash: 7e0e585ce45616c2402972c725b502f4b704d1cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532375"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000147"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>Azure Blockchain Workbench-adatok használata a Microsoft Power BI-ban
 
@@ -24,12 +24,12 @@ Ebből a cikkből részletesen megismerheti, hogy hogyan csatlakozhat az Azure B
 ## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>Power BI csatlakoztatása az Azure Blockchain Workbench-beli adatkapcsolathoz
 
 1.  Nyissa meg a Power BI Desktopot.
-2.  Válassza **az adatlekérdezés**lehetőséget.
+2.  Válassza az **Adatok beolvasása** lehetőséget.
 
     ![Adatok lekérése](./media/data-powerbi/get-data.png)
 3.  Válassza az **SQL Server** lehetőséget az adatforrástípusok listájából.
 
-4.  Adja meg a kiszolgáló és az adatbázis nevét a megjelenő párbeszédpanelen. Adja meg, hogy importálni akarja-e az adatokat, vagy **DirectQuery**-lekérdezést szeretne végrehajtani. Kattintson az **OK** gombra.
+4.  Adja meg a kiszolgáló és az adatbázis nevét a megjelenő párbeszédpanelen. Adja meg, hogy importálni akarja-e az adatokat, vagy **DirectQuery**-lekérdezést szeretne végrehajtani. Válassza az **OK** lehetőséget.
 
     ![SQL Server kiválasztása](./media/data-powerbi/select-sql.png)
 
@@ -43,13 +43,13 @@ Ebből a cikkből részletesen megismerheti, hogy hogyan csatlakozhat az Azure B
 
     ![Képernyőfelvétel a Power BI asztalról a navigátor párbeszédpanel és a vwContractAction kiválasztásával.](./media/data-powerbi/navigator.png)
 
-7.  Jelölje ki a belefoglalni kívánt nézeteket. Demonstrációs célokra a **vwContractAction**tartalmazza, amely részletesen ismerteti a szerződésben vállalt műveleteket.
+7.  Jelölje ki a belefoglalni kívánt nézeteket. Demonstrációs célokra a **vwContractAction** tartalmazza, amely részletesen ismerteti a szerződésben vállalt műveleteket.
 
     ![Nézetek kiválasztása](./media/data-powerbi/select-views.png)
 
 Ezután létrehozhatja és közzéteheti a jelentéseket a Power BI-ban megszokott munkafolyamatot követve.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Adatbázisnézetek az Azure Blockchain Workbenchben](database-views.md)

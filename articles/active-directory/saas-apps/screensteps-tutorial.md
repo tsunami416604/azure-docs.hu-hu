@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 3816239798290318404980ded388b726d8134395
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895166"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999790"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screensteps"></a>Oktatóanyag: Azure Active Directory integráció a ScreenSteps
 
@@ -166,7 +166,7 @@ Az Azure AD egyszeri bejelentkezés ScreenSteps való konfigurálásához hajtsa
 
     f. Másolja a **SAML-felhasználó URL-címét** a vágólapra, és illessze be a **bejelentkezési URL** szövegmezőbe a Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
 
-    : Térjen vissza az **egyszeri bejelentkezési végpont szerkesztéséhez** .
+    : Térjen vissza az **egyszeri bejelentkezési végpont szerkesztéséhez**.
 
     h. Kattintson az **alapértelmezett fiók létrehozása** gombra, hogy ezt a végpontot használja a ScreenSteps bejelentkező összes felhasználóhoz. Azt is megteheti, hogy a **Hozzáadás a helyhez** gombra kattint, hogy ezt a végpontot a **ScreenSteps** meghatározott helyeire használja.
 
@@ -174,7 +174,7 @@ Az Azure AD egyszeri bejelentkezés ScreenSteps való konfigurálásához hajtsa
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 

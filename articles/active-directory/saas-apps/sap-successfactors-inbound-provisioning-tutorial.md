@@ -11,11 +11,11 @@ ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
 ms.openlocfilehash: 53707261070e8efbd014614ee700df63a0925ef8
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94352727"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999705"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>Oktatóanyag: SAP-SuccessFactors konfigurálása Active Directory felhasználó kiépítési felállításához 
 Ennek az oktatóanyagnak a célja, hogy megmutassa azokat a lépéseket, amelyeket el kell végeznie ahhoz, hogy a felhasználók SuccessFactors az alkalmazotti központból a Active Directory (AD) és az Azure AD-ba, az e-mail-cím opcionális visszaírásával a SuccessFactors. 
@@ -117,7 +117,7 @@ A SuccessFactors felügyeleti csapatával vagy a megvalósítási partnerrel egy
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>Engedélyezési csoport létrehozása az API-felhasználó számára
 
-* A SuccessFactors felügyeleti központban keressen rá az *engedélyek kezelése csoportra* , majd válassza az **engedélyek kezelése** lehetőséget a keresési eredmények közül.
+* A SuccessFactors felügyeleti központban keressen rá az *engedélyek kezelése csoportra*, majd válassza az **engedélyek kezelése** lehetőséget a keresési eredmények közül.
   > [!div class="mx-imgBorder"]
   > ![Engedélyezési csoportok kezelése](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
 * A jogosultsági csoportok kezelése ablakban kattintson az **új létrehozása** elemre.
@@ -162,7 +162,7 @@ Ez a szakasz a felhasználói fiókok kiépítésének lépéseit ismerteti a Su
 
 2. A bal oldali navigációs sávon válassza a **Azure Active Directory**
 
-3. Válassza a **vállalati alkalmazások** , majd **az összes alkalmazás** lehetőséget.
+3. Válassza a **vállalati alkalmazások**, majd **az összes alkalmazás** lehetőséget.
 
 4. Válassza az **alkalmazás hozzáadása** lehetőséget, és válassza az **összes** kategóriát.
 

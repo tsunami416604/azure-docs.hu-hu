@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: shsha
 ms.openlocfilehash: 6f2f6aa4380fcf6909957118bf682275350ce68c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86261203"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000266"
 ---
 # <a name="runtocompletion"></a>Futtatás befejezésig
 
@@ -36,7 +36,7 @@ A **ExecutionPolicy** a következő két attribútumot teszi lehetővé:
 * **Típus:** a **RunToCompletion** jelenleg csak az attribútum megengedett értéke.
 * **Újraindítás:** Ez az attribútum határozza meg a szervizcsomagot tartalmazó CodePackages alkalmazott újraindítási szabályzatot, meghibásodás esetén. A **nem nulla kilépési kóddal** kilépő CodePackage sikertelennek tekintendő. Az attribútum megengedett értékei a **OnFailure** , a **OnFailure** pedig **soha nem** az alapértelmezett érték.
 
-Ha az újraindítási szabályzat **OnFailure**értékre van állítva, ha bármelyik CodePackage meghibásodik **(nullától eltérő kilépési kód)**, a rendszer újraindul, és az ismételt hibák között visszakerül. Ha a **CodePackage nem sikerül**, az újraindítási házirend beállítása sikertelen, a DeployedServicePackage telepítési állapota **meghiúsult** , de más CodePackages is engedélyezett a végrehajtás folytatásához. Ha a szervizcsomagot tartalmazó összes CodePackages sikeresen befejeződött **(kilépési kód: 0)**, akkor a DeployedServicePackage telepítési állapota **RanToCompletion**lesz megjelölve. 
+Ha az újraindítási szabályzat **OnFailure** értékre van állítva, ha bármelyik CodePackage meghibásodik **(nullától eltérő kilépési kód)**, a rendszer újraindul, és az ismételt hibák között visszakerül. Ha a **CodePackage nem sikerül**, az újraindítási házirend beállítása sikertelen, a DeployedServicePackage telepítési állapota **meghiúsult** , de más CodePackages is engedélyezett a végrehajtás folytatásához. Ha a szervizcsomagot tartalmazó összes CodePackages sikeresen befejeződött **(kilépési kód: 0)**, akkor a DeployedServicePackage telepítési állapota **RanToCompletion** lesz megjelölve. 
 
 ## <a name="complete-example-using-runtocompletion-semantics"></a>Példa RunToCompletion szemantika használatával
 
@@ -47,7 +47,7 @@ Nézzük meg a teljes példát a RunToCompletion szemantika használatával.
 >
 > Ez a példa mcr.microsoft.com/windows/nanoserver:1809 hivatkozik. A Windows Server-tárolók nem kompatibilisek a gazdagép operációs rendszerének összes verziójával. További információ: a [Windows-tároló verziójának kompatibilitása](/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
-Az alábbi ServiceManifest.xml a tárolókat jelképező két CodePackages álló szervizcsomagot ismerteti. A *RunToCompletionCodePackage1* csak egy üzenetet naplóz az **StdOut** -ba, és kilép. A *RunToCompletionCodePackage2* egy ideig Pingeli a visszacsatolási címeket, majd a **0**, **1** vagy **2**kilépési kóddal kilép.
+Az alábbi ServiceManifest.xml a tárolókat jelképező két CodePackages álló szervizcsomagot ismerteti. A *RunToCompletionCodePackage1* csak egy üzenetet naplóz az **StdOut** -ba, és kilép. A *RunToCompletionCodePackage2* egy ideig Pingeli a visszacsatolási címeket, majd a **0**, **1** vagy **2** kilépési kóddal kilép.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -78,7 +78,7 @@ Az alábbi ServiceManifest.xml a tárolókat jelképező két CodePackages áll�
 </ServiceManifest>
 ```
 
-A következő ApplicationManifest.xml a fent tárgyalt ServiceManifest.xml alapján ismerteti az alkalmazást. Meghatározza a **OnFailure**újraindítási szabályzatával rendelkező *WindowsRunToCompletionServicePackage* **RunToCompletion** **ExecutionPolicy** . A *WindowsRunToCompletionServicePackage*aktiválása után a rendszer megkezdi az összetevők CodePackages. Az első aktiváláskor a *RunToCompletionCodePackage1* sikeresen ki kell lépnie. A *RunToCompletionCodePackage2* azonban sikertelen lehet **(nullától eltérő kilépési kóddal)**, ebben az esetben a rendszer újraindul, mert az újraindítási szabályzat **OnFailure**.
+A következő ApplicationManifest.xml a fent tárgyalt ServiceManifest.xml alapján ismerteti az alkalmazást. Meghatározza a **OnFailure** újraindítási szabályzatával rendelkező *WindowsRunToCompletionServicePackage* **RunToCompletion** **ExecutionPolicy** . A *WindowsRunToCompletionServicePackage* aktiválása után a rendszer megkezdi az összetevők CodePackages. Az első aktiváláskor a *RunToCompletionCodePackage1* sikeresen ki kell lépnie. A *RunToCompletionCodePackage2* azonban sikertelen lehet **(nullától eltérő kilépési kóddal)**, ebben az esetben a rendszer újraindul, mert az újraindítási szabályzat **OnFailure**.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

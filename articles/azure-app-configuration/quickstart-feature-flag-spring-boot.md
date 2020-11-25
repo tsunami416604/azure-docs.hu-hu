@@ -8,11 +8,11 @@ ms.date: 04/18/2020
 ms.author: lcozzens
 ms.custom: devx-track-java
 ms.openlocfilehash: 64ccc9c91d9ead567035b1f7f35e0a0088b6200b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124186"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001472"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Gyors útmutató: szolgáltatás-jelzők hozzáadása Spring boot-alkalmazáshoz
 
@@ -45,7 +45,7 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
 
 1. Adja meg a következő beállításokat:
 
-   * Hozzon létre egy **Maven** projektet **Javával** .
+   * Hozzon létre egy **Maven** projektet **Javával**.
    * Olyan **Spring boot** -verziót válasszon, amely egyenlő vagy nagyobb, mint 2,0.
    * Adja meg az alkalmazáshoz tartozó **Group** (Csoport) és **Artifact** (Összetevő) neveket.  Ez a cikk a és a használatát ismerteti `com.example` `demo` .
    * Adja hozzá a **rugó webes** függőségét.
@@ -298,11 +298,11 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
 
     ![Képernyőfelvétel: a böngészőablak egy üdvözlő üzenettel és egy kinevezett bétaverziós hivatkozással jelenik meg.](./media/quickstarts/spring-boot-feature-flag-local-after.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és felhasználta egy Spring boot-webalkalmazás funkcióinak kezeléséhez a [Feature Management librarys](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)használatával.
 

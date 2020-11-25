@@ -13,11 +13,11 @@ ms.date: 07/16/2020
 ms.author: aahi
 keywords: helyszíni, Docker, tároló, azonosítás
 ms.openlocfilehash: 0f6807f771510f85c5a20cfb2a160cfe1e8726a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91461512"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000546"
 ---
 # <a name="install-and-run-face-containers-preview"></a>Face containers telepítése és futtatása (előzetes verzió)
 
@@ -26,7 +26,7 @@ ms.locfileid: "91461512"
 
 Az Azure Cognitive Services Face API egy linuxos Docker-tárolót biztosít, amely észleli és elemzi a képeken található emberi arcokat. Emellett azonosítja azokat az attribútumokat is, amelyek olyan arc-tereptárgyak, mint például az orr és a szemek, a nemek, az életkor és más, géppel előre jelzett arc-funkciók. Az észlelésen kívül a Face utasítással megtekintheti, hogy két arc van-e ugyanazon a képen, vagy a különböző képek azonosak-e a megbízhatósági pontszám használatával. Az arc emellett összehasonlíthatja az arcokat egy adatbázissal, hogy megtudja, van-e már hasonló vagy azonos arc. A hasonló arcok csoportokba rendezése közös vizualizációs tulajdonságok használatával is elvégezhető.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -50,7 +50,7 @@ A következő táblázat az egyes Face Service-tárolók számára lefoglalható
 
 | Tároló | Minimális | Ajánlott | Tranzakció/másodperc<br>(Minimum, maximum)|
 |-----------|---------|-------------|--|
-|Arcfelismerés | 1 mag, 2 GB memória | 1 mag, 4 GB memória |10, 20|
+|Face | 1 mag, 2 GB memória | 1 mag, 4 GB memória |10, 20|
 
 * Minden mag legalább 2,6 GHz-es vagy gyorsabb lehet.
 * Másodpercenkénti tranzakciók (TPS).
@@ -63,7 +63,7 @@ Elérhetők a Face szolgáltatáshoz tartozó tároló lemezképek.
 
 | Tároló | Adattár |
 |-----------|------------|
-| Arcfelismerés | `containerpreview.azurecr.io/microsoft/cognitive-services-face:latest` |
+| Face | `containerpreview.azurecr.io/microsoft/cognitive-services-face:latest` |
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -142,7 +142,7 @@ További információ ezekről a beállításokról: [tárolók konfigurálása]
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ebből a cikkből megtudhatta, hogyan töltheti le, telepítheti és futtathatja a Face Service-tárolókat. Összegezve:
 
@@ -154,7 +154,7 @@ Ebből a cikkből megtudhatta, hogyan töltheti le, telepítheti és futtathatja
 > [!IMPORTANT]
 > Cognitive Services tárolók nem futtathatók az Azure-hoz való csatlakozás nélkül. Az ügyfeleknek engedélyezniük kell, hogy a tárolók a számlázási adatokat mindig a mérési szolgáltatással kommunikáljanak. Cognitive Services tárolók nem küldenek ügyféladatokat, például az elemzett képet vagy szöveget a Microsoftnak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A konfigurációs beállításokkal kapcsolatban lásd: [tárolók konfigurálása](face-resource-container-config.md).
 * Az arcok észlelésével és azonosításával kapcsolatos további tudnivalókért tekintse meg a [Face Overview](Overview.md)című témakört.

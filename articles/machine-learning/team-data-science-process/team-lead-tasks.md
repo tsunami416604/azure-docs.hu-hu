@@ -11,11 +11,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: df7d2278487c1b098615a14562c498b9187c56eb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321198"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000028"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>A Team adatelemzési folyamatának csapatával kapcsolatos feladatok
 
@@ -89,7 +89,7 @@ Különálló projekt létrehozása a csapat számára:
    
    ![Új projekt kiválasztása](./media/team-lead-tasks/team-leads-2-create-new-team.png)
    
-1. A **projekt létrehozása** párbeszédpanelen adja meg a csoport nevét (például *MyTeam* ) a **projekt neve** alatt, majd válassza a **speciális** lehetőséget. 
+1. A **projekt létrehozása** párbeszédpanelen adja meg a csoport nevét (például *MyTeam*) a **projekt neve** alatt, majd válassza a **speciális** lehetőséget. 
    
 1. A **verziókövetés** területen válassza a **git** lehetőséget, majd a **munkaelemek feldolgozása** területen válassza az **agilis** lehetőséget. Ezután válassza a **Létrehozás** elemet. 
    
@@ -110,7 +110,7 @@ Megnyílik a Team Project **Összefoglaló** lapja, a Page URL *https: \/ / \<se
    
    ![Adattár átnevezésének kiválasztása](./media/team-lead-tasks/team-leads-8-rename-team-project-repo-3.png)
    
-1. Az **MyTeam-tárház átnevezése** felugró ablakban adja meg a *TeamUtilities* , majd válassza az **Átnevezés** lehetőséget. 
+1. Az **MyTeam-tárház átnevezése** felugró ablakban adja meg a *TeamUtilities*, majd válassza az **Átnevezés** lehetőséget. 
 
 ### <a name="create-the-teamtemplate-repository"></a>A TeamTemplate adattár létrehozása
 
@@ -140,7 +140,7 @@ A csapat adattárainak feltöltése a Group Manager által beállított közös 
    
    ![Importálás kiválasztása](./media/team-lead-tasks/import-repo.png)
    
-1. A **git-tárház importálása** párbeszédpanelen válassza a **git** lehetőséget a **forrás típusaként** , majd adja meg a csoport általános sablonjának URL-címét a **klónozott URL-cím** alatt. Az URL-cím *https: \/ / \<server name> / \<organization name> /_git \<repository name> /*. Például: *https: \/ /dev.Azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
+1. A **git-tárház importálása** párbeszédpanelen válassza a **git** lehetőséget a **forrás típusaként**, majd adja meg a csoport általános sablonjának URL-címét a **klónozott URL-cím** alatt. Az URL-cím *https: \/ / \<server name> / \<organization name> /_git \<repository name> /*. Például: *https: \/ /dev.Azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
    
 1. Válassza az **Importálás** lehetőséget. A Group template-tárház tartalmát a rendszer importálja a Team template adattárba. 
    
@@ -148,7 +148,7 @@ A csapat adattárainak feltöltése a Group Manager által beállított közös 
    
 1. A projekt **reposs** oldalának tetején válassza a legördülő listát, és válassza ki a **TeamUtilities** -tárházat.
    
-1. Az importálási folyamat megismétlésével importálja a Group Common Utilities-tárház (például *GroupUtilities* ) tartalmát a **TeamUtilities** -tárházba. 
+1. Az importálási folyamat megismétlésével importálja a Group Common Utilities-tárház (például *GroupUtilities*) tartalmát a **TeamUtilities** -tárházba. 
    
 A két csapat tárháza mostantól tartalmazza a megfelelő csoport közös tárházának fájljait. 
 
@@ -324,7 +324,7 @@ További információ a csapattal (például Azure HDInsight Spark-fürtökkel) 
    
 1. Győződjön meg arról, hogy az új meghajtó és a tároló sikeresen csatlakoztatva van a gépen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbiakban a csoportos adatelemzési folyamat által meghatározott egyéb szerepkörök és feladatok részletes ismertetésére talál hivatkozásokat:
 

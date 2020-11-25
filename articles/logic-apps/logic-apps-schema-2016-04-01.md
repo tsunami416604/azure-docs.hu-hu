@@ -9,11 +9,11 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
 ms.openlocfilehash: ccc7df5bfac327fabf05f210764dbe10658b5015
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86520715"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000317"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Séma frissítései Azure Logic Apps – június 1-től 2016
 
@@ -103,7 +103,7 @@ A [legújabb sémára](https://schema.management.azure.com/schemas/2016-06-01/Mi
 
 1. A Azure Portal nyissa meg a logikai alkalmazást.
 
-2. Ugrás az **áttekintéshez**. A logikai alkalmazás eszköztárán válassza a **séma frissítése**lehetőséget.
+2. Ugrás az **áttekintéshez**. A logikai alkalmazás eszköztárán válassza a **séma frissítése** lehetőséget.
    
    ![Válasszon frissítési sémát][1]
    
@@ -112,16 +112,16 @@ A [legújabb sémára](https://schema.management.azure.com/schemas/2016-06-01/Mi
    > [!IMPORTANT]
    > *Győződjön meg arról, hogy* a **Mentés másként** lehetőséget választja, így a kapcsolatok összes hivatkozása érvényes marad a frissített logikai alkalmazásban.
 
-3. A frissítés panel eszköztárán válassza a **Mentés másként**lehetőséget.
+3. A frissítés panel eszköztárán válassza a **Mentés másként** lehetőséget.
 
-4. Adja meg a logikai nevet és az állapotot. A frissített logikai alkalmazás üzembe helyezéséhez válassza a **Létrehozás**lehetőséget.
+4. Adja meg a logikai nevet és az állapotot. A frissített logikai alkalmazás üzembe helyezéséhez válassza a **Létrehozás** lehetőséget.
 
 5. Ellenőrizze, hogy a frissített logikai alkalmazás a várt módon működik-e.
    
    > [!NOTE]
    > Ha kézi vagy kérelem típusú triggert használ, a visszahívási URL-cím módosul az új logikai alkalmazásban. Tesztelje az új URL-címet, és győződjön meg arról, hogy a végpontok közötti élmény működik. Az előző URL-címek megőrzése érdekében a meglévő logikai alkalmazás klónozása is megtörténik.
 
-6. Nem *kötelező* Ha felül szeretné írni az előző logikai alkalmazást az új séma verziójával, akkor az eszköztáron válassza a **klónozás**lehetőséget a **séma frissítése**elem mellett. Ez a lépés csak akkor szükséges, ha meg szeretné tartani ugyanazt az erőforrás-azonosítót vagy a logikai alkalmazás trigger URL-címét.
+6. Nem *kötelező* Ha felül szeretné írni az előző logikai alkalmazást az új séma verziójával, akkor az eszköztáron válassza a **klónozás** lehetőséget a **séma frissítése** elem mellett. Ez a lépés csak akkor szükséges, ha meg szeretné tartani ugyanazt az erőforrás-azonosítót vagy a logikai alkalmazás trigger URL-címét.
 
 ## <a name="upgrade-tool-notes"></a>Frissítési eszközök megjegyzései
 

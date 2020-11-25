@@ -9,11 +9,11 @@ ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: b36641677dbf36402c7f578b9b1887c52f441afd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91322478"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000011"
 ---
 # <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Azure Logic Apps EDIFACT-üzeneteinek dekódolása a Enterprise Integration Pack
 
@@ -53,7 +53,7 @@ Az alábbi elemek szükségesek:
     | Kapcsolatok neve * |Adja meg a kapcsolatok nevét. |
     | Integrációs fiók * |Adja meg az integrációs fiók nevét. Győződjön meg arról, hogy az integrációs fiók és a logikai alkalmazás ugyanazon az Azure-helyen található. |
 
-4. Amikor elkészült a csatlakozás létrehozásával, válassza a **Létrehozás**lehetőséget. A kapcsolat részleteinek ehhez a példához hasonlóan kell kinéznie:
+4. Amikor elkészült a csatlakozás létrehozásával, válassza a **Létrehozás** lehetőséget. A kapcsolat részleteinek ehhez a példához hasonlóan kell kinéznie:
 
     ![integrációs fiók részletei](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage3.png)  
 
@@ -61,7 +61,7 @@ Az alábbi elemek szükségesek:
 
     ![integrációs fiók-csatlakozás létrehozva](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage4.png)  
 
-    Példa:
+    Például:
 
     ![EDIFACT-üzenet kiválasztása a dekódoláshoz](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage5.png)  
 
@@ -98,6 +98,6 @@ A dekódolási EDIFACT-összekötő a következő feladatokat hajtja végre:
 ## <a name="view-swagger-file"></a>Hencegő fájl megtekintése
 A EDIFACT-összekötőhöz tartozó felvágási részletek megtekintéséhez lásd: [EDIFACT](/connectors/edifact/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [További információ a Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Tudnivalók a Enterprise Integration Pack") 
 

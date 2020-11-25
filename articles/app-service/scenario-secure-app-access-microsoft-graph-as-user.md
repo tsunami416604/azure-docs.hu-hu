@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag – a webalkalmazás Microsoft Graph felhasználóként éri el a következőt: | Azure'
-description: Ebből az oktatóanyagból megtudhatja, hogyan férhet hozzá a bejelentkezett felhasználó nevében Microsoft Graphban lévő adateléréshez.
+description: Ebből az oktatóanyagból megtudhatja, hogyan férhet hozzá Microsoft Graphhoz a bejelentkezett felhasználóhoz.
 services: microsoft-graph, app-service-web
 author: rwike77
 manager: CelesteDG
@@ -10,27 +10,27 @@ ms.workload: identity
 ms.date: 11/09/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: ef007f045a5c53bf70f6d042167c157ab3f4decc
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: d3706c26d9b15e9ea607996ace222b29ccd84458
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94428859"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95999654"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-user"></a>Oktatóanyag: hozzáférés Microsoft Graph a biztonságos alkalmazásból felhasználóként
 
 Megtudhatja, hogyan érheti el Microsoft Graph egy Azure App Serviceon futó webalkalmazásból.
 
-:::image type="content" alt-text="Hozzáférés Microsoft Graph" source="./media/scenario-secure-app-access-microsoft-graph/web-app-access-graph.svg" border="false":::
+:::image type="content" alt-text="A Microsoft Graph elérését bemutató diagram." source="./media/scenario-secure-app-access-microsoft-graph/web-app-access-graph.svg" border="false":::
 
-Hozzá kívánja adni az Microsoft Graphhoz való hozzáférést a webalkalmazásból, és végrehajthat valamilyen műveletet a bejelentkezett felhasználóként. Ez a szakasz azt ismerteti, hogyan lehet delegált engedélyeket adni a webalkalmazásnak, és beolvasni a bejelentkezett felhasználó profiljának adatait a Azure Active Directoryból.
+Hozzá kívánja adni az Microsoft Graphhoz való hozzáférést a webalkalmazásból, és végrehajthat valamilyen műveletet a bejelentkezett felhasználóként. Ez a szakasz azt ismerteti, hogyan lehet delegált engedélyeket adni a webalkalmazásnak, és beolvasni a bejelentkezett felhasználó profiljának adatait Azure Active Directory (Azure AD) szolgáltatásból.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 >
-> * Delegált engedélyek megadása egy webalkalmazáshoz
-> * Microsoft Graph meghívása egy webalkalmazásból a bejelentkezett felhasználó nevében
+> * Delegált engedélyek megadása egy webalkalmazáshoz.
+> * Microsoft Graph meghívása egy webalkalmazásból a bejelentkezett felhasználó számára.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -40,54 +40,55 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="grant-front-end-access-to-call-microsoft-graph"></a>Előtér-hozzáférés biztosítása a híváshoz Microsoft Graph
 
-Most, hogy engedélyezte a hitelesítést és az engedélyezést a webalkalmazásban, a webalkalmazás regisztrálva van a Microsoft Identity platformon, és egy Azure AD-alkalmazás támogatja. Ebben a lépésben a webalkalmazás engedélyt ad ahhoz, hogy hozzáférjen Microsoft Graph a felhasználó nevében. (Technikai szempontból a webalkalmazás Azure AD-alkalmazásának engedélyeket kell adnia Microsoft Graph AD-alkalmazásának elérésére a felhasználó nevében.)
+Most, hogy engedélyezte a hitelesítést és az engedélyezést a webalkalmazásban, a webalkalmazás regisztrálva van a Microsoft Identity platformon, és egy Azure AD-alkalmazás támogatja. Ebben a lépésben a webalkalmazás engedélyt ad a felhasználónak a Microsoft Graph eléréséhez. (Technikai szempontból a webalkalmazás Azure AD-alkalmazásának engedélyeket kell biztosítania a felhasználó számára a Microsoft Graph Azure AD-alkalmazás eléréséhez.)
 
-A [Azure Portal](https://portal.azure.com) menüben válassza a **Azure Active Directory** lehetőséget, vagy keresse meg, majd válassza a Azure Active Directory lehetőséget bármelyik lapon.
+A [Azure Portal](https://portal.azure.com) menüben válassza a **Azure Active Directory** lehetőséget, vagy keresse meg, majd válassza a **Azure Active Directory** lehetőséget bármelyik lapon.
 
 Válassza ki **Alkalmazásregisztrációk**  >  **tulajdonában lévő alkalmazások**  >  **megtekintheti a címtárban található összes alkalmazást**. Válassza ki a webalkalmazás nevét, majd válassza az **API-engedélyek** lehetőséget.
 
-Válassza **az engedély hozzáadása** , majd a Microsoft API-k és a Microsoft Graph lehetőséget.
+Válassza **az engedély hozzáadása** lehetőséget, majd válassza a Microsoft API-k és a Microsoft Graph lehetőséget.
 
-Válassza a **delegált engedélyek** lehetőséget, majd válassza a **felhasználó. olvasás** lehetőséget a listából.  Kattintson az **engedélyek hozzáadása** lehetőségre.
+Válassza a **delegált engedélyek** lehetőséget, majd válassza a **felhasználó. olvasás** elemet a listából. Válassza az **engedélyek hozzáadása** lehetőséget.
 
 ## <a name="configure-app-service-to-return-a-usable-access-token"></a>Az App Service konfigurálása használható hozzáférési jogkivonat visszaadására
 
-A webalkalmazás most már rendelkezik a szükséges engedélyekkel a bejelentkezett felhasználóként való Microsoft Graph eléréséhez. Ebben a lépésben App Service hitelesítését és engedélyezését konfigurálja úgy, hogy használható hozzáférési jogkivonatot biztosítson a Microsoft Graph eléréséhez. Ebben a lépésben szüksége lesz az alsóbb rétegbeli szolgáltatás ügyfél-vagy alkalmazás-AZONOSÍTÓJÁRA (Microsoft Graph). *00000003-0000-0000 – C000 – a 000000000000* a Microsoft Graph alkalmazás-azonosítója.
+A webalkalmazás most már rendelkezik a szükséges engedélyekkel a bejelentkezett felhasználóként való Microsoft Graph eléréséhez. Ebben a lépésben App Service hitelesítését és engedélyezését konfigurálja úgy, hogy használható hozzáférési jogkivonatot biztosítson a Microsoft Graph eléréséhez. Ebben a lépésben szüksége lesz az alsóbb rétegbeli szolgáltatás ügyfél-vagy alkalmazás-AZONOSÍTÓJÁRA (Microsoft Graph). Microsoft Graph alkalmazás *-azonosítója 00000003-0000-0000-C000-000000000000*.
 
 > [!IMPORTANT]
 > Ha nem konfigurálja a App Service egy használható hozzáférési token visszaadására, akkor hibaüzenet jelenik meg, ```CompactToken parsing failed with error code: 80049217``` Amikor a kódban Microsoft Graph API-kat hív meg.
 
-Navigáljon a [Azure erőforrás-kezelőra](https://resources.azure.com/) , és használja az erőforrás-fát, keresse meg a webalkalmazást.  Az erőforrás URL-címének a következőhöz hasonlónak kell lennie: `https://resources.azure.com/subscriptions/subscription-id/resourceGroups/SecureWebApp/providers/Microsoft.Web/sites/SecureWebApp20200915115914`
+Nyissa meg a [Azure erőforrás-kezelőt](https://resources.azure.com/) , és használja az erőforrás-fát, és keresse meg a webalkalmazást. Az erőforrás URL-címének hasonlónak kell lennie `https://resources.azure.com/subscriptions/subscription-id/resourceGroups/SecureWebApp/providers/Microsoft.Web/sites/SecureWebApp20200915115914` .
 
-A Azure Erőforrás-kezelő ekkor megnyílik az erőforrás-fában kiválasztott webalkalmazással. Kattintson az **Olvasás/Írás** elemre a lap tetején az Azure-erőforrások szerkesztésének engedélyezéséhez.
+A Azure Erőforrás-kezelő ekkor megnyílik az erőforrás-fában kiválasztott webalkalmazással. Az oldal tetején válassza az **írás/írás** lehetőséget az Azure-erőforrások szerkesztésének engedélyezéséhez.
 
 A bal oldali böngészőben bontsa ki a következőt: **config**  >  **authsettings elemre**.
 
-Az **authsettings** nézetben kattintson a **Szerkesztés** gombra. Állítsa be a ```additionalLoginParams``` következő JSON-karakterláncot a másolt ügyfél-azonosító használatával.
+A **authsettings elemre** nézetben válassza a **Szerkesztés** lehetőséget. Állítsa be a ```additionalLoginParams``` következő JSON-karakterláncot a másolt ügyfél-azonosító használatával.
 
 ```json
 "additionalLoginParams": ["response_type=code id_token","resource=00000003-0000-0000-c000-000000000000"],
 ```
 
-A beállítások mentéséhez kattintson a **PUT** elemre. A beállítás érvénybe léptetése több percet is igénybe vehet.  A webalkalmazása úgy van konfigurálva, hogy a megfelelő hozzáférési jogkivonattal hozzáférhessen Microsoft Graphhoz.  Ha nem, a Microsoft Graph hibát jelez, ami azt jelzi, hogy a Compact token formátuma helytelen.
+Mentse a beállításokat a **put** lehetőség kiválasztásával. A beállítás érvénybe léptetése több percet is igénybe vehet. A webalkalmazása úgy van konfigurálva, hogy a megfelelő hozzáférési jogkivonattal hozzáférhessen Microsoft Graphhoz. Ha nem, a Microsoft Graph hibát jelez, ami azt jelzi, hogy a Compact token formátuma helytelen.
 
 ## <a name="call-microsoft-graph-net"></a>Microsoft Graph (.NET) hívása
 
-A webalkalmazás már rendelkezik a szükséges engedélyekkel, és hozzáadja Microsoft Graph ügyfél-AZONOSÍTÓját is a bejelentkezési paraméterekhez. A [Microsoft. Identity. Web kódtár](https://github.com/AzureAD/microsoft-identity-web/)használatával a webalkalmazás hozzáférési jogkivonatot kap a hitelesítéshez Microsoft Graph. A 1.2.0 és újabb verziókban a Microsoft. Identity. Web könyvtár integrálódik a-val, és a App Service hitelesítés/engedélyezési modul mellett is futtatható.  A Microsoft. Identity. Web észleli, hogy a webalkalmazás a App Servicesban található, és lekéri a hozzáférési jogkivonatot a App Services Authentication/Authorization modulból.  A hozzáférési jogkivonatot ezután a Microsoft Graph API-val hitelesített kérelmekkel együtt továbbítja a rendszer.
+A webalkalmazás már rendelkezik a szükséges engedélyekkel, és hozzáadja Microsoft Graph ügyfél-AZONOSÍTÓját is a bejelentkezési paraméterekhez. A [Microsoft. Identity. Web kódtár](https://github.com/AzureAD/microsoft-identity-web/)használatával a webalkalmazás hozzáférési jogkivonatot kap a hitelesítéshez Microsoft Graph. A 1.2.0 és újabb verziókban a Microsoft. Identity. Web könyvtár integrálódik a-val, és a App Service hitelesítés/engedélyezési modul mellett is futtatható. A Microsoft. Identity. Web észleli, hogy a webalkalmazás a App Serviceban található, és lekéri a hozzáférési jogkivonatot a App Service Authentication/Authorization modulból. A hozzáférési jogkivonatot ezután a Microsoft Graph API-val hitelesített kérelmekkel együtt továbbítja a rendszer.
 
 > [!NOTE]
-> A Microsoft. Identity. Web függvénytár nem szükséges az alapszintű hitelesítéshez/engedélyezéshez, illetve a kérelmek Microsoft Graphsal történő hitelesítéséhez a webalkalmazásban.  Az [alsóbb rétegbeli API-k biztonságosan hívhatók](tutorial-auth-aad.md#call-api-securely-from-server-code) , és csak a app Service hitelesítés/engedélyezési modul engedélyezett.  
-> Azonban a App Service hitelesítés/engedélyezés az alapszintű hitelesítési forgatókönyvekhez lett tervezve.  Összetettebb forgatókönyvek esetén (például egyéni jogcímek kezelésére) a Microsoft. Identity. Web Library vagy a [Microsoft Authentication Library](/azure/active-directory/develop/msal-overview)szükséges. Az elején még egy beállítás és konfiguráció is működik, de a Microsoft. Identity. Web függvénytár a App Service Authentication/Authorization modul mellett is futtatható.  Később, amikor a webalkalmazásnak összetettebb forgatókönyvek kezelésére van szüksége, letilthatja a App Service hitelesítési/engedélyezési modulját, a Microsoft. Identity. web pedig már az alkalmazás részét képezi.
+> A Microsoft. Identity. Web függvénytár nem szükséges az alapszintű hitelesítéshez/engedélyezéshez, illetve a kérelmek Microsoft Graph-vel történő hitelesítéséhez a webalkalmazásban. Az [alsóbb rétegbeli API-k biztonságosan hívhatók](tutorial-auth-aad.md#call-api-securely-from-server-code) , és csak a app Service hitelesítés/engedélyezési modul engedélyezett.
+> 
+> Azonban a App Service hitelesítés/engedélyezés az alapszintű hitelesítési forgatókönyvekhez lett tervezve. Összetettebb forgatókönyvek esetén (például egyéni jogcímek kezelésére) a Microsoft. Identity. Web Library vagy a [Microsoft Authentication Library](/azure/active-directory/develop/msal-overview)szükséges. Az elején még egy beállítás és konfiguráció is működik, de a Microsoft. Identity. Web függvénytár a App Service hitelesítési/engedélyezési modullal együtt futhat. Később, amikor a webalkalmazásnak összetettebb forgatókönyvek kezelésére van szüksége, letilthatja a App Service hitelesítési/engedélyezési modulját, a Microsoft. Identity. web pedig már az alkalmazás részét képezi.
 
 ### <a name="install-client-library-packages"></a>Ügyféloldali függvénytár-csomagok telepítése
 
-Telepítse a [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web/) és a [Microsoft. Graph](https://www.nuget.org/packages/Microsoft.Graph) NuGet-csomagokat a projektbe a .net Core parancssori felület vagy a Visual Studio Package Manager konzoljának használatával.
+Telepítse a [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web/) és a [Microsoft. Graph](https://www.nuget.org/packages/Microsoft.Graph) NuGet-csomagokat a projektbe a Visual Studióban található .net Core parancssori felület vagy a Package Manager konzol használatával.
 
 # <a name="command-line"></a>[Parancssor](#tab/command-line)
 
 Nyisson meg egy parancssort, és váltson arra a könyvtárra, amely tartalmazza a projektfájlt.
 
-Futtassa a telepítési parancsokat:
+Futtassa a telepítési parancsokat.
 
 ```dotnetcli
 dotnet add package Microsoft.Graph
@@ -96,9 +97,10 @@ dotnet add package Microsoft.Identity.Web
 ```
 
 # <a name="package-manager"></a>[Csomagkezelő](#tab/package-manager)
-Nyissa meg a projektet vagy a megoldást a Visual Studióban, és nyissa meg a **konzolt a**  >  **NuGet Package Manager**  >  **csomagkezelő Console** paranccsal.
 
-Futtassa a telepítési parancsokat:
+Nyissa meg a projektet/megoldást a Visual Studióban, és nyissa meg **a konzolt a**  >  **NuGet Package Manager** csomagkezelő  >  **Console** paranccsal.
+
+Futtassa a telepítési parancsokat.
 ```powershell
 Install-Package Microsoft.Graph
 
@@ -109,7 +111,7 @@ Install-Package Microsoft.Identity.Web
 
 ### <a name="startupcs"></a>Startup.cs
 
-A *Startup.cs* fájlban a ```AddMicrosoftIdentityWebApp``` metódus hozzáadja a Microsoft. Identity. Web fájlt a webalkalmazáshoz.  A ```AddMicrosoftGraph``` metódus Microsoft Graph támogatást tesz lehetővé.
+A *Startup.cs* fájlban a ```AddMicrosoftIdentityWebApp``` metódus hozzáadja a Microsoft. Identity. Web fájlt a webalkalmazáshoz. A ```AddMicrosoftGraph``` metódus Microsoft Graph támogatást tesz lehetővé.
 
 ```csharp
 using Microsoft.AspNetCore.Builder;
@@ -140,7 +142,7 @@ public class Startup
 
 ### <a name="appsettingsjson"></a>appsettings.json
 
-A *AzureAd* meghatározza a Microsoft. Identity. Web könyvtár konfigurációját.  A [Azure Portal](https://portal.azure.com)válassza a **Azure Active Directory** lehetőséget a portál menüjében, és válassza a **Alkalmazásregisztrációk** lehetőséget. Válassza ki az App Service hitelesítési/engedélyezési moduljának engedélyezésekor létrehozott alkalmazás-regisztrációt (az alkalmazás regisztrációjának meg kell egyeznie a webalkalmazás nevével).  A bérlői azonosítót és az ügyfél-azonosítót az alkalmazás regisztrációjának áttekintése lapon találja.  A tartománynév a bérlő Azure Active Directory Áttekintés oldalán található.
+A *AzureAd* meghatározza a Microsoft. Identity. Web könyvtár konfigurációját. A [Azure Portal](https://portal.azure.com)válassza a **Azure Active Directory** lehetőséget a portál menüben, majd válassza a **Alkalmazásregisztrációk** lehetőséget. Válassza ki az App Service hitelesítési/engedélyezési moduljának engedélyezésekor létrehozott alkalmazás-regisztrációt. (Az alkalmazás regisztrációjának meg kell egyeznie a webalkalmazás nevével.) A bérlői azonosítót és az ügyfél-azonosítót az alkalmazás regisztrációjának áttekintése lapon találja. A tartománynév a bérlő Azure AD Áttekintés oldalán található.
 
 A *Graph* meghatározza a Microsoft Graph végpontot és az alkalmazás által igényelt kezdeti hatóköröket.
 
@@ -173,7 +175,7 @@ A *Graph* meghatározza a Microsoft Graph végpontot és az alkalmazás által i
 
 ### <a name="indexcshtmlcs"></a>Index.cshtml.cs
 
-Az alábbi példa azt mutatja be, hogyan hívható meg a Microsoft Graph a bejelentkezett felhasználóként, és hogyan szerezhet be néhány felhasználói adatot.  Az ```GraphServiceClient``` objektumot a rendszer befecskendezi a vezérlőbe, és a Microsoft. Identity. Web könyvtár konfigurálja a hitelesítést.
+Az alábbi példa azt mutatja be, hogyan hívható meg a Microsoft Graph a bejelentkezett felhasználóként, és hogyan kérhet le néhány felhasználói adatot. A ```GraphServiceClient``` rendszer befecskendezi az objektumot a vezérlőbe, és a Microsoft. Identity. Web könyvtár használatával konfigurálta a hitelesítést.
 
 ```csharp
 using System.Threading.Tasks;
@@ -219,7 +221,7 @@ public class IndexModel : PageModel
 }
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha elkészült az Oktatóanyaggal, és már nincs szüksége a webalkalmazásra vagy a kapcsolódó erőforrásokra, [törölje a létrehozott erőforrásokat](scenario-secure-app-clean-up-resources.md).
 
@@ -229,8 +231,8 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 >
-> * Delegált engedélyek megadása egy webalkalmazáshoz
-> * Microsoft Graph meghívása egy webalkalmazásból a bejelentkezett felhasználó nevében
+> * Delegált engedélyek megadása egy webalkalmazáshoz.
+> * Microsoft Graph meghívása egy webalkalmazásból a bejelentkezett felhasználó számára.
 
 > [!div class="nextstepaction"]
 > [Az App Service Microsoft Graph alkalmazásként fér hozzá](scenario-secure-app-access-microsoft-graph-as-app.md)

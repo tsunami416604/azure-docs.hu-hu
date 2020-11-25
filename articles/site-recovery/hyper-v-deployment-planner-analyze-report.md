@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
 ms.openlocfilehash: f230445ecdb046c2b631e89567df71e1d09c3234
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369947"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999229"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Az Azure Site Recovery Deployment Planner-jelentés elemzése
 Ez a cikk az Azure Site Recovery Deployment Planner Hyper-V – Azure forgatókönyvére vonatkozó Excel-jelentés táblázatait ismerteti.
@@ -23,7 +23,7 @@ A Helyszíni összefoglalás munkalap áttekintést nyújt a vizsgált Hyper-V-k
 
 ![Helyszíni összefoglalás](media/hyper-v-deployment-planner-analyze-report/on-premises-summary-h2a.png)
 
-**Kezdési dátum** és **befejezési**dátum: a jelentéskészítési adatok kezdő és záró dátuma. Alapértelmezés szerint a kezdő dátum az a dátum, amikor a profilkészítés megkezdődik, a záró dátum pedig az a dátum, amikor a profilkészítés leáll. Ezek az adatok lehetnek a „StartDate” és „EndDate” értékek, ha a jelentést ezekkel a paraméterekkel hozza létre.
+**Kezdési dátum** és **befejezési** dátum: a jelentéskészítési adatok kezdő és záró dátuma. Alapértelmezés szerint a kezdő dátum az a dátum, amikor a profilkészítés megkezdődik, a záró dátum pedig az a dátum, amikor a profilkészítés leáll. Ezek az adatok lehetnek a „StartDate” és „EndDate” értékek, ha a jelentést ezekkel a paraméterekkel hozza létre.
 
 **Total number of profiling days** (Profilkészítés napjainak teljes száma): A jelentéskészítés kezdő és záró dátuma között eltelt profilkészítési napok teljes száma.
 
@@ -187,7 +187,7 @@ A Site Recovery Deployment Planner által létrehozott Excel-jelentésben minden
 * 1025 GB és 2048 GB között P40.
 * 2049 GB és 4095 GB között P50.
 
-Ha például egy lemez számítási feladatait a P20 vagy a P30 kategóriába helyezi, de a méret leképezi egy alacsonyabb Premium Storage-lemez típusra, akkor az eszköz **Igen értéket**jelöl a virtuális gép számára \* . Az eszköz azt is javasolja, hogy módosítsa a forráslemez méretét, hogy a lemez megfeleljen az ajánlott prémium szintű tárolólemez-típusnak, vagy hogy módosítsa a céllemez típusát a feladatátvétel után.
+Ha például egy lemez számítási feladatait a P20 vagy a P30 kategóriába helyezi, de a méret leképezi egy alacsonyabb Premium Storage-lemez típusra, akkor az eszköz **Igen értéket** jelöl a virtuális gép számára \* . Az eszköz azt is javasolja, hogy módosítsa a forráslemez méretét, hogy a lemez megfeleljen az ajánlott prémium szintű tárolólemez-típusnak, vagy hogy módosítsa a céllemez típusát a feladatátvétel után.
 
 **Storage Type** (Tároló típusa): Standard vagy Premium.
 
@@ -356,5 +356,5 @@ A **Batch (óó: PP) becsült kezdeti replikálási ideje**: a kezdeti replikál
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információk a [költségbecslésről](hyper-v-deployment-planner-cost-estimation.md).

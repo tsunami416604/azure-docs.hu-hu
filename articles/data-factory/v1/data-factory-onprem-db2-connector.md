@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e5d2c6b0460c3a7566adb17601aceb57e57f4d0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74931788"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001065"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Adatok áthelyezése a DB2-ből Azure Data Factory másolási tevékenység használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -80,19 +80,19 @@ A következő táblázat felsorolja a DB2-hez társított szolgáltatáshoz tart
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| **típusa** |Ezt a tulajdonságot **OnPremisesDb2**értékre kell beállítani. |Igen |
-| **Server** |A DB2-kiszolgáló neve. |Igen |
-| **adatbázis** |A DB2-adatbázis neve. |Igen |
-| **séma** |A séma neve a DB2-adatbázisban. Ez a tulajdonság megkülönbözteti a kis-és nagybetűket. |Nem |
-| **authenticationType** |A DB2-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a következők: névtelen, alapszintű és Windows. |Igen |
-| **username** |A felhasználói fiók neve, ha alapszintű vagy Windows-hitelesítést használ. |Nem |
-| **alaphelyzetbe állítása** |A felhasználói fiók jelszava. |Nem |
-| **Átjáró neve** |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni DB2-adatbázishoz való kapcsolódáshoz. |Igen |
+| **típusa** |Ezt a tulajdonságot **OnPremisesDb2** értékre kell beállítani. |Yes |
+| **Server** |A DB2-kiszolgáló neve. |Yes |
+| **adatbázis** |A DB2-adatbázis neve. |Yes |
+| **séma** |A séma neve a DB2-adatbázisban. Ez a tulajdonság megkülönbözteti a kis-és nagybetűket. |No |
+| **authenticationType** |A DB2-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a következők: névtelen, alapszintű és Windows. |Yes |
+| **username** |A felhasználói fiók neve, ha alapszintű vagy Windows-hitelesítést használ. |No |
+| **alaphelyzetbe állítása** |A felhasználói fiók jelszava. |No |
+| **Átjáró neve** |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni DB2-adatbázishoz való kapcsolódáshoz. |Yes |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok listáját az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben találja. Az adathalmazok (például a **struktúra**, a **rendelkezésre állás** **és az adatkészlet** JSON-szabályzata) minden adatkészlet esetében hasonlóak (az Azure SQL, az Azure Blob Storage, az Azure Table Storage stb.).
 
-A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről. A **RelationalTable**típusú adatkészlet **typeProperties** szakasza, amely tartalmazza a DB2-adatkészletet, a következő tulajdonsággal rendelkezik:
+A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről. A **RelationalTable** típusú adatkészlet **typeProperties** szakasza, amely tartalmazza a DB2-adatkészletet, a következő tulajdonsággal rendelkezik:
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
@@ -310,9 +310,9 @@ A következő leképezéseket használja a rendszer, amikor a másolási tevéke
 | SmallInt |Int16 |
 | Egész szám |Int32 |
 | BigInt |Int64 |
-| Valós |Egyirányú |
+| Valós |Egyszeres |
 | Dupla |Dupla |
-| Lebegőpontos értékek |Dupla |
+| Float |Dupla |
 | Tizedesjegy |Tizedesjegy |
 | DecimalFloat |Tizedesjegy |
 | Numerikus |Tizedesjegy |
@@ -336,9 +336,9 @@ A következő leképezéseket használja a rendszer, amikor a másolási tevéke
 | SmallInt |Int16 |
 | Egész szám |Int32 |
 | BigInt |Int64 |
-| Valós |Egyirányú |
+| Valós |Egyszeres |
 | Dupla |Dupla |
-| Lebegőpontos értékek |Dupla |
+| Float |Dupla |
 | Tizedesjegy |Tizedesjegy |
 | DecimalFloat |Tizedesjegy |
 | Numerikus |Tizedesjegy |

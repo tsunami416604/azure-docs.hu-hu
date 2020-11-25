@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
 ms.openlocfilehash: c1b0ce62905424032c2100a1a032fa43ba97578f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87084857"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999399"
 ---
 # <a name="restore-an-app-in-azure"></a>Alkalmazás visszaállítása az Azure-ban
 Ebből a cikkből megtudhatja, hogyan állíthatja vissza az alkalmazást olyan [Azure app Serviceban](../app-service/overview.md) , amelyekről korábban készített biztonsági mentést (lásd: [az alkalmazás biztonsági mentése az Azure-ban](manage-backup.md)). Az alkalmazást visszaállíthatja a csatolt adatbázisaival egy korábbi állapotba, vagy létrehozhat egy új alkalmazást az eredeti alkalmazás biztonsági másolatai alapján. A Azure App Service a következő adatbázisokat támogatja a biztonsági mentéshez és visszaállításhoz:
@@ -24,7 +24,7 @@ A biztonsági másolatokból történő visszaállítás a **standard** és a **
 <a name="PreviousBackup"></a>
 
 ## <a name="restore-an-app-from-an-existing-backup"></a>Alkalmazás visszaállítása meglévő biztonsági másolatból
-1. Az alkalmazás **Beállítások** lapján a Azure Portalban kattintson a **biztonsági** mentések elemre a **biztonsági mentések** lap megjelenítéséhez. Ezután kattintson a **visszaállítás**gombra.
+1. Az alkalmazás **Beállítások** lapján a Azure Portalban kattintson a **biztonsági** mentések elemre a **biztonsági mentések** lap megjelenítéséhez. Ezután kattintson a **visszaállítás** gombra.
    
     ![Válassza a Visszaállítás most lehetőséget][ChooseRestoreNow]
 2. A **visszaállítás** lapon először válassza ki a biztonsági mentés forrását.
@@ -39,7 +39,7 @@ A biztonsági másolatokból történő visszaállítás a **standard** és a **
     ![Képernyőfelvétel: Itt adhatja meg, hogy hol adja meg az alkalmazás visszaállításának célhelyét.](./media/web-sites-restore/022ChooseDestination1.png)
    
    > [!WARNING]
-   > Ha a **felülírás**lehetőséget választja, a rendszer törli az aktuális alkalmazás összes meglévő adatát, és felülírja azt. Mielőtt rákattintott **az OK**gombra, győződjön meg arról, hogy pontosan mit szeretne tenni.
+   > Ha a **felülírás** lehetőséget választja, a rendszer törli az aktuális alkalmazás összes meglévő adatát, és felülírja azt. Mielőtt rákattintott **az OK** gombra, győződjön meg arról, hogy pontosan mit szeretne tenni.
    > 
    > 
    
@@ -55,7 +55,7 @@ A biztonsági másolatokból történő visszaállítás a **standard** és a **
 <a name="StorageAccount"></a>
 
 ## <a name="download-or-delete-a-backup-from-a-storage-account"></a>Biztonsági másolat letöltése vagy törlése egy Storage-fiókból
-1. A Azure Portal fő **Tallózás** lapján válassza a **Storage-fiókok**lehetőséget. Megjelenik a meglévő Storage-fiókok listája.
+1. A Azure Portal fő **Tallózás** lapján válassza a **Storage-fiókok** lehetőséget. Megjelenik a meglévő Storage-fiókok listája.
 2. Válassza ki azt a Storage-fiókot, amely a letölteni vagy törölni kívánt biztonsági másolatot tartalmazza. Megjelenik a Storage-fiók lapja.
 3. A Storage-fiók lapon válassza ki a kívánt tárolót
    
