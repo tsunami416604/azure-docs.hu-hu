@@ -9,11 +9,11 @@ ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
 ms.openlocfilehash: 8df24b44d648343c46532eed443717f444bd0058
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397790"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95975632"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések a Application Gateway
 
@@ -434,9 +434,9 @@ Nem, a AGIC bővítmény felügyelt szolgáltatás, ami azt jelenti, hogy a Micr
 
 A Application Gateway három naplót biztosít: 
 
-* **ApplicationGatewayAccessLog** : a hozzáférési napló tartalmazza az Application Gateway-felületre küldött összes kérelmet. Az adat magában foglalja a hívó IP-címét, a kért URL-címet, a válasz késését, a visszatérési kódot, valamint a bejövő és kimenő bájtokat. Egy-egy rekordot tartalmaz az Application Gateway-ben.
-* **ApplicationGatewayPerformanceLog** : a Teljesítménynapló rögzíti az egyes Application Gateway-átjárók teljesítményadatait. Az adatok közé tartozik az átviteli sebesség, a kiszolgált kérelmek száma, a sikertelen kérelmek száma, valamint az állapot és a nem kifogástalan háttérbeli példányok száma.
-* **ApplicationGatewayFirewallLog** : a WAF-mel konfigurált Application Gateway átjárók esetén a tűzfal naplója az észlelési mód vagy a megelőzési mód használatával naplózott kérelmeket tartalmaz.
+* **ApplicationGatewayAccessLog**: a hozzáférési napló tartalmazza az Application Gateway-felületre küldött összes kérelmet. Az adat magában foglalja a hívó IP-címét, a kért URL-címet, a válasz késését, a visszatérési kódot, valamint a bejövő és kimenő bájtokat. Egy-egy rekordot tartalmaz az Application Gateway-ben.
+* **ApplicationGatewayPerformanceLog**: a Teljesítménynapló rögzíti az egyes Application Gateway-átjárók teljesítményadatait. Az adatok közé tartozik az átviteli sebesség, a kiszolgált kérelmek száma, a sikertelen kérelmek száma, valamint az állapot és a nem kifogástalan háttérbeli példányok száma.
+* **ApplicationGatewayFirewallLog**: a WAF-mel konfigurált Application Gateway átjárók esetén a tűzfal naplója az észlelési mód vagy a megelőzési mód használatával naplózott kérelmeket tartalmaz.
 
 Minden napló gyűjtése 60 másodpercenként történik. További információ: [a háttér állapota, a diagnosztikai naplók és a metrikák a Application Gatewayhoz](application-gateway-diagnostics.md).
 

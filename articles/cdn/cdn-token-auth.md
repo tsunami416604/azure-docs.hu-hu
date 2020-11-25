@@ -15,11 +15,11 @@ ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mazha
 ms.openlocfilehash: 21ef06f37e6840df08b1477f9c0ff24f6e15d1a3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778015"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95978037"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>Azure CDN-eszközök védelme jogkivonat-hitelesítéssel
 
@@ -64,7 +64,7 @@ A következő folyamatábra azt ismerteti, hogyan Azure CDN érvényesít egy ü
 
     ![CDN-profil kezelése gomb](./media/cdn-token-auth/cdn-manage-btn.png)
 
-2. Vigye a kurzort a **nagyméretű http** -n keresztül, majd válassza a **jogkivonat-hitelesítés** elemet a menüben. A titkosítási kulcs és a titkosítási paraméterek a következőképpen állíthatók be:
+2. Vigye a kurzort a **nagyméretű http**-n keresztül, majd válassza a **jogkivonat-hitelesítés** elemet a menüben. A titkosítási kulcs és a titkosítási paraméterek a következőképpen állíthatók be:
 
    1. Hozzon létre egy vagy több titkosítási kulcsot. A titkosítási kulcs megkülönbözteti a kis-és nagybetűket, és alfanumerikus karakterek tetszőleges kombinációját tartalmazhatja. Bármilyen más típusú karakter, beleértve a szóközöket, nem megengedett. A maximális hossz 250 karakter. Annak érdekében, hogy a titkosítási kulcsok véletlenszerűek legyenek, azt javasoljuk, hogy az [OpenSSL eszköz](https://www.openssl.org/)használatával hozza létre őket. 
 
@@ -81,8 +81,8 @@ A következő folyamatábra azt ismerteti, hogyan Azure CDN érvényesít egy ü
    2. Adjon meg egy egyedi titkosítási kulcsot az **elsődleges kulcs** mezőben, és szükség esetén adjon meg egy biztonsági mentési kulcsot a **biztonsági mentési kulcs** mezőben.
 
    3. Válassza ki az egyes kulcsok minimális titkosítási verzióját a **titkosítási verziók minimális** listájáról, majd válassza a **frissítés** elemet:
-      - **V2** : azt jelzi, hogy a kulcs a 2,0-es és 3,0-es verziójú tokenek előállítására használható. Ezt a lehetőséget csak akkor használja, ha örökölt 2,0-es verziójú titkosítási kulcsról 3,0-es verzióra való áttérést végez.
-      - **V3** : (ajánlott) azt jelzi, hogy a kulcs csak 3,0-es verziójú tokenek létrehozásához használható.
+      - **V2**: azt jelzi, hogy a kulcs a 2,0-es és 3,0-es verziójú tokenek előállítására használható. Ezt a lehetőséget csak akkor használja, ha örökölt 2,0-es verziójú titkosítási kulcsról 3,0-es verzióra való áttérést végez.
+      - **V3**: (ajánlott) azt jelzi, hogy a kulcs csak 3,0-es verziójú tokenek létrehozásához használható.
 
       ![CDN-jogkivonat hitelesítési kulcsának beállítása](./media/cdn-token-auth/cdn-token-auth-setupkey.png)
     
@@ -179,11 +179,11 @@ A következő folyamatábra azt ismerteti, hogyan Azure CDN érvényesít egy ü
 
 4. A szabályok motorban engedélyezheti a további jogkivonat-hitelesítéssel kapcsolatos funkciókat is. A következő szolgáltatások bármelyikének engedélyezéséhez válassza ki a **szolgáltatások** listából, majd válassza az **engedélyezve** lehetőséget.
     
-   - **[Jogkivonat-Auth-elutasítási kód](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Denial-Code.htm)** : meghatározza, hogy a rendszer milyen típusú választ ad vissza a felhasználónak, ha a kérelem megtagadva. Az itt beállított szabályok felülbírálják a jogkivonat-alapú hitelesítés lapon a **Custom tagadás-kezelési** szakaszban beállított hibakódot.
+   - **[Jogkivonat-Auth-elutasítási kód](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Denial-Code.htm)**: meghatározza, hogy a rendszer milyen típusú választ ad vissza a felhasználónak, ha a kérelem megtagadva. Az itt beállított szabályok felülbírálják a jogkivonat-alapú hitelesítés lapon a **Custom tagadás-kezelési** szakaszban beállított hibakódot.
 
-   - **[Jogkivonat-hitelesítés figyelmen kívül hagyása URL-cím esetén](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Ignore-URL-Case.htm)** : meghatározza, hogy a jogkivonat érvényesítéséhez használt URL-cím megkülönbözteti-e a kis-és
+   - **[Jogkivonat-hitelesítés figyelmen kívül hagyása URL-cím esetén](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Ignore-URL-Case.htm)**: meghatározza, hogy a jogkivonat érvényesítéséhez használt URL-cím megkülönbözteti-e a kis-és
 
-   - **[Jogkivonat-hitelesítési paraméter](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Parameter.htm)** : átnevezi a jogkivonat-hitelesítés lekérdezési karakterláncának paraméterét, amely megjelenik a kért URL-címen. 
+   - **[Jogkivonat-hitelesítési paraméter](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Parameter.htm)**: átnevezi a jogkivonat-hitelesítés lekérdezési karakterláncának paraméterét, amely megjelenik a kért URL-címen. 
         
      ![CDN-szabályok a motor token hitelesítési beállításai – példa](./media/cdn-token-auth/cdn-rules-engine2.png)
 

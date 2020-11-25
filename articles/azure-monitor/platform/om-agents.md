@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 07/24/2020
 ms.openlocfilehash: 2a4f24da51b9e9e78c3df3e7d1437a380306e300
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318351"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95975572"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager összekötése a Azure Monitor
 
@@ -72,15 +72,15 @@ Az alábbi információk a Operations Manager ügynökhöz, a felügyeleti kiszo
 |Erőforrás | Portszám| HTTP-ellenőrzés kihagyása|  
 |---------|------|-----------------------|  
 |**Ügynök**|||  
-|\*.ods.opinsights.azure.com| 443 |Igen|  
-|\*.oms.opinsights.azure.com| 443|Igen|  
-|\*.blob.core.windows.net| 443|Igen|  
-|\*.azure-automation.net| 443|Igen|  
+|\*.ods.opinsights.azure.com| 443 |Yes|  
+|\*.oms.opinsights.azure.com| 443|Yes|  
+|\*.blob.core.windows.net| 443|Yes|  
+|\*.azure-automation.net| 443|Yes|  
 |**Felügyeleti kiszolgáló**|||  
 |\*.service.opinsights.azure.com| 443||  
-|\*.blob.core.windows.net| 443| Igen|  
-|\*.ods.opinsights.azure.com| 443| Igen|  
-|*.azure-automation.net | 443| Igen|  
+|\*.blob.core.windows.net| 443| Yes|  
+|\*.ods.opinsights.azure.com| 443| Yes|  
+|*.azure-automation.net | 443| Yes|  
 |**Konzol Operations Manager Azure Monitor**|||  
 |service.systemcenteradvisor.com| 443||  
 |\*.service.opinsights.azure.com| 443||  
@@ -104,7 +104,7 @@ Az alábbi lépések végrehajtásával konfigurálhatja Operations Manager fel�
 A Operations Manager felügyeleti csoport Log Analytics munkaterületre való kezdeti regisztrációja során a felügyeleti csoport proxy-konfigurációjának megadására szolgáló beállítás nem érhető el az operatív konzolon.  A felügyeleti csoportot sikeresen regisztrálni kell a szolgáltatásban ahhoz, hogy ez a lehetőség rendelkezésre álljon.  Ennek megkerüléséhez frissítenie kell a rendszerproxy konfigurációját a netsh használatával azon a rendszeren, amelyen az operatív konzolt futtatja az integráció konfigurálásához, valamint a felügyeleti csoport összes felügyeleti kiszolgálóját.  
 
 1. Nyisson meg egy emelt szintű parancssort.
-   a. Lépjen a **Start menüre** , és írja be a **cmd**parancsot.
+   a. Lépjen a **Start menüre** , és írja be a **cmd** parancsot.
    b. Kattintson a jobb gombbal a **parancssor** elemre, és válassza a Futtatás rendszergazdaként * * lehetőséget.
 1. Írja be a következő parancsot, majd nyomja le az **Enter** billentyűt:
 
@@ -136,7 +136,7 @@ Miután konfigurálta az integrációt a Log Analytics munkaterülettel, csak ka
 1. Nyissa meg az Operations Manager-konzolt, és válassza ki az **Administration** (Adminisztráció) munkaterületet.
 1. Bontsa ki az Operations Management Suite-csomópontot, és kattintson a **Kapcsolat** elemre.
 1. Kattintson a **Számítógép/csoport hozzáadása** hivatkozásra a panel jobb oldalán a Műveletek cím alatt.
-1. A **Számítógép keresése** párbeszédpanelen az Operations Manager által megfigyelt számítógépekre vagy csoportokra kereshet. Jelölje ki a számítógépeket vagy csoportokat, beleértve a Operations Manager felügyeleti kiszolgálót, amelybe be szeretné Azure Monitor a bevezetést, kattintson a **Hozzáadás**, majd **az OK**gombra.
+1. A **Számítógép keresése** párbeszédpanelen az Operations Manager által megfigyelt számítógépekre vagy csoportokra kereshet. Jelölje ki a számítógépeket vagy csoportokat, beleértve a Operations Manager felügyeleti kiszolgálót, amelybe be szeretné Azure Monitor a bevezetést, kattintson a **Hozzáadás**, majd **az OK** gombra.
 
 A Felügyelt számítógépek csomópont adatgyűjtésre konfigurált számítógépei és csoportjai az Operations Management Suite-ben az Operatív konzol **Adminisztráció** munkaterületén láthatók. Itt szükség szerint hozzá is adhat és el is távolíthat számítógépeket és csoportokat.
 
@@ -182,7 +182,7 @@ Ha továbbra is szeretné folytatni a felügyeleti csomagok kiadásának szabál
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 1. Az Azure Portalon kattintson a bal alsó sarokban található **További szolgáltatások** elemre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Log Analytics** elemet, és hozzon létre egy munkaterületet.  
 1. Nyissa meg az Operations Manager konzolt az Operations Manager-rendszergazdák szerepkörbe tartozó fiókkal, és válassza a **Felügyelet** munkaterületet.
-1. Bontsa ki a Log Analytics elemet, majd válassza a **kapcsolatok**lehetőséget.
+1. Bontsa ki a Log Analytics elemet, majd válassza a **kapcsolatok** lehetőséget.
 1. Válassza az **Operation Management Suite újrakonfigurálása** hivatkozást, az ablaktábla közepén.
 1. Kövesse a **log Analytics** bevezetési varázslót, és adja meg az új log Analytics-munkaterülethez társított rendszergazdai fiók e-mail-címét, telefonszámát és jelszavát.
 
@@ -230,7 +230,7 @@ A Operations Manager és az Azure Monitor integrációjának támogatásához sz
    * Microsoft System Center Advisor Internal
 
 1. A Azure Portal kattintson a **Beállítások** csempére.
-1. Válassza a **csatlakoztatott források**lehetőséget.
+1. Válassza a **csatlakoztatott források** lehetőséget.
 1. A System Center Operations Manager szakaszban található táblázatban látnia kell annak a felügyeleti csoportnak a nevét, amelyet el szeretne távolítani a munkaterületről. A **Legutóbbi adatok** oszlop alatt kattintson az **Eltávolítás** elemre.  
 
     > [!NOTE]
