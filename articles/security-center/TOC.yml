@@ -278,8 +278,6 @@
       items:
         - name: Általános kérdések
           href: faq-general.md
-        - name: Számlázással kapcsolatos kérdések
-          href: faq-billing.md
         - name: Engedélyekkel kapcsolatos kérdések
           href: faq-permissions.md
         - name: Adatgyűjtéssel és ügynökkel kapcsolatos kérdések

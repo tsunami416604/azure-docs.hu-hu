@@ -35,6 +35,8 @@
           href: claim-sets.md
     - name: Munkafolyamat
       href: workflow.md
+    - name: Auditnaplók megtekintése
+      href: audit-logs.md
 - name: Referencia
   items:
     - name: GYIK

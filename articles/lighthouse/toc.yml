@@ -24,9 +24,6 @@
     - name: Felügyelt szolgáltatási ajánlatok az Azure Marketplace-en
       displayName: 'azure marketplace, marketplace, managed service, private, plan'
       href: ./concepts/managed-services-offers.md
-    - name: Ajánlott biztonsági eljárások
-      displayName: 'mfa, authentication, secure, group'
-      href: ./concepts/recommended-security-practices.md
     - name: A felhőszolgáltatói program megfontolandó szempontjai
       displayName: 'csp, aobo, partner'
       href: ./concepts/cloud-solution-provider.md
@@ -38,6 +35,9 @@
       href: ./concepts/managed-applications.md
     - name: Biztonság
       items:
+        - name: Ajánlott biztonsági eljárások
+          displayName: 'mfa, authentication, secure, group'
+          href: ./concepts/recommended-security-practices.md
         - name: Biztonsági alapkonfiguráció
           href: security-baseline.md
 - name: Útmutatók

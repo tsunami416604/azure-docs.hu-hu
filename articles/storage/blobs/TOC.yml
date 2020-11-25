@@ -1,5 +1,5 @@
 - name: Az Azure Blob Storage dokumentációja
-  href: /azure/storage/blobs/
+  href: ./index.yml
 - name: Áttekintés
   items:
     - name: Mi az Azure Blob Storage?
@@ -590,7 +590,7 @@
             - name: Storage Explorer – kisegítő lehetőségek
               href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Blob Storage a Microsoft Q&A oldalán
-          href: 'https://docs.microsoft.com/answers/topics/azure-blob-storage.html'
+          href: /answers/topics/azure-blob-storage.html
         - name: Blob Storage a Stack Overflow-n
           href: 'https://stackoverflow.com/questions/tagged/azure-blob-storage'
         - name: A blokkblobok díjszabása
@@ -654,7 +654,7 @@
 - name: 2. generációs Data Lake Storage
   items:
     - name: Váltás az 1. generációs Data Lake Storage dokumentációjára
-      href: /azure/data-lake-store/
+      href: ../../data-lake-store/index.yml
     - name: Áttekintés
       items:
         - name: Bevezetés a Data Lake Storage használatába
@@ -666,7 +666,7 @@
     - name: Oktatóanyagok
       items:
         - name: 'Adatok kinyerése, átalakítása és betöltése az Azure Databricks használatával'
-          href: ../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+          href: /azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Hozzáférés a Data Lake Storage-adatokhoz a Databricks és a Spark használatával
           href: data-lake-storage-use-databricks-spark.md
         - name: 'Adatok kinyerése, átalakítása és betöltése az Azure HDInsight-alapú Apache Hive használatával'
@@ -712,7 +712,7 @@
         - name: Figyelés
           items:
             - name: Blob Storage figyelése
-              href: ../common/monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              href: ./monitor-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Váltás klasszikus metrikákról
               href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Figyelés (klasszikus)
@@ -874,7 +874,7 @@
             - name: Storage Explorer – kisegítő lehetőségek
               href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Microsoft Q&A kérdések oldala
-          href: 'https://docs.microsoft.com/answers/topics/azure-blob-storage.html'
+          href: /answers/topics/azure-blob-storage.html
         - name: Az Azure Storage a Stack Overflow-n
           href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
         - name: Díjszabás

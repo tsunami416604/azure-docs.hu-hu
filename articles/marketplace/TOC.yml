@@ -125,12 +125,12 @@
       items:
         - name: Azure-tárolóra vonatkozó ajánlat megtervezése
           href: marketplace-containers.md
+        - name: Technikai eszközök előkészítése
+          href: create-azure-container-technical-assets.md
         - name: Azure-tárolóra vonatkozó ajánlat létrehozása és közzététele
           items:
-            - name: Technikai eszközök előkészítése
-              href: partner-center-portal/create-azure-container-technical-assets.md
             - name: Azure-tárolóra vonatkozó ajánlat létrehozása
-              href: partner-center-portal/create-azure-container-offer.md
+              href: create-azure-container-offer.md
     - name: Azure-beli virtuális gépekre vonatkozó ajánlatok
       items:
         - name: Virtuálisgép-ajánlat tervezése

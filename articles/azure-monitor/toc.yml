@@ -251,6 +251,8 @@
               href: /azure/data-explorer/kusto/query/samples?&pivots=azuremonitor
             - name: Standard oszlopok
               href: platform/log-standard-columns.md
+            - name: Lekérdezések naplózása
+              href: log-query/query-audit.md
             - name: Lekérdezések optimalizálása
               href: log-query/query-optimization.md
             - name: Függvények

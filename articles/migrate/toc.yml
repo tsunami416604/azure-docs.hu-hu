@@ -208,6 +208,10 @@
       items:
         - name: Ügynök nélküli VMWare-migrálások replikációval kapcsolatos problémáinak hibaelhárítása
           href: troubleshoot-changed-block-tracking-replication.md
+- name: Referencia
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/az.migrate/
 - name: További források
   items:
     - name: Migrálás a felhőbevezetési keretrendszerbe
