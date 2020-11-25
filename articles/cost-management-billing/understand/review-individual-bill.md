@@ -11,11 +11,11 @@ ms.date: 10/26/2020
 ms.author: banders
 ms.custom: contentperfq2
 ms.openlocfilehash: c4a9a981017becd0d9343d9c287a4fe9341d7c43
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678135"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006149"
 ---
 # <a name="tutorial-review-your-individual-azure-subscription-bill"></a>Oktatóanyag: Az egyéni Azure-előfizetéshez tartozó számla áttekintése
 
@@ -33,7 +33,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Fizetős számlázási *Microsoft Online Services Program* -fiókkal kell rendelkeznie. A fiók létrehozása az Azure webhelyén keresztül, az Azure-regisztráció alkalmával történik. Ilyen eset, ha rendelkezik használatalapú fizetést használó fiókkal vagy Visual Studio-előfizető.
+Fizetős számlázási *Microsoft Online Services Program*-fiókkal kell rendelkeznie. A fiók létrehozása az Azure webhelyén keresztül, az Azure-regisztráció alkalmával történik. Ilyen eset, ha rendelkezik használatalapú fizetést használó fiókkal vagy Visual Studio-előfizető.
 
 Az ingyenes Azure-fiókokhoz csak a havi kreditösszeg túllépése esetén készülnek számlák.
 
@@ -157,7 +157,7 @@ A számla összegének kiszámításához használt mérőeszközök a használa
 
 <a name="payment"></a>
 
-Ha hitelkártyás fizetést állít be fizetési módként, a rendszer a számlázási időszak lejárta után 10 napon belül automatikusan felszámítja az összeget. A hitelkártya-kivonatban a költségsorban a következő szerepel: **MSFT Azure** .
+Ha hitelkártyás fizetést állít be fizetési módként, a rendszer a számlázási időszak lejárta után 10 napon belül automatikusan felszámítja az összeget. A hitelkártya-kivonatban a költségsorban a következő szerepel: **MSFT Azure**.
 
 A megterhelt hitelkártya megváltoztatásához tekintse meg a [hitelkártya az Azure-ban történő hozzáadását, frissítését vagy eltávolítását](../manage/change-credit-card.md) ismertető szakaszt.
 
