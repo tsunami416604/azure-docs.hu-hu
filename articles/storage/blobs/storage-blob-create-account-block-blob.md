@@ -9,18 +9,18 @@ ms.date: 10/30/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 65a60425f09e9cd7a3e06ca1624621ed8b9fdcbd
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 9350f9aeff90b75a4e1362f6fa2fa1b0d07f20cf
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842073"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95997086"
 ---
 # <a name="create-a-blockblobstorage-account"></a>BlockBlobStorage-fiók létrehozása
 
 A BlockBlobStorage fiók típusa lehetővé teszi, hogy a prémium szintű teljesítménnyel rendelkező blokk blobokat hozzon létre. Ez a típusú Storage-fiók olyan számítási feladatokhoz van optimalizálva, amelyek nagy tranzakciós díjszabással rendelkeznek, vagy amelyek nagyon gyors hozzáférési időt igényelnek. Ez a cikk bemutatja, hogyan hozhat létre BlockBlobStorage-fiókot a Azure Portal, az Azure CLI vagy a Azure PowerShell használatával.
 
-A BlockBlobStorage-fiókokkal kapcsolatos további információkért lásd: az [Azure Storage-fiók áttekintése](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
+A BlockBlobStorage-fiókokkal kapcsolatos további információkért lásd: az [Azure Storage-fiók áttekintése](../common/storage-account-overview.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -192,8 +192,8 @@ Ha az Azure CLI használatával szeretne blokk-blob-fiókot létrehozni, elősz�
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- A Storage-fiókokkal kapcsolatos további információkért lásd: az [Azure Storage-fiók áttekintése](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
+- A Storage-fiókokkal kapcsolatos további információkért lásd: az [Azure Storage-fiók áttekintése](../common/storage-account-overview.md).
 
-- További információ az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+- További információ az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../../azure-resource-manager/management/overview.md).

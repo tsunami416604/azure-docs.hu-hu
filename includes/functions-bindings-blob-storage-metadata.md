@@ -9,20 +9,20 @@ ms.topic: include
 ms.date: 08/02/2019
 ms.author: cshoe
 ms.custom: include file
-ms.openlocfilehash: 3788fdb954917f28f64a0dfe035bed4ded0932d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4e6d5fb41769544b7be0f689447364988d0380d
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "69642135"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95998835"
 ---
-A blob trigger számos metaadat-tulajdonságot biztosít. Ezek a tulajdonságok a más kötésekben lévő kötési kifejezések vagy a kódban szereplő paraméterek részeként is használhatók. Ezeknek az értékeknek ugyanazok a szemantikai értékei, mint a [CloudBlob](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblob?view=azure-dotnet) típusa.
+A blob trigger számos metaadat-tulajdonságot biztosít. Ezek a tulajdonságok a más kötésekben lévő kötési kifejezések vagy a kódban szereplő paraméterek részeként is használhatók. Ezeknek az értékeknek ugyanazok a szemantikai értékei, mint a [CloudBlob](/dotnet/api/microsoft.azure.storage.blob.cloudblob?view=azure-dotnet) típusa.
 
 |Tulajdonság  |Típus  |Leírás  |
 |---------|---------|---------|
 |`BlobTrigger`|`string`|Az indító blob elérési útja.|
 |`Uri`|`System.Uri`|A blob URI-ja az elsődleges helyen.|
-|`Properties` |[BlobProperties](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobproperties)|A blob rendszertulajdonságai. |
+|`Properties` |[BlobProperties](/dotnet/api/microsoft.azure.storage.blob.blobproperties)|A blob rendszertulajdonságai. |
 |`Metadata` |`IDictionary<string,string>`|A blobhoz tartozó felhasználó által definiált metaadatok.|
 
 A következő C# parancsfájl és JavaScript-példák például az indító blob elérési útját naplózzák, beleértve a tárolót:

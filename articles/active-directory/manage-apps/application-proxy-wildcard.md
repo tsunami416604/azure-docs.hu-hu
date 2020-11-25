@@ -17,11 +17,11 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9b2563b238bae310d662220d2c244e863249c9c4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651940"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997511"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Helyettesítő karakteres alkalmazások a Azure Active Directory alkalmazásproxy
 
@@ -189,7 +189,7 @@ Mivel a `finance.adventure-works.com` egy konkrétabb URL-cím `*.adventure-work
 
 Ha több alkalmazás van közzétéve a Finance szolgáltatásban, és Ön `finance.adventure-works.com` ellenőrzött tartománnyal rendelkezik, közzétehet egy másik helyettesítő karaktert `*.finance.adventure-works.com` . Mivel ez az általánosnál sokkal pontosabb `*.adventure-works.com` , elsőbbséget élvez, ha egy felhasználó a pénzügyi tartományban található alkalmazáshoz fér hozzá.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az **Egyéni tartományokkal** kapcsolatos további tudnivalókért tekintse meg az [Egyéni tartományok használata az Azure ad Application proxy-ban](application-proxy-configure-custom-domain.md)című témakört.
 - További információ az **alkalmazások közzétételéről**: [alkalmazások közzététele az Azure ad Application proxy használatával](application-proxy-add-on-premises-application.md)

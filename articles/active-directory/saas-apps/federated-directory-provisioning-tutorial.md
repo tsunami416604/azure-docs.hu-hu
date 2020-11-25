@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: zhchia
 ms.openlocfilehash: 8ca7654d930247f70d85cbc20fbbeb961223f05f
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359799"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998362"
 ---
 # <a name="tutorial-configure-federated-directory-for-automatic-user-provisioning"></a>Oktatóanyag: összevont könyvtár konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -171,7 +171,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységek jelentésére mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által az összevont címtárban végrehajtott összes műveletet ismertetik.
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md) helyezésével kapcsolatban.
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

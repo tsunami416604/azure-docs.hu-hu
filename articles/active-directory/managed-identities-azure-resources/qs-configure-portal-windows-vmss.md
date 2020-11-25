@@ -16,11 +16,11 @@ ms.date: 02/20/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 43b986b6bb25dff1227247b1d249ce565553877a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91329133"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997409"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>Felügyelt identitások konfigurálása egy virtuálisgép-méretezési csoport Azure-erőforrásaihoz a Azure Portal használatával
 
@@ -57,7 +57,7 @@ A rendszer által hozzárendelt felügyelt identitás engedélyezése egy olyan 
 
 2. Navigáljon a kívánt virtuálisgép-méretezési csoporthoz.
 
-3. A **rendszer által hozzárendelt**, **állapot**területen válassza a be lehetőséget, majd kattintson **a** **Mentés**gombra:
+3. A **rendszer által hozzárendelt**, **állapot** területen válassza a be lehetőséget, majd kattintson **a** **Mentés** gombra:
 
    ![Képernyőfelvétel: az "identitás (előzetes verzió)" oldal a "rendszer kiosztva" beállítással, a "be" állapottal és a "Mentés" gomb kiemelésével jelenik meg.](./media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png) 
 
@@ -69,7 +69,7 @@ Ha olyan virtuálisgép-méretezési csoporttal rendelkezik, amelynek már nincs
 
 2. Navigáljon a kívánt virtuálisgép-méretezési csoporthoz.
 
-3. A **rendszer által hozzárendelt**, állapot **területen válassza ki** , majd kattintson a **Mentés**gombra: **Status**
+3. A **rendszer által hozzárendelt**, állapot **területen válassza ki** , majd kattintson a **Mentés** gombra: **Status**
 
    ![Konfiguráció lap képernyőképe](./media/msi-qs-configure-portal-windows-vmss/disable-windows-vmss-portal-configuration-blade.png)
 
@@ -86,18 +86,18 @@ A Azure Portal jelenleg nem támogatja a felhasználó által hozzárendelt fel�
 ### <a name="assign-a-user-assigned-managed-identity-to-an-existing-virtual-machine-scale-set"></a>Felhasználóhoz rendelt felügyelt identitás hozzárendelése meglévő virtuálisgép-méretezési csoportokhoz
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) a virtuálisgép-méretezési csoportját tartalmazó Azure-előfizetéshez társított fiók használatával.
-2. Navigáljon a kívánt virtuálisgép-méretezési csoporthoz, és kattintson az **identitás**, a **felhasználó hozzárendelve** , majd a ** \+ Hozzáadás**elemre.
+2. Navigáljon a kívánt virtuálisgép-méretezési csoporthoz, és kattintson az **identitás**, a **felhasználó hozzárendelve** , majd a **\+ Hozzáadás** elemre.
 
    ![Képernyőkép, amely a "felhasználó által hozzárendelt" nevű "Identity" oldalt jeleníti meg, és a "Hozzáadás" gomb ki van emelve.](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vmss-screenshot1.png)
 
-3. Kattintson arra a felhasználó által hozzárendelt identitásra, amelyet hozzá szeretne adni a virtuálisgép-méretezési csoporthoz, majd kattintson a **Hozzáadás**gombra.
+3. Kattintson arra a felhasználó által hozzárendelt identitásra, amelyet hozzá szeretne adni a virtuálisgép-méretezési csoporthoz, majd kattintson a **Hozzáadás** gombra.
    
    ![Felhasználó által hozzárendelt identitás hozzáadása a VMSS-hez](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vm-screenshot2.png)
 
 ### <a name="remove-a-user-assigned-managed-identity-from-a-virtual-machine-scale-set"></a>Felhasználó által hozzárendelt felügyelt identitás eltávolítása virtuálisgép-méretezési csoportból
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) egy olyan fiókkal, amely a virtuális gépet tartalmazó Azure-előfizetéshez van társítva.
-2. Navigáljon a kívánt virtuálisgép-méretezési csoporthoz, és kattintson az **identitás**, a **felhasználó hozzárendelése**elemre, a törölni kívánt, felhasználóhoz rendelt felügyelt identitás nevére, majd kattintson az **Eltávolítás** gombra (a megerősítő ablaktáblán kattintson az **Igen** gombra).
+2. Navigáljon a kívánt virtuálisgép-méretezési csoporthoz, és kattintson az **identitás**, a **felhasználó hozzárendelése** elemre, a törölni kívánt, felhasználóhoz rendelt felügyelt identitás nevére, majd kattintson az **Eltávolítás** gombra (a megerősítő ablaktáblán kattintson az **Igen** gombra).
 
    ![Felhasználó által hozzárendelt identitás eltávolítása egy VMSS](./media/msi-qs-configure-portal-windows-vm/remove-user-assigned-identity-vmss-screenshot.png)
 

@@ -7,11 +7,11 @@ ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 45393f116149f6cf16763d2d7033f8425df235bf
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832993"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998837"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Blob Storage-trigger Azure Functions
 
@@ -424,7 +424,7 @@ A blob-trigger belsőleg használ egy várólistát, így az egyidejű függvén
 
 A JavaScript és a Java függvények a teljes blobot a memóriába töltik be, a C#-függvények pedig a következőhöz kötődnek: `string` vagy `Byte[]` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [BLOB Storage-adat olvasása függvény futtatásakor](./functions-bindings-storage-blob-input.md)
 - [BLOB Storage-adatok írása függvényből](./functions-bindings-storage-blob-output.md)

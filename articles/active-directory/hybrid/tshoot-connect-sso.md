@@ -14,11 +14,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 60f23efa4f46849e1fe8b0ebe05cdd83ec16f49e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294818"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997681"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory zökkenőmentes egyetlen Sign-On hibáinak megoldása
 
@@ -28,7 +28,7 @@ Ez a cikk segítséget nyújt a Azure Active Directory (Azure AD) zökkenőmente
 
 - Néhány esetben a zökkenőmentes SSO engedélyezése akár 30 percet is igénybe vehet.
 - Ha letiltja és újból engedélyezi a zökkenőmentes egyszeri bejelentkezést a bérlőn, a felhasználók nem kapják meg az egyszeri bejelentkezést, amíg a gyorsítótárazott Kerberos-jegyek (általában 10 órán át érvényesek) lejárnak.
-- Ha a zökkenőmentes egyszeri bejelentkezés sikeres, a felhasználónak nincs lehetősége kiválasztani a **bejelentkezve maradni**lehetőséget. Ennek a viselkedésnek köszönhetően a [SharePoint és a OneDrive leképezési forgatókönyvek](https://support.microsoft.com/help/2616712/how-to-configure-and-to-troubleshoot-mapped-network-drives-that-connec) nem működnek.
+- Ha a zökkenőmentes egyszeri bejelentkezés sikeres, a felhasználónak nincs lehetősége kiválasztani a **bejelentkezve maradni** lehetőséget. Ennek a viselkedésnek köszönhetően a [SharePoint és a OneDrive leképezési forgatókönyvek](https://support.microsoft.com/help/2616712/how-to-configure-and-to-troubleshoot-mapped-network-drives-that-connec) nem működnek.
 - A 16.0.8730. xxxx és újabb verziókkal rendelkező Win32-ügyfelek (Outlook, Word, Excel és egyebek) nem interaktív folyamat használatával támogatottak. Microsoft 365 Más verziók nem támogatottak; ezeken a verziókon a felhasználók bejelentkeznek a felhasználónevek, de a jelszavak nem. A OneDrive a csendes bejelentkezési élmény érdekében aktiválni kell a [OneDrive csendes konfigurációs szolgáltatást](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) .
 - A zökkenőmentes egyszeri bejelentkezés nem működik a Firefox privát böngészési módjában.
 - A zökkenőmentes egyszeri bejelentkezés nem működik az Internet Explorerben, ha a fokozottan védett mód be van kapcsolva.
@@ -55,7 +55,7 @@ Ha a bérlőhöz prémium szintű Azure AD licenc van társítva, akkor a [bejel
 
 ![Azure Active Directory felügyeleti központ: bejelentkezési jelentés](./media/tshoot-connect-sso/sso9.png)
 
-Keresse meg **Azure Active Directory**  >  a**bejelentkezéseket** a [Azure Active Directory felügyeleti központban](https://aad.portal.azure.com/), majd válasszon egy adott felhasználó bejelentkezési tevékenységét. Keresse meg a **bejelentkezési hibakód** mezőt. Képezze le az adott mező értékét a hiba okának és a megoldásnak az alábbi táblázat használatával:
+Keresse meg **Azure Active Directory**  >  a **bejelentkezéseket** a [Azure Active Directory felügyeleti központban](https://aad.portal.azure.com/), majd válasszon egy adott felhasználó bejelentkezési tevékenységét. Keresse meg a **bejelentkezési hibakód** mezőt. Képezze le az adott mező értékét a hiba okának és a megoldásnak az alábbi táblázat használatával:
 
 |Bejelentkezési hibakód|Bejelentkezési hiba oka|Feloldás
 | --- | --- | ---
@@ -91,7 +91,7 @@ A következő ellenőrzőlista segítségével elháríthatja a zökkenőmentes 
 
 ### <a name="domain-controller-logs"></a>Tartományvezérlői naplók
 
-Ha engedélyezi a sikeres naplózást a tartományvezérlőn, akkor minden alkalommal, amikor egy felhasználó a zökkenőmentes SSO-n keresztül jelentkezik be, egy biztonsági bejegyzést rögzít az eseménynaplóban. Ezeket a biztonsági eseményeket a következő lekérdezéssel érheti el. (Keresse meg a **$ AzureADSSOAcc**számítógépfiók **4769** -as eseményét.)
+Ha engedélyezi a sikeres naplózást a tartományvezérlőn, akkor minden alkalommal, amikor egy felhasználó a zökkenőmentes SSO-n keresztül jelentkezik be, egy biztonsági bejegyzést rögzít az eseménynaplóban. Ezeket a biztonsági eseményeket a következő lekérdezéssel érheti el. (Keresse meg a **$ AzureADSSOAcc** számítógépfiók **4769** -as eseményét.)
 
 ```
     <QueryList>

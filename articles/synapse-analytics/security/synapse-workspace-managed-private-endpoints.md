@@ -9,11 +9,11 @@ ms.date: 10/16/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
 ms.openlocfilehash: 930c1f94446eb145a093bf7a8706485d40eec210
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379679"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998175"
 ---
 # <a name="synapse-managed-private-endpoints-preview"></a>Szinapszis felügyelt privát végpontok (előzetes verzió)
 
@@ -57,6 +57,6 @@ A felügyelt magánhálózati végpont, amely az SQL-készletet célozza, *szina
 
 Ez a két felügyelt magánhálózati végpont automatikusan létrejön az Azure szinapszis-munkaterület létrehozásakor. Ez a két felügyelt magánhálózati végpont esetében nem számítunk fel díjat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információt a [felügyelt privát végpontok létrehozása az adatforrásokhoz](./how-to-create-managed-private-endpoints.md) című cikkben talál.

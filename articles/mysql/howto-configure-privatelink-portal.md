@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.openlocfilehash: fbc75df0b22ba452b8c91dfcb21ca13aaed557a3
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242398"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998566"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>Azure Database for MySQL privát hivatkozás létrehozása és kezelése a portál használatával
 
@@ -37,12 +37,12 @@ Ebben a szakaszban létre fog hozni egy Virtual Network és egy alhálózatot, a
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Név | Adja meg a *MyVirtualNetwork* . |
+    | Név | Adja meg a *MyVirtualNetwork*. |
     | Címtér | Adja meg a *10.1.0.0/16* értéket. |
     | Előfizetés | Válassza ki előfizetését.|
-    | Erőforráscsoport | Válassza az **új létrehozása** elemet, írja be a *myResourceGroup* , majd kattintson **az OK gombra** . |
+    | Erőforráscsoport | Válassza az **új létrehozása** elemet, írja be a *myResourceGroup*, majd kattintson **az OK gombra**. |
     | Hely | Válassza a **Nyugat-Európa** régiót.|
-    | Alhálózat – név | Adja meg a *mySubnet* . |
+    | Alhálózat – név | Adja meg a *mySubnet*. |
     | Alhálózat – címtartomány | Adja meg a *10.1.0.0/24* értéket. |
     |||
 3. Hagyja a többi értéket alapértelmezettként, és válassza a **Létrehozás** lehetőséget.
@@ -59,9 +59,9 @@ Ebben a szakaszban létre fog hozni egy Virtual Network és egy alhálózatot, a
     | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget. Ezt az előző szakaszban hozta létre.  |
     | **PÉLDÁNY RÉSZLETEI** |  |
-    | Virtuális gép neve | Adja meg a *myVm* . |
-    | Régió | Válassza a **Nyugat-Európa** régiót. |
-    | Rendelkezésre állási beállítások | Az alapértelmezett **infrastruktúra-redundancia megadása nem kötelező** . |
+    | Virtuális gép neve | Adja meg a *myVm*. |
+    | Region | Válassza a **Nyugat-Európa** régiót. |
+    | Rendelkezésre állási beállítások | Az alapértelmezett **infrastruktúra-redundancia megadása nem kötelező**. |
     | Kép | Válassza a **Windows Server 2019 Datacenter** lehetőséget. |
     | Méret | Hagyja meg az alapértelmezett **standard DS1 v2** értéket. |
     | **RENDSZERGAZDAFIÓK** |  |
@@ -82,10 +82,10 @@ Ebben a szakaszban létre fog hozni egy Virtual Network és egy alhálózatot, a
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Virtuális hálózat | Hagyja meg az alapértelmezett **MyVirtualNetwork** .  |
+    | Virtuális hálózat | Hagyja meg az alapértelmezett **MyVirtualNetwork**.  |
     | Címtér | Hagyja meg az alapértelmezett **10.1.0.0/24** értéket.|
-    | Alhálózat | Hagyja meg az alapértelmezett **mySubnet (10.1.0.0/24)** .|
-    | Nyilvános IP-cím | Hagyja meg az alapértelmezett **(új) myVm-IP-címet** . |
+    | Alhálózat | Hagyja meg az alapértelmezett **mySubnet (10.1.0.0/24)**.|
+    | Nyilvános IP-cím | Hagyja meg az alapértelmezett **(új) myVm-IP-címet**. |
     | Nyilvános bejövő portok | Válassza a **kiválasztott portok engedélyezése** lehetőséget. |
     | Válassza ki a bejövő portokat | Válassza a **http** és az **RDP** lehetőséget.|
     |||
@@ -109,7 +109,7 @@ Ebben a szakaszban egy Azure Database for MySQL-kiszolgálót fog létrehozni az
     | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget. Ezt az előző szakaszban hozta létre.|
     | **Kiszolgáló adatai** |  |
-    |Kiszolgálónév  | Adja meg a *myServer* . Ha ezt a nevet hozza, hozzon létre egy egyedi nevet.|
+    |Kiszolgálónév  | Adja meg a *myServer*. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet.|
     | Rendszergazdai felhasználónév| Adja meg a választott rendszergazda nevét. |
     | Jelszó | Adjon meg egy tetszőleges jelszót. A jelszónak legalább 8 karakter hosszúnak kell lennie, és meg kell felelnie a meghatározott követelményeknek. |
     | Hely | Válassza ki azt az Azure-régiót, ahol a MySQL-kiszolgálót szeretné tárolni. |
@@ -132,7 +132,7 @@ Ebben a szakaszban létre fog hozni egy MySQL-kiszolgálót, és hozzá kell adn
 
 1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **hálózati**  >  **privát hivatkozás** lehetőséget.
 
-2. A **Private link Centerben – áttekintés** , a **szolgáltatáshoz való magánhálózati kapcsolat** létrehozásához válassza az **Indítás** lehetőséget.
+2. A **Private link Centerben – áttekintés**, a **szolgáltatáshoz való magánhálózati kapcsolat** létrehozásához válassza az **Indítás** lehetőséget.
 
     :::image type="content" source="media/concepts-data-access-and-security-private-link/privatelink-overview.png" alt-text="Privát hivatkozás áttekintése":::
 
@@ -145,7 +145,7 @@ Ebben a szakaszban létre fog hozni egy MySQL-kiszolgálót, és hozzá kell adn
     | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget. Ezt az előző szakaszban hozta létre.|
     | **Példány részletei** |  |
     | Name | Adja meg a *myPrivateEndpoint* nevet. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet. |
-    |Régió|Válassza a **Nyugat-Európa** régiót.|
+    |Region|Válassza a **Nyugat-Európa** régiót.|
     |||
 
 5. Válassza a **Tovább: erőforrás** elemet.
@@ -178,7 +178,7 @@ Ebben a szakaszban létre fog hozni egy MySQL-kiszolgálót, és hozzá kell adn
 1. Válassza az **Áttekintés + létrehozás** lehetőséget. Az **Áttekintés és létrehozása** lapra kerül, ahol az Azure érvényesíti az Ön konfigurációját. 
 2. Amikor megjelenik a **Megfelelt az ellenőrzésen** üzenet, válassza a **Létrehozás** lehetőséget. 
 
-    :::image type="content" source="media/concepts-data-access-and-security-private-link/show-mysql-private-link.png" alt-text="Privát hivatkozás áttekintése":::
+    :::image type="content" source="media/concepts-data-access-and-security-private-link/show-mysql-private-link.png" alt-text="Saját hivatkozás létrehozva":::
 
     > [!NOTE] 
     > Az ügyfél DNS-beállításában lévő teljes tartománynév nem oldható fel a magánhálózati IP-címekre konfigurálva. Az [itt](../dns/dns-operations-recordsets-portal.md)látható módon konfigurálnia kell egy DNS-zónát a beállított FQDN-hez.
@@ -192,7 +192,7 @@ A **myVm** létrehozása után az alábbi módon csatlakozhat az internetről:
 
 1. Kattintson a **Csatlakozás** gombra. A **Kapcsolódás** gombra kattintva megnyílik a **virtuális géphez való kapcsolódás** .
 
-1. Válassza az **RDP-fájl letöltése** lehetőséget. Az Azure létrehoz egy RDP protokoll ( *. rdp* ) fájlt, és letölti a számítógépre.
+1. Válassza az **RDP-fájl letöltése** lehetőséget. Az Azure létrehoz egy RDP protokoll (*. rdp*) fájlt, és letölti a számítógépre.
 
 1. Nyissa meg a *letöltött. rdp* fájlt.
 
@@ -201,7 +201,7 @@ A **myVm** létrehozása után az alábbi módon csatlakozhat az internetről:
     1. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
 
         > [!NOTE]
-        > Előfordulhat, hogy a **More choices**  >  virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell választania **egy másik fiók használatával** .
+        > Előfordulhat, hogy a **More choices**  >  virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell választania **egy másik fiók használatával**.
 
 1. Válassza az **OK** lehetőséget.
 
@@ -252,7 +252,7 @@ Ha végzett a magánhálózati végpont, a MySQL-kiszolgáló és a virtuális g
 2. Válassza az **Erőforráscsoport törlése** elemet.
 3. Írja be **a myResourceGroup nevet az erőforráscsoport neveként** , majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az útmutatóban létrehozott egy virtuális GÉPET egy virtuális hálózaton, egy Azure Database for MySQLt és egy privát végpontot a privát eléréshez. Az internetről csatlakozik egy virtuális géphez, és biztonságosan kommunikál a MySQL-kiszolgálóval a privát hivatkozás használatával. További információ a privát végpontokról: [Mi az az Azure Private Endpoint](../private-link/private-endpoint-overview.md).
 

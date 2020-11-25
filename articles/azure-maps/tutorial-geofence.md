@@ -10,11 +10,11 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: ee32749e2c6f0118507fcfc6d4994a04ea3a6d69
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896800"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997273"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Oktatóanyag: Geokerítés beállítása az Azure Maps használatával
 
@@ -207,21 +207,21 @@ Ezután két [logikai alkalmazás](../event-grid/handler-webhooks.md#logic-apps)
 
 6. Válassza a **felülvizsgálat + létrehozás** lehetőséget. Tekintse át a beállításokat, és válassza a **Létrehozás** lehetőséget a telepítés elküldéséhez. Ha a telepítés sikeresen befejeződött, válassza az **Ugrás az erőforráshoz** lehetőséget. A **Logic app Designer alkalmazásban** végezhető el.
 
-7. Válasszon ki egy trigger típust. Görgessen le a **Start with a Common trigger** szakaszhoz. Válassza ki **a HTTP-kérelem fogadásának időpontját** .
+7. Válasszon ki egy trigger típust. Görgessen le a **Start with a Common trigger** szakaszhoz. Válassza ki **a HTTP-kérelem fogadásának időpontját**.
 
-     :::image type="content" source="./media/tutorial-geofence/logic-app-trigger.png" alt-text="Képernyőkép a logikai alkalmazás létrehozásáról.":::
+     :::image type="content" source="./media/tutorial-geofence/logic-app-trigger.png" alt-text="Képernyőkép a logikai alkalmazás HTTP-triggerének létrehozásáról.":::
 
 8. A Logic app Designer jobb felső sarkában válassza a **Mentés** lehetőséget. A **http post URL-cím** automatikusan létrejön. Mentse az URL-címet. Egy esemény-végpont létrehozásához a következő szakaszban szüksége lesz rá.
 
-    :::image type="content" source="./media/tutorial-geofence/logic-app-httprequest.png" alt-text="Képernyőkép a logikai alkalmazás létrehozásáról.":::
+    :::image type="content" source="./media/tutorial-geofence/logic-app-httprequest.png" alt-text="Képernyőkép a Logic app HTTP-kérelem URL-címéről és a JSON-ról.":::
 
 9. Válassza az **+ új lépés** lehetőséget. Most válasszon egy műveletet. Írja be `outlook.com email` a keresőmezőbe a kifejezést. A **műveletek** listában görgessen le, és válassza az **E-mail küldése (v2)** lehetőséget.
   
-    :::image type="content" source="./media/tutorial-geofence/logic-app-designer.png" alt-text="Képernyőkép a logikai alkalmazás létrehozásáról.":::
+    :::image type="content" source="./media/tutorial-geofence/logic-app-designer.png" alt-text="Képernyőkép a Logic app Designer létrehozásáról.":::
 
 10. Jelentkezzen be az Outlook-fiókjába. Ügyeljen arra, hogy az **Igen** lehetőség kiválasztásával engedélyezze a logikai alkalmazás számára a fiók elérését. Adja meg az e-mailek küldésére szolgáló mezőket.
 
-    :::image type="content" source="./media/tutorial-geofence/logic-app-email.png" alt-text="Képernyőkép a logikai alkalmazás létrehozásáról.":::
+    :::image type="content" source="./media/tutorial-geofence/logic-app-email.png" alt-text="Képernyőkép a logikai alkalmazás e-mail-küldési lépésének létrehozásáról.":::
 
     >[!TIP]
     > Az `geometryId` `deviceId` e-mail-értesítésekben a GeoJSON (például vagy) kérhető le. A Logic Apps konfigurálható úgy, hogy beolvassa a Event Grid által eljuttatott fájlokat. Az események e-mail-értesítésekbe való felhasználása és a Logic Apps konfigurálásával kapcsolatos információkért lásd [: oktatóanyag: e-mail-értesítések küldése az Azure IoT hub eseményekről Event Grid és Logic Apps használatával](../event-grid/publish-iot-hub-events-to-logic-apps.md).
@@ -238,11 +238,11 @@ A következő lépések bemutatják, hogyan hozhat létre esemény-előfizetést
 
 1. Nyissa meg Azure Maps-fiókját. Az irányítópulton válassza az **előfizetések** lehetőséget. Válassza ki az előfizetés nevét, majd válassza az **események** lehetőséget a beállítások menüből.
 
-    :::image type="content" source="./media/tutorial-geofence/events-tab.png" alt-text="Képernyőkép a logikai alkalmazás létrehozásáról.":::
+    :::image type="content" source="./media/tutorial-geofence/events-tab.png" alt-text="Képernyőkép a Azure Maps-fiók eseményeiről.":::
 
 2. Esemény-előfizetés létrehozásához válassza az események lap **+ esemény előfizetése** elemét.
 
-    :::image type="content" source="./media/tutorial-geofence/create-event-subscription.png" alt-text="Képernyőkép a logikai alkalmazás létrehozásáról.":::
+    :::image type="content" source="./media/tutorial-geofence/create-event-subscription.png" alt-text="Képernyőkép Azure Maps esemény-előfizetés létrehozásáról.":::
 
 3. Az **esemény-előfizetés létrehozása** lapon adja meg a következő értékeket:
     * Az esemény-előfizetés **neve** .
@@ -252,7 +252,7 @@ A következő lépések bemutatják, hogyan hozhat létre esemény-előfizetést
     * A **végpont típusa** beállításnál válassza a lehetőséget `Web Hook` .
     * A **végpont** esetében másolja a logikai alkalmazáshoz az előző szakaszban létrehozott végponthoz tartozó http-post URL-címet. Ha elfelejtette menteni, visszatérhet a Logic app Designerbe, és átmásolhatja a HTTP-trigger lépésből.
 
-    :::image type="content" source="./media/tutorial-geofence/events-subscription.png" alt-text="Képernyőkép a logikai alkalmazás létrehozásáról.":::
+    :::image type="content" source="./media/tutorial-geofence/events-subscription.png" alt-text="Képernyőkép a Azure Maps Events-előfizetés részleteiről.":::
 
 4. Kattintson a **Létrehozás** gombra.
 
@@ -274,7 +274,7 @@ A következő részekben az API-kérelmek a berendezések öt különböző föl
 
 ### <a name="equipment-location-1-47638237-122132483"></a>Berendezések helye 1 (47.638237,-122,132483)
 
-1. A Poster alkalmazás teteje közelében válassza az **új** lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem** lehetőséget. Adja meg a kérelem **nevét** . Legyen az *1. hely* . Válassza ki a gyűjteményt, amelyet a [Geokerítések GeoJSON-adatok feltöltése szakaszban](#upload-geofencing-geojson-data)hozott létre, majd válassza a **Mentés** lehetőséget.
+1. A Poster alkalmazás teteje közelében válassza az **új** lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem** lehetőséget. Adja meg a kérelem **nevét** . Legyen az *1. hely*. Válassza ki a gyűjteményt, amelyet a [Geokerítések GeoJSON-adatok feltöltése szakaszban](#upload-geofencing-geojson-data)hozott létre, majd válassza a **Mentés** lehetőséget.
 
 2. Válassza a http **lekérése** módszert a Builder (szerkesztő) lapon, és adja meg a következő URL-címet. Győződjön meg arról, hogy az `{Azure-Maps-Primary-Subscription-key}` elsődleges előfizetési kulccsal van lecserélve, és `{udid}` az `udid` [Geokerítések GeoJSON-adatok feltöltése szakaszban](#upload-geofencing-geojson-data)mentette.
 
@@ -354,7 +354,7 @@ Az előző GeoJSON-válaszban a berendezés a fő hely geokerítésen maradt, é
 
 ### <a name="location-3-4763810783315048-12213336020708084"></a>3. hely (47.63810783315048,-122.13336020708084)
 
-1. A Poster alkalmazás teteje közelében válassza az **új** lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem** lehetőséget. Adja meg a kérelem **nevét** . Tegye meg a *3. helyet* . Válassza ki a gyűjteményt, amelyet a [Geokerítések GeoJSON-adatok feltöltése szakaszban](#upload-geofencing-geojson-data)hozott létre, majd válassza a **Mentés** lehetőséget.
+1. A Poster alkalmazás teteje közelében válassza az **új** lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem** lehetőséget. Adja meg a kérelem **nevét** . Tegye meg a *3. helyet*. Válassza ki a gyűjteményt, amelyet a [Geokerítések GeoJSON-adatok feltöltése szakaszban](#upload-geofencing-geojson-data)hozott létre, majd válassza a **Mentés** lehetőséget.
 
 2. Válassza a http **lekérése** módszert a Builder (szerkesztő) lapon, és adja meg a következő URL-címet. Győződjön meg arról, hogy az `{Azure-Maps-Primary-Subscription-key}` elsődleges előfizetési kulccsal van lecserélve, és `{udid}` az `udid` [Geokerítések GeoJSON-adatok feltöltése szakaszban](#upload-geofencing-geojson-data)mentette.
 
@@ -397,7 +397,7 @@ Az előző GeoJSON-válaszban a berendezés a fő hely geokerítésen maradt, de
 
 ### <a name="location-4-47637988-1221338344"></a>4. hely (47.637988,-122,1338344)
 
-1. A Poster alkalmazás teteje közelében válassza az **új** lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem** lehetőséget. Adja meg a kérelem **nevét** . 4. legyen a *helye* . Válassza ki a gyűjteményt, amelyet a [Geokerítések GeoJSON-adatok feltöltése szakaszban](#upload-geofencing-geojson-data)hozott létre, majd válassza a **Mentés** lehetőséget.
+1. A Poster alkalmazás teteje közelében válassza az **új** lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem** lehetőséget. Adja meg a kérelem **nevét** . 4. legyen a *helye*. Válassza ki a gyűjteményt, amelyet a [Geokerítések GeoJSON-adatok feltöltése szakaszban](#upload-geofencing-geojson-data)hozott létre, majd válassza a **Mentés** lehetőséget.
 
 2. Válassza a http **lekérése** módszert a Builder (szerkesztő) lapon, és adja meg a következő URL-címet. Győződjön meg arról, hogy az `{Azure-Maps-Primary-Subscription-key}` elsődleges előfizetési kulccsal van lecserélve, és `{udid}` az `udid` [Geokerítések GeoJSON-adatok feltöltése szakaszban](#upload-geofencing-geojson-data)mentette.
 
@@ -431,7 +431,7 @@ Az előző GeoJSON-válaszban a berendezés a fő hely geokerítésen maradt, de
 
 ### <a name="location-5-4763799--122134505"></a>5. hely (47,63799,-122,134505)
 
-1. A Poster alkalmazás teteje közelében válassza az **új** lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem** lehetőséget. Adja meg a kérelem **nevét** . 5. tegye a *helyet* . Válassza ki a gyűjteményt, amelyet a [Geokerítések GeoJSON-adatok feltöltése szakaszban](#upload-geofencing-geojson-data)hozott létre, majd válassza a **Mentés** lehetőséget.
+1. A Poster alkalmazás teteje közelében válassza az **új** lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem** lehetőséget. Adja meg a kérelem **nevét** . 5. tegye a *helyet*. Válassza ki a gyűjteményt, amelyet a [Geokerítések GeoJSON-adatok feltöltése szakaszban](#upload-geofencing-geojson-data)hozott létre, majd válassza a **Mentés** lehetőséget.
 
 2. Válassza a http **lekérése** módszert a Builder (szerkesztő) lapon, és adja meg a következő URL-címet. Győződjön meg arról, hogy az `{Azure-Maps-Primary-Subscription-key}` elsődleges előfizetési kulccsal van lecserélve, és `{udid}` az `udid` [Geokerítések GeoJSON-adatok feltöltése szakaszban](#upload-geofencing-geojson-data)mentette.
 
@@ -472,7 +472,7 @@ Az előző GeoJSON-válaszban a berendezés kilépett a fő hely geokerítésen.
 
 Az [e-mailes értesítéseket Event Grid és Logic apps is elküldheti](../event-grid/publish-iot-hub-events-to-logic-apps.md) , és a Event Grid a Azure Maps használatával megtekintheti [a támogatott események kezelőit](../event-grid/event-handlers.md) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Tartalomtípusok kezelése Azure Logic Appsban](../logic-apps/logic-apps-content-type.md)

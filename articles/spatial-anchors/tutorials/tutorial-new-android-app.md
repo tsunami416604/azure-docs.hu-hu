@@ -1,19 +1,19 @@
 ---
 title: 'Oktatóanyag: új Android-alkalmazás létrehozása'
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy új Android-alkalmazást az Azure térbeli horgonyok használatával.
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 06/22/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3ef24e29e5dde90aa829c46d789256e6e5f3233b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af0d01a20728d2332d4a8d71819f73baf68a65a4
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85296202"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95998386"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>Oktatóanyag: lépésenkénti útmutató új Android-alkalmazás létrehozásához az Azure térbeli horgonyok használatával
 
@@ -28,13 +28,13 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a köv
 
 ## <a name="getting-started"></a>Első lépések
 
-Android Studio elindítása. Az **üdvözli Android Studio** ablakban kattintson az **új Android Studio projekt indítása**lehetőségre. Ha már megnyitott egy projektet, válassza a **fájl** -> **új projekt**lehetőséget.
+Android Studio elindítása. Az **üdvözli Android Studio** ablakban kattintson az **új Android Studio projekt indítása** lehetőségre. Ha már megnyitott egy projektet, válassza a **fájl** -> **új projekt** lehetőséget.
 
-Az **új projekt létrehozása** ablakban a **telefon és a tábla** területen válassza az **üres tevékenység**lehetőséget, majd kattintson a **tovább**gombra. Ezután a **minimális API-szint**területen válassza ki `API 26: Android 8.0 (Oreo)` a elemet, és győződjön meg arról, hogy a **nyelv** értéke `Java` . Érdemes lehet módosítani a projekt nevét & helyet és a csomag nevét. Hagyja meg a többi beállítást. Kattintson a **Finish** (Befejezés) gombra. Ekkor elindul az **összetevő-telepítő** . Ha elkészült, kattintson a **Befejezés**gombra. Néhány feldolgozás után a Android Studio megnyitja az IDE-t.
+Az **új projekt létrehozása** ablakban a **telefon és a tábla** területen válassza az **üres tevékenység** lehetőséget, majd kattintson a **tovább** gombra. Ezután a **minimális API-szint** területen válassza ki `API 26: Android 8.0 (Oreo)` a elemet, és győződjön meg arról, hogy a **nyelv** értéke `Java` . Érdemes lehet módosítani a projekt nevét & helyet és a csomag nevét. Hagyja meg a többi beállítást. Kattintson a **Finish** (Befejezés) gombra. Ekkor elindul az **összetevő-telepítő** . Ha elkészült, kattintson a **Befejezés** gombra. Néhány feldolgozás után a Android Studio megnyitja az IDE-t.
 
 ## <a name="trying-it-out"></a>Kipróbálás
 
-Az új alkalmazás teszteléséhez csatlakoztassa a fejlesztői eszközöket a fejlesztői számítógéphez USB-kábellel. Kattintson **az** -> **alkalmazás futtatása**elemre. A **telepítési cél kiválasztása** ablakban válassza ki az eszközt, majd kattintson **az OK**gombra. Android Studio telepíti az alkalmazást a csatlakoztatott eszközön, és elindítja azt. Ekkor megjelenik a "„Helló világ!” alkalmazás!" az eszközön futó alkalmazásban jelenik meg. Kattintson **az** -> **alkalmazás leállítása**parancsra.
+Az új alkalmazás teszteléséhez csatlakoztassa a fejlesztői eszközöket a fejlesztői számítógéphez USB-kábellel. Kattintson **az** -> **alkalmazás futtatása** elemre. A **telepítési cél kiválasztása** ablakban válassza ki az eszközt, majd kattintson **az OK** gombra. Android Studio telepíti az alkalmazást a csatlakoztatott eszközön, és elindítja azt. Ekkor megjelenik a "„Helló világ!” alkalmazás!" az eszközön futó alkalmazásban jelenik meg. Kattintson **az** -> **alkalmazás leállítása** parancsra.
 
 ## <a name="integrating-_arcore_"></a>A _ARCore_ integrálása
 
@@ -57,7 +57,7 @@ Módosítsa `app\manifests\AndroidManifest.xml` úgy, hogy a legfelső csomópon
 </application>
 ```
 
-Módosítsa `Gradle Scripts\build.gradle (Module: app)` a következő bejegyzés belefoglalásával. Ez a kód biztosítja, hogy az alkalmazás az 1,8-es ARCore-verziót célozza meg. A módosítás után értesítést kaphat a szinkronizálást kérő Gradle: kattintson a **szinkronizálás most**elemre.
+Módosítsa `Gradle Scripts\build.gradle (Module: app)` a következő bejegyzés belefoglalásával. Ez a kód biztosítja, hogy az alkalmazás az 1,8-es ARCore-verziót célozza meg. A módosítás után értesítést kaphat a szinkronizálást kérő Gradle: kattintson a **szinkronizálás most** elemre.
 
 ```
 dependencies {
@@ -71,7 +71,7 @@ dependencies {
 
 A [_Sceneform_](https://developers.google.com/sceneform/develop/) megkönnyíti a valósághű 3D-jelenetek megjelenítését a kibővített Reality-alkalmazásokban anélkül, hogy az OpenGL megismerése nélkül kellene megtanulnia.
 
-Módosítsa `Gradle Scripts\build.gradle (Module: app)` , hogy tartalmazza a következő bejegyzéseket. Ez a kód lehetővé teszi az alkalmazás számára, hogy a Java 8 nyelvi összeállításait használja, amelyekhez `Sceneform` szükség van. Azt is biztosítja, hogy az alkalmazás a `Sceneform` 1,8-es verziót használja, mivel az alkalmazás által használt ARCore-verziónak meg kell egyeznie. A módosítás után értesítést kaphat a szinkronizálást kérő Gradle: kattintson a **szinkronizálás most**elemre.
+Módosítsa `Gradle Scripts\build.gradle (Module: app)` , hogy tartalmazza a következő bejegyzéseket. Ez a kód lehetővé teszi az alkalmazás számára, hogy a Java 8 nyelvi összeállításait használja, amelyekhez `Sceneform` szükség van. Azt is biztosítja, hogy az alkalmazás a `Sceneform` 1,8-es verziót használja, mivel az alkalmazás által használt ARCore-verziónak meg kell egyeznie. A módosítás után értesítést kaphat a szinkronizálást kérő Gradle: kattintson a **szinkronizálás most** elemre.
 
 ```
 android {
@@ -134,7 +134,7 @@ dependencies {
 }
 ```
 
-Kattintson a jobb gombbal az `app\java\<PackageName>` -> **új** -> **Java-osztály**elemre. Állítsa **Name** a nevet _MyFirstApp_, a **Szuperosztály** pedig az _Android. app. Application_értékre. Hagyja meg a többi beállítást. Kattintson az **OK** gombra. A rendszer létrehoz egy nevű fájlt `MyFirstApp.java` . Adja hozzá a következő importálást:
+Kattintson a jobb gombbal az `app\java\<PackageName>` -> **új** -> **Java-osztály** elemre. Állítsa **Name** a nevet _MyFirstApp_, a **Szuperosztály** pedig az _Android. app. Application_ értékre. Hagyja meg a többi beállítást. Kattintson az **OK** gombra. A rendszer létrehoz egy nevű fájlt `MyFirstApp.java` . Adja hozzá a következő importálást:
 
 ```java
 import com.microsoft.CloudServices;

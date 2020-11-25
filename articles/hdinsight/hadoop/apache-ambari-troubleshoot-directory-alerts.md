@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
 ms.openlocfilehash: d8b1f705eb08d1c58b32e0cbd7c57722a6de93cc
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285522"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998311"
 ---
 # <a name="scenario-apache-ambari-directory-alerts-in-azure-hdinsight"></a>Forgatókönyv: Apache Ambari Directory-riasztások az Azure HDInsight
 
@@ -52,6 +52,6 @@ Manuálisan hozza létre a hiányzó könyvtárakat az érintett munkavégző cs
 
 1. Az Apache Ambari felhasználói felületén tiltsa le, majd engedélyezze a riasztást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]

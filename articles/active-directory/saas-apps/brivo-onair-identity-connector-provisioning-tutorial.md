@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 10/01/2019
 ms.author: Zhchia
 ms.openlocfilehash: 4f230a70ae87c7c0ec9db347e7cf975c0252bb18
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357810"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998089"
 ---
 # <a name="tutorial-configure-brivo-onair-identity-connector-for-automatic-user-provisioning"></a>Oktatóanyag: a Brivo onair Identity Connector konfigurálása a felhasználók automatikus kiépítési feladataihoz
 
@@ -54,7 +54,7 @@ A felhasználók automatikus üzembe helyezésének konfigurálása és engedél
 
    ![Brivo onair Identity Connector felügyeleti konzol](media/brivo-onair-identity-connector-provisioning-tutorial/admin.png)
 
-2. Kattintson az **Azure ad** fülre. Az **Azure ad** -Részletek lapon adja meg újra a legfelső szintű rendszergazdai fiók jelszavát. Kattintson a **Submit (elküldés** ) gombra.
+2. Kattintson az **Azure ad** fülre. Az **Azure ad** -Részletek lapon adja meg újra a legfelső szintű rendszergazdai fiók jelszavát. Kattintson a **Submit (elküldés**) gombra.
 
    ![Brivo onair Identity Connector – Azure](media/brivo-onair-identity-connector-provisioning-tutorial/azuread.png)
 
@@ -150,7 +150,7 @@ Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghat�
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

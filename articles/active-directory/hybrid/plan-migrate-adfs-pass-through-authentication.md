@@ -13,11 +13,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1257c783ffeae68bf338b21a5d2f6bba72ea25b3
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836427"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997766"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Migrálás az összevonásból a Azure Active Directory áteresztő hitelesítésre
 
@@ -419,7 +419,7 @@ Miután ellenőrizte, hogy az összes felhasználó és ügyfél sikeresen hitel
 
 Ha nem használja a AD FS más célra (azaz más függő entitások megbízhatóságára), akkor a AD FS ezen a ponton is biztonságosan leszerelhető.
 
-### <a name="rollback"></a>Visszaállítási
+### <a name="rollback"></a>Visszaállítás
 
 Ha felfedez egy jelentős problémát, és nem tudja gyorsan feloldani, dönthet úgy, hogy visszaállítja a megoldást az összevonáshoz.
 
@@ -455,7 +455,7 @@ A hibaelhárításhoz bekapcsolhatja a naplózást is.
 
 További információ: [Azure Active Directory átmenő hitelesítés hibáinak megoldása](./tshoot-connect-pass-through-authentication.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerkedjen meg [Azure ad Connect tervezési fogalmakkal](plan-connect-design-concepts.md).
 * Válassza ki a [megfelelő hitelesítést](./choose-ad-authn.md).

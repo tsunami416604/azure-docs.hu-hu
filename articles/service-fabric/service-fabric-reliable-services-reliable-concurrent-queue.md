@@ -4,11 +4,11 @@ description: A megbízható párhuzamos várólista egy nagy átviteli sebesség
 ms.topic: conceptual
 ms.date: 5/1/2017
 ms.openlocfilehash: 423ef3d1898176d7c25c596ad186a9c000108aa4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86257438"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997120"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Az Azure Service Fabric megbízható párhuzamos várólista bemutatása
 A megbízható párhuzamos üzenetsor egy aszinkron, tranzakciós és replikált üzenetsor, amely magas párhuzamosságot biztosít a sorba helyezni és a dequeuing műveletekhez. A szolgáltatás úgy lett kialakítva, hogy magas átviteli sebességet és kis késleltetést biztosítson a [megbízható üzenetsor](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1) által biztosított szigorú FIFO-sorrend kihasználása mellett, és ehelyett a lehető legjobb rendezést biztosítja.
@@ -33,7 +33,7 @@ A megbízható párhuzamos várólista esetében az [üzenetsor](https://en.wiki
 * A várólista azt várja, hogy a várólistában lévő elemek alacsony megőrzési időtartammal rendelkezzenek. Ez azt eredményezi, hogy az elemek hosszú ideje nem maradnak a várólistán.
 * A várólista nem garantálja a szigorú FIFO-sorrendet.
 * A várólista nem olvassa be a saját írásait. Ha egy elem egy tranzakción belül várólistán lévő, az egy tranzakción belül nem jelenik meg a dequeuing számára.
-* A kihelyezett sorok nem elszigeteltek egymástól. Ha *a (a* ) elem a tranzakció *txnA*van elvégezve, bár a *txnA* nincs véglegesítve, akkor az *a* elem nem látható az egyidejű tranzakció *txnB*.  Ha a *txnA* megszakad, *a* *txnB* azonnal láthatóvá válik.
+* A kihelyezett sorok nem elszigeteltek egymástól. Ha *a (a* ) elem a tranzakció *txnA* van elvégezve, bár a *txnA* nincs véglegesítve, akkor az *a* elem nem látható az egyidejű tranzakció *txnB*.  Ha a *txnA* megszakad, *a* *txnB* azonnal láthatóvá válik.
 * A *TryPeekAsync* viselkedését *TryDequeueAsync* használatával lehet megvalósítani, majd megszakítani a tranzakciót. Ennek a viselkedésnek a példája a programozási minták szakaszban található.
 * A Count nem tranzakciós. Felhasználhatja a várólista elemeinek számát, de egy időpontot is jelent, és nem hivatkozhat rá.
 * A nem várólistán lévő elemek költséges feldolgozását a tranzakció aktív állapotában nem kell végrehajtani, hogy elkerülje a hosszú ideig futó tranzakciókat, amelyek hatással lehetnek a rendszer teljesítményére.
@@ -164,7 +164,7 @@ A tranzakció megszakításakor az elemek a következő megrendelések bármelyi
 > 
 > 20, 10
 
-Ugyanez érvényes minden olyan esetre, ahol a tranzakció *véglegesítése*sikertelen volt.
+Ugyanez érvényes minden olyan esetre, ahol a tranzakció *véglegesítése* sikertelen volt.
 
 ## <a name="programming-patterns"></a>Programozási minták
 Ebben a szakaszban megvizsgálunk néhány programozási mintát, amelyek hasznosak lehetnek a megbízható párhuzamos várólista használatával.

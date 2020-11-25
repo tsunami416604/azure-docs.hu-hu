@@ -14,11 +14,11 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 476cf8013f5dc8b5d54efb573cf305d81fc690b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89319151"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996712"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Mi a Azure Active Directory architektúra?
 
@@ -39,7 +39,7 @@ Ez a cikk a következő architektúraelemeket tárgyalja:
 
 ### <a name="service-architecture-design"></a>Szolgáltatásarchitektúra kialakítása
 
-Az elérhető és használható, adatgazdag rendszerek létrehozásának leggyakoribb módja a független építőelemek vagy skálázási egységek használata. Az Azure AD adatszintjéhez a skálázási egységeket *partícióknak*nevezzük.
+Az elérhető és használható, adatgazdag rendszerek létrehozásának leggyakoribb módja a független építőelemek vagy skálázási egységek használata. Az Azure AD adatszintjéhez a skálázási egységeket *partícióknak* nevezzük.
 
 Az adatréteg több front-end szolgáltatással rendelkezik, amelyek olvasási és írási képességeket nyújtanak. Az alábbi ábra azt mutatja be, hogyan történik egy egykönyvtáros partíció összetevőinek terjesztése a földrajzilag elosztott adatközpontokban.
 
@@ -53,7 +53,7 @@ Az *elsődleges replika* fogadja azon partíció összes *írását*, amelyhez t
 
 #### <a name="secondary-replicas"></a>Másodlagos replikák
 
-Az összes címtárbeli *olvasás* a *másodlagos replikák*szolgáltatásból származik, amelyek olyan adatközpontokban találhatók, amelyek fizikailag a különböző földrajzi régiókban találhatók. Sok másodlagos replika van, mivel az adatok replikálása aszinkron módon történik. A címtárbeli olvasások, például a hitelesítési kérelmek olyan adatközpontokban vannak kiszolgálva, amelyek az ügyfelekhez vannak közelebb. A másodlagos replikák felelősek az olvasás méretezhetőségéért.
+Az összes címtárbeli *olvasás* a *másodlagos replikák* szolgáltatásból származik, amelyek olyan adatközpontokban találhatók, amelyek fizikailag a különböző földrajzi régiókban találhatók. Sok másodlagos replika van, mivel az adatok replikálása aszinkron módon történik. A címtárbeli olvasások, például a hitelesítési kérelmek olyan adatközpontokban vannak kiszolgálva, amelyek az ügyfelekhez vannak közelebb. A másodlagos replikák felelősek az olvasás méretezhetőségéért.
 
 ### <a name="scalability"></a>Méretezhetőség
 
@@ -91,8 +91,8 @@ Az Azure AD replikái a világ számos részén található adatközpontokban va
 Az Azure AD az alábbi jellemzőkkel rendelkezik az adatközpontok között:
 
 * A hitelesítés, a gráf és az egyéb AD-szolgáltatások az átjáró szolgáltatás mögött találhatók. Az átjáró kezeli ezen szolgáltatások terheléselosztását. A művelet automatikusan átadja a feladatátvételt, ha a rendszer nem kifogástalan állapotú kiszolgálókat észlel a tranzakciós állapot-tesztek használatával. Ezen állapot-tesztek alapján az átjáró dinamikusan irányítja át a forgalmat az egészséges adatközpontokhoz.
-* *Olvasás*esetén a címtár másodlagos replikákkal és megfelelő előtér-szolgáltatásokkal rendelkezik, amelyek több adatközpontban működő aktív-aktív konfigurációban működnek. Egy teljes adatközpont meghibásodása esetén a rendszer automatikusan átirányítja a forgalmat egy másik adatközpontba.
- * Az *írások*esetében a címtár az elsődleges (fő) replikát az adatközpontok között tervezett (az új elsődleges szinkronizálása a régi elsődleges) vagy a vészhelyzeti feladatátvételi eljárások segítségével végzi. Az adattartósságot úgy érheti el, hogy legalább két adatközpontba replikálja a végrehajtást.
+* *Olvasás* esetén a címtár másodlagos replikákkal és megfelelő előtér-szolgáltatásokkal rendelkezik, amelyek több adatközpontban működő aktív-aktív konfigurációban működnek. Egy teljes adatközpont meghibásodása esetén a rendszer automatikusan átirányítja a forgalmat egy másik adatközpontba.
+ * Az *írások* esetében a címtár az elsődleges (fő) replikát az adatközpontok között tervezett (az új elsődleges szinkronizálása a régi elsődleges) vagy a vészhelyzeti feladatátvételi eljárások segítségével végzi. Az adattartósságot úgy érheti el, hogy legalább két adatközpontba replikálja a végrehajtást.
 
 #### <a name="data-consistency"></a>Adatkonzisztencia
 
@@ -121,6 +121,6 @@ Ha bármely Azure AD-szolgáltatás nem a várt módon működik, a lehető legg
 
 Az operatív vezérlők, például a többtényezős hitelesítés (MFA) használata bármely művelethez, valamint az összes művelet naplózása. Emellett egy igény szerinti jogosultságszint-emelési rendszer használatával biztosíthatja a szükséges ideiglenes hozzáférést bármely operatív feladathoz, folyamatosan. További információkért lásd: [A megbízható felhő](https://azure.microsoft.com/support/trust-center).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Az Azure Active Directory fejlesztői útmutatója](../develop/index.yml)

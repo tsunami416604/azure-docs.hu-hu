@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 0df9e4722136dafe94d1bfc84a7767e1e0144d69
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458299"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997222"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-m-files"></a>Oktatóanyag: az M-Files integráció Azure Active Directory
 
@@ -61,13 +61,13 @@ Az M-Files Azure AD-ba való integrálásának konfigurálásához fel kell venn
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be az **m-files**kifejezést, válassza az **m-files** from result panelt, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be az **m-files** kifejezést, válassza az **m-files** from result panelt, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![M-Files az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az M-Files-mel konfigurálja és teszteli a **Britta Simon**nevű teszt felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az M-Files-mel konfigurálja és teszteli a **Britta Simon** nevű teszt felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és az M-Files kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés az M-Files használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés az M-Files használatával történő konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az [Azure Portal](https://portal.azure.com/)az **M-Files** Application Integration lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az [Azure Portal](https://portal.azure.com/)az **M-Files** Application Integration lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -131,7 +131,7 @@ Az Azure AD egyszeri bejelentkezés az M-Files használatával történő konfig
 
 1. A következő lépésekkel konfigurálhatja az M-file Desktop alkalmazást az egyszeri bejelentkezés az Azure AD-vel való engedélyezéséhez. Az M-Files letöltéséhez nyissa meg az [m-files letöltési](https://www.m-files.com/en/download-latest-version) oldalát.
 
-1. Nyissa meg az **M-Files asztal beállítások** ablakát. Ezután kattintson a **Hozzáadás**gombra.
+1. Nyissa meg az **M-Files asztal beállítások** ablakát. Ezután kattintson a **Hozzáadás** gombra.
    
     ![A képernyőképen az M-Files asztal beállításai láthatók, ahol a Hozzáadás lehetőséget választhatja.](./media/m-files-tutorial/tutorial_m_files_10.png)
 
@@ -141,15 +141,15 @@ Az Azure AD egyszeri bejelentkezés az M-Files használatával történő konfig
 
     A kiszolgáló szakasz típusa mezőben adja meg a következő értékeket:  
 
-    a. A **név**mezőbe írja be a következőt: `<tenant-name>.cloudvault.m-files.com` . 
+    a. A **név** mezőbe írja be a következőt: `<tenant-name>.cloudvault.m-files.com` . 
  
-    b. A **portszám**mezőbe írja be a **4466**-as értéket. 
+    b. A **portszám** mezőbe írja be a **4466**-as értéket. 
 
-    c. A **protokoll**területen válassza a **https**lehetőséget. 
+    c. A **protokoll** területen válassza a **https** lehetőséget. 
 
-    d. A **hitelesítés** mezőben válassza az **adott Windows-felhasználó**lehetőséget. Ezután a rendszer aláírja az aláírási lapot. Szúrja be az Azure AD-beli hitelesítő adatait. 
+    d. A **hitelesítés** mezőben válassza az **adott Windows-felhasználó** lehetőséget. Ezután a rendszer aláírja az aláírási lapot. Szúrja be az Azure AD-beli hitelesítő adatait. 
 
-    e. A **kiszolgálón**található tárolóhoz válassza ki a megfelelő tárolót a kiszolgálón.
+    e. A **kiszolgálón** található tárolóhoz válassza ki a megfelelő tárolót a kiszolgálón.
  
     f. Kattintson az **OK** gombra.
 
@@ -157,7 +157,7 @@ Az Azure AD egyszeri bejelentkezés az M-Files használatával történő konfig
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -176,21 +176,21 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést az M-Files elérésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza az **M-Files**elemet.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza az **M-Files** elemet.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza az **M-Files**elemet.
+2. Az alkalmazások listában válassza az **M-Files** elemet.
 
     ![Az M-Files hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 

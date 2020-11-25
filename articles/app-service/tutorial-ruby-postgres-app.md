@@ -6,11 +6,11 @@ ms.topic: tutorial
 ms.date: 06/18/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
 ms.openlocfilehash: 7d6c0d13e440beb9a934adba3908cc9a08f396f1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747131"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997921"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Ruby-és postgres-alkalmazás létrehozása Linuxon Azure App Service
 
@@ -18,7 +18,7 @@ Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító w
 
 :::image type="content" source="./media/tutorial-ruby-postgres-app/complete-checkbox-published.png" alt-text="Képernyőkép a Ruby on Rails-alkalmazásról – példa a feladatokra.":::
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * PostgreSQL-adatbázis létrehozása az Azure-ban
@@ -110,7 +110,7 @@ A Rails-kiszolgáló leállításához írja be a `Ctrl + C` billentyűparancsot
 
 Ebben a lépésben egy Postgres-adatbázist fog létrehozni az [Azure Database for PostgreSQL](../postgresql/index.yml) rendszerében. Később konfigurálni fogja a Ruby on Rails-alkalmazást az adatbázishoz való csatlakozásra.
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-linux-no-h.md)] 
 
@@ -125,7 +125,7 @@ Ebben a szakaszban egy Azure Database for PostgreSQL-kiszolgálót és-adatbázi
 az extension add --name db-up
 ```
 
-Hozza létre a postgres-adatbázist az Azure-ban a [`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) paranccsal, az alábbi példában látható módon. Cserélje le *\<postgresql-name>* *egyedi* névre (a kiszolgálói végpont *https:// \<postgresql-name> . postgres.database.Azure.com* ). És rendszer esetén a *\<admin-username>* *\<admin-password>* hitelesítő adatok megadásával hozzon létre egy rendszergazdai felhasználót ehhez a postgres-kiszolgálóhoz.
+Hozza létre a postgres-adatbázist az Azure-ban a [`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) paranccsal, az alábbi példában látható módon. Cserélje le *\<postgresql-name>* *egyedi* névre (a kiszolgálói végpont *https:// \<postgresql-name> . postgres.database.Azure.com*). És rendszer esetén a *\<admin-username>* *\<admin-password>* hitelesítő adatok megadásával hozzon létre egy rendszergazdai felhasználót ehhez a postgres-kiszolgálóhoz.
 
 <!-- Issue: without --location -->
 ```azurecli
@@ -316,7 +316,7 @@ remote: Running deployment command...
 
 Egy böngészőben keresse fel az `http://<app-name>.azurewebsites.net` címet, és vegyen fel néhány feladatot a listára.
 
-:::image type="content" source="./media/tutorial-ruby-postgres-app/ruby-postgres-in-azure.png" alt-text="Képernyőkép a Ruby on Rails-alkalmazásról – példa a feladatokra.":::
+:::image type="content" source="./media/tutorial-ruby-postgres-app/ruby-postgres-in-azure.png" alt-text="Képernyőkép az Azure-alkalmazásról – példa a feladatokra, amelyek a listához hozzáadott feladatokat mutatják.":::
 
 Gratulálunk, egy adatvezérelt Ruby on Rails-alkalmazást futtat az Azure App Service-ben.
 

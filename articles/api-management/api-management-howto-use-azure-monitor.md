@@ -9,17 +9,17 @@ ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: apimpm
 ms.openlocfilehash: 2317e61111c3ad328e8f112e7d9567f3f5d47990
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379415"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997043"
 ---
 # <a name="tutorial-monitor-published-apis"></a>Oktatóanyag: közzétett API-k figyelése
 
 A Azure Monitor segítségével megjelenítheti, lekérdezheti, átirányíthatja, archiválhatja és elvégezheti az Azure API Management szolgáltatásból származó mérőszámokat vagy naplókat.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Az API-k mérőszámainak megtekintése 
@@ -56,7 +56,7 @@ A mérőszámok elérése:
 
 1. A legördülő listából válassza ki a megtekinteni kívánt mérőszámokat. Például: **kérelmek**. 
 1. A diagram az API-hívások teljes számát mutatja,
-1. A diagram a **kérelmek** metrikájának méretei alapján szűrhető. Válassza például a **szűrő hozzáadása** lehetőséget, válassza a **háttérbeli válasz kódja kategóriát** , a 500 értéket adja meg értékként. Most a diagramon az API-háttérbeli sikertelen kérelmek száma látható.   
+1. A diagram a **kérelmek** metrikájának méretei alapján szűrhető. Válassza például a **szűrő hozzáadása** lehetőséget, válassza a **háttérbeli válasz kódja kategóriát**, a 500 értéket adja meg értékként. Most a diagramon az API-háttérbeli sikertelen kérelmek száma látható.   
 
 ## <a name="set-up-an-alert-rule"></a>Riasztási szabály beállítása 
 
@@ -73,13 +73,13 @@ Példa riasztási szabály konfigurálása kérelem metrikája alapján:
 
     :::image type="content" source="media/api-management-howto-use-azure-monitor/alert-menu-item.png" alt-text="A figyelés menü riasztások lehetőségének képernyőképe":::
 
-1. Válassza az **+ Új riasztási szabály** lehetőséget.
+1. Válassza a **+ Új riasztási szabály** lehetőséget.
 1. A **riasztási szabály létrehozása** ablakban **válassza a feltétel elemet**.
 1. A **jel logikai beállítása** ablakban:
     1. A **jel típusa** mezőben válassza a **metrikák** lehetőséget.
     1. A **jel neve** mezőben válassza a **kérések** lehetőséget.
     1. A **dimenziók felosztása** területen, a **dimenzió neve** területen válassza az **átjáró-válasz kódja kategóriát**.
-    1. A **Dimension Values (dimenzió értékek** ) területen válassza az **4xx** lehetőséget, például az illetéktelen vagy érvénytelen kérelmeket.
+    1. A **Dimension Values (dimenzió értékek**) területen válassza az **4xx** lehetőséget, például az illetéktelen vagy érvénytelen kérelmeket.
     1. A **riasztási logikában** adjon meg egy küszöbértéket, amely után a riasztást aktiválni kell, majd válassza a **kész** lehetőséget.
 
     :::image type="content" source="media/api-management-howto-use-azure-monitor/threshold.png" alt-text="A jel logikai ablakok konfigurálásának képernyőképe":::

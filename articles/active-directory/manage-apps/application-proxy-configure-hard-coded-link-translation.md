@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 544aa1a4a859a9c328eb1d36e72d0f9f9ddb55b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ad45d5f0e313c06619fa9c998515e434de957ea
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327901"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997562"
 ---
 # <a name="redirect-hard-coded-links-for-apps-published-with-azure-ad-application-proxy"></a>Rögzített hivatkozások átirányítása az Azure AD Application Proxy közzétett alkalmazásokhoz
 
@@ -47,14 +47,14 @@ Ez a három funkció tárolja a hivatkozásokat, függetlenül attól, hogy a fe
 > [!NOTE]
 > Az utolsó lehetőség csak olyan bérlők esetében használható, amelyek bármilyen okból nem használhatják az egyéni tartományokat az alkalmazásokhoz tartozó belső és külső URL-címekkel. A szolgáltatás engedélyezése előtt tekintse meg, hogy az [Azure ad Application proxy-beli egyéni tartományok](application-proxy-configure-custom-domain.md) működhetnek-e. 
 > 
-> Vagy ha a hivatkozás fordításával konfigurálni kívánt alkalmazás SharePoint rendszerű, tekintse meg a következő témakört: [alternatív hozzáférés-leképezések konfigurálása a sharepoint 2013](https://technet.microsoft.com/library/cc263208.aspx) -hoz a hivatkozások leképezésének másik megközelítéséhez. 
+> Vagy ha a hivatkozás fordításával konfigurálni kívánt alkalmazás SharePoint rendszerű, tekintse meg a következő témakört: [alternatív hozzáférés-leképezések konfigurálása a sharepoint 2013](/SharePoint/administration/configure-alternate-access-mappings) -hoz a hivatkozások leképezésének másik megközelítéséhez. 
 
  
 ### <a name="option-1-microsoft-edge-integration"></a>1. lehetőség: Microsoft Edge-integráció 
 
 A Microsoft Edge segítségével további védelemmel láthatja el alkalmazásait és tartalmait. Ennek a megoldásnak a használatához a Microsoft Edge-en keresztül kell megkövetelni, hogy a felhasználók hozzáférhessenek az alkalmazáshoz. Az alkalmazás-proxyval közzétett összes belső URL-címet a rendszer Edge felismeri, és átirányítja a megfelelő külső URL-címre. Ez biztosítja, hogy a rögzített belső URL-címek működnek, és ha a felhasználó a böngészőbe lép, és közvetlenül a belső URL-címet írja be, akkor is működik, ha a felhasználó távoli.  
 
-Ha többet szeretne megtudni, beleértve a beállítás konfigurálását, tekintse meg a [webes hozzáférés kezelése az iOS és az Android rendszerhez készült Edge használatával Microsoft Intune](https://docs.microsoft.com/mem/intune/apps/manage-microsoft-edge) dokumentációját.  
+Ha többet szeretne megtudni, beleértve a beállítás konfigurálását, tekintse meg a [webes hozzáférés kezelése az iOS és az Android rendszerhez készült Edge használatával Microsoft Intune](/mem/intune/apps/manage-microsoft-edge) dokumentációját.  
 
 ### <a name="option-2-myapps-browser-extension"></a>2. lehetőség: MyApps böngésző bővítmény 
 
@@ -62,7 +62,7 @@ A MyApps böngésző bővítménnyel a bővítmény felismeri az alkalmazásprox
 
 A szolgáltatás használatához a felhasználónak le kell töltenie a bővítményt, és be kell jelentkeznie. A rendszergazdák vagy a felhasználók számára nincs szükség további konfigurálásra. 
 
-Ha többet szeretne megtudni, beleértve a beállítás konfigurálásának módját, tekintse meg a [MyApps böngésző bővítmény](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access#download-and-install-the-my-apps-secure-sign-in-extension) dokumentációját.
+Ha többet szeretne megtudni, beleértve a beállítás konfigurálásának módját, tekintse meg a [MyApps böngésző bővítmény](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension) dokumentációját.
 
 ### <a name="option-3-link-translation-setting"></a>3. lehetőség: fordítási beállítás csatolása 
 
@@ -137,7 +137,7 @@ Ha a két forgatókönyv egyikét kell támogatnia, használja a kapcsolat ford�
 A hivatkozás fordításának első lépései olyan egyszerűek, mint a gombra kattintva:
 
 1. Jelentkezzen be rendszergazdaként a [Azure Portalba](https://portal.azure.com) .
-2. Lépjen **Azure Active Directory**  >  **vállalati alkalmazások**  >  **minden alkalmazás** lehetőségre > válassza ki azt az alkalmazást, amelyet > **alkalmazásproxy**kezelésére szeretne használni.
+2. Lépjen **Azure Active Directory**  >  **vállalati alkalmazások**  >  **minden alkalmazás** lehetőségre > válassza ki azt az alkalmazást, amelyet > **alkalmazásproxy** kezelésére szeretne használni.
 3. Az **alkalmazás törzsében lévő URL-címek fordítása** **Igen**.
 
    ![Válassza az Igen lehetőséget az URL-címek lefordításához az alkalmazás törzsében](./media/application-proxy-configure-hard-coded-link-translation/select_yes.png)
@@ -149,7 +149,7 @@ Most, amikor a felhasználók hozzáférnek az alkalmazáshoz, a proxy automatik
 
 Szeretnénk, ha segítségre van szüksége a funkció működéséhez az összes alkalmazás számára. Több mint 30 címkét keresünk HTML-ben és CSS-ben. Ha például olyan generált hivatkozásokat tartalmaz, amelyek nincsenek lefordítva, küldjön egy kódrészletet az [alkalmazásproxy visszajelzéséhez](mailto:aadapfeedback@microsoft.com). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Egyéni tartományok használata az Azure ad Application proxy](application-proxy-configure-custom-domain.md) ugyanazzal a belső és külső URL-címmel
 
-[Alternatív hozzáférés-leképezések konfigurálása a SharePoint 2013-hoz](https://technet.microsoft.com/library/cc263208.aspx)
+[Alternatív hozzáférés-leképezések konfigurálása a SharePoint 2013-hoz](/SharePoint/administration/configure-alternate-access-mappings)

@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
 ms.openlocfilehash: 0eb9afc179f1dd2559f0db7b212f6b3a1da15824
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790916"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998753"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>A fürt létrehozása nem sikerül a InvalidNetworkConfigurationErrorCode az Azure HDInsight
 
@@ -66,7 +66,7 @@ Az Azure Storage és az SQL nem rendelkezik rögzített IP-címmel, ezért enged
 
     Nyissa meg a Azure Portal, és azonosítsa a fürt üzembe helyezéséhez használt alhálózathoz társított útválasztási táblázatot. Miután megtalálta az alhálózat útválasztási táblázatát, ellenőrizze az **útvonalak** szakaszt.
 
-    Ha vannak meghatározott útvonalak, ellenőrizze, hogy vannak-e útvonalak az IP-címekhez ahhoz a régióhoz, ahol a fürtöt telepítették, és az egyes útvonalak **NextHopType** az **Internet** . A fenti cikkben leírt minden szükséges IP-címhez meg kell adni egy útvonalat.
+    Ha vannak meghatározott útvonalak, ellenőrizze, hogy vannak-e útvonalak az IP-címekhez ahhoz a régióhoz, ahol a fürtöt telepítették, és az egyes útvonalak **NextHopType** az **Internet**. A fenti cikkben leírt minden szükséges IP-címhez meg kell adni egy útvonalat.
 
 ## <a name="failed-to-establish-an-outbound-connection-from-the-cluster-for-the-communication-with-the-hdinsight-resource-provider-please-ensure-that-outbound-connectivity-is-allowed"></a>"Nem sikerült kimenő kapcsolatot létesíteni a fürtből a HDInsight erőforrás-szolgáltatóval folytatott kommunikációhoz. Győződjön meg arról, hogy a kimenő kapcsolat engedélyezve van. "
 
@@ -108,7 +108,7 @@ Ellenőrizze, hogy a 168.63.129.16 az egyéni DNS-láncban van-e. A virtuális h
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Hajtsa végre a következő parancsot:
+1. Futtassa a következő parancsot:
 
     ```bash
     cat /etc/resolv.conf | grep nameserver*
@@ -150,7 +150,7 @@ dig @168.63.129.16 <headnode_fqdn> (e.g. dig @168.63.129.16 hn0-hditest.5h6lujo4
 
 ---
 
-### <a name="next-steps"></a>Következő lépések
+### <a name="next-steps"></a>További lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 

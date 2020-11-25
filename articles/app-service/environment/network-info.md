@@ -8,11 +8,11 @@ ms.date: 07/27/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 91b6134e7c809a8af75aa1cf23523e352e0a1a0e
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150244"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997341"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service-környezet hálózati megfontolásai #
 
@@ -20,12 +20,12 @@ ms.locfileid: "92150244"
 
  Az Azure [app Service Environment][Intro] a Azure app Service üzembe helyezése az Azure Virtual Network (VNet) egyik alhálózatában. Egy App Service-környezethez két központi telepítési típus létezik:
 
-- **Külső**kisegítő lehetőség: elérhetővé teszi a beadási szolgáltatás által üzemeltetett alkalmazásokat egy internetről elérhető IP-címen. További információkért lásd: külső betekintő [létrehozása][MakeExternalASE].
+- **Külső** kisegítő lehetőség: elérhetővé teszi a beadási szolgáltatás által üzemeltetett alkalmazásokat egy internetről elérhető IP-címen. További információkért lásd: külső betekintő [létrehozása][MakeExternalASE].
 - **ILB**-Bevezetés: a VNet-on belüli IP-címen teszi elérhetővé a Bea beszolgáltatott alkalmazásokat. A belső végpont egy belső terheléselosztó (ILB), ezért a rendszer ILB-központnak nevezi. További információkért lásd: [ILB-bekészítés létrehozása és használata][MakeILBASE].
 
 Minden ASE, külső és ILB rendelkezik egy nyilvános virtuális IP-vel, amely a bejövő felügyeleti forgalomhoz és a feladó címéhez van használva, amikor hívásokat kezdeményez az internetre. Az internetre csatlakozó Beérkezők által kezdeményezett hívások elhagyják a VNet a központhoz rendelt VIP-en keresztül. Ennek a VIP-nek a nyilvános IP-címe az a forrás IP-cím, amely az interneten keresztül elérhető, a központból érkező összes hívást megadja. Ha a szolgáltató alkalmazásai a VNet vagy VPN-en keresztül kezdeményeznek erőforrásokat, a forrás IP-cím a szolgáltató által használt alhálózat egyik IP-címe. Mivel a kiegészítő szolgáltatás a VNet belül van, további konfiguráció nélkül is hozzáférhet a VNet belüli erőforrásokhoz. Ha a VNet csatlakoztatva van a helyszíni hálózathoz, akkor a központhoz tartozó alkalmazások további konfigurálás nélkül is hozzáférhetnek az erőforrásokhoz.
 
-![Külső bemutató][1] 
+![Külső bemutató][1] 
 
 Ha külső elősegítő csomaggal rendelkezik, a nyilvános virtuális IP-cím is az a végpont, amelyet a benyújtó alkalmazásai a következőhöz oldják meg:
 
@@ -106,7 +106,7 @@ Ha megváltoztatja a VNet DNS-beállítását, akkor újra kell indítania a szo
 
 ## <a name="portal-dependencies"></a>Portálfüggőségek ##
 
-A központilag működő működési függőségek mellett a portál felületének néhány további eleme is van. A Azure Portal egyes képességei az _SCM-helyhez_való közvetlen hozzáféréstől függenek. Azure App Service minden alkalmazásához két URL van. Az első URL-cím az alkalmazás elérésére szolgál. A második URL-cím az SCM-hely elérésére szolgál, amely más néven a _kudu-konzol_. Az SCM-helyet használó szolgáltatások a következők:
+A központilag működő működési függőségek mellett a portál felületének néhány további eleme is van. A Azure Portal egyes képességei az _SCM-helyhez_ való közvetlen hozzáféréstől függenek. Azure App Service minden alkalmazásához két URL van. Az első URL-cím az alkalmazás elérésére szolgál. A második URL-cím az SCM-hely elérésére szolgál, amely más néven a _kudu-konzol_. Az SCM-helyet használó szolgáltatások a következők:
 
 -   WebJobs
 -   Függvények
@@ -148,7 +148,7 @@ A [hálózati biztonsági csoportok][NSGs] lehetővé teszik a hálózati hozzá
 
 A beadási szolgáltatásban nincs hozzáférése a saját önkiszolgáló üzemeltetéséhez használt virtuális gépekhez. Egy Microsoft által felügyelt előfizetésben vannak. Ha szeretné korlátozni az alkalmazásokhoz való hozzáférést a NSG, állítsa be a beadási alhálózaton. Ennek során körültekintően kell figyelnie a központilag fennálló függőségeket. Ha letiltja a függőségeket, a bekapcsoló nem működik.
 
-A NSG konfigurálható a Azure Portal vagy a PowerShell használatával. Az itt látható információk a Azure Portal mutatják be. A NSG a **hálózatban**legfelső szintű erőforrásként hozhatja létre és kezelheti a portálon.
+A NSG konfigurálható a Azure Portal vagy a PowerShell használatával. Az itt látható információk a Azure Portal mutatják be. A NSG a **hálózatban** legfelső szintű erőforrásként hozhatja létre és kezelheti a portálon.
 
 A NSG szükséges, a beosztási funkcióhoz tartozó bejegyzések lehetővé teszik a forgalom használatát:
 
@@ -180,9 +180,9 @@ A bejövő és kimenő követelmények figyelembe vételével a NSG az ebben a p
 
 ![Bejövő biztonsági szabály][4]
 
-Az alapértelmezett szabályok lehetővé teszik, hogy a VNet lévő IP-címek a beadási alhálózattal beszéljenek. Egy másik alapértelmezett szabály lehetővé teszi, hogy a terheléselosztó, más néven nyilvános virtuális IP-cím kommunikáljon a közcélú hálózattal. Az alapértelmezett szabályok megtekintéséhez válassza a **Hozzáadás** ikon melletti **alapértelmezett szabályok** elemet. Ha az alapértelmezett szabályok előtt elutasítja az összes többi szabályt, meggátolja a virtuális IP-címek és a közszolgáltatások közötti forgalmat. A VNet belülről érkező forgalom elkerüléséhez adja hozzá a saját szabályt a bejövő adatok engedélyezéséhez. A AzureLoadBalancer egyenlő forrást kell használnia, amelynek a rendeltetése **a és a** portszáma **\*** . Mivel a NSG-szabály a beadási alhálózatra van alkalmazva, nem kell konkrétnak lennie a célhelyen.
+Az alapértelmezett szabályok lehetővé teszik, hogy a VNet lévő IP-címek a beadási alhálózattal beszéljenek. Egy másik alapértelmezett szabály lehetővé teszi, hogy a terheléselosztó, más néven nyilvános virtuális IP-cím kommunikáljon a közcélú hálózattal. Az alapértelmezett szabályok megtekintéséhez válassza a **Hozzáadás** ikon melletti **alapértelmezett szabályok** elemet. Ha az alapértelmezett szabályok előtt elutasítja az összes többi szabályt, meggátolja a virtuális IP-címek és a közszolgáltatások közötti forgalmat. A VNet belülről érkező forgalom elkerüléséhez adja hozzá a saját szabályt a bejövő adatok engedélyezéséhez. Olyan forrást használjon, amely a AzureLoadBalancer egyenlő, **és a** (* *\** _) portszáma Mivel a NSG-szabály a beadási alhálózatra van alkalmazva, nem kell konkrétnak lennie a célhelyen.
 
-Ha IP-címet rendelt hozzá az alkalmazáshoz, győződjön meg róla, hogy megnyitotta a portok megtartását. A portok megtekintéséhez válassza ki **app Service Environment**  >  **IP-címeket**.  
+Ha IP-címet rendelt hozzá az alkalmazáshoz, győződjön meg róla, hogy megnyitotta a portok megtartását. A portok megtekintéséhez válassza az _ *app Service Environment** > **IP-címek** elemet.  
 
 A következő kimenő szabályokban látható összes elemre az utolsó elem kivételével szükség van. Lehetővé teszik a jelen cikk korábbi részében említett, a kiszolgált kapcsolatokhoz való hálózati hozzáférést. Ha letiltja valamelyiket, a kiegészítő szolgáltatás leáll. A lista utolsó eleme lehetővé teszi, hogy a beadás a VNet más erőforrásaival kommunikáljon.
 
@@ -197,13 +197,13 @@ A kényszerített bújtatás akkor történik, amikor útvonalakat állít be a 
 Amikor létrehoz egy bevezetőt a portálon, az útválasztási táblázatokat is létrehozjuk a központból létrehozott alhálózaton.  Ezek az útvonalak egyszerűen csak azt mondják, hogy közvetlenül az internetre küldi a kimenő forgalmat.  
 Ha ugyanazt az útvonalat manuálisan szeretné létrehozni, kövesse az alábbi lépéseket:
 
-1. Nyissa meg az Azure Portalt. Válassza a **hálózati**  >  **útválasztási táblák**lehetőséget.
+1. Nyissa meg az Azure Portalt. Válassza a **hálózati**  >  **útválasztási táblák** lehetőséget.
 
 2. Hozzon létre egy új útválasztási táblázatot a VNet megegyező régióban.
 
-3. Az útválasztási táblázat felhasználói felületén válassza az **útvonalak**  >  **Hozzáadás**lehetőséget.
+3. Az útválasztási táblázat felhasználói felületén válassza az **útvonalak**  >  **Hozzáadás** lehetőséget.
 
-4. Állítsa a **következő ugrás típusát** az **Internet** értékre, a **címnek** pedig **0.0.0.0/0**értékre. Kattintson a **Mentés** gombra.
+4. Állítsa a **következő ugrás típusát** az **Internet** értékre, a **címnek** pedig **0.0.0.0/0** értékre. Kattintson a **Mentés** gombra.
 
     Ekkor a következőhöz hasonló jelenik meg:
 

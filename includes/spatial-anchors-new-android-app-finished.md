@@ -1,17 +1,17 @@
 ---
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.date: 06/22/2020
+ms.date: 11/20/2020
 ms.topic: include
-ms.author: rgarcia
+ms.author: parkerra
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 4d20b7dee533dae17cfb1c6138e336b91c7e2b0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d57167a9a4713e268c6864f3f1b3f2b1498b4ddb
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85296185"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95998387"
 ---
 ## <a name="putting-everything-together"></a>Az összes együttes üzembe helyezése
 
@@ -248,4 +248,4 @@ public class MainActivity extends AppCompatActivity {
 Ebből az oktatóanyagból megtudhatta, hogyan hozhat létre egy új Android-alkalmazást, amely integrálja az ARCore funkciókat az Azure térbeli Horgonyokkal. Ha többet szeretne megtudni az Azure térbeli horgonyok könyvtáráról, folytassa az útmutatót a horgonyok létrehozásához és megkereséséhez.
 
 > [!div class="nextstepaction"]
-> [Horgonyok létrehozása és megkeresése az Azure térbeli horgonyok használatával](/azure/spatial-anchors/create-locate-anchors-overview)
+> [Horgonyok létrehozása és megkeresése az Azure térbeli horgonyok használatával](../articles/spatial-anchors/create-locate-anchors-overview.md)

@@ -9,12 +9,12 @@ ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 5e6289fb4e3b5bb695b79589d544d0ae475f9774
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: dcc6f3bca80cb5860679327226d3e034c3e9b14a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314655"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95996865"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Egyéni tartomány leképezése egy Azure Blob Storage-végpontra
 
@@ -58,11 +58,11 @@ Az állomásnév a tárolási végpont URL-címe a protokoll azonosítója és a
 
 1. A [Azure Portal](https://portal.azure.com)nyissa meg a Storage-fiókját.
 
-2. A menü **Beállítások**területén válassza a **Tulajdonságok**elemet.  
+2. A menü **Beállítások** területén válassza a **Tulajdonságok** elemet.  
 
 3. Másolja az **elsődleges blob szolgáltatási végpontját** vagy az **elsődleges statikus webhely végpontját** egy szövegfájlba. 
 
-4. Távolítsa el a protokoll azonosítóját (*például*HTTPS) és a karakterlánc záró perjelét. A következő táblázat példákat tartalmaz.
+4. Távolítsa el a protokoll azonosítóját (*például* HTTPS) és a karakterlánc záró perjelét. A következő táblázat példákat tartalmaz.
 
    | Végpont típusa |  endpoint | állomásnév |
    |------------|-----------------|-------------------|
@@ -79,11 +79,11 @@ Hozzon létre egy CNAME rekordot, amely az állomásnévre mutat. A CNAME rekord
 
 1. Jelentkezzen be a tartományregisztráló webhelyére, majd nyissa meg a lapot a DNS-beállítások kezeléséhez.
 
-   Előfordulhat, hogy a lapot a **tartománynév**, a **DNS**vagy a **Névkiszolgálók kezelése**nevű szakaszban találja.
+   Előfordulhat, hogy a lapot a **tartománynév**, a **DNS** vagy a **Névkiszolgálók kezelése** nevű szakaszban találja.
 
 2. Keresse meg a CNAME rekordok kezelésére szolgáló szakaszt. 
 
-   Előfordulhat, hogy a speciális beállítások lapra kell lépnie, és meg kell keresnie a **CNAME**, **alias**vagy **altartományokat**.
+   Előfordulhat, hogy a speciális beállítások lapra kell lépnie, és meg kell keresnie a **CNAME**, **alias** vagy **altartományokat**.
 
 3. Hozzon létre egy CNAME rekordot. A rekord részeként adja meg a következő elemeket: 
 
@@ -97,7 +97,7 @@ Hozzon létre egy CNAME rekordot, amely az állomásnévre mutat. A CNAME rekord
 
 1. A [Azure Portal](https://portal.azure.com)nyissa meg a Storage-fiókját.
 
-2. A párbeszédpanel **blob Service**területén válassza az **egyéni tartomány**lehetőséget.  
+2. A párbeszédpanel **blob Service** területén válassza az **egyéni tartomány** lehetőséget.  
 
    ![egyéni tartomány lehetőség](./media/storage-custom-domain-name/custom-domain-button.png "egyéni tartomány")
 
@@ -144,11 +144,11 @@ Az állomásnév a tárolási végpont URL-címe a protokoll azonosítója és a
 
 1. A [Azure Portal](https://portal.azure.com)nyissa meg a Storage-fiókját.
 
-2. A menü **Beállítások**területén válassza a **Tulajdonságok**elemet.  
+2. A menü **Beállítások** területén válassza a **Tulajdonságok** elemet.  
 
 3. Másolja az **elsődleges blob szolgáltatási végpontját** vagy az **elsődleges statikus webhely végpontját** egy szövegfájlba. 
 
-4. Távolítsa el a protokoll azonosítóját (*például*HTTPS) és a karakterlánc záró perjelét. A következő táblázat példákat tartalmaz.
+4. Távolítsa el a protokoll azonosítóját (*például* HTTPS) és a karakterlánc záró perjelét. A következő táblázat példákat tartalmaz.
 
    | Végpont típusa |  endpoint | állomásnév |
    |------------|-----------------|-------------------|
@@ -163,11 +163,11 @@ Hozzon létre egy ideiglenes CNAME rekordot, amely az állomásnévre mutat. A C
 
 1. Jelentkezzen be a tartományregisztráló webhelyére, majd nyissa meg a lapot a DNS-beállítások kezeléséhez.
 
-   Előfordulhat, hogy a lapot a **tartománynév**, a **DNS**vagy a **Névkiszolgálók kezelése**nevű szakaszban találja.
+   Előfordulhat, hogy a lapot a **tartománynév**, a **DNS** vagy a **Névkiszolgálók kezelése** nevű szakaszban találja.
 
 2. Keresse meg a CNAME rekordok kezelésére szolgáló szakaszt. 
 
-   Előfordulhat, hogy a speciális beállítások lapra kell lépnie, és meg kell keresnie a **CNAME**, **alias**vagy **altartományokat**.
+   Előfordulhat, hogy a speciális beállítások lapra kell lépnie, és meg kell keresnie a **CNAME**, **alias** vagy **altartományokat**.
 
 3. Hozzon létre egy CNAME rekordot. A rekord részeként adja meg a következő elemeket: 
 
@@ -189,7 +189,7 @@ Ha előzetesen regisztrálja az egyéni tartományt az Azure-ban, lehetővé tes
 
 1. A [Azure Portal](https://portal.azure.com)nyissa meg a Storage-fiókját.
 
-2. A párbeszédpanel **blob Service**területén válassza az **egyéni tartomány**lehetőséget.  
+2. A párbeszédpanel **blob Service** területén válassza az **egyéni tartomány** lehetőséget.  
 
    ![egyéni tartomány lehetőség](./media/storage-custom-domain-name/custom-domain-button.png "egyéni tartomány")
 
@@ -211,11 +211,11 @@ Hozzon létre egy ideiglenes CNAME rekordot, amely az állomásnévre mutat.
 
 1. Jelentkezzen be a tartományregisztráló webhelyére, majd nyissa meg a lapot a DNS-beállítások kezeléséhez.
 
-   Előfordulhat, hogy a lapot a **tartománynév**, a **DNS**vagy a **Névkiszolgálók kezelése**nevű szakaszban találja.
+   Előfordulhat, hogy a lapot a **tartománynév**, a **DNS** vagy a **Névkiszolgálók kezelése** nevű szakaszban találja.
 
 2. Keresse meg a CNAME rekordok kezelésére szolgáló szakaszt. 
 
-   Előfordulhat, hogy a speciális beállítások lapra kell lépnie, és meg kell keresnie a **CNAME**, **alias**vagy **altartományokat**.
+   Előfordulhat, hogy a speciális beállítások lapra kell lépnie, és meg kell keresnie a **CNAME**, **alias** vagy **altartományokat**.
 
 3. Hozzon létre egy CNAME rekordot. A rekord részeként adja meg a következő elemeket: 
 
@@ -239,7 +239,7 @@ Az egyéni tartomány beállításának eltávolításához tegye a következők
 
 1. A [Azure Portal](https://portal.azure.com)nyissa meg a Storage-fiókját.
 
-2. A párbeszédpanel **blob Service**területén válassza az **egyéni tartomány**lehetőséget.  
+2. A párbeszédpanel **blob Service** területén válassza az **egyéni tartomány** lehetőséget.  
    Megnyílik az **egyéni tartomány** panel.
 
 3. Törölje az egyéni tartománynevet tartalmazó szövegmező tartalmát.
@@ -250,7 +250,7 @@ Miután sikeresen eltávolította az egyéni tartományt, egy portál értesít�
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Egyéni tartományi regisztráció eltávolításához használja az az [Storage Account Update](https://docs.microsoft.com/cli/azure/storage/account) CLI parancsot, majd adja meg az `""` `--custom-domain` argumentum értékének üres karakterláncát ().
+Egyéni tartományi regisztráció eltávolításához használja az az [Storage Account Update](/cli/azure/storage/account) CLI parancsot, majd adja meg az `""` `--custom-domain` argumentum értékének üres karakterláncát ().
 
 * Parancs formátuma:
 
@@ -320,12 +320,12 @@ Egyéni tartomány leképezéséhez és a HTTPS-hozzáférés engedélyezéséhe
 
 4. Választható Tekintse át a következő útmutatót:
 
-   * [Közös hozzáférésű aláírási (SAS) tokenek Azure CDNokkal](https://docs.microsoft.com/azure/cdn/cdn-storage-custom-domain-https#shared-access-signatures).
+   * [Közös hozzáférésű aláírási (SAS) tokenek Azure CDNokkal](../../cdn/cdn-storage-custom-domain-https.md#shared-access-signatures).
 
-   * [HTTP-HTTPS átirányítás Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-storage-custom-domain-https#http-to-https-redirection)használatával.
+   * [HTTP-HTTPS átirányítás Azure CDN](../../cdn/cdn-storage-custom-domain-https.md#http-to-https-redirection)használatával.
 
-   * [Díjszabás és számlázás a blob Storage és a Azure CDN használata esetén](https://docs.microsoft.com/azure/cdn/cdn-storage-custom-domain-https#http-to-https-redirection).
+   * [Díjszabás és számlázás a blob Storage és a Azure CDN használata esetén](../../cdn/cdn-storage-custom-domain-https.md#http-to-https-redirection).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Ismerje meg az Azure Blob Storage-beli statikus webhely üzemeltetését](storage-blob-static-website.md)

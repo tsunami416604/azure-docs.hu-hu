@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: 528ab93d1cf47d64338ef186a120695681f48e55
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357215"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998651"
 ---
 # <a name="tutorial-configure-15five-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés 15Five konfigurálása
 
@@ -172,7 +172,7 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 
 * 06/16/2020 – a vállalati bővítmény "Manager" attribútumának és egyéni attribútumának "location" és "Start date" támogatása a felhasználók számára.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [A vállalati alkalmazások felhasználói fiókok üzembe](../app-provisioning/configure-automatic-user-provisioning-portal.md)helyezésének kezelése.
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

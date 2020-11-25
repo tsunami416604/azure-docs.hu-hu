@@ -13,11 +13,11 @@ ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 07/21/2020
 ms.openlocfilehash: f0f352e2c803eb1f0638f2f517b97a931ebcc889
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94961634"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996933"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>Rövid útmutató: Azure Database Migration Service-példány létrehozása az Azure Portalon
 
@@ -78,7 +78,7 @@ A Database Migration Service első példányának létrehozása előtt regisztr�
 
 A rövid útmutató során létrehozott erőforrásokat az [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) törlésével távolíthatja el. Az erőforráscsoport törléséhez keresse meg a létrehozott Azure Database Migration Service-példányt. Válassza ki az **Erőforráscsoport** nevét, majd válassza az **Erőforráscsoport törlése** elemet. A művelettel az erőforráscsoport összes elemét és magát a csoportot is törli.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [SQL Server migrálása Azure SQL Database-re](tutorial-sql-server-to-azure-sql.md)

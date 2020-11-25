@@ -10,16 +10,16 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: aahi
-ms.openlocfilehash: 08af17106846a0f5f7a0ccc2b01da1b2e15c1143
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: edc2ad0f895b8a1bb6448ce1cdf79b1b2ce83951
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80879206"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95997195"
 ---
 # <a name="deploy-the-language-understanding-luis-container-to-azure-container-instances"></a>A Language Understanding (LUIS) tároló üzembe helyezése az Azure Container instances szolgáltatásban
 
-Megtudhatja, hogyan helyezheti üzembe a Cognitive Services [Luis](luis-container-howto.md) -tárolót az Azure [Container instances](https://docs.microsoft.com/azure/container-instances/)szolgáltatásban. Ez az eljárás egy anomália-detektor erőforrás létrehozását mutatja be. Ezután megbeszéljük a társított tároló-rendszerkép kihúzását. Végezetül kiemeljük a két böngészőből való összehangolás lehetőségét. A tárolók használatával az alkalmazások fejlesztésére összpontosíthat a fejlesztők figyelmét arra, hogy az infrastruktúra kezelése helyett.
+Megtudhatja, hogyan helyezheti üzembe a Cognitive Services [Luis](luis-container-howto.md) -tárolót az Azure [Container instances](../../container-instances/index.yml)szolgáltatásban. Ez az eljárás egy anomália-detektor erőforrás létrehozását mutatja be. Ezután megbeszéljük a társított tároló-rendszerkép kihúzását. Végezetül kiemeljük a két böngészőből való összehangolás lehetőségét. A tárolók használatával az alkalmazások fejlesztésére összpontosíthat a fejlesztők figyelmét arra, hogy az infrastruktúra kezelése helyett.
 
 [!INCLUDE [Prerequisites](../containers/includes/container-prerequisites.md)]
 
@@ -33,7 +33,7 @@ A LUIS-tárolóhoz szükség van egy, `.gz` futásidőben lekért modellel. A t�
 
 ### <a name="export-and-upload-packaged-luis-app"></a>Csomagolt LUIS-alkalmazás exportálása és feltöltése
 
-A LUIS-modell (csomagolt alkalmazás) Azure-fájlmegosztásba való feltöltéséhez <a href="luis-container-howto.md#export-packaged-app-from-luis" target="_blank" rel="noopener">először <span class="docon docon-navigate-external x-hidden-focus"></span> exportálnia kell azt a Luis-portálról </a>. A Azure Portal navigáljon a Storage-fiók erőforrás **Áttekintés** lapjára, és válassza a **fájlmegosztás**lehetőséget. Válassza ki a közelmúltban létrehozott fájlmegosztás nevét, majd kattintson a **feltöltés** gombra.
+A LUIS-modell (csomagolt alkalmazás) Azure-fájlmegosztásba való feltöltéséhez <a href="luis-container-howto.md#export-packaged-app-from-luis" target="_blank" rel="noopener">először <span class="docon docon-navigate-external x-hidden-focus"></span> exportálnia kell azt a Luis-portálról </a>. A Azure Portal navigáljon a Storage-fiók erőforrás **Áttekintés** lapjára, és válassza a **fájlmegosztás** lehetőséget. Válassza ki a közelmúltban létrehozott fájlmegosztás nevét, majd kattintson a **feltöltés** gombra.
 
 > [!div class="mx-imgBorder"]
 > ![Feltöltés a fájlmegosztásba](media/luis-how-to-deploy-to-aci/upload-file-share.png)

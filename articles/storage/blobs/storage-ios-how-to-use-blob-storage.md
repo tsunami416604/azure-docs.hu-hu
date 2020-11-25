@@ -7,12 +7,12 @@ ms.date: 11/20/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: 378c21a6904acad16847bb32955e4bc091e587df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fc1b2638c2ab17c4cd58ca8d4508d2e6d244cfa
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84465490"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95996811"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>BLOB Storage használata az iOS-ből
 
@@ -39,7 +39,7 @@ A könyvtár használatához a következőkre lesz szüksége:
     sudo gem install cocoapods
     ```
 
-2. Ezután a projekt könyvtárában (a. xcodeproj fájlt tartalmazó könyvtárban) hozzon létre egy új, _cocoapods_nevű fájlt (nincs fájlkiterjesztés). Adja hozzá a következőt a _cocoapods_ és a mentéshez.
+2. Ezután a projekt könyvtárában (a. xcodeproj fájlt tartalmazó könyvtárban) hozzon létre egy új, _cocoapods_ nevű fájlt (nincs fájlkiterjesztés). Adja hozzá a következőt a _cocoapods_ és a mentéshez.
 
     ```ruby
     platform :ios, '8.0'
@@ -70,7 +70,7 @@ Ezután importálhatja a keretrendszer fájlját az alkalmazásba a következő 
 
 1. Hozzon létre egy új projektet, vagy nyissa meg a meglévő projektet a Xcode-ben.
 2. Húzza a t a `AZSClient.framework` Xcode Project-Navigátorba.
-3. Szükség esetén válassza az *elemek másolása*lehetőséget, majd kattintson a *Befejezés*gombra.
+3. Szükség esetén válassza az *elemek másolása* lehetőséget, majd kattintson a *Befejezés* gombra.
 4. Kattintson a projektre a bal oldali navigációs sávon, és kattintson a projekt-szerkesztő tetején található *általános* fülre.
 5. A *csatolt keretrendszerek és kódtárak* szakaszban kattintson a Hozzáadás gombra (+).
 6. A már megadott könyvtárak listájában keresse meg `libxml2.2.tbd` és adja hozzá a projekthez.
@@ -99,7 +99,7 @@ Ha Swift-t használ, létre kell hoznia egy áthidaló fejlécet, és ott kell i
 
 ## <a name="create-a-container"></a>Tároló létrehozása
 
-Az Azure Storage-ban minden blobnak egy tárolóban kell lennie. Az alábbi példa bemutatja, hogyan hozhat létre egy *newcontainer*nevű tárolót a Storage-fiókban, ha még nem létezik. A tároló nevének kiválasztásakor szem előtt kell lennie a fent említett elnevezési szabályoknak.
+Az Azure Storage-ban minden blobnak egy tárolóban kell lennie. Az alábbi példa bemutatja, hogyan hozhat létre egy *newcontainer* nevű tárolót a Storage-fiókban, ha még nem létezik. A tároló nevének kiválasztásakor szem előtt kell lennie a fent említett elnevezési szabályoknak.
 
 ```objc
 -(void)createContainer{
@@ -391,8 +391,8 @@ Most, hogy megismerte, hogyan használhatja a Blob Storaget iOS-ről, az alábbi
 
 - [Azure Storage ügyféloldali kódtár iOS rendszerhez](https://github.com/azure/azure-storage-ios)
 - [Az Azure Storage iOS dokumentációja](https://azure.github.io/azure-storage-ios/)
-- [Az Azure Storage-szolgáltatások REST API-ja](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-- [Az Azure Storage csapat blogja](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)
+- [Az Azure Storage-szolgáltatások REST API-ja](/rest/api/storageservices/)
+- [Az Azure Storage csapat blogja](/archive/blogs/windowsazurestorage/)
 
-Ha kérdése van a könyvtárral kapcsolatban, tegye fel a [kérdést a Microsoft Q&egy kérdés oldalára](https://docs.microsoft.com/answers/topics/azure-blob-storage.html) vagy [stack overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files).
+Ha kérdése van a könyvtárral kapcsolatban, tegye fel a [kérdést a Microsoft Q&egy kérdés oldalára](/answers/topics/azure-blob-storage.html) vagy [stack overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files).
 Ha az Azure Storage szolgáltatásra vonatkozó javaslatokkal rendelkezik, tegye közzé az [Azure Storage visszajelzéseit](https://feedback.azure.com/forums/217298-storage/).

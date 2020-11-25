@@ -1,19 +1,19 @@
 ---
-author: ramonarguelles
+author: msftradford
 ms.service: spatial-anchors
 ms.topic: include
-ms.date: 1/30/2019
-ms.author: rgarcia
-ms.openlocfilehash: 0e6f68daf22659b880827ad027268d9757c60063
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.date: 11/20/2020
+ms.author: parkerra
+ms.openlocfilehash: 80685dee7907b81832c94044d1feb8fcf2e41bde
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971335"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95998457"
 ---
 ### <a name="open-the-publish-wizard"></a>A közzétételi varázsló megnyitása
 
-**Megoldáskezelő**kattintson a jobb gombbal a **SharingService** projektre, majd válassza a **Közzététel**lehetőséget.
+**Megoldáskezelő** kattintson a jobb gombbal a **SharingService** projektre, majd válassza a **Közzététel** lehetőséget.
 
 Elindul a közzétételi varázsló. 
 
@@ -21,9 +21,9 @@ Válassza ki **app Service**  >  **Közzététel** elemet a **Létrehozás app S
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure portálra.
+Jelentkezzen be az Azure Portalra.
 
-A **app Service létrehozása** panelen válassza a **fiók hozzáadása**lehetőséget, majd jelentkezzen be az Azure-előfizetésbe. Ha már bejelentkezett, válassza ki a kívánt fiókot a legördülő listából.
+A **app Service létrehozása** panelen válassza a **fiók hozzáadása** lehetőséget, majd jelentkezzen be az Azure-előfizetésbe. Ha már bejelentkezett, válassza ki a kívánt fiókot a legördülő listából.
 
    > [!NOTE]
    > Ha már be van jelentkezve, akkor még ne válassza a **Create** (Létrehozás) lehetőséget.
@@ -55,7 +55,7 @@ Válassza az **OK** lehetőséget.
 
 ### <a name="create-and-publish-the-web-app"></a>A webapp létrehozása és közzététele
 
-Az **alkalmazás neve**mezőben adjon meg egy egyedi nevet. Érvényes karakterek: a-z, 0-9 és kötőjel (-), vagy fogadja el az automatikusan létrehozott egyedi nevet. A webalkalmazás URL-címe `https://<app_name>.azurewebsites.net`, amelyben az `<app_name>` az alkalmazás neve.
+Az **alkalmazás neve** mezőben adjon meg egy egyedi nevet. Érvényes karakterek: a-z, 0-9 és kötőjel (-), vagy fogadja el az automatikusan létrehozott egyedi nevet. A webalkalmazás URL-címe `https://<app_name>.azurewebsites.net`, amelyben az `<app_name>` az alkalmazás neve.
 
 A **Create** (Létrehozás) gombra kattintva hozzákezdhet az Azure-erőforrások létrehozásához.
 

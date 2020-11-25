@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e7f8dd49f3668b8f68753681123a04d21edac46c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60381463"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997732"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations"></a>Azure Active Directory hibrid identitáskezelés – kialakítási szempontok
 A vállalati és a felhőalapú szoftveres (SaaS) alkalmazások egyszerűen elsajátítják a céges eszközöket. Ennek eredményeképpen a felhasználói alkalmazások hozzáférésének fenntartása a belső adatközpontokban és a felhőalapú platformokon is kihívást jelent.  
@@ -63,6 +63,6 @@ A követelményeknek leginkább megfelelő kialakítást csak akkor kell megism�
 | Az adatbiztonság növelésének megtervezése erős identitású megoldáson keresztül |[Adatvédelmi követelmények meghatározása](plan-hybrid-identity-design-considerations-dataprotection-requirements.md) <br> [A tartalomkezeléshez kapcsolódó követelmények meghatározása](plan-hybrid-identity-design-considerations-contentmgt-requirements.md)<br> [A hozzáférés-vezérlésre vonatkozó követelmények meghatározása](plan-hybrid-identity-design-considerations-accesscontrol-requirements.md)<br> [Az incidensmegoldáshoz kapcsolódó követelmények meghatározása](plan-hybrid-identity-design-considerations-incident-response-requirements.md) <br> [Adatvédelmi stratégia definiálása](plan-hybrid-identity-design-considerations-data-protection-strategy.md) |
 | A hibrid identitáskezelés életciklusának megtervezése |[Hibrid Identitáskezelés kezelési feladatainak meghatározása](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md) <br> [Szinkronizálás kezelése](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)<br> [A hibrid Identitáskezelés bevezetési stratégiájának meghatározása](plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Identitáshoz kapcsolódó követelmények meghatározása](plan-hybrid-identity-design-considerations-business-needs.md)
 

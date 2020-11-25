@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 06/17/2019
 keywords: Prometheus, ARO, openshift, metrikák, Red Hat
 ms.openlocfilehash: 42ed8c90b35eba57fdc3db1f0ed93d44cf9a5e41
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92218612"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996848"
 ---
 # <a name="deploy-a-standalone-prometheus-instance-in-an-azure-red-hat-openshift-cluster"></a>Önálló Prometheus-példány üzembe helyezése Azure Red Hat OpenShift-fürtben
 
@@ -36,9 +36,9 @@ A Prometheus konfigurációs fájljait helyileg kell előkészítenie. Hozzon l�
 
 ## <a name="sign-in-to-the-cluster-by-using-the-oc-tool"></a>Jelentkezzen be a fürtbe az OC eszköz használatával
 
-1. Nyisson meg egy webböngészőt, majd nyissa meg a fürt webkonzolját ( https://openshift .* véletlenszerű azonosító*. *region*. azmosa.IO).
+1. Nyisson meg egy webböngészőt, majd nyissa meg a fürt webkonzolját ( https://openshift .*véletlenszerű azonosító*. *region*. azmosa.IO).
 2. Jelentkezzen be az Azure-beli hitelesítő adataival.
-3. Válassza ki a felhasználónevet a jobb felső sarokban, majd válassza a **bejelentkezési parancs másolása**lehetőséget.
+3. Válassza ki a felhasználónevet a jobb felső sarokban, majd válassza a **bejelentkezési parancs másolása** lehetőséget.
 4. Illessze be a felhasználónevet a használni kívánt terminálba.
 
 > [!NOTE]
@@ -188,7 +188,7 @@ oc process -f prometheus-sdrole.yml | oc apply -f - -n prometheus-project
 
 ## <a name="optional-deploy-example-application"></a>Nem kötelező: példa alkalmazás üzembe helyezése
 
-Minden működik, de nincsenek metrikai források. Nyissa meg a Prometheus URL-címét ( https://prom-prometheus-project.apps .* véletlenszerű azonosító*. *region*. azmosa.IO/). A következő paranccsal keresheti meg:
+Minden működik, de nincsenek metrikai források. Nyissa meg a Prometheus URL-címét ( https://prom-prometheus-project.apps .*véletlenszerű azonosító*. *region*. azmosa.IO/). A következő paranccsal keresheti meg:
 
 ```
 oc get route prom -n prometheus-project
@@ -209,9 +209,9 @@ Az új alkalmazásoknak érvényes célként kell szerepelniük a szolgáltatás
 További részletekért válassza az **állapot**  >  **céljait**.
 
 > [!NOTE]
-> A Prometheus minden sikeresen lekapart cél esetében felvesz egy adatpontot a felfelé mutató metrikába. Válassza a **Prometheus** lehetőséget a bal felső sarokban **, írja be a kifejezést** kifejezésként, majd válassza a **végrehajtás**lehetőséget.
+> A Prometheus minden sikeresen lekapart cél esetében felvesz egy adatpontot a felfelé mutató metrikába. Válassza a **Prometheus** lehetőséget a bal felső sarokban **, írja be a kifejezést** kifejezésként, majd válassza a **végrehajtás** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Egyéni Prometheus-rendszerállapot-kialakítást adhat az alkalmazásaihoz. A Prometheus-ügyfél könyvtára, amely leegyszerűsíti a Prometheus-metrikák előkészítését, készen áll a különböző programozási nyelvekre.
 

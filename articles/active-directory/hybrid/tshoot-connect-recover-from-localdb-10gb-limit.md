@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7ca5361d8500ecd4ea22a577d0a4dc7ced606eab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89275902"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997647"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect: Helyreállítás 10 GB-ra korlátozott LocalDB-adatbázisból
 Az identitásadatok tárolásához az Azure AD Connectnek szüksége van egy SQL Server-adatbázisra. Használhatja az Azure AD Connecttel együtt telepített alapértelmezett SQL Server 2012 Express LocalDB-t, vagy használhatja saját teljes SQL-kiszolgálóját. Az SQL Server Express 10 GB-os méretkorláttal rendelkezik. Ha a LocalDB-t használja és eléri a korlátot, az Azure AD Connect szinkronizálási szolgáltatása többé nem indul majd el, vagy nem végzi el megfelelően a szinkronizálást. Ez a cikk a helyreállítási lépéseket ismerteti.
@@ -47,7 +47,7 @@ Először is állapítsa meg, hogy a szinkronizálási szolgáltatás továbbra 
 
 2. Lépjen a **szolgáltatásvezérlő kezelőjéhez**.
 
-3. **Microsoft Azure ad szinkronizálás**állapotának bejelölése.
+3. **Microsoft Azure ad szinkronizálás** állapotának bejelölése.
 
 
 4. Ha fut, ne állítsa le vagy indítsa újra a szolgáltatást. Hagyja ki [az adatbázis lekicsinyítése](#shrink-the-database) lépést, és válassza a [futtatási előzmények törlése](#delete-run-history-data) lépést.
@@ -85,9 +85,9 @@ Alapértelmezés szerint a Azure AD Connect akár hét napig is megőrzi a futta
 
 2. Lépjen az **Operations (műveletek** ) lapra.
 
-3. A **műveletek**területen válassza a **futtatások törlése**... lehetőséget.
+3. A **műveletek** területen válassza a **futtatások törlése**... lehetőséget.
 
-4. Választhatja **a minden Futtatás törlése** vagy a **futtatások törlése előtt \<date> ** lehetőséget is. Javasoljuk, hogy először törölje a két napnál régebbi futtatási előzményeket. Ha továbbra is adatbázis-mérettel kapcsolatos problémát tapasztal, válassza a **minden Futtatás törlése** lehetőséget.
+4. Választhatja **a minden Futtatás törlése** vagy a **futtatások törlése előtt \<date>** lehetőséget is. Javasoljuk, hogy először törölje a két napnál régebbi futtatási előzményeket. Ha továbbra is adatbázis-mérettel kapcsolatos problémát tapasztal, válassza a **minden Futtatás törlése** lehetőséget.
 
 ### <a name="shorten-retention-period-for-run-history-data"></a>A futtatási előzmények adatmegőrzési időszakának csökkentése
 Ennek a lépésnek a célja, hogy csökkentse a 10 GB-os korláttal való futás valószínűségét több szinkronizálási ciklus után.
@@ -103,5 +103,5 @@ Ennek a lépésnek a célja, hogy csökkentse a 10 GB-os korláttal való futás
 * A távoli SQL az Azure AD Connecttel történő konfigurálásáról tekintse meg a [Az Azure AD Connect egyéni telepítése](./how-to-connect-install-custom.md) című cikket.
 * Az Azure AD Connect frissítésének párhuzamos migrálásáról tekintse meg az [Azure AD Connect: Frissítés egy előző verzióról a legújabbra](./how-to-upgrade-previous-version.md#swing-migration) című cikket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

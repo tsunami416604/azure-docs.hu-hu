@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: d0c4a6fcdddddc77d4072c2d0d11fe78837d84bc
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: c5510a66f48007d629d23a96d17205b489ab6a5c
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743387"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95999127"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>Oktatóanyag: függvény létrehozása javában Event hub-eseményindítóval és Azure Cosmos DB kimeneti kötéssel
 
@@ -74,7 +74,7 @@ LOCATION=<value>
 
 Az oktatóanyag többi része ezeket a változókat használja. Vegye figyelembe, hogy ezek a változók csak az aktuális Azure CLI-vagy Cloud Shell-munkamenet időtartama alatt maradnak meg. Ezeket a parancsokat újra futtatnia kell, ha más helyi terminált használ, vagy ha a Cloud Shell munkamenet időtúllépést tapasztal.
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az Azure erőforráscsoportok használatával gyűjti össze a fiókban lévő összes kapcsolódó erőforrást. Így megtekintheti őket egységként, és egyetlen paranccsal törölheti őket, ha elkészült velük.
 
@@ -179,7 +179,7 @@ COSMOS_DB_CONNECTION_STRING=$( \
         --resource-group $RESOURCE_GROUP \
         --name $COSMOS_DB_ACCOUNT \
         --type connection-strings \
-        --query connectionStrings[0].connectionString \
+        --query 'connectionStrings[0].connectionString' \
         --output tsv)
 echo $COSMOS_DB_CONNECTION_STRING
 ```
@@ -412,7 +412,7 @@ Néhány felépítési és indítási üzenet után az alábbi példához hasonl
 [10/22/19 4:01:38 AM] Executed 'Functions.processSensorData' (Succeeded, Id=1cf0382b-0c98-4cc8-9240-ee2a2f71800d)
 ```
 
-Ezután nyissa meg a [Azure Portal](https://portal.azure.com) , és navigáljon a Azure Cosmos db-fiókjához. Válassza ki **adatkezelő** , bontsa ki a **TelemetryInfo** elemet, majd válassza az **elemek** lehetőséget az adatok megtekintéséhez.
+Ezután nyissa meg a [Azure Portal](https://portal.azure.com) , és navigáljon a Azure Cosmos db-fiókjához. Válassza ki **adatkezelő**, bontsa ki a **TelemetryInfo** elemet, majd válassza az **elemek** lehetőséget az adatok megtekintéséhez.
 
 ![Cosmos DB Adatkezelő](media/functions-event-hub-cosmos-db/data-explorer.png)
 
@@ -436,7 +436,7 @@ A függvények mostantól az Azure-ban futnak, és továbbra is felhalmoznak egy
 
 ![Application Insights teljesítmény panel](media/functions-event-hub-cosmos-db/application-insights-performance.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha végzett az oktatóanyagban létrehozott Azure-erőforrásokkal, az alábbi parancs használatával törölheti őket:
 
@@ -444,7 +444,7 @@ Ha végzett az oktatóanyagban létrehozott Azure-erőforrásokkal, az alábbi p
 az group delete --name $RESOURCE_GROUP
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egy Azure-függvényt, amely az Event hub-eseményeket kezeli, és frissíti a Cosmos DB. További információ: [Azure functions Java fejlesztői útmutató](./functions-reference-java.md). A használt megjegyzésekkel kapcsolatos információkért tekintse meg a következőt: [com. microsoft. Azure. functions. Megjegyzés](/java/api/com.microsoft.azure.functions.annotation) leírása.
 

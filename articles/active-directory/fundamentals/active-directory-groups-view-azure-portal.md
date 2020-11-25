@@ -14,11 +14,11 @@ ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ddedd753eb98a8656006c9dddc412e44330e1a21
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87797491"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996728"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
 
@@ -81,7 +81,7 @@ Most, hogy már rendelkezik egy csoporttal és egy felhasználóval, hozzáadhat
 ## <a name="view-all-groups"></a>Az összes csoport megtekintése
 A vállalat összes csoportját megtekintheti az Azure Portal **Csoportok – Minden csoport** lapján.
 
-- Válassza az Azure **Active Directory**  >  **csoportok**lehetőséget.
+- Válassza az Azure **Active Directory**  >  **csoportok** lehetőséget.
 
     A **Csoportok – Minden csoport** lap megjelenik, és mutatja az összes aktív csoportot.
 

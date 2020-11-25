@@ -7,11 +7,11 @@ ms.date: 02/25/2019
 ms.author: srrengar
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 59c8202b03bf1be2be5a68b75a1d7c7404b2213d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020201"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998243"
 ---
 # <a name="report-and-check-service-health"></a>Szolgáltatásállapot jelentése és ellenőrzése
 Ha a szolgáltatásai problémákba ütköznek, az incidensek és az kimaradások kijavításának lehetősége a problémák gyors észlelésére is függ. Ha az Azure Service Fabric Health Managerrel kapcsolatos problémákat és hibákat jelent a szolgáltatás kódjában, a Service Fabric által biztosított szabványos állapot-figyelési eszközöket használhatja az állapot ellenőrzéséhez.
@@ -140,7 +140,7 @@ var activationContext = FabricRuntime.GetActivationContext();
 activationContext.ReportApplicationHealth(healthInformation);
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Service Fabric állapotának részletes bemutatása](service-fabric-health-introduction.md)
 * [REST API a jelentési szolgáltatás állapotához](/rest/api/servicefabric/report-the-health-of-a-service)
 * [REST API a jelentéskészítési alkalmazás állapota](/rest/api/servicefabric/report-the-health-of-an-application)

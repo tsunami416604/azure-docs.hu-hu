@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 105978daeb93a2e5646222ff10055ba20a1dc481
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 7174f7dd53387de9a569a5ddcadc08c32692c749
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172899"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997103"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>A hírcsatornák támogatásának módosítása az Azure-ban Blob Storage
 
@@ -21,7 +21,7 @@ A változási csatorna célja, hogy tranzakciós naplókat szolgáltasson a blob
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
-A módosítási csatornát [blobként](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) tárolja a rendszer a Storage-fiókban lévő speciális tárolóban, standard [blob díjszabási](https://azure.microsoft.com/pricing/details/storage/blobs/) költséggel. A fájlok megőrzési időtartamát a követelmények alapján szabályozhatja (lásd a jelenlegi kiadás [feltételeit](#conditions) ). Az [Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html) formátumának specifikációja: egy kompakt, gyors, bináris formátum, amely beágyazott sémával rendelkező, gazdag adatstruktúrákat biztosít a változási hírcsatornához. Ezt a formátumot széles körben használják a Hadoop ökoszisztémájában, Stream Analytics és Azure Data Factory.
+A módosítási csatornát [blobként](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) tárolja a rendszer a Storage-fiókban lévő speciális tárolóban, standard [blob díjszabási](https://azure.microsoft.com/pricing/details/storage/blobs/) költséggel. A fájlok megőrzési időtartamát a követelmények alapján szabályozhatja (lásd a jelenlegi kiadás [feltételeit](#conditions) ). Az [Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html) formátumának specifikációja: egy kompakt, gyors, bináris formátum, amely beágyazott sémával rendelkező, gazdag adatstruktúrákat biztosít a változási hírcsatornához. Ezt a formátumot széles körben használják a Hadoop ökoszisztémájában, Stream Analytics és Azure Data Factory.
 
 Ezeket a naplókat aszinkron módon, Növekményesen vagy teljes mértékben feldolgozhatja. Tetszőleges számú ügyfélalkalmazás önállóan, párhuzamosan és saját tempójában is elolvashatja a változási csatornát. Az olyan elemzési alkalmazások, mint az [Apache Drill](https://drill.apache.org/docs/querying-avro-files/) vagy a [Apache Spark](https://spark.apache.org/docs/latest/sql-data-sources-avro.html) közvetlenül Avro-fájlként használhatják a naplókat, így alacsony költséghatékonyságú, nagy sávszélességű és egyéni alkalmazások írása nélkül is feldolgozhatók.
 
@@ -62,9 +62,9 @@ A Azure Portal használatával engedélyezze a Storage-fiók módosítási csato
 
 1. A [Azure Portal](https://portal.azure.com/)válassza ki a Storage-fiókját.
 
-2. Navigáljon a **blob Service**területen a **Adatvédelem** lehetőségre.
+2. Navigáljon a **blob Service** területen a **Adatvédelem** lehetőségre.
 
-3. Kattintson az **engedélyezve** lehetőségre a **blob-módosítási hírcsatorna**területen.
+3. Kattintson az **engedélyezve** lehetőségre a **blob-módosítási hírcsatorna** területen.
 
 4. Kattintson a **Save (Mentés** ) gombra az **adatvédelmi** beállítások megerősítéséhez.
 
@@ -103,11 +103,11 @@ A módosítási hírcsatorna engedélyezése a PowerShell használatával:
 ### <a name="template"></a>[Sablon](#tab/template)
 Azure Resource Manager sablon használatával engedélyezheti a meglévő Storage-fiók módosítási csatornáját Azure Portalon keresztül:
 
-1. A Azure Portal válassza az **erőforrás létrehozása**lehetőséget.
+1. A Azure Portal válassza az **erőforrás létrehozása** lehetőséget.
 
-2. A **Keresés a piactéren**mezőbe írja be a **sablon központi telepítése**kifejezést, majd nyomja le az **ENTER**billentyűt.
+2. A **Keresés a piactéren** mezőbe írja be a **sablon központi telepítése** kifejezést, majd nyomja le az **ENTER** billentyűt.
 
-3. Válassza az **[egyéni sablon üzembe helyezése](https://portal.azure.com/#create/Microsoft.Template)** lehetőséget, majd **a szerkesztőben válassza a saját sablon létrehozása**lehetőséget.
+3. Válassza az **[egyéni sablon üzembe helyezése](https://portal.azure.com/#create/Microsoft.Template)** lehetőséget, majd **a szerkesztőben válassza a saját sablon létrehozása** lehetőséget.
 
 4. A sablon szerkesztőjében illessze be a következő JSON-t. Cserélje le a `<accountName>` helyőrzőt a Storage-fiók nevére.
 
@@ -206,7 +206,7 @@ A szegmens jegyzékfájlja ( `meta.json` ) az adott szegmenshez tartozó adatvá
 
 A módosítási hírcsatorna-fájlok sorozata változási esemény rekordokat tartalmaz. Minden változási esemény rekordja egy adott blob módosításának felel meg. A rendszer szerializálja a rekordokat, és az [Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html) Format specifikáció használatával írja a fájlba. A rekordok a Avro fájlformátum specifikációjának használatával olvashatók. Az adott formátumú fájlok feldolgozásához több könyvtár is rendelkezésre áll.
 
-A médiafájlok módosítását a `$blobchangefeed/log/` virtuális könyvtárban, [hozzáfűzési blobként](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)tárolja a rendszer. Az egyes elérési utakon az első módosítási hírcsatorna a fájl nevében fog megjelenni `00000` (például `00000.avro` ). Az elérési úthoz hozzáadott minden további naplófájl neve eggyel nő (például: `00001.avro` ).
+A médiafájlok módosítását a `$blobchangefeed/log/` virtuális könyvtárban, [hozzáfűzési blobként](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)tárolja a rendszer. Az egyes elérési utakon az első módosítási hírcsatorna a fájl nevében fog megjelenni `00000` (például `00000.avro` ). Az elérési úthoz hozzáadott minden további naplófájl neve eggyel nő (például: `00001.avro` ).
 
 A következő eseménytípus rögzítve van a változási hírcsatorna rekordjaiban:
 - BlobCreated
@@ -243,7 +243,7 @@ A következő eseménytípus rögzítve van a változási hírcsatorna rekordjai
 }
 ```
 
-Az egyes tulajdonságok leírását lásd: [Azure Event Grid blob Storagehoz tartozó esemény-séma](https://docs.microsoft.com/azure/event-grid/event-schema-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#event-properties). A BlobPropertiesUpdated és a BlobSnapshotCreated esemény jelenleg csak a hírcsatornák módosítására és a Blob Storage események esetében még nem támogatott.
+Az egyes tulajdonságok leírását lásd: [Azure Event Grid blob Storagehoz tartozó esemény-séma](../../event-grid/event-schema-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#event-properties). A BlobPropertiesUpdated és a BlobSnapshotCreated esemény jelenleg csak a hírcsatornák módosítására és a Blob Storage események esetében még nem támogatott.
 
 > [!NOTE]
 > A szegmensek változási csatornáinak módosítása nem jelenik meg azonnal a szegmens létrehozása után. A késleltetési idő a változási hírcsatornán a módosítási adatcsatornán belül a közzétételi késésnek a normál intervallumán belül van.
@@ -256,7 +256,7 @@ Az egyes tulajdonságok leírását lásd: [Azure Event Grid blob Storagehoz tar
 
 - Az események rekordjának módosítása néhány percen belül megtörténik. Az ügyfélalkalmazások dönthetnek úgy, hogy felhasználják a rekordokat a folyamatos átviteli hozzáféréshez, vagy bármilyen más időpontban tömegesen.
 
-- Az események rekordjainak módosítása a **Blobok**módosítási sorrendjének megfelelően történik. A Blobok közötti változások sorrendje nincs meghatározva az Azure Blob Storageban. Egy korábbi szegmens összes változása előtt a további szegmensek változásai megváltoznak.
+- Az események rekordjainak módosítása a **Blobok** módosítási sorrendjének megfelelően történik. A Blobok közötti változások sorrendje nincs meghatározva az Azure Blob Storageban. Egy korábbi szegmens összes változása előtt a további szegmensek változásai megváltoznak.
 
 - Az Event Records módosításait a rendszer az [Apache Avro 1.8.2](https://avro.apache.org/docs/1.8.2/spec.html) formátumának specifikációjának használatával szerializálja a naplófájlba.
 
@@ -309,7 +309,7 @@ A Change feed olyan megoldás, amely tranzakciós naplót biztosít a sikeres mu
 ### <a name="should-i-use-change-feed-or-storage-events"></a>Használhatom a Change feed vagy a Storage eseményt?
 Mindkét funkciót kihasználhatja, mivel a memória-és [blob-tárolási események](storage-blob-event-overview.md) is ugyanazokat az információkat nyújtják, mint a kézbesítés megbízhatósági garanciája, és a fő különbség az, hogy az események rekordjainak késése, rendezése és tárolása is megmarad. A módosítási hírcsatorna a változást követően néhány percen belül közzéteszi a rekordokat a naplóba, és a módosítási műveletek sorrendjét is megtartja blobban. A tárolási események valós időben lesznek leküldve, és előfordulhat, hogy nem rendelhető meg. A tartósan a Storage-fiókban tárolt adatok módosítása csak olvasható stabil naplókat tartalmaz a saját meghatározott adatmegőrzéssel, míg a tárolási események átmenetiek, ha kifejezetten tárolja őket. A változási hírcsatornával tetszőleges számú alkalmazás használhatja a naplókat a saját kényelmében a blob API-k vagy SDK-k használatával. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át a változási hírcsatorna .NET-ügyfélalkalmazás használatával történő beolvasásának példáját. Lásd: [Az Azure Blob Storageban található adatcsatorna-naplók feldolgozása](storage-blob-change-feed-how-to.md).
 - Ismerje meg, hogyan reagálhat az eseményekre valós időben. További tudnivalók [a blob Storage eseményekre való reagálásról](storage-blob-event-overview.md)

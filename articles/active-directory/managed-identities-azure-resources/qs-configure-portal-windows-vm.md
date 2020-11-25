@@ -16,11 +16,11 @@ ms.date: 11/10/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e35366e35fc127057020906ac6d3dfb0f207ab72
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91331335"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997426"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-vm-using-the-azure-portal"></a>Felügyelt identitások konfigurálása egy virtuális gépen lévő Azure-erőforrásokhoz a Azure Portal használatával
 
@@ -43,7 +43,7 @@ Ebből a szakaszból megtudhatja, hogyan engedélyezheti és tilthatja le a virt
 
 Ha a rendszer által hozzárendelt felügyelt identitást szeretné engedélyezni egy virtuális gépen a létrehozása során, a fióknak szüksége van a [virtuálisgép-közreműködő](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) szerepkör-hozzárendelésre.  Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
 
-- Az **identitás** szakasz **felügyelet** lapján váltson a **felügyelt szolgáltatás identitása** elemre **a**következőre:.  
+- Az **identitás** szakasz **felügyelet** lapján váltson a **felügyelt szolgáltatás identitása** elemre **a** következőre:.  
 
 ![A rendszer által hozzárendelt identitás engedélyezése a virtuális gépek létrehozása során](./media/msi-qs-configure-portal-windows-vm/enable-system-assigned-identity-vm-creation.png)
 
@@ -59,9 +59,9 @@ Ha olyan virtuális gépen szeretné engedélyezni a rendszer által hozzárende
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) egy olyan fiókkal, amely a virtuális gépet tartalmazó Azure-előfizetéshez van társítva.
 
-2. Navigáljon a kívánt virtuális géphez, és válassza az **identitás**elemet.
+2. Navigáljon a kívánt virtuális géphez, és válassza az **identitás** elemet.
 
-3. A **rendszer által hozzárendelt**, **állapot**területen válassza a be lehetőséget, majd kattintson **a** **Mentés**gombra:
+3. A **rendszer által hozzárendelt**, **állapot** területen válassza a be lehetőséget, majd kattintson **a** **Mentés** gombra:
 
    ![Képernyőfelvétel: az "identitás (előzetes verzió)" oldal, amelynek "a rendszerhez rendelt" állapota "on" értékre van állítva.](./media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade.png)  
 
@@ -73,9 +73,9 @@ Ha olyan virtuális géppel rendelkezik, amelyhez már nincs szükség a rendsze
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) egy olyan fiókkal, amely a virtuális gépet tartalmazó Azure-előfizetéshez van társítva. 
 
-2. Navigáljon a kívánt virtuális géphez, és válassza az **identitás**elemet.
+2. Navigáljon a kívánt virtuális géphez, és válassza az **identitás** elemet.
 
-3. A **rendszer által hozzárendelt**, állapot **területen válassza ki** , majd kattintson a **Mentés**gombra: **Status**
+3. A **rendszer által hozzárendelt**, állapot **területen válassza ki** , majd kattintson a **Mentés** gombra: **Status**
 
    ![Konfiguráció lap képernyőképe](./media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade-disable.png)
 
@@ -97,11 +97,11 @@ A Azure Portal jelenleg nem támogatja a felhasználó által hozzárendelt fel�
 Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy virtuális géphez, a fióknak szüksége van a [virtuális gép közreműködői](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) és [felügyelt identitás-kezelő](../../role-based-access-control/built-in-roles.md#managed-identity-operator) szerepkör-hozzárendeléseire. Nincs szükség további Azure AD-címtárbeli szerepkör-hozzárendelésre.
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) egy olyan fiókkal, amely a virtuális gépet tartalmazó Azure-előfizetéshez van társítva.
-2. Navigáljon a kívánt virtuális géphez, és kattintson az **identitás**, a **felhasználó hozzárendelve** , majd a ** \+ Hozzáadás**elemre.
+2. Navigáljon a kívánt virtuális géphez, és kattintson az **identitás**, a **felhasználó hozzárendelve** , majd a **\+ Hozzáadás** elemre.
 
    ![Képernyőkép, amely a "felhasználó által hozzárendelt" nevű "Identity" oldalt jeleníti meg, és a "Hozzáadás" gomb ki van emelve.](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vm-screenshot1.png)
 
-3. Kattintson arra a felhasználó által hozzárendelt identitásra, amelyet hozzá szeretne adni a virtuális géphez, majd kattintson a **Hozzáadás**gombra.
+3. Kattintson arra a felhasználó által hozzárendelt identitásra, amelyet hozzá szeretne adni a virtuális géphez, majd kattintson a **Hozzáadás** gombra.
 
     ![Felhasználóhoz rendelt felügyelt identitás hozzáadása a virtuális géphez](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vm-screenshot2.png)
 

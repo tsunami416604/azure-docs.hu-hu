@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 05/04/2020
 ms.author: jeedes
 ms.openlocfilehash: 5a2169db47ca5a6adcddbcc9558161370b896a62
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92509556"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997069"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smart-global-governance"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az intelligens globális irányítással
 
@@ -49,8 +49,8 @@ Az intelligens globális irányítás Azure AD-be való integrálásának konfig
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók.
 1. A bal oldali panelen válassza az **Azure Active Directory** lehetőséget.
-1. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban adja meg az **intelligens globális irányítás** kifejezést a keresőmezőbe.
 1. Válassza az **intelligens globális irányítás** elemet az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
@@ -71,8 +71,8 @@ Az Azure AD SSO intelligens globális irányítással való konfigurálásához 
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a Azure Portalban:
 
-1. A [Azure Portal](https://portal.azure.com/)az **intelligens globális irányítási** alkalmazás-integráció lapon, a **kezelés** szakaszban válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)az **intelligens globális irányítási** alkalmazás-integráció lapon, a **kezelés** szakaszban válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon válassza az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza gombot a beállítások szerkesztéséhez:
 
    ![Az alapszintű SAML-konfiguráció ceruza gombja](common/edit-urls.png)
@@ -108,31 +108,31 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a Azure Portal
 
 Ebben a szakaszban egy B. Simon nevű teszt felhasználót hoz létre a Azure Portal.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget. Válassza a **felhasználók**lehetőséget, majd válassza **a minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget. Válassza a **felhasználók** lehetőséget, majd válassza **a minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre a következő lépéseket:
    1. A név mezőbe írja be a **B. Simon** **nevet** .  
    1. A **Felhasználónév** mezőbe írja be a nevet \<username> @ \<companydomain> . \<extension> Például: `B.Simon@contoso.com`.
-   1. Válassza a **jelszó megjelenítése**lehetőséget, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Válassza a **jelszó megjelenítése** lehetőséget, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="grant-access-to-the-test-user"></a>Hozzáférés biztosítása a tesztelési felhasználónak
 
 Ebben a szakaszban engedélyezi, hogy a B. Simon az Azure egyszeri bejelentkezést használja azáltal, hogy hozzáférést biztosít a felhasználónak az intelligens globális irányításhoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Válassza az alkalmazások lista **intelligens globális irányítás**elemét.
-1. Az alkalmazás Áttekintés lapjának **kezelés** szakaszában válassza a **felhasználók és csoportok**lehetőséget:
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Válassza az alkalmazások lista **intelligens globális irányítás** elemét.
+1. Az alkalmazás Áttekintés lapjának **kezelés** szakaszában válassza a **felhasználók és csoportok** lehetőséget:
 
    ![Felhasználók és csoportok kiválasztása](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget:
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget:
 
     ![Felhasználó hozzáadása kiválasztása](common/add-assign-user.png)
 
 1. A **felhasználók és csoportok** párbeszédpanelen válassza az **B. Simon** elemet a **felhasználók** listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés**lehetőséget.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés** lehetőséget.
 
 ## <a name="configure-smart-global-governance-sso"></a>Intelligens globális irányítású egyszeri bejelentkezés konfigurálása
 

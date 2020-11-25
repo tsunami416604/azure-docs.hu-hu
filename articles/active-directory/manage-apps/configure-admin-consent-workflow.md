@@ -13,11 +13,11 @@ ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7fc688ca0981024e5e08c9fb20ecb6704efbd7f2
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658774"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997494"
 ---
 # <a name="configure-the-admin-consent-workflow-preview"></a>Rendszergazdai engedélyezési munkafolyamat (előzetes verzió) konfigurálása
 
@@ -49,7 +49,7 @@ A rendszergazdai engedélyekkel rendelkező munkafolyamat engedélyezése és a 
    * A **kiválasztott felhasználók megkapják a kérelmek lejáratára vonatkozó emlékeztetőket**. Az emlékeztető e-mail-értesítéseinek engedélyezése vagy letiltása a felülvizsgálók számára, ha egy kérés hamarosan lejár.  
    * A **beleegyező kérelem érvényessége (nap) után lejár**. Itt adhatja meg, hogy a kérelmek meddig maradjanak érvényesek.
 
-7. Válassza a **Mentés** lehetőséget. Akár egy óráig is eltarthat, amíg a funkció engedélyezve lesz.
+7. Kattintson a **Mentés** gombra. Akár egy óráig is eltarthat, amíg a funkció engedélyezve lesz.
 
 > [!NOTE]
 > A munkafolyamat felülvizsgálók hozzáadásához vagy eltávolításához módosítsa a rendszergazdai jogosultságok **kérése – véleményezők listájának kiválasztása lehetőséget** . Vegye figyelembe, hogy a szolgáltatás jelenlegi korlátozása, hogy a felülvizsgálók megőrzik a véleményezők számára kijelölt kérelmek felülvizsgálatának lehetőségét.
@@ -110,7 +110,7 @@ A kérelmező e-mail-értesítéseket fog kapni, ha:
 * A kérést a rendszer megtagadta vagy letiltotta
 * A kérelem jóváhagyása megtörtént
  
-## <a name="audit-logs"></a>Auditnaplók 
+## <a name="audit-logs"></a>Naplók 
  
 Az alábbi táblázat a rendszergazdai engedélyezési munkafolyamathoz elérhető forgatókönyveket és naplózási értékeket ismerteti. 
 
@@ -149,7 +149,7 @@ Nem, most a kérelmezőknek csak e-mail-értesítéseken keresztül kaphatják m
  
 Ha aggódik a rendszergazdai jóváhagyás megadásával, és a bérlő összes felhasználója számára lehetővé teszi az alkalmazás használatát, javasoljuk, hogy tiltsa le a kérést. Ezután adja meg manuálisan a rendszergazdai jóváhagyást az alkalmazáshoz való hozzáférés korlátozásával, a felhasználó hozzárendelésének megkövetelésével, valamint a felhasználók vagy csoportok az alkalmazáshoz való hozzárendelésével. További információ: [felhasználók és csoportok hozzárendelésének módszerei](./assign-user-or-group-access-portal.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az alkalmazásokkal való hozzájárulásról: [Azure Active Directory beleegyezési keretrendszer](../develop/consent-framework.md).
 

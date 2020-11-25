@@ -7,11 +7,11 @@ ms.topic: article
 ms.date: 07/15/2019
 ms.author: raynew
 ms.openlocfilehash: bcc6f41d7cc08764266ffb6705d1b8937d355199
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86109722"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997834"
 ---
 # <a name="customize-an-assessment"></a>Értékelés testreszabása
 
@@ -49,7 +49,7 @@ Azure Migrate kiszolgáló értékelésében elvégzett értékelés három szak
 **Célhely** | Az Azure-beli hely, ahová a migrálást szeretné végezni.<br/> A kiszolgáló értékelése jelenleg a következő célcsoportokat támogatja: Kelet-Ausztrália, Délkelet-Ausztrália, Dél-Brazília, Közép-Kanada, Közép-India, Közép-USA, Kelet-Kína, Észak-Kína, Kelet-Ázsia, USA keleti régiója, Kelet-RÉGIÓJA, Közép-Németország, Északkelet-Németország, Kelet-Japán, Nyugat-Japán, Korea középső régiója, Dél-Korea, északi középső régió, észak-Európa, az USA déli középső régiója Egyesült Királyság déli régiója , US Gov Texas, US Gov Virginia, az USA nyugati középső régiója, Nyugat-Európa, Nyugat-India, USA nyugati régiója és Nyugat-RÉGIÓJA.
 **Tárolási típus** | Ezzel a tulajdonsággal adhatja meg, hogy milyen típusú lemezeket szeretne áthelyezni az Azure-ban.<br/><br/> Helyszíni méretezés esetén a célként megadott tárolási típust prémium szintű felügyelt lemezként, standard SSD felügyelt lemezként vagy standard HDD által felügyelt lemezként is megadhatja. A teljesítmény-alapú méretezéshez megadhatja a céllemez típusát automatikus, prémium szintű felügyelt lemezként, standard HDD felügyelt lemezként vagy standard SSD által felügyelt lemezként.<br/><br/> Ha a tárolási típust automatikusként adja meg, a lemezre vonatkozó javaslat a lemezek teljesítményi adatai (IOPS és átviteli sebesség) alapján történik. Ha a tárterületet prémium/standard szintűként adja meg, akkor az értékelés a kiválasztott tárolási típuson belül egy lemez SKU-t javasol. Ha az Egypéldányos VM 99,9%-os SLA-t kívánja elérni, érdemes lehet a tárolási típust prémium szintű felügyelt lemezként megadni. Ez biztosítja, hogy az értékelés összes lemeze prémium szintű felügyelt lemezként legyen ajánlott. Azure
 **Fenntartott példányok (RI)** | Ennek a tulajdonságnak a segítségével megadhatja, hogy az Azure-ban [foglalt példányok](https://azure.microsoft.com/pricing/reserved-vm-instances/) rendelkeznek-e, majd az értékelésben szereplő KÖLTSÉGBECSLÉS az ri-kedvezményekbe kerül. A fenntartott példányok jelenleg csak az utólagos elszámolású ajánlatokhoz használhatók Azure Migrateban.
-**Méretezési feltétel** | Az Azure-hoz megfelelő méretű virtuális gépekhez használandó feltétel. A teljesítmény *-alapú* méretezés vagy a virtuális gépek mérete a *helyszínen*is végezhető, a teljesítmény előzményeinek figyelembevétele nélkül.
+**Méretezési feltétel** | Az Azure-hoz megfelelő méretű virtuális gépekhez használandó feltétel. A teljesítmény *-alapú* méretezés vagy a virtuális gépek mérete a *helyszínen* is végezhető, a teljesítmény előzményeinek figyelembevétele nélkül.
 **Teljesítményelőzmények** | A gépek teljesítményi adatai értékelésének időtartama. Ez a tulajdonság csak akkor alkalmazható, ha a méretezési feltétel *teljesítmény-alapú*.
 **Százalékos kihasználtság** | A teljesítményminta-halmaz megfelelő méretezéshez figyelembe veendő százalékos értéke. Ez a tulajdonság csak akkor alkalmazható, ha a méretezés *teljesítmény-alapú*.
 **Virtuálisgép-sorozatok** |     Megadhatja, hogy melyik virtuálisgép-sorozatot szeretné figyelembe venni a megfelelő méretezéshez. Ha például olyan éles környezettel rendelkezik, amelyet nem szeretne áttelepíteni az Azure-beli sorozatú virtuális gépekre, kizárhatja a-sorozatokat a listából vagy adatsorozatból, és a jobb oldali méretezés csak a kiválasztott adatsorozatban végezhető el.
@@ -86,9 +86,9 @@ A kiszolgáló értékelése során a következő, az AVS-értékelés részét 
 
 Értékelés létrehozása után az értékelés tulajdonságainak szerkesztéséhez tegye a következőket:
 
-1. A Azure Migrate projektben kattintson a **kiszolgálók**elemre.
-2. **Azure Migrate: kiszolgáló értékelése**területen kattintson az értékelések száma elemre.
-3. Az **értékelés**területen kattintson a megfelelő értékelés > **Szerkesztés tulajdonságok**elemre.
+1. A Azure Migrate projektben kattintson a **kiszolgálók** elemre.
+2. **Azure Migrate: kiszolgáló értékelése** területen kattintson az értékelések száma elemre.
+3. Az **értékelés** területen kattintson a megfelelő értékelés > **Szerkesztés tulajdonságok** elemre.
 5. Szabja testre az értékelési tulajdonságokat a fenti táblázatoknak megfelelően.
 6. Az értékelés frissítéséhez kattintson a **Save (Mentés** ) gombra.
 

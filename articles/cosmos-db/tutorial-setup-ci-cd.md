@@ -8,19 +8,19 @@ ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2b74198f83ef972540038269d83048bfd1adda62
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a5b8842718aa2d9f90ac06283abc5fe2fdd925cb
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93073893"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95997001"
 ---
-# <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>CI-/CD-folyamat beállítása az Azure Cosmos DB Emulator buildelési feladatával az Azure DevOpsban
+# <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>CI/CD-folyamat beállítása a Azure Cosmos DB Emulator Build feladattal az Azure DevOps
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Az Azure Cosmos DB Emulator helyi környezetet biztosít, amely az Azure Cosmos DB szolgáltatást emulálja a fejlesztéshez. Az emulátor használatával helyben fejlesztheti és tesztelheti alkalmazását, anélkül, hogy ehhez regisztrálnia kellene egy Azure-előfizetést, vagy fizetnie kellene a szolgáltatásért. 
 
-Az Azure Cosmos DB Emulator Azure DevOpshoz készült buildelési feladata lehetővé teszi ugyanezt CI-környezetben. A buildelési feladat segítségével összeállítási és kiadási munkafolyamatai részeként futtathat teszteket az emulátorban. A feladat elindít egy Docker-tárolót, amelyben már fut az emulátor, és végpontot biztosít a builddefiníció további része számára. Tetszőleges számú emulátorpéldányt hozhat létre és indíthat el, amelyek mind külön tárolóban futnak. 
+Az Azure DevOps-hoz készült Azure Cosmos DB Emulator-felépítési feladat lehetővé teszi, hogy a CI-környezetben is megegyezzen. A buildelési feladat segítségével összeállítási és kiadási munkafolyamatai részeként futtathat teszteket az emulátorban. A feladat elindít egy Docker-tárolót, amelyben már fut az emulátor, és végpontot biztosít a builddefiníció további része számára. Tetszőleges számú emulátorpéldányt hozhat létre és indíthat el, amelyek mind külön tárolóban futnak. 
 
 Ez a cikk bemutatja, hogyan állíthat be CI-folyamatot az Azure DevOpsban egy ASP.NET-alkalmazás számára, amely a Cosmos DB Emulator buildelési feladatával futtat teszteket. A CI-folyamat egy Node.js vagy egy Python-alkalmazáshoz való beállításához hasonló módszer használható. 
 
@@ -35,7 +35,7 @@ Ezután válassza ki a szervezetet, amelyben telepíteni kívánja a bővítmén
 > [!NOTE]
 > Egy bővítmény Azure DevOps-szervezetbe való telepítéséhez a fiók tulajdonosának vagy a projekt-gyűjtemény rendszergazdájának kell lennie. Ha nem rendelkezik engedélyekkel, de a fiók tagja, ehelyett kérheti a bővítményt. [Részletek](/azure/devops/marketplace/faq-extensions?preserve-view=true&view=vsts)
 
-:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_2.png" alt-text="Az Azure Cosmos DB Emulator buildelési feladatának megkeresése és telepítése az Azure DevOps Marketplace-ről":::
+:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_2.png" alt-text="Válassza ki azt az Azure DevOps-szervezetet, amelyben telepíteni kívánja a bővítményt":::
 
 ## <a name="create-a-build-definition"></a>Builddefiníció létrehozása
 
@@ -43,11 +43,11 @@ Most, hogy telepítette a bővítményt, jelentkezzen be az Azure DevOps-szervez
 
 1. Új builddefiníció létrehozásához lépjen az Azure DevOps **Builds** (Buildek) lapjára. Válassza az **+ új lehetőséget.** \> **Új buildfolyamat**
 
-   :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png" alt-text="Az Azure Cosmos DB Emulator buildelési feladatának megkeresése és telepítése az Azure DevOps Marketplace-ről":::
+   :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png" alt-text="Új buildfolyamat létrehozása":::
 
 2. Válassza ki a kívánt értékeket a következőkhöz: **Source** (Forrás), **Team project** (Csapatprojekt), **Repository** (Adattár) és **Default branch for manual and scheduled builds** (Manuális és ütemezett buildelések alapértelmezett ága). Miután megadta a kívánt beállításokat, kattintson a **Continue** (Folytatás) elemre.
 
-   :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png" alt-text="Az Azure Cosmos DB Emulator buildelési feladatának megkeresése és telepítése az Azure DevOps Marketplace-ről":::
+   :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png" alt-text="Válassza ki a csapatprojektet, az adattárat és az ágat a buildfolyamathoz.":::
 
 3. Végül válassza ki a buildfolyamathoz használni kívánt sablont. Ebben az oktatóanyagban az **ASP.NET** sablont választjuk. Most már rendelkezik egy olyan összeállítási folyamattal, amely a Azure Cosmos DB Emulator Build feladatának használatára beállítható. 
 
@@ -63,11 +63,11 @@ Start-CosmosDbEmulator
 
 ## <a name="add-the-task-to-a-build-pipeline"></a><a name="addEmulatorBuildTaskToBuildDefinition"></a>Feladat hozzáadása buildfolyamathoz
 
-1. Mielőtt hozzáadhatna egy feladatot a buildfolyamathoz, hozzá kell adnia egy ügynökfeladatot. Keresse meg a buildfolyamatot, kattintson a három pont ( **...** ) elemre, és válassza az **Add an agent job** (Ügynökfeladat hozzáadása) lehetőséget.
+1. Mielőtt hozzáadhatna egy feladatot a buildfolyamathoz, hozzá kell adnia egy ügynökfeladatot. Keresse meg a buildfolyamatot, kattintson a három pont (**...**) elemre, és válassza az **Add an agent job** (Ügynökfeladat hozzáadása) lehetőséget.
 
 1. Ezután válassza ki az **+** ügynök feladata melletti szimbólumot az emulátor felépítési feladatának hozzáadásához. Keressen a **cosmos** kifejezésre a keresőmezőben, válassza ki az **Azure Cosmos DB Emulator** lehetőséget, és adja hozzá az ügynökfeladathoz. A buildelési feladat elindít egy tárolót, amelyben már fut a Cosmos DB Emulator egy példánya. Az Azure Cosmos DB Emulator-feladatot minden olyan feladat elé kell ütemezni, amelyhez az emulátor futása szükséges.
 
-   :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_3.png" alt-text="Az Azure Cosmos DB Emulator buildelési feladatának megkeresése és telepítése az Azure DevOps Marketplace-ről":::
+   :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_3.png" alt-text="Az emulátor buildelési feladatának hozzáadása a builddefinícióhoz":::
 
 Ebben az oktatóanyagban a feladatot a legelején adjuk hozzá, hogy biztosítsuk az emulátor elérhetőségét a tesztjeink futtatása előtt.
 
@@ -160,23 +160,23 @@ namespace todo.Tests
 
 Lépjen az Execution Options (Végrehajtási beállítások) lapra a Visual Studio-tesztfeladatban. A **Settings file** (Beállításfájl) lehetőségnél adja meg, hogy a tesztek konfigurálása a **.runsettings** fájllal történjen. Az **Override test run parameters** (A tesztfuttatás paramétereinek felülbírálása) beállításnál adja hozzá az `-endpoint $(CosmosDbEmulator.Endpoint)` értéket. Ezzel úgy konfigurálja a tesztelési feladatot, hogy az emulátor buildelési feladatának végpontjára hivatkozzon a **.runsettings** fájlban definiált végpont helyett.  
 
-:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_5.png" alt-text="Az Azure Cosmos DB Emulator buildelési feladatának megkeresése és telepítése az Azure DevOps Marketplace-ről":::
+:::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_5.png" alt-text="A végpont változójának felülbírálása az emulátor buildelési feladatának végpontjával":::
 
 ## <a name="run-the-build"></a>A build futtatása
 
 Most a **Save and queue** (Mentés és üzenetsorba helyezés) elemre kattintva mentse és helyezze az üzenetsorba a buildet. 
 
-:::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_1.png" alt-text="Az Azure Cosmos DB Emulator buildelési feladatának megkeresése és telepítése az Azure DevOps Marketplace-ről":::
+:::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_1.png" alt-text="A képernyőképen megjelenik a Save & üzenetsor kiválasztására szolgáló Build.":::
 
 Figyelje meg, hogy amint a build elindul, a Cosmos DB emulátor elkezdi a telepített emulátort tartalmazó Docker-rendszerkép lekérését. 
 
-:::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_4.png" alt-text="Az Azure Cosmos DB Emulator buildelési feladatának megkeresése és telepítése az Azure DevOps Marketplace-ről":::
+:::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_4.png" alt-text="A képernyőfelvételen a Cosmos D B-emulátor feladatát láthatja.":::
 
 Miután a build létrejött, láthatja, hogy a buildelési feladatból a Cosmos DB emulátorban futó tesztek sikeresen zárultak.
 
-:::image type="content" source="./media/tutorial-setup-ci-cd/buildComplete_1.png" alt-text="Az Azure Cosmos DB Emulator buildelési feladatának megkeresése és telepítése az Azure DevOps Marketplace-ről":::
+:::image type="content" source="./media/tutorial-setup-ci-cd/buildComplete_1.png" alt-text="A képernyőképen az összefoglalás lapon látható a progresszió értéke.":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az emulátor helyi fejlesztéshez és teszteléshez való használatáról: [Az Azure Cosmos DB Emulator használata helyi fejlesztéshez és teszteléshez](./local-emulator.md).
 

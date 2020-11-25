@@ -7,11 +7,11 @@ ms.custom: devx-track-csharp
 ms.date: 02/20/2020
 ms.author: cshoe
 ms.openlocfilehash: 8bb07e650c99f18cfecbc7b7674e0ca0e5a01dae
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491460"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998906"
 ---
 # <a name="signalr-service-output-binding-for-azure-functions"></a>A signaler szolgáltatás kimeneti kötése Azure Functions
 
@@ -728,7 +728,7 @@ public SignalRGroupAction removeFromGroup(
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `SignalRConnectionInfo` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**típusa**| n/a | Értékre kell állítani `signalRConnectionInfo` .|
 |**irányba**| n/a | Értékre kell állítani `in` .|
@@ -741,7 +741,7 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `SignalR` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
 |**típusa**| n/a | Értékre kell állítani `signalR` .|
 |**irányba**| n/a | Értékre kell állítani `out` .|

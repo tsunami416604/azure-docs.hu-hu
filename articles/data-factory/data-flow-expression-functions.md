@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/06/2020
 ms.openlocfilehash: 5645bd37ec466619a4093d767db1c846b90a4365
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92281428"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997859"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Adatátalakítási kifejezések a leképezési adatfolyamban
 
@@ -2017,6 +2017,6 @@ ___
 Assigns a sequential row numbering for rows in a window starting with 1.  
 * ``rowNumber()``  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Ismerje meg a Expression Builder használatát](concepts-data-flow-expression-builder.md).

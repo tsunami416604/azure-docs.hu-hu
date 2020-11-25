@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 3c26a84e32a17cba83b5ca895f146e561072fa62
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90054959"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998192"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-backup-jobs"></a>A StorSimple Snapshot Manager használata a biztonsági mentési feladatok megtekintéséhez és kezeléséhez
 
@@ -33,7 +33,7 @@ Az ütemezett biztonsági mentési feladatok megtekintéséhez kövesse az aláb
 
 #### <a name="to-view-scheduled-jobs"></a>Ütemezett feladatok megtekintése
 1. A StorSimple Snapshot Manager indításához kattintson az asztal ikonjára. 
-2. A **hatókör** ablaktáblán bontsa ki a **feladatok** csomópontot, majd kattintson az **ütemezett**elemre. Az **eredményeket** tartalmazó ablaktáblán az alábbi információk jelennek meg:
+2. A **hatókör** ablaktáblán bontsa ki a **feladatok** csomópontot, majd kattintson az **ütemezett** elemre. Az **eredményeket** tartalmazó ablaktáblán az alábbi információk jelennek meg:
    
    * **Name (név** ) – az ütemezett pillanatkép neve
    * **Következő Futtatás** – a következő ütemezett pillanatkép dátuma és időpontja
@@ -50,7 +50,7 @@ Az alábbi eljárással megtekintheti az elmúlt 24 órában elvégzett biztons�
 
 #### <a name="to-view-recent-jobs"></a>A legutóbbi feladatok megtekintése
 1. A StorSimple Snapshot Manager indításához kattintson az asztal ikonjára.
-2. A **hatókör** ablaktáblán bontsa ki a **feladatok** csomópontot, majd kattintson az **elmúlt 24 óra**elemre. Az **eredmények** ablaktábla az elmúlt 24 órában (legfeljebb 64 feladat) jeleníti meg a biztonsági mentési feladatokat. Az alábbi információk az **eredményeket** tartalmazó ablaktáblán jelennek meg a megadott **megtekintési** beállításoktól függően:
+2. A **hatókör** ablaktáblán bontsa ki a **feladatok** csomópontot, majd kattintson az **elmúlt 24 óra** elemre. Az **eredmények** ablaktábla az elmúlt 24 órában (legfeljebb 64 feladat) jeleníti meg a biztonsági mentési feladatokat. Az alábbi információk az **eredményeket** tartalmazó ablaktáblán jelennek meg a megadott **megtekintési** beállításoktól függően:
    
    * **Name (név** ) – az ütemezett pillanatkép neve.
    * Elindítva – a pillanatkép **megkezdésének** dátuma és időpontja.
@@ -63,14 +63,14 @@ Az alábbi eljárással megtekintheti az elmúlt 24 órában elvégzett biztons�
      ![Az elmúlt 24 órában futtatott feladatok](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_Last_24_hours.png) 
 3. Egy adott feladathoz tartozó további műveletek elvégzéséhez kattintson a jobb gombbal a feladatra a **találatok** ablaktáblán, és válassza a menüpontot.
    
-    ![Feladatok törlése](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Delete_backup.png)
+    ![Feladat törlése](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Delete_backup.png)
 
 ## <a name="view-currently-running-jobs"></a>Jelenleg futó feladatok megtekintése
 A jelenleg futó feladatok megtekintéséhez kövesse az alábbi eljárást.
 
 #### <a name="to-view-currently-running-jobs"></a>Aktuálisan futó feladatok megtekintése
 1. A StorSimple Snapshot Manager indításához kattintson az asztal ikonjára.
-2. A **hatókör** ablaktáblán bontsa ki a **feladatok** csomópontot, majd kattintson a **Futtatás**elemre. A megadott **megtekintési** beállításoktól függően az alábbi információk jelennek meg az **eredmények** ablaktáblájában:
+2. A **hatókör** ablaktáblán bontsa ki a **feladatok** csomópontot, majd kattintson a **Futtatás** elemre. A megadott **megtekintési** beállításoktól függően az alábbi információk jelennek meg az **eredmények** ablaktáblájában:
    
    * **Name (név** ) – az ütemezett pillanatkép neve.
    * Elindítva – a pillanatkép **megkezdésének** dátuma és időpontja.
@@ -84,7 +84,7 @@ A jelenleg futó feladatok megtekintéséhez kövesse az alábbi eljárást.
      ![Jelenleg futó feladatok](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_running.png)
 3. Egy adott feladathoz tartozó további műveletek elvégzéséhez kattintson a jobb gombbal a feladatra a **találatok** ablaktáblán, és válassza a menüpontot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Ismerje meg, hogyan kezelheti [a StorSimple-megoldást a StorSimple Snapshot Manager használatával](storsimple-snapshot-manager-admin.md).
 * Ismerje meg, hogyan [kezelheti a biztonsági mentési katalógust a StorSimple Snapshot Manager használatával](storsimple-snapshot-manager-manage-backup-catalog.md).
 

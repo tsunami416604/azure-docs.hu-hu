@@ -12,13 +12,13 @@ ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.openlocfilehash: bef120e754c84798b2d1b48f4f00fbb8f5fb3c1d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656377"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997613"
 ---
-# <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Egyéni tartományok konfigurálása az Azure AD Application Proxy
+# <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Egyéni tartományok konfigurálása az Azure AD-alkalmazásproxyval
 
 Amikor Azure Active Directory Application Proxyon keresztül tesz közzé alkalmazást, létrehoz egy külső URL-címet a felhasználók számára. Ez az URL-cím az alapértelmezett tartományi *yourtenant.msappproxy.net* kapja meg. Ha például közzétesz egy, a *contoso* nevű bérlőn a *költségek* nevű alkalmazást, a külső URL-cím *https: \/ /expenses-contoso.msappproxy.net*. Ha a *msappproxy.net* helyett saját tartománynevet szeretne használni, beállíthatja az alkalmazás egyéni tartományát. 
 
@@ -137,7 +137,7 @@ A tanúsítvány feltöltése után a rendszer automatikusan alkalmazza azokat a
 
 Egy tanúsítvány lejáratakor figyelmeztető üzenet jelenik meg, amely egy másik tanúsítvány feltöltését kéri. Ha a tanúsítványt visszavonják, a felhasználók biztonsági figyelmeztetést kaphatnak az alkalmazáshoz való hozzáféréskor. Egy alkalmazás tanúsítványának frissítéséhez navigáljon az **alkalmazás alkalmazásproxy** lapjára, válassza a **tanúsítvány** lehetőséget, és töltsön fel egy új tanúsítványt. Ha a régi tanúsítványt más alkalmazások nem használják, azt a rendszer automatikusan törli. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Engedélyezze az egyszeri bejelentkezést](application-proxy-configure-single-sign-on-with-kcd.md) a közzétett alkalmazásokban az Azure ad-hitelesítéssel.
 * [Feltételes hozzáférés](../conditional-access/concept-conditional-access-cloud-apps.md) a közzétett felhőalapú alkalmazásokhoz.

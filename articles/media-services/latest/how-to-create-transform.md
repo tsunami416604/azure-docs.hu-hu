@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 11/18/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5ffab4eaf63844057a3872730f91634cb2df5669
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 4784bb8a396a30e9002c789c7aad382640f04a5c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94918135"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "95996896"
 ---
 # <a name="create-a-transform"></a>Átalakítás létrehozása
 
@@ -47,10 +47,10 @@ A jelen cikkben lévő Azure CLI-szkript bemutatja, hogyan hozhat létre átalak
 
 ## <a name="rest"></a>[REST](#tab/rest/)
 
-[!INCLUDE [task general transform creation](./includes/task-create-transform-rest.md)]
+[!INCLUDE [task general transform creation](./includes/task-create-basic-audio-rest.md)]
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [További információ az átalakításokról és a feladatokról](transforms-jobs-concept.md)

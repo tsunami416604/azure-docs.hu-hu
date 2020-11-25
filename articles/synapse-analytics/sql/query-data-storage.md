@@ -10,11 +10,11 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.openlocfilehash: c7a8fb63f775a76342849957f070861fd200a9d3
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685664"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998923"
 ---
 # <a name="query-storage-files-with-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Tárolási fájlok lekérdezése kiszolgáló nélküli SQL-készlettel (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
 
@@ -260,7 +260,7 @@ A demo-adat a következő adatkészleteket tartalmazza:
 | /json/books/                                                 | Könyvekből származó JSON-fájlok                                   |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A különböző fájltípusok lekérdezésével, valamint a nézetek létrehozásával és használatával kapcsolatos további információkért tekintse meg a következő cikkeket:
 

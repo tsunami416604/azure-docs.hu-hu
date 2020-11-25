@@ -1,15 +1,15 @@
 ---
-author: ramonarguelles
+author: msftradford
 ms.service: spatial-anchors
 ms.topic: include
-ms.date: 8/27/2020
-ms.author: rgarcia
-ms.openlocfilehash: 50e4799f09322eab05b4f8ddf7004c2e0078fdab
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.date: 11/20/2020
+ms.author: parkerra
+ms.openlocfilehash: 9554e04c82299016076f09f85f604af10a94ab4a
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971383"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95998459"
 ---
 ## <a name="android"></a>[Android](#tab/Android)
 
@@ -71,9 +71,9 @@ Cserélje le az `index.html` URL-címet a alkalmazásban `api/anchors` . A köve
 
 A **projekt** ablaktáblán válassza a következőt: `Assets\AzureSpatialAnchors.Examples\Resources` . 
 
-Válassza a **SpatialAnchorSamplesConfig**lehetőséget. Ezután a **felügyelő** ablaktáblán adja meg az `Sharing Anchors Service` URL-címet (a ASP.net Web App Azure-beli üzembe helyezése) a értékeként `Base Sharing Url` . Cserélje le a `index.html` elemet a `api/anchors` kérdésre. A következőhöz hasonlóan kell kinéznie: `https://<app_name>.azurewebsites.net/api/anchors` .
+Válassza a **SpatialAnchorSamplesConfig** lehetőséget. Ezután a **felügyelő** ablaktáblán adja meg az `Sharing Anchors Service` URL-címet (a ASP.net Web App Azure-beli üzembe helyezése) a értékeként `Base Sharing Url` . Cserélje le a `index.html` elemet a `api/anchors` kérdésre. A következőhöz hasonlóan kell kinéznie: `https://<app_name>.azurewebsites.net/api/anchors` .
 
-Mentse a jelenetet a **fájl**mentése lehetőség kiválasztásával  >  **Save**.
+Mentse a jelenetet a **fájl** mentése lehetőség kiválasztásával  >  **Save**.
 
 ## <a name="deploy-to-your-device"></a>Üzembe helyezés az eszközön
 
@@ -81,22 +81,22 @@ Mentse a jelenetet a **fájl**mentése lehetőség kiválasztásával  >  **Save
 
 Jelentkezzen be az Android-eszközére, és csatlakoztassa a számítógéphez USB-kábellel.
 
-A **Build-beállítások** megnyitásához válassza a **fájl**-  >  **létrehozási beállítások**lehetőséget.
+A **Build-beállítások** megnyitásához válassza a **fájl**-  >  **létrehozási beállítások** lehetőséget.
 
-A **létrehozási jelenetek**területen győződjön meg arról, hogy minden egyes jelenet mellett Pipa jel van.
+A **létrehozási jelenetek** területen győződjön meg arról, hogy minden egyes jelenet mellett Pipa jel van.
 
-Győződjön meg arról, hogy az **exportálási projektnek** nincs pipa. Válassza **a létrehozás és Futtatás**lehetőséget. A rendszer kérni fogja az *. apk* fájl mentését. Bármelyik nevet kiválaszthatja.
+Győződjön meg arról, hogy az **exportálási projektnek** nincs pipa. Válassza **a létrehozás és Futtatás** lehetőséget. A rendszer kérni fogja az *. apk* fájl mentését. Bármelyik nevet kiválaszthatja.
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
 ### <a name="deploy-to-an-ios-device"></a>Üzembe helyezés iOS-eszközön
 
-A **Build-beállítások** megnyitásához válassza a **fájl**-  >  **létrehozási beállítások**lehetőséget.
+A **Build-beállítások** megnyitásához válassza a **fájl**-  >  **létrehozási beállítások** lehetőséget.
 
-A **létrehozási jelenetek**területen győződjön meg arról, hogy minden egyes jelenet mellett Pipa jel van.
+A **létrehozási jelenetek** területen győződjön meg arról, hogy minden egyes jelenet mellett Pipa jel van.
 
 [!INCLUDE [Configure Xcode](spatial-anchors-unity-ios-xcode.md)]
 
 [!INCLUDE [Run shared sample](spatial-anchors-run-sample.md)]
 
-A Xcode-ben állítsa le az alkalmazást a **Leállítás**lehetőség kiválasztásával.
+A Xcode-ben állítsa le az alkalmazást a **Leállítás** lehetőség kiválasztásával.

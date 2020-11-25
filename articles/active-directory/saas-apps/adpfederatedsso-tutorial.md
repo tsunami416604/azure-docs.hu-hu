@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 08/26/2019
 ms.author: jeedes
 ms.openlocfilehash: cf6973242e81cef53625a3b1eda4f2d92e1d5ffd
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92308788"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998634"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adp"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az ADP-vel
 
@@ -50,14 +50,14 @@ Az ADP Azure AD-be való integrálásának konfigurálásához hozzá kell adnia
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be az **ADP** kifejezést a keresőmezőbe.
 1. Válassza az **ADP** elemet az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-adp"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése az ADP-hez
 
-Konfigurálja és tesztelje az Azure AD SSO-t az ADP-vel egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között az ADP-ben.
+Konfigurálja és tesztelje az Azure AD SSO-t az ADP-vel egy **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között az ADP-ben.
 
 Az Azure AD SSO az ADP-vel való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
@@ -76,16 +76,16 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![Egyszeri bejelentkezési tulajdonságok](./media/adpfederatedsso-tutorial/tutorial_adp_prop.png)
 
-    a. Állítsa az engedélyezve beállítást a felhasználók számára a **bejelentkező** mező értékének **Igen**értékűre állításához.
+    a. Állítsa az engedélyezve beállítást a felhasználók számára a **bejelentkező** mező értékének **Igen** értékűre állításához.
 
     b. Másolja a **felhasználói hozzáférési URL-címet** , és illessze be a **bejelentkezési URL-cím konfigurálása szakaszba**, amelyet az oktatóanyag későbbi részében ismertet.
 
-    c. Állítsa az **Igen**értékre a **felhasználó-hozzárendelés kötelező** mező értékét.
+    c. Állítsa az **Igen** értékre a **felhasználó-hozzárendelés kötelező** mező értékét.
 
-    d. A **Visible to Users** mező értékeként a **nem**értéket állítsa be.
+    d. A **Visible to Users** mező értékeként a **nem** értéket állítsa be.
 
-1. A [Azure Portal](https://portal.azure.com/)az **ADP** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)az **ADP** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
@@ -106,25 +106,25 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést az ADP hozzáférésének megadásával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza az **ADP**elemet.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza az **ADP** elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
@@ -147,23 +147,23 @@ Az ADP-képviselő jóváhagyásának kézhezvétele után konfigurálja az ADP 
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be az **ADP** kifejezést a keresőmezőbe.
 1. Válassza az **ADP** elemet az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 1. A Azure Portal az **ADP** Application Integration lapon kattintson a **Tulajdonságok fülre** , és hajtsa végre a következő lépéseket:  
 
     ![Egyszeri bejelentkezéshez csatolt tulajdonságok](./media/adpfederatedsso-tutorial/tutorial_adp_linkedproperties.png)
 
-    a.  Állítsa az engedélyezve beállítást a felhasználók számára a **bejelentkező** mező értékének **Igen**értékűre állításához.
+    a.  Állítsa az engedélyezve beállítást a felhasználók számára a **bejelentkező** mező értékének **Igen** értékűre állításához.
 
-    b.  Állítsa az **Igen**értékre a **felhasználó-hozzárendelés kötelező** mező értékét.
+    b.  Állítsa az **Igen** értékre a **felhasználó-hozzárendelés kötelező** mező értékét.
 
-    c.  Állítsa az **Igen**értékre a **Visible to Users** mező értékét.
+    c.  Állítsa az **Igen** értékre a **Visible to Users** mező értékét.
 
-1. A [Azure Portal](https://portal.azure.com/)az **ADP** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)az **ADP** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
 
-1. Az **egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza a **mód** **csatoltként**lehetőséget. az alkalmazás az **ADP**-vel való összekapcsolásához.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza a **mód** **csatoltként** lehetőséget. az alkalmazás az **ADP**-vel való összekapcsolásához.
 
     ![Egyszeri bejelentkezés csatolva](./media/adpfederatedsso-tutorial/tutorial_adp_linked.png)
 

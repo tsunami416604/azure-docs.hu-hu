@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 06/3/2019
 ms.author: jeedes
 ms.openlocfilehash: c0c428997cfba8871a29d9bfe0df0a6920a1d22f
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357589"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998668"
 ---
 # <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés 4me konfigurálása
 
@@ -160,7 +160,7 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 * a 4me által generált titkos jogkivonatok egy hónap lejárati dátummal rendelkeznek a létrehozásból.
 * a 4me nem támogatja a **törlési** műveleteket.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

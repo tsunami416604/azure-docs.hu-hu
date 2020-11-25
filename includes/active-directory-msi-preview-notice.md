@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: daveba
 ms.custom: include file
-ms.openlocfilehash: ed7d7b27ba1e69190dec6e9bd653a855a86e639e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e6c778cb3fccedd0cfaf2d4eb952ad9d1347d05
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86277708"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997372"
 ---
-A Azure-erőforrások felügyelt identitása az Azure Active Directory egy funkciója. [Az Azure-erőforrások felügyelt identitását támogató összes Azure-szolgáltatásra](/azure/active-directory/managed-identities-azure-resources/services-support-msi) a saját ütemterve vonatkozik. Mielőtt nekikezdene, tekintse át az erőforrásához tartozó felügyelt identitások [elérhetőségi](/azure/active-directory/managed-identities-azure-resources/services-support-msi) állapotát, valamint az [ismert problémákat](/azure/active-directory/managed-identities-azure-resources/known-issues).
+A Azure-erőforrások felügyelt identitása az Azure Active Directory egy funkciója. [Az Azure-erőforrások felügyelt identitását támogató összes Azure-szolgáltatásra](../articles/active-directory/managed-identities-azure-resources/services-support-managed-identities.md) a saját ütemterve vonatkozik. Mielőtt nekikezdene, tekintse át az erőforrásához tartozó felügyelt identitások [elérhetőségi](../articles/active-directory/managed-identities-azure-resources/services-support-managed-identities.md) állapotát, valamint az [ismert problémákat](../articles/active-directory/managed-identities-azure-resources/known-issues.md).

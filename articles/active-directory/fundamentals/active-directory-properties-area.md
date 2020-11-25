@@ -14,11 +14,11 @@ ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f47ae9b087615a77f6bd4d3f14f1b0052037cba6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89321973"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996754"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>A szervezet adatvédelmi adatainak hozzáadása a Azure Active Directory használatával
 Ez a cikk azt ismerteti, hogyan adhat hozzá egy bérlői rendszergazda az adatvédelemmel kapcsolatos adatokat egy szervezet Azure Active Directory (Azure AD) bérlőhöz a Azure Portal keresztül.
@@ -34,7 +34,7 @@ A szervezet adatvédelmi információit az Azure AD **Tulajdonságok** terület�
 
 1. Jelentkezzen be a Azure Portal bérlői rendszergazdaként.
 
-2. A bal oldali navigációs sávon válassza a **Azure Active Directory**lehetőséget, majd válassza a **Tulajdonságok**lehetőséget.
+2. A bal oldali navigációs sávon válassza a **Azure Active Directory** lehetőséget, majd válassza a **Tulajdonságok** lehetőséget.
 
     Megjelenik a **Tulajdonságok** rész.
 
@@ -49,12 +49,12 @@ A szervezet adatvédelmi információit az Azure AD **Tulajdonságok** terület�
     - **Adatvédelmi nyilatkozat URL-címe.** Írja be a szervezet dokumentumára mutató hivatkozást, amely leírja, hogyan kezeli a szervezet a belső és a külső vendég adatvédelmét.
 
         >[!Important]
-        >Ha nem tartalmazza a saját adatvédelmi nyilatkozatát vagy az Ön adatvédelmi kapcsolattartóját, a külső vendégek a **felülvizsgálati engedélyek** mezőben megjelenő szöveget is láthatják, és a szervezet ** < _neve_> nem adta meg a használati feltételekre mutató hivatkozásokat**. A vendég felhasználó például akkor látja ezt az üzenetet, amikor meghívót kap egy szervezetnek a B2B-együttműködésen keresztüli elérésére.
+        >Ha nem tartalmazza a saját adatvédelmi nyilatkozatát vagy az Ön adatvédelmi kapcsolattartóját, a külső vendégek a **felülvizsgálati engedélyek** mezőben megjelenő szöveget is láthatják, és a szervezet **< _neve_> nem adta meg a használati feltételekre mutató hivatkozásokat**. A vendég felhasználó például akkor látja ezt az üzenetet, amikor meghívót kap egy szervezetnek a B2B-együttműködésen keresztüli elérésére.
 
         ![B2B Collaboration felülvizsgálati engedélyek Box üzenettel](media/active-directory-properties-area/active-directory-no-privacy-statement-or-contact.png)
 
 4. Kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Azure Active Directory B2B együttműködés meghívásának beváltása](../external-identities/redemption-experience.md)
 - [Felhasználói profil adatainak hozzáadása vagy módosítása Azure Active Directory](active-directory-users-profile-azure-portal.md)

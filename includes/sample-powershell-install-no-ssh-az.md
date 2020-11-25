@@ -5,11 +5,11 @@ author: mikefrobbins
 ms.author: mirobb
 manager: barbkess
 ms.openlocfilehash: 32a725f6f84a1a79df9b1211d95ecb2ac530aa07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85378467"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998131"
 ---
 Ehhez a mintához Azure PowerShell szükséges. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`.
 Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket. 

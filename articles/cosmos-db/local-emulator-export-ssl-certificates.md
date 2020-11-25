@@ -7,12 +7,12 @@ ms.date: 09/17/2020
 author: deborahc
 ms.author: dech
 ms.custom: devx-track-python, devx-track-java, contperfq1
-ms.openlocfilehash: 79e2b58ea342c9449faba108881c65d0bd8de856
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 23d9c6730857cf4ed7f8b8062d5529bedd8e2740
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085802"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95997171"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs-apps"></a>A Azure Cosmos DB Emulator-tanúsítványok exportálása Java-, Python-és Node.js-alkalmazásokkal való használatra
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -35,33 +35,33 @@ Exportálnia kell az emulátor tanúsítványát, hogy az emulátor végpontját
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-1.png" alt-text="Azure Cosmos DB helyszíni emulátor 1. exportálási lépés":::
 
-1. Kattintson a **Részletek** , majd az **OK** lehetőségre.
+1. Kattintson a **Részletek**, majd az **OK** lehetőségre.
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-2.png" alt-text="Azure Cosmos DB helyszíni emulátor 1. exportálási lépés":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-2.png" alt-text="Azure Cosmos DB helyszíni emulátor 2. exportálási lépés":::
 
 1. Kattintson a **Másolás fájlba...** lehetőségre.
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-3.png" alt-text="Azure Cosmos DB helyszíni emulátor 1. exportálási lépés":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-3.png" alt-text="Azure Cosmos DB helyszíni emulátor 3. exportálási lépés":::
 
 1. Kattintson a **Tovább** gombra.
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-4.png" alt-text="Azure Cosmos DB helyszíni emulátor 1. exportálási lépés":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-4.png" alt-text="Azure Cosmos DB helyszíni emulátor 4. exportálási lépés":::
 
 1. Kattintson a **Nem, nem akarom exportálni a titkos kulcsomat** lehetőségre, majd a **Tovább** gombra.
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-5.png" alt-text="Azure Cosmos DB helyszíni emulátor 1. exportálási lépés":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-5.png" alt-text="Azure Cosmos DB helyszíni emulátor 5. exportálási lépés":::
 
 1. Kattintson a **Base-64 kódolású X.509 (.CER)** lehetőségre, majd a **Tovább** gombra.
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-6.png" alt-text="Azure Cosmos DB helyszíni emulátor 1. exportálási lépés":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-6.png" alt-text="Azure Cosmos DB helyszíni emulátor 6. exportálási lépés":::
 
-1. Nevezze el a tanúsítványt. Ebben a példában a név **documentdbemulatorcert** . Végül kattintson a **Tovább** lehetőségre.
+1. Nevezze el a tanúsítványt. Ebben a példában a név **documentdbemulatorcert**. Végül kattintson a **Tovább** lehetőségre.
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-7.png" alt-text="Azure Cosmos DB helyszíni emulátor 1. exportálási lépés":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-7.png" alt-text="Azure Cosmos DB helyszíni emulátor 7. exportálási lépés":::
 
 1. Kattintson a **Finish** (Befejezés) gombra.
 
-    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-8.png" alt-text="Azure Cosmos DB helyszíni emulátor 1. exportálási lépés":::
+    :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-8.png" alt-text="Azure Cosmos DB helyszíni emulátor 8. exportálási lépés":::
 
 ## <a name="use-the-certificate-with-java-apps"></a>A tanúsítvány használata Java-alkalmazásokkal
 
@@ -99,11 +99,11 @@ Node.js SDK-k emulátorához való csatlakozáskor a TLS-ellenőrzés le van til
 
 Az Emulator-tanúsítványok újbóli előállításához válassza az **adatok alaphelyzetbe állítása** lehetőséget a Windows tálcán futó Azure Cosmos db-emulátorban. Vegye figyelembe, hogy ez a művelet az emulátor által helyileg tárolt összes adat törlését is törli.
 
-:::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-reset-data.png" alt-text="Azure Cosmos DB helyszíni emulátor 1. exportálási lépés":::
+:::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-reset-data.png" alt-text="Azure Cosmos DB helyszíni emulátor adatok alaphelyzetbe állítása":::
 
 Ha telepítette a tanúsítványt a Java-tanúsítványtárolóba, vagy másutt használta őket, újra kell importálnia azokat az aktuális tanúsítványok használatával. Az alkalmazás addig nem tud kapcsolódni a helyi emulátorhoz, amíg nem frissíti a tanúsítványokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az emulátor vezérléséhez használjon parancssori paramétereket és PowerShell-parancsokat](emulator-command-line-parameters.md)
 * [Hibakeresési problémák az emulátorral](troubleshoot-local-emulator.md)

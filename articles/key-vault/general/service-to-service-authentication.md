@@ -9,11 +9,11 @@ ms.date: 09/04/2020
 ms.topic: how-to
 ms.service: key-vault
 ms.openlocfilehash: ac3ee108fc63441b2a9381b9e7624631bdca4e5b
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289827"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998106"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Szolgáltatások közötti hitelesítés Azure Key Vault .NET használatával
 
@@ -65,7 +65,7 @@ Helyi fejlesztés esetén két elsődleges hitelesítési forgatókönyv létezi
 
 A helyi gépek nem támogatják az Azure-erőforrások felügyelt identitásait. Ennek eredményeképpen a könyvtár a `Microsoft.Azure.Services.AppAuthentication` fejlesztői hitelesítő adatait használja a helyi fejlesztési környezetben való futtatáshoz. Ha a megoldást üzembe helyezi az Azure-ban, a könyvtár felügyelt identitást használ a OAuth 2,0 ügyfél-hitelesítő adatok engedélyezési folyamatára való váltáshoz. Ez a módszer azt jelenti, hogy a kódot helyileg és távolról is tesztelni kell, anélkül, hogy aggódnia kellene.
 
-Helyi fejlesztés esetén a `AzureServiceTokenProvider` tokeneket a **Visual Studio** , az **Azure parancssori felület** (CLI) vagy az **Azure ad integrált hitelesítés** használatával kérdezi le. Az egyes lehetőségek végrehajtása szekvenciálisan történik, és a könyvtár az első sikeres beállítást használja. Ha egyetlen beállítás sem működik, a `AzureServiceTokenProviderException` kivételt részletes információkkal kell eldobni.
+Helyi fejlesztés esetén a `AzureServiceTokenProvider` tokeneket a **Visual Studio**, az **Azure parancssori felület** (CLI) vagy az **Azure ad integrált hitelesítés** használatával kérdezi le. Az egyes lehetőségek végrehajtása szekvenciálisan történik, és a könyvtár az első sikeres beállítást használja. Ha egyetlen beállítás sem működik, a `AzureServiceTokenProviderException` kivételt részletes információkkal kell eldobni.
 
 #### <a name="authenticating-with-visual-studio"></a>Hitelesítés a Visual Studióval
 
@@ -77,7 +77,7 @@ Hitelesítés a Visual Studio használatával:
 
 Ha problémákba ütközik a Visual Studióval, például a jogkivonat-szolgáltatói fájlt érintő hibákkal, gondosan tekintse át az előző lépéseket.
 
-Előfordulhat, hogy újra kell hitelesítenie a fejlesztői jogkivonatot. Ehhez válassza az **eszközök** &nbsp; > &nbsp; **beállításai lehetőséget** , majd válassza az **Azure &nbsp; szolgáltatás- &nbsp; hitelesítés** lehetőséget. Keresse meg az **újbóli hitelesítést** mutató hivatkozást a kiválasztott fiókban. Válassza ki a hitelesítést.
+Előfordulhat, hogy újra kell hitelesítenie a fejlesztői jogkivonatot. Ehhez válassza az **eszközök** &nbsp; > &nbsp; **beállításai lehetőséget**, majd válassza az **Azure &nbsp; szolgáltatás- &nbsp; hitelesítés** lehetőséget. Keresse meg az **újbóli hitelesítést** mutató hivatkozást a kiválasztott fiókban. Válassza ki a hitelesítést.
 
 #### <a name="authenticating-with-azure-cli"></a>Hitelesítés az Azure CLI-vel
 
@@ -167,7 +167,7 @@ Az alkalmazás futtatásához három elsődleges módszer használható egyszer�
           CertificateStoreLocation={CertificateStore}
     ```
 
-    Cserélje le a *{AppID}* , *{TenantId}* és *{ujjlenyomat}* értéket az 1. lépésben generált értékekre. Cserélje le a (z) *{CertificateStore}* *LocalMachine* vagy *CurrentUser* a telepítési terv alapján.
+    Cserélje le a *{AppID}*, *{TenantId}* és *{ujjlenyomat}* értéket az 1. lépésben generált értékekre. Cserélje le a (z) *{CertificateStore}* *LocalMachine* vagy *CurrentUser* a telepítési terv alapján.
 
 1. Futtassa az alkalmazást.
 
@@ -185,7 +185,7 @@ Az alkalmazás futtatásához három elsődleges módszer használható egyszer�
     RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}
     ```
 
-    Cserélje le a _{AppID}_ , _{TenantId}_ és _{ClientSecret}_ értéket az 1. lépésben generált értékekre.
+    Cserélje le a _{AppID}_, _{TenantId}_ és _{ClientSecret}_ értéket az 1. lépésben generált értékekre.
 
 1. Futtassa az alkalmazást.
 
@@ -262,7 +262,7 @@ A `Microsoft.Azure.Services.AppAuthentication` függvénytár működés közben
 
 #### <a name="azure-cli-is-not-installed-youre-not-logged-in-or-you-dont-have-the-latest-version"></a>Az Azure CLI nincs telepítve, nincs bejelentkezve, vagy nem rendelkezik a legújabb verzióval
 
-Futtassa az *az Account Get-Access-Token* parancsot, és ellenőrizze, hogy az Azure CLI megjelenít-e tokent. Ha **nem talál ilyen programot** , telepítse az [Azure CLI legújabb verzióját](/cli/azure/install-azure-cli?view=azure-cli-latest). Előfordulhat, hogy a rendszer arra kéri, hogy jelentkezzen be.
+Futtassa az *az Account Get-Access-Token* parancsot, és ellenőrizze, hogy az Azure CLI megjelenít-e tokent. Ha **nem talál ilyen programot**, telepítse az [Azure CLI legújabb verzióját](/cli/azure/install-azure-cli?view=azure-cli-latest). Előfordulhat, hogy a rendszer arra kéri, hogy jelentkezzen be.
 
 #### <a name="azureservicetokenprovider-cant-find-the-path-for-azure-cli"></a>A AzureServiceTokenProvider nem találja az Azure CLI elérési útját
 

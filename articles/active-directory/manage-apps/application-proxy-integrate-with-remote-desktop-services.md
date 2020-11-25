@@ -12,11 +12,11 @@ ms.date: 07/22/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.openlocfilehash: 03e89b0da25a915a00c70a9a87bd0f675b8e12d6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658077"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997528"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Távoli asztal közzététele Azure AD-alkalmazásproxy használatával
 
@@ -140,7 +140,7 @@ Az áteresztő hitelesítés használatához a cikkben felsorolt lépések csak 
 1. A [Távoli asztali gazdagép végpontjának](#publish-the-rd-host-endpoint) (1. lépés) közzétételéhez állítsa az előhitelesítési módszert az **áteresztés** értékre.
 2. Az [alkalmazás-proxy felé irányuló közvetlen RDS-forgalom](#direct-rds-traffic-to-application-proxy)esetében hagyja ki a 8. lépést teljes mértékben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Távoli hozzáférés engedélyezése a SharePointhoz az Azure AD-alkalmazásproxy segítségével](application-proxy-integrate-with-sharepoint-server.md)
 - [Biztonsági megfontolások az alkalmazások távoli eléréséhez az Azure AD Application Proxy használatával](application-proxy-security.md)
 - [Ajánlott eljárások több App-kiszolgáló terheléselosztásához](application-proxy-high-availability-load-balancing.md#best-practices-for-load-balancing-among-multiple-app-servers)

@@ -16,11 +16,11 @@ ms.author: kenwith
 ms.reviewer: paulgarn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 820e2cb0d422597f0e649e6934fd8bb11c1521db
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659029"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997477"
 ---
 # <a name="how-to-configure-azure-ad-saml-token-encryption"></a>Útmutató: az Azure AD SAML-jogkivonat titkosításának konfigurálása
 
@@ -217,7 +217,7 @@ Amikor a Graph, a PowerShell vagy az Application manifest használatával konfig
     }  
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, [hogyan használja az Azure ad az SAML protokollt](../develop/active-directory-saml-protocol-reference.md)
 * A SAML-tokenek formátumának, biztonsági jellemzőinek és tartalmának megismerése az [Azure ad-ben](../develop/reference-saml-tokens.md)

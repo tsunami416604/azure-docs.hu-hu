@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 6eced120a05ddaca8d8cf426fd2a977891b3e36b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515905"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997137"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>Oktatóanyag: Azure Active Directory integráció kis mértékű Tökéletesítésekkel
 
@@ -67,7 +67,7 @@ A kis fejlesztéseknek az Azure AD-be való integrálásának konfigurálásáho
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezés konfigurálását és tesztelését végezheti el kis fejlesztésekkel a **Britta Simon**nevű tesztelési felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezés konfigurálását és tesztelését végezheti el kis fejlesztésekkel a **Britta Simon** nevű tesztelési felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolatra van szükség.
 
 Az Azure AD egyszeri bejelentkezés kis fejlesztésekkel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés kis mértékű Tökéletesítésekkel való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **kis** teljesítményű alkalmazások integrációja lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **kis** teljesítményű alkalmazások integrációja lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -138,7 +138,7 @@ Az Azure AD egyszeri bejelentkezés kis mértékű Tökéletesítésekkel való 
 
     ![A képernyőképen az S S O Setup (S S O Setup) oldal jelenik meg, ahol megadhatja a leírt értékeket.](./media/smallimprovements-tutorial/tutorial_smallimprovements_08.png)  
 
-    a. A **http-végpont** szövegmezőbe illessze be a **bejelentkezési URL-cím**értékét, amelyet a Azure Portalból másolt.
+    a. A **http-végpont** szövegmezőbe illessze be a **bejelentkezési URL-cím** értékét, amelyet a Azure Portalból másolt.
 
     b. Nyissa meg a letöltött tanúsítványt a Jegyzettömbben, másolja ki a tartalmat, majd illessze be a **x509-tanúsítvány** szövegmezőbe. 
 
@@ -152,7 +152,7 @@ Az Azure AD egyszeri bejelentkezés kis mértékű Tökéletesítésekkel való 
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -171,21 +171,21 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban lehetővé teszi, hogy Simon Britta az Azure egyszeri bejelentkezés használatát azáltal, hogy a kis mértékű Tökéletesítésekhez hozzáférést biztosít.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **kis mértékű javítást**.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **kis mértékű javítást**.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **kis mértékű tökéletesítések**lehetőséget.
+2. Az alkalmazások listában válassza a **kis mértékű tökéletesítések** lehetőséget.
 
     ![Az alkalmazások listájának kis fejlesztési hivatkozása](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -207,13 +207,13 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók kis javításokban je
 
 1. Jelentkezzen be a kisméretű fejlesztési céges webhelyre rendszergazdaként.
 
-1. A kezdőlapon lépjen a bal oldali menüre, majd kattintson az **Adminisztráció**elemre.
+1. A kezdőlapon lépjen a bal oldali menüre, majd kattintson az **Adminisztráció** elemre.
 
 1. Kattintson a felhasználói **könyvtár** gombra a felhasználói kezelés szakaszban.
 
     ![A képernyőképen a felügyeleti áttekintésből kiválasztott felhasználói könyvtár látható.](./media/smallimprovements-tutorial/tutorial_smallimprovements_10.png) 
 
-1. Kattintson a **felhasználók hozzáadása**elemre.
+1. Kattintson a **felhasználók hozzáadása** elemre.
 
     ![Képernyőfelvétel: a felhasználók hozzáadása gomb.](./media/smallimprovements-tutorial/tutorial_smallimprovements_11.png) 
 
@@ -229,7 +229,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók kis javításokban je
 
     d. Azt is megteheti, hogy a személyes üzenetet az **értesítő E-mail küldése** mezőben adja meg. Ha nem szeretné elküldeni az értesítést, törölje a jelet a jelölőnégyzetből.
 
-    e. Kattintson a **felhasználók létrehozása**lehetőségre.
+    e. Kattintson a **felhasználók létrehozása** lehetőségre.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 

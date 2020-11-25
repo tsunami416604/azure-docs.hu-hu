@@ -4,11 +4,11 @@ description: Ez a cikk a Microsoft Azure Recovery Services (MARS) ügynököt fu
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.openlocfilehash: 26a47c2648d1307d2e7da2b25455f3f036cbf32d
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363238"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997239"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Támogatási mátrix a Microsoft Azure Recovery Services-(MARS-) ügynökkel való biztonsági mentéshez
 
@@ -46,7 +46,7 @@ Ha a MARS-ügynököt használja az adatok biztonsági mentésére, az ügynök 
 Méret |  A gyorsítótár mappában lévő szabad területnek legalább 5 – 10%-ának kell lennie a biztonsági mentési adatai teljes méretének.
 Hely | A gyorsítótár mappájának helyileg kell lennie a biztonsági mentés alatt álló gépen, és online állapotban kell lennie. A gyorsítótár mappája nem lehet hálózati megosztáson, cserélhető adathordozón vagy offline köteten.
 Mappa | A gyorsítótár mappája nem titkosítható deduplikált köteten, vagy egy tömörített mappában, amely ritka, vagy újraelemzési ponttal rendelkezik.
-Hely változásai | A gyorsítótár helyét úgy módosíthatja, hogy leállítja a biztonsági mentési motort ( `net stop bengine` ), és átmásolja a gyorsítótár mappát egy új meghajtóra. (Győződjön meg arról, hogy az új meghajtó elegendő lemezterülettel rendelkezik.) Ezután frissítsen két beállításjegyzékbeli bejegyzést a **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** ( **config/ScratchLocation** és **config/CloudBackupProvider/ScratchLocation** ) elemre az új helyre, és indítsa újra a motort.
+Hely változásai | A gyorsítótár helyét úgy módosíthatja, hogy leállítja a biztonsági mentési motort ( `net stop bengine` ), és átmásolja a gyorsítótár mappát egy új meghajtóra. (Győződjön meg arról, hogy az új meghajtó elegendő lemezterülettel rendelkezik.) Ezután frissítsen két beállításjegyzékbeli bejegyzést a **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** (**config/ScratchLocation** és **config/CloudBackupProvider/ScratchLocation**) elemre az új helyre, és indítsa újra a motort.
 
 ## <a name="networking-and-access-support"></a>Hálózatkezelés és hozzáférés támogatása
 
@@ -67,11 +67,11 @@ A MARS-ügynöknek hozzá kell férnie az alábbi URL-címekhez:
 
 A fentiekben felsorolt URL-címek és IP-címek elérése a HTTPS protokollt használja a 443-es porton.
 
-Ha az Azure-beli virtuális gépekről a MARS-ügynök használatával készít biztonsági másolatot a fájlokról és mappákról, az Azure Virtual Network-t is konfigurálni kell, hogy engedélyezze a hozzáférést. Ha hálózati biztonsági csoportokat (NSG) használ, használja a *AzureBackup* szolgáltatás címkéjét, hogy engedélyezze a kimenő hozzáférést Azure Backuphoz. A Azure Backup címkén kívül az Azure AD-hoz ( *AzureActiveDirectory* ) és az Azure Storage-hoz ( *Storage* ) hasonló [NSG szabályok](../virtual-network/network-security-groups-overview.md#service-tags) létrehozásával is engedélyeznie kell a csatlakozást a hitelesítéshez és az adatátvitelhez. A következő lépések azt ismertetik, hogyan hozható létre szabály a Azure Backup címke számára:
+Ha az Azure-beli virtuális gépekről a MARS-ügynök használatával készít biztonsági másolatot a fájlokról és mappákról, az Azure Virtual Network-t is konfigurálni kell, hogy engedélyezze a hozzáférést. Ha hálózati biztonsági csoportokat (NSG) használ, használja a *AzureBackup* szolgáltatás címkéjét, hogy engedélyezze a kimenő hozzáférést Azure Backuphoz. A Azure Backup címkén kívül az Azure AD-hoz (*AzureActiveDirectory*) és az Azure Storage-hoz (*Storage*) hasonló [NSG szabályok](../virtual-network/network-security-groups-overview.md#service-tags) létrehozásával is engedélyeznie kell a csatlakozást a hitelesítéshez és az adatátvitelhez. A következő lépések azt ismertetik, hogyan hozható létre szabály a Azure Backup címke számára:
 
 1. A **minden szolgáltatás** területen lépjen a **hálózati biztonsági csoportok** elemre, és válassza ki a hálózati biztonsági csoportot.
 2. A **Beállítások** területen válassza a **kimenő biztonsági szabályok** lehetőséget.
-3. Válassza a **Hozzáadás** lehetőséget. Adja meg az új szabály létrehozásához szükséges összes adatot a [biztonsági szabály beállításai](../virtual-network/manage-network-security-group.md#security-rule-settings)című témakörben leírtak szerint. Győződjön meg arról, hogy a **cél** a *Service tag* és a **cél szolgáltatás címkéje** *AzureBackup* értékre van állítva.
+3. Válassza a **Hozzáadás** elemet. Adja meg az új szabály létrehozásához szükséges összes adatot a [biztonsági szabály beállításai](../virtual-network/manage-network-security-group.md#security-rule-settings)című témakörben leírtak szerint. Győződjön meg arról, hogy a **cél** a *Service tag* és a **cél szolgáltatás címkéje** *AzureBackup* értékre van állítva.
 4. Válassza a **Hozzáadás** lehetőséget az újonnan létrehozott kimenő biztonsági szabály mentéséhez.
 
 Hasonlóképpen NSG kimenő biztonsági szabályokat hozhat létre az Azure Storage és az Azure AD számára. A szolgáltatás címkével kapcsolatos további információkért tekintse meg [ezt a cikket](../virtual-network/service-tags-overview.md).
@@ -133,11 +133,11 @@ Az operációs rendszernek 64 bitesnek kell lennie, és a legújabb szervizcsoma
 Windows 10 (Enterprise, Pro, Home) | Igen | Nem |  A szoftver/modul követelményeinek megfelelő kiszolgálói verzió keresése
 Windows 8,1 (Enterprise, Pro)| Igen |Nem | A szoftver/modul követelményeinek megfelelő kiszolgálói verzió keresése
 Windows 8 (Enterprise, Pro) | Igen | Nem | A szoftver/modul követelményeinek megfelelő kiszolgálói verzió keresése
-Windows Server 2016 (standard, Datacenter, Essentials) | Igen | Igen | -.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0
-Windows Server 2012 R2 (standard, Datacenter, Foundation, Essentials) | Igen | Igen | -.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0
-Windows Server 2012 (standard, Datacenter, Foundation) | Igen | Igen |-.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0 <br> -Telepítési lemezképek karbantartása és kezelése (DISM.exe)
+Windows Server 2016 (standard, Datacenter, Essentials) | Igen | Yes | -.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0
+Windows Server 2012 R2 (standard, Datacenter, Foundation, Essentials) | Igen | Yes | -.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0
+Windows Server 2012 (standard, Datacenter, Foundation) | Igen | Yes |-.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0 <br> -Telepítési lemezképek karbantartása és kezelése (DISM.exe)
 Windows Storage Server 2016/2012 R2/2012 (standard, munkacsoport) | Igen | Nem | -.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0
-Windows Server 2019 (standard, Datacenter, Essentials) | Igen | Igen | -.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0
+Windows Server 2019 (standard, Datacenter, Essentials) | Igen | Yes | -.NET 4,5 <br> – Windows PowerShell <br> – Legújabb kompatibilis Microsoft VC + + terjeszthető csomag <br> – Microsoft Management Console (MMC) 3,0
 
 További információ: [támogatott MABS és DPM operációs rendszerek](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems).
 
@@ -152,7 +152,7 @@ Helyszíni vagy üzemeltetett környezetekben, ahol nem tudja frissíteni az ope
 | **Operációs rendszer**                                       | **Fájlok/mappák** | **Rendszerállapot** | **Szoftver/modulra vonatkozó követelmények**                           |
 | ------------------------------------------------------------ | ----------------- | ------------------ | ------------------------------------------------------------ |
 | Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Igen               | Nem                 | A szoftver/modul követelményeinek megfelelő kiszolgálói verzió keresése |
-| Windows Server 2008 R2 (standard, Enterprise, Datacenter, Foundation) | Igen               | Igen                | -.NET 3,5, .NET 4,5 <br>  – Windows PowerShell <br>  -Kompatibilis Microsoft VC + + terjeszthető csomag <br>  – Microsoft Management Console (MMC) 3,0 <br>  -Telepítési lemezképek karbantartása és kezelése (DISM.exe) |
+| Windows Server 2008 R2 (standard, Enterprise, Datacenter, Foundation) | Igen               | Yes                | -.NET 3,5, .NET 4,5 <br>  – Windows PowerShell <br>  -Kompatibilis Microsoft VC + + terjeszthető csomag <br>  – Microsoft Management Console (MMC) 3,0 <br>  -Telepítési lemezképek karbantartása és kezelése (DISM.exe) |
 | Windows Server 2008 SP2 (standard, Datacenter, Foundation)  | Igen               | Nem                 | -.NET 3,5, .NET 4,5 <br>  – Windows PowerShell <br>  -Kompatibilis Microsoft VC + + terjeszthető csomag <br>  – Microsoft Management Console (MMC) 3,0 <br>  -Telepítési lemezképek karbantartása és kezelése (DISM.exe) <br>  – Virtual Server 2005 Base + KB KB948515 |
 
 ## <a name="backup-limits"></a>Biztonsági mentési korlátok

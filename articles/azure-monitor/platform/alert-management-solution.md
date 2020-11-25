@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
 ms.openlocfilehash: adc29916c6b674531d7b0e8fcdd4e151b4a17bde
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677574"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997256"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Alert Management megoldás az Azure-ban Log Analytics
 
@@ -42,9 +42,9 @@ Az alábbi táblázat áttekintést nyújt az ebben a megoldásban támogatott �
 
 | Összekapcsolt forrás | Támogatás | Leírás |
 |:--- |:--- |:--- |
-| [Windows-ügynökök](agent-windows.md) | Nem |A közvetlen Windows-ügynökök nem állítanak elő riasztásokat.  Log Analytics riasztások hozhatók létre a Windows-ügynökökből gyűjtött eseményekből és teljesítményadatokat. |
-| [Linux-ügynökök](../learn/quick-collect-linux-computer.md) | Nem |A közvetlen Linux-ügynökök nem hoznak fel riasztásokat.  Log Analytics riasztások hozhatók létre a Linux-ügynökökből gyűjtött eseményekből és teljesítményadatokat.  A Nagios és a Zabbix riasztások gyűjtése a Linux-ügynököt igénylő kiszolgálókról történik. |
-| [System Center Operations Manage felügyeleti csoport](./om-agents.md) |Igen |Operations Manager ügynökön létrehozott riasztásokat a rendszer a felügyeleti csoportba küldi, majd továbbítja Log Analyticsnak.<br><br>Nem szükséges közvetlen kapcsolódás Operations Manager ügynököktől Log Analytics. A riasztási adatok továbbítása a felügyeleti csoportból a Log Analytics adattárba történik. |
+| [Windows-ügynökök](agent-windows.md) | No |A közvetlen Windows-ügynökök nem állítanak elő riasztásokat.  Log Analytics riasztások hozhatók létre a Windows-ügynökökből gyűjtött eseményekből és teljesítményadatokat. |
+| [Linux-ügynökök](../learn/quick-collect-linux-computer.md) | No |A közvetlen Linux-ügynökök nem hoznak fel riasztásokat.  Log Analytics riasztások hozhatók létre a Linux-ügynökökből gyűjtött eseményekből és teljesítményadatokat.  A Nagios és a Zabbix riasztások gyűjtése a Linux-ügynököt igénylő kiszolgálókról történik. |
+| [System Center Operations Manage felügyeleti csoport](./om-agents.md) |Yes |Operations Manager ügynökön létrehozott riasztásokat a rendszer a felügyeleti csoportba küldi, majd továbbítja Log Analyticsnak.<br><br>Nem szükséges közvetlen kapcsolódás Operations Manager ügynököktől Log Analytics. A riasztási adatok továbbítása a felügyeleti csoportból a Log Analytics adattárba történik. |
 
 
 ### <a name="collection-frequency"></a>A gyűjtés gyakorisága
@@ -113,5 +113,5 @@ A következő táblázat a megoldás által gyűjtött riasztási rekordokra von
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A Log Analytics-riasztások létrehozásával kapcsolatos információkért lásd: [Riasztások a Log Analyticsben](./alerts-overview.md).

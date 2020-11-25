@@ -7,11 +7,11 @@ ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 56d8078347b5de775b30c8db2c9412598070046c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285366"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998880"
 ---
 # <a name="azure-blob-storage-output-binding-for-azure-functions"></a>Az Azure Blob Storage kimeneti kötése Azure Functions
 
@@ -398,7 +398,7 @@ Az `@BlobOutput` attribútum hozzáférést biztosít a függvényt kiváltó bl
 | BLOB, tábla, üzenetsor |  [Tárolási hibakódok](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
 | BLOB, tábla, üzenetsor |  [Hibaelhárítás](/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Függvény futtatása a blob Storage-beli adatváltozások esetén](./functions-bindings-storage-blob-trigger.md)
 - [BLOB Storage-adat olvasása függvény futtatásakor](./functions-bindings-storage-blob-input.md)

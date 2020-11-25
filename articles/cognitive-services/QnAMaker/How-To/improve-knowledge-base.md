@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: dcf912f431d578a6e678801d3dc8f4e11484ea78
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678365"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997018"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Az aktív tanulás javasolt kérdéseinek elfogadása a Tudásbázisban
 
@@ -26,7 +26,7 @@ A javasolt kérdések megjelenítéséhez [be kell kapcsolni a QnA Maker erőfor
 
 ## <a name="view-suggested-questions"></a>Javasolt kérdések megtekintése
 
-1. A javasolt kérdések megtekintéséhez a Tudásbázis **szerkesztése** lapon válassza a **megtekintési beállítások** , majd az **aktív tanulási javaslatok megjelenítése** lehetőséget.
+1. A javasolt kérdések megtekintéséhez a Tudásbázis **szerkesztése** lapon válassza a **megtekintési beállítások**, majd az **aktív tanulási javaslatok megjelenítése** lehetőséget.
 
     [![A portál szerkesztés szakaszában válassza a javaslatok megjelenítése lehetőséget, hogy megtekintse az aktív tanulás új kérdéseit.](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 
@@ -341,7 +341,7 @@ Ha újraimportálja az alkalmazást, az aktív tanulás továbbra is gyűjti az 
 
 Az aktív tanulás használata esetén ajánlott eljárások: [ajánlott eljárások](../Concepts/best-practices.md#active-learning).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Metaadatok használata a GenerateAnswer API-val](metadata-generateanswer-usage.md)
