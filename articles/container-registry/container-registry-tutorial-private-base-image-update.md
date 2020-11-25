@@ -2,18 +2,18 @@
 title: Oktatóanyag – rendszerkép-Build kiváltása privát alaprendszerkép-frissítéssel
 description: Ebben az oktatóanyagban egy Azure Container Registry feladat konfigurálásával automatikusan elindítja a tároló rendszerképét a felhőben, ha egy másik privát Azure Container registryben található alaprendszerkép frissül.
 ms.topic: tutorial
-ms.date: 01/22/2020
+ms.date: 11/20/2020
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 7dda7c54c51c31e750083f302ca558ff7ef548ee
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 50eb89ccfafa27a7dcb0e97f21d14feec0ef9525
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739546"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030440"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-another-private-container-registry"></a>Oktatóanyag: a tároló rendszerképének automatizálása, amikor egy alaprendszerkép frissül egy másik privát tároló beállításjegyzékében 
 
-Az ACR-feladatok támogatják az automatizált lemezképek összeállítását a tároló [alaprendszerképének frissítésekor](container-registry-tasks-base-images.md), például az operációs rendszer vagy az alkalmazás keretrendszerének az egyik alaplemezképben való javításához. 
+Az [ACR-feladatok](container-registry-tasks-overview.md) támogatják az automatizált lemezképek összeállítását a tároló [alaprendszerképének frissítésekor](container-registry-tasks-base-images.md), például az operációs rendszer vagy az alkalmazás keretrendszerének az egyik alaplemezképben való javításához. 
 
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy olyan ACR-feladatot, amely elindítja a Felhőbeli buildet, ha egy tároló alaprendszerképét egy másik Azure Container registrybe küldi a rendszer. Azt is megteheti, hogy egy olyan ACR-feladatot hoz létre, amely elindítja a rendszerképeket, amikor egy alaprendszerképet [ugyanarra az Azure Container registrybe](container-registry-tutorial-base-image-update.md)küldenek.
 
@@ -26,15 +26,11 @@ Ebben az oktatóanyagban:
 > * Az aktivált feladat megjelenítése
 > * A frissített alkalmazás-rendszerkép ellenőrzése
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Ha helyileg szeretné használni az Azure CLI-t, az Azure CLI **2.0.68** vagy újabb verzióját kell telepítenie. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretné a parancssori felületet, olvassa el [az Azure CLI telepítését][azure-cli] ismertető témakört.
-
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="complete-the-previous-tutorials"></a>Az előző oktatóanyagok elvégzése
 
-Ez az oktatóanyag feltételezi, hogy elvégezte a sorozat első két oktatóanyagának alábbi lépéseit:
+Ez az oktatóanyag feltételezi, hogy már konfigurálta a környezetét, és befejezte a sorozat első két oktatóanyagának lépéseit:
 
 * Azure Container Registry létrehozása
 * Mintaadattár leágaztatása
@@ -53,7 +49,7 @@ Az előző oktatóanyagokhoz létrehozott Container Registry mellett létre kell
 
 Láss el ezeket a rendszerhéj-környezeti változókat a környezetnek megfelelő értékekkel. Ez a lépés nem feltétlenül szükséges, de némileg könnyebbé teszi az oktatóanyagban lévő többsoros Azure CLI-parancsok végrehajtását. Ha nem tölti fel ezeket a környezeti változókat, manuálisan kell lecserélnie az egyes értékeket, bárhol is megjelenjenek a példában szereplő parancsokban.
 
-```azurecli-interactive
+```azurecli
 BASE_ACR=<base-registry-name>   # The name of your Azure container registry for base images
 ACR_NAME=<registry-name>        # The name of your Azure container registry for application images
 GIT_USER=<github-username>      # Your GitHub user account name
@@ -78,10 +74,10 @@ Ebben az oktatóanyagban az ACR-feladat egy Docker megadott alkalmazás-tároló
 
 ## <a name="build-the-base-image"></a>Az alapként szolgáló rendszerkép összeállítása
 
-Először hozza létre az alapképet egy ACR-feladatok *gyors feladattal* , az [az ACR Build][az-acr-build]használatával. Amint azt a sorozat [első részében](container-registry-tutorial-quick-task.md) bemutattuk, ez a folyamat nem csupán összeállítja a rendszerképet, hanem siker esetén le is küldi azt a tárolóregisztrációs adatbázisba. Ebben a példában a rendszerképet az alaprendszerkép beállításjegyzékére küldi a rendszer.
+Először hozza létre az alapképet egy ACR-feladatok *gyors feladattal*, az [az ACR Build][az-acr-build]használatával. Amint azt a sorozat [első részében](container-registry-tutorial-quick-task.md) bemutattuk, ez a folyamat nem csupán összeállítja a rendszerképet, hanem siker esetén le is küldi azt a tárolóregisztrációs adatbázisba. Ebben a példában a rendszerképet az alaprendszerkép beállításjegyzékére küldi a rendszer.
 
-```azurecli-interactive
-az acr build --registry $BASE_ACR --image baseimages/node:9-alpine --file Dockerfile-base .
+```azurecli
+az acr build --registry $BASE_ACR --image baseimages/node:15-alpine --file Dockerfile-base .
 ```
 
 ## <a name="create-a-task-to-track-the-private-base-image"></a>Feladat létrehozása a titkos alap rendszerképének nyomon követéséhez
@@ -90,10 +86,10 @@ Ezután hozzon létre egy feladatot az alkalmazás rendszerképének beállítá
 
 Ez a példa egy rendszerhez rendelt identitást használ, de bizonyos helyzetekben létrehozhat és engedélyezhet felhasználó által hozzárendelt felügyelt identitást. Részletekért lásd: a [beállításjegyzék közötti hitelesítés egy ACR-feladatban egy Azure által felügyelt identitás használatával](container-registry-tasks-cross-registry-authentication.md).
 
-```azurecli-interactive
+```azurecli
 az acr task create \
     --registry $ACR_NAME \
-    --name taskhelloworld \
+    --name baseexample2 \
     --image helloworld:{{.Run.ID}} \
     --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
     --file Dockerfile-app \
@@ -102,11 +98,10 @@ az acr task create \
     --assign-identity
 ```
 
-
-Ez a feladat hasonló az [előző oktatóanyagban](container-registry-tutorial-build-task.md)létrehozott feladathoz. A feladat utasítja az ACR Tasksot egy rendszerkép-összeállítás aktiválására, amikor a rendszer leküld egy véglegesítést a `--context` által megadott adattárba. Míg az előző oktatóanyagban a rendszerkép létrehozásához használt Docker megadja a nyilvános alaprendszerképet ( `FROM node:9-alpine` ), a Docker ebben a feladatban, [Docker-app][dockerfile-app], alaprendszerképet ad meg az alaprendszerkép beállításjegyzékében:
+Ez a feladat hasonló az [előző oktatóanyagban](container-registry-tutorial-build-task.md)létrehozott feladathoz. A feladat utasítja az ACR Tasksot egy rendszerkép-összeállítás aktiválására, amikor a rendszer leküld egy véglegesítést a `--context` által megadott adattárba. Míg az előző oktatóanyagban a rendszerkép létrehozásához használt Docker megadja a nyilvános alaprendszerképet ( `FROM node:15-alpine` ), a Docker ebben a feladatban, [Docker-app][dockerfile-app], alaprendszerképet ad meg az alaprendszerkép beállításjegyzékében:
 
 ```Dockerfile
-FROM ${REGISTRY_NAME}/baseimages/node:9-alpine
+FROM ${REGISTRY_NAME}/baseimages/node:15-alpine
 ```
 
 Ez a konfiguráció megkönnyíti a keretrendszer-javítások szimulálása az alaprendszerképben az oktatóanyag későbbi részében.
@@ -115,9 +110,9 @@ Ez a konfiguráció megkönnyíti a keretrendszer-javítások szimulálása az a
 
 Ha meg szeretné adni a feladat felügyelt identitásának engedélyeit a lemezképek alaprendszerkép-beállításjegyzékből való lekéréséhez, először futtassa az [ACR Task show][az-acr-task-show] parancsot az identitás egyszerű szolgáltatásnév-azonosítójának beszerzéséhez. Ezután futtassa az [ACR show][az-acr-show] parancsot az alap beállításjegyzék erőforrás-azonosítójának lekéréséhez:
 
-```azurecli-interactive
+```azurecli
 # Get service principal ID of the task
-principalID=$(az acr task show --name taskhelloworld --registry $ACR_NAME --query identity.principalId --output tsv) 
+principalID=$(az acr task show --name baseexample2 --registry $ACR_NAME --query identity.principalId --output tsv) 
 
 # Get resource ID of the base registry
 baseregID=$(az acr show --name $BASE_ACR --query id --output tsv) 
@@ -125,7 +120,7 @@ baseregID=$(az acr show --name $BASE_ACR --query id --output tsv)
  
 Rendelje hozzá a felügyelt identitás-lekérési engedélyeket a beállításjegyzékhez az [az role hozzárendelés Create][az-role-assignment-create]:
 
-```azurecli-interactive
+```azurecli
 az role assignment create \
   --assignee $principalID \
   --scope $baseregID --role acrpull 
@@ -135,9 +130,9 @@ az role assignment create \
 
 Futtassa az [ACR Task hitelesítőadat-Hozzáadás][az-acr-task-credential-add] parancsot a hitelesítő adatok a feladathoz való hozzáadásához. Adja át a `--use-identity [system]` paramétert annak jelzésére, hogy a feladat rendszer által hozzárendelt felügyelt identitása hozzáférhet a hitelesítő adatokhoz.
 
-```azurecli-interactive
+```azurecli
 az acr task credential add \
-  --name taskhelloworld \
+  --name baseexample2 \
   --registry $ACR_NAME \
   --login-server $BASE_ACR.azurecr.io \
   --use-identity [system] 
@@ -147,8 +142,8 @@ az acr task credential add \
 
 Használja az [az ACR Task Run parancsot][az-acr-task-run] a feladat manuális elindításához és az alkalmazás rendszerképének elkészítéséhez. Erre a lépésre azért van szükség, hogy a feladat nyomon követi az alkalmazás rendszerképének függőségét az alaprendszerképen.
 
-```azurecli-interactive
-az acr task run --registry $ACR_NAME --name taskhelloworld
+```azurecli
+az acr task run --registry $ACR_NAME --name baseexample2
 ```
 
 Amint a feladat véget ért, jegyezze fel a **Run ID** (Futtatási azonosító) értékét (például „da6”), ha a következő nem kötelező lépést is végre szeretné hajtani.
@@ -171,7 +166,7 @@ docker run -d -p 8080:80 --name myapp --rm $ACR_NAME.azurecr.io/helloworld:<run-
 
 Lépjen a `http://localhost:8080` címre a böngészőben, és a weboldalon a Node.js verziószámának kell megjelennie az alábbihoz hasonlóan. Egy későbbi lépésben majd újabbra frissíti a verziót úgy, hogy egy „a” tagot ad hozzá a verziósztringhez.
 
-![A böngészőben megjelenített minta alkalmazást bemutató képernyőkép.][base-update-01]
+:::image type="content" source="media/container-registry-tutorial-base-image-update/base-update-01.png" alt-text="Képernyőkép a böngészőben található minta alkalmazásról":::
 
 A tároló leállításához és eltávolításához futtassa a következő parancsot:
 
@@ -183,7 +178,7 @@ docker stop myapp
 
 Ezután listázza a feladatfuttatásokat, amelyeket az ACR Tasks elkészített a regisztrációs adatbázis számára az [az acr task list-runs][az-acr-task-list-runs] paranccsal:
 
-```azurecli-interactive
+```azurecli
 az acr task list-runs --registry $ACR_NAME --output table
 ```
 
@@ -192,14 +187,14 @@ Ha elvégezte az előző oktatóanyagot (és nem törölte a regisztrációs ada
 ```console
 $ az acr task list-runs --registry $ACR_NAME --output table
 
-RUN ID    TASK            PLATFORM    STATUS     TRIGGER     STARTED               DURATION
---------  --------------  ----------  ---------  ----------  --------------------  ----------
-da6       taskhelloworld  Linux       Succeeded  Manual      2018-09-17T23:07:22Z  00:00:38
-da5                       Linux       Succeeded  Manual      2018-09-17T23:06:33Z  00:00:31
-da4       taskhelloworld  Linux       Succeeded  Git Commit  2018-09-17T23:03:45Z  00:00:44
-da3       taskhelloworld  Linux       Succeeded  Manual      2018-09-17T22:55:35Z  00:00:35
-da2       taskhelloworld  Linux       Succeeded  Manual      2018-09-17T22:50:59Z  00:00:32
-da1                       Linux       Succeeded  Manual      2018-09-17T22:29:59Z  00:00:57
+UN ID    TASK            PLATFORM    STATUS     TRIGGER       STARTED               DURATION
+--------  --------------  ----------  ---------  ------------  --------------------  ----------
+ca12      baseexample2    linux       Succeeded  Manual        2020-11-21T00:00:56Z  00:00:36
+ca11      baseexample1    linux       Succeeded  Image Update  2020-11-20T23:38:24Z  00:00:34
+ca10      taskhelloworld  linux       Succeeded  Image Update  2020-11-20T23:38:24Z  00:00:24
+cay                       linux       Succeeded  Manual        2020-11-20T23:38:08Z  00:00:22
+cax       baseexample1    linux       Succeeded  Manual        2020-11-20T23:33:12Z  00:00:30
+caw       taskhelloworld  linux       Succeeded  Commit        2020-11-20T23:16:07Z  00:00:29
 ```
 
 ## <a name="update-the-base-image"></a>Az alapként szolgáló rendszerkép frissítése
@@ -207,13 +202,13 @@ da1                       Linux       Succeeded  Manual      2018-09-17T22:29:59
 Itt most egy keretrendszer-javítást szimulál az alapként szolgáló rendszerképben. Módosítsa a **Dockerfile-base** fájlt, és adja hozzá az „a” tagot a `NODE_VERSION` attribútumban meghatározott verziószám után:
 
 ```Dockerfile
-ENV NODE_VERSION 9.11.2a
+ENV NODE_VERSION 15.2.1a
 ```
 
 Futtasson egy gyors feladatot az alapként szolgáló módosított rendszerkép összeállításához. Jegyezze fel a kimenetben található **Run ID** (Futtatási azonosító) értékét.
 
-```azurecli-interactive
-az acr build --registry $BASE_ACR --image baseimages/node:9-alpine --file Dockerfile-base .
+```azurecli
+az acr build --registry $BASE_ACR --image baseimages/node:15-alpine --file Dockerfile-base .
 ```
 
 Miután befejeződött az összeállítás, és az ACR-feladat leküldte az alapként szolgáló új rendszerképet a regisztrációs adatbázisba, az aktiválja az alkalmazás-rendszerkép összeállítását. Eltarthat egy ideig, amíg a korábban létrehozott feladat aktiválja az alkalmazás-rendszerkép összeállítását, mivel észlelnie kell az újonnan összeállított és leküldött alapként szolgáló rendszerképet.
@@ -222,7 +217,7 @@ Miután befejeződött az összeállítás, és az ACR-feladat leküldte az alap
 
 Az alapként szolgáló rendszerkép frissítését követően listázza újra a feladatfuttatásokat, hogy összehasonlíthassa azokat a korábbi listával. Ha a kimenet eleinte nem tér el a korábbitól, időnként futtassa újra a parancsot, amíg az új feladatfuttatás meg nem jelenik a listában.
 
-```azurecli-interactive
+```azurecli
 az acr task list-runs --registry $ACR_NAME --output table
 ```
 
@@ -231,19 +226,18 @@ A kimenet a következőkhöz hasonló. Az utolsóként végrehajtott összeáll�
 ```console
 $ az acr task list-runs --registry $ACR_NAME --output table
 
-Run ID    TASK            PLATFORM    STATUS     TRIGGER       STARTED               DURATION
+         PLATFORM    STATUS     TRIGGER       STARTED               DURATION
 --------  --------------  ----------  ---------  ------------  --------------------  ----------
-da8       taskhelloworld  Linux       Succeeded  Image Update  2018-09-17T23:11:50Z  00:00:33
-da7                       Linux       Succeeded  Manual        2018-09-17T23:11:27Z  00:00:35
-da6       taskhelloworld  Linux       Succeeded  Manual        2018-09-17T23:07:22Z  00:00:38
-da5                       Linux       Succeeded  Manual        2018-09-17T23:06:33Z  00:00:31
-da4       taskhelloworld  Linux       Succeeded  Git Commit    2018-09-17T23:03:45Z  00:00:44
-da3       taskhelloworld  Linux       Succeeded  Manual        2018-09-17T22:55:35Z  00:00:35
-da2       taskhelloworld  Linux       Succeeded  Manual        2018-09-17T22:50:59Z  00:00:32
-da1                       Linux       Succeeded  Manual        2018-09-17T22:29:59Z  00:00:57
+ca13      baseexample2    linux       Succeeded  Image Update  2020-11-21T00:06:00Z  00:00:43
+ca12      baseexample2    linux       Succeeded  Manual        2020-11-21T00:00:56Z  00:00:36
+ca11      baseexample1    linux       Succeeded  Image Update  2020-11-20T23:38:24Z  00:00:34
+ca10      taskhelloworld  linux       Succeeded  Image Update  2020-11-20T23:38:24Z  00:00:24
+cay                       linux       Succeeded  Manual        2020-11-20T23:38:08Z  00:00:22
+cax       baseexample1    linux       Succeeded  Manual        2020-11-20T23:33:12Z  00:00:30
+caw       taskhelloworld  linux       Succeeded  Commit        2020-11-20T23:16:07Z  00:00:29
 ```
 
-Ha szeretné végrehajtani a következő nem kötelező lépést az újonnan összeállított tároló futtatására és a frissített verziószám megtekintésére, jegyezze fel a rendszerképfrissítés által kiváltott összeállítás **RUN ID** (Futtatási azonosító) értékét (az előző kimenetben ez a „da8” érték).
+Ha azt szeretné, hogy az újonnan létrehozott tároló futtatása a frissített verziószámot is megtekintse, jegyezze fel a **futtatási azonosító** értékét a rendszerkép frissítése által aktivált buildhez (az előző kimenetben "CA13").
 
 ### <a name="optional-run-newly-built-image"></a>Nem kötelező: Az újonnan összeállított rendszerkép futtatása
 
@@ -255,7 +249,7 @@ docker run -d -p 8081:80 --name updatedapp --rm $ACR_NAME.azurecr.io/helloworld:
 
 Lépjen a http://localhost:8081 címre a böngészőben, ahol a weboldalon a Node.js frissített verziószámának (az „a” taggal kiegészítve) kell megjelennie:
 
-![A böngészőben megjelenített mintaalkalmazás képernyőképe][base-update-02]
+:::image type="content" source="media/container-registry-tutorial-base-image-update/base-update-02.png" alt-text="Képernyőkép a frissített minta alkalmazásról a böngészőben":::
 
 Figyelje meg, hogy miután frissítette az **alapként szolgáló rendszerképet** egy új verziószámmal, az utoljára összeállított **alkalmazás-rendszerkép** az új verziót jeleníti meg. Az ACR Tasks észlelte az alapként szolgáló rendszerkép módosítását, és automatikusan újraépítette az alkalmazás-rendszerképet.
 
@@ -265,7 +259,7 @@ A tároló leállításához és eltávolításához futtassa a következő para
 docker stop updatedapp
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag azt mutatta be, hogyan használhatók a feladatok a tárolórendszerképek összeállításának automatikus aktiválására a rendszerkép alapként szolgáló rendszerképének frissítése esetén. Most lépjen a következő oktatóanyagra, amelyből megtudhatja, hogyan indíthat el műveleteket egy meghatározott ütemterven.
 
@@ -295,6 +289,3 @@ Ez az oktatóanyag azt mutatta be, hogyan használhatók a feladatok a tárolór
 [az-acr-show]: /cli/azure/acr#az-acr-show
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 
-<!-- IMAGES -->
-[base-update-01]: ./media/container-registry-tutorial-base-image-update/base-update-01.png
-[base-update-02]: ./media/container-registry-tutorial-base-image-update/base-update-02.png

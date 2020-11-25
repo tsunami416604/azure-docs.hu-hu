@@ -4,16 +4,16 @@ description: Azure Monitor metrikus riasztásokkal és lehetséges megoldásokka
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 10/05/2020
+ms.date: 11/25/2020
 ms.subservice: alerts
-ms.openlocfilehash: 2e68a780890b8ddf857bf8f52a0ecf9a4c24b36c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 5a57e8b7f3bf2c3e820a3befee0ee69c48a2afa9
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342127"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029876"
 ---
-# <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Monitor metrikai riasztásokkal kapcsolatos problémák elhárítása 
+# <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Az Azure Monitor metrikaalapú riasztásaival kapcsolatos hibák elhárítása 
 
 Ez a cikk a Azure Monitor [metrikus riasztásokkal](alerts-metric-overview.md) kapcsolatos gyakori problémákat és azok hibaelhárítását ismerteti.
 
@@ -44,7 +44,7 @@ Ha úgy gondolja, hogy egy metrikai riasztásnak kilőtte, de nem volt tűz, és
 
 Ha úgy gondolja, hogy a mérőszám riasztása nem lett elindítva, de a következő lépések segíthetnek a probléma megoldásában.
 
-1. Tekintse át a kilőtt riasztások [listáját](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/alertsV2) , és kattintson ide a részletek megtekintéséhez. Tekintse át a riasztás miatti **figyelmeztetést?** című témakörben található információkat. a metrikai diagram, a **metrika**és a **küszöbérték** megtekinthető a riasztás indításakor.
+1. Tekintse át a kilőtt riasztások [listáját](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/alertsV2) , és kattintson ide a részletek megtekintéséhez. Tekintse át a riasztás miatti **figyelmeztetést?** című témakörben található információkat. a metrikai diagram, a **metrika** és a **küszöbérték** megtekinthető a riasztás indításakor.
 
     > [!NOTE] 
     > Ha dinamikus küszöbértékeket használ, és úgy gondolja, hogy a használt küszöbértékek nem megfelelőek, kérjük, küldje el a visszajelzést a komor ikon használatával. Ez a visszajelzés hatással lesz a gépi tanulási algoritmusok kutatására, és segít a jövőbeli észlelések fejlesztésében.
@@ -140,9 +140,9 @@ Annak elkerülése érdekében, hogy a telepítés meghiúsuljon az egyéni metr
 A metrikai riasztási szabály Resource Manager-sablonjának exportálása segít megérteni a JSON-szintaxist és-tulajdonságokat, és automatizálhatja a jövőbeli központi telepítéseket.
 1. Navigáljon az **erőforráscsoportok** szakaszhoz a portálon, és válassza ki a szabályt tartalmazó erőforráscsoportot.
 2. Az Áttekintés szakaszban jelölje be a **rejtett típusok megjelenítése** jelölőnégyzetet.
-3. A **típus** szűrőben válassza a *Microsoft. bepillantások/metricalerts*lehetőséget.
+3. A **típus** szűrőben válassza a *Microsoft. bepillantások/metricalerts* lehetőséget.
 4. A részletek megtekintéséhez válassza ki a megfelelő riasztási szabályt.
-5. A **Beállítások**területen válassza a **sablon exportálása**lehetőséget.
+5. A **Beállítások** területen válassza a **sablon exportálása** lehetőséget.
 
 ## <a name="metric-alert-rules-quota-too-small"></a>A metrika riasztási szabályainak kvótája túl kicsi
 
@@ -241,6 +241,8 @@ Vegye figyelembe a következő korlátozásokat a metrikus riasztási szabályok
 - A metrikai riasztási szabályok nevei nem tartalmazhatják a következő karaktereket: * # & +:  < > ? @ % { } \ / 
 - A metrikai riasztási szabályok nevei nem végződhet szóközzel vagy ponttal
 
+> [!NOTE] 
+> Ha a riasztási szabály neve nem alfabetikus vagy numerikus karaktereket tartalmaz (például szóközök, írásjelek vagy szimbólumok), akkor ezek a karakterek URL-kódolással rendelkezhetnek, ha bizonyos ügyfelek beolvasják őket.
 
 ## <a name="restrictions-when-using-dimensions-in-a-metric-alert-rule-with-multiple-conditions"></a>Korlátozások a metrikus riasztási szabályokban több feltételt tartalmazó dimenziók használata esetén
 
@@ -259,11 +261,11 @@ Például:
 
 ## <a name="setting-the-alert-rules-period-and-frequency"></a>A riasztási szabály időtartamának és gyakoriságának beállítása
 
-Javasoljuk, hogy a *kiértékelés gyakorisága*nagyobb mértékű *összesítési részletességet (időszakot)* válasszon, hogy csökkentse a hozzáadott idősorozat első kiértékelésének valószínűségét a következő esetekben:
+Javasoljuk, hogy a *kiértékelés gyakorisága* nagyobb mértékű *összesítési részletességet (időszakot)* válasszon, hogy csökkentse a hozzáadott idősorozat első kiértékelésének valószínűségét a következő esetekben:
 -   Metrikus riasztási szabály, amely több dimenziót figyel – új dimenzió érték-kombináció hozzáadásakor
 -   Metrikus riasztási szabály, amely több erőforrást figyel – új erőforrás a hatókörhöz való hozzáadásakor
 -   Metrikus riasztási szabály, amely nem folyamatosan kibocsátott mérőszámot figyel (ritka metrika) – Ha a mérőszámot 24 óránál hosszabb időt követően bocsátják ki a rendszer, amelyben nem lett kibocsátva
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A riasztásokkal és értesítésekkel kapcsolatos általános hibaelhárítási információkért lásd: [Azure monitor riasztások hibaelhárítási problémái](alerts-troubleshoot.md).

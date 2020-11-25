@@ -2,13 +2,13 @@
 title: Ügynök-alapú függőségi elemzés beállítása Azure Migrate Server Assessment-ben
 description: Ez a cikk azt ismerteti, hogyan állítható be az ügynök-alapú függőségek elemzése Azure Migrate Server Assessment-ben.
 ms.topic: how-to
-ms.date: 6/09/2020
-ms.openlocfilehash: c5c019ec995f59b61fb96917bed50bd8ba3f61d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/25/2020
+ms.openlocfilehash: 17c6e3e24596727350b11946bdf6896e22d41529
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022377"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028962"
 ---
 # <a name="set-up-dependency-visualization"></a>Függőségi vizualizáció beállítása
 
@@ -38,13 +38,13 @@ Ez a cikk az ügynök nélküli függőségek elemzésének beállítását isme
 
 ## <a name="associate-a-workspace"></a>Munkaterület hozzárendelése
 
-1. Miután felderítte a gépeket az értékeléshez, a **kiszolgálók**  >  **Azure Migrate: kiszolgáló értékelése**területen kattintson az **Áttekintés**elemre.  
-2. **Azure Migrate: kiszolgáló értékelése**, kattintson az **Essentials**elemre.
-3. A **OMS munkaterületen**kattintson a **Konfigurálás szükséges**elemre.
+1. Miután felderítte a gépeket az értékeléshez, a **kiszolgálók**  >  **Azure Migrate: kiszolgáló értékelése** területen kattintson az **Áttekintés** elemre.  
+2. **Azure Migrate: kiszolgáló értékelése**, kattintson az **Essentials** elemre.
+3. A **OMS munkaterületen** kattintson a **Konfigurálás szükséges** elemre.
 
-     ![Log Analytics munkaterület konfigurálása](./media/how-to-create-group-machine-dependencies/oms-workspace-select.png)   
+     ![A Log Analytics-munkaterület konfigurálása](./media/how-to-create-group-machine-dependencies/oms-workspace-select.png)   
 
-4. Az **OMS-munkaterület konfigurálása**lapon adja meg, hogy új munkaterületet kíván-e létrehozni, vagy egy meglévőt szeretne használni.
+4. Az **OMS-munkaterület konfigurálása** lapon adja meg, hogy új munkaterületet kíván-e létrehozni, vagy egy meglévőt szeretne használni.
     - Kiválaszthat egy meglévő munkaterületet az áttelepítés projekt-előfizetés összes munkaterületéről.
     - Az olvasóhoz való hozzáférésre van szüksége a munkaterülethez a hozzárendeléshez.
 5. Ha új munkaterületet hoz létre, válassza ki a kívánt helyet.
@@ -59,10 +59,10 @@ Az összes elemezni kívánt gépen telepítse az ügynököket.
 > [!NOTE]
 > System Center Operations Manager 2012 R2 vagy újabb rendszer által figyelt gépek esetében nem kell telepítenie az MMA-ügynököt. A Service Map a Operations Managersal integrálódik. [Kövesse](../azure-monitor/insights/service-map-scom.md#prerequisites) az integrációs útmutatót.
 
-1. **Azure Migrate: kiszolgáló értékelése**, kattintson a **felderített kiszolgálók**elemre.
-2. Minden olyan géphez, amelyet elemezni szeretne a függőségi vizualizációval, kattintson a **függőségek** oszlopban az **ügynök telepítésének**megkezdése elemre.
+1. **Azure Migrate: kiszolgáló értékelése**, kattintson a **felderített kiszolgálók** elemre.
+2. Minden olyan géphez, amelyet elemezni szeretne a függőségi vizualizációval, kattintson a **függőségek** oszlopban az **ügynök telepítésének** megkezdése elemre.
 3. A **függőségek** lapon töltse le a Windows vagy Linux rendszerhez készült MMA-és függőségi ügynököt.
-4. Az **MMA-ügynök konfigurálása**területen másolja a munkaterület azonosítóját és kulcsát. Ezek az MMA-ügynök telepítésekor szükségesek.
+4. Az **MMA-ügynök konfigurálása** területen másolja a munkaterület azonosítóját és kulcsát. Ezek az MMA-ügynök telepítésekor szükségesek.
 
     ![Az ügynökök telepítése](./media/how-to-create-group-machine-dependencies/dependencies-install.png)
 
@@ -77,13 +77,13 @@ Az ügynök telepítése Windows rendszerű gépre:
 
 1. Kattintson duplán a letöltött ügynökre.
 2. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra. **A licencfeltételek oldalon kattintson** **az Elfogadom gombra a** licenc elfogadásához.
-3. A **célmappában**tartsa meg vagy módosítsa az alapértelmezett telepítési mappát > a **Tovább gombra**.
-4. Az **ügynök telepítési beállításai**területen válassza az **Azure log Analytics**  >  **tovább**lehetőséget.
+3. A **célmappában** tartsa meg vagy módosítsa az alapértelmezett telepítési mappát > a **Tovább gombra**.
+4. Az **ügynök telepítési beállításai** területen válassza az **Azure log Analytics**  >  **tovább** lehetőséget.
 5. Új Log Analytics munkaterület hozzáadásához kattintson a **Hozzáadás** gombra. Illessze be azt a munkaterület-azonosítót és-kulcsot, amelyet a portálról másolt. Kattintson a **Tovább** gombra.
 
 Az ügynököt a parancssorból vagy egy automatizált módszerrel, például Configuration Manager vagy [Intigua](https://www.intigua.com/intigua-for-azure-migration)is telepítheti.
 - [További](../azure-monitor/platform/log-analytics-agent.md#installation-options) információ az MMA-ügynök telepítésével kapcsolatban ezen módszerek használatával.
-- Az MMA-ügynök ezzel a [szkripttel](https://go.microsoft.com/fwlink/?linkid=2104394) is telepíthető.
+- Az MMA-ügynök ezzel a [szkripttel](https://github.com/brianbar-MSFT/Install-MMA) is telepíthető.
 - [További](../azure-monitor/platform/agents-overview.md#supported-operating-systems) információ az MMA által támogatott Windows operációs rendszerekről.
 
 ### <a name="install-mma-on-a-linux-machine"></a>Az MMA telepítése Linux rendszerű gépen
@@ -116,7 +116,7 @@ Most hozzon létre egy csoportot az értékeléshez.
 > [!NOTE]
 > Azok a csoportok, amelyeknek a függőségeit szeretné megjeleníteni, nem tartalmazhatnak 10 rendszernél több gépet. Ha több mint 10 géppel rendelkezik, ossza fel őket kisebb csoportokba.
 
-1. **Azure Migrate: kiszolgáló értékelése**, kattintson a **felderített kiszolgálók**elemre.
+1. **Azure Migrate: kiszolgáló értékelése**, kattintson a **felderített kiszolgálók** elemre.
 2. A **függőségek** oszlopban kattintson a **függőségek megtekintése** elemre minden áttekinteni kívánt gépen.
 3. A függőségi térképen a következők láthatók:
     - Bejövő (ügyfelek) és kimenő (kiszolgálók) TCP-kapcsolatok a gépre és a gépről.
@@ -130,7 +130,7 @@ Most hozzon létre egy csoportot az értékeléshez.
     - Módosíthatja az időtartományt, vagy megadhatja a kezdő és a záró dátumot, valamint az időtartamot.
     - Az időtartomány akár egy óráig is elvégezhető. Ha hosszabb tartományra van szüksége, használja a Azure Monitort a függő adatlekérdezés hosszabb időtartamra való lekéréséhez.
 
-5. Miután azonosította a csoportba felvenni kívánt függő gépeket, a CTRL billentyűt lenyomva tartva kiválaszthat több gépet a térképen, majd kattintson a **csoport gépek**elemre.
+5. Miután azonosította a csoportba felvenni kívánt függő gépeket, a CTRL billentyűt lenyomva tartva kiválaszthat több gépet a térképen, majd kattintson a **csoport gépek** elemre.
 6. Adja meg a csoport nevét.
 7. Győződjön meg arról, hogy a Azure Migrate a függő gépeket deríti fel.
 
@@ -151,11 +151,11 @@ A Azure Migrate projekthez társított Log Analytics munkaterületen Service Map
 
 Futtasson egy lekérdezést a függőségi értékekhez a következő módon:
 
-1. Az ügynökök telepítése után lépjen a portálra, és kattintson az **Áttekintés**elemre.
-2. **Azure Migrate: kiszolgáló értékelése**, kattintson az **Áttekintés**elemre. Az **Essentials**kibontásához kattintson a lefelé mutató nyílra.
-3. A **OMS munkaterületen**kattintson a munkaterület nevére.
-3. A Log Analytics munkaterület oldalon > **általános**lapon kattintson a **naplók**elemre.
-4. Írja be a lekérdezést, és kattintson a **Futtatás**gombra.
+1. Az ügynökök telepítése után lépjen a portálra, és kattintson az **Áttekintés** elemre.
+2. **Azure Migrate: kiszolgáló értékelése**, kattintson az **Áttekintés** elemre. Az **Essentials** kibontásához kattintson a lefelé mutató nyílra.
+3. A **OMS munkaterületen** kattintson a munkaterület nevére.
+3. A Log Analytics munkaterület oldalon > **általános** lapon kattintson a **naplók** elemre.
+4. Írja be a lekérdezést, és kattintson a **Futtatás** gombra.
 
 ### <a name="sample-queries"></a>Mintalekérdezések
 
@@ -205,6 +205,6 @@ VMConnection
 | summarize sum(BytesSent), sum(BytesReceived) by Computer, Direction, SourceIp, DestinationIp, DestinationPort
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Hozzon létre egy értékelést](how-to-create-assessment.md) egy csoport számára.

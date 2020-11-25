@@ -7,22 +7,22 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/10/2020
+ms.date: 11/24/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 1bf0a4a86ccc36960f218fabebda5bc82eb29019
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 5b498b8f49f2f0636b010e3c4d86f13ad44ac090
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426170"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029013"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Automatikus kiegészítés és javaslatok hozzáadása az ügyfélalkalmazások számára
 
-A keresési típus egy gyakori módszer a felhasználó által kezdeményezett lekérdezések hatékonyságának javítására. Az Azure Cognitive Searchban ez a megoldás az *automatikus kiegészítésen* keresztül támogatott, amely egy kifejezést vagy kifejezést végez a részleges bevitel ("Micro" és "Microsoft") alapján. A *javaslatok* egy másik formája: a megfelelő dokumentumok rövid listája (a könyv címének visszaadása egy azonosítóval, amely egy részletes oldalhoz csatolható). Az automatikus kiegészítés és a javaslatok is az indexben egyeznek meg. A szolgáltatás nem kínál olyan lekérdezéseket, amelyek nulla eredményt adnak vissza.
+A keresési típus egy gyakori módszer a felhasználó által kezdeményezett lekérdezések hatékonyságának javítására. Az Azure Cognitive Searchban ez a megoldás az *automatikus kiegészítésen* keresztül támogatott, amely egy kifejezést vagy kifejezést végez a részleges bevitel ("Micro" és "Microsoft") alapján. A második felhasználói élmény *javaslatok*, vagy a megfelelő dokumentumok rövid listája (a könyv címének visszaadása egy azonosítóval, amely a könyv részletes oldalára hivatkozik). Az automatikus kiegészítés és a javaslatok is az indexben egyeznek meg. A szolgáltatás nem kínál olyan lekérdezéseket, amelyek nulla eredményt adnak vissza.
 
 A tapasztalatok Azure Cognitive Search-ban való megvalósításához a következőkre lesz szüksége:
 
-+ Egy *javaslat* a háttérben.
++ Az index sémába beágyazott *javaslati* definíció.
 + Egy *lekérdezés* , amely az [automatikus kiegészítést](/rest/api/searchservice/autocomplete) vagy a [javaslatok](/rest/api/searchservice/suggestions) API-t határozza meg a kérelemre vonatkozóan.
 + Egy *felhasználói felületi vezérlő* , amely a keresési típusok közötti interakciókat kezeli az ügyfélalkalmazás számára. Azt javasoljuk, hogy egy meglévő JavaScript-függvénytárat használjon erre a célra.
 
@@ -242,7 +242,7 @@ public async Task<ActionResult> AutoCompleteAsync(string term)
 
 Az automatikus kiegészítési függvény a keresési kifejezés bemenetét veszi igénybe. A metódus létrehoz egy [AutoCompleteParameters objektumot](/rest/api/searchservice/autocomplete). A rendszer az eredményt ezután JSON-kifejezéssé alakítja, hogy meg lehessen jeleníteni az ügyfélnek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezeket a hivatkozásokat követve megtekintheti a keresési lehetőségekkel kapcsolatos teljes körű útmutatást és kódot. Mindkét kód például a javaslatok és az automatikus kiegészítések hibrid implementációját tartalmazza.
 

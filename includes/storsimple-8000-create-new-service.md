@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: d47cf21e25c89c20a8baa31a80b867b74ada93df
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 746198f87e23cd7aca2a3177c23974917cb4b12a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360696"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027091"
 ---
 #### <a name="to-create-a-new-service"></a>Új szolgáltatás létrehozása
 
@@ -29,7 +29,7 @@ ms.locfileid: "93360696"
 
    2. A legördülő listából válasszon egy **előfizetést**. Az előfizetés az Ön számlázási fiókjához lesz társítva. Ez a mező nem jelenik meg abban az esetben, ha csak egy előfizetéssel rendelkezik.
 
-   3. Egy **Erőforráscsoporthoz** választhatja a **Meglévő használata** vagy az **Új létrehozása** lehetőséget. További információk: [Azure-erőforráscsoportok](/azure/azure-resource-manager/management/manage-resource-groups-portal).
+   3. Egy **Erőforráscsoporthoz** választhatja a **Meglévő használata** vagy az **Új létrehozása** lehetőséget. További információk: [Azure-erőforráscsoportok](../articles/azure-resource-manager/management/manage-resource-groups-portal.md).
 
    4. Adjon meg egy **helyet** a szolgáltatáshoz. Általában az eszköz telepítésének földrajzi helyéhez legközelebb eső hely a legoptimálisabb választás. Ezenkívül az alábbi szempontokat is érdemes figyelembe vennie:
 

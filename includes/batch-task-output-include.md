@@ -8,13 +8,13 @@ ms.topic: include
 ms.date: 04/06/2018
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: eaa76153fe96b5fd41166b20770e0a969aa9260d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 019e8db54c1cfd9f436f880b8ddbb9bfa31c50bc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83797181"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027639"
 ---
-A Azure Batch futó feladatok a futásakor kimeneti adatokat hozhatnak létre. A feladat kimeneti adatait gyakran kell tárolni a feladat egyéb feladatai, a feladatot futtató ügyfélalkalmazás vagy mindkettő között. A tevékenységek a kimeneti adatokat egy batch számítási csomópont fájlrendszerére írják, de a csomóponton lévő összes adat elvész, amikor a rendszer újrarendszerképét végzi, vagy amikor a csomópont elhagyja a készletet. A feladatok is rendelkezhetnek fájl-megőrzési időtartammal, amely után a feladat által létrehozott fájlok törlődnek. Ezen okok miatt fontos a feladat kimenetének megőrzése, amelyre később szüksége lesz egy adattárba, például az [Azure Storage](https://docs.microsoft.com/azure/storage/)-ba.
+A Azure Batch futó feladatok a futásakor kimeneti adatokat hozhatnak létre. A feladat kimeneti adatait gyakran kell tárolni a feladat egyéb feladatai, a feladatot futtató ügyfélalkalmazás vagy mindkettő között. A tevékenységek a kimeneti adatokat egy batch számítási csomópont fájlrendszerére írják, de a csomóponton lévő összes adat elvész, amikor a rendszer újrarendszerképét végzi, vagy amikor a csomópont elhagyja a készletet. A feladatok is rendelkezhetnek fájl-megőrzési időtartammal, amely után a feladat által létrehozott fájlok törlődnek. Ezen okok miatt fontos a feladat kimenetének megőrzése, amelyre később szüksége lesz egy adattárba, például az [Azure Storage](../articles/storage/index.yml)-ba.
 
 A Storage-fiók beállításai a Batchben: [Batch-fiókok és Azure Storage-fiókok](../articles/batch/accounts.md#azure-storage-accounts).

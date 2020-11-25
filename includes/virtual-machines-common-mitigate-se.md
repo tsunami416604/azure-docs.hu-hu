@@ -9,11 +9,11 @@ ms.date: 11/12/2019
 ms.author: cynthn;kareni
 ms.custom: include file
 ms.openlocfilehash: 8594ce713a8675505e0ee3051018b05992b160a9
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95553489"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027673"
 ---
 **Utolsó dokumentum frissítése**: 12 November 2019 10:00 am PST.
 
@@ -156,7 +156,7 @@ Ha Hyper-threaded virtuális gépet futtat, [forduljon az Azure támogatási szo
 
 Egy Hyper-threaded virtuális gép létrehozásakor az Azure 2 szálat foglal le a Core-ban, ezek neve vCPU. Ha a Hyper-Threading szolgáltatás le van tiltva, az Azure eltávolítja a szálat, és felfedi az egyszálas magok (fizikai magok) felszínét. A vCPU és a CPU közötti arány 2:1, így a Hyper-Threading letiltását követően a virtuális gépen lévő CPU-szám a felére csökken. Egy D8_v3 virtuális gép például egy 8 vCPU futó Hyper-threadd VM (2 szál/mag x 4 mag).  Ha a Hyper-Threading szolgáltatás le van tiltva, a processzorok 4 fizikai magot vesznek, és az összes mag 1 szálat. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk útmutatást nyújt az alábbi, spekulatív végrehajtást biztosító, számos modern processzort érintő támadásokról:
 

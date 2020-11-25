@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/19/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: d1e7fa1ed1649508f0d4923db8817d17ad556ca1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55b545471cbe45fe35e28879270e4340cf9d3834
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67179049"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028050"
 ---
 Amikor erőforrásokat helyez üzembe az Azure-ban, elképesztően rugalmasan dönthet arról, milyen típusú erőforrásokat szeretne üzembe helyezni, hol legyenek és hogyan állítja be őket. Előfordulhat azonban, hogy ez a rugalmasság több lehetőséget teremt, mint amennyit a szervezeten belül engedélyezni szeretne. Amikor erőforrások Azure-ban való üzembe helyezését mérlegeli, esetleg felmerülhetnek az alábbi kérdések:
 
@@ -30,4 +30,4 @@ A cikk ezekkel a kérdésekkel foglalkozik. Konkrétan a következőket fogja te
 > * Zárolja a rendszer szempontjából kritikus fontosságú erőforrásokat.
 > * Felcímkézi az erőforrásokat, hogy nyomon követhesse őket a szervezet számára jelentéssel bíró értékek szerint.
 
-Ez a cikk az irányítás megvalósításához elvégzendő feladatokra összpontosít. A fogalmak részletesebb ismertetését [az Azure-beli irányítást](../articles/security/governance-in-azure.md) ismertető cikkben találja. 
+Ez a cikk az irányítás megvalósításához elvégzendő feladatokra összpontosít. A fogalmak részletesebb ismertetését [az Azure-beli irányítást](../articles/governance/index.yml) ismertető cikkben találja.

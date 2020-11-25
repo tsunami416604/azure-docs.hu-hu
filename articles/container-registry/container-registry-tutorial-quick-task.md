@@ -2,18 +2,18 @@
 title: Oktatóanyag – gyors tároló – rendszerkép összeállítása
 description: Ebben az oktatóanyagban megtudhatja, hogyan állíthat össze Docker-tárolórendszerképet az Azure-ban az Azure Container Registry Tasks (ACR Tasks) használatával, majd hogyan helyezheti azokat üzembe az Azure Container Instances szolgáltatásban.
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: 43d2c277fe3297c7e5ee55046118add352853640
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b218f47348d5a26297f14c4bc788a6cf6b78cc60
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739534"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030329"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Oktatóanyag: Tárolólemezképek buildelése és üzembe helyezése a felhőben az Azure Container Registry Tasks használatával
 
-Az **ACR Tasks** az Azure Container Registry egy szolgáltatáscsomagja, amely lehetővé teszi a Docker-tárolórendszerképek zökkenőmentes és hatékony összeállítását az Azure-ban. Ebben a cikkben az ACR Tasks *gyors feladat* funkciójának használatával ismerkedhet meg.
+Az [ACR Tasks](container-registry-tasks-overview.md) az Azure Container Registry egy szolgáltatáscsomagja, amely lehetővé teszi a Docker-tárolórendszerképek zökkenőmentes és hatékony összeállítását az Azure-ban. Ebben a cikkben az ACR Tasks *gyors feladat* funkciójának használatával ismerkedhet meg.
 
 A „belső” fejlesztési ciklus a kódírás, alkalmazás-összeállítás és alkalmazástesztelés ismétlődő folyamata a verziókövetésbe küldés előtt. A gyors feladat funkció kiterjeszti a „belső” fejlesztési ciklust a felhőre, és lehetővé teszi az összeállítások sikerességének ellenőrzését, valamint a sikeresen összeállított rendszerképek automatikus leküldését a tárolóregisztrációs adatbázisba. A rendszerképek összeállítása natív módon a felhőben történik, a regisztrációs adatbázis közelében, ami meggyorsítja az üzembe helyezést.
 
@@ -27,10 +27,6 @@ Ez az oktatóanyag egy sorozat első része, és az alábbiakat ismerteti:
 > * Tároló üzembe helyezése az Azure Container Instances szolgáltatásban
 
 A további oktatóanyagokban elsajátítja majd, hogyan lehet az ACR Tasks segítségével automatizálni a tárolórendszerképek összeállítását kódvéglegesítés, illetve az alapként szolgáló rendszerképek frissítése alkalmával. Az ACR-feladatok [több lépésből álló feladatokat](container-registry-tasks-multi-step.md)is futtathatnak, egy YAML-fájllal a több tároló létrehozásához, leküldéséhez és opcionális teszteléséhez szükséges lépéseket határozzák meg.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Ha az Azure CLI-t helyben szeretné használni, az Azure CLI **2.0.46-os** vagy újabb verzióját kell telepítenie, és be kell jelentkeznie az [az login][az-login] paranccsal. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretné a parancssori felületet, olvassa el [az Azure CLI telepítését][azure-cli] ismertető témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -66,13 +62,13 @@ cd acr-build-helloworld-node
 
 Az oktatóanyag-sorozatban használt parancsok a Bash-felületnek megfelelően vannak formázva. Ha inkább a PowerShellt, a parancssort vagy egy másik rendszerhéjat szeretne használni, ennek megfelelően esetleg módosítania kell a sorok tartalmát és a környezeti változók formátumát.
 
+[!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
+
 ## <a name="build-in-azure-with-acr-tasks"></a>Összeállítás az Azure-ban az ACR Tasks használatával
 
 Miután lekérte a forráskódot a gépre, az alábbi lépéseket követve hozzon lére egy tárolóregisztrációs adatbázist, és állítsa össze a tárolórendszerképet az ACR Tasks használatával.
 
 A mintaparancsok könnyebb végrehajtása érdekében a sorozat oktatóanyagai rendszerhéj-környezeti változókat használnak. Futtassa a következő parancsot az `ACR_NAME` változó beállításához. A helyére írja be az **\<registry-name\>** új tároló-beállításjegyzék egyedi nevét. A beállításjegyzék nevének egyedinek kell lennie az Azure-on belül, csak kisbetűket tartalmazhat, és 5-50 alfanumerikus karaktert tartalmazhat. Az oktatóanyagban létrehozott egyéb erőforrások is ezen néven alapulnak, így csak ezt az első változót kell módosítania.
-
-[![Beágyazás elindítása](https://shell.azure.com/images/launchcloudshell.png "Az Azure Cloud Shell elindítása")](https://shell.azure.com)
 
 ```console
 ACR_NAME=<registry-name>
@@ -80,16 +76,16 @@ ACR_NAME=<registry-name>
 
 Miután a tárolóregisztrációs adatbázis környezeti változóját ellátta értékkel, az oktatóanyagban szereplő többi parancsot az értékek szerkesztése nélkül másolhatja és beillesztheti. Az alábbi parancsok végrehajtásával hozzon létre egy erőforráscsoportot és egy tárolóregisztrációs adatbázist:
 
-```azurecli-interactive
+```azurecli
 RES_GROUP=$ACR_NAME # Resource Group name
 
 az group create --resource-group $RES_GROUP --location eastus
 az acr create --resource-group $RES_GROUP --name $ACR_NAME --sku Standard --location eastus
 ```
 
-Miután a regisztrációs adatbázis létrejött, az ACR Tasks használatával állítson össze egy tárolórendszerképet a mintakódból. Az [az acr build][az-acr-build] parancs futtatásával hajtson végre egy *gyors feladatot* :
+Miután a regisztrációs adatbázis létrejött, az ACR Tasks használatával állítson össze egy tárolórendszerképet a mintakódból. Az [az acr build][az-acr-build] parancs futtatásával hajtson végre egy *gyors feladatot*:
 
-```azurecli-interactive
+```azurecli
 az acr build --registry $ACR_NAME --image helloacrtasks:v1 .
 ```
 
@@ -100,16 +96,16 @@ Packing source code into tar file to upload...
 Sending build context (4.813 KiB) to ACR...
 Queued a build with build ID: da1
 Waiting for build agent...
-2018/08/22 18:31:42 Using acb_vol_01185991-be5f-42f0-9403-a36bb997ff35 as the home volume
-2018/08/22 18:31:42 Setting up Docker configuration...
-2018/08/22 18:31:43 Successfully set up Docker configuration
-2018/08/22 18:31:43 Logging in to registry: myregistry.azurecr.io
-2018/08/22 18:31:55 Successfully logged in
+2020/11/18 18:31:42 Using acb_vol_01185991-be5f-42f0-9403-a36bb997ff35 as the home volume
+2020/11/18 18:31:42 Setting up Docker configuration...
+2020/11/18 18:31:43 Successfully set up Docker configuration
+2020/11/18 18:31:43 Logging in to registry: myregistry.azurecr.io
+2020/11/18 18:31:55 Successfully logged in
 Sending build context to Docker daemon   21.5kB
-Step 1/5 : FROM node:9-alpine
-9-alpine: Pulling from library/node
+Step 1/5 : FROM node:15-alpine
+15-alpine: Pulling from library/node
 Digest: sha256:8dafc0968fb4d62834d9b826d85a8feecc69bd72cd51723c62c7db67c6dec6fa
-Status: Image is up to date for node:9-alpine
+Status: Image is up to date for node:15-alpine
  ---> a56170f59699
 Step 2/5 : COPY . /src
  ---> 88087d7e709a
@@ -131,7 +127,7 @@ Removing intermediate container fe7027a11787
  ---> 20a27b90eb29
 Successfully built 20a27b90eb29
 Successfully tagged myregistry.azurecr.io/helloacrtasks:v1
-2018/08/22 18:32:11 Pushing image: myregistry.azurecr.io/helloacrtasks:v1, attempt 1
+2020/11/18 18:32:11 Pushing image: myregistry.azurecr.io/helloacrtasks:v1, attempt 1
 The push refers to repository [myregistry.azurecr.io/helloacrtasks]
 6428a18b7034: Preparing
 c44b9827df52: Preparing
@@ -144,8 +140,8 @@ c44b9827df52: Pushed
 6428a18b7034: Pushed
 8c9992f4e5dd: Pushed
 v1: digest: sha256:b038dcaa72b2889f56deaff7fa675f58c7c666041584f706c783a3958c4ac8d1 size: 1366
-2018/08/22 18:32:43 Successfully pushed image: myregistry.azurecr.io/helloacrtasks:v1
-2018/08/22 18:32:43 Step ID acb_step_0 marked as successful (elapsed time in seconds: 15.648945)
+2020/11/18 18:32:43 Successfully pushed image: myregistry.azurecr.io/helloacrtasks:v1
+2020/11/18 18:32:43 Step ID acb_step_0 marked as successful (elapsed time in seconds: 15.648945)
 The following dependencies were found:
 - image:
     registry: myregistry.azurecr.io
@@ -155,7 +151,7 @@ The following dependencies were found:
   runtime-dependency:
     registry: registry.hub.docker.com
     repository: library/node
-    tag: 9-alpine
+    tag: 15-alpine
     digest: sha256:8dafc0968fb4d62834d9b826d85a8feecc69bd72cd51723c62c7db67c6dec6fa
   git: {}
 
@@ -178,7 +174,7 @@ Az Azure-beli tárolóregisztrációs adatbázisok eléréséhez minden éles fo
 
 Ha még nem rendelkezik tárolóval az [Azure Key Vaultban](../key-vault/index.yml), hozzon létre egyet az Azure CLI alábbi parancsaival.
 
-```azurecli-interactive
+```azurecli
 AKV_NAME=$ACR_NAME-vault
 
 az keyvault create --resource-group $RES_GROUP --name $AKV_NAME
@@ -190,7 +186,7 @@ Létre kell hoznia egy szolgáltatásnevet, és el kell tárolnia annak hiteles�
 
 Az [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] paranccsal hozhatja létre a szolgáltatásnevet, és a **jelszavát** az [az keyvault secret set][az-keyvault-secret-set] paranccsal tárolhatja el a tárolóban:
 
-```azurecli-interactive
+```azurecli
 # Create service principal, store its password in AKV (the registry *password*)
 az keyvault secret set \
   --vault-name $AKV_NAME \
@@ -207,7 +203,7 @@ Az `--role` előző parancsban szereplő argumentum konfigurálja az egyszerű s
 
 Ezután tárolja el a szolgáltatásnév *appId* azonosítóját a tárolóban, amely az Azure Container Registry szolgáltatásban a hitelesítéskor megadandó **felhasználónév** lesz:
 
-```azurecli-interactive
+```azurecli
 # Store service principal ID in AKV (the registry *username*)
 az keyvault secret set \
     --vault-name $AKV_NAME \
@@ -228,7 +224,7 @@ Miután a szolgáltatásnév hitelesítő adatait titkos kulcsként mentette az 
 
 A következő [az container create][az-container-create] parancs végrehajtásával helyezzen üzembe egy tárolópéldányt. A parancs a szolgáltatásnévnek az Azure Key Vault-tárolóban tárolt hitelesítő adatait használja a tárolóregisztrációs adatbázisban való hitelesítéshez.
 
-```azurecli-interactive
+```azurecli
 az container create \
     --resource-group $RES_GROUP \
     --name acr-tasks \
@@ -255,18 +251,18 @@ Jegyezze fel a tároló teljes tartománynevét, amelyet a következő szakaszba
 
 A tároló indítási folyamatának megtekintéséhez használja az [az container attach][az-container-attach] parancsot:
 
-```azurecli-interactive
+```azurecli
 az container attach --resource-group $RES_GROUP --name acr-tasks
 ```
 
-Az `az container attach` kimenete először a tároló állapotát jeleníti meg, miközben a tároló lekéri a rendszerképet, és elindul, majd a helyi konzol STDOUT és STDERR értékeit a tároló ugyanezen értékeihez köti.
+A `az container attach` kimenet először a tároló állapotát jeleníti meg, amikor lekéri a rendszerképet, és elindítja, majd a helyi konzol stdout és stderr kötését a tárolóhoz köti.
 
 ```output
 Container 'acr-tasks' is in state 'Running'...
-(count: 1) (last timestamp: 2018-08-22 18:39:10+00:00) pulling image "myregistry.azurecr.io/helloacrtasks:v1"
-(count: 1) (last timestamp: 2018-08-22 18:39:15+00:00) Successfully pulled image "myregistry.azurecr.io/helloacrtasks:v1"
-(count: 1) (last timestamp: 2018-08-22 18:39:17+00:00) Created container
-(count: 1) (last timestamp: 2018-08-22 18:39:17+00:00) Started container
+(count: 1) (last timestamp: 2020-11-18 18:39:10+00:00) pulling image "myregistry.azurecr.io/helloacrtasks:v1"
+(count: 1) (last timestamp: 2020-11-18 18:39:15+00:00) Successfully pulled image "myregistry.azurecr.io/helloacrtasks:v1"
+(count: 1) (last timestamp: 2020-11-18 18:39:17+00:00) Created container
+(count: 1) (last timestamp: 2020-11-18 18:39:17+00:00) Started container
 
 Start streaming logs:
 Server running at http://localhost:80
@@ -274,26 +270,26 @@ Server running at http://localhost:80
 
 Amikor megjelenik a `Server running at http://localhost:80` üzenet, adja meg a tároló teljes tartománynevét a böngészőben a futó alkalmazás megtekintéséhez. A teljes tartománynévnek meg kell jelennie az előző szakaszban végrehajtott `az container create` parancs kimenetében.
 
-![A böngészőben megjelenített mintaalkalmazás képernyőképe][quick-build-02-browser]
+:::image type="content" source="media/container-registry-tutorial-quick-build/quick-build-02-browser.png" alt-text="Böngészőben futó minta alkalmazás":::
 
 A konzolt a `Control+C` billentyűkombinációval választhatja le a tárolóról.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Állítsa le a tárolópéldányt az [az container delete][az-container-delete] paranccsal:
 
-```azurecli-interactive
+```azurecli
 az container delete --resource-group $RES_GROUP --name acr-tasks
 ```
 
 Az oktatóanyagban létrehozott *összes* erőforrás, így a tárolóregisztrációs adatbázis, a kulcstároló és a szolgáltatásnév eltávolításához hajtsa végre az alábbi parancsokat. Ezeket az erőforrásokat azonban a sorozat [következő oktatóanyagában](container-registry-tutorial-build-task.md) is használjuk majd, ezért érdemes megtartani azokat, ha egyből továbblép a következő oktatóanyagra.
 
-```azurecli-interactive
+```azurecli
 az group delete --resource-group $RES_GROUP
 az ad sp delete --id http://$ACR_NAME-pull
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután egy gyors feladattal tesztelte a belső ciklust, konfiguráljon egy **összeállítási feladatot** a tárolórendszerképek összeállításának automatikus aktiválására, amikor forráskódot véglegesít egy Git-adattárban:
 

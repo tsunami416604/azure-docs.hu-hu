@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fda9378a41e0d98276957a6fad75db2c20e6e4e9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ba7b8ff2555fd7014cf16f66745721c6425ff868
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919663"
+ms.locfileid: "96029523"
 ---
 # <a name="build-resilience-in-your-customer-identity-and-access-management-with-azure-active-directory-b2c"></a>Hozzon létre rugalmasságot az ügyfelek identitásában és a hozzáférés-kezelésben Azure Active Directory B2C
 
@@ -46,10 +46,6 @@ Az alkalmazás fejlesztése során azt javasoljuk, hogy a megoldás identitás-�
 
 - [Figyelés és elemzés](resilience-with-monitoring-alerting.md): a szolgáltatás állapotának felmérése a legfontosabb mutatók figyelésével, valamint a hibák észlelésével és a teljesítmény megszakításával a riasztások segítségével.
 
-- Rugalmassági erőforrások Azure AD B2C-fejlesztőknek
-  - [Rugalmas végfelhasználói élmény](resilient-end-user-experience.md)
-  - [Rugalmas felületek külső folyamatokkal](resilient-external-processes.md)
-  - [Rugalmasság a fejlesztőknek ajánlott eljárások révén](resilience-b2c-developer-best-practices.md)
-  - [Rugalmasság a monitorozás és az elemzés révén](resilience-with-monitoring-alerting.md)
 - [Rugalmasság kialakítása a hitelesítési infrastruktúrában](resilience-in-infrastructure.md)
+
 - [A hitelesítés és az engedélyezés rugalmasságának fokozása az alkalmazásokban](resilience-app-development-overview.md)

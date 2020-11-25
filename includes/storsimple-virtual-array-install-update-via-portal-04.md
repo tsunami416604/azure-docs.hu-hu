@@ -4,61 +4,61 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 4d43ff8adf8a0766402a84a743ac2d1287976a84
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 48ce594fa5f4b736e69b5b4ef7a10011fe8031fa
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93375808"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027392"
 ---
 #### <a name="to-install-updates-via-the-azure-portal"></a>Frissítések telepítése az Azure Portalon keresztül
 
 1. Nyissa meg a StorSimple-eszközkezelőt, és válassza az **Eszközök** elemet. A szolgáltatáshoz csatlakozó eszközök listájából válassza ki a frissíteni kívánt eszközt, majd kattintson rá. 
 
-    ![eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate1m.png) 
+    ![Az utóbbi esetben Eszközkezelő MySSDevManager ki van emelve és ki van választva, az eszközök kiemelve és kijelölve, az eszköz MYSSIS1103 pedig ki van emelve és ki van választva.](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate1m.png) 
 
 2. A **Beállítások** panelen kattintson az **Eszközfrissítések** elemre. 
 
-    ![2. eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate2m.png)  
+    ![A MYSSIS1103 kapcsolatos információk jelennek meg. A beállítások területen az eszközök frissítései ki vannak emelve.](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate2m.png)  
 
 3. Megjelenik a szoftverfrissítések elérhetőségét jelző üzenet. A frissítések kereséséhez a **Vizsgálat** gombot is használhatja.
 
-    ![3. eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate3m1.png)
+    ![Az eszköz frissítései ablaktáblán az "új frissítések érhetők el" és a "legutóbbi vizsgálat/18/01/2017 2:42 PM/szoftver verziója/10.0.10288.0" szerepel. A verzió ki van emelve.](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate3m1.png)
 
     A vizsgálat indításáról és sikeres befejezéséről értesítést kap.
 
-    ![4. eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate5m.png)
+    ![Az értesítésben a "frissítések keresése az eszköz MySSIS1103. 2:12 PM/a művelet végrehajtása sikeresen befejeződött. "](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate5m.png)
 
 4. Ha elkészült a frissítések vizsgálata, kattintson a **Frissítések letöltése** gombra. 
 
-    ![5. eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate6m.png)
+    ![Az eszköz frissítései ablaktáblán az "új frissítések érhetők el" üzenet jelenik meg. A frissítések letöltése gomb ki van emelve.](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate6m.png)
 
 5. Az **Új frissítések** panel tájékoztatja arról, hogy a frissítések letöltése után meg kell erősítenie a telepítésüket. Kattintson az **OK** gombra.
 
-    ![6. eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate7m.png)
+    ![Az új frissítések ablaktábla "a frissítések letöltését követően meg kell erősítenie a telepítést". Az OK gomb ki van emelve.](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate7m.png)
 
 6. A feltöltés indításáról és sikeres befejezéséről értesítést kap.
 
-     ![7. eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate8m.png)
+     ![Az értesítés a "frissítések letöltése az eszköz MySSIS1... 2:13 PM ".](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate8m.png)
 
 5. Az **Eszközfrissítések** panelen kattintson a **Telepítés** elemre.
 
-     ![8. eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate11m1.png)   
+     ![Az eszközök frissítései a "frissítések telepítésének megerősítése" kifejezést jelentik. Van egy telepítési gomb.](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate11m1.png)   
 
 6. Az **Új frissítések** panelen a rendszer figyelmezteti, hogy a frissítési folyamat megszakítja az eszköz egyéb folyamatait. Mivel a virtuális tömb egy egyetlen csomóponttal rendelkező eszköz, ezért az eszköz a frissítést követően újraindul. Ez megszakítja a folyamatban lévő I/O-műveleteket. A frissítések telepítéséhez kattintson az **OK** gombra. 
 
-    ![9. eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate12m.png) 
+    ![Az új frissítések ablaktáblán látható üzenet a következő: "az eszközön a frissítések telepítése után állásidő lesz." Az OK gomb ki van emelve.](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate12m.png) 
 
 7. A telepítési feladat indításáról értesítést kap. 
 
-    ![10. eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate13m.png)
+    ![Az értesítés a "frissítések telepítése az eszköz MySSIS1103. 2:15 PM ".](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate13m.png)
 
 8.  A telepítési feladat sikeres befejezése után a telepítés eredményeinek megtekintéséhez kattintson a **Feladat megtekintése** hivatkozásra az **Eszközfrissítések** panelen. 
 
-    ![11. eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate15m1.png)
+    ![Az eszköz frissítései ablaktáblán található "frissítések telepítése" címkével ellátott hivatkozás. A következő feladatot tekintheti meg: ".](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate15m1.png)
 
     Ezzel továbblép a **Frissítések telepítése** panelre. A feladatról részletes információt itt talál.
 
-    ![12. eszköz frissítése](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate16m1.png)
+    ![A frissítések telepítése panel telepítési adatokat tartalmaz, beleértve az eszköz, az állapot, az időtartam, a kezdési idő és a Leállítás időpontját.](../includes/media/storsimple-virtual-array-install-update-via-portal-04/azupdate16m1.png)
 
 9. A frissítések sikeres telepítéséről értesítést láthat az **Eszközfrissítések** panelen. 

@@ -5,35 +5,39 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 4b04558077f6b59d0fef613308a6ab96680d7ff8
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 6f80d41001d11c52a00454ea2a593f3f1fce32db
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92470944"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028102"
 ---
 ## <a name="download-and-install"></a>Letöltés és telepítés
 
 #### <a name="windows-install"></a>[Windows-telepítés](#tab/windowsinstall)
 
-> [!NOTE]
-> Windows rendszeren a platformhoz a [Microsoft Visual C++ terjeszthető változata szükséges a Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) -hez. Ha első alkalommal telepíti ezt, a Windows újraindítására lehet szükség.
-
 Kövesse az alábbi lépéseket a Speech CLI Windows rendszeren történő telepítéséhez:
 
-1. Töltse le a Speech CLI [zip-archívumát](https://aka.ms/speech/spx-zips.zip), majd bontsa ki.
-2. Nyissa meg a `spx-zips` letöltésből kinyert gyökérkönyvtárat, és bontsa ki a szükséges alkönyvtárat ( `spx-net471` a .NET-keretrendszer 4,7-es verziójához, vagy a `spx-netcore-win-x64` .net Core 3,0 x64-es processzoron).
+1. Windows rendszeren a platformhoz a [Microsoft Visual C++ terjeszthető változata szükséges a Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) -hez. Ha először telepíti az elsőt, újraindításra lehet szükség.
+2. Töltse le a Speech CLI [zip-archívumát](https://aka.ms/speech/spx-zips.zip), majd bontsa ki.
+3. Nyissa meg azt a könyvtárat, ahová kicsomagolta `spx-zips` . Ez a mappa számos platformon tartalmaz programfájlokat a Speech CLI-hez. 
+4. Bontsa ki a platform ( `spx-net471` a .NET-keretrendszer 4,7-es vagy a .net Core 3,0-es verziójához készült) fájljait `spx-netcore-win-x64` egy x64-es processzoron. Ne feledje, hogy ezt a könyvtárat fogja futtatni `spx` .
 
-A parancssorban módosítsa a könyvtárat erre a helyre, majd írja be a parancsot a `spx` beszédfelismerési parancssori felület súgójának megjelenítéséhez.
+### <a name="run-the-speech-cli"></a>A Speech CLI futtatása
 
-> [!NOTE]
-> Windows rendszeren a Speech CLI csak a parancssorban elérhető betűkészleteket jeleníti meg a helyi számítógépen.
-> A [Windows Terminal](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701) a Speech CLI által interaktív módon létrehozott összes betűtípust támogatja.
-> Ha fájlba, például egy Jegyzettömbbe vagy egy webböngészőbe (például a Microsoft Edge) küldi el a kimenetet, az összes betűtípust is megjelenítheti.
+1. Nyissa meg a parancssort vagy a PowerShellt, majd keresse meg azt a könyvtárat, ahová kibontotta a Speech CLI-t.  
+2. A `spx` SPEECH parancssori felület Súgó parancsainak megtekintéséhez írja be a következőt:.
 
 > [!NOTE]
 > A PowerShell nem vizsgálja a helyi könyvtárat a parancs keresésekor. A PowerShellben váltson a könyvtár helyére, `spx` és hívja meg az eszközt a következő beírásával: `.\spx` .
 > Ha hozzáadja ezt a könyvtárat az elérési úthoz, a PowerShell és a Windows-parancssor `spx` bármely könyvtárból megkereshető, az `.\` előtagot nem beleértve.
+
+### <a name="font-limitations"></a>Betűkészletre vonatkozó korlátozások
+
+Windows rendszeren a Speech CLI csak a parancssorban elérhető betűkészleteket jeleníti meg a helyi számítógépen.
+A [Windows Terminal](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701) a Speech CLI által interaktív módon létrehozott összes betűtípust támogatja.
+
+Ha fájlba, például egy Jegyzettömbbe vagy egy webböngészőbe (például a Microsoft Edge) küldi el a kimenetet, az összes betűtípust is megjelenítheti.
 
 #### <a name="linux-install"></a>[Linux-telepítés](#tab/linuxinstall)
 

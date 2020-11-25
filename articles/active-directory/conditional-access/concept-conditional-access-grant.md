@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ef2d233024ab3e9cd086e8285e681dc9f42f3f7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a8915ae349e33390ce5bb687d7c07a21665a0258
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "95904018"
+ms.locfileid: "96029404"
 ---
 # <a name="conditional-access-grant"></a>Feltételes hozzáférés: Engedélyezés
 
@@ -108,7 +108,7 @@ Ez a beállítás a következő iOS-és Android-alkalmazásokra vonatkozik:
 - A jóváhagyott ügyfélalkalmazások támogatják az Intune Mobile Application Management szolgáltatást.
 - A **jóváhagyott ügyfélalkalmazás megkövetelése** :
    - A csak az iOS és az Android for Device platform feltételeit támogatja.
-   - Az eszköz regisztrálásához egy Broker-alkalmazás szükséges. IOS rendszeren a közvetítő alkalmazás Microsoft Authenticator és Android rendszeren, Intune Céges portál alkalmazás.
+   - Az eszköz regisztrálásához egy Broker-alkalmazás szükséges. A közvetítő alkalmazás a Microsoft Authenticator iOS-hez, vagy az Microsoft Authenticator vagy a Microsoft vállalati portál Android-eszközökhöz.
 - A feltételes hozzáférés nem tekintheti meg a Microsoft Edge-t InPrivate módban egy jóváhagyott ügyfélalkalmazás.
 
 Tekintse meg a következő cikket [: a felhőalapú alkalmazások hozzáférésének megkövetelése a Cloud app Accesshez feltételes hozzáféréssel](app-based-conditional-access.md) a konfigurációs példákhoz.

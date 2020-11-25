@@ -2,14 +2,14 @@
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 05/06/2019
+ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: a71762010984928b93c19c7256c2ba4f0fe0f64b
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: e7b7fae094ad15bc1732778b6a4a3259fb4dd3b5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94503875"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027055"
 ---
 | Erőforrás | Szabványos fájlmegosztás\* | Prémium fájlmegosztás |
 |----------|---------------|------------------------------------------|
@@ -26,7 +26,8 @@ ms.locfileid: "94503875"
 | Megosztási Pillanatképek maximális száma | 200 megosztási Pillanatképek | 200 megosztási Pillanatképek |
 | A maximális objektum (könyvtárak és fájlok) nevének hossza | 2 048 karakter | 2 048 karakter |
 | A maximális elérésiút-összetevő (az elérési út \A\B\C\D, minden betű egy összetevő) | 255 karakter | 255 karakter |
-| Rögzített hivatkozás korlátja (csak NFS esetén) | N/A | 178 |
+| Rögzített hivatkozás korlátja (csak NFS esetén) | N.A. | 178 |
+| Többcsatornás SMB-csatornák maximális száma | N.A. | 4 |
 
 \* A standard fájlmegosztás korlátai a standard fájlmegosztás számára elérhető mindhárom rétegre vonatkoznak: a tranzakció optimalizált, a gyors és a lassú.
 

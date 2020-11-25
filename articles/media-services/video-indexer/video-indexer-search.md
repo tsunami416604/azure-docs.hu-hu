@@ -8,54 +8,55 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 11/23/2019
 ms.author: juliako
-ms.openlocfilehash: 1c3326456fefbbef9228cf26b5821f306cd21601
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1ca7c677e5f1eb55d74cca45e757676674f303c
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80127908"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030534"
 ---
 # <a name="search-for-exact-moments-in-videos-with-video-indexer"></a>Pontos pillanatok keresése a videókban Video Indexer
 
-Ebből a témakörből megtudhatja, hogy milyen keresési lehetőségekkel keresheti meg a videók pontos pillanatait.
+Ebből a témakörből megtudhatja, hogyan használhatja a Video Indexer webhelyét a videók pontos pillanatainak megkereséséhez.
 
 1. Lépjen a [video Indexer](https://www.videoindexer.ai/) webhelyére, és jelentkezzen be.
-2. Keresés a fiókban található összes videó között.
+1. Adja meg a keresési kulcsszavakat, és a keresés a fiók könyvtára összes videója között elvégezhető. 
 
-    A következő példában az összes olyan videóra keresünk, amely a biztonsággal kapcsolatos információkat és a kijelzést jeleníti meg.
+    A keresést a **szűrők** lehetőség kiválasztásával szűrheti. Az alábbi példában a "Microsoft" kifejezésre keresünk, amely csak képernyős szövegként jelenik meg (OCR).
 
-    ![Videó keresése a Video Indexerban](./media/video-indexer-search/video-indexer-search01.png)
+    :::image type="content" source="./media/video-indexer-search/filter.png" alt-text="Szűrés, csak szöveg":::
+1. Kattintson a **Keresés** gombra az eredmény megtekintéséhez.
 
-3. Keresse meg a videó összegzett elemzéseit.
+    :::image type="content" source="./media/video-indexer-search/results.png" alt-text="Videó keresési eredménye":::
 
-    A videóban a **Lejátszás** lehetőségre kattintva kereshet a videóban. Ezután a **Keresés** lapra kattintva megkeresheti a videó pontos pillanatait.
+    Ha a találatok egyikét választja, a lejátszó a videóban megadott időpontra viszi.
+1. Tekintse meg és keresse meg a videó összesített eredményeit a videó **Lejátszás** gombjára kattintva, vagy válasszon egyet az eredeti keresési eredmények közül. 
 
-    A következő példában a "biztonság" kifejezésre keresünk a kiválasztott videóban.
+    Megtekintheti, megkeresheti és **szerkesztheti az eredményeket**. Ha kijelöli az egyik bepillantást, a lejátszó a videóban a pontos pillanatot adja.  
 
-    ![Keresés egy videóban Video Indexer](./media/video-indexer-search/video-indexer-search02.png)
+    :::image type="content" source="./media/video-indexer-search/insights.png" alt-text="A videó tartalmának megtekintése, keresése és szerkesztése":::
 
-    Ha a találatok egyikét választja, a lejátszó a videóban megadott időpontra viszi. Az alkalmazásban elérheti a lejátszó/betekintő nézetet és a szinkronizálást. További információ: [video Indexer widgetek beágyazása az alkalmazásba](video-indexer-embed-widgets.md).
+    Ha Video Indexer widgeteket ágyaz be a videóba, az alkalmazásban elérheti a lejátszó/betekintési nézetet és a szinkronizálást. További információ: [video Indexer widgetek beágyazása az alkalmazásba](video-indexer-embed-widgets.md).
+1. Megtekintheti, megkeresheti és szerkesztheti a átiratokat, ha az **Idősor** lapra kattint. 
 
-4. Keresse meg a videó részletes részletezését.
+    :::image type="content" source="./media/video-indexer-search/timeline.png" alt-text="A videó átiratait megtekintheti, megkeresheti és szerkesztheti":::
 
-    Ha saját klipet szeretne létrehozni a talált videó alapján, kattintson a **Szerkesztés** gombra. Ezen az oldalon megtekintheti a videót, valamint az azt tartalmazó bepillantást a szűrőkbe. További információ: [video Indexer-információk megtekintése és szerkesztése](video-indexer-view-edit.md).
+    A szöveg szerkesztéséhez válassza a **Szerkesztés** lehetőséget a jobb felső sarokban, és szükség szerint módosítsa a szöveget. 
 
-    A videóban megjelenő pontos pillanatokra kattintva csak azokat a sorokat jelenítheti meg, amelyekre kíváncsi. Az oldalsó bepillantást használva szűrheti a megtekinteni kívánt részeket. Ha elkészült, megtekintheti a klipet, és a **Közzététel** gombra kattintva létrehozhatja a gyűjteményben megjelenő új klipet.
+    Az átiratokat a jobb felső sarokban található megfelelő lehetőség kiválasztásával is lefordíthatja és letöltheti. 
 
-    A következő példában a "vegyes valóság" szövegre kerestünk rá. További szűrőket is alkalmazunk, ahogy az alábbi képernyőn is látható.
+## <a name="embed-download-create-projects"></a>Beágyazás, letöltés, projektek létrehozása
 
-    ![Pontos időpont keresése Video Indexer](./media/video-indexer-search/video-indexer-search03.png)
+A videó beágyazásához **</>beágyazás** lehetőség kiválasztásával teheti meg a videót. Részletekért lásd: [Visual widgetek beágyazása az alkalmazásba](video-indexer-embed-widgets.md).
+
+A videóban a **Letöltés** lehetőségre kattintva letöltheti a videó forrásait, bepillantást nyerhet.
+
+A **Megnyitás a szerkesztőben** lehetőségre kattintva létrehozhat egy klipet az adott vonalak és pillanatok videója alapján. Ezután szerkessze a videót, és mentse a projektet. Részletekért lásd: [a videók](use-editor-create-project.md)részletes információinak használata.
+
+:::image type="content" source="./media/video-indexer-search/embed-download-create-projects.png" alt-text="Videó beágyazása, letöltése, projektek létrehozása":::
 
 ## <a name="next-steps"></a>További lépések
 
-Ha megtalálta a pontos pillanatot a videóban, amellyel dolgozni szeretne, folytathatja a videó feldolgozását. További információkért tekintse át a következők témaköröket:
-
-- [A videók mélyreható bepillantást készíthet](use-editor-create-project.md)
-- [Tartalomfeldolgozás a Video Indexer REST API-val](video-indexer-use-apis.md)
-- [Vizuális widgetek beágyazása egy saját alkalmazásba](video-indexer-embed-widgets.md)
-
-## <a name="see-also"></a>Lásd még
-
-[A Video Indexer áttekintése](video-indexer-overview.md)
+[Tartalomfeldolgozás a Video Indexer REST API-val](video-indexer-use-apis.md)

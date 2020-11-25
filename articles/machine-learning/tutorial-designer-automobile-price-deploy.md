@@ -2,20 +2,20 @@
 title: 'Oktatóanyag: ML modellek üzembe helyezése a tervezővel'
 titleSuffix: Azure Machine Learning
 description: Hozzon létre egy prediktív elemzési megoldást Azure Machine Learning Designerben. A gépi tanulási modellek betanítása, pontszáma és üzembe helyezése drag-and-drop modulok használatával.
-author: peterclu
-ms.author: peterlu
+author: likebupt
+ms.author: keli19
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 11/13/2020
+ms.date: 11/25/2020
 ms.custom: designer
-ms.openlocfilehash: 5a5d166e36b2870ceb081c1c6d2635e01ab43a4d
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 28358db2e538867957fcc8d4984cf1c028f9ab2c
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592549"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030364"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Oktatóanyag: gépi tanulási modell üzembe helyezése a tervezővel
 
@@ -59,7 +59,7 @@ A folyamat üzembe helyezéséhez először át kell alakítania a betanítási 
     > Alapértelmezés szerint a **webszolgáltatás bemenete** ugyanazt az adatsémát fogja várni, mint a prediktív folyamat létrehozásához használt betanítási adatok. Ebben az esetben a séma tartalmazza az árat. Az előrejelzés során azonban az ár nem használható faktorként.
     >
 
-1. Válassza a **Submit (Küldés** ) lehetőséget, és használja ugyanazt a számítási célt és kísérletet, amelyet az első részben használt.
+1. Válassza a **Submit (Küldés**) lehetőséget, és használja ugyanazt a számítási célt és kísérletet, amelyet az első részben használt.
 
     Ha ez az első futtatás, akár 20 percet is igénybe vehet, amíg a folyamat befejezi a futását. Az alapértelmezett számítási beállításokhoz a csomópont minimális mérete 0, ami azt jelenti, hogy a tervezőnek üresjárat után le kell foglalnia az erőforrásokat. Az ismétlődő folyamat-futtatások kevesebb időt vesznek igénybe, mivel a számítási erőforrások már le vannak foglalva. Emellett a tervező az egyes modulok gyorsítótárazott eredményeit használja a hatékonyság növelése érdekében.
 
@@ -121,7 +121,7 @@ További információ a webszolgáltatás használatáról: a [webszolgáltatás
 
 [!INCLUDE [aml-ui-cleanup](../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre, helyezhet üzembe és használhat fel gépi tanulási modellt a tervezőben. Ha többet szeretne megtudni arról, hogyan használhatja a tervezőt más típusú problémák megoldására, tekintse meg a többi minta folyamatát.
 

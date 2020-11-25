@@ -11,20 +11,18 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/29/2020
 ms.author: jeedes
-ms.openlocfilehash: 7f23551fee5331d14cdcf9e31e248cf42022d4c3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d88cbb79b42637721412dd0a35c231782a896721
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92449302"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029863"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-enterprise-cloud---enterprise-account"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a GitHub Enterprise Cloud-Enterprise-fiókkal
 
 Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a GitHub Enterprise Cloud-Enterprise fiókot Azure Active Directory (Azure AD-val). Ha a GitHub Enterprise Cloud-Enterprise fiókot az Azure AD-vel integrálja, a következőket teheti:
 
-* Vezérlés az Azure AD-ben, aki hozzáfér a GitHub Enterprise Cloud-Enterprise fiókhoz.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a GitHub Enterprise Cloud-Enterprise-fiókjába az Azure AD-fiókkal.
-* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
+* Vezérlés az Azure AD-ben, aki hozzáfér egy GitHub vállalati fiókhoz és a vállalati fiókban lévő szervezetekhez.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](../manage-apps/what-is-single-sign-on.md)című témakört.
 
@@ -33,7 +31,8 @@ Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrál�
 Első lépésként a következő elemeket kell megadnia:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* GitHub Enterprise Cloud-Enterprise Account egyszeri bejelentkezés (SSO) engedélyezve előfizetés.
+* Egy [GitHub vállalati fiók](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-your-enterprise/about-enterprise-accounts)
+* Egy GitHub-felhasználói fiók, amely egy vállalati fiók tulajdonosa. 
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -49,31 +48,30 @@ A GitHub Enterprise Cloud-Enterprise-fiók Azure AD-be való integrálásának k
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **GitHub Enterprise Cloud-Enterprise-fiók** kifejezést a keresőmezőbe.
 1. Válassza ki a **GitHub Enterprise Cloud-Enterprise fiókot** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 
 ## <a name="configure-and-test-azure-ad-sso-for-github-enterprise-cloud---enterprise-account"></a>Azure AD SSO konfigurálása és tesztelése a GitHub Enterprise Cloud-Enterprise-fiókhoz
 
-Konfigurálja és tesztelje az Azure AD SSO-t a GitHub Enterprise Cloud-Enterprise-fiókkal egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a GitHub Enterprise Cloud-Enterprise fiókban.
+Konfigurálja és tesztelje az Azure AD SSO-t a GitHub Enterprise Cloud-Enterprise-fiókkal egy **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a GitHub Enterprise Cloud-Enterprise fiókban.
 
 Az Azure AD SSO a GitHub Enterprise Cloud-Enterprise-fiókkal való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
-    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-1. A **[GitHub Enterprise Cloud-Enterprise fiókjának egyszeri bejelentkezésének beállítása](#configure-github-enterprise-cloud-enterprise-account-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    1. **[GitHub enterprise Cloud-Enterprise felhasználói fiók tesztelése](#create-github-enterprise-cloud-enterprise-account-test-user)** – a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-partneri kapcsolattal rendelkezik a GitHub Enterprise Cloud-Enterprise fiókjában.
-1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
+    1. **[Rendeljen Azure ad-felhasználót és a felhasználói fiók tesztelése a GitHub-alkalmazáshoz](#assign-the-azure-ad-test-user)** – a felhasználói fiók engedélyezéséhez és a felhasználó `B.Simon` Azure ad-alapú egyszeri bejelentkezés használatára való teszteléséhez.
+1. Az **[SAML engedélyezése és tesztelése a vállalati fiók és annak szervezetei számára](#enable-and-test-saml-for-the-enterprise-account-and-its-organizations)** – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+    1. **[Egyszeri bejelentkezés tesztelése egy másik vállalati fiók tulajdonosával vagy szervezeti fiókkal](#test-sso)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)a **GitHub Enterprise Cloud-Enterprise Account** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **GitHub Enterprise Cloud-Enterprise Account** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
@@ -89,7 +87,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
      A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://github.com/enterprises/<ENTERPRISE-SLUG>/sso`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, a válasz URL-címével és az azonosítóval. Vegye fel a kapcsolatot a [GitHub Enterprise Cloud-Enterprise Account ügyfél-támogatási csapatával](mailto:support@github.com) az értékek beszerzéséhez. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Cserélje le a helyére `<ENTERPRISE-SLUG>` a GitHub Enterprise-fiókjának tényleges nevét.
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
@@ -101,53 +99,68 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
+Ebben a szakaszban egy teszt felhasználót hoz létre a Azure Portal nevű felhasználó `B.Simon` .
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Létrehozás** gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
+<a name="assign-the-azure-ad-test-user"></a>
 
-Ebben a szakaszban lehetővé teszi, hogy a B. Simon az Azure egyszeri bejelentkezés használatára engedélyezze a hozzáférést a GitHub Enterprise Cloud-Enterprise-fiókhoz.
+### <a name="assign-your-azure-ad-user-and-the-test-user-account-to-the-github-app"></a>Azure AD-felhasználó és a felhasználói fiók tesztelése a GitHub-alkalmazáshoz
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **GitHub Enterprise Cloud-Enterprise fiók**elemet.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+Ebben a szakaszban engedélyezheti `B.Simon` és felhasználói fiókja az Azure egyszeri bejelentkezést a GitHub Enterprise Cloud-Enterprise-fiókhoz való hozzáférés biztosításával.
+
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **GitHub Enterprise Cloud-Enterprise fiók** elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a **B. Simon** és a felhasználói fiók lehetőséget a felhasználók listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-## <a name="configure-github-enterprise-cloud-enterprise-account-sso"></a>GitHub Enterprise Cloud-Enterprise fiók egyszeri bejelentkezésének konfigurálása
+## <a name="enable-and-test-saml-for-the-enterprise-account-and-its-organizations"></a>Az SAML engedélyezése és tesztelése a vállalati fiók és annak szervezetei számára
 
-Ha egyszeri bejelentkezést szeretne beállítani a **GitHub Enterprise Cloud-Enterprise fiók** oldalon, el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt url-címeket a Azure Portalról a [GitHub Enterprise Cloud-Enterprise-fiók támogatási csapatához](mailto:support@github.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Ha az egyszeri bejelentkezést a **GitHub Enterprise Cloud-Enterprise fiók** oldalán szeretné konfigurálni, kövesse a [GitHub dokumentációjában](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-your-enterprise/enforcing-security-settings-in-your-enterprise-account#enabling-saml-single-sign-on-for-organizations-in-your-enterprise-account)felsorolt lépéseket. 
+1. Jelentkezzen be a GitHub.com olyan felhasználói fiókkal, amely [vállalati fiók tulajdonosa](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-your-enterprise/roles-in-an-enterprise#enterprise-owner). 
+1. Másolja az értéket az `Login URL` alkalmazás mezőjéből a Azure Portalból, és illessze be a `Sign on URL` GitHub Enterprise-fiók SAML-beállításainak mezőjébe. 
+1. Másolja az értéket az `Azure AD Identifier` alkalmazás mezőjéből a Azure Portalból, és illessze be a `Issuer` GitHub Enterprise-fiók SAML-beállításainak mezőjébe. 
+1. Másolja a fenti lépésekben letöltött **tanúsítvány-(Base64-)** fájl tartalmát Azure Portal és illessze be őket a GitHub Enterprise-fiók SAML-beállításainak megfelelő mezőjébe. 
+1. Kattintson a elemre `Test SAML configuration` , és erősítse meg, hogy a GitHub Enterprise-fiókból sikeresen tud hitelesíteni az Azure ad-t.
+1. Ha a teszt sikeres volt, mentse a beállításokat. 
+1. Miután először a GitHub Enterprise-fiókból hitelesíti az SAML-t, a rendszer létrehoz egy _csatolt külső identitást_ a GitHub Enterprise-fiókban, amely a bejelentkezett GitHub-felhasználói fiókot társítja az Azure ad felhasználói fiókkal.  
+ 
+Miután engedélyezte az SAML SSO-t a GitHub Enterprise-fiókjához, az SAML SSO alapértelmezés szerint engedélyezve van a vállalati fiók tulajdonában lévő összes szervezet számára. Minden tagnak hitelesítenie kell magát az SAML SSO használatával, ha hozzáférést szeretne adni azokhoz a szervezetekhez, ahol azok tagjai, és a vállalati tulajdonosoknak az SAML SSO használatával kell hitelesíteniük a vállalati fiókokhoz való hozzáférés során.
 
-### <a name="create-github-enterprise-cloud-enterprise-account-test-user"></a>GitHub Enterprise Cloud-Enterprise fiók tesztelési felhasználójának létrehozása
+<a name="test-sso"></a>
 
-Ebben a szakaszban egy B. Simon nevű felhasználó jön létre a GitHub Enterprise Cloud-Enterprise fiókban. A GitHub Enterprise Cloud-Enterprise fiók támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a GitHub Enterprise Cloud-Enterprise fiókjában, akkor a hitelesítés után létrejön egy újat.
+## <a name="test-sso-with-another-enterprise-account-owner-or-organization-member-account"></a>Egyszeri bejelentkezés tesztelése egy másik vállalati fiók tulajdonosa vagy szervezeti tagja fiókkal
 
-## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
+Miután beállította az SAML-integrációt a GitHub Enterprise-fiókhoz (amely a vállalati fiók GitHub-szervezeteire is vonatkozik), az Azure AD-ben az alkalmazáshoz hozzárendelt egyéb vállalati fiókok tulajdonosainak el kell tudniuk érni a GitHub Enterprise-fiók URL-címét ( `https://github.com/enterprises/<enterprise account>` ), hitelesíteniük kell az SAML-n keresztül, és el kell érni a szabályzatokat és a beállításokat a GitHub Enterprise-fiók 
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+A vállalati fiókban dolgozó szervezet tulajdonosának meg kell tudnia [hívni a felhasználót, hogy csatlakozzon a GitHub-szervezethez](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-organizations-and-teams/inviting-users-to-join-your-organization). Jelentkezzen be a GitHub.com egy szervezet tulajdonosi fiókjával, és kövesse a cikk lépéseit, hogy meghívja `B.Simon` a szervezetet. Létre kell hozni egy GitHub-felhasználói fiókot, `B.Simon` Ha még nem létezik ilyen. 
 
-Amikor a hozzáférési panelen a GitHub Enterprise Cloud-Enterprise fiók csempére kattint, automatikusan be kell jelentkeznie a GitHub Enterprise Cloud-Enterprise fiókba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md).
+A GitHub-szervezet hozzáférésének tesztelése a vállalati fiókhoz a `B.Simon` felhasználói fiókkal:
+1. Meghívja a `B.Simon` vállalati fiókkal rendelkező szervezetet szervezete tulajdonosának. 
+1. Jelentkezzen be a GitHub.com-be az `B.Simon` Azure ad felhasználói fiókhoz csatolni kívánt felhasználói fiókkal.
+1. Jelentkezzen be az Azure AD-be a `B.Simon` felhasználói fiók használatával.
+1. Nyissa meg a GitHub-szervezetet. A felhasználónak meg kell adnia a hitelesítést az SAML-n keresztül. A sikeres SAML-hitelesítés után `B.Simon` képesnek kell lennie a szervezeti erőforrásokhoz való hozzáférésre. 
 
 ## <a name="additional-resources"></a>További források
 
-- [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](./tutorial-list.md)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](./tutorial-list.md)
 
-- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory? ](../manage-apps/what-is-single-sign-on.md)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](../conditional-access/overview.md)
 

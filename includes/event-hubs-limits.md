@@ -9,11 +9,11 @@ ms.date: 09/10/2020
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 1b5905046fdde4d5574fd4d39f40dce1bbf11e32
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95562229"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027364"
 ---
 Az alábbi táblázatok az [Azure Event Hubsra](https://azure.microsoft.com/services/event-hubs/)vonatkozó kvótákat és korlátokat biztosítanak. További információ a Event Hubs díjszabásáról: [Event Hubs díjszabása](https://azure.microsoft.com/pricing/details/event-hubs/).
 

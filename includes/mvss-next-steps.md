@@ -4,12 +4,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: include
 ms.date: 04/26/2019
 ms.author: manayar
-ms.openlocfilehash: 633f7f9231e08acdb0e08ee97067d2a469bbdb45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff3434a7d1b5b4643d9aca5fae03ac03fe65b514
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75980178"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027574"
 ---
 Az előző sablon üzembe helyezéséhez kövesse az [Azure Resource Manager dokumentációjában](../articles/azure-resource-manager/templates/deploy-powershell.md) leírtakat.
 
@@ -21,4 +21,4 @@ Megtudhatja, hogyan módosíthatja az [alapszintű méretezési csoport sablonj�
 
 Megtudhatja, hogyan módosíthatja az [alapszintű méretezési csoport sablonját](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md) [Linux rendszerű méretezési csoport üzembe helyezéséhez vendég-alapú autoskálázással](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md).
 
-A méretezési csoportokkal kapcsolatos további információkért tekintse meg a [méretezési csoport áttekintése lapot](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md).
+A méretezési csoportokkal kapcsolatos további információkért tekintse meg a [méretezési csoport áttekintése lapot](../articles/virtual-machine-scale-sets/overview.md).

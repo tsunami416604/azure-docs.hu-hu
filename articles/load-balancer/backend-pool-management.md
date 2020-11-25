@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 07/07/2020
 ms.author: allensu
-ms.openlocfilehash: 81fad1c77b917c1e3eaf7ddd200c3fea83cb0e0a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3934946dd8e20b7888fc41a4fd6ecc233381f1ff
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589673"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029727"
 ---
 # <a name="backend-pool-management"></a>Háttérbeli készlet kezelése
 A háttér-készlet a terheléselosztó kritikus összetevője. A háttér-készlet meghatározza azt az erőforrás-csoportot, amely egy adott terheléselosztási szabály forgalmát fogja szolgálni.
@@ -45,14 +45,14 @@ Az alábbi példák a háttér-készlet létrehozási és feltöltési művelete
 
 ### <a name="powershell"></a>PowerShell
 Új háttér-készlet létrehozása:
- 
+ 
 ```azurepowershell-interactive
 $resourceGroup = "myResourceGroup"
 $loadBalancerName = "myLoadBalancer"
 $backendPoolName = "myBackendPool"
 
-$backendPool = 
-New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName  
+$backendPool = 
+New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName  
 ```
 
 Hozzon létre egy új hálózati adaptert, és adja hozzá a háttér-készlethez:
@@ -81,7 +81,7 @@ $backendPoolName = "myBackendPool"
 
 $lb =
 Get-AzLoadBalancer -ResourceGroupName $res
-Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName 
+Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName 
 ```
 
 Hozzon létre egy új virtuális gépet, és csatolja a hálózati adaptert a háttér-készletbe való helyezéshez:
@@ -115,7 +115,7 @@ A háttér-készlet létrehozása:
 
 ```azurecli-interactive
 az network lb address-pool create \
---resourceGroup myResourceGroup \
+--resource-group myResourceGroup \
 --lb-name myLB \
 --name myBackendPool 
 ```
@@ -273,18 +273,18 @@ $vnetName = "myVnet"
 $location = "eastus"
 $nicName = "myNic"
 
-$backendPool = New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -Name $backendPoolName  
+$backendPool = New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -Name $backendPoolName  
 ```
 
 Háttérbeli készlet frissítése új IP-címmel meglévő virtuális hálózatról:
- 
+ 
 ```azurepowershell-interactive
-$virtualNetwork = 
-Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup 
- 
-$ip1 = New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetwork $virtualNetwork  
- 
-$backendPool.LoadBalancerBackendAddresses.Add($ip1) 
+$virtualNetwork = 
+Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup 
+ 
+$ip1 = New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetwork $virtualNetwork  
+ 
+$backendPool.LoadBalancerBackendAddresses.Add($ip1) 
 
 Set-AzLoadBalancerBackendAddressPool -InputObject $backendPool
 ```
@@ -292,7 +292,7 @@ Set-AzLoadBalancerBackendAddressPool -InputObject $backendPool
 A terheléselosztó háttér-készletével kapcsolatos információk beolvasása annak ellenőrzéséhez, hogy a háttérbeli címek hozzá vannak-e adva a háttér-készlethez:
 
 ```azurepowershell-interactive
-Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -Name $backendPoolName 
+Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -Name $backendPoolName 
 ```
 Hozzon létre egy hálózati adaptert, és adja hozzá a háttér-készlethez. Állítsa be az IP-címet a háttérbeli címek egyikére:
 

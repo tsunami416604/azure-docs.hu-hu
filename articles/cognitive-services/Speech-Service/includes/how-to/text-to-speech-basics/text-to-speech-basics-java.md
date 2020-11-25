@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: 6502685890df1a5cd6a922c5bbf544d5d5798402
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 2da56514870f279da342976ac074697be5196021
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425471"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027476"
 ---
 Ebben a rövid útmutatóban megtudhatja, hogyan végezheti el a szöveg-beszéd szintézist a Speech SDK használatával. Első lépésként alapkonfigurációt és szintézist kell elvégeznie, és az egyéni alkalmazások fejlesztéséhez további speciális példákra kell lépnie, például:
 
@@ -52,19 +52,19 @@ import java.util.Scanner;
 
 ## <a name="create-a-speech-configuration"></a>Beszédfelismerési konfiguráció létrehozása
 
-A beszédfelismerési szolgáltatás a Speech SDK használatával történő meghívásához létre kell hoznia egy [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-java-stable) . Ez az osztály az előfizetésével kapcsolatos információkat tartalmaz, például a kulcsot és a társított régiót, végpontot, gazdagépet vagy engedélyezési jogkivonatot.
+A beszédfelismerési szolgáltatás a Speech SDK használatával történő meghívásához létre kell hoznia egy [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig) . Ez az osztály az előfizetésével kapcsolatos információkat tartalmaz, például a kulcsot és a társított régiót, végpontot, gazdagépet vagy engedélyezési jogkivonatot.
 
 > [!NOTE]
 > Függetlenül attól, hogy elvégezte-e a beszédfelismerést, a beszédfelismerést, a fordítást vagy a szándék felismerését, mindig hozzon létre egy konfigurációt.
 
-Az alábbiakat többféleképpen lehet inicializálni [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-java-stable) :
+Az alábbiakat többféleképpen lehet inicializálni [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig) :
 
 * Előfizetéssel: adjon egy kulcsot és a hozzá tartozó régiót.
 * Egy végponttal: pass a Speech Service-végponton. Kulcs-vagy engedélyezési jogkivonat nem kötelező.
 * Gazdagép esetén: adjon meg egy gazdagép-címeket. Kulcs-vagy engedélyezési jogkivonat nem kötelező.
 * Engedélyezési jogkivonattal: adjon meg egy engedélyezési jogkivonatot és a hozzá tartozó régiót.
 
-Ebben a példában egy [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-java-stable) előfizetési kulcsot és egy régiót hoz létre. Szerezze be ezeket a hitelesítő adatokat a [beszédfelismerési szolgáltatás ingyenes kipróbálásához](../../../overview.md#try-the-speech-service-for-free)szükséges lépések követésével. Emellett a cikk további részében is létrehozhat egy alapszintű, a különböző testreszabási beállításokkal módosítható egyszerű kiírási kódot.
+Ebben a példában egy [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig) előfizetési kulcsot és egy régiót hoz létre. Szerezze be ezeket a hitelesítő adatokat a [beszédfelismerési szolgáltatás ingyenes kipróbálásához](../../../overview.md#try-the-speech-service-for-free)szükséges lépések követésével. Emellett a cikk további részében is létrehozhat egy alapszintű, a különböző testreszabási beállításokkal módosítható egyszerű kiírási kódot.
 
 ```java
 public class Program 
@@ -77,7 +77,7 @@ public class Program
 
 ## <a name="synthesize-speech-to-a-file"></a>Beszéd készítése fájlba
 
-Ezután létrehoz egy [`SpeechSynthesizer`](/java/api/com.microsoft.cognitiveservices.speech.speechsynthesizer?preserve-view=true&view=azure-java-stable) objektumot, amely szöveg-beszéd átalakításokat és kimeneteket hajt végre a hangszórók, fájlok vagy más kimeneti adatfolyamok számára. Az [`SpeechSynthesizer`](/java/api/com.microsoft.cognitiveservices.speech.speechsynthesizer?preserve-view=true&view=azure-java-stable) elfogadva paraméterként az [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-java-stable) előző lépésben létrehozott objektumot, valamint egy objektumot, [`AudioConfig`](/java/api/com.microsoft.cognitiveservices.speech.audio.audioconfig?preserve-view=true&view=azure-java-stable) amely meghatározza a kimeneti eredmények kezelését.
+Ezután létrehoz egy [`SpeechSynthesizer`](/java/api/com.microsoft.cognitiveservices.speech.speechsynthesizer) objektumot, amely szöveg-beszéd átalakításokat és kimeneteket hajt végre a hangszórók, fájlok vagy más kimeneti adatfolyamok számára. Az [`SpeechSynthesizer`](/java/api/com.microsoft.cognitiveservices.speech.speechsynthesizer) elfogadva paraméterként az [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig) előző lépésben létrehozott objektumot, valamint egy objektumot, [`AudioConfig`](/java/api/com.microsoft.cognitiveservices.speech.audio.audioconfig) amely meghatározza a kimeneti eredmények kezelését.
 
 Az indításhoz hozzon létre egy `AudioConfig` fájlt, amely automatikusan a kimenetet egy fájlba írja a `.wav` `fromWavFileOutput()` statikus függvény használatával.
 
@@ -129,7 +129,7 @@ Ezt a változást egyszerűen elvégezheti az előző példából. Először tá
 > [!NOTE]
 > `null`A ( `AudioConfig` z) helyett, ahelyett, hogy kihagyja, mint a fenti hangsugárzó-kimeneti példában, a nem játssza le alapértelmezés szerint a hangot a jelenlegi aktív kimeneti eszközön.
 
-Ezúttal egy változóba menti az eredményt [`SpeechSynthesisResult`](/java/api/com.microsoft.cognitiveservices.speech.speechsynthesisresult?preserve-view=true&view=azure-java-stable) . A `SpeechSynthesisResult.getAudioData()` függvény a `byte []` kimeneti adatokat adja vissza. Ezt manuálisan is elvégezheti `byte []` , vagy a [`AudioDataStream`](/java/api/com.microsoft.cognitiveservices.speech.audiodatastream?preserve-view=true&view=azure-java-stable) osztály használatával kezelheti a memóriában lévő adatfolyamot. Ebben a példában a `AudioDataStream.fromResult()` statikus függvény használatával kap egy streamet az eredményből.
+Ezúttal egy változóba menti az eredményt [`SpeechSynthesisResult`](/java/api/com.microsoft.cognitiveservices.speech.speechsynthesisresult) . A `SpeechSynthesisResult.getAudioData()` függvény a `byte []` kimeneti adatokat adja vissza. Ezt manuálisan is elvégezheti `byte []` , vagy a [`AudioDataStream`](/java/api/com.microsoft.cognitiveservices.speech.audiodatastream) osztály használatával kezelheti a memóriában lévő adatfolyamot. Ebben a példában a `AudioDataStream.fromResult()` statikus függvény használatával kap egy streamet az eredményből.
 
 ```java
 public static void main(String[] args) {
@@ -152,11 +152,11 @@ A következő szakasz bemutatja, hogyan szabhatja testre a hangkimeneti attribú
 * Mintavételezési arány
 * Kis mélység
 
-A hangformátum módosításához használja a `setSpeechSynthesisOutputFormat()` függvényt az `SpeechConfig` objektumon. Ez a függvény egy `enum` típust vár [`SpeechSynthesisOutputFormat`](/java/api/com.microsoft.cognitiveservices.speech.speechsynthesisoutputformat?preserve-view=true&view=azure-java-stable) , amelyet a kimeneti formátum kiválasztásához használ. A rendelkezésre álló [hangformátumok listáját](/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisoutputformat?preserve-view=true&view=azure-dotnet) az útmutató dokumentációjában tekintheti meg.
+A hangformátum módosításához használja a `setSpeechSynthesisOutputFormat()` függvényt az `SpeechConfig` objektumon. Ez a függvény egy `enum` típust vár [`SpeechSynthesisOutputFormat`](/java/api/com.microsoft.cognitiveservices.speech.speechsynthesisoutputformat) , amelyet a kimeneti formátum kiválasztásához használ. A rendelkezésre álló [hangformátumok listáját](/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisoutputformat?preserve-view=true&view=azure-dotnet) az útmutató dokumentációjában tekintheti meg.
 
 A követelményektől függően különböző fájltípusok választhatók. Vegye figyelembe, hogy definíció szerint a nyers formátumok, például a nem `Raw24Khz16BitMonoPcm` tartalmaznak hangfejléceket. A nyers formátumok csak akkor használhatók, ha tudja, hogy az alsóbb rétegbeli implementáció dekódolást végez a nyers Bitstream, vagy ha manuálisan kívánja felépíteni a fejléceket a kis mélység, a mintavételezési arány, a csatornák száma stb. alapján.
 
-Ebben a példában egy magas hűségű RIFF formátumot kell megadnia az `Riff24Khz16BitMonoPcm` objektumra vonatkozó beállítással `SpeechSynthesisOutputFormat` `SpeechConfig` . Az előző szakaszban szereplő példához hasonlóan a [`AudioDataStream`](/java/api/com.microsoft.cognitiveservices.speech.audiodatastream?preserve-view=true&view=azure-java-stable) segítségével beolvashatja az eredmény memóriában lévő adatfolyamát, majd megírhatja azt egy fájlba.
+Ebben a példában egy magas hűségű RIFF formátumot kell megadnia az `Riff24Khz16BitMonoPcm` objektumra vonatkozó beállítással `SpeechSynthesisOutputFormat` `SpeechConfig` . Az előző szakaszban szereplő példához hasonlóan a [`AudioDataStream`](/java/api/com.microsoft.cognitiveservices.speech.audiodatastream) segítségével beolvashatja az eredmény memóriában lévő adatfolyamát, majd megírhatja azt egy fájlba.
 
 ```java
 public static void main(String[] args) {

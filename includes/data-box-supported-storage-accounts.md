@@ -6,11 +6,11 @@ ms.topic: include
 ms.date: 09/git14/2020
 ms.author: alkohli
 ms.openlocfilehash: 25c2ea04cd062554a975c63aae9b97846e646d68
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95554681"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027248"
 ---
 Itt látható a támogatott Storage-fiókok listája, valamint a Data Box eszköz tárolási típusai. A különböző típusú tárolási fiókok és azok teljes képességeinek teljes listáját a [Storage-fiókok típusai](../articles/storage/common/storage-account-overview.md#types-of-storage-accounts)című részben tekintheti meg.
 

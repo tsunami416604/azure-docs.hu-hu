@@ -11,18 +11,16 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: f6078ed96106d6a53b55195ee950e2165334221d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c2c2f9d0ad7bfa50f543b57326b9fc8dab0069c6
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919682"
+ms.locfileid: "96029302"
 ---
 # <a name="increase-resilience-of-authentication-and-authorization-applications-you-develop"></a>Növelje a fejlesztés alatt álló hitelesítési és engedélyezési alkalmazások rugalmasságát
 
 A Microsoft Identity modern, jogkivonat-alapú hitelesítést és engedélyezést használ. Ez azt jelenti, hogy egy alkalmazás jogkivonatokat vásárol az identitás-szolgáltatótól a felhasználó hitelesítéséhez és az alkalmazás engedélyezéséhez a védett API-k meghívásához.
-
-![Microsoft-identitást hívó alkalmazás képe](media/resilience-app-development-overview/app-overview.png)
 
 Egy jogkivonat egy bizonyos ideig érvényes, mielőtt az alkalmazásnak újat kell bekérnie. Ritkán előfordul, hogy a token lekérésére irányuló hívás egy probléma, például a hálózati vagy infrastrukturális hiba vagy a hitelesítési szolgáltatás kimaradása miatt sikertelen lehet. Ebben a dokumentumban felvázoljuk a fejlesztőknek az alkalmazásokban való rugalmasság növelésének lépéseit, ha jogkivonat-beszerzési hiba történik.
 

@@ -7,12 +7,12 @@ ms.author: bwren
 ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 8710e0cdd6c930338009fb2b7f3bd98fafcfad3e
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: 18ece47187e3f83277d7d925ad958d2ede7cb337
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95411563"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030016"
 ---
 # <a name="query-exported-data-from-azure-monitor-using-azure-data-explorer-preview"></a>Azure Monitor exportált adatok lekérdezése az Azure Adatkezelő használatával (előzetes verzió)
 Az adatok a Azure Monitorból egy Azure Storage-fiókba való exportálása lehetővé teszi az alacsony költségeket és a naplók más régiókban való újrafoglalását. Az Azure Adatkezelő segítségével lekérdezheti az Log Analytics-munkaterületekről exportált adatok lekérdezését. A konfigurálást követően a munkaterületekről egy Azure Storage-fiókba küldendő támogatott táblák az Azure Adatkezelő adatforrásként lesznek elérhetők.
@@ -122,7 +122,7 @@ Az alábbi képen a kimenet látható.
 
 >[!TIP]
 >* Másolja, illessze be, majd futtassa a szkript kimenetét az Azure Adatkezelő-ügyfél eszközén a tábla és a leképezés létrehozásához.
->* Ha a tárolóban lévő összes adatmennyiséget szeretné használni, módosíthatja a parancsfájlt, és módosíthatja az URL-címet a következőre: " https://your.blob.core.windows.net/containername ; SecKey'
+>* Ha a tárolóban lévő összes adattal szeretné használni, módosítsa a parancsfájlt, és módosítsa az URL-címet a következőre: " https://your.blob.core.windows.net/containername ; SecKey'
 
 ## <a name="query-the-exported-data-from-azure-data-explorer"></a>Az exportált adatok lekérdezése az Azure Adatkezelő 
 
@@ -134,6 +134,6 @@ external_table("HBTest","map") | take 10000
 
 [![Az exportált adatLog Analytics lekérdezése](media/azure-data-explorer-query-storage/external-table-query.png)](media/azure-data-explorer-query-storage/external-table-query.png#lightbox)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan [írhat lekérdezéseket az Azure-ban adatkezelő](https://docs.microsoft.com/azure/data-explorer/write-queries)

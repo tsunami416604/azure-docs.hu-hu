@@ -5,19 +5,19 @@ ms.topic: conceptual
 author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
-ms.date: 05/24/2019
-ms.openlocfilehash: 12497d3ac86888ed861e8d5f655f45c8cbe4b6e3
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.date: 11/22/2020
+ms.openlocfilehash: 1a68cea423678dd8582d65b839d57076e84de940
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996167"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029540"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Rövid útmutató: a Application Insights használatának első lépései Java webes projektekben
 
 
-> [!IMPORTANT]
-> A Java-alkalmazások figyelésének ajánlott módszere az automatikus kiépítés használata a kód módosítása nélkül. Kérjük, kövesse az [Application Insights Java 3,0-ügynökre](./java-in-process-agent.md)vonatkozó irányelveket.
+> [!CAUTION]
+> A Java-alkalmazások figyelésére november 2020-én a Azure Monitor Application Insights 3,0-ügynököt használó automatikus rendszerállapotot javasoljuk. További információ az első lépésekről: [Application Insights Java 3,0-ügynök](./java-in-process-agent.md).
 
 Ebben a rövid útmutatóban az Application Insights SDK-t használja a rendszer, a függőségek nyomon követéséhez és a teljesítményszámlálók összegyűjtéséhez, a teljesítménnyel kapcsolatos problémák és kivételek diagnosztizálásához, valamint kód írásához a felhasználók által az alkalmazással való használat nyomon követéséhez.
 
@@ -123,7 +123,7 @@ Cserélje le a kialakítási kulcsot arra a típusra, amelyet a Azure Portal kap
 </ApplicationInsights>
 ```
 
-Opcionálisan a konfigurációs fájl bármely, az alkalmazás számára elérhető helyen lehet.  A System tulajdonság `-Dapplicationinsights.configurationDirectory` Megadja a *ApplicationInsights.xml*tartalmazó könyvtárat. Az `E:\myconfigs\appinsights\ApplicationInsights.xml` mappában tárolt konfigurációs fájl konfigurálásához például a `-Dapplicationinsights.configurationDirectory="E:\myconfigs\appinsights"` tulajdonság használható.
+Opcionálisan a konfigurációs fájl bármely, az alkalmazás számára elérhető helyen lehet.  A System tulajdonság `-Dapplicationinsights.configurationDirectory` Megadja a *ApplicationInsights.xml* tartalmazó könyvtárat. Az `E:\myconfigs\appinsights\ApplicationInsights.xml` mappában tárolt konfigurációs fájl konfigurálásához például a `-Dapplicationinsights.configurationDirectory="E:\myconfigs\appinsights"` tulajdonság használható.
 
 * A kialakítási kulcsot a telemetria minden elemével megkapja, és ez közli az Application Insights eszközzel, hogy megjelenítse azt az erőforrásban.
 * A HTTP-kérelemösszetevő nem kötelező. Automatikusan telemetriát küld a kérelmekkel és válaszidőkkel kapcsolatban a portálra.
@@ -221,7 +221,7 @@ A bejövő SDK konfigurációját a [korrelációról](correlation.md)szóló ci
 A kimenő SDK-konfiguráció a [AI-Agent.xml](java-agent.md) fájlban van definiálva.
 
 ## <a name="performance-counters"></a>Teljesítményszámlálók
-Nyissa meg a **vizsgálat**, **mérőszámok**lehetőséget, és tekintse meg a teljesítményszámlálók tartományát.
+Nyissa meg a **vizsgálat**, **mérőszámok** lehetőséget, és tekintse meg a teljesítményszámlálók tartományát.
 
 ![Képernyőfelvétel a metrikák panelről a folyamat saját bájtjainak kiválasztásával](./media/java-get-started/011-perf-counters.png)
 
@@ -296,7 +296,7 @@ Az Application Insights rendszeres időközönként teszteli a webhelyét, hogy 
 ## <a name="questions-problems"></a>Kérdése van? Problémákat tapasztal?
 [A Java hibaelhárítása](java-troubleshoot.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Függőségi hívások figyelése](java-agent.md)
 * [Unix-teljesítményszámlálók figyelése](java-collectd.md)
 * [A weboldalak figyelésével](javascript.md) megfigyelheti az oldalbetöltési időket, az AJAX-hívásokat és a böngészőkivételeket.

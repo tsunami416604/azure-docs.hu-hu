@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/17/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: e3234289fe56286cb5ff0791d983dee6ec2aa4d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1a94c841632b576eccdfd93545c652b30975203
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91545399"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027530"
 ---
 > [!NOTE]
-> Azure Security Center jelenleg nem tudja végrehajtani a [képbiztonsági rések vizsgálatát](../articles/security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json) egy olyan beállításjegyzékben, amely korlátozza a privát végpontokhoz, a kiválasztott alhálózatokhoz vagy IP-címekhez való hozzáférést. Bizonyos Azure-szolgáltatások, például az Azure DevOps Services és a Azure Container Instances példányai nem férhetnek hozzá a hálózatra korlátozott tárolók beállításjegyzékéhez.
+> Azure Security Center jelenleg nem tudja végrehajtani a [képbiztonsági rések vizsgálatát](../articles/security-center/defender-for-container-registries-introduction.md?bc=%252fazure%252fcontainer-registry%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fcontainer-registry%252ftoc.json) egy olyan beállításjegyzékben, amely korlátozza a privát végpontokhoz, a kiválasztott alhálózatokhoz vagy IP-címekhez való hozzáférést. Bizonyos Azure-szolgáltatások, például az Azure DevOps Services és a Azure Container Instances példányai nem férhetnek hozzá a hálózatra korlátozott tárolók beállításjegyzékéhez.

@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: b8f6768ebf988ff568739c86303b52ea5b0a9234
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 01e9787d9b812334d959ce6ae9b929ec8734ffb5
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018712"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030475"
 ---
 # <a name="ev4-and-esv4-series"></a>Ev4 és Esv4 sorozat
 
@@ -58,7 +58,7 @@ A Esv4-sorozat méretei az Intel &reg; Xeon &reg; Platinum 8272CL (Cascade-tó) 
 [Premium Storage gyorsítótárazás](premium-storage-performance.md): támogatott<br>
 [Élő áttelepítés](maintenance-and-updates.md): támogatott<br>
 [Memória megőrzésének frissítései](maintenance-and-updates.md): támogatott<br>
-[VM-generáció támogatása](generation-2.md): 1. generáció<br>
+[VM-létrehozási támogatás](generation-2.md): 1. és 2. generáció<br>
 <br>
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Gyorsítótár nélküli lemez maximális átviteli sebessége: IOPS/MBps | Hálózati adapterek maximális száma|Várt hálózati sávszélesség (Mbps) |
@@ -90,6 +90,6 @@ A Esv4-sorozat méretei az Intel &reg; Xeon &reg; Platinum 8272CL (Cascade-tó) 
 További információ a lemezek típusairól: [lemezek típusai](./disks-types.md#ultra-disk)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

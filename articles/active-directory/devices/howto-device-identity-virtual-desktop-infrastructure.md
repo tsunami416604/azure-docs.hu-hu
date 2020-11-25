@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9020e364a5c8d7a59dad5549e88036dc9edaad7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c30ad26f079e6353dc4763b9ae968c33882d8ab6
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089666"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029347"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Eszköz-identitás és asztali virtualizálási
 
@@ -48,20 +48,19 @@ Mielőtt az eszköz identitásait az Azure AD-ben konfigurálja a VDI-környezet
 
 | Eszköz identitásának típusa | Identitás-infrastruktúra | Windows rendszerű eszközök | VDI platform verziója | Támogatott |
 | --- | --- | --- | --- | --- |
-| csatlakozik a Hibrid Azure AD-hez | Összevont<sup>3</sup> | Windows jelenlegi és Windows Down-Level | Állandó | Igen |
+| csatlakozik a Hibrid Azure AD-hez | Összevont<sup>3</sup> | Windows jelenlegi és Windows Down-Level | Állandó | Yes |
 |   |   | Windows jelenlegi | Nem állandó | Igen<sup>5</sup> |
 |   |   | Korábbi verziójú Windows | Nem állandó | Igen<sup>6</sup> |
-|   | <sup>4</sup> . felügyelt | Windows jelenlegi és Windows Down-Level | Állandó | Igen |
-|   |   | Windows jelenlegi | Nem állandó | Nem |
+|   | <sup>4</sup> . felügyelt | Windows jelenlegi és Windows Down-Level | Állandó | Yes |
+|   |   | Windows jelenlegi | Nem állandó | No |
 |   |   | Korábbi verziójú Windows | Nem állandó | Igen<sup>6</sup> |
-| Azure AD-hez csatlakoztatva | Összevont | Windows jelenlegi | Állandó | Nem |
-|   |   |   | Nem állandó | Nem |
-|   | Felügyelt | Windows jelenlegi | Állandó | Nem |
-|   |   |   | Nem állandó | Nem |
+| Azure AD-hez csatlakoztatva | Összevont | Windows jelenlegi | Állandó | No |
+|   |   |   | Nem állandó | No |
+|   | Felügyelt | Windows jelenlegi | Állandó | No |
+|   |   |   | Nem állandó | No |
 | Az Azure AD-ban regisztrálva | Összevont/felügyelt | Windows jelenlegi/Windows lefelé – szint | Állandó/nem állandó | Nem alkalmazható |
 
-<sup>1</sup> a **Windows jelenlegi** eszközei a Windows 10, a Windows Server 2016 és a Windows Server 2019.
-
+<sup>1</sup> a **Windows jelenlegi** eszközei a Windows 10, a Windows Server 2016 v1803 vagy újabb, valamint a Windows Server 2019.
 <sup>2</sup> a **Windows leállási szintű** eszközei a Windows 7, a Windows 8,1, a Windows Server 2008 R2, a Windows Server 2012 és a Windows Server 2012 R2 rendszernek felelnek meg. A Windows 7 támogatási információi: a [Windows 7 támogatása véget ér](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support). A Windows Server 2008 R2-vel kapcsolatos támogatási információk: [felkészülés a Windows server 2008](https://www.microsoft.com/cloud-platform/windows-server-2008)-re a támogatás befejezése után.
 
 <sup>3</sup> az **összevont** identitás-infrastruktúra környezete egy olyan identitás-szolgáltatót jelöl, mint például a AD FS vagy más, harmadik féltől származó identitásszolgáltató.
@@ -94,6 +93,6 @@ Nem állandó VDI telepítésekor a Microsoft javasolja, hogy a rendszergazdák 
    - Ha már van egy stratégia a nem állandó hibrid Azure AD-hez csatlakoztatott eszközök azonosításához (például a számítógép megjelenített nevének előtagjának használatával), agresszíven kell lennie ezeknek az eszközöknek a tisztításához, hogy a címtár ne legyen felhasználva sok elavult eszközzel.
    - A Windows aktuális és alacsonyabb szintű, nem állandó VDI-telepítések esetén olyan eszközöket kell törölni, amelyeknek 15 napnál régebbi **ApproximateLastLogonTimestamp** van.
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Hibrid Azure Active Directory illesztés konfigurálása összevont környezethez](hybrid-azuread-join-federated-domains.md)

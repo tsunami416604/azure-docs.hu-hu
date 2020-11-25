@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
 ms.openlocfilehash: 78573cfe00d8e2e7ddcbf705dffdd5530f82c4e0
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998597"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024197"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>A távoli figyelési megoldás helyi telepítése – IntelliJ
 
@@ -95,10 +95,10 @@ Ha még nem hozta létre a szükséges Azure-erőforrásokat, kövesse az alább
 
    A szkript létrehoz egy erőforráscsoportot az Azure-ban, amelyben a megoldás neve szerepel. Ez az erőforráscsoport tartalmazza a megoldás-gyorsító által használt Azure-erőforrásokat. Ezt az erőforráscsoportot akkor törölheti, ha már nincs szüksége a megfelelő erőforrásokra.
 
-   A parancsfájl környezeti változókat is hozzáad a helyi géphez. Mindegyik változó neve a **számítógépek**előtagját adja meg. Ezek a környezeti változók olyan részleteket biztosítanak, amelyek lehetővé teszik a távoli megfigyelés számára, hogy beolvassák a konfigurációs értékeket egy Azure Key Vault erőforrásból.
+   A parancsfájl környezeti változókat is hozzáad a helyi géphez. Mindegyik változó neve a **számítógépek** előtagját adja meg. Ezek a környezeti változók olyan részleteket biztosítanak, amelyek lehetővé teszik a távoli megfigyelés számára, hogy beolvassák a konfigurációs értékeket egy Azure Key Vault erőforrásból.
 
    > [!TIP]
-   > A parancsfájl befejeződése után a környezeti változókat egy ** \<your home folder\> \\ . PCs \\ \<solution name\> . env**nevű fájlba menti. Használhatja őket a jövőbeli megoldás-gyorsító üzembe helyezésekhez. Vegye figyelembe, hogy a helyi gépen beállított környezeti változók a **Docker-összeállítás**futtatásakor felülbírálják a **Services- \\ parancsfájlok \\ helyi \\ . env** fájljának értékeit.
+   > A parancsfájl befejeződése után a környezeti változókat egy **\<your home folder\> \\ . PCs \\ \<solution name\> . env** nevű fájlba menti. Használhatja őket a jövőbeli megoldás-gyorsító üzembe helyezésekhez. Vegye figyelembe, hogy a helyi gépen beállított környezeti változók a **Docker-összeállítás** futtatásakor felülbírálják a **Services- \\ parancsfájlok \\ helyi \\ . env** fájljának értékeit.
 
 1. A parancssori környezet lezárása.
 
@@ -109,7 +109,7 @@ Ha már létrehozta a szükséges Azure-erőforrásokat, állítsa be a megfelel
 * **PCS_AAD_APPID**: a Azure Active Directory (Azure ad) alkalmazás azonosítója.
 * **PCS_AAD_APPSECRET**: az Azure ad-alkalmazás titka.
 
-A konfigurációs értékek beolvasása ebből a Key Vault erőforrásból történik. Ezeket a környezeti változókat a telepítésből a ** \<your home folder\> \\ . PC \\ \<solution name\> . env** fájlba mentheti. Vegye figyelembe, hogy a helyi gépen beállított környezeti változók a **Docker-összeállítás**futtatásakor felülbírálják a **szolgáltatások \\ \\ helyi \\ . env** fájljának értékeit.
+A konfigurációs értékek beolvasása ebből a Key Vault erőforrásból történik. Ezeket a környezeti változókat a telepítésből a **\<your home folder\> \\ . PC \\ \<solution name\> . env** fájlba mentheti. Vegye figyelembe, hogy a helyi gépen beállított környezeti változók a **Docker-összeállítás** futtatásakor felülbírálják a **szolgáltatások \\ \\ helyi \\ . env** fájljának értékeit.
 
 A webszolgáltatás által igényelt néhány konfiguráció a kezdeti telepítéskor létrehozott Key Vault egy példányában van tárolva. A Key Vault megfelelő változóit szükség szerint módosítani kell.
 
@@ -154,16 +154,16 @@ A következő lépések bemutatják, hogyan futtathatja a távoli monitorozási 
 #### <a name="import-a-project"></a>Projekt importálása
 
 1. Nyissa meg a IntelliJ IDE.
-1. Válassza a **Projekt importálása**lehetőséget.
-1. Válassza a **Azure-IOT-PCs-Remote-Monitoring-java\services\build.SBT**lehetőséget.
+1. Válassza a **Projekt importálása** lehetőséget.
+1. Válassza a **Azure-IOT-PCs-Remote-Monitoring-java\services\build.SBT** lehetőséget.
 
 #### <a name="create-run-configurations"></a>Futtatási konfigurációk létrehozása
 
-1. Válassza **Run**a  >  **szerkesztési konfigurációk**futtatása lehetőséget.
-1. Válassza az **új konfigurációs**  >  **SBT feladat**hozzáadása lehetőséget.
+1. Válassza **Run** a  >  **szerkesztési konfigurációk** futtatása lehetőséget.
+1. Válassza az **új konfigurációs**  >  **SBT feladat** hozzáadása lehetőséget.
 1. Adja meg a **nevet**, majd adja meg a **feladatokat** **futtatásként**.
 1. Válassza ki a **munkakönyvtárat** a futtatni kívánt szolgáltatás alapján.
-1. Válassza **Apply**az  >  **OK** alkalmazása lehetőséget a beállítások mentéséhez.
+1. Válassza **Apply** az  >  **OK** alkalmazása lehetőséget a beállítások mentéséhez.
 1. Hozzon létre futtatási konfigurációkat a következő webszolgáltatásokhoz:
     * Webszolgáltatás (services\config)
     * Webszolgáltatás (services\device-telemetry)
@@ -176,9 +176,9 @@ Az alábbi képen például egy szolgáltatás konfigurációjának hozzáadása
 
 #### <a name="create-a-compound-configuration"></a>Összetett konfiguráció létrehozása
 
-1. Az összes szolgáltatás együttes futtatásához válassza az **új konfigurációs**  >  **összetett**hozzáadása elemet.
-1. Adja meg a **nevet**, majd kattintson a **SBT-feladatok hozzáadása**lehetőségre.
-1. Válassza **Apply**az  >  **OK** alkalmazása lehetőséget a beállítások mentéséhez.
+1. Az összes szolgáltatás együttes futtatásához válassza az **új konfigurációs**  >  **összetett** hozzáadása elemet.
+1. Adja meg a **nevet**, majd kattintson a **SBT-feladatok hozzáadása** lehetőségre.
+1. Válassza **Apply** az  >  **OK** alkalmazása lehetőséget a beállítások mentéséhez.
 
 Az alábbi képen látható, hogyan adhat hozzá az összes SBT-feladatot egyetlen konfigurációhoz:
 
@@ -228,12 +228,12 @@ További információ az Nginx futtatásáról: [Nginx for Windows](https://ngin
 
 A távoli figyelési megoldás irányítópultjának eléréséhez nyissa meg a t a `http://localhost:9000` böngészőben.
 
-## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
 
 A szükségtelen díjak elkerüléséhez távolítsa el a Cloud Servicest az Azure-előfizetésből a tesztelés befejezése után. A szolgáltatások eltávolításához nyissa meg a [Azure Portal](https://ms.portal.azure.com), és törölje a **Start. cmd** parancsfájl által létrehozott erőforráscsoportot.
 
 Törölheti a távoli figyelési tárház helyi példányát is, amely a forráskódnak a GitHubról történő klónozásakor jött létre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy üzembe helyezte a távoli figyelési megoldást, a következő lépés a [megoldás irányítópultjának képességeinek megismerése](quickstart-remote-monitoring-deploy.md).

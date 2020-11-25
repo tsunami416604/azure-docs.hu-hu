@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
-ms.date: 04/16/2020
-ms.openlocfilehash: 569cf130b464d97e0ac10904ffd86365b57610a5
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 11/25/2020
+ms.openlocfilehash: af7ac49fd6c1a31a8363c4ba0bf925787613ecc2
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420835"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030407"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>A tervezőhöz tartozó kivételek és hibakódok
 
@@ -281,11 +281,18 @@ Ha a modellt a speciális képzési modulok bármelyikével betanítják, a beta
 
  Ez a hiba akkor fordul elő, ha egy oszlop túl sok egyedi értéket tartalmaz.  Előfordulhat például, hogy ez a hiba akkor jelenik meg, ha azt adja meg, hogy egy oszlop kategorikus adatként legyen kezelve, de túl sok egyedi érték van az oszlopban a feldolgozás befejezésének engedélyezéséhez. Ez a hiba akkor is megjelenhet, ha a két bemenetben lévő egyedi értékek száma nem egyezik.   
 
+Az egyedi értékek hibája nagyobb az engedélyezettnél, ha **a következő** feltételekkel találkozik:
+
+- Egy oszlop több mint 97%-a egyedi értékek, ami azt jelenti, hogy szinte az összes kategória eltér egymástól.
+- Az egyik oszlop több mint 1000 egyedi értéket tartalmaz.
+
 **Felbontás**
 
 Nyissa meg a hibát generáló modult, és azonosítsa a bemenetként használt oszlopokat. Egyes modulok esetében kattintson a jobb gombbal az adatkészlet bemenetére, és válassza a **Megjelenítés** lehetőséget az egyes oszlopokra vonatkozó statisztikák beszerzéséhez, beleértve az egyedi értékek számát és a terjesztését.
 
 A csoportosításhoz vagy kategorizáláshoz használni kívánt oszlopok esetében hajtsa végre a lépéseket az oszlopok egyedi értékei számának csökkentése érdekében. Az oszlop adattípusától függően a különböző módokon is csökkentheti az adattípust. 
+
+Általában ebben az esetben a hibát jelző oszlop értelmetlen a modellek betanítására szolgáló szolgáltatásként. Ezért használhatja a [metaadatok szerkesztése](../algorithm-module-reference/edit-metadata.md) lehetőséget az oszlop **törlési funkcióként** való megjelölésére, és a modell betanítása során nem lesz használatban. 
 <!--
 + For text data, you might be able to use [Preprocess Text](preprocess-text.md) to collapse similar entries. 
 + For numeric data, you can create a smaller number of bins using [Group Data into Bins](group-data-into-bins.md), remove or truncate values using [Clip Values](clip-values.md), or use machine learning methods such as [Principal Component Analysis](principal-component-analysis.md) or [Learning with Counts](data-transformation-learning-with-counts.md) to reduce the dimensionality of the data.  
@@ -357,7 +364,7 @@ A csoportosításhoz vagy kategorizáláshoz használni kívánt oszlopok eseté
 ## <a name="error-0018"></a>0018 hiba  
  Kivétel történik, ha a bemeneti adatkészlet érvénytelen.  
 
-**Megoldás:** Ez a hiba Azure Machine Learning több kontextusban is megjelenhet, így nincs egyetlen megoldás. Általánosságban a hiba azt jelzi, hogy a modulba bemenetként megadott adatok helytelen számú oszlopot tartalmaz, vagy az adattípus nem felel meg a modul követelményeinek. Ilyenek többek között:  
+**Megoldás:** Ez a hiba Azure Machine Learning több kontextusban is megjelenhet, így nincs egyetlen megoldás. Általánosságban a hiba azt jelzi, hogy a modulba bemenetként megadott adatok helytelen számú oszlopot tartalmaz, vagy az adattípus nem felel meg a modul követelményeinek. Például:  
 
 -   A modulhoz címke típusú oszlopra van szükség, de az oszlop nem jelölésként van megjelölve, vagy még nem jelölt ki felirat oszlopot.  
   
@@ -439,7 +446,7 @@ A csoportosításhoz vagy kategorizáláshoz használni kívánt oszlopok eseté
 ## <a name="error-0022"></a>0022 hiba  
  Kivétel történik, ha a bemeneti adatkészlet kiválasztott oszlopainak száma nem egyezik a várt számmal.  
 
- Ez a hiba Azure Machine Learning akkor fordulhat elő, ha az alárendelt modulnak vagy műveletnek adott számú oszlopot vagy bemenetet kell használnia, és túl kevés vagy túl sok oszlopot vagy bemenetet adott meg. Ilyenek többek között:  
+ Ez a hiba Azure Machine Learning akkor fordulhat elő, ha az alárendelt modulnak vagy műveletnek adott számú oszlopot vagy bemenetet kell használnia, és túl kevés vagy túl sok oszlopot vagy bemenetet adott meg. Például:  
 
 -   Egyetlen címkét tartalmazó oszlopot vagy kulcs oszlopot kell megadnia, és véletlenül több oszlopot is kiválasztott.  
   
@@ -1106,8 +1113,8 @@ A Machine learninghez készült kaptár-lekérdezésekkel kapcsolatos segítség
  Ellenőrizze, hogy a lekérdezés megfelelően működik-e az Azure ML-n keresztül, ha közvetlenül az adatbázis-kiszolgálóra jelentkezik be, és futtatja a lekérdezést.  
 
  Ha a modul kivétele szerint egy SQL által generált üzenet jelenik meg, akkor a jelentett hiba alapján végezze el a műveletet. Előfordulhat például, hogy a hibaüzenetek időnként konkrét útmutatást tartalmaznak a valószínű hibára vonatkozóan:
-+ *Nincs ilyen oszlop vagy hiányzó adatbázis* , ami azt jelzi, hogy helytelen az oszlopnév beírása. Ha biztos benne, hogy az oszlop neve helyes, az oszlop azonosítójának bejelöléséhez használjon szögletes zárójeleket vagy idézőjeleket.
-+ *SQL-logikai hiba \<SQL keyword\> a közelében* , ami azt jelzi, hogy szintaktikai hiba történt a megadott kulcsszó előtt
++ *Nincs ilyen oszlop vagy hiányzó adatbázis*, ami azt jelzi, hogy helytelen az oszlopnév beírása. Ha biztos benne, hogy az oszlop neve helyes, az oszlop azonosítójának bejelöléséhez használjon szögletes zárójeleket vagy idézőjeleket.
++ *SQL-logikai hiba \<SQL keyword\> a közelében*, ami azt jelzi, hogy szintaktikai hiba történt a megadott kulcsszó előtt
 
   
 |Kivételek üzenetei|

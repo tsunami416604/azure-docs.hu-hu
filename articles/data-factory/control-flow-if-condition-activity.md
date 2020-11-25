@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 9f65ffc9ef24b18ce0f18571c1f3fc91e7ca7fdf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85414606"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024231"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Ha a feltétel tevékenysége Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -67,11 +67,11 @@ Az If Condition tevékenység ugyanazokat a funkciókat biztosítja, mint a prog
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-name | Az IF-Condition tevékenység neve. | Sztring | Igen
-típus | **IfCondition** értékre kell állítani | Sztring | Igen
-kifejezés | Igaz vagy hamis értéket megadó kifejezés | Kifejezés az eredmény típusú logikai értékkel | Igen
-ifTrueActivities | A kifejezés kiértékelése során végrehajtott tevékenységek összessége `true` . | Tömb | Igen
-ifFalseActivities | A kifejezés kiértékelése során végrehajtott tevékenységek összessége `false` . | Tömb | Igen
+name | Az IF-Condition tevékenység neve. | Sztring | Yes
+típus | **IfCondition** értékre kell állítani | Sztring | Yes
+kifejezés | Igaz vagy hamis értéket megadó kifejezés | Kifejezés az eredmény típusú logikai értékkel | Yes
+ifTrueActivities | A kifejezés kiértékelése során végrehajtott tevékenységek összessége `true` . | Tömb | Yes
+ifFalseActivities | A kifejezés kiértékelése során végrehajtott tevékenységek összessége `false` . | Tömb | Yes
 
 ## <a name="example"></a>Példa
 Az ebben a példában szereplő folyamat adatokat másol egy bemeneti mappából a kimeneti mappába. A kimeneti mappát a (z) routeSelection folyamat paraméterének értéke határozza meg. Ha a routeSelection értéke TRUE (igaz), a rendszer átmásolja az adatmennyiséget a outputPath1. Ha pedig a routeSelection értéke hamis, a rendszer az outputPath2-re másolja az adatfájlokat. 

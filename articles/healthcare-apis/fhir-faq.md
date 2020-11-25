@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 744bcfe196629f76c5505f36ef9c8c224fefe601
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d013af82a862f1bc6b5324e7523aeea5593a4f94
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "95909067"
+ms.locfileid: "96030662"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>A FHIR készült Azure API-val kapcsolatos gyakori kérdések
 
@@ -122,7 +122,7 @@ Az állapotfigyelő architektúrák gyűjteménye az [Health Architecture GitHub
 
 ### <a name="where-can-i-see-an-example-of-connecting-a-web-application-to-azure-api-for-fhir"></a>Hol láthatom a webalkalmazások Azure API-hoz való csatlakoztatásának példáját a FHIR-hoz?
 
-Van egy, az [architektúrát használó GitHub-oldal](https://github.com/microsoft/health-architectures) , amely példákat és forgatókönyveket tartalmaz. Bemutatja, hogyan csatlakoztatható egy webalkalmazás az Azure API-hoz a FHIR-hez.  
+Van egy, az [architektúrát használó GitHub-oldal](https://aka.ms/health-architectures) , amely példákat és forgatókönyveket tartalmaz. Bemutatja, hogyan csatlakoztatható egy webalkalmazás az Azure API-hoz a FHIR-hez.  
 
 ## <a name="azure-api-for-fhir-features-and-services"></a>Azure API a FHIR szolgáltatásaihoz és szolgáltatásaihoz 
 

@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: a1eba1fceb959bd475d205176c2c53f6409fdc77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73890888"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024146"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>A távoli figyelési megoldás helyi telepítése – Visual Studio
 
@@ -64,8 +64,8 @@ A következő lépések bemutatják, hogyan futtathatja a távoli monitorozási 
 
 1. Indítsa el a Visual studiót.
 1. Nyissa meg a **Remote-Monitoring. SLN** megoldást a tárház helyi példányában található **szolgáltatások** mappában.
-1. A **megoldáskezelő**kattintson a jobb gombbal a megoldásra, majd kattintson a **Tulajdonságok**elemre.
-1. Válassza az **Általános tulajdonságok > indítási projekt**lehetőséget.
+1. A **megoldáskezelő** kattintson a jobb gombbal a megoldásra, majd kattintson a **Tulajdonságok** elemre.
+1. Válassza az **Általános tulajdonságok > indítási projekt** lehetőséget.
 1. Válasszon **több indítási projektet** , és állítsa be a **műveletet** a következő projektek **elindításához** :
     * Webszolgáltatás (asa-manager\WebService)
     * Webszolgáltatás (auth\WebService)
@@ -96,22 +96,22 @@ npm install
 npm start
 ```
 
-A kezdés befejezésekor a böngésző a **http: \/ /localhost: 3000/Dashboard**lapot jeleníti meg. A rendszer a lapon szereplő hibákat várta. Ha hiba nélkül szeretné megtekinteni az alkalmazást, hajtsa végre a következő lépést.
+A kezdés befejezésekor a böngésző a **http: \/ /localhost: 3000/Dashboard** lapot jeleníti meg. A rendszer a lapon szereplő hibákat várta. Ha hiba nélkül szeretné megtekinteni az alkalmazást, hajtsa végre a következő lépést.
 
 ### <a name="configure-and-run-nginx"></a>Az NGINX konfigurálása és futtatása
 
 Hozzon létre egy fordított proxykiszolgálót a helyi gépen futó webalkalmazás és-szolgáltatások összekapcsolásához:
 
 * Másolja az **Nginx. conf** fájlt a **webui\scripts\localhost** mappából a tárház helyi példányában a **nginx\conf** telepítési könyvtárába.
-* Az **Nginx**futtatása.
+* Az **Nginx** futtatása.
 
-További információ az **Nginx**futtatásáról: [Nginx for Windows](https://nginx.org/en/docs/windows.html).
+További információ az **Nginx** futtatásáról: [Nginx for Windows](https://nginx.org/en/docs/windows.html).
 
 ### <a name="connect-to-the-dashboard"></a>Kapcsolódás az irányítópulthoz
 
 A távoli figyelési megoldás irányítópultjának eléréséhez navigáljon a böngészőben a http: \/ /localhost: 9000 elemre.
 
-## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
 
 A szükségtelen díjak elkerüléséhez, ha befejezte a tesztelést, távolítsa el a Cloud Servicest az Azure-előfizetésből. A szolgáltatások eltávolításához navigáljon a [Azure Portal](https://ms.portal.azure.com) , és törölje a **Start. cmd** parancsfájl által létrehozott erőforráscsoportot.
 

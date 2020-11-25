@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 11/18/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 20e635d606676a526fac4c3720931525beb66876
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: c58ee46a608ccdcbb01a082ee278d9e0f8a07f6e
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95790409"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030679"
 ---
 # <a name="azure-synapse-analytics-terminology"></a>Az Azure szinapszis Analytics terminológiája
 
@@ -41,13 +41,11 @@ A **SZINAPSZIS SQL** lehetővé teszi a T-SQL-alapú elemzések elvégzését a 
 
 ## <a name="apache-spark-for-synapse"></a>A szinapszis Apache Spark
 
-A Spark Analytics használatához hozzon létre és használjon **kiszolgáló nélküli Apache Spark készleteket** a szinapszis munkaterületen.
+A Spark Analytics használatához hozzon létre és használjon **kiszolgáló nélküli Apache Spark készleteket** a szinapszis munkaterületen. A Spark-készlet használatának megkezdése során a munkaterületek egy **Spark-munkamenetet** hoznak létre, amely az adott munkamenethez tartozó erőforrásokat kezeli a assosociated. 
 
-* **Apache Spark készlet** – 0 – N Spark által kiépített, a hozzájuk tartozó adatbázisokkal rendelkező erőforrások a munkaterületen helyezhetők üzembe. A Spark-készlet lehet automatikusan szüneteltethető, folytatható és méretezhető.  
-* **Spark-alkalmazás** – egy illesztőprogram-folyamatból és egy végrehajtó folyamatokból áll. A Spark-alkalmazások kiszolgáló nélküli Spark-készleten futnak.            
-* Spark- **munkamenet**– a Spark-alkalmazás egyesített belépési pontja. Lehetővé teszi a Spark különböző funkcióinak és kisebb számú szerkezetének kezelését. Jegyzetfüzet futtatásához létre kell hoznia egy munkamenetet. Egy munkamenet konfigurálható úgy, hogy egy adott méretű, meghatározott számú végrehajtón fusson. A notebook-munkamenet alapértelmezett konfigurációja 2 közepes méretű végrehajtón fut.
-* **Notebook** -interaktív és reaktív adatelemzési és-mérnöki felület, amely támogatja a Scala, a PySpark, a C# és a SparkSQL.
-* **Spark Job definition** – a felületet, amely a kódot és annak függőségeit tartalmazó szerelvény-jar-feladatokat küld el a Spark-feladatokhoz.
+A (z)-ben kétféleképpen használhatja a Sparkot:
+* Az adatelemzést és-fejlesztést végző **Spark notebookok** a Scala, a PySpark, a C# és a SparkSQL használatával
+* **Spark-feladatdefiníciók** a Batch Spark-feladatok jar-fájlokkal történő futtatásához.
 
 Verzió támogatása:
 * Spark 2,4

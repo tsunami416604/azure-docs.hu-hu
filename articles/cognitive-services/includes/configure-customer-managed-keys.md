@@ -8,26 +8,26 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/28/2020
 ms.author: egeaney
-ms.openlocfilehash: 63cfe7968ec88ed75dfe23e8a3d34ac2649f6776
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17dff6056564b421f0741f55ce8171f3251c94c9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84307816"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026635"
 ---
 ## <a name="customer-managed-keys-with-azure-key-vault"></a>Felhasználó által kezelt kulcsok az Azure Key Vaulttal
 
-Az ügyfél által felügyelt kulcsok tárolásához Azure Key Vaultt kell használnia. Létrehozhatja saját kulcsait, és tárolhatja őket egy kulcstartóban, vagy használhatja a Azure Key Vault API-kat kulcsok létrehozásához. A Cognitive Services erőforrásnak és a kulcstartónak ugyanabban a régióban és ugyanabban a Azure Active Directory (Azure AD) bérlőben kell lennie, de különböző előfizetésekben lehet. További információ a Azure Key Vaultről: [Mi az Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+Az ügyfél által felügyelt kulcsok tárolásához Azure Key Vaultt kell használnia. Létrehozhatja saját kulcsait, és tárolhatja őket egy kulcstartóban, vagy használhatja a Azure Key Vault API-kat kulcsok létrehozásához. A Cognitive Services erőforrásnak és a kulcstartónak ugyanabban a régióban és ugyanabban a Azure Active Directory (Azure AD) bérlőben kell lennie, de különböző előfizetésekben lehet. További információ a Azure Key Vaultről: [Mi az Azure Key Vault?](../../key-vault/general/overview.md)
 
 Új Cognitive Services-erőforrás létrehozásakor a rendszer mindig a Microsoft által felügyelt kulcsokkal titkosítja. Az ügyfél által felügyelt kulcsokat nem lehet engedélyezni az erőforrás létrehozásának időpontjában. Az ügyfél által felügyelt kulcsok Azure Key Vault tárolódnak, és a kulcstárolót olyan hozzáférési házirendekkel kell kiépíteni, amelyek kulcsfontosságú engedélyeket biztosítanak a Cognitive Services erőforráshoz társított felügyelt identitásnak. A felügyelt identitás csak akkor érhető el, ha az erőforrást a CMK szükséges díjszabási szinten hozza létre.
 
-Az ügyfél által felügyelt kulcsok engedélyezése lehetővé teszi a rendszerhez rendelt [felügyelt identitások](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview), az Azure ad funkciójának engedélyezését is. Ha engedélyezve van a rendszerhez rendelt felügyelt identitás, ez az erőforrás Azure Active Directory lesz regisztrálva. A regisztrálást követően a felügyelt identitás hozzáférést kap az ügyfél által felügyelt kulcs beállításakor kiválasztott Key Vaulthoz. 
+Az ügyfél által felügyelt kulcsok engedélyezése lehetővé teszi a rendszerhez rendelt [felügyelt identitások](../../active-directory/managed-identities-azure-resources/overview.md), az Azure ad funkciójának engedélyezését is. Ha engedélyezve van a rendszerhez rendelt felügyelt identitás, ez az erőforrás Azure Active Directory lesz regisztrálva. A regisztrálást követően a felügyelt identitás hozzáférést kap az ügyfél által felügyelt kulcs beállításakor kiválasztott Key Vaulthoz. 
 
 > [!IMPORTANT]
 > Ha letiltja a rendszerhez rendelt felügyelt identitásokat, a Key vaulthoz való hozzáférés el lesz távolítva, és az ügyfél kulcsaival titkosított összes adat már nem lesz elérhető. Az adatoktól függő funkciók nem fognak működni.
 
 > [!IMPORTANT]
-> A felügyelt identitások jelenleg nem támogatják a könyvtárak közötti forgatókönyveket. Ha az ügyfél által felügyelt kulcsokat a Azure Portal konfigurálja, a rendszer automatikusan hozzárendel egy felügyelt identitást a borítók alatt. Ha ezt követően áthelyezi az előfizetést, az erőforráscsoportot vagy az erőforrást egy Azure AD-címtárból egy másikba, az erőforráshoz társított felügyelt identitás nem kerül át az új bérlőre, így az ügyfél által felügyelt kulcsok nem fognak működni. További információ: **előfizetés továbbítása Azure ad-címtárak között** [Gyakori kérdések és ismert problémák az Azure-erőforrások felügyelt identitásával](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#transferring-a-subscription-between-azure-ad-directories)kapcsolatban.  
+> A felügyelt identitások jelenleg nem támogatják a könyvtárak közötti forgatókönyveket. Ha az ügyfél által felügyelt kulcsokat a Azure Portal konfigurálja, a rendszer automatikusan hozzárendel egy felügyelt identitást a borítók alatt. Ha ezt követően áthelyezi az előfizetést, az erőforráscsoportot vagy az erőforrást egy Azure AD-címtárból egy másikba, az erőforráshoz társított felügyelt identitás nem kerül át az új bérlőre, így az ügyfél által felügyelt kulcsok nem fognak működni. További információ: **előfizetés továbbítása Azure ad-címtárak között** [Gyakori kérdések és ismert problémák az Azure-erőforrások felügyelt identitásával](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)kapcsolatban.  
 
 ## <a name="configure-azure-key-vault"></a>Az Azure Key Vault konfigurálása
 
@@ -38,17 +38,17 @@ Az ügyfél által felügyelt kulcsok használata megköveteli, hogy a Key vault
 
 Ha meg szeretné tudni, hogyan engedélyezheti ezeket a tulajdonságokat egy meglévő kulcstartón, tekintse meg a következő cikkek egyikében, a **Soft-delete engedélyezése** és a **kiürítési védelem engedélyezése** című szakaszt:
 
-- [A Soft-delete használata a PowerShell-](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell)lel.
-- [A Soft delete használata a parancssori](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-cli)felülettel.
+- [A Soft-delete használata a PowerShell-](../../key-vault/general/soft-delete-powershell.md)lel.
+- [A Soft delete használata a parancssori](../../key-vault/general/soft-delete-cli.md)felülettel.
 
-Az Azure Storage-titkosítás csak a 2048 méretű RSA-kulcsokat támogatja. A kulcsokkal kapcsolatos további információkért tekintse meg a kulcsok [, titkos kódok és tanúsítványok](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-keys) **Key Vault kulcsait** Azure Key Vault ismertető témakört.
+Az Azure Storage-titkosítás csak a 2048 méretű RSA-kulcsokat támogatja. A kulcsokkal kapcsolatos további információkért tekintse meg a kulcsok [, titkos kódok és tanúsítványok](../../key-vault/general/about-keys-secrets-certificates.md) **Key Vault kulcsait** Azure Key Vault ismertető témakört.
 
 ## <a name="enable-customer-managed-keys-for-your-resource"></a>Ügyfél által felügyelt kulcsok engedélyezése az erőforráshoz
 
 Az ügyfél által felügyelt kulcsok Azure Portal való engedélyezéséhez kövesse az alábbi lépéseket:
 
 1. Navigáljon a Cognitive Services-erőforráshoz.
-1. A Cognitive Services erőforrás **Beállítások** paneljén kattintson a **titkosítás**elemre. Válassza ki az **ügyfél által felügyelt kulcsok** lehetőséget az alábbi ábrán látható módon.
+1. A Cognitive Services erőforrás **Beállítások** paneljén kattintson a **titkosítás** elemre. Válassza ki az **ügyfél által felügyelt kulcsok** lehetőséget az alábbi ábrán látható módon.
 
     ![Az ügyfél által felügyelt kulcsok kijelölését bemutató képernyőkép](../media/cognitive-services-encryption/selectcmk.png)
 
@@ -109,7 +109,7 @@ A kulcs elforgatása nem aktiválja újra az erőforrásban lévő adattitkosít
 
 ## <a name="revoke-access-to-customer-managed-keys"></a>Ügyfél által felügyelt kulcsok hozzáférésének visszavonása
 
-Az ügyfél által felügyelt kulcsokhoz való hozzáférés visszavonásához használja a PowerShellt vagy az Azure CLI-t. További információ: [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/az.keyvault//) vagy [Azure Key Vault parancssori](https://docs.microsoft.com/cli/azure/keyvault)felület. A hozzáférés visszavonása hatékonyan blokkolja a Cognitive Services erőforrásban lévő összes adattal való hozzáférést, mivel a titkosítási kulcs Cognitive Services nem érhető el.
+Az ügyfél által felügyelt kulcsokhoz való hozzáférés visszavonásához használja a PowerShellt vagy az Azure CLI-t. További információ: [Azure Key Vault PowerShell](/powershell/module/az.keyvault//) vagy [Azure Key Vault parancssori](/cli/azure/keyvault)felület. A hozzáférés visszavonása hatékonyan blokkolja a Cognitive Services erőforrásban lévő összes adattal való hozzáférést, mivel a titkosítási kulcs Cognitive Services nem érhető el.
 
 ## <a name="disable-customer-managed-keys"></a>Ügyfél által felügyelt kulcsok letiltása
 

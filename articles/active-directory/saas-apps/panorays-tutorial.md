@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/03/2020
 ms.author: jeedes
-ms.openlocfilehash: 9dacbfacdbb9a1ecc103b0cec224d861b42b1576
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 3e4d3145263b4b0379f85dea86d075480935a28c
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94370576"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029336"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-panorays"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Panorays
 
@@ -75,18 +75,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **alapszintű SAML-konfiguráció** szakaszban a felhasználónak nem kell végrehajtania egy lépést, mivel az alkalmazás már előre integrálva van az Azure-ban.
-
-1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
-
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:
-
-    | Bejelentkezési URL-cím |
-    |--------------|
-    | `https://www.panoraysapp.com` |
-    | `https://auth.panoraysapp.com` |
-
-1. Kattintson a **Mentés** gombra.
+1. Az **alapszintű SAML-konfiguráció** szakaszban az alkalmazás előre konfigurálva van, és a szükséges URL-címek már előre fel vannak töltve az Azure-ban. A felhasználónak mentenie kell a konfigurációt a Save (Mentés) gombra kattintva.
 
 1. A Panorays-alkalmazás meghatározott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, míg az **egyedi felhasználói azonosító** a **User. userPrincipalName** leképezéssel van leképezve. A Panorays alkalmazás **egyedi felhasználói azonosítót** vár a **User. mail** használatával, ezért az attribútum-hozzárendelést úgy kell módosítania, hogy a **Szerkesztés** ikonra kattint, és módosítja az attribútum-hozzárendelést.
 
@@ -100,7 +89,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
@@ -134,9 +123,7 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 #### <a name="sp-initiated"></a>Az SP inicializálva:
 
-1. Kattintson az **alkalmazás tesztelése** Azure Portal lehetőségre. A rendszer átirányítja a Panorays bejelentkezési URL-címére, ahol elindíthatja a bejelentkezési folyamatot.  
-
-1. Lépjen közvetlenül a Panorays bejelentkezési URL-címére, és indítsa el onnan a bejelentkezési folyamatot.
+Lépjen közvetlenül a [Panorays bejelentkezési URL-címére](https://www.panoraysapp.com) , és indítsa el onnan a bejelentkezési folyamatot.
 
 #### <a name="idp-initiated"></a>IDENTITÁSSZOLGÁLTATÓ kezdeményezve:
 

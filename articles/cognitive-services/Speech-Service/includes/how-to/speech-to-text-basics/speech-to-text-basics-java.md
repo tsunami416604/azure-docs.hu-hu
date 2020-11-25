@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/11/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: 70b983d0fc2b13957a3701c778dec074b328a770
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 3564bf0db3e85ed1d2d1716fd50e48838a94d40a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94482710"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027155"
 ---
 A beszédfelismerési szolgáltatás egyik fő funkciója az emberi beszéd (más néven beszéd – szöveg) felismerése és átírása. Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Speech SDK-t az alkalmazásaiban és termékeiben a kiváló minőségű beszéd-szöveg átalakítás elvégzéséhez.
 
@@ -31,7 +31,7 @@ Mielőtt bármit elvégezhet, telepítenie kell a Speech SDK-t. A platformtól f
 
 ## <a name="create-a-speech-configuration"></a>Beszédfelismerési konfiguráció létrehozása
 
-A beszédfelismerési szolgáltatás a Speech SDK használatával történő meghívásához létre kell hoznia egy [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) . Ez az osztály az előfizetésével kapcsolatos információkat tartalmaz, például a kulcsot és a társított régiót, végpontot, gazdagépet vagy engedélyezési jogkivonatot. Hozzon létre egy [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) -t a kulcs és a régió használatával. A [kulcsok és régiók keresése](../../../overview.md#find-keys-and-region) lapon találja meg a kulcs-régió párokat.
+A beszédfelismerési szolgáltatás a Speech SDK használatával történő meghívásához létre kell hoznia egy [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig) . Ez az osztály az előfizetésével kapcsolatos információkat tartalmaz, például a kulcsot és a társított régiót, végpontot, gazdagépet vagy engedélyezési jogkivonatot. Hozzon létre egy [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig) -t a kulcs és a régió használatával. A [kulcsok és régiók keresése](../../../overview.md#find-keys-and-region) lapon találja meg a kulcs-régió párokat.
 
 ```java
 import com.microsoft.cognitiveservices.speech.*;
@@ -46,7 +46,7 @@ public class Program {
 }
 ```
 
-Néhány más módon is elvégezhető a következők inicializálása [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) :
+Néhány más módon is elvégezhető a következők inicializálása [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig) :
 
 * Egy végponttal: pass a Speech Service-végponton. Kulcs-vagy engedélyezési jogkivonat nem kötelező.
 * Gazdagép esetén: adjon meg egy gazdagép-címeket. Kulcs-vagy engedélyezési jogkivonat nem kötelező.
@@ -57,7 +57,7 @@ Néhány más módon is elvégezhető a következők inicializálása [`SpeechCo
 
 ## <a name="recognize-from-microphone"></a>Felismerés mikrofonból
 
-Ha az eszköz mikrofonját használva szeretné felismerni a beszédfelismerést, hozzon létre egy `AudioConfig` használatával `fromDefaultMicrophoneInput()` . Ezután inicializálja a t [`SpeechRecognizer`](/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable) , és adja át a `audioConfig` és a `config` .
+Ha az eszköz mikrofonját használva szeretné felismerni a beszédfelismerést, hozzon létre egy `AudioConfig` használatával `fromDefaultMicrophoneInput()` . Ezután inicializálja a t [`SpeechRecognizer`](/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer) , és adja át a `audioConfig` és a `config` .
 
 ```java
 import com.microsoft.cognitiveservices.speech.*;
@@ -87,7 +87,7 @@ Ha egy *adott* hangbeviteli eszközt szeretne használni, meg kell adnia az eszk
 
 ## <a name="recognize-from-file"></a>Felismerés fájlból
 
-Ha mikrofon használata helyett hangfájlból szeretné felismerni a beszédet, akkor továbbra is létre kell hoznia egy elemet `AudioConfig` . Ha azonban létrehozza a-t, a hívása [`AudioConfig`](/java/api/com.microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-java-stable) helyett `fromDefaultMicrophoneInput()` hívja meg `fromWavFileInput()` a fájlt, és adja át a fájl elérési útját.
+Ha mikrofon használata helyett hangfájlból szeretné felismerni a beszédet, akkor továbbra is létre kell hoznia egy elemet `AudioConfig` . Ha azonban létrehozza a-t, a hívása [`AudioConfig`](/java/api/com.microsoft.cognitiveservices.speech.audio.audioconfig) helyett `fromDefaultMicrophoneInput()` hívja meg `fromWavFileInput()` a fájlt, és adja át a fájl elérési útját.
 
 ```java
 import com.microsoft.cognitiveservices.speech.*;
@@ -114,7 +114,7 @@ public class Program {
 
 ## <a name="error-handling"></a>Hibakezelés
 
-Az előző példákban egyszerűen lekérheti a felismert szöveget a használatával `result.getText()` , de a hibák és más válaszok kezeléséhez meg kell írnia egy kódot az eredmény kezeléséhez. A következő példa a és a következőket értékeli ki [`result.getReason()`](/java/api/com.microsoft.cognitiveservices.speech.resultreason?view=azure-java-stable&preserve-view=true) :
+Az előző példákban egyszerűen lekérheti a felismert szöveget a használatával `result.getText()` , de a hibák és más válaszok kezeléséhez meg kell írnia egy kódot az eredmény kezeléséhez. A következő példa a és a következőket értékeli ki [`result.getReason()`](/java/api/com.microsoft.cognitiveservices.speech.resultreason&preserve-view=true) :
 
 * Kinyomtatja az eredmények felismerésének eredményét: `ResultReason.RecognizedSpeech`
 * Ha nincs felismerési egyezés, tájékoztassa a felhasználót: `ResultReason.NoMatch`
@@ -149,7 +149,7 @@ Az előző példákban a single-shot felismerést használjuk, amely egyetlen Ki
 
 Ezzel szemben a folyamatos felismerést akkor kell használni, ha meg szeretné **határozni** , hogy mikor kell leállítani a felismerést. `recognizing` `recognized` A felismerési eredmények beszerzéséhez elő kell fizetnie a, a és az `canceled` eseményekre. Az felismerés leállításához hívja meg a következőt: [`stopContinuousRecognitionAsync`](/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync) . Íme egy példa arra, hogyan történik a folyamatos felismerés egy hangbemeneti fájlon.
 
-Első lépésként definiáljuk a bemenetet, és inicializáljuk a [`SpeechRecognizer`](/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?preserve-view=true&view=azure-java-stable) következőket:
+Első lépésként definiáljuk a bemenetet, és inicializáljuk a [`SpeechRecognizer`](/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer) következőket:
 
 ```java
 AudioConfig audioConfig = AudioConfig.fromWavFileInput("YourAudioFile.wav");
@@ -162,12 +162,12 @@ Ezután hozzon létre egy változót a beszédfelismerés állapotának kezelés
 private static Semaphore stopTranslationWithFileSemaphore;
 ```
 
-A szolgáltatásból érkező eseményekre fogunk előfizetni [`SpeechRecognizer`](/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?preserve-view=true&view=azure-java-stable) .
+A szolgáltatásból érkező eseményekre fogunk előfizetni [`SpeechRecognizer`](/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer) .
 
-* [`recognizing`](/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.recognizing?preserve-view=true&view=azure-java-stable): A köztes felismerési eredményeket tartalmazó események jelzése.
-* [`recognized`](/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.recognized?preserve-view=true&view=azure-java-stable): A végső felismerési eredményeket tartalmazó események jelzése (sikeres felismerési kísérletet jelezve).
-* [`sessionStopped`](/java/api/com.microsoft.cognitiveservices.speech.recognizer.sessionstopped?preserve-view=true&view=azure-java-stable): Az elismerési munkamenet végét jelző események jelzése (művelet).
-* [`canceled`](/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.canceled?preserve-view=true&view=azure-java-stable): A megszakított felismerési eredményeket tartalmazó események jelzése (olyan felismerési kísérletet jelez, amelyet a rendszer az eredmény vagy a közvetlen törlési kérelem miatt megszakított, vagy ha egy átviteli vagy protokollhiba történt).
+* [`recognizing`](/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.recognizing): A köztes felismerési eredményeket tartalmazó események jelzése.
+* [`recognized`](/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.recognized): A végső felismerési eredményeket tartalmazó események jelzése (sikeres felismerési kísérletet jelezve).
+* [`sessionStopped`](/java/api/com.microsoft.cognitiveservices.speech.recognizer.sessionstopped): Az elismerési munkamenet végét jelző események jelzése (művelet).
+* [`canceled`](/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.canceled): A megszakított felismerési eredményeket tartalmazó események jelzése (olyan felismerési kísérletet jelez, amelyet a rendszer az eredmény vagy a közvetlen törlési kérelem miatt megszakított, vagy ha egy átviteli vagy protokollhiba történt).
 
 ```java
 // First initialize the semaphore.
@@ -221,7 +221,7 @@ recognizer.stopContinuousRecognitionAsync().get();
 
 Folyamatos felismerés használatakor engedélyezheti a diktálás feldolgozását a megfelelő "diktálás engedélyezése" funkció használatával. Ez a mód azt eredményezi, hogy a beszédfelismerési konfigurációs példány értelmezi a mondatok (például a központozás) szövegének leírását. A "Do You Live in Town kérdőjel" kifejezés például "a városban él?" szöveget fogja értelmezni.
 
-A diktálási mód engedélyezéséhez használja a [`enableDictation`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig.enabledictation?preserve-view=true&view=azure-java-stable) metódust a alkalmazásban [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-java-stable) .
+A diktálási mód engedélyezéséhez használja a [`enableDictation`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig.enabledictation) metódust a alkalmazásban [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig) .
 
 ```java
 config.enableDictation();
@@ -229,13 +229,13 @@ config.enableDictation();
 
 ## <a name="change-source-language"></a>Forrás nyelvének módosítása
 
-A beszédfelismerés általános feladata, hogy megadja a bemeneti (vagy a forrás) nyelvet. Vessünk egy pillantást arra, hogyan változtathatja meg a szövegbeviteli nyelvet franciára. A kódban keresse meg [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig?preserve-view=true&view=azure-java-stable) , majd adja hozzá ezt a sort közvetlenül alatta.
+A beszédfelismerés általános feladata, hogy megadja a bemeneti (vagy a forrás) nyelvet. Vessünk egy pillantást arra, hogyan változtathatja meg a szövegbeviteli nyelvet franciára. A kódban keresse meg [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig) , majd adja hozzá ezt a sort közvetlenül alatta.
 
 ```java
 config.setSpeechRecognitionLanguage("fr-FR");
 ```
 
-[`setSpeechRecognitionLanguage`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setspeechrecognitionlanguage?preserve-view=true&view=azure-java-stable) egy paraméter, amely argumentumként karakterláncot vesz fel. A támogatott [területi beállítások/nyelvek](../../../language-support.md)listájában bármilyen értéket megadhat.
+[`setSpeechRecognitionLanguage`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setspeechrecognitionlanguage) egy paraméter, amely argumentumként karakterláncot vesz fel. A támogatott [területi beállítások/nyelvek](../../../language-support.md)listájában bármilyen értéket megadhat.
 
 ## <a name="improve-recognition-accuracy"></a>Az elismerés pontosságának javítása
 
@@ -244,9 +244,9 @@ A Speech SDK-val többféleképpen javítható az elismerés pontossága. Vessü
 > [!IMPORTANT]
 > A kifejezés lista szolgáltatás csak angol nyelven érhető el.
 
-A kifejezések listájának használatához először hozzon létre egy [`PhraseListGrammar`](/java/api/com.microsoft.cognitiveservices.speech.phraselistgrammar?preserve-view=true&view=azure-java-stable) objektumot, majd adjon hozzá konkrét szavakat és kifejezéseket a következővel: [`AddPhrase`](/java/api/com.microsoft.cognitiveservices.speech.phraselistgrammar.addphrase?view=azure-java-stable#com_microsoft_cognitiveservices_speech_PhraseListGrammar_addPhrase_String_) .
+A kifejezések listájának használatához először hozzon létre egy [`PhraseListGrammar`](/java/api/com.microsoft.cognitiveservices.speech.phraselistgrammar) objektumot, majd adjon hozzá konkrét szavakat és kifejezéseket a következővel: [`AddPhrase`](/java/api/com.microsoft.cognitiveservices.speech.phraselistgrammar.addphrase#com_microsoft_cognitiveservices_speech_PhraseListGrammar_addPhrase_String_) .
 
-A [`PhraseListGrammar`](/java/api/com.microsoft.cognitiveservices.speech.phraselistgrammar?preserve-view=true&view=azure-java-stable) következő felismerés vagy a beszédfelismerési szolgáltatás újrakapcsolódása után a módosítások érvénybe lépnek.
+A [`PhraseListGrammar`](/java/api/com.microsoft.cognitiveservices.speech.phraselistgrammar) következő felismerés vagy a beszédfelismerési szolgáltatás újrakapcsolódása után a módosítások érvénybe lépnek.
 
 ```java
 PhraseListGrammar phraseList = PhraseListGrammar.fromRecognizer(recognizer);

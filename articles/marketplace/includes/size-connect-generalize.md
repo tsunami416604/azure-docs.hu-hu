@@ -1,5 +1,5 @@
 ---
-title: fájl belefoglalása
+title: fájlbefoglalás
 description: file
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,12 +7,12 @@ ms.topic: include
 author: mingshen-ms
 ms.author: krsh
 ms.date: 10/20/2020
-ms.openlocfilehash: ecbafe0d3f39b1bd6f7c494695ea17e067f0c79e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 6c7536e38a0d2cf7d4e906947aff645c74e459c0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129278"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028439"
 ---
 ## <a name="generalize-the-image"></a>A rendszerkép általánosítása
 
@@ -47,7 +47,7 @@ A következő folyamat általánosít egy Linux rendszerű virtuális gépet, é
 5. Válasszon ki egy meglévő erőforráscsoportot, vagy adja meg egy új csoport nevét.
 6. A **forrásoldali lemez** lapon válassza ki a felügyelt lemezt a pillanatképhez.
 7. Válassza ki a pillanatkép tárolására használni kívánt **fiókot** . A **standard HDD** csak akkor használja, ha nagy teljesítményű SSD-meghajtón tárolja.
-8. Válassza a **Létrehozás** lehetőséget.
+8. Kattintson a **Létrehozás** gombra.
 
 #### <a name="extract-the-vhd"></a>A VHD kibontása
 
@@ -81,7 +81,7 @@ destinationVHDFileName=myvhdfilename.vhd
 
 az account set --subscription $subscriptionId
 
-sas=$(az snapshot grant-access --resource-group $resourceGroupName --name $ snapshotName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv)
+sas=$(az snapshot grant-access --resource-group $resourceGroupName --name $snapshotName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv)
 
 az storage blob copy start --destination-blob $destinationVHDFileName --destination-container $storageContainerName --account-name $storageAccountName --account-key $storageAccountKey --source-uri $sas
 ```
@@ -90,7 +90,7 @@ az storage blob copy start --destination-blob $destinationVHDFileName --destinat
 
 Ez a szkript a következő parancsokat használja egy pillanatkép SAS URI-kódjának létrehozásához, és a mögöttes VHD-t egy Storage-fiókba másolja a SAS URI használatával. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 | --- | --- |
 | az disk grant-access | Létrehoz egy írásvédett SAS-t, amelynek használatával a mögöttes VHD-fájl átmásolható egy tárfiókba, vagy letölthető a helyszíni rendszerre
 | az storage blob copy start | Aszinkron módon másol egy blobot az egyik Storage-fiókból a másikba. Az `az storage blob show` új blob állapotának vizsgálatára használható. |

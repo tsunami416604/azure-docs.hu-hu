@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/23/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a8d1b27fc040e6aed0bdeeb86b2e6c4df13f87c3
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 6986651d2b48d82382aa26a0a3947104c7e09981
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "92540897"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027646"
 ---
 Ha létrehoz egy távoli asztali kapcsolatot a virtuális géppel, csatlakozhat egy virtuális hálózaton üzembe helyezett virtuális géphez. A legjobb mód arra, hogy először ellenőrizze, hogy tud-e csatlakozni a virtuális géphez, ha egy magánhálózati IP-címet használ a számítógép neve helyett. Ily módon azt teszteli, hogy tud-e csatlakozni, nem azt, hogy a névfeloldás megfelelően van-e konfigurálva.
 
@@ -50,4 +50,4 @@ Ha probléma adódik egy virtuális gép VPN-kapcsolaton keresztüli csatlakozta
 
 * Ha tud csatlakozni a virtuális géphez a magánhálózati IP-címmel, de a számítógép nevével nem, ellenőrizze, hogy a DNS-konfiguráció megfelelő-e. A virtuális gépek névfeloldásának működésével kapcsolatos további információkért lásd [a virtuális gépek névfeloldásával](../articles/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) foglakozó cikket.
 
-* Az RDP-kapcsolatokkal kapcsolatos további információkért lásd [a virtuális gép távoli asztali kapcsolatainak hibaelhárításával](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md) foglalkozó cikket.
+* Az RDP-kapcsolatokkal kapcsolatos további információkért lásd [a virtuális gép távoli asztali kapcsolatainak hibaelhárításával](../articles/virtual-machines/troubleshooting/troubleshoot-rdp-connection.md) foglalkozó cikket.

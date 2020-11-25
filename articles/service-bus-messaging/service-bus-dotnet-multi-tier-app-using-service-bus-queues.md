@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 746257195220d26ad5d011a39022a3957e8cb1ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40529df5195a29fbf2ff4887311932c2ffbf471d
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021782"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029895"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>Többrétegű .NET-alkalmazás Azure Service Bus-üzenetsorok használatával
 
@@ -63,7 +63,7 @@ Ezt követően hozzáadja a kódot, amely elemeket küld el a Service Bus-üzene
 
 ### <a name="create-the-project"></a>A projekt létrehozása
 
-1. Rendszergazdai jogosultságokkal indítsa el a Visual Studio alkalmazást: kattintson a jobb gombbal a **Visual Studio** programikonra, majd kattintson a **Futtatás rendszergazdaként** parancsra. A cikkben korábban tárgyalt Azure Compute Emulatorhoz a Visual Studiót rendszergazdai jogosultságokkal kell elindítani.
+1. Rendszergazdai jogosultságokkal indítsa el a Visual Studio alkalmazást: kattintson a jobb gombbal a **Visual Studio** programikonra, majd kattintson a **Futtatás rendszergazdaként** parancsra. A cikk későbbi részében tárgyalt Azure számítási emulátor megköveteli, hogy a Visual Studio rendszergazdai jogosultságokkal induljon el.
    
    A Visual Studio programban, a **Fájl** menüben kattintson az **Új**, majd a **Projekt** elemre.
 2. Az **Installed Templates** (Telepített sablonok) lap **Visual C#** területén kattintson a **Cloud** (Felhő), majd az **Azure Cloud Service** (Azure-felhőszolgáltatás) elemre. Adja a projektnek a **MultiTierApp** nevet. Ezután kattintson az **OK** gombra.
@@ -344,7 +344,7 @@ Most létrehozza a feldolgozói szerepkört, amely feldolgozza az elküldött re
     
     ![Képernyőkép a Microsoft Azure számítási emulátor (expressz) párbeszédpanelről.][20]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Service Busról a következő forrásanyagokban találhat további információkat:  
 
 * [Bevezetés a Service Bus-üzenetsorok használatába][sbacomqhowto]

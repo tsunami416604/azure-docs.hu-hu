@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 8b2f8e82cac1d26689659286a5a0f81f06fb68ca
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: f0630599c7c52f11a4cf3153bae38ad2d515b6bc
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695061"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029761"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Régiók közötti Load Balancer (előzetes verzió)
 
@@ -35,7 +35,7 @@ Az Azure standard Load Balancer támogatja a régiók közötti terheléseloszt�
 * [Meglévő terheléselosztó megoldás létrehozása](#build-cross-region-solution-on-existing-azure-load-balancer) tanulási görbe nélkül
 
 > [!IMPORTANT]
-> A régiók közötti terheléselosztó jelenleg előzetes verzióban érhető el, és nem általánosan elérhető.  A régiók közötti terheléselosztó előzetes verziójához való hozzáféréshez vegye fel a kapcsolatot a következővel: [crossregionlb@microsoft.com](mailto:crossregionlb@microsoft.com) . </br> </br>
+> A régiók közötti terheléselosztó jelenleg előzetes verzióban érhető el, és a betekintő portálon rejtett. **https://preview.portal.azure.com/?feature.globallb=true** A szolgáltatás megtekintéséhez és telepítéséhez jelentkezzen be. </br> </br>
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A régiók közötti terheléselosztás a regionális standard Load Balancer esetében is ugyanazokat az előnyöket kínálja, mint a nagy teljesítmény és a kis késleltetés. 
@@ -101,7 +101,7 @@ A **hazai régió** , ahol a régiók közötti terheléselosztó üzembe van he
 * USA nyugati régiója
 * Nyugat-Európa
 * Délkelet-Ázsia
-* USA középső régiója
+* Az USA középső régiója
 * Észak-Európa
 * Kelet-Ázsia
 
@@ -147,8 +147,8 @@ A régiók közötti terheléselosztó a megfelelő regionális terheléseloszt�
 A régión kívüli terheléselosztó a standard Load Balancer [SLA](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/ ) -át osztja meg.
 
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- A Load Balancer használatának első lépéseiért tekintse meg [a nyilvános standard Load Balancer létrehozása](quickstart-load-balancer-standard-public-portal.md) című témakört.
+- A régiók közötti terheléselosztó létrehozásához tekintse meg [az oktatóanyag: régiók közötti terheléselosztó létrehozása a Azure Portal használatával című oktatóanyagot](tutorial-cross-region-portal.md) .
+- Lásd: [nyilvános standard Load Balancer létrehozása](quickstart-load-balancer-standard-public-portal.md) standard regionális terheléselosztó létrehozásához.
 - További információ a [Azure Load Balancerról](load-balancer-overview.md).
-- Load Balancer – [Gyakori kérdések](load-balancer-faqs.md)

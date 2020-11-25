@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 11/13/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 59dd1dadc7d037ff253812e4d3e1a1955d98e944
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 4335c1e81ead36d14ee1794fffbdd4cc1ff72a0a
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95809154"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029608"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-net"></a>Üzenetek küldése és fogadása Azure Service Bus várólistákból (.NET)
 Ebben az oktatóanyagban egy .NET Core Console-alkalmazást hoz létre, amely az **Azure. Messaging. ServiceBus** csomag használatával üzeneteket küld és fogad üzeneteket egy Service Bus-várólistából. 
@@ -55,8 +55,29 @@ Indítsa el a Visual studiót, és hozzon létre egy új **Console app (.net Cor
         static string queueName = "<QUEUE NAME>";
     ```
 
-    Cserélje le a `<NAMESPACE CONNECTION STRING>` karakterláncot a Service Bus névtérhez tartozó kapcsolódási sztringre. És cserélje le a `<QUEUE NAME>` nevet a várólista nevére.     
-2. Adjon hozzá egy nevű metódust `SendMessageAsync` , amely egy üzenetet küld a várólistára. 
+    Adja meg a névtérhez tartozó kapcsolatok karakterláncát `ServiceBusConnectionString` változóként. Adja meg a várólista nevét.
+
+1. Cserélje le a `Main()` metódust a következő **aszinkron** `Main` metódusra. Meghívja a `SendMessagesAsync()` metódust, amelyet a következő lépésben fog hozzáadni, hogy üzeneteket küldjön a várólistára. 
+
+    ```csharp
+    public static async Task Main(string[] args)
+    {    
+        const int numberOfMessages = 10;
+        queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
+
+        Console.WriteLine("======================================================");
+        Console.WriteLine("Press ENTER key to exit after sending all the messages.");
+        Console.WriteLine("======================================================");
+
+        // Send messages.
+        await SendMessagesAsync(numberOfMessages);
+
+        Console.ReadKey();
+
+        await queueClient.CloseAsync();
+    }
+    ```
+1. Közvetlenül a `Main()` metódus után adja hozzá a következő `SendMessagesAsync()` metódust, amely a által megadott számú üzenet küldését végzi `numberOfMessagesToSend` (jelenleg 10 értékre van állítva):
 
     ```csharp
         static async Task SendMessageAsync()

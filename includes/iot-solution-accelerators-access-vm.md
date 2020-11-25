@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: iot-accelerators
 author: dominicbetts
 ms.service: iot-accelerators
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: dobett
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 817c41a969f03ad04d372c516a16ef6b770f3e18
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e3eed0e7378f513e45e0eb9ac719a92e87ec1d53
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92756030"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027173"
 ---
 ## <a name="access-the-virtual-machine"></a>A virtuális gép elérése
 
@@ -35,7 +35,7 @@ Az alábbi lépések bemutatják, hogyan konfigurálhatja az Azure-beli virtuál
     az network nsg rule update --name SSH --nsg-name contoso-simulation-nsg -g contoso-simulation --access Allow -o table
     ```
 
-    Csak a tesztelés és a fejlesztés során engedélyezze az SSH-hozzáférést. Ha engedélyezi az SSH- [t, a lehető leghamarabb le kell tiltania](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices#disable-rdpssh-access-to-virtual-machines).
+    Csak a tesztelés és a fejlesztés során engedélyezze az SSH-hozzáférést. Ha engedélyezi az SSH- [t, a lehető leghamarabb le kell tiltania](../articles/security/fundamentals/network-best-practices.md#disable-rdpssh-access-to-virtual-machines).
 
 1. Frissítse az **azureuser** -fiók jelszavát a virtuális gépen, és Ismerje meg a jelszót. A következő parancs futtatásakor válassza ki a saját jelszavát:
 

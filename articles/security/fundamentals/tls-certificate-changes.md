@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 11/10/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 955990ed9209ea1e12eed824241e8a5a456ed73b
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 4e64d866b5bd2f725db3be31d0fdd2f8663cfd7c
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444877"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029693"
 ---
 # <a name="azure-tls-certificate-changes"></a>Az Azure TLS-tanúsítvány változásai  
 
@@ -30,6 +30,7 @@ Szolgáltatás-specifikus részletek:
 - Az [Azure IoT hub](https://azure.microsoft.com/services/iot-hub) és a [DPS](../../iot-dps/index.yml) továbbra is a Baltimore CYBERTRUST legfelső szintű hitelesítésszolgáltatóján marad, de a köztes hitelesítésszolgáltatók is megváltoznak. [További részletekért kattintson ide](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456).
 - Az [Azure Storage](../../storage/index.yml) továbbra is a Baltimore CyberTrust legfelső szintű hitelesítésszolgáltatóján marad, de a köztes hitelesítésszolgáltatók is megváltoznak. [További részletekért kattintson ide](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518).
 - A [Redis-hez készült Azure cache](../../azure-cache-for-redis/index.yml) a Baltimore CyberTrust legfelső szintű hitelesítésszolgáltatón marad, de a köztes hitelesítésszolgáltatók is megváltoznak. [További részletekért kattintson ide](../../azure-cache-for-redis/cache-whats-new.md).
+- Az Azure Instance Metadata Service továbbra is a Baltimore CyberTrust legfelső szintű HITELESÍTÉSSZOLGÁLTATÓján marad, de a köztes hitelesítésszolgáltatók is megváltoznak. [További részletekért kattintson ide](https://docs.microsoft.com/answers/questions/172717/action-required-for-attested-data-tls-with-azure-i.html).
 
 > [!IMPORTANT]
 > Előfordulhat, hogy az ügyfeleknek frissíteniük kell az alkalmazás (oka) t a módosítás után, hogy meggátolják a kapcsolódási hibákat az Azure-szolgáltatásokhoz való kapcsolódási kísérlet során.
@@ -70,11 +71,11 @@ Az alábbi módokon derítheti fel, hogy az alkalmazás érintett-e:
 - Ha olyan alkalmazással rendelkezik, amely integrálható az Azure API-kkal vagy más Azure-szolgáltatásokkal, és nem biztos benne, hogy tanúsítvány-rögzítést használ, ellenőrizze az alkalmazás gyártójával.
 
 - Az Azure-szolgáltatásokkal kommunikáló különböző operációs rendszerek és nyelvi futtatókörnyezetek további lépéseket igényelhetnek a tanúsítványlánc megfelelő felépítéséhez az új gyökerekkel:
-    - **Linux** : számos disztribúcióhoz szükséges a CAs hozzáadása a/etc/SSL/certs.-hez A konkrét utasításokért tekintse meg a terjesztés dokumentációját.
-    - **Java** : Győződjön meg arról, hogy a Java-kulcs tárolója tartalmazza a fent felsorolt CAs-t.
+    - **Linux**: számos disztribúcióhoz szükséges a CAs hozzáadása a/etc/SSL/certs.-hez A konkrét utasításokért tekintse meg a terjesztés dokumentációját.
+    - **Java**: Győződjön meg arról, hogy a Java-kulcs tárolója tartalmazza a fent felsorolt CAs-t.
     - **Leválasztott környezetekben futó Windows** esetén: a leválasztott környezetekben futó rendszereknek hozzá kell adni a megbízható legfelső szintű hitelesítésszolgáltatók tárolójához hozzáadott új gyökereket, valamint a köztes hitelesítésszolgáltatók tárolójához hozzáadott köztes adatkészleteket.
-    - **Android** : keresse meg az eszköz és az Android-verzió dokumentációját.
-    - **Egyéb hardvereszközök, különösen a IoT** : forduljon az eszköz gyártójához.
+    - **Android**: keresse meg az eszköz és az Android-verzió dokumentációját.
+    - **Egyéb hardvereszközök, különösen a IoT**: forduljon az eszköz gyártójához.
 
 - Ha olyan környezettel rendelkezik, amelyben a tűzfalszabályok úgy vannak beállítva, hogy engedélyezze a kimenő hívásokat a visszavont tanúsítványok listájának (CRL) letöltésére és/vagy az online tanúsítványállapot-protokoll (OCSP) ellenőrzési helyeire. A következő CRL-eket és az OCSP URL-címeket is engedélyeznie kell:
 
