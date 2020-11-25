@@ -11,11 +11,11 @@ ms.devlang: java
 ms.date: 06/26/2020
 ms.custom: devx-track-java, devx-track-azurecli
 ms.openlocfilehash: badf6b8887c356c2a7fc7308f6aa15f551e4bb67
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746725"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972674"
 ---
 # <a name="use-java-and-jdbc-with--azure-sql-database"></a>A Java és a JDBC használata Azure SQL Database
 
@@ -30,7 +30,7 @@ A JDBC a szabványos Java API a hagyományos kapcsolati adatbázisokhoz való ka
 - Támogatott [Java Development Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), 8-as verzió (Azure Cloud Shell).
 - Az [Apache Maven](https://maven.apache.org/) Build eszköz.
 
-## <a name="prepare-the-working-environment"></a>A munkahelyi környezet előkészítése
+## <a name="prepare-the-working-environment"></a>A munkakörnyezet előkészítése
 
 Környezeti változókat fogunk használni a gépelési hibák korlátozása érdekében, és egyszerűbbé tesszük a következő konfiguráció testreszabását az adott igényeknek megfelelően.
 
@@ -45,11 +45,11 @@ AZ_SQL_SERVER_PASSWORD=<YOUR_AZURE_SQL_PASSWORD>
 AZ_LOCAL_IP_ADDRESS=<YOUR_LOCAL_IP_ADDRESS>
 ```
 
-Cserélje le a helyőrzőket a következő értékekre, amelyek a cikk során használatosak:
+A helyőrzőket írja felül a következő értékekkel, amelyeket a cikk teljes további részében használni fogunk:
 
-- `<YOUR_DATABASE_NAME>`: A Azure SQL Database-kiszolgáló neve. Egyedinek kell lennie az Azure-ban.
-- `<YOUR_AZURE_REGION>`: A használni kívánt Azure-régió. Alapértelmezés szerint használhatja `eastus` , de azt javasoljuk, hogy a régiót közelebbről konfigurálja, ahol él. Az elérhető régiók teljes listáját a beírásával érheti el `az account list-locations` .
-- `<AZ_SQL_SERVER_PASSWORD>`: A Azure SQL Database-kiszolgáló jelszava. A jelszónak legalább nyolc karakterből kell állnia. A karaktereknek a következő kategóriák közül hármat kell tartalmaznia: angol nagybetűs karakterek, angol kisbetűs karakterek, számok (0-9) és nem alfanumerikus karakterek (!, $, #,% stb.).
+- `<YOUR_DATABASE_NAME>`: A Azure SQL Database-kiszolgáló neve. Az Azure-on belül egyedinek kell lennie.
+- `<YOUR_AZURE_REGION>`: A használni kívánt Azure-régió. Használhatja az alapértelmezett `eastus` értéket, de ajánlott az Ön lakóhelyéhez közelebbi régiót konfigurálni. Az elérhető régiók teljes listáját a beírásával érheti el `az account list-locations` .
+- `<AZ_SQL_SERVER_PASSWORD>`: A Azure SQL Database-kiszolgáló jelszava. A jelszónak legalább nyolc karakterből kell állnia. A karakterek között az alábbi kategóriákból háromnak kell szerepelnie: Az angol ábécé nagybetűi, az angol ábécé kisbetűi, számok (0-9) és egyéb karakterek (!, $, #, % stb.).
 - `<YOUR_LOCAL_IP_ADDRESS>`: A helyi számítógép IP-címe, amelyből a Java-alkalmazást fogja futtatni. Az egyik kényelmes módszer, ha úgy találja, hogy a böngészőt a [whatismyip.Akamai.com](http://whatismyip.akamai.com/)irányítsa.
 
 Ezután hozzon létre egy erőforráscsoportot a következő parancs használatával:
@@ -62,7 +62,7 @@ az group create \
 ```
 
 > [!NOTE]
-> A `jq` segédprogramot a JSON-információk megjelenítésére használjuk, és olvashatóbbá teszik azokat. Ez a segédprogram alapértelmezés szerint telepítve van [Azure Cloud Shellon](https://shell.azure.com/). Ha nem tetszik a segédprogram, nyugodtan eltávolíthatja az `| jq` összes használni kívánt parancs részét.
+> A `jq` segédprogramot a JSON-információk megjelenítésére használjuk, és olvashatóbbá teszik azokat. Ez a segédprogram alapértelmezés szerint telepítve van [Azure Cloud Shellon](https://shell.azure.com/). Ha Önnek nem tetszik ez a segédprogram, nyugodtan eltávolíthatja az összes parancs `| jq` részét.
 
 ## <a name="create-an-azure-sql-database-instance"></a>Azure SQL Database példány létrehozása
 
@@ -87,7 +87,7 @@ Ez a parancs létrehoz egy Azure SQL Database kiszolgálót.
 
 ### <a name="configure-a-firewall-rule-for-your-azure-sql-database-server"></a>Tűzfalszabály konfigurálása a Azure SQL Database-kiszolgálóhoz
 
-A Azure SQL Database példányok alapértelmezés szerint biztonságosak. Olyan tűzfallal rendelkeznek, amely nem engedélyezi a bejövő kapcsolatokat. Az adatbázis használatához olyan tűzfalszabály hozzáadására van szükség, amely lehetővé teszi a helyi IP-cím számára az adatbázis-kiszolgáló elérését.
+A Azure SQL Database példányok alapértelmezés szerint biztonságosak. Tűzfallal rendelkezik, amely semmilyen bejövő kapcsolatot sem engedélyez. Az adatbázis használatához olyan tűzfalszabály hozzáadására van szükség, amely lehetővé teszi a helyi IP-cím számára az adatbázis-kiszolgáló elérését.
 
 Mivel a cikk elején konfigurálta a helyi IP-címet, a következő parancs futtatásával nyithatja meg a kiszolgáló tűzfalát:
 
@@ -170,7 +170,7 @@ DROP TABLE IF EXISTS todo;
 CREATE TABLE todo (id INT PRIMARY KEY, description VARCHAR(255), details VARCHAR(4096), done BIT);
 ```
 
-## <a name="code-the-application"></a>Az alkalmazás kódja
+## <a name="code-the-application"></a>Az alkalmazás kódolása
 
 ### <a name="connect-to-the-database"></a>Csatlakozás az adatbázishoz
 
@@ -494,7 +494,7 @@ az group delete \
     --yes
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az első adatbázis megtervezése Azure SQL Database](design-first-database-tutorial.md)  
 - [Microsoft JDBC-illesztőprogram SQL Serverhez](https://github.com/microsoft/mssql-jdbc)  

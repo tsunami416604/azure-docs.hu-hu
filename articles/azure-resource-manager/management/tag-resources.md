@@ -2,14 +2,14 @@
 title: Erőforrások, erőforráscsoportok és előfizetések címkézése a logikai szervezet számára
 description: Bemutatja, hogyan alkalmazhat címkéket az Azure-erőforrások számlázáshoz és felügyelethez való rendszerezéséhez.
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 11/20/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3ffcb4a0f2f5dc64b165fcdec03f7c3ced258cc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e9ef96a712e5ac2ba483170fb8ef9c89115b4f8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90086759"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95972562"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Címkék használata az Azure-erőforrások és a felügyeleti hierarchia rendszerezéséhez
 
@@ -240,107 +240,200 @@ Remove-AzTag -ResourceId "/subscriptions/$subscription"
 
 ### <a name="apply-tags"></a>Címkék alkalmazása
 
-Ha címkéket ad hozzá egy erőforráscsoporthoz vagy erőforráshoz, felülírhatja a meglévő címkéket, vagy hozzáfűzheti az új címkéket a meglévő címkékhez.
+Az Azure CLI két parancsot kínál a címkék alkalmazásához – [az tag Create](/cli/azure/tag#az_tag_create) és [az az tag Update](/cli/azure/tag#az_tag_update). Az Azure CLI-2.10.0 vagy újabb verziójára van szükség. A verzióját a segítségével is megtekintheti `az version` . A frissítéshez vagy a telepítéshez lásd: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
-Egy erőforrás címkéit a következő paranccsal írhatja felül:
+Az az **tag Create** lecseréli az összes címkét az erőforrás, az erőforráscsoport vagy az előfizetés elemre. A parancs hívásakor adja meg a címkével ellátni kívánt entitás erőforrás-AZONOSÍTÓját.
 
-```azurecli-interactive
-az resource tag --tags 'Dept=IT' 'Environment=Test' -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
-```
-
-Ha címkét szeretne hozzáfűzni egy erőforrás meglévő címkéjéhez, használja a következőt:
+Az alábbi példa a címkék egy készletét alkalmazza a Storage-fiókra:
 
 ```azurecli-interactive
-az resource update --set tags.'Status'='Approved' -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
+resource=$(az resource show -g demoGroup -n demoStorage --resource-type Microsoft.Storage/storageAccounts --query "id" --output tsv)
+az tag create --resource-id $resource --tags Dept=Finance Status=Normal
 ```
 
-Egy erőforráscsoport meglévő címkéit a következő paranccsal írhatja felül:
+Ha a parancs befejeződik, figyelje meg, hogy az erőforrásnak két címkéje van.
+
+```output
+"properties": {
+  "tags": {
+    "Dept": "Finance",
+    "Status": "Normal"
+  }
+},
+```
+
+Ha újra futtatja a parancsot, de ezúttal más címkékkel, figyelje meg, hogy a korábbi címkék el lesznek távolítva.
 
 ```azurecli-interactive
-az group update -n examplegroup --tags 'Environment=Test' 'Dept=IT'
+az tag create --resource-id $resource --tags Team=Compliance Environment=Production
 ```
 
-Ha címkét szeretne hozzáfűzni egy erőforráscsoport meglévő címkéjéhez, használja a következőt:
+```output
+"properties": {
+  "tags": {
+    "Environment": "Production",
+    "Team": "Compliance"
+  }
+},
+```
+
+Ha címkéket szeretne felvenni egy olyan erőforráshoz, amely már rendelkezik címkékkel, használja **az az tag Update** lehetőséget. Állítsa be a **--Operation** paramétert az **egyesítéshez**.
 
 ```azurecli-interactive
-az group update -n examplegroup --set tags.'Status'='Approved'
+az tag update --resource-id $resource --operation Merge --tags Dept=Finance Status=Normal
 ```
 
-Az Azure CLI jelenleg nem rendelkezik olyan paranccsal, amely címkéket alkalmaz az előfizetésekre. Azonban a CLI használatával üzembe helyezhet egy olyan ARM-sablont, amely a címkéket egy előfizetésre alkalmazza. Lásd: [címkék alkalmazása erőforráscsoportok vagy előfizetések](#apply-tags-to-resource-groups-or-subscriptions)esetén.
+Figyelje meg, hogy a két új címke hozzá lett adva a két meglévő címkéhez.
+
+```output
+"properties": {
+  "tags": {
+    "Dept": "Finance",
+    "Environment": "Production",
+    "Status": "Normal",
+    "Team": "Compliance"
+  }
+},
+```
+
+Minden címke nevének csak egy értéke lehet. Ha egy címkéhez új értéket ad meg, akkor a rendszer akkor is lecseréli a régi értéket, ha az egyesítési műveletet használja. Az alábbi példa megváltoztatja az állapot címkéjét a Normálról zöldre.
+
+```azurecli-interactive
+az tag update --resource-id $resource --operation Merge --tags Status=Green
+```
+
+```output
+"properties": {
+  "tags": {
+    "Dept": "Finance",
+    "Environment": "Production",
+    "Status": "Green",
+    "Team": "Compliance"
+  }
+},
+```
+
+Ha a **--Operation** paramétert **lecseréli**, a meglévő címkéket a címkék új készlete váltja fel.
+
+```azurecli-interactive
+az tag update --resource-id $resource --operation Replace --tags Project=ECommerce CostCenter=00123 Team=Web
+```
+
+Csak az új címkék maradnak meg az erőforráson.
+
+```output
+"properties": {
+  "tags": {
+    "CostCenter": "00123",
+    "Project": "ECommerce",
+    "Team": "Web"
+  }
+},
+```
+
+Ugyanezek a parancsok az erőforráscsoportok vagy az előfizetések esetében is működnek. Adja meg a címkével ellátni kívánt erőforráscsoport vagy előfizetés azonosítóját.
+
+Ha új címkéket szeretne hozzáadni egy erőforráscsoporthoz, használja a következőt:
+
+```azurecli-interactive
+group=$(az group show -n demoGroup --query id --output tsv)
+az tag create --resource-id $group --tags Dept=Finance Status=Normal
+```
+
+Egy erőforráscsoport címkéinak frissítéséhez használja a következőt:
+
+```azurecli-interactive
+az tag update --resource-id $group --operation Merge --tags CostCenter=00123 Environment=Production
+```
+
+Új címkék előfizetéshez való hozzáadásához használja a következőt:
+
+```azurecli-interactive
+sub=$(az account show --subscription "Demo Subscription" --query id --output tsv)
+az tag create --resource-id /subscriptions/$sub --tags CostCenter=00123 Environment=Dev
+```
+
+Az előfizetéshez tartozó címkék frissítéséhez használja a következőt:
+
+```azurecli-interactive
+az tag update --resource-id /subscriptions/$sub --operation Merge --tags Team="Web Apps"
+```
 
 ### <a name="list-tags"></a>Címkék listázása
 
-Az adott erőforráshoz tartozó meglévő címkék megtekintéséhez használja a következőt:
+Egy erőforrás, erőforráscsoport vagy előfizetés címkéjének lekéréséhez használja az az [tag List](/cli/azure/tag#az_tag_list) parancsot, és adja meg az entitás erőforrás-azonosítóját.
+
+Az adott erőforráshoz tartozó címkék megtekintéséhez használja a következőt:
 
 ```azurecli-interactive
-az resource show -n examplevnet -g examplegroup --resource-type "Microsoft.Network/virtualNetworks" --query tags
+resource=$(az resource show -g demoGroup -n demoStorage --resource-type Microsoft.Storage/storageAccounts --query "id" --output tsv)
+az tag list --resource-id $resource
 ```
 
-Erőforráscsoportok meglévő címkéinek megtekintéséhez használja a következőt:
+Egy erőforráscsoport címkéit a következő paranccsal tekintheti meg:
 
 ```azurecli-interactive
-az group show -n examplegroup --query tags
+group=$(az group show -n demoGroup --query id --output tsv)
+az tag list --resource-id $group
 ```
 
-A szkript a következő formátumot adja vissza:
+Az előfizetés címkéit a következő paranccsal tekintheti meg:
 
-```json
-{
-  "Dept"        : "IT",
-  "Environment" : "Test"
-}
+```azurecli-interactive
+sub=$(az account show --subscription "Demo Subscription" --query id --output tsv)
+az tag list --resource-id /subscriptions/$sub
 ```
 
 ### <a name="list-by-tag"></a>Listázás címke szerint
 
-Az adott címkével és értékkel rendelkező erőforrások beszerzéséhez használja a következőt `az resource list` :
+A megadott címke névvel és értékkel rendelkező erőforrások lekéréséhez használja a következőt:
 
 ```azurecli-interactive
-az resource list --tag Dept=Finance
+az resource list --tag CostCenter=00123 --query [].name
 ```
 
-Adott címkével rendelkező erőforráscsoportok lekéréséhez használja a következőt `az group list` :
+Ha olyan erőforrásokat szeretne lekérni, amelyek címkével megadott névvel rendelkeznek, használja a következőt:
 
 ```azurecli-interactive
-az group list --tag Dept=IT
+az resource list --tag Team --query [].name
+```
+
+A megadott címke névvel és értékkel rendelkező erőforráscsoportok lekéréséhez használja a következőt:
+
+```azurecli-interactive
+az group list --tag Dept=Finance
+```
+
+### <a name="remove-tags"></a>Címkék eltávolítása
+
+Adott címkék eltávolításához használja az **az tag Update** és a set **--Operation** parancsot a **törléshez**. Adja meg a törölni kívánt címkéket.
+
+```azurecli-interactive
+az tag update --resource-id $resource --operation Delete --tags Project=ECommerce Team=Web
+```
+
+A megadott címkék el lesznek távolítva.
+
+```output
+"properties": {
+  "tags": {
+    "CostCenter": "00123"
+  }
+},
+```
+
+Az összes címke eltávolításához használja az az [tag delete](/cli/azure/tag#az_tag_delete) parancsot.
+
+```azurecli-interactive
+az tag delete --resource-id $resource
 ```
 
 ### <a name="handling-spaces"></a>Szóközök feldolgozása
 
-Ha a címke neve vagy értéke szóközt tartalmaz, néhány további lépést is végre kell hajtania. 
-
-Az `--tags` Azure CLI-ben található paraméterek elfogadják a karakterláncok tömbjét tartalmazó sztringet. Az alábbi példa egy olyan erőforráscsoport címkéit írja felül, amelyben a címkék szóközökkel és kötőjeltel rendelkeznek: 
+Ha a címke neve vagy értéke szóközt tartalmaz, tegye idézőjelek közé.
 
 ```azurecli-interactive
-TAGS=("Cost Center=Finance-1222" "Location=West US")
-az group update --name examplegroup --tags "${TAGS[@]}"
-```
-
-Használhatja ugyanazt a szintaxist, ha egy erőforráscsoportot vagy-erőforrást hoz létre vagy frissít a `--tags` paraméter használatával.
-
-Ha a paraméter használatával szeretné frissíteni a címkéket `--set` , a kulcsot és az értéket karakterláncként kell átadnia. Az alábbi példa egyetlen címkét fűz egy erőforráscsoporthoz:
-
-```azurecli-interactive
-TAG="Cost Center='Account-56'"
-az group update --name examplegroup --set tags."$TAG"
-```
-
-Ebben az esetben a címke értéke szimpla idézőjelekkel van megjelölve, mert az érték kötőjelet tartalmaz.
-
-Több erőforrásra is szükség lehet címkék alkalmazására. Az alábbi példa egy erőforráscsoport összes címkéjét az erőforrásaira alkalmazza, amikor a címkék szóközöket tartalmaznak:
-
-```azurecli-interactive
-jsontags=$(az group show --name examplegroup --query tags -o json)
-tags=$(echo $jsontags | tr -d '{}"' | sed 's/: /=/g' | sed "s/\"/'/g" | sed 's/, /,/g' | sed 's/ *$//g' | sed 's/^ *//g')
-origIFS=$IFS
-IFS=','
-read -a tagarr <<< "$tags"
-resourceids=$(az resource list -g examplegroup --query [].id --output tsv)
-for id in $resourceids
-do
-  az resource tag --tags "${tagarr[@]}" --id $id
-done
-IFS=$origIFS
+az tag update --resource-id $group --operation Merge --tags "Cost Center"=Finance-1222 Location="West US"
 ```
 
 ## <a name="templates"></a>Sablonok
@@ -620,7 +713,7 @@ Az alábbi korlátozások érvényesek a címkékre:
    >
    > Azure Automation és Azure CDN csak a 15 címkét támogatja az erőforrásokon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Nem minden erőforrástípus támogatja a címkéket. Annak megállapításához, hogy lehet-e címkét alkalmazni az erőforrás típusára, tekintse meg [Az Azure-erőforrások támogatásának címkézését](tag-support.md)ismertető témakört.
 * A címkézési stratégia megvalósításával kapcsolatos javaslatokért lásd: [erőforrás-elnevezési és címkézési döntési útmutató](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json).

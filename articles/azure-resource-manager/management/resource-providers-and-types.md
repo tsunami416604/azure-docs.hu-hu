@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 11/09/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 702836e0dc98b06ccf6e0eeb0d0f373374c4e783
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426459"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972538"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure-beli erőforrás-szolgáltatók és -típusok
 
@@ -61,7 +61,7 @@ Egy adott erőforrás-szolgáltató információinak megtekintéséhez:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Az Azure Portal menüjében válassza a **Minden szolgáltatás** lehetőséget.
-3. A **minden szolgáltatás** mezőben adja meg az **erőforrás-kezelőt** , majd válassza a **erőforrás-kezelő** lehetőséget.
+3. A **minden szolgáltatás** mezőben adja meg az **erőforrás-kezelőt**, majd válassza a **erőforrás-kezelő** lehetőséget.
 
     ![Minden szolgáltatás kiválasztása](./media/resource-providers-and-types/select-resource-explorer.png)
 
@@ -300,7 +300,7 @@ West US
 ...
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Resource Manager-sablonok létrehozásával kapcsolatos további információkért lásd: [Azure Resource Manager-sablonok](../templates/template-syntax.md)készítése. 
 * Az erőforrás-szolgáltatói sablon sémáinak megtekintéséhez lásd: [sablon-hivatkozás](/azure/templates/).

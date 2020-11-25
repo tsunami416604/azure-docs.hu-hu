@@ -6,11 +6,11 @@ ms.date: 03/22/2019
 ms.author: sngun
 ms.custom: seo-java-september2019
 ms.openlocfilehash: a8162afadb5a7d327804d7202b29ca0dccf275c4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "71210236"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972437"
 ---
 A Azure Portal figyeli a Cosmos DB fiók átviteli sebességét, a tárterületet, a rendelkezésre állást, a késést és a konzisztenciát. Egy [Azure Cosmos DB szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/cosmos-db/) társított metrikák diagramjai a tényleges teljesítménnyel összehasonlítva mutatják be az SLA értékét. A metrikák ezen csomagja a SLA-kat transzparens módon figyeli.
 

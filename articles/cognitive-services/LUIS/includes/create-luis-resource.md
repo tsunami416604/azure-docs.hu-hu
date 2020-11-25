@@ -6,14 +6,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/07/2020
+ms.date: 11/20/2020
 ms.author: aahi
-ms.openlocfilehash: a077d255648ff07cc88b43dece889a221c46c11f
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: ee7fd384a198c5eff672b14b6cb479aac26cfe54
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561510"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972512"
 ---
 <a name="create-luis-resources"></a>
 
@@ -23,7 +23,7 @@ ms.locfileid: "94561510"
 
 1. Adja meg az összes szükséges beállítást:
 
-    |Név|Rendeltetés|
+    |Név|Cél|
     |--|--|
     |Előfizetés | Az erőforrásért fizetendő előfizetés.|
     |Erőforráscsoport| Az Ön által kiválasztott vagy létrehozott egyéni erőforráscsoport-név. Az erőforráscsoportok lehetővé teszik az Azure-erőforrások csoportosítását a hozzáféréshez és a felügyelethez.|
@@ -37,7 +37,7 @@ ms.locfileid: "94561510"
     > [![Képernyőkép, amely az alapvető beállítások lapot mutatja a létrehozás alatt.](../media/luis-how-to-azure-subscription/create-resource-in-azure-small.png)](../media/luis-how-to-azure-subscription/create-resource-in-azure-small.png#lightbox)
 
 1. Válassza a **felülvizsgálat + létrehozás** lehetőséget, és várjon, amíg a rendszer létrehozza az erőforrást.
-1. Miután mindkét erőforrás létrejött, még mindig a Azure Portalban, válassza ki az új szerzői erőforrást. Ezután válassza **a rövid útmutatók lehetőséget a** szerzői **VÉGPONT URL-címének** és **kulcsának** beszerzéséhez programozott módon.
+1. Miután mindkét erőforrás létrejött, még mindig a Azure Portalban, válassza ki az új szerzői erőforrást. Ezután válassza a **kulcsok és végpont** lehetőséget a szerzői **VÉGPONT URL-címének** és **kulcsának** beszerzéséhez programozott módon.
 
 > [!TIP]
 > Az erőforrások használatához a LUIS portálon [rendelje hozzá az erőforrásokat](../luis-how-to-azure-subscription.md#assign-an-authoring-resource-in-the-luis-portal-for-all-apps).

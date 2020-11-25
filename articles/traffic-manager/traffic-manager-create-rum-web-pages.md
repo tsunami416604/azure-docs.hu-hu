@@ -14,11 +14,11 @@ ms.date: 03/16/2018
 ms.author: duau
 ms.custom: ''
 ms.openlocfilehash: 8606e89a40e9cfd2c0f55df2c65532928c0d11f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401299"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972589"
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>valós felhasználómérés küldése az Azure-Traffic Manager weblapok használatával
 
@@ -26,12 +26,12 @@ A weblapokat úgy is beállíthatja, hogy valós felhasználómérés küldjön 
 
 ## <a name="obtain-a-real-user-measurements-key"></a>valós felhasználómérés kulcs beszerzése
 
-Az ügyfélalkalmazás által Traffic Manager elküldött méréseket a szolgáltatás a **valós felhasználómérés (rum) kulcsnak**nevezett egyedi karakterlánc használatával azonosítja. Egy RUM-kulcsot a Azure Portal, egy REST API vagy a PowerShell vagy az Azure CLI használatával szerezhet be.
+Az ügyfélalkalmazás által Traffic Manager elküldött méréseket a szolgáltatás a **valós felhasználómérés (rum) kulcsnak** nevezett egyedi karakterlánc használatával azonosítja. Egy RUM-kulcsot a Azure Portal, egy REST API vagy a PowerShell vagy az Azure CLI használatával szerezhet be.
 
 A RUM kulcs beszerzése Azure Portal használatával:
 1. Egy böngészőben jelentkezzen be az Azure Portalra. Ha még nincs fiókja, regisztrálhat egy egy hónapos ingyenes próbaverzióra.
 2. A portál keresősávjában keressen rá a módosítani kívánt Traffic Manager-profil nevére, majd kattintson a Traffic Manager-profilra a megjelenített eredmények között.
-3. A Traffic Manager profil panelen kattintson a **valós felhasználómérés** elemre a **Beállítások**területen.
+3. A Traffic Manager profil panelen kattintson a **valós felhasználómérés** elemre a **Beállítások** területen.
 4. Kattintson a **kulcs létrehozása** lehetőségre egy új rum-kulcs létrehozásához.
  
    ![valós felhasználómérés kulcs előállítása](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
@@ -64,7 +64,7 @@ A RUM-kulcs beszerzése után a következő lépés a másolt JavaScript beágya
 4. Amikor a lap legközelebb megjelenik egy webböngészőben, a rendszer letölti a JavaScriptet, és a parancsfájl végrehajtja a mérési és jelentéskészítési műveleteket.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További információ a [valós felhasználómérés](traffic-manager-rum-overview.md)
 - Tudnivalók a [Traffic Manager működéséről](traffic-manager-overview.md)
 - További információ a Traffic Manager által támogatott [forgalom-útválasztási módszerekről](traffic-manager-routing-methods.md)

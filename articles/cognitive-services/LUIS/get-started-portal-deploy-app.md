@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/06/2020
-ms.openlocfilehash: 6126c6e37ad43ed6456b224d043dc6695fa2d00e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b051f349716b5597adee4509cfe774978a8f61aa
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91298410"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95972511"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Gyors útmutató: alkalmazás üzembe helyezése a LUIS portálon
 
@@ -34,13 +34,13 @@ Minden alkalommal, amikor új szerzői vagy lekérdezési előrejelzési erőfor
 
 1. Jelentkezzen be a [Luis-portálra](https://www.luis.ai) , és válassza ki a **myEnglishApp** alkalmazást az alkalmazások listából.
 
-1. Válassza a **kezelés** lehetőséget a jobb felső menüben, majd válassza az **Azure-erőforrások**lehetőséget.
+1. Válassza a **kezelés** lehetőséget a jobb felső menüben, majd válassza az **Azure-erőforrások** lehetőséget.
 
-1. A LUIS hozzáadásához válassza az **előrejelzési erőforrás hozzáadása**lehetőséget.
+1. A LUIS hozzáadásához válassza az **előrejelzési erőforrás hozzáadása** lehetőséget.
 
     ![A LUIS-előrejelzési erőforrás hozzáadásához válassza az előrejelzési erőforrás hozzáadása lehetőséget.](./media/get-started-portal-deploy-app/azure-resources-add-prediction-resource.png)
 
-1. Válassza ki a bérlőt, az előfizetést és az erőforrás nevét. Válassza az **erőforrás kiosztása**elemet.
+1. Válassza ki a bérlőt, az előfizetést és az erőforrás nevét. Válassza az **erőforrás kiosztása** elemet.
 
    > [!div class="mx-imgBorder"]
    > ![Erőforrás kiosztása az alkalmazáshoz](./media/get-started-portal-deploy-app/assign-resource.png)
@@ -50,7 +50,7 @@ Minden alkalommal, amikor új szerzői vagy lekérdezési előrejelzési erőfor
 1. Keresse meg az új sort a táblában az új előrejelzési erőforráshoz, és másolja a végpont URL-címét. A rendszer megfelelően van kiépítve, hogy `HTTP GET` a Luis API-végpontra irányuló kérést hozzon létre egy előrejelzéshez.
 
 > [!TIP]
-> Ha a LUIS-alkalmazás fejlesztéséhez aktív tanulást szeretne használni, válassza a **lekérdezési paraméterek módosítása** lehetőséget, majd a **naplók mentése**lehetőséget. Ez a művelet megváltoztatja a példa URL-címét a `log=true` querystring paraméter hozzáadásával. Másolja ki és használja a megváltozott példa lekérdezési URL-címét, amikor előrejelzési lekérdezéseket készít a futásidejű végpontra.
+> Ha a LUIS-alkalmazás fejlesztéséhez aktív tanulást szeretne használni, válassza a **lekérdezési paraméterek módosítása** lehetőséget, majd a **naplók mentése** lehetőséget. Ez a művelet megváltoztatja a példa URL-címét a `log=true` querystring paraméter hozzáadásával. Másolja ki és használja a megváltozott példa lekérdezési URL-címét, amikor előrejelzési lekérdezéseket készít a futásidejű végpontra.
 
 ## <a name="train-the-app"></a>Az alkalmazás betanítása
 
@@ -121,4 +121,4 @@ Ha elkészült a rövid útmutatóval, válassza a **saját alkalmazások** lehe
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Közös szándékok és entitások azonosítása](luis-tutorial-prebuilt-intents-entities.md)
+> [Közös szándékok és entitások azonosítása](./tutorial-machine-learned-entity.md)

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 837231ca07abcfdbd6ce932bb24bd890d91506a8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3693f46a602929f9d6e2f4e29083b071ae6a9e9e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "69541485"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972460"
 ---
 Az Azure Portal Adatkezelő eszközét mostantól gráfadatbázisok létrehozására is használhatja. 
 
@@ -30,6 +30,6 @@ Az Azure Portal Adatkezelő eszközét mostantól gráfadatbázisok létrehozás
     Adatbázis-azonosító|sample-database|Az új adatbázisnak adja a *sample-database* nevet. Az adatbázis neve 1–255 karakter hosszúságú lehet, és nem tartalmazhat `/ \ # ?` karaktereket vagy záró szóközt.
     Teljesítmény|400 kérelemegység|Módosítsa a teljesítményt másodpercenként 400 kérelemegységre (RU/s). Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében.
     Gráfazonosító|sample-graph|Az új gyűjteménynek adja a *sample-graph* nevet. A gráfok nevére ugyanazok a karakterkorlátozások vonatkoznak, mint az adatbázis-azonosítókra.
-    Partíciókulcs| /pk |Az összes Cosmos DB-fióknak szüksége van egy partíciós kulcsra a horizontális skálázáshoz. Megtudhatja, hogyan választhatja ki a megfelelő partíciós kulcsot a [Graph Adatparticionálási cikkben](https://docs.microsoft.com/azure/cosmos-db/graph-partitioning).
+    Partíciókulcs| /pk |Az összes Cosmos DB-fióknak szüksége van egy partíciós kulcsra a horizontális skálázáshoz. Megtudhatja, hogyan választhatja ki a megfelelő partíciós kulcsot a [Graph Adatparticionálási cikkben](../articles/cosmos-db/graph-partitioning.md).
 
 3. Miután kitöltötte az űrlapot, kattintson az **OK gombra**.

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: b0574c41042e172af78365bb273c81729ce204ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b872340c50c800ebe4d4d6c7ca56b3b327bf162
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88749310"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95972647"
 ---
 # <a name="speech-service-supported-regions"></a>Beszédfelismerési szolgáltatás által támogatott régiók
 
@@ -27,7 +27,7 @@ A beszédfelismerési portál egyéni konfigurációkat hajt végre a beszédfel
 Vegye figyelembe a következő szempontokat, amikor a régiókat fontolgatja:
 
 * Ha az alkalmazás egy [SPEECH SDK](speech-sdk.md)-t használ, akkor adja meg a régió azonosítóját, például a `westus` beszédfelismerési konfiguráció létrehozásakor.
-* Ha az alkalmazás a beszédfelismerési szolgáltatás [REST API](rest-apis.md)-jának egyikét használja, akkor a régió a kérések végrehajtásakor használt végponti URI része.
+* Ha az alkalmazás a beszédfelismerési szolgáltatás [REST API](./overview.md#reference-docs)-jának egyikét használja, akkor a régió a kérések végrehajtásakor használt végponti URI része.
 * A régióhoz létrehozott kulcsok csak az adott régióban érvényesek. A más régiókkal való használatának megkísérlése hitelesítési hibákat eredményez.
 
 ## <a name="speech-sdk"></a>Beszéd SDK
@@ -48,7 +48,7 @@ Ha a [SPEECH SDK](speech-sdk.md)-t használja, a régiókat a **régió azonosí
 
 Az elérhető régiók a beszédfelismerési SDK-n keresztül történő **szándék-felismeréshez** a következők:
 
-| Globális régió | Régió           | Régió azonosítója |
+| Globális régió | Region           | Régió azonosítója |
 | ------------- | ---------------- | -------------------- |
 | Ázsia          | Kelet-Ázsia        | `eastasia`           |
 | Ázsia          | Délkelet-Ázsia   | `southeastasia`      |
@@ -63,13 +63,13 @@ Az elérhető régiók a beszédfelismerési SDK-n keresztül történő **szán
 | Észak-Amerika | USA 2. nyugati régiója        | `westus2`            |
 | Dél-Amerika | Dél-Brazília     | `brazilsouth`        |
 
-Ez a [Language Understanding szolgáltatás (Luis)](/azure/cognitive-services/luis/luis-reference-regions)által támogatott közzétételi régiók részhalmaza.
+Ez a [Language Understanding szolgáltatás (Luis)](../luis/luis-reference-regions.md)által támogatott közzétételi régiók részhalmaza.
 
 ### <a name="voice-assistants"></a>Hangvezérelt asszisztensek
 
 A [SPEECH SDK](speech-sdk.md) a következő régiókban támogatja a **hangsegéd** képességeit:
 
-| Régió         | Régió azonosítója |
+| Region         | Régió azonosítója |
 | -------------- | -------------------- |
 | USA nyugati régiója        | `westus`             |
 | USA 2. nyugati régiója      | `westus2`            |
@@ -79,7 +79,7 @@ A [SPEECH SDK](speech-sdk.md) a következő régiókban támogatja a **hangsegé
 | Észak-Európa   | `northeurope`        |
 | Délkelet-Ázsia | `southeastasia`      |
 
-### <a name="speaker-recognition"></a>Beszélőfelismerés
+### <a name="speaker-recognition"></a>Speaker Recognition
 
 Speaker Recognition jelenleg csak a régióban érhető el `westus` .
 
