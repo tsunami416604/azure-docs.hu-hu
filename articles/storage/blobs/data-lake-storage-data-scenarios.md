@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 6e183a1e8cac8eec2806a35603c40a44aadac502
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eea7fb073cdf99ee1f4257f6824375a6502a4fad
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84193508"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913623"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>A Azure Data Lake Storage Gen2 használata big data követelményekhez
 
@@ -27,7 +27,7 @@ A big data feldolgozásának négy fő szakasza van:
 
 Ez a cikk az egyes feldolgozási fázisok lehetőségeit és eszközeit emeli ki.
 
-Az Azure Data Lake Storage Gen2rel használható Azure-szolgáltatások teljes listájáért lásd: a [Azure Data Lake Storage integrálása az Azure-szolgáltatásokkal](data-lake-storage-integrate-with-azure-services.md)
+Az Azure Data Lake Storage Gen2rel használható Azure-szolgáltatások teljes listájáért lásd: a [Azure Data Lake Storage integrálása az Azure-szolgáltatásokkal](./data-lake-storage-supported-azure-services.md)
 
 ## <a name="ingest-the-data-into-data-lake-storage-gen2"></a>Az adatgyűjtés Data Lake Storage Gen2
 
@@ -54,8 +54,8 @@ Az alábbi lista azokat az eszközöket tartalmazza, amelyek segítségével bet
 
 |Eszköz | Útmutató |
 |---|--|
-|Azure Stream Analytics|[Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal) <br> [Kimenő Azure Data Lake Gen2](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-outputs#blob-storage-and-azure-data-lake-gen2)|
-|Azure HDInsight Storm | [Írás a HDInsight Apache Storm HDFS Apache Hadoop](https://docs.microsoft.com/azure/hdinsight/storm/apache-storm-write-data-lake-store) |
+|Azure Stream Analytics|[Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával](../../stream-analytics/stream-analytics-quick-create-portal.md) <br> [Kimenő Azure Data Lake Gen2](../../stream-analytics/stream-analytics-define-outputs.md)|
+|Azure HDInsight Storm | [Írás a HDInsight Apache Storm HDFS Apache Hadoop](../../hdinsight/storm/apache-storm-write-data-lake-store.md) |
 
 ### <a name="relational-data"></a>Relációs adatok
 
@@ -65,7 +65,7 @@ Az alábbi lista azokat az eszközöket tartalmazza, amelyekkel a rendszer a kap
 
 |Eszköz | Útmutató |
 |---|--|
-|Azure Data Factory | [Másolási tevékenység az Azure Data Factoryben](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
+|Azure Data Factory | [Másolási tevékenység az Azure Data Factoryben](../../data-factory/copy-activity-overview.md) |
 
 ### <a name="web-server-log-data-upload-using-custom-applications"></a>Webkiszolgáló naplójának adatai (egyéni alkalmazásokkal történő feltöltés)
 
@@ -75,7 +75,7 @@ Az alábbi lista azokat az eszközöket tartalmazza, amelyek segítségével bet
 
 |Eszköz | Útmutató |
 |---|--|
-|Azure Data Factory | [Másolási tevékenység az Azure Data Factoryben](https://docs.microsoft.com/azure/data-factory/copy-activity-overview)  |
+|Azure Data Factory | [Másolási tevékenység az Azure Data Factoryben](../../data-factory/copy-activity-overview.md)  |
 |Azure CLI|[Azure CLI](data-lake-storage-directory-file-acl-cli.md)|
 |Azure PowerShell|[Azure PowerShell](data-lake-storage-directory-file-acl-powershell.md)|
 
@@ -89,9 +89,9 @@ Az alábbi lista azokat az eszközöket tartalmazza, amelyekkel a HDInsight-für
 
 |Eszköz | Útmutató |
 |---|--|
-|Apache DistCp | [Az DistCp használata az Azure Storage-blobok és a Azure Data Lake Storage Gen2 közötti adatmásoláshoz](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |
-|AzCopy eszköz | [Adatok átvitele a AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10) |
-|Azure Data Factory | [Adatok másolása Azure Data Lake Storage Gen2ba vagy onnan a Azure Data Factory használatával](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2) |
+|Apache DistCp | [Az DistCp használata az Azure Storage-blobok és a Azure Data Lake Storage Gen2 közötti adatmásoláshoz](./data-lake-storage-use-distcp.md) |
+|AzCopy eszköz | [Adatok átvitele a AzCopy](../common/storage-use-azcopy-v10.md) |
+|Azure Data Factory | [Adatok másolása Azure Data Lake Storage Gen2ba vagy onnan a Azure Data Factory használatával](../../data-factory/load-azure-data-lake-storage-gen2.md) |
 
 ### <a name="data-stored-in-on-premises-or-iaas-hadoop-clusters"></a>A helyszíni vagy IaaS Hadoop-fürtökben tárolt adatkészletek
 
@@ -118,12 +118,12 @@ Az alábbi lista azokat az eszközöket tartalmazza, amelyek segítségével ada
 
 |Eszköz | Útmutató |
 |---|--|
-|Azure HDInsight | [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
-|Azure Databricks | [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)<br><br>[Gyors útmutató: Azure Data Lake Storage Gen2ban lévő adatelemzés Azure Databricks használatával](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br><br>[Oktatóanyag: Adatok kinyerése, átalakítása és betöltése az Azure Databricks használatával](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure HDInsight | [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) |
+|Azure Databricks | [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)<br><br>[Gyors útmutató: Azure Data Lake Storage Gen2ban lévő adatelemzés Azure Databricks használatával](./data-lake-storage-quickstart-create-databricks-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br><br>[Oktatóanyag: Adatok kinyerése, átalakítása és betöltése az Azure Databricks használatával](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 
 ## <a name="visualize-the-data"></a>Az adatok vizualizációja
 
-A Power BI-összekötővel hozhatja létre a Data Lake Storage Gen2 tárolt adatvizualizációk ábrázolását. Lásd: az [adatelemzés Azure Data Lake Storage Gen2 Power bi használatával](https://docs.microsoft.com/power-query/connectors/datalakestorage).
+A Power BI-összekötővel hozhatja létre a Data Lake Storage Gen2 tárolt adatvizualizációk ábrázolását. Lásd: az [adatelemzés Azure Data Lake Storage Gen2 Power bi használatával](/power-query/connectors/datalakestorage).
 
 ## <a name="download-the-data"></a>Az adatok letöltése
 
@@ -139,7 +139,7 @@ Az alábbi lista azokat az eszközöket tartalmazza, amelyekkel adatok tölthet�
 
 |Eszköz | Útmutató |
 |---|--|
-|Azure Data Factory | [Másolási tevékenység az Azure Data Factoryben](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
-|Apache DistCp | [Az DistCp használata az Azure Storage-blobok és a Azure Data Lake Storage Gen2 közötti adatmásoláshoz](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |
+|Azure Data Factory | [Másolási tevékenység az Azure Data Factoryben](../../data-factory/copy-activity-overview.md) |
+|Apache DistCp | [Az DistCp használata az Azure Storage-blobok és a Azure Data Lake Storage Gen2 közötti adatmásoláshoz](./data-lake-storage-use-distcp.md) |
 |Azure Storage Explorer|[ kezelése az Azure Storage Explorerrel az Azure Data Lake Storage Gen2-ben](data-lake-storage-explorer.md)|
 |AzCopy eszköz|[Adatok átvitele a AzCopy és a blob Storage szolgáltatással](../common/storage-use-azcopy-blobs.md)|

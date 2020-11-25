@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/22/2020
+ms.date: 11/24/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d61d49fdd90f1f916141ca636e2c2a4dbe0b9bcd
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 935c0bf76e298ab1e2e4d25fab8685ac4ce617db
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657739"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95916165"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Klasszikus Azure-előfizetés rendszergazdái
 
@@ -99,25 +99,25 @@ A felhasználók és a vendég felhasználók összevetésével kapcsolatos info
 
 Csak a fiók rendszergazdája módosíthatja az előfizetés szolgáltatás-rendszergazdáját. Alapértelmezés szerint az Azure-előfizetésre való regisztráláskor a szolgáltatás rendszergazdája megegyeznek a fiók rendszergazdájával. A fiók-rendszergazdai szerepkörrel rendelkező felhasználó nem fér hozzá a Azure Portalhoz. A szolgáltatás-rendszergazdai szerepkörrel rendelkező felhasználó teljes hozzáféréssel rendelkezik a Azure Portalhoz. Ha a fiók rendszergazdája és a szolgáltatás rendszergazdája ugyanaz a felhasználó, és egy másik felhasználóra módosítja a szolgáltatás-rendszergazdát, akkor a fiók rendszergazdája elveszti a hozzáférést Azure Portal. A fiók rendszergazdája azonban mindig használhatja a Account centert a szolgáltatás-rendszergazda saját magukra való visszaállítására.
 
-Kövesse az alábbi lépéseket a szolgáltatás-rendszergazda módosításához a **Account Centerben**.
-
-### <a name="account-center"></a>Fiókközpont
+Az alábbi lépéseket követve módosíthatja a szolgáltatás-rendszergazdát a Azure Portalban.
 
 1. Ellenőrizze, hogy a forgatókönyv támogatott-e, [Ha ellenőrzi a szolgáltatás-rendszergazda módosításának korlátozásait](#limitations-for-changing-the-service-administrator).
 
-1. Jelentkezzen be a [Account Centerbe](https://account.windowsazure.com/subscriptions) a fiók rendszergazdájaként.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) fiókadminisztrátorként.
 
-1. Kattintson egy előfizetésre.
+1. Nyissa meg az [Előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) nézetet, és válasszon ki egy előfizetést.
 
-1. A jobb oldalon kattintson az **előfizetés részleteinek szerkesztése** elemre.
+1. A bal oldali navigációs sávon kattintson a **Tulajdonságok** elemre.
 
-    ![Képernyőfelvétel: az előfizetés szerkesztése gomb megjelenítése az Account Centerben](./media/classic-administrators/editsub.png)
+1. Kattintson a **szolgáltatás-rendszergazda** lehetőségre.
 
-1. A **szolgáltatás-rendszergazda** mezőben adja meg az új szolgáltatás-rendszergazda e-mail-címét.
+    ![A Azure Portal előfizetés tulajdonságait ábrázoló képernyőkép](./media/classic-administrators/service-admin.png)
 
-    ![Képernyőfelvétel a szolgáltatás-rendszergazdai e-mail módosítására szolgáló jelölőnégyzetről](./media/classic-administrators/change-service-admin.png)
+1. A szolgáltatás-adminisztrátor **szerkesztése** lapon adja meg az új szolgáltatás-rendszergazda e-mail-címét.
 
-1. Kattintson a pipa jelre a módosítás mentéséhez.
+    ![A szolgáltatás-rendszergazda szerkesztése lapot ábrázoló képernyőfelvétel](./media/classic-administrators/service-admin-edit.png)
+
+1. Kattintson az **OK** gombra a módosítás mentéséhez.
 
 ### <a name="limitations-for-changing-the-service-administrator"></a>A szolgáltatás-rendszergazda módosításának korlátai
 
@@ -142,13 +142,13 @@ A fiók rendszergazdájának megtekintéséhez kövesse az alábbi lépéseket.
 
 1. Nyissa meg az [Előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) nézetet, és válasszon ki egy előfizetést.
 
-1. Kattintson a **Tulajdonságok** elemre.
+1. A bal oldali navigációs sávon kattintson a **Tulajdonságok** elemre.
 
     Az előfizetés fiókjának rendszergazdája megjelenik a **fiók** adminisztrátora mezőben.
 
     ![A fiók rendszergazdáját ábrázoló képernyőfelvétel](./media/classic-administrators/account-admin.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A különböző szerepkörök ismertetése](../role-based-access-control/rbac-and-directory-admin-roles.md)
 * [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](../role-based-access-control/role-assignments-portal.md)

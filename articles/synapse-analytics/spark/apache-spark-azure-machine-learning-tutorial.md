@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
-ms.reviewer: jrasnick,
-ms.openlocfilehash: 979e360bb920fc3b34a201b1287b50b141bffa9b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.reviewer: jrasnick
+ms.openlocfilehash: e6708874fee3e15349b4389f1ecafa3d48a628dd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313618"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95917201"
 ---
 # <a name="tutorial-run-experiments-using-azure-automated-ml-and-apache-spark"></a>Oktatóanyag: kísérletek futtatása az Azure automatizált ML és Apache Spark használatával
 
@@ -50,51 +50,52 @@ Ebben a példában a Spark használatával elvégezheti a New York-i taxi Trip-a
 
 1. Hozzon létre egy jegyzetfüzetet a PySpark kernel használatával. Útmutatásért lásd: [Jegyzetfüzet létrehozása](https://docs.microsoft.com/azure/synapse-analytics/quickstart-apache-spark-notebook#create-a-notebook.)
    
-   > [!Note]
-   > 
-   > A PySpark kernel miatt nem kell explicit módon létrehoznia a környezeteket. A Spark-környezet automatikusan létrejön az első kód cellájának futtatásakor.
-   >
+> [!Note]
+> 
+> A PySpark kernel miatt nem kell explicit módon létrehoznia a környezeteket. A Spark-környezet automatikusan létrejön az első kód cellájának futtatásakor.
+>
 
 2. Mivel a nyers adatmennyiség parkettás formátumú, a Spark-környezettel közvetlenül is lehívhatja a fájlt a memóriába dataframe. Hozzon létre egy Spark-dataframe az adatoknak a nyílt adatkészletek API-n keresztüli beolvasásával. Itt a Spark dataframe *sémát* használjuk az olvasási tulajdonságoknál az adattípusok és a séma kikövetkeztetni. 
    
-   ```python
-   blob_account_name = "azureopendatastorage"
-   blob_container_name = "nyctlc"
-   blob_relative_path = "yellow"
-   blob_sas_token = r""
+```python
+blob_account_name = "azureopendatastorage"
+blob_container_name = "nyctlc"
+blob_relative_path = "yellow"
+blob_sas_token = r""
 
-   # Allow Spark to read from Blob remotely
-   wasbs_path = 'wasbs://%s@%s.blob.core.windows.net/%s' % (blob_container_name, blob_account_name, blob_relative_path)
-   spark.conf.set('fs.azure.sas.%s.%s.blob.core.windows.net' % (blob_container_name, blob_account_name),blob_sas_token)
+# Allow Spark to read from Blob remotely
+wasbs_path = 'wasbs://%s@%s.blob.core.windows.net/%s' % (blob_container_name, blob_account_name, blob_relative_path)
+spark.conf.set('fs.azure.sas.%s.%s.blob.core.windows.net' % (blob_container_name, blob_account_name),blob_sas_token)
 
-   # Spark read parquet, note that it won't load any data yet by now
-   df = spark.read.parquet(wasbs_path)
-   ```
+# Spark read parquet, note that it won't load any data yet by now
+df = spark.read.parquet(wasbs_path)
+
+```
 
 3. A Spark-készlet (előzetes verzió) méretétől függően előfordulhat, hogy a nyers adatmennyiség túl nagy, vagy túl sok időt vesz igénybe. Ezeket az adatmennyiségeket leszűkítheti a ```start_date``` és a szűrők használatával ```end_date``` . Ez egy olyan szűrőt alkalmaz, amely egy hónapot ad vissza. Miután megtörtént a szűrt dataframe, a függvényt is futtatjuk ```describe()``` az új dataframe az egyes mezők összegző statisztikáinak megtekintéséhez. 
 
    Az összegző statisztika alapján láthatjuk, hogy az adatokban nincsenek szabálytalanságok és kiugró értékek. A statisztikák például azt mutatják, hogy a minimális utazási távolság nullánál kisebb. Ezeket a szabálytalan adatpontokat ki kell szűrni.
    
-   ```python
-   # Create an ingestion filter
-   start_date = '2015-01-01 00:00:00'
-   end_date = '2015-12-31 00:00:00'
+```python
+# Create an ingestion filter
+start_date = '2015-01-01 00:00:00'
+end_date = '2015-12-31 00:00:00'
 
-   filtered_df = df.filter('tpepPickupDateTime > "' + start_date + '" and tpepPickupDateTime < "' + end_date + '"')
+filtered_df = df.filter('tpepPickupDateTime > "' + start_date + '" and tpepPickupDateTime < "' + end_date + '"')
 
-   filtered_df.describe().show()
-   ```
+filtered_df.describe().show()
+```
 
 4. Mostantól az adatkészlet funkcióit az oszlopok egy halmazának kiválasztásával és különböző időalapú funkciók létrehozásával hozhatja létre a felvételi dátum és idő mezőből. A korábbi lépésekben azonosított kiugró értékeket is kiszűrjük, majd eltávolítjuk az utolsó néhány oszlopot, amely nem szükséges a betanításhoz.
    
-   ```python
-   from datetime import datetime
-   from pyspark.sql.functions import *
+```python
+from datetime import datetime
+from pyspark.sql.functions import *
 
-   # To make development easier, faster and less expensive down sample for now
-   sampled_taxi_df = filtered_df.sample(True, 0.001, seed=1234)
+# To make development easier, faster and less expensive down sample for now
+sampled_taxi_df = filtered_df.sample(True, 0.001, seed=1234)
 
-   taxi_df = sampled_taxi_df.select('vendorID', 'passengerCount', 'tripDistance',  'startLon', 'startLat', 'endLon' \
+taxi_df = sampled_taxi_df.select('vendorID', 'passengerCount', 'tripDistance',  'startLon', 'startLat', 'endLon' \
                                 , 'endLat', 'paymentType', 'fareAmount', 'tipAmount'\
                                 , column('puMonth').alias('month_num') \
                                 , date_format('tpepPickupDateTime', 'hh').alias('hour_of_day')\
@@ -108,12 +109,13 @@ Ebben a példában a Spark használatával elvégezheti a New York-i taxi Trip-a
                                 & (sampled_taxi_df.tripDistance > 0) & (sampled_taxi_df.tripDistance <= 200)\
                                 & (sampled_taxi_df.rateCodeId <= 5)\
                                 & (sampled_taxi_df.paymentType.isin({"1", "2"})))
-   taxi_df.show(10)
-   ```
+taxi_df.show(10)
+```
    
-Amint láthatja, ez egy új dataframe hoz létre, amely további oszlopokkal fog szolgálni a hónap napjához, a pickup óra, a hétköznap és a teljes menetidő. 
+   Amint láthatja, ez egy új dataframe hoz létre, amely további oszlopokkal fog szolgálni a hónap napjához, a pickup óra, a hétköznap és a teljes menetidő. 
 
-![A taxi dataframe képe.](./media/apache-spark-machine-learning-aml-notebook/aml-dataset.png)
+
+![A taxi dataframe képe.](./media/azure-machine-learning-spark-notebook/dataset.png#lightbox)
 
 ## <a name="generate-test-and-validation-datasets"></a>Tesztelési és érvényesítési adatkészletek előállítása
 
@@ -124,7 +126,6 @@ Ha elkészült a végső adatkészlettel, az adatokat kioszthatja a betanítási
 training_data, validation_data = taxi_df.randomSplit([0.8,0.2], 223)
 
 ```
-
 Ez a lépés biztosítja, hogy az adatpontok tesztelik a modell betanításához nem használt befejezett modellt. 
 
 ## <a name="connect-to-an-azure-machine-learning-workspace"></a>Kapcsolódás Azure Machine Learning-munkaterülethoz
@@ -165,43 +166,41 @@ datastore.upload_files(files = ['training_pd.csv'],
                        show_progress = True)
 dataset_training = Dataset.Tabular.from_delimited_files(path = [(datastore, 'train-dataset/tabular/training_pd.csv')])
 ```
-
-![A feltöltött adatkészlet képe.](./media/apache-spark-machine-learning-aml-notebook/upload-dataset.png)
+![A feltöltött adatkészlet képe.](./media/azure-machine-learning-spark-notebook/upload-dataset.png)
 
 ## <a name="submit-an-automl-experiment"></a>AutoML-kísérlet küldése
 
 #### <a name="define-training-settings"></a>Képzési beállítások megadása
-
 1. A kísérlet elküldéséhez meg kell határoznia a kísérlet paramétert és a modell beállításait a betanításhoz. A beállítások teljes listáját [itt](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train)tekintheti meg.
 
-   ```python
-   import logging
+```python
+import logging
 
-   automl_settings = {
-       "iteration_timeout_minutes": 10,
-       "experiment_timeout_minutes": 30,
-       "enable_early_stopping": True,
-       "primary_metric": 'r2_score',
-       "featurization": 'auto',
-       "verbosity": logging.INFO,
-       "n_cross_validations": 2}
-   ```
+automl_settings = {
+    "iteration_timeout_minutes": 10,
+    "experiment_timeout_minutes": 30,
+    "enable_early_stopping": True,
+    "primary_metric": 'r2_score',
+    "featurization": 'auto',
+    "verbosity": logging.INFO,
+    "n_cross_validations": 2}
+```
 
-2. Most átadjuk a definiált képzési beállításokat \* \* kwargs paraméterként egy AutoMLConfig objektumra. Mivel a Sparkban vagyunk betanításban, át kell adni a Spark-környezetet is, amelyet a változó automatikusan elérhetővé tesz ```sc``` . Emellett megadhatja a betanítási és a modell típusát is, amely ebben az esetben regressziós.
+2. Most átadjuk a definiált betanítási beállításokat * * kwargs paraméterként egy AutoMLConfig objektumhoz. Mivel a Sparkban vagyunk betanításban, át kell adni a Spark-környezetet is, amelyet a változó automatikusan elérhetővé tesz ```sc``` . Emellett megadhatja a betanítási és a modell típusát is, amely ebben az esetben regressziós.
 
-   ```python
-   from azureml.train.automl import AutoMLConfig
+```python
+from azureml.train.automl import AutoMLConfig
 
-   automl_config = AutoMLConfig(task='regression',
+automl_config = AutoMLConfig(task='regression',
                              debug_log='automated_ml_errors.log',
                              training_data = dataset_training,
                              spark_context = sc,
                              model_explainability = False, 
                              label_column_name ="fareAmount",**automl_settings)
-   ```
+```
 
 > [!NOTE]
-> Az automatizált gépi tanulás előfeldolgozásának lépései (a funkciók normalizálása, a hiányzó adatkezelés, a szöveg konvertálása a numerikus formátumba stb.) az alapul szolgáló modell részévé válnak. A modell előrejelzésekhez való használatakor a betanítás során alkalmazott azonos előfeldolgozási lépéseket a rendszer automatikusan alkalmazza a bemeneti adatokra.
+>Az automatizált gépi tanulás előfeldolgozásának lépései (a funkciók normalizálása, a hiányzó adatkezelés, a szöveg konvertálása a numerikus formátumba stb.) az alapul szolgáló modell részévé válnak. A modell előrejelzésekhez való használatakor a betanítás során alkalmazott azonos előfeldolgozási lépéseket a rendszer automatikusan alkalmazza a bemeneti adatokra.
 
 #### <a name="train-the-automatic-regression-model"></a>Az automatikus regressziós modell betanítása 
 Most létrehozunk egy kísérlet objektumot a Azure Machine Learning munkaterületen. Egy kísérlet tárolóként működik az egyes futtatásokhoz. 
@@ -217,10 +216,9 @@ local_run = experiment.submit(automl_config, show_output=True, tags = tags)
 # Use the get_details function to retrieve the detailed output for the run.
 run_details = local_run.get_details()
 ```
-
 A kísérlet befejezését követően a kimenet a befejezett iterációk részleteit adja vissza. Minden egyes iterációnál megjelenik a modell típusa, a Futtatás időtartama és a képzés pontossága. A mező LEGJOBBAN a mérőszám típusa alapján a legjobb futó tanítási pontszámot követi nyomon.
 
-![Képernyőkép a modell kimenetéről.](./media/apache-spark-machine-learning-aml-notebook/aml-model-output.png)
+![Képernyőkép a modell kimenetéről.](./media/azure-machine-learning-spark-notebook/model-output.png)
 
 > [!NOTE]
 > A AutoML kísérlet elküldését követően különböző iterációkat és modell-típusokat fog futtatni. Ez a Futtatás általában 1 – 1,5 órát vesz igénybe. 
@@ -234,94 +232,92 @@ best_run, fitted_model = local_run.get_output()
 ```
 
 #### <a name="test-model-accuracy"></a>Modell pontosságának tesztelése
-
 1. A modell pontosságának teszteléséhez a legjobb modellt fogjuk használni a tesztelési adatkészleten a taxi viteldíj-előrejelzések futtatásához. A ```predict``` függvény a legjobb modellt használja, és előre jelzi az y (viteldíj mennyisége) értékét az ellenőrzési adatkészletből. 
 
-   ```python
-   # Test best model accuracy
-   validation_data_pd = validation_data.toPandas()
-   y_test = validation_data_pd.pop("fareAmount").to_frame()
-   y_predict = fitted_model.predict(validation_data_pd)
-   ```
+```python
+# Test best model accuracy
+validation_data_pd = validation_data.toPandas()
+y_test = validation_data_pd.pop("fareAmount").to_frame()
+y_predict = fitted_model.predict(validation_data_pd)
+```
 
 2. A legfelső szintű Mean-Square hiba (GYÖKÁTLAGOS) a modell által előre jelzett és a megfigyelt értékek közötti különbségeket gyakran használt mérték. Az eredmények legfelső szintű négyzetes hibáját az y_test dataframe és a modell által előre jelzett értékek összehasonlításával számítjuk ki. 
 
    A függvény ```mean_squared_error``` két tömböt vesz igénybe, és kiszámítja a közöttük lévő átlagos négyzetes hibát. Ezután az eredmény négyzet gyökerét vesszük. Ez a metrika nagyjából azt jelzi, hogy a taxi viteldíjának előrejelzései a tényleges viteldíjak értékeiből származnak.
 
-   ```python
-   from sklearn.metrics import mean_squared_error
-   from math import sqrt
+```python
+from sklearn.metrics import mean_squared_error
+from math import sqrt
 
-   # Calculate Root Mean Square Error
-   y_actual = y_test.values.flatten().tolist()
-   rmse = sqrt(mean_squared_error(y_actual, y_predict))
+# Calculate Root Mean Square Error
+y_actual = y_test.values.flatten().tolist()
+rmse = sqrt(mean_squared_error(y_actual, y_predict))
 
-   print("Root Mean Square Error:")
-   print(rmse)
-   ```
+print("Root Mean Square Error:")
+print(rmse)
+```
 
-   ```Output
-   Root Mean Square Error:
-   2.309997102577151
-   ```
-   
-   A legfelső szintű Mean-Square típusú hiba jól szemlélteti, hogy a modell pontosan milyen mértékben Jósolja meg a választ. Az eredményekből láthatja, hogy a modell meglehetősen jó, ha az adatkészlet funkciói alapján előre megjósolja a taxi viteldíjait, jellemzően a +-$2,00
+```Output
+Root Mean Square Error:
+2.309997102577151
+```
+A legfelső szintű Mean-Square típusú hiba jól szemlélteti, hogy a modell pontosan milyen mértékben Jósolja meg a választ. Az eredményekből láthatja, hogy a modell meglehetősen jó, ha az adatkészlet funkciói alapján előre megjósolja a taxi viteldíjait, jellemzően a +-$2,00
 
 3. Futtassa a következő kódot a középérték abszolút százalékának kiszámításához (MAPE). Ez a metrika a hiba százalékában kifejezi a pontosságot. Ezt úgy hajtja végre, hogy kiszámítja az összes előre jelzett és tényleges érték közötti abszolút különbséget, majd összesíti az összes különbséget. Ezt követően a tényleges értékek összegének százalékában fejezi ki az összeget.
 
-   ```python
-   # Calculate MAPE and Model Accuracy 
-   sum_actuals = sum_errors = 0
+```python
+# Calculate MAPE and Model Accuracy 
+sum_actuals = sum_errors = 0
 
-   for actual_val, predict_val in zip(y_actual, y_predict):
-       abs_error = actual_val - predict_val
-       if abs_error < 0:
-           abs_error = abs_error * -1
+for actual_val, predict_val in zip(y_actual, y_predict):
+    abs_error = actual_val - predict_val
+    if abs_error < 0:
+        abs_error = abs_error * -1
 
-       sum_errors = sum_errors + abs_error
-       sum_actuals = sum_actuals + actual_val
+    sum_errors = sum_errors + abs_error
+    sum_actuals = sum_actuals + actual_val
 
-   mean_abs_percent_error = sum_errors / sum_actuals
+mean_abs_percent_error = sum_errors / sum_actuals
 
-   print("Model MAPE:")
-   print(mean_abs_percent_error)
-   print()
-   print("Model Accuracy:")
-   print(1 - mean_abs_percent_error)
-   ```
+print("Model MAPE:")
+print(mean_abs_percent_error)
+print()
+print("Model Accuracy:")
+print(1 - mean_abs_percent_error)
+```
 
-   ```Output
-   Model MAPE:
-   0.03655071038487368
+```Output
+Model MAPE:
+0.03655071038487368
 
-   Model Accuracy:
-   0.9634492896151263
-   ```
-   A két előrejelzés pontossági metrikájában láthatja, hogy a modell elég jó, ha az adatkészlet funkciói alapján előre megjósolja a taxi viteldíjait. 
+Model Accuracy:
+0.9634492896151263
+```
+A két előrejelzés pontossági metrikájában láthatja, hogy a modell elég jó, ha az adatkészlet funkciói alapján előre megjósolja a taxi viteldíjait. 
 
 4. A lineáris regressziós modell rögzítése után most meg kell határozni, hogy milyen jól illeszkedik a modell az adattípushoz. Ehhez a tényleges viteldíj-értékeket kell kirajzolni az előre jelzett kimenetre. Emellett az R-négyzetes mértéket is kiszámítjuk, hogy megértsük, hogyan zárjuk be az adatok a beépített regressziós vonalba.
 
-   ```python
-   import matplotlib.pyplot as plt
-   import numpy as np
-   from sklearn.metrics import mean_squared_error, r2_score
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+from sklearn.metrics import mean_squared_error, r2_score
 
-   # Calculate the R2 score using the predicted and actual fare prices
-   y_test_actual = y_test["fareAmount"]
-   r2 = r2_score(y_test_actual, y_predict)
+# Calculate the R2 score using the predicted and actual fare prices
+y_test_actual = y_test["fareAmount"]
+r2 = r2_score(y_test_actual, y_predict)
 
-   # Plot the Actual vs Predicted Fare Amount Values
-   plt.style.use('ggplot')
-   plt.figure(figsize=(10, 7))
-   plt.scatter(y_test_actual,y_predict)
-   plt.plot([np.min(y_test_actual), np.max(y_test_actual)], [np.min(y_test_actual), np.max(y_test_actual)], color='lightblue')
-   plt.xlabel("Actual Fare Amount")
-   plt.ylabel("Predicted Fare Amount")
-   plt.title("Actual vs Predicted Fare Amont R^2={}".format(r2))
-   plt.show()
-   ```
-   
-   ![A regressziós mintaterület képernyőképe.](./media/apache-spark-machine-learning-aml-notebook/aml-fare-amount.png)
+# Plot the Actual vs Predicted Fare Amount Values
+plt.style.use('ggplot')
+plt.figure(figsize=(10, 7))
+plt.scatter(y_test_actual,y_predict)
+plt.plot([np.min(y_test_actual), np.max(y_test_actual)], [np.min(y_test_actual), np.max(y_test_actual)], color='lightblue')
+plt.xlabel("Actual Fare Amount")
+plt.ylabel("Predicted Fare Amount")
+plt.title("Actual vs Predicted Fare Amont R^2={}".format(r2))
+plt.show()
+
+```
+![A regressziós mintaterület képernyőképe.](./media/azure-machine-learning-spark-notebook/fare-amount.png)
 
    Az eredményekből láthatjuk, hogy az R-négyzetes mérték a variancia 95%-ában van elkönyvelve. Ezt a tényleges, megfigyelt versek is ellenőrzik. Minél több eltérés van, amelyet a regressziós modell figyelembe vesz, annál közelebb esik az adatpontok a beépített regressziós vonalhoz.  
 
@@ -334,16 +330,14 @@ model_path='outputs/model.pkl'
 model = best_run.register_model(model_name = 'NYCGreenTaxiModel', model_path = model_path, description = description)
 print(model.name, model.version)
 ```
-
 ```Output
 NYCGreenTaxiModel 1
 ```
-
 ## <a name="view-results-in-azure-machine-learning"></a>Eredmények megtekintése Azure Machine Learning
 Végül az iterációk eredményeinek eléréséhez navigáljon a Azure Machine Learning-munkaterületban található kísérlethez. Itt további részleteket tudhat meg a Futtatás, a megkísérelt modellek és a modell egyéb mérőszámai állapotáról. 
 
-![A pénzmosás-munkaterület képernyőképe.](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-aml-workspace.png)
+![A pénzmosás-munkaterület képernyőképe.](./media/azure-machine-learning-spark-notebook/azure-machine-learning-workspace.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
 - [Apache Spark MLlib-oktatóanyag](./apache-spark-machine-learning-mllib-notebook.md)

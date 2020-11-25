@@ -9,12 +9,12 @@ ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 791b50f1458ba7ee127d45ee374b5589ade588e0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 738ed3b819a62760408341184daca8a8ba555029
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308192"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913674"
 ---
 # <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>Oktatóanyag: a Databricks-különbözeti tábla frissítéséhez a adattó rögzítési mintájának megvalósítása
 
@@ -35,20 +35,20 @@ Ezt a megoldást fordított sorrendben fogjuk felépíteni, kezdve a Azure Datab
 
 * Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-* Hozzon létre egy hierarchikus névteret (Azure Data Lake Storage Gen2) tartalmazó Storage-fiókot. Ez az oktatóanyag egy nevű Storage-fiókot használ `contosoorders` . Győződjön meg arról, hogy a felhasználói fiókja rendelkezik a [Storage blob adatközreműködői szerepkörhöz](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) hozzárendelve.
+* Hozzon létre egy hierarchikus névteret (Azure Data Lake Storage Gen2) tartalmazó Storage-fiókot. Ez az oktatóanyag egy nevű Storage-fiókot használ `contosoorders` . Győződjön meg arról, hogy a felhasználói fiókja rendelkezik a [Storage blob adatközreműködői szerepkörhöz](../common/storage-auth-aad-rbac-portal.md) hozzárendelve.
 
    Lásd: [Azure Data Lake Storage Gen2 használatával használandó Storage-fiók létrehozása](create-data-lake-storage-account.md).
 
-* Egyszerű szolgáltatásnév létrehozása. [Útmutató: a portál használatával létrehozhat egy Azure ad-alkalmazást és egy egyszerű szolgáltatást, amely hozzáférhet az erőforrásokhoz](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+* Egyszerű szolgáltatásnév létrehozása. [Útmutató: a portál használatával létrehozhat egy Azure ad-alkalmazást és egy egyszerű szolgáltatást, amely hozzáférhet az erőforrásokhoz](../../active-directory/develop/howto-create-service-principal-portal.md).
 
   A cikk lépéseinek elvégzése során néhány konkrét dolgot is el kell végeznie.
 
-  : heavy_check_mark: Ha az [alkalmazás társítása szerepkörhöz](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) című szakasz lépéseit hajtja végre, akkor ügyeljen arra, hogy a szolgáltatáshoz hozzárendelje a **tárolási blob adatközreműködői** szerepkört.
+  : heavy_check_mark: Ha az [alkalmazás társítása szerepkörhöz](../../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application) című szakasz lépéseit hajtja végre, akkor ügyeljen arra, hogy a szolgáltatáshoz hozzárendelje a **tárolási blob adatközreműködői** szerepkört.
 
   > [!IMPORTANT]
   > Ügyeljen arra, hogy a szerepkört a Data Lake Storage Gen2 Storage-fiók hatókörében rendelje hozzá. Hozzárendelhet egy szerepkört a szülő erőforráscsoporthoz vagy az előfizetéshez, de az engedélyekkel kapcsolatos hibákat addig kapja, amíg a szerepkör-hozzárendelések el nem terjednek a Storage-fiókba.
 
-  : heavy_check_mark: a cikk [beolvasási értékek beolvasása](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) szakaszában szereplő lépések végrehajtásakor illessze be a bérlői azonosítót, az alkalmazás azonosítóját és a jelszó értékét egy szövegfájlba. Ezekre az értékekre később szüksége lesz.
+  : heavy_check_mark: a cikk [beolvasási értékek beolvasása](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) szakaszában szereplő lépések végrehajtásakor illessze be a bérlői azonosítót, az alkalmazás azonosítóját és a jelszó értékét egy szövegfájlba. Ezekre az értékekre később szüksége lesz.
 
 ## <a name="create-a-sales-order"></a>Értékesítési rendelés létrehozása
 
@@ -291,7 +291,7 @@ Hozzon létre egy Azure-függvényt, amely futtatja a feladatot.
 
    Megjelenik az **új függvény** panel.
 
-9. Az **új függvény** ablaktáblán nevezze el a függvény **UpsertOrder** , majd kattintson a **Létrehozás** gombra.
+9. Az **új függvény** ablaktáblán nevezze el a függvény **UpsertOrder**, majd kattintson a **Létrehozás** gombra.
 
 10. Cserélje le a kód tartalmát a kódnak megfelelően, majd kattintson a **Save (Mentés** ) gombra:
 
@@ -351,7 +351,7 @@ Ebben a szakaszban olyan Event Grid-előfizetést hoz létre, amely meghívja az
 
    ![Új esemény-előfizetés](./media/data-lake-storage-events/new-event-subscription-2.png "Új esemény-előfizetés")
 
-3. A **szűrő az események típusai** legördülő listából válassza ki a **létrehozott blobot** , és a **blob által törölt** eseményeket, majd kattintson a **Létrehozás** gombra.
+3. A **szűrő az események típusai** legördülő listából válassza ki a **létrehozott blobot**, és a **blob által törölt** eseményeket, majd kattintson a **Létrehozás** gombra.
 
 ## <a name="test-the-event-grid-subscription"></a>A Event Grid előfizetés tesztelése
 
@@ -411,7 +411,7 @@ Ebben a szakaszban olyan Event Grid-előfizetést hoz létre, amely meghívja az
 
 Ha már nincs rájuk szükség, törölje az erőforráscsoportot és az összes kapcsolódó erőforrást. Ehhez válassza ki a Storage-fiókhoz tartozó erőforráscsoportot, és válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Reagálás Blob Storage-eseményekre](storage-blob-event-overview.md)

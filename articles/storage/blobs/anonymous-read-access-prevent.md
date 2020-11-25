@@ -10,12 +10,12 @@ ms.date: 10/09/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 3d843440adc61b315616a05f223c5a13ebe271ed
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 01a5c696a41b9361c35e7af90f68088acea2944b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930832"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913776"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>Tárolók és Blobok névtelen nyilvános olvasási hozzáférésének tiltása
 
@@ -39,11 +39,11 @@ A névtelen kérelmek Storage-fiókba való nyomon követéséhez használja az 
 
 Kövesse az alábbi lépéseket egy olyan metrika létrehozásához, amely nyomon követi a névtelen kérelmeket:
 
-1. Az Azure Portalon nyissa meg a tárfiókot. A **figyelés** szakaszban válassza a **metrikák**lehetőséget.
+1. Az Azure Portalon nyissa meg a tárfiókot. A **figyelés** szakaszban válassza a **metrikák** lehetőséget.
 1. Válassza a **Metrika hozzáadása** lehetőséget. A **metrika** párbeszédpanelen a következő értékeket kell megadnia:
     1. Hagyja meg a hatókör mezőt a Storage-fiók nevére.
-    1. Állítsa a **metrikai névteret** a *blob*értékre. Ez a mérőszám csak a blob Storage-ra vonatkozó kérelmeket fogja jelenteni.
-    1. Állítsa a **metrika** mezőt a *tranzakciók*értékre.
+    1. Állítsa a **metrikai névteret** a *blob* értékre. Ez a mérőszám csak a blob Storage-ra vonatkozó kérelmeket fogja jelenteni.
+    1. Állítsa a **metrika** mezőt a *tranzakciók* értékre.
     1. Állítsa az **Összesítés** mezőt Sum ( *összeg*) értékre.
 
     Az új metrika megjeleníti a blob Storage-hoz tartozó tranzakciók számának összegét egy adott időtartamon belül. Az eredményül kapott metrika a következő képen látható módon jelenik meg:
@@ -54,12 +54,12 @@ Kövesse az alábbi lépéseket egy olyan metrika létrehozásához, amely nyomo
 1. A **szűrő** párbeszédpanelen a következő értékeket kell megadnia:
     1. Állítsa a **tulajdonság** értékét *hitelesítésre*.
     1. Állítsa az **operátor** mezőt az egyenlőségjel (=) értékre.
-    1. Állítsa a **Values (értékek** ) mezőt *Névtelen*értékre.
+    1. Állítsa a **Values (értékek** ) mezőt *Névtelen* értékre.
 1. A jobb felső sarokban válassza ki azt az időintervallumot, amelyre vonatkozóan meg szeretné tekinteni a metrikát. Azt is jelezheti, hogy a kérelmek összesítésének milyen részletességgel kell megjelennie, ha az intervallumokat 1 perc és 1 hónap között adja meg.
 
 A metrika konfigurálása után a névtelen kérelmek megjelennek a gráfon. Az alábbi képen az elmúlt 30 percben összesített névtelen kérelmek láthatók.
 
-:::image type="content" source="media/anonymous-read-access-prevent/metric-anonymous-blob-requests.png" alt-text="A metrika a blob-tranzakciók összegére való konfigurálását bemutató képernyőkép":::
+:::image type="content" source="media/anonymous-read-access-prevent/metric-anonymous-blob-requests.png" alt-text="A blob Storage-hoz tartozó összesített névtelen kérelmeket bemutató képernyőkép":::
 
 A riasztási szabályt úgy is konfigurálhatja, hogy értesítést kapjon, ha egy adott számú névtelen kérelem kerül a Storage-fiókjába. További információ: [metrikus riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](../../azure-monitor/platform/alerts-metric.md).
 
@@ -67,9 +67,9 @@ A riasztási szabályt úgy is konfigurálhatja, hogy értesítést kapjon, ha e
 
 Az Azure Storage-naplók rögzítik a Storage-fiókkal kapcsolatos kérések részleteit, beleértve a kérelem engedélyezésének módját is. A naplók elemzésével meghatározhatja, hogy mely tárolók kapják meg a névtelen kérelmeket.
 
-Ha a névtelen kérelmek kiértékeléséhez a kérelmeket az Azure Storage-fiókjába kívánja naplózni, Azure Monitor (előzetes verzió) Azure Storage-naplózást is használhat. További információ: az [Azure Storage figyelése](../common/monitor-storage.md).
+Ha a névtelen kérelmek kiértékeléséhez a kérelmeket az Azure Storage-fiókjába kívánja naplózni, Azure Monitor (előzetes verzió) Azure Storage-naplózást is használhat. További információ: az [Azure Storage figyelése](./monitor-blob-storage.md).
 
-Az Azure Storage Azure Monitor támogatja a naplózási lekérdezések használatát a naplófájlok elemzéséhez. A naplók lekérdezéséhez használhat Azure Log Analytics munkaterületet. További információ a naplók lekérdezéséről [: oktatóanyag: log Analytics lekérdezések első lépései](../../azure-monitor/log-query/get-started-portal.md).
+Az Azure Storage Azure Monitor támogatja a naplózási lekérdezések használatát a naplófájlok elemzéséhez. A naplók lekérdezéséhez használhat Azure Log Analytics munkaterületet. További információ a naplók lekérdezéséről [: oktatóanyag: log Analytics lekérdezések első lépései](../../azure-monitor/log-query/log-analytics-tutorial.md).
 
 > [!NOTE]
 > Az Azure Storage naplózásának előzetes verziója Azure Monitor csak az Azure nyilvános felhőben támogatott. A kormányzati felhők nem támogatják az Azure Storage Azure Monitor-vel való naplózását.
@@ -83,16 +83,16 @@ Az Azure Storage-beli adatAzure Monitor és az Azure Log Analytics való elemzé
 1. Az Azure Portalon nyissa meg a tárfiókot.
 1. A figyelés szakaszban válassza a **diagnosztikai beállítások (előzetes verzió)** lehetőséget.
 1. A blob Storage-ba irányuló kérelmek naplózásához válassza a **blob** elemet.
-1. Válassza a **diagnosztikai beállítás hozzáadása**lehetőséget.
+1. Válassza a **Diagnosztikai beállítások megadása** lehetőséget.
 1. Adja meg a diagnosztikai beállítás nevét.
-1. A **Kategória részletei**területen, a **napló** szakaszban válassza ki a naplózandó kérelmek típusát. Az összes névtelen kérelem olvasási kérelem lesz, ezért a névtelen kérelmek rögzítéséhez válassza a **StorageRead** lehetőséget.
-1. A **célhely részletei**területen válassza **a Küldés log Analyticsba**lehetőséget. Válassza ki az előfizetését és a korábban létrehozott Log Analytics munkaterületet, ahogy az az alábbi képen is látható.
+1. A **Kategória részletei** területen, a **napló** szakaszban válassza ki a naplózandó kérelmek típusát. Az összes névtelen kérelem olvasási kérelem lesz, ezért a névtelen kérelmek rögzítéséhez válassza a **StorageRead** lehetőséget.
+1. A **célhely részletei** területen válassza **a Küldés log Analyticsba** lehetőséget. Válassza ki az előfizetését és a korábban létrehozott Log Analytics munkaterületet, ahogy az az alábbi képen is látható.
 
-    :::image type="content" source="media/anonymous-read-access-prevent/create-diagnostic-setting-logs.png" alt-text="A metrika a blob-tranzakciók összegére való konfigurálását bemutató képernyőkép":::
+    :::image type="content" source="media/anonymous-read-access-prevent/create-diagnostic-setting-logs.png" alt-text="A naplózási kérelmek diagnosztikai beállításainak létrehozását bemutató képernyőkép":::
 
 Miután létrehozta a diagnosztikai beállítást, a rendszer a Storage-fiókra irányuló kérelmeket a beállításnak megfelelően naplózza. További információ: [diagnosztikai beállítás létrehozása az erőforrás-naplók és-metrikák az Azure-ban való összegyűjtéséhez](../../azure-monitor/platform/diagnostic-settings.md).
 
-A Azure Monitor Azure Storage-naplókban elérhető mezőkre vonatkozó hivatkozásokat itt tekintheti meg: [erőforrás-naplók (előzetes verzió)](../common/monitor-storage-reference.md#resource-logs-preview).
+A Azure Monitor Azure Storage-naplókban elérhető mezőkre vonatkozó hivatkozásokat itt tekintheti meg: [erőforrás-naplók (előzetes verzió)](./monitor-blob-storage-reference.md#resource-logs-preview).
 
 #### <a name="query-logs-for-anonymous-requests"></a>Névtelen kérelmek lekérdezési naplói
 
@@ -164,7 +164,7 @@ New-AzStorageContainer -Name $containerName -Permission Blob -Context $ctx
 
 ### <a name="check-the-public-access-setting-for-multiple-accounts"></a>Több fiók nyilvános hozzáférésének beállítása
 
-Ha szeretné, hogy az optimális teljesítmény érdekében a Storage-fiókok egy csoportján belül ellenőrizzék a nyilvános hozzáférési beállításokat, használhatja az Azure Resource Graph Explorert a Azure Portal. Ha többet szeretne megtudni az Erőforrásgrafikon Explorer használatáról, tekintse meg a gyors útmutató [: az első Resource Graph-lekérdezés futtatása az Azure Resource Graph Explorerben](/azure/governance/resource-graph/first-query-portal).
+Ha szeretné, hogy az optimális teljesítmény érdekében a Storage-fiókok egy csoportján belül ellenőrizzék a nyilvános hozzáférési beállításokat, használhatja az Azure Resource Graph Explorert a Azure Portal. Ha többet szeretne megtudni az Erőforrásgrafikon Explorer használatáról, tekintse meg a gyors útmutató [: az első Resource Graph-lekérdezés futtatása az Azure Resource Graph Explorerben](../../governance/resource-graph/first-query-portal.md).
 
 A következő lekérdezés futtatása az Erőforrásgrafikon Explorerben a Storage-fiókok listáját adja vissza, és megjeleníti az egyes fiókok nyilvános hozzáférési beállításait:
 
@@ -186,11 +186,11 @@ A Azure Policy olyan hatásokat támogat, amelyek meghatározzák, hogy mi tört
 Az alábbi lépéseket követve hozhat létre egy olyan házirendet, amely a Azure Portalhoz tartozó Storage-fiók nyilvános hozzáférési beállításához tartozó naplózási hatással van:
 
 1. A Azure Portal navigáljon a Azure Policy szolgáltatáshoz.
-1. A **szerzői műveletek** szakaszban válassza a **definíciók**lehetőséget.
+1. A **szerzői műveletek** szakaszban válassza a **definíciók** lehetőséget.
 1. Új házirend-definíció létrehozásához válassza a **házirend-definíció hozzáadása** lehetőséget.
 1. A **definíció helye** mezőnél válassza a **továbbiak** lehetőséget, hogy megadja a naplózási házirend erőforrásának helyét.
 1. Adja meg a szabályzat nevét. Igény szerint megadhat egy leírást és egy kategóriát is.
-1. A **házirend-szabály**területen adja hozzá a következő házirend-definíciót a **' policyrule osztály** szakaszhoz.
+1. A **házirend-szabály** területen adja hozzá a következő házirend-definíciót a **' policyrule osztály** szakaszhoz.
 
     ```json
     {
@@ -223,12 +223,12 @@ Ezután rendelje hozzá a szabályzatot egy erőforráshoz. A szabályzat hatók
 A szabályzatnak a Azure Portal való hozzárendeléséhez kövesse az alábbi lépéseket:
 
 1. A Azure Portal navigáljon a Azure Policy szolgáltatáshoz.
-1. A **szerzői műveletek** szakaszban válassza a **hozzárendelések**lehetőséget.
+1. A **szerzői műveletek** szakaszban válassza a **hozzárendelések** lehetőséget.
 1. Új szabályzat-hozzárendelés létrehozásához válassza a **házirend hozzárendelése** lehetőséget.
 1. A **hatókör** mezőben válassza ki a szabályzat-hozzárendelés hatókörét.
 1. A **házirend-definíció** mezőben válassza a **továbbiak** gombot, majd válassza ki az előző szakaszban meghatározott házirendet a listából.
 1. Adja meg a szabályzat-hozzárendelés nevét. A leírás megadása nem kötelező.
-1. Hagyja *engedélyezve*a **házirend-kényszerítési** beállítást. Ez a beállítás nincs hatással a naplózási házirendre.
+1. Hagyja *engedélyezve* a **házirend-kényszerítési** beállítást. Ez a beállítás nincs hatással a naplózási házirendre.
 1. Válassza a **felülvizsgálat + létrehozás** lehetőséget a hozzárendelés létrehozásához.
 
 ### <a name="view-compliance-report"></a>Megfelelőségi jelentés megtekintése
@@ -240,11 +240,11 @@ Több percet is igénybe vehet, amíg a megfelelőségi jelentés elérhetővé 
 Ha meg szeretné tekinteni a megfelelőségi jelentést a Azure Portalban, kövesse az alábbi lépéseket:
 
 1. A Azure Portal navigáljon a Azure Policy szolgáltatáshoz.
-1. Válassza a **megfelelőség**lehetőséget.
+1. Válassza a **megfelelőség** lehetőséget.
 1. Szűrje az eredményeket az előző lépésben létrehozott szabályzat-hozzárendelés nevére. A jelentés azt jeleníti meg, hogy hány erőforrás felel meg a szabályzatnak.
 1. További részletekért tekintse meg a jelentés részletezését, beleértve a nem megfelelő tárolási fiókok listáját.
 
-    :::image type="content" source="media/anonymous-read-access-prevent/compliance-report-policy-portal.png" alt-text="A metrika a blob-tranzakciók összegére való konfigurálását bemutató képernyőkép":::
+    :::image type="content" source="media/anonymous-read-access-prevent/compliance-report-policy-portal.png" alt-text="A blob Public Access naplózási szabályzatának megfelelőségi jelentését bemutató képernyőkép":::
 
 ## <a name="use-azure-policy-to-enforce-authorized-access"></a>A jogosult hozzáférés kikényszeríthető Azure Policy használata
 
@@ -280,9 +280,9 @@ Miután létrehozta a szabályzatot a megtagadási hatállyal, és hozzárendeli
 
 Az alábbi képen látható az a hiba, amely akkor fordul elő, ha olyan Storage-fiókot próbál létrehozni, amely lehetővé teszi a nyilvános hozzáférést (az új fiók alapértelmezése), ha egy megtagadási hatással rendelkező szabályzat megköveteli, hogy a nyilvános hozzáférés ne legyen engedélyezve.
 
-:::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="A metrika a blob-tranzakciók összegére való konfigurálását bemutató képernyőkép":::
+:::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="A házirend megsértése esetén a Storage-fiók létrehozásakor előforduló hibát ábrázoló képernyőkép":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Névtelen nyilvános olvasási hozzáférés konfigurálása a tárolók és a Blobok számára](anonymous-read-access-configure.md)
 - [Nyilvános tárolók és Blobok elérése névtelenül a .NET-tel](anonymous-read-access-client.md)

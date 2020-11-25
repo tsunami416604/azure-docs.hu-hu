@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: e008bad2043d8cd633f0849aefc62c4ed7a7e89d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0efcdfd1b14479edf84dc1892e7e1d9afabd5a81
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86104877"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913555"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Ajánlott eljárások Azure Data Lake Storage Gen2 használatához
 
@@ -21,7 +21,7 @@ Ebben a cikkben megismerheti a Azure Data Lake Storage Gen2 használatának ajá
 
 ## <a name="security-considerations"></a>Biztonsági szempontok
 
-A Azure Data Lake Storage Gen2 a Azure Active Directory (Azure AD) felhasználók, csoportok és egyszerű szolgáltatások POSIX-hozzáférés-vezérlését kínálja. Ezek a hozzáférés-vezérlések megadhatók meglévő fájlokhoz és könyvtárakhoz. A hozzáférés-vezérléssel olyan alapértelmezett engedélyek is létrehozhatók, amelyek automatikusan alkalmazhatók az új fájlokra vagy címtárakra. Data Lake Storage Gen2 hozzáférés-vezérlési listákkal kapcsolatos további részletek a [Azure Data Lake Storage Gen2 hozzáférés-vezérlésében](storage-data-lake-storage-access-control.md)érhetők el.
+A Azure Data Lake Storage Gen2 a Azure Active Directory (Azure AD) felhasználók, csoportok és egyszerű szolgáltatások POSIX-hozzáférés-vezérlését kínálja. Ezek a hozzáférés-vezérlések megadhatók meglévő fájlokhoz és könyvtárakhoz. A hozzáférés-vezérléssel olyan alapértelmezett engedélyek is létrehozhatók, amelyek automatikusan alkalmazhatók az új fájlokra vagy címtárakra. Data Lake Storage Gen2 hozzáférés-vezérlési listákkal kapcsolatos további részletek a [Azure Data Lake Storage Gen2 hozzáférés-vezérlésében](./data-lake-storage-access-control.md)érhetők el.
 
 ### <a name="use-security-groups-versus-individual-users"></a>Biztonsági csoportok és egyéni felhasználók együttes használata
 
@@ -31,7 +31,7 @@ Ha a biztonsági csoporthoz engedélyek vannak rendelve, a csoportba tartozó fe
 
 ### <a name="security-for-groups"></a>Csoportok biztonsága
 
-Ha vagy a felhasználóknak olyan Storage-fiókban lévő adatelérésre van szükségük, amelyen engedélyezve van a hierarchikus névtér, érdemes Azure Active Directory biztonsági csoportokat használni. Előfordulhat, hogy egyes ajánlott csoportok a tároló gyökeréhez **ReadOnlyUsers**, **WriteAccessUsers**és **FullAccessUsers** , és a fő alkönyvtárak esetében is elkülönítik azokat. Ha a felhasználók más várható felhasználói csoportjai is hozzáadhatók, de még nincsenek azonosítva, érdemes lehet olyan dummy biztonsági csoportokat létrehozni, amelyek bizonyos mappákhoz férnek hozzá. A biztonsági csoport használatával gondoskodhat arról, hogy a hosszú feldolgozási idő elkerülhető legyen, amikor új engedélyeket rendel több ezer fájlhoz.
+Ha vagy a felhasználóknak olyan Storage-fiókban lévő adatelérésre van szükségük, amelyen engedélyezve van a hierarchikus névtér, érdemes Azure Active Directory biztonsági csoportokat használni. Előfordulhat, hogy egyes ajánlott csoportok a tároló gyökeréhez **ReadOnlyUsers**, **WriteAccessUsers** és **FullAccessUsers** , és a fő alkönyvtárak esetében is elkülönítik azokat. Ha a felhasználók más várható felhasználói csoportjai is hozzáadhatók, de még nincsenek azonosítva, érdemes lehet olyan dummy biztonsági csoportokat létrehozni, amelyek bizonyos mappákhoz férnek hozzá. A biztonsági csoport használatával gondoskodhat arról, hogy a hosszú feldolgozási idő elkerülhető legyen, amikor új engedélyeket rendel több ezer fájlhoz.
 
 ### <a name="security-for-service-principals"></a>Az egyszerű szolgáltatások biztonsága
 
@@ -39,9 +39,9 @@ Azure Active Directory egyszerű szolgáltatásokat általában olyan szolgálta
 
 ### <a name="enable-the-data-lake-storage-gen2-firewall-with-azure-service-access"></a>A Data Lake Storage Gen2 tűzfal engedélyezése az Azure-szolgáltatás elérésével
 
-Data Lake Storage Gen2 támogatja a tűzfal bekapcsolásának lehetőségét, és csak az Azure-szolgáltatásokhoz való hozzáférést korlátozza, ami a külső támadások vektorának korlátozására ajánlott. A tűzfal engedélyezhető a Azure Portal lévő Storage-fiókon **a tűzfal**  >  **engedélyezése (bekapcsolva)**  >  beállítással az**Azure-szolgáltatások elérésének engedélyezése** lehetőséggel.
+Data Lake Storage Gen2 támogatja a tűzfal bekapcsolásának lehetőségét, és csak az Azure-szolgáltatásokhoz való hozzáférést korlátozza, ami a külső támadások vektorának korlátozására ajánlott. A tűzfal engedélyezhető a Azure Portal lévő Storage-fiókon **a tűzfal**  >  **engedélyezése (bekapcsolva)**  >  beállítással az **Azure-szolgáltatások elérésének engedélyezése** lehetőséggel.
 
-Ha Azure Databricks szeretné elérni a Storage-fiókját, telepítse Azure Databricks a virtuális hálózatra, majd adja hozzá a virtuális hálózatot a tűzfalhoz. Lásd: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+Ha Azure Databricks szeretné elérni a Storage-fiókját, telepítse Azure Databricks a virtuális hálózatra, majd adja hozzá a virtuális hálózatot a tűzfalhoz. Lásd: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](../common/storage-network-security.md).
 
 ## <a name="resiliency-considerations"></a>Rugalmassággal kapcsolatos szempontok
 

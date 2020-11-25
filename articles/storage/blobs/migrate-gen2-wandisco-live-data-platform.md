@@ -9,12 +9,12 @@ ms.date: 11/06/2020
 ms.service: storage
 ms.custom: references_regions
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 9da6ea7abf57ffecc900a6dbef065a8c6b123e61
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: db95f22a17c3776d84f12249693fb23b3d2d94e6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94810996"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95914439"
 ---
 # <a name="meet-demanding-migration-requirements-with-wandisco-livedata-platform-for-azure-preview"></a>A WANdisco LiveData platform for Azure (előzetes verzió) követelményeinek kielégítése igényes áttelepítési követelményekkel
 
@@ -30,7 +30,7 @@ A platform két szolgáltatásból áll: a [LiveData-Migrálás az Azure](https:
 
 Mindkét szolgáltatást a Azure Portal és az Azure CLI használatával is kezelheti, és mindkettőt követheti a többi Azure-szolgáltatáshoz hasonlóan mért, utólagos elszámolású számlázási modellként is. Az Azure-beli LiveData platform ugyanazon a havi Azure-számlán jelenik meg, és egységes és kényelmes módot biztosít a használat nyomon követésére és figyelésére.
 
-Az adatok _Offline_ áttelepítésével ellentétben, ha [a statikus adatokat Azure Data boxba másolja](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster), vagy Hadoop-eszközöket (például [DistCp](https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html)) használ, az _online_ áttelepítés során teljes mértékben megtarthatja üzleti rendszereit az Azure-beli WANdisco-LiveData. Az Azure-ba való áttéréskor is megtarthatja big data környezetét.
+Az adatok _Offline_ áttelepítésével ellentétben, ha [a statikus adatokat Azure Data boxba másolja](./data-lake-storage-migrate-on-premises-hdfs-cluster.md), vagy Hadoop-eszközöket (például [DistCp](https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html)) használ, az _online_ áttelepítés során teljes mértékben megtarthatja üzleti rendszereit az Azure-beli WANdisco-LiveData. Az Azure-ba való áttéréskor is megtarthatja big data környezetét.
 
 ## <a name="key-features-of-wandisco-livedata-platform-for-azure"></a>Az Azure-hoz készült WANdisco LiveData platform főbb jellemzői
 
@@ -91,7 +91,7 @@ A kezdeti áttelepítés után az Azure-ba irányuló LiveData-síkon megtarthat
 
 Az Azure-hoz készült LiveData-sík a fürt működésének vagy az alkalmazás teljesítményének jelentős terhelése nélkül tartja konzisztensen az adatokat. Módosíthatja vagy betöltheti az adatmennyiséget, miközben az összes módosítás konzisztens módon replikálódik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Azure for Azure-hoz készült [LiveData platform](https://docs.wandisco.com/live-data-platform/docs/landing/) a többi Azure-erőforráshoz hasonlóan használatos, és jelenleg előzetes verzióban érhető el. 
 
@@ -99,7 +99,7 @@ Az Azure-hoz készült LiveData-sík a fürt működésének vagy az alkalmazás
 
 - Próbálja ki a LiveData-áttelepítést anélkül, hogy helyszíni Hadoop-fürtöt kellene használnia a [HDFS](https://docs.wandisco.com/live-data-platform/docs/create-sandbox-intro/)-alapú sandbox használatával.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [LiveData-Migrálás az Azure-ban az Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/wandisco.ldm?tab=Overview)
 

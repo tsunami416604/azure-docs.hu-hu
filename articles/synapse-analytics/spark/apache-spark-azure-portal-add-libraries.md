@@ -6,20 +6,23 @@ author: euangMS
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.date: 10/16/2020
-ms.author: euang
+ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 6f777b605c5050b7fa4b3b9e3671f3638ad67372
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 8d478b35b702e02f303358972526c091ceb3657e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016258"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95917125"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Apache Spark kódtárainak kezelése az Azure szinapszis Analyticsben
 
 A tárak újrafelhasználható kódot biztosítanak, amelyet a programok vagy projektek számára érdemes felvenni. Ahhoz, hogy a harmadik féltől származó vagy helyileg létrehozott kódot elérhetővé tegye az alkalmazásai számára, telepítheti a kódtárat az egyik kiszolgáló nélküli Apache Spark készletbe (előzetes verzió). Miután telepítette a tárat egy Spark-készlethez, az minden munkamenet számára elérhető lesz, amely ugyanazt a készletet használja. 
 
+## <a name="before-you-begin"></a>Előkészületek
+- A kódtárak telepítéséhez és frissítéséhez a **Storage blob Adatközreműködőinek** vagy a **Storage blob-adattulajdonosi** engedélyekkel kell rendelkeznie az Azure szinapszis Analytics-munkaterülethez csatolt elsődleges Gen2 Storage-fiókban.
+  
 ## <a name="default-installation"></a>Alapértelmezett telepítés
 Apache Spark az Azure szinapszis Analyticsben a teljes anacondas telepítése és további könyvtárak is elérhetők. A teljes kódtárak listája a következő címen érhető el: [Apache Spark Version support](apache-spark-version-support.md). 
 
@@ -35,6 +38,7 @@ Miután azonosította a Spark-alkalmazáshoz használni kívánt kódtárakat, e
 > - Ha a telepített csomag nagy méretű, vagy hosszú ideig tart a telepítés, ez hatással van a Spark-példány indítási idejére.
 > - A fordítási támogatást igénylő csomagok, például a GCC, nem támogatottak.
 > - A csomagokat nem lehet leértékelni, csak a Hozzáadás vagy a frissítés lehetőségre.
+> - A kódtárak telepítéséhez a tárolási blob adatközreműködőinek vagy a Storage blob-adattulajdonosi engedélyekkel kell rendelkeznie a szinapszis munkaterülethez csatolt elsődleges Gen2 Storage-fiókban.
 
 ### <a name="requirements-format"></a>Követelmények formátuma
 
@@ -131,5 +135,5 @@ abfss://<file_system>@<account_name>.dfs.core.windows.net/synapse/workspaces/<wo
 >[!IMPORTANT]
 >Egyéni csomagok is hozzáadhatók és módosíthatók a munkamenetek között. A frissített csomag megjelenítéséhez azonban várnia kell, amíg a készlet és a munkamenet újra fog indulni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Az alapértelmezett könyvtárak megtekintése: [Apache Spark verzió támogatása](apache-spark-version-support.md)
