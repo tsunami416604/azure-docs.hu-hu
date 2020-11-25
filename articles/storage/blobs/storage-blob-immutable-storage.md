@@ -9,12 +9,12 @@ ms.date: 11/13/2020
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 39fdde572e269bb4f5648e91bf85539d02236ff6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: acb2ebb0d7ce70c6b5963a8a6c3e392091e4bb1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658553"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010061"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Üzleti szempontból kritikus fontosságú blob-alapú adattárolás tárolása a nem módosítható tárolóval
 
@@ -76,7 +76,7 @@ Az adatmegőrzési szabályokra az alábbi korlátozások vonatkoznak:
 
 ### <a name="allow-protected-append-blobs-writes"></a>Védett hozzáfűző Blobok írásának engedélyezése
 
-A hozzáfűző Blobok adatblokkokból állnak, és a naplózási és naplózási forgatókönyvekhez szükséges adathozzáfűzési műveletekhez vannak optimalizálva. A hozzáfűző Blobok csak az új blokkoknak a blob végéhez való hozzáadását teszik lehetővé. A módosíthatatlansági függetlenül a meglévő blokkok módosítása vagy törlése alapvetően nem engedélyezett a hozzáfűző blobokban. A Blobok hozzáfűzésével kapcsolatos további tudnivalókért tekintse meg [a hozzáfűző Blobok](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)című témakört.
+A hozzáfűző Blobok adatblokkokból állnak, és a naplózási és naplózási forgatókönyvekhez szükséges adathozzáfűzési műveletekhez vannak optimalizálva. A hozzáfűző Blobok csak az új blokkoknak a blob végéhez való hozzáadását teszik lehetővé. A módosíthatatlansági függetlenül a meglévő blokkok módosítása vagy törlése alapvetően nem engedélyezett a hozzáfűző blobokban. A Blobok hozzáfűzésével kapcsolatos további tudnivalókért tekintse meg [a hozzáfűző Blobok](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)című témakört.
 
 Csak az időalapú adatmegőrzési házirendek rendelkeznek olyan `allowProtectedAppendWrites` beállítással, amely lehetővé teszi, hogy új blokkokat írjon egy hozzáfűzési blobhoz a módosíthatatlansági-védelem és a megfelelőség megőrzése mellett. Ha ez a beállítás engedélyezve van, létrehozhat egy hozzáfűzési blobot közvetlenül a szabályzat által védett tárolóban, és továbbra is hozzáadhat új adatblokkokat a meglévő hozzáfűzési Blobok végéhez a *AppendBlock* API használatával. Csak új blokkok vehetők fel, és minden meglévő blokk nem módosítható és nem törölhető. Az időmegőrzés módosíthatatlansági védelme továbbra is érvényes, így megelőzhető a hozzáfűző blob törlése, amíg a tényleges megőrzési időszak el nem telik. A beállítás engedélyezése nem befolyásolja a Blobok vagy módosíthatatlansági viselkedését.
 
@@ -103,7 +103,7 @@ A következő korlátozások érvényesek a jogi részesedésre:
 
 ## <a name="scenarios"></a>Forgatókönyvek
 
-A következő táblázat a blob Storage-műveletek azon típusait mutatja be, amelyek a különböző változtathatatlan forgatókönyvek esetében le vannak tiltva. További információkért tekintse meg az [Azure Blob Service REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) dokumentációját.
+A következő táblázat a blob Storage-műveletek azon típusait mutatja be, amelyek a különböző változtathatatlan forgatókönyvek esetében le vannak tiltva. További információkért tekintse meg az [Azure Blob Service REST API](/rest/api/storageservices/blob-service-rest-api) dokumentációját.
 
 | Használati eset | BLOB állapota | Megtagadott blob-műveletek | Tároló és fiók védelme |
 |--|--|--|--|
@@ -116,7 +116,7 @@ A következő táblázat a blob Storage-műveletek azon típusait mutatja be, am
 <sup>2</sup> a hozzáfűző blokk csak az engedélyezett tulajdonsággal rendelkező időalapú adatmegőrzési házirendek esetében engedélyezett `allowProtectedAppendWrites` . További információ: a [védett hozzáfűző Blobok írási engedélyezése](#allow-protected-append-blobs-writes) szakasz.
 
 > [!IMPORTANT]
-> Bizonyos munkaterhelések, például az [SQL-alapú biztonsági mentés az URL-címre](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url), hozzon létre egy blobot, majd vegyen fel hozzá. Ha a tárolón aktív időalapú adatmegőrzési szabály vagy jogi szabályozás van érvényben, akkor ez a minta nem fog sikerülni.
+> Bizonyos munkaterhelések, például az [SQL-alapú biztonsági mentés az URL-címre](/sql/relational-databases/backup-restore/sql-server-backup-to-url), hozzon létre egy blobot, majd vegyen fel hozzá. Ha a tárolón aktív időalapú adatmegőrzési szabály vagy jogi szabályozás van érvényben, akkor ez a minta nem fog sikerülni.
 
 ## <a name="pricing"></a>Díjszabás
 
@@ -170,11 +170,11 @@ Igen. Időalapú adatmegőrzési szabály létrehozásakor a rendszer *zárolt* 
 
 **Használhatom a Soft delete szolgáltatást a nem módosítható blob-házirendek mellett?**
 
-Igen, ha a megfelelőségi követelmények lehetővé teszik a Soft delete engedélyezését. Az [Azure Blob Storage](storage-blob-soft-delete.md) -hoz készült Soft delete egy Storage-fiókban lévő összes tárolóra érvényes, függetlenül a jogi vagy időalapú adatmegőrzési szabályoktól. Javasoljuk, hogy a nem módosítható féreg-házirendek alkalmazása és megerősítése előtt a további védelem érdekében engedélyezze a Soft delete használatát.
+Igen, ha a megfelelőségi követelmények lehetővé teszik a Soft delete engedélyezését. Az [Azure Blob Storage](./soft-delete-blob-overview.md) -hoz készült Soft delete egy Storage-fiókban lévő összes tárolóra érvényes, függetlenül a jogi vagy időalapú adatmegőrzési szabályoktól. Javasoljuk, hogy a nem módosítható féreg-házirendek alkalmazása és megerősítése előtt a további védelem érdekében engedélyezze a Soft delete használatát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [BLOB Storage-módosíthatatlansági szabályzatok beállítása és kezelése](storage-blob-immutability-policies-manage.md)
 - [Szabályok beállítása a blob-adatkészletek automatikus előállításához és törléséhez az életciklus-kezeléssel](storage-lifecycle-management-concepts.md)
-- [Az Azure Storage-blobok helyreállítható törlése](../blobs/storage-blob-soft-delete.md)
+- [Az Azure Storage-blobok helyreállítható törlése](./soft-delete-blob-overview.md)
 - [Az előfizetések, erőforráscsoportok és erőforrások Azure Resource Manager zárolásokkal való](../../azure-resource-manager/management/lock-resources.md)ellátása.

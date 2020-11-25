@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
 ms.openlocfilehash: 329c4b40f11b36de80581d4a1396813bc8de5c73
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097328"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010316"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Közösségi Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -172,7 +172,7 @@ Vegyük például a felhasználói adatokat:
 
 Ennek az információnak a megtekintésével gyorsan észlelhető, hogy melyik a kritikus információ, ami nem így van, így a "létra" létrehozása is megtörténik:
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-ladder.png" alt-text="A relatív rokonsági modellt bemutató diagram" border="false":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-ladder.png" alt-text="A létra mintájának ábrája" border="false":::
 
 A legkisebb lépés neve UserChunk, a felhasználó azonosítására szolgáló minimális információ, amely az adatok ismétlődésére szolgál. Ha csökkenti a duplikált adatok méretét, hogy csak a "show" adatokat fogja megjeleníteni, csökkentse a tömeges frissítések lehetőségét.
 
@@ -239,7 +239,7 @@ Egy másik lehetőség az [Azure Cognitive Services](https://www.microsoft.com/c
 
 ## <a name="a-planet-scale-social-experience"></a>Egy bolygó-méretezési közösségi felület
 
-Egy utolsó, de nem utolsósorban fontos cikknek kell foglalkoznia: **méretezhetőséggel** . Architektúra tervezésekor minden összetevőnek saját méretezéssel kell rendelkeznie. Végül további adatfeldolgozásra van szükség, vagy nagyobb földrajzi lefedettséget szeretne biztosítani. Szerencsére mindkét feladat megvalósítása **kulcsrakész élményt** nyújt a Cosmos db.
+Egy utolsó, de nem utolsósorban fontos cikknek kell foglalkoznia: **méretezhetőséggel**. Architektúra tervezésekor minden összetevőnek saját méretezéssel kell rendelkeznie. Végül további adatfeldolgozásra van szükség, vagy nagyobb földrajzi lefedettséget szeretne biztosítani. Szerencsére mindkét feladat megvalósítása **kulcsrakész élményt** nyújt a Cosmos db.
 
 Cosmos DB támogatja a dinamikus particionálást. Egy adott **partíciós kulcs** alapján automatikusan létrehozza a partíciókat, amelyek a dokumentumok attribútumként vannak meghatározva. A megfelelő partíciós kulcs definiálását a tervezéskor kell elvégezni. További információ: [particionálás Azure Cosmos DBban](partitioning-overview.md).
 
@@ -249,26 +249,26 @@ Cosmos DB az összes partíció transzparens módon futtatja a lekérdezéseket 
 
 Az idő múlásával végül növekedni fog a forgalom, és az erőforrás-fogyasztás (az [RUs](request-units.md)-ben vagy a kérelmek egységében mérve) nő. A felhasználói alapszintű növekedéshez gyakrabban kell olvasnia és írnia. A felhasználói alap több tartalom létrehozását és olvasását is megkezdi. Így létfontosságú az **átviteli sebesség skálázása** . Az RUs növelése egyszerű. Ezt elvégezheti néhány kattintással a Azure Portal vagy az API-n [keresztüli parancsok kiadásával](/rest/api/cosmos-db/replace-an-offer).
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-scaling.png" alt-text="A relatív rokonsági modellt bemutató diagram":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-scaling.png" alt-text="Partíciós kulcs skálázása és definiálása":::
 
 Mi történik, ha a dolgok egyre jobbak maradnak? Tegyük fel, hogy egy másik régióból, országból vagy kontinensből származó felhasználók észlelik a platformot, és elkezdik használni azt. Mi a nagyszerű meglepetés!
 
-De várjon! Hamarosan tisztában lesz azzal, hogy a platform nem optimális. Így távol vannak az operatív régiótól, hogy a késés borzasztó. Nyilvánvalóan nem szeretné, hogy kilépjenek. Ha csak egyszerűen **kiterjesztheti a globális elérhetőségét** ? Van!
+De várjon! Hamarosan tisztában lesz azzal, hogy a platform nem optimális. Így távol vannak az operatív régiótól, hogy a késés borzasztó. Nyilvánvalóan nem szeretné, hogy kilépjenek. Ha csak egyszerűen **kiterjesztheti a globális elérhetőségét**? Van!
 
 Cosmos DB lehetővé teszi [az adatok globális és átlátható replikálását](../cosmos-db/tutorial-global-distribution-sql-api.md) néhány kattintással, és automatikusan kiválaszthatja az [ügyfél kódjából](../cosmos-db/tutorial-global-distribution-sql-api.md)elérhető régiók közül. Ez a folyamat azt is jelenti, hogy [több feladatátvételi régióval](high-availability.md)is rendelkezhet.
 
 Amikor globálisan replikálja az adatait, meg kell győződnie arról, hogy az ügyfelek kihasználhatják. Ha webes felületet használ vagy API-kat fér hozzá a mobil ügyfelektől, üzembe helyezheti az [Azure Traffic Managert](https://azure.microsoft.com/services/traffic-manager/) , és megnyithatja a Azure app Servicet az összes kívánt régióban, a teljesítmény-konfigurációval, hogy támogassa a kiterjesztett globális lefedettséget. Amikor az ügyfelek hozzáférnek a előtérben vagy az API-khoz, a rendszer a legközelebbi App Service irányítja, amely viszont a helyi Cosmos DB replikához fog csatlakozni.
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-global-replicate.png" alt-text="A relatív rokonsági modellt bemutató diagram" border="false":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-global-replicate.png" alt-text="Globális lefedettség hozzáadása a közösségi platformhoz" border="false":::
 
 ## <a name="conclusion"></a>Összegzés
 
 Ez a cikk néhány fényt mutat be a közösségi hálózatok teljes körű létrehozására az Azure-ban alacsony díjszabású szolgáltatásokkal. Ennek eredményeképpen a többrétegű tárolási megoldások és a "ladder" elnevezésű adateloszlás használatát ösztönözheti.
 
-:::image type="content" source="./media/social-media-apps/social-media-apps-azure-solution.png" alt-text="A relatív rokonsági modellt bemutató diagram" border="false":::
+:::image type="content" source="./media/social-media-apps/social-media-apps-azure-solution.png" alt-text="Az Azure-szolgáltatások közösségi hálózatkezeléssel való interakciójának ábrája" border="false":::
 
 Az igazság az, hogy az ilyen forgatókönyvek esetében nincs ilyen típusú ezüst-felsorolásjel. Ez a nagyszerű szolgáltatások kombinációja által létrehozott szinergia, amely lehetővé teszi számunkra, hogy nagyszerű tapasztalatokat építsünk ki: a Azure Cosmos DB gyorsasága és szabadsága, hogy kiváló közösségi alkalmazást, az intelligenciát egy olyan első osztályú keresési megoldás mögött, mint az Azure Cognitive Search, a rugalmasság az Azure-App Services, hogy még a nem egyenletes nyelvezetű alkalmazásokat, de hatékony háttér-folyamatokat, valamint a bővíthető Azure Storage-t és Azure SQL Database nagy mennyiségű adat tárolásához és az Azure Machine analitikai teljesítményének biztosításához. Tanuljon olyan tudást és intelligenciát létrehozni, amely visszajelzést tud adni a folyamatokról, és segít a megfelelő tartalomnak a megfelelő felhasználók számára történő továbbításában.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni a Cosmos DB használatáról, tekintse meg az [általános Cosmos db használati esetek](use-cases.md)című témakört.

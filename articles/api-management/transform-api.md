@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 09/28/2020
 ms.author: apimpm
 ms.openlocfilehash: 979bdaa1e0dac4f45a321abda2a208f46983f9cd
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108133"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010231"
 ---
 # <a name="tutorial-transform-and-protect-your-api"></a>Oktatóanyag: az API átalakítása és biztosítása
 
@@ -54,25 +54,25 @@ Az eredeti válasz megtekintése:
 1. Az API Management Service-példányban válassza az **API**-k elemet.
 1. Válassza ki a **bemutató konferencia API** -t az API-listából.
 1. Válassza a **teszt** fület a képernyő tetején.
-1. Válassza ki a **GetSpeakers** műveletet, és válassza a **Küldés**lehetőséget.
+1. Válassza ki a **GetSpeakers** műveletet, és válassza a **Küldés** lehetőséget.
 
 Az eredeti válasznak a következőhöz hasonlóan kell kinéznie:
 
-:::image type="content" source="media/transform-api/original-response.png" alt-text="Szabályzatok a portálon":::
+:::image type="content" source="media/transform-api/original-response.png" alt-text="Eredeti API-válasz":::
 
 Amint láthatja, a válasz tartalmazza az **x-AspNet-Version** és az **x-powered-by** fejléceket.
 
 ### <a name="set-the-transformation-policy"></a>Az átalakítási szabályzat beállítása
 
-1. Válassza a **bemutató konferencia API**-  >  **tervezés**  >  **minden művelet**lehetőséget.
+1. Válassza a **bemutató konferencia API**-  >  **tervezés**  >  **minden művelet** lehetőséget.
 4. A **kimenő feldolgozás** szakaszban válassza a Kódszerkesztő ( **</>** ) ikont.
 
-   :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Outbound.png" alt-text="Szabályzatok a portálon" border="false":::
+   :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Outbound.png" alt-text="Navigáljon a kimenő szabályzathoz" border="false":::
 
-1. Vigye a kurzort a ** &lt; kimenő &gt; ** elembe, és válassza a jobb felső sarokban található **kódrészletek megjelenítése** lehetőséget.
-1. A jobb oldali ablak **átalakítási házirendek**területén válassza a **http-fejléc beállítása** kétszer (két szabályzat beszúrásához) lehetőséget.
+1. Vigye a kurzort a **&lt; kimenő &gt;** elembe, és válassza a jobb felső sarokban található **kódrészletek megjelenítése** lehetőséget.
+1. A jobb oldali ablak **átalakítási házirendek** területén válassza a **http-fejléc beállítása** kétszer (két szabályzat beszúrásához) lehetőséget.
 
-   :::image type="content" source="media/transform-api/transform-api.png" alt-text="Szabályzatok a portálon":::
+   :::image type="content" source="media/transform-api/transform-api.png" alt-text="HTTP-fejléc házirend beállítása":::
 
 1. Módosítsa a **\<outbound>** kódot úgy, hogy az alábbihoz hasonló legyen:
 
@@ -81,7 +81,7 @@ Amint láthatja, a válasz tartalmazza az **x-AspNet-Version** és az **x-powere
    <set-header name="X-AspNet-Version" exists-action="delete" />
    ```
 
-   :::image type="content" source="media/transform-api/set-policy.png" alt-text="Szabályzatok a portálon"::: (HTTP-fejléc beállítása)
+   :::image type="content" source="media/transform-api/set-policy.png" alt-text="Set HTTP header"::: (HTTP-fejléc beállítása)
 
 1. Kattintson a **Mentés** gombra.
 
@@ -93,33 +93,33 @@ Ez a szakasz bemutatja, hogyan rejtheti el az API HTTP-válasz törzsében megje
 
 Az eredeti válasz megtekintése:
 
-1. Válassza a **bemutató konferencia API**-  >  **teszt**lehetőséget.
-1. Válassza ki a **GetSpeakers** műveletet, és válassza a **Küldés**lehetőséget.
+1. Válassza a **bemutató konferencia API**-  >  **teszt** lehetőséget.
+1. Válassza ki a **GetSpeakers** műveletet, és válassza a **Küldés** lehetőséget.
 
     Amint láthatja, a válasz tartalmazza az eredeti háttérbeli URL-címeket:
 
-    :::image type="content" source="media/transform-api/original-response2.png" alt-text="Szabályzatok a portálon":::
+    :::image type="content" source="media/transform-api/original-response2.png" alt-text="Válaszként szolgáló eredeti URL-címek":::
 
 
 ### <a name="set-the-transformation-policy"></a>Az átalakítási szabályzat beállítása
 
-1.  Válassza a **bemutató konferencia API**  >  **minden művelet**  >  **kialakítás**elemet.
+1.  Válassza a **bemutató konferencia API**  >  **minden művelet**  >  **kialakítás** elemet.
 1.  A **kimenő feldolgozás** szakaszban válassza a Kódszerkesztő ( **</>** ) ikont.
-1.  Vigye a kurzort a ** &lt; kimenő &gt; ** elembe, és válassza a jobb felső sarokban található **kódrészletek megjelenítése** lehetőséget.
-1.  A jobb oldali ablak **átalakítási házirendek**területén válassza a **tartalom maszk URL-címek**elemet. 
+1.  Vigye a kurzort a **&lt; kimenő &gt;** elembe, és válassza a jobb felső sarokban található **kódrészletek megjelenítése** lehetőséget.
+1.  A jobb oldali ablak **átalakítási házirendek** területén válassza a **tartalom maszk URL-címek** elemet. 
 1.  Kattintson a **Mentés** gombra.
 
 ## <a name="protect-an-api-by-adding-rate-limit-policy-throttling"></a>API-k védelme hívásszám-korlátozási szabályzat (szabályozás) hozzáadásával
 
 Ez a szakasz bemutatja, hogyan lehet védelmet biztosítani a háttérbeli API-k számára a hívásszám korlátjának konfigurálásával. Előfordulhat például, hogy korlátozni szeretné az API-hívások sebességét, hogy az API-t ne használja a fejlesztők. Ebben a példában a korlátot a rendszer 15 másodpercenként 3 hívásra állítja az egyes előfizetés-AZONOSÍTÓk esetében. 15 másodperc elteltével a fejlesztő újrapróbálhatja az API hívását.
 
-1.  Válassza a **bemutató konferencia API**  >  **minden művelet**  >  **kialakítás**elemet.
+1.  Válassza a **bemutató konferencia API**  >  **minden művelet**  >  **kialakítás** elemet.
 1.  A **bejövő feldolgozás** szakaszban válassza a Kódszerkesztő ( **</>** ) ikont.
-1.  Vigye a kurzort a ** &lt; bejövő &gt; ** elembe, és válassza a jobb felső sarokban található **kódrészletek megjelenítése** lehetőséget.
+1.  Vigye a kurzort a **&lt; bejövő &gt;** elembe, és válassza a jobb felső sarokban található **kódrészletek megjelenítése** lehetőséget.
 
-    :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png" alt-text="Szabályzatok a portálon" border="false":::
+    :::image type="content" source="media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png" alt-text="Bejövő szabályzat beállítása" border="false":::
 
-1.  A jobb oldali ablakban a **hozzáférés-korlátozási szabályzatok**területen válassza a **maximális hívási sebesség/kulcs**lehetőséget.
+1.  A jobb oldali ablakban a **hozzáférés-korlátozási szabályzatok** területen válassza a **maximális hívási sebesség/kulcs** lehetőséget.
 1.  Módosítsa a **ráta-limit-by-Key** kódot (a **\<inbound\>** elemben) a következő kódra:
 
     ```
@@ -155,30 +155,30 @@ A szakasz további részében teszteljük a szabályzatátalakításokat, amelye
 
 ### <a name="test-the-stripped-response-headers"></a>Az eltávolított válaszfejlécek tesztelése
 
-1. Válassza a **bemutató konferencia API**-  >  **teszt**lehetőséget.
-1. Válassza ki a **GetSpeakers** műveletet, és válassza a **Küldés**lehetőséget.
+1. Válassza a **bemutató konferencia API**-  >  **teszt** lehetőséget.
+1. Válassza ki a **GetSpeakers** műveletet, és válassza a **Küldés** lehetőséget.
 
     Amint láthatja, a fejlécek el lettek tiltva:
 
-    :::image type="content" source="media/transform-api/final-response1.png" alt-text="Szabályzatok a portálon":::
+    :::image type="content" source="media/transform-api/final-response1.png" alt-text="Megfosztott válaszok fejlécei":::
 
 ### <a name="test-the-replaced-url"></a>A lecserélt URL-cím tesztelése
 
-1. Válassza a **bemutató konferencia API**-  >  **teszt**lehetőséget.
-1. Válassza ki a **GetSpeakers** műveletet, és válassza a **Küldés**lehetőséget.
+1. Válassza a **bemutató konferencia API**-  >  **teszt** lehetőséget.
+1. Válassza ki a **GetSpeakers** műveletet, és válassza a **Küldés** lehetőséget.
 
     Amint látható, az URL-cím le lett cserélve.
 
-    :::image type="content" source="media/transform-api/final-response2.png" alt-text="Szabályzatok a portálon":::
+    :::image type="content" source="media/transform-api/final-response2.png" alt-text="Lecserélt URL-cím":::
 
 ### <a name="test-the-rate-limit-throttling"></a>Hívásszám-korlát (szabályozás) tesztelése
 
-1. Válassza a **bemutató konferencia API**-  >  **teszt**lehetőséget.
+1. Válassza a **bemutató konferencia API**-  >  **teszt** lehetőséget.
 1. Válassza a **GetSpeakers** műveletet. Válassza a három alkalommal a **Küldés** lehetőséget egy sorban.
 
     A kérelem 3 alkalommal történő elküldése után a **429 túl sok kérést** kap.
 
-    :::image type="content" source="media/transform-api/test-throttling.png" alt-text="Szabályzatok a portálon":::
+    :::image type="content" source="media/transform-api/test-throttling.png" alt-text="Túl sok kérelem":::
 
 1. Várjon 15 másodpercet, és válassza a **Küldés** újra lehetőséget. Ezúttal a **200 OK** választ kapja.
 

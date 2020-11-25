@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
 ms.openlocfilehash: c851f5284b87f224932b027fd10ce720327639c2
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167899"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010518"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Az Azure Functions fejlesztése a Visual Studio Code használatával
 
@@ -60,7 +60,7 @@ Az előfizetésében a [Visual Studio Code használatával történő közzété
 
 A functions bővítmény lehetővé teszi egy Function app-projekt létrehozását az első függvénnyel együtt. A következő lépések bemutatják, hogyan hozhat létre egy HTTP-triggert függvényt egy új functions-projektben. A [http-trigger](functions-bindings-http-webhook.md) a legegyszerűbb függvény trigger-sablonja, amely bemutatja.
 
-1. Az **Azure: functions**lapon válassza a **create Function (függvény létrehozása** ) ikont:
+1. Az **Azure: functions** lapon válassza a **create Function (függvény létrehozása** ) ikont:
 
     ![Függvény létrehozása](./media/functions-develop-vs-code/create-function.png)
 
@@ -93,7 +93,7 @@ A Project sablon létrehoz egy projektet a választott nyelven, és telepíti a 
 
 A nyelvtől függően ezek a többi fájl is létrejön:
 
-# <a name="c"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C#\#](#tab/csharp)
 
 * A függvényt megvalósító [HttpExample.cs-függvénytár-fájl](functions-dotnet-class-library.md#functions-class-library-project) .
 
@@ -125,7 +125,7 @@ Ezen a ponton adhat hozzá bemeneti és kimeneti kötéseket a függvényhez a [
 
 A HTTP-és időzítő-eseményindítók kivételével a kötések a kiterjesztési csomagokban vannak implementálva. Telepítenie kell a kiterjesztési csomagokat a szükséges eseményindítók és kötések számára. A kötési bővítmények telepítésének folyamata a projekt nyelvétől függ.
 
-# <a name="c"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C#\#](#tab/csharp)
 
 A terminál ablakban futtassa a [DotNet-csomag hozzáadása](/dotnet/core/tools/dotnet-add-package) parancsot a projektben szükséges kiterjesztési csomagok telepítéséhez. A következő parancs telepíti az Azure Storage bővítményt, amely a blob, a várólista és a Table Storage kötéseit valósítja meg.
 
@@ -145,7 +145,7 @@ Hozzáadhat egy új függvényt egy meglévő projekthez az előre meghatározot
 
 A művelet eredménye a projekt nyelvétől függ:
 
-# <a name="c"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C#\#](#tab/csharp)
 
 A rendszer új C#-függvénytárat (. cs) ad hozzá a projekthez.
 
@@ -161,7 +161,7 @@ A függvényt kiterjesztheti a bemeneti és kimeneti kötések hozzáadásával.
 
 Az alábbi példák egy nevű Storage-várólistához csatlakoznak `outqueue` , ahol a Storage-fiók kapcsolati karakterlánca a `MyStorageConnection` local.settings.jsalkalmazás beállításában van beállítva.
 
-# <a name="c"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C#\#](#tab/csharp)
 
 A Function metódus frissítésével adja hozzá a következő paramétert a `Run` metódus-definícióhoz:
 
@@ -181,7 +181,7 @@ További információt a [várólista-tároló kimeneti kötési](functions-bind
 
 # <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
-A Visual Studio Code lehetővé teszi function.jskötések hozzáadását a fájlokhoz a következő kényelmes készlettel. Kötés létrehozásához kattintson a jobb gombbal (CTRL + kattintás macOS rendszeren) a **function.js** fájlra a Function mappában, és válassza a **kötés hozzáadása**elemet:
+A Visual Studio Code lehetővé teszi function.jskötések hozzáadását a fájlokhoz a következő kényelmes készlettel. Kötés létrehozásához kattintson a jobb gombbal (CTRL + kattintás macOS rendszeren) a **function.js** fájlra a Function mappában, és válassza a **kötés hozzáadása** elemet:
 
 ![Kötés hozzáadása meglévő JavaScript-függvényhez ](media/functions-develop-vs-code/function-add-binding.png)
 
@@ -233,7 +233,7 @@ A Visual Studio Code-ból való közzétételkor kihasználhatja a [zip üzembe 
 
 ### <a name="quick-function-app-create"></a>Gyors funkció alkalmazás létrehozása
 
-Ha az **+ új Function alkalmazás létrehozása az Azure-ban**lehetőséget választja, a bővítmény automatikusan generál értékeket a Function alkalmazás által igényelt Azure-erőforrásokhoz. Ezek az értékek a kiválasztott Function app-név alapján jelennek meg. A Project új Azure-beli Function alkalmazásban való közzétételére szolgáló alapértelmezett beállításokkal kapcsolatos példát a [Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure)rövid útmutatójában talál.
+Ha az **+ új Function alkalmazás létrehozása az Azure-ban** lehetőséget választja, a bővítmény automatikusan generál értékeket a Function alkalmazás által igényelt Azure-erőforrásokhoz. Ezek az értékek a kiválasztott Function app-név alapján jelennek meg. A Project új Azure-beli Function alkalmazásban való közzétételére szolgáló alapértelmezett beállításokkal kapcsolatos példát a [Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure)rövid útmutatójában talál.
 
 Ha explicit neveket kíván megadni a létrehozott erőforrásokhoz, ki kell választania a speciális létrehozási útvonalat.
 
@@ -245,7 +245,7 @@ A következő lépésekkel teheti közzé a projektjét a speciális létrehozá
 
     ![A függvényalkalmazás beállításai](./media/functions-develop-vs-code/function-app-publish-project.png)
 
-1. Ha nincs bejelentkezve, a rendszer felszólítja, hogy **Jelentkezzen be az Azure-** ba. **Létrehozhat egy ingyenes Azure-fiókot**is. A böngészőből való bejelentkezés után lépjen vissza a Visual Studio Code-ba.
+1. Ha nincs bejelentkezve, a rendszer felszólítja, hogy **Jelentkezzen be az Azure-** ba. **Létrehozhat egy ingyenes Azure-fiókot** is. A böngészőből való bejelentkezés után lépjen vissza a Visual Studio Code-ba.
 
 1. Ha több előfizetéssel rendelkezik, **válasszon egy előfizetést** a Function alkalmazáshoz, majd válassza az **+ új Függvényalkalmazás létrehozása az Azure-ban... _Speciális_**. Ez a _speciális_ beállítás nagyobb mértékű irányítást biztosít az Azure-ban létrehozott erőforrások felett. 
 
@@ -311,7 +311,7 @@ Ez a szakasz a [Visual Studio Code-hoz készült Azure Storage-bővítményt](ht
 
 A Storage-fiók kapcsolódási karakterláncának beállítása:
 
-1. A Visual Studióban nyissa meg a **Cloud Explorer alkalmazást** **, bontsa ki a Storage-**  >  **fiók**elemet, majd válassza a **Tulajdonságok** lehetőséget, és másolja ki az **elsődleges kapcsolatok karakterláncának** értékét.
+1. A Visual Studióban nyissa meg a **Cloud Explorer alkalmazást** **, bontsa ki a Storage-**  >  **fiók** elemet, majd válassza a **Tulajdonságok** lehetőséget, és másolja ki az **elsődleges kapcsolatok karakterláncának** értékét.
 
 2. A projektben nyissa meg a local.settings.jsfájlt, és állítsa be a **AzureWebJobsStorage** kulcs értékét a másolt kapcsolódási karakterláncra.
 
@@ -359,7 +359,7 @@ A beállításokat a **Azure functions: feltöltés helyi beállítás** parancs
 
 Ha a helyi fájl titkosítva van, a rendszer visszafejti, közzéteszi és titkosítja újra. Ha vannak olyan beállítások, amelyek ütköző értékekkel rendelkeznek a két helyen, a rendszer kéri, hogy válassza ki a folytatás módját.
 
-Megtekintheti az alkalmazás meglévő beállításait az **Azure: functions** területen az előfizetés, a Function alkalmazás és az **Alkalmazásbeállítások**kibontásával.
+Megtekintheti az alkalmazás meglévő beállításait az **Azure: functions** területen az előfizetés, a Function alkalmazás és az **Alkalmazásbeállítások** kibontásával.
 
 ![A Function app-beállítások megtekintése a Visual Studio Code-ban](./media/functions-develop-vs-code/view-app-settings.png)
 
@@ -373,7 +373,7 @@ A feltöltéshez hasonlóan, ha a helyi fájl titkosítva van, annak visszafejt�
 
 Ha [helyileg futtatja a függvényeket](#run-functions-locally), a rendszer a naplófájlba továbbítja az adatok továbbítását. Ha a functions-projekt egy Azure-beli Function alkalmazásban fut, akkor a naplózási adatok is beszerezhetők. Csatlakozhat az Azure-beli streaming-naplókhoz, és megtekintheti a közel valós idejű naplózási adatait, vagy engedélyezheti Application Insights a Function app működésének részletesebb megismeréséhez.
 
-### <a name="streaming-logs"></a>Folyamatos átviteli naplók
+### <a name="streaming-logs"></a>Streamelési naplók
 
 Az alkalmazások fejlesztésekor gyakran hasznos a naplózási információk megjelenítése a közel valós időben. Megtekintheti a függvények által generált naplófájlok streamjét. Ez a kimenet egy HTTP által aktivált függvényre irányuló kérelem továbbítási naplóinak példája:
 
@@ -396,7 +396,7 @@ Ha többet szeretne megtudni a Application Insights használatával végzett fig
 
 Alapértelmezés szerint a rendszer minden C#-projektet [c# lefordított függvénytár-projektként](functions-dotnet-class-library.md)hoz létre. Ha inkább C# parancsfájl-projekteket szeretne dolgozni, a C#-parancsfájlt az alapértelmezett nyelvként kell kiválasztania a Azure Functions bővítmény beállításaiban:
 
-1. Válassza a **fájl**  >  **beállításai**  >  **Beállítások**lehetőséget.
+1. Válassza a **fájl**  >  **beállításai**  >  **Beállítások** lehetőséget.
 
 1. Lépjen a **felhasználói beállítások**  >  **bővítmények**  >  **Azure functions**.
 

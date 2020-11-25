@@ -4,11 +4,11 @@ description: Ez a cikk azt ismerteti, hogyan lehet elhárítani és elhárítani
 ms.topic: conceptual
 ms.date: 07/21/2020
 ms.openlocfilehash: 5727702ff973523ce7ab6400c1c7748e0584acbf
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890360"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010588"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>A tárolókhoz készült Azure Monitor hibaelhárítása
 
@@ -23,7 +23,7 @@ A bevezetési vagy frissítési folyamat során a rendszer a fürt erőforrásá
 Ezt a szerepkört manuálisan is megadhatja a Azure Portal az alábbi lépések végrehajtásával:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Az Azure Portal bal felső sarkában kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájában írja be a következőt: **Kubernetes** . Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza az **Azure Kubernetes** lehetőséget.
+2. Az Azure Portal bal felső sarkában kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájában írja be a következőt: **Kubernetes**. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza az **Azure Kubernetes** lehetőséget.
 3. A Kubernetes-fürtök listájában válasszon egyet a listából.
 2. A bal oldali menüben kattintson a **hozzáférés-vezérlés (iam)** elemre.
 3. Válassza a **+ Hozzáadás** lehetőséget egy szerepkör-hozzárendelés hozzáadásához, majd válassza ki a **figyelési metrikák közzétevői** szerepkört, és a **válassza** ki a négyzetet a **következő típussal** : a rendszer az előfizetésben definiált fürtök egyszerű szolgáltatásai alapján szűri az eredményeket. Válassza ki azt a listából, amely az adott fürtre vonatkozik.
@@ -112,8 +112,8 @@ A containers Agent Azure Monitor a cAdvisor végpontot használja a csomópont-�
 
 ## <a name="non-azure-kubernetes-cluster-are-not-showing-in-azure-monitor-for-containers"></a>Nem Azure-beli Kubernetes-fürt nem jelenik meg Azure Monitor tárolók számára
 
-Ha a nem Azure-beli Kubernetes-fürtöt tárolók Azure Monitor szeretné megtekinteni, olvasási hozzáférésre van szükség az ezt az elemzést támogató Log Analytics munkaterületen, valamint a Container betekintési megoldás erőforrás- **ContainerInsights ( *munkaterület* )** .
+Ha a nem Azure-beli Kubernetes-fürtöt tárolók Azure Monitor szeretné megtekinteni, olvasási hozzáférésre van szükség az ezt az elemzést támogató Log Analytics munkaterületen, valamint a Container betekintési megoldás erőforrás- **ContainerInsights (*munkaterület*)**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha a figyelés engedélyezve van az AK-fürtcsomópontok és-hüvelyek állapot-metrikáinak rögzítéséhez, ezek az állapot-mérőszámok a Azure Portal érhetők el. Az Azure Monitor for containers használatának megismeréséhez tekintse meg az [Azure Kubernetes szolgáltatás állapotának megtekintése](container-insights-analyze.md)című témakört.

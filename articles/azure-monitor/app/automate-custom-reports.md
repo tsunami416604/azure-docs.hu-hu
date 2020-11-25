@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
 ms.openlocfilehash: d465666ce5d631a234644d1adc85afcf6e3c1e27
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873710"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010605"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Egyéni jelentések automatizálása Azure Application Insights-beli adatkezeléssel
 
@@ -95,7 +95,7 @@ availabilityResults
 
     ![Az Azure Function alkalmazás beállításainak képernyőképe](./media/automate-custom-reports/config.png)
 
-7. Három új Alkalmazásbeállítások létrehozása megfelelő megfelelő értékekkel, ``AI_APP_ID`` ``AI_APP_KEY`` és ``SendGridAPI`` . Válassza a **Mentés** lehetőséget.
+7. Három új Alkalmazásbeállítások létrehozása megfelelő megfelelő értékekkel, ``AI_APP_ID`` ``AI_APP_KEY`` és ``SendGridAPI`` . Kattintson a **Mentés** gombra.
 
      ![Function Integration Interface – képernyőfelvétel](./media/automate-custom-reports/app-settings.png)
     
@@ -148,7 +148,7 @@ Ezek a lépések csak akkor érvényesek, ha még nem rendelkezik konfigurált S
 
    ![Az API-kulcs másolása képernyőfelvétel](./media/automate-custom-reports/function-app-17.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ az [elemzési lekérdezések](../log-query/get-started-queries.md)létrehozásáról.
 * További információ az [Application Insights adatainak programozott lekérdezéséről](https://dev.applicationinsights.io/)

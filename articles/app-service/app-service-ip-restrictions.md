@@ -8,11 +8,11 @@ ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: e1549dda367105db34272eab8a90c1760dd5bb5c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576444"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010180"
 ---
 # <a name="set-up-azure-app-service-access-restrictions"></a>Hozzáférési korlátozások beállítása Azure App Service
 
@@ -65,14 +65,14 @@ Az **IP-korlátozás hozzáadása** panelen hozzon létre egy szabályt, tegye a
 1. Szükség esetén megadhatja a szabály nevét és leírását is.  
 1. A **típus** legördülő listában válassza ki a szabály típusát.  
 1. A **Priority (prioritás** ) mezőben adjon meg egy prioritási értéket.  
-1. Az **előfizetés** , **Virtual Network** és **alhálózat** legördülő listában válassza ki, hogy mit szeretne korlátozni a hozzáférését.  
+1. Az **előfizetés**, **Virtual Network** és **alhálózat** legördülő listában válassza ki, hogy mit szeretne korlátozni a hozzáférését.  
 
 ### <a name="set-an-ip-address-based-rule"></a>IP-cím alapú szabály beállítása
 
 Kövesse az előző szakaszban ismertetett eljárást, de a következő változattal:
 * A 3. lépésben a **típus** legördülő listában válassza az **IPv4** vagy az **IPv6** lehetőséget. 
 
-Az IPv4-és IPv6-címek esetében az IP-címet az osztály nélküli Inter-Domain útválasztási (CIDR) jelöléssel határozza meg. Cím megadásához használhatja a *1.2.3.4/32* -et, ahol az első négy oktett az Ön IP-címét és */32* a maszkot jelöli. Az összes cím IPv4-CIDR jelölése 0.0.0.0/0. További információ a CIDR jelöléséről: [osztály nélküli Inter-Domain útválasztás](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). 
+Az IPv4-és IPv6-címek esetében az IP-címet az osztály nélküli Inter-Domain útválasztási (CIDR) jelöléssel határozza meg. Cím megadásához használhatja a *1.2.3.4/32*-et, ahol az első négy oktett az Ön IP-címét és */32* a maszkot jelöli. Az összes cím IPv4-CIDR jelölése 0.0.0.0/0. További információ a CIDR jelöléséről: [osztály nélküli Inter-Domain útválasztás](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing). 
 
 ## <a name="use-service-endpoints"></a>Szolgáltatásvégpontok használata
 
@@ -112,7 +112,7 @@ Szerkesztheti vagy törölheti a meglévő hozzáférés-korlátozási szabályt
 
 ### <a name="delete-a-rule"></a>Szabály törlése
 
-Egy szabály törléséhez a **hozzáférési korlátozások** lapon válassza a törölni kívánt szabály melletti három pontot ( **...** ), majd válassza az **Eltávolítás** lehetőséget.
+Egy szabály törléséhez a **hozzáférési korlátozások** lapon válassza a törölni kívánt szabály melletti három pontot (**...**), majd válassza az **Eltávolítás** lehetőséget.
 
 ![Képernyőkép a "hozzáférési korlátozások" oldalról, amely a törölni kívánt hozzáférés-korlátozási szabály melletti "Eltávolítás" három pontot mutatja.](media/app-service-ip-restrictions/access-restrictions-delete.png)
 
@@ -153,7 +153,7 @@ Az értékeket manuálisan is megadhatja a következők valamelyikével:
 
 * Használjon [Azure REST API](/rest/api/azure/) Put műveletet a Azure Resource Manager alkalmazás-konfigurációjában. Az információk helye Azure Resource Manager a következő:
 
-  management.azure.com/subscriptions/ **előfizetés** -azonosító **/resourceGroups//Providers/Microsoft.Web/Sites/****webalkalmazás neve** /config/web? API-Version = 2018-02-01
+  management.azure.com/subscriptions/**előfizetés**-azonosító **/resourceGroups//Providers/Microsoft.Web/Sites/****webalkalmazás neve**/config/web? API-Version = 2018-02-01
 
 * ARM-sablon használata. Például használhatja a resources.azure.com, és szerkesztheti a ipSecurityRestrictions-blokkot a szükséges JSON hozzáadásához.
 
@@ -178,7 +178,7 @@ Az értékeket manuálisan is megadhatja a következők valamelyikével:
 
 A hozzáférési korlátozások a App Service csomagokkal megegyező funkciókkal rendelkező Function apps-alkalmazásokhoz is elérhetők. Ha engedélyezi a hozzáférési korlátozásokat, a Azure Portal Kódszerkesztő is letiltható a nem engedélyezett IP-címekhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Azure Functions hozzáférési korlátozásai](../azure-functions/functions-networking-options.md#inbound-access-restrictions)  
 [Application Gateway integráció a szolgáltatási végpontokkal](networking/app-gateway-with-service-endpoints.md)
 

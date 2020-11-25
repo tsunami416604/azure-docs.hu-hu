@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/16/2020
 ms.openlocfilehash: ddd1a6fa2fc25add30664da5b739338e87e7e74f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547843"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010112"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Üres peremhálózati csomópontok használata Apache Hadoop-fürtökön a HDInsight-ben
 
@@ -86,7 +86,7 @@ Ebben a szakaszban egy Resource Manager-sablon használatával ad hozzá egy per
     |Hely|Válassza ki a meglévő HDInsight-fürt helyét.|
     |Fürt neve|Adja meg egy meglévő HDInsight-fürt nevét.|
 
-1. Győződjön meg **arról, hogy elfogadom a fenti feltételeket és kikötéseket** , majd válassza a  **vásárlás** lehetőséget a peremhálózati csomópont létrehozásához.
+1. Győződjön meg **arról, hogy elfogadom a fenti feltételeket és kikötéseket**, majd válassza a  **vásárlás** lehetőséget a peremhálózati csomópont létrehozásához.
 
 > [!IMPORTANT]  
 > Ügyeljen arra, hogy kiválassza a meglévő HDInsight-fürthöz tartozó Azure-erőforráscsoportot.  Ellenkező esetben a következő hibaüzenet jelenik meg: "nem lehet végrehajtani a kért műveletet a beágyazott erőforráson. A (z &lt; ) "ClusterName> szülő erőforrás nem található."
@@ -109,15 +109,15 @@ Ebben a szakaszban egy Resource Manager-sablon használatával HDInsight-fürtö
     |Erőforráscsoport|Hozzon létre egy új erőforráscsoportot a fürthöz.|
     |Hely|Válasszon egy helyet az erőforráscsoportnak.|
     |Fürt neve|Adja meg a létrehozandó új fürt nevét.|
-    |Fürt bejelentkezési felhasználóneve|Adja meg a Hadoop HTTP-felhasználónevét.  Az alapértelmezett név az **admin** .|
+    |Fürt bejelentkezési felhasználóneve|Adja meg a Hadoop HTTP-felhasználónevét.  Az alapértelmezett név az **admin**.|
     |Fürt bejelentkezési jelszava|Adja meg a Hadoop HTTP-felhasználói jelszavát.|
-    |SSH-Felhasználónév|Adja meg az SSH-Felhasználónév nevét. Az alapértelmezett név a **sshuser** .|
+    |SSH-Felhasználónév|Adja meg az SSH-Felhasználónév nevét. Az alapértelmezett név a **sshuser**.|
     |SSH-jelszó|Adja meg az SSH-felhasználó jelszavát.|
     |Parancsfájl telepítése művelet|Tartsa meg az alapértelmezett értéket a jelen cikkben leírtak szerint.|
 
     Egyes tulajdonságok a következő sablonban lettek hardcoded: fürt típusa, fürt munkavégző csomópontok száma, Edge-csomópont mérete és peremhálózati csomópont neve.
 
-1. Győződjön meg **arról, hogy elfogadom a fenti feltételeket és kikötéseket** , majd válassza a  **vásárlás** lehetőséget a fürt peremhálózati csomóponttal való létrehozásához.
+1. Győződjön meg **arról, hogy elfogadom a fenti feltételeket és kikötéseket**, majd válassza a  **vásárlás** lehetőséget a fürt peremhálózati csomóponttal való létrehozásához.
 
 ## <a name="add-multiple-edge-nodes"></a>Több peremhálózati csomópont hozzáadása
 
@@ -133,7 +133,7 @@ A peremhálózati csomópont alkalmazásként jelenik meg a Azure Portalon.  A p
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Nyissa meg a HDInsight fürtöt egy peremhálózati csomóponttal.
-3. Válassza az **alkalmazások** lehetőséget. Ekkor látnia kell a peremhálózati csomópontot.  Az alapértelmezett név a **New-élcsomópontok** .
+3. Válassza az **alkalmazások** lehetőséget. Ekkor látnia kell a peremhálózati csomópontot.  Az alapértelmezett név a **New-élcsomópontok**.
 4. Válassza ki a peremhálózati csomópontot. Meg kell tekintenie az SSH-végpontot.
 
 **A kaptár használata a peremhálózati csomóponton**
@@ -162,7 +162,7 @@ A Azure Portalból törölhet egy peremhálózati csomópontot.
 4. Kattintson a jobb gombbal a törölni kívánt peremhálózati csomópontra, majd válassza a **Törlés** lehetőséget.
 5. Válassza az **Igen** lehetőséget a megerősítéshez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan adhat hozzá egy Edge-csomópontot, és hogyan érheti el a peremhálózati csomópontot. További tudnivalókért olvassa el a következő cikket:
 

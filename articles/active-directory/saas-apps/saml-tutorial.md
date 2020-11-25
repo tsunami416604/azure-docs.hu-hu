@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.openlocfilehash: 0b15d560e2678772cefdf3d87c047013b24ed467
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675475"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010282"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-11-token-enabled-lob-app"></a>Oktatóanyag: Azure Active Directory integráció az SAML 1,1 Tokenrel rendelkező LOB-alkalmazással
 
@@ -61,7 +61,7 @@ Az SAML 1,1-tokenek Azure AD-be való integrálásának konfigurálásához az S
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a következőt: **saml 1,1 token enabled LOB-alkalmazás** , válassza az **SAML 1,1 token engedélyezve LOB alkalmazást** az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a következőt: **saml 1,1 token enabled LOB-alkalmazás**, válassza az **SAML 1,1 token engedélyezve LOB alkalmazást** az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![SAML 1,1 token engedélyezve LOB-alkalmazás az eredmények listájában](common/search-new-app.png)
 
@@ -130,7 +130,7 @@ Az **saml 1,1 token engedélyezve LOB-alkalmazás** oldalán való egyszeri beje
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -159,7 +159,7 @@ Ebben a szakaszban a Britta Simon az Azure egyszeri bejelentkezés használatár
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában írja be és válassza ki az **SAML 1,1 token engedélyezve LOB-alkalmazást** .
+2. Az alkalmazások listában írja be és válassza ki az **SAML 1,1 token engedélyezve LOB-alkalmazást**.
 
     ![Az SAML 1,1 token engedélyezve LOB-alkalmazás hivatkozása az alkalmazások listában](common/all-applications.png)
 

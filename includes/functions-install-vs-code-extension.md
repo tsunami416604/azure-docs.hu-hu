@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 11/27/2018
 ms.author: glenga
 ms.openlocfilehash: 8dc4c77cf54769451928bd1f0dafeac34a889675
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85378456"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010503"
 ---
 ## <a name="install-the-azure-functions-extension"></a>Az Azure Functions-bővítmény telepítése
 
 A Azure Functions bővítmény használatával létrehozhat és tesztelheti a függvényeket, és üzembe helyezheti őket az Azure-ban.
 
-1. A Visual Studio Code-ban nyissa meg a **bővítmények** elemet, keresse meg az **Azure functions**kifejezést, vagy válassza ezt a hivatkozást a Visual Studio Code- `vscode:extension/ms-azuretools.vscode-azurefunctions` ban:
+1. A Visual Studio Code-ban nyissa meg a **bővítmények** elemet, keresse meg az **Azure functions** kifejezést, vagy válassza ezt a hivatkozást a Visual Studio Code- `vscode:extension/ms-azuretools.vscode-azurefunctions` ban:
 
 1. A Visual Studio Code-bővítmény telepítéséhez válassza a **telepítés** lehetőséget:
 

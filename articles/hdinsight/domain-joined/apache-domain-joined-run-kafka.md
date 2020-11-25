@@ -8,17 +8,17 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 05/19/2020
 ms.openlocfilehash: d2780b3456a802904800b894f6849544cfee4e61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85105934"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010129"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Oktatóanyag: Apache Kafka szabályzatok konfigurálása a HDInsight-ben Enterprise Security Package (előzetes verzió)
 
 Ismerje meg, hogyan konfigurálhatja az Apache Ranger-házirendeket Enterprise Security Package (ESP) Apache Kafka-fürtökhöz. Az ESP-fürtök egy tartományhoz csatlakoznak, lehetővé téve a felhasználók számára a tartományi hitelesítő adatokkal való hitelesítést. Ebben az oktatóanyagban két Ranger-házirendet hoz létre, amelyek korlátozzák a hozzáférést a `sales` és `marketingspend` témakörökhöz.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Tartományi felhasználók létrehozása
@@ -48,7 +48,7 @@ Hozzon létre egy Ranger-házirendet a **sales_user** és **marketing_user** fel
 
 1. Nyissa meg a **Ranger rendszergazdai felhasználói felületét**.
 
-2. Válassza ki ** \<ClusterName> _Kafka** a **Kafka**alatt. Előfordulhat, hogy a felsorolásban megjelenik egy előre beállított házirend.
+2. Válassza ki **\<ClusterName> _Kafka** a **Kafka** alatt. Előfordulhat, hogy a felsorolásban megjelenik egy előre beállított házirend.
 
 3. Válassza az **új szabályzat hozzáadása** lehetőséget, és adja meg a következő értékeket:
 
@@ -139,7 +139,7 @@ A beállított Ranger-szabályzatok alapján a **sales_user** képes létrehozni
 
    Például: `export KAFKABROKERS=wn0-khdicl.contoso.com:9092,wn1-khdicl.contoso.com:9092`
 
-3. Kövesse az oktatóanyagban **a példa készítése és üzembe helyezése című** témakör 3. lépését [: a Apache Kafka producer és a fogyasztói API](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) -k segítségével biztosíthatja, hogy a `kafka-producer-consumer.jar` **sales_user**is elérhető legyen.
+3. Kövesse az oktatóanyagban **a példa készítése és üzembe helyezése című** témakör 3. lépését [: a Apache Kafka producer és a fogyasztói API](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) -k segítségével biztosíthatja, hogy a `kafka-producer-consumer.jar` **sales_user** is elérhető legyen.
 
    > [!NOTE]  
    > Ebben az oktatóanyagban használja az Kafka-producer-Consumer. jar fájlt a "DomainJoined-producer-Consumer" projektben (nem a Producer-Consumer projekt alatt, amely nem tartományhoz csatlakoztatott forgatókönyvek esetén).
@@ -219,8 +219,8 @@ A Kafka ESP-vel kapcsolatos témaköreinek létrehozása és felhasználása a k
 Ha nem folytatja az alkalmazás használatát, törölje a létrehozott Kafka-fürtöt a következő lépésekkel:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-1. A felső **keresőmezőbe** írja be a **HDInsight**kifejezést.
-1. Válassza ki a **HDInsight-fürtök** elemet a **szolgáltatások**területen.
+1. A felső **keresőmezőbe** írja be a **HDInsight** kifejezést.
+1. Válassza ki a **HDInsight-fürtök** elemet a **szolgáltatások** területen.
 1. A megjelenő HDInsight-fürtök listájában kattintson a **...** elemre az oktatóanyaghoz létrehozott fürt mellett. 
 1. Kattintson a **Törlés** gombra. Kattintson a **Yes** (Igen) gombra.
 

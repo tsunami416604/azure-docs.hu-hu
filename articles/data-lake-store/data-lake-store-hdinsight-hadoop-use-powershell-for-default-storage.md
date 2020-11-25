@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 675f68a36963d19f42cb7c0c5d49ae8c4f0006f2
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92103424"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010537"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>HDInsight-fürtök létrehozása Azure Data Lake Storage Gen1 alapértelmezett tárolóként a PowerShell használatával
 
 > [!div class="op_single_selector"]
-> * [A Azure Portal használata](data-lake-store-hdinsight-hadoop-use-portal.md)
+> * [Az Azure Portal használata](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [A PowerShell használata (az alapértelmezett tárolóhoz)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 > * [A PowerShell használata (további tárhelyhez)](data-lake-store-hdinsight-hadoop-use-powershell.md)
 > * [A Resource Manager használata](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
@@ -236,7 +236,7 @@ Ebben a szakaszban egy HDInsight Hadoop Linux-fürtöt hoz létre, amely az alap
     A parancsmag sikeres befejeződése után megjelenik egy kimenet, amely felsorolja a fürt részleteit.
 
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>Tesztelési feladatok futtatása a HDInsight-fürtön a Data Lake Storage Gen1 használatához
-Miután konfigurálta a HDInsight-fürtöt, a tesztelési feladatok futtatásával biztosíthatja, hogy hozzáférhessen Data Lake Storage Gen1hoz. Ehhez futtasson egy minta kaptár-feladatot egy olyan tábla létrehozásához, amely a Data Lake Storage Gen1ban már elérhető mintaadatok használatával rendelkezik a következő helyen: * \<cluster root> /example/Data/sample.log*.
+Miután konfigurálta a HDInsight-fürtöt, a tesztelési feladatok futtatásával biztosíthatja, hogy hozzáférhessen Data Lake Storage Gen1hoz. Ehhez futtasson egy minta kaptár-feladatot egy olyan tábla létrehozásához, amely a Data Lake Storage Gen1ban már elérhető mintaadatok használatával rendelkezik a következő helyen: *\<cluster root> /example/Data/sample.log*.
 
 Ebben a szakaszban egy Secure Shell-(SSH-) kapcsolatokat hoz létre a létrehozott HDInsight Linux-fürthöz, majd futtat egy minta kaptár-lekérdezést.
 

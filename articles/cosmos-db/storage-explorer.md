@@ -8,11 +8,11 @@ ms.date: 10/23/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
 ms.openlocfilehash: 61ae446d180a86b42bc52ac3244b96b7b347b68f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025395"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010571"
 ---
 # <a name="manage-azure-cosmos-db-resources-by-using-azure-storage-explorer"></a>Azure Cosmos DB erőforrások kezelése Azure Storage Explorer használatával
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -355,7 +355,7 @@ Próbálja ki ezeket a javaslatokat:
 * Ellenőrizze, hogy a Azure Cosmos DB-fiók üzembe helyezése folyamatban van-e. Próbálkozzon újra, ha a fiók létrehozása sikeres volt.
 * Ha a fiók a **gyors hozzáférés** vagy a **helyi és a csatlakoztatott** csomópontok alatt van, ellenőrizze, hogy a fiók törölve van-e. Ha igen, manuálisan kell eltávolítania a csomópontot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tekintse meg ezt a videót, amelyből megtudhatja, hogyan használhatja a Azure Cosmos DB a Azure Storage Explorerban: [Azure Cosmos db használata a Azure Storage Explorerban](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be).
 * További információk a Storage Explorerrel és további szolgáltatások csatlakoztatásával kapcsolatban: [Ismerkedés a Storage Explorer alkalmazással](../vs-azure-tools-storage-manage-with-storage-explorer.md).

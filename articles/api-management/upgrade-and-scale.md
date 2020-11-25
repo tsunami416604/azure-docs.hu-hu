@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 626f5b67905e5dd89cf8f12460bc2378451614de
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: c7f0e98b5ea2fdd13b1daa9fd9737998eb6cfaf1
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078306"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "96010214"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Azure API Management-példány frissítése és méretezése  
 
@@ -45,9 +45,9 @@ A cikk lépéseinek követéséhez a következőket kell tennie:
 
 ## <a name="upgrade-and-scale"></a>Frissítés és skálázás  
 
-Négy szint közül választhat: **fejlesztői**, **alapszintű**,  **standard**és **prémium**. A **fejlesztői** szintet a szolgáltatás kiértékeléséhez kell használni; nem használható éles környezetben. A **fejlesztői** szint nem rendelkezik SLA-val, és nem méretezheti ezt a szintet (egység hozzáadása/eltávolítása). 
+Négy szint közül választhat: **fejlesztői**, **alapszintű**,  **standard** és **prémium**. A **fejlesztői** szintet a szolgáltatás kiértékeléséhez kell használni; nem használható éles környezetben. A **fejlesztői** szint nem rendelkezik SLA-val, és nem méretezheti ezt a szintet (egység hozzáadása/eltávolítása). 
 
-Az **alapszintű**, a **standard**és a **prémium** a SLA-val rendelkező, és méretezhető. Az alapszintű **csomag** egy SLA-val rendelkező legolcsóbb szint, amely akár két egységig is méretezhető, a **standard** szint pedig akár négy egységig is méretezhető. A **prémium** szinthez tetszőleges számú egységet adhat hozzá.
+Az **alapszintű**, a **standard** és a **prémium** a SLA-val rendelkező, és méretezhető. Az alapszintű **csomag** egy SLA-val rendelkező legolcsóbb szint, amely akár két egységig is méretezhető, a **standard** szint pedig akár négy egységig is méretezhető. A **prémium** szinthez tetszőleges számú egységet adhat hozzá.
 
 A **prémium** szint lehetővé teszi egyetlen Azure API Management-példány terjesztését tetszőleges számú, a kívánt Azure-régióban. Amikor először hoz létre egy Azure API Management-szolgáltatást, a példány csak egy egységet tartalmaz, és egyetlen Azure-régióban helyezkedik el. A kezdeti régió **elsődleges** régióként van kijelölve. A további régiók egyszerűen hozzáadhatók. Régió hozzáadásakor meg kell adnia, hogy hány egységet szeretne lefoglalni. Rendelkezhet például egy egységgel az **elsődleges** régióban és öt egységben egy másik régióban. Az egységek számát az egyes régiókban található forgalomhoz igazíthatja. További információ: [azure API Management Service-példány üzembe helyezése több Azure-régióban](api-management-howto-deploy-multi-region.md).
 
@@ -79,8 +79,12 @@ Bármely szintre frissítheti és visszaléphet. A verziófrissítés vagy a vis
 ## <a name="downtime-during-scaling-up-and-down"></a>Leállás a felfelé és lefelé skálázás során
 Ha a fejlesztői szinten vagy a-ból végez méretezést, a rendszer leállást eredményez. Ellenkező esetben nincs leállás. 
 
+## <a name="compute-isolation"></a>Számítási elkülönítés
+Ha a biztonsági követelmények között szerepel a [számítási elkülönítés](https://docs.microsoft.com/azure/azure-government/azure-secure-isolation-guidance#compute-isolation), az **elkülönített** díjszabási szintet használhatja. Ez a szint biztosítja, hogy egy API Management szolgáltatási példány számítási erőforrásai a teljes fizikai gazdagépet használják, és megadják a szükséges elkülönítési szintet, például az Egyesült Államok védelmi Minisztériuma 5 (IL5) számítási feladatait. Ha az elkülönített szintet szeretné elérni, [hozzon létre egy támogatási jegyet](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). 
 
-## <a name="next-steps"></a>Következő lépések
+
+
+## <a name="next-steps"></a>További lépések
 
 - [Azure API Management-szolgáltatáspéldány üzembe helyezése több Azure-régióban](api-management-howto-deploy-multi-region.md)
 - [Azure API Management Service-példány automatikus méretezése](api-management-howto-autoscale.md)

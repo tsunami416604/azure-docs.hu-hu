@@ -16,11 +16,11 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f4e2e18f3bb9d1c972d805a60493897d605921e4
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92365527"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010639"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-privileged-identity-management"></a>Vendég felhasználók meghívása és Azure-beli erőforrás-szerepkörök kiosztása Privileged Identity Management
 
@@ -55,13 +55,13 @@ Győződjön meg arról, hogy meg tudja hívni a vendégeket a szervezetbe, elle
 
 1. Jelentkezzen be [Azure Portalba](https://portal.azure.com/).
 
-1. Válassza a **Azure Active Directory**  >  **felhasználói beállítások**lehetőséget.
+1. Válassza a **Azure Active Directory**  >  **felhasználói beállítások** lehetőséget.
 
-1. Válassza a **külső együttműködési beállítások kezelése**lehetőséget.
+1. Válassza a **külső együttműködési beállítások kezelése** lehetőséget.
 
     ![Külső csoportmunka-beállítások lap, amely az engedélyek, a meghívás és az együttműködés korlátozására vonatkozó beállításokat jeleníti meg](./media/pim-resource-roles-external-users/external-collaboration-settings.png)
 
-1. Győződjön meg arról, hogy a **vendég meghívó szerepkörben található rendszergazdák és felhasználók meghívhatják** a kapcsolót **Igen**értékre.
+1. Győződjön meg arról, hogy a **vendég meghívó szerepkörben található rendszergazdák és felhasználók meghívhatják** a kapcsolót **Igen** értékre.
 
 ## <a name="invite-a-guest-and-assign-a-role"></a>Vendég meghívása és szerepkör kiosztása
 
@@ -89,25 +89,25 @@ A Privileged Identity Management használatával meghívhat egy vendéget, és j
 
 1. A szerepkör lapon válassza a **tag hozzáadása** elemet az új hozzárendelés ablaktábla megnyitásához.
 
-1. Kattintson **a tag vagy csoport kiválasztása**elemre.
+1. Kattintson **a tag vagy csoport kiválasztása** elemre.
 
     ![Új hozzárendelés – válasszon ki egy tag vagy csoport ablaktáblát, amely felsorolja a felhasználókat és a csoportokat, valamint egy Meghívási lehetőséget.](./media/pim-resource-roles-external-users/select-member-group.png)
 
-1. Vendég meghívásához kattintson a **meghívás**elemre.
+1. Vendég meghívásához kattintson a **meghívás** elemre.
 
     ![Vendég oldal meghívása e-mail-cím megadásához és személyes üzenet megadásához](./media/pim-resource-roles-external-users/invite-guest.png)
 
-1. A vendég kiválasztása után kattintson a **meghívás**elemre.
+1. A vendég kiválasztása után kattintson a **meghívás** elemre.
 
     A vendéget kijelölt tagként kell hozzáadni.
 
-1. A **tag vagy csoport kiválasztása** ablaktáblán kattintson a **kiválasztás**elemre.
+1. A **tag vagy csoport kiválasztása** ablaktáblán kattintson a **kiválasztás** elemre.
 
 1. A **tagsági beállítások** ablaktáblán válassza ki a hozzárendelés típusát és időtartamát.
 
     ![Új hozzárendelés – tagsági beállítások lap a hozzárendelési típus, a kezdő dátum és a befejezési dátum megadására szolgáló beállításokkal](./media/pim-resource-roles-external-users/membership-settings.png)
 
-1. A hozzárendelés befejezéséhez válassza a **kész** , majd a **Hozzáadás**lehetőséget.
+1. A hozzárendelés befejezéséhez válassza a **kész** , majd a **Hozzáadás** lehetőséget.
 
     A vendég szerepkör-hozzárendelés megjelenik a szerepkör listájában.
 
@@ -123,7 +123,7 @@ Külső felhasználó esetén el kell fogadnia a meghívást, hogy vendég legye
 
 1. Válassza az **első lépések** hivatkozást az e-mailben.
 
-1. Az engedélyek áttekintése után kattintson az **elfogadás**gombra.
+1. Az engedélyek áttekintése után kattintson az **elfogadás** gombra.
 
     ![Tekintse át az engedélyek lapot egy böngészőben azon engedélyek listájával, amelyeket a szervezet szeretne áttekinteni](./media/pim-resource-roles-external-users/invite-accept.png)
 
@@ -163,7 +163,7 @@ A naplókat megtekintve nyomon követheti, hogy a vendégek mit csinálnak.
 
     ![Címtár-naplózási naplók listázási dátuma, cél, kezdeményező és tevékenység](./media/pim-resource-roles-external-users/audit-directory.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure AD-beli rendszergazdai szerepkörök kiosztása Privileged Identity Management](pim-how-to-add-role-to-user.md)
 - [Mi a vendég felhasználói hozzáférés az Azure AD B2B együttműködésben?](../external-identities/what-is-b2b.md)

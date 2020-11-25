@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 05/20/2020
 ms.author: glenga
 ms.openlocfilehash: 574756aa9d9bac4aa42febf6a4fca4c62014db3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84732471"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010460"
 ---
-1. A Visual Studio Code-ban válassza az F1 elemet a parancs paletta megnyitásához. A parancs palettáján keresse meg és válassza ki a **Azure functions: üzembe helyezés a Function alkalmazásban**lehetőséget.
+1. A Visual Studio Code-ban válassza az F1 elemet a parancs paletta megnyitásához. A parancs palettáján keresse meg és válassza ki a **Azure functions: üzembe helyezés a Function alkalmazásban** lehetőséget.
 
 1. Ha nincs bejelentkezve, a rendszer felszólítja, hogy **Jelentkezzen be az Azure-** ba. Miután bejelentkezett a böngészőből, lépjen vissza a Visual Studio Code-ba. Ha több előfizetéssel rendelkezik, **válasszon ki egy előfizetést** , amely tartalmazza a Function alkalmazást.
 
