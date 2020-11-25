@@ -9,11 +9,11 @@ ms.date: 09/15/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: a662598efdca05769c7da9fbeecdf692dccdacb5
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95554177"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026355"
 ---
 ## <a name="overview"></a>Áttekintés
 Az Azure Storage lehetővé teszi a Blobok Pillanatképek készítését. A pillanatképek az adott időpontban rögzítik a blob állapotát. Ebben a cikkben egy olyan forgatókönyvet ismertetünk, amelyben a virtuális gépek lemezeiről készített biztonsági mentések a pillanatképek használatával kezelhetők. Ezt a módszert akkor használhatja, ha úgy dönt, hogy nem használja a Azure Backup és a helyreállítási szolgáltatást, és egyéni biztonsági mentési stratégiát kíván létrehozni a virtuális gépek lemezeihez. Az üzleti vagy kritikus fontosságú számítási feladatokat futtató virtuális gépek esetében ajánlott [Azure Backup](../articles/backup/backup-azure-vms-introduction.md) használni a biztonsági mentési stratégia részeként.  

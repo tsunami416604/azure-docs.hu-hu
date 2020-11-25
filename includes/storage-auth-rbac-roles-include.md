@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 88bff924075b0fe525c4b64fca5736a88e26763c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a4a2034d44d98de9696b435c68c97a8a54a1c351
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779576"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026292"
 ---
 Az Azure az alábbi Azure beépített szerepköröket biztosítja a blob-és üzenetsor-információhoz való hozzáférés engedélyezéséhez az Azure AD és a OAuth használatával:
 
@@ -26,7 +26,7 @@ Az Azure az alábbi Azure beépített szerepköröket biztosítja a blob-és üz
 - [Storage-üzenetsor adatüzenet-processzora](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-processor): a használatával megtekintheti az Azure Storage-várólistákban lévő üzenetekhez való betekintés, lekérés és törlés engedélyeit.
 - [Tárolási várólista Adatüzenetének küldője](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-message-sender): a használatával adhat hozzá engedélyeket az üzenetekhez az Azure Storage-várólistákban.
 
-Csak az adathozzáféréshez explicit módon definiált szerepköröknek kell megadniuk a rendszerbiztonsági tag számára a blob-vagy üzenetsor-adat elérését. A beépített szerepkörök, például a **tulajdonos**, a **közreműködő**és a **Storage-fiók közreműködői** lehetővé teszik a rendszerbiztonsági tag számára a Storage-fiókok kezelését, de nem biztosítanak hozzáférést az adott fiókon belüli blob-vagy ÜZENETSOR-információhoz az Azure ad-n keresztül. Ha azonban egy szerepkör tartalmazza a **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/műveletet**, akkor a szerepkörhöz hozzárendelt felhasználó a fiók hozzáférési kulcsainak megosztott kulcson keresztüli engedélyezésével férhet hozzá a Storage-fiókban tárolt adathoz. További információ: [a Azure Portal használata a blob-vagy üzenetsor-adatok eléréséhez](../articles/storage/blobs/authorize-blob-access-portal.md).
+Csak az adathozzáféréshez explicit módon definiált szerepköröknek kell megadniuk a rendszerbiztonsági tag számára a blob-vagy üzenetsor-adat elérését. A beépített szerepkörök, például a **tulajdonos**, a **közreműködő** és a **Storage-fiók közreműködői** lehetővé teszik a rendszerbiztonsági tag számára a Storage-fiókok kezelését, de nem biztosítanak hozzáférést az adott fiókon belüli blob-vagy ÜZENETSOR-információhoz az Azure ad-n keresztül. Ha azonban egy szerepkör tartalmazza a **Microsoft. Storage/storageAccounts/listkeys műveletének beolvasása/műveletet**, akkor a szerepkörhöz hozzárendelt felhasználó a fiók hozzáférési kulcsainak megosztott kulcson keresztüli engedélyezésével férhet hozzá a Storage-fiókban tárolt adathoz. További információ: [a Azure Portal használata a blob-vagy üzenetsor-adatok eléréséhez](../articles/storage/blobs/authorize-data-operations-portal.md).
 
 Az Azure Storage-ban az adatszolgáltatások és a felügyeleti szolgáltatás Azure-beli beépített szerepköreivel kapcsolatos részletes információkért tekintse meg a **Storage** szakaszt az Azure [RBAC beépített Azure-beli szerepkörökben](../articles/role-based-access-control/built-in-roles.md#storage). Emellett az Azure-ban engedélyeket biztosító szerepkörök különböző típusaival kapcsolatos információkért lásd: [klasszikus előfizetés-rendszergazdai szerepkörök, Azure-szerepkörök és Azure ad-szerepkörök](../articles/role-based-access-control/rbac-and-directory-admin-roles.md).
 

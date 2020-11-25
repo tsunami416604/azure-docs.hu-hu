@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: d32beb2d799a60cb9c5be061c39e4ec834da8dcf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 644669ea27938e385e11f3b1911a23ab30829a95
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "66814831"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026090"
 ---
 Ez a funkció előzetes verzióban érhető el. A használatához előzetes verziójú bővítményt vagy modult kell telepítenie.
 
@@ -21,7 +21,7 @@ Ez a funkció előzetes verzióban érhető el. A használatához előzetes verz
 
 Az Azure CLI esetén a [Event Grid bővítményre](/cli/azure/azure-cli-extensions-list)van szükség.
 
-A [cloudshellben](/azure/cloud-shell/quickstart)-ben:
+A [cloudshellben](../articles/cloud-shell/quickstart.md)-ben:
 
 * Ha korábban már telepítette a bővítményt, frissítse `az extension update -n eventgrid`
 * Ha korábban még nem telepítette a bővítményt, telepítse `az extension add -n eventgrid`
@@ -36,7 +36,7 @@ Helyi telepítés esetén:
 
 A PowerShell esetében a [AzureRM. EventGrid modulra](https://www.powershellgallery.com/packages/AzureRM.EventGrid/0.4.1-preview)van szükség.
 
-A [cloudshellben](/azure/cloud-shell/quickstart-powershell)-ben:
+A [cloudshellben](../articles/cloud-shell/quickstart-powershell.md)-ben:
 
 * A modul telepítése `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
 

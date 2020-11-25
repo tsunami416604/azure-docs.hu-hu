@@ -4,14 +4,14 @@ ms.service: key-vault
 ms.topic: include
 ms.date: 07/20/2020
 ms.author: msmbaldwin
-ms.openlocfilehash: 2917854da679816796a7f7748c3877c062995168
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ccb69b4f0dc6090cc96849b09f7830c05aa77b73
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87512802"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026175"
 ---
-Ez a rövid útmutató egy előre létrehozott Azure Key vaultot használ. Kulcstartó létrehozásához kövesse az [Azure CLI](/azure/key-vault/general/quick-create-cli)gyors üzembe helyezésének lépéseit, [Azure PowerShell](/azure/key-vault/general/quick-create-powershell)a gyors üzembe helyezést, vagy [Azure Portal](/azure/key-vault/general/quick-create-portal)a gyors üzembe helyezést. 
+Ez a rövid útmutató egy előre létrehozott Azure Key vaultot használ. Kulcstartó létrehozásához kövesse az [Azure CLI](../articles/key-vault/general/quick-create-cli.md)gyors üzembe helyezésének lépéseit, [Azure PowerShell](../articles/key-vault/general/quick-create-powershell.md)a gyors üzembe helyezést, vagy [Azure Portal](../articles/key-vault/general/quick-create-portal.md)a gyors üzembe helyezést. 
 
 Azt is megteheti, hogy egyszerűen futtatja az Azure CLI-t vagy Azure PowerShell-parancsokat.
 

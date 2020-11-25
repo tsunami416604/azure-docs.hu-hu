@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/05/2019
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 609b62312329b3a8f9f16d15458a0a47f5eb377f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 448c445f49fb4baa300ce6636288a39080da3baf
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85115207"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026345"
 ---
 Az Adatkezelő lévő lekérdezések segítségével lekérheti és szűrheti az adatait.
 
@@ -21,15 +21,14 @@ Az Adatkezelő lévő lekérdezések segítségével lekérheti és szűrheti az
    
    :::image type="content" source="./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-query.png" alt-text="A Adatkezelőban az alapértelmezett lekérdezés a * c közül":::
    
-1. A lekérdezés módosításához válassza a **Szűrő szerkesztése**lehetőséget, cserélje le az alapértelmezett lekérdezést a értékre, `ORDER BY c._ts DESC` majd válassza a **szűrő alkalmazása**lehetőséget.
+1. A lekérdezés módosításához válassza a **Szűrő szerkesztése** lehetőséget, cserélje le az alapértelmezett lekérdezést a értékre, `ORDER BY c._ts DESC` majd válassza a **szűrő alkalmazása** lehetőséget.
    
-   :::image type="content" source="./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-edit-query.png" alt-text="A Adatkezelőban az alapértelmezett lekérdezés a * c közül":::
+   :::image type="content" source="./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-edit-query.png" alt-text="Az alapértelmezett lekérdezés módosítása az ORDER BY c._ts DESC hozzáadásával és a Szűrő alkalmazása lehetőségre való kattintással":::
 
    A módosított lekérdezés a dokumentumokat csökkenő sorrendben jeleníti meg az időbélyegző alapján, így most már a második dokumentum jelenik meg. 
    
-   :::image type="content" source="./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-edited-query.png" alt-text="A Adatkezelőban az alapértelmezett lekérdezés a * c közül":::
+   :::image type="content" source="./media/cosmos-db-create-sql-api-query-data/azure-cosmosdb-data-explorer-edited-query.png" alt-text="A lekérdezés módosult c._ts DESC sorrendbe rendezéséhez, majd a szűrő alkalmazása elemre.":::
 
-Ha már ismeri az SQL-szintaxist, megadhat bármilyen támogatott [SQL-lekérdezést](../articles/cosmos-db/sql-api-sql-query.md) a lekérdezési predikátum mezőben. A Adatkezelő használatával tárolt eljárásokat, UDF és a kiszolgálóoldali üzleti logikát kiváltó eseményindítókat is létrehozhat. 
+Ha már ismeri az SQL-szintaxist, megadhat bármilyen támogatott [SQL-lekérdezést](../articles/cosmos-db/sql-query-getting-started.md) a lekérdezési predikátum mezőben. A Adatkezelő használatával tárolt eljárásokat, UDF és a kiszolgálóoldali üzleti logikát kiváltó eseményindítókat is létrehozhat. 
 
-A Adatkezelő egyszerű Azure Portal hozzáférést biztosít az API-kkal elérhető beépített programozott adathozzáférési funkciókhoz. A portálon az átviteli sebességet, a kulcsok és a kapcsolódási karakterláncok beszerzését, valamint a Azure Cosmos DB-fiók metrikáinak és SLA-ának áttekintését is használhatja. 
-
+A Adatkezelő egyszerű Azure Portal hozzáférést biztosít az API-kkal elérhető beépített programozott adathozzáférési funkciókhoz. A portálon az átviteli sebességet, a kulcsok és a kapcsolódási karakterláncok beszerzését, valamint a Azure Cosmos DB-fiók metrikáinak és SLA-ának áttekintését is használhatja.
