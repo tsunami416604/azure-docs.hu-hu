@@ -11,11 +11,11 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 27c78566877f27e80ae5ae27c5250f228c7ae676
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779183"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017863"
 ---
 ### <a name="deploy-the-key-phrase-extraction-container-to-an-aks-cluster"></a>Az Kulcsszókeresés tároló üzembe helyezése egy AK-fürtön
 
@@ -49,7 +49,7 @@ ms.locfileid: "91779183"
     code .
     ```
 
-1. A szövegszerkesztőben hozzon létre egy *keyphrase. YAML*nevű új fájlt, és illessze be a következő YAML. Ügyeljen arra, hogy a `billing/value` és a `apikey/value` saját adatait cserélje le.
+1. A szövegszerkesztőben hozzon létre egy *keyphrase. YAML* nevű új fájlt, és illessze be a következő YAML. Ügyeljen arra, hogy a `billing/value` és a `apikey/value` saját adatait cserélje le.
 
     ```yaml
     apiVersion: apps/v1beta1

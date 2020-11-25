@@ -10,11 +10,11 @@ ms.date: 10/04/2018
 ms.topic: conceptual
 ms.custom: devx-track-js
 ms.openlocfilehash: 7fc878e0c9e099b201264c1c3981c603668214d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318381"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017763"
 ---
 # <a name="add-a-custom-grid-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Egyéni rács hozzáadása a távoli figyelési megoldás gyorsított webes felhasználói felületéhez
 
@@ -193,7 +193,7 @@ Két lehetőség közül választhat, amelyek lehetővé teszik a felhasználók
 
 Ha egy felhasználónak egyszerre több sorban kell működnie, használja a jelölőnégyzeteket a sorokban:
 
-1. A sorok kiválasztásának engedélyezése egy **checkboxColumn** a rácshoz megadott **columnDefs** való hozzáadásával. a **checkboxColumn** a **/src/Components/Shared/pcsGrid/pcsGrid.jsban **van definiálva:
+1. A sorok kiválasztásának engedélyezése egy **checkboxColumn** a rácshoz megadott **columnDefs** való hozzáadásával. a **checkboxColumn** a **/src/Components/Shared/pcsGrid/pcsGrid.jsban** van definiálva:
 
     ```js
     this.columnDefs = [
@@ -246,9 +246,9 @@ Ha egy felhasználónak egyszerre több sorban kell működnie, használja a jel
 
 ### <a name="soft-select-rows"></a>Lágy sorok kijelölése
 
-Ha a felhasználónak csak egyetlen sorban kell működnie, a **columnDefs**egy vagy több oszlopához állítson be egy Soft-Select hivatkozást.
+Ha a felhasználónak csak egyetlen sorban kell működnie, a **columnDefs** egy vagy több oszlopához állítson be egy Soft-Select hivatkozást.
 
-1. A **exampleGridConfig.jsban **adja hozzá a **SoftSelectLinkRenderer** -t a **columnDef** **cellRendererFramework** .
+1. A **exampleGridConfig.jsban** adja hozzá a **SoftSelectLinkRenderer** -t a **columnDef** **cellRendererFramework** .
 
     ```js
     export const exampleColumnDefs = {
@@ -278,7 +278,7 @@ Ha a felhasználónak csak egyetlen sorban kell működnie, a **columnDefs**egy 
     }
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a cikkből megtudhatta, hogyan adhat hozzá vagy szabhat testre lapokat a webes felhasználói felületen a távoli figyelési megoldás-gyorsító segítségével.
 

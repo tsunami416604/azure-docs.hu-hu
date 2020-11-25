@@ -10,15 +10,15 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: e7f5b6f3685a94b5497784360f8f12b22fb95012
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87298780"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017860"
 ---
 ## <a name="create-an-azure-kubernetes-service-cluster-resource"></a>Azure Kubernetes Service-fürt erőforrásának létrehozása
 
-1. Nyissa meg az [Azure Kubernetes szolgáltatást](https://ms.portal.azure.com/#create/microsoft.aks), és válassza a **Létrehozás**lehetőséget.
+1. Nyissa meg az [Azure Kubernetes szolgáltatást](https://ms.portal.azure.com/#create/microsoft.aks), és válassza a **Létrehozás** lehetőséget.
 
 1. Az **Alapvető beállítások** lapon adja meg a következőket:
 
@@ -27,7 +27,7 @@ ms.locfileid: "87298780"
     |Előfizetés|Válassza ki a megfelelő előfizetést.|
     |Erőforráscsoport|Válasszon ki egy elérhető erőforráscsoportot.|
     |Kubernetes-fürt neve|Adjon meg egy nevet (kisbetűs).|
-    |Régió|Válasszon egy közeli helyet.|
+    |Region|Válasszon egy közeli helyet.|
     |Kubernetes verziója|Bármilyen érték van megjelölve **(alapértelmezett)**.|
     |DNS-név előtagja|A rendszer automatikusan létrehozta, de felülbírálhatja.|
     |Csomópont mérete|Standard DS2 v2:<br>`2 vCPUs`, `7 GB`|
@@ -39,13 +39,13 @@ ms.locfileid: "87298780"
 
     |Beállítás|Érték|
     |--|--|
-    |HTTP-alkalmazások útválasztása|Nem|
+    |HTTP-alkalmazások útválasztása|No|
     |Hálózatkezelési konfiguráció|Alapszintű|
 
-1. Az **integrációk** lapon győződjön meg arról, hogy a **tároló figyelése** **engedélyezve**értékre van állítva, és hagyja meg **log Analytics munkaterület** alapértelmezett értékeként.
+1. Az **integrációk** lapon győződjön meg arról, hogy a **tároló figyelése** **engedélyezve** értékre van állítva, és hagyja meg **log Analytics munkaterület** alapértelmezett értékeként.
 1. A **címkék** lapon hagyja üresen a név/érték párokat.
-1. Válassza **a felülvizsgálat és létrehozás**lehetőséget.
-1. Az érvényesítési fázisok után válassza a **Létrehozás**lehetőséget.
+1. Válassza **a felülvizsgálat és létrehozás** lehetőséget.
+1. Az érvényesítési fázisok után válassza a **Létrehozás** lehetőséget.
 
 > [!NOTE]
-> Ha az érvényesítés sikertelen, akkor előfordulhat, hogy egy "egyszerű szolgáltatásnév" hiba történt. Lépjen vissza a **hitelesítés** lapra, és térjen vissza az **ellenőrzés + létrehozás**elemre, ahol az érvényesítésnek futnia kell, majd át kell lépnie.
+> Ha az érvényesítés sikertelen, akkor előfordulhat, hogy egy "egyszerű szolgáltatásnév" hiba történt. Lépjen vissza a **hitelesítés** lapra, és térjen vissza az **ellenőrzés + létrehozás** elemre, ahol az érvényesítésnek futnia kell, majd át kell lépnie.

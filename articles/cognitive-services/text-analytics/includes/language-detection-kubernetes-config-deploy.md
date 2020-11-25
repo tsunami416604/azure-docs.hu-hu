@@ -11,11 +11,11 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 1edca9cf8449ff386d0a9920e7d80d69692536fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779224"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017859"
 ---
 ### <a name="deploy-the-language-detection-container-to-an-aks-cluster"></a>Az Nyelvfelismerés tároló üzembe helyezése egy AK-fürtön
 
@@ -49,7 +49,7 @@ ms.locfileid: "91779224"
     code .
     ```
 
-1. A szövegszerkesztőben hozzon létre egy új, *Language. YAML*nevű fájlt, és illessze be az alábbi YAML. Ügyeljen arra, hogy a `billing/value` és a `apikey/value` saját adatait cserélje le.
+1. A szövegszerkesztőben hozzon létre egy új, *Language. YAML* nevű fájlt, és illessze be az alábbi YAML. Ügyeljen arra, hogy a `billing/value` és a `apikey/value` saját adatait cserélje le.
 
     ```yaml
     apiVersion: apps/v1beta1
