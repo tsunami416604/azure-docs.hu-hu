@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: 58f1c2621165a7074c04752832c6560b2fd3e423
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935432"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011965"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>Példa: űrlap-felismerő egyéni képességének létrehozása
 
@@ -36,7 +36,7 @@ Ennek a képességnek a használata előtt be kell tanítania egy űrlap-felisme
 
 Ez az oktatóanyag a [AnalyzeForm](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Vision/AnalyzeForm) projektet használja az [Azure Search Power Skills](https://github.com/Azure-Samples/azure-search-power-skills) GitHub-tárházban. A tárház klónozása a helyi gépre, és a projekt eléréséhez navigáljon a **jövőkép/AnalyzeForm/** gombra. Ezután nyissa meg a _AnalyzeForm. csproj_ a Visual Studióban. Ez a projekt létrehoz egy Azure Function-erőforrást, amely megfelel az [Egyéni képességi felületnek](cognitive-search-custom-skill-interface.md) , és használható az Azure Cognitive Search-bővítéshez. A dokumentum bemenetként jeleníti meg a dokumentumokat, és a megadott kulcs/érték párokat (szövegként) adja eredményként.
 
-Először adja hozzá a projekt szintű környezeti változókat. Keresse meg a **AnalyzeForm** projektet a bal oldali ablaktáblán, kattintson rá a jobb gombbal, és válassza a **Tulajdonságok**lehetőséget. A **Tulajdonságok** ablakban kattintson a **hibakeresés** lapra, majd keresse meg a **környezeti változók** mezőt. A **Hozzáadás** gombra kattintva adja hozzá a következő változókat:
+Először adja hozzá a projekt szintű környezeti változókat. Keresse meg a **AnalyzeForm** projektet a bal oldali ablaktáblán, kattintson rá a jobb gombbal, és válassza a **Tulajdonságok** lehetőséget. A **Tulajdonságok** ablakban kattintson a **hibakeresés** lapra, majd keresse meg a **környezeti változók** mezőt. A **Hozzáadás** gombra kattintva adja hozzá a következő változókat:
 * `FORMS_RECOGNIZER_ENDPOINT_URL` a végpont URL-címéhez megadott értékkel.
 * `FORMS_RECOGNIZER_API_KEY` az előfizetési kulcshoz beállított értékkel.
 * `FORMS_RECOGNIZER_MODEL_ID` a betanított modell AZONOSÍTÓjának értékeként megadva.
@@ -77,7 +77,7 @@ Kezdje a kérelem szövegtörzs-sablonnal.
 }
 ```
 
-Itt meg kell adnia egy olyan űrlap URL-címét, amelynek a típusa megegyezik a betanított űrlapokkal. Tesztelési célból használhatja a betanítási űrlapok egyikét. Ha követte a cURL gyors üzembe helyezését, az űrlapokat egy Azure Blob Storage-fiókban fogja elhelyezni. Nyissa meg Azure Storage Explorer, keresse meg az űrlapot, kattintson rá a jobb gombbal, majd válassza a **közös hozzáférésű aláírás beolvasása**elemet. A következő párbeszédablak egy URL-címet és egy SAS-tokent fog biztosítani. Adja meg ezeket a karakterláncokat a `"formUrl"` `"formSasToken"` kérelem törzsében és mezőiben.
+Itt meg kell adnia egy olyan űrlap URL-címét, amelynek a típusa megegyezik a betanított űrlapokkal. Tesztelési célból használhatja a betanítási űrlapok egyikét. Ha követte a cURL gyors üzembe helyezését, az űrlapokat egy Azure Blob Storage-fiókban fogja elhelyezni. Nyissa meg Azure Storage Explorer, keresse meg az űrlapot, kattintson rá a jobb gombbal, majd válassza a **közös hozzáférésű aláírás beolvasása** elemet. A következő párbeszédablak egy URL-címet és egy SAS-tokent fog biztosítani. Adja meg ezeket a karakterláncokat a `"formUrl"` `"formSasToken"` kérelem törzsében és mezőiben.
 
 > [!div class="mx-imgBorder"]
 > ![Azure Storage Explorer; egy PDF-dokumentum van kiválasztva](media/cognitive-search-skill-form/form-sas.png)
@@ -111,9 +111,9 @@ Az alábbi példához hasonló válasznak kell megjelennie:
 
 Ha elégedett a funkció működésével, közzéteheti.
 
-1. A Visual Studióban a **megoldáskezelő** kattintson a jobb gombbal a projektre, és válassza a **Közzététel**lehetőséget. Válassza az **új**  >  **Közzététel**létrehozása lehetőséget.
+1. A Visual Studióban a **megoldáskezelő** kattintson a jobb gombbal a projektre, és válassza a **Közzététel** lehetőséget. Válassza az **új**  >  **Közzététel** létrehozása lehetőséget.
 1. Ha még nem csatlakoztatta a Visual studiót az Azure-fiókjához, válassza a **fiók hozzáadása...** lehetőséget.
-1. Kövesse a képernyőn megjelenő utasításokat. Adjon egyedi nevet az App Service, az Azure-előfizetés, az erőforráscsoport, a üzemeltetési csomag és a használni kívánt Storage-fiók számára. Létrehozhat egy új erőforráscsoportot, egy új üzemeltetési csomagot és egy új Storage-fiókot, ha még nem rendelkezik ezekkel. Ha elkészült, válassza a **Létrehozás**lehetőséget.
+1. Kövesse a képernyőn megjelenő utasításokat. Adjon egyedi nevet az App Service, az Azure-előfizetés, az erőforráscsoport, a üzemeltetési csomag és a használni kívánt Storage-fiók számára. Létrehozhat egy új erőforráscsoportot, egy új üzemeltetési csomagot és egy új Storage-fiókot, ha még nem rendelkezik ezekkel. Ha elkészült, válassza a **Létrehozás** lehetőséget.
 1. A telepítés befejezése után figyelje meg a webhely URL-címét. Ez az URL-cím az Azure-beli Function-alkalmazás címe. Mentse egy ideiglenes helyre.
 1. A [Azure Portal](https://portal.azure.com)navigáljon az erőforráscsoporthoz, és keresse meg a `AnalyzeForm` közzétett funkciót. A **kezelés** szakaszban látnia kell a gazdagép kulcsait. Másolja az *alapértelmezett* gazdagépet, és mentse egy ideiglenes helyre.
 
@@ -160,7 +160,7 @@ Ahhoz, hogy ezt a képességet egy Cognitive Search folyamat használja, hozzá 
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az útmutatóban létrehozott egy egyéni képességet az Azure Form-felismerő szolgáltatásból. Az egyéni ismeretekkel kapcsolatos további tudnivalókért tekintse meg a következő forrásokat. 
 

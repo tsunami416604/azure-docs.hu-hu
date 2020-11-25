@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: af671996722524de9af1a90ae8dfde27f814c8c2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951638"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011812"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>VPN-átjárók figyelése Network Watcher hibaelhárítással
 
@@ -183,7 +183,7 @@ Kattintson a Save (Mentés) gombra az ütemterv runbook való mentéséhez.
 
 ![10. lépés][10]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megértette, hogyan integrálhatja Network Watcher hibaelhárítást a Azure Automationval, megtudhatja, hogyan indíthat el a csomagok rögzítését a virtuális gépek riasztásai számára, ha meglátogatja a [riasztás által aktivált csomagok rögzítését az Azure Network Watcher](network-watcher-alert-triggered-packet-capture.md)használatával.
 

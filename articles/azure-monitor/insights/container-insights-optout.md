@@ -4,12 +4,12 @@ description: Ez a cikk azt ismerteti, hogyan szüntetheti meg az Azure AK-fürt 
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: af5f49dfe5e668f39f105a62ad20858e273b34cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15ec102632258870745f510a98773f70242118be
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87489486"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96011642"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>Az Azure Kubernetes Service (AKS) tárolókhoz készült Azure Monitorral való monitorozásának leállítása
 
@@ -35,7 +35,7 @@ Ha nem ismeri az erőforrások sablon használatával történő központi telep
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../azure-resource-manager/templates/deploy-cli.md)
 
 >[!NOTE]
->A sablont a fürt azonos erőforráscsoporthoz kell telepíteni. Ha a sablon használatakor kihagyja a többi tulajdonságot vagy bővítményt, akkor azt eredményezheti a fürtből való eltávolításuk. Például *enableRBAC* a fürtben MEGVALÓSÍTott RBAC-házirendekhez, vagy *aksResourceTagValues* , ha címkéket adtak meg az AK-fürthöz.  
+>A sablont a fürt azonos erőforráscsoporthoz kell telepíteni. Ha a sablon használatakor kihagyja a többi tulajdonságot vagy bővítményt, akkor azt eredményezheti a fürtből való eltávolításuk. Például *enableRBAC* a fürtben megvalósított Kubernetes RBAC-házirendekhez, vagy *aksResourceTagValues* , ha CÍMKÉKET ad meg az AK-fürthöz.  
 >
 
 Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.27 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a parancsot `az --version` . Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört.
@@ -120,7 +120,7 @@ Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és haszn�
 
     ![Tároló tulajdonságai lap](media/container-insights-optout/container-properties-page.png)
 
-    A **Tulajdonságok** lapon a **munkaterület erőforrás-azonosítóját**is másolja. Erre az értékre akkor van szükség, ha később szeretné törölni az Log Analytics munkaterületet. A Log Analytics munkaterület törlése nem a folyamat részeként történik.
+    A **Tulajdonságok** lapon a **munkaterület erőforrás-azonosítóját** is másolja. Erre az értékre akkor van szükség, ha később szeretné törölni az Log Analytics munkaterületet. A Log Analytics munkaterület törlése nem a folyamat részeként történik.
 
     Szerkessze a **aksResourceTagValues** értékeit, hogy azok megfeleljenek az AK-fürthöz megadott meglévő címkék értékének.
 

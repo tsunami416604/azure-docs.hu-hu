@@ -10,11 +10,11 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/13/2020
 ms.openlocfilehash: 83522de9c00056a3808b002b3103f45c72553399
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91534182"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013071"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>DatetimeV2 előre összeépített entitása egy LUIS-alkalmazáshoz
 
@@ -146,7 +146,7 @@ A tömb minden eleme `values` a következő mezőkkel rendelkezhet:
 |Timex|az idő, a dátum vagy a dátumtartomány TIMEX formátumban kifejezve, amely az [ISO 8601 szabványt](https://en.wikipedia.org/wiki/ISO_8601) követi, valamint a jegyzet TIMEX3 attribútumait a TimeML nyelv használatával.|
 |mod|az érték (például:) használatának leírására szolgáló kifejezés `before` `after` .|
 |típus|Az altípus, amely a következő elemek egyike lehet:,,, `datetime` `date` ,, `time` `daterange` `timerange` `datetimerange` , `duration` , `set` .|
-|érték|**Választható.** Egy datetime objektum a következő formátumban: éééé-hh-dd (Date), óó: PP: mm (Time) éééé-hh-nn óó: PP: mm (datetime). Ha a értéke `type` `duration` , akkor az érték a másodpercek száma (időtartam) <br/> Csak akkor használható, ha `type` az a, a, `datetime` vagy a `date` `time` időtartam.|
+|value|**Választható.** Egy datetime objektum a következő formátumban: éééé-hh-dd (Date), óó: PP: mm (Time) éééé-hh-nn óó: PP: mm (datetime). Ha a értéke `type` `duration` , akkor az érték a másodpercek száma (időtartam) <br/> Csak akkor használható, ha `type` az a, a, `datetime` vagy a `date` `time` időtartam.|
 
 ## <a name="valid-date-values"></a>Érvényes dátumérték
 
@@ -669,16 +669,16 @@ A következő kifejezés és a részleges JSON-válasza alább látható.
 
 ## <a name="deprecated-prebuilt-datetime"></a>Elavult előre elkészített datetime
 
-Az `datetime` előre elkészített entitás elavult, és a **datetimeV2**váltja fel.
+Az `datetime` előre elkészített entitás elavult, és a **datetimeV2** váltja fel.
 
 Ha a `datetime` -t a `datetimeV2` Luis-alkalmazásban szeretné cserélni, hajtsa végre a következő lépéseket:
 
 1. Nyissa meg a LUIS webes felület **entitások** paneljét.
 2. Törölje a **datetime** előre elkészített entitást.
 3. Kattintson az **előre összeépített entitás hozzáadása** lehetőségre.
-4. Válassza a **datetimeV2** elemet, majd kattintson a **Mentés**gombra.
+4. Válassza a **datetimeV2** elemet, majd kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
 

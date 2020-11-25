@@ -6,11 +6,11 @@ author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
 ms.openlocfilehash: 4d0ceacd37748e9761903d02fd7e052d70b10e15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91871898"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011880"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Windows és Linux rendszerhez készült Log Analytics-ügynök kezelése és karbantartása
 
@@ -22,7 +22,7 @@ A Windows és a Linux rendszerhez készült Log Analytics ügynök manuálisan v
 
 | Környezet | Telepítési módszer | Frissítési módszer |
 |--------|----------|-------------|
-| Azure VM | Log Analytics Agent VM-bővítmény Windows/Linux rendszerhez | A rendszer alapértelmezés szerint automatikusan frissíti az ügynököt, kivéve, ha úgy állította be a Azure Resource Manager sablont, hogy a *autoUpgradeMinorVersion* tulajdonság **hamis**értékre állításával letiltható. |
+| Azure VM | Log Analytics Agent VM-bővítmény Windows/Linux rendszerhez | A rendszer alapértelmezés szerint automatikusan frissíti az ügynököt, kivéve, ha úgy állította be a Azure Resource Manager sablont, hogy a *autoUpgradeMinorVersion* tulajdonság **hamis** értékre állításával letiltható. |
 | Egyéni Azure VM-rendszerképek | Log Analytics-ügynök manuális telepítése Windows/Linux rendszerhez | A virtuális gépeknek az ügynök legújabb verziójára való frissítését a Windows Installer-csomagot vagy a Linux rendszerű önkicsomagoló és telepíthető rendszerhéj-parancsfájlt futtató parancssorból kell elvégezni.|
 | Nem Azure-beli virtuális gépek | Log Analytics-ügynök manuális telepítése Windows/Linux rendszerhez | A virtuális gépeknek az ügynök legújabb verziójára való frissítését a Windows Installer-csomagot vagy a Linux rendszerű önkicsomagoló és telepíthető rendszerhéj-parancsfájlt futtató parancssorból kell elvégezni. |
 
@@ -34,11 +34,11 @@ Az alábbi lépések végrehajtásával letöltheti a Windows-ügynök legújabb
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza **log Analytics munkaterületek**lehetőséget.
+2. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza **log Analytics munkaterületek** lehetőséget.
 
 3. Log Analytics munkaterületek listájában válassza ki a munkaterületet.
 
-4. A Log Analytics munkaterületen válassza a **Speciális beállítások**, majd a **csatlakoztatott források**, végül pedig a **Windows-kiszolgálók**elemet.
+4. A Log Analytics munkaterületen válassza a **Speciális beállítások**, majd a **csatlakoztatott források**, végül pedig a **Windows-kiszolgálók** elemet.
 
 5. A Windows- **kiszolgálók** lapon válassza ki a Windows- **ügynök** megfelelő verzióját a letöltéshez a Windows operációs rendszer processzor-architektúrája alapján.
 
@@ -52,13 +52,13 @@ Az alábbi lépések végrehajtásával letöltheti a Windows-ügynök legújabb
 
 2. A telepítővarázsló elindításához futtassa a **MMASetup- \<platform\> . exe fájlt** .
 
-3. A telepítővarázsló első lapján kattintson a **tovább**gombra.
+3. A telepítővarázsló első lapján kattintson a **tovább** gombra.
 
 4. A **Microsoft monitoring Agent telepítése** **párbeszédpanelen kattintson az Elfogadom gombra a** licencszerződés elfogadásához.
 
 5. A **Microsoft Monitoring Agent beállítása** párbeszédpanelen kattintson a **Frissítés** lehetőségre. Az állapotlapon megjelenik a frissítés állapota.
 
-6. Ha a **Microsoft monitoring Agent konfigurálása sikeresen befejeződött.** lap jelenik meg, kattintson a **Befejezés**gombra.
+6. Ha a **Microsoft monitoring Agent konfigurálása sikeresen befejeződött.** lap jelenik meg, kattintson a **Befejezés** gombra.
 
 #### <a name="to-upgrade-from-the-command-line"></a>Frissítés a parancssorból
 
@@ -93,7 +93,7 @@ Az ebben a szakaszban ismertetett lépések akkor szükségesek, ha nem csak a W
 
 3. Válassza a **Microsoft monitoring Agent** lehetőséget, majd kattintson az **Azure log Analytics** fülre.
 
-4. Ha eltávolít egy munkaterületet, jelölje ki, majd kattintson az **Eltávolítás**gombra. Ismételje meg ezt a lépést minden olyan munkaterületen, amelyhez az ügynököt le szeretné állítani.
+4. Ha eltávolít egy munkaterületet, jelölje ki, majd kattintson az **Eltávolítás** gombra. Ismételje meg ezt a lépést minden olyan munkaterületen, amelyhez az ügynököt le szeretné állítani.
 
 5. Ha hozzáad egy munkaterületet, kattintson a **Hozzáadás** gombra, és a **log Analytics munkaterület hozzáadása** párbeszédpanelen illessze be a munkaterület-azonosítót és a munkaterület kulcsát (elsődleges kulcs). Ha a gépnek egy Azure Government-felhőbeli Log Analytics-munkaterületnek kell jelentenie, válassza az Azure US Government lehetőséget az Azure Cloud legördülő listából.
 
@@ -231,12 +231,12 @@ A következő eljárások egyikével távolíthatja el a Windows-vagy Linux-ügy
 #### <a name="uninstall-from-control-panel"></a>Eltávolítás a Vezérlőpultról
 1. Jelentkezzen be a számítógépre egy rendszergazdai jogosultságokkal rendelkező fiókkal.
 
-2. A **Vezérlőpulton**kattintson a **programok és szolgáltatások**elemre.
+2. A **Vezérlőpulton** kattintson a **programok és szolgáltatások** elemre.
 
-3. A **programok és szolgáltatások**területen kattintson a **Microsoft monitoring Agent**elemre, majd az **Eltávolítás**elemre, végül pedig az **Igen**gombra.
+3. A **programok és szolgáltatások** területen kattintson a **Microsoft monitoring Agent** elemre, majd az **Eltávolítás** elemre, végül pedig az **Igen** gombra.
 
 >[!NOTE]
->Az ügynök telepítővarázslója a **MMASetup- \<platform\> . exe fájlra**duplán kattintva is futtatható, amely a Azure Portal munkaterületéről tölthető le.
+>Az ügynök telepítővarázslója a **MMASetup- \<platform\> . exe fájlra** duplán kattintva is futtatható, amely a Azure Portal munkaterületéről tölthető le.
 
 #### <a name="uninstall-from-the-command-line"></a>Eltávolítás a parancssorból
 Az ügynök letöltött fájlja egy, a IExpress-mel létrehozott, önálló telepítési csomag. Az ügynök és a támogató fájlok telepítőprogramja a csomagban található, és a megfelelő eltávolításhoz a következő példában látható parancssor használatával kell kinyerni.
@@ -265,7 +265,7 @@ A következő lépések végrehajtásával konfigurálhatja a Windows Log Analyt
 
 3. Kattintson a **Microsoft monitoring Agent** elemre, majd a **Operations Manager** fülre.
 
-4. Ha a Operations Manager-kiszolgálók Active Directory-integrációval rendelkeznek, kattintson **a felügyeleti csoport hozzárendeléseinek automatikus frissítése a AD DS**lehetőségre.
+4. Ha a Operations Manager-kiszolgálók Active Directory-integrációval rendelkeznek, kattintson **a felügyeleti csoport hozzárendeléseinek automatikus frissítése a AD DS** lehetőségre.
 
 5. Kattintson a **Hozzáadás** gombra a **felügyeleti csoport hozzáadása** párbeszédpanel megnyitásához.
 
@@ -275,7 +275,7 @@ A következő lépések végrehajtásával konfigurálhatja a Windows Log Analyt
 
 8. A **felügyeleti kiszolgáló portja** mezőbe írja be a TCP-port számát.
 
-9. Az **ügynök műveleti fiókja**területen válassza a helyi rendszer fiókot vagy a helyi tartományi fiókot.
+9. Az **ügynök műveleti fiókja** területen válassza a helyi rendszer fiókot vagy a helyi tartományi fiókot.
 
 10. A **felügyeleti csoport hozzáadása** párbeszédpanel bezárásához kattintson az **OK** gombra, majd kattintson az **OK** gombra a **Microsoft monitoring Agent tulajdonságai** párbeszédpanel bezárásához.
 

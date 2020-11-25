@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.openlocfilehash: 3db411df69a754857220867865522f8e4fa24030
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546007"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011489"
 ---
 # <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Az Azure HDInsight Apache Hive az átjáró részletes ismertetése és ajánlott eljárásai
 
@@ -46,7 +46,7 @@ A következő ábra a SELECT lekérdezés lépéseit szemlélteti.
 
 A Apache Hive egy HDFS-kompatibilis fájlrendszerhez kapcsolódó összevont absztrakció. Ez az absztrakció azt jelenti, hogy a struktúra **Select** utasításai a fájlrendszerben lévő **olvasási** műveleteknek felelnek meg. Az **olvasási** műveleteket a rendszer a megfelelő sémára fordítja, mielőtt a jelentést a felhasználónak. A folyamat késése az adatmérettel és a végfelhasználók eléréséhez szükséges összes ugrással nő.
 
-A nagyméretű adatok **létrehozására** vagy **beszúrására** vonatkozó utasítások végrehajtásakor hasonló viselkedés fordulhat elő, mivel ezek a parancsok a mögöttes fájlrendszer **írási** műveleteinek felelnek meg. Az **Insert** vagy a **Load** (betöltés) helyett érdemes lehet olyan adatírást használni, mint például a nyers ork a fájlrendszer/datalake.
+A nagyméretű adatok **létrehozására** vagy **beszúrására** vonatkozó utasítások végrehajtásakor hasonló viselkedés fordulhat elő, mivel ezek a parancsok a mögöttes fájlrendszer **írási** műveleteinek felelnek meg. Az **Insert** vagy a **Load**(betöltés) helyett érdemes lehet olyan adatírást használni, mint például a nyers ork a fájlrendszer/datalake.
 
 Az Enterprise Security Pack-kompatibilis fürtökön a megfelelően összetett Apache Ranger-házirendek a lekérdezés fordítási idejének lassulását okozhatják, ami az átjáró időtúllépéséhez vezethet. Ha egy ESP-fürtön egy átjáró időtúllépését észlelte, érdemes lehet csökkenteni vagy kombinálni a Ranger-szabályzatok számát.
 
@@ -56,7 +56,7 @@ A fenti viselkedés részeként több helyszín áll rendelkezésre a teljesítm
 
 * Nagyméretű **választó** lekérdezések futtatásakor használja a **limit** záradékot. A **limit** záradék csökkenti az ügyfél gazdagépének jelentett összes sort. A **limit** záradék csak az eredmény generálására vonatkozik, és nem módosítja a lekérdezési tervet. Ha a **limit** záradékot szeretné alkalmazni a lekérdezési tervre, használja a konfigurációt `hive.limit.optimize.enable` . A **korlát** kombinálható egy eltolással az argumentumok **x, y korlátjának** használatával.
 
-* Adja meg a fontos oszlopok nevét a **Select** lekérdezések futtatásakor a * *Select \** _ használata helyett. Kevesebb oszlop kiválasztásával csökkentheti az olvasott adatmennyiséget.
+* Adja meg a fontos oszlopok nevét a **Select** lekérdezések futtatásakor a **Select \** _ használata helyett. Kevesebb oszlop kiválasztásával csökkentheti az olvasott adatmennyiséget.
 
 _ Futtassa az érdeklődési lekérdezést az Apache Beeline használatával. Ha az Apache Beeline használatával történő lekérés hosszabb időt vesz igénybe, a rendszer késlelteti az azonos eredmények külső eszközökön keresztüli lekérését.
 

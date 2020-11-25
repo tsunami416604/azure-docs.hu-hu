@@ -8,17 +8,17 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: a35c34a08dba625b16940d7ec5fb870952dba36b
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: e60ba773c5ef750f027c2e0b1528409c71eeb4b8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630243"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011702"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 [Azure Files](storage-files-introduction.md) kétféleképpen helyezhető üzembe: a kiszolgáló nélküli Azure-fájlmegosztás közvetlen csatlakoztatásával vagy az Azure-fájlmegosztás helyszíni gyorsítótárazásával Azure file Sync használatával. Az üzembe helyezési lehetőségek közül válassza ki azokat a beállításokat, amelyeket figyelembe kell vennie az üzemelő példány tervezésekor. 
 
-- **Azure-fájlmegosztás közvetlen csatlakoztatása** : mivel Azure Files kiszolgáló-üzenetblokk (SMB) vagy hálózati fájlrendszer (NFS) hozzáférést biztosít, az Azure-fájlmegosztás a helyszínen vagy a felhőben is csatlakoztatható az operációs rendszerében elérhető szabványos SMB-vagy NFS-ügyfelek használatával. Mivel az Azure-fájlmegosztás kiszolgáló nélküli, az éles környezetekben való üzembe helyezéshez nem szükséges fájlkiszolgáló vagy NAS-eszköz kezelése. Ez azt jelenti, hogy nem kell szoftverfrissítéseket alkalmaznia vagy fizikai lemezeket cserélnie. 
+- **Azure-fájlmegosztás közvetlen csatlakoztatása**: mivel Azure Files kiszolgáló-üzenetblokk (SMB) vagy hálózati fájlrendszer (NFS) hozzáférést biztosít, az Azure-fájlmegosztás a helyszínen vagy a felhőben is csatlakoztatható az operációs rendszerében elérhető szabványos SMB-vagy NFS-ügyfelek használatával. Mivel az Azure-fájlmegosztás kiszolgáló nélküli, az éles környezetekben való üzembe helyezéshez nem szükséges fájlkiszolgáló vagy NAS-eszköz kezelése. Ez azt jelenti, hogy nem kell szoftverfrissítéseket alkalmaznia vagy fizikai lemezeket cserélnie. 
 
 - **A helyszíni Azure-fájlmegosztás gyorsítótárazása a Azure file Sync** használatával: a Azure file Sync lehetővé teszi a szervezete fájlmegosztás megszervezését Azure Filesban, miközben megtartja a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Azure File Sync átalakítja a helyszíni (vagy Felhőbeli) Windows Servert az Azure SMB-fájlmegosztás gyors gyorsítótárba. 
 
@@ -44,15 +44,15 @@ Az Azure-fájlmegosztás Storage-fiókokban való telepítésekor a következők
 
 ## <a name="identity"></a>Identitás
 Egy Azure-fájlmegosztás eléréséhez a fájlmegosztás felhasználójának hitelesítenie kell, és engedéllyel kell rendelkeznie a megosztás eléréséhez. Ez a fájlmegosztást elérő felhasználó identitása alapján történik. A Azure Files három fő identitás-szolgáltatóval integrálódik:
-- Helyszíni **Active Directory tartományi szolgáltatások (AD DS vagy helyszíni AD DS)** : az Azure Storage-fiókok tartományhoz, Active Directory tartományi szolgáltatásokhoz, például Windows Server FÁJLKISZOLGÁLÓ vagy NAS-eszközhöz csatlakoztathatók. Üzembe helyezhet egy tartományvezérlőt a helyszínen, egy Azure-beli virtuális gépen, vagy akár egy másik felhőalapú szolgáltató virtuális gépén is. Azure Files a tartományvezérlő üzemeltetéséhez szükséges agnosztikus. Miután a Storage-fiók tartományhoz csatlakozik, a végfelhasználó csatlakoztathat egy fájlmegosztást a számítógéphez bejelentkezett felhasználói fiókhoz. Az AD-alapú hitelesítés a Kerberos hitelesítési protokollt használja.
-- **Azure Active Directory Domain Services (azure AD DS)** : az Azure AD DS egy Microsoft által felügyelt tartományvezérlőt biztosít, amely Azure-erőforrásokhoz használható. A Storage-fiók Azure AD DShoz való csatlakoztatása hasonló előnyökkel jár a tartományhoz való csatlakozáshoz az ügyfél tulajdonában lévő Active Directoryhoz. Ez az üzembe helyezési lehetőség az olyan alkalmazások esetében hasznos, amelyek AD-alapú engedélyeket igényelnek. Mivel az Azure AD DS AD-alapú hitelesítést biztosít, ez a beállítás a Kerberos hitelesítési protokollt is használja.
-- **Azure Storage-fiók kulcsa** : az Azure-fájlmegosztás egy Azure Storage-fiók kulcsával is csatlakoztatható. Fájlmegosztás ily módon történő csatlakoztatásához a rendszer a Storage-fiók nevét használja felhasználónévként, és a Storage-fiók kulcsa jelszóként van használatban. Ha a Storage-fiók kulcsát használja az Azure-fájlmegosztás csatlakoztatására, akkor a felügyeleti művelet hatékony, mivel a csatlakoztatott fájlmegosztás teljes jogosultsággal rendelkezik a megosztás összes fájljához és mappájához, még akkor is, ha ACL-ekkel rendelkezik. Ha a Storage-fiók kulcsát használja az SMB protokollon keresztül történő csatlakoztatásra, a rendszer az NTLMv2 hitelesítési protokollt használja.
+- Helyszíni **Active Directory tartományi szolgáltatások (AD DS vagy helyszíni AD DS)**: az Azure Storage-fiókok tartományhoz, Active Directory tartományi szolgáltatásokhoz, például Windows Server FÁJLKISZOLGÁLÓ vagy NAS-eszközhöz csatlakoztathatók. Üzembe helyezhet egy tartományvezérlőt a helyszínen, egy Azure-beli virtuális gépen, vagy akár egy másik felhőalapú szolgáltató virtuális gépén is. Azure Files a tartományvezérlő üzemeltetéséhez szükséges agnosztikus. Miután a Storage-fiók tartományhoz csatlakozik, a végfelhasználó csatlakoztathat egy fájlmegosztást a számítógéphez bejelentkezett felhasználói fiókhoz. Az AD-alapú hitelesítés a Kerberos hitelesítési protokollt használja.
+- **Azure Active Directory Domain Services (azure AD DS)**: az Azure AD DS egy Microsoft által felügyelt tartományvezérlőt biztosít, amely Azure-erőforrásokhoz használható. A Storage-fiók Azure AD DShoz való csatlakoztatása hasonló előnyökkel jár a tartományhoz való csatlakozáshoz az ügyfél tulajdonában lévő Active Directoryhoz. Ez az üzembe helyezési lehetőség az olyan alkalmazások esetében hasznos, amelyek AD-alapú engedélyeket igényelnek. Mivel az Azure AD DS AD-alapú hitelesítést biztosít, ez a beállítás a Kerberos hitelesítési protokollt is használja.
+- **Azure Storage-fiók kulcsa**: az Azure-fájlmegosztás egy Azure Storage-fiók kulcsával is csatlakoztatható. Fájlmegosztás ily módon történő csatlakoztatásához a rendszer a Storage-fiók nevét használja felhasználónévként, és a Storage-fiók kulcsa jelszóként van használatban. Ha a Storage-fiók kulcsát használja az Azure-fájlmegosztás csatlakoztatására, akkor a felügyeleti művelet hatékony, mivel a csatlakoztatott fájlmegosztás teljes jogosultsággal rendelkezik a megosztás összes fájljához és mappájához, még akkor is, ha ACL-ekkel rendelkezik. Ha a Storage-fiók kulcsát használja az SMB protokollon keresztül történő csatlakoztatásra, a rendszer az NTLMv2 hitelesítési protokollt használja.
 
 A helyszíni fájlkiszolgálók áttelepítésére vagy a Azure Files a Windows-fájlkiszolgálók vagy a NAS-készülékek működéséhez szükséges új fájlmegosztás létrehozásához az ajánlott lehetőség a Storage-fiókhoz való csatlakozás az **ügyfél tulajdonában lévő Active Directory** . Ha többet szeretne megtudni a Storage-fiók ügyfél által birtokolt Active Directoryhoz való csatlakoztatásáról, tekintse meg a [Azure Files Active Directory áttekintése](storage-files-active-directory-overview.md)című témakört.
 
 Ha a Storage-fiók kulcsát szeretné használni az Azure-fájlmegosztás eléréséhez, javasoljuk, hogy használja a szolgáltatás-végpontokat a [hálózatkezelés](#networking) szakaszban leírtak szerint.
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 Az Azure-fájlmegosztás bárhonnan elérhető a Storage-fiók nyilvános végpontján keresztül. Ez azt jelenti, hogy a hitelesített kérések, például a felhasználó bejelentkezési identitása által engedélyezett kérések, biztonságosan származhatnak az Azure-on belül vagy kívül is. Számos felhasználói környezetben a helyszíni munkaállomás Azure-fájlmegosztás kezdeti csatlakoztatása sikertelen lesz, noha az Azure-beli virtuális gépekről való csatlakoztatások sikeresek lesznek. Ennek az az oka, hogy számos szervezet és internetszolgáltató (ISP) blokkolja az SMB által a kommunikációhoz használt portot, a 445-es portot. A [TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx) összefoglalja, hogy mely internetszolgáltatók engedélyezik vagy tiltják a 445-ös porton keresztüli hozzáférést.
 
 Az Azure-fájlmegosztás elérésének feloldásához két fő lehetőség közül választhat:
@@ -63,9 +63,9 @@ Az Azure-fájlmegosztás elérésének feloldásához két fő lehetőség köz�
 
 Bár a technikai szempontból jóval egyszerűbb az Azure-fájlmegosztás nyilvános végponton keresztüli csatlakoztatása, a legtöbb ügyfelünk úgy dönt, hogy az Azure-fájlmegosztást egy ExpressRoute vagy VPN-kapcsolaton keresztül csatlakoztatja. Ezekkel a beállításokkal az SMB-és NFS-megosztások is elérhetők. Ehhez a következőt kell konfigurálnia a környezetéhez:  
 
-- **Hálózati bújtatás ExpressRoute, helyek közötti vagy pont – hely típusú VPN használatával** : a virtuális hálózatba való bújtatás lehetővé teszi az Azure-fájlmegosztás helyszíni elérését, még akkor is, ha az 445-es port le van tiltva.
-- **Privát végpontok** : a magánhálózati végpontok dedikált IP-címet biztosítanak a Storage-fióknak a virtuális hálózat címterület területén. Ez lehetővé teszi a hálózati bújtatást anélkül, hogy az Azure Storage-fürtök által birtokolt összes IP-címtartományt meg kellene nyitni a helyszíni hálózatokat. 
-- **DNS-továbbítás** : konfigurálja a helyszíni DNS-t úgy, hogy feloldja a Storage-fiók (azaz `storageaccount.file.core.windows.net` a nyilvános felhő régiói) nevét a privát végpontok IP-címére való feloldáshoz.
+- **Hálózati bújtatás ExpressRoute, helyek közötti vagy pont – hely típusú VPN használatával**: a virtuális hálózatba való bújtatás lehetővé teszi az Azure-fájlmegosztás helyszíni elérését, még akkor is, ha az 445-es port le van tiltva.
+- **Privát végpontok**: a magánhálózati végpontok dedikált IP-címet biztosítanak a Storage-fióknak a virtuális hálózat címterület területén. Ez lehetővé teszi a hálózati bújtatást anélkül, hogy az Azure Storage-fürtök által birtokolt összes IP-címtartományt meg kellene nyitni a helyszíni hálózatokat. 
+- **DNS-továbbítás**: konfigurálja a helyszíni DNS-t úgy, hogy feloldja a Storage-fiók (azaz `storageaccount.file.core.windows.net` a nyilvános felhő régiói) nevét a privát végpontok IP-címére való feloldáshoz.
 
 Az Azure-fájlmegosztás üzembe helyezéséhez kapcsolódó hálózatkezelés megtervezéséhez tekintse meg [Azure Files hálózatkezelési megfontolásokat](storage-files-networking-overview.md).
 
@@ -133,16 +133,16 @@ További információ: [Az Azure Storage komplex veszélyforrások elleni védel
 Ha egy fájlmegosztás prémium vagy standard fájlmegosztásként lett létrehozva, akkor nem alakíthatja át automatikusan a másik szintre. Ha a másik szintjére szeretne váltani, új fájlmegosztást kell létrehoznia az adott szinten, és manuálisan át kell másolnia az eredeti megosztás adatait az újonnan létrehozott megosztásra. Azt javasoljuk `robocopy` , hogy a Windowshoz vagy MacOS és Linux rendszerhez használja a `rsync` másolást.
 
 ### <a name="understanding-provisioning-for-premium-file-shares"></a>A prémium fájlmegosztás kiépítés ismertetése
-A prémium fájlmegosztást rögzített GiB/IOPS/átviteli sebesség alapján kell kiépíteni. Minden egyes GiB-kiosztás esetén a megosztás egy IOPS és 0,1 MiB/s átviteli sebességgel fog kiadni, a maximálisan megengedett határértékek száma szerint. A minimálisan engedélyezett kiépítés a 100 GiB és a min IOPS/átviteli sebesség.
+A prémium fájlmegosztást rögzített GiB/IOPS/átviteli sebesség alapján kell kiépíteni. Az összes megosztási méret a minimális alapkonfigurációt/átviteli sebességet, és a burst számára engedélyezett. Minden egyes GiB-kiosztás esetén a megosztás minimális IOPS/átviteli sebességre, valamint egy IOPS és 0,1 MiB/s átviteli sebességre lesz kiállítva a maximálisan megengedettnél. A minimálisan engedélyezett kiépítés 100 GiB minimális IOPS/átviteli sebességgel. 
 
-A legjobb lehetőség az, hogy minden megosztás legfeljebb három IOPS-t tud kiosztani a kiépített tárterület 60 percen belül, a megosztás méretétől függően. Az új megosztások a kiosztott kapacitás alapján kezdődnek a teljes burst Kredittel.
+A prémium szintű megosztások teljes mértékben díjmentesen használhatók. Az összes megosztási méret akár 4 000 IOPS vagy akár három IOPS is kiosztható egy kiépített GiB-ban, amelyik nagyobb adattört IOPS biztosít a megosztáshoz. Az összes megosztás legfeljebb 60 percnél hosszabb időt vehet igénybe a maximális burst értéknél. Az új megosztások a kiosztott kapacitás alapján kezdődnek a teljes burst Kredittel.
 
-A megosztásokat 1 GiB-onként kell kiépíteni. A minimális méret 100 GiB, a következő méret 101 GiB és így tovább.
+A megosztásokat 1 GiB-onként kell kiépíteni. A minimális méret 100 GiB, a következő méret 101 GiB, és így tovább.
 
 > [!TIP]
-> Alapterv IOPS = 1 * kiépített GiB. (Max. 100 000 IOPS).
+> Alapterv IOPS = 400 + 1 * kiépített GiB. (Max. 100 000 IOPS).
 >
-> Burst határérték = 3 * alapterv IOPS. (Max. 100 000 IOPS).
+> Burst Limit = MAX (4 000, 3 * alapterv IOPS). (a korlát értéke nagyobb, akár 100 000 IOPS max.).
 >
 > kimenő forgalom aránya = 60 MiB/s + 0,06 * kiépített GiB
 >
@@ -156,33 +156,29 @@ Az alábbi táblázat néhány példát mutat be a kiosztott megosztási mérete
 
 |Kapacitás (GiB) | Alapterv IOPS | Burst IOPS | Kimenő forgalom (MiB/s) | Bejövő forgalom (MiB/s) |
 |---------|---------|---------|---------|---------|
-|100         | 100     | Akár 300     | 66   | 44   |
-|500         | 500     | Akár 1 500   | 90   | 60   |
-|1 024       | 1 024   | Akár 3 072   | 122   | 81   |
-|5 120       | 5 120   | Akár 15 360  | 368   | 245   |
-|10 240      | 10 240  | Akár 30 720  | 675 | 450   |
-|33 792      | 33 792  | Akár 100 000 | 2 088 | 1 392   |
-|51 200      | 51 200  | Akár 100 000 | 3 132 | 2 088   |
+|100         | 500     | Akár 4 000     | 66   | 44   |
+|500         | 900     | Akár 4 000  | 90   | 60   |
+|1 024       | 1 424   | Akár 4 000   | 122   | 81   |
+|5 120       | 5 520   | Akár 15 360  | 368   | 245   |
+|10 240      | 10 640  | Akár 30 720  | 675   | 450   |
+|33 792      | 34 192  | Akár 100 000 | 2 088 | 1 392   |
+|51 200      | 51 600  | Akár 100 000 | 3 132 | 2 088   |
 |102 400     | 100.000 | Akár 100 000 | 6 204 | 4 136   |
 
-> [!NOTE]
-> A fájlmegosztás teljesítményére a számítógép hálózati korlátai, a rendelkezésre álló hálózati sávszélesség, az IO-méretek, a párhuzamosságok számos más tényező vonatkozik. Például a 8 KiB írási/olvasási IO-méretekkel rendelkező belső tesztelésen alapuló, egyetlen Windowsos virtuális gép, *Standard F16s_v2* , a prémium szintű fájlmegosztás SMB-hez való csatlakoztatása 20000 olvasási IOPS és 15 000 FORDULAT írási IOPS. Az 512 MiB-írási/írási IO-méretekkel ugyanez a virtuális gép elérheti a 1,1 GiB/s kimenő forgalmat és a 370 MiB/s adatátviteli sebességet. A maximális teljesítmény elérése érdekében a terhelést több virtuális gép között kell elosztani. A gyakori teljesítménnyel kapcsolatos problémák és a megkerülő megoldások [hibaelhárítási útmutatójában](storage-troubleshooting-files-performance.md) olvashat.
+Fontos megjegyezni, hogy az érvényes fájlmegosztás teljesítményére a számítógép hálózati korlátai, a rendelkezésre álló hálózati sávszélesség, az IO-méretek és a párhuzamosságok érvényesek, többek között. Például a 8 KiB írási/olvasási IO-méretekkel rendelkező belső tesztelésen alapuló, egyetlen Windowsos virtuális gép, amely nem engedélyezett többcsatornás SMB-t használ, a *Standard F16s_v2*, a prémium szintű fájlmegosztás SMB-vel való csatlakoztatása 20000 olvasási IOPS és 15 000 FORDULAT írási IOPS. Az 512 MiB-írási/írási IO-méretekkel ugyanez a virtuális gép elérheti a 1,1 GiB/s kimenő forgalmat és a 370 MiB/s adatátviteli sebességet. Ugyanaz az ügyfél akár 3x-os teljesítményt is elérhet, \~ Ha a többcsatornás SMB engedélyezve van a prémium szintű megosztásokon. A maximális teljesítmény érdekében engedélyezze a [többcsatornás SMB](storage-files-enable-smb-multichannel.md) -t, és terjessze a terhelést több virtuális gép között. A gyakori teljesítménnyel kapcsolatos problémákkal és a megkerülő megoldásokkal kapcsolatban tekintse meg a [többcsatornás SMB-teljesítményt](storage-files-smb-multichannel-performance.md) és a [hibaelhárítási útmutatót](storage-troubleshooting-files-performance.md) .
 
 #### <a name="bursting"></a>Tele
-A prémium fájlmegosztás a IOPS akár három tényezővel is feltörte. A bursás automatizált, és kreditrendszer alapján működik. Az adatbontás a legjobb megoldási szinten működik, és a burst korlát nem garantálható, és a fájlmegosztás a korlátra is *feltört.*
+Ha a számítási feladatnak a maximális igény kielégítése érdekében további teljesítményre van szüksége, akkor a megosztás a megosztási alapkonfiguráció IOPS korlátján keresztül is felhasználhatja, hogy az igényeinek megfelelő megosztási teljesítményt nyújtson. A prémium szintű fájlmegosztás akár 4 000-ig, akár három tényezővel is feltörte a IOPS, attól függően, hogy melyik a magasabb érték. A bursás automatizált, és kreditrendszer alapján működik. Az adatbontás a legjobb megoldás, és a burst-korlát nem garantálható, a *fájlmegosztás legfeljebb 60* perces korlátot vehet igénybe.
 
-A kreditek felhalmozódnak egy burst gyűjtőben, amikor a fájlmegosztás forgalma az alapszintű IOPS alatt van. Egy 100 GiB-megosztás például 100 alapterv-IOPS rendelkezik. Ha a megosztás tényleges forgalma 40 IOPS volt egy adott 1 másodperces intervallumhoz, akkor a 60 fel nem használt IOPS jóváírásra kerül egy burst gyűjtőn. Ezeket a krediteket később akkor fogjuk használni, amikor a műveletek túllépik az alapkonfiguráció IOPs.
+A kreditek felhalmozódnak egy burst gyűjtőben, amikor a fájlmegosztás forgalma az alapszintű IOPS alatt van. Egy 100 GiB-megosztás például 500 alapterv-IOPS rendelkezik. Ha a megosztás tényleges forgalma 100 IOPS volt egy adott 1 másodperces intervallumhoz, akkor a 400 fel nem használt IOPS jóváírásra kerül egy burst gyűjtőn. Ehhez hasonlóan az 1. inaktív 1 TiB-megosztás is feltörte a 1 424 IOPS. Ezeket a krediteket később akkor fogjuk használni, amikor a műveletek túllépik az alapkonfiguráció IOPS.
 
-> [!TIP]
-> A burst vödör mérete = alapterv IOPS * 2 * 3600.
-
-Ha egy megosztás túllépi az alapkonfiguráció IOPS, és a kreditek egy burst gyűjtőben vannak, akkor a rendszer kitört. A megosztások továbbra is feltörtek, amíg a kreditek megmaradnak, de az 50 TiB-nál kisebb megosztások csak a burst-korláton belül maradnak. A 50 TiB-nál nagyobb megosztások műszakilag meghaladják ezt az óránkénti korlátot, akár két óráig is, de ez a felhalmozott burst-kreditek számától függ. Az alapkonfiguráció IOPS túli minden egyes IO egy kreditet használ, és ha az összes kreditet felhasználja, a megosztás visszatér az alapkonfiguráció IOPS.
+Ha egy megosztás túllépi az alapszintű IOPS, és a kreditek egy burst gyűjtőben vannak, akkor a maximálisan megengedett legmagasabb terhelési arányban lesz kitört. A megosztások továbbra is lemerülhetnek, amíg a kreditek megmaradnak, akár legfeljebb 60 percet is igénybe vehet, de ez a felhalmozott burst-kreditek számától függ. Az alapkonfiguráció IOPS túli minden egyes IO egy kreditet használ, és ha az összes kredit felhasználható, a megosztás visszatér az alapkonfiguráció IOPS.
 
 A megosztási kreditek három állapottal rendelkeznek:
 
 - Ha a fájlmegosztás az alapkonfigurációnál kisebb IOPS használja.
-- Csökkenő, ha a fájlmegosztás kitört.
-- Hátralévő állandó, ha nincsenek kreditek vagy alapkonfiguráció IOPS használatban.
+- Csökken, ha a fájlmegosztás több, mint az alapszintű IOPS és a burst módban használja.
+- Állandó, a fájlmegosztás a fájlmegosztás pontosan az alapkonfiguráció IOPS használja, vagy nincsenek felhalmozva vagy felhasználható kreditek.
 
 Az új fájlmegosztás a teljes számú Kredittel kezdődik a burst gyűjtőben. A burst kreditek nem lesznek felhalmozva, ha a megosztás IOPS az alapszintű IOPS alá esik a kiszolgáló általi szabályozás miatt.
 
@@ -195,7 +191,7 @@ Az új fájlmegosztás a teljes számú Kredittel kezdődik a burst gyűjtőben.
 ## <a name="redundancy"></a>Redundancia
 [!INCLUDE [storage-files-redundancy-overview](../../../includes/storage-files-redundancy-overview.md)]
 
-## <a name="migration"></a>Migrálás
+## <a name="migration"></a>Áttelepítés
 Sok esetben nem fog létrehozni nettó új fájlmegosztást a szervezet számára, hanem inkább egy meglévő fájlmegosztást telepít át egy helyszíni fájlkiszolgálón vagy NAS-eszközről a Azure Filesra. A Migrálás sikerességéhez fontos a megfelelő áttelepítési stratégia és eszköz kiválogatása a forgatókönyvhöz. 
 
 Az [áttelepítést áttekintő cikk](storage-files-migration-overview.md) röviden ismerteti az alapokat, és tartalmaz egy táblázatot, amely a forgatókönyvét valószínűleg magában foglaló áttelepítési útmutatókba vezet.

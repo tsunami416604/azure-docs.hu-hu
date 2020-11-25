@@ -6,11 +6,11 @@ ms.topic: quickstart
 ms.date: 04/04/2020
 ms.reviewer: azfuncdf, antchu
 ms.openlocfilehash: 5d624027259212d804ced26a6daaffb853984a98
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91294852"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012629"
 ---
 # <a name="create-your-first-durable-function-in-python"></a>Az első tartós függvény létrehozása a Pythonban
 
@@ -44,7 +44,7 @@ Ebben a szakaszban a Visual Studio Code használatával hozzon létre egy helyi 
 
     ![Függvény létrehozása](media/quickstart-python-vscode/functions-create-project.png)
 
-1. Válasszon egy üres mappát a projekthez, és válassza a **kiválasztás**lehetőséget.
+1. Válasszon egy üres mappát a projekthez, és válassza a **kiválasztás** lehetőséget.
 
 1. Az utasításokat követve adja meg a következő információkat:
 
@@ -160,7 +160,7 @@ Az Azure Functions Core Tools lehetővé teszi Azure Functions-projektek helyi f
     > [!NOTE]
     > A hibakereséssel kapcsolatos további információkért tekintse meg a [Durable functions diagnosztikát](durable-functions-diagnostics.md#debugging) .
 
-1. Durable Functions futtatásához Azure Storage-fiókra van szükség. Ha a VS Code megkéri a Storage-fiók kiválasztására, válassza a **Storage-fiók kiválasztása**lehetőséget.
+1. Durable Functions futtatásához Azure Storage-fiókra van szükség. Ha a VS Code megkéri a Storage-fiók kiválasztására, válassza a **Storage-fiók kiválasztása** lehetőséget.
 
     ![Storage-fiók létrehozása](media/quickstart-python-vscode/functions-select-storage.png)
 

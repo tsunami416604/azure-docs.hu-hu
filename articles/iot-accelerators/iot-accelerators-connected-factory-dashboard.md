@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: dobett
 ms.openlocfilehash: 797bd97940aa49db87b4ca4dd96f140208cd69b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91261872"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011217"
 ---
 # <a name="use-features-in-the-connected-factory-solution-accelerator-dashboard"></a>A csatlakoztatott Factory megoldás-gyorsító irányítópultján található szolgáltatások használata
 
@@ -32,7 +32,7 @@ Az irányítópulton megjelenített információk a **gyári helyszínek** panel
 
     [![A csatlakoztatottgyár-alapú megoldásgyorsító szűrői](./media/iot-accelerators-connected-factory-dashboard/filterpanel-inline.png)](./media/iot-accelerators-connected-factory-dashboard/filterpanel-expanded.png#lightbox)
 
-1. Válassza ki a szükséges szűrőt, és kattintson az **alkalmaz**gombra. Az is lehetséges, hogy szabad szöveget is beírhat a szűrő mezőibe.
+1. Válassza ki a szükséges szűrőt, és kattintson az **alkalmaz** gombra. Az is lehetséges, hogy szabad szöveget is beírhat a szűrő mezőibe.
 
 1. Ekkor a rendszer alkalmazza a szűrőt. Az extra tölcsér ikon azt jelzi, hogy a rendszer a szűrőt alkalmazza:
 
@@ -55,7 +55,7 @@ A megoldás-gyorsító telepítésekor automatikusan kiépítheti a szimulált O
 
     [![Csatlakoztatott Factory megoldás-gyorsító kiszolgálók listája](./media/iot-accelerators-connected-factory-dashboard/serverlist-inline.png)](./media/iot-accelerators-connected-factory-dashboard/serverlist-expanded.png#lightbox)
 
-1. Kattintson a **Connect** (Csatlakozás) gombra. Megjelenik egy biztonsági párbeszédablak. A szimulációhoz nyugodtan kattintson a **Folytatás**gombra.
+1. Kattintson a **Connect** (Csatlakozás) gombra. Megjelenik egy biztonsági párbeszédablak. A szimulációhoz nyugodtan kattintson a **Folytatás** gombra.
 
 1. Kattintson bármely csomópontra a kiszolgálófán a kibontásához. A telemetria közzétevő csomópontok mellett Pipa látható:
 
@@ -69,7 +69,7 @@ Ha egy *szimulált OPC UA-kiszolgálóhoz* tallóz, új csomópontokat is közz�
 
 1. Lépjen egy közzétenni kívánt csomópontra az OPC UA-kiszolgáló tallózási fáján.
 
-1. Kattintson a jobb gombbal a csomópontra. Kattintson a **Közzététel**gombra:
+1. Kattintson a jobb gombbal a csomópontra. Kattintson a **Közzététel** gombra:
 
     [![Csatlakoztatott Factory-megoldás gyorssegéd-közzétételi csomópontja](./media/iot-accelerators-connected-factory-dashboard/publishnode-inline.png)](./media/iot-accelerators-connected-factory-dashboard/publishnode-expanded.png#lightbox)
 
@@ -83,11 +83,11 @@ A csatlakoztatott gyár segítségével közvetlenül a felhőből irányíthatj
 
 1. Tallózással keresse meg a **StationCommands** csomópontot az OPC ua-kiszolgáló böngésző fájában a müncheni, gépsor: 0, Assembly Station.
 
-1. Válassza ki a használni kívánt parancsot. Kattintson a jobb gombbal a **OpenPressureReleaseValve** csomópontra. Kattintson a **hívás**gombra:
+1. Válassza ki a használni kívánt parancsot. Kattintson a jobb gombbal a **OpenPressureReleaseValve** csomópontra. Kattintson a **hívás** gombra:
 
     [![A csatlakoztatottgyár-alapú megoldásgyorsító hívás parancsa](./media/iot-accelerators-connected-factory-dashboard/callcommand-inline.png)](./media/iot-accelerators-connected-factory-dashboard/callcommand-expanded.png#lightbox)
 
-1. Megjelenik egy helyi panel, amely tájékoztatja arról, hogy melyik metódust kell hívnia, és a paraméterek részleteit. Kattintson a **hívás**gombra:
+1. Megjelenik egy helyi panel, amely tájékoztatja arról, hogy melyik metódust kell hívnia, és a paraméterek részleteit. Kattintson a **hívás** gombra:
 
     [![Csatlakoztatott gyári megoldások gyorsító hívási paraméterei](./media/iot-accelerators-connected-factory-dashboard/callpanel-inline.png)](./media/iot-accelerators-connected-factory-dashboard/callpanel-expanded.png#lightbox)
 
@@ -110,7 +110,7 @@ Ha elkészült, törölheti a megoldás-gyorssegédet az Azure-előfizetésből 
 > [!NOTE]
 > A megoldás-gyorssegédtel kapcsolatos összes adat törléséhez törölje azt a [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators#dashboard) webhelyen. Ne törölje az erőforráscsoportot a portálon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy üzembe helyezett egy működő megoldásgyorsítót, a következő cikkek elolvasásával folytathatja az ismerkedést az IoT-megoldásgyorsítók használatával:
 

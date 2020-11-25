@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: e9f175e2585a5254922c9e859cf5ece2afbbc3e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91264133"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011344"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API egyéni eseményekhez és metrikákhoz
 
@@ -19,7 +19,7 @@ Szúrjon be néhány sornyi kódot az alkalmazásban, hogy megtudja, mit csinál
 
 Az alapszintű API minden platformon egységes, többek között a `GetMetric` (csak .net-es) változatokon kívül.
 
-| Módszer | Alkalmazási cél |
+| Metódus | Alkalmazási cél |
 | --- | --- |
 | [`TrackPageView`](#page-views) |Lapok, képernyők, pengék vagy űrlapok. |
 | [`TrackEvent`](#trackevent) |Felhasználói műveletek és egyéb események. A felhasználói viselkedés nyomon követésére vagy a teljesítmény figyelésére szolgál. |
@@ -437,7 +437,7 @@ exceptions
 | summarize sum(itemCount) by type
 ```
 
-A fontos stack-információk nagy része már ki van választva különálló változóknak, de a szerkezet kihúzásával `details` További információkat érhet el. Mivel ez a struktúra dinamikus, az eredményt a várt típusra kell átadnia. Példa:
+A fontos stack-információk nagy része már ki van választva különálló változóknak, de a szerkezet kihúzásával `details` További információkat érhet el. Mivel ez a struktúra dinamikus, az eredményt a várt típusra kell átadnia. Például:
 
 ```kusto
 exceptions
@@ -500,7 +500,7 @@ Megkeresheti az üzenet tartalmát, de (a tulajdonság értékeitől eltérően)
 A méretkorlát `message` értéke sokkal nagyobb, mint a tulajdonságok korlátja.
 A TrackTrace előnye, hogy viszonylag hosszú adatmennyiséget helyezhet el az üzenetben. Például elvégezheti az adatposták küldését.  
 
-Emellett súlyossági szintet is hozzáadhat az üzenethez. És hasonlóan más telemetria is, hozzáadhat tulajdonságokat is a különböző nyomkövetési csoportok szűréséhez vagy kereséséhez. Példa:
+Emellett súlyossági szintet is hozzáadhat az üzenethez. És hasonlóan más telemetria is, hozzáadhat tulajdonságokat is a különböző nyomkövetési csoportok szűréséhez vagy kereséséhez. Például:
 
 *C#*
 
@@ -690,7 +690,7 @@ Ha az alkalmazás a felhasználókat fiókokba csoportosítja, akkor a fiók azo
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-[Metrikaböngésző](../platform/metrics-charts.md)létrehozhat egy olyan diagramot, amely **felhasználói, hitelesített**és **felhasználói fiókokat**számol fel.
+[Metrikaböngésző](../platform/metrics-charts.md)létrehozhat egy olyan diagramot, amely **felhasználói, hitelesített** és **felhasználói fiókokat** számol fel.
 
 A megadott felhasználóneveket és fiókokat tartalmazó ügyfél-adatpontokat is [megkeresheti](./diagnostic-search.md) .
 
@@ -918,9 +918,9 @@ gameTelemetry.TrackEvent({name: "WinGame"});
 
 Az egyes telemetria-hívások felülbírálják a tulajdonságok szótárában lévő alapértelmezett értékeket.
 
-*JavaScript-alapú webes ügyfelek*esetén használja a JavaScript telemetria inicializáló.
+*JavaScript-alapú webes ügyfelek* esetén használja a JavaScript telemetria inicializáló.
 
-*Ha tulajdonságokat szeretne hozzáadni az összes telemetria*, beleértve a standard gyűjtemények moduljaiból származó adatokkal is, [implementálja `ITelemetryInitializer` ](./api-filtering-sampling.md#add-properties).
+*Ha tulajdonságokat szeretne hozzáadni az összes telemetria*, beleértve a standard gyűjtemények moduljaiból származó adatokkal is, [implementálja `ITelemetryInitializer`](./api-filtering-sampling.md#add-properties).
 
 ## <a name="sampling-filtering-and-processing-telemetry"></a>Telemetria mintavételezése, szűrése és feldolgozása
 
@@ -1063,7 +1063,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="telemetrycontext"></a>TelemetryContext
 
-A TelemetryClient rendelkezik egy környezeti tulajdonsággal, amely az összes telemetria-adattal együtt elküldett értékeket tartalmazza. Ezeket általában a standard telemetria modulok határozzák meg, de saját maguk is megadhatók. Példa:
+A TelemetryClient rendelkezik egy környezeti tulajdonsággal, amely az összes telemetria-adattal együtt elküldett értékeket tartalmazza. Ezeket általában a standard telemetria modulok határozzák meg, de saját maguk is megadhatók. Például:
 
 ```csharp
 telemetry.Context.Operation.Name = "MyOperationName";
@@ -1115,7 +1115,7 @@ Az adatok megőrzési időtartamának megállapításához tekintse meg az [adat
 
     Igen, az [adatelérési API](https://dev.applicationinsights.io/). Az adatok kinyerésének egyéb módjai közé tartozik az [elemzésből való exportálás Power bi](./export-power-bi.md) és a [folyamatos exportálás](./export-telemetry.md).
 
-## <a name="next-steps"></a><a name="next"></a>Következő lépések
+## <a name="next-steps"></a><a name="next"></a>További lépések
 
 * [Események és naplók keresése](./diagnostic-search.md)
 * [Hibaelhárítás](../faq.md)

@@ -1,27 +1,22 @@
 ---
-title: A felügyelt fejlesztői portál elérése és testreszabása – Azure API Management | Microsoft Docs
-description: Megtudhatja, hogyan használhatja a API Management a fejlesztői portál felügyelt verzióját.
+title: Oktatóanyag – a fejlesztői portál elérése és testreszabása – Azure API Management | Microsoft Docs
+description: Kövesse ezt az oktatóanyagot, amelyből megtudhatja, hogyan szabhatja testre a API Management fejlesztői portált, amely egy automatikusan létrehozott, teljesen testreszabható webhely, amely az API-k dokumentációját tartalmazza.
 services: api-management
-documentationcenter: API Management
 author: mikebudzynski
-manager: cfowler
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 03/05/2020
+ms.topic: tutorial
+ms.date: 11/16/2020
 ms.author: apimpm
-ms.openlocfilehash: 3ceb8fd154e8ad533f4bf6bc9eb0ec3900749f8b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 90544fbafe7393630c3f3fbc694ae367eccb7f90
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075365"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012977"
 ---
-# <a name="access-and-customize-developer-portal"></a>A fejlesztői portál elérése és testreszabása
+# <a name="tutorial-access-and-customize-the-developer-portal"></a>Oktatóanyag: a fejlesztői portál elérése és testreszabása
 
-A fejlesztői portál egy automatikusan létrehozott, teljesen testreszabható webhely, amely az API-k dokumentációját tartalmazza. Ahol az API-felhasználók felfedezhetik az API-kat, megtudhatják, hogyan használhatják őket, és hogyan kérhetnek hozzáférést.
+A *fejlesztői portál* egy automatikusan létrehozott, teljesen testreszabható webhely, amely az API-k dokumentációját tartalmazza. Ahol az API-felhasználók felfedezhetik az API-kat, megtudhatják, hogyan használhatják őket, és hogyan kérhetnek hozzáférést.
 
 Az oktatóanyag a következőket ismerteti:
 
@@ -34,7 +29,7 @@ Az oktatóanyag a következőket ismerteti:
 
 A fejlesztői portálról az [Azure API Management fejlesztői portál áttekintésében](api-management-howto-developer-portal.md)talál további információt.
 
-![API Management fejlesztői portál – felügyeleti mód](media/api-management-howto-developer-portal-customize/cover.png)
+:::image type="content" source="media/api-management-howto-developer-portal-customize/cover.png" alt-text="API Management fejlesztői portál – rendszergazdai mód" border="false":::
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -47,44 +42,47 @@ A fejlesztői portálról az [Azure API Management fejlesztői portál áttekint
 
 Kövesse az alábbi lépéseket a portál felügyelt verziójának eléréséhez.
 
-1. Nyissa meg a Azure Portal API Management Service-példányát.
+1. A [Azure Portal](https://portal.azure.com)navigáljon a API Management-példányhoz.
 1. Kattintson a **fejlesztői portál** gombra a felső navigációs sávon. Megnyílik a portál felügyeleti verzióját tartalmazó új böngésző lap.
 
 ## <a name="understand-the-portals-administrative-interface"></a>A portál felügyeleti felületének megismerése
 
 ### <a name="default-content"></a>Alapértelmezett tartalom 
 
-Ha első alkalommal éri el a portált, az alapértelmezett tartalom automatikusan kiépítve lesz a háttérben. Az alapértelmezett tartalom úgy lett kialakítva, hogy bemutassa a portál képességeit, és minimálisra csökkentse a portál személyre szabásához szükséges testreszabások mennyiségét. Ha többet szeretne megtudni arról, hogy mit tartalmaz a portál tartalma az [Azure API Management fejlesztői portálon – áttekintés](api-management-howto-developer-portal.md).
+Ha első alkalommal éri el a portált, a rendszer automatikusan kiépíti az alapértelmezett tartalmat a háttérben. Az alapértelmezett tartalom úgy lett kialakítva, hogy bemutassa a portál képességeit, és csökkentse a portál személyre szabásához szükséges testreszabásokat. Ha többet szeretne megtudni arról, hogy mit tartalmaz a portál tartalma az [Azure API Management fejlesztői portálon – áttekintés](api-management-howto-developer-portal.md).
 
 ### <a name="visual-editor"></a>Vizuális szerkesztő
 
-Testreszabhatja a portál tartalmát a vizualizáció szerkesztővel. A bal oldali menüben a lapok, a média, az elrendezések, a menük, a stílusok és a webhely beállításai hozhatók létre vagy módosíthatók. Az alsó menüelemek lehetővé teszik a munkaterületek (például a mobil vagy az asztali) közötti váltást, megtekintheti a portál elemeit a hitelesített vagy névtelen felhasználók számára, vagy mentheti vagy visszavonhatja a műveleteket.
-
-A laphoz egy pluszjelet tartalmazó kék ikonra kattintva adhat hozzá sorokat. A widgetek (például szöveg, képek vagy API-k) hozzáadhatók egy pluszjelet tartalmazó szürke ikon megnyomásával. Egy oldalon átrendezheti az elemeket a fogd és vidd interakció használatával. 
+Testreszabhatja a portál tartalmát a vizualizáció szerkesztővel. 
+* A bal oldali menüben a lapok, a média, az elrendezések, a menük, a stílusok és a webhely beállításai hozhatók létre vagy módosíthatók. 
+* Az alsó menüelemek lehetővé teszik a munkaterületek (például a mobil vagy az asztali) közötti váltást, megtekintheti a portál elemeit a hitelesített vagy névtelen felhasználók számára, vagy mentheti vagy visszavonhatja a műveleteket.
+* Sorok hozzáadása egy laphoz egy pluszjelet tartalmazó kék ikonra kattintva. 
+* A widgetek (például szöveg, képek vagy API-k) hozzáadhatók egy pluszjelet tartalmazó szürke ikon megnyomásával.
+* Egy oldalon lévő elemek átrendezése a fogd és vidd interakcióval. 
 
 ### <a name="layouts-and-pages"></a>Elrendezések és lapok
 
-![Lapok és elrendezések](media/api-management-howto-developer-portal-customize/pages-layouts.png)
+:::image type="content" source="media/api-management-howto-developer-portal-customize/pages-layouts.png" alt-text="Lapok és elrendezések" border="false":::
 
-Az elrendezések határozzák meg a lapok megjelenítésének módját. Az alapértelmezett tartalomban például két elrendezés létezik – az egyik a kezdőlapra, a másik pedig az összes többi oldalra vonatkozik.
+Az elrendezések határozzák meg a lapok megjelenítésének módját. Az alapértelmezett tartalomban például két elrendezés van: az egyik a kezdőlapra, a másik pedig az összes többi oldalra vonatkozik.
 
-A rendszer egy elrendezést alkalmaz egy lapra úgy, hogy az URL-sablonját a lap URL-címéhez társítja. A (z) URL-sablonnal ellátott elrendezés például a következő `/wiki/*` URL-címen lévő összes oldalra vonatkozik `/wiki/` : `/wiki/getting-started` , `/wiki/styles` stb.
+A rendszer egy elrendezést alkalmaz egy lapra úgy, hogy az URL-sablonját a lap URL-címéhez társítja. Például egy URL-sablonnal rendelkező elrendezés lesz `/wiki/*` alkalmazva az `/wiki/` URL-cím szegmensét tartalmazó összes oldalra: `/wiki/getting-started` , `/wiki/styles` stb.
 
-A fenti képen az elrendezéshez tartozó tartalom kék színnel van megjelölve, míg a lap piros színnel van megjelölve. A menüpontok vannak megjelölve.
+Az előző képen az elrendezéshez tartozó tartalom kék színnel van megjelölve, míg a lap piros színnel van megjelölve. A menüpontok vannak megjelölve.
 
 ### <a name="styling-guide"></a>Útmutató a stílushoz
 
-![Útmutató a stílushoz](media/api-management-howto-developer-portal-customize/styling-guide.png)
+:::image type="content" source="media/api-management-howto-developer-portal-customize/styling-guide.png" alt-text="Útmutató a stílushoz" border="false":::
 
 A Styling útmutató tervezőkkel létrehozott panel. Lehetővé teszi a portál összes vizualizációs elemének áttekintését és formázását. A stílus hierarchikus – számos elem örökli a tulajdonságokat a többi elemtől. A gomb elemei például a szöveg és a háttér színét használják. A gomb színének módosításához módosítania kell az eredeti szín változatát.
 
-Egy változat szerkesztéséhez kattintson rá, és válassza ki a tetején megjelenő ceruza ikont. Miután elvégezte a módosításokat az előugró ablakban, zárjuk le.
+Egy változat szerkesztéséhez jelölje ki azt, és válassza ki a tetején megjelenő ceruza ikont. Miután elvégezte a módosításokat az előugró ablakban, zárjuk le.
 
 ### <a name="save-button"></a>Mentés gomb
 
-![Mentés gomb](media/api-management-howto-developer-portal-customize/save-button.png)
+:::image type="content" source="media/api-management-howto-developer-portal-customize/save-button.png" alt-text="Mentés gomb" border="false":::
 
-Amikor változást hajt végre a portálon, manuálisan kell mentenie a **Save (Mentés** ) gombra a lenti menüben. A módosítások mentésekor a rendszer automatikusan feltölti a módosított tartalmat a API Management szolgáltatásba.
+Amikor változást hajt végre a portálon, manuálisan kell mentenie a **Save (Mentés** ) gombra a menü alján, vagy a [Ctrl] + [S] billentyűkombinációt. A módosítások mentésekor a rendszer automatikusan feltölti a módosított tartalmat a API Management szolgáltatásba.
 
 ## <a name="customize-the-portals-content"></a>A portál tartalmának testreszabása
 
@@ -95,7 +93,7 @@ Ahhoz, hogy a portál elérhető legyen a látogatók számára, testre kell sza
 
 ### <a name="home-page"></a>Kezdőlap
 
-Az alapértelmezett **kezdőlapot** a rendszer a próbabábu tartalmával tölti ki. Eltávolíthatja a teljes szakaszt a tartalommal, vagy megtarthatja a struktúrát, és egyenként is módosíthatja az elemeket. Cserélje le a generált szöveget és képeket a saját adataira, és győződjön meg arról, hogy a hivatkozások a kívánt helyekre mutatnak.
+Az alapértelmezett **Kezdőlap** helyőrző tartalommal van kitöltve. Eltávolíthatja a tartalmat tartalmazó teljes szakaszt, vagy megtarthatja a struktúrát, és egyenként is módosíthatja az elemeket. Cserélje le a generált szöveget és képeket a saját adataira, és győződjön meg arról, hogy a hivatkozások a kívánt helyekre mutatnak.
 
 ### <a name="layouts"></a>Elrendezések
 
@@ -107,32 +105,44 @@ Bár nem kell módosítania a stílusokat, érdemes lehet módosítani bizonyos 
 
 ### <a name="customization-example"></a>Testreszabási példa
 
-Az alábbi videóban bemutatjuk, hogyan szerkesztheti a portál tartalmát, testreszabhatja a webhely megjelenését, és közzéteheti a módosításokat.
+A következő videóban bemutatjuk, hogyan szerkesztheti a portál tartalmát, testreszabhatja a webhely megjelenését, és közzéteheti a módosításokat.
 
 > [!VIDEO https://www.youtube.com/embed/5mMtUSmfUlw]
 
-## <a name="publish-the-portal"></a><a name="publish"> </a>A portál közzététele
+## <a name="publish-the-portal"></a><a name="publish"></a> A portál közzététele
 
-Ahhoz, hogy a portál és a legújabb módosításai elérhetők legyenek a látogatók számára, közzé kell tennie.
+Ahhoz, hogy a portál és a legújabb módosításai elérhetők legyenek a látogatók számára, *közzé* kell tennie. A portált a portál felügyeleti felületén vagy a Azure Portal teheti közzé.
 
-1. Győződjön meg róla, hogy mentette a módosításokat a **Save (Mentés** ) ikonra kattintva.
-1. A menü **műveletek** területén kattintson a **Közzététel webhely** elemre. A művelet eltarthat néhány percig.  
-    ![Portál közzététele](media/api-management-howto-developer-portal-customize/publish-portal.png)
+### <a name="publish-from-the-administrative-interface"></a>Közzététel a felügyeleti felületen
+
+1. A **Mentés** ikon kiválasztásával ellenőrizze, hogy mentette-e a módosításokat.
+1. A menü **műveletek** területén válassza a **Közzététel webhely** lehetőséget. A művelet eltarthat néhány percig.  
+
+    :::image type="content" source="media/api-management-howto-developer-portal-customize/publish-portal.png" alt-text="Portál közzététele" border="false":::
+
+### <a name="publish-from-the-azure-portal"></a>Közzététel a Azure Portal
+
+1. A [Azure Portal](https://portal.azure.com)navigáljon a API Management-példányhoz.
+1. A bal oldali menüben a **fejlesztői portál** területen válassza a **portál áttekintés** elemet.
+1. A **portál áttekintés** ablakában válassza a **Közzététel** lehetőséget.
+
+    :::image type="content" source="media/api-management-howto-developer-portal-customize/pubish-portal-azure-portal.png" alt-text="Portál közzététele Azure Portal":::
 
 > [!NOTE]
-> A portált újra közzé kell tenni API Management szolgáltatás konfigurációjának módosítása után, például egy egyéni tartomány hozzárendelését, az identitás-szolgáltatók frissítését, a delegálás beállítását, a bejelentkezés és a termék használati feltételeinek megadását stb.
+> A portált újra közzé kell tenni API Management szolgáltatás konfigurációjának módosítása után. Tegyük fel például, hogy újból közzéteszi a portált egy egyéni tartomány kiosztása, az identitás-szolgáltatók frissítése, a delegálás beállítása vagy a bejelentkezés és a termékek megadása után.
+
 
 ## <a name="visit-the-published-portal"></a>A közzétett portál meglátogatása
 
-A portál közzététele után a felügyeleti panellel megegyező URL-címen férhet hozzá, például: `https://contoso-api.developer.azure-api.net` . Megtekintheti egy különálló böngésző-munkamenetben (inkognitóban/privát böngészési mód) külső látogatóként.
+A portál közzététele után a felügyeleti panellel megegyező URL-címen férhet hozzá, például: `https://contoso-api.developer.azure-api.net` . Megtekintheti egy különálló böngésző-munkamenetben (inkognitóban vagy privát böngészési mód használatával) külső látogatóként.
 
 ## <a name="apply-the-cors-policy-on-apis"></a>A CORS szabályzat alkalmazása az API-kra
 
-Engedélyeznie kell a CORS (több eredetű erőforrás-megosztást) az API-kon, hogy a portál látogatói a beépített interaktív konzolon keresztül tesztelje az API-kat. További részletekért tekintse meg [ezt a dokumentációt](api-management-howto-developer-portal.md#cors) .
+Annak érdekében, hogy a portál látogatói a beépített interaktív konzolon tesztelik az API-kat, engedélyezze a CORS (több eredetű erőforrás-megosztás) az API-kon. Részletekért tekintse meg az [Azure API Management fejlesztői portál áttekintését](api-management-howto-developer-portal.md#cors).
 
-## <a name="next-steps"></a>Következő lépések
-- [Optimalizálja és mentse a Felhőbeli kiadásait](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+## <a name="next-steps"></a>További lépések
 
 További információ a fejlesztői portálról:
 
 - [Az Azure API Management fejlesztői portál áttekintése](api-management-howto-developer-portal.md)
+- [Migrálás az új fejlesztői portálra](developer-portal-deprecated-migration.md) az elavult örökölt portálról.

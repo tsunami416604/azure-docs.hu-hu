@@ -4,11 +4,11 @@ description: Ez a cikk azt ismerteti, hogyan konfigurálható a hozzáférés a 
 ms.topic: conceptual
 ms.date: 10/20/2020
 ms.openlocfilehash: 9503fc26c22d7dbff13c5754288f577b7bb3242f
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331311"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010996"
 ---
 # <a name="network-security-for-azure-event-hubs"></a>Hálózati biztonság az Azure Event Hubs 
 Ez a cikk azt ismerteti, hogyan használható az Azure Event Hubs a következő biztonsági funkciókkal: 
@@ -26,7 +26,7 @@ A szolgáltatás-címkék használatával hálózati [biztonsági csoportokon](.
 
 | Szolgáltatáscímke | Cél | Használhat bejövő vagy kimenő adatforgalmat? | Lehet regionális? | Használható a Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **EventHub** | Azure Event Hubs. | Kimenő | Igen | Igen |
+| **EventHub** | Azure Event Hubs. | Kimenő | Igen | Yes |
 
 
 ## <a name="ip-firewall"></a>IP-tűzfal 
@@ -60,7 +60,7 @@ Ez azt jelenti, hogy a biztonsági szempontból bizalmas Felhőbeli megoldások 
 
 A **virtuális hálózati szabályok** a tűzfal biztonsági funkciója, amely azt szabályozza, hogy az Azure Event Hubs-névtér fogadjon-e kapcsolatokat egy adott virtuális hálózati alhálózatból.
 
-Egy Event Hubs névtér egy virtuális hálózathoz kötése kétlépéses folyamat. Először létre kell hoznia egy **virtuális hálózati szolgáltatás végpontját** egy virtuális hálózat alhálózatán, és engedélyeznie kell azt a **Microsoft. EventHub** számára a [szolgáltatási végpont áttekintése című](../virtual-network/virtual-network-service-endpoints-overview.md) cikkben leírtak szerint. A szolgáltatás végpontjának hozzáadása után a Event Hubs névteret egy **virtuális hálózati szabállyal**kell kötnie.
+Egy Event Hubs névtér egy virtuális hálózathoz kötése kétlépéses folyamat. Először létre kell hoznia egy **virtuális hálózati szolgáltatás végpontját** egy virtuális hálózat alhálózatán, és engedélyeznie kell azt a **Microsoft. EventHub** számára a [szolgáltatási végpont áttekintése című](../virtual-network/virtual-network-service-endpoints-overview.md) cikkben leírtak szerint. A szolgáltatás végpontjának hozzáadása után a Event Hubs névteret egy **virtuális hálózati szabállyal** kell kötnie.
 
 A virtuális hálózati szabály a Event Hubs névtér egy virtuális hálózati alhálózattal való társítása. Amíg a szabály létezik, az alhálózathoz kötött összes munkaterhelés hozzáférést kap a Event Hubs névtérhez. Event Hubs maga soha nem hoz létre kimenő kapcsolatokat, nem kell elérnie a hozzáférést, ezért a szabály engedélyezésével soha nem kap hozzáférést az alhálózathoz.
 

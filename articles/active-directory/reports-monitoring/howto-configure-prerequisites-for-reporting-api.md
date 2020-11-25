@@ -18,11 +18,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cabf5f40bc17828bc37b5c094de7b90de3ec8b26
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130221"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013054"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>A Azure Active Directory jelentési API elérésének előfeltételei
 
@@ -106,11 +106,11 @@ A következő szakasz az API-k lépéseit sorolja fel. Ha nem szeretne hozzáfé
 **Az API-k használatának engedélyezése az alkalmazás számára:**
 
 
-1. Válassza az **API-engedélyek** lehetőséget, majd **adjon hozzá egy engedélyt** . 
+1. Válassza az **API-engedélyek** lehetőséget, majd **adjon hozzá egy engedélyt**. 
 
     ![Képernyőfelvétel: a P I engedélyek lap, amelyen kiválaszthatja az engedély hozzáadása lehetőséget.](./media/howto-configure-prerequisites-for-reporting-api/05.png)
 
-2. Az **API-engedélyek kérése lapon** keresse meg a **támogatási örökölt API** - **Azure Active Directory gráfot** . 
+2. Az **API-engedélyek kérése lapon** keresse meg a **támogatási örökölt API** - **Azure Active Directory gráfot**. 
 
     ![A képernyőképen a P I engedély kérése oldal jelenik meg, ahol kiválaszthatja Azure Active Directory gráfot.](./media/howto-configure-prerequisites-for-reporting-api/06.png)
 
@@ -161,7 +161,7 @@ Ezekre az értékekre szüksége lesz a jelentéskészítési API-hoz való hív
 
 2. Válassza ki az alkalmazást az alkalmazás **regisztrációi** lapján.
 
-3. Az alkalmazás oldalon navigáljon az **alkalmazás-azonosítóhoz** , és válassza a **Másolás gombra** .
+3. Az alkalmazás oldalon navigáljon az **alkalmazás-azonosítóhoz** , és válassza a **Másolás gombra**.
 
     ![A képernyőképen a P I alkalmazásról szóló jelentés látható, amelyen átmásolhatja az I D alkalmazást.](./media/howto-configure-prerequisites-for-reporting-api/11.png) 
 
@@ -185,7 +185,7 @@ Ezekre az értékekre szüksége lesz a jelentéskészítési API-hoz való hív
 
     a. A **Leírás** szövegmezőbe írja be a következőt: `Reporting API` .
 
-    b. Ahogy **lejár** , válassza **a 2 év** lehetőséget.
+    b. Ahogy **lejár**, válassza **a 2 év** lehetőséget.
 
     c. Kattintson a **Mentés** gombra.
 
@@ -221,7 +221,7 @@ A bejelentkezési jelentések eléréséhez Azure Active Directory Premium 1 (P1
 
 Az előfeltételekben ismertetett lépéseket követve [férhet hozzá a Azure Active Directory jelentési API](howto-configure-prerequisites-for-reporting-api.md) -hoz annak biztosításához, hogy az alkalmazás a megfelelő engedélyekkel fusson. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Adatok lekérése az Azure Active Directory Reporting API és tanúsítványok használatával](tutorial-access-api-with-certificates.md)
 * [Naplózási API-referenciák](/graph/api/resources/directoryaudit?view=graph-rest-beta) 

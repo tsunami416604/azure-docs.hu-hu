@@ -9,11 +9,11 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: af1850f77c1d13c761bfc2a143074b5067b349b4
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014052"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013003"
 ---
 # <a name="analysis-services-database-backup-and-restore"></a>Adatbázis biztonsági mentése és visszaállítása Analysis Services
 
@@ -25,7 +25,7 @@ A táblázatos modell adatbázisainak biztonsági mentése Azure Analysis Servic
 > 
 
 > [!NOTE]
-> Ha a Storage-fiók egy másik régióban található, konfigurálja a Storage-fiók tűzfala beállításait, hogy engedélyezze a hozzáférést a **kiválasztott hálózatokból**. A tűzfal **címtartomány**területen válassza ki az IP-címtartományt azon régió számára, amelyen a Analysis Services-kiszolgáló található. A Storage-fiók tűzfala beállításainak konfigurálása az összes hálózatról való hozzáférés engedélyezéséhez, azonban a kiválasztott hálózatok kiválasztása és az IP-címtartomány megadása javasolt. További információ: [hálózati kapcsolat – gyakori kérdések](analysis-services-network-faq.md#backup-and-restore).
+> Ha a Storage-fiók egy másik régióban található, konfigurálja a Storage-fiók tűzfala beállításait, hogy engedélyezze a hozzáférést a **kiválasztott hálózatokból**. A tűzfal **címtartomány** területen válassza ki az IP-címtartományt azon régió számára, amelyen a Analysis Services-kiszolgáló található. A Storage-fiók tűzfala beállításainak konfigurálása az összes hálózatról való hozzáférés engedélyezéséhez, azonban a kiválasztott hálózatok kiválasztása és az IP-címtartomány megadása javasolt. További információ: [hálózati kapcsolat – gyakori kérdések](analysis-services-network-faq.md#backup-and-restore).
 
 A biztonsági mentések. ABF kiterjesztéssel lesznek mentve. A memóriában tárolt táblázatos modellek esetében a modellre vonatkozó adatokat és metaadatokat is tárolja a rendszer. A DirectQuery táblázatos modellek esetében csak a modell metaadatai vannak tárolva. A kiválasztott beállításoktól függően a biztonsági másolatok tömörítve és titkosítva is lehetnek.
 
@@ -35,11 +35,11 @@ A biztonsági mentés előtt konfigurálnia kell a kiszolgáló tárolási beál
 
 
 ### <a name="to-configure-storage-settings"></a>A tárolási beállítások konfigurálása
-1.  Azure Portal > **Beállítások**területen kattintson a **biztonsági mentés**elemre.
+1.  Azure Portal > **Beállítások** területen kattintson a **biztonsági mentés** elemre.
 
     ![Biztonsági másolatok a beállításokban](./media/analysis-services-backup/aas-backup-backups.png)
 
-2.  Kattintson az **engedélyezve**elemre, majd a **tárolási beállítások**elemre.
+2.  Kattintson az **engedélyezve** elemre, majd a **tárolási beállítások** elemre.
 
     ![Engedélyezés](./media/analysis-services-backup/aas-backup-enable.png)
 
@@ -59,7 +59,7 @@ A biztonsági mentés előtt konfigurálnia kell a kiszolgáló tárolási beál
 
 1. A SSMS kattintson a jobb gombbal egy adatbázisra, > **biztonsági mentést**.
 
-2. A **biztonsági mentési adatbázis**  >  **biztonságimásolat-fájljában**kattintson a **Tallózás**gombra.
+2. A **biztonsági mentési adatbázis**  >  **biztonságimásolat-fájljában** kattintson a **Tallózás** gombra.
 
 3. A **fájl mentése másként** párbeszédpanelen ellenőrizze a mappa elérési útját, majd írja be a biztonságimásolat-fájl nevét. 
 
@@ -89,9 +89,9 @@ Visszaállításkor a biztonságimásolat-fájlnak a kiszolgálóhoz konfigurál
 
 ### <a name="to-restore-by-using-ssms"></a>Visszaállítás a SSMS használatával
 
-1. A SSMS kattintson a jobb gombbal egy adatbázisra, > a **visszaállítás**elemre.
+1. A SSMS kattintson a jobb gombbal egy adatbázisra, > a **visszaállítás** elemre.
 
-2. A **biztonsági mentési adatbázis** párbeszédpanel biztonságimásolat- **fájl**területén kattintson a **Tallózás**gombra.
+2. A **biztonsági mentési adatbázis** párbeszédpanel biztonságimásolat- **fájl** területén kattintson a **Tallózás** gombra.
 
 3. Az **adatbázisfájlok megkeresése** párbeszédpanelen válassza ki a visszaállítani kívánt fájlt.
 

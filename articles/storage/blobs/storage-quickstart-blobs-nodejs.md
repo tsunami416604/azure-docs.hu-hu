@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 54bf6265a5b440e5c450d21b192acc2f7024f938
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ed3a88dbca1788a5c5a265fe91bdd5e88ae1fe36
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91307534"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012765"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>Gyors útmutató: Blobok kezelése a JavaScript V12 SDK-val Node.js
 
@@ -24,7 +24,7 @@ További források:
 * [API-referenciadokumentáció](/javascript/api/@azure/storage-blob)
 * [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)
 * [Csomag (node Package Manager)](https://www.npmjs.com/package/@azure/storage-blob)
-* [Példák](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+* [Példák](../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,7 +40,7 @@ Ebből a szakaszból megtudhatja, hogyan készít elő egy projektet a JavaScrip
 
 ### <a name="create-the-project"></a>A projekt létrehozása
 
-Hozzon létre egy *blob-Gyorsindítás-V12*nevű JavaScript-alkalmazást.
+Hozzon létre egy *blob-Gyorsindítás-V12* nevű JavaScript-alkalmazást.
 
 1. A konzol ablakban (például cmd, PowerShell vagy bash) hozzon létre egy új könyvtárat a projekthez.
 
@@ -54,7 +54,7 @@ Hozzon létre egy *blob-Gyorsindítás-V12*nevű JavaScript-alkalmazást.
     cd blob-quickstart-v12
     ```
 
-1. Hozzon létre egy *package.js*nevű új szövegfájlt. Ez a fájl határozza meg a Node.js projektet. Mentse ezt a fájlt a *blob-Gyorsindítás-V12* könyvtárba. A fájl tartalma:
+1. Hozzon létre egy *package.js* nevű új szövegfájlt. Ez a fájl határozza meg a Node.js projektet. Mentse ezt a fájlt a *blob-Gyorsindítás-V12* könyvtárba. A fájl tartalma:
 
     ```json
     {
@@ -107,7 +107,7 @@ A projekt könyvtárából:
     main().then(() => console.log('Done')).catch((ex) => console.log(ex.message));
     ```
 
-1. Mentse az új fájlt *blob-quickstart-v12.jsként * a *blob-Gyorsindítás-V12* könyvtárba.
+1. Mentse az új fájlt *blob-quickstart-v12.jsként* a *blob-Gyorsindítás-V12* könyvtárba.
 
 [!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
@@ -314,6 +314,6 @@ Az oktatóanyagok, minták, rövid útmutatók és egyéb dokumentációk a köv
 > [!div class="nextstepaction"]
 > [Azure a JavaScript fejlesztői központhoz](/azure/developer/javascript/)
 
-* Az Azure Blob Storage-t használó webalkalmazások üzembe helyezésének megismeréséhez lásd [: oktatóanyag: képadatok feltöltése a felhőbe az Azure Storage](/azure/storage/blobs/storage-upload-process-images?tabs=javascript&preserve-view=true) használatával
+* Az Azure Blob Storage-t használó webalkalmazások üzembe helyezésének megismeréséhez lásd [: oktatóanyag: képadatok feltöltése a felhőbe az Azure Storage](./storage-upload-process-images.md?preserve-view=true&tabs=javascript) használatával
 * Ha szeretné megtekinteni a blob Storage-beli példákat, folytassa az [Azure Blob Storage ügyféloldali kódtár V12 JavaScript-mintáit](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples).
 * További információért lásd az [Azure Blob Storage ügyféloldali kódtárat a javascripthez](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/storage/storage-blob)című témakört.

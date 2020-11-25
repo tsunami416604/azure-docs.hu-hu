@@ -9,11 +9,11 @@ ms.date: 05/22/2020
 ms.author: yegu
 ms.custom: mvc, seo-java-august2019, seo-java-september2019, devx-track-java
 ms.openlocfilehash: edb80ab3107cbd0a5ddd802d56a60ce77affb2f2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088114"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012918"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-java"></a>Gyors útmutató: az Azure cache használata a Redis javában
 
@@ -32,7 +32,7 @@ Ebben a rövid útmutatóban beépíti az Azure cache-t a Redis egy Java-alkalma
 
 ## <a name="setting-up-the-working-environment"></a>A munkahelyi környezet beállítása 
 
-Az operációs rendszertől függően adja hozzá a környezeti változókat az **állomásnévhez** és az **elsődleges elérési kulcshoz** . Nyisson meg egy parancssort vagy egy terminál-ablakot, és állítsa be a következő értékeket:
+Az operációs rendszertől függően adja hozzá a környezeti változókat az **állomásnévhez** és az **elsődleges elérési kulcshoz**. Nyisson meg egy parancssort vagy egy terminál-ablakot, és állítsa be a következő értékeket:
 
 ```CMD 
 set REDISCACHEHOSTNAME=<YOUR_HOST_NAME>.redis.cache.windows.net
@@ -142,7 +142,7 @@ Az alábbi példában a `Message` kulcsot láthatja. A kulcsnak korábban gyors�
 
 ![Befejeződött az Azure cache a Redis alkalmazáshoz](./media/cache-java-get-started/azure-cache-redis-complete.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha azt tervezi, hogy a következő oktatóanyaggal folytatja, megtarthatja és újból felhasználhatja az ebben a rövid útmutatóban létrehozott erőforrásokat.
 
@@ -162,7 +162,7 @@ Ha azonban befejezte az oktatóanyag mintaalkalmazásának használatát, a díj
 
 A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne foglalt erőforrásokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja az Azure cache-t egy Java-alkalmazásból származó Redis. Folytassa a következő rövid útmutatóval, hogy az Azure cache-t használja a Redis egy ASP.NET-webalkalmazással.
 

@@ -6,11 +6,11 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 02/16/2020
 ms.openlocfilehash: 110d4a3219b4898fa6f138e29f1112d7134f674c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340087"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012339"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Metrikus riasztások dinamikus küszöbértékekkel Azure Monitor
 
@@ -103,20 +103,20 @@ A következő elemek ajánlott eljárások arra vonatkozóan, hogyan konfigurál
 
 ### <a name="dynamic-thresholds-on-virtual-machine-cpu-percentage-metrics"></a>Dinamikus küszöbértékek a virtuális gép CPU-százalékos metrikái esetében
 
-1. [Azure Portal](https://portal.azure.com)kattintson a **figyelés**elemre. A figyelő nézet egyetlen nézetben összesíti az összes figyelési beállítást és az adatait.
+1. [Azure Portal](https://portal.azure.com)kattintson a **figyelés** elemre. A figyelő nézet egyetlen nézetben összesíti az összes figyelési beállítást és az adatait.
 
-2. Kattintson a **riasztások** , majd az **+ új riasztási szabály**elemre.
+2. Kattintson a **riasztások** , majd az **+ új riasztási szabály** elemre.
 
     > [!TIP]
-    > A legtöbb erőforrás-panel a **figyelés**alatt is tartalmaz **riasztásokat** az erőforrás menüjében, és onnan is létrehozhat riasztásokat.
+    > A legtöbb erőforrás-panel a **figyelés** alatt is tartalmaz **riasztásokat** az erőforrás menüjében, és onnan is létrehozhat riasztásokat.
 
-3. Kattintson a **cél kiválasztása**lehetőségre, a betöltött környezet ablaktáblán válassza ki azt a cél erőforrást, amelyre a riasztást szeretné használni. Az **előfizetés** és a **"Virtual Machines" erőforrástípus** legördülő lista használatával keresse meg a figyelni kívánt erőforrást. Az erőforrást a keresősáv használatával is megkeresheti.
+3. Kattintson a **cél kiválasztása** lehetőségre, a betöltött környezet ablaktáblán válassza ki azt a cél erőforrást, amelyre a riasztást szeretné használni. Az **előfizetés** és a **"Virtual Machines" erőforrástípus** legördülő lista használatával keresse meg a figyelni kívánt erőforrást. Az erőforrást a keresősáv használatával is megkeresheti.
 
-4. A cél erőforrás kiválasztása után kattintson a **feltétel hozzáadása**elemre.
+4. A cél erőforrás kiválasztása után kattintson a **feltétel hozzáadása** elemre.
 
 5. Válassza ki a **"CPU-százalék" értéket**.
 
-6. Szükség esetén pontosíthatja a metrikát az **időszak** és az **Összesítés**beállításával. A rendszer nem használja fel a "maximális" összesítési típust ehhez a metrikai típushoz, mert kevésbé jellemző a viselkedésre. A "maximális" összesítési típusnál a statikus küszöbérték talán megfelelőbb.
+6. Szükség esetén pontosíthatja a metrikát az **időszak** és az **Összesítés** beállításával. A rendszer nem használja fel a "maximális" összesítési típust ehhez a metrikai típushoz, mert kevésbé jellemző a viselkedésre. A "maximális" összesítési típusnál a statikus küszöbérték talán megfelelőbb.
 
 7. Ekkor megjelenik egy diagram a metrikához az elmúlt 6 órában. A riasztás paramétereinek megadása:
     1. **Feltétel típusa** – válassza a "dinamikus" lehetőséget.
@@ -129,7 +129,7 @@ A következő elemek ajánlott eljárások arra vonatkozóan, hogyan konfigurál
 
 9. Kattintson a **Kész** gombra.
 
-10. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását**és **súlyosságát**.
+10. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását** és **súlyosságát**.
 
 11. Adjon hozzá egy műveleti csoportot a riasztáshoz egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
 
@@ -140,20 +140,20 @@ A következő elemek ajánlott eljárások arra vonatkozóan, hogyan konfigurál
 
 ### <a name="dynamic-thresholds-on-application-insights-http-request-execution-time"></a>Dinamikus küszöbértékek Application Insights HTTP-kérelem végrehajtási idején
 
-1. [Azure Portal](https://portal.azure.com)kattintson a **figyelés**elemre. A figyelő nézet egyetlen nézetben összesíti az összes figyelési beállítást és az adatait.
+1. [Azure Portal](https://portal.azure.com)kattintson a **figyelés** elemre. A figyelő nézet egyetlen nézetben összesíti az összes figyelési beállítást és az adatait.
 
-2. Kattintson a **riasztások** , majd az **+ új riasztási szabály**elemre.
+2. Kattintson a **riasztások** , majd az **+ új riasztási szabály** elemre.
 
     > [!TIP]
-    > A legtöbb erőforrás-panel a **figyelés**alatt is tartalmaz **riasztásokat** az erőforrás menüjében, és onnan is létrehozhat riasztásokat.
+    > A legtöbb erőforrás-panel a **figyelés** alatt is tartalmaz **riasztásokat** az erőforrás menüjében, és onnan is létrehozhat riasztásokat.
 
-3. Kattintson a **cél kiválasztása**lehetőségre, a betöltött környezet ablaktáblán válassza ki azt a cél erőforrást, amelyre a riasztást szeretné használni. Az **előfizetés** és a **"Application Insights" erőforrástípus** legördülő lista használatával keresse meg a figyelni kívánt erőforrást. Az erőforrást a keresősáv használatával is megkeresheti.
+3. Kattintson a **cél kiválasztása** lehetőségre, a betöltött környezet ablaktáblán válassza ki azt a cél erőforrást, amelyre a riasztást szeretné használni. Az **előfizetés** és a **"Application Insights" erőforrástípus** legördülő lista használatával keresse meg a figyelni kívánt erőforrást. Az erőforrást a keresősáv használatával is megkeresheti.
 
-4. A cél erőforrás kiválasztása után kattintson a **feltétel hozzáadása**elemre.
+4. A cél erőforrás kiválasztása után kattintson a **feltétel hozzáadása** elemre.
 
 5. Válassza a **"http-kérelem végrehajtási ideje"** lehetőséget.
 
-6. Szükség esetén pontosíthatja a metrikát az **időszak** és az **Összesítés**beállításával. A rendszer nem használja fel a "maximális" összesítési típust ehhez a metrikai típushoz, mert kevésbé jellemző a viselkedésre. A "maximális" összesítési típusnál a statikus küszöbérték talán megfelelőbb.
+6. Szükség esetén pontosíthatja a metrikát az **időszak** és az **Összesítés** beállításával. A rendszer nem használja fel a "maximális" összesítési típust ehhez a metrikai típushoz, mert kevésbé jellemző a viselkedésre. A "maximális" összesítési típusnál a statikus küszöbérték talán megfelelőbb.
 
 7. Ekkor megjelenik egy diagram a metrikához az elmúlt 6 órában. A riasztás paramétereinek megadása:
     1. **Feltétel típusa** – válassza a "dinamikus" lehetőséget.
@@ -164,7 +164,7 @@ A következő elemek ajánlott eljárások arra vonatkozóan, hogyan konfigurál
 
 9. Kattintson a **Kész** gombra.
 
-10. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását**és **súlyosságát**.
+10. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását** és **súlyosságát**.
 
 11. Adjon hozzá egy műveleti csoportot a riasztáshoz egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
 

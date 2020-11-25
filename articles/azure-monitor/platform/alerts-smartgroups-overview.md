@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/15/2018
 ms.openlocfilehash: dff59ac207e6078a264d1350d24c9e6f4a461d78
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108779"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012884"
 ---
 # <a name="smart-groups"></a>Intelligens csoportok
 
@@ -23,7 +23,7 @@ Megtekintheti az intelligens csoportok részleteit, és a riasztásokhoz hasonl�
 
 ## <a name="smart-group-state"></a>Intelligens csoport állapota
 
-Az intelligens csoport állapota a riasztási állapothoz hasonló fogalom, amely lehetővé teszi a megoldási folyamat kezelését egy intelligens csoport szintjén. Hasonlóan a riasztási állapothoz, amikor egy intelligens csoportot hoznak létre, az **új** állapottal rendelkezik, amely módosítható a **nyugtázott** vagy a **lezárt**értékre is.
+Az intelligens csoport állapota a riasztási állapothoz hasonló fogalom, amely lehetővé teszi a megoldási folyamat kezelését egy intelligens csoport szintjén. Hasonlóan a riasztási állapothoz, amikor egy intelligens csoportot hoznak létre, az **új** állapottal rendelkezik, amely módosítható a **nyugtázott** vagy a **lezárt** értékre is.
 
 A következő intelligens csoportos állapotok támogatottak.
 
@@ -31,7 +31,7 @@ A következő intelligens csoportos állapotok támogatottak.
 |:---|:---|
 | Új | A probléma nemrég észlelhető, és még nem lett ellenőrizve. |
 | Nyugtázva | A rendszergazda áttekintette az intelligens csoportot, és megkezdte a munkát. |
-| Zárt | A probléma megoldódott. Egy intelligens csoport bezárása után újra megnyithatja azt egy másik állapotba való módosításával. |
+| Lezárt | A probléma megoldódott. Egy intelligens csoport bezárása után újra megnyithatja azt egy másik állapotba való módosításával. |
 
 [Megtudhatja, hogyan módosíthatja az intelligens csoport állapotát.](./alerts-managing-alert-states.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
 

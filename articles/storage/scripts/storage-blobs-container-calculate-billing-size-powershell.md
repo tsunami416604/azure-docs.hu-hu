@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: fryu
-ms.openlocfilehash: f8bd47a8fde700382f9789ab1c77ff35e9b1f4f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d921a968f50f64788ccbd7637bc04c8492a3f90
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86999530"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96010894"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>BLOB-tároló teljes számlázási méretének kiszámítása
 
@@ -31,7 +31,7 @@ Ez a szkript kiszámítja egy tároló méretét az Azure Blob Storage-ban a sz�
 
 A blob-tároló teljes mérete magában foglalja a tároló méretét, valamint a tárolóban lévő összes blob méretét.
 
-A következő szakasz ismerteti, hogyan számítja ki a tárolási kapacitást a blob-tárolók és a Blobok számára.A következő szakaszban a len (X) a karakterláncban szereplő karakterek számát jelenti.
+A következő szakasz ismerteti, hogyan számítja ki a tárolási kapacitást a blob-tárolók és a Blobok számára. A következő szakaszban a len (X) a karakterláncban szereplő karakterek számát jelenti.
 
 ### <a name="blob-containers"></a>Blobtárolók
 
@@ -120,6 +120,6 @@ A következő részletezés:
 
 - Az Azure Storage számlázási szolgáltatásával kapcsolatos további információkért lásd: a [Windows Azure Storage szolgáltatás számlázásának ismertetése](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/).
 
-- További információ a Azure PowerShell modullal kapcsolatban: [Azure PowerShell dokumentáció](https://docs.microsoft.com/powershell/azure/).
+- További információ a Azure PowerShell modullal kapcsolatban: [Azure PowerShell dokumentáció](/powershell/azure/).
 
 - Az [Azure Storage](../blobs/storage-samples-blobs-powershell.md)-hoz készült PowerShell-minták további Storage PowerShell-parancsfájlokat is találhatnak.

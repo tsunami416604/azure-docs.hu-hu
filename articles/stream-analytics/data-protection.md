@@ -7,11 +7,11 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/23/2020
 ms.openlocfilehash: 72566987068729efef4310ce145c30584c4895b0
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980507"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011404"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Adatvédelem a Azure Stream Analyticsban 
 
@@ -95,7 +95,7 @@ Ezt a szolgáltatást használhatja arra, hogy kikényszerítse az esetlegesen s
 ## <a name="known-issues"></a>Ismert problémák
 Ismert hiba történt, amikor az ügyfél által felügyelt kulcsot használó feladatok hibákba ütközik, amikor felügyelt identitást használ a bemenetek és kimenetek hitelesítéséhez. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Storage-fiók létrehozása](../storage/common/storage-account-create.md)
 * [Azure Stream Analytics-bemenetek ismertetése](stream-analytics-add-inputs.md)

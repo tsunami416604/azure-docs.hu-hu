@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
 ms.openlocfilehash: c7a99e7e5f27f8c3503c7fa6124d27cfc4e7f4a4
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636765"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012833"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>SSIS-csomag meghívása tárolt eljárási tevékenység használatával Azure Data Factory
 Ez a cikk azt ismerteti, hogyan hívhat meg egy SSIS-csomagot egy Azure Data Factory folyamatból egy tárolt eljárási tevékenység használatával. 
@@ -101,7 +101,7 @@ Hozzon létre egy társított szolgáltatást, amely összekapcsolja az adatbáz
         }
     ```
 2. A **Azure PowerShellban** váltson a **C:\ADF\RunSSISPackage** mappára.
-3. Futtassa a **New-AzDataFactoryLinkedService** parancsmagot a társított szolgáltatás létrehozásához: **AzureSqlDatabaseLinkedService** . 
+3. Futtassa a **New-AzDataFactoryLinkedService** parancsmagot a társított szolgáltatás létrehozásához: **AzureSqlDatabaseLinkedService**. 
 
     ```powershell
     New-AzDataFactoryLinkedService $df -File ".\AzureSqlDatabaseLinkedService.json"
@@ -168,7 +168,7 @@ Ebben a lépésben létrehoz egy folyamatot egy tárolt eljárási tevékenység
     }    
     ```
 
-2. A folyamat létrehozásához: **RunSSISPackagePipeline** , futtassa a **New-AzDataFactoryPipeline** parancsmagot.
+2. A folyamat létrehozásához: **RunSSISPackagePipeline**, futtassa a **New-AzDataFactoryPipeline** parancsmagot.
 
     ```powershell
     $DFPipeLine = New-AzDataFactoryPipeline -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -Name "RunSSISPackagePipeline" -DefinitionFile ".\RunSSISPackagePipeline.json"
@@ -196,5 +196,5 @@ Ebben a lépésben létrehoz egy folyamatot egy tárolt eljárási tevékenység
     select * from catalog.executions
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A tárolt eljárási tevékenységgel kapcsolatos részletekért tekintse meg a [tárolt eljárási tevékenységről](data-factory-stored-proc-activity.md) szóló cikket.

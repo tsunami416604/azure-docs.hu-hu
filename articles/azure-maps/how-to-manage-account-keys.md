@@ -9,17 +9,17 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: c618e8193bed1f35cbbe884d5725c4ecfb25dd75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91311121"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013088"
 ---
 # <a name="manage-your-azure-maps-account"></a>Azure Maps fiók kezelése
 
 A Azure Maps fiókját a Azure Portal segítségével kezelheti. A fiók létrehozása után az API-kat a webhelyén vagy a mobil alkalmazásban is megvalósíthatja.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="create-a-new-account"></a>Új fiók létrehozása
 
@@ -27,7 +27,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 2. Válassza az Azure Portal bal felső sarkában található **Erőforrás létrehozása** lehetőséget.
 
-3. Keresse meg és válassza ki a **Maps**elemet. Ezután válassza a **Létrehozás** elemet.
+3. Keresse meg és válassza ki a **Maps** elemet. Ezután válassza a **Létrehozás** elemet.
 
 4. Adja meg az új fiók adatait.
 
@@ -35,13 +35,13 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 ## <a name="delete-an-account"></a>Fiók eltávolítása
 
-A Azure Portal törölheti a fiókot. Navigáljon a fiók áttekintése lapra, és válassza a **Törlés**lehetőséget.
+A Azure Portal törölheti a fiókot. Navigáljon a fiók áttekintése lapra, és válassza a **Törlés** lehetőséget.
 
 [![Azure Maps fiók törlése a Azure Portal](./media/how-to-manage-account-keys/account-delete-portal.png)](./media/how-to-manage-account-keys/account-delete-portal.png#lightbox)
 
 Ekkor megjelenik egy megerősítő oldal. A fiók törlését úgy ellenőrizheti, hogy beírja a nevét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A hitelesítés beállítása a Azure Maps és a Azure Maps előfizetési kulcs beszerzésének megismerése:
 > [!div class="nextstepaction"]

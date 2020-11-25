@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: b9e8ffb3173ed0d25599be446611ceca72c2ef82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c637817e88e9258a0f80cf72f737b0deae753002
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266867"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96012254"
 ---
 # <a name="change-the-reserved-unit-type"></a>A fenntartott egység típusának módosítása
 
@@ -29,14 +29,14 @@ ms.locfileid: "89266867"
 > * [.NET](media-services-dotnet-encoding-units.md)
 > * [Portál](media-services-portal-scale-media-processing.md)
 > * [REST](/rest/api/media/operations/encodingreservedunittype)
-> * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
+> * [Java](https://github.com/rnrneverdies/azure-sdk-for-media-services-java-samples)
 > * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 > 
 > 
 
 ## <a name="overview"></a>Áttekintés
 
-A Media Services-fiókok Fenntartott egység típussal vannak társítva, amely meghatározza a médiafeldolgozási feladatok feldolgozásának sebességét. A következő fenntartott egység típusok közül választhat: **S1**, **S2**vagy **S3**. Ugyanaz a kódolási feladat például gyorsabban fut, amikor az **S2** Fenntartott egység típust használja az **S1** típus helyett.
+A Media Services-fiókok Fenntartott egység típussal vannak társítva, amely meghatározza a médiafeldolgozási feladatok feldolgozásának sebességét. A következő fenntartott egység típusok közül választhat: **S1**, **S2** vagy **S3**. Ugyanaz a kódolási feladat például gyorsabban fut, amikor az **S2** Fenntartott egység típust használja az **S1** típus helyett.
 
 A fenntartott egység típusának meghatározása mellett megadhatja, hogy a fiók a **fenntartott egységekkel** (RUs) legyen kiépítve. A megadott Fenntartott egységek száma határozza meg az egy adott fiókon egy időben feldolgozható médiafeladatok számát.
 
@@ -52,17 +52,17 @@ A fenntartott egység típusának meghatározása mellett megadhatja, hogy a fi�
 A fenntartott egység típusának és a fenntartott egységek számának megváltoztatásához tegye a következőket:
 
 1. Az [Azure-portálon](https://portal.azure.com/) válassza ki Azure Media Services-fiókját.
-2. A **Beállítások** ablakban válassza a **Media szolgáltatás számára fenntartott egységek**lehetőséget.
+2. A **Beállítások** ablakban válassza a **Media szolgáltatás számára fenntartott egységek** lehetőséget.
    
     A kijelölt fenntartott egység típusához tartozó fenntartott egységek számának módosításához használja a képernyő tetején található **Media-egységek** csúszkát.
    
-    A **fenntartott egység típusának**módosításához kattintson a **fenntartott feldolgozási egységek sávjának sebességére** . Ezután válassza ki a szükséges árképzési szintet: S1, S2 vagy S3.
+    A **fenntartott egység típusának** módosításához kattintson a **fenntartott feldolgozási egységek sávjának sebességére** . Ezután válassza ki a szükséges árképzési szintet: S1, S2 vagy S3.
    
 3. A módosítások mentéséhez kattintson a SAVE (Mentés) gombra.
    
     Az új fenntartott egységek kiosztása a Mentés gomb megnyomásakor történik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse át a Media Services képzési terveket.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

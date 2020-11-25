@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 2/7/2019
 ms.author: rohink
 ms.openlocfilehash: add7674771fd19f6029a94c46624006f0cf30f1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84710881"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011540"
 ---
 # <a name="delegate-an-azure-dns-subdomain"></a>Azure DNS altartomány delegálása
 
@@ -31,12 +31,12 @@ Azure DNS altartomány delegálásához először delegálnia kell a nyilvános 
 
 Először hozza létre a zónát a **mérnöki** altartományhoz.
 
-1. A Azure Portal válassza az **erőforrás létrehozása**lehetőséget.
-2. A keresőmezőbe írja be a **DNS**kifejezést, majd válassza a **DNS-zóna**lehetőséget.
+1. A Azure Portal válassza az **erőforrás létrehozása** lehetőséget.
+2. A keresőmezőbe írja be a **DNS** kifejezést, majd válassza a **DNS-zóna** lehetőséget.
 3. Kattintson a **Létrehozás** gombra.
 4. A **DNS-zóna létrehozása** panelen írja be a **Engineering.contoso.com** **nevet a név** szövegmezőbe.
 5. Válassza ki a zónához tartozó erőforráscsoportot. Előfordulhat, hogy ugyanazt az erőforráscsoportot szeretné használni, mint a szülő zónát, hogy a hasonló erőforrások együtt maradjanak.
-6. Kattintson a **Létrehozás** elemre.
+6. Kattintson a **Létrehozás** gombra.
 7. Az üzembe helyezés sikeres végrehajtása után lépjen az új zónára.
 
 ## <a name="note-the-name-servers"></a>Jegyezze fel a névkiszolgálók nevét
@@ -56,8 +56,8 @@ Ezután hozzon létre egy névkiszolgálói (NS) rekordot a **mérnöki** zóná
 1. Navigáljon a szülőtartomány zónájához.
 2. Válassza a **+ Rekordhalmaz** lehetőséget.
 3. A **rekordazonosító hozzáadása** panelen írja be a **mérnöki** **nevet a név** szövegmezőbe.
-4. A **Típus mezőben**válassza az **NS**lehetőséget.
-5. A **névkiszolgáló**területen adja meg azokat a négy névszervereket, amelyeket korábban a **mérnöki** zónában rögzített.
+4. A **Típus mezőben** válassza az **NS** lehetőséget.
+5. A **névkiszolgáló** területen adja meg azokat a négy névszervereket, amelyeket korábban a **mérnöki** zónában rögzített.
 6. Kattintson az **OK** gombra.
 
 ## <a name="test-the-delegation"></a>A delegálás tesztelése

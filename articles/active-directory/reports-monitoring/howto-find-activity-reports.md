@@ -15,11 +15,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 42afa073da9197c12e4cbd316d311a7699d9a95f
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131054"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013027"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Tevékenységjelentések keresése az Azure Portalon
 
@@ -52,7 +52,7 @@ A naplózási jelentésben a speciális szűrés használatával férhet hozzá 
 
 A kategóriák a következők:
 
-- Összes
+- Mind
 - AdministrativeUnit
 - ApplicationManagement
 - Hitelesítés
@@ -73,7 +73,7 @@ A **szolgáltatás** legördülő szűrővel is szűrheti egy adott szolgáltat�
 
 A szolgáltatások a következők:
 
-- Összes
+- Mind
 - Hozzáférési felülvizsgálatok
 - Fiók kiépítése 
 - Alkalmazás egyszeri bejelentkezés
@@ -224,7 +224,7 @@ További információk: [Az Azure Active Directory jelentésmegőrzési háziren
 
 Az adatokat kétféleképpen őrizheti meg 30 napnál hosszabban. Az [Azure AD Reporting API-kkal](concept-reporting-api.md) az adatokat programozott módon kérheti le és tárolhatja egy adatbázisban. Másik megoldásként az auditnaplókat egy külső SIEM-rendszerbe, például a Splunk vagy a SumoLogic rendszerbe integrálhatja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Naplófájlok áttekintése](concept-audit-logs.md)
 * [Bejelentkezések – áttekintés](concept-sign-ins.md)

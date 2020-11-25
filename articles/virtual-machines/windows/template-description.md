@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
 ms.openlocfilehash: 0a2a386264be0ec13e29b7a7546926819c5d931a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972883"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012731"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuális számítógépek egy Azure Resource Manager-sablonban
 
@@ -439,7 +439,7 @@ A telepített bővítmények állapotát a portál bővítmények beállításai
 
 A bővítmény információit a **Get-AzVMExtension** PowerShell-paranccsal, a virtuálisgép- **BŐVÍTMÉNY Get** Azure CLI-paranccsal vagy a **bővítmény információinak beolvasása** REST API is lekérheti.
 
-## <a name="deployments"></a>Központi telepítés
+## <a name="deployments"></a>Üzemelő példányok
 
 A sablonok központi telepítésekor az Azure nyomon követi a csoportként telepített erőforrásokat, és automatikusan hozzárendel egy nevet ehhez a telepített csoporthoz. A központi telepítés neve megegyezik a sablon nevével.
 
@@ -447,7 +447,7 @@ Ha kíváncsi a telepítésben lévő erőforrások állapotára, tekintse meg a
 
 ![Üzembe helyezési információk beolvasása](./media/template-description/virtual-machines-deployment-info.png)
     
-Nem probléma, hogy ugyanazt a sablont használja az erőforrások létrehozásához vagy a meglévő erőforrások frissítéséhez. Amikor parancsokat használ a sablonok üzembe helyezéséhez, lehetősége van megmondani, hogy melyik [módot](../../azure-resource-manager/templates/deploy-powershell.md) kívánja használni. A mód beállítható **teljes** vagy **növekményes**értékre is. Az alapértelmezett érték a növekményes frissítések használata. Ügyeljen arra, hogy a **teljes** módot használja, mert véletlenül törölheti az erőforrásokat. Ha a módot a **befejezésre**állítja, a Resource Manager törli a sablonban nem szereplő összes erőforrást.
+Nem probléma, hogy ugyanazt a sablont használja az erőforrások létrehozásához vagy a meglévő erőforrások frissítéséhez. Amikor parancsokat használ a sablonok üzembe helyezéséhez, lehetősége van megmondani, hogy melyik [módot](../../azure-resource-manager/templates/deploy-powershell.md) kívánja használni. A mód beállítható **teljes** vagy **növekményes** értékre is. Az alapértelmezett érték a növekményes frissítések használata. Ügyeljen arra, hogy a **teljes** módot használja, mert véletlenül törölheti az erőforrásokat. Ha a módot a **befejezésre** állítja, a Resource Manager törli a sablonban nem szereplő összes erőforrást.
 
 ## <a name="next-steps"></a>Következő lépések
 

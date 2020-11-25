@@ -16,11 +16,11 @@ ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: b98b66d8f0350c32e89d62d776ee1288d9271712
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841152"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010911"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Hozzáférés-vezérlést használó tartalomkezelő rendszer tervezése Azure Media Services
 
@@ -157,7 +157,7 @@ A következő táblázat a leképezést mutatja be.
 | **DRM-védelem munkafolyamata** |Media Services dinamikus védelem |
 | **DRM-licenckézbesítés** |* Media Services licenc kézbesítése (PlayReady, Widevine, FairPlay) <br/>* Axinom-licenckiszolgáló <br/>* Egyéni PlayReady-licenckiszolgáló |
 | **Származási** |Media Services streaming végpont |
-| **Kulcskezelés** |A hivatkozás megvalósításához nem szükséges |
+| **Kulcskezelő** |A hivatkozás megvalósításához nem szükséges |
 | **Tartalomkezelés** |C# konzolos alkalmazás |
 
 Más szóval a IDENTITÁSSZOLGÁLTATÓ és az STS is az Azure AD-vel együtt használható. A lejátszóhoz a [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/) használatos. Mind a Media Services, mind a Media Player támogatja a DASH és a CENC-et több DRM-mel.
@@ -242,7 +242,7 @@ A megvalósítással kapcsolatos problémák megoldásához használja az alább
     <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/" />
     ```
 
-    A [JWT-dekóderben](http://jwt.calebb.net/)az **AUD** és az **ISS**jelenik meg, ahogy az a JWT is látható:
+    A [JWT-dekóderben](http://jwt.calebb.net/)az **AUD** és az **ISS** jelenik meg, ahogy az a JWT is látható:
 
     ![JWT](./media/media-services-cenc-with-multidrm-access-control/media-services-1st-gotcha.png)
 
@@ -349,7 +349,7 @@ A mutató alkalmazás Azure AD-beli regisztrálásához és konfigurálásához 
 
 3. Frissítse az alkalmazás jegyzékfájlját úgy, hogy a groupMembershipClaims tulajdonság értéke "groupMembershipClaims": "all".
 
-4. Adja hozzá az 1. lépésben hozzáadott erőforrás-alkalmazást az Azure AD-alkalmazásban, amely a Player webalkalmazásra mutat, a **más alkalmazásokra vonatkozó engedélyek**szakaszban. A **delegált engedély**területen válassza a **hozzáférés [resource_name]** lehetőséget. Ez a beállítás lehetővé teszi a webalkalmazás számára, hogy olyan hozzáférési jogkivonatokat hozzon létre, amelyek hozzáférnek az erőforrás-alkalmazáshoz. A Visual Studióval és az Azure-webalkalmazással való fejlesztés esetén ezt a webalkalmazás helyi és központilag telepített verziójára is használhatja.
+4. Adja hozzá az 1. lépésben hozzáadott erőforrás-alkalmazást az Azure AD-alkalmazásban, amely a Player webalkalmazásra mutat, a **más alkalmazásokra vonatkozó engedélyek** szakaszban. A **delegált engedély** területen válassza a **hozzáférés [resource_name]** lehetőséget. Ez a beállítás lehetővé teszi a webalkalmazás számára, hogy olyan hozzáférési jogkivonatokat hozzon létre, amelyek hozzáférnek az erőforrás-alkalmazáshoz. A Visual Studióval és az Azure-webalkalmazással való fejlesztés esetén ezt a webalkalmazás helyi és központilag telepített verziójára is használhatja.
 
 Az Azure AD által kiadott JWT a mutató erőforráshoz való hozzáféréshez használt hozzáférési jogkivonat.
 
@@ -473,7 +473,7 @@ Az alábbi képernyőképen egy olyan forgatókönyv látható, amely aszimmetri
 
 Mindkét előző esetben a felhasználói hitelesítés ugyanaz marad. Az Azure AD-n keresztül zajlik. Az egyetlen különbség, hogy a JWTs az Azure AD helyett az egyéni STS állítja ki. A dinamikus CENC-védelem konfigurálásakor a licenc-kézbesítési szolgáltatási korlátozás meghatározza a JWT típusát (szimmetrikus vagy aszimmetrikus kulcs).
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ez a dokumentum a többszörös natív DRM-mel és hozzáférés-vezérléssel, a CENC, annak kialakításával és az Azure, Media Services és Media Player használatával történő megvalósításával kapcsolatban tárgyalt.
 

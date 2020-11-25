@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.subservice: alerts
 ms.openlocfilehash: 9a074be9bcc62d8c20635400f462f52fb796d2fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294308"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012322"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhook-műveletek naplóriasztási szabályokhoz
 
@@ -55,7 +55,7 @@ Az alapértelmezett webhook művelet tulajdonságai és az egyéni JSON-paramét
 ## <a name="custom-webhook-payload-definition"></a>Egyéni webhook-adattartalom definíciója
 
 Az egyéni JSON- **adattartalom belefoglalása a webhookhoz** lehetőséggel egyéni JSON-adattartalomot szerezhet be a fenti paraméterek használatával. További tulajdonságokat is létrehozhat.
-Például megadhatja a következő egyéni adattartalmat, amely egyetlen, *szöveg*nevű paramétert tartalmaz. Az a szolgáltatás, amelyhez ez a webhook-hívás a következő paramétert várja:
+Például megadhatja a következő egyéni adattartalmat, amely egyetlen, *szöveg* nevű paramétert tartalmaz. Az a szolgáltatás, amelyhez ez a webhook-hívás a következő paramétert várja:
 
 ```json
 
@@ -318,7 +318,7 @@ A következő minta hasznos adatokat tartalmaz egy egyéni webhook-művelethez a
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Tudnivalók a [riasztásokról az Azure-riasztásokban](alerts-unified-log.md).
 - Ismerje meg, hogyan [kezelheti a naplózási riasztásokat az Azure-ban](alerts-log.md).
 - Műveleti csoportok létrehozása és kezelése [Az Azure-ban](action-groups.md).

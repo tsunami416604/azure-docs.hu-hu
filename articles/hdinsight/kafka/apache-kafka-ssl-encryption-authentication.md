@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/01/2019
 ms.openlocfilehash: 9a95970647a26ea80db9f63fb8523c6a65cc5e06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86082080"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012305"
 ---
 # <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>TLS-titkosítás és-hitelesítés beállítása Apache Kafkahoz az Azure HDInsight
 
@@ -127,7 +127,7 @@ Most már beállította az egyes Kafka-átvitelszervezőket egy truststore, és 
 A konfiguráció módosításának befejezéséhez hajtsa végre a következő lépéseket:
 
 1. Jelentkezzen be a Azure Portalba, és válassza ki az Azure HDInsight Apache Kafka-fürtöt.
-1. Nyissa meg a Ambari felhasználói felületét a **Ambari** elemre kattintva a **fürt irányítópultok**területén.
+1. Nyissa meg a Ambari felhasználói felületét a **Ambari** elemre kattintva a **fürt irányítópultok** területén.
 1. A **Kafka-közvetítő** alatt állítsa be a **figyelők** tulajdonságot a következőre `PLAINTEXT://localhost:9092,SSL://localhost:9093`
 1. A **speciális Kafka-Broker** területen állítsa be a **Security. Inter. Broker. Protocol** tulajdonságot a következőre: `SSL`
 

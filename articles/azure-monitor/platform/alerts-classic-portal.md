@@ -6,11 +6,11 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.openlocfilehash: 613620ddf4889efb7cf3df95150be97f79724a98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852140"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013105"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Klasszikus metrikai riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával
 
@@ -24,7 +24,7 @@ A klasszikus metrikus riasztások Azure Monitor lehetővé teszik, hogy értesí
 
 1. Keresse meg a figyelni kívánt erőforrást a [portálon](https://portal.azure.com/), majd jelölje ki.
 
-2. A **figyelés** szakaszban válassza a **riasztások (klasszikus)** lehetőséget. A szöveg és az ikon némileg eltérő lehet a különböző erőforrások esetében. Ha nem találja a **riasztásokat (klasszikus)** , akkor előfordulhat, hogy **riasztási** vagy **riasztási szabályokban**találja.
+2. A **figyelés** szakaszban válassza a **riasztások (klasszikus)** lehetőséget. A szöveg és az ikon némileg eltérő lehet a különböző erőforrások esetében. Ha nem találja a **riasztásokat (klasszikus)** , akkor előfordulhat, hogy **riasztási** vagy **riasztási szabályokban** találja.
 
     ![Figyelés](media/alerts-classic-portal/AlertRulesButton.png)
 
@@ -132,7 +132,7 @@ Ez a rész bemutatja, hogyan hozhat létre, tekinthet meg és kezelhet klassziku
 
 8. A klasszikus riasztási szabályok már nem hozhatók létre a PowerShell használatával. Riasztási szabály létrehozásához az új ["Add-AzMetricAlertRule"](/powershell/module/az.monitor/add-azmetricalertrule) parancsot kell használnia.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Hozzon létre egy klasszikus metrikai riasztást egy Resource Manager-sablonnal](./alerts-enable-template.md).
 - [Klasszikus metrikai riasztást küld egy nem Azure-rendszerről webhook használatával](./alerts-webhooks.md).

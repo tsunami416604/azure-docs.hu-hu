@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: d222234cd6ff3d910e6dbc51a394695ce467edce
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793296"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011854"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-databases"></a>Séma kezelése egy több-bérlős adatbázisokat használó SaaS-alkalmazásban
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -75,7 +75,7 @@ A Wingtip jegyek SaaS több-bérlős adatbázis-szkriptek és az alkalmazás for
 
 Ez az oktatóanyag megköveteli, hogy a PowerShell-lel hozza létre a Job Agent-adatbázist és a feladatot ügynökét. Az SQL Agent által használt MSDB-adatbázishoz hasonlóan a feladatok ügynöke a Azure SQL Database adatbázisát használja a feladatdefiníciók, a feladatok állapotának és az előzményeknek a tárolására. A feladat-ügynök létrehozása után azonnal létrehozhatja és figyelheti a feladatokat.
 
-1. A **POWERSHELL ISE** -ben nyissa meg a *... \\ Tanulási modulok – \\ séma-felügyeleti \\Demo-SchemaManagement.ps1* .
+1. A **POWERSHELL ISE**-ben nyissa meg a *... \\ Tanulási modulok – \\ séma-felügyeleti \\Demo-SchemaManagement.ps1*.
 2. A szkript futtatásához nyomja le az **F5** billentyűt.
 
 A *Demo-SchemaManagement.ps1* parancsfájl meghívja a *Deploy-SchemaManagement.ps1* parancsfájlt, hogy létrehozzon egy _jobagent_ nevű adatbázist a katalógus-kiszolgálón. A szkript ezután létrehozza a feladatot, és paraméterként átadja a _jobagent_ -adatbázist.
@@ -84,7 +84,7 @@ A *Demo-SchemaManagement.ps1* parancsfájl meghívja a *Deploy-SchemaManagement.
 
 #### <a name="prepare"></a>Előkészítés
 
-Az egyes bérlői adatbázisok a **VenueTypes** táblában tartalmazzák a helyszín típusait. Minden egyes helyszín típusa határozza meg, hogy milyen típusú eseményeket lehet üzemeltetni a helyszínen. Ezek a helyszín típusok a bérlői események alkalmazásban megjelenő háttérképnek felelnek meg.  Ebben a gyakorlatban egy frissítést telepít az összes adatbázisra, hogy két további típusú helyszínt adjon hozzá: *motorkerékpár-verseny* és az *úszó Club* .
+Az egyes bérlői adatbázisok a **VenueTypes** táblában tartalmazzák a helyszín típusait. Minden egyes helyszín típusa határozza meg, hogy milyen típusú eseményeket lehet üzemeltetni a helyszínen. Ezek a helyszín típusok a bérlői események alkalmazásban megjelenő háttérképnek felelnek meg.  Ebben a gyakorlatban egy frissítést telepít az összes adatbázisra, hogy két további típusú helyszínt adjon hozzá: *motorkerékpár-verseny* és az *úszó Club*.
 
 Először tekintse át az egyes bérlői adatbázisokban található helyszín típusait. Kapcsolódjon SQL Server Management Studio (SSMS) egyik bérlői adatbázisához, és vizsgálja meg a VenueTypes táblát.  Ezt a táblázatot a Azure Portal lekérdezés-szerkesztőjében is lekérdezheti, amely az adatbázis lapról érhető el.
 
@@ -105,11 +105,11 @@ Most hozzon létre egy feladatot a **VenueTypes** tábla minden bérlői adatbá
 
 3. A *VenueTypes* tábla lekérdezése annak megerősítéséhez, hogy a *motorkerékpár-verseny* és az *úszó klub* még nem szerepel az eredmények listáján.
 
-4. Kapcsolódjon a katalógus *-MT- &lt; user &gt; . database.Windows.net* -hez.
+4. Kapcsolódjon a katalógus *-MT- &lt; user &gt; . database.Windows.net*-hez.
 
 5. Kapcsolódjon a _jobagent_ -adatbázishoz a katalógus-kiszolgálón.
 
-6. A SSMS-ben nyissa meg a fájlt *... \\ Learning-modulok \\ séma-felügyeleti \\ DeployReferenceData. SQL* .
+6. A SSMS-ben nyissa meg a fájlt *... \\ Learning-modulok \\ séma-felügyeleti \\ DeployReferenceData. SQL*.
 
 7. Módosítsa az utasítást: set @User = &lt; User &gt; , és cserélje le a Wingtip tickets SaaS több-bérlős adatbázis-alkalmazás üzembe helyezésekor használt felhasználói értéket.
 
@@ -125,7 +125,7 @@ Figyelje meg a következő elemeket a *DeployReferenceData. SQL* parancsfájlban
     - Egy *kiszolgáló* -megcélzott tag típusa.
         - Ez a *tenants1-MT- &lt; User &gt;* kiszolgáló, amely a bérlői adatbázisokat tartalmazza.
         - A kiszolgáló belefoglalása tartalmazza a bérlői adatbázisokat is, amelyek a feladatok végrehajtásának időpontjában léteznek.
-    - A *katalógus-MT- &lt; User &gt;* kiszolgálón található sablon-adatbázishoz ( *basetenantdb* ) *tartozó céladatbázis-* tag típusa
+    - A *katalógus-MT- &lt; User &gt;* kiszolgálón található sablon-adatbázishoz (*basetenantdb*) *tartozó céladatbázis-* tag típusa
     - Egy *adatbázis* -megcélzott tag típusa, amely tartalmazza a *adhocreporting* -adatbázist, amelyet egy későbbi oktatóanyagban használtak.
 
 - az **SP \_ Add \_ Job** létrehoz egy *hivatkozási adatok központi telepítés* nevű feladatot.
@@ -142,7 +142,7 @@ Ezzel a gyakorlattal létrejön egy feladat, amely az indexet újraépíti a hiv
 
 1. A SSMS-ben kapcsolódjon a _jobagent_ adatbázishoz a *Catalog-MT- &lt; User &gt; . database.Windows.net* -kiszolgálón.
 
-2. A SSMS nyissa meg a *... \\ Learning-modulok \\ séma-felügyeleti \\ Sémakezelés. SQL* .
+2. A SSMS nyissa meg a *... \\ Learning-modulok \\ séma-felügyeleti \\ Sémakezelés. SQL*.
 
 3. A szkript futtatásához nyomja le az **F5** billentyűt.
 
@@ -150,7 +150,7 @@ Ezzel a gyakorlattal létrejön egy feladat, amely az indexet újraépíti a hiv
 
 Figyelje meg a következő elemeket a *Sémakezelés. SQL* parancsfájlban:
 
-* az **SP \_ Add \_ Job** létrehoz egy új feladatot, amelyet *online reindex PK \_ \_ VenueTyp \_ \_ 265E44FD7FD4C885* .
+* az **SP \_ Add \_ Job** létrehoz egy új feladatot, amelyet *online reindex PK \_ \_ VenueTyp \_ \_ 265E44FD7FD4C885*.
 
 * az **SP \_ Add \_ Jobstep** létrehozza a T-SQL-parancs szövegét tartalmazó feladatot, amely frissíti az indexet.
 
@@ -163,7 +163,7 @@ Figyelje meg a következő elemeket a *Sémakezelés. SQL* parancsfájlban:
 -->
 * [Kiterjesztett felhőalapú adatbázisok kezelése](./elastic-jobs-overview.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

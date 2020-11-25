@@ -8,11 +8,11 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: cynthn
 ms.openlocfilehash: 6a14e2bd7385430c3d0fbec06259a876af556e38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82190401"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010724"
 ---
 # <a name="create-a-proximity-placement-group-using-the-portal"></a>Közelségi elhelyezési csoport létrehozása a portál használatával
 
@@ -29,12 +29,12 @@ A közelségi elhelyezési csoport olyan logikai csoport, amely biztosítja, hog
 ## <a name="create-the-proximity-placement-group"></a>A közelségi elhelyezési csoport létrehozása
 
 1. Írja be a következőt: **Proximity elhelyezési csoport** a keresésben.
-1. A keresési eredmények között található **szolgáltatások** területen válassza a **közelségi csoportok**lehetőséget.
-1. A **közelség elhelyezése csoportok** lapon válassza a **Hozzáadás**lehetőséget.
-1. Az **alapvető beállítások** lap **projekt részletei**területén ellenőrizze, hogy a megfelelő előfizetés van-e kiválasztva.
+1. A keresési eredmények között található **szolgáltatások** területen válassza a **közelségi csoportok** lehetőséget.
+1. A **közelség elhelyezése csoportok** lapon válassza a **Hozzáadás** lehetőséget.
+1. Az **alapvető beállítások** lap **projekt részletei** területén ellenőrizze, hogy a megfelelő előfizetés van-e kiválasztva.
 1. Az **erőforráscsoport** területen válassza az **új létrehozása** lehetőséget egy új csoport létrehozásához, vagy válasszon ki egy már létező üres erőforráscsoportot a legördülő menüből. 
 1. A **régió területen** válassza ki azt a helyet, ahová a közelségi elhelyezési csoportot létre szeretné hozni.
-1. A **Proximity elhelyezési csoport neve** mezőbe írjon be egy nevet, majd válassza a **felülvizsgálat + létrehozás**elemet.
+1. A **Proximity elhelyezési csoport neve** mezőbe írjon be egy nevet, majd válassza a **felülvizsgálat + létrehozás** elemet.
 1. Az ellenőrzés után a **Létrehozás** gombra kattintva hozza létre a közelségi elhelyezési csoportot.
 
     ![Képernyőkép a közelségi elhelyezési csoport létrehozásáról](./media/ppg/ppg.png)
@@ -47,7 +47,7 @@ A közelségi elhelyezési csoport olyan logikai csoport, amely biztosítja, hog
 
     ![Képernyőfelvétel a közelségi csoportok szakaszról, amikor új virtuális gépet hoz létre a portálon](./media/ppg/vm-ppg.png)
 
-1. Ha végzett az összes többi kötelező beállítással, válassza a **felülvizsgálat + létrehozás**lehetőséget.
+1. Ha végzett az összes többi kötelező beállítással, válassza a **felülvizsgálat + létrehozás** lehetőséget.
 1. Az érvényesítést követően a **Létrehozás** gombra kattintva telepítheti a virtuális gépet az elhelyezési csoportban.
 
 
@@ -59,7 +59,7 @@ Ha a virtuális gép a rendelkezésre állási csoport része, akkor a virtuáli
 1. A virtuális gép kiválasztásával Stop\deallocate az egyes virtuális gépeket a rendelkezésre állási csoportba, majd válassza a **Leállítás** elemet a virtuális gép lapján, majd kattintson **az OK** gombra a virtuális gép leállításához.
 1. A rendelkezésre állási csoport lapján ellenőrizze, hogy az összes virtuális gép rendelkezik-e **leállított (** fel nem sorolt) **állapottal** .
 1. A bal oldali menüben válassza a **Konfiguráció** elemet.
-1. A **közelség elhelyezése**csoportban válasszon ki egy elhelyezési csoportot a legördülő listából, majd válassza a **Mentés**lehetőséget.
+1. A **közelség elhelyezése** csoportban válasszon ki egy elhelyezési csoportot a legördülő listából, majd válassza a **Mentés** lehetőséget.
 1. A bal oldali menüben válassza az **Áttekintés** lehetőséget a virtuális gépek listájának megjelenítéséhez. 
 1. Válassza ki az egyes virtuális gépeket a rendelkezésre állási csoportból, majd válassza az **Indítás** lehetőséget az egyes virtuális gépek lapon. 
 
@@ -67,9 +67,9 @@ Ha a virtuális gép a rendelkezésre állási csoport része, akkor a virtuáli
 ## <a name="add-existing-vm-to-placement-group"></a>Meglévő virtuális gép felvétele az elhelyezési csoportba 
 
 
-1. A virtuális gép lapján válassza a **Leállítás**lehetőséget.
+1. A virtuális gép lapján válassza a **Leállítás** lehetőséget.
 1. Ha a virtuális gép állapota **leállítva (fel van foglalva)**, válassza a bal oldali menü **konfiguráció** elemét.
-1. A **közelség elhelyezése**csoportban válasszon ki egy elhelyezési csoportot a legördülő listából, majd válassza a **Mentés**lehetőséget.
+1. A **közelség elhelyezése** csoportban válasszon ki egy elhelyezési csoportot a legördülő listából, majd válassza a **Mentés** lehetőséget.
 1. Válassza az **Áttekintés** lehetőséget a bal oldali menüben, majd kattintson a **Start** gombra a virtuális gép újraindításához.
 
  

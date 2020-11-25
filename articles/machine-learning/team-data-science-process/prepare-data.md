@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: caedcf313ab809e9607907545f26ca1b62bbeca7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76720044"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012407"
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>Az adatok bővített gépi tanulásra való előkészítésének feladatai
 Az adatok előfeldolgozása és tisztítása olyan fontos feladatok, amelyeket el kell végezni ahhoz, hogy adatkészletet lehessen használni a modell betanításához. A nyers adatok gyakran zajosak és megbízhatatlanok, és lehet, hogy hiányoznak az értékek. Ha ilyen adatokat használ a modellezéshez, félrevezető eredményeket hozhat létre. Ezek a feladatok a csoportos adatelemzési folyamat (TDSP) részét képezik, és általában egy olyan adatkészlet kezdeti vizsgálatát végzik, amely a szükséges előzetes feldolgozás felderítésére és megtervezésére szolgál. A TDSP folyamatával kapcsolatos részletesebb útmutatásért tekintse meg a [csoportos adatelemzési folyamat](overview.md)lépéseit.
@@ -39,10 +39,10 @@ A minőség-előrejelző modellek előfeltétele a minőségi adatgyűjtés. A "
 ## <a name="what-are-some-typical-data-health-screens-that-are-employed"></a>Mik azok a tipikus adatállapot-képernyők?
 Az általános minőséget az alábbiak ellenőrzésével ellenőrizheti:
 
-* A **rekordok**száma.
+* A **rekordok** száma.
 * Az **attribútumok** (vagy **szolgáltatások**) száma.
 * Az attribútum **adattípusai** (névleges, sorszám vagy folytonos).
-* A **hiányzó értékek**száma.
+* A **hiányzó értékek** száma.
 * **Jól formázott** adategységek.
   * Ha az adatközpont TSV vagy CSV formátumú, ellenőrizze, hogy az oszlopok és a sorok elválasztói mindig helyesen vannak-e elkülönítve az oszlopokat és a sorokat.
   * Ha az adatai HTML-vagy XML-formátumban vannak, ellenőrizze, hogy az adatai megfelelően vannak-e kialakítva a megfelelő szabványok alapján.
@@ -51,7 +51,7 @@ Az általános minőséget az alábbiak ellenőrzésével ellenőrizheti:
 
 Ha az adatokkal kapcsolatos problémákat tapasztal, a **feldolgozási lépések** szükségesek, ami gyakran magában foglalja a hiányzó értékek törlését, az adatnormalizálás, a diszkretizálási, a szöveg feldolgozását, valamint a beágyazott karakterek eltávolítását és/vagy cseréjét, amelyek hatással lehetnek az adatok igazítására, a közös mezőkben szereplő vegyes adattípusokra és mások
 
-A **Azure Machine learning jól formázott táblázatos adatokat**használ.  Ha az adatokat már táblázatos formában végzik, az adatfeldolgozást közvetlenül a Machine Learning Azure Machine Learning Studio (klasszikus) használatával is elvégezheti.  Ha az adatokat nem táblázatos formában, tegyük fel, hogy az XML-ben van, akkor az adatokat táblázatos formában kell konvertálni.  
+A **Azure Machine learning jól formázott táblázatos adatokat** használ.  Ha az adatokat már táblázatos formában végzik, az adatfeldolgozást közvetlenül a Machine Learning Azure Machine Learning Studio (klasszikus) használatával is elvégezheti.  Ha az adatokat nem táblázatos formában, tegyük fel, hogy az XML-ben van, akkor az adatokat táblázatos formában kell konvertálni.  
 
 ## <a name="what-are-some-of-the-major-tasks-in-data-pre-processing"></a>Mik az adatok előfeldolgozásával kapcsolatos főbb feladatok?
 * **Adattisztítás**: adja meg a hiányzó értékeket, azonosítsa és távolítsa el a zajos adatokat és a kiugró adatokat.

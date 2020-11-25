@@ -8,11 +8,11 @@ ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
 ms.openlocfilehash: 3225fff1c82822dee990804f934ada86068841e8
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280260"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011302"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Oktatóanyag: kódolás az Azure Digital Twins API-kkal
 
@@ -23,7 +23,7 @@ Gyakori, hogy az Azure Digital Twins-szel dolgozó fejlesztők az Azure Digital 
 > * Első lépések a Project Code-ban   
 > * Kód teljes mintája
 > * Az erőforrások eltávolítása
-> * Következő lépések
+> * További lépések
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -43,7 +43,7 @@ A kezdéshez szükséges lépések:
 
 Ha készen áll az Azure Digital Twins-példánnyal való használatra, kezdje el beállítani az ügyfélalkalmazás-projektet. 
 
-Nyisson meg egy parancssort vagy egy másik konzolablak-ablakot a gépen, és hozzon létre egy üres Project könyvtárat, ahol az oktatóanyag során szeretné tárolni a munkáját. Nevezze el a könyvtárat, amit szeretne (például *DigitalTwinsCodeTutorial* ).
+Nyisson meg egy parancssort vagy egy másik konzolablak-ablakot a gépen, és hozzon létre egy üres Project könyvtárat, ahol az oktatóanyag során szeretné tárolni a munkáját. Nevezze el a könyvtárat, amit szeretne (például *DigitalTwinsCodeTutorial*).
 
 Navigáljon az új könyvtárba.
 
@@ -213,7 +213,7 @@ await foreach (DigitalTwinsModelData md in modelDataList)
 }
 ```
 
-**Mielőtt újra futtatja a programot az új kód teszteléséhez** , emlékezteti arra, hogy a program legutóbbi futtatásakor már feltöltötte a modellt. Az Azure Digital Twins nem teszi lehetővé kétszer ugyanazt a modellt, így ha újra megpróbálja feltölteni ugyanazt a modellt, a program kivételt jelez.
+**Mielőtt újra futtatja a programot az új kód teszteléséhez**, emlékezteti arra, hogy a program legutóbbi futtatásakor már feltöltötte a modellt. Az Azure Digital Twins nem teszi lehetővé kétszer ugyanazt a modellt, így ha újra megpróbálja feltölteni ugyanazt a modellt, a program kivételt jelez.
 
 Ezt szem előtt tartva futtassa újra a programot ezzel a paranccsal a parancssori ablakban:
 
@@ -267,7 +267,7 @@ for(int i=0; i<3; i++) {
 }
 ```
 
-A parancsablakban futtassa a programot a paranccsal `dotnet run` . A kimenetben keresse meg azokat a nyomtatási üzeneteket, amelyeket a *sampleTwin-0* , a *sampleTwin-1* és a *sampleTwin-2* hoztak létre. 
+A parancsablakban futtassa a programot a paranccsal `dotnet run` . A kimenetben keresse meg azokat a nyomtatási üzeneteket, amelyeket a *sampleTwin-0*, a *sampleTwin-1* és a *sampleTwin-2* hoztak létre. 
 
 Ezután futtassa újra a programot. 
 
@@ -499,7 +499,7 @@ Az oktatóanyagban használt példány újra felhasználható a következő okta
 
 Végül törölje a helyi gépen létrehozott Project mappát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozta a .NET-konzol ügyfélprogramját a semmiből. Az ügyfélalkalmazás kódját az Azure Digital Twins-példányon végzett alapszintű műveletek végrehajtásához írta.
 

@@ -3,12 +3,12 @@ title: Kapcsolódási problémák elhárítása – Azure Event Hubs | Microsoft
 description: Ez a cikk az Azure Event Hubs kapcsolódási problémáinak elhárításával kapcsolatos információkat tartalmaz.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: b85c0895d1c8f165f494d29013adea014187dd23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8eddc0e8c598e4553b30759d179fecb6ae880829
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87039327"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96012680"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-hubs"></a>Kapcsolódási problémák elhárítása – Azure Event Hubs
 Számos oka lehet annak, hogy az ügyfélalkalmazások nem tudnak csatlakozni az Event hub-hoz. Előfordulhat, hogy az Ön által tapasztalt kapcsolódási problémák állandóak vagy átmenetiek. Ha a probléma minden alkalommal (állandó) történik, érdemes megtekinteni a kapcsolódási karakterláncot, a szervezet tűzfalbeállítások, az IP-tűzfal beállításait, a hálózati biztonsági beállításokat (szolgáltatási végpontok, privát végpontok stb.). Átmeneti problémák esetén az SDK legújabb verziójára való frissítés, az eldobott csomagok vizsgálatára szolgáló parancsok futtatása, valamint a hálózati nyomkövetés beszerzése segíthet a hibák elhárításában. 
@@ -26,54 +26,7 @@ Ellenőrizze, hogy helyes-e a használt kapcsolatok karakterlánca. A kapcsolód
 
 A Kafka-ügyfelek esetében ellenőrizze, hogy a producer.config vagy consumer.config fájlok megfelelően vannak-e konfigurálva. További információ: [üzenetek küldése és fogadása a Kafka-vel Event Hubsban](event-hubs-quickstart-kafka-enabled-event-hubs.md#send-and-receive-messages-with-kafka-in-event-hubs).
 
-### <a name="check-if-the-ports-required-to-communicate-with-event-hubs-are-blocked-by-organizations-firewall"></a>Ellenőrizze, hogy a szervezet tűzfala blokkolja-e a Event Hubsekkel való kommunikációhoz szükséges portokat
-Győződjön meg arról, hogy az Azure Event Hubs-vel folytatott kommunikáció során használt portok nincsenek letiltva a szervezet tűzfalán. Tekintse meg az alábbi táblázatot az Azure Event Hubs-vel való kommunikációhoz szükséges kimenő portokhoz. 
-
-| Protokoll | Portok | Részletek | 
-| -------- | ----- | ------- | 
-| AMQP | 5671 és 5672 | Lásd: [AMQP protokoll – útmutató](../service-bus-messaging/service-bus-amqp-protocol-guide.md) | 
-| HTTP, HTTPS | 80, 443 |  |
-| Kafka | 9093 | Lásd: [Event Hubs használata a Kafka-alkalmazásokból](event-hubs-for-kafka-ecosystem-overview.md)
-
-Itt látható egy minta parancs, amely ellenőrzi, hogy az 5671-es port blokkolva van-e.
-
-```powershell
-tnc <yournamespacename>.servicebus.windows.net -port 5671
-```
-
-Linux rendszeren:
-
-```shell
-telnet <yournamespacename>.servicebus.windows.net 5671
-```
-
-### <a name="verify-that-ip-addresses-are-allowed-in-your-corporate-firewall"></a>Ellenőrizze, hogy az IP-címek engedélyezve vannak-e a vállalati tűzfalban
-Ha az Azure-t használja, időnként engedélyeznie kell bizonyos IP-címtartományok vagy URL-címek használatát a vállalati tűzfalon vagy proxyn a használt összes Azure-szolgáltatás eléréséhez. Ellenőrizze, hogy engedélyezett-e a forgalom a Event Hubs által használt IP-címeken. Az Azure Event Hubs által használt IP-címek esetében lásd: [Azure IP-címtartományok és szolgáltatás-címkék – nyilvános felhő](https://www.microsoft.com/download/details.aspx?id=56519).
-
-Ellenőrizze azt is, hogy a névtér IP-címe engedélyezett-e. Az alábbi lépéseket követve megkeresheti a kapcsolatok elérését lehetővé tevő megfelelő IP-címeket:
-
-1. Futtassa a következő parancsot egy parancssorból: 
-
-    ```
-    nslookup <YourNamespaceName>.servicebus.windows.net
-    ```
-2. Jegyezze fel a visszaadott IP-címet `Non-authoritative answer` . Ha egy másik fürtre állítja vissza a névteret, csak akkor változna meg a változás.
-
-Ha a zóna redundanciát használja a névtérhez, néhány további lépést is végre kell hajtania: 
-
-1. Először futtassa az nslookupt a névtéren.
-
-    ```
-    nslookup <yournamespace>.servicebus.windows.net
-    ```
-2. Jegyezze fel a nevet a **nem mérvadó válasz** szakaszban, amely az alábbi formátumok egyike: 
-
-    ```
-    <name>-s1.cloudapp.net
-    <name>-s2.cloudapp.net
-    <name>-s3.cloudapp.net
-    ```
-3. Futtassa az nslookupt mindegyikhez az S1, az S2 és az S3 utótaggal a három rendelkezésre állási zónában futó mindhárom példány IP-címeinek lekéréséhez. 
+[!INCLUDE [event-hubs-connectivity](../../includes/event-hubs-connectivity.md)]
 
 ### <a name="verify-that-azureeventgrid-service-tag-is-allowed-in-your-network-security-groups"></a>Annak ellenőrzése, hogy a AzureEventGrid szolgáltatás címkéje engedélyezve van-e a hálózati biztonsági csoportokban
 Ha az alkalmazás egy alhálózaton belül fut, és van egy társított hálózati biztonsági csoport, ellenőrizze, hogy engedélyezett-e az internetes kimenő hozzáférés vagy a AzureEventGrid szolgáltatás címkéje. Lásd: [virtuális hálózati szolgáltatás címkék](../virtual-network/service-tags-overview.md) és keresés `EventHub` .
@@ -91,22 +44,6 @@ Alapértelmezés szerint a Event Hubs névterek az internetről érhetők el, fe
 Az IP-tűzfalszabályok a Event Hubs névtér szintjén lesznek alkalmazva. Ezért a szabályok az ügyfelek összes kapcsolatára érvényesek bármely támogatott protokoll használatával. Olyan IP-címről érkező csatlakozási kísérletek, amely nem felel meg a Event Hubs névtérben lévő engedélyezett IP-szabálynak, a rendszer nem engedélyezettként fogadja el. A válasz nem említi az IP-szabályt. Az IP-szűrési szabályok sorrendben lesznek alkalmazva, és az IP-címnek megfelelő első szabály határozza meg az elfogadás vagy az elutasítás műveletet.
 
 További információ: az [IP-tűzfalszabályok konfigurálása Azure Event Hubs-névtérhez](event-hubs-ip-filtering.md). A [hálózattal kapcsolatos problémák elhárításával](#troubleshoot-network-related-issues)ellenőrizhető, hogy rendelkezik-e IP-szűréssel, virtuális hálózattal vagy tanúsítványláncot kapcsolatos problémákkal.
-
-#### <a name="find-the-ip-addresses-blocked-by-ip-firewall"></a>Az IP-tűzfal által blokkolt IP-címek keresése
-Engedélyezze a diagnosztikai naplókat [Event Hubs virtuális hálózati kapcsolatok eseményeihez](event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema) a [diagnosztikai naplók engedélyezése](event-hubs-diagnostic-logs.md#enable-diagnostic-logs)című témakör utasításait követve. Ekkor megjelenik a megtagadott kapcsolatok IP-címe.
-
-```json
-{
-    "SubscriptionId": "0000000-0000-0000-0000-000000000000",
-    "NamespaceName": "namespace-name",
-    "IPAddress": "1.2.3.4",
-    "Action": "Deny Connection",
-    "Reason": "IPAddress doesn't belong to a subnet with Service Endpoint enabled.",
-    "Count": "65",
-    "ResourceId": "/subscriptions/0000000-0000-0000-0000-000000000000/resourcegroups/testrg/providers/microsoft.eventhub/namespaces/namespace-name",
-    "Category": "EventHubVNetConnectionEvent"
-}
-```
 
 ### <a name="check-if-the-namespace-can-be-accessed-using-only-a-private-endpoint"></a>Ellenőrizze, hogy a névtér csak privát végpont használatával érhető-e el
 Ha a Event Hubs névtér csak privát végponton keresztül érhető el, győződjön meg arról, hogy az ügyfélalkalmazás a magánhálózati végponton keresztül éri el a névteret. 

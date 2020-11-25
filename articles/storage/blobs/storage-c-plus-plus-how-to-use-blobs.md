@@ -7,12 +7,12 @@ ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: 332d6da35af0eaae9d9d15258a152734f0a9eba6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64069292ea0059216d06bfc41316c2aed7484dd0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88033631"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011098"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>BLOB Storage használata a C++-ból
 
@@ -51,7 +51,7 @@ Adja hozzá a következő include utasításokat a C++ fájl elejéhez, ahol az 
 ```
 
 ## <a name="setup-an-azure-storage-connection-string"></a>Azure Storage-beli kapcsolatok karakterláncának beállítása
-Az Azure Storage-ügyfél egy tárolási kapcsolati sztringet használ az adatkezelési szolgáltatások elérésére szolgáló végpontok és hitelesítő adatok tárolásához. Ha egy ügyfélalkalmazás fut, a tárolási kapcsolati karakterláncot a következő formátumban kell megadnia a Storage-fiók neve és a *accountname* és a *AccountKey* értékek [Azure Portal](https://portal.azure.com) lévő Storage-fiókhoz tartozó Storage-hozzáférési kulcs használatával. További információ a Storage-fiókokról és a hozzáférési kulcsokról: [Tudnivalók az Azure Storage-fiókokról](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Ez a példa bemutatja, hogyan deklarálhat statikus mezőt a kapcsolati sztring tárolására:
+Az Azure Storage-ügyfél egy tárolási kapcsolati sztringet használ az adatkezelési szolgáltatások elérésére szolgáló végpontok és hitelesítő adatok tárolásához. Ha egy ügyfélalkalmazás fut, a tárolási kapcsolati karakterláncot a következő formátumban kell megadnia a Storage-fiók neve és a *accountname* és a *AccountKey* értékek [Azure Portal](https://portal.azure.com) lévő Storage-fiókhoz tartozó Storage-hozzáférési kulcs használatával. További információ a Storage-fiókokról és a hozzáférési kulcsokról: [Tudnivalók az Azure Storage-fiókokról](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Ez a példa bemutatja, hogyan deklarálhat statikus mezőt a kapcsolati sztring tárolására:
 
 ```cpp
 // Define the connection-string with your values.
@@ -184,7 +184,7 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 }
 ```
 
-További részletek a listázási műveletekről: [Az Azure Storage-erőforrások listázása a C++-ban](../storage-c-plus-plus-enumeration.md).
+További részletek a listázási műveletekről: [Az Azure Storage-erőforrások listázása a C++-ban](../common/storage-c-plus-plus-enumeration.md).
 
 ## <a name="how-to-download-blobs"></a>Útmutató: Blobok letöltése
 A Blobok letöltéséhez először kérje le a blob-referenciát, majd hívja meg a **download_to_stream** metódust. Az alábbi példa a **download_to_stream** metódus használatával továbbítja a blob tartalmát egy stream-objektumba, amelyet aztán megtarthat egy helyi fájlba.
@@ -254,13 +254,12 @@ azure::storage::cloud_block_blob blockBlob = container.get_block_blob_reference(
 blockBlob.delete_blob();
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy megismerte a blob Storage alapjait, az alábbi hivatkozásokat követve további információkat tudhat meg az Azure Storage-ról.
 
-- [A Queue Storage használata C++-szal](../storage-c-plus-plus-how-to-use-queues.md)
+- [A Queue Storage használata C++-szal](../queues/storage-c-plus-plus-how-to-use-queues.md)
 - [A Table Storage használata a C++-ból](../../cosmos-db/table-storage-how-to-use-c-plus.md)
-- [Azure Storage-erőforrások listázása C++-ban](../storage-c-plus-plus-enumeration.md)
+- [Azure Storage-erőforrások listázása C++-ban](../common/storage-c-plus-plus-enumeration.md)
 - [Storage ügyféloldali kódtár a C++-hoz – dokumentáció](https://azure.github.io/azure-storage-cpp)
 - [Az Azure Storage dokumentációja](https://azure.microsoft.com/documentation/services/storage/)
-- [Transfer data with the AzCopy Command-Line Utility (Adatátvitel az AzCopy parancssori segédprogrammal)](../storage-use-azcopy.md)
-
+- [Transfer data with the AzCopy Command-Line Utility (Adatátvitel az AzCopy parancssori segédprogrammal)](../common/storage-use-azcopy-v10.md)

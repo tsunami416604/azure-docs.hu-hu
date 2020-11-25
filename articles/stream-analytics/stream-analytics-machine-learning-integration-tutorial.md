@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 08/12/2020
 ms.custom: seodec18
 ms.openlocfilehash: 9b08b59090d9dd23405f8a0ba86ce608e3a64902
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123761"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011387"
 ---
 # <a name="do-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>Azure Stream Analytics és Azure Machine Learning Studio (klasszikus) a hangulat elemzése
 
@@ -43,7 +43,7 @@ Mielőtt hozzálátna, győződjön meg róla, hogy rendelkezik az alábbiakkal:
 
 Ebben a lépésben egy CSV-fájlt tölt fel a Storage-tárolóba.
 
-1. A Azure Portal válassza az **erőforrás létrehozása**  >  **Storage** -  >  **fiók** lehetőséget.
+1. A Azure Portal válassza az **erőforrás létrehozása**  >  **Storage**-  >  **fiók** lehetőséget.
 
 2. Töltse ki az *alapok* lapot a következő részletekkel, és hagyja meg a fennmaradó mezők alapértelmezett értékeit:
 
@@ -127,7 +127,7 @@ A feladatot a rendszer a blob Storage-ba korábban feltöltött CSV-fájlból ol
    |Tároló|Válassza ki az előző lépésben létrehozott tárolót.|
    |Eseményszerializációs formátum|CSV|
 
-3. Válassza a **Mentés** lehetőséget.
+3. Kattintson a **Mentés** gombra.
 
 ### <a name="configure-the-job-output"></a>A feladatok kimenetének konfigurálása
 
@@ -145,7 +145,7 @@ A művelet az eredményeket ugyanarra a blob-tárolóra küldi, ahol a bemenet b
    |Tároló|Válassza ki az előző lépésben létrehozott tárolót.|
    |Eseményszerializációs formátum|CSV|
 
-3. Válassza a **Mentés** lehetőséget.
+3. Kattintson a **Mentés** gombra.
 
 ### <a name="add-the-studio-classic-function"></a>A Studio (klasszikus) függvény hozzáadása
 
@@ -224,7 +224,7 @@ Emellett megtekintheti a Studio (klasszikus) függvényekkel kapcsolatos metrik�
 * A **függvények kérései** a Studio (klasszikus) webszolgáltatás számára küldött kérések számát jelzik.  
 * A **függvény eseményei** a kérelemben szereplő események számát jelzik. Alapértelmezés szerint a Studio (klasszikus) webszolgáltatás minden kérése legfeljebb 1 000 eseményt tartalmaz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](/stream-analytics-query/stream-analytics-query-language-reference)

@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: dobett
 ms.openlocfilehash: a092859517ee6ac41e62e55fe95f72b8bfdf87d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91290722"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011200"
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>Annak testreszabása, hogy a csatlakoztatott gyári megoldás hogyan jelenítse meg az OPC UA-kiszolgálók adatait
 
@@ -27,7 +27,7 @@ A megoldás összesített adatainak példái közé tartoznak az általános ber
 
 ![Példa OEE-és KPI-értékekre a megoldásban][img-oee-kpi]
 
-A megoldás lehetővé teszi, hogy az OPC UA-kiszolgálókról, *állomásoktól*származó részletes adatokat tekintse meg a megadott adatelemekről. Az alábbi képernyőfelvételen egy adott állomásról származó feldolgozott elemek számának ábrázolása látható:
+A megoldás lehetővé teszi, hogy az OPC UA-kiszolgálókról, *állomásoktól* származó részletes adatokat tekintse meg a megadott adatelemekről. Az alábbi képernyőfelvételen egy adott állomásról származó feldolgozott elemek számának ábrázolása látható:
 
 ![A gyártott elemek számának ábrázolása][img-manufactured-items]
 
@@ -50,7 +50,7 @@ A csatlakoztatott OPC UA-kiszolgáló által a megoldáshoz az irányítópulton
 
     ![Navigáljon az OPC UA-kiszolgáló kiválasztása nézethez][img-select-server]
 
-1. Válasszon ki egy kiszolgálót, és kattintson a **kapcsolat**elemre. A biztonsági figyelmeztetés megjelenésekor kattintson a **Folytatás** gombra.
+1. Válasszon ki egy kiszolgálót, és kattintson a **kapcsolat** elemre. A biztonsági figyelmeztetés megjelenésekor kattintson a **Folytatás** gombra.
 
     > [!NOTE]
     > Ez a figyelmeztetés csak egyszer jelenik meg az egyes kiszolgálókon, és megbízhatósági kapcsolatot létesít a megoldás irányítópultja és a kiszolgáló között.

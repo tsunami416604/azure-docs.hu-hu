@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/24/2020
 ms.openlocfilehash: 7c644583e994e51f11bdf7991755a6ea94b01e76
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533478"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012807"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Apache Hadoop-fürtök kezelése a HDInsight-ben a Azure Portal használatával
 
@@ -60,7 +60,7 @@ Válassza ki a fürt nevét a [**HDInsight-fürtök**](#showClusters) lapon.  Ek
     |Hozzáférés-vezérlés (IAM)|Szerepkör-hozzárendelések használata.  Lásd: [szerepkör-hozzárendelések használata az Azure-előfizetések erőforrásaihoz való hozzáférés kezeléséhez](../role-based-access-control/role-assignments-portal.md).|
     |Címkék|Lehetővé teszi a kulcs/érték párok beállítását a Cloud Services egyéni besorolásának meghatározásához. Létrehozhat például egy **Project** nevű kulcsot, majd közös értéket használhat egy adott projekthez társított összes szolgáltatáshoz.|
     |Problémák diagnosztizálása és megoldása|Hibaelhárítási információk megjelenítése.|
-    |Első lépések|Megjeleníti a HDInsight használatának megkezdéséhez segítséget biztosító információkat.|
+    |Gyorsútmutató|Megjeleníti a HDInsight használatának megkezdéséhez segítséget biztosító információkat.|
     |Eszközök|Súgó a HDInsight-hez kapcsolódó eszközökről.|
 
   - **Beállítások menü**  
@@ -109,7 +109,7 @@ A [fürt kezdőlapjának](#homePage) **Beállítások** területén válassza a 
 |ÁLLAPOT|Az egyik: megszakított, elfogadott, ClusterStorageProvisioned, AzureVMConfiguration, HDInsightConfiguration, Operational, Running, error, DELETE, deleted, időtúllépés, DeleteQueued, DeleteTimedout, DeleteError, PatchQueued, CertRolloverQueued, ResizeQueued vagy ClusterCustomization.|
 |RÉGIÓ|Azure-beli hely. A támogatott Azure-helyszínek listáját a [HDInsight díjszabásának](https://azure.microsoft.com/pricing/details/hdinsight/) **régió** legördülő listájában tekintheti meg.|
 |LÉTREHOZÁS DÁTUMA|A fürt üzembe helyezésének dátuma.|
-|OPERÁCIÓS RENDSZER|**Windows** vagy **Linux** .|
+|OPERÁCIÓS RENDSZER|**Windows** vagy **Linux**.|
 |TÍPUS|Hadoop, HBase, Storm, Spark.|
 |Verzió|Lásd: [HDInsight-verziók](hdinsight-component-versioning.md).|
 |TLS minimális verziója|A TLS verziója.|
@@ -126,7 +126,7 @@ A [fürt kezdőlapjának](#homePage) **Beállítások** területén válassza a 
 A [fürt kezdőlapján](#homePage):
 
 1. Válassza az **Áthelyezés** lehetőséget a felső menüben.
-2. Válassza **az áthelyezés másik erőforráscsoporthoz** lehetőséget, vagy **váltson másik előfizetésre** .
+2. Válassza **az áthelyezés másik erőforráscsoporthoz** lehetőséget, vagy **váltson másik előfizetésre**.
 3. Kövesse az új oldal utasításait.
 
 ## <a name="delete-clusters"></a>Fürtök törlése
@@ -179,7 +179,7 @@ A [fürt kezdőlapján](#homePage):
     ![HDInsight Apache Hadoop-fürt menü](./media/hdinsight-administer-use-portal-linux/hdinsight-azure-portal-cluster-menu2.png)
 
 1. Válassza a **Ambari Kezdőlap** lehetőséget az új lapon.
-1. Adja meg a fürt felhasználónevét és jelszavát.  Az alapértelmezett fürt felhasználóneve a _rendszergazda_ .
+1. Adja meg a fürt felhasználónevét és jelszavát.  Az alapértelmezett fürt felhasználóneve a _rendszergazda_.
 
 További információ: HDInsight- [fürtök kezelése az Apache Ambari webes felhasználói felületén keresztül](hdinsight-hadoop-manage-ambari.md).
 
@@ -228,7 +228,7 @@ A jelszó a fürt összes csomópontján módosul.
    | Mező | Érték |
    | --- | --- |
    | Parancsfájl típusa | Válassza a **-Custom** elemet a legördülő listából.|
-   | Name |"SSH hitelesítő adatok módosítása" |
+   | Név |"SSH hitelesítő adatok módosítása" |
    | Bash-parancsfájl URI-ja |A changecredentials.sh-fájl URI-ja |
    | Csomópont típusa (i): (Head, Worker, Nimbus, témavezető vagy Zookeeper) |✓ Minden felsorolt csomópont-típushoz |
    | Paraméterek |Adja meg az SSH-felhasználónevet, majd az új jelszót. A Felhasználónév és a jelszó között egy szóköznek kell lennie. |
@@ -264,7 +264,7 @@ A fürt [kezdőlapjának](#homePage) **fürt mérete** csempéje megjeleníti a 
 - [Apache Hive használata a HDInsight](hadoop/apache-hadoop-use-hive-ambari-view.md)
 - [SSH használata a HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanult néhány alapvető felügyeleti funkciót. További tudnivalókért olvassa el a következő cikket:
 

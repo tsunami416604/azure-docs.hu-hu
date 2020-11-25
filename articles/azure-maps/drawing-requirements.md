@@ -9,11 +9,11 @@ ms.service: azure-maps
 services: azure-maps
 manager: philMea
 ms.openlocfilehash: 2c3e46bf386e70cbe35d96728ede896d6bf0dc7d
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895834"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013122"
 ---
 # <a name="drawing-package-requirements"></a>Rajzolási csomag követelményei
 
@@ -31,12 +31,12 @@ A [Azure Maps átalakítási szolgáltatás](/rest/api/maps/conversion) átalak�
 
 Az egyszerű hivatkozáshoz itt talál néhány olyan kifejezést és definíciót, amelyek fontosak a cikk elolvasása során.
 
-| Időszak  | Meghatározás |
+| Kifejezés  | Definíció |
 |:-------|:------------|
 | Réteg | Egy AutoCAD DWG-réteg.|
 | Szint | Egy épület területe egy beállított jogosultságszint-emeléssel. Például egy épület padlója. |
 | Xref  |Egy AutoCAD DWG fájlformátumban (. DWG) található fájl, amely külső hivatkozásként van csatolva az elsődleges rajzhoz.  |
-| Szolgáltatás | Egy olyan objektum, amely a geometriát további metaadat-információkkal ötvözi. |
+| Funkció | Egy olyan objektum, amely a geometriát további metaadat-információkkal ötvözi. |
 | Szolgáltatási osztályok | A funkciók közös tervrajza. Egy *egység* például egy szolgáltatás osztály, az *Office* pedig egy szolgáltatás. |
 
 ## <a name="drawing-package-structure"></a>Rajzolási csomag szerkezete
@@ -50,9 +50,9 @@ A DWG-fájlokat bármilyen módon rendszerezheti a mappában, de a jegyzékfájl
 
 ## <a name="dwg-files-requirements"></a>DWG-fájlok követelményei
 
-A létesítmény egyes szintjeihez egyetlen DWG-fájl szükséges. A szintnek csak egyetlen DWG-fájlban kell szerepelnie. A külső hivatkozásokat ( _xrefeket_ ) a fölérendelt rajzhoz kell kötni. Továbbá minden DWG-fájl:
+A létesítmény egyes szintjeihez egyetlen DWG-fájl szükséges. A szintnek csak egyetlen DWG-fájlban kell szerepelnie. A külső hivatkozásokat (_xrefeket_) a fölérendelt rajzhoz kell kötni. Továbbá minden DWG-fájl:
 
-* Meg kell határoznia a _külső_ és az _egység_ rétegeit. A következő választható rétegeket is megadhatja: _Wall_ , _Door_ , _UnitLabel_ , _Zone_ és _ZoneLabel_ .
+* Meg kell határoznia a _külső_ és az _egység_ rétegeit. A következő választható rétegeket is megadhatja: _Wall_, _Door_, _UnitLabel_, _Zone_ és _ZoneLabel_.
 * A nem tartalmazhat több szintből származó szolgáltatásokat.
 * A nem tartalmazhat több létesítményből származó szolgáltatásokat.
 
@@ -79,7 +79,7 @@ Minden rétegbeli entitásnak a következő típusok egyikének kell lennie: von
 
 Az alábbi táblázat az egyes rétegekhez tartozó támogatott entitások típusait és támogatott funkcióit ismerteti. Ha egy réteg nem támogatott entitás-típusokat tartalmaz, akkor a [Azure Maps konverziós szolgáltatás](/rest/api/maps/conversion) figyelmen kívül hagyja ezeket az entitásokat.  
 
-| Réteg | Entitástípusok | Funkciók |
+| Réteg | Entitástípusok | Szolgáltatások |
 | :----- | :-------------------| :-------
 | [Külső](#exterior-layer) | Sokszög, vonallánc (lezárt), kör | Szintek
 | [Egység](#unit-layer) |  Sokszög, vonallánc (lezárt), kör | Vertikális behatolások, egységek
@@ -402,7 +402,7 @@ Az alábbi példa a minta rajzolási csomag mintáját tartalmazó jegyzékfájl
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha a rajzfájl megfelel a követelményeknek, a [Azure Maps átalakítási szolgáltatással](/rest/api/maps/conversion) átalakíthatja a csomagot térképi adatkészletbe. Ezt követően használhatja az adatkészletet egy beltéri Térkép létrehozásához a beltéri térképek modul használatával.
 

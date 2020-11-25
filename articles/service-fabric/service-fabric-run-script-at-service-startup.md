@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: atsenthi
 ms.openlocfilehash: a25f16f08ab8ae9564363f179d19d4b30c5315fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75464288"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012527"
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>Szolgáltatásindítási szkript futtatása helyi felhasználóként vagy rendszerfiókként
 A Service Fabric szolgáltatás végrehajtható fájljának elindítása előtt szükség lehet néhány konfiguráció vagy beállítás futtatására.  Például a környezeti változók konfigurálása. Megadhat egy parancsfájlt, amelyet a szolgáltatás végrehajtható fájljának a szolgáltatáshoz tartozó szolgáltatási jegyzékfájlban való elindítása előtt szeretne futtatni. A szolgáltatás telepítési belépési pontjához tartozó futtató házirend konfigurálásával megváltoztathatja, hogy a telepítő végrehajtható fájlja melyik fiókon fusson.  Egy különálló telepítési belépési pont lehetővé teszi, hogy rövid idő alatt magas jogosultsági szintű konfigurációt futtasson, így a szolgáltatás-gazdagép végrehajtható fájljának nem kell magas szintű jogosultságokkal rendelkeznie a hosszabb ideig.
 
-A telepítési belépési pont**SetupEntryPoint** (a SetupEntryPoint [) egy](service-fabric-application-and-service-manifests.md)emelt szintű belépési pont, amely alapértelmezés szerint ugyanazokkal a hitelesítő adatokkal fut, mint a Service Fabric (jellemzően a *NetworkService* fiók) a többi belépési pont előtt. A **BelépésiPont** által megadott végrehajtható fájl általában a hosszan futó szolgáltatás gazdagépe. A **BelépésiPont** végrehajtható fájl futtatása a **SetupEntryPoint** végrehajtható fájl sikeres bezárása után történik. Az eredményül kapott folyamat figyelése és újraindítása megkezdődött, és újra megkezdődik a **SetupEntryPoint** , ha még leáll vagy összeomlik. 
+A telepítési belépési pont **SetupEntryPoint** (a SetupEntryPoint [) egy](service-fabric-application-and-service-manifests.md)emelt szintű belépési pont, amely alapértelmezés szerint ugyanazokkal a hitelesítő adatokkal fut, mint a Service Fabric (jellemzően a *NetworkService* fiók) a többi belépési pont előtt. A **BelépésiPont** által megadott végrehajtható fájl általában a hosszan futó szolgáltatás gazdagépe. A **BelépésiPont** végrehajtható fájl futtatása a **SetupEntryPoint** végrehajtható fájl sikeres bezárása után történik. Az eredményül kapott folyamat figyelése és újraindítása megkezdődött, és újra megkezdődik a **SetupEntryPoint** , ha még leáll vagy összeomlik. 
 
 ## <a name="configure-the-service-setup-entry-point"></a>Szolgáltatásbeállítás belépési pontjának konfigurálása
 Az alábbiakban egy olyan állapot nélküli szolgáltatás egyszerű szolgáltatási jegyzékfájlja látható, amely a szolgáltatás **SetupEntryPoint** *MySetup.bat* telepítési parancsfájlt határoz meg.  A **argumentumok** argumentumokat adnak át a parancsfájlnak a futtatásakor.
@@ -131,12 +131,12 @@ Gyakran érdemes az indítási parancsfájlt helyi rendszerfiókkal futtatni, ne
 ```
 
 > [!NOTE]
-> Linux-fürtök esetén a szolgáltatás vagy a telepítési belépési pont **gyökérként**való futtatásához megadhatja **AccountType** a AccountType **LocalSystemként**.
+> Linux-fürtök esetén a szolgáltatás vagy a telepítési belépési pont **gyökérként** való futtatásához megadhatja **AccountType** a AccountType **LocalSystemként**.
 
 ## <a name="run-a-script-from-the-setup-entry-point"></a>Parancsfájl futtatása a telepítési belépési pontról
 Most adjon hozzá egy indítási parancsfájlt a projekthez, hogy rendszergazdai jogosultságok alatt fusson. 
 
-A Visual Studióban kattintson a jobb gombbal a szolgáltatási projektre, és adjon hozzá egy *MySetup.bat*nevű új fájlt.
+A Visual Studióban kattintson a jobb gombbal a szolgáltatási projektre, és adjon hozzá egy *MySetup.bat* nevű új fájlt.
 
 Ezután győződjön meg arról, hogy a *MySetup.bat* fájl szerepel a szervizcsomagban. Alapértelmezés szerint nem. Válassza ki a fájlt, kattintson a jobb gombbal a helyi menü beolvasásához, majd válassza a **Tulajdonságok parancsot**. A Tulajdonságok párbeszédpanelen győződjön meg arról, hogy a **Másolás a kimeneti könyvtárba** beállítás a másolás, **Ha újabb**. Tekintse meg a következő képernyőképet.
 
@@ -161,14 +161,14 @@ PS C:\ [Environment]::GetEnvironmentVariable("TestVariable","Machine")
 MyValue
 ```
 
-Ezt követően jegyezze fel annak a csomópontnak a nevét, amelyen a szolgáltatás központi telepítése megkezdődött, és [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)indult el. Például: 2. csomópont. Ezután keresse meg az alkalmazás példányának munkahelyi mappáját, és keresse meg a **TestVariable**értékét megjelenítő out.txt fájlt. Ha például a szolgáltatás a 2. csomópontra lett telepítve, akkor az alábbi elérési útra léphet a **MyApplicationType**:
+Ezt követően jegyezze fel annak a csomópontnak a nevét, amelyen a szolgáltatás központi telepítése megkezdődött, és [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)indult el. Például: 2. csomópont. Ezután keresse meg az alkalmazás példányának munkahelyi mappáját, és keresse meg a **TestVariable** értékét megjelenítő out.txt fájlt. Ha például a szolgáltatás a 2. csomópontra lett telepítve, akkor az alábbi elérési útra léphet a **MyApplicationType**:
 
 ```
 C:\SfDevCluster\Data\_App\Node.2\MyApplicationType_App\work\out.txt
 ```
 
 ## <a name="run-powershell-commands-from-a-setup-entry-point"></a>PowerShell-parancsok futtatása telepítési belépési pontról
-Ha a PowerShellt a **SetupEntryPoint** pontról szeretné futtatni, **PowerShell.exe** futtathat egy olyan batch-fájlban, amely egy PowerShell-fájlra mutat. Először adjon hozzá egy PowerShell-fájlt a szolgáltatási projekthez – például **MySetup.ps1**. Ne felejtse el megadni a *másolást, ha újabb* tulajdonságot szeretne, hogy a fájl is szerepeljen a szervizcsomagban. Az alábbi példa egy MySetup.ps1 nevű PowerShell-fájlt indít, amely egy **TestVariable**nevű rendszerkörnyezeti változót állít be.
+Ha a PowerShellt a **SetupEntryPoint** pontról szeretné futtatni, **PowerShell.exe** futtathat egy olyan batch-fájlban, amely egy PowerShell-fájlra mutat. Először adjon hozzá egy PowerShell-fájlt a szolgáltatási projekthez – például **MySetup.ps1**. Ne felejtse el megadni a *másolást, ha újabb* tulajdonságot szeretne, hogy a fájl is szerepeljen a szervizcsomagban. Az alábbi példa egy MySetup.ps1 nevű PowerShell-fájlt indít, amely egy **TestVariable** nevű rendszerkörnyezeti változót állít be.
 
 MySetup.bat egy PowerShell-fájl indításához:
 

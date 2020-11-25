@@ -10,11 +10,11 @@ ms.date: 07/17/2017
 ms.custom: devx-track-java
 ms.author: cynthn
 ms.openlocfilehash: f571dc5f4f3aee2405d4968b050bd2dd92a709db
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973665"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012748"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Windows rendszerű virtuális gépek létrehozása és kezelése az Azure-ban Java használatával
 
@@ -128,7 +128,7 @@ A lépés elkezdése előtt győződjön meg arról, hogy van hozzáférése egy
     graphURL=https://graph.microsoft.com/
     ```
 
-    Cserélje le az ** &lt; előfizetés &gt; -azonosítót** az előfizetési azonosítóra, az ** &lt; application-ID &gt; -** t a Active Directory alkalmazás-azonosítóra, a ** &lt; hitelesítési kulcsot &gt; ** az alkalmazás kulcsára, és ** &lt; &gt; a bérlő azonosítóját** a bérlő azonosítójával.
+    Cserélje le az **&lt; előfizetés &gt; -azonosítót** az előfizetési azonosítóra, az **&lt; application-ID &gt; -** t a Active Directory alkalmazás-azonosítóra, a **&lt; hitelesítési kulcsot &gt;** az alkalmazás kulcsára, és **&lt; &gt; a bérlő azonosítóját** a bérlő azonosítójával.
 
 2. Mentse a fájlt.
 3. Állítson be egy AZURE_AUTH_LOCATION nevű környezeti változót a rendszerhéjban a hitelesítési fájl teljes elérési útjával.
@@ -465,5 +465,5 @@ Körülbelül öt percet vesz igénybe ahhoz, hogy a konzol alkalmazás teljes k
 2. Mielőtt megnyomja az **ENTER** billentyűt az erőforrások törlésének megkezdéséhez, eltarthat néhány percig, hogy ellenőrizze az erőforrások létrehozását a Azure Portalban. A központi telepítésre vonatkozó információk megtekintéséhez kattintson a központi telepítés állapotára.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ a [Javához készült Azure-kódtárak](/java/azure/java-sdk-azure-overview)használatáról.

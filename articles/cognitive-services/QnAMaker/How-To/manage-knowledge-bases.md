@@ -6,11 +6,11 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.openlocfilehash: 890b555703f922168a820a0535296b9f55218752
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777728"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011047"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>Tudásbázis létrehozása és beállítások kezelése
 
@@ -26,21 +26,21 @@ A QnA Maker a Tudásbázis-beállításokhoz és az adatforrásokhoz való hozz�
 
 1. Jelentkezzen be az [QnAMaker.ai](https://QnAMaker.ai) -portálra az Azure-beli hitelesítő adataival.
 
-1. A QnA Maker portálon válassza a **Tudásbázis létrehozása**elemet.
+1. A QnA Maker portálon válassza a **Tudásbázis létrehozása** elemet.
 
 1. A **Létrehozás** lapon hagyja ki az **1. lépést** , ha már rendelkezik a QnA Maker erőforrással.
 
-    Ha még nem hozta létre az erőforrást, válassza **a QnA-szolgáltatás létrehozása**lehetőséget. A rendszer átirányítja az [Azure Portalra](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker), ahol be kell állítania az előfizetésében egy QnA Maker-szolgáltatást. Jegyezze fel Azure Active Directory AZONOSÍTÓját, előfizetését, az erőforrás létrehozásakor kiválasztott QnA-erőforrás nevét.
+    Ha még nem hozta létre az erőforrást, válassza **a QnA-szolgáltatás létrehozása** lehetőséget. A rendszer átirányítja az [Azure Portalra](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker), ahol be kell állítania az előfizetésében egy QnA Maker-szolgáltatást. Jegyezze fel Azure Active Directory AZONOSÍTÓját, előfizetését, az erőforrás létrehozásakor kiválasztott QnA-erőforrás nevét.
 
     Amikor elkészült az erőforrás létrehozásával a Azure Portalban, térjen vissza a QnA Maker portálra, frissítse a böngésző oldalát, és folytassa a **2. lépéssel**.
 
-1. A **3. lépésben**válassza ki az Active Directoryt, előfizetést, szolgáltatást (erőforrás) és a szolgáltatásban létrehozott összes Tudásbázis nyelvét.
+1. A **3. lépésben** válassza ki az Active Directoryt, előfizetést, szolgáltatást (erőforrás) és a szolgáltatásban létrehozott összes Tudásbázis nyelvét.
 
    ![Képernyőkép a QnA Maker szolgáltatás tudásbázisának kiválasztásáról](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
 
-1. A **3. lépésben**adja meg a Tudásbázis nevét `My Sample QnA KB` .
+1. A **3. lépésben** adja meg a Tudásbázis nevét `My Sample QnA KB` .
 
-1. A **4. lépésben**konfigurálja a beállításokat a következő táblázattal:
+1. A **4. lépésben** konfigurálja a beállításokat a következő táblázattal:
 
     |Beállítás|Érték|
     |--|--|
@@ -49,7 +49,7 @@ A QnA Maker a Tudásbázis-beállításokhoz és az adatforrásokhoz való hozz�
     |**+ URL-cím hozzáadása**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
     |**Csevegés**|**Professional** kiválasztása|
 
-1. Az **5. lépésben**válassza **a saját kb létrehozása**lehetőséget.
+1. Az **5. lépésben** válassza **a saját kb létrehozása** lehetőséget.
 
     A kinyerési folyamat néhány percet vesz igénybe, hogy beolvassa a dokumentumot, és azonosítsa a kérdéseket és a válaszokat.
 
@@ -72,7 +72,7 @@ A QnA Maker a Tudásbázis-beállításokhoz és az adatforrásokhoz való hozz�
        |URL-cím hozzáadása|Új URL-címek hozzáadásával új GYIK-tartalmakat adhat hozzá a tudásbázishoz, ha a Tudásbázis kezelése elemre kattint **– > "+ URL-cím hozzáadása"** hivatkozást.|
        |URL-cím törlése|A Törlés ikonra kattintva törölheti a meglévő URL-címeket, a kukába is.|
        |Tartalom frissítése|Ha azt szeretné, hogy a tudásbázisa a meglévő URL-címek legújabb tartalmát bejárja, jelölje be a **refresh (frissítés** ) jelölőnégyzetet. Ekkor a rendszer egyszer frissíti a tudásbázist a legújabb URL-tartalommal. Ez nem állítja be a frissítések rendszeres ütemtervét.|
-       |Fájl hozzáadása|Egy Tudásbázis részét képező támogatott dokumentum hozzáadásához válassza a **Tudásbázis kezelése**lehetőséget, majd a **+ fájl hozzáadása** elemet.|
+       |Fájl hozzáadása|Egy Tudásbázis részét képező támogatott dokumentum hozzáadásához válassza a **Tudásbázis kezelése** lehetőséget, majd a **+ fájl hozzáadása** elemet.|
     |Importálás|A meglévő tudásbázist a **Tudásbázis importálása** gomb kiválasztásával is importálhatja. |
     |Frissítés|A Tudásbázis frissítése a tudásbázishoz kapcsolódó QnA Maker szolgáltatás létrehozásakor használt **felügyeleti díjszabási szinttől** függ. Ha szükséges, a felügyeleti szintet Azure Portal is frissítheti.
 
@@ -81,7 +81,7 @@ A QnA Maker a Tudásbázis-beállításokhoz és az adatforrásokhoz való hozz�
        ![Mentés és betanítás](../media/qnamaker-how-to-edit-kb/save-and-train.png)
 
        >[!CAUTION]
-       >Ha a **Mentés és a betanítás**kiválasztása előtt elhagyja a lapot, az összes módosítás elvész.
+       >Ha a **Mentés és a betanítás** kiválasztása előtt elhagyja a lapot, az összes módosítás elvész.
 
 
 
@@ -105,7 +105,7 @@ Egy Tudásbázis törlése (KB) állandó művelet. Nem vonható vissza. A Tudá
 
 Ha a tudásbázist a közreműködők, a] (együttműködés – Knowledge-base.md) használatával osztja meg, akkor törölje, mindenki elveszti a KB-hoz való hozzáférést.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan [kezelheti az](language-knowledge-base.md) erőforrások összes tudásbázisának nyelvét.
 

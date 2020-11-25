@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: b-juche
 ms.openlocfilehash: 62bf154c1dbf1a0d3f12e2cef916b37059ce985b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325504"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012476"
 ---
 # <a name="resize-a-capacity-pool-or-a-volume"></a>A kapacitáskészlet vagy kötet átméretezése
 Szükség szerint módosíthatja a kapacitási készlet vagy a kötet méretét. 
@@ -36,11 +36,11 @@ A kapacitási készlet mérete 1 – TiB-es vagy csökkenő értékben módosít
 
 Szükség szerint módosíthatja a kötetek méretét. A kötet kapacitásfogyasztása beleszámít a készlet kiosztott kapacitásába.
 
-1. A NetApp-fiók kezelése panelen kattintson a **kötetek**elemre. 
+1. A NetApp-fiók kezelése panelen kattintson a **kötetek** elemre. 
 2. Kattintson a jobb gombbal az átméretezni kívánt kötet nevére, vagy kattintson a "..." elemre. ikon a kötet sor végén a helyi menü megjelenítéséhez.
 3. A kötet átméretezéséhez vagy törléséhez használja a helyi menü beállításait.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Kapacitáskészlet beállítása](azure-netapp-files-set-up-capacity-pool.md)
 - [Manuális QoS-kapacitáskészlet kezelése](manage-manual-qos-capacity-pool.md)

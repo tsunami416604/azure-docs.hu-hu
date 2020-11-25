@@ -4,11 +4,11 @@ description: Megtudhatja, hogyan csatlakozhat távolról egy méretezési csopor
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.openlocfilehash: 98d573af4fc2026134e75d4caf24a09e57e52c87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268094"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012544"
 ---
 # <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Távoli kapcsolódás virtuálisgép-méretezési csoport példányaihoz vagy fürtcsomóponton
 Az Azure-ban futó Service Fabric-fürtökben minden egyes definiált csomópont-típus [a virtuális gép külön méretezését állítja](service-fabric-cluster-nodetypes.md)be.  A távoli kapcsolódást egy adott méretezési csoport példányaihoz (fürtcsomópontok) lehet csatlakoztatni.  Az Egypéldányos virtuális gépektől eltérően a méretezési csoport példányai nem rendelkeznek saját virtuális IP-címmel. Ez kihívást jelenthet, ha olyan IP-címet és portot keres, amelyet egy adott példányhoz való távoli kapcsolódáshoz használhat.
@@ -19,7 +19,7 @@ Ha olyan IP-címet és portot szeretne megkeresni, amelyet egy adott példányho
 
     A fürtben definiált csomópont-típusok általában saját virtuális IP-címmel és dedikált Load balancerrel rendelkeznek. Alapértelmezés szerint a rendszer a csomópont típusú terheléselosztást a következő formátumban nevezi el: *LB-{cluster-Name}-{Node-Type}*; például: *LB-mycluster-FrontEnd*. 
     
-    A terheléselosztó lapján a Azure Portalban válassza a **Beállítások**  >  **bejövő NAT-szabályok**elemet: 
+    A terheléselosztó lapján a Azure Portalban válassza a **Beállítások**  >  **bejövő NAT-szabályok** elemet: 
 
     ![Képernyőfelvétel a Azure Portal Load Balancer oldaláról. A bal oldali menü beállítások területén a bejövő NAT-szabályok lehetőség van kiválasztva.](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
 
