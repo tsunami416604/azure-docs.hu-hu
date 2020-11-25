@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: 85577a428f803e31aa33468496d7efca77933835
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 1b568687ffe646a91544c1bb75d26d552a23f49c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579311"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96005282"
 ---
 # <a name="optimize-costs-by-automating-azure-blob-storage-access-tiers"></a>A költségek optimalizálása az Azure Blob Storage hozzáférési szintjeinek automatizálásával
 
@@ -39,7 +39,7 @@ Vegyünk például egy olyan forgatókönyvet, amelyben az adatmennyiség az él
 
 Az életciklus-kezelési funkció az összes Azure-régióban elérhető az általános célú v2 (GPv2) fiókokhoz, a blob Storage-fiókokhoz, a prémium szintű blokk blob Storage-fiókokhoz és a Azure Data Lake Storage Gen2 fiókokhoz. A Azure Portal egy meglévő általános célú (GPv1-) fiókot frissíthet egy GPv2-fiókra. A Storage-fiókokkal kapcsolatos további információkért lásd: az [Azure Storage-fiók áttekintése](../common/storage-account-overview.md).
 
-Az életciklus-kezelési szolgáltatás díjmentes. A blob szintű API-hívások [beállításakor](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) a rendszer a szokásos működési költséget számítja fel. A törlési művelet ingyenes. A díjszabással kapcsolatos további információkért lásd a [Blobok díjszabásának blokkolása](https://azure.microsoft.com/pricing/details/storage/blobs/)című témakört.
+Az életciklus-kezelési szolgáltatás díjmentes. A blob szintű API-hívások [beállításakor](/rest/api/storageservices/set-blob-tier) a rendszer a szokásos működési költséget számítja fel. A törlési művelet ingyenes. A díjszabással kapcsolatos további információkért lásd a [Blobok díjszabásának blokkolása](https://azure.microsoft.com/pricing/details/storage/blobs/)című témakört.
 
 ## <a name="add-or-remove-a-policy"></a>Szabályzat hozzáadása vagy eltávolítása
 
@@ -47,13 +47,13 @@ A szabályzatokat a következő módszerek bármelyikével adhatja hozzá, szerk
 
 * [Azure Portalra](https://portal.azure.com)
 * [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
-* [REST API-k](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
+* [Azure CLI](/cli/azure/install-azure-cli)
+* [REST API-k](/rest/api/storagerp/managementpolicies)
 
 A szabályzatok teljes mértékben olvashatók vagy írhatók. A részleges frissítések nem támogatottak. 
 
 > [!NOTE]
-> Ha engedélyezi a tűzfalszabályok beállításait a Storage-fiókjához, előfordulhat, hogy az életciklus-kezelési kérelmek le lesznek tiltva. Ezeket a kéréseket feloldja a megbízható Microsoft-szolgáltatások kivételének biztosításával. További információt a [tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)című témakör kivételek című szakaszában talál.
+> Ha engedélyezi a tűzfalszabályok beállításait a Storage-fiókjához, előfordulhat, hogy az életciklus-kezelési kérelmek le lesznek tiltva. Ezeket a kéréseket feloldja a megbízható Microsoft-szolgáltatások kivételének biztosításával. További információt a [tűzfalak és virtuális hálózatok konfigurálása](../common/storage-network-security.md#exceptions)című témakör kivételek című szakaszában talál.
 
 Ez a cikk bemutatja, hogyan kezelheti a szabályzatokat a portál és a PowerShell-metódusok használatával.
 
@@ -74,7 +74,7 @@ Két módon adhat hozzá házirendet a Azure Portalon keresztül.
 
 1. Válassza a **listanézet** lapot.
 
-1. Válassza a **szabály hozzáadása** lehetőséget, és nevezze el a szabályt a **részletek** űrlapon. Megadhatja a **szabály hatókörét** , a **blob típusát** és a **blob altípusának** értékeit is. A következő példa a Blobok szűrési hatókörét állítja be. Ennek hatására a rendszer hozzáadja a **szűrő beállítása** lapot.
+1. Válassza a **szabály hozzáadása** lehetőséget, és nevezze el a szabályt a **részletek** űrlapon. Megadhatja a **szabály hatókörét**, a **blob típusát** és a **blob altípusának** értékeit is. A következő példa a Blobok szűrési hatókörét állítja be. Ennek hatására a rendszer hozzáadja a **szűrő beállítása** lapot.
 
    :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-details.png" alt-text="Életciklus-kezelés: szabály részleteinek hozzáadása lap Azure Portal":::
 
@@ -137,7 +137,7 @@ Két módon adhat hozzá házirendet a Azure Portalon keresztül.
    }
    ```
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 1. A JSON-példával kapcsolatos további információkért tekintse meg a [szabályzatok](#policy) és [szabályok](#rules) szakaszt.
 
@@ -317,12 +317,12 @@ A szűrők a következők:
 
 | Szűrő neve | Szűrő típusa | Jegyzetek | Kötelező |
 |-------------|-------------|-------|-------------|
-| blobTypes   | Előre definiált enumerálási értékek tömbje. | A jelenlegi kiadás támogatja `blockBlob` és `appendBlob` . A csak a törlést támogatja `appendBlob` , a set szintű beállítás nem támogatott. | Igen |
-| prefixMatch | Karakterláncok tömbje az előtagok megfeleltetéséhez. Mindegyik szabály legfeljebb 10 előtagot tud definiálni. Egy előtag-karakterláncnak a tároló nevével kell kezdődnie. Ha például egy szabályhoz tartozó összes blobot szeretné egyeztetni `https://myaccount.blob.core.windows.net/container1/foo/...` , a prefixMatch a következő: `container1/foo` . | Ha nem határoz meg prefixMatch, a szabály a Storage-fiókban lévő összes blobra vonatkozik. | Nem |
-| blobIndexMatch | A blob index címke kulcsát és a hozzájuk illeszkedő értékeket tartalmazó szótárak tömbje. Az egyes szabályok legfeljebb 10 blob-index címkét adhatnak meg. Ha például az összes blobot `Project = Contoso` egy szabály alá szeretné egyeztetni `https://myaccount.blob.core.windows.net/` , a blobIndexMatch a következő: `{"name": "Project","op": "==","value": "Contoso"}` . | Ha nem határoz meg blobIndexMatch, a szabály a Storage-fiókban lévő összes blobra vonatkozik. | Nem |
+| blobTypes   | Előre definiált enumerálási értékek tömbje. | A jelenlegi kiadás támogatja `blockBlob` és `appendBlob` . A csak a törlést támogatja `appendBlob` , a set szintű beállítás nem támogatott. | Yes |
+| prefixMatch | Karakterláncok tömbje az előtagok megfeleltetéséhez. Mindegyik szabály legfeljebb 10 előtagot tud definiálni. Egy előtag-karakterláncnak a tároló nevével kell kezdődnie. Ha például egy szabályhoz tartozó összes blobot szeretné egyeztetni `https://myaccount.blob.core.windows.net/container1/foo/...` , a prefixMatch a következő: `container1/foo` . | Ha nem határoz meg prefixMatch, a szabály a Storage-fiókban lévő összes blobra vonatkozik. | No |
+| blobIndexMatch | A blob index címke kulcsát és a hozzájuk illeszkedő értékeket tartalmazó szótárak tömbje. Az egyes szabályok legfeljebb 10 blob-index címkét adhatnak meg. Ha például az összes blobot `Project = Contoso` egy szabály alá szeretné egyeztetni `https://myaccount.blob.core.windows.net/` , a blobIndexMatch a következő: `{"name": "Project","op": "==","value": "Contoso"}` . | Ha nem határoz meg blobIndexMatch, a szabály a Storage-fiókban lévő összes blobra vonatkozik. | No |
 
 > [!NOTE]
-> A blob index nyilvános előzetes verzióban érhető el, és a **Közép** -Kanada, **Kelet-Kanada** , **Közép** -Franciaország és Dél- **Franciaország** régiójában érhető el. Ha többet szeretne megtudni erről a szolgáltatásról, valamint az ismert problémákról és a korlátozásokról, tekintse meg [Az Azure Blob Storage a blob index (előzetes verzió) használatával történő kezelésével és keresésével](storage-manage-find-blobs.md)kapcsolatos információkat.
+> A blob index nyilvános előzetes verzióban érhető el, és a **Közép**-Kanada, **Kelet-Kanada**, **Közép**-Franciaország és Dél- **Franciaország** régiójában érhető el. Ha többet szeretne megtudni erről a szolgáltatásról, valamint az ismert problémákról és a korlátozásokról, tekintse meg [Az Azure Blob Storage a blob index (előzetes verzió) használatával történő kezelésével és keresésével](storage-manage-find-blobs.md)kapcsolatos információkat.
 
 ### <a name="rule-actions"></a>Szabály műveletei
 
@@ -330,7 +330,7 @@ Ha a futtatási feltétel teljesül, a rendszer a szűrt blobokra alkalmazza a m
 
 Az életciklus-kezelés támogatja a Blobok, a korábbi blob-verziók és a blob-Pillanatképek leválasztását és törlését. Adjon meg legalább egy műveletet az alapblobok, a korábbi blob-verziók vagy a blob-Pillanatképek minden szabályához.
 
-| Műveletek                      | Alap blob                                  | Pillanatkép      | Verzió
+| Művelet                      | Alap blob                                  | Pillanatkép      | Verzió
 |-----------------------------|--------------------------------------------|---------------|---------------|
 | tierToCool                  | Támogatott: `blockBlob`                  | Támogatott     | Támogatott     |
 | enableAutoTierToHotFromCool | Támogatott: `blockBlob`                  | Nem támogatott | Nem támogatott |
@@ -450,7 +450,7 @@ A legutóbbi hozzáférési idő frissítése egy [másik műveletnek](https://a
 Egyes adatforgalom üresjáratban marad a felhőben, és ritkán, ha még egyszer is hozzáfér a tárolóhoz. A következő életciklus-házirend úgy van konfigurálva, hogy a betöltés után röviddel az adatok archiválását. Ez a példa a tárolóban lévő Storage-fiókban lévő Blobok archiválási szintre való átváltását eredményezi `archivecontainer` . Az áttérést az utolsó módosítás időpontja után 0 nappal a Blobok alapján hajtja végre a rendszer:
 
 > [!NOTE] 
-> Javasoljuk, hogy a blobokat közvetlenül az archív szintre töltse fel, hogy hatékonyabb legyen. A [PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob) és a [PutBlockList](https://docs.microsoft.com/rest/api/storageservices/put-block-list) x-MS-Access-réteg fejléce az 2018-11-09-as és újabb verziókkal, illetve a blob Storage-beli legújabb verziójával is elvégezhető. 
+> Javasoljuk, hogy a blobokat közvetlenül az archív szintre töltse fel, hogy hatékonyabb legyen. A [PutBlob](/rest/api/storageservices/put-blob) és a [PutBlockList](/rest/api/storageservices/put-block-list) x-MS-Access-réteg fejléce az 2018-11-09-as és újabb verziókkal, illetve a blob Storage-beli legújabb verziójával is elvégezhető. 
 
 ```json
 {
@@ -588,11 +588,11 @@ A frissített szabályzat akár 24 óráig is eltarthat. Ha a házirend érvény
 
 Ha egy blobot egy hozzáférési rétegből egy másikba helyez át, az utolsó módosítás időpontja nem változik. Ha az archivált blobokat manuálisan rehidratálja a gyors szintre, az életciklus-kezelő motor vissza fogja helyezni az archiválási szintre. Tiltsa le az ezt a blobot érintő szabályt ideiglenesen annak megakadályozása érdekében, hogy az archiválható legyen. Engedélyezze újra a szabályt, ha a blob biztonságosan visszahelyezhető az archiválási szintre. Azt is megteheti, hogy a blobot egy másik helyre másolja, ha a gyors vagy lassú elérésű szinten kell maradni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megtudhatja, hogyan állíthatja helyre az adatokat a véletlen törlés után:
 
-- [Az Azure Storage-blobok helyreállítható törlése](../blobs/storage-blob-soft-delete.md)
+- [Az Azure Storage-blobok helyreállítható törlése](./soft-delete-blob-overview.md)
 
 Ismerje meg, hogyan kezelheti és keresheti meg az adatblob-indexet:
 

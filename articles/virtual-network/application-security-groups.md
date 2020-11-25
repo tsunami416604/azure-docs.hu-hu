@@ -14,11 +14,11 @@ ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
 ms.openlocfilehash: 3542ae2e94c2fa3d3e9d6100738b2aabded94d15
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91306667"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005265"
 ---
 # <a name="application-security-groups"></a>Alkalmazásbiztonsági csoportok
 
@@ -32,7 +32,7 @@ Az előző képen az *NIC1* és az *NIC2* az *AsgWeb* alkalmazásbiztonsági cso
 
 Ez a szabály az internetről a webkiszolgálókra irányuló forgalom engedélyezéséhez szükséges. Mivel az internetről bejövő forgalmat az alapértelmezett **DenyAllInbound** biztonsági szabály tiltja, az *AsgLogic* és az *AsgDb* alkalmazásbiztonsági csoportok esetében nincs szükség további szabályokra.
 
-|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protokoll | Hozzáférés |
+|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protokoll | Access |
 |---|---|---|---|---|---|---|
 | 100 | Internet | * | AsgWeb | 80 | TCP | Engedélyezés |
 
@@ -40,15 +40,15 @@ Ez a szabály az internetről a webkiszolgálókra irányuló forgalom engedély
 
 Mivel az alapértelmezett **AllowVNetInBound** biztonsági szabály az azonos virtuális hálózaton lévő erőforrások között minden kommunikációt engedélyez, ez a szabály az összes erőforrástól érkező forgalom tiltásához szükséges.
 
-|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protokoll | Hozzáférés |
+|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protokoll | Access |
 |---|---|---|---|---|---|---|
-| 120 | * | * | AsgDb | 1433 | Bármelyik | Megtagadás |
+| 120 | * | * | AsgDb | 1433 | Bármely | Megtagadás |
 
 ## <a name="allow-database-businesslogic"></a>Allow-Database-BusinessLogic
 
 Ez a szabály engedélyezi az *AsgLogic* alkalmazásbiztonsági csoportról az *AsgDb* alkalmazásbiztonsági csoportra irányuló forgalmat. A szabály prioritása magasabb a *Deny-Database-All* szabály prioritásánál. Ennek eredményeként ez a szabály a *Deny-Database-All* szabály előtt lesz kiértékelve, ezért az *AsgLogic* alkalmazásbiztonsági csoporttól érkező forgalom engedélyezve lesz, az összes többi forgalom pedig le lesz tiltva.
 
-|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protokoll | Hozzáférés |
+|Prioritás|Forrás|Forrásportok| Cél | Célportok | Protokoll | Access |
 |---|---|---|---|---|---|---|
 | 110 | AsgLogic | * | AsgDb | 1433 | TCP | Engedélyezés |
 
@@ -64,6 +64,6 @@ Az alkalmazásbiztonsági csoportok a következő korlátozásokkal rendelkeznek
 > [!TIP]
 > A szükséges biztonsági szabályok számának csökkentése, valamint a szabályok módosíthatósága érdekében tervezze meg a szükséges alkalmazásbiztonsági csoportokat, és ha lehetséges, szolgáltatáscímkék vagy alkalmazásbiztonsági csoportok használatával hozza létre a szabályokat, ne egyedi IP-címek vagy IP-címtartományok alapján.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg [a hálózati biztonsági csoportok létrehozását](tutorial-filter-network-traffic.md).

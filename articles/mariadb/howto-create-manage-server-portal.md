@@ -7,11 +7,11 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.openlocfilehash: ade70c884a3ef01db45273e4789f34b629473661
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537985"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005027"
 ---
 # <a name="manage-an-azure-database-for-mariadb-server-using-the-azure-portal"></a>Azure Database for MariaDB-kiszolgáló kezelése a Azure Portal használatával
 Ez a cikk bemutatja, hogyan kezelheti a Azure Database for MariaDB-kiszolgálókat. A felügyeleti feladatok közé tartozik a számítási és tárolási skálázás, a rendszergazdai jelszó alaphelyzetbe állítása és a kiszolgáló adatainak megtekintése.
@@ -30,7 +30,7 @@ A kiszolgáló létrehozása után a általános célú és a memória optimaliz
 
 Általános célúról a memóriára optimalizált és fordítva is méretezhető. A kiszolgáló létrehozása után az alapszintű csomagra való váltás nem támogatott. 
 
-1. Válassza ki a kiszolgálót a Azure Portal. Válassza ki az **árképzési szintet** , amely a **Beállítások** szakaszban található.
+1. Válassza ki a kiszolgálót a Azure Portal. Válassza ki az **árképzési szintet**, amely a **Beállítások** szakaszban található.
 
 2. Válassza ki az **általános célú** vagy a **memória optimalizált** elemet attól függően, hogy mit kíván méretezni. 
 
@@ -44,7 +44,7 @@ A kiszolgáló létrehozása után a általános célú és a memória optimaliz
 
 ### <a name="scale-vcores-up-or-down"></a>Méretezési virtuális mag felfelé vagy lefelé
 
-1. Válassza ki a kiszolgálót a Azure Portal. Válassza ki az **árképzési szintet** , amely a **Beállítások** szakaszban található.
+1. Válassza ki a kiszolgálót a Azure Portal. Válassza ki az **árképzési szintet**, amely a **Beállítások** szakaszban található.
 
 2. Módosítsa a **virtuális mag** beállítást úgy, hogy áthelyezi a csúszkát a kívánt értékre.
 
@@ -58,7 +58,7 @@ A kiszolgáló létrehozása után a általános célú és a memória optimaliz
 
 ### <a name="scale-storage-up"></a>A tárterület felskálázása
 
-1. Válassza ki a kiszolgálót a Azure Portal. Válassza ki az **árképzési szintet** , amely a **Beállítások** szakaszban található.
+1. Válassza ki a kiszolgálót a Azure Portal. Válassza ki az **árképzési szintet**, amely a **Beállítások** szakaszban található.
 
 2. Módosítsa a **tárolási** beállításokat úgy, hogy a csúszkát felfelé helyezi a kívánt értékre.
 

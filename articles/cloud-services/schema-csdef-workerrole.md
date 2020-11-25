@@ -14,11 +14,11 @@ caps.latest.revision: 55
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: 26225442c72fb209bb1ac4cd2bf4777fb39542fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79534371"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005163"
 ---
 # <a name="azure-cloud-services-definition-workerrole-schema"></a>Azure Cloud Services Definition WorkerRole séma
 Az Azure feldolgozói szerepkör olyan szerepkör, amely általánosított fejlesztéshez hasznos, és egy webes szerepkörhöz tartozó háttérbeli feldolgozást is végezhet.
@@ -323,7 +323,7 @@ A következő táblázat a elem attribútumait ismerteti `Variable` :
 | Attribútum | Típus | Leírás |
 | --------- | ---- | ----------- |
 |name|sztring|Kötelező. A beállítani kívánt környezeti változó neve.|
-|érték|sztring|Választható. A környezeti változóhoz beállított érték Tartalmaznia kell egy Value attribútumot vagy egy `RoleInstanceValue` elemet.|
+|value|sztring|Választható. A környezeti változóhoz beállított érték Tartalmaznia kell egy Value attribútumot vagy egy `RoleInstanceValue` elemet.|
 
 ##  <a name="roleinstancevalue"></a><a name="RoleInstanceValue"></a> RoleInstanceValue
 Az `RoleInstanceValue` elem azt az xPath-értéket adja meg, amelyből be kell olvasni a változó értékét.
@@ -349,7 +349,7 @@ Az alábbi táblázat az elem attribútumait ismerteti `NetFxEntryPoint` .
 
 | Attribútum | Típus | Leírás |
 | --------- | ---- | ----------- |
-|assemblyName|sztring|Kötelező. A belépési pontot tartalmazó szerelvény elérési útja és fájlneve. Az elérési út a ** \\ %ROLEROOT%\Approot** mappához képest relatív (ne határozza meg a ** \\ %ROLEROOT%\Approot** a alkalmazásban `commandLine` , feltételezve). **% ROLEROOT%** az Azure által fenntartott környezeti változó, amely a szerepkör gyökérkönyvtárának helyét jelöli. A ** \\ %ROLEROOT%\Approot** mappa a szerepkörhöz tartozó alkalmazás mappáját jelöli.|
+|assemblyName|sztring|Kötelező. A belépési pontot tartalmazó szerelvény elérési útja és fájlneve. Az elérési út a **\\ %ROLEROOT%\Approot** mappához képest relatív (ne határozza meg a **\\ %ROLEROOT%\Approot** a alkalmazásban `commandLine` , feltételezve). **% ROLEROOT%** az Azure által fenntartott környezeti változó, amely a szerepkör gyökérkönyvtárának helyét jelöli. A **\\ %ROLEROOT%\Approot** mappa a szerepkörhöz tartozó alkalmazás mappáját jelöli.|
 |targetFrameworkVersion|sztring|Kötelező. A .NET-keretrendszer azon verziója, amelyen a szerelvény létrejött. Például: `targetFrameworkVersion="v4.0"`.|
 
 ##  <a name="programentrypoint"></a><a name="ProgramEntryPoint"></a> ProgramEntryPoint
@@ -401,7 +401,7 @@ Az alábbi táblázat az elem attribútumait ismerteti `Content` .
 
 | Attribútum | Típus | Leírás |
 | --------- | ---- | ----------- |
-|destination|sztring|Kötelező. Annak az Azure-beli virtuális gépnek a helye, ahová a tartalom kerül. Ez a hely a **%ROLEROOT%\Approot**mappához képest relatív.|
+|destination|sztring|Kötelező. Annak az Azure-beli virtuális gépnek a helye, ahová a tartalom kerül. Ez a hely a **%ROLEROOT%\Approot** mappához képest relatív.|
 
 Ez az elem a elem szülő eleme `SourceDirectory` .
 

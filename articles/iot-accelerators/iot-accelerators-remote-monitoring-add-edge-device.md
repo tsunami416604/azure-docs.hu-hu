@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 10/09/2018
 ms.topic: conceptual
 ms.openlocfilehash: de060be7ace84ea309b71087a50fd572091bed43
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076453"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004789"
 ---
 # <a name="add-an-iot-edge-device-to-your-remote-monitoring-solution-accelerator"></a>IoT Edge-eszköz hozzáadása a távoli figyelési megoldáshoz – gyorssegéd
 
@@ -24,9 +24,9 @@ Ha [IoT Edge](../iot-edge/about-iot-edge.md) eszközt szeretne hozzáadni a mego
 
 ## <a name="add-the-iot-edge-device"></a>A IoT Edge eszköz hozzáadása
 
-Ha IoT Edge eszközt szeretne hozzáadni a távoli figyelési megoldás-gyorsító eszközhöz, navigáljon a webes felületen található **Device Explorer** lapra, és kattintson az **+ új eszköz**elemre.
+Ha IoT Edge eszközt szeretne hozzáadni a távoli figyelési megoldás-gyorsító eszközhöz, navigáljon a webes felületen található **Device Explorer** lapra, és kattintson az **+ új eszköz** elemre.
 
-Az **új eszköz** panelen válassza a **IoT Edge eszköz**elemet. A többi beállítás alapértelmezett értékeit is meghagyhatja. Ezután kattintson az **Apply** (Alkalmaz) gombra:
+Az **új eszköz** panelen válassza a **IoT Edge eszköz** elemet. A többi beállítás alapértelmezett értékeit is meghagyhatja. Ezután kattintson az **Apply** (Alkalmaz) gombra:
 
 ![IoT Edge eszköz hozzáadása](media/iot-accelerators-remote-monitoring-add-edge-device/addedgedevice.png)
 
@@ -50,6 +50,6 @@ Mielőtt üzembe helyezi a modulokat a peremhálózati eszközön, telepítenie 
 - [Telepítse a Windows rendszerhez készült Azure IoT Edge futtatókörnyezetet Linux-tárolókkal való használatra.](../iot-edge/how-to-install-iot-edge-windows-with-linux.md)
 - [A IoT Edge Runtime telepítése a Windows IoT Core-on](../iot-edge/how-to-install-iot-edge-windows.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy előkészítette a IoT Edge eszközt, a következő lépés a modulok üzembe helyezése. Lásd: [IoT Edge csomag importálása a távoli figyelési megoldás-gyorsító](iot-accelerators-remote-monitoring-import-edge-package.md)

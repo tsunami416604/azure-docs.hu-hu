@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.openlocfilehash: 05c89c8628b4d4ce10ca4ba12c720b410b72601f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457724"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005146"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asana"></a>Oktatóanyag: Azure Active Directory integráció
 
@@ -63,13 +63,13 @@ A famentes integrációjának az Azure AD-be való konfigurálásához fel kell 
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A **keresőmezőbe írja be**a következőt: a legördülő **lista az eredmények** panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A **keresőmezőbe írja be** a következőt: a legördülő **lista az eredmények** panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![A lista az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést a **Britta Simon**nevű felhasználói teszt alapján konfigurálja és teszteli.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést a **Britta Simon** nevű felhasználói teszt alapján konfigurálja és teszteli.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a következő kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés a következő építőelemek használatával konfigurálható és tesztelhető:
@@ -123,11 +123,11 @@ Az Azure AD-beli egyszeri bejelentkezés a következő lépések végrehajtásá
 
 ### <a name="configure-asana-single-sign-on"></a>Egy Sign-On
 
-1. Egy másik böngészőablakban jelentkezzen be a-ba. Az egyszeri bejelentkezés a következőben való konfigurálásához a képernyő jobb felső sarkában lévő munkaterület nevére kattintva nyissa meg a munkaterület beállításait. Ezután kattintson a ** \<your workspace name\> Beállítások**elemre.
+1. Egy másik böngészőablakban jelentkezzen be a-ba. Az egyszeri bejelentkezés a következőben való konfigurálásához a képernyő jobb felső sarkában lévő munkaterület nevére kattintva nyissa meg a munkaterület beállításait. Ezután kattintson a **\<your workspace name\> Beállítások** elemre.
 
     ![Az egyszeri bejelentkezés beállításai](./media/asana-tutorial/tutorial_asana_09.png)
 
-2. A **szervezeti beállítások** ablakban kattintson az **Adminisztráció**elemre. Ezután kattintson a **tagoknak az SAML használatával történő bejelentkezéshez** az egyszeri bejelentkezés konfigurációjának engedélyezéséhez. A hajtsa végre a következő lépéseket:
+2. A **szervezeti beállítások** ablakban kattintson az **Adminisztráció** elemre. Ezután kattintson a **tagoknak az SAML használatával történő bejelentkezéshez** az egyszeri bejelentkezés konfigurációjának engedélyezéséhez. A hajtsa végre a következő lépéseket:
 
     ![Önálló Sign-On szervezeti beállítások konfigurálása](./media/asana-tutorial/tutorial_asana_10.png)  
 
@@ -141,7 +141,7 @@ Az Azure AD-beli egyszeri bejelentkezés a következő lépések végrehajtásá
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -160,21 +160,21 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a (z)-hoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a leválasztás **lehetőséget.**
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a leválasztás **lehetőséget.**
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások **listában válassza a**leválasztás lehetőséget.
+2. Az alkalmazások **listában válassza a** leválasztás lehetőséget.
 
     ![Az alkalmazások listája](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -196,13 +196,13 @@ Ennek a szakasznak a célja egy Britta Simon nevű felhasználó létrehozása A
 
 Ebben a szakaszban egy Britta Simon nevű felhasználó létrehozását látja el a (m)-ben.
 
-1. A **következő**oldalon lépjen a **csapatok** szakaszra a bal oldali panelen. Kattintson a plusz jelre.
+1. A **következő** oldalon lépjen a **csapatok** szakaszra a bal oldali panelen. Kattintson a plusz jelre.
 
     ![Azure AD-tesztkörnyezet létrehozása](./media/asana-tutorial/tutorial_asana_12.png)
 
-2. Írja be a felhasználó e-mail-címét, például **Britta. simon \@ contoso.com** a szövegmezőbe, majd válassza a **meghívás**lehetőséget.
+2. Írja be a felhasználó e-mail-címét, például **Britta. simon \@ contoso.com** a szövegmezőbe, majd válassza a **meghívás** lehetőséget.
 
-3. Kattintson a **Meghívás küldése**gombra. Az új felhasználó e-mailt fog kapni az e-mail-fiókjába. a felhasználónak létre kell hoznia és ellenőriznie kell a fiókot.
+3. Kattintson a **Meghívás küldése** gombra. Az új felhasználó e-mailt fog kapni az e-mail-fiókjába. a felhasználónak létre kell hoznia és ellenőriznie kell a fiókot.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 

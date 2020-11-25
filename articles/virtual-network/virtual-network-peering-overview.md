@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: kumud
 ms.openlocfilehash: 61617777efa8241c93b2b5ffe42fc1d914b6ebcf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91531870"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004976"
 ---
 # <a name="virtual-network-peering"></a>Virtuális hálózati társviszony
 
@@ -39,7 +39,7 @@ A virtuális társhálózatok akár helyi, akár globális létesítésének el�
 
 A társított virtuális hálózatok közti hálózati adatforgalom nem nyilvános. A virtuális hálózatok közötti forgalom a Microsoft gerinchálózatán belül marad. A virtuális hálózatok közti forgalomhoz nincs szükség nyilvános internetre, átjárókra vagy titkosításra.
 
-## <a name="connectivity"></a>Kapcsolat
+## <a name="connectivity"></a>Kapcsolatok
 
 A egyenrangú virtuális hálózatok esetében bármelyik virtuális hálózat erőforrásai közvetlenül kapcsolódhatnak a virtuális hálózatban lévő erőforrásokhoz.
 
@@ -106,7 +106,7 @@ Az átjáró-átvitel egy olyan társítási tulajdonság, amely lehetővé tesz
 >[!NOTE]
 > A dokumentum egy korábbi verziója azt állapította meg, hogy a virtuális hálózati társítási díjak nem vonatkoznak a küllős VNet (vagy nem átjáró VNet) az átjáró-Átvitelsel. Mostantól a díjszabási oldalon a pontos díjszabást tükrözi.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Két virtuális hálózat közötti társítást hozhat létre. A hálózatok ugyanahhoz az előfizetéshez, különböző üzembe helyezési modellekhez tartozhatnak ugyanabban az előfizetésben, vagy eltérő előfizetésekben is. Végezzen el egy oktatóanyagot a következő forgatókönyvek egyikéhez:
 

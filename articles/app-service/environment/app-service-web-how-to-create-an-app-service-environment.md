@@ -8,11 +8,11 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 543050bc899c257c4ad5e0d0c399a1de6f0f58f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86220575"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005205"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>App Service Environment v1 létrehozása 
 
@@ -36,9 +36,9 @@ Fontos, hogy tisztában legyenek a nem módosítható dolgokkal. A következő s
 A VNet kiválasztásakor és az alhálózat megadásakor győződjön meg arról, hogy elég nagy a jövőbeli növekedéshez. 
 
 ### <a name="creating-an-app-service-environment-v1"></a>App Service Environment v1 létrehozása
-App Service Environment v1 létrehozásához kereshet az Azure Marketplace-en ***app Service Environment v1***-re, vagy átléphet az **erőforrás létrehozása**  ->  **web és mobil**  ->  **app Service Environment**. ASEv1 létrehozása:
+App Service Environment v1 létrehozásához keressen rá az Azure Marketplace-en a ***app Service Environment v1** _-re, vagy folytassa *a _ Create a Resource**-> **web és mobil**  ->  **app Service Environment**. ASEv1 létrehozása:
 
-1. Adja meg a beadás nevét. A központhoz megadott nevet a központhoz tartozó elősegítő alkalmazásban létrehozott alkalmazások használják. Ha a appsvcenvdemo neve a következő lesz: *appsvcenvdemo.p.azurewebsites.net*. Ha így hozott létre egy *mytestapp*nevű alkalmazást, a *mytestapp.appsvcenvdemo.p.azurewebsites.net*címen lehet címezni. A szolgáltató neve nem használható üresen. Ha nagybetűket használ a névben, a tartománynév a név teljes kisbetűs változata lesz. Ha ILB használ, a rendszer nem használja a beléptetési nevet az altartományban, hanem explicit módon meg van határozva a központilag történő létrehozás során.
+1. Adja meg a beadás nevét. A központhoz megadott nevet a központhoz tartozó elősegítő alkalmazásban létrehozott alkalmazások használják. Ha a appsvcenvdemo neve a következő lesz: *appsvcenvdemo.p.azurewebsites.net*. Ha így hozott létre egy *mytestapp* nevű alkalmazást, a *mytestapp.appsvcenvdemo.p.azurewebsites.net* címen lehet címezni. A szolgáltató neve nem használható üresen. Ha nagybetűket használ a névben, a tartománynév a név teljes kisbetűs változata lesz. Ha ILB használ, a rendszer nem használja a beléptetési nevet az altartományban, hanem explicit módon meg van határozva a központilag történő létrehozás során.
    
     ![Képernyőkép, amely bemutatja, hogyan hozható létre egy App Service Environment (beszerzési).][1]
 2. Válassza ki előfizetését. A benyújtó csomaghoz használt előfizetés az adott kiegészítő csomagban létrehozott összes alkalmazásra is érvényes lesz. Egy másik előfizetésben található VNet nem helyezheti üzembe a Bea-t.

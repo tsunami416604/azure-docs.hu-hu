@@ -13,11 +13,11 @@ ms.custom: seo-lt-2019
 ms.date: 11/11/2020
 ms.author: jingwang
 ms.openlocfilehash: ef9ac29735289d5c7a60ff0fca3b9e9f360f6e08
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555396"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005129"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>Adatok másolása az Azure Blob Storage-ból egy Azure SQL Database-adatbázisba Azure Data Factory használatával
 
@@ -87,7 +87,7 @@ Ebben a lépésben létrehoz egy adat-előállítót, és elindítja a Data Fact
    Az Azure-beli adatgyár nevének *globálisan egyedinek* kell lennie. Ha a név értékével kapcsolatos hibaüzenet kap, adjon meg másik nevet az adat-előállítóhoz. (például Sajátneveadftutorialdatafactory). A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
 
      ![Új adat-előállító](./media/doc-common-process/name-not-available-error.png)
-4. Válassza ki azt az **Azure-előfizetést** , amelyben az adat-előállítót létre szeretné hozni.
+4. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni.
 5. **Erőforráscsoport:** hajtsa végre a következő lépések egyikét:
 
     a. Válassza a **meglévő használata** lehetőséget, majd válasszon ki egy meglévő erőforráscsoportot a legördülő listából.
@@ -124,14 +124,14 @@ Ebben az oktatóanyagban először létrehozzuk a folyamatot. Ezután társítot
 ### <a name="configure-source"></a>Forrás konfigurálása
 
 >[!TIP]
->Ebben az oktatóanyagban a *fiók kulcsát* használja a forrás adattároló hitelesítési típusaként, de más támogatott hitelesítési módszereket is választhat: *sas URI* , *egyszerű szolgáltatásnév* és *felügyelt identitás* , ha szükséges. A részletekért tekintse meg a [cikk](./connector-azure-blob-storage.md#linked-service-properties) megfelelő részeit.
+>Ebben az oktatóanyagban a *fiók kulcsát* használja a forrás adattároló hitelesítési típusaként, de más támogatott hitelesítési módszereket is választhat: *sas URI*,*egyszerű szolgáltatásnév* és *felügyelt identitás* , ha szükséges. A részletekért tekintse meg a [cikk](./connector-azure-blob-storage.md#linked-service-properties) megfelelő részeit.
 >Az adattárak titkos kulcsainak biztonságos tárolásához ajánlott egy Azure Key Vault is használni. A részletes illusztrációkat [ebben a cikkben](./store-credentials-in-key-vault.md) találja.
 
 1. Nyissa meg a **forrás** lapot. Forrás adatkészlet létrehozásához válassza az **+ új** lehetőséget.
 
-1. Az **új adatkészlet** párbeszédpanelen válassza az **Azure Blob Storage** lehetőséget, majd kattintson a **Folytatás** gombra. A forrásadatok egy Blob Storage-ban vannak, tehát forrásadatkészletként az **Azure Blob Storage** -ot válassza.
+1. Az **új adatkészlet** párbeszédpanelen válassza az **Azure Blob Storage** lehetőséget, majd kattintson a **Folytatás** gombra. A forrásadatok egy Blob Storage-ban vannak, tehát forrásadatkészletként az **Azure Blob Storage**-ot válassza.
 
-1. A **formátum kiválasztása** párbeszédpanelen válassza ki az adatformátum típusát, majd kattintson a **Continue (folytatás** ) elemre.
+1. A **formátum kiválasztása** párbeszédpanelen válassza ki az adatformátum típusát, majd kattintson a **Continue (folytatás**) elemre.
 
 1. A **Tulajdonságok megadása** párbeszédpanelen adja meg a **sourceblobdataset lehetőség** nevet. Jelölje be az **első sor jelölőnégyzetét fejlécként**. A **társított szolgáltatás** szövegmezőben válassza az **+ új** lehetőséget.
 
@@ -141,7 +141,7 @@ Ebben az oktatóanyagban először létrehozzuk a folyamatot. Ezután társítot
 
 1. Keresse meg a **adftutorial/input** mappát, válassza ki a **emp.txt** fájlt, majd kattintson az **OK gombra**.
 
-1. Kattintson az **OK** gombra. Automatikusan megnyitja a folyamat lapot. A **forrás** lapon ellenőrizze, hogy a **sourceblobdataset lehetőség** van-e kiválasztva. A lapon lévő adatok előnézetének megtekintéséhez válassza az **Adatok előnézete** elemet.
+1. Válassza az **OK** lehetőséget. Automatikusan megnyitja a folyamat lapot. A **forrás** lapon ellenőrizze, hogy a **sourceblobdataset lehetőség** van-e kiválasztva. A lapon lévő adatok előnézetének megtekintéséhez válassza az **Adatok előnézete** elemet.
 
     ![Forrásadatkészlet](./media/tutorial-copy-data-portal/source-dataset-selected.png)
 
@@ -216,7 +216,7 @@ Ebben az ütemezésben egy ütemezési eseményindítót fog létrehozni a folya
 
 1. Lépjen a bal oldali Monitorozás lap feletti **Létrehozás** lapra.
 
-1. Lépjen a folyamathoz, kattintson az eszköztáron az **Aktiválás** , majd az **Új/Szerkesztés** lehetőségre.
+1. Lépjen a folyamathoz, kattintson az eszköztáron az **Aktiválás**, majd az **Új/Szerkesztés** lehetőségre.
 
 1. Az **Eseményindítók hozzáadása** párbeszédpanelen válassza az **+ új** lehetőséget az **eseményindító-területek kiválasztásához** .
 
@@ -234,7 +234,7 @@ Ebben az ütemezésben egy ütemezési eseményindítót fog létrehozni a folya
 
     f. Az **aktivált** beállításnál válassza az **Igen** lehetőséget.
 
-    : Kattintson az **OK** gombra.
+    : Válassza az **OK** lehetőséget.
 
     > [!IMPORTANT]
     > Minden egyes folyamatfuttatásnak van bizonyos költségvonzata, ezért a befejezés időpontját ezt figyelembe véve adja meg.
@@ -253,7 +253,7 @@ Ebben az ütemezésben egy ütemezési eseményindítót fog létrehozni a folya
 
 1. Ellenőrizze, hogy a megadott befejezési időig percenként (folyamatfuttatásonként) két sor be van-e szúrva az **emp** táblába.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A példában szereplő folyamat adatokat másol az egyik helyről egy másikra a Blob Storage-ban. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]

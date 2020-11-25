@@ -2,13 +2,13 @@
 title: Sablon functions – dátum
 description: A Azure Resource Manager-sablonban a dátumokkal végzett munkához használandó függvényeket ismerteti.
 ms.topic: conceptual
-ms.date: 06/22/2020
-ms.openlocfilehash: abdc88ce15279b90f8f9dc05a38a2ae236498f12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/18/2020
+ms.openlocfilehash: 83e601adb649098f7a4e19cb71170b96a3287d9b
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86058044"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96004585"
 ---
 # <a name="date-functions-for-arm-templates"></a>Az ARM-sablonokhoz tartozó Date functions
 
@@ -16,6 +16,8 @@ A Resource Manager a következő függvényeket biztosítja a dátumoknak a Azur
 
 * [dateTimeAdd](#datetimeadd)
 * [utcNow](#utcnow)
+
+[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 
 ## <a name="datetimeadd"></a>dateTimeAdd
 
@@ -27,11 +29,11 @@ Az időtartamot adja hozzá egy alapértékhez. Az ISO 8601 formátuma várható
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| base | Igen | sztring | A Hozzáadás kezdő datetime értéke. Az [ISO 8601 timestamp formátumot](https://en.wikipedia.org/wiki/ISO_8601)használja. |
-| duration | Igen | sztring | Az alaphoz hozzáadandó idő érték. Ez lehet negatív érték. Az [ISO 8601 időtartam formátuma](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
-| formátumban | Nem | sztring | A dátum és idő eredményének kimeneti formátuma Ha nincs megadva, a rendszer az alapérték formátumát használja. Használjon [szabványos formázó karakterláncokat](/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy [Egyéni formázó karakterláncokat](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+| base | Yes | sztring | A Hozzáadás kezdő datetime értéke. Az [ISO 8601 timestamp formátumot](https://en.wikipedia.org/wiki/ISO_8601)használja. |
+| duration | Yes | sztring | Az alaphoz hozzáadandó idő érték. Ez lehet negatív érték. Az [ISO 8601 időtartam formátuma](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
+| formátumban | No | sztring | A dátum és idő eredményének kimeneti formátuma Ha nincs megadva, a rendszer az alapérték formátumát használja. Használjon [szabványos formázó karakterláncokat](/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy [Egyéni formázó karakterláncokat](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Visszatérítési érték
 
 A DateTime érték, amely az időtartam értékének az alapértékhez való hozzáadását eredményezi.
 
@@ -39,100 +41,142 @@ A DateTime érték, amely az időtartam értékének az alapértékhez való hoz
 
 Az alábbi példában az időértékek hozzáadásának különböző módjai láthatók.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters":{
-        "baseTime":{
-            "type":"string",
-            "defaultValue": "[utcNow('u')]"
-        }
-    },
-    "variables": {
-        "add3Years": "[dateTimeAdd(parameters('baseTime'), 'P3Y')]",
-        "subtract9Days": "[dateTimeAdd(parameters('baseTime'), '-P9D')]",
-        "add1Hour": "[dateTimeAdd(parameters('baseTime'), 'PT1H')]"
-    },
-    "resources": [],
-    "outputs": {
-        "add3Years": {
-            "value": "[variables('add3Years')]",
-            "type": "string"
-        },
-        "subtract9Days": {
-            "value": "[variables('subtract9Days')]",
-            "type": "string"
-        },
-        "add1Hour": {
-            "value": "[variables('add1Hour')]",
-            "type": "string"
-        },
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "baseTime": {
+      "type": "string",
+      "defaultValue": "[utcNow('u')]"
     }
+  },
+  "variables": {
+    "add3Years": "[dateTimeAdd(parameters('baseTime'), 'P3Y')]",
+    "subtract9Days": "[dateTimeAdd(parameters('baseTime'), '-P9D')]",
+    "add1Hour": "[dateTimeAdd(parameters('baseTime'), 'PT1H')]"
+  },
+  "resources": [],
+  "outputs": {
+    "add3YearsOutput": {
+      "value": "[variables('add3Years')]",
+      "type": "string"
+    },
+    "subtract9DaysOutput": {
+      "value": "[variables('subtract9Days')]",
+      "type": "string"
+    },
+    "add1HourOutput": {
+      "value": "[variables('add1Hour')]",
+      "type": "string"
+    },
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param baseTime string = utcNow('u')
+
+var add3Years = dateTimeAdd(baseTime, 'P3Y')
+var subtract9Days = dateTimeAdd(baseTime, '-P9D')
+var add1Hour = dateTimeAdd(baseTime, 'PT1H')
+
+output add3YearsOutput string = add3Years
+output subtract9DaysOutput string = subtract9Days
+output add1HourOutput string = add1Hour
+```
+
+---
 
 Ha az előző sablon üzembe helyezése alapidővel történik `2020-04-07 14:53:14Z` , a kimenet a következőket eredményezi:
 
 | Név | Típus | Érték |
 | ---- | ---- | ----- |
-| add3Years | Sztring | 4/7/2023 2:53:14 PM |
-| subtract9Days | Sztring | 3/29/2020 2:53:14 PM |
-| add1Hour | Sztring | 4/7/2020 3:53:14 PM |
+| add3YearsOutput | Sztring | 4/7/2023 2:53:14 PM |
+| subtract9DaysOutput | Sztring | 3/29/2020 2:53:14 PM |
+| add1HourOutput | Sztring | 4/7/2020 3:53:14 PM |
 
 A következő példa azt mutatja be, hogyan állíthatja be az automatizálási ütemterv kezdési idejét.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "omsAutomationAccountName": {
-            "type": "string",
-            "defaultValue": "demoAutomation",
-            "metadata": {
-                "description": "Use an existing Automation account."
-            }
-        },
-        "scheduleName": {
-            "type": "string",
-            "defaultValue": "demoSchedule1",
-            "metadata": {
-                "description": "Name of the new schedule."
-            }
-        },
-        "baseTime":{
-            "type":"string",
-            "defaultValue": "[utcNow('u')]",
-            "metadata": {
-                "description": "Schedule will start one hour from this time."
-            }
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "omsAutomationAccountName": {
+      "type": "string",
+      "defaultValue": "demoAutomation",
+      "metadata": {
+        "description": "Use an existing Automation account."
+      }
     },
-    "variables": {
-        "startTime": "[dateTimeAdd(parameters('baseTime'), 'PT1H')]"
+    "scheduleName": {
+      "type": "string",
+      "defaultValue": "demoSchedule1",
+      "metadata": {
+        "description": "Name of the new schedule."
+      }
     },
-    "resources": [
-        {
-            "name": "[concat(parameters('omsAutomationAccountName'), '/', parameters('scheduleName'))]",
-            "type": "microsoft.automation/automationAccounts/schedules",
-            "apiVersion": "2015-10-31",
-            "location": "eastus2",
-            "tags": {
-            },
-            "properties": {
-                "description": "Demo Scheduler",
-                "startTime": "[variables('startTime')]",
-                "isEnabled": "true",
-                "interval": 1,
-                "frequency": "hour"
-            }
-        }
-    ],
-    "outputs": {
+    "baseTime": {
+      "type": "string",
+      "defaultValue": "[utcNow('u')]",
+      "metadata": {
+        "description": "Schedule will start one hour from this time."
+      }
     }
+  },
+  "variables": {
+    "startTime": "[dateTimeAdd(parameters('baseTime'), 'PT1H')]"
+  },
+  "resources": [
+    ...
+    {
+      "type": "Microsoft.Automation/automationAccounts/schedules",
+      "apiVersion": "2015-10-31",
+      "name": "[concat(parameters('omsAutomationAccountName'), '/', parameters('scheduleName'))]",
+
+      "properties": {
+        "description": "Demo Scheduler",
+        "startTime": "[variables('startTime')]",
+        "interval": 1,
+        "frequency": "Hour"
+      }
+    }
+  ],
+  "outputs": {
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param omsAutomationAccountName string = 'demoAutomation'
+param scheduleName string = 'demSchedule1'
+param baseTime string = utcNow('u')
+
+var startTime = dateTimeAdd(baseTime, 'PT1H')
+
+...
+
+resource scheduler 'Microsoft.Automation/automationAccounts/schedules@2015-10-31' = {
+  name: concat(omsAutomationAccountName, '/', scheduleName)
+  properties: {
+    description: 'Demo Scheduler'
+    startTime: startTime
+    interval: 1
+    frequency: 'Hour'
+  }
+}
+```
+
+---
 
 ## <a name="utcnow"></a>utcNow
 
@@ -144,7 +188,7 @@ Az aktuális (UTC) dátum és idő értéket adja vissza a megadott formátumban
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| formátumban |Nem |sztring |A karakterláncra konvertálandó URI-kódolású érték. Használjon [szabványos formázó karakterláncokat](/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy [Egyéni formázó karakterláncokat](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+| formátumban |No |sztring |A karakterláncra konvertálandó URI-kódolású érték. Használjon [szabványos formázó karakterláncokat](/dotnet/standard/base-types/standard-date-and-time-format-strings) vagy [Egyéni formázó karakterláncokat](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 
 ### <a name="remarks"></a>Megjegyzések
 
@@ -154,7 +198,7 @@ Ha a hibát egy korábbi sikeres központi telepítésre történő [visszaáll�
 
 Ügyeljen arra, hogy egy alapértelmezett érték esetén a utcNow függvényre támaszkodó sablont telepítse újra. Ha újratelepíti, és nem ad meg értéket a paraméterhez, a függvény újraértékelése megtörténik. Ha egy meglévő erőforrást nem új létrehozása helyett szeretne frissíteni, adja át a paraméter értékét a korábbi telepítésből.
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Visszatérítési érték
 
 Az aktuális UTC datetime érték.
 
@@ -162,42 +206,58 @@ Az aktuális UTC datetime érték.
 
 A következő példa sablon a DateTime érték különböző formátumait jeleníti meg.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "utcValue": {
-            "type": "string",
-            "defaultValue": "[utcNow()]"
-        },
-        "utcShortValue": {
-            "type": "string",
-            "defaultValue": "[utcNow('d')]"
-        },
-        "utcCustomValue": {
-            "type": "string",
-            "defaultValue": "[utcNow('M d')]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "utcValue": {
+      "type": "string",
+      "defaultValue": "[utcNow()]"
     },
-    "resources": [
-    ],
-    "outputs": {
-        "utcOutput": {
-            "type": "string",
-            "value": "[parameters('utcValue')]"
-        },
-        "utcShortOutput": {
-            "type": "string",
-            "value": "[parameters('utcShortValue')]"
-        },
-        "utcCustomOutput": {
-            "type": "string",
-            "value": "[parameters('utcCustomValue')]"
-        }
+    "utcShortValue": {
+      "type": "string",
+      "defaultValue": "[utcNow('d')]"
+    },
+    "utcCustomValue": {
+      "type": "string",
+      "defaultValue": "[utcNow('M d')]"
     }
+  },
+  "resources": [
+  ],
+  "outputs": {
+    "utcOutput": {
+      "type": "string",
+      "value": "[parameters('utcValue')]"
+    },
+    "utcShortOutput": {
+      "type": "string",
+      "value": "[parameters('utcShortValue')]"
+    },
+    "utcCustomOutput": {
+      "type": "string",
+      "value": "[parameters('utcCustomValue')]"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param utcValue string = utcNow()
+param utcShortValue string = utcNow('d')
+param utcCustomValue string = utcNow('M d')
+
+output utcOutput string = utcValue
+output utcShortOutput string = utcShortValue
+output utcCustomOutput string = utcCustomValue
+```
+
+---
 
 Az előző példa kimenete az egyes központi telepítések esetében változik, de a következőhöz hasonló lesz:
 
@@ -209,39 +269,60 @@ Az előző példa kimenete az egyes központi telepítések esetében változik,
 
 A következő példa azt szemlélteti, hogyan használható a függvény értéke a címke értékének beállításakor.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "utcShort": {
-            "type": "string",
-            "defaultValue": "[utcNow('d')]"
-        },
-        "rgName": {
-            "type": "string"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "utcShort": {
+      "type": "string",
+      "defaultValue": "[utcNow('d')]"
     },
-    "resources": [
-        {
-            "type": "Microsoft.Resources/resourceGroups",
-            "apiVersion": "2018-05-01",
-            "name": "[parameters('rgName')]",
-            "location": "westeurope",
-            "tags":{
-                "createdDate": "[parameters('utcShort')]"
-            },
-            "properties":{}
-        }
-    ],
-    "outputs": {
-        "utcShort": {
-            "type": "string",
-            "value": "[parameters('utcShort')]"
-        }
+    "rgName": {
+      "type": "string"
     }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/resourceGroups",
+      "apiVersion": "2018-05-01",
+      "name": "[parameters('rgName')]",
+      "location": "westeurope",
+      "tags": {
+        "createdDate": "[parameters('utcShort')]"
+      },
+      "properties": {}
+    }
+  ],
+  "outputs": {
+    "utcShortOutput": {
+      "type": "string",
+      "value": "[parameters('utcShort')]"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param utcShort string = utcNow('d')
+param rgName string
+
+resource myRg 'Microsoft.Resources/resourceGroups@2018-05-01' = {
+  name: rgName
+  location: 'westeurope'
+  tags: {
+    createdDate: utcShort
+  }
+}
+
+output utcShortOutput string = utcShort
+```
+
+---
 
 ## <a name="next-steps"></a>További lépések
 

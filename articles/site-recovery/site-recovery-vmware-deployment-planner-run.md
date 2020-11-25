@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: ramamill
 ms.openlocfilehash: 05d260de726c62c130a58938c2a2c9fa2440a96d
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186722"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004721"
 ---
 # <a name="run-the-deployment-planner-for-vmware-disaster-recovery"></a>A VMware vész-helyreállítás Deployment Planner futtatása
 Ez a cikk az Azure Site Recovery Deployment Planner felhasználói útmutatója a VMware–Azure éles környezetben való üzembe helyezéséhez.
@@ -86,7 +86,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |-Port|(Nem kötelező) A vCenter/ESXi-gazdagéphez csatlakozó port száma. Az alapértelmezett port a 443-as számú.|
 |-Protocol| (Nem kötelező) „http” vagy „https” protokollt ad meg a vCenterhez való csatlakozáshoz. Az alapértelmezett protokoll a https.|
 | -StorageAccountName | (Nem kötelező) A helyszínről az Azure-ba történő adatreplikáció során elérhető átviteli sebesség azonosításához szükséges tárfiók neve. Az eszköz erre a tárfiókra tölti fel a tesztadatokat az átviteli sebesség kiszámításához. A tárfióknak Általános célú v1 (GPv1) típusúnak kell lennie. |
-| -StorageAccountKey | (Nem kötelező) A tárfiók eléréséhez használt tárfiókkulcs. Nyissa meg az Azure Portalt, és kattintson a Tárfiókok > < *Tárfiók neve* > > Beállítások > Hozzáférési kulcsok > 1. kulcs elemre. |
+| -StorageAccountKey | (Nem kötelező) A tárfiók eléréséhez használt tárfiókkulcs. Nyissa meg az Azure Portalt, és kattintson a Tárfiókok > <*Tárfiók neve*> > Beállítások > Hozzáférési kulcsok > 1. kulcs elemre. |
 | -Környezet | (nem kötelező) Ez az Ön Azure Storage-fiókjának célkörnyezete. Ez a következő három érték egyike lehet: AzureCloud, AzureUSGovernment, AzureChinaCloud. Az alapértelmezett érték az AzureCloud. A paramétert akkor használja, ha a cél Azure-régiója az Azure US government vagy az Azure China 21Vianet. |
 
 
@@ -269,7 +269,7 @@ Nyisson meg egy parancssori konzolt, és keresse meg a Site Recovery üzembehely
 |-Virtualization|Itt adhatja meg a virtualizálás típusát (VMware vagy Hyper-V).|
 | -Directory | (Nem kötelező) A profilkészítés során létrehozott adatokat tároló mappa UNC vagy helyi elérési útja. Ezekre az adatokra szükség van a jelentés létrehozásához. Ha a könyvtár neve nincs megadva, a rendszer a „ProfiledData” könyvtárat használja. |
 | -StorageAccountName | A helyszínről az Azure-ba történő adatreplikáció során felhasznált sávszélesség meghatározásához szükséges tárfiók neve. Az eszköz erre a tárfiókra tölti fel a tesztadatokat a felhasznált sávszélesség megállapításához. A tárfióknak Általános célú v1 (GPv1) típusúnak kell lennie.|
-| -StorageAccountKey | A tárfiók eléréséhez használt tárfiókkulcs. Nyissa meg az Azure Portalt, és kattintson a Tárfiókok > < *Tárfiók neve* > > Beállítások > Hozzáférési kulcsok > 1. kulcs (vagy klasszikus tárfiók esetén az Elsődleges elérési kulcs) elemre. |
+| -StorageAccountKey | A tárfiók eléréséhez használt tárfiókkulcs. Nyissa meg az Azure Portalt, és kattintson a Tárfiókok > <*Tárfiók neve*> > Beállítások > Hozzáférési kulcsok > 1. kulcs (vagy klasszikus tárfiók esetén az Elsődleges elérési kulcs) elemre. |
 | -VMListFile | Azon virtuális gépek listáját tartalmazó fájl, amelyekről profilt szeretne készíteni a felhasznált sávszélesség kiszámításához. A fájl elérési útja lehet abszolút vagy relatív. A fájl minden sorában egy virtuális gép nevének vagy IP-címének kell állnia. A fájlban megadott virtuálisgép-neveknek meg kell egyezniük a vCenter-kiszolgálón vagy a vSphere ESXi-gazdagépen szereplő névvel.<br>A „VMList.txt” fájl például az alábbi virtuális gépeket tartalmazza:<ul><li>VM_A</li><li>10.150.29.110</li><li>VM_B</li></ul>|
 | -Környezet | (nem kötelező) Ez az Ön Azure Storage-fiókjának célkörnyezete. Ez a következő három érték egyike lehet: AzureCloud, AzureUSGovernment, AzureChinaCloud. Az alapértelmezett érték az AzureCloud. A paramétert akkor használja, ha a cél Azure-régiója az Azure US government vagy az Azure China 21Vianet. |
 

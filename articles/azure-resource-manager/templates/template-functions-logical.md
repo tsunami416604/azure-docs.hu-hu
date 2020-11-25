@@ -2,13 +2,13 @@
 title: Sablon functions – logikai
 description: A Azure Resource Manager-sablonban a logikai értékek meghatározásához használandó függvények leírása.
 ms.topic: conceptual
-ms.date: 10/12/2020
-ms.openlocfilehash: ede41bd6c03eb7a01ae63526810d0310f31e4014
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.date: 11/18/2020
+ms.openlocfilehash: b54c104c8af5bb742b2c82d8a075515b8696501b
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978509"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96004551"
 ---
 # <a name="logical-functions-for-arm-templates"></a>Az ARM-sablonok logikai funkciói
 
@@ -22,21 +22,23 @@ A Resource Manager számos funkciót biztosít a Azure Resource Manager-(ARM-) s
 * [vagy](#or)
 * [igaz](#true)
 
+[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
+
 ## <a name="and"></a>és
 
 `and(arg1, arg2, ...)`
 
-Ellenőrzi, hogy az összes paraméter értéke igaz-e.
+Ellenőrzi, hogy az összes paraméter értéke igaz-e. A `and` függvény nem támogatott a bicep. Használja `&&` helyette a kezelőt.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |boolean |Az első érték, amely alapján ellenőrizhető, hogy igaz-e. |
 | arg2 |Yes |boolean |A második érték, amely alapján ellenőrizhető, hogy igaz-e. |
 | További argumentumok |No |boolean |További argumentumok, amelyek alapján ellenőrizhető, hogy igazak-e. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Visszatérítési érték
 
 **Igaz** értéket ad vissza, ha az összes érték igaz; Ellenkező esetben **hamis**.
 
@@ -44,27 +46,39 @@ Ellenőrzi, hogy az összes paraméter értéke igaz-e.
 
 A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) a logikai függvények használatát mutatja be.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [ ],
-    "outputs": {
-        "andExampleOutput": {
-            "value": "[and(bool('true'), bool('false'))]",
-            "type": "bool"
-        },
-        "orExampleOutput": {
-            "value": "[or(bool('true'), bool('false'))]",
-            "type": "bool"
-        },
-        "notExampleOutput": {
-            "value": "[not(bool('true'))]",
-            "type": "bool"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [],
+  "outputs": {
+    "andExampleOutput": {
+      "type": "bool",
+      "value": "[and(bool('true'), bool('false'))]"
+    },
+    "orExampleOutput": {
+      "type": "bool",
+      "value": "[or(bool('true'), bool('false'))]"
+    },
+    "notExampleOutput": {
+      "type": "bool",
+      "value": "[not(bool('true'))]"
     }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+output andExampleOutput bool = bool('true') && bool('false')
+output orExampleOutput bool = bool('true') || bool('false')
+output notExampleOutput bool = !(bool('true'))
+```
+
+---
 
 Az előző példa kimenete a következő:
 
@@ -82,11 +96,11 @@ A paramétert logikai értékre alakítja.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |karakterlánc vagy int |A logikai értékké konvertálandó érték. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Visszatérítési érték
 
 Az átalakított érték logikai értéke.
 
@@ -98,32 +112,44 @@ Logikai értékek beolvasásához a [true ()](#true) és a [false ()](#false) is
 
 Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/bool.json) azt szemlélteti, hogyan használható a bool karakterlánc vagy egész számmal.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [],
-    "outputs": {
-        "trueString": {
-            "value": "[bool('true')]",
-            "type" : "bool"
-        },
-        "falseString": {
-            "value": "[bool('false')]",
-            "type" : "bool"
-        },
-        "trueInt": {
-            "value": "[bool(1)]",
-            "type" : "bool"
-        },
-        "falseInt": {
-            "value": "[bool(0)]",
-            "type" : "bool"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [],
+  "outputs": {
+    "trueString": {
+      "type": "bool",
+      "value": "[bool('true')]",
+    },
+    "falseString": {
+      "type": "bool",
+      "value": "[bool('false')]"
+    },
+    "trueInt": {
+      "type": "bool",
+      "value": "[bool(1)]"
+    },
+    "falseInt": {
+      "type": "bool",
+      "value": "[bool(0)]"
     }
+  }
 }
 ```
 
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+output trueString bool = bool('true')
+output falseString bool = bool('false')
+output trueInt bool = bool(1)
+output falseInt bool = bool(0)
+```
+
+---
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
 | Név | Típus | Érték |
@@ -137,13 +163,13 @@ Az előző példában az alapértelmezett értékekkel rendelkező kimenet a kö
 
 `false()`
 
-Hamis értéket ad vissza.
+Hamis értéket ad vissza. A `false` függvény nem érhető el a bicep-ben.  Használja `false` helyette a kulcsszót.
 
 ### <a name="parameters"></a>Paraméterek
 
 A False függvény nem fogad el paramétereket.
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Visszatérítési érték
 
 Egy mindig hamis logikai érték.
 
@@ -151,19 +177,29 @@ Egy mindig hamis logikai érték.
 
 A következő példa hamis kimeneti értéket ad vissza.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [],
-    "outputs": {
-        "falseOutput": {
-            "value": "[false()]",
-            "type" : "bool"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [],
+  "outputs": {
+    "falseOutput": {
+      "type": "bool",
+      "value": "[false()]"
     }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+output falseOutput bool = false
+```
+
+---
 
 Az előző példa kimenete a következő:
 
@@ -175,17 +211,17 @@ Az előző példa kimenete a következő:
 
 `if(condition, trueValue, falseValue)`
 
-Egy értéket ad vissza, attól függően, hogy a feltétel igaz vagy hamis.
+Egy értéket ad vissza, attól függően, hogy a feltétel igaz vagy hamis. A `if` függvény nem támogatott a bicep. Használja `?:` helyette a kezelőt.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | feltétel |Yes |boolean |Az érték, amely alapján ellenőrizhető, hogy igaz vagy hamis. |
 | trueValue |Yes | karakterlánc, int, Object vagy Array |A feltétel teljesülésekor visszaadott érték. |
 | falseValue |Yes | karakterlánc, int, Object vagy Array |A feltétel hamis állapotának visszaadására szolgáló érték. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Visszatérítési érték
 
 A második paramétert adja vissza, ha az első paraméter **igaz**. Ellenkező esetben a harmadik paramétert adja vissza.
 
@@ -197,98 +233,119 @@ Ha a feltétel **igaz**, csak a True érték lesz kiértékelve. Ha a feltétel 
 
 A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/if.json) a függvény használatát mutatja be `if` .
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-    ],
-    "outputs": {
-        "yesOutput": {
-            "type": "string",
-            "value": "[if(equals('a', 'a'), 'yes', 'no')]"
-        },
-        "noOutput": {
-            "type": "string",
-            "value": "[if(equals('a', 'b'), 'yes', 'no')]"
-        },
-        "objectOutput": {
-            "type": "object",
-            "value": "[if(equals('a', 'a'), json('{\"test\": \"value1\"}'), json('null'))]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+  ],
+  "outputs": {
+    "yesOutput": {
+      "type": "string",
+      "value": "[if(equals('a', 'a'), 'yes', 'no')]"
+    },
+    "noOutput": {
+      "type": "string",
+      "value": "[if(equals('a', 'b'), 'yes', 'no')]"
+    },
+    "objectOutput": {
+      "type": "object",
+      "value": "[if(equals('a', 'a'), json('{\"test\": \"value1\"}'), json('null'))]"
     }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+output yesOutput string = 'a' == 'a' ? 'yes' : 'no'
+output noOutput string = 'a' == 'b' ? 'yes' : 'no'
+output objectOutput object = 'a' == 'a' ? json('{"test": "value1"}') : json('null')
+```
+
+---
 
 Az előző példa kimenete a következő:
 
 | Név | Típus | Érték |
 | ---- | ---- | ----- |
-| yesOutput | Sztring | igen |
+| yesOutput | Sztring | yes |
 | nincs kimenet | Sztring | nem |
 | objectOutput | Objektum | {"test": "érték1"} |
 
 A következő [példa](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json) azt mutatja be, hogyan használható ez a függvény olyan kifejezésekkel, amelyek csak feltételes érvényességgel rendelkeznek.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "vmName": {
-            "type": "string"
-        },
-        "location": {
-            "type": "string"
-        },
-        "logAnalytics": {
-            "type": "string",
-            "defaultValue": ""
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "vmName": {
+      "type": "string"
     },
-    "resources": [
-        {
-            "condition": "[not(empty(parameters('logAnalytics')))]",
-            "name": "[concat(parameters('vmName'),'/omsOnboarding')]",
-            "type": "Microsoft.Compute/virtualMachines/extensions",
-            "location": "[parameters('location')]",
-            "apiVersion": "2017-03-30",
-            "properties": {
-                "publisher": "Microsoft.EnterpriseCloud.Monitoring",
-                "type": "MicrosoftMonitoringAgent",
-                "typeHandlerVersion": "1.0",
-                "autoUpgradeMinorVersion": true,
-                "settings": {
-                    "workspaceId": "[if(not(empty(parameters('logAnalytics'))), reference(parameters('logAnalytics'), '2015-11-01-preview').customerId, json('null'))]"
-                },
-                "protectedSettings": {
-                    "workspaceKey": "[if(not(empty(parameters('logAnalytics'))), listKeys(parameters('logAnalytics'), '2015-11-01-preview').primarySharedKey, json('null'))]"
-                }
-            }
-        }
-    ],
-    "outputs": {
-        "mgmtStatus": {
-            "type": "string",
-            "value": "[if(not(empty(parameters('logAnalytics'))), 'Enabled monitoring for VM!', 'Nothing to enable')]"
-        }
+    "location": {
+      "type": "string"
+    },
+    "logAnalytics": {
+      "type": "string",
+      "defaultValue": ""
     }
+  },
+  "resources": [
+    {
+      "condition": "[not(empty(parameters('logAnalytics')))]",
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "apiVersion": "2017-03-30",
+      "name": "[concat(parameters('vmName'),'/omsOnboarding')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "publisher": "Microsoft.EnterpriseCloud.Monitoring",
+        "type": "MicrosoftMonitoringAgent",
+        "typeHandlerVersion": "1.0",
+        "autoUpgradeMinorVersion": true,
+        "settings": {
+          "workspaceId": "[if(not(empty(parameters('logAnalytics'))), reference(parameters('logAnalytics'), '2015-11-01-preview').customerId, json('null'))]"
+        },
+        "protectedSettings": {
+          "workspaceKey": "[if(not(empty(parameters('logAnalytics'))), listKeys(parameters('logAnalytics'), '2015-11-01-preview').primarySharedKey, json('null'))]"
+        }
+      }
+    }
+  ],
+  "outputs": {
+    "mgmtStatus": {
+      "type": "string",
+      "value": "[if(not(empty(parameters('logAnalytics'))), 'Enabled monitoring for VM!', 'Nothing to enable')]"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+> [!NOTE]
+> `Conditions` még nincsenek implementálva a bicep. Tekintse meg a [feltételeket](https://github.com/Azure/bicep/issues/186).
+
+---
 
 ## <a name="not"></a>not
 
 `not(arg1)`
 
-Logikai érték konvertálása az ellenkező értékre.
+Logikai érték konvertálása az ellenkező értékre. A `not` függvény nem támogatott a bicep. Használja `!` helyette a kezelőt.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |boolean |Az átalakítandó érték. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Visszatérítési érték
 
 **Igaz** értéket ad eredményül, ha a paraméter **hamis**. **Hamis** értéket ad vissza, ha a paraméter **igaz**.
 
@@ -296,27 +353,39 @@ Logikai érték konvertálása az ellenkező értékre.
 
 A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) a logikai függvények használatát mutatja be.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [ ],
-    "outputs": {
-        "andExampleOutput": {
-            "value": "[and(bool('true'), bool('false'))]",
-            "type": "bool"
-        },
-        "orExampleOutput": {
-            "value": "[or(bool('true'), bool('false'))]",
-            "type": "bool"
-        },
-        "notExampleOutput": {
-            "value": "[not(bool('true'))]",
-            "type": "bool"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [],
+  "outputs": {
+    "andExampleOutput": {
+      "type": "bool",
+      "value": "[and(bool('true'), bool('false'))]",
+    },
+    "orExampleOutput": {
+      "type": "bool",
+      "value": "[or(bool('true'), bool('false'))]"
+    },
+    "notExampleOutput": {
+      "type": "bool",
+      "value": "[not(bool('true'))]"
     }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+output andExampleOutput bool = bool('true') && bool('false')
+output orExampleOutput bool = bool('true') || bool('false')
+output notExampleOutput bool = !(bool('true'))
+```
+
+---
 
 Az előző példa kimenete a következő:
 
@@ -328,20 +397,30 @@ Az előző példa kimenete a következő:
 
 A következő [példában](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) a sablon **nem** [egyenlő](template-functions-comparison.md#equals).
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-    ],
-    "outputs": {
-        "checkNotEquals": {
-            "type": "bool",
-            "value": "[not(equals(1, 2))]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+  ],
+  "outputs": {
+    "checkNotEquals": {
+      "type": "bool",
+      "value": "[not(equals(1, 2))]"
     }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+output checkNotEquals bool = !(1 == 2)
+```
+
+---
 
 Az előző példa kimenete a következő:
 
@@ -353,17 +432,17 @@ Az előző példa kimenete a következő:
 
 `or(arg1, arg2, ...)`
 
-Ellenőrzi, hogy a paraméter értéke igaz-e.
+Ellenőrzi, hogy a paraméter értéke igaz-e. A `or` függvény nem támogatott a bicep. Használja `||` helyette a kezelőt.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |boolean |Az első érték, amely alapján ellenőrizhető, hogy igaz-e. |
 | arg2 |Yes |boolean |A második érték, amely alapján ellenőrizhető, hogy igaz-e. |
 | További argumentumok |No |boolean |További argumentumok, amelyek alapján ellenőrizhető, hogy igazak-e. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Visszatérítési érték
 
 **Igaz** értéket ad vissza, ha bármelyik érték igaz; Ellenkező esetben **hamis**.
 
@@ -371,27 +450,39 @@ Ellenőrzi, hogy a paraméter értéke igaz-e.
 
 A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) a logikai függvények használatát mutatja be.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [ ],
-    "outputs": {
-        "andExampleOutput": {
-            "value": "[and(bool('true'), bool('false'))]",
-            "type": "bool"
-        },
-        "orExampleOutput": {
-            "value": "[or(bool('true'), bool('false'))]",
-            "type": "bool"
-        },
-        "notExampleOutput": {
-            "value": "[not(bool('true'))]",
-            "type": "bool"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [],
+  "outputs": {
+    "andExampleOutput": {
+      "value": "[and(bool('true'), bool('false'))]",
+      "type": "bool"
+    },
+    "orExampleOutput": {
+      "value": "[or(bool('true'), bool('false'))]",
+      "type": "bool"
+    },
+    "notExampleOutput": {
+      "value": "[not(bool('true'))]",
+      "type": "bool"
     }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+output andExampleOutput bool = bool('true') && bool('false')
+output orExampleOutput bool = bool('true') || bool('false')
+output notExampleOutput bool = !(bool('true'))
+```
+
+---
 
 Az előző példa kimenete a következő:
 
@@ -405,13 +496,13 @@ Az előző példa kimenete a következő:
 
 `true()`
 
-Igaz értéket ad vissza.
+Igaz értéket ad vissza. A `true` függvény nem érhető el a bicep-ben.  Használja `true` helyette a kulcsszót.
 
 ### <a name="parameters"></a>Paraméterek
 
-Az igaz függvény nem fogad el paramétereket.
+Az igaz függvény nem fogad el paramétereket. A `true` függvény nem érhető el a bicep-ben.  Használja `true` helyette a kulcsszót.
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Visszatérítési érték
 
 Egy mindig igaz logikai érték.
 
@@ -419,19 +510,29 @@ Egy mindig igaz logikai érték.
 
 A következő példa valódi kimeneti értéket ad vissza.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [],
-    "outputs": {
-        "trueOutput": {
-            "value": "[true()]",
-            "type" : "bool"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [],
+  "outputs": {
+    "trueOutput": {
+      "type": "bool",
+      "value": "[true()]"
     }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+output trueOutput bool = true
+```
+
+---
 
 Az előző példa kimenete a következő:
 
@@ -439,7 +540,6 @@ Az előző példa kimenete a következő:
 | ---- | ---- | ----- |
 | trueOutput | Logikai | Igaz |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Egy Azure Resource Manager sablonban található részekről az [ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető cikk nyújt tájékoztatást.
-

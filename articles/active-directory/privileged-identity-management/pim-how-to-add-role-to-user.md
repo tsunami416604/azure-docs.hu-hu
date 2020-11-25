@@ -14,11 +14,11 @@ ms.date: 09/16/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e0e230a975748fe2f737c4b8fe8491887351d387
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94835373"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004670"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-szerepkörök kiosztása Privileged Identity Management
 
@@ -233,7 +233,7 @@ Az alábbi lépéseket követve rendelje hozzá a felhasználói hozzáférés r
 
  ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure AD rendszergazdai szerepkör beállításainak konfigurálása Privileged Identity Management](pim-how-to-change-default-settings.md)
 - [Azure-beli erőforrás-szerepkörök kiosztása Privileged Identity Management](pim-resource-roles-assign-roles.md)

@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
 ms.openlocfilehash: 97d7d21374062462248e1b86f2bde2fef2d25331
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87326052"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004908"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>A környezet optimalizálása a System Center Operations Manager Health Check (előzetes verzió) megoldással
 
@@ -77,18 +77,18 @@ A folytatás előtt a futtató fióknak a következő követelményeknek kell me
 * Ha a fiók nem rendelkezik SQL sysadmin jogosultságokkal, akkor hajtsa végre a [parancsfájlt](#sql-script-to-grant-granular-permissions-to-the-run-as-account) , hogy részletes engedélyeket adjon a fióknak minden olyan SQL Server-példányhoz, amely a Operations Manager-adatbázisok egyikét vagy mindegyikét üzemelteti.
 
 1. A Operations Manager-konzolon válassza a **felügyelet** navigáció gombot.
-2. A **futtató konfiguráció**alatt kattintson a **fiókok**elemre.
-3. A **futtató fiók létrehozása** varázslóban a **Bevezetés** lapon kattintson a **tovább**gombra.
+2. A **futtató konfiguráció** alatt kattintson a **fiókok** elemre.
+3. A **futtató fiók létrehozása** varázslóban a **Bevezetés** lapon kattintson a **tovább** gombra.
 4. Az **Általános tulajdonságok** lapon válassza a **Windows** lehetőséget a **futtató fiók típusa:** listában.
-5. Írjon be egy megjelenítendő nevet a **megjelenítendő név** szövegmezőbe, és szükség esetén adjon meg egy leírást a **Leírás** mezőben, majd kattintson a **tovább**gombra.
+5. Írjon be egy megjelenítendő nevet a **megjelenítendő név** szövegmezőbe, és szükség esetén adjon meg egy leírást a **Leírás** mezőben, majd kattintson a **tovább** gombra.
 6. A **terjesztés biztonsága** **lapon válassza a biztonságosabb lehetőséget**.
-7. Kattintson a **Létrehozás** elemre.  
+7. Kattintson a **Létrehozás** gombra.  
 
 Most, hogy létrejött a futtató fiók, meg kell céloznia a felügyeleti kiszolgálókat a felügyeleti csoportban, és egy előre definiált futtató profilhoz kell rendelni, hogy a munkafolyamatok a hitelesítő adatok használatával fussanak.  
 
-1. A **futtató konfiguráció**, **fiókok**pontban, az eredmények ablaktábláján kattintson duplán a korábban létrehozott fiókra.
+1. A **futtató konfiguráció**, **fiókok** pontban, az eredmények ablaktábláján kattintson duplán a korábban létrehozott fiókra.
 2. A **terjesztés** lapon kattintson a **Hozzáadás** elemre a **kijelölt számítógépek** mezőben, és adja hozzá a felügyeleti kiszolgálót a fiók terjesztéséhez.  Kattintson kétszer **az OK gombra** a módosítások mentéséhez.
-3. A **futtató konfiguráció**alatt kattintson a **profilok**elemre.
+3. A **futtató konfiguráció** alatt kattintson a **profilok** elemre.
 4. Keresse meg a *SCOM-felmérési profilt*.
 5. A profil nevének a következőkkel kell rendelkeznie: *Microsoft System Center Operations Manager Health Check futtató profil*.
 6. Kattintson a jobb gombbal, és frissítse a tulajdonságait, és adja hozzá a korábban létrehozott futtató fiókot.
@@ -145,7 +145,7 @@ ALTER ROLE [db_owner] ADD MEMBER [UserName]
 
 ### <a name="configure-the-health-check-rule"></a>Az állapot-ellenőrzési szabály konfigurálása
 
-A System Center Operations Manager Health Check-megoldás felügyeleti csomagja tartalmazza a *Microsoft System Center Operations Manager Futtatás állapot-ellenőrzési szabálya*nevű szabályt. Ez a szabály felelős az állapot-ellenőrzés futtatásához. A szabály engedélyezéséhez és a gyakoriság konfigurálásához használja az alábbi eljárásokat.
+A System Center Operations Manager Health Check-megoldás felügyeleti csomagja tartalmazza a *Microsoft System Center Operations Manager Futtatás állapot-ellenőrzési szabálya* nevű szabályt. Ez a szabály felelős az állapot-ellenőrzés futtatásához. A szabály engedélyezéséhez és a gyakoriság konfigurálásához használja az alábbi eljárásokat.
 
 Alapértelmezés szerint a Microsoft System Center Operations Manager Futtatás állapot-ellenőrzési szabálya le van tiltva. Az állapot-ellenőrzési szolgáltatás futtatásához engedélyeznie kell a szabályt egy felügyeleti kiszolgálón. Ehhez a következő lépések szükségesek.
 
@@ -153,7 +153,7 @@ Alapértelmezés szerint a Microsoft System Center Operations Manager Futtatás 
 
 1. Az Operations Manager operatív konzol **szerzői** műveletek munkaterületén keresse meg a **szabály panelen a** *Microsoft System Center Operations Manager Futtatás állapot-ellenőrzési szabályát* .
 2. A keresési eredmények közül válassza ki azt, amely a következő szöveget tartalmazza *: felügyeleti kiszolgáló*.
-3. Kattintson a jobb gombbal a szabályra, majd kattintson **a felülbírálások elemre**a  >  **következő osztály egy adott objektumához: felügyeleti kiszolgáló**.
+3. Kattintson a jobb gombbal a szabályra, majd kattintson **a felülbírálások elemre** a  >  **következő osztály egy adott objektumához: felügyeleti kiszolgáló**.
 4.  Az elérhető felügyeleti kiszolgálók listában válassza ki azt a felügyeleti kiszolgálót, ahol a szabályt futtatni kell.  Ennek a felügyeleti kiszolgálónak kell lennie, amelyet korábban konfigurált a futtató fiókhoz való hozzárendeléséhez.
 5.  Győződjön meg arról, hogy az **engedélyezett** paraméterérték értéke **true (igaz** ) értékre módosul.<br><br> ![felülbírálási paraméter](./media/scom-assessment/rule.png)
 
@@ -165,7 +165,7 @@ Az értékelés úgy van konfigurálva, hogy alapértelmezés szerint 10 080 per
 
 1. A Operations Manager-konzol **szerzői műveletek** munkaterületén keresse meg a **szabály szakaszban a** *Microsoft System Center Operations Manager Futtatás állapot-ellenőrzési szabályát* .
 2. A keresési eredmények közül válassza ki azt, amely a következő szöveget tartalmazza *: felügyeleti kiszolgáló*.
-3. Kattintson a jobb gombbal a szabályra, majd kattintson a **szabály felülbírálása**a  >  **következő osztály összes objektumához: felügyeleti kiszolgáló**.
+3. Kattintson a jobb gombbal a szabályra, majd kattintson a **szabály felülbírálása** a  >  **következő osztály összes objektumához: felügyeleti kiszolgáló**.
 4. Módosítsa az **intervallum** paraméter értékét a kívánt intervallum értékre. Az alábbi példában az érték 1440 percre van állítva (egy nap).<br><br> ![intervallum paraméter](./media/scom-assessment/interval.png)<br>  
 
     Ha az érték 1440 percnél kisebb, akkor a szabály egy nap elteltével fut. Ebben a példában a szabály figyelmen kívül hagyja az intervallum értékét, és egy nap gyakorisággal fut.
@@ -214,7 +214,7 @@ Tekintse meg az infrastruktúra összesített megfelelőségi értékeléseit, m
 4. Az **Áttekintés** lapon kattintson a **System Center Operations Manager Health Check** csempére.
 5. A **System Center Operations Manager Health Check** oldalon tekintse át az összefoglaló információkat a fókuszban található egyik panelen, majd kattintson az egyikre a fókuszhoz tartozó javaslatok megtekintéséhez.
 6. A fókusz oldalain megtekintheti a környezetére vonatkozó rangsorolt javaslatokat. Az **érintett objektumok** alatt található javaslatra kattintva megtekintheti a javaslat hátterének részleteit.<br><br> ![fókusz terület](./media/scom-assessment/log-analytics-scom-healthcheck-dashboard-02.png)<br>
-7. A **javasolt műveletekben**javasolt korrekciós műveleteket is végrehajthat. Az elem megcímzése után a későbbi értékelések rögzítik a javasolt műveleteket, és a megfelelőségi pontszám növekedni fog. A javított elemek **átadott objektumként**jelennek meg.
+7. A **javasolt műveletekben** javasolt korrekciós műveleteket is végrehajthat. Az elem megcímzése után a későbbi értékelések rögzítik a javasolt műveleteket, és a megfelelőségi pontszám növekedni fog. A javított elemek **átadott objektumként** jelennek meg.
 
 ## <a name="ignore-recommendations"></a>Javaslatok figyelmen kívül hagyása
 

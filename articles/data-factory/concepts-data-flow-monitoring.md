@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/19/2020
-ms.openlocfilehash: a9636e7227671cd5a8ed31904e6bc27782d3bd6a
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.date: 11/22/2020
+ms.openlocfilehash: 9ca5ea5cdebe297af5081ae6e219935c56ba942e
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93025833"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96004871"
 ---
 # <a name="monitor-data-flows"></a>Adatfolyamatok figyelése
 
@@ -81,6 +81,16 @@ Az egyes partíció-transzformációs lépések részletes időzítését is meg
 
 Amikor kijelöl egy fogadó transzformációs ikont a térképen, a jobb oldalon található becsúsztatható panel egy további adatpontot jelenít meg, amelynek alján a "post Processing Time" (feldolgozás időpontja) felirat jelenik meg. Az adatok betöltését, átalakítását és írását *követően* ez az idő a Spark-fürtön végzett feladatok végrehajtásával töltött időt. Ez az idő magában foglalhatja a kapcsolatok lezárását, az illesztőprogramok leállítását, a fájlok törlését, a coalescing-fájlokat stb. Ha olyan műveleteket hajt végre a folyamatokban, mint például a "fájlok áthelyezése" és a "kimenet egyetlen fájlba", akkor valószínű, hogy növekedni fog a post Processing Time értéke.
   
+## <a name="error-rows"></a>Hibák sorai
+
+Az adatfolyam-fogadóban az adatfolyam-fogadóban a hibák sorba való kezelésének engedélyezése a figyelési kimenetben jelenik meg. Ha a "jelentés sikeressége hiba esetén" értékre állítja a fogadót, a figyelési kimenetben a sikeres és sikertelen sorok száma jelenik meg, amikor a fogadó figyelés csomópontra kattint.
+
+![A képernyőfelvételen a hibák sorai láthatók.](media/data-flow/error-row-2.png "A hiba sor figyelése sikeres")
+
+Ha a "hiba jelentése hibával" lehetőséget választja, a kimenet csak a tevékenység figyelése kimeneti szövegben jelenik meg. Ennek az az oka, hogy az adatfolyam tevékenysége sikertelen lesz a végrehajtáshoz, és a részletes figyelési nézet nem lesz elérhető.
+
+![A képernyőfelvétel a tevékenységben lévő hibák sorát jeleníti meg.](media/data-flow/error-rows-4.png "Hiba sor figyelési hibája")
+
 ## <a name="monitor-icons"></a>Ikonok figyelése
 
 Ez az ikon azt jelenti, hogy az átalakítási adatgyűjtés már gyorsítótárazva van a fürtön, így az időzítések és a végrehajtás elérési útja figyelembe vette a következőt:

@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
 ms.openlocfilehash: e1a77fc1b40faca0a339c5e1aaceb71dec8de8bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327038"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004636"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Általános mérőszámok automatikus skálázása Azure Monitor
 
@@ -153,7 +153,7 @@ Ezeket a metrikákat riasztással vagy méretezhetővé teheti.
 ## <a name="commonly-used-storage-metrics"></a>Gyakran használt tárolási metrikák
 A tárolási várólista hossza méretezhető, ami a tárolási várólistában lévő üzenetek száma. A tárolási várólista hossza egy speciális metrika, a küszöbérték pedig az üzenetek száma egy példányban. Ha például két példány van megadva, és ha a küszöbérték 100 értékre van állítva, akkor a skálázás akkor fordul elő, ha a várólistán lévő üzenetek száma összesen 200. A példányok száma 100, 120 és 80, vagy bármely más kombináció, amely akár 200-et, akár többet is felvesz.
 
-Konfigurálja ezt a beállítást a Azure Portal a **Beállítások** panelen. A virtuálisgép-méretezési csoportok esetében frissítheti a Resource Manager-sablonban található autoskálázási beállítást úgy, hogy a *MetricName* *ApproximateMessageCount* használja, és a *metricResourceUri*azonosítóját adja át.
+Konfigurálja ezt a beállítást a Azure Portal a **Beállítások** panelen. A virtuálisgép-méretezési csoportok esetében frissítheti a Resource Manager-sablonban található autoskálázási beállítást úgy, hogy a *MetricName* *ApproximateMessageCount* használja, és a *metricResourceUri* azonosítóját adja át.
 
 Egy klasszikus Storage-fiókkal például a metricTrigger az autoskálázási beállítás a következőket fogja tartalmazni:
 
@@ -174,7 +174,7 @@ Egy (nem klasszikus) Storage-fiók esetében a metricTrigger a következőket fo
 ## <a name="commonly-used-service-bus-metrics"></a>Gyakran használt Service Bus metrikák
 Service Bus üzenetsor hosszával méretezheti a méretezést, amely a Service Bus üzenetsor üzeneteinek száma. Service Bus üzenetsor hossza egy speciális metrika, és a küszöbérték a példányok száma. Ha például két példány van megadva, és ha a küszöbérték 100 értékre van állítva, akkor a skálázás akkor fordul elő, ha a várólistán lévő üzenetek száma összesen 200. A példányok száma 100, 120 és 80, vagy bármely más kombináció, amely akár 200-et, akár többet is felvesz.
 
-A virtuálisgép-méretezési csoportok esetében frissítheti a Resource Manager-sablonban található autoskálázási beállítást úgy, hogy a *MetricName* *ApproximateMessageCount* használja, és a *metricResourceUri*azonosítóját adja át.
+A virtuálisgép-méretezési csoportok esetében frissítheti a Resource Manager-sablonban található autoskálázási beállítást úgy, hogy a *MetricName* *ApproximateMessageCount* használja, és a *metricResourceUri* azonosítóját adja át.
 
 ```
 "metricName": "ApproximateMessageCount",

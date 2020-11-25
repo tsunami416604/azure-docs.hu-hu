@@ -10,11 +10,11 @@ ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: 3434953de3460d3eff066768474f03aa0e14165e
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92668590"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004993"
 ---
 # <a name="connect-to-azure-synapse-link-preview-for-azure-cosmos-db"></a>Csatlakozás az Azure szinapszis hivatkozásához (előzetes verzió) Azure Cosmos DB
 
@@ -46,20 +46,20 @@ Az adatok Object Explorer az alábbi lépéseket követve közvetlenül csatlako
 
 1. Válassza ki az **+** ikont a közelében. **Data**
 1. Válassza **a Kapcsolódás külső adatforráshoz** lehetőséget.
-1. Válassza ki azt az API-t, amelyhez csatlakozni szeretne, például az **SQL API** -t vagy **a MongoDB API** -ját.
+1. Válassza ki azt az API-t, amelyhez csatlakozni szeretne, például az **SQL API** -t vagy **a MongoDB API**-ját.
 1. Válassza a **Folytatás** lehetőséget.
 1. A társított szolgáltatás neveként adjon meg egy rövid nevet. A név megjelenik az adatObject Explorerban, és az Azure szinapszis-futtatókörnyezetek használják az adatbázishoz és a tárolóhoz való kapcsolódáshoz.
-1. Válassza ki a **Azure Cosmos db fiók nevét** és az **adatbázis nevét** .
-1. Választható Ha nincs megadva régió, a rendszer az Azure szinapszis futásidejű műveleteit arra a legközelebbi régió felé irányítja, ahol az analitikai tár engedélyezve van. Manuálisan is beállíthatja azt a régiót, amelyet a felhasználók használni tudnak a Azure Cosmos DB analitikus tároló eléréséhez. Válassza a **további kapcsolatok tulajdonságai** lehetőséget, majd válassza az **új** lehetőséget. A **tulajdonságnév** területen adja meg a **PreferredRegions** nevet. Állítsa be az **értéket** a kívánt régióra, például **WestUS2** . (A szavak és a szám között nincsenek szóközök.)
+1. Válassza ki a **Azure Cosmos db fiók nevét** és az **adatbázis nevét**.
+1. Választható Ha nincs megadva régió, a rendszer az Azure szinapszis futásidejű műveleteit arra a legközelebbi régió felé irányítja, ahol az analitikai tár engedélyezve van. Manuálisan is beállíthatja azt a régiót, amelyet a felhasználók használni tudnak a Azure Cosmos DB analitikus tároló eléréséhez. Válassza a **további kapcsolatok tulajdonságai** lehetőséget, majd válassza az **új** lehetőséget. A **tulajdonságnév** területen adja meg a **PreferredRegions** nevet. Állítsa be az **értéket** a kívánt régióra, például **WestUS2**. (A szavak és a szám között nincsenek szóközök.)
 1. Kattintson a **Létrehozás** gombra.
 
 Azure Cosmos DB adatbázisok a **Azure Cosmos db** szakasz **csatolt** lapján jelennek meg. A Azure Cosmos DB lehetővé teszi, hogy a HTAP-kompatibilis tárolót egy csak OLTP tárolóból megkülönböztesse a következő ikonok használatával:
 
-**OLTP-tároló** :
+**OLTP-tároló**:
 
 ![A OLTP tároló ikonját megjelenítő vizualizáció.](../media/quickstart-connect-synapse-link-cosmosdb/oltp-container.png)
 
-**HTAP-kompatibilis tároló** :
+**HTAP-kompatibilis tároló**:
 
 ![A HTAP tároló ikonját megjelenítő vizualizáció.](../media/quickstart-connect-synapse-link-cosmosdb/htap-container.png)
 
@@ -67,7 +67,7 @@ Azure Cosmos DB adatbázisok a **Azure Cosmos db** szakasz **csatolt** lapján j
 
 Ha a jobb gombbal rákattint egy tárolóra, megtekintheti a Spark-vagy SQL-futtatókörnyezetet kiváltó kézmozdulatok listáját. A tárolóba való írás a Azure Cosmos DB tranzakciós tárolójával történik, és a rendszer a kérelmek egységeit fogja felhasználni.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Ismerje meg, mi támogatott az Azure szinapszis és a Azure Cosmos DB között?](./concept-synapse-link-cosmos-db-support.md)
 * [Ismerje meg, hogyan kérdezheti le az analitikai áruházat a Spark használatával](./how-to-query-analytical-store-spark.md)

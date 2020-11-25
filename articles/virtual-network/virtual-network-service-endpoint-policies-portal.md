@@ -13,17 +13,17 @@ ms.workload: infrastructure
 ms.date: 02/21/2020
 ms.author: rdhillon
 ms.openlocfilehash: bdf0e87c92a55d0dbb5bbe34334a6de4580cb350
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84708178"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004959"
 ---
 # <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>Szolgáltatás-végponti házirend létrehozása, módosítása vagy törlése a Azure Portal használatával
 
 A szolgáltatás-végponti házirendek lehetővé teszik a virtuális hálózati forgalom szűrését bizonyos Azure-erőforrásokra, a szolgáltatási végpontokon keresztül. Ha még nem ismeri a szolgáltatás-végponti házirendeket, tekintse meg a [szolgáltatás-végponti házirendek áttekintését](virtual-network-service-endpoint-policies-overview.md) .
 
- Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+ Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Szolgáltatás-végponti szabályzat létrehozása
@@ -31,7 +31,7 @@ A szolgáltatás-végponti házirendek lehetővé teszik a virtuális hálózati
 > * Virtuális hálózat létrehozása alhálózattal
 > * Szolgáltatás-végponti házirend hozzárendelése egy alhálózathoz
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba 
 
@@ -40,7 +40,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 ## <a name="create-a-service-endpoint-policy"></a>Szolgáltatás-végponti szabályzat létrehozása
 
 1. Válassza az Azure Portal bal felső sarkában található **+ Erőforrás létrehozása** lehetőséget.
-2. A keresés ablaktáblán írja be a "szolgáltatási végponti házirend" kifejezést, majd válassza a **szolgáltatás-végponti házirend** elemet, majd kattintson a **Létrehozás**gombra.
+2. A keresés ablaktáblán írja be a "szolgáltatási végponti házirend" kifejezést, majd válassza a **szolgáltatás-végponti házirend** elemet, majd kattintson a **Létrehozás** gombra.
 
 ![Szolgáltatás-végponti szabályzat létrehozása](./media/virtual-network-service-endpoint-policies-portal/create-sep-resource.png)
 
@@ -71,14 +71,14 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
    - Kulcs: válassza ki a Szabályzathoz tartozó kulcsot. Pl.: Dept     
    - Érték: adja meg a kulcshoz tartozó érték párokat. Pl.: pénzügy
 
-6. Válassza a **felülvizsgálat + létrehozás**lehetőséget. Ellenőrizze az adatokat, majd kattintson a **Létrehozás**gombra. További szerkesztéshez kattintson az **előző**gombra. 
+6. Válassza a **felülvizsgálat + létrehozás** lehetőséget. Ellenőrizze az adatokat, majd kattintson a **Létrehozás** gombra. További szerkesztéshez kattintson az **előző** gombra. 
 
    ![Szolgáltatás-végponti szabályzat végleges érvényesítésének létrehozása](./media/virtual-network-service-endpoint-policies-portal/create-sep-review-create.png)
   
 ## <a name="view-endpoint-policies"></a>Végponti házirendek megtekintése 
 
 1. A portál *összes szolgáltatás* mezőjében kezdje el beírni a *szolgáltatás-végponti házirendeket*. Válassza ki a **szolgáltatás-végponti házirendeket**.
-2. Az **előfizetések**területen válassza ki az előfizetését és az erőforráscsoportot az alábbi ábrán látható módon
+2. Az **előfizetések** területen válassza ki az előfizetését és az erőforráscsoportot az alábbi ábrán látható módon
 
    ![Házirend megjelenítése](./media/virtual-network-service-endpoint-policies-portal/sep-view.png)
        
@@ -99,7 +99,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 - Mielőtt hozzárendelhet egy házirendet egy alhálózathoz, létre kell hoznia egy virtuális hálózatot és alhálózatot. Ehhez a súgóhoz a [Virtual Network létrehozása](./quick-create-portal.md) című cikkben olvashat.
 
-- A virtuális hálózat és az alhálózat beállítása után konfigurálnia kell Virtual Network szolgáltatási végpontokat az Azure Storage szolgáltatáshoz. A Virtual Network panelen válassza a **szolgáltatási végpontok**lehetőséget, majd a következő ablaktáblán válassza a **Microsoft. Storage** lehetőséget, és az **alhálózatok** területen válassza ki a kívánt VNet vagy alhálózatot.
+- A virtuális hálózat és az alhálózat beállítása után konfigurálnia kell Virtual Network szolgáltatási végpontokat az Azure Storage szolgáltatáshoz. A Virtual Network panelen válassza a **szolgáltatási végpontok** lehetőséget, majd a következő ablaktáblán válassza a **Microsoft. Storage** lehetőséget, és az **alhálózatok** területen válassza ki a kívánt VNet vagy alhálózatot.
 
 - Most választhat, hogy kijelöli-e a szolgáltatási végpont házirendjét a fenti ablaktábla legördülő menüjéből, ha már létrehozott szolgáltatási végponti házirendeket az alhálózat szolgáltatási végpontjának konfigurálása előtt, az alábbi ábrán látható módon.
 

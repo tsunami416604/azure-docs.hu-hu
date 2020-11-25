@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: Zhchia
 ms.openlocfilehash: 92aeedd25a4a60b49de54aaaa90ee4a31490c444
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359833"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004381"
 ---
 # <a name="tutorial-configure-oracle-cloud-infrastructure-console-for-automatic-user-provisioning"></a>Oktatóanyag: az Oracle felhőalapú infrastruktúra-konzol konfigurálása a felhasználók automatikus üzembe helyezéséhez
 
@@ -69,7 +69,7 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 
     ![Oracle-jogkivonat létrehozása](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/general-information.png)
 
-6. A titkos token Base64-kódolásához az ügyfél-azonosító és az ügyfél titkos kulcsát a következő formátumban kell megadni **: Client Secret** (ügyfél-azonosító). Mentse a titkos jogkivonatot. Ez az érték jelenik meg az Oracle Cloud Infrastructure Console alkalmazás üzembe helyezés lapjának **titkos jogkivonat** mezőjében a Azure Portal.
+6. A titkos token Base64-kódolásához az ügyfél-azonosító és az ügyfél titkos kulcsát a következő formátumban kell megadni **: Client Secret**(ügyfél-azonosító). Mentse a titkos jogkivonatot. Ez az érték jelenik meg az Oracle Cloud Infrastructure Console alkalmazás üzembe helyezés lapjának **titkos jogkivonat** mezőjében a Azure Portal.
 
 ## <a name="step-3-add-oracle-cloud-infrastructure-console-from-the-azure-ad-application-gallery"></a>3. lépés Oracle Cloud Infrastructure-konzol hozzáadása az Azure AD Application Galleryből
 
@@ -178,7 +178,7 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 * A [folyamatjelzőn](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
 * Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](../app-provisioning/application-provisioning-quarantine-status.md) találhat további információt.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

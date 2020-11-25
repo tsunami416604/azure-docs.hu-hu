@@ -5,11 +5,11 @@ ms.date: 03/05/2020
 ms.topic: how-to
 ms.reviewer: brendal
 ms.openlocfilehash: 696f1f2f96034f7a044f6a39182774c02804518f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87003066"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004840"
 ---
 # <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>Az Azure Blockchain Workbench előzetes verziójának használata REST API
 
@@ -20,11 +20,11 @@ Az Azure Blockchain Workbench előzetes verziójának REST API a fejlesztők és
 Az Blockchain Workbench API-k egy végponton keresztül érhetők el az üzembe helyezéshez. Az API-végpont URL-címének beszerzése az üzemelő példányhoz:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali navigációs panelen válassza az **erőforráscsoportok**lehetőséget.
+1. A bal oldali navigációs panelen válassza az **erőforráscsoportok** lehetőséget.
 1. Válassza ki a telepített Blockchain Workbench erőforráscsoport nevét.
 1. A **típus** oszlop fejlécének kiválasztásával betűrendbe rendezheti a listát típus szerint.
-1. Két erőforrás van **app Service**típussal. Válassza ki **app Service** típusú erőforrást *az "* -API" utótaggal.
-1. A App Service **áttekintésében**másolja az **URL-címet** , amely a telepített Blockchain Workbench API-végpontjának URL-címét jelöli.
+1. Két erőforrás van **app Service** típussal. Válassza ki **app Service** típusú erőforrást *az "* -API" utótaggal.
+1. A App Service **áttekintésében** másolja az **URL-címet** , amely a telepített Blockchain Workbench API-végpontjának URL-címét jelöli.
 
     ![App Service API-végpont URL-címe](media/use-api/app-service-api.png)
 

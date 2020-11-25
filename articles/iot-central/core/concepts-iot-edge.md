@@ -11,11 +11,11 @@ ms.custom:
 - device-developer
 - iot-edge
 ms.openlocfilehash: 4c4248246be845aa8608aac8b8a3ce761ea1ef86
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94987048"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004772"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Azure IoT Edge-eszközök csatlakoztatása Azure IoT Central-alkalmazáshoz
 
@@ -75,6 +75,6 @@ A IoT Central IoT Edge eszköz modelljét az alábbiak szerint:
 
 Ha IoT Edge eszközt jelölt ki egy átjáró eszközként, akkor az átjáró eszközhöz csatlakozni kívánó eszközökhöz hozzáadhat alsóbb rétegbeli kapcsolatokat az eszköz modelljeihez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha Ön egy eszköz fejlesztője, a következő lépés a [IoT Central átjáró eszközök típusának](./tutorial-define-gateway-device-type.md)megismerése.

@@ -2,13 +2,13 @@
 title: Sablon functions – üzembe helyezés
 description: Ismerteti a Azure Resource Manager-sablonban a telepítési információk lekéréséhez használandó függvényeket.
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: e8240c05cba82d5563c4b327ecbc65a9c358720f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/18/2020
+ms.openlocfilehash: 9d6a1783bcd6d84c181edae84063ed7c0964c3d8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84677814"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96004568"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>Az ARM-sablonok üzembe helyezési funkciói
 
@@ -21,13 +21,15 @@ A Resource Manager a következő függvényeket biztosítja a Azure Resource Man
 
 Erőforrások, erőforráscsoportok vagy előfizetések értékeinek lekéréséhez lásd: [Resource functions](template-functions-resource.md).
 
+[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
+
 ## <a name="deployment"></a>üzembe helyezés
 
 `deployment()`
 
 A jelenlegi telepítési műveletre vonatkozó adatokat adja vissza.
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Visszatérítési érték
 
 Ez a függvény az üzembe helyezés során átadott objektumot adja vissza. A visszaadott objektum tulajdonságai eltérnek attól függően, hogy:
 
@@ -38,22 +40,21 @@ Helyi sablon erőforráscsoporthoz való telepítésekor: a függvény a követk
 
 ```json
 {
-    "name": "",
-    "properties": {
-        "template": {
-            "$schema": "",
-            "contentVersion": "",
-            "parameters": {},
-            "variables": {},
-            "resources": [
-            ],
-            "outputs": {}
-        },
-        "templateHash": "",
-        "parameters": {},
-        "mode": "",
-        "provisioningState": ""
-    }
+  "name": "",
+  "properties": {
+    "template": {
+      "$schema": "",
+      "contentVersion": "",
+      "parameters": {},
+      "variables": {},
+      "resources": [],
+      "outputs": {}
+    },
+    "templateHash": "",
+    "parameters": {},
+    "mode": "",
+    "provisioningState": ""
+  }
 }
 ```
 
@@ -61,24 +62,24 @@ Távoli sablon erőforráscsoporthoz való telepítésekor: a függvény a köve
 
 ```json
 {
-    "name": "",
-    "properties": {
-        "templateLink": {
-            "uri": ""
-        },
-        "template": {
-            "$schema": "",
-            "contentVersion": "",
-            "parameters": {},
-            "variables": {},
-            "resources": [],
-            "outputs": {}
-        },
-        "templateHash": "",
-        "parameters": {},
-        "mode": "",
-        "provisioningState": ""
-    }
+  "name": "",
+  "properties": {
+    "templateLink": {
+      "uri": ""
+    },
+    "template": {
+      "$schema": "",
+      "contentVersion": "",
+      "parameters": {},
+      "variables": {},
+      "resources": [],
+      "outputs": {}
+    },
+    "templateHash": "",
+    "parameters": {},
+    "mode": "",
+    "provisioningState": ""
+  }
 }
 ```
 
@@ -86,20 +87,20 @@ Ha Azure-előfizetésre, felügyeleti csoportra vagy bérlőre végez üzembe he
 
 ```json
 {
-    "name": "",
-    "location": "",
-    "properties": {
-        "template": {
-            "$schema": "",
-            "contentVersion": "",
-            "resources": [],
-            "outputs": {}
-        },
-        "templateHash": "",
-        "parameters": {},
-        "mode": "",
-        "provisioningState": ""
-    }
+  "name": "",
+  "location": "",
+  "properties": {
+    "template": {
+      "$schema": "",
+      "contentVersion": "",
+      "resources": [],
+      "outputs": {}
+    },
+    "templateHash": "",
+    "parameters": {},
+    "mode": "",
+    "provisioningState": ""
+  }
 }
 ```
 
@@ -107,11 +108,21 @@ Ha Azure-előfizetésre, felügyeleti csoportra vagy bérlőre végez üzembe he
 
 A központi telepítés () használatával egy másik sablonra lehet hivatkozni a fölérendelt sablon URI-ja alapján.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 "variables": {
-    "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"
+  "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+var sharedTemplateUrl = uri(deployment().prperties.templateLink.uri, 'shared-resources.json')
+```
+
+---
 
 Ha a portálon lévő központi telepítési előzményekből telepít újra egy sablont, a sablon helyi fájlként lesz telepítve. A `templateLink` tulajdonságot a rendszer nem adja vissza a telepítési függvényben. Ha a sablon `templateLink` egy másik sablonra mutató hivatkozást hoz létre, ne használja a portált az újbóli üzembe helyezéshez. Ehelyett használja a sablon eredeti üzembe helyezéséhez használt parancsokat.
 
@@ -119,19 +130,29 @@ Ha a portálon lévő központi telepítési előzményekből telepít újra egy
 
 A következő [példában szereplő sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deployment.json) a központi telepítési objektumot adja vissza:
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [],
-    "outputs": {
-        "deploymentOutput": {
-            "value": "[deployment()]",
-            "type" : "object"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [],
+  "outputs": {
+    "deploymentOutput": {
+      "type": "object",
+      "value": "[deployment()]"
     }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+output deploymentOutput object = deployment()
+```
+
+---
 
 Az előző példa a következő objektumot adja vissza:
 
@@ -164,7 +185,7 @@ Az előző példa a következő objektumot adja vissza:
 
 Információt ad vissza az üzembe helyezéshez használt Azure-környezetről.
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Visszatérítési érték
 
 Ez a függvény az aktuális Azure-környezet tulajdonságait adja vissza. Az alábbi példa a globális Azure tulajdonságait mutatja be. A szuverén felhők némileg eltérő tulajdonságokat adhatnak vissza.
 
@@ -206,19 +227,29 @@ Ez a függvény az aktuális Azure-környezet tulajdonságait adja vissza. Az al
 
 A következő példában szereplő sablon a környezeti objektumot adja vissza.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [],
-    "outputs": {
-        "environmentOutput": {
-            "value": "[environment()]",
-            "type" : "object"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [],
+  "outputs": {
+    "environmentOutput": {
+      "type": "object",
+      "value": "[environment()]"
     }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+output environmentOutput object = environment()
+```
+
+---
 
 Az előző példa a következő objektumot adja vissza a globális Azure-ba való üzembe helyezéskor:
 
@@ -266,9 +297,9 @@ Egy paraméter értékét adja vissza. A megadott paraméter nevét meg kell adn
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| parameterName |Igen |sztring |A visszaadni kívánt paraméter neve. |
+| parameterName |Yes |sztring |A visszaadni kívánt paraméter neve. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Visszatérítési érték
 
 A megadott paraméter értéke.
 
@@ -276,78 +307,122 @@ A megadott paraméter értéke.
 
 Általában paraméterekkel állíthatja be az erőforrás-értékeket. A következő példa beállítja a webhely nevét az üzembe helyezés során átadott paraméterérték értékére.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 "parameters": {
   "siteName": {
-      "type": "string"
+    "type": "string"
   }
-},
-"resources": [
-   {
-      "apiVersion": "2016-08-01",
-      "name": "[parameters('siteName')]",
-      "type": "Microsoft.Web/Sites",
-      ...
-   }
+}, "resources": [
+  {
+    "type": "Microsoft.Web/Sites",
+    "apiVersion": "2016-08-01",
+    "name": "[parameters('siteName')]",
+    ...
+  }
 ]
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param siteName string
+
+resource mySite 'Microsoft.Web/Sites@2016-08-01' = {
+  name: siteName
+  ...
+}
+```
+
+---
 
 ### <a name="example"></a>Példa
 
 A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/parameters.json) a Parameters függvény egyszerűsített használatát mutatja be.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "stringParameter": {
-            "type" : "string",
-            "defaultValue": "option 1"
-        },
-        "intParameter": {
-            "type": "int",
-            "defaultValue": 1
-        },
-        "objectParameter": {
-            "type": "object",
-            "defaultValue": {"one": "a", "two": "b"}
-        },
-        "arrayParameter": {
-            "type": "array",
-            "defaultValue": [1, 2, 3]
-        },
-        "crossParameter": {
-            "type": "string",
-            "defaultValue": "[parameters('stringParameter')]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "stringParameter": {
+      "type": "string",
+      "defaultValue": "option 1"
     },
-    "variables": {},
-    "resources": [],
-    "outputs": {
-        "stringOutput": {
-            "value": "[parameters('stringParameter')]",
-            "type" : "string"
-        },
-        "intOutput": {
-            "value": "[parameters('intParameter')]",
-            "type" : "int"
-        },
-        "objectOutput": {
-            "value": "[parameters('objectParameter')]",
-            "type" : "object"
-        },
-        "arrayOutput": {
-            "value": "[parameters('arrayParameter')]",
-            "type" : "array"
-        },
-        "crossOutput": {
-            "value": "[parameters('crossParameter')]",
-            "type" : "string"
-        }
+    "intParameter": {
+      "type": "int",
+      "defaultValue": 1
+    },
+    "objectParameter": {
+      "type": "object",
+      "defaultValue": {
+        "one": "a",
+        "two": "b"
+      }
+    },
+    "arrayParameter": {
+      "type": "array",
+      "defaultValue": [ 1, 2, 3 ]
+    },
+    "crossParameter": {
+      "type": "string",
+      "defaultValue": "[parameters('stringParameter')]"
     }
+  },
+  "variables": {},
+  "resources": [],
+  "outputs": {
+    "stringOutput": {
+      "value": "[parameters('stringParameter')]",
+      "type": "string"
+    },
+    "intOutput": {
+      "value": "[parameters('intParameter')]",
+      "type": "int"
+    },
+    "objectOutput": {
+      "value": "[parameters('objectParameter')]",
+      "type": "object"
+    },
+    "arrayOutput": {
+      "value": "[parameters('arrayParameter')]",
+      "type": "array"
+    },
+    "crossOutput": {
+      "value": "[parameters('crossParameter')]",
+      "type": "string"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param stringParameter string = 'option 1'
+param intParameter int = 1
+param objectParameter object = {
+  'one': 'a'
+  'two': 'b'
+}
+param arrayParameter array = [
+  1
+  2
+  3
+]
+param crossParameter string = stringParameter
+
+output stringOutput string = stringParameter
+output intOutput int = intParameter
+output objectOutput object = objectParameter
+output arrayOutput array = arrayParameter
+output crossOutput string = crossParameter
+```
+
+---
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
@@ -373,7 +448,7 @@ A változó értékét adja vissza. A megadott változó nevét meg kell adni a 
 |:--- |:--- |:--- |:--- |
 | variableName |Igen |Sztring |A visszaadni kívánt változó neve. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Visszatérítési érték
 
 A megadott változó értéke.
 
@@ -381,65 +456,111 @@ A megadott változó értéke.
 
 Általában változók használatával egyszerűsítheti a sablont úgy, hogy csak egyszer hozza létre az összetett értékeket. A következő példa egy egyedi nevet hoz létre egy Storage-fiókhoz.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 "variables": {
-    "storageName": "[concat('storage', uniqueString(resourceGroup().id))]"
+  "storageName": "[concat('storage', uniqueString(resourceGroup().id))]"
 },
 "resources": [
-    {
-        "type": "Microsoft.Storage/storageAccounts",
-        "name": "[variables('storageName')]",
-        ...
-    },
-    {
-        "type": "Microsoft.Compute/virtualMachines",
-        "dependsOn": [
-            "[variables('storageName')]"
-        ],
-        ...
-    }
+  {
+    "type": "Microsoft.Storage/storageAccounts",
+    "name": "[variables('storageName')]",
+    ...
+  },
+  {
+    "type": "Microsoft.Compute/virtualMachines",
+    "dependsOn": [
+      "[variables('storageName')]"
+    ],
+    ...
+  }
 ],
+
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+var storageName = concat('storage', uniqueString(resourceGroup().id))
+
+resource myStorage 'Microsoft.Storage/storageAccounts@2019-06-01' = {
+  name: storageName
+  ...
+}
+
+resource myVm 'Microsoft.Compute/virtualMachines@2020-06-01' = {
+  ...
+}
+```
+
+---
 
 ### <a name="example"></a>Példa
 
 A következő [példában szereplő sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/variables.json) eltérő változó értékeket ad vissza.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {},
-    "variables": {
-        "var1": "myVariable",
-        "var2": [ 1,2,3,4 ],
-        "var3": "[ variables('var1') ]",
-        "var4": {
-            "property1": "value1",
-            "property2": "value2"
-          }
-    },
-    "resources": [],
-    "outputs": {
-        "exampleOutput1": {
-            "value": "[variables('var1')]",
-            "type" : "string"
-        },
-        "exampleOutput2": {
-            "value": "[variables('var2')]",
-            "type" : "array"
-        },
-        "exampleOutput3": {
-            "value": "[variables('var3')]",
-            "type" : "string"
-        },
-        "exampleOutput4": {
-            "value": "[variables('var4')]",
-            "type" : "object"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "variables": {
+    "var1": "myVariable",
+    "var2": [ 1, 2, 3, 4 ],
+    "var3": "[ variables('var1') ]",
+    "var4": {
+      "property1": "value1",
+      "property2": "value2"
     }
+  },
+  "resources": [],
+  "outputs": {
+    "exampleOutput1": {
+      "value": "[variables('var1')]",
+      "type": "string"
+    },
+    "exampleOutput2": {
+      "value": "[variables('var2')]",
+      "type": "array"
+    },
+    "exampleOutput3": {
+      "value": "[variables('var3')]",
+      "type": "string"
+    },
+    "exampleOutput4": {
+      "value": "[variables('var4')]",
+      "type": "object"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+var var1 = 'myVariable'
+var var2 = [
+  1
+  2
+  3
+  4
+]
+var var3 = var1
+var var4 = {
+  'property1': 'value1'
+  'property2': 'value2'
+}
+
+output exampleOutput1 string = var1
+output exampleOutput2 array = var2
+output exampleOutput3 string = var3
+output exampleOutput4 object = var4
+```
+
+---
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 

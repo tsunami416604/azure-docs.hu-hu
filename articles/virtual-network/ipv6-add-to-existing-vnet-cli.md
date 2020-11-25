@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 2f33369c013e2ff56b7fb745ddb0fc959793f12a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: de8d63fb5181e324738e082cbb36a40ee59e36b0
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016156"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "96005248"
 ---
 # <a name="add-ipv6-to-an-ipv4-application-in-azure-virtual-network---azure-cli"></a>IPv6 hozzáadása IPv4-alkalmazáshoz az Azure Virtual Networkben – Azure CLI
 
@@ -93,13 +93,13 @@ Adja hozzá az IPv6-címtartományt a virtuális hálózathoz és a terheléselo
 az network vnet update \
 --name myVnet  \
 --resource-group MyResourceGroupSLB \
---address-prefixes  "10.0.0.0/16"  "2001:db8:deca::/48"
+--address-prefixes  "10.0.0.0/16"  "fd00:db8:deca::/48"
 
 az network vnet subnet update \
 --vnet-name myVnet \
 --name mySubnet \
 --resource-group MyResourceGroupSLB \
---address-prefixes  "10.0.0.0/24"  "2001:db8:deca:deed::/64"  
+--address-prefixes  "10.0.0.0/24"  "fd00:db8:deca:deed::/64"  
 ```
 
 ## <a name="add-ipv6-configuration-to-nics"></a>IPv6-konfiguráció hozzáadása hálózati adapterekhez
@@ -147,7 +147,7 @@ Az IPv6 kettős verem virtuális hálózatát a következőképpen tekintheti me
   ![IPv6-alapú kettős verem virtuális hálózata az Azure-ban](./media/ipv6-add-to-existing-vnet-powershell/ipv6-dual-stack-vnet.png)
 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsot az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás eltávolításához.
 
@@ -155,6 +155,6 @@ Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](/powershel
 az group delete --name MyAzureResourceGroupSLB
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben frissített egy meglévő standard Load Balancer IPv4-es előtér-IP-konfigurációval egy kettős verem (IPv4 és IPv6) konfigurációra. Az IPv6-konfigurációkat a háttér-készletben található virtuális gépek hálózati adapterei számára is felvette. További információ az Azure-beli virtuális hálózatok IPv6-támogatásáról: [Mi az IPv6 for azure Virtual Network?](ipv6-overview.md)

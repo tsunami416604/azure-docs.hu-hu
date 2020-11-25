@@ -10,11 +10,11 @@ ms.date: 10/10/2019
 ms.subservice: tables
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 71b1f3cfa1df86b417c468d56f67cd7fe8d71d73
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316182"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004704"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>A Table Storage teljesítmény-és méretezhetőségi ellenőrzőlistája
 
@@ -98,7 +98,7 @@ Az alkalmazás fizikai hálózati korlátai jelentős hatással lehetnek a telje
 
 A sávszélesség és a hálózati kapcsolat minősége fontos szerepet játszik az alkalmazás teljesítményében, az alábbi szakaszokban leírtak szerint.
 
-#### <a name="throughput"></a>Átviteli sebesség
+#### <a name="throughput"></a>Teljesítmény
 
 A sávszélesség miatt a probléma gyakran az ügyfél képességei. A nagyobb méretű Azure-példányok nagyobb kapacitású hálózati adapterekkel rendelkeznek, ezért érdemes nagyobb méretű virtuális gépeket használni, ha egy gépről nagyobb hálózati korlátokra van szüksége. Ha egy helyszíni alkalmazásból fér hozzá az Azure Storage-hoz, ugyanez a szabály vonatkozik rá: Ismerje meg az ügyféleszközök hálózati képességeit és a hálózati kapcsolatot az Azure Storage-beli helyhez, vagy javítsa azokat igény szerint, vagy tervezze meg az alkalmazását a képességein belül.
 
@@ -243,7 +243,7 @@ Ez a szakasz a Table service lekérdezésének bevált gyakorlatait ismerteti.
 
 A lekérdezni kívánt entitások köre több módon is meghatározható. Az alábbi lista a lekérdezési hatókör minden beállítását ismerteti.
 
-- **Pontok lekérdezései:** – a pont lekérdezése pontosan egy entitást kérdez le a lekérdezni kívánt entitás partíciós kulcsának és a sor kulcsának megadásával. Ezek a lekérdezések hatékonyak, és lehetőleg ezeket kell használniuk.
+- **Pontok lekérdezései:**– a pont lekérdezése pontosan egy entitást kérdez le a lekérdezni kívánt entitás partíciós kulcsának és a sor kulcsának megadásával. Ezek a lekérdezések hatékonyak, és lehetőleg ezeket kell használniuk.
 - **Partíciós lekérdezések:** A partíciós lekérdezés egy olyan lekérdezés, amely közös partíciós kulcsot használó adathalmazt kérdez le. A lekérdezés általában megadja a sor kulcsának értékét vagy az egyes entitások tulajdonságának tartományát a partíciós kulcs mellett. Ezek a lekérdezések kevésbé hatékonyak, mint a pontszerű lekérdezések, és érdemes takarékosan használni őket.
 - **Táblák lekérdezései:** A tábla lekérdezése egy olyan lekérdezés, amely nem közös partíciós kulccsal rendelkező entitásokat kérdez le. Ezek a lekérdezések nem hatékonyak, és ha lehetséges, el kell kerülnie őket.
 
@@ -275,8 +275,8 @@ A Batch-tranzakciók az Azure Storage-beli Entity Group-tranzakciók néven isme
 
 Ha csak lehet, használja a Table **Upsert** -műveleteket. Kétféle **Upsert** létezik, amelyek közül mindkettő hatékonyabb lehet, mint egy hagyományos **beszúrási** és **frissítési** művelet:  
 
-- **InsertOrMerge** : akkor használja ezt a műveletet, ha az entitás tulajdonságainak egy részhalmazát szeretné feltölteni, de nem biztos benne, hogy az entitás már létezik-e. Ha az entitás létezik, a hívás frissíti a **Upsert** műveletben foglalt tulajdonságokat, és az összes meglévő tulajdonságot elhagyja, ha az entitás nem létezik, beszúrja az új entitást. Ez hasonló a lekérdezésekben a leképezések használatához, hogy csak a változó tulajdonságokat kell feltöltenie.
-- **InsertOrReplace** : akkor használja ezt a műveletet, ha egy teljesen új entitást szeretne feltölteni, de nem biztos benne, hogy már létezik-e. Akkor használja ezt a műveletet, ha tudja, hogy az újonnan feltöltött entitás teljesen helyes, mert teljesen felülírja a régi entitást. Például szeretné frissíteni a felhasználó aktuális helyét tároló entitást, függetlenül attól, hogy az alkalmazás korábban tárolta-e a felhasználó tartózkodási helyét. az új hely entitás elkészült, és semmilyen információt nem kell megadnia az előző entitásokról.
+- **InsertOrMerge**: akkor használja ezt a műveletet, ha az entitás tulajdonságainak egy részhalmazát szeretné feltölteni, de nem biztos benne, hogy az entitás már létezik-e. Ha az entitás létezik, a hívás frissíti a **Upsert** műveletben foglalt tulajdonságokat, és az összes meglévő tulajdonságot elhagyja, ha az entitás nem létezik, beszúrja az új entitást. Ez hasonló a lekérdezésekben a leképezések használatához, hogy csak a változó tulajdonságokat kell feltöltenie.
+- **InsertOrReplace**: akkor használja ezt a műveletet, ha egy teljesen új entitást szeretne feltölteni, de nem biztos benne, hogy már létezik-e. Akkor használja ezt a műveletet, ha tudja, hogy az újonnan feltöltött entitás teljesen helyes, mert teljesen felülírja a régi entitást. Például szeretné frissíteni a felhasználó aktuális helyét tároló entitást, függetlenül attól, hogy az alkalmazás korábban tárolta-e a felhasználó tartózkodási helyét. az új hely entitás elkészült, és semmilyen információt nem kell megadnia az előző entitásokról.
 
 #### <a name="storing-data-series-in-a-single-entity"></a>Adatsorozatok tárolása egyetlen entitásban
 
@@ -288,7 +288,7 @@ Azt is megteheti, hogy az alkalmazás minden órában a CPU-használatot külön
 
 Ha batch-beszúrásokat hajt végre, majd az entitások tartományait is beolvassa, érdemes a táblázatok helyett blobokat használni. Jó példa egy naplófájl. Több percből is készíthet naplókat, és beillesztheti őket, majd egyszerre több perces naplót is beolvashat. Ebben az esetben a teljesítmény jobb, ha táblázatok helyett blobokat használ, mivel jelentősen csökkentheti a beolvasott vagy olvasott objektumok számát, valamint az esetlegesen igényelt kérelmek számát is.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A Table Storage méretezhetőségi és teljesítménybeli céljai](scalability-targets.md)
 - [A standard szintű Storage-fiókok méretezhetősége és teljesítménybeli céljai](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)

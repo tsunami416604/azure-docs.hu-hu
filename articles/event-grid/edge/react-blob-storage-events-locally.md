@@ -8,11 +8,11 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 230e158a970f8c815b1575403c013e30749124c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87462020"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005061"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>Oktatóanyag: válaszadás Blob Storage eseményekre IoT Edge (előzetes verzió)
 Ebből a cikkből megtudhatja, hogyan helyezheti üzembe az Azure Blob Storaget a IoT modulban, amely Event Grid közzétevőként fog működni a Blobok létrehozásával és a Blobok törlésével kapcsolatos események Event Grid.  
@@ -41,11 +41,11 @@ A modulokat többféleképpen is telepítheti egy IoT Edge eszközre, és mindeg
 1. Navigáljon a IoT Hub.
 1. Válassza a **IoT Edge** lehetőséget az **automatikus eszközkezelés** szakasz menüjében. 
 1. Kattintson a céleszköz AZONOSÍTÓjának az eszközök listájáról
-1. Válassza a **modulok beállítása**lehetőséget. Tartsa meg a lapot. A következő szakaszban ismertetett lépésekkel folytathatja a lépéseket.
+1. Válassza a **modulok beállítása** lehetőséget. Tartsa meg a lapot. A következő szakaszban ismertetett lépésekkel folytathatja a lépéseket.
 
 ### <a name="configure-a-deployment-manifest"></a>Központi telepítési jegyzék konfigurálása
 
-Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely modulokat kell telepíteni, hogyan zajlik az adatforgalom a modulok és a modul kívánt tulajdonságai között. A Azure Portal tartalmaz egy varázslót, amely végigvezeti az üzembe helyezési jegyzék létrehozásán, a JSON-dokumentum manuális létrehozása helyett.  Három lépésből áll: **modulok hozzáadása**, **útvonalak megadása**és az **üzembe helyezés áttekintése**.
+Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely modulokat kell telepíteni, hogyan zajlik az adatforgalom a modulok és a modul kívánt tulajdonságai között. A Azure Portal tartalmaz egy varázslót, amely végigvezeti az üzembe helyezési jegyzék létrehozásán, a JSON-dokumentum manuális létrehozása helyett.  Három lépésből áll: **modulok hozzáadása**, **útvonalak megadása** és az **üzembe helyezés áttekintése**.
 
 ### <a name="add-modules"></a>Modulok hozzáadása
 
@@ -75,7 +75,7 @@ Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely mod
         }
     ```    
 
- 1. Kattintson a **Mentés** gombra.
+ 1. Kattintson a **Mentés** gombra
  1. Folytassa a következő szakasszal, és vegye fel a Azure Event Grid előfizető modult, mielőtt együtt telepítené őket.
 
     >[!IMPORTANT]
@@ -95,7 +95,7 @@ Ebből a szakaszból megtudhatja, hogyan helyezhet üzembe egy másik IoT modult
    * **Név**: előfizető
    * **Rendszerkép URI-ja**: `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
    * **Tároló-létrehozási beállítások**: nincs
-1. Kattintson a **Mentés** gombra.
+1. Kattintson a **Mentés** gombra
 1. Folytassa a következő szakasszal az Azure Blob Storage modul hozzáadásához
 
 ## <a name="deploy-azure-blob-storage-module"></a>Az Azure Blob Storage modul üzembe helyezése
@@ -144,9 +144,9 @@ Ebből a szakaszból megtudhatja, hogyan helyezheti üzembe az Azure Blob Storag
    - Cserélje le a `<event grid module name>` nevet a Event Grid modul nevére.
    - Cserélje le `<storage mount>` at a tároló operációs rendszerének megfelelően.
      - Linux-tárolók esetén **a saját kötet:/blobroot**
-     - Windows-tárolók esetén**a saját kötet: C:/BlobRoot**
+     - Windows-tárolók esetén **a saját kötet: C:/BlobRoot**
 
-5. Kattintson a **Mentés** gombra.
+5. Kattintson a **Mentés** gombra
 6. Az útvonalak szakasz folytatásához kattintson a **tovább** gombra.
 
     > [!NOTE]
@@ -159,13 +159,13 @@ Tartsa meg az alapértelmezett útvonalakat, és kattintson a **tovább** gombra
 ### <a name="review-deployment"></a>Központi telepítés áttekintése
 
 1. A felülvizsgálati szakasz megjeleníti a JSON-telepítési jegyzékfájlt, amelyet az előző szakaszban megadott beállítások alapján hoztak létre. Győződjön meg arról, hogy a következő négy modul jelenik meg: **$edgeAgent**, **$edgeHub**, **eventgridmodule**, **előfizető** és **azureblobstorageoniotedge** , amelyet az összes üzembe helyezett.
-2. Tekintse át az üzembe helyezési adatokat, majd válassza a **Küldés**lehetőséget.
+2. Tekintse át az üzembe helyezési adatokat, majd válassza a **Küldés** lehetőséget.
 
 ## <a name="verify-your-deployment"></a>Az üzemelő példány ellenőrzése
 
 1. Miután elküldte az üzembe helyezést, térjen vissza az IoT hub IoT Edge lapjára.
 2. Válassza ki azt a **IoT Edge eszközt** , amelyet a központi telepítéshez céloz, hogy megnyissa a részleteit.
-3. Az eszköz részletei között ellenőrizze, hogy a eventgridmodule, az előfizetői és a azureblobstorageoniotedge modulok szerepelnek-e a **telepítésben** és az **eszköz által jelentett**módon.
+3. Az eszköz részletei között ellenőrizze, hogy a eventgridmodule, az előfizetői és a azureblobstorageoniotedge modulok szerepelnek-e a **telepítésben** és az **eszköz által jelentett** módon.
 
    Néhány percet is igénybe vehet, amíg a modul elindult az eszközön, majd visszaküldhető a IoT Hubra. Frissítse az oldalt, és tekintse meg a frissített állapotot.
 
@@ -346,7 +346,7 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 | contentType | sztring | A blobhoz megadott tartalomtípus. |
 | contentLength | egész szám | A blob mérete bájtban megadva. |
 | blobType | sztring | A blob típusa. Az érvényes értékek: "BlockBlob" vagy "PageBlob". |
-| url | sztring | A blob elérési útja. <br>Ha az ügyfél blobot REST API használ, akkor az URL-cím a következő szerkezettel rendelkezik: * \<storage-account-name\> . blob.Core.Windows.net/ \<container-name\> / \<file-name\> *. <br>Ha az ügyfél egy Data Lake Storage REST API használ, akkor az URL-cím a következő struktúrával rendelkezik: * \<storage-account-name\> . DFS.Core.Windows.net/ \<file-system-name\> / \<file-name\> *. |
+| url | sztring | A blob elérési útja. <br>Ha az ügyfél blobot REST API használ, akkor az URL-cím a következő szerkezettel rendelkezik: *\<storage-account-name\> . blob.Core.Windows.net/ \<container-name\> / \<file-name\>*. <br>Ha az ügyfél egy Data Lake Storage REST API használ, akkor az URL-cím a következő struktúrával rendelkezik: *\<storage-account-name\> . DFS.Core.Windows.net/ \<file-system-name\> / \<file-name\>*. |
 
 
 ## <a name="next-steps"></a>További lépések

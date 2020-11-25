@@ -2,13 +2,13 @@
 title: Sablon függvények – numerikus
 description: A Azure Resource Manager-sablonban a számokkal való munkához használandó függvényeket ismerteti.
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: 00b44d971a487a0bbec27f3fc2d0746cedd6f874
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/18/2020
+ms.openlocfilehash: 26f4b846c67ee7b926ea984ceefd84bf9ea56952
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84677916"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96004534"
 ---
 # <a name="numeric-functions-for-arm-templates"></a>ARM-sablonok numerikus függvények
 
@@ -20,25 +20,27 @@ A Resource Manager a következő függvényeket biztosítja a Azure Resource Man
 * [float](#float)
 * [int](#int)
 * [Max](#max)
-* [min](#min)
+* [p](#min)
 * [mod](#mod)
 * [mul](#mul)
 * [Sub](#sub)
+
+[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 
 ## <a name="add"></a>add
 
 `add(operand1, operand2)`
 
-A két megadott egész szám összegét adja vissza.
+A két megadott egész szám összegét adja vissza. A `add` függvény nem támogatott a bicep. Használja `+` helyette a kezelőt.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-|operand1 |Igen |int |A hozzáadandó első szám. |
-|operand2 |Igen |int |A hozzáadandó második szám. |
+|operand1 |Yes |int |A hozzáadandó első szám. |
+|operand2 |Yes |int |A hozzáadandó második szám. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Visszatérítési érték
 
 Egy egész szám, amely a paraméterek összegét tartalmazza.
 
@@ -46,36 +48,49 @@ Egy egész szám, amely a paraméterek összegét tartalmazza.
 
 Az alábbi [sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/add.json) két paramétert hoz létre.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "first": {
-            "type": "int",
-            "defaultValue": 5,
-            "metadata": {
-                "description": "First integer to add"
-            }
-        },
-        "second": {
-            "type": "int",
-            "defaultValue": 3,
-            "metadata": {
-                "description": "Second integer to add"
-            }
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "first": {
+      "type": "int",
+      "defaultValue": 5,
+      "metadata": {
+        "description": "First integer to add"
+      }
     },
-    "resources": [
-    ],
-    "outputs": {
-        "addResult": {
-            "type": "int",
-            "value": "[add(parameters('first'), parameters('second'))]"
-        }
+    "second": {
+      "type": "int",
+      "defaultValue": 3,
+      "metadata": {
+        "description": "Second integer to add"
+      }
     }
+  },
+  "resources": [
+  ],
+  "outputs": {
+    "addResult": {
+      "type": "int",
+      "value": "[add(parameters('first'), parameters('second'))]"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param first int = 5
+param second int = 3
+
+output addResult int = first + second
+```
+
+---
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
@@ -93,14 +108,14 @@ Egy iterációs hurok indexét adja vissza.
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| loopName | Nem | sztring | Az iteráció megszerzéséhez használt hurok neve. |
-| offset |Nem |int |A nulla alapú iterációs értékhez hozzáadandó szám. |
+| loopName | No | sztring | Az iteráció megszerzéséhez használt hurok neve. |
+| offset |No |int |A nulla alapú iterációs értékhez hozzáadandó szám. |
 
 ### <a name="remarks"></a>Megjegyzések
 
 Ezt a függvényt mindig egy **másolási** objektummal használja a rendszer. Ha nincs megadva érték az **eltoláshoz**, a rendszer az aktuális iterációs értéket adja vissza. Az iteráció értéke nullával kezdődik.
 
-A **loopName** tulajdonság lehetővé teszi annak megadását, hogy a copyIndex erőforrás-iterációra vagy tulajdonság-iterációra hivatkozik-e. Ha a **loopName**nem ad meg értéket, a rendszer az aktuális erőforrástípus iterációját használja. Adjon meg egy értéket a **loopName** , amikor a tulajdonságot megismétli.
+A **loopName** tulajdonság lehetővé teszi annak megadását, hogy a copyIndex erőforrás-iterációra vagy tulajdonság-iterációra hivatkozik-e. Ha a **loopName** nem ad meg értéket, a rendszer az aktuális erőforrástípus iterációját használja. Adjon meg egy értéket a **loopName** , amikor a tulajdonságot megismétli.
 
 A másolás használatával kapcsolatos további információkért lásd:
 
@@ -113,38 +128,47 @@ A másolás használatával kapcsolatos további információkért lásd:
 
 A következő példa egy másolási ciklust és a névben szereplő index értékét mutatja be.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "storageCount": {
-            "type": "int",
-            "defaultValue": 2
-        }
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2019-04-01",
-            "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
-            "location": "[resourceGroup().location]",
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {},
-            "copy": {
-                "name": "storagecopy",
-                "count": "[parameters('storageCount')]"
-            }
-        }
-    ],
-    "outputs": {}
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageCount": {
+      "type": "int",
+      "defaultValue": 2
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2019-04-01",
+      "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
+      "location": "[resourceGroup().location]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "Storage",
+      "properties": {},
+      "copy": {
+        "name": "storagecopy",
+        "count": "[parameters('storageCount')]"
+      }
+    }
+  ],
+  "outputs": {}
 }
 ```
 
-### <a name="return-value"></a>Visszatérési érték
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+> [!NOTE]
+> Hurkok, és `copyIndex` még nincsenek implementálva a bicep-ban.  Lásd: [hurkok](https://github.com/Azure/bicep/blob/main/docs/spec/loops.md).
+
+---
+
+### <a name="return-value"></a>Visszatérítési érték
 
 Egy egész szám, amely az iteráció aktuális indexét jelöli.
 
@@ -152,16 +176,16 @@ Egy egész szám, amely az iteráció aktuális indexét jelöli.
 
 `div(operand1, operand2)`
 
-A két megadott egész szám egészének osztását adja vissza.
+A két megadott egész szám egészének osztását adja vissza. A `div` függvény nem támogatott a bicep. Használja `/` helyette a kezelőt.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| operand1 |Igen |int |A felosztott szám. |
-| operand2 |Igen |int |A felosztáshoz használt szám. Nem lehet 0. |
+| operand1 |Yes |int |A felosztott szám. |
+| operand2 |Yes |int |A felosztáshoz használt szám. Nem lehet 0. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Visszatérítési érték
 
 A osztást jelképező egész szám.
 
@@ -169,36 +193,49 @@ A osztást jelképező egész szám.
 
 Az alábbi [példában szereplő sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/div.json) egy paramétert oszt szét egy másik paraméterrel.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "first": {
-            "type": "int",
-            "defaultValue": 8,
-            "metadata": {
-                "description": "Integer being divided"
-            }
-        },
-        "second": {
-            "type": "int",
-            "defaultValue": 3,
-            "metadata": {
-                "description": "Integer used to divide"
-            }
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "first": {
+      "type": "int",
+      "defaultValue": 8,
+      "metadata": {
+        "description": "Integer being divided"
+      }
     },
-    "resources": [
-    ],
-    "outputs": {
-        "divResult": {
-            "type": "int",
-            "value": "[div(parameters('first'), parameters('second'))]"
-        }
+    "second": {
+      "type": "int",
+      "defaultValue": 3,
+      "metadata": {
+        "description": "Integer used to divide"
+      }
     }
+  },
+  "resources": [
+  ],
+  "outputs": {
+    "divResult": {
+      "type": "int",
+      "value": "[div(parameters('first'), parameters('second'))]"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param first int = 8
+param second int = 3
+
+output addResult int = first / second
+```
+
+---
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
@@ -210,15 +247,15 @@ Az előző példában az alapértelmezett értékekkel rendelkező kimenet a kö
 
 `float(arg1)`
 
-Az értéket egy lebegőpontos számra konvertálja. Ezt a függvényt csak akkor használja, ha egyéni paramétereket adunk át egy alkalmazásnak, például egy logikai alkalmazásnak.
+Az értéket egy lebegőpontos számra konvertálja. Ezt a függvényt csak akkor használja, ha egyéni paramétereket adunk át egy alkalmazásnak, például egy logikai alkalmazásnak. A `float` függvény nem támogatott a Becip.  Lásd: a [32 bites egész számokból származó numerikus típusok támogatása](https://github.com/Azure/bicep/issues/486).
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |karakterlánc vagy int |A lebegőpontos számra konvertálandó érték. |
+| arg1 |Yes |karakterlánc vagy int |A lebegőpontos számra konvertálandó érték. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Visszatérítési érték
 
 Egy lebegőpontos szám.
 
@@ -226,19 +263,28 @@ Egy lebegőpontos szám.
 
 Az alábbi példa bemutatja, hogyan használható az úszó a paraméterek logikai alkalmazásba való átadásához:
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "type": "Microsoft.Logic/workflows",
-    "properties": {
-        ...
-        "parameters": {
-            "custom1": {
-                "value": "[float('3.0')]"
-            },
-            "custom2": {
-                "value": "[float(3)]"
-            },
+  "type": "Microsoft.Logic/workflows",
+  "properties": {
+    ...
+    "parameters": {
+      "custom1": {
+        "value": "[float('3.0')]"
+      },
+      "custom2": {
+        "value": "[float(3)]"
+      },
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+> [!NOTE]
+> A `float` függvény nem támogatott a bicep.  Lásd: a [32 bites egész számokból származó numerikus típusok támogatása](https://github.com/Azure/bicep/issues/486).
+
+---
 
 ## <a name="int"></a>int
 
@@ -250,9 +296,9 @@ Egy egész számra konvertálja a megadott értéket.
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Igen |karakterlánc vagy int |Az egész számra konvertálandó érték. |
+| valueToConvert |Yes |karakterlánc vagy int |Az egész számra konvertálandó érték. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Visszatérítési érték
 
 Az átalakított érték egész szám.
 
@@ -260,26 +306,38 @@ Az átalakított érték egész szám.
 
 A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/int.json) a felhasználó által megadott paraméter értékét egész értékre konvertálja.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "stringToConvert": {
-            "type": "string",
-            "defaultValue": "4"
-        }
-    },
-    "resources": [
-    ],
-    "outputs": {
-        "intResult": {
-            "type": "int",
-            "value": "[int(parameters('stringToConvert'))]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "stringToConvert": {
+      "type": "string",
+      "defaultValue": "4"
     }
+  },
+  "resources": [
+  ],
+  "outputs": {
+    "intResult": {
+      "type": "int",
+      "value": "[int(parameters('stringToConvert'))]"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param stringToConvert string = '4'
+
+output inResult int = int(stringToConvert)
+```
+
+---
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
@@ -297,9 +355,9 @@ A maximális értéket adja vissza egész számok tömbje vagy az egész számok
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |egész számok tömbje vagy egész számok vesszővel tagolt listája |A gyűjtemény, amely a maximális értéket kapja. |
+| arg1 |Yes |egész számok tömbje vagy egész számok vesszővel tagolt listája |A gyűjtemény, amely a maximális értéket kapja. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Visszatérítési érték
 
 Egy egész szám, amely a gyűjteményből származó maximális értéket jelöli.
 
@@ -307,29 +365,48 @@ Egy egész szám, amely a gyűjteményből származó maximális értéket jelö
 
 Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/max.json) azt szemlélteti, hogyan használható a Max egy tömbvel és egy egész számokból álló listával:
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "arrayToTest": {
-            "type": "array",
-            "defaultValue": [0,3,2,5,4]
-        }
-    },
-    "resources": [],
-    "outputs": {
-        "arrayOutput": {
-            "type": "int",
-            "value": "[max(parameters('arrayToTest'))]"
-        },
-        "intOutput": {
-            "type": "int",
-            "value": "[max(0,3,2,5,4)]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "arrayToTest": {
+      "type": "array",
+      "defaultValue": [ 0, 3, 2, 5, 4 ]
     }
+  },
+  "resources": [],
+  "outputs": {
+    "arrayOutput": {
+      "type": "int",
+      "value": "[max(parameters('arrayToTest'))]"
+    },
+    "intOutput": {
+      "type": "int",
+      "value": "[max(0,3,2,5,4)]"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param arrayToTest array = [
+  0
+  3
+  2
+  5
+  4
+]
+
+output arrayOutPut int = max(arrayToTest)
+output intOutput int = max(0,3,2,5,4)
+```
+
+---
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
@@ -348,9 +425,9 @@ A minimális értéket adja vissza egész számok tömbje vagy az egész számok
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |egész számok tömbje vagy egész számok vesszővel tagolt listája |A gyűjtemény a minimális érték beolvasásához. |
+| arg1 |Yes |egész számok tömbje vagy egész számok vesszővel tagolt listája |A gyűjtemény a minimális érték beolvasásához. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Visszatérítési érték
 
 Egy egész szám, amely a gyűjtemény minimális értékét jelöli.
 
@@ -358,29 +435,48 @@ Egy egész szám, amely a gyűjtemény minimális értékét jelöli.
 
 Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/min.json) azt szemlélteti, hogyan használható a min egy tömbvel és egy egész számokból álló listával:
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "arrayToTest": {
-            "type": "array",
-            "defaultValue": [0,3,2,5,4]
-        }
-    },
-    "resources": [],
-    "outputs": {
-        "arrayOutput": {
-            "type": "int",
-            "value": "[min(parameters('arrayToTest'))]"
-        },
-        "intOutput": {
-            "type": "int",
-            "value": "[min(0,3,2,5,4)]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "arrayToTest": {
+      "type": "array",
+      "defaultValue": [ 0, 3, 2, 5, 4 ]
     }
+  },
+  "resources": [],
+  "outputs": {
+    "arrayOutput": {
+      "type": "int",
+      "value": "[min(parameters('arrayToTest'))]"
+    },
+    "intOutput": {
+      "type": "int",
+      "value": "[min(0,3,2,5,4)]"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param arrayToTest array = [
+  0
+  3
+  2
+  5
+  4
+]
+
+output arrayOutPut int = min(arrayToTest)
+output intOutput int = min(0,3,2,5,4)
+```
+
+---
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
@@ -393,16 +489,16 @@ Az előző példában az alapértelmezett értékekkel rendelkező kimenet a kö
 
 `mod(operand1, operand2)`
 
-Az egész szám többit adja vissza a két megadott egész szám használatával.
+Az egész szám többit adja vissza a két megadott egész szám használatával. A `mod` függvény nem támogatott a bicep. Használja `%` helyette a kezelőt.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| operand1 |Igen |int |A felosztott szám. |
-| operand2 |Igen |int |A felosztáshoz használt szám nem lehet 0. |
+| operand1 |Yes |int |A felosztott szám. |
+| operand2 |Yes |int |A felosztáshoz használt szám nem lehet 0. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Visszatérítési érték
 
 A maradékot jelölő egész szám.
 
@@ -410,36 +506,49 @@ A maradékot jelölő egész szám.
 
 A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mod.json) egy másik paraméterrel való osztásának hátralévő részét adja vissza.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "first": {
-            "type": "int",
-            "defaultValue": 7,
-            "metadata": {
-                "description": "Integer being divided"
-            }
-        },
-        "second": {
-            "type": "int",
-            "defaultValue": 3,
-            "metadata": {
-                "description": "Integer used to divide"
-            }
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "first": {
+      "type": "int",
+      "defaultValue": 7,
+      "metadata": {
+        "description": "Integer being divided"
+      }
     },
-    "resources": [
-    ],
-    "outputs": {
-        "modResult": {
-            "type": "int",
-            "value": "[mod(parameters('first'), parameters('second'))]"
-        }
+    "second": {
+      "type": "int",
+      "defaultValue": 3,
+      "metadata": {
+        "description": "Integer used to divide"
+      }
     }
+  },
+  "resources": [
+  ],
+  "outputs": {
+    "modResult": {
+      "type": "int",
+      "value": "[mod(parameters('first'), parameters('second'))]"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param first int = 7
+param second int = 3
+
+output modResult int = first % second
+```
+
+---
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
@@ -451,16 +560,16 @@ Az előző példában az alapértelmezett értékekkel rendelkező kimenet a kö
 
 `mul(operand1, operand2)`
 
-A két megadott egész szám szorzását adja vissza.
+A két megadott egész szám szorzását adja vissza. A `mul` függvény nem támogatott a bicep. Használja `*` helyette a kezelőt.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| operand1 |Igen |int |A szorzáshoz használandó első szám. |
-| operand2 |Igen |int |A szorzáshoz használt második szám. |
+| operand1 |Yes |int |A szorzáshoz használandó első szám. |
+| operand2 |Yes |int |A szorzáshoz használt második szám. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Visszatérítési érték
 
 A szorzást jelölő egész szám.
 
@@ -468,36 +577,49 @@ A szorzást jelölő egész szám.
 
 A következő [példában](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mul.json) egy paramétert szorozunk egy másik paraméterrel.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "first": {
-            "type": "int",
-            "defaultValue": 5,
-            "metadata": {
-                "description": "First integer to multiply"
-            }
-        },
-        "second": {
-            "type": "int",
-            "defaultValue": 3,
-            "metadata": {
-                "description": "Second integer to multiply"
-            }
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "first": {
+      "type": "int",
+      "defaultValue": 5,
+      "metadata": {
+        "description": "First integer to multiply"
+      }
     },
-    "resources": [
-    ],
-    "outputs": {
-        "mulResult": {
-            "type": "int",
-            "value": "[mul(parameters('first'), parameters('second'))]"
-        }
+    "second": {
+      "type": "int",
+      "defaultValue": 3,
+      "metadata": {
+        "description": "Second integer to multiply"
+      }
     }
+  },
+  "resources": [
+  ],
+  "outputs": {
+    "mulResult": {
+      "type": "int",
+      "value": "[mul(parameters('first'), parameters('second'))]"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param first int = 5
+param second int = 3
+
+output mulResult int = first * second
+```
+
+---
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
@@ -509,16 +631,16 @@ Az előző példában az alapértelmezett értékekkel rendelkező kimenet a kö
 
 `sub(operand1, operand2)`
 
-A két megadott egész szám kivonását adja vissza.
+A két megadott egész szám kivonását adja vissza. A `sub` függvény nem támogatott a bicep. Használja `-` helyette a kezelőt.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| operand1 |Igen |int |A következőből kivont szám. |
-| operand2 |Igen |int |A kivonni kívánt szám. |
+| operand1 |Yes |int |A következőből kivont szám. |
+| operand2 |Yes |int |A kivonni kívánt szám. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Visszatérítési érték
 
 A kivonást jelképező egész szám.
 
@@ -526,36 +648,49 @@ A kivonást jelképező egész szám.
 
 A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/sub.json) egy paramétert kivonja egy másik paraméterből.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "first": {
-            "type": "int",
-            "defaultValue": 7,
-            "metadata": {
-                "description": "Integer subtracted from"
-            }
-        },
-        "second": {
-            "type": "int",
-            "defaultValue": 3,
-            "metadata": {
-                "description": "Integer to subtract"
-            }
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "first": {
+      "type": "int",
+      "defaultValue": 7,
+      "metadata": {
+        "description": "Integer subtracted from"
+      }
     },
-    "resources": [
-    ],
-    "outputs": {
-        "subResult": {
-            "type": "int",
-            "value": "[sub(parameters('first'), parameters('second'))]"
-        }
+    "second": {
+      "type": "int",
+      "defaultValue": 3,
+      "metadata": {
+        "description": "Integer to subtract"
+      }
     }
+  },
+  "resources": [
+  ],
+  "outputs": {
+    "subResult": {
+      "type": "int",
+      "value": "[sub(parameters('first'), parameters('second'))]"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param first int = 7
+param second int = 3
+
+output subResult int = first - second
+```
+
+---
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 

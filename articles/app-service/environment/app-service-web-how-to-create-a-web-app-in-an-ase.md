@@ -8,11 +8,11 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: d0ac8e0cf187d1a6a329f2c7332c9ec37018d4cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962519"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005231"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Webalkalmazás létrehozása App Service Environment v1-ben
 
@@ -32,7 +32,7 @@ Ez az oktatóanyag bemutatja, hogyan hozhat létre webalkalmazásokat és App Se
 Ez az oktatóanyag feltételezi, hogy létrehozott egy App Service Environment. Ha még nem tette meg, tekintse meg [az App Service Environment létrehozását](app-service-web-how-to-create-an-app-service-environment.md)ismertető témakört. 
 
 ## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
-1. Az [Azure Portalon](https://portal.azure.com/)kattintson az **erőforrás létrehozása > web és mobil > webalkalmazás**elemre. 
+1. Az [Azure Portalon](https://portal.azure.com/)kattintson az **erőforrás létrehozása > web és mobil > webalkalmazás** elemre. 
    
     ![Képernyőkép, amely bemutatja, hol hozhat létre webalkalmazást a Azure Portalban.][1]
 2. Válassza ki előfizetését.  
@@ -50,11 +50,11 @@ Ez az oktatóanyag feltételezi, hogy létrehozott egy App Service Environment. 
     ![A következő képernyőképen megtekintheti a központjának App Service terveit.][5]
    
     Ha olyan App Service csomagot szeretne használni, amely már létezik a App Service Environmentban, válassza ki ezt a csomagot. Ha új App Service csomagot szeretne létrehozni, tekintse meg az oktatóanyag következő szakaszát, és [hozzon létre egy app Service tervet egy app Service Environmentban](#createplan).
-5. Adja meg a webalkalmazás nevét, majd kattintson a **Létrehozás**gombra. 
+5. Adja meg a webalkalmazás nevét, majd kattintson a **Létrehozás** gombra. 
    
     Ha a kiegészítő szolgáltatás külső virtuális IP-címet használ, akkor a rendszer a (z) [*sitename*]-t használja az alkalmazás URL-címére. [*a app Service Environment neve*]. p.azurewebsites.net helyett a (z) [*sitename*]. azurewebsites.net
    
-    Ha a bemutató belső virtuális IP-címet használ, akkor az alkalmazás URL-címe a (z) [*sitename*]. [a beléptetési*létrehozás során megadott altartomány*]   
+    Ha a bemutató belső virtuális IP-címet használ, akkor az alkalmazás URL-címe a (z) [*sitename*]. [a beléptetési *létrehozás során megadott altartomány*]   
     Miután kiválasztotta az ASP-t a központilag történő létrehozás során, látni fogja **az alábbi** altartomány-frissítést.
 
 ## <a name="create-an-app-service-plan"></a><a name="createplan"></a> App Service terv létrehozása
@@ -76,7 +76,7 @@ Az alábbi utasítások bemutatják, hogyan hozhat létre egy App Service tervet
     ![Képernyőkép a beszállítói rendszer részleteiről, miután kiválasztotta a központot a hely választójában.][3]
 
 ### <a name="selecting-a-worker-pool"></a>Munkavégző készlet kiválasztása
-Általában a App Service Environment Azure App Service és azon kívül 3 számítási méret áll rendelkezésre, amely egy dedikált díjcsomag kiválasztásával érhető el.  A beadáshoz hasonló módon legfeljebb 3 készletet határozhat meg, és meghatározhatja a munkavégző készlethez használt számítási méretet.  Ez azt jelenti, hogy a beadási csomag bérlői számára a számítási mérettel rendelkező díjszabási csomag kiválasztása helyett a App Service a *munkavégző készletnek*kell kiválasztania.  
+Általában a App Service Environment Azure App Service és azon kívül 3 számítási méret áll rendelkezésre, amely egy dedikált díjcsomag kiválasztásával érhető el.  A beadáshoz hasonló módon legfeljebb 3 készletet határozhat meg, és meghatározhatja a munkavégző készlethez használt számítási méretet.  Ez azt jelenti, hogy a beadási csomag bérlői számára a számítási mérettel rendelkező díjszabási csomag kiválasztása helyett a App Service a *munkavégző készletnek* kell kiválasztania.  
 
 A Worker Pool kiválasztási felhasználói felülete az adott feldolgozó készlethez használt számítási méretet jeleníti meg a név alatt.  A rendelkezésre álló mennyiség arra utal, hogy hány számítási példány használható a készletben.  Előfordulhat, hogy a teljes készletnek több példánya is van ennél a számnál, de ez az érték azt jelenti, hogy a nem használatos.  Ha módosítania kell a App Service Environment további számítási erőforrások hozzáadására, tekintse [meg a app Service Environment konfigurálását](app-service-web-configure-an-app-service-environment.md)ismertető témakört.
 

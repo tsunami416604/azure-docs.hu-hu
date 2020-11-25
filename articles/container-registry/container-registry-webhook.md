@@ -4,11 +4,11 @@ description: Ismerje meg, hogyan indíthat el eseményeket a webhookok használa
 ms.topic: article
 ms.date: 05/24/2019
 ms.openlocfilehash: 1db1098da81e6cf9ecb262c99f705b77af2efd26
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91253394"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004483"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Azure Container Registry webhookok használata
 
@@ -25,7 +25,7 @@ A webhook-kérelmekkel kapcsolatos részletekért lásd: [Azure Container Regist
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Navigáljon ahhoz a tároló-beállításjegyzékhez, amelyben létre kíván hozni egy webhookot.
-1. A **szolgáltatások**területen válassza a **webhookok**lehetőséget.
+1. A **szolgáltatások** területen válassza a **webhookok** lehetőséget.
 1. A webhook eszköztárban válassza a **Hozzáadás** lehetőséget.
 1. Fejezze be a *webhook létrehozása* űrlapot a következő információkkal:
 
@@ -36,7 +36,7 @@ A webhook-kérelmekkel kapcsolatos részletekért lásd: [Azure Container Regist
 | Szolgáltatás URI-ja | Az az URI, amelyben a webhooknak POST-értesítéseket kell küldenie. |
 | Egyéni fejlécek | A POST kérelemmel együtt átadni kívánt fejlécek. A "Key: Value" formátumúnak kell lenniük. |
 | Trigger műveletek | A webhookot kiváltó műveletek. A műveletek közé tartozik a képek leküldése, a rendszerkép törlése, a Helm chart push, a Helm diagram törlése és a képek karanténba helyezése. Kiválaszthat egy vagy több műveletet a webhook elindításához. |
-| status | A webhook állapota a létrehozásuk után. Alapértelmezés szerint engedélyezve van. |
+| Állapot | A webhook állapota a létrehozásuk után. Alapértelmezés szerint engedélyezve van. |
 | Hatókör | A webhook működésének hatóköre. Ha nincs megadva, a hatókör a beállításjegyzékben található összes eseményre kiterjed. Megadható egy adattárhoz vagy egy címkéhez "adattár: tag" vagy "adattár: *" formátumban a tárházban található összes címkéhez. |
 
 Példa webhook-űrlapra:
@@ -58,7 +58,7 @@ az acr webhook create --registry mycontainerregistry --name myacrwebhook01 --act
 A webhook használatának megkezdése előtt tesztelheti a **ping** gomb segítségével. A ping általános POST-kérést küld a megadott végpontnak, és naplózza a választ. A ping funkció használatával ellenőrizheti, hogy helyesen konfigurálta-e a webhookot.
 
 1. Válassza ki a tesztelni kívánt webhookot.
-2. A felső eszköztáron válassza a **pingelés**lehetőséget.
+2. A felső eszköztáron válassza a **pingelés** lehetőséget.
 3. A **http-állapot** oszlopban keresse meg a végpont válaszát.
 
 ![ACR webhook-létrehozási felhasználói felület a Azure Portal](./media/container-registry-webhook/webhook-02.png)
@@ -89,7 +89,7 @@ Minden webhook törölhető úgy, hogy kiválasztja a webhookot, majd a Azure Po
 az acr webhook delete --registry mycontainerregistry --name myacrwebhook01
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 ### <a name="webhook-schema-reference"></a>Webhook-séma – dokumentáció
 

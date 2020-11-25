@@ -10,27 +10,27 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 28849620863f8593e5187dbef9fc6cc978de1824
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f944a793d721e93d818723eae25a9ce80d9c15bc
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961790"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96005085"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>Űrlap-felismerő modell betanítása címkékkel REST API és Python használatával
 
 Ebben a rövid útmutatóban az űrlap-felismerő REST API a Python használatával végezheti el a manuálisan címkézett adattípusú egyéni modell betanítását. A szolgáltatással kapcsolatos további információkért tekintse meg az Áttekintés a [címkékkel](../overview.md#train-with-labels) foglalkozó szakaszát.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A rövid útmutató elvégzéséhez a következőket kell tennie:
 - [Python](https://www.python.org/downloads/) telepítve (ha helyileg szeretné futtatni a mintát).
-- Legalább hat egyforma típusú formátumból álló készlet. Ezeket az adattípusokat fogja használni a modell betanításához és egy űrlap teszteléséhez. Ehhez a rövid útmutatóhoz [minta adatkészletet](https://go.microsoft.com/fwlink/?linkid=2090451) is használhat. *sample_data.zip*letöltése és kinyerése. Töltse fel a betanítási fájlokat egy blob Storage-tároló gyökerébe egy standard teljesítményű Azure Storage-fiókban.
+- Legalább hat egyforma típusú formátumból álló készlet. Ezeket az adattípusokat fogja használni a modell betanításához és egy űrlap teszteléséhez. Ehhez a rövid útmutatóhoz [minta adatkészletet](https://go.microsoft.com/fwlink/?linkid=2090451) is használhat. *sample_data.zip* letöltése és kinyerése. Töltse fel a betanítási fájlokat egy blob Storage-tároló gyökerébe egy standard teljesítményű Azure Storage-fiókban.
 
 > [!NOTE]
-> Ez a rövid útmutató az URL-cím által elért távoli dokumentumokat használja. Ha ehelyett a helyi fájlokat szeretné használni, tekintse meg a 2.0-s verzióra [vonatkozó](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) dokumentációt, valamint a 2.1-es [referenciákat](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/TrainCustomModelAsync).
+> Ez a rövid útmutató az URL-cím által elért távoli dokumentumokat használja. Ha ehelyett a helyi fájlokat szeretné használni, tekintse meg a 2.0-s verzióra [vonatkozó](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync) dokumentációt, valamint a 2.1-es [referenciákat](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/TrainCustomModelAsync).
 
 ## <a name="create-a-form-recognizer-resource"></a>Űrlap-felismerő erőforrás létrehozása
 
@@ -255,7 +255,7 @@ Minden forrás űrlap esetében a megfelelő címkefájl az eredeti fájlnevet f
 Ha címkével ellátott adattal szeretne betanítani egy modellt, a következő Python-kód futtatásával hívja meg az **[Egyéni modell](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)** API-t. A kód futtatása előtt végezze el a következő módosításokat:
 
 1. Cserélje le az értékét `<Endpoint>` az űrlap-felismerő erőforrás végponti URL-címére.
-1. Cserélje le `<SAS URL>` az-t az Azure Blob Storage-tároló megosztott hozzáférési aláírása (SAS) URL-címére. Az SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása**elemet. Győződjön meg arról, hogy az **olvasási** és a **listázási** engedély be van jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A következő formátumban kell lennie: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+1. Cserélje le `<SAS URL>` az-t az Azure Blob Storage-tároló megosztott hozzáférési aláírása (SAS) URL-címére. Az SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása** elemet. Győződjön meg arról, hogy az **olvasási** és a **listázási** engedély be van jelölve, majd kattintson a **Létrehozás** gombra. Ezután másolja az értéket az **URL** szakaszban. A következő formátumban kell lennie: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 1. A helyére írja `<Blob folder name>` be annak a mappának a nevét a blob-tárolóban, ahol a bemeneti adatok találhatók. Ha az adatok a gyökérben vannak, hagyja üresen, és távolítsa el a `"prefix"` mezőt a HTTP-kérelem törzsében.
 
 # <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
@@ -308,7 +308,7 @@ from requests import get, post
 
 # Endpoint URL
 endpoint = r"<Endpoint>"
-post_url = endpoint + r"/formrecognizer/v2.1-preview.1/custom/models"
+post_url = endpoint + r"/formrecognizer/v2.1-preview.2/custom/models"
 source = r"<SAS URL>"
 prefix = "<Blob folder name>"
 includeSubFolders = False
@@ -588,7 +588,7 @@ Ha a folyamat befejeződött, a `202 (Success)` JSON-tartalommal kapcsolatos vá
   }
 }
 ```
-# <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1) 
+# <a name="v-2"></a>[v 2](#tab/v2-1) 
 ```json   
 {
   "status": "succeeded",
@@ -752,7 +752,7 @@ Esetenként, ha ugyanazon a sorban eltérő címkéket alkalmaz, a szolgáltatá
 
 Tisztában vagyunk azzal, hogy ez a forgatókönyv elengedhetetlen az ügyfelek számára, és a jövőben is dolgozunk. Jelenleg azt javasoljuk, hogy a felhasználók több zsúfolt mezőt is felcímkéznek egyetlen mezőként, majd elkülönítsék a feltételeket a kinyerési eredmények utólagos feldolgozásával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Pythont az űrlap-felismerő REST API, hogy a modelleket manuálisan címkézett adattal végezze. Következő lépésként tekintse meg az API-referenciák dokumentációját, amely részletesebben vizsgálja meg az űrlap-felismerő API-t.
 

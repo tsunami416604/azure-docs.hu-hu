@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: f98021d1e94b3796b2aeb6ba2e883e4e1380b8ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504332"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004823"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Apache Phoenix az Azure HDInsight
 
@@ -99,7 +99,7 @@ ALTER TABLE my_other_table SET TRANSACTIONAL=true;
 
 A *régió-kiszolgáló hotspotting* akkor fordulhat elő, ha szekvenciális kulccsal rendelkező rekordokat ír a HBase. Bár előfordulhat, hogy a fürtben több régió-kiszolgáló is található, az írások mindegyike csak egyet vesz igénybe. Ez a koncentráció hozza létre a hotspotting-problémát, ha az írási munkaterhelés helyett az összes rendelkezésre álló régió-kiszolgáló között oszlanak el az adatok, csak eggyel kezeli a terhelést. Mivel minden régió rendelkezik egy előre meghatározott maximális mérettel, amikor egy régió eléri ezt a méretkorlátot, két kis régióra oszlik. Ebben az esetben az egyik új régió minden új rekordot átvesz az új pontra.
 
-A probléma megoldásához és a jobb teljesítmény eléréséhez, a táblák előre felosztásához, hogy az összes régió-kiszolgáló egyformán legyen használatban. A Phoenix *sós táblákat*biztosít, és transzparens módon hozzáadja a sós bájtot egy adott tábla soraihoz. A tábla előre felosztva van a só-bájtok határain, hogy a rendszer a tábla kezdeti fázisában egyenlő terhelési eloszlást biztosítson a régió-kiszolgálók között. Ez a megközelítés az összes rendelkezésre álló régió-kiszolgáló között elosztja az írási munkaterhelést, javítja az írási és olvasási teljesítményt. Egy tábla kiválasztásához a tábla `SALT_BUCKETS` létrehozásakor határozza meg a Table tulajdonságot:
+A probléma megoldásához és a jobb teljesítmény eléréséhez, a táblák előre felosztásához, hogy az összes régió-kiszolgáló egyformán legyen használatban. A Phoenix *sós táblákat* biztosít, és transzparens módon hozzáadja a sós bájtot egy adott tábla soraihoz. A tábla előre felosztva van a só-bájtok határain, hogy a rendszer a tábla kezdeti fázisában egyenlő terhelési eloszlást biztosítson a régió-kiszolgálók között. Ez a megközelítés az összes rendelkezésre álló régió-kiszolgáló között elosztja az írási munkaterhelést, javítja az írási és olvasási teljesítményt. Egy tábla kiválasztásához a tábla `SALT_BUCKETS` létrehozásakor határozza meg a Table tulajdonságot:
 
 ```sql
 CREATE TABLE Saltedweblogs (

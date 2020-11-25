@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
-ms.openlocfilehash: 633e3a6386b9e6098e167c7fdd542d98c16fae48
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7b6f762dd04244f430f08894cc06991796a11229
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737884"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96004925"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Oktatóanyag: Az Azure SQL Database-kapcsolat biztonságossá tétele az App Service-ből felügyelt identitás segítségével
 
@@ -142,17 +142,17 @@ A Visual Studióban nyissa meg a Package Manager konzolt, és adja hozzá a [Mic
 Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.4.0
 ```
 
-A [ASP.net Core és SQL Database oktatóanyagban](tutorial-dotnetcore-sqldb-app.md) `MyDbConnection` nincs használatban a kapcsolatok karakterlánca, mert a helyi fejlesztési környezet egy SQLite-adatbázisfájlt használ, és az Azure éles környezet a app Service származó kapcsolatok karakterláncot használ. Active Directory hitelesítéssel mindkét környezet ugyanazt a kapcsolódási karakterláncot szeretné használni. A *appsettings.jsa* (z) elemnél cserélje le a következőt a `MyDbConnection` kapcsolatok karakterláncának értékére:
+A [ASP.net Core és SQL Database oktatóanyagban](tutorial-dotnetcore-sqldb-app.md) `MyDbConnection` nincs használatban a kapcsolatok karakterlánca, mert a helyi fejlesztési környezet egy SQLite-adatbázisfájlt használ, és az Azure éles környezet a app Service származó kapcsolatok karakterláncot használ. Active Directory hitelesítéssel mindkét környezet ugyanazt a kapcsolódási karakterláncot szeretné használni. A *appsettings.jsa*(z) elemnél cserélje le a következőt a `MyDbConnection` kapcsolatok karakterláncának értékére:
 
 ```json
 "Server=tcp:<server-name>.database.windows.net,1433;Database=<database-name>;"
 ```
 
-Ezután adja meg a Entity Framework adatbázis-környezetet a SQL Database hozzáférési jogkivonatával. A *Data\MyDatabaseContext.cs* -ben adja hozzá a következő kódot az üres konstruktor kapcsos zárójelében `MyDatabaseContext (DbContextOptions<MyDatabaseContext> options)` :
+Ezután adja meg a Entity Framework adatbázis-környezetet a SQL Database hozzáférési jogkivonatával. A *Data\MyDatabaseContext.cs*-ben adja hozzá a következő kódot az üres konstruktor kapcsos zárójelében `MyDatabaseContext (DbContextOptions<MyDatabaseContext> options)` :
 
 ```csharp
-var conn = (Microsoft.Data.SqlClient.SqlConnection)Database.GetDbConnection();
-conn.AccessToken = (new Microsoft.Azure.Services.AppAuthentication.AzureServiceTokenProvider()).GetAccessTokenAsync("https://database.windows.net/").Result;
+var connection = (SqlConnection)Database.GetDbConnection();
+connection.AccessToken = (new Microsoft.Azure.Services.AppAuthentication.AzureServiceTokenProvider()).GetAccessTokenAsync("https://database.windows.net/").Result;
 ```
 
 > [!NOTE]
@@ -210,7 +210,7 @@ A Cloud Shellben az SQLCMD parancsot használva jelentkezzen be az SQL Database-
 sqlcmd -S <server-name>.database.windows.net -d <db-name> -U <aad-user-name> -P "<aad-password>" -G -l 30
 ```
 
-A kívánt adatbázishoz tartozó SQL-parancssorban futtassa a következő parancsokat az alkalmazás igényeinek megfelelő engedélyek megadásához. Például: 
+A kívánt adatbázishoz tartozó SQL-parancssorban futtassa a következő parancsokat az alkalmazás igényeinek megfelelő engedélyek megadásához. Példa: 
 
 ```sql
 CREATE USER [<identity-name>] FROM EXTERNAL PROVIDER;
@@ -220,7 +220,7 @@ ALTER ROLE db_ddladmin ADD MEMBER [<identity-name>];
 GO
 ```
 
-*\<identity-name>* a felügyelt identitás neve az Azure AD-ben. Ha az identitás rendszerhez van rendelve, a név mindig ugyanaz, mint a App Service alkalmazás neve. Az Azure AD-csoportok engedélyeinek megadásához használja helyette a csoport megjelenítendő nevét (például *myAzureSQLDBAccessGroup* ).
+*\<identity-name>* a felügyelt identitás neve az Azure AD-ben. Ha az identitás rendszerhez van rendelve, a név mindig ugyanaz, mint a App Service alkalmazás neve. Az Azure AD-csoportok engedélyeinek megadásához használja helyette a csoport megjelenítendő nevét (például *myAzureSQLDBAccessGroup*).
 
 Az `EXIT` parancs begépelésével térjen vissza a Cloud Shell-parancssorba.
 
@@ -239,13 +239,13 @@ az webapp config connection-string delete --resource-group myResourceGroup --nam
 
 Már csak közzé kell tennie a módosításait az Azure-ban.
 
-**Ha az [oktatóanyagból származik: ASP.NET-alkalmazás létrehozása az Azure-ban a SQL Databaseval](app-service-web-tutorial-dotnet-sqldatabase.md)** , tegye közzé a módosításokat a Visual Studióban. A **Solution Explorer** (Megoldáskezelő) lapon kattintson a jobb gombbal a **DotNetAppSqlDb** projektre, és válassza a **Publish** (Közzététel) elemet.
+**Ha az [oktatóanyagból származik: ASP.NET-alkalmazás létrehozása az Azure-ban a SQL Databaseval](app-service-web-tutorial-dotnet-sqldatabase.md)**, tegye közzé a módosításokat a Visual Studióban. A **Solution Explorer** (Megoldáskezelő) lapon kattintson a jobb gombbal a **DotNetAppSqlDb** projektre, és válassza a **Publish** (Közzététel) elemet.
 
 ![Közzététel a Megoldáskezelőből](./media/app-service-web-tutorial-dotnet-sqldatabase/solution-explorer-publish.png)
 
 A közzétételi oldalon kattintson a **Publish** (Közzététel) elemre. 
 
-**Ha [oktatóanyag: hozzon létre egy ASP.NET Core és SQL Database alkalmazást a Azure app Serviceban](tutorial-dotnetcore-sqldb-app.md)** , tegye közzé a módosításokat a git használatával a következő parancsokkal:
+**Ha [oktatóanyag: hozzon létre egy ASP.NET Core és SQL Database alkalmazást a Azure app Serviceban](tutorial-dotnetcore-sqldb-app.md)**, tegye közzé a módosításokat a git használatával a következő parancsokkal:
 
 ```bash
 git commit -am "configure managed identity"
@@ -260,7 +260,7 @@ Most már ugyanúgy szerkesztheti a feladatlistát, mint korábban.
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbiak elvégzését ismerte meg:
 
