@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: fb908fe94f940073753ea8e1cde3da2b2a0c4b6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b1e5dd3c72122ade2fd4d4092bb18a7acf215f5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88034770"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912943"
 ---
 # <a name="tune-performance-hive-hdinsight--azure-data-lake-storage-gen2"></a>Teljesítmény hangolása: struktúra, HDInsight & Azure Data Lake Storage Gen2
 
@@ -22,9 +22,9 @@ Az alapértelmezett beállítások úgy lettek beállítva, hogy a jó teljesít
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* **Egy Data Lake Storage Gen2-fiók**. A létrehozásával kapcsolatos utasításokért lásd: rövid útmutató [: Azure Data Lake Storage Gen2 Storage-fiók létrehozása](data-lake-storage-quickstart-create-account.md)
-* **Azure HDInsight-fürt** Data Lake Storage Gen2 fiókhoz való hozzáféréssel. Lásd: [Azure Data Lake Storage Gen2 használata az Azure HDInsight-fürtökkel](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)
-* **Struktúra futtatása a HDInsight-on**.  A kaptár-feladatok HDInsight való futtatásával kapcsolatos további információkért lásd: [a kaptár használata a HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)
+* **Egy Data Lake Storage Gen2-fiók**. A létrehozásával kapcsolatos utasításokért lásd: rövid útmutató [: Azure Data Lake Storage Gen2 Storage-fiók létrehozása](../common/storage-account-create.md)
+* **Azure HDInsight-fürt** Data Lake Storage Gen2 fiókhoz való hozzáféréssel. Lásd: [Azure Data Lake Storage Gen2 használata az Azure HDInsight-fürtökkel](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)
+* **Struktúra futtatása a HDInsight-on**.  A kaptár-feladatok HDInsight való futtatásával kapcsolatos további információkért lásd: [a kaptár használata a HDInsight](../../hdinsight/hadoop/hdinsight-use-hive.md)
 * **Teljesítmény-finomhangolási irányelvek a Data Lake Storage Gen2**.  Az általános teljesítménnyel kapcsolatos fogalmakat lásd: [Data Lake Storage Gen2 teljesítmény-finomhangolási útmutató](data-lake-storage-performance-tuning-guidance.md)
 
 ## <a name="parameters"></a>Paraméterek
@@ -51,7 +51,7 @@ A továbbfejlesztett Data Lake Storage Gen2 teljesítményének finomhangolásá
 
 **hive.exec. szűkítő. Bytes. per. szűkítő beállítása** – az alapértelmezett érték jól működik, ha az adat ki van tömörítve.  A tömörített adatmennyiség csökkentése érdekében csökkentse a szűkítő méretét.  
 
-A **kaptár. TEZ. Container. size beállítása** – az egyes csomópontokban a memóriát a következő szálak határozzák meg: fonal. nodemanager. Resource. Memory-MB, és a HDI-fürthöz alapértelmezés szerint helyesen kell beállítani.  A megfelelő memória a FONALban való beállításával kapcsolatos további információkért tekintse meg ezt a [bejegyzést](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-hive-out-of-memory-error-oom).
+A **kaptár. TEZ. Container. size beállítása** – az egyes csomópontokban a memóriát a következő szálak határozzák meg: fonal. nodemanager. Resource. Memory-MB, és a HDI-fürthöz alapértelmezés szerint helyesen kell beállítani.  A megfelelő memória a FONALban való beállításával kapcsolatos további információkért tekintse meg ezt a [bejegyzést](../../hdinsight/hdinsight-hadoop-hive-out-of-memory-error-oom.md).
 
 Az I/O-igényes munkaterhelések a TEZ-tároló méretének csökkentésével több párhuzamosságot is igénybe vehetnek. Ez a felhasználónak több tárolót biztosít, ami növeli a párhuzamosságot.  Egyes kaptár-lekérdezések azonban jelentős mennyiségű memóriát igényelnek (például MapJoin).  Ha a feladatnak nincs elég memóriája, a rendszer a futtatókörnyezeten kívüli kivételt kap.  Ha nem rendelkezik a memóriával kapcsolatos kivételekkel, növelje a memóriát.   
 
@@ -73,6 +73,6 @@ Tegyük fel, hogy 8 csomópontos D14-fürtöt tartalmaz.
 ## <a name="further-information-on-hive-tuning"></a>További információ a kaptár hangolásáról
 
 Itt talál néhány olyan blogot, amely segít a kaptár-lekérdezések hangolásában:
-* [Kaptár-lekérdezések optimalizálása a Hadoop a HDInsight-ben](https://azure.microsoft.com/documentation/articles/hdinsight-hadoop-optimize-hive-query/)
-* [Apache Hive-lekérdezések optimalizálása az Azure HDInsightban](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-optimize-hive-query)
+* [Kaptár-lekérdezések optimalizálása a Hadoop a HDInsight-ben](../../hdinsight/hdinsight-hadoop-optimize-hive-query.md)
+* [Apache Hive-lekérdezések optimalizálása az Azure HDInsightban](../../hdinsight/hdinsight-hadoop-optimize-hive-query.md)
 * [Ignite-előadás a kaptár optimalizálása a HDInsight-on](https://channel9.msdn.com/events/Machine-Learning-and-Data-Sciences-Conference/Data-Science-Summit-2016/MSDSS25)

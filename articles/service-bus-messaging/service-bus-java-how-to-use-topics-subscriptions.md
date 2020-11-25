@@ -4,18 +4,18 @@ description: Ebben a rövid útmutatóban Java-kódokat ír az Azure-Messaging-s
 ms.devlang: Java
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: 2e32213b5d2e405a48df4b3c89115fbd0bb90c43
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 6a63e907e01174042f679c57e1ef0994ad2a11b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95805803"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95909577"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-java"></a>Üzenetek küldése egy Azure Service Bus témakörnek, és üzenetek fogadása az előfizetésből a témakörbe (Java)
 Ebben a rövid útmutatóban Java-kódokat ír az Azure-Messaging-servicebus csomag használatával, amely üzeneteket küld egy Azure Service Bus témakörnek, majd üzeneteket fogad az előfizetésből az adott témakörbe.
 
 > [!IMPORTANT]
-> Ez a rövid útmutató az új Azure-Messaging-servicebus csomagot használja. A régi Azure-servicebus csomagot használó gyors útmutatóért lásd: [üzenetek küldése és fogadása az Azure-servicebus használatával](service-bus-java-how-to-use-topics-subscriptions-legacy.md).
+> Ez a rövid útmutató az új Azure-Messaging-servicebus csomagot használja, amely **előzetes** verzióban érhető el. A jelenleg általánosan elérhető (GA) Azure-servicebus csomagot használó rövid útmutatók esetében az [Azure-servicebus használatával küldhet és fogadhat üzeneteket](service-bus-java-how-to-use-topics-subscriptions-legacy.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/9/2020
-ms.openlocfilehash: d2095919d6f6be482390250fd8d0ee20e9015237
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 1dfe14d96efd37e3dec7faeae1dfff21122958bc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444860"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95894201"
 ---
 # <a name="service-configuration"></a>Szolgáltatáskonfiguráció
 
@@ -22,7 +22,7 @@ QnA Maker minden verziója az Azure-erőforrások (szolgáltatások) egy másik 
 
 A QnA Maker a App Service használatával biztosítja a [GENERATEANSWER API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/runtime/generateanswer)által használt lekérdezési futtatókörnyezetet.
 
-Ezek a beállítások a App Service Azure Portal érhetők el. A beállítások a **Beállítások** , majd a **konfiguráció** lehetőség kiválasztásával érhetők el.
+Ezek a beállítások a App Service Azure Portal érhetők el. A beállítások a **Beállítások**, majd a **konfiguráció** lehetőség kiválasztásával érhetők el.
 
 Az egyes beállításokat az Alkalmazásbeállítások listáján keresztül is megadhatja, vagy a **Speciális szerkesztés** lehetőség kiválasztásával több beállítást is módosíthat.
 
@@ -47,7 +47,7 @@ App Service testreszabások nem vonatkoznak a QnA Maker felügyelt (előzetes ve
 
 A QnA Maker szolgáltatás olyan konfigurációt biztosít az alábbi felhasználók számára, akik együttműködnek egyetlen QnA Maker szolgáltatásban és annak összes tudásbázisában.
 
-Ismerje meg [, hogyan adhat közreműködőket](./how-to/collaborate-knowledge-base.md) a szolgáltatáshoz.
+Ismerje meg [, hogyan adhat közreműködőket](./reference-role-based-access-control.md) a szolgáltatáshoz.
 
 ## <a name="change-azure-cognitive-search"></a>Azure-Cognitive Search módosítása
 

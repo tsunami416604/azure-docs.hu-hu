@@ -8,18 +8,18 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 4cf7d6fdc02affc425fd02eba794d573a59d2a45
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 5f2f3cfc5ccbdd6a3d3d3ede5bb39a3f6f548b19
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579368"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913096"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Az Azure Data Lake Storage Gen2 bemutatása
 
 A Azure Data Lake Storage Gen2 az [Azure Blob Storage](storage-blobs-introduction.md)-ra épülő, Big Data Analytics szolgáltatáshoz dedikált képességek összessége. 
 
-A Data Lake Storage Gen2 a [Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/index) képességeit az Azure Blob Storage szolgáltatással konvergál. A Data Lake Storage Gen2 például a fájlrendszer szemantikai, a fájl szintű biztonságot és a skálázást biztosítja. Mivel ezek a képességek a blob Storage-ra épülnek, a magas rendelkezésre állású/vész-helyreállítási funkciók mellett alacsony költséghatékonyságú, többrétegű tárterület is elérhető.
+A Data Lake Storage Gen2 a [Azure Data Lake Storage Gen1](../../data-lake-store/index.yml) képességeit az Azure Blob Storage szolgáltatással konvergál. A Data Lake Storage Gen2 például a fájlrendszer szemantikai, a fájl szintű biztonságot és a skálázást biztosítja. Mivel ezek a képességek a blob Storage-ra épülnek, a magas rendelkezésre állású/vész-helyreállítási funkciók mellett alacsony költséghatékonyságú, többrétegű tárterület is elérhető.
 
 ## <a name="designed-for-enterprise-big-data-analytics"></a>Nagyvállalati big data elemzésekhez tervezve
 
@@ -39,13 +39,13 @@ Emellett a Data Lake Storage Gen2 nagyon költséghatékony, mert az [Azure Blob
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>A Data Lake Storage Gen2 főbb funkciói
 
--   **Hadoop-kompatibilis hozzáférés** : a Data Lake Storage Gen2 lehetővé teszi az adatkezelést és az adathozzáférést ugyanúgy, mint a [HADOOP elosztott fájlrendszer (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Az új [ABFS-illesztőprogram](data-lake-storage-abfs-driver.md) (az adateléréshez használatos) minden Apache Hadoop környezeten belül elérhető. Ezek a környezetek közé tartoznak az [Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index)*,* a [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index)és az [Azure szinapszis Analytics](https://docs.microsoft.com/azure/synapse-analytics).
+-   **Hadoop-kompatibilis hozzáférés**: a Data Lake Storage Gen2 lehetővé teszi az adatkezelést és az adathozzáférést ugyanúgy, mint a [HADOOP elosztott fájlrendszer (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Az új [ABFS-illesztőprogram](data-lake-storage-abfs-driver.md) (az adateléréshez használatos) minden Apache Hadoop környezeten belül elérhető. Ezek a környezetek közé tartoznak az [Azure HDInsight](../../hdinsight/index.yml)*,* a [Azure Databricks](/azure/databricks/)és az [Azure szinapszis Analytics](/azure/synapse-analytics).
 
--   **A POSIX-engedélyek felülbírálása** : a Data Lake Gen2 biztonsági modellje támogatja az ACL és a POSIX engedélyeket, valamint a Data Lake Storage Gen2ra vonatkozó további részletességet. A beállítások a Storage Exploreron vagy olyan keretrendszereken keresztül konfigurálhatók, mint a kaptár és a Spark.
+-   **A POSIX-engedélyek felülbírálása**: a Data Lake Gen2 biztonsági modellje támogatja az ACL és a POSIX engedélyeket, valamint a Data Lake Storage Gen2ra vonatkozó további részletességet. A beállítások a Storage Exploreron vagy olyan keretrendszereken keresztül konfigurálhatók, mint a kaptár és a Spark.
 
--   **Költséghatékony** : Data Lake Storage Gen2 alacsony költséghatékonyságú tárolási kapacitást és tranzakciókat biztosít. Az [Azure Blob Storage életciklusának](storage-lifecycle-management-concepts.md) olyan funkciói, mint például az adatváltások életciklusán keresztül.
+-   **Költséghatékony**: Data Lake Storage Gen2 alacsony költséghatékonyságú tárolási kapacitást és tranzakciókat biztosít. Az [Azure Blob Storage életciklusának](storage-lifecycle-management-concepts.md) olyan funkciói, mint például az adatváltások életciklusán keresztül.
 
--   **Optimalizált illesztőprogram** : a ABFS-illesztőprogram kifejezetten Big Data elemzésekhez van [optimalizálva](data-lake-storage-abfs-driver.md) . A megfelelő REST API-k a végponton keresztül vannak felszínen `dfs.core.windows.net` .
+-   **Optimalizált illesztőprogram**: a ABFS-illesztőprogram kifejezetten Big Data elemzésekhez van [optimalizálva](data-lake-storage-abfs-driver.md) . A megfelelő REST API-k a végponton keresztül vannak felszínen `dfs.core.windows.net` .
 
 ### <a name="scalability"></a>Méretezhetőség
 
@@ -82,9 +82,7 @@ Data Lake Storage a Gen2 számos Azure-szolgáltatást támogat. Felhasználhatj
 
 Számos nyílt forráskódú platform támogatja a Data Lake Storage Gen2. A teljes listát lásd: a [Azure Data Lake Storage Gen2t támogató nyílt forráskódú platformok](data-lake-storage-supported-open-source-platforms.md).
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [Ismert problémák a Azure Data Lake Storage Gen2](data-lake-storage-known-issues.md)
 - [Több protokollos hozzáférés Azure Data Lake Storage](data-lake-storage-multi-protocol-access.md)
-
-

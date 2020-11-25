@@ -8,16 +8,16 @@ ms.date: 02/11/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 6ce94590a1d0de6941c27d972bdd1c4194080e95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26062d73ae4c61af77b15dd2cac0541f2a988d11
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77153077"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912994"
 ---
 # <a name="azure-data-lake-storage-gen2-hierarchical-namespace"></a>Hierarchikus névtér Azure Data Lake Storage Gen2
 
-Egy kulcsfontosságú mechanizmus, amely lehetővé teszi, hogy a Azure Data Lake Storage Gen2 a fájlrendszer teljesítményének biztosítása az objektum tárolási skálázása és az árak között egy **hierarchikus névtér**hozzáadásával. Ez lehetővé teszi, hogy a fiókban lévő objektumok/fájlok gyűjteményét a rendszer a címtárak és a beágyazott alkönyvtárak hierarchiába rendezi, ugyanúgy, ahogy a számítógép fájlrendszere. Ha engedélyezve van egy hierarchikus névtér, a Storage-fiók képes lesz biztosítani az objektumok tárterületének méretezhetőségét és költséghatékonyságát, valamint az elemzési motorok és keretrendszerek által ismert fájlrendszer-szemantikai funkciókkal.
+Egy kulcsfontosságú mechanizmus, amely lehetővé teszi, hogy a Azure Data Lake Storage Gen2 a fájlrendszer teljesítményének biztosítása az objektum tárolási skálázása és az árak között egy **hierarchikus névtér** hozzáadásával. Ez lehetővé teszi, hogy a fiókban lévő objektumok/fájlok gyűjteményét a rendszer a címtárak és a beágyazott alkönyvtárak hierarchiába rendezi, ugyanúgy, ahogy a számítógép fájlrendszere. Ha engedélyezve van egy hierarchikus névtér, a Storage-fiók képes lesz biztosítani az objektumok tárterületének méretezhetőségét és költséghatékonyságát, valamint az elemzési motorok és keretrendszerek által ismert fájlrendszer-szemantikai funkciókkal.
 
 ## <a name="the-benefits-of-a-hierarchical-namespace"></a>A hierarchikus névtér előnyei
 
@@ -47,4 +47,4 @@ Az adattárolási árak, a tranzakciós árak és a tárolási kapacitás foglal
 
 ## <a name="next-steps"></a>További lépések
 
-- [Storage-fiók létrehozása](./data-lake-storage-quickstart-create-account.md)
+- [Storage-fiók létrehozása](../common/storage-account-create.md)

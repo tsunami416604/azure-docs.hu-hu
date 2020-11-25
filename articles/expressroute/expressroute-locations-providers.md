@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: duau
-ms.openlocfilehash: 9b7b88124837e85874f4f29828a3d4146bb29257
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: af8c8716278eaa777f212156679103d6265fd2f1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94987813"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95911192"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partnerek és társviszony-létesítési helyszínek.
 
@@ -85,7 +85,7 @@ Az alábbi táblázatban a kapcsolati helyek és az egyes helyekhez tartozó szo
 | **Berlin** | [NTT GDC](https://www.e-shelter.de/en/location/berlin-1-data-center) | 1 | Észak-Németország | 10G | Equinix, NTT globális adatközpontok EMEA|
 | **Busan** | [LG CNS](https://www.lgcns.com/En/Service/DataCenter) | 2 | Dél-Korea déli régiója | n/a | LG CNS |
 | **Canberra** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | Ausztrália középső régiója | 10G, 100G | CDC |
-| **Canberra2** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | Ausztrália 2. középső régiója| 10G, 100G | CDC |
+| **Canberra2** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | Ausztrália 2. középső régiója| 10G, 100G | CDC, Equinix |
 | **Fokváros** | [Teraco CT1](https://www.teraco.co.za/data-centre-locations/cape-town/) | 3 | Dél-Afrika nyugati régiója | 10G | BCX, Internet Solutions – Cloud-kapcsolat, Liquid Telecom, Teraco |
 | **Csennai** | Tata Communications | 2 | Dél-India | 10G | Global CloudXchange (GCX), SIFY, Tata Communications |
 | **Csennai2** | Airtel | 2 | Dél-India | 10G | Airtel |
@@ -94,7 +94,7 @@ Az alábbi táblázatban a kapcsolati helyek és az egyes helyekhez tartozó szo
 | **Dallas** | [Equinix DA3](https://www.equinix.com/locations/americas-colocation/united-states-colocation/dallas-data-centers/da3/) | 1 | n/a | 10G, 100G | Aryaka Networks hálózatok,&T NetBond, Cologix, Equinix, Internet2, level 3 Communications, Megaport, Neutrona Networks, Telmex uninet, Telia Carrier, Transtelco, Verizon, Zayo|
 | **Denver** | [CoreSite DE1](https://www.coresite.com/data-centers/locations/denver/de1) | 1 | USA nyugati középső régiója | n/a | CoreSite, Megaport, Zayo |
 | **Dubai** | [PCCS](https://www.pacificcontrols.net/cloudservices/index.html) | 3 | Észak-Egyesült Arab | n/a | Etisalat UAE |
-| **Dubai2** | [du datamena](http://datamena.com/solutions/data-centre) | 3 | Észak-Egyesült Arab | n/a | DE-CIX, du datamena, Megaport, Orange, Orixcom |
+| **Dubai2** | [du datamena](http://datamena.com/solutions/data-centre) | 3 | Észak-Egyesült Arab | n/a | DE-CIX, du datamena, Equinix, Megaport, Orange, Orixcom |
 | **Dublin** | [Equinix DB3](https://www.equinix.com/locations/europe-colocation/ireland-colocation/dublin-data-centers/db3/) | 1 | Észak-Európa | 10G, 100G | CenturyLink Cloud-kapcsolat, Colt, EIR, Equinix, GEANT, euNetworks, Interxion, Megaport |
 | **Frankfurt** | [Interxion FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | Középnyugat-Németország | 10G, 100G | &T NetBond, CenturyLink Cloud kapcsolatba, Colt, DE-CIX, Equinix, euNetworks, GEANT, Cloud, Interxion, Megaport, Orange, Telia Carrier, T-Systems |
 | **Genfi** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1 | Nyugat-Svájc | 10G, 100G | Equinix, Megaport |
@@ -130,7 +130,7 @@ Az alábbi táblázatban a kapcsolati helyek és az egyes helyekhez tartozó szo
 | **San Antonio** | [CyrusOne SA1](https://cyrusone.com/locations/texas/san-antonio-texas/) | 1 | USA déli középső régiója | 10G, 100G | CenturyLink Cloud Connect, Megaport |
 | **Sao Paulo** | [Equinix SP2](https://www.equinix.com/locations/americas-colocation/brazil-colocation/sao-paulo-data-centers/sp2/) | 3 | Dél-Brazília | n/a | Aryaka Networks, Ascenty Data Centers, British Telecom, Equinix, Level 3 Communications, Neutrona Networks, Orange, Tata Communications, Telefonica, UOLDIVEO |
 | **Seattle** | [Equinix SE2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/seattle-data-centers/se2/) | 1 | USA 2. nyugati régiója | 10G, 100G | Aryaka Networks Networks, Equinix, level 3 Communications, Megaport, Telus, Zayo |
-| **Szöul** | [KINX Gasan IDC](https://www.kinx.net/?lang=en) | 2 | Dél-Korea középső régiója | 10G, 100G | KINX, KT, LG CNS, Sejong Telecom |
+| **Szöul** | [KINX Gasan IDC](https://www.kinx.net/?lang=en) | 2 | Dél-Korea középső régiója | 10G, 100G | KINX, KT, LG CNS, Equinix, Sejong Telecom |
 | **Szilícium-völgy** | [Equinix SV1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/silicon-valley-data-centers/sv1/) | 1 | USA nyugati régiója | 10G, 100G | Aryaka Networks hálózatok,&T NetBond, British Telecom, CenturyLink Cloud-kapcsolat, Colt, Comcast, Coresite, Equinix, felhő, Internet2, IX REACH, csomag, PacketFabric, level 3 Communications, Megaport, Orange, sprint, Tata Communications, Telia Carrier, Verizon, Zayo |
 | **Szilícium Valley2** | [Coresite SV7](https://www.coresite.com/data-centers/locations/silicon-valley/sv7) | 1 | USA nyugati régiója | 10G, 100G | Colt, Coresite | 
 | **Szingapúr** | [Equinix SG1](https://www.equinix.com/locations/asia-colocation/singapore-colocation/singapore-data-center/sg1/) | 2 | Délkelet-Ázsia | 10G, 100G | Aryaka Networks Networks,&T NetBond, British Telecom, China Mobile International, epszilon globális kommunikáció, Equinix, felhő, level 3 Communications, Megaport, NTT Communications, Orange, énekel, Tata Communications, Telstra Corporation, Verizon, Vodafone |
@@ -248,7 +248,7 @@ A privát kapcsolatok igény szerinti beállítása nehéz feladat lehet, a hál
 | **Európa** |Avanade Inc., Altogee, Bright Skies GmbH, Inframon, MSG Services, New Signature, Nelite, Orange Networks, sol-tec |
 | **Észak-Amerika** |Avanade Inc., Equinix Professional Services, FlexManage, Lightstream, Perficient, Presidio |
 | **Dél-Amerika** |Avanade Inc., Venha Pra Nuvem |
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A ExpressRoute kapcsolatos további információkért tekintse meg a [ExpressRoute gyakori kérdések](expressroute-faqs.md)című témakört.
 * Ellenőrizze, hogy minden előfeltétel teljesül-e. Lásd: [ExpressRoute-előfeltételek](expressroute-prerequisites.md).
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: dineshm
-ms.openlocfilehash: c4c6b5b23a0609a5d68eb72c614ce282ae04a817
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: e67a323e03ae8ac0a0e34df1f7cc1ee4fe0901d3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95519098"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95901502"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reagálás Blob Storage-eseményekre
 
@@ -29,9 +29,9 @@ Ha a blob Storage-eseményeket szeretné kipróbálni, tekintse meg az alábbi r
 
 |Ha ezt az eszközt szeretné használni:    |Tekintse meg ezt a cikket: |
 |--|-|
-|Azure Portal    |[Gyors útmutató: blob Storage-események átirányítása webes végpontra a Azure Portal](../../event-grid/blob-event-quickstart-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json)|
-|PowerShell    |[Gyors útmutató: tárolási események továbbítása webes végponthoz a PowerShell használatával](./storage-blob-event-quickstart-powershell.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json)|
-|Azure CLI    |[Gyors útmutató: tárolási események továbbítása webes végponthoz az Azure CLI-vel](./storage-blob-event-quickstart.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json)|
+|Azure Portal    |[Gyors útmutató: blob Storage-események átirányítása webes végpontra a Azure Portal](../../event-grid/blob-event-quickstart-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|PowerShell    |[Gyors útmutató: tárolási események továbbítása webes végponthoz a PowerShell használatával](./storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure CLI    |[Gyors útmutató: tárolási események továbbítása webes végponthoz az Azure CLI-vel](./storage-blob-event-quickstart.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 
 Ha az Azure functions használatával szeretné megtekinteni a blob Storage-eseményekre való reagálással kapcsolatos részletes példákat, tekintse meg a következő cikkeket:
 
@@ -96,7 +96,7 @@ A blob Storage-eseményeket kezelő alkalmazásoknak néhány ajánlott eljárá
 > [!div class="checklist"]
 > * Mivel több előfizetést is konfigurálhat az események ugyanahhoz az eseménykezelőhöz való átirányításához, fontos, hogy ne feltételezzük, hogy az események egy adott forrásból származnak, de az üzenet témakörének ellenőrzésével győződjön meg arról, hogy a várt Storage-fiókból származik.
 > * Hasonlóképpen győződjön meg arról, hogy a eventType az egyik készen áll a feldolgozásra, és nem feltételezi, hogy az összes kapott esemény lesz a várt típus.
-> * Mivel az üzenetek némi késés után is megérkeznek, a ETAG mezők használatával megismerheti, hogy az objektumokkal kapcsolatos információk továbbra is naprakészek-e. A ETAG mező használatának megismeréséhez tekintse meg a [Egyidejűség kezelése a blob Storage-ban](../common/storage-concurrency.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json#managing-concurrency-in-blob-storage)című témakört. 
+> * Mivel az üzenetek némi késés után is megérkeznek, a ETAG mezők használatával megismerheti, hogy az objektumokkal kapcsolatos információk továbbra is naprakészek-e. A ETAG mező használatának megismeréséhez tekintse meg a [Egyidejűség kezelése a blob Storage-ban](../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage)című témakört. 
 > * Mivel az üzenetek megérkeznek a sorrendbe, a Sequencer mezőivel megismerheti az események sorrendjét egy adott objektumra vonatkozóan. A Sequencer mező egy karakterlánc-érték, amely az események logikai sorozatot jelöli az adott blob nevénél. A standard sztringek összehasonlításával megtudhatja, hogy az adott blob nevében két esemény relatív sorozatot kell-e használni.
 > * A tárolási események garantálják a legalább egyszeri kézbesítést az előfizetőknek, így biztosítva, hogy az összes üzenet le legyen erősítve. Az újrapróbálkozások vagy az előfizetések rendelkezésre állása miatt azonban időnként előfordulhat, hogy duplikált üzenetek történnek. Ha többet szeretne megtudni az üzenetek kézbesítéséről, és próbálkozzon újra, tekintse meg [Event Grid üzenet kézbesítését, és próbálkozzon újra](../../event-grid/delivery-and-retry.md).
 > * A blobType mező segítségével megtudhatja, hogy milyen típusú műveletek engedélyezettek a blobon, és hogy melyik ügyféloldali függvénytár-típust kell használnia a blob eléréséhez. Az érvényes értékek `BlockBlob` vagy vagy `PageBlob` . 
@@ -105,7 +105,7 @@ A blob Storage-eseményeket kezelő alkalmazásoknak néhány ajánlott eljárá
 > * Ha biztosítani szeretné, hogy a **Microsoft. Storage. BlobCreated** esemény csak akkor legyen aktiválva, ha egy blokk blobja teljesen véglegesítve van, akkor szűrje a `CopyBlob` , vagy a `PutBlob` `PutBlockList` `FlushWithClose` REST API hívások eseményeit. Ezek az API-hívások csak azt követően indítják el a **Microsoft. Storage. BlobCreated** eseményt, hogy az adatgyűjtés teljes mértékben véglegesítve lett egy blokk blobban. A szűrők létrehozásával kapcsolatos további információkért lásd: [Event Grid események szűrése](../../event-grid/how-to-filter-events.md).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Event Gridről és a blob Storage-események kiosztásáról:
 

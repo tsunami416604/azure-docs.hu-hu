@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: a50f85e76f16f1e5ba8823adb1ea1aa02157fcee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e58137dd680ff9a2be2bd657f0969304b526873f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88032560"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913113"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Áttelepítés helyszíni HDFS áruházból az Azure Storage-ba Azure Data Box
 
@@ -37,9 +37,9 @@ Az áttelepítés befejezéséhez ezeket a dolgokat kell végrehajtania.
 
 * Egy [Azure Data Box eszköz](https://azure.microsoft.com/services/storage/databox/).
 
-  * [Rendeljen Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered) vagy [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered). 
+  * [Rendeljen Data Box](../../databox/data-box-deploy-ordered.md) vagy [Data Box Heavy](../../databox/data-box-heavy-deploy-ordered.md). 
 
-  * Csatlakoztassa a [Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up) vagy [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-set-up) a helyszíni hálózathoz.
+  * Csatlakoztassa a [Data Box](../../databox/data-box-deploy-set-up.md) vagy [Data Box Heavy](../../databox/data-box-heavy-deploy-set-up.md) a helyszíni hálózathoz.
 
 Ha készen áll, kezdjük.
 
@@ -53,13 +53,13 @@ Ha a helyszíni HDFS-tárolóból egy Data Box eszközre kívánja másolni az a
 
 Kövesse az alábbi lépéseket az adatok másolásához a blob/objektum tároló REST API-kon keresztül a Data Box eszközre. Az REST API felületen az eszköz HDFS-tárolóként jelenik meg a fürtben.
 
-1. Az adatok REST használatával történő másolása előtt azonosítsa azokat a biztonsági és kapcsolati primitíveket, amelyek a Data Box vagy Data Box Heavy REST-felületéhez csatlakoznak. Jelentkezzen be Data Box helyi webes felhasználói felületére, és lépjen a **Kapcsolódás és másolás** lapra. Az eszközhöz tartozó Azure Storage-fiókhoz a **hozzáférési beállítások**területen keresse meg és válassza a **Rest**lehetőséget.
+1. Az adatok REST használatával történő másolása előtt azonosítsa azokat a biztonsági és kapcsolati primitíveket, amelyek a Data Box vagy Data Box Heavy REST-felületéhez csatlakoznak. Jelentkezzen be Data Box helyi webes felhasználói felületére, és lépjen a **Kapcsolódás és másolás** lapra. Az eszközhöz tartozó Azure Storage-fiókhoz a **hozzáférési beállítások** területen keresse meg és válassza a **Rest** lehetőséget.
 
     !["Kapcsolat és másolás" oldal](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connect-rest.png)
 
 2. A hozzáférés a Storage-fiókhoz és az adatok feltöltése párbeszédpanelen másolja a **blob Service-végpontot** és a **Storage-fiók kulcsát**. A blob Service-végpontból hagyja ki a `https://` és a záró perjelet.
 
-    Ebben az esetben a végpont a következő: `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/` . A használni kívánt URI Host része a következők egyike: `mystorageaccount.blob.mydataboxno.microsoftdatabox.com` . Példa: [Kapcsolódás a REST-hez http-](/azure/databox/data-box-deploy-copy-data-via-rest)kapcsolaton keresztül. 
+    Ebben az esetben a végpont a következő: `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/` . A használni kívánt URI Host része a következők egyike: `mystorageaccount.blob.mydataboxno.microsoftdatabox.com` . Példa: [Kapcsolódás a REST-hez http-](../../databox/data-box-deploy-copy-data-via-rest.md)kapcsolaton keresztül. 
 
      !["Hozzáférés a Storage-fiókhoz és adatok feltöltése" párbeszédpanel](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connection-string-http.png)
 
@@ -161,7 +161,7 @@ Kövesse az alábbi lépéseket az adatok másolásához a blob/objektum tárol�
 
 Az alábbi lépéseket követve előkészítheti és szállíthatja a Data Box eszközt a Microsoftnak.
 
-1. Először  [szállításra való előkészítés a Data Box vagy a Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest).
+1. Először  [szállításra való előkészítés a Data Box vagy a Data Box Heavy](../../databox/data-box-deploy-copy-data-via-rest.md).
 
 2. Az eszköz előkészítésének befejezése után töltse le az ANYAGJEGYZÉK-fájlokat. Ezeket az ANYAGJEGYZÉK-vagy MANIFEST-fájlokat később fogja használni az Azure-ba feltöltött adatkezelés ellenőrzéséhez.
 
@@ -169,9 +169,9 @@ Az alábbi lépéseket követve előkészítheti és szállíthatja a Data Box e
 
 4. Egyeztessen egy csomagfelvételi időpontot a UPS-szel.
 
-    * Data Box eszközökhöz tekintse [meg a Data Box szállítása](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up)című témakört.
+    * Data Box eszközökhöz tekintse [meg a Data Box szállítása](../../databox/data-box-deploy-picked-up.md)című témakört.
 
-    * Data Box Heavy eszközökhöz tekintse [meg a Data Box Heavy szállítása](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-picked-up)című témakört.
+    * Data Box Heavy eszközökhöz tekintse [meg a Data Box Heavy szállítása](../../databox/data-box-heavy-deploy-picked-up.md)című témakört.
 
 5. Miután a Microsoft megkapja az eszközét, az az adatközpont-hálózathoz csatlakozik, és a rendszer feltölti az adatait az eszközök sorrendbe helyezése során megadott Storage-fiókba. Ellenőrizze azokat az ANYAGJEGYZÉK-fájlokat, amelyeket az összes adattal feltölt az Azure-ba. 
 
@@ -184,11 +184,11 @@ Már rendelkezik az Azure Storage-fiókjában tárolt adataival. Mostantól hozz
 
 ### <a name="create-a-service-principal-for-your-azure-data-lake-storage-gen2-account"></a>Egyszerű szolgáltatásnév létrehozása a Azure Data Lake Storage Gen2-fiókhoz
 
-Egyszerű szolgáltatásnév létrehozásához tekintse meg az [Azure ad-alkalmazás és az erőforrások elérését elérő szolgáltatás használata a portál használatával](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)című témakört.
+Egyszerű szolgáltatásnév létrehozásához tekintse meg az [Azure ad-alkalmazás és az erőforrások elérését elérő szolgáltatás használata a portál használatával](../../active-directory/develop/howto-create-service-principal-portal.md)című témakört.
 
-* Ha végrehajtja az [alkalmazás szerepkörhöz rendelése](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) szakaszának lépéseit, akkor ügyeljen arra, hogy hozzárendelje a **tárolási blob adatközreműködői** szerepkört az egyszerű szolgáltatáshoz.
+* Ha végrehajtja az [alkalmazás szerepkörhöz rendelése](../../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application) szakaszának lépéseit, akkor ügyeljen arra, hogy hozzárendelje a **tárolási blob adatközreműködői** szerepkört az egyszerű szolgáltatáshoz.
 
-* A cikk beléptetési [értékének beolvasása](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) szakaszának lépéseinek végrehajtásakor mentse az alkalmazás azonosítóját és az ügyfél titkos kulcsának értékét egy szövegfájlba. Ezekre hamarosan szüksége lesz.
+* A cikk beléptetési [értékének beolvasása](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) szakaszának lépéseinek végrehajtásakor mentse az alkalmazás azonosítóját és az ügyfél titkos kulcsának értékét egy szövegfájlba. Ezekre hamarosan szüksége lesz.
 
 ### <a name="generate-a-list-of-copied-files-with-their-permissions"></a>A másolt fájlok listájának létrehozása engedélyekkel
 
@@ -330,6 +330,6 @@ Bemutatunk egy példát:
 .*/hbase/data/WALs.*
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan működik a Data Lake Storage Gen2 HDInsight-fürtökkel. Lásd: [Azure Data Lake Storage Gen2 használata az Azure HDInsight-fürtökkel](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md).

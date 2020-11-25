@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/26/2020
 ms.author: duau
-ms.openlocfilehash: 8eb4fd4cf0645248804ca31e310933167ba9a39b
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 30d1fb62b661d898ba06548e5e3a2c7d31b97794
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94987830"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95906483"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute-kapcsolati partnerek és társviszony-létesítési helyszínek
 
@@ -105,7 +105,7 @@ Az alábbi táblázat a szolgáltatók szerint jeleníti meg a helyeket. Ha az e
 | **du datamena** |Támogatott |Támogatott | Dubai2 |
 | **eir** |Támogatott |Támogatott |Dublin|
 | **[Epszilon globális kommunikáció](https://www.epsilontel.com/solutions/direct-cloud-connect)** |Támogatott |Támogatott |Szingapúr, Szingapúr2 |
-| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Támogatott |Támogatott |Amszterdam, Atlanta, Berlin, Chicago, Dallas, Dublin, Frankfurt, Genf, Hongkong KKT, London, London2, Los Angeles, Los Angeles2, Melbourne, Miami, Milánó, New York, Oszaka, Párizs, Sao Paulo, Seattle, Szilícium-völgy, Szingapúr, Stockholm, Sydney, Tokió, Toronto, Washington, Zürich |
+| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Támogatott |Támogatott |Amszterdam, Atlanta, Berlin, Canberra2, Chicago, Dallas, Dubai2, Dublin, Frankfurt, Genf, Hongkong KKT, London, London2, Los Angeles, Los Angeles2, Melbourne, Miami, Milánó, New York, Oszaka, Párizs, Sao Paulo, Seattle, Szöul, Szilícium-völgy, Szingapúr, Stockholm, Sydney, Tokió, Toronto, Washington, D.C., Zürich |
 | **Etisalat UAE** |Támogatott |Támogatott |Dubai|
 | **[euNetworks](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |Támogatott |Támogatott |Amszterdam, Amsterdam2, Dublin, Frankfurt, London |
 | **FarEasTone** |Támogatott |Támogatott |Taipei|
@@ -366,7 +366,7 @@ A privát kapcsolatok igény szerinti beállítása nehéz feladat lehet, a hál
 | **[Venha Pra Nuvem](https://venhapranuvem.com.br/)** | Dél-Amerika |
 | **[Vigilant.IT](https://vigilant.it/expressroute)** | Ausztrália |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A ExpressRoute kapcsolatos további információkért tekintse meg a [ExpressRoute gyakori kérdések](expressroute-faqs.md)című témakört.
 * Ellenőrizze, hogy minden előfeltétel teljesül-e. Lásd: [ExpressRoute-előfeltételek](expressroute-prerequisites.md).
 

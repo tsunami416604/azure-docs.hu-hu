@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: ed6d3b927254d44863b7fd0a597528813be791cf
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 10ae9e1356cea954435d15441d74f4f86a804578
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95736609"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95893980"
 ---
 # <a name="whats-new-in-form-recognizer"></a>A Form Recognizer újdonságai
 
@@ -40,11 +40,14 @@ Az űrlap-felismerő szolgáltatás folyamatosan frissül. Ebből a cikkből meg
 - **Támogatott új nyelv: Japán** – a következő új nyelvek támogatottak:, `AnalyzeLayout` és `AnalyzeCustomForm` : Japán ( `ja` ). [Nyelvi támogatás](language-support.md)
 - **Szöveg vonaltípusának jelzése (kézírásos/egyéb) (csak latin nyelveken)** – az űrlap-felismerő mostantól egy olyan objektumot ad eredményül `appearance` , amely azt sorolja fel, hogy az egyes szövegfájlok kézírásos stílusúak-e, valamint a megbízhatósági pontszámmal együtt. Ez a funkció csak latin nyelveken támogatott.
 - **Minőség-tökéletesítések** – a kinyerési funkciók, beleértve az egyszámjegyű extrakciós funkciókat.
-- Az **űrlap-felismerő minta címkéző eszközének új, kipróbálható funkciója** , amellyel kipróbálhatja az előre elkészített számla-, bevételezési és névjegykártya-modelleket, valamint az elrendezési API-t az űrlap-felismerő minta feliratozási eszköz használatával. Megtudhatja, hogyan lesz kinyerve az adatai a kód írása nélkül.
+- Az **űrlap-felismerő minta-és címkéző eszközének új, kipróbálható funkciója** az előre elkészített számla-, visszaigazolás-és névjegykártya-modellek és az elrendezési API kipróbálására a Form felismerő minta feliratozási eszköz használatával. Megtudhatja, hogyan lesz kinyerve az adatai a kód írása nélkül.
 
   > [Próbálja ki az űrlap-felismerő minta eszközt](https://fott-preview.azurewebsites.net/)
 
   ![FOTT példa](./media/ui-preview.jpg)
+  
+- **Visszajelzési hurok** – ha a minta feliratozási eszköz segítségével elemzi a fájlokat, most már hozzáadhatja azt a betanítási készlethez, és szükség esetén adujst a lables, és a modell tökéletesítéséhez is elvégezheti a betanítást.
+- **Automatikus címke documets** – a projekt korábbi címkézett dokumentumai alapján további dokumentumokat Automitcally fel. 
 
 ## <a name="august-2020"></a>2020. augusztus
 
@@ -201,7 +204,7 @@ Az értékesítési visszaigazolások olvasására szolgáló API-k átnevezve l
 
 A JSON-válaszok minden API-híváshoz új formátumok tartoznak. Egyes kulcsok és értékek hozzá lettek adva, el lettek távolítva vagy átnevezve lettek. Tekintse meg az aktuális JSON-formátumok példáit.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Töltse ki az [ügyféloldali kódtár](quickstarts/client-library.md) gyors kezdését, hogy megkezdje az űrlapok feldolgozását az űrlap felismerővel az Ön által választott nyelven.
 

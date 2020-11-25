@@ -3,14 +3,14 @@ title: Azure Automation Update Management engedélyezése a runbook-ből
 description: Ez a cikk azt ismerteti, hogyan engedélyezhető a Update Management egy runbook.
 services: automation
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 11/24/2020
 ms.custom: mvc
-ms.openlocfilehash: ec102015355e3312f5dc15fa526fa543da75e0de
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 5a9f12a823a22bfb48ccb4482d3402464aa77fea
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222287"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95908360"
 ---
 # <a name="enable-update-management-from-a-runbook"></a>Az Update Management engedélyezése runbookból
 
@@ -34,7 +34,7 @@ Ez a módszer két runbookok használ:
     * *LASolutionSubscriptionId*: az előfizetés azonosítója, ahol a log Analytics munkaterület található.
     * *LASolutionWorkspaceId*: az Automation-fiókhoz társított log Analytics munkaterület munkaterület-azonosítója.
 
-    Ezek a változók a befoglalt virtuális gép munkaterületének konfigurálására szolgálnak. Ha ezek nincsenek megadva, a parancsfájl először az előfizetésében Update Management előfizetett virtuális gépet keres, amelyet az Automation-fiókhoz tartozó előfizetés követ, majd ezt követően minden más előfizetés, amelyhez a felhasználói fiók hozzáfér. Ha nem megfelelően van konfigurálva, ez azt eredményezheti, hogy a gépek bekerülnek egy véletlenszerű Log Analytics munkaterületre.
+    Ezek a változók a befoglalt virtuális gép munkaterületének konfigurálására szolgálnak, és ezeket manuálisan kell létrehozni. Ha ezek nincsenek megadva, a parancsfájl először az előfizetésében Update Management előfizetett virtuális gépet keres, amelyet az Automation-fiókhoz tartozó előfizetés követ, majd ezt követően minden más előfizetés, amelyhez a felhasználói fiók hozzáfér. Ha nem megfelelően van konfigurálva, ez azt eredményezheti, hogy a gépek bekerülnek egy véletlenszerű Log Analytics munkaterületre.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -44,17 +44,17 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 1. A Azure Portal navigáljon az **Automation-fiókokhoz**. Az **Automation-fiókok** lapon válassza ki a fiókját a listából.
 
-2. Az Automation-fiókjában válassza a **Update Management** lehetőséget **Update Management**alatt.
+2. Az Automation-fiókjában válassza a **Update Management** lehetőséget **Update Management** alatt.
 
-3. Válassza ki a Log Analytics munkaterületet, majd kattintson az **Engedélyezés**gombra. Amíg a Update Management engedélyezve van, megjelenik egy szalagcím.
+3. Válassza ki a Log Analytics munkaterületet, majd kattintson az **Engedélyezés** gombra. Amíg a Update Management engedélyezve van, megjelenik egy szalagcím.
 
     ![Az Update Management engedélyezése](media/enable-from-runbook/enable-update-management.png)
 
 ## <a name="install-and-update-modules"></a>Modulok telepítése és frissítése
 
-Frissíteni kell a legújabb Azure-modulokra, és importálnia kell az az [. OperationalInsights](/powershell/module/az.operationalinsights) modult, hogy sikeresen engedélyezze Update Management a virtuális gépek számára a runbook.
+Frissíteni kell a legújabb Azure-modulokra, és importálnia kell a [AzureRM. OperationalInsights](/powershell/module/azurerm.operationalinsights) modult, hogy sikeresen engedélyezze Update Management a virtuális gépek számára a runbook.
 
-1. Az Automation-fiókban válassza a **megosztott erőforrások**alatt található **modulok** elemet.
+1. Az Automation-fiókban válassza a **megosztott erőforrások** alatt található **modulok** elemet.
 
 2. Az Azure-modulok a legújabb verzióra frissítéséhez válassza az **Azure-modulok frissítése** lehetőséget.
 
@@ -62,13 +62,13 @@ Frissíteni kell a legújabb Azure-modulokra, és importálnia kell az az [. Ope
 
     ![Modulok frissítése](media/enable-from-runbook/update-modules.png)
 
-4. Visszatérés a **modulokhoz** a **megosztott erőforrások**területen.
+4. Visszatérés a **modulokhoz** a **megosztott erőforrások** területen.
 
 5. Válassza a **Tallózás** katalógus lehetőséget a modul-gyűjtemény megnyitásához.
 
-6. Keresse meg `Az.OperationalInsights` és importálja a modult az Automation-fiókjába.
+6. Keresse meg `AzureRM.OperationalInsights` és importálja a modult az Automation-fiókjába.
 
-    ![Az OperationalInsights modul importálása](media/enable-from-runbook/import-operational-insights-module.png)
+    ![Az OperationalInsights modul importálása](media/enable-from-runbook/import-operational-insights-module-azurerm.png)
 
 ## <a name="select-azure-vm-to-manage"></a>Válassza ki a kezelni kívánt Azure-beli virtuális gépet
 
@@ -87,11 +87,11 @@ Ha a Update Management engedélyezve van, hozzáadhat egy Azure-beli virtuális 
 
 ## <a name="import-a-runbook-to-enable-update-management"></a>Runbook importálása a Update Management engedélyezéséhez
 
-1. Az Automation-fiókban válassza a **runbookok** lehetőséget a **folyamat automatizálása**alatt.
+1. Az Automation-fiókban válassza a **runbookok** lehetőséget a **folyamat automatizálása** alatt.
 
 2. Kattintson a **Böngészés a katalógusban** gombra.
 
-3. Keressen rá az **Update és a Change Tracking**kifejezésre.
+3. Keressen rá az **Update és a Change Tracking** kifejezésre.
 
 4. Válassza ki a runbook, és kattintson az **Importálás** elemre a **Forrás megtekintése** lapon.
 
@@ -99,7 +99,7 @@ Ha a Update Management engedélyezve van, hozzáadhat egy Azure-beli virtuális 
 
    ![Runbook importálása a telepítőhöz](media/enable-from-runbook/import-from-gallery.png)
 
-6. A **Runbook** lapon jelölje be az **enable-MultipleSolution** Runbook, majd kattintson a **Szerkesztés**gombra. A szöveges szerkesztőben válassza a  **Közzététel**lehetőséget.
+6. A **Runbook** lapon jelölje be az **enable-MultipleSolution** Runbook, majd kattintson a **Szerkesztés** gombra. A szöveges szerkesztőben válassza a  **Közzététel** lehetőséget.
 
 7. Amikor a rendszer rákérdez a megerősítésre, kattintson az **Igen** gombra a runbook közzétételéhez.
 
@@ -126,7 +126,7 @@ A runbook elindításához engedélyezve kell lennie Update Management egy Azure
 
 4. A runbook feladat és a **feladatok** lapról fellépő hibák állapotának figyelése.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Update Management virtuális gépekhez való használatához lásd: [a virtuális gépek frissítéseinek és javításának kezelése](manage-updates-for-vm.md).
 

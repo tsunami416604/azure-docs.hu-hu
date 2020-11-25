@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/28/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 909d64d3d32e8b9a314f7afb06b9c0121f624cec
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 32f8ab3f7e222108bec4ec81b14c113705370096
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358483"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913062"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Ismert problémák a Azure Data Lake Storage Gen2
 
@@ -41,21 +41,21 @@ A blob API-k és a Data Lake Storage Gen2 API-k ugyanazon az adatközponton műk
 
 Ez a szakasz a blob API-k és a Data Lake Storage Gen2 API-k használatával kapcsolatos problémákat és korlátozásokat ismerteti ugyanazon az adatközponton.
 
-* A blob API és a Data Lake Storage API-k nem használhatók egy fájl ugyanazon példányára való íráshoz. Ha Data Lake Storage Gen2 API-k használatával ír fájlba egy fájlt, a rendszer nem fogja látni a fájl blokkokat a [letiltási lista](https://docs.microsoft.com/rest/api/storageservices/get-block-list) blob API-jának meghívásához. Az egyetlen kivétel az, amikor a használata felülírja. A fájlokat vagy blobokat az API-k használatával írhatja felül.
+* A blob API és a Data Lake Storage API-k nem használhatók egy fájl ugyanazon példányára való íráshoz. Ha Data Lake Storage Gen2 API-k használatával ír fájlba egy fájlt, a rendszer nem fogja látni a fájl blokkokat a [letiltási lista](/rest/api/storageservices/get-block-list) blob API-jának meghívásához. Az egyetlen kivétel az, amikor a használata felülírja. A fájlokat vagy blobokat az API-k használatával írhatja felül.
 
-* Ha a [lista Blobok](https://docs.microsoft.com/rest/api/storageservices/list-blobs) műveletet határolójel megadása nélkül használja, az eredmények a címtárakat és a blobokat is tartalmazzák. Ha elválasztót választ, csak egy perjelet ( `/` ) használjon. Ez az egyetlen támogatott elválasztó karakter.
+* Ha a [lista Blobok](/rest/api/storageservices/list-blobs) műveletet határolójel megadása nélkül használja, az eredmények a címtárakat és a blobokat is tartalmazzák. Ha elválasztót választ, csak egy perjelet ( `/` ) használjon. Ez az egyetlen támogatott elválasztó karakter.
 
-* Ha a [blob törlése](https://docs.microsoft.com/rest/api/storageservices/delete-blob) API-t használja egy könyvtár törléséhez, akkor a rendszer csak akkor törli a könyvtárat, ha üres. Ez azt jelenti, hogy a blob API rekurzív törlése nem végezhető el.
+* Ha a [blob törlése](/rest/api/storageservices/delete-blob) API-t használja egy könyvtár törléséhez, akkor a rendszer csak akkor törli a könyvtárat, ha üres. Ez azt jelenti, hogy a blob API rekurzív törlése nem végezhető el.
 
 Ezek a blob REST API-k nem támogatottak:
 
-* [BLOB (oldal) elhelyezése](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-* [Oldal elhelyezése](https://docs.microsoft.com/rest/api/storageservices/put-page)
-* [Oldalak tartományának beolvasása](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
-* [Növekményes másolási blob](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
-* [Oldal elhelyezése az URL-címről](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
-* [Blokk hozzáfűzése](https://docs.microsoft.com/rest/api/storageservices/append-block)
-* [Blokk hozzáfűzése URL-címről](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
+* [BLOB (oldal) elhelyezése](/rest/api/storageservices/put-blob)
+* [Oldal elhelyezése](/rest/api/storageservices/put-page)
+* [Oldalak tartományának beolvasása](/rest/api/storageservices/get-page-ranges)
+* [Növekményes másolási blob](/rest/api/storageservices/incremental-copy-blob)
+* [Oldal elhelyezése az URL-címről](/rest/api/storageservices/put-page-from-url)
+* [Blokk hozzáfűzése](/rest/api/storageservices/append-block)
+* [Blokk hozzáfűzése URL-címről](/rest/api/storageservices/append-block-from-url)
 
 
 A nem felügyelt virtuálisgép-lemezek nem támogatottak olyan fiókoknál, amelyek hierarchikus névtérrel rendelkeznek. Ha egy hierarchikus névteret szeretne engedélyezni egy Storage-fiókban, helyezze a nem felügyelt virtuális gépek lemezeit olyan Storage-fiókba, amelyben nincs engedélyezve a hierarchikus névtér funkció.
@@ -70,7 +70,7 @@ A nem felügyelt virtuálisgép-lemezek nem támogatottak olyan fiókoknál, ame
 
 ## <a name="azcopy"></a>AzCopy
 
-Csak a AzCopy legújabb verzióját használja ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). A AzCopy korábbi verziói (például a AzCopy v 8.1) nem támogatottak.
+Csak a AzCopy legújabb verzióját használja ([AzCopy v10](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). A AzCopy korábbi verziói (például a AzCopy v 8.1) nem támogatottak.
 
 <a id="storage-explorer"></a>
 
@@ -92,7 +92,7 @@ A REST API-kat használó harmadik féltől származó alkalmazások továbbra i
 
 ## <a name="access-control-lists-acl-and-anonymous-read-access"></a>Hozzáférés-vezérlési listák (ACL) és névtelen olvasási hozzáférés
 
-Ha a tárolóhoz [Névtelen olvasási hozzáférés](storage-manage-access-to-resources.md) van megadva, akkor az ACL-ek nincsenek hatással a tárolóra vagy a tárolóban lévő fájlokra.
+Ha a tárolóhoz [Névtelen olvasási hozzáférés](./anonymous-read-access-configure.md) van megadva, akkor az ACL-ek nincsenek hatással a tárolóra vagy a tárolóban lévő fájlokra.
 
 ## <a name="diagnostic-logs"></a>Diagnosztikai naplók
 

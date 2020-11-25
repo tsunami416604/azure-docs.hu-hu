@@ -1,30 +1,30 @@
 ---
-title: Válasszon virtuálisgép-méreteket a készletekhez
-description: Az elérhető virtuálisgép-méretek közül választhat a Azure Batch készletekben lévő számítási csomópontok számára
+title: Válassza ki a virtuális gépek méretét és lemezképeit a készletekhez
+description: Az elérhető virtuálisgép-méretek és operációsrendszer-verziók kiválasztása Azure Batch-készletekben lévő számítási csomópontokhoz
 ms.topic: conceptual
-ms.date: 10/23/2020
+ms.date: 11/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: fd093006a9eb0c9746a19cb5f91b280145ddfb7e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8bb54a4db62f56f442f7cec81e6768241a05ffee
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517055"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95895230"
 ---
-# <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Virtuális gép méretének kiválasztása Azure Batch készlet számítási csomópontjaihoz
+# <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>Virtuális gép méretének és rendszerképének kiválasztása Azure Batch készlet számítási csomópontjaihoz
 
 Ha kijelöl egy Azure Batch készlethez tartozó csomópont-méretet, az Azure-ban elérhető szinte minden virtuálisgép-méret közül választhat. Az Azure különféle számítási feladatokhoz biztosít különböző méretű Linux és Windows rendszerű virtuális gépeket.
 
-A virtuális gépek méretének kiválasztására néhány kivétel és korlátozás vonatkozik:
-
-* Néhány virtuálisgép-sorozat vagy virtuálisgép-méret nem támogatott a Batchben.
-* Bizonyos virtuálisgép-méretek korlátozottak, és a lefoglalásuk előtt kifejezetten engedélyezni kell őket.
-
 ## <a name="supported-vm-series-and-sizes"></a>Támogatott VM-sorozatok és-méretek
+
+A Batch-készlethez a virtuális gépek méretének kiválasztására néhány kivétel és korlátozás vonatkozik:
+
+- Néhány virtuálisgép-sorozat vagy virtuálisgép-méret nem támogatott a Batchben.
+- Bizonyos virtuálisgép-méretek korlátozottak, és a lefoglalásuk előtt kifejezetten engedélyezni kell őket.
 
 ### <a name="pools-in-virtual-machine-configuration"></a>Készletek a virtuális gép konfigurációjában
 
-A virtuálisgép-konfigurációban található batch-készletek szinte minden VM-méretet támogatnak ([Linux](../virtual-machines/sizes.md), [Windows](../virtual-machines/sizes.md)). A támogatott méretekkel és korlátozásokkal kapcsolatos további információkért tekintse meg a következő táblázatot.
+A virtuális gép konfigurációjában a Batch-készletek szinte minden virtuálisgép- [méretet](../virtual-machines/sizes.md)támogatnak. A támogatott méretekkel és korlátozásokkal kapcsolatos további információkért tekintse meg a következő táblázatot.
 
 | Virtuálisgép-sorozatok  | Támogatott méretek |
 |------------|---------|
@@ -71,6 +71,7 @@ A virtuálisgép-konfigurációban található batch-készletek szinte minden VM
 <sup>2</sup> ezek a virtuálisgép-sorozatok csak a 2. generációs virtuálisgép-rendszerképekkel használhatók.
 
 ### <a name="using-generation-2-vm-images"></a>A 2. generációs VM-rendszerképek használata
+
 Egyes virtuálisgép-sorozatok (például a [Mv2](../virtual-machines/mv2-series.md)) csak 2. [generációs virtuálisgép-rendszerképekkel](../virtual-machines/generation-2.md)használhatók. A 2. generációs virtuálisgép-lemezképek a ["imageReference"](/rest/api/batchservice/pool/add#imagereference) konfigurációjának "SKU" tulajdonságával vannak megadva, mint bármely virtuálisgép-rendszerkép. az "SKU" karakterlánchoz utótag tartozik, például "-G2" vagy "-Gen2". A Batch által támogatott virtuálisgép-rendszerképek listájának lekéréséhez, beleértve a 2. generációs képeket, használja a ["támogatott lemezképek listázása"](/rest/api/batchservice/account/listsupportedimages) API-t, a [PowerShellt](/powershell/module/az.batch/get-azbatchsupportedimage)vagy az [Azure CLI](/cli/azure/batch/pool/supported-images)-t.
 
 ### <a name="pools-in-cloud-service-configuration"></a>Készletek a Cloud Service-konfigurációban
@@ -84,19 +85,27 @@ A Cloud Service-konfigurációban a Batch-készletek támogatják a Cloud Servic
 
 ## <a name="size-considerations"></a>Mérettel kapcsolatos szempontok
 
-* **Alkalmazásokra vonatkozó követelmények** – vegye figyelembe a csomópontokon futtatandó alkalmazás jellemzőit és követelményeit. Az olyan szempontok, mint hogy az alkalmazás többszálú-e vagy mennyi memóriát fogyaszt, segíthetnek meghatározni a legmegfelelőbb és legköltséghatékonyabb csomópontméretet. A többpéldányos [MPI-munkaterhelések](batch-mpi.md) vagy a CUDA-alkalmazások esetében érdemes lehet speciális [HPC](../virtual-machines/sizes-hpc.md) [-vagy GPU-kompatibilis virtuálisgép-](../virtual-machines/sizes-gpu.md) méreteket használni. (Lásd: [RDMA-kompatibilis vagy GPU-kompatibilis példányok használata batch-készletekben](batch-pool-compute-intensive-sizes.md).)
+- **Alkalmazásokra vonatkozó követelmények** – vegye figyelembe a csomópontokon futtatandó alkalmazás jellemzőit és követelményeit. Az olyan szempontok, mint hogy az alkalmazás többszálú-e vagy mennyi memóriát fogyaszt, segíthetnek meghatározni a legmegfelelőbb és legköltséghatékonyabb csomópontméretet. A többpéldányos [MPI-munkaterhelések](batch-mpi.md) vagy a CUDA-alkalmazások esetében érdemes lehet speciális [HPC](../virtual-machines/sizes-hpc.md) [-vagy GPU-kompatibilis virtuálisgép-](../virtual-machines/sizes-gpu.md) méreteket használni. További információ: [RDMA-kompatibilis vagy GPU-kompatibilis példányok használata batch-készletekben](batch-pool-compute-intensive-sizes.md).
 
-* **Feladatok/csomópont** – tipikusan a csomópontok méretének kiválasztását feltételezve, hogy egyszerre egy tevékenység fut egy csomóponton. Azonban érdemes lehet több feladatot (és így több alkalmazás-példányt) [párhuzamosan futtatni](batch-parallel-node-tasks.md) a számítási csomópontokon a feladat végrehajtása során. Ebben az esetben gyakori, hogy egy többprocesszoros csomópontot válasszon a párhuzamos feladat-végrehajtás megnövekedett igényének kielégítéséhez.
+- **Feladatok/csomópont** – tipikusan a csomópontok méretének kiválasztását feltételezve, hogy egyszerre egy tevékenység fut egy csomóponton. Azonban érdemes lehet több feladatot (és így több alkalmazás-példányt) [párhuzamosan futtatni](batch-parallel-node-tasks.md) a számítási csomópontokon a feladat végrehajtása során. Ebben az esetben gyakori, hogy egy többprocesszoros csomópontot válasszon a párhuzamos feladat-végrehajtás megnövekedett igényének kielégítéséhez.
 
-* **Különböző feladatok betöltési szintjei** – a készlet összes csomópontja azonos méretű. Ha eltérő rendszerigényű és/vagy terhelési szintű alkalmazásokat szándékozik futtatni, javasoljuk, hogy használjon különálló készleteket.
+- **Különböző feladatok betöltési szintjei** – a készlet összes csomópontja azonos méretű. Ha eltérő rendszerigényű és/vagy terhelési szintű alkalmazásokat szándékozik futtatni, javasoljuk, hogy használjon különálló készleteket.
 
-* **Régió rendelkezésre állása** – előfordulhat, hogy a virtuálisgép-sorozat vagy-méret nem érhető el azokban a régiókban, ahol létrehozza a Batch-fiókokat. Ha szeretné megtekinteni, hogy elérhető-e a méret, tekintse meg a [régiók által elérhető termékeket](https://azure.microsoft.com/regions/services/).
+- **Régió rendelkezésre állása** – előfordulhat, hogy a virtuálisgép-sorozat vagy-méret nem érhető el azokban a régiókban, ahol létrehozza a Batch-fiókokat. Ha szeretné megtekinteni, hogy elérhető-e a méret, tekintse meg a [régiók által elérhető termékeket](https://azure.microsoft.com/regions/services/).
 
-* **Kvóták** – a Batch-fiókban lévő [magok kvótái](batch-quota-limit.md#resource-quotas) korlátozhatják a Batch-készletbe felvehető adott méretű csomópontok számát. A kvóta növeléséhez tekintse meg [ezt a cikket](batch-quota-limit.md#increase-a-quota). 
+- **Kvóták** – a Batch-fiókban lévő [magok kvótái](batch-quota-limit.md#resource-quotas) korlátozhatják a Batch-készletbe felvehető adott méretű csomópontok számát. Ha szükséges, [a kvóta növelését is kérheti](batch-quota-limit.md#increase-a-quota).
 
-* **Készlet konfigurációja** – általánosságban több virtuálisgép-méretezési lehetőség is rendelkezésre áll, ha a virtuális gép konfigurációjában hoz létre készletet, a Cloud Service-konfigurációhoz képest.
+- **Készlet konfigurációja** – általánosságban több virtuálisgép-méretezési lehetőség is rendelkezésre áll, ha a virtuális gép konfigurációjában hoz létre készletet, a Cloud Service-konfigurációhoz képest.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="supported-vm-images"></a>Támogatott VM-rendszerképek
 
-* Ismerje meg a [Batch szolgáltatás munkafolyamatát és az elsődleges erőforrásokat](batch-service-workflow-features.md) , például a készleteket, a csomópontokat, a feladatokat és a feladatokat.
-* További információ a számítási igényű virtuálisgép-méretek használatáról: [RDMA-kompatibilis vagy GPU-kompatibilis példányok használata batch-készletekben](batch-pool-compute-intensive-sizes.md).
+A következő API-k egyikével visszaállíthatja a Batch által jelenleg támogatott Windows-és Linux-alapú virtuálisgép-rendszerképek listáját, beleértve az egyes lemezképek csomópont-ügynök SKU-azonosítóit:
+
+- Batch szolgáltatás REST API: [támogatott lemezképek listázása](/rest/api/batchservice/account/listsupportedimages)
+- PowerShell: [Get-AzBatchSupportedImage](/powershell/module/az.batch/get-azbatchsupportedimage)
+- Azure CLI: [az batch Pool által támogatott – lemezképek](/cli/azure/batch/pool/supported-images)
+
+## <a name="next-steps"></a>További lépések
+
+- Ismerje meg a [Batch szolgáltatás munkafolyamatát és az elsődleges erőforrásokat](batch-service-workflow-features.md) , például a készleteket, a csomópontokat, a feladatokat és a feladatokat.
+- További információ a számítási igényű virtuálisgép-méretek használatáról: [RDMA-kompatibilis vagy GPU-kompatibilis példányok használata batch-készletekben](batch-pool-compute-intensive-sizes.md).

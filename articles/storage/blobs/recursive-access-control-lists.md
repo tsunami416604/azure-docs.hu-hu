@@ -9,12 +9,12 @@ ms.date: 11/17/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: ffd72ffb02e4875305177cf12fd19f538735b7d6
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 380d2615f62de52474b1d4316dec1dab63e5f0d5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844233"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912331"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlési listák (ACL-ek) rekurzív beállítása Azure Data Lake Storage Gen2
 
@@ -30,11 +30,11 @@ Az ACL öröklése már elérhető az új alárendelt elemekhez, amelyeket a ren
 
 - A rekurzív ACL-folyamat végrehajtásának megfelelő engedélyei. A megfelelő engedély a következők egyikét tartalmazza: 
 
-  - Egy kiépített Azure Active Directory (AD) [rendszerbiztonsági tag](https://docs.microsoft.com/azure/role-based-access-control/overview#security-principal) , amely a [tároló blob-adattulajdonosi](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) szerepkört rendelte hozzá a cél tároló, a szülő erőforráscsoport vagy az előfizetés hatókörében.   
+  - Egy kiépített Azure Active Directory (AD) [rendszerbiztonsági tag](../../role-based-access-control/overview.md#security-principal) , amely a [tároló blob-adattulajdonosi](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) szerepkört rendelte hozzá a cél tároló, a szülő erőforráscsoport vagy az előfizetés hatókörében.   
 
   - Annak a tárolónak vagy könyvtárnak a tulajdonosa, amelyre a rekurzív ACL-folyamat alkalmazását tervezi. Ez a cél tárolóban vagy a címtárban található összes alárendelt elemet magában foglalja. 
 
-- Annak megértése, hogy a rendszer hogyan alkalmazza a ACL-eket a címtárakra és a fájlokra. Lásd: [hozzáférés-vezérlés Azure Data Lake Storage Gen2ban](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
+- Annak megértése, hogy a rendszer hogyan alkalmazza a ACL-eket a címtárakra és a fájlokra. Lásd: [hozzáférés-vezérlés Azure Data Lake Storage Gen2ban](./data-lake-storage-access-control.md). 
 
 Ennek a cikknek a **projekt beállítása** című szakaszában találja a PowerShell, a .net SDK és a Python SDK telepítési útmutatójának megtekintését.
 
@@ -50,7 +50,7 @@ Telepítse a szükséges kódtárakat.
    echo $PSVersionTable.PSVersion.ToString() 
    ```
     
-   A PowerShell verziójának frissítéséhez lásd: a [meglévő Windows PowerShell frissítése](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell)
+   A PowerShell verziójának frissítéséhez lásd: a [meglévő Windows PowerShell frissítése](/powershell/scripting/install/installing-windows-powershell)
     
 2. Telepítse **az az. Storage** modult.
 
@@ -58,18 +58,18 @@ Telepítse a szükséges kódtárakat.
    Install-Module Az.Storage -Repository PSGallery -Force  
    ```
 
-   A PowerShell-modulok telepítésével kapcsolatos további információkért lásd: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps)
+   A PowerShell-modulok telepítésével kapcsolatos további információkért lásd: [a Azure PowerShell modul telepítése](/powershell/azure/install-az-ps)
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. Nyissa meg a [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), vagy ha helyileg [telepítette](https://docs.microsoft.com/cli/azure/install-azure-cli) az Azure CLI-t, nyisson meg egy parancssori alkalmazást, például a Windows PowerShellt.
+1. Nyissa meg a [Azure Cloud Shell](../../cloud-shell/overview.md), vagy ha helyileg [telepítette](/cli/azure/install-azure-cli) az Azure CLI-t, nyisson meg egy parancssori alkalmazást, például a Windows PowerShellt.
 
 2. A következő parancs használatával ellenőrizze, hogy a telepített Azure CLI `2.14.0` -verzió vagy magasabb-e.
 
    ```azurecli
     az --version
    ```
-   Ha az Azure CLI verziója alacsonyabb, mint a `2.14.0` , telepítsen egy újabb verziót. Lásd: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
+   Ha az Azure CLI verziója alacsonyabb, mint a `2.14.0` , telepítsen egy újabb verziót. Lásd: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -201,7 +201,7 @@ $ctx = $storageAccount.Context
 
    Ellenkező esetben nyisson meg egy böngészőt, [https://aka.ms/devicelogin](https://aka.ms/devicelogin) és adja meg a terminálon megjelenő engedélyezési kódot. Ezután jelentkezzen be a fiókja hitelesítő adataival a böngészőben.
 
-   A különböző hitelesítési módszerekkel kapcsolatos további tudnivalókért lásd: [hozzáférés engedélyezése a blobhoz vagy az üzenetsor-kezeléshez az Azure CLI-vel](../common/authorize-data-operations-cli.md).
+   A különböző hitelesítési módszerekkel kapcsolatos további tudnivalókért lásd: [hozzáférés engedélyezése a blobhoz vagy az üzenetsor-kezeléshez az Azure CLI-vel](./authorize-data-operations-cli.md).
 
 2. Ha az identitása egynél több előfizetéshez van társítva, akkor állítsa be az aktív előfizetést a statikus webhelyét futtató Storage-fiók előfizetésére.
 
@@ -212,11 +212,11 @@ $ctx = $storageAccount.Context
    Cserélje le a `<subscription-id>` helyőrző értékét az előfizetés azonosítójával.
 
 > [!NOTE]
-> A cikkben bemutatott példa Azure Active Directory (AD) engedélyezését mutatja. További információ az engedélyezési módszerekről: a [blob-vagy üzenetsor-hozzáférés engedélyezése az Azure CLI-vel](../common/authorize-data-operations-cli.md).
+> A cikkben bemutatott példa Azure Active Directory (AD) engedélyezését mutatja. További információ az engedélyezési módszerekről: a [blob-vagy üzenetsor-hozzáférés engedélyezése az Azure CLI-vel](./authorize-data-operations-cli.md).
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-A cikkben szereplő kódrészletek használatához létre kell hoznia egy [DataLakeServiceClient](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient) -példányt, amely a Storage-fiókot jelképezi.
+A cikkben szereplő kódrészletek használatához létre kell hoznia egy [DataLakeServiceClient](/dotnet/api/azure.storage.files.datalake.datalakeserviceclient) -példányt, amely a Storage-fiókot jelképezi.
 
 #### <a name="connect-by-using-azure-active-directory-ad"></a>Kapcsolat Azure Active Directory (AD) használatával
 
@@ -235,7 +235,7 @@ Szerezze be az ügyfél-azonosítót, az ügyfél titkos kulcsát és a bérlő 
 |[Storage-blobadatok tulajdonosa](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)|A fiókban lévő összes könyvtár és fájl.|
 |[Storage-blobadatok közreműködője](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)|Csak a rendszerbiztonsági tag tulajdonában lévő könyvtárak és fájlok.|
 
-Ez a példa egy [DataLakeServiceClient](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient?) -példányt hoz létre egy ügyfél-azonosítóval, egy ügyfél-titkos kulccsal és egy BÉRLŐi azonosítóval.  
+Ez a példa egy [DataLakeServiceClient](/dotnet/api/azure.storage.files.datalake.datalakeserviceclient) -példányt hoz létre egy ügyfél-azonosítóval, egy ügyfél-titkos kulccsal és egy BÉRLŐi azonosítóval.  
 
 ```cs
 public void GetDataLakeServiceClient(ref DataLakeServiceClient dataLakeServiceClient, 
@@ -256,7 +256,7 @@ public void GetDataLakeServiceClient(ref DataLakeServiceClient dataLakeServiceCl
 
 Ez a módszer a fiókhoz való kapcsolódás legegyszerűbb módja. 
 
-Ez a példa egy [DataLakeServiceClient](https://docs.microsoft.com/dotnet/api/azure.storage.files.datalake.datalakeserviceclient?) -példányt hoz létre a fiók kulcsa alapján.
+Ez a példa egy [DataLakeServiceClient](/dotnet/api/azure.storage.files.datalake.datalakeserviceclient) -példányt hoz létre a fiók kulcsa alapján.
 
 ```cs
 public void GetDataLakeServiceClient(ref DataLakeServiceClient dataLakeServiceClient,
@@ -415,11 +415,11 @@ Set-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Path $
 > [!NOTE]
 > Ha **alapértelmezett** ACL-bejegyzést kíván beállítani, használja a **-defaultscope tulajdonságnak** paramétert a **set-AzDataLakeGen2ItemAclObject** parancs futtatásakor. Például: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope`.
 
-Ha egy köteg méretének megadásával szeretné megtekinteni egy olyan példát, amely az ACL-eket rekurzív módon állítja be a kötegekben, tekintse meg a [set-AzDataLakeGen2AclRecursive](https://docs.microsoft.com/powershell/module/az.storage/set-azdatalakegen2aclrecursive) című cikket.
+Ha egy köteg méretének megadásával szeretné megtekinteni egy olyan példát, amely az ACL-eket rekurzív módon állítja be a kötegekben, tekintse meg a [set-AzDataLakeGen2AclRecursive](/powershell/module/az.storage/set-azdatalakegen2aclrecursive) című cikket.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Állítsa be az ACL-t rekurzív módon az az [Storage FS Access set-rekurzív](https://docs.microsoft.com/cli/azure/storage/fs/access#az_storage_fs_access_set_recursive) parancs használatával.
+Állítsa be az ACL-t rekurzív módon az az [Storage FS Access set-rekurzív](/cli/azure/storage/fs/access#az_storage_fs_access_set_recursive) parancs használatával.
 
 Ez a példa egy nevű könyvtár ACL-listáját állítja be `my-parent-directory` . Ezek a bejegyzések az olvasási, írási és végrehajtási engedélyeket adják meg a tulajdonos számára, és csak olvasási és végrehajtási engedélyeket biztosítanak a tulajdonos csoportnak, és minden más felhasználónak nincs hozzáférése. Ebben a példában az utolsó ACL-bejegyzés egy adott felhasználót ad meg az "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" AZONOSÍTÓJÚ objektumhoz olvasási és végrehajtási engedélyekkel.
 
@@ -608,11 +608,11 @@ Update-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Pat
 > [!NOTE]
 > Ha frissíteni szeretné az **alapértelmezett** ACL-bejegyzést, használja a **-defaultscope tulajdonságnak** paramétert a **set-AzDataLakeGen2ItemAclObject** parancs futtatásakor. Például: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID -Permission rwx -DefaultScope`.
 
-Ha egy olyan példát szeretne látni, amely egy köteg méretének megadásával rekurzívan frissíti a ACL-eket, tekintse meg az [Update-AzDataLakeGen2AclRecursive](https://docs.microsoft.com/powershell/module/az.storage/update-azdatalakegen2aclrecursive) Reference című cikket.
+Ha egy olyan példát szeretne látni, amely egy köteg méretének megadásával rekurzívan frissíti a ACL-eket, tekintse meg az [Update-AzDataLakeGen2AclRecursive](/powershell/module/az.storage/update-azdatalakegen2aclrecursive) Reference című cikket.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Frissítsen egy ACL-t rekurzív módon az az  [Storage FS Access Update-rekurzív](https://docs.microsoft.com/cli/azure/storage/fs/access#az_storage_fs_access_update_recursive) parancs használatával. 
+Frissítsen egy ACL-t rekurzív módon az az  [Storage FS Access Update-rekurzív](/cli/azure/storage/fs/access#az_storage_fs_access_update_recursive) parancs használatával. 
 
 Ez a példa egy írási engedéllyel rendelkező ACL-bejegyzést frissít. 
 
@@ -749,11 +749,11 @@ Remove-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName  -Ac
 > [!NOTE]
 > Ha el szeretné távolítani az **alapértelmezett** ACL-bejegyzést, használja a **-defaultscope tulajdonságnak** paramétert a **set-AzDataLakeGen2ItemAclObject** parancs futtatásakor. Például: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID -Permission "---" -DefaultScope`.
 
-Ha egy batch-méret megadásával szeretné megtekinteni a ACL-ek rekurzív eltávolítását a batchs szolgáltatásban, tekintse meg a [Remove-AzDataLakeGen2AclRecursive](https://docs.microsoft.com/powershell/module/az.storage/remove-azdatalakegen2aclrecursive) Reference című cikket.
+Ha egy batch-méret megadásával szeretné megtekinteni a ACL-ek rekurzív eltávolítását a batchs szolgáltatásban, tekintse meg a [Remove-AzDataLakeGen2AclRecursive](/powershell/module/az.storage/remove-azdatalakegen2aclrecursive) Reference című cikket.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Távolítsa el az ACL-bejegyzéseket az az [Storage FS Access Remove-rekurzív](https://docs.microsoft.com/cli/azure/storage/fs/access#az_storage_fs_access_remove_recursive) parancs használatával. 
+Távolítsa el az ACL-bejegyzéseket az az [Storage FS Access Remove-rekurzív](/cli/azure/storage/fs/access#az_storage_fs_access_remove_recursive) parancs használatával. 
 
 Ez a példa egy ACL-bejegyzést távolít el a tároló gyökérkönyvtárában.  
 
@@ -880,7 +880,7 @@ $result
 
 ```
 
-Ha egy köteg méretének megadásával szeretné megtekinteni egy olyan példát, amely az ACL-eket rekurzív módon állítja be a kötegekben, tekintse meg a [set-AzDataLakeGen2AclRecursive](https://docs.microsoft.com/powershell/module/az.storage/set-azdatalakegen2aclrecursive) című cikket.
+Ha egy köteg méretének megadásával szeretné megtekinteni egy olyan példát, amely az ACL-eket rekurzív módon állítja be a kötegekben, tekintse meg a [set-AzDataLakeGen2AclRecursive](/powershell/module/az.storage/set-azdatalakegen2aclrecursive) című cikket.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -1005,7 +1005,7 @@ echo "TotalFailureCount: `t`t`t`t`t$($result.TotalFailureCount)"
 echo "FailedEntries:"$($result.FailedEntries | ft) 
 ```
 
-Ha egy köteg méretének megadásával szeretné megtekinteni egy olyan példát, amely az ACL-eket rekurzív módon állítja be a kötegekben, tekintse meg a [set-AzDataLakeGen2AclRecursive](https://docs.microsoft.com/powershell/module/az.storage/set-azdatalakegen2aclrecursive) című cikket.
+Ha egy köteg méretének megadásával szeretné megtekinteni egy olyan példát, amely az ACL-eket rekurzív módon állítja be a kötegekben, tekintse meg a [set-AzDataLakeGen2AclRecursive](/powershell/module/az.storage/set-azdatalakegen2aclrecursive) című cikket.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -1115,11 +1115,11 @@ Ez a szakasz a kódtárak és a kód mintáinak hivatkozásait tartalmazza.
 #### <a name="libraries"></a>Kódtárak
 
 - [PowerShell](https://www.powershellgallery.com/packages/Az.Storage/3.0.0)
-- [Azure CLI](https://docs.microsoft.com/cli/azure/storage/fs/access)
+- [Azure CLI](/cli/azure/storage/fs/access)
 - [.NET](https://pkgs.dev.azure.com/azure-sdk/public/_packaging/azure-sdk-for-net/nuget/v3/index.json)
 - [Java](/java/api/overview/azure/storage-file-datalake-readme)
 - [Python](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Frecursiveaclpr.blob.core.windows.net%2Fprivatedrop%2Fazure_storage_file_datalake-12.1.0b99-py2.py3-none-any.whl%3Fsv%3D2019-02-02%26st%3D2020-08-24T07%253A47%253A01Z%26se%3D2021-08-25T07%253A47%253A00Z%26sr%3Db%26sp%3Dr%26sig%3DH1XYw4FTLJse%252BYQ%252BfamVL21UPVIKRnnh2mfudA%252BfI0I%253D&data=02%7C01%7Cnormesta%40microsoft.com%7C95a5966d938a4902560e08d84912fe32%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637339693209725909&sdata=acv4KWZdzkITw1lP0%2FiA3lZuW7NF5JObjY26IXttfGI%3D&reserved=0)
-- [REST](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)
+- [REST](/rest/api/storageservices/datalakestoragegen2/path/update)
 
 #### <a name="code-samples"></a>Kódminták
 
@@ -1127,7 +1127,7 @@ Ez a szakasz a kódtárak és a kód mintáinak hivatkozásait tartalmazza.
 
 - Azure CLI: [minta](https://github.com/Azure/azure-cli/blob/2a55a5350696a3a93a13f364f2104ec8bc82cdd3/src/azure-cli/azure/cli/command_modules/storage/docs/ADLS%20Gen2.md)
 
-- NET: [readme](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Frecursiveaclpr.blob.core.windows.net%2Fprivatedrop%2FREADME%2520for%2520net%3Fsv%3D2019-02-02%26st%3D2020-08-25T23%253A20%253A42Z%26se%3D2021-08-26T23%253A20%253A00Z%26sr%3Db%26sp%3Dr%26sig%3DKrnHvasHoSoVeUyr2g%252FSc2aDVW3De4A%252Fvx0lFWZs494%253D&data=02%7C01%7Cnormesta%40microsoft.com%7Cda902e4fe6c24e6a07d908d8494fd4bd%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637339954503767961&sdata=gd%2B2LphTtDFVb7pZko9rkGO9OG%2FVvmeXprHB9IOEYXE%3D&reserved=0)  |  [minta](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Frecursiveaclpr.blob.core.windows.net%2Fprivatedrop%2FRecursive-Acl-Sample-Net.zip%3Fsv%3D2019-02-02%26st%3D2020-08-24T07%253A45%253A28Z%26se%3D2021-09-25T07%253A45%253A00Z%26sr%3Db%26sp%3Dr%26sig%3D2GI3f0KaKMZbTi89AgtyGg%252BJePgNSsHKCL68V6I5W3s%253D&data=02%7C01%7Cnormesta%40microsoft.com%7C6eae76c57d224fb6de8908d848525330%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637338865714571853&sdata=%2FWom8iI3DSDMSw%2FfYvAaQ69zbAoqXNTQ39Q9yVMnASA%3D&reserved=0)
+- NET: [readme](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Frecursiveaclpr.blob.core.windows.net%2Fprivatedrop%2FREADME%2520for%2520net%3Fsv%3D2019-02-02%26st%3D2020-08-25T23%253A20%253A42Z%26se%3D2021-08-26T23%253A20%253A00Z%26sr%3Db%26sp%3Dr%26sig%3DKrnHvasHoSoVeUyr2g%2fSc2aDVW3De4A%2fvx0lFWZs494%253D&data=02%7C01%7Cnormesta%40microsoft.com%7Cda902e4fe6c24e6a07d908d8494fd4bd%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637339954503767961&sdata=gd%2B2LphTtDFVb7pZko9rkGO9OG%2FVvmeXprHB9IOEYXE%3D&reserved=0)  |  [minta](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Frecursiveaclpr.blob.core.windows.net%2Fprivatedrop%2FRecursive-Acl-Sample-Net.zip%3Fsv%3D2019-02-02%26st%3D2020-08-24T07%253A45%253A28Z%26se%3D2021-09-25T07%253A45%253A00Z%26sr%3Db%26sp%3Dr%26sig%3D2GI3f0KaKMZbTi89AgtyGg%252BJePgNSsHKCL68V6I5W3s%253D&data=02%7C01%7Cnormesta%40microsoft.com%7C6eae76c57d224fb6de8908d848525330%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637338865714571853&sdata=%2FWom8iI3DSDMSw%2FfYvAaQ69zbAoqXNTQ39Q9yVMnASA%3D&reserved=0)
 
 - Python: [readme](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Frecursiveaclpr.blob.core.windows.net%2Fprivatedrop%2FREADME%2520for%2520python%3Fsv%3D2019-02-02%26st%3D2020-08-25T23%253A21%253A47Z%26se%3D2021-08-26T23%253A21%253A00Z%26sr%3Db%26sp%3Dr%26sig%3DRq6Bl5lXrtYk79thy8wX7UTbjyd2f%252B6xzVBFFVYbdYg%253D&data=02%7C01%7Cnormesta%40microsoft.com%7Cda902e4fe6c24e6a07d908d8494fd4bd%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637339954503777915&sdata=3e46Lp2miOHj755Gh0odH3M0%2BdTF3loGCCBENrulVTM%3D&reserved=0)  |  [minta](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/storage/azure-storage-file-datalake/samples/datalake_samples_access_control_recursive.py)
 
@@ -1141,7 +1141,7 @@ Futásidejű hiba számos okból történhet (például leállás vagy ügyfél-
 
 #### <a name="handling-permission-errors-403"></a>Engedélyek kezelésére vonatkozó hibák (403)
 
-Ha egy rekurzív ACL-folyamat futtatásakor hozzáférés-vezérlési kivételt tapasztal, előfordulhat, hogy az AD [rendszerbiztonsági tag](https://docs.microsoft.com/azure/role-based-access-control/overview#security-principal) nem rendelkezik megfelelő engedéllyel ahhoz, hogy ACL-t alkalmazzon egy vagy több alárendelt elemhez a címtár-hierarchiában. Ha egy engedélyezési hiba történik, a folyamat leáll, és a folytatási jogkivonat van megadva. Javítsa ki az engedélyekkel kapcsolatos problémát, majd a folytatási token használatával dolgozza fel a fennmaradó adatkészletet. A már sikeresen feldolgozott címtárakat és fájlokat nem kell újra feldolgozni. Azt is megteheti, hogy újraindítja a rekurzív ACL-folyamatot. Az ACL-ek újra alkalmazhatók az elemekre anélkül, hogy negatív hatással lenne. 
+Ha egy rekurzív ACL-folyamat futtatásakor hozzáférés-vezérlési kivételt tapasztal, előfordulhat, hogy az AD [rendszerbiztonsági tag](../../role-based-access-control/overview.md#security-principal) nem rendelkezik megfelelő engedéllyel ahhoz, hogy ACL-t alkalmazzon egy vagy több alárendelt elemhez a címtár-hierarchiában. Ha egy engedélyezési hiba történik, a folyamat leáll, és a folytatási jogkivonat van megadva. Javítsa ki az engedélyekkel kapcsolatos problémát, majd a folytatási token használatával dolgozza fel a fennmaradó adatkészletet. A már sikeresen feldolgozott címtárakat és fájlokat nem kell újra feldolgozni. Azt is megteheti, hogy újraindítja a rekurzív ACL-folyamatot. Az ACL-ek újra alkalmazhatók az elemekre anélkül, hogy negatív hatással lenne. 
 
 #### <a name="credentials"></a>Hitelesítő adatok 
 
@@ -1153,11 +1153,9 @@ A késés csökkentése érdekében javasoljuk, hogy futtassa a rekurzív ACL-fo
 
 #### <a name="acl-limits"></a>ACL-korlátok
 
-A címtárra vagy fájlra érvényes ACL-ek maximális száma 32 hozzáférési ACL-ek és 32 alapértelmezett ACL-ek. További információ: [hozzáférés-vezérlés Azure Data Lake Storage Gen2ban](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
+A címtárra vagy fájlra érvényes ACL-ek maximális száma 32 hozzáférési ACL-ek és 32 alapértelmezett ACL-ek. További információ: [hozzáférés-vezérlés Azure Data Lake Storage Gen2ban](./data-lake-storage-access-control.md).
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
-- [Hozzáférés-vezérlés a 2. generációs Azure Data Lake Storage-ben](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)
+- [Hozzáférés-vezérlés a 2. generációs Azure Data Lake Storage-ben](./data-lake-storage-access-control.md)
 - [Ismert problémák](data-lake-storage-known-issues.md)
-
-

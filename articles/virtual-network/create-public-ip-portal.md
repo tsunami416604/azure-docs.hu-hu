@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: 49a89ee90d28c9c7a3f59424b773ee0f221381e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: add763b713b93604e089d7aec586876fecd2887c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89302730"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95895638"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-the-azure-portal"></a>Gyors útmutató: nyilvános IP-cím létrehozása a Azure Portal használatával
 
@@ -24,19 +24,19 @@ Ez a cikk bemutatja, hogyan hozhat létre egy nyilvános IP-cím-erőforrást a 
 
 # <a name="standard-sku---using-zones"></a>[**Szabványos SKU – zónák használatával**](#tab/option-create-public-ip-standard-zones)
 
-A következő lépések végrehajtásával hozzon létre egy **myStandardZRPublicIP**nevű szabványos, redundáns nyilvános IP-címet.
+A következő lépések végrehajtásával hozzon létre egy **myStandardZRPublicIP** nevű szabványos, redundáns nyilvános IP-címet.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Válassza az **Erőforrás létrehozása** lehetőséget. 
-3. A keresőmezőbe írja be a *nyilvános IP-cím*kifejezést.
-4. A keresési eredmények között válassza a **nyilvános IP-cím**elemet. Ezután a **nyilvános IP-cím** lapon válassza a **Létrehozás**lehetőséget.
+3. A keresőmezőbe írja be a *nyilvános IP-cím* kifejezést.
+4. A keresési eredmények között válassza a **nyilvános IP-cím** elemet. Ezután a **nyilvános IP-cím** lapon válassza a **Létrehozás** lehetőséget.
 5. A **nyilvános IP-cím létrehozása** lapon adja meg vagy válassza ki a következő adatokat: 
 
     | Beállítás                 | Érték                       |
     | ---                     | ---                         |
     | IP-verzió              | IPv4 kiválasztása                 |    
-    | SKU                     | **Standard** kiválasztása         |
-    | Name (Név)                    | *MyStandardZRPublicIP* megadása          |
+    | Termékváltozat                     | **Standard** kiválasztása         |
+    | Név                    | *MyStandardZRPublicIP* megadása          |
     | IP-cím hozzárendelése   | Vegye figyelembe, hogy ez a "statikus" értékként lesz zárolva.                                        |
     | Üresjárati időkorlát (perc)  | Hagyja meg az értéket 4        |
     | DNS-névcímke          | Hagyja üresen az értéket    |
@@ -47,46 +47,21 @@ A következő lépések végrehajtásával hozzon létre egy **myStandardZRPubli
 
 Vegye figyelembe, hogy ezek csak a [Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones)-val rendelkező régiókban érvényesek.  (Kiválaszthat egy adott zónát ezekben a régiókban, bár nem lesz rugalmas a zónabeli meghibásodás miatt.)
 
-# <a name="standard-sku---no-zones"></a>[**Szabványos SKU – nincsenek zónák**](#tab/option-create-public-ip-standard)
-
-A következő lépésekkel hozzon létre egy szabványos nyilvános IP-címet egy **myStandardPublicIP**nevű, nem zónákra kiterjedő erőforrásként.
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Válassza az **Erőforrás létrehozása** lehetőséget. 
-3. A keresőmezőbe írja be a *nyilvános IP-cím*kifejezést.
-4. A keresési eredmények között válassza a **nyilvános IP-cím**elemet. Ezután a **nyilvános IP-cím** lapon válassza a **Létrehozás**lehetőséget.
-5. A **nyilvános IP-cím létrehozása** lapon adja meg vagy válassza ki a következő adatokat: 
-
-    | Beállítás                 | Érték                       |
-    | ---                     | ---                         |
-    | IP-verzió              | IPv4 kiválasztása                 |    
-    | SKU                     | **Standard** kiválasztása         |
-    | Name (Név)                    | *MyStandardPublicIP* megadása          |
-    | IP-cím hozzárendelése   | Vegye figyelembe, hogy ez a "statikus" értékként lesz zárolva.                                        |
-    | Üresjárati időkorlát (perc)  | Hagyja meg az értéket 4        |
-    | DNS-névcímke          | Hagyja üresen az értéket    |
-    | Előfizetés            | Válassza ki előfizetését.   |
-    | Erőforráscsoport          | Válassza az **új létrehozása** elemet, írja be a myResourceGroup, majd kattintson **az OK gombra** . |
-    | Hely                | Válassza az **USA 2. keleti** régióját      |
-    | Rendelkezésre állási zóna       | Válasszon **zónát** (és lásd az alábbi megjegyzést) |
-
-Ez a kijelölés minden régióban érvényes, és a régiókban a standard nyilvános IP-címek alapértelmezett kiválasztása [Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones)nélkül.
-
 # <a name="basic-sku"></a>[**Alapszintű termékváltozat**](#tab/option-create-public-ip-basic)
 
-A következő lépésekkel hozzon létre egy **myBasicPublicIP**nevű alapszintű statikus nyilvános IP-címet.  Az alapszintű nyilvános IP-címek nem rendelkeznek a rendelkezésre állási zónák fogalmával.
+A következő lépésekkel hozzon létre egy **myBasicPublicIP** nevű alapszintű statikus nyilvános IP-címet.  Az alapszintű nyilvános IP-címek nem rendelkeznek a rendelkezésre állási zónák fogalmával.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Válassza az **Erőforrás létrehozása** lehetőséget. 
-3. A keresőmezőbe írja be a *nyilvános IP-cím*kifejezést.
-4. A keresési eredmények között válassza a **nyilvános IP-cím**elemet. Ezután a **nyilvános IP-cím** lapon válassza a **Létrehozás**lehetőséget.
+3. A keresőmezőbe írja be a *nyilvános IP-cím* kifejezést.
+4. A keresési eredmények között válassza a **nyilvános IP-cím** elemet. Ezután a **nyilvános IP-cím** lapon válassza a **Létrehozás** lehetőséget.
 5. A **nyilvános IP-cím létrehozása** lapon adja meg vagy válassza ki a következő adatokat: 
 
     | Beállítás                 | Érték                       |
     | ---                     | ---                         |
     | IP-verzió              | IPv4 kiválasztása                 |    
-    | SKU                     | **Standard** kiválasztása         |
-    | Name (Név)                    | *MyBasicPublicIP* megadása          |
+    | Termékváltozat                     | **Standard** kiválasztása         |
+    | Név                    | *MyBasicPublicIP* megadása          |
     | IP-cím hozzárendelése   | Válassza a **statikus** lehetőséget (lásd az alábbi megjegyzést)                                     |
     | Üresjárati időkorlát (perc)  | Hagyja meg az értéket 4        |
     | DNS-névcímke          | Hagyja üresen az értéket    |
@@ -102,7 +77,7 @@ Ha elfogadható az IP-cím időbeli változása, akkor kiválaszthatja a **dinam
 
 A fent felsorolt egyes mezőkről további részleteket a [nyilvános IP-címek kezelése](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#create-a-public-ip-address)című témakörben talál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Nyilvános IP-cím hozzárendelése virtuális géphez](https://docs.microsoft.com/azure/virtual-network/associate-public-ip-address-vm#azure-portal)
 - További információ az Azure [-beli nyilvános IP-címekről](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) .
 - További információ az összes [nyilvános IP-cím beállításról](virtual-network-public-ip-address.md#create-a-public-ip-address).

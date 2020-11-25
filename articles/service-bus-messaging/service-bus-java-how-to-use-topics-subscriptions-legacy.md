@@ -5,18 +5,18 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: ddf58219a81e81f40dcc33de1452007cbd782d2b
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: ff52e4c8056d25f2577d077ca0499236a78adc02
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95819478"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95909458"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>Gyors útmutató: Service Bus témakörök és előfizetések használata Javával
 Ebben a rövid útmutatóban a Java-kódokat kell írnia, hogy üzeneteket küldjön egy Azure Service Bus témakörbe, majd üzeneteket fogadjon az előfizetésből az adott témakörbe. 
 
 > [!WARNING]
->  Ez a rövid útmutató a régi Azure-servicebus csomagokat használja. A legújabb Azure-Messaging-servicebus csomagot használó gyors útmutatóért lásd: [üzenetek küldése és fogadása az Azure-Messaging-servicebus használatával](service-bus-java-how-to-use-topics-subscriptions.md).
+>  Ez a rövid útmutató a jelenlegi általánosan elérhető (GA) Azure-servicebus csomagot használja. Az **előzetes** verzióban elérhető új Azure-Messaging-servicebus csomagot használó rövid útmutató: [üzenetek küldése és fogadása az Azure-Messaging-servicebus használatával](service-bus-java-how-to-use-topics-subscriptions.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 

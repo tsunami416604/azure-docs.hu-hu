@@ -1,5 +1,5 @@
 ---
-title: Azure-igazolás hibaelhárítási útmutatója
+title: Azure Attestation – Hibaelhárítási útmutató
 description: Hibaelhárítási útmutató a gyakran megfigyelt problémákhoz
 services: attestation
 author: msmbaldwin
@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 46e3521a54f6bfdfbfb25634a09b8c8e0cfdcac0
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: fe347983e2143c7a4bdf00ca0207356c881c66ac
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93343105"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95891282"
 ---
 # <a name="microsoft-azure-attestation-troubleshooting-guide"></a>Microsoft Azure igazolás hibaelhárítási útmutatója
 
@@ -64,7 +64,7 @@ A szerepkörök a PowerShellben való ellenőrzéséhez futtassa az alábbi para
 
 a. Indítsa el a PowerShellt, és jelentkezzen be az Azure-ba a "kapcsolat-AzAccount" parancsmag használatával
 
-b. A RBAC szerepkör-hozzárendelési beállításainak ellenőrzése
+b. Az Azure-szerepkör-hozzárendelés beállításainak ellenőrzése
 
 
   ```powershell

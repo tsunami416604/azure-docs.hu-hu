@@ -8,12 +8,12 @@ ms.reviewer: jamesbak
 ms.date: 09/09/2020
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: ae92828f08ae4abf9cc28f18872cca27ce747be4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc1d217dba64c36aa219abbd4d2220a494347689
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89657649"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912756"
 ---
 # <a name="azure-data-lake-storage-query-acceleration"></a>Azure Data Lake Storage lekérdezés gyorsulása
 
@@ -50,7 +50,7 @@ Az alábbi ábra azt szemlélteti, hogy egy átlagos alkalmazás hogyan használ
 
 A lekérdezési gyorsítás optimalizálja a teljesítményt azáltal, hogy csökkenti az alkalmazás által átvitt és feldolgozott adatmennyiséget.
 
-Egy összesített érték kiszámításához az alkalmazások általában lekérik az **összes** adatokat egy fájlból, majd helyileg dolgozzák fel és szűrhetik az adatokat. Az elemzési számítási feladatokhoz tartozó bemeneti/kimeneti minták elemzése azt mutatja, hogy az alkalmazások általában csak 20%-át igénylik az általuk beolvasott adatokat az adott számítás elvégzéséhez. Ez a statisztika akkor is igaz, ha olyan technikákat alkalmaz, mint például a [partíciók metszése](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-optimize-hive-query#hive-partitioning). Ez azt jelenti, hogy az ilyen adatmennyiség 80%-a feleslegesen a hálózaton keresztül történik, és az alkalmazások elemzik és szűrik azokat. Ez a minta, amely lényegében a szükségtelen adatok eltávolítására lett kialakítva, jelentős számítási költségekkel jár.  
+Egy összesített érték kiszámításához az alkalmazások általában lekérik az **összes** adatokat egy fájlból, majd helyileg dolgozzák fel és szűrhetik az adatokat. Az elemzési számítási feladatokhoz tartozó bemeneti/kimeneti minták elemzése azt mutatja, hogy az alkalmazások általában csak 20%-át igénylik az általuk beolvasott adatokat az adott számítás elvégzéséhez. Ez a statisztika akkor is igaz, ha olyan technikákat alkalmaz, mint például a [partíciók metszése](../../hdinsight/hdinsight-hadoop-optimize-hive-query.md#hive-partitioning). Ez azt jelenti, hogy az ilyen adatmennyiség 80%-a feleslegesen a hálózaton keresztül történik, és az alkalmazások elemzik és szűrik azokat. Ez a minta, amely lényegében a szükségtelen adatok eltávolítására lett kialakítva, jelentős számítási költségekkel jár.  
 
 Annak ellenére, hogy az Azure egy piacvezető hálózatot is tartalmaz, az átviteli sebesség és a késés tekintetében, az adatok felesleges átvitele a hálózaton keresztül továbbra is költséges az alkalmazások teljesítményére. Ha kiszűri a nemkívánatos adattárolási kérést a tárolási kérelem során, a lekérdezés gyorsulása kiküszöböli ezt a költségeket.
 
@@ -72,9 +72,7 @@ A Azure Data Lake Storage szolgáltatásban megnövelt számítási terhelés mi
 
 A számlázási modellre való váltás ellenére a lekérdezési gyorsítás díjszabási modellje úgy van kialakítva, hogy csökkentse a számítási feladatok teljes tulajdonlási költségét, a jóval drágább virtuális gépek költségeinek csökkentése miatt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Adatszűrés Azure Data Lake Storage lekérdezési gyorsítás használatával](data-lake-storage-query-acceleration-how-to.md)
 - [A lekérdezés gyorsításának SQL nyelvi referenciája](query-acceleration-sql-reference.md)
-
-

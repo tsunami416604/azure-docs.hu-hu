@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 734ad2d45dbb27894e5da4fbeb11c0e8b60df8bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e69a97a86a357fb36dde572f292b5cac7963d14a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88035671"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912484"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Az DistCp használata az Azure Storage-blobok és a Azure Data Lake Storage Gen2 közötti adatmásoláshoz
 
@@ -27,7 +27,7 @@ A DistCp számos parancssori paramétert biztosít, és nyomatékosan javasoljuk
 * Egy meglévő Azure Storage-fiók, amelyhez nincs engedélyezve Data Lake Storage Gen2 képesség (hierarchikus névtér).
 * Egy Azure Storage-fiók, amelyen engedélyezve van a Data Lake Storage Gen2 képességek (hierarchikus névtér). A létrehozásával kapcsolatos útmutatásért lásd: [Azure Storage-fiók létrehozása](../common/storage-account-create.md)
 * A Storage-fiókban a hierarchikus névtérrel létrehozott tároló.
-* Egy Azure HDInsight-fürt, amely hozzáféréssel rendelkezik egy olyan Storage-fiókhoz, amelyen engedélyezve van a hierarchikus névtér funkció. Lásd: [Azure Data Lake Storage Gen2 használata az Azure HDInsight-fürtökkel](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Győződjön meg arról, hogy engedélyezi Távoli asztal a fürt számára.
+* Egy Azure HDInsight-fürt, amely hozzáféréssel rendelkezik egy olyan Storage-fiókhoz, amelyen engedélyezve van a hierarchikus névtér funkció. Lásd: [Azure Data Lake Storage Gen2 használata az Azure HDInsight-fürtökkel](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Győződjön meg arról, hogy engedélyezi Távoli asztal a fürt számára.
 
 ## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>DistCp használata egy HDInsight Linux-fürtből
 

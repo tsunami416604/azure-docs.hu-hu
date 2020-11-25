@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: b670ec3cee2ebd1cc98ea2e04fb2b0dfd90e4e1a
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 900021e258bb96c0d0c83ef182262515449ad5df
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94594215"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912586"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>A blob Storage funkciói a Azure Data Lake Storage Gen2ban érhetők el
 
@@ -31,7 +31,7 @@ A következő táblázat azt mutatja be, hogy az egyes Blobok tárolási funkci�
 |Ritka elérésű tárolási szint|Általánosan elérhető|Nem támogatott|[Azure Blob Storage: A gyakori és ritka elérésű, valamint az archív hozzáférési szintek](storage-blob-storage-tiers.md)|
 |Események|Általánosan elérhető|Általánosan elérhető|[Reagálás Blob Storage-eseményekre](storage-blob-event-overview.md)|
 |Metrikák (klasszikus)|Általánosan elérhető|Általánosan elérhető|[Azure Storage Analytics-metrikák (klasszikus)](../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|Metrikák az Azure Monitorban|Általánosan elérhető|Előnézet|[Azure Storage-metrikák az Azure Monitorban](../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Metrikák az Azure Monitorban|Általánosan elérhető|Előnézet|[Azure Storage-metrikák az Azure Monitorban](./monitor-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |BLOB Storage PowerShell-parancsok|Általánosan elérhető|Általánosan elérhető|[Rövid útmutató: Blobok feltöltése, letöltése és listázása a PowerShell-lel](storage-quickstart-blobs-powershell.md)|
 |BLOB Storage – Azure CLI-parancsok|Általánosan elérhető|Általánosan elérhető|[Gyors útmutató: Blobok létrehozása, letöltése és listázása az Azure CLI-vel](storage-quickstart-blobs-cli.md)|
 |BLOB Storage API-k|Általánosan elérhető|Általánosan elérhető|[Rövid útmutató: Az Azure Blob Storage .NET-hez készült ügyféloldali kódtára (v12)](storage-quickstart-blobs-dotnet.md)<br>[Gyors útmutató: Blobok kezelése a Java V12 SDK-val](storage-quickstart-blobs-java.md)<br>[Gyors útmutató: Blobok kezelése a Python V12 SDK-val](storage-quickstart-blobs-python.md)<br>[Gyors útmutató: Blobok kezelése a JavaScript V12 SDK-val Node.js](storage-quickstart-blobs-nodejs.md)|
@@ -39,12 +39,12 @@ A következő táblázat azt mutatja be, hogy az egyes Blobok tárolási funkci�
 |Archív hozzáférési szint|Általánosan elérhető|Nem támogatott|[Azure Blob Storage: A gyakori és ritka elérésű, valamint az archív hozzáférési szintek](storage-blob-storage-tiers.md)|
 |Életciklus-kezelési szabályzatok (rétegek)|Általánosan elérhető|Még nem támogatott|[Az Azure Blob Storage-életciklus felügyelete](storage-lifecycle-management-concepts.md)|
 |Életciklus-kezelési szabályzatok (blob törlése)|Általánosan elérhető|Általánosan elérhető|[Az Azure Blob Storage-életciklus felügyelete](storage-lifecycle-management-concepts.md)|
-|Bejelentkezés Azure Monitor|Előnézet |Előnézet|[Az Azure Storage figyelése](../common/monitor-storage.md)|
+|Bejelentkezés Azure Monitor|Előnézet |Előnézet|[Az Azure Storage figyelése](./monitor-blob-storage.md)|
 |Pillanatképek|Előnézet|Előnézet|[BLOB-Pillanatképek](snapshots-overview.md)|
 |Statikus webhelyek|Előnézet|Előnézet|[Statikus webhely üzemeltetés az Azure Storage-ban](storage-blob-static-website.md)|
 |Megváltoztathatatlan tároló|Előnézet|Előnézet|[Üzleti szempontból kritikus fontosságú blob-alapú adattárolás tárolása a nem módosítható tárolóval](storage-blob-immutable-storage.md)|
 |Tároló – Soft delete|Előnézet|Előnézet|[Tárolók törlése (előzetes verzió)](soft-delete-container-overview.md)|
-|Blobos törlés|Még nem támogatott|Még nem támogatott|[Blobok helyreállítható törlése](storage-blob-soft-delete.md)|
+|Blobos törlés|Még nem támogatott|Még nem támogatott|[Blobok helyreállítható törlése](./soft-delete-blob-overview.md)|
 |Blobfuse|Általánosan elérhető|Általánosan elérhető|[BLOB Storage csatlakoztatása fájlrendszerként a blobfuse-mel](storage-how-to-mount-container-linux.md)|
 |Fiók feladatátvétele|Még nem támogatott|Még nem támogatott|[Vész-helyreállítási és-fiók feladatátvétele](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |BLOB Container ACL|Nem támogatott<div role="complementary" aria-labelledby="blob-container-ACL"><sup>1</sup></div>|Nem támogatott<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|Tekintse meg a táblázat alatti kapcsolódó megjegyzést.|
@@ -59,7 +59,7 @@ A következő táblázat azt mutatja be, hogy az egyes Blobok tárolási funkci�
 
 <div id="preview-form"><sup>2</sup> Ha a pillanatképeket, a nem módosítható tárolókat vagy a statikus webhelyeket Data Lake Storage Gen2 használatával szeretné használni, regisztrálnia kell az előzetes verzióban az <a href=https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VUOUc3NTNQSUdOTjgzVUlVT1pDTzU4WlRKRy4u>űrlap</a>kitöltésével.  </div>
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [Ismert problémák a Azure Data Lake Storage Gen2](data-lake-storage-known-issues.md)
 - [Az Azure Data Lake Storage Gen2t támogató Azure-szolgáltatások](data-lake-storage-supported-azure-services.md)

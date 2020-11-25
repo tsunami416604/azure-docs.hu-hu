@@ -9,12 +9,12 @@ ms.date: 09/09/2020
 ms.author: normesta
 ms.reviewer: jamsbak
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: b7f566f85ebdb6b481797823cba78aa968747e9f
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b02f5a7c390c5594a7c5692798a0691c8d9a42d0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746430"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912773"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>Az Adatszűrés Azure Data Lake Storage lekérdezési gyorsítás használatával
 
@@ -26,13 +26,13 @@ A lekérdezési gyorsítás lehetővé teszi, hogy az alkalmazások és az elemz
 
 - Az Azure Storage eléréséhez Azure-előfizetésre lesz szüksége. Ha még nem rendelkezik előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a Kezdés előtt.
 
-- **Általános célú v2-** es Storage-fiók. Lásd: [Storage-fiók létrehozása](../common/storage-quickstart-create-account.md).
+- **Általános célú v2-** es Storage-fiók. Lásd: [Storage-fiók létrehozása](../common/storage-account-create.md).
 
 - Válassza ki a fület az SDK-specifikus előfeltételek megtekintéséhez.
 
   ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-  Nem értelmezhető
+  Nem alkalmazható
 
   ### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -92,7 +92,7 @@ A lekérdezési gyorsítás használatához először regisztrálnia kell a lek�
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. Nyissa meg a [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), vagy ha helyileg [telepítette](https://docs.microsoft.com/cli/azure/install-azure-cli) az Azure CLI-t, nyisson meg egy parancssori alkalmazást, például a Windows PowerShellt.
+1. Nyissa meg a [Azure Cloud Shell](../../cloud-shell/overview.md), vagy ha helyileg [telepítette](/cli/azure/install-azure-cli) az Azure CLI-t, nyisson meg egy parancssori alkalmazást, például a Windows PowerShellt.
 
 2. Ha az identitása egynél több előfizetéshez van társítva, akkor a Storage-fiók előfizetéséhez állítsa be az aktív előfizetést.
 
@@ -152,7 +152,7 @@ az provider register --namespace 'Microsoft.Storage'
 
 ---
 
-## <a name="set-up-your-environment"></a>A környezet kialakítása
+## <a name="set-up-your-environment"></a>Saját környezet beállítása
 
 ### <a name="step-1-install-packages"></a>1. lépés: csomagok telepítése 
 
@@ -236,7 +236,7 @@ Telepítse Data Lake ügyféloldali kódtárat a JavaScripthez egy terminál abl
 
 #### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Nem értelmezhető
+Nem alkalmazható
 
 #### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -328,7 +328,7 @@ Get-QueryCsv $ctx $container $blob "SELECT * FROM BlobStorage WHERE _3 = 'Heming
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-Az aszinkron metódus `BlobQuickQueryClient.QueryAsync` elküldi a lekérdezést a lekérdezési gyorsítási API-nak, majd [stream](https://docs.microsoft.com/dotnet/api/system.io.stream) -objektumként továbbítja az eredményeket az alkalmazásnak.
+Az aszinkron metódus `BlobQuickQueryClient.QueryAsync` elküldi a lekérdezést a lekérdezési gyorsítási API-nak, majd [stream](/dotnet/api/system.io.stream) -objektumként továbbítja az eredményeket az alkalmazásnak.
 
 ```cs
 static async Task QueryHemingway(BlockBlobClient blob)
@@ -612,7 +612,7 @@ async function queryDvds(blob)
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Data Lake Storage lekérdezés gyorsulása](data-lake-storage-query-acceleration.md)
 - [A lekérdezés gyorsításának SQL nyelvi referenciája](query-acceleration-sql-reference.md)

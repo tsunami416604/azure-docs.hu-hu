@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/04/2019
-ms.openlocfilehash: ef34dbfd3af326dbf2d82e09a4c5c8c8e4a91a84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/11/2020
+ms.openlocfilehash: 5aa379f6601bc324bd08c53f251b2097141eec69
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87319796"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95911634"
 ---
 # <a name="log-analytics-data-security"></a>Adatbiztonság Log Analytics
 Ennek a dokumentumnak az a célja, hogy Log Analyticsra vonatkozó információt szolgáltasson, amely a Azure Monitor egyik funkciója, hogy kiegészítse a [Azure biztonsági és adatkezelési központ](https://www.microsoft.com/en-us/trust-center?rtc=1)információit.  
@@ -26,6 +26,12 @@ A Log Analytics szolgáltatás biztonságosan kezeli a felhőalapú adatait az a
 * Incidenskezelés
 * Megfelelőség
 * Biztonsági szabványok tanúsítványai
+
+A Azure Monitorba és Log Analyticsba beépített további biztonsági funkciókat is alkalmazhat. Ezeknek a funkcióknak több rendszergazdai felügyeletre van szükségük. 
+* Ügyfél által felügyelt (biztonsági) kulcsok
+* Azure Private Storage
+* Private Link-hálózatkezelés 
+* Azure-támogatás hozzáférési korlátait az Azure kulcstárolója állítja be
 
 Vegye fel velünk a kapcsolatot az alábbi információk bármelyikével kapcsolatos kérdésekkel, javaslatokkal vagy problémákkal, beleértve az [Azure-támogatási lehetőségek](https://azure.microsoft.com/support/options/)biztonsági szabályzatait is.
 
@@ -127,7 +133,7 @@ Az Azure Log Analytics megfelel a következő követelményeknek:
 * Azure-szolgáltatásként az Log Analytics által használt összetevők megfelelnek az Azure megfelelőségi követelményeinek. További információk a [Microsoft adatvédelmi központ megfelelőségi](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)szolgáltatásában olvashatók.
 
 > [!NOTE]
-> Egyes minősítések/igazolások esetén Log Analytics a *Operational Insights*korábbi neve alatt szerepel.
+> Egyes minősítések/igazolások esetén Log Analytics a *Operational Insights* korábbi neve alatt szerepel.
 >
 >
 
@@ -170,6 +176,15 @@ Az adatbázisban tárolt összegyűjtött adatok megőrzési ideje a kiválaszto
 
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4. a Log Analytics használata az adateléréshez
 Log Analytics munkaterület eléréséhez jelentkezzen be a Azure Portal a korábban beállított szervezeti fiókkal vagy Microsoft-fiók. A portál és a Log Analytics szolgáltatás közötti összes forgalmat biztonságos HTTPS-csatornán keresztül küldik el. A portál használatakor a rendszer egy munkamenet-azonosítót hoz létre a felhasználói ügyfélen (webböngészőn), és a rendszer a munkamenet megszakítása előtt helyi gyorsítótárban tárolja az adataikat. Ha leállt, a gyorsítótár törlődik. A személyazonosításra alkalmas adatokat nem tartalmazó ügyféloldali cookie-k nem törlődnek automatikusan. A munkamenet-cookie-k HTTPOnly vannak megjelölve, és biztonságosak. Az előre meghatározott üresjárati időszak után a Azure Portal munkamenet megszakad.
+
+
+## <a name="additional-security-features"></a>További biztonsági funkciók
+Ezeket a további biztonsági funkciókat a Azure Monitor/Log Analytics-környezet további biztonságossá tételéhez használhatja. Ezeknek a funkcióknak több rendszergazdai felügyeletre van szükségük. 
+- [Ügyfél által felügyelt (biztonsági) kulcsok](customer-managed-keys.md) – az ügyfél által felügyelt kulcsokkal titkosíthatja az log Analytics-munkaterületek számára továbbított adatfájlokat. Azure Key Vault használatát igényli. 
+- [Magánjellegű/ügyfél által felügyelt tár](private-storage.md) – felügyelje a személyes titkosított Storage-fiókját, és mondja el, log Analytics, hogy használja a figyelési adatai tárolásához 
+- [Privát kapcsolat hálózatkezelése](private-link-security.md) – az Azure Private link lehetővé teszi, hogy privát végpontok használatával biztonságosan összekapcsolja az Azure Pásti-szolgáltatásokat (beleértve a Azure monitor) a virtuális hálózattal. 
+- Az [Azure Customer kulcstároló](/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-preview) -Ügyfélszéf for Microsoft Azure egy felületet biztosít az ügyfelek számára az ügyfél-hozzáférési kérelmek áttekintéséhez és jóváhagyásához vagy elutasításához. Olyan esetekben használatos, amikor egy Microsoft-mérnöknek egy támogatási kérelem kezelése során hozzá kell férnie az ügyfél adataihoz.
+
 
 ## <a name="next-steps"></a>További lépések
 * Ismerje meg, hogyan gyűjthet adatokat az Azure-beli virtuális gépek Log Analyticsával az [Azure VM](../learn/quick-collect-azurevm.md)gyors üzembe helyezését követően.  

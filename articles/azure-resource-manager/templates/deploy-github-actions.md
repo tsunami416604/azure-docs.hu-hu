@@ -4,12 +4,12 @@ description: Leírja, hogyan lehet Azure Resource Manager sablonokat a GitHub-m�
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: adb0b9d9a7da19c45904a5d222573e1880915b12
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 3dcb246956aae274f17cf938ee3d406562b22941
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841682"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95905259"
 ---
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>Azure Resource Manager sablonok üzembe helyezése GitHub-műveletek használatával
 
@@ -112,7 +112,7 @@ A munkafolyamat-fájlt a tárház gyökerében található **. GitHub/munkafolya
         steps:
 
           # Checkout code
-        - uses: actions/checkout@master
+        - uses: actions/checkout@main
 
           # Log into Azure
         - uses: azure/login@v1
@@ -137,10 +137,10 @@ A munkafolyamat-fájlt a tárház gyökerében található **. GitHub/munkafolya
     A munkafolyamat-fájl első szakasza a következőket tartalmazza:
 
     - **Name (név**): a munkafolyamat neve.
-    - **bekapcsolva**: a munkafolyamatot kiváltó GitHub-események neve. A munkafolyamat akkor aktiválódik, ha van egy leküldéses esemény a főágra, amely módosítja a két megadott fájl legalább egyikét. A két fájl a munkafolyamat-fájl és a sablonfájl.
+    - **bekapcsolva**: a munkafolyamatot kiváltó GitHub-események neve. A munkafolyamat akkor aktiválódik, ha van egy leküldéses esemény a fő ágban, amely módosítja a két megadott fájl legalább egyikét. A két fájl a munkafolyamat-fájl és a sablonfájl.
 
 1. Válassza a **Start commit** (Véglegesítés indítása) lehetőséget.
-1. Válassza **a végrehajtás közvetlenül a Master ágat** lehetőséget.
+1. Válassza **a végrehajtás közvetlenül a fő ágat** lehetőséget.
 1. Válassza az **új fájl véglegesítés** (vagy a **módosítások elvégzése**) lehetőséget.
 
 Mivel a munkafolyamatot úgy konfigurálták, hogy a munkafolyamat-fájl vagy a frissítendő sablonfájl aktiválja, a munkafolyamat a módosítások véglegesítése után azonnal elindul.
@@ -152,10 +152,9 @@ Mivel a munkafolyamatot úgy konfigurálták, hogy a munkafolyamat-fájl vagy a 
 1. Az üzembe helyezés ellenőrzéséhez válassza az **ARM-telepítés futtatása** lehetőséget a menüből.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-
 Ha az erőforráscsoport és a tárház már nem szükséges, a telepített erőforrások tisztításához törölje az erőforráscsoportot és a GitHub-tárházat. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Az első ARM-sablon létrehozása](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)

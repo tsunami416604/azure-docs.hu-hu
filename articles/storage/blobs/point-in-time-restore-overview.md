@@ -10,12 +10,12 @@ ms.date: 09/22/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: aed3116976d57df81da399495fd9da3722ba770a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ca09e41e6d5b83f14d2dfee4107135585b7e945a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960677"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95908795"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>Időponthoz való visszaállítás a blokk Blobok esetében
 
@@ -49,7 +49,7 @@ A **blob-tartományok visszaállítása** művelet egy visszaállítási azonos�
 
 Az időponthoz való visszaállításhoz az alábbi Azure Storage-funkciók engedélyezésére van szükség az időponthoz való visszaállítás engedélyezése előtt:
 
-- [Helyreállítható törlés](soft-delete-overview.md)
+- [Helyreállítható törlés](./soft-delete-blob-overview.md)
 - [Csatorna módosítása](storage-blob-change-feed.md)
 - [BLOB verziószámozása](versioning-overview.md)
 
@@ -88,9 +88,9 @@ A visszaállítási művelet költségeit a helyreállítási időszak során m�
 
 Az időponthoz tartozó visszaállítás díjszabásáról további információt a [Blobok díjszabásának blokkolása](https://azure.microsoft.com/pricing/details/storage/blobs/)című témakörben talál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Időponthoz tartozó visszaállítás végrehajtása a blob-adatok blokkolása közben](point-in-time-restore-manage.md)
 - [A hírcsatornák támogatásának módosítása az Azure-ban Blob Storage](storage-blob-change-feed.md)
-- [Blobok helyreállítható törlésének engedélyezése](soft-delete-enable.md)
+- [Blobok helyreállítható törlésének engedélyezése](./soft-delete-blob-enable.md)
 - [BLOB-verziószámozás engedélyezése és kezelése](versioning-enable.md)

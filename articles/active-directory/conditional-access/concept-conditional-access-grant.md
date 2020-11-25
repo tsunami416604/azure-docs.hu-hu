@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 07/02/2020
+ms.date: 11/24/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a779fee89d52442207358cf90c8cf87e7ef221c2
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5ef2d233024ab3e9cd086e8285e681dc9f42f3f7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837651"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95904018"
 ---
 # <a name="conditional-access-grant"></a>Feltételes hozzáférés: Engedélyezés
 
@@ -70,7 +70,7 @@ Az [OAuth folyamat](../develop/v2-oauth2-device-code.md)használatakor a felügy
 
 A szervezeteknek meg kell követelniük, hogy a kiválasztott felhőalapú alkalmazásokhoz való hozzáférési kísérletet egy jóváhagyott ügyfélalkalmazás alapján kell végrehajtani. Ezek a jóváhagyott ügyfélalkalmazások a mobileszköz-kezelési (MDM) megoldástól függetlenül támogatják az [Intune app Protection-szabályzatokat](/intune/app-protection-policy) .
 
-Ennek a támogatásnak a kihasználása érdekében a feltételes hozzáférés megköveteli, hogy az eszköz regisztrálva legyen Azure Active Directoryban, amelyhez közvetítő alkalmazást kell használni. A közvetítő alkalmazás a Microsoft Authenticator iOS-hez, vagy az Microsoft Authenticator vagy a Microsoft vállalati portál Android-eszközökhöz. Ha egy közvetítő alkalmazás nincs telepítve az eszközön, amikor a felhasználó megkísérli a hitelesítést, a rendszer átirányítja a felhasználót a megfelelő app/Play áruházba a szükséges közvetítő alkalmazás telepítéséhez.
+Ennek a támogatásnak a kihasználása érdekében a feltételes hozzáférés megköveteli, hogy az eszköz regisztrálva legyen Azure Active Directoryban, amelyhez közvetítő alkalmazást kell használni. A közvetítő alkalmazás a Microsoft Authenticator iOS-hez, vagy az Microsoft Authenticator vagy a Microsoft vállalati portál Android-eszközökhöz. Ha egy közvetítő alkalmazás nincs telepítve az eszközön, amikor a felhasználó megpróbál hitelesíteni, a rendszer átirányítja a felhasználót a megfelelő App Store-ba a szükséges közvetítő alkalmazás telepítéséhez.
 
 Ez a beállítás a következő iOS-és Android-alkalmazásokra vonatkozik:
 
@@ -167,7 +167,7 @@ Ha a jelszó-módosítási vezérlő használatával konfigurál egy házirendet
 
 Ha a szervezet létrehozta a használati feltételeket, az engedélyezési vezérlők területen további beállítások is láthatók. Ezek a beállítások lehetővé teszik a rendszergazdák számára, hogy a szabályzat által védett erőforrások elérésének feltétele megkövetelje a használati feltételek visszaigazolását. A használati feltételekkel kapcsolatos további információkért tekintse meg a cikkben [Azure Active Directory használati feltételeket](terms-of-use.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Feltételes hozzáférés: munkamenet-vezérlők](concept-conditional-access-session.md)
 

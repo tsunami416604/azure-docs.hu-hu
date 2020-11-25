@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e76612c6c1b83ddb7e88377824902fe6290e7aaf
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 6b522f234343cc6a50d76607d1629c46cd180b7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015239"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95894014"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>A szintézis fejlesztése a Speech szintézis Markup Language (SSML) nyelvvel
 
@@ -130,7 +130,7 @@ speechConfig->SetProperty(
 
 # <a name="java"></a>[Java](#tab/java)
 
-További információ: <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty?view=azure-java-stable#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank"> `setProperty` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+További információ: <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setproperty#com_microsoft_cognitiveservices_speech_SpeechConfig_setProperty_String_String_" target="_blank"> `setProperty` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 
 ```java
 speechConfig.setProperty(
@@ -243,7 +243,7 @@ A fenti módosítások a mondat szintjén lesznek alkalmazva, a stílusok és a 
 
 Ebből a táblázatból megállapíthatja, hogy az egyes neurális hangfelismerések milyen beszélő stílusokat támogatnak.
 
-| Hang                   | Stílus                     | Description                                                 |
+| Hang                   | Stílus                     | Leírás                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
 | `en-US-AriaNeural`      | `style="newscast-formal"` | Formális, magabiztos és mérvadó hangvételt ad a hírek kézbesítéséhez |
 |                         | `style="newscast-casual"` | Sokoldalú és hétköznapi hangvételt nyújt az általános hírekhez        |
@@ -383,7 +383,7 @@ Az `break` elem használatával szüneteltetheti a szavak közötti szüneteltet
 | `strength` | Meghatározza a Szüneteltetés relatív időtartamát az alábbi értékek egyikének használatával:<ul><li>Nincs</li><li>x – gyenge</li><li>gyenge</li><li>közepes (alapértelmezett)</li><li>erős</li><li>x – erős</li></ul> | Választható |
 | `time` | Megadja a szünet időtartamát másodpercben vagy ezredmásodpercben, ez az érték kisebb, mint 5000ms. Példák érvényes értékekre, `2s` és `500ms` | Választható |
 
-| Erősségét                      | Description |
+| Erősségét                      | Leírás |
 |-------------------------------|-------------|
 | Nincs, vagy ha nincs megadva érték | 0 MS        |
 | x – gyenge                        | 250 MS      |
@@ -854,6 +854,6 @@ SSML-dokumentumok esetében csak egy háttér-hangfájl engedélyezett. `audio`A
 </speak>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Nyelvi támogatás: hangok, területi beállítások, nyelvek](language-support.md)

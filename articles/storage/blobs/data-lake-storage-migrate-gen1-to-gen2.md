@@ -8,18 +8,18 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: c0b85164042ef8ba0dda5f83dbfe49f585a11f7c
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: aeb2c58504d1f058a3b887e02a7b7406c09db5b6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102642"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913147"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Azure Data Lake Storage migrálása a Gen1-ből a Gen2-be
 
 Az adatok, munkaterhelések és alkalmazások áttelepíthetők Data Lake Storage Gen1ról Data Lake Storage Gen2re.
 
-A Azure Data Lake Storage Gen2 az [Azure Blob Storage](storage-blobs-introduction.md) -ra épül, és a Big Data Analytics szolgáltatáshoz dedikált képességeket biztosít. A [Data Lake Storage Gen2](https://azure.microsoft.com/services/storage/data-lake-storage/) a [Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/index), például a fájlrendszer szemantikai, a könyvtári és a fájl szintű biztonságot és a méretezést az [Azure Blob Storage](storage-blobs-introduction.md)alacsony díjas, többszintű tárolásával, magas rendelkezésre állású/vész-helyreállítási képességeivel ötvözi.
+A Azure Data Lake Storage Gen2 az [Azure Blob Storage](storage-blobs-introduction.md) -ra épül, és a Big Data Analytics szolgáltatáshoz dedikált képességeket biztosít. A [Data Lake Storage Gen2](https://azure.microsoft.com/services/storage/data-lake-storage/) a [Azure Data Lake Storage Gen1](../../data-lake-store/index.yml), például a fájlrendszer szemantikai, a könyvtári és a fájl szintű biztonságot és a méretezést az [Azure Blob Storage](storage-blobs-introduction.md)alacsony díjas, többszintű tárolásával, magas rendelkezésre állású/vész-helyreállítási képességeivel ötvözi.
 
 > [!NOTE]
 > A könnyebb olvashatóság érdekében ebben a cikkben a *Gen1* kifejezésre kell hivatkozni Azure Data Lake Storage Gen1ra, és a *Gen2* kifejezésre kell hivatkozni Azure Data Lake Storage Gen2.
@@ -47,9 +47,9 @@ A Gen2 való Migrálás a következő megközelítést ajánljuk.
 
 3. Tekintse át az [ismert problémák](data-lake-storage-known-issues.md) listáját, hogy felmérje az esetleges hiányosságokat a funkcionalitásban.
 
-4. A Gen2 támogatja a blob Storage szolgáltatásait, például a [diagnosztikai naplózást](../common/storage-analytics-logging.md), a [hozzáférési szinteket](storage-blob-storage-tiers.md)és a [blob Storage életciklus-kezelési szabályzatait](storage-lifecycle-management-concepts.md). Ha ezen funkciók bármelyikét érdemes használni, tekintse át az [aktuális támogatási szintet](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-supported-blob-storage-features).
+4. A Gen2 támogatja a blob Storage szolgáltatásait, például a [diagnosztikai naplózást](../common/storage-analytics-logging.md), a [hozzáférési szinteket](storage-blob-storage-tiers.md)és a [blob Storage életciklus-kezelési szabályzatait](storage-lifecycle-management-concepts.md). Ha ezen funkciók bármelyikét érdemes használni, tekintse át az [aktuális támogatási szintet](./data-lake-storage-supported-blob-storage-features.md).
 
-5. Tekintse át az [Azure ökoszisztéma-támogatás](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-multi-protocol-access) aktuális állapotát, és győződjön meg arról, hogy a Gen2 minden olyan szolgáltatást támogat, amelytől a megoldások függenek.
+5. Tekintse át az [Azure ökoszisztéma-támogatás](./data-lake-storage-multi-protocol-access.md) aktuális állapotát, és győződjön meg arról, hogy a Gen2 minden olyan szolgáltatást támogat, amelytől a megoldások függenek.
 
 ### <a name="step-2-prepare-to-migrate"></a>2. lépés: Felkészülés az áttelepíteni
 
@@ -69,13 +69,13 @@ A Gen2 való Migrálás a következő megközelítést ajánljuk.
 
 Adatok, munkaterhelések és alkalmazások migrálása a kívánt mintázat használatával. Javasoljuk, hogy fokozatosan érvényesítse a forgatókönyveket.
 
-1. [Hozzon létre egy Storage-fiókot](data-lake-storage-quickstart-create-account.md) , és engedélyezze a hierarchikus névtér funkciót. 
+1. [Hozzon létre egy Storage-fiókot](../common/storage-account-create.md) , és engedélyezze a hierarchikus névtér funkciót. 
 
 2. Migrálja adatait. 
 
-3. Konfigurálja a [munkaterhelések szolgáltatásait](data-lake-storage-integrate-with-azure-services.md) úgy, hogy az a Gen2-végpontra mutasson. 
+3. Konfigurálja a [munkaterhelések szolgáltatásait](./data-lake-storage-supported-azure-services.md) úgy, hogy az a Gen2-végpontra mutasson. 
    
-4. Alkalmazások frissítése Gen2 API-k használatára. Lásd: a [.net](data-lake-storage-directory-file-acl-dotnet.md), a [Java](data-lake-storage-directory-file-acl-java.md), a [Python](data-lake-storage-directory-file-acl-python.md), a [JavaScript](data-lake-storage-directory-file-acl-javascript.md) és a [Rest](https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2)útmutatók. 
+4. Alkalmazások frissítése Gen2 API-k használatára. Lásd: a [.net](data-lake-storage-directory-file-acl-dotnet.md), a [Java](data-lake-storage-directory-file-acl-java.md), a [Python](data-lake-storage-directory-file-acl-python.md), a [JavaScript](data-lake-storage-directory-file-acl-javascript.md) és a [Rest](/rest/api/storageservices/data-lake-storage-gen2)útmutatók. 
    
 5. Parancsfájlok frissítése Data Lake Storage Gen2 PowerShell- [parancsmagok](data-lake-storage-directory-file-acl-powershell.md)és [Azure CLI-parancsok](data-lake-storage-directory-file-acl-cli.md)használatához.
    
@@ -97,13 +97,13 @@ Ez a táblázat összehasonlítja a Gen1 képességeit a Gen2.
 |---|---|---|
 |Adatszervezet|[Hierarchikus névtér](data-lake-storage-namespace.md)<br>Fájlok és mappák támogatása|[Hierarchikus névtér](data-lake-storage-namespace.md)<br>Tároló, fájl és mappa támogatása |
 |Georedundancia| [LRS](../common/storage-redundancy.md#locally-redundant-storage)| [LRS](../common/storage-redundancy.md#locally-redundant-storage), [ZRS](../common/storage-redundancy.md#zone-redundant-storage), [GRS](../common/storage-redundancy.md#geo-redundant-storage), [ra-GRS](../common/storage-redundancy.md#read-access-to-data-in-the-secondary-region) |
-|Hitelesítés|[HRE felügyelt identitás](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Szolgáltatásnevek](../../active-directory/develop/app-objects-and-service-principals.md)|[HRE felügyelt identitás](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Szolgáltatásnevek](../../active-directory/develop/app-objects-and-service-principals.md)<br>[Megosztott elérési kulcs](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)|
+|Hitelesítés|[HRE felügyelt identitás](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Szolgáltatásnevek](../../active-directory/develop/app-objects-and-service-principals.md)|[HRE felügyelt identitás](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Szolgáltatásnevek](../../active-directory/develop/app-objects-and-service-principals.md)<br>[Megosztott elérési kulcs](/rest/api/storageservices/authorize-with-shared-key)|
 |Engedélyezés|Felügyelet – [Azure RBAC](../../role-based-access-control/overview.md)<br>Adathozzáférés – [ACL](data-lake-storage-access-control.md) -EK|Felügyelet – [Azure RBAC](../../role-based-access-control/overview.md)<br>Adatacl [ACLs](data-lake-storage-access-control.md)-EK, [Azure-RBAC](../../role-based-access-control/overview.md) |
-|Titkosítás – inaktív adatok|Kiszolgálóoldali – a [Microsoft által felügyelt](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) vagy az [ügyfél által felügyelt](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) kulcsokkal|Kiszolgálóoldali – a [Microsoft által felügyelt](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) vagy az [ügyfél által felügyelt](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) kulcsokkal|
+|Titkosítás – inaktív adatok|Kiszolgálóoldali – a [Microsoft által felügyelt](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) vagy az [ügyfél által felügyelt](../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) kulcsokkal|Kiszolgálóoldali – a [Microsoft által felügyelt](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) vagy az [ügyfél által felügyelt](../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) kulcsokkal|
 |VNET-támogatás|[VNET-integráció](../../data-lake-store/data-lake-store-network-security.md)|[Szolgáltatási végpontok](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), [magánhálózati végpontok](../common/storage-private-endpoints.md)|
 |Fejlesztői élmény|[Rest](../../data-lake-store/data-lake-store-data-operations-rest-api.md), [.net](../../data-lake-store/data-lake-store-data-operations-net-sdk.md), [Java](../../data-lake-store/data-lake-store-get-started-java-sdk.md), [Python](../../data-lake-store/data-lake-store-data-operations-python.md), [PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md), [Azure CLI](../../data-lake-store/data-lake-store-get-started-cli-2.0.md)|Általánosan elérhető – [Rest](/rest/api/storageservices/data-lake-storage-gen2), [.net](data-lake-storage-directory-file-acl-dotnet.md), [Java](data-lake-storage-directory-file-acl-java.md), [Python](data-lake-storage-directory-file-acl-python.md)<br>Nyilvános előzetes verzió – [JavaScript](data-lake-storage-directory-file-acl-javascript.md), [POWERSHELL](data-lake-storage-directory-file-acl-powershell.md), [Azure CLI](data-lake-storage-directory-file-acl-cli.md)|
 |Erőforrásnaplók|Klasszikus naplók<br>[Integrált Azure Monitor](../../data-lake-store/data-lake-store-diagnostic-logs.md)|[Klasszikus naplók](../common/storage-analytics-logging.md) – általánosan elérhető<br>Azure monitor-integráció – időbeli meghatározás|
-|Ökoszisztéma|[HDInsight (3,6)](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md), [Azure Databricks (3,1 vagy újabb)](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html), [Azure szinapszis Analytics](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store), [ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight (3,6, 4,0)](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md), [Azure Databricks (5,1 és újabb)](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2), [Azure szinapszis Analytics](../../azure-sql/database/vnet-service-endpoint-rule-overview.md), [ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
+|Ökoszisztéma|[HDInsight (3,6)](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md), [Azure Databricks (3,1 vagy újabb)](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html), [Azure szinapszis Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md), [ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight (3,6, 4,0)](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md), [Azure Databricks (5,1 és újabb)](/azure/databricks/data/data-sources/azure/azure-datalake-gen2), [Azure szinapszis Analytics](../../azure-sql/database/vnet-service-endpoint-rule-overview.md), [ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
 
 <a id="migration-patterns"></a>
 
@@ -116,7 +116,7 @@ Válasszon egy áttelepítési mintát, majd szükség szerint módosítsa a min
 |**Emelés és váltás**|A legegyszerűbb minta. Ideális, ha az adatfolyamatok leállást biztosítanak.|
 |**Növekményes másolat**|Hasonló a *lifthez és a váltáshoz*, de kevesebb állásidővel. Ideális nagy mennyiségű, a másolást hosszabb ideig elfoglaló adatforgalomhoz.|
 |**Kettős folyamat**|Olyan folyamatok esetében ideális, amelyek nem tudnak leállást biztosítani.|
-|**Kétirányú szinkronizálás**|A *kettős folyamathoz*hasonlóan, de egy többfázisú megközelítéssel, amely bonyolultabb folyamatokhoz is alkalmas.|
+|**Kétirányú szinkronizálás**|A *kettős folyamathoz* hasonlóan, de egy többfázisú megközelítéssel, amely bonyolultabb folyamatokhoz is alkalmas.|
 
 Ismerkedjen meg közelebbről az egyes mintákhoz.
  
@@ -126,7 +126,7 @@ Ez a legegyszerűbb minta.
 
 1. Állítsa le az összes írást a Gen1.
 
-2. Adatok áthelyezése a Gen1 a Gen2-be. Javasoljuk, hogy [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage). Az ACL-ek az adattal együtt másolhatók.
+2. Adatok áthelyezése a Gen1 a Gen2-be. Javasoljuk, hogy [Azure Data Factory](../../data-factory/connector-azure-data-lake-storage.md). Az ACL-ek az adattal együtt másolhatók.
 
 3. Mutasson a műveletek és a számítási feladatok Gen2.
 
@@ -147,7 +147,7 @@ Tekintse meg a lift és a SHIFT minta minta kódját a lift és a [SHIFT áttele
 
 ### <a name="incremental-copy-pattern"></a>Növekményes másolási minta
 
-1. Az adatok áthelyezésének megkezdése a Gen1 és a Gen2 között. Javasoljuk, hogy [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage). Az ACL-ek az adattal együtt másolhatók.
+1. Az adatok áthelyezésének megkezdése a Gen1 és a Gen2 között. Javasoljuk, hogy [Azure Data Factory](../../data-factory/connector-azure-data-lake-storage.md). Az ACL-ek az adattal együtt másolhatók.
 
 2. Az új adatok növekményes másolása a Gen1.
 
@@ -171,7 +171,7 @@ Tekintse meg a növekményes másolási minta növekményes másolási mintájá
 
 ### <a name="dual-pipeline-pattern"></a>Kettős folyamat mintája
 
-1. Adatok áthelyezése a Gen1 a Gen2-be. Javasoljuk, hogy [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage). Az ACL-ek az adattal együtt másolhatók.
+1. Adatok áthelyezése a Gen1 a Gen2-be. Javasoljuk, hogy [Azure Data Factory](../../data-factory/connector-azure-data-lake-storage.md). Az ACL-ek az adattal együtt másolhatók.
 
 2. Az új adatmennyiséget Gen1 és Gen2 is betöltheti.
 
@@ -213,6 +213,6 @@ Tekintse meg a kétirányú szinkronizálási minta mintáját a [kétirányú s
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg a Storage-fiók biztonsági beállításainak különböző részeit. Lásd: az [Azure Storage biztonsági útmutatója](../common/storage-security-guide.md).
+- Ismerje meg a Storage-fiók biztonsági beállításainak különböző részeit. Lásd: az [Azure Storage biztonsági útmutatója](./security-recommendations.md).
 - Optimalizálja a Data Lake Store teljesítményét. Lásd: [Azure Data Lake Storage Gen2 optimalizálása a teljesítményhez](data-lake-storage-performance-tuning-guidance.md)
 - Tekintse át a Data Lake Store kezelésével kapcsolatos ajánlott eljárásokat. Lásd: [ajánlott eljárások Azure Data Lake Storage Gen2 használatához](data-lake-storage-best-practices.md)

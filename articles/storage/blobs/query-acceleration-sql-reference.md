@@ -10,12 +10,12 @@ ms.date: 09/09/2020
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
-ms.openlocfilehash: affddf7367f58107106ae07a07b8baedac73e251
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2eda67e377a3b61e696e732b916d788c00a18eae
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89659561"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95908778"
 ---
 # <a name="query-acceleration-sql-language-reference"></a>A lekérdezés gyorsításának SQL nyelvi referenciája
 
@@ -63,7 +63,7 @@ SELECT sys.split(split_size)FROM BlobStorage
 |IDŐBÉLYEG|Egy adott időpontban.                           |
 |LOGIKAI  |Igaz vagy hamis.                             |
 
-A CSV formátumú adatokból származó értékek olvasásakor az összes érték karakterláncként van beolvasva.  A karakterlánc-értékek a CAST kifejezéseket használó más típusokra is átalakíthatók.  Az értékek implicit módon más típusokra is felhelyezhetők a környezettől függően. További információ: [adattípus-prioritás (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql).
+A CSV formátumú adatokból származó értékek olvasásakor az összes érték karakterláncként van beolvasva.  A karakterlánc-értékek a CAST kifejezéseket használó más típusokra is átalakíthatók.  Az értékek implicit módon más típusokra is felhelyezhetők a környezettől függően. További információ: [adattípus-prioritás (Transact-SQL)](/sql/t-sql/data-types/data-type-precedence-transact-sql).
 
 ## <a name="expressions"></a>Kifejezések
 
@@ -79,34 +79,34 @@ A következő szabványos SQL-operátorok támogatottak:
 
 |Operátor|Leírás|
 |--|--|
-|[=](https://docs.microsoft.com/sql/t-sql/language-elements/equals-transact-sql)    |Összehasonlítja a két kifejezés (összehasonlító operátor) egyenlőségét.|
-|[!=](https://docs.microsoft.com/sql/t-sql/language-elements/not-equal-to-transact-sql-exclamation)    |Azt vizsgálja, hogy egy kifejezés nem egyenlő-e egy másik kifejezéssel (összehasonlító operátor).|
-|[<>](https://docs.microsoft.com/sql/t-sql/language-elements/not-equal-to-transact-sql-traditional)    |Összehasonlítja a két kifejezést, hogy ne legyen egyenlő (összehasonlítási operátor).|
-|[<](https://docs.microsoft.com/sql/t-sql/language-elements/less-than-transact-sql)    |Összehasonlítja a két kifejezést kisebb, mint (összehasonlítási operátor).|
-|[<=](https://docs.microsoft.com/sql/t-sql/language-elements/less-than-or-equal-to-transact-sql)    |Összehasonlítja a két kifejezést kisebb vagy egyenlő értékkel (összehasonlító operátor).|
-|[>](https://docs.microsoft.com/sql/t-sql/language-elements/greater-than-transact-sql)    |Összehasonlítja a két kifejezést nagyobb mint (összehasonlító operátor). |
-|[>=](https://docs.microsoft.com/sql/t-sql/language-elements/greater-than-or-equal-to-transact-sql)    |Összehasonlítja a két kifejezést nagyobb vagy egyenlő értékkel (összehasonlító operátor).|
-|[+](https://docs.microsoft.com/sql/t-sql/language-elements/add-transact-sql)    |Két szám hozzáadására szolgál. Ez a kiegészítő aritmetikai operátor egy számot is hozzáadhat napokban a dátumhoz.|
-|[-](https://docs.microsoft.com/sql/t-sql/language-elements/subtract-transact-sql)    |Két szám kivonása (egy aritmetikai kivonási operátor). |
-|[/](https://docs.microsoft.com/sql/t-sql/language-elements/divide-transact-sql)    |Az egyik számot egy másikra (egy aritmetikai osztási operátorra) osztja.|
-|[*](https://docs.microsoft.com/sql/t-sql/language-elements/multiply-transact-sql)    |Két kifejezés (egy aritmetikai szorzási operátor) szorzata.|
-|[%](https://docs.microsoft.com/sql/t-sql/language-elements/modulo-transact-sql)    |Egy szám fennmaradó számát adja vissza egy másikkal osztva.|
-|[AND](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-and-transact-sql)    |Egy bitenkénti logikai és műveletet hajt végre két egész érték között.|
-|[OR](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-or-transact-sql)    |Bitenkénti logikai vagy műveletet hajt végre két megadott egész érték között, a Transact-SQL-utasításokon belüli bináris kifejezésekre lefordítva.|
-|[NOT](https://docs.microsoft.com/sql/t-sql/language-elements/not-transact-sql)    |Egy logikai bemenet megtagadása.|
-|[CAST](https://docs.microsoft.com/sql/t-sql/functions/cast-and-convert-transact-sql)    |Egy adott adattípusú kifejezést alakít át egy másikra.|
-|[KÖZÖTT](https://docs.microsoft.com/sql/t-sql/language-elements/between-transact-sql)    |Meghatározza a vizsgálandó tartományt.|
-|[A](https://docs.microsoft.com/sql/t-sql/language-elements/in-transact-sql)    |Meghatározza, hogy egy adott érték egyezik-e egy allekérdezés vagy egy lista bármelyik értékével.|
-|[NULLIF](https://docs.microsoft.com/sql/t-sql/language-elements/nullif-transact-sql)    |Null értéket ad vissza, ha a két megadott kifejezés egyenlő.|
-|[COALESCE](https://docs.microsoft.com/sql/t-sql/language-elements/coalesce-transact-sql)    |Kiértékeli az argumentumokat sorrendben, és visszaadja az első olyan kifejezés aktuális értékét, amely kezdetben nem a NULL értékre van kiértékelve.|
+|[=](/sql/t-sql/language-elements/equals-transact-sql)    |Összehasonlítja a két kifejezés (összehasonlító operátor) egyenlőségét.|
+|[!=](/sql/t-sql/language-elements/not-equal-to-transact-sql-exclamation)    |Azt vizsgálja, hogy egy kifejezés nem egyenlő-e egy másik kifejezéssel (összehasonlító operátor).|
+|[<>](/sql/t-sql/language-elements/not-equal-to-transact-sql-traditional)    |Összehasonlítja a két kifejezést, hogy ne legyen egyenlő (összehasonlítási operátor).|
+|[<](/sql/t-sql/language-elements/less-than-transact-sql)    |Összehasonlítja a két kifejezést kisebb, mint (összehasonlítási operátor).|
+|[<=](/sql/t-sql/language-elements/less-than-or-equal-to-transact-sql)    |Összehasonlítja a két kifejezést kisebb vagy egyenlő értékkel (összehasonlító operátor).|
+|[>](/sql/t-sql/language-elements/greater-than-transact-sql)    |Összehasonlítja a két kifejezést nagyobb mint (összehasonlító operátor). |
+|[>=](/sql/t-sql/language-elements/greater-than-or-equal-to-transact-sql)    |Összehasonlítja a két kifejezést nagyobb vagy egyenlő értékkel (összehasonlító operátor).|
+|[+](/sql/t-sql/language-elements/add-transact-sql)    |Két szám hozzáadására szolgál. Ez a kiegészítő aritmetikai operátor egy számot is hozzáadhat napokban a dátumhoz.|
+|[-](/sql/t-sql/language-elements/subtract-transact-sql)    |Két szám kivonása (egy aritmetikai kivonási operátor). |
+|[/](/sql/t-sql/language-elements/divide-transact-sql)    |Az egyik számot egy másikra (egy aritmetikai osztási operátorra) osztja.|
+|[*](/sql/t-sql/language-elements/multiply-transact-sql)    |Két kifejezés (egy aritmetikai szorzási operátor) szorzata.|
+|[%](/sql/t-sql/language-elements/modulo-transact-sql)    |Egy szám fennmaradó számát adja vissza egy másikkal osztva.|
+|[AND](/sql/t-sql/language-elements/bitwise-and-transact-sql)    |Egy bitenkénti logikai és műveletet hajt végre két egész érték között.|
+|[OR](/sql/t-sql/language-elements/bitwise-or-transact-sql)    |Bitenkénti logikai vagy műveletet hajt végre két megadott egész érték között, a Transact-SQL-utasításokon belüli bináris kifejezésekre lefordítva.|
+|[NOT](/sql/t-sql/language-elements/not-transact-sql)    |Egy logikai bemenet megtagadása.|
+|[CAST](/sql/t-sql/functions/cast-and-convert-transact-sql)    |Egy adott adattípusú kifejezést alakít át egy másikra.|
+|[KÖZÖTT](/sql/t-sql/language-elements/between-transact-sql)    |Meghatározza a vizsgálandó tartományt.|
+|[A](/sql/t-sql/language-elements/in-transact-sql)    |Meghatározza, hogy egy adott érték egyezik-e egy allekérdezés vagy egy lista bármelyik értékével.|
+|[NULLIF](/sql/t-sql/language-elements/nullif-transact-sql)    |Null értéket ad vissza, ha a két megadott kifejezés egyenlő.|
+|[COALESCE](/sql/t-sql/language-elements/coalesce-transact-sql)    |Kiértékeli az argumentumokat sorrendben, és visszaadja az első olyan kifejezés aktuális értékét, amely kezdetben nem a NULL értékre van kiértékelve.|
 
-Ha az operátor bal és jobb oldalán lévő adattípusok eltérnek, akkor az automatikus konverzió az itt megadott szabályoknak megfelelően lesz elvégezve: [adattípus-prioritás (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql).
+Ha az operátor bal és jobb oldalán lévő adattípusok eltérnek, akkor az automatikus konverzió az itt megadott szabályoknak megfelelően lesz elvégezve: [adattípus-prioritás (Transact-SQL)](/sql/t-sql/data-types/data-type-precedence-transact-sql).
 
 A lekérdezés gyorsításának SQL-nyelve csak a cikkben tárgyalt adattípusok nagyon kis részhalmazát támogatja.  Tekintse meg a jelen cikk [adattípusok](#data-types) című szakaszát.
 
 ### <a name="casts"></a>Típuskonverziók
 
-A lekérdezés gyorsításának SQL-nyelve támogatja a CAST operátort a szabályoknak megfelelően: [adattípus-átalakítás (adatbázismotor)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-conversion-database-engine).  
+A lekérdezés gyorsításának SQL-nyelve támogatja a CAST operátort a szabályoknak megfelelően: [adattípus-átalakítás (adatbázismotor)](/sql/t-sql/data-types/data-type-conversion-database-engine).  
 
 A lekérdezés gyorsításának SQL-nyelve csak a cikkben tárgyalt adattípusok kis részhalmazát támogatja.  Tekintse meg a jelen cikk [adattípusok](#data-types) című szakaszát.
 
@@ -118,10 +118,10 @@ A lekérdezés gyorsításának SQL-nyelve a következő szabványos SQL-karakte
 |--|--|
 |CHAR_LENGTH    | A karakterlánc-kifejezés karakteres hosszát adja vissza, ha a karakterlánc-kifejezés karakteres adattípusú. Ellenkező esetben a karakterlánc-kifejezésben megadott hosszúságot adja vissza (a legkisebb egész szám nem kisebb, mint a bitek száma a 8 értékkel osztva). (Ez a függvény megegyezik a CHARACTER_LENGTH függvénnyel.)|
 |CHARACTER_LENGTH    |A karakterlánc-kifejezés karakteres hosszát adja vissza, ha a karakterlánc-kifejezés karakteres adattípusú. Ellenkező esetben a karakterlánc-kifejezésben megadott hosszúságot adja vissza (a legkisebb egész szám nem kisebb, mint a bitek száma a 8 értékkel osztva). (Ez a függvény megegyezik a CHAR_LENGTH függvénnyel|
-|[LOWER](https://docs.microsoft.com/sql/t-sql/functions/lower-transact-sql)    |Egy karakterláncot ad vissza, miután a nagybetűs karaktereket a kisbetűs értékre konvertálta.|
-|[UPPER](https://docs.microsoft.com/sql/t-sql/functions/upper-transact-sql)    |A kisbetűs karaktereket tartalmazó karakteres kifejezést adja vissza nagybetűvé alakítva.|
-|[SUBSTRING](https://docs.microsoft.com/sql/t-sql/functions/substring-transact-sql)    |Egy karakter, bináris, szöveg vagy képkifejezés egy részét adja vissza SQL Serverban.|
-|[TRIM](https://docs.microsoft.com/sql/t-sql/functions/trim-transact-sql)    |Eltávolítja a szóköz karakter (32) vagy más megadott karaktert a karakterlánc elejéről és végéről.|
+|[LOWER](/sql/t-sql/functions/lower-transact-sql)    |Egy karakterláncot ad vissza, miután a nagybetűs karaktereket a kisbetűs értékre konvertálta.|
+|[UPPER](/sql/t-sql/functions/upper-transact-sql)    |A kisbetűs karaktereket tartalmazó karakteres kifejezést adja vissza nagybetűvé alakítva.|
+|[SUBSTRING](/sql/t-sql/functions/substring-transact-sql)    |Egy karakter, bináris, szöveg vagy képkifejezés egy részét adja vissza SQL Serverban.|
+|[TRIM](/sql/t-sql/functions/trim-transact-sql)    |Eltávolítja a szóköz karakter (32) vagy más megadott karaktert a karakterlánc elejéről és végéről.|
 |VEZETŐ    |Leírás|
 |ZÁRÓ    |Leírás|
 
@@ -250,7 +250,7 @@ Az ``IS MISSING`` operátor az egyetlen nem szabványos, amelyet a lekérdezés 
 
 ## <a name="table-descriptors"></a>Tábla leírói
 
-CSV-adatként a tábla neve mindig `BlobStorage` .  Példa:
+CSV-adatként a tábla neve mindig `BlobStorage` .  Például:
 
 ```sql
 SELECT * FROM BlobStorage
@@ -302,7 +302,7 @@ SELECT latitude FROM BlobStorage[*].warehouses[*]
 
 A lekérdezés lekérdezi az összes mezőt, de csak a földrajzi szélességet választja.
 
-Ha csak a JSON-objektum értékének elérését szeretné elérni `dimensions` , a lekérdezésben használhatja az adott objektumra vonatkozó hivatkozásokat. Példa:
+Ha csak a JSON-objektum értékének elérését szeretné elérni `dimensions` , a lekérdezésben használhatja az adott objektumra vonatkozó hivatkozásokat. Például:
 
 ```sql
 SELECT length FROM BlobStorage[*].dimensions
@@ -340,4 +340,3 @@ A legtöbb esetben az egyes kötegek mérete valamivel nagyobb lesz, mint a mega
 
 - [Azure Data Lake Storage lekérdezés gyorsulása](data-lake-storage-query-acceleration.md)
 - [Az Adatszűrés Azure Data Lake Storage lekérdezési gyorsítás használatával](data-lake-storage-query-acceleration-how-to.md)
-

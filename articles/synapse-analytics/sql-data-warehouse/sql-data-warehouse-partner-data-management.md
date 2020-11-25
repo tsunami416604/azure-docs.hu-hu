@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e029de19e6bdb635dfc4797367de29dfb87e32ce
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: da6387c55200bad3458705cf570f60ca40db1be0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325389"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95900608"
 ---
 # <a name="azure-synapse-analytics-data-management-partners"></a>Az Azure szinapszis Analytics adatkezelési partnerei
 
@@ -34,9 +34,10 @@ Ez a cikk a Microsoft partner vállalatait mutatja be az Azure Szinapszisot tám
 | ![Globális Redpoint](./media/sql-data-warehouse-partner-data-management/redpoint-global-logo.png) |**RedPoint adatkezelés**<br>A RedPoint adatkezelés lehetővé teszi a marketingesek számára, hogy az összes adatát a többcsatornás ügyfelek szerepvállalására használják, miközben strukturált és strukturálatlan adatkezelést végeznek. A RedPoint segítségével maximalizálhatja a strukturált és strukturálatlan adat értékét, így biztosíthatja a Hyper-személyre szabott, környezetfüggő interakciókat, amelyek a mai Omni Channel-ügyfelek bevonásához szükségesek. A drag-and-drop interfész megkönnyíti az adatkezelési folyamatok megtervezését és végrehajtását. |[Termék lap](https://www.redpointglobal.com/customer-data-management)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/redpoint-global.redpoint-rpdm)<br> |
 | ![Sentry One](./media/sql-data-warehouse-partner-data-management/sql-sentry-logo.png) |**Szoftverével (DW Sentry)**<br>Az intelligens adatáthelyezési irányítópult és az Eseménynaptár révén mindig pontosan megtudhatja, hogy mi befolyásolja a számítási feladatokat. Az adatok betöltésére, biztonsági mentésére vagy visszaállítására szolgáló lekérdezések és feladatok láthatóságának biztosítása érdekében soha nem kell aggódnia az Azure-erőforrások legjelentősebb kihasználása terén. |[Termék lap](https://sentryone.com/platform/azure-sql-dw-performance-monitoring/)<br>[Azure Marketplace](https://sentryone.com/platform/azure-sql-dw-performance-monitoring/)<br> |
 | ![SqlDBM](./media/sql-data-warehouse-partner-data-management/sqldbm-logo.png) |**SqlDBM**<br>A SqlDBM egy felhőalapú adatmodellezési eszköz, amely egyszerű és kényelmes megoldást kínál az adatbázis bármely böngészőn belüli fejlesztésére. A szükséges adatbázis-szabályok és objektumok, például az adatbázis-kulcsok, a sémák, az indexek, az oszlopok megkötései és a kapcsolatok beépítése. |[Termék lap](http://sqldbm.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/sqldbm1583438206845.sqldbm-data-modeling-tool?tab=Overview)<br>|
+| ![Tamr](./media/sql-data-warehouse-partner-data-management/tamr-logo.png) |**Tamr**<br>A Tamr lehetővé teszi, hogy a szervezetek elsajátított adatokkal lássák el az Azure Szinapszisot, így az Azure szinapszis analitikus képességeinek többségét beszerezhetik. A Tamr Felhőbeli natív adatkezelési megoldásai gépi tanulást használnak az adatok összevonásához, megtisztításához és kategorizálásához, intuitív emberi visszajelzési munkafolyamatokkal pedig az adatok és az üzleti eredmények közötti szakadék áthidalása érdekében. A Tamr integrálható az Azure adatszolgáltatásaival, például az Azure szinapszis Analytics, a Azure Databricks, az Azure HDInsight, a Azure Data Catalog, a Azure Data Lake Storage és a Azure Data Factory használatával. Az Azure rugalmasságának és méretezésének kihasználásával lehetővé teszi, hogy az adatelemzést az alacsonyabb teljes tulajdonlási díjszabással bővítse. |[Termék lap](https://www.tamr.com/tamr-partners/microsoft-azure/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/tamrinc.unify_v_2019?tab=Overview) |
 | ![Teleran](./media/sql-data-warehouse-partner-data-management/teleran-logo.jpg) |**Teleran**<br>A Teleran lekérdezési vezérlője megakadályozza a nem megfelelő és rosszul formázott lekérdezések elérését a szinapszisok és a számítási erőforrások pazarlása érdekében. Intelligens üzeneteket küld az elemzési felhasználóknak, hogy hatékonyabban használhassák az adatokat. A cél az, hogy biztosítsa a jó üzleti eredményeket anélkül, hogy feleslegesen felhasználja az Azure-költségeket. A Teleran-használat elemzése a felhasználó-, alkalmazás-, lekérdezési és adatfelhasználási tevékenységek elemzését biztosítja. Lehetővé teszi, hogy mindig a teljes képet a mi folyik. Lehetővé teszi a szolgáltatás fejlesztését, az üzleti hatékonyság növelését és a szinapszisok fogyasztási költségeinek optimalizálását. |[Termék lap](https://teleran.com/azure-synapse-optimization-cost-control/)<br>|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A többi partnerrel kapcsolatos további információkért tekintse meg az [üzleti intelligencia-partnerek](sql-data-warehouse-partner-business-intelligence.md), [az adatintegrációs partnerek](sql-data-warehouse-partner-data-integration.md)és a [Machine learning és AI-partnerek](sql-data-warehouse-partner-machine-learning-ai.md)című témakört.
 
 

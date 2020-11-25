@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/12/2020
 ms.reviewer: jeking
-ms.openlocfilehash: 5bdf1cd510ed0d997e5e59c6492117a4d567c43e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e289bea6b1a23f1622ced62656164d9865303298
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024602"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912824"
 ---
 # <a name="quickstart-analyze-data-with-databricks"></a>Gyors útmutató: az adatelemzés a Databricks
 
@@ -198,7 +198,7 @@ Ennek a cikknek a segítségével létrehozott egy Spark-fürtöt az Azure Datab
 Folytassa a következő cikkel annak megismeréséhez, hogyan végezhet ETL-műveletet (adatok kinyerését, átalakítását és betöltését) az Azure Databricks használatával.
 
 > [!div class="nextstepaction"]
->[Adatok kinyerése, átalakítása és betöltése a Azure Databricks használatával](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md).
+>[Adatok kinyerése, átalakítása és betöltése a Azure Databricks használatával](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse).
 
 - Az adatok más adatforrásokból Azure Databricksba való importálásának megismeréséhez tekintse meg a [Spark-adatforrások](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html)című témakört.
 

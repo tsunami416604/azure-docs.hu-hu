@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 8f4d16931f09f94af81dd4e0f178ce6e0f990881
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 744bcfe196629f76c5505f36ef9c8c224fefe601
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426204"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95909067"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>A FHIR készült Azure API-val kapcsolatos gyakori kérdések
 
@@ -65,6 +65,10 @@ Ha szeretné megtekinteni, hogy mi történik a FHIR készült Azure API-ban, te
 
 Az intelligens (behelyettesíthető orvosi alkalmazások és újrafelhasználható technológia) a FHIR-ben olyan Nyílt specifikációk összessége, amelyek a FHIR-kiszolgálókkal és más egészségügyi informatikai rendszerekkel, például az elektronikus egészségügyi adatokkal és az állapotadatok cseréjével integrálják a partneri alkalmazásokat. Egy intelligens on FHIR alkalmazás létrehozásával gondoskodhat arról, hogy az alkalmazás elérhető legyen, és számos különböző rendszerből is kihasználható legyen.
 Hitelesítés és Azure API a FHIR-hez. Ha többet szeretne megtudni az intelligens szolgáltatásról, látogasson el az [intelligens állapotba](https://smarthealthit.org/).
+
+### <a name="where-can-i-find-what-version-of-fhir-is-running-on-my-database"></a>Hol találhatom meg, hogy a FHIR melyik verziója fut az adatbázison. 
+
+A "fhirVersion" tulajdonság alatt megtalálhatja a képességek utasításban közzétett pontos FHIR-verziót.
 
 ## <a name="fhir-implementations-and-specifications"></a>FHIR implementációk és specifikációk
 

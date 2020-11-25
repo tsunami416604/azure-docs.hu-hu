@@ -2,17 +2,19 @@
 title: Kimenetek a sablonokban
 description: Ismerteti, hogyan lehet kimeneti értékeket definiálni egy Azure Resource Manager sablonban.
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: 203bfc66e9515ef14a5fe1315ef5b9ee07075041
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/24/2020
+ms.openlocfilehash: 8f782a78e523ebc55faac98344643982172476fa
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79460024"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95911430"
 ---
 # <a name="outputs-in-azure-resource-manager-template"></a>Kimenetek Azure Resource Manager sablonban
 
 Ez a cikk bemutatja, hogyan határozhatja meg a kimeneti értékeket a Azure Resource Manager-sablonban. A kimenetek akkor használhatók, ha értékeket kell visszaadnia az üzembe helyezett erőforrásokból.
+
+Az egyes kimeneti értékek formátumának meg kell egyeznie az egyik [adattípussal](template-syntax.md#data-types).
 
 ## <a name="define-output-values"></a>Kimeneti értékek definiálása
 

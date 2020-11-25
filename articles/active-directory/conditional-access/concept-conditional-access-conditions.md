@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dddad5692ab2eebb6ef9b427c091be449791d7c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96d1eaff4d1b93ad3bb489f177020c351fe4d13d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91818351"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95904035"
 ---
 # <a name="conditional-access-conditions"></a>Feltételes hozzáférés: feltételek
 
@@ -57,7 +57,7 @@ Ha letiltja az örökölt hitelesítést a **többi ügyfél** feltételének ha
 
 A hely feltételként való konfigurálásakor a szervezetek dönthetnek úgy, hogy kiveszik vagy kizárják a helyeket. Ezek a nevesített helyszínek tartalmazhatják a nyilvános IPv4-hálózati információkat, az országot vagy a régiót, vagy akár ismeretlen területeket, amelyek nem adott országokra vagy régiókra vannak leképezve. Csak az IP-címtartományok lehet megjelölve megbízható helyként.
 
-Ha **bármilyen helyet**tartalmaz, ez a beállítás az interneten található, nem csak az elnevezett helyeket konfigurált IP-címeket tartalmazza. **Bármely hely**kiválasztásakor a rendszergazdák dönthetnek úgy, hogy kizárják az **összes megbízható** vagy **kiválasztott helyet**.
+Ha **bármilyen helyet** tartalmaz, ez a beállítás az interneten található, nem csak az elnevezett helyeket konfigurált IP-címeket tartalmazza. **Bármely hely** kiválasztásakor a rendszergazdák dönthetnek úgy, hogy kizárják az **összes megbízható** vagy **kiválasztott helyet**.
 
 Előfordulhat például, hogy egyes szervezetek nem igénylik a többtényezős hitelesítést, ha a felhasználók megbízható helyen, például a fizikai központban csatlakoznak a hálózathoz. A rendszergazdák létrehozhatnak egy olyan szabályzatot, amely bármilyen helyet tartalmaz, de kizárja a kijelölt helyeket a saját főhadiszállása hálózatához.
 
@@ -137,7 +137,7 @@ A bővítmény Chrome böngészőkbe való automatikus telepítéséhez hozza l�
 - Típus REG_SZ (karakterlánc)
 - Adatppnbnpeolgkicgegkbkbjmhlideopiji; HTTPS \: //clients2.Google.com/Service/Update2/CRX
 
-A **Windows 8,1 és 7 rendszerhez**készült Chrome-támogatáshoz hozza létre a következő beállításkulcsot:
+A **Windows 8,1 és 7 rendszerhez** készült Chrome-támogatáshoz hozza létre a következő beállításkulcsot:
 
 - Elérési út HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls
 - 1. név
@@ -180,23 +180,23 @@ Ez a beállítás hatással van a következő Mobile apps és asztali ügyfelek 
 
 Ha a házirendhez rendelt hozzáférés-vezérlés **jóváhagyott ügyfélalkalmazás használatát igényli**, a rendszer a felhasználót az Outlook Mobile-ügyfél telepítésére és használatára irányítja. Abban az esetben, ha a **többtényezős hitelesítés** szükséges, az érintett felhasználók le vannak tiltva, mert az egyszerű hitelesítés nem támogatja a többtényezős hitelesítést.
 
-További információkért tekintse át a következő cikkeket:
+További információért tekintse át a következő cikkeket:
 
 - [Örökölt hitelesítés letiltása feltételes hozzáféréssel](block-legacy-authentication.md)
 - [Jóváhagyott ügyfélalkalmazások feltételes hozzáféréssel való megkövetelése](app-based-conditional-access.md)
 
 ### <a name="other-clients"></a>Más ügyfelek
 
-**Más ügyfelek**kiválasztásával megadhat egy olyan feltételt, amely az alapszintű hitelesítést használó alkalmazásokat, például az IMAP, a MAPI, a pop, az SMTP és a régebbi Office-alkalmazásokat használja, amelyek nem használnak modern hitelesítést.
+**Más ügyfelek** kiválasztásával megadhat egy olyan feltételt, amely az alapszintű hitelesítést használó alkalmazásokat, például az IMAP, a MAPI, a pop, az SMTP és a régebbi Office-alkalmazásokat használja, amelyek nem használnak modern hitelesítést.
 
 ## <a name="device-state-preview"></a>Eszköz állapota (előzetes verzió)
 
 Az eszköz állapotának feltétele a hibrid Azure AD-hez csatlakoztatott eszközök és/vagy a szervezet feltételes hozzáférési szabályzatának Microsoft Intune megfelelőségi szabályzatának megfelelőként megjelölt eszközök kizárására használható.
 
-Például minden olyan *felhasználó* **, aki**a *Microsoft Azure Management* Cloud alkalmazáshoz fér hozzá, beleértve az eszköz **összes ÁLLAPOTÁT** , kivéve az **eszközök hibrid Azure ad-hez csatlakoztatott** eszközét és a **megfelelőként megjelölt eszközt** , valamint a *hozzáférés-vezérlést*. 
-   - Ez a példa olyan házirendet hoz létre, amely csak a hibrid Azure AD-hez csatlakoztatott eszközökről és/vagy a megfelelőként megjelölt eszközökről engedélyezi a Microsoft Azure-felügyelet elérését.
+Például minden olyan *felhasználó* **, aki** a *Microsoft Azure Management* Cloud alkalmazáshoz fér hozzá, beleértve az eszköz **összes ÁLLAPOTÁT** , kivéve az **eszközök hibrid Azure ad-hez csatlakoztatott** eszközét és a **megfelelőként megjelölt eszközt** , valamint a *hozzáférés-vezérlést*. 
+   - Ez a példa olyan házirendet hoz létre, amely csak a hibrid Azure AD-hez csatlakoztatott vagy a megfelelőként megjelölt eszközökön engedélyezi a Microsoft Azure felügyeletét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Feltételes hozzáférés: Engedélyezés](concept-conditional-access-grant.md)
 

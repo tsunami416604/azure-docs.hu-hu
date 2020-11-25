@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 8bfe6f07fead700ae71bba1c28ccb13aa700513c
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 2011fa8e85f10f12ae914b02710bbd65f5700403
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842770"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913045"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>Azure Data Lake Storage Gen2 optimalizálása a teljesítményhez
 
@@ -47,7 +47,7 @@ Miután megoldotta a forrás hardver és a hálózati kapcsolat szűk keresztmet
 |--------------------|------------------------------------------------------|------------------------------|
 | DistCp            | -m (Mapper)   | [Hivatkozás](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
 | Azure Data Factory| parallelCopies    | [Hivatkozás](../../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | FS. Azure. Block. size,-m (Mapper)    |   [Hivatkozás](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
+| Sqoop           | FS. Azure. Block. size,-m (Mapper)    |   [Hivatkozás](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>Az adathalmaz szerkezete
 
@@ -138,5 +138,5 @@ A fenti általános irányelvek mellett minden alkalmazás különböző paramé
 | [MapReduce a HDInsight](data-lake-storage-performance-tuning-mapreduce.md) | <ul><li>MapReduce. map. Memory</li><li>MapReduce. job. Maps</li><li>MapReduce. csökkentse a memóriát</li><li>MapReduce. job. csökkenti</li></ul> |
 | [Storm on HDInsight](data-lake-storage-performance-tuning-storm.md)| <ul><li>Munkavégző folyamatok száma</li><li>Kiöntő végrehajtó példányainak száma</li><li>A bolt végrehajtó példányainak száma </li><li>Kiöntő feladatok száma</li><li>Bolti feladatok száma</li></ul>|
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 * [A Azure Data Lake Storage Gen2 áttekintése](data-lake-storage-introduction.md)

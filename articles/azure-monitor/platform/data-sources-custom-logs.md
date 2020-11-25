@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: 406371325ddf8b555ede481582e19635b85abe49
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 10a2ae71d8c26d82a4a730bab3ba16e7c62d1243
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461566"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95911736"
 ---
 # <a name="collect-custom-logs-with-log-analytics-agent-in-azure-monitor"></a>Egyéni naplók gyűjtése Log Analytics ügynökkel Azure Monitor
 
@@ -30,6 +30,7 @@ A gyűjteni kívánt naplófájloknak meg kell egyezniük a következő feltéte
 
 - A naplófájl nem engedheti meg a körkörös naplózást vagy a napló elforgatását, ahol a fájl felülírása új bejegyzésekkel történik.
 - A naplófájlnak ASCII vagy UTF-8 kódolást kell használnia.  Más formátumok, például az UTF-16 nem támogatottak.
+- A Linux esetében az időzóna-elemzés nem támogatott a naplók időbélyegzői esetében.
 
 >[!NOTE]
 > Ha duplikált bejegyzések vannak a naplófájlban, akkor a Azure Monitor begyűjti őket. A lekérdezés eredményei azonban inkonzisztensek lesznek, ha a szűrő eredményei több eseményt mutatnak, mint az eredmények száma. Fontos, hogy ellenőrizze a naplót annak megállapításához, hogy az azt létrehozó alkalmazás okozza-e ezt a viselkedést, és ha lehetséges, adja meg az egyéni napló-gyűjtemény definíciójának létrehozása előtt.  
@@ -52,8 +53,8 @@ Egyéni naplófájl definiálásához használja az alábbi eljárást.  Görges
 ### <a name="step-1-open-the-custom-log-wizard"></a>1. lépés Az egyéni napló varázsló megnyitása
 Az egyéni napló varázsló a Azure Portal fut, és lehetővé teszi, hogy megadjon egy új egyéni naplót a gyűjtéshez.
 
-1. A Azure Portal válassza a **log Analytics munkaterületek** > a munkaterület > **Speciális beállítások**lehetőséget.
-2. Kattintson az **Data**  >  **Egyéni adatnaplók**elemre.
+1. A Azure Portal válassza a **log Analytics munkaterületek** > a munkaterület > **Speciális beállítások** lehetőséget.
+2. Kattintson az **Data**  >  **Egyéni adatnaplók** elemre.
 3. Alapértelmezés szerint a rendszer az összes konfigurációs módosítást automatikusan leküldi az összes ügynöknek. Linux-ügynökök esetében a rendszer egy konfigurációs fájlt küld a Fluent-adatgyűjtőnek.
 4. Kattintson a **Hozzáadás +** elemre az egyéni napló varázsló megnyitásához.
 
@@ -91,7 +92,7 @@ A következő táblázat példákat tartalmaz a különböző naplófájlok mega
 ### <a name="step-4-provide-a-name-and-description-for-the-log"></a>4. lépés: Adja meg a napló nevét és leírását
 A rendszer a megadott nevet fogja használni a naplózási típushoz a fent leírtak szerint.  A szolgáltatás mindig _CL, hogy egyéni naplóként megkülönböztesse azt.
 
-1. Írja be a napló nevét.  A ** \_ CL** -utótagot a rendszer automatikusan megadja.
+1. Írja be a napló nevét.  A **\_ CL** -utótagot a rendszer automatikusan megadja.
 2. Adjon hozzá egy opcionális **leírást**.
 3. Az egyéni napló definíciójának mentéséhez kattintson a **tovább** gombra.
 
@@ -104,7 +105,7 @@ Miután Azure Monitor elkezdi a gyűjtést az egyéni naplóból, a rekordjai a 
 > Ha a lekérdezésből hiányzik a RawData tulajdonság, előfordulhat, hogy be kell állítania és újra meg kell nyitnia a böngészőt.
 
 ### <a name="step-6-parse-the-custom-log-entries"></a>6. lépés Az egyéni naplóbejegyzések értelmezése
-A teljes naplóbejegyzés egyetlen, **RawData**nevű tulajdonságban lesz tárolva.  Valószínűleg el szeretné különíteni az egyes bejegyzések különböző adatait az egyes rekordok egyedi tulajdonságaiba. A **RawData** több tulajdonságba való elemzésének lehetőségeiről a [Azure monitorban található szöveges fájlok](../log-query/parse-text.md) elemzése című témakörben talál további információt.
+A teljes naplóbejegyzés egyetlen, **RawData** nevű tulajdonságban lesz tárolva.  Valószínűleg el szeretné különíteni az egyes bejegyzések különböző adatait az egyes rekordok egyedi tulajdonságaiba. A **RawData** több tulajdonságba való elemzésének lehetőségeiről a [Azure monitorban található szöveges fájlok](../log-query/parse-text.md) elemzése című témakörben talál további információt.
 
 ## <a name="removing-a-custom-log"></a>Egyéni napló eltávolítása
 A Azure Portal az alábbi eljárással távolíthatja el a korábban definiált egyéni naplókat.
@@ -115,7 +116,7 @@ A Azure Portal az alábbi eljárással távolíthatja el a korábban definiált 
 ## <a name="data-collection"></a>Adatgyűjtés
 Azure Monitor minden egyéni naplóból körülbelül 5 percenként gyűjt új bejegyzéseket.  Az ügynök rögzíti a helyét minden olyan naplófájlban, amelyről gyűjt.  Ha az ügynök egy ideig offline állapotba kerül, akkor a Azure Monitor begyűjti azokat a bejegyzéseket, amelyekből az utolsó lemaradt, még akkor is, ha az ügynök offline állapotban van.
 
-A naplóbejegyzés teljes tartalma egyetlen, **RawData**nevű tulajdonságba íródik.  Az egyes importált naplóbejegyzések több tulajdonságba való elemzéséhez tekintse meg a [szöveges adat Azure monitorban](../log-query/parse-text.md) történő elemzését ismertető témakört.
+A naplóbejegyzés teljes tartalma egyetlen, **RawData** nevű tulajdonságba íródik.  Az egyes importált naplóbejegyzések több tulajdonságba való elemzéséhez tekintse meg a [szöveges adat Azure monitorban](../log-query/parse-text.md) történő elemzését ismertető témakört.
 
 ## <a name="custom-log-record-properties"></a>Egyéni naplózási rekord tulajdonságai
 Az egyéni naplók egy olyan típussal rendelkeznek, amely tartalmazza a megadott napló nevét, valamint az alábbi táblázatban szereplő tulajdonságokat.
@@ -145,12 +146,12 @@ A naplófájlok egyikét biztosítjuk, és láthatjuk, hogy milyen események le
 ![Minta napló feltöltése és elemzése](media/data-sources-custom-logs/delimiter.png)
 
 ### <a name="add-log-collection-paths"></a>Napló-gyűjtemény elérési útjának hozzáadása
-A naplófájlok a *C:\MyApp\Logs*-ben lesznek elhelyezve.  Minden nap egy új fájl jön létre, amelynek a neve tartalmazza a *appYYYYMMDD. log*nevű mintát.  A naplóhoz elegendő minta lenne a *C:\MyApp\Logs \\ \* . log*.
+A naplófájlok a *C:\MyApp\Logs*-ben lesznek elhelyezve.  Minden nap egy új fájl jön létre, amelynek a neve tartalmazza a *appYYYYMMDD. log* nevű mintát.  A naplóhoz elegendő minta lenne a *C:\MyApp\Logs \\ \* . log*.
 
 ![Napló gyűjteményének elérési útja](media/data-sources-custom-logs/collection-path.png)
 
 ### <a name="provide-a-name-and-description-for-the-log"></a>Adja meg a napló nevét és leírását
-Az *MyApp_CL* nevet használjuk, és a **leírást**beírhatjuk.
+Az *MyApp_CL* nevet használjuk, és a **leírást** beírhatjuk.
 
 ![Napló neve](media/data-sources-custom-logs/log-name.png)
 

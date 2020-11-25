@@ -2,13 +2,13 @@
 title: Sablonokban található paraméterek
 description: Ismerteti, hogyan lehet paramétereket definiálni egy Azure Resource Manager sablonban.
 ms.topic: conceptual
-ms.date: 09/05/2019
-ms.openlocfilehash: 89c6984c587e8dae59c1825a99d4f8da1c06dafb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/24/2020
+ms.openlocfilehash: 8cdc95037967a32c2d8464f4dc39b1e7369102bb
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76122423"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95911413"
 ---
 # <a name="parameters-in-azure-resource-manager-templates"></a>Paraméterek használata az Azure Resource Manager-sablonokban
 
@@ -16,9 +16,11 @@ Ez a cikk azt ismerteti, hogyan lehet paramétereket definiálni és használni 
 
 A Resource Manager a telepítési műveletek megkezdése előtt oldja fel a paramétereket. Ha a paramétert használja a sablonban, a Resource Manager lecseréli azt a megoldott értékre.
 
+Minden paramétert az egyik [adattípusra](template-syntax.md#data-types)kell beállítani.
+
 ## <a name="define-parameter"></a>Paraméter definiálása
 
-Az alábbi példa egy egyszerű paraméter-definíciót mutat be. Definiál egy **storageSKU**nevű paramétert. A paraméter egy karakterlánc-érték, és csak a rendeltetésszerű használatra érvényes értékeket fogad el. A paraméter alapértelmezett értéket használ, ha nincs megadva érték az üzembe helyezés során.
+Az alábbi példa egy egyszerű paraméter-definíciót mutat be. Definiál egy **storageSKU** nevű paramétert. A paraméter egy karakterlánc-érték, és csak a rendeltetésszerű használatra érvényes értékeket fogad el. A paraméter alapértelmezett értéket használ, ha nincs megadva érték az üzembe helyezés során.
 
 ```json
 "parameters": {
@@ -57,7 +59,7 @@ A sablonban a [Paraméterek](template-functions-deployment.md#parameters) függv
 
 ## <a name="template-functions"></a>Sablonfüggvények
 
-Egy paraméter alapértelmezett értékének megadásakor használhatja a legtöbb sablon-függvényt. Az alapértelmezett érték kiépítéséhez használhat egy másik paraméter értékét is. A következő sablon a függvények használatát mutatja be az alapértelmezett értékben. Ha a helyhez nincs megadva név, akkor egy egyedi karakterláncot hoz létre, és hozzáfűzi a **helyhez**. Ha a gazdagép-csomaghoz nincs megadva név, a rendszer a hely értékét és a **-tervet**fűzi hozzá.
+Egy paraméter alapértelmezett értékének megadásakor használhatja a legtöbb sablon-függvényt. Az alapértelmezett érték kiépítéséhez használhat egy másik paraméter értékét is. A következő sablon a függvények használatát mutatja be az alapértelmezett értékben. Ha a helyhez nincs megadva név, akkor egy egyedi karakterláncot hoz létre, és hozzáfűzi a **helyhez**. Ha a gazdagép-csomaghoz nincs megadva név, a rendszer a hely értékét és a **-tervet** fűzi hozzá.
 
 ```json
 "parameters": {

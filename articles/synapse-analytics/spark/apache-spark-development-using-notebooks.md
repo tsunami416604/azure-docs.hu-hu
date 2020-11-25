@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: dcf34d896deafad77d16619f3883ddd103fc55d4
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: c35ee7bcdefa5091d9c887430182638f066cb9fa
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95790695"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95900889"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>A szinapszis Studio (előzetes verzió) jegyzetfüzetek létrehozása, fejlesztése és karbantartása az Azure szinapszis Analyticsben
 
@@ -399,68 +399,6 @@ Az elsődleges Storage-fiókban lévő adatelérést közvetlenül is elérheti.
 
 ![adatcella](./media/apache-spark-development-using-notebooks/synapse-data-to-cell.png)
 
-## <a name="visualize-data-in-a-notebook"></a>Az adat megjelenítése egy jegyzetfüzetben
-
-### <a name="produce-rendered-table-view"></a>Megjelenített táblázatos nézet létrehozása
-
-Táblázatos eredményeket tartalmazó nézetet biztosítunk a sávdiagram, a diagram, a tortadiagram, a pontdiagram és a diagramterület létrehozásához. Az adatait anélkül is megjelenítheti, hogy kódot kellene írnia. A diagramok testreszabhatók a **diagram beállításaiban**. 
-
-A **(z)%% SQL** Magic parancsok kimenete alapértelmezés szerint a megjelenített tábla nézetben jelenik meg. Meghívhatja <code>display(df)</code> a Spark DataFrames, a pandák DataFrames, a List vagy a rugalmas elosztott adatkészletek (RDD) függvényt a megjelenített tábla nézet létrehozásához.
-
-   [![beépített diagramok](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png#lightbox)
-
-### <a name="visualize-built-in-charts-from-large-scale-dataset"></a>Beépített diagramok megjelenítése nagy méretű adatkészletből 
-
-Alapértelmezés szerint a <code>display(df)</code> függvény csak az adat első 1000 sorát fogja felvenni a diagramok megjelenítéséhez. Tekintse meg az **összesítést az összes eredménynél** , majd kattintson az **alkalmaz** gombra, a diagramot a teljes adatkészletből fogja alkalmazni. A diagram beállításainak módosításakor a Spark-feladatok elindulnak, és eltarthat egy ideig a diagram kiszámításának és megjelenítésének befejezéséhez. 
-    [![beépített diagramok – összesítés – mind](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-aggregation-all.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-aggregation-all.png#lightbox)
-
-
-
-### <a name="visualize-data-statistic-information"></a>Adatstatisztikai adatok megjelenítése
-A <code>display(df, summary = True)</code> segítségével megtekintheti egy adott Spark-DataFrame statisztikai összegzését, amely tartalmazza az oszlop nevét, az oszlop típusát, az egyedi értékeket és az egyes oszlopok hiányzó értékeit. Kiválaszthat egy adott oszlopot is a minimális érték, a maximális érték, a középérték és a szórás megjelenítéséhez.
-    [![beépített diagramok – összefoglalás ](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-summary.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-summary.png#lightbox)
-
-### <a name="render-html-or-interactive-libraries"></a>HTML-vagy interaktív könyvtárak renderelése
-
-A **displayHTML ()** használatával HTML-kódot is megadhat, beleértve a JavaScriptet, a CSS-t, a D3-t vagy az interaktív kódtárakat, például a **bokeh**-t.
-
-Az alábbi ábrán egy példa látható a karakterjelek ábrázolására a **bokeh** használatával.
-
-   ![bokeh – példa](./media/apache-spark-development-using-notebooks/synapse-bokeh-image.png)
-   
-
-Futtassa a következő mintakód a fenti rendszerkép rajzolásához.
-
-```python
-from bokeh.plotting import figure, output_file
-from bokeh.tile_providers import get_provider, Vendors
-from bokeh.embed import file_html
-from bokeh.resources import CDN
-from bokeh.models import ColumnDataSource
-
-tile_provider = get_provider(Vendors.CARTODBPOSITRON)
-
-# range bounds supplied in web mercator coordinates
-p = figure(x_range=(-9000000,-8000000), y_range=(4000000,5000000),
-           x_axis_type="mercator", y_axis_type="mercator")
-p.add_tile(tile_provider)
-
-# plot datapoints on the map
-source = ColumnDataSource(
-    data=dict(x=[ -8800000, -8500000 , -8800000],
-              y=[4200000, 4500000, 4900000])
-)
-
-p.circle(x="x", y="y", size=15, fill_color="blue", fill_alpha=0.8, source=source)
-
-# create an html document that embeds the Bokeh plot
-html = file_html(p, CDN, "my plot1")
-
-# display this html
-displayHTML(html)
-
-```
-
 ## <a name="save-notebooks"></a>Jegyzetfüzetek mentése
 
 A munkaterületen egyetlen jegyzetfüzet vagy az összes jegyzetfüzet is menthető.
@@ -539,11 +477,11 @@ A Jupyter-jegyzetfüzetekhez hasonlóan az Azure szinapszis Studio notebookok mo
 
 1. A cella parancs módban van, ha nincs beírni kívánt szöveg. Ha egy cella parancs módban van, a jegyzetfüzetet teljes egészében szerkesztheti, de nem lehet egyéni cellákba írni. A parancs mód megadásához nyomja le `ESC` vagy az egér használatával válassza ki a cella szerkesztő területén kívüli lehetőséget.
 
-   ![parancssori üzemmód](./media/apache-spark-development-using-notebooks/synapse-command-mode2.png)
+   ![parancssori üzemmód](./media/apache-spark-development-using-notebooks/synapse-command-mode-2.png)
 
 2. A szerkesztési módot egy szöveges kurzor jelzi, amely arra kéri, hogy írja be a szerkesztőt. Ha egy cella szerkesztési módban van, beírhatja a cellába. Adja meg a szerkesztési módot úgy, hogy lenyomja `Enter` vagy felhasználja az egeret a cella szerkesztői területein való kiválasztáshoz.
    
-   ![edit-mode](./media/apache-spark-development-using-notebooks/synapse-edit-mode2.png)
+   ![edit-mode](./media/apache-spark-development-using-notebooks/synapse-edit-mode-2.png)
 
 ### <a name="shortcut-keys-under-command-mode"></a>A parancssori üzemmód alatti billentyűparancsok
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 828b5c34aaccf2a53aa197f921a8ef02d46821ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2350177373bc99907c437d814d8f01193f18f3fd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91280470"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95895723"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>Időponthoz tartozó visszaállítás végrehajtása a blob-adatok blokkolása közben
 
@@ -29,7 +29,7 @@ Ha többet szeretne megtudni az időponthoz tartozó visszaállításról, tekin
 
 Az időponthoz való visszaállítás engedélyezése és konfigurálása előtt engedélyezze a Storage-fiókra vonatkozó előfeltételeket: Soft DELETE, Change feed és blob Versioning. Az egyes funkciók engedélyezésével kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-- [Blobok helyreállítható törlésének engedélyezése](soft-delete-enable.md)
+- [Blobok helyreállítható törlésének engedélyezése](./soft-delete-blob-enable.md)
 - [A módosítási csatorna engedélyezése és letiltása](storage-blob-change-feed.md#enable-and-disable-the-change-feed)
 - [BLOB-verziószámozás engedélyezése és kezelése](versioning-enable.md)
 
@@ -41,7 +41,7 @@ Az időponthoz való visszaállítás engedélyezése és konfigurálása előtt
 A Azure Portal időponthoz való visszaállításának konfigurálásához kövesse az alábbi lépéseket:
 
 1. Az Azure Portalon nyissa meg a tárfiókot.
-1. A **Beállítások**területen válassza **az adatvédelem**lehetőséget.
+1. A **Beállítások** területen válassza **az adatvédelem** lehetőséget.
 1. Jelölje be az **időponthoz való visszaállítás bekapcsolása** beállítást. Ha ezt a beállítást választja, a rendszer a Blobok, verziószámozás és módosítási csatorna törlését is engedélyezi.
 1. Adja meg a maximális visszaállítási pontot az időponthoz tartozó visszaállításhoz napokban. Ennek a számnak legalább egy nappal kisebbnek kell lennie, mint a blob törléséhez megadott megőrzési időtartam.
 1. Mentse a módosításokat.
@@ -117,12 +117,12 @@ A Storage-fiókban lévő összes tárolót visszaállíthatja úgy, hogy egy ad
 Ha a Storage-fiókban lévő összes tárolót és blobot vissza szeretné állítani a Azure Portal, kövesse az alábbi lépéseket:
 
 1. Navigáljon a Storage-fiókhoz tartozó tárolók listájához.
-1. Az eszköztáron válassza a **tárolók visszaállítása**, majd az **összes visszaállítása**lehetőséget.
+1. Az eszköztáron válassza a **tárolók visszaállítása**, majd az **összes visszaállítása** lehetőséget.
 1. A **minden tároló visszaállítása** panelen adja meg a visszaállítási pontot a dátum és idő megadásával.
 1. A jelölőnégyzet bejelölésével erősítse meg, hogy folytatni kívánja a folytatást.
 1. A visszaállítási művelet elindításához válassza a **visszaállítás** lehetőséget.
 
-    :::image type="content" source="media/point-in-time-restore-manage/restore-all-containers-portal.png" alt-text="A Azure Portal időponthoz való visszaállításának konfigurálását bemutató képernyőkép":::
+    :::image type="content" source="media/point-in-time-restore-manage/restore-all-containers-portal.png" alt-text="A tárolók egy adott visszaállítási pontra történő visszaállítását bemutató képernyőkép":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -164,36 +164,36 @@ Ha egy vagy több tárolóban lévő Blobok egy tartományát szeretné visszaá
 
 1. Navigáljon a Storage-fiókhoz tartozó tárolók listájához.
 1. Válassza ki a visszaállítani kívánt tárolót vagy tárolókat.
-1. Az eszköztáron válassza a **tárolók visszaállítása**, majd a **kijelöltek visszaállítása**lehetőséget.
+1. Az eszköztáron válassza a **tárolók visszaállítása**, majd a **kijelöltek visszaállítása** lehetőséget.
 1. A **kijelölt tárolók visszaállítása** panelen adja meg a visszaállítási pontot a dátum és idő megadásával.
 1. Adja meg a visszaállítani kívánt tartományokat. A perjelek (/) használatával megszabhatja a tároló nevét a blob előtagja alapján.
 1. Alapértelmezés szerint a **kijelölt tárolók visszaállítása** ablaktábla egy olyan tartományt határoz meg, amely a tárolóban lévő összes blobot tartalmazza. Ha nem szeretné visszaállítani a teljes tárolót, törölje ezt a tartományt. Az alapértelmezett tartomány az alábbi képen látható.
 
-    :::image type="content" source="media/point-in-time-restore-manage/delete-default-blob-range.png" alt-text="A Azure Portal időponthoz való visszaállításának konfigurálását bemutató képernyőkép":::
+    :::image type="content" source="media/point-in-time-restore-manage/delete-default-blob-range.png" alt-text="Képernyőfelvétel a törlendő alapértelmezett blob-tartományról az egyéni tartomány megadását megelőzően":::
 
 1. A jelölőnégyzet bejelölésével erősítse meg, hogy folytatni kívánja a folytatást.
 1. A visszaállítási művelet elindításához válassza a **visszaállítás** lehetőséget.
 
 Az alábbi képen egy tartományon futó visszaállítási művelet látható.
 
-:::image type="content" source="media/point-in-time-restore-manage/restore-multiple-container-ranges-portal.png" alt-text="A Azure Portal időponthoz való visszaállításának konfigurálását bemutató képernyőkép":::
+:::image type="content" source="media/point-in-time-restore-manage/restore-multiple-container-ranges-portal.png" alt-text="A Blobok tartományának egy vagy több tárolóban való visszaállítását bemutató képernyőfelvétel":::
 
 A rendszerképben látható visszaállítási művelet a következő műveleteket hajtja végre:
 
-- Visszaállítja a *container1*teljes tartalmát.
-- Visszaállítja a blobokat a lexicographical tartomány *blob1* a *container2* *blob5* keresztül. Ez a tartomány a blobokat olyan nevekkel állítja vissza, mint például a *blob1*, a *blob11*, a *blob100*, a *blob2*és így tovább. Mivel a tartomány vége kizárólagos, visszaállítja azokat a blobokat, amelyek nevei a *blob4*-vel kezdődnek, de nem állítja vissza azokat a blobokat, amelyek nevei a *blob5*-vel kezdődnek.
+- Visszaállítja a *container1* teljes tartalmát.
+- Visszaállítja a blobokat a lexicographical tartomány *blob1* a *container2* *blob5* keresztül. Ez a tartomány a blobokat olyan nevekkel állítja vissza, mint például a *blob1*, a *blob11*, a *blob100*, a *blob2* és így tovább. Mivel a tartomány vége kizárólagos, visszaállítja azokat a blobokat, amelyek nevei a *blob4*-vel kezdődnek, de nem állítja vissza azokat a blobokat, amelyek nevei a *blob5*-vel kezdődnek.
 - Visszaállítja az összes blobot a *container3* és a *container4*. Mivel a tartomány vége kizárólagos, ez a tartomány nem állítja vissza a *container5*.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-A Blobok egyetlen tartományának visszaállításához hívja meg a **Restore-AzStorageBlobRange** parancsot, és adja meg a paraméterhez tartozó lexicographical és blob-nevek tartományát `-BlobRestoreRange` . Ha például egy *container1*nevű tárolóban szeretné visszaállítani a blobokat, megadhat egy tartományt, amely a *container1* kezdetű, és a *container2*-val végződik. A kezdő és a záró tartományokban megnevezett tárolók nem kötelezőek. Mivel a tartomány vége kizárólagos, még akkor is, ha a Storage-fiók tartalmaz egy *container2*nevű tárolót, csak a *container1* nevű tároló lesz visszaállítva:
+A Blobok egyetlen tartományának visszaállításához hívja meg a **Restore-AzStorageBlobRange** parancsot, és adja meg a paraméterhez tartozó lexicographical és blob-nevek tartományát `-BlobRestoreRange` . Ha például egy *container1* nevű tárolóban szeretné visszaállítani a blobokat, megadhat egy tartományt, amely a *container1* kezdetű, és a *container2*-val végződik. A kezdő és a záró tartományokban megnevezett tárolók nem kötelezőek. Mivel a tartomány vége kizárólagos, még akkor is, ha a Storage-fiók tartalmaz egy *container2* nevű tárolót, csak a *container1* nevű tároló lesz visszaállítva:
 
 ```powershell
 $range = New-AzStorageBlobRangeToRestore -StartRange container1 `
     -EndRange container2
 ```
 
-Ha egy tárolóban lévő Blobok részhalmazát kívánja visszaállítani, egy perjel (/) használatával válassza el a tároló nevét a blob előtag-mintából. A következő tartomány például kijelöli a blobokat egyetlen tárolóban, amelynek neve a *d* – *f*betűvel kezdődik:
+Ha egy tárolóban lévő Blobok részhalmazát kívánja visszaállítani, egy perjel (/) használatával válassza el a tároló nevét a blob előtag-mintából. A következő tartomány például kijelöli a blobokat egyetlen tárolóban, amelynek neve a *d* – *f* betűvel kezdődik:
 
 ```powershell
 $range = New-AzStorageBlobRangeToRestore -StartRange container1/d `
@@ -245,9 +245,9 @@ A visszaállítási művelet szinkron módon történő futtatásához és a vé
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Időponthoz való visszaállítás a blokk Blobok esetében](point-in-time-restore-overview.md)
-- [Helyreállítható törlés](soft-delete-overview.md)
+- [Helyreállítható törlés](./soft-delete-blob-overview.md)
 - [Csatorna módosítása](storage-blob-change-feed.md)
 - [BLOB verziószámozása](versioning-overview.md)

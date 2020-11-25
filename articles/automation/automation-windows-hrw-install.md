@@ -3,14 +3,14 @@ title: Windows Hybrid Runbook Worker üzembe helyezése Azure Automation
 description: Ez a cikk azt ismerteti, hogyan helyezhet üzembe egy hibrid Runbook-feldolgozót, amely a helyi adatközpontban vagy a felhőalapú környezetben lévő Windows-alapú gépeken futtatott runbookok futtatására használható.
 services: automation
 ms.subservice: process-automation
-ms.date: 11/23/2020
+ms.date: 11/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: cb501b954897beb73ae05bfdc7b5ded2221dc114
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 31bb0fac302a81c2523a2d2855ca1930cb266ac4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95493927"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95906619"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker üzembe helyezése
 
@@ -50,7 +50,7 @@ A hibrid Runbook Worker szolgáltatás a következő operációs rendszereket t�
 
 A Windows rendszer és a felhasználó hibrid Runbook-feldolgozói minimális követelményei a következők:
 
-* Windows PowerShell 5,1 vagy újabb ([WMF 5,1 letöltése](https://www.microsoft.com/download/details.aspx?id=54616))
+* Windows PowerShell 5,1 ([WMF 5,1 letöltése](https://www.microsoft.com/download/details.aspx?id=54616)). A PowerShell Core nem támogatott.
 * A .NET-keretrendszer 4.6.2-es vagy újabb verziója
 * Két mag
 * 4 GB RAM
@@ -243,7 +243,7 @@ Hibrid Runbook-feldolgozó csoport eltávolításához először el kell távol�
 
    Ez a folyamat több másodpercig is eltarthat. Az **Értesítések** menüpont alatt nyomon követheti a folyamat előrehaladását.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha szeretné megtudni, hogyan konfigurálhatja a runbookok a helyszíni adatközpontban vagy más felhőalapú környezetben lévő folyamatok automatizálására, tekintse meg a [Runbookok futtatása hibrid Runbook-feldolgozón](automation-hrw-run-runbooks.md)című témakört.
 

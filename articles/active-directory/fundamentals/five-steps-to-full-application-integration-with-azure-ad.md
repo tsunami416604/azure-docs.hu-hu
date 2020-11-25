@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: 26dd255e6edff7c339ab9766bb71889cf4e2deaa
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 8f184de8953e8e8bfe982d2502ca476fb54a66c9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577643"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95903712"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>Öt lépés az összes alkalmazás integrálásához az Azure AD-vel
 
@@ -46,7 +46,7 @@ Végül integrálhatja a házon belül fejlesztett alkalmazásokat is. Ez a jele
 
 Ezután Fedezze fel az alkalmazások alkalmazottai gyakran használják, és rangsorolja a munkáját, hogy integrálja őket az Azure AD-vel.
 
-A Microsoft Cloud App Security&#39;s [Cloud Discovery Tools](/cloud-app-security/tutorial-shadow-it) használatával elkezdheti a &quot; hálózatban lévő árnyékok felderítését és kezelését &quot; (azaz az IT-részleg által nem kezelt alkalmazásokat). A felderítési folyamat egyszerűsítéséhez és bővítéséhez [használhatja a Microsoft Defender Advanced Threat Protection (ATP)](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) eszközt.
+A Microsoft Cloud App Security [Cloud Discovery-eszközeivel](/cloud-app-security/tutorial-shadow-it) elkezdheti felderíteni és kezelni az "árnyékot" a hálózatban (azaz az IT-részleg által nem kezelt alkalmazásokat). A felderítési folyamat egyszerűsítéséhez és bővítéséhez [használhatja a Microsoft Defender Advanced Threat Protection (ATP)](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) eszközt.
 
 Emellett a Azure Portal [AD FS alkalmazás tevékenység jelentésével](../manage-apps/migrate-adfs-application-activity.md) felderítheti a szervezetben lévő összes AD FS alkalmazást, a számukra bejelentkezett egyedi felhasználók számát, és az Azure ad-vel való integráláshoz való kompatibilitást is.
 
@@ -66,7 +66,7 @@ A felderítési folyamat során előfordulhat, hogy az informatikai részleg ál
 - A helyszíni felhasználók kiépítésének és hitelesítésének, valamint az ugyanazon szolgáltatáshoz tartozó más felhőalapú identitás-szolgáltatóknak fizetett licencelési díjaknak a megtakarításával pénzt takaríthat meg.
 - Csökkentse az adminisztrációs terhelést, és engedélyezze a szigorúbb biztonságot az identitás-és hozzáférés-kezelési folyamat kevesebb redundanciával.
 - Lehetővé teheti az alkalmazottak számára, hogy az [MyApps-portálon](../manage-apps/access-panel-collections.md)keresztül biztonságosan egyszeri bejelentkezéses hozzáférést kapjanak az összes szükséges alkalmazáshoz.
-- Javítsa az Azure AD&#39;s [Identity Protection](../identity-protection/overview-identity-protection.md) szolgáltatáshoz kapcsolódó szolgáltatásokat, például a feltételes hozzáférést, ha növeli az alkalmazás használatából származó adatok mennyiségét, és kibővíti az újonnan hozzáadott alkalmazások előnyeit.
+- Az Azure AD [Identity Protection](../identity-protection/overview-identity-protection.md) szolgáltatáshoz kapcsolódó szolgáltatások (például a feltételes hozzáférés) javítása az alkalmazás használatából származó adatok mennyiségének növelésével, valamint az újonnan hozzáadott alkalmazások előnyeinek kibővítésével.
 
 Tettünk közzé útmutatást az alkalmazások Azure AD-vel való integrálásának üzleti folyamatának kezeléséhez, beleértve a [plakátot](https://aka.ms/AppOnePager) és a [bemutatót](https://aka.ms/AppGuideline) , amellyel az üzleti és az alkalmazás-tulajdonosok tudatában és érdeklik. Ezeket a mintákat saját arculatával módosíthatja, és közzéteheti azokat a céges portálon, a hírlevélen vagy más médiumon keresztül, amikor befejezi a folyamat befejezését.
 
@@ -103,10 +103,10 @@ Emellett integrálhatja az alkalmazások kézbesítési vezérlőit, például a
 
 A vállalaton belül létrehozott alkalmazások esetében a fejlesztők a [Microsoft Identity platform](../develop/index.yml) segítségével implementálják a hitelesítést és az engedélyezést. A platformmal integrált alkalmazások [regisztrálva lesznek az Azure ad](../develop/quickstart-register-app.md) -ben, és ugyanúgy kezelhetők, mint bármely más alkalmazás a portfólióban.
 
-A fejlesztők a platformot használhatják a belső használatra szánt alkalmazások és az ügyfelek felé irányuló alkalmazások számára is, és a platform használatának más előnyei is vannak. A platform részét képező [Microsoft Authentication librarys (MSAL)](../develop/msal-overview.md)lehetővé teszi a fejlesztők számára, hogy a többtényezős hitelesítéssel és a biztonsági kulcsok használatával hozzáférjenek az alkalmazásaihoz anélkül, hogy azt maguknak kellene implementálni. Emellett a Microsoft Identity platformmal integrált alkalmazások is hozzáférhetnek [Microsoft Graph](../develop/microsoft-graph-intro.md) – egy egységes API-végpontot, amely a munkahelyen a termelékenység, az identitás és a biztonság mintáit leíró Microsoft 365-adatokkal rendelkezik. A fejlesztők ezeket az információkat olyan funkciók megvalósítására használhatják, amelyek növelhetik a hatékonyságot a felhasználók számára. Például azonosíthatja azokat a személyeket, akikkel a felhasználó a közelmúltban kommunikált, és az alkalmazás&#39;s felhasználói felületén felszínre került.
+A fejlesztők a platformot használhatják a belső használatra szánt alkalmazások és az ügyfelek felé irányuló alkalmazások számára is, és a platform használatának más előnyei is vannak. A platform részét képező [Microsoft Authentication librarys (MSAL)](../develop/msal-overview.md)lehetővé teszi a fejlesztők számára, hogy a többtényezős hitelesítéssel és a biztonsági kulcsok használatával hozzáférjenek az alkalmazásaihoz anélkül, hogy azt maguknak kellene implementálni. Emellett a Microsoft Identity platformmal integrált alkalmazások is hozzáférhetnek [Microsoft Graph](../develop/microsoft-graph-intro.md) – egy egységes API-végpontot, amely a munkahelyen a termelékenység, az identitás és a biztonság mintáit leíró Microsoft 365-adatokkal rendelkezik. A fejlesztők ezeket az információkat olyan funkciók megvalósítására használhatják, amelyek növelhetik a hatékonyságot a felhasználók számára. Például azonosíthatja azokat a személyeket, akikkel a felhasználó a közelmúltban kommunikált, és az alkalmazás felhasználói felületén felszínre került.
 
 Egy videó- [sorozatot](https://www.youtube.com/watch?v=zjezqZPPOfc&amp;list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX) biztosítunk, amely átfogó bevezetést nyújt a platformhoz, valamint számos, a támogatott nyelveken és platformokon elérhető [kódrészletet](../develop/sample-v2-code.md) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Az alkalmazások Azure Active Directoryba való áttelepítéséhez szükséges erőforrások](../manage-apps/migration-resources.md)
+- [Forrásanyagok az alkalmazások Azure Active Directoryba való migrálásához](../manage-apps/migration-resources.md)

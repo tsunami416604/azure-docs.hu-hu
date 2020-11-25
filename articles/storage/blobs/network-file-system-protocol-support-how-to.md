@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 09206b8189f03a37f8bd7d073238609a3f1bd3ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7419e8667f07eec03e860634c7b3fddcac0e186b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816099"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95901553"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>BLOB Storage csatlakoztatása a hálózati fájlrendszer (NFS) 3,0 protokoll (előzetes verzió) használatával
 
@@ -71,7 +71,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumH
 
 ## <a name="step-3-create-an-azure-virtual-network-vnet"></a>3. lépés: Azure-Virtual Network létrehozása (VNet)
 
-A VNet belül szerepelnie kell a Storage-fióknak. A VNet lehetővé teszi az ügyfelek számára, hogy biztonságosan kapcsolódjanak a Storage-fiókhoz. Ha többet szeretne megtudni a VNet, és arról, hogyan hozhat létre egyet, tekintse meg a [Virtual Network dokumentációját](https://docs.microsoft.com/azure/virtual-network/).
+A VNet belül szerepelnie kell a Storage-fióknak. A VNet lehetővé teszi az ügyfelek számára, hogy biztonságosan kapcsolódjanak a Storage-fiókhoz. Ha többet szeretne megtudni a VNet, és arról, hogyan hozhat létre egyet, tekintse meg a [Virtual Network dokumentációját](../../virtual-network/index.yml).
 
 > [!NOTE]
 > Az azonos VNet lévő ügyfelek csatlakoztatni tudják a fiókban lévő tárolókat. Egy helyszíni hálózaton futó ügyfélről is csatlakoztathat tárolót, de először csatlakoztatnia kell a helyszíni hálózatot a VNet. Lásd: [támogatott hálózati kapcsolatok](network-file-system-protocol-support.md#supported-network-connections).
@@ -113,7 +113,7 @@ Hozzon létre egy tárolót a Storage-fiókban ezen eszközök vagy SDK-k bárme
 |[AzCopy](../common/storage-use-azcopy-blobs.md#create-a-container)|[Java](data-lake-storage-directory-file-acl-java.md#create-a-container)|
 |[PowerShell](data-lake-storage-directory-file-acl-powershell.md#create-a-container)|[Python](data-lake-storage-directory-file-acl-python.md#create-a-container)|
 |[Azure CLI](data-lake-storage-directory-file-acl-cli.md#create-a-container)|[JavaScript](data-lake-storage-directory-file-acl-javascript.md)|
-||[REST](https://docs.microsoft.com/rest/api/storageservices/create-container)|
+||[REST](/rest/api/storageservices/create-container)|
 
 ## <a name="step-7-mount-the-container"></a>7. lépés: a tároló csatlakoztatása
 
@@ -144,7 +144,7 @@ Hozzon létre egy könyvtárat a Windows-vagy Linux-rendszeren, majd csatlakozta
 
    ![A hálózati fájlrendszer funkciójának ügyfele](media/network-file-system-protocol-how-to/client-for-network-files-system-feature.png)
 
-2. Csatoljon egy tárolót a [csatlakoztatási](https://docs.microsoft.com/windows-server/administration/windows-commands/mount) parancs használatával.
+2. Csatoljon egy tárolót a [csatlakoztatási](/windows-server/administration/windows-commands/mount) parancs használatával.
 
    ```
    mount -o nolock <storage-account-name>.blob.core.windows.net:/<storage-account-name>/<container-name> *
@@ -175,10 +175,3 @@ Hozzon létre egy könyvtárat a Windows-vagy Linux-rendszeren, majd csatlakozta
 ## <a name="see-also"></a>Lásd még
 
 [Hálózati fájlrendszer (NFS) 3,0 protokoll támogatása az Azure Blob Storage-ban (előzetes verzió)](network-file-system-protocol-support.md)
-
-
-
-
-
-
-

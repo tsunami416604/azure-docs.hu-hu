@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: dc695cc36113430cb1820d978ed41f5250cad33e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3e040146673ba16c07856f30b88771d0063713e9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94974821"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95896883"
 ---
 # <a name="azure-security-baseline-for-azure-hpc-cache"></a>Azure Security alapkonfiguráció az Azure HPC cache-hez
 
@@ -305,7 +305,7 @@ Az Azure komplex veszélyforrások elleni védelem (ATP) olyan biztonsági megol
 
 **Útmutató**: a HPC cache az Azure RBAC segítségével elkülöníti az üzleti szempontból kritikus rendszerek hozzáférését azáltal, hogy korlátozza, hogy mely fiókok kapnak jogosultsági szintű hozzáférést az előfizetésekhez és a felügyeleti csoportokhoz.
 
-Hozzon létre szabványos működési eljárásokat a dedikált rendszergazdai fiókok használata körül. Gyorsítótár létrehozásához a HPC cache megköveteli, hogy a felhasználók megfelelő jogosultságokkal rendelkezzenek az előfizetésben a hálózati adapterek létrehozásához. Ha blob Storage-t használ, a RBAC roles Storage-fiók közreműködője és a Storage blob-adatközreműködője szükséges a HPC gyorsítótárához a tároló eléréséhez. 
+Hozzon létre szabványos működési eljárásokat a dedikált rendszergazdai fiókok használata körül. Gyorsítótár létrehozásához a HPC cache megköveteli, hogy a felhasználók megfelelő jogosultságokkal rendelkezzenek az előfizetésben a hálózati adapterek létrehozásához. BLOB Storage használata esetén az Azure roles Storage-fiók közreműködői és a Storage blob-adatközreműködői a HPC-gyorsítótár eléréséhez szükségesek a tárolóhoz való hozzáféréshez. 
 
 Győződjön meg arról, hogy a felügyeleti, identitási és biztonsági rendszerekhez való hozzáférést is korlátozza, amelyek rendszergazdai hozzáféréssel rendelkeznek az üzleti szempontból kritikus fontosságú eszközökhöz, például a Active Directory-tartomány vezérlőkhöz (DCs), a biztonsági eszközökhöz és a Rendszerfelügyeleti eszközökhöz, amelyek az üzleti szempontból kritikus rendszerekre telepített ügynökökkel rendelkeznek. Azok a támadók, akik veszélyeztetik ezeket a felügyeleti és biztonsági rendszereket, azonnal weaponize azokat az üzleti szempontból kritikus fontosságú eszközök biztonsága érdekében.
 
@@ -1020,7 +1020,7 @@ További információkért tekintse meg a következő referenciákat:
 
 **Felelősség**: ügyfél
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd az [Azure Security teljesítményteszt v2 áttekintése](/azure/security/benchmarks/overview) című témakört.
 - További információ az [Azure biztonsági alaptervekről](/azure/security/benchmarks/security-baselines-overview)

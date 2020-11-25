@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 11/24/2020
 ms.author: jgao
-ms.openlocfilehash: a04377289b78c23a83fc696ebebb9b5808e904c9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: dcc968353edf0e9cf3d63408d02baf94c6cabd9f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321645"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95902449"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Telepítési parancsfájlok használata a sablonokban (előzetes verzió)
 
@@ -107,7 +107,7 @@ A következő JSON egy példa.  A sablon legújabb sémája [itt](/azure/templat
       "storageAccountName": "myStorageAccount",
       "storageAccountKey": "myKey"
     },
-    "azPowerShellVersion": "3.0",  // or "azCliVersion": "2.0.80"
+    "azPowerShellVersion": "3.0",  // or "azCliVersion": "2.0.80",
     "arguments": "-name \\\"John Dole\\\"",
     "environmentVariables": [
       {
@@ -135,13 +135,13 @@ A következő JSON egy példa.  A sablon legújabb sémája [itt](/azure/templat
 
 Tulajdonság értékének részletei:
 
-- **Identitás** : az üzembe helyezési parancsfájl szolgáltatás felhasználó által hozzárendelt felügyelt identitást használ a parancsfájlok végrehajtásához. Jelenleg csak a felhasználó által hozzárendelt felügyelt identitás támogatott.
+- **Identitás**: az üzembe helyezési parancsfájl szolgáltatás felhasználó által hozzárendelt felügyelt identitást használ a parancsfájlok végrehajtásához. Jelenleg csak a felhasználó által hozzárendelt felügyelt identitás támogatott.
 - **Típus: adja** meg a parancsfájl típusát. Jelenleg a Azure PowerShell és az Azure CLI-parancsfájlok támogatottak. Az értékek a következők: **AzurePowerShell** és **AzureCLI**.
-- **forceUpdateTag** : ennek az értéknek a módosítása a sablon központi telepítései között kényszeríti a telepítési parancsfájl ismételt végrehajtását. Használja a newGuid () vagy a utcNow () függvényt, amelyet a paraméter defaultValue értékeként kell beállítani. További információ: [parancsfájl futtatása](#run-script-more-than-once)többször.
-- **containerSettings** : határozza meg az Azure Container instance testreszabásához szükséges beállításokat.  a **containerGroupName** a tároló csoport nevének megadására szolgál.  Ha nincs megadva, a rendszer automatikusan létrehozza a csoport nevét.
-- **storageAccountSettings** : meglévő Storage-fiók használatára vonatkozó beállítások megadása. Ha nincs megadva, a rendszer automatikusan létrehozza a Storage-fiókot. Lásd: [meglévő Storage-fiók használata](#use-existing-storage-account).
-- **azPowerShellVersion** / **azCliVersion** : Itt adhatja meg a használni kívánt modul verzióját. A PowerShell és a parancssori felület támogatott verzióinak listájáért lásd: [Előfeltételek](#prerequisites).
-- **argumentumok** : határozza meg a paraméterek értékeit. Az értékeket szóközök választják el egymástól.
+- **forceUpdateTag**: ennek az értéknek a módosítása a sablon központi telepítései között kényszeríti a telepítési parancsfájl ismételt végrehajtását. Ha a newGuid () vagy a utcNow () függvényt használja, akkor mindkét függvény csak a paraméter alapértelmezett értékében használható. További információ: [parancsfájl futtatása](#run-script-more-than-once)többször.
+- **containerSettings**: határozza meg az Azure Container instance testreszabásához szükséges beállításokat.  a **containerGroupName** a tároló csoport nevének megadására szolgál.  Ha nincs megadva, a rendszer automatikusan létrehozza a csoport nevét.
+- **storageAccountSettings**: meglévő Storage-fiók használatára vonatkozó beállítások megadása. Ha nincs megadva, a rendszer automatikusan létrehozza a Storage-fiókot. Lásd: [meglévő Storage-fiók használata](#use-existing-storage-account).
+- **azPowerShellVersion** / **azCliVersion**: Itt adhatja meg a használni kívánt modul verzióját. A PowerShell és a parancssori felület támogatott verzióinak listájáért lásd: [Előfeltételek](#prerequisites).
+- **argumentumok**: határozza meg a paraméterek értékeit. Az értékeket szóközök választják el egymástól.
 
     Az üzembe helyezési parancsfájlok karakterláncok tömbje szerint osztják el az argumentumokat a [CommandLineToArgvW ](/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw) rendszerhívás meghívásával. Erre azért van szükség, mert az argumentumok [parancs tulajdonságként](/rest/api/container-instances/containergroups/createorupdate#containerexec) lesznek átadva az Azure Container instance számára, a Command tulajdonság pedig sztring.
 
@@ -155,13 +155,13 @@ Tulajdonság értékének részletei:
 
     A minta sablon megtekintéséhez válassza az [itt](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-jsonEscape.json)lehetőséget.
 
-- **environmentVariables** : adja meg azokat a környezeti változókat, amelyeket át kell adni a parancsfájlnak. További információ: [telepítési parancsfájlok fejlesztése](#develop-deployment-scripts).
-- **scriptContent** : adja meg a parancsfájl tartalmát. Külső parancsfájl futtatásához használja `primaryScriptUri` helyette a parancsot. Példák: [beágyazott parancsfájl használata](#use-inline-scripts) és [külső parancsfájl használata](#use-external-scripts).
-- **primaryScriptUri** : adjon meg egy nyilvánosan elérhető URL-címet az elsődleges telepítési parancsfájl számára a támogatott fájlkiterjesztések használatával.
-- **supportingScriptUris** : adja meg a nyilvánosan elérhető URL-címek tömbjét, amely támogatja a vagy a által meghívott fájlokat `ScriptContent` `PrimaryScriptUri` .
-- **időtúllépés** : adja meg az [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601)megadott maximálisan engedélyezett parancsfájl-végrehajtási időt. Az alapértelmezett érték a **P1D**.
-- **cleanupPreference**. Adja meg a telepítési erőforrások törlésének előnyét, ha a parancsfájl végrehajtása terminál állapotba kerül. Az alapértelmezett beállítás **mindig** , ami azt jelenti, hogy a rendszer a terminál állapota (sikeres, sikertelen, megszakított) ellenére törli az erőforrásokat. További információ: [üzembe helyezési parancsfájl erőforrásainak tisztítása](#clean-up-deployment-script-resources).
-- **retentionInterval** : adja meg azt az időközt, ameddig a szolgáltatás megtartja a telepítési parancsfájl erőforrásait, miután a telepítési parancsfájl végrehajtása eléri a terminál állapotát. Az üzembe helyezési parancsfájl erőforrásai törlődnek, ha ez az időtartam lejár. Az időtartam az [ISO 8601 minta](https://en.wikipedia.org/wiki/ISO_8601)alapján történik. Az adatmegőrzési időköz 1 és 26 óra közötti (PT26H). Ezt a tulajdonságot akkor használja a rendszer, ha a cleanupPreference értéke *OnExpiration*. A *OnExpiration* tulajdonság jelenleg nincs engedélyezve. További információ: [üzembe helyezési parancsfájl erőforrásainak tisztítása](#clean-up-deployment-script-resources).
+- **environmentVariables**: adja meg azokat a környezeti változókat, amelyeket át kell adni a parancsfájlnak. További információ: [telepítési parancsfájlok fejlesztése](#develop-deployment-scripts).
+- **scriptContent**: adja meg a parancsfájl tartalmát. Külső parancsfájl futtatásához használja `primaryScriptUri` helyette a parancsot. Példák: [beágyazott parancsfájl használata](#use-inline-scripts) és [külső parancsfájl használata](#use-external-scripts).
+- **primaryScriptUri**: adjon meg egy nyilvánosan elérhető URL-címet az elsődleges telepítési parancsfájl számára a támogatott fájlkiterjesztések használatával.
+- **supportingScriptUris**: adja meg a nyilvánosan elérhető URL-címek tömbjét, amely támogatja a vagy a által meghívott fájlokat `ScriptContent` `PrimaryScriptUri` .
+- **időtúllépés**: adja meg az [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601)megadott maximálisan engedélyezett parancsfájl-végrehajtási időt. Az alapértelmezett érték a **P1D**.
+- **cleanupPreference**. Adja meg a telepítési erőforrások törlésének előnyét, ha a parancsfájl végrehajtása terminál állapotba kerül. Az alapértelmezett beállítás **mindig**, ami azt jelenti, hogy a rendszer a terminál állapota (sikeres, sikertelen, megszakított) ellenére törli az erőforrásokat. További információ: [üzembe helyezési parancsfájl erőforrásainak tisztítása](#clean-up-deployment-script-resources).
+- **retentionInterval**: adja meg azt az időközt, ameddig a szolgáltatás megtartja a telepítési parancsfájl erőforrásait, miután a telepítési parancsfájl végrehajtása eléri a terminál állapotát. Az üzembe helyezési parancsfájl erőforrásai törlődnek, ha ez az időtartam lejár. Az időtartam az [ISO 8601 minta](https://en.wikipedia.org/wiki/ISO_8601)alapján történik. Az adatmegőrzési időköz 1 és 26 óra közötti (PT26H). Ezt a tulajdonságot akkor használja a rendszer, ha a cleanupPreference értéke *OnExpiration*. A *OnExpiration* tulajdonság jelenleg nincs engedélyezve. További információ: [üzembe helyezési parancsfájl erőforrásainak tisztítása](#clean-up-deployment-script-resources).
 
 ### <a name="additional-samples"></a>További minták
 
@@ -287,8 +287,8 @@ Meglévő Storage-fiók megadásához adja hozzá a következő JSON-t a tulajdo
 },
 ```
 
-- **storageAccountName** : adja meg a Storage-fiók nevét.
-- **storageAccountKey "** : a Storage-fiók kulcsainak egyikét kell megadnia. A [`listKeys()`](./template-functions-resource.md#listkeys) kulcs lekéréséhez használhatja a függvényt. Például:
+- **storageAccountName**: adja meg a Storage-fiók nevét.
+- **storageAccountKey "**: a Storage-fiók kulcsainak egyikét kell megadnia. A [`listKeys()`](./template-functions-resource.md#listkeys) kulcs lekéréséhez használhatja a függvényt. Például:
 
     ```json
     "storageAccountSettings": {
@@ -331,7 +331,7 @@ Az üzembe helyezési parancsfájl erőforrásának üzembe helyezése után az 
 
 ![Resource Manager-sablonok üzembe helyezési parancsfájl-portálja – áttekintés](./media/deployment-script-template/resource-manager-deployment-script-portal.png)
 
-Az Áttekintés oldalon az erőforrás néhány fontos információja látható, például a **kiépítési állapot** , a **Storage-fiók** , a **Container instance** és a **naplók**.
+Az Áttekintés oldalon az erőforrás néhány fontos információja látható, például a **kiépítési állapot**, a **Storage-fiók**, a **Container instance** és a **naplók**.
 
 A bal oldali menüben megtekintheti a telepítési parancsfájl tartalmát, a parancsfájlnak átadott argumentumokat, valamint a kimenetet.  A telepítési parancsfájlhoz is exportálhat sablont, beleértve az üzembehelyezési parancsfájlt is.
 
@@ -529,13 +529,13 @@ A parancsfájlok végrehajtásához és a hibaelhárításhoz szükség van egy 
 
 Ezeknek az erőforrásoknak a életciklusát a sablon következő tulajdonságai vezérlik:
 
-- **cleanupPreference** : Ha a parancsfájl végrehajtása egy terminál állapotba kerül, a rendszer törli a beállítást. A támogatott értékek a következők:
+- **cleanupPreference**: Ha a parancsfájl végrehajtása egy terminál állapotba kerül, a rendszer törli a beállítást. A támogatott értékek a következők:
 
-  - **Mindig** : törölje az automatikusan létrehozott erőforrásokat, ha a parancsfájl végrehajtása terminál állapotba kerül. Ha egy meglévő Storage-fiókot használ, a parancsfájl-szolgáltatás törli a Storage-fiókban létrehozott fájlmegosztást. Mivel a deploymentScripts-erőforrás továbbra is megtalálható az erőforrások tisztítása után, a parancsfájl-szolgáltatás megőrzi a parancsfájlok végrehajtásának eredményét, például az stdout, a kimenetek, a visszatérési érték stb. az erőforrások törlése előtt.
-  - **OnSuccess** : csak akkor törölje az automatikusan létrehozott erőforrásokat, ha a parancsfájl végrehajtása sikeres. Ha egy meglévő Storage-fiókot használ, a parancsfájl-szolgáltatás csak akkor távolítja el a fájlmegosztást, ha a parancsfájl végrehajtása sikeres. A hibakeresési adatok megkereséséhez továbbra is hozzáférhet az erőforrásokhoz.
-  - **OnExpiration** : csak akkor törölje az automatikusan létrehozott erőforrásokat, ha a **retentionInterval** -beállítás lejár. Ha meglévő Storage-fiókot használ, a parancsfájl-szolgáltatás eltávolítja a fájlmegosztást, de megtartja a Storage-fiókot.
+  - **Mindig**: törölje az automatikusan létrehozott erőforrásokat, ha a parancsfájl végrehajtása terminál állapotba kerül. Ha egy meglévő Storage-fiókot használ, a parancsfájl-szolgáltatás törli a Storage-fiókban létrehozott fájlmegosztást. Mivel a deploymentScripts-erőforrás továbbra is megtalálható az erőforrások tisztítása után, a parancsfájl-szolgáltatás megőrzi a parancsfájlok végrehajtásának eredményét, például az stdout, a kimenetek, a visszatérési érték stb. az erőforrások törlése előtt.
+  - **OnSuccess**: csak akkor törölje az automatikusan létrehozott erőforrásokat, ha a parancsfájl végrehajtása sikeres. Ha egy meglévő Storage-fiókot használ, a parancsfájl-szolgáltatás csak akkor távolítja el a fájlmegosztást, ha a parancsfájl végrehajtása sikeres. A hibakeresési adatok megkereséséhez továbbra is hozzáférhet az erőforrásokhoz.
+  - **OnExpiration**: csak akkor törölje az automatikusan létrehozott erőforrásokat, ha a **retentionInterval** -beállítás lejár. Ha meglévő Storage-fiókot használ, a parancsfájl-szolgáltatás eltávolítja a fájlmegosztást, de megtartja a Storage-fiókot.
 
-- **retentionInterval** : adja meg azt az időintervallumot, ameddig a rendszer megőrzi a parancsfájl-erőforrást, majd azután, hogy lejárt és törölve lesz.
+- **retentionInterval**: adja meg azt az időintervallumot, ameddig a rendszer megőrzi a parancsfájl-erőforrást, majd azután, hogy lejárt és törölve lesz.
 
 > [!NOTE]
 > A Storage-fiók és a parancsfájl-szolgáltatás által más célra létrehozott tároló-példány használata nem ajánlott. Előfordulhat, hogy a parancsfájl életciklusa alapján a két erőforrás el lesz távolítva.
@@ -588,7 +588,7 @@ A parancsfájl sikeres tesztelése után a sablonban használható üzembe helye
 | DeploymentScriptContainerGroupInNonterminalState | Az Azure Container instance (ACI) létrehozásakor egy másik telepítési parancsfájl ugyanazt az ACI-nevet használja ugyanabban a hatókörben (az előfizetés, az erőforráscsoport neve és az erőforrás neve). |
 | DeploymentScriptContainerGroupNameInvalid | Az Azure Container instance megadott neve (ACI) nem felel meg az ACI-követelményeknek. Lásd: [Azure Container instances gyakori problémáinak elhárítása](../../container-instances/container-instances-troubleshooting.md#issues-during-container-group-deployment).|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan használhatja a telepítési parancsfájlokat. Útmutató az üzembe helyezési parancsfájlhoz:
 

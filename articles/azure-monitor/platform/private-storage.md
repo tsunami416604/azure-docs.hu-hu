@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: a487e6989792c63aaf5baf9ddb3875df549561a4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7cb427c83345a4603c6fe7727c1cc42c1943c456
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92143992"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95908251"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Ügyfél által felügyelt Storage-fiókok használata Azure Monitor Log Analytics
 
-A Log Analytics különböző forgatókönyvekben támaszkodik az Azure Storage-ra. Ezt a használatot általában automatikusan kezeli a rendszer. Bizonyos esetekben azonban a saját Storage-fiók (más néven ügyfél által felügyelt Storage-fiók) megadására és felügyeletére van szükség. Ez a dokumentum részletesen ismerteti az ügyfél által felügyelt tárolók használatát a WAD/LAD naplók betöltéséhez, a privát hivatkozások adott forgatókönyvekhez és a CMK-titkosításhoz. 
+A Log Analytics különböző forgatókönyvekben támaszkodik az Azure Storage-ra. Ezt a használatot általában automatikusan kezeli a rendszer. Bizonyos esetekben azonban a saját Storage-fiók (más néven ügyfél által felügyelt Storage-fiók) megadására és felügyeletére van szükség. Ez a dokumentum részletesen ismerteti az ügyfél által felügyelt tárolók használatát a WAD/LAD naplók betöltéséhez, a privát hivatkozásokra vonatkozó forgatókönyvekhez és az ügyfél által felügyelt kulcs (CMK) titkosításhoz. 
 
 > [!NOTE]
 > Azt javasoljuk, hogy ne használja függőséget az ügyfél által felügyelt tárhelyre Log Analytics feltöltéseket, mivel a formázás és a tartalom változhat.
@@ -94,7 +94,7 @@ A Storage-fiókok bizonyos terhelésű olvasási és írási kérelmeket képese
 A Storage-fiókokat a tárolt adatmennyiség, a tároló típusa és a redundancia típusa alapján számítjuk fel. Részletekért lásd: a [Blobok díjszabásának](https://azure.microsoft.com/pricing/details/storage/blobs) és a [Table Storage díjszabásának](https://azure.microsoft.com/pricing/details/storage/tables)blokkolása.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tudnivalók az [Azure Private-hivatkozás használatáról a hálózatok Azure monitorhoz való biztonságos csatlakoztatásához](private-link-security.md)
 - Ismerkedjen meg [Azure monitor ügyfél által felügyelt kulcsokkal](customer-managed-keys.md)

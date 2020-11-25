@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 85499839992f872896153e360507d7d1ba7fea38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4db85357ee970d13d6b4fcce195cae66932bed18
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88037201"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912790"
 ---
 # <a name="tune-performance-storm-hdinsight--azure-data-lake-storage-gen2"></a>Teljesítmény hangolása: Storm, HDInsight & Azure Data Lake Storage Gen2
 
@@ -22,9 +22,9 @@ Megismerheti azokat a tényezőket, amelyeket figyelembe kell venni az Azure Sto
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* **Egy Azure Data Lake Storage Gen2-fiók**. A létrehozásával kapcsolatos utasításokért lásd: rövid útmutató [: Storage-fiók létrehozása analitikai szolgáltatáshoz](data-lake-storage-quickstart-create-account.md).
-* **Azure HDInsight-fürt** Data Lake Storage Gen2 fiókhoz való hozzáféréssel. Lásd: [Azure Data Lake Storage Gen2 használata az Azure HDInsight-fürtökkel](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2). Győződjön meg arról, hogy engedélyezi Távoli asztal a fürt számára.
-* **Storm-fürt futtatása Data Lake Storage Gen2on**. További információ: [Storm on HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview).
+* **Egy Azure Data Lake Storage Gen2-fiók**. A létrehozásával kapcsolatos utasításokért lásd: rövid útmutató [: Storage-fiók létrehozása analitikai szolgáltatáshoz](../common/storage-account-create.md).
+* **Azure HDInsight-fürt** Data Lake Storage Gen2 fiókhoz való hozzáféréssel. Lásd: [Azure Data Lake Storage Gen2 használata az Azure HDInsight-fürtökkel](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md). Győződjön meg arról, hogy engedélyezi Távoli asztal a fürt számára.
+* **Storm-fürt futtatása Data Lake Storage Gen2on**. További információ: [Storm on HDInsight](../../hdinsight/storm/apache-storm-overview.md).
 * **Teljesítmény-finomhangolási irányelvek a Data Lake Storage Gen2**.  Az általános teljesítménnyel kapcsolatos fogalmakat lásd: [Data Lake Storage Gen2 teljesítmény-finomhangolási útmutató](data-lake-storage-performance-tuning-guidance.md).   
 
 ## <a name="tune-the-parallelism-of-the-topology"></a>A topológia párhuzamosságának hangolása
@@ -110,10 +110,10 @@ Ha eléri a Data Lake Storage Gen2 által biztosított sávszélesség korlátai
 
 Ha szeretné megtekinteni, hogy a rendszer leszabályozza-e a szabályozást, engedélyezze a hibakeresési naplózást az ügyféloldali oldalon:
 
-1. A **Ambari**  >  **Storm**  >  **config**  >  **Advanced Storm-Worker-log4j**, Change ** &lt; root level = "info &gt; "** a ** &lt; root level = "debug &gt; "**. A konfiguráció érvénybe léptetéséhez indítsa újra az összes csomópontot/szolgáltatást.
+1. A **Ambari**  >  **Storm**  >  **config**  >  **Advanced Storm-Worker-log4j**, Change **&lt; root level = "info &gt; "** a **&lt; root level = "debug &gt; "**. A konfiguráció érvénybe léptetéséhez indítsa újra az összes csomópontot/szolgáltatást.
 2. Figyelje a Storm-topológiák naplóit a munkavégző csomópontokon (a/var/log/Storm/Worker-artifacts/ &lt; TopologyName &gt; / &lt; &gt; -port/Worker.log alatt) Data Lake Storage Gen2 szabályozási kivételek esetében.
 
-## <a name="next-steps"></a>Következő lépések
-A Storm további teljesítmény-finomhangolását ebben a [blogban](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)lehet hivatkozni.
+## <a name="next-steps"></a>További lépések
+A Storm további teljesítmény-finomhangolását ebben a [blogban](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)lehet hivatkozni.
 
 Ha további példát szeretne futtatni, tekintse [meg ezt a githubon](https://github.com/hdinsight/storm-performance-automation).

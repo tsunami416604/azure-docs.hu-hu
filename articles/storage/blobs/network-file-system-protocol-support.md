@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 41ad20de6b7a800ff1f97a7ff371c8e0012fed27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78455659d76d259c626745c93770428c25042b2d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88166977"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95908812"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Hálózati fájlrendszer (NFS) 3,0 protokoll támogatása az Azure Blob Storage-ban (előzetes verzió)
 
@@ -58,19 +58,19 @@ Az ügyfél nyilvános vagy [privát végponton](../common/storage-private-endpo
 
 - A Storage-fiókhoz konfigurált VNet. 
 
-  Ebben a cikkben a VNet *elsődleges VNet*tekintjük át. További információ: [hozzáférés engedélyezése egy virtuális hálózatról](../common/storage-network-security.md#grant-access-from-a-virtual-network).
+  Ebben a cikkben a VNet *elsődleges VNet* tekintjük át. További információ: [hozzáférés engedélyezése egy virtuális hálózatról](../common/storage-network-security.md#grant-access-from-a-virtual-network).
 
 - Olyan VNet, amely ugyanabban a régióban található, mint az elsődleges VNet.
 
   A megosztott VNet való hozzáférés engedélyezéséhez konfigurálnia kell a Storage-fiókot. További információ: [hozzáférés engedélyezése egy virtuális hálózatról](../common/storage-network-security.md#grant-access-from-a-virtual-network).
 
-- Egy helyszíni hálózat, amely [VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) vagy egy [ExpressRoute-átjáró](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-portal-resource-manager)használatával csatlakozik az elsődleges VNet. 
+- Egy helyszíni hálózat, amely [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) vagy egy [ExpressRoute-átjáró](../../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)használatával csatlakozik az elsődleges VNet. 
 
   További tudnivalókért lásd: [hozzáférés konfigurálása helyszíni hálózatokból](../common/storage-network-security.md#configuring-access-from-on-premises-networks).
 
 - Egy olyan helyszíni hálózat, amely összekapcsolt hálózathoz csatlakozik.
 
-  Ezt [VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) vagy egy [ExpressRoute-átjáró](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-portal-resource-manager) , valamint az [átjáró-átvitel](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/vnet-peering#gateway-transit)használatával végezheti el. 
+  Ezt [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) vagy egy [ExpressRoute-átjáró](../../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md) , valamint az [átjáró-átvitel](/azure/architecture/reference-architectures/hybrid-networking/vnet-peering#gateway-transit)használatával végezheti el. 
 
 > [!IMPORTANT]
 > Ha helyszíni hálózatról csatlakozik, győződjön meg arról, hogy az ügyfél engedélyezi a kimenő kommunikációt az 111-es és a 2048-es porton keresztül. Az NFS 3,0 protokoll ezeket a portokat használja.
@@ -111,11 +111,6 @@ Az előzetes verzió ideje alatt a Storage-fiókban tárolt adatokra ugyanazon a
 
 Az előzetes verzióban nem számítunk fel tranzakciót. A tranzakciók díjszabása változhat, és akkor lesz meghatározva, ha általánosan elérhető.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Első lépésként tekintse meg [a blob Storage csatlakoztatása a hálózati fájlrendszer (NFS) 3,0 protokoll (előzetes verzió) használatával](network-file-system-protocol-support-how-to.md)című témakört.
-
-
-
-
-

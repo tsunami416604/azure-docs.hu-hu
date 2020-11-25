@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: b247a72b5d7db9892c6a2a763b7b71dc5f972d95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7640b7a6053532360da4c908089aecfe163bd3de
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86045297"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912654"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>Oktatóanyag: adatok kinyerése, átalakítása és betöltése az Azure HDInsight használatával
 
 Ebben az oktatóanyagban egy ETL-műveletet hajt végre: adatok kinyerése, átalakítása és betöltése. Létrehoz egy nyers CSV-adatfájlt, importálja egy Azure HDInsight-fürtbe, átalakítja Apache Hiveával, és betölti Azure SQL Database az Apache Sqoop.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Az adatok kinyerése és feltöltése egy HDInsight-fürtbe.
@@ -32,15 +32,15 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 * **A HDInsight konfigurált Azure Data Lake Storage Gen2 Storage-fiók**
 
-    Lásd: [Azure Data Lake Storage Gen2 használata az Azure HDInsight-fürtökkel](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2).
+    Lásd: [Azure Data Lake Storage Gen2 használata az Azure HDInsight-fürtökkel](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md).
 
 * **Linux-alapú Hadoop-fürt a HDInsight-on**
 
-    Lásd: gyors üzembe helyezés [Apache Hadoop és Apache Hive az Azure HDInsight az Azure Portal használatával](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal).
+    Lásd: gyors üzembe helyezés [Apache Hadoop és Apache Hive az Azure HDInsight az Azure Portal használatával](../../hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md).
 
-* **Azure SQL Database**: a Azure SQL Databaset használja célként szolgáló adattárként. Ha nem rendelkezik SQL Database-adatbázissal, tekintse meg a következő témakört: [adatbázis létrehozása Azure SQL Database a Azure Portal](../../sql-database/sql-database-get-started.md).
+* **Azure SQL Database**: a Azure SQL Databaset használja célként szolgáló adattárként. Ha nem rendelkezik SQL Database-adatbázissal, tekintse meg a következő témakört: [adatbázis létrehozása Azure SQL Database a Azure Portal](../../azure-sql/database/single-database-create-quickstart.md).
 
-* **Azure CLI**: Ha még nem telepítette az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)ismertető témakört.
+* **Azure CLI**: Ha még nem telepítette az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](/cli/azure/install-azure-cli?view=azure-cli-latest)ismertető témakört.
 
 * **Egy Secure Shell-(SSH-) ügyfél**: további információért lásd: [Kapcsolódás a HDInsight (HADOOP) az SSH használatával](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -120,9 +120,9 @@ Ebben a szakaszban az adatok feltöltése a HDInsight-fürtbe, majd az adatok m�
 
 Ebben a szakaszban a Beeline használatával futtat egy Apache Hive feladatot.
 
-A Apache Hive feladatsor részeként importálja az adatait a. csv-fájlból egy **késleltetés**nevű Apache Hive táblába.
+A Apache Hive feladatsor részeként importálja az adatait a. csv-fájlból egy **késleltetés** nevű Apache Hive táblába.
 
-1. A HDInsight-fürthöz már meglévő SSH-parancssorból a következő paranccsal hozhat létre és szerkeszthet egy     **flightdelays. HQL**nevű új fájlt:
+1. A HDInsight-fürthöz már meglévő SSH-parancssorból a következő paranccsal hozhat létre és szerkeszthet egy     **flightdelays. HQL** nevű új fájlt:
 
    ```bash
    nano flightdelays.hql
@@ -228,7 +228,7 @@ Ehhez a művelethez SQL Database-kiszolgáló nevét kell megadnia. A kiszolgál
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 
-2. Válassza az **SQL-adatbázisok**lehetőséget.
+2. Válassza az **SQL-adatbázisok** lehetőséget.
 
 3. Szűrje a használni kívánt adatbázis nevét. A kiszolgáló neve a **Kiszolgáló neve** oszlopban látható.
 
@@ -280,7 +280,7 @@ Ehhez a művelethez SQL Database-kiszolgáló nevét kell megadnia. A kiszolgál
 
 8. A `GO` utasítás megadásakor a rendszer kiértékeli az előző utasításokat.
 
-   A lekérdezés egy **késések**nevű táblát hoz létre, amely fürtözött indexszel rendelkezik.
+   A lekérdezés egy **késések** nevű táblát hoz létre, amely fürtözött indexszel rendelkezik.
 
 9. A következő lekérdezés használatával ellenőrizheti, hogy a tábla létrejött-e:
 
@@ -344,4 +344,4 @@ Az oktatóanyagban használt összes erőforrás már létezik. Nincs szükség 
 Ha többet szeretne megtudni a HDInsight található adatkezelési lehetőségekről, tekintse meg a következő cikket:
 
 > [!div class="nextstepaction"]
-> [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+> [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

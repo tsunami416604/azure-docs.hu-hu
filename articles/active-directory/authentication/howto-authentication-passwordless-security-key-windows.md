@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 01/30/2020
+ms.date: 11/24/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fba2610b3343744c448e390bc2d713b38da481d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 25c6ccb4661fde1efb088cd8535bf2759f2057b3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839471"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95902760"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Jelszó nélküli biztonsági kulcs bejelentkezésének engedélyezése a Windows 10-es eszközökre Azure Active Directory (előzetes verzió)
 
@@ -134,7 +134,7 @@ A **hibrid Azure ad-hez csatlakoztatott eszközökhöz** a szervezetek a követk
 - A házirend **engedélyezésének engedélyezése** lehetővé teszi a felhasználók számára a biztonsági kulcsokkal való bejelentkezést.
 - Ha a házirendet **Letiltva** vagy **nincs konfigurálva** , a felhasználók nem jelentkezhetnek be a biztonsági kulcsokkal.
 
-Ennek a Csoportházirend beállításnak a Csoportházirend sablon frissített verzióját kell megadnia `credentialprovider.admx` . Ez az új sablon a Windows Server következő verziójával és a Windows 10 20H1 érhető el. Ezt a beállítást olyan eszközzel lehet felügyelni, amely a Windows újabb verzióinak egyikét futtatja, vagy központilag a támogatási témakör útmutatását követve a [windows Csoportházirend felügyeleti sablonok központi tárolójának létrehozása és kezelése](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra).
+Ennek a Csoportházirend beállításnak a Csoportházirend sablon frissített verzióját kell megadnia `CredentialProviders.admx` . Ez az új sablon a Windows Server következő verziójával és a Windows 10 20H1 érhető el. Ezt a beállítást olyan eszközzel lehet felügyelni, amely a Windows újabb verzióinak egyikét futtatja, vagy központilag a támogatási témakör útmutatását követve a [windows Csoportházirend felügyeleti sablonok központi tárolójának létrehozása és kezelése](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra).
 
 ## <a name="sign-in-with-fido2-security-key"></a>Bejelentkezés FIDO2 biztonsági kulccsal
 
@@ -158,7 +158,7 @@ Ha meg szeretné osztani a visszajelzéseket, vagy problémákat tapasztal a fun
    - Alkategória:
 1. A naplók rögzítéséhez használja a problémát a **probléma újbóli létrehozásához** .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Helyszíni erőforrásokhoz való hozzáférés engedélyezése az Azure AD-hez és a hibrid Azure AD-hez csatlakoztatott eszközökhöz](howto-authentication-passwordless-security-key-on-premises.md)
 

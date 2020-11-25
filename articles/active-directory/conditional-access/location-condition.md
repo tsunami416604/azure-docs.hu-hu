@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 06/15/2020
+ms.date: 11/24/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 08e236d798f700a3c48dd41ba61941bc0037d613
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 888ed2fa24b82c0dda3361df1c63bb802e58f5fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88055377"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95904103"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>A hely feltételének használata feltételes hozzáférési házirendben 
 
@@ -37,7 +37,7 @@ A hálózati helyet az ügyfél által a Azure Active Directory számára biztos
 
 ## <a name="named-locations"></a>Nevesített helyek
 
-A helyszínek a Azure Portal **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférés**  >  **névvel ellátott helyei**területen vannak kijelölve. Ezek a nevesített hálózati helyek olyan helyekhez tartozhatnak, mint például a szervezeti központ hálózati tartományai, a VPN-hálózatok tartományai vagy a blokkolni kívánt tartományok. 
+A helyszínek a Azure Portal **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférés**  >  **névvel ellátott helyei** területen vannak kijelölve. Ezek a nevesített hálózati helyek olyan helyekhez tartozhatnak, mint például a szervezeti központ hálózati tartományai, a VPN-hálózatok tartományai vagy a blokkolni kívánt tartományok. 
 
 ![Elnevezett helyszínek a Azure Portal](./media/location-condition/new-named-location.png)
 
@@ -64,13 +64,13 @@ Ez a beállítás a feltételes hozzáférési házirendekben fordulhat elő, ah
 Egyes szervezetek dönthetnek úgy, hogy a feltételes hozzáférési szabályzatok elnevezett helyei szerint határozzák meg az összes országot vagy régióbeli IP-határokat. Ezeket a helyeket akkor használhatják, amikor blokkolják a szükségtelen forgalmat, ha tudják, hogy az érvényes felhasználók soha nem olyan helyről származnak, mint az Észak-Korea. Az IP-cím és az ország közötti leképezések rendszeresen frissülnek. 
 
 > [!NOTE]
-> Az országok nem tartalmaznak IPv6-címtartományt, csak az ismert IPv4-címtartományt, és nem jelölhetők meg megbízhatóként.
+> Az IPv6-címtartományok nem képezhetők le országokra. Az országoknak csak IPv4-címek képezhetők le.
 
 ![Új ország vagy régió alapú hely létrehozása a Azure Portal](./media/location-condition/new-named-location-country-region.png)
 
 #### <a name="include-unknown-areas"></a>Ismeretlen területek belefoglalása
 
-Néhány IP-cím nincs leképezve egy adott országra vagy régióra. Ezeknek az IP-helyeknek a rögzítéséhez jelölje be az **ismeretlen területek** megadása a hely meghatározásakor jelölőnégyzetet. Ezzel a beállítással megadhatja, hogy ezek az IP-címek szerepeljenek-e a megnevezett helyen. Akkor használja ezt a beállítást, ha a nevesített helyet használó házirendet ismeretlen helyekre kell alkalmazni.
+Néhány IP-cím nincs leképezve egy adott országra vagy régióra, beleértve az összes IPv6-címet is. Ezeknek az IP-helyeknek a rögzítéséhez jelölje be az **ismeretlen területek** megadása a hely meghatározásakor jelölőnégyzetet. Ezzel a beállítással megadhatja, hogy ezek az IP-címek szerepeljenek-e a megnevezett helyen. Akkor használja ezt a beállítást, ha a nevesített helyet használó házirendet ismeretlen helyekre kell alkalmazni.
 
 ### <a name="configure-mfa-trusted-ips"></a>MFA megbízható IP-címeinek konfigurálása
 
@@ -80,7 +80,7 @@ Ha megbízható IP-címek vannak konfigurálva, a hely feltételének helyein **
 
 ### <a name="skipping-multi-factor-authentication"></a>Multi-Factor Authentication kihagyása
 
-A multi-Factor Authentication szolgáltatás beállításai lapon azonosíthatja a vállalati intranetes felhasználókat a  **többtényezős hitelesítés kihagyása az összevont felhasználóktól az intraneten lévő kérelmekhez**lehetőség kiválasztásával. Ez a beállítás azt jelzi, hogy a AD FS által kiadott vállalati hálózati jogcímet megbízhatónak kell tekinteni, és a felhasználó azonosítására kell használni a vállalati hálózaton. További információ: [a megbízható IP-címek engedélyezése funkció feltételes hozzáférés használatával](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access).
+A multi-Factor Authentication szolgáltatás beállításai lapon azonosíthatja a vállalati intranetes felhasználókat a  **többtényezős hitelesítés kihagyása az összevont felhasználóktól az intraneten lévő kérelmekhez** lehetőség kiválasztásával. Ez a beállítás azt jelzi, hogy a AD FS által kiadott vállalati hálózati jogcímet megbízhatónak kell tekinteni, és a felhasználó azonosítására kell használni a vállalati hálózaton. További információ: [a megbízható IP-címek engedélyezése funkció feltételes hozzáférés használatával](../authentication/howto-mfa-mfasettings.md#enable-the-trusted-ips-feature-by-using-conditional-access).
 
 A beállítás ellenőrzése után a megnevezett hely **MFA megbízható IP** -címei minden olyan házirendre érvényesek lesznek, amelyik ezt a lehetőséget választja.
 
@@ -114,7 +114,7 @@ Az előzetes verzióban mostantól két létrehozási lehetőség közül válas
 - **IP-címtartományok helye**
 
 > [!NOTE]
-> Az országok nem tartalmaznak IPv6-címtartományt, csak az ismert IPv4-címtartományt, és nem jelölhetők meg megbízhatóként.
+> Az IPv6-címtartományok nem képezhetők le országokra. Az országoknak csak IPv4-címek képezhetők le.
 
 ![Elnevezett helyszínek előzetes kezelőfelülete](./media/location-condition/named-location-preview.png)
 
@@ -128,7 +128,7 @@ A hely feltételének konfigurálásakor lehetősége van a következők megkül
 
 ### <a name="any-location"></a>Bármely hely
 
-Alapértelmezés szerint a **bármely hely** kiválasztásakor a rendszer minden IP-címre alkalmazza a házirendet, ami bármilyen címet jelent az interneten. Ez a beállítás nem korlátozódik az elnevezett helyként konfigurált IP-címekre. Ha **bármelyik helyet**kijelöli, akkor továbbra is kizárhat bizonyos helyeket a szabályzatból. Például alkalmazhat egy házirendet az összes helyszínre, kivéve a megbízható helyek beállítást a hatókör minden helyszínre való beállításához, a vállalati hálózat kivételével.
+Alapértelmezés szerint a **bármely hely** kiválasztásakor a rendszer minden IP-címre alkalmazza a házirendet, ami bármilyen címet jelent az interneten. Ez a beállítás nem korlátozódik az elnevezett helyként konfigurált IP-címekre. Ha **bármelyik helyet** kijelöli, akkor továbbra is kizárhat bizonyos helyeket a szabályzatból. Például alkalmazhat egy házirendet az összes helyszínre, kivéve a megbízható helyek beállítást a hatókör minden helyszínre való beállításához, a vállalati hálózat kivételével.
 
 ### <a name="all-trusted-locations"></a>Minden megbízható helyszín
 
@@ -157,7 +157,7 @@ Az Azure AD-ben a proxyn áthaladó IPv6-forgalom nagy része a Microsoft Exchan
 Ezek a leggyakoribb okok, amiért előfordulhat, hogy az IPv6-tartományokat az elnevezett helyekre kell konfigurálnia. Emellett, ha az Azure virtuális hálózatok-t használja, az IPv6-címről érkező forgalmat is elérheti. Ha a VNet-forgalmat egy feltételes hozzáférési szabályzat tiltja le, ellenőrizze az Azure AD bejelentkezési naplóját. Miután azonosította a forgalmat, lekérheti a használt IPv6-címeket, és kizárja azt a szabályzatból. 
 
 > [!NOTE]
-> Ha egyetlen címhez IP-CIDR szeretne megadni, alkalmazza a/32 bit maszkot. Ha az IPv6-2607: fb90: b27a: 6f69: f8d5: dea0: fb39:74A, és azt szeretné, hogy a rendszer kizárja ezt az egyetlen címtartományt tartományként, akkor a 2607: fb90: b27a: 6f69: f8d5: dea0: fb39:74A/32.
+> Ha egyetlen címhez IP-CIDR szeretne megadni, alkalmazza a/128 bit maszkot. Ha az IPv6-2607: fb90: b27a: 6f69: f8d5: dea0: fb39:74A, és azt szeretné, hogy az egyetlen cím legyen tartományként kizárva, akkor a 2607: fb90: b27a: 6f69: f8d5: dea0: fb39:74A/128.
 
 ### <a name="identifying-ipv6-traffic-in-the-azure-ad-sign-in-activity-reports"></a>IPv6-forgalom azonosítása az Azure AD bejelentkezési tevékenység jelentéseiben
 
@@ -196,7 +196,7 @@ Ha egy felhőalapú proxy van érvényben, a hibrid Azure AD-hez csatlakoztatott
 
 Az elnevezett helyszínek Graph API előzetes verziója érhető el, további információért lásd a [NAMEDLOCATION API](/graph/api/resources/namedlocation?view=graph-rest-beta)-t.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha tudni szeretné, hogyan kell konfigurálni a feltételes hozzáférési szabályzatot, tekintse meg a [feltételes hozzáférési szabályzat létrehozásával](concept-conditional-access-policies.md)foglalkozó cikket.
 - A hely feltételét használó példát keres? Tekintse meg a következő cikket [: feltételes hozzáférés letiltása hely szerint](howto-conditional-access-policy-location.md)

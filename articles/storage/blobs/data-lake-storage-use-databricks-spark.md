@@ -9,12 +9,12 @@ ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
 ms.custom: devx-track-python
-ms.openlocfilehash: 394e735be5da65ffa75e10200589a4adb4e7cad2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5fce5871b4bd6c3e2353f7df04018e88b86ec4c7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313929"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912518"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>Oktatóanyag: Azure Data Lake Storage Gen2, Azure Databricks & Spark
 
@@ -35,20 +35,20 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
   Lásd: [Azure Data Lake Storage Gen2 használatával használandó Storage-fiók létrehozása](create-data-lake-storage-account.md).
 
-* Győződjön meg arról, hogy a felhasználói fiókja rendelkezik a [Storage blob adatközreműködői szerepkörhöz](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) hozzárendelve.
+* Győződjön meg arról, hogy a felhasználói fiókja rendelkezik a [Storage blob adatközreműködői szerepkörhöz](../common/storage-auth-aad-rbac-portal.md) hozzárendelve.
 
-* Telepítse a AzCopy V10-es frissítést. [Adatok átvitele az AzCopy v10-vel](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* Telepítse a AzCopy V10-es frissítést. [Adatok átvitele az AzCopy v10-vel](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
-* Egyszerű szolgáltatásnév létrehozása. [Útmutató: a portál használatával létrehozhat egy Azure ad-alkalmazást és egy egyszerű szolgáltatást, amely hozzáférhet az erőforrásokhoz](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+* Egyszerű szolgáltatásnév létrehozása. [Útmutató: a portál használatával létrehozhat egy Azure ad-alkalmazást és egy egyszerű szolgáltatást, amely hozzáférhet az erőforrásokhoz](../../active-directory/develop/howto-create-service-principal-portal.md).
 
   A cikk lépéseinek elvégzése során néhány konkrét dolgot is el kell végeznie.
 
-  : heavy_check_mark: Ha az [alkalmazás társítása szerepkörhöz](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) című szakasz lépéseit hajtja végre, akkor ügyeljen arra, hogy a szolgáltatáshoz hozzárendelje a **tárolási blob adatközreműködői** szerepkört.
+  : heavy_check_mark: Ha az [alkalmazás társítása szerepkörhöz](../../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application) című szakasz lépéseit hajtja végre, akkor ügyeljen arra, hogy a szolgáltatáshoz hozzárendelje a **tárolási blob adatközreműködői** szerepkört.
 
   > [!IMPORTANT]
   > Ügyeljen arra, hogy a szerepkört a Data Lake Storage Gen2 Storage-fiók hatókörében rendelje hozzá. Hozzárendelhet egy szerepkört a szülő erőforráscsoporthoz vagy az előfizetéshez, de az engedélyekkel kapcsolatos hibákat addig kapja, amíg a szerepkör-hozzárendelések el nem terjednek a Storage-fiókba.
 
-  : heavy_check_mark: a cikk [beolvasási értékek beolvasása](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) szakaszában szereplő lépések végrehajtásakor illessze be a bérlői azonosítót, az alkalmazás azonosítóját és az ügyfél titkos értékét szövegfájlba. Ezekre hamarosan szüksége lesz.
+  : heavy_check_mark: a cikk [beolvasási értékek beolvasása](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) szakaszában szereplő lépések végrehajtásakor illessze be a bérlői azonosítót, az alkalmazás azonosítóját és az ügyfél titkos értékét szövegfájlba. Ezekre hamarosan szüksége lesz.
 
 ### <a name="download-the-flight-data"></a>A repülőjárat-adatok letöltése
 
@@ -84,7 +84,7 @@ Ebben a szakaszban egy Azure Databricks szolgáltatást hoz létre a Azure Porta
 
 3. A fiók létrehozása eltarthat néhány percig. A művelet állapotának figyeléséhez tekintse meg a felső folyamatjelző sávot.
 
-4. Válassza a **Rögzítés az irányítópulton** , majd a **Létrehozás** lehetőséget.
+4. Válassza a **Rögzítés az irányítópulton**, majd a **Létrehozás** lehetőséget.
 
 ## <a name="create-a-spark-cluster-in-azure-databricks"></a>Spark-fürt létrehozása az Azure Databricksben
 
@@ -275,7 +275,7 @@ print('Airlines that fly to/from Texas: ', out1.show(100, False))
 
 Ha már nincs rájuk szükség, törölje az erőforráscsoportot és az összes kapcsolódó erőforrást. Ehhez válassza ki a Storage-fiókhoz tartozó erőforráscsoportot, és válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"] 
 > [Adatok kinyerése, átalakítása és betöltése az Azure HDInsight-alapú Apache Hive használatával](data-lake-storage-tutorial-extract-transform-load-hive.md)

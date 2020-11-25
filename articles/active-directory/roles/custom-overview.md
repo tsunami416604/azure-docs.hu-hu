@@ -1,6 +1,6 @@
 ---
 title: Egyéni rendszergazdai szerepkörök a Azure Active Directoryban | Microsoft Docs
-description: Ismerje meg, hogyan megismerheti az Azure AD egyéni szerepköreit Azure Active Directory (Azure AD) szerepkör-alapú hozzáférés-vezérléssel és erőforrás-hatókörökkel.
+description: Ismerje meg, hogyan megismerheti az Azure AD egyéni szerepköreit Azure Active Directory (Azure AD) szerepköralapú hozzáférés-vezérléssel és erőforrás-hatókörökkel.
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b230361ddc771693849d01de156339d1b595826d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0785d8070a60ae7594ea0b182a0238bf6b4b6a58
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949207"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95899462"
 ---
 # <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Egyéni rendszergazdai szerepkörök a Azure Active Directoryban (előzetes verzió)
 
@@ -89,7 +89,7 @@ A hatókör egy adott Azure AD-erőforrásra vonatkozó engedélyezett művelete
 
 [!INCLUDE [License requirement for using custom roles in Azure AD](../../../includes/active-directory-p1-license.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Egyéni szerepkör-hozzárendelések létrehozása [a Azure Portal, az Azure ad PowerShell és a Graph API](custom-create.md) használatával
 - [Egyéni szerepkör hozzárendeléseinek megtekintése](custom-view-assignments.md)

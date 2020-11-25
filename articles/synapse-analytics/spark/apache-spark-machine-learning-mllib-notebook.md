@@ -9,20 +9,20 @@ ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: d7c5bd2d1918ecebe2d2aabc213de43e7cdb1fef
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 595b3a57594401df6b61db1fcf8ee16be98ef364
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93306971"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95900421"
 ---
 # <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Oktatóanyag: gépi tanulási alkalmazás létrehozása Apache Spark MLlib és az Azure szinapszis Analytics használatával
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre Apache Spark [MLlib](https://spark.apache.org/mllib/) olyan gépi tanulási alkalmazás létrehozásához, amely egyszerű prediktív elemzést végez egy Azure Open-adatkészleten. A Spark beépített gépi tanulási kódtárakat biztosít. Ez a példa a *besorolást* a logisztikai regresszión keresztül használja.
 
-A MLlib egy alapvető Spark-könyvtár, amely számos segédprogramot biztosít a gépi tanulási feladatokhoz, beleértve a következőkre alkalmas segédprogramokat:
+A SparkML és a MLlib olyan alapvető Spark-kódtárak, amelyek számos, a gépi tanulási feladatokhoz hasznos segédprogramot biztosítanak, beleértve a következőkre alkalmas segédprogramokat:
 
-- Besorolás
+- Osztályozás
 - Regresszió
 - Fürtözés
 - Témakör modellezése
@@ -31,7 +31,7 @@ A MLlib egy alapvető Spark-könyvtár, amely számos segédprogramot biztosít 
 
 ## <a name="understand-classification-and-logistic-regression"></a>A besorolás és a logisztikai regresszió ismertetése
 
-Az *osztályozás* , amely egy népszerű gépi tanulási feladat, a bemeneti adatok kategóriákba rendezésének folyamata. A besorolási algoritmus feladata, hogy kiderítse, hogyan rendeljen hozzá *címkéket* a megadott bemeneti adatokhoz. Tegyük fel például, hogy egy gépi tanulási algoritmus, amely adatokat fogad el bemenetként, és két kategóriába osztja el az állományt: a készleteket, amelyeket érdemes értékesíteni és készleteket tárolni.
+Az *osztályozás*, amely egy népszerű gépi tanulási feladat, a bemeneti adatok kategóriákba rendezésének folyamata. A besorolási algoritmus feladata, hogy kiderítse, hogyan rendeljen hozzá *címkéket* a megadott bemeneti adatokhoz. Tegyük fel például, hogy egy gépi tanulási algoritmus, amely adatokat fogad el bemenetként, és két kategóriába osztja el az állományt: a készleteket, amelyeket érdemes értékesíteni és készleteket tárolni.
 
 A *logisztikai regresszió* egy algoritmus, amelyet besoroláshoz használhat. A Spark logisztikai regressziós API-ját *bináris besoroláshoz* vagy a bemeneti adatok két csoportba való besorolásához lehet hasznos. További információ a logisztikai regressziókkal kapcsolatban: [wikipedia](https://en.wikipedia.org/wiki/Logistic_regression).
 
@@ -46,7 +46,7 @@ Ebben a példában a Spark használatával némi prediktív elemzést végezünk
 
 A következő lépésekben olyan modellt fejlesztünk ki, amely azt jelzi, hogy egy adott utazáshoz tartozik-e tipp vagy sem.
 
-## <a name="create-an-apache-spark-mllib-machine-learning-app"></a>Apache Spark MLlib Machine learning-alkalmazás létrehozása
+## <a name="create-an-apache-spark--machine-learning-model"></a>Apache Spark Machine learning-modell létrehozása
 
 1. Hozzon létre egy jegyzetfüzetet a PySpark kernel használatával. Az utasításokért lásd: [Jegyzetfüzet létrehozása](../quickstart-apache-spark-notebook.md#create-a-notebook).
 2. Importálja az alkalmazáshoz szükséges típusokat. Másolja és illessze be a következő kódot egy üres cellába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt, vagy futtassa a cellát a kód bal oldalán található kék lejátszás ikon használatával.
@@ -110,44 +110,6 @@ A temp tábla vagy nézet létrehozása különböző hozzáférési útvonalaka
 sampled_taxi_df.createOrReplaceTempView("nytaxi")
 ```
 
-## <a name="understand-the-data"></a>Az adatgyűjtés ismertetése
-
-Általában a *feltáró adatelemzés* (EDA) egy fázisán haladhat át, hogy megismerje az adatgyűjtést. A következő kód három különböző vizualizációt mutat be a tippekkel kapcsolatos információkhoz, amelyek az állapottal és a minőséggel kapcsolatos következtetésekhez vezetnek.
-
-```python
-# The charting package needs a Pandas dataframe or numpy array do the conversion
-sampled_taxi_pd_df = sampled_taxi_df.toPandas()
-
-# Look at tips by amount count histogram
-ax1 = sampled_taxi_pd_df['tipAmount'].plot(kind='hist', bins=25, facecolor='lightblue')
-ax1.set_title('Tip amount distribution')
-ax1.set_xlabel('Tip Amount ($)')
-ax1.set_ylabel('Counts')
-plt.suptitle('')
-plt.show()
-
-# How many passengers tipped by various amounts
-ax2 = sampled_taxi_pd_df.boxplot(column=['tipAmount'], by=['passengerCount'])
-ax2.set_title('Tip amount by Passenger count')
-ax2.set_xlabel('Passenger count')
-ax2.set_ylabel('Tip Amount ($)')
-plt.suptitle('')
-plt.show()
-
-# Look at the relationship between fare and tip amounts
-ax = sampled_taxi_pd_df.plot(kind='scatter', x= 'fareAmount', y = 'tipAmount', c='blue', alpha = 0.10, s=2.5*(sampled_taxi_pd_df['passengerCount']))
-ax.set_title('Tip amount by Fare amount')
-ax.set_xlabel('Fare Amount ($)')
-ax.set_ylabel('Tip Amount ($)')
-plt.axis([-2, 80, -2, 20])
-plt.suptitle('')
-plt.show()
-```
-
-![Hisztogram ](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-histogram.png)
- ![ Box whisky-mintaterület – ](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-box-whisker.png)
- ![ pontdiagram](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-scatter.png)
-
 ## <a name="prepare-the-data"></a>Az adatok előkészítése
 
 A nyers formában lévő adatforrások gyakran nem alkalmasak arra, hogy közvetlenül a modellbe továbbítsák őket. Egy sor műveletet kell végrehajtani az adatmennyiségen ahhoz, hogy egy olyan állapotba kerüljön, amelyben a modell fel tudja használni azt.
@@ -193,7 +155,7 @@ taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'p
 
 ## <a name="create-a-logistic-regression-model"></a>Logisztikai regressziós modell létrehozása
 
-A végső feladat a címkézett adatok átalakítása olyan formátumra, amelyet a logisztikai regresszió alapján lehet elemezni. A logisztikai regressziós algoritmus bemenetének a *label-Feature Vector pár* készletének kell lennie, ahol a *funkció vektor* a bemeneti pontot jelképező számok vektora. Ezért a kategorikus oszlopokat számmá kell alakítani. A `trafficTimeBins` és `weekdayString` oszlopoknak egész szám típusú ábrázolásra kell konvertálniuk. Az átalakítás végrehajtásához több módszer is rendelkezésre áll, azonban az ebben a példában szereplő megközelítés *OneHotEncoding* , közös megközelítés.
+A végső feladat a címkézett adatok átalakítása olyan formátumra, amelyet a logisztikai regresszió alapján lehet elemezni. A logisztikai regressziós algoritmus bemenetének a *label-Feature Vector pár* készletének kell lennie, ahol a *funkció vektor* a bemeneti pontot jelképező számok vektora. Ezért a kategorikus oszlopokat számmá kell alakítani. A `trafficTimeBins` és `weekdayString` oszlopoknak egész szám típusú ábrázolásra kell konvertálniuk. Az átalakítás végrehajtásához több módszer is rendelkezésre áll, azonban az ebben a példában szereplő megközelítés *OneHotEncoding*, közös megközelítés.
 
 ```python
 # Since the sample uses an algorithm that only works with numeric features, convert them so they can be consumed
@@ -272,7 +234,7 @@ plt.ylabel('True Positive Rate')
 plt.show()
 ```
 
-![ROC-görbe logisztikai regressziós tipp modellhez](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-nyctaxi-roc.png "ROC-görbe logisztikai regressziós tipp modellhez")
+![ROC-görbe logisztikai regressziós tipp modellhez](./media/apache-spark-machine-learning-mllib-notebook/nyc-taxi-roc.png)
 
 ## <a name="shut-down-the-spark-instance"></a>A Spark-példány leállítása
 
@@ -282,7 +244,7 @@ Miután befejezte az alkalmazás futtatását, állítsa le a notebookot az erő
 
 - [Áttekintés: Apache Spark az Azure szinapszis Analytics szolgáltatásban](apache-spark-overview.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [.NET Apache Spark dokumentációhoz](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)

@@ -12,17 +12,20 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 38be8b97b3255e4e63301e693d2a5f295e8d801b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8881dc3f67ac1c9f699bd2bf7bcf1dbbcd5e9c0c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779968"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95905327"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell és az Azure CLI: transzparens adattitkosítás engedélyezése az ügyfél által felügyelt kulccsal Azure Key Vault
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Ez a cikk bemutatja, hogyan használhatja a Azure Key Vault for transzparens adattitkosítás (TDE) kulcsát a Azure SQL Database vagy az Azure szinapszis Analytics (korábban SQL Data Warehouse) számára. Ha többet szeretne megtudni a Azure Key Vault Integration-Bring Your Own Key (BYOK) támogatással rendelkező TDE, látogasson el a [TDE felhasználó által felügyelt kulcsokra a Azure Key Vault](transparent-data-encryption-byok-overview.md).
+
+> [!NOTE] 
+> Az Azure SQL mostantól támogatja a felügyelt HSM-ben tárolt RSA-kulcs használatát TDE-védőként. Ez a funkció **nyilvános előzetes** verzióban érhető el. Azure Key Vault felügyelt HSM egy teljes körűen felügyelt, magas rendelkezésre állású, egybérlős, szabványoknak megfelelő felhőalapú szolgáltatás, amely lehetővé teszi a felhőalapú alkalmazások titkosítási kulcsainak védelmét az FIPS 140-2 3. szintű hitelesített HSM használatával. További információ a [felügyelt HSM](../../key-vault/managed-hsm/index.yml).
 
 ## <a name="prerequisites-for-powershell"></a>A PowerShell előfeltételei
 
@@ -36,7 +39,8 @@ Ez a cikk bemutatja, hogyan használhatja a Azure Key Vault for transzparens ada
 - A kulcsnak a következő attribútumokkal kell rendelkeznie a TDE való használathoz:
   - Nincs lejárati dátum
   - Nincs letiltva
-  - Képes a *Get* , a *wrap Key* , a *dewrap Key* Operations művelet végrehajtására
+  - Képes a *Get*, a *wrap Key*, a *dewrap Key* Operations művelet végrehajtására
+- **(Előzetes verzió)** Felügyelt HSM-kulcs használatához kövesse a [felügyelt HSM Azure CLI-vel történő létrehozásához és aktiválásához](../../key-vault/managed-hsm/quick-create-cli.md) szükséges utasításokat.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -70,6 +74,8 @@ A [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultacce
    Set-AzKeyVaultAccessPolicy -VaultName <KeyVaultName> `
        -ObjectId $server.Identity.PrincipalId -PermissionsToKeys get, wrapKey, unwrapKey
    ```
+Ha egy felügyelt HSM-kiszolgálón szeretne engedélyeket hozzáadni a kiszolgálóhoz, adja hozzá a "felügyelt HSM titkosítási szolgáltatás titkosítása" helyi RBAC szerepkört a kiszolgálóhoz. Ez lehetővé teszi a kiszolgáló számára, hogy a felügyelt HSM kulcsait lekéri a Get, a wrap Key és a dewrap Key műveletekre.
+[Útmutatás a kiszolgáló-hozzáférés felügyelt HSM-hez való kiépítési folyamatához](../../key-vault/managed-hsm/role-management.md)
 
 ## <a name="add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>Adja hozzá a Key Vault kulcsot a kiszolgálóhoz, és állítsa be a TDE-védőt.
 
@@ -79,10 +85,15 @@ A [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultacce
 - A [Get-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector) parancsmag használatával ellenőrizze, hogy a TDE-védő a kívánt módon lett-e konfigurálva.
 
 > [!NOTE]
+> **(Előzetes verzió)** Felügyelt HSM-kulcsok esetén használja a PowerShell az az. SQL 2.11.1 verzióját.
+
+> [!NOTE]
 > A Key Vault neve és a kulcsnév együttes hossza nem lehet hosszabb 94 karakternél.
 
 > [!TIP]
-> Példa a Key Vault KeyId: https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
+> Példa a Key Vault KeyId:<br/>https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
+>
+> Példa a felügyelt HSM-ből származó KeyId:<br/>https://contosoMHSM.managedhsm.azure.net/keys/myrsakey
 
 ```powershell
 # add the key from Key Vault to the server
@@ -239,9 +250,9 @@ Ha probléma merül fel, ellenőrizze a következőket:
 
 - Ha az új kulcs nem adható hozzá a kiszolgálóhoz, vagy az új kulcs nem frissíthető TDE-védőként, ellenőrizze a következőket:
    - A kulcs nem rendelkezhet lejárati dátummal
-   - A kulcsnak engedélyezve kell lennie a *Get* , a *wrap Key* és a *dewrap Key* műveletnek.
+   - A kulcsnak engedélyezve kell lennie a *Get*, a *wrap Key* és a *dewrap Key* műveletnek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan forgathatja el egy kiszolgáló TDE-védelmezőjét a biztonsági követelményeknek való megfelelés érdekében: [a transzparens adattitkosítás Protector elforgatása a PowerShell használatával](transparent-data-encryption-byok-key-rotation.md).
 - Biztonsági kockázat esetén Ismerje meg, hogyan távolíthat el egy potenciálisan sérült TDE-védőt: [távolítson el egy potenciálisan feltört kulcsot](transparent-data-encryption-byok-remove-tde-protector.md).
