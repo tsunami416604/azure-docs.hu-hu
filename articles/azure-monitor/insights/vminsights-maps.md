@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
 ms.openlocfilehash: 32ad92b333eda8cd429303177dba160f0b58af54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445540"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95985798"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-to-understand-application-components"></a>Az alkalmazás-összetevők értelmezéséhez használja a Azure Monitor for VMs Térkép funkcióját
 Azure Monitor for VMs a felderített alkalmazás-összetevőket megtekintheti az Azure-ban vagy a környezetben futó Windows-és Linux-alapú virtuális gépeken (VM-EK). A virtuális gépek két módon figyelhetők meg. A térképeket közvetlenül egy virtuális gépről tekintheti meg, vagy megtekintheti az Azure Monitor térképét, hogy megjelenjenek-e az összetevők a virtuális gépek csoportjai között. Ez a cikk segítséget nyújt a két megtekintési módszer és a Térkép funkció használatának megismerésében. 
@@ -87,8 +87,8 @@ Ha a csoport figyelt és nem figyelt kiszolgálókat is tartalmaz, kiválaszthat
 
 Azure Monitor for VMs elérése közvetlenül egy virtuális gépről:
 
-1. A Azure Portal válassza a **Virtual Machines**lehetőséget. 
-2. A listából válassza ki a virtuális gépet. A **figyelés** szakaszban válassza az **áttekintések**lehetőséget.  
+1. A Azure Portal válassza a **Virtual Machines** lehetőséget. 
+2. A listából válassza ki a virtuális gépet. A **figyelés** szakaszban válassza az **áttekintések** lehetőséget.  
 3. Válassza a **Térkép** lapot.
 
 A Térkép megjeleníti a virtuális gép függőségeit úgy, hogy felveszi a futó folyamatok azon csoportjait és folyamatait, amelyek egy adott időtartományon keresztül aktív hálózati kapcsolattal rendelkeznek.  
@@ -101,13 +101,13 @@ Alapértelmezés szerint a Térkép az utolsó 30 percet mutatja. Ha szeretné m
 
 Azure Monitor for VMs elérése közvetlenül egy virtuálisgép-méretezési csoportból:
 
-1. A Azure Portal válassza a **virtuálisgép-méretezési**csoportok lehetőséget.
-2. A listából válassza ki a virtuális gépet. Ezután a **figyelés** szakaszban válassza az **áttekintések**lehetőséget.  
+1. A Azure Portal válassza a **virtuálisgép-méretezési** csoportok lehetőséget.
+2. A listából válassza ki a virtuális gépet. Ezután a **figyelés** szakaszban válassza az **áttekintések** lehetőséget.  
 3. Válassza a **Térkép** lapot.
 
 A Térkép megjeleníti a méretezési csoport összes példányát a csoport függőségeivel együtt. A kibontott csomópont listázza a méretezési csoport példányait. Ezeket a példányokat egyszerre 10 lapozhatja. 
 
-Egy adott példányhoz tartozó Térkép betöltéséhez először válassza ki ezt a példányt a térképen. Ezután kattintson a **három** pontot ábrázoló gombra (...) a jobb oldalon, majd válassza a **kiszolgálói Térkép betöltése**lehetőséget. A megjelenő térképen megtekintheti azokat a feldolgozási csoportokat és folyamatokat, amelyek aktív hálózati kapcsolattal rendelkeznek egy megadott időtartományon belül. 
+Egy adott példányhoz tartozó Térkép betöltéséhez először válassza ki ezt a példányt a térképen. Ezután kattintson a **három** pontot ábrázoló gombra (...) a jobb oldalon, majd válassza a **kiszolgálói Térkép betöltése** lehetőséget. A megjelenő térképen megtekintheti azokat a feldolgozási csoportokat és folyamatokat, amelyek aktív hálózati kapcsolattal rendelkeznek egy megadott időtartományon belül. 
 
 Alapértelmezés szerint a Térkép az utolsó 30 percet mutatja. Ha szeretné megtekinteni, hogy a függőségek hogyan látszanak a múltban, akár egy óráig is lekérdezheti a korábbi időtartományokat. A lekérdezés futtatásához használja a **TimeRange** -választót. Futtathat egy lekérdezést, például egy incidens során, vagy megtekintheti az állapotot a változás előtt.
 
@@ -120,8 +120,8 @@ Alapértelmezés szerint a Térkép az utolsó 30 percet mutatja. Ha szeretné m
 
 Azure Monitor a Térkép funkció globális áttekintést nyújt a virtuális gépekről és azok függőségeiről. A Térkép funkció eléréséhez Azure Monitor:
 
-1. A Azure Portal válassza a **figyelő**elemet. 
-2. Az **inbetekintés** szakaszban válassza a **Virtual Machines**lehetőséget.
+1. A Azure Portal válassza a **figyelő** elemet. 
+2. Az **inbetekintés** szakaszban válassza a **Virtual Machines** lehetőséget.
 3. Válassza a **Térkép** lapot.
 
    ![Több virtuális gép Azure Monitor áttekintő térképe](./media/vminsights-maps/map-multivm-azure-monitor-01.png)
@@ -132,7 +132,7 @@ A **csoport** választója a kiválasztott munkaterülethez kapcsolódó számí
 
 Alapértelmezés szerint a Térkép az utolsó 30 percet mutatja. Ha szeretné megtekinteni, hogy a függőségek hogyan látszanak a múltban, akár egy óráig is lekérdezheti a korábbi időtartományokat. A lekérdezés futtatásához használja a **TimeRange** -választót. Futtathat egy lekérdezést, például egy incidens során, vagy megtekintheti az állapotot a változás előtt.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A szűk keresztmetszetek azonosításához, a teljesítmény vizsgálatához és a virtuális gépek általános kihasználtságának megismeréséhez tekintse meg a [Azure monitor for VMS teljesítmény állapotának megtekintése](vminsights-performance.md)című témakört. 
 

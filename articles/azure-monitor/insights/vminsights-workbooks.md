@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
 ms.openlocfilehash: 43cdb9de111bdea5486e49a56d58d38279b685c7
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996377"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95985543"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Interaktív jelentések létrehozása (Azure Monitor virtuális gépekhez) munkafüzetek használatával
 
@@ -46,25 +46,25 @@ A munkafüzetek egymástól függetlenül szerkeszthető diagramokat, táblázat
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Válassza a **Virtual Machines**lehetőséget.
+2. Válassza a **Virtual Machines** lehetőséget.
 
 3. Válasszon ki egy virtuális gépet a listából.
 
-4. A virtuális gép lap **figyelés** **területén válassza az**eredmények elemet.
+4. A virtuális gép lap **figyelés** **területén válassza az** eredmények elemet.
 
-5. A virtuális gépek elemzése lapon válassza a **teljesítmény** vagy **Maps** fület, majd válassza a **munkafüzetek megtekintése** lehetőséget az oldalon található hivatkozásra kattintva. A legördülő listában válassza a **Ugrás a**katalógusba lehetőséget.
+5. A virtuális gépek elemzése lapon válassza a **teljesítmény** vagy **Maps** fület, majd válassza a **munkafüzetek megtekintése** lehetőséget az oldalon található hivatkozásra kattintva. A legördülő listában válassza a **Ugrás a** katalógusba lehetőséget.
 
     ![Képernyőfelvétel a munkafüzet legördülő listájáról](media/vminsights-workbooks/workbook-dropdown-gallery-01.png)
 
     Ezzel elindítja a munkafüzet-katalógust számos előre elkészített munkafüzettel, amelyek segítenek az első lépések megtételében.
 
-7. Hozzon létre egy új munkafüzetet az **új**lehetőség kiválasztásával.
+7. Hozzon létre egy új munkafüzetet az **új** lehetőség kiválasztásával.
 
     ![Képernyőfelvétel a munkafüzet-gyűjteményről](media/vminsights-workbooks/workbook-gallery-01.png)
 
 ## <a name="editing-workbook-sections"></a>Munkafüzetszakaszok szerkesztése
 
-A munkafüzeteknek két módja van: **szerkesztési mód**és **olvasási mód**. Új munkafüzet első indításakor a **szerkesztési módban**nyílik meg. Megjeleníti a munkafüzet összes tartalmát, beleértve az egyébként rejtett lépéseket és paramétereket is. Az **olvasási mód** egy egyszerűsített jelentési stílus nézetet jelenít meg. Az olvasási mód lehetővé teszi, hogy absztrakt legyen a jelentés létrehozása során felmerülő összetettség, miközben az alapul szolgáló mechanika még csak néhány kattintással elérhető, ha a módosításra szükség van.
+A munkafüzeteknek két módja van: **szerkesztési mód** és **olvasási mód**. Új munkafüzet első indításakor a **szerkesztési módban** nyílik meg. Megjeleníti a munkafüzet összes tartalmát, beleértve az egyébként rejtett lépéseket és paramétereket is. Az **olvasási mód** egy egyszerűsített jelentési stílus nézetet jelenít meg. Az olvasási mód lehetővé teszi, hogy absztrakt legyen a jelentés létrehozása során felmerülő összetettség, miközben az alapul szolgáló mechanika még csak néhány kattintással elérhető, ha a módosításra szükség van.
 
 ![Képernyőfelvétel: a Azure Monitor Virtual Machines munkafüzet szakasza, amely egy új munkafüzetet mutat be szerkesztési módban a szerkesztési vezérlők kiemelésével.](media/vminsights-workbooks/workbook-new-workbook-editor-01.png)
 
@@ -178,7 +178,7 @@ A legördülő lista egy log lekérdezéssel vagy JSON-vel van feltöltve. Ha a 
 
 Ha az oszlop karakterlánc típusú, a null/üres karakterlánc hamisnak minősül, és minden más érték igaznak minősül. Az egyszeres kijelölés legördülő menüben a true értékkel rendelkező első érték lesz az alapértelmezett kijelölés.  Több kijelölés legördülő lista esetén az összes igaz értékkel rendelkező érték lesz az alapértelmezett kijelölt készlet. A legördülő listában szereplő elemek bármilyen sorrendben jelennek meg, mint a lekérdezés által visszaadott sorok. 
 
-Tekintsük át a kapcsolatok áttekintése jelentésben szereplő paramétereket. Kattintson a Szerkesztés szimbólumra az **irány**mellett.
+Tekintsük át a kapcsolatok áttekintése jelentésben szereplő paramétereket. Kattintson a Szerkesztés szimbólumra az **irány** mellett.
 
 ![A jelentés paramétereinek hozzáadására és szerkesztésére szolgáló szakasz képernyőképe Azure Monitor. A Direction paraméterhez tartozó szerkesztési ikon van kiválasztva.](media/vminsights-workbooks/011-workbook-using-dropdown.png)
 
@@ -226,11 +226,11 @@ Az erőforrás-választó paraméterének típusa lehetővé teszi, hogy a jelen
 
 A munkafüzetek egy Log Analytics munkaterületen vagy egy virtuálisgép-erőforráson belül lesznek mentve attól függően, hogy hogyan fér hozzá a munkafüzetek katalógusához. A munkafüzet menthető az Ön számára magánjellegű **saját jelentések** szakaszba, vagy a **megosztott jelentések** szakaszban, amely mindenki számára elérhető az erőforráshoz való hozzáféréssel. Az erőforrás összes munkafüzetének megtekintéséhez kattintson a művelet sávban a **Megnyitás** gombra.
 
-A jelenleg **saját jelentésekban**lévő munkafüzetek megosztása:
+A jelenleg **saját jelentésekban** lévő munkafüzetek megosztása:
 
 1. Kattintson a **Megnyitás** gombra a műveleti sávon
 2. Kattintson a "..." a megosztani kívánt munkafüzet melletti gomb
-3. Kattintson **a áthelyezés megosztott jelentésekre**elemre.
+3. Kattintson **a áthelyezés megosztott jelentésekre** elemre.
 
 Egy hivatkozással vagy e-mailen keresztüli munkafüzet megosztásához kattintson a művelet sávban a **megosztás** elemre. Ne feledje, hogy a hivatkozás címzettjeinek hozzáféréssel kell rendelkezniük ehhez az erőforráshoz a Azure Portal a munkafüzet megtekintéséhez. A módosítások elvégzéséhez a címzetteknek legalább közreműködői engedélyekkel kell rendelkezniük az erőforráshoz.
 
@@ -238,9 +238,9 @@ Egy munkafüzetre mutató hivatkozás rögzítése egy Azure-irányítópulton:
 
 1. Kattintson a **Megnyitás** gombra a műveleti sávon
 2. Kattintson a "..." a rögzíteni kívánt munkafüzet melletti gomb
-3. Kattintson **a rögzítés az irányítópulton**elemre.
+3. Kattintson **a rögzítés az irányítópulton** elemre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A korlátozások és a virtuális gépek teljes teljesítményének azonosításához lásd: az Azure-beli [virtuális gépek teljesítményének megtekintése](vminsights-performance.md).
 
