@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 78836ca4e51875be4237267b3bb9256cc4541fe2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 11ad3bdcaa40c479c9358fd623edf0e6fdafa0d6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81791636"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002075"
 ---
 Az események egy esemény-adatfolyamba való írásához használja a Event Hubs kimeneti kötést. Küldési engedéllyel kell rendelkeznie ahhoz, hogy eseményeket írhasson egy eseményközpontba.
 
@@ -235,7 +235,7 @@ A Python nem támogatja az attribútumokat.
 
 # <a name="java"></a>[Java](#tab/java)
 
-A [Java functions runtime library](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)-ben használja a [EventHubOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) -jegyzetet azon paramétereknél, amelyek értékét közzé szeretné tenni az Event hub-ban. A paraméternek típusúnak kell lennie `OutputBinding<T>` , ahol a egy `T` POJO vagy bármely natív Java-típus.
+A [Java functions runtime library](/java/api/overview/azure/functions/runtime)-ben használja a [EventHubOutput](/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) -jegyzetet azon paramétereknél, amelyek értékét közzé szeretné tenni az Event hub-ban. A paraméternek típusúnak kell lennie `OutputBinding<T>` , ahol a egy `T` POJO vagy bármely natív Java-típus.
 
 ---
 
@@ -258,15 +258,15 @@ Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított k
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-Üzenetek küldése a metódus paraméterének használatával, például: `out string paramName` . A C#-szkriptben a `paramName` `name` *function.js*tulajdonságában megadott érték van megadva. Több üzenet írásához használhatja a `ICollector<string>` vagy `IAsyncCollector<string>` a helyét `out string` .
+Üzenetek küldése a metódus paraméterének használatával, például: `out string paramName` . A C#-szkriptben a `paramName` `name` *function.js* tulajdonságában megadott érték van megadva. Több üzenet írásához használhatja a `ICollector<string>` vagy `IAsyncCollector<string>` a helyét `out string` .
 
 # <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-Üzenetek küldése a metódus paraméterének használatával, például: `out string paramName` . A C#-szkriptben a `paramName` `name` *function.js*tulajdonságában megadott érték van megadva. Több üzenet írásához használhatja a `ICollector<string>` vagy `IAsyncCollector<string>` a helyét `out string` .
+Üzenetek küldése a metódus paraméterének használatával, például: `out string paramName` . A C#-szkriptben a `paramName` `name` *function.js* tulajdonságában megadott érték van megadva. Több üzenet írásához használhatja a `ICollector<string>` vagy `IAsyncCollector<string>` a helyét `out string` .
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-A kimeneti esemény eléréséhez használja `context.bindings.<name>` a `<name>` `name` *function.js*tulajdonságában megadott értéket.
+A kimeneti esemény eléréséhez használja `context.bindings.<name>` a `<name>` `name` *function.js* tulajdonságában megadott értéket.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -274,15 +274,15 @@ Az Event hub-üzenetek egy függvényből való üzembe helyezésének két lehe
 
 - Visszaadott **érték**: állítsa be `name` *function.js* tulajdonságát a értékre `$return` . Ezzel a konfigurációval a függvény visszatérési értéke Event hub-üzenetként is megmarad.
 
-- **Elengedhetetlen**: adjon meg egy értéket a [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) metódusnak, amely [kimenő](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) típusként van deklarálva. Az átadott érték az `set` Event hub-üzenetként is megmarad.
+- **Elengedhetetlen**: adjon meg egy értéket a [set](/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) metódusnak, amely [kimenő](/python/api/azure-functions/azure.functions.out?view=azure-python) típusként van deklarálva. Az átadott érték az `set` Event hub-üzenetként is megmarad.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Az Event hub-üzenetek egy függvényből való üzembe helyezésére két lehetőség áll rendelkezésre a [EventHubOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) jegyzet használatával:
+Az Event hub-üzenetek egy függvényből való üzembe helyezésére két lehetőség áll rendelkezésre a [EventHubOutput](/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) jegyzet használatával:
 
 - Visszaadott **érték**: Ha a jegyzetet a függvényhez alkalmazza, a függvény visszatérési értéke Event hub-üzenetként marad.
 
-- **Elengedhetetlen**: Ha explicit módon be szeretné állítani az üzenet értékét, alkalmazza a jegyzetet egy adott paraméterre [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding) , ahol a egy `T` POJO vagy bármely natív Java-típus. Ezzel a konfigurációval a metódus értékének átadása az `setValue` Event hub-üzenetként megőrzi az értéket.
+- **Elengedhetetlen**: Ha explicit módon be szeretné állítani az üzenet értékét, alkalmazza a jegyzetet egy adott paraméterre [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.OutputBinding) , ahol a egy `T` POJO vagy bármely natív Java-típus. Ezzel a konfigurációval a metódus értékének átadása az `setValue` Event hub-üzenetként megőrzi az értéket.
 
 ---
 
@@ -290,4 +290,4 @@ Az Event hub-üzenetek egy függvényből való üzembe helyezésére két lehet
 
 | Kötés | Referencia |
 |---|---|
-| Eseményközpont | [Üzemeltetési útmutató](https://docs.microsoft.com/rest/api/eventhub/publisher-policy-operations) |
+| Eseményközpont | [Üzemeltetési útmutató](/rest/api/eventhub/publisher-policy-operations) |

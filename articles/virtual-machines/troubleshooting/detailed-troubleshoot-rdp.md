@@ -16,11 +16,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 91f15e32866cca008553286f7585247909d9a4ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87009866"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002680"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>A Windows rendszerű virtuális gépekkel létesített távoli asztali kapcsolatok problémáinak részletes hibaelhárítási útmutatója
 Ez a cikk részletes hibaelhárítási lépéseket tartalmaz a Windows-alapú Azure-beli virtuális gépek összetett Távoli asztal hibáinak diagnosztizálásához és javításához.
@@ -31,7 +31,7 @@ Ez a cikk részletes hibaelhárítási lépéseket tartalmaz a Windows-alapú Az
 Előfordulhat, hogy Távoli asztal hibaüzenet jelenik meg, amely nem hasonlít az [alapszintű távoli asztal hibaelhárítási útmutatójában](troubleshoot-rdp-connection.md)ismertetett hibaüzenetekre. Az alábbi lépéseket követve megállapíthatja, hogy miért nem tud csatlakozni az Azure-beli virtuális gép RDP-szolgáltatásához a Távoli asztal (RDP) ügyfél.
 
 
-Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban és a stack overflow fórumokon](https://azure.microsoft.com/support/forums/). Azt is megteheti, hogy Azure-támogatási incidenst is beküld. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és kattintson a **támogatás kérése**lehetőségre. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).
+Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban és a stack overflow fórumokon](https://azure.microsoft.com/support/forums/). Azt is megteheti, hogy Azure-támogatási incidenst is beküld. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és kattintson a **támogatás kérése** lehetőségre. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).
 
 ## <a name="components-of-a-remote-desktop-connection"></a>Távoli asztal-kapcsolatok összetevői
 Az RDP-kapcsolatok a következő összetevőket érintik:

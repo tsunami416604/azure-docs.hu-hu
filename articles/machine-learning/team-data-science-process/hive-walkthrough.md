@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 53f50e98bcec4b8ace342808f0bcfd96770834b0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312340"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002221"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>A csoportos adatelemzési folyamat működés közben: Azure HDInsight Hadoop fürtök használata
 Ebben az útmutatóban egy végpontok közötti forgatókönyvben használjuk a [csoportos adatelemzési folyamatot (TDSP)](overview.md) . Egy Azure HDInsight Hadoop- [fürtöt](https://azure.microsoft.com/services/hdinsight/) használunk a nyilvánosan elérhető [NYC-taxis](https://www.andresmh.com/nyctaxitrips/) adatkészletből származó adatok tárolására, megismerésére és szolgáltatására, valamint az adatok leállására. A bináris és a többosztályos besorolás és a regressziós prediktív feladatok kezeléséhez az adatok modelljeit Azure Machine Learning használatával kell kiépíteni. 
@@ -61,12 +61,12 @@ Az utazáshoz és az utazáshoz való csatlakozáshoz szükséges egyedi kulcs \
 ## <a name="examples-of-prediction-tasks"></a><a name="mltasks"></a>Példák az előrejelzési feladatokra
 Határozza meg, hogy milyen előrejelzések alapján kívánja végrehajtani az adatelemzést a szükséges folyamat-feladatok tisztázásához. Íme három példa az útmutatóban ismertetett előrejelzési problémákra, mindezt a tip- *\_ összeg* alapján:
 
-- **Bináris besorolás** : megjósolhatja, hogy fizetett-e borravalót egy útra. Ez azt a *tippet \_* jelöli, amely nagyobb, mint $0 pozitív példa, míg a $0-es számú *Tipp \_* negatív példa.
+- **Bináris besorolás**: megjósolhatja, hogy fizetett-e borravalót egy útra. Ez azt a *tippet \_* jelöli, amely nagyobb, mint $0 pozitív példa, míg a $0-es számú *Tipp \_* negatív példa.
 
   - 0. osztály: tip_amount = $0
   - 1. osztály: tip_amount > $0
 
-- **Többosztályos besorolás** : az útra kifizetett tip-összegek tartományának előrejelzése. A *Tipp \_ összegét* öt osztályra osztjuk:
+- **Többosztályos besorolás**: az útra kifizetett tip-összegek tartományának előrejelzése. A *Tipp \_ összegét* öt osztályra osztjuk:
 
   - 0. osztály: tip_amount = $0
   - 1. osztály: tip_amount > $0 és tip_amount <= $5
@@ -74,7 +74,7 @@ Határozza meg, hogy milyen előrejelzések alapján kívánja végrehajtani az 
   - 3. osztály: tip_amount > $10 és tip_amount <= $20
   - 4. osztály: tip_amount > $20
 
-- **Regressziós feladat** : előre megjósolható, hogy a tipp mennyi összeget fizetett ki egy útra.  
+- **Regressziós feladat**: előre megjósolható, hogy a tipp mennyi összeget fizetett ki egy útra.  
 
 ## <a name="set-up-an-hdinsight-hadoop-cluster-for-advanced-analytics"></a><a name="setup"></a>HDInsight Hadoop-fürt beállítása a speciális elemzésekhez
 > [!NOTE]
@@ -130,7 +130,7 @@ Ezzel a paranccsal feltöltheti az utazási adatok a _*_nyctaxitripraw_*_ könyv
 "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxitripraw /DestKey:<storage account key> /S /Pattern:trip_data__.csv
 ```
 
-Ezzel a paranccsal feltöltheti a díjszabási adatok a * **nyctaxifareraw** _ könyvtárba a Hadoop-fürt alapértelmezett tárolójában.
+Ezzel a paranccsal feltöltheti a díjszabási adatok a ***nyctaxifareraw** _ könyvtárba a Hadoop-fürt alapértelmezett tárolójában.
 
 ```console
 "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:<path_to_unzipped_data_files> /Dest:https://<storage account name of Hadoop cluster>.blob.core.windows.net/<default container of Hadoop cluster>/nyctaxifareraw /DestKey:<storage account key> /S /Pattern:trip_fare__.csv
@@ -156,7 +156,7 @@ set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataSc
 @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(%script%))"
 ```
 
-Ez a két parancs letölti az útmutatóban szükséges összes ". HQL" fájlt a helyi könyvtárba * **C:\temp&#92;** _ a fő csomópontban.
+Ez a két parancs letölti az útmutatóban szükséges összes ". HQL" fájlt a helyi könyvtárba ***C:\temp&#92;** _ a fő csomópontban.
 
 ## <a name="create-hive-database-and-tables-partitioned-by-month"></a><a name="#hive-db-tables"></a>Struktúra-adatbázis és-táblázatok létrehozása hónap szerint particionálva
 > [!NOTE]
@@ -182,7 +182,7 @@ A kaptár-könyvtár parancssorában futtassa a következő parancsot a kaptár-
 hive -f "C:\temp\sample_hive_create_db_and_tables.hql"
 ```
 
-Itt látható a _ *C:\Temp\sample \_ struktúra \_ create \_ db \_ és \_ Tables. HQL* * fájl tartalma, amely létrehozza a kaptár-adatbázis **nyctaxidb** , valamint a **táblákat és a** **viteldíjat**.
+Itt látható a _ *C:\Temp\sample \_ struktúra \_ create \_ db \_ és \_ Tables. HQL** fájl tartalma, amely létrehozza a kaptár-adatbázis **nyctaxidb**, valamint a **táblákat és a** **viteldíjat**.
 
 ```hiveql
 create database if not exists nyctaxidb;
@@ -639,7 +639,7 @@ hdfs dfs -mkdir wasb:///queryoutputdir
 hive -f "C:\temp\sample_hive_trip_direct_distance.hql"
 ```
 
-A lekérdezés eredményét kilenc Azure-blobra ( **queryoutputdir/000000 kódot \_ 0** –  **queryoutputdir/000008 \_ 0** ), a Hadoop-fürt alapértelmezett tárolójában kell írni.
+A lekérdezés eredményét kilenc Azure-blobra (**queryoutputdir/000000 kódot \_ 0** –  **queryoutputdir/000008 \_ 0**), a Hadoop-fürt alapértelmezett tárolójában kell írni.
 
 Az egyes Blobok méretének megtekintéséhez futtassa a következő parancsot a kaptár könyvtárának parancssorában:
 
@@ -647,7 +647,7 @@ Az egyes Blobok méretének megtekintéséhez futtassa a következő parancsot a
 hdfs dfs -ls wasb:///queryoutputdir
 ```
 
-Ha szeretné megtekinteni egy adott fájl tartalmát, mondjuk a **000000 kódot \_ 0** , használja a Hadoop `copyToLocal` parancsot.
+Ha szeretné megtekinteni egy adott fájl tartalmát, mondjuk a **000000 kódot \_ 0**, használja a Hadoop `copyToLocal` parancsot.
 
 ```hiveql
 hdfs dfs -copyToLocal wasb:///queryoutputdir/000000_0 C:\temp\tempfile
@@ -669,7 +669,7 @@ Ennek az adatnak az egyik fő előnye az, hogy az [adatimportálási][import-dat
 A feltáró adatelemzési fázis után most már készen áll arra, hogy felkészítsük a modelleket a Machine Learningban. Ebben a szakaszban bemutatjuk, hogyan használhatók a kaptár-lekérdezések az adatmintákhoz. Machine Learning ezután az [adatok importálása][import-data] modulból fér hozzá.
 
 ### <a name="down-sampling-the-data"></a>Lefelé – az adatmintavételezés
-Ebben az eljárásban két lépés található. Először csatlakoztassa a **nyctaxidb. Trip** és a **nyctaxidb. fare** táblát az összes rekordban található három kulcshoz: **emlékérem** , **Hack \_ licenc** , és a **pickup \_ datetime**. Ezután előállítunk egy bináris besorolási **címkét, egy** kijelzett és egy többosztályos besorolási címkét, a **tip \_ osztályt**.
+Ebben az eljárásban két lépés található. Először csatlakoztassa a **nyctaxidb. Trip** és a **nyctaxidb. fare** táblát az összes rekordban található három kulcshoz: **emlékérem**, **Hack \_ licenc**, és a **pickup \_ datetime**. Ezután előállítunk egy bináris besorolási **címkét, egy** kijelzett és egy többosztályos besorolási címkét, a **tip \_ osztályt**.
 
 Ahhoz, hogy közvetlenül a Machine Learning [adatimportálási][import-data] modulból lehessen használni a lefelé vett mintákat, az előző lekérdezés eredményét egy belső struktúra-táblába kell menteni. A következő lépésekben létrehozunk egy belső struktúrás táblát, és feltöltjük annak tartalmát az összevont és a lefelé mintavételezéssel ellátott adatokkal.
 
@@ -813,24 +813,24 @@ A lekérdezés futtatása a kaptár könyvtárának parancssorából:
 hive -f "C:\temp\sample_hive_prepare_for_aml_full.hql"
 ```
 
-Most már van egy belső tábla, **nyctaxidb.nyctaxi_downsampled_dataset** , amely a Machine learning [adatimportálási][import-data] moduljának használatával érhető el. Emellett ezt az adatkészletet használhatja Machine Learning modellek létrehozásához.  
+Most már van egy belső tábla, **nyctaxidb.nyctaxi_downsampled_dataset**, amely a Machine learning [adatimportálási][import-data] moduljának használatával érhető el. Emellett ezt az adatkészletet használhatja Machine Learning modellek létrehozásához.  
 
 ### <a name="use-the-import-data-module-in-machine-learning-to-access-the-down-sampled-data"></a>A Machine Learning adatimportálási moduljának használata a lefelé mintavételezéssel ellátható adatértékek eléréséhez
 A Machine Learning adatimportálási moduljában a kaptár-lekérdezések [kiküldéséhez][import-data] hozzáféréssel kell rendelkeznie egy Machine learning-munkaterülethez. Emellett hozzá kell férnie a fürt és a hozzá tartozó Storage-fiók hitelesítő adataihoz is.
 
 Íme néhány információ az [adatimportálási][import-data] modulról és a bemeneti paraméterekről:
 
-**HCatalog-kiszolgáló URI-ja** : Ha a fürt neve **abc123** , használja a következőket: https: \/ /abc123.azurehdinsight.net.
+**HCatalog-kiszolgáló URI-ja**: Ha a fürt neve **abc123**, használja a következőket: https: \/ /abc123.azurehdinsight.net.
 
-**Hadoop felhasználói fiók neve** : a fürthöz választott Felhasználónév (nem a távelérés felhasználóneve).
+**Hadoop felhasználói fiók neve**: a fürthöz választott Felhasználónév (nem a távelérés felhasználóneve).
 
-**Hadoop felhasználói fiók jelszava** : a fürthöz választott jelszó (nem a távelérési jelszó).
+**Hadoop felhasználói fiók jelszava**: a fürthöz választott jelszó (nem a távelérési jelszó).
 
-**Kimeneti adatokat tároló hely** : az Azure-ra lett kiválasztva.
+**Kimeneti adatokat tároló hely**: az Azure-ra lett kiválasztva.
 
-**Azure Storage-fiók neve** : a fürthöz társított alapértelmezett Storage-fiók neve.
+**Azure Storage-fiók neve**: a fürthöz társított alapértelmezett Storage-fiók neve.
 
-**Azure-tároló neve** : a fürt alapértelmezett tárolójának neve, és általában ugyanaz, mint a fürt neve. A **abc123** nevű fürt esetében a név a következő: abc123.
+**Azure-tároló neve**: a fürt alapértelmezett tárolójának neve, és általában ugyanaz, mint a fürt neve. A **abc123** nevű fürt esetében a név a következő: abc123.
 
 > [!IMPORTANT]
 > Minden olyan tábla, amelyet a Machine Learning [adatimportálási][import-data] moduljának használatával szeretne lekérdezni, belső táblának kell lennie.
@@ -858,11 +858,11 @@ Az adatkészlet mostantól kiindulási pontként használható Machine Learning 
 ### <a name="build-models-in-machine-learning"></a><a name="mlmodel"></a>Modellek készítése Machine Learning
 Most már folytathatja a [Machine learning](https://studio.azureml.net)-ben való üzembe helyezési és modell-telepítési modell kialakítását. Az adatgyűjtés készen áll arra, hogy felhasználhassa a korábban azonosított előrejelzési problémák kezelését:
 
-- **Bináris besorolás** : megjósolhatja, hogy fizetett-e borravalót egy útra.
+- **Bináris besorolás**: megjósolhatja, hogy fizetett-e borravalót egy útra.
 
   **Használt tanuló:** Kétosztályos logisztikai regresszió
 
-  a. Ehhez a problémához a cél (vagy osztály) **felirat van** kijelölve. Az eredeti, lefelé mintavételezés alatt álló adatkészlet néhány oszlopa van, amelyek célja a besorolási kísérlethez tartozó szivárgás. Különösen a **Tipp \_ osztály** , a **Tipp \_ mennyisége** és a **teljes \_ összeg** felfedi az adott címkével kapcsolatos információkat, amelyek teszteléskor nem érhetők el. Ezeket az oszlopokat az [adatkészletek kiválasztása][select-columns] modulban az oszlopok kijelölése elem használatával távolítjuk el.
+  a. Ehhez a problémához a cél (vagy osztály) **felirat van** kijelölve. Az eredeti, lefelé mintavételezés alatt álló adatkészlet néhány oszlopa van, amelyek célja a besorolási kísérlethez tartozó szivárgás. Különösen a **Tipp \_ osztály**, a **Tipp \_ mennyisége** és a **teljes \_ összeg** felfedi az adott címkével kapcsolatos információkat, amelyek teszteléskor nem érhetők el. Ezeket az oszlopokat az [adatkészletek kiválasztása][select-columns] modulban az oszlopok kijelölése elem használatával távolítjuk el.
 
   A következő ábra azt mutatja be a kísérletet, hogy egy adott utazásra fordítottak-e borravalót:
 
@@ -878,11 +878,11 @@ Most már folytathatja a [Machine learning](https://studio.azureml.net)-ben val�
 
   ![AUC-érték diagramja](./media/hive-walkthrough/8JDT0F8.png)
 
-- **Többosztályos besorolás** : a korábban definiált osztályok használatával előre megjósolhatja az utazáshoz kifizetett borravalók tartományát.
+- **Többosztályos besorolás**: a korábban definiált osztályok használatával előre megjósolhatja az utazáshoz kifizetett borravalók tartományát.
 
   **Használt tanuló:** Többosztályos logisztikai regresszió
 
-  a. Ennek a problémának a célja (vagy osztály) címkéje a **tip \_ osztály** , amely öt érték (0, 1, 2, 3, 4) egyikét veheti igénybe. Ahogy a bináris besorolás esetében is, van néhány oszlopunk, amely a kísérlethez célzott szivárgást céloz meg. Különösen a kitűzött, a **tip- \_ összeg** és a **teljes \_ összeg** felfedi az adott címkére vonatkozó **adatokat, amelyek** teszteléskor nem érhetők el. Ezeket az oszlopokat az [adatkészlet kijelölése oszlopban található oszlopok][select-columns] használatával távolítjuk el.
+  a. Ennek a problémának a célja (vagy osztály) címkéje a **tip \_ osztály**, amely öt érték (0, 1, 2, 3, 4) egyikét veheti igénybe. Ahogy a bináris besorolás esetében is, van néhány oszlopunk, amely a kísérlethez célzott szivárgást céloz meg. Különösen a kitűzött, a **tip- \_ összeg** és a **teljes \_ összeg** felfedi az adott címkére vonatkozó **adatokat, amelyek** teszteléskor nem érhetők el. Ezeket az oszlopokat az [adatkészlet kijelölése oszlopban található oszlopok][select-columns] használatával távolítjuk el.
 
   Az alábbi ábrán azt a kísérletet láthatja, hogy a tipp melyik raktárhelyre várhatóan csökken. A Raktárhelyek: 0. osztály: tipp = $0, 1. osztály: tipp > $0 és tipp <= $5, 2. osztály: tipp > $5 és tipp <= $10, 3. osztály: tipp > $10 és tipp <= $20 és 4. osztály: tipp > $20.
 
@@ -898,7 +898,7 @@ Most már folytathatja a [Machine learning](https://studio.azureml.net)-ben val�
 
   Míg a pontosság osztály jó, a modell nem végez jó munkát a ritkább osztályokon a "learning".
 
-- **Regressziós feladat** : az utazáshoz fizetett tipp mennyiségének előrejelzése.
+- **Regressziós feladat**: az utazáshoz fizetett tipp mennyiségének előrejelzése.
 
   **Használt tanuló:** Megnövelt döntési fa
 
@@ -922,7 +922,7 @@ Most már folytathatja a [Machine learning](https://studio.azureml.net)-ben val�
 ## <a name="license-information"></a>Licencelési információk
 Ezt a minta-bemutatót és a hozzá tartozó parancsfájlokat a Microsoft a MIT licenc alatt osztja meg. További információ: **LICENSE.txt** fájl a githubon található mintakód könyvtárában.
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 •    [Andrés MONROY NYC taxi TRIPS letöltési oldal](https://www.andresmh.com/nyctaxitrips/)  
 •    [A New York-i taxis utazási adatvédelme Chris Whong](https://chriswhong.com/open-data/foil_nyc_taxi/)   
 • A    [New York-i taxi és a limuzin Bizottság kutatási és statisztikai adatai](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)

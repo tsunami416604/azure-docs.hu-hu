@@ -7,11 +7,11 @@ ms.date: 2/28/2018
 ms.author: gwallace
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 6df434610a8f595ecca7f16e31f8a302373b02f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89012653"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001864"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Egyéni Service Fabric állapotjelentés hozzáadása
 Az Azure Service Fabric egy olyan [egészségügyi modellt](service-fabric-health-introduction.md) vezet be, amely a nem kifogástalan állapotú fürtök és az alkalmazások bizonyos entitásokra vonatkozó feltételeit jelöli. Az állapot-modell az állapotfigyelő **jelentéseket** (rendszerösszetevők és watchdogok) használja. A cél egyszerű és gyors diagnosztizálás és javítás. A Service Writers szolgáltatásnak előre kell gondolnia az állapotról. Minden olyan feltételt, amely hatással lehet az állapotra, jelenteni kell, különösen akkor, ha segíthet a gyökérhez közeledő problémák megjelölésében. Az állapotadatok segítségével időt és fáradságot takaríthat meg a hibakeresés és a vizsgálat során. A hasznosság különösen egyértelmű, ha a szolgáltatás a felhőben (magán vagy Azure) nagy léptékben fut.
@@ -149,7 +149,7 @@ A watchdog részleteinek véglegesítése után döntse el, hogy milyen forrás-
 
 A következő döntési pont az az entitás, amelyről jelentést szeretne készíteni. A legtöbb esetben a feltétel egyértelműen azonosítja az entitást. Válassza ki az entitást a lehető legpontosabb részletességgel. Ha egy feltétel a partíción lévő összes replikára hatással van, akkor a (z) partíciót nem a szolgáltatáson keresztül kell jelentenie. Vannak olyan sarokban lévő esetek, ahol további gondolkodásra van szükség. Ha a feltétel hatással van egy entitásra, például egy replikára, de a szándék az, hogy a feltételt a replika élettartamának időtartama meghaladja, akkor azt jelenteni kell a partíción. Ellenkező esetben a replika törlésekor a Health Store minden jelentését törli. A watchdog-íróknak gondolnia kell az entitás és a jelentés élettartamára. Egyértelműnek kell lennie abban az esetben, ha egy jelentést egy tárolóból kell tisztítani (például ha egy entitáson már nem történt hiba).
 
-Lássunk egy példát, amely összefoglalja a leírt pontokat. Vegyünk egy Service Fabric alkalmazást, amely az összes csomóponton üzembe helyezett fő állapot-nyilvántartó állandó szolgáltatásból és másodlagos állapot nélküli szolgáltatásokból áll (az egyes feladatokhoz egy másodlagos szolgáltatástípus). A főkiszolgálónak van egy feldolgozási várólistája, amely a formátumú másodlagos zónák által végrehajtandó parancsokat tartalmazza. A formátumú másodlagos zónák végrehajtja a beérkező kéréseket, és visszaküldi a nyugtázási jeleket. A felügyelhető egyik feltétel a fő feldolgozási várólista hossza. Ha a fő várólista hossza eléri a küszöbértéket, a rendszer figyelmeztetést küld. A figyelmeztetés azt jelzi, hogy a formátumú másodlagos zónák nem tudja kezelni a terhelést. Ha a várólista eléri a maximális hosszt és a parancsokat, a rendszer hibát jelez, mivel a szolgáltatás nem állítható helyre. A jelentések a **QueueStatus**tulajdonsággal rendelkezhetnek. A watchdog a szolgáltatáson belül lakik, és rendszeres időközönként a fő elsődleges replikán küldi el. Az élettartam két perc, és minden esetben 30 másodpercenként küldi el a rendszer. Ha az elsődleges leáll, a jelentés automatikusan törlődik a tárolóból. Ha a szolgáltatás replikája folyamatban van, de holtpontba ütközik, vagy más problémák léptek fel, a jelentés lejár az állapotfigyelő tárolóban. Ebben az esetben a rendszer hiba esetén kiértékeli az entitást.
+Lássunk egy példát, amely összefoglalja a leírt pontokat. Vegyünk egy Service Fabric alkalmazást, amely az összes csomóponton üzembe helyezett fő állapot-nyilvántartó állandó szolgáltatásból és másodlagos állapot nélküli szolgáltatásokból áll (az egyes feladatokhoz egy másodlagos szolgáltatástípus). A főkiszolgálónak van egy feldolgozási várólistája, amely a formátumú másodlagos zónák által végrehajtandó parancsokat tartalmazza. A formátumú másodlagos zónák végrehajtja a beérkező kéréseket, és visszaküldi a nyugtázási jeleket. A felügyelhető egyik feltétel a fő feldolgozási várólista hossza. Ha a fő várólista hossza eléri a küszöbértéket, a rendszer figyelmeztetést küld. A figyelmeztetés azt jelzi, hogy a formátumú másodlagos zónák nem tudja kezelni a terhelést. Ha a várólista eléri a maximális hosszt és a parancsokat, a rendszer hibát jelez, mivel a szolgáltatás nem állítható helyre. A jelentések a **QueueStatus** tulajdonsággal rendelkezhetnek. A watchdog a szolgáltatáson belül lakik, és rendszeres időközönként a fő elsődleges replikán küldi el. Az élettartam két perc, és minden esetben 30 másodpercenként küldi el a rendszer. Ha az elsődleges leáll, a jelentés automatikusan törlődik a tárolóból. Ha a szolgáltatás replikája folyamatban van, de holtpontba ütközik, vagy más problémák léptek fel, a jelentés lejár az állapotfigyelő tárolóban. Ebben az esetben a rendszer hiba esetén kiértékeli az entitást.
 
 Egy másik megfigyelhető feltétel a feladat végrehajtási ideje. A főkiszolgáló a feladattípus alapján osztja el a tevékenységeket a formátumú másodlagos zónák. A tervtől függően a főkiszolgáló lekérdezheti a formátumú másodlagos zónák a feladat állapotára vonatkozóan. Azt is megvárhatja, hogy a formátumú másodlagos zónák visszaküldje a nyugtázási jeleket, ha elkészült. A második esetben ügyelni kell arra, hogy olyan helyzetekben lehessen felderíteni a formátumú másodlagos zónák, amelyekben a Die vagy az üzenetek elvesznek. Az egyik lehetőség, hogy a főkiszolgáló egy ping-kérelmet küld ugyanarra a másodlagosra, amely visszaküldi az állapotát. Ha nem érkezik állapot, a főkiszolgáló hibát jelez, és átütemezze a feladatot. Ez a viselkedés feltételezi, hogy a tevékenységek idempotens.
 
@@ -157,7 +157,7 @@ A figyelt feltételt figyelmeztetésként lehet lefordítani, ha a feladat nem e
 
 * A fő elsődleges replika rendszeres időközönként jelentést készít. Az üzenetsor összes függőben lévő feladatának egy tulajdonsága lehet. Ha legalább egy feladat továbbra is fennáll, a jelentés állapota a **PendingTasks** tulajdonságnál figyelmeztetés vagy hiba, ha szükséges. Ha nincsenek függőben lévő feladatok, vagy az összes feladat végrehajtása megkezdődött, a jelentés állapota OK. A feladatok állandóak. Ha az elsődleges leáll, az újonnan előléptetett elsődleges művelet továbbra is megfelelően tud jelentést készíteni.
 * Egy másik watchdog-folyamat (a felhőben vagy a külsőben) ellenőrzi a feladatokat (a kívánt feladat eredménye alapján), hogy megtekintse, hogy azok befejeződtek-e. Ha nem veszik figyelembe a küszöbértékeket, a rendszer egy jelentést továbbít a főkiszolgálón. A rendszer minden olyan feladatra vonatkozó jelentést is továbbít, amely tartalmazza a feladat azonosítóját, például a **PendingTask + taskId**. A jelentéseket csak sérült állapotok esetén kell elküldeni. Állítsa be az időpontot néhány percre, és jelölje ki az eltávolítandó jelentéseket, amikor lejárnak a tisztítás érdekében.
-* A feladat-jelentést végrehajtó másodlagos, ha a futtatása a vártnál hosszabb időt vesz igénybe. A **PendingTasks**tulajdonságban található szolgáltatási példányról jelent jelentést. A jelentés kijelöli a problémát okozó szolgáltatási példányt, de nem rögzíti azt a helyzetet, amelyben a példány meghal. Ekkor a jelentések törlődnek. Jelenthet jelentést a másodlagos szolgáltatásról. Ha a másodlagos feladat befejezi a feladatot, a másodlagos példány törli a jelentést az áruházból. A jelentés nem rögzíti azt a helyzetet, amelyben az nyugtázási üzenet elvész, és a feladat nem fejeződött be a főkiszolgáló nézetből.
+* A feladat-jelentést végrehajtó másodlagos, ha a futtatása a vártnál hosszabb időt vesz igénybe. A **PendingTasks** tulajdonságban található szolgáltatási példányról jelent jelentést. A jelentés kijelöli a problémát okozó szolgáltatási példányt, de nem rögzíti azt a helyzetet, amelyben a példány meghal. Ekkor a jelentések törlődnek. Jelenthet jelentést a másodlagos szolgáltatásról. Ha a másodlagos feladat befejezi a feladatot, a másodlagos példány törli a jelentést az áruházból. A jelentés nem rögzíti azt a helyzetet, amelyben az nyugtázási üzenet elvész, és a feladat nem fejeződött be a főkiszolgáló nézetből.
 
 A jelentéskészítés azonban a fent ismertetett esetekben történik, az állapot kiértékelése során a jelentéseket az alkalmazás állapota rögzíti.
 
@@ -207,7 +207,7 @@ public static void SendReport(object obj)
 ```
 
 ### <a name="powershell"></a>PowerShell
-Állapotjelentés küldése a **Send-ServiceFabric*EntityType*állapotjelentés**.
+Állapotjelentés küldése a **Send-ServiceFabric *EntityType* állapotjelentés**.
 
 Az alábbi példa egy csomóponton lévő CPU-értékekkel kapcsolatos rendszeres jelentéskészítést mutatja be. A jelentéseket 30 másodpercenként el kell juttatni, és két percen belül meg kell élniük. Ha lejárnak, a jelentéskészítő problémákba ütközik, így hiba esetén a csomópont kiértékelése megtörténik. Ha a processzor egy küszöbérték felett van, a jelentés állapota figyelmeztetés állapotú. Ha a processzor a beállított időpontnál továbbra is meghaladja a küszöbértéket, a rendszer hibát jelez. Ellenkező esetben a jelentéskészítő az OK állapotot küldi el.
 
@@ -246,7 +246,7 @@ HealthEvents          :
                         Transitions           : ->Warning = 4/21/2015 9:01:21 PM
 ```
 
-Az alábbi példa egy átmeneti figyelmeztetést jelent a replikán. Először beolvassa a partíció-azonosítót, majd annak a szolgáltatásnak a repliká-AZONOSÍTÓját, amely érdekli. Ezután jelentést küld a **PowershellWatcher** a **ResourceDependency**tulajdonságban. A jelentés csupán két percet vesz igénybe, és a rendszer automatikusan eltávolítja az áruházból.
+Az alábbi példa egy átmeneti figyelmeztetést jelent a replikán. Először beolvassa a partíció-azonosítót, majd annak a szolgáltatásnak a repliká-AZONOSÍTÓját, amely érdekli. Ezután jelentést küld a **PowershellWatcher** a **ResourceDependency** tulajdonságban. A jelentés csupán két percet vesz igénybe, és a rendszer automatikusan eltávolítja az áruházból.
 
 ```powershell
 PS C:\> $partitionId = (Get-ServiceFabricPartition -ServiceName fabric:/WordCount/WordCount.Service).PartitionId
@@ -293,7 +293,7 @@ HealthEvents          :
 ### <a name="rest"></a>REST
 Állapotjelentés küldése a REST használatával a kívánt entitáshoz tartozó POST-kérésekkel, és az állapotjelentés leírását a törzsben kell megtenni. Tekintse meg például a REST- [fürt állapotáról szóló jelentések](/rest/api/servicefabric/report-the-health-of-a-cluster) vagy a [szolgáltatás állapotáról](/rest/api/servicefabric/report-the-health-of-a-service)szóló jelentések küldését ismertető témakört. Minden entitás támogatott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az állapotadatok alapján a Service Writers és a cluster/Application Administrators az információk felhasználásának módját is meggondolhatja. Például riasztásokat állíthatnak be az állapot alapján, hogy súlyos problémákba tudják fogni az kimaradások kiesése előtt. A rendszergazdák a javítási rendszerek beállításával automatikusan is kijavíthatják a problémákat.
 
 [Az Service Fabric Health monitoring bemutatása](service-fabric-health-introduction.md)

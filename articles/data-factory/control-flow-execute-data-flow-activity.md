@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 10/28/2020
-ms.openlocfilehash: 753d72b31e4f813d0e7abbbd223e050fd3390411
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.date: 11/24/2020
+ms.openlocfilehash: c436d75384c527ba7666cd2e6e780b9d8a93eae2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910763"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003946"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Adatfolyam-tevékenység Azure Data Factory
 
@@ -37,6 +37,7 @@ Az adatfolyam tevékenységgel átalakíthatja és áthelyezheti az adatait a le
          "coreCount": 8,
          "computeType": "General"
       },
+      "traceLevel": "Fine",
       "staging": {
           "linkedService": {
               "referenceName": "MyStagingLinkedService",
@@ -62,6 +63,7 @@ számítás. coreCount | A Spark-fürtben használt magok száma. Csak akkor adh
 számítás. computeType | A Spark-fürtben használt számítási típus. Csak akkor adható meg, ha az Azure Integration Runtime automatikus feloldása használatban van | "Általános", "ComputeOptimized", "MemoryOptimized" | No
 előkészítés. linkedService | Ha Azure-beli szinapszis Analytics-forrást vagy-fogadót használ, határozza meg a alapszintű előkészítéshez használt Storage-fiókot.<br/><br/>Ha az Azure Storage VNet szolgáltatás-végponttal van konfigurálva, akkor a Storage-fiókon engedélyezve van a "megbízható Microsoft-szolgáltatás engedélyezése" nevű felügyelt identitás-hitelesítés, lásd: a [VNet szolgáltatás-végpontok Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)-ban való használatának következményei. Ismerje meg az [Azure Blob](connector-azure-blob-storage.md#managed-identity) és a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) szükséges konfigurációit is.<br/> | Linkedservicereference sématulajdonsággal | Csak akkor, ha az adatfolyam beolvassa vagy ír egy Azure szinapszis Analyticsbe
 előkészítés. folderPath | Ha Azure szinapszis Analytics-forrást vagy-fogadót használ, a mappa elérési útja a blob Storage-fiókban | Sztring | Csak akkor, ha az adatfolyam beolvassa vagy ír az Azure szinapszis Analyticsbe
+traceLevel | Az adatfolyam-tevékenységek végrehajtásának naplózási szintjének beállítása | Vékony, durva, nincs | No
 
 ![Adatfolyam végrehajtása](media/data-flow/activity-data-flow.png "Adatfolyam végrehajtása")
 
@@ -87,6 +89,12 @@ A folyamatok végrehajtásához a fürt egy olyan fürt, amely a végrehajtás m
 ### <a name="polybase"></a>PolyBase
 
 Ha az Azure szinapszis Analytics (korábban SQL Data Warehouse) szolgáltatást fogadóként vagy forrásként használja, ki kell választania egy átmeneti helyet a köteg batch-terheléshez. A Base lehetővé teszi a kötegek tömeges betöltését az adatsorok egymásba helyezése helyett. A Base drasztikusan csökkenti a betöltési időt az Azure szinapszis Analytics szolgáltatásban.
+
+## <a name="logging-level"></a>Naplózási szint
+
+Ha nincs szüksége az adatáramlási tevékenységek minden folyamatának végrehajtására az összes részletes telemetria-napló teljes naplózásához, igény szerint beállíthatja a naplózási szintet az "alapszintű" vagy a "None" értékre. Ha az adatfolyamatokat "részletes" módban hajtja végre (alapértelmezés), az automatikus lapadagolóba az adatátalakítás során minden egyes partíciós szinten teljes körű naplózási tevékenységet kér. Ez költséges művelet lehet, ezért csak akkor engedélyezze a részletes műveleteket, ha a hibaelhárítás javítja a teljes adatfolyamatot és a folyamat teljesítményét. Az "alapszintű" mód csak az átalakítási időtartamokat fogja naplózni, míg a "None" csak az időtartamok összegzését tartalmazza.
+
+![Naplózási szint](media/data-flow/logging.png "Naplózási szint beállítása")
 
 ## <a name="parameterizing-data-flows"></a>Parameterizing-adatfolyamok
 
@@ -155,7 +163,7 @@ A (z) "source1" nevű forrásból beolvasott sorok számának lekéréséhez has
 > [!NOTE]
 > Ha a fogadó nulla sorból áll, akkor nem jelenik meg a mérőszámokban. A létezés ellenőrizhető a függvény használatával `contains` . Például `contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')` megvizsgálhatja, hogy a sorok sink1-e.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Lásd: Data Factory által támogatott vezérlési flow-tevékenységek: 
 

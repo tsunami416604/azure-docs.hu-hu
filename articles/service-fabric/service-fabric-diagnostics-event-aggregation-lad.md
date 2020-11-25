@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 2/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 453258bb5768a2faa8f4e42cce86d02125283026
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86259195"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002170"
 ---
 # <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Események összesítése és gyűjtése linuxos Azure Diagnostics használatával
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ Service Fabric a [lttng érhető el](https://lttng.org)-on keresztül néhány b
 ## <a name="deploy-the-diagnostics-extension"></a>A diagnosztikai bővítmény üzembe helyezése
 A naplók összegyűjtésének első lépéseként telepítenie kell a diagnosztikai bővítményt a Service Fabric-fürtön lévő összes virtuális gépre. A diagnosztikai bővítmény összegyűjti a naplókat az egyes virtuális gépeken, és feltölti azokat a megadott Storage-fiókba. 
 
-Ha a fürt létrehozása során a diagnosztikai bővítményt a fürtben lévő virtuális gépekre szeretné telepíteni, állítsa a **diagnosztika** lehetőséget **a**következőre:. A fürt létrehozása után ez a beállítás nem módosítható a portál használatával, ezért a megfelelő módosításokat el kell végeznie a Resource Manager-sablonban.
+Ha a fürt létrehozása során a diagnosztikai bővítményt a fürtben lévő virtuális gépekre szeretné telepíteni, állítsa a **diagnosztika** lehetőséget **a** következőre:. A fürt létrehozása után ez a beállítás nem módosítható a portál használatával, ezért a megfelelő módosításokat el kell végeznie a Resource Manager-sablonban.
 
 Ezzel konfigurálja a LAD-ügynököt a megadott naplófájlok figyelésére. Minden alkalommal, amikor új sort fűz a fájlhoz, létrehoz egy syslog-bejegyzést, amelyet a rendszer a megadott tárolóba (táblára) küld.
 

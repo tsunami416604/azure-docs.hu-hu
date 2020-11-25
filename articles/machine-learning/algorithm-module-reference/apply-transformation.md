@@ -10,11 +10,11 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/26/2020
 ms.openlocfilehash: a5db3935ae445ee7dcf8129eb1d4c75fcb64302f
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739200"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003905"
 ---
 # <a name="apply-transformation-module"></a>Átalakítási modul alkalmazása
 
@@ -55,6 +55,6 @@ A Designer lehetővé teszi adatátalakítások **adatkészletként** való ment
 > 1. A következtetési folyamatban távolítsa el a **TD-** modult, és cserélje le az előző lépésben regisztrált adatkészletre.
 > ![A TD modul cseréje](media/module/replace-tranformation-directory.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

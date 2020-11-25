@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
 ms.openlocfilehash: 3c363d13933e6554a6eefbeaf02d87dc6b382628
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578773"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002390"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# – fejlesztői dokumentáció
 
@@ -21,7 +21,7 @@ C#-fejlesztőként a következő cikkek egyike is érdekli:
 
 | Első lépések | Alapelvek| Interaktív tanulás/minták |
 | -- | -- | -- | 
-| <ul><li>[A Visual Studio használata](functions-create-your-first-function-visual-studio.md)</li><li>[A Visual Studio Code használata](create-first-function-vs-code-csharp.md)</li><li>[Parancssori eszközök használata](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[Üzemeltetési lehetőségek](functions-scale.md)</li><li>[Teljesítménnyel &nbsp; kapcsolatos megfontolások](functions-best-practices.md)</li><li>[A Visual Studio fejlesztése](functions-develop-vs.md)</li><li>[Függőséginjektálás](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[Kiszolgáló nélküli alkalmazás létrehozása](/learn/paths/create-serverless-applications/)</li><li>[C#-minták](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
+| <ul><li>[A Visual Studio használata](functions-create-your-first-function-visual-studio.md)</li><li>[A Visual Studio Code használata](create-first-function-vs-code-csharp.md)</li><li>[Parancssori eszközök használata](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[Üzemeltetési lehetőségek](functions-scale.md)</li><li>[Teljesítménnyel &nbsp; kapcsolatos megfontolások](functions-best-practices.md)</li><li>[A Visual Studio fejlesztése](functions-develop-vs.md)</li><li>[Függőségi befecskendezés](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[Kiszolgáló nélküli alkalmazás létrehozása](/learn/paths/create-serverless-applications/)</li><li>[C#-minták](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
 
 Azure Functions támogatja a C# és C# programozási nyelveket. Ha a C# használatával kapcsolatos útmutatást keres [a Azure Portalban](functions-create-function-app-portal.md), tekintse meg a [c# parancsfájl (. CSX) fejlesztői referenciáját](functions-reference-csharp.md).
 
@@ -645,7 +645,7 @@ public static class IBinderExampleMultipleAttributes
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [További információ az eseményindítók és kötésekről](functions-triggers-bindings.md)

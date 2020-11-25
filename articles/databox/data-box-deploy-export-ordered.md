@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 11/23/2020
 ms.author: alkohli
-ms.openlocfilehash: ad8a5a23361e721fd5d8d55d3555f51def94e768
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: b132368982e0013bfe6f3ffd52e7aacb7b1274eb
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442021"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96003178"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>Oktatóanyag: Azure Data Box exportálási sorrendjének létrehozása (előzetes verzió)
 
@@ -80,7 +80,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket az Azure Po
 
    ![Data Box kapacitás kiválasztása](media/data-box-deploy-export-ordered/azure-data-box-export-order-capacity.png)
 
-6. A **sorrend** mezőben határozza meg az **alapszintű** rendelés részleteit. Adja meg vagy válassza ki a következő információkat, majd válassza a **Tovább** lehetőséget.
+6. A **sorrend** mezőben határozza meg az **alapszintű** rendelés részleteit. Adja meg vagy válassza ki a következő információkat.
 
     |Beállítás  |Érték  |
     |---------|---------|
@@ -88,13 +88,13 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket az Azure Po
     |Erőforráscsoport | A korábban kiválasztott erőforráscsoport. |
     |Exportálási rendelés neve     |  Adjon meg egy rövid nevet a megrendelés nyomon követéséhez. <br> A névnek 3-24 karakter hosszúságúnak kell lennie, és csak betűket, számokat és kötőjelet tartalmazhat. <br> A névnek betűvel vagy számmal kell kezdődnie és végződnie.      |
 
-    ![Exportálási sorrend alapjai](media/data-box-deploy-export-ordered/azure-data-box-export-order-storage-account-export-type.png)
+    ![Exportálási sorrend alapjai](media/data-box-deploy-export-ordered/azure-data-box-export-order-basics-order-name.png)
 
     Kattintson a Tovább gombra: a folytatáshoz válassza ki az **adatkijelölést** .
 
 7. Az **adatkijelölés** területen válassza a **Storage-fiók hozzáadása és az Exportálás típusa** lehetőséget.
 
-    ![Storage-fiók és exportálási típus hozzáadása](media/data-box-deploy-export-ordered/azure-data-box-export-order-basics.png)
+    ![Storage-fiók és exportálási típus hozzáadása](media/data-box-deploy-export-ordered/azure-data-box-export-order-basics-add-storage.png)
 
 8. Az **Exportálás kiválasztása beállításnál** adja meg az exportálási beállítás részleteit. Adja meg vagy válassza ki a következő adatokat, majd válassza a **Hozzáadás** lehetőséget.
 
@@ -102,7 +102,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket az Azure Po
     |---------|---------|
     |Tárfiók     | Az Azure Storage-fiók, ahonnan exportálni kívánja az adatait. |
     |Exportálás típusa     | Meghatározza az **összes objektumból** exportálandó adatok típusát és az **XML-fájl használatát**.<ul><li> **Minden objektum** – azt adja meg, hogy a feladatsor az **átvitel beállításaitól** függően az összes értéket exportálja.</li><li> **XML-fájl használata** – olyan XML-fájlt ad meg, amely a Storage-fiókból exportálandó blobok és/vagy fájlok elérési útját és előtagokat tartalmazza. Az XML-fájlnak a kiválasztott Storage-fiók tárolójában kell lennie, és a fájlmegosztás lehetőség választása jelenleg nem támogatott. A fájlnak nem üres. XML formátumú fájlnak kell lennie.</li></ul>        |
-    |Átvitel beállításai     |  Meghatározza az adatátviteli beállításokat az **összes kijelölése** , **az összes blob** és az **összes fájl** közül. <ul><li> **Az összes kijelölése** – megadja, hogy az összes blob és Azure Files exportálva van-e. Ha olyan Storage-fiókot használ, amely csak a blobokat támogatja (Blob Storage fiók), a **minden fájl** lehetőség nem lesz kiválasztható.</li><li> **Minden blob** – azt adja meg, hogy csak a blokk-és a Blobok legyenek exportálva.</li><li> **Minden fájl** – azt adja meg, hogy minden fájl exportálva legyen, kivéve a blobokat. Az Ön által létrehozott Storage-fiók típusa (GPv1 és GPv2, Premium Storage vagy blob Storage) meghatározza az exportálható adattípusokat. További információ: [támogatott Storage-fiókok exportáláshoz](../storage/common/storage-import-export-requirements.md#supported-storage-types).</li></ul>         |
+    |Átvitel beállításai     |  Meghatározza az adatátviteli beállításokat az **összes kijelölése**, **az összes blob** és az **összes fájl** közül. <ul><li> **Az összes kijelölése** – megadja, hogy az összes blob és Azure Files exportálva van-e. Ha olyan Storage-fiókot használ, amely csak a blobokat támogatja (Blob Storage fiók), a **minden fájl** lehetőség nem lesz kiválasztható.</li><li> **Minden blob** – azt adja meg, hogy csak a blokk-és a Blobok legyenek exportálva.</li><li> **Minden fájl** – azt adja meg, hogy minden fájl exportálva legyen, kivéve a blobokat. Az Ön által létrehozott Storage-fiók típusa (GPv1 és GPv2, Premium Storage vagy blob Storage) meghatározza az exportálható adattípusokat. További információ: [támogatott Storage-fiókok exportáláshoz](../storage/common/storage-import-export-requirements.md#supported-storage-types).</li></ul>         |
     |Részletes napló belefoglalása     | Azt jelzi, hogy szeretne-e részletes naplófájlt használni, amely tartalmazza az összes sikeresen exportált fájl listáját.        |
 
     > [!NOTE]
@@ -115,15 +115,88 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket az Azure Po
 
    Az XML-bemenet példájának megtekintéséhez lásd: [minta XML-bemenet](data-box-deploy-export-ordered.md#sample-xml-file)
 
-9. Az **Adatválasztás** területen tekintse át a beállításokat, és válassza a **tovább: biztonsági>**.
+9. Az **Adatválasztás** területen tekintse át a beállításokat, majd kattintson a Tovább gombra **: biztonsági>** a folytatáshoz.
 
    ![Exportálási sorrend, az adatkijelölés](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-selection.png)
 
-10. Ha a **Biztonság** területen engedélyezni szeretné a szoftveres kettős titkosítást, válassza **a dupla titkosítás engedélyezése lehetőséget a rendeléshez**. 
+    A **biztonsági** képernyőn használhatja a saját titkosítási kulcsát, és választhatja a kettős titkosítás használatát.
+
+    A **biztonsági** képernyőn megjelenő összes beállítás nem kötelező. Ha nem módosítja a beállításokat, az alapértelmezett beállítások lesznek érvényesek.
+
+    ![A Data Box importálási sorrend varázsló biztonsági képernyője](media/data-box-deploy-export-ordered/data-box-export-security-01.png)
+
+10. Ha a saját ügyfél által felügyelt kulcsát szeretné használni az új erőforrás feloldási hitelesítő adatainak megvédéséhez, bontsa ki a **titkosítási típust**.
+
+    Az ügyfél által felügyelt kulcs konfigurálása a Azure Data Box esetében nem kötelező. Alapértelmezés szerint a Data Box a Microsoft által felügyelt kulcs használatával védi a zárolási kulcsot.
+
+    Az ügyfél által felügyelt kulcs nem befolyásolja, hogy az eszközön lévő adatforgalom hogyan legyen titkosítva. A kulcs csak az eszköz feloldási hitelesítő kulcsának titkosítására szolgál.
+
+    Ha nem szeretne ügyfél által felügyelt kulcsot használni, ugorjon a 16. lépésre.
+
+    ![A titkosítási típus beállításait megjelenítő biztonsági képernyő](./media/data-box-deploy-export-ordered/customer-managed-key-01.png)
+
+11. A kulcs típusaként válassza az **ügyfél által felügyelt kulcs** lehetőséget. Ezután válassza ki **a Key Vault és a kulcs kiválasztása** lehetőséget.
+   
+    ![Biztonsági képernyő, ügyfél által felügyelt kulcs beállításai](./media/data-box-deploy-export-ordered/customer-managed-key-02.png)
+
+12. A **kiválasztási kulcs Azure Key Vault** képernyőn az előfizetés automatikusan ki lesz töltve.
+
+    - A **Key Vault** esetében választhat egy meglévő kulcstartót a legördülő listából.
+
+      ![Kulcs kiválasztása Azure Key Vault képernyőn](./media/data-box-deploy-export-ordered/customer-managed-key-03.png)
+
+    - Új kulcstartó létrehozásához az **új létrehozása** lehetőséget is választhatja. A **Key Vault létrehozása** képernyőn adja meg az erőforráscsoportot és a kulcstároló nevét. Győződjön meg arról, hogy a **Soft delete** és a **Purge Protection** engedélyezve van. Fogadja el az összes többi alapértelmezett értéket, majd válassza a **felülvizsgálat + létrehozás** lehetőséget.
+
+      ![Új Azure Key Vault beállítások létrehozása](./media/data-box-deploy-export-ordered/customer-managed-key-04.png)
+
+      Tekintse át a kulcstartó adatait, majd válassza a **Létrehozás** lehetőséget. Várjon pár percet, amíg a Key Vault létrehozása befejeződik.
+
+      ![Új Azure Key Vault felülvizsgálati képernyő](./media/data-box-deploy-export-ordered/customer-managed-key-05.png)
+
+13. A kulcs **kiválasztása Azure Key Vault** képernyőn kiválaszthat egy meglévő kulcsot a kulcstartóban.
+
+    ![Meglévő kulcs kiválasztása Azure Key Vault](./media/data-box-deploy-export-ordered/customer-managed-key-06.png)
+
+    Ha új kulcsot szeretne létrehozni, válassza az **új létrehozása** lehetőséget. RSA-kulcsot kell használnia. A méret 2048 vagy nagyobb lehet. Adja meg az új kulcs nevét, fogadja el a többi alapértelmezett értéket, majd válassza a **Létrehozás** lehetőséget.
+
+      ![Új kulcs létrehozása lehetőség](./media/data-box-deploy-export-ordered/customer-managed-key-07.png)
+
+      Értesítést kap, ha a kulcs létrejött a kulcstartóban.
+
+14. Válassza ki a használni kívánt kulcs **verzióját** , majd válassza a **kiválasztás** lehetőséget.
+
+      ![A Key vaultban létrehozott új kulcs](./media/data-box-deploy-export-ordered/customer-managed-key-08.png)
+
+    Ha új kulcs-verziót szeretne létrehozni, válassza az **új létrehozása** lehetőséget.
+
+    ![Nyisson meg egy párbeszédpanelt új kulcs verziójának létrehozásához](./media/data-box-deploy-export-ordered/customer-managed-key-08-a.png)
+
+    Az **új kulcs létrehozása** képernyőn válassza ki az új kulcs verziójának beállításait, és válassza a **Létrehozás** lehetőséget.
+
+    ![Új kulcs verziójának létrehozása](./media/data-box-deploy-export-ordered/customer-managed-key-08-b.png)
+
+    A **Biztonság** képernyőn látható **titkosítási típus** beállításai megmutatják a kulcstartót és a kulcsot.
+
+    ![Ügyfél által felügyelt kulcs és kulcstartó](./media/data-box-deploy-export-ordered/customer-managed-key-09.png)
+
+15. Válassza ki azt a felhasználói identitást, amelyet az erőforráshoz való hozzáférés kezeléséhez fog használni. Válassza **a felhasználói azonosító kiválasztása** lehetőséget. A jobb oldali panelen válassza ki az előfizetést és a használni kívánt felügyelt identitást. Ezután kattintson a **Kiválasztás** gombra.
+
+    A felhasználó által hozzárendelt felügyelt identitás egy önálló Azure-erőforrás, amely több erőforrás kezelésére is használható. További információ: [felügyelt identitások típusai](/azure/active-directory/managed-identities-azure-resources/overview).  
+
+    Ha új felügyelt identitást kell létrehoznia, kövesse a [szerepkörök létrehozása, listázása, törlése vagy hozzárendelése egy felhasználóhoz rendelt felügyelt identitáshoz című témakör útmutatását a Azure Portal használatával](../../articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
+    
+    ![Felhasználói azonosító kiválasztása](./media/data-box-deploy-export-ordered/customer-managed-key-10.png)
+
+    A felhasználói identitás a **titkosítási típus** beállításainál jelenik meg.
+
+    Most összecsukhatja a **titkosítási típus** beállításait.
+
+    ![A titkosítási típus beállításaiban megjelenő kiválasztott felhasználói azonosító](./media/data-box-deploy-export-ordered/customer-managed-key-11.png)
+
+16. Ha engedélyezni szeretné a szoftveres kettős titkosítást, bontsa ki a **dupla titkosítás (magas biztonsági környezetekben)** lehetőséget, és jelölje be **a dupla titkosítás engedélyezése a rendeléshez** beállítást. 
 
     A szoftveres titkosítás a Data Box lévő adatok AES-256 bites titkosításán felül történik.
 
-   
     > [!NOTE]
     > Ha engedélyezi ezt a beállítást, megteheti, hogy a rendelés feldolgozása és az Adatmásolás tovább tart. Ez a beállítás a megrendelés létrehozása után nem módosítható.
 
@@ -259,7 +332,7 @@ Néhány fontos pont az XML-fájlokra vonatkozóan:
 
 A következő táblázat példákat mutat be a Blobok érvényes elérési útjaira:
 
-   | Szelektor | BLOB elérési útja | Description |
+   | Szelektor | BLOB elérési útja | Leírás |
    | --- | --- | --- |
    | Ezzel kezdődik |/ |A Storage-fiókban lévő összes blob exportálása |
    | Ezzel kezdődik |/$root/ |A gyökér tárolóban lévő összes blob exportálása |

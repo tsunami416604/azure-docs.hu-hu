@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
 ms.openlocfilehash: 1ef52d74f7ae6e7e0d8c58e3b1972a0a1227c6b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85962203"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001923"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Halom-memóriaképek engedélyezése Apache Hadoop-szolgáltatásokhoz Linux-alapú HDInsight
 
@@ -37,9 +37,9 @@ A térképhez is engedélyezheti a kupacbeli memóriaképeket, és csökkentheti
 
 A heap-memóriaképek a szolgáltatás indításakor a JVM (más néven a kiválasztások vagy paraméterek) átadásával engedélyezhetők. A legtöbb [Apache Hadoop](https://hadoop.apache.org/) szolgáltatás esetében módosíthatja a szolgáltatás elindításához használt rendszerhéj-parancsfájlt, hogy átadja ezeket a beállításokat.
 
-Minden parancsfájlban van egy exportálás, amely a ** \* \_ **JVM átadott beállításokat tartalmazza. A **Hadoop-env.sh** szkriptben például a kezdetű sor `export HADOOP_NAMENODE_OPTS=` tartalmazza a NameNode szolgáltatás beállításait.
+Minden parancsfájlban van egy exportálás, amely a **\* \_** JVM átadott beállításokat tartalmazza. A **Hadoop-env.sh** szkriptben például a kezdetű sor `export HADOOP_NAMENODE_OPTS=` tartalmazza a NameNode szolgáltatás beállításait.
 
-A leképezés és a folyamatok csökkentése némileg eltér, mivel ezek a műveletek a MapReduce szolgáltatás alárendelt folyamatai. A rendszer minden egyes térképet vagy csökkentési folyamatot egy gyermek tárolóban futtat, és két bejegyzést tartalmaz, amelyek tartalmazzák a JVM beállításait. Mindkettő a **mapred-site.xmlban **szerepel:
+A leképezés és a folyamatok csökkentése némileg eltér, mivel ezek a műveletek a MapReduce szolgáltatás alárendelt folyamatai. A rendszer minden egyes térképet vagy csökkentési folyamatot egy gyermek tárolóban futtat, és két bejegyzést tartalmaz, amelyek tartalmazzák a JVM beállításait. Mindkettő a **mapred-site.xmlban** szerepel:
 
 * **MapReduce. admin. map. Child. Java. dönt**
 * **MapReduce. admin. csökkentse. Child. Java. dönt**
@@ -87,11 +87,11 @@ Egy szolgáltatás konfigurációjának módosításához kövesse az alábbi l�
 
     ![A Ambari web képe a HDFS configs lapon kiválasztva](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-service-config-tab.png)
 
-3. A **szűrő...** bejegyzés **használatával adja meg**a kilépést. Csak a szöveget tartalmazó elemek jelennek meg.
+3. A **szűrő...** bejegyzés **használatával adja meg** a kilépést. Csak a szöveget tartalmazó elemek jelennek meg.
 
     ![Apache Ambari-konfiguráció szűrt listája](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png)
 
-4. Keresse meg azt a szolgáltatást, amely számára engedélyezni szeretné a heap-memóriaképeket, és adja meg az engedélyezni kívánt beállításokat. ** \* \_ ** Az alábbi ábrán a `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` **HADOOP \_ NAMENODE \_ ** :
+4. Keresse meg azt a szolgáltatást, amely számára engedélyezni szeretné a heap-memóriaképeket, és adja meg az engedélyezni kívánt beállításokat. **\* \_** Az alábbi ábrán a `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` **HADOOP \_ NAMENODE \_** :
 
     ![Apache Ambari Hadoop-namenode – dönt](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png)
 

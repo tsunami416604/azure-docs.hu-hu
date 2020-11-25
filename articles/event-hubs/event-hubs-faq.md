@@ -3,16 +3,16 @@ title: Gyakori kérdések – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk a gyakori kérdések (GYIK) listáját tartalmazza az Azure Event Hubs és azok válaszait illetően.
 ms.topic: article
 ms.date: 10/27/2020
-ms.openlocfilehash: 41b010315adaf5a0eca2939b1d42fe4d7c159628
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: c756d0bccd9b2ad303bd97d3bfb7aed8b0b82b09
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843043"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96002790"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs gyakori kérdések
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ### <a name="what-is-an-event-hubs-namespace"></a>Mi az Event Hubs névtér?
 A névtér az Event hub/Kafka témakörök hatóköri tárolója. Egyedi [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)-t biztosít. A névtér olyan alkalmazás-tárolóként szolgál, amely több Event hub-vagy Kafka-témakört is képes elhelyezni. 
@@ -58,83 +58,7 @@ Event Hubs teljes mérőszámokat bocsát ki, amelyek a [Azure monitor](../azure
 ### <a name="where-does-azure-event-hubs-store-customer-data"></a><a name="in-region-data-residency"></a>Hol tárolja az Azure Event Hubs az ügyféladatokat?
 Az Azure Event Hubs az ügyféladatokat tárolja. Ezeket az adategységeket a Event Hubs egyetlen régióban tárolja automatikusan, így ez a szolgáltatás automatikusan megfelel a régió adattárolási követelményeinek, beleértve a [megbízhatósági központban](https://azuredatacentermap.azurewebsites.net/)megadott követelményeket is.
 
-### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Milyen portokat kell megnyitni a tűzfalon? 
-Az Azure Event Hubs a következő protokollokat használhatja az események küldéséhez és fogadásához:
-
-- Advanced Message Queueing Protocol 1,0 (AMQP)
-- 1,1 Hypertext Transfer Protocol TLS-vel (HTTPS)
-- Apache Kafka
-
-Az alábbi táblázat tartalmazza azokat a kimenő portokat, amelyeket meg kell nyitni a protokollok Azure Event Hubs-vel való kommunikációhoz való használatához. 
-
-| Protokoll | Portok | Részletek | 
-| -------- | ----- | ------- | 
-| AMQP | 5671 és 5672 | Lásd: [AMQP protokoll – útmutató](../service-bus-messaging/service-bus-amqp-protocol-guide.md) | 
-| HTTPS | 443 | Ez a port a HTTP/REST API és a AMQP-WebSockets esetében használatos. |
-| Kafka | 9093 | Lásd: [Event Hubs használata a Kafka-alkalmazásokból](event-hubs-for-kafka-ecosystem-overview.md)
-
-A kimenő kommunikációhoz a HTTPS-port szükséges abban az esetben is, ha a AMQP a 5671-as porton keresztül használja, mert több, az ügyfél SDK-k által végrehajtott felügyeleti művelet, valamint a tokenek beszerzése Azure Active Directory (ha használatban van) HTTPS protokollon keresztül 
-
-A hivatalos Azure SDK-k általában az AMQP protokollt használják az események küldésére és fogadására Event Hubsból. A AMQP-over-WebSockets protokoll az 443-as TCP-porton fut, ugyanúgy, mint a HTTP API, de egyébként az egyszerű AMQP eltérően működik. Ez a beállítás nagyobb kezdeti kapcsolati késéssel jár, mert a további kézfogási utak és valamivel nagyobb terhelés a HTTPS-port megosztásához szükséges kompromisszum. Ha ez a mód be van jelölve, a 443-es TCP-port elegendő a kommunikációhoz. A következő lehetőségek lehetővé teszik az egyszerű AMQP vagy a AMQP WebSockets mód kiválasztását:
-
-| Nyelv | Beállítás   |
-| -------- | ----- |
-| .NET     | [EventHubConnectionOptions. TransportType](/dotnet/api/azure.messaging.eventhubs.eventhubconnectionoptions.transporttype?view=azure-dotnet&preserve-view=true) tulajdonság a [EventHubsTransportType. AmqpTcp](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype?view=azure-dotnet&preserve-view=true) vagy a [EventHubsTransportType. AmqpWebSockets](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype?view=azure-dotnet&preserve-view=true) |
-| Java     | [com. microsoft. Azure. eventhubs. EventProcessorClientBuilder. transportType](/java/api/com.azure.messaging.eventhubs.eventprocessorclientbuilder.transporttype?view=azure-java-stable&preserve-view=true) , [AmqpTransportType. AMQP](/java/api/com.azure.core.amqp.amqptransporttype?view=azure-java-stable&preserve-view=true) vagy [AmqpTransportType.AMQP_WEB_SOCKETS](/java/api/com.azure.core.amqp.amqptransporttype?view=azure-java-stable&preserve-view=true) |
-| Csomópont  | A [EventHubConsumerClientOptions](/javascript/api/@azure/event-hubs/eventhubconsumerclientoptions?view=azure-node-latest&preserve-view=true) rendelkezik egy `webSocketOptions` tulajdonsággal. |
-| Python | [EventHubConsumerClient.transport_type](/python/api/azure-eventhub/azure.eventhub.eventhubconsumerclient?view=azure-python&preserve-view=true) [TransportType. Amqp](/python/api/azure-eventhub/azure.eventhub.transporttype?view=azure-python) vagy [TransportType. AmqpOverWebSocket](/python/api/azure-eventhub/azure.eventhub.transporttype?view=azure-python&preserve-view=true) |
-
-
-
-### <a name="what-ip-addresses-do-i-need-to-allow"></a>Milyen IP-címeket kell engedélyezni?
-Az alábbi lépéseket követve megkeresheti a kapcsolatok engedélyezett listájához hozzáadandó megfelelő IP-címeket:
-
-1. Futtassa a következő parancsot egy parancssorból: 
-
-    ```
-    nslookup <YourNamespaceName>.servicebus.windows.net
-    ```
-2. Jegyezze fel a visszaadott IP-címet `Non-authoritative answer` . 
-
-Ha a **zóna redundanciát** használja a névtérhez, néhány további lépést is végre kell hajtania: 
-
-1. Először futtassa az nslookupt a névtéren.
-
-    ```
-    nslookup <yournamespace>.servicebus.windows.net
-    ```
-2. Jegyezze fel a nevet a **nem mérvadó válasz** szakaszban, amely az alábbi formátumok egyike: 
-
-    ```
-    <name>-s1.cloudapp.net
-    <name>-s2.cloudapp.net
-    <name>-s3.cloudapp.net
-    ```
-3. Futtassa az nslookupt mindegyikhez az S1, az S2 és az S3 utótaggal a három rendelkezésre állási zónában futó mindhárom példány IP-címeinek lekéréséhez. 
-
-    > [!NOTE]
-    > A parancs által visszaadott IP-cím `nslookup` nem statikus IP-cím. Azonban állandó marad, amíg a mögöttes központi telepítést nem törlik, vagy áthelyezik egy másik fürtre.
-
-### <a name="where-can-i-find-client-ip-sending-or-receiving-messages-to-my-namespace"></a>Hol találhatom meg az ügyfél IP-küldését vagy az üzenetek fogadását a névtérhez?
-Először engedélyezze az [IP-szűrést](event-hubs-ip-filtering.md) a névtérben. 
-
-Ezután engedélyezze a diagnosztikai naplókat [Event Hubs virtuális hálózati kapcsolatok eseményeihez](event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema) a [diagnosztikai naplók engedélyezése](event-hubs-diagnostic-logs.md#enable-diagnostic-logs)című témakör utasításait követve. Ekkor megtekintheti az IP-címet, amelyhez a rendszer megtagadja a kapcsolódást.
-
-```json
-{
-    "SubscriptionId": "0000000-0000-0000-0000-000000000000",
-    "NamespaceName": "namespace-name",
-    "IPAddress": "1.2.3.4",
-    "Action": "Deny Connection",
-    "Reason": "IPAddress doesn't belong to a subnet with Service Endpoint enabled.",
-    "Count": "65",
-    "ResourceId": "/subscriptions/0000000-0000-0000-0000-000000000000/resourcegroups/testrg/providers/microsoft.eventhub/namespaces/namespace-name",
-    "Category": "EventHubVNetConnectionEvent"
-}
-```
-
-> [!IMPORTANT]
-> A virtuális hálózati naplók csak akkor jönnek létre, ha a névtér engedélyezi **bizonyos IP-címek** (IP-szűrési szabályok) elérését. Ha nem szeretné korlátozni a névtér elérését ezekkel a szolgáltatásokkal, és továbbra is szeretné lekérni a virtuális hálózati naplókat a Event Hubs névtérhez csatlakozó ügyfelek IP-címeinek nyomon követéséhez, a következő áthidaló megoldást használhatja: engedélyezze az IP-szűrést, és adja hozzá a teljes címezhető IPv4-tartományt (1.0.0.0/1-255.0.0.0/1). A Event Hubs nem támogatja az IPv6-címtartományok használatát. 
+[!INCLUDE [event-hubs-connectivity](../../includes/event-hubs-connectivity.md)]
 
 ## <a name="apache-kafka-integration"></a>Apache Kafka integráció
 
@@ -318,12 +242,12 @@ Ha például Azure Stack hub 2005-es verzióján fut, a Storage szolgáltatás l
 
 A következő példákban megtudhatja, hogyan célozhat meg egy adott tárolási API-verziót a kódból a GitHubon: 
 
-- [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)
+- [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/)
 - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java)
 - Python – [szinkron](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py), [aszinkron](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py)
 - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) és [írógéppel](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 

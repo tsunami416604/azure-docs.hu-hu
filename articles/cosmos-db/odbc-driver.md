@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 10/02/2019
 ms.author: sngun
 ms.openlocfilehash: e7d6a67f5322c5bb640430f66ccb0917f6faada1
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339784"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003497"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Kapcsolódás Azure Cosmos DB BI Analytics-eszközökkel az ODBC-illesztővel
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -59,17 +59,17 @@ Ismerkedjen meg az ODBC-illesztővel.
 1. Az **Azure Cosmos db ODBC-ILLESZTŐ Sdn beállítása** ablakban adja meg a következő információkat: 
 
     :::image type="content" source="./media/odbc-driver/odbc-driver-dsn-setup.png" alt-text="Azure Cosmos DB ODBC-illesztő DSN beállítása ablak":::
-    - Adatforrás **neve** : az ODBC-DSN saját felhasználóbarát neve. Ez a név egyedi a Azure Cosmos DB-fiókban, ezért a megfelelő módon nevezze el, ha több fiókja van.
-    - **Description (Leírás** ): az adatforrás rövid leírása.
-    - **Gazdagép** : a Azure Cosmos db-fiókhoz tartozó URI. Ezt a Azure Portal Azure Cosmos DB kulcsok lapjáról kérheti le, ahogy az alábbi képernyőképen is látható. 
-    - **Hozzáférési kulcs** : a Azure Portal Azure Cosmos db kulcsok oldalának elsődleges vagy másodlagos, írható-olvasható vagy írásvédett kulcsa, ahogy az alábbi képernyőfelvételen is látható. Javasoljuk, hogy a csak olvasási jogosultsággal rendelkező kulcsot használja, ha a DSN csak olvasható adatfeldolgozásra és jelentéskészítésre szolgál.
+    - Adatforrás **neve**: az ODBC-DSN saját felhasználóbarát neve. Ez a név egyedi a Azure Cosmos DB-fiókban, ezért a megfelelő módon nevezze el, ha több fiókja van.
+    - **Description (Leírás**): az adatforrás rövid leírása.
+    - **Gazdagép**: a Azure Cosmos db-fiókhoz tartozó URI. Ezt a Azure Portal Azure Cosmos DB kulcsok lapjáról kérheti le, ahogy az alábbi képernyőképen is látható. 
+    - **Hozzáférési kulcs**: a Azure Portal Azure Cosmos db kulcsok oldalának elsődleges vagy másodlagos, írható-olvasható vagy írásvédett kulcsa, ahogy az alábbi képernyőfelvételen is látható. Javasoljuk, hogy a csak olvasási jogosultsággal rendelkező kulcsot használja, ha a DSN csak olvasható adatfeldolgozásra és jelentéskészítésre szolgál.
     :::image type="content" source="./media/odbc-driver/odbc-cosmos-account-keys.png" alt-text="Azure Cosmos DB kulcsok lap":::
-    - **Hozzáférési kulcs titkosítása** : válassza ki a legjobb választást a számítógép felhasználói alapján. 
+    - **Hozzáférési kulcs titkosítása**: válassza ki a legjobb választást a számítógép felhasználói alapján. 
     
 1. Kattintson a **teszt** gombra, és ellenőrizze, hogy tud-e csatlakozni a Azure Cosmos db-fiókjához. 
 
 1.  Kattintson a **Speciális beállítások** elemre, és állítsa be a következő értékeket:
-    *  **REST API verziója** : válassza ki a [REST API verzióját](/rest/api/cosmos-db/) a műveletekhez. Az alapértelmezett 2015-12-16. Ha [nagyméretű partíciós kulcsokkal](large-partition-keys.md) rendelkező tárolókkal rendelkezik, és a REST API 2018-12-31-es verziójának megkövetelése:
+    *  **REST API verziója**: válassza ki a [REST API verzióját](/rest/api/cosmos-db/) a műveletekhez. Az alapértelmezett 2015-12-16. Ha [nagyméretű partíciós kulcsokkal](large-partition-keys.md) rendelkező tárolókkal rendelkezik, és a REST API 2018-12-31-es verziójának megkövetelése:
         - Írja be a **2018-12-31** -es verzióját REST API verzióra
         - A **Start** menüben írja be a "regedit" parancsot a rendszerleíróadatbázis- **szerkesztő** alkalmazás megkereséséhez és megnyitásához.
         - A Rendszerleíróadatbázis-szerkesztőben navigáljon a következő elérési úthoz: **Computer\HKEY_LOCAL_MACHINE\SOFTWARE\ODBC\ODBC.INI**
@@ -79,9 +79,9 @@ Ismerkedjen meg az ODBC-illesztővel.
             - Érték neve: **IgnoreSessionToken**
             - Érték: **1** 
              :::image type="content" source="./media/odbc-driver/cosmos-odbc-edit-registry.png" alt-text="Rendszerleíróadatbázis-szerkesztő beállításai":::
-    - **Lekérdezés konzisztenciája** : válassza ki a műveletek [konzisztenciáji szintjét](consistency-levels.md) . Az alapértelmezett érték a munkamenet.
-    - **Újrapróbálkozások száma** : Itt adhatja meg, hogy a rendszer hányszor próbálkozzon újra egy művelettel, ha a kezdeti kérelem nem fejeződött be a szolgáltatási díjak korlátozása miatt.
-    - **Sémafájl** : itt számos lehetőség közül választhat.
+    - **Lekérdezés konzisztenciája**: válassza ki a műveletek [konzisztenciáji szintjét](consistency-levels.md) . Az alapértelmezett érték a munkamenet.
+    - **Újrapróbálkozások száma**: Itt adhatja meg, hogy a rendszer hányszor próbálkozzon újra egy művelettel, ha a kezdeti kérelem nem fejeződött be a szolgáltatási díjak korlátozása miatt.
+    - **Sémafájl**: itt számos lehetőség közül választhat.
         - Alapértelmezés szerint, ha a bejegyzést (üres) hagyja, az illesztőprogram megvizsgálja az összes tárolóhoz tartozó adat első oldalát az egyes tárolók sémájának meghatározásához. Ezt nevezzük tároló-hozzárendelésnek. A séma definiálása nélkül az illesztőprogramnak el kell végeznie az egyes illesztőprogram-munkamenetek vizsgálatát, és a DSN használatával magasabb indítási időt eredményezhet az alkalmazás számára. Azt javasoljuk, hogy mindig rendeljen hozzá egy sémafájl-fájlt egy DSN-hez.
         - Ha már rendelkezik egy sémafájl (valószínűleg a séma-szerkesztő használatával létrehozott), kattintson a **Tallózás** gombra, keresse meg a fájlt, és kattintson a **Mentés** elemre, majd **az OK** gombra.
         - Ha új sémát szeretne létrehozni, kattintson az **OK** gombra, majd kattintson a főablakban található **sémakezelő szerkesztő** elemre. Ezután folytassa a séma-szerkesztő adataival. Az új sémafájl létrehozása után ne felejtse el visszatérni a **Speciális beállítások** ablakra az újonnan létrehozott sémafájl belefoglalásához.
@@ -222,7 +222,7 @@ Az új DSN használatával bármely ODBC-kompatibilis eszközzel csatlakozhat Az
 
     :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data.png" alt-text="Az Power BI Desktopban lévő adatlekérdezés":::
 
-1. Az **adatlekérdezés** ablakban kattintson a **más**  |  **ODBC** -  |  **kapcsolat** lehetőségre.
+1. Az **adatlekérdezés** ablakban kattintson a **más**  |  **ODBC**-  |  **kapcsolat** lehetőségre.
 
     :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data-2.png" alt-text="Válassza ki az ODBC-adatforrást az Power BI lekérése elemnél":::
 

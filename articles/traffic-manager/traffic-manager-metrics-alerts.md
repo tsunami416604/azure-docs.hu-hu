@@ -11,11 +11,11 @@ ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: duau
 ms.openlocfilehash: 997e2e97161e6db7cdca04c1b79f5149a2e4c409
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89392850"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003531"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>Metrikák és riasztások Traffic Manager
 
@@ -46,7 +46,7 @@ A 2. ábrán ugyanazokat az adatokat jeleníti meg, azonban a végpontok alapjá
  - Ha a végpont fel van használva, használja az **1** .
  - Ha a végpont nem érhető el, használja a **0 értéket** .
 
-Ez a metrika az összes metrika (3. ábra) állapotát jelképező összesített értékként jeleníthető meg, vagy felosztható (lásd a 4. ábrát) az adott végpontok állapotának megjelenítéséhez. Ha a korábbi, ha az összesítési szint az **AVG**értékre van kiválasztva, akkor a metrika értéke az összes végpont állapotának számtani átlaga. Ha például egy profil két végponttal rendelkezik, és csak egy kifogástalan állapotú, akkor ez a metrika **0,50** értékű, ahogy az a 3. ábrán látható. 
+Ez a metrika az összes metrika (3. ábra) állapotát jelképező összesített értékként jeleníthető meg, vagy felosztható (lásd a 4. ábrát) az adott végpontok állapotának megjelenítéséhez. Ha a korábbi, ha az összesítési szint az **AVG** értékre van kiválasztva, akkor a metrika értéke az összes végpont állapotának számtani átlaga. Ha például egy profil két végponttal rendelkezik, és csak egy kifogástalan állapotú, akkor ez a metrika **0,50** értékű, ahogy az a 3. ábrán látható. 
 
 
 ![Traffic Manager mérőszámok – a végpont állapotának összetett nézete](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-endpoint-status-composite-view.png)
@@ -63,6 +63,6 @@ Ezeket a metrikákat [Azure monitor szolgáltatás](../azure-monitor/platform/me
 ## <a name="alerts-on-traffic-manager-metrics"></a>Traffic Manager metrikákkal kapcsolatos riasztások
 A Traffic Manager metrikáinak feldolgozásán és megjelenítésén kívül Azure Monitor lehetővé teszi, hogy az ügyfelek a metrikákkal kapcsolatos riasztásokat konfiguráljanak és fogadnak. Kiválaszthatja, hogy milyen feltételeket kell teljesíteni ezekben a mérőszámokban, hogy riasztást kapjon, milyen gyakran kell figyelni ezeket a feltételeket, és hogy a riasztásokat hogyan kell elküldeni Önnek. További információ: [Azure monitor riasztások dokumentációja](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További információ a [Azure monitor szolgáltatásról](../azure-monitor/platform/metrics-supported.md)
 - Megtudhatja, hogyan [hozhat létre diagramot a Azure monitor használatával](../azure-monitor/platform/metrics-getting-started.md#create-your-first-metric-chart)

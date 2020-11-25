@@ -16,11 +16,11 @@ ms.date: 09/30/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9b25f2691646192faf4d4c133835b456038abd94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611928"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003735"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-in-the-azure-portal"></a>Felügyelt identitás egyszerű szolgáltatásnév megtekintése a Azure Portal
 
@@ -41,12 +41,12 @@ Ebből a cikkből megtudhatja, hogyan tekintheti meg egy felügyelt identitás e
 
 Ez az eljárás azt mutatja be, hogyan lehet megtekinteni egy virtuális gép egyszerű szolgáltatását, amelyen engedélyezve van a rendszer hozzárendelt identitása (az alkalmazásokra ugyanazok a lépések érvényesek).
 
-1. Kattintson a **Azure Active Directory** , majd a **vállalati alkalmazások**elemre.
-2. Az **alkalmazás típusa**területen válassza a **minden alkalmazás** lehetőséget, majd kattintson az **alkalmaz**gombra.
+1. Kattintson a **Azure Active Directory** , majd a **vállalati alkalmazások** elemre.
+2. Az **alkalmazás típusa** területen válassza a **minden alkalmazás** lehetőséget, majd kattintson az **alkalmaz** gombra.
 3. A keresési szűrő mezőbe írja be annak az Azure-erőforrásnak a nevét, amelyen engedélyezve van a felügyelt identitás, vagy válassza ki a megjelenített listából.
 
    ![Felügyelt identitás szolgáltatásnév megtekintése a portálon](./media/how-to-view-managed-identity-service-principal-portal/view-managed-identity-service-principal-portal.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Azure-erőforrások felügyelt identitásai](./overview.md)

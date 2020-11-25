@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
 ms.openlocfilehash: 390443874ea63a8661ef8baea627015fcf679719
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167916"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002697"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Linux rendszerű virtuális gép hibaelhárítása, ha nincs hozzáférés az Azure soros konzolhoz, és a lemez elrendezése az LVM (logikai kötet kezelője) használatával történik.
 
@@ -29,7 +29,7 @@ Ez a hibaelhárítási útmutató olyan forgatókönyvek esetén hasznos, amikor
 
 Készítsen pillanatképet az érintett virtuális gépről. 
 
-A pillanatkép ezután csatolva lesz egy **mentési** virtuális géphez. A **Pillanatképek**elvégzéséhez kövesse az [alábbi utasításokat.](../linux/snapshot-copy-managed-disk.md#use-azure-portal)
+A pillanatkép ezután csatolva lesz egy **mentési** virtuális géphez. A **Pillanatképek** elvégzéséhez kövesse az [alábbi utasításokat.](../linux/snapshot-copy-managed-disk.md#use-azure-portal)
 
 ## <a name="create-a-rescue-vm"></a>Mentési virtuális gép létrehozása
 Általában egy azonos vagy hasonló operációsrendszer-verzióval rendelkező mentési virtuális gép ajánlott. Az érintett virtuális gép azonos **régiójának** és **erőforráscsoportának** használata
@@ -65,9 +65,9 @@ A legtöbb esetben a csatolt pillanatkép-lemez a **/dev/SDC** két partíció *
 
 ![Fdisk](./media/chroot-logical-volume-manager/fdisk-output-sdc.png)
 
-A **\*** egy rendszerindító partíciót jelöl, mindkét partíciót csatlakoztatni kell.
+A * *\** _ rendszerindító partíciót jelez, mindkét partíciót csatlakoztatni kell.
 
-A **lsblk** parancs futtatásával tekintse meg az érintett virtuális gép LVMs
+Futtassa a _ *lsblk** parancsot az érintett virtuális gép LVMs megtekintéséhez.
 
 `lsblk`
 

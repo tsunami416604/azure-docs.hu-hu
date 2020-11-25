@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: b31931af7b8d1442a66333622a23d017ab7fb5a9
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 93aeb088f82cae6dde215792e399997b592a5c14
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658689"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96003973"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Folyamatos integráció és kézbesítés Azure Data Factory
 
@@ -636,6 +636,14 @@ Ha a gyárat éles környezetben helyezi üzembe, és egy olyan hibát tapasztal
 Tekintse meg az alábbi videót, amely részletesen ismerteti a környezetek gyors javítását ismertető videót. 
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4I7fi]
+
+## <a name="exposure-control-and-feature-flags"></a>A kitettség szabályozása és a funkció jelzői
+
+Ha egy csapaton dolgozik, vannak olyan példányok, amelyekben a módosításokat egyesítheti, de nem szeretné, hogy azok emelt szintű környezetekben fussanak, mint például a PROD és a QA. Ennek a forgatókönyvnek a kezeléséhez az ADF csapata [a DevOps koncepcióját javasolja a funkciók jelzői](https://docs.microsoft.com/azure/devops/migrate/phase-features-with-feature-flags?view=azure-devops)alapján. Az ADF-ben egyesítheti a [globális paramétereket](author-global-parameters.md) és az [IF Condition tevékenységgel](control-flow-if-condition-activity.md) a logikai készletek elrejtését ezen környezeti jelzők alapján.
+
+A szolgáltatás jelző beállításának megismeréséhez tekintse meg az alábbi videós oktatóanyagot:
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4IxdW]
 
 ## <a name="best-practices-for-cicd"></a>Ajánlott eljárások CI/CD-hez
 

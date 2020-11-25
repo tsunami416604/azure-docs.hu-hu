@@ -16,11 +16,11 @@ ms.date: 08/26/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7ad91c916a6134f2507e74df6e87478421a00f43
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977425"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003004"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Szerepkörök létrehozása, listázása, törlése vagy hozzárendelése egy felhasználóhoz rendelt felügyelt identitáshoz a Azure Portal használatával
 
@@ -38,11 +38,11 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre, listázhat, törölhet vagy
 Felhasználó által hozzárendelt felügyelt identitás létrehozásához a fióknak rendelkeznie kell a [felügyelt identitás közreműködői](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) szerepkör-hozzárendelésével.
 
 1. A felhasználó által hozzárendelt felügyelt identitás létrehozásához jelentkezzen be a [Azure Portalba](https://portal.azure.com) az Azure-előfizetéshez társított fiók használatával.
-2. A keresőmezőbe írja be a *felügyelt identitások*kifejezést, majd a **szolgáltatások**területen kattintson a **felügyelt identitások**elemre.
+2. A keresőmezőbe írja be a *felügyelt identitások* kifejezést, majd a **szolgáltatások** területen kattintson a **felügyelt identitások** elemre.
 3. Kattintson a **Hozzáadás** gombra, és adja meg az értékeket az alábbi mezőkben a **felhasználóhoz rendelt felügyelt identitás létrehozása** panelen:
     - **Előfizetés**: válassza ki azt az előfizetést, amely a felhasználó által hozzárendelt felügyelt identitást hozza létre.
     - **Erőforráscsoport**: válasszon ki egy erőforráscsoportot a felhasználó által hozzárendelt felügyelt identitás létrehozásához, vagy kattintson az **új létrehozása** lehetőségre egy új erőforráscsoport létrehozásához.
-    - **Régió**: válasszon egy régiót a felhasználó által hozzárendelt felügyelt identitás telepítéséhez, például az **USA nyugati**régiójában.
+    - **Régió**: válasszon egy régiót a felhasználó által hozzárendelt felügyelt identitás telepítéséhez, például az **USA nyugati** régiójában.
     - **Név**: Ez a felhasználó által hozzárendelt felügyelt identitás neve, például UAI1.
     ![Felhasználó által hozzárendelt felügyelt identitás létrehozása](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
 4. A módosítások áttekintéséhez kattintson a **felülvizsgálat + létrehozás** elemre.
@@ -53,7 +53,7 @@ Felhasználó által hozzárendelt felügyelt identitás létrehozásához a fi�
 Felhasználó által hozzárendelt felügyelt identitás listázásához/olvasásához a fióknak a [felügyelt identitás-kezelő](../../role-based-access-control/built-in-roles.md#managed-identity-operator) vagy a [felügyelt identitás közreműködői](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) szerepkör-hozzárendelésre van szüksége.
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) az Azure-előfizetéshez társított fiókkal a felhasználó által hozzárendelt felügyelt identitások listázásához.
-2. A keresőmezőbe írja be a *felügyelt identitások*kifejezést, majd a szolgáltatások területen kattintson a **felügyelt identitások**elemre.
+2. A keresőmezőbe írja be a *felügyelt identitások* kifejezést, majd a szolgáltatások területen kattintson a **felügyelt identitások** elemre.
 3. Az előfizetéshez tartozó felhasználó által hozzárendelt felügyelt identitások listáját adja vissza.  A felhasználó által hozzárendelt felügyelt identitás részleteinek megtekintéséhez kattintson a nevére.
 
 ![Felhasználó által hozzárendelt felügyelt identitások listázása](./media/how-to-manage-ua-identity-portal/list-user-assigned-managed-identity-portal.png)
@@ -65,8 +65,8 @@ Felhasználó által hozzárendelt felügyelt identitás törléséhez a fiókna
 A felhasználó által hozzárendelt identitás törlése nem távolítja el azt a virtuális gépről vagy erőforrásból, amelyhez hozzá lett rendelve.  Ha el szeretné távolítani a felhasználó által hozzárendelt identitást egy virtuális gépről, [távolítsa el a felhasználó által hozzárendelt felügyelt identitást egy virtuális](./qs-configure-portal-windows-vm.md#remove-a-user-assigned-managed-identity-from-a-vm)gépről.
 
 1. A felhasználó által hozzárendelt felügyelt identitás törléséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com) az Azure-előfizetéshez társított fiók használatával.
-2. Válassza ki a felhasználó által hozzárendelt felügyelt identitást, és kattintson a **Törlés**gombra.
-3. A megerősítés mezőben válassza az **Igen**lehetőséget.
+2. Válassza ki a felhasználó által hozzárendelt felügyelt identitást, és kattintson a **Törlés** gombra.
+3. A megerősítés mezőben válassza az **Igen** lehetőséget.
 
 ![Felhasználó által hozzárendelt felügyelt identitás törlése](./media/how-to-manage-ua-identity-portal/delete-user-assigned-managed-identity-portal.png)
 
@@ -75,13 +75,13 @@ A felhasználó által hozzárendelt identitás törlése nem távolítja el azt
 Ha szerepkört szeretne hozzárendelni egy felhasználóhoz rendelt felügyelt identitáshoz, a fióknak szüksége van a [felhasználói hozzáférés rendszergazdai](../../role-based-access-control/built-in-roles.md#user-access-administrator) szerepkör-hozzárendelésére.
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) az Azure-előfizetéshez társított fiókkal a felhasználó által hozzárendelt felügyelt identitások listázásához.
-2. A keresőmezőbe írja be a *felügyelt identitások*kifejezést, majd a szolgáltatások területen kattintson a **felügyelt identitások**elemre.
+2. A keresőmezőbe írja be a *felügyelt identitások* kifejezést, majd a szolgáltatások területen kattintson a **felügyelt identitások** elemre.
 3. Az előfizetéshez tartozó felhasználó által hozzárendelt felügyelt identitások listáját adja vissza.  Válassza ki azt a felhasználó által hozzárendelt felügyelt identitást, amelyhez szerepkört szeretne hozzárendelni.
-4. Válassza a **hozzáférés-vezérlés (iam)** lehetőséget, majd válassza a **szerepkör-hozzárendelés hozzáadása**elemet.
+4. Válassza a **hozzáférés-vezérlés (iam)** lehetőséget, majd válassza a **szerepkör-hozzárendelés hozzáadása** elemet.
 
    ![Felhasználó által hozzárendelt felügyelt identitás kezdete](./media/how-to-manage-ua-identity-portal/assign-role-screenshot1.png)
 
-5. A szerepkör-hozzárendelés hozzáadása panelen konfigurálja a következő értékeket, majd kattintson a **Mentés**gombra:
+5. A szerepkör-hozzárendelés hozzáadása panelen konfigurálja a következő értékeket, majd kattintson a **Mentés** gombra:
    - **Szerepkör** – a hozzárendelni kívánt szerepkör
    - **Hozzáférés hozzárendelése**  a felhasználóhoz rendelt felügyelt identitást hozzárendelő erőforráshoz
    - **Select** – a hozzáféréshez hozzárendelni kívánt tag

@@ -12,11 +12,11 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 96e679c0b284cc649dbde3fba1b640f4e09df05e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85201650"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001847"
 ---
 # <a name="quickstart-fivetran-with-data-warehouse"></a>Gyors útmutató: Fivetran az adattárházban 
 
@@ -82,5 +82,5 @@ Ha a Fivetran-fiókból szeretne csatlakozni az adattárházhoz, adja meg az ada
 * Gazdagép (a kiszolgáló neve).
 * Port.
 * Adatbázis.
-* Felhasználó (a felhasználónévnek ** \@ _server_name_ fivetran** kell lennie, ahol a *server_name* az Azure gazdagép URI-ja: ** _kiszolgálónév. \_ _Database.Windows.net**).
+* Felhasználó (a felhasználónévnek **\@ _server_name_ fivetran** kell lennie, ahol a *server_name* az Azure gazdagép URI-ja: **_kiszolgálónév. \__ Database.Windows.net**).
 * Jelszó.

@@ -14,11 +14,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 28169e43d0e6949a16cc56c7e7d5d91d6db1ef57
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636918"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003038"
 ---
 # <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>Az Adatmásolás és az adatáthelyezés Egyszerűen Azure Data Factory másolási varázslóval
 > [!NOTE]
@@ -62,7 +62,7 @@ A példában az SQL-lekérdezés a `Text.Format` függvényt és a `WindowStart`
 ![Kifejezések ellenőrzése](./media/data-factory-copy-wizard/validate-expressions.png)
 
 ### <a name="filtering-of-data-in-an-azure-blob-folder"></a>Az Azure Blob mappában található Adatszűrés
-A mappa elérési útja változóit használhatja a [rendszerváltozók](data-factory-functions-variables.md#data-factory-system-variables)alapján a futtatókörnyezetben meghatározott mappákból származó adatok másolásához. A támogatott változók a következők: **{Year}** , **{month}** , **{Day}** , **{Hour}** , **{minute** } és **{Custom}** . Példa: inputfolder/{Year}/{month}/{Day}.
+A mappa elérési útja változóit használhatja a [rendszerváltozók](data-factory-functions-variables.md#data-factory-system-variables)alapján a futtatókörnyezetben meghatározott mappákból származó adatok másolásához. A támogatott változók a következők: **{Year}**, **{month}**, **{Day}**, **{Hour}**, **{minute**} és **{Custom}**. Példa: inputfolder/{Year}/{month}/{Day}.
 
 Tegyük fel, hogy a bemeneti mappák a következő formátumban vannak:
 
@@ -73,7 +73,7 @@ Tegyük fel, hogy a bemeneti mappák a következő formátumban vannak:
 ...
 ```
 
-Kattintson a **fájl vagy mappa** **Tallózás** gombjára, keresse meg az egyik mappát (például 2016->03->01->02), és kattintson a **választás** gombra. Ekkor a szövegmezőben kell megjelennie `2016/03/01/02` . Most cserélje le a **2016** -et a { **Year}** , a **03** és a **{month}** , a **01** , a **{Day}** és a **02** ({ **Hour}** ) helyére, és nyomja le a TAB billentyűt. A következő négy változó formátumának kiválasztásához le kell látnia a legördülő listát:
+Kattintson a **fájl vagy mappa** **Tallózás** gombjára, keresse meg az egyik mappát (például 2016->03->01->02), és kattintson a **választás** gombra. Ekkor a szövegmezőben kell megjelennie `2016/03/01/02` . Most cserélje le a **2016** -et a { **Year}**, a **03** és a **{month}**, a **01** , a **{Day}** és a **02** ({ **Hour}**) helyére, és nyomja le a TAB billentyűt. A következő négy változó formátumának kiválasztásához le kell látnia a legördülő listát:
 
 ![Rendszerváltozók használata](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 
@@ -93,5 +93,5 @@ Az egyszeri másolási művelettel csak egyszer engedélyezhető az adatáthelye
 
 ![Ütemezési tulajdonságok](./media/data-factory-copy-wizard/scheduling-properties.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A másolási tevékenységgel rendelkező folyamat létrehozásához a Data Factory másolási varázslóval című cikkből megtudhatja, hogyan hozhat létre [folyamatokat a másolás varázsló](data-factory-copy-data-wizard-tutorial.md)segítségével.

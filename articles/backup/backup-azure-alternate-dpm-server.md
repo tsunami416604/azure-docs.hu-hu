@@ -4,11 +4,11 @@ description: Állítsa helyre a védelemmel ellátott adatokat Recovery Services
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.openlocfilehash: 0cce45fbaaedad4cfcee0cda768aae2fa294312b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378066"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002970"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Adatok helyreállítása az Azure Backup Serverről
 
@@ -42,16 +42,16 @@ Adatok helyreállítása Azure Backup Serverról:
     Az alsó ablaktáblán megjelenik a fájlok és mappák listája, amely bármely helyre megtekinthető és helyreállítható.
 
     ![Külső DPM-kiszolgáló helyreállítási pontjai](./media/backup-azure-alternate-dpm-server/external-dpm-recoverypoint.png)
-5. Kattintson a jobb gombbal a megfelelő elemre, és válassza a **helyreállítás**lehetőséget.
+5. Kattintson a jobb gombbal a megfelelő elemre, és válassza a **helyreállítás** lehetőséget.
 
     ![Külső DPM-helyreállítás](./media/backup-azure-alternate-dpm-server/recover.png)
-6. Tekintse át a **helyreállítás kijelölését**. Ellenőrizze a helyreállított biztonsági másolat adatait és időpontját, valamint azt a forrást, amelyről a biztonsági másolatot létrehozta. Ha a kijelölés helytelen, a **Mégse** gombra kattintva lépjen vissza a helyreállítás lapra a megfelelő helyreállítási pont kiválasztásához. Ha a kijelölés helyes, válassza a **tovább**lehetőséget.
+6. Tekintse át a **helyreállítás kijelölését**. Ellenőrizze a helyreállított biztonsági másolat adatait és időpontját, valamint azt a forrást, amelyről a biztonsági másolatot létrehozta. Ha a kijelölés helytelen, a **Mégse** gombra kattintva lépjen vissza a helyreállítás lapra a megfelelő helyreállítási pont kiválasztásához. Ha a kijelölés helyes, válassza a **tovább** lehetőséget.
 
     ![Külső DPM-helyreállítás összegzése](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-summary.png)
-7. Válassza **a helyreállítás másik helyre**lehetőséget. **Tallózással keresse** meg a megfelelő helyet a helyreállításhoz.
+7. Válassza **a helyreállítás másik helyre** lehetőséget. **Tallózással keresse** meg a megfelelő helyet a helyreállításhoz.
 
     ![Külső DPM-helyreállítás alternatív helye](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-alternate-location.png)
-8. Válassza a másolás, **kihagyás**vagy **felülírás** **létrehozásához**kapcsolódó lehetőséget.
+8. Válassza a másolás, **kihagyás** vagy **felülírás** **létrehozásához** kapcsolódó lehetőséget.
 
    * **Másolat létrehozása** – létrehoz egy másolatot a fájlról, ha a név ütközést okoz.
    * **Kihagyás** – ha a név ütközik, nem állítja helyre a fájlt, amely elhagyja az eredeti fájlt.
@@ -62,7 +62,7 @@ Adatok helyreállítása Azure Backup Serverról:
      Annak megállapítása, hogy az **értesítés** küldése sikeres volt-e, amint a helyreállítás sikeresen befejeződött.
 
      ![Külső DPM helyreállítási értesítései](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-notifications.png)
-9. Az **összegző** képernyő felsorolja az eddig kiválasztott beállításokat. Miután kiválasztotta a **helyreállítás**lehetőséget, az adatokat a rendszer a megfelelő helyszíni helyre állítja vissza.
+9. Az **összegző** képernyő felsorolja az eddig kiválasztott beállításokat. Miután kiválasztotta a **helyreállítás** lehetőséget, az adatokat a rendszer a megfelelő helyszíni helyre állítja vissza.
 
     ![Külső DPM helyreállítási beállítások összegzése](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-options-summary.png)
 
@@ -85,7 +85,7 @@ Adatok helyreállítása Azure Backup Serverról:
 | 3. |Nincs másik DPM-kiszolgáló regisztrálva ehhez a tárolóhoz. |**OK:** Nincsenek olyan Azure Backup kiszolgálók, amelyek regisztrálva vannak azon a tárolón, amelyről a helyreállítási kísérlet történt.<br>**Megoldás:** Ha más Azure Backup-kiszolgálók is regisztrálva vannak a Recovery Services-tárolóban, győződjön meg arról, hogy a legújabb Azure Backup-ügynök telepítve van.<br>Ha más Azure Backup-kiszolgálók is regisztrálva vannak a Recovery Services-tárolóban, várjon egy nappal a telepítés után, hogy elindítsa a helyreállítási folyamatot. Az éjszakai feladattal feltöltheti a felhőbe irányuló összes védett biztonsági mentés metaadatait. Az adathelyreállításhoz elérhetők lesznek. |
 | 4. |A megadott titkosítási jelszó nem egyezik a következő kiszolgálóhoz tartozó jelszóval: **\<server name>** |**OK:** Az Azure Backup Server által helyreállított adatokból az adatok titkosítása során használt titkosítási jelszó nem egyezik meg a megadott titkosítási jelszóval. Az ügynök nem tudja visszafejteni az adattitkosítást, így a helyreállítás sikertelen lesz.<br>**Megoldás:** Adja meg ugyanazt a titkosítási jelszót, amely ahhoz a Azure Backup Server van társítva, amelynek az adatai helyreállnak. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További gyakori kérdéseket is áttekinthet:
 

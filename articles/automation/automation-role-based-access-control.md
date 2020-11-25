@@ -7,11 +7,11 @@ ms.subservice: shared-capabilities
 ms.date: 07/21/2020
 ms.topic: conceptual
 ms.openlocfilehash: efdb195ad41b036f7f470884b3a441de1db7f7f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91716150"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003701"
 ---
 # <a name="manage-role-permissions-and-security"></a>Szerepköri engedélyek és biztonság kezelése
 
@@ -284,11 +284,11 @@ A következő szakasz bemutatja, hogyan konfigurálhatja az Azure RBAC az Automa
 
 #### <a name="add-a-new-user-and-assign-a-role"></a>Új felhasználó hozzáadása és szerepkör hozzárendelése
 
-1. A hozzáférés-vezérlés (IAM) lapon kattintson a **+ szerepkör-hozzárendelés hozzáadása**lehetőségre. Ez a művelet megnyitja a szerepkör-hozzárendelés hozzáadása lapot, ahol hozzáadhat egy felhasználót, csoportot vagy alkalmazást, és hozzárendelheti a megfelelő szerepkört.
+1. A hozzáférés-vezérlés (IAM) lapon kattintson a **+ szerepkör-hozzárendelés hozzáadása** lehetőségre. Ez a művelet megnyitja a szerepkör-hozzárendelés hozzáadása lapot, ahol hozzáadhat egy felhasználót, csoportot vagy alkalmazást, és hozzárendelheti a megfelelő szerepkört.
 
 2. Válasszon egy szerepkört az elérhető szerepkörök listájáról. Kiválaszthatja az Automation-fiók által támogatott elérhető beépített szerepköröket, illetve az Ön által definiált egyéni szerepkört is.
 
-3. Írja be annak a felhasználónak a nevét, akinek engedélyeket szeretne adni a **Select** mezőben. Válassza ki a felhasználót a listából, és kattintson a **Mentés**gombra.
+3. Írja be annak a felhasználónak a nevét, akinek engedélyeket szeretne adni a **Select** mezőben. Válassza ki a felhasználót a listából, és kattintson a **Mentés** gombra.
 
    ![Felhasználók hozzáadása](media/automation-role-based-access-control/automation-04-add-users.png)
 
@@ -309,7 +309,7 @@ A következő szakasz bemutatja, hogyan konfigurálhatja az Azure RBAC az Automa
 
 Eltávolíthat egy olyan felhasználó hozzáférési engedélyét, aki nem kezeli az Automation-fiókot, vagy akik már nem működnek a szervezeten belül. Alább láthatók egy felhasználó eltávolításának lépései:
 
-1. A hozzáférés-vezérlés (IAM) lapon válassza ki az eltávolítandó felhasználót, és kattintson az **Eltávolítás**gombra.
+1. A hozzáférés-vezérlés (IAM) lapon válassza ki az eltávolítandó felhasználót, és kattintson az **Eltávolítás** gombra.
 2. A hozzárendelés részleteit megjelenítő lapon kattintson az **Eltávolítás** gombra.
 3. Az **Igen** gombra kattintva erősítse meg az eltávolítást.
 
@@ -431,7 +431,7 @@ Ha a Runbook hatókörében az Automation-operátori szerepkörhöz hozzárendel
 
 ![Csak az indításhoz van hozzáférése](media/automation-role-based-access-control/automation-only-start.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha többet szeretne megtudni az Azure RBAC a PowerShell használatával kapcsolatban, tekintse meg az [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása Azure PowerShell használatával](../role-based-access-control/role-assignments-powershell.md)című részt.
 * A runbookok típusaival kapcsolatos részletekért lásd: [Azure Automation runbook-típusok](automation-runbook-types.md).

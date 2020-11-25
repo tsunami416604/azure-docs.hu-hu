@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 07/06/2020
 ms.author: genli
 ms.openlocfilehash: 456aa225fa8eed47ca794c54e61b77a30c93fa9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85983223"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002612"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>Az Azure-beli virtuális gép ügynökének telepítése kapcsolat nélküli módban 
 
@@ -39,7 +39,7 @@ A virtuálisgép-ügynök offline módban történő telepítéséhez kövesse a
 
 1. Készítsen pillanatképet az érintett virtuális gép operációsrendszer-lemezéről, hozzon létre egy lemezt a pillanatképből, majd csatolja a lemezt egy hibakeresési virtuális géphez. További információ: Windows rendszerű [virtuális gép hibáinak elhárítása az operációsrendszer-lemez egy helyreállítási virtuális géphez való csatolásával a Azure Portal használatával](troubleshoot-recovery-disks-portal-windows.md). A klasszikus virtuális gép esetében törölje a virtuális gépet, és tartsa meg az operációsrendszer-lemezt, majd csatolja az operációsrendszer-lemezt a virtuális gép hibakereséséhez.
 
-2.  Kapcsolódjon a hibakereső virtuális géphez. Nyissa meg a **Számítógép-kezelés**  >  **Lemezkezelés**programot. Ellenőrizze, hogy az operációsrendszer-lemez online állapotban van-e, és hogy a meghajtóbetűjelek hozzá vannak-e rendelve a lemezpartíciókhöz.
+2.  Kapcsolódjon a hibakereső virtuális géphez. Nyissa meg a **Számítógép-kezelés**  >  **Lemezkezelés** programot. Ellenőrizze, hogy az operációsrendszer-lemez online állapotban van-e, és hogy a meghajtóbetűjelek hozzá vannak-e rendelve a lemezpartíciókhöz.
 
 ### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>2. lépés: az operációsrendszer-lemez módosítása az Azure VM-ügynök telepítéséhez
 
@@ -49,7 +49,7 @@ A virtuálisgép-ügynök offline módban történő telepítéséhez kövesse a
 
 3.  Indítsa el a **Beállításszerkesztőt** (regedit.exe).
 
-4.  Válassza ki a **HKEY_LOCAL_MACHINE** kulcsot. A menüben válassza a **fájl**  >  **Load struktúra**elemet:
+4.  Válassza ki a **HKEY_LOCAL_MACHINE** kulcsot. A menüben válassza a **fájl**  >  **Load struktúra** elemet:
 
     ![A struktúra betöltése](./media/install-vm-agent-offline/load-hive.png)
 
@@ -91,9 +91,9 @@ A virtuálisgép-ügynök offline módban történő telepítéséhez kövesse a
 
              ![Vendégügynök mappa másolása](./media/install-vm-agent-offline/copy-files.png)
 
-9.  Válassza a **BROKENSYSTEM**lehetőséget. A menüből válassza ki a **fájl**  >  **kitöltése struktúrát**.
+9.  Válassza a **BROKENSYSTEM** lehetőséget. A menüből válassza ki a **fájl**  >  **kitöltése struktúrát**.
 
-10.  Válassza a **BROKENSOFTWARE**lehetőséget. A menüből válassza ki a **fájl**  >  **kitöltése struktúrát**.
+10.  Válassza a **BROKENSOFTWARE** lehetőséget. A menüből válassza ki a **fájl**  >  **kitöltése struktúrát**.
 
 11.  Válassza le az operációsrendszer-lemezt, majd [módosítsa az érintett virtuális gép operációsrendszer-lemezét](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm). A klasszikus virtuális gép esetében hozzon létre egy új virtuális gépet a javított operációsrendszer-lemezzel.
 

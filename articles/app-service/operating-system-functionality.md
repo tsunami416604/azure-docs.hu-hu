@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
 ms.openlocfilehash: 949e408544e25cb55622cf2a1b1d2dddb92350a6
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150159"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001507"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Operációs rendszer funkciójának Azure App Service
 Ez a cikk a [Azure app Serviceon](./overview.md)futó összes Windows-alkalmazás számára elérhető általános alapkonfiguráció operációs rendszer funkcióit ismerteti. Ez a funkció magában foglalja a fájl-, hálózat-és beállításjegyzék-hozzáférést, valamint a diagnosztikai naplókat és eseményeket. 
@@ -51,7 +51,7 @@ A App Service egy olyan szolgáltatás, amely az Azure Pásti (platform as Servi
 - Olyan alkalmazás-meghajtó, amely kizárólag App Service által használt Azure Package cspkg-fájlokat tartalmaz (és nem érhető el az ügyfelek számára)
 - "User" meghajtó (a C:\ meghajtó), amelynek mérete a virtuális gép méretétől függően változik. 
 
-Fontos, hogy az alkalmazás növekedésével figyelje a lemez kihasználtságát. Ha elérte a lemezkvóta elérését, az hatással lehet az alkalmazására. Példa: 
+Fontos, hogy az alkalmazás növekedésével figyelje a lemez kihasználtságát. Ha elérte a lemezkvóta elérését, az hatással lehet az alkalmazására. Például: 
 
 - Az alkalmazás olyan hibát okozhat, amely nem elegendő helyet jelez a lemezen.
 - Előfordulhat, hogy a kudu-konzolra való tallózáskor lemezhibák jelenhetnek meg.
@@ -65,7 +65,7 @@ App Service egyik egyedi aspektusa, amely az alkalmazások üzembe helyezését 
 
 App Service belül az egyes adatközpontokban létrehozott UNC-megosztások száma. Az egyes adatközpontokban lévő összes ügyfél felhasználói tartalmának százalékos aránya az egyes UNC-megosztásokhoz van lefoglalva. Emellett az egyetlen ügyfél előfizetéséhez tartozó összes fájl tartalma mindig ugyanarra az UNC-megosztásra kerül. 
 
-Az Azure-szolgáltatások működése miatt az UNC-megosztás üzemeltetéséhez felelős adott virtuális gép idővel változhat. Garantáljuk, hogy az UNC-megosztásokat a különböző virtuális gépek csatlakoztatják, ahogy azokat a normál Azure-műveletek során felhasználják. Emiatt az alkalmazások soha nem hajtanak végre olyan, nehezen kódolt feltételezéseket, amelyekkel az UNC-fájl elérési útjában lévő információk stabilak maradnak az idő múlásával. Ehelyett a App Service által biztosított kényelmes *faux* Absolute Path **D:\home\site** kell használniuk. Ez a faux abszolút elérési út egy olyan hordozható, alkalmazás-és felhasználói agnosztikus módszert biztosít, amely az egyik saját alkalmazására hivatkozik. A **D:\home\site**használatával az egyik átviheti a megosztott fájlokat az alkalmazásból az alkalmazásba anélkül, hogy új abszolút elérési utat kellene konfigurálnia az egyes átvitelekhez.
+Az Azure-szolgáltatások működése miatt az UNC-megosztás üzemeltetéséhez felelős adott virtuális gép idővel változhat. Garantáljuk, hogy az UNC-megosztásokat a különböző virtuális gépek csatlakoztatják, ahogy azokat a normál Azure-műveletek során felhasználják. Emiatt az alkalmazások soha nem hajtanak végre olyan, nehezen kódolt feltételezéseket, amelyekkel az UNC-fájl elérési útjában lévő információk stabilak maradnak az idő múlásával. Ehelyett a App Service által biztosított kényelmes *faux* Absolute Path **D:\home\site** kell használniuk. Ez a faux abszolút elérési út egy olyan hordozható, alkalmazás-és felhasználói agnosztikus módszert biztosít, amely az egyik saját alkalmazására hivatkozik. A **D:\home\site** használatával az egyik átviheti a megosztott fájlokat az alkalmazásból az alkalmazásba anélkül, hogy új abszolút elérési utat kellene konfigurálnia az egyes átvitelekhez.
 
 <a id="TypesOfFileAccess"></a>
 

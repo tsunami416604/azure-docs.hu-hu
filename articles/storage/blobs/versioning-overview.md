@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 48078ed06e36a33b10ee2d761a249159d14c6220
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e2d74519b9adf9a74e5af180a3da28918a9a8dab
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444503"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96001881"
 ---
 # <a name="blob-versioning"></a>BLOB verziószámozása
 
@@ -128,7 +128,7 @@ A következő ábra azt mutatja be, hogyan lehet a blobokat a verziószámozást
 
 ## <a name="blob-versioning-and-soft-delete"></a>BLOB verziószámozása és a Soft delete
 
-A blob verziószámozása és a blob Soft delete együttműködve biztosítja az optimális adatvédelmet. Ha engedélyezi a helyreállítható törlést, megadhatja, hogy az Azure Storage mennyi ideig őrizze meg a törölt blobokat. A rendszer minden olyan helyreállított blob-verziót megtart a rendszeren, amely nem törölhető a törlés utáni megőrzési időszakon belül. A blob Soft delete szolgáltatással kapcsolatos további információkért lásd az [Azure Storage-Blobok helyreállítható törlését](storage-blob-soft-delete.md)ismertető témakört.
+A blob verziószámozása és a blob Soft delete együttműködve biztosítja az optimális adatvédelmet. Ha engedélyezi a helyreállítható törlést, megadhatja, hogy az Azure Storage mennyi ideig őrizze meg a törölt blobokat. A rendszer minden olyan helyreállított blob-verziót megtart a rendszeren, amely nem törölhető a törlés utáni megőrzési időszakon belül. A blob Soft delete szolgáltatással kapcsolatos további információkért lásd az [Azure Storage-Blobok helyreállítható törlését](./soft-delete-blob-overview.md)ismertető témakört.
 
 ### <a name="deleting-a-blob-or-version"></a>BLOB vagy verzió törlése
 
@@ -187,7 +187,7 @@ A blob verziószámozása úgy lett kialakítva, hogy az adatok véletlen vagy r
 
 A következő táblázat bemutatja, hogy mely Azure RBAC-műveletek támogatják a Blobok vagy a Blobok verzióinak törlését.
 
-| Description | Blob service művelet | Az Azure RBAC-adatművelet szükséges | Azure beépített szerepkör-támogatás |
+| Leírás | Blob service művelet | Az Azure RBAC-adatművelet szükséges | Azure beépített szerepkör-támogatás |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | A blob aktuális verziójának törlése | Delete Blob | **Microsoft. Storage/storageAccounts/blobServices/containers/Blobok/delete** | Storage-blobadatok közreműködője |
 | Verzió törlése | Delete Blob | **Microsoft. Storage/storageAccounts/blobServices/containers/Blobok/deleteBlobVersion/Action** | Storage-blobadatok tulajdonosa |
@@ -297,4 +297,4 @@ A következő táblázat ismerteti a nem megfelelően törölt Blobok számláz�
 
 - [BLOB-verziószámozás engedélyezése és kezelése](versioning-enable.md)
 - [BLOB pillanatképének létrehozása](/rest/api/storageservices/creating-a-snapshot-of-a-blob)
-- [Az Azure Storage-Blobok Soft delete](storage-blob-soft-delete.md)
+- [Az Azure Storage-Blobok Soft delete](./soft-delete-blob-overview.md)

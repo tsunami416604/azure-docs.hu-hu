@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: c17d3c7cd2cf6fe5bca725cf94344b2d2cb50bf2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88271141"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001524"
 ---
 # <a name="configure-storage"></a>A tárolás konfigurálása
 
@@ -49,7 +49,7 @@ A következő lépésekkel adhat hozzá egy NAS Core Filer-t:
 
 1. Kattintson az **alapszintű Filer**  >  **Manage Core filers** elemre a bal oldalon.
 
-1. Kattintson a **Létrehozás** lehetőségre.
+1. Kattintson a **Létrehozás** gombra.
 
    ![Képernyőkép az új alapszintű Filer hozzáadása oldalról, amely kurzort mutat a létrehozás gombon](media/avere-vfxt-add-core-filer-start.png)
 
@@ -57,12 +57,12 @@ A következő lépésekkel adhat hozzá egy NAS Core Filer-t:
 
    * Nevezze el a Core Filer nevet.
    * Ha elérhető, adjon meg egy teljes tartománynevet (FQDN). Ellenkező esetben adjon meg egy IP-címet vagy állomásnevet, amely az alapszintű Filer megoldásra lett feloldva.
-   * Válassza ki a Filer osztályt a listából. Ha nem biztos, válassza az **egyéb**lehetőséget.
+   * Válassza ki a Filer osztályt a listából. Ha nem biztos, válassza az **egyéb** lehetőséget.
 
      ![Képernyőkép az új alapszintű Filer hozzáadása oldal alapszintű Filer-nevével és teljes tartománynevével](media/avere-vfxt-add-core-filer.png)
   
    * Kattintson a **tovább** gombra, és válassza ki a gyorsítótárazási házirendet.
-   * Kattintson a **Filer hozzáadása**elemre.
+   * Kattintson a **Filer hozzáadása** elemre.
    * További részletekért tekintse meg az [új NAS Core Filer hozzáadását](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_nas.html) a avere-fürt beállítási útmutatójában.
 
 Ezután folytassa a [csomópont létrehozásával](#create-a-junction).  
@@ -111,15 +111,15 @@ Ha a fürt létrehozása után szeretne BLOB-tárolót hozzáadni, kövesse az a
 
    ![Új Storage-fiók Azure Portal](media/avere-vfxt-new-storage-acct.png)
 
-1. Hozzon létre egy új BLOB-tárolót: kattintson a **tárolók** elemre az Áttekintés lapon, majd kattintson a **+ tároló**elemre. Használja a tároló nevét, és győződjön meg arról, hogy a hozzáférés **privát**értékre van állítva.
+1. Hozzon létre egy új BLOB-tárolót: kattintson a **tárolók** elemre az Áttekintés lapon, majd kattintson a **+ tároló** elemre. Használja a tároló nevét, és győződjön meg arról, hogy a hozzáférés **privát** értékre van állítva.
 
    ![Storage-Blobok oldal a + Container gombbal, és egy előugró oldalon létrehozott új tároló](media/avere-vfxt-new-blob.png)
 
-1. Az Azure Storage-fiók kulcsának beszerzéséhez kattintson a **Beállítások**területen a **hozzáférési kulcsok** elemre. Másolja a megadott kulcsok egyikét.
+1. Az Azure Storage-fiók kulcsának beszerzéséhez kattintson a **Beállítások** területen a **hozzáférési kulcsok** elemre. Másolja a megadott kulcsok egyikét.
 
    ![Azure Portal grafikus felhasználói felület a kulcs másolásához](media/avere-vfxt-copy-storage-key.png)
 
-1. Nyissa meg a fürt avere Vezérlőpultját. Kattintson a **Beállítások**elemre, majd nyissa meg a **fürt**  >  **Felhőbeli hitelesítő adatait** a bal oldali navigációs ablaktáblán. A Felhőbeli hitelesítő adatok lapon kattintson a **hitelesítő adatok hozzáadása**lehetőségre.
+1. Nyissa meg a fürt avere Vezérlőpultját. Kattintson a **Beállítások** elemre, majd nyissa meg a **fürt**  >  **Felhőbeli hitelesítő adatait** a bal oldali navigációs ablaktáblán. A Felhőbeli hitelesítő adatok lapon kattintson a **hitelesítő adatok hozzáadása** lehetőségre.
 
    ![Kattintson a hitelesítő adatok hozzáadása gombra a Felhőbeli hitelesítő adatok konfigurálása lapon](media/avere-vfxt-new-credential-button.png)
 
@@ -137,24 +137,24 @@ Ha a fürt létrehozása után szeretne BLOB-tárolót hozzáadni, kövesse az a
 
    ![A Felhőbeli hitelesítő adatok űrlapja befejeződött a avere Vezérlőpultján](media/avere-vfxt-new-credential-submit.png)
 
-1. Ezután hozza létre a Core Filer-t. A avere Vezérlőpultjának bal oldalán kattintson az **alapszintű Filer**  >   **Manage Core filers**elemre.
+1. Ezután hozza létre a Core Filer-t. A avere Vezérlőpultjának bal oldalán kattintson az **alapszintű Filer**  >   **Manage Core filers** elemre.
 
 1. Kattintson a **Létrehozás** gombra a **Core filers beállítások kezelése** lapon.
 
 1. Töltse ki a varázslót:
 
-   * Válasszon ki egy **felhő**típusú Filer-típust.
-   * Nevezze el az új Core Filer nevet, és kattintson a **tovább**gombra.
+   * Válasszon ki egy **felhő** típusú Filer-típust.
+   * Nevezze el az új Core Filer nevet, és kattintson a **tovább** gombra.
    * Fogadja el az alapértelmezett gyorsítótár-házirendet, és folytassa a harmadik oldallal.
-   * A **szolgáltatás típusa**területen válassza az **Azure Storage**lehetőséget.
+   * A **szolgáltatás típusa** területen válassza az **Azure Storage** lehetőséget.
    * Válassza ki a korábban létrehozott hitelesítő adatokat.
    * A **gyűjtő tartalmának** **üresre** állítása
    * **Tanúsítvány ellenőrzésének** módosítása **Letiltva**
    * A **tömörítési mód** módosítása a **none** értékre
    * Kattintson a **Tovább** gombra.
    * A negyedik lapon adja meg a tároló nevét a **gyűjtő neve** *storage_account_name* / *container_nameként*.
-   * Szükség esetén a **titkosítás típusát** állítsa **nincs**értékre.  Az Azure Storage alapértelmezés szerint titkosítva van.
-   * Kattintson a **Filer hozzáadása**elemre.
+   * Szükség esetén a **titkosítás típusát** állítsa **nincs** értékre.  Az Azure Storage alapértelmezés szerint titkosítva van.
+   * Kattintson a **Filer hozzáadása** elemre.
 
    További részletekért olvassa el az [új Cloud Core Filer hozzáadását](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html>) a avere-fürt konfigurációs útmutatójában.
 
@@ -172,7 +172,7 @@ A csatlakozási pontokról további információt a [avere-fürt konfigurációs
 
 Kövesse az alábbi lépéseket a avere Vezérlőpult felületén:
 
-* Kattintson **VServer**  >  a bal felső sarokban található VServer**névtér** elemre.
+* Kattintson **VServer**  >  a bal felső sarokban található VServer **névtér** elemre.
 * Adja meg a névtér elérési útját a (z)/(továbbítás perjel) kezdettel, például: ``/vfxt/data`` .
 * Válassza ki az alapvető Filer-t.
 * Válassza ki az alapszintű Filer-exportálást.
@@ -184,7 +184,7 @@ Az összekapcsolás néhány másodperc múlva megjelenik. Szükség szerint hoz
 
 Az elágazás létrehozása után az ügyfelek a névtér elérési útját használják a fájloknak a tárolási rendszerből való eléréséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Avere vFXT-fürt csatlakoztatása](avere-vfxt-mount-clients.md)
 * Az adatáthelyezés hatékony módjai az [új blob-tárolóba](avere-vfxt-data-ingest.md)

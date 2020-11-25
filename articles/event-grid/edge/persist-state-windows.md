@@ -8,11 +8,11 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: f38e23a3af1e2c81ee012a4f3c268cbff3fc1bee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86171465"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002817"
 ---
 # <a name="persist-state-in-windows"></a>Állapot megőrzése a Windowsban
 
@@ -35,7 +35,7 @@ A [Docker-kötetek](https://docs.docker.com/storage/volumes/) használatával me
     docker -H npipe:////./pipe/iotedge_moby_engine volume create <your-volume-name-here>
     ```
 
-    Például:
+    Példa:
 
    ```sh
    docker -H npipe:////./pipe/iotedge_moby_engine volume create myeventgridvol
@@ -46,7 +46,7 @@ A [Docker-kötetek](https://docs.docker.com/storage/volumes/) használatával me
     docker -H npipe:////./pipe/iotedge_moby_engine volume inspect <your-volume-name-here>
     ```
 
-    Például:
+    Példa:
 
    ```sh
    docker -H npipe:////./pipe/iotedge_moby_engine volume inspect myeventgridvol
@@ -69,15 +69,15 @@ A [Docker-kötetek](https://docs.docker.com/storage/volumes/) használatával me
    ```
 1. Adja hozzá a **felhasználók** csoportot a **csatlakoztatási pont** által mutatott értékhez a következőképpen:
     1. Indítsa el a fájlkezelőt.
-    1. Navigáljon a **csatlakoztatási pont**által mutatott mappára.
-    1. Kattintson a jobb gombbal, majd válassza a **Tulajdonságok**lehetőséget.
+    1. Navigáljon a **csatlakoztatási pont** által mutatott mappára.
+    1. Kattintson a jobb gombbal, majd válassza a **Tulajdonságok** lehetőséget.
     1. Válassza a **Biztonság** elemet.
-    1. A * csoport vagy felhasználó neve területen válassza a **Szerkesztés**lehetőséget.
-    1. Válassza a **Hozzáadás**lehetőséget, írja be `Users` a Névellenőrzés lehetőséget, majd kattintson **az OK gombra**. **Check Names**
-    1. A *Felhasználók engedélyei*területen válassza a **módosítás**lehetőséget, majd kattintson **az OK gombra**.
+    1. A * csoport vagy felhasználó neve területen válassza a **Szerkesztés** lehetőséget.
+    1. Válassza a **Hozzáadás** lehetőséget, írja be `Users` a Névellenőrzés lehetőséget, majd kattintson **az OK gombra**. **Check Names**
+    1. A *Felhasználók engedélyei* területen válassza a **módosítás** lehetőséget, majd kattintson **az OK gombra**.
 1. **Kötések** használata a kötet csatlakoztatásához és Event Grid modul újbóli üzembe helyezéséhez Azure Portal
 
-   Például:
+   Példa:
 
     ```json
         {
@@ -113,7 +113,7 @@ A [Docker-kötetek](https://docs.docker.com/storage/volumes/) használatával me
    >Ne módosítsa a kötési érték második részét. A modul egy adott helyére mutat. A Windows Event Grid moduljának a következőnek kell lennie **: C: \\ app \\ metadataDb**.
 
 
-    Például:
+    Példa:
 
     ```json
     {
@@ -156,7 +156,7 @@ Kötet csatlakoztatása helyett létrehozhat egy könyvtárat a gazdagépen, és
    mkdir <your-directory-name-here>
    ```
 
-   Például:
+   Példa:
 
    ```sh
    mkdir C:\myhostdir
@@ -176,7 +176,7 @@ Kötet csatlakoztatása helyett létrehozhat egy könyvtárat a gazdagépen, és
     >[!IMPORTANT]
     >Ne módosítsa a kötési érték második részét. A modul egy adott helyére mutat. A Windows Event Grid moduljának a következőnek kell lennie **: C: \\ app \\ metadataDb**.
 
-    Például:
+    Példa:
 
     ```json
     {

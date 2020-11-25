@@ -14,11 +14,11 @@ ms.date: 10/26/2020
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 55a27dbb6c2ec3569bae9d6fb96fcd8087f08daf
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637666"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001677"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Azure Data Factory másolási varázsló
 
@@ -63,7 +63,7 @@ Az alábbi képernyőfelvételen egy SQL-lekérdezés látható a `Text.Format` 
 ![Kifejezések ellenőrzése](./media/data-factory-copy-wizard/validate-expressions.png)
 
 ### <a name="filtering-of-data-in-an-azure-blob-folder"></a>Az Azure Blob mappában található Adatszűrés
-A mappa elérési útja változóit használhatja a [rendszerváltozók](data-factory-functions-variables.md#data-factory-system-variables)alapján a futtatókörnyezetben meghatározott mappákból származó adatok másolásához. A támogatott változók a következők: **{Year}** , **{month}** , **{Day}** , **{Hour}** , **{minute** } és **{Custom}** . Például: inputfolder/{Year}/{month}/{Day}.
+A mappa elérési útja változóit használhatja a [rendszerváltozók](data-factory-functions-variables.md#data-factory-system-variables)alapján a futtatókörnyezetben meghatározott mappákból származó adatok másolásához. A támogatott változók a következők: **{Year}**, **{month}**, **{Day}**, **{Hour}**, **{minute**} és **{Custom}**. Például: inputfolder/{Year}/{month}/{Day}.
 
 Tegyük fel, hogy a bemeneti mappák a következő formátumban vannak:
 
@@ -74,7 +74,7 @@ Tegyük fel, hogy a bemeneti mappák a következő formátumban vannak:
 ...
 ```
 
-Kattintson a **fájl vagy mappa** **Tallózás** gombjára, keresse meg az egyik mappát (például 2016->03->01->02), és kattintson a **választás** gombra. Ekkor a szövegmezőben kell megjelennie `2016/03/01/02` . Most cserélje le a **2016** -et a { **Year}** , a **03** és a **{month}** , a **01** és a **{Day}** , valamint a **02** és az **{Hour}** kifejezésre, és nyomja meg a **Tab** billentyűt. A következő négy változó formátumának kiválasztásához le kell látnia a legördülő listát:
+Kattintson a **fájl vagy mappa** **Tallózás** gombjára, keresse meg az egyik mappát (például 2016->03->01->02), és kattintson a **választás** gombra. Ekkor a szövegmezőben kell megjelennie `2016/03/01/02` . Most cserélje le a **2016** -et a { **Year}**, a **03** és a **{month}**, a **01** és a **{Day}**, valamint a **02** és az **{Hour}** kifejezésre, és nyomja meg a **Tab** billentyűt. A következő négy változó formátumának kiválasztásához le kell látnia a legördülő listát:
 
 ![Rendszerváltozók használata](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 
@@ -98,24 +98,24 @@ Ez a szakasz a másolás varázsló gyakori hibaelhárítási módszereit vizsg�
 
 ### <a name="error-code-unable-to-validate-in-copy-wizard"></a>Hibakód: nem lehet érvényesíteni a másolási varázslóban
 
-- **Tünetek** : a másolás varázsló első lépésében a "nem sikerült érvényesíteni" figyelmeztető üzenet jelenik meg.
-- **Okok** : Ez akkor fordulhat elő, ha a harmadik féltől származó cookie-k le vannak tiltva.
-- **Megoldás** : 
+- **Tünetek**: a másolás varázsló első lépésében a "nem sikerült érvényesíteni" figyelmeztető üzenet jelenik meg.
+- **Okok**: Ez akkor fordulhat elő, ha a harmadik féltől származó cookie-k le vannak tiltva.
+- **Megoldás**: 
     - Az Internet Explorer vagy a Microsoft Edge böngésző használata.
-    - Ha Chrome böngészőt használ, kövesse az alábbi utasításokat a cookie-k hozzáadásához a *microsoftonline.com* és a *Windows.net* .
+    - Ha Chrome böngészőt használ, kövesse az alábbi utasításokat a cookie-k hozzáadásához a *microsoftonline.com* és a *Windows.net*.
         1.  Nyissa meg a Chrome böngészőt.
         2.  Kattintson a csavarkulcsra vagy három sorra a jobb oldalon (a Google Chrome testreszabása és szabályozása).
         3.  Kattintson a **Beállítások** elemre.
         4.  Keresse meg a **cookie-kat** , vagy az **Adatvédelem** területen válassza a speciális beállítások lehetőséget.
         5.  Válassza a **tartalom beállításai** lehetőséget.    
-        6.  A cookie-kat úgy kell beállítani, hogy engedélyezzék a helyi adatértékek **beállítását (ajánlott)** .
+        6.  A cookie-kat úgy kell beállítani, hogy engedélyezzék a helyi adatértékek **beállítását (ajánlott)**.
         7.  Kattintson a **kivételek kezelése** lehetőségre. Az **állomásnév minta** területen adja meg a következőt, és győződjön meg arról, hogy az **Engedélyezés** a viselkedési készlet.
             - login.microsoftonline.com
             - login.windows.net
         8.  Zárjuk be a böngészőt, és indítsa újra a programot.
     - Ha Firefox böngészőt használ, a cookie-k hozzáadásához kövesse az alábbi utasításokat.
         1. A Firefox menüben válassza az **eszközök**  >  **Beállítások** menüpontot.
-        2. Az **adatvédelmi**  >  **Előzmények** területen láthatja, hogy az aktuális beállítás az **Előzmények egyéni beállításait használja** .
+        2. Az **adatvédelmi**  >  **Előzmények** területen láthatja, hogy az aktuális beállítás az **Előzmények egyéni beállításait használja**.
         3. A **harmadik féltől származó cookie-k elfogadásakor** előfordulhat, hogy a jelenlegi beállítás **soha nem** fog megjelenni, majd a jobb oldalon található **kivételek** lehetőségre kattintva adja hozzá a következő helyeket.
             - https://login.microsoftonline.com
             - https://login.windows.net
@@ -124,13 +124,13 @@ Ez a szakasz a másolás varázsló gyakori hibaelhárítási módszereit vizsg�
 
 ### <a name="error-code-unable-to-open-login-page-and-enter-password"></a>Hibakód: nem lehet megnyitni a bejelentkezési oldalt, és meg kell adni a jelszót
 
-- **Tünetek** : a másolási varázsló átirányítja a bejelentkezési oldalra, de a bejelentkezési oldal nem jelenik meg sikeresen.
-- **Okok** : Ez a probléma akkor fordulhat elő, ha a hálózati környezetet az Office-hálózatról a otthoni hálózatra módosította. Vannak gyorsítótárak a böngészőkben. 
-- **Megoldás** : 
+- **Tünetek**: a másolási varázsló átirányítja a bejelentkezési oldalra, de a bejelentkezési oldal nem jelenik meg sikeresen.
+- **Okok**: Ez a probléma akkor fordulhat elő, ha a hálózati környezetet az Office-hálózatról a otthoni hálózatra módosította. Vannak gyorsítótárak a böngészőkben. 
+- **Megoldás**: 
     1.  Zárjuk be a böngészőt, és próbálkozzon újra. Ha a probléma továbbra is fennáll, folytassa a következő lépéssel.   
     2.  Ha Internet Explorer böngészőt használ, próbálja meg privát módban megnyitni (nyomja le a CTRL + SHIFT + "P" billentyűkombinációt). Ha Chrome böngészőt használ, próbálja megnyitni az inkognitóban módban (nyomja meg a CTRL + SHIFT + "N" billentyűkombinációt). Ha a probléma továbbra is fennáll, folytassa a következő lépéssel. 
     3.  Próbáljon másik böngészőt használni. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A másolási tevékenységgel rendelkező folyamat létrehozásához a Data Factory másolási varázslóval című cikkből megtudhatja, hogyan hozhat létre [folyamatokat a másolás varázsló](data-factory-copy-data-wizard-tutorial.md)segítségével.

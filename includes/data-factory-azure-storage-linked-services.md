@@ -5,19 +5,19 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 37917e0ed663675677f1d0452b5796120ca2694e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75466730"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001732"
 ---
 ### <a name="azure-storage-linked-service"></a>Azure Storage társított szolgáltatás
-Az **Azure Storage társított szolgáltatása** lehetővé teszi, hogy egy Azure Storage-fiókot egy Azure-beli adatgyárhoz társítson a **fiók kulcsa**segítségével, amely az Azure Storage-hoz való globális hozzáféréssel rendelkező adatelőállítót biztosít. Az alábbi táblázat az Azure Storage társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
+Az **Azure Storage társított szolgáltatása** lehetővé teszi, hogy egy Azure Storage-fiókot egy Azure-beli adatgyárhoz társítson a **fiók kulcsa** segítségével, amely az Azure Storage-hoz való globális hozzáféréssel rendelkező adatelőállítót biztosít. Az alábbi táblázat az Azure Storage társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus |A Type tulajdonságot a következőre kell beállítani: **AzureStorage** |Igen |
-| connectionString |Itt adhatja meg az Azure Storage-hoz a connectionString tulajdonsághoz való kapcsolódáshoz szükséges adatokat. |Igen |
+| típus |A Type tulajdonságot a következőre kell beállítani: **AzureStorage** |Yes |
+| connectionString |Itt adhatja meg az Azure Storage-hoz a connectionString tulajdonsághoz való kapcsolódáshoz szükséges adatokat. |Yes |
 
 További információ a Storage-fiók hozzáférési kulcsainak beolvasásáról: a [Storage-fiók hozzáférési kulcsainak kezelése](../articles/storage/common/storage-account-keys-manage.md).
 
@@ -49,8 +49,8 @@ Az Azure Storage SAS társított szolgáltatása lehetővé teszi egy Azure Stor
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus |A Type tulajdonságot a következőre kell beállítani: **AzureStorageSas** |Igen |
-| sasUri |Az Azure Storage-erőforrásokhoz, például a blobhoz, a tárolóhoz vagy a táblához válassza a közös hozzáférési aláírás URI-JÁT.  |Igen |
+| típus |A Type tulajdonságot a következőre kell beállítani: **AzureStorageSas** |Yes |
+| sasUri |Az Azure Storage-erőforrásokhoz, például a blobhoz, a tárolóhoz vagy a táblához válassza a közös hozzáférési aláírás URI-JÁT.  |Yes |
 
 **Példa**
 
@@ -66,7 +66,7 @@ Az Azure Storage SAS társított szolgáltatása lehetővé teszi egy Azure Stor
 }
 ```
 
-**Sas URI**létrehozásakor a következőket kell figyelembe venni:  
+**Sas URI** létrehozásakor a következőket kell figyelembe venni:  
 
 * Állítsa be a megfelelő olvasási/írási **engedélyeket** az objektumokon attól függően, hogy a társított szolgáltatás (olvasás, írás, olvasás/írás) hogyan legyen használatban az adatelőállítóban.
 * Megfelelő **lejárati idő** beállítása. Győződjön meg arról, hogy az Azure Storage-objektumokhoz való hozzáférés nem jár le a folyamat aktív időszakán belül.

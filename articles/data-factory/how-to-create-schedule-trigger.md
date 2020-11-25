@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 10/30/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: a6f53d6ce41085b2348857ccb5b45c06132d6a99
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655459"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001983"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Folyamat ütemezett futtatását futtató trigger létrehozása
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -368,12 +368,12 @@ Az alábbi táblázat magas szintű áttekintést nyújt az eseményindítóval 
 
 | JSON-tulajdonság | Típus | Kötelező | Alapértelmezett érték | Érvényes értékek | Példa |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | Sztring | Igen | Nincs | ISO-8601 dátum-idők | UTC időzóna esetén `"startTime" : "2013-01-09T09:30:00-08:00Z"` <br> egyéb időzóna esetén `"2013-01-09T09:30:00-08:00"` |
-| **timeZone** | Sztring | Igen | Nincs | [Időzóna-értékek](#time-zone-option)  | `"UTC"` |
-| **megismétlődésének** | Objektum | Igen | Nincs | Recurrence objektum | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **időköz** | Szám | Nem | 1 | 1–1000 | `"interval":10` |
-| **endTime** | Sztring | Igen | Nincs | Egy jövőbeli időpontot jelölő dátum-idő érték. | UTC időzóna esetén `"endTime" : "2013-02-09T09:30:00-08:00Z"` <br> egyéb időzóna esetén `"endTime" : "2013-02-09T09:30:00-08:00"`|
-| **menetrend** | Objektum | Nem | Nincs | Schedule objektum | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **startTime** | Sztring | Yes | Nincs | ISO-8601 dátum-idők | UTC időzóna esetén `"startTime" : "2013-01-09T09:30:00-08:00Z"` <br> egyéb időzóna esetén `"2013-01-09T09:30:00-08:00"` |
+| **timeZone** | Sztring | Yes | Nincs | [Időzóna-értékek](#time-zone-option)  | `"UTC"` |
+| **megismétlődésének** | Objektum | Yes | Nincs | Recurrence objektum | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **időköz** | Szám | No | 1 | 1–1000 | `"interval":10` |
+| **endTime** | Sztring | Yes | Nincs | Egy jövőbeli időpontot jelölő dátum-idő érték. | UTC időzóna esetén `"endTime" : "2013-02-09T09:30:00-08:00Z"` <br> egyéb időzóna esetén `"endTime" : "2013-02-09T09:30:00-08:00"`|
+| **menetrend** | Objektum | No | Nincs | Schedule objektum | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="time-zone-option"></a>Időzóna-beállítás
 
@@ -381,14 +381,14 @@ Az alábbi táblázat magas szintű áttekintést nyújt az eseményindítóval 
 
 | Időzóna | UTC-eltolás (nem napfényes mentés) | timeZone értéke | A nyári mentés megtartása | Időbélyegző formátuma |
 | :--- | :--- | :--- | :--- | :--- |
-| Egyezményes világidő | 0 | `UTC` | Nem | `'yyyy-MM-ddTHH:mm:ssZ'`|
-| Csendes-óceáni idő (PT) | -8 | `Pacific Standard Time` | Igen | `'yyyy-MM-ddTHH:mm:ss'` |
-| Központi idő (CT) | -6 | `Central Standard Time` | Igen | `'yyyy-MM-ddTHH:mm:ss'` |
-| Keleti idő (ET) | -5 | `Eastern Standard Time` | Igen | `'yyyy-MM-ddTHH:mm:ss'` |
-| Greenwichi középidő (GMT) | 0 | `GMT Standard Time` | Igen | `'yyyy-MM-ddTHH:mm:ss'` |
-| Közép-európai téli idő | +1 | `W. Europe Standard Time` | Igen | `'yyyy-MM-ddTHH:mm:ss'` |
-| Indiai téli idő (IST) | + 5:30 | `India Standard Time` | Nem | `'yyyy-MM-ddTHH:mm:ss'` |
-| Kínai téli idő | + 8 | `China Standard Time` | Nem | `'yyyy-MM-ddTHH:mm:ss'` |
+| Egyezményes világidő | 0 | `UTC` | No | `'yyyy-MM-ddTHH:mm:ssZ'`|
+| Csendes-óceáni idő (PT) | -8 | `Pacific Standard Time` | Yes | `'yyyy-MM-ddTHH:mm:ss'` |
+| Központi idő (CT) | -6 | `Central Standard Time` | Yes | `'yyyy-MM-ddTHH:mm:ss'` |
+| Keleti idő (ET) | -5 | `Eastern Standard Time` | Yes | `'yyyy-MM-ddTHH:mm:ss'` |
+| Greenwichi középidő (GMT) | 0 | `GMT Standard Time` | Yes | `'yyyy-MM-ddTHH:mm:ss'` |
+| Közép-európai téli idő | +1 | `W. Europe Standard Time` | Yes | `'yyyy-MM-ddTHH:mm:ss'` |
+| Indiai téli idő (IST) | + 5:30 | `India Standard Time` | No | `'yyyy-MM-ddTHH:mm:ss'` |
+| Kínai téli idő | + 8 | `China Standard Time` | No | `'yyyy-MM-ddTHH:mm:ss'` |
 
 Ez a lista nem teljes. Az időzóna-beállítások teljes listáját a Data Factory portál trigger- [létrehozási lapján](#data-factory-ui) tekintheti meg
 
@@ -462,5 +462,5 @@ Ez a példa azt feltételezi, hogy az **interval** értéke 1, és hogy a **freq
 | `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` | Minden hónap harmadik szerdáján, 05:15-kor, 05:45-kor, 17:15-kor és 17:45-kor fut le. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az eseményindítókkal kapcsolatos részletes információkért lásd: [folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md#trigger-execution).

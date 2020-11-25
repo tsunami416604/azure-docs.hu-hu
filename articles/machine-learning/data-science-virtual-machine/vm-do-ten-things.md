@@ -11,11 +11,11 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: 766da55f2589e2a8eb09e0f1b1c9a0a5027c8c3c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320948"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002765"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>Adatelemzés Windows Data Science Virtual Machine
 
@@ -197,7 +197,7 @@ Miután futtatta a AzCopy parancsot egy Azure-blobba való másolásra, a fájl 
 Az adatok a virtuális gépen lévő helyi fájlból is tölthetők fel Azure Storage Explorer használatával:
 
 * Az adatok tárolóba való feltöltéséhez válassza ki a tárolót, és kattintson a **feltöltés** gombra. ![ Képernyőkép a feltöltés gombról Azure Storage Explorer](./media/vm-do-ten-things/storage-accounts.png)
-* A **fájlok** mező jobb oldalán válassza a három pontot ( **..**.), válassza ki a fájlrendszerből feltölteni kívánt fájlokat, majd válassza a **feltöltés** lehetőséget a fájlok feltöltésének megkezdéséhez. ![ Képernyőfelvétel a fájlok feltöltése párbeszédpanelről](./media/vm-do-ten-things/upload-files-to-blob.png)
+* A **fájlok** mező jobb oldalán válassza a három pontot (**..**.), válassza ki a fájlrendszerből feltölteni kívánt fájlokat, majd válassza a **feltöltés** lehetőséget a fájlok feltöltésének megkezdéséhez. ![ Képernyőfelvétel a fájlok feltöltése párbeszédpanelről](./media/vm-do-ten-things/upload-files-to-blob.png)
 
 #### <a name="read-data-from-an-azure-blob-python-odbc"></a>Adatok beolvasása egy Azure-blobból: Python ODBC
 

@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 50a1656fcb92d9777d4a9476ef2a4c1fd2f2efc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329482"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002748"
 ---
 # <a name="full-text-search-in-azure-cognitive-search"></a>Teljes szöveges keresés az Azure Cognitive Search
 
@@ -69,7 +69,7 @@ Ehhez a kérelemhez a keresőmotor a következő műveleteket végzi el:
 2. Végrehajtja a lekérdezést. Ebben a példában a keresési lekérdezés kifejezésekből és kifejezésből áll: `"Spacious, air-condition* +\"Ocean view\""` (a felhasználók általában nem adnak meg írásjeleket, de a példában szereplő módon lehetővé teszi, hogy elmagyarázza, hogyan kezeli a elemzőket). Ebben a lekérdezésben a keresőmotor megvizsgálja az `searchFields` "Ocean View" és a "tágas" kifejezéssel, illetve a "légkondicionáló" előtaggal kezdődő feltételekben megadott leírási és title mezőket. A `searchMode` paraméter minden olyan kifejezésre (alapértelmezett) vagy mindegyikre vonatkozik, amelynél nincs expliciten kötelező kifejezés ( `+` ).
 3. Megrendeli az eredményül kapott szállodákat egy adott földrajzi hely közelében, majd visszaadja a hívó alkalmazásnak. 
 
-Ennek a cikknek a többsége a *keresési lekérdezés*feldolgozását ismerteti: `"Spacious, air-condition* +\"Ocean view\""` . A szűrés és a megrendelés a hatókörön kívül esik. További információkért tekintse meg a [Search API-referenciák dokumentációját](/rest/api/searchservice/search-documents).
+Ennek a cikknek a többsége a *keresési lekérdezés* feldolgozását ismerteti: `"Spacious, air-condition* +\"Ocean view\""` . A szűrés és a megrendelés a hatókörön kívül esik. További információkért tekintse meg a [Search API-referenciák dokumentációját](/rest/api/searchservice/search-documents).
 
 <a name="stage1"></a>
 ## <a name="stage-1-query-parsing"></a>1. lépés: lekérdezés elemzése 
@@ -251,7 +251,7 @@ Gyakori, de nem kötelező, ha ugyanazokat az elemzőket használja a keresési 
 
 Ha visszatér a példánkban, a **title (cím** ) mezőben a fordított index a következőképpen néz ki:
 
-| Időszak | Dokumentumok listája |
+| Kifejezés | Dokumentumok listája |
 |------|---------------|
 | Atman | 1 |
 | Beach | 2 |
@@ -265,7 +265,7 @@ A title (cím) mezőben csak a ( *z* ) két dokumentum jelenik meg: 1, 3.
 
 A **Leírás** mezőben az index a következő:
 
-| Időszak | Dokumentumok listája |
+| Kifejezés | Dokumentumok listája |
 |------|---------------|
 | levegő | 3
 | és | 4
@@ -315,7 +315,7 @@ A kérdéses lekérdezés teljes egészében az 1, 2, 3.
 
 ## <a name="stage-4-scoring"></a>4. fázis: pontozás  
 
-A keresési eredményhalmaz minden dokumentuma releváns pontszámot kap. A relevancia pontszám funkciója, hogy magasabbra rangsorolja azokat a dokumentumokat, amelyek a keresési lekérdezés által kifejezett felhasználói kérdésre válaszolnak. A pontszám kiszámítása az egyeztetett kifejezések statisztikai tulajdonságai alapján történik. A pontozási képlet magja a [TF/IDF (kifejezés gyakorisága-inverz dokumentum gyakorisága)](https://en.wikipedia.org/wiki/Tf%E2%80%93idf). A ritka és gyakori kifejezéseket tartalmazó lekérdezésekben a TF/IDF elősegíti a ritka időszakot tartalmazó eredményeket. Például egy olyan feltételezett indexben, amelyben az összes wikipedia-cikk szerepel, a lekérdezésnek megfelelő dokumentumokban *az*elnöknek megfeleltetett dokumentumok nagyobb jelentőséggel *rendelkeznek,* mint *a*dokumentumoknak megfelelő dokumentumok.
+A keresési eredményhalmaz minden dokumentuma releváns pontszámot kap. A relevancia pontszám funkciója, hogy magasabbra rangsorolja azokat a dokumentumokat, amelyek a keresési lekérdezés által kifejezett felhasználói kérdésre válaszolnak. A pontszám kiszámítása az egyeztetett kifejezések statisztikai tulajdonságai alapján történik. A pontozási képlet magja a [TF/IDF (kifejezés gyakorisága-inverz dokumentum gyakorisága)](https://en.wikipedia.org/wiki/Tf%E2%80%93idf). A ritka és gyakori kifejezéseket tartalmazó lekérdezésekben a TF/IDF elősegíti a ritka időszakot tartalmazó eredményeket. Például egy olyan feltételezett indexben, amelyben az összes wikipedia-cikk szerepel, a lekérdezésnek megfelelő dokumentumokban *az* elnöknek megfeleltetett dokumentumok nagyobb jelentőséggel *rendelkeznek,* mint *a* dokumentumoknak megfelelő dokumentumok.
 
 
 ### <a name="scoring-example"></a>Pontozási példa
@@ -351,7 +351,7 @@ search=Spacious, air-condition* +"Ocean view"
 }
 ```
 
-Az 1. dokumentum megfelelt a lekérdezésnek, mert mind a *tágas* , mind a szükséges, az *Ocean View* kifejezés a Leírás mezőben szerepel. A következő két dokumentum csak az *Ocean View*kifejezéssel egyezik meg. Előfordulhat, hogy meglepő, hogy a 2. és 3. dokumentum relevanciás pontszáma eltérő, bár a lekérdezésnek ugyanúgy egyeznek. Ez azért van, mert a pontozási képlet több összetevővel rendelkezik, mint a TF/IDF. Ebben az esetben a 3. dokumentumot egy valamivel magasabb pontszámot rendeltük, mert a leírása rövidebb. Ismerje meg a [Lucene gyakorlati pontozási képletét](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html) , amelyből megtudhatja, hogy a mezők hosszának és más tényezőknek milyen hatása lehet a releváns pontszámra.
+Az 1. dokumentum megfelelt a lekérdezésnek, mert mind a *tágas* , mind a szükséges, az *Ocean View* kifejezés a Leírás mezőben szerepel. A következő két dokumentum csak az *Ocean View* kifejezéssel egyezik meg. Előfordulhat, hogy meglepő, hogy a 2. és 3. dokumentum relevanciás pontszáma eltérő, bár a lekérdezésnek ugyanúgy egyeznek. Ez azért van, mert a pontozási képlet több összetevővel rendelkezik, mint a TF/IDF. Ebben az esetben a 3. dokumentumot egy valamivel magasabb pontszámot rendeltük, mert a leírása rövidebb. Ismerje meg a [Lucene gyakorlati pontozási képletét](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html) , amelyből megtudhatja, hogy a mezők hosszának és más tényezőknek milyen hatása lehet a releváns pontszámra.
 
 Néhány lekérdezési típus (helyettesítő karakter, előtag, regex) mindig a teljes dokumentum pontszámával járul hozzá egy állandó pontszámhoz. Ez lehetővé teszi, hogy a lekérdezési kiterjesztésen keresztül megtalált egyezések szerepeljenek az eredményekben, de a rangsorolás befolyásolása nélkül. 
 
@@ -362,7 +362,7 @@ Ebben a példában egy példa szemlélteti, hogy miért fontos a kérdés. A hel
 Az Azure Cognitive Searchban kétféleképpen hangolhatja be a relevancia pontszámait:
 
 1. A **pontozási profilok** a szabályok egy halmaza alapján támogatják az eredmények rangsorolt listáján szereplő dokumentumokat. A példánkban a title (cím) mezőben szereplő dokumentumokat a Leírás mezőben szereplő dokumentumokra vonatkozó szempontok szerint érdemes megfontolni. Továbbá, ha az indexünk minden egyes szállodára érvényes, akkor alacsonyabb díjszabású dokumentumokat is támogatunk. További információ a [pontozási profilok keresési indexhez való hozzáadásáról.](/rest/api/searchservice/add-scoring-profiles-to-a-search-index)
-2. A **kifejezés fokozása** (csak a teljes Lucene lekérdezési szintaxisban érhető el) olyan fellendítő operátort biztosít `^` , amely a lekérdezési fa bármely részén alkalmazható. A példánkban az előtagot a *levegő feltételének*megkeresése helyett \* az egyik a pontos *állapotot* vagy az előtagot is megkeresheti, de a pontos kifejezéssel megegyező dokumentumok magasabbra vannak rangsorolva, ha a lekéréses lekérdezésre a következő feltételek vonatkoznak: * Air-condition ^ 2 | | légkondicionáló * *. További információ a [kifejezés növeléséről](/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost).
+2. A **kifejezés fokozása** (csak a teljes Lucene lekérdezési szintaxisban érhető el) olyan fellendítő operátort biztosít `^` , amely a lekérdezési fa bármely részén alkalmazható. A példánkban az előtagot a *levegő feltételének* megkeresése helyett \* az egyik a pontos *állapotot* vagy az előtagot is megkeresheti, de a pontos kifejezéssel megegyező dokumentumok magasabbra vannak rangsorolva, ha a lekéréses lekérdezésre a következő feltételek vonatkoznak: * Air-condition ^ 2 | | légkondicionáló * *. További információ a [kifejezés növeléséről](/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost).
 
 
 ### <a name="scoring-in-a-distributed-index"></a>Pontozás egy elosztott indexben
@@ -381,7 +381,7 @@ Technikai szempontból a teljes szöveges keresés nagyon összetett, és kifino
 
 Ez a cikk a teljes szöveges keresést ismerteti az Azure Cognitive Search kontextusában. Reméljük, hogy elegendő hátteret biztosít a gyakori lekérdezési problémák kezelésére vonatkozó lehetséges okok és megoldások felismeréséhez. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 + Hozza létre a minta indexet, próbálja ki a különböző lekérdezéseket, és tekintse át az eredményeket. Útmutatásért lásd: [index létrehozása és lekérdezése a portálon](search-get-started-portal.md#query-index).
 

@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4a971b0a1e15278d3911568007d9e57ac1ede778
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309497"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003599"
 ---
 # <a name="team-data-science-process-for-data-scientists"></a>Csoportos adatelemzési folyamat adatszakértők számára
 
@@ -63,5 +63,5 @@ A következő táblázatban található elemek segítségével saját öntanulm�
 |                                                                                           | [Azure Monitor-naplók](../../azure-monitor/log-query/log-query-overview.md)                                                   | Az alkalmazás figyelésére szolgáló másik módszer a DevOps folyamatba való integrálása. A Azure Monitor logs rendszer számos funkciót kínál, amelyek segítségével megtekintheti analitikus megoldásait az üzembe helyezésük után.                                                                                                                                                                                                                                                                                                                                                                                                                       | [Az oktatóanyag Elvégzése](../../azure-monitor/log-query/get-started-queries.md) Azure monitor naplók használatával.                                                                                                                                                                                                                                                                                                       |
 | A képzési terv befejezése                                                               |                                                                                                                           | Gratulálunk! Elvégezte ezt a képzési útvonalat.                                                                                                                                                                                                                                                                                                                                            |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Csoportos adatelemzési folyamat fejlesztői műveletekhez](team-data-science-process-for-devops.md) Ez a cikk a fejlett elemzési és Cognitive Services megoldások megvalósítására jellemző fejlesztői műveletek (DevOps) függvényeit vizsgálja.

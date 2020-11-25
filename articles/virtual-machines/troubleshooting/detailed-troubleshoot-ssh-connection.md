@@ -16,11 +16,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: c117f9697299b94a54d9184093e65c56822b8bd2
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975671"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002629"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Részletes SSH-hibaelhárítási lépések Linux rendszerű virtuális gépekhez való csatlakozáskor fellépő problémákhoz az Azure-ban
 Az SSH-ügyfélnek számos oka lehet annak, hogy az SSH-szolgáltatás nem érhető el a virtuális gépen. Ha követte a további [általános SSH-hibaelhárítási lépéseket](troubleshoot-ssh-connection.md), akkor a kapcsolódási problémával kapcsolatos további hibaelhárításra van szükség. Ez a cikk végigvezeti a részletes hibaelhárítási lépéseken, amelyekkel meghatározhatja, hogy az SSH-kapcsolatok hol és Hogyan oldhatók meg.
@@ -33,9 +33,9 @@ Az alábbi ábrán az érintett összetevők láthatók.
 A következő lépések segítségével elkülönítheti a hiba forrását, és kiderítheti a megoldásokat és a megkerülő megoldásokat.
 
 1. Keresse meg a virtuális gép állapotát a portálon.
-   A [Azure Portal](https://portal.azure.com)válassza a **virtuális gépek virtuális gép**  >  *neve*elemet.
+   A [Azure Portal](https://portal.azure.com)válassza a **virtuális gépek virtuális gép**  >  *neve* elemet.
 
-   A virtuális gép állapotjelző paneljének **futnia**kell. Görgessen le a számítási, tárolási és hálózati erőforrások legutóbbi tevékenységének megjelenítéséhez.
+   A virtuális gép állapotjelző paneljének **futnia** kell. Görgessen le a számítási, tárolási és hálózati erőforrások legutóbbi tevékenységének megjelenítéséhez.
 
 2. Válassza a **Beállítások** lehetőséget a végpontok, IP-címek, hálózati biztonsági csoportok és egyéb beállítások vizsgálatához.
 
@@ -105,7 +105,7 @@ Ha nem rendelkezik másik virtuális géppel ugyanabban a virtuális hálózatba
 
 Ha az azonos virtuális hálózatban lévő virtuális géppel is létrehozhat SSH-kapcsolatokat, ellenőrizze a következő területeket:
 
-* **A cél virtuális gépen lévő SSH-forgalom végpont-konfigurációja.** A végpont magánhálózati TCP-portjának meg kell egyeznie azzal a TCP-porttal, amelyen a virtuális gépen futó SSH-szolgáltatás figyel. (Az alapértelmezett port a 22). Ellenőrizze az SSH TCP-port számát a Azure Portal a **virtuális gépek virtuálisgép**-  >  *név*  >  **beállításai**  >  **végpontok**kiválasztásával.
+* **A cél virtuális gépen lévő SSH-forgalom végpont-konfigurációja.** A végpont magánhálózati TCP-portjának meg kell egyeznie azzal a TCP-porttal, amelyen a virtuális gépen futó SSH-szolgáltatás figyel. (Az alapértelmezett port a 22). Ellenőrizze az SSH TCP-port számát a Azure Portal a **virtuális gépek virtuálisgép**-  >  *név*  >  **beállításai**  >  **végpontok** kiválasztásával.
 * **Az SSH-forgalom végpontjának hozzáférés-vezérlési listája a cél virtuális gépen.** Az ACL lehetővé teszi, hogy a forrás IP-címe alapján megadhatja az internetről engedélyezett vagy megtagadott bejövő forgalmat. A helytelenül konfigurált ACL-ek megakadályozhatják a bejövő SSH-forgalmat a végponthoz. Ellenőrizze az ACL-eket, hogy a proxy vagy más peremhálózati kiszolgáló nyilvános IP-címeiről érkező bejövő forgalom engedélyezett-e. További információ: [a hálózati hozzáférés-vezérlési listák (ACL-ek)](/previous-versions/azure/virtual-network/virtual-networks-acl).
 
 Ha el szeretné távolítani a végpontot a probléma forrásaként, távolítsa el az aktuális végpontot, hozzon létre egy másik végpontot, és adja meg az SSH-nevet (a nyilvános és a magánhálózati portszám esetében a 22-es TCP-port). További információ: [végpontok beállítása egy virtuális gépen az Azure-ban](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints?toc=/azure/virtual-machines/windows/classic/toc.json).

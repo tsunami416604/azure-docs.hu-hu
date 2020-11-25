@@ -9,11 +9,11 @@ ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
 ms.openlocfilehash: c74f2ef9eed25719e722970671406c850b6a59b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361857"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002595"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>A klasszikus tárolási erőforrás törlésével kapcsolatos hibák elhárítása
 Ez a cikk hibaelhárítási útmutatót tartalmaz, ha a következő hibák valamelyike a klasszikus Azure Storage-fiók, a tároló vagy a *. vhd oldal blob-fájljának törlésére tett kísérlet során következik be. 
@@ -48,7 +48,7 @@ A "Disk" (lemez) erőforrás egy *. vhd oldal blob-fájljának a virtuális gép
 Ha a felhasználó egy már nem szükséges klasszikus Storage-fiókot próbál törölni, a felhasználó a következő viselkedést láthatja.
 
 #### <a name="azure-portal"></a>Azure Portal 
-A felhasználó a [Azure Portal](https://portal.azure.com) klasszikus Storage-fiókjára navigál, és a **Törlés**gombra kattint, a felhasználó a következő üzenetet fogja látni: 
+A felhasználó a [Azure Portal](https://portal.azure.com) klasszikus Storage-fiókjára navigál, és a **Törlés** gombra kattint, a felhasználó a következő üzenetet fogja látni: 
 
 Virtuális géphez csatlakoztatott lemez (ek)
 

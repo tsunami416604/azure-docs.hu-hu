@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: e015c6761b920ef37af2bbfd67ced5fc3218d532
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91290687"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002238"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>A csatlakoztatott gyári megoldás-gyorsító konfigurálása
 
@@ -88,7 +88,7 @@ A következő kódrészlet a konfigurációs fájl vázlatát mutatja be `Contos
 }
 ```
 
-A, a, a és a gyakori tulajdonságai  `<global_configuration>` `<factory_configuration>` `<production_line_configuration>` `<station_configuration>` :
+A, a, a és a gyakori tulajdonságai `<global_configuration>` `<factory_configuration>` `<production_line_configuration>` `<station_configuration>` :
 
 * **Név** (Type string)
 
@@ -219,7 +219,7 @@ A `<factory_configuration>` és az `<production_line_configuration>` elemek tula
   Azt jelzi, hogy az OPC UA-csomópont értékét hogyan kezelje a Time Series Insight-lekérdezések és az OEE/KPI-számítások. Minden idősorozat-betekintési lekérdezés egy adott TimeSpan céloz meg, amely a lekérdezés paramétere, és eredményként szolgál. A műveleti kód vezérli az eredmény kiszámításának módját, és az alábbi értékek egyike lehet:
 
   * **Diff**: a TimeSpan utolsó és első értéke közötti különbség.
-  * **Átlag: a**TimeSpan összes értékének átlaga.
+  * **Átlag: a** TimeSpan összes értékének átlaga.
   * **Sum**: a TimeSpan összes értékének összege.
   * **Utolsó**: jelenleg nincs használatban.
   * **Darabszám**: a TimeSpan értékeinek száma.
@@ -265,7 +265,7 @@ A konfigurációs fájlban használt összes tulajdonság különböző kategór
 
 ### <a name="visual-appearance"></a>Vizuális megjelenés
 
-A kategória tulajdonságai a csatlakoztatott gyári irányítópult vizualizációs megjelenését határozzák meg. Példák erre vonatkozóan:
+A kategória tulajdonságai a csatlakoztatott gyári irányítópult vizualizációs megjelenését határozzák meg. Példák:
 
 * Név
 * Leírás
@@ -304,11 +304,11 @@ Bizonyos műveletekhez, például az utolsó érték megjelenítéséhez vagy a 
 
 * **OpcUri**
 
-  A (globálisan egyedi) azonosítja azt az OPC UA-kiszolgálót, amelyből a telemetria származik. A betöltött üzenetekben ez a tulajdonság **ApplicationUri**lesz elküldve.
+  A (globálisan egyedi) azonosítja azt az OPC UA-kiszolgálót, amelyből a telemetria származik. A betöltött üzenetekben ez a tulajdonság **ApplicationUri** lesz elküldve.
 
 * **NodeId**
 
-  A csomópont értékét azonosítja az OPC UA-kiszolgálón. A tulajdonság formátumának az OPC UA-specifikációban megadott formátumban kell lennie. A betöltött üzenetekben ez a tulajdonság **NodeId**lesz elküldve.
+  A csomópont értékét azonosítja az OPC UA-kiszolgálón. A tulajdonság formátumának az OPC UA-specifikációban megadott formátumban kell lennie. A betöltött üzenetekben ez a tulajdonság **NodeId** lesz elküldve.
 
 A telemetria-adatok csatlakoztatott gyárba való betöltésével kapcsolatos további információkért lásd: [Mi az OPC-közzétevő](overview-opc-publisher.md) .
 
@@ -337,10 +337,10 @@ Ez a konfiguráció lehetővé teszi a csomópont telemetria értékeinek lekér
 * Az összes érték átlaga.
 * Az összes egyedi **OpcUri** (**ApplicationUri**), az adott TimeSpan lévő **NodeId** -párok összes értékének összege.
 
-A **NumberOfManufactureredProducts** csomópont értékének egyik jellemzője, hogy az csak a növekedésre nő. A TimeSpan előállított termékek számának kiszámításához a csatlakoztatott gyár a **műveleti kód** **SubMaxMin**használja. A számítás a TimeSpan elején lévő minimális értéket és a TimeSpan végén található maximális értéket kérdezi le.
+A **NumberOfManufactureredProducts** csomópont értékének egyik jellemzője, hogy az csak a növekedésre nő. A TimeSpan előállított termékek számának kiszámításához a csatlakoztatott gyár a **műveleti kód** **SubMaxMin** használja. A számítás a TimeSpan elején lévő minimális értéket és a TimeSpan végén található maximális értéket kérdezi le.
 
 A konfigurációban lévő **műveleti kód** úgy konfigurálja a számítási logikát, hogy kiszámítsa a maximális és a minimális érték különbözetének eredményét. Ezeket az eredményeket a rendszer a legfelső szintű (globális) szintre összesíti, és az irányítópulton jelenik meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Egy javasolt következő lépés a [csatlakoztatott gyári megoldás testreszabásának](iot-accelerators-connected-factory-customize.md)megismerése.

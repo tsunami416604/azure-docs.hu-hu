@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: eebfa61632bc49d5df35c17ba2d2faca0382001c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 998d49e91d38a1f2fdc2503165ee99635e153027
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91336139"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001898"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -26,7 +26,7 @@ További források:
 * [API-referenciadokumentáció](/javascript/api/@azure/storage-blob)
 * [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)
 * [Csomag (NPM)](https://www.npmjs.com/package/@azure/storage-blob)
-* [Példák](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+* [Példák](../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -66,9 +66,9 @@ Ebből a szakaszból megtudhatja, hogyan készít elő egy projektet a JavaScrip
 
 ### <a name="create-a-cors-rule"></a>CORS-szabály létrehozása
 
-Ahhoz, hogy a webalkalmazás hozzáférhessen a blob Storage-hoz az ügyfélről, konfigurálnia kell a fiókját, hogy engedélyezze a [több eredetű erőforrás-megosztást](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)vagy a CORS.
+Ahhoz, hogy a webalkalmazás hozzáférhessen a blob Storage-hoz az ügyfélről, konfigurálnia kell a fiókját, hogy engedélyezze a [több eredetű erőforrás-megosztást](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)vagy a CORS.
 
-A Azure Portal válassza ki a Storage-fiókját. Új CORS-szabály definiálásához navigáljon a **Beállítások** szakaszra, és válassza a **CORS**lehetőséget. Ebben a rövid útmutatóban egy nyitott CORS-szabályt hozunk létre:
+A Azure Portal válassza ki a Storage-fiókját. Új CORS-szabály definiálásához navigáljon a **Beállítások** szakaszra, és válassza a **CORS** lehetőséget. Ebben a rövid útmutatóban egy nyitott CORS-szabályt hozunk létre:
 
 ![Azure Blob Storage-fiók CORS-beállításai](media/quickstart-blobs-javascript-browser/azure-blob-storage-cors-settings.png)
 
@@ -76,10 +76,10 @@ A következő tábla az egyes CORS-beállításokat írja le, és ismerteti a sz
 
 |Beállítás  |Érték  | Leírás |
 |---------|---------|---------|
-| **ENGEDÉLYEZETT EREDETEK** | **\*** | Elfogadható eredetekként beállított tartományok vesszővel tagolt listáját fogadja el. A `*` érték beállításakor minden tartomány hozzáfér a tárfiókhoz. |
-| **ENGEDÉLYEZETT METÓDUSOK** | **Törlés**, **beolvasás**, **fej**, **Egyesítés**, **Közzététel**, **Beállítások**és **put** | A tárfiókon futtatható HTTP-műveleteket listázza. Ebben a rövid útmutatóban válassza ki az összes elérhető beállítást. |
-| **ENGEDÉLYEZETT FEJLÉCEK** | **\*** | A tárfiókban engedélyezett kérelemfejlécek listáját határozza meg (beleértve az előtaggal ellátott fejléceket). A `*` érték beállítása minden fejléc hozzáférését engedélyezi. |
-| **ELÉRHETŐ FEJLÉCEK** | **\*** | A fiók által engedélyezett válaszfejléceket listázza. A `*` érték beállítása esetén a fiók bármilyen fejlécet küldhet. |
+| **ENGEDÉLYEZETT EREDETEK** | **\** _ | Elfogadható eredetekként beállított tartományok vesszővel tagolt listáját fogadja el. A `_` érték beállításakor minden tartomány hozzáfér a tárfiókhoz. |
+| **ENGEDÉLYEZETT METÓDUSOK** | **Törlés**, **beolvasás**, **fej**, **Egyesítés**, **Közzététel**, **Beállítások** és **put** | A tárfiókon futtatható HTTP-műveleteket listázza. Ebben a rövid útmutatóban válassza ki az összes elérhető beállítást. |
+| **ENGEDÉLYEZETT FEJLÉCEK** | **\** _ | A tárfiókban engedélyezett kérelemfejlécek listáját határozza meg (beleértve az előtaggal ellátott fejléceket). A `_` érték beállítása minden fejléc hozzáférését engedélyezi. |
+| **ELÉRHETŐ FEJLÉCEK** | **\** _ | A fiók által engedélyezett válaszfejléceket listázza. A `_` érték beállítása esetén a fiók bármilyen fejlécet küldhet. |
 | **MAXIMÁLIS ÉLETKOR** | **86400** | Az a maximális időtartam, ameddig a böngésző gyorsítótárazza az elővizsgálati beállítások kérését másodpercben. A *86400* érték lehetővé teszi, hogy a gyorsítótár egy teljes napig megmaradjon. |
 
 Miután kitöltötte az ebben a táblázatban szereplő értékekkel rendelkező mezőket, kattintson a **Save (Mentés** ) gombra.
@@ -94,7 +94,7 @@ A közös hozzáférésű aláírást (SAS) a böngészőben futó kód használ
 A Blob service SAS URL-címének beszerzéséhez kövesse az alábbi lépéseket:
 
 1. A Azure Portal válassza ki a Storage-fiókját.
-2. Navigáljon a **Beállítások** szakaszra, és válassza a **közös hozzáférési aláírás**lehetőséget.
+2. Navigáljon a **Beállítások** szakaszra, és válassza a **közös hozzáférési aláírás** lehetőséget.
 3. Görgessen lefelé, és kattintson az **sas létrehozása és a kapcsolatok sztringje** gombra.
 4. Görgessen le tovább, és keresse meg a **blob Service sas URL-címe** mezőt
 5. Kattintson a **Másolás a vágólapra** gombra a **blob Service sas URL-cím** mező jobb szélső oldaláról.
@@ -138,7 +138,7 @@ Az Azure SDK-kódtárak JavaScripten belüli használatához importálja a `@azu
 
 :::code language="javascript" source="~/azure-storage-snippets/blobs/quickstarts/JavaScript/V12/azure-blobs-js-browser/index.js" id="snippet_ImportLibrary":::
 
-Mentse a fájlt *index.jsként * az *Azure-Blob-js-Browser* könyvtárba.
+Mentse a fájlt *index.jsként* az *Azure-Blob-js-Browser* könyvtárba.
 
 ### <a name="implement-the-html-page"></a>A HTML-oldal implementálása
 
@@ -237,7 +237,7 @@ Ha a kódot a Visual Studio Code debuggerben szeretné futtatni, konfigurálja a
 A hibakereső bővítmény beállítása a Visual Studio Code-ban:
 
 1. Válassza a **futtatás > konfiguráció hozzáadása** lehetőséget
-2. Válassza ki a **Edge**, a **Chrome**vagy a **Firefox**elemet attól függően, hogy melyik bővítményt telepítette a korábbi [Előfeltételek](#prerequisites) szakaszban.
+2. Válassza ki a **Edge**, a **Chrome** vagy a **Firefox** elemet attól függően, hogy melyik bővítményt telepítette a korábbi [Előfeltételek](#prerequisites) szakaszban.
 
 Új konfiguráció hozzáadásával létrejön egy *launch.jsa* fájlban, és megnyitható a szerkesztőben. Módosítsa a fájl *launch.jsét* úgy, hogy az az `url` `http://localhost:1234/index.html` itt látható érték legyen:
 
@@ -269,27 +269,27 @@ A [Azure Portal](https://portal.azure.com)a következő lépésekkel ELLENŐRIZH
 
 #### <a name="step-1---create-a-container"></a>1. lépés – tároló létrehozása
 
-1. A webalkalmazásban válassza a **tároló létrehozása**lehetőséget. Az állapot azt jelzi, hogy egy tároló létrejött.
-2. A Azure Portal ellenőrzéséhez válassza ki a Storage-fiókját. A **Blob Service** szakaszban válassza a **Tárolók** lehetőséget. Ellenőrizze, hogy az új tároló megjelenik-e. (Lehetséges, hogy a **frissítés**lehetőséget kell választania.)
+1. A webalkalmazásban válassza a **tároló létrehozása** lehetőséget. Az állapot azt jelzi, hogy egy tároló létrejött.
+2. A Azure Portal ellenőrzéséhez válassza ki a Storage-fiókját. A **Blob Service** szakaszban válassza a **Tárolók** lehetőséget. Ellenőrizze, hogy az új tároló megjelenik-e. (Lehetséges, hogy a **frissítés** lehetőséget kell választania.)
 
 #### <a name="step-2---upload-a-blob-to-the-container"></a>2. lépés – blob feltöltése a tárolóba
 
 1. A helyi számítógépen hozzon létre és mentsen egy tesztoldalt, például *test.txt*.
-2. A webalkalmazásban kattintson a **kiválasztás és a fájlok feltöltése**elemre.
-3. Keresse meg a teszt fájlt, majd kattintson a **Megnyitás**gombra. Az állapot azt jelzi, hogy a fájl fel lett töltve, és a rendszer beolvasta a fájlok listáját.
+2. A webalkalmazásban kattintson a **kiválasztás és a fájlok feltöltése** elemre.
+3. Keresse meg a teszt fájlt, majd kattintson a **Megnyitás** gombra. Az állapot azt jelzi, hogy a fájl fel lett töltve, és a rendszer beolvasta a fájlok listáját.
 4. A Azure Portal válassza ki a korábban létrehozott új tároló nevét. Ellenőrizze, hogy megjelenik-e a teszt fájl.
 
 #### <a name="step-3---delete-the-blob"></a>3. lépés – a blob törlése
 
-1. A webalkalmazásban a **fájlok**területen válassza ki a teszt fájlt.
-2. Válassza a **kijelölt fájlok törlése**lehetőséget. Az állapot azt jelzi, hogy a fájl törölve lett, és a tároló nem tartalmaz fájlokat.
-3. A Azure Portal válassza a **frissítés**lehetőséget. Győződjön meg arról, hogy **nem találhatók Blobok**.
+1. A webalkalmazásban a **fájlok** területen válassza ki a teszt fájlt.
+2. Válassza a **kijelölt fájlok törlése** lehetőséget. Az állapot azt jelzi, hogy a fájl törölve lett, és a tároló nem tartalmaz fájlokat.
+3. A Azure Portal válassza a **frissítés** lehetőséget. Győződjön meg arról, hogy **nem találhatók Blobok**.
 
 #### <a name="step-4---delete-the-container"></a>4. lépés – a tároló törlése
 
-1. A webalkalmazásban válassza a **tároló törlése**lehetőséget. Az állapot azt jelzi, hogy a tárolót törölték.
-2. A Azure Portal válassza ki a ** \<account-name\> | Tárolók** hivatkozás a portál ablaktábla bal felső részén.
-3. Válassza a **frissítés**lehetőséget. Az új tároló eltűnik.
+1. A webalkalmazásban válassza a **tároló törlése** lehetőséget. Az állapot azt jelzi, hogy a tárolót törölték.
+2. A Azure Portal válassza ki a **\<account-name\> | Tárolók** hivatkozás a portál ablaktábla bal felső részén.
+3. Válassza a **frissítés** lehetőséget. Az új tároló eltűnik.
 4. A webalkalmazás bezárásához.
 
 ### <a name="clean-up-resources"></a>Az erőforrások eltávolítása

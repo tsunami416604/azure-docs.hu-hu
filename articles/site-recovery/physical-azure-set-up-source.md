@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: ramamill
 ms.openlocfilehash: 327e995a8fe2f66903548fba054804768d2538ab
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534294"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001555"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>A fizikai kiszolgálók Azure-ba történő vészhelyreállítást végző konfigurációs kiszolgáló beállítása
 
@@ -24,7 +24,7 @@ Ez a cikk azt ismerteti, hogyan állíthatja be a helyszíni környezetet a Wind
 A cikk feltételezi, hogy már rendelkezik az alábbiakkal:
 - A [Azure Portal](https://portal.azure.com "Azure Portal")Recovery Services-tárolója.
 - Egy fizikai számítógép, amelyre telepíteni kívánja a konfigurációs kiszolgálót.
-- Ha letiltotta a TLS 1,0-et azon a számítógépen, amelyre a konfigurációs kiszolgálót telepíti, győződjön meg arról, hogy a TLs 1,2 engedélyezve van, és hogy a .NET-keretrendszer 4,6-as vagy újabb verziója telepítve van a gépen (erős kriptográfia engedélyezve van). [További információ](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1).
+- Ha letiltotta a TLS 1,0-et azon a számítógépen, amelyre a konfigurációs kiszolgálót telepíti, győződjön meg arról, hogy a TLs 1,2 engedélyezve van, és hogy a .NET-keretrendszer 4,6-as vagy újabb verziója telepítve van a gépen (erős kriptográfia engedélyezve van). [További információk](https://support.microsoft.com/help/4033999/how-to-resolve-azure-site-recovery-agent-issues-after-disabling-tls-1).
 
 ### <a name="configuration-server-minimum-requirements"></a>A konfigurációs kiszolgáló minimális követelményei
 A következő táblázat a konfigurációs kiszolgáló minimális hardver-, szoftver-és hálózati követelményeit sorolja fel.
@@ -48,7 +48,7 @@ A következő táblázat a konfigurációs kiszolgáló minimális hardver-, szo
 1. Ha nem rendelkezik konfigurációs kiszolgálóval, a **forrás előkészítése** területen kattintson a **+ konfigurációs kiszolgáló** elemre a hozzáadáshoz.
 
    ![A konfigurációs kiszolgáló kijelölését bemutató képernyőkép.](./media/physical-azure-set-up-source/plus-config-srv.png)
-2. A **kiszolgáló hozzáadása** panelen győződjön meg arról, hogy a **konfigurációs kiszolgáló** megjelenik a **kiszolgáló típusa mezőben** .
+2. A **kiszolgáló hozzáadása** panelen győződjön meg arról, hogy a **konfigurációs kiszolgáló** megjelenik a **kiszolgáló típusa mezőben**.
 4. Töltse le a Site Recovery egyesített telepítési telepítőfájlt.
 5. Töltse le a tároló regisztrációs kulcsát. Az egyesített telepítő futtatásakor szüksége lesz a regisztrációs kulcsra. A kulcs a generálásától számított öt napig érvényes.
 
@@ -63,7 +63,7 @@ A következő táblázat a konfigurációs kiszolgáló minimális hardver-, szo
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> A konfigurációs kiszolgáló parancssor használatával telepíthető. [További információ](physical-manage-configuration-server.md#install-from-the-command-line).
+> A konfigurációs kiszolgáló parancssor használatával telepíthető. [További információk](physical-manage-configuration-server.md#install-from-the-command-line).
 
 
 ## <a name="common-issues"></a>Gyakori problémák
@@ -71,6 +71,6 @@ A következő táblázat a konfigurációs kiszolgáló minimális hardver-, szo
 [!INCLUDE [site-recovery-vmware-to-azure-install-register-issues](../../includes/site-recovery-vmware-to-azure-install-register-issues.md)]
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő lépés magában foglalja [a cél környezet beállítását](physical-azure-set-up-target.md) az Azure-ban.

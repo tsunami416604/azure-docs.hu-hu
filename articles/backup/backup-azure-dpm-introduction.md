@@ -4,11 +4,11 @@ description: Ebből a cikkből megtudhatja, hogyan készítse elő a System Cent
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.openlocfilehash: 0089c3d86eb36b82287570ecdfd6e8c782e6fb8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90975463"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002859"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>A számítási feladatok biztonsági mentésének előkészítése az Azure-ba a System Center DPM
 
@@ -48,7 +48,7 @@ Támogatott fájltípusok | Ezek a fájltípusok biztonsági mentést készíthe
 Nem támogatott fájltípusok | <li>Kis-és nagybetűket megkülönböztető fájlrendszerrel rendelkező kiszolgálók<li> rögzített hivatkozások (kihagyva)<li> újraelemzési pontok (kihagyva)<li> titkosított és tömörített (kihagyva)<li> titkosított és ritka (kihagyva)<li> Tömörített Stream<li> adatfolyam elemzése
 Helyi tárhely | Minden olyan gépnek, amelyről biztonsági másolatot szeretne készíteni, rendelkeznie kell helyi szabad tárterülettel, amely a biztonsági mentés alatt álló adatmennyiség legalább 5%-a. Például a 100 GB adat biztonsági mentéséhez legalább 5 GB szabad terület szükséges a semmiből.
 Tár tárolója | A Azure Backup-tárolóba felhasználható adatmennyiségnek nincs korlátja, de az adatforrások (például virtuális gépek vagy adatbázisok) mérete nem haladhatja meg a 54 400 GB-ot.
-Azure ExpressRoute | Az Azure ExpressRoute-on keresztül biztonsági mentést készíthet az adatairól a nyilvános (a régi áramkörökhöz elérhető) és a Microsoft-partnerek számára. A privát kapcsolaton keresztüli biztonsági mentés nem támogatott.<br/><br/> **Nyilvános társítás esetén**: a következő tartományokhoz/címekhez való hozzáférés biztosítása:<br/><br/>- `http://www.msftncsi.com/ncsi.txt` <br/><br/>- `microsoft.com` <br/><br/>-`.WindowsAzure.com`<br/><br/>-`.microsoftonline.com`<br/><br/>-`.windows.net`<br/><br/> **A Microsoft-partnerekkel**válassza ki a következő szolgáltatásokat/régiókat és a vonatkozó közösségi értékeket:<br/><br/>-Azure Active Directory (12076:5060)<br/><br/>-Microsoft Azure régió (az Recovery Services-tároló helyének megfelelően)<br/><br/>– Azure Storage (az Recovery Services-tároló helyének megfelelően)<br/><br/>További információ: ExpressRoute- [útválasztási követelmények](../expressroute/expressroute-routing.md).<br/><br/>**Megjegyzés**: a nyilvános társítás az új áramköröknél elavult.
+Azure ExpressRoute | Az Azure ExpressRoute-on keresztül biztonsági mentést készíthet az adatairól a nyilvános (a régi áramkörökhöz elérhető) és a Microsoft-partnerek számára. A privát kapcsolaton keresztüli biztonsági mentés nem támogatott.<br/><br/> **Nyilvános társítás esetén**: a következő tartományokhoz/címekhez való hozzáférés biztosítása:<br/><br/>- `http://www.msftncsi.com/ncsi.txt` <br/><br/>- `microsoft.com` <br/><br/>-`.WindowsAzure.com`<br/><br/>-`.microsoftonline.com`<br/><br/>-`.windows.net`<br/><br/> **A Microsoft-partnerekkel** válassza ki a következő szolgáltatásokat/régiókat és a vonatkozó közösségi értékeket:<br/><br/>-Azure Active Directory (12076:5060)<br/><br/>-Microsoft Azure régió (az Recovery Services-tároló helyének megfelelően)<br/><br/>– Azure Storage (az Recovery Services-tároló helyének megfelelően)<br/><br/>További információ: ExpressRoute- [útválasztási követelmények](../expressroute/expressroute-routing.md).<br/><br/>**Megjegyzés**: a nyilvános társítás az új áramköröknél elavult.
 Az Azure Backup ügynöke | Ha a DPM a System Center 2012 SP1 rendszeren fut, telepítse a 2. vagy újabb kumulatív frissítést a DPM SP1 verzióhoz. Ez az ügynök telepítéséhez szükséges.<br/><br/> Ez a cikk bemutatja, hogyan helyezheti üzembe a Azure Backup-ügynök legújabb verzióját, más néven a Microsoft Azure Recovery Service (MARS) ügynököt. Ha a korábbi verziót telepítette, frissítsen a legújabb verzióra, és győződjön meg arról, hogy a biztonsági mentés a várt módon működik-e.
 
 Mielőtt elkezdené, szüksége lesz egy Azure-fiókra, amelyen engedélyezve van a Azure Backup funkció. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információ a [Azure Backup díjszabásáról](https://azure.microsoft.com/pricing/details/backup/).
@@ -68,7 +68,7 @@ A tárreplikációs beállítás szerkesztése:
 
 1. Nyissa meg a tároló irányítópultját.
 
-2. A **kezelés**területen válassza a **biztonsági mentési infrastruktúra**elemet.
+2. A **kezelés** területen válassza a **biztonsági mentési infrastruktúra** elemet.
 
 3. A **biztonsági mentés konfigurálása** menüben válassza ki a tárolóhoz tartozó tárolási beállítást.
 
@@ -99,11 +99,11 @@ Töltse le a tároló hitelesítő adatait tartalmazó fájlt egy helyi gépre a
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Nyissa meg azt a tárolót, amelyben regisztrálni szeretné a DPM-kiszolgálót.
-3. A **Beállítások**területen válassza a **Tulajdonságok**lehetőséget.
+3. A **Beállítások** területen válassza a **Tulajdonságok** lehetőséget.
 
     ![A tárolók menüjének megnyitása](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
 
-4. A **Tulajdonságok**  >  **biztonsági másolatának hitelesítő adatai**területen válassza a **Letöltés**lehetőséget. A portál a tár hitelesítő adatait tartalmazó fájlt a tár neve és az aktuális dátum kombinációja alapján hozza létre, és letölthetővé teszi.
+4. A **Tulajdonságok**  >  **biztonsági másolatának hitelesítő adatai** területen válassza a **Letöltés** lehetőséget. A portál a tár hitelesítő adatait tartalmazó fájlt a tár neve és az aktuális dátum kombinációja alapján hozza létre, és letölthetővé teszi.
 
     ![Hitelesítő adatok letöltése](./media/backup-azure-dpm-introduction/vault-credentials.png)
 
@@ -114,7 +114,7 @@ Töltse le a tároló hitelesítő adatait tartalmazó fájlt egy helyi gépre a
 A Azure Backup által készített biztonsági mentést végző számítógépeken telepítve kell lennie a biztonsági mentési ügynöknek (más néven Microsoft Azure Recovery Service-(MARS-) ügynöknek). Telepítse az ügynököt a DPM-kiszolgálóra a következőképpen:
 
 1. Nyissa meg azt a tárolót, amelyre regisztrálni szeretné a DPM-kiszolgálót.
-2. A **Beállítások**területen válassza a **Tulajdonságok**lehetőséget.
+2. A **Beállítások** területen válassza a **Tulajdonságok** lehetőséget.
 
     ![Tár beállításainak megnyitása](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
 3. A **Tulajdonságok** lapon töltse le a Azure Backup-ügynököt.
@@ -131,19 +131,19 @@ A Azure Backup által készített biztonsági mentést végző számítógépeke
 
 ## <a name="register-the-dpm-server-in-the-vault"></a>A DPM-kiszolgáló regisztrálása a tárolóban
 
-1. A DPM felügyeleti konzol > **felügyelet**területén válassza az **online**lehetőséget. Válassza a **Regisztráció** lehetőséget. Ekkor megnyílik a kiszolgáló regisztrálása varázsló.
-2. A **proxy konfigurálása**területen szükség szerint határozza meg a proxybeállításokat.
+1. A DPM felügyeleti konzol > **felügyelet** területén válassza az **online** lehetőséget. Válassza a **Regisztráció** lehetőséget. Ekkor megnyílik a kiszolgáló regisztrálása varázsló.
+2. A **proxy konfigurálása** területen szükség szerint határozza meg a proxybeállításokat.
 
     ![Proxy konfigurálása](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Proxy.png)
-3. A **Backup-tárolóban**keresse meg és válassza ki a letöltött tároló hitelesítő adatait tartalmazó fájlt.
+3. A **Backup-tárolóban** keresse meg és válassza ki a letöltött tároló hitelesítő adatait tartalmazó fájlt.
 
     ![Tároló hitelesítő adatai](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Credentials.jpg)
 
-4. A **szabályozás beállítása beállításnál**engedélyezheti a sávszélesség-szabályozást a biztonsági mentésekhez. Megadhatja a munkaórák és napok megadásának korlátait.
+4. A **szabályozás beállítása beállításnál** engedélyezheti a sávszélesség-szabályozást a biztonsági mentésekhez. Megadhatja a munkaórák és napok megadásának korlátait.
 
     ![Szabályozás beállítása](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Throttling.png)
 
-5. A **helyreállítási mappa beállítása**területen válasszon egy helyet, amelyet az Adathelyreállítás során használhat.
+5. A **helyreállítási mappa beállítása** területen válasszon egy helyet, amelyet az Adathelyreállítás során használhat.
 
     - Azure Backup ezt a helyet használja ideiglenes területként a helyreállított adatmennyiséghez.
     - Az Adathelyreállítás befejezése után Azure Backup törli az ezen a területen található adatvesztést.
@@ -151,7 +151,7 @@ A Azure Backup által készített biztonsági mentést végző számítógépeke
 
     ![Helyreállítási mappa beállítása](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_RecoveryFolder.png)
 
-6. A **titkosítási beállításnál**adja meg vagy adjon meg egy jelszót.
+6. A **titkosítási beállításnál** adja meg vagy adjon meg egy jelszót.
 
     - A hozzáférési kód a biztonsági másolatok felhőbe történő titkosítására szolgál.
     - Legalább 16 karaktert kell megadnia.

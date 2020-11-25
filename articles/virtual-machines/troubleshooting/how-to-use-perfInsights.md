@@ -14,11 +14,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: f49ae5139dc92ec1448e5dea05be8c8c216ef91e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361347"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002663"
 ---
 # <a name="how-to-use-perfinsights-in-azure"></a>A PerfInsights használata az Azure-ban
 
@@ -103,30 +103,30 @@ A Windows rendszerű virtuális gépekre, lemezekre vagy tárolási készletek k
 
 | Összegyűjtött adatok | Gyors teljesítmény elemzése | Teljesítménymérésre | Teljesítmény elemzése | Azure Files elemzése | Fejlett teljesítmény-elemzés |
 |----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|
-| Az eseménynaplók adatai       | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
-| Rendszer-információ                | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
-| Kötet térképe                        | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
-| Lemezes Térkép                          | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
-| Futó feladatok                     | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
-| Tárolási megbízhatósági számlálók      | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
-| Tárolási információk               | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
-| Fsutil kimenet                     | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
-| Illesztőprogram-adatok szűrése                | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
-| Netstat kimenet                    | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
-| Hálózati konfiguráció             | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
-| Tűzfal-konfiguráció            | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
-| SQL Server-konfiguráció          | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
-| Teljesítmény-diagnosztika nyomkövetése *  | Igen                        | Igen                                | Igen                      | Igen                  | Igen                  |
-| Teljesítményszámláló nyomkövetése * *      |                            |                                    | Igen                      |                      | Igen                  |
-| SMB-számláló nyomkövetése * *              |                            |                                    |                          | Igen                  |                      |
-| SQL Server számláló nyomkövetése * *       |                            |                                    | Igen                      |                      | Igen                  |
-| XPerf nyomkövetés                       |                            |                                    |                          |                      | Igen                  |
-| StorPort-nyomkövetés                    |                            |                                    |                          |                      | Igen                  |
-| Hálózati nyomkövetés                     |                            |                                    |                          | Igen                  | Igen                  |
-| Diskspd teljesítményteszt nyomkövetése * * *       |                            | Igen                                |                          |                      |                      |
+| Az eseménynaplók adatai       | Igen                        | Igen                                | Igen                      | Igen                  | Yes                  |
+| Rendszer-információ                | Igen                        | Igen                                | Igen                      | Igen                  | Yes                  |
+| Kötet térképe                        | Igen                        | Igen                                | Igen                      | Igen                  | Yes                  |
+| Lemezes Térkép                          | Igen                        | Igen                                | Igen                      | Igen                  | Yes                  |
+| Futó feladatok                     | Igen                        | Igen                                | Igen                      | Igen                  | Yes                  |
+| Tárolási megbízhatósági számlálók      | Igen                        | Igen                                | Igen                      | Igen                  | Yes                  |
+| Tárolási információk               | Igen                        | Igen                                | Igen                      | Igen                  | Yes                  |
+| Fsutil kimenet                     | Igen                        | Igen                                | Igen                      | Igen                  | Yes                  |
+| Illesztőprogram-adatok szűrése                | Igen                        | Igen                                | Igen                      | Igen                  | Yes                  |
+| Netstat kimenet                    | Igen                        | Igen                                | Igen                      | Igen                  | Yes                  |
+| Hálózati konfiguráció             | Igen                        | Igen                                | Igen                      | Igen                  | Yes                  |
+| Tűzfal-konfiguráció            | Igen                        | Igen                                | Igen                      | Igen                  | Yes                  |
+| SQL Server-konfiguráció          | Igen                        | Igen                                | Igen                      | Igen                  | Yes                  |
+| Teljesítmény-diagnosztika nyomkövetése *  | Igen                        | Igen                                | Igen                      | Igen                  | Yes                  |
+| Teljesítményszámláló nyomkövetése * *      |                            |                                    | Igen                      |                      | Yes                  |
+| SMB-számláló nyomkövetése * *              |                            |                                    |                          | Yes                  |                      |
+| SQL Server számláló nyomkövetése * *       |                            |                                    | Igen                      |                      | Yes                  |
+| XPerf nyomkövetés                       |                            |                                    |                          |                      | Yes                  |
+| StorPort-nyomkövetés                    |                            |                                    |                          |                      | Yes                  |
+| Hálózati nyomkövetés                     |                            |                                    |                          | Igen                  | Yes                  |
+| Diskspd teljesítményteszt-nyomkövetés * * _       |                            | Yes                                |                          |                      |                      |
 |       |                            |                         |                                                   |                      |                      |
 
-### <a name="performance-diagnostics-trace-"></a>Teljesítmény-diagnosztika nyomkövetése (*)
+### <a name="performance-diagnostics-trace-_"></a>Teljesítmény-diagnosztika nyomkövetése (_)
 
 A háttérben futtat egy szabály-alapú motort az adatok gyűjtéséhez és a folyamatban lévő teljesítménnyel kapcsolatos problémák diagnosztizálásához. Jelenleg a következő szabályok támogatottak:
 
@@ -154,7 +154,7 @@ A következő teljesítményszámlálók összegyűjtése:
 #### <a name="for-azure-files"></a>Azure Files
 \SMB-ügyfelek megosztása
 
-### <a name="diskspd-benchmark-trace-"></a>Diskspd teljesítményteszt nyomkövetése (* * *)
+### <a name="diskspd-benchmark-trace-_"></a>Diskspd teljesítményteszt nyomkövetése (* * _)
 Diskspd I/O-munkaterhelési tesztek (operációsrendszer-lemez [írás] és készlet-meghajtók [olvasás/írás])
 
 ## <a name="run-the-perfinsights-tool-on-your-vm"></a>Futtassa a PerfInsights eszközt a virtuális gépen
@@ -165,8 +165,7 @@ Diskspd I/O-munkaterhelési tesztek (operációsrendszer-lemez [írás] és kés
 
 -  Ezt az eszközt a teljesítménnyel kapcsolatos problémát biztosító virtuális gépen kell futtatni. 
 
--  A következő operációs rendszerek támogatottak:
-   * Windows Server 2019
+-  A következő operációs rendszerek támogatottak: _ Windows Server 2019
    * Windows Server 2016
    * Windows Server 2012 R2
    * Windows Server 2012
@@ -198,7 +197,7 @@ A PerfInsights eszköz futtatásához kövesse az alábbi lépéseket:
 
 1. [PerfInsights.zip](https://aka.ms/perfinsightsdownload)letöltése.
 
-2. A PerfInsights.zip fájl blokkolásának feloldása. Ehhez kattintson a jobb gombbal a PerfInsights.zip fájlra, majd válassza a **Tulajdonságok**lehetőséget. Az **általános** lapon válassza a **Tiltás feloldása**elemet, majd kattintson **az OK gombra**. Ez biztosítja, hogy az eszköz további biztonsági kérések nélkül fusson.  
+2. A PerfInsights.zip fájl blokkolásának feloldása. Ehhez kattintson a jobb gombbal a PerfInsights.zip fájlra, majd válassza a **Tulajdonságok** lehetőséget. Az **általános** lapon válassza a **Tiltás feloldása** elemet, majd kattintson **az OK gombra**. Ez biztosítja, hogy az eszköz további biztonsági kérések nélkül fusson.  
 
     ![Képernyőkép a PerfInsights tulajdonságairól, Kiemelt feloldással](media/how-to-use-perfInsights/pi-unlock-file.png)
 
@@ -283,7 +282,7 @@ A kötet perspektívájában (Volume map) a táblázatok az egyes logikai kötet
 
 ### <a name="sql-tab"></a>SQL lap
 
-Ha a célként megadott virtuális gép bármely SQL Server példányt futtat, a jelentés egy további lapja jelenik meg, az **SQL**neve:
+Ha a célként megadott virtuális gép bármely SQL Server példányt futtat, a jelentés egy további lapja jelenik meg, az **SQL** neve:
 
 ![Az SQL Tab képernyőképe](media/how-to-use-perfInsights/pi-sql-tab.png)
 
@@ -310,7 +309,7 @@ A Diskspd egy Storage Load Generator és Performance test eszköz a Microsofttó
 
 A XPerf egy parancssori eszköz, amely a Windows Performance Toolkit nyomkövetéseit rögzíti. További információ: [Windows Performance Toolkit – XPerf](/archive/blogs/ntdebugging/windows-performance-toolkit-xperf).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A diagnosztikai naplókat és jelentéseket feltöltheti Microsoft ügyfélszolgálata további áttekintés céljából. A támogatás kérheti, hogy továbbítsa a PerfInsights által generált kimenetet, hogy segítséget nyújtson a hibaelhárítási folyamathoz.
 

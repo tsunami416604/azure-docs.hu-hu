@@ -4,11 +4,11 @@ description: Ebből a cikkből megtudhatja, hogyan használhatja a Azure Backup 
 ms.topic: conceptual
 ms.date: 05/24/2020
 ms.openlocfilehash: db5e5c4bdac64e2faf5babb107ecec61a02d6468
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90069832"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002953"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>VMware virtuális gépek biztonsági mentése a Azure Backup Server
 
@@ -76,7 +76,7 @@ A következőképpen állíthatja be a biztonságos csatornát:
 
     ![vSphere webes ügyfél](./media/backup-azure-backup-server-vmware/vsphere-web-client.png)
 
-2. A vSphere webes ügyfél bejelentkezés lapján válassza a **megbízható legfelső szintű hitelesítésszolgáltatói tanúsítványok letöltése**lehetőséget.
+2. A vSphere webes ügyfél bejelentkezés lapján válassza a **megbízható legfelső szintű hitelesítésszolgáltatói tanúsítványok letöltése** lehetőséget.
 
     ![Megbízható legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány letöltése](./media/backup-azure-backup-server-vmware/vmware-download-ca-cert-prompt.png)
 
@@ -86,33 +86,33 @@ A következőképpen állíthatja be a biztonságos csatornát:
 
 4. Mentse a fájlt a Azure Backup Server gépre. zip kiterjesztéssel.
 
-5. Kattintson a jobb gombbal **download.zip**  >  **az összes kibontása**elemre. A. zip fájl kibontja a tartalmát a **tanúsítványok** mappába, amely a következőket tartalmazza:
+5. Kattintson a jobb gombbal **download.zip**  >  **az összes kibontása** elemre. A. zip fájl kibontja a tartalmát a **tanúsítványok** mappába, amely a következőket tartalmazza:
    - A főtanúsítvány fájlja egy olyan bővítménnyel, amely egy számú, például. 0 és. 1 típusú sorszámmal kezdődik.
    - A CRL-fájl kiterjesztése olyan, mint. R0 vagy. R1. A CRL-fájl egy tanúsítvánnyal van társítva.
 
     ![Letöltött tanúsítványok](./media/backup-azure-backup-server-vmware/extracted-files-in-certs-folder.png)
 
-6. A **tanúsítványok** mappában kattintson a jobb gombbal a főtanúsítvány fájl > **Átnevezés**elemre.
+6. A **tanúsítványok** mappában kattintson a jobb gombbal a főtanúsítvány fájl > **Átnevezés** elemre.
 
     ![Főtanúsítvány átnevezése](./media/backup-azure-backup-server-vmware/rename-cert.png)
 
 7. Módosítsa a főtanúsítvány bővítményét. CRT-re, és erősítse meg. A fájl ikon egy főtanúsítványt jelképező egyikre változik.
 
-8. Kattintson a jobb gombbal a főtanúsítványra, majd az előugró menüben válassza a **tanúsítvány telepítése**lehetőséget.
+8. Kattintson a jobb gombbal a főtanúsítványra, majd az előugró menüben válassza a **tanúsítvány telepítése** lehetőséget.
 
-9. A **tanúsítvány importálása varázslóban**válassza a **helyi gép** lehetőséget a tanúsítvány célhelye, majd kattintson a **tovább**gombra. Győződjön meg arról, hogy a rendszer megkérdezi, hogy szeretné-e engedélyezni a számítógép módosításait.
+9. A **tanúsítvány importálása varázslóban** válassza a **helyi gép** lehetőséget a tanúsítvány célhelye, majd kattintson a **tovább** gombra. Győződjön meg arról, hogy a rendszer megkérdezi, hogy szeretné-e engedélyezni a számítógép módosításait.
 
     ![Varázsló – Üdvözöljük](./media/backup-azure-backup-server-vmware/certificate-import-wizard1.png)
 
-10. A **tanúsítványtároló** lapon válassza a **minden tanúsítvány tárolása a következő tárolóban**lehetőséget, majd válassza a **Tallózás** lehetőséget a tanúsítványtároló kiválasztásához.
+10. A **tanúsítványtároló** lapon válassza a **minden tanúsítvány tárolása a következő tárolóban** lehetőséget, majd válassza a **Tallózás** lehetőséget a tanúsítványtároló kiválasztásához.
 
     ![Tanúsítvány tárolása](./media/backup-azure-backup-server-vmware/cert-import-wizard-local-store.png)
 
-11. A **tanúsítványtároló kiválasztása**területen válassza ki a **megbízható legfelső szintű hitelesítésszolgáltatók** mappát a tanúsítványok célmappájában, majd kattintson az **OK gombra**.
+11. A **tanúsítványtároló kiválasztása** területen válassza ki a **megbízható legfelső szintű hitelesítésszolgáltatók** mappát a tanúsítványok célmappájában, majd kattintson az **OK gombra**.
 
     ![Tanúsítvány célmappája](./media/backup-azure-backup-server-vmware/certificate-store-selected.png)
 
-12. A **tanúsítvány importálása varázsló befejezése lapon**ellenőrizze a mappát, majd kattintson a **Befejezés gombra**.
+12. A **tanúsítvány importálása varázsló befejezése lapon** ellenőrizze a mappát, majd kattintson a **Befejezés gombra**.
 
     ![A tanúsítvány ellenőrzése a megfelelő mappában van](./media/backup-azure-backup-server-vmware/cert-wizard-final-screen.png)
 
@@ -130,7 +130,7 @@ Ha a szervezeten belül biztonságos határok vannak, és nem szeretné a VMware
     "IgnoreCertificateValidation"=dword:00000001
     ```
 
-2. Mentse a fájlt a Azure Backup Server gépen a **DisableSecureAuthentication. reg**néven.
+2. Mentse a fájlt a Azure Backup Server gépen a **DisableSecureAuthentication. reg** néven.
 
 3. A beállításjegyzék-bejegyzés aktiválásához kattintson duplán a fájlra.
 
@@ -139,11 +139,11 @@ Ha a szervezeten belül biztonságos határok vannak, és nem szeretné a VMware
 A Azure Backup Server egy olyan felhasználói fiókra van szüksége, amely jogosult a v-Center Server/ESXi-gazdagép elérésére. Hozzon létre egy VMware-szerepkört meghatározott jogosultságokkal, majd társítson egy felhasználói fiókot a szerepkörhöz.
 
 1. Jelentkezzen be a vCenter Serverba (vagy ESXi-gazdagépre, ha nem használja a vCenter Server).
-2. A **navigátor** panelen válassza az **Adminisztráció**lehetőséget.
+2. A **navigátor** panelen válassza az **Adminisztráció** lehetőséget.
 
     ![Felügyelet](./media/backup-azure-backup-server-vmware/vmware-navigator-panel.png)
 
-3. Az **adminisztrációs**  >  **szerepkörök**területen válassza a szerepkör hozzáadása ikont (a + szimbólum).
+3. Az **adminisztrációs**  >  **szerepkörök** területen válassza a szerepkör hozzáadása ikont (a + szimbólum).
 
     ![Szerepkör hozzáadása](./media/backup-azure-backup-server-vmware/vmware-define-new-role.png)
 
@@ -199,7 +199,7 @@ A következő táblázat rögzíti azokat a jogosultságokat, amelyeket a létre
 | Virtuális gép. Kiépítés. lemezes hozzáférés engedélyezése                            | Virtuális gép. Kiépítés. lemezes hozzáférés engedélyezése                            |
 | Virtuális gép. Kiépítés. fájlok hozzáférésének engedélyezése                            | Virtuális gép. Kiépítés. fájlok hozzáférésének engedélyezése                            |
 | Virtuális gép. Kiépítés. írásvédett lemezes hozzáférés engedélyezése                  | Virtuális gép. Kiépítés. írásvédett lemezes hozzáférés engedélyezése                  |
-| Virtuális gép. Üzembe helyezés. virtuális gép letöltésének engedélyezése               | Virtuális gép. Üzembe helyezés. virtuális gép letöltésének engedélyezése               |
+| Virtuális gép. Üzembe helyezés. virtuális gép letöltésének engedélyezése               | Virtuális gép. Üzembe helyezés. virtuális gép letöltésének engedélyezése               |
 | Virtuális gép. Pillanatképek kezelése. Pillanatkép készítése                      | Virtuális gép. Pillanatképek kezelése. Pillanatkép készítése                      |
 | Virtuális gép. Pillanatképek kezelése. Pillanatkép eltávolítása                       | Virtuális gép. Pillanatképek kezelése. Pillanatkép eltávolítása                       |
 | Virtuális gép. Pillanatképek kezelése. Helyreállítás pillanatképre                    | Virtuális gép. Pillanatképek kezelése. Helyreállítás pillanatképre                    |
@@ -230,7 +230,7 @@ A következő táblázat rögzíti azokat a jogosultságokat, amelyeket a létre
 
 ## <a name="create-a-vmware-account"></a>VMware-fiók létrehozása
 
-1. VCenter Server- **navigátor** panelen válassza a **felhasználók és csoportok**lehetőséget. Ha nem használja a vCenter Server, hozza létre a fiókot a megfelelő ESXi-gazdagépen.
+1. VCenter Server- **navigátor** panelen válassza a **felhasználók és csoportok** lehetőséget. Ha nem használja a vCenter Server, hozza létre a fiókot a megfelelő ESXi-gazdagépen.
 
     ![Felhasználók és csoportok beállítás](./media/backup-azure-backup-server-vmware/vmware-userandgroup-panel.png)
 
@@ -244,19 +244,19 @@ A következő táblázat rögzíti azokat a jogosultságokat, amelyeket a létre
 
     ![Új felhasználó párbeszédpanel](./media/backup-azure-backup-server-vmware/vmware-new-user-account.png)
 
-4. Ahhoz, hogy a felhasználói fiókot társítsa a szerepkörhöz, a **navigátor** panelen válassza a **globális engedélyek**lehetőséget. A **globális engedélyek** panelen válassza a **kezelés** lapot, majd válassza a Hozzáadás ikont (a + szimbólumot).
+4. Ahhoz, hogy a felhasználói fiókot társítsa a szerepkörhöz, a **navigátor** panelen válassza a **globális engedélyek** lehetőséget. A **globális engedélyek** panelen válassza a **kezelés** lapot, majd válassza a Hozzáadás ikont (a + szimbólumot).
 
     ![Globális engedélyek panel](./media/backup-azure-backup-server-vmware/vmware-add-new-perms.png)
 
-5. A **globális engedély root-Add engedély**területen válassza a **Hozzáadás** lehetőséget a felhasználó vagy csoport kiválasztásához.
+5. A **globális engedély root-Add engedély** területen válassza a **Hozzáadás** lehetőséget a felhasználó vagy csoport kiválasztásához.
 
     ![Felhasználó vagy csoport kiválasztása](./media/backup-azure-backup-server-vmware/vmware-add-new-global-perm.png)
 
-6. A **felhasználók/csoportok kiválasztása lapon**válassza a **BackupAdmin**  >  **Hozzáadás**lehetőséget. A **felhasználók**a felhasználói fiókhoz a *tartomány \ Felhasználónév* formátumot használják. Ha másik tartományt szeretne használni, válassza ki a **tartományt a tartomány** listából. Kattintson az **OK** gombra a kiválasztott felhasználók hozzáadásához az **engedély hozzáadása** párbeszédpanelen.
+6. A **felhasználók/csoportok kiválasztása lapon** válassza a **BackupAdmin**  >  **Hozzáadás** lehetőséget. A **felhasználók** a felhasználói fiókhoz a *tartomány \ Felhasználónév* formátumot használják. Ha másik tartományt szeretne használni, válassza ki a **tartományt a tartomány** listából. Kattintson az **OK** gombra a kiválasztott felhasználók hozzáadásához az **engedély hozzáadása** párbeszédpanelen.
 
     ![BackupAdmin-felhasználó hozzáadása](./media/backup-azure-backup-server-vmware/vmware-assign-account-to-role.png)
 
-7. A **hozzárendelt szerepkör**listából válassza a legördülő lista **BackupAdminRole**  >  **OK**elemét.
+7. A **hozzárendelt szerepkör** listából válassza a legördülő lista **BackupAdminRole**  >  **OK** elemét.
 
     ![Felhasználó társítása szerepkörhöz](./media/backup-azure-backup-server-vmware/vmware-choose-role.png)
 
@@ -268,15 +268,15 @@ A **globális engedélyek** panel **kezelés** lapján az új felhasználói fi�
 
     ![Azure Backup Server ikon](./media/backup-azure-backup-server-vmware/mabs-icon.png)
 
-2. A Azure Backup Server-konzolon válassza a **felügyeleti**  >   **üzemi kiszolgálók**a  >  **VMware kezelése**lehetőséget.
+2. A Azure Backup Server-konzolon válassza a **felügyeleti**  >   **üzemi kiszolgálók** a  >  **VMware kezelése** lehetőséget.
 
     ![Azure Backup Server konzol](./media/backup-azure-backup-server-vmware/add-vmware-credentials.png)
 
-3. A **hitelesítő adatok kezelése** párbeszédpanelen válassza a **Hozzáadás**lehetőséget.
+3. A **hitelesítő adatok kezelése** párbeszédpanelen válassza a **Hozzáadás** lehetőséget.
 
     ![Hitelesítő adatok kezelése párbeszédpanel](./media/backup-azure-backup-server-vmware/mabs-manage-credentials-dialog.png)
 
-4. A **hitelesítő adatok hozzáadása**lapon adja meg az új hitelesítő adat nevét és leírását, majd adja meg a VMware-kiszolgálón megadott felhasználónevet és jelszót. A *contoso vCenter hitelesítő adatai* a hitelesítő adatok azonosítására szolgálnak ebben az eljárásban. Ha a VMware-kiszolgáló és a Azure Backup Server nem ugyanabban a tartományban van, adja meg a tartományt a felhasználónévben.
+4. A **hitelesítő adatok hozzáadása** lapon adja meg az új hitelesítő adat nevét és leírását, majd adja meg a VMware-kiszolgálón megadott felhasználónevet és jelszót. A *contoso vCenter hitelesítő adatai* a hitelesítő adatok azonosítására szolgálnak ebben az eljárásban. Ha a VMware-kiszolgáló és a Azure Backup Server nem ugyanabban a tartományban van, adja meg a tartományt a felhasználónévben.
 
     ![Azure Backup Server hitelesítő adat hozzáadása párbeszédpanel](./media/backup-azure-backup-server-vmware/mabs-add-credential-dialog2.png)
 
@@ -288,21 +288,21 @@ A **globális engedélyek** panel **kezelés** lapján az új felhasználói fi�
 
 Adja hozzá a vCenter Servert a Azure Backup Serverhoz.
 
-1. A Azure Backup Server-konzolon válassza a **felügyelet**  >  **üzemi kiszolgálók**  >  **Hozzáadás**elemet.
+1. A Azure Backup Server-konzolon válassza a **felügyelet**  >  **üzemi kiszolgálók**  >  **Hozzáadás** elemet.
 
     ![Az üzemi kiszolgáló hozzáadása varázsló megnyitása](./media/backup-azure-backup-server-vmware/add-vcenter-to-mabs.png)
 
-2. Az **üzemi kiszolgáló hozzáadása varázslóban**  >  **válassza ki a termelési kiszolgáló típusa** lapot, válassza ki a **VMware-kiszolgálók**elemet, majd kattintson a **tovább**gombra.
+2. Az **üzemi kiszolgáló hozzáadása varázslóban**  >  **válassza ki a termelési kiszolgáló típusa** lapot, válassza ki a **VMware-kiszolgálók** elemet, majd kattintson a **tovább** gombra.
 
     ![Üzemi kiszolgáló hozzáadása varázsló](./media/backup-azure-backup-server-vmware/production-server-add-wizard.png)
 
-3. A **számítógépek**  **kiszolgáló nevének/IP-címének**kiválasztása lapon adja meg a VMware-kiszolgáló teljes tartománynevét vagy IP-címét. Ha az ESXi-kiszolgálók mindegyikét ugyanazzal a vCenter felügyeli, adja meg a vCenter nevét. Ellenkező esetben adja hozzá az ESXi-gazdagépet.
+3. A **számítógépek**  **kiszolgáló nevének/IP-címének** kiválasztása lapon adja meg a VMware-kiszolgáló teljes tartománynevét vagy IP-címét. Ha az ESXi-kiszolgálók mindegyikét ugyanazzal a vCenter felügyeli, adja meg a vCenter nevét. Ellenkező esetben adja hozzá az ESXi-gazdagépet.
 
     ![VMware-kiszolgáló meghatározása](./media/backup-azure-backup-server-vmware/add-vmware-server-provide-server-name.png)
 
-4. Az **SSL-port**mezőben adja meg a VMware-kiszolgálóval való kommunikációhoz használt portot. 443 az alapértelmezett port, de megváltoztathatja, ha a VMware-kiszolgáló egy másik porton figyel.
+4. Az **SSL-port** mezőben adja meg a VMware-kiszolgálóval való kommunikációhoz használt portot. 443 az alapértelmezett port, de megváltoztathatja, ha a VMware-kiszolgáló egy másik porton figyel.
 
-5. A **hitelesítő adatok megadása**területen válassza ki a korábban létrehozott hitelesítő adatokat.
+5. A **hitelesítő adatok megadása** területen válassza ki a korábban létrehozott hitelesítő adatokat.
 
     ![Hitelesítő adat megadása](./media/backup-azure-backup-server-vmware/identify-creds.png)
 
@@ -324,7 +324,7 @@ Ha több ESXi-gazdagépe nem a vCenter-kiszolgáló által felügyelt, vagy ha v
 
 VMware virtuális gépek hozzáadása a biztonsági mentéshez. A védelmi csoportok több virtuális gépet gyűjtenek, és ugyanazokat az adatmegőrzési és biztonsági mentési beállításokat alkalmazzák a csoport összes virtuális gépére.
 
-1. A Azure Backup Server-konzolon válassza a **védelem**lehetőséget, > **új**elemet.
+1. A Azure Backup Server-konzolon válassza a **védelem** lehetőséget, > **új** elemet.
 
     ![Az új védelmi csoport létrehozása varázsló megnyitása](./media/backup-azure-backup-server-vmware/open-protection-wizard.png)
 
@@ -332,9 +332,9 @@ VMware virtuális gépek hozzáadása a biztonsági mentéshez. A védelmi csopo
 
     ![Új védelmi csoport létrehozása varázsló párbeszédpanel](./media/backup-azure-backup-server-vmware/protection-wizard.png)
 
-1. A **védelmi csoport típusának kiválasztása** lapon válassza a **kiszolgálók** lehetőséget, majd kattintson a **tovább**gombra. Megjelenik a **csoporttagok kiválasztása** lap.
+1. A **védelmi csoport típusának kiválasztása** lapon válassza a **kiszolgálók** lehetőséget, majd kattintson a **tovább** gombra. Megjelenik a **csoporttagok kiválasztása** lap.
 
-1. A **csoporttagok kiválasztása**területen válassza ki azokat a virtuális gépeket (vagy virtuálisgép-mappákat), amelyekről biztonsági másolatot szeretne készíteni. Ezután kattintson a **Tovább** gombra.
+1. A **csoporttagok kiválasztása** területen válassza ki azokat a virtuális gépeket (vagy virtuálisgép-mappákat), amelyekről biztonsági másolatot szeretne készíteni. Ezután kattintson a **Tovább** gombra.
 
     - Ha kijelöl egy mappát, vagy a mappában található virtuális gépek vagy mappák is ki vannak választva a biztonsági mentéshez. Törölheti azokat a mappákat vagy virtuális gépeket, amelyekről nem kíván biztonsági másolatot készíteni.
 1. Ha már folyamatban van egy virtuális gép vagy mappa biztonsági mentése, azt nem lehet kijelölni. Ez biztosítja, hogy a rendszer duplikált helyreállítási pontokat hozzon létre egy virtuális géphez.
@@ -345,18 +345,18 @@ VMware virtuális gépek hozzáadása a biztonsági mentéshez. A védelmi csopo
 
     ![Az adatvédelmi módszer kiválasztása](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
-1. A **Short-Term célok megadása**területen határozza meg, hogy mennyi ideig szeretné megőrizni a lemezre a biztonsági mentést.
-   - A **megőrzési tartomány**mezőben határozza meg, hogy hány nap elteltével kell megőrizni a lemezes helyreállítási pontokat.
-   - A **szinkronizálás gyakorisága**mezőben határozza meg, hogy milyen gyakran történjen lemezes helyreállítási pont.
+1. A **Short-Term célok megadása** területen határozza meg, hogy mennyi ideig szeretné megőrizni a lemezre a biztonsági mentést.
+   - A **megőrzési tartomány** mezőben határozza meg, hogy hány nap elteltével kell megőrizni a lemezes helyreállítási pontokat.
+   - A **szinkronizálás gyakorisága** mezőben határozza meg, hogy milyen gyakran történjen lemezes helyreállítási pont.
        - Ha nem szeretné beállítani a biztonsági mentés időközét, akkor **közvetlenül egy helyreállítási pont előtt** is megtekintheti, hogy a biztonsági mentés az egyes helyreállítási pontok ütemezése előtt fusson.
        - A rövid távú biztonsági mentések teljes biztonsági mentést biztosítanak, és nem növekményes.
        - A **módosítás** gombra kattintva módosíthatja a rövid távú biztonsági mentések időpontját és időpontját.
 
          ![Rövid távú célok megadása](./media/backup-azure-backup-server-vmware/short-term-goals.png)
 
-1. A **lemez kiosztásának áttekintése**lapon tekintse át a virtuális gépek biztonsági másolatainak rendelkezésre álló lemezterületet. a virtuális gépek esetében.
+1. A **lemez kiosztásának áttekintése** lapon tekintse át a virtuális gépek biztonsági másolatainak rendelkezésre álló lemezterületet. a virtuális gépek esetében.
 
-   - Az ajánlott lemez-foglalások a megadott megőrzési időtartamon, a munkaterhelés típusától és a védett adatok méretén alapulnak. Végezze el a szükséges módosításokat, majd kattintson a **tovább**gombra.
+   - Az ajánlott lemez-foglalások a megadott megőrzési időtartamon, a munkaterhelés típusától és a védett adatok méretén alapulnak. Végezze el a szükséges módosításokat, majd kattintson a **tovább** gombra.
    - **Adatméret:** A védelmi csoportban lévő adatméret.
    - **Lemezterület:** A védelmi csoport számára ajánlott lemezterület. Ha módosítani kívánja ezt a beállítást, akkor az egyes adatforrások által becsült mennyiségnél valamivel nagyobb teljes területet kell kiosztania.
    - **Az adatkeresés:** Ha bekapcsolja a közös elhelyezést, a védelemben több adatforrás is leképezhető egyetlen replika és egy helyreállítási pont kötetre. Az egyhelyes elhelyezés nem támogatott az összes munkaterhelésnél.
@@ -365,16 +365,16 @@ VMware virtuális gépek hozzáadása a biztonsági mentéshez. A védelmi csopo
 
     ![Lemez kiosztásának áttekintése](./media/backup-azure-backup-server-vmware/review-disk-allocation.png)
 
-1. A **replika-létrehozási módszer kiválasztása** lapon adja meg, hogyan szeretné elkészíteni a kezdeti biztonsági mentést, majd válassza a **tovább**lehetőséget.
+1. A **replika-létrehozási módszer kiválasztása** lapon adja meg, hogyan szeretné elkészíteni a kezdeti biztonsági mentést, majd válassza a **tovább** lehetőséget.
    - Az alapértelmezett érték **automatikusan a hálózaton keresztül** történik, és **most**.
    - Ha az alapértelmezett beállítást használja, azt javasoljuk, hogy válasszon ki egy off-Peak időpontot. Válassza a **később** lehetőséget, és adjon meg egy napot és egy időpontot.
    - Nagy mennyiségű vagy kevésbé optimális hálózati feltételnél érdemes lehet a cserélhető adathordozó használatával offline módon replikálni az adatfájlokat.
 
     ![Replika-létrehozási módszer kiválasztása](./media/backup-azure-backup-server-vmware/replica-creation.png)
 
-1. A **konzisztencia-ellenőrzés beállításainál**válassza ki, hogyan és mikor szeretné automatizálni a konzisztencia-ellenőrzéseket. Ezután kattintson a **Tovább** gombra.
+1. A **konzisztencia-ellenőrzés beállításainál** válassza ki, hogyan és mikor szeretné automatizálni a konzisztencia-ellenőrzéseket. Ezután kattintson a **Tovább** gombra.
       - A konzisztencia-ellenőrzéseket futtathatja, ha a replika adatai inkonzisztensek, vagy egy meghatározott ütemterv alapján.
-      - Ha nem szeretne automatikus konzisztencia-ellenőrzést beállítani, akkor manuális ellenőrzést is futtathat. Ehhez kattintson a jobb gombbal a védelmi csoportra > **konzisztencia-ellenőrzés végrehajtása**parancsra.
+      - Ha nem szeretne automatikus konzisztencia-ellenőrzést beállítani, akkor manuális ellenőrzést is futtathat. Ehhez kattintson a jobb gombbal a védelmi csoportra > **konzisztencia-ellenőrzés végrehajtása** parancsra.
 
 1. Az **online védelmi adatkapcsolat megadása** oldalon válassza ki azokat a virtuális gépeket vagy virtuálisgép-mappákat, amelyekről biztonsági másolatot szeretne készíteni. A tagokat egyenként is kiválaszthatja, vagy az **összes kijelölése** lehetőséget választva kiválaszthatja az összes tagot. Ezután kattintson a **Tovább** gombra.
 
@@ -387,14 +387,14 @@ VMware virtuális gépek hozzáadása a biztonsági mentéshez. A védelmi csopo
 
     ![Online biztonsági mentési ütemterv megadása](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
 
-1. Az **online adatmegőrzési szabály meghatározása** lapon adja meg, hogy mennyi ideig szeretné megőrizni a napi/heti/havi/éves biztonsági másolatokből az Azure-ba létrehozott helyreállítási pontokat. Ezután válassza a **tovább**lehetőséget.
+1. Az **online adatmegőrzési szabály meghatározása** lapon adja meg, hogy mennyi ideig szeretné megőrizni a napi/heti/havi/éves biztonsági másolatokből az Azure-ba létrehozott helyreállítási pontokat. Ezután válassza a **tovább** lehetőséget.
 
     - Nincs időkorlát arra vonatkozóan, hogy mennyi ideig tarthat az Azure-beli adatmegőrzés.
     - Az egyetlen korlát, hogy a védett példányok esetében nem lehet több, mint 9999 helyreállítási pont. Ebben a példában a védett példány a VMware-kiszolgáló.
 
     ![Online adatmegőrzési szabály meghatározása](./media/backup-azure-backup-server-vmware/retention-policy.png)
 
-1. Az **Összefoglalás** lapon tekintse át a beállításokat, majd kattintson a **csoport létrehozása**elemre.
+1. Az **Összefoglalás** lapon tekintse át a beállításokat, majd kattintson a **csoport létrehozása** elemre.
 
     ![Védelmi csoport tagja és a beállítás összegzése](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
 
@@ -564,6 +564,6 @@ A lemez kizárásból való eltávolításához futtassa a következő parancsot
 C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -Remove "[datastore1] TestVM4/TestVM4\_1.vmdk"
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A biztonsági másolatok beállítása során felmerülő problémák elhárításához tekintse át a [Azure Backup Server hibaelhárítási útmutatóját](./backup-azure-mabs-troubleshoot.md).

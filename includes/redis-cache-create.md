@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: redis-cache
 author: curib
 ms.service: cache
@@ -8,21 +8,21 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: cauribeg
 ms.custom: include file
-ms.openlocfilehash: 07a80fcd1ec62b051a660bdac696f89e3b7c42b7
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: da36cb5c5d2db20b89f80d381f48632c7528c193
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93353998"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002457"
 ---
 1. Gyorsítótár létrehozásához jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza az **erőforrás létrehozása** lehetőséget.
 
-    :::image type="content" source="media/redis-cache-create/create-resource.png" alt-text="Válassza ki az Azure cache-t a Redis.":::
+    :::image type="content" source="media/redis-cache-create/create-resource.png" alt-text="Az erőforrás létrehozása a bal oldali navigációs panelen van kiemelve.":::
 
    
 1. Az **új** lapon válassza az **adatbázisok** lehetőséget, majd válassza az Azure cache lehetőséget a **Redis számára**.
 
-    :::image type="content" source="media/redis-cache-create/select-cache.png" alt-text="Válassza ki az Azure cache-t a Redis.":::
+    :::image type="content" source="media/redis-cache-create/select-cache.png" alt-text="Az új, az adatbázisok ki van emelve, a Redis pedig az Azure cache van kiemelve.":::
    
 1. Az **új Redis cache** lapon adja meg az új gyorsítótár beállításait.
    
@@ -50,7 +50,7 @@ ms.locfileid: "93353998"
 
 1. Szükség esetén a **címkék** lapon adja meg a nevet és az értéket, ha az erőforrást kategorizálni szeretné. 
 
-1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. A felülvizsgálat + létrehozás lapon az Azure ellenőrzi a konfigurációt.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget. A felülvizsgálat + létrehozás lapon az Azure ellenőrzi a konfigurációt.
 
 1. Ha megjelenik az átadott zöld érvényesítés üzenet, válassza a **Létrehozás** lehetőséget.
 

@@ -15,11 +15,11 @@ ms.author: curtand
 ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 45144f64789a19390984c3f9f6a660e3c3300215
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84743150"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002493"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-privileged-identity-management"></a>Az Azure Resource szerepköreinek tevékenység-és naplózási előzményeinek megtekintése Privileged Identity Management
 
@@ -80,17 +80,17 @@ Az erőforrás-naplózás az erőforrás összes szerepkör-tevékenységének n
 
 1. Válassza ki azt az erőforrást, amelyre vonatkozóan meg szeretné tekinteni a naplózási előzményeket.
 
-1. Válassza az **erőforrás-naplózás**lehetőséget.
+1. Válassza az **erőforrás-naplózás** lehetőséget.
 
 1. Az előzmények szűrése előre megadott dátummal vagy egyéni tartománnyal.
 
     [![Erőforrás-naplózási lista szűrőkkel](media/azure-pim-resource-rbac/rbac-resource-audit.png "Erőforrás-naplózási lista szűrőkkel")](media/azure-pim-resource-rbac/rbac-resource-audit.png)
 
-1. A **naplózás típusa**beállításnál válassza az **aktiválás (hozzárendelt + aktivált)** lehetőséget.
+1. A **naplózás típusa** beállításnál válassza az **aktiválás (hozzárendelt + aktivált)** lehetőséget.
 
     [![Erőforrás-naplózási lista a naplózási típus](media/azure-pim-resource-rbac/rbac-audit-activity.png "Az erőforrás-naplózási lista aktiválása alapján szűrve")](media/azure-pim-resource-rbac/rbac-audit-activity.png) ![ aktiválása alapján szűrve A naplózási típus aktiválásával szűrt erőforrás-naplózási lista](media/azure-pim-resource-rbac/rbac-audit-activity.png)
 
-1. A **művelet**területen kattintson az **(tevékenység)** elemre a felhasználó számára, hogy megtekintse a felhasználó tevékenységének részleteit az Azure-erőforrásokban.
+1. A **művelet** területen kattintson az **(tevékenység)** elemre a felhasználó számára, hogy megtekintse a felhasználó tevékenységének részleteit az Azure-erőforrásokban.
 
     ![Egy adott művelet felhasználói tevékenységének részletei](media/azure-pim-resource-rbac/rbac-audit-activity-details.png)
 
@@ -104,7 +104,7 @@ A saját audit lehetővé teszi a személyes szerepkör-tevékenységek megtekin
 
 1. Válassza ki azt az erőforrást, amelyre vonatkozóan meg szeretné tekinteni a naplózási előzményeket.
 
-1. Válassza **a saját naplózás**lehetőséget.
+1. Válassza **a saját naplózás** lehetőséget.
 
 1. Az előzmények szűrése előre megadott dátummal vagy egyéni tartománnyal.
 

@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
 ms.openlocfilehash: a37808548ec58977b7d6af16c75b94b7b5efe446
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91271596"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002936"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>Azure Recovery Services-tároló létrehozása REST API használatával
 
@@ -38,7 +38,7 @@ További információ a kérelem létrehozásáról: [REST API kérelem/válasz 
 
 A kérelem törzsének létrehozásához a következő általános definíciók használhatók:
 
-|Name (Név)  |Kötelező  |Típus  |Leírás  |
+|Név  |Kötelező  |Típus  |Leírás  |
 |---------|---------|---------|---------|
 |eTag     |         |   Sztring      |  Opcionális eTag       |
 |location     |  true       |Sztring         |   Erőforrás helye      |
@@ -92,7 +92,7 @@ Az előző példában szereplő kérelem törzsében létrehozott, sűrített *2
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Hozzon létre egy biztonsági mentési szabályzatot egy Azure-beli virtuális gép biztonsági mentéséhez ebben a tárolóban](backup-azure-arm-userestapi-createorupdatepolicy.md).
 

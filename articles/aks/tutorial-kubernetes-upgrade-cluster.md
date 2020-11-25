@@ -6,11 +6,11 @@ ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 2e9af5dcc00d8cadd0528d56ee73bc6aeba149d7
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747731"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002034"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Oktatóanyag: A Kubernetes frissítése az Azure Kubernetes Service (AKS) szolgáltatásban
 
@@ -37,7 +37,7 @@ A fürtök frissítése előtt az [az aks get-upgrades][] paranccsal ellenőrizz
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
-A következő példában az aktuális verzió a *1.15.11* , és az elérhető verziók a *frissítések* területen jelennek meg.
+A következő példában az aktuális verzió a *1.15.11*, és az elérhető verziók a *frissítések* területen jelennek meg.
 
 ```json
 {
@@ -80,9 +80,9 @@ az aks upgrade \
 ```
 
 > [!NOTE]
-> Egyszerre csak egy alverzió frissíthető. Például a *1.14. x* -ről a *1.15. x* -re frissítheti, de a *1.14. x* verziójáról nem lehet közvetlenül az *1.16. x* -re frissíteni. Ha a *1.14. x* -ről *1.16. x* -re szeretne frissíteni, először frissítse a *1.14. x* -ről *1.15. x* -re, majd végezzen újabb frissítést *1.15. x* -ről *1.16. x* -re.
+> Egyszerre csak egy alverzió frissíthető. Például a *1.14. x* -ről a *1.15. x*-re frissítheti, de a *1.14. x* verziójáról nem lehet közvetlenül az *1.16. x* -re frissíteni. Ha a *1.14. x* -ről *1.16. x*-re szeretne frissíteni, először frissítse a *1.14. x* -ről *1.15. x*-re, majd végezzen újabb frissítést *1.15. x* -ről *1.16. x*-re.
 
-A következő összetömörített példa kimenete a *1.16.8* -re való frissítés eredményét mutatja. Figyelje meg, hogy a *kubernetesVersion* most jelentések *1.16.8* :
+A következő összetömörített példa kimenete a *1.16.8*-re való frissítés eredményét mutatja. Figyelje meg, hogy a *kubernetesVersion* most jelentések *1.16.8*:
 
 ```json
 {
@@ -134,7 +134,7 @@ az group delete --name myResourceGroup --yes --no-wait
 > [!NOTE]
 > A fürt törlésekor az AKS-fürt által használt Azure Active Directory-szolgáltatásnév nem lesz eltávolítva. A szolgáltatásnév eltávolításának lépéseiért lásd [az AKS-szolgáltatásnevekre vonatkozó szempontokat és a szolgáltatásnevek törlését][sp-delete] ismertető cikket. Ha felügyelt identitást használt, az identitást a platform felügyeli, és nincs szükség titkos kódok kiépítésére vagy elforgatására.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban frissítettük a Kubernetest egy AKS-fürtben. Megtanulta végrehajtani az alábbi műveleteket:
 

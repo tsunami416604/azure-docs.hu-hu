@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: 726cf362e62f0ef914dfaea090a08c224bd5d8d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82192501"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001949"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Hozzáférési Apache Hadoop a FONALas alkalmazások naplóihoz a Linux-alapú HDInsight
 
@@ -21,9 +21,9 @@ Megtudhatja, hogyan érheti el a naplókat [Apache HADOOP fonalak](https://hadoo
 
 ## <a name="what-is-apache-yarn"></a>Mi az Apache-fonal?
 
-A FONALak több programozási modellt támogatnak (Apache Hadoop MapReduce is) az erőforrás-kezelés leválasztásával az alkalmazás ütemezése/monitorozása során. A fonal globális *`ResourceManager`* (RM), munkavégző-csomópontos *Csomópontkezelők* (ApplicationMasters) és alkalmazáson belüli *ApplicationMasters* (AMs) használ. Az per-Application AM egyezteti az erőforrásokat (processzor, memória, lemez, hálózat) az alkalmazásnak az RM-vel való futtatásához. Az RM úgy működik, hogy az ilyen erőforrásokat *tárolóként*adja meg. Az AM feladata az RM által hozzárendelt tárolók állapotának nyomon követése. Egy alkalmazás az alkalmazás természetétől függően számos tárolót igényelhet.
+A FONALak több programozási modellt támogatnak (Apache Hadoop MapReduce is) az erőforrás-kezelés leválasztásával az alkalmazás ütemezése/monitorozása során. A fonal globális *`ResourceManager`* (RM), munkavégző-csomópontos *Csomópontkezelők* (ApplicationMasters) és alkalmazáson belüli *ApplicationMasters* (AMs) használ. Az per-Application AM egyezteti az erőforrásokat (processzor, memória, lemez, hálózat) az alkalmazásnak az RM-vel való futtatásához. Az RM úgy működik, hogy az ilyen erőforrásokat *tárolóként* adja meg. Az AM feladata az RM által hozzárendelt tárolók állapotának nyomon követése. Egy alkalmazás az alkalmazás természetétől függően számos tárolót igényelhet.
 
-Minden alkalmazás több *alkalmazási kísérletből*állhat. Ha egy alkalmazás meghibásodik, előfordulhat, hogy a rendszer újrapróbálkozik új kísérletként. Minden kísérlet egy tárolóban fut. Bizonyos értelemben a tárolók a FONALas alkalmazások által végzett Munkaegységek kontextusát biztosítják. A tároló környezetében elvégzett összes munka az egyetlen feldolgozó csomóponton történik, amelyen a tárolót adták. További információért lásd a [Hadoop: fonal-alkalmazások írása](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html)vagy a [Apache Hadoop fonalak](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) .
+Minden alkalmazás több *alkalmazási kísérletből* állhat. Ha egy alkalmazás meghibásodik, előfordulhat, hogy a rendszer újrapróbálkozik új kísérletként. Minden kísérlet egy tárolóban fut. Bizonyos értelemben a tárolók a FONALas alkalmazások által végzett Munkaegységek kontextusát biztosítják. A tároló környezetében elvégzett összes munka az egyetlen feldolgozó csomóponton történik, amelyen a tárolót adták. További információért lásd a [Hadoop: fonal-alkalmazások írása](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html)vagy a [Apache Hadoop fonalak](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) .
 
 Ha a fürtöt a nagyobb feldolgozási sebesség támogatásához kívánja méretezni, a [fürtöket manuálisan, néhány különböző nyelven](hdinsight-scaling-best-practices.md#utilities-to-scale-clusters) [is használhatja.](hdinsight-autoscale-clusters.md)
 
@@ -153,7 +153,7 @@ A fonal `ResourceManager` felhasználói felülete a fürt átjárócsomópontho
 
 1. A böngészőben nyissa meg a következőt: `https://CLUSTERNAME.azurehdinsight.net` . Cserélje le a CLUSTERNAME kifejezést a HDInsight-fürt nevére.
 
-2. A bal oldali szolgáltatások listájából válassza a **fonal**lehetőséget.
+2. A bal oldali szolgáltatások listájából válassza a **fonal** lehetőséget.
 
     ![Apache Ambari fonal-szolgáltatás kiválasztva](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)
 

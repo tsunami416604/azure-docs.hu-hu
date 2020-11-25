@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 5f94564c5e769d3cf0e0abbe92a309a1ee2117a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90055078"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003871"
 ---
 # <a name="deploy-the-storsimple-snapshot-manager-mmc-snap-in"></a>A StorSimple Snapshot Manager MMC beépülő modul üzembe helyezése
 
@@ -87,17 +87,17 @@ A StorSimple Snapshot Manager telepítéséhez kövesse az alábbi lépéseket.
 
 #### <a name="to-install-storsimple-snapshot-manager"></a>A StorSimple telepítése Snapshot Manager
 1. Töltse le a StorSimple Snapshot Manager szoftvert (Nyissa meg a [StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220) a Microsoft letöltőközpontban), és mentse helyileg a gazdagépen.
-2. A Fájlkezelőben kattintson a jobb gombbal a tömörített mappára, majd válassza az **összes kibontása**menüpontot.
+2. A Fájlkezelőben kattintson a jobb gombbal a tömörített mappára, majd válassza az **összes kibontása** menüpontot.
 3. A **Tömörített mappák kibontása** ablakban a **célhely kiválasztása és a fájlok kibontása** mezőben írja be vagy tallózással keresse meg azt az elérési utat, ahová ki szeretné olvasni a fájlt.
    
     > [!IMPORTANT]
     > Telepítenie kell a StorSimple Snapshot Manager a C: meghajtón.
     
-4. Jelölje be a **kibontott fájlok megjelenítése befejezéskor** jelölőnégyzetet, majd kattintson a **Kibontás**gombra.
+4. Jelölje be a **kibontott fájlok megjelenítése befejezéskor** jelölőnégyzetet, majd kattintson a **Kibontás** gombra.
    
     ![Fájlok kibontása párbeszédpanel](./media/storsimple-snapshot-manager-deployment/HCS_SSM_extract_files.png) 
 5. A Kibontás befejezésekor megnyílik a célmappa. Kattintson duplán a célmappában megjelenő Application Setup (alkalmazás beállítása) ikonra.
-6. Amikor megjelenik a **sikeres telepítés** üzenet, kattintson a **Bezárás**gombra. Ekkor megjelenik a StorSimple Snapshot Manager ikon az asztalon.
+6. Amikor megjelenik a **sikeres telepítés** üzenet, kattintson a **Bezárás** gombra. Ekkor megjelenik a StorSimple Snapshot Manager ikon az asztalon.
    
     ![asztal ikon](./media/storsimple-snapshot-manager-deployment/HCS_SSM_desktop_icon.png) 
 
@@ -114,14 +114,14 @@ A következő lépésekkel csatlakozhat a StorSimple-Snapshot Manager egy StorSi
    * A **műveletek** ablaktábla felsorolja azokat a műveleteket, amelyeket végrehajthat a **hatókör** ablaktáblán kiválasztott csomóponton, nézetben vagy adatokon.
      
      A StorSimple Snapshot Manager felhasználói felületének teljes leírását lásd: [StorSimple Snapshot Manager felhasználói felület](storsimple-use-snapshot-manager.md).
-2. A **hatókör** ablaktáblán kattintson a jobb gombbal az **eszközök** csomópontra, majd kattintson az **eszköz konfigurálása**parancsra. Megjelenik az **eszköz konfigurálása** párbeszédpanel.
+2. A **hatókör** ablaktáblán kattintson a jobb gombbal az **eszközök** csomópontra, majd kattintson az **eszköz konfigurálása** parancsra. Megjelenik az **eszköz konfigurálása** párbeszédpanel.
    
     ![Eszköz konfigurálása](./media/storsimple-snapshot-manager-deployment/HCS_SSM_config_device.png) 
 3. Az **eszközök** listájában válassza ki a Microsoft Azure StorSimple eszköz vagy virtuális eszköz IP-címét. A **jelszó** szövegmezőbe írja be a Azure Portalben az eszközhöz létrehozott StorSimple Snapshot Manager jelszavát. Kattintson az **OK** gombra.
 4. A StorSimple Snapshot Manager megkeresi az Ön által azonosított eszközt. Ha az eszköz elérhető, a StorSimple Snapshot Manager hozzáadja a csatlakozást. Az [eszközhöz való kapcsolódás ellenőrzéséhez ellenőrizheti](#to-verify-the-connection) , hogy a rendszer sikeresen felvette-e a kapcsolódást.
    
     Ha az eszköz valamilyen okból nem érhető el, a StorSimple Snapshot Manager egy hibaüzenetet ad vissza. A hibaüzenet bezárásához kattintson az **OK** gombra, majd kattintson a **Mégse** gombra az **eszköz konfigurálása** párbeszédpanel bezárásához.
-5. Amikor egy eszközhöz csatlakozik, a StorSimple Snapshot Manager importálja az adott eszközhöz konfigurált összes kötetet, ha a kötet csoporthoz biztonsági másolatok tartoznak. A társított biztonsági másolatokkal nem rendelkező kötetek importálása nem történik meg. Továbbá a mennyiségi csoportokhoz létrehozott biztonsági mentési szabályzatok nem lesznek importálva. Az importált csoportok megjelenítéséhez kattintson a jobb gombbal a legfelső szintű **kötetek csoportok** csomópontra a **hatókör** ablaktáblán, és kattintson az **importált csoportok váltása**elemre.
+5. Amikor egy eszközhöz csatlakozik, a StorSimple Snapshot Manager importálja az adott eszközhöz konfigurált összes kötetet, ha a kötet csoporthoz biztonsági másolatok tartoznak. A társított biztonsági másolatokkal nem rendelkező kötetek importálása nem történik meg. Továbbá a mennyiségi csoportokhoz létrehozott biztonsági mentési szabályzatok nem lesznek importálva. Az importált csoportok megjelenítéséhez kattintson a jobb gombbal a legfelső szintű **kötetek csoportok** csomópontra a **hatókör** ablaktáblán, és kattintson az **importált csoportok váltása** elemre.
 
 ### <a name="step-3-verify-the-connection-to-the-device"></a>3. lépés: az eszközhöz való kapcsolódás ellenőrzése
 A következő lépésekkel ellenőrizheti, hogy a StorSimple Snapshot Manager kapcsolódik-e a StorSimple-eszközhöz.
@@ -151,13 +151,13 @@ Az alábbi lépéseket követve frissítheti vagy újratelepítheti a StorSimple
 A StorSimple Snapshot Manager eltávolításához kövesse az alábbi lépéseket.
 
 #### <a name="to-uninstall-storsimple-snapshot-manager"></a>A StorSimple eltávolítása Snapshot Manager
-1. A gazdagépen nyissa meg a **Vezérlőpultot**, kattintson a **programok**, majd a **programok és szolgáltatások**elemre.
-2. A bal oldali ablaktáblán kattintson az **Eltávolítás vagy a program módosítása**elemre.
-3. Kattintson a jobb gombbal a **StorSimple Snapshot Manager**elemre, majd kattintson az **Eltávolítás**parancsra.
-4. Ezzel elindítja a StorSimple Snapshot Manager telepítőprogramot. Kattintson a **telepítés módosítása**elemre, majd az **Eltávolítás**gombra.
+1. A gazdagépen nyissa meg a **Vezérlőpultot**, kattintson a **programok**, majd a **programok és szolgáltatások** elemre.
+2. A bal oldali ablaktáblán kattintson az **Eltávolítás vagy a program módosítása** elemre.
+3. Kattintson a jobb gombbal a **StorSimple Snapshot Manager** elemre, majd kattintson az **Eltávolítás** parancsra.
+4. Ezzel elindítja a StorSimple Snapshot Manager telepítőprogramot. Kattintson a **telepítés módosítása** elemre, majd az **Eltávolítás** gombra.
    
    > [!NOTE]
-   > Ha van olyan MMC-folyamat, amely a háttérben fut, például a StorSimple Snapshot Manager vagy a Lemezkezelés, az Eltávolítás sikertelen lesz, és egy üzenet jelenik meg az összes MMC-példány bezárásához, mielőtt megpróbálja eltávolítani a programot. Válassza az **alkalmazások automatikus lezárása lehetőséget, majd próbálja meg újraindítani őket a telepítés befejezése után**, majd kattintson **az OK**gombra.
+   > Ha van olyan MMC-folyamat, amely a háttérben fut, például a StorSimple Snapshot Manager vagy a Lemezkezelés, az Eltávolítás sikertelen lesz, és egy üzenet jelenik meg az összes MMC-példány bezárásához, mielőtt megpróbálja eltávolítani a programot. Válassza az **alkalmazások automatikus lezárása lehetőséget, majd próbálja meg újraindítani őket a telepítés befejezése után**, majd kattintson **az OK** gombra.
    > 
    > 
 5. Ha az eltávolítási folyamat elkészült, a **telepítő sikeres** üzenet jelenik meg. Kattintson a **Bezárás** gombra.
@@ -169,9 +169,9 @@ A következő lépésekkel hozhat létre és menthet másolatot a StorSimple Sna
 1. Állítsa le a Microsoft StorSimple-kezelő szolgáltatást:
    
    1. Indítsa el a Kiszolgálókezelőt.
-   2. A Kiszolgálókezelő irányítópult **eszközök** menüjében válassza a **szolgáltatások**lehetőséget.
-   3. A **szolgáltatások** lapon válassza a **Microsoft StorSimple-kezelő szolgáltatás**elemet.
-   4. A jobb oldali ablaktábla **Microsoft StorSimple-kezelő szolgáltatása**területén kattintson **a szolgáltatás leállítása**elemre.
+   2. A Kiszolgálókezelő irányítópult **eszközök** menüjében válassza a **szolgáltatások** lehetőséget.
+   3. A **szolgáltatások** lapon válassza a **Microsoft StorSimple-kezelő szolgáltatás** elemet.
+   4. A jobb oldali ablaktábla **Microsoft StorSimple-kezelő szolgáltatása** területén kattintson **a szolgáltatás leállítása** elemre.
       
         ![A StorSimple Eszközkezelő szolgáltatás leállítása](./media/storsimple-snapshot-manager-deployment/HCS_SSM_stop_service.png)
 2. Tallózás a C:\ProgramData\Microsoft\StorSimple\BACatalog. 
@@ -184,9 +184,9 @@ A következő lépésekkel hozhat létre és menthet másolatot a StorSimple Sna
     ![StorSimple biztonságimásolat-katalógus fájlja](./media/storsimple-snapshot-manager-deployment/HCS_SSM_bacatalog.png)
 4. Indítsa újra a Microsoft StorSimple-kezelő szolgáltatást: 
    
-   1. A Kiszolgálókezelő irányítópult **eszközök** menüjében válassza a **szolgáltatások**lehetőséget.
+   1. A Kiszolgálókezelő irányítópult **eszközök** menüjében válassza a **szolgáltatások** lehetőséget.
    2. A **szolgáltatások** lapon válassza ki a **Microsoft StorSimple-kezelő szolgáltatást**.
-   3. A jobb oldali ablaktábla **Microsoft StorSimple-kezelő szolgáltatása**területén kattintson **a szolgáltatás újraindítása**elemre. 
+   3. A jobb oldali ablaktábla **Microsoft StorSimple-kezelő szolgáltatása** területén kattintson **a szolgáltatás újraindítása** elemre. 
 
 ### <a name="step-3-reinstall-storsimple-snapshot-manager-and-restore-the-database"></a>3. lépés: a StorSimple újratelepítése Snapshot Manager és az adatbázis visszaállítása
 A StorSimple Snapshot Manager újratelepítéséhez kövesse az [új StorSimple Snapshot Manager telepítése](#install-a-new-storsimple-snapshot-manager)című témakör lépéseit. Ezután a következő eljárással állíthatja vissza a StorSimple Snapshot Manager adatbázisát.
@@ -195,9 +195,9 @@ A StorSimple Snapshot Manager újratelepítéséhez kövesse az [új StorSimple 
 1. Állítsa le a Microsoft StorSimple-kezelő szolgáltatást:
    
    1. Indítsa el a Kiszolgálókezelőt.
-   2. A Kiszolgálókezelő irányítópult **eszközök** menüjében válassza a **szolgáltatások**lehetőséget.
-   3. A **szolgáltatások** lapon válassza a **Microsoft StorSimple-kezelő szolgáltatás**elemet.
-   4. A jobb oldali ablaktábla **Microsoft StorSimple-kezelő szolgáltatása**területén kattintson **a szolgáltatás leállítása**elemre.
+   2. A Kiszolgálókezelő irányítópult **eszközök** menüjében válassza a **szolgáltatások** lehetőséget.
+   3. A **szolgáltatások** lapon válassza a **Microsoft StorSimple-kezelő szolgáltatás** elemet.
+   4. A jobb oldali ablaktábla **Microsoft StorSimple-kezelő szolgáltatása** területén kattintson **a szolgáltatás leállítása** elemre.
 2. Tallózás a C:\ProgramData\Microsoft\StorSimple\BACatalog.
    
    > [!NOTE]
@@ -207,11 +207,11 @@ A StorSimple Snapshot Manager újratelepítéséhez kövesse az [új StorSimple 
 3. Törölje a katalógus XML-fájlját, és cserélje le a korábban mentett verzióra.
 4. Indítsa újra a Microsoft StorSimple-kezelő szolgáltatást: 
    
-   1. A Kiszolgálókezelő irányítópult **eszközök** menüjében válassza a **szolgáltatások**lehetőséget.
-   2. A **szolgáltatások** lapon válassza a **Microsoft StorSimple-kezelő szolgáltatás**elemet.
-   3. A jobb oldali ablaktábla **Microsoft StorSimple-kezelő szolgáltatása**területén kattintson **a szolgáltatás újraindítása**elemre.
+   1. A Kiszolgálókezelő irányítópult **eszközök** menüjében válassza a **szolgáltatások** lehetőséget.
+   2. A **szolgáltatások** lapon válassza a **Microsoft StorSimple-kezelő szolgáltatás** elemet.
+   3. A jobb oldali ablaktábla **Microsoft StorSimple-kezelő szolgáltatása** területén kattintson **a szolgáltatás újraindítása** elemre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Ha többet szeretne megtudni a StorSimple Snapshot Managerról, olvassa el a [Mi az a StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md)című témakört.
 * Ha többet szeretne megtudni a StorSimple Snapshot Manager felhasználói felületéről, nyissa meg a [StorSimple Snapshot Manager felhasználói felületét](storsimple-use-snapshot-manager.md).
 * Ha többet szeretne megtudni a StorSimple Snapshot Manager használatáról, látogasson el a [StorSimple Snapshot Manager használatára a StorSimple-megoldás felügyeletéhez](storsimple-snapshot-manager-admin.md).

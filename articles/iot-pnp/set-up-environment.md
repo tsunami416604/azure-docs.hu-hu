@@ -7,18 +7,18 @@ ms.date: 08/11/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 3b7c9b51bad45bb348f70c8b0e433404b49b5aac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e6c090c02798103a30cc68f2ca28e8c4f7f2f17
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761362"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96004262"
 ---
 # <a name="set-up-your-environment-for-the-iot-plug-and-play-quickstarts-and-tutorials"></a>A környezet beállítása a IoT Plug and Play rövid útmutatók és oktatóanyagok
 
 Mielőtt IoT Plug and Play a gyors útmutatókat és oktatóanyagokat, konfigurálnia kell egy IoT hubot és a Device kiépítési szolgáltatást (DPS) az Azure-előfizetésében. Szüksége lesz a minta-alkalmazások és az Azure IoT Explorer eszköz helyi példányaira is.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 Ha el szeretné kerülni az Azure CLI helyi telepítésének követelményét, használhatja a Azure Cloud Shell a Cloud Services beállításához.
 
@@ -126,7 +126,7 @@ A rövid útmutatók és oktatóanyagok az **Azure IoT Explorer** eszközt haszn
 
 Amikor először futtatja az eszközt, a rendszer kéri az IoT hub-kapcsolatok karakterláncát. Használja a korábban feljegyzett kapcsolatok sztringjét.
 
-Konfigurálja az eszközt a korábban letöltött modell-fájlok használatára. Az eszköz kezdőlapján válassza a **IoT Plug and Play beállítások**, majd a **+ > helyi mappa hozzáadása**elemet. Válassza ki a korábban létrehozott *modellek* mappát. Ezután válassza a **Mentés** lehetőséget a beállítások mentéséhez.
+Konfigurálja az eszközt a korábban letöltött modell-fájlok használatára. Az eszköz kezdőlapján válassza a **IoT Plug and Play beállítások**, majd a **+ > helyi mappa hozzáadása** elemet. Válassza ki a korábban létrehozott *modellek* mappát. Ezután válassza a **Mentés** lehetőséget a beállítások mentéséhez.
 
 További információt az [Azure IoT Explorer telepítése és használata](howto-use-iot-explorer.md)című témakörben talál.
 
@@ -138,9 +138,9 @@ Az IoT hub és a DPS-példány az összes IoT Plug and Play gyors és oktatóany
 az group delete --name my-pnp-resourcegroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy beállította a környezetét, kipróbálhatja az alábbiak egyikét vagy az oktatóanyagokat, például:
 
 > [!div class="nextstepaction"]
-> [Plug and Play IoT csatlakoztatása IoT Hubhoz (Node.js)](quickstart-connect-device-node.md)
+> [Plug and Play IoT csatlakoztatása IoT Hub](quickstart-connect-device.md)

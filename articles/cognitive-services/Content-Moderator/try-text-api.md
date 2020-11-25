@@ -11,11 +11,11 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.openlocfilehash: 664c4289cbfa1f6ce2fce9f9f83b0240bd2d592c
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912871"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002000"
 ---
 # <a name="moderate-text-from-the-api-console"></a>Mérsékelt szöveg az API-konzolból
 
@@ -43,10 +43,10 @@ Az **Open API Testing Console** esetében válassza ki azt a régiót, amely a l
 
 ### <a name="parameters"></a>Paraméterek
 
-Válassza ki a szöveges képernyőn használni kívánt lekérdezési paramétereket. Ebben a példában az alapértelmezett értéket használja a **Language (nyelv** ) beállításnál. Azt is üresen hagyhatja, mert a művelet végrehajtása során a rendszer automatikusan felismeri a valószínűsíthető nyelvet.
+Válassza ki a szöveges képernyőn használni kívánt lekérdezési paramétereket. Ebben a példában az alapértelmezett értéket használja a **Language (nyelv**) beállításnál. Azt is üresen hagyhatja, mert a művelet végrehajtása során a rendszer automatikusan felismeri a valószínűsíthető nyelvet.
 
 > [!NOTE]
-> A **Language** paraméterhez rendelje hozzá, `eng` vagy hagyja üresen, hogy megjelenjen a gép által támogatott **besorolási** válasz (előzetes verzió funkció). **Ez a funkció csak az angol nyelvet támogatja** .
+> A **Language** paraméterhez rendelje hozzá, `eng` vagy hagyja üresen, hogy megjelenjen a gép által támogatott **besorolási** válasz (előzetes verzió funkció). **Ez a funkció csak az angol nyelvet támogatja**.
 >
 > A **trágár kifejezések** észleléséhez használja a cikkben felsorolt támogatott nyelvek [ISO 639-3 kódját](http://www-01.sil.org/iso639-3/codes.asp) , vagy hagyja üresen.
 
@@ -56,7 +56,7 @@ Az **Automatikus javítás** **, a** személyes adatok és a **besorolás (előz
 
 ### <a name="content-type"></a>Tartalomtípus
 
-A **Content-Type (tartalom típusa** ) mezőben válassza ki a képernyőn megjelenő tartalom típusát. Ebben a példában az alapértelmezett **text/plain** tartalomtípust használjuk. Az **OCP-APIM-Subscription-Key** mezőbe írja be az előfizetési kulcsot.
+A **Content-Type (tartalom típusa**) mezőben válassza ki a képernyőn megjelenő tartalom típusát. Ebben a példában az alapértelmezett **text/plain** tartalomtípust használjuk. Az **OCP-APIM-Subscription-Key** mezőbe írja be az előfizetési kulcsot.
 
 ### <a name="sample-text-to-scan"></a>Vizsgálandó mintaszöveg
 
@@ -135,6 +135,6 @@ Az alábbi válasz az API különböző bepillantást jeleníti meg. A szolgált
 
 A JSON-válasz összes részének részletes ismertetését a [szöveges moderálás](text-moderation-api.md) fogalmi útmutatójában találja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Használja a kódban szereplő REST API, vagy kövesse a [.net SDK](./client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp) gyors üzembe helyezését az alkalmazással való integráláshoz.

@@ -4,17 +4,17 @@ description: Ez a cikk a Azure Backup korábbi és új diagnosztikai eseményein
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.openlocfilehash: 3d10053bae5148f33dba6d1207a81bdb16c37577
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89182598"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002885"
 ---
 # <a name="use-diagnostics-settings-for-recovery-services-vaults"></a>Recovery Services-tárolók diagnosztikai beállításainak használata
 
 A Azure Backup diagnosztikai eseményeket küld, amelyeket elemzés, riasztás és jelentéskészítés céljából gyűjthet és használhat fel.
 
-A Recovery Services-tároló diagnosztikai beállításait a Azure Portal használatával konfigurálhatja a tárolóba, majd a **diagnosztikai beállítások**lehetőségre kattintva. A **+ diagnosztikai beállítás** választása lehetővé teszi egy vagy több diagnosztikai esemény küldését egy Storage-fiókba, egy Event hub-ba vagy egy log Analytics munkaterületre.
+A Recovery Services-tároló diagnosztikai beállításait a Azure Portal használatával konfigurálhatja a tárolóba, majd a **diagnosztikai beállítások** lehetőségre kattintva. A **+ diagnosztikai beállítás** választása lehetővé teszi egy vagy több diagnosztikai esemény küldését egy Storage-fiókba, egy Event hub-ba vagy egy log Analytics munkaterületre.
 
 ![Diagnosztikai beállítások ablaktábla](./media/backup-azure-diagnostics-events/diagnostics-settings-blade.png)
 
@@ -41,10 +41,10 @@ Mostantól használhatja a Azure Backupt a tár diagnosztikai adatainak dedikál
 
 A tároló diagnosztikai adatainak elküldése a Log Analyticsba:
 
-1. Nyissa meg a tárolót, és válassza a **diagnosztikai beállítások**lehetőséget. Válassza a **+ diagnosztikai beállítások hozzáadása**elemet.
+1. Nyissa meg a tárolót, és válassza a **diagnosztikai beállítások** lehetőséget. Válassza a **+ diagnosztikai beállítások hozzáadása** elemet.
 1. Adjon nevet a diagnosztikai beállításoknak.
 1. Jelölje be a **küldés log Analyticsra** jelölőnégyzetet, majd válasszon ki egy log Analytics munkaterületet.
-1. Válassza ki az **erőforrás-specifikus** elemet a váltáshoz, és válassza ki a következő hat eseményt: **CoreAzureBackup**, **AddonAzureBackupJobs**, **AddonAzureBackupAlerts**, **AddonAzureBackupPolicy**, **AddonAzureBackupStorage**és **AddonAzureBackupProtectedInstance**.
+1. Válassza ki az **erőforrás-specifikus** elemet a váltáshoz, és válassza ki a következő hat eseményt: **CoreAzureBackup**, **AddonAzureBackupJobs**, **AddonAzureBackupAlerts**, **AddonAzureBackupPolicy**, **AddonAzureBackupStorage** és **AddonAzureBackupProtectedInstance**.
 1. Kattintson a **Mentés** gombra.
 
    ![Erőforrás-specifikus mód](./media/backup-azure-diagnostics-events/resource-specific-blade.png)
@@ -58,7 +58,7 @@ Miután az adatfolyamatok bekerültek a Log Analytics munkaterületre, az egyes 
 
 A tárolók biztonsági másolatával kapcsolatos diagnosztikai összes adatát hagyományosan egyetlen, AzureBackupReport nevű esemény tárolja. Az itt leírt hat esemény lényegében az összes, a AzureBackupReport-ben található adatbontás.
 
-Jelenleg továbbra is támogatjuk a AzureBackupReport eseményt a visszamenőleges kompatibilitás érdekében azokban az esetekben, amikor a felhasználók meglévő egyéni lekérdezésekkel rendelkeznek ezen az eseményen. Ilyenek például az egyéni naplózási riasztások és az egyéni vizualizációk. *Javasoljuk, hogy a lehető leghamarabb váltson az [új eseményekre](#diagnostics-events-available-for-azure-backup-users) *. Az új események:
+Jelenleg továbbra is támogatjuk a AzureBackupReport eseményt a visszamenőleges kompatibilitás érdekében azokban az esetekben, amikor a felhasználók meglévő egyéni lekérdezésekkel rendelkeznek ezen az eseményen. Ilyenek például az egyéni naplózási riasztások és az egyéni vizualizációk. *Javasoljuk, hogy a lehető leghamarabb váltson az [új eseményekre](#diagnostics-events-available-for-azure-backup-users)*. Az új események:
 
 * A naplózási lekérdezésekben sokkal könnyebben dolgozhat az adatkezelési műveletekkel.
 * A sémák és a struktúrájuk jobb felderíthetővé válik.
@@ -102,7 +102,7 @@ Jelenleg továbbra is támogatjuk a AzureBackupReport eseményt a visszamenőleg
 
 2. A Azure Backup [beépített Azure Policy-definícióinak](./azure-policy-configure-diagnostics.md) használatával új diagnosztikai beállítást adhat hozzá a megadott hatókörben lévő összes tárolóhoz. Ez a házirend új diagnosztikai beállítást hoz létre olyan tárolók számára, amelyek nem rendelkeznek diagnosztikai beállítással, vagy csak örökölt diagnosztikai beállításokkal rendelkeznek. Ezt a házirendet egyszerre lehet hozzárendelni egy teljes előfizetéshez vagy erőforráscsoporthoz. Tulajdonosi hozzáféréssel kell rendelkeznie minden olyan előfizetéshez, amelyhez a szabályzat hozzá van rendelve.
 
-Dönthet úgy is, hogy külön diagnosztikai beállításokat használ a AzureBackupReport és a hat új eseményhez, amíg az összes egyéni lekérdezést át nem telepítette az új táblákból származó adatok használatára. Az alábbi képen egy olyan tároló látható, amely két diagnosztikai beállítással rendelkezik. A **Setting1**nevű első beállítás egy AzureBackupReport-esemény adatait küldi el az Azure diagnostics üzemmód log Analytics munkaterületére. Az **Setting2**nevű második beállítás a hat új Azure Backup eseményt küldi el egy log Analytics munkaterületre az erőforrás-specifikus módban.
+Dönthet úgy is, hogy külön diagnosztikai beállításokat használ a AzureBackupReport és a hat új eseményhez, amíg az összes egyéni lekérdezést át nem telepítette az új táblákból származó adatok használatára. Az alábbi képen egy olyan tároló látható, amely két diagnosztikai beállítással rendelkezik. A **Setting1** nevű első beállítás egy AzureBackupReport-esemény adatait küldi el az Azure diagnostics üzemmód log Analytics munkaterületére. Az **Setting2** nevű második beállítás a hat új Azure Backup eseményt küldi el egy log Analytics munkaterületre az erőforrás-specifikus módban.
 
 ![Két beállítás](./media/backup-azure-diagnostics-events/two-settings-example.png)
 
@@ -110,24 +110,24 @@ Dönthet úgy is, hogy külön diagnosztikai beállításokat használ a AzureBa
 > Az AzureBackupReport-esemény *csak* Azure Diagnostics módban támogatott. *Ha erőforrás-specifikus módban kísérli meg az eseményre vonatkozó adatküldést, a Log Analytics munkaterületre nem kerül be az adatforgalom.*
 
 > [!NOTE]
-> Az **Azure Diagnostics** vagy az **erőforrás-specifikus** váltógomb csak akkor jelenik meg, ha a felhasználó a **Küldés log Analytics**lehetőséget választja. Ha az adatokat egy Storage-fiókba vagy egy Event hubhoz szeretné elküldeni, a felhasználó kiválasztja a szükséges célhelyet, és bejelöli a kívánt eseményekhez tartozó jelölőnégyzeteket a további bemenetek nélkül. Azt javasoljuk, hogy ne válassza az örökölt eseményt AzureBackupReport.
+> Az **Azure Diagnostics** vagy az **erőforrás-specifikus** váltógomb csak akkor jelenik meg, ha a felhasználó a **Küldés log Analytics** lehetőséget választja. Ha az adatokat egy Storage-fiókba vagy egy Event hubhoz szeretné elküldeni, a felhasználó kiválasztja a szükséges célhelyet, és bejelöli a kívánt eseményekhez tartozó jelölőnégyzeteket a további bemenetek nélkül. Azt javasoljuk, hogy ne válassza az örökölt eseményt AzureBackupReport.
 
 ## <a name="send-azure-site-recovery-events-to-log-analytics"></a>Azure Site Recovery események küldése Log Analytics
 
-Azure Backup és Azure Site Recovery az eseményeket ugyanabból a Recovery Services-tárból küldik. Az Azure Site Recovery jelenleg nem érhető el erőforrás-specifikus táblákhoz. Azok a felhasználók, akik Azure Site Recovery eseményeket szeretnének küldeni Log Analyticsre, *csak*az Azure Diagnostics mód használatára vannak irányítva, ahogy az a képen látható. *Azure site Recovery események erőforrás-specifikus üzemmódjának kiválasztása megakadályozza, hogy a rendszer elküldje a szükséges adatoknak a log Analytics munkaterületre*.
+Azure Backup és Azure Site Recovery az eseményeket ugyanabból a Recovery Services-tárból küldik. Az Azure Site Recovery jelenleg nem érhető el erőforrás-specifikus táblákhoz. Azok a felhasználók, akik Azure Site Recovery eseményeket szeretnének küldeni Log Analyticsre, *csak* az Azure Diagnostics mód használatára vannak irányítva, ahogy az a képen látható. *Azure site Recovery események erőforrás-specifikus üzemmódjának kiválasztása megakadályozza, hogy a rendszer elküldje a szükséges adatoknak a log Analytics munkaterületre*.
 
 ![Események Site Recovery](./media/backup-azure-diagnostics-events/site-recovery-settings.png)
 
 Összegezve:
 
 * Ha már beállította Log Analytics diagnosztikát a Azure Diagnostics és az egyéni lekérdezésekkel rendelkezik, tartsa *érintetlenül* a beállítást, amíg át nem telepíti a lekérdezéseket az új eseményekről származó adatok használatára.
-* Ha új táblákat is szeretne bevezetni, a javasolt módon hozzon létre egy **új** diagnosztikai beállítást, válassza az **erőforrás-specifikus**lehetőséget, és válassza ki a hat új eseményt.
-* Ha jelenleg Azure Site Recovery eseményeket küld Log Analyticsra *, ne* válassza az adott eseményekhez tartozó erőforrás-specifikus módot. Ellenkező esetben az események adatai nem kerülnek be a Log Analytics munkaterületre. Ehelyett hozzon létre egy további diagnosztikai beállítást, válassza az **Azure Diagnostics**lehetőséget, majd válassza ki a megfelelő Azure site Recovery eseményeket.
+* Ha új táblákat is szeretne bevezetni, a javasolt módon hozzon létre egy **új** diagnosztikai beállítást, válassza az **erőforrás-specifikus** lehetőséget, és válassza ki a hat új eseményt.
+* Ha jelenleg Azure Site Recovery eseményeket küld Log Analyticsra *, ne* válassza az adott eseményekhez tartozó erőforrás-specifikus módot. Ellenkező esetben az események adatai nem kerülnek be a Log Analytics munkaterületre. Ehelyett hozzon létre egy további diagnosztikai beállítást, válassza az **Azure Diagnostics** lehetőséget, majd válassza ki a megfelelő Azure site Recovery eseményeket.
 
-Az alábbi képen egy olyan felhasználó látható, aki három diagnosztikai beállítással rendelkezik a tárolóhoz. Az első beállítás, a **Setting1**nevű AzureBackupReport-esemény adatokat küld az Azure diagnosztikai üzemmód log Analytics munkaterületére. A második, **Setting2**nevű beállítás a hat új Azure Backup eseményből küld adatokat az erőforrás-specifikus módban lévő log Analytics-munkaterületre. A **Setting3**nevű harmadik beállítás a Azure site Recovery eseményekről küld adatokat az Azure diagnostics üzemmód log Analytics munkaterületére.
+Az alábbi képen egy olyan felhasználó látható, aki három diagnosztikai beállítással rendelkezik a tárolóhoz. Az első beállítás, a **Setting1** nevű AzureBackupReport-esemény adatokat küld az Azure diagnosztikai üzemmód log Analytics munkaterületére. A második, **Setting2** nevű beállítás a hat új Azure Backup eseményből küld adatokat az erőforrás-specifikus módban lévő log Analytics-munkaterületre. A **Setting3** nevű harmadik beállítás a Azure site Recovery eseményekről küld adatokat az Azure diagnostics üzemmód log Analytics munkaterületére.
 
 ![Három beállítás](./media/backup-azure-diagnostics-events/three-settings-example.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A diagnosztikai események Log Analytics adatmodelljének megismerése](./backup-azure-reports-data-model.md)

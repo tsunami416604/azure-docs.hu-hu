@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: duau
 ms.openlocfilehash: fc6e8bcda17f9d788a430ed763bd9f8702eaf250
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89392918"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003548"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>Végpontok felvétele, letiltása, engedélyezése és törlése
 
@@ -74,7 +74,7 @@ A Traffic Manager-profil részét képező egyedi végpontok is letilthatók. A 
 5. A **végpont** panelen kattintson a **Törlés** elemre.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Traffic Manager-profilok kezelése](traffic-manager-manage-profiles.md)
 * [Útválasztási módszerek konfigurálása](traffic-manager-configure-routing-method.md)
