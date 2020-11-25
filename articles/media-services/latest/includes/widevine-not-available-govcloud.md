@@ -12,11 +12,11 @@ ms.topic: include
 ms.date: 09/30/2020
 ms.author: inhenkel
 ms.openlocfilehash: 2a70d0540f9728b8ad4066125fb2f5072b4ac750
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91595969"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95971173"
 ---
 > [!NOTE]
 > A Widevine nem érhető el a GovCloud régióban.
