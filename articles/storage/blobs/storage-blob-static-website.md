@@ -9,16 +9,16 @@ ms.reviewer: dineshm
 ms.date: 09/04/2020
 ms.subservice: blobs
 ms.custom: devx-track-js
-ms.openlocfilehash: 952d0acb00a25fe7d84738825cbad017e5b18029
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: b9eb65311951706863c3b18c5fc91bae8c41c7dc
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91892693"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96007341"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Statikus webhely üzemeltetés az Azure Storage-ban
 
-A statikus tartalom (HTML-, CSS-, JavaScript-és képfájlok) közvetlenül egy *$web*nevű tárolóból is kiszolgálható. A tartalom Azure Storage-ban való üzemeltetése lehetővé teszi, hogy olyan kiszolgáló nélküli architektúrákat használjon, amelyek a [Azure functions](/azure/azure-functions/functions-overview) és más platformként nyújtott szolgáltatásokat is tartalmazzák. Az Azure Storage statikus webhelyének üzemeltetése kiváló megoldás olyan esetekben, amikor nincs szükség webkiszolgálóra a tartalom megjelenítéséhez.
+A statikus tartalom (HTML-, CSS-, JavaScript-és képfájlok) közvetlenül egy *$web* nevű tárolóból is kiszolgálható. A tartalom Azure Storage-ban való üzemeltetése lehetővé teszi, hogy olyan kiszolgáló nélküli architektúrákat használjon, amelyek a [Azure functions](../../azure-functions/functions-overview.md) és más platformként nyújtott szolgáltatásokat is tartalmazzák. Az Azure Storage statikus webhelyének üzemeltetése kiváló megoldás olyan esetekben, amikor nincs szükség webkiszolgálóra a tartalom megjelenítéséhez.
 
 [App Service statikus Web Apps](https://azure.microsoft.com/services/app-service/static/) az Azure Storage statikus webhelyeinek üzemeltetése, és olyan esetekben is megfelelő, amikor nincs szükség webkiszolgálóra a tartalom megjelenítéséhez. App Service statikus Web Apps teljes körűen felügyelt folyamatos integrációs és folyamatos teljesítési (CI/CD) munkafolyamatot biztosít a GitHub-forrásból a globális üzembe helyezésig.
 
@@ -60,7 +60,7 @@ A felhasználók a webhely nyilvános URL-címének használatával tekinthetik 
 Ha a kiszolgáló 404 hibát ad vissza, és nem adott meg hibaüzenetet a webhely engedélyezésekor, akkor a rendszer az alapértelmezett 404 lapot adja vissza a felhasználónak.
 
 > [!NOTE]
-> A statikus webhely nem támogatja az [CORS-támogatást az Azure Storage-](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) hoz.
+> A statikus webhely nem támogatja az [CORS-támogatást az Azure Storage-](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) hoz.
 
 ### <a name="regional-codes"></a>Regionális kódok
 
@@ -103,13 +103,13 @@ Ha a Storage-fiók úgy van konfigurálva, hogy [biztonságos átvitelt igényel
 
 ## <a name="adding-http-headers"></a>HTTP-fejlécek hozzáadása
 
-A statikus webhely funkciójának részeként nincs lehetőség fejlécek konfigurálására. Az Azure CDN segítségével azonban fejléceket adhat hozzá, és hozzáfűzheti (vagy felülírhatja) a fejlécek értékeit. Lásd: [a Standard Rules Engine referenciája Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-standard-rules-engine-reference).
+A statikus webhely funkciójának részeként nincs lehetőség fejlécek konfigurálására. Az Azure CDN segítségével azonban fejléceket adhat hozzá, és hozzáfűzheti (vagy felülírhatja) a fejlécek értékeit. Lásd: [a Standard Rules Engine referenciája Azure CDN](../../cdn/cdn-standard-rules-engine-reference.md).
 
-Ha fejléceket kíván használni a gyorsítótárazás vezérléséhez, tekintse meg [a vezérlés Azure CDN gyorsítótárazási viselkedés a gyorsítótárazási szabályokkal](https://docs.microsoft.com/azure/cdn/cdn-caching-rules)című témakört.
+Ha fejléceket kíván használni a gyorsítótárazás vezérléséhez, tekintse meg [a vezérlés Azure CDN gyorsítótárazási viselkedés a gyorsítótárazási szabályokkal](../../cdn/cdn-caching-rules.md)című témakört.
 
 ## <a name="multi-region-website-hosting"></a>Több régiós webhely üzemeltetése
 
-Ha több földrajzi helyen szeretné üzemeltetni a webhelyeket, javasoljuk, hogy használjon egy [Content Delivery Network](https://docs.microsoft.com/azure/cdn/) a regionális gyorsítótárazáshoz. Ha az egyes régiókban különböző tartalmakat szeretne kiszolgálni, az [Azure bejárati ajtót](https://docs.microsoft.com/azure/frontdoor/) kell használnia. Emellett feladatátvételi képességeket is biztosít. Az [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/) használata nem ajánlott, ha egyéni tartományt tervez használni. Problémák merülhetnek fel amiatt, hogy az Azure Storage hogyan ellenőrzi az egyéni tartományneveket.
+Ha több földrajzi helyen szeretné üzemeltetni a webhelyeket, javasoljuk, hogy használjon egy [Content Delivery Network](../../cdn/index.yml) a regionális gyorsítótárazáshoz. Ha az egyes régiókban különböző tartalmakat szeretne kiszolgálni, az [Azure bejárati ajtót](../../frontdoor/index.yml) kell használnia. Emellett feladatátvételi képességeket is biztosít. Az [Azure Traffic Manager](../../traffic-manager/index.yml) használata nem ajánlott, ha egyéni tartományt tervez használni. Problémák merülhetnek fel amiatt, hogy az Azure Storage hogyan ellenőrzi az egyéni tartományneveket.
 
 
 ## <a name="pricing"></a>Díjszabás
@@ -122,11 +122,11 @@ A metrikák a statikus webhelyek oldalain is engedélyezhetők. A metrikák enge
 
 A mérőszámok statikus webhely oldalain való engedélyezéséhez tekintse [meg a metrikák engedélyezése statikus webhelyeken](storage-blob-static-website-how-to.md#metrics)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Statikus webhely üzemeltetése az Azure Storage-ban](storage-blob-static-website-how-to.md)
 * [Egyéni tartomány leképezése egy Azure Blob Storage-végpontra](storage-custom-domain-name.md)
-* [Azure Functions](/azure/azure-functions/functions-overview)
-* [Azure App Service](/azure/app-service/overview)
-* [Az első kiszolgáló nélküli Webalkalmazás létrehozása](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database)
+* [Azure Functions](../../azure-functions/functions-overview.md)
+* [Azure App Service](../../app-service/overview.md)
+* [Az első kiszolgáló nélküli Webalkalmazás létrehozása](/azure/functions/tutorial-static-website-serverless-api-with-database)
 * [Oktatóanyag: Saját tartomány üzemeltetése az Azure DNS-ben](../../dns/dns-delegate-domain-azure-dns.md)
