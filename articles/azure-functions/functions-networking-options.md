@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 10/27/2020
 ms.author: jehollan
 ms.openlocfilehash: bed76a6f3a17332f9a1e411ff1d4efb52703f3e1
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636469"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020992"
 ---
 # <a name="azure-functions-networking-options"></a>Az Azure Functions hálózatkezelési lehetőségei
 
@@ -180,8 +180,8 @@ Ha egy prémium szintű csomagban vagy egy virtuális hálózattal rendelkező A
 ## <a name="automation"></a>Automation
 A következő API-k lehetővé teszik a regionális virtuális hálózati integrációk programozott kezelését:
 
-+ **Azure CLI** : [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) egy regionális virtuális hálózati integráció hozzáadásához, listázásához vagy eltávolításához használja a parancsokat.  
-+ **ARM-sablonok** : a regionális virtuális hálózatok integrációja Azure Resource Manager sablon használatával engedélyezhető. Teljes példaként tekintse meg [ezt a functions gyorsindító sablont](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/).
++ **Azure CLI**: [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration) egy regionális virtuális hálózati integráció hozzáadásához, listázásához vagy eltávolításához használja a parancsokat.  
++ **ARM-sablonok**: a regionális virtuális hálózatok integrációja Azure Resource Manager sablon használatával engedélyezhető. Teljes példaként tekintse meg [ezt a functions gyorsindító sablont](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

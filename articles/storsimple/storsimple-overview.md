@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: timlt
 ms.openlocfilehash: f9c7a2df83e9d630ce2b4635a830fb941180c758
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965000"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021834"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 sorozat: hibrid felhőalapú tárolási megoldás
 
@@ -210,10 +210,10 @@ Az alábbi táblázat a támogatott StorSimple-számítási feladatok összefogl
 
 | Használati eset | Számítási feladat | Támogatott | Korlátozások | Verzió |
 | --- | --- | --- | --- | --- |
-| Együttműködés |Fájlmegosztás |Igen | |Az összes verzió |
-| Együttműködés |Elosztott fájlmegosztás |Igen | |Az összes verzió |
+| Együttműködés |Fájlmegosztás |Yes | |Az összes verzió |
+| Együttműködés |Elosztott fájlmegosztás |Yes | |Az összes verzió |
 | Együttműködés |SharePoint |Igen* |Csak helyileg rögzített kötetekkel támogatott |2. frissítés és újabb |
-| Archiválási |Egyszerű fájl archiválása |Igen | |Az összes verzió |
+| Archiválási |Egyszerű fájl archiválása |Yes | |Az összes verzió |
 | Virtualizáció |Virtual machines (Virtuális gépek) |Igen* |Csak helyileg rögzített kötetekkel támogatott |2. frissítés és újabb |
 | Adatbázis |SQL |Igen* |Csak helyileg rögzített kötetekkel támogatott |2. frissítés és újabb |
 | Videó-megfigyelés |Videó-megfigyelés |Igen* |Csak akkor támogatott, ha a StorSimple-eszköz csak erre a számítási feladatra van dedikált |2. frissítés és újabb |
@@ -237,11 +237,11 @@ A következő lista a StorSimple által támogatott infrastruktúra-összetevők
 
 | Használati eset | Számítási feladat | Támogatott | Korlátozások | Verzió |
 | --- | --- | --- | --- | --- |
-| Általános kérdések |Express Route |Igen | |Az összes verzió |
-| Általános kérdések |DataCore FC |Igen* |Támogatott a DataCore SANsymphony |Az összes verzió |
-| Általános kérdések |DFSR |Igen* |Csak helyileg rögzített kötetekkel támogatott |Az összes verzió |
-| Általános kérdések |Indexelés |Igen* |A többszintes kötetek esetében csak a metaadatok indexelése támogatott (nincs adat).<br>A helyileg rögzített kötetek esetében a teljes indexelés támogatott. |Az összes verzió |
-| Általános kérdések |Víruskereső |Igen* |A többszintes kötetek esetében csak a Megnyitás és bezárás vizsgálat támogatott.<br> A helyileg rögzített kötetek esetében a teljes vizsgálat támogatott. |Az összes verzió |
+| Általános |Express Route |Yes | |Az összes verzió |
+| Általános |DataCore FC |Igen* |Támogatott a DataCore SANsymphony |Az összes verzió |
+| Általános |DFSR |Igen* |Csak helyileg rögzített kötetekkel támogatott |Az összes verzió |
+| Általános |Indexelés |Igen* |A többszintes kötetek esetében csak a metaadatok indexelése támogatott (nincs adat).<br>A helyileg rögzített kötetek esetében a teljes indexelés támogatott. |Az összes verzió |
+| Általános |Víruskereső |Igen* |A többszintes kötetek esetében csak a Megnyitás és bezárás vizsgálat támogatott.<br> A helyileg rögzített kötetek esetében a teljes vizsgálat támogatott. |Az összes verzió |
 
 *Igen&#42; – a megoldásra vonatkozó irányelvek és korlátozások érvényesek.*
 
@@ -313,5 +313,5 @@ A Microsoft Azure StorSimple-megoldás üzembe helyezése előtt javasoljuk, hog
 | Kötet árnyékmásolata szolgáltatás (VSS) |Egy Windows Server operációs rendszer szolgáltatás, amely megkönnyíti az alkalmazások konzisztenciáját a VSS-t támogató alkalmazásokkal való kommunikációval, hogy összehangolja a növekményes pillanatképek létrehozását. A VSS biztosítja, hogy az alkalmazások a pillanatképek elkészítésekor átmenetileg inaktívak legyenek. |
 | Windows PowerShell StorSimple-bővítménye |A StorSimple-eszköz üzemeltetéséhez és kezeléséhez használt Windows PowerShell-alapú parancssori felület. A Windows PowerShell néhány alapszintű funkciójának fenntartása mellett ez az illesztő további dedikált parancsmagokkal rendelkezik, amelyek a StorSimple-eszközök felügyeletére irányulnak. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A [StorSimple biztonság](storsimple-8000-security.md)megismerése.

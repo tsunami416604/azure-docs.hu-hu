@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: quickstart
 ms.date: 11/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e5ffcd56be1ce7427697cd3a75bd7c4232cc3b8a
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: dee9e7596c0a30301d9e0453ef22a6dfe9541522
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94667617"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96020942"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-cli"></a>Gyors útmutató: Azure-igazolás beállítása az Azure CLI-vel
 
@@ -53,7 +53,7 @@ Az Azure-igazolások használatának első lépései az Azure CLI-vel az igazol�
 
 ## <a name="create-and-manage-an-attestation-provider"></a>Igazolási szolgáltató létrehozása és kezelése
 
-Az igazolási szolgáltató létrehozásához és kezeléséhez kövesse az alábbi eljárást.
+Az alábbi parancsok segítségével hozhatja létre és kezelheti az igazolási szolgáltatót:
 
 1. Futtassa az az [igazolás létrehozása](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_create) parancsot az igazolási szolgáltató létrehozásához:
 
@@ -162,7 +162,7 @@ A házirend-aláíró tanúsítvány szemantikai manipulációját az Azure CLI-
 
 A tanúsítványok mintáit lásd: [igazolási házirend aláíró tanúsítványának példái](policy-signer-examples.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Igazolási szabályzat létrehozása és aláírása](author-sign-policy.md)
 - [Az igazolás megvalósítása SGX ENKLÁVÉHOZ enklávéban, kód minták használatával](/samples/browse/?expanded=azure&terms=attestation)

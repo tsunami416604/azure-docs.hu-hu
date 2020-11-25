@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
 ms.openlocfilehash: bcebc568db4a0d2b4b287045ba0a67c88d9b8c92
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312677"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020602"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Adatelemzési kód tesztelése az Azure-ban a csoportos adatelemzési folyamattal és az Azure DevOps Services szolgáltatással
 Ez a cikk az adatelemzési munkafolyamatok kódjának tesztelésére vonatkozó előzetes irányelveket ismerteti. Az ilyen tesztelések lehetővé teszik az adatszakértők számára, hogy szisztematikusan és hatékonyan ellenőrizzék a kód minőségét és várható eredményét. Olyan csoportos adatelemzési folyamat (TDSP) [projektjét használjuk, amely a korábban közzétett UCI Adult bevételi adatkészletet használja](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) , hogy megmutassa, hogyan lehet elvégezni a kód tesztelését. 
@@ -89,7 +89,7 @@ A következő lépésekkel állíthatja be és futtathatja a kód tesztelését 
 
       ![Az előrejelzési értékek ellenőrzésének kódja](./media/code-test/check_prediction_values.PNG)
 
-1. Az összes teszt függvényt egyesítse egy **test_funcs. a.** :
+1. Az összes teszt függvényt egyesítse egy **test_funcs. a.**:
 
     ![Python-szkript a test functions szolgáltatáshoz](./media/code-test/create_file_test_func.PNG)
 
@@ -150,11 +150,11 @@ Ha a riasztások megfelelően vannak beállítva, értesítést fog kapni e-mail
 
 ![A Build sikeres Azure DevOps-értesítése](./media/code-test/vs_online_build_succeed.PNG)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Az adatelemzési forgatókönyvek esetében lásd: az [UCI bevétel-előrejelző tárháza](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) , amely konkrét példákat tartalmaz az egységek tesztelésére.
 * Kövesse az előző vázlatot és példákat a saját adatelemzési projektjeiben lévő UCI bevétel-előrejelzési forgatókönyvből.
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 * [Csoportos adatelemzési folyamat](./index.yml)
 * [Visual Studio-tesztelési eszközök](https://www.visualstudio.com/vs/features/testing-tools/)
 * [Azure DevOps-tesztelési erőforrások](https://www.visualstudio.com/team-services/)

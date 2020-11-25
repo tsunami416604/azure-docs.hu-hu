@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: alkohli
 ms.openlocfilehash: d2c7f729f4accf7c9ca212c6e4b4b5d565c3114c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90563777"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021537"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box-heavy"></a>A Azure Data Box Heavy biztonságos telepítése és működtetése
 
@@ -191,7 +191,7 @@ Microsoft Ireland Sandyford ind est Dublin D18 KX32 IRL telefon száma: + 353 1 
 
 Miután áttekintette ezeket a biztonsági értesítéseket, beállíthatja és elvégezheti az eszköz csatlakoztatását.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Kábel és csatlakoztassa a Data Box Heavy](data-box-heavy-deploy-set-up.md)
 

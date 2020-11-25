@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 982adf6c6d7cd825d185802321ce30a04bd2f216
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91323294"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020891"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>A Node.js szolgáltatások és appok figyelése az Application Insights segítségével
 
@@ -334,7 +334,7 @@ server.on("listening", () => {
 
 ### <a name="preprocess-data-with-telemetry-processors"></a>Az telemetria processzorokkal rendelkező adatfeldolgozás
 
-Az összegyűjtött adatokat feldolgozhatja és szűrheti, mielőtt elküldi az adatmegőrzést a *telemetria processzorok*használatával. A telemetria-processzorokat a rendszer a telemetria-elemek felhőbe való küldése előtt a hozzájuk rendelt sorrendben hívja meg.
+Az összegyűjtött adatokat feldolgozhatja és szűrheti, mielőtt elküldi az adatmegőrzést a *telemetria processzorok* használatával. A telemetria-processzorokat a rendszer a telemetria-elemek felhőbe való küldése előtt a hozzájuk rendelt sorrendben hívja meg.
 
 ```javascript
 public addTelemetryProcessor(telemetryProcessor: (envelope: Contracts.Envelope, context: { http.RequestOptions, http.ClientRequest, http.ClientResponse, correlationContext }) => boolean)
@@ -374,7 +374,7 @@ appInsights.defaultClient.addTelemetryProcessor(removeStackTraces);
 
 Több Application Insights-erőforrást is létrehozhat, és a megfelelő kialakítási kulcsaik ("rendszerállapotkulcsot") használatával különböző adatforrásokat küldhet mindegyiknek.
 
- Példa:
+ Például:
 
 ```javascript
 let appInsights = require("applicationinsights");
@@ -413,7 +413,7 @@ Ezek a tulajdonságok az ügyfél-specifikusak, így a `appInsights.defaultClien
 | correlationIdRetryIntervalMs    | Az a várakozási idő, amely után újra kell hívni az azonosítót az összetevők közötti korrelációhoz (alapértelmezett `30000` ).     |
 | correlationHeaderExcludedDomains| Azoknak a tartományoknak a listája, amelyeket ki szeretne zárni az összetevők korrelációs fejlécének injektálásával (alapértelmezett: [config. TS](https://github.com/Microsoft/ApplicationInsights-node.js/blob/develop/Library/Config.ts)).|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A telemetria figyelése a portálon](./overview-dashboard.md)
 * [Analytics-lekérdezések írása a telemetrián](../log-query/get-started-portal.md)

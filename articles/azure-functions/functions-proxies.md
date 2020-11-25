@@ -4,11 +4,11 @@ description: A Azure Functions-proxyk használatának áttekintése
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.openlocfilehash: 3e08b9cf633162cc7015f47774b043cf58c115a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87385874"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020398"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Azure Functions-proxyk használata
 
@@ -24,11 +24,11 @@ Ez a cikk a Azure Functions-proxyk konfigurálását és működését ismerteti
 Ebből a szakaszból megtudhatja, hogyan hozhat létre proxyt a functions portálon.
 
 1. Nyissa meg a [Azure Portal], majd nyissa meg a Function alkalmazást.
-2. A bal oldali panelen válassza az **új proxy**lehetőséget.
+2. A bal oldali panelen válassza az **új proxy** lehetőséget.
 3. Adja meg a proxy nevét.
-4. Konfigurálja a függvény alkalmazásban elérhető végpontot az **útválasztási sablon** és a **http-metódusok**megadásával. Ezek a paraméterek a [http-eseményindítók]szabályainak megfelelően viselkednek.
+4. Konfigurálja a függvény alkalmazásban elérhető végpontot az **útválasztási sablon** és a **http-metódusok** megadásával. Ezek a paraméterek a [http-eseményindítók]szabályainak megfelelően viselkednek.
 5. Állítsa be a **háttérbeli URL-címet** egy másik végpontra. Ez a végpont lehet függvény egy másik Function alkalmazásban, vagy bármely más API lehet. Az értéknek nem kell statikusnak lennie, és az [alkalmazás beállításait] és [paramétereit is hivatkozhat az eredeti ügyfél-kérelemből].
-6. Kattintson a **Létrehozás** elemre.
+6. Kattintson a **Létrehozás** gombra.
 
 A proxy már létezik új végpontként a Function alkalmazásban. Az ügyfél szemszögéből a Azure Functions egy HttpTrigger egyenértékű. Az új proxy kipróbálható úgy, hogy átmásolja a proxy URL-címét, és teszteli a kedvenc HTTP-ügyfelével.
 
@@ -111,7 +111,7 @@ A nyomkövetést teljes egészében letilthatja az `"debug":false` adott proxyho
 A konfigurált proxyk a fájlban lévő *proxies.js* tárolódnak, amely a Function app-címtár gyökerében található. Ezt a fájlt manuálisan szerkesztheti, és az alkalmazás részeként telepítheti, ha a függvények által támogatott [központi telepítési módszereket](./functions-continuous-deployment.md) használja. 
 
 > [!TIP] 
-> Ha nem állította be az egyik telepítési módszert, akkor a portálon található fájl *proxies.js* is dolgozhat. Nyissa meg a Function alkalmazást, válassza a **platform szolgáltatások**elemet, majd válassza a **app Service Editor**lehetőséget. Ezzel megtekintheti a Function alkalmazás teljes fájljának szerkezetét, majd módosításokat végezhet.
+> Ha nem állította be az egyik telepítési módszert, akkor a portálon található fájl *proxies.js* is dolgozhat. Nyissa meg a Function alkalmazást, válassza a **platform szolgáltatások** elemet, majd válassza a **app Service Editor** lehetőséget. Ezzel megtekintheti a Function alkalmazás teljes fájljának szerkezetét, majd módosításokat végezhet.
 
 A (z) *Proxies.jst* egy proxys objektum határozza meg, amely névvel ellátott proxyból és azok definíciói áll. Ha a szerkesztő támogatja azt, akkor egy [JSON-sémára](http://json.schemastore.org/proxies) hivatkozhat a kód befejezéséhez. Egy példaként szolgáló fájl a következőhöz hasonló lehet:
 
@@ -183,7 +183,7 @@ A requestOverrides objektum a kérelemben a háttér-erőforrás hívásakor vé
 
 * **háttér. Request. Method**: a háttér hívásához használt http-metódus.
 * **backend. Request. querystring \<ParameterName\> .**: lekérdezési karakterlánc paraméter, amely beállítható a háttérbeli híváshoz. Cserélje le a helyére a *\<ParameterName\>* beállítani kívánt paraméter nevét. Vegye figyelembe, hogy ha üres karakterláncot ad meg, a paraméter továbbra is szerepel a háttér-kérelemben.
-* **backend. Request. headers. \<HeaderName\> **: a háttér felé irányuló híváshoz beállítható fejléc. Cserélje le a helyére a *\<HeaderName\>* beállítani kívánt fejléc nevét. Vegye figyelembe, hogy ha üres karakterláncot ad meg, a paraméter továbbra is szerepel a háttér-kérelemben.
+* **backend. Request. headers. \<HeaderName\>**: a háttér felé irányuló híváshoz beállítható fejléc. Cserélje le a helyére a *\<HeaderName\>* beállítani kívánt fejléc nevét. Vegye figyelembe, hogy ha üres karakterláncot ad meg, a paraméter továbbra is szerepel a háttér-kérelemben.
 
 Az értékek hivatkozhatnak az alkalmazás beállításainak és paramétereinek az eredeti ügyfél-kérelem alapján.
 

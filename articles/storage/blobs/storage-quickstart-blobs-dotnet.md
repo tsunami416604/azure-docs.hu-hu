@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fa37db7a5c63f7a5e8a84d98afbb81e007904974
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8cb8c193e09e841a8401cbb0a6ac78ce87afa01c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89001433"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021707"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Rövid útmutató: Az Azure Blob Storage .NET-hez készült ügyféloldali kódtára (v12)
 
@@ -32,14 +32,14 @@ További források:
 * [API-referenciadokumentáció](/dotnet/api/azure.storage.blobs)
 * [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)
 * [Csomag (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)
-* [Példák](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+* [Példák](../common/storage-samples-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-* Azure Storage-fiók – [Storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Azure Storage-fiók – [Storage-fiók létrehozása](../common/storage-account-create.md)
 * Az operációs rendszer jelenlegi [.net Core SDK](https://dotnet.microsoft.com/download/dotnet-core) . Győződjön meg arról, hogy az SDK-t és nem a futtatókörnyezetet kapja meg.
 
 ## <a name="setting-up"></a>Beállítás
@@ -48,9 +48,9 @@ Ez a szakasz végigvezeti a projekt előkészítésének folyamatán a .NET-hez 
 
 ### <a name="create-the-project"></a>A projekt létrehozása
 
-Hozzon létre egy *BlobQuickstartV12*nevű .net Core-alkalmazást.
+Hozzon létre egy *BlobQuickstartV12* nevű .net Core-alkalmazást.
 
-1. A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, *BlobQuickstartV12*nevű Console-alkalmazást. Ez a parancs egy egyszerű "„Helló világ!” alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: *program.cs*.
+1. A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, *BlobQuickstartV12* nevű Console-alkalmazást. Ez a parancs egy egyszerű "„Helló világ!” alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: *program.cs*.
 
    ```console
    dotnet new console -n BlobQuickstartV12
@@ -62,7 +62,7 @@ Hozzon létre egy *BlobQuickstartV12*nevű .net Core-alkalmazást.
    cd BlobQuickstartV12
    ```
 
-1. A *BlobQuickstartV12* könyvtárban hozzon létre egy másik könyvtárat, amely az *adat*nevű. A blob-adatfájlokat a rendszer létrehozza és tárolja.
+1. A *BlobQuickstartV12* könyvtárban hozzon létre egy másik könyvtárat, amely az *adat* nevű. A blob-adatfájlokat a rendszer létrehozza és tárolja.
 
     ```console
     mkdir data

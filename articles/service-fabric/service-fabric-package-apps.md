@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 2/23/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 11a3fdd5dbaef53af321342952f786ed8119689c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89012398"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021061"
 ---
 # <a name="package-an-application"></a>Alkalmazás becsomagolása
 
@@ -40,7 +40,7 @@ D:\TEMP\MYAPPLICATIONTYPE
             init.dat
 ```
 
-A mappák neve megegyezik a megfelelő elemek **nevének** attribútumaival. Ha például a szolgáltatás jegyzékfájlja két, **MyCodeA** és **MyCodeB**nevű kódot tartalmaz, akkor két azonos nevű mappa tartalmazni fogja a szükséges bináris fájlokat az egyes kódokhoz.
+A mappák neve megegyezik a megfelelő elemek **nevének** attribútumaival. Ha például a szolgáltatás jegyzékfájlja két, **MyCodeA** és **MyCodeB** nevű kódot tartalmaz, akkor két azonos nevű mappa tartalmazni fogja a szükséges bináris fájlokat az egyes kódokhoz.
 
 ## <a name="use-setupentrypoint"></a>SetupEntryPoint használata
 
@@ -49,7 +49,7 @@ A **SetupEntryPoint** használatára jellemző forgatókönyvek, ha a szolgálta
 * A szolgáltatás végrehajtható fájlja által igényelt környezeti változók beállítása és inicializálása. Nem korlátozódik kizárólag a Service Fabric programozási modelleken keresztül írt végrehajtható fájlokra. npm.exe például szüksége van egy node.js alkalmazás üzembe helyezéséhez konfigurált környezeti változóra.
 * Hozzáférés-vezérlés beállítása biztonsági tanúsítványok telepítésével.
 
-A **SetupEntryPoint**konfigurálásával kapcsolatos további információkért lásd: [a szolgáltatás telepítési belépési pontja házirend konfigurálása](service-fabric-application-runas-security.md)
+A **SetupEntryPoint** konfigurálásával kapcsolatos további információkért lásd: [a szolgáltatás telepítési belépési pontja házirend konfigurálása](service-fabric-application-runas-security.md)
 
 <a id="Package-App"></a>
 
@@ -225,7 +225,7 @@ A csomag kiépítéséhez használja a külső kiépítés elemet, amelyhez a le
 >[!NOTE]
 > A rendszerkép-tároló relatív elérési útja alapján történő kiépítés jelenleg nem támogatja a `sfpkg` fájlokat. Ezért a `sfpkg` nem másolható a rendszerkép-tárolóba.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az [alkalmazások telepítése és eltávolítása című][10] témakör ismerteti, hogyan kezelheti az alkalmazás példányait a PowerShell használatával
 

@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: e6eb0be4d9946907dc5bb2f22b27530a27a37aec
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321260"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021452"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Skálázható adatelemzés a Azure Data Lake használatával: teljes körű útmutató
 Ez az útmutató bemutatja, hogyan használhatók a Azure Data Lake az adatfeltárási és a bináris besorolási feladatok elvégzésére a New York-i taxi Trip és a viteldíj-adatkészlet mintáján, és megjósolható, hogy a tipp díjköteles-e. Végigvezeti a [csoportos adatelemzési folyamat](./index.yml)lépésein, a teljes körű, az adatgyűjtés és a modell képzésének lépésein, majd egy olyan webszolgáltatás üzembe helyezésén, amely közzéteszi a modellt.
@@ -143,7 +143,7 @@ Az ebben a szakaszban bemutatott adatfeldolgozási feladatok közé tartozik az 
 
 Az U-SQL-szkripteket itt ismertetjük, és egy külön fájlban vannak megadva. Letöltheti a teljes **U-SQL-szkripteket** a [githubról](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough).
 
-A U-SQL futtatásához nyissa meg a Visual studiót, kattintson a **file--> New--> Project** elemre, válassza a **U-SQL-projekt** , majd a név lehetőséget, és mentse egy mappába.
+A U-SQL futtatásához nyissa meg a Visual studiót, kattintson a **file--> New--> Project** elemre, válassza a **U-SQL-projekt**, majd a név lehetőséget, és mentse egy mappába.
 
 ![8](./media/data-lake-walkthrough/8-create-USQL-project.PNG)
 
@@ -461,7 +461,7 @@ USING Outputters.Csv();
 ```
 
 ### <a name="run-u-sql-jobs"></a><a name="run"></a>U-SQL-feladatok futtatása
-A U-SQL-parancsfájlok szerkesztése után elküldheti azokat a kiszolgálónak a Azure Data Lake Analytics-fiók használatával. Kattintson a **Data Lake** , a **feladatok elküldése** elemre, válassza ki az **Analytics-fiókját** , válassza a **párhuzamosság** lehetőséget, majd kattintson a **Küldés** gombra.
+A U-SQL-parancsfájlok szerkesztése után elküldheti azokat a kiszolgálónak a Azure Data Lake Analytics-fiók használatával. Kattintson a **Data Lake**, a **feladatok elküldése** elemre, válassza ki az **Analytics-fiókját**, válassza a **párhuzamosság** lehetőséget, majd kattintson a **Küldés** gombra.
 
  ![12](./media/data-lake-walkthrough/12-submit-USQL.PNG)
 

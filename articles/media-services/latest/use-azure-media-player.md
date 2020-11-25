@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 07/17/2019
 ms.author: inhenkel
 ms.openlocfilehash: a3b32110a7236d47946c3a1f901aaedf51b47775
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89253981"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022217"
 ---
 # <a name="playback-with-azure-media-player"></a>Lejátszás Azure Media Player
 
@@ -33,7 +33,7 @@ Microsoft Azure Media Services lehetővé teszi, hogy a tartalmak a HLS, a DASH,
 
 A [Azure Media Player bemutató oldalon](https://aka.ms/azuremediaplayer) Azure Media Services mintákat vagy a saját streamjét is használhatja.  
 
-Új videó lejátszásához illesszen be egy másik URL-címet, és kattintson a **frissítés**gombra.
+Új videó lejátszásához illesszen be egy másik URL-címet, és kattintson a **frissítés** gombra.
 
 A különböző lejátszási beállítások (például a technológia, a nyelv vagy a titkosítás) konfigurálásához nyomja meg a **Speciális beállítások lehetőséget**.
 
@@ -53,7 +53,7 @@ A Azure Media Player egyszerűen beállítható. Csak néhány percet vesz igén
 
 * A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Azure Media Player dokumentációja](../azure-media-player/azure-media-player-overview.md)
 * [Azure Media Player minták](https://github.com/Azure-Samples/azure-media-player-samples)

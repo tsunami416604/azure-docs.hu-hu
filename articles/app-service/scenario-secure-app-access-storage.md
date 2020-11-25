@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – a Web App felügyelt identitásokkal fér hozzá a tárolóhoz | Azure
-description: Ebből az oktatóanyagból megtudhatja, hogyan érheti el az Azure Storage-t egy alkalmazás nevében a felügyelt identitások használatával.
+title: Oktatóanyag – a Web App felügyelt identitások használatával fér hozzá a tárolóhoz | Azure
+description: Ebből az oktatóanyagból megtudhatja, hogyan érheti el az Azure Storage-t egy alkalmazáshoz a felügyelt identitások használatával.
 services: storage, app-service-web
 author: rwike77
 manager: CelesteDG
@@ -10,28 +10,30 @@ ms.workload: identity
 ms.date: 11/09/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: de179ad1e310df1fdeaed2173a83076922f3dccc
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 250e95b33b985aedcc1b1537f57338d29e848451
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94428884"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96020211"
 ---
 # <a name="tutorial-access-azure-storage-from-a-web-app"></a>Oktatóanyag: az Azure Storage elérése egy webalkalmazásból
 
-Megtudhatja, hogyan érheti el az Azure Storage-t olyan webalkalmazások nevében (nem bejelentkezett felhasználó), amelyeken a felügyelt identitások használatával Azure App Service fut.
+Ismerje meg, hogyan érheti el az Azure Storage szolgáltatást a Azure App Serviceon futó webalkalmazásokhoz (nem bejelentkezett felhasználóhoz) felügyelt identitások használatával.
 
-:::image type="content" alt-text="Hozzáférés a tárolóhoz" source="./media/scenario-secure-app-access-storage/web-app-access-storage.svg" border="false":::
+:::image type="content" alt-text="A tároló elérését bemutató diagram." source="./media/scenario-secure-app-access-storage/web-app-access-storage.svg" border="false":::
 
-Hozzáférést szeretne adni az Azure-beli adatsíkon (Azure Storage, SQL Azure, Azure Key Vault vagy más szolgáltatásokhoz) a webalkalmazásból.  Használhat megosztott kulcsot, de a titkos kulcs létrehozásához, üzembe helyezéséhez és kezeléséhez szükséges működési biztonságot kell aggódnia.  Lehetséges, hogy a kulcsot a GitHubon is be lehetett olvasni, így a hackerek tudják, hogyan kereshetnek. A webalkalmazások adathozzáférésének biztonságosabb módja a [felügyelt identitások](/azure/active-directory/managed-identities-azure-resources/overview)használata. A Azure Active Directory felügyelt identitása lehetővé teszi, hogy App Services az erőforrásokhoz Role-Based Access Control (RBAC) keresztül hozzáférjen az alkalmazás hitelesítő adatainak megkövetelése nélkül. Miután felügyelt identitást rendelt a webalkalmazáshoz, az Azure gondoskodik a tanúsítványok létrehozásáról és elosztásáról.  Az embereknek nem kell aggódniuk a titkok vagy az alkalmazások hitelesítő adatainak kezelésével kapcsolatban.
+Hozzáférést szeretne adni az Azure-beli adatsíkon (Azure Storage, Azure SQL Database, Azure Key Vault vagy más szolgáltatásokhoz) a webalkalmazásból. Használhat megosztott kulcsot, de a titkos kulcs létrehozásához, üzembe helyezéséhez és kezeléséhez szükséges működési biztonságot kell aggódnia. Lehetséges, hogy a kulcsot a GitHubon is be lehetett olvasni, így a hackerek tudják, hogyan kereshetnek. A webalkalmazások adathozzáférésének biztonságosabb módja a [felügyelt identitások](/azure/active-directory/managed-identities-azure-resources/overview)használata.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Azure Active Directory (Azure AD) felügyelt identitása lehetővé teszi, hogy a App Service szerepköralapú hozzáférés-vezérléssel (RBAC) keresztül hozzáférjenek az erőforrásokhoz az alkalmazás hitelesítő adatainak megadása nélkül. Miután felügyelt identitást rendelt a webalkalmazáshoz, az Azure gondoskodik a tanúsítványok létrehozásáról és elosztásáról. Az embereknek nem kell aggódniuk a titkok vagy az alkalmazások hitelesítő adatainak kezelésével kapcsolatban.
+
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 >
-> * Rendszerhez rendelt felügyelt identitás létrehozása egy webalkalmazásban
-> * Storage-fiók és blob Storage-tároló létrehozása
-> * Hozzáférés a tárhelyhez egy webalkalmazásból felügyelt identitások használatával
+> * Rendszerhez rendelt felügyelt identitás létrehozása egy webalkalmazásban.
+> * Hozzon létre egy Storage-fiókot és egy Azure Blob Storage tárolót.
+> * Hozzáférés a tárhelyhez egy webalkalmazásból felügyelt identitások használatával.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -39,19 +41,19 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 * Olyan Azure App Service futó webalkalmazás, amelyen engedélyezve van a [app Service hitelesítés/engedélyezési modul](scenario-secure-app-authentication-app-service.md).
 
-## <a name="enable-managed-identity-on-app"></a>Felügyelt identitás engedélyezése az alkalmazásban
+## <a name="enable-managed-identity-on-an-app"></a>Felügyelt identitás engedélyezése egy alkalmazáson
 
-Ha a Visual studión keresztül hozza létre és teszi közzé a webalkalmazást, a felügyelt identitás engedélyezve lett az alkalmazásban. Az App Service-ben válassza az **identitás** lehetőséget a bal oldali navigációs panelen, majd a **rendszer hozzárendelve** elemet.  Ellenőrizze, hogy az **állapot** be van **-e** állítva.  Ha nem, kattintson a **Mentés** , majd az **Igen** lehetőségre a rendszer által hozzárendelt felügyelt identitás engedélyezéséhez.  Ha a felügyelt identitás engedélyezve van, az állapot be értékre van állítva *, és az* objektum azonosítója elérhető.
+Ha a Visual studión keresztül hozza létre és teszi közzé a webalkalmazást, a felügyelt identitás engedélyezve lett az alkalmazásban. Az App Service-ben válassza az **identitás** elemet a bal oldali ablaktáblán, majd válassza a **rendszer hozzárendelve** lehetőséget. Ellenőrizze, hogy az **állapot** be van **-e** állítva. Ha nem, válassza a **Mentés** lehetőséget, majd válassza az **Igen** lehetőséget a rendszer által hozzárendelt felügyelt identitás engedélyezéséhez. Ha a felügyelt identitás engedélyezve van, az állapot be értékre van állítva **, és az** objektumazonosító elérhető.
 
-:::image type="content" alt-text="Rendszerhez rendelt identitás" source="./media/scenario-secure-app-access-storage/create-system-assigned-identity.png":::
+:::image type="content" alt-text="Képernyőkép, amely a rendszerhez rendelt identitás beállítást jeleníti meg." source="./media/scenario-secure-app-access-storage/create-system-assigned-identity.png":::
 
-Ez létrehoz egy új objektumazonosítót, amely eltér a **hitelesítés/engedélyezés** panelen létrehozott alkalmazás-azonosítótól.  Másolja ki a rendszerhez rendelt felügyelt identitás objektum-AZONOSÍTÓját, később szüksége lesz rá.
+Ez a lépés létrehoz egy új objektumazonosítót, amely eltér a **hitelesítés/engedélyezés** ablaktáblán létrehozott alkalmazás-azonosítótól. Másolja a rendszer által hozzárendelt felügyelt identitás objektum-AZONOSÍTÓját. Erre később még szüksége lesz.
 
-## <a name="create-a-storage-account-and-blob-storage-container"></a>Storage-fiók és blob Storage-tároló létrehozása
+## <a name="create-a-storage-account-and-blob-storage-container"></a>Storage-fiók és Blob Storage tároló létrehozása
 
-Most már készen áll a Storage-fiók és a blob Storage-tároló létrehozására.
+Most már készen áll a Storage-fiók és a Blob Storage tároló létrehozására.
 
-Minden tárfióknak egy Azure-erőforráscsoporthoz kell tartoznia. Az erőforráscsoport egy logikai tároló az Azure-szolgáltatások csoportosításához. A tárfiók létrehozásakor lehetősége van létrehozni egy új erőforráscsoportot, vagy választhat egy meglévő erőforráscsoportot. Ez a cikk bemutatja, hogyan hozhat létre egy új erőforráscsoportot.
+Minden tárfióknak egy Azure-erőforráscsoporthoz kell tartoznia. Az erőforráscsoport egy logikai tároló az Azure-szolgáltatások csoportosításához. A Storage-fiók létrehozásakor lehetősége van új erőforráscsoport létrehozására vagy egy meglévő erőforráscsoport használatára. Ez a cikk bemutatja, hogyan hozhat létre egy új erőforráscsoportot.
 
 Az általános célú v2-tárfiókok az összes Azure Storage-szolgáltatáshoz (blobokhoz, fájlokhoz, üzenetsorokhoz, táblákhoz és lemezekhez) hozzáférést biztosítanak. Az itt leírt lépések egy általános célú v2-es Storage-fiókot hoznak létre, de a bármilyen típusú Storage-fiók létrehozásának lépései hasonlóak.
 
@@ -59,37 +61,37 @@ Az Azure Storage-beli Blobok tárolóba vannak rendezve. Ahhoz, hogy az oktatóa
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Kövesse az alábbi lépéseket egy általános célú v2-tárfiók létrehozásához az Azure Portalon:
+Az alábbi lépéseket követve hozzon létre egy általános célú v2-es Storage-fiókot a Azure Portalban.
 
-1. Az Azure Portal menüjében válassza a **Minden szolgáltatás** lehetőséget. Az erőforrások listájába írja be a **Storage-fiókok** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Storage-fiókok** lehetőséget.
+1. Az Azure Portal menüjében válassza a **Minden szolgáltatás** lehetőséget. Az erőforrások listájában adja meg a **Storage-fiókokat**. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Storage-fiókok** lehetőséget.
 
 1. A megjelenő **Storage-fiókok** ablakban válassza a **Hozzáadás** lehetőséget.
 
 1. Válassza ki azt az előfizetést, amelyben létre kívánja hozni a tárfiókot.
 
-1. Az **erőforráscsoport** mezőben válassza ki azt az erőforráscsoportot, amely tartalmazza a webalkalmazást a legördülő menüből.
+1. Az **erőforráscsoport** mezőben válassza ki azt az erőforráscsoportot, amely a webalkalmazást tartalmazza a legördülő menüből.
 
-1. Ezután adja meg a tárfiók nevét. A választott névnek az Azure-on belül egyedinek kell lennie. A név 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat.
+1. Ezután adja meg a tárfiók nevét. A választott névnek az Azure-on belül egyedinek kell lennie. A névnek 3 – 24 karakter hosszúnak kell lennie, és csak számokat és kisbetűket tartalmazhat.
 
 1. Válassza ki a tárfiókja helyét, vagy használja az alapértelmezett helyet.
 
 1. Ne módosítsa a következő mezők alapértelmezett értékeit:
 
-|Mező|Érték|
-|--|--|
-|Üzembehelyezési modell|Resource Manager|
-|Teljesítmény|Standard|
-|Fiók altípusa|StorageV2 (általános célú v2)|
-|Replikáció|Írásvédett georedundáns tárolás (RA-GRS)|
-|Hozzáférési szint|Gyakori|
+    |Mező|Érték|
+    |--|--|
+    |Üzembehelyezési modell|Resource Manager|
+    |Teljesítmény|Standard|
+    |Fiók altípusa|StorageV2 (általános célú v2)|
+    |Replikáció|Írásvédett georedundáns tárolás (RA-GRS)|
+    |Hozzáférési szint|Gyakori|
 
 1. A tárfiók beállításainak áttekintéséhez és a fiók létrehozásához válassza a **Felülvizsgálat + létrehozás** elemet.
 
 1. Kattintson a **Létrehozás** gombra.
 
-BLOB Storage-tároló az Azure Storage-ban való létrehozásához kövesse az alábbi lépéseket:
+Ha Blob Storage tárolót szeretne létrehozni az Azure Storage-ban, kövesse az alábbi lépéseket.
 
-1. Az Azure Portalon lépjen az új tárfiókjára.
+1. Nyissa meg az új Storage-fiókot a Azure Portal.
 
 1. A Storage-fiók bal oldali menüjében görgessen a **blob Service** szakaszra, majd válassza a **tárolók** lehetőséget.
 
@@ -103,7 +105,9 @@ BLOB Storage-tároló az Azure Storage-ban való létrehozásához kövesse az a
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Általános célú v2 Storage-fiók és blob Storage-tároló létrehozásához futtassa az alábbi parancsfájlt. Adja meg a webalkalmazást tartalmazó erőforráscsoport nevét. Adja meg a tárfiók nevét. A választott névnek az Azure-on belül egyedinek kell lennie. A név 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat. Adja meg a Storage-fiók helyét.  Megtekintheti az előfizetése futtatásához érvényes helyszínek listáját ```Get-AzLocation | select Location``` . A tároló neve csak kisbetűket tartalmazhat, betűvel vagy számmal kell kezdődnie, és csak betűket, számokat és kötőjelet (-) tartalmazhat.
+Általános célú v2 Storage-fiók és Blob Storage tároló létrehozásához futtassa az alábbi parancsfájlt. Adja meg a webalkalmazást tartalmazó erőforráscsoport nevét. Adja meg a tárfiók nevét. A választott névnek az Azure-on belül egyedinek kell lennie. A névnek 3 – 24 karakter hosszúnak kell lennie, és csak számokat és kisbetűket tartalmazhat.
+
+Adja meg a Storage-fiók helyét. Az előfizetéséhez érvényes helyszínek listájának megtekintéséhez futtassa a parancsot ```Get-AzLocation | select Location``` . A tároló neve csak kisbetűket tartalmazhat, betűvel vagy számmal kell kezdődnie, és csak betűket, számokat és kötőjelet (-) tartalmazhat.
 
 Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire.
 
@@ -128,9 +132,11 @@ New-AzStorageContainer -Name $containerName -Context $ctx -Permission blob
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Általános célú v2 Storage-fiók és blob Storage-tároló létrehozásához futtassa az alábbi parancsfájlt. Adja meg a webalkalmazást tartalmazó erőforráscsoport nevét. Adja meg a tárfiók nevét. A választott névnek az Azure-on belül egyedinek kell lennie. A név 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat. Adja meg a Storage-fiók helyét.  A tároló neve csak kisbetűket tartalmazhat, betűvel vagy számmal kell kezdődnie, és csak betűket, számokat és kötőjelet (-) tartalmazhat.
+Általános célú v2 Storage-fiók és Blob Storage tároló létrehozásához futtassa az alábbi parancsfájlt. Adja meg a webalkalmazást tartalmazó erőforráscsoport nevét. Adja meg a tárfiók nevét. A választott névnek az Azure-on belül egyedinek kell lennie. A névnek 3 – 24 karakter hosszúnak kell lennie, és csak számokat és kisbetűket tartalmazhat. 
 
-A következő példa az Azure AD-fiókját használja, hogy engedélyezze a műveletet a tároló létrehozásához. A tároló létrehozása előtt rendelje hozzá a Storage blob adatközreműködői szerepkört saját magának. Még ha Ön is a fiók tulajdonosa, explicit engedélyekre van szüksége az adatműveletek a Storage-fiókkal történő végrehajtásához.
+Adja meg a Storage-fiók helyét. A tároló neve csak kisbetűket tartalmazhat, betűvel vagy számmal kell kezdődnie, és csak betűket, számokat és kötőjelet (-) tartalmazhat.
+
+A következő példa az Azure AD-fiókját használja, hogy engedélyezze a műveletet a tároló létrehozásához. A tároló létrehozása előtt rendelje hozzá a Storage blob adatközreműködői szerepkört saját magának. Még ha Ön is a fiók tulajdonosa, explicit engedélyekkel kell rendelkeznie a Storage-fiókkal kapcsolatos adatműveletek végrehajtásához.
 
 Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire.
 
@@ -161,20 +167,21 @@ az storage container create \
 
 ## <a name="grant-access-to-the-storage-account"></a>Hozzáférés biztosítása a Storage-fiókhoz
 
-A Blobok létrehozása, olvasása vagy törlése előtt meg kell adnia a webalkalmazáshoz való hozzáférést a Storage-fiókhoz. Egy előző lépésben konfigurálta a App Serviceon futó webalkalmazást egy felügyelt identitással.  Az Azure RBAC lehetővé teszi a felügyelt identitás hozzáférését egy másik erőforráshoz, ugyanúgy, mint bármely rendszerbiztonsági tag. A *Storage blob adatközreműködői* szerepköre a blob-tároló és az adatok olvasási, írási és törlési hozzáférését biztosítja a webalkalmazásnak (amelyet a rendszer hozzárendelt felügyelt identitás képvisel).
+A Blobok létrehozása, olvasása vagy törlése előtt meg kell adnia a webalkalmazáshoz való hozzáférést a Storage-fiókhoz. Az előző lépésben a App Serviceon futó webalkalmazást felügyelt identitással konfigurálta. Az Azure RBAC lehetővé teszi a felügyelt identitás hozzáférését egy másik erőforráshoz, ugyanúgy, mint bármely rendszerbiztonsági tag. A Storage blob adatközreműködői szerepköre a blob-tároló és az adatok olvasási, írási és törlési hozzáférését biztosítja a webalkalmazásnak (amelyet a rendszer által hozzárendelt felügyelt identitás képvisel).
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
-A [Azure Portalban](https://portal.azure.com)nyissa meg a Storage-fiókját a webalkalmazás-hozzáférés biztosításához.  A bal oldali navigációs panelen válassza a **hozzáférés-vezérlés (iam)** lehetőséget, majd a **szerepkör-hozzárendeléseket**.  Ekkor megjelenik egy lista, amely hozzáfér a Storage-fiókhoz.  Most hozzá kívánja adni a szerepkör-hozzárendelést egy robothoz, az App Service-nek, amelynek hozzá kell férnie a Storage-fiókhoz.  Válassza a **Hozzáadás** -> **szerepkör-hozzárendelés hozzáadása** elemet.
 
-A **szerepkör** területen válassza a **Storage blob-adatközreműködői** lehetőséget, hogy a webalkalmazás hozzáférhessen a Storage-Blobok olvasásához.  A **hozzáférés társítása** elemhez válassza a **app Service** lehetőséget.  Az **előfizetés** területen válassza ki az előfizetését.  Ezután válassza ki azt a App Service, amelyhez hozzáférést szeretne bebizonyítani.  Kattintson a **Mentés** gombra.
+A [Azure Portalban](https://portal.azure.com)nyissa meg a Storage-fiókját a webalkalmazás-hozzáférés biztosításához. A bal oldali ablaktáblán válassza a **hozzáférés-vezérlés (iam)** lehetőséget, majd válassza a **szerepkör-hozzárendelések** lehetőséget. Ekkor megjelenik egy lista, amely hozzáfér a Storage-fiókhoz. Most hozzá kívánja adni a szerepkör-hozzárendelést egy robothoz, az App Service-nek, amelynek hozzá kell férnie a Storage-fiókhoz. Válassza a **Hozzáadás**  >  **szerepkör-hozzárendelés hozzáadása** elemet.
 
-:::image type="content" alt-text="Szerepkör-hozzárendelés hozzáadása" source="./media/scenario-secure-app-access-storage/add-role-assignment.png":::
+A **szerepkör** területen válassza a **Storage blob-adatközreműködői** lehetőséget, hogy a webalkalmazás hozzáférhessen a Storage-Blobok olvasásához. A **hozzáférés társítása** elemhez válassza a **app Service** lehetőséget. Az **előfizetés** területen válassza ki az előfizetését. Ezután válassza ki azt az App Service-szolgáltatást, amelyhez hozzáférést szeretne biztosítani. Kattintson a **Mentés** gombra.
+
+:::image type="content" alt-text="Képernyőkép, amely a szerepkör-hozzárendelés hozzáadása képernyőt jeleníti meg." source="./media/scenario-secure-app-access-storage/add-role-assignment.png":::
 
 A webalkalmazás mostantól hozzáfér a Storage-fiókhoz.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Futtassa a következő parancsfájlt a webalkalmazás (amelyet egy rendszerhez rendelt felügyelt identitás képvisel) a Storage-fiókban lévő *Storage blob adatközreműködői* szerepkörének hozzárendeléséhez.
+Futtassa a következő parancsfájlt a webalkalmazás (amelyet egy rendszer által hozzárendelt felügyelt identitás jelöl) a Storage-beli blob adatközreműködői szerepkört a Storage-fiókjában.
 
 ```powershell
 $resourceGroup = "securewebappresourcegroup"
@@ -188,7 +195,7 @@ New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Storage Blob Data Cont
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Futtassa a következő parancsfájlt a webalkalmazás (amelyet egy rendszerhez rendelt felügyelt identitás képvisel) a Storage-fiókban lévő *Storage blob adatközreműködői* szerepkörének hozzárendeléséhez.
+Futtassa a következő parancsfájlt a webalkalmazás (amelyet egy rendszer által hozzárendelt felügyelt identitás jelöl) a Storage-beli blob adatközreműködői szerepkört a Storage-fiókjában.
 
 ```azurecli-interactive
 spID=$(az resource list -n SecureWebApp20201102125811 --query [*].identity.principalId --out tsv)
@@ -200,19 +207,19 @@ az role assignment create --assignee $spID --role 'Storage Blob Data Contributor
 
 ---
 
-## <a name="access-blob-storage-net"></a>Hozzáférés a blob Storage-hoz (.NET)
+## <a name="access-blob-storage-net"></a>Hozzáférési Blob Storage (.NET)
 
-A [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) osztály a kód jogkivonat-hitelesítő adatainak lekérésére szolgál az Azure Storage-ba irányuló kérelmek engedélyezéséhez.  Hozza létre a [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) osztály egy példányát, amely a felügyelt identitás használatával beolvassa a jogkivonatokat, és csatolja őket a szolgáltatás ügyfeléhez. A következő kódrészlet beolvassa a hitelesített jogkivonat hitelesítő adatait, és a használatával létrehoz egy szolgáltatás-ügyfél objektumot, amely feltölt egy új blobot.  
+A [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) osztály a kód jogkivonat-hitelesítő adatainak lekérésére szolgál az Azure Storage-ba irányuló kérelmek engedélyezéséhez. Hozza létre a [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) osztály egy példányát, amely a felügyelt identitás használatával beolvassa a jogkivonatokat, és csatolja őket a szolgáltatás ügyfeléhez. A következő kódrészlet beolvassa a hitelesített jogkivonat hitelesítő adatait, és a használatával létrehoz egy szolgáltatás-ügyfél objektumot, amely feltölt egy új blobot.
 
 ### <a name="install-client-library-packages"></a>Ügyféloldali függvénytár-csomagok telepítése
 
-Telepítse a [blob Storage NuGet-csomagot](https://www.nuget.org/packages/Azure.Storage.Blobs/) , hogy működjön együtt a blob Storage szolgáltatással és az [Azure Identity ügyféloldali kódtár .net NuGet csomaggal](https://www.nuget.org/packages/Azure.Identity/) az Azure ad hitelesítő adataival történő hitelesítéshez.  Telepítse az ügyféloldali kódtárakat a Visual Studióban található .NET Core parancssori felület vagy a Package Manager konzol használatával.
+Telepítse a [blob Storage NuGet csomagot](https://www.nuget.org/packages/Azure.Storage.Blobs/) , hogy működjön együtt a blob Storage és az [Azure Identity ügyféloldali kódtár for .net NuGet csomaggal](https://www.nuget.org/packages/Azure.Identity/) az Azure ad hitelesítő adataival történő hitelesítéshez. Telepítse az ügyféloldali kódtárakat a Visual Studióban a .NET Core parancssori felület vagy a Package Manager konzol használatával.
 
 # <a name="command-line"></a>[Parancssor](#tab/command-line)
 
 Nyisson meg egy parancssort, és váltson arra a könyvtárra, amely tartalmazza a projektfájlt.
 
-Futtassa a telepítési parancsokat:
+Futtassa a telepítési parancsokat.
 
 ```dotnetcli
 dotnet add package Azure.Storage.Blobs
@@ -222,9 +229,9 @@ dotnet add package Azure.Identity
 
 # <a name="package-manager"></a>[Csomagkezelő](#tab/package-manager)
 
-Nyissa meg a projektet vagy a megoldást a Visual Studióban, és nyissa meg a **konzolt a**  >  **NuGet Package Manager**  >  **csomagkezelő Console** paranccsal.
+Nyissa meg a projektet vagy a megoldást a Visual Studióban, és nyissa meg a **konzolt a**  >  **NuGet Package Manager** csomagkezelő  >  **konzoljának** használatával.
 
-Futtassa a telepítési parancsokat:
+Futtassa a telepítési parancsokat.
 ```powershell
 Install-Package Azure.Storage.Blobs
 
@@ -278,7 +285,7 @@ static public async Task UploadBlob(string accountName, string containerName, st
 }
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha elkészült az Oktatóanyaggal, és már nincs szüksége a webalkalmazásra vagy a kapcsolódó erőforrásokra, [törölje a létrehozott erőforrásokat](scenario-secure-app-clean-up-resources.md).
 
@@ -288,9 +295,9 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 >
-> * Rendszerhez rendelt felügyelt identitás létrehozása
-> * Storage-fiók és blob Storage-tároló létrehozása
-> * Hozzáférés a tárhelyhez egy webalkalmazásból felügyelt identitások használatával
+> * Hozzon létre egy rendszer által hozzárendelt felügyelt identitást.
+> * Hozzon létre egy Storage-fiókot és Blob Storage tárolót.
+> * Hozzáférés a tárhelyhez egy webalkalmazásból felügyelt identitások használatával.
 
 > [!div class="nextstepaction"]
-> [Az App Service Microsoft Graph a felhasználó nevében fér hozzá](scenario-secure-app-access-microsoft-graph-as-user.md)
+> [A App Service Microsoft Graph a felhasználó nevében fér hozzá](scenario-secure-app-access-microsoft-graph-as-user.md)

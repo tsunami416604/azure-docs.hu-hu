@@ -4,11 +4,11 @@ description: Ebből a cikkből megtudhatja, hogyan állíthatja vissza az Azure 
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.openlocfilehash: c502b7741acd343baefe5e2bf8b95cfc02e46688
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986083"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021673"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>SAP HANA-adatbázisok visszaállítása Azure-beli virtuális gépeken
 
@@ -38,15 +38,15 @@ Az adatbázis visszaállítása előtt vegye figyelembe a következőket:
 
   1. Nyissa meg azt a tárolót, amelyben a cél SAP HANA példány regisztrálva van.
 
-  1. A tároló irányítópultjának **első lépések**területén válassza a **biztonsági mentés**lehetőséget.
+  1. A tároló irányítópultjának **első lépések** területén válassza a **biztonsági mentés** lehetőséget.
 
       ![Biztonsági mentés a tároló irányítópultján](media/sap-hana-db-restore/getting-started-backup.png)
 
-  1. A **biztonsági**Mentés területen válassza a **mit szeretne biztonsági másolatot készíteni?** **Az Azure-beli virtuális gépen válasszon SAP HANA**.
+  1. A **biztonsági** Mentés területen válassza a **mit szeretne biztonsági másolatot készíteni?** **Az Azure-beli virtuális gépen válasszon SAP HANA**.
 
       ![SAP HANA kiválasztása az Azure-beli virtuális gépen](media/sap-hana-db-restore/sap-hana-backup.png)
 
-  1. **A virtuális gépek felderítése az adatbázisok**között területen válassza a **részletek megtekintése**lehetőséget.
+  1. **A virtuális gépek felderítése az adatbázisok** között területen válassza a **részletek megtekintése** lehetőséget.
 
       ![Részletek megtekintése](media/sap-hana-db-restore/view-details.png)
 
@@ -68,7 +68,7 @@ A visszaállításhoz a következő engedélyek szükségesek:
 
 1. Nyissa meg a tárolót, amelyben a visszaállítani kívánt SAP HANA adatbázis regisztrálva van
 
-1. A tároló irányítópultján, a **védett elemek**területen válassza a **biztonsági másolati elemek elemet** .
+1. A tároló irányítópultján, a **védett elemek** területen válassza a **biztonsági másolati elemek elemet** .
 
     ![Biztonsági másolati elemek](media/sap-hana-db-restore/backup-items.png)
 
@@ -90,7 +90,7 @@ A visszaállításhoz a következő engedélyek szükségesek:
 
 1. A **visszaállítási adatbázis** kiválasztása
 
-1. A **konfiguráció visszaállítása**területen adja meg, hogy hol (vagy hogyan) szeretné visszaállítani az adatvisszaállítást:
+1. A **konfiguráció visszaállítása** területen adja meg, hogy hol (vagy hogyan) szeretné visszaállítani az adatvisszaállítást:
 
     * **Másik hely**: állítsa vissza az adatbázist egy másik helyre, és tartsa meg az eredeti forrás-adatbázist.
 
@@ -100,7 +100,7 @@ A visszaállításhoz a következő engedélyek szükségesek:
 
 ### <a name="restore-to-alternate-location"></a>Visszaállítás másik helyre
 
-1. A visszaállítási **konfiguráció** menüben, a **visszaállítás helye**területen válassza a **másik hely**lehetőséget.
+1. A visszaállítási **konfiguráció** menüben, a **visszaállítás helye** területen válassza a **másik hely** lehetőséget.
 
     ![Visszaállítás másik helyre](media/sap-hana-db-restore/restore-alternate-location.png)
 
@@ -112,27 +112,27 @@ A visszaállításhoz a következő engedélyek szükségesek:
     > Önálló adatbázis tároló (SDC) visszaállításának az alábbi [ellenőrzéseknek](backup-azure-sap-hana-database-troubleshoot.md#single-container-database-sdc-restore)kell megfelelnie.
 
 1. Ha van ilyen, válassza **a felülírás lehetőséget, ha a kiválasztott HANA-példányon már van ilyen nevű adatbázis**.
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
     ![Konfiguráció visszaállítása – végső képernyő](media/sap-hana-db-restore/restore-configuration-last.png)
 
-1. A **visszaállítási pont kiválasztása lapon**válassza ki a **naplók (** adott időpontban) lehetőséget [egy adott időpontra való visszaállításhoz](#restore-to-a-specific-point-in-time). Vagy válassza a **teljes & különbözetet** [egy adott helyreállítási pontra való visszaállításhoz](#restore-to-a-specific-recovery-point).
+1. A **visszaállítási pont kiválasztása lapon** válassza ki a **naplók (** adott időpontban) lehetőséget [egy adott időpontra való visszaállításhoz](#restore-to-a-specific-point-in-time). Vagy válassza a **teljes & különbözetet** [egy adott helyreállítási pontra való visszaállításhoz](#restore-to-a-specific-recovery-point).
 
 ### <a name="restore-and-overwrite"></a>Visszaállítás és felülírás
 
-1. A visszaállítási **konfiguráció** menüben, a **visszaállítás helye**területen válassza az **adatbázis felülírása**  >  **OK**elemet.
+1. A visszaállítási **konfiguráció** menüben, a **visszaállítás helye** területen válassza az **adatbázis felülírása**  >  **OK** elemet.
 
     ![Adatbázis felülírása](media/sap-hana-db-restore/overwrite-db.png)
 
-1. A **visszaállítási pont kiválasztása lapon**válassza ki a **naplók (** adott időpontban) lehetőséget [egy adott időpontra való visszaállításhoz](#restore-to-a-specific-point-in-time). Vagy válassza a **teljes & különbözetet** [egy adott helyreállítási pontra való visszaállításhoz](#restore-to-a-specific-recovery-point).
+1. A **visszaállítási pont kiválasztása lapon** válassza ki a **naplók (** adott időpontban) lehetőséget [egy adott időpontra való visszaállításhoz](#restore-to-a-specific-point-in-time). Vagy válassza a **teljes & különbözetet** [egy adott helyreállítási pontra való visszaállításhoz](#restore-to-a-specific-recovery-point).
 
 ### <a name="restore-as-files"></a>Visszaállítás fájlként
 
-A biztonsági mentési adatfájlok adatbázis helyett fájlként történő visszaállításához válassza a **visszaállítás fájlként**lehetőséget. Ha a fájlok egy megadott elérési útra lettek kiadva, ezeket a fájlokat bármely olyan SAP HANA-gépre elvégezheti, ahol adatbázisként szeretné visszaállítani őket. Mivel ezeket a fájlokat bármely gépre áthelyezheti, mostantól visszaállíthatja az összes előfizetést és régiót.
+A biztonsági mentési adatfájlok adatbázis helyett fájlként történő visszaállításához válassza a **visszaállítás fájlként** lehetőséget. Ha a fájlok egy megadott elérési útra lettek kiadva, ezeket a fájlokat bármely olyan SAP HANA-gépre elvégezheti, ahol adatbázisként szeretné visszaállítani őket. Mivel ezeket a fájlokat bármely gépre áthelyezheti, mostantól visszaállíthatja az összes előfizetést és régiót.
 
-1. A **konfiguráció visszaállítása** menüben a visszaállítás **helye**alatt válassza a **visszaállítás fájlként**lehetőséget.
+1. A **konfiguráció visszaállítása** menüben a visszaállítás **helye** alatt válassza a **visszaállítás fájlként** lehetőséget.
 1. Válassza ki a **gazdagép** /HANA-kiszolgáló nevét, amelyre vissza kívánja állítani a biztonságimásolat-fájlokat.
-1. A **kiszolgáló célhelyének elérési útján**adja meg a mappa elérési útját a 2. lépésben kiválasztott kiszolgálón. Ez az a hely, ahol a szolgáltatás kiírja az összes szükséges biztonságimásolat-fájlt.
+1. A **kiszolgáló célhelyének elérési útján** adja meg a mappa elérési útját a 2. lépésben kiválasztott kiszolgálón. Ez az a hely, ahol a szolgáltatás kiírja az összes szükséges biztonságimásolat-fájlt.
 
     A dömpingelt fájlok a következők:
 
@@ -295,6 +295,6 @@ A másodlagos régió visszaállítási felhasználói felülete hasonló lesz a
 
     ![Biztonsági mentési feladatok szűrve](./media/sap-hana-db-restore/backup-jobs-secondary-region.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Ismerje meg, hogyan](sap-hana-db-manage.md) kezelheti a biztonsági mentést SAP HANA-adatbázisokat a Azure Backup használatával

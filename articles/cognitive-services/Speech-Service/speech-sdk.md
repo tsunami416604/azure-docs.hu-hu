@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: ad26fe0d869a2e892a419b1732727c3ff1d1e9a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9356cbb6eb210d6745d90e8ad001917e73592cd3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88870714"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96021986"
 ---
 # <a name="about-the-speech-sdk"></a>A Speech SDK ismertetése
 
@@ -29,7 +29,7 @@ A Speech SDK számos funkciót tesz elérhetővé a beszédfelismerési szolgál
 
 ### <a name="speech-to-text"></a>Diktálás
 
-A [beszéd – szöveg](speech-to-text.md) (más néven *beszédfelismerés*) a hangstreameket olyan szöveggé írja át, amelyet az alkalmazások, eszközök vagy eszközök képesek felhasználni vagy megjeleníteni. A beszéd-szöveg és a [Language Understanding (Luis)](../luis/index.yml) használatával származtatott beszédből származó felhasználói leképezéseket származtathat, és hangparancsokat alkalmazhat. A [beszédfelismerés](speech-translation.md) használatával más nyelvre is lefordíthatja a hangbevitelt egyetlen hívással. További információ: [beszédfelismerés és szöveg közötti alapismeretek](speech-to-text-basics.md).
+A [beszéd – szöveg](speech-to-text.md) (más néven *beszédfelismerés*) a hangstreameket olyan szöveggé írja át, amelyet az alkalmazások, eszközök vagy eszközök képesek felhasználni vagy megjeleníteni. A beszéd-szöveg és a [Language Understanding (Luis)](../luis/index.yml) használatával származtatott beszédből származó felhasználói leképezéseket származtathat, és hangparancsokat alkalmazhat. A [beszédfelismerés](speech-translation.md) használatával más nyelvre is lefordíthatja a hangbevitelt egyetlen hívással. További információ: [beszédfelismerés és szöveg közötti alapismeretek](./get-started-speech-to-text.md).
 
 A **beszédfelismerés (SR), a kifejezések listája, a szándék, a fordítás és a helyszíni tárolók** a következő platformokon érhetők el:
 
@@ -68,7 +68,7 @@ A **hangsegédek** a következő platformokon érhetők el:
 
 #### <a name="keyword-spotting"></a>Kulcsszavas bepecsételés
 
-[A beszédfelismerés](speech-devices-sdk-create-kws.md) fogalma támogatott a Speech SDK-ban. A kulcsszó-bepecsételés a kulcsszónak a beszédben való azonosítására szolgáló művelet, amelyet a kulcsszó meghallgatása után kell végezni. A "Hey Cortana" például aktiválja a Cortana Segédet.
+[A beszédfelismerés](./custom-keyword-basics.md) fogalma támogatott a Speech SDK-ban. A kulcsszó-bepecsételés a kulcsszónak a beszédben való azonosítására szolgáló művelet, amelyet a kulcsszó meghallgatása után kell végezni. A "Hey Cortana" például aktiválja a Cortana Segédet.
 
 A következő platformokon érhető el a **(z) kulcsszó-Felpecsételés (KWS)** :
 
@@ -180,4 +180,4 @@ Az egyéni hangvezérelt szöveg-beszéd, más néven az egyéni hang olyan onli
 ## <a name="next-steps"></a>További lépések
 
 * [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/cognitive-services/)
-* [Lásd: beszéd felismerése a C-ben #](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
+* [Lásd: beszéd felismerése a C-ben #](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnet)

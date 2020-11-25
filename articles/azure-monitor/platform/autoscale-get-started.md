@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: 543ecc80abeb9a437a895224de6ade679698c4d7
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565636"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020908"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Ismerkedés az Azure-beli autoskálázással
 Ez a cikk azt ismerteti, hogyan állíthatja be az erőforráshoz tartozó autoskálázási beállításokat a Microsoft Azure Portalban.
@@ -32,9 +32,9 @@ A felső szűrő ablaktáblán a lista hatóköre alapján kiválaszthatja az er
 
 Az egyes erőforrásokhoz az aktuális példányszámot és az autoskálázási állapotot fogja megtalálni. Az autoskálázás állapota a következőket teheti:
 
-- **Nincs konfigurálva** : ennél az erőforrásnál még nem engedélyezte az autoskálázást.
-- **Engedélyezve** : engedélyezve van az erőforráshoz tartozó autoskálázás.
-- **Letiltva** : letiltotta az erőforrás-méretezést.
+- **Nincs konfigurálva**: ennél az erőforrásnál még nem engedélyezte az autoskálázást.
+- **Engedélyezve**: engedélyezve van az erőforráshoz tartozó autoskálázás.
+- **Letiltva**: letiltotta az erőforrás-méretezést.
 
 ## <a name="create-your-first-autoscale-setting"></a>Az első méretezési beállítás létrehozása
 
@@ -51,7 +51,7 @@ Most ugorjon végig egy egyszerű, lépésenkénti útmutatót, amellyel létreh
 
     b. Az **operátor** beállítása **kisebb, mint**.
 
-    c. Állítsa a **küszöbértéket** **20** -ra.
+    c. Állítsa a **küszöbértéket** **20**-ra.
 
     d. Állítsa be a **műveletet** úgy, hogy **csökkentse a darabszámot**.
 
@@ -158,7 +158,7 @@ A forrás régióban az autoscale beállítással létrehozott [diagnosztikai be
 ### <a name="learn-more-about-moving-resources-across-azure-regions"></a>További információ az erőforrások Azure-régiók közötti áthelyezéséről
 Ha többet szeretne megtudni az erőforrások régiók közötti áthelyezéséről és az Azure-beli vész-helyreállításról, olvassa el az [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources) című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Műveletnapló-riasztás létrehozása az összes autoskálázási motor műveleteinek figyeléséhez az előfizetésen](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [Műveletnapló-riasztás létrehozása az összes sikertelen, az előfizetésen kívüli méretezési és kibővítő művelet figyeléséhez](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
 

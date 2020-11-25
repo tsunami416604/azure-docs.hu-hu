@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 06/3/2019
 ms.author: Zhchia
 ms.openlocfilehash: 280083ccbd732e95796013bf2b2c08e96564c24c
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94354155"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020483"
 ---
 # <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>Oktatóanyag: nagyítás konfigurálása automatikus felhasználó-kiépítési művelethez
 
@@ -154,7 +154,7 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 * 05/14/2020 – az e-mailekhez hozzáadott frissítési műveletek támogatása [type EQ "work"] attribútum.
 * 10/20/2020 – a "Pro" és a "Corp" meglévő szerepköreinek cseréjéhez hozzáadta a következő két új szerepkört: "licencelt" és "on-Prem". A "Pro" és a "Corp" szerepkör támogatása a jövőben el lesz távolítva.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

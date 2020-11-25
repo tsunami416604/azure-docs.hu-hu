@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 12/10/2019
 ms.openlocfilehash: 3ce104e9340c3e93d64b68dcab6f5bd6d2f62493
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748740"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020627"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Apache Hadoop-fürtök létrehozása az Azure REST API használatával
 
@@ -248,7 +248,7 @@ Kövesse az [Azure CLI használatának első](/cli/azure/get-started-with-az-cli
    az ad sp create --id <App ID> --query 'objectId'
    ```
 
-     A parancs által visszaadott érték az __objektumazonosító__ . Mentse ezt az értéket.
+     A parancs által visszaadott érték az __objektumazonosító__. Mentse ezt az értéket.
 
 4. Rendelje hozzá a **tulajdonosi** szerepkört az egyszerű szolgáltatáshoz az **objektumazonosító** érték használatával. Használja a korábban beszerzett **előfizetés-azonosítót** .
 
@@ -286,7 +286,7 @@ A kérelem által visszaadott JSON-dokumentum egy **access_token** nevű elemet 
 }
 ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Erőforráscsoport létrehozásához használja a következőt.
 
@@ -345,7 +345,7 @@ Ez a parancs egy JSON-dokumentumot ad vissza, amely a telepítési műveletre vo
 
 Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse meg [a hozzáférés-vezérlésre vonatkozó követelményeket](./hdinsight-hadoop-customize-cluster-linux.md#access-control).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy sikeresen létrehozott egy HDInsight-fürtöt, a következő paranccsal megismerheti, hogyan dolgozhat a fürttel.
 

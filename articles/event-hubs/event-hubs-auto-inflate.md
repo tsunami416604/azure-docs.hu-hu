@@ -4,11 +4,11 @@ description: Engedélyezze az automatikus kiosztást a névtéren az átviteli e
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 1be564472011622b71b3066495748dfdbe6cc791
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86537241"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020806"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Az Azure Event Hubs átviteli egységek automatikus méretezése
 Az Azure Event Hubs egy rugalmasan méretezhető adatfolyam-platform. Ennek megfelelően a Event Hubs használat a szolgáltatás használatának megkezdése után gyakran növekszik. Az ilyen használathoz az előre meghatározott [átviteli egységek](event-hubs-scalability.md#throughput-units) növelésére van szükség a Event Hubs méretezéséhez és a nagyobb átviteli sebességek kezeléséhez. A Event Hubs **automatikus** feltöltési funkciója automatikusan méretezi az átviteli egységek számának növelésével, hogy megfeleljen a használati igényeknek. Az átviteli egységek növelése megakadályozza a szabályozást, amelyben:
@@ -40,7 +40,7 @@ A következő módszerek egyikével engedélyezheti vagy letilthatja az automati
 
 
 #### <a name="enable-at-the-time-of-creation"></a>Engedélyezés a létrehozás időpontjában 
-**Event Hubs névtér létrehozásakor**engedélyezheti az automatikus kiemelés funkciót:
+**Event Hubs névtér létrehozásakor** engedélyezheti az automatikus kiemelés funkciót:
  
 ![Automatikus kiemelés engedélyezése az Event hub létrehozásakor](./media/event-hubs-auto-inflate/event-hubs-auto-inflate1.png)
 

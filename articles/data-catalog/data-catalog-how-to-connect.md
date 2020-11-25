@@ -7,11 +7,11 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: 5c8c545f01eb0df53ce9677b7db6f931b4d21af9
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151892"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021928"
 ---
 # <a name="how-to-connect-to-data-sources"></a>Kapcsolódás az adatforrásokhoz
 ## <a name="introduction"></a>Bevezetés
@@ -47,7 +47,7 @@ A menüben elérhető lehetőségek a jelenleg kiválasztott adategység típus�
 
  ![SQL Server tábla csatlakoztatási adatai](./media/data-catalog-how-to-connect/data-catalog-how-to-connect3.png)
 
-A kapcsolati adatok részletei eltérnek az adatforrás típusától és az adatforrás típusától, de a portálon található információk minden ügyfél-eszközben elérhetővé teszik az adatforráshoz való kapcsolódáshoz szükséges adatokat. A felhasználók átmásolhatják a **Azure Data Catalog**használatával felderített adatforrások kapcsolati adatait, lehetővé téve számukra, hogy a választott eszközön lévő adatokkal működjenek.
+A kapcsolati adatok részletei eltérnek az adatforrás típusától és az adatforrás típusától, de a portálon található információk minden ügyfél-eszközben elérhetővé teszik az adatforráshoz való kapcsolódáshoz szükséges adatokat. A felhasználók átmásolhatják a **Azure Data Catalog** használatával felderített adatforrások kapcsolati adatait, lehetővé téve számukra, hogy a választott eszközön lévő adatokkal működjenek.
 
 ## <a name="connecting-and-data-source-permissions"></a>Kapcsolódási és adatforrás-engedélyek
 Habár a **Azure Data Catalog** az adatforrások felderíthetővé tételével, maga az adathoz való hozzáférés az adatforrás tulajdonosának vagy rendszergazdájának a felügyelete alatt marad. **Azure Data Catalog** adatforrásának felfedése nem biztosít semmilyen engedélyt a felhasználónak az adatforrás eléréséhez.
@@ -56,7 +56,7 @@ Annak érdekében, hogy könnyebb legyen az adatforrást felderítő felhasznál
 
  ![Kapcsolódási információk a kérelemhez megadott hozzáférési utasításokkal](./media/data-catalog-how-to-connect/data-catalog-how-to-connect4.png)
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Az adatforrások **Azure Data Catalogsal** való regisztrálása lehetővé teszi, hogy az adatforrásból a katalógus szolgáltatásba másolja a strukturális és leíró metaadatokat az adatokból. Miután regisztrálta az adatforrást, és felderített, a felhasználók csatlakozhatnak az adatforráshoz a **Azure Data Catalog** -portál Megnyitás a következőben:... Válassza a menü vagy a saját adateszközeinek használatát.
 
 ## <a name="see-also"></a>Lásd még

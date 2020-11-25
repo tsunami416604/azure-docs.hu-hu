@@ -9,11 +9,11 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 02/10/2020
 ms.openlocfilehash: 0941e3d5141b5b8841f5d37e3db0d0b1b1474547
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130272"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019820"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Valós idejű Twitter-hangulatelemzés az Azure Stream Analytics szolgáltatásban
 
@@ -60,7 +60,7 @@ Ebben a szakaszban létrehoz egy Event hub-névteret, és hozzáad egy Event hub
 
 6. Nevezze el az új Event hub *socialtwitter-eh* nevet. Más nevet is használhat. Ha így tesz, jegyezze fel, mert később szüksége lesz erre a névre. Az Event hub egyéb beállításait nem kell beállítania.
  
-7. Válassza a **Létrehozás** lehetőséget.
+7. Kattintson a **Létrehozás** gombra.
 
 ### <a name="grant-access-to-the-event-hub"></a>Hozzáférés biztosítása az Event hub számára
 
@@ -75,7 +75,7 @@ Ahhoz, hogy egy folyamat adatküldést küldjön egy Event hubhoz, az Event hub-
 
 3.  A hozzáférési házirend lapon válassza a **+ Hozzáadás** lehetőséget. Ezután írja be a *socialtwitter-hozzáférés* **nevet a szabályzat neveként** , és jelölje be a **kezelés** jelölőnégyzetet.
  
-4.  Válassza a **Létrehozás** lehetőséget.
+4.  Kattintson a **Létrehozás** gombra.
 
 5.  Miután telepítette a házirendet, válassza ki a szabályzatot a megosztott hozzáférési házirendek listájából.
 
@@ -148,7 +148,7 @@ Most, hogy a tweet-események valós időben áramlanak a Twitterről, beállít
 
     Érdemes a feladatot és az Event hub-t ugyanabban a régióban elhelyezni a legjobb teljesítmény érdekében, és így nem kell fizetnie a régiók közötti adatátvitel során.
 
-3. Válassza a **Létrehozás** lehetőséget. Ezután navigáljon a feladatokhoz, amikor a telepítés befejeződött.
+3. Kattintson a **Létrehozás** gombra. Ezután navigáljon a feladatokhoz, amikor a telepítés befejeződött.
 
 ## <a name="specify-the-job-input"></a>Adja meg a feladatok bemenetét
 
@@ -181,7 +181,7 @@ Ha össze szeretné hasonlítani a témakörök közötti említések számát, 
    FROM TwitterStream
    ```
 
-3. Az üzenetekből származó eseményeknek a lekérdezés alatti **bemeneti előnézet** ablakban kell megjelenniük. Győződjön meg arról, hogy a **nézet** **JSON** -ra van beállítva. Ha nem lát adatokat, győződjön meg arról, hogy az adat-előállító eseményeket küld az Event hub-nak, és hogy a bemenet tömörítési típusaként a **gzip** lehetőséget választotta.
+3. Az üzenetekből származó eseményeknek a lekérdezés alatti **bemeneti előnézet** ablakban kell megjelenniük. Győződjön meg arról, hogy a **nézet** **JSON**-ra van beállítva. Ha nem lát adatokat, győződjön meg arról, hogy az adat-előállító eseményeket küld az Event hub-nak, és hogy a bemenet tömörítési típusaként a **gzip** lehetőséget választotta.
 
 4. Válassza a **lekérdezés tesztelése** lehetőséget, és figyelje meg az eredményeket a lekérdezés alatt a **teszt eredményei** ablakban.
 
@@ -207,12 +207,12 @@ Ebben a útmutatóban az összesített Tweet-eseményeket a feladatsorból az Az
 
 2. A **kimenetek** lapon kattintson a **+ &nbsp; Hozzáadás** és a **blob Storage/Data Lake Storage Gen2** elemre:
 
-   * **Kimeneti alias** : használja a nevet `TwitterStream-Output` . 
-   * **Importálási beállítások** : válassza **a tároló kiválasztása az előfizetések** közül lehetőséget.
-   * **Storage-fiók** . Válassza ki a tárfiókot.
-   * **Tároló** . Válassza az **új létrehozása** elemet, és adja meg az értéket `socialtwitter` .
+   * **Kimeneti alias**: használja a nevet `TwitterStream-Output` . 
+   * **Importálási beállítások**: válassza **a tároló kiválasztása az előfizetések** közül lehetőséget.
+   * **Storage-fiók**. Válassza ki a tárfiókot.
+   * **Tároló**. Válassza az **új létrehozása** elemet, és adja meg az értéket `socialtwitter` .
    
-4. Válassza a **Mentés** lehetőséget.   
+4. Kattintson a **Mentés** gombra.   
 
 ## <a name="start-the-job"></a>A feladat indítása
 
@@ -227,7 +227,7 @@ Meg van adva a feladatok bemenete, lekérdezése és kimenete. Készen áll arra
 ## <a name="get-support"></a>Támogatás kérése
 További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics kérdéseit](/answers/topics/azure-stream-analytics.html).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Scale Azure Stream Analytics jobs (Azure Stream Analytics-feladatok méretezése)](stream-analytics-scale-jobs.md)

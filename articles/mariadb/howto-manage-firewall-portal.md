@@ -7,11 +7,11 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.openlocfilehash: 895c8e51e16cb0b82ebf3edcf954dabe62b08ff4
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537131"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021775"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-portal"></a>Azure Database for MariaDB tűzfalszabályok létrehozása és kezelése a Azure Portal használatával
 A kiszolgálói szintű tűzfalszabályok használatával felügyelhető egy adott IP-címről vagy IP-címről érkező Azure Database for MariaDB-kiszolgálóhoz való hozzáférés.
@@ -50,10 +50,10 @@ Ha engedélyezni szeretné, hogy az Azure-alkalmazások csatlakozni tudjanak a A
 ## <a name="manage-existing-firewall-rules-in-the-azure-portal"></a>A Azure Portal meglévő tűzfalszabályok kezelése
 Ismételje meg a lépéseket a tűzfalszabályok kezeléséhez.
 * Az aktuális számítógép hozzáadásához kattintson a **+ saját IP-cím hozzáadása** lehetőségre. Kattintson a **Mentés** gombra a módosítások mentéséhez.
-* További IP-címek hozzáadásához írja be a **szabály nevét** , az **IP-** cím és a **záró IP** -címet. Kattintson a **Mentés** gombra a módosítások mentéséhez.
+* További IP-címek hozzáadásához írja be a **szabály nevét**, az **IP-** cím és a **záró IP**-címet. Kattintson a **Mentés** gombra a módosítások mentéséhez.
 * Meglévő szabály módosításához kattintson a szabály bármelyik mezőjére, majd módosítsa a következőt:. Kattintson a **Mentés** gombra a módosítások mentéséhez.
 * Meglévő szabály törléséhez kattintson a három pontra [...], majd a **Törlés** gombra. Kattintson a **Mentés** gombra a módosítások mentéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
  - Ehhez hasonlóan parancsfájlokat is [létrehozhat Azure Database for MariaDB tűzfalszabályok létrehozásához és kezeléséhez az Azure CLI használatával](howto-manage-firewall-cli.md).
  - További biztonságos hozzáférés a kiszolgálóhoz [Virtual Network szolgáltatási végpontok és szabályok létrehozásával és kezelésével a Azure Portal használatával](howto-manage-vnet-portal.md).

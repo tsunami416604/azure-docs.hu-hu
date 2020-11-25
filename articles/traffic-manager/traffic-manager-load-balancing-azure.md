@@ -13,11 +13,11 @@ ms.workload: na
 ms.date: 10/27/2016
 ms.author: duau
 ms.openlocfilehash: 431eaff9da95063648d3e80acb54be9cc5c25bc5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89393063"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021690"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Terheléselosztási szolgáltatások használata az Azure-ban
 
@@ -41,7 +41,7 @@ Koncepcionális szinten a szolgáltatások mindegyike külön szerepet játszik 
 * A **Application Gateway** az Application Delivery Controller (ADC) szolgáltatást nyújtja, amely különböző, 7. rétegbeli terheléselosztási funkciókat kínál az alkalmazáshoz. Lehetővé teszi az ügyfelek számára a webfarmok hatékonyságának optimalizálását azáltal, hogy kiszervezik a CPU-igényes TLS-lezárást az Application Gateway felé. Az egyéb 7. rétegbeli útválasztási képességek közé tartozik a bejövő forgalom ciklikus lekéréses eloszlása, a cookie-alapú munkamenet-affinitás, az URL-alapú útválasztás, valamint az egyetlen Application Gateway mögött több webhely üzemeltetése. Application Gateway konfigurálható internetre irányuló átjáróként, csak belső átjáróként, vagy mindkettő kombinációja. A Application Gateway teljes mértékben az Azure által felügyelt, méretezhető és magasan elérhető. Diagnosztikai és naplózási képességek széles skáláját biztosítja a jobb kezelhetőség érdekében.
 * **Load Balancer** az Azure Sdn stack szerves része, amely nagy teljesítményű, kis késleltetésű 4. rétegbeli terheléselosztási szolgáltatásokat biztosít minden UDP-és TCP-protokollhoz. Felügyeli a bejövő és kimenő kapcsolatokat. Segítségével nyilvános és belső elosztott terhelésű végpontok konfigurálhatók, valamint szabályok definiálhatók, amelyek a bejövő kapcsolatokat a háttérbeli készletben található célokra irányítják TCP- és HTTP-állapotellenőrzési lehetőségek használatával, a szolgáltatás rendelkezésre állásának felügyeletéhez.
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Használati eset
 
 Ebben a példában egy egyszerű webhelyet használunk, amely két típusú tartalmat kínál: a képeket és a dinamikusan megjelenített weblapokat. A webhelynek földrajzilag redundánsnak kell lennie, és a felhasználókat a legközelebbi (legalacsonyabb késésű) helyről kell kiszolgálni. Az alkalmazás fejlesztői úgy döntöttek, hogy a/images/* mintának megfelelő URL-címek a webfarm többi részétől eltérő, dedikált virtuális gépekből származnak.
 
@@ -65,7 +65,7 @@ Az alábbi ábrán a forgatókönyv architektúrája látható:
 
 ### <a name="step-1-create-a-traffic-manager-profile"></a>1. lépés: Traffic Manager profil létrehozása
 
-1. A Azure Portal kattintson az **erőforrás létrehozása**  >  **hálózatkezelés**  >  **Traffic Manager profil**  >  **létrehozása**elemre.
+1. A Azure Portal kattintson az **erőforrás létrehozása**  >  **hálózatkezelés**  >  **Traffic Manager profil**  >  **létrehozása** elemre.
 2. Adja meg a következő alapvető információkat:
 
    * **Név**: adja meg a Traffic Manager-profilt a DNS-előtag neveként.
@@ -80,19 +80,19 @@ Az alábbi ábrán a forgatókönyv architektúrája látható:
 
 ### <a name="step-2-create-the-application-gateways"></a>2. lépés: az Application Gateway létrehozása
 
-1. A Azure Portal a bal oldali ablaktáblán kattintson az **erőforrás létrehozása**  >  **hálózatkezelés**  >  **Application Gateway**elemre.
+1. A Azure Portal a bal oldali ablaktáblán kattintson az **erőforrás létrehozása**  >  **hálózatkezelés**  >  **Application Gateway** elemre.
 2. Adja meg az Application Gateway következő alapvető adatait:
 
    * **Name (név**): az Application Gateway neve.
    * **SKU-méret**: az Application Gateway mérete, amely kis, közepes vagy nagy méretűként érhető el.
-   * **Példányszám: a**példányok száma, a 2 és 10 közötti érték.
+   * **Példányszám: a** példányok száma, a 2 és 10 közötti érték.
    * **Erőforráscsoport**: az Application Gatewayt birtokló erőforráscsoport. Ez lehet egy meglévő erőforráscsoport vagy egy új csoport.
    * **Hely**: az Application Gateway régiója, amely az erőforráscsoporthoz megegyező helyen található. A hely azért fontos, mert a virtuális hálózatnak és a nyilvános IP-nek ugyanazon a helyen kell lennie, mint az átjárónak.
 3. Kattintson az **OK** gombra.
 4. Adja meg a virtuális hálózatot, az alhálózatot, az előtér-IP-címet és a figyelő konfigurációját az Application Gateway számára. Ebben az esetben az előtér-IP-cím **nyilvános**, amely lehetővé teszi, hogy később a Traffic Manager-profilhoz végpontként adja hozzá.
 5. Konfigurálja a figyelőt a következő lehetőségek egyikével:
     * Ha HTTP-t használ, nem kell konfigurálnia a konfigurációt. Kattintson az **OK** gombra.
-    * Ha HTTPS-t használ, további konfigurálásra van szükség. Lásd: [Application Gateway létrehozása](../application-gateway/application-gateway-create-gateway-portal.md)a 9. lépéstől kezdve. A konfiguráció befejezése után kattintson **az OK**gombra.
+    * Ha HTTPS-t használ, további konfigurálásra van szükség. Lásd: [Application Gateway létrehozása](../application-gateway/application-gateway-create-gateway-portal.md)a 9. lépéstől kezdve. A konfiguráció befejezése után kattintson **az OK** gombra.
 
 #### <a name="configure-url-routing-for-application-gateways"></a>URL-útválasztás konfigurálása Application Gateway-hez
 
@@ -101,12 +101,12 @@ Ha a háttér-készletet választja, a Path-alapú szabályhoz konfigurált Appl
 ![Application Gateway webes réteg diagramja](./media/traffic-manager-load-balancing-azure/web-tier-diagram.png)
 
 1. Az erőforráscsoporthoz lépjen az előző szakaszban létrehozott Application Gateway-példányra.
-2. A **Beállítások**területen válassza a **háttér-készletek**lehetőséget, majd a **Hozzáadás** gombra kattintva adja hozzá azokat a virtuális gépeket, amelyeket a webes rétegbeli háttér-készletekkel szeretne hozzárendelni.
+2. A **Beállítások** területen válassza a **háttér-készletek** lehetőséget, majd a **Hozzáadás** gombra kattintva adja hozzá azokat a virtuális gépeket, amelyeket a webes rétegbeli háttér-készletekkel szeretne hozzárendelni.
 3. Adja meg a háttér-készlet nevét és a készletben lévő gépek összes IP-címét. Ebben a forgatókönyvben a virtuális gépek két háttér-kiszolgáló készletét csatlakoztatjuk.
 
    ![Application Gateway "háttér-készlet hozzáadása"](./media/traffic-manager-load-balancing-azure/s2-appgw-add-bepool.png)
 
-4. Az Application Gateway **beállításai** területen válassza a **szabályok**elemet, majd a szabály hozzáadásához kattintson az **elérésiút-alapú** gombra.
+4. Az Application Gateway **beállításai** területen válassza a **szabályok** elemet, majd a szabály hozzáadásához kattintson az **elérésiút-alapú** gombra.
 
    ![Application Gateway szabályok "elérésiút-alapú" gomb](./media/traffic-manager-load-balancing-azure/s2-appgw-add-pathrule.png)
 
@@ -136,7 +136,7 @@ Ha a háttér-készletet választja, a Path-alapú szabályhoz konfigurált Appl
 Ebben a forgatókönyvben Traffic Manager a különböző régiókban található Application Gateway-hez (az előző lépésekben konfiguráltak szerint) csatlakozik. Most, hogy konfigurálta az Application Gateway-t, a következő lépés a Traffic Manager profiljához való kapcsolódás.
 
 1. Nyissa meg Traffic Manager-profilját. Ehhez keresse meg az erőforráscsoportot, vagy keresse meg az Traffic Manager profil nevét az **összes erőforrásból**.
-2. A bal oldali ablaktáblán válassza a **végpontok**lehetőséget, majd kattintson a **Hozzáadás** elemre egy végpont hozzáadásához.
+2. A bal oldali ablaktáblán válassza a **végpontok** lehetőséget, majd kattintson a **Hozzáadás** elemre egy végpont hozzáadásához.
 
    ![Traffic Manager végpontok "Hozzáadás" gomb](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint.png)
 
@@ -144,7 +144,7 @@ Ebben a forgatókönyvben Traffic Manager a különböző régiókban találhat�
 
    * **Típus**: válassza ki a betölteni kívánt végpont típusát. Ebben az esetben válassza az **Azure-végpont** lehetőséget, mert a korábban konfigurált Application Gateway-példányokhoz csatlakoztatjuk.
    * **Név**: adja meg a végpont nevét.
-   * **Cél erőforrástípus**: válassza a **nyilvános IP-cím** lehetőséget, majd a **cél erőforrás**területen válassza ki a korábban konfigurált Application Gateway nyilvános IP-címét.
+   * **Cél erőforrástípus**: válassza a **nyilvános IP-cím** lehetőséget, majd a **cél erőforrás** területen válassza ki a korábban konfigurált Application Gateway nyilvános IP-címét.
 
    ![Traffic Manager "végpont hozzáadása"](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint-blade.png)
 
@@ -158,18 +158,18 @@ Ha a magas rendelkezésre állású adatbázis-fürt SQL Server AlwaysOn haszná
 
 A belső terheléselosztó konfigurálásával kapcsolatos további információkért lásd: [belső terheléselosztó létrehozása a Azure Portalban](../load-balancer/load-balancer-get-started-ilb-arm-portal.md).
 
-1. A Azure Portal a bal oldali ablaktáblán kattintson az **erőforrás létrehozása**  >  **hálózatkezelés**  >  **Load Balancer**elemre.
+1. A Azure Portal a bal oldali ablaktáblán kattintson az **erőforrás létrehozása**  >  **hálózatkezelés**  >  **Load Balancer** elemre.
 2. Válassza ki a terheléselosztó nevét.
-3. Állítsa a **típust** **belső**értékre, majd válassza ki a megfelelő virtuális hálózatot és alhálózatot ahhoz, hogy a terheléselosztó elérhető legyen.
-4. Az **IP-cím hozzárendelése**területen válassza a **dinamikus** vagy a **statikus**lehetőséget.
-5. Az **erőforráscsoport**területen válassza ki a terheléselosztó erőforráscsoportot.
-6. A **hely**területen válassza ki a megfelelő régiót a terheléselosztó számára.
+3. Állítsa a **típust** **belső** értékre, majd válassza ki a megfelelő virtuális hálózatot és alhálózatot ahhoz, hogy a terheléselosztó elérhető legyen.
+4. Az **IP-cím hozzárendelése** területen válassza a **dinamikus** vagy a **statikus** lehetőséget.
+5. Az **erőforráscsoport** területen válassza ki a terheléselosztó erőforráscsoportot.
+6. A **hely** területen válassza ki a megfelelő régiót a terheléselosztó számára.
 7. A terheléselosztó létrehozásához kattintson a **Létrehozás** gombra.
 
 #### <a name="connect-a-back-end-database-tier-to-the-load-balancer"></a>Háttérbeli adatbázis-réteg összekapcsolása a terheléselosztó használatával
 
 1. Az erőforráscsoport alatt keresse meg az előző lépésekben létrehozott terheléselosztó.
-2. A **Beállítások**területen kattintson a **háttér-készletek**elemre, majd a **Hozzáadás** elemre a háttérbeli készlet hozzáadásához.
+2. A **Beállítások** területen kattintson a **háttér-készletek** elemre, majd a **Hozzáadás** elemre a háttérbeli készlet hozzáadásához.
 
    ![Load Balancer "háttér-készlet hozzáadása"](./media/traffic-manager-load-balancing-azure/s4-ilb-add-bepool.png)
 
@@ -178,27 +178,27 @@ A belső terheléselosztó konfigurálásával kapcsolatos további információ
 
 #### <a name="configure-a-probe"></a>Mintavétel konfigurálása
 
-1. A terheléselosztó terület **Beállítások** **területén válassza a**mintavételek lehetőséget, majd a mintavétel hozzáadásához kattintson a **Hozzáadás** gombra.
+1. A terheléselosztó terület **Beállítások** **területén válassza a** mintavételek lehetőséget, majd a mintavétel hozzáadásához kattintson a **Hozzáadás** gombra.
 
    ![Load Balancer "mintavétel hozzáadása"](./media/traffic-manager-load-balancing-azure/s4-ilb-add-probe.png)
 
 2. Adja meg a mintavétel nevét.
 3. Válassza ki a mintavételhez használandó **protokollt** . Az adatbázisok esetében előfordulhat, hogy HTTP-mintavétel helyett TCP-mintavételt szeretne használni. Ha többet szeretne megtudni a terheléselosztó-mintavételekről, tekintse meg a [Load Balancer](../load-balancer/load-balancer-custom-probe-overview.md)-tesztek ismertetése című témakört.
 4. Adja meg az adatbázisnak a mintavételhez való hozzáféréshez használandó **portját** .
-5. Az **intervallum**alatt határozza meg, hogy milyen gyakran történjen az alkalmazás mintavétele.
-6. A nem kifogástalan **állapotú küszöbértéknél**határozza meg, hogy a HÁTTÉRBELI virtuális gép nem megfelelő állapotba kerüljön-e a folyamatos mintavételi hibák száma.
+5. Az **intervallum** alatt határozza meg, hogy milyen gyakran történjen az alkalmazás mintavétele.
+6. A nem kifogástalan **állapotú küszöbértéknél** határozza meg, hogy a HÁTTÉRBELI virtuális gép nem megfelelő állapotba kerüljön-e a folyamatos mintavételi hibák száma.
 7. A mintavétel létrehozásához kattintson **az OK** gombra.
 
 #### <a name="configure-the-load-balancing-rules"></a>Terheléselosztási szabályok konfigurálása
 
-1. A terheléselosztó **beállításai** területen válassza a terheléselosztási **szabályok**lehetőséget, majd kattintson a **Hozzáadás** elemre egy szabály létrehozásához.
+1. A terheléselosztó **beállításai** területen válassza a terheléselosztási **szabályok** lehetőséget, majd kattintson a **Hozzáadás** elemre egy szabály létrehozásához.
 2. Adja meg a terheléselosztási szabály **nevét** .
-3. Válassza ki a terheléselosztó, a **protokoll**és a **port**előtérbeli **IP-címét** .
-4. A **háttér-port**területen válassza ki a háttér-készletben használni kívánt portot.
+3. Válassza ki a terheléselosztó, a **protokoll** és a **port** előtérbeli **IP-címét** .
+4. A **háttér-port** területen válassza ki a háttér-készletben használni kívánt portot.
 5. Válassza ki a **háttér-készletet** **és az előző** lépésekben létrehozott mintavételt a szabály alkalmazásához.
-6. A **munkamenetek megőrzése**területen válassza ki, hogyan szeretné megőrizni a munkameneteket.
-7. Az **Üresjárat időkorlátja**területen állítsa be a percek számát az Üresjárati időkorlát előtt.
-8. A **lebegő IP**területen válassza a **Letiltva** vagy az **engedélyezve**lehetőséget.
+6. A **munkamenetek megőrzése** területen válassza ki, hogyan szeretné megőrizni a munkameneteket.
+7. Az **Üresjárat időkorlátja** területen állítsa be a percek számát az Üresjárati időkorlát előtt.
+8. A **lebegő IP** területen válassza a **Letiltva** vagy az **engedélyezve** lehetőséget.
 9. A szabály létrehozásához kattintson az **OK** gombra.
 
 ### <a name="step-5-connect-web-tier-vms-to-the-load-balancer"></a>5. lépés: webrétegbeli virtuális gépek összekötése a terheléselosztó szolgáltatással
@@ -207,7 +207,7 @@ Most konfiguráljuk az IP-címet és a terheléselosztó előtér-portot a webr�
 
 ![Load Balancer "előtéri IP-címkészlet" navigációs ablaktábla](./media/traffic-manager-load-balancing-azure/s5-ilb-frontend-ippool.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A Traffic Manager áttekintése](traffic-manager-overview.md)
 * [Az Application Gateway áttekintése](../application-gateway/application-gateway-introduction.md)

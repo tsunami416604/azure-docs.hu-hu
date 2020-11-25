@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/04/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 16c1dec9e52be98e5b4e0103a583bdc219bc2417
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6a16106495e584c9acbc02d380242df665f35ce5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88031797"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020004"
 ---
 ## <a name="push-image-to-registry"></a>Rendszerkép leküldése a beállításjegyzékbe
 
@@ -23,7 +23,7 @@ Ahhoz, hogy rendszerképet tudjon küldeni egy Azure Container Registry tároló
 docker pull hello-world
 ```
 
-Mielőtt leküldi a rendszerképet a beállításjegyzékbe, fel kell címkéznie a beállításjegyzék bejelentkezési kiszolgálójának teljes nevével. A bejelentkezési kiszolgáló nevét a következő formátumban kell megadni: * \<registry-name\> . azurecr.IO* (mind kisbetűs), például *mycontainerregistry.azurecr.IO*.
+Mielőtt leküldi a rendszerképet a beállításjegyzékbe, fel kell címkéznie a beállításjegyzék bejelentkezési kiszolgálójának teljes nevével. A bejelentkezési kiszolgáló nevét a következő formátumban kell megadni: *\<registry-name\> . azurecr.IO* (csak kisbetűsnek kell lennie), például *mycontainerregistry.azurecr.IO*.
 
 Címkézze fel a rendszerképet a [docker tag][docker-tag] parancs használatával. Helyettesítse be az `<login-server>` helyére az ACR-példány bejelentkezési kiszolgálójának nevét.
 

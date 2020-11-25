@@ -15,11 +15,11 @@ ms.date: 06/12/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 43718f8ebc851f27035f2999bfb4ff3ec12ca5b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84887726"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021962"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Azure CDN végpont létrehozása
 Ez a cikk az [Azure Content Delivery Network-(CDN-)](cdn-overview.md) VÉGPONT meglévő CDN-profilban való létrehozásának összes beállítását ismerteti. Miután létrehozott egy profilt és egy végpontot, megkezdheti a tartalom továbbítását az ügyfeleknek. A profil és a végpont létrehozásával kapcsolatos rövid útmutató: gyors üzembe helyezés [Azure CDN profil és végpont létrehozása](cdn-create-new-endpoint.md).
@@ -46,7 +46,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjáv
 
 3. A **Név** mezőben adjon meg egy egyedi nevet a CDN-végpont számára. A rendszer ezt a nevet használja a gyorsítótárazott erőforrások eléréséhez a tartományban _\<endpointname>_ . azureedge.net.
 
-4. A **forrás típusa mezőben**válasszon a következő eredetű típusok közül: 
+4. A **forrás típusa mezőben** válasszon a következő eredetű típusok közül: 
    - **Tároló** az Azure Storage-hoz
    - Azure Cloud Services **Cloud Service**
    - Az Azure **Webalkalmazása** Web Apps
@@ -54,7 +54,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjáv
 
 5. A **Origin hostname (forrás neve**) mezőben válassza ki vagy adja meg a forrás-kiszolgáló tartományát. A legördülő listában a 4. lépésben megadott típusú összes rendelkezésre álló forráskiszolgáló látható. Ha az **Egyéni forrás** lehetőséget választotta a forrás típusaként, adja meg az egyéni forráskiszolgáló tartományát.
     
-6. A **forrás elérési útja**mezőbe írja be a gyorsítótárazni kívánt erőforrások elérési útját. Ha engedélyezni szeretné az 5. lépésben megadott tartomány bármely erőforrásának gyorsítótárazását, hagyja üresen ezt a beállítást.
+6. A **forrás elérési útja** mezőbe írja be a gyorsítótárazni kívánt erőforrások elérési útját. Ha engedélyezni szeretné az 5. lépésben megadott tartomány bármely erőforrásának gyorsítótárazását, hagyja üresen ezt a beállítást.
     
 7. A **Forrás állomásfejléce** mezőben adja meg azt az állomásfejlécet, amelyet az Azure CDN-nek minden egyes kérelemmel el kell küldenie, vagy hagyja meg az alapértelmezett értéket.
    
@@ -62,7 +62,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjáv
    > Bizonyos típusú források – például az Azure Storage és a Web Apps – esetén az állomásfejlécnek egyeznie kell a forrás tartományával. Hacsak a forrás a tartománytól eltérő állomásfejléc használatát nem igényli, hagyja meg az alapértelmezett értéket.
    > 
     
-8. A **protokoll** és a **Forrás port**esetében adja meg az erőforrások eléréséhez használandó protokollokat és portokat a forrás-kiszolgálón. Legalább egy protokollt (a HTTP vagy a HTTPS protokollt) ki kell választani. A HTTPS-tartalmak eléréséhez használja a CDN által biztosított tartományt ( _\<endpointname>_ . azureedge.net). 
+8. A **protokoll** és a **Forrás port** esetében adja meg az erőforrások eléréséhez használandó protokollokat és portokat a forrás-kiszolgálón. Legalább egy protokollt (a HTTP vagy a HTTPS protokollt) ki kell választani. A HTTPS-tartalmak eléréséhez használja a CDN által biztosított tartományt ( _\<endpointname>_ . azureedge.net). 
    
    > [!NOTE]
    > A **forrásport** értéke csak azt a portot határozza meg, amelyet a végpont az információk forrás-kiszolgálóról való lekéréséhez használ. Magát a végpontot a végfelhasználók – a **Forrásport** értékétől függetlenül – csak az alapértelmezett HTTP- és HTTPS-porton (azaz a 80-as és a 443-as porton) érik el.  
@@ -71,7 +71,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjáv
    > 
    > Azure CDN egyéni tartományok HTTPS-támogatása nem támogatott a **Akamai-termékek Azure CDN** . További információkért lásd: [HTTPS konfigurálása az Azure CDN egyéni tartományon](cdn-custom-ssl.md).
     
-9. A **alkalmazáshoz optimalizált**optimalizálási típushoz válassza ki azt a forgatókönyvet és típust, amelyet a végpontnak teljesíteni kíván. További információ: [optimalizálás Azure CDN a tartalom kézbesítésének típusa](cdn-optimization-overview.md).
+9. A **alkalmazáshoz optimalizált** optimalizálási típushoz válassza ki azt a forgatókönyvet és típust, amelyet a végpontnak teljesíteni kíván. További információ: [optimalizálás Azure CDN a tartalom kézbesítésének típusa](cdn-optimization-overview.md).
 
     A következő optimalizálási típus beállításai támogatottak a profil típusa szerint:
     - **Azure CDN standard a Microsoft** profiljaiból:
@@ -102,7 +102,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjáv
     Ha a CDN-tartománynevet úgy kísérli meg használni, hogy a végpont konfigurációja propagálva legyen a jelenléti pontra (POP) szolgáló kiszolgálókra, előfordulhat, hogy HTTP 404-válasz állapotot kap. Ha a végpont létrehozása óta több óra van, és továbbra is 404 választ kap, tekintse meg [a 404 állapotkódot visszaadó Azure CDN-végpontok hibaelhárítása](cdn-troubleshoot-endpoint.md)című témakört.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nem szükséges végpontot törölni, válassza ki, majd válassza a **Törlés**lehetőséget. 
+Ha már nem szükséges végpontot törölni, válassza ki, majd válassza a **Törlés** lehetőséget. 
 
 ## <a name="next-steps"></a>További lépések
 Az egyéni tartományokkal kapcsolatos további tudnivalókért tekintse meg az egyéni tartomány a CDN-végponthoz való hozzáadásával foglalkozó oktatóanyagot.

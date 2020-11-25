@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: f2417389de98f9998c189e7cbbbcdae77fbb8840
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075059"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020704"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Felhőalapú szolgáltatás indítási feladatainak konfigurálása és futtatása
 Az indítási feladatokkal műveleteket hajthat végre a szerepkörök elkezdése előtt. A végrehajtani kívánt műveletek közé tartozik például az összetevők telepítése, a COM-összetevők regisztrálása, a beállításkulcsok beállítása vagy a hosszú ideig futó folyamat elindítása.
@@ -54,7 +54,7 @@ Az alábbi listában az Azure-beli szerepkör indítási eljárása látható:
 ## <a name="example-of-a-startup-task"></a>Indítási feladat – példa
 Az indítási feladatok a [ServiceDefinition. csdef] fájlban vannak definiálva a **Task** elemben. A **commandLine** attribútum megadja az indítási batch-fájl vagy a konzol parancsának nevét és paramétereit, a **executionContext** attribútum meghatározza az indítási feladat jogosultsági szintjét, és a **taskType** attribútum meghatározza a feladat végrehajtásának módját.
 
-Ebben a példában egy **MyVersionNumber**nevű környezeti változó jön létre az indítási feladathoz, és a "**1.0.0.0**" értékre van állítva.
+Ebben a példában egy **MyVersionNumber** nevű környezeti változó jön létre az indítási feladathoz, és a "**1.0.0.0**" értékre van állítva.
 
 **ServiceDefinition. csdef**:
 
@@ -148,7 +148,7 @@ Ha például egy "**igaz**" nevű környezeti változót szeretne létrehozni, h
 </Startup>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ismerje meg, hogyan hajthat végre [gyakori indítási feladatokat](cloud-services-startup-tasks-common.md) a felhőalapú szolgáltatásban.
 
 A felhőalapú szolgáltatás [becsomagolása](cloud-services-model-and-package.md) .  

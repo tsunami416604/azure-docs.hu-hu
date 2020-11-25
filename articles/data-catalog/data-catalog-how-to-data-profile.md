@@ -7,11 +7,11 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: b27ff631ce13d70d15a6fd2b6dd5ad5bccaf5450
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89442071"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021911"
 ---
 # <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>Adatprofil adatforrásai Azure Data Catalog
 
@@ -49,7 +49,7 @@ Az adategységek regisztrálásakor a felhasználók az adatforrásokkal kapcsol
 
 ## <a name="how-to-include-a-data-profile-when-registering-a-data-source"></a>Adatprofil belefoglalása az adatforrás regisztrálásakor
 
-Könnyedén belefoglalhatja az adatforrás profilját. Amikor regisztrál egy adatforrást, az adatforrás-regisztrációs eszköz regisztrálásához szükséges **objektumok** panelen válassza az **Adatprofil belefoglalása**lehetőséget.
+Könnyedén belefoglalhatja az adatforrás profilját. Amikor regisztrál egy adatforrást, az adatforrás-regisztrációs eszköz regisztrálásához szükséges **objektumok** panelen válassza az **Adatprofil belefoglalása** lehetőséget.
 
 ![Adatprofil befoglalása jelölőnégyzet](media/data-catalog-data-profile/data-catalog-register-profile.png)
 
@@ -74,7 +74,7 @@ A **Azure Data Catalog** adatprofilja a táblázat és az oszlop profiljának ad
 ### <a name="object-data-profile"></a>Objektum adatprofilja
 
 * Sorok száma
-* Táblázat mérete
+* Tábla mérete
 * Az objektum legutóbbi frissítésekor
 
 ### <a name="column-data-profile"></a>Oszlop adatprofilja
@@ -84,7 +84,7 @@ A **Azure Data Catalog** adatprofilja a táblázat és az oszlop profiljának ad
 * NULL értékű sorok száma
 * Az oszlopok értékeinek minimális, maximális, átlagos és szórásos szórása
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Az adatok profilkészítése statisztikai adatokat és információkat biztosít a regisztrált adategységekről, amelyek segítségével meghatározhatja az üzleti problémák megoldásához szükséges adatok megfelelőségét. A jegyzetek és az adatforrások dokumentálása mellett az adatprofilok mélyebb ismereteket biztosíthatnak a felhasználóknak az adatairól.
 

@@ -8,11 +8,11 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: c4e5dedf2075a2e13cc91c5eed2c0f03ba498b97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962553"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021520"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>Belső Load Balancer használata App Service Environment
 
@@ -45,25 +45,25 @@ Bizonyos dolgok nem hajthatók végre, ha ILB-beadást használ. Ezek a követke
 ## <a name="creating-an-ilb-ase"></a>ILB-bekészítés létrehozása
 Egy ILB-bekészítés létrehozása nem sokban különbözik a hagyományos központú adatforrások létrehozásával. A kiegészítő információk létrehozásával kapcsolatos részletes információkért lásd: [app Service Environment létrehozása][HowtoCreateASE]. A ILB beadásának folyamata megegyezik a VNet létrehozása és a már meglévő VNet kiválasztása között. Az ILB ASE létrehozása: 
 
-1. A Azure Portal válassza az **erőforrás létrehozása-> web és mobil – > app Service Environment**lehetőséget.
+1. A Azure Portal válassza az **erőforrás létrehozása-> web és mobil – > app Service Environment** lehetőséget.
 2. Válassza ki előfizetését.
 3. Válasszon ki vagy hozzon létre egy erőforráscsoportot.
 4. Válasszon ki vagy hozzon létre egy virtuális hálózatot.
 5. Hozzon létre egy alhálózatot, ha kiválaszt egy VNet.
 6. Válassza ki **Virtual Network/Location-> VNet konfigurációját** , és állítsa a VIP-típust belső értékre.
 7. Adja meg az altartomány nevét (ez a jelen útmutatóban létrehozott alkalmazásokhoz használt altartomány).
-8. Válassza **az OK** , majd a **Létrehozás**lehetőséget.
+8. Válassza **az OK** , majd a **Létrehozás** lehetőséget.
 
 ![Megjeleníti a ILB-előkészítés létrehozásához használt képernyőket.][1]
 
 A Virtual Network ablaktáblán található egy VNet konfigurációs beállítás, amely lehetővé teszi a külső VIP-vagy belső VIP-címek közötti választást. Az alapértelmezett érték a Külső. Ha a külső értékre van állítva, a beadási szolgáltatás egy internetről elérhető VIP-t használ. Ha a Belső lehetőséget választja, az ASE ILB-vel vagy virtuális hálózati IP-címmel lesz konfigurálva. 
 
-A belső lehetőség kiválasztása után a rendszer eltávolítja a kiegészítő IP-címeket, és ehelyett a beadási altartományt kell megadnia. Külső virtuális IP-cím használatával a benyújtó által létrehozott alkalmazások altartományában a kiegészítő csomag neve szerepel. Ha a ***contosotest*** neve ***mytest***, és az alkalmazás abban a kiegészítőben van, akkor az altartomány formátuma a következő: ***contosotest.p.azurewebsites.net*** , az alkalmazás URL-címe pedig ***mytest.contosotest.p.azurewebsites.net***. Ha a VIP-típust belső értékre állítja, a beadási név nem szerepel a központhoz tartozó altartományban. Explicit módon megadja az altartományt. Ha az altartomány ***contoso.Corp.net*** , és a ***timereporting***nevű szakterületen hozta létre az alkalmazást, akkor az alkalmazás URL-címe ***timereporting.contoso.Corp.net***.
+A belső lehetőség kiválasztása után a rendszer eltávolítja a kiegészítő IP-címeket, és ehelyett a beadási altartományt kell megadnia. Külső virtuális IP-cím használatával a benyújtó által létrehozott alkalmazások altartományában a kiegészítő csomag neve szerepel. Ha a központjának neve **_contosotest_* _, és az alkalmazás ebben a kiegészítőben a _*_mytest_*_ neve, az altartomány formátuma _*_contosotest.p.azurewebsites.net_*_ , az alkalmazás URL-címe pedig _*_mytest.contosotest.p.azurewebsites.net_*_. Ha a VIP-típust belső értékre állítja, a beadási név nem szerepel a központhoz tartozó altartományban. Explicit módon megadja az altartományt. Ha az altartomány _*_contoso.Corp.net_*_ , és a _*_timereporting_*_ nevű szakterületen hozta létre az alkalmazást, akkor az alkalmazás URL-címe _*_timereporting.contoso.Corp.net_*_.
 
 ## <a name="apps-in-an-ilb-ase"></a>Alkalmazások egy ILB-ben
 Az alkalmazások ILB-ben történő létrehozása megegyeznek az alkalmazások szokásos módon történő létrehozásával. 
 
-1. A Azure Portal válassza az **erőforrás létrehozása-> web és mobil-> webes** vagy **mobil** vagy API- **alkalmazás**elemet.
+1. A Azure Portal válassza a _ *erőforrás létrehozása-> web és mobil – > webes** vagy **mobil** -vagy **API-alkalmazás** lehetőséget.
 2. Adja meg az alkalmazás nevét.
 3. Válassza ki előfizetését.
 4. Válasszon ki vagy hozzon létre egy erőforráscsoportot.
@@ -77,7 +77,7 @@ Az alkalmazás neve alatt a aldomain neve frissül, hogy tükrözze a központj�
 ## <a name="post-ilb-ase-creation-validation"></a>ILB-létrehozási ellenőrzés utáni érvényesítés
 Az ILB ASE kissé különbözik az ILB nélküli ASE környezettől. Ahogy már említettük, a saját DNS-t kell kezelnie, és a HTTPS-kapcsolatokhoz is meg kell adnia a saját tanúsítványát. 
 
-Miután létrehozta a központot, megfigyelheti, hogy az altartomány megjeleníti a megadott altartományt, és van egy új elem a **ILB-tanúsítvány**nevű **beállítási** menüben. A kiegészítő szolgáltatás önaláírt tanúsítvánnyal jön létre, amely megkönnyíti a HTTPS tesztelését. A portálon megtudhatja, hogy meg kell adnia a saját tanúsítványát a HTTPS-hez, de ez azt javasolja, hogy rendelkezzen egy olyan tanúsítvánnyal, amely a saját altartománnyal rendelkezik. 
+Miután létrehozta a központot, megfigyelheti, hogy az altartomány megjeleníti a megadott altartományt, és van egy új elem a **ILB-tanúsítvány** nevű **beállítási** menüben. A kiegészítő szolgáltatás önaláírt tanúsítvánnyal jön létre, amely megkönnyíti a HTTPS tesztelését. A portálon megtudhatja, hogy meg kell adnia a saját tanúsítványát a HTTPS-hez, de ez azt javasolja, hogy rendelkezzen egy olyan tanúsítvánnyal, amely a saját altartománnyal rendelkezik. 
 
 ![Megjeleníti a beadási pont létrehozásakor megadott altartományt.][3]
 

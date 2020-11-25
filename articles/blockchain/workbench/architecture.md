@@ -5,11 +5,11 @@ ms.date: 09/05/2019
 ms.topic: conceptual
 ms.reviewer: brendal
 ms.openlocfilehash: 1fff70ef2eeb1dc27d33769fd48fe5923f56717b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87049168"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021605"
 ---
 # <a name="azure-blockchain-workbench-architecture"></a>Az Azure Blockchain Workbench-architektúra
 
@@ -78,7 +78,7 @@ A tároló fogyasztó üzenetet küld a Service Busről, és egy csatolt tárol�
 
 ## <a name="transaction-builder-and-signer"></a>Transaction Builder és aláíró
 
-Ha a bejövő üzenet-átvitelszervezőn lévő üzenetet a blockchain kell írni, azt a DLT fogyasztó dolgozza fel. A DLT fogyasztó egy szolgáltatás, amely a metaadatokat tartalmazó üzenetet kérdezi le egy végrehajtandó kívánt tranzakcióhoz, majd elküldi az információt a *Transaction Builder és az aláíró*számára. A *Transaction Builder és az aláíró* egy blockchain-tranzakciót állít össze az adathalmaz és a kívánt blockchain-cél alapján. Az összeállítás után a tranzakció aláírása megtörtént. A titkos kulcsok tárolása Azure Key Vault történik.
+Ha a bejövő üzenet-átvitelszervezőn lévő üzenetet a blockchain kell írni, azt a DLT fogyasztó dolgozza fel. A DLT fogyasztó egy szolgáltatás, amely a metaadatokat tartalmazó üzenetet kérdezi le egy végrehajtandó kívánt tranzakcióhoz, majd elküldi az információt a *Transaction Builder és az aláíró* számára. A *Transaction Builder és az aláíró* egy blockchain-tranzakciót állít össze az adathalmaz és a kívánt blockchain-cél alapján. Az összeállítás után a tranzakció aláírása megtörtént. A titkos kulcsok tárolása Azure Key Vault történik.
 
  A Blockchain Workbench lekéri a megfelelő titkos kulcsot a Key Vaultból, és a Key Vaulton kívül aláírja a tranzakciót. Az aláírást követően a tranzakció a tranzakciós útválasztók és a főkönyvek számára lesz elküldve.
 

@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 6c27c78bf8e3f3b8af342a14a38c9be3821d781a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758663"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020925"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Az eszköz webalkalmazásai futásidőben Application Insights kód nem csatolhatók
 
@@ -40,10 +40,10 @@ Itt található egy összefoglaló az egyes módszerek eredményeiről:
 
 |  | Felépítési idő | Futási idő |
 | --- | --- | --- |
-| **Kérelmek & kivételek** |Igen |Igen |
-| **[Részletesebb kivételek](./asp-net-exceptions.md)** | |Igen |
+| **Kérelmek & kivételek** |Igen |Yes |
+| **[Részletesebb kivételek](./asp-net-exceptions.md)** | |Yes |
 | **[Függőségi diagnosztika](./asp-net-dependencies.md)** |.NET 4.6+ esetén, kevésbé részletesen |Igen, teljes részletesség: eredménykódok, SQL-parancsszöveg, HTTP-parancsok|
-| **[Rendszerteljesítmény-számlálók](./performance-counters.md)** |Igen |Igen |
+| **[Rendszerteljesítmény-számlálók](./performance-counters.md)** |Igen |Yes |
 | **[API egyéni telemetria][api]** |Igen |Nem |
 | **[Nyomkövetési napló integrációja](./asp-net-trace-logs.md)** |Igen |Nem |
 | **[Az oldal nézet & felhasználói](./javascript.md)** |Igen |Nem |
@@ -316,7 +316,7 @@ A fordítási során már kiépített alkalmazások esetén:
 - A [Állapotmonitor telepítőjének](https://go.microsoft.com/fwlink/?LinkId=506648) letöltése és futtatása
 - Vagy futtasson [webplatform-telepítőt](https://www.microsoft.com/web/downloads/platform.aspx) , és keressen rá Application Insights állapotfigyelő.
 
-## <a name="next-steps"></a><a name="next"></a>Következő lépések
+## <a name="next-steps"></a><a name="next"></a>További lépések
 
 A telemetriai adatok megtekintése:
 

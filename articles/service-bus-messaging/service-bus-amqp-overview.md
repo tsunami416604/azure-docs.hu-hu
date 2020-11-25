@@ -3,12 +3,12 @@ title: A AMQP 1,0-es verziójának áttekintése Azure Service Bus
 description: Ismerje meg, hogyan támogatja a Azure Service Bus a Advanced Message Queueing Protocol (AMQP), egy nyílt szabványú protokollt.
 ms.topic: article
 ms.date: 11/20/2020
-ms.openlocfilehash: a643869d7d89b287e899b1eab89c5b9ec11856e5
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: 85943344fd8f20cf3a73af5d637b65676584f93f
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95396807"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96022174"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>AMQP 1,0-támogatás Service Bus
 A Azure Service Bus Cloud Service a kommunikáció elsődleges kommunikációs eszközeként a [1,0 Advanced Message Queuing protokollt (AMQP)](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html) használja. A Microsoft az iparágban, az ügyfelekkel és a versengő üzenetkezelési közvetítőket használó partnerekkel együttműködve fejleszti és fejleszti a AMQP az elmúlt évtizedben, és új bővítményeket fejlesztett ki az [Oasis AMQP technikai bizottságban](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp). A AMQP 1,0 egy ISO és IEC szabvány ([iso 19464:20149](https://www.iso.org/standard/64955.html)). 
@@ -70,25 +70,16 @@ Az Azure SDK-n keresztül elérhető összes támogatott Service Bus AMQP 1,0.
 - [A JavaScript és az írógéppel Azure Service Bus moduljai](https://docs.microsoft.com/javascript/api/overview/azure/service-bus?view=azure-node-latest&preserve-view=true)
 - [Azure Service Bus kódtárak a Pythonhoz](https://docs.microsoft.com/python/api/overview/azure/servicebus?view=azure-python&preserve-view=true)
 
+[!INCLUDE [service-bus-websockets-options](../../includes/service-bus-websockets-options.md)]
+
 Emellett a Service Bus bármely AMQP 1,0-kompatibilis protokoll-veremből is használható:
 
-| Nyelv | Kódtár |
-| --- | --- |
-| Java | [Apache csontos-proton – J](https://qpid.apache.org/proton/index.html) |
-| C/C++ |[Azure UAMQP C](https://github.com/azure/azure-uamqp-c/), [Apache csontos-proton – c](https://qpid.apache.org/proton/index.html) |
-| Python |[Azure uAMQP for Python](https://github.com/azure/azure-uamqp-python/), [Apache csontos proton Python](https://qpid.apache.org/releases/qpid-proton-0.32.0/proton/python/docs/overview.html) |
-| PHP | [A PHP-hez készült Azure uAMQP](https://github.com/vsouz4/azure-uamqp-php/) |
-| Ruby | [Apache csontos proton Ruby](https://github.com/apache/qpid-proton/tree/master/ruby) |
-| Indítás | [Azure go AMQP](https://github.com/Azure/go-amqp), [Apache csontos proton go](https://github.com/apache/qpid-proton/tree/master/go/examples)
-| C#/F #/VB | [AMQP .net Lite](https://github.com/Azure/amqpnetlite), [Apache AMQP](https://github.com/apache/activemq-nms-amqp)|
-| JavaScript/Node | [Rhea](https://github.com/grs/rhea) |
-
-**2. ábra: AMQP 1,0 ügyféloldali kódtárak táblázata**
+[!INCLUDE [messaging-oss-amqp-stacks.md](../../includes/messaging-oss-amqp-stacks.md)]
 
 ## <a name="summary"></a>Összefoglalás
 * A AMQP 1,0 egy nyílt, megbízható üzenetkezelési protokoll, amellyel többplatformos hibrid alkalmazások hozhatók létre. A AMQP 1,0 egy oázis standard.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Készen áll a tanulásra? Látogasson el a következő hivatkozásokra:
 
 * [Service Bus használata a .NET-ről a AMQP használatával]

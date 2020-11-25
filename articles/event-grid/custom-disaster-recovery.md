@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e37cb6a0679ee2e249de4ed8fa31c40d5082ea4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324127"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020143"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Hozzon létre saját vész-helyreállítást a Event Grid egyéni témaköreihez
 A vész-helyreállítási funkció az alkalmazások jelentős elvesztése miatti helyreállításra összpontosít. Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be az eseményvezérelt architektúrát, ha a Event Grid szolgáltatás nem Kifogástalan állapotba kerül egy adott régióban.
@@ -45,7 +45,7 @@ Először hozzon létre két Event Grid témakört. Ezek a témakörök elsődle
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 
-1. Az Azure fő menüjének bal felső sarkában válassza a **minden szolgáltatás** lehetőséget, > keressen rá **Event Grid** > válassza a **Event Grid témakörök**lehetőséget.
+1. Az Azure fő menüjének bal felső sarkában válassza a **minden szolgáltatás** lehetőséget, > keressen rá **Event Grid** > válassza a **Event Grid témakörök** lehetőséget.
 
    ![Event Grid témakörök menü](./media/custom-disaster-recovery/select-topics-menu.png)
 
@@ -183,7 +183,7 @@ namespace EventGridFailoverPublisher
 }
 ```
 
-### <a name="try-it-out"></a>Próba
+### <a name="try-it-out"></a>Próbálja ki
 
 Most, hogy már rendelkezik az összes összetevővel, tesztelheti a feladatátvétel megvalósítását. Futtassa a fenti mintát a Visual Studio Code-ban vagy a kedvenc környezetében. Cserélje le a következő négy értéket a végpontokkal és kulcsokkal a témakörökből:
 

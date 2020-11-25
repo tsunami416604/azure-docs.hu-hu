@@ -9,11 +9,11 @@ ms.date: 05/2/2020
 ms.author: derekol
 Customer intent: With Azure Peering service enhancing the customer connectivity to Microsoft cloud services .
 ms.openlocfilehash: f8f0ee71a8dd00498d868bb6dc11b3fa083df766
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530218"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021095"
 ---
 # <a name="tutorial-create-a-peering-service-connection"></a>Oktatóanyag: egyenrangú szolgáltatási kapcsolatok létrehozása
 
@@ -47,7 +47,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy társ-szolgált
 
 1. Kattintson a lap bal alsó sarkában található **felülvizsgálat + létrehozás** gombra. Megjelenik a **felülvizsgálat + létrehozás** lap, és az Azure ellenőrzi a konfigurációt.
 
- 1. Amikor megjelenik az **átadott üzenet ellenőrzése** az ábrán látható módon, válassza a **Létrehozás**lehetőséget.
+ 1. Amikor megjelenik az **átadott üzenet ellenőrzése** az ábrán látható módon, válassza a **Létrehozás** lehetőséget.
 
 > ![A képernyőképen a peering Service-kapcsolatok létrehozása lap áttekintés + létrehozás lapja látható.](./media/peering-service-portal/peering-service-prefix.png)
 

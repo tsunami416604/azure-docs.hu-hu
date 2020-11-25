@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/13/2017
 ms.author: alkohli
 ms.openlocfilehash: 4fed65e12a166c046a0c63d7c4849f86805bbe9c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76275173"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021044"
 ---
 # <a name="storsimple-8000-series-update-5-release-notes"></a>StorSimple 8000 sorozat Update 5 kibocsátási megjegyzések
 
@@ -47,8 +47,8 @@ Az alábbi táblázat az 5. frissítésben rögzített problémák összegzésé
 | Nem | Funkció | Probléma | A fizikai eszközre vonatkozik | A virtuális eszközre vonatkozik |
 | --- | --- | --- | --- | --- |
 | 1 |Windows PowerShell – távelérés |Az előző kiadásban a felhasználó hibaüzenetet kap, amikor távoli kapcsolatot próbál létesíteni a StorSimple Cloud Appliance a Windows PowerShell használatával. Ezt a problémát a jelen kiadásban a gyökér okozta és javítottuk. |Nem |Igen |
-| 2 |Sávszélesség-sablonok |A korábbi kiadásokban probléma merült fel olyan sávszélesség-sablonokkal, amelyek alacsonyabb sávszélességet eredményeztek, mint amit az eszközhöz konfiguráltak. Ez a probléma ebben a kiadásban van feloldva. |Igen |Igen |
-| 3 |Feladatátvétel |Ha a korábbi kiadásban nagy mennyiségű kötettel rendelkező eszközt hajtottak végre a 4. frissítést futtató másik eszközre, a folyamat sikertelen lesz, amikor megpróbálja alkalmazni a hozzáférés-vezérlési rekordokat. Ez a probléma ebben a kiadásban van kijavítva. |Igen |Igen |
+| 2 |Sávszélesség-sablonok |A korábbi kiadásokban probléma merült fel olyan sávszélesség-sablonokkal, amelyek alacsonyabb sávszélességet eredményeztek, mint amit az eszközhöz konfiguráltak. Ez a probléma ebben a kiadásban van feloldva. |Igen |Yes |
+| 3 |Feladatátvétel |Ha a korábbi kiadásban nagy mennyiségű kötettel rendelkező eszközt hajtottak végre a 4. frissítést futtató másik eszközre, a folyamat sikertelen lesz, amikor megpróbálja alkalmazni a hozzáférés-vezérlési rekordokat. Ez a probléma ebben a kiadásban van kijavítva. |Igen |Yes |
 
 
 

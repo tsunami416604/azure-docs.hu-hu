@@ -5,11 +5,11 @@ ms.topic: article
 ms.date: 06/28/2018
 ms.custom: seodec18
 ms.openlocfilehash: dcfe11bcab25f6267a557de5faf7befab467bc29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81535723"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020959"
 ---
 # <a name="how-to-prepare-for-an-ssl-ip-address-change"></a>Az SSL IP-címek módosításának előkészítése
 
@@ -19,15 +19,15 @@ Ha értesítést kapott arról, hogy a Azure App Service alkalmazás SSL IP-cím
 
 1.  Nyissa meg az [Azure Portalt](https://portal.azure.com).
 
-2.  A bal oldali navigációs menüben válassza a **app Services**lehetőséget.
+2.  A bal oldali navigációs menüben válassza a **app Services** lehetőséget.
 
 3.  Válassza ki a App Service alkalmazást a listából.
 
 4.  A **Beállítások** fejléc alatt kattintson az **SSL-beállítások** elemre a bal oldali navigációs sávon.
 
-1. A TLS/SSL-kötések szakaszban válassza ki az állomásnév rekordját. A megnyíló szerkesztőben válassza a **SNI SSL** lehetőséget az **SSL típusa** legördülő menüben, majd kattintson a **kötés hozzáadása**parancsra. Amikor megjelenik a művelet sikerességéről szóló üzenet, a meglévő IP-cím megjelent.
+1. A TLS/SSL-kötések szakaszban válassza ki az állomásnév rekordját. A megnyíló szerkesztőben válassza a **SNI SSL** lehetőséget az **SSL típusa** legördülő menüben, majd kattintson a **kötés hozzáadása** parancsra. Amikor megjelenik a művelet sikerességéről szóló üzenet, a meglévő IP-cím megjelent.
 
-6.  Az **SSL-kötések** szakaszban válassza ki ugyanazt az állomásnév-rekordot a tanúsítvánnyal. A megnyíló szerkesztőben ezúttal válassza az **IP-alapú SSL** lehetőséget az **SSL típusa** legördülő menüben, majd kattintson a **kötés hozzáadása**parancsra. Amikor megjelenik a művelet sikerességéről szóló üzenet, új IP-címet szerzett.
+6.  Az **SSL-kötések** szakaszban válassza ki ugyanazt az állomásnév-rekordot a tanúsítvánnyal. A megnyíló szerkesztőben ezúttal válassza az **IP-alapú SSL** lehetőséget az **SSL típusa** legördülő menüben, majd kattintson a **kötés hozzáadása** parancsra. Amikor megjelenik a művelet sikerességéről szóló üzenet, új IP-címet szerzett.
 
 7.  Ha egy rekord (a közvetlenül az IP-címére mutató DNS-rekord) be van állítva a tartományi regisztrációs portálon (harmadik fél DNS-szolgáltatója vagy Azure DNS), cserélje le a meglévő IP-címet az újonnan létrehozott-re. Az új IP-címet a következő szakaszban található utasítások alapján érheti el.
 
@@ -35,11 +35,11 @@ Ha értesítést kapott arról, hogy a Azure App Service alkalmazás SSL IP-cím
 
 1.  Várjon néhány percet, majd nyissa meg a [Azure Portal](https://portal.azure.com).
 
-2.  A bal oldali navigációs menüben válassza a **app Services**lehetőséget.
+2.  A bal oldali navigációs menüben válassza a **app Services** lehetőséget.
 
 3.  Válassza ki a App Service alkalmazást a listából.
 
-4.  A **Beállítások** fejléc alatt kattintson a bal oldali navigációs menüben a **Tulajdonságok** elemre, és keresse meg a **virtuális IP-cím**feliratú szakaszt.
+4.  A **Beállítások** fejléc alatt kattintson a bal oldali navigációs menüben a **Tulajdonságok** elemre, és keresse meg a **virtuális IP-cím** feliratú szakaszt.
 
 5. Másolja ki az IP-címet, és konfigurálja újra a tartományi rekordot vagy az IP-mechanizmust.
 

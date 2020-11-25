@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
 ms.openlocfilehash: ed5768e89482d32bb140e9ba7064de2d20809892
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148719"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020721"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>Nagyméretű fájlok letöltésének optimalizálása Azure CDN
 
@@ -83,11 +83,11 @@ A nagyméretű fájlok optimalizálása bizonyos feltételek teljesülése eset�
 
 A **Azure CDN standardot a Akamai-** végponton konfigurálhatja a nagyméretű fájlok kézbesítésének a Azure Portal keresztüli optimalizálásához. Ehhez használhatja a REST API-kat vagy bármelyik ügyféloldali SDK-t is. A következő lépések azt mutatják be, hogyan jelennek meg a folyamat egy **Azure CDN standard Akamai-** profilból való Azure Portal használatával:
 
-1. Új végpont hozzáadásához egy Akamai **CDN-profil** oldalon válassza a **végpont**lehetőséget.
+1. Új végpont hozzáadásához egy Akamai **CDN-profil** oldalon válassza a **végpont** lehetőséget.
 
     ![Új végpont](./media/cdn-large-file-optimization/cdn-new-akamai-endpoint.png)    
  
-2. A **legördülő listában** válassza a **nagyméretű fájlok letöltése**lehetőséget.
+2. A **legördülő listában** válassza a **nagyméretű fájlok letöltése** lehetőséget.
 
     ![Nagyméretű fájlok optimalizálása kiválasztva](./media/cdn-large-file-optimization/cdn-large-file-select.png)
 
@@ -110,7 +110,7 @@ A nagyméretű fájlok optimalizálása az általános webes kézbesítéstől e
 | Gyorsítótárazás  | Általános web | Nagyméretű fájlok optimalizálása 
 --- | --- | --- 
 Gyorsítótárazás: pozitív <br> HTTP 200, 203, 300, <br> 301, 302 és 410 | 7 nap |1 nap  
-Gyorsítótárazás: negatív <br> HTTP 204, 305, 404, <br> és 405 | Nincsenek | 1 másodperc 
+Gyorsítótárazás: negatív <br> HTTP 204, 305, 404, <br> és 405 | Nincs | 1 másodperc 
 
 ### <a name="deal-with-origin-failure"></a>A származási hiba kezelése
 

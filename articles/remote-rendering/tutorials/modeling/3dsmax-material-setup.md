@@ -6,11 +6,11 @@ ms.author: flborn
 ms.date: 06/16/2020
 ms.topic: tutorial
 ms.openlocfilehash: 12407d6344c69c747230e9db6fa4d53b4520dc82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331811"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020279"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-3ds-max"></a>Oktatóanyag: fizikailag vezérelt renderelési anyagok beállítása a 3ds Max-ban
 
@@ -32,7 +32,7 @@ A a 3ds Max-ban létrehozott [fizikai alapú renderelési (pbr) anyagok](../../o
 Az oktatóanyagban szereplő minta jelenet számos sokszög típusú objektumot tartalmaz. Különböző anyagokat rendeltek hozzájuk, mint például a fa, a fém, a festett fém, a műanyag és a gumi. Általánosságban elmondható, hogy minden anyag a következő textúrákat tartalmazza:
 
 * **Albedó**, amely az anyag színtérképe, és más néven **diffúz** és **BaseColor**.
-* Fémesség, amely meghatározza, hogy egy anyag fémes- **e, és**hogy mely részek fémesek. 
+* Fémesség, amely meghatározza, hogy egy anyag fémes- **e, és** hogy mely részek fémesek. 
 * **Érdesség**, amely meghatározza, hogy a felület milyen durva vagy zökkenőmentes legyen.
 Emellett hatással van a reflexiók és a csúcsfények élességére vagy homályos is a felületen.
 * **Normál**, amely részletes adatokat ad hozzá egy felülethez további sokszögek hozzáadása nélkül. A részletek közé tartoznak például a kimagozás és a horpadások egy fém felületen vagy gabonán a fában.
@@ -50,7 +50,7 @@ A kezdéshez számos Box-objektumot hozunk létre, amelyek mindegyike más típu
 
 A következő képernyőfelvételen a rendszeregységek a 3ds Max-ban való beállításának lépései láthatók. 
 
-1. A főmenüben **válassza az**  >  **egység beállítása**a  >  **rendszeregységek beállítása beállítást**. A **Rendszeregységek méretezése**területen válassza a **mérőműszerek**: ![ képernyőképet, amely bemutatja, hogyan kell beállítani a rendszeregységeket.](media/3dsmax/system-units.jpg)
+1. A főmenüben **válassza az**  >  **egység beállítása** a  >  **rendszeregységek beállítása beállítást**. A **Rendszeregységek méretezése** területen válassza a **mérőműszerek**: ![ képernyőképet, amely bemutatja, hogyan kell beállítani a rendszeregységeket.](media/3dsmax/system-units.jpg)
 
 1. Most már elkezdjük létrehozni a modelleket. A minta jelenetben több Box objektumot hozunk létre, amelyek mindegyike egy másik anyag típusát jelképezi. Például: fém, gumi és műanyag. 
 
@@ -69,13 +69,13 @@ Most, hogy már van néhány objektumunk a jelenetben, ebben az esetben több ko
 
 1. Az anyag-szerkesztőben számos gömb jelenik meg. Ezek a gömbök az anyagok. Ezen anyagok egyikét a jelenet minden objektumához (mindegyik dobozhoz) hozzárendeljük. Az anyagok hozzárendeléséhez először válassza ki az egyik objektumot a fő nézetablakban. Ezután válassza ki az első gömbet az anyag-szerkesztőben. Miután hozzárendelte egy objektumhoz, a kiválasztott anyag ki lesz emelve, ahogy az a következő képen is látható.
 
-1. Jelölje be az **anyag kijelölése a kijelöléshez**lehetőséget, amint az látható. Az anyag már hozzá van rendelve a kijelölt objektumhoz.
+1. Jelölje be az **anyag kijelölése a kijelöléshez** lehetőséget, amint az látható. Az anyag már hozzá van rendelve a kijelölt objektumhoz.
 
    ![Az anyagok hozzárendelését bemutató képernyőkép.](media/3dsmax/assign-material.jpg)
 
     Az anyag-szerkesztőben az igényeinek megfelelően széles választékban választhat az alapanyagok típusától függően. Az anyag típusa általában alapértelmezés szerint a **standard** értékre van beállítva. Ez az anyag olyan alapszintű anyag, amely nem alkalmas a PBR beállítására. Ezért módosítani kell az anyag típusát egy PBR-anyagra. A fizikai anyagok az Azure távoli renderelési projektjeinek előnyben részesített 3ds Max-anyagok.
 
-1. Az anyag-szerkesztőben válassza a **standard** fület. Az **anyag/Térkép böngészőben**válassza a **fizikai anyag**elemet. Ez a művelet átalakítja a hozzárendelt **standard** anyagokat egy pbr fizikai anyagba.
+1. Az anyag-szerkesztőben válassza a **standard** fület. Az **anyag/Térkép böngészőben** válassza a **fizikai anyag** elemet. Ez a művelet átalakítja a hozzárendelt **standard** anyagokat egy pbr fizikai anyagba.
 
    ![Képernyőkép, amely bemutatja, hogyan módosíthatja az anyagot.](media/3dsmax/physical-material.jpg)
 
@@ -94,7 +94,7 @@ A textúrák hozzárendelésének megkezdése előtt figyelembe kell venni az es
 
 Először társítson egy kibontott UVW-módosítót a modellhez, ahogy az alábbi képernyőképen is látható. 
 
-- A kijelölt objektumok tulajdonságok szerkesztőjében válassza ki a módosító listát. A megjelenő legördülő listában görgessen lefelé, és válassza a **UVW kicsomagolása**lehetőséget. Ez a művelet egy kibontott UVW-módosítót alkalmaz az eszközre.
+- A kijelölt objektumok tulajdonságok szerkesztőjében válassza ki a módosító listát. A megjelenő legördülő listában görgessen lefelé, és válassza a **UVW kicsomagolása** lehetőséget. Ez a művelet egy kibontott UVW-módosítót alkalmaz az eszközre.
 ![A UVW kicsomagolásának kiválasztását bemutató képernyőkép.](media/3dsmax/unwrap-modifier.jpg)
 
   A Térkép csatorna értéke 1. Az 1. csatornán általában a fő kicsomagolást hajtja végre. Ebben az esetben az objektum ki lett csomagolva az átfedésben lévő textúra koordinátái (UV) nélkül.
@@ -102,7 +102,7 @@ Először társítson egy kibontott UVW-módosítót a modellhez, ahogy az aláb
 
 A következő lépés egy második UV-Térkép csatorna létrehozása.
 
-1. Ha nyitva van, zárjuk be az UV-szerkesztőt. A **UVs szerkesztése** menü **csatorna** szakaszában módosítsa a csatorna számát **2**értékre. A Térkép Channel 2 a várt csatorna az AO Maps-hez. 
+1. Ha nyitva van, zárjuk be az UV-szerkesztőt. A **UVs szerkesztése** menü **csatorna** szakaszában módosítsa a csatorna számát **2** értékre. A Térkép Channel 2 a várt csatorna az AO Maps-hez. 
 
 1. A **csatorna módosítása figyelmeztetés** párbeszédpanelen **áthelyezheti** az 1. csatorna meglévő UVs az új 2. csatornára, vagy **lemondhatja** a meglévő UVs, amely automatikusan létrehoz egy új UV-kicsomagolást. Válassza a **felhagyás** csak lehetőséget, ha azt tervezi, hogy új UV-kicsomagolást hoz létre az Ao térképhez, amely eltér a Térkép Channel 1. UVs. (Ha például az 1. csatornán szeretné használni a csempe-textúrákat.) Ebben az oktatóanyagban áthelyezzük a UVs az egyik csatornáról a 2-es csatornára, mert nem kell szerkeszteni az új UV-csatornát.
 
@@ -117,7 +117,7 @@ Ahogy korábban már említettük, a 3ds Max fizikai anyagában nincs dedikált 
 
 1. A fizikai anyag **általános térképek** listájában válassza ki a **nincs leképező** tárolóhelyet a **diffúz durvaség** mellett, és töltse be az Ao-térképet.
 
-1. Az AO textúrák tulajdonságainál a Térkép csatorna alapértelmezett értéke **1** . Módosítsa ezt az értéket **2**értékre. Ez a művelet végrehajtja az AO-Térkép hozzáadásához szükséges lépéseket.
+1. Az AO textúrák tulajdonságainál a Térkép csatorna alapértelmezett értéke **1** . Módosítsa ezt az értéket **2** értékre. Ez a művelet végrehajtja az AO-Térkép hozzáadásához szükséges lépéseket.
 
    >[!IMPORTANT]
    >Ez egy fontos lépés, különösen akkor, ha a 2. csatornán lévő UVs eltérnek az 1. csatornán lévők, mert az Ao nem fog megfelelően leképezni, ha a megfelelő csatorna van kiválasztva.
@@ -126,13 +126,13 @@ Ahogy korábban már említettük, a 3ds Max fizikai anyagában nincs dedikált 
 
 Most hozzárendeljük a normál leképezést a PBR-anyaghoz. Ez a művelet némileg eltér a Maya folyamattól. A normál térképet nem alkalmazza közvetlenül a bump Map tárolóhelyre. (A 3ds Max fizikai anyagában nincs normál térképi tárolóhely.) Ehelyett a normál leképezést egy normál Térkép-módosítóhoz adja hozzá, amely maga a normál tárolóhelyre van csatlakoztatva.
 
-1. A fizikai anyag tulajdonságainak **speciális térképek** szakaszában (az anyag-szerkesztőben) válassza ki a **nem Térkép** tárolóhelyet a **map bump**mellett. 
+1. A fizikai anyag tulajdonságainak **speciális térképek** szakaszában (az anyag-szerkesztőben) válassza ki a **nem Térkép** tárolóhelyet a **map bump** mellett. 
 
-1. Az **anyag/Térkép böngészőben**keresse meg és válassza ki a **normál bump**elemet. Ez a művelet hozzáadja a **normál bump** -módosítót az anyaghoz.
+1. Az **anyag/Térkép böngészőben** keresse meg és válassza ki a **normál bump** elemet. Ez a művelet hozzáadja a **normál bump** -módosítót az anyaghoz.
 
-1. A **normál bump** -módosítóban válassza a **Nincs leképezés** a **normál**mellett lehetőséget. Keresse meg és töltse be normál térképét.
+1. A **normál bump** -módosítóban válassza a **Nincs leképezés** a **normál** mellett lehetőséget. Keresse meg és töltse be normál térképét.
 
-1. Győződjön meg arról, hogy a metódus **tangens**értékre van állítva. (Alapértelmezés szerint ez a következő:.) Ha szükséges, kapcsolja be a **flip Green (Y)** billentyűkombinációt.
+1. Győződjön meg arról, hogy a metódus **tangens** értékre van állítva. (Alapértelmezés szerint ez a következő:.) Ha szükséges, kapcsolja be a **flip Green (Y)** billentyűkombinációt.
 
    ![Képernyőkép, amely bemutatja a normál bump kiválasztásának módját. ](media/3dsmax/normal-bump.jpg)
     ![ A normál Térkép betöltését bemutató képernyőkép.](media/3dsmax/load-normal-map.jpg)
@@ -161,23 +161,23 @@ Ez a művelet létrehozza az objektum egy példányát, amely a szülőtől és 
 
 Az exportálási folyamatba való áttérés előtt megfontolandó utolsó lépés az, hogy hogyan érdemes a jelenetét/eszközét a megosztáshoz becsomagolni. Ideális esetben, ha az adategységet az ügyfelek vagy a csapattagok számára adja át, érdemes lehet megnyitni és megtekinteni az adategységet, ahogy azt a minimálisan felhasználható mennyiséggel kell látni. Ezért fontos, hogy az eszköz textúrájának elérési útja a jelenet fájlhoz képest legyen. Ha az adott eszköz textúrájának elérési útja helyi meghajtóra vagy abszolút elérési útra/helyre mutat, akkor nem töltődik be a jelenetbe, ha egy másik számítógépen van megnyitva, még akkor is, ha a. max fájl ugyanabban a mappában található, mint a textúrák. A textúra elérési útjaihoz képest a 3ds Max a probléma megoldásához és viszonylag egyszerűvé tételéhez.
 
-1. A fő eszköztáron válassza a **fájl**  >  **hivatkozási**  >  **eszköz követése váltógomb**lehetőséget. 
+1. A fő eszköztáron válassza a **fájl**  >  **hivatkozási**  >  **eszköz követése váltógomb** lehetőséget. 
 
 1. Az eszköz nyomon követése ablakban megjelenik az összes olyan textúra, amelyet a **Maps/Shaders** OSZLOPBAN felsorolt pbr-anyagokra alkalmazott.
 
 1. Mellettük a **teljes elérési út** oszlopban látható a textúrák helyének elérési útja, amely valószínűleg a helyi gépen lévő helyük elérési útját fogja látni.
 
-1. Végül egy **állapot**nevű oszlopot fog látni. Ebben az oszlopban látható, hogy egy adott textúra található-e, és alkalmazva lett-e a színtérre. A textúra a következő kifejezések egyikével van megjelölve: **OK**, **talált**vagy **hiányzó fájl**. Az első kettő azt jelzi, hogy a fájl megtalálható és be van töltve. Az utóbbi nyilvánvalóan azt jelenti, hogy a Szemléző nem találta meg a fájlt.
+1. Végül egy **állapot** nevű oszlopot fog látni. Ebben az oszlopban látható, hogy egy adott textúra található-e, és alkalmazva lett-e a színtérre. A textúra a következő kifejezések egyikével van megjelölve: **OK**, **talált** vagy **hiányzó fájl**. Az első kettő azt jelzi, hogy a fájl megtalálható és be van töltve. Az utóbbi nyilvánvalóan azt jelenti, hogy a Szemléző nem találta meg a fájlt.
  
    ![Képernyőkép, amely megjeleníti az eszköz követési ablakát.](media/3dsmax/texture-paths.jpg)
 
 Észreveheti, hogy az összes textúrája nem szerepel az eszköz nyomon követése ablakban az első megnyitásakor. Ez nem érinti a következőt:. Az elérési út alatt futtatott folyamat egyszer vagy kétszer megkeresi a jelenet összes textúráját. A Path-Finding folyamat a következő: 
 
-1. Az eszköz nyomon követése ablakban tartsa lenyomva a **SHIFT** billentyűt, és válassza ki a felső textúrát a **Maps/Shaders** listán, és folytassa a **SHIFT**billentyűt a lista utolsó textúrájának kiválasztásával. Ez a művelet kiválasztja a listában szereplő összes textúrát. A kiválasztott textúrák kék színnel vannak kiemelve. (Lásd az előző képernyőképet.)
+1. Az eszköz nyomon követése ablakban tartsa lenyomva a **SHIFT** billentyűt, és válassza ki a felső textúrát a **Maps/Shaders** listán, és folytassa a **SHIFT** billentyűt a lista utolsó textúrájának kiválasztásával. Ez a művelet kiválasztja a listában szereplő összes textúrát. A kiválasztott textúrák kék színnel vannak kiemelve. (Lásd az előző képernyőképet.)
 
-1. Kattintson a jobb gombbal a kijelölésre, és válassza a **beállítás elérési útja**lehetőséget.
+1. Kattintson a jobb gombbal a kijelölésre, és válassza a **beállítás elérési útja** lehetőséget.
 
-1. Az **eszköz elérési útjának megadása** mezőben válassza ki a textúrák helyi elérési útját, és cserélje le a következőre: `.\` .  Kattintson az **OK** gombra. 
+1. Az **eszköz elérési útjának megadása** mezőben válassza ki a textúrák helyi elérési útját, és cserélje le a következőre: `.\` .  Válassza az **OK** lehetőséget. 
 
     Az eszköz nyomon követésére szolgáló ablak a következő képernyőképen látható módon fog frissülni. A frissítés eltarthat egy ideig, attól függően, hogy a jelenet hány textúrákat tartalmaz, és milyen nagy a jelenet.
 ![Screensthot, amely megjeleníti a frissített eszköz követési ablakát.](media/3dsmax/resolve-textures.jpg)
@@ -185,7 +185,7 @@ Az exportálási folyamatba való áttérés előtt megfontolandó utolsó lép�
 Figyelje meg, hogy a **teljes elérési út** oszlop most üres. Ez azt jelenti, hogy a jelenet már nem keresi a megfelelő textúrákat egy adott (abszolút) helyen. A rendszer mindig megkeresi őket, amíg a. max fájl vagy a kapcsolódó FBX ugyanabban a mappában található, mint a textúrák. 
 
 >[!NOTE]
->Előfordulhat, hogy többször is meg kell ismételnie ezt a folyamatot, hogy megkeresse és megoldja az összes textúrákat és elérési utat. Ez nem érinti a következőt:. Csak ismételje meg a folyamatot, amíg az összes érintett eszközt el nem veszi. Bizonyos esetekben egyes fájlok nem találhatók. Ebben az esetben egyszerűen jelölje ki az összes objektumot a listában, majd válassza a **Hiányzó elérési utak eltávolítása**lehetőséget. (Lásd az előző képet.)
+>Előfordulhat, hogy többször is meg kell ismételnie ezt a folyamatot, hogy megkeresse és megoldja az összes textúrákat és elérési utat. Ez nem érinti a következőt:. Csak ismételje meg a folyamatot, amíg az összes érintett eszközt el nem veszi. Bizonyos esetekben egyes fájlok nem találhatók. Ebben az esetben egyszerűen jelölje ki az összes objektumot a listában, majd válassza a **Hiányzó elérési utak eltávolítása** lehetőséget. (Lásd az előző képet.)
 
 ## <a name="fbx-export"></a>FBX-exportálás
 
@@ -212,7 +212,7 @@ Most, hogy elvégezte a textúra elérési útjaihoz viszonyított relatív ért
    >[!IMPORTANT]
    >Ha az eredményül kapott FBX-fájl mérete 2,4 GB-nál nagyobb, akkor a FBX exportálási beállításaiban megadott minimális verziónak 2016 vagy újabb értéknek kell lennie. (Lásd az előző képernyőképet.) Az újabb verziók 64 bites támogatással rendelkeznek, így nagyobb fájlokat támogatnak.
 
-1. Ha a jeleneteket a beépített textúrákkal szeretné exportálni, akkor a * FBX exportálása ablakban válassza az **adathordozó beágyazása**elemet. 
+1. Ha a jeleneteket a beépített textúrákkal szeretné exportálni, akkor a * FBX exportálása ablakban válassza az **adathordozó beágyazása** elemet. 
 
 1. Válassza ki a többi beállítást, majd kattintson **az OK gombra**:
 
@@ -236,4 +236,4 @@ Most, hogy elvégezte a textúra elérési útjaihoz viszonyított relatív ért
 Most már tudja, hogyan állíthat be speciális világítású anyagokat a jelenetekben található objektumokhoz. Arról is tájékozódhat, hogyan exportálhat objektumokat FBX formátumba, amelyet az Azure távoli renderelése támogat. A következő lépés a FBX fájl átalakítása és megjelenítése az Azure-beli távoli renderelésben.
 
 >[!div class="nextstepaction"]
->[Gyors útmutató: modell átalakítása renderelésre](../../quickstarts\convert-model.md)
+>[Gyorsútmutató: Modell konvertálása a renderelés előtt](../../quickstarts\convert-model.md)

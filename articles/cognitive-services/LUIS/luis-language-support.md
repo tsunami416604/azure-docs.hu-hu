@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
-ms.openlocfilehash: e377f910e1c1ddda864ea312b40fe3608c166376
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1da43d0ef208d61ced6c8ca8dbc7603e0ef51155
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541390"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96021571"
 ---
 # <a name="language-and-region-support-for-luis"></a>A LUIS nyelv és régió támogatása
 
@@ -28,7 +28,7 @@ Ha több nyelvű LUIS-ügyfélalkalmazás, például Csevegőrobot van szükség
 
 LUIS a következő nyelveken ismeri fel a hosszúságú kimondott szöveg:
 
-| Nyelv |Területi beállítás  |  Előre elkészített tartomány | Előre elkészített entitás | Kifejezések listája – javaslatok | **[Szöveges elemzés](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(Hangulat és<br>Kulcsszavak|
+| Nyelv |Területi beállítás  |  Előre elkészített tartomány | Előre elkészített entitás | Kifejezések listája – javaslatok | **[Szöveges elemzés](../text-analytics/language-support.md)<br>(Hangulat és<br>Kulcsszavak|
 |--|--|:--:|:--:|:--:|:--:|
 | angol (Egyesült Államok) |`en-US` | ✔ | ✔  |✔|✔|
 | Arab (előzetes verzió – modern standard arab) |`ar-AR`|-|-|-|-|
@@ -69,7 +69,7 @@ A nyelvi támogatás az [előre elkészített entitások](luis-reference-prebuil
 Tekintse meg a beszédfelismerés [által támogatott nyelvek](../speech-service/speech-to-text.md) beszédfelismerési mód nyelveit.
 
 ### <a name="bing-spell-check-supported-languages"></a>Bing Spell Check támogatott nyelvek
-A támogatott nyelvek és állapotok listáját a Bing Spell Check [támogatott nyelvek](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages) című részben tekintheti meg.
+A támogatott nyelvek és állapotok listáját a Bing Spell Check [támogatott nyelvek](../bing-spell-check/language-support.md) című részben tekintheti meg.
 
 ## <a name="rare-or-foreign-words-in-an-application"></a>Ritka vagy idegen szavak egy alkalmazásban
 A `en-us` kulturális kultúrában Luis megtanulja a legtöbb angol szót megkülönböztetni, beleértve a szlenget is. A `zh-cn` kulturális kultúrában Luis megtanulja a legtöbb kínai karakter megkülönböztetését. Ha ritka szót vagy karaktert használ a alkalmazásban `en-us` `zh-cn` , és láthatja, hogy Luis úgy tűnik, hogy nem tudja megkülönböztetni ezt a szót vagy karaktert, felveheti ezt a szót vagy karaktert egy [kifejezés-lista szolgáltatásba](luis-how-to-add-features.md). Például az alkalmazás kultúráján kívüli szavak – azaz idegen szavak – egy kifejezés-lista szolgáltatásba kerülnek.

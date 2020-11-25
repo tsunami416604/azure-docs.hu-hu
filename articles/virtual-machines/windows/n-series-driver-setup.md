@@ -11,11 +11,11 @@ ms.date: 09/24/2018
 ms.author: vikancha
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2dccfebed26c8064db697413e7417ae08d69a3ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86998976"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022037"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>NVIDIA GPU-illesztőprogramok telepítése a Windows rendszerű N sorozatú virtuális gépeken 
 
@@ -47,7 +47,7 @@ A GPU-eszköz állapotának lekéréséhez futtassa az illesztőprogrammal telep
 
 1. Nyisson meg egy parancssort, és váltson a **C:\Program Files\NVIDIA Corporation\NVSMI** könyvtárba.
 
-2. A `nvidia-smi` parancs futtatása. Ha az illesztőprogram telepítve van, az alábbihoz hasonló kimenet jelenik meg. A **GPU-util** **0%-ot** mutat, ha jelenleg nem fut GPU-munkaterhelés a virtuális gépen. Az illesztőprogram verziószáma és a GPU adatai eltérhetnek a megjelenített adatoktól.
+2. Futtassa az `nvidia-smi` parancsot. Ha az illesztőprogram telepítve van, az alábbihoz hasonló kimenet jelenik meg. A **GPU-util** **0%-ot** mutat, ha jelenleg nem fut GPU-munkaterhelés a virtuális gépen. Az illesztőprogram verziószáma és a GPU adatai eltérhetnek a megjelenített adatoktól.
 
 ![NVIDIA-eszköz állapota](./media/n-series-driver-setup/smi.png)  
 

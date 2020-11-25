@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
-ms.openlocfilehash: 833ec0f706786ebb86a54fb3c5b13d9c6e5c6062
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: c6405e2fcddef9ae3228ede76dfa57f7542164c8
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616229"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96020177"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Oktatóanyag: Custom Vision használata IoT-eszközzel a vizualizációs állapotok jelentéséhez
 
@@ -47,10 +47,10 @@ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fi
 
 A IoT vizuális riasztások alkalmazás folytonos hurokban fut, és szükség szerint négy különböző állapot közötti váltást tesz elérhetővé:
 
-* **Nincs modell** : A No-op állapot. Az alkalmazás folyamatosan alvó állapotba kerül egy másodpercig, és megkeresi a kamerát.
-* **Betanítási lemezképek rögzítése** : ebben az állapotban az alkalmazás rögzíti a képet, és a cél Custom Vision projektnek betanítási képként tölti fel. Az alkalmazás ezután alvó állapotba lép a 500 MS-ban, és megismétli a műveletet, amíg meg nem történik a megadott számú rendszerkép rögzítése. Ezután elindítja a Custom Vision modell betanítását.
-* **Várakozás a betanított modellre** : ebben az állapotban az alkalmazás meghívja a Custom Vision API-t másodpercenként, hogy meggyőződjön arról, hogy a célként megadott projekt tartalmaz-e betanított iterációt. Ha megtalál egyet, letölti a megfelelő ONNX-modellt egy helyi fájlba, és a **pontozás** állapotra vált.
-* **Pontozás** : ebben az állapotban az alkalmazás a Windows ml-t használja a kamera egyetlen keretének kiértékeléséhez a helyi ONNX modellből. Az eredményül kapott képbesorolás megjelenik a képernyőn, és üzenetet küld a IoT Hubnak. Az alkalmazás ezután egy másodpercig alvó állapotba helyezi az új rendszerkép pontozását.
+* **Nincs modell**: A No-op állapot. Az alkalmazás folyamatosan alvó állapotba kerül egy másodpercig, és megkeresi a kamerát.
+* **Betanítási lemezképek rögzítése**: ebben az állapotban az alkalmazás rögzíti a képet, és a cél Custom Vision projektnek betanítási képként tölti fel. Az alkalmazás ezután alvó állapotba lép a 500 MS-ban, és megismétli a műveletet, amíg meg nem történik a megadott számú rendszerkép rögzítése. Ezután elindítja a Custom Vision modell betanítását.
+* **Várakozás a betanított modellre**: ebben az állapotban az alkalmazás meghívja a Custom Vision API-t másodpercenként, hogy meggyőződjön arról, hogy a célként megadott projekt tartalmaz-e betanított iterációt. Ha megtalál egyet, letölti a megfelelő ONNX-modellt egy helyi fájlba, és a **pontozás** állapotra vált.
+* **Pontozás**: ebben az állapotban az alkalmazás a Windows ml-t használja a kamera egyetlen keretének kiértékeléséhez a helyi ONNX modellből. Az eredményül kapott képbesorolás megjelenik a képernyőn, és üzenetet küld a IoT Hubnak. Az alkalmazás ezután egy másodpercig alvó állapotba helyezi az új rendszerkép pontozását.
 
 ## <a name="examine-the-code-structure"></a>A kód szerkezetének vizsgálata
 
@@ -76,7 +76,7 @@ Kövesse az alábbi lépéseket, hogy lekérje a IoT vizuális riasztások alkal
     1. Frissítse a `targetCVSProjectGuid` változót a használni kívánt Custom Vision-projekt megfelelő azonosítójával. 
 1. A IoT Hub erőforrás beállítása:
     1. A _IoTHub\IotHubWrapper.cs_ -parancsfájlban frissítse a `s_connectionString` változót az eszközéhez tartozó megfelelő kapcsolattípus-karakterláncra. 
-    1. A Azure Portal töltse be IoT Hub példányát, kattintson a **IoT** alatt található eszközök **elemre** , válassza ki a kívánt eszközt (vagy hozzon létre egyet, ha szükséges), és keresse meg a kapcsolatok karakterláncát az **elsődleges kapcsolatok karakterlánca** alatt. A karakterlánc a IoT Hub nevét, az eszköz AZONOSÍTÓját és a közös elérési kulcsot fogja tartalmazni; a formátuma a következő: `{your iot hub name}.azure-devices.net;DeviceId={your device id};SharedAccessKey={your access key}` .
+    1. A Azure Portal töltse be IoT Hub példányát, kattintson a **IoT** alatt található eszközök **elemre**, válassza ki a kívánt eszközt (vagy hozzon létre egyet, ha szükséges), és keresse meg a kapcsolatok karakterláncát az **elsődleges kapcsolatok karakterlánca** alatt. A karakterlánc a IoT Hub nevét, az eszköz AZONOSÍTÓját és a közös elérési kulcsot fogja tartalmazni; a formátuma a következő: `{your iot hub name}.azure-devices.net;DeviceId={your device id};SharedAccessKey={your access key}` .
 
 ## <a name="run-the-app"></a>Az alkalmazás futtatása
 
@@ -107,8 +107,8 @@ A folyamat megismétlése saját forgatókönyv esetén:
 1. Jelentkezzen be a [Custom Vision webhelyére](http://customvision.ai).
 1. Keresse meg a célként megadott projektet, amely most már rendelkezik az alkalmazás által feltöltött összes betanítási képpel.
 1. Minden olyan vizualizációs állapothoz, amelyet azonosítani szeretne, válassza ki a megfelelő lemezképeket, és manuálisan alkalmazza a címkét.
-    * Ha például a cél az, hogy különbséget tegyen egy üres helyiség és egy olyan hely között, amelyben a személyek szerepelnek, javasoljuk, hogy öt vagy több képet válasszon ki az emberekkel új osztályként, **emberekként** , és öt vagy több, a **negatív** címkével nem rendelkező képet. Ez segít a modellnek a két állapot közötti különbségtételben.
-    * Másik példaként, ha a cél az, hogy megközelítje a polc teljes értékét, olyan címkéket használhat, mint például a **EmptyShelf** , a **PartiallyFullShelf** és a **FullShelf**.
+    * Ha például a cél az, hogy különbséget tegyen egy üres helyiség és egy olyan hely között, amelyben a személyek szerepelnek, javasoljuk, hogy öt vagy több képet válasszon ki az emberekkel új osztályként, **emberekként**, és öt vagy több, a **negatív** címkével nem rendelkező képet. Ez segít a modellnek a két állapot közötti különbségtételben.
+    * Másik példaként, ha a cél az, hogy megközelítje a polc teljes értékét, olyan címkéket használhat, mint például a **EmptyShelf**, a **PartiallyFullShelf** és a **FullShelf**.
 1. Ha elkészült, kattintson a **vonat** gombra.
 1. A betanítás befejezése után az alkalmazás megállapítja, hogy elérhető-e egy betanított iteráció. A program elindítja a betanított modell exportálásának folyamatát, hogy ONNX és letöltse azt az eszközre.
 

@@ -16,11 +16,11 @@ ms.date: 03/14/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9b616b03698e83d256a7b81e4548edbf21dba058
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89264640"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021129"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Smooth Streaming Windows áruházbeli alkalmazás létrehozása
 
@@ -69,11 +69,11 @@ A Windows áruházbeli alkalmazások fejlesztésével kapcsolatos további infor
 1. Kattintson a **File** (Fájl) menüben a **New** (Új), majd a **Project** (Projekt) elemre.
 1. Az új projekt párbeszédpanelen írja be vagy válassza ki a következő értékeket:
 
-    | Name (Név) | Érték |
+    | Név | Érték |
     | --- | --- |
     | Sablon csoport |Telepített/sablonok/Visual C#/Windows Store |
     | Sablon |Üres alkalmazás (XAML) |
-    | Name (Név) |SSPlayer |
+    | Név |SSPlayer |
     | Hely |C:\SSTutorials |
     | Megoldás neve |SSPlayer |
     | Könyvtár létrehozása a megoldáshoz |kiválasztott |
@@ -82,10 +82,10 @@ A Windows áruházbeli alkalmazások fejlesztésével kapcsolatos további infor
 
 ### <a name="to-add-a-reference-to-the-smooth-streaming-client-sdk"></a>Hivatkozás hozzáadása az Smooth Streaming ügyféloldali SDK-hoz
 
-1. Megoldáskezelő kattintson a jobb gombbal a **SSPlayer**elemre, majd kattintson a **hivatkozás hozzáadása**parancsra.
+1. Megoldáskezelő kattintson a jobb gombbal a **SSPlayer** elemre, majd kattintson a **hivatkozás hozzáadása** parancsra.
 1. Írja be vagy válassza ki az alábbi értékeket:
 
-    | Name (Név) | Érték |
+    | Név | Érték |
     | --- | --- |
     | Hivatkozási csoport |Windows/bővítmények |
     | Referencia |Válassza a Microsoft Smooth Streaming ügyféloldali SDK Windows 8 és a Microsoft Visual C++ futtatókörnyezethez csomagot |
@@ -97,7 +97,7 @@ A hivatkozások hozzáadása után ki kell választania a célként megadott pla
 ### <a name="to-design-the-player-user-interface"></a>A lejátszó felhasználói felületének megtervezése
 
 1. A Megoldáskezelő kattintson duplán a **Főoldal. XAML** elemre a tervezési nézetben való megnyitásához.
-2. Keresse meg a ** &lt; Grid &gt; ** és a ** &lt; /Grid &gt; ** címkét a XAML-fájlban, és illessze be a következő kódot a két címke közé:
+2. Keresse meg a **&lt; Grid &gt;** és a **&lt; /Grid &gt;** címkét a XAML-fájlban, és illessze be a következő kódot a két címke közé:
 
    ```xml
          <Grid.RowDefinitions>
@@ -152,7 +152,7 @@ Ebben a XAML-fájlban egyes eseménykezelők a vezérlőkhöz vannak társítva.
 
 ### <a name="to-modify-the-code-behind-file"></a>A fájl mögötti kód módosítása
 
-1. Megoldáskezelő kattintson a jobb gombbal a **Főoldal. XAML**elemre, majd kattintson a **kód megtekintése**elemre.
+1. Megoldáskezelő kattintson a jobb gombbal a **Főoldal. XAML** elemre, majd kattintson a **kód megtekintése** elemre.
 2. A fájl tetején adja hozzá a következő using utasítást:
 
     ```csharp
@@ -225,12 +225,12 @@ A fájl mögötti kód befejezése a következőképpen fog kinézni:
 
 ### <a name="to-compile-and-test-the-application"></a>Az alkalmazás fordítása és tesztelése
 
-1. A **Build** menüben kattintson a **Configuration Manager**elemre.
+1. A **Build** menüben kattintson a **Configuration Manager** elemre.
 2. Módosítsa az **aktív megoldási platformot** úgy, hogy az megfeleljen a fejlesztői platformnak.
 3. A projekt fordításához nyomja le az **F6** billentyűt. 
 4. Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 5. Az alkalmazás tetején használhatja az alapértelmezett Smooth Streaming URL-címet, vagy megadhat egy másikat. 
-6. Kattintson a **forrás beállítása**elemre. Mivel az **automatikus lejátszás** alapértelmezés szerint engedélyezve van, az adathordozó automatikusan lejátszásra kerül.  Az adathordozót a **Play**, a **pause** és a **stop** gomb használatával szabályozhatja.  Az adathordozó kötetét a függőleges csúszka használatával szabályozhatja.  A média előrehaladásának szabályozására szolgáló vízszintes csúszka azonban még nincs teljesen implementálva. 
+6. Kattintson a **forrás beállítása** elemre. Mivel az **automatikus lejátszás** alapértelmezés szerint engedélyezve van, az adathordozó automatikusan lejátszásra kerül.  Az adathordozót a **Play**, a **pause** és a **stop** gomb használatával szabályozhatja.  Az adathordozó kötetét a függőleges csúszka használatával szabályozhatja.  A média előrehaladásának szabályozására szolgáló vízszintes csúszka azonban még nincs teljesen implementálva. 
 
 Befejezte a lesson1.  Ebben a leckében egy MediaElement vezérlőelemet használ a Smooth Streaming tartalmának lejátszásához.  A következő leckében hozzáad egy csúszkát a Smooth Streaming tartalom állapotának szabályozásához.
 
@@ -253,7 +253,7 @@ Ez a lecke az alábbi eljárásokat tartalmazza:
 
 ### <a name="to-register-the-smooth-streaming-byte-stream-handler-and-pass-the-propertyset"></a>A Smooth Streaming byte-stream kezelő regisztrálása és a propertyset továbbítása
 
-1. Megoldáskezelő kattintson a jobb gombbal a **Főoldal. XAML**elemre, majd kattintson a **kód megtekintése**elemre.
+1. Megoldáskezelő kattintson a jobb gombbal a **Főoldal. XAML** elemre, majd kattintson a **kód megtekintése** elemre.
 2. A fájl elején adja hozzá a következő using utasítást:
 
    ```csharp
@@ -298,7 +298,7 @@ Ez a lecke az alábbi eljárásokat tartalmazza:
 
 ### <a name="to-add-the-adaptive-source-manager-level-event-handler"></a>Az adaptív forrás-kezelő szintű eseménykezelő hozzáadása
 
-1. Megoldáskezelő kattintson a jobb gombbal a **Főoldal. XAML**elemre, majd kattintson a **kód megtekintése**elemre.
+1. Megoldáskezelő kattintson a jobb gombbal a **Főoldal. XAML** elemre, majd kattintson a **kód megtekintése** elemre.
 2. A **Főoldal** osztályon belül adja hozzá a következő adattagot:
 
    ```csharp
@@ -326,7 +326,7 @@ Ez a lecke az alábbi eljárásokat tartalmazza:
 
 ### <a name="to-add-adaptive-source-level-event-handlers"></a>Adaptív forrás szintű eseménykezelők hozzáadása
 
-1. Megoldáskezelő kattintson a jobb gombbal a **Főoldal. XAML**elemre, majd kattintson a **kód megtekintése**elemre.
+1. Megoldáskezelő kattintson a jobb gombbal a **Főoldal. XAML** elemre, majd kattintson a **kód megtekintése** elemre.
 2. A **Főoldal** osztályon belül adja hozzá a következő adattagot:
 
    ```csharp
@@ -377,7 +377,7 @@ Ugyanezek az események az adaptív forrású jászol szintjén is elérhetők, 
 
 ### <a name="to-add-media-element-event-handlers"></a>Media Element eseménykezelők hozzáadása
 
-1. Megoldáskezelő kattintson a jobb gombbal a **Főoldal. XAML**elemre, majd kattintson a **kód megtekintése**elemre.
+1. Megoldáskezelő kattintson a jobb gombbal a **Főoldal. XAML** elemre, majd kattintson a **kód megtekintése** elemre.
 2. A **Főoldal** osztály végén adja hozzá a következő eseménykezelőket:
 
    ```csharp
@@ -413,7 +413,7 @@ Ugyanezek az események az adaptív forrású jászol szintjén is elérhetők, 
 
 ### <a name="to-add-slider-bar-related-code"></a>A csúszka kapcsolódó kódjának hozzáadása
 
-1. Megoldáskezelő kattintson a jobb gombbal a **Főoldal. XAML**elemre, majd kattintson a **kód megtekintése**elemre.
+1. Megoldáskezelő kattintson a jobb gombbal a **Főoldal. XAML** elemre, majd kattintson a **kód megtekintése** elemre.
 2. A fájl elején adja hozzá a következő using utasítást:
 
    ```csharp
@@ -519,7 +519,7 @@ Ugyanezek az események az adaptív forrású jászol szintjén is elérhetők, 
    ```
 
    > [!NOTE]
-   > A CoreDispatcher a felhasználói felületi szál nem a felhasználói felületi szálból történő módosítására szolgál. Ha szűk keresztmetszetre van szükség a diszpécser szálon, a fejlesztő dönthet úgy, hogy a felhasználói felületi elem által biztosított diszpécsert használja.  Példa:
+   > A CoreDispatcher a felhasználói felületi szál nem a felhasználói felületi szálból történő módosítására szolgál. Ha szűk keresztmetszetre van szükség a diszpécser szálon, a fejlesztő dönthet úgy, hogy a felhasználói felületi elem által biztosított diszpécsert használja.  Például:
 
    ```csharp
          await sliderProgress.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { TimeSpan 
@@ -549,7 +549,7 @@ Ugyanezek az események az adaptív forrású jászol szintjén is elérhetők, 
 1. A projekt fordításához nyomja le az **F6** billentyűt. 
 2. Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 3. Az alkalmazás tetején használhatja az alapértelmezett Smooth Streaming URL-címet, vagy megadhat egy másikat. 
-4. Kattintson a **forrás beállítása**elemre. 
+4. Kattintson a **forrás beállítása** elemre. 
 5. Tesztelje a csúszkát.
 
 Elvégezte a 2. lecke elvégzését.  Ebben a leckében egy csúszkát adott hozzá az alkalmazáshoz. 
@@ -563,7 +563,7 @@ A Smooth Streaming képes a tartalmak több, a nézők által kiválasztható ha
 
 ### <a name="to-modify-the-xaml-file"></a>A XAML fájl módosítása
 
-1. Megoldáskezelő kattintson a jobb gombbal a **Főoldal. XAML**elemre, majd kattintson a **tervező megtekintése**elemre.
+1. Megoldáskezelő kattintson a jobb gombbal a **Főoldal. XAML** elemre, majd kattintson a **tervező megtekintése** elemre.
 2. Keresse meg &lt; a Grid. RowDefinitions &gt; , és módosítsa a RowDefinitions úgy, hogy a következőképpen néznek ki:
 
    ```xml
@@ -606,7 +606,7 @@ A Smooth Streaming képes a tartalmak több, a nézők által kiválasztható ha
 
 ### <a name="to-modify-the-code-behind-file"></a>A fájl mögötti kód módosítása
 
-1. Megoldáskezelő kattintson a jobb gombbal a **Főoldal. XAML**elemre, majd kattintson a **kód megtekintése**elemre.
+1. Megoldáskezelő kattintson a jobb gombbal a **Főoldal. XAML** elemre, majd kattintson a **kód megtekintése** elemre.
 2. A SSPlayer névtérben adjon hozzá egy új osztályt:
 
    ```csharp
@@ -826,7 +826,7 @@ A Smooth Streaming képes a tartalmak több, a nézők által kiválasztható ha
 1. A projekt fordításához nyomja le az **F6** billentyűt. 
 2. Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 3. Az alkalmazás tetején használhatja az alapértelmezett Smooth Streaming URL-címet, vagy megadhat egy másikat. 
-4. Kattintson a **forrás beállítása**elemre. 
+4. Kattintson a **forrás beállítása** elemre. 
 5. Az alapértelmezett nyelv a audio_eng. Próbáljon váltani audio_eng és audio_es között. Minden alkalommal, amikor új streamet választ, a Küldés gombra kell kattintania.
 
 Elvégezte a 3. leckét.  Ebben a leckében hozzáadja a funkciót a streamek kiválasztásához.
@@ -841,8 +841,8 @@ Egy Smooth Streaming bemutató több, különböző minőségi szinttel (átvite
 
 ### <a name="to-modify-the-xaml-file"></a>A XAML fájl módosítása
 
-1. Megoldáskezelő kattintson a jobb gombbal a **Főoldal. XAML**elemre, majd kattintson a **tervező megtekintése**elemre.
-2. Keresse meg &lt; a &gt; **gridStreamAndBitrateSelection**nevű rács címkét, fűzze hozzá a következő kódot a címke végéhez:
+1. Megoldáskezelő kattintson a jobb gombbal a **Főoldal. XAML** elemre, majd kattintson a **tervező megtekintése** elemre.
+2. Keresse meg &lt; a &gt; **gridStreamAndBitrateSelection** nevű rács címkét, fűzze hozzá a következő kódot a címke végéhez:
    ```xml
          <StackPanel Name="spBitRateSelection" Grid.Row="1" Grid.Column="1">
          <StackPanel Orientation="Horizontal">
@@ -863,7 +863,7 @@ Egy Smooth Streaming bemutató több, különböző minőségi szinttel (átvite
 
 ### <a name="to-modify-the-code-behind-file"></a>A fájl mögötti kód módosítása
 
-1. Megoldáskezelő kattintson a jobb gombbal a **Főoldal. XAML**elemre, majd kattintson a **kód megtekintése**elemre.
+1. Megoldáskezelő kattintson a jobb gombbal a **Főoldal. XAML** elemre, majd kattintson a **kód megtekintése** elemre.
 2. A SSPlayer névtérben adjon hozzá egy új osztályt:
    ```csharp
         #region class Track
@@ -1030,7 +1030,7 @@ Egy Smooth Streaming bemutató több, különböző minőségi szinttel (átvite
 1. A projekt fordításához nyomja le az **F6** billentyűt. 
 2. Az alkalmazás futtatásához nyomja le az **F5** billentyűt.
 3. Az alkalmazás tetején használhatja az alapértelmezett Smooth Streaming URL-címet, vagy megadhat egy másikat. 
-4. Kattintson a **forrás beállítása**elemre. 
+4. Kattintson a **forrás beállítása** elemre. 
 5. Alapértelmezés szerint a videó stream összes nyomon követése ki van választva. Az átviteli sebesség változásának kipróbálásához kiválaszthatja az elérhető legalacsonyabb átviteli sebességet, majd kiválaszthatja az elérhető legmagasabb átviteli sebességet. Minden módosítás után kattintson a Submit (elküldés) gombra.  Láthatja a videó minőségének változásait.
 
 Elvégezte a 4. leckét.  Ebben a leckében hozzáadja a funkciót a zeneszámok kiválasztásához.
