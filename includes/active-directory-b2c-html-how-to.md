@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 03/19/2020
 ms.author: mimart
-ms.openlocfilehash: 9b660bf20c90a84780175e70573c96a0ce1b0b7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cb4cdef227c786b12790903037fdc02649592e3
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91377319"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95990884"
 ---
 ## <a name="use-custom-page-content"></a>Egyéni oldal tartalmának használata
 
@@ -56,7 +56,7 @@ A következő táblázat felsorolja a Azure AD B2C által biztosított alapérte
 
 ## <a name="hosting-the-page-content"></a>Az oldal tartalmának üzemeltetése
 
-Ha saját HTML-és CSS-fájlokat használ a felhasználói felület testreszabásához, a felhasználói felület tartalmát a CORS támogató bármely nyilvánosan elérhető HTTPS-végponton üzemeltetheti. Például: [Azure Blob Storage](../articles/storage/blobs/storage-blobs-introduction.md), [Azure app Services](/azure/app-service/), webkiszolgálók, CDNs, AWS S3 vagy fájlmegosztó rendszerek.
+Ha saját HTML-és CSS-fájlokat használ a felhasználói felület testreszabásához, a felhasználói felület tartalmát a CORS támogató bármely nyilvánosan elérhető HTTPS-végponton üzemeltetheti. Például: [Azure Blob Storage](../articles/storage/blobs/storage-blobs-introduction.md), [Azure app Services](../articles/app-service/index.yml), webkiszolgálók, CDNs, AWS S3 vagy fájlmegosztó rendszerek.
 
 ## <a name="guidelines-for-using-custom-page-content"></a>Irányelvek egyéni lapok tartalmának használatához
 
@@ -103,7 +103,7 @@ Hozzon létre egy egyéni oldal tartalmát a termék márkaneve nevével a címb
    </html>
    ```
 
-1. Illessze be a másolt kódrészletet egy szövegszerkesztőbe, majd mentse a fájlt *customize-ui.html*néven.
+1. Illessze be a másolt kódrészletet egy szövegszerkesztőbe, majd mentse a fájlt *customize-ui.html* néven.
 
 > [!NOTE]
 > A HTML-űrlap elemei a biztonsági korlátozások miatt törlődnek, ha login.microsoftonline.com használ. Ha HTML-űrlap elemeket szeretne használni az egyéni HTML-tartalomban, [használja a b2clogin.com](../articles/active-directory-b2c/b2clogin.md).
@@ -115,15 +115,15 @@ Ebben a cikkben az Azure Blob Storage-t használjuk a tartalom üzemeltetéséhe
 A HTML-tartalom blob Storage-ban való üzemeltetéséhez hajtsa végre a következő lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. A **központi** menüben válassza az **új**  >  **Storage**  >  **Storage-fiók**lehetőséget.
+1. A **központi** menüben válassza az **új**  >  **Storage**  >  **Storage-fiók** lehetőséget.
 1. Válasszon egy **előfizetést** a Storage-fiókjához.
 1. Hozzon létre egy **erőforráscsoportot** , vagy válasszon ki egy meglévőt.
 1. Adja meg a Storage-fiók egyedi **nevét** .
 1. Válassza ki a tárolási fiók **földrajzi helyét** .
 1. A **telepítési modell** maradhat a **Resource Managerben**.
-1. A **teljesítmény** továbbra is **standard**maradhat.
+1. A **teljesítmény** továbbra is **standard** maradhat.
 1. Változtassa meg a **fiók típusát** a **blob Storage**-ban.
-1. A **replikáció** az **ra-GRS**is maradhat.
+1. A **replikáció** az **ra-GRS** is maradhat.
 1. A **hozzáférési szint** is **megmaradhat**.
 1. Válassza a **felülvizsgálat + létrehozás** lehetőséget a Storage-fiók létrehozásához.
     A telepítés befejezése után a Storage- **fiók** lap automatikusan megnyílik.
@@ -132,16 +132,16 @@ A HTML-tartalom blob Storage-ban való üzemeltetéséhez hajtsa végre a követ
 
 Ha nyilvános tárolót szeretne létrehozni a blob Storage-ban, hajtsa végre a következő lépéseket:
 
-1. A bal oldali menüben a **blob Service** alatt válassza a **Blobok**elemet.
-1. Válassza a **+ tároló**elemet.
-1. A **név**mezőbe írja be a *root*értéket. A név lehet a választott név, például a *contoso*, de ebben a példában az egyszerűség kedvéért használjuk a *root* -t.
-1. **Nyilvános hozzáférési szint**esetén válassza a **blob**lehetőséget, majd **az OK gombot**.
+1. A bal oldali menüben a **blob Service** alatt válassza a **Blobok** elemet.
+1. Válassza a **+ tároló** elemet.
+1. A **név** mezőbe írja be a *root* értéket. A név lehet a választott név, például a *contoso*, de ebben a példában az egyszerűség kedvéért használjuk a *root* -t.
+1. **Nyilvános hozzáférési szint** esetén válassza a **blob** lehetőséget, majd **az OK gombot**.
 1. Válassza ki a **root** elemet az új tároló megnyitásához.
 
 #### <a name="22-upload-your-custom-page-content-files"></a>2,2 az egyéni oldal tartalmi fájljainak feltöltése
 
 1. Válassza a **Feltöltés** lehetőséget.
-1. Válassza ki a **fájl kiválasztása**melletti mappa ikont.
+1. Válassza ki a **fájl kiválasztása** melletti mappa ikont.
 1. Navigáljon a lapra, és válassza ki **customize-ui.html**, amelyet korábban hozott létre az oldal felhasználói felületének testreszabása szakaszban.
 1. Ha egy almappában szeretne feltölteni, bontsa ki a **speciális** elemet, és adja meg a mappa nevét a **feltöltés mappába**.
 1. Válassza a **Feltöltés** lehetőséget.
@@ -153,21 +153,21 @@ Ha nyilvános tárolót szeretne létrehozni a blob Storage-ban, hajtsa végre a
 
 Az alábbi lépések végrehajtásával konfigurálja a blob Storage-t az idegen eredetű erőforrás-megosztáshoz:
 
-1. A menüben válassza a **CORS**lehetőséget.
-1. Az **engedélyezett eredetek**mezőben adja meg a következőt: `https://your-tenant-name.b2clogin.com` . Cserélje le a helyére `your-tenant-name` a Azure ad B2C bérlő nevét. Például: `https://fabrikam.b2clogin.com`. A bérlő nevének megadásakor használja az összes kisbetűt.
-1. Az **engedélyezett módszerek**esetében válassza a mindkettő és a lehetőséget `GET` `OPTIONS` .
-1. Az **engedélyezett fejlécek**mezőbe írjon be egy csillagot (*).
-1. A közzétett **fejlécek**esetében írjon be egy csillagot (*).
-1. A **Max Age**értéknél adja meg a 200 értéket.
+1. A menüben válassza a **CORS** lehetőséget.
+1. Az **engedélyezett eredetek** mezőben adja meg a következőt: `https://your-tenant-name.b2clogin.com` . Cserélje le a helyére `your-tenant-name` a Azure ad B2C bérlő nevét. Például: `https://fabrikam.b2clogin.com`. A bérlő nevének megadásakor használja az összes kisbetűt.
+1. Az **engedélyezett módszerek** esetében válassza a mindkettő és a lehetőséget `GET` `OPTIONS` .
+1. Az **engedélyezett fejlécek** mezőbe írjon be egy csillagot (*).
+1. A közzétett **fejlécek** esetében írjon be egy csillagot (*).
+1. A **Max Age** értéknél adja meg a 200 értéket.
 1. Kattintson a **Mentés** gombra.
 
 #### <a name="31-test-cors"></a>3,1 teszt CORS
 
 Ellenőrizze, hogy készen áll-e a következő lépések végrehajtásával:
 
-1. Ismételje meg a CORS konfigurálása lépést. Az **engedélyezett eredetek**mezőben adja meg a következőt: `https://www.test-cors.org`
+1. Ismételje meg a CORS konfigurálása lépést. Az **engedélyezett eredetek** mezőben adja meg a következőt: `https://www.test-cors.org`
 1. Navigáljon a [www.test-CORS.org](https://www.test-cors.org/) 
 1. A **távoli URL-cím** mezőben illessze be a HTML-fájl URL-címét. Például: `https://your-account.blob.core.windows.net/root/azure-ad-b2c/unified.html`
-1. Válassza a **küldési kérelem**lehetőséget.
+1. Válassza a **küldési kérelem** lehetőséget.
     Ennek az eredménynek kell lennie `XHR status: 200` . 
     Ha hibaüzenetet kap, ellenőrizze, hogy helyesek-e a CORS beállításai. Előfordulhat, hogy törölnie kell a böngésző gyorsítótárát, vagy meg kell nyitnia egy privát böngészési munkamenetet a CTRL + SHIFT + P billentyűkombináció lenyomásával.
