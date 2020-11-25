@@ -7,11 +7,11 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: 6a429c09b6f8082c95e29bcea62d27ec4fb46fd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86523383"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017304"
 ---
 # <a name="how-to-secure-access-to-data-catalog-and-data-assets"></a>A adatforrásokhoz és adateszközökhöz való hozzáférés biztonságossá tétele
 
@@ -40,7 +40,7 @@ Az adatkatalógushoz való hozzáférés biztosítása egy felhasználónak vagy
 
 5. Nyomja le az **ENTER** vagy a **Tab** billentyűt a szövegmezőből. 
 
-6. Győződjön meg arról, hogy a felhasználókhoz vagy csoportokhoz tartozó összes engedély (**jegyzet**, **regisztráció**és **tulajdonos**) alapértelmezés szerint hozzá van rendelve ehhez a felhasználóhoz vagy csoporthoz. A felhasználó vagy csoport [regisztrálhatja az adategységeket]( data-catalog-how-to-register.md), [megjegyzéseket fűzhet]( data-catalog-how-to-annotate.md)az adategységekhez, és az [adategységek tulajdonjogát is elvégezheti]( data-catalog-how-to-manage.md). 
+6. Győződjön meg arról, hogy a felhasználókhoz vagy csoportokhoz tartozó összes engedély (**jegyzet**, **regisztráció** és **tulajdonos**) alapértelmezés szerint hozzá van rendelve ehhez a felhasználóhoz vagy csoporthoz. A felhasználó vagy csoport [regisztrálhatja az adategységeket]( data-catalog-how-to-register.md), [megjegyzéseket fűzhet]( data-catalog-how-to-annotate.md)az adategységekhez, és az [adategységek tulajdonjogát is elvégezheti]( data-catalog-how-to-manage.md). 
 
    ![Felhasználók Azure Data Catalog – alapértelmezett engedélyek](media/data-catalog-how-to-secure-catalog/data-catalog-default-permissions.png)
 

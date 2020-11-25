@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 03117b9f0c3cbaea22f36703f689264549b851e8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 485b23d9b7ebac4f7d183239d035fbd53b09f4ee
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959135"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017675"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlési listák (ACL-ek) Azure Data Lake Storage Gen2
 
@@ -23,7 +23,7 @@ Azure Data Lake Storage Gen2 olyan hozzáférés-vezérlési modellt valósít m
 
 ## <a name="about-acls"></a>Az ACL-ek ismertetése
 
-Fájlok és könyvtárak hozzáférési szintjén társíthatja a [rendszerbiztonsági tag](https://docs.microsoft.com/azure/role-based-access-control/overview#security-principal) -t. Ezek a társítások egy *hozzáférés-vezérlési listán (ACL)* vannak rögzítve. A Storage-fiók minden fájlja és könyvtára rendelkezik egy hozzáférés-vezérlési listával. Ha egy rendszerbiztonsági tag egy fájl vagy könyvtár valamelyik műveletét kísérli meg, az ACL-ellenőrzés meghatározza, hogy az adott rendszerbiztonsági tag (felhasználó, csoport, szolgáltatásnév vagy felügyelt identitás) megfelelő jogosultsági szinttel rendelkezik-e a művelet végrehajtásához.
+Fájlok és könyvtárak hozzáférési szintjén társíthatja a [rendszerbiztonsági tag](../../role-based-access-control/overview.md#security-principal) -t. Ezek a társítások egy *hozzáférés-vezérlési listán (ACL)* vannak rögzítve. A Storage-fiók minden fájlja és könyvtára rendelkezik egy hozzáférés-vezérlési listával. Ha egy rendszerbiztonsági tag egy fájl vagy könyvtár valamelyik műveletét kísérli meg, az ACL-ellenőrzés meghatározza, hogy az adott rendszerbiztonsági tag (felhasználó, csoport, szolgáltatásnév vagy felügyelt identitás) megfelelő jogosultsági szinttel rendelkezik-e a művelet végrehajtásához.
 
 > [!NOTE]
 > Az ACL-ek csak az ugyanabban a bérlőben lévő rendszerbiztonsági tag esetében érvényesek, és nem vonatkoznak azokra a felhasználókra, akik megosztott kulcsot vagy közös hozzáférésű aláírási (SAS) jogkivonat-hitelesítést használnak. Ennek oka, hogy nincs identitás társítva a hívóhoz, ezért a rendszerbiztonsági tag engedély-alapú engedélyezése nem hajtható végre.  
@@ -40,7 +40,7 @@ A fájl-és könyvtári szintű engedélyek megadásához tekintse meg a követk
 |Python|[A Python használatával kezelheti a címtárakat, a fájlokat és a hozzáférés-vezérlési listákat Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-python.md#manage-access-control-lists-acls)|
 |PowerShell|[A PowerShell használatával kezelheti a címtárakat, a fájlokat és a hozzáférés-vezérlési listákat Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-powershell.md#manage-access-control-lists-acls)|
 |Azure CLI|[Könyvtárak, fájlok és ACL-ek kezelése az Azure CLI használatával Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-cli.md#manage-access-control-lists-acls)|
-|REST API |[Elérési út – frissítés](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
+|REST API |[Elérési út – frissítés](/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
 > Ha a rendszerbiztonsági tag egy egyszerű *szolgáltatásnév* , fontos, hogy használja az egyszerű szolgáltatásnév objektum-azonosítóját, nem pedig a kapcsolódó alkalmazás regisztrációs OBJEKTUMának azonosítóját. Az egyszerű szolgáltatásnév objektum-AZONOSÍTÓjának lekéréséhez nyissa meg az Azure CLI-t, majd használja a következő parancsot: `az ad sp show --id <Your App ID> --query objectId` . Ügyeljen arra, hogy a `<Your App ID>` helyőrzőt cserélje le az alkalmazás-regisztrációhoz tartozó alkalmazás-azonosítóra.
@@ -92,7 +92,8 @@ A következő táblázat azokat az ACL-bejegyzéseket tartalmazza, amelyek szük
 
 Ez a táblázat egy fiktív címtár-hierarchia minden szintjét jelképező oszlopot mutat be. Van egy oszlop a tároló gyökérkönyvtárához ( `\` ), egy **Oregon** nevű alkönyvtárhoz, a **Portland** nevű Oregon könyvtár alkönyvtárához és egy **Data.txt** nevű Portland-könyvtárban található szövegfájlhoz. 
 
-> [! IMPORANT] Ez a táblázat azt feltételezi, hogy **csak** az ACL-eket használja az Azure szerepkör-hozzárendelések nélkül. Ha meg szeretne tekinteni egy hasonló táblázatot, amely az Azure RBAC-t kombinálja ACL-ekkel együtt, tekintse meg az [engedélyek táblázat: az Azure RBAC és az ACL](data-lake-storage-access-control-model.md#permissions-table-combining-azure-rbac-and-acl)
+> [!IMPORTANT]
+> Ez a táblázat azt feltételezi, hogy **csak** az ACL-listákat használja az Azure szerepkör-hozzárendelések nélkül. Ha meg szeretne tekinteni egy hasonló táblázatot, amely az Azure RBAC-t kombinálja ACL-ekkel együtt, tekintse meg az [engedélyek táblázat: az Azure RBAC és az ACL](data-lake-storage-access-control-model.md#permissions-table-combining-azure-rbac-and-acl)
 
 |    Művelet             |    /    | Oregon | Portland | Data.txt     |
 |--------------------------|---------|----------|-----------|--------------|
@@ -330,7 +331,7 @@ Ha a szolgáltatásnév helyes OID-je van, lépjen a Storage Explorer a **hozzá
 
 Nem. A tárolók nem rendelkeznek ACL-vel. Azonban beállíthatja a tároló gyökérkönyvtárának ACL-listáját. Minden tároló rendelkezik gyökérkönyvtárral, és ugyanaz a neve, mint a tároló. Ha például a tároló neve `my-container` , akkor a gyökérkönyvtár neve `myContainer/` . 
 
-Az Azure Storage REST API tartalmaz egy [set Container ACL](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)nevű műveletet, de ez a művelet nem használható egy tároló ACL-jéhez vagy egy tároló gyökérkönyvtárának beállításához. Ehelyett a művelettel jelezheti, hogy a tárolóban lévő Blobok [nyilvánosan elérhetők](anonymous-read-access-configure.md)-e. 
+Az Azure Storage REST API tartalmaz egy [set Container ACL](/rest/api/storageservices/set-container-acl)nevű műveletet, de ez a művelet nem használható egy tároló ACL-jéhez vagy egy tároló gyökérkönyvtárának beállításához. Ehelyett a művelettel jelezheti, hogy a tárolóban lévő Blobok [nyilvánosan elérhetők](anonymous-read-access-configure.md)-e. 
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>Hol tudhatok meg többet a POSIX hozzáférés-vezérlési modellről?
 
@@ -343,6 +344,6 @@ Az Azure Storage REST API tartalmaz egy [set Container ACL](https://docs.microso
 * [POSIX ACL Ubuntu rendszeren](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [Hozzáférés-vezérlési listákat használó ACL Linux rendszeren](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [Hozzáférés-vezérlési modell Azure Data Lake Storage Gen2](data-lake-storage-access-control-model.md)

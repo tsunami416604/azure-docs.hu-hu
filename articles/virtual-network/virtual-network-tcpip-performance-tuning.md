@@ -16,11 +16,11 @@ ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
 ms.openlocfilehash: 67b635f09cb9407279e89b5f7b8526dab3c08946
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87068512"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017610"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>TCP/IP teljesítmény-hangolás Azure-beli virtuális gépekhez
 
@@ -111,7 +111,7 @@ Ne feledje, hogy a forrás és a cél MTU nem az egyetlen olyan tényező, amely
 
 A rendszer egyezteti a MSS-t, de előfordulhat, hogy nem jelzi a ténylegesen használható MSS-t. Ennek az az oka, hogy a forrás és a cél közötti útvonalon lévő más hálózati eszközöknél a forrás és a cél alacsonyabb MTU-értékkel rendelkezhet. Ebben az esetben az az eszköz, amelynek MTU-értéke kisebb, mint a csomag, el fogja dobni a csomagot. Az eszköz visszaküldi a szükséges ICMP-töredezettséget (3. kód) üzenet, amely az MTU-t tartalmazza. Ez az ICMP-üzenet lehetővé teszi, hogy a forrás gazdagépe megfelelően csökkentse a Path MTU-t. A folyamatot nevezzük Path MTU-felderítésnek (PMTUD).
 
-A PMTUD folyamat nem hatékony, és hatással van a hálózati teljesítményre. Ha a csomagok küldése meghaladja a hálózati elérési út MTU-értékét, a csomagokat újra el kell küldeni egy alacsonyabb MSS-vel. Ha a küldő nem kapja meg az ICMP-töredezettségre vonatkozó szükséges üzenetet, valószínűleg azért, mert az elérési úton lévő hálózati tűzfal miatt (általában *PMTUD-Blackhole*nevezik), a küldőnek nem tudom, hogy csökkentenie kell a MSS-t, és folyamatosan újra kell küldenie a csomagot. Ezért nem javasoljuk az Azure virtuális gép MTU-értékének növelését.
+A PMTUD folyamat nem hatékony, és hatással van a hálózati teljesítményre. Ha a csomagok küldése meghaladja a hálózati elérési út MTU-értékét, a csomagokat újra el kell küldeni egy alacsonyabb MSS-vel. Ha a küldő nem kapja meg az ICMP-töredezettségre vonatkozó szükséges üzenetet, valószínűleg azért, mert az elérési úton lévő hálózati tűzfal miatt (általában *PMTUD-Blackhole* nevezik), a küldőnek nem tudom, hogy csökkentenie kell a MSS-t, és folyamatosan újra kell küldenie a csomagot. Ezért nem javasoljuk az Azure virtuális gép MTU-értékének növelését.
 
 #### <a name="vpn-and-mtu"></a>VPN és MTU
 
@@ -287,7 +287,7 @@ A gyorsított hálózatkezelés úgy lett kialakítva, hogy javítsa a hálózat
 
 Az Azure-beli virtuális gépekhez legalább egy hálózati adapter csatlakozik. Lehet, hogy több van. A virtuális gép számára lefoglalt sávszélesség az összes kimenő forgalom összege a számítógéphez csatlakoztatott összes hálózati adapteren. Más szóval a sávszélesség virtuális gépenként van lefoglalva, függetlenül attól, hogy hány hálózati adapter van csatlakoztatva a számítógéphez.
 
-A várt kimenő átviteli sebesség és az egyes virtuálisgép-méretek által támogatott hálózati adapterek száma az Azure-beli [Windows rendszerű virtuális gépek méretében](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)van részletezve. Ha meg szeretné tekinteni a maximális átviteli sebességet, válasszon egy típust, például az **általános célú**elemet, majd keresse meg az eredményül kapott oldalon található méretezési sorozat szakaszát (például "Dv2-sorozat"). Minden adatsorozathoz van egy táblázat, amely az utolsó oszlopban tartalmaz hálózati specifikációkat, amelyek a "Max NIC/várt hálózati sávszélesség (Mbps)" címmel rendelkeznek.
+A várt kimenő átviteli sebesség és az egyes virtuálisgép-méretek által támogatott hálózati adapterek száma az Azure-beli [Windows rendszerű virtuális gépek méretében](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)van részletezve. Ha meg szeretné tekinteni a maximális átviteli sebességet, válasszon egy típust, például az **általános célú** elemet, majd keresse meg az eredményül kapott oldalon található méretezési sorozat szakaszát (például "Dv2-sorozat"). Minden adatsorozathoz van egy táblázat, amely az utolsó oszlopban tartalmaz hálózati specifikációkat, amelyek a "Max NIC/várt hálózati sávszélesség (Mbps)" címmel rendelkeznek.
 
 Az átviteli sebesség korlátja a virtuális gépre vonatkozik. Az átviteli sebességet a következő tényezők nem érintik:
 

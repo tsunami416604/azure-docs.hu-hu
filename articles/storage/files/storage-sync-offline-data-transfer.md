@@ -8,11 +8,11 @@ ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 94abb33d39765a19306a013576d43fb2602d1c37
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630226"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017627"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>Tömeges adatmigrálás az Azure File Syncbe az Azure Data Boxszal
 A tömeges adatmennyiségeket kétféleképpen is áttelepítheti Azure File Syncba:
@@ -94,7 +94,7 @@ Tiltsa le az offline adatátviteli módot csak akkor, ha az állapot be van **t�
 Ha egy Azure-fájlmegosztás más módon, például a DataBox-n keresztül, a AzCopy-on keresztül, a RoboCopy egy Felhőbeli biztonsági mentésből vagy bármilyen más módszerből áll, akkor továbbra is követnie kell a jelen cikkben ismertetett [Offline adatátvitel folyamatot](#process-for-offline-data-transfer) . Csak a DataBox kell figyelmen kívül hagynia, mint a fájlok felhőbe való áthelyezésének módszerét. Azonban fontos, hogy a fájlok előkészítését továbbra is egy *átmeneti megosztásban* , nem pedig a végső, Azure file Sync csatlakoztatott megosztáson kövesse.
 
 > [!WARNING]
-> **Kövesse a fájlok előkészítésének folyamatát egy átmeneti megosztásban, nem pedig a végső** , Azure file Sync csatlakoztatott megosztást. Ha nem, a fájlok ütközései megjelenhetnek (a fájlok is tárolódnak), valamint az élő kiszolgálón törölt fájlok is visszatérhetnek, ha még léteznek a régebbi, kihelyezett fájlok készletében. Emellett a mappák módosításai egyesítve lesznek egymással, így a hiba miatt nagyon nehéz elkülöníteni a névteret.
+> **Kövesse a fájlok előkészítésének folyamatát egy átmeneti megosztásban, nem pedig a végső**, Azure file Sync csatlakoztatott megosztást. Ha nem, a fájlok ütközései megjelenhetnek (a fájlok is tárolódnak), valamint az élő kiszolgálón törölt fájlok is visszatérhetnek, ha még léteznek a régebbi, kihelyezett fájlok készletében. Emellett a mappák módosításai egyesítve lesznek egymással, így a hiba miatt nagyon nehéz elkülöníteni a névteret.
 
 ## <a name="next-steps"></a>További lépések
 - [Azure File Sync központi telepítésének megtervezése](storage-sync-files-planning.md)

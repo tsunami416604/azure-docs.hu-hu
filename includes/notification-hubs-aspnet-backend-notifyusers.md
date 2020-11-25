@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 3db9811322d27ab287fa568eeeffcb5f4d57bdf7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f490b6f25112ed8a10bbd865070bd07ea3ee84f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86530171"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016946"
 ---
 ## <a name="create-the-webapi-project"></a>A WebAPI-projekt létrehozása
 
@@ -28,7 +28,7 @@ Az új ASP.NET WebAPI háttérrendszer létrehozása a következő műveletekkel
 > [!IMPORTANT]
 > Ha a Visual Studio 2015-ös vagy régebbi verzióját használja, az oktatóanyag elkezdése előtt ellenőrizze, hogy telepítette-e a Visual Studio NuGet-csomagkezelőjének legfrissebb verzióját.
 >
->Az ellenőrzéshez indítsa el a Visual Studiót. Az **eszközök** menüben válassza a **bővítmények és frissítések**lehetőséget. Keresse meg az Ön által használt Visual Studio-verzióhoz tartozó **NuGet-csomagkezelőt**, és ellenőrizze, hogy a legfrissebb verzió van-e telepítve a gépén. Ha nem a legfrissebb verzió van telepítve a gépén, távolítsa el, és telepítse újra a NuGet-csomagkezelőt.
+>Az ellenőrzéshez indítsa el a Visual Studiót. Az **eszközök** menüben válassza a **bővítmények és frissítések** lehetőséget. Keresse meg az Ön által használt Visual Studio-verzióhoz tartozó **NuGet-csomagkezelőt**, és ellenőrizze, hogy a legfrissebb verzió van-e telepítve a gépén. Ha nem a legfrissebb verzió van telepítve a gépén, távolítsa el, és telepítse újra a NuGet-csomagkezelőt.
 
 ![Képernyőkép a bővítmények és frissítések párbeszédpanelről, amely a NuGet-csomag kezelése a Visual Studios-csomaghoz lehetőség ki van emelve.][B4]
 
@@ -63,7 +63,7 @@ Az új ASP.NET WebAPI háttérrendszer létrehozása a következő műveletekkel
 
 ## <a name="authenticate-clients-to-the-webapi-backend"></a>Ügyfelek hitelesítése a WebAPI háttérrendszeren
 
-Ebben a szakaszban egy új, **AuthenticationTestHandler** nevű üzenetkezelő-osztályt fog létrehozni az új háttérrendszer számára. A rendszer ezt az osztályt a [DelegatingHandler](https://msdn.microsoft.com/library/system.net.http.delegatinghandler.aspx) kezelőből származtatja, és üzenetkezelőként adja hozzá, így az képes a háttérrendszerhez beérkező összes kérés feldolgozására.
+Ebben a szakaszban egy új, **AuthenticationTestHandler** nevű üzenetkezelő-osztályt fog létrehozni az új háttérrendszer számára. A rendszer ezt az osztályt a [DelegatingHandler](/previous-versions/visualstudio/hh193679(v=vs.118)) kezelőből származtatja, és üzenetkezelőként adja hozzá, így az képes a háttérrendszerhez beérkező összes kérés feldolgozására.
 
 1. A Solution Explorer (Megoldáskezelő) ablakában kattintson a jobb gombbal az **AppBackend** projektre, válassza az **Add** (Hozzáadás) parancsot, majd a **Class** (Osztály) elemet.
 2. Nevezze el az új osztályt **AuthenticationTestHandler.cs** néven, majd kattintson az **Add** (Hozzáadás) gombra az osztály létrehozásához. Az egyszerűség kedvéért a rendszer ezt az osztályt fogja használni a felhasználók *alapszintű hitelesítéséhez*. Az alkalmazás bármilyen hitelesítési séma használatára képes.
@@ -88,7 +88,7 @@ Ebben a szakaszban egy új, **AuthenticationTestHandler** nevű üzenetkezelő-o
 
    Ellenkező esetben a kérést a rendszer elutasítja. Ez nem egy valós hitelesítési és engedélyezési megközelítés, csak egy egyszerű példa ehhez az oktatóanyaghoz.
 
-   Ha az `AuthenticationTestHandler` hitelesíti és engedélyezi a kérésüzenetet, az alapszintű hitelesítést használó felhasználót a rendszer hozzákapcsolja az aktuális kéréshez a [HttpContext](https://msdn.microsoft.com/library/system.web.httpcontext.current.aspx) felületén. A HttpContext felhasználói adatait a későbbiekben egy másik vezérlő (RegisterController) fogja használni egy [címke](https://msdn.microsoft.com/library/azure/dn530749.aspx) az értesítésregisztrációs kéréshez való hozzáadásához.
+   Ha az `AuthenticationTestHandler` hitelesíti és engedélyezi a kérésüzenetet, az alapszintű hitelesítést használó felhasználót a rendszer hozzákapcsolja az aktuális kéréshez a [HttpContext](/dotnet/api/system.web.httpcontext.current) felületén. A HttpContext felhasználói adatait a későbbiekben egy másik vezérlő (RegisterController) fogja használni egy [címke](/previous-versions/azure/azure-services/dn530749(v=azure.100)) az értesítésregisztrációs kéréshez való hozzáadásához.
 
     ```csharp
     public class AuthenticationTestHandler : DelegatingHandler
@@ -333,7 +333,7 @@ Ebben a szakaszban egy új vezérlőt ad hozzá, amely értesítés küldését 
 
     Ez a kód egy értesítéstípust fog küldeni a platformértesítési szolgáltatás (PNS) `pns` paramétere alapján. A(z) `to_tag` értékét a rendszer az üzenet *felhasználónév*-címkéjének beállítására használja. A címkének egyeznie kell egy aktív értesítésiközpont-regisztráció felhasználónév-címkéjével. Az értesítési üzenetet a rendszer a POST-kérés törzséből nyeri ki, és a cél PNS-nek megfelelően formázza.
 
-    A támogatott eszközök által az értesítések fogadására használt PNS-től függően az értesítések különböző formátumok használatával támogatottak. Windows rendszerű eszközökön például használhat [bejelentési értesítéseket a WNS formátummal](https://msdn.microsoft.com/library/windows/apps/br230849.aspx), amelyet egy másik PNS nem támogat közvetlenül. Ebben az esetben a háttérrendszernek a támogatni kívánt eszközök PNS-e által támogatott formátum szerint kell formáznia az értesítést. Ezt követően használja a megfelelő küldési API-t a [NotificationHubClient osztályon](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.notificationhubclient_methods.aspx).
+    A támogatott eszközök által az értesítések fogadására használt PNS-től függően az értesítések különböző formátumok használatával támogatottak. Windows rendszerű eszközökön például használhat [bejelentési értesítéseket a WNS formátummal](/uwp/schemas/tiles/toastschema/schema-root), amelyet egy másik PNS nem támogat közvetlenül. Ebben az esetben a háttérrendszernek a támogatni kívánt eszközök PNS-e által támogatott formátum szerint kell formáznia az értesítést. Ezt követően használja a megfelelő küldési API-t a [NotificationHubClient osztályon](/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient).
 
     ```csharp
     public async Task<HttpResponseMessage> Post(string pns, [FromBody]string message, string to_tag)

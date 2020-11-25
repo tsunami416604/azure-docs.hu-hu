@@ -6,11 +6,11 @@ ms.topic: quickstart
 ms.date: 08/01/2020
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: 152a000939f74b1852073742e501ac66246389a5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88961418"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015891"
 ---
 # <a name="create-a-php-web-app-in-azure-app-service"></a>PHP-alapú Webalkalmazás létrehozása Azure App Service
 
@@ -116,7 +116,7 @@ Létrehozott egy üres új webalkalmazást, amelyen engedélyezve van a git üze
 > A távoli Git URL-címe a `deploymentLocalGitUrl` tulajdonságban látható, a következő formátumban: `https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git`. Mentse ezt az URL-t, mert később még szüksége lesz rá.
 >
 
-Tallózással keresse meg az újonnan létrehozott webalkalmazást. Cserélje le az _ &lt; app-Name>t_ az előző lépésben létrehozott egyedi alkalmazás nevére.
+Tallózással keresse meg az újonnan létrehozott webalkalmazást. Cserélje le az _&lt; app-Name>t_ az előző lépésben létrehozott egyedi alkalmazás nevére.
 
 ```bash
 http://<app-name>.azurewebsites.net
@@ -196,7 +196,7 @@ Az üzembe helyezés befejezését követően térjen vissza **Az alkalmazás me
 
     ![Navigálás a portálon egy Azure-alkalmazáshoz](./media/quickstart-php/php-docs-hello-world-app-service-list.png)
 
-    Ekkor megjelenik a webalkalmazás **áttekintő** lapja. Itt olyan alapszintű felügyeleti feladatokat hajthat végre, mint a **Tallózás**, **Leállítás**, **Újraindítás**és **Törlés**.
+    Ekkor megjelenik a webalkalmazás **áttekintő** lapja. Itt olyan alapszintű felügyeleti feladatokat hajthat végre, mint a **Tallózás**, **Leállítás**, **Újraindítás** és **Törlés**.
 
     ![Az App Service lap az Azure Portalon](media/quickstart-php/php-docs-hello-world-app-service-detail.png)
 

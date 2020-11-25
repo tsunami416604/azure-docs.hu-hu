@@ -8,11 +8,11 @@ ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
 ms.openlocfilehash: 0806c6e0ed89c2c0f4712ec985599810119fcf89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86999020"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015519"
 ---
 # <a name="monitoring-scheduled-events"></a>Figyelés Scheduled Events
 
@@ -110,19 +110,19 @@ Most szeretnénk csatlakozni egy Log Analytics munkaterülethez a gyűjtő virtu
     ![Kapcsolódás virtuális géphez adatforrásként](./media/notifications/connect-to-data-source.png)
 
 1. Keresse meg és válassza ki a **myCollectorVM**. 
-1. A **myCollectorVM**új lapján válassza a **kapcsolat**lehetőséget.
+1. A **myCollectorVM** új lapján válassza a **kapcsolat** lehetőséget.
 
 Ekkor a rendszer telepíti a [Microsoft monitoring agentet](../extensions/oms-windows.md) a virtuális gépre. A virtuális gép a munkaterülethez való összekapcsolásához és a bővítmény telepítéséhez több percet is igénybe vehet. 
 
 ## <a name="configure-the-workspace"></a>A munkaterület konfigurálása
 
-1. Nyissa meg a munkaterülethez tartozó lapot, és válassza a **Speciális beállítások**lehetőséget.
-1. Válassza az **adatok** lehetőséget a bal oldali menüben, majd válassza a **Windows-eseménynaplók**lehetőséget.
-1. A **következő eseménynaplók**beírásával kezdje el beírni az *alkalmazást* , majd válassza az **alkalmazás** elemet a listából.
+1. Nyissa meg a munkaterülethez tartozó lapot, és válassza a **Speciális beállítások** lehetőséget.
+1. Válassza az **adatok** lehetőséget a bal oldali menüben, majd válassza a **Windows-eseménynaplók** lehetőséget.
+1. A **következő eseménynaplók** beírásával kezdje el beírni az *alkalmazást* , majd válassza az **alkalmazás** elemet a listából.
 
     ![Speciális beállítások kiválasztása](./media/notifications/advanced.png)
 
-1. Hagyja a **hiba**, a **Figyelmeztetés**és a kijelölt **információk** lehetőséget, majd válassza a **Mentés** lehetőséget a beállítások mentéséhez.
+1. Hagyja a **hiba**, a **Figyelmeztetés** és a kijelölt **információk** lehetőséget, majd válassza a **Mentés** lehetőséget a beállítások mentéséhez.
 
 
 > [!NOTE]
@@ -150,23 +150,23 @@ Az események Log Analyticsba való leküldése után a következő [lekérdezé
     | project-away RenderedDescription,ReqJson
     ```
 
-1. Válassza a **Mentés**lehetőséget, majd írja be a *logQuery* nevet, hagyja beírni a **lekérdezést** , írja be a *VMLogs* **kategóriába**, majd válassza a **Mentés**lehetőséget. 
+1. Válassza a **Mentés** lehetőséget, majd írja be a *logQuery* nevet, hagyja beírni a **lekérdezést** , írja be a *VMLogs* **kategóriába**, majd válassza a **Mentés** lehetőséget. 
 
     ![A lekérdezés mentése](./media/notifications/save-query.png)
 
 1. Válassza az **Új riasztási szabály** lehetőséget. 
 1. A **szabály létrehozása** lapon hagyja meg `collectorworkspace` az **erőforrást**.
-1. A **feltétel**területen válassza ki a bejegyzést, *amikor az ügyfél naplójának keresése történik <login undefined> *. Ekkor megnyílik a **jel logikai beállítása** lap.
-1. A **küszöbérték**mezőben adja meg a *0* értéket, majd válassza a **kész**lehetőséget.
-1. A **műveletek**területen válassza a **műveleti csoport létrehozása**lehetőséget. Ekkor megnyílik a **műveleti csoport hozzáadása** lap.
-1. A **műveleti csoport neve**mezőbe írja be a következőt: *myActionGroup*.
-1. A **rövid név**mezőbe írja be a következőt: **myActionGroup**.
-1. Az **erőforráscsoport**területen válassza a **myResourceGroupAvailability**lehetőséget.
-1. A műveletek területen a **művelet neve** mezőbe írja be az **e-mail**nevet, majd válassza az **E-mail/SMS/leküldés/hang**lehetőséget. Ekkor megnyílik az **e-mail/SMS/push/Voice** oldal.
-1. Válassza az **e-mail**lehetőséget, írja be az e-mail címét, majd kattintson **az OK gombra**.
+1. A **feltétel** területen válassza ki a bejegyzést, *amikor az ügyfél naplójának keresése történik <login undefined>*. Ekkor megnyílik a **jel logikai beállítása** lap.
+1. A **küszöbérték** mezőben adja meg a *0* értéket, majd válassza a **kész** lehetőséget.
+1. A **műveletek** területen válassza a **műveleti csoport létrehozása** lehetőséget. Ekkor megnyílik a **műveleti csoport hozzáadása** lap.
+1. A **műveleti csoport neve** mezőbe írja be a következőt: *myActionGroup*.
+1. A **rövid név** mezőbe írja be a következőt: **myActionGroup**.
+1. Az **erőforráscsoport** területen válassza a **myResourceGroupAvailability** lehetőséget.
+1. A műveletek területen a **művelet neve** mezőbe írja be az **e-mail** nevet, majd válassza az **E-mail/SMS/leküldés/hang** lehetőséget. Ekkor megnyílik az **e-mail/SMS/push/Voice** oldal.
+1. Válassza az **e-mail** lehetőséget, írja be az e-mail címét, majd kattintson **az OK gombra**.
 1. A **műveleti csoport hozzáadása** lapon kattintson az **OK gombra**. 
-1. A **szabály létrehozása** lap **riasztás részletei**területén írja be a *myAlert* **nevet a riasztási szabály neveként**, majd írja be a **leíráshoz**az *e-mailes riasztási szabályt* .
-1. Ha elkészült, válassza a **riasztási szabály létrehozása**lehetőséget.
+1. A **szabály létrehozása** lap **riasztás részletei** területén írja be a *myAlert* **nevet a riasztási szabály neveként**, majd írja be a **leíráshoz** az *e-mailes riasztási szabályt* .
+1. Ha elkészült, válassza a **riasztási szabály létrehozása** lehetőséget.
 1. Indítsa újra az egyik virtuális gépet a rendelkezésre állási csoportból. Néhány percen belül egy e-mailt kell kapnia arról, hogy a riasztás aktiválva lett.
 
 A riasztási szabályok kezeléséhez nyissa meg az erőforráscsoportot, válassza a bal oldali menüben a **riasztások** elemet, majd a lap tetején válassza a **riasztási szabályok kezelése** lehetőséget.

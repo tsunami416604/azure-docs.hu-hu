@@ -10,11 +10,11 @@ ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: 8170cfcbbf200c6ba5030aff5716f46b537d8c97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87080471"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016709"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets – gyakori kérdések
 
@@ -60,7 +60,7 @@ Igen, a méretezési csoport [bővítmények sorrendjét](virtual-machine-scale-
 
 ### <a name="do-scale-sets-work-with-azure-availability-sets"></a>Használhatok virtuálisgép-méretezési csoportokat Azure rendelkezésre állási csoportokkal?
 
-A regionális (nem zónákra kiterjedő) méretezési *csoport elhelyezési csoportokat*használ, amelyek az implicit rendelkezésre állási csoportok öt tartalék tartománnyal és öt frissítési tartománnyal működnek. A több mint 100 virtuális gép méretezési csoportjai több elhelyezési csoportot is kiterjedhetnek. További információ az elhelyezési csoportokról: [Nagyméretű virtuálisgép-méretezési csoportok használata](virtual-machine-scale-sets-placement-groups.md). A virtuális gépek rendelkezésre állási csoportja létrejöhet ugyanabban a virtuális hálózatban, mint a virtuálisgép-méretezési csoport. Az egyik gyakran alkalmazott konfiguráció egy rendelkezésre állási csoportba helyezi a vezérlő csomópont virtuális gépeit (ezek gyakran igényelnek egyéni konfigurálást), és a méretezési csoportba helyezi az adatcsomópontokat.
+A regionális (nem zónákra kiterjedő) méretezési *csoport elhelyezési csoportokat* használ, amelyek az implicit rendelkezésre állási csoportok öt tartalék tartománnyal és öt frissítési tartománnyal működnek. A több mint 100 virtuális gép méretezési csoportjai több elhelyezési csoportot is kiterjedhetnek. További információ az elhelyezési csoportokról: [Nagyméretű virtuálisgép-méretezési csoportok használata](virtual-machine-scale-sets-placement-groups.md). A virtuális gépek rendelkezésre állási csoportja létrejöhet ugyanabban a virtuális hálózatban, mint a virtuálisgép-méretezési csoport. Az egyik gyakran alkalmazott konfiguráció egy rendelkezésre állási csoportba helyezi a vezérlő csomópont virtuális gépeit (ezek gyakran igényelnek egyéni konfigurálást), és a méretezési csoportba helyezi az adatcsomópontokat.
 
 ### <a name="do-scale-sets-work-with-azure-availability-zones"></a>Működnek a méretezési csoportok az Azure rendelkezésre állási zónákkal?
 
@@ -226,7 +226,7 @@ Linuxos virtuális gép létrehozásakor egyszerű szövegként is megadhat SSH 
 
 linuxConfiguration elem neve | Kötelező | Típus | Leírás
 --- | --- | --- | ---
-SSH | Nem | Gyűjtemény | Megadja egy Linux operációs rendszer SSH-kulcsának konfigurációját
+SSH | No | Gyűjtemény | Megadja egy Linux operációs rendszer SSH-kulcsának konfigurációját
 path | Igen | Sztring | Megadja a Linux-fájl elérési útját, ahol az SSH-kulcsokat vagy a tanúsítványokat kell elhelyezni
 alapértékek | Igen | Sztring | Base64 kódolású nyilvános SSH-kulcsot ad meg
 
@@ -264,7 +264,7 @@ Ha helytelen forrás-tároló-azonosítót ad meg, de érvényes kulcstartó URL
 
 ### <a name="if-i-add-secrets-to-an-existing-virtual-machine-scale-set-are-the-secrets-injected-into-existing-vms-or-only-into-new-ones"></a>Ha egy meglévő virtuálisgép-méretezési csoporthoz veszek fel titkokat, a titkos kulcsokat a rendszer befecskendezi a meglévő virtuális gépekbe, vagy csak újakba?
 
-A rendszer az összes virtuális géphez hozzáadja a tanúsítványokat, még a korábban is. Ha a virtuálisgép-méretezési csoport upgradePolicy tulajdonsága **kézi**értékre van állítva, a rendszer hozzáadja a tanúsítványt a virtuális géphez, amikor manuális frissítést hajt végre a virtuális gépen.
+A rendszer az összes virtuális géphez hozzáadja a tanúsítványokat, még a korábban is. Ha a virtuálisgép-méretezési csoport upgradePolicy tulajdonsága **kézi** értékre van állítva, a rendszer hozzáadja a tanúsítványt a virtuális géphez, amikor manuális frissítést hajt végre a virtuális gépen.
 
 ### <a name="where-do-i-put-certificates-for-linux-vms"></a>Hová helyezhetem a Linux rendszerű virtuális gépek tanúsítványait?
 
@@ -368,9 +368,9 @@ Egy virtuálisgép-méretezési csoport sablonja, amely integrálható Azure Mon
 
 ### <a name="how-do-i-add-an-extension-to-all-vms-in-my-virtual-machine-scale-set"></a>Hogyan bővítményt hozzáadni a virtuálisgép-méretezési csoport összes virtuális gépére?
 
-Ha a frissítési szabályzat **automatikus**értékre van állítva, akkor a sablon új bővítmény tulajdonságaival való újbóli üzembe helyezése frissíti az összes virtuális gépet.
+Ha a frissítési szabályzat **automatikus** értékre van állítva, akkor a sablon új bővítmény tulajdonságaival való újbóli üzembe helyezése frissíti az összes virtuális gépet.
 
-Ha a frissítési szabályzat **manuális**értékre van állítva, először frissítse a bővítményt, majd manuálisan frissítse a virtuális gépek összes példányát.
+Ha a frissítési szabályzat **manuális** értékre van állítva, először frissítse a bővítményt, majd manuálisan frissítse a virtuális gépek összes példányát.
 
 ### <a name="if-the-extensions-associated-with-an-existing-virtual-machine-scale-set-are-updated-are-existing-vms-affected"></a>Ha a meglévő virtuálisgép-méretezési csoportokhoz társított bővítmények frissülnek, a meglévő virtuális gépek is érintettek?
 
@@ -652,7 +652,7 @@ az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.Ente
 A szükséges munkaterület azonosítója és workspaceKey a Azure Portal Log Analytics munkaterületén találhatja meg. Az Áttekintés lapon kattintson a beállítások csempére. Kattintson a felül található csatlakoztatott források fülre.
 
 > [!NOTE]
-> Ha a méretezési csoport _UpgradePolicy_ manuális értékre van állítva, a bővítményt a készletben lévő összes virtuális gépre alkalmaznia kell a frissítés meghívásával. A CLI-ben ez az _az vmss Update-instances_lenne.
+> Ha a méretezési csoport _UpgradePolicy_ manuális értékre van állítva, a bővítményt a készletben lévő összes virtuális gépre alkalmaznia kell a frissítés meghívásával. A CLI-ben ez az _az vmss Update-instances_ lenne.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -694,9 +694,9 @@ Nem, a virtuálisgép-méretezési csoportokban nem lehet eltérő kiterjesztés
 
 ### <a name="why-are-there-gaps-between-my-virtual-machine-scale-set-vm-machine-names-and-vm-ids-for-example-0-1-3"></a>Miért van különbség a virtuálisgép-méretezési csoport virtuális gépek nevei és virtuálisgép-azonosítói között? Például: 0, 1, 3...
 
-A virtuálisgép-méretezési csoport virtuális gépek nevei és virtuálisgép-azonosítói között rések vannak, mivel a virtuálisgép-méretezési csoport **túlépítésének tulajdonsága** az alapértelmezett **true**értékre van állítva. Ha a túlzott kiépítése **igaz**értékre van állítva, a rendszer több virtuális gépet hoz létre a kértnél. Ezután további virtuális gépek törlődnek. Ebben az esetben magasabb szintű üzembe helyezési megbízhatóságot biztosít, de a folytonos névhasználati és a folytonos hálózati címfordítási (NAT-) szabályok rovására.
+A virtuálisgép-méretezési csoport virtuális gépek nevei és virtuálisgép-azonosítói között rések vannak, mivel a virtuálisgép-méretezési csoport **túlépítésének tulajdonsága** az alapértelmezett **true** értékre van állítva. Ha a túlzott kiépítése **igaz** értékre van állítva, a rendszer több virtuális gépet hoz létre a kértnél. Ezután további virtuális gépek törlődnek. Ebben az esetben magasabb szintű üzembe helyezési megbízhatóságot biztosít, de a folytonos névhasználati és a folytonos hálózati címfordítási (NAT-) szabályok rovására.
 
-Ezt a tulajdonságot **hamis**értékre állíthatja. A kisméretű virtuálisgép-méretezési csoportok esetében ez nem befolyásolja jelentősen az üzembe helyezés megbízhatóságát.
+Ezt a tulajdonságot **hamis** értékre állíthatja. A kisméretű virtuálisgép-méretezési csoportok esetében ez nem befolyásolja jelentősen az üzembe helyezés megbízhatóságát.
 
 ### <a name="what-is-the-difference-between-deleting-a-vm-in-a-virtual-machine-scale-set-and-deallocating-the-vm-when-should-i-choose-one-over-the-other"></a>Mi a különbség a virtuálisgép-méretezési csoportokban lévő virtuális gépek törlése és a virtuális gép felszabadítása között? Mikor érdemes választani egyet a másikon?
 

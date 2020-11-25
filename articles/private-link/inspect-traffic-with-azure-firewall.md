@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: allensu
-ms.openlocfilehash: 734d52dadbb849925303febb0d3d1195bbddb0df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cbfd90ca65a1fb75c9cbe5602ac2a69741e378f
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89236686"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96017236"
 ---
 # <a name="use-azure-firewall-to-inspect-traffic-destined-to-a-private-endpoint"></a>A Azure Firewall használata a privát végpontoknak szánt forgalom vizsgálatára
 
@@ -38,7 +38,7 @@ A Azure Firewall a következők egyikével szűri a forgalmat:
 A privát végpontokon keresztül elérhető szolgáltatások többsége HTTPS protokollt használ. Az Azure SQL használata esetén ajánlott az alkalmazási szabályok használata a hálózati szabályokon keresztül.
 
 > [!NOTE]
-> Az SQL FQDN-szűrés csak [proxy módban](../azure-sql/database/connectivity-architecture.md#connection-policy) támogatott (1433-es port). A **proxy** mód több késést eredményezhet az *átirányításhoz*képest. Ha továbbra is az átirányítási módot szeretné használni, amely az Azure-on keresztül csatlakozó ügyfelek esetében az alapértelmezett, akkor a hozzáférést a tűzfal hálózati szabályok teljes tartománynevével szűrheti.
+> Az SQL FQDN-szűrés csak [proxy módban](../azure-sql/database/connectivity-architecture.md#connection-policy) támogatott (1433-es port). A **proxy** mód több késést eredményezhet az *átirányításhoz* képest. Ha továbbra is az átirányítási módot szeretné használni, amely az Azure-on keresztül csatlakozó ügyfelek esetében az alapértelmezett, akkor a hozzáférést a tűzfal hálózati szabályok teljes tartománynevével szűrheti.
 
 ## <a name="scenario-1-hub-and-spoke-architecture---dedicated-virtual-network-for-private-endpoints"></a>1. forgatókönyv: hub és küllős architektúra – dedikált virtuális hálózat privát végpontokhoz
 
@@ -55,7 +55,7 @@ A társ virtuális hálózatokkal létesített kapcsolatokkal kapcsolatos díjak
 
 ## <a name="scenario-2-hub-and-spoke-architecture---shared-virtual-network-for-private-endpoints-and-virtual-machines"></a>2. forgatókönyv: hub és küllős architektúra – megosztott virtuális hálózat magánhálózati végpontok és virtuális gépek számára
 
-:::image type="content" source="./media/inspect-traffic-using-azure-firewall/shared-spoke.png" alt-text="Dedikált Virtual Network privát végpontokhoz" border="true":::
+:::image type="content" source="./media/inspect-traffic-using-azure-firewall/shared-spoke.png" alt-text="Magánhálózati végpontok és Virtual Machinesek azonos Virtual Network" border="true":::
 
 Ez a forgatókönyv a következő esetekben valósítható meg:
 
@@ -78,7 +78,7 @@ A társ virtuális hálózatokkal létesített kapcsolatokkal kapcsolatos díjak
 
 ## <a name="scenario-3-single-virtual-network"></a>3. forgatókönyv: egyetlen virtuális hálózat
 
-:::image type="content" source="./media/inspect-traffic-using-azure-firewall/single-vnet.png" alt-text="Dedikált Virtual Network privát végpontokhoz" border="true":::
+:::image type="content" source="./media/inspect-traffic-using-azure-firewall/single-vnet.png" alt-text="Egyetlen virtuális hálózat" border="true":::
 
 Bizonyos korlátozások vonatkoznak a megvalósításra: a központba való Migrálás és a küllős architektúra nem lehetséges. Ugyanazok a szempontok, mint a 2. forgatókönyv esetében. Ebben a forgatókönyvben a virtuális hálózati társítási díjak nem érvényesek.
 
@@ -87,7 +87,7 @@ Bizonyos korlátozások vonatkoznak a megvalósításra: a központba való Migr
 
 ## <a name="scenario-4-on-premises-traffic-to-private-endpoints"></a>4. forgatókönyv: a helyszíni forgalom magánhálózati végpontokra
 
-:::image type="content" source="./media/inspect-traffic-using-azure-firewall/on-premises.png" alt-text="Dedikált Virtual Network privát végpontokhoz" border="true":::
+:::image type="content" source="./media/inspect-traffic-using-azure-firewall/on-premises.png" alt-text="Helyszíni forgalom magánhálózati végpontokra" border="true":::
 
 Ez az architektúra akkor valósítható meg, ha a következővel konfigurálta a helyszíni hálózathoz való kapcsolódást: 
 
@@ -106,7 +106,7 @@ Ugyanazokat a szempontokat kell figyelembe venni, mint a fenti 2. forgatókönyv
 * Azure-előfizetés.
 * Egy Log Analytics-munkaterület.  
 
-Ha még nem rendelkezik az előfizetésében, a [Azure Portal hozzon létre egy log Analytics munkaterületet a](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) munkaterületen.
+Ha még nem rendelkezik az előfizetésében, a [Azure Portal hozzon létre egy log Analytics munkaterületet a](../azure-monitor/learn/quick-create-workspace.md) munkaterületen.
 
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
@@ -163,9 +163,9 @@ Cserélje le a következő paramétereket a lépésekben az alábbi információ
 
 ### <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
-1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **számítási**  >  **virtuális gép**lehetőséget.
+1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **számítási**  >  **virtuális gép** lehetőséget.
 
-2. A **virtuális gép létrehozása – alapismeretek**területen adja meg vagy válassza ki az alábbi adatokat:
+2. A **virtuális gép létrehozása – alapismeretek** területen adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
@@ -174,12 +174,12 @@ Cserélje le a következő paramétereket a lépésekben az alábbi információ
     | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget. Ezt az erőforráscsoportot az előző szakaszban hozta létre.  |
     | **Példány adatai** |  |
     | Virtuális gép neve | Adja meg a **myVM**. |
-    | Régió | Válassza ki az USA **déli középső**régióját. |
+    | Region | Válassza ki az USA **déli középső** régióját. |
     | Rendelkezésre állási beállítások | Az alapértelmezett **infrastruktúra-redundancia megadása nem kötelező**. |
-    | Kép | Válassza az **Ubuntu Server 18,04 LTS-Gen1**lehetőséget. |
-    | Méret | Válassza a **Standard_B2s**lehetőséget. |
+    | Kép | Válassza az **Ubuntu Server 18,04 LTS-Gen1** lehetőséget. |
+    | Méret | Válassza a **Standard_B2s** lehetőséget. |
     | **Rendszergazdai fiók** |  |
-    | Hitelesítéstípus | Válassza a **jelszó**lehetőséget. |
+    | Hitelesítéstípus | Válassza a **jelszó** lehetőséget. |
     | Felhasználónév | Adja meg a választott felhasználónevet. |
     | Jelszó | Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúnak kell lennie, és meg kell felelnie a [meghatározott összetettségi követelményeknek](../virtual-machines/linux/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     | Jelszó megerősítése | Adja meg újra a jelszót. |
@@ -187,19 +187,19 @@ Cserélje le a következő paramétereket a lépésekben az alábbi információ
     | Nyilvános bejövő portok | Válassza a **Nincs** lehetőséget. |
     |||
 
-3. Válassza a **Tovább: lemezek**lehetőséget.
+3. Válassza a **Tovább: lemezek** lehetőséget.
 
 4. A **Virtuális gép létrehozása – Lemezek** lehetőségnél hagyja meg az alapértelmezett értékeket, és válassza a **Tovább: Hálózatkezelés** lehetőséget.
 
-5. A **virtuálisgép-hálózat létrehozása**területen válassza ki ezt az információt:
+5. A **virtuálisgép-hálózat létrehozása** területen válassza ki ezt az információt:
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Virtuális hálózat | Válassza a **myVMVNet**lehetőséget.  |
+    | Virtuális hálózat | Válassza a **myVMVNet** lehetőséget.  |
     | Alhálózat | Válassza a **alhálózat (10.1.0.0/24)** lehetőséget.|
     | Nyilvános IP-cím | Hagyja meg az alapértelmezett **(új) myVm-IP-címet**. |
-    | Nyilvános bejövő portok | Válassza a **kiválasztott portok engedélyezése**lehetőséget. |
-    | Válassza ki a bejövő portokat | Válassza az **SSH**lehetőséget.|
+    | Nyilvános bejövő portok | Válassza a **kiválasztott portok engedélyezése** lehetőséget. |
+    | Válassza ki a bejövő portokat | Válassza az **SSH** lehetőséget.|
     ||
 
 6. Válassza az **Áttekintés + létrehozás** lehetőséget. Az **Áttekintés és létrehozása** lapra kerül, ahol az Azure érvényesíti az Ön konfigurációját.
@@ -208,11 +208,11 @@ Cserélje le a következő paramétereket a lépésekben az alábbi információ
 
 ## <a name="deploy-the-firewall"></a>A tűzfal üzembe helyezése
 
-1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet.
+1. Az Azure Portal menüjében vagy a **Kezdőlapon** lapon válassza az **Erőforrás létrehozása** elemet.
 
-2. Írja be a **tűzfal** kifejezést a keresőmezőbe, majd nyomja le az **ENTER**billentyűt.
+2. Írja be a **tűzfal** kifejezést a keresőmezőbe, majd nyomja le az **ENTER** billentyűt.
 
-3. Válassza a **tűzfal** lehetőséget, majd válassza a **Létrehozás**lehetőséget.
+3. Válassza a **tűzfal** lehetőséget, majd válassza a **Létrehozás** lehetőséget.
 
 4. A **Tűzfal létrehozása** oldalon konfigurálja a tűzfalat a következő táblázatban található értékekkel:
 
@@ -223,12 +223,12 @@ Cserélje le a következő paramétereket a lépésekben az alábbi információ
     | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget.  |
     | **Példány adatai** |  |
     | Name | Adja meg a **myAzureFirewall**. |
-    | Régió | Válassza az **USA déli középső**régióját. |
-    | A rendelkezésre állási zóna | Hagyja meg az alapértelmezett **nincs**értéket. |
-    | Válasszon egy virtuális hálózatot    |    Válassza a **meglévő használata**lehetőséget.    |
-    | Virtuális hálózat    |    Válassza a **myAzFwVNet**lehetőséget.    |
-    | Nyilvános IP-cím    |    Válassza az **új hozzáadása** lehetőséget, és a név mezőben adja meg a **myFirewall-IP**értéket.    |
-    | Alagúthasználat kényszerítése    | Hagyja meg az alapértelmezett **Letiltva**értéket.    |
+    | Region | Válassza az **USA déli középső** régióját. |
+    | A rendelkezésre állási zóna | Hagyja meg az alapértelmezett **nincs** értéket. |
+    | Válasszon egy virtuális hálózatot    |    Válassza a **meglévő használata** lehetőséget.    |
+    | Virtuális hálózat    |    Válassza a **myAzFwVNet** lehetőséget.    |
+    | Nyilvános IP-cím    |    Válassza az **új hozzáadása** lehetőséget, és a név mezőben adja meg a **myFirewall-IP** értéket.    |
+    | Alagúthasználat kényszerítése    | Hagyja meg az alapértelmezett **Letiltva** értéket.    |
     |||
 5. Válassza az **Áttekintés + létrehozás** lehetőséget. Az **Áttekintés és létrehozása** lapra kerül, ahol az Azure érvényesíti az Ön konfigurációját.
 
@@ -246,14 +246,14 @@ Ebben a szakaszban engedélyezheti a naplókat a tűzfalon.
 
 4. Válassza a **+ diagnosztika hozzáadása** lehetőséget a diagnosztikai beállításokban.
 
-5. A **diagnosztika beállítása**mezőben adja meg vagy válassza ki az alábbi adatokat:
+5. A **diagnosztika beállítása** mezőben adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
     | Diagnosztikai beállítás neve | Adja meg a **myDiagSetting**. |
     | Kategória részletei | |
-    | napló | Válassza a **AzureFirewallApplicationRule** és a **AzureFirewallNetworkRule**lehetőséget. |
-    | Célhely részletei | Válassza **a küldés log Analytics**lehetőséget. |
+    | napló | Válassza a **AzureFirewallApplicationRule** és a **AzureFirewallNetworkRule** lehetőséget. |
+    | Célhely részletei | Válassza **a küldés log Analytics** lehetőséget. |
     | Előfizetés | Válassza ki előfizetését. |
     | Log Analytics-munkaterület | Válassza ki Log Analytics munkaterületét. |
 
@@ -263,9 +263,9 @@ Ebben a szakaszban engedélyezheti a naplókat a tűzfalon.
 
 Ebben a szakaszban egy privát SQL Database hoz létre.
 
-1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **adatbázisok**  >  **SQL Database**lehetőséget.
+1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **adatbázisok**  >  **SQL Database** lehetőséget.
 
-2. A **SQL Database létrehozása – alapismeretek**területen adja meg vagy válassza ki az alábbi adatokat:
+2. A **SQL Database létrehozása – alapismeretek** területen adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
@@ -279,8 +279,8 @@ Ebben a szakaszban egy privát SQL Database hoz létre.
     | Kiszolgáló-rendszergazdai bejelentkezés | Adja meg a választott nevet. |
     | Jelszó    |    Adjon meg egy tetszőleges jelszót.    |
     | Jelszó megerősítése | Jelszó újbóli megadása    |
-    | Hely    | Válassza ki az USA **déli középső**régióját.    |
-    | Rugalmas SQL-készletet szeretne használni    | Hagyja meg az alapértelmezett **nem**értéket. |
+    | Hely    | Válassza ki az USA **déli középső** régióját.    |
+    | Rugalmas SQL-készletet szeretne használni    | Hagyja meg az alapértelmezett **nem** értéket. |
     | Számítás + tárolás | Hagyja meg az alapértelmezett **általános célú Gen5, 2 virtuális mag, 32 GB tárterületet**. |
     |||
 
@@ -296,11 +296,11 @@ Ebben a szakaszban egy privát végpontot hoz létre az Azure SQL Database-hez a
 
 2. Válassza ki az Azure SQL Server **mydbserver** a szolgáltatások listájában.  Ha más kiszolgálónevet használt, válassza ki ezt a nevet.
 
-3. A kiszolgáló beállításai között válassza a **privát végponti kapcsolatok** lehetőséget a **Biztonság**területen.
+3. A kiszolgáló beállításai között válassza a **privát végponti kapcsolatok** lehetőséget a **Biztonság** területen.
 
-4. Válassza a **+ privát végpont**lehetőséget.
+4. Válassza a **+ privát végpont** lehetőséget.
 
-5. A **privát végpont létrehozása**területen adja meg vagy válassza ki ezt az információt az **alapok** lapon:
+5. A **privát végpont létrehozása** területen adja meg vagy válassza ki ezt az információt az **alapok** lapon:
 
     | Beállítás | Érték |
     | ------- | ----- |
@@ -309,7 +309,7 @@ Ebben a szakaszban egy privát végpontot hoz létre az Azure SQL Database-hez a
     | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget. |
     | **Példány adatai** | |
     | Name | Adja meg a **SQLPrivateEndpoint**. |
-    | Régió | Válassza ki az USA **déli középső** régióját. |
+    | Region | Válassza ki az USA **déli középső** régióját. |
 
 6. Válassza ki az **erőforrás** lapot, vagy válassza a **Next (tovább** ) gombot az oldal alján.
 
@@ -317,11 +317,11 @@ Ebben a szakaszban egy privát végpontot hoz létre az Azure SQL Database-hez a
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Kapcsolati módszer | Válassza a **Kapcsolódás egy Azure-erőforráshoz a címtárban**lehetőséget. |
+    | Kapcsolati módszer | Válassza a **Kapcsolódás egy Azure-erőforráshoz a címtárban** lehetőséget. |
     | Előfizetés | Válassza ki előfizetését. |
-    | Erőforrás típusa | Válassza a **Microsoft. SQL/kiszolgálók**lehetőséget. |
+    | Erőforrás típusa | Válassza a **Microsoft. SQL/kiszolgálók** lehetőséget. |
     | Erőforrás | Válassza ki a **mydbserver** vagy az előző lépésben létrehozott kiszolgáló nevét.
-    | Célzott alerőforrás | Válassza a **sqlServer**lehetőséget. |
+    | Célzott alerőforrás | Válassza a **sqlServer** lehetőséget. |
 
 8. Válassza a **konfiguráció** lapot, vagy válassza a **következő: konfigurálás** elemet az oldal alján.
 
@@ -330,8 +330,8 @@ Ebben a szakaszban egy privát végpontot hoz létre az Azure SQL Database-hez a
     | Beállítás | Érték |
     | ------- | ----- |
     | **Hálózat** | |
-    | Virtuális hálózat | Válassza a **myPEVnet**lehetőséget. |
-    | Alhálózat | Válassza a **PrivateEndpointSubnet**lehetőséget. |
+    | Virtuális hálózat | Válassza a **myPEVnet** lehetőséget. |
+    | Alhálózat | Válassza a **PrivateEndpointSubnet** lehetőséget. |
     | **saját DNS integráció** | |
     | Integrálás saját DNS-zónával | Válassza az **Igen** lehetőséget. |
     | Előfizetés | Válassza ki előfizetését. |
@@ -341,31 +341,31 @@ Ebben a szakaszban egy privát végpontot hoz létre az Azure SQL Database-hez a
 
 11. Kattintson a **Létrehozás** gombra.
 
-12. A végpont létrehozása után válassza a **tűzfalak és virtuális hálózatok** lehetőséget a **Biztonság**területen.
+12. A végpont létrehozása után válassza a **tűzfalak és virtuális hálózatok** lehetőséget a **Biztonság** területen.
 
-13. A **tűzfalak és virtuális hálózatok**területen válassza az **Igen** lehetőséget, hogy az **Azure-szolgáltatások és-erőforrások hozzáférjenek ehhez a kiszolgálóhoz**.
+13. A **tűzfalak és virtuális hálózatok** területen válassza az **Igen** lehetőséget, hogy az **Azure-szolgáltatások és-erőforrások hozzáférjenek ehhez a kiszolgálóhoz**.
 
 14. Kattintson a **Mentés** gombra.
 
 ## <a name="connect-the-virtual-networks-using-virtual-network-peering"></a>Virtuális hálózatok összekötése virtuális hálózati kapcsolattal
 
-Ebben a szakaszban a Virtual Networks **myVMVNet** és a **myPEVNet** összekapcsolását a **myAzFwVNet** szolgáltatással. Nem lesz közvetlen kapcsolat a **myVMVNet** és a **myPEVNet**között.
+Ebben a szakaszban a Virtual Networks **myVMVNet** és a **myPEVNet** összekapcsolását a **myAzFwVNet** szolgáltatással. Nem lesz közvetlen kapcsolat a **myVMVNet** és a **myPEVNet** között.
 
 1. A portál keresési sávján adja meg a **myAzFwVNet**.
 
-2. Válassza a társítások lehetőséget a **Beállítások** menüben, majd **válassza a** **+ Hozzáadás**lehetőséget.
+2. Válassza a társítások lehetőséget a **Beállítások** menüben, majd **válassza a** **+ Hozzáadás** lehetőséget.
 
 3. A társítás **hozzáadása** területen adja meg vagy válassza ki a következő adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | A myAzFwVNet-ből távoli virtuális hálózatra irányuló társ neve | Adja meg **a myAzFwVNet-to-myVMVNet**értéket. |
+    | A myAzFwVNet-ből távoli virtuális hálózatra irányuló társ neve | Adja meg **a myAzFwVNet-to-myVMVNet** értéket. |
     | **Társ részletei** |  |
     | Virtuális hálózat telepítési modellje  | Hagyja meg az alapértelmezett **erőforrás-kezelőt**.  |
     | Ismerem az erőforrás-azonosítót | Hagyja üresen.    |
     | Előfizetés | Válassza ki előfizetését.    |
-    | Virtuális hálózat | Válassza a **myVMVNet**lehetőséget. |
-    | A távoli virtuális hálózatról a myAzFwVNet-re irányuló peer neve    |    Adja meg **a myVMVNet-to-myAzFwVNet**értéket.    |
+    | Virtuális hálózat | Válassza a **myVMVNet** lehetőséget. |
+    | A távoli virtuális hálózatról a myAzFwVNet-re irányuló peer neve    |    Adja meg **a myVMVNet-to-myAzFwVNet** értéket.    |
     | **Konfigurálás** | |
     | **Virtuális hálózati hozzáférési beállítások konfigurálása** | |
     | Virtuális hálózati hozzáférés engedélyezése a myAzFwVNet a távoli virtuális hálózathoz | Hagyja meg az alapértelmezett **beállítást**.    |
@@ -377,7 +377,7 @@ Ebben a szakaszban a Virtual Networks **myVMVNet** és a **myPEVNet** összekapc
     | Átjáró átvitelének engedélyezése | Ne jelölje be |
     |||
 
-4. Kattintson az **OK** gombra.
+4. Válassza az **OK** lehetőséget.
 
 5. Válassza a **+ Hozzáadás** lehetőséget.
 
@@ -385,13 +385,13 @@ Ebben a szakaszban a Virtual Networks **myVMVNet** és a **myPEVNet** összekapc
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | A myAzFwVNet-ből távoli virtuális hálózatra irányuló társ neve | Adja meg **a myAzFwVNet-to-myPEVNet**értéket. |
+    | A myAzFwVNet-ből távoli virtuális hálózatra irányuló társ neve | Adja meg **a myAzFwVNet-to-myPEVNet** értéket. |
     | **Társ részletei** |  |
     | Virtuális hálózat telepítési modellje  | Hagyja meg az alapértelmezett **erőforrás-kezelőt**.  |
     | Ismerem az erőforrás-azonosítót | Hagyja üresen.    |
     | Előfizetés | Válassza ki előfizetését.    |
-    | Virtuális hálózat | Válassza a **myPEVNet**lehetőséget. |
-    | A távoli virtuális hálózatról a myAzFwVNet-re irányuló peer neve    |    Adja meg **a myPEVNet-to-myAzFwVNet**értéket.    |
+    | Virtuális hálózat | Válassza a **myPEVNet** lehetőséget. |
+    | A távoli virtuális hálózatról a myAzFwVNet-re irányuló peer neve    |    Adja meg **a myPEVNet-to-myAzFwVNet** értéket.    |
     | **Konfigurálás** | |
     | **Virtuális hálózati hozzáférési beállítások konfigurálása** | |
     | Virtuális hálózati hozzáférés engedélyezése a myAzFwVNet a távoli virtuális hálózathoz | Hagyja meg az alapértelmezett **beállítást**.    |
@@ -402,7 +402,7 @@ Ebben a szakaszban a Virtual Networks **myVMVNet** és a **myPEVNet** összekapc
     | **Átjáró átviteli beállításainak konfigurálása** | |
     | Átjáró átvitelének engedélyezése | Ne jelölje be |
 
-7. Kattintson az **OK** gombra.
+7. Válassza az **OK** lehetőséget.
 
 ## <a name="link-the-virtual-networks-to-the-private-dns-zone"></a>A virtuális hálózatok összekapcsolása a magánhálózati DNS-zónával
 
@@ -413,11 +413,11 @@ A hivatkozás szükséges ahhoz, hogy a virtuális gép és a tűzfal feloldja a
 >[!NOTE]
 >Ha nem kapcsolja össze a virtuális GÉPET és a tűzfal virtuális hálózatait a magánhálózati DNS-zónával, a virtuális gép és a tűzfal továbbra is képes lesz feloldani a SQL Server teljes tartománynevet. A rendszer feloldja a nyilvános IP-címét.
 
-1. A portál keresési sávjában adja meg a **privatelink. Database**kifejezést.
+1. A portál keresési sávjában adja meg a **privatelink. Database** kifejezést.
 
 2. A keresési eredmények között válassza a **privatelink.database.Windows.net** lehetőséget.
 
-3. Válassza a **virtuális hálózati kapcsolatok** lehetőséget a **Beállítások**területen.
+3. Válassza a **virtuális hálózati kapcsolatok** lehetőséget a **Beállítások** területen.
 
 4. Válassza a **+ Hozzáadás** lehetőséget
 
@@ -425,16 +425,16 @@ A hivatkozás szükséges ahhoz, hogy a virtuális gép és a tűzfal feloldja a
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Hivatkozás neve | Adja meg **a hivatkozás – myVMVNet**értéket. |
+    | Hivatkozás neve | Adja meg **a hivatkozás – myVMVNet** értéket. |
     | **Virtuális hálózat részletei** |  |
     | Tudom, hogy a virtuális hálózat erőforrás-azonosítója  | Hagyja üresen.  |
     | Előfizetés | Válassza ki előfizetését.    |
-    | Virtuális hálózat | Válassza a **myVMVNet**lehetőséget. |
+    | Virtuális hálózat | Válassza a **myVMVNet** lehetőséget. |
     | **CONFIGURATION** | |
     | Automatikus regisztráció engedélyezése | Hagyja üresen.    |
 
 
-6. Kattintson az **OK** gombra.
+6. Válassza az **OK** lehetőséget.
 
 ## <a name="configure-an-application-rule-with-sql-fqdn-in-azure-firewall"></a>Alkalmazás-szabály konfigurálása SQL FQDN használatával Azure Firewall
 
@@ -450,44 +450,44 @@ Ez a szabály lehetővé teszi az előző lépésekben létrehozott tűzfalon ke
 
 4. Válassza ki az **alkalmazás-szabály gyűjtemény** fület.
 
-5. Válassza az **+ alkalmazás-szabály gyűjtemény hozzáadása**elemet.
+5. Válassza az **+ alkalmazás-szabály gyűjtemény hozzáadása** elemet.
 
 6. Az **alkalmazási szabály hozzáadása gyűjteménybe** írja be vagy válassza ki a következő adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Name (Név) | Adja meg a **SQLPrivateEndpoint**. |
+    | Név | Adja meg a **SQLPrivateEndpoint**. |
     | Prioritás | Adja meg a **100** értéket. |
-    | Művelet | Adja meg az **Engedélyezés**értéket. |
+    | Művelet | Adja meg az **Engedélyezés** értéket. |
     | **Szabályok** |  |
     | **FQDN-címkék** | |
-    | Name (Név)  | Hagyja üresen.  |
+    | Név  | Hagyja üresen.  |
     | Forrás típusa | Hagyja meg az alapértelmezett **IP-címet**.    |
     | Forrás | Hagyja üresen. |
     | FQDN-címkék | Hagyja meg az alapértelmezett **0 beállítást**. |
     | **Cél teljes tartománynevek** | |
-    | Name (Név) | Adja meg a **SQLPrivateEndpoint**.    |
+    | Név | Adja meg a **SQLPrivateEndpoint**.    |
     | Forrás típusa | Hagyja meg az alapértelmezett **IP-címet**. |
-    | Forrás | Adja meg a **10.1.0.0/16**értéket. |
-    | Protokoll: Port | Adja meg az **MSSQL: 1433**értéket. |
+    | Forrás | Adja meg a **10.1.0.0/16** értéket. |
+    | Protokoll: Port | Adja meg az **MSSQL: 1433** értéket. |
     | Cél teljes tartománynevek | Adja meg a **mydbserver.database.Windows.net**. |
     |||
 
-7. Válassza a **Hozzáadás** lehetőséget.
+7. Válassza a **Hozzáadás** elemet.
 
 ## <a name="route-traffic-between-the-virtual-machine-and-private-endpoint-through-azure-firewall"></a>Átirányítja a forgalmat a virtuális gép és a magánhálózati végpont között Azure Firewall
 
-Nem hoztunk létre virtuális hálózati kapcsolatot közvetlenül a Virtual Networks **myVMVNet** és a **myPEVNet**között. A virtuális gép **myVM** nem rendelkezik a létrehozott privát végpont útvonalával. 
+Nem hoztunk létre virtuális hálózati kapcsolatot közvetlenül a Virtual Networks **myVMVNet** és a **myPEVNet** között. A virtuális gép **myVM** nem rendelkezik a létrehozott privát végpont útvonalával. 
 
 Ebben a szakaszban egy útválasztási táblázatot hozunk létre egy egyéni útvonallal. 
 
-Az útvonal továbbítja a forgalmat a **myVM** alhálózatról a virtuális hálózati **myPEVNet**a Azure Firewall keresztül.
+Az útvonal továbbítja a forgalmat a **myVM** alhálózatról a virtuális hálózati **myPEVNet** a Azure Firewall keresztül.
 
-1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet.
+1. Az Azure Portal menüjében vagy a **Kezdőlapon** lapon válassza az **Erőforrás létrehozása** elemet.
 
-2. Írja be a keresőmezőbe az **útválasztási táblázat** kifejezést, majd nyomja le az **ENTER**billentyűt.
+2. Írja be a keresőmezőbe az **útválasztási táblázat** kifejezést, majd nyomja le az **ENTER** billentyűt.
 
-3. Válassza az **útválasztási táblázat** lehetőséget, majd válassza a **Létrehozás**lehetőséget.
+3. Válassza az **útválasztási táblázat** lehetőséget, majd válassza a **Létrehozás** lehetőséget.
 
 4. Az útválasztási **táblázat létrehozása** lapon a következő táblázat segítségével konfigurálja az útválasztási táblázatot:
 
@@ -497,17 +497,17 @@ Az útvonal továbbítja a forgalmat a **myVM** alhálózatról a virtuális há
     | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget.  |
     | **Példány adatai** |  |
-    | Régió | Válassza az **USA déli középső**régióját. |
-    | Name (Név) | Adja meg **a alhálózat-to-AzureFirewall**értéket. |
+    | Region | Válassza az **USA déli középső** régióját. |
+    | Név | Adja meg **a alhálózat-to-AzureFirewall** értéket. |
     | Átjáró-útvonalak propagálása | Válassza a **Nem** lehetőséget. |
 
 5. Válassza az **Áttekintés + létrehozás** lehetőséget. Az **Áttekintés és létrehozása** lapra kerül, ahol az Azure érvényesíti az Ön konfigurációját.
 
 6. Amikor megjelenik a **Megfelelt az ellenőrzésen** üzenet, válassza a **Létrehozás** lehetőséget.
 
-7. Miután az üzembe helyezés befejeződött, válassza az **erőforrás keresése**lehetőséget.
+7. Miután az üzembe helyezés befejeződött, válassza az **erőforrás keresése** lehetőséget.
 
-8. Válassza az **útvonalak** elemet a **Beállítások**területen.
+8. Válassza az **útvonalak** elemet a **Beállítások** területen.
 
 9. Válassza a **+ Hozzáadás** lehetőséget.
 
@@ -515,35 +515,35 @@ Az útvonal továbbítja a forgalmat a **myVM** alhálózatról a virtuális há
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Útvonal neve | Adja meg **a myVMsubnet-to-privateendpoint**értéket. |
-    | Címelőtag | Adja meg a **10.2.0.0/16**értéket.  |
+    | Útvonal neve | Adja meg **a myVMsubnet-to-privateendpoint** értéket. |
+    | Címelőtag | Adja meg a **10.2.0.0/16** értéket.  |
     | A következő ugrás típusa | Válassza a **Virtuális berendezés** lehetőséget. |
     | A következő ugrás címe | Adja meg a **10.0.0.4**. |
 
-11. Kattintson az **OK** gombra.
+11. Válassza az **OK** lehetőséget.
 
-12. Válassza ki az **alhálózatok** elemet a **Beállítások**területen.
+12. Válassza ki az **alhálózatok** elemet a **Beállítások** területen.
 
-13. Válassza a **+ hozzárendelés**lehetőséget.
+13. Válassza a **+ hozzárendelés** lehetőséget.
 
 14. Az **alhálózat hozzárendelése** lapon adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Virtuális hálózat | Válassza a **myVMVNet**lehetőséget. |
-    | Alhálózat | Válassza a **alhálózat**lehetőséget.  |
+    | Virtuális hálózat | Válassza a **myVMVNet** lehetőséget. |
+    | Alhálózat | Válassza a **alhálózat** lehetőséget.  |
 
-15. Kattintson az **OK** gombra.
+15. Válassza az **OK** lehetőséget.
 
 ## <a name="connect-to-the-virtual-machine-from-your-client-computer"></a>Kapcsolódás a virtuális géphez az ügyfélszámítógépről
 
 Kapcsolódjon a virtuális gép **myVm** az internetről a következőképpen:
 
-1. A portál keresési sávjában adja meg a **myVm-IP**értéket.
+1. A portál keresési sávjában adja meg a **myVm-IP** értéket.
 
 2. Válassza a **myVM-IP** elemet a keresési eredmények között.
 
-3. Másolja vagy írja le az értéket az **IP-cím**területen.
+3. Másolja vagy írja le az értéket az **IP-cím** területen.
 
 4. Ha a Windows 10 rendszert használja, futtassa a következő parancsot a PowerShell használatával. Más Windows-ügyfél-verziók esetében használjon egy SSH-ügyfelet, például a [Putty](https://www.putty.org/)-t:
 
@@ -575,7 +575,7 @@ Ebben a szakaszban a privát végponton keresztül fog csatlakozni a SQL Databas
     Address: 10.2.0.4
     ```
 
-2. Telepítse [SQL Server parancssori eszközöket](https://docs.microsoft.com/sql/linux/quickstart-install-connect-ubuntu?view=sql-server-ver15#tools).
+2. Telepítse [SQL Server parancssori eszközöket](/sql/linux/quickstart-install-connect-ubuntu?view=sql-server-ver15#tools).
 
 3. Futtassa a következő parancsot a SQL Serverhoz való kapcsolódáshoz. Használja az előző lépésekben a SQL Server létrehozásakor megadott kiszolgáló-rendszergazdát és jelszót.
 
@@ -588,7 +588,7 @@ Ebben a szakaszban a privát végponton keresztül fog csatlakozni a SQL Databas
     ```
 4. A sikeres bejelentkezés során egy SQL-parancssor jelenik meg. A **Sqlcmd** eszközből való kilépéshez írja be a **Kilépés parancsot** .
 
-5. Zárja be a **myVM** való kapcsolódást a **Kilépés**beírásával.
+5. Zárja be a **myVM** való kapcsolódást a **Kilépés** beírásával.
 
 ## <a name="validate-the-traffic-in-azure-firewall-logs"></a>Azure Firewall naplók forgalmának ellenőrzése
 
@@ -598,11 +598,11 @@ Ebben a szakaszban a privát végponton keresztül fog csatlakozni a SQL Databas
 
 3. Válassza a kék **első lépések** gombot.
 
-4. A **példa lekérdezések** ablakban válassza a **tűzfalak** lehetőséget az **összes lekérdezés**területen.
+4. A **példa lekérdezések** ablakban válassza a **tűzfalak** lehetőséget az **összes lekérdezés** területen.
 
-5. Kattintson a **Futtatás** gombra az **alkalmazási szabály naplójának adata**alatt.
+5. Kattintson a **Futtatás** gombra az **alkalmazási szabály naplójának adata** alatt.
 
-6. A naplózási lekérdezés kimenetében ellenőrizze, hogy a **mydbserver.database.Windows.net** szerepel-e a **teljes tartománynév** területen, és a **SQLPrivateEndpoint** elem szerepel-e a **RuleCollection**területen.
+6. A naplózási lekérdezés kimenetében ellenőrizze, hogy a **mydbserver.database.Windows.net** szerepel-e a **teljes tartománynév** területen, és a **SQLPrivateEndpoint** elem szerepel-e a **RuleCollection** területen.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -612,9 +612,9 @@ Ha elkészült az erőforrásokkal, törölje az erőforráscsoportot és a benn
 
 1. Válassza az **Erőforráscsoport törlése** elemet.
 
-1. Írja be a **myResourceGroup** **nevet az erőforráscsoport neveként** , majd válassza a **Törlés**lehetőséget.
+1. Írja be a **myResourceGroup** **nevet az erőforráscsoport neveként** , majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben különböző forgatókönyveket ismertetett, amelyekkel korlátozhatja a virtuális gépek és a privát végpontok közötti forgalmat Azure Firewall használatával. 
 

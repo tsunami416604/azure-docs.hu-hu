@@ -4,11 +4,11 @@ description: Ez a cikk azt ismerteti, hogyan adhat hozzá Microsoft. EventHub sz
 ms.topic: article
 ms.date: 07/29/2020
 ms.openlocfilehash: 029338e3835d03b1a66ff6629e872c84113b0ff2
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427214"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015578"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-virtual-networks"></a>Azure Event Hubs-névterek elérésének engedélyezése adott virtuális hálózatokból 
 
@@ -55,7 +55,7 @@ Ez a szakasz bemutatja, hogyan használható a Azure Portal virtuális hálózat
 
     ![Tűzfal – az összes hálózat lehetőség ki van választva](./media/event-hubs-firewall/firewall-all-networks-selected.png)
 1. Ha az adott hálózatokhoz való hozzáférést szeretné korlátozni, válassza a **kijelölt hálózatok** lehetőséget a lap tetején, ha még nincs kiválasztva.
-2. A lap **Virtual Network** szakaszában válassza a **+ meglévő virtuális hálózat hozzáadása** _ elemet. Válassza az _ *+ új virtuális hálózat létrehozása* * lehetőséget, ha új VNet szeretne létrehozni. 
+2. A lap **Virtual Network** szakaszában válassza a **+ meglévő virtuális hálózat hozzáadása** _ elemet. Válassza az _ *+ új virtuális hálózat létrehozása** lehetőséget, ha új VNet szeretne létrehozni. 
 
     ![meglévő virtuális hálózat hozzáadása](./media/event-hubs-tutorial-vnet-and-firewalls/add-vnet-menu.png)
 3. Jelölje ki a virtuális hálózatot a virtuális hálózatok listájából, majd válassza ki az **alhálózatot**. Engedélyeznie kell a szolgáltatás végpontját, mielőtt hozzáadja a virtuális hálózatot a listához. Ha a szolgáltatási végpont nincs engedélyezve, akkor a portál felszólítja, hogy engedélyezze.
@@ -203,7 +203,7 @@ Sablon paraméterei:
 
 A sablon üzembe helyezéséhez kövesse az [Azure Resource Manager][lnk-deploy]utasításait.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A virtuális hálózatokkal kapcsolatos további információkért tekintse meg az alábbi hivatkozásokat:
 

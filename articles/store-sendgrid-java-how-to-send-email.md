@@ -17,14 +17,14 @@ ms.author: erikre
 ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
 ms.custom: devx-track-java
 ms.openlocfilehash: 9ff006b74b6202b02a2767aee4d853b1206ce60d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87304479"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015451"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>E-mailek küldése a SendGrid használatával Java-ból
-Ez az útmutató bemutatja, hogyan hajthat végre általános programozási feladatokat az Azure SendGrid e-mail szolgáltatásával. A mintákat Java nyelven írták. A tárgyalt forgatókönyvek közé tartozik például az **e-mailek**létrehozása, az **e-mail küldése**, a **mellékletek hozzáadása**, **a szűrők használata és a** **Tulajdonságok frissítése**. További információt a SendGrid és az e-mailek küldéséről a [következő lépések](#next-steps) című szakaszban talál.
+Ez az útmutató bemutatja, hogyan hajthat végre általános programozási feladatokat az Azure SendGrid e-mail szolgáltatásával. A mintákat Java nyelven írták. A tárgyalt forgatókönyvek közé tartozik például az **e-mailek** létrehozása, az **e-mail küldése**, a **mellékletek hozzáadása**, **a szűrők használata és a** **Tulajdonságok frissítése**. További információt a SendGrid és az e-mailek küldéséről a [következő lépések](#next-steps) című szakaszban talál.
 
 ## <a name="what-is-the-sendgrid-email-service"></a>Mi a SendGrid E-mail szolgáltatás?
 A SendGrid egy [felhőalapú e-mail-szolgáltatás] , amely megbízható [tranzakciós e-mail-kézbesítést], skálázhatóságot és valós idejű elemzéseket biztosít, valamint rugalmas API-kat, amelyek egyszerűvé teszik az egyéni integrációt. Az általános SendGrid-használati forgatókönyvek a következők:
@@ -86,7 +86,7 @@ Szerezze be a javax. mail kódtárakat, például a-ból, <https://www.oracle.co
     Authenticator auth = new SMTPAuthenticator();
     Session mailSession = Session.getDefaultInstance(properties, auth);
     ```
-3. Hozza létre az **üzenetet, és rendelje**hozzá a, **a, a** **Tárgy** és a tartalom értékét. Ez a [útmutató: E-mail létrehozása](#how-to-create-an-email) szakaszban látható.
+3. Hozza létre az **üzenetet, és rendelje** hozzá a, **a, a** **Tárgy** és a tartalom értékét. Ez a [útmutató: E-mail létrehozása](#how-to-create-an-email) szakaszban látható.
 4. Küldje el az üzenetet egy *javax. mail. Transport* objektumon keresztül. Ez az [Útmutató: E-mail küldése] [#how – Send-an-email] szakaszban látható.
 
 ## <a name="how-to-create-an-email"></a>Útmutató: e-mail létrehozása
@@ -143,7 +143,7 @@ multipart.addBodyPart(attachmentPart);
 ```
 
 ## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>Útmutató: szűrők használata a láblécek, a követés és az elemzés engedélyezéséhez
-A SendGrid további e-mail-funkciókat biztosít a *szűrők*használatával. Ezek olyan beállítások, amelyek hozzáadhatók egy e-mail-üzenethez, amely lehetővé teszi bizonyos funkciók használatát, például a követést, a Google Analyticset, az előfizetés nyomon követését stb. A szűrők teljes listáját a [szűrési beállítások][Filter Settings]című témakörben tekintheti meg.
+A SendGrid további e-mail-funkciókat biztosít a *szűrők* használatával. Ezek olyan beállítások, amelyek hozzáadhatók egy e-mail-üzenethez, amely lehetővé teszi bizonyos funkciók használatát, például a követést, a Google Analyticset, az előfizetés nyomon követését stb. A szűrők teljes listáját a [szűrési beállítások][Filter Settings]című témakörben tekintheti meg.
 
 * Az alábbiakban bemutatjuk, hogyan szúrhat be olyan lábléc-szűrőt, amely az elküldött e-mailek alján megjelenő HTML-szöveget eredményez.
 

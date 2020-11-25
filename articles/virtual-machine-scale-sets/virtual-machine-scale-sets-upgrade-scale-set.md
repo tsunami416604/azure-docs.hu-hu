@@ -10,11 +10,11 @@ ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
 ms.openlocfilehash: 7577c8510746d1140c1f8b70081f600d992ae512
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745821"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016675"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport módosítása
 
@@ -354,7 +354,7 @@ Bizonyos tulajdonságok megváltoztathatók, és az aktuális értéktől függ�
 ### <a name="properties-that-require-deallocation-to-change"></a>A módosítás felszabadítását igénylő tulajdonságok
 Néhány tulajdonság csak akkor módosítható bizonyos értékekre, ha a méretezési csoportba tartozó virtuális gépek fel vannak szabadítva. Ezek a tulajdonságok a következők:
 
-- **SKU neve** – ha az új VIRTUÁLISGÉP-SKU nem támogatott a méretezési csoport által használt hardveren, akkor az SKU nevének módosítása előtt fel kell szabadítania a virtuális gépeket a méretezési csoportból. További információ: Azure-beli [virtuális gép átméretezése](../virtual-machines/windows/resize-vm.md).
+- **SKU neve**– ha az új VIRTUÁLISGÉP-SKU nem támogatott a méretezési csoport által használt hardveren, akkor az SKU nevének módosítása előtt fel kell szabadítania a virtuális gépeket a méretezési csoportból. További információ: Azure-beli [virtuális gép átméretezése](../virtual-machines/windows/resize-vm.md).
 
 
 ## <a name="vm-specific-updates"></a>VM-specifikus frissítések
@@ -450,5 +450,5 @@ Tegyük fel, hogy rendelkezik egy méretezési csoporttal Azure Load Balancerkal
 > Ezek a parancsok feltételezik, hogy a méretezési csoport csak egyetlen IP-konfigurációval és terheléselosztó-vel rendelkezik. Ha több is van, előfordulhat, hogy a *nullától* eltérő listát kell használnia.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A méretezési csoportokban általános felügyeleti feladatokat is elvégezhet az [Azure CLI](virtual-machine-scale-sets-manage-cli.md) vagy a [Azure PowerShell](virtual-machine-scale-sets-manage-powershell.md)használatával.

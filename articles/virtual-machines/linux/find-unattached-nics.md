@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 04/10/2018
 ms.author: cynthn
 ms.openlocfilehash: 5b28226cfe6bc51a2619c4dd63e666ddd51dad2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87268509"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016199"
 ---
 # <a name="how-to-find-and-delete-unattached-network-interface-cards-nics-for-azure-vms"></a>Nem csatlakoztatott hálózati adapterek (NIC-EK) keresése és törlése Azure-beli virtuális gépekhez
 Ha töröl egy virtuális gépet (VM) az Azure-ban, a hálózati adapterek (NIC) alapértelmezés szerint nem törlődnek. Ha több virtuális gépet hoz létre és töröl, a nem használt hálózati adapterek továbbra is a belső IP-címbérleteket használják. Más virtuálisgép-hálózati adapterek létrehozásakor előfordulhat, hogy nem tudnak IP-címbérletet szerezni az alhálózat címterület számára. Ez a cikk bemutatja, hogyan lehet megkeresni és törölni a nem csatolt hálózati adaptereket.
@@ -22,7 +22,7 @@ Ha töröl egy virtuális gépet (VM) az Azure-ban, a hálózati adapterek (NIC)
 
 A hálózati adapter *virtualMachine* tulajdonsága tárolja annak a virtuális GÉPNEK az azonosítóját és erőforrás-csoportját, amelyhez a hálózati adapter csatlakozik. Az alábbi szkript hurkokat hajt végre az előfizetésben található összes hálózati adapteren, és ellenőrzi, hogy a *virtualMachine* tulajdonság null értékű-e. Ha ez a tulajdonság null értékű, a hálózati adapter nincs virtuális géphez csatlakoztatva.
 
-Az összes nem csatolt hálózati adapter megtekintéséhez erősen ajánlott a parancsfájlt a *deleteUnattachedNics* változóval *0-ra*futtatni. Ha törölni szeretné az összes nem csatolt hálózati adaptert a lista kimenetének áttekintése után, futtassa a szkriptet a *deleteUnattachedNics* *1*értékre.
+Az összes nem csatolt hálózati adapter megtekintéséhez erősen ajánlott a parancsfájlt a *deleteUnattachedNics* változóval *0-ra* futtatni. Ha törölni szeretné az összes nem csatolt hálózati adaptert a lista kimenetének áttekintése után, futtassa a szkriptet a *deleteUnattachedNics* *1* értékre.
 
 ```azurecli
 # Set deleteUnattachedNics=1 if you want to delete unattached NICs

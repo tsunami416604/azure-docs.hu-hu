@@ -8,12 +8,12 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 782abee06c5ab0f985e8bd90dbbecae18b1dfe02
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 2df401f7871d631ba317fb670783cad086b9a351
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442327"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "96017559"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-not-found-exceptions"></a>Azure Cosmos DB nem található kivételek diagnosztizálása és megoldása
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -25,6 +25,11 @@ Számos érvényes helyzet áll fenn, amikor egy alkalmazás 404 kódot vár, é
 
 ## <a name="a-not-found-exception-was-returned-for-an-item-that-should-exist-or-does-exist"></a>A rendszer nem talált kivételt adott vissza egy létező vagy létező elemmel kapcsolatban
 Az alábbi lehetséges okok miatt előfordulhat, hogy a 404-as állapotkódot kell visszaadnia, ha az adott elemmel létezik vagy létezik.
+
+### <a name="the-read-session-is-not-available-for-the-input-session-token"></a>Az olvasási munkamenet nem érhető el a bemeneti munkamenet jogkivonatához
+
+#### <a name="solution"></a>Megoldás:
+1. Frissítse az aktuális SDK-t az elérhető legújabb verzióra. Az adott hiba leggyakoribb okai a legújabb SDK-verziókban lettek kijavítva.
 
 ### <a name="race-condition"></a>Versenyhelyzet
 Több SDK-ügyfél példánya van, és az írás előtt történt az olvasás.

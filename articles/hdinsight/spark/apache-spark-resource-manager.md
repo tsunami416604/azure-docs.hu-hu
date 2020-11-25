@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 5427077a4b07917c8852d0a63c815195e776b9de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085191"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017032"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Apache Spark-fürt erőforrásainak kezelése az Azure HDInsight
 
@@ -29,12 +29,12 @@ A fonal felhasználói felületét használhatja a Spark-fürtön jelenleg futó
 
 1. A [Azure Portal](https://portal.azure.com/)nyissa meg a Spark-fürtöt. További információ: [fürtök listázása és megjelenítése](../hdinsight-administer-use-portal-linux.md#showClusters).
 
-2. A **fürt irányítópultok**területen válassza a **fonal**lehetőséget. Ha a rendszer kéri, adja meg a Spark-fürt rendszergazdai hitelesítő adatait.
+2. A **fürt irányítópultok** területen válassza a **fonal** lehetőséget. Ha a rendszer kéri, adja meg a Spark-fürt rendszergazdai hitelesítő adatait.
 
     ![A fonal felhasználói felületének indítása](./media/apache-spark-resource-manager/azure-portal-dashboard-yarn.png)
 
    > [!TIP]  
-   > Azt is megteheti, hogy a Ambari felhasználói felületéről is elindítja a fonal felhasználói felületét. A Ambari felhasználói felületén navigáljon **YARN**az  >  Active**Quick Links**  >  **Active**  >  **Resource Manager felhasználói felületén**található fonalak gyors hivatkozásaihoz.
+   > Azt is megteheti, hogy a Ambari felhasználói felületéről is elindítja a fonal felhasználói felületét. A Ambari felhasználói felületén navigáljon **YARN** az  >  Active **Quick Links**  >  **Active**  >  **Resource Manager felhasználói felületén** található fonalak gyors hivatkozásaihoz.
 
 ## <a name="optimize-clusters-for-spark-applications"></a>Fürtök optimalizálása Spark-alkalmazásokhoz
 
@@ -44,7 +44,7 @@ A három konfigurációs paramétert a fürt szintjén lehet konfigurálni (a f�
 
 ### <a name="change-the-parameters-using-ambari-ui"></a>Paraméterek módosítása Ambari felhasználói felület használatával
 
-1. A Ambari felhasználói felületén navigáljon a **Spark2**  >  **configs**  >  **Egyéni Spark2 – Alapértelmezések**elemre.
+1. A Ambari felhasználói felületén navigáljon a **Spark2**  >  **configs**  >  **Egyéni Spark2 – Alapértelmezések** elemre.
 
     ![Paraméterek beállítása a Ambari Custom használatával](./media/apache-spark-resource-manager/ambari-ui-spark2-configs.png "Paraméterek beállítása a Ambari Custom használatával")
 
@@ -52,7 +52,7 @@ A három konfigurációs paramétert a fürt szintjén lehet konfigurálni (a f�
 
     ![Paraméterek beállítása a Ambari használatával](./media/apache-spark-resource-manager/ambari-ui-spark2-defaults.png "Paraméterek beállítása a Ambari használatával")
 
-1. A konfigurációs módosítások mentéséhez kattintson a **Mentés** gombra. A lap tetején a rendszer felszólítja az összes érintett szolgáltatás újraindítására. Válassza az **Újraindítás**lehetőséget.
+1. A konfigurációs módosítások mentéséhez kattintson a **Mentés** gombra. A lap tetején a rendszer felszólítja az összes érintett szolgáltatás újraindítására. Válassza az **Újraindítás** lehetőséget.
 
     ![Szolgáltatások újraindítása](./media/apache-spark-resource-manager/apache-ambari-restart-services.png)
 
@@ -103,15 +103,15 @@ A Spark takarékossági kiszolgáló a Spark dinamikus végrehajtó lefoglalás�
 
 A Spark-kiszolgáló illesztőprogram-memóriája a fő csomópont RAM-méretének 25%-ában van konfigurálva, ha a fő csomópont teljes RAM-mérete meghaladja a 14 GB-ot. A Ambari felhasználói felületén módosíthatja az illesztőprogram-memória konfigurációját, ahogy az alábbi képernyőképen is látható:
 
-A Ambari felhasználói felületén navigáljon a **Spark2**  >  **konfigurációk**  >  **speciális Spark2 – env**elemre. Ezután adja meg a **spark_thrift_cmd_opts**értékét.
+A Ambari felhasználói felületén navigáljon a **Spark2**  >  **konfigurációk**  >  **speciális Spark2 – env** elemre. Ezután adja meg a **spark_thrift_cmd_opts** értékét.
 
 ## <a name="reclaim-spark-cluster-resources"></a>Spark-fürt erőforrásainak visszaigénylése
 
 A Spark dinamikus kiosztása miatt a takarékossági kiszolgáló által felhasznált erőforrások csak a két alkalmazás-főkiszolgáló erőforrásai. Az erőforrások visszaigényléséhez le kell állítania a fürtön futó takarékossági kiszolgáló szolgáltatásait.
 
-1. A Ambari felhasználói felületén, a bal oldali panelen válassza a **Spark2**lehetőséget.
+1. A Ambari felhasználói felületén, a bal oldali panelen válassza a **Spark2** lehetőséget.
 
-2. A következő lapon válassza a **Spark2 takarékosság-kiszolgálók**lehetőséget.
+2. A következő lapon válassza a **Spark2 takarékosság-kiszolgálók** lehetőséget.
 
     ![A takarékos Kiszolgáló1 újraindítása](./media/apache-spark-resource-manager/ambari-ui-spark2-thrift-servers.png "A takarékos Kiszolgáló1 újraindítása")
 
@@ -119,14 +119,14 @@ A Spark dinamikus kiosztása miatt a takarékossági kiszolgáló által felhasz
 
     ![A gazdaságosság Kiszolgáló2 újraindítása](./media/apache-spark-resource-manager/restart-thrift-server-2.png "A gazdaságosság Kiszolgáló2 újraindítása")
 
-4. A következő oldalon az adott átjárócsomóponthoz futó összes szolgáltatás látható. A listából válassza ki a Spark2 takarékossági kiszolgáló melletti legördülő gombot, majd válassza a **Leállítás**lehetőséget.
+4. A következő oldalon az adott átjárócsomóponthoz futó összes szolgáltatás látható. A listából válassza ki a Spark2 takarékossági kiszolgáló melletti legördülő gombot, majd válassza a **Leállítás** lehetőséget.
 
     ![A gazdaságosság Server3 újraindítása](./media/apache-spark-resource-manager/ambari-ui-spark2-thriftserver-restart.png "A gazdaságosság Server3 újraindítása")
 5. Ismételje meg ezeket a lépéseket a többi átjárócsomóponthoz is.
 
 ## <a name="restart-the-jupyter-service"></a>A Jupyter szolgáltatás újraindítása
 
-Indítsa el a Ambari webes felhasználói felületét a cikk elején látható módon. A bal oldali navigációs panelen válassza a **Jupyter**lehetőséget, válassza a **szolgáltatási műveletek**lehetőséget, majd kattintson az **összes újraindítása**elemre. Ezzel elindítja a Jupyter szolgáltatást az összes átjárócsomópontokkal.
+Indítsa el a Ambari webes felhasználói felületét a cikk elején látható módon. A bal oldali navigációs panelen válassza a **Jupyter** lehetőséget, válassza a **szolgáltatási műveletek** lehetőséget, majd kattintson az **összes újraindítása** elemre. Ezzel elindítja a Jupyter szolgáltatást az összes átjárócsomópontokkal.
 
 ![Jupyter újraindítása](./media/apache-spark-resource-manager/apache-ambari-restart-jupyter.png "Jupyter újraindítása")
 
@@ -138,7 +138,7 @@ Indítsa el a fonal felhasználói felületét a cikk elején látható módon. 
 
 ## <a name="kill-running-applications"></a>Futó alkalmazások leölése
 
-1. A fonal felhasználói felületén, a bal oldali panelen válassza a **Futtatás**lehetőséget. A futó alkalmazások listájából állapítsa meg a leölési alkalmazást, és válassza ki az **azonosítót**.
+1. A fonal felhasználói felületén, a bal oldali panelen válassza a **Futtatás** lehetőséget. A futó alkalmazások listájából állapítsa meg a leölési alkalmazást, és válassza ki az **azonosítót**.
 
     ![App1 leölése](./media/apache-spark-resource-manager/apache-ambari-kill-app1.png "App1 leölése")
 

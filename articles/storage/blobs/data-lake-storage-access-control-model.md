@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 11/10/2020
 ms.author: normesta
-ms.openlocfilehash: 3ddcbe57112251a428e11d6c164cdb1224553f98
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 65d1ef76ffae113a4b526eec75301abbfea751e7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959203"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017712"
 ---
 # <a name="access-control-model-in-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlési modell Azure Data Lake Storage Gen2
 
@@ -33,17 +33,17 @@ Ez a cikk az Azure RBAC és hozzáférés-vezérlési listákra koncentrál, val
 
 ## <a name="role-based-access-control-azure-rbac"></a>Szerepköralapú hozzáférés-vezérlés (Azure RBAC)
 
-Az Azure RBAC szerepkör-hozzárendeléseket használ a [rendszerbiztonsági tag](https://docs.microsoft.com/azure/role-based-access-control/overview#security-principal)engedélyeinek készletének alkalmazásához. A rendszerbiztonsági tag egy olyan objektum, amely egy Azure Active Directory (AD) szolgáltatásban definiált felhasználó, csoport, szolgáltatásnév vagy felügyelt identitást jelöl. Egy engedélyezési csoport olyan rendszerbiztonsági tag számára biztosíthatja a "durva magvas" hozzáférési szintet, mint **például az olvasási** vagy írási hozzáférés egy Storage-fiókban vagy egy tárolóban lévő **összes** adattal. 
+Az Azure RBAC szerepkör-hozzárendeléseket használ a [rendszerbiztonsági tag](../../role-based-access-control/overview.md#security-principal)engedélyeinek készletének alkalmazásához. A rendszerbiztonsági tag egy olyan objektum, amely egy Azure Active Directory (AD) szolgáltatásban definiált felhasználó, csoport, szolgáltatásnév vagy felügyelt identitást jelöl. Egy engedélyezési csoport olyan rendszerbiztonsági tag számára biztosíthatja a "durva magvas" hozzáférési szintet, mint **például az olvasási** vagy írási hozzáférés egy Storage-fiókban vagy egy tárolóban lévő **összes** adattal. 
 
 A következő szerepkörök lehetővé teszik a rendszerbiztonsági tag számára, hogy hozzáférjenek a Storage-fiókban található adathoz. 
 
 |Szerepkör|Leírás|
 |--|--|
-| [Storage-blobadatok tulajdonosa](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) | Teljes hozzáférés a blob Storage-tárolók és-adattárakhoz. Ez a hozzáférés lehetővé teszi a rendszerbiztonsági tag számára egy elem tulajdonosának beállítását, valamint az összes elem hozzáférés-vezérlési listájának módosítását. |
-| [Storage-blobadatok közreműködője](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) | BLOB Storage-tárolók és-Blobok olvasási, írási és törlési hozzáférése. Ez a hozzáférés nem teszi lehetővé a rendszerbiztonsági tag számára egy elem tulajdonjogának beállítását, de módosíthatja a rendszerbiztonsági tag tulajdonában lévő elemek hozzáférés-vezérlési listáját. |
-| [Storage-blobadatok olvasója](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) | BLOB Storage-tárolók és Blobok olvasása és listázása. |
+| [Storage-blobadatok tulajdonosa](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) | Teljes hozzáférés a blob Storage-tárolók és-adattárakhoz. Ez a hozzáférés lehetővé teszi a rendszerbiztonsági tag számára egy elem tulajdonosának beállítását, valamint az összes elem hozzáférés-vezérlési listájának módosítását. |
+| [Storage-blobadatok közreműködője](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) | BLOB Storage-tárolók és-Blobok olvasási, írási és törlési hozzáférése. Ez a hozzáférés nem teszi lehetővé a rendszerbiztonsági tag számára egy elem tulajdonjogának beállítását, de módosíthatja a rendszerbiztonsági tag tulajdonában lévő elemek hozzáférés-vezérlési listáját. |
+| [Storage-blobadatok olvasója](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader) | BLOB Storage-tárolók és Blobok olvasása és listázása. |
 
-A [tulajdonos](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner), a [közreműködő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor), az [olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)és a [Storage-fiók közreműködő](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) szerepkörei lehetővé teszik a rendszerbiztonsági tag számára a Storage-fiókok kezelését, de nem biztosítanak hozzáférést az adott fiókon belüli adathoz. Ezek a szerepkörök (az **olvasó** kivételével) azonban hozzáférhetnek a tároló kulcsaihoz, amelyek különböző eszközökön is használhatók az adateléréshez.
+A [tulajdonos](../../role-based-access-control/built-in-roles.md#owner), a [közreműködő](../../role-based-access-control/built-in-roles.md#contributor), az [olvasó](../../role-based-access-control/built-in-roles.md#reader)és a [Storage-fiók közreműködő](../../role-based-access-control/built-in-roles.md#storage-account-contributor) szerepkörei lehetővé teszik a rendszerbiztonsági tag számára a Storage-fiókok kezelését, de nem biztosítanak hozzáférést az adott fiókon belüli adathoz. Ezek a szerepkörök (az **olvasó** kivételével) azonban hozzáférhetnek a tároló kulcsaihoz, amelyek különböző eszközökön is használhatók az adateléréshez.
 
 ## <a name="access-control-lists-acls"></a>Hozzáférés-vezérlési lista (ACL-ek)
 
@@ -73,7 +73,7 @@ Az alábbi ábrán három gyakori művelet engedélyezési folyamata látható: 
 
 Az alábbi táblázat bemutatja, hogyan egyesítheti az Azure-szerepköröket és-ACL-bejegyzéseket, hogy a rendszerbiztonsági tag el tudja végezni a **művelet** oszlopban felsorolt műveleteket. Ez a táblázat egy fiktív címtár-hierarchia minden szintjét jelképező oszlopot mutat be. Van egy oszlop a tároló gyökérkönyvtárához ( `/` ), egy **Oregon** nevű alkönyvtárhoz, a **Portland** nevű Oregon könyvtár alkönyvtárához és egy **Data.txt** nevű Portland-könyvtárban található szövegfájlhoz. Ezekben az oszlopokban az engedélyek megadásához szükséges ACL-bejegyzés [rövid formáját](data-lake-storage-access-control.md#short-forms-for-permissions) ábrázolja. **N/A** (_nem alkalmazható_) az oszlopban jelenik meg, ha a művelet VÉGREHAJTÁSához nincs szükség ACL-bejegyzésre.
 
-|    Művelet             | Hozzárendelt RBAC szerepkör               |    /        | Oregon     | Portland | Data.txt |             
+|    Művelet             | Hozzárendelt Azure-szerepkör               |    /        | Oregon     | Portland | Data.txt |             
 |--------------------------|----------------------------------|-------------|-------------|-----------|----------|
 | Olvasási Data.txt            |   Storage-blobadatok tulajdonosa        | N.A.      | N.A.      | N.A.       | N.A.    |  
 |                          |   Storage-blobadatok közreműködője  | N.A.      | N.A.      | N.A.       | N.A.    |
@@ -106,7 +106,7 @@ Az alábbi táblázat bemutatja, hogyan egyesítheti az Azure-szerepköröket é
 
 
 > [!NOTE] 
-> Azure Storage Explorer tároló tartalmának megtekintéséhez a rendszerbiztonsági tagoknak az [Azure ad használatával kell bejelentkezniük Storage Explorerba](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows#add-a-resource-via-azure-ad), és (minimum) olvasási hozzáféréssel (R--) kell rendelkezniük a tároló gyökérkönyvtárához ( `\` ). Ez az engedélyezési szint lehetővé teszi számukra a gyökérmappa tartalmának listázását. Ha nem szeretné, hogy a gyökérmappa tartalma látható legyen, hozzárendelheti az [olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) szerepkört. Ezzel a szerepkörrel listázhatja a fiókban lévő tárolókat, a tároló tartalmait azonban nem. Ezt követően hozzáférés-vezérlési listákat adhat meg az egyes címtárakhoz és fájlokhoz.   
+> Azure Storage Explorer tároló tartalmának megtekintéséhez a rendszerbiztonsági tagoknak az [Azure ad használatával kell bejelentkezniük Storage Explorerba](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#add-a-resource-via-azure-ad), és (minimum) olvasási hozzáféréssel (R--) kell rendelkezniük a tároló gyökérkönyvtárához ( `\` ). Ez az engedélyezési szint lehetővé teszi számukra a gyökérmappa tartalmának listázását. Ha nem szeretné, hogy a gyökérmappa tartalma látható legyen, hozzárendelheti az [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkört. Ezzel a szerepkörrel listázhatja a fiókban lévő tárolókat, a tároló tartalmait azonban nem. Ezt követően hozzáférés-vezérlési listákat adhat meg az egyes címtárakhoz és fájlokhoz.   
 
 ## <a name="security-groups"></a>Biztonsági csoportok
 
@@ -120,13 +120,12 @@ A csoportok használatával kevésbé valószínű, hogy túllépi a szerepkör-
 
 ## <a name="shared-key-and-shared-access-signature-sas-authorization"></a>Megosztott kulcs és közös hozzáférésű aláírás (SAS) engedélyezése
 
-A Azure Data Lake Storage Gen2 támogatja a [megosztott kulcs](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key) -és [sas](https://docs.microsoft.com/azure/storage/common/storage-sas-overview?toc=/azure/storage/blobs/toc.json) -metódusokat is a hitelesítéshez. Ezen hitelesítési módszerek egyik jellemzője, hogy a hívóhoz nem tartozik identitás, ezért a rendszerbiztonsági tag engedély-alapú engedélyezése nem hajtható végre.
+A Azure Data Lake Storage Gen2 támogatja a [megosztott kulcs](/rest/api/storageservices/authorize-with-shared-key) -és [sas](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) -metódusokat is a hitelesítéshez. Ezen hitelesítési módszerek egyik jellemzője, hogy a hívóhoz nem tartozik identitás, ezért a rendszerbiztonsági tag engedély-alapú engedélyezése nem hajtható végre.
 
 Megosztott kulcs esetén a hívó gyakorlatilag "felügyelői" hozzáférést kap, ami teljes hozzáférést biztosít az összes erőforráshoz, többek között az adatokhoz, a tulajdonos beállításához és a hozzáférés-vezérlési listák módosításához.
 
 Az SAS-tokenek a jogkivonat részeként tartalmazzák az engedélyezett engedélyeket. Az SAS-jogkivonatban található engedélyeket a rendszer hatékonyan alkalmazza az összes hitelesítési döntésre, de nem végez további ACL-ellenőrzéseket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A hozzáférés-vezérlési listákkal kapcsolatos további információkért lásd:  [hozzáférés-vezérlési listák (ACL-ek) Azure Data Lake Storage Gen2](data-lake-storage-access-control.md).
-

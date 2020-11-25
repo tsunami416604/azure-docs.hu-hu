@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: f2dd7cac8370c261f24f5587e801bd621fbdb0f0
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151388"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016998"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Lefelé irányuló eszköz hitelesítése az Azure IoT Hubon
 
@@ -144,13 +144,13 @@ Ez a szakasz az [X. 509 biztonság Azure IoT hub-ban való beállításának](..
 
 2. Kövesse az x [. 509 hitelesítésszolgáltatói tanúsítványok regisztrálása az IoT hub](../iot-hub/iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub) -ban című szakasz utasításait az *x. 509 szintű biztonság beállítása az Azure IoT hub-ban*. Ebben a szakaszban a következő lépéseket hajtja végre:
 
-   1. Töltse fel a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt. Ha a bemutató tanúsítványait használja, a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ a ** \<path> /certs/Azure-IOT-test-only.root.ca.CERT.PEM**.
+   1. Töltse fel a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt. Ha a bemutató tanúsítványait használja, a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓ a **\<path> /certs/Azure-IOT-test-only.root.ca.CERT.PEM**.
 
    2. Győződjön meg arról, hogy a legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány tulajdonosa.
 
-3. Az *x. 509 Biztonság beállítása az Azure IoT hub-ban*című rész útmutatását követve [hozzon létre egy x. 509-eszközt az IoT hub létrehozásához](../iot-hub/iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub) . Ebben a szakaszban a következő lépéseket hajtja végre:
+3. Az *x. 509 Biztonság beállítása az Azure IoT hub-ban* című rész útmutatását követve [hozzon létre egy x. 509-eszközt az IoT hub létrehozásához](../iot-hub/iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub) . Ebben a szakaszban a következő lépéseket hajtja végre:
 
-   1. Adjon hozzá egy új eszközt. Adja meg az **eszköz azonosítójának**kisbetűs nevét, és válassza ki az **X. 509 hitelesítésszolgáltató által aláírt**hitelesítési típust.
+   1. Adjon hozzá egy új eszközt. Adja meg az **eszköz azonosítójának** kisbetűs nevét, és válassza ki az **X. 509 hitelesítésszolgáltató által aláírt** hitelesítési típust.
 
    2. Hozzon létre egy fölérendelt eszközt. Válassza a **szülő eszköz beállítása** elemet, és válassza ki azt a IoT Edge átjáró eszközt, amely a IoT hubhoz való kapcsolódást biztosítja.
 
@@ -201,7 +201,7 @@ Vagy
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;x509=true;GatewayHostName=myGatewayDevice
 ```
 
-A szülő-gyermek kapcsolatnak köszönhetően leegyszerűsítheti a kapcsolati karakterláncot úgy, hogy az átjárót közvetlenül a kapcsolati gazdagépként hívja meg. Példa:
+A szülő-gyermek kapcsolatnak köszönhetően leegyszerűsítheti a kapcsolati karakterláncot úgy, hogy az átjárót közvetlenül a kapcsolati gazdagépként hívja meg. Például:
 
 ```
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz
@@ -209,7 +209,7 @@ HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz
 
 Ezt a módosított összekapcsolási karakterláncot az átlátszó átjáró sorozat következő cikkében fogja használni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezen a ponton van egy IoT Edge eszköz regisztrálva az IoT hub-ban, és transzparens átjáróként van konfigurálva. Emellett egy alsóbb rétegbeli eszköz is regisztrálva van az IoT hub-ban, és az átjáró eszközére mutat.
 

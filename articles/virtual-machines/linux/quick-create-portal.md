@@ -9,17 +9,17 @@ ms.date: 06/25/2020
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 405cb107711845a6699e09bc09a1d2d9f3005cd6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87499976"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016046"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Rövid útmutató: Linux rendszerű virtuális gép létrehozása az Azure Portalon
 
 Az Azure-beli virtuális gépek (VM-ek) létrehozhatók az Azure Portal segítségével. Az Azure Portal egy böngészőalapú felhasználói felület az Azure-erőforrások létrehozásához. Ez a rövid útmutató azt ismerteti, hogyan használható a Azure Portal az Ubuntu 18,04 LTS-t futtató linuxos virtuális gép (VM) üzembe helyezéséhez. A virtuális gép működésének megtekintéséhez hozzon létre SSH-kapcsolatot a virtuális géppel, és telepítse az NGINX-webkiszolgálót.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -28,25 +28,25 @@ Ha még nem tette meg, jelentkezzen be a [Azure Portalba](https://portal.azure.c
 ## <a name="create-virtual-machine"></a>Virtuális gép létrehozása
 
 1. Írja be a **virtuális gépeket** a keresésbe.
-1. A **szolgáltatások**területen válassza a **virtuális gépek**lehetőséget.
-1. A **virtuális gépek** lapon válassza a **Hozzáadás**lehetőséget. Megnyílik a **virtuális gép létrehozása** lap.
+1. A **szolgáltatások** területen válassza a **virtuális gépek** lehetőséget.
+1. A **virtuális gépek** lapon válassza a **Hozzáadás** lehetőséget. Megnyílik a **virtuális gép létrehozása** lap.
 1. Az **Alapok** fül **Projektadatok** részén győződjön meg arról, hogy a megfelelő előfizetés van kiválasztva, és válassza az **Új létrehozása** lehetőséget az Erőforráscsoport részen. A név mezőbe írja be a következőt: *myResourceGroup* . *. 
 
     ![A Project Details (projekt részletei) szakasz képernyőképe, amelyen kiválaszthatja az Azure-előfizetést és a virtuális géphez tartozó erőforráscsoportot.](./media/quick-create-portal/project-details.png)
 
-1. A **példány részletei**területen írja *myVM* be a myVM **nevet a virtuális gép neveként**, válassza az *USA keleti* **régiója**lehetőséget, és válassza az *Ubuntu 18,04 LTS* lehetőséget a **rendszerképhez**. Hagyja meg a többi alapértelmezett értéket.
+1. A **példány részletei** területen írja *myVM* be a myVM **nevet a virtuális gép neveként**, válassza az *USA keleti* **régiója** lehetőséget, és válassza az *Ubuntu 18,04 LTS* lehetőséget a **rendszerképhez**. Hagyja meg a többi alapértelmezett értéket.
 
     ![Képernyőkép a példány részleteiről szakaszról, ahol megadhatja a virtuális gép nevét, és kiválaszthatja annak régióját, képét és méretét](./media/quick-create-portal/instance-details.png)
 
-1. A **rendszergazdai fiók**területen válassza az **SSH nyilvános kulcs**lehetőséget.
+1. A **rendszergazdai fiók** területen válassza az **SSH nyilvános kulcs** lehetőséget.
 
 1. A **Felhasználónév** mezőbe írja be a következőt: *azureuser*.
 
-1. Az **SSH nyilvános kulcs forrása**beállításnál hagyja meg az alapértelmezett **új kulcspár létrehozását**, majd írja be a *myKey* **nevet a kulcspár neveként**.
+1. Az **SSH nyilvános kulcs forrása** beállításnál hagyja meg az alapértelmezett **új kulcspár létrehozását**, majd írja be a *myKey* **nevet a kulcspár neveként**.
 
     ![Képernyőfelvétel a rendszergazdai fiókról szakasz, ahol kiválaszthatja a hitelesítési típust, és megadhatja a rendszergazdai hitelesítő adatokat](./media/quick-create-portal/administrator-account.png)
 
-1. A **bejövő port szabályai**  >  **nyilvános bejövő portok**területen válassza a **kiválasztott portok engedélyezése** lehetőséget, majd válassza az **SSH (22)** és a **http (80)** lehetőséget a legördülő menüből. 
+1. A **bejövő port szabályai**  >  **nyilvános bejövő portok** területen válassza a **kiválasztott portok engedélyezése** lehetőséget, majd válassza az **SSH (22)** és a **http (80)** lehetőséget a legördülő menüből. 
 
     ![Képernyőfelvétel a bejövő portszabályok szakaszról, ahol kiválaszthatja, hogy a bejövő kapcsolatok mely portokon engedélyezettek](./media/quick-create-portal/inbound-port-rules.png)
 
@@ -54,9 +54,9 @@ Ha még nem tette meg, jelentkezzen be a [Azure Portalba](https://portal.azure.c
 
 1. A **Virtuális gép létrehozása** lapon láthatja a létrehozandó virtuális gép részleteit. Ha készen áll, kattintson a **Létrehozás** gombra.
 
-1. Amikor megnyílik az **új kulcspár létrehozása** ablak, válassza a **titkos kulcs letöltése és az erőforrás létrehozása**lehetőséget. A kulcsfájl a **myKey. PEM**fájlként lesz letöltve. Győződjön meg arról, hogy tudja `.pem` , hol töltötte le a fájlt, a következő lépésben szüksége lesz rá az elérési útra.
+1. Amikor megnyílik az **új kulcspár létrehozása** ablak, válassza a **titkos kulcs letöltése és az erőforrás létrehozása** lehetőséget. A kulcsfájl a **myKey. PEM** fájlként lesz letöltve. Győződjön meg arról, hogy tudja `.pem` , hol töltötte le a fájlt, a következő lépésben szüksége lesz rá az elérési útra.
 
-1. Ha a telepítés befejeződött, válassza az **Ugrás az erőforráshoz**lehetőséget.
+1. Ha a telepítés befejeződött, válassza az **Ugrás az erőforráshoz** lehetőséget.
 
 1. Az új virtuális gép lapján válassza ki a nyilvános IP-címet, és másolja a vágólapra.
 

@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 6ab4694159c6269f2f72d3d591147d43aef34a0a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961595"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017372"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-backup-catalog"></a>A StorSimple Eszközkezelő szolgáltatás használata a biztonsági mentési katalógus kezelésére
 ## <a name="overview"></a>Áttekintés
@@ -47,7 +47,7 @@ A szűrt biztonságimásolat-készletek a következő attribútumok alapján les
 A biztonsági mentési szabályzat összes biztonsági mentésének listázásához hajtsa végre az alábbi lépéseket.
 
 #### <a name="to-list-backup-sets"></a>Biztonságimásolat-készletek listázása
-1. Lépjen a StorSimple Eszközkezelő szolgáltatásra, és kattintson a **Backup Catalog**elemre.
+1. Lépjen a StorSimple Eszközkezelő szolgáltatásra, és kattintson a **Backup Catalog** elemre.
 
 2. A következő módon szűrheti a beállításokat:
    
@@ -65,7 +65,7 @@ A biztonsági mentési szabályzat összes biztonsági mentésének listázásá
 A kötet-vagy biztonsági mentési szabályzathoz tartozó biztonságimásolat-készlet kiválasztásához hajtsa végre az alábbi lépéseket.
 
 #### <a name="to-select-a-backup-set"></a>Biztonságimásolat-készlet kiválasztása
-1. Lépjen a StorSimple Eszközkezelő szolgáltatásra, és kattintson a **Backup Catalog**elemre.
+1. Lépjen a StorSimple Eszközkezelő szolgáltatásra, és kattintson a **Backup Catalog** elemre.
 2. A következő módon szűrheti a beállításokat:
    
    1. Határozza meg az időtartományt. 
@@ -85,7 +85,7 @@ A kötet-vagy biztonsági mentési szabályzathoz tartozó biztonságimásolat-k
 Törölje a biztonsági mentést, ha már nem kívánja megőrizni a hozzá társított adatmennyiséget. A biztonságimásolat-készlet törléséhez hajtsa végre az alábbi lépéseket.
 
 #### <a name="to-delete-a-backup-set"></a>Biztonságimásolat-készlet törlése
- Lépjen a StorSimple Eszközkezelő szolgáltatásra, és kattintson a **Backup Catalog**elemre.
+ Lépjen a StorSimple Eszközkezelő szolgáltatásra, és kattintson a **Backup Catalog** elemre.
 1. A következő módon szűrheti a beállításokat:
    
    1. Határozza meg az időtartományt. 
@@ -97,11 +97,11 @@ Törölje a biztonsági mentést, ha már nem kívánja megőrizni a hozzá tár
 
       ![Ugrás a biztonsági mentési katalógusra 4](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
 
-1. Válassza ki és bontsa ki a biztonságimásolat-készletet. Most már megtekintheti a biztonságimásolat-készleteket a benne foglalt kötetek alapján. A **visszaállítási** és **törlési** beállítások a biztonságimásolat-készlet helyi menüjében (a jobb gombbal kattintva) érhetők el. Kattintson a jobb gombbal a kiválasztott biztonságimásolat-készletre, és a helyi menüben válassza a **Törlés**lehetőséget.
+1. Válassza ki és bontsa ki a biztonságimásolat-készletet. Most már megtekintheti a biztonságimásolat-készleteket a benne foglalt kötetek alapján. A **visszaállítási** és **törlési** beállítások a biztonságimásolat-készlet helyi menüjében (a jobb gombbal kattintva) érhetők el. Kattintson a jobb gombbal a kiválasztott biztonságimásolat-készletre, és a helyi menüben válassza a **Törlés** lehetőséget.
 
     ![Ugrás a Backup katalógus 5](./media/storsimple-8000-manage-backup-catalog/bucatalog3.png)
 
-1. Ha a rendszer megerősítést kér, tekintse át a megjelenített információkat, majd kattintson a **Törlés**gombra. A kijelölt biztonsági másolat véglegesen törlődik.
+1. Ha a rendszer megerősítést kér, tekintse át a megjelenített információkat, majd kattintson a **Törlés** gombra. A kijelölt biztonsági másolat véglegesen törlődik.
 
     ![Lépjen a Backup Catalog 6](./media/storsimple-8000-manage-backup-catalog/bucatalog4.png)  
 
@@ -109,7 +109,7 @@ Törölje a biztonsági mentést, ha már nem kívánja megőrizni a hozzá tár
 
     ![Ugrás a Backup Catalog 7-re](./media/storsimple-8000-manage-backup-catalog/bucatalog7.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Megtudhatja, hogyan [állíthatja vissza az eszközt egy biztonságimásolat-készletből a biztonsági mentési katalógus használatával](storsimple-8000-restore-from-backup-set-u2.md).
 * Ismerje meg, hogyan kezelheti a [StorSimple-eszközt a StorSimple Eszközkezelő szolgáltatással](storsimple-8000-manager-service-administration.md).
 

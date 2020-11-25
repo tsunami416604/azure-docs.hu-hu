@@ -4,11 +4,11 @@ description: További információ a meglévő alkalmazások vendég végrehajth
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.openlocfilehash: 8b808d092001196a4d2150e44d508e031db95554
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86247387"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017746"
 ---
 # <a name="deploy-an-existing-executable-to-service-fabric"></a>Meglévő végrehajtható fájl üzembe helyezése Service Fabric
 Az Azure Service Fabric szolgáltatásban bármilyen típusú kódot futtathat, például Node.js, Java vagy C++. A Service Fabric vendég végrehajtható fájlokként hivatkozik az ilyen típusú szolgáltatásokra.
@@ -62,7 +62,7 @@ A ApplicationPackageRoot tartalmazza az alkalmazást definiáló ApplicationMani
 >
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A kapcsolódó információkkal és feladatokkal kapcsolatban tekintse meg a következő cikkeket.
 * [Futtatható vendégalkalmazás üzembe helyezése](service-fabric-deploy-existing-app.md)
 * [Több futtatható vendégalkalmazás üzembe helyezése](./service-fabric-deploy-existing-app.md)

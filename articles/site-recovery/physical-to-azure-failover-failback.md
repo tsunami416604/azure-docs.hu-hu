@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 12/17/2019
 ms.author: raynew
 ms.openlocfilehash: 2994f68e4159c7c4aa7d82bef7a5891deb5055a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87292826"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017423"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Az Azure-ba replikált fizikai kiszolgálók feladatátvétele és feladatátvétele
 
@@ -34,15 +34,15 @@ Ez az oktatóanyag azt ismerteti, hogyan végezhető el az Azure-ba replikált h
 
 Ellenőrizze a kiszolgáló tulajdonságait, és győződjön meg arról, hogy az megfelel az Azure-beli virtuális gépekre [vonatkozó Azure-követelményeknek](vmware-physical-azure-support-matrix.md#replicated-machines) .
 
-1. A **védett elemek**területen kattintson a **replikált elemek**elemre, majd válassza ki a gépet.
+1. A **védett elemek** területen kattintson a **replikált elemek** elemre, majd válassza ki a gépet.
 2. A **replikált elem** ablaktáblán a számítógép adatai, az állapot és a legújabb elérhető helyreállítási pontok összegzése látható. Kattintson a **Tulajdonságok** lehetőségre a további részletek megtekintéséhez.
-3. A **számítás és hálózat**területen módosíthatja az Azure-nevet, az erőforráscsoportot, a célként megadott méretet, a [rendelkezésre állási](../virtual-machines/windows/tutorial-availability-sets.md)csoportot és a felügyelt lemez beállításait.
+3. A **számítás és hálózat** területen módosíthatja az Azure-nevet, az erőforráscsoportot, a célként megadott méretet, a [rendelkezésre állási](../virtual-machines/windows/tutorial-availability-sets.md)csoportot és a felügyelt lemez beállításait.
 4. Megtekintheti és módosíthatja a hálózati beállításokat, beleértve azt a hálózatot/alhálózatot, amelyen az Azure-beli virtuális gép a feladatátvétel után lesz és a hozzá rendelt IP-címet.
-5. A **lemezekben**a számítógép operációs rendszerével és az adatlemezekkel kapcsolatos információk láthatók.
+5. A **lemezekben** a számítógép operációs rendszerével és az adatlemezekkel kapcsolatos információk láthatók.
 
 ### <a name="fail-over-to-azure"></a>Feladatátvétel az Azure-ba
 
-1. A **Beállítások**  >  **replikált elemek** elemnél kattintson a gép > **feladatátvétel**elemre.
+1. A **Beállítások**  >  **replikált elemek** elemnél kattintson a gép > **feladatátvétel** elemre.
 2. A **Feladatátvétel** területen válassza ki a **Helyreállítási pontot** a feladatok átvételéhez. Az alábbi lehetőségek egyikét használhatja:
    - **Legújabb**: Ez a lehetőség először feldolgozza a Site Recovery számára küldött összes adatot. A legalacsonyabb helyreállítási időkorlátot (RPO) nyújtja, mert a feladatátvétel után létrehozott Azure-beli virtuális gép rendelkezik a feladatátvétel elindításakor a Site Recoverybe replikált összes adattal.
    - **Legutóbb feldolgozott**: Ez a beállítás feladatátvételt hajt végre a gépen a site Recovery által feldolgozott legutóbbi helyreállítási pontra. Ez a lehetőség alacsony helyreállítási időre vonatkozó célkitűzést (RTO) nyújt, mert a rendszer nem tölt időt a feldolgozatlan adatok feldolgozásával.
@@ -95,7 +95,7 @@ Az Azure-ba való feladatátvételt követően az Azure-beli virtuális gépeket
 
 Ez az eljárás azt feltételezi, hogy a helyszíni virtuális gép nem érhető el.
 
-1. A tároló > a **Beállítások**  >  **replikált elemek**területen kattintson a jobb gombbal arra a gépre, amelyre a feladatátvételt > **ismételt védelemmel**ellátott.
+1. A tároló > a **Beállítások**  >  **replikált elemek** területen kattintson a jobb gombbal arra a gépre, amelyre a feladatátvételt > **ismételt védelemmel** ellátott.
 2. Az **Ismételt védelem** területen ellenőrizze, hogy be legyen jelölve az **Azure-ról a helyszíni rendszerre** lehetőség.
 3. Adja meg a helyszíni fő célkiszolgálót és a folyamatkiszolgálót.
 4. Az **Adattároló** területen válassza ki azt a fő cél adattárolót, amelyre a lemezeket a helyszínen helyre szeretné állítani.

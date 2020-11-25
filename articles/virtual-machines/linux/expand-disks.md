@@ -8,11 +8,11 @@ ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: bbb959b6b1d71c81f7b920b3962f693716041e16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89181748"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016233"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Virtuális merevlemezek kibontása Linux rendszerű virtuális GÉPEN az Azure CLI-vel
 
@@ -28,7 +28,7 @@ Ez a cikk egy meglévő virtuális gépet igényel az Azure-ban legalább egy cs
 
 A következő példákban cserélje le a példában szereplő paraméterek nevét, például a *myResourceGroup* és a *myVM* értéket a saját értékeire.
 
-1. A virtuális merevlemezeken végrehajtott műveletek nem hajthatók végre a rendszert futtató virtuális géppel. Szabadítsa fel a virtuális gépet az [az VM felszabadításával](/cli/azure/vm#az-vm-deallocate). Az alábbi példa felszabadítja a *myVM* nevű virtuális gépet a *myResourceGroup*nevű erőforráscsoport-csoportba:
+1. A virtuális merevlemezeken végrehajtott műveletek nem hajthatók végre a rendszert futtató virtuális géppel. Szabadítsa fel a virtuális gépet az [az VM felszabadításával](/cli/azure/vm#az-vm-deallocate). Az alábbi példa felszabadítja a *myVM* nevű virtuális gépet a *myResourceGroup* nevű erőforráscsoport-csoportba:
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
@@ -37,7 +37,7 @@ A következő példákban cserélje le a példában szereplő paraméterek nevé
     > [!NOTE]
     > A virtuális merevlemez kibontásához fel kell osztani a virtuális GÉPET. A virtuális gép leállítása a szolgáltatással `az vm stop` nem szabadítja fel a számítási erőforrásokat. Számítási erőforrások kiadásához használja a következőt: `az vm deallocate` .
 
-1. Egy erőforráscsoport felügyelt lemezeinek listáját az [az Disk List](/cli/azure/disk#az-disk-list)paranccsal tekintheti meg. Az alábbi példa megjeleníti a felügyelt lemezek listáját a *myResourceGroup*nevű erőforráscsoport:
+1. Egy erőforráscsoport felügyelt lemezeinek listáját az [az Disk List](/cli/azure/disk#az-disk-list)paranccsal tekintheti meg. Az alábbi példa megjeleníti a felügyelt lemezek listáját a *myResourceGroup* nevű erőforráscsoport:
 
     ```azurecli
     az disk list \
@@ -58,7 +58,7 @@ A következő példákban cserélje le a példában szereplő paraméterek nevé
     > [!NOTE]
     > Felügyelt lemez kibontásakor a frissített méret a legközelebbi felügyelt lemez méretére lesz kerekítve. Az elérhető felügyelt lemezek méreteiről és szintjeiről az [Azure Managed Disks áttekintése – díjszabás és számlázás](../managed-disks-overview.md)című cikkben olvashat.
 
-1. Indítsa el a virtuális gépet az [az VM Start](/cli/azure/vm#az-vm-start)paranccsal. A következő példa elindítja a *myVM* nevű virtuális gépet a *myResourceGroup*nevű erőforráscsoporthoz:
+1. Indítsa el a virtuális gépet az [az VM Start](/cli/azure/vm#az-vm-start)paranccsal. A következő példa elindítja a *myVM* nevű virtuális gépet a *myResourceGroup* nevű erőforráscsoporthoz:
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
@@ -105,7 +105,7 @@ Kibontott lemez használatához bontsa ki a mögöttes partíciót és a fájlre
         1      0.00B  107GB  107GB  ext4
     ```
 
-    c. Bontsa ki a partíciót a rel `resizepart` . Adja meg a partíció számát, az *1*értéket és az új partíció méretét:
+    c. Bontsa ki a partíciót a rel `resizepart` . Adja meg a partíció számát, az *1* értéket és az új partíció méretét:
 
     ```bash
     (parted) resizepart
@@ -140,6 +140,6 @@ Kibontott lemez használatához bontsa ki a mögöttes partíciót és a fájlre
     /dev/sdc1        197G   60M   187G   1% /datadrive
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Ha további tárhelyre van szüksége, [adatlemezeket is hozzáadhat egy Linux rendszerű virtuális géphez](add-disk.md). 
 * További információ a lemezek titkosításáról: [Azure Disk Encryption Linux rendszerű virtuális gépekhez](disk-encryption-overview.md).

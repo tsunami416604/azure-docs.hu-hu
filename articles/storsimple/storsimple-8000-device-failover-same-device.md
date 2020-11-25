@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/23/2017
 ms.author: alkohli
 ms.openlocfilehash: 17c116194aa52a82246bcee9114824e8a918ebbd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88184329"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017100"
 ---
 # <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>Feladatátvétel a StorSimple fizikai eszközön ugyanarra az eszközre
 
@@ -43,21 +43,21 @@ Hajtsa végre az alábbi lépéseket, ha ugyanarra az eszközre kell átadnia a 
 
 1. Készítsen Felhőbeli pillanatképeket az eszközön található összes kötetről. További információért látogasson el a [StorSimple Eszközkezelő szolgáltatás használata a biztonsági másolatok létrehozásához](storsimple-8000-manage-backup-policies-u2.md).
 2. Állítsa vissza az eszközt a gyári beállításokra. Kövesse a [StorSimple-eszköz gyári beállításainak alaphelyzetbe állítására](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings)vonatkozó részletes útmutatást.
-3. Lépjen a StorSimple Eszközkezelő szolgáltatásra, majd válassza az **eszközök**elemet. Az **eszközök** panelen a régi eszköznek **offline állapotba**kell mutatnia.
+3. Lépjen a StorSimple Eszközkezelő szolgáltatásra, majd válassza az **eszközök** elemet. Az **eszközök** panelen a régi eszköznek **offline állapotba** kell mutatnia.
 
     ![Forrás eszköz offline](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev2.png)
 
 4. Konfigurálja az eszközt, és regisztrálja újra a StorSimple Eszközkezelő szolgáltatásával. Az újonnan regisztrált eszköznek **készen kell állnia a beállításra**. Az új eszköz neve megegyezik a régi eszközzel, de számjegyek hozzáfűzésével jelzi, hogy az eszköz visszaáll a gyári alapértékre, és ismét regisztrálva van.
 
     ![Az újonnan regisztrált eszköz készen áll a beállításra](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev3.png)
-5. Az új eszköz esetében fejezze be az eszköz beállítását. További információért lépjen a [4. lépés: a minimális eszköz beállításának befejezése szakaszra](storsimple-8000-deployment-walkthrough-u2.md#step-4-complete-minimum-device-setup). Az **eszközök** panelen az eszköz állapota **online**állapotra változik.
+5. Az új eszköz esetében fejezze be az eszköz beállítását. További információért lépjen a [4. lépés: a minimális eszköz beállításának befejezése szakaszra](storsimple-8000-deployment-walkthrough-u2.md#step-4-complete-minimum-device-setup). Az **eszközök** panelen az eszköz állapota **online** állapotra változik.
 
    > [!IMPORTANT]
    > **Először hajtsa végre a minimális konfigurációt, vagy a DR sikertelen lehet.**
 
     ![Újonnan regisztrált eszköz online](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev7.png)
 
-6. Válassza ki a régi eszközt (offline állapot), majd a parancssorban kattintson a **feladatátvétel**elemre. A **feladatátvétel** panelen válassza a régi eszköz lehetőséget forrásként, majd adja meg a célként megadott eszközt az újonnan regisztrált eszközként.
+6. Válassza ki a régi eszközt (offline állapot), majd a parancssorban kattintson a **feladatátvétel** elemre. A **feladatátvétel** panelen válassza a régi eszköz lehetőséget forrásként, majd adja meg a célként megadott eszközt az újonnan regisztrált eszközként.
 
     ![Feladatátvétel összegzése](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev11.png)
 
@@ -69,17 +69,17 @@ Hajtsa végre az alábbi lépéseket, ha ugyanarra az eszközre kell átadnia a 
 
    ![Áttelepített mennyiségi tárolók](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev13.png)
 
-9. A feladatátvétel befejeződése után inaktiválhatja és törölheti a régi eszközt a portálról. Válassza ki a régi eszközt (offline), kattintson a jobb gombbal, majd válassza az **inaktiválás**lehetőséget. Az eszköz inaktiválása után a rendszer frissíti az eszköz állapotát.
+9. A feladatátvétel befejeződése után inaktiválhatja és törölheti a régi eszközt a portálról. Válassza ki a régi eszközt (offline), kattintson a jobb gombbal, majd válassza az **inaktiválás** lehetőséget. Az eszköz inaktiválása után a rendszer frissíti az eszköz állapotát.
 
      ![A forrásoldali eszköz inaktiválva](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev14.png)
 
-10. Válassza ki a deaktivált eszközt, kattintson a jobb gombbal, majd válassza a **Törlés**lehetőséget. Ezzel törli az eszközt az eszközök listájáról.
+10. Válassza ki a deaktivált eszközt, kattintson a jobb gombbal, majd válassza a **Törlés** lehetőséget. Ezzel törli az eszközt az eszközök listájáról.
 
     ![Forrásoldali eszköz törölve](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev15.png)
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A feladatátvétel elvégzése után szükség lehet [a StorSimple-eszköz inaktiválására vagy törlésére](storsimple-8000-deactivate-and-delete-device.md).
 * További információ a StorSimple Eszközkezelő szolgáltatás használatáról: [a StorSimple-eszköz felügyeletéhez használja a StorSimple Eszközkezelő szolgáltatást](storsimple-8000-manager-service-administration.md).

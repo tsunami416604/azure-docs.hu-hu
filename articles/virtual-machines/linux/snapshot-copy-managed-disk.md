@@ -10,11 +10,11 @@ ms.date: 07/11/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 6374108247b9bfb950c42495b13b501ded8a02d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89317995"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015961"
 ---
 # <a name="create-a-snapshot-using-the-portal-or-azure-cli"></a>Pillanatkép létrehozása a portál vagy az Azure CLI használatával
 
@@ -60,15 +60,15 @@ az snapshot list \
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A bal felső sarokban kattintson az **erőforrás létrehozása** elemre, és keresse meg a **pillanatképet**. Válassza a **Pillanatkép** lehetőséget a keresési eredmények közül.
-3. A **Pillanatkép** panelen kattintson a **Létrehozás**gombra.
+3. A **Pillanatkép** panelen kattintson a **Létrehozás** gombra.
 4. Adja meg a pillanatkép **nevét** .
 5. Válasszon ki egy meglévő erőforráscsoportot, vagy írja be egy új nevet. 
-7. A **forrásoldali lemez**lapon válassza ki a felügyelt lemezt a pillanatképhez.
+7. A **forrásoldali lemez** lapon válassza ki a felügyelt lemezt a pillanatképhez.
 8. Válassza ki a pillanatkép tárolására használni kívánt **fiókot** . A **standard HDD** csak akkor használja, ha nagy teljesítményű SSD-meghajtón tárolja.
-9. Kattintson a **Létrehozás** lehetőségre.
+9. Kattintson a **Létrehozás** gombra.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
  Hozzon létre egy virtuális gépet egy pillanatképből egy felügyelt lemez létrehozásával a pillanatképből, majd csatlakoztassa az új felügyelt lemezt az operációsrendszer-lemezként. További információ: [virtuális gép létrehozása pillanatkép-](./../scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot.md?toc=%2fcli%2fmodule%2ftoc.json) parancsfájlból.
 

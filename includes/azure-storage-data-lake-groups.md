@@ -6,14 +6,14 @@ ms.topic: include
 ms.date: 09/29/2020
 ms.author: normesta
 ms.custom: include file
-ms.openlocfilehash: 73a8f20122e21c4557289995c15b008401285011
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 9750eabf2aa5af4f431f2db17e113b07d3bce863
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131649"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017677"
 ---
-Az ACL-bejegyzések mindig az [Azure ad biztonsági csoportjait használják hozzárendelt rendszerbiztonsági csoportként](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups) . Lehetősége van arra, hogy közvetlenül rendeljen hozzá egyéni felhasználókat vagy egyszerű szolgáltatásokat. Ezzel a struktúrával felhasználókat vagy egyszerű szolgáltatásokat adhat hozzá és távolíthat el anélkül, hogy újra kellene alkalmaznia az ACL-eket egy teljes címtár-struktúrára. Ehelyett egyszerűen hozzáadhat vagy eltávolíthat felhasználókat és egyszerű szolgáltatásokat a megfelelő Azure AD biztonsági csoportból. 
+Az ACL-bejegyzések mindig az [Azure ad biztonsági csoportjait használják hozzárendelt rendszerbiztonsági csoportként](../articles/active-directory/fundamentals/active-directory-manage-groups.md) . Lehetősége van arra, hogy közvetlenül rendeljen hozzá egyéni felhasználókat vagy egyszerű szolgáltatásokat. Ezzel a struktúrával felhasználókat vagy egyszerű szolgáltatásokat adhat hozzá és távolíthat el anélkül, hogy újra kellene alkalmaznia az ACL-eket egy teljes címtár-struktúrára. Ehelyett egyszerűen hozzáadhat vagy eltávolíthat felhasználókat és egyszerű szolgáltatásokat a megfelelő Azure AD biztonsági csoportból. 
 
 A csoportok számos különböző módon állíthatók be. Tegyük fel például, hogy rendelkezik egy **/LogData** nevű címtárral, amely a kiszolgáló által generált naplózási adatait tartalmazza. Azure Data Factory (ADF) betölti az adott mappába az adatot. A Service Engineering csapata adott felhasználói feltölthetik a naplókat, és kezelik a mappa más felhasználóit, és a különböző Databricks-fürtök elemzik majd a naplókat a mappából. 
 
@@ -27,4 +27,4 @@ A tevékenységek engedélyezéséhez létrehozhat egy `LogsWriter` csoportot é
 
 Ha a Service Engineering csapat egyik felhasználója elhagyja a vállalatot, akkor csak távolítsa el őket a `LogsWriter` csoportból. Ha nem adta hozzá a felhasználót egy csoporthoz, hanem egy dedikált ACL-bejegyzést adott a felhasználóhoz, akkor el kell távolítania az ACL-bejegyzést a **/LogData** könyvtárból. Emellett el kell távolítania a bejegyzést a **/LogData** könyvtárának teljes címtár-hierarchiájában található összes alkönyvtárból és fájlból. 
 
-Csoport létrehozásához és tagok hozzáadásához tekintse meg [az alapszintű csoport létrehozása és a tagok hozzáadása a Azure Active Directory használatával](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal)című témakört.
+Csoport létrehozásához és tagok hozzáadásához tekintse meg [az alapszintű csoport létrehozása és a tagok hozzáadása a Azure Active Directory használatával](../articles/active-directory/fundamentals/active-directory-groups-create-azure-portal.md)című témakört.

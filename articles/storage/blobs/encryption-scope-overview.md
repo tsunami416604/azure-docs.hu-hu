@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 6fb3c9b6dbbab036ddb00edd7e1d5980bb425ebe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 881a7fc915ab986577599b85f8412fa8107f7902
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326116"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017389"
 ---
 # <a name="encryption-scopes-for-blob-storage-preview"></a>BLOB Storage titkosítási hatókörök (előzetes verzió)
 
@@ -52,13 +52,13 @@ Ha a titkosítási hatókör le van tiltva, már nem számítunk fel díjat. Til
 
 Ha az ügyfél által felügyelt kulcsokkal védi a titkosítási hatókört, akkor a kulcstárolóban található társított kulcsot is törölheti a titkosítási hatókör letiltásához. Ne feledje, hogy az ügyfél által felügyelt kulcsokat a rendszer a Key vaultban lévő, helyreállítható törlési és kiürítési védelemmel védi, és a törölt kulcsra a tulajdonságok által meghatározott viselkedés vonatkozik. További információkért tekintse meg a következő témakörök egyikét az Azure Key Vault dokumentációjában:
 
-- [A Soft delete használata a PowerShell-lel](../../key-vault/general/soft-delete-powershell.md)
-- [A Soft delete használata a parancssori felülettel](../../key-vault/general/soft-delete-cli.md)
+- [A Soft delete használata a PowerShell-lel](../../key-vault/general/key-vault-recovery.md)
+- [A Soft delete használata a parancssori felülettel](../../key-vault/general/key-vault-recovery.md)
 
 > [!NOTE]
 > Titkosítási hatókört nem lehet törölni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Inaktív adatok Azure Storage-titkosítása](../common/storage-service-encryption.md)
 - [Titkosítási hatókörök létrehozása és kezelése (előzetes verzió)](encryption-scope-manage.md)

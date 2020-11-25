@@ -5,11 +5,11 @@ ms.date: 11/20/2019
 ms.topic: conceptual
 ms.reviewer: mmercuri
 ms.openlocfilehash: dae63e16356e825d3be31380df1648749e59d8bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86538343"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015502"
 ---
 # <a name="smart-contract-integration-patterns"></a>Intelligens szerződések integrációs mintái
 
@@ -75,7 +75,7 @@ Ebben az esetben egy esemény egy intelligens szerződésen belül történik, p
 
 Ilyen eset például, ha egy tranzakció bekövetkezik, a fogyasztó riasztást kap, és műveleteket végezhet, például az adatok rögzítését egy SQL-ADATBÁZISba vagy a Common Data Service. Ez a forgatókönyv ugyanaz a minta, amelyet a Workbench az SQL-adatbázis *ki* -és betöltéséhez is követ.
 
-Egy másik lenne, ha egy intelligens szerződés egy adott állapotra vált, például ha egy szerződés egy *OutOfCompliance*kerül. Ha ez az állapot változik, riasztást indíthat a rendszergazda mobiltelefonjára.
+Egy másik lenne, ha egy intelligens szerződés egy adott állapotra vált, például ha egy szerződés egy *OutOfCompliance* kerül. Ha ez az állapot változik, riasztást indíthat a rendszergazda mobiltelefonjára.
 
 ![Egyirányú esemény kézbesítése](./media/integration-patterns/one-way-event-delivery.png)
 

@@ -10,11 +10,11 @@ ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
 ms.openlocfilehash: 68bd748e890659e4b79d76e4ccab038f251a937a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87368183"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016029"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>A OpenShift Container platform 3,11 Azure-beli üzembe helyezésének gyakori előfeltételei
 
@@ -44,7 +44,7 @@ Ez az útmutató az előfeltételekhez társított összetevők létrehozását 
 > * Hozzon létre egy Key vaultot a OpenShift-fürt SSH-kulcsainak kezeléséhez.
 > * Hozzon létre egy egyszerű szolgáltatást az Azure Cloud Provider általi használatra.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba 
 Jelentkezzen be az Azure-előfizetésbe az az [login](/cli/azure/reference-index) paranccsal, és kövesse a képernyőn megjelenő utasításokat, vagy kattintson a **kipróbálás** gombra a Cloud Shell használatához.
@@ -98,9 +98,9 @@ A OpenShift felhasználónévvel és jelszóval vagy egyszerű szolgáltatásné
 
 Hozzon létre egy egyszerű szolgáltatást az [az ad SP Create-for-RBAC](/cli/azure/ad/sp) , és adja meg a OpenShift által igényelt hitelesítő adatokat.
 
-A következő példa létrehoz egy szolgáltatásnevet, és hozzárendeli az IT közreműködői engedélyeket egy *openshiftrg*nevű erőforráscsoporthoz.
+A következő példa létrehoz egy szolgáltatásnevet, és hozzárendeli az IT közreműködői engedélyeket egy *openshiftrg* nevű erőforráscsoporthoz.
 
-Először hozza létre az *openshiftrg*nevű erőforráscsoportot:
+Először hozza létre az *openshiftrg* nevű erőforráscsoportot:
 
 ```azurecli
 az group create -l eastus -n openshiftrg
@@ -138,7 +138,7 @@ Az egyszerű szolgáltatásokkal kapcsolatos további információkért lásd: [
 
 ## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>Csak Resource Manager-sablonra vonatkozó előfeltételek
 
-A titkos SSH-kulcs (**sshPrivateKey**), az Azure ad Client Secret (**aadClientSecret**), a OpenShift admin password (**OpenshiftPassword**) és a Red Hat előfizetés-kezelő jelszava vagy az aktiválási kulcs (**rhsmPasswordOrActivationKey**) számára létre kell hozni a titkokat.  Emellett ha egyéni TLS/SSL-tanúsítványokat használ, akkor hat további titkot kell létrehoznia – **routingcafile**, **routingcertfile**, **routingkeyfile**, **mastercafile**, **mastercertfile**és **masterkeyfile**.  A paramétereket részletesebben is ismertetjük.
+A titkos SSH-kulcs (**sshPrivateKey**), az Azure ad Client Secret (**aadClientSecret**), a OpenShift admin password (**OpenshiftPassword**) és a Red Hat előfizetés-kezelő jelszava vagy az aktiválási kulcs (**rhsmPasswordOrActivationKey**) számára létre kell hozni a titkokat.  Emellett ha egyéni TLS/SSL-tanúsítványokat használ, akkor hat további titkot kell létrehoznia – **routingcafile**, **routingcertfile**, **routingkeyfile**, **mastercafile**, **mastercertfile** és **masterkeyfile**.  A paramétereket részletesebben is ismertetjük.
 
 A sablon megadott titkos nevekre hivatkozik, ezért a fent felsorolt félkövér neveket **kell** használnia (kis-és nagybetűk megkülönböztetése).
 

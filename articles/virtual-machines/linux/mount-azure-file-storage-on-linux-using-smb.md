@@ -8,11 +8,11 @@ ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
 ms.openlocfilehash: 6a5d4f388d9e5f47a13812687489525590c520c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87085486"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016097"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Azure file Storage csatlakoztatása Linux rendszerű virtuális gépekhez SMB használatával
 
@@ -25,7 +25,7 @@ Ha a fájlokat egy virtuális gépről a file Storage-ban üzemeltetett SMB-csat
 Ehhez az útmutatóhoz az Azure CLI 2.0.4 vagy újabb verzióját kell futtatnia. A verzió megkereséséhez futtassa a következő parancsot: **az --version**. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
 
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy *myResourceGroup* nevű ERŐFORRÁSCSOPORTOT az *USA keleti* régiójában.
 
@@ -35,7 +35,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-Hozzon létre egy új Storage-fiókot a létrehozott erőforráscsoport keretében az [az Storage Account Create](/cli/azure/storage/account)paranccsal. Ez a példa létrehoz egy *mystorageacct kifejezést \<random number> * nevű Storage-fiókot, és a **storageacct tárfiókban**változóban helyezi el a Storage-fiók nevét. A Storage-fiók nevének egyedinek kell lennie, ezzel `$RANDOM` egy számot fűz a végponthoz, hogy az egyedi legyen.
+Hozzon létre egy új Storage-fiókot a létrehozott erőforráscsoport keretében az [az Storage Account Create](/cli/azure/storage/account)paranccsal. Ez a példa létrehoz egy *mystorageacct kifejezést \<random number>* nevű Storage-fiókot, és a **storageacct tárfiókban** változóban helyezi el a Storage-fiók nevét. A Storage-fiók nevének egyedinek kell lennie, ezzel `$RANDOM` egy számot fűz a végponthoz, hogy az egyedi legyen.
 
 ```azurecli
 STORAGEACCT=$(az storage account create \

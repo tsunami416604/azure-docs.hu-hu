@@ -15,11 +15,11 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 167c666c536ee33531fd069dbd1edb530331a9f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302189"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016945"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Oktatóanyag: leküldéses értesítések küldése adott felhasználóknak az Azure Notification Hubs
 
@@ -57,7 +57,7 @@ Ha Mobile Apps háttér-szolgáltatásként szeretné használni, tekintse meg a
     ![Storyboard szerkesztése a Xcode Interface Builder-ben][1]
 
    * **Username**: helyőrző szöveggel rendelkező UITextField, *írja be a felhasználónevet*, közvetlenül a küldési eredmények címkéje alatt, és a bal és a jobb oldali margóra, valamint az eredmények küldése címke alá.
-   * **Password (jelszó**): helyőrző szöveggel rendelkező UITextField, *írja be a jelszót*, közvetlenül a Felhasználónév szövegmező alá, és korlátozza a bal és a jobb oldali margókat, valamint a Felhasználónév szövegmező alatt. Tekintse meg az attribútum-ellenőr **biztonságos szövegbeviteli** beállítását a *visszatérési kulcs*területen.
+   * **Password (jelszó**): helyőrző szöveggel rendelkező UITextField, *írja be a jelszót*, közvetlenül a Felhasználónév szövegmező alá, és korlátozza a bal és a jobb oldali margókat, valamint a Felhasználónév szövegmező alatt. Tekintse meg az attribútum-ellenőr **biztonságos szövegbeviteli** beállítását a *visszatérési kulcs* területen.
    * **Bejelentkezés**: közvetlenül a jelszó szövegmezője alatt megjelenő UIButton, és **törölje a** jelölést az attribútumok ellenőrben a *vezérlés – tartalom* területen.
    * **WNS**: címke és kapcsoló, amely lehetővé teszi az értesítési Windows értesítési szolgáltatás küldését, ha az a központban lett beállítva. Tekintse meg a [Windows első lépések](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) oktatóanyagot.
    * **GCM**: címke és kapcsoló, amely lehetővé teszi az értesítés küldését Google Cloud Messaging, ha be lett állítva a központban. Lásd: [Android első lépések](notification-hubs-android-push-notification-google-gcm-get-started.md) oktatóanyag.
@@ -479,7 +479,7 @@ Ha Mobile Apps háttér-szolgáltatásként szeretné használni, tekintse meg a
 ## <a name="test-the-application"></a>Az alkalmazás tesztelése
 
 1. A XCode-ben futtassa az alkalmazást egy fizikai iOS-eszközön (a leküldéses értesítések nem működnek a szimulátorban).
-2. Az iOS-alkalmazás felhasználói felületén adja meg ugyanazt az értéket a Felhasználónév és a jelszó mezőben. Ezután kattintson **a bejelentkezés**elemre.
+2. Az iOS-alkalmazás felhasználói felületén adja meg ugyanazt az értéket a Felhasználónév és a jelszó mezőben. Ezután kattintson **a bejelentkezés** elemre.
 
     ![iOS-teszt alkalmazás][2]
 
@@ -488,11 +488,11 @@ Ha Mobile Apps háttér-szolgáltatásként szeretné használni, tekintse meg a
     ![iOS-teszt értesítés megjelenítve][3]
 
 4. A **címzett felhasználóneve címke* szövegmezőbe írja be a regisztrációhoz használt felhasználónevet jelölő címkét egy másik eszközről.
-5. Adjon meg egy értesítési üzenetet, és kattintson az **Értesítés küldése**gombra. Csak azok az eszközök kapják meg az értesítési üzenetet, amelyek regisztrálva vannak a címzett felhasználóneve címkével. Csak ezekre a felhasználókra lesz küldve.
+5. Adjon meg egy értesítési üzenetet, és kattintson az **Értesítés küldése** gombra. Csak azok az eszközök kapják meg az értesítési üzenetet, amelyek regisztrálva vannak a címzett felhasználóneve címkével. Csak ezekre a felhasználókra lesz küldve.
 
     ![iOS-teszt címkézett értesítése][4]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban elsajátította, hogy hogyan küldhet leküldéses értesítéseket olyan adott felhasználóknak, akik a regisztrációjukhoz társított címkével rendelkeznek. Ha szeretné megtudni, hogy hogyan küldhet helyalapú értesítéseket, lépjen tovább a következő oktatóanyagra:
 

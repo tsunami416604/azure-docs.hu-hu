@@ -11,11 +11,11 @@ ms.date: 10/14/2019
 ms.author: haroldw
 ms.custom: devx-track-ansible, devx-track-azurecli
 ms.openlocfilehash: dd967ad08b628f9073edfe548033f7e97845d047
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735116"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016063"
 ---
 # <a name="post-deployment-tasks"></a>Üzembe helyezés utáni feladatok
 
@@ -70,7 +70,7 @@ Jegyezze fel a parancs által visszaadott appId tulajdonságot egy későbbi lé
 
 Az Azure Portalon:
 
-1. Válassza ki **Azure Active Directory** az  >  **alkalmazás regisztrációját** .
+1. Válassza ki **Azure Active Directory** az  >  **alkalmazás regisztrációját**.
 2. Keresse meg az alkalmazás regisztrációját (például OCPAzureAD).
 3. Az eredmények között kattintson az alkalmazás regisztrációja elemre.
 4. A **Beállítások** területen válassza a **szükséges engedélyek** lehetőséget.
@@ -86,7 +86,7 @@ Az Azure Portalon:
 
    ![Alkalmazás-regisztrálási hozzáférés](media/openshift-post-deployment/app-registration-access.png)
 
-8. Válassza a **Done** (Kész) lehetőséget.
+8. Válassza a **Kész** lehetőséget.
 
 ### <a name="configure-openshift-for-azure-ad-authentication"></a>OpenShift konfigurálása az Azure AD-hitelesítéshez
 
@@ -202,6 +202,6 @@ A OSBA a OpenShift-on való telepítéséhez kövesse az itt található utasít
 > [!NOTE]
 > Csak a OpenShift-projekt sablonjának lépéseit kell végrehajtania, nem a teljes telepítés szakaszt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [OpenShift-tároló platform – első lépések](https://docs.openshift.com)

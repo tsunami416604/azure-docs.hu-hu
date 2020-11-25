@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
 ms.openlocfilehash: dffa059b18e159d04b5e3bb8555dabf801ede692
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85511806"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017117"
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>Feladatátvétel és vészhelyreállítás StorSimple 8000 sorozatú eszközök esetében
 
@@ -34,7 +34,7 @@ A StorSimple az **eszközök** panel használatával indítja el az eszköz fela
 
 ## <a name="disaster-recovery-dr-and-device-failover"></a>Vész-helyreállítás (DR) és eszköz feladatátvétele
 
-Vész-helyreállítási (DR) forgatókönyv esetén az elsődleges eszköz működése leáll. A StorSimple az elsődleges eszközt használja _forrásként_ , és áthelyezi a kapcsolódó Felhőbeli adategységeket egy másik _céleszköz_ . Ezt a folyamatot *feladatátvételnek*nevezzük. A következő ábra a feladatátvétel folyamatát szemlélteti.
+Vész-helyreállítási (DR) forgatókönyv esetén az elsődleges eszköz működése leáll. A StorSimple az elsődleges eszközt használja _forrásként_ , és áthelyezi a kapcsolódó Felhőbeli adategységeket egy másik _céleszköz_ . Ezt a folyamatot *feladatátvételnek* nevezzük. A következő ábra a feladatátvétel folyamatát szemlélteti.
 
 ![Mi történik az eszköz feladatátvételével?](./media/storsimple-8000-device-failover-disaster-recovery/failover-dr-flow.png)
 
@@ -120,7 +120,7 @@ A. A szemét-gyűjtemény csak az eszköz teljes tisztítása után engedélyezh
 
 K. **Mi történik, ha a forrásoldali eszközön a kötethez tartozó tárolók törlési feladata sikertelen?**
 
-A.  Ha a törlési feladatot nem sikerül végrehajtani, manuálisan törölheti a kötetek tárolóit. Az **eszközök** panelen válassza ki a forrás eszközt, majd kattintson a **kötetek tárolók**elemre. Válassza ki a fellépett, majd a panel alján található tárolókat, és kattintson a **Törlés**gombra. Miután törölte az összes feladatátvételi mennyiségű tárolót a forrásoldali eszközön, elindíthatja a feladat-visszavételt. További információért látogasson el [a mennyiségi tároló törlése](storsimple-8000-manage-volume-containers.md#delete-a-volume-container)elemre.
+A.  Ha a törlési feladatot nem sikerül végrehajtani, manuálisan törölheti a kötetek tárolóit. Az **eszközök** panelen válassza ki a forrás eszközt, majd kattintson a **kötetek tárolók** elemre. Válassza ki a fellépett, majd a panel alján található tárolókat, és kattintson a **Törlés** gombra. Miután törölte az összes feladatátvételi mennyiségű tárolót a forrásoldali eszközön, elindíthatja a feladat-visszavételt. További információért látogasson el [a mennyiségi tároló törlése](storsimple-8000-manage-volume-containers.md#delete-a-volume-container)elemre.
 
 ## <a name="business-continuity-disaster-recovery-bcdr"></a>Üzletmenet-folytonossági katasztrófa-helyreállítás (BCDR)
 

@@ -13,11 +13,11 @@ ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 49a0e48977393aeab7ff93b79e28acc55a87b51a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87504619"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016182"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>A MongoDB telepítése és konfigurálása Linux rendszerű virtuális gépen
 
@@ -125,7 +125,7 @@ A környezet létrehozásához a legújabb [Azure CLI](/cli/azure/install-az-cli
 az group create --name myResourceGroup --location eastus
 ```
 
-Ezután telepítse a MongoDB sablont az [az Group Deployment Create](/cli/azure/group/deployment)paranccsal. Ha a rendszer kéri, adja meg a saját egyedi értékeit a *newStorageAccountName*, a *dnsNameForPublicIP*és a rendszergazdai Felhasználónév és jelszó számára:
+Ezután telepítse a MongoDB sablont az [az Group Deployment Create](/cli/azure/group/deployment)paranccsal. Ha a rendszer kéri, adja meg a saját egyedi értékeit a *newStorageAccountName*, a *dnsNameForPublicIP* és a rendszergazdai Felhasználónév és jelszó számára:
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
@@ -176,7 +176,7 @@ A környezet létrehozásához a legújabb [Azure CLI](/cli/azure/install-az-cli
 az group create --name myResourceGroup --location eastus
 ```
 
-Ezután telepítse a MongoDB sablont az [az Group Deployment Create](/cli/azure/group/deployment)paranccsal. Adja meg a saját erőforrások nevét és méretét, ha szükséges, például *mongoAdminUsername*, *sizeOfDataDiskInGB*és *configNodeVmSize*:
+Ezután telepítse a MongoDB sablont az [az Group Deployment Create](/cli/azure/group/deployment)paranccsal. Adja meg a saját erőforrások nevét és méretét, ha szükséges, például *mongoAdminUsername*, *sizeOfDataDiskInGB* és *configNodeVmSize*:
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \

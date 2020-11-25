@@ -1,60 +1,27 @@
 ---
-title: Az Azure Managed Disks teljesítményének módosítása
-description: Ismerje meg a felügyelt lemezek teljesítményi szintjeit, és megtudhatja, hogyan módosíthatja a meglévő felügyelt lemezek teljesítményi szintjeit a Azure PowerShell modul vagy az Azure CLI használatával.
+title: Az Azure Managed Disks teljesítményének módosítása – CLI/PowerShell
+description: Megtudhatja, hogyan módosíthatja a meglévő felügyelt lemezek teljesítményi szintjeit a Azure PowerShell modul vagy az Azure CLI használatával.
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 11/11/2020
+ms.date: 11/19/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.custom: references_regions
-ms.openlocfilehash: 923c5970183bd192ac1a2f20fb775d96dcc06865
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 8a21a78bf27847b41c0af7bc4361f7c6c8071949
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540637"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "96016519"
 ---
-# <a name="performance-tiers-for-managed-disks-preview"></a>A felügyelt lemezek teljesítményi szintjei (előzetes verzió)
+# <a name="change-your-performance-tier-using-the-azure-powershell-module-or-the-azure-cli"></a>A teljesítmény szintjeinek módosítása a Azure PowerShell modul vagy az Azure CLI használatával
 
-A Azure Disk Storage beépített kitörési képességekkel rendelkezik, amelyek nagyobb teljesítményt biztosítanak a rövid távú váratlan forgalom kezeléséhez. A prémium SSD-k rugalmasan növelhetik a lemez teljesítményét a lemez tényleges méretének növelése nélkül. Ez a funkció lehetővé teszi a számítási feladatok teljesítményének kielégítését és a költségek csökkentését. 
-
-> [!NOTE]
-> Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. 
-
-Ez a funkció ideális olyan eseményekhez, amelyek átmenetileg igénylik a magasabb szintű teljesítményt, például az üdülési vásárlást, a teljesítmény tesztelését vagy a képzési környezet futtatását. Ezeknek az eseményeknek a kezeléséhez használhat magasabb szintű teljesítményt, ha szüksége van rá. Ezután visszatérhet az eredeti szintjéhez, ha már nincs szüksége a további teljesítményre.
-
-## <a name="how-it-works"></a>Működés
-
-Amikor először telepít vagy kiépít egy lemezt, a lemez alapteljesítményi szintje a kiosztott lemez mérete alapján van beállítva. A magasabb szintű igények kielégítéséhez magasabb teljesítményszint is használható. Ha már nincs szüksége erre a teljesítményre, visszatérhet a kezdeti teljesítmény szintjéhez.
-
-A számlázási változások a rétegek változásakor változnak. Ha például kiépít egy P10-lemezt (128 GiB), az alapteljesítmény szintje P10 (500 IOPS és 100 MBps) van beállítva. A díjat a P10 díjszabása alapján számítjuk fel. A szintet úgy frissítheti, hogy az megfeleljen a P50 teljesítményének (7 500 IOPS és 250 MBps) a lemez méretének növelése nélkül. A frissítés ideje alatt a P50 díjszabása alapján számítjuk fel a díjat. Ha már nincs szüksége a magasabb teljesítményre, visszatérhet a P10 szintjéhez. A lemez újbóli számlázása a P10 arányban történik.
-
-| Lemezméret | Alapteljesítmény szintje | Frissíthető a következőre |
-|----------------|-----|-------------------------------------|
-| 4. GiB | P1 | P2, P3, P4, P6, P10, P15, P20, P30, P40, P50 |
-| 8 GiB | P2 | P3, P4, P6, P10, P15, P20, P30, P40, P50 |
-| 16 GiB | P3 | P4, P6, P10, P15, P20, P30, P40, P50 | 
-| 32 GiB | P4 | P6, P10, P15, P20, P30, P40, P50 |
-| 64 GiB | P6 | P10, P15, P20, P30, P40, P50 |
-| 128 GiB | P10 | P15, P20, P30, P40, P50 |
-| 256 GiB | P15 | P20, P30, P40, P50 |
-| 512 GiB | P20 | P30, P40, P50 |
-| 1 TiB | P30 | P40, P50 |
-| 2 TiB | P40 | P50 |
-| 4 TiB | P50 | Nincsenek |
-| 8 TiB | P60 |  P70, P80 |
-| 16 TiB | P70 | P80 |
-| 32 tebibájt | P80 | Nincsenek |
-
-Számlázási információk: a [felügyelt lemez díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/).
+[!INCLUDE [virtual-machines-disks-performance-tiers-intro](../../includes/virtual-machines-disks-performance-tiers-intro.md)]
 
 ## <a name="restrictions"></a>Korlátozások
 
-- Ez a funkció jelenleg csak prémium SSD-k esetén támogatott.
-- A lemez szintjeinek megváltoztatásához le kell szabadítania a virtuális gépet, vagy le kell választania a lemezt egy futó virtuális gépről.
-- A P60, a P70 és a P80 teljesítmény-szintjeinek használata a 4 096 GiB vagy újabb lemezekre korlátozódik.
-- A lemez teljesítményi szintje csak 24 óránként lehet visszaminősíthető.
+[!INCLUDE [virtual-machines-disks-performance-tiers-restrictions](../../includes/virtual-machines-disks-performance-tiers-restrictions.md)]
 
 ## <a name="create-an-empty-data-disk-with-a-tier-higher-than-the-baseline-tier"></a>Hozzon létre egy üres adatlemezt, amely az alapcsomagnál magasabb szintű.
 

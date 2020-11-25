@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 03/14/2019
 ms.author: alkohli
 ms.openlocfilehash: 36ed87a75d590a8647e5347b3e90e6f5159dc6b5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961833"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016845"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>A StorSimple-riasztások megtekintése és kezelése a StorSimple Eszközkezelő szolgáltatással
 
@@ -58,11 +58,11 @@ Miután engedélyezte az e-mailes értesítéseket egy eszközhöz, az értesít
    
 2. Az **általános beállítások** panelen lépjen a **riasztási beállítások** elemre, és állítsa be a következőket:
    
-   1. Az **e-mail értesítés küldése** mezőben válassza az **Igen**lehetőséget.
+   1. Az **e-mail értesítés küldése** mezőben válassza az **Igen** lehetőséget.
    2. Az **e-mail szolgáltatás-rendszergazdák** mezőben válassza az **Igen** lehetőséget, ha szeretné, hogy a szolgáltatás rendszergazdája és az összes társ-rendszergazda megkapja a riasztási értesítéseket.
-   3. A **többi e-mail-címzett** mezőben adja meg az összes többi címzett e-mail-címét, akiknek a riasztási értesítéseket kell kapniuk. Adja meg a neveket a *valaki \@ Somewhere.com*formátumban. Az e-mail-címeket pontosvesszővel válassza el egymástól. Eszközönként legfeljebb 20 e-mail-címet állíthat be. 
+   3. A **többi e-mail-címzett** mezőben adja meg az összes többi címzett e-mail-címét, akiknek a riasztási értesítéseket kell kapniuk. Adja meg a neveket a *valaki \@ Somewhere.com* formátumban. Az e-mail-címeket pontosvesszővel válassza el egymástól. Eszközönként legfeljebb 20 e-mail-címet állíthat be. 
       
-3. Teszt e-mail értesítés küldéséhez kattintson a **Tesztüzenet küldése**elemre. A StorSimple Eszközkezelő szolgáltatás megjeleníti az állapotüzenetek üzeneteit, mert továbbítja a teszt értesítését.
+3. Teszt e-mail értesítés küldéséhez kattintson a **Tesztüzenet küldése** elemre. A StorSimple Eszközkezelő szolgáltatás megjeleníti az állapotüzenetek üzeneteit, mert továbbítja a teszt értesítését.
 
     ![Riasztási beállítások](./media/storsimple-8000-manage-alerts/configure-alerts-email3.png)
 
@@ -73,7 +73,7 @@ Miután engedélyezte az e-mailes értesítéseket egy eszközhöz, az értesít
    > [!NOTE]
    > Ha a teszt értesítési üzenet nem küldhető el, a StorSimple Eszközkezelő szolgáltatás megfelelő hibaüzenetet jelenít meg. Várjon néhány percet, majd próbálja meg újra elküldeni a teszt értesítési üzenetet. 
 
-5. A konfiguráció befejezése után kattintson a **Mentés**gombra. Ha a rendszer megerősítést kér, kattintson az **Igen** gombra.
+5. A konfiguráció befejezése után kattintson a **Mentés** gombra. Ha a rendszer megerősítést kér, kattintson az **Igen** gombra.
 
      ![Riasztások tesztelési értesítő e-mail-címe 2](./media/storsimple-8000-manage-alerts/configure-alerts-email5.png)
 
@@ -89,9 +89,9 @@ Ha a listában egy riasztásra kattint, a riasztás további részleteket tartal
 
 ![Hardveres riasztás – példa](./media/storsimple-8000-manage-alerts/configure-alerts-email14.png)
 
-Ha az adatokat Microsoft ügyfélszolgálata szeretné elküldeni, a riasztás részleteit szövegfájlba másolhatja. Miután végrehajtotta a javaslatot, és feloldotta a riasztási feltételt a helyszínen, törölje a riasztást az eszközről, és válassza ki **Alerts** a riasztást a riasztások panelen, és kattintson a **Törlés**gombra. Több riasztás törléséhez jelölje ki az egyes riasztásokat, kattintson bármelyik oszlopra a **riasztási** oszlop kivételével, majd kattintson a **Törlés** gombra, miután kiválasztotta az összes riasztást, amelyeket törölni szeretne. Vegye figyelembe, hogy egyes riasztások automatikusan törlődnek a probléma megoldásakor, vagy ha a rendszer új információkkal frissíti a riasztást.
+Ha az adatokat Microsoft ügyfélszolgálata szeretné elküldeni, a riasztás részleteit szövegfájlba másolhatja. Miután végrehajtotta a javaslatot, és feloldotta a riasztási feltételt a helyszínen, törölje a riasztást az eszközről, és válassza ki **Alerts** a riasztást a riasztások panelen, és kattintson a **Törlés** gombra. Több riasztás törléséhez jelölje ki az egyes riasztásokat, kattintson bármelyik oszlopra a **riasztási** oszlop kivételével, majd kattintson a **Törlés** gombra, miután kiválasztotta az összes riasztást, amelyeket törölni szeretne. Vegye figyelembe, hogy egyes riasztások automatikusan törlődnek a probléma megoldásakor, vagy ha a rendszer új információkkal frissíti a riasztást.
 
-Ha a **Törlés**gombra kattint, lehetősége lesz a riasztással kapcsolatos megjegyzések és a probléma megoldásához szükséges lépések megadására. A rendszer néhány eseményt töröl, ha egy másik esemény új információval aktiválódik. Ebben az esetben a következő üzenet jelenik meg.
+Ha a **Törlés** gombra kattint, lehetősége lesz a riasztással kapcsolatos megjegyzések és a probléma megoldásához szükséges lépések megadására. A rendszer néhány eseményt töröl, ha egy másik esemény új információval aktiválódik. Ebben az esetben a következő üzenet jelenik meg.
 
 ![Riasztási üzenet törlése](./media/storsimple-manage-alerts/admin_alerts_system_clear.png)
 
@@ -138,7 +138,7 @@ Ha a Felhőbeli kapcsolat nem sikerül a StorSimple éles eszközén, akkor az e
 * A **helyi adatokat az eszközön**: egy ideig nem lehet megszakítani, és a rendszer továbbra is kiszolgálja az olvasást. Mivel azonban a függőben lévő IOs-növekedés és a korlát meghaladja a határértéket, az olvasási műveletek sikertelenek lesznek.
 
     Az eszközön lévő adatmennyiségtől függően az írás a Felhőbeli kapcsolat megszakadását követő első néhány órában is folytatódni fog. Az írások ezután lelassulnak, és végül sikertelenek lesznek, ha a Felhőbeli kapcsolat több órán keresztül megszakad. (A felhőbe leküldhető adatmennyiséghez ideiglenes tárterület van az eszközön. A rendszer kiüríti ezt a területet az adatküldés során. Ha a kapcsolat meghiúsul, akkor a rendszer nem küldi le a felhőbe az ebben a tárolóhelyen lévő adatvesztést, és az i/o-művelet sikertelen lesz.)
-* A **felhőben tárolt**adatműveletek esetén a legtöbb Felhőbeli kapcsolódási hiba esetén hibaüzenetet ad vissza. A kapcsolat visszaállítása után az IOs-t a felhasználó anélkül folytatja, hogy online állapotba hozza a kötetet. Ritka esetekben előfordulhat, hogy felhasználói beavatkozásra van szükség ahhoz, hogy a kötetet online állapotba vonja a Azure Portal.
+* A **felhőben tárolt** adatműveletek esetén a legtöbb Felhőbeli kapcsolódási hiba esetén hibaüzenetet ad vissza. A kapcsolat visszaállítása után az IOs-t a felhasználó anélkül folytatja, hogy online állapotba hozza a kötetet. Ritka esetekben előfordulhat, hogy felhasználói beavatkozásra van szükség ahhoz, hogy a kötetet online állapotba vonja a Azure Portal.
 * A **Felhőbeli Pillanatképek folyamatban**: a művelet többször is próbálkozik a 4-5 órán belül, és ha a kapcsolat nem áll helyre, a Felhőbeli Pillanatképek sikertelenek lesznek.
 
 ### <a name="cluster-alerts"></a>Fürt riasztásai
@@ -226,6 +226,6 @@ Ha a Felhőbeli kapcsolat nem sikerül a StorSimple éles eszközén, akkor az e
 |:--- |:--- |:--- |
 | A hardver-összetevő környezeti hőmérséklet-érzékelője nem sikerült állapotot jelez.  | Ház típusa: fő ház | Ez a riasztás akkor aktiválódik, ha a StorSimple körüli környezeti környezet egy elfogadható tartomány fölé esik. Győződjön meg róla, hogy az adatközpontban az AC-szellőzőn kívül a környezeti környezet vagy a légáram található. Ha a hőmérséklet visszatér a normál értékre, a rendszer automatikusan törli a riasztást egy kis idő elteltével. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához.   |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a [StorSimple hibákról és az eszközök telepítési problémáinak elhárításáról](storsimple-8000-troubleshoot-deployment.md).

@@ -3,45 +3,46 @@ title: 'Rövid útmutató: C# ASP.NET Core-alkalmazás létrehozása'
 description: Megtudhatja, hogyan futtathat webalkalmazásokat Azure App Service az első ASP.NET Core-alkalmazás üzembe helyezésével.
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
-ms.date: 09/24/2020
+ms.date: 11/23/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperfq1
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: aa8eb945ba77e1a4ac5215acf3bdbc12cac0c4c9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bf7d911c6f9d90e400e589828c093877875e7d97
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91661125"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96015632"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Rövid útmutató: ASP.NET Core Webalkalmazás létrehozása az Azure-ban
 
 ::: zone pivot="platform-windows"  
 
-Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre és helyezheti üzembe az első ASP.NET Core webalkalmazását [Azure app Service](overview.md). 
+Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre és helyezheti üzembe az első ASP.NET Core webalkalmazását [Azure app Service](overview.md). A App Service támogatja a .NET 5,0-alkalmazásokat.
 
 Ha elkészült, egy App Service üzemeltetési csomagból és egy üzembe helyezett webalkalmazással rendelkező App Service álló Azure-erőforráscsoport lesz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/dotnet/).
-- Ez a rövid útmutató üzembe helyez egy alkalmazást a Windows App Service. A _linuxon_app Service telepítéséhez lásd: [.net Core-Webalkalmazás létrehozása a app Serviceban](./quickstart-dotnetcore.md).
 - Telepítse a <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> alkalmazást a **ASP.net és a webes fejlesztési** munkaterheléssel.
 
   Ha már telepítette a Visual Studio 2019-et:
 
-  - A **Help**  >  **frissítések keresése**lehetőség kiválasztásával telepítse a legújabb frissítéseket a Visual Studióban.
-  - A számítási feladat hozzáadásához **válassza az eszközök**  >  **beolvasása eszközök és szolgáltatások**lehetőséget.
+  - A **Help**  >  **frissítések keresése** lehetőség kiválasztásával telepítse a legújabb frissítéseket a Visual Studióban. A legújabb frissítések tartalmazzák a .NET 5,0 SDK-t.
+  - A számítási feladat hozzáadásához **válassza az eszközök**  >  **beolvasása eszközök és szolgáltatások** lehetőséget.
 
 
 ## <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core-webalkalmazás létrehozása
 
 Hozzon létre egy ASP.NET Core webalkalmazást a Visual Studióban a következő lépések végrehajtásával:
 
-1. Nyissa meg a Visual studiót, és válassza **az új projekt létrehozása**lehetőséget.
+# <a name="net-core-31"></a>[.NET Core 3,1](#tab/netcore31)
 
-1. Az **új projekt létrehozása**területen válassza ki **ASP.net Core webalkalmazás** elemet, és győződjön meg arról, hogy a **C#** szerepel a választott nyelveken, majd válassza a **tovább**lehetőséget.
+1. Nyissa meg a Visual studiót, és válassza **az új projekt létrehozása** lehetőséget.
 
-1. Az **új projekt konfigurálása**lapon nevezze el a webalkalmazás-projekt *myFirstAzureWebApp*, és válassza a **Létrehozás**lehetőséget.
+1. Az **új projekt létrehozása** területen válassza ki **ASP.net Core webalkalmazás** elemet, és győződjön meg arról, hogy a **C#** szerepel a választott nyelveken, majd válassza a **tovább** lehetőséget.
+
+1. Az **új projekt konfigurálása** lapon nevezze el a webalkalmazás-projekt *myFirstAzureWebApp*, és válassza a **Létrehozás** lehetőséget.
 
    ![A webalkalmazás-projekt konfigurálása](./media/quickstart-dotnetcore/configure-web-app-project.png)
 
@@ -52,6 +53,28 @@ Hozzon létre egy ASP.NET Core webalkalmazást a Visual Studióban a következő
 1. A Visual Studio menüjében válassza a **hibakeresés**  >  **Indítás hibakeresés nélkül** lehetőséget a webalkalmazás helyi futtatásához.
 
    ![Helyileg futó webalkalmazás](./media/quickstart-dotnetcore/web-app-running-locally.png)
+
+# <a name="net-50"></a>[.NET 5,0](#tab/net50)
+
+1. Nyissa meg a Visual studiót, és válassza **az új projekt létrehozása** lehetőséget.
+
+1. Az **új projekt létrehozása** területen válassza ki **ASP.net Core webalkalmazás** elemet, és győződjön meg arról, hogy a **C#** szerepel a választott nyelveken, majd válassza a **tovább** lehetőséget.
+
+1. Az **új projekt konfigurálása** lapon nevezze el a webalkalmazás-projekt *myFirstAzureWebApp*, és válassza a **Létrehozás** lehetőséget.
+
+   ![A webalkalmazás-projekt konfigurálása](./media/quickstart-dotnetcore/configure-web-app-project.png)
+
+1. .NET 5,0-alkalmazások esetén válassza a legördülő menüben a **ASP.NET Core 5,0** elemet.
+
+1. Bármilyen típusú ASP.NET Core webalkalmazás üzembe helyezhető az Azure-ban, de ebben a rövid útmutatóban válassza a **ASP.net Core webalkalmazás** -sablont. Győződjön meg arról, hogy a **hitelesítés** **Nincs hitelesítés**, és nincs más lehetőség kiválasztva. Ezután kattintson a **Létrehozás** elemre.
+
+   ![Új ASP.NET Core Webalkalmazás létrehozása](./media/quickstart-dotnetcore/create-aspnet-core-web-app-5.png) 
+   
+1. A Visual Studio menüjében válassza a **hibakeresés**  >  **Indítás hibakeresés nélkül** lehetőséget a webalkalmazás helyi futtatásához.
+
+   ![Helyileg futó webalkalmazás](./media/quickstart-dotnetcore/web-app-running-locally.png)
+
+---
 
 ## <a name="publish-your-web-app"></a>Webalkalmazás közzététele
 
@@ -64,19 +87,23 @@ A App Service beállításának részeként a következőket fogja létrehozni:
 
 Kövesse az alábbi lépéseket a App Service létrehozásához és a webalkalmazás közzétételéhez:
 
-1. A **megoldáskezelő**kattintson a jobb gombbal a **myFirstAzureWebApp** projektre, és válassza a **Közzététel**lehetőséget. Ha még nem jelentkezett be Azure-fiókjába a Visual studióból, válassza **a fiók hozzáadása** vagy a **Bejelentkezés**lehetőséget. Létrehozhat egy ingyenes Azure-fiókot is.
+1. A **megoldáskezelő** kattintson a jobb gombbal a **myFirstAzureWebApp** projektre, és válassza a **Közzététel** lehetőséget. 
 
-1. A **Közzététel célhelyének** kiválasztása párbeszédpanelen válassza a **app Service**lehetőséget, válassza az **új létrehozása**lehetőséget, majd válassza a **profil létrehozása**lehetőséget.
+1. A **Közzététel** területen válassza az **Azure** lehetőséget, majd kattintson a **tovább** gombra.
 
-   ![Közzétételi cél kiválasztása](./media/quickstart-dotnetcore/pick-publish-target-vs2019.png)
+1. A lehetőségei attól függnek, hogy már bejelentkezett-e az Azure-ba, és hogy van-e egy Azure-fiókhoz társított Visual Studio-fiókja. Válassza a **fiók hozzáadása** lehetőséget, vagy **Jelentkezzen** be az Azure-előfizetésbe való bejelentkezéshez. Ha már bejelentkezett, válassza ki a kívánt fiókot.
 
-1. A **app Service: hozzon létre új** párbeszédpanelt, adjon meg egy globálisan egyedi **nevet** az alkalmazásnak az alapértelmezett név elfogadásával vagy egy új név megadásával. Az érvényes karakterek a következők: `a-z` ,, `A-Z` `0-9` és `-` . A rendszer ezt a **nevet** használja a webalkalmazáshoz tartozó URL-előtagként a következő formátumban: `http://<app_name>.azurewebsites.net` .
+   ![Bejelentkezés az Azure-ba](./media/quickstart-dotnetcore/sign-in-azure-vs2019.png)
 
-1. Az **előfizetés**mezőben fogadja el a felsorolt előfizetést, vagy válasszon ki egy újat a legördülő listából.
+1. **App Service példányok** jobb oldalán kattintson a elemre **+** .
 
-1. Az **erőforráscsoport**területen válassza az **új**lehetőséget. Az **Új erőforráscsoport neve**mezőbe írja be a *myResourceGroup* nevet, majd kattintson **az OK gombra**. 
+   ![Új App Service alkalmazás](./media/quickstart-dotnetcore/publish-new-app-service.png)
 
-1. **Üzemeltetési csomag**esetén válassza az **új**lehetőséget. 
+1. Az **előfizetés** mezőben fogadja el a felsorolt előfizetést, vagy válasszon ki egy újat a legördülő listából.
+
+1. Az **erőforráscsoport** területen válassza az **új** lehetőséget. Az **Új erőforráscsoport neve** mezőbe írja be a *myResourceGroup* nevet, majd kattintson **az OK gombra**. 
+
+1. **Üzemeltetési csomag** esetén válassza az **új** lehetőséget. 
 
 1. A **üzemeltetési tervben: hozzon létre új** párbeszédpanelt, és adja meg a következő táblázatban megadott értékeket:
 
@@ -88,17 +115,17 @@ Kövesse az alábbi lépéseket a App Service létrehozásához és a webalkalma
    
    ![Új üzemeltetési csomag létrehozása](./media/quickstart-dotnetcore/create-new-hosting-plan-vs2019.png)
 
-1. Hagyja **Application Insights** beállítást a *none*értékre.
+1. A **név** mezőben adjon meg egy egyedi nevet, amely csak az érvényes karaktereket tartalmazza:,, `a-z` `A-Z` `0-9` és `-` . Elfogadhatja az automatikusan létrehozott egyedi nevet is. A webalkalmazás URL-címe `http://<app-name>.azurewebsites.net`, amelyben az `<app-name>` az alkalmazás neve.
 
-1. Az **app Service: új létrehozása** párbeszédpanelen válassza a **Létrehozás** lehetőséget az Azure-erőforrások létrehozásának megkezdéséhez.
+2. Válassza a **Létrehozás** lehetőséget az Azure-erőforrások létrehozásához.
 
-   ![Új App Service létrehozása](./media/quickstart-dotnetcore/create-new-app-service-vs2019.png)
+   ![Alkalmazás-erőforrások létrehozása](./media/quickstart-dotnetcore/web-app-name-vs2019.png)
 
-1. A varázsló befejezése után válassza a **Közzététel**lehetőséget.
+   A varázsló befejezése után létrejön az Azure-erőforrások, és készen áll a közzétételre.
 
-   ![Webalkalmazás közzététele az Azure-ban](./media/quickstart-dotnetcore/publish-web-app-vs2019.png)
+3. A varázsló bezárásához kattintson a **Befejezés** gombra.
 
-   A Visual Studio közzéteszi ASP.NET Core webalkalmazását az Azure-ban, és elindítja az alkalmazást az alapértelmezett böngészőben. 
+1. A **közzétételi** lapon kattintson a **Közzététel** elemre. A Visual Studio létrehozza, becsomagolja és közzéteszi az alkalmazást az Azure-ban, majd elindítja az alkalmazást az alapértelmezett böngészőben.
 
    ![Az Azure-ban futó közzétett ASP.NET-webalkalmazás](./media/quickstart-dotnetcore/web-app-running-live.png)
 
@@ -108,7 +135,7 @@ Kövesse az alábbi lépéseket a App Service létrehozásához és a webalkalma
 
 A webalkalmazás frissítéséhez és újbóli üzembe helyezéséhez kövesse az alábbi lépéseket:
 
-1. **Megoldáskezelő**a projekt alatt nyissa meg a **Pages**  >  **index. cshtml**lapot.
+1. **Megoldáskezelő** a projekt alatt nyissa meg a **Pages**  >  **index. cshtml** lapot.
 
 1. Cserélje le a teljes `<div>` címkét a következő kódra:
 
@@ -121,17 +148,17 @@ A webalkalmazás frissítéséhez és újbóli üzembe helyezéséhez kövesse a
 
 1. Az Azure-beli ismételt üzembe helyezéshez kattintson a jobb gombbal a **myFirstAzureWebApp** projektre a **Solution Explorer** (Megoldáskezelő) lapon, és válassza a **Publish** (Közzététel) elemet.
 
-1. Az összefoglalás **közzététele** lapon válassza a **Közzététel**lehetőséget.
+1. Az összefoglalás **közzététele** lapon válassza a **Közzététel** lehetőséget.
 
-   ![Frissítés közzététele a webalkalmazásban](./media/quickstart-dotnetcore/publish-update-to-web-app-vs2019.png)
+   <!-- ![Publish update to web app](./media/quickstart-dotnetcore/publish-update-to-web-app-vs2019.png) -->
 
-Miután a közzététel befejeződött, a Visual Studio tallózza a webalkalmazás URL-címét.
+    Miután a közzététel befejeződött, a Visual Studio tallózza a webalkalmazás URL-címét.
 
-![Az Azure-ban futó ASP.NET-webalkalmazás frissítve](./media/quickstart-dotnetcore/updated-web-app-running-live.png)
+    ![Az Azure-ban futó ASP.NET-webalkalmazás frissítve](./media/quickstart-dotnetcore/updated-web-app-running-live.png)
 
 ## <a name="manage-the-azure-app"></a>Az Azure-alkalmazás kezelése
 
-A webalkalmazás kezeléséhez nyissa meg a [Azure Portal](https://portal.azure.com), és keresse meg, majd válassza a **app Services**lehetőséget.
+A webalkalmazás kezeléséhez nyissa meg a [Azure Portal](https://portal.azure.com), és keresse meg, majd válassza a **app Services** lehetőséget.
 
 ![App Services kiválasztása](./media/quickstart-dotnetcore/app-services.png)
 
@@ -168,12 +195,23 @@ A cikk lépéseit Mac, Windows vagy Linux rendszert futtató gépen is követhet
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Előfeltételek
+## <a name="set-up-your-initial-environment"></a>A kezdeti környezet beállítása
+
+# <a name="net-core-31"></a>[.NET Core 3,1](#tab/netcore31)
 
 Az oktatóanyag elvégzéséhez:
 
-* <a href="https://git-scm.com/" target="_blank">A Git telepítése</a>
-* <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">A legújabb .NET Core 3,1 SDK telepítése</a>
+* <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">Telepítse a legújabb .net Core 3,1 SDK</a>-t.
+* <a href="/cli/azure/install-azure-cli" target="_blank">A legújabb Azure CLI telepítése</a>.
+
+# <a name="net-50"></a>[.NET 5,0](#tab/net50)
+
+Az oktatóanyag elvégzéséhez:
+
+* <a href="https://dotnet.microsoft.com/download/dotnet/5.0" target="_blank">Telepítse a legújabb .net 5,0 SDK</a>-t.
+* <a href="/cli/azure/install-azure-cli" target="_blank">A legújabb Azure CLI telepítése</a>.
+
+---
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
 
@@ -196,8 +234,6 @@ dotnet new web
 
 Futtassa helyileg az alkalmazást, hogy lássa, hogyan fog kinézni az Azure-ban üzembe helyezve. 
 
-Állítsa vissza a NuGet-csomagokat, és futtassa az alkalmazást.
-
 ```bash
 dotnet run
 ```
@@ -208,76 +244,56 @@ Az oldalon látható mintaalkalmazáson ekkor a **Hello World** üzenetnek kell 
 
 ![Tesztelés böngészővel](media/quickstart-dotnetcore/dotnet-browse-local.png)
 
-A terminálablakban nyomja le a **Ctrl+C** billentyűkombinációt a webkiszolgálóból történő kilépéshez. Inicializáljon egy Git-adattárat a .NET Core-projekthez.
+[Problémák léptek fel? Tudassa velünk.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
 
-```bash
-git init
-git add .
-git commit -m "first commit"
+## <a name="sign-into-azure"></a>Bejelentkezés az Azure-ba
+A terminál ablakban jelentkezzen be az Azure-ba a következő paranccsal:
+
+```azurecli
+az login
 ```
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
+## <a name="deploy-the-app"></a>Az alkalmazás üzembe helyezése
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+Telepítse a kódot a helyi mappájába (*hellodotnetcore*) a következő `az webapp up` parancs használatával:
 
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
-
-[!INCLUDE [Configure deployment user](../../includes/configure-deployment-user.md)]
-
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
-
-[!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-linux.md)]
-
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
-
-[!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan-linux.md)]
-
-[Problémák léptek fel? Tudassa velünk.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
-
-## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
-
-[!INCLUDE [Create web app](../../includes/app-service-web-create-web-app-dotnetcore-linux-no-h.md)]
-
-Tallózással keresse meg az újonnan létrehozott alkalmazást. Cserélje le az _ &lt; app-Name>_ az alkalmazás nevére.
-
-```bash
-https://<app-name>.azurewebsites.net
+```azurecli
+az webapp up --sku F1 --name <app-name> --os-type linux
 ```
 
-Az új alkalmazásnak így kell kinéznie:
+- Ha a `az` parancs nem ismerhető fel, győződjön meg arról, hogy az Azure CLI telepítve van a [kezdeti környezet beállítása](#set-up-your-initial-environment)című témakörben leírtak szerint.
+- Cserélje le a `<app-name>` karaktert az összes Azure-beli egyedi névre (*érvényes karakterek: `a-z` , `0-9` és `-`*). Jó példa a vállalat nevének és az alkalmazás-azonosító kombinációjának használatára.
+- Az `--sku F1` argumentum a webalkalmazást az ingyenes díjszabási szinten hozza létre. Hagyja ki ezt az argumentumot a gyorsabb prémium szint használatához, amely óradíjat eredményez.
+- Igény szerint megadhatja az argumentumot `--location <location-name>` , ahol az `<location-name>` egy elérhető Azure-régió. Az Azure-fiók számára engedélyezett régiók listáját a parancs futtatásával kérheti le [`az account list-locations`](/cli/azure/appservice#az-appservice-list-locations) .
 
-![Alkalmazás üres lapja](media/quickstart-dotnetcore/dotnet-browse-created.png)
+A parancs végrehajtása több percet is igénybe vehet. A futtatása közben üzeneteket biztosít az erőforráscsoport létrehozásához, a App Service terv és az üzemeltetési alkalmazáshoz, a naplózás konfigurálásához, majd a ZIP-telepítés elindításához. Ezután a következő üzenet jelenik meg: "az alkalmazás elindítható a http:// &lt; app-name &gt; . azurewebsites.net" néven, amely az alkalmazás URL-címe az Azure-ban.
 
-[!INCLUDE [Push to Azure](../../includes/app-service-web-git-push-to-azure.md)] 
+# <a name="net-core-31"></a>[.NET Core 3,1](#tab/netcore31)
 
-<pre>
-Enumerating objects: 5, done.
-Counting objects: 100% (5/5), done.
-Compressing objects: 100% (3/3), done.
-Writing objects: 100% (3/3), 285 bytes | 95.00 KiB/s, done.
-Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
-remote: Deploy Async
-remote: Updating branch 'master'.
-remote: Updating submodules.
-remote: Preparing deployment for commit id 'd6b54472f7'.
-remote: Repository path is /home/site/repository
-remote: Running oryx build...
-remote: Build orchestrated by Microsoft Oryx, https://github.com/Microsoft/Oryx
-remote: You can report issues at https://github.com/Microsoft/Oryx/issues
-remote:
-remote: Oryx Version      : 0.2.20200114.13, Commit: 204922f30f8e8d41f5241b8c218425ef89106d1d, ReleaseTagName: 20200114.13
-remote: Build Operation ID: |imoMY2y77/s=.40ca2a87_
-remote: Repository Commit : d6b54472f7e8e9fd885ffafaa64522e74cf370e1
-.
-.
-.
-remote: Deployment successful.
-remote: Deployment Logs : 'https://&lt;app-name&gt;.scm.azurewebsites.net/newui/jsonviewer?view_url=/api/deployments/d6b54472f7e8e9fd885ffafaa64522e74cf370e1/log'
-To https://&lt;app-name&gt;.scm.azurewebsites.net:443/&lt;app-name&gt;.git
-   d87e6ca..d6b5447  master -> master
-</pre>
+![Példa az az WebApp up parancs kimenetére](./media/quickstart-dotnetcore/az-webapp-up-output-3.1.png)
+
+# <a name="net-50"></a>[.NET 5,0](#tab/net50)
+
+<!-- Deploy the code in your local folder (*hellodotnetcore*) using the `az webapp up` command:
+
+```azurecli
+az webapp up --sku B1 --name <app-name> --os-type linux
+```
+
+- If the `az` command isn't recognized, be sure you have the Azure CLI installed as described in [Set up your initial environment](#set-up-your-initial-environment).
+- Replace `<app-name>` with a name that's unique across all of Azure (*valid characters are `a-z`, `0-9`, and `-`*). A good pattern is to use a combination of your company name and an app identifier.
+- The `--sku B1` argument creates the web app in the Basic pricing tier, which incurs an hourly cost. Omit this argument to use a faster premium tier, which costs more.
+- You can optionally include the argument `--location <location-name>` where `<location-name>` is an available Azure region. You can retrieve a list of allowable regions for your Azure account by running the [`az account list-locations`](/cli/azure/appservice#az-appservice-list-locations) command.
+
+The command may take a few minutes to complete. While running, it provides messages about creating the resource group, the App Service plan and hosting app, configuring logging, then performing ZIP deployment. It then gives the message, "You can launch the app at http://&lt;app-name&gt;.azurewebsites.net", which is the app's URL on Azure. -->
+
+![Példa az az WebApp up parancs kimenetére](./media/quickstart-dotnetcore/az-webapp-up-output-5.0.png)
+
+---
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
+
+[!include [az webapp up command note](../../includes/app-service-web-az-webapp-up-note.md)]
 
 ## <a name="browse-to-the-app"></a>Az alkalmazás megkeresése tallózással
 
@@ -303,12 +319,13 @@ A helyi könyvtárban nyissa meg a _Startup.cs_ fájlt. Végezzen el egy kis mó
 await context.Response.WriteAsync("Hello Azure!");
 ```
 
-Mentse a módosításokat a Gitben, majd továbbítsa a kód módosításait az Azure-ba.
+Mentse a módosításokat, majd telepítse újra az alkalmazást a `az webapp up` parancs használatával:
 
-```bash
-git commit -am "updated output"
-git push azure master
+```azurecli
+az webapp up
 ```
+
+Ez a parancs azokat az értékeket használja, amelyek helyileg vannak gyorsítótárazva a *. Azure/config* fájlban, beleértve az alkalmazás nevét, az erőforráscsoportot és a app Service tervet.
 
 Az üzembe helyezés befejezése után váltson vissza a böngészőablakban megnyíló böngészőablakra, és kattintson a frissítés **gombra** .
 
@@ -320,13 +337,13 @@ Az üzembe helyezés befejezése után váltson vissza a böngészőablakban meg
 
 A létrehozott alkalmazás kezeléséhez lépjen a <a href="https://portal.azure.com" target="_blank">Azure Portal</a> .
 
-A bal oldali menüben kattintson a **app Services**elemre, majd kattintson az Azure-alkalmazás nevére.
+A bal oldali menüben kattintson a **app Services** elemre, majd kattintson az Azure-alkalmazás nevére.
 
-:::image type="content" source="./media/quickstart-dotnetcore/portal-app-service-list.png" alt-text="Képernyőkép a App Services oldalon egy példaként kiválasztott webalkalmazással.":::
+:::image type="content" source="./media/quickstart-dotnetcore/portal-app-service-list-up.png" alt-text="Képernyőkép a App Services lapról, amely egy példaként kiválasztott Azure-alkalmazást mutat be.":::
 
 Megtekintheti az alkalmazás áttekintés lapját. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a tallózás, leállítás, elindítás, újraindítás és törlés. 
 
-![Az App Service lap az Azure Portalon](media/quickstart-dotnetcore/portal-app-overview.png)
+![Az App Service lap az Azure Portalon](media/quickstart-dotnetcore/portal-app-overview-up.png)
 
 A bal oldali menü az alkalmazás konfigurálásához biztosít különböző oldalakat. 
 

@@ -7,11 +7,11 @@ ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 6a9f2c62d8e7f17f6ea8377982c79fef3dfbb97c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88002822"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016828"
 ---
 # <a name="create-a-profile-container-with-azure-netapp-files-and-ad-ds"></a>Profil tároló létrehozása Azure NetApp Files és AD DS
 
@@ -47,7 +47,7 @@ Első lépésként be kell állítania egy Azure NetApp Files fiókot.
 
 2. Válassza a keresősáv jobb oldalán található **Azure Cloud Shell ikont** a Azure Cloud Shell megnyitásához.
 
-3. Azure Cloud Shell megnyitása után válassza a **PowerShell**lehetőséget.
+3. Azure Cloud Shell megnyitása után válassza a **PowerShell** lehetőséget.
 
 4. Ha első alkalommal használja a Azure Cloud Shellt, hozzon létre egy Storage-fiókot ugyanabban az előfizetésben, és tartsa meg a Azure NetApp Files és a Windows rendszerű virtuális asztalt.
 
@@ -64,21 +64,21 @@ Első lépésként be kell állítania egy Azure NetApp Files fiókot.
    az provider register --namespace Microsoft.NetApp --wait
    ```
 
-6. Az ablak bal oldalán válassza a **minden szolgáltatás**lehetőséget. Adja meg **Azure NetApp Files** a menü tetején megjelenő keresőmezőbe.
+6. Az ablak bal oldalán válassza a **minden szolgáltatás** lehetőséget. Adja meg **Azure NetApp Files** a menü tetején megjelenő keresőmezőbe.
 
    > [!div class="mx-imgBorder"]
    > ![Képernyőfelvétel a "Azure NetApp Files" kifejezést a minden szolgáltatás keresőmezőbe. A keresési eredmények a Azure NetApp Files erőforrást jelenítik meg.](media/azure-netapp-files-search-box.png)
 
 
-7. Válassza a **Azure NetApp Files** lehetőséget a keresési eredmények között, majd válassza a **Létrehozás**lehetőséget.
+7. Válassza a **Azure NetApp Files** lehetőséget a keresési eredmények között, majd válassza a **Létrehozás** lehetőséget.
 
 8. Kattintson a **Hozzáadás** gombra.
 9. Amikor megnyílik az **új NetApp-fiók** lap, adja meg a következő értékeket:
 
-    - A **név**mezőben adja meg a NetApp-fiók nevét.
-    - Az **előfizetés**mezőben válassza ki a legördülő menüből a 4. lépésben beállított Storage-fiók előfizetését.
-    - Az **erőforráscsoport**mezőben válasszon ki egy meglévő erőforráscsoportot a legördülő menüből, vagy hozzon létre egy újat az **új létrehozása**lehetőség kiválasztásával.
-    - A **hely**mezőben válassza ki a NetApp-fiók régióját a legördülő menüből. Ennek a régiónak meg kell egyeznie a munkamenet-gazda virtuális gépekkel.
+    - A **név** mezőben adja meg a NetApp-fiók nevét.
+    - Az **előfizetés** mezőben válassza ki a legördülő menüből a 4. lépésben beállított Storage-fiók előfizetését.
+    - Az **erőforráscsoport** mezőben válasszon ki egy meglévő erőforráscsoportot a legördülő menüből, vagy hozzon létre egy újat az **új létrehozása** lehetőség kiválasztásával.
+    - A **hely** mezőben válassza ki a NetApp-fiók régióját a legördülő menüből. Ennek a régiónak meg kell egyeznie a munkamenet-gazda virtuális gépekkel.
 
    >[!NOTE]
    >A Azure NetApp Files jelenleg nem támogatja a kötetek régiók közötti csatlakoztatását.
@@ -91,11 +91,11 @@ Következő lépésként hozzon létre egy új kapacitási készletet:
 
 1. Lépjen a Azure NetApp Files menüre, és válassza ki az új fiókot.
 2. A fiók menüben válassza a **Kapacitási készletek** lehetőséget a Storage szolgáltatás területen.
-3. Válassza a **készlet hozzáadása**lehetőséget.
+3. Válassza a **készlet hozzáadása** lehetőséget.
 4. Amikor megnyílik az **új kapacitási készlet** lap, adja meg a következő értékeket:
 
-    - A **név**mezőben adja meg az új kapacitási készlet nevét.
-    - A **szolgáltatási szint**mezőben válassza ki a kívánt értéket a legördülő menüből. A legtöbb környezethez **prémium szintű támogatást** ajánlunk.
+    - A **név** mezőben adja meg az új kapacitási készlet nevét.
+    - A **szolgáltatási szint** mezőben válassza ki a kívánt értéket a legördülő menüből. A legtöbb környezethez **prémium szintű támogatást** ajánlunk.
        >[!NOTE]
        >A Premium beállítás a prémium szintű szolgáltatási szint számára elérhető minimális átviteli sebességet biztosítja, amely 256 MBps. Előfordulhat, hogy ezt az átviteli sebességet kell módosítania éles környezetben. A végső átviteli sebesség az [átviteli sebesség korlátaiban](../azure-netapp-files/azure-netapp-files-service-levels.md)ismertetett kapcsolaton alapul.
     - A **méret (TiB)** mezőben adja meg az igényeinek leginkább megfelelő kapacitási készlet méretét. A minimális méret 4 TiB.
@@ -113,25 +113,25 @@ Ezután csatlakoznia kell egy Active Directory-csatlakozáshoz.
 
 2. A csatlakozás **Active Directory** lapon adja meg a következő értékeket a kapcsolódáshoz:
 
-    - Az **elsődleges DNS**esetében adja meg a környezetben található DNS-kiszolgáló IP-címét, amely képes a tartománynév feloldására.
-    - A **tartomány**mezőben adja meg a teljes tartománynevet (FQDN).
-    - Az **SMB-kiszolgáló (számítógépfiók) előtagjaként**adja meg azt a karakterláncot, amelyet hozzá szeretne fűzni a számítógépfiók nevéhez.
-    - A **Felhasználónév**mezőbe írja be annak a fióknak a nevét, amely a tartományhoz való csatlakozáshoz szükséges engedélyekkel rendelkezik.
-    - A **jelszó**mezőben adja meg a fiók jelszavát.
+    - Az **elsődleges DNS** esetében adja meg a környezetben található DNS-kiszolgáló IP-címét, amely képes a tartománynév feloldására.
+    - A **tartomány** mezőben adja meg a teljes tartománynevet (FQDN).
+    - Az **SMB-kiszolgáló (számítógépfiók) előtagjaként** adja meg azt a karakterláncot, amelyet hozzá szeretne fűzni a számítógépfiók nevéhez.
+    - A **Felhasználónév** mezőbe írja be annak a fióknak a nevét, amely a tartományhoz való csatlakozáshoz szükséges engedélyekkel rendelkezik.
+    - A **jelszó** mezőben adja meg a fiók jelszavát.
 
 ## <a name="create-a-new-volume"></a>Új kötet létrehozása
 
 Ezután létre kell hoznia egy új kötetet.
 
-1. Válassza a **kötetek**lehetőséget, majd kattintson a **kötet hozzáadása**lehetőségre.
+1. Válassza a **kötetek** lehetőséget, majd kattintson a **kötet hozzáadása** lehetőségre.
 
 2. Amikor megnyílik a **kötet létrehozása** lap, adja meg a következő értékeket:
 
-    - A **kötet neve**mezőben adja meg az új kötet nevét.
-    - A **Kapacitási készlet**területen válassza ki az imént létrehozott kapacitás-készletet a legördülő menüből.
+    - A **kötet neve** mezőben adja meg az új kötet nevét.
+    - A **Kapacitási készlet** területen válassza ki az imént létrehozott kapacitás-készletet a legördülő menüből.
     - A **kvóta (GIB)** mezőben adja meg a környezetének megfelelő kötet méretét.
     - A **Virtual Network (virtuális hálózat**) területen válasszon ki egy meglévő virtuális hálózatot, amely a tartományvezérlőhöz kapcsolódik a legördülő menüből.
-    - Az **alhálózat**területen válassza az **új létrehozása**lehetőséget. Ne feledje, hogy ez az alhálózat Azure NetApp Files lesz delegálva.
+    - Az **alhálózat** területen válassza az **új létrehozása** lehetőséget. Ne feledje, hogy ez az alhálózat Azure NetApp Files lesz delegálva.
 
 3.  Válassza a **Tovább: \> \> protokoll** lehetőséget a protokoll lap megnyitásához és a mennyiségi hozzáférési paraméterek konfigurálásához.
 
@@ -143,7 +143,7 @@ A kötet létrehozása után konfigurálja a kötet-hozzáférési paramétereke
 2.  A **Active Directory** legördülő menüben a konfiguráció területen válassza ki ugyanazt a könyvtárat, amelyhez eredetileg kapcsolódott a [Csatlakozás egy Active Directory-kapcsolathoz](create-fslogix-profile-container.md#join-an-active-directory-connection). Ne feledje, hogy az előfizetés legfeljebb egy Active Directory.
 3.  A **megosztás neve** szövegmezőbe írja be a munkamenet-gazda készlet és a felhasználók által használt megosztás nevét.
 
-4.  Kattintson a lap alján található **felülvizsgálat + létrehozás** lehetőségre. Ekkor megnyílik az érvényesítési oldal. A kötet sikeres ellenőrzése után válassza a **Létrehozás**lehetőséget.
+4.  Kattintson a lap alján található **felülvizsgálat + létrehozás** lehetőségre. Ekkor megnyílik az érvényesítési oldal. A kötet sikeres ellenőrzése után válassza a **Létrehozás** lehetőséget.
 
 5.  Ezen a ponton az új kötet üzembe helyezése megkezdődik. Az üzembe helyezés befejeztével használhatja a Azure NetApp Files megosztást.
 
@@ -160,13 +160,13 @@ Ez a szakasz a [címkészlet egy fájlmegosztási használatával történő lé
 
 2. Bontsa ki a letöltött fájlt.
 
-3. A fájlban lépjen az x64- **x64**  >  **kiadások** és a **FSLogixAppsSetup.exe**futtatása elemre. Ekkor megnyílik a telepítési menü.
+3. A fájlban lépjen az x64- **x64**  >  **kiadások** és a **FSLogixAppsSetup.exe** futtatása elemre. Ekkor megnyílik a telepítési menü.
 
 4.  Ha van termékkulcs, írja be a termékkulcsot szövegmezőbe.
 
-5. Jelölje be az Elfogadom **a licencfeltételeket lehetőség**melletti jelölőnégyzetet.
+5. Jelölje be az Elfogadom **a licencfeltételeket lehetőség** melletti jelölőnégyzetet.
 
-6. Válassza a **Telepítés** gombot.
+6. Válassza a **Telepítés** lehetőséget.
 
 7. Navigáljon a **C: \\ Program Files \\ FSLogix \\ apps** elemre, és erősítse meg az ügynök telepítését.
 
@@ -174,9 +174,9 @@ Ez a szakasz a [címkészlet egy fájlmegosztási használatával történő lé
 
 9. Navigáljon a **számítógép \\ HKEY_LOCAL_MACHINE \\ szoftver \\ FSLogix**.
 
-10. Hozzon létre egy **profilok**nevű kulcsot.
+10. Hozzon létre egy **profilok** nevű kulcsot.
 
-11.  Hozzon létre egy **megnevezett értéket** egy **REG_DWORD** Type értékkel egy **1**értékre állítva.
+11.  Hozzon létre egy **megnevezett értéket** egy **REG_DWORD** Type értékkel egy **1** értékre állítva.
 
 12. Hozzon létre egy **VHDLocations** nevű értéket egy **többkarakterláncos** típussal, és állítsa az adatértékét az Azure NetApp Files-megosztás URI-ja számára.
 
@@ -218,7 +218,7 @@ Ez a szakasz a [címkészlet egy fájlmegosztási használatával történő lé
 
 3. Miután létrehozta a felhasználói munkamenetet, jelentkezzen be a Azure Portalba egy rendszergazdai fiókkal.
 
-4. Nyissa meg **Azure NetApp Files**, válassza ki a Azure NetApp Files-fiókot, majd válassza a **kötetek**lehetőséget. A kötetek menü megnyitása után válassza ki a megfelelő kötetet.
+4. Nyissa meg **Azure NetApp Files**, válassza ki a Azure NetApp Files-fiókot, majd válassza a **kötetek** lehetőséget. A kötetek menü megnyitása után válassza ki a megfelelő kötetet.
 
    > [!div class="mx-imgBorder"]
    > ![Képernyőfelvétel a Azure Portal korábban beállított NetApp-fiókról a kötetek gomb kiválasztásával.](media/netapp-account.png)
@@ -232,7 +232,7 @@ Ez a szakasz a [címkészlet egy fájlmegosztási használatával történő lé
    > [!div class="mx-imgBorder"]
    > ![Képernyőkép a mappa tartalmáról a csatlakoztatási útvonalon. A belül egy "Profile_ssbb" nevű VHD-fájl.](media/mount-path-folder.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A felhasználói profilok megosztásának beállításához használhatja a FSLogix-profilok tárolóit. Ha meg szeretné tudni, hogyan hozhat létre felhasználói profilokat az új tárolókkal, tekintse meg a következőt: [fájlmegosztás használatával létrehozott profil tárolója](create-host-pools-user-profile.md).
 

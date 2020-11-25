@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: gwallace
 ms.openlocfilehash: 3590b8fdb67b25e0d4389e814aefcc4d18b1193c
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92116718"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015425"
 ---
 Az Azure-ügyfelek havonta 25 000 ingyenes e-mailt oldhatnak fel. Ezek a 25 000-es ingyenes havi e-mailek hozzáférést biztosítanak a speciális jelentéskészítéshez és elemzésekhez, valamint [az összes API][all APIs] -hoz (web, SMTP, Event, parse stb.). A SendGrid által biztosított további szolgáltatásokról a [SendGrid Solutions][SendGrid Solutions] oldalán talál információkat.
 
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>SendGrid-fiók regisztrálása
 1. Jelentkezzen be az [Azure Portalra][Azure portal].
-2. A Azure Portal menüben vagy a kezdőlapon válassza az **erőforrás létrehozása**lehetőséget.
+2. A Azure Portal menüben vagy a kezdőlapon válassza az **erőforrás létrehozása** lehetőséget.
 
     ![Képernyőkép a Azure Portal menüjéről az erőforrás létrehozása lehetőség kiválasztásával.][command-bar-new]
 3. Keresse meg és válassza ki a **SendGrid**.

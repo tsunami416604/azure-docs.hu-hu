@@ -15,18 +15,18 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: b-juche
 ms.openlocfilehash: 7eac6a40476cffe875a03de49c9c9311ffbf4d39
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016042"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017066"
 ---
 # <a name="service-levels-for-azure-netapp-files"></a>Az Azure NetApp Files szolgáltatásszintjei
 A szolgáltatási szint a kapacitási készlet egyik attribútuma. A szolgáltatási szinteket a rendszer a kötethez hozzárendelt kvóta alapján határozza meg, és megkülönbözteti a kapacitások megengedett maximális átviteli sebességét.
 
 ## <a name="supported-service-levels"></a>Támogatott szolgáltatási szintek
 
-A Azure NetApp Files három szolgáltatási szintet támogat: *Ultra*, *Premium*és *standard*. 
+A Azure NetApp Files három szolgáltatási szintet támogat: *Ultra*, *Premium* és *standard*. 
 
 * <a name="Ultra"></a>Ultra Storage
 
@@ -72,7 +72,7 @@ A következő ábra a SAP HANA kötetek forgatókönyveit szemlélteti:
 
 ![QoS-SAP HANA kötetek forgatókönyvei](../media/azure-netapp-files/qos-sap-hana-volume-scenarios.png) 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure NetApp Files díjszabási oldala](https://azure.microsoft.com/pricing/details/storage/netapp/)
 - [Az Azure NetApp Files költségmodellje](azure-netapp-files-cost-model.md) 

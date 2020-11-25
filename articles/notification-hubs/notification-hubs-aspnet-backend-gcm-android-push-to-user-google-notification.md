@@ -16,11 +16,11 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: c137cbf0c2290bdbe228f7902e616e7f79cb459e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91307789"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016981"
 ---
 # <a name="tutorial-send-push-notification-to-specific-android-users-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Oktatóanyag: leküldéses értesítés küldése adott Android-felhasználóknak az Azure Notification Hubs és Google Cloud Messaging (elavult) használatával
 
@@ -470,7 +470,7 @@ A következő lépés az [Oktatóanyag: Leküldéses értesítések küldése An
 
 1. Futtassa az alkalmazást egy eszközön vagy az Android Studiót használó emulátoron.
 2. Az Android-alkalmazásban adjon meg egy felhasználónevet és jelszót. Mindkettőnek ugyanazon sztringértéknek kell lennie, és nem tartalmazhatnak szóközt vagy különleges karaktert.
-3. Az Android-alkalmazásban kattintson a **Bejelentkezés**elemre. Várjon, amíg megjelenik egy bejelentési üzenet a **Logged in and registered** (Bejelentkezve és regisztrálva) szöveggel. Ezzel elérhetővé válik a **Send Notification** (Értesítés küldése) gomb.
+3. Az Android-alkalmazásban kattintson a **Bejelentkezés** elemre. Várjon, amíg megjelenik egy bejelentési üzenet a **Logged in and registered** (Bejelentkezve és regisztrálva) szöveggel. Ezzel elérhetővé válik a **Send Notification** (Értesítés küldése) gomb.
 
     ![Képernyőkép az alkalmazásról. Egy olyan Toast-üzenet, amely megerősíti, hogy a felhasználó be van jelentkezve és regisztrálva van, és megjelenik az értesítés küldése gomb.][A2]
 4. Kattintson a váltógombokra az összes olyan platform engedélyezéséhez, amelyen futtatta az alkalmazást és regisztrált felhasználókat.
