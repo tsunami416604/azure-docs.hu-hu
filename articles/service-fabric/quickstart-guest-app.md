@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 12/06/2017
 ms.custom: devx-track-js
 ms.openlocfilehash: dfd1fe9db54925bc17a53a7686fa34d5ea53cd5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614104"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013598"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Node.js-alkalmazás üzemeltetése az Azure Service Fabricban
 
@@ -31,7 +31,7 @@ Projekt létrehozása `CTRL`+`SHIFT`+`N` használatával
 
 Az **Új projekt** párbeszédpanelen válassza a **Felhő > Service Fabric-alkalmazás** elemet.
 
-Nevezze el az alkalmazás **MyGuestApp** , és kattintson a **Létrehozás**gombra.
+Nevezze el az alkalmazás **MyGuestApp** , és kattintson a **Létrehozás** gombra.
 
 >[!IMPORTANT]
 >A Node.js gyakran túllépi a Windows elérési utakra vonatkozó 260 karakteres korlátját. Használjon rövid elérési utat a projekthez, például: **c:\code\svc1**. Igény szerint az **[alábbi utasításokat](https://stackoverflow.com/a/41687101/1664231)** követve engedélyezheti a hosszú fájlelérési utakat a Windows 10 rendszerben.
@@ -98,13 +98,13 @@ Válassza ki a **PublishProfiles\Cloud.xml** célprofilt.
 
 Ha korábban még nem tette meg, válassza ki az üzembe helyezés céljaként szolgáló Azure-fiókot. Ha még nem rendelkezik ilyen fiókkal, [regisztráljon egyet][create-account].
 
-A **Kapcsolati végpont** területen válassza ki az üzembe helyezés céljaként szolgáló Service Fabric-fürtöt. Ha még nem rendelkezik ilyennel, válassza az ** &lt; új fürt létrehozása.. &gt; .** lehetőséget, amely megnyitja a webböngésző ablakát a Azure Portal. További információért lásd: [Fürt létrehozása a portálon](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal). 
+A **Kapcsolati végpont** területen válassza ki az üzembe helyezés céljaként szolgáló Service Fabric-fürtöt. Ha még nem rendelkezik ilyennel, válassza az **&lt; új fürt létrehozása.. &gt; .** lehetőséget, amely megnyitja a webböngésző ablakát a Azure Portal. További információért lásd: [Fürt létrehozása a portálon](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal). 
 
 A Service Fabric-fürt létrehozásakor ügyeljen rá, hogy az **Egyéni végpontok** beállítás értéke **80** legyen.
 
 ![Service Fabric-csomóponttípus konfigurálása egyéni végponttal][custom-endpoint]
 
-Az új Service Fabric-fürt létrehozása eltarthat egy ideig. Miután létrejött, lépjen vissza a közzététel párbeszédpanelre, és válassza a ** &lt; frissítés &gt; **lehetőséget. Válassza ki a legördülő listában megjelenő új fürtöt.
+Az új Service Fabric-fürt létrehozása eltarthat egy ideig. Miután létrejött, lépjen vissza a közzététel párbeszédpanelre, és válassza a **&lt; frissítés &gt;** lehetőséget. Válassza ki a legördülő listában megjelenő új fürtöt.
 
 Kattintson a **Közzététel** gombra, és várjon, amíg az üzembe helyezés befejeződik.
 
@@ -126,7 +126,7 @@ Navigáljon erre a címre, ahol megjelenik a `HELLO WORLD` válasz.
 
 Ne felejtse el törölni az ehhez a rövid útmutatóhoz létrehozott összes erőforrást, mivel ezekért az erőforrásokért kell fizetnie.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információk a [futtatható vendégalkalmazásokról](service-fabric-guest-executables-introduction.md).
 
 <!-- Image References -->

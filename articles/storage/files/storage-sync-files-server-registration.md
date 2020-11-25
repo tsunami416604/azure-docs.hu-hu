@@ -8,11 +8,11 @@ ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 194b0f2ff94197fe11c189e97dbc65c9d0367932
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630583"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013921"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Regisztrált kiszolgálók kezelése Azure File Sync
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. Ez a Windows-kiszolgálók Azure-fájlmegosztás gyors gyorsítótárba alakításával végezhető el. A Windows Server rendszeren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl. SMB, NFS vagy FTPS), és annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -20,7 +20,7 @@ Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban t�
 A következő cikk bemutatja, hogyan regisztrálhat és kezelhet egy kiszolgálót a Storage Sync szolgáltatással. A Azure File Sync végpontok üzembe helyezésével kapcsolatos információkért tekintse meg a [Azure file Sync üzembe helyezését](storage-sync-files-deployment-guide.md) ismertető témakört.
 
 ## <a name="registerunregister-a-server-with-storage-sync-service"></a>Kiszolgáló regisztrálása a Storage Sync szolgáltatással
-A Azure File Sync-kiszolgáló regisztrálása megbízhatósági kapcsolatot létesít a Windows Server és az Azure között. Ezzel a kapcsolattal *kiszolgáló-végpontok* hozhatók létre a kiszolgálón, amelyek az Azure-fájlmegosztás (más néven *Felhőbeli végpont* ) által szinkronizált adott mappákat jelölik. 
+A Azure File Sync-kiszolgáló regisztrálása megbízhatósági kapcsolatot létesít a Windows Server és az Azure között. Ezzel a kapcsolattal *kiszolgáló-végpontok* hozhatók létre a kiszolgálón, amelyek az Azure-fájlmegosztás (más néven *Felhőbeli végpont*) által szinkronizált adott mappákat jelölik. 
 
 ### <a name="prerequisites"></a>Előfeltételek
 Ha Storage Sync szolgáltatással szeretne regisztrálni egy kiszolgálót, először elő kell készítenie a kiszolgálót a szükséges előfeltételekkel:
@@ -182,7 +182,7 @@ Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -I
 ### <a name="use-windows-server-storage-qos"></a>A Windows Server Storage QoS használata 
 Ha a Azure File Sync egy Windows Server virtualizálási gazdagépen futó virtuális gépen fut, a tárolási QoS (tárolási szolgáltatásminőség) segítségével szabályozhatja a tároló i/o-felhasználását. A tárolási QoS-házirend beállítható maximális értékként (vagy korlátként, például a fenti StorageSyncNetwork-korlát érvényesítése) vagy minimum (vagy foglalás). Ha a maximális értéket állítja be, a Azure File Sync a rendelkezésre álló tárolási sávszélességet használja, ha más munkaterhelések nem használják azt. További információ: [tárolási szolgáltatásminőség](/windows-server/storage/storage-qos/storage-qos-overview).
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 - [Az Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md)
 - [Azure File Sync – üzembe helyezés](storage-sync-files-deployment-guide.md)
 - [Az Azure File Sync monitorozása](storage-sync-files-monitoring.md)

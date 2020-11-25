@@ -4,12 +4,12 @@ description: Azure azonnali visszaállítási képesség és gyakori kérdések 
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 95de22d8493181f098e480afc4f319c44c633e42
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 147fadc92429157ed2f9ba3eb68297a3e1d08d24
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173917"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96014448"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Továbbfejlesztett biztonsági mentési és visszaállítási teljesítmény Azure Backup azonnali visszaállítási képességgel
 
@@ -48,7 +48,7 @@ Alapértelmezés szerint a pillanatképek két napig őrződnek meg. Ez a funkci
 * Ez egy irányított frissítés. Az azonnali visszaállításra való frissítés után nem mehet vissza.
 
 >[!NOTE]
->Ezzel az azonnali visszaállítással az összes ügyfél pillanatkép-megőrzési időtartamát (az**új és a meglévőket is beleértve**) két nap alapértelmezett értékre állítja a rendszer. Megadhatja azonban az időtartamot az 1 és 5 nap közötti értékre vonatkozó követelménynek megfelelően.
+>Ezzel az azonnali visszaállítással az összes ügyfél pillanatkép-megőrzési időtartamát (az **új és a meglévőket is beleértve**) két nap alapértelmezett értékre állítja a rendszer. Megadhatja azonban az időtartamot az 1 és 5 nap közötti értékre vonatkozó követelménynek megfelelően.
 
 ## <a name="cost-impact"></a>Cost Impact
 
@@ -117,3 +117,8 @@ Ha a helyreállítási pont rendelkezik pillanatképtel, és a legújabb helyre�
 ### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>Nincs szükség azonnali visszaállítási funkcióra. Le lehet tiltani?
 
 Az azonnali visszaállítás funkció mindenki számára engedélyezve van, és nem tiltható le. A pillanatképek megőrzését legalább egy napra csökkentheti.
+
+### <a name="is-it-safe-to-restart-the-vm-during-the-transfer-process-which-can-take-many-hours-will-restarting-the-vm-interrupt-or-slow-down-the-transfer"></a>Biztonságos a virtuális gép újraindítása az adatátviteli folyamat során (ami több órát is igénybe vehet)? Újraindítja a virtuális gépet, vagy lelassítja az átvitelt?
+
+Igen, az adatátviteli sebesség egyáltalán nem befolyásolja a biztonságot.
+

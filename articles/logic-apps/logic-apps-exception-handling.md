@@ -9,11 +9,11 @@ ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
 ms.openlocfilehash: 73b116117530e5a2103b604efbf757d691006508
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84704522"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014737"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Hibák és kivételek kezelése az Azure Logic Appsben
 
@@ -45,7 +45,7 @@ Másik újrapróbálkozási házirend kiválasztásához kövesse az alábbi lé
 
 1. Nyisson meg egy művelet vagy trigger **beállításait** .
 
-1. Ha a művelet vagy az aktiválás támogatja az újrapróbálkozási szabályzatokat, az **újrapróbálkozási házirend**területen válassza ki a kívánt típust.
+1. Ha a művelet vagy az aktiválás támogatja az újrapróbálkozási szabályzatokat, az **újrapróbálkozási házirend** területen válassza ki a kívánt típust.
 
 Vagy manuálisan is megadhatja az újrapróbálkozási házirendet az `inputs` újrapróbálkozási szabályzatokat támogató művelet vagy trigger szakaszban. Ha nem ad meg újrapróbálkozási házirendet, a művelet az alapértelmezett házirendet használja.
 
@@ -176,7 +176,7 @@ Annak ellenőrzéséhez, hogy egy művelet továbbra is futtatható-e az előd �
 
 Testre szabhatja egy művelet "Futtatás utáni" viselkedését, hogy a művelet akkor fusson, amikor az előd állapota:,, `Succeeded` `Failed` `Skipped` , `TimedOut` vagy bármelyik ilyen állapot. Ha például egy e-mailt szeretne küldeni az Excel online `Add_a_row_into_a_table` elődje művelet jelölése után, a `Failed` `Succeeded` következő lépésekkel módosítsa a "Futtatás után" viselkedést:
 
-* A Tervezés nézetben válassza a három pontot (**..**.), majd válassza a **Futtatás a konfigurálás után**lehetőséget.
+* A Tervezés nézetben válassza a három pontot (**..**.), majd válassza a **Futtatás a konfigurálás után** lehetőséget.
 
   ![A "Futtatás utáni" viselkedés konfigurálása művelethez](./media/logic-apps-exception-handling/configure-run-after-property-setting.png)
 

@@ -7,11 +7,11 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.openlocfilehash: 1c2f0a2c54be7adbc7b8babd596f18e08c67a024
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269556"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014414"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Folyamatok exportálása a Power Automate-ből és üzembe helyezés az Azure Logic Appsben
 
@@ -32,7 +32,7 @@ A flow képességeinek bővítéséhez és kibővítéséhez áttelepítheti a f
 
 ## <a name="export-your-flow"></a>A folyamat exportálása
 
-1. Jelentkezzen be a [Power gyorsbüféba](https://flow.microsoft.com), és válassza **a saját folyamatok**lehetőséget. Keresse meg és válassza ki a folyamatot. Az eszköztáron válassza a három pont (**...**) gombot > **Exportálás**  >  **Logic apps sablon (. JSON)** elemre.
+1. Jelentkezzen be a [Power gyorsbüféba](https://flow.microsoft.com), és válassza **a saját folyamatok** lehetőséget. Keresse meg és válassza ki a folyamatot. Az eszköztáron válassza a három pont (**...**) gombot > **Exportálás**  >  **Logic apps sablon (. JSON)** elemre.
 
    ![Folyamat exportálása a Power Gyorsbüféból](./media/export-from-microsoft-flow-logic-app-template/export-flow.png)
 
@@ -44,21 +44,21 @@ További információ: [Grow up to Azure Logic apps](https://flow.microsoft.com/
 
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) Azure-fiókjával.
 
-1. Az Azure kezdőlapján, a keresőmezőbe írja be a következőt: `custom template` . Az eredmények közül válassza az **egyéni sablon**  >  **létrehozása**lehetőséget.
+1. Az Azure kezdőlapján, a keresőmezőbe írja be a következőt: `custom template` . Az eredmények közül válassza az **egyéni sablon**  >  **létrehozása** lehetőséget.
 
    ![A "Template deployment" megkeresése és kiválasztása](./media/export-from-microsoft-flow-logic-app-template/select-template-deployment.png)
 
-1. Az **Egyéni telepítés**területen válassza **a saját sablon létrehozása lehetőséget a szerkesztőben**.
+1. Az **Egyéni telepítés** területen válassza **a saját sablon létrehozása lehetőséget a szerkesztőben**.
 
    ![Válassza a "saját sablon létrehozása a szerkesztőben" lehetőséget.](./media/export-from-microsoft-flow-logic-app-template/build-template-in-editor.png)
 
-1. A **Sablon szerkesztése** eszköztáron válassza a **fájl betöltése**lehetőséget.
+1. A **Sablon szerkesztése** eszköztáron válassza a **fájl betöltése** lehetőséget.
 
    ![Válassza a "fájl betöltése" lehetőséget.](./media/export-from-microsoft-flow-logic-app-template/load-file.png)
 
 1. Tallózással keresse meg azt a helyet, ahová a Power automatizálásból exportált JSON-sablonfájlt mentette. Válassza ki a sablonfájl > **megnyitva**.
 
-1. Miután a szerkesztő megjeleníti a sablonban található JSON-, paramétereket és erőforrásokat, válassza a **Mentés**lehetőséget.
+1. Miután a szerkesztő megjeleníti a sablonban található JSON-, paramétereket és erőforrásokat, válassza a **Mentés** lehetőséget.
 
    ![Sablon mentése](./media/export-from-microsoft-flow-logic-app-template/save-template.png)
 
@@ -76,33 +76,33 @@ További információ: [Grow up to Azure Logic apps](https://flow.microsoft.com/
       | <*kapcsolattípus*> | A logikai alkalmazás által újra felhasználható korábban létrehozott kapcsolatok egy vagy több neve <p><p>**Megjegyzés**: Ha ez a logikai alkalmazás az első, az összes kapcsolat újként jön létre, így elfogadhatja az alapértelmezett neveket. Ellenkező esetben megadhatja a korábban létrehozott kapcsolatok nevét, amelyeket több logikai alkalmazás között használhat. |
       |||
 
-      Példa:
+      Például:
 
       ![Adja meg a sablon bemeneti paramétereit](./media/export-from-microsoft-flow-logic-app-template/template-input-parameters.png)
 
    1. Ha elkészült, tekintse át a szükséges Azure-erőforrások létrehozásával és az Azure-előfizetés megfelelő számlázásával kapcsolatos **feltételeket és kikötéseket** .
 
-   1. Ha elkészült, válassza az Elfogadom a megvásárolt **feltételek és kikötések**lehetőséget  >  **Purchase**.
+   1. Ha elkészült, válassza az Elfogadom a megvásárolt **feltételek és kikötések** lehetőséget  >  **Purchase**.
 
       Az Azure a sablont logikai alkalmazásként telepíti a megadott erőforráscsoporthoz.
 
 1. Az energiagazdálkodási automatizálásból áttelepített összes logikai alkalmazást letiltott állapotban telepíti a rendszer. A logikai alkalmazás engedélyezése előtt engedélyezze a következő lépéseket az új kapcsolatok engedélyezéséhez:
 
-   1. A Azure Portal nyissa meg a létrehozott logikai alkalmazást. A logikai alkalmazás menüjében válassza a **Logic app Designer**elemet.
+   1. A Azure Portal nyissa meg a létrehozott logikai alkalmazást. A logikai alkalmazás menüjében válassza a **Logic app Designer** elemet.
 
       Az engedélyezést igénylő minden egyes kapcsolaton figyelmeztető ikon jelenik meg:
 
       ![Figyelmeztetés ikon](./media/export-from-microsoft-flow-logic-app-template/authorize-connections.png)
 
-   1. Minden olyan lépéshez, amelyhez engedélyezve van a kapcsolat, bontsa ki ezt a lépést, és válassza az **új hozzáadása**lehetőséget.
+   1. Minden olyan lépéshez, amelyhez engedélyezve van a kapcsolat, bontsa ki ezt a lépést, és válassza az **új hozzáadása** lehetőséget.
 
       ![Képernyőkép, amely az Outlook "kapcsolatok" ablakában kiválasztott "új" gombot jeleníti meg.](./media/export-from-microsoft-flow-logic-app-template/add-new-connection.png)
 
    1. Jelentkezzen be az egyes szolgáltatásokhoz, vagy adja meg a szükséges hitelesítő adatokat a kapcsolódás engedélyezéséhez.
 
-   1. A kapcsolatok frissítése után a tervező eszköztárán válassza a **Mentés**lehetőséget.
+   1. A kapcsolatok frissítése után a tervező eszköztárán válassza a **Mentés** lehetőséget.
 
-1. Ha készen áll a logikai alkalmazás aktiválására, a logikai alkalmazás menüjében válassza az **Áttekintés**lehetőséget, majd válassza az **Engedélyezés**lehetőséget.
+1. Ha készen áll a logikai alkalmazás aktiválására, a logikai alkalmazás menüjében válassza az **Áttekintés** lehetőséget, majd válassza az **Engedélyezés** lehetőséget.
 
    ![Logikai alkalmazás engedélyezése](./media/export-from-microsoft-flow-logic-app-template/enable-logic-app.png)
 
@@ -126,7 +126,7 @@ Ha a Visual studiót a Logic apps létrehozásához szükséges [előfeltételek
 
 1. A logikai alkalmazás üzembe helyezése előtt engedélyezze a következő lépéseket az új kapcsolatok engedélyezéséhez:
 
-   1. Nyissa meg a **LogicApp.jsa** helyi menüben, majd válassza a **Megnyitás a Logic app Designerben**lehetőséget.
+   1. Nyissa meg a **LogicApp.jsa** helyi menüben, majd válassza a **Megnyitás a Logic app Designerben** lehetőséget.
 
       ![Sablon megnyitása a Logic app Designerrel](./media/export-from-microsoft-flow-logic-app-template/open-logic-app-designer.png)
 
@@ -138,7 +138,7 @@ Ha a Visual studiót a Logic apps létrehozásához szükséges [előfeltételek
 
       ![Figyelmeztető ikonnal rendelkező kapcsolatok](./media/export-from-microsoft-flow-logic-app-template/authorize-connections-vs.png)
 
-   1. Minden olyan lépéshez, amelyhez engedélyezve van a kapcsolat, bontsa ki ezt a lépést, és válassza az **új hozzáadása**lehetőséget.
+   1. Minden olyan lépéshez, amelyhez engedélyezve van a kapcsolat, bontsa ki ezt a lépést, és válassza az **új hozzáadása** lehetőséget.
 
       ![Új kapcsolatok hozzáadása](./media/export-from-microsoft-flow-logic-app-template/add-new-connection-vs.png)
 
@@ -146,17 +146,17 @@ Ha a Visual studiót a Logic apps létrehozásához szükséges [előfeltételek
 
    1. Mentse a megoldást a logikai alkalmazás üzembe helyezése előtt.
 
-1. A Megoldáskezelőban nyissa meg a projekt helyi menüt, **Deploy**és válassza az  >  **új**telepítése lehetőséget. Ha szükséges, jelentkezzen be Azure-fiókjával.
+1. A Megoldáskezelőban nyissa meg a projekt helyi menüt, **Deploy** és válassza az  >  **új** telepítése lehetőséget. Ha szükséges, jelentkezzen be Azure-fiókjával.
 
-1. Amikor a rendszer kéri, erősítse meg az Azure-előfizetést, az Azure-erőforráscsoportot, valamint az üzembe helyezéshez használni kívánt egyéb beállításokat, például a sablon paramétereinek átadásához használandó [paramétereket](../azure-resource-manager/templates/parameter-files.md) , majd válassza a **telepítés**lehetőséget.
+1. Amikor a rendszer kéri, erősítse meg az Azure-előfizetést, az Azure-erőforráscsoportot, valamint az üzembe helyezéshez használni kívánt egyéb beállításokat, például a sablon paramétereinek átadásához használandó [paramétereket](../azure-resource-manager/templates/parameter-files.md) , majd válassza a **telepítés** lehetőséget.
 
    ![Központi telepítési beállítások megerősítése](./media/export-from-microsoft-flow-logic-app-template/confirm-azure-subscription-resource-group-deployment.png)
 
-1. Ha megjelenik a **Paraméterek szerkesztése** mező, adja meg a logikai alkalmazás erőforrásának nevét az Azure-ban, majd válassza a **Mentés**lehetőséget.  
+1. Ha megjelenik a **Paraméterek szerkesztése** mező, adja meg a logikai alkalmazás erőforrásának nevét az Azure-ban, majd válassza a **Mentés** lehetőséget.  
 
    ![Telepítési paraméterek szerkesztése](./media/export-from-microsoft-flow-logic-app-template/edit-parameters-deployment.png)
 
-   Amikor az üzembe helyezés elindul, az alkalmazás üzembehelyezési állapota a Visual Studio **Kimenet** ablakában jelenik meg. Ha az állapot nem jelenik meg, nyissa meg a **Kimenet mutatása innen** listát, és válassza ki az Azure-erőforráscsoportot. Példa:
+   Amikor az üzembe helyezés elindul, az alkalmazás üzembehelyezési állapota a Visual Studio **Kimenet** ablakában jelenik meg. Ha az állapot nem jelenik meg, nyissa meg a **Kimenet mutatása innen** listát, és válassza ki az Azure-erőforráscsoportot. Például:
 
    ![Kimeneti ablak](./media/export-from-microsoft-flow-logic-app-template/output-window.png)
 
@@ -166,13 +166,13 @@ Ha a Visual studiót a Logic apps létrehozásához szükséges [előfeltételek
 
    Az üzembe helyezés befejeződése után a logikai alkalmazás közzé van téve, de nincs aktiválva a Azure Portal.
 
-1. Ha készen áll a logikai alkalmazás aktiválására a Azure Portalban, keresse meg és nyissa meg a logikai alkalmazást a Logic app Designerben. A logikai alkalmazás menüjében válassza az **Áttekintés**lehetőséget, majd válassza az **Engedélyezés**lehetőséget.
+1. Ha készen áll a logikai alkalmazás aktiválására a Azure Portalban, keresse meg és nyissa meg a logikai alkalmazást a Logic app Designerben. A logikai alkalmazás menüjében válassza az **Áttekintés** lehetőséget, majd válassza az **Engedélyezés** lehetőséget.
 
 1. Az ismétlődő munkafolyamatok futtatásának elkerüléséhez győződjön meg arról, hogy az eredeti folyamatot inaktiválja vagy törli.
 
 További információ ezekről az üzembe helyezési lépésekről: rövid útmutató [: automatizált feladatok, folyamatok és munkafolyamatok létrehozása Azure Logic apps-Visual Studióval](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-to-Azure)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ az [Azure Logic apps-összekötők számára](../connectors/apis-list.md)
 * További információ a [Azure Logic apps](../logic-apps/logic-apps-overview.md)

@@ -7,14 +7,14 @@ ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 2471a19cf795d969644cb92e23b7a2926f2ee1a9
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: a5d66e43485ec66b6297ef11ed382e8fb82b7cb3
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372608"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96014574"
 ---
-# <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>A biztonsági rések vizsgálatához használja az Azure Defender for Container nyilvántartót
+# <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>Az Azure Defender használata a tárolóregisztrációs adatbázisokban található rendszerképek biztonsági réseinek vizsgálatához
 
 Ez az oldal azt ismerteti, hogyan használható a beépített sebezhetőségi ellenőrzőeszköz a Azure Resource Manager-alapú Azure Container Registry tárolt tároló-lemezképek vizsgálatához.
 
@@ -22,17 +22,7 @@ Ha az **Azure Defender tárolóregisztrációs adatbázisokhoz** engedélyezve v
 
 Ha a képolvasó Security Center biztonsági réseket, Security Center a megállapításokat és a kapcsolódó információkat a javaslatok alapján mutatja be. Emellett a megállapítások olyan kapcsolódó információkat is tartalmaznak, mint például a Szervizelési lépések, a kapcsolódó CVEs, CVSS pontszámok és egyebek. Megtekintheti egy vagy több előfizetéshez tartozó azonosított biztonsági réseket vagy egy adott beállításjegyzéket.
 
-## <a name="availability"></a>Rendelkezésre állás
-
-|Szempont|Részletek|
-|----|:----|
-|Kiadás állapota:|Általánosan elérhető (GA)|
-|Árképzési|Az **Azure Defender for Container** -beállításjegyzékek számlázása [a díjszabási oldalon](security-center-pricing.md) látható.|
-|Támogatott nyilvántartások és lemezképek:|A nyilvános internetről a rendszerhéj-hozzáféréssel elérhető Linux-rendszerképek az ACR-jegyzékekben|
-|Nem támogatott kibocsátásiegység-forgalmi jegyzékek és lemezképek:|Windows-rendszerképek<br>"Privát" nyilvántartások<br>Tűzfal, szolgáltatási végpont vagy privát végpontok, például Azure Private-kapcsolattal korlátozott hozzáférésű kibocsátásiegység-forgalmi jegyzékek<br>A Super-minimalista képek, például a [Docker](https://hub.docker.com/_/scratch/) -rendszerképek, vagy a "eltérítetlen" lemezképek, amelyek csak egy alkalmazást és annak futásidejű függőségeit tartalmazzák csomagkezelő, rendszerhéj vagy operációs rendszer nélkül|
-|Szükséges szerepkörök és engedélyek:|**Biztonsági olvasó** és [Azure Container Registry olvasó szerepkör](../container-registry/container-registry-roles.md)|
-|Felhők|![Igen ](./media/icons/yes-icon.png) kereskedelmi felhők<br>![Igen ](./media/icons/yes-icon.png) US gov – jelenleg csak a leküldéses vizsgálat funkció támogatott. További információ a [beolvasott képekről](defender-for-container-registries-introduction.md#when-are-images-scanned)<br>![Nem ](./media/icons/no-icon.png) China gov, más gov|
-|||
+[!INCLUDE [Defender for container registries availability info](../../includes/security-center-availability-defender-for-container-registries.md)]
 
 
 ## <a name="identify-vulnerabilities-in-images-in-azure-container-registries"></a>Biztonsági rések azonosítása az Azure Container nyilvántartóban található lemezképekben 

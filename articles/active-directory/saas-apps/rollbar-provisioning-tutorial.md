@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: Zhchia
 ms.openlocfilehash: 544e01ef96165cd6c96a97761a3e758b93b1b15b
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94352693"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014346"
 ---
 # <a name="tutorial-configure-rollbar-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés bukóív konfigurálása
 
@@ -57,7 +57,7 @@ Az Azure AD-vel való automatikus bukóív konfigurálása előtt engedélyeznie
 
     ![Bukóív-identitás szolgáltatója](media/rollbar-provisioning-tutorial/idp.png)
 
-3. Görgessen le a **kiépítési beállításokhoz**. Másolja a hozzáférési jogkivonatot. Ez az érték a bukóív alkalmazás üzembe helyezés lapjának **titkos jogkivonat** mezőjében jelenik meg a Azure Portal. Jelölje be a **felhasználók és a csoportok üzembe** helyezésének engedélyezése jelölőnégyzetet, majd kattintson a **Save (Mentés** ) gombra.
+3. Görgessen le a **kiépítési beállításokhoz**. Másolja a hozzáférési jogkivonatot. Ez az érték a bukóív alkalmazás üzembe helyezés lapjának **titkos jogkivonat** mezőjében jelenik meg a Azure Portal. Jelölje be a **felhasználók és a csoportok üzembe** helyezésének engedélyezése jelölőnégyzetet, majd kattintson a **Save (Mentés**) gombra.
 
     ![Bukóív hozzáférési token](media/rollbar-provisioning-tutorial/token.png)
 
@@ -153,7 +153,7 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 2. A [folyamatjelzőn](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
 3. Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](../app-provisioning/application-provisioning-quarantine-status.md) találhat további információt.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

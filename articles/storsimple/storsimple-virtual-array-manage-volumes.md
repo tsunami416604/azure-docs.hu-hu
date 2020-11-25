@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 79e3ce8c1605e5d68ff44901f53854d2f5f10abc
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129949"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014380"
 ---
 # <a name="use-storsimple-device-manager-service-to-manage-volumes-on-the-storsimple-virtual-array"></a>Kötetek kezelése a StorSimple-eszközkezelő szolgáltatással a StorSimple Virtual Arrayben
 
@@ -33,8 +33,8 @@ A StorSimple Eszközkezelő szolgáltatás a Azure Portal egyik bővítménye, a
 
 A StorSimple kötetek a következőket tehetik:
 
-* **Helyileg rögzített** : az ezekben a kötetekben tárolt adatmennyiség mindig a tömbön marad, és nem kerül a felhőbe.
-* **Lépcsőzetes** : ezekben a kötetekben lévő adatforgalom a felhőbe kerül. A rétegű kötetek létrehozásakor a terület körülbelül 10%-a a helyi szinten van kiépítve, a terület 90%-a pedig a felhőben van kiépítve. Ha például egy 1 TB-os kötetet telepített, a 100 GB a helyi térben, a 900 GB-ot pedig a felhőben fogja használni az adatrétegeknél. Ez pedig azt jelenti, hogy ha elfogyott az eszközön lévő összes helyi terület, nem lehet kiépíteni egy rétegű kötetet (mivel a helyi szinten szükséges 10% nem lesz elérhető).
+* **Helyileg rögzített**: az ezekben a kötetekben tárolt adatmennyiség mindig a tömbön marad, és nem kerül a felhőbe.
+* **Lépcsőzetes**: ezekben a kötetekben lévő adatforgalom a felhőbe kerül. A rétegű kötetek létrehozásakor a terület körülbelül 10%-a a helyi szinten van kiépítve, a terület 90%-a pedig a felhőben van kiépítve. Ha például egy 1 TB-os kötetet telepített, a 100 GB a helyi térben, a 900 GB-ot pedig a felhőben fogja használni az adatrétegeknél. Ez pedig azt jelenti, hogy ha elfogyott az eszközön lévő összes helyi terület, nem lehet kiépíteni egy rétegű kötetet (mivel a helyi szinten szükséges 10% nem lesz elérhető).
 
 ### <a name="provisioned-capacity"></a>Kiosztott kapacitás
 Tekintse meg az alábbi táblázatot az egyes kötetek kiosztott kapacitásának maximális kiosztásáról.
@@ -55,7 +55,7 @@ A kötetek számos attribútumból állnak:
 
 * **Kötet neve** – egy leíró név, amelynek egyedinek kell lennie, és segít azonosítani a kötetet.
 * Status – online vagy offline **állapotú** lehet. Ha egy kötet offline állapotban van, nem látható azoknak a kezdeményezőknek (kiszolgálóknak), amelyek számára engedélyezett a kötet használata.
-* **Type (típus** ) – azt jelzi, hogy a kötet **Lépcsőzetes** (alapértelmezett) vagy **helyileg rögzített** -e.
+* **Type (típus** ) – azt jelzi, hogy a kötet **Lépcsőzetes** (alapértelmezett) vagy **helyileg rögzített**-e.
 * **Kapacitás** – a kezdeményező (kiszolgáló) által tárolható összes adatmennyiséghez képest felhasznált adatmennyiséget határozza meg.
 * **Backup (biztonsági mentés** ) – a StorSimple virtuális tömb esetében az összes kötet automatikusan engedélyezve lesz a biztonsági mentéshez.
 * **Csatlakoztatott gazdagépek** – megadja azokat a kezdeményezőket (kiszolgálókat), amelyek számára engedélyezett a kötethez való hozzáférés.
@@ -137,7 +137,7 @@ A kötetek törléséhez hajtsa végre az alábbi lépéseket.
 3. Tekintse meg a törölni kívánt kötet állapotát. Ha a törölni kívánt kötet nem offline állapotban van, először kapcsolja offline állapotba, majd kövesse a [kötet offline](#take-a-volume-offline)állapotba helyezése című témakör lépéseit.
 4. Amikor a rendszer megerősítést kér a **Törlés** panelen, fogadja el a megerősítést, és kattintson a **Törlés** gombra. A kötet most már törölve lesz, és a **kötetek** panel megjeleníti a kötetek frissített listáját a virtuális tömbön belül.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tudnivalók a [StorSimple-kötetek klónozásáról](storsimple-virtual-array-clone.md).
 

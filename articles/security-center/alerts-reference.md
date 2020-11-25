@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/01/2020
+ms.date: 11/22/2020
 ms.author: memildin
-ms.openlocfilehash: 3cc64d2721f73da36fdc4fce009cccb5fdfd6b6b
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 6d001e638b00cace1dd81d9631f498a911ca19a4
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372693"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96014601"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Biztonsági riasztások - – referencia-útmutató
 
@@ -160,6 +160,9 @@ A lap alján található egy táblázat, amely leírja a riasztások szándéká
 |**Az Xorg sebezhetőségének kiaknázása [többször látott]**|A (z)% {feltört gazdagépen levő gazdagép adatainak elemzése során a rendszer gyanús argumentumokkal rendelkező xorg-felhasználót észlelt. A támadók ezt a technikát a jogosultság-eszkalációs kísérletek során használhatják. Ez a viselkedés [x] időpontot észlelt a mai napon a következő gépeken: [Machine Names]|-|Közepes|
 |**Feltett Docker-démon észlelve**|A gépi naplók azt jelzik, hogy a Docker-démon (dockerd) egy TCP-szoftvercsatornát tesz elérhetővé. Alapértelmezés szerint a Docker-konfiguráció nem használ titkosítást vagy hitelesítést, ha a TCP-szoftvercsatorna engedélyezve van. Ez teljes hozzáférést tesz lehetővé a Docker-démonhoz, bárki számára, aki hozzáfér a megfelelő porthoz.|-|Közepes|
 |**Sikertelen SSH találgatásos támadás**|Sikertelen találgatásos támadásokat észleltek a következő támadók:% {Attacks}. A támadók a következő felhasználónévvel próbálták elérni a gazdagépet:% {a sikertelen bejelentkezéshez használt fiókokat a gazdagép-kísérletek}.|-|Közepes|
+| **A rendszer nem képes észlelni a hibás támadási viselkedést**<br>(AppServices_FilelessAttackBehaviorDetection)| Az alább megadott folyamat memóriája a fájlokkal kapcsolatos támadások által leggyakrabban használt viselkedéseket tartalmazza.<br>A megadott viselkedések a következők: {a megfigyelt viselkedések listája}                                                                                                                                                                                                                                                                                                                             | Futtatási                             | Közepes   |
+| **A rendszer a fájlokkal nem rendelkező támadási technikákat észlelt**<br>(VM_FilelessAttackTechnique. Linux)| Az alább megadott folyamat memóriája a fájlokkal kapcsolatos támadási technikákról tartalmaz bizonyítékokat. A támadók úgy használják a fájl-és adatvédelmet, hogy a biztonsági szoftverek észlelésével elkerülik a kód végrehajtását.<br>A megadott viselkedések a következők: {a megfigyelt viselkedések listája}                                                                                                                                                                                                                            | Futtatási                             | Magas     |
+| **A rendszer a fájlokkal nem rendelkező támadás eszközkészletét észlelte**<br>(VM_FilelessAttackToolkit. Linux)| Az alább megadott folyamat memóriája tartalmaz egy nem kötelezően kihasználható támadási eszközkészletet: {ToolKitName}. A fájl nélkül álló támadási eszközkészletek általában nem rendelkeznek jelenléttel a fájlrendszerben, így a hagyományos víruskereső szoftverek nem észlelik a problémát.<br>A megadott viselkedések a következők: {a megfigyelt viselkedések listája}                                                                                                                                                                                    | DefenseEvasion, végrehajtás             | Magas     |
 |**Rejtett fájl végrehajtása észlelve**|A gazdagép adatainak elemzése azt jelzi, hogy a (z)% {User Name} elvégezte a rejtett fájl végrehajtását. Ez a tevékenység legitim tevékenység lehet, vagy egy feltört gazdagépre utal.|-|Tájékoztató|
 |**A DDOS Toolkit által észlelt mutatók [többször is láthatók]**|A (z)% {feltört gazdagép} gazdagép-adatainak elemzése olyan fájlneveket észlelt, amelyek a DDoS-támadások elindítására, a portok és a szolgáltatások megnyitására és a fertőzött rendszer teljes felügyeletére képesek. Ez valószínűleg legitim tevékenység. Ez a viselkedés [x] időpontot észlelt a mai napon a következő gépeken: [Machine Names]|-|Közepes|
 |**A DDOS Toolkit-hez kapcsolódó mutatók észlelhetők**|A (z)% {feltört gazdagép} gazdagép-adatainak elemzése olyan fájlneveket észlelt, amelyek a DDoS-támadások elindítására, a portok és a szolgáltatások megnyitására és a fertőzött rendszer teljes felügyeletére képesek. Ez valószínűleg legitim tevékenység.|-|Közepes|

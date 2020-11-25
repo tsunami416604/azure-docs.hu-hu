@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
 ms.openlocfilehash: 1766705e73afab5d15cdb5aa2c5bb1487ad3d7c5
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634283"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013887"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>Azure Key Vault-beli titkos kulcsok használata a folyamattevékenységekben
 
@@ -39,7 +39,7 @@ Ez a funkció az adatok gyári felügyelt identitására támaszkodik.  Ismerje 
 
     ![Key Vault hozzáférési szabályzatok](media/how-to-use-azure-key-vault-secrets-pipeline-activities/akvaccesspolicies-2.png)
 
-    Kattintson a **Hozzáadás** , majd a **Mentés** gombra.
+    Kattintson a **Hozzáadás**, majd a **Mentés** gombra.
 
 3. Navigáljon a Key Vault titkára, és másolja a titkos azonosítót.
 
@@ -53,7 +53,7 @@ Ez a funkció az adatok gyári felügyelt identitására támaszkodik.  Ismerje 
     |---------|---------|
     |Biztonságos kimenet     |Igaz         |
     |URL-cím     |[A titkos URI-érték]? API-Version = 7.0         |
-    |Módszer     |GET         |
+    |Metódus     |GET         |
     |Hitelesítés     |MSI         |
     |Erőforrás        |https://vault.azure.net       |
 
@@ -65,10 +65,10 @@ Ez a funkció az adatok gyári felügyelt identitására támaszkodik.  Ismerje 
     > [!CAUTION]
     > Állítsa a Secure output (biztonságos kimenet) beállítást igaz értékre, hogy megakadályozza a titkos érték egyszerű szövegként való naplózását.  Az értéket használó további tevékenységeknek a biztonságos bemenet beállítását True értékre kell állítani.
 
-5. Ha egy másik tevékenységben szeretné használni az értéket, használja a következő kódú kifejezést **@activity ("Web1"). output. Value** .
+5. Ha egy másik tevékenységben szeretné használni az értéket, használja a következő kódú kifejezést **@activity ("Web1"). output. Value**.
 
     ![Kód kifejezése](media/how-to-use-azure-key-vault-secrets-pipeline-activities/usewebactivity.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az adattárak és a számítási adatok hitelesítő adatainak tárolásához Azure Key Vault használatáról további információt a [hitelesítő adatok tárolása a Azure Key Vault-ben](./store-credentials-in-key-vault.md) című témakörben talál.

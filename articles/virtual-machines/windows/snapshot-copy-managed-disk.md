@@ -10,11 +10,11 @@ ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: c0fddca70ca09f0a3abb3c84672e20a42551ecd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89322313"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014312"
 ---
 # <a name="create-a-snapshot-using-the-portal-or-powershell"></a>Pillanatkép létrehozása a portál vagy a PowerShell használatával
 
@@ -25,14 +25,14 @@ Ha az új virtuális gép létrehozásához a pillanatképet fogja használni, j
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata 
 
 Pillanatkép létrehozásához hajtsa végre a következő lépéseket: 
-1.  A [Azure Portal](https://portal.azure.com)válassza az **erőforrás létrehozása**lehetőséget.
+1.  A [Azure Portal](https://portal.azure.com)válassza az **erőforrás létrehozása** lehetőséget.
 2. Keresse meg és válassza ki a **pillanatképet**.
-3. A **Pillanatkép** ablakban válassza a **Létrehozás**elemet. Megjelenik a **pillanatkép létrehozása** ablak.
+3. A **Pillanatkép** ablakban válassza a **Létrehozás** elemet. Megjelenik a **pillanatkép létrehozása** ablak.
 4. Adja meg a pillanatkép **nevét** .
 5. Válasszon ki egy meglévő [erőforráscsoportot](../../azure-resource-manager/management/overview.md#resource-groups) , vagy adja meg egy új nevet. 
 6. Válassza ki egy Azure-adatközpont **helyét**.  
-7. A **forrásoldali lemez**lapon válassza ki a felügyelt lemezt a pillanatképhez.
-8. Válassza ki a pillanatkép tárolására használni kívánt **fiókot** . Válassza a **Standard_HDD**lehetőséget, ha a pillanatképet nagy teljesítményű lemezen kell tárolni.
+7. A **forrásoldali lemez** lapon válassza ki a felügyelt lemezt a pillanatképhez.
+8. Válassza ki a pillanatkép tárolására használni kívánt **fiókot** . Válassza a **Standard_HDD** lehetőséget, ha a pillanatképet nagy teljesítményű lemezen kell tárolni.
 9. Kattintson a **Létrehozás** gombra.
 
 ## <a name="use-powershell"></a>A PowerShell használata
@@ -80,6 +80,6 @@ A következő lépések bemutatják, hogyan másolja a VHD-lemezt, és hozza lé
    ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Hozzon létre egy virtuális gépet egy pillanatképből egy felügyelt lemez pillanatképből történő létrehozásával, majd az új felügyelt lemez csatlakoztatásával operációsrendszer-lemezként. További információkért lásd a [virtuális gép létrehozása pillanatképből a PowerShell használatával](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json)című részt.

@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: zhchia
 ms.openlocfilehash: b88e618da3f8a23c0517aaeb251e54bf559fc468
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358473"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014516"
 ---
 # <a name="tutorial-configure-dialpad-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés konfigurálása
 
@@ -163,7 +163,7 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 ##  <a name="connector-limitations"></a>Összekötő korlátozásai
 * A (z) rendszer nem támogatja a csoport-átnevezni még ma. Ez azt jelenti, hogy az Azure AD-beli csoportok **DisplayName** -beli módosításait nem frissíti a rendszer, és az a következő módon jelenik meg:.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

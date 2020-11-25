@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: mbaldwin
 ms.openlocfilehash: 018570019b306dced76760fefa4441ee7d86ad2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88189835"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013955"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure Key Vault .NET 2,0 – kibocsátási megjegyzések és áttelepítési útmutató
-A következő információk segítségével áttelepíthető a C# és a .NET Azure Key Vault könyvtárának 2,0-es verziójára.  A korábbi verziókhoz írt alkalmazásokat frissíteni kell a legújabb verzió támogatásához.  Ezek a módosítások az új és továbbfejlesztett szolgáltatások, például **Key Vault tanúsítványok**teljes körű támogatásához szükségesek.
+A következő információk segítségével áttelepíthető a C# és a .NET Azure Key Vault könyvtárának 2,0-es verziójára.  A korábbi verziókhoz írt alkalmazásokat frissíteni kell a legújabb verzió támogatásához.  Ezek a módosítások az új és továbbfejlesztett szolgáltatások, például **Key Vault tanúsítványok** teljes körű támogatásához szükségesek.
 
 ## <a name="key-vault-certificates"></a>Tanúsítványok Key Vault
 
@@ -38,7 +38,7 @@ Key Vault tanúsítványok kezelik a x509-tanúsítványokat, és a következő 
 
 ## <a name="namespaces"></a>Névterek
 
-* A **modellek** névtere a **Microsoft. Azure.** kulcstartóból a **Microsoft. Azure. kulcstartó. models**típusra módosul.
+* A **modellek** névtere a **Microsoft. Azure.** kulcstartóból a **Microsoft. Azure. kulcstartó. models** típusra módosul.
 * A **Microsoft. Azure. kulcstartó. a belső** névtér el lett dobva.
 * A következő Azure SDK-függőségi névterek 
 
@@ -49,12 +49,12 @@ Key Vault tanúsítványok kezelik a x509-tanúsítványokat, és a következő 
 
 * A *titkos* kód a *SecretBundle* módosult
 * A *szótár* *IDictionary* módosult
-* *List \<T> , string []* módosította *IList \<T> *
+* *List \<T> , string []* módosította *IList \<T>*
 * A *NextList* *NextPageLink* módosult
 
 ## <a name="return-types"></a>Visszatérési típusok
 
-* A **Feladatlista** és a **SecretList** mostantól *IPage \<T> * ad vissza a *ListKeysResponseMessage* helyett.
+* A **Feladatlista** és a **SecretList** mostantól *IPage \<T>* ad vissza a *ListKeysResponseMessage* helyett.
 * A generált **BackupKeyAsync** most visszaadja a *BackupKeyResult*, amely tartalmazza az *értéket* (biztonsági másolati blob). Korábban a metódus burkolta, és csak az értéket adta vissza.
 
 ## <a name="exceptions"></a>Kivételek
@@ -91,7 +91,7 @@ Ha egy ügyfél Key Vault függőséget dolgoz fel, a következő csomagok tölt
 ## <a name="class-changes"></a>Osztályok módosításai
 
 * A **UnixEpoch** osztály el lett távolítva.
-* A **Base64UrlConverter** osztály a **Base64UrlJsonConverter**névre lett átnevezve.
+* A **Base64UrlConverter** osztály a **Base64UrlJsonConverter** névre lett átnevezve.
 
 ## <a name="other-changes"></a>További változások
 
@@ -99,7 +99,7 @@ Ha egy ügyfél Key Vault függőséget dolgoz fel, a következő csomagok tölt
 
 ## <a name="microsoftazuremanagementkeyvault-nuget"></a>Microsoft. Azure. Management. kulcstartó NuGet
 
-* A tárolót visszaadó műveletek esetében a visszatérési **típus olyan osztály** *volt, amely egy tár*tulajdonságot foglalt magukban. A visszatérési típus most a *Vault*.
+* A tárolót visszaadó műveletek esetében a visszatérési **típus olyan osztály** *volt, amely egy tár* tulajdonságot foglalt magukban. A visszatérési típus most a *Vault*.
 * A *PermissionsToKeys* és a *PermissionsToSecrets* mostantól *engedélyekkel rendelkeznek. kulcsok* és *engedélyek. titkok*
 * Bizonyos visszatérési típusok változásai a vezérlő-síkon is érvényesek.
 

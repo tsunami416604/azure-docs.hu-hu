@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
 ms.openlocfilehash: 390a8a49e9a47ee5e6845d85fe4fe02f514708e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362197"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013615"
 ---
 # <a name="how-does-hyper-v-replication-work"></a>Hogyan működik a Hyper-V replikáció?
 
@@ -34,7 +34,7 @@ A Azure Migrate kiszolgáló áttelepítése egy eszköz a helyszíni számítá
 
 
 
-**Összetevő** | **Üzembe helyezés** | 
+**Összetevő** | **Környezet** | 
 --- | --- 
 **Replikációs szolgáltató** | A Microsoft Azure Site Recovery-szolgáltató a Hyper-V-gazdagépekre van telepítve, és regisztrálva van az Azure Migration Server áttelepítésével.<br/> A szolgáltató a Hyper-V virtuális gépek replikálását koordinálja.
 **Recovery Services ügynök** | A Microsoft Azure Recovery szolgáltatás ügynöke kezeli az adatreplikációt. Együttműködik a szolgáltatóval, hogy a Hyper-V virtuális gépekről az Azure-ba replikálja az adatait.<br/> A replikált adatait a rendszer feltölti az Azure-előfizetésében lévő Storage-fiókba. A kiszolgáló áttelepítési eszköze a replikált adatfeldolgozást végez, és az előfizetésben lévő replika lemezekre alkalmazza. A replika lemezek az áttelepítés során az Azure-beli virtuális gépek létrehozásához használatosak.
@@ -70,9 +70,9 @@ A Hyper-V-gazdagépeken az adatok Azure-ba való feltöltéséhez használt sáv
 
 
 1. Jelentkezzen be a Hyper-V-gazdagépre vagy-fürt csomópontjára.
-2. A **C:\Program Files\Microsoft Azure Recovery Services Agent\bin\wabadmin.msc**futtatásával nyissa meg a Windows Azure Backup MMC beépülő modult.
-3. A beépülő modulban válassza a **Tulajdonságok módosítása**lehetőséget.
-4. A **szabályozás**alatt jelölje be a **biztonsági mentési műveletek internetes sávszélesség-szabályozásának engedélyezése**jelölőnégyzetet. A munkamennyiség és a munkaidőn kívüli munkaidő korlátozásának beállítása. Az érvényes tartományok 512 kbps és 1 023 Mbps között vannak.
+2. A **C:\Program Files\Microsoft Azure Recovery Services Agent\bin\wabadmin.msc** futtatásával nyissa meg a Windows Azure Backup MMC beépülő modult.
+3. A beépülő modulban válassza a **Tulajdonságok módosítása** lehetőséget.
+4. A **szabályozás** alatt jelölje be a **biztonsági mentési műveletek internetes sávszélesség-szabályozásának engedélyezése** jelölőnégyzetet. A munkamennyiség és a munkaidőn kívüli munkaidő korlátozásának beállítása. Az érvényes tartományok 512 kbps és 1 023 Mbps között vannak.
 I
 
 ### <a name="influence-upload-efficiency"></a>A feltöltés hatékonyságának befolyásolása
@@ -86,6 +86,6 @@ Ha van tartalék sávszélesség a replikáláshoz, és szeretné megnövelni a 
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Próbálja ki a [Hyper-V áttelepítését](tutorial-migrate-hyper-v.md) Azure Migrate kiszolgáló áttelepítésével.

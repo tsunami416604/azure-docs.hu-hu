@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: apimpm
 ms.openlocfilehash: 44de30438d59252a431bf37ac6919a9bc186c8ed
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315737"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013544"
 ---
 > [!NOTE]
 > A dokumentáció tartalma az elavult fejlesztői portálról szól. Továbbra is használhatja, a szokásos módon, a 2023 októberében való kivonulás után, amikor az összes API Management szolgáltatásból el lesz távolítva. Az elavult portál csak a kritikus biztonsági frissítéseket fogja kapni. További részletekért tekintse meg a következő cikkeket:

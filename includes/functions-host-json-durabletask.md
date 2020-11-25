@@ -1,20 +1,20 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 24dc2cad8d299d150adddc03de5e9006fc831fc6
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 6a862a051d0040ac99746d81f10ae63d5af7545f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061617"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013724"
 ---
-[Durable functions](../articles/azure-functions/durable-functions-overview.md)konfigurációs beállításai.
+[Durable functions](../articles/azure-functions/durable/durable-functions-overview.md)konfigurációs beállításai.
 
 > [!NOTE]
 > A Durable Functions összes főbb verziója támogatott a Azure Functions Runtime összes verziójában. A konfiguráció host.jssémája azonban némileg eltér a Azure Functions futtatókörnyezet és a használt Durable Functions-bővítmény verziójától függően. Az alábbi példák a Azure Functions 2,0-es és a 3,0-as használattal rendelkeznek. Mindkét példa esetén, ha Azure Functions 1,0-as verziót használ, a rendelkezésre álló beállítások megegyeznek, de a host.js"durableTask" szakasza nem a "bővítmények" mező helyett a konfigurációban található host.js.
@@ -97,11 +97,11 @@ ms.locfileid: "93061617"
 }
 ```
 
-A feladat-hub nevének betűvel kell kezdődnie, és csak betűkből és számokból állhat. Ha nincs megadva, a functions-alkalmazás alapértelmezett neve **DurableFunctionsHub** . További információ: [Task hubok](../articles/azure-functions/durable-functions-task-hubs.md).
+A feladat-hub nevének betűvel kell kezdődnie, és csak betűkből és számokból állhat. Ha nincs megadva, a functions-alkalmazás alapértelmezett neve **DurableFunctionsHub**. További információ: [Task hubok](../articles/azure-functions/durable/durable-functions-task-hubs.md).
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------|
-|hubName|DurableFunctionsHub|Az alternatív [feladatok központi](../articles/azure-functions/durable-functions-task-hubs.md) neve felhasználható több Durable functions-alkalmazás elkülönítésére, még akkor is, ha ugyanazt a tárolási hátteret használják.|
+|hubName|DurableFunctionsHub|Az alternatív [feladatok központi](../articles/azure-functions/durable/durable-functions-task-hubs.md) neve felhasználható több Durable functions-alkalmazás elkülönítésére, még akkor is, ha ugyanazt a tárolási hátteret használják.|
 |controlQueueBatchSize|32|A vezérlési sorból egyszerre lekérdezett üzenetek száma.|
 |controlQueueBufferThreshold|256|A memóriában egyszerre pufferelt ellenőrzési üzenetsor-üzenetek száma, amelynél a kézbesítő a további üzenetek elszállítása előtt várakozik.|
 |partitionCount |4|A vezérlő várólistájának partícióinak száma. Egy 1 és 16 közötti pozitív egész szám lehet.|
@@ -124,4 +124,4 @@ A feladat-hub nevének betűvel kell kezdődnie, és csak betűkből és számok
 |useLegacyPartitionManagement|true|Ha a értékre `false` van állítva, a egy particionálási algoritmust használ, amely csökkenti az ismétlődő függvények végrehajtásának lehetőségét a horizontális felskálázáskor.  A szolgáltatás a v 2.3.0 kezdődően érhető el. Az alapértelmezett érték `false` egy későbbi kiadásban lesz módosítva.|
 |useGracefulShutdown|hamis|Előnézet A zökkenőmentes leállítás lehetővé teszi, hogy a gazdagépek leállításának esélyét a folyamaton kívüli függvények végrehajtása okozza.|
 
-Ezeknek a beállításoknak a nagy része a teljesítmény optimalizálása. További információ: [teljesítmény és skálázás](../articles/azure-functions/durable-functions-perf-and-scale.md).
+Ezeknek a beállításoknak a nagy része a teljesítmény optimalizálása. További információ: [teljesítmény és skálázás](../articles/azure-functions/durable/durable-functions-perf-and-scale.md).

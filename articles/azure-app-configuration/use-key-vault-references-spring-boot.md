@@ -15,11 +15,11 @@ ms.date: 12/16/2019
 ms.author: lcozzens
 ms.custom: mvc, devx-track-java, devx-track-azurecli
 ms.openlocfilehash: 921c3b8afdb6b196e001cdb7c190529e6238c1f7
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127093"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014261"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>Oktatóanyag: Key Vault-referenciák használata Java Spring-alkalmazásokban
 
@@ -35,7 +35,7 @@ Ez az oktatóanyag bemutatja, hogyan implementálhatja Key Vault hivatkozásait 
 
 Az oktatóanyag lépéseihez bármilyen Kódszerkesztő használható. A [Visual Studio Code](https://code.visualstudio.com/) például egy platformfüggetlen Kódszerkesztő, amely a Windows, MacOS és Linux operációs rendszerekhez érhető el.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Hozzon létre egy olyan alkalmazás-konfigurációs kulcsot, amely Key Vaultban tárolt értékre hivatkozik.
@@ -58,10 +58,10 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 1. A **Key Vault létrehozása** jobb oldalán adja meg a következő információkat:
     * Válassza ki az **előfizetést az előfizetés** kiválasztásához.
     * Az **erőforráscsoport** területen válassza az **új létrehozása** elemet, és adjon meg egy erőforráscsoport-nevet.
-    * A **Key Vault neve mezőben** egyedi nevet kell megadni. Ebben az oktatóanyagban írja be a **contoso-vault2** .
+    * A **Key Vault neve mezőben** egyedi nevet kell megadni. Ebben az oktatóanyagban írja be a **contoso-vault2**.
     * A **régió** legördülő listából válassza ki a kívánt helyet.
 1. Hagyja meg a többi **create Key Vault** -beállítást az alapértelmezett értékekkel.
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
 Ezen a ponton az Azure-fiókja az egyetlen jogosult az új tároló elérésére.
 
@@ -69,16 +69,16 @@ Ezen a ponton az Azure-fiókja az egyetlen jogosult az új tároló elérésére
 
 ## <a name="add-a-secret-to-key-vault"></a>Titkos kulcs hozzáadása a Key Vaulthoz
 
-Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést kell elvégeznie. Ebben az esetben adjon hozzá egy üzenetet, amely segítségével tesztelheti Key Vault lekérését. Az üzenet neve **üzenet** , és a "Hello from Key Vault" értéket tárolja.
+Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést kell elvégeznie. Ebben az esetben adjon hozzá egy üzenetet, amely segítségével tesztelheti Key Vault lekérését. Az üzenet neve **üzenet**, és a "Hello from Key Vault" értéket tárolja.
 
 1. A Key Vault tulajdonságok oldalain válassza a **titkok** elemet.
 1. Válassza a **készítés/importálás** lehetőséget.
 1. A **titkos kulcs létrehozása** panelen adja meg a következő értékeket:
-    * **Feltöltési beállítások** : adja meg a **manuális** értéket.
-    * **Név** : írja be az **üzenetet** .
-    * **Érték** : adja meg **a Hello értéket Key Vault** .
+    * **Feltöltési beállítások**: adja meg a **manuális** értéket.
+    * **Név**: írja be az **üzenetet**.
+    * **Érték**: adja meg **a Hello értéket Key Vault**.
 1. Hagyja a másik **titkos** tulajdonságot az alapértelmezett értékekkel.
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Key Vault-hivatkozás hozzáadása az alkalmazás konfigurációjához
 
@@ -87,9 +87,9 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést 
 1. Válassza a **Configuration Explorer** lehetőséget.
 
 1. Válassza a **+**  >  **Key Vault-hivatkozás** létrehozása lehetőséget, majd adja meg a következő értékeket:
-    * **Kulcs** : **/Application/config.keyvaultmessage** kiválasztása
-    * **Címke** : hagyja üresen ezt az értéket.
-    * **Előfizetés** , **erőforráscsoport** és **Key Vault** : adja meg az előző szakaszban létrehozott kulcstartó értékeinek megfelelő értékeket.
+    * **Kulcs**: **/Application/config.keyvaultmessage** kiválasztása
+    * **Címke**: hagyja üresen ezt az értéket.
+    * **Előfizetés**, **erőforráscsoport** és **Key Vault**: adja meg az előző szakaszban létrehozott kulcstartó értékeinek megfelelő értékeket.
     * **Titkos** kód: válassza ki az előző szakaszban létrehozott **üzenet** titkos nevét.
 
 ## <a name="connect-to-key-vault"></a>Kapcsolódás Key Vaulthoz
@@ -129,7 +129,7 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést 
     az role assignment create --role "App Configuration Data Reader" --assignee-object-id <objectId-of-your-service-principal> --resource-group <your-resource-group>
     ```
 
-1. Hozza létre a környezeti változókat **AZURE_CLIENT_ID** , **AZURE_CLIENT_SECRET** és **AZURE_TENANT_ID** . Használja az előző lépésekben megjelenő szolgáltatásnév értékeit. A parancssorban futtassa a következő parancsokat, és indítsa újra a parancssort, hogy a módosítás érvénybe lépjen:
+1. Hozza létre a környezeti változókat **AZURE_CLIENT_ID**, **AZURE_CLIENT_SECRET** és **AZURE_TENANT_ID**. Használja az előző lépésekben megjelenő szolgáltatásnév értékeit. A parancssorban futtassa a következő parancsokat, és indítsa újra a parancssort, hogy a módosítás érvénybe lépjen:
 
     ```cmd
     setx AZURE_CLIENT_ID "clientId"
@@ -260,11 +260,11 @@ Ha titkos kulcsot szeretne hozzáadni a tárolóhoz, néhány további lépést 
 
     Megjelenik az alkalmazás konfigurációs tárolójában megadott üzenet. Megjelenik a Key Vaultban megadott üzenet is.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozott egy alkalmazás-konfigurációs kulcsot, amely a Key Vaultban tárolt értékre hivatkozik. Ha szeretné megtudni, hogyan használhatja a Feature Flags szolgáltatást a Java Spring-alkalmazásban, folytassa a következő oktatóanyaggal.
 

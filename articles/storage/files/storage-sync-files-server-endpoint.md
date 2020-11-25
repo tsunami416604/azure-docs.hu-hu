@@ -8,16 +8,16 @@ ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: f75f0d1ae12db11590f8ce62f3c7b4c0f3e12817
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541492"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013938"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>Azure File Sync kiszolgálói végpont hozzáadása/eltávolítása
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. Ez a Windows-kiszolgálók Azure-fájlmegosztás gyors gyorsítótárba alakításával végezhető el. A Windows Server rendszeren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl. SMB, NFS vagy FTPS), és annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
 
-A *kiszolgálói végpont* a *regisztrált kiszolgáló*egy adott helyét jelöli, például egy kiszolgálón lévő vagy a kötet gyökerét tartalmazó mappát. Ugyanazon a köteten több kiszolgálói végpont is létezhet, ha a névterek nincsenek átfedésben (például F:\sync1 és F:\sync2), és az egyes végpontok egy egyedi szinkronizálási csoportba vannak szinkronizálva. A felhő-előállítók házirendjeit egyenként is konfigurálhatja az egyes kiszolgálói végpontokhoz. Ha olyan kiszolgálói helyet ad hozzá egy meglévő fájlhoz, amely kiszolgálói végpontként egy szinkronizálási csoportba kerül, akkor ezeket a fájlokat a rendszer egyesíti a szinkronizálási csoport többi végpontján már más fájlokkal.
+A *kiszolgálói végpont* a *regisztrált kiszolgáló* egy adott helyét jelöli, például egy kiszolgálón lévő vagy a kötet gyökerét tartalmazó mappát. Ugyanazon a köteten több kiszolgálói végpont is létezhet, ha a névterek nincsenek átfedésben (például F:\sync1 és F:\sync2), és az egyes végpontok egy egyedi szinkronizálási csoportba vannak szinkronizálva. A felhő-előállítók házirendjeit egyenként is konfigurálhatja az egyes kiszolgálói végpontokhoz. Ha olyan kiszolgálói helyet ad hozzá egy meglévő fájlhoz, amely kiszolgálói végpontként egy szinkronizálási csoportba kerül, akkor ezeket a fájlokat a rendszer egyesíti a szinkronizálási csoport többi végpontján már más fájlokkal.
 
 A Azure File Sync végpontok üzembe helyezésével kapcsolatos információkért tekintse meg a [Azure file Sync üzembe helyezését](storage-sync-files-deployment-guide.md) ismertető témakört.
 
@@ -33,7 +33,7 @@ Kiszolgálói végpont hozzáadásához navigáljon a kívánt szinkronizálási
 
 ![Új kiszolgálói végpontok hozzáadása a szinkronizálási csoport panelen](media/storage-sync-files-server-endpoint/add-server-endpoint-1.png)
 
-A **kiszolgáló-végpont hozzáadása**területen a következő információk szükségesek:
+A **kiszolgáló-végpont hozzáadása** területen a következő információk szükségesek:
 
 - **Regisztrált kiszolgáló**: annak a kiszolgálónak vagy fürtnek a neve, amelyen létre kívánja hozni a kiszolgálói végpontot.
 - **Elérési út**: a szinkronizálási csoport részeként szinkronizálandó Windows Server elérési útja.
@@ -71,7 +71,7 @@ A kiszolgálói végpont eltávolítása:
 
     ![Kiszolgálói végpont eltávolítása egy szinkronizálási csoportból](media/storage-sync-files-server-endpoint/remove-server-endpoint-1.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Kiszolgáló regisztrálása/regisztrációjának törlése Azure File Sync](storage-sync-files-server-registration.md)
 - [Az Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md)
 - [Az Azure File Sync monitorozása](storage-sync-files-monitoring.md)

@@ -3,14 +3,14 @@ title: 'Rövid útmutató: az első függvény létrehozása az Azure-ban a Visu
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre és tehet közzé egy HTTP-trigger Azure-függvényt a Visual Studio használatával.
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
-ms.date: 03/06/2020
+ms.date: 09/30/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: d7cfcd02c5e6c9ff57241288bd79efb45d4ac7ab
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c9ddd6e74e25d8de415e24038e99da9d21dab867
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88213976"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "96014472"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>Rövid útmutató: az első függvény létrehozása az Azure-ban a Visual Studióval
 
@@ -36,7 +36,7 @@ A Visual Studio létrehoz egy projektet és egy osztályt, amely tartalmazza a H
 
 A `FunctionName` Method attribútum a függvény nevét állítja be, amely alapértelmezés szerint a következőképpen jön létre: `Function1` . Mivel az eszközök nem teszik lehetővé, hogy a projekt létrehozásakor felülbírálja az alapértelmezett függvény nevét, szánjon egy percet a Function osztály, a fájl és a metaadatok jobb nevének létrehozásához.
 
-1. A **fájlkezelőben**kattintson a jobb gombbal a Function1.cs fájlra, és nevezze át a következőre: `HttpExample.cs` .
+1. A **fájlkezelőben** kattintson a jobb gombbal a Function1.cs fájlra, és nevezze át a következőre: `HttpExample.cs` .
 
 1. A kódban nevezze át a Function1 osztályt a következőre: "HttpExample".
 
@@ -62,7 +62,7 @@ A projekt közzététele előtt rendelkeznie kell egy Function alkalmazással az
 
 1. A Cloud Explorerben ki kell választania az új Function alkalmazást. Ha nem, bontsa ki az előfizetését > **app Services**, és válassza ki az új Function alkalmazást.
 
-1. Kattintson a jobb gombbal a Function alkalmazásra, és válassza a **Megnyitás böngészőben**lehetőséget. Ekkor megnyílik a Function alkalmazás gyökere az alapértelmezett böngészőben, és megjeleníti azt a lapot, amely azt jelzi, hogy a Function alkalmazás fut. 
+1. Kattintson a jobb gombbal a Function alkalmazásra, és válassza a **Megnyitás böngészőben** lehetőséget. Ekkor megnyílik a Function alkalmazás gyökere az alapértelmezett böngészőben, és megjeleníti azt a lapot, amely azt jelzi, hogy a Function alkalmazás fut. 
 
     :::image type="content" source="media/functions-create-your-first-function-visual-studio/function-app-running-azure.png" alt-text="Futó Function alkalmazás":::
 
@@ -74,21 +74,21 @@ A projekt közzététele előtt rendelkeznie kell egy Function alkalmazással az
 
 2. Nyissa meg ezt az URL-címet, és megjelenik a függvény által visszaadott távoli GET kérelemre adott válasz, amely a következő példához hasonlóan néz ki:
 
-    :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png" alt-text="Futó Function alkalmazás":::
+    :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png" alt-text="A függvény által visszaadott válasz a böngészőben":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az ebben a gyűjteményben lévő többi rövid útmutató erre a rövid útmutatóra épül. Ha azt tervezi, hogy az ezt követő rövid útmutatók, oktatóanyagok vagy az ebben a rövid útmutatóban létrehozott bármelyik szolgáltatással dolgozik, ne törölje az erőforrásokat.
 
-Az *erőforrások* kifejezés az Azure-ban például függvényalkalmazásokra, függvényekre vagy tárfiókokra utal. *Erőforráscsoportokba*vannak csoportosítva, és a csoport törlésével törölheti a csoport összes elemét. 
+Az *erőforrások* kifejezés az Azure-ban például függvényalkalmazásokra, függvényekre vagy tárfiókokra utal. *Erőforráscsoportokba* vannak csoportosítva, és a csoport törlésével törölheti a csoport összes elemét. 
 
 E rövid útmutatók elvégzéséhez erőforrásokat hozott létre. [Fiókjának állapotától](https://azure.microsoft.com/account/) és a [szolgáltatási díjszabástól](https://azure.microsoft.com/pricing/) függően lehetséges, hogy az erőforrások használata díjköteles. Ha már nincs szüksége ezekre az erőforrásokra, a következőképpen törölheti őket:
 
-1. A Cloud Explorerben bontsa ki az előfizetését > **app Services**, kattintson a jobb gombbal a Function alkalmazásra, majd válassza a **Megnyitás a portálon**lehetőséget. 
+1. A Cloud Explorerben bontsa ki az előfizetését > **app Services**, kattintson a jobb gombbal a Function alkalmazásra, majd válassza a **Megnyitás a portálon** lehetőséget. 
 
-1. A Function alkalmazás lapon válassza az **Áttekintés** lapot, majd válassza ki az **erőforráscsoport**területen található hivatkozást.
+1. A Function alkalmazás lapon válassza az **Áttekintés** lapot, majd válassza ki az **erőforráscsoport** területen található hivatkozást.
 
-   :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-app-delete-resource-group.png" alt-text="Futó Function alkalmazás":::
+   :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-app-delete-resource-group.png" alt-text="Válassza ki a függvény alkalmazás oldaláról törölni kívánt erőforráscsoportot.":::
 
 2. Az **erőforráscsoport** lapon tekintse át a befoglalt erőforrások listáját, és ellenőrizze, hogy a törölni kívántak-e.
  

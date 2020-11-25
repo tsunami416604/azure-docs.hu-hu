@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 899bc3fdc94b8232acd3edf3e0cbab3c481ff8f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081848"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013725"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions kötései (Azure Functions)
 
@@ -128,7 +128,7 @@ A tevékenység-trigger lehetővé teszi olyan függvények készítését, amel
 
 A Visual Studio használata esetén a tevékenység-trigger a .NET attribútum használatával van konfigurálva `ActivityTriggerAttribute` .
 
-Ha a VS Code-ot vagy a Azure Portal fejlesztési célokra használja, a tevékenység-triggert a következő JSON-objektum határozza meg a `bindings` *function.js*tömbben:
+Ha a VS Code-ot vagy a Azure Portal fejlesztési célokra használja, a tevékenység-triggert a következő JSON-objektum határozza meg a `bindings` *function.js* tömbben:
 
 ```json
 {
@@ -249,7 +249,7 @@ A hangelőkészítési ügyfél kötése lehetővé teszi a Orchestrator functio
 
 Ha a Visual studiót használja, akkor a `OrchestrationClientAttribute` Durable Functions 1,0 .net-attribútumának használatával köthető az előkészítési ügyfélhez. A Durable Functions a 2,0-es verziótól kezdődően a .NET-attribútum használatával köthető az előkészítési ügyfélhez `DurableClientAttribute` .
 
-Ha programozási nyelveket (például *. CSX* vagy *. js* fájlt) használ a fejlesztéshez, az összehangoló triggert a következő JSON-objektum határozza meg a `bindings` *function.js*tömbben:
+Ha programozási nyelveket (például *. CSX* vagy *. js* fájlt) használ a fejlesztéshez, az összehangoló triggert a következő JSON-objektum határozza meg a `bindings` *function.js* tömbben:
 
 ```json
 {
@@ -303,7 +303,7 @@ public static Task Run(
 
 ### <a name="client-sample-not-visual-studio"></a>Ügyfél minta (nem Visual Studio)
 
-Ha nem a Visual studiót használja a fejlesztéshez, a következőfunction.jsis létrehozhatja * a* fájlon. Ebből a példából megtudhatja, hogyan konfigurálhat egy üzenetsor által aktivált függvényt, amely a tartós előkészítési ügyfél kötését használja:
+Ha nem a Visual studiót használja a fejlesztéshez, a következőfunction.jsis létrehozhatja *a* fájlon. Ebből a példából megtudhatja, hogyan konfigurálhat egy üzenetsor által aktivált függvényt, amely a tartós előkészítési ügyfél kötését használja:
 
 ```json
 {
@@ -511,7 +511,7 @@ Ha a Visual studiót használja, az entitás-ügyfélhez a .NET-attribútum hasz
 > [!NOTE]
 > A `[DurableClientAttribute]` is használható a koordináló [ügyfélhez](#orchestration-client)való kötéshez.
 
-Ha programozási nyelveket (például *. CSX* vagy *. js* fájlt) használ a fejlesztéshez, az entitás-triggert a következő JSON-objektum határozza meg a `bindings` *function.js*tömbben:
+Ha programozási nyelveket (például *. CSX* vagy *. js* fájlt) használ a fejlesztéshez, az entitás-triggert a következő JSON-objektum határozza meg a `bindings` *function.js* tömbben:
 
 ```json
 {
@@ -533,9 +533,9 @@ Ha programozási nyelveket (például *. CSX* vagy *. js* fájlt) használ a fej
 
 A .NET functions szolgáltatásban általában a következőhöz kötődik `IDurableEntityClient` , ami teljes hozzáférést biztosít a tartós entitások által támogatott összes ügyféloldali API-hoz. Emellett az interfészhez is köthető `IDurableOrchestrationClient` , amely hozzáférést biztosít az ügyfél API-khoz mindkét entitáshoz és a munkafolyamatokhoz. Az ügyfél-objektum API-jai a következők:
 
-* **ReadEntityStateAsync \<T> **: egy entitás állapotának beolvasása. Egy olyan választ ad vissza, amely jelzi, hogy létezik-e a célként megadott entitás, és ha igen, milyen állapotban van.
+* **ReadEntityStateAsync \<T>**: egy entitás állapotának beolvasása. Egy olyan választ ad vissza, amely jelzi, hogy létezik-e a célként megadott entitás, és ha igen, milyen állapotban van.
 * **SignalEntityAsync**: egyirányú üzenetet küld egy entitásnak, és megvárja, amíg a várólistán lévő.
-* **ListEntitiesAsync**: több entitás állapotának lekérdezése. Az entitásokat *név* és *utolsó működési idő*szerint lehet lekérdezni.
+* **ListEntitiesAsync**: több entitás állapotának lekérdezése. Az entitásokat *név* és *utolsó működési idő* szerint lehet lekérdezni.
 
 Nem kell létrehoznia a cél entitást a jel elküldése előtt – az entitás állapota a jelet kezelő entitás függvényből hozható létre.
 

@@ -6,11 +6,11 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 04/30/2018
 ms.openlocfilehash: ba69098f32e131714a15923aef64c3f6ba17e18f
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219496"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013309"
 ---
 # <a name="manage-azure-data-lake-analytics-using-account-policies"></a>Azure Data Lake Analytics kezelése a fiókházirend használatával
 
@@ -25,8 +25,8 @@ A szabályzatok a Data Lake Analytics-fiók által használható elemzési egys�
 A Data Lake Analytics-fiókhoz tartozó AUs számának módosítása:
 
 1. A Azure Portal lépjen a Data Lake Analytics-fiókra.
-2. Kattintson **a korlátozások és házirendek**elemre.
-3. Az **AUs maximális**értéke alatt mozgassa a csúszkát egy érték kiválasztásához, vagy írja be az értéket a szövegmezőbe.
+2. Kattintson **a korlátozások és házirendek** elemre.
+3. Az **AUs maximális** értéke alatt mozgassa a csúszkát egy érték kiválasztásához, vagy írja be az értéket a szövegmezőbe.
 4. Kattintson a **Mentés** gombra.
 
    > [!NOTE]
@@ -39,8 +39,8 @@ Ez a szabályzat korlátozza, hogy hány feladat futhat egyszerre. Alapértelmez
 A párhuzamosan futtatható feladatok számának módosítása:
 
 1. A Azure Portal lépjen a Data Lake Analytics-fiókra.
-2. Kattintson **a korlátozások és házirendek**elemre.
-3. A **futó feladatok maximális száma**alatt mozgassa a csúszkát egy érték kiválasztásához, vagy írja be az értéket a szövegmezőbe.
+2. Kattintson **a korlátozások és házirendek** elemre.
+3. A **futó feladatok maximális száma** alatt mozgassa a csúszkát egy érték kiválasztásához, vagy írja be az értéket a szövegmezőbe.
 4. Kattintson a **Mentés** gombra.
 
    > [!NOTE]
@@ -53,8 +53,8 @@ Ha a felhasználók a U-SQL-feladatokat futtatják, a Data Lake Analytics szolg�
 Annak módosítása, hogy mennyi ideig tart a feladatok metaadatainak és erőforrásainak megőrzése:
 
 1. A Azure Portal lépjen a Data Lake Analytics-fiókra.
-2. Kattintson **a korlátozások és házirendek**elemre.
-3. A **feladatok lekérdezésének megtartásához a napok**alatt mozgassa a csúszkát egy érték kiválasztásához, vagy írja be az értéket a szövegmezőbe.  
+2. Kattintson **a korlátozások és házirendek** elemre.
+3. A **feladatok lekérdezésének megtartásához a napok** alatt mozgassa a csúszkát egy érték kiválasztásához, vagy írja be az értéket a szövegmezőbe.  
 4. Kattintson a **Mentés** gombra.
 
 ## <a name="job-level-policies"></a>Job szintű házirendek
@@ -76,9 +76,9 @@ Minden fiókhoz alapértelmezett házirend van beállítva. Az alapértelmezett 
 
 1. A Azure Portal lépjen a Data Lake Analytics-fiókra.
 
-2. Kattintson **a korlátozások és házirendek**elemre.
+2. Kattintson **a korlátozások és házirendek** elemre.
 
-3. A **feladatok küldési korlátai**területen kattintson a **házirend hozzáadása** gombra. Ezután válassza ki vagy adja meg a következő beállításokat:
+3. A **feladatok küldési korlátai** területen kattintson a **házirend hozzáadása** gombra. Ezután válassza ki vagy adja meg a következő beállításokat:
 
    1. **Számítási szabályzat neve**: írja be a szabályzat nevét, hogy emlékeztesse a szabályzat céljára.
 
@@ -90,15 +90,15 @@ Minden fiókhoz alapértelmezett házirend van beállítva. Az alapértelmezett 
 
 4. Kattintson az **OK** gombra.
 
-5. Az új házirend megjelenik az **alapértelmezett** házirend táblában a **feladatok beküldési korlátai**területen.
+5. Az új házirend megjelenik az **alapértelmezett** házirend táblában a **feladatok beküldési korlátai** területen.
 
 ## <a name="delete-or-edit-an-existing-policy"></a>Meglévő szabályzat törlése vagy szerkesztése
 
 1. A Azure Portal lépjen a Data Lake Analytics-fiókra.
 
-2. Kattintson **a korlátozások és házirendek**elemre.
+2. Kattintson **a korlátozások és házirendek** elemre.
 
-3. A **feladatok küldési korlátai**területen keresse meg a szerkeszteni kívánt szabályzatot.
+3. A **feladatok küldési korlátai** területen keresse meg a szerkeszteni kívánt szabályzatot.
 
 4. A **törlési** és **szerkesztési** beállítások megjelenítéséhez a tábla jobb oldali oszlopában kattintson a elemre `...` . # # további erőforrások a feladatok házirendjéhez
 
@@ -106,7 +106,7 @@ Minden fiókhoz alapértelmezett házirend van beállítva. Az alapértelmezett 
 - [Fiók szintű házirendek blogbejegyzés](/archive/blogs/azuredatalake/managing-your-azure-data-lake-analytics-compute-resources-account-level-policy)
 - [Job szintű házirendek blogbejegyzés](/archive/blogs/azuredatalake/managing-your-azure-data-lake-analytics-compute-resources-job-level-policy)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure Data Lake Analytics áttekintése](data-lake-analytics-overview.md)
 - [A Data Lake Analytics használatának első lépései a Azure Portal](data-lake-analytics-get-started-portal.md)

@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: b44186d783a249192a8c13ee97063034ee319df7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88036759"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013139"
 ---
 # <a name="consumption-model"></a>Használatalapú modell
 
 Az útválasztási szolgáltatás a járműre jellemző használati modell részletes leírására szolgáló paramétereket tartalmaz.
-A **vehicleEngineType**értékétől függően két fő felhasználási modell támogatott: az _égés_ és az _elektromos_. Nem megfelelő a különböző modellekhez tartozó paraméterek megadása ugyanabban a kérésben. Emellett a használati modell paraméterei nem használhatók a következő **travelMode** -értékekkel: _kerékpár_ és _gyalogos_.
+A **vehicleEngineType** értékétől függően két fő felhasználási modell támogatott: az _égés_ és az _elektromos_. Nem megfelelő a különböző modellekhez tartozó paraméterek megadása ugyanabban a kérésben. Emellett a használati modell paraméterei nem használhatók a következő **travelMode** -értékekkel: _kerékpár_ és _gyalogos_.
 
 ## <a name="parameter-constraints-for-consumption-model"></a>A használati modell paramétereinek megkötései
 
@@ -29,7 +29,7 @@ Mindkét felhasználási modellben vannak függőségek a paraméterek megadása
 * Ha a **accelerationEfficiency** és a **decelerationEfficiency** meg van adva, az értékük szorzata nem lehet nagyobb, mint 1 (az örökös mozgás megakadályozása érdekében).
 * a **uphillEfficiency** és a **downhillEfficiency** mindig párosként kell megadni (azaz mindkettőt vagy egyet).
 * Ha a **uphillEfficiency** és a **downhillEfficiency** meg van adva, az értékük szorzata nem lehet nagyobb, mint 1 (az örökös mozgás megakadályozása érdekében).
-* Ha a \* __hatékonysági__ paramétereket a felhasználó adta meg, akkor a **vehicleWeight** is meg kell adni. A **vehicleEngineType** _égés_esetén a **fuelEnergyDensityInMJoulesPerLiter** is meg kell adni.
+* Ha a \* __hatékonysági__ paramétereket a felhasználó adta meg, akkor a **vehicleWeight** is meg kell adni. A **vehicleEngineType** _égés_ esetén a **fuelEnergyDensityInMJoulesPerLiter** is meg kell adni.
 * a **maxChargeInkWh** és a **currentChargeInkWh** mindig párosként kell megadni (azaz mindkettőt vagy egyiket sem).
 
 > [!NOTE]
@@ -37,7 +37,7 @@ Mindkét felhasználási modellben vannak függőségek a paraméterek megadása
 
 ## <a name="combustion-consumption-model"></a>Égési fogyasztás modellje
 
-Az égési használat modelljét akkor kell használni, ha a **vehicleEngineType** _égési_értékre van állítva.
+Az égési használat modelljét akkor kell használni, ha a **vehicleEngineType** _égési_ értékre van állítva.
 A modellhez tartozó paraméterek listája alább látható. A Részletes leírásért tekintse meg a parameters (paraméterek) szakaszt.
 
 * constantSpeedConsumptionInLitersPerHundredkm
@@ -52,7 +52,7 @@ A modellhez tartozó paraméterek listája alább látható. A Részletes leír�
 
 ## <a name="electric-consumption-model"></a>Elektromos fogyasztási modell
 
-Az elektromos fogyasztási modellt akkor kell használni, ha a **vehicleEngineType** az _Electric_értékre van állítva.
+Az elektromos fogyasztási modellt akkor kell használni, ha a **vehicleEngineType** az _Electric_ értékre van állítva.
 A modellhez tartozó paraméterek listája alább látható. A Részletes leírásért tekintse meg a parameters (paraméterek) szakaszt.
 
 * constantSpeedConsumptionInkWhPerHundredkm

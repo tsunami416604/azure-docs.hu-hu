@@ -2,17 +2,17 @@
 title: A Azure Data Factory saját üzemeltetésű integrációs moduljának hibakeresése
 description: Ismerje meg, hogy miként lehet elhárítani a Azure Data Factory a saját üzemeltetésű integrációs modul hibáit.
 services: data-factory
-author: nabhishek
+author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 11/17/2020
 ms.author: lle
-ms.openlocfilehash: e3a517497a480995b8ce63d36d0427e3bfadfe43
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 93c35828444ec93a974769ed3a2f1981c0ec4368
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844097"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96013460"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Saját üzemeltetésű integrációs modul hibáinak megoldása
 
@@ -320,7 +320,7 @@ Ha a hiba a fenti *UnauthorizedAccessException* jelenik meg, kövesse az alábbi
         1. Törölje a jelenlegi saját üzemeltetésű integrációs modul eltávolítását.
         1. Telepítse a saját üzemeltetésű IR-biteket.
         1. A szolgáltatásfiók módosításához kövesse az alábbi utasításokat: 
-            1. Nyissa meg a selfhosted IR telepítési mappáját, váltson a következő mappára: *Microsoft Integration Runtime\4.0\Shared*.
+            1. Lépjen a saját üzemeltetésű IR telepítési mappájába, váltson a következő mappára: *Microsoft Integration Runtime\4.0\Shared*.
             1. Indítsa el a parancssort emelt szintű jogosultság használatával. Cserélje *\<user>* le *\<password>* a és a nevet a saját felhasználónevére és jelszavára, majd futtassa az alábbi parancsot:
                        
                 ```
@@ -731,7 +731,7 @@ A probléma két lehetséges oka:
 - Az ADF szolgáltatás-kiszolgáló tanúsítványának legfelső szintű HITELESÍTÉSSZOLGÁLTATÓja nem megbízható azon a gépen, amelyen a rendszer telepíti a-t. 
 - A proxyt használja a környezetében, és az ADF-kiszolgáló tanúsítványát a proxy váltja fel, a lecserélt kiszolgáló tanúsítványát pedig nem bízza meg azon a gépen, amelyen a rendszer telepíti a szolgáltatásvezérlő szolgáltatást.
 
-#### <a name="solution"></a>Megoldás
+#### <a name="resolution"></a>Feloldás
 
 - Az 1. okból győződjön meg arról, hogy az ADF-kiszolgáló tanúsítványát és a tanúsítványát a rendszer megbízhatónak tartja a számítógépen, amelyen telepítve van a rendszer.
 - A 2. okból bízza meg a lecserélt legfelső szintű HITELESÍTÉSSZOLGÁLTATÓT a lecserélt számítógépen, vagy konfigurálja a proxyt, hogy ne cserélje le az ADF-kiszolgáló tanúsítványát
@@ -744,6 +744,7 @@ Egy új SSL-tanúsítványt vezetünk be, amely a DigiCert-ből van aláírva, e
   ![DigiCert globális root G2](media/self-hosted-integration-runtime-troubleshoot-guide/trusted-root-ca-check.png)
 
 Ha nem, töltse le innen [.](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt ) 
+
 
 ## <a name="self-hosted-ir-sharing"></a>Saját üzemeltetésű integrációs modul megosztása
 
@@ -758,7 +759,7 @@ Előfordulhat, hogy más adatgyárakat (különböző bérlőket) is meg kell h�
 A saját üzemeltetésű integrációs modul nem osztható meg több Bérlővel.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A hibaelhárítással kapcsolatos további segítségért próbálkozzon a következő erőforrásokkal:
 

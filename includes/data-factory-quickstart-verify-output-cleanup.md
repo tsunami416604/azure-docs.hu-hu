@@ -5,11 +5,11 @@ ms.date: 11/09/2018
 author: linda33wj
 ms.author: jingwang
 ms.openlocfilehash: 34848b638ff0c7f7b9d1a2f3e5894339f8310ccc
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93136142"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013358"
 ---
 ## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
 
@@ -25,7 +25,7 @@ A folyamat automatikusan létrehozza a kimeneti mappát az adftutorial blobtáro
 
     ![A képernyőképen a kimeneti mappa tartalma látható.](media/data-factory-quickstart-verify-output-cleanup/output-file.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Kétféleképpen távolíthatja el a rövid útmutatóban létrehozott erőforrásokat. Törölheti az [Azure-erőforráscsoportot](../articles/azure-resource-manager/management/overview.md), amely tartalmazza az erőforráscsoportban lévő összes erőforrást. Ha a többi erőforrást érintetlenül szeretné hagyni, csak az ebben az oktatóanyagban létrehozott adat-előállítót törölje.
 

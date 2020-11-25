@@ -12,11 +12,11 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 7cabae837656611813d44017ce2e1112f06066ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89669610"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013292"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Felkészülés a IoT Edge-megoldás éles környezetben történő üzembe helyezésére
 
@@ -78,7 +78,7 @@ Konfigurálja a UpstreamProtocol változót a IoT Edge ügynökhöz a config. YA
 
 Ha a IoT Edge-eszköz csatlakozik, mindenképpen folytassa a UpstreamProtocol változó konfigurálását mindkét futtatókörnyezeti modulban a jövőbeli telepítések során. Ennek a folyamatnak egy példája a [IoT Edge eszköz konfigurálása egy proxykiszolgálón keresztül történő kommunikációra](how-to-configure-proxy-support.md)című cikkben található.
 
-## <a name="deployment"></a>Üzembe helyezés
+## <a name="deployment"></a>Környezet
 
 * **Hasznos**
   * Konzisztensnek kell lennie a felsőbb rétegbeli protokollal
@@ -132,7 +132,7 @@ A timeToLiveSecs paraméter alapértelmezett értéke 7200 másodperc, amely ké
 
 ### <a name="do-not-use-debug-versions-of-module-images"></a>A modul rendszerképeinek hibakeresési verzióját ne használja
 
-Ha tesztelési forgatókönyveket éles környezetbe helyez át, ne felejtse el eltávolítani az üzembe helyezési jegyzékből a hibakeresési konfigurációkat. Győződjön meg arról, hogy az üzembe helyezési jegyzékekben egyik modul rendszerképe sem rendelkezik ** \. hibakeresési** utótaggal. Ha hozzáadta a létrehozási beállításokat a modulok számára a hibakereséshez, távolítsa el ezeket a létrehozási beállításokat is.
+Ha tesztelési forgatókönyveket éles környezetbe helyez át, ne felejtse el eltávolítani az üzembe helyezési jegyzékből a hibakeresési konfigurációkat. Győződjön meg arról, hogy az üzembe helyezési jegyzékekben egyik modul rendszerképe sem rendelkezik **\. hibakeresési** utótaggal. Ha hozzáadta a létrehozási beállításokat a modulok számára a hibakereséshez, távolítsa el ezeket a létrehozási beállításokat is.
 
 ## <a name="container-management"></a>Tárolókezelés
 
@@ -163,7 +163,7 @@ Az egyszerű szolgáltatásnév használatával történő hitelesítéshez adja
 * A jelszó vagy az ügyfél titkos kulcsa mezőben határozza meg az egyszerű szolgáltatásnév jelszavát.
 
 > [!NOTE]
-> A fokozott biztonsági hitelesítés megvalósítása után tiltsa le a **rendszergazda felhasználói** beállítást, hogy az alapértelmezett Felhasználónév/jelszó hozzáférés többé ne legyen elérhető. A Azure Portal tároló-beállításjegyzékében a bal oldali panel menüjének **Beállítások**területén válassza a **hozzáférési kulcsok**elemet.
+> A fokozott biztonsági hitelesítés megvalósítása után tiltsa le a **rendszergazda felhasználói** beállítást, hogy az alapértelmezett Felhasználónév/jelszó hozzáférés többé ne legyen elérhető. A Azure Portal tároló-beállításjegyzékében a bal oldali panel menüjének **Beállítások** területén válassza a **hozzáférési kulcsok** elemet.
 
 ### <a name="use-tags-to-manage-versions"></a>Címkék használata a verziók kezeléséhez
 
@@ -285,7 +285,7 @@ A módosítások életbe léptetéséhez újra kell indítani a tároló motorj�
 
 #### <a name="option-adjust-log-settings-for-each-container-module"></a>Lehetőség: az egyes tároló modulok naplózási beállításainak módosítása
 
-Ezt megteheti az egyes modulok **createOptions** . Példa:
+Ezt megteheti az egyes modulok **createOptions** . Például:
 
 ```yml
 "createOptions": {
@@ -323,7 +323,7 @@ Ezt megteheti az egyes modulok **createOptions** . Példa:
 
 A leghatékonyabb IoT Edge üzembe helyezési forgatókönyv esetén érdemes lehet az éles üzembe helyezést a tesztelési és CI/CD-folyamatokba integrálni. Azure IoT Edge több CI/CD platformot támogat, beleértve az Azure DevOps is. További információ: [a folyamatos integráció és a folyamatos üzembe helyezés a Azure IoT Edge](how-to-continuous-integration-continuous-deployment.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a [IoT Edge automatikus központi telepítéséről](module-deployment-monitoring.md).
 * Ismerje meg, hogyan támogatja [a IoT Edge a folyamatos integrációt és a folyamatos üzembe helyezést](how-to-continuous-integration-continuous-deployment.md).

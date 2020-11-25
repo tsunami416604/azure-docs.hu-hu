@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/09/2020
 ms.openlocfilehash: 1da86e36cf20dc15152aea74be6c43a4cb43d3b4
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539768"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014244"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>A fürt teljesítményének figyelése az Azure HDInsight
 
@@ -27,7 +27,7 @@ A Hadoop-fürtök a legoptimálisabb teljesítményt biztosíthatják, ha a für
 
 Ha magas szintű áttekintést szeretne kapni a fürt csomópontjairól és betöltéséről, jelentkezzen be a [Ambari webes felhasználói felületére](hdinsight-hadoop-manage-ambari.md), majd válassza a **gazdagépek** lapot. A gazdagépek teljes tartományneveik szerepelnek a felsorolásban. Az egyes gazdagépek működési állapotát színes állapot kijelzője mutatja:
 
-| Szín | Description (Leírás) |
+| Szín | Leírás |
 | --- | --- |
 | Piros | A gazdagépen legalább egy fő összetevő nem működik. Vigye az egérmutatót egy olyan elemleírás megjelenítéséhez, amely felsorolja az érintett összetevőket. |
 | Narancssárga | A gazdagépen legalább egy másodlagos összetevő nem működik. Vigye az egérmutatót egy olyan elemleírás megjelenítéséhez, amely felsorolja az érintett összetevőket. |
@@ -50,7 +50,7 @@ A Hadoop különböző szolgáltatásokkal rendelkezik, amelyek az elosztott pla
 
 A fonal a JobTracker, az erőforrás-kezelés és a feladatok ütemezésének és figyelésének két feladatát osztja el két démonban: egy globális erőforrás-kezelőt és egy alkalmazáson belüli ApplicationMaster (AM).
 
-A Resource Manager egy *tiszta ütemező* , és kizárólag az összes versengő alkalmazás között a rendelkezésre álló erőforrások egyeztetését. A Resource Manager biztosítja, hogy minden erőforrás mindig használatban legyen, optimalizálja a különböző állandókat, például a SLA-kat, a kapacitási garanciákat és így tovább. A ApplicationMaster egyezteti az erőforrásokat a Resource Managerben, és együttműködik a NodeManager (ok) val a tárolók és az erőforrások felhasználásának végrehajtásához és figyeléséhez.
+A Resource Manager egy *tiszta ütemező*, és kizárólag az összes versengő alkalmazás között a rendelkezésre álló erőforrások egyeztetését. A Resource Manager biztosítja, hogy minden erőforrás mindig használatban legyen, optimalizálja a különböző állandókat, például a SLA-kat, a kapacitási garanciákat és így tovább. A ApplicationMaster egyezteti az erőforrásokat a Resource Managerben, és együttműködik a NodeManager (ok) val a tárolók és az erőforrások felhasználásának végrehajtásához és figyeléséhez.
 
 Ha több bérlő is osztozik egy nagy fürtön, a fürt erőforrásainak versenye van. A CapacityScheduler egy csatlakoztatható ütemező, amely a kérések várólistára helyezésével segíti az erőforrások megosztását. A CapacityScheduler támogatja a *hierarchikus várólistákat* is, amelyek biztosítják, hogy az erőforrások megosztva legyenek a szervezet alvárólistái között, mielőtt más alkalmazások várólistái is használhatják az ingyenes erőforrásokat.
 
@@ -122,7 +122,7 @@ A lemezterülettel kapcsolatos problémákkal kapcsolatos további információk
 > [!NOTE]  
 > Ha nagy méretű fájlokat szeretne megőrizni, de hozzájárul a kevés lemezterülettel kapcsolatos probléma megoldásához, fel kell mérnie a HDInsight-fürtöt, és újra kell indítania a szolgáltatásokat. Miután elvégezte ezt az eljárást, és néhány percet várni fog, megfigyelheti, hogy a tárterület fel van szabadítva, és a rendszer visszaállítja a csomópont szokásos teljesítményét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A fürtök hibaelhárításával és figyelésével kapcsolatos további információkért tekintse meg az alábbi hivatkozásokat:
 

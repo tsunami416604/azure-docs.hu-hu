@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/01/2018
 ms.openlocfilehash: 9163071237041d7c8510a644c573e3763434bb0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87060670"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014397"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>Logikai alkalmazásokhoz készült JSON-munkafolyamatdefiníciók létrehozása, szerkesztése, vagy kiterjesztése az Azure Logic Appsben
 
@@ -30,10 +30,10 @@ Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [az első logika
 
 1. Jelentkezzen be az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a>.
 
-2. A bal oldali menüben válassza a **minden szolgáltatás**lehetőséget.
+2. A bal oldali menüben válassza a **minden szolgáltatás** lehetőséget.
 A keresőmezőbe keresse meg a "Logic apps" kifejezést, majd az eredmények közül válassza ki a logikai alkalmazást.
 
-3. A logikai alkalmazás menüjében, a **fejlesztői eszközök**területen válassza a **logikai alkalmazás kódjának nézetét**.
+3. A logikai alkalmazás menüjében, a **fejlesztői eszközök** területen válassza a **logikai alkalmazás kódjának nézetét**.
 
    Megnyílik a kód nézet szerkesztője, és a logikai alkalmazás definícióját JSON formátumban jeleníti meg.
 
@@ -46,7 +46,7 @@ A Visual Studióban megnyithatja azokat a Logic apps-alkalmazásokat, amelyeket 
 
 1. Nyissa meg a Visual Studio-megoldást vagy az [Azure erőforráscsoport](../azure-resource-manager/management/overview.md) -projektet, amely tartalmazza a logikai alkalmazást.
 
-2. Keresse meg és nyissa meg a logikai alkalmazás definícióját, amely alapértelmezés szerint a **LogicApp.js**nevű [Resource Manager-sablonban](../azure-resource-manager/templates/overview.md)jelenik meg.
+2. Keresse meg és nyissa meg a logikai alkalmazás definícióját, amely alapértelmezés szerint a **LogicApp.js** nevű [Resource Manager-sablonban](../azure-resource-manager/templates/overview.md)jelenik meg.
 A sablont a különböző környezetekben való üzembe helyezéshez használhatja és testreszabhatja.
 
 3. Nyissa meg a logikai alkalmazás definíciójának és sablonjának helyi menüjét.
@@ -57,11 +57,11 @@ Válassza a lehetőséget az elem **megnyitására a Logikaialkalmazás-tervező
    > [!TIP]
    > Ha nem rendelkezik ezzel a paranccsal a Visual Studio 2019-ben, ellenőrizze, hogy rendelkezik-e a legújabb Visual Studio-frissítésekkel.
 
-4. A tervező alján kattintson a **kód nézet**elemre.
+4. A tervező alján kattintson a **kód nézet** elemre.
 
    Megnyílik a kód nézet szerkesztője, és a logikai alkalmazás definícióját JSON formátumban jeleníti meg.
 
-5. A tervező nézetbe való visszatéréshez a kód nézet szerkesztőjének alján válassza a **tervezés**lehetőséget.
+5. A tervező nézetbe való visszatéréshez a kód nézet szerkesztőjének alján válassza a **tervezés** lehetőséget.
 
 ## <a name="parameters"></a>Paraméterek
 

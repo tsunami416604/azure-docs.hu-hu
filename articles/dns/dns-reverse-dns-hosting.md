@@ -8,11 +8,11 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
 ms.openlocfilehash: 6a0aebc727233cdd838f3e1bf8eeb5cd247b9836
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489676"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014023"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>DNS-névkeresési zónák üzemeltetése Azure DNS
 
@@ -29,7 +29,7 @@ Ez a cikk végigvezeti az első névkeresési DNS-zóna és-rekord létrehozás�
 ## <a name="create-a-reverse-lookup-dns-zone"></a>Névkeresési DNS-zóna létrehozása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. A **központi** menüben válassza az **új**  >  **hálózatkezelés**, majd a **DNS-zóna**lehetőséget.
+1. A **központi** menüben válassza az **új**  >  **hálózatkezelés**, majd a **DNS-zóna** lehetőséget.
 
    !["DNS-zóna" kiválasztása](./media/dns-reverse-dns-hosting/figure1.png)
 
@@ -122,8 +122,8 @@ Az alábbi példa végigvezeti egy PTR-rekordnak a Azure DNS fordított DNS-zón
 1. A PTR rekordhoz tartozó rekord nevének a többi IPv4-címnek kell lennie fordított sorrendben. 
 
    Ebben a példában az első három oktett már fel van töltve a zóna neve (. 2.0.192) részeként. Ezért csak az utolsó oktett van megadva a **név** mezőben. Előfordulhat például, hogy egy olyan erőforráshoz nevezi a **15** . rekordot, amelynek IP-címe 192.0.2.15.  
-1. A **Típus mezőben**válassza a **PTR**lehetőséget.  
-1. A **tartománynév**mezőben adja meg az IP-címet használó erőforrás teljes tartománynevét (FQDN).
+1. A **Típus mezőben** válassza a **PTR** lehetőséget.  
+1. A **tartománynév** mezőben adja meg az IP-címet használó erőforrás teljes tartománynevét (FQDN).
 1. A DNS-rekord létrehozásához kattintson az **OK gombra** a panel alján.
 
    !["Rekordazonosító hozzáadása" panel, betöltött mezőkkel](./media/dns-reverse-dns-hosting/figure5.png)
@@ -158,8 +158,8 @@ Az alábbi példa végigvezeti az új PTR-rekord létrehozásának folyamatán. 
 2. A PTR rekordhoz beállított rekord nevének a többi IPv6-címnek kell lennie fordított sorrendben. Nem tartalmazhat nulla tömörítést. 
 
    Ebben a példában az IPv6 első 64 bitje már fel van töltve a zóna neve (0.0.0.0. c. d. b. a. 8. b. d. 0.1.0.0.2. IP6. arpa) részeként. Ezért csak az utolsó 64 bit van megadva a **név** mezőben. Az IP-cím utolsó 64 bitje fordított sorrendben van megadva, és az egyes hexadecimális számok között elválasztó pontnak kell lennie. Például megadhatja az **e. 5.0.4.9. f. a. 1. c. b. 0.1.4.2.5. f** nevű rekordot egy olyan erőforráshoz, amelynek IP-címe 2001:0db8: ABDC: 0000: f524:10bc: 1af9:405e.  
-3. A **Típus mezőben**válassza a **PTR**lehetőséget.  
-4. A **tartománynév**mezőben adja meg az IP-címet használó erőforrás teljes tartománynevét.
+3. A **Típus mezőben** válassza a **PTR** lehetőséget.  
+4. A **tartománynév** mezőben adja meg az IP-címet használó erőforrás teljes tartománynevét.
 5. A DNS-rekord létrehozásához kattintson az **OK gombra** a panel alján.
 
 ![Képernyőkép, amely megjeleníti a "rekordazonosító hozzáadása" ablaktáblát, és egy nyilat mutat a Type (típus) mezőben található értékre.](./media/dns-reverse-dns-hosting/figure7.png)
@@ -262,7 +262,7 @@ Igen. Az Azure CLI-vel meglévő DNS-zónákat importálhat Azure DNSba. Ez a me
 
 További információ: [DNS-zónafájl importálása és exportálása az Azure CLI használatával](dns-import-export.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A fordított DNS-sel kapcsolatos további információkért lásd: [fordított DNS-keresés a wikipedia-ben](https://en.wikipedia.org/wiki/Reverse_DNS_lookup).
 <br>

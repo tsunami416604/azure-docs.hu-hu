@@ -9,11 +9,11 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: ee3029de9826aee17dc76d0e69f08b3c1068423b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85847153"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014501"
 ---
 # <a name="create-a-virtual-machine-in-azure-using-vm-templates-on-the-vmware-infrastructure"></a>Virtuális gép létrehozása az Azure-ban virtuálisgép-sablonok használatával a VMware-infrastruktúrában
 
@@ -44,7 +44,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
     | ------------ | ------------- |
     | Előfizetés | A saját felhőhöz társított Azure-előfizetés.  |
     | Erőforráscsoport | Az erőforráscsoport, amelyhez a virtuális gép hozzá lesz rendelve. Választhat egy meglévő csoportot, vagy létrehozhat egy újat. |
-    | Name (Név) | A virtuális gép azonosítására szolgáló név.  |
+    | Név | A virtuális gép azonosítására szolgáló név.  |
     | Hely | Az az Azure-régió, amelyben a virtuális gép üzemeltetve van.  |
     | Magánfelhő | CloudSimple, ahol létre szeretné hozni a virtuális gépet. |
     | Erőforráskészlet | A virtuális géphez hozzárendelt erőforráskészlet. Válasszon a rendelkezésre álló erőforráskészlet közül. |
@@ -56,7 +56,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
     ![CloudSimple virtuális gép létrehozása – méret](media/create-cloudsimple-virtual-machine-size.png)
 
-6. Konfigurálja a hálózati adaptereket és a lemezeket az alábbi táblázatokban leírtak szerint, és kattintson a **felülvizsgálat + létrehozás**gombra.
+6. Konfigurálja a hálózati adaptereket és a lemezeket az alábbi táblázatokban leírtak szerint, és kattintson a **felülvizsgálat + létrehozás** gombra.
 
     ![CloudSimple virtuális gép létrehozása – konfigurációk](media/create-cloudsimple-virtual-machine-configurations.png)
 
@@ -64,7 +64,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
     | Vezérlés | Leírás |
     | ------------ | ------------- |
-    | Name (Név) | Adja meg a felületet azonosító nevet.  |
+    | Név | Adja meg a felületet azonosító nevet.  |
     | Network (Hálózat) | Válassza ki a saját Felhőbeli vSphere a konfigurált elosztott portok listájából.  |
     | Adapter | Válasszon ki egy vSphere-adaptert a virtuális géphez konfigurált elérhető típusok listájából. További információkért lásd a VMware tudásbázist a [virtuális gép hálózati adapterének kiválasztásával](https://kb.vmware.com/s/article/1001805)foglalkozó cikkben. |
     | Bekapcsolás rendszerindításkor | Adja meg, hogy engedélyezi-e a hálózati adapter hardverét a virtuális gép indításakor. Az alapértelmezett érték az **Engedélyezés**. |
@@ -73,12 +73,12 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
     | Elem | Leírás |
     | ------------ | ------------- |
-    | Name (Név) | Adjon meg egy nevet a lemez azonosításához.  |
+    | Név | Adjon meg egy nevet a lemez azonosításához.  |
     | Méret | Válasszon ki egy rendelkezésre álló méretet.  |
     | SCSI-vezérlő | Válasszon ki egy SCSI-vezérlőt a lemezhez.  |
     | Mód | Meghatározza, hogy a lemez hogyan vegyen részt a pillanatképekben. Válasszon egyet a következő lehetőségek közül: <br> – Független állandó: a lemezre írt összes adattal véglegesen írásra kerül.<br> – Független nem állandó: a lemezre írt módosítások a virtuális gép kikapcsolásakor vagy alaphelyzetbe állításakor törlődnek.  A független, nem állandó mód lehetővé teszi, hogy a virtuális gépet mindig ugyanabban az állapotban indítsa újra. További információt a [VMware dokumentációjában](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html)talál.
 
-7. Az érvényesítés befejeződése után tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra. A módosítások elvégzéséhez kattintson a felül található lapfülekre, vagy kattintson a gombra.
+7. Az érvényesítés befejeződése után tekintse át a beállításokat, majd kattintson a **Létrehozás** gombra. A módosítások elvégzéséhez kattintson a felül található lapfülekre, vagy kattintson a gombra.
 
     ![CloudSimple virtuális gép létrehozása – áttekintés](media/create-cloudsimple-virtual-machine-review.png)
 

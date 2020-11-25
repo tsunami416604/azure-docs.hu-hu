@@ -11,11 +11,11 @@ ms.topic: how-to
 ms.date: 11/11/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 9c522d870a25b3df34ab6a0cf1c1e944a6462685
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93284493"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013989"
 ---
 # <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>A Key Vault-titkok állapotának változásairól szóló e-mailek fogadása Logic Apps használatával
 
@@ -60,7 +60,7 @@ Azure Event Grid előfizetés létrehozásához kövesse az alábbi lépéseket:
 
 1. Hozza létre az e-mail sablonját:
     - Ide **:** Adja meg az e-mail-címet az értesítő e-mailek fogadásához. Ehhez az oktatóanyaghoz olyan e-mail-fiókot használjon, amelyhez hozzáfér majd a tesztelés során.
-    - **Tárgy** és **törzs** : Írja be az e-mail szövegét. A választó eszközről választott JSON-tulajdonságokkal az esemény adataira alapuló dinamikus tartalmat illeszthet be. Az esemény adatai a használatával kérhetők le `@{triggerBody()?['Data']}` .
+    - **Tárgy** és **törzs**: Írja be az e-mail szövegét. A választó eszközről választott JSON-tulajdonságokkal az esemény adataira alapuló dinamikus tartalmat illeszthet be. Az esemény adatai a használatával kérhetők le `@{triggerBody()?['Data']}` .
 
     Az e-mail-sablon az alábbi példához hasonló lehet.
 
@@ -85,7 +85,7 @@ Azure Event Grid előfizetés létrehozásához kövesse az alábbi lépéseket:
 
 A titkos kulcs létrehozásakor a rendszer egy e-mailt fog kapni a konfigurált címeken.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Áttekintés: [Key Vault figyelése Azure Event Grid](event-grid-overview.md)
 - Útmutató: [Key Vault-értesítések átirányítása a Azure Automationba](event-grid-tutorial.md).

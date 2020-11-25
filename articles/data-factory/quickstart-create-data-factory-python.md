@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 01/22/2018
 ms.custom: seo-python-october2019, devx-track-python
 ms.openlocfilehash: e511b8b5505f1fa8713d81d0ce959df32ef28503
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89439112"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013326"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Rövid útmutató: Adat-előállító és folyamat létrehozása a Python használatával
 
@@ -44,7 +44,7 @@ A folyamatok különböző adattárakból származó adatok betöltésére képe
 
 * [Azure Storage Explorer](https://storageexplorer.com/) (nem kötelező).
 
-* [Egy alkalmazás a Azure Active Directoryban](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal). Jegyezze fel a következő értékeket a későbbi lépésekben való használathoz: **alkalmazás azonosítója**, **hitelesítési kulcs**és **bérlő azonosítója**. Rendelje hozzá az alkalmazást a **közreműködő** szerepkörhöz az ugyanebben a cikkben található utasításokat követve.
+* [Egy alkalmazás a Azure Active Directoryban](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal). Jegyezze fel a következő értékeket a későbbi lépésekben való használathoz: **alkalmazás azonosítója**, **hitelesítési kulcs** és **bérlő azonosítója**. Rendelje hozzá az alkalmazást a **közreműködő** szerepkörhöz az ugyanebben a cikkben található utasításokat követve.
 
 ## <a name="create-and-upload-an-input-file"></a>Bemeneti fájl létrehozása és feltöltése
 
@@ -58,7 +58,7 @@ A folyamatok különböző adattárakból származó adatok betöltésére képe
 
 ## <a name="install-the-python-package"></a>Python-csomag telepítése
 
-1. Nyisson meg egy terminált vagy parancssort rendszergazdai jogosultságokkal. 
+1. Nyisson meg egy terminált vagy parancssort rendszergazdai jogosultságokkal. 
 2. Először telepítse a Python-csomagot az Azure felügyeleti erőforrásokhoz:
 
     ```python

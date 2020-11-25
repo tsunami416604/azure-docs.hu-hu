@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
 ms.openlocfilehash: 8eb163c95fb1426ebae8956d50f6d8f6aec6fd7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612082"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013649"
 ---
 # <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>Napló lekérdezés végrehajtása a munkaterületeken és alkalmazásokon átnyúló Azure Monitorekben
 
@@ -36,7 +36,7 @@ A több munkaterületen és alkalmazásokban tárolt adatlekérdezés két móds
 Ha a lekérdezésben egy másik munkaterületre szeretne hivatkozni, használja a [*munkaterület*](./workspace-expression.md) -azonosítót, és Application Insights alkalmazásból származó alkalmazáshoz használja az [*alkalmazás*](./app-expression.md) azonosítóját.  
 
 ### <a name="identifying-workspace-resources"></a>Munkaterület-erőforrások azonosítása
-Az alábbi példák bemutatják Log Analytics munkaterületek lekérdezéseit, hogy a *contosoretail*nevű munkaterület frissítési táblájában lévő naplók összesített számát adja vissza. 
+Az alábbi példák bemutatják Log Analytics munkaterületek lekérdezéseit, hogy a *contosoretail* nevű munkaterület frissítési táblájában lévő naplók összesített számát adja vissza. 
 
 A munkaterület azonosításához többféleképpen is elvégezhető:
 
@@ -58,7 +58,7 @@ A munkaterület azonosításához többféleképpen is elvégezhető:
 
 * Azure Resource ID – a munkaterület Azure által meghatározott egyedi identitása. Az erőforrás-azonosítót akkor használja, ha az erőforrás neve nem egyértelmű.  A munkaterületek formátuma a következő: */Subscriptions/subscriptionId/resourcegroups/resourceGroup/Providers/Microsoft. OperationalInsights/munkaterületek/componentName*.  
 
-    Példa:
+    Például:
     ``` 
     workspace("/subscriptions/e427519-5645-8x4e-1v67-3b84b59a1985/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail-it").Update | count
     ```
@@ -89,7 +89,7 @@ Application Insights alkalmazásának azonosítására az alkalmazás *(azonosí
 
 * Azure Resource ID – az alkalmazás Azure-ban meghatározott egyedi identitása. Az erőforrás-azonosítót akkor használja, ha az erőforrás neve nem egyértelmű. A formátum: */Subscriptions/subscriptionId/resourcegroups/resourceGroup/Providers/Microsoft. OperationalInsights/Components/componentName*.  
 
-    Példa:
+    Például:
     ```
     app("/subscriptions/b459b4f6-912x-46d5-9cb1-b43069212ab4/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp").requests | count
     ```
@@ -140,7 +140,7 @@ applicationsScoping
 
 ![Idődiagramját](media/cross-workspace-query/chart.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át a naplófájlok [elemzését Azure monitor](log-query-overview.md) a naplók áttekintését, valamint a Azure monitor naplózási adatai strukturált módját.
 
