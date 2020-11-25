@@ -8,14 +8,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 11/17/2020
 ms.author: banders
-ms.openlocfilehash: 550be6c10402398b62af307281660b93981a0df3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cad3082981bcfc699bc230badf44e2ffc2e1bed3
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91308962"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94744425"
 ---
 # <a name="reactivate-a-disabled-azure-subscription"></a>Letiltott Azure-előfizetés újraaktiválása
 
@@ -54,6 +54,10 @@ Ha Ön a fiókadminisztrátor, és véletlenül lemond egy egyéni, használatal
     ![Képernyőkép a jobb oldali panelen látható újraaktiválási hivatkozásokról](./media/subscription-disabled/reactivate-sub.png)
 
 Más típusú előfizetések újraaktiválásához [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+
+## <a name="after-reactivation"></a>Az újraaktiválás után
+
+Az előfizetés újraaktiválása után előfordulhat, hogy az erőforrások létrehozása vagy kezelése során késést tapasztal. Ha a késés meghaladja a 30 percet, forduljon az [Azure számlázási ügyfélszolgálati csapatához](https://go.microsoft.com/fwlink/?linkid=2083458). A legtöbb Azure-erőforrás működése automatikusan folytatódik, és ez nem igényel semmilyen beavatkozást. Emellett javasoljuk, hogy ellenőrizze az Azure-szolgáltatás erőforrásait, és indítsa újra azokat, amelyek működése nem folytatódik automatikusan.
 
 ## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 

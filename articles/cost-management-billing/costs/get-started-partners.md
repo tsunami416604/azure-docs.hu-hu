@@ -3,18 +3,18 @@ title: Ismerkedés a partnerek számára készült Azure Cost Management szolgá
 description: Ez a cikk bemutatja, hogyan használják a partnerek az Azure Cost Management funkcióit, és hogyan teszik lehetővé a Cost Managementhez való hozzáférést az ügyfeleik számára.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/04/2020
+ms.date: 11/16/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 0076c70f64ec5cea8b92cb2b9ed27de05406316d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: d2b90db18a31fff4190be4f84625ad52fcaae578
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91827587"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657312"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Ismerkedés a partnerek számára készült Azure Cost Management szolgáltatással
 
@@ -126,7 +126,7 @@ A szabályzattól függetlenül a globális rendszergazdák és a szolgáltató 
 
 A szabályzat megtekintéséhez és frissítéséhez a **rendszergazdai ügynök** csoport tagjának kell lennie. Az alábbi információk használatával engedélyezheti az Azure-használat költségeinek megtekintését lehetővé tévő szabályzatot az ügyfelek számára.
 
-Jelentkezzen be a partnerbérlőbe az Azure Portalon, és válassza a **Költségkezelés + számlázás** lehetőséget. Válassza ki a megfelelő számlázási hatókört a Számlázási hatókör területen, majd válassza az **Ügyfelek** lehetőséget. Az ügyfelek listája a számlázási fiókhoz van társítva.
+Jelentkezzen be a *partnerbérlőre* az Azure Portalon, és válassza a **Költségkezelés + számlázás** lehetőséget. Válassza ki a megfelelő számlázási hatókört a Számlázási hatókör területen, majd válassza az **Ügyfelek** lehetőséget. Az ügyfelek listája a számlázási fiókhoz van társítva. *Ha tévedésből az ügyfélbérlőre jelentkezik be, nem fogja látni az **ügyfelek** listáját.*
 
 Az ügyfelek listájában válassza ki azt az ügyfelet, akinek engedélyezni szeretné a költségek megtekintését.
 
@@ -134,12 +134,12 @@ Az ügyfelek listájában válassza ki azt az ügyfelet, akinek engedélyezni sz
 
 A **Beállítások** területen válassza a **Szabályzatok** elemet.
 
-Megjelenik az aktuális költségláthatósági szabályzat a kiválasztott ügyfél előfizetéseihez társított**Azure-használati** díjakra vonatkozóan.
+Megjelenik az aktuális költségláthatósági szabályzat a kiválasztott ügyfél előfizetéseihez társított **Azure-használati** díjakra vonatkozóan.
 ![Szabályzat, amely lehetővé teszi az ügyfelek számára a használatalapú fizetés díjainak megtekintését](./media/get-started-partners/cost-management-billing-policies.png)
 
-Ha a szabályzat**Nem** értékre van állítva, az Azure Cost Management nem érhető el az előfizetés az ügyfélhez társított felhasználói számára. Hacsak egy partner nem engedélyezi, a költségek láthatóságára vonatkozó szabályzat alapértelmezés szerint le van tiltva az előfizetés összes felhasználója számára.
+Ha a szabályzat **Nem** értékre van állítva, az Azure Cost Management nem érhető el az előfizetés az ügyfélhez társított felhasználói számára. Hacsak egy partner nem engedélyezi, a költségek láthatóságára vonatkozó szabályzat alapértelmezés szerint le van tiltva az előfizetés összes felhasználója számára.
 
-Ha a szabályzat**Igen** értékre van állítva, az előfizetés az ügyfélbérlőhöz társított felhasználói megtekinthetik a felhasználási díjakat, használatalapú díjszabás mellett.
+Ha a szabályzat **Igen** értékre van állítva, az előfizetés az ügyfélbérlőhöz társított felhasználói megtekinthetik a felhasználási díjakat, használatalapú díjszabás mellett.
 
 Ha a költségek láthatóságára vonatkozó szabályzat engedélyezve van, az összes, előfizetés-felhasználással rendelkező szolgáltatás a használatalapú díjszabás szerint mutatja a költségeket. A foglalások felhasználása a tényleges és az amortizált költségekre vonatkozóan nulla költséggel jelenik meg. A vásárlások és jogosultságok nem konkrét előfizetésekhez vannak társítva. Így a vásárlások nem jelennek meg az előfizetés hatókörében. Egy közvetlen partner vagy közvetett szolgáltató globális rendszergazdája/rendszergazdai ügynöke az [Update Customer API](/rest/api/billing/2019-10-01-preview/policies/updatecustomer)-t is használhatja az ügyfelek költségei láthatóságára vonatkozó szabályzatának nagy léptékű beállításához.
 
@@ -188,7 +188,7 @@ A következő adatmezők találhatók a használatrészletező fájlokban és a 
 | costCenter | Az előfizetéshez társított költséghely. | N/A |
 | billingPeriodStartDate | A számlázási időszak kezdődátuma, a számlán látható módon. | N/A |
 | billingPeriodEndDate | A számlázási időszak záródátuma, a számlán látható módon. | N/A |
-| servicePeriodStartDate | A díjszabási időszak kezdődátuma, amikor a szolgáltatáshasználatra vonatkozó díjakat megállapították. Az Azure-szolgáltatások árait a díjszabási időszakra vonatkozóan határozzák meg. | ChargeStartDate (díjszabási időszak kezdődátuma) a Partnerközpontban A számlázási ciklus kezdődátuma, kivéve egy megelőző számlázási ciklusban korábban nem felszámított látens használati adatokhoz tartozó dátumok megjelenítésekor. Az időpont mindig a nap kezdete, 0:00. |
+| servicePeriodStartDate | A díjszabási időszak kezdődátuma, amikor a szolgáltatáshasználatra vonatkozó díjakat megállapították. Az Azure-szolgáltatások árait a díjszabási időszakra vonatkozóan határozzák meg. | ChargeStartDate (díjszabási időszak kezdődátuma) a Partnerközpontban  A számlázási ciklus kezdődátuma, kivéve egy megelőző számlázási ciklusban korábban nem felszámított látens használati adatokhoz tartozó dátumok megjelenítésekor. Az időpont mindig a nap kezdete, 0:00. |
 | servicePeriodEndDate | Az időszak záródátuma, amikor a szolgáltatáshasználatra vonatkozó díjakat megállapították. Az Azure-szolgáltatások árait a díjszabási időszak alapján határozzák meg. | N/A |
 | dátum | Az Azure felhasználási adatai esetében a használat dátumát mutatja a díjszabás szerint. Fenntartott példány esetében a vásárlás dátumát mutatja. Ismétlődő és egyszeri díjak, mint például a Marketplace és a támogatás díjai esetében a vásárlás dátumát mutatja. | N/A |
 | productID | Annak a terméknek az azonosítója, amelyre vonatkozóan díjak merültek fel felhasználás vagy vásárlás révén. Ez a productID és a SkuID összefűzött kulcsa, ahogy a Partnerközpontban is megjelenik. | A termék azonosítója. |

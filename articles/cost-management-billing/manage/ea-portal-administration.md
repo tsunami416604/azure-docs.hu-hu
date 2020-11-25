@@ -3,18 +3,18 @@ title: A nagyvállalati szerződéses Azure Portal adminisztrációja
 description: Ez a cikk a rendszergazdák Azure EA Portalon elvégzendő gyakori feladatait ismerteti.
 author: bandersmsft
 ms.author: banders
-ms.date: 10/27/2020
+ms.date: 11/13/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperfq1
-ms.openlocfilehash: e83af5baa4ca38a8e81dffa8bb81ab3da64e1e95
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: edcc94050880544a6c2de54ff27f833f1c60f99f
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411039"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683645"
 ---
 # <a name="azure-ea-portal-administration"></a>A nagyvállalati szerződéses Azure Portal adminisztrációja
 
@@ -135,28 +135,20 @@ A fióktulajdonjog megerősítéséhez:
    Az állapotnak **Függőben** állapotról **Kezdő és záró dátum** állapotra kell átváltania. A Kezdő és záró dátum a felhasználó első bejelentkezésének és a szerződés végének a dátuma.
 1. Amikor megjelenik a **Figyelmeztetés** üzenet, a fiók tulajdonosának a **Folytatás** gombot kell kiválasztania a fiók aktiválásához, amikor először jelentkezik be az Azure Enterprise portálra.
 
-## <a name="change-account-owner"></a>Fiók tulajdonosának módosítása
+## <a name="change-azure-subscription-or-account-ownership"></a>Az Azure-előfizetés vagy a fiók tulajdonjogának módosítása
 
-A vállalati rendszergazdák az Azure Enterprise portál használatával átruházhatják az előfizetői fiókok tulajdonjogát a regisztrációkban. A művelet áthelyezi az összes előfizetést a forrásként megadott felhasználói fiókból egy célként megadott felhasználói fiókba.
+A vállalati rendszergazdák az Azure Enterprise portál használatával átruházhatják a kiválasztott vagy az összes előfizetés fióktulajdonjogát egy regisztrációban.
 
-Fiókok átvitelekor vegye figyelembe ezeket a fontos információkat:
+Előfizetés- vagy fióktulajdonjog-átadás elvégzésekor a Microsoft frissíti a fióktulajdonost.
 
-- Az átviteleket végrehajthatja:
-  - Az egyik munkahelyi vagy iskolai fiókról egy másik munkahelyi vagy iskolai fiókra.
-  - Egy Microsoft-fiókról egy munkahelyi vagy iskolai fiókra.
-  - Az egyik Microsoft-fiókról egy másik Microsoft-fiókra.
+A tulajdonjog-átadás elindítása előtt ismerje meg az Azure-beli szerepköralapú hozzáférés-vezérlés (Azure RBAC) alábbi szabályzatait:
 
-    A célfióknak érvényes Azure Commerce-fióknak kell lennie, hogy érvényes átviteli cél lehessen. Új fiókok esetén új Azure Commerce-fiókot kell létrehoznia az Azure Enterprise portálra való bejelentkezéskor. Meglévő fiókok esetén először új Azure-előfizetést kell létrehoznia ahhoz, hogy a fiók jogosulttá váljon.
-
-- Nem végezhet átvitelt munkahelyi vagy iskolai fiókról Microsoft-fiókra.
-
-- Az előfizetés-átvitel befejezésekor a Microsoft frissíti a fióktulajdonost.
-
-A szerepköralapú hozzáférés-vezérlési (RBAC-) szabályok megismerése:
-
-- Ha ugyanazon bérlő két szervezeti azonosítója közötti Azure-előfizetés-átvitelt hajt végre, az RBAC-szabályzatok és a meglévő szolgáltatásadminisztrátori és társadminisztrátori szerepkörök megmaradnak.
-- Más előfizetés-átvitelek az RBAC-szabályzatok és a szerepkör-hozzárendelések elvesztését eredményezhetik.
+- Ha ugyanazon bérlő két szervezeti azonosítója közötti Azure-előfizetés- vagy fióktulajdonjog-átadást hajt végre, az Azure RBAC-szabályzatok és a meglévő szolgáltatásadminisztrátori és társadminisztrátori szerepkörök megmaradnak.
+- Több bérlős előfizetés- vagy fióktulajdonjog-átadások az Azure RBAC-szabályzatok és a szerepkör-hozzárendelések elvesztését eredményezhetik.
 - A szabályzatok és a rendszergazdai szerepkörök nem vihetők át különböző címtárakba. A szolgáltatásadminisztrátorokból a célfiók tulajdonosa lesz.
+- Ha el szeretné kerülni az RBAC szabályzatok és a szerepkör-hozzárendelések elvesztését a bérlők közötti előfizetés-átadáskor, győződjön meg arról, hogy **Az előfizetés áthelyezése a címzett Azure AD-bérlőjébe** jelölőnégyzet **nincs bejelölve**. Ez megőrzi a szolgáltatásokat, az RBAC-szerepköröket és a szabályzatokat az aktuális Azure AD-bérlőn, és csak a fiók számlázási tulajdonjogát adja át.  
+    :::image type="content" source="./media/ea-portal-administration/unselected-checkbox-move-subscriptions-to-recipients-tenant.png" alt-text="A kép azt mutatja, hogy az előfizetés Azure AD-bérlőnek történő áthelyezésére vonatkozó jelölőnégyzet nincs bejelölve" lightbox="./media/ea-portal-administration/unselected-checkbox-move-subscriptions-to-recipients-tenant.png" :::
+
 
 A fióktulajdonos módosítása előtt:
 
@@ -168,26 +160,25 @@ A fiók tulajdonjogának átvitele az összes előfizetésre vonatkozóan:
 1. Jelentkezzen be az Azure Enterprise portálra.
 1. A navigációs terület bal oldalán válassza ki a **Kezelés** elemet.
 1. Válassza a **Fiók** fület, és vigye a mutatót a fiók fölé.
-1. Válassza a fióktulajdonos módosításának ikonját a jobb oldalon. Az ikon egy személyt ábrázol.
-1. Válasszon ki egy jogosult fiókot, majd válassza a **Következő** gombot.
+1. Válassza a fióktulajdonos módosításának ikonját a jobb oldalon. Az ikon egy személyt ábrázol.  
+    ![A Fióktulajdonos módosítása szimbólumot bemutató kép](./media/ea-portal-administration/create-ea-create-sub-transfer-account-ownership-of-sub.png)
+1. Válassza ki az átadás célfiókját, majd válassza a **Tovább** lehetőséget.
+1. Ha Azure AD-bérlők között akarja átadni a fiók tulajdonjogát, jelölje be **Az előfizetés áthelyezése a címzett Azure AD-bérlőjébe** jelölőnégyzetet.  
+    :::image type="content" source="./media/ea-portal-administration/selected-checkbox-move-subscriptions-to-recipients-tenant.png" alt-text="A kép azt mutatja, hogy az előfizetés Azure AD-bérlőnek történő áthelyezésére vonatkozó jelölőnégyzet be van jelölve" lightbox="./media/ea-portal-administration/selected-checkbox-move-subscriptions-to-recipients-tenant.png" :::
 1. Erősítse meg az átvitelt, majd válassza a **Küldés** gombot.
-
-![A Fióktulajdonos módosítása szimbólumot bemutató kép](./media/ea-portal-administration/create-ea-create-sub-transfer-account-ownership-of-sub.png)
 
 A fiók tulajdonjogának átvitele egy előfizetésre vonatkozóan:
 
 1. Jelentkezzen be az Azure Enterprise portálra.
 1. A navigációs terület bal oldalán válassza ki a **Kezelés** elemet.
 1. Válassza a **Fiók** fület, és vigye a mutatót a fiók fölé.
-1. Válassza az előfizetések átvitelének ikonját a jobb oldalon. Az ikon egy lapot ábrázol.
-1. Válasszon ki egy jogosult előfizetést, majd válassza a **Következő** gombot.
+1. Válassza az előfizetések átvitelének ikonját a jobb oldalon. Az ikon egy lapot ábrázol.  
+    ![Az Előfizetések átvitele szimbólumot bemutató kép](./media/ea-portal-administration/ea-transfer-subscriptions.png)
+1. Válassza ki az előfizetés-átadás célfiókját, majd válassza a **Tovább** lehetőséget.
+1. Ha Azure AD-bérlők között szeretné átadni az előfizetés tulajdonjogát, jelölje be **Az előfizetés áthelyezése a címzett Azure AD-bérlőjébe** jelölőnégyzetet.  
+    :::image type="content" source="./media/ea-portal-administration/selected-checkbox-move-subscriptions-to-recipients-tenant.png" alt-text="A kép azt mutatja, hogy az előfizetés Azure AD-bérlőnek történő áthelyezésére vonatkozó jelölőnégyzet be van jelölve" lightbox="./media/ea-portal-administration/selected-checkbox-move-subscriptions-to-recipients-tenant.png" :::
 1. Erősítse meg az átvitelt, majd válassza a **Küldés** gombot.
 
-![Az Előfizetések átvitele szimbólumot bemutató kép](./media/ea-portal-administration/ea-transfer-subscriptions.png)
-
-Tekintse meg ezt a videót az Azure Enterprise portál felhasználókezelésének áttekintéséhez:
-
-> [!VIDEO https://www.youtube.com/embed/621jVkvmwm8]
 
 ## <a name="associate-an-account-to-a-department"></a>Fiókok részlegekhez történő hozzárendelésére
 
@@ -344,7 +335,7 @@ Előfizetés hozzáadásához:
 1. Az Azure Enterprise portálon jelentkezzen be a fiókba.
 1. Válassza a **Rendszergazda** fület, majd az **Előfizetés** elemet az oldal tetején.
 1. Ellenőrizze, hogy a fiók tulajdonosaként jelentkezett-e be.
-1. Válassza az **+Előfizetés hozzáadása** , majd a **Vásárlás** elemet.
+1. Válassza az **+Előfizetés hozzáadása**, majd a **Vásárlás** elemet.
 
    Amikor első alkalommal ad előfizetést a fiókjához, meg kell adnia a kapcsolattartási adatait. További előfizetések hozzáadásakor a rendszer hozzáadja a megadott kapcsolattartási adatait.
 
@@ -400,9 +391,9 @@ Kapcsolattartó hozzáadása:
 2. Írja be az e-mail-címet, majd erősítse meg.
 3. Kattintson a **Mentés** gombra.
 
-Az új értesítési kapcsolattartó megjelenik az **Értesítendő fél** területen. Az értesítés gyakoriságának módosításához válassza ki az értesítendő felet, majd válassza a kiválasztott sor jobb oldalán található ceruza szimbólumot. Állítsa be a gyakorisághoz a **naponta** , **hetente** , **havonta** vagy a **nincs** értéket.
+Az új értesítési kapcsolattartó megjelenik az **Értesítendő fél** területen. Az értesítés gyakoriságának módosításához válassza ki az értesítendő felet, majd válassza a kiválasztott sor jobb oldalán található ceruza szimbólumot. Állítsa be a gyakorisághoz a **naponta**, **hetente**, **havonta** vagy a **nincs** értéket.
 
-Figyelmen kívül hagyhatja a _közelgő fedezeti időszak záró dátumát_ , valamint _letilthatja és megszüntetheti a közelgő dátummal_ kapcsolatos életciklus-értesítéseket. Az életciklus-értesítések letiltásával figyelmen kívül hagyja a fedezeti időszakról és a szerződés záró dátumáról szóló értesítéseket.
+Figyelmen kívül hagyhatja a _közelgő fedezeti időszak záró dátumát_, valamint _letilthatja és megszüntetheti a közelgő dátummal_ kapcsolatos életciklus-értesítéseket. Az életciklus-értesítések letiltásával figyelmen kívül hagyja a fedezeti időszakról és a szerződés záró dátumáról szóló értesítéseket.
 
 ## <a name="azure-sponsorship-offer"></a>Azure Sponsorship-ajánlat
 
@@ -474,29 +465,29 @@ Ha nagyvállalati Azure-előfizetést szeretne létrehozni, akkor fióktulajdono
 
 ## <a name="azure-ea-term-glossary"></a>Azure EA-kifejezések szószedete
 
-- **Fiók** : Az Azure Enterprise portálon található szervezeti egység. Az előfizetések felügyeletére, valamint jelentéskészítésre szolgál.
-- **Fióktulajdonos** : Az Azure-ban az előfizetések és a szolgáltatásadminisztrátorok kezeléséhez azonosított személy. Megtekinthetik ezen fiók és a társított előfizetéseinek használati adatait.
-- **Módosítási előfizetés** : A regisztrációs módosítás alá eső egy egyéves vagy egybeeső előfizetés.
-- **Előrefizetés** : Az Azure-szolgáltatásokra kedvezményes előrefizetési díjszabással fizetett éves pénzügyi összeg előrefizetése az előrefizetéssel való használathoz.
-- **Részlegszintű rendszergazda** : A részlegek kezelésére, új fiókok és fióktulajdonosok létrehozására, az általuk kezelt részlegek használati adatainak megtekintésére és megadott engedélyek esetén a költségek megtekintésére jogosult személy.
-- **Regisztrációs szám** : A Microsoft által a Nagyvállalati Szerződéshez társított adott regisztráció azonosítására megadott egyedi azonosító.
-- **Vállalati rendszergazda** : Az Azure-on a részlegek, részlegtulajdonosok, fiókok és fióktulajdonosok kezelésére jogosult személy. Képesek kezelni a vállalati rendszergazdákat, valamint megtekinthetik a használati adatokat, a számlázott mennyiségeket és a nem számlázott díjakat a nagyvállalati regisztrációhoz társított összes fiókra és előfizetésre vonatkozóan.
-- **Nagyvállalati szerződés** : Központosított vásárlást használó Microsoft-licencszerződés olyan ügyfelek számára, akik a Microsoft technológiájára alapozva szeretnék szabványosítani teljes szervezetüket, és szabványos Microsoft-szoftverekkel szeretnék fenntartani az informatikai infrastruktúrájukat.
-- **Nagyvállalati szerződéses regisztráció** : Regisztráció a Nagyvállalati Szerződési programba, amely kedvezményes áron nyújt Microsoft-termékeket nagy mennyiségben.
-- **Microsoft-fiók** : Webalapú szolgáltatás, amellyel a részt vevő helyek egyetlen hitelesítőadat-készlettel hitelesíthetik a felhasználókat.
+- **Fiók**: Az Azure Enterprise portálon található szervezeti egység. Az előfizetések felügyeletére, valamint jelentéskészítésre szolgál.
+- **Fióktulajdonos**: Az Azure-ban az előfizetések és a szolgáltatásadminisztrátorok kezeléséhez azonosított személy. Megtekinthetik ezen fiók és a társított előfizetéseinek használati adatait.
+- **Módosítási előfizetés**: A regisztrációs módosítás alá eső egy egyéves vagy egybeeső előfizetés.
+- **Előrefizetés**: Az Azure-szolgáltatásokra kedvezményes előrefizetési díjszabással fizetett éves pénzügyi összeg előrefizetése az előrefizetéssel való használathoz.
+- **Részlegszintű rendszergazda**: A részlegek kezelésére, új fiókok és fióktulajdonosok létrehozására, az általuk kezelt részlegek használati adatainak megtekintésére és megadott engedélyek esetén a költségek megtekintésére jogosult személy.
+- **Regisztrációs szám**: A Microsoft által a Nagyvállalati Szerződéshez társított adott regisztráció azonosítására megadott egyedi azonosító.
+- **Vállalati rendszergazda**: Az Azure-on a részlegek, részlegtulajdonosok, fiókok és fióktulajdonosok kezelésére jogosult személy. Képesek kezelni a vállalati rendszergazdákat, valamint megtekinthetik a használati adatokat, a számlázott mennyiségeket és a nem számlázott díjakat a nagyvállalati regisztrációhoz társított összes fiókra és előfizetésre vonatkozóan.
+- **Nagyvállalati szerződés**: Központosított vásárlást használó Microsoft-licencszerződés olyan ügyfelek számára, akik a Microsoft technológiájára alapozva szeretnék szabványosítani teljes szervezetüket, és szabványos Microsoft-szoftverekkel szeretnék fenntartani az informatikai infrastruktúrájukat.
+- **Nagyvállalati szerződéses regisztráció**: Regisztráció a Nagyvállalati Szerződési programba, amely kedvezményes áron nyújt Microsoft-termékeket nagy mennyiségben.
+- **Microsoft-fiók**: Webalapú szolgáltatás, amellyel a részt vevő helyek egyetlen hitelesítőadat-készlettel hitelesíthetik a felhasználókat.
 - **Microsoft Azure nagyvállalati regisztrációs módosítás (regisztrációs módosítás)** : Egy vállalat által aláírt módosítás, amely a vállalati regisztráció részeként hozzáférést biztosít számukra az Azure-hoz.
-- **Azure Enterprise portál** : A vállalati ügyfeleink által az Azure-fiókok és a kapcsolódó előfizetések kezeléséhez használt portál.
-- **Felhasznált erőforrások mennyisége** : Az egy adott hónapban felhasznált egyes Azure-szolgáltatások mennyisége.
-- **Szolgáltatásadminisztrátor** : Az Azure Enterprise portálon az előfizetések és fejlesztési projektek elérésére és kezelésére jogosult személy.
-- **Előfizetés** : Egy Azure Enterprise portál-előfizetést jelöl, és az ugyanazon szolgáltatásadminisztrátor által kezelt Azure-szolgáltatások tárolója.
-- **Munkahelyi vagy iskolai fiók** : Olyan szervezetek esetén, amelyek felhőbeli összevonással állították be az Azure Active Directoryt, és amelyek esetében az összes fiók egyetlen bérlőn található.
+- **Azure Enterprise portál**: A vállalati ügyfeleink által az Azure-fiókok és a kapcsolódó előfizetések kezeléséhez használt portál.
+- **Felhasznált erőforrások mennyisége**: Az egy adott hónapban felhasznált egyes Azure-szolgáltatások mennyisége.
+- **Szolgáltatásadminisztrátor**: Az Azure Enterprise portálon az előfizetések és fejlesztési projektek elérésére és kezelésére jogosult személy.
+- **Előfizetés**: Egy Azure Enterprise portál-előfizetést jelöl, és az ugyanazon szolgáltatásadminisztrátor által kezelt Azure-szolgáltatások tárolója.
+- **Munkahelyi vagy iskolai fiók**: Olyan szervezetek esetén, amelyek felhőbeli összevonással állították be az Azure Active Directoryt, és amelyek esetében az összes fiók egyetlen bérlőn található.
 
 ### <a name="enrollment-statuses"></a>Regisztrációs állapotok
 
-- **Újdonság** : Ez az állapot egy 24 órán belül létrehozott regisztrációhoz van hozzárendelve, és 24 órán belül Függőben állapotba kerül.
-- **Függőben** : A regisztrációs rendszergazdának be kell jelentkeznie az Azure Enterprise portálra. Ha bejelentkezett, a regisztráció aktív állapotra vált.
-- **Aktív** : A regisztráció aktív, és az Azure Enterprise portálon fiókok és előfizetések hozhatók létre. A regisztráció a Nagyvállalati Szerződés záró dátumáig aktív marad.
-- **Határozatlan időre meghosszabbítva** : A határozatlan időre meghosszabbítva állapot a Nagyvállalati Szerződés záró dátuma után jelenik meg. Lehetővé teszi a meghosszabbított időszakot választó, Nagyvállalati Szerződéssel rendelkező Azure EA-ügyfelek számára, hogy a Nagyvállalati Szerződésük végén továbbra is határozatlan ideig használják az Azure-szolgáltatásokat.
+- **Újdonság**: Ez az állapot egy 24 órán belül létrehozott regisztrációhoz van hozzárendelve, és 24 órán belül Függőben állapotba kerül.
+- **Függőben**: A regisztrációs rendszergazdának be kell jelentkeznie az Azure Enterprise portálra. Ha bejelentkezett, a regisztráció aktív állapotra vált.
+- **Aktív**: A regisztráció aktív, és az Azure Enterprise portálon fiókok és előfizetések hozhatók létre. A regisztráció a Nagyvállalati Szerződés záró dátumáig aktív marad.
+- **Határozatlan időre meghosszabbítva**: A határozatlan időre meghosszabbítva állapot a Nagyvállalati Szerződés záró dátuma után jelenik meg. Lehetővé teszi a meghosszabbított időszakot választó, Nagyvállalati Szerződéssel rendelkező Azure EA-ügyfelek számára, hogy a Nagyvállalati Szerződésük végén továbbra is határozatlan ideig használják az Azure-szolgáltatásokat.
 
    Mielőtt az Azure EA-regisztráció elérné a Nagyvállalati Szerződés záró dátumát, a regisztrációs rendszergazdának el kell döntenie, hogy az alábbi lehetőségek melyikével szeretne élni:
 
@@ -504,8 +495,8 @@ Ha nagyvállalati Azure-előfizetést szeretne létrehozni, akkor fióktulajdono
   - Áttér egy új regisztrációba.
   - Migrálást végez a Microsoft Online Előfizetési Programba (MOSP).
   - Jóváhagyja a regisztrációhoz társított szolgáltatások letiltását.
-- **Lejárt** : Az Azure EA-ügyfél nem kérte az időtartam meghosszabbítását, és az Azure EA-regisztráció elérte a Nagyvállalati Szerződés záró dátumát. A regisztráció le fog járni, és az összes kapcsolódó szolgáltatás le lesz tiltva.
-- **Átvitt** : Az átvitt állapotban jelennek meg azok a regisztrációk, amelyek társított fiókjainak és szolgáltatásainak mindegyikét egy új regisztrációba vitték át.
+- **Lejárt**: Az Azure EA-ügyfél nem kérte az időtartam meghosszabbítását, és az Azure EA-regisztráció elérte a Nagyvállalati Szerződés záró dátumát. A regisztráció le fog járni, és az összes kapcsolódó szolgáltatás le lesz tiltva.
+- **Átvitt**: Az átvitt állapotban jelennek meg azok a regisztrációk, amelyek társított fiókjainak és szolgáltatásainak mindegyikét egy új regisztrációba vitték át.
   >[!NOTE]
   > A regisztrációk nem kerülnek át automatikusan, ha a megújítás során új regisztrációs szám jön létre. Az előző regisztrációs számának szerepelnie kell a megújítási dokumentumaiban az automatikus átvitel megkönnyítése érdekében.
 
