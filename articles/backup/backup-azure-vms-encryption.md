@@ -4,11 +4,11 @@ description: A titkosított Azure-beli virtuális gépek biztonsági mentését 
 ms.topic: conceptual
 ms.date: 08/18/2020
 ms.openlocfilehash: 67c0e879fe2acf241b1ed08a5658209bf70b1b9c
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173907"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95978114"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>Titkosított Azure-beli virtuális gépek biztonsági mentése és visszaállítása
 
@@ -32,8 +32,8 @@ Az Azure-beli virtuális gépek biztonsági mentését és visszaállítását A
 
 **Virtuális merevlemez típusa** | **ADE (BEK/dm-crypt)** | **ADE és KEK**
 --- | --- | ---
-**Nem felügyelt** | Igen | Igen
-**Felügyelt**  | Igen | Igen
+**Nem felügyelt** | Igen | Yes
+**Felügyelt**  | Igen | Yes
 
 - További információ az [ade](../security/fundamentals/azure-disk-encryption-vms-vmss.md), a [Key Vault](../key-vault/general/overview.md)és a [KEK](../virtual-machine-scale-sets/disk-encryption-key-vault.md#set-up-a-key-encryption-key-kek).
 - Olvassa el az Azure-beli virtuális gép lemezének titkosításával kapcsolatos [gyakori kérdéseket](../security/fundamentals/azure-disk-encryption-vms-vmss.md) .
@@ -66,20 +66,20 @@ Emellett van néhány dolog, amit bizonyos esetekben szükség lehet:
 
     ![Biztonsági mentés ablaktábla](./media/backup-azure-vms-encryption/select-backup.png)
 
-1. A **biztonsági mentés célja**, hogy  >  **hol fut a munkaterhelés?** válassza az **Azure**lehetőséget.
-1. A **Miről szeretne biztonsági másolatot készíteni?** válassza a **virtuális gép**lehetőséget. Ezután válassza a **biztonsági mentés**lehetőséget.
+1. A **biztonsági mentés célja**, hogy  >  **hol fut a munkaterhelés?** válassza az **Azure** lehetőséget.
+1. A **Miről szeretne biztonsági másolatot készíteni?** válassza a **virtuális gép** lehetőséget. Ezután válassza a **biztonsági mentés** lehetőséget.
 
       ![Forgatókönyv panel](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
 
-1. A **biztonsági mentési házirendben**  >  **válassza a biztonsági mentési házirend**elemet, és válassza ki a tárolóhoz társítandó szabályzatot. Ezután válassza az **OK** gombot.
+1. A **biztonsági mentési házirendben**  >  **válassza a biztonsági mentési házirend** elemet, és válassza ki a tárolóhoz társítandó szabályzatot. Ez után válassza az **OK** gombot.
     - A biztonsági mentési szabályzat meghatározza, hogy mikor készüljön biztonsági mentés, és mennyi ideig tárolja őket a rendszer.
     - Az alapértelmezett házirend részletei megtalálhatók a legördülő menüben.
 
     ![Biztonsági mentési házirend kiválasztása](./media/backup-azure-vms-encryption/select-backup-goal-two.png)
 
-1. Ha nem szeretné használni az alapértelmezett házirendet, válassza az **új létrehozása**lehetőséget, és [hozzon létre egy egyéni házirendet](backup-azure-arm-vms-prepare.md#create-a-custom-policy).
+1. Ha nem szeretné használni az alapértelmezett házirendet, válassza az **új létrehozása** lehetőséget, és [hozzon létre egy egyéni házirendet](backup-azure-arm-vms-prepare.md#create-a-custom-policy).
 
-1. A **Virtual Machines**területen válassza a **Hozzáadás**lehetőséget.
+1. A **Virtual Machines** területen válassza a **Hozzáadás** lehetőséget.
 
     ![Virtuális gépek hozzáadása](./media/backup-azure-vms-encryption/add-virtual-machines.png)
 
@@ -104,11 +104,11 @@ Emellett van néhány dolog, amit bizonyos esetekben szükség lehet:
 A kezdeti biztonsági mentés az ütemterv szerint fog futni, de az alábbiak szerint azonnal futtatható:
 
 1. A tároló menüben válassza a **biztonsági másolati elemek elemet**.
-2. A **biztonsági másolati elemek**területen válassza az Azure-beli **virtuális gép**lehetőséget.
+2. A **biztonsági másolati elemek** területen válassza az Azure-beli **virtuális gép** lehetőséget.
 3. A **biztonsági mentési elemek** listában válassza a három pontot (...).
-4. Válassza a **biztonsági mentés**lehetőséget.
-5. A **biztonsági mentés most**a Calendar (naptár) vezérlőelem használatával válassza ki azt az utolsó napot, ameddig a helyreállítási pontot meg kell őrizni. Ezután válassza az **OK** gombot.
-6. A portál értesítéseinek figyelése. A feladat előrehaladását a tároló irányítópultján követheti nyomon > **biztonsági mentési feladatok**  >  **folyamatban**vannak. A virtuális gép méretétől függően a kezdeti biztonsági mentés létrehozása hosszabb időt vehet igénybe.
+4. Válassza a **biztonsági mentés** lehetőséget.
+5. A **biztonsági mentés most** a Calendar (naptár) vezérlőelem használatával válassza ki azt az utolsó napot, ameddig a helyreállítási pontot meg kell őrizni. Ez után válassza az **OK** gombot.
+6. A portál értesítéseinek figyelése. A feladat előrehaladását a tároló irányítópultján követheti nyomon > **biztonsági mentési feladatok**  >  **folyamatban** vannak. A virtuális gép méretétől függően a kezdeti biztonsági mentés létrehozása hosszabb időt vehet igénybe.
 
 ## <a name="provide-permissions"></a>Engedélyek megadása
 
@@ -119,19 +119,19 @@ Azure Backup csak olvasási hozzáféréssel kell rendelkeznie a kulcsok és tit
 
 Engedélyek beállítása:
 
-1. A Azure Portal válassza a **minden szolgáltatás**lehetőséget, és keresse meg a **kulcstárolókat**.
+1. A Azure Portal válassza a **minden szolgáltatás** lehetőséget, és keresse meg a **kulcstárolókat**.
 1. Válassza ki a titkosított virtuális géphez társított kulcstartót.
-1. Válassza a **hozzáférési szabályzatok**  >  **hozzáférési házirend hozzáadása**lehetőséget.
+1. Válassza a **hozzáférési szabályzatok**  >  **hozzáférési házirend hozzáadása** lehetőséget.
 
     ![Hozzáférési szabályzat hozzáadása](./media/backup-azure-vms-encryption/add-access-policy.png)
 
-1. A **hozzáférési szabályzat**  >  **beállítása sablonból (nem kötelező) beállításnál**válassza a **Azure Backup**lehetőséget.
-    - A szükséges engedélyek a **legfontosabb engedélyek** és a **titkos engedélyek**előtt vannak feltöltve.
-    - Ha a virtuális gép **csak BEK**használatával van titkosítva, távolítsa el a **kulcs engedélyeinek** kijelölését, mert csak a titkokra vonatkozó engedélyekre van szüksége.
+1. A **hozzáférési szabályzat**  >  **beállítása sablonból (nem kötelező) beállításnál** válassza a **Azure Backup** lehetőséget.
+    - A szükséges engedélyek a **legfontosabb engedélyek** és a **titkos engedélyek** előtt vannak feltöltve.
+    - Ha a virtuális gép **csak BEK** használatával van titkosítva, távolítsa el a **kulcs engedélyeinek** kijelölését, mert csak a titkokra vonatkozó engedélyekre van szüksége.
 
     ![Azure Backup kijelölés](./media/backup-azure-vms-encryption/select-backup-template.png)
 
-1. Válassza a **Hozzáadás** lehetőséget. A **biztonsági mentési felügyeleti szolgáltatás** hozzá van adva a **hozzáférési házirendekhez**.
+1. Válassza a **Hozzáadás** elemet. A **biztonsági mentési felügyeleti szolgáltatás** hozzá van adva a **hozzáférési házirendekhez**.
 
     ![Hozzáférési szabályzatok](./media/backup-azure-vms-encryption/backup-service-access-policy.png)
 
@@ -149,7 +149,7 @@ A titkosított virtuális gépeket a következőképpen állíthatja vissza:
     2. Hozzon létre egy új virtuális gépet a helyreállított lemezekről a PowerShell használatával. [További információk](backup-azure-vms-automation.md#create-a-vm-from-restored-disks).
 3. Linux rendszerű virtuális gépek esetén telepítse újra az ADE bővítményt, hogy az adatlemezek nyitva és csatlakoztatva legyenek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha bármilyen problémába ütközik, tekintse át a következő cikkeket:
 

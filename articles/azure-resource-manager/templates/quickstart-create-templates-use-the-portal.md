@@ -6,11 +6,11 @@ ms.date: 06/29/2020
 ms.topic: quickstart
 ms.author: jgao
 ms.openlocfilehash: c132d8337ccb46824b32ab4a6bcfc73bf5d0818b
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890394"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95978556"
 ---
 # <a name="quickstart-create-and-deploy-arm-templates-by-using-the-azure-portal"></a>Rövid útmutató: ARM-sablonok létrehozása és üzembe helyezése a Azure Portal használatával
 
@@ -38,10 +38,10 @@ Számos tapasztalt sablon-fejlesztő ezt a módszert használja a sablonok létr
     ![Azure-tárfiók létrehozása](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
 1. Adja meg a következő információkat:
 
-    |Name (Név)|Érték|
+    |Név|Érték|
     |----|----|
-    |**Erőforráscsoport**|Válassza az **új létrehozása** lehetőséget, és adjon meg egy tetszőleges erőforráscsoport-nevet. A képernyőképen az erőforráscsoport neve *mystorage1016rg* . Az erőforráscsoport az Azure-erőforrások tárolója. Az erőforráscsoport megkönnyíti az Azure-erőforrások kezelését. |
-    |**Név**|Adjon egyedi nevet a Storage-fióknak. A Storage-fiók nevének egyedinek kell lennie az összes Azure-ban, és csak kisbetűket és számokat tartalmaz. A névnek 3 – 24 karakter hosszúnak kell lennie. Ha hibaüzenet jelenik meg, amely azt jelzi, hogy "a Storage-fiók neve (mystorage1016) már használatban van", próbálja meg használni **&lt; a>Storage &lt; mai dátumot a MMDD>** , például a **johndolestorage1016** . További információ: [elnevezési szabályok és korlátozások](/azure/architecture/best-practices/resource-naming).|
+    |**Erőforráscsoport**|Válassza az **új létrehozása** lehetőséget, és adjon meg egy tetszőleges erőforráscsoport-nevet. A képernyőképen az erőforráscsoport neve *mystorage1016rg*. Az erőforráscsoport az Azure-erőforrások tárolója. Az erőforráscsoport megkönnyíti az Azure-erőforrások kezelését. |
+    |**Név**|Adjon egyedi nevet a Storage-fióknak. A Storage-fiók nevének egyedinek kell lennie az összes Azure-ban, és csak kisbetűket és számokat tartalmaz. A névnek 3 – 24 karakter hosszúnak kell lennie. Ha hibaüzenet jelenik meg, amely azt jelzi, hogy "a Storage-fiók neve (mystorage1016) már használatban van", próbálja meg használni **&lt; a>Storage &lt; mai dátumot a MMDD>**, például a **johndolestorage1016**. További információ: [elnevezési szabályok és korlátozások](/azure/architecture/best-practices/resource-naming).|
 
     A többi tulajdonság esetén használhatja az alapértelmezett értékeket.
 
@@ -57,7 +57,7 @@ Számos tapasztalt sablon-fejlesztő ezt a módszert használja a sablonok létr
 
     A sablon a főoldalon látható. Ez egy olyan JSON-fájl, amely hat legfelső szintű elemmel rendelkezik:,,,, `schema` `contentVersion` `parameters` `variables` `resources` és `output` . További információ: [ARM-sablonok struktúrájának és szintaxisának megismerése](./template-syntax.md)
 
-    Nyolc paraméter van definiálva. Az egyikük neve **storageAccountName** . Az előző képernyőképen a második kiemelt rész bemutatja, hogyan hivatkozhat erre a paraméterre a sablonban. A következő szakaszban úgy szerkeszti a sablont, hogy létrehozott nevet használjon a tárfiók neveként.
+    Nyolc paraméter van definiálva. Az egyikük neve **storageAccountName**. Az előző képernyőképen a második kiemelt rész bemutatja, hogyan hivatkozhat erre a paraméterre a sablonban. A következő szakaszban úgy szerkeszti a sablont, hogy létrehozott nevet használjon a tárfiók neveként.
 
     A sablonban egy Azure-erőforrás van definiálva. A típus: `Microsoft.Storage/storageAccounts` . Tekintse át az erőforrás definiálásának módját és a definíciós struktúrát.
 1. Válassza a **Letöltés** lehetőséget a képernyő tetején.
@@ -81,7 +81,7 @@ Az Azure megköveteli, hogy minden Azure-szolgáltatás egyedi névvel rendelkez
 
     ![Azure Resource Manager-sablonkönyvtár](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-library.png)
 
-1. Válassza **a saját sablon létrehozása lehetőséget a szerkesztőben** .
+1. Válassza **a saját sablon létrehozása lehetőséget a szerkesztőben**.
 1. Válassza a **Fájl betöltése** lehetőséget, majd az útmutatásokat követve töltse be az előző szakaszban letöltött template.json fájlt.
 1. Végezze el a következő három módosítást a sablonon:
 
@@ -157,18 +157,18 @@ Az Azure megköveteli, hogy minden Azure-szolgáltatás egyedi névvel rendelkez
      }
      ```
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 1. Írja be a következő értékeket:
 
-    |Name (Név)|Érték|
+    |Név|Érték|
     |----|----|
     |**Erőforráscsoport**|Válassza ki az utolsó szakaszban létrehozott erőforráscsoport-nevet. |
-    |**Régió**|Válasszon egy helyet az erőforráscsoportnak. Például: **USA középső régiója** . |
-    |**Hely**|Válassza ki a Storage-fiók helyét. Például: **USA középső régiója** . |
+    |**Régió**|Válasszon egy helyet az erőforráscsoportnak. Például: **USA középső régiója**. |
+    |**Hely**|Válassza ki a Storage-fiók helyét. Például: **USA középső régiója**. |
     |**Fiók típusa**|Adja meg **Standard_LRS** ehhez a rövid útmutatóhoz. |
     |**Erőforrás**|Adja meg a rövid útmutató **StorageV2** . |
     |**Hozzáférési szintek**|Adja meg a **gyors** üzembe helyezési útmutatót. |
-    |**TLS minimális verziója**|Adja meg a **TLS1_0** . |
+    |**TLS minimális verziója**|Adja meg a **TLS1_0**. |
     |**Csak HTTPS-forgalmat támogat**| Ennél a rövid útmutatónál válassza a **true** (igaz) értéket. |
     |**BLOB nyilvános hozzáférésének engedélyezése**| Ehhez az útmutatóhoz válassza a **false** (hamis) értéket. |
 
@@ -184,7 +184,7 @@ Az Azure megköveteli, hogy minden Azure-szolgáltatás egyedi névvel rendelkez
 
     Láthatja, hogy az üzembe helyezés állapota sikeres, és csak egyetlen tárfiók található az erőforráscsoportban. A tárfiók neve egy, a sablon által létrehozott egyedi sztring. Az Azure-tárfiókokkal kapcsolatos további információkért lásd: [Rövid útmutató: blobok feltöltése, letöltése és listázása az Azure Portal használatával](../../storage/blobs/storage-quickstart-blobs-portal.md).
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével.
 
@@ -193,7 +193,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 1. Válassza ki az erőforráscsoport nevét.  Az erőforráscsoportban megjelenik a tárfiók.
 1. A felső menüben válassza az **Erőforráscsoport törlése** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan generálható sablon az Azure Portalon, és hogyan helyezhető üzembe a sablon a Portal használatával. Ebben a rövid útmutatóban egy egyszerű sablont hoztunk létre, amelyben egyetlen Azure-erőforrás szerepel. Ha összetettebb sablonnal dolgozik, egyszerűbb a Visual Studio Code-ot vagy a Visual Studiót használni a sablon létrehozásához. A sablonok fejlesztésével kapcsolatos további tudnivalókért tekintse meg az új kezdő oktatóanyag-sorozatot:
 

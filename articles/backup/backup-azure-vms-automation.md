@@ -4,11 +4,11 @@ description: Az Azure-beli virtuális gépek biztonsági mentését és helyreá
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: ded2bc8a71bf564e31f40ca9f0d6c8049188768b
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094092"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95978369"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Azure-beli virtuális gépek biztonsági mentése és visszaállítása a PowerShell-lel
 
@@ -55,7 +55,7 @@ A kezdéshez:
 
     ![Recovery Services listája](./media/backup-azure-vms-automation/list-of-recoveryservices-ps.png)
 
-3. Jelentkezzen be az Azure-fiókjába a **AzAccount**használatával. Ez a parancsmag egy weblapot hoz létre a fiók hitelesítő adatainak megadásához:
+3. Jelentkezzen be az Azure-fiókjába a **AzAccount** használatával. Ez a parancsmag egy weblapot hoz létre a fiók hitelesítő adatainak megadásához:
 
     * Másik lehetőségként a fiók hitelesítő adatait a **kapcsolat-AzAccount** parancsmag paraméterként is hozzáadhatja a **-hitelesítőadat** paraméter használatával.
     * Ha Ön egy bérlő nevében dolgozó CSP-partner, adja meg az ügyfelet bérlőként a tenantID vagy a bérlő elsődleges tartománynevének használatával. Például: **kapcsolat-AzAccount-bérlő "fabrikam.com"**
@@ -78,7 +78,7 @@ A kezdéshez:
     Get-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 
-    A parancs kimenetében a **RegistrationState** a **regisztrált**értékre kell váltania. Ha nem, egyszerűen futtassa újra a **[Register-AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider)** parancsmagot.
+    A parancs kimenetében a **RegistrationState** a **regisztrált** értékre kell váltania. Ha nem, egyszerűen futtassa újra a **[Register-AzResourceProvider](/powershell/module/az.resources/register-azresourceprovider)** parancsmagot.
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
@@ -96,7 +96,7 @@ A következő lépések végigvezetik a Recovery Services-tároló létrehozás�
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
 
-3. Adja meg a használandó tárolási redundancia típusát. A [helyileg redundáns tárolást (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage), a [geo-redundáns tárolást (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage)vagy a [Zone-redundáns tárolást (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage)is használhatja. Az alábbi példa a **-BackupStorageRedundancy** beállítást mutatja be a *testvault* beállításnál a **GeoRedundant**értékre.
+3. Adja meg a használandó tárolási redundancia típusát. A [helyileg redundáns tárolást (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage), a [geo-redundáns tárolást (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage)vagy a [Zone-redundáns tárolást (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage)is használhatja. Az alábbi példa a **-BackupStorageRedundancy** beállítást mutatja be a *testvault* beállításnál a **GeoRedundant** értékre.
 
     ```powershell
     $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
@@ -208,7 +208,7 @@ $schpol.ScheduleRunTimes[0] = $UtcTime
 > [!IMPORTANT]
 > A kezdési időt csak 30 percenként kell megadnia. A fenti példában csak "01:00:00" vagy "02:30:00" lehet. A kezdési időpont nem lehet "01:15:00"
 
-A következő példa az ütemezett házirendet és a változókban tárolt adatmegőrzési szabályzatot tárolja. A példa ezeket a változókat használja a *NewPolicy*védelmi szabályzat létrehozásakor használt paraméterek definiálásához.
+A következő példa az ütemezett házirendet és a változókban tárolt adatmegőrzési szabályzatot tárolja. A példa ezeket a változókat használja a *NewPolicy* védelmi szabályzat létrehozásakor használt paraméterek definiálásához.
 
 ```powershell
 $retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM"
@@ -435,7 +435,7 @@ $backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -Work
 
 A [Get-AzRecoveryServicesBackupRecoveryPoint](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) parancsmag használatával listázhatja a biztonsági mentési elemek összes helyreállítási pontját. Ezután válassza ki a visszaállítani kívánt helyreállítási pontot. Ha nem tudja biztosan, hogy melyik helyreállítási pontot szeretné használni, érdemes kiválasztani a legutóbbi RecoveryPointType = AppConsistent pontot a listában.
 
-A következő szkriptben a **$RP**változó a kiválasztott biztonsági mentési elemhez tartozó helyreállítási pontok tömbje az elmúlt hét napban. A tömb a 0. indexben szereplő legutóbbi helyreállítási ponttal fordított sorrendben van rendezve. A helyreállítási pont kiválasztásához használja a PowerShell-tömb szabványos indexelését. A példában a $rp [0] kiválasztja a legutóbbi helyreállítási pontot.
+A következő szkriptben a **$RP** változó a kiválasztott biztonsági mentési elemhez tartozó helyreállítási pontok tömbje az elmúlt hét napban. A tömb a 0. indexben szereplő legutóbbi helyreállítási ponttal fordított sorrendben van rendezve. A helyreállítási pont kiválasztásához használja a PowerShell-tömb szabványos indexelését. A példában a $rp [0] kiválasztja a legutóbbi helyreállítási pontot.
 
 ```powershell
 $startDate = (Get-Date).AddDays(-7)
@@ -489,7 +489,7 @@ Adjon meg egy további paramétert, amely meghatározza, hogy a rendszer mely **
 $restorejob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -VaultId $targetVault.ID
 ```
 
-A rendszer visszaállítja a fájlVMConfig.JSa Storage-fiókba, és a felügyelt lemezeket a rendszer visszaállítja a megadott cél RG- ** ra** .
+A rendszer visszaállítja a fájlVMConfig.JSa Storage-fiókba, és a felügyelt lemezeket a rendszer visszaállítja a megadott cél RG- **ra** .
 
 A kimenet a következő példához hasonló:
 
@@ -824,7 +824,7 @@ $backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -Work
 
 A [Get-AzRecoveryServicesBackupRecoveryPoint](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint) parancsmag használatával listázhatja a biztonsági mentési elemek összes helyreállítási pontját. Ezután válassza ki a visszaállítani kívánt helyreállítási pontot. Ha nem tudja biztosan, hogy melyik helyreállítási pontot szeretné használni, érdemes kiválasztani a legutóbbi RecoveryPointType = AppConsistent pontot a listában.
 
-A következő szkriptben a **$RP**változó a kiválasztott biztonsági mentési elemhez tartozó helyreállítási pontok tömbje az elmúlt hét napban. A tömb a 0. indexben szereplő legutóbbi helyreállítási ponttal fordított sorrendben van rendezve. A helyreállítási pont kiválasztásához használja a PowerShell-tömb szabványos indexelését. A példában a $rp [0] kiválasztja a legutóbbi helyreállítási pontot.
+A következő szkriptben a **$RP** változó a kiválasztott biztonsági mentési elemhez tartozó helyreállítási pontok tömbje az elmúlt hét napban. A tömb a 0. indexben szereplő legutóbbi helyreállítási ponttal fordított sorrendben van rendezve. A helyreállítási pont kiválasztásához használja a PowerShell-tömb szabványos indexelését. A példában a $rp [0] kiválasztja a legutóbbi helyreállítási pontot.
 
 ```powershell
 $startDate = (Get-Date).AddDays(-7)
@@ -880,6 +880,6 @@ A szükséges fájlok másolását követően a [disable-AzRecoveryServicesBacku
 Disable-AzRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0] -VaultId $targetVault.ID
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha inkább a PowerShell-lel szeretné használni az Azure-erőforrásokat, tekintse meg a PowerShell-cikket, a [Windows Server biztonsági mentésének központi telepítését és kezelését](backup-client-automation.md)ismertető témakört. Ha DPM biztonsági mentéseket kezel, tekintse [meg a DPM biztonsági mentésének üzembe helyezése és kezelése](backup-dpm-automation.md)című cikket.
