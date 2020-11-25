@@ -7,11 +7,11 @@ ms.reviewer: arthii, divswa, logicappspm
 ms.topic: article
 ms.date: 08/18/2020
 ms.openlocfilehash: 2dd086ccc45458299cf6b8a7ad83d023055c96ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88661197"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009253"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Csatlakozás helyszíni adatforrásokhoz az Azure Logic Appsből
 
@@ -68,15 +68,15 @@ Miután telepítette az átjárót egy helyi számítógépre, hozza létre az A
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) ugyanazzal az Azure-fiókkal, amelyet az átjáró telepítéséhez használt.
 
-1. A Azure Portal keresőmezőbe írja be a "helyszíni adatátjáró" kifejezést, és válassza a helyszíni **adatátjárók**lehetőséget.
+1. A Azure Portal keresőmezőbe írja be a "helyszíni adatátjáró" kifejezést, és válassza a helyszíni **adatátjárók** lehetőséget.
 
    !["Helyszíni adatátjáró" keresése](./media/logic-apps-gateway-connection/search-for-on-premises-data-gateway.png)
 
-1. **A helyszíni adatátjárók**területen válassza a **Hozzáadás**lehetőséget.
+1. **A helyszíni adatátjárók** területen válassza a **Hozzáadás** lehetőséget.
 
    ![Új Azure-erőforrás hozzáadása az adatátjáróhoz](./media/logic-apps-gateway-connection/add-azure-data-gateway-resource.png)
 
-1. Adja meg ezt az információt az átjáró-erőforráshoz a **kapcsolatok átjárójának létrehozása**területen. Ha elkészült, válassza a **Létrehozás** lehetőséget.
+1. Adja meg ezt az információt az átjáró-erőforráshoz a **kapcsolatok átjárójának létrehozása** területen. Ha elkészült, válassza a **Létrehozás** lehetőséget.
 
    | Tulajdonság | Leírás |
    |----------|-------------|
@@ -101,9 +101,9 @@ Miután létrehozta az átjáró-erőforrást, és társítja az Azure-előfizet
 
 1. Adjon hozzá egy olyan összekötőt, amely támogatja a helyszíni kapcsolatokat, például **SQL Server**.
 
-1. **A helyszíni adatátjárón keresztül válassza a kapcsolat**lehetőséget.
+1. **A helyszíni adatátjárón keresztül válassza a kapcsolat** lehetőséget.
 
-1. Az **átjárók**területen az **előfizetések** listából válassza ki azt az Azure-előfizetést, amelyhez a kívánt átjáró-erőforrás tartozik.
+1. Az **átjárók** területen az **előfizetések** listából válassza ki azt az Azure-előfizetést, amelyhez a kívánt átjáró-erőforrás tartozik.
 
    Ha rendelkezik előfizetés-hozzáféréssel, különböző Azure-előfizetések közül választhat, amelyek mindegyike egy másik átjáró-erőforráshoz van társítva. A logikai alkalmazásnak és az átjáró erőforrásnak nem kell ugyanabban az Azure-előfizetésben léteznie.
 
@@ -128,19 +128,19 @@ Az átjáró-kapcsolatok most már készen állnak a logikai alkalmazás haszná
 
 Az átjáró-kapcsolatok beállításainak frissítéséhez szerkesztheti a kapcsolatokat.
 
-1. A logikai alkalmazás összes API-kapcsolatának megkereséséhez a logikai alkalmazás menüjében, a **fejlesztői eszközök**területen válassza az **API-kapcsolatok**elemet.
+1. A logikai alkalmazás összes API-kapcsolatának megkereséséhez a logikai alkalmazás menüjében, a **fejlesztői eszközök** területen válassza az **API-kapcsolatok** elemet.
 
    ![A logikai alkalmazás menüjében válassza az "API-kapcsolatok" lehetőséget.](./media/logic-apps-gateway-connection/logic-app-api-connections.png)
 
-1. Válassza ki a kívánt átjáró-kapcsolatokat, majd válassza az **API-kapcsolatok szerkesztése**lehetőséget.
+1. Válassza ki a kívánt átjáró-kapcsolatokat, majd válassza az **API-kapcsolatok szerkesztése** lehetőséget.
 
    > [!TIP]
    > Ha a frissítések nem lépnek érvénybe, próbálkozzon [az átjáró Windows-szolgáltatásfiók leállításával és újraindításával](../logic-apps/logic-apps-gateway-install.md#restart-gateway) az átjáró telepítéséhez.
 
 Az Azure-előfizetéshez társított összes API-kapcsolat megkeresése:
 
-* A Azure Portal menüben válassza a **minden szolgáltatás**  >  **webes**  >  **API-kapcsolatok**lehetőséget.
-* Vagy a Azure Portal menüben válassza a **minden erőforrás**elemet. Állítsa a **típus** szűrőt **API-kapcsolatok**értékre.
+* A Azure Portal menüben válassza a **minden szolgáltatás**  >  **webes**  >  **API-kapcsolatok** lehetőséget.
+* Vagy a Azure Portal menüben válassza a **minden erőforrás** elemet. Állítsa a **típus** szűrőt **API-kapcsolatok** értékre.
 
 <a name="change-delete-gateway-resource"></a>
 
@@ -148,9 +148,9 @@ Az Azure-előfizetéshez társított összes API-kapcsolat megkeresése:
 
 Egy másik átjáró-erőforrás létrehozásához csatolja az átjáró telepítését egy másik átjáró-erőforráshoz, vagy távolítsa el az átjáró erőforrását anélkül, hogy ez befolyásolná az átjáró telepítését.
 
-1. A Azure Portal menüben válassza a **minden erőforrás**lehetőséget, vagy keresse meg és válassza ki az **összes erőforrás** elemet bármelyik oldalon. Keresse meg és válassza ki az átjáró erőforrását.
+1. A Azure Portal menüben válassza a **minden erőforrás** lehetőséget, vagy keresse meg és válassza ki az **összes erőforrás** elemet bármelyik oldalon. Keresse meg és válassza ki az átjáró erőforrását.
 
-1. Ha még nincs bejelölve, az átjáró erőforrás menüjében válassza **a helyszíni adatátjáró**lehetőséget. Az átjáró erőforrás eszköztárán válassza a **Törlés**lehetőséget.
+1. Ha még nincs bejelölve, az átjáró erőforrás menüjében válassza **a helyszíni adatátjáró** lehetőséget. Az átjáró erőforrás eszköztárán válassza a **Törlés** lehetőséget.
 
    Például:
 

@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
 ms.openlocfilehash: dc4d1b852b0a498de0834731b2b1cd1225b9748b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107776"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008854"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Internet-hozzáférés nélküli számítógépek összekötése a Log Analytics átjáró használatával Azure Monitor
 
@@ -106,29 +106,29 @@ Szerezze be a Log Analytics átjáró telepítési fájljának legújabb verzió
 
 Az Log Analytics-átjárónak a Azure Portalból való lekéréséhez kövesse az alábbi lépéseket:
 
-1. Tallózással keresse meg a szolgáltatások listáját, majd válassza a **log Analytics**lehetőséget. 
+1. Tallózással keresse meg a szolgáltatások listáját, majd válassza a **log Analytics** lehetőséget. 
 1. Jelöljön ki egy munkaterületet.
-1. A munkaterület panel **általános**területén válassza a **gyorskonfigurálás**lehetőséget. 
-1. **Az adatforrás választása a munkaterülethez való kapcsolódáshoz**területen válassza a **számítógépek**lehetőséget.
-1. A **közvetlen ügynök** panelen válassza a **Letöltés log Analytics átjáró**elemet.
+1. A munkaterület panel **általános** területén válassza a **gyorskonfigurálás** lehetőséget. 
+1. **Az adatforrás választása a munkaterülethez való kapcsolódáshoz** területen válassza a **számítógépek** lehetőséget.
+1. A **közvetlen ügynök** panelen válassza a **Letöltés log Analytics átjáró** elemet.
  
    ![Képernyőkép az Log Analytics-átjáró letöltésének lépéseiről](./media/gateway/download-gateway.png)
 
 vagy 
 
-1. A munkaterület panel **Beállítások**területén válassza a **Speciális beállítások**lehetőséget.
-1. Lépjen a **csatlakoztatott források**  >  **Windows-kiszolgálók** elemre, és válassza a **log Analytics-átjáró letöltése**lehetőséget.
+1. A munkaterület panel **Beállítások** területén válassza a **Speciális beállítások** lehetőséget.
+1. Lépjen a **csatlakoztatott források**  >  **Windows-kiszolgálók** elemre, és válassza a **log Analytics-átjáró letöltése** lehetőséget.
 
 ## <a name="install-log-analytics-gateway-using-setup-wizard"></a>Log Analytics átjáró telepítése a telepítővarázsló használatával
 
 Ha az átjárót a telepítővarázsló segítségével szeretné telepíteni, kövesse az alábbi lépéseket. 
 
-1. A célmappában kattintson duplán a **Log Analytics gateway.msi**elemre.
+1. A célmappában kattintson duplán a **Log Analytics gateway.msi** elemre.
 1. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra.
 
    ![A Kezdőlap képernyőképe az átjáró telepítővarázslója](./media/gateway/gateway-wizard01.png)
 
-1. A **licencszerződés** lapon jelölje be az **Elfogadom a licencszerződés feltételeit** , hogy fogadja el a Microsoft szoftverlicenc-szerződést, majd kattintson a **tovább**gombra.
+1. A **licencszerződés** lapon jelölje be az **Elfogadom a licencszerződés feltételeit** , hogy fogadja el a Microsoft szoftverlicenc-szerződést, majd kattintson a **tovább** gombra.
 1. A **port és a proxy címe** lapon:
 
    a. Adja meg az átjáróhoz használandó TCP-portszámot. A telepítő ezt a portszámot használja egy bejövő szabály konfigurálásához a Windows tűzfalon.  Az alapértelmezett érték a 8080.
@@ -142,8 +142,8 @@ Ha az átjárót a telepítővarázsló segítségével szeretné telepíteni, k
 
 1. Ha nincs Microsoft Update engedélyezve, a Microsoft Update lap jelenik meg, amely lehetővé teszi, hogy engedélyezze. Válasszon ki egy kijelölést, majd kattintson a **Tovább gombra**. Ha nem, folytassa a következő lépéssel.
 1. A **célmappa** oldalon hagyja meg az alapértelmezett C:\Program Files\OMS Gateway mappát, vagy adja meg azt a helyet, ahová az átjárót telepíteni kívánja. Ezután kattintson a **Tovább** gombra.
-1. A **telepítésre kész** lapon válassza a **telepítés**lehetőséget. Ha a felhasználói fiókok felügyelete engedélyt kér a telepítésre, válassza az **Igen**lehetőséget.
-1. A telepítés befejezése után válassza a **Befejezés**lehetőséget. Annak ellenőrzéséhez, hogy a szolgáltatás fut-e, nyissa meg a Services. msc beépülő modult, és ellenőrizze, hogy a **OMS átjáró** megjelenik-e a szolgáltatások listájában, és hogy az állapota **fut**-e.
+1. A **telepítésre kész** lapon válassza a **telepítés** lehetőséget. Ha a felhasználói fiókok felügyelete engedélyt kér a telepítésre, válassza az **Igen** lehetőséget.
+1. A telepítés befejezése után válassza a **Befejezés** lehetőséget. Annak ellenőrzéséhez, hogy a szolgáltatás fut-e, nyissa meg a Services. msc beépülő modult, és ellenőrizze, hogy a **OMS átjáró** megjelenik-e a szolgáltatások listájában, és hogy az állapota **fut**-e.
 
    ![A helyi szolgáltatások képernyőképe, amely azt mutatja, hogy a OMS-átjáró fut](./media/gateway/gateway-service.png)
 
@@ -192,8 +192,8 @@ A hálózati terheléselosztás (NLB) használatával a magas rendelkezésre ál
 A Windows Server 2016 hálózati terheléselosztási fürt kialakításával és üzembe helyezésével kapcsolatos információkért lásd: [hálózati](/windows-server/networking/technologies/network-load-balancing)terheléselosztás. A következő lépések a Microsoft hálózati terheléselosztási fürtök konfigurálását ismertetik.  
 
 1. Jelentkezzen be arra a Windows Serverre, amely az NLB-fürt tagja egy rendszergazdai fiókkal.  
-2. Nyissa meg a hálózati terheléselosztás kezelőjét a Kiszolgálókezelőben, kattintson az **eszközök**, majd a **hálózati terheléselosztás kezelője**lehetőségre.
-3. Ha egy Log Analytics átjáró-kiszolgálót a Microsoft monitoring agenttel kíván csatlakozni, kattintson a jobb gombbal a fürt IP-címére, majd kattintson a **gazdagép hozzáadása a fürthöz**lehetőségre. 
+2. Nyissa meg a hálózati terheléselosztás kezelőjét a Kiszolgálókezelőben, kattintson az **eszközök**, majd a **hálózati terheléselosztás kezelője** lehetőségre.
+3. Ha egy Log Analytics átjáró-kiszolgálót a Microsoft monitoring agenttel kíván csatlakozni, kattintson a jobb gombbal a fürt IP-címére, majd kattintson a **gazdagép hozzáadása a fürthöz** lehetőségre. 
 
     ![Hálózati terheléselosztás kezelője – gazdagép hozzáadása fürthöz](./media/gateway/nlb02.png)
  
@@ -203,7 +203,7 @@ A Windows Server 2016 hálózati terheléselosztási fürt kialakításával és
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 
-A Azure Load Balancer megtervezéséhez és üzembe helyezéséhez tekintse meg a [Mi az a Azure Load Balancer?](../../load-balancer/load-balancer-overview.md)című témakört. Alapszintű terheléselosztó üzembe helyezéséhez kövesse az ebben a rövid útmutatóban ismertetett lépéseket, a **háttér-kiszolgálók létrehozása**című szakaszban ismertetett lépéseket [kizárva.](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)   
+A Azure Load Balancer megtervezéséhez és üzembe helyezéséhez tekintse meg a [Mi az a Azure Load Balancer?](../../load-balancer/load-balancer-overview.md)című témakört. Alapszintű terheléselosztó üzembe helyezéséhez kövesse az ebben a rövid útmutatóban ismertetett lépéseket, a **háttér-kiszolgálók létrehozása** című szakaszban ismertetett lépéseket [kizárva.](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)   
 
 > [!NOTE]
 > A Azure Load Balancer **alapszintű SKU**-val történő konfigurálásához az szükséges, hogy az Azure-beli virtuális gépek rendelkezésre állási csoportba tartozzanak. A rendelkezésre állási csoportokkal kapcsolatos további tudnivalókért lásd: [Windows rendszerű virtuális gépek rendelkezésre állásának kezelése az Azure-ban](../../virtual-machines/manage-availability.md). Meglévő virtuális gépek rendelkezésre állási csoportba való felvételéhez tekintse meg [Azure Resource Manager virtuális gép rendelkezésre állási csoportjának beállítása](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)című témakört.
@@ -254,7 +254,7 @@ Az integráció konfigurálásához frissítse a rendszerproxy konfigurációjá
 
    a. Kattintson a **Start** gombra, és írja be a **cmd parancsot**.  
 
-   b. Kattintson a jobb gombbal a **parancssor** elemre, és válassza **a Futtatás rendszergazdaként**lehetőséget.  
+   b. Kattintson a jobb gombbal a **parancssor** elemre, és válassza **a Futtatás rendszergazdaként** lehetőséget.  
 
 1. Írja be a következő parancsot:
 
@@ -262,7 +262,7 @@ Az integráció konfigurálásához frissítse a rendszerproxy konfigurációjá
 
 Az Log Analytics-integráció befejezése után távolítsa el a változást a futtatásával `netsh winhttp reset proxy` . Ezután az operatív konzolon a **proxykiszolgáló konfigurálása** lehetőséggel adja meg az log Analytics átjárókiszolgáló megadását. 
 
-1. A Operations Manager-konzol **Operations Management Suite**területén válassza a **Csatlakozás**lehetőséget, majd válassza a **proxykiszolgáló konfigurálása**lehetőséget.
+1. A Operations Manager-konzol **Operations Management Suite** területén válassza a **Csatlakozás** lehetőséget, majd válassza a **proxykiszolgáló konfigurálása** lehetőséget.
 
    ![Képernyőkép a Operations Managerről, amely a proxykiszolgáló konfigurálását mutatja be](./media/gateway/scom01.png)
 
@@ -283,7 +283,7 @@ Nagyméretű vagy összetett környezetek esetén előfordulhat, hogy csak bizon
 Adott kiszolgálók vagy csoportok konfigurálása a Log Analytics átjárókiszolgáló használatára: 
 
 1. Nyissa meg a Operations Manager konzolt, és válassza ki a **szerzői műveletek** munkaterületet.  
-1. A szerzői műveletek munkaterületen válassza a **szabályok**lehetőséget. 
+1. A szerzői műveletek munkaterületen válassza a **szabályok** lehetőséget. 
 1. A Operations Manager eszköztáron kattintson a **hatókör** gombra. Ha a gomb nem érhető el, győződjön meg róla, hogy a **figyelés** ablaktáblán egy objektumot, nem pedig mappát jelölt ki. A **hatókör felügyeleti csomag objektumai** párbeszédpanel megjeleníti a közös megcélzott osztályok, csoportok vagy objektumok listáját. 
 1. A **Keresés** mezőben adja meg a **állapotfigyelő szolgáltatás** , majd válassza ki a listából. Válassza az **OK** lehetőséget.  
 1. Keresse meg az **Advisor proxy beállítási szabályát**. 
@@ -294,7 +294,7 @@ Adott kiszolgálók vagy csoportok konfigurálása a Log Analytics átjárókisz
     > Nincs szükség a szabály engedélyezésére. A Microsoft System Center Advisor biztonságos referenciájának felülbírálási felügyeleti csomagja a Microsoft System Center Advisor figyelési kiszolgáló csoportra irányuló felülbírálással már automatikusan felügyelhető.
     > 
 
-1. Válasszon ki egy felügyeleti csomagot a **cél felügyeleti csomag kiválasztása** listából, vagy hozzon létre egy új, lezáratlan felügyeleti csomagot az **új**lehetőség kiválasztásával. 
+1. Válasszon ki egy felügyeleti csomagot a **cél felügyeleti csomag kiválasztása** listából, vagy hozzon létre egy új, lezáratlan felügyeleti csomagot az **új** lehetőség kiválasztásával. 
 1. Ha elkészült, kattintson az **OK** gombra. 
 
 ### <a name="configure-for-automation-hybrid-runbook-workers"></a>Konfigurálás az Automation hibrid Runbook-feldolgozói számára
@@ -382,7 +382,7 @@ A következő táblázat a Log Analytics átjáró számára elérhető teljesí
 ## <a name="assistance"></a>Segítség
 
 Ha bejelentkezett a Azure Portalba, segítséget kérhet az Log Analytics átjáróval vagy bármely más Azure-szolgáltatással vagy szolgáltatással kapcsolatban.
-Ha segítséget szeretne kérni, válassza a portál jobb felső sarkában látható kérdőjel ikont, és válassza az **új támogatási kérés**lehetőséget. Ezután fejezze be az új támogatási kérelem űrlapját.
+Ha segítséget szeretne kérni, válassza a portál jobb felső sarkában látható kérdőjel ikont, és válassza az **új támogatási kérés** lehetőséget. Ezután fejezze be az új támogatási kérelem űrlapját.
 
 ![Képernyőkép egy új támogatási kérelemről](./media/gateway/support.png)
 

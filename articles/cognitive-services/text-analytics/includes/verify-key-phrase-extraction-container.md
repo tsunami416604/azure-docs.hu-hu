@@ -11,11 +11,11 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 5dca4828a5c1127133461ddf9fc06099fc176b68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779613"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009913"
 ---
 ### <a name="verify-the-key-phrase-extraction-container-instance"></a>A Kulcsszókeresés tároló példányának ellenőrzése
 
@@ -26,7 +26,7 @@ ms.locfileid: "91779613"
 
 1. Válassza ki a **szolgáltatás API leírása** hivatkozást, hogy megnyissa a tároló hencegő lapját.
 
-1. Válassza ki a **post** API-k bármelyikét, és válassza a **kipróbálás**lehetőséget. A paraméterek megjelennek, amely tartalmazza a következő bemeneti példát:
+1. Válassza ki a **post** API-k bármelyikét, és válassza a **kipróbálás** lehetőséget. A paraméterek megjelennek, amely tartalmazza a következő bemeneti példát:
 
     ```json
     {

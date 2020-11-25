@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: autoscale
 ms.openlocfilehash: 3b1f13fd1ce8bedcbe58385d4cee321f1d1405df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86505519"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009007"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>E-mailek és webhookok riasztási értesítéseinek küldése a Azure Monitorban az autoskálázási műveletek használatával
 Ebből a cikkből megtudhatja, hogyan állíthatja be az eseményindítókat, hogy konkrét webes URL-címeket hívjon fel, vagy az Azure-ban végzett autoskálázási műveletek alapján küldjön e-mailt.  
@@ -58,13 +58,13 @@ A REST API vagy Resource Manager-sablon használatakor a következő beállítá
 
 | Mező | Kötelező? | Leírás |
 | --- | --- | --- |
-| művelet |igen |az értéknek "Scale" értékűnek kell lennie |
-| sendToSubscriptionAdministrator |igen |az értéknek "true" vagy "false" értékűnek kell lennie |
-| sendToSubscriptionCoAdministrators |igen |az értéknek "true" vagy "false" értékűnek kell lennie |
-| customEmails |igen |az érték lehet null [] vagy az e-mailek karakterlánc-tömbje. |
-| webhookok |igen |az érték lehet null vagy érvényes URI |
-| serviceUri |igen |érvényes HTTPS URI |
-| properties |igen |az értéknek üresnek kell lennie {} , vagy kulcs-érték párokat is tartalmazhat. |
+| művelet |yes |az értéknek "Scale" értékűnek kell lennie |
+| sendToSubscriptionAdministrator |yes |az értéknek "true" vagy "false" értékűnek kell lennie |
+| sendToSubscriptionCoAdministrators |yes |az értéknek "true" vagy "false" értékűnek kell lennie |
+| customEmails |yes |az érték lehet null [] vagy az e-mailek karakterlánc-tömbje. |
+| webhookok |yes |az érték lehet null vagy érvényes URI |
+| serviceUri |yes |érvényes HTTPS URI |
+| properties |yes |az értéknek üresnek kell lennie {} , vagy kulcs-érték párokat is tartalmazhat. |
 
 ## <a name="authentication-in-webhooks"></a>Hitelesítés webhookokban
 A webhook hitelesítése jogkivonat-alapú hitelesítéssel történik, ahol a webhook URI-JÁT lekérdezési paraméterként egy jogkivonat-AZONOSÍTÓval menti. Például: https: \/ /mysamplealert/webcallback? következőből tokenid = sometokenid&someparameter = érték1
@@ -101,19 +101,19 @@ Az autoskálázási értesítés létrehozásakor a webhook hasznos adatai a kö
 
 | Mező | Kötelező? | Leírás |
 | --- | --- | --- |
-| status |igen |Az az állapot, amely azt jelzi, hogy egy autoskálázási művelet létrejött |
-| művelet |igen |A példányok növekedése a "vertikális felskálázás", a példányok csökkenése pedig a "skálázás" lesz. |
-| összefüggésben |igen |Az autoscale művelet kontextusa |
-| időbélyeg |igen |Az autoskálázási művelet elindítására szolgáló időbélyegző |
-| id |Igen |Az autoskálázási beállítás Resource Manager-azonosítója |
-| name |Igen |Az autoskálázási beállítás neve |
-| Részletek |Igen |Az autoskálázási szolgáltatás és a példányszám változásának magyarázata |
-| subscriptionId |Igen |A méretezni kívánt cél erőforrás előfizetés-azonosítója |
-| resourceGroupName |Igen |A méretezni kívánt cél erőforrás erőforráscsoport-neve |
-| resourceName |Igen |A méretezni kívánt cél erőforrás neve |
-| resourceType |Igen |A három támogatott érték: "Microsoft. classiccompute/tartománynév/bővítőhely/szerepkörök" – Cloud Service roles, "Microsoft. számítás/virtualmachinescalesets"-Virtual Machine Scale Sets és "Microsoft. Web/kiszolgálófarmok" – Web App |
-| resourceId |Igen |A méretezni kívánt cél erőforrás Resource Manager-azonosítója |
-| portalLink |Igen |Azure Portal hivatkozás a cél erőforrás Összegzés lapjára |
-| oldCapacity |Igen |Az aktuális (régi) példányok száma, ha az autoskálázás skálázási műveletet vett igénybe |
-| newCapacity |Igen |Az új példányszám az erőforrás méretezése |
-| properties |Nem |Választható. <kulcs, érték> párok (például szótár <karakterlánc, karakterlánc>) készlete. A Properties (Tulajdonságok) mező nem kötelező. Egyéni felhasználói felületen vagy logikai alkalmazáson alapuló munkafolyamatban megadhatja azokat a kulcsokat és értékeket, amelyek átadhatók a hasznos adatok használatával. Ha az egyéni tulajdonságokat vissza szeretné adni a kimenő webhook-hívásra, akkor a webhook URI-ja (lekérdezési paraméterekként) is használható. |
+| status |yes |Az az állapot, amely azt jelzi, hogy egy autoskálázási művelet létrejött |
+| művelet |yes |A példányok növekedése a "vertikális felskálázás", a példányok csökkenése pedig a "skálázás" lesz. |
+| összefüggésben |yes |Az autoscale művelet kontextusa |
+| időbélyeg |yes |Az autoskálázási művelet elindítására szolgáló időbélyegző |
+| id |Yes |Az autoskálázási beállítás Resource Manager-azonosítója |
+| name |Yes |Az autoskálázási beállítás neve |
+| Részletek |Yes |Az autoskálázási szolgáltatás és a példányszám változásának magyarázata |
+| subscriptionId |Yes |A méretezni kívánt cél erőforrás előfizetés-azonosítója |
+| resourceGroupName |Yes |A méretezni kívánt cél erőforrás erőforráscsoport-neve |
+| resourceName |Yes |A méretezni kívánt cél erőforrás neve |
+| resourceType |Yes |A három támogatott érték: "Microsoft. classiccompute/tartománynév/bővítőhely/szerepkörök" – Cloud Service roles, "Microsoft. számítás/virtualmachinescalesets"-Virtual Machine Scale Sets és "Microsoft. Web/kiszolgálófarmok" – Web App |
+| resourceId |Yes |A méretezni kívánt cél erőforrás Resource Manager-azonosítója |
+| portalLink |Yes |Azure Portal hivatkozás a cél erőforrás Összegzés lapjára |
+| oldCapacity |Yes |Az aktuális (régi) példányok száma, ha az autoskálázás skálázási műveletet vett igénybe |
+| newCapacity |Yes |Az új példányszám az erőforrás méretezése |
+| properties |No |Választható. <kulcs, érték> párok (például szótár <karakterlánc, karakterlánc>) készlete. A Properties (Tulajdonságok) mező nem kötelező. Egyéni felhasználói felületen vagy logikai alkalmazáson alapuló munkafolyamatban megadhatja azokat a kulcsokat és értékeket, amelyek átadhatók a hasznos adatok használatával. Ha az egyéni tulajdonságokat vissza szeretné adni a kimenő webhook-hívásra, akkor a webhook URI-ja (lekérdezési paraméterekként) is használható. |

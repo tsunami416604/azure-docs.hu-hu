@@ -7,15 +7,15 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 11/06/2020
 ms.openlocfilehash: 4070f373175f3497156ced011a57e2ed7bd6e770
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364258"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009772"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Áttekintés: üzembe helyezés automatizálása Azure Logic Appshez Azure Resource Manager sablonok használatával
 
-Ha készen áll a logikai alkalmazás létrehozásának és üzembe helyezésének automatizálására, kiterjesztheti a logikai alkalmazás alapjául szolgáló munkafolyamat-definícióját egy [Azure Resource Manager sablonba](../azure-resource-manager/management/overview.md). Ez a sablon határozza meg az infrastruktúrát, az erőforrásokat, a paramétereket és az egyéb információkat a logikai alkalmazás üzembe helyezéséhez és telepítéséhez. Ha a központi telepítésben (más néven *parameterizing* ) eltérő értékekre vonatkozó paramétereket határoz meg, akkor a különböző telepítési igények alapján ismételten és következetesen telepítheti a Logic apps-alkalmazásokat.
+Ha készen áll a logikai alkalmazás létrehozásának és üzembe helyezésének automatizálására, kiterjesztheti a logikai alkalmazás alapjául szolgáló munkafolyamat-definícióját egy [Azure Resource Manager sablonba](../azure-resource-manager/management/overview.md). Ez a sablon határozza meg az infrastruktúrát, az erőforrásokat, a paramétereket és az egyéb információkat a logikai alkalmazás üzembe helyezéséhez és telepítéséhez. Ha a központi telepítésben (más néven *parameterizing*) eltérő értékekre vonatkozó paramétereket határoz meg, akkor a különböző telepítési igények alapján ismételten és következetesen telepítheti a Logic apps-alkalmazásokat.
 
 Ha például fejlesztési, tesztelési és éles környezetekben végez üzembe helyezést, akkor az egyes környezetekhez valószínűleg különböző kapcsolódási karakterláncokat fog használni. Deklarálhatja a sablon azon paramétereit, amelyek különböző kapcsolatok karakterláncokat fogadnak el, majd egy külön [paraméter-fájlban](../azure-resource-manager/templates/parameter-files.md)tárolják ezeket a karakterláncokat. Így módosíthatja ezeket az értékeket a sablon frissítése és újbóli üzembe helyezése nélkül. Olyan esetekben, ahol olyan paraméterek vannak, amelyek érzékenyek, vagy amelyeket biztosítani kell, például a jelszavakat és a titkos kulcsokat, ezeket az értékeket [Azure Key Vaultban](../azure-resource-manager/templates/key-vault-parameter.md) tárolhatja, és a paramétereket tartalmazó fájllal is lekérheti ezeket az értékeket. Ezekben az esetekben azonban az aktuális értékek beolvasásához újra üzembe kell helyezni.
 
@@ -331,11 +331,11 @@ A logikai alkalmazás erőforrás-definíciójának attribútumai a következők
 | Attribútum | Kötelező | Típus | Leírás |
 |-----------|----------|------|-------------|
 | `state` | Igen | Sztring | A logikai alkalmazás állapota az üzembe helyezéskor `Enabled` azt jelenti, hogy a logikai alkalmazás él, és `Disabled` azt jelenti, hogy a logikai alkalmazás inaktív. Ha például nem áll készen a logikai alkalmazás életbe léptetésére, de a vázlat verzióját szeretné telepíteni, használhatja a `Disabled` lehetőséget. |
-| `integrationAccount` | Nem | Objektum | Ha a logikai alkalmazás egy integrációs fiókot használ, amely a vállalatok közötti (B2B) forgatókönyvek összetevőit tárolja, ez az objektum tartalmazza az `id` attribútumot, amely meghatározza az integrációs fiók azonosítóját. |
-| `definition` | Igen | Objektum | A logikai alkalmazás mögöttes munkafolyamat-definíciója, amely ugyanaz az objektum, amely a kód nézetben jelenik meg, és teljes mértékben le van írva a [séma-referenciában a munkafolyamat-definíció nyelve](../logic-apps/logic-apps-workflow-definition-language.md) témakörben. Ebben a munkafolyamat-definícióban az `parameters` objektum deklarálja a Logic app Runtime-ban használandó értékek paramétereit. További információ: [munkafolyamat-definíció és paraméterek](#workflow-definition-parameters). <p><p>Ha meg szeretné tekinteni a logikai alkalmazás munkafolyamat-definíciójában lévő attribútumokat, váltson a "design View" kifejezésre a "Code View" értékre a Azure Portal vagy a Visual Studióban, vagy egy olyan eszköz használatával, mint például a [Azure erőforrás-kezelő](https://resources.azure.com). |
-| `parameters` | Nem | Objektum | A Logic app Runtime-ban használandó [munkafolyamat-definíciós paraméter értéke](#workflow-definition-parameters) . Ezekhez az értékekhez tartozó definíciók a [munkafolyamat-definíció Parameters objektumán](#workflow-definition-parameters)belül jelennek meg. Továbbá, ha a logikai alkalmazás [felügyelt összekötőket](../connectors/apis-list.md) használ a más szolgáltatások és rendszerek eléréséhez, ez az objektum tartalmaz egy `$connections` objektumot, amely beállítja a futásidőben használandó kapcsolódási értékeket. |
-| `accessControl` | Nem | Objektum | A logikai alkalmazás biztonsági attribútumainak megadásához, például az eseményindítók igényléséhez vagy a futtatási előzményekhez és kimenetekhez való IP-hozzáférés korlátozásához. További információ: [a Logic apps biztonságos elérése](../logic-apps/logic-apps-securing-a-logic-app.md). |
-| `runtimeConfiguration` | Nem | Objektum | Olyan tulajdonságok megadásához `operationOptions` , amelyek vezérlik a logikai alkalmazás futási idejét. Például futtathatja a logikai alkalmazást [nagy átviteli sebességű módban](../logic-apps/logic-apps-limits-and-config.md#run-high-throughput-mode). |
+| `integrationAccount` | No | Objektum | Ha a logikai alkalmazás egy integrációs fiókot használ, amely a vállalatok közötti (B2B) forgatókönyvek összetevőit tárolja, ez az objektum tartalmazza az `id` attribútumot, amely meghatározza az integrációs fiók azonosítóját. |
+| `definition` | Yes | Objektum | A logikai alkalmazás mögöttes munkafolyamat-definíciója, amely ugyanaz az objektum, amely a kód nézetben jelenik meg, és teljes mértékben le van írva a [séma-referenciában a munkafolyamat-definíció nyelve](../logic-apps/logic-apps-workflow-definition-language.md) témakörben. Ebben a munkafolyamat-definícióban az `parameters` objektum deklarálja a Logic app Runtime-ban használandó értékek paramétereit. További információ: [munkafolyamat-definíció és paraméterek](#workflow-definition-parameters). <p><p>Ha meg szeretné tekinteni a logikai alkalmazás munkafolyamat-definíciójában lévő attribútumokat, váltson a "design View" kifejezésre a "Code View" értékre a Azure Portal vagy a Visual Studióban, vagy egy olyan eszköz használatával, mint például a [Azure erőforrás-kezelő](https://resources.azure.com). |
+| `parameters` | No | Objektum | A Logic app Runtime-ban használandó [munkafolyamat-definíciós paraméter értéke](#workflow-definition-parameters) . Ezekhez az értékekhez tartozó definíciók a [munkafolyamat-definíció Parameters objektumán](#workflow-definition-parameters)belül jelennek meg. Továbbá, ha a logikai alkalmazás [felügyelt összekötőket](../connectors/apis-list.md) használ a más szolgáltatások és rendszerek eléréséhez, ez az objektum tartalmaz egy `$connections` objektumot, amely beállítja a futásidőben használandó kapcsolódási értékeket. |
+| `accessControl` | No | Objektum | A logikai alkalmazás biztonsági attribútumainak megadásához, például az eseményindítók igényléséhez vagy a futtatási előzményekhez és kimenetekhez való IP-hozzáférés korlátozásához. További információ: [a Logic apps biztonságos elérése](../logic-apps/logic-apps-securing-a-logic-app.md). |
+| `runtimeConfiguration` | No | Objektum | Olyan tulajdonságok megadásához `operationOptions` , amelyek vezérlik a logikai alkalmazás futási idejét. Például futtathatja a logikai alkalmazást [nagy átviteli sebességű módban](../logic-apps/logic-apps-limits-and-config.md#run-high-throughput-mode). |
 |||||
 
 A Logic Apps objektumok erőforrás-definíciókkal kapcsolatos további információkért lásd: [Microsoft. Logic Resource types](/azure/templates/microsoft.logic/allversions):
@@ -1047,7 +1047,7 @@ Az egyszerű szolgáltatásokkal kapcsolatos további információkért tekintse
 
 ## <a name="references-to-parameters"></a>Paraméterekre mutató hivatkozások
 
-A sablon paramétereinek hivatkozásához használhatja a Template [functions](../azure-resource-manager/templates/template-functions.md)kifejezést a telepítéskor kiértékelt sablon-kifejezésekkel. A sablon kifejezései szögletes zárójeleket használnak ( **[]** ):
+A sablon paramétereinek hivatkozásához használhatja a Template [functions](../azure-resource-manager/templates/template-functions.md)kifejezést a telepítéskor kiértékelt sablon-kifejezésekkel. A sablon kifejezései szögletes zárójeleket használnak (**[]**):
 
 `"<attribute-name>": "[parameters('<template-parameter-name>')]"`
 

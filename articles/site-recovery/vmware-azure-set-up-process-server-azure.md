@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: ramamill
 ms.openlocfilehash: 16214fa07b14c8db2f32fa2c69739b7fa3dc1907
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74083956"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008479"
 ---
 # <a name="set-up-a-process-server-in-azure-for-failback"></a>Azure-beli folyamatkiszolgálók beállítása feladat-visszavételhez
 
@@ -28,14 +28,14 @@ További információ az ismételt [védelemről](vmware-azure-reprotect.md) és
 
 ## <a name="deploy-a-process-server-in-azure"></a>Folyamat-kiszolgáló üzembe helyezése az Azure-ban
 
-1. A tárolóban > **site Recovery infrastruktúra**a >  **Manage**  >  **konfigurációs kiszolgálók**kezelése lapon válassza ki a konfigurációs kiszolgálót.
+1. A tárolóban > **site Recovery infrastruktúra** a >  **Manage**  >  **konfigurációs kiszolgálók** kezelése lapon válassza ki a konfigurációs kiszolgálót.
 2. A kiszolgáló lapon kattintson a **+ folyamat kiszolgáló** elemre.
 3. A **folyamat-kiszolgáló hozzáadása** oldalon, és válassza a Process Server üzembe helyezése az Azure-ban lehetőséget.
 4. Itt adhatja meg az Azure-beállításokat, beleértve a feladatátvételhez használt előfizetést, az erőforráscsoportot, a feladatátvételhez használt Azure-régiót, valamint azt a virtuális hálózatot, amelyben az Azure-beli virtuális gépek találhatók. Ha több Azure-hálózatot is használt, mindegyikhez szükség van egy Process Serverre.
 
    ![Process Server-gyűjtemény hozzáadása elem](./media/vmware-azure-set-up-process-server-azure/add-ps-page-1.png)
 
-4. A **kiszolgáló neve**, a **Felhasználónév**és a **jelszó**mezőben adja meg a folyamat kiszolgálójának nevét, valamint a rendszergazdai jogosultságokkal rendelkező hitelesítő adatokat a kiszolgálón.
+4. A **kiszolgáló neve**, a **Felhasználónév** és a **jelszó** mezőben adja meg a folyamat kiszolgálójának nevét, valamint a rendszergazdai jogosultságokkal rendelkező hitelesítő adatokat a kiszolgálón.
 5. Itt adhatja meg a kiszolgálói virtuálisgép-lemezekhez használandó Storage-fiókot, valamint azt az alhálózatot, amelyben a folyamat-kiszolgáló virtuális gép található, valamint a kiszolgáló IP-címe, amely a virtuális gép indításakor lesz hozzárendelve.
 6. Kattintson az **OK** gombra a Process Server virtuális gép üzembe helyezésének megkezdéséhez. A Process Server Standard_A8_v2 SKU-ra lesz telepítve. Győződjön meg arról, hogy ez a virtuálisgép-SKU elérhető az előfizetéséhez.
 

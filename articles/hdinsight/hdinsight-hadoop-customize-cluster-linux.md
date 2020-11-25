@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli
 ms.date: 09/02/2020
 ms.openlocfilehash: 35c3901e9a48523a10c1a6aacbc52e6c165e278f
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748708"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009789"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Azure HDInsight-fürtök testreszabása parancsfájl-műveletek használatával
 
@@ -25,8 +25,8 @@ A parancsfájlok műveletei az Azure Marketplace-en is HDInsight-alkalmazáskén
 
 Tartományhoz csatlakoztatott HDInsight-fürt esetén két Apache Ambari engedély szükséges, ha parancsfájl-műveleteket használ a fürthöz:
 
-* **AMBARI. \_egyéni \_ parancs futtatása** . A Ambari rendszergazdai szerepkör alapértelmezés szerint rendelkezik ezzel az engedéllyel.
-* **Fürt. \_egyéni \_ parancs futtatása** . Alapértelmezés szerint a HDInsight-fürt rendszergazdája és a Ambari rendszergazdája is rendelkezik ezzel az engedéllyel.
+* **AMBARI. \_egyéni \_ parancs futtatása**. A Ambari rendszergazdai szerepkör alapértelmezés szerint rendelkezik ezzel az engedéllyel.
+* **Fürt. \_egyéni \_ parancs futtatása**. Alapértelmezés szerint a HDInsight-fürt rendszergazdája és a Ambari rendszergazdája is rendelkezik ezzel az engedéllyel.
 
 Az engedélyek tartományhoz csatlakoztatott HDInsight való használatáról további információért lásd: [HDInsight-fürtök kezelése Enterprise Security Packagesal](./domain-joined/apache-domain-joined-manage.md).
 
@@ -133,7 +133,7 @@ A parancsfájl műveleti parancsfájljai a következő segédprogramok használa
 
 A HDInsight parancsfájlokat biztosít a következő összetevők telepítéséhez a HDInsight-fürtökön:
 
-| Name (Név) | Script |
+| Név | Script |
 | --- | --- |
 | Azure Storage-fiók hozzáadása |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. Lásd: [további Storage-fiókok hozzáadása a HDInsight](hdinsight-hadoop-add-storage.md). |
 | A Hue telepítése |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Lásd: [a Hue telepítése és használata a HDInsight Hadoop-fürtökön](hdinsight-hadoop-hue-linux.md). |
@@ -145,7 +145,7 @@ Ez a szakasz ismerteti a HDInsight-fürtök létrehozásakor használható paran
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-azure-portal"></a>Parancsfájl-művelet használata a fürt létrehozása során a Azure Portal
 
-1. Hozzon létre egy fürtöt a HDInsight-ben [a Linux-alapú fürtök létrehozása](hdinsight-hadoop-create-linux-clusters-portal.md)című témakörben leírtak szerint a Azure Portal használatával. A **konfiguráció + díjszabás** lapon válassza a **+ parancsfájl hozzáadása műveletet** .
+1. Hozzon létre egy fürtöt a HDInsight-ben [a Linux-alapú fürtök létrehozása](hdinsight-hadoop-create-linux-clusters-portal.md)című témakörben leírtak szerint a Azure Portal használatával. A **konfiguráció + díjszabás** lapon válassza a **+ parancsfájl hozzáadása műveletet**.
 
     ![Azure Portal-fürt parancsfájljának művelete](./media/hdinsight-hadoop-customize-cluster-linux/azure-portal-cluster-configuration-scriptaction.png)
 
@@ -158,9 +158,9 @@ Ez a szakasz ismerteti a HDInsight-fürtök létrehozásakor használható paran
     | Tulajdonság | Érték |
     | --- | --- |
     | Parancsfájl kiválasztása | Saját parancsfájl használatához válassza az __Egyéni__ lehetőséget. Ellenkező esetben válassza ki a megadott parancsfájlok egyikét. |
-    | Name (Név) |Adja meg a parancsfájl művelet nevét. |
+    | Név |Adja meg a parancsfájl művelet nevét. |
     | Bash-parancsfájl URI-ja |Adja meg a parancsfájl URI-JÁT. |
-    | Head/Worker/ZooKeeper |Adja meg azokat a csomópontokat, amelyeken a parancsfájl fut: **Head** , **Worker** vagy **ZooKeeper** . |
+    | Head/Worker/ZooKeeper |Adja meg azokat a csomópontokat, amelyeken a parancsfájl fut: **Head**, **Worker** vagy **ZooKeeper**. |
     | Paraméterek |Adja meg a paramétereket, ha azt a parancsfájl megköveteli. |
 
     A parancsfájl megtartása __művelet__ bejegyzésével győződjön meg arról, hogy a parancsfájlt a rendszer a skálázási műveletek során alkalmazza.
@@ -232,9 +232,9 @@ Ez a szakasz azt ismerteti, hogyan alkalmazhat parancsfájl-műveleteket egy fut
     | Tulajdonság | Érték |
     | --- | --- |
     | Parancsfájl kiválasztása | Saját parancsfájl használatához válassza az __Egyéni__ lehetőséget. Ellenkező esetben válasszon egy megadott parancsfájlt. |
-    | Name (Név) |Adja meg a parancsfájl művelet nevét. |
+    | Név |Adja meg a parancsfájl művelet nevét. |
     | Bash-parancsfájl URI-ja |Adja meg a parancsfájl URI-JÁT. |
-    | Head/Worker/Zookeeper |Adja meg azokat a csomópontokat, amelyeken a parancsfájl fut: **Head** , **Worker** vagy **ZooKeeper** . |
+    | Head/Worker/Zookeeper |Adja meg azokat a csomópontokat, amelyeken a parancsfájl fut: **Head**, **Worker** vagy **ZooKeeper**. |
     | Paraméterek |Adja meg a paramétereket, ha azt a parancsfájl megköveteli. |
 
     A parancsfájl megtartása __művelettel__ ellenőrizze, hogy a parancsfájlt a rendszer a skálázási műveletek során alkalmazza-e.
@@ -337,7 +337,7 @@ Ha például a .NET SDK-t használja a parancsfájlok egy fürtből való lekér
 > [!NOTE]  
 > Ez a példa azt is bemutatja, hogyan telepíthet egy HDInsight alkalmazást a .NET SDK használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Parancsfájl-műveleti parancsfájlok fejlesztése a HDInsight](hdinsight-hadoop-script-actions-linux.md)
 * [További tárterület hozzáadása egy HDInsight-fürthöz](hdinsight-hadoop-add-storage.md)

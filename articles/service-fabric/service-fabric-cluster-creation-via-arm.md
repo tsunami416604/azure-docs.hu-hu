@@ -4,11 +4,11 @@ description: Ismerje meg, hogyan állíthat be biztonságos Service Fabric-fürt
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.openlocfilehash: fd2c472d24f305e42f1706e5fc49168ccde2a580
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258758"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008667"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Service Fabric-fürt létrehozása Azure Resource Manager használatával 
 > [!div class="op_single_selector"]
@@ -60,7 +60,7 @@ A következő paranccsal gyorsan hozhat létre fürtöt a minimális paramétere
 
 A használt sablon elérhető az [Azure Service Fabric sablonban minták: Windows-sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) és Ubuntu- [sablon](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure)
 
-A következő parancs Windows-vagy Linux-fürtöket is létrehozhat, ennek megfelelően meg kell adnia az operációs rendszert. A PowerShell/CLI-parancsok a megadott *CertificateOutputFolder*is kimutatják a tanúsítványt. Azonban győződjön meg arról, hogy a tanúsítvány mappája már létre van hozva. A parancs más paramétereket is igénybe vesz, például a VM SKU-t.
+A következő parancs Windows-vagy Linux-fürtöket is létrehozhat, ennek megfelelően meg kell adnia az operációs rendszert. A PowerShell/CLI-parancsok a megadott *CertificateOutputFolder* is kimutatják a tanúsítványt. Azonban győződjön meg arról, hogy a tanúsítvány mappája már létre van hozva. A parancs más paramétereket is igénybe vesz, például a VM SKU-t.
 
 > [!NOTE]
 > A következő PowerShell-parancs csak a Azure PowerShell `Az` modullal működik. Azure Resource Manager PowerShell-verzió aktuális verziójának vizsgálatához futtassa a következő PowerShell-parancsot: "Get-Module az". A Azure Resource Manager PowerShell verziójának frissítéséhez kövesse [ezt a hivatkozást](/powershell/azure/install-Az-ps) . 

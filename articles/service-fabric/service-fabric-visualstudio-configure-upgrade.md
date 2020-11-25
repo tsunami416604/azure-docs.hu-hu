@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: mikhegn
 ms.openlocfilehash: 1db6cea0af229664b07e88463e279b2a64d7e267
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86256050"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008514"
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>Service Fabric alkalmazás frissítésének konfigurálása a Visual Studióban
 Az Azure-hoz készült Visual Studio Tools Service Fabric biztosítanak a helyi vagy távoli fürtökre való közzétételhez szükséges frissítési támogatást. Az alkalmazásnak a tesztelés és a hibakeresés során való lecserélése helyett három forgatókönyvvel kell frissítenie az alkalmazást egy újabb verzióra:
@@ -22,7 +22,7 @@ Az Azure-hoz készült Visual Studio Tools Service Fabric biztosítanak a helyi 
 ## <a name="parameters-needed-to-upgrade"></a>A frissítéshez szükséges paraméterek
 Két telepítési típus közül választhat: normál vagy frissítés. A normál telepítés törli az összes korábbi központi telepítési információt és adatot a fürtön, míg a frissítési központi telepítés megőrzi azt. Amikor egy Service Fabric alkalmazást frissít a Visual Studióban, meg kell adnia az alkalmazás frissítési paramétereit és az állapot-ellenőrzési házirendeket. Az alkalmazás-frissítési paraméterek segítenek a frissítés szabályozásában, míg az állapot-ellenőrzési házirendek határozzák meg, hogy a frissítés sikeres volt-e. További részletekért tekintse meg [Service Fabric alkalmazás frissítése: frissítési paraméterek](service-fabric-application-upgrade-parameters.md) című témakört.
 
-Három frissítési mód van: *figyelt*, *UnmonitoredAuto*és *UnmonitoredManual*.
+Három frissítési mód van: *figyelt*, *UnmonitoredAuto* és *UnmonitoredManual*.
 
 * A figyelt frissítés automatizálja a frissítés és az alkalmazás állapotának ellenőrzését.
 * Egy UnmonitoredAuto-frissítés automatizálja a frissítést, de kihagyja az alkalmazás állapotának ellenőrzését.

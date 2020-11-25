@@ -11,11 +11,11 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
 ms.openlocfilehash: 3dc6fb64f6e8695d84e292322293998e2f4cb0a3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324781"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009228"
 ---
 # <a name="set-up-a-common-identity-on-a-data-science-virtual-machine"></a>Közös identitás beállítása Data Science Virtual Machine
 
@@ -37,7 +37,7 @@ Az Azure AD DS segítségével egyszerűen kezelheti az identitásait egy teljes
 
    1. Jelentkezzen be a [Azure Active Directory felügyeleti központba](https://aad.portal.azure.com) egy olyan fiókkal, amely a címtár globális rendszergazdája.
     
-   1. Válassza az **Azure Active Directory** , majd a **Felhasználók és csoportok** elemet.
+   1. Válassza az **Azure Active Directory**, majd a **Felhasználók és csoportok** elemet.
     
    1. A **felhasználók és csoportok** területen válassza a **minden felhasználó** lehetőséget, majd válassza az **új felhasználó** lehetőséget.
    
@@ -45,11 +45,11 @@ Az Azure AD DS segítségével egyszerűen kezelheti az identitásait egy teljes
       
         ![A "felhasználó" panel](./media/add-user.png)
     
-   1. Adja meg a felhasználó adatait (például **Név** és **Felhasználónév** ). A Felhasználónév tartománynév részének a kezdeti alapértelmezett tartománynévnek ([tartománynév]. onmicrosoft. com) vagy egy ellenőrzött, nem összevont [Egyéni tartománynévnek](../../active-directory/fundamentals/add-custom-domain.md) (például "contoso.com") kell lennie.
+   1. Adja meg a felhasználó adatait (például **Név** és **Felhasználónév**). A Felhasználónév tartománynév részének a kezdeti alapértelmezett tartománynévnek ([tartománynév]. onmicrosoft. com) vagy egy ellenőrzött, nem összevont [Egyéni tartománynévnek](../../active-directory/fundamentals/add-custom-domain.md) (például "contoso.com") kell lennie.
     
    1. Másolja a vágólapra vagy egyéb módon jegyezze fel a létrehozott jelszót, hogy megadhassa azt a felhasználónak a folyamat befejezése után.
     
-   1. Az adatokat a felhasználóhoz tartozó **Profil** , **Csoportok** , vagy **Címtárbeli szerepkör** területeken is megadhatja. 
+   1. Az adatokat a felhasználóhoz tartozó **Profil**, **Csoportok**, vagy **Címtárbeli szerepkör** területeken is megadhatja. 
     
    1. A **felhasználó** területen válassza a **Létrehozás** elemet.
     
@@ -76,6 +76,6 @@ Most már rendelkezik az Azure-ban üzemeltetett Active Directory-példány felh
 
 Az automatikus skálázáshoz a virtuálisgép-méretezési csoport használatával létrehozhat olyan virtuális gépek készletét, amelyek mind a tartományhoz, mind a megosztott lemezhez csatlakoznak. A felhasználók bejelentkezhetnek bármely elérhető gépre a virtuálisgép-méretezési csoportba, és hozzáférhetnek a megosztott lemezhez, amelyen a jegyzetfüzetek el vannak mentve. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Hitelesítő adatok biztonságos tárolása a felhőalapú erőforrások eléréséhez](dsvm-secure-access-keys.md)

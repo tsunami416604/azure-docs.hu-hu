@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 01/21/2020
 ms.author: rohogue
 ms.openlocfilehash: d87f57873a4bb84b20df3da3880017d9ef2484a5
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342110"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008412"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Felkészülés az Avere vFXT létrehozására
 
@@ -100,10 +100,10 @@ Hozza létre a Storage szolgáltatás végpontját a Azure Portalból.
 1. Kattintson felül a **Hozzáadás** gombra.
 1. Válassza ki a szolgáltatást ``Microsoft.Storage`` .
 1. Válassza ki a fürt alhálózatát.
-1. A lap alján kattintson a **Hozzáadás**gombra.
+1. A lap alján kattintson a **Hozzáadás** gombra.
 
    ![Azure Portal képernyőkép a szolgáltatás végpontjának létrehozási lépéseivel kapcsolatos megjegyzésekkel](media/avere-vfxt-service-endpoint.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az előfeltételek teljesítése után létrehozhatja a fürtöt. Útmutatásért olvassa el [a vFXT-fürt üzembe helyezése](avere-vfxt-deploy.md) című témakört.

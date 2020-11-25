@@ -4,11 +4,11 @@ description: Ez a cikk a Service Fabric-alkalmazások frissítésével és megol
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: d462f2c2482e0fbb4d252967754a9675ed362674
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75377922"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009347"
 ---
 # <a name="troubleshoot-application-upgrades"></a>Alkalmazásfrissítések hibaelhárítása
 
@@ -26,7 +26,7 @@ Ezek az információk akkor érhetők el, ha a Service Fabric észleli a hibát,
 
 ### <a name="identify-the-failure-type"></a>A hiba típusának azonosítása
 
-A **Get-ServiceFabricApplicationUpgrade**kimenetében a **FailureTimestampUtc** azonosítja azt az időbélyeget (UTC), amelyen a Service Fabric és a **FailureAction** a frissítési hibát észlelte. A **FailureReason** a hiba három lehetséges magas szintű okának egyikét azonosítja:
+A **Get-ServiceFabricApplicationUpgrade** kimenetében a **FailureTimestampUtc** azonosítja azt az időbélyeget (UTC), amelyen a Service Fabric és a **FailureAction** a frissítési hibát észlelte. A **FailureReason** a hiba három lehetséges magas szintű okának egyikét azonosítja:
 
 1. UpgradeDomainTimeout – azt jelzi, hogy egy adott frissítési tartomány túl sokáig tartott a befejezéshez és a **UpgradeDomainTimeout** lejárt.
 2. OverallUpgradeTimeout – azt jelzi, hogy a teljes frissítés túl sokáig tartott, és a **UpgradeTimeout** lejárt.
@@ -76,11 +76,11 @@ UpgradeReplicaSetCheckTimeout  : 00:00:00
 
 Ebben a példában a frissítés nem sikerült a frissítési tartomány *MYUD1* , és a két partíció (*744c8d9f-1d26-417e-a60e-cd48f5c098f0* és *4b43f4d8-b26b-424e-9307-7a7a62e79750*) beragadt. A partíciók elakadtak, mert a futtatókörnyezet nem tudta elsődleges replikákat (*WaitForPrimaryPlacement*) elhelyezni a *Csomópont1* és a *csomópont4*.
 
-A **Get-ServiceFabricNode** parancs használatával ellenőrizheti, hogy ez a két csomópont a frissítési tartomány *MYUD1*van-e. A *UpgradePhase* mondja a *PostUpgradeSafetyCheck*, ami azt jelenti, hogy ezek a biztonsági ellenőrzések a frissítési tartomány összes csomópontjának verziófrissítése után történnek. Az összes információ az alkalmazás kódjának új verziójával kapcsolatos lehetséges problémára mutat. A leggyakoribb problémák a megnyitási vagy előléptetési szolgáltatás hibái az elsődleges kód elérési útjain.
+A **Get-ServiceFabricNode** parancs használatával ellenőrizheti, hogy ez a két csomópont a frissítési tartomány *MYUD1* van-e. A *UpgradePhase* mondja a *PostUpgradeSafetyCheck*, ami azt jelenti, hogy ezek a biztonsági ellenőrzések a frissítési tartomány összes csomópontjának verziófrissítése után történnek. Az összes információ az alkalmazás kódjának új verziójával kapcsolatos lehetséges problémára mutat. A leggyakoribb problémák a megnyitási vagy előléptetési szolgáltatás hibái az elsődleges kód elérési útjain.
 
 A *PreUpgradeSafetyCheck* *UpgradePhase* azt jelenti, hogy problémák léptek fel a frissítési tartomány előkészítése előtt. Ebben az esetben a leggyakoribb probléma az elsődleges kód elérési útjaiból való Bezárás vagy lefokozás során felmerülő szolgáltatási hibák.
 
-Az aktuális **UpgradeState** *RollingBackCompleted*, ezért az eredeti frissítést egy visszaállítási **FailureAction**kell végrehajtani, amely a hiba miatt automatikusan visszaállítja a frissítést. Ha az eredeti frissítést manuális **FailureAction**hajtották végre, a frissítés Ehelyett felfüggesztett állapotba kerül, hogy lehetővé tegye az alkalmazás élő hibakeresését.
+Az aktuális **UpgradeState** *RollingBackCompleted*, ezért az eredeti frissítést egy visszaállítási **FailureAction** kell végrehajtani, amely a hiba miatt automatikusan visszaállítja a frissítést. Ha az eredeti frissítést manuális **FailureAction** hajtották végre, a frissítés Ehelyett felfüggesztett állapotba kerül, hogy lehetővé tegye az alkalmazás élő hibakeresését.
 
 Ritka esetekben előfordulhat, hogy a **UpgradeDomainProgressAtFailure** mező üres, ha a teljes frissítés időtúllépést okoz, ha a rendszer az aktuális frissítési tartomány összes munkafolyamatát befejezi. Ha ez történik, próbálja meg növelni a **UpgradeTimeout** és a **UpgradeDomainTimeout** frissítési paramétereinek értékét, majd próbálja megismételni a frissítést.
 
@@ -148,7 +148,7 @@ A frissítés a frissítés megkezdése után a **FailureAction** manuális mega
 
 ### <a name="recover-from-a-suspended-upgrade"></a>Helyreállítás felfüggesztett frissítésből
 
-Visszaállítási **FailureAction**esetén nincs szükség helyreállításra, mert a frissítés automatikusan Visszagörgeti a hibát. A manuális **FailureAction**számos helyreállítási lehetőség közül választhat:
+Visszaállítási **FailureAction** esetén nincs szükség helyreállításra, mert a frissítés automatikusan Visszagörgeti a hibát. A manuális **FailureAction** számos helyreállítási lehetőség közül választhat:
 
 1.  visszaállítás indítása
 2. A frissítés hátralévő részének áthaladása manuálisan
@@ -156,7 +156,7 @@ Visszaállítási **FailureAction**esetén nincs szükség helyreállításra, m
 
 A **Start-ServiceFabricApplicationRollback** parancs bármikor használható az alkalmazás visszagörgetésének megkezdéséhez. A parancs sikeres visszaküldése után a visszaállítási kérelem regisztrálva van a rendszeren, és hamarosan elindul.
 
-A **resume-ServiceFabricApplicationUpgrade** parancs használatával folytathatja a frissítés fennmaradó részét manuálisan, egyszerre egy frissítési tartományt. Ebben a módban csak a biztonsági ellenőrzéseket hajtja végre a rendszer. Nem végeznek további állapot-ellenőrzést. Ez a parancs csak akkor használható, ha a *UpgradeState* a *RollingForwardPending*mutatja, ami azt jelenti, hogy az aktuális frissítési tartomány befejezte a frissítést, de a következő egy nem indult el (függőben).
+A **resume-ServiceFabricApplicationUpgrade** parancs használatával folytathatja a frissítés fennmaradó részét manuálisan, egyszerre egy frissítési tartományt. Ebben a módban csak a biztonsági ellenőrzéseket hajtja végre a rendszer. Nem végeznek további állapot-ellenőrzést. Ez a parancs csak akkor használható, ha a *UpgradeState* a *RollingForwardPending* mutatja, ami azt jelenti, hogy az aktuális frissítési tartomány befejezte a frissítést, de a következő egy nem indult el (függőben).
 
 Az **Update-ServiceFabricApplicationUpgrade** parancs használatával folytathatja a figyelt frissítést a biztonsági és állapot-ellenőrzésekkel.
 
@@ -200,11 +200,11 @@ A frissítés során azonban a D állapota Kifogástalan lehet, amíg a C nem me
 
 ### <a name="i-did-not-specify-a-health-policy-for-application-upgrade-but-the-upgrade-still-fails-for-some-time-outs-that-i-never-specified"></a>Nem határoztam meg az alkalmazás frissítésére vonatkozó állapotfigyelő szabályzatot, de a frissítés továbbra is meghiúsul egy olyan időtúllépés miatt, amely soha nem volt megadva
 
-Ha a frissítési kérelem nem ad meg állapot-szabályzatokat, azok az alkalmazás aktuális verziójának *ApplicationManifest.xml* származnak. Ha például az X alkalmazást az 1,0-es verzióról az 2,0-es verzióra frissíti, a rendszer az 1,0-as verzióban megadott Application Health-szabályzatokat használja. Ha a frissítéshez másik állapotházirend használata szükséges, akkor a szabályzatot az alkalmazás-frissítési API-hívás részeként kell megadni. Az API-hívás részeként megadott szabályzatok csak a frissítés során érvényesek. A frissítés befejezése után a rendszer a *ApplicationManifest.xmlban * megadott házirendeket használja.
+Ha a frissítési kérelem nem ad meg állapot-szabályzatokat, azok az alkalmazás aktuális verziójának *ApplicationManifest.xml* származnak. Ha például az X alkalmazást az 1,0-es verzióról az 2,0-es verzióra frissíti, a rendszer az 1,0-as verzióban megadott Application Health-szabályzatokat használja. Ha a frissítéshez másik állapotházirend használata szükséges, akkor a szabályzatot az alkalmazás-frissítési API-hívás részeként kell megadni. Az API-hívás részeként megadott szabályzatok csak a frissítés során érvényesek. A frissítés befejezése után a rendszer a *ApplicationManifest.xmlban* megadott házirendeket használja.
 
 ### <a name="incorrect-time-outs-are-specified"></a>Helytelen időtúllépés van megadva
 
-Lehet, hogy már megértette, mi történik, ha az időtúllépés beállítása inkonzisztens. Előfordulhat például, hogy egy *UpgradeTimeout* kisebb, mint a *UpgradeDomainTimeout*. A válasz az, hogy a rendszer hibaüzenetet ad vissza. A rendszer hibákat ad vissza, ha a *UpgradeDomainTimeout* kisebb, mint a *HealthCheckWaitDuration* és a *HealthCheckRetryTimeout*összege, vagy ha a *UpgradeDomainTimeout* értéke kisebb, mint a *HealthCheckWaitDuration* és a *HealthCheckStableDuration*összege.
+Lehet, hogy már megértette, mi történik, ha az időtúllépés beállítása inkonzisztens. Előfordulhat például, hogy egy *UpgradeTimeout* kisebb, mint a *UpgradeDomainTimeout*. A válasz az, hogy a rendszer hibaüzenetet ad vissza. A rendszer hibákat ad vissza, ha a *UpgradeDomainTimeout* kisebb, mint a *HealthCheckWaitDuration* és a *HealthCheckRetryTimeout* összege, vagy ha a *UpgradeDomainTimeout* értéke kisebb, mint a *HealthCheckWaitDuration* és a *HealthCheckStableDuration* összege.
 
 ### <a name="my-upgrades-are-taking-too-long"></a>A frissítések túl sokáig tartanak
 
@@ -216,7 +216,7 @@ A frissítési tartomány frissítései nem hajthatók végre gyorsabban, mint a
 
 A frissítési hiba nem fordulhat elő gyorsabban, mint a *HealthCheckWaitDuration*  +  *HealthCheckRetryTimeout*.
 
-A frissítési tartomány frissítési idejét a *UpgradeDomainTimeout*korlátozza.  Ha a *HealthCheckRetryTimeout* és a *HealthCheckStableDuration* értéke nem nulla, és az alkalmazás állapota továbbra is folyamatosra vált, a frissítés végül a *UpgradeDomainTimeout*-on történik. A *UpgradeDomainTimeout* megkezdi az aktuális frissítési tartomány verziófrissítésének megkezdését.
+A frissítési tartomány frissítési idejét a *UpgradeDomainTimeout* korlátozza.  Ha a *HealthCheckRetryTimeout* és a *HealthCheckStableDuration* értéke nem nulla, és az alkalmazás állapota továbbra is folyamatosra vált, a frissítés végül a *UpgradeDomainTimeout*-on történik. A *UpgradeDomainTimeout* megkezdi az aktuális frissítési tartomány verziófrissítésének megkezdését.
 
 ## <a name="next-steps"></a>További lépések
 

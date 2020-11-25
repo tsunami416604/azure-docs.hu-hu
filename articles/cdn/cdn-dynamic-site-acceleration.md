@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: allensu
 ms.openlocfilehash: 5387fdc224cd77ee5273767df5033a51dc27608c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778863"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008361"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Dinamikus hely gyorsítás Azure CDNon keresztül
 
@@ -175,7 +175,7 @@ A szabályok motor elérése:
 
     Megnyílik a CDN felügyeleti portál.
 
-2. A CDN felügyeleti portálján válassza az **ADN** , majd a **szabályok motor** elemet. 
+2. A CDN felügyeleti portálján válassza az **ADN**, majd a **szabályok motor** elemet. 
 
     ![A DSA szabályainak motorja](./media/cdn-dynamic-site-acceleration/cdn-dsa-rules-engine.png)
 

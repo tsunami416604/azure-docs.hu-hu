@@ -8,11 +8,11 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: b80f27e490dd3b1890eab7740fb4650ba4280abb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88207795"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008990"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Egyéni metrikák gyűjtése Linux rendszerű virtuális gépekhez a InfluxData-ben-Graf ügynökkel
 
@@ -34,17 +34,17 @@ Ebben az oktatóanyagban egy Linux rendszerű virtuális gépet telepítünk, am
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 > [!NOTE]  
-> Ha a klasszikus riasztási szabályokat szeretné áttelepíteni, és egy meglévő linuxos virtuális gépet szeretne használni, győződjön **meg**arról, hogy a virtuális gép rendszerhez rendelt identitása be van állítva.
+> Ha a klasszikus riasztási szabályokat szeretné áttelepíteni, és egy meglévő linuxos virtuális gépet szeretne használni, győződjön **meg** arról, hogy a virtuális gép rendszerhez rendelt identitása be van állítva.
 
 Új linuxos virtuális gép létrehozása: 
 
 1. Válassza az **erőforrás létrehozása** lehetőséget a bal oldali navigációs ablaktáblán. 
 1. Keresse meg a **virtuális gépet**.  
-1. Válassza az **Ubuntu 16,04 LTS** elemet, és válassza a **Létrehozás**lehetőséget. 
+1. Válassza az **Ubuntu 16,04 LTS** elemet, és válassza a **Létrehozás** lehetőséget. 
 1. Adja meg a virtuális gép nevét, például **MyTelegrafVM**.  
 1. Hagyja meg a lemez típusát **SSD**-ként. Ezután adjon meg egy **felhasználónevet**, például: **azureuser**. 
-1. A **Hitelesítés típusa**mezőben válassza a **jelszó**lehetőséget. Ezután adjon meg egy jelszót, amelyet később az SSH-ba fog használni a virtuális gépen. 
-1. **Új erőforráscsoport létrehozásához**válassza az elemet. Ezután adjon meg egy nevet, például **myResourceGroup**. Válassza ki a **helyet**. Ezután válassza az **OK** gombot. 
+1. A **Hitelesítés típusa** mezőben válassza a **jelszó** lehetőséget. Ezután adjon meg egy jelszót, amelyet később az SSH-ba fog használni a virtuális gépen. 
+1. **Új erőforráscsoport létrehozásához** válassza az elemet. Ezután adjon meg egy nevet, például **myResourceGroup**. Válassza ki a **helyet**. Ez után válassza az **OK** gombot. 
 
     ![Ubuntu rendszerű virtuális gép létrehozása](./media/collect-custom-metrics-linux-telegraf/create-vm.png)
 
@@ -52,13 +52,13 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
     ![Virtuálisgép-méret távíró-ügynök áttekintése](./media/collect-custom-metrics-linux-telegraf/vm-size.png)
 
-1. A **Settings** **hálózati**  >  **hálózati biztonsági csoport**beállítások lapján  >  **válassza a nyilvános bejövő portok lehetőséget**, majd válassza a **http** és az **SSH (22)** lehetőséget. Tartsa meg az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK** gombra. 
+1. A **Settings** **hálózati**  >  **hálózati biztonsági csoport** beállítások lapján  >  **válassza a nyilvános bejövő portok lehetőséget**, majd válassza a **http** és az **SSH (22)** lehetőséget. Tartsa meg az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK** gombra. 
 
 1. Az Összefoglalás lapon válassza a **Létrehozás** lehetőséget a virtuális gép üzembe helyezésének megkezdéséhez. 
 
 1. A virtuális gép rögzítve lesz az Azure Portal irányítópultján. Az üzembe helyezés befejeződése után a virtuális gép összegzése automatikusan megnyílik. 
 
-1. A virtuális gép ablaktáblán navigáljon az **Identity (identitás** ) lapra. Győződjön **meg**arról, hogy a virtuális gépnek van-e beállítva a rendszerhez rendelt identitás. 
+1. A virtuális gép ablaktáblán navigáljon az **Identity (identitás** ) lapra. Győződjön **meg** arról, hogy a virtuális gépnek van-e beállítva a rendszerhez rendelt identitás. 
  
     ![A Graf VM-identitás előzetes verziója](./media/collect-custom-metrics-linux-telegraf/connect-to-VM.png)
  
@@ -68,7 +68,7 @@ Hozzon léte egy SSH-kapcsolatot a virtuális géppel. A virtuális gép átteki
 
 ![A Grafi virtuális gépek áttekintése oldal](./media/collect-custom-metrics-linux-telegraf/connect-VM-button2.png)
 
-A **Csatlakozás virtuális géphez** oldalon tartsa meg az alapértelmezett beállításokat a DNS-név alapján a 22-es porton keresztül való csatlakozáshoz. A **Bejelentkezés a virtuális gép helyi fiókjával**beállításnál megjelenik egy kapcsolási parancs. A parancs másolásához kattintson a gombra. Az SSH-kapcsolat parancsa az alábbi példához hasonlóan néz ki: 
+A **Csatlakozás virtuális géphez** oldalon tartsa meg az alapértelmezett beállításokat a DNS-név alapján a 22-es porton keresztül való csatlakozáshoz. A **Bejelentkezés a virtuális gép helyi fiókjával** beállításnál megjelenik egy kapcsolási parancs. A parancs másolásához kattintson a gombra. Az SSH-kapcsolat parancsa az alábbi példához hasonlóan néz ki: 
 
 ```cmd
 ssh azureuser@XXXX.XX.XXX 
@@ -113,7 +113,7 @@ Az ügynök mostantól összegyűjti a megadott bemeneti beépülő modulok metr
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com). 
 
-1. Navigáljon az új **figyelő** lapra. Ezután válassza a **metrikák**lehetőséget.  
+1. Navigáljon az új **figyelő** lapra. Ezután válassza a **metrikák** lehetőséget.  
 
      ![Figyelő-metrikák (előzetes verzió)](./media/collect-custom-metrics-linux-telegraf/metrics.png)
 
@@ -133,7 +133,7 @@ Emellett ebben az útmutatóban a (z)-ben a (z)-ben a (z)-ben a (z)-ügynök üz
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
 
-Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást. Ehhez válassza ki a virtuális géphez tartozó erőforráscsoportot, és válassza a **Törlés**lehetőséget. Ezután erősítse meg a törölni kívánt erőforráscsoport nevét. 
+Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást. Ehhez válassza ki a virtuális géphez tartozó erőforráscsoportot, és válassza a **Törlés** lehetőséget. Ezután erősítse meg a törölni kívánt erőforráscsoport nevét. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További információ az [Egyéni metrikákkal](metrics-custom-overview.md)kapcsolatban.

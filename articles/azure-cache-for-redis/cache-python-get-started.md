@@ -12,11 +12,11 @@ ms.custom:
 - devx-track-python
 ms.date: 11/05/2019
 ms.openlocfilehash: 79add54478e9cd52ffd3041d5f85bf588929b44f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099436"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008871"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-python"></a>Gyors útmutató: az Azure cache használata a Redis a Pythonban
 
@@ -34,7 +34,7 @@ Ebben a cikkben egy Python-alkalmazásba foglalja bele az Azure cache-t a Redis-
 
 ## <a name="install-redis-py"></a>A redis-py telepítése
 
-A [Redis-](https://github.com/andymccurdy/redis-py) a Redis egy Python-felület az Azure cache-hez. A *Redis-* a Python-csomagok eszközzel telepítheti a *pip* -et a parancssorból. 
+A [Redis-](https://github.com/andymccurdy/redis-py) a Redis egy Python-felület az Azure cache-hez. A *Redis-* a Python-csomagok eszközzel telepítheti a *pip*-et a parancssorból. 
 
 A következő példa a Python 3 *pip3* használta a *Redis-* a Windows 10-es verzióra való telepítéséhez a rendszergazdai parancssorból.
 
@@ -42,7 +42,7 @@ A következő példa a Python 3 *pip3* használta a *Redis-* a Windows 10-es ver
 
 ## <a name="read-and-write-to-the-cache"></a>Olvasás és írás a gyorsítótárban
 
-Futtassa a Pythont a parancssorból, és tesztelje a gyorsítótárat a következő kód használatával. Cserélje `<Your Host Name>` le `<Your Access Key>` a és a értéket a Redis-példányhoz tartozó Azure-gyorsítótár értékeire. Az állomásnév a Form *\<DNS name> . Redis.cache.Windows.net* .
+Futtassa a Pythont a parancssorból, és tesztelje a gyorsítótárat a következő kód használatával. Cserélje `<Your Host Name>` le `<Your Access Key>` a és a értéket a Redis-példányhoz tartozó Azure-gyorsítótár értékeire. Az állomásnév a Form *\<DNS name> . Redis.cache.Windows.net*.
 
 ```python
 >>> import redis
@@ -59,7 +59,7 @@ b'bar'
 
 ## <a name="create-a-python-sample-app"></a>Python-minta alkalmazás létrehozása
 
-Hozzon létre egy új szövegfájlt, adja hozzá a következő parancsfájlt, és mentse a fájlt *PythonApplication1.py* . Cserélje `<Your Host Name>` le `<Your Access Key>` a és a értéket a Redis-példányhoz tartozó Azure-gyorsítótár értékeire. Az állomásnév a Form *\<DNS name> . Redis.cache.Windows.net* .
+Hozzon létre egy új szövegfájlt, adja hozzá a következő parancsfájlt, és mentse a fájlt *PythonApplication1.py*. Cserélje `<Your Host Name>` le `<Your Access Key>` a és a értéket a Redis-példányhoz tartozó Azure-gyorsítótár értékeire. Az állomásnév a Form *\<DNS name> . Redis.cache.Windows.net*.
 
 ```python
 import redis
@@ -89,7 +89,7 @@ for c in result:
 
 ![Python-szkript futtatása a gyorsítótár-hozzáférés teszteléséhez](./media/cache-python-get-started/cache-python-completed.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha befejezte az Azure-erőforráscsoportot és az ebben a rövid útmutatóban létrehozott erőforrásokat, törölheti őket a díjak elkerülése érdekében.
 
@@ -105,7 +105,7 @@ Az erőforráscsoport és az Azure-példány Redis Cacheának törlése:
    
    ![Az Azure cache Redis tartozó erőforráscsoport törlése](./media/cache-python-get-started/delete-your-resource-group-for-azure-cache-for-redis.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Hozzon létre egy egyszerű ASP.NET-webalkalmazást, amely egy Azure cache-t használ a Redis.](./cache-web-app-howto.md)

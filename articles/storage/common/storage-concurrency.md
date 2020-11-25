@@ -12,11 +12,11 @@ ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
 ms.openlocfilehash: b83a8bfbc79af344c4d158ee65134034db714e9c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783963"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008905"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Egyidejűség kezelése a Microsoft Azure Storage szolgáltatásban
 
@@ -85,7 +85,7 @@ catch (StorageException ex)
 }
 ```
 
-Az Azure Storage Emellett támogatja a feltételes fejléceket is, például **Ha a-Modified-Since** , **IF-remodified-since** , **If-None-Match** és a fejlécek kombinációit. További információ: [feltételes fejlécek megadása a blob Service-műveletekhez](/rest/api/storageservices/Specifying-Conditional-Headers-for-Blob-Service-Operations).
+Az Azure Storage Emellett támogatja a feltételes fejléceket is, például **Ha a-Modified-Since**, **IF-remodified-since**, **If-None-Match** és a fejlécek kombinációit. További információ: [feltételes fejlécek megadása a blob Service-műveletekhez](/rest/api/storageservices/Specifying-Conditional-Headers-for-Blob-Service-Operations).
 
 A következő táblázat összefoglalja azokat a tároló-műveleteket, amelyek elfogadják a feltételes fejléceket, például ha a kérésben **egyeznek** , és amelyek ETAG értéket adnak vissza a válaszban.
 
@@ -94,11 +94,11 @@ A következő táblázat összefoglalja azokat a tároló-műveleteket, amelyek 
 | Tároló létrehozása |Igen |Nem |
 | Tároló tulajdonságainak beolvasása |Igen |Nem |
 | Tároló metaadatainak beolvasása |Igen |Nem |
-| Tároló metaadatainak beállítása |Igen |Igen |
+| Tároló metaadatainak beállítása |Igen |Yes |
 | Tároló ACL lekérése |Igen |Nem |
-| Tároló ACL beállítása |Igen |Igen (*) |
+| Tároló ACL beállítása |Yes |Igen (*) |
 | Tároló törlése |Nem |Igen |
-| Bérlet tárolója |Igen |Igen |
+| Bérlet tárolója |Igen |Yes |
 | Blobok listázása |Nem |Nem |
 
 (*) A SetContainerACL által meghatározott engedélyek gyorsítótárazva vannak, és az engedélyek frissítése 30 másodpercet vesz igénybe, hogy az adott időszak frissítései ne legyenek konzisztensek.
@@ -107,22 +107,22 @@ A következő táblázat összefoglalja azokat a blob-műveleteket, amelyek elfo
 
 | Művelet | ETag értéket ad vissza. | Feltételes fejlécek elfogadása |
 |:--- |:--- |:--- |
-| Put Blob |Igen |Igen |
-| BLOB beolvasása |Igen |Igen |
-| Get Blob Properties |Igen |Igen |
-| BLOB tulajdonságainak beállítása |Igen |Igen |
-| BLOB metaadatainak beolvasása |Igen |Igen |
-| BLOB metaadatainak beállítása |Igen |Igen |
-| Címbérleti blob (*) |Igen |Igen |
-| Snapshot Blob |Igen |Igen |
-| Copy Blob |Igen |Igen (a forrás és a cél blob esetében) |
+| Put Blob |Igen |Yes |
+| BLOB beolvasása |Igen |Yes |
+| Get Blob Properties |Igen |Yes |
+| BLOB tulajdonságainak beállítása |Igen |Yes |
+| BLOB metaadatainak beolvasása |Igen |Yes |
+| BLOB metaadatainak beállítása |Igen |Yes |
+| Címbérleti blob (*) |Igen |Yes |
+| Snapshot Blob |Igen |Yes |
+| Copy Blob |Yes |Igen (a forrás és a cél blob esetében) |
 | BLOB másolásának megszakítása |Nem |Nem |
 | Delete Blob |Nem |Igen |
 | Put blokk |Nem |Nem |
-| Tiltási lista |Igen |Igen |
+| Tiltási lista |Igen |Yes |
 | Tiltási lista lekérése |Igen |Nem |
-| Oldal elhelyezése |Igen |Igen |
-| Oldalak tartományának beolvasása |Igen |Igen |
+| Oldal elhelyezése |Igen |Yes |
+| Oldalak tartományának beolvasása |Igen |Yes |
 
 (*) A címbérleti blob nem változtatja meg a blob ETag.
 
@@ -130,7 +130,7 @@ A következő táblázat összefoglalja azokat a blob-műveleteket, amelyek elfo
 
 Egy blob kizárólagos használatra történő zárolásához szerezzen be [bérletet](/rest/api/storageservices/Lease-Blob) . Bérlet beolvasásakor meg kell adnia a bérlet időtartamát. Az időszak 15 – 60 másodperc vagy végtelen értékre, amely egy exkluzív zárolásra vonatkozik. Újítson meg egy véges bérletet a kibővítéséhez. Bérlet felszabadítása, ha elkészült. Blob Storage automatikusan felszabadítja a véges bérleteket, amikor lejárnak.
 
-A bérletek lehetővé teszik a különböző szinkronizálási stratégiák támogatását. A stratégiák közé tartoznak az *Exkluzív írási/közös olvasási* , *kizárólagos írási/kizárólagos olvasási* és *közös írási/kizárólagos olvasási* műveletek. Ha a bérlet létezik, az Azure Storage kizárólagos írási (Put, set és DELETE művelet) kikényszeríti a kizárólagosságot az olvasási műveletekhez, ezért a fejlesztőnek biztosítania kell, hogy minden ügyfélalkalmazás címbérlet-azonosítót használjon, és hogy egyszerre csak egy ügyfél érvényes címbérleti AZONOSÍTÓval rendelkezik. Azok az olvasási műveletek, amelyek nem tartalmazzák a címbérlet-azonosítót, megosztott olvasást eredményeznek.
+A bérletek lehetővé teszik a különböző szinkronizálási stratégiák támogatását. A stratégiák közé tartoznak az *Exkluzív írási/közös olvasási*, *kizárólagos írási/kizárólagos olvasási* és *közös írási/kizárólagos olvasási* műveletek. Ha a bérlet létezik, az Azure Storage kizárólagos írási (Put, set és DELETE művelet) kikényszeríti a kizárólagosságot az olvasási műveletekhez, ezért a fejlesztőnek biztosítania kell, hogy minden ügyfélalkalmazás címbérlet-azonosítót használjon, és hogy egyszerre csak egy ügyfél érvényes címbérleti AZONOSÍTÓval rendelkezik. Azok az olvasási műveletek, amelyek nem tartalmazzák a címbérlet-azonosítót, megosztott olvasást eredményeznek.
 
 A következő C#-kódrészlet egy példát mutat be arra, hogy egy blobon 30 másodpercig szerezzen be egy kizárólagos bérletet, frissíti a blob tartalmát, majd felszabadítsa a bérletet. Ha már létezik érvényes bérlet a blobon egy új bérlet beolvasásakor, a Blob service "HTTP (409) ütközés" állapotot ad vissza. Az alábbi kódrészlet egy **AccessCondition** objektumot használ a címbérleti információk beágyazására, amikor a a blobnak a Storage szolgáltatásban való frissítésére vonatkozó kérést küld.  A teljes minta innen tölthető le: az [Azure Storage használatával történő Egyidejűség kezelése](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
 
@@ -184,7 +184,7 @@ A következő blob-műveletek használhatnak címbérleteket a pesszimista Egyid
 
 ### <a name="pessimistic-concurrency-for-containers"></a>A tárolók pesszimista egyidejűsége
 
-A tárolók bérletei lehetővé teszik ugyanazokat a szinkronizálási stratégiákat, mint a Blobok ( *kizárólagos írási/megosztott olvasási* , *kizárólagos írási/kizárólagos olvasási* és *közös írási/kizárólagos olvasási* ), a Blobokkal ellentétben azonban a tárolási szolgáltatás csak a kizárólagosságot alkalmazza a törlési műveletekre. Egy aktív bérlettel rendelkező tároló törléséhez az ügyfélnek tartalmaznia kell az aktív címbérlet AZONOSÍTÓját a törlési kérelemmel. Az összes többi tároló-művelet sikeres egy bérelt tárolón anélkül, hogy a bérlet AZONOSÍTÓját, amely esetben megosztott műveleteket hajt végre. Ha a frissítés (Put vagy set) vagy az olvasási műveletek kizárólagossága szükséges, a fejlesztőknek biztosítaniuk kell, hogy az összes ügyfél címbérlet-azonosítót használjon, és hogy egyszerre csak egy ügyfél érvényes címbérleti AZONOSÍTÓval rendelkezik.
+A tárolók bérletei lehetővé teszik ugyanazokat a szinkronizálási stratégiákat, mint a Blobok (*kizárólagos írási/megosztott olvasási*, *kizárólagos írási/kizárólagos olvasási* és *közös írási/kizárólagos olvasási*), a Blobokkal ellentétben azonban a tárolási szolgáltatás csak a kizárólagosságot alkalmazza a törlési műveletekre. Egy aktív bérlettel rendelkező tároló törléséhez az ügyfélnek tartalmaznia kell az aktív címbérlet AZONOSÍTÓját a törlési kérelemmel. Az összes többi tároló-művelet sikeres egy bérelt tárolón anélkül, hogy a bérlet AZONOSÍTÓját, amely esetben megosztott műveleteket hajt végre. Ha a frissítés (Put vagy set) vagy az olvasási műveletek kizárólagossága szükséges, a fejlesztőknek biztosítaniuk kell, hogy az összes ügyfél címbérlet-azonosítót használjon, és hogy egyszerre csak egy ügyfél érvényes címbérleti AZONOSÍTÓval rendelkezik.
 
 A következő tároló-műveletek használhatnak címbérleteket a pesszimista Egyidejűség kezeléséhez:
 
@@ -247,8 +247,8 @@ Az alábbi táblázat összefoglalja, hogyan használják a tábla entitások a 
 |:--- |:--- |:--- |
 | Lekérdezési entitások |Igen |Nem |
 | Entitás beszúrása |Igen |Nem |
-| Entitás frissítése |Igen |Igen |
-| Entitás egyesítése |Igen |Igen |
+| Entitás frissítése |Igen |Yes |
+| Entitás egyesítése |Igen |Yes |
 | Entitás törlése |Nem |Igen |
 | Entitás beszúrása vagy cseréje |Igen |Nem |
 | Entitás beszúrása vagy egyesítése |Igen |Nem |
@@ -282,7 +282,7 @@ További információkért lásd:
 
 * [Fájlok zárolásának kezelése](/rest/api/storageservices/Managing-File-Locks)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az ebben a blogban hivatkozott teljes minta alkalmazáshoz:
 

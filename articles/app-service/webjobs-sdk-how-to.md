@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
 ms.openlocfilehash: b97ae5d4ba4295ebbb51c960e4cbb76c53dc88a8
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148073"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009678"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az Azure WebJobs SDK használata eseményalapú háttérfeldolgozáshoz
 
@@ -24,13 +24,13 @@ Ezek a 3. verzió közötti fő különbségek. *x* és 2-es verzió. a webjobs 
 
 * 3. verzió. az *x* támogatja a .net Core-ot.
 * A 3. verzióban. *x*, explicit módon telepítenie kell a webjobs SDK által igényelt tárolási kötési bővítményt. A 2. verzióban. *x*, a tárolási kötések szerepeltek az SDK-ban.
-* Visual Studio-eszközök a .NET Core-hoz (3)* x*) a projektek eltérnek a .NET-keretrendszer (2) eszközeitől.* x*) projektek. További információ: [webjobs-feladatok fejlesztése és üzembe helyezése a Visual Studio-Azure app Service használatával](webjobs-dotnet-deploy-vs.md).
+* Visual Studio-eszközök a .NET Core-hoz (3)*x*) a projektek eltérnek a .NET-keretrendszer (2) eszközeitől.*x*) projektek. További információ: [webjobs-feladatok fejlesztése és üzembe helyezése a Visual Studio-Azure app Service használatával](webjobs-dotnet-deploy-vs.md).
 
 Ha lehetséges, a 3. verzióra vonatkozó példákat is meg kell adni. *x* és 2-es verzió. *x*.
 
 > [!NOTE]
 > [Azure functions](../azure-functions/functions-overview.md) a webjobs SDK-ra épül, és ez a cikk néhány témakörre mutató hivatkozásokat tartalmaz Azure functions dokumentációhoz. Figyelje meg a függvények és a webjobs SDK közötti különbségeket:
-> * Azure Functions 2. verzió. az *x* a webjobs SDK 3-as verziójának felel meg. *x*és Azure functions 1. az *x* a webjobs SDK 2-nak felel meg. *x*. A forráskód-Tárházak a webjobs SDK-számozást használják.
+> * Azure Functions 2. verzió. az *x* a webjobs SDK 3-as verziójának felel meg. *x* és Azure functions 1. az *x* a webjobs SDK 2-nak felel meg. *x*. A forráskód-Tárházak a webjobs SDK-számozást használják.
 > * Azure Functions C#-függvénytárak mintájának kódja például a webjobs SDK-kód, amely nem igényel `FunctionName` attribútumot egy Webjobs SDK-projektben.
 > * Bizonyos kötési típusok csak olyan függvényekben támogatottak, mint például a HTTP (webhookok) és a Event Grid (amely HTTP-alapú).
 >
@@ -38,7 +38,7 @@ Ha lehetséges, a 3. verzióra vonatkozó példákat is meg kell adni. *x* és 2
 
 ## <a name="webjobs-host"></a>Webjobs-gazdagép
 
-A gazdagép a függvények futásidejű tárolója.  Ez figyeli az eseményindítókat és a hívási függvényeket. A 3. verzióban. *x*a gazdagép a (z) implementációja `IHost` . A 2. verzióban. *x*, használja az `JobHost` objektumot. Hozzon létre egy gazdagép-példányt a kódban, és írja be a kódot a viselkedésének testre szabásához.
+A gazdagép a függvények futásidejű tárolója.  Ez figyeli az eseményindítókat és a hívási függvényeket. A 3. verzióban. *x* a gazdagép a (z) implementációja `IHost` . A 2. verzióban. *x*, használja az `JobHost` objektumot. Hozzon létre egy gazdagép-példányt a kódban, és írja be a kódot a viselkedésének testre szabásához.
 
 Ez kulcsfontosságú különbség a webjobs SDK közvetlen használata és a Azure Functions használatával közvetve. Azure Functions a szolgáltatás vezérli a gazdagépet, és nem tudja testreszabni a gazdagépet a kód írásával. Azure Functions lehetővé teszi a gazdagép viselkedésének testreszabását a fájl host.jsbeállításain keresztül. Ezek a beállítások karakterláncok, nem pedig kódok, és ez korlátozza az elvégezhető testreszabások fajtáit.
 
@@ -120,7 +120,7 @@ static void Main()
 }
 ```
 
-### <a name="managing-concurrent-connections-version-2x"></a><a name="jobhost-servicepointmanager-settings"></a>Egyidejű kapcsolatok kezelése (2. verzió).* x*)
+### <a name="managing-concurrent-connections-version-2x"></a><a name="jobhost-servicepointmanager-settings"></a>Egyidejű kapcsolatok kezelése (2. verzió).*x*)
 
 A 3. verzióban. *x*, a kapcsolat korlátja alapértelmezés szerint a végtelen kapcsolatok. Ha valamilyen okból módosítania kell ezt a korlátot, használhatja az [`MaxConnectionsPerServer`](/dotnet/api/system.net.http.winhttphandler.maxconnectionsperserver) osztály tulajdonságát [`WinHttpHandler`](/dotnet/api/system.net.http.winhttphandler) .
 
@@ -369,7 +369,7 @@ A következő kötéseket állíthatja be:
 * [SendGrid kötés](#sendgrid-binding-configuration-version-3x)
 * [Service Bus trigger](#service-bus-trigger-configuration-version-3x)
 
-### <a name="azure-cosmosdb-trigger-configuration-version-3x"></a>Az Azure CosmosDB trigger konfigurációja (3. verzió).* x*)
+### <a name="azure-cosmosdb-trigger-configuration-version-3x"></a>Az Azure CosmosDB trigger konfigurációja (3. verzió).*x*)
 
 Ez a példa bemutatja, hogyan konfigurálhatja a Azure Cosmos DB triggert:
 
@@ -398,7 +398,7 @@ static async Task Main()
 
 További részletekért tekintse meg az [Azure CosmosDB-kötést](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings) ismertető cikket.
 
-### <a name="event-hubs-trigger-configuration-version-3x"></a>Event Hubs trigger konfigurációja (3. verzió).* x*)
+### <a name="event-hubs-trigger-configuration-version-3x"></a>Event Hubs trigger konfigurációja (3. verzió).*x*)
 
 Ez a példa bemutatja, hogyan konfigurálhatja a Event Hubs triggert:
 
@@ -473,7 +473,7 @@ static void Main(string[] args)
 
 További részletekért tekintse [ meg a v1. xhost.jsét](../azure-functions/functions-host-json-v1.md#queues)ismertető témakört.
 
-### <a name="sendgrid-binding-configuration-version-3x"></a>SendGrid-kötési konfiguráció (3. verzió).* x*)
+### <a name="sendgrid-binding-configuration-version-3x"></a>SendGrid-kötési konfiguráció (3. verzió).*x*)
 
 Ez a példa bemutatja, hogyan konfigurálhatja a SendGrid kimeneti kötését:
 
@@ -500,7 +500,7 @@ static async Task Main()
 
 További részletekért tekintse meg a [SendGrid-kötést](../azure-functions/functions-bindings-sendgrid.md#hostjson-settings) ismertető cikket.
 
-### <a name="service-bus-trigger-configuration-version-3x"></a>Service Bus trigger konfigurációja (3. verzió).* x*)
+### <a name="service-bus-trigger-configuration-version-3x"></a>Service Bus trigger konfigurációja (3. verzió).*x*)
 
 Ez a példa bemutatja, hogyan konfigurálhatja a Service Bus triggert:
 
@@ -829,11 +829,11 @@ A példányok által létrehozott összes naplóhoz `ILogger` társítva `Catego
 |------------|---|
 |Nyomkövetés       | 0 |
 |Hibakeresés       | 1 |
-|Tájékoztatás | 2 |
+|Információ | 2 |
 |Figyelmeztetés     | 3 |
 |Hiba       | 4 |
 |Kritikus    | 5 |
-|Nincsenek        | 6 |
+|Nincs        | 6 |
 
 Az egyes kategóriák külön is szűrhetők [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) . Előfordulhat például, hogy meg szeretné jeleníteni az összes naplót a blob-triggerek feldolgozásához, de `Error` minden más esetében csak a magasabbra.
 
@@ -847,7 +847,7 @@ Az egyes kategóriák külön is szűrhetők [`LogLevel`](/dotnet/api/microsoft.
 using Microsoft.Azure.WebJobs.Logging; 
 ```
 
-Az alábbi példa egy olyan szűrőt állít össze, amely alapértelmezés szerint az összes naplót szűri a `Warning` szinten. A `Function` és a `results` Kategóriák (a `Host.Results` 2. verzióban egyenértékűek.* x*) a szinten vannak szűrve `Error` . A szűrő összehasonlítja az aktuális kategóriát a példány összes regisztrált szintjével, `LogCategories` és kiválasztja a leghosszabb egyezést. Ez azt jelenti, hogy az `Debug` `Host.Triggers` egyezésekhez vagy a-hoz regisztrált szint `Host.Triggers.Queue` `Host.Triggers.Blob` . Ez lehetővé teszi a szélesebb kategóriák szabályozását anélkül, hogy hozzá kellene adni egyet.
+Az alábbi példa egy olyan szűrőt állít össze, amely alapértelmezés szerint az összes naplót szűri a `Warning` szinten. A `Function` és a `results` Kategóriák (a `Host.Results` 2. verzióban egyenértékűek.*x*) a szinten vannak szűrve `Error` . A szűrő összehasonlítja az aktuális kategóriát a példány összes regisztrált szintjével, `LogCategories` és kiválasztja a leghosszabb egyezést. Ez azt jelenti, hogy az `Debug` `Host.Triggers` egyezésekhez vagy a-hoz regisztrált szint `Host.Triggers.Queue` `Host.Triggers.Blob` . Ez lehetővé teszi a szélesebb kategóriák szabályozását anélkül, hogy hozzá kellene adni egyet.
 
 ```cs
 static async Task Main(string[] args)
@@ -878,7 +878,7 @@ static async Task Main(string[] args)
 
 A 2. verzióban. *x* az SDK-ban a `LogCategoryFilter` szűrés vezérléséhez használja az osztályt. A `LogCategoryFilter` rendelkezik egy `Default` kezdeti értékkel rendelkező tulajdonsággal, `Information` ami azt jelenti, hogy a (z),, vagy szinten lévő összes üzenet `Information` `Warning` `Error` `Critical` naplózva van, de a `Debug` vagy a szinteken lévő üzenetek `Trace` el lesznek szűrve.
 
-Csakúgy, mint a `LogCategories` 3. verzióban.* x*, a `CategoryLevels` tulajdonság lehetővé teszi, hogy meghatározott kategóriáknál adja meg a naplózási szinteket, így a naplózási kimenet finomhangolása is megadható. Ha a szótárban nem található egyezés `CategoryLevels` , a szűrő visszakerül az `Default` értékre, amikor a rendszer eldönti, hogy szűrni kívánja-e az üzenetet.
+Csakúgy, mint a `LogCategories` 3. verzióban.*x*, a `CategoryLevels` tulajdonság lehetővé teszi, hogy meghatározott kategóriáknál adja meg a naplózási szinteket, így a naplózási kimenet finomhangolása is megadható. Ha a szótárban nem található egyezés `CategoryLevels` , a szűrő visszakerül az `Default` értékre, amikor a rendszer eldönti, hogy szűrni kívánja-e az üzenetet.
 
 A következő példa egy szűrőt állít össze, amely alapértelmezés szerint szűri az összes naplót a `Warning` szinten. A  `Function` és a `Host.Results` Kategóriák a szinten vannak szűrve `Error` . Az `LogCategoryFilter` összehasonlítja az aktuális kategóriát az összes regisztrált értékkel `CategoryLevels` , és kiválasztja a leghosszabb egyezést. Így a `Debug` regisztrált szint megfelel a következőnek: `Host.Triggers` `Host.Triggers.Queue` `Host.Triggers.Blob` . Ez lehetővé teszi a szélesebb kategóriák szabályozását anélkül, hogy hozzá kellene adni egyet.
 
@@ -956,7 +956,7 @@ static async Task Main()
 
 A [`TelemetryConfiguration`] kiépítésekor a rendszer minden regisztrált típust [`ITelemetryInitializer`] tartalmaz. További információ: [Application INSIGHTS API egyéni eseményekhez és mérőszámokhoz](../azure-monitor/app/api-custom-events-metrics.md).
 
-A 3. verzióban. *x*esetén már nem kell kiürítenie a [`TelemetryClient`] gazdagép leállását. A .NET Core függőségi befecskendező rendszer automatikusan elvégzi a regisztrációt `ApplicationInsightsLoggerProvider` , ami kiüríti a-t [`TelemetryClient`] .
+A 3. verzióban. *x* esetén már nem kell kiürítenie a [`TelemetryClient`] gazdagép leállását. A .NET Core függőségi befecskendező rendszer automatikusan elvégzi a regisztrációt `ApplicationInsightsLoggerProvider` , ami kiüríti a-t [`TelemetryClient`] .
 
 #### <a name="version-2x"></a>2. verzió. *x*
 

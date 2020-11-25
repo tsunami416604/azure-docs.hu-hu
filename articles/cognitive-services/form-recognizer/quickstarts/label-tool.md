@@ -11,12 +11,12 @@ ms.date: 09/30/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: dokumentumok feldolgozása
-ms.openlocfilehash: 5df8ced885768308369599d94c5734fa0620c507
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 7671d8d58ffbd0fca444eefe53c46c99a4e76d37
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360870"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96009330"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Űrlap-felismerő modell betanítása címkékkel a minta feliratozási eszköz használatával
 
@@ -38,12 +38,21 @@ A rövid útmutató elvégzéséhez a következőket kell tennie:
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-## <a name="try-it-out"></a>Próba
+## <a name="try-it-out"></a>Próbálja ki
 
 Az űrlap-felismerő minta feliratozási eszközének online kipróbálásához lépjen a [FOTT webhelyére](https://fott-preview.azurewebsites.net/).
 
+# <a name="v20"></a>[2.0-s verzió](#tab/v2-0)
 > [!div class="nextstepaction"]
-> [Űrlap-felismerő minta feliratozási eszköze](https://fott-preview.azurewebsites.net/)
+> [Előre elkészített modellek kipróbálása](https://fott.azurewebsites.net/)
+
+# <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)
+> [!div class="nextstepaction"]
+> [Előre elkészített modellek kipróbálása](https://fott-preview.azurewebsites.net/)
+
+---
+
+Az űrlap-felismerő szolgáltatás kipróbálásához szüksége lesz egy Azure-előfizetésre ([hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)) és egy [űrlap-felismerő erőforrás](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) -végpontot és kulcsot. 
 
 
 ## <a name="set-up-the-sample-labeling-tool"></a>A minta feliratozási eszköz beállítása
@@ -68,8 +77,6 @@ A minta címkéző eszköz futtatásához a Docker-motort fogja használni. A Do
 
 
 
-
-
 1. Szerezze be a minta címkéző eszköz tárolóját a `docker pull` paranccsal.
 
     # <a name="v20"></a>[2.0-s verzió](#tab/v2-0)    
@@ -78,7 +85,7 @@ A minta címkéző eszköz futtatásához a Docker-motort fogja használni. A Do
     ```
     # <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)    
     ```
-    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview
+    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview
     ```
 
     ---
@@ -91,7 +98,7 @@ A minta címkéző eszköz futtatásához a Docker-motort fogja használni. A Do
     ```
     # <a name="v21-preview"></a>[v 2.1 előzetes verzió](#tab/v2-1)    
     ```
-    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview eula=accept    
+    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview eula=accept    
     ```
 
     --- 
@@ -130,7 +137,7 @@ Töltse ki a mezőket a következő értékekkel:
 
 * **Megjelenítendő név** – a kapcsolatok megjelenítendő neve.
 * **Leírás** – a projekt leírása.
-* **Sas URL-cím** – az Azure Blob Storage tároló megosztott hozzáférés-aláírási (SAS) URL-címe. Az SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása** elemet. A lejárati időt állítsa be egy későbbi időpontra, amikor már nem fogja használni a szolgáltatást. Győződjön meg arról, hogy az **olvasási** , **írási** , **törlési** és **listázási** engedélyek be vannak jelölve, majd kattintson a **Létrehozás** gombra. Ezután másolja az értéket az **URL** szakaszban. A következő formátumban kell lennie: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+* **Sas URL-cím** – az Azure Blob Storage tároló megosztott hozzáférés-aláírási (SAS) URL-címe. Az SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása** elemet. A lejárati időt állítsa be egy későbbi időpontra, amikor már nem fogja használni a szolgáltatást. Győződjön meg arról, hogy az **olvasási**, **írási**, **törlési** és **listázási** engedélyek be vannak jelölve, majd kattintson a **Létrehozás** gombra. Ezután másolja az értéket az **URL** szakaszban. A következő formátumban kell lennie: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 
 :::image type="content" source="../media/label-tool/connections.png" alt-text="A mintául szolgáló címkéző eszköz csatlakoztatási beállításai.":::
 
@@ -193,7 +200,7 @@ Ezután létre kell hoznia címkéket (címkéket), és alkalmaznia kell azokat 
    1. Kattintson ide **+** új címke létrehozásához.
    1. Adja meg a címke nevét.
    1. Nyomja le az ENTER billentyűt a címke mentéséhez.
-1. A főszerkesztőben kattintson ide a Kiemelt szöveges elemek szavainak kiválasztásához. A _v 2.1 előzetes verziójában_ lehetőség van arra is, hogy _kijelölje a választógombok_ , például a választógombok és a jelölőnégyzeteket a kulcs érték párokként. Az űrlap-felismerő azonosítja, hogy a kijelölési jel "kijelölt" vagy "nem kijelölt" értékű-e.
+1. A főszerkesztőben kattintson ide a Kiemelt szöveges elemek szavainak kiválasztásához. A _v 2.1 előzetes verziójában. 2_ a _kijelölési jelek_ , például a választógombok és a jelölőnégyzetek megadására is lehetőség van. Az űrlap-felismerő azonosítja, hogy a kijelölési jel "kijelölt" vagy "nem kijelölt" értékű-e.
 1. Kattintson az alkalmazni kívánt címkére, vagy nyomja le a megfelelő billentyűt. A kulcsok az első 10 címkéhez gyorsbillentyűként vannak hozzárendelve. A címkéket átrendezheti a címke-szerkesztő ablaktábla fel és le nyíl ikonjának használatával.
     > [!Tip]
     > Az űrlapok címkézése során tartsa szem előtt az alábbi tippeket.
@@ -314,7 +321,7 @@ Ha folytatni szeretné a projekt folytatását, először létre kell hoznia egy
 
 Végül nyissa meg a Főoldalt (ház ikon), és kattintson a Cloud Project megnyitása lehetőségre. Ezután válassza ki a blob Storage-kapcsolatokat, és válassza ki a projekt *. fott* fájlját. Az alkalmazás betölti a projekt összes beállítását, mert a biztonsági jogkivonattal rendelkezik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja az űrlap-felismerő minta címkézési eszközt egy olyan modell betanításához, amely manuálisan címkézett adattal rendelkezik. Ha saját eszközt szeretne felépíteni a betanítási adatok címkézéséhez, használja a megcímkézett adatok betanításával foglalkozó REST API-kat.
 

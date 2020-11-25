@@ -13,11 +13,11 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 11/09/2020
 ms.openlocfilehash: de01a8a8522f93684ed428fd4ef19963b1af2059
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564310"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008344"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Adatok másolása az Azure Blob Storage-ból egy SQL Databaseba a Adatok másolása eszközzel
 
@@ -40,9 +40,9 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure-előfizetés** : Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
-* **Azure Storage-fiók** : a blob Storage-t használja _forrásként_ szolgáló adattárként. Ha nem rendelkezik Azure Storage-fiókkal, tekintse meg a [Storage-fiók létrehozása](../storage/common/storage-account-create.md)című témakör utasításait.
-* **Azure SQL Database** : használjon egy SQL Database a fogadó _adattárként_ . Ha nem rendelkezik SQL Databaseval, tekintse meg a [SQL Database létrehozása](../azure-sql/database/single-database-create-quickstart.md)című témakör utasításait.
+* **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+* **Azure Storage-fiók**: a blob Storage-t használja _forrásként_ szolgáló adattárként. Ha nem rendelkezik Azure Storage-fiókkal, tekintse meg a [Storage-fiók létrehozása](../storage/common/storage-account-create.md)című témakör utasításait.
+* **Azure SQL Database**: használjon egy SQL Database a fogadó _adattárként_ . Ha nem rendelkezik SQL Databaseval, tekintse meg a [SQL Database létrehozása](../azure-sql/database/single-database-create-quickstart.md)című témakör utasításait.
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Blob és SQL-tábla létrehozása
 
@@ -80,7 +80,7 @@ A következő lépések végrehajtásával készítse elő a blob Storage-t és 
 
 ## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
-1. A bal oldali menüben válassza az **erőforrás** -  >  **integráció** létrehozása  >  **Data Factory** :
+1. A bal oldali menüben válassza az **erőforrás**-  >  **integráció** létrehozása  >  **Data Factory**:
 
     ![Új adat-előállító létrehozása](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. Az **Új adat-előállító** lap **Név** mezőjében adja meg az **ADFTutorialDataFactory** értéket.
@@ -90,7 +90,7 @@ A következő lépések végrehajtásával készítse elő a blob Storage-t és 
     ![Új adat-előállító hibaüzenete](./media/doc-common-process/name-not-available-error.png)
 
     Ha a név értékével kapcsolatos hibaüzenet kap, adjon meg másik nevet az adat-előállítóhoz. Például: _**sajátneve**_**ADFTutorialDataFactory**. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
-1. Válassza ki az Azure- **előfizetést** az új adat-előállító létrehozásához.
+1. Válassza ki az Azure-**előfizetést** az új adat-előállító létrehozásához.
 1. **Erőforráscsoport:** hajtsa végre a következő lépések egyikét:
 
     a. Válassza a **meglévő használata** lehetőséget, majd válasszon ki egy meglévő erőforráscsoportot a legördülő listából.
@@ -134,7 +134,7 @@ A következő lépések végrehajtásával készítse elő a blob Storage-t és 
 
     b. A következő lépéshez kattintson a **Tovább** gombra.
 
-1. A **File Format Settings (fájlformátum beállításai** ) lapon engedélyezze az *első sor fejlécként* való bejelölését. Figyelje meg, hogy az eszköz automatikusan észleli az oszlopok és a sorok határolóit. Válassza a **Tovább** gombot. Ezen a lapon megtekintheti az adatokat is, és megtekintheti a bemeneti adatok sémáját.
+1. A **File Format Settings (fájlformátum beállításai** ) lapon engedélyezze az *első sor fejlécként* való bejelölését. Figyelje meg, hogy az eszköz automatikusan észleli az oszlopok és a sorok határolóit. Kattintson a **Tovább** gombra. Ezen a lapon megtekintheti az adatokat is, és megtekintheti a bemeneti adatok sémáját.
 
     ![A Fájlformátum beállításai](./media/tutorial-copy-data-tool/file-format-settings-page.png)
 1. A **Céladattár** oldalon hajtsa végre a következő lépéseket:
@@ -176,7 +176,7 @@ A következő lépések végrehajtásával készítse elő a blob Storage-t és 
 
     ![Szerző lap kiválasztása](./media/tutorial-copy-data-tool/author-tab.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az ebben a példában szereplő folyamat átmásolja az adatait a blob Storage-ból egy SQL Databaseba. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]

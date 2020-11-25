@@ -7,11 +7,11 @@ ms.date: 02/12/2020
 ms.topic: sample
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: cb8cc98a020cb382a6941c1e410eab4543594629
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279002"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009755"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell-példaszkriptek
 
@@ -26,7 +26,7 @@ Az [ARR Samples adattár](https://github.com/Azure/azure-remote-rendering) a *pa
 > Létezik egy [ARRT nevű UI-alapú eszköz](azure-remote-rendering-asset-tool.md) is a szolgáltatással való kommunikációhoz, amely kényelmes alternatíva a parancsfájlok használatával. ![ARRT](./media/azure-remote-rendering-asset-tool.png "ARRT képernyőkép")
 
 > [!CAUTION]
-> Ha a REST API függvények hívása túl gyakran fordul elő, a kiszolgáló leszabályozását és a hibák visszaadását eredményezi. Ebben az esetben a HTTP-hibakód azonosítója 429 ("túl sok kérés"). Szabályként a **következő hívások között 5-10 másodperces**késleltetésnek kell lennie.
+> Ha a REST API függvények hívása túl gyakran fordul elő, a kiszolgáló leszabályozását és a hibák visszaadását eredményezi. Ebben az esetben a HTTP-hibakód azonosítója 429 ("túl sok kérés"). Szabályként a **következő hívások között 5-10 másodperces** késleltetésnek kell lennie.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -93,14 +93,14 @@ Az `region` [elérhető régiók listájának](../reference/regions.md)megtekint
 
 ### <a name="renderingsessionsettings"></a>renderingSessionSettings
 
-Ha **RenderingSession.ps1**szeretne futtatni, ezt a struktúrát ki kell tölteni:
+Ha **RenderingSession.ps1** szeretne futtatni, ezt a struktúrát ki kell tölteni:
 
 - **vmSize:** Kiválasztja a virtuális gép méretét. Válassza a [*standard*](../reference/vm-sizes.md) vagy a [*prémium*](../reference/vm-sizes.md)lehetőséget. Ha már nincs szüksége rájuk, állítsa le a renderelési munkameneteket.
 - **maxLeaseTime:** Az az időtartam, ameddig a virtuális gépet bérbe szeretné venni. Ha a bérlet lejár, a rendszer leállítja. A bérleti idő később bővíthető (lásd alább).
 
 ### <a name="assetconversionsettings"></a>assetConversionSettings
 
-Ha **Conversion.ps1**szeretne futtatni, ezt a struktúrát ki kell tölteni.
+Ha **Conversion.ps1** szeretne futtatni, ezt a struktúrát ki kell tölteni.
 
 Részletekért lásd: [Azure Storage-fiók előkészítése](../how-tos/conversion/blob-storage.md#prepare-azure-storage-accounts).
 
@@ -262,7 +262,7 @@ Csak az adott LocalAssetDirectoryPath származó adatok feltöltése.
 .\Conversion.ps1 -Upload
 ```
 
-Csak a blob Storage-ba feltöltött modell átalakítási folyamatának elindítása (ne futtassa a feltöltést, ne kérdezze le a konverziós állapotot) a szkript egy *conversionId*ad vissza.
+Csak a blob Storage-ba feltöltött modell átalakítási folyamatának elindítása (ne futtassa a feltöltést, ne kérdezze le a konverziós állapotot) a szkript egy *conversionId* ad vissza.
 
 ```PowerShell
 .\Conversion.ps1 -ConvertAsset
@@ -276,7 +276,7 @@ A konverzió állapotát a következő paranccsal kérheti le:
 
 `-Poll`A paranccsal megvárhatja, amíg a konverzió megtörténik, vagy hiba történt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Gyors útmutató: modell megjelenítése egységgel](../quickstarts/render-model.md)
 - [Gyorsútmutató: Modell konvertálása a renderelés előtt](../quickstarts/convert-model.md)

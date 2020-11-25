@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
 ms.openlocfilehash: d2b1afea746410e966b43bef01a039a8471d4ae7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87007928"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008820"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows Diagnostics bővítmény sémája
 A Azure Diagnostics Extension olyan Azure Monitor ügynöke, amely a vendég operációs rendszerből és az Azure számítási erőforrások munkaterhelésével kapcsolatos figyelési adatokat gyűjt. Ez a cikk részletesen ismerteti a diagnosztikai bővítmény konfigurálásához használt sémát a Windows rendszerű virtuális gépeken és más számítási erőforrásokon.
@@ -58,7 +58,7 @@ A diagnosztikai konfigurációs fájl legfelső szintű eleme.
 |--------------------|-----------------|  
 |**WadCfg**|Kötelező. Ezen a lapon a Leírás máshol található.|  
 |**StorageAccount**|Annak az Azure Storage-fióknak a neve, amelybe az adattárakat tárolni szeretné. A Set-AzureServiceDiagnosticsExtension parancsmag végrehajtásakor paraméterként is megadható.|  
-|**StorageType**|*Tábla*, *blob*vagy *TableAndBlob*lehet. A tábla alapértelmezett. Ha a TableAndBlob van kiválasztva, a diagnosztikai adattípust kétszer, egyszer kell megírni.|  
+|**StorageType**|*Tábla*, *blob* vagy *TableAndBlob* lehet. A tábla alapértelmezett. Ha a TableAndBlob van kiválasztva, a diagnosztikai adattípust kétszer, egyszer kell megírni.|  
 |**LocalResourceDirectory**|Annak a virtuális gépnek a könyvtára, ahol a figyelési ügynök az eseményekre vonatkozó adatgyűjtést tárolja. Ha nem, akkor a rendszer az alapértelmezett könyvtárat használja:<br /><br /> Feldolgozói/webes szerepkör esetén: `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Virtuális gépek esetén: `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> A kötelező attribútumok a következők:<br /><br /> - **elérési út** – a rendszer Azure Diagnostics által használandó könyvtára.<br /><br /> - **expandEnvironment** – meghatározza, hogy a környezeti változók ki vannak-e bontva az elérési útban.|  
 
 ## <a name="wadcfg-element"></a>WadCFG elem  
@@ -119,7 +119,7 @@ A diagnosztikai konfigurációs fájl legfelső szintű eleme.
 |Gyermekelemek|Leírás|  
 |--------------------|-----------------|  
 |**IISLogs**|A konfigurációban található elemet is beleértve az IIS-naplók gyűjteményének engedélyezése:<br /><br /> **containerName** – az IIS-naplók tárolására szolgáló Azure Storage-fiókban található blob-tároló neve.|   
-|**FailedRequestLogs**|A konfigurációban található elem belefoglalása lehetővé teszi, hogy az IIS-helyekre vagy-alkalmazásokra vonatkozó sikertelen kérelmeket tartalmazó naplók gyűjtése megtörténjen. A nyomkövetési beállításokat is engedélyeznie kell a **rendszeren. Webkiszolgáló** a **Web.configban **.|  
+|**FailedRequestLogs**|A konfigurációban található elem belefoglalása lehetővé teszi, hogy az IIS-helyekre vagy-alkalmazásokra vonatkozó sikertelen kérelmeket tartalmazó naplók gyűjtése megtörténjen. A nyomkövetési beállításokat is engedélyeznie kell a **rendszeren. Webkiszolgáló** a **Web.configban**.|  
 |**Adatforrások**|A figyelni kívánt címtárak listája.|
 
 
@@ -189,7 +189,7 @@ A diagnosztikai konfigurációs fájl legfelső szintű eleme.
 
  Lehetővé teszi a gyors lekérdezésekhez optimalizált teljesítményszámláló-tábla létrehozását. A **PerformanceCounters** elemben definiált minden teljesítményszámláló a teljesítményszámláló táblán kívül a metrikák táblázatban található.  
 
- A **resourceId** attribútum megadása kötelező.  Annak a virtuális gépnek vagy virtuálisgép-méretezési csoportnak az erőforrás-azonosítója, amelyre a Azure Diagnostics telepíti. Szerezze be a **resourceID** a [Azure Portal](https://portal.azure.com). Válassza a **Tallózás**  ->  **erőforráscsoportok**  ->  **<a \> név**elemet. Kattintson a **Tulajdonságok** csempére, és másolja az értéket az **azonosító** mezőből.  Ez a resourceID tulajdonság az egyéni metrikák küldésére és egy resourceID tulajdonság hozzáadására szolgál a Event Hubs küldött adatokhoz. Vegye figyelembe, hogy az *resourceId* tulajdonságot a *metrikák* elem alatt kell felvennie, ha azt szeretné, hogy a Event Hubs feltöltött események erőforrás-azonosítóval rendelkezzenek.
+ A **resourceId** attribútum megadása kötelező.  Annak a virtuális gépnek vagy virtuálisgép-méretezési csoportnak az erőforrás-azonosítója, amelyre a Azure Diagnostics telepíti. Szerezze be a **resourceID** a [Azure Portal](https://portal.azure.com). Válassza a **Tallózás**  ->  **erőforráscsoportok**  ->  **<a \> név** elemet. Kattintson a **Tulajdonságok** csempére, és másolja az értéket az **azonosító** mezőből.  Ez a resourceID tulajdonság az egyéni metrikák küldésére és egy resourceID tulajdonság hozzáadására szolgál a Event Hubs küldött adatokhoz. Vegye figyelembe, hogy az *resourceId* tulajdonságot a *metrikák* elem alatt kell felvennie, ha azt szeretné, hogy a Event Hubs feltöltött események erőforrás-azonosítóval rendelkezzenek.
 
 |Gyermekelemek|Leírás|  
 |--------------------|-----------------|  
@@ -237,9 +237,9 @@ A diagnosztikai konfigurációs fájl legfelső szintű eleme.
 |Attribútum|Típus|Leírás|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|Választható. Meghatározza a fájlrendszer tárterületének maximális számát, amely elérhető a megadott adatmennyiség esetében.<br /><br /> Az alapértelmezett érték a 0.|  
-|**scheduledTransferLogLevelFilter**|**sztring**|Választható. Megadja az átvitt naplóbejegyzések minimális súlyossági szintjét. Az alapértelmezett érték nincs **definiálva**, amely az összes naplót átviszi. A többi lehetséges érték (a legkevesebb információhoz képest) **részletes**, **információ**, **Figyelmeztetés**, **hiba**és **kritikus**.|  
+|**scheduledTransferLogLevelFilter**|**karakterlánc**|Választható. Megadja az átvitt naplóbejegyzések minimális súlyossági szintjét. Az alapértelmezett érték nincs **definiálva**, amely az összes naplót átviszi. A többi lehetséges érték (a legkevesebb információhoz képest) **részletes**, **információ**, **Figyelmeztetés**, **hiba** és **kritikus**.|  
 |**scheduledTransferPeriod**|**időtartama**|Választható. Meghatározza az ütemezett adatátvitelek közötti időközt, a legközelebbi percre kerekítve.<br /><br /> Az alapértelmezett érték a PT0S.|  
-|**fogadóként** |**sztring**| 1,5-ben hozzáadva. Választható. A fogadó helyre mutat, és a diagnosztikai információk küldésére is. Például Application Insights vagy Event Hubs. Vegye figyelembe, hogy az *resourceId* tulajdonságot a *metrikák* elem alatt kell felvennie, ha azt szeretné, hogy a Event Hubs feltöltött események erőforrás-azonosítóval rendelkezzenek.|  
+|**fogadóként** |**karakterlánc**| 1,5-ben hozzáadva. Választható. A fogadó helyre mutat, és a diagnosztikai információk küldésére is. Például Application Insights vagy Event Hubs. Vegye figyelembe, hogy az *resourceId* tulajdonságot a *metrikák* elem alatt kell felvennie, ha azt szeretné, hogy a Event Hubs feltöltött események erőforrás-azonosítóval rendelkezzenek.|  
 
 ## <a name="dockersources"></a>DockerSources
  *Tree: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-DockerSources*
@@ -295,8 +295,8 @@ A diagnosztikai konfigurációs fájl legfelső szintű eleme.
 
 |Attribútumok|Típus|Leírás|  
 |----------------|----------|-----------------|  
-|**Naplózási szint**|**sztring**|Megadja az átvitt naplóbejegyzések minimális súlyossági szintjét. Az alapértelmezett érték nincs **definiálva**, amely az összes naplót átviszi. A többi lehetséges érték (a legkevesebb információhoz képest) **részletes**, **információ**, **Figyelmeztetés**, **hiba**és **kritikus**.|  
-|**név**|**sztring**|A csatorna egyedi neve, amelyre hivatkozni kell|  
+|**Naplózási szint**|**karakterlánc**|Megadja az átvitt naplóbejegyzések minimális súlyossági szintjét. Az alapértelmezett érték nincs **definiálva**, amely az összes naplót átviszi. A többi lehetséges érték (a legkevesebb információhoz képest) **részletes**, **információ**, **Figyelmeztetés**, **hiba** és **kritikus**.|  
+|**név**|**karakterlánc**|A csatorna egyedi neve, amelyre hivatkozni kell|  
 
 
 ## <a name="privateconfig-element"></a>PrivateConfig elem
@@ -327,7 +327,7 @@ A diagnosztikai konfigurációs fájl legfelső szintű eleme.
 A *PublicConfig* és a *PrivateConfig* el vannak különítve, mert a legtöbb JSON-használati esetben eltérő változókként lesznek átadva. Ilyen eset például a Resource Manager-sablonok, a PowerShell és a Visual Studio.
 
 > [!NOTE]
-> A nyilvános konfiguráció Azure Monitor fogadó definíciója két tulajdonsággal, *resourceId* és *régióval*rendelkezik. Ezek csak a klasszikus virtuális gépekhez és a klasszikus felhőalapú szolgáltatásokhoz szükségesek. A *region* tulajdonságot más erőforrásokhoz nem szabad használni, a *resourceId* tulajdonságot az ARM-alapú virtuális gépeken kell használni, hogy feltöltsék az Event Hubsba feltöltött naplók resourceId mezőjét.
+> A nyilvános konfiguráció Azure Monitor fogadó definíciója két tulajdonsággal, *resourceId* és *régióval* rendelkezik. Ezek csak a klasszikus virtuális gépekhez és a klasszikus felhőalapú szolgáltatásokhoz szükségesek. A *region* tulajdonságot más erőforrásokhoz nem szabad használni, a *resourceId* tulajdonságot az ARM-alapú virtuális gépeken kell használni, hogy feltöltsék az Event Hubsba feltöltött naplók resourceId mezőjét.
 
 ```json
 "PublicConfig" {
@@ -642,8 +642,8 @@ A *PublicConfig* és a *PrivateConfig* el vannak különítve, mert a legtöbb J
 
   </WadCfg>  
 
-  <StorageAccount>diagstorageaccount</StorageAccount>
-  <StorageType>TableAndBlob</StorageType> <!-- Added in 1.8 -->  
+  <StorageAccount>diagstorageaccount</StorageAccount>
+  <StorageType>TableAndBlob</StorageType> <!-- Added in 1.8 -->  
   </PublicConfig>  
 
   <PrivateConfig>  <!-- Added in 1.3 -->  

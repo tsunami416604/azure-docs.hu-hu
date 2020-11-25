@@ -4,11 +4,11 @@ description: A Azure Migrate készülék támogatásának összegzését tartalm
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: ac3c90f1c09d290d5112a0e0d7abc5218788caf7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450046"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008701"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-berendezés
 
@@ -69,8 +69,8 @@ A következő táblázat összefoglalja a VMware Azure Migrate készülékre von
 **Felderítési korlátok** | Egy készülék legfeljebb 5000 Hyper-V virtuális gépet képes felderíteni.<br/> Egy készülék legfeljebb 300 Hyper-V gazdagéphez tud csatlakozni.
 **VHD-sablon** | Tömörített mappa, beleértve a VHD-t. Töltse le a portálról [, vagy innen.](https://go.microsoft.com/fwlink/?linkid=2140422)<br/><br/> A letöltési méret 8,91 GB.<br/><br/> A letöltött Appliance-sablon egy Windows Server 2016 próbaverziós licenccel rendelkezik, amely 180 napig érvényes. Ha a próbaidőszak le van zárva, javasoljuk, hogy töltsön le és helyezzen üzembe egy új készüléket, vagy aktiválja a készülék virtuális gépe operációs rendszerének licencét.
 **PowerShell-parancsprogram** | Tekintse meg ezt a [cikket](./deploy-appliance-script.md#set-up-the-appliance-for-hyper-v).<br/><br/> 
-**Szoftver/hardver***   |  A készüléknek a gépen kell futnia a Windows Server 2016, 16 GB RAM, 8 vCPU, körülbelül 80 GB lemezes tárterület és egy külső virtuális kapcsoló alapján.<br/> A készüléknek statikus vagy dinamikus IP-címnek kell lennie, és közvetlenül vagy proxyn keresztül kell internet-hozzáférést biztosítania.<br/><br/> Ha a berendezést Hyper-V virtuális gépként futtatja, elegendő erőforrásra van szüksége a Hyper-V-gazdagépen a hardverkövetelmények lefoglalásához.<br/><br/> Ha a készüléket fizikai gépen futtatja, győződjön meg arról, hogy a Windows Server 2016 rendszert futtat, és megfelel a hardverkövetelmények követelményeinek. 
-**Hyper-V követelmények** | Ha a készüléket a VHD sablonnal telepíti, a Azure Migrate által biztosított készülék virtuális gépe a Hyper-V VM 5,0-es verziója.<br/><br/> A Hyper-V-gazdagépen Windows Server 2012 R2 vagy újabb rendszernek kell futnia. 
+**Szoftver/hardver** _   |  A készüléknek a gépen kell futnia a Windows Server 2016, 16 GB RAM, 8 vCPU, körülbelül 80 GB lemezes tárterület és egy külső virtuális kapcsoló alapján.<br/> A készüléknek statikus vagy dinamikus IP-címnek kell lennie, és közvetlenül vagy proxyn keresztül kell internet-hozzáférést biztosítania.<br/><br/> Ha a berendezést Hyper-V virtuális gépként futtatja, elegendő erőforrásra van szüksége a Hyper-V-gazdagépen a hardverkövetelmények lefoglalásához.<br/><br/> Ha a készüléket fizikai gépen futtatja, győződjön meg arról, hogy a Windows Server 2016 rendszert futtat, és megfelel a hardverkövetelmények követelményeinek. 
+A *Hyper-V követelményei** | Ha a készüléket a VHD sablonnal telepíti, a Azure Migrate által biztosított készülék virtuális gépe a Hyper-V VM 5,0-es verziója.<br/><br/> A Hyper-V-gazdagépen Windows Server 2012 R2 vagy újabb rendszernek kell futnia. 
 **Kivonatoló érték – VHD** | [Ellenőrzés](tutorial-discover-hyper-v.md#verify-security) VHD-sablon kivonatának értékei.
 **Kivonatoló érték – PowerShell-parancsfájl** | [Ellenőrizze](deploy-appliance-script.md#verify-file-security) a PowerShell-parancsfájl kivonatának értékeit.
 
@@ -153,7 +153,7 @@ a virtuális gép neve | vm.Config. név
 vCenter Server azonosítója | VMwareClient. instance. UUID
 Virtuális gép leírása | vm.Summary.Config. Jegyzet
 Licenc terméknév | VM. Client. ServiceContent. about. LicenseProductName
-Operációs rendszer típusa | VM. SummaryConfig.GuestFullName
+Operációs rendszer típusa | VM. SummaryConfig. GuestFullName
 Rendszerindítás típusa | vm.Config. Belső vezérlőprogram
 Magok száma | vm.Config. Hardware. NumCPU
 Memória (MB) | vm.Config. Hardware. MemoryMB
@@ -175,12 +175,12 @@ Olvasási sebesség (MB/s) | virtualDisk. Read. Average
 **Hálózati adapter adatai** | 
 Hálózati adapter neve | hálózati. Kulcs
 MAC-cím | ((VirtualEthernetCard) NIC). MacAddress
-IPv4-címek | VM. Guest.Net
-IPv6-címek | VM. Guest.Net
+IPv4-címek | vm.Guest.Net
+IPv6-címek | vm.Guest.Net
 Olvasási sebesség (MB/s) | net. Received. Average
 Írási sebesség (MB/s) | net. továbbítandó. Average
 **Leltár elérési útja – részletek** | 
-Name (Név) | tároló. GetType (). név
+Név | tároló. GetType (). név
 Gyermekobjektum típusa | tároló. ChildType
 Hivatkozás részletei | tároló. MoRef
 Szülő részletei | Container. Parent
@@ -227,7 +227,7 @@ Itt találja azokat a funkciókat, amelyeket a készülék az alkalmazások feld
 
 **Adatok**  | **PowerShell-parancsmag** | **Tulajdonság**
 --- | --- | ---
-Name (Név)  | Get-WindowsFeature  | Name (Név)
+Név  | Get-WindowsFeature  | Név
 Szolgáltatás típusa | Get-WindowsFeature  | FeatureType
 Szülő  | Get-WindowsFeature  | Szülő
 
@@ -237,7 +237,7 @@ Itt találja azokat az SQL Server-metaadatokat, amelyeket a készülék a Micros
 
 **Adatok**  | **Beállításjegyzékbeli hely**  | **Kulcs**
 --- | --- | ---
-Name (Név)  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \ példány Names\SQL  | installedInstance
+Név  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \ példány Names\SQL  | installedInstance
 Kiadás  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Kiadás 
 Szervizcsomag  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | SP
 Verzió  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Verzió 
@@ -248,7 +248,7 @@ Az operációs rendszer azon adatait, amelyeket a készülék az alkalmazások f
 
 Adatok  | WMI-osztály  | WMI-osztály tulajdonsága
 --- | --- | ---
-Name (Név)  | Win32_operatingsystem  | Képaláírás
+Név  | Win32_operatingsystem  | Képaláírás
 Verzió  | Win32_operatingsystem  | Verzió
 Architektúra  | Win32_operatingsystem  | OSArchitecture
 
@@ -258,7 +258,7 @@ Itt láthatók a telepített alkalmazásadatok, amelyeket a készülék az alkal
 
 Adatok  | Parancs
 --- | --- 
-Name (Név) | RPM, dpkg-Query, Snap
+Név | RPM, dpkg-Query, Snap
 Verzió | RPM, dpkg-Query, Snap
 Szolgáltató | RPM, dpkg-Query, Snap
 
@@ -268,7 +268,7 @@ Az operációs rendszer azon adatait, amelyeket a készülék az alkalmazások f
 
 **Adatok**  | **Parancs** 
 --- | --- | ---
-Name (Név) <br/> version | A következő fájlok közül egy vagy több összegyűjtése:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
+Név <br/> version | A következő fájlok közül egy vagy több összegyűjtése:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
 Architektúra | uname
 
 
@@ -471,7 +471,7 @@ A beállításkulcs törlése:
 
 1. A készüléket futtató gépen nyissa meg a beállításszerkesztőt.
 2. Navigáljon **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance**.
-3. Törölje az **automatikus frissítés**kikapcsolásához korábban létrehozott beállításkulcsot.
+3. Törölje az **automatikus frissítés** kikapcsolásához korábban létrehozott beállításkulcsot.
 
 A berendezés Configuration Manager bekapcsolásához a felderítés befejezése után:
 
@@ -485,12 +485,12 @@ A berendezés Configuration Manager bekapcsolásához a felderítés befejezése
 Az alábbi módszerek bármelyikével ellenőrizhető a Appliance Services-verzió:
 
 - A készülék Configuration Manager felületén lépjen az **Előfeltételek beállítása** panelre.
-- A készülék számítógépén, a **Vezérlőpult**  >  **programok és szolgáltatások**paneljén.
+- A készülék számítógépén, a **Vezérlőpult**  >  **programok és szolgáltatások** paneljén.
 
 A készülék Configuration managerének beadásához:
 
 1. A készülék Configuration Manager felületén lépjen az **Előfeltételek beállítása** panelre.
-2. A legújabb frissítések keresése területen kattintson a **berendezés-szolgáltatások megtekintése**elemre.
+2. A legújabb frissítések keresése területen kattintson a **berendezés-szolgáltatások megtekintése** elemre.
 
     ![Verzió keresése](./media/migrate-appliance/versions.png)
 
@@ -507,7 +507,7 @@ Ha valamelyik összetevőnél régebbi verziót futtat, akkor el kell távolíta
 
 1. A készülék legújabb verziójának megkereséséhez [töltse le](https://aka.ms/latestapplianceservices) a LatestComponents.jsfájlt.
 2.    A letöltés után nyissa meg a LatestComponents.jsfájlt a Jegyzettömbben.
-3. Keresse meg a legújabb szolgáltatási verziót a fájlban, és a letöltési hivatkozást. Példa:
+3. Keresse meg a legújabb szolgáltatási verziót a fájlban, és a letöltési hivatkozást. Például:
 
     "Név": "ASRMigrationWebApp", "DownloadLink": " https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi ", "version": "6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
 
@@ -518,11 +518,11 @@ Ha valamelyik összetevőnél régebbi verziót futtat, akkor el kell távolíta
 
 5. Győződjön meg arról, hogy a parancs kimenete megfelel a szolgáltatáshoz tartozó kivonatoló érték bejegyzésének (például a fenti MD5-kivonat értéke).
 6. Most futtassa az MSI-t a szolgáltatás telepítéséhez. Ez egy csendes telepítés, és a telepítés befejezése után bezárul.
-7. A telepítés befejezése után keresse meg a szolgáltatás verziószámát a **Vezérlőpult**  >  **programok és szolgáltatások**paneljén. A szolgáltatási verziót most frissíteni kell a JSON-fájlban látható legújabb verzióra.
+7. A telepítés befejezése után keresse meg a szolgáltatás verziószámát a **Vezérlőpult**  >  **programok és szolgáltatások** paneljén. A szolgáltatási verziót most frissíteni kell a JSON-fájlban látható legújabb verzióra.
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Ismerje meg, hogyan](how-to-set-up-appliance-vmware.md) állíthatja be a készüléket a VMware rendszerhez.
 - [Ismerje meg, hogyan](how-to-set-up-appliance-hyper-v.md) állíthatja be a készüléket a Hyper-V-hez.

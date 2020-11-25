@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
 ms.openlocfilehash: b76c41787d7a35fb3024fa18c0122bc966243bbc
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514537"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008395"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-security-tmws"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Trend Micro Web Security (TMWS) szolgáltatással
 
@@ -48,8 +48,8 @@ A TMWS Azure AD-be való integrálásának konfigurálásához hozzá kell adnia
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiók.
 1. A bal oldali ablaktáblán válassza ki a **Azure Active Directory** szolgáltatást.
-1. Válassza a **vállalati alkalmazások** lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Válassza a **vállalati alkalmazások** lehetőséget, majd válassza **a minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban adja meg a **Trend Micro Web Security (TMWS)** kifejezést a keresőmezőbe.
 1. Válassza a **Trend Micro Web Security (TMWS)** lehetőséget a keresési eredmények között, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
@@ -70,8 +70,8 @@ Ezeket az alapszintű lépéseket az Azure AD SSO konfigurálásához és a TMWS
 
 A következő lépésekkel engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)a **Trend Micro Web Security (TMWS)** alkalmazás-integráció lapján, a **kezelés** szakaszban válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **Trend Micro Web Security (TMWS)** alkalmazás-integráció lapján, a **kezelés** szakaszban válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon válassza az **ALAPszintű SAML-konfigurációhoz** tartozó toll gombot a beállítások szerkesztéséhez:
 
    ![Az alapszintű SAML-konfigurációs beállítások szerkesztése](common/edit-urls.png)
@@ -95,7 +95,7 @@ A következő lépésekkel engedélyezheti az Azure AD SSO használatát a Azure
 
 1. Az előző képernyőképen lévő attribútumok mellett a TMWS két további attribútumot vár az SAML-válaszban. Ezek az attribútumok az alábbi táblázatban láthatók. Az attribútumok előre ki vannak töltve, de megváltoztathatók a követelmények teljesítése érdekében.
     
-    | Name | Forrás attribútum|
+    | Név | Forrás attribútum|
     | --------------- | --------- |
     | sAMAccountName | User. onpremisessamaccountname |
     | uPN | User. userPrincipalName |
@@ -112,60 +112,60 @@ A következő lépésekkel engedélyezheti az Azure AD SSO használatát a Azure
 
 Ebben a szakaszban egy B. Simon nevű teszt felhasználót hoz létre a Azure Portal.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget. Válassza a **felhasználók**lehetőséget, majd válassza **a minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget. Válassza a **felhasználók** lehetőséget, majd válassza **a minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A név mezőbe írja be a **nevet** `B.Simon` .  
-   1. A **Felhasználónév** mezőbe írja be a **_Felhasználónév_ @ *cégestartomány *.* bővítmény * * *. Például: `B.Simon@contoso.com`.
-   1. Válassza a **jelszó megjelenítése**lehetőséget, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. A **Felhasználónév** mezőbe írja be a **_Felhasználónév_ @* cégestartomány *.* bővítmény * * *. Például: `B.Simon@contoso.com`.
+   1. Válassza a **jelszó megjelenítése** lehetőséget, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="grant-the-azure-ad-test-user-access-to-tmws"></a>Az Azure AD-felhasználó hozzáférésének engedélyezése a TMWS
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a TMWS.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
 1. Az alkalmazások listában válassza a **Trend Micro Web Security (TMWS)** elemet.
-1. Az alkalmazás Áttekintés lapjának **kezelés** szakaszában válassza a **felhasználók és csoportok**lehetőséget:
+1. Az alkalmazás Áttekintés lapjának **kezelés** szakaszában válassza a **felhasználók és csoportok** lehetőséget:
 
    ![Felhasználók és csoportok kiválasztása](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![Felhasználó hozzáadása kiválasztása](common/add-assign-user.png)
 
 1. A **felhasználók és csoportok** párbeszédpanelen válassza az **B. Simon** elemet a **felhasználók** listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. Ha az SAML-állításban a szerepkör értéke várható, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés**lehetőséget.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés** lehetőséget.
 
 ### <a name="configure-user-and-group-synchronization-settings-in-azure-ad"></a>Felhasználói és csoport szinkronizálási beállításainak konfigurálása az Azure AD-ben
 
 1. A bal oldali panelen válassza az **Azure Active Directory** lehetőséget.
 
-1. A **kezelés**területen válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza ki az új vállalati alkalmazást az **összes alkalmazás**területen.
+1. A **kezelés** területen válassza a **Alkalmazásregisztrációk** lehetőséget, majd válassza ki az új vállalati alkalmazást az **összes alkalmazás** területen.
 
-1. A **kezelés**területen válassza a **tanúsítványok & Secrets**elemet.
+1. A **kezelés** területen válassza a **tanúsítványok & Secrets** elemet.
 
-1. Az **ügyfél titkai** területen válassza az **új ügyfél titka**elemet.
+1. Az **ügyfél titkai** területen válassza az **új ügyfél titka** elemet.
 
-1. Az **ügyfél titkos kulcsának hozzáadása képernyőn**opcionálisan hozzáadhat egy leírást, és kiválaszthatja az ügyfél titkos kulcsának lejárati idejét, majd válassza a **Hozzáadás**lehetőséget. Az új ügyfél titkos kulcsa az **ügyfél titkai** területén jelenik meg.
+1. Az **ügyfél titkos kulcsának hozzáadása képernyőn** opcionálisan hozzáadhat egy leírást, és kiválaszthatja az ügyfél titkos kulcsának lejárati idejét, majd válassza a **Hozzáadás** lehetőséget. Az új ügyfél titkos kulcsa az **ügyfél titkai** területén jelenik meg.
 
 1. Jegyezze fel az ügyfél titkos értékét. Később megadhatja a TMWS.
 
-1. A **kezelés**területen válassza az **API-engedélyek**lehetőséget. 
+1. A **kezelés** területen válassza az **API-engedélyek** lehetőséget. 
 
-1. Az **API-engedélyek** ablakban válassza az **engedély hozzáadása**elemet.
+1. Az **API-engedélyek** ablakban válassza az **engedély hozzáadása** elemet.
 
-1. A **kérelem API-engedélyek** ablakának **Microsoft API-jai** lapján válassza a **Microsoft Graph** , majd az **alkalmazás engedélyei**lehetőséget.
+1. A **kérelem API-engedélyek** ablakának **Microsoft API-jai** lapján válassza a **Microsoft Graph** , majd az **alkalmazás engedélyei** lehetőséget.
 
 1. Keresse meg és adja hozzá a következő engedélyeket: 
 
     * Group.Read.All
     * Felhasználó. Read. All
 
-1. Válassza az **engedélyek hozzáadása**lehetőséget. Megjelenik egy üzenet, amely megerősíti, hogy a beállítások mentése megtörtént. Az új engedélyek az API- **engedélyek** ablakban jelennek meg.
+1. Válassza az **engedélyek hozzáadása** lehetőséget. Megjelenik egy üzenet, amely megerősíti, hogy a beállítások mentése megtörtént. Az új engedélyek az API- **engedélyek** ablakban jelennek meg.
 
-1. A **jóváhagyás engedélyezése** területen jelölje be **a rendszergazdai jóváhagyás megadása a *rendszergazdai fiókhoz* (alapértelmezett könyvtár)** lehetőséget, majd válassza az **Igen**lehetőséget. Megjelenik egy üzenet, amely megerősíti, hogy a kért engedélyekhez tartozó rendszergazdai jóváhagyás meg lett adva.
+1. A **jóváhagyás engedélyezése** területen jelölje be **a rendszergazdai jóváhagyás megadása a *rendszergazdai fiókhoz* (alapértelmezett könyvtár)** lehetőséget, majd válassza az **Igen** lehetőséget. Megjelenik egy üzenet, amely megerősíti, hogy a kért engedélyekhez tartozó rendszergazdai jóváhagyás meg lett adva.
 
 1. Válassza az **Áttekintés** lehetőséget. 
 
@@ -175,11 +175,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 A következő lépések végrehajtásával konfigurálhatja a TMWS SSO-t az alkalmazás oldalán.
 
-1. Jelentkezzen be a TMWS felügyeleti konzolba, és lépjen a **felügyeleti**  >  **felhasználók & Authentication**  >  **Directory Services**elemre.
+1. Jelentkezzen be a TMWS felügyeleti konzolba, és lépjen a **felügyeleti**  >  **felhasználók & Authentication**  >  **Directory Services** elemre.
 
 1. Kattintson **ide** a képernyő felső részén.
 
-1. A **hitelesítési módszer** lapon válassza az **Azure ad**lehetőséget.
+1. A **hitelesítési módszer** lapon válassza az **Azure ad** lehetőséget.
 
 1. Válassza **a** be vagy **ki** lehetőséget annak konfigurálásához, hogy az Azure ad-felhasználók a szervezeten belül TMWS-e a webhelyeket, ha az adataik nincsenek szinkronizálva a TMWS.
 
@@ -202,11 +202,11 @@ A következő lépések végrehajtásával konfigurálhatja a TMWS SSO-t az alka
 
     c. Az **ügyfél titkos kulcsa** mezőben adja meg az **ügyfél titkos kulcsát** a Azure Portal.
 
-    d. Válassza ki a **szinkronizálási ütemtervet** , hogy az Azure ad-val manuálisan vagy egy ütemterv szerint szinkronizáljon. Ha a **manuálisan**lehetőséget választja, valahányszor Active Directory felhasználói adatokat módosítanak, ne feledje, hogy térjen vissza a **Címtárszolgáltatások** lapra, és végezze el a manuális szinkronizálást, hogy a TMWS lévő információk továbbra is naprakészek maradjanak.
+    d. Válassza ki a **szinkronizálási ütemtervet** , hogy az Azure ad-val manuálisan vagy egy ütemterv szerint szinkronizáljon. Ha a **manuálisan** lehetőséget választja, valahányszor Active Directory felhasználói adatokat módosítanak, ne feledje, hogy térjen vissza a **Címtárszolgáltatások** lapra, és végezze el a manuális szinkronizálást, hogy a TMWS lévő információk továbbra is naprakészek maradjanak.
 
     e. Kattintson a **kapcsolat tesztelése** elemre annak ellenőrzéséhez, hogy az Azure ad szolgáltatás sikeresen csatlakoztatva van-e.
     
-    f. Válassza a **Mentés** lehetőséget.
+    f. Kattintson a **Mentés** gombra.
  
  > [!NOTE]
  > A TMWS Azure AD-vel való konfigurálásával kapcsolatos további információkért lásd: [Az Azure ad-beállítások konfigurálása a TMWS-on](https://docs.trendmicro.com/en-us/enterprise/trend-micro-web-security-online-help/administration_001/directory-services/azure-active-directo/configuring-azure-ad.aspx).
@@ -216,7 +216,7 @@ A következő lépések végrehajtásával konfigurálhatja a TMWS SSO-t az alka
 Miután konfigurálta az Azure AD szolgáltatást, és megadta a felhasználói hitelesítési módszerként az Azure AD-t, bejelentkezhet a TMWS a telepítés ellenőrzéséhez. Miután az Azure AD-bejelentkezés ellenőrzi a fiókját, megkeresheti az internetet.
 
 > [!NOTE]
-> A TMWS nem támogatja az egyszeri bejelentkezés tesztelését az Azure ad-portálról, az **Áttekintés**  >  **egyszeri bejelentkezés**  >  **beállításával egyszeri bejelentkezést állíthat be**az  >  új vállalati alkalmazás SAML-**tesztelésével** .
+> A TMWS nem támogatja az egyszeri bejelentkezés tesztelését az Azure ad-portálról, az **Áttekintés**  >  **egyszeri bejelentkezés**  >  **beállításával egyszeri bejelentkezést állíthat be** az  >  új vállalati alkalmazás SAML-**tesztelésével** .
 
 1. Törölje az összes cookie böngészőjét, majd indítsa újra a böngészőt. 
 
@@ -224,7 +224,7 @@ Miután konfigurálta az Azure AD szolgáltatást, és megadta a felhasználói 
 
 1. Látogasson el bármelyik internetes webhelyre. A TMWS a TMWS kötött portálra irányítja.
 
-1. Adjon meg egy Active Directory fiókot (Format: *domain* \\ *sAMAccountName* vagy *sAMAccountName* @ *tartomány*), e-mail-címet vagy egyszerű felhasználónevet, majd válassza **a bejelentkezés**lehetőséget. A TMWS az Azure AD bejelentkezési ablakát küldi el.
+1. Adjon meg egy Active Directory fiókot (Format: *domain* \\ *sAMAccountName* vagy *sAMAccountName* @ *tartomány*), e-mail-címet vagy egyszerű felhasználónevet, majd válassza **a bejelentkezés** lehetőséget. A TMWS az Azure AD bejelentkezési ablakát küldi el.
 
 1. Az Azure AD bejelentkezési ablakában adja meg az Azure AD-fiókjának hitelesítő adatait. Most be kell jelentkeznie a TMWS-be.
 

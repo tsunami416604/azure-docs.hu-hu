@@ -7,11 +7,11 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: e79e5e16b300fd02b9c9124f9677747834f22813
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89443143"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009432"
 ---
 # <a name="how-to-catalog-big-data-in-azure-data-catalog"></a>big data katalogizálása Azure Data Catalog
 
@@ -66,6 +66,6 @@ Ebben a mintában érdemes regisztrálni az egyes hivatkozási adatfájlokat **A
 
 Az előző szakaszban ismertetett minták csak két lehetséges módon rendezhetők big data tárolóba, de az egyes implementációk eltérőek. Függetlenül attól, hogy az adatforrások hogyan vannak strukturálva, big data-források regisztrálásakor **Azure Data Catalog**, a szervezeten belül mások számára értékű adathalmazokat jelölő fájlok és könyvtárak regisztrálására koncentráljon. Az összes fájl és könyvtár regisztrálása rendetlenséget teremt a katalógusban, így megnehezíti a felhasználók számára a szükséges igények megtalálását.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Az adatforrások **Azure Data Catalog** való regisztrálása megkönnyíti a felderítését és megismerését. A logikai adatkészleteket jelképező big data fájlok és könyvtárak regisztrálásával és megjegyzésével segítséget nyújthat a felhasználóknak a számukra szükséges big data-források megtalálásában és használatában.

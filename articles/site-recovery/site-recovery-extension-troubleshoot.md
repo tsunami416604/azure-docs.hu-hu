@@ -6,11 +6,11 @@ manager: rochakm
 ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.openlocfilehash: c1915d108bf9465d3e5b8d6a55053b583ee4f580
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88184618"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009704"
 ---
 # <a name="troubleshoot-azure-vm-extension-issues"></a>Azure-beli virtuális gépek bővítményeivel kapcsolatos hibaelhárítás
 
@@ -45,7 +45,7 @@ Hibakód: "151099"
 
 Ez a hiba akkor fordulhat elő, ha a virtuális gépen lévő Azure Guest Agent ügynök nem üzemkész állapotban van.
 
-Az Azure Guest Agent állapotát a [Azure Portalban](https://portal.azure.com/)tekintheti meg. Lépjen a védelemmel ellátni kívánt virtuális gépre, és tekintse meg az állapotot a **virtuálisgép-**  >  **Beállítások**  >  **Tulajdonságok**  >  **ügynökének állapota**mezőben. A legtöbb esetben az ügynök állapota a virtuális gép újraindítása után készen áll. Ha azonban nem tudja újraindítani a problémát, vagy még mindig szembesül a problémával, hajtsa végre az alábbi hibaelhárítási lépéseket:
+Az Azure Guest Agent állapotát a [Azure Portalban](https://portal.azure.com/)tekintheti meg. Lépjen a védelemmel ellátni kívánt virtuális gépre, és tekintse meg az állapotot a **virtuálisgép-**  >  **Beállítások**  >  **Tulajdonságok**  >  **ügynökének állapota** mezőben. A legtöbb esetben az ügynök állapota a virtuális gép újraindítása után készen áll. Ha azonban nem tudja újraindítani a problémát, vagy még mindig szembesül a problémával, hajtsa végre az alábbi hibaelhárítási lépéseket:
 
 - [Az ügynök telepítve van a virtuális gépen, de nem válaszol (Windows rendszerű virtuális gépek esetén)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)
 - [A virtuális gépen telepített ügynök elavult (Linux rendszerű virtuális gépek esetén)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)

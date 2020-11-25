@@ -14,11 +14,11 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: 4016e1dd055b45f9cd59a172d0e71ef95fec1c40
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517206"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008684"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>A Build-feladatok konfigurálása és testreszabása
 
@@ -95,20 +95,20 @@ A feladat konfigurációjának részletei a következő képernyőképen és lis
 ![A hitelesítőadat-képolvasó felépítési feladatának konfigurálása](./media/security-tools/3-taskdetails.png)
 
 Az elérhető lehetőségek a következők:
-  - **Megjelenítendő név** : az Azure DevOps feladat neve. Az alapértelmezett érték a hitelesítőadat-olvasó futtatása
-  - **Eszköz főverziója** : az elérhető értékek közé tartozik a **CredScan v2** , a **CredScan v1**. Javasoljuk, hogy az ügyfelek a **CredScan v2** verzióját használják.
-  - **Kimeneti formátum** : a rendelkezésre álló értékek a **TSV** , a **CSV** , a **SARIF** és az **előgyorsak**.
-  - **Eszköz verziója** : javasoljuk, hogy válassza a **legutóbbi** lehetőséget.
-  - **Vizsgálati mappa** : a beolvasandó adattár mappája.
+  - **Megjelenítendő név**: az Azure DevOps feladat neve. Az alapértelmezett érték a hitelesítőadat-olvasó futtatása
+  - **Eszköz főverziója**: az elérhető értékek közé tartozik a **CredScan v2**, a **CredScan v1**. Javasoljuk, hogy az ügyfelek a **CredScan v2** verzióját használják.
+  - **Kimeneti formátum**: a rendelkezésre álló értékek a **TSV**, a **CSV**, a **SARIF** és az **előgyorsak**.
+  - **Eszköz verziója**: javasoljuk, hogy válassza a **legutóbbi** lehetőséget.
+  - **Vizsgálati mappa**: a beolvasandó adattár mappája.
   - **Keresők** fájltípusa: a vizsgálathoz használt kereső fájl megkeresésének lehetőségei.
-  - **Mellőzési fájl** : egy [JSON](https://json.org/) -fájl letiltja a kimeneti napló hibáit. A letiltási forgatókönyvekkel kapcsolatos további információkért tekintse meg a jelen cikk gyakori kérdések című szakaszát.
-  - **Részletes kimenet** : magától értetődő.
-  - **Batch mérete** : a hitelesítő adatok beolvasójának futtatásához használt egyidejű szálak száma. Az alapértelmezett érték 20. A lehetséges értékek 1 és 2 147 483 647 közötti tartományba esnek.
-  - **Egyeztetési időkorlát** : az az időtartam másodpercben, ameddig a keresőnek meg kell felelnie az ellenőrzések elhagyása előtt.
-  - **Fájl vizsgálata olvasási puffer mérete** : a tartalom olvasásakor használt puffer mérete bájtban megadva. Az alapértelmezett érték a 524 288.  
-  - **Maximális fájl vizsgálatának olvasási bájtjai** : egy fájlból beolvasott bájtok maximális száma a tartalom elemzése során. Az alapértelmezett érték a 104 857 600.
-  - **Vezérlési beállítások**  >  A **feladat futtatása** : Megadja, hogy a feladat Mikor fusson. Összetettebb feltételek megadásához válassza az **Egyéni feltételek** lehetőséget.
-  - **Verzió** : a Build feladat verziója az Azure DevOps-n belül. Ez a beállítás nem gyakran használatos.
+  - **Mellőzési fájl**: egy [JSON](https://json.org/) -fájl letiltja a kimeneti napló hibáit. A letiltási forgatókönyvekkel kapcsolatos további információkért tekintse meg a jelen cikk gyakori kérdések című szakaszát.
+  - **Részletes kimenet**: magától értetődő.
+  - **Batch mérete**: a hitelesítő adatok beolvasójának futtatásához használt egyidejű szálak száma. Az alapértelmezett érték 20. A lehetséges értékek 1 és 2 147 483 647 közötti tartományba esnek.
+  - **Egyeztetési időkorlát**: az az időtartam másodpercben, ameddig a keresőnek meg kell felelnie az ellenőrzések elhagyása előtt.
+  - **Fájl vizsgálata olvasási puffer mérete**: a tartalom olvasásakor használt puffer mérete bájtban megadva. Az alapértelmezett érték a 524 288.  
+  - **Maximális fájl vizsgálatának olvasási bájtjai**: egy fájlból beolvasott bájtok maximális száma a tartalom elemzése során. Az alapértelmezett érték a 104 857 600.
+  - **Vezérlési beállítások**  >  A **feladat futtatása**: Megadja, hogy a feladat Mikor fusson. Összetettebb feltételek megadásához válassza az **Egyéni feltételek** lehetőséget.
+  - **Verzió**: a Build feladat verziója az Azure DevOps-n belül. Ez a beállítás nem gyakran használatos.
 
 A feladathoz tartozó YAML-konfigurációval kapcsolatos információkért tekintse meg a [hitelesítő adatok szkennerének YAML beállításait](yaml-configuration.md#credential-scanner-task)
 
@@ -124,10 +124,10 @@ A feladatok konfigurációjának részletei a következő listában láthatók, 
 
 Az elérhető lehetőségek a következők:
 
-- **Szabály** : az értékek az **SDL szükségesek** , az **SDL javasolt** vagy a saját egyéni szabálykészlet.
-- **Elemzők verziója** : javasoljuk, hogy válassza a **legutóbbi** lehetőséget.
-- **Fordítói figyelmeztetések mellőzése fájl** : a letiltott figyelmeztető azonosítók listáját tartalmazó szövegfájl.
-- **Vezérlési beállítások**  >  A **feladat futtatása** : Megadja, hogy a feladat Mikor fusson. Összetettebb feltételek megadásához válassza az **Egyéni feltételek** lehetőséget.
+- **Szabály**: az értékek az **SDL szükségesek**, az **SDL javasolt** vagy a saját egyéni szabálykészlet.
+- **Elemzők verziója**: javasoljuk, hogy válassza a **legutóbbi** lehetőséget.
+- **Fordítói figyelmeztetések mellőzése fájl**: a letiltott figyelmeztető azonosítók listáját tartalmazó szövegfájl.
+- **Vezérlési beállítások**  >  A **feladat futtatása**: Megadja, hogy a feladat Mikor fusson. Összetettebb feltételek megadásához válassza az **Egyéni feltételek** lehetőséget.
 
 > [!NOTE]
 >
@@ -164,9 +164,9 @@ A feladat konfigurációjának részletei a következő képernyőképen és lis
 
 ![A biztonsági elemzési naplók közzétételének beállítása feladat konfigurálása](./media/security-tools/9-publish-security-analsis-logs600.png)  
 
-- Összetevő **neve** : bármely karakterlánc-azonosító.
-- Összetevő **típusa** : a kijelöléstől függően közzéteheti a naplókat a Azure DevOps Server vagy a Build ügynök számára elérhető megosztott fájlon.
-- **Eszközök** : dönthet úgy, hogy megőrzi a naplókat az egyes eszközökön, vagy kiválaszthatja az **összes eszközt** az összes napló megőrzéséhez.
+- Összetevő **neve**: bármely karakterlánc-azonosító.
+- Összetevő **típusa**: a kijelöléstől függően közzéteheti a naplókat a Azure DevOps Server vagy a Build ügynök számára elérhető megosztott fájlon.
+- **Eszközök**: dönthet úgy, hogy megőrzi a naplókat az egyes eszközökön, vagy kiválaszthatja az **összes eszközt** az összes napló megőrzéséhez.
 
 A feladathoz tartozó YAML-konfigurációval kapcsolatos további információkért tekintse meg a [biztonsági naplók közzététele YAML beállítások](yaml-configuration.md#publish-security-analysis-logs-task) című témakört.
 
@@ -176,10 +176,10 @@ A biztonsági jelentések konfigurációjának részletei a következő képerny
 
 ![A biztonsági jelentés létrehozási feladatának konfigurálása](./media/security-tools/4-createsecurityanalysisreport600.png)
 
-- **Jelentések** : válassza ki a **folyamat-konzolt** , a **TSV-fájlt** és a **HTML** -fájlformátumokat. Minden kiválasztott formátumhoz létrejön egy jelentési fájl.
-- **Eszközök** : válassza ki azokat az eszközöket a Build-definícióban, amelyekhez az észlelt problémákat szeretné összefoglalni. Minden kiválasztott eszköz esetében lehetőség van kijelölni, hogy csak a hibák jelennek-e meg, vagy az összegző jelentésben a hibák és a figyelmeztetések láthatók.
-- **Speciális beállítások** : Ha nincsenek naplók az egyik kiválasztott eszközhöz, dönthet úgy, hogy figyelmeztetést vagy hibát naplóz. Ha hibát naplóz, a feladat meghiúsul.
-- **Alapnaplók mappa** : testreszabhatja az alapnaplók mappát, ahol a naplók találhatók. Ez a beállítás azonban általában nincs használatban.
+- **Jelentések**: válassza ki a **folyamat-konzolt**, a **TSV-fájlt** és a **HTML** -fájlformátumokat. Minden kiválasztott formátumhoz létrejön egy jelentési fájl.
+- **Eszközök**: válassza ki azokat az eszközöket a Build-definícióban, amelyekhez az észlelt problémákat szeretné összefoglalni. Minden kiválasztott eszköz esetében lehetőség van kijelölni, hogy csak a hibák jelennek-e meg, vagy az összegző jelentésben a hibák és a figyelmeztetések láthatók.
+- **Speciális beállítások**: Ha nincsenek naplók az egyik kiválasztott eszközhöz, dönthet úgy, hogy figyelmeztetést vagy hibát naplóz. Ha hibát naplóz, a feladat meghiúsul.
+- **Alapnaplók mappa**: testreszabhatja az alapnaplók mappát, ahol a naplók találhatók. Ez a beállítás azonban általában nincs használatban.
 
 A feladathoz tartozó YAML-konfigurációval kapcsolatos további információkért tekintse meg a [biztonsági jelentés YAML beállításait](yaml-configuration.md#security-report-task) .
 
@@ -189,13 +189,13 @@ A feladat konfigurációjának részletei a következő képernyőképen és lis
 
 ![Az elemzés utáni Build feladat konfigurálása](./media/security-tools/a-post-analysis600.png)
 
-- **Eszközök** : válassza ki azokat az eszközöket a Build-definícióban, amelyekhez feltételesen szeretne beszúrni egy Build-megszakítást. Minden kiválasztott eszköz esetében lehetőség van annak kiválasztására, hogy csak a hibákat vagy a hibákat és a figyelmeztetéseket kívánja-e megszakítani.
-- **Jelentés** : igény szerint megírhatja a létrehozási megszakítást okozó eredményeket. Az eredmények az Azure DevOps-konzol ablakába és a naplófájlba íródnak.
-- **Speciális beállítások** : Ha nincsenek naplók az egyik kiválasztott eszközhöz, dönthet úgy, hogy figyelmeztetést vagy hibát naplóz. Ha hibát naplóz, a feladat meghiúsul.
+- **Eszközök**: válassza ki azokat az eszközöket a Build-definícióban, amelyekhez feltételesen szeretne beszúrni egy Build-megszakítást. Minden kiválasztott eszköz esetében lehetőség van annak kiválasztására, hogy csak a hibákat vagy a hibákat és a figyelmeztetéseket kívánja-e megszakítani.
+- **Jelentés**: igény szerint megírhatja a létrehozási megszakítást okozó eredményeket. Az eredmények az Azure DevOps-konzol ablakába és a naplófájlba íródnak.
+- **Speciális beállítások**: Ha nincsenek naplók az egyik kiválasztott eszközhöz, dönthet úgy, hogy figyelmeztetést vagy hibát naplóz. Ha hibát naplóz, a feladat meghiúsul.
 
 A feladathoz tartozó YAML-konfigurációval kapcsolatos információkért tekintse meg a [post Analysis YAML beállításait](yaml-configuration.md#post-analysis-task)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A YAML-alapú konfigurációval kapcsolatos információkért tekintse meg a [YAML konfigurációs útmutatóját](yaml-configuration.md).
 

@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 03/19/2016
 ms.openlocfilehash: 5af0eb20f9766369caa7351719b63b213c394e5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87305805"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008837"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>A felhőalapú szolgáltatás, a virtuális gép vagy a Service Fabric diagnosztikai adatbázis küldése Application Insights
 A Cloud Services, a Virtual Machines, a Virtual Machine Scale Sets és a Service Fabric mind a Azure Diagnostics bővítményt használja az adatok gyűjtéséhez.  Az Azure Diagnostics adatokat küld az Azure Storage-táblákba.  Az Azure Diagnostics Extension 1,5-es vagy újabb verziójának használatával azonban az összes vagy egy részhalmazát is áthelyezheti más helyszínekre.
@@ -66,7 +66,7 @@ Példa a fogadó Application Insightsra való konfigurálására:
     - A *Name* attribútum egyedi módon hivatkozik erre a csatornára.
     - A *naplózási szint* attribútum lehetővé teszi a csatorna által engedélyezett naplózási szint megadását. A rendelkezésre álló naplózási szintek a legkevesebb információt a következő sorrendben használják:
         - Részletes
-        - Tájékoztatás
+        - Információ
         - Figyelmeztetés
         - Hiba
         - Kritikus
@@ -212,7 +212,7 @@ Az előző konfigurációban a következő sorok a következő jelentésekkel re
 - **Egy csatorna naplózási szintje nem haladhatja meg az Azure Diagnostics által összegyűjtött naplózási szintet.** Nem gyűjthet például az alkalmazásnapló-hibákat a naplók elemben, és megpróbálhatja részletes naplókat küldeni az alkalmazás Insight fogadójának. A *scheduledTransferLogLevelFilter* attribútumnak mindig egyenlő vagy annál több naplót kell összegyűjtenie, mint amennyit a fogadónak elküldeni próbált naplók.
 - **Az Azure Diagnostics bővítmény által gyűjtött blob-adatok nem küldhetők Application Insights.** Például a *címtárak* csomópontban megadott minden adat. Az összeomlási memóriaképek esetében a rendszer a tényleges összeomlási memóriaképet küldi el a blob Storage-nak, és csak egy értesítést küld a rendszer az összeomlási memóriakép létrejöttéről Application Insights.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Megtudhatja, hogyan [tekintheti meg az Azure diagnosztikai adatait](../app/cloudservices.md) Application Insightsban.
 * A [PowerShell](../../cloud-services/cloud-services-diagnostics-powershell.md) használatával engedélyezze az Azure Diagnostics bővítményt az alkalmazáshoz.
 * A [Visual Studio](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) használata az Azure Diagnostics bővítmény engedélyezéséhez az alkalmazáshoz

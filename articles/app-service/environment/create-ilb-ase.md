@@ -8,11 +8,11 @@ ms.date: 09/16/2020
 ms.author: ccompy
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 27c9198558a730d0af49077d6f5baa6db4789416
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503521"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009551"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Belső Load Balancer létrehozása és használata App Service Environment 
 
@@ -48,7 +48,7 @@ Néhány dolog, amit nem tehet meg ILB ASE használata esetén:
 
 Az ILB ASE létrehozása:
 
-1. A Azure Portal válassza az **erőforrás létrehozása**  >  **webes**  >  **app Service Environment**lehetőséget.
+1. A Azure Portal válassza az **erőforrás létrehozása**  >  **webes**  >  **app Service Environment** lehetőséget.
 
 2. Válassza ki előfizetését.
 
@@ -71,14 +71,14 @@ Az ILB ASE létrehozása:
 
     ![Bekapcsolási hálózat][1]
 
-7. Válassza **a felülvizsgálat és létrehozás, majd a** **Létrehozás**lehetőséget.
+7. Válassza **a felülvizsgálat és létrehozás, majd a** **Létrehozás** lehetőséget.
 
 
 ## <a name="create-an-app-in-an-ilb-ase"></a>Alkalmazás létrehozása az ILB ASE környezetben ##
 
 Az ILB ASE környezetben a sima ASE környezettel megegyező módon hozhat létre alkalmazást.
 
-1. A Azure Portal válassza az **erőforrás létrehozása**  >  **webes**  >  **webes alkalmazás**lehetőséget.
+1. A Azure Portal válassza az **erőforrás létrehozása**  >  **webes**  >  **webes alkalmazás** lehetőséget.
 
 1. Adja meg az alkalmazás nevét.
 
@@ -96,7 +96,7 @@ Az ILB ASE környezetben a sima ASE környezettel megegyező módon hozhat létr
 
 ### <a name="web-jobs-functions-and-the-ilb-ase"></a>WebJobs-feladatok, a Functions és az ILB ASE 
 
-Az ILB ASE támogatja a Functionst és a WebJobs-feladatokat is, de ahhoz, hogy a portál is működjön velük, rendelkeznie kell hálózati hozzáféréssel egy SCM helyhez.  Ez azt jelenti, hogy a böngészőnek olyan gazdagépen kell lennie, amely csatlakozik a virtuális hálózathoz, vagy azon belül van. Ha a ILB-előkészítés olyan tartománynevet tartalmaz, amely nem a *appserviceenvironment.net*végződik, akkor a böngészővel meg kell bíznia az SCM-hely által használt HTTPS-tanúsítványt.
+Az ILB ASE támogatja a Functionst és a WebJobs-feladatokat is, de ahhoz, hogy a portál is működjön velük, rendelkeznie kell hálózati hozzáféréssel egy SCM helyhez.  Ez azt jelenti, hogy a böngészőnek olyan gazdagépen kell lennie, amely csatlakozik a virtuális hálózathoz, vagy azon belül van. Ha a ILB-előkészítés olyan tartománynevet tartalmaz, amely nem a *appserviceenvironment.net* végződik, akkor a böngészővel meg kell bíznia az SCM-hely által használt HTTPS-tanúsítványt.
 
 ## <a name="dns-configuration"></a>DNS-konfiguráció 
 
@@ -123,13 +123,13 @@ A nevű zóna. &lt; &gt;a asename. appserviceenvironment.net globálisan egyedi.
 
 ## <a name="publish-with-an-ilb-ase"></a>Közzététel ILB ASE környezetben
 
-Minden létrehozott alkalmazásnak két végpontja van. Egy ILB-ben az * &lt; alkalmazás neve szerepel &gt; . &lt; ILB &gt; * és az * &lt; alkalmazás neve &gt; . SCM. &lt; ILB &gt; *. 
+Minden létrehozott alkalmazásnak két végpontja van. Egy ILB-ben az *&lt; alkalmazás neve szerepel &gt; . &lt; ILB &gt;* és az *&lt; alkalmazás neve &gt; . SCM. &lt; ILB &gt;*. 
 
 Az SCM helynév a Kudu konzolhoz irányítja, az Azure Portal **Speciális portál** részére. A Kudu konzol a környezeti változók megtekintését, a lemez vizsgálatát, a konzol használatát és még sok más funkciót kínál. További információ: [Kudu konzol az Azure App Service-ben][Kudu]. 
 
 A GitHubhoz és az Azure DevOpshoz hasonló internetes alapú CI-rendszerek akkor is működnek az ILB ASE környezettel, ha a buildügynök elérhető az internetről, és ugyanazon a hálózaton található, mint az ILB ASE. Tehát az Azure DevOps esetében, ha a buildügynök ugyanazon a VNET-en lett létrehozva, mint az ILB ASE (lehet más alhálózat), képes lesz lekérni a kódot az Azure DevOps-gitről és telepíteni az ILB ASE-re. Ha nem szeretne létrehozni saját buildügynököt, egy lekérési modellt használó CI-rendszert kell használnia helyette, például a Dropboxot.
 
-Az ILB ASE alkalmazásainak közzétételi végpontjai az ILB ASE létrehozásakor megadott tartományt használják. Ez a tartomány az alkalmazás közzétételi profiljában és az alkalmazás portál paneljén jelenik meg (az**Áttekintés**  >  **Essentials** és a **Properties**is). Ha van egy ILB, amely a (z * &lt; &gt; ) "appserviceenvironment.net*" nevű tartománynév-utótagot és egy *mytest*nevű alkalmazást használ, használja a *mytest. &lt; Bevezetési név &gt; . APPSERVICEENVIRONMENT.net* FTP-hez és *mytest.SCM.contoso.net* webes telepítéshez.
+Az ILB ASE alkalmazásainak közzétételi végpontjai az ILB ASE létrehozásakor megadott tartományt használják. Ez a tartomány az alkalmazás közzétételi profiljában és az alkalmazás portál paneljén jelenik meg (az **Áttekintés**  >  **Essentials** és a **Properties** is). Ha van egy ILB, amely a (z *&lt; &gt; ) "appserviceenvironment.net*" nevű tartománynév-utótagot és egy *mytest* nevű alkalmazást használ, használja a *mytest. &lt; Bevezetési név &gt; . APPSERVICEENVIRONMENT.net* FTP-hez és *mytest.SCM.contoso.net* webes telepítéshez.
 
 ## <a name="configure-an-ilb-ase-with-a-waf-device"></a>ILB-beadás konfigurálása WAF-eszközzel ##
 
@@ -141,7 +141,7 @@ Ha többet szeretne megtudni arról, hogyan konfigurálhatja a ILB a WAF eszköz
 
 Az 2019. május előtt elkészített ILB-ASE a tartomány utótagjának a központilag történő létrehozása során történő beállításához szükséges. Emellett az adott tartományi utótagon alapuló alapértelmezett tanúsítvány feltöltésére is szükség van. Emellett egy régebbi ILB-benyújtó használatával nem végezheti el az egyszeri bejelentkezést a kudu-konzolon a ILB-elősegítő alkalmazásokkal. Ha a DNS-t egy régebbi ILB-alapú központhoz konfigurálja, akkor egy olyan rekordot kell beállítania egy olyan zónában, amely megfelel a tartomány utótagjának. 
 
-## <a name="get-started"></a>Első lépések ##
+## <a name="get-started"></a>Bevezetés ##
 
 * Az ASE használatával kapcsolatos első lépésekről [Az App Service Environment bemutatása][Intro] témakörben olvashat. 
 

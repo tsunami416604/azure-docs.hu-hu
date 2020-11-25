@@ -12,11 +12,11 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: 511166e156591562b2120b58cc420f3fccd1d8c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84804906"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008930"
 ---
 # <a name="client-side-encryption-with-python"></a>Ügyféloldali titkosítás Python-val
 
@@ -54,7 +54,7 @@ A burkológörbe technikán keresztüli visszafejtés a következő módon műk�
 A Storage ügyféloldali kódtára [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) -t használ a felhasználói adattartalom titkosításához. Pontosabban, AES-sel rendelkező [titkosítási blokkoló (CBC)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) mód. Az egyes szolgáltatások némileg eltérően működnek, ezért ezeket itt fogjuk megbeszélni.
 
 ### <a name="blobs"></a>Blobok
-Az ügyféloldali kódtár jelenleg csak a teljes Blobok titkosítását támogatja. A titkosítás csak akkor támogatott, ha a felhasználók a **create*** metódusokat használják. A letöltések esetében a teljes és a tartományra vonatkozó letöltések is támogatottak, és a feltöltés és a letöltés párhuzamos is elérhető.
+Az ügyféloldali kódtár jelenleg csak a teljes Blobok titkosítását támogatja. A titkosítás csak akkor támogatott, ha a felhasználók a **create** _ metódusokat használják. A letöltések esetében a teljes és a tartományra vonatkozó letöltések is támogatottak, és a feltöltés és a letöltés párhuzamos is elérhető.
 
 A titkosítás során az ügyfél-függvénytár 16 bájtos véletlenszerű inicializálási vektort (IV) állít elő, amely egy 32 bájtos véletlenszerű tartalom-titkosítási kulccsal (CEK), valamint a Blobok adatainak ezen információk használatával történő titkosítását is elvégezheti. A burkolt CEK és néhány további titkosítási metaadat ezután blob-metaadatokként tárolódik a szolgáltatás titkosított blobja mellett.
 
@@ -63,9 +63,9 @@ A titkosítás során az ügyfél-függvénytár 16 bájtos véletlenszerű inic
 > 
 > 
 
-A titkosított Blobok letöltése magában foglalja a teljes blob tartalmának lekérését a **Get*** kényelmi módszerek használatával. A burkolt CEK nincs becsomagolva és együtt használva a IV (ebben az esetben a blob-metaadatokban tárolt), hogy visszaállítsa a visszafejtett adatokat a felhasználók számára.
+A titkosított Blobok letöltése magában foglalja a teljes blob tartalmának lekérését a kényelmi módszerek _*beszerzésével* *_ . A burkolt CEK nincs becsomagolva és együtt használva a IV (ebben az esetben a blob-metaadatokban tárolt), hogy visszaállítsa a visszafejtett adatokat a felhasználók számára.
 
-Egy tetszőleges tartomány (**Get*** metódusok, amelyekben az átadott tartománybeli paraméterek) letöltése a titkosított blobban magában foglalja a felhasználók által megadott tartomány beállítását, hogy a kért tartomány sikeres visszafejtéséhez használható, kis mennyiségű további adat legyen elérhető.
+Egy tetszőleges tartomány letöltése (metódusok _*beolvasása* *_ az átadott tartomány-paraméterekkel) a titkosított blobban a felhasználók által megadott tartomány módosítása a kért tartomány sikeres visszafejtéséhez használható, kis mennyiségű további adat beszerzése érdekében.
 
 A blobok és a Blobok csak akkor titkosíthatók/visszafejthetők, ha ezt a sémát használják. A hozzáfűző Blobok titkosítása jelenleg nem támogatott.
 
@@ -114,7 +114,7 @@ Vegye figyelembe, hogy az entitások titkosítva vannak, mivel a köteg titkosí
 > [!IMPORTANT]
 > Az ügyféloldali titkosítás használatakor vegye figyelembe ezeket a fontos pontokat:
 > 
-> * Titkosított blobba való olvasáskor vagy az azokból való íráskor használja az egész blob feltöltési parancsokat és a tartomány/teljes blob letöltési parancsot. Kerülje a titkosított blobba való írást olyan protokollok használatával, mint például a Put blokk, a tiltási lista, az írási lapok vagy a törlési lapok használata. Ellenkező esetben előfordulhat, hogy a titkosított blob sérült, és nem olvasható.
+> _ Ha titkosított blobba olvas vagy ír, használja az egész blob feltöltési parancsokat és a tartomány/teljes blob letöltési parancsot. Kerülje a titkosított blobba való írást olyan protokollok használatával, mint például a Put blokk, a tiltási lista, az írási lapok vagy a törlési lapok használata. Ellenkező esetben előfordulhat, hogy a titkosított blob sérült, és nem olvasható.
 > * A táblákhoz hasonló korlátozás létezik. Ügyeljen arra, hogy ne frissítse a titkosított tulajdonságokat a titkosítási metaadatok frissítése nélkül.
 > * Ha a titkosított blobon beállítja a metaadatokat, felülírhatja a titkosítással kapcsolatos metaadatokat a visszafejtéshez, mivel a metaadatok beállítása nem adalékanyag. Ez a pillanatképek esetében is igaz. Kerülje a metaadatok megadását egy titkosított blob pillanatképének létrehozása közben. Ha a metaadatokat be kell állítani, ügyeljen arra, hogy először hívja meg a **get_blob_metadata** metódust az aktuális titkosítási metaadatok beszerzéséhez, és ne legyenek egyidejű írások a metaadatok beállításakor.
 > * Engedélyezze a **require_encryption** jelzőt a szolgáltatás objektumon olyan felhasználók számára, akik csak titkosított adattal működnek. További információért lásd alább.

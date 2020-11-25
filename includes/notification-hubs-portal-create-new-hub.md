@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: notification-hubs
 author: jwargo
 ms.service: notification-hubs
@@ -9,15 +9,15 @@ ms.date: 01/17/2019
 ms.author: jowargo
 ms.custom: include file
 ms.openlocfilehash: 2ec602f056b339a1b1dcb78d6b8d7583aeaf0434
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93376123"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009107"
 ---
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-1. A bal oldali menüben válassza a **minden szolgáltatás** lehetőséget, majd a **mobil** szakaszban válassza a **Notification Hubs** lehetőséget. A szolgáltatás neve melletti csillag ikonra kattintva adja hozzá a szolgáltatást a **Kedvencek** szakaszhoz a bal oldali menüben. Miután hozzáadta **Notification Hubs** a **kedvencekhez** , válassza ki a bal oldali menüben.
+1. A bal oldali menüben válassza a **minden szolgáltatás** lehetőséget, majd a **mobil** szakaszban válassza a **Notification Hubs** lehetőséget. A szolgáltatás neve melletti csillag ikonra kattintva adja hozzá a szolgáltatást a **Kedvencek** szakaszhoz a bal oldali menüben. Miután hozzáadta **Notification Hubs** a **kedvencekhez**, válassza ki a bal oldali menüben.
 
       ![Azure Portal – Notification Hubs kiválasztása](./media/notification-hubs-portal-create-new-hub/all-services-select-notification-hubs.png)
 
@@ -33,7 +33,7 @@ ms.locfileid: "93376123"
 
     1. Válasszon ki egy értéket a **hely** legördülő listából. Ez az érték határozza meg azt a helyet, amelyben létre kívánja hozni a hubot.
 
-    1. Válasszon ki egy meglévő erőforráscsoportot az **erőforráscsoporthoz** , vagy hozzon létre egy új erőforráscsoport nevét.
+    1. Válasszon ki egy meglévő erőforráscsoportot az **erőforráscsoporthoz**, vagy hozzon létre egy új erőforráscsoport nevét.
 
     1. Kattintson a **Létrehozás** gombra.
 

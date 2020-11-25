@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
 ms.openlocfilehash: 826e475eb71563b52d687903aeac4ec936e267f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87093000"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009500"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Durable Functions futtatása webjobsként
 
@@ -27,13 +27,13 @@ Ez a cikk azt feltételezi, hogy már ismeri a webjobs SDK, a C# Azure Functions
 
 * [Ismerkedés a webjobs SDK-val](../../app-service/webjobs-sdk-get-started.md)
 * [Az első függvény létrehozása a Visual Studio használatával](../functions-create-your-first-function-visual-studio.md)
-* [Durable Functions](durable-functions-sequence.md)
+* [Tartós függvények](durable-functions-sequence.md)
 
 A cikkben szereplő lépések végrehajtásához:
 
 * [Telepítse a Visual Studio 2019](/visualstudio/install/) -et az **Azure-fejlesztési** számítási feladattal.
 
-  Ha már rendelkezik a Visual Studióval, de nem rendelkezik ezzel a számítási feladattal, adja hozzá a munkaterhelést az **eszközök**  >  **beolvasása eszközök és szolgáltatások beszerzése**lehetőség
+  Ha már rendelkezik a Visual Studióval, de nem rendelkezik ezzel a számítási feladattal, adja hozzá a munkaterhelést az **eszközök**  >  **beolvasása eszközök és szolgáltatások beszerzése** lehetőség
 
   (Ehelyett használhatja a [Visual Studio Code](https://code.visualstudio.com/) -ot, de néhány útmutató a Visual studióra vonatkozik.)
 
@@ -119,7 +119,7 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Függvények
 
 A webjobs-feladatok kontextusában a Durable Functions a Azure Functions kontextusában különbözik a Durable Functionstől. Fontos, hogy tisztában legyenek a kódok írásához szükséges különbségekkel.
 
@@ -133,7 +133,7 @@ A webjobs SDK nem támogatja a következő Azure Functions funkciókat:
 
 Egy webjobs SDK-projektben a függvény metódusának neve a függvény neve. Az `FunctionName` attribútum csak Azure Functionsban használatos.
 
-### <a name="http-trigger"></a>HTTP eseményindító
+### <a name="http-trigger"></a>HTTP-eseményindító
 
 A webjobs SDK nem rendelkezik HTTP-triggerrel. A minta projekt előkészítési ügyfele egy időzítő triggert használ:
 

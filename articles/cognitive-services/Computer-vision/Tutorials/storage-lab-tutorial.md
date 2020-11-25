@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: tutorial
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f14bcc1b0576a5ad2f4dbbf30311f613607d3ee5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b51234ff121071de27ec8c91425f4a769c8d833e
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89322330"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96008786"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Oktatóanyag: képmetaadatok előállítása a Computer Vision használatával az Azure Storage-ban
 
@@ -32,7 +32,7 @@ Ez az oktatóanyag a következőket mutatja be:
 > * Metaadatok csatolása az Azure Storage-lemezképekhez
 > * Képmetaadatok keresése Azure Storage Explorer használatával
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services), mielőtt hozzákezd. 
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services). 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -47,7 +47,7 @@ Létre kell hoznia egy Computer Vision erőforrást az Azure-fiókjához; Ez az 
 
 1. Computer Vision erőforrás létrehozásához kövesse az [Azure Cognitive Services-erőforrás létrehozása](../../cognitive-services-apis-create-account.md) című témakör utasításait.
 
-1. Ezután lépjen az erőforráscsoport menüjére, és kattintson az imént létrehozott Computer Vision API-előfizetésre. Másolja az URL-címet a **végpont** alatt, hogy valahol egyszerűen lekérheti azt egy pillanat alatt. Ezután kattintson a **hozzáférési kulcsok megjelenítése**lehetőségre.
+1. Ezután lépjen az erőforráscsoport menüjére, és kattintson az imént létrehozott Computer Vision API-előfizetésre. Másolja az URL-címet a **végpont** alatt, hogy valahol egyszerűen lekérheti azt egy pillanat alatt. Ezután kattintson a **hozzáférési kulcsok megjelenítése** lehetőségre.
 
     ![Azure Portal oldalon a végpont URL-címe és a hozzáférési kulcsok hivatkozása](../Images/copy-vision-endpoint.png)
     
@@ -69,7 +69,7 @@ Nyissa meg a ASP.NET-webalkalmazást a Visual Studióban, és navigáljon a proj
 <add key="VisionEndpoint" value="VISION_ENDPOINT" />
 ```
 
-Ezután a Megoldáskezelő kattintson a jobb gombbal a projektre, és a **NuGet-csomagok kezelése** parancs használatával telepítse a **Microsoft. Azure. CognitiveServices. vízió. ComputerVision**csomagot. Ez a csomag a Computer Vision API meghívásához szükséges típusokat tartalmazza.
+Ezután a Megoldáskezelő kattintson a jobb gombbal a projektre, és a **NuGet-csomagok kezelése** parancs használatával telepítse a **Microsoft. Azure. CognitiveServices. vízió. ComputerVision** csomagot. Ez a csomag a Computer Vision API meghívásához szükséges típusokat tartalmazza.
 
 ## <a name="add-metadata-generation-code"></a>Metaadatok létrehozási kódjának hozzáadása
 
@@ -134,7 +134,7 @@ Mentse a módosításokat a Visual Studióban, és nyomja le a **CTRL + F5** bil
 
 ![A számítógép által generált felirat](../Images/thumbnail-with-tooltip.png)
 
-Az összes csatolt metaadat megtekintéséhez a Azure Storage Explorer segítségével megtekintheti a lemezképekhez használt tárolót. Kattintson a jobb gombbal a tároló egyik blobára, és válassza a **Tulajdonságok**lehetőséget. A párbeszédpanelen megjelenik a kulcs-érték párok listája. A számítógép által generált rendszerkép leírását a "Caption" elem tárolja, a keresési kulcsszavakat pedig a "Tag0", "Tag1" és így tovább. Ha elkészült, kattintson a **Mégse** gombra a párbeszédpanel bezárásához.
+Az összes csatolt metaadat megtekintéséhez a Azure Storage Explorer segítségével megtekintheti a lemezképekhez használt tárolót. Kattintson a jobb gombbal a tároló egyik blobára, és válassza a **Tulajdonságok** lehetőséget. A párbeszédpanelen megjelenik a kulcs-érték párok listája. A számítógép által generált rendszerkép leírását a "Caption" elem tárolja, a keresési kulcsszavakat pedig a "Tag0", "Tag1" és így tovább. Ha elkészült, kattintson a **Mégse** gombra a párbeszédpanel bezárásához.
 
 ![Rendszerkép tulajdonságai párbeszédpanel, metaadatokat tartalmazó címkékkel](../Images/blob-metadata.png)
 

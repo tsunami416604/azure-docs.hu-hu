@@ -4,11 +4,11 @@ description: Tudnivalók az alkalmazás-tárolók rendszerképeinek alapképeir�
 ms.topic: article
 ms.date: 01/22/2019
 ms.openlocfilehash: 74e5fb81e3ef6f75b5ee2872ee44b99aae096fd8
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93025765"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009823"
 ---
 # <a name="about-base-image-updates-for-acr-tasks"></a>Az ACR-feladatok alaprendszerképének frissítései
 
@@ -52,7 +52,7 @@ Az alaprendszerkép frissítésének és a függő feladat indításának időpo
 
 ## <a name="additional-considerations"></a>Néhány fontos megjegyzés
 
-* **Alkalmazási lemezképek alaprendszerképei** – jelenleg egy ACR-feladat csak az alkalmazás-( *futtatókörnyezet* -) lemezképek alaprendszerkép-frissítéseinek nyomon követésére használható. Nem követ nyomon a többfázisú Dockerfiles használt közbenső ( *buildtime* ) lemezképek alaprendszerkép-frissítéseit.  
+* **Alkalmazási lemezképek alaprendszerképei** – jelenleg egy ACR-feladat csak az alkalmazás-(*futtatókörnyezet*-) lemezképek alaprendszerkép-frissítéseinek nyomon követésére használható. Nem követ nyomon a többfázisú Dockerfiles használt közbenső (*buildtime*) lemezképek alaprendszerkép-frissítéseit.  
 
 * **Alapértelmezés szerint engedélyezve** – ha egy ACR-feladatot hoz létre az az [ACR Task Create][az-acr-task-create] paranccsal, alapértelmezés szerint a feladat *engedélyezve* van az alaprendszerkép frissítésével. Vagyis a tulajdonság értéke `base-image-trigger-enabled` true (igaz). Ha le szeretné tiltani ezt a viselkedést egy feladatban, frissítse a tulajdonságot hamis értékre. Futtassa például a következő az [ACR Task Update][az-acr-task-update] parancsot:
 
@@ -66,7 +66,7 @@ Az alaprendszerkép frissítésének és a függő feladat indításának időpo
 
 * **Egyéb feladat-eseményindítók** – az alaprendszerkép frissítései által aktivált feladatok esetében engedélyezheti a [forráskód](container-registry-tutorial-build-task.md) -végrehajtás vagy [az ütemterv](container-registry-tasks-scheduled.md)alapján történő eseményindítókat is. Egy alapszintű rendszerkép frissítése [több lépésből álló feladatot](container-registry-tasks-multi-step.md)is indíthat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alaprendszerkép frissítése után az alkalmazás rendszerkép-buildek automatizálására szolgáló forgatókönyvek az alábbi oktatóanyagokat ismertetik:
 

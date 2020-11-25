@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: ecb066c7269217af3f8cc84e0f59ab29b4b39a9e
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 45ebd793d96ed8cf0edf88d5631353fb6cd6a982
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331512"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96008769"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Az Azure Data Factory vizuális monitorozása
 
@@ -40,7 +40,7 @@ A folyamat futtatása rács a következő oszlopokat tartalmazza:
 | Futtatás vége | A folyamat futtatásának befejezési dátuma és időpontja (hh/nn/éééé, óó: PP: SS AM/PM) |
 | Időtartam | Futtatás időtartama (óó: PP: SS) |
 | Aktiválta: | A folyamatot elindító trigger neve |
-| status | **Sikertelen** , **sikeres** , **folyamatban** , **megszakítva** vagy **várólistán** lévő |
+| Állapot | **Sikertelen**, **sikeres**, **folyamatban**, **megszakítva** vagy **várólistán** lévő |
 | Széljegyzetek | Egy folyamathoz társított szűrhető Címkék  |
 | Paraméterek | A folyamat futtatásának paraméterei (név/érték párok) |
 | Hiba | Ha a folyamat nem sikerült, a futtatási hiba |
@@ -62,16 +62,16 @@ Ha részletes képet szeretne kapni egy adott folyamat futtatásának egyes tev�
 
 A listanézet azokat a tevékenység-futtatásokat jeleníti meg, amelyek megfelelnek az egyes folyamatoknak. Vigye az egérmutatót az adott tevékenység futtatására, hogy a futtatásra vonatkozó információkat, például a JSON-bemenetet, a JSON-kimenetet és a tevékenységek részletes figyelési élményeit kapja meg.
 
-![Figyelési tevékenység futtatási listájának megjelenítése](media/monitor-visually/activity-runs.png)
+![A SalesAnalyticsMLPipeline, majd a tevékenységek futtatására vonatkozó információk szerepelnek.](media/monitor-visually/activity-runs.png)
 
 | **Oszlop neve** | **Leírás** |
 | --- | --- |
 | Tevékenységnév | A folyamaton belüli tevékenység neve |
-| Művelettípus | A tevékenység típusa, például **Másolás** , **ExecuteDataFlow** vagy **AzureMLExecutePipeline** |
+| Művelettípus | A tevékenység típusa, például **Másolás**, **ExecuteDataFlow** vagy **AzureMLExecutePipeline** |
 | Műveletek | Ikonok, amelyekkel megtekintheti a JSON bemeneti adatait, a JSON kimeneti adatait vagy a tevékenységekre vonatkozó részletes figyelési tapasztalatokat | 
 | Futtatás indítása | A tevékenység futtatásának kezdési dátuma és időpontja (hh/nn/éééé, óó: PP: SS AM/PM) |
 | Időtartam | Futtatás időtartama (óó: PP: SS) |
-| status | **Sikertelen** , **sikeres** , **folyamatban** vagy **megszakítva** |
+| Állapot | **Sikertelen**, **sikeres**, **folyamatban** vagy **megszakítva** |
 | Integration Runtime | Integration Runtime a tevékenység futtatása |
 | Felhasználói tulajdonságok | A tevékenység felhasználó által definiált tulajdonságai |
 | Hiba | Ha a tevékenység nem sikerült, a futtatási hiba |
@@ -79,7 +79,7 @@ A listanézet azokat a tevékenység-futtatásokat jeleníti meg, amelyek megfel
 
 Ha egy tevékenység nem sikerült, a hiba oszlopban látható ikonra kattintva a részletes hibaüzenet jelenik meg. 
 
-![Figyelési tevékenység futtatási listájának megjelenítése](media/monitor-visually/activity-run-error.png)
+![Ekkor megjelenik egy értesítés, amely tartalmazza a hibakódot, a hiba típusát és a hiba részleteit.](media/monitor-visually/activity-run-error.png)
 
 ### <a name="promote-user-properties-to-monitor"></a>A figyelni kívánt felhasználói tulajdonságok előléptetése
 

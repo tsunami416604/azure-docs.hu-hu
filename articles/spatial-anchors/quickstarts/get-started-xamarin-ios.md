@@ -1,19 +1,19 @@
 ---
 title: 'Gyors útmutató: Xamarin iOS-alkalmazás létrehozása'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy iOS-alkalmazást a Xamarin térbeli horgonyok használatával.
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 07/22/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 610112f9374f2ca39a8df4b849aeda4abf965e57
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: b62ca4b02a1bd28d150f233adf1dfb621995e1c4
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097422"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96009738"
 ---
 # <a name="quickstart-create-a-xamarin-ios-app-with-azure-spatial-anchors"></a>Rövid útmutató: Xamarin iOS-alkalmazás létrehozása az Azure térbeli Horgonyokkal
 
@@ -61,11 +61,11 @@ Keresse meg a `SpatialAnchorsAccountDomain` mezőt, és cserélje le a `Set me` 
 
 Kapcsolja be az iOS-eszközt, jelentkezzen be, és csatlakoztassa a számítógéphez USB-kábellel.
 
-Állítsa az indítási projektet **SampleXamarin. iOS**értékre, módosítsa a **megoldás konfigurációját** a **kiadásra**, majd válassza ki azt az eszközt, amelyet telepíteni kíván az eszköz-választó legördülő menüben.
+Állítsa az indítási projektet **SampleXamarin. iOS** értékre, módosítsa a **megoldás konfigurációját** a **kiadásra**, majd válassza ki azt az eszközt, amelyet telepíteni kíván az eszköz-választó legördülő menüben.
 
 ![Visual Studio-konfiguráció](./media/get-started-xamarin-iOS/visual-studio-macos-configuration.jpg)
 
-**Run**  >  Az alkalmazás üzembe helyezéséhez és elindításához válassza a Futtatás**indításkor hibakeresés nélkül** lehetőséget.
+**Run**  >  Az alkalmazás üzembe helyezéséhez és elindításához válassza a Futtatás **indításkor hibakeresés nélkül** lehetőséget.
 
 Az alkalmazásban válassza az **alapszintű** lehetőséget a bemutató futtatásához, és kövesse az utasításokat a horgony elhelyezéséhez és felidézéséhez.
 

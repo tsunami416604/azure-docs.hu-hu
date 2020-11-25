@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 8/04/2017
 ms.author: cawa
 ms.openlocfilehash: d4d6b781d97d481793e69cf2ca97cca5b93ce432
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86256093"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008531"
 ---
 # <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>Biztonságos kapcsolatok konfigurálása egy Service Fabric-fürthöz a Visual studióból
 Ismerje meg, hogyan férhet hozzá a Visual Studióval egy Azure Service Fabric-fürt biztonságos eléréséhez a konfigurált hozzáférés-vezérlési házirendekkel.
@@ -21,7 +21,7 @@ Az Azure Service Fabric-fürt két típusú kapcsolatot támogat: **nem biztons�
 A Visual Studio Service Fabric eszközei támogatják a fürthöz való csatlakozáshoz szükséges összes hitelesítési típust a közzétételhez. A biztonságos Service Fabric fürt beállításával kapcsolatos útmutatásért lásd: [Service Fabric-fürt beállítása a Azure Portalból](service-fabric-cluster-creation-via-portal.md) .
 
 ## <a name="configure-cluster-connections-in-publish-profiles"></a>A fürt kapcsolatainak konfigurálása a közzétételi profilokban
-Ha Service Fabric projektet tesz közzé a Visual studióból, a **Service Fabric alkalmazás közzététele** párbeszédpanelen választhatja ki az Azure Service Fabric-fürtöt. A **csatlakoztatási végpont**területen válasszon ki egy meglévő fürtöt az előfizetése alatt.
+Ha Service Fabric projektet tesz közzé a Visual studióból, a **Service Fabric alkalmazás közzététele** párbeszédpanelen választhatja ki az Azure Service Fabric-fürtöt. A **csatlakoztatási végpont** területen válasszon ki egy meglévő fürtöt az előfizetése alatt.
 
 ![A * * közzétételi Service Fabric alkalmazás * * párbeszédpanel egy Service Fabric-kapcsolatok konfigurálására szolgál.][publishdialog]
 
