@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: cephalin
 ms.openlocfilehash: 2f490a5b12484a91e963d068810b292d7761521a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89484297"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95986544"
 ---
 > [!NOTE]
 > A Azure DNS használatával egyéni DNS-nevet állíthat be Azure App Servicehoz. További információt az [egyéni tartománybeállítások egy Azure-szolgáltatáshoz az Azure DNS használatával történő megadását](../articles/dns/dns-custom-domain.md#app-service-web-apps) ismertető cikkben talál.
@@ -20,7 +20,7 @@ ms.locfileid: "89484297"
 
 1. Keresse meg a DNS-rekordok kezelésére szolgáló oldalt. Minden tartományszolgáltató saját felülettel rendelkezik a DNS-rekordok kezelésére, ezért tekintse meg a szolgáltatói dokumentációt. A webhely **Tartománynév**, **DNS** vagy **Névkiszolgáló kezelése** címkével ellátott területeit keresse.
 
-   A DNS-rekordok oldalon gyakran megtekintheti a fiók adatait, majd egy olyan hivatkozást keres, mint például **a saját tartományok**. Nyissa meg a lapot, majd keresse meg a nevet, például a **zónafájl**, a **DNS-rekordok**vagy a **Speciális konfiguráció**nevű hivatkozást.
+   A DNS-rekordok oldalon gyakran megtekintheti a fiók adatait, majd egy olyan hivatkozást keres, mint például **a saját tartományok**. Nyissa meg a lapot, majd keresse meg a nevet, például a **zónafájl**, a **DNS-rekordok** vagy a **Speciális konfiguráció** nevű hivatkozást.
 
    A következő képernyőkép egy DNS-rekordokat tartalmazó oldalra mutat példát:
 

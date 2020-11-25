@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
 ms.openlocfilehash: f2687909a7067bc135f6fcf27fce2e1694325887
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92504121"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95988008"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tas"></a>Oktatóanyag: Azure Active Directory integráció a TAS-sel
 
@@ -61,13 +61,13 @@ A TAS Azure AD-be való integrálásának konfigurálásához hozzá kell adnia 
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Tas**kifejezést, válassza ki a **Tas** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Tas** kifejezést, válassza ki a **Tas** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![TAS az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a TAS-vel egy **Britta Simon**nevű teszt felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli a TAS-vel egy **Britta Simon** nevű teszt felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a TAS-beli kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés a TAS szolgáltatással való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés a TAS szolgáltatással való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)a **Tas** -alkalmazás integrációja lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **Tas** -alkalmazás integrációja lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -132,7 +132,7 @@ Az Azure AD egyszeri bejelentkezés a TAS szolgáltatással való konfigurálás
 
 1. Egy másik böngészőablakban jelentkezzen be a TAS-be rendszergazdaként.
 
-2. A menü bal oldalán kattintson a **Beállítások** elemre, és keresse meg a **rendszergazdát** , majd kattintson az **egyszeri bejelentkezés kezelése**lehetőségre.
+2. A menü bal oldalán kattintson a **Beállítások** elemre, és keresse meg a **rendszergazdát** , majd kattintson az **egyszeri bejelentkezés kezelése** lehetőségre.
 
     ![A képernyőképen az egyszeri bejelentkezés kezelése beállítás látható.](./media/tas-tutorial/configure01.png)
 
@@ -142,7 +142,7 @@ Az Azure AD egyszeri bejelentkezés a TAS szolgáltatással való konfigurálás
 
     a. A **név** szövegmezőbe írja be a környezet nevét.
     
-    b. Válassza **SAML2** a egy saml2 **hitelesítési típusként**lehetőséget.
+    b. Válassza **SAML2** a egy saml2 **hitelesítési típusként** lehetőséget.
 
     c. Az **adja meg az URL-címet** szövegmezőbe illessze be a **bejelentkezési URL-cím** értékét, amelyet a Azure Portal másolt.
 
@@ -157,13 +157,13 @@ Az Azure AD egyszeri bejelentkezés a TAS szolgáltatással való konfigurálás
 
     : Másolja ki az **állítási szolgáltatás** URL-címét a telepítő lapon, és illessze be a Azure Portal **ALAPszintű SAML-KONFIGURÁCIÓjának** **Válasz URL** -szövegmezőbe.
 
-    h. Kattintson az **SSO-sor beszúrása**elemre.
+    h. Kattintson az **SSO-sor beszúrása** elemre.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -182,21 +182,21 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezi az Azure egyszeri bejelentkezést a TAS elérésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Tas**elemet.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **Tas** elemet.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Tas**elemet.
+2. Az alkalmazások listában válassza a **Tas** elemet.
 
     ![A TAS hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 

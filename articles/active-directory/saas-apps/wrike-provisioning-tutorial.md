@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 08/26/2019
 ms.author: Zhchia
 ms.openlocfilehash: 53b1db1a8c4da59055c0af5f448fa0c8a6933daf
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94354242"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95988127"
 ---
 # <a name="tutorial-configure-wrike-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Wrike konfigurálása
 
@@ -72,7 +72,7 @@ Mielőtt konfigurálja a Wrike-t az Azure AD-vel való automatikus felhasználó
 
     ![Wrike-létrehozási jogkivonat](media/Wrike-provisioning-tutorial/password.png)
 
-6.  Másolja ki a **titkos jogkivonatot** , és illessze be az Azure ad-be. Válassza a **Mentés** lehetőséget a kiépítési beállítás befejezéséhez a Wrike.
+6.  Másolja ki a **titkos jogkivonatot**, és illessze be az Azure ad-be. Válassza a **Mentés** lehetőséget a kiépítési beállítás befejezéséhez a Wrike.
 
     ![Állandó hozzáférési jogkivonat](media/Wrike-provisioning-tutorial/Wrike-create-token.png)
 
@@ -109,7 +109,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 ### <a name="configure-automatic-user-provisioning-for-wrike-in-azure-ad"></a>Automatikus felhasználó-kiépítés konfigurálása a Wrike az Azure AD-ben
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **vállalati alkalmazások**  >  **minden alkalmazás** lehetőséget.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások**  >  **minden alkalmazás** lehetőséget.
 
     ![Minden alkalmazás](common/enterprise-applications.png)
 
@@ -133,7 +133,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Értesítő e-mail](common/provisioning-notification-email.png)
 
-8. Válassza a **Mentés** lehetőséget.
+8. Kattintson a **Mentés** gombra.
 
 9. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Wrike** lehetőséget.
 
@@ -161,7 +161,7 @@ Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghat�
 
 A **jelenlegi állapot** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység jelentésére mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a Wrike-on végrehajtott összes műveletet ismertetik. További információ: [a felhasználó kiépítési állapotának ellenõrzése](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md). Az Azure AD-létesítési naplók olvasásához lásd: [jelentéskészítés az automatikus felhasználói fiók kiépítés](../app-provisioning/check-status-user-account-provisioning.md)során.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
