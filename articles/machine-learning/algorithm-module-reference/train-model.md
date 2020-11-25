@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/11/2020
-ms.openlocfilehash: e3080836e8b9ed38e99c691c66e71a4620829c90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/25/2020
+ms.openlocfilehash: f9a7623fd27178e8b9c213a1759bb09863d16c72
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890213"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030696"
 ---
 # <a name="train-model-module"></a>Betanítási modell modul
 
@@ -40,16 +40,14 @@ Azure Machine Learning a Machine learning-modellek létrehozása és használata
 3. A betanítás befejezése után használja a betanított modellt az egyik [pontozási modullal](./score-model.md), hogy előrejelzéseket készítsen az új adatmennyiségekről.
 
 ## <a name="how-to-use-train-model"></a>A Train Model használata 
-  
-1.  Azure Machine Learning a besorolási modell vagy a regressziós modell konfigurálása.
     
-2. Adja hozzá a **Train Model** modult a folyamathoz.  Ez a modul a **Machine learning** kategóriában található. Bontsa ki a **vonat**elemet, majd húzza a **Train Model** modult a folyamatba.
+1. Adja hozzá a **Train Model** modult a folyamathoz.  Ez a modul a **Machine learning** kategóriában található. Bontsa ki a **vonat** elemet, majd húzza a **Train Model** modult a folyamatba.
   
-3.  A bal oldali bemeneten csatolja a képzetlen üzemmódot. Csatolja a betanítási adatkészletet a **betanítási modell**jobb oldali bemenetéhez.
+1.  A bal oldali bemeneten csatolja a képzetlen üzemmódot. Csatolja a betanítási adatkészletet a **betanítási modell** jobb oldali bemenetéhez.
 
     A betanítási adatkészlet címkét tartalmazó oszlopot kell tartalmaznia. A címkék nélküli sorok figyelmen kívül lesznek hagyva.
   
-4.  A **label (címke) oszlopban**kattintson az **oszlop szerkesztése** elemre a modul jobb oldali paneljén, és válasszon ki egy olyan oszlopot, amely tartalmazza a modell által a képzéshez használható eredményeket.
+1.  A **label (címke) oszlopban** kattintson az **oszlop szerkesztése** elemre a modul jobb oldali paneljén, és válasszon ki egy olyan oszlopot, amely tartalmazza a modell által a képzéshez használható eredményeket.
   
     - Besorolási problémák esetén a Label oszlopnak **kategorikus** értékeket vagy **különálló** értékeket kell tartalmaznia. Néhány példa lehet igen/nem minősítés, a betegség besorolási kódja vagy neve, vagy egy bevételi csoport.  Ha nem kategorikus oszlopot választ, a modul a betanítás során hibát ad vissza.
   
@@ -62,18 +60,21 @@ Azure Machine Learning a Machine learning-modellek létrehozása és használata
     > [!TIP] 
     > Ha problémája van az oszlop Választójának használatával, tekintse meg a tippek az [Oszlopok kiválasztása az adatkészletben](./select-columns-in-dataset.md) című cikket. Ismertet néhány gyakori forgatókönyvet és tippet a **with Rules** és a **Name** beállítások használatával.
   
-5.  A folyamat elküldése. Ha sok adattal rendelkezik, ez hosszabb időt is igénybe vehet.
+1.  A folyamat elküldése. Ha sok adattal rendelkezik, ez hosszabb időt is igénybe vehet.
+
+    > [!IMPORTANT] 
+    > Ha van olyan azonosító oszlopa, amely az egyes sorok AZONOSÍTÓját jelöli, a **betanítási modell** a következőhöz hasonló hibát jelez: "a (z)" {column_name} "oszlop egyedi értékeinek száma nagyobb, mint engedélyezett." Ennek az az oka, hogy az ID oszlop megnyomja az egyedi értékek küszöbértékét, és a memóriából is okozhat. Az azonosító oszlopok általában a betanítás során értelmetlenek. A [metaadatok szerkesztése](edit-metadata.md) lehetőséggel megadhatja, hogy az oszlop **egyértelmű szolgáltatásként** legyen felhasználva, és nem lesz használatban a képzésben. További részletekért tekintse meg a [Designer hibakódot](././designer-error-codes.md) .
 
 ## <a name="results"></a>Results (Eredmények)
 
 A modell képzése után:
 
 
-+ Ha más folyamatokban szeretné használni a modellt, válassza ki a modult, és válassza az **adatkészlet regisztrálása** ikont az **outputs (kimenetek** ) lapon a jobb oldali panelen. A mentett modelleket a modul palettáján, az **adatkészletek**területen érheti el.
++ Ha más folyamatokban szeretné használni a modellt, válassza ki a modult, és válassza az **adatkészlet regisztrálása** ikont az **outputs (kimenetek** ) lapon a jobb oldali panelen. A mentett modelleket a modul palettáján, az **adatkészletek** területen érheti el.
 
 + Ha a modellt az új értékek előrejelzéséhez szeretné használni, akkor a [pontszám modell](./score-model.md) modulhoz kell csatlakoznia, az új bemeneti adatokkal együtt.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 
