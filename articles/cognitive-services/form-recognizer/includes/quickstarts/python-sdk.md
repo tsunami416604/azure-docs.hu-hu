@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: b09dfe8e585dbcb6b8b1289fc551cec12d86c6db
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 534916d81cfb4d3ad1e96d2934f43221067fb94f
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92924975"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95868875"
 ---
 > [!IMPORTANT]
 > * Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja. Tekintse meg az alábbi dokumentációt. 
@@ -25,7 +25,7 @@ ms.locfileid: "92924975"
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services)
 * [Python 3.x](https://www.python.org/)
-* Egy Azure Storage-blob, amely betanítási adathalmazt tartalmaz. A betanítási adatkészletek összeállításával kapcsolatos tippekért és lehetőségekért tekintse meg az [Egyéni modell képzési adatkészletének](../../build-training-data-set.md) létrehozása című témakört. Ebben a rövid útmutatóban használhatja a [minta adathalmaz](https://go.microsoft.com/fwlink/?linkid=2090451) (letöltés és kibontás *sample_data.zip* ) **alatt található fájlokat** .
+* Egy Azure Storage-blob, amely betanítási adathalmazt tartalmaz. A betanítási adatkészletek összeállításával kapcsolatos tippekért és lehetőségekért tekintse meg az [Egyéni modell képzési adatkészletének](../../build-training-data-set.md) létrehozása című témakört. Ebben a rövid útmutatóban használhatja a [minta adathalmaz](https://go.microsoft.com/fwlink/?linkid=2090451) (letöltés és kibontás *sample_data.zip*) **alatt található fájlokat** .
 * Ha már rendelkezik Azure-előfizetéssel, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" hozzon létre egy űrlap-felismerő erőforrást "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Az Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése** elemre.
     * Az alkalmazás az űrlap-felismerő API-hoz való összekapcsolásához szüksége lesz a létrehozott erőforrás kulcsára és végpontra. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
     * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
@@ -36,9 +36,19 @@ ms.locfileid: "92924975"
 
 A Python telepítése után a következő módon telepítheti az űrlap-felismerő ügyféloldali kódtár legújabb verzióját:
 
+#### <a name="version-30"></a>[3,0-es verzió](#tab/ga)
+
 ```console
 pip install azure-ai-formrecognizer
 ```
+
+#### <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/preview)
+
+```console
+pip install azure-ai-formrecognizer --pre
+```
+
+---
 
 ### <a name="create-a-new-python-application"></a>Új Python-alkalmazás létrehozása
 
@@ -81,6 +91,8 @@ Az űrlap-felismerő használatával két különböző típusú ügyfél hozhat
 
 Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő feladatokat a Pythonhoz készült űrlap-felismerő ügyféloldali kódtár használatával:
 
+#### <a name="version-30"></a>[3,0-es verzió](#tab/ga)
+
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Űrlap tartalmának felismerése](#recognize-form-content)
 * [Visszaigazolások felismerése](#recognize-receipts)
@@ -88,6 +100,18 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 * [Űrlapok elemzése egyéni modellel](#analyze-forms-with-a-custom-model)
 * [Egyéni modellek kezelése](#manage-your-custom-models)
 
+#### <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/preview)
+
+* [Az ügyfél hitelesítése](#authenticate-the-client)
+* [Űrlap tartalmának felismerése](#recognize-form-content)
+* [Visszaigazolások felismerése](#recognize-receipts)
+* [Névjegykártyák felismerése](#recognize-business-cards)
+* [Számlák felismerése](#recognize-invoices)
+* [Egyéni modell betanítása](#train-a-custom-model)
+* [Űrlapok elemzése egyéni modellel](#analyze-forms-with-a-custom-model)
+* [Egyéni modellek kezelése](#manage-your-custom-models)
+
+---
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
@@ -135,7 +159,6 @@ Confidence score: 1.0
 Cell text: Charges
 Location: [Point(x=4.7074, y=2.8088), Point(x=5.386, y=2.8088), Point(x=5.386, y=3.3219), Point(x=4.7074, y=3.3219)]
 Confidence score: 1.0
-
 ...
 
 ```
@@ -170,6 +193,30 @@ Subtotal: 1098.99 has confidence 0.964
 Tax: 104.4 has confidence 0.713
 Total: 1203.39 has confidence 0.774
 ```
+
+#### <a name="version-30"></a>[3,0-es verzió](#tab/ga)
+
+#### <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/preview)
+
+## <a name="recognize-business-cards"></a>Névjegykártyák felismerése
+
+Ez a szakasz bemutatja, hogyan ismerheti fel és kinyerheti az angol üzleti kártyákból származó általános mezőket egy előre betanított modell használatával. Ha egy URL-címről szeretné felismerni a névjegykártyákat, használja a `begin_recognize_business_cards_from_url` metódust. 
+
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_bc)]
+
+> [!TIP]
+> A helyi névjegykártya-lemezképeket is felismerheti. Tekintse meg a [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) metódusokat, például: `begin_recognize_business_cards` . Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) található mintakód-kódot.
+
+## <a name="recognize-invoices"></a>Számlák felismerése
+
+Ez a szakasz bemutatja, hogyan ismerheti fel és kinyerheti az értékesítési számlákból származó általános mezőket egy előre betanított modell használatával. A számlák URL-címről való felismeréséhez használja a `begin_recognize_invoices_from_url` metódust. 
+
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_invoice)]
+
+> [!TIP]
+> A helyi számlázási képeket is felismerheti. Tekintse meg a [FormRecognizerClient](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) metódusokat, például: `begin_recognize_invoices` . Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) található mintakód-kódot.
+
+---
 
 ## <a name="train-a-custom-model"></a>Egyéni modell betanítása
 
@@ -373,7 +420,7 @@ Futtassa az alkalmazást a gyors üzembe helyezési `python` fájlban találhat�
 python quickstart-file.py
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
@@ -382,7 +429,7 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-### <a name="general"></a>Általános kérdések
+### <a name="general"></a>Általános
 
 Az űrlap-felismerő ügyféloldali kódtára az [Azure Core](https://aka.ms/azsdk-python-azure-core)-ban definiált kivételeket fogja növelni.
 
@@ -399,7 +446,7 @@ Hasonlóképpen, `logging_enable` egy művelet részletes naplózását is enged
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerLogging.py?name=snippet_example)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban az űrlap felismerő Python ügyféloldali függvénytárát használta a modellek tanításához és az űrlapok különböző módokon történő elemzéséhez. Következő lépésként Ismerkedjen meg a jobb betanítási adatkészlet létrehozásával és a pontosabb modellek előállításával.
 

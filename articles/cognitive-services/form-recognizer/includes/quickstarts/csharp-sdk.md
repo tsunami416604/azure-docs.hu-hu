@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 86803e1d7ef77467fd870221c0bc2c1c006ae479
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 2d8b876f01f110a314734e596055831650a6c08b
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94816721"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95870020"
 ---
 > [!IMPORTANT]
 > Az ebben a cikkben található kód az egyszerűség kedvéért a szinkron metódusokat és a nem biztonságos hitelesítő adatokat tároló szolgáltatást használja.
@@ -31,18 +31,6 @@ ms.locfileid: "94816721"
     * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
 
 ## <a name="setting-up"></a>Beállítás
-
-### <a name="create-a-new-c-application"></a>Új C#-alkalmazás létrehozása
-
-#### <a name="visual-studio-ide"></a>[Visual Studio IDE](#tab/visual-studio)
-
-Hozzon létre egy új .NET Core-alkalmazást a Visual Studióval. 
-
-### <a name="install-the-client-library"></a>Az ügyféloldali kódtár telepítése 
-
-Miután létrehozott egy új projektet, telepítse az ügyféloldali kódtárat úgy, hogy a **megoldáskezelő** , majd a **NuGet-csomagok kezelése** lehetőségre kattint a jobb gombbal a projekt megoldásra. A megnyíló csomagkezelő válassza a **Tallózás** lehetőséget, jelölje be az **előzetes verzió** használata jelölőnégyzetet, és keressen rá `Azure.AI.FormRecognizer` . Válassza `3.0.0` a verzió, majd a **telepítés** lehetőséget. 
-
-#### <a name="cli"></a>[Parancssori felület](#tab/cli)
 
 A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `formrecognizer-quickstart` . Ez a parancs egy egyszerű "„Helló világ!” alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: *program.cs*. 
 
@@ -70,8 +58,16 @@ Build succeeded.
 
 Az alkalmazás könyvtárában telepítse a .NET-hez készült űrlap-felismerő ügyféloldali kódtárat a következő paranccsal:
 
+#### <a name="version-30"></a>[3,0-es verzió](#tab/ga)
+
 ```console
 dotnet add package Azure.AI.FormRecognizer --version 3.0.0
+```
+
+#### <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/preview)
+
+```console
+dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.1
 ```
 ---
 
@@ -91,9 +87,14 @@ Az alkalmazás **program** osztályában hozzon létre változókat az erőforr�
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_creds)]
 
-Az alkalmazás **fő** metódusában adjon hozzá egy hívást az ebben a rövid útmutatóban használt aszinkron feladathoz. Később fogja megvalósítani.
+Az alkalmazás **fő** metódusában adjon hozzá egy hívást az ebben a rövid útmutatóban használt aszinkron feladatokhoz. Ezeket később fogja megvalósítani.
 
+#### <a name="version-30"></a>[3,0-es verzió](#tab/ga)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_main)]
+#### <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/preview)
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_main)]
+
+---
 
 
 ## <a name="object-model"></a>Objektummodell 
@@ -126,6 +127,8 @@ Tekintse át a [modell betanítására](#train-a-custom-model) és az [egyéni m
 
 Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő feladatokat a .NET-hez készült űrlap-felismerő ügyféloldali kódtára használatával:
 
+#### <a name="version-30"></a>[3,0-es verzió](#tab/ga)
+
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Űrlap tartalmának felismerése](#recognize-form-content)
 * [Visszaigazolások felismerése](#recognize-receipts)
@@ -133,6 +136,18 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 * [Űrlapok elemzése egyéni modellel](#analyze-forms-with-a-custom-model)
 * [Egyéni modellek kezelése](#manage-your-custom-models)
 
+#### <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/preview)
+
+* [Az ügyfél hitelesítése](#authenticate-the-client)
+* [Űrlap tartalmának felismerése](#recognize-form-content)
+* [Visszaigazolások felismerése](#recognize-receipts)
+* [Névjegykártyák felismerése](#recognize-business-cards)
+* [Számlák felismerése](#recognize-invoices)
+* [Egyéni modell betanítása](#train-a-custom-model)
+* [Űrlapok elemzése egyéni modellel](#analyze-forms-with-a-custom-model)
+* [Egyéni modellek kezelése](#manage-your-custom-models)
+
+---
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
@@ -155,9 +170,14 @@ Emellett a képzési és tesztelési adatok URL-címeihez is hozzá kell adnia a
 
 * Az egyéni modell betanítási adataihoz tartozó SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása** elemet. Győződjön meg arról, hogy az **olvasási** és a **listázási** engedély be van jelölve, majd kattintson a **Létrehozás** gombra. Ezután másolja az értéket az **URL** szakaszban. A következő formátumban kell lennie: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 * Ezután a fenti lépésekkel lekérheti egy egyedi dokumentum SAS URL-címét a blob Storage-ban.
-* Végül mentse az alábbi mintákban található minta beérkezési rendszerkép URL-címét (a [githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms)is elérhető. 
+* Végül mentse az alább felsorolt minta-rendszerkép (ek) URL-címét (a [githubon](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms)is elérhető). 
 
+#### <a name="version-30"></a>[3,0-es verzió](#tab/ga)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_urls)]
+#### <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/preview)
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_urls)]
+
+---
 
 
 ## <a name="recognize-form-content"></a>Űrlap tartalmának felismerése
@@ -268,6 +288,43 @@ Item:
     Total Price: '99.99', with confidence 0.386
 Total: '1203.39', with confidence '0.774'
 ```
+
+#### <a name="version-30"></a>[3,0-es verzió](#tab/ga)
+
+#### <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/preview)
+
+## <a name="recognize-business-cards"></a>Névjegykártyák felismerése
+
+Ez a szakasz bemutatja, hogyan ismerheti fel és kinyerheti az angol üzleti kártyákból származó általános mezőket egy előre betanított modell használatával.
+
+Ha egy URL-címről szeretné felismerni a névjegykártyákat, használja a `StartRecognizeBusinessCardsFromUriAsync` metódust. 
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_call)]
+
+> [!TIP]
+> A helyi visszaigazolási képeket is felismerheti. Tekintse meg a [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) metódusokat, például a **StartRecognizeBusinessCards**. Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) található mintakód-kódot.
+
+A visszaadott érték objektumok gyűjteménye `RecognizedForm` : egy a dokumentum minden kártyája esetében. A következő kód feldolgozza a névjegykártyát a megadott URI-n, és kiírja a fő mezőket és értékeket a konzolra.
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_print)]
+
+## <a name="recognize-invoices"></a>Számlák felismerése
+
+Ez a szakasz bemutatja, hogyan ismerheti fel és kinyerheti az értékesítési számlákból származó általános mezőket egy előre betanított modell használatával.
+
+A számlák URL-címről való felismeréséhez használja a `StartRecognizeInvoicesFromUriAsync` metódust. 
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_invoice_call)]
+
+> [!TIP]
+> A helyi számlázási képeket is felismerheti. Tekintse meg a [FormRecognizerClient](https://docs.microsoft.com/dotnet/api/azure.ai.formrecognizer.formrecognizerclient?view=azure-dotnet) metódusokat, például a **StartRecognizeInvoices**. Vagy a helyi rendszerképeket érintő forgatókönyvek esetében tekintse meg a [githubon](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md) található mintakód-kódot.
+
+A visszaadott érték objektumok gyűjteménye `RecognizedForm` : egyet a beküldött dokumentum minden egyes számlájához. A következő kód feldolgozza a számlát a megadott URI-n, és kiírja a fő mezőket és értékeket a konzolra.
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_invoice_print)]
+
+---
+
 
 ## <a name="train-a-custom-model"></a>Egyéni modell betanítása
 
@@ -575,19 +632,12 @@ Az AZONOSÍTÓra hivatkozva egy modellt is törölhet a fiókjából. Ez a lép�
 
 ## <a name="run-the-application"></a>Alkalmazás futtatása
 
-#### <a name="visual-studio-ide"></a>[Visual Studio IDE](#tab/visual-studio)
-
-Futtassa az alkalmazást az IDE-ablak felső részén található **Debug (hibakeresés** ) gombra kattintva.
-
-#### <a name="cli"></a>[Parancssori felület](#tab/cli)
-
 Futtassa az alkalmazást az alkalmazás könyvtárából a `dotnet run` paranccsal.
 
 ```dotnet
 dotnet run
 ```
 
----
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -635,7 +685,7 @@ Headers:
     Content-Type: application/json; charset=utf-8
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban az űrlap-felismerő .NET ügyféloldali kódtárat használta a modellek betanításához és az űrlapok különböző módokon történő elemzéséhez. Következő lépésként Ismerkedjen meg a jobb betanítási adatkészlet létrehozásával és a pontosabb modellek előállításával.
 
