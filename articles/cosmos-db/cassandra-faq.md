@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: thvankra
-ms.openlocfilehash: 3436a0edf69efc71d3528bffaefd613668426fad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1368a3174af08f557b6d08f298fba015601d568c
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995819"
+ms.locfileid: "96030832"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>Gyakran ismételt kérdések a Cassandra APIról Azure Cosmos DB
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -176,7 +176,7 @@ Nem. A Cassandra API támogatja a [másodlagos indexeket](cassandra-secondary-in
 
 ### <a name="can-i-use-the-new-cassandra-api-sdk-locally-with-the-emulator"></a>Helyileg is használhatom az új Cassandra API SDK-t az emulátorral?
 
-Igen, ez támogatott. A következő témakörből megtudhatja, hogyan engedélyezheti ezt a [helyi fejlesztési és tesztelési célú Azure Cosmos Emulator használatával](local-emulator.md#cassandra-api) .
+Igen, ez támogatott. Ennek engedélyezéséről a [helyi fejlesztési és tesztelési célú Azure Cosmos db Emulator használata](local-emulator.md#cassandra-api) című cikkben olvashat bővebben.
 
 
 ### <a name="how-can-i-migrate-data-from-apache-cassandra-clusters-to-azure-cosmos-db"></a>Hogyan telepíthetek át az Apache Cassandra-fürtökből származó adatok Azure Cosmos DB?

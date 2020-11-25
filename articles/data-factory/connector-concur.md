@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 11/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 6699178e514f4d25666305f3251e8eaf9d28e6dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6d6c830eec8e711e700733a90611c353b68439d
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417461"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030798"
 ---
 # <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>Adatok másolása az összekötésből Azure Data Factory használatával (előzetes verzió)
 
@@ -36,8 +36,6 @@ Ez a egyetértő összekötő a következő tevékenységek esetében támogatot
 
 Az adatok az összes támogatott fogadó adattárba másolhatók. A másolási tevékenység által a forrásként/mosogatóként támogatott adattárak listáját a [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban tekintheti meg.
 
-A Azure Data Factory egy beépített illesztőprogramot biztosít a kapcsolat engedélyezéséhez, ezért nem kell manuálisan telepítenie az adott összekötőt használó illesztőprogramokat.
-
 > [!NOTE]
 > A partneri fiók jelenleg nem támogatott.
 
@@ -53,15 +51,54 @@ A egyetértő társított szolgáltatás a következő tulajdonságokat támogat
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **egybeesik** | Igen |
-| ügyfél-azonosító | Az alkalmazás-client_id a egyetért az alkalmazások kezelésével.  | Igen |
-| username | Az a Felhasználónév, amelyet a rendszer az egybeesik szolgáltatás elérésére használ.  | Igen |
-| jelszó | A Felhasználónév mezőben megadott felhasználónévnek megfelelő jelszó. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
-| useEncryptedEndpoints | Meghatározza, hogy az adatforrás-végpontok HTTPS protokollal legyenek titkosítva. Az alapértelmezett érték az igaz.  | Nem |
-| useHostVerification | Megadja, hogy szükséges-e az állomásnév a kiszolgáló tanúsítványában, hogy egyezzen a kiszolgáló állomásneve a TLS-kapcsolaton keresztüli csatlakozáskor. Az alapértelmezett érték az igaz.  | Nem |
-| usePeerVerification | Megadja, hogy a rendszer ellenőrizze-e a kiszolgáló identitását TLS-kapcsolaton keresztül. Az alapértelmezett érték az igaz.  | Nem |
+| típus | A Type tulajdonságot a következőre kell beállítani: **egybeesik** | Yes |
+| connectionProperties | Tulajdonságok egy csoportja, amely meghatározza, hogyan csatlakozhat az összevonáshoz. | Yes |
+| **_Alatt `connectionProperties` :_* _ | | |
+| authenticationType | Az engedélyezett értékek: `OAuth_2.0_Bearer` és `OAuth_2.0` (örökölt). A OAuth 2,0 hitelesítési lehetőség a 2017 régi, az "a" és a "a". | Yes |
+| gazda | A egyetértő kiszolgáló végpontja, például: `implementation.concursolutions.com` .  | Yes |
+| baseUrl | A egybeesik engedélyezési URL-címének alap URL-címe. | Igen a `OAuth_2.0_Bearer` hitelesítéshez |
+| ügyfél-azonosító | Az alkalmazás ügyfél-azonosítója, amelyet az App Management adott meg.  | Yes |
+| clientSecret | Az ügyfél-AZONOSÍTÓnak megfelelő ügyfél-titok. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen a `OAuth_2.0_Bearer` hitelesítéshez |
+| username | Az a Felhasználónév, amelyet a rendszer az egybeesik szolgáltatás elérésére használ. | Yes |
+| jelszó | A Felhasználónév mezőben megadott felhasználónévnek megfelelő jelszó. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Yes |
+| useEncryptedEndpoints | Meghatározza, hogy az adatforrás-végpontok HTTPS protokollal legyenek titkosítva. Az alapértelmezett érték az igaz.  | No |
+| useHostVerification | Megadja, hogy szükséges-e az állomásnév a kiszolgáló tanúsítványában, hogy egyezzen a kiszolgáló állomásneve a TLS-kapcsolaton keresztüli csatlakozáskor. Az alapértelmezett érték az igaz.  | No |
+| usePeerVerification | Megadja, hogy a rendszer ellenőrizze-e a kiszolgáló identitását TLS-kapcsolaton keresztül. Az alapértelmezett érték az igaz.  | No |
 
-**Példa**
+_ *Példa:**
+
+```json
+{ 
+    "name": "ConcurLinkedService", 
+    "properties": {
+        "type": "Concur",
+        "typeProperties": {
+            "connectionProperties": {
+                "host":"<host e.g. implementation.concursolutions.com>",
+                "baseUrl": "<base URL for authorization e.g. us-impl.api.concursolutions.com>",
+                "authenticationType": "OAuth_2.0_Bearer",
+                "clientId": "<client id>",
+                "clientSecret": {
+                    "type": "SecureString",
+                    "value": "<client secret>"
+                },
+                "username": "fakeUserName",
+                "password": {
+                    "type": "SecureString",
+                    "value": "<password>"
+                },
+                "useEncryptedEndpoints": true,
+                "useHostVerification": true,
+                "usePeerVerification": true
+            }
+        }
+    }
+} 
+```
+
+**Példa (örökölt):**
+
+Vegye figyelembe, hogy a következő egy örökölt társított szolgáltatási modell, `connectionProperties` hitelesítés nélkül és használata `OAuth_2.0` .
 
 ```json
 {
@@ -84,11 +121,11 @@ A egyetértő társított szolgáltatás a következő tulajdonságokat támogat
 
 Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok teljes listáját az [adatkészletek](concepts-datasets-linked-services.md) című cikkben találja. Ez a szakasz a egyetértő adatkészlet által támogatott tulajdonságok listáját tartalmazza.
 
-Az adatoknak a tartományba való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **ConcurObject**értékre. Az ilyen típusú adatkészletekben nem szerepel további Type-specifikus tulajdonság. A következő tulajdonságok támogatottak:
+Az adatoknak a tartományba való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **ConcurObject** értékre. Az ilyen típusú adatkészletekben nem szerepel további Type-specifikus tulajdonság. A következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **ConcurObject** | Igen |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **ConcurObject** | Yes |
 | tableName | A tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
 
@@ -115,11 +152,11 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 ### <a name="concursource-as-source"></a>ConcurSource forrásként
 
-Az adatoknak a **ConcurSource**való másolásához állítsa a másolási tevékenység forrás típusát a következőre:. A másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
+Az adatoknak a **ConcurSource** való másolásához állítsa a másolási tevékenység forrás típusát a következőre:. A másolási tevékenység **forrása** szakasz a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **ConcurSource** | Igen |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **ConcurSource** | Yes |
 | lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM Opportunities where Id = xxx "`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
 **Példa**

@@ -1,29 +1,29 @@
 ---
-title: Az Azure Cosmos Emulator használatakor felmerülő problémák elhárítása
-description: Ismerje meg, hogyan troubleshot a szolgáltatás nem érhető el, a tanúsítványok, a titkosítás és a verziószámozási problémák az Azure Cosmos Emulator használata esetén.
+title: A Azure Cosmos DB Emulator használatakor felmerülő problémák elhárítása
+description: Ismerje meg, hogyan troubleshot a szolgáltatás nem érhető el, a tanúsítványok, a titkosítás és a verziószámozási problémák a Azure Cosmos DB emulátor használatakor.
 ms.service: cosmos-db
 ms.topic: troubleshooting
 author: markjbrown
 ms.author: mjbrown
 ms.date: 09/17/2020
 ms.custom: contperfq1
-ms.openlocfilehash: cf174d45f33c50ce93b45b19c6030cf42cb20983
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 83559cc2ab1ca9597cca405333061e53b6f56aa9
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93081450"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030747"
 ---
-# <a name="troubleshoot-issues-when-using-the-azure-cosmos-emulator"></a>Az Azure Cosmos Emulator használatakor felmerülő problémák elhárítása
+# <a name="troubleshoot-issues-when-using-the-azure-cosmos-db-emulator"></a>A Azure Cosmos DB Emulator használatakor felmerülő problémák elhárítása
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Az Azure Cosmos Emulator egy helyi környezetet biztosít, amely a Azure Cosmos DB szolgáltatás fejlesztésére szolgál. Az ebben a cikkben található tippek segítséget nyújtanak az Azure Cosmos Emulator telepítésekor vagy használatakor felmerülő problémák elhárításában. 
+Az Azure Cosmos DB Emulator helyi környezetet biztosít, amely az Azure Cosmos DB szolgáltatást emulálja a fejlesztéshez. Az ebben a cikkben található tippek segítséget nyújtanak a Azure Cosmos DB Emulator telepítésekor vagy használatakor felmerülő problémák elhárításában. 
 
-Ha az emulátor új verzióját telepítette, és hibákat tapasztal, állítsa vissza az adatokat. Az adatai alaphelyzetbe állíthatók. ehhez kattintson a jobb gombbal az Azure Cosmos Emulator ikonra a tálcán, majd kattintson az adatbeállítások visszaállítása... elemre. Ha ez nem oldja meg a hibákat, távolítsa el az emulátort és az emulátor bármely régebbi verzióját, ha megtalálható, távolítsa el a *C:\Program files\Azure Cosmos db Emulator* könyvtárat, és telepítse újra az emulátort. Útmutatásért lásd: [A helyi emulátor eltávolítása](local-emulator.md#uninstall). Másik lehetőségként, ha az adat alaphelyzetbe állítása nem működik, navigáljon a `%LOCALAPPDATA%\CosmosDBEmulator` helyére, és törölje a mappát.
+Ha az emulátor új verzióját telepítette, és hibákat tapasztal, állítsa vissza az adatokat. Alaphelyzetbe állíthatja az adatait úgy, hogy a tálcán kattintson a jobb gombbal a Azure Cosmos DB Emulator ikonra, majd az adatbeállítások visszaállítása gombra. Ha ez nem oldja meg a hibákat, távolítsa el az emulátort és az emulátor bármely régebbi verzióját, ha megtalálható, távolítsa el a *C:\Program files\Azure Cosmos db Emulator* könyvtárat, és telepítse újra az emulátort. Útmutatásért lásd: [A helyi emulátor eltávolítása](local-emulator.md#uninstall). Másik lehetőségként, ha az adat alaphelyzetbe állítása nem működik, navigáljon a `%LOCALAPPDATA%\CosmosDBEmulator` helyére, és törölje a mappát.
 
 ## <a name="troubleshoot-corrupted-windows-performance-counters"></a>Sérült Windows-teljesítményszámlálók hibakeresése
 
-* Ha az Azure Cosmos Emulator összeomlik, Gyűjtse össze a kiírási fájlokat a `%LOCALAPPDATA%\CrashDumps` mappából, tömörítse őket, és nyisson meg egy támogatási jegyet a [Azure Portal](https://portal.azure.com).
+* Ha a Azure Cosmos DB-emulátor összeomlik, Gyűjtse össze a memóriakép fájljait a `%LOCALAPPDATA%\CrashDumps` mappából, tömörítse őket, és nyisson meg egy támogatási jegyet a [Azure Portal](https://portal.azure.com).
 
 * Ha összeomlik a alkalmazásban `Microsoft.Azure.Cosmos.ComputeServiceStartupEntryPoint.exe` , akkor ez olyan tünet lehet, amelyben a teljesítményszámlálók sérült állapotban vannak. A következő parancs általában a rendszergazdai parancssorból való futtatása javítja a problémát:
 
@@ -37,7 +37,7 @@ Ha az emulátor új verzióját telepítette, és hibákat tapasztal, állítsa 
 
 * Ha **A szolgáltatás nem érhető el** üzenetet kap, előfordulhat, hogy az emulátor nem tudja elindítani a hálózati vermet. Ellenőrizze, hogy telepítve van-e a Pulse Secure ügyfél vagy a Juniper Networks ügyfél, mert ezek hálózatszűrő illesztőprogramjai okozhatják a problémát. A külső gyártótól származó hálózatszűrő illesztőprogramok eltávolítása általában kijavítja a problémát. Azt is megteheti, hogy elindítja az emulátort a/DisableRIO, amely átváltja az emulátor hálózati kommunikációját a normál Winsock-ra. 
 
-* Ha **"tiltott", "üzenet": "kérés történt, az átviteli protokoll vagy a titkosítás tiltott titkosítással. A fiók SSL/TLS minimálisan engedélyezett protokoll-beállításának ellenőrzése... "** kapcsolódási problémák, ezt az operációs rendszer globális változásai okozhatja (például a bennfentes előzetes verzió Build 20170) vagy a böngésző azon beállításai, amelyek alapértelmezés szerint engedélyezik a TLS 1,3-et. Hasonló hiba fordulhat elő, ha az SDK-val kérelmet hajt végre a Cosmos emulátoron, például **Microsoft.Azure.Documents.DocumentClientException: a kérést az átviteli protokoll vagy a titkosítás tiltott titkosítása okozta. A fiók SSL/TLS minimálisan engedélyezett protokoll-beállításának bejelölése** . Jelenleg ez a várható működés, mert a Cosmos Emulator csak a TLS 1.2 protokollt fogadja el, és ezzel működik együtt. A javasolt megoldás a beállítások és az alapértelmezett érték módosítása a TLS 1,2; az IIS-kezelőben például navigáljon a "helyek"-> "alapértelmezett webhelyek" elemre, és keresse meg a "hely kötéseit" a 8081-es porthoz, és szerkessze őket a TLS 1,3 letiltásához. Hasonló művelet hajtható végre a webböngészőre vonatkozóan a „Beállítások” lehetőség használatával.
+* Ha **"tiltott", "üzenet": "kérés történt, az átviteli protokoll vagy a titkosítás tiltott titkosítással. A fiók SSL/TLS minimálisan engedélyezett protokoll-beállításának ellenőrzése... "** kapcsolódási problémák, ezt az operációs rendszer globális változásai okozhatja (például a bennfentes előzetes verzió Build 20170) vagy a böngésző azon beállításai, amelyek alapértelmezés szerint engedélyezik a TLS 1,3-et. Hasonló hiba fordulhat elő, ha az SDK-val kérelmet hajt végre a Cosmos emulátoron, például **Microsoft.Azure.Documents.DocumentClientException: a kérést az átviteli protokoll vagy a titkosítás tiltott titkosítása okozta. A fiók SSL/TLS minimálisan engedélyezett protokoll-beállításának bejelölése**. Jelenleg ez a várható működés, mert a Cosmos Emulator csak a TLS 1.2 protokollt fogadja el, és ezzel működik együtt. A javasolt megoldás a beállítások és az alapértelmezett érték módosítása a TLS 1,2; az IIS-kezelőben például navigáljon a "helyek"-> "alapértelmezett webhelyek" elemre, és keresse meg a "hely kötéseit" a 8081-es porthoz, és szerkessze őket a TLS 1,3 letiltásához. Hasonló művelet hajtható végre a webböngészőre vonatkozóan a „Beállítások” lehetőség használatával.
 
 * Amennyiben az emulátor futtatása közben a számítógép alvó állapotba lép vagy frissül az operációs rendszere, a **Szolgáltatás jelenleg nem érhető el** üzenet jelenik meg. Állítsa alaphelyzetbe az emulátort, és kattintson a jobb gombbal a Windows értesítési tálcán megjelenő ikonra, és válassza az **adatvisszaállítás** lehetőséget.
 
@@ -51,7 +51,7 @@ Hibakeresési nyomok begyűjtéséhez futtassa a következő parancsokat egy ren
    cd /d "%ProgramFiles%\Azure Cosmos DB Emulator"
    ```
 
-1. Állítsa le az emulátort, és figyelje meg a rendszertálcán, hogy a program leállítása megtörtént-e. Egy percet is igénybe vehet. A **Kilépés** lehetőséget is kiválaszthatja az Azure Cosmos Emulator felhasználói felületén.
+1. Állítsa le az emulátort, és figyelje meg a rendszertálcán, hogy a program leállítása megtörtént-e. Egy percet is igénybe vehet. A **Kilépés** lehetőséget is kiválaszthatja a Azure Cosmos db Emulator felhasználói felületen.
 
    ```bash
    Microsoft.Azure.Cosmos.Emulator.exe /shutdown
@@ -81,9 +81,9 @@ Hibakeresési nyomok begyűjtéséhez futtassa a következő parancsokat egy ren
 
 1. Nyisson meg egy támogatási jegyet a [Azure Portalban](https://portal.azure.com) , és foglalja bele az. etl fájlt a Reprodukálási lépésekkel együtt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan lehet hibakeresést végezni a helyi emulátorral kapcsolatban. Most folytassa a következő cikkekkel:
 
-* [Az Azure Cosmos Emulator-tanúsítványok exportálása Java-, Python-és Node.js-alkalmazásokkal való használatra](local-emulator-export-ssl-certificates.md)
+* [A Azure Cosmos DB Emulator-tanúsítványok exportálása Java-, Python-és Node.js-alkalmazásokkal való használatra](local-emulator-export-ssl-certificates.md)
 * [Az emulátor vezérléséhez használjon parancssori paramétereket és PowerShell-parancsokat](emulator-command-line-parameters.md)

@@ -7,18 +7,24 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/19/2020
+ms.date: 11/24/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 81bcfdf5e63d49280fb798773559310cbd912a26
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4390291eb96c11b8fb7fdb48eb92abaf802b80c0
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013581"
+ms.locfileid: "96030781"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Javaslat létrehozása az automatikus kiegészítés és a javasolt eredmények lekérdezésben való engedélyezéséhez
 
-Az Azure Cognitive Searchban a "keresés a típusban" beállítás egy [keresési indexhez](search-what-is-an-index.md)hozzáadott, **javaslattal** rendelkező konstruktoron keresztül érhető el. A javaslat két szolgáltatást támogat: az *automatikus kiegészítést*, amely egy teljes kifejezéssel rendelkező lekérdezés részleges bemenetét fejezi be, és *javaslatokat* tesz arra, hogy egy adott egyezésre kattintson. Az automatikus kiegészítés létrehoz egy lekérdezést. A javaslatok megfelelő dokumentumot hoznak létre.
+Az Azure Cognitive Searchban a "keresés a típusban" beállítás egy *javaslaton* keresztül érhető el. A javaslatok egy belső adatstruktúra, amely egy mező gyűjteményből áll. A mezők további jogkivonatok létrehozása vesznek részt, és előtagokat generálnak, amelyek támogatják a részleges feltételeken alapuló egyezéseket.
+
+Ha például egy javaslat tartalmaz egy város mezőt, a "Sea", az "Seat", a "seatt" és a "seattl" előtag-kombinációt hozza létre a "Seattle" kifejezéshez. Az előtagokat a rendszer invertált indexekben tárolja, egyet a javaslatok mezőinek gyűjteményében megadott mezőkhöz.
+
+## <a name="typeahead-experiences-in-cognitive-search"></a>Typeahead-tapasztalatok Cognitive Search
+
+A javaslat két szolgáltatást támogat: az *automatikus kiegészítést*, amely egy teljes kifejezéssel rendelkező lekérdezés részleges bemenetét fejezi be, és *javaslatokat* tesz arra, hogy egy adott egyezésre kattintson. Az automatikus kiegészítés létrehoz egy lekérdezést. A javaslatok megfelelő dokumentumot hoznak létre.
 
 A következő képernyőkép az [első alkalmazás létrehozása a C#-ban](tutorial-csharp-type-ahead-and-suggestions.md) című ábrán látható. Az automatikus kiegészítés egy lehetséges kifejezést is felhasznál, amely a "tw"-t "a" értékkel fejezi ki. A javaslatok a mini keresési eredmények, ahol a Hotel neve a megfelelő szállodai keresési dokumentumot jelöli az indexből. A javaslatok esetében bármilyen olyan mezőt felvehet, amely leíró információkat biztosít.
 
@@ -31,10 +37,6 @@ Ezeket a szolgáltatásokat külön vagy együtt is használhatja. A viselkedés
 + Az [alábbi API](#how-to-use-a-suggester)-k egyikével meghívhat egy javaslattal rendelkező lekérdezést, amely egy javaslat vagy egy automatikus kiegészítési kérelem formájában jelenik meg.
 
 A keresési típust támogató támogatás engedélyezett a karakterlánc típusú mezők esetében a mező alapján. Mindkét typeahead-viselkedést ugyanazon keresési megoldáson belül implementálhatja, ha a képernyőképen láthatóhoz hasonló élményre van szüksége. Mindkét kérelem célja az adott index és válaszok *dokumentumainak* gyűjteménye, miután egy felhasználó legalább három karakterből álló bemeneti karakterláncot adott meg.
-
-## <a name="what-is-a-suggester"></a>Mi az a javaslat?
-
-A javaslat egy belső adatstruktúra, amely támogatja a keresési típusokat a részleges lekérdezésekhez tartozó előtagok tárolásával. A jogkivonatos kifejezésekhez hasonlóan a rendszer az előtagokat invertált indexekben tárolja, az egyiket a javaslatok mezőinek gyűjteményében megadott mezőkhöz.
 
 ## <a name="how-to-create-a-suggester"></a>Javaslatok létrehozása
 

@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
-ms.openlocfilehash: a73d155d20d09573ad5e1b2597678291aea4c92b
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: c7db48a1df61472de8676192f267493232139b6e
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980575"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030815"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>A Azure Cosmos DB költségeinek megtervezése és kezelése
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -43,7 +43,7 @@ Az alábbi képernyőfelvételen az átviteli sebesség és a költségbecslés 
 
 Ha kiszolgáló nélküli módban tervezi használni a Azure Cosmos DBt, meg kell becsülnie, hogy hány [kérelem-egység](request-units.md) és GB tárterületet használ fel havi rendszerességgel. A kért egységek mennyiségét a havonta kiállított adatbázis-műveletek számának kiértékelésével becsülheti meg, és a megfelelő RU-költségeket megszorozva. A következő táblázat az általános adatbázis-műveletek becsült költségét sorolja fel:
 
-| Művelet | Becsült költségek | Megjegyzések |
+| Művelet | Becsült költségek | Jegyzetek |
 | --- | --- | --- |
 | Elem létrehozása | 5 RUs | 5 KB-nál kevesebb tulajdonsággal rendelkező 1 KB-os elemek átlagos díja |
 | Elem módosítása | 10 RU | 5 KB-nál kevesebb tulajdonsággal rendelkező 1 KB-os elemek átlagos díja |
@@ -52,7 +52,7 @@ Ha kiszolgáló nélküli módban tervezi használni a Azure Cosmos DBt, meg kel
 | Lekérdezés végrehajtása | 10 RU | Egy olyan lekérdezés átlagos díja, amely teljes mértékben kihasználja az [indexelést](index-overview.md) , és visszaadja a 100 vagy kevesebb eredményt |
 
 > [!IMPORTANT] 
-> Figyeljen a fenti táblázat megjegyzéseit. A műveletek tényleges költségeinek pontosabb becslése érdekében használhatja az [Azure Cosmos emulatort](local-emulator.md) , és megbecsülheti a [műveleteinek pontos költségét](find-request-unit-charge.md). Bár az Azure Cosmos Emulator nem támogatja a kiszolgáló nélküli működést, az adatbázis-műveletekhez standard RU-díjat jelent, és ezt a becslést is felhasználhatja.
+> Figyeljen a fenti táblázat megjegyzéseit. A műveletek tényleges költségeinek pontosabb becsléséhez használhatja a [Azure Cosmos db emulátort](local-emulator.md) , és megbecsülheti a [műveleteinek pontos ru költségét](find-request-unit-charge.md). Bár a Azure Cosmos DB-emulátor nem támogatja a kiszolgáló nélküli használatát, az adatbázis-műveletekhez standard RU-díjat jelent, és használható a becsléshez.
 
 Miután kiszámította a kérelmek teljes számát és a GB-nyi tárterületet, amelyet valószínűleg egy hónap alatt felhasznál, a következő képlet visszaadja a költségbecslést: **([a kérelmek száma]/1 000 000 * $0,25) + ([GB tárterület] * $0,25)**.
 
@@ -105,7 +105,7 @@ A költségvetések az Azure-ban meghatározott erőforrásokhoz vagy szolgálta
 
 A költségadatok a Storage-fiókba is [exportálhatók](https://docs.microsoft.com/azure/cost-management-billing/costs/tutorial-export-acm-data?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) . Ez akkor hasznos, ha szüksége van rá, vagy másoknak további adatelemzést kell végeznie a költségekért. Egy pénzügyi csapat például az Excel vagy a Power BI használatával elemezheti az adatelemzést. A költségeket napi, heti vagy havi rendszerességgel exportálhatja, és egyéni dátumtartományt is beállíthat. A költségadatok exportálásának ajánlott módja a Cost-adatkészletek beolvasása.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A díjszabással kapcsolatos további információkért tekintse meg a következő cikkeket Azure Cosmos DB:
 

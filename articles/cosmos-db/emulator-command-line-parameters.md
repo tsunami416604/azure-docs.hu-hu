@@ -7,17 +7,17 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/17/2020
 ms.custom: contperfq1
-ms.openlocfilehash: cb6d1cb684f4c2e3f563d5690c804d64c97ff70c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 67abcea1b5d7657ffcd342d4cddb9a96bdd8c63a
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096733"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030883"
 ---
 # <a name="command-line-and-powershell-reference-for-azure-cosmos-db-emulator"></a>A Azure Cosmos DB Emulator parancssori és PowerShell-referenciája
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Az Azure Cosmos Emulator egy helyi környezetet biztosít, amely helyi fejlesztési célokra emulálja a Azure Cosmos DB szolgáltatást. [Az emulátor telepítése](local-emulator.md)után a parancssori és a PowerShell-parancsokkal vezérelheti az emulátort. Ez a cikk a parancssori és a PowerShell-parancsok használatát ismerteti az emulátor elindításához és leállításához, a beállítások konfigurálásához és egyéb műveletek végrehajtásához. A parancsokat a telepítési helyről kell futtatnia.
+A Azure Cosmos DB Emulator egy helyi környezetet biztosít, amely a Azure Cosmos DB szolgáltatást helyi fejlesztési célokra emulálja. [Az emulátor telepítése](local-emulator.md)után a parancssori és a PowerShell-parancsokkal vezérelheti az emulátort. Ez a cikk a parancssori és a PowerShell-parancsok használatát ismerteti az emulátor elindításához és leállításához, a beállítások konfigurálásához és egyéb műveletek végrehajtásához. A parancsokat a telepítési helyről kell futtatnia.
 
 ##  <a name="manage-the-emulator-with-command-line-syntax"></a><a id="command-line"></a>Az emulátor kezelése parancssori szintaxissal
 
@@ -29,10 +29,10 @@ A beállítások listájának megtekintéséhez írja be a `Microsoft.Azure.Cosm
 
 |**Beállítás** | **Leírás** | **Parancs**| **Argumentumok**|
 |---|---|---|---|
-|[Nincsenek argumentumok] | Az alapértelmezett beállításokkal elindítja az Azure Cosmos emulatort. |Microsoft.Azure.Cosmos.Emulator.exe| |
+|[Nincsenek argumentumok] | Az alapértelmezett beállításokkal indítja el az Azure Cosmos DB Emulatort. |Microsoft.Azure.Cosmos.Emulator.exe| |
 |[Súgó] |Megjeleníti a támogatott parancssori argumentumok listáját.|Microsoft.Azure.Cosmos.Emulator.exe/? | |
-| GetStatus |Lekéri az Azure Cosmos Emulator állapotát. Az állapotot a kilépési kód jelzi: 1 = Indítás, 2 = Fut, 3 = Leállítva. A negatív kilépési kód azt jelzi, hogy hiba történt. Nem jön létre más kimenet. | Microsoft.Azure.Cosmos.Emulator.exe/GetStatus| |
-| Leállítás| Leállítja az Azure Cosmos Emulatort.| Microsoft.Azure.Cosmos.Emulator.exe/shutdown parancsot | |
+| GetStatus |Lekéri az Azure Cosmos DB Emulator állapotát. Az állapotot a kilépési kód jelzi: 1 = Indítás, 2 = Fut, 3 = Leállítva. A negatív kilépési kód azt jelzi, hogy hiba történt. Nem jön létre más kimenet. | Microsoft.Azure.Cosmos.Emulator.exe/GetStatus| |
+| Leállítás| Bezárja az Azure Cosmos DB Emulatort.| Microsoft.Azure.Cosmos.Emulator.exe/shutdown parancsot | |
 |DataPath | Meghatározza az adatfájlok tárolására szolgáló elérési utat. Az alapértelmezett érték a%LocalAppdata%\CosmosDBEmulator. | Microsoft.Azure.Cosmos.Emulator.exe/DataPath =\<datapath\> | \<datapath\>: Elérhető elérési út |
 |Port | Az emulátorhoz használni kívánt portszámot határozza meg. Az alapértelmezett érték a 8081. |Microsoft.Azure.Cosmos.Emulator.exe/port =\<port\> | \<port\>: Egyetlen portszám |
 | ComputePort | A számítási együttműködési átjáró szolgáltatáshoz használandó portszám megadása. Az átjáró HTTP-végpontjának mintavételi portja a következőképpen számítja ki: ComputePort + 79. Ezért a ComputePort és a ComputePort + 79 nyitva kell lennie és elérhetőnek kell lennie. Az alapértelmezett érték a 8900. | Microsoft.Azure.Cosmos.Emulator.exe/ComputePort =\<computeport\> | \<computeport\>: Egyetlen portszám |
@@ -127,26 +127,26 @@ A parancsmag biztosítja, hogy az emulátor le legyen állítva az eltávolítá
 
 ## <a name="change-the-number-of-default-containers"></a><a id="set-partitioncount"></a>Az alapértelmezett tárolók számának módosítása
 
-Alapértelmezés szerint legfeljebb 25 rögzített méretű tárolót hozhat létre (csak Azure Cosmos DB SDK-k használata esetén támogatott), vagy 5 korlátlan tárolót az Azure Cosmos Emulator használatával. A **PartitionCount** érték módosításával akár 250 rögzített méretű tárolót vagy 50 korlátlan tárolót hozhat létre, vagy a kettő bármely kombinációját, amely nem haladja meg a 250 rögzített méretű tárolókat (ahol egy korlátlan tároló = 5 rögzített méretű tároló). Az emulátor azonban nem ajánlott úgy beállítani, hogy több mint 200 rögzített méretű tárolóval fusson. A lemez i/o-műveleteihez hozzáadott terhelés miatt a végponti API-k használatakor előre nem látható időtúllépéseket eredményezhet.
+Alapértelmezés szerint legfeljebb 25 rögzített méretű tárolót hozhat létre (csak Azure Cosmos DB SDK-k használata esetén támogatott), vagy 5 korlátlan tárolót a Azure Cosmos DB Emulator használatával. A **PartitionCount** érték módosításával akár 250 rögzített méretű tárolót vagy 50 korlátlan tárolót hozhat létre, vagy a kettő bármely kombinációját, amely nem haladja meg a 250 rögzített méretű tárolókat (ahol egy korlátlan tároló = 5 rögzített méretű tároló). Az emulátor azonban nem ajánlott úgy beállítani, hogy több mint 200 rögzített méretű tárolóval fusson. A lemez i/o-műveleteihez hozzáadott terhelés miatt a végponti API-k használatakor előre nem látható időtúllépéseket eredményezhet.
 
 Ha az aktuális partíciók számának túllépése után megpróbál létrehozni egy tárolót, az emulátor egy ServiceUnavailable-kivételt hoz létre a következő üzenettel.
 
 > Jelenleg nagy az igényünk ebben a régióban, ezért nem teljesítheti a kérést. Folyamatosan dolgozunk, hogy a kapacitás online állapotba kerüljön, és javasoljuk, hogy próbálkozzon újra.
 > Tevékenységazonosító: 12345678-1234-1234-1234-123456789abc
 
-Az Azure Cosmos Emulatorban elérhető tárolók számának módosításához futtassa a következő lépéseket:
+A Azure Cosmos DB emulátorban elérhető tárolók számának módosításához futtassa a következő lépéseket:
 
-1. Törölje az összes helyi Azure Cosmos Emulator-adatfájlt úgy, hogy a tálcán a jobb gombbal a **Azure Cosmos db Emulator** ikonra kattint, majd az **adatbeállítások visszaállítása..** . lehetőségre kattint.
+1. Az összes helyi Azure Cosmos DB Emulator adat törléséhez kattintson a jobb gombbal a rendszertálcán lévő **Azure Cosmos DB Emulator** ikonra, majd kattintson az **Adatok visszaállítása…** lehetőségre.
 
 1. A mappában lévő összes Emulator-érték törlése `%LOCALAPPDATA%\CosmosDBEmulator` .
 
 1. Az összes nyitott példány bezárásához kattintson a jobb gombbal a rendszertálcán lévő **Azure Cosmos DB Emulator** ikonra, majd kattintson a **Kilépés** lehetőségre. Az összes példány bezárása egy percig is eltarthat.
 
-1. Telepítse az [Azure Cosmos Emulator](https://aka.ms/cosmosdb-emulator)legújabb verzióját.
+1. Telepítse az [Azure Cosmos DB Emulator](https://aka.ms/cosmosdb-emulator) legújabb verzióját.
 
 1. Indítsa el az emulátort a PartitionCount jelzővel egy <= 250 érték beállításával. Például: `C:\Program Files\Azure Cosmos DB Emulator> Microsoft.Azure.Cosmos.Emulator.exe /PartitionCount=100`.
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* [Az Azure Cosmos Emulator-tanúsítványok exportálása Java-, Python-és Node.js-alkalmazásokkal való használatra](local-emulator-export-ssl-certificates.md)
+* [A Azure Cosmos DB Emulator-tanúsítványok exportálása Java-, Python-és Node.js-alkalmazásokkal való használatra](local-emulator-export-ssl-certificates.md)
 * [Hibakeresési problémák az emulátorral](troubleshoot-local-emulator.md)

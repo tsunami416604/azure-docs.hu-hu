@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: ed9c3c86336a7b0a2fe989cbe9bd0dd825c5575b
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 08bcb74fd50be0eeb7a73c0743db2c4f3a57be32
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372625"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030849"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>A Kubernetes számítási feladatok védelme
 
@@ -39,7 +39,7 @@ Security Center több tároló biztonsági funkciót kínál, ha engedélyezi az
 |Árképzési|Ingyenes|
 |Szükséges szerepkörök és engedélyek:|Egy hozzárendelés szerkesztéséhez a **tulajdonos** vagy a **biztonsági rendszergazda**<br>**Olvasó** a javaslatok megtekintéséhez|
 |Támogatott fürtök:|Kubernetes v 1.14 (vagy újabb) szükséges<br>Nincs PodSecurityPolicy-erőforrás (régi PSP-modell) a fürtökön<br>A Windows-csomópontok nem támogatottak|
-|Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Nem](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
+|Felhők|![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![No](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
 |||
 
 
@@ -47,34 +47,43 @@ Security Center több tároló biztonsági funkciót kínál, ha engedélyezi az
 
 Azure Security Center tartalmaz olyan javaslatokat, amelyek akkor érhetők el, ha telepítette a **Kubernetes Azure Policy bővítményét**.
 
-1. A javaslatok konfigurálásához először telepítenie kell a bővítményt:
+### <a name="step-1-deploy-the-add-on"></a>1. lépés: a bővítmény telepítése
 
-    1. A javaslatok lapon keresse meg a **Kubernetes Azure Policy bővítményének nevű javaslatot, és engedélyezze a fürtökön**.
+A javaslatok konfigurálásához telepítse a  **Kubernetes Azure Policy bővítményét**. 
+
+- Ezt a bővítményt automatikusan telepítheti a [bővítmények automatikus kiépítése lehetővé tétele](security-center-enable-data-collection.md#enable-auto-provisioning-of-extensions)című részben leírtak szerint. Ha a bővítmény automatikus kiépítés értéke "on", a bővítmény alapértelmezés szerint engedélyezve van az összes meglévő és jövőbeli fürtben (amelyek megfelelnek a bővítmény telepítési követelményeinek).
+
+- A bővítmény manuális telepítése:
+
+    1. A javaslatok lapon keresse meg a "**Azure Policy bővítmény a Kubernetes telepítéséhez és engedélyezéséhez a fürtökön**" című javaslatot. 
 
         :::image type="content" source="./media/defender-for-kubernetes-usage/recommendation-to-install-policy-add-on-for-kubernetes.png" alt-text="A (z) * * Azure Policy bővítmény Kubernetes telepítéséhez és engedélyezéséhez a fürtökön * *":::
 
         > [!TIP]
         > A javaslat öt különböző biztonsági vezérlőben szerepel, és nem számít, hogy melyiket választotta ki a következő lépésben.
 
-    1. A biztonsági vezérlők bármelyikén válassza ki a javaslatot azon erőforrások megtekintéséhez, amelyekre telepíteni tudja a hozzáadást, majd válassza a **szervizelés** lehetőséget. 
+    1. A biztonsági vezérlők bármelyikén válassza ki a javaslatot azon erőforrások megtekintéséhez, amelyekre telepíteni tudja a hozzáadást.
+    1. Válassza ki a megfelelő fürtöt, és javítsa ki a **szervizelést**.
 
         :::image type="content" source="./media/defender-for-kubernetes-usage/recommendation-to-install-policy-add-on-for-kubernetes-details.png" alt-text="A (z) * * Azure Policy bővítmény Kubernetes való telepítéséhez és engedélyezéséhez telepíteni és engedélyezni kell a fürtökön * *":::
+
+### <a name="step-2-view-and-configure-the-bundle-of-13-recommendations"></a>2. lépés: a 13 javaslat csomagjának megtekintése és konfigurálása
 
 1. A bővítmény telepítése után körülbelül 30 perccel a Security Center megjeleníti a fürtök állapotát a következő javaslatok esetében, amelyek mindegyike a megfelelő biztonsági vezérlőben látható:
 
     > [!TIP]
-    > Bizonyos javaslatok olyan paraméterekkel rendelkeznek, amelyeket az Azure Policy használatával kell testreszabni a hatékony használat érdekében. Ahhoz például, hogy az ajánlati **tároló lemezképeit csak megbízható beállításjegyzékből lehessen telepíteni** , meg kell határoznia a megbízható beállításjegyzéket.
+    > Bizonyos javaslatok olyan paraméterekkel rendelkeznek, amelyeket az Azure Policy használatával kell testreszabni a hatékony használat érdekében. Ahhoz például, hogy az ajánlati **tároló lemezképeit csak megbízható beállításjegyzékből lehessen telepíteni**, meg kell határoznia a megbízható beállításjegyzéket.
     > 
     > Ha nem adja meg a konfigurációt igénylő javaslatok szükséges paramétereit, a munkaterhelések nem kifogástalan állapotú jelennek meg.
 
     | Javaslat neve                                                         | Biztonsági ellenőrzés                         | Konfiguráció szükséges |
     |-----------------------------------------------------------------------------|------------------------------------------|------------------------|
-    | A tároló CPU-és memória-korlátozásait kényszeríteni kell                          | Alkalmazások elleni védelem a DDoS-támadásokkal szemben | Nem                     |
-    | Az emelt szintű tárolókat el kell kerülni                                     | Hozzáférés és engedélyek kezelése            | Nem                     |
-    | Nem módosítható (csak olvasható) rendszerindító fájlrendszert kell kikényszeríteni a tárolók számára     | Hozzáférés és engedélyek kezelése            | Nem                     |
-    | A jogosultság-eszkalációs tárolót el kell kerülni                       | Hozzáférés és engedélyek kezelése            | Nem                     |
-    | A tárolók futtatását root felhasználóként el kell kerülni                           | Hozzáférés és engedélyek kezelése            | Nem                     |
-    | A bizalmas gazdagépek névtereit megosztó tárolókat el kell kerülni              | Hozzáférés és engedélyek kezelése            | Nem                     |
+    | A tároló CPU-és memória-korlátozásait kényszeríteni kell                          | Alkalmazások elleni védelem a DDoS-támadásokkal szemben | No                     |
+    | Az emelt szintű tárolókat el kell kerülni                                     | Hozzáférés és engedélyek kezelése            | No                     |
+    | Nem módosítható (csak olvasható) rendszerindító fájlrendszert kell kikényszeríteni a tárolók számára     | Hozzáférés és engedélyek kezelése            | No                     |
+    | A jogosultság-eszkalációs tárolót el kell kerülni                       | Hozzáférés és engedélyek kezelése            | No                     |
+    | A tárolók futtatását root felhasználóként el kell kerülni                           | Hozzáférés és engedélyek kezelése            | No                     |
+    | A bizalmas gazdagépek névtereit megosztó tárolókat el kell kerülni              | Hozzáférés és engedélyek kezelése            | No                     |
     | A minimálisan privilegizált Linux-funkciókat kell kikényszeríteni a tárolók számára       | Hozzáférés és engedélyek kezelése            | **Igen**                |
     | A pod HostPath mennyiségi csatlakoztatások használatát egy ismert listára kell korlátozni    | Hozzáférés és engedélyek kezelése            | **Igen**                |
     | A tárolóknak csak az engedélyezett portok figyelésére kell figyelniük                              | Jogosulatlan hálózati hozzáférés korlátozása     | **Igen**                |
@@ -82,6 +91,7 @@ Azure Security Center tartalmaz olyan javaslatokat, amelyek akkor érhetők el, 
     | A gazdagép hálózatkezelésének és portjainak használatát korlátozni kell                     | Jogosulatlan hálózati hozzáférés korlátozása     | **Igen**                |
     | A tárolók AppArmor-profiljának felülbírálását vagy letiltását korlátozni kell | Biztonsági konfigurációk javítása        | **Igen**                |
     | A tároló lemezképeit csak a megbízható kibocsátásiegység-forgalmi jegyzékből kell telepíteni            | Biztonsági rések szervizelése                | **Igen**                |
+    |||
 
 
 1. A paraméterekkel rendelkező ajánlásokat a következő paraméterekkel kell megadni:

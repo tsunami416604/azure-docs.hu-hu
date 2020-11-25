@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 6b57428aeba702dc8cf06ec4ae7984854a94ac7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7265195f9614928a2150a56a780ea7b36bc2e266
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449179"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030866"
 ---
-# <a name="container-security-in-security-center"></a>Tárolók biztonsága Security Center
+# <a name="container-security-in-security-center"></a>Tárolóbiztonság a Security Centerben
 
 Azure Security Center az Azure-natív megoldás a tárolók biztonságossá tételéhez.
 
@@ -78,11 +78,11 @@ A szolgáltatással kapcsolatos releváns Security Center javaslatok részletei�
 
 ###  <a name="workload-protection-best-practices-using-kubernetes-admission-control"></a>Munkaterhelések elleni védelem – ajánlott eljárások a Kubernetes belépésvezérlés használatával
 
-Telepítse a  **Kubernetes Azure Policy-bővítményét** , hogy a Kubernetes-tárolók munkaterhelésének védelmére vonatkozó javaslatokat kapjon.
+A Kubernetes-tárolók számítási feladatainak ellátására szolgáló javaslatok csomagjának telepítéséhez telepítse a  **Kubernetes Azure Policy bővítményét**. A bővítmény automatikus üzembe helyezését a [bővítmények automatikus kiépítése lehetővé tétele](security-center-enable-data-collection.md#enable-auto-provisioning-of-extensions)című cikkben ismertetett módon is elvégezheti. Ha a bővítmény automatikus kiépítés értéke "on", a bővítmény alapértelmezés szerint engedélyezve van az összes meglévő és jövőbeli fürtben (amelyek megfelelnek a bővítmény telepítési követelményeinek).
 
 Ahogy az a [Kubernetes oldalán is Azure Policy](../governance/policy/concepts/policy-for-kubernetes.md)kifejtettük, a bővítmény kibővíti a nyílt forráskódú [forgalomirányító v3](https://github.com/open-policy-agent/gatekeeper)   belépésvezérlés webhookot a [nyílt házirend-ügynök](https://www.openpolicyagent.org/)számára. A Kubernetes-belépésvezérlés olyan beépülő modulok, amelyek kikényszerítik a fürtök használatának módját. A bővítmény webes hookként regisztrálja a Kubernetes, és lehetővé teszi, hogy központosított, konzisztens módon alkalmazza a fürtökön a fürtre kiterjedő kényszerítéseket és védelmet. 
 
-Ha telepítette a bővítményt az AK-fürtön, a Kubernetes API-kiszolgálónak küldött összes kérést a rendszer a fürtön megőrzött ajánlott eljárások alapján figyeli. Ezután konfigurálhatja az ajánlott eljárások **betartatását** és a jövőbeli munkaterhelések megadását. 
+Az AK-fürthöz tartozó bővítménnyel a Kubernetes API-kiszolgálónak küldött összes kérést a rendszer az előre meghatározott ajánlott eljárások alapján figyeli, mielőtt a fürtön megmarad. Ezután konfigurálhatja az ajánlott eljárások **betartatását** és a jövőbeli munkaterhelések megadását. 
 
 Megadhatja például, hogy az emelt szintű tárolók ne legyenek létrehozva, és minden jövőbeli kérelem le lesz tiltva.
 
@@ -95,9 +95,9 @@ További információ a [Kubernetes számítási feladatainak biztonságáról](
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az áttekintésben megtanulta a tárolók biztonságának alapvető elemeit Azure Security Centerban. Kapcsolódó anyagok esetében lásd:
 
 - [Bevezetés az Azure Defender for Kubernetes használatába](defender-for-kubernetes-introduction.md)
-- [Bevezetés az Azure Defender for Container-jegyzékbe](defender-for-container-registries-introduction.md)
+- [A tárolóregisztrációs adatbázisokhoz készült Azure Defender bemutatása](defender-for-container-registries-introduction.md)
