@@ -4,11 +4,11 @@ description: Azure DevTest Labs Azure biztonsági alapterve
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.openlocfilehash: 64e5ac46fbeb71706f7b1ae2d3682260e3cbc651
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843196"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993652"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs Azure biztonsági alapterve
 
@@ -559,7 +559,7 @@ Lásd az alábbi cikkeket:
 - [A DevTest Labs virtuális hálózatának konfigurálása](devtest-lab-configure-vnet.md)
 - [Azure Firewall áttekintése](../firewall/overview.md)
 - [Webalkalmazási tűzfal – áttekintés](../web-application-firewall/overview.md)
-- [Hálózati biztonság áttekintése](../virtual-network/network-security-groups-overview.md)
+- [Hálózati biztonság – áttekintés](../virtual-network/network-security-groups-overview.md)
 - [Az Azure Virtual Network áttekintése]()
 - [Erőforrások rendszerezése az Azure-beli felügyeleti csoportokkal](../governance/management-groups/overview.md)
 - [Útmutató az előfizetéssel kapcsolatos döntésekhez](/azure/cloud-adoption-framework/decision-guides/subscriptions/)
@@ -886,7 +886,7 @@ Azure Security Center figyelés: * * * * nem alkalmazható
 
 **Felelősség:** Megosztott
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse meg a következő cikket:
 
 - [Biztonsági riasztások a Azure DevTest Labs környezetekben](environment-security-alerts.md)

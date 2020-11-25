@@ -4,11 +4,11 @@ description: Megtudhatja, hogyan tekintheti meg az összes labort egy tesztkörn
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: cc097e97430462e36a33b982a7394a20c308eab5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85443485"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993618"
 ---
 # <a name="manage-labs-in-a-lab-account"></a>Tesztkörnyezetek kezelése tesztkörnyezeti fiókban
 Ebből a cikkből megtudhatja, hogyan tekintheti meg a labor-fiók tulajdonosa vagy rendszergazdája az összes labort egy tesztkörnyezet-fiókban, és hogyan törölhet egy labort a labor-fiókban. 
@@ -29,7 +29,7 @@ Ebből a cikkből megtudhatja, hogyan tekintheti meg a labor-fiók tulajdonosa v
 ## <a name="delete-a-lab-in-a-lab-account"></a>Tesztkörnyezet törlése labor-fiókban
 Kövesse az előző szakasz utasításait a labor-fiókban található laborok listájának megtekintéséhez.
 
-1. Válassza a **... lehetőséget. (három pont)**, majd válassza a **Törlés**lehetőséget. 
+1. Válassza a **... lehetőséget. (három pont)**, majd válassza a **Törlés** lehetőséget. 
 
     ![Tesztkörnyezet törlése](./media/how-to-manage-lab-accounts/delete-lab-button.png)
 2. Válassza az **Igen** lehetőséget a figyelmeztető üzenetben. 

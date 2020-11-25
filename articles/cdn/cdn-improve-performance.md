@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
 ms.openlocfilehash: ceed62d466627d6a23554229bd6f4b96c674c7e9
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148754"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993669"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Teljesítmény javítása fájltömörítéssel az Azure CDN-ben
 A fájltömörítés egy egyszerű és hatékony módszer a fájlátvitel sebességének javítására, valamint a lapozófájl teljesítményének növelésére azáltal, hogy a fájl méretét a kiszolgálóról való elküldésük előtt csökkenti. A fájltömörítés csökkentheti a sávszélesség-költségeket, és rugalmasabb felhasználói élményt nyújt a felhasználóknak.
@@ -42,7 +42,7 @@ A standard és a prémium szintű CDN-csomagok ugyanazt a tömörítési funkci�
 
 ### <a name="standard-cdn-profiles"></a>Szabványos CDN-profilok 
 > [!NOTE]
-> Ez a szakasz a **Microsoft Azure CDN szabványára**vonatkozik, **Azure CDN a standard a verizontól**, és **Azure CDN standard a Akamai-** profilokból.
+> Ez a szakasz a **Microsoft Azure CDN szabványára** vonatkozik, **Azure CDN a standard a verizontól**, és **Azure CDN standard a Akamai-** profilokból.
 > 
 > 
 
@@ -51,7 +51,7 @@ A standard és a prémium szintű CDN-csomagok ugyanazt a tömörítési funkci�
     ![CDN-profil végpontjai](./media/cdn-file-compression/cdn-endpoints.png)
 
     Megnyílik a CDN-végpont lap.
-2. Válassza a **tömörítés**lehetőséget.
+2. Válassza a **tömörítés** lehetőséget.
 
     ![A képernyőképen egy, a portál menüjében kiválasztott tömörítéssel rendelkező végpont látható.](./media/cdn-file-compression/cdn-compress-select-std.png)
 
@@ -69,32 +69,32 @@ A standard és a prémium szintű CDN-csomagok ugyanazt a tömörítési funkci�
    > A MIME-típusok alapértelmezett listájának módosítása jelenleg nem támogatott a Microsoft Azure CDN standard verziójában.
    > 
 
-5. A módosítások végrehajtása után válassza a **Mentés**lehetőséget.
+5. A módosítások végrehajtása után válassza a **Mentés** lehetőséget.
 
 ### <a name="premium-cdn-profiles"></a>Prémium CDN-profilok
 > [!NOTE]
 > Ez a szakasz csak a Verizon-profilokból **Azure CDN Premiumra** vonatkozik.
 > 
 
-1. A CDN-profil lapon válassza a **kezelés**lehetőséget.
+1. A CDN-profil lapon válassza a **kezelés** lehetőséget.
 
     ![CDN-kezelés kiválasztása](./media/cdn-file-compression/cdn-manage-btn.png)
 
     Megnyílik a CDN felügyeleti portál.
-2. Vigye a kurzort a **nagyméretű http** -lapra, majd vigye a kurzort a **gyorsítótár beállításai** menü fölé. Válassza a **tömörítés**lehetőséget.
+2. Vigye a kurzort a **nagyméretű http** -lapra, majd vigye a kurzort a **gyorsítótár beállításai** menü fölé. Válassza a **tömörítés** lehetőséget.
 
     ![CDN-tömörítés kiválasztása](./media/cdn-file-compression/cdn-compress-select.png)
 
     A tömörítési beállítások megjelennek.
 
     ![CDN-fájlok tömörítési beállításai](./media/cdn-file-compression/cdn-compress-files.png)
-3. Engedélyezze a tömörítést a **tömörítés**engedélyezése lehetőség kiválasztásával. Adja meg a tömöríteni kívánt MIME-típusokat vesszővel tagolt listaként (szóközök nélkül) a **fájltípusok** mezőben.
+3. Engedélyezze a tömörítést a **tömörítés** engedélyezése lehetőség kiválasztásával. Adja meg a tömöríteni kívánt MIME-típusokat vesszővel tagolt listaként (szóközök nélkül) a **fájltípusok** mezőben.
 
    > [!TIP]
    > Bár lehetséges, nem ajánlott tömörítést alkalmazni tömörített formátumokra. Például: ZIP, MP3, MP4 vagy JPG.
    > 
 
-4. A módosítások végrehajtása után válassza a **frissítés**lehetőséget.
+4. A módosítások végrehajtása után válassza a **frissítés** lehetőséget.
 
 ## <a name="compression-rules"></a>Tömörítési szabályok
 

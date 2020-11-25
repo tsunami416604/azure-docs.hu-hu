@@ -5,11 +5,11 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.custom: seodec18
 ms.openlocfilehash: fe2697c73f2a5f3f0b33cfb598f11f39420ed723
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108099"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994111"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch-metrikák, riasztások és naplók a diagnosztika kiértékeléséhez és figyeléséhez
 
@@ -33,10 +33,10 @@ A Azure Portal a fiók **Áttekintés** lapja alapértelmezés szerint a fő cso
 
 Az összes batch-fiók metrikájának megtekintése a Azure Portalban:
 
-1. A Azure Portal válassza a **minden szolgáltatás**  >  **Batch-fiókok**lehetőséget, majd válassza ki a Batch-fiók nevét.
-2. A **Figyelés** alatt kattintson a **Metrikák** elemre.
+1. A Azure Portal válassza a **minden szolgáltatás**  >  **Batch-fiókok** lehetőséget, majd válassza ki a Batch-fiók nevét.
+2. A **Figyelés** területen kattintson a **Metrikák** elemre.
 3. Válassza a **metrika hozzáadása** lehetőséget, majd válasszon ki egy mérőszámot a legördülő listából.
-4. Válasszon **összesítési** lehetőséget a metrika számára. A Count-alapú metrikák (például a "dedikált mag darabszáma" vagy az "alacsony prioritású csomópontok száma") esetében az **átlagos** összesítést kell használni. Eseményvezérelt metrikák esetén (például "a készlet átméretezése kész események") használja a **Count**összesítést.
+4. Válasszon **összesítési** lehetőséget a metrika számára. A Count-alapú metrikák (például a "dedikált mag darabszáma" vagy az "alacsony prioritású csomópontok száma") esetében az **átlagos** összesítést kell használni. Eseményvezérelt metrikák esetén (például "a készlet átméretezése kész események") használja a **Count** összesítést.
 
    > [!WARNING]
    > Ne használja a "Sum" összesítést, amely hozzáadja a diagram adott időszakában fogadott adatpontok értékeit.
@@ -61,9 +61,9 @@ Előfordulhat például, hogy egy metrikus riasztást szeretne beállítani, ha 
 
 Metrikai riasztás konfigurálása a Azure Portalban:
 
-1. Válassza a **minden szolgáltatás**  >  **Batch-fiókok**lehetőséget, majd válassza ki a Batch-fiók nevét.
-2. A **figyelés**területen válassza a **riasztások**, majd az **új riasztási szabály**lehetőséget.
-3. Kattintson a **feltétel kiválasztása**, majd a metrika elemre. Erősítse meg a **diagram időtartamát**, **a küszöbérték típusát**, az **operátort**és az **összesítési típus**értékét, és adjon meg egy **küszöbértéket**. Ezután válassza a **Done** (Kész) elemet.
+1. Válassza a **minden szolgáltatás**  >  **Batch-fiókok** lehetőséget, majd válassza ki a Batch-fiók nevét.
+2. A **figyelés** területen válassza a **riasztások**, majd az **új riasztási szabály** lehetőséget.
+3. Kattintson a **feltétel kiválasztása**, majd a metrika elemre. Erősítse meg a **diagram időtartamát**, **a küszöbérték típusát**, az **operátort** és az **összesítési típus** értékét, és adjon meg egy **küszöbértéket**. Ezután válassza a **Done** (Kész) elemet.
 4. Adjon hozzá egy műveleti csoportot a riasztáshoz egy meglévő műveleti csoport kiválasztásával vagy egy új műveleti csoport létrehozásával.
 5. A **riasztási szabály részletei** szakaszban adja meg a **riasztási szabály nevét** és **leírását** , és válassza ki a **súlyosságot** .
 6. Válassza a **Riasztási szabály létrehozása** lehetőséget.
@@ -97,12 +97,12 @@ Másik lehetőségként a következőket teheti:
 
 Ha új diagnosztikai beállítást szeretne létrehozni a Azure Portalban, kövesse az alábbi lépéseket.
 
-1. A Azure Portal válassza a **minden szolgáltatás**  >  **Batch-fiókok**lehetőséget, majd válassza ki a Batch-fiók nevét.
+1. A Azure Portal válassza a **minden szolgáltatás**  >  **Batch-fiókok** lehetőséget, majd válassza ki a Batch-fiók nevét.
 2. A **Monitorozás** területen kattintson a **Diagnosztikai beállítások** elemre.
-3. A **diagnosztikai beállítások**területen válassza a **diagnosztikai beállítás hozzáadása**elemet.
+3. A **diagnosztikai beállítások** területen válassza a **diagnosztikai beállítás hozzáadása** elemet.
 4. Adja meg a beállítás nevét.
 5. Válasszon egy célhelyet: **küldés log Analytics**, **archiválás egy Storage-fiókba**, vagy **stream az Event hub**-ba. Ha a Storage-fiókot választja, megadhat egy adatmegőrzési szabályt. Ha nem ad meg napokat a megőrzéshez, a rendszer a Storage-fiók élettartama alatt megőrzi az adatok mennyiségét.
-6. Válassza ki a **ServiceLog**, a **AllMetrics**vagy mindkettőt.
+6. Válassza ki a **ServiceLog**, a **AllMetrics** vagy mindkettőt.
 7. A diagnosztikai beállítás létrehozásához válassza a **Mentés** lehetőséget.
 
 [A Azure Portal Azure monitoron keresztül is engedélyezheti a gyűjteményt a](../azure-monitor/platform/diagnostic-settings.md) diagnosztikai beállítások konfigurálásához egy [Resource Manager-sablon](../azure-monitor/samples/resource-manager-diagnostic-settings.md), illetve az Azure POWERSHELL vagy az Azure CLI használatával. További információ: [Az Azure platform naplófájljainak áttekintése](../azure-monitor/platform/platform-logs-overview.md).
@@ -119,7 +119,7 @@ m={two-digit numeric month}/d={two-digit numeric day}/
 h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
 
-Példa:
+Például:
 
 ```json
 insights-metrics-pt1m/resourceId=/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/
@@ -139,7 +139,7 @@ A Storage-fiókban található diagnosztikai naplók sémájával kapcsolatos to
 
 ### <a name="service-log-events"></a>Szolgáltatás-naplózási események
 
-Azure Batch a szolgáltatás naplóit, ha összegyűjtöttük, az adott batch-erőforrás (például készlet vagy feladat) élettartama során a Azure Batch szolgáltatás által kibocsátott eseményeket tartalmazza. A Batch által kibocsátott összes eseményt JSON formátumban naplózza a rendszer. Ez például egy minta- **készlet létrehozási eseményének**törzse:
+Azure Batch a szolgáltatás naplóit, ha összegyűjtöttük, az adott batch-erőforrás (például készlet vagy feladat) élettartama során a Azure Batch szolgáltatás által kibocsátott eseményeket tartalmazza. A Batch által kibocsátott összes eseményt JSON formátumban naplózza a rendszer. Ez például egy minta- **készlet létrehozási eseményének** törzse:
 
 ```json
 {

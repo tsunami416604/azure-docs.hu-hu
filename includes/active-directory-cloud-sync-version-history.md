@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 46c27fa2073ea1178fdf01ea3cbf96fe86954a6a
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 3fc2475569765116d46a175629f25d9d49634942
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95255120"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993949"
 ---
 Ez a cikk a kiadott Azure Active Directory Connect kiépítési ügynök verzióit és funkcióit sorolja fel. Az Azure AD csapata rendszeresen frissíti a kiépítési ügynököt új funkciókkal és funkciókkal. A kiépítési ügynök automatikusan frissül, amikor megjelent egy új verzió. 
 
@@ -14,12 +14,12 @@ A Microsoft közvetlen támogatást biztosít az ügynök legújabb verziójáho
 
 ### <a name="release-status"></a>Kiadás állapota
 
-November XX, 2020: kiadva letöltésre
+November 23., 2020: kiadva a letöltéshez
 
 ### <a name="new-features-and-improvements"></a>Új funkciók és Újdonságok
 
 * A [gMSA](../articles/active-directory/cloud-provisioning/how-to-prerequisites.md#group-managed-service-accounts) támogatása
-* A csoportok legfeljebb 1500 tagot támogatnak (a különbözeti szinkronizálás során)
+* A növekményes és a különbözeti szinkronizálási ciklus során a 1500-nál kevesebb taggal rendelkező csoportok támogatása. Ez a csoport-hatókörű szűrő használatakor alkalmazható
 * Nagyméretű csoportok támogatása a tagok méretével akár 15 000 fordulat
 * A szinkronizálás kezdeti fejlesztése
 * Részletes részletes naplózás

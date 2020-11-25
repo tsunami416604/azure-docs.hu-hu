@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 11/13/2020
 ms.openlocfilehash: a089631ab199b0fe997bba001561c6b027034e2c
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628747"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993686"
 ---
 # <a name="collect-iis-logs-with-log-analytics-agent-in-azure-monitor"></a>Az IIS-naplók összegyűjtése Log Analytics ügynökkel Azure Monitor
 A Internet Information Services (IIS) olyan naplófájlokban tárolja a felhasználói tevékenységeket, amelyeket az Log Analytics ügynök gyűjthet, és [Azure monitor naplókban](data-platform.md)tárol.

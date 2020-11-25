@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
 ms.openlocfilehash: de4e32d79cf4dfb3a5f54544c65544297a2c0232
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88054136"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993567"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-powershell"></a>Oktatóanyag: NAT-átjáró létrehozása Azure PowerShell használatával
 
@@ -33,7 +33,7 @@ Ezt az oktatóanyagot a Azure Cloud Shell használatával vagy a parancsok helyi
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=latest). Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -90,7 +90,7 @@ Ez a szakasz részletesen ismerteti, hogyan hozhatja létre és konfigurálhatja
   - Egy nyilvános IP-címkészlet és egy nyilvános IP-előtag, amelyet a NAT-átjáró erőforrása lefordított kimenő folyamatokhoz használ.
   - Módosítsa az üresjárati időkorlátot az alapértelmezett 4 perctől 10 percre.
 
-Hozzon létre egy globális Azure NAT-átjárót a [New-AzNatGateway](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway). A parancs eredménye létrehoz egy **myNATgateway** nevű átjáró-erőforrást, amely a nyilvános IP- **myPublicIP** és a nyilvános IP-előtag **myPublicIPprefix**használja. Az Üresjárati időkorlát 10 percre van beállítva.  A parancs eredménye egy **$natGateway** nevű változóban lesz tárolva későbbi használatra.
+Hozzon létre egy globális Azure NAT-átjárót a [New-AzNatGateway](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway). A parancs eredménye létrehoz egy **myNATgateway** nevű átjáró-erőforrást, amely a nyilvános IP- **myPublicIP** és a nyilvános IP-előtag **myPublicIPprefix** használja. Az Üresjárati időkorlát 10 percre van beállítva.  A parancs eredménye egy **$natGateway** nevű változóban lesz tárolva későbbi használatra.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -147,7 +147,7 @@ New-AzPublicIpAddress -Name $ipnm -ResourceGroupName $rsg -AllocationMethod Stat
 
 ### <a name="create-an-nsg-and-expose-ssh-endpoint-for-vm"></a>Hozzon létre egy NSG, és tegye elérhetővé SSH-végpontot a virtuális géphez
 
-A standard nyilvános IP-címek a "biztonság alapértelmezés szerint", létre kell hozni egy NSG, amely engedélyezi a bejövő hozzáférést az SSH-hoz. A [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup?view=latest) használatával hozzon létre egy **myNSG**nevű NSG-erőforrást. A [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig?view=latest) használatával hozzon létre egy NSG-szabályt az **SSH** -hozzáféréshez a **myResourceGroupNAT**-ben.  A parancs eredménye egy **$NSG** nevű változóban lesz tárolva későbbi használatra.
+A standard nyilvános IP-címek a "biztonság alapértelmezés szerint", létre kell hozni egy NSG, amely engedélyezi a bejövő hozzáférést az SSH-hoz. A [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup?view=latest) használatával hozzon létre egy **myNSG** nevű NSG-erőforrást. A [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig?view=latest) használatával hozzon létre egy NSG-szabályt az **SSH** -hozzáféréshez a **myResourceGroupNAT**-ben.  A parancs eredménye egy **$NSG** nevű változóban lesz tárolva későbbi használatra.
 
 ```azurepowershell-interactive
 $rnm = 'ssh'

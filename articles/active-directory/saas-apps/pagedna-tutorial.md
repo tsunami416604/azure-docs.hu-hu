@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.openlocfilehash: e1ccd337851f8242526362675a11280e33584082
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92513825"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993924"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>Oktatóanyag: Azure Active Directory integráció a PageDNA
 
@@ -56,7 +56,7 @@ A PageDNA Azure AD-be való integrálásának konfigurálásához hozzá kell ad
 
     ![Az Azure Active Directory lehetőség](common/select-azuread.png)
 
-1. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -64,13 +64,13 @@ A PageDNA Azure AD-be való integrálásának konfigurálásához hozzá kell ad
 
     ![Az új alkalmazás lehetőség](common/add-new-app.png)
 
-1. A keresőmezőbe írja be a **PageDNA**kifejezést. A keresési eredmények között válassza a **PageDNA**lehetőséget, majd válassza a **Hozzáadás** lehetőséget az alkalmazás hozzáadásához.
+1. A keresőmezőbe írja be a **PageDNA** kifejezést. A keresési eredmények között válassza a **PageDNA** lehetőséget, majd válassza a **Hozzáadás** lehetőséget az alkalmazás hozzáadásához.
 
     ![PageDNA az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az PageDNA-mel konfigurálja és teszteli a **Britta Simon**nevű teszt felhasználó alapján. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között a PageDNA-ben.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az PageDNA-mel konfigurálja és teszteli a **Britta Simon** nevű teszt felhasználó alapján. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között a PageDNA-ben.
 
 Az Azure AD egyszeri bejelentkezés PageDNA való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
@@ -87,7 +87,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés PageDNA való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/) **PageDNA** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **PageDNA** alkalmazás-integráció lapján válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési lehetőség konfigurálása](common/select-sso.png)
 
@@ -142,11 +142,11 @@ Ha az egyszeri bejelentkezést szeretné konfigurálni a PageDNA oldalon, küldj
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal a bal oldali ablaktáblán válassza a **Azure Active Directory**    >  **felhasználók**  >  **minden felhasználó**lehetőséget.
+1. A Azure Portal a bal oldali ablaktáblán válassza a **Azure Active Directory**    >  **felhasználók**  >  **minden felhasználó** lehetőséget.
 
     ![A felhasználók és a "minden felhasználó" lehetőség](common/users.png)
 
-1. A képernyő felső részén válassza az **+ új felhasználó**lehetőséget.
+1. A képernyő felső részén válassza az **+ új felhasználó** lehetőséget.
 
     ![Új felhasználói beállítás](common/new-user.png)
 
@@ -156,7 +156,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Britta Simon nev�
 
     1. A név mezőbe írja be a **BrittaSimon** **nevet** .
   
-    1. A **Felhasználónév** mezőbe írja be a **BrittaSimon \@ \<yourcompanydomain> . \<extension> **. Például **BrittaSimon \@ contoso.com**.
+    1. A **Felhasználónév** mezőbe írja be a **BrittaSimon \@ \<yourcompanydomain> . \<extension>**. Például **BrittaSimon \@ contoso.com**.
 
     1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
 
@@ -166,27 +166,27 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Britta Simon nev�
 
 Ebben a szakaszban az Azure egyszeri bejelentkezés használatára engedélyezi a felhasználó számára, hogy Britta hozzáférést biztosít a PageDNA.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**  >  **minden alkalmazás**  >  **PageDNA**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**  >  **minden alkalmazás**  >  **PageDNA** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-1. Az alkalmazások listában válassza a **PageDNA**lehetőséget.
+1. Az alkalmazások listában válassza a **PageDNA** lehetőséget.
 
     ![PageDNA az alkalmazások listájában](common/all-applications.png)
 
-1. A bal oldali ablaktábla **kezelés**területén válassza a **felhasználók és csoportok**lehetőséget.
+1. A bal oldali ablaktábla **kezelés** területén válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" lehetőség](common/users-groups-blade.png)
 
-1. Válassza a **+ felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** panelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **+ felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** panelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
 1. A **felhasználók és csoportok** panelen válassza a **Britta Simon** elemet a **felhasználók** listában, majd válassza a **kiválasztás** elemet a panel alján.
 
-1. Ha az SAML-állításban a szerepkör értékét várja, akkor a **szerepkör kiválasztása** panelen válassza ki a megfelelő szerepkört a listáról a felhasználó számára. A panel alján válassza a **kiválasztás**lehetőséget.
+1. Ha az SAML-állításban a szerepkör értékét várja, akkor a **szerepkör kiválasztása** panelen válassza ki a megfelelő szerepkört a listáról a felhasználó számára. A panel alján válassza a **kiválasztás** lehetőséget.
 
-1. A **hozzárendelés hozzáadása** panelen válassza a **hozzárendelés**lehetőséget.
+1. A **hozzárendelés hozzáadása** panelen válassza a **hozzárendelés** lehetőséget.
 
 ### <a name="create-a-pagedna-test-user"></a>PageDNA-teszt felhasználó létrehozása
 

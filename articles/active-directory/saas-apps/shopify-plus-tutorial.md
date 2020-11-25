@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
 ms.openlocfilehash: d7a5d160fa8a0209478fe81d2880e8956828350d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92504711"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993499"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-shopify-plus"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Shopify Plus szolgáltatással
 
@@ -49,15 +49,15 @@ A Shopify és az Azure AD integrálásának konfigurálásához hozzá kell adni
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a keresőmezőbe a **Shopify Plus** kifejezést.
 1. Válassza az **Shopify Plus** elemet az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-shopify-plus"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Shopify Plus szolgáltatásban
 
-Konfigurálja és tesztelje az Azure AD SSO-t a Shopify Plus használatával egy **B. Simon**nevű tesztelési felhasználóval. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Shopify Plusban.
+Konfigurálja és tesztelje az Azure AD SSO-t a Shopify Plus használatával egy **B. Simon** nevű tesztelési felhasználóval. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Shopify Plusban.
 
 Az Azure AD SSO konfigurálásához és teszteléséhez a Shopify Plus használatával végezze el a következő építőelemeket:
 
@@ -72,8 +72,8 @@ Az Azure AD SSO konfigurálásához és teszteléséhez a Shopify Plus használa
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)a **Shopify Plus** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **Shopify Plus** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
@@ -95,11 +95,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentieken kívül az Shopify Plus alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Name | Forrás attribútum|
+    | Név | Forrás attribútum|
     | ---- | --------------- |
     | e-mail | User. mail |
 
-1. Módosítsa a **név azonosítójának** formátumát **állandó**értékre. Válassza ki az **egyedi felhasználói azonosító (név azonosítója)** beállítást, majd válassza ki a **név azonosítójának** formátumát. Válassza az **állandó** lehetőséget ehhez a beállításhoz. Mentse a módosításokat.
+1. Módosítsa a **név azonosítójának** formátumát **állandó** értékre. Válassza ki az **egyedi felhasználói azonosító (név azonosítója)** beállítást, majd válassza ki a **név azonosítójának** formátumát. Válassza az **állandó** lehetőséget ehhez a beállításhoz. Mentse a módosításokat.
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban válassza a másolás gombot az **alkalmazás-összevonási metaadatok URL-címének** másolásához, majd mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/copy-metadataurl.png)
@@ -108,25 +108,25 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a Shopify Plushoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **Shopify plusz**elemet.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **Shopify plusz** elemet.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
@@ -138,7 +138,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 A teljes lépések megtekintéséhez tekintse meg az [SAML-integrációk beállításával kapcsolatos Shopify dokumentációját](https://help.shopify.com/en/manual/shopify-plus/saml).
 
-Ha az egyszeri bejelentkezést az **Shopify plusz** oldalon szeretné konfigurálni, másolja az **alkalmazás-összevonási metaadatok URL-címét** a Azure Active Directoryból. Ezután jelentkezzen be a [szervezeti rendszergazdába](https://shopify.plus) , és lépjen a **felhasználók**  >  **biztonsága**elemre. Válassza a **konfiguráció beállítása**lehetőséget, majd illessze be az alkalmazás-összevonási metaadatok URL-címét az **Identity Provider metaadatok URL-címe** szakaszba. A lépés befejezéséhez válassza a **Hozzáadás** lehetőséget.
+Ha az egyszeri bejelentkezést az **Shopify plusz** oldalon szeretné konfigurálni, másolja az **alkalmazás-összevonási metaadatok URL-címét** a Azure Active Directoryból. Ezután jelentkezzen be a [szervezeti rendszergazdába](https://shopify.plus) , és lépjen a **felhasználók**  >  **biztonsága** elemre. Válassza a **konfiguráció beállítása** lehetőséget, majd illessze be az alkalmazás-összevonási metaadatok URL-címét az **Identity Provider metaadatok URL-címe** szakaszba. A lépés befejezéséhez válassza a **Hozzáadás** lehetőséget.
 
 ### <a name="create-shopify-plus-test-user"></a>Shopify és tesztelési felhasználó létrehozása
 
@@ -151,13 +151,13 @@ Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a Shopify Plusba
 
 Egyéni felhasználók:
 1. Nyissa meg a Shopify egy egyéni felhasználó lapját, és egy Azure AD által felügyelt e-mail-tartománnyal és a Shopify Plus-ben ellenőrzött.
-1. Az SAML hitelesítés szakaszban válassza a **Szerkesztés**lehetőséget, válassza a **kötelező**lehetőséget, majd kattintson a **Mentés**gombra.
+1. Az SAML hitelesítés szakaszban válassza a **Szerkesztés** lehetőséget, válassza a **kötelező** lehetőséget, majd kattintson a **Mentés** gombra.
 1. Ellenőrizze, hogy a felhasználó sikeresen be tud-e jelentkezni a identitásszolgáltató által kezdeményezett és az SP által kezdeményezett folyamatokon keresztül.
 
 Egy e-mail tartományba tartozó összes felhasználó esetén:
 1. Térjen vissza a **Biztonság** lapra.
 1. Válassza ki az SAML hitelesítési beállításhoz **szükséges** értéket. Ez az SAML-t az e-mail-tartománnyal rendelkező összes felhasználóra kikényszeríti az Shopify Plus-ben.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 > [!IMPORTANT]
 > Az SAML engedélyezése az e-mail-tartomány összes felhasználója számára hatással van az alkalmazást használó összes felhasználóra. A felhasználók nem tudnak bejelentkezni a szokásos bejelentkezési oldalára. Csak Azure Active Directoryon keresztül férhetnek hozzá az alkalmazáshoz. A Shopify nem biztosít olyan biztonsági mentési bejelentkezési URL-címet, amelyen a felhasználók bejelentkezhetnek a normál felhasználónevével és jelszavával. Ha szükséges, az SAML kikapcsolásához forduljon a Shopify támogatási szolgálatához.

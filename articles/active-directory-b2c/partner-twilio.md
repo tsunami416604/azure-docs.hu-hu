@@ -12,11 +12,11 @@ ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 953653a758577ed3d48ca2d81403b4cb363ea294
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259068"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994043"
 ---
 # <a name="integrating-twilio-verify-app-with-azure-active-directory-b2c"></a>Twilio-ellenőrzési alkalmazás integrálása Azure Active Directory B2C
 
@@ -104,9 +104,9 @@ Adja hozzá a Azure AD B2C a házirend-fájlokat:
 
 4. Navigáljon **Azure ad B2C**  >  **Identity Experience Framework**-  >  **szabályzat kulcsaihoz**.
 
-5. Adjon hozzá egy új, **B2cRestTwilioClientId**nevű kulcsot. Válassza a **Manual (manuális**) lehetőséget, és adja meg a Twilio AccountSID értékét.
+5. Adjon hozzá egy új, **B2cRestTwilioClientId** nevű kulcsot. Válassza a **Manual (manuális**) lehetőséget, és adja meg a Twilio AccountSID értékét.
 
-6. Adjon hozzá egy új, **B2cRestTwilioClientSecret**nevű kulcsot. Válassza a **Manual (manuális**) lehetőséget, és adja meg a TWILIO Auth token értékét.
+6. Adjon hozzá egy új, **B2cRestTwilioClientSecret** nevű kulcsot. Válassza a **Manual (manuális**) lehetőséget, és adja meg a TWILIO Auth token értékét.
 
 7. Töltse fel az összes házirend-fájlt a bérlőbe.
 
@@ -116,7 +116,7 @@ Adja hozzá a Azure AD B2C a házirend-fájlokat:
 
 * Keresse meg az alkalmazást, és tesztelje a bejelentkezést, a regisztrációt és a pénz küldése műveletet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkért tekintse át a következő cikkeket:
 

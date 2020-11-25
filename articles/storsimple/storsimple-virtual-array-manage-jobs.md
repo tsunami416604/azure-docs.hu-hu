@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/11/2016
 ms.author: alkohli
 ms.openlocfilehash: d806d8a04dc1bd8547808d20c77bfec310f7dd06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85507483"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95992985"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>A StorSimple Eszközkezelő szolgáltatás használata a StorSimple virtuális tömbhöz tartozó feladatok megtekintéséhez
 ## <a name="overview"></a>Áttekintés
@@ -32,8 +32,8 @@ Gyorsan megtalálhatja az Önt érdeklő feladatokat a következő mezők szűr�
 * **Időtartomány** – a feladatok a dátum-és időtartomány alapján szűrhetők.
 * **Eszközök** – a feladatok a szolgáltatáshoz csatlakoztatott adott eszközön kezdődnek. A szűrt feladatok a következő attribútumok alapján lesznek táblázatos formában:
   
-  * **Név** – a feladat neve lehet az **összes**, a **biztonsági mentés**, a **klónozás**, a **feladatátvétel**, a **frissítések letöltése**vagy a **frissítések telepítése**.
-  * **Állapot** – a feladatok lehetnek **mind**, **folyamatban**, **sikeres**vagy **sikertelen**, vagy **megszakadt**.
+  * **Név** – a feladat neve lehet az **összes**, a **biztonsági mentés**, a **klónozás**, a **feladatátvétel**, a **frissítések letöltése** vagy a **frissítések telepítése**.
+  * **Állapot** – a feladatok lehetnek **mind**, **folyamatban**, **sikeres** vagy **sikertelen**, vagy **megszakadt**.
   * **Entitás** – a feladatok egy kötethez, megosztáshoz vagy eszközhöz társíthatók.
   * **Eszköz** – annak az eszköznek a neve, amelyen a feladatot elindították.
   * **Elindítva** – a feladatok elindításának időpontja.
@@ -51,7 +51,7 @@ A feladatok részleteinek megtekintéséhez hajtsa végre a következő lépése
 2. Válasszon ki egy feladatot a feladatok táblázatos listájából.
    
     ![Feladatok panelje](./media/storsimple-virtual-array-manage-jobs/ova-jobs-blade.png)
-3. A lap alján kattintson a **részletek**elemre.
+3. A lap alján kattintson a **részletek** elemre.
 4. A **részletek** párbeszédpanelen megtekintheti az állapot, a részletek és az idő statisztikáit. Az alábbi ábrán egy példa látható a **biztonsági mentési feladatok részletei** párbeszédpanelre.
    
     ![Feladat részletei](./media/storsimple-virtual-array-manage-jobs/ova-jobs-details.png)

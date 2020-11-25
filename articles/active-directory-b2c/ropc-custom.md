@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bf8fe68c28457fd01704762e537fe259a96a6bce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d6fb23d7325347a1b27165d3e9bc3bf33797682
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87116234"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95994356"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Az erőforrás-tulajdonosi jelszó hitelesítő adatainak konfigurálása Azure Active Directory B2C egyéni házirend használatával
 
@@ -30,7 +30,7 @@ Azure Active Directory B2C (Azure AD B2C) esetében az erőforrás-tulajdonos je
 
 Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az [Egyéni szabályzatokkal Azure Active Directory B2Cban](custom-policy-get-started.md).
 
-## <a name="register-an-application"></a>Egy alkalmazás regisztrálása
+## <a name="register-an-application"></a>Alkalmazás regisztrálása
 
 [!INCLUDE [active-directory-b2c-appreg-ropc](../../includes/active-directory-b2c-appreg-ropc.md)]
 
@@ -60,7 +60,7 @@ Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az
     </ClaimsSchema>
     ```
 
-3. **ClaimsSchema**után adjon hozzá egy **ClaimsTransformations** elemet és annak alárendelt elemeit a **BuildingBlocks** elemhez:
+3. **ClaimsSchema** után adjon hozzá egy **ClaimsTransformations** elemet és annak alárendelt elemeit a **BuildingBlocks** elemhez:
 
     ```xml
     <ClaimsTransformations>
@@ -218,7 +218,7 @@ Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az
     </UserJourney>
     ```
 
-7. A Azure AD B2C-bérlő **Egyéni házirendek** lapján válassza a **házirend feltöltése**lehetőséget.
+7. A Azure AD B2C-bérlő **Egyéni házirendek** lapján válassza a **házirend feltöltése** lehetőséget.
 8. **Ha létezik, engedélyezze a házirend felülírását**, majd keresse meg és válassza ki a *TrustFrameworkExtensions.xml* fájlt.
 9. Kattintson a **Feltöltés** gombra.
 
@@ -226,7 +226,7 @@ Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az
 
 Következő lépésként frissítse a függő entitás fájlját, amely kezdeményezi a létrehozott felhasználói utat:
 
-1. Készítsen másolatot *SignUpOrSignin.xml* fájlról a munkakönyvtárában, és nevezze át *ROPC_Auth.xmlre *.
+1. Készítsen másolatot *SignUpOrSignin.xml* fájlról a munkakönyvtárában, és nevezze át *ROPC_Auth.xmlre*.
 2. Nyissa meg az új fájlt, és módosítsa a **PolicyId** attribútum értékét a **TrustFrameworkPolicy** egyedi értékre. A házirend-azonosító a szabályzat neve. Például **B2C_1A_ROPC_Auth**.
 3. Módosítsa a **DefaultUserJourney** **ReferenceId** attribútum értékét a következőre: `ResourceOwnerPasswordCredentials` .
 4. Módosítsa a **OutputClaims** elemet úgy, hogy csak a következő jogcímeket tartalmazza:
@@ -239,7 +239,7 @@ Következő lépésként frissítse a függő entitás fájlját, amely kezdemé
     <OutputClaim ClaimTypeReferenceId="surname" DefaultValue="" />
     ```
 
-5. A Azure AD B2C-bérlő **Egyéni házirendek** lapján válassza a **házirend feltöltése**lehetőséget.
+5. A Azure AD B2C-bérlő **Egyéni házirendek** lapján válassza a **házirend feltöltése** lehetőséget.
 6. **Ha létezik, engedélyezze a házirend felülírását**, majd keresse meg és válassza ki a *ROPC_Auth.xml* fájlt.
 7. Kattintson a **Feltöltés** gombra.
 
@@ -247,7 +247,7 @@ Következő lépésként frissítse a függő entitás fájlját, amely kezdemé
 
 Egy API-hívás létrehozásához használja kedvenc API-fejlesztési alkalmazását, és tekintse át a szabályzat hibakeresésére adott választ. A POST kérelem törzsének a következő információk alapján hozhat létre egy hívást:
 
-`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1A_ROPC_Auth/oauth2/v2.0/token`
 
 - Cserélje le a helyére `<tenant-name>` a Azure ad B2C bérlő nevét.
 - A helyére írja `B2C_1A_ROPC_Auth` be az erőforrás-tulajdonosi jelszó hitelesítő adatainak teljes nevét.
@@ -269,7 +269,7 @@ Egy API-hívás létrehozásához használja kedvenc API-fejlesztési alkalmazá
 A tényleges POST-kérelem a következő példához hasonlóan néz ki:
 
 ```https
-POST /<tenant-name>.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
+POST /<tenant-name>.onmicrosoft.com/oauth2/v2.0/token?B2C_1A_ROPC_Auth HTTP/1.1
 Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
@@ -292,7 +292,7 @@ Az offline-hozzáférés sikeres válasza a következő példához hasonlóan n�
 
 Állítson össze egy POST hívást, amely az itt láthatóhoz hasonló. Használja a következő táblázatban szereplő információkat a kérelem törzse:
 
-`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1A_ROPC_Auth/oauth2/v2.0/token`
 
 - Cserélje le a helyére `<tenant-name>` a Azure ad B2C bérlő nevét.
 - A helyére írja `B2C_1A_ROPC_Auth` be az erőforrás-tulajdonosi jelszó hitelesítő adatainak teljes nevét.

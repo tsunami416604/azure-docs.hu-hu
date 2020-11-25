@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.openlocfilehash: 748566cf5b25157fcb8a2938a3f4bd307c930874
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895148"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993209"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-hana"></a>Oktatóanyag: Azure Active Directory integráció a SAP HANA
 
@@ -148,7 +148,7 @@ Az Azure AD egyszeri bejelentkezés SAP HANA használatával történő konfigur
     > [!NOTE]
     > Az alapértelmezett konfigurációban az URL-cím átirányítja a kérést egy bejelentkezési képernyőre, amelyhez hitelesített SAP HANA adatbázis-felhasználó hitelesítő adatai szükségesek. A bejelentkező felhasználónak rendelkeznie kell az SAML felügyeleti feladatok végrehajtásához szükséges engedélyekkel.
 
-2. A XSA webes felületén nyissa meg az **SAML-identitás szolgáltatóját** . Innen válassza a **+** képernyő alján található gombot az **Identity Provider információinak hozzáadása** panel megjelenítéséhez. Ezután hajtsa végre a következő lépéseket:
+2. A XSA webes felületén nyissa meg az **SAML-identitás szolgáltatóját**. Innen válassza a **+** képernyő alján található gombot az **Identity Provider információinak hozzáadása** panel megjelenítéséhez. Ezután hajtsa végre a következő lépéseket:
 
     ![Identitás-szolgáltató hozzáadása](./media/saphana-tutorial/sap1.png)
 
@@ -177,7 +177,7 @@ Az Azure AD egyszeri bejelentkezés SAP HANA használatával történő konfigur
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -240,9 +240,9 @@ Ha manuálisan kell létrehoznia egy felhasználót, hajtsa végre a következő
 
 2. Jelölje be a láthatatlan jelölőnégyzetet az **SAML** bal oldalán, majd válassza a **Konfigurálás** hivatkozást.
 
-3. Válassza a **Hozzáadás** lehetőséget az SAML-identitásszolgáltató hozzáadásához.  Válassza ki a megfelelő SAML-IDENTITÁSSZOLGÁLTATÓ, majd kattintson **az OK gombra** .
+3. Válassza a **Hozzáadás** lehetőséget az SAML-identitásszolgáltató hozzáadásához.  Válassza ki a megfelelő SAML-IDENTITÁSSZOLGÁLTATÓ, majd kattintson **az OK gombra**.
 
-4. Adja hozzá a **külső identitást** (ebben az esetben BrittaSimon), **vagy válasszon egyet** . Ez után válassza az **OK** gombot.
+4. Adja hozzá a **külső identitást** (ebben az esetben BrittaSimon), **vagy válasszon egyet**. Ez után válassza az **OK** gombot.
 
    > [!Note]
    > Ha a **bármely** jelölőnégyzet nincs bejelölve, akkor a HANA-beli felhasználónévnek pontosan egyeznie kell a felhasználó nevével az UPN-ben a tartomány utótagja előtt. (Például BrittaSimon@contoso.com BrittaSimon válik a HANA-ban.)

@@ -6,11 +6,11 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/09/2020
 ms.openlocfilehash: b22c73b3f0626b9938608e88c3382e3f5e8d97fc
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427479"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993145"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Rövid útmutató: a QnA Maker Tudásbázis létrehozása, betanítása és közzététele
 
@@ -40,7 +40,7 @@ Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori k
 
     :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/qnaservice-selection.png" alt-text="Képernyőkép a QnA Maker szolgáltatás tudásbázisának kiválasztásáról":::
 
-5. A **3. lépésben** nevezze el az Ön tudásbázisát a **minta QnA kb** -ra.
+5. A **3. lépésben** nevezze el az Ön tudásbázisát a **minta QnA kb**-ra.
 
 6. A **4. lépésben** konfigurálja a beállításokat a következő táblázattal:
 
@@ -75,7 +75,7 @@ Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori k
 
 5. Ha az első tudásbázist hozza létre a szolgáltatáshoz, a **2. lépésben** lehetősége van arra, hogy az összes Tudásbázisban egyedi nyelvi beállítást biztosítson. Miután definiálta a nyelvi beállítást az első tudásbázishoz, a szolgáltatás beállításainak későbbi módosítása nem engedélyezett.
 
-6. A **3. lépésben** nevezze el az Ön tudásbázisát a **minta QnA kb** -ra. 
+6. A **3. lépésben** nevezze el az Ön tudásbázisát a **minta QnA kb**-ra. 
 
 7. A **4. lépésben** konfigurálja a beállításokat a következő táblázattal:
 
@@ -184,7 +184,7 @@ Ha módosítja a tudásbázist, és újból közzéteszi, nem kell további műv
 
 1. A robot létrehozása után nyissa meg a **bot Service** -erőforrást.
 1. A **bot Management** alatt válassza **a tesztelés webes csevegésben** lehetőséget.
-1. Írja be a következőt a csevegési **üzenetbe** :
+1. Írja be a következőt a csevegési **üzenetbe**:
 
     `Azure services?`
 
@@ -200,11 +200,11 @@ Miután közzétette a tudásbázist, létrehozott egy robotot, és tesztelte a 
 
 Ez néhány percen belül elvégezhető, anélkül, hogy kódot kellene írnia, vagy törölni kellene a tartalmat.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha nem folytatja a következő rövid útmutatót, törölje a QnA Maker és a bot Framework erőforrásait a Azure Portalban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Metaadatokkal rendelkező kérdések felvétele](add-question-metadata-portal.md)

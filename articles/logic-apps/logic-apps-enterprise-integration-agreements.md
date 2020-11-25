@@ -9,11 +9,11 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
 ms.openlocfilehash: c8cbfb619c9eed325161503f705bf5c4c0746265
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82612333"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95992943"
 ---
 # <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Kereskedelmi partnerekkel kötött szerződések létrehozása és kezelése az Azure Logic Appsben
 
@@ -41,30 +41,30 @@ A RosettaNet-üzenetek cseréjére vonatkozó szerződések létrehozásával ka
 ## <a name="create-agreements"></a>Szerződések létrehozása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-Az Azure fő menüjében válassza a **minden szolgáltatás**lehetőséget. A keresőmezőbe írja be szűrőként az "integráció" kifejezést. Az eredmények közül válassza ki ezt az erőforrást: **integrációs fiókok**
+Az Azure fő menüjében válassza a **minden szolgáltatás** lehetőséget. A keresőmezőbe írja be szűrőként az "integráció" kifejezést. Az eredmények közül válassza ki ezt az erőforrást: **integrációs fiókok**
 
    ![Integrációs fiók megkeresése](./media/logic-apps-enterprise-integration-agreements/find-integration-accounts.png)
 
-1. Az **integrációs fiókok**területen válassza ki azt az integrációs fiókot, amelyben létre szeretné hozni a szerződést.
+1. Az **integrációs fiókok** területen válassza ki azt az integrációs fiókot, amelyben létre szeretné hozni a szerződést.
 
    ![Válassza ki azt az integrációs fiókot, ahol létre szeretné hozni a szerződést](./media/logic-apps-enterprise-integration-agreements/select-integration-account.png)
 
-1. A jobb oldali ablaktábla **összetevők**területén válassza a **szerződések** csempét.
+1. A jobb oldali ablaktábla **összetevők** területén válassza a **szerződések** csempét.
 
    ![Válassza a "szerződések" lehetőséget](./media/logic-apps-enterprise-integration-agreements/agreement-1.png)
 
-1. A **szerződések**területen válassza a **Hozzáadás**lehetőséget. A **Hozzáadás** ablaktáblán adja meg a szerződésre vonatkozó információkat, például:
+1. A **szerződések** területen válassza a **Hozzáadás** lehetőséget. A **Hozzáadás** ablaktáblán adja meg a szerződésre vonatkozó információkat, például:
 
    ![Válassza a "Hozzáadás" lehetőséget.](./media/logic-apps-enterprise-integration-agreements/agreement-2.png)
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    |----------|----------|-------|-------------|
-   | **Név** | Igen | <*szerződés – név*> | A szerződés neve |
-   | **Szerződés típusa** | Igen | **AS2**, **X12**vagy **EDIFACT** | A szerződéshez tartozó protokoll típusa. A szerződési fájl létrehozásakor a fájl tartalmának meg kell egyeznie a szerződés típusával. | |  
-   | **Gazda partner** | Igen | <*gazda-partner-név*> | A fogadó partner a szerződést megadó szervezetet jelöli. |
-   | **Gazdagép identitása** | Igen | <*gazda-partner-azonosító*> | A gazda partner azonosítója |
-   | **Vendég partner** | Igen | <*vendég-partner neve*> | A vendég partner a gazda partnerrel üzleti tevékenységet folytató szervezetet jelöl |
-   | **Vendég identitás** | Igen | <*vendég-partner-azonosító*> | A vendég partner azonosítója |
+   | **Név** | Yes | <*szerződés – név*> | A szerződés neve |
+   | **Szerződés típusa** | Yes | **AS2**, **X12** vagy **EDIFACT** | A szerződéshez tartozó protokoll típusa. A szerződési fájl létrehozásakor a fájl tartalmának meg kell egyeznie a szerződés típusával. | |  
+   | **Gazda partner** | Yes | <*gazda-partner-név*> | A fogadó partner a szerződést megadó szervezetet jelöli. |
+   | **Gazdagép identitása** | Yes | <*gazda-partner-azonosító*> | A gazda partner azonosítója |
+   | **Vendég partner** | Yes | <*vendég-partner neve*> | A vendég partner a gazda partnerrel üzleti tevékenységet folytató szervezetet jelöl |
+   | **Vendég identitás** | Yes | <*vendég-partner-azonosító*> | A vendég partner azonosítója |
    | **Fogadási beállítások** | Változó | Változó | Ezek a tulajdonságok határozzák meg, hogy a gazdagép partnere hogyan fogadja az összes bejövő üzenetet a szerződésben szereplő vendég partnertől. További információért lásd a vonatkozó szerződés típusát: <p>- [AS2-üzenet beállításai](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT](logic-apps-enterprise-integration-edifact.md) <br>- [X12](logic-apps-enterprise-integration-x12.md) |
    | **Küldési beállítások** | Változó | Változó | Ezek a tulajdonságok határozzák meg, hogy a gazdagép partnere hogyan küldi el az összes kimenő üzenetet a szerződésben szereplő vendég partnernek. További információért lásd a vonatkozó szerződés típusát: <p>- [AS2-üzenet beállításai](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT](logic-apps-enterprise-integration-edifact.md) <br>- [X12](logic-apps-enterprise-integration-x12.md) |
    |||||
@@ -83,29 +83,29 @@ Az Azure fő menüjében válassza a **minden szolgáltatás**lehetőséget. A k
 
 ## <a name="edit-agreements"></a>Szerződések szerkesztése
 
-1. A [Azure Portal](https://portal.azure.com)az Azure fő menüjében válassza a **minden szolgáltatás**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)az Azure fő menüjében válassza a **minden szolgáltatás** lehetőséget.
 
 1. A keresőmezőbe írja be szűrőként az "integráció" kifejezést. Az eredmények közül válassza ki ezt az erőforrást: **integrációs fiókok**
 
-1. Az **integrációs fiókok**területen válassza ki a szerkeszteni kívánt szerződést tartalmazó integrációs fiókot.
+1. Az **integrációs fiókok** területen válassza ki a szerkeszteni kívánt szerződést tartalmazó integrációs fiókot.
 
-1. A jobb oldali ablaktábla **összetevők**területén válassza a **szerződések** csempét.
+1. A jobb oldali ablaktábla **összetevők** területén válassza a **szerződések** csempét.
 
-1. A **szerződések**területen válassza ki a szerződést, és válassza a **Szerkesztés**lehetőséget.
+1. A **szerződések** területen válassza ki a szerződést, és válassza a **Szerkesztés** lehetőséget.
 
 1. Végezze el, majd mentse a módosításokat.
 
 ## <a name="delete-agreements"></a>Szerződések törlése
 
-1. A [Azure Portal](https://portal.azure.com)az Azure fő menüjében válassza a **minden szolgáltatás**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)az Azure fő menüjében válassza a **minden szolgáltatás** lehetőséget.
 
 1. A keresőmezőbe írja be szűrőként az "integráció" kifejezést. Az eredmények közül válassza ki ezt az erőforrást: **integrációs fiókok**
 
-1. Az **integrációs fiókok**területen válassza ki a törölni kívánt szerződést tartalmazó integrációs fiókot.
+1. Az **integrációs fiókok** területen válassza ki a törölni kívánt szerződést tartalmazó integrációs fiókot.
 
-1. A jobb oldali ablaktábla **összetevők**területén válassza a **szerződések** csempét.
+1. A jobb oldali ablaktábla **összetevők** területén válassza a **szerződések** csempét.
 
-1. A **szerződések**területen válassza ki a szerződést, és válassza a **Törlés**lehetőséget.
+1. A **szerződések** területen válassza ki a szerződést, és válassza a **Törlés** lehetőséget.
 
 1. Erősítse meg, hogy törölni kívánja a kijelölt szerződést.
 

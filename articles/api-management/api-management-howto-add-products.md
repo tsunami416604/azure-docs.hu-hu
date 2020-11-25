@@ -7,17 +7,17 @@ ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: apimpm
 ms.openlocfilehash: 2f298f240d8aa7a38b42a8c78ee3c90fe3423d10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91630566"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993550"
 ---
 # <a name="tutorial-create-and-publish-a-product"></a>Oktatóanyag: termék létrehozása és közzététele  
 
 Az Azure API Management egy [*termék*](api-management-terminology.md#term-definitions) tartalmaz egy vagy több API-t, valamint egy használati kvótát és a használati feltételeket. Egy termék közzététele után a fejlesztők előfizethetnek a termékre, és megkezdhetik a termék API-jainak használatát.  
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Termékek létrehozása és közzététele
@@ -35,10 +35,10 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 ## <a name="create-and-publish-a-product"></a>Termékek létrehozása és közzététele
 
 1. Jelentkezzen be a Azure Portalba, és navigáljon a API Management-példányhoz.
-1. A bal oldali navigációs sávon válassza a **termékek**  >  **+ Hozzáadás**lehetőséget.
+1. A bal oldali navigációs sávon válassza a **termékek**  >  **+ Hozzáadás** lehetőséget.
 1.  A **termék hozzáadása** ablakban adja meg az alábbi táblázatban leírt értékeket a termék létrehozásához.
 
-    :::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-01.png" alt-text="API Management termékek a portálon":::
+    :::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-01.png" alt-text="Termék hozzáadása a portálon":::
 
     | Név                     | Leírás                                                                                                                                                                                                                                                                                                             |
     |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -75,12 +75,12 @@ A fejlesztőknek elő kell fizetniük a termékre az API-k eléréséhez. Amikor
 ### <a name="add-an-api-to-an-existing-product"></a>API hozzáadása meglévő termékhez
 
 
-1. A API Management példány bal oldali navigációs sávján válassza a **termékek**elemet.
+1. A API Management példány bal oldali navigációs sávján válassza a **termékek** elemet.
 1. Válasszon ki egy terméket, majd válassza az **API-kat**.
 1. Válassza a **+ Hozzáadás** lehetőséget.
 1. Válasszon ki egy vagy több API-t, majd **válassza a elemet**.
 
-:::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-02.png" alt-text="API Management termékek a portálon":::
+:::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-02.png" alt-text="API hozzáadása meglévő termékhez":::
 
 > [!TIP]
 > Létrehozhat vagy frissíthet egy felhasználó előfizetését egyéni előfizetési kulcsokkal rendelkező termékre egy [REST API](/rest/api/apimanagement/2019-12-01/subscription/createorupdate) vagy egy PowerShell-paranccsal.

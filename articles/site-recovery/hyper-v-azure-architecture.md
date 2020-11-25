@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: af387b063a3c07d8b6b6c544814565e2a5ebdd46
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87495726"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993771"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V-ről Azure-ba történő vészhelyreállítás architektúrája
 
@@ -66,7 +66,7 @@ Ahhoz, hogy a Site Recovery a várt módon működjön, módosítania kell a kim
 
 Ha URL-alapú tűzfal-proxyt használ a kimenő kapcsolatok vezérléséhez, engedélyezze az alábbi URL-címek elérését:
 
-| **Név**                  | **Kereskedelmi**                               | **Államigazgatás**                                 | **Leírás** |
+| **Név**                  | **Kereskedelmi**                               | **Government**                                 | **Leírás** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
 | Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Hitelesítést és engedélyezést biztosít a Site Recovery szolgáltatás URL-címeihez. |
@@ -121,7 +121,7 @@ Ha URL-alapú tűzfal-proxyt használ a kimenő kapcsolatok vezérléséhez, eng
     - Egy rögzített blokkos adatdarabolási algoritmust használ, amelyben a forrás-és a célfájl rögzített adattömbökre van osztva.
     - Az egyes adattömbökhöz tartozó ellenőrzőösszegek jönnek létre. Ezeket a rendszer összehasonlítja azzal, hogy meghatározza, hogy a forrás mely blokkokat kell alkalmazni a célra.
 2. Az újraszinkronizálás befejezését követően folytatódik a normál változásreplikálás.
-3. Ha nem szeretné megvárni az alapértelmezett újraszinkronizálást a munkaidőn kívül, manuálisan is szinkronizálhatja a virtuális gépet. Ha például áramkimaradás történik. Ehhez a Azure Portal válassza ki a virtuális gépet > **Újraszinkronizálás**lehetőséget.
+3. Ha nem szeretné megvárni az alapértelmezett újraszinkronizálást a munkaidőn kívül, manuálisan is szinkronizálhatja a virtuális gépet. Ha például áramkimaradás történik. Ehhez a Azure Portal válassza ki a virtuális gépet > **Újraszinkronizálás** lehetőséget.
 
     ![Az újraszinkronizálási lehetőséget ábrázoló képernyőkép.](./media/hyper-v-azure-architecture/image4-site.png)
 

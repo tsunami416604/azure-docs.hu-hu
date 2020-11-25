@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/14/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: d7ac494edfb9b1deeceafcac523ac58bccde96b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2144945647dc6b2e31e5593de3b6c8c0bf99a606
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85365190"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993305"
 ---
 Ez a szakasz azt ismerteti, hogyan hozható létre IoT hub a [Azure Portal](https://portal.azure.com)használatával.
 
@@ -21,7 +21,7 @@ Ez a szakasz azt ismerteti, hogyan hozható létre IoT hub a [Azure Portal](http
 
 1. Az Azure kezdőlapján kattintson a **+ erőforrás létrehozása** gombra, majd írja be a *IoT hub* **kifejezést a keresés a piactéren** mezőbe.
 
-1. Válassza a **IoT hub** elemet a keresési eredmények közül, majd válassza a **Létrehozás**lehetőséget.
+1. Válassza a **IoT hub** elemet a keresési eredmények közül, majd válassza a **Létrehozás** lehetőséget.
 
 1. Az **alapvető beállítások** lapon végezze el a következő mezőket:
 
@@ -50,7 +50,7 @@ Ez a szakasz azt ismerteti, hogyan hozható létre IoT hub a [Azure Portal](http
     - **IoT hub egységek**: a napi egységenként engedélyezett üzenetek száma a központ díjszabási szintjétől függ. Ha például azt szeretné, hogy a központ támogassa a 700 000-es bejövő üzeneteket, két S1 szintű egységet választ.
     További információ a többi lehetőségről: [a megfelelő IoT hub](../articles/iot-hub/iot-hub-scaling.md)-szinten való választás.
 
-    - **Azure Security Center**: kapcsolja be ezt a beállítást, ha további veszélyforrások elleni védelmet szeretne hozzáadni a IoT és az eszközeihez. Ez a lehetőség az ingyenes szinten lévő hubok esetében nem érhető el. További információ erről a szolgáltatásról: [Azure Security Center a IoT](https://docs.microsoft.com/azure/asc-for-iot/).
+    - **Azure Security Center**: kapcsolja be ezt a beállítást, ha további veszélyforrások elleni védelmet szeretne hozzáadni a IoT és az eszközeihez. Ez a lehetőség az ingyenes szinten lévő hubok esetében nem érhető el. További információ erről a szolgáltatásról: [Azure Security Center a IoT](/azure/asc-for-iot/).
 
     - **Speciális beállítások**  >  **Eszközről a felhőbe irányuló partíciók**: Ez a tulajdonság az üzenetek egyidejű olvasóinak számát kapcsolja az eszközről a felhőbe irányuló üzenetekhez. A legtöbb hubhoz csak négy partíció szükséges.
 

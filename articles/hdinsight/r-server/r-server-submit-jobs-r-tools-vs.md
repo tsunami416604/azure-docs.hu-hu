@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.openlocfilehash: 08426c74b26c18b15466578d9921520da1e9c923
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536232"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993788"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Feladatok beküldése az R Tools for Visual Studio használatával
 
@@ -27,7 +27,7 @@ A RTVS olyan eszközöket kínál, mint például az [r interaktív ablak](/visu
 
     ![A RTVS telepítése a Visual Studio 2017-ben](./media/r-server-submit-jobs-r-tools-vs/install-r-tools-for-vs.png)
 
-2. Válassza ki az *adatelemzési és analitikai alkalmazások számítási feladatait* , majd válassza ki az **r nyelv támogatását** , az **r-fejlesztés futásidejű támogatását** , valamint a **Microsoft r-ügyfél** beállításait.
+2. Válassza ki az *adatelemzési és analitikai alkalmazások számítási feladatait* , majd válassza ki az **r nyelv támogatását**, az **r-fejlesztés futásidejű támogatását**, valamint a **Microsoft r-ügyfél** beállításait.
 
 3. Nyilvános és titkos kulcsokat kell használnia az SSH-hitelesítéshez.
    <!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
@@ -121,7 +121,7 @@ Ha egy Microsoft ML Server/Microsoft R-ügyfelet használ a PuTTY-vel felszerelt
 
         ![Azure HDInsight-tár tárolók](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
 
-    4. Válassza ki a fürt tárolójának nevét, tallózással keresse meg a **felhasználói** mappát (Előfordulhat, hogy a lista alján a *továbbiak betöltése* lehetőségre kell kattintania), majd válassza a *RevoShare* , majd a **newUser** lehetőséget. A `people.json` fájlnak a mappában kell megjelennie `newUser` .
+    4. Válassza ki a fürt tárolójának nevét, tallózással keresse meg a **felhasználói** mappát (Előfordulhat, hogy a lista alján a *továbbiak betöltése* lehetőségre kell kattintania), majd válassza a *RevoShare*, majd a **newUser** lehetőséget. A `people.json` fájlnak a mappában kell megjelennie `newUser` .
 
         ![HDInsight másolt mappa helye](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
 
@@ -131,7 +131,7 @@ Ha egy Microsoft ML Server/Microsoft R-ügyfelet használ a PuTTY-vel felszerelt
     rxStopEngine(mySparkCluster)
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Számítási környezeti beállítások a HDInsight ML-szolgáltatásaihoz](r-server-compute-contexts.md)
 * A [scaleer és a sparker ötvözi](../hdinsight-hadoop-r-scaler-sparkr.md) a légitársaság repülési késési előrejelzéseit.

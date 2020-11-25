@@ -6,11 +6,11 @@ services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.openlocfilehash: c0c1f587b4e52607e9466300f976a52874c9e5ad
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125631"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993703"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások a Scheduler speciális funkcióihoz az Azure Kubernetes Service (AKS) szolgáltatásban
 
@@ -36,7 +36,7 @@ A Kubernetes-ütemező használatával megtilthatja, hogy milyen számítási fe
 * A rendszer egy olyan csomópontra alkalmazza a **megromlást** , amely azt jelzi, hogy csak bizonyos hüvelyek ütemezhetők.
 * A **rendszer egy olyan** Pod-ra alkalmazza a betartást, amely lehetővé *teszi a* csomópontok megromlását.
 
-Ha a pod-t egy AK-fürtön helyezi üzembe, a Kubernetes csak azokat a csomópontokat ütemezhet, amelyekben a tolerancia megfelel a szennyező elemnek. Tegyük fel például, hogy rendelkezik egy Node-készlettel az AK-fürtben a GPU-támogatással rendelkező csomópontok számára. Megadhatja a nevet, például a *GPU* -t, majd az ütemezés értékét. Ha ez az érték nem *ütemezhető* , a Kubernetes Scheduler nem ütemezhet hüvelyeket a csomóponton, ha a pod nem határozza meg a megfelelő tolerancia értékét.
+Ha a pod-t egy AK-fürtön helyezi üzembe, a Kubernetes csak azokat a csomópontokat ütemezhet, amelyekben a tolerancia megfelel a szennyező elemnek. Tegyük fel például, hogy rendelkezik egy Node-készlettel az AK-fürtben a GPU-támogatással rendelkező csomópontok számára. Megadhatja a nevet, például a *GPU*-t, majd az ütemezés értékét. Ha ez az érték nem *ütemezhető*, a Kubernetes Scheduler nem ütemezhet hüvelyeket a csomóponton, ha a pod nem határozza meg a megfelelő tolerancia értékét.
 
 ```console
 kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
@@ -79,13 +79,13 @@ Ha AK-ban frissít egy csomópont-készletet, a szennyező elem és a tolerálá
 
 - **Virtuálisgép-méretezési csoportokat használó alapértelmezett fürtök**
   - A nodepool az AK API-ból [fertőzheti][taint-node-pool] meg, hogy az újonnan kibővített csomópontok megkapják a csomópontok megadott API-ját.
-  - Tegyük fel, hogy van egy két csomópontos *csomópont1* és *Csomópont2* . Frissíti a csomópont-készletet.
-  - Két további csomópont jön létre, *csomópont3* és *csomópont4* , és a rendszer átadja a megfertőzt állapotokat.
+  - Tegyük fel, hogy van egy két csomópontos *csomópont1* és *Csomópont2*. Frissíti a csomópont-készletet.
+  - Két további csomópont jön létre, *csomópont3* és *csomópont4*, és a rendszer átadja a megfertőzt állapotokat.
   - A rendszer törli az eredeti *csomópont1* és *Csomópont2* .
 
 - **Virtuálisgép-méretezési csoport támogatása nélküli fürtök**
-  - Először is tegyük fel, hogy van egy két csomópontos *csomópont1* és *Csomópont2* . A frissítésekor egy további csomópont ( *csomópont3* ) jön létre.
-  - A rendszer a *csomópont1* -től származó adatszennyező adatokra alkalmazza a *csomópont3* , majd a *csomópont1* törölve lesz.
+  - Először is tegyük fel, hogy van egy két csomópontos *csomópont1* és *Csomópont2*. A frissítésekor egy további csomópont (*csomópont3*) jön létre.
+  - A rendszer a *csomópont1* -től származó adatszennyező adatokra alkalmazza a *csomópont3*, majd a *csomópont1* törölve lesz.
   - Létrejön egy másik új csomópont ( *csomópont1* néven, mivel az előző *csomópont1* törölték), és a *Csomópont2* -adatszennyező elemek az új *csomópont1* lesznek alkalmazva. Ezt követően a rendszer törli a *Csomópont2* .
   - A Essence *csomópont1* *csomópont3* válik, és *node2* a Csomópont2 *csomópont1* válik.
 
@@ -133,7 +133,7 @@ További információ a csomópont-választók használatáról: [hüvelyek csom
 
 A csomópont-választó egy alapszintű módszer a hüvelyek egy adott csomóponthoz való hozzárendelésére. A *csomópont affinitása* nagyobb rugalmasságot biztosít. A csomópont-affinitással meghatározhatja, hogy mi történjen, ha a hüvely nem egyeztethető össze egy csomóponttal. *Megkövetelheti* , hogy a Kubernetes Scheduler megfeleljen egy Pod címkével ellátott gazdagépnek. Másik *lehetőségként választhat,* de lehetővé teszi, hogy a pod más gazdagépre legyen ütemezve, ha az nem egyezik.
 
-A következő példa beállítja a csomópont-affinitást a *requiredDuringSchedulingIgnoredDuringExecution* . Ez az affinitás megköveteli, hogy a Kubernetes-ütemterv megfelelő címkével rendelkező csomópontot használjon. Ha nincs elérhető csomópont, a pod-nek várnia kell, amíg az ütemezés folytatódni fog. Annak engedélyezéséhez, hogy a pod egy másik csomóponton legyen ütemezve, ehelyett a következőt állíthatja be a *preferredDuringSchedulingIgnoreDuringExecution* értékre:
+A következő példa beállítja a csomópont-affinitást a *requiredDuringSchedulingIgnoredDuringExecution*. Ez az affinitás megköveteli, hogy a Kubernetes-ütemterv megfelelő címkével rendelkező csomópontot használjon. Ha nincs elérhető csomópont, a pod-nek várnia kell, amíg az ütemezés folytatódni fog. Annak engedélyezéséhez, hogy a pod egy másik csomóponton legyen ütemezve, ehelyett a következőt állíthatja be a *preferredDuringSchedulingIgnoreDuringExecution* értékre:
 
 ```yaml
 kind: Pod
@@ -178,7 +178,7 @@ A jó példa egy olyan webalkalmazás, amely egy Azure cache-t is használ a Red
 
 Ez a példa összetettebb üzembe helyezés, mint a csomópont-választó vagy a csomópont-affinitás használata. Az üzembe helyezés lehetővé teszi, hogy a Kubernetes hogyan ütemezze a csomópontokon a hüvelyeket, és képes legyen logikai módon elkülöníteni az erőforrásokat. A webalkalmazásnak az Azure cache for Redis példaként való teljes példáját lásd: [a hüvelyek együttes megkeresése ugyanazon a csomóponton][k8s-pod-affinity].
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk a speciális Kubernetes Scheduler-funkciókra összpontosít. Az AK-beli fürtműveleteket kapcsolatos további információkért tekintse meg az alábbi ajánlott eljárásokat:
 

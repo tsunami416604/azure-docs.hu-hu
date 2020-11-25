@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 08/20/2019
-ms.openlocfilehash: e37b35e3473b2da397904d01be5e65cf8cafbbe5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6fc5bea71909d0e17b4ef0256ab0cad644dacbb3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541118"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95993822"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>A végpontok kvótájának kezelése Microsoft Azure Traffic Manager használatával a kulcsok között
 Language Understanding (LUIS) lehetővé teszi a végponti kérelmek kvótájának növelését egy adott kulcs kvótája után. Ezt úgy teheti meg, hogy több kulcsot hoz létre a LUIS számára, és hozzáadja őket a LUIS-alkalmazáshoz az **erőforrások és kulcsok** szakasz **Közzététel** lapján.
@@ -30,12 +30,12 @@ Az [Azure][azure-portal] Portalon nyissa meg a PowerShell ablakot. A PowerShell-
 
 ![Képernyőkép a Azure Portal PowerShell-ablak megnyitásával](./media/traffic-manager/azure-portal-powershell.png)
 
-Az alábbi fejezetek [Traffic Manager PowerShell-parancsmagokat](https://docs.microsoft.com/powershell/module/az.trafficmanager/#traffic_manager)használnak.
+Az alábbi fejezetek [Traffic Manager PowerShell-parancsmagokat](/powershell/module/az.trafficmanager/#traffic_manager)használnak.
 
 ## <a name="create-azure-resource-group-with-powershell"></a>Azure-erőforráscsoport létrehozása a PowerShell-lel
 Az Azure-erőforrások létrehozása előtt hozzon létre egy erőforráscsoportot, amely tartalmazza az összes erőforrást. Nevezze el az erőforráscsoportot `luis-traffic-manager` , és használja a régiót `West US` . Az erőforráscsoport a csoportra vonatkozó metaadatokat tárolja. Nem lassítja le az erőforrásokat, ha egy másik régióban vannak.
 
-Erőforráscsoport létrehozása a **[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)** parancsmaggal:
+Erőforráscsoport létrehozása a **[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)** parancsmaggal:
 
 ```powerShell
 New-AzResourceGroup -Name luis-traffic-manager -Location "West US"
@@ -56,7 +56,7 @@ Traffic Manager új DNS-hozzáférési pontot hoz létre a végpontokhoz. Nem á
 ### <a name="polling-uses-luis-endpoint"></a>A lekérdezés LUIS-végpontot használ
 Traffic Manager rendszeresen lekérdezi a végpontokat, hogy a végpont továbbra is elérhető legyen. A lekérdezett Traffic Manager URL-címnek elérhetőnek kell lennie egy GET kérelemmel, és vissza kell térnie egy 200-as számú Ez a **közzétételi** oldalon a végpont URL-címe. Mivel az egyes végponti kulcsok eltérő útvonal-és lekérdezési karakterlánc-paraméterekkel rendelkeznek, a végponti kulcsoknak eltérő lekérdezési útvonalra van szükségük. Minden alkalommal, amikor Traffic Manager a lekérdezéseket, a kvóta megfizetését kéri. A LUIS végpont lekérdezési karakterláncának **q** paramétere a teljes érték, amelyet a Luis-nek küldtek. Ezt a paramétert a teljes művelet elküldése helyett a rendszer felveszi a LUIS Endpoint log-be Traffic Manager lekérdezéseket hibakeresési módszerként a Traffic Manager konfigurálásakor.
 
-Mivel minden LUIS-végpontnak saját elérési útnak kell lennie, saját Traffic Manager profilra van szüksége. A profilok közötti felügyelethez hozzon létre egy [ _beágyazott_ Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-nested-profiles) architektúrát. Az egyik fölérendelt profil a gyermek profilra mutat, és a rajtuk keresztül felügyeli a forgalmat.
+Mivel minden LUIS-végpontnak saját elérési útnak kell lennie, saját Traffic Manager profilra van szüksége. A profilok közötti felügyelethez hozzon létre egy [ _beágyazott_ Traffic Manager](../../traffic-manager/traffic-manager-nested-profiles.md) architektúrát. Az egyik fölérendelt profil a gyermek profilra mutat, és a rajtuk keresztül felügyeli a forgalmat.
 
 A Traffic Manager konfigurálása után ne felejtse el módosítani az elérési utat a naplózás = false Query string paraméter használatára, hogy a napló ne legyen kitöltve lekérdezéssel.
 
@@ -66,7 +66,7 @@ A következő részekben két alárendelt profilt hoz létre, egyet a keleti LUI
 ### <a name="create-the-east-us-traffic-manager-profile-with-powershell"></a>Az USA keleti Traffic Manager-profiljának létrehozása a PowerShell-lel
 Az USA keleti Traffic Manager profiljának létrehozásához több lépés is van: profil létrehozása, végpont hozzáadása és végpont beállítása. Egy Traffic Manager-profil több végponttal is rendelkezhet, de mindegyik végpont ugyanazzal az érvényesítési útvonallal rendelkezik. Mivel a Kelet-és Nyugat-előfizetések LUIS-végponti URL-címei eltérnek a régió és a végpont kulcsa miatt, minden LUIS-végpontnak egyetlen végpontnak kell lennie a profilban.
 
-1. Profil létrehozása a **[New-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.trafficmanager/new-aztrafficmanagerprofile)** parancsmaggal
+1. Profil létrehozása a **[New-AzTrafficManagerProfile](/powershell/module/az.trafficmanager/new-aztrafficmanagerprofile)** parancsmaggal
 
     A profil létrehozásához használja a következő parancsmagot. Ügyeljen rá, hogy módosítsa a `appIdLuis` és a `subscriptionKeyLuis` . A subscriptionKey az USA keleti régiója, LUIS kulcs. Ha az elérési út nem megfelelő, beleértve a LUIS-alkalmazás AZONOSÍTÓját és a végpont kulcsát, akkor a Traffic Manager lekérdezés állapota, `degraded` mert a forgalom kezelése nem tudja sikeresen kérni a Luis-végpontot. Győződjön meg arról, hogy az érték az, hogy `q` `traffic-manager-east` Ez az érték látható a Luis-végpont naplófájljaiban.
 
@@ -88,7 +88,7 @@ Az USA keleti Traffic Manager profiljának létrehozásához több lépés is va
 
     Egy sikeres kérelemnek nincs válasza.
 
-2. Az USA keleti végpontjának hozzáadása az **[Add-AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.trafficmanager/add-aztrafficmanagerendpointconfig)** parancsmaggal
+2. Az USA keleti végpontjának hozzáadása az **[Add-AzTrafficManagerEndpointConfig](/powershell/module/az.trafficmanager/add-aztrafficmanagerendpointconfig)** parancsmaggal
 
     ```powerShell
     Add-AzTrafficManagerEndpointConfig -EndpointName luis-east-endpoint -TrafficManagerProfile $eastprofile -Type ExternalEndpoints -Target eastus.api.cognitive.microsoft.com -EndpointLocation "eastus" -EndpointStatus Enabled
@@ -123,7 +123,7 @@ Az USA keleti Traffic Manager profiljának létrehozásához több lépés is va
     Endpoints                        : {luis-east-endpoint}
     ```
 
-3. Az USA keleti végpontjának beállítása a **[set-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.trafficmanager/set-aztrafficmanagerprofile)** parancsmaggal
+3. Az USA keleti végpontjának beállítása a **[set-AzTrafficManagerProfile](/powershell/module/az.trafficmanager/set-aztrafficmanagerprofile)** parancsmaggal
 
     ```powerShell
     Set-AzTrafficManagerProfile -TrafficManagerProfile $eastprofile
@@ -134,7 +134,7 @@ Az USA keleti Traffic Manager profiljának létrehozásához több lépés is va
 ### <a name="create-the-west-us-traffic-manager-profile-with-powershell"></a>Az USA nyugati Traffic Manager-profiljának létrehozása a PowerShell-lel
 Az USA nyugati Traffic Manager profiljának létrehozásához kövesse az alábbi lépéseket: profil létrehozása, végpont hozzáadása és végpont beállítása.
 
-1. Profil létrehozása a **[New-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.TrafficManager/New-azTrafficManagerProfile)** parancsmaggal
+1. Profil létrehozása a **[New-AzTrafficManagerProfile](/powershell/module/az.TrafficManager/New-azTrafficManagerProfile)** parancsmaggal
 
     A profil létrehozásához használja a következő parancsmagot. Ügyeljen rá, hogy módosítsa a `appIdLuis` és a `subscriptionKeyLuis` . A subscriptionKey az USA keleti régiója, LUIS kulcs. Ha az elérési út nem megfelelő, beleértve a LUIS-alkalmazás AZONOSÍTÓját és a végpont kulcsát, akkor a Traffic Manager lekérdezés állapota, `degraded` mert a forgalom kezelése nem tudja sikeresen kérni a Luis-végpontot. Győződjön meg arról, hogy az érték az, hogy `q` `traffic-manager-west` Ez az érték látható a Luis-végpont naplófájljaiban.
 
@@ -156,7 +156,7 @@ Az USA nyugati Traffic Manager profiljának létrehozásához kövesse az alább
 
     Egy sikeres kérelemnek nincs válasza.
 
-2. Az USA nyugati végpontjának hozzáadása az **[Add-AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.TrafficManager/Add-azTrafficManagerEndpointConfig)** parancsmaggal
+2. Az USA nyugati végpontjának hozzáadása az **[Add-AzTrafficManagerEndpointConfig](/powershell/module/az.TrafficManager/Add-azTrafficManagerEndpointConfig)** parancsmaggal
 
     ```powerShell
     Add-AzTrafficManagerEndpointConfig -EndpointName luis-west-endpoint -TrafficManagerProfile $westprofile -Type ExternalEndpoints -Target westus.api.cognitive.microsoft.com -EndpointLocation "westus" -EndpointStatus Enabled
@@ -192,7 +192,7 @@ Az USA nyugati Traffic Manager profiljának létrehozásához kövesse az alább
     Endpoints                        : {luis-west-endpoint}
     ```
 
-3. Az USA nyugati végpontjának beállítása a **[set-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.TrafficManager/Set-azTrafficManagerProfile)** parancsmaggal
+3. Az USA nyugati végpontjának beállítása a **[set-AzTrafficManagerProfile](/powershell/module/az.TrafficManager/Set-azTrafficManagerProfile)** parancsmaggal
 
     ```powerShell
     Set-AzTrafficManagerProfile -TrafficManagerProfile $westprofile
@@ -203,7 +203,7 @@ Az USA nyugati Traffic Manager profiljának létrehozásához kövesse az alább
 ### <a name="create-parent-traffic-manager-profile"></a>Szülő Traffic Manager-profil létrehozása
 Hozza létre a szülő Traffic Manager profilt, és csatolja a szülőhöz két gyermek Traffic Manager profilt.
 
-1. Szülő profil létrehozása a **[New-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.TrafficManager/New-azTrafficManagerProfile)** parancsmaggal
+1. Szülő profil létrehozása a **[New-AzTrafficManagerProfile](/powershell/module/az.TrafficManager/New-azTrafficManagerProfile)** parancsmaggal
 
     ```powerShell
     $parentprofile = New-AzTrafficManagerProfile -Name luis-profile-parent -ResourceGroupName luis-traffic-manager -TrafficRoutingMethod Performance -RelativeDnsName luis-dns-parent -Ttl 30 -MonitorProtocol HTTPS -MonitorPort 443 -MonitorPath "/"
@@ -223,7 +223,7 @@ Hozza létre a szülő Traffic Manager profilt, és csatolja a szülőhöz két 
 
     Egy sikeres kérelemnek nincs válasza.
 
-2. Az USA keleti gyermek-profiljának hozzáadása a **[AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.TrafficManager/Add-azTrafficManagerEndpointConfig)** és a **NestedEndpoints** típussal
+2. Az USA keleti gyermek-profiljának hozzáadása a **[AzTrafficManagerEndpointConfig](/powershell/module/az.TrafficManager/Add-azTrafficManagerEndpointConfig)** és a **NestedEndpoints** típussal
 
     ```powerShell
     Add-AzTrafficManagerEndpointConfig -EndpointName child-endpoint-useast -TrafficManagerProfile $parentprofile -Type NestedEndpoints -TargetResourceId $eastprofile.Id -EndpointStatus Enabled -EndpointLocation "eastus" -MinChildEndpoints 1
@@ -235,7 +235,7 @@ Hozza létre a szülő Traffic Manager profilt, és csatolja a szülőhöz két 
     |--|--|--|
     |– Végpontneve|gyermek-végpont – USEast|Kelet-profil|
     |-TrafficManagerProfile|$parentprofile|A végpont hozzárendeléséhez használandó profil|
-    |-Típus|NestedEndpoints|További információ: [Add-AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.trafficmanager/Add-azTrafficManagerEndpointConfig). |
+    |-Típus|NestedEndpoints|További információ: [Add-AzTrafficManagerEndpointConfig](/powershell/module/az.trafficmanager/Add-azTrafficManagerEndpointConfig). |
     |– Targetresourceid azonosítója|$eastprofile. ID|A gyermek profil azonosítója|
     |-EndpointStatus|Engedélyezve|Végpont állapota a szülőhöz való hozzáadás után|
     |-EndpointLocation|eastus|Az erőforrás [Azure-régiójának neve](https://azure.microsoft.com/global-infrastructure/regions/)|
@@ -260,7 +260,7 @@ Hozza létre a szülő Traffic Manager profilt, és csatolja a szülőhöz két 
     Endpoints                        : {child-endpoint-useast}
     ```
 
-3. Az Amerikai Egyesült államokbeli gyermek profil hozzáadása a szülőhöz az **[Add-AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.TrafficManager/Add-azTrafficManagerEndpointConfig)** parancsmaggal és a **NestedEndpoints** típussal
+3. Az Amerikai Egyesült államokbeli gyermek profil hozzáadása a szülőhöz az **[Add-AzTrafficManagerEndpointConfig](/powershell/module/az.TrafficManager/Add-azTrafficManagerEndpointConfig)** parancsmaggal és a **NestedEndpoints** típussal
 
     ```powerShell
     Add-AzTrafficManagerEndpointConfig -EndpointName child-endpoint-uswest -TrafficManagerProfile $parentprofile -Type NestedEndpoints -TargetResourceId $westprofile.Id -EndpointStatus Enabled -EndpointLocation "westus" -MinChildEndpoints 1
@@ -272,7 +272,7 @@ Hozza létre a szülő Traffic Manager profilt, és csatolja a szülőhöz két 
     |--|--|--|
     |– Végpontneve|gyermek-végpont – USWest|Nyugat-profil|
     |-TrafficManagerProfile|$parentprofile|A végpont hozzárendeléséhez használandó profil|
-    |-Típus|NestedEndpoints|További információ: [Add-AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.trafficmanager/Add-azTrafficManagerEndpointConfig). |
+    |-Típus|NestedEndpoints|További információ: [Add-AzTrafficManagerEndpointConfig](/powershell/module/az.trafficmanager/Add-azTrafficManagerEndpointConfig). |
     |– Targetresourceid azonosítója|$westprofile. ID|A gyermek profil azonosítója|
     |-EndpointStatus|Engedélyezve|Végpont állapota a szülőhöz való hozzáadás után|
     |-EndpointLocation|westus|Az erőforrás [Azure-régiójának neve](https://azure.microsoft.com/global-infrastructure/regions/)|
@@ -297,7 +297,7 @@ Hozza létre a szülő Traffic Manager profilt, és csatolja a szülőhöz két 
     Endpoints                        : {child-endpoint-useast, child-endpoint-uswest}
     ```
 
-4. Végpontok beállítása a **[set-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.TrafficManager/Set-azTrafficManagerProfile)** parancsmaggal
+4. Végpontok beállítása a **[set-AzTrafficManagerProfile](/powershell/module/az.TrafficManager/Set-azTrafficManagerProfile)** parancsmaggal
 
     ```powerShell
     Set-AzTrafficManagerProfile -TrafficManagerProfile $parentprofile
@@ -306,7 +306,7 @@ Hozza létre a szülő Traffic Manager profilt, és csatolja a szülőhöz két 
     A sikeres válasz ugyanaz a válasz, mint a 3. lépés.
 
 ### <a name="powershell-variables"></a>PowerShell-változók
-Az előző szakaszban három PowerShell-változó lett létrehozva: `$eastprofile` , `$westprofile` , `$parentprofile` . Ezek a változók a Traffic Manager konfigurációjának vége felé használatosak. Ha úgy döntött, hogy nem hozza létre a változókat, vagy elfelejtette a PowerShell-ablakot, a **[Get-AzTrafficManagerProfile PowerShell-](https://docs.microsoft.com/powershell/module/az.TrafficManager/Get-azTrafficManagerProfile)** parancsmag segítségével újra beolvashatja a profilt, és hozzárendelheti egy változóhoz.
+Az előző szakaszban három PowerShell-változó lett létrehozva: `$eastprofile` , `$westprofile` , `$parentprofile` . Ezek a változók a Traffic Manager konfigurációjának vége felé használatosak. Ha úgy döntött, hogy nem hozza létre a változókat, vagy elfelejtette a PowerShell-ablakot, a **[Get-AzTrafficManagerProfile PowerShell-](/powershell/module/az.TrafficManager/Get-azTrafficManagerProfile)** parancsmag segítségével újra beolvashatja a profilt, és hozzárendelheti egy változóhoz.
 
 Cserélje le az elemeket szögletes zárójelek közé, `<>` és a megfelelő értékeket adja meg a három szükséges profilhoz.
 
@@ -366,17 +366,17 @@ A végpontok közötti forgalom kezeléséhez be kell szúrnia egy hívást a Tr
 
 Engedélyezze a [diagnosztikai naplókat](../../traffic-manager/traffic-manager-diagnostic-logs.md) a Traffic Manager számára, hogy megtudja, miért romlik a végpont állapota.
 
-## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
 Távolítsa el a két LUIS Endpoint Key, a három Traffic Manager profilt és az öt erőforrást tartalmazó erőforráscsoportot. Ez a Azure Portalból történik. Törli az öt erőforrást az erőforrások listából. Ezután törölje az erőforráscsoportot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Tekintse át a Botframework témakörben v4 [middleware](https://docs.microsoft.com/azure/bot-service/bot-builder-create-middleware?view=azure-bot-service-4.0&tabs=csaddmiddleware%2Ccsetagoverwrite%2Ccsmiddlewareshortcircuit%2Ccsfallback%2Ccsactivityhandler) -beállításait, hogy megtudja, hogyan vehetők fel ez a Traffic Management kód egy botframework témakörben-robotba.
+Tekintse át a Botframework témakörben v4 [middleware](/azure/bot-service/bot-builder-create-middleware?tabs=csaddmiddleware%252ccsetagoverwrite%252ccsmiddlewareshortcircuit%252ccsfallback%252ccsactivityhandler&view=azure-bot-service-4.0) -beállításait, hogy megtudja, hogyan vehetők fel ez a Traffic Management kód egy botframework témakörben-robotba.
 
 [traffic-manager-marketing]: https://azure.microsoft.com/services/traffic-manager/
-[traffic-manager-docs]: https://docs.microsoft.com/azure/traffic-manager/
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
+[traffic-manager-docs]: ../../traffic-manager/index.yml
+[LUIS]: ./luis-reference-regions.md#luis-website
 [azure-portal]: https://portal.azure.com/
 [azure-storage]: https://azure.microsoft.com/services/storage/
-[routing-methods]: https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods
-[traffic-manager-endpoints]: https://docs.microsoft.com/azure/traffic-manager/traffic-manager-endpoint-types
+[routing-methods]: ../../traffic-manager/traffic-manager-routing-methods.md
+[traffic-manager-endpoints]: ../../traffic-manager/traffic-manager-endpoint-types.md

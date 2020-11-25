@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9959ce1c88fb595dedd4174a9185f801168ecb0d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94838331"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994179"
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>Távoli asztali átjáró és RADIUS-t használó Azure Multi-Factor Authentication-kiszolgáló
 
@@ -90,7 +90,7 @@ Az Azure Multi-Factor Authentication-kiszolgáló RADIUS-proxyként van konfigur
 
 ![RADIUS-hitelesítés az MFA-kiszolgálón](./media/howto-mfaserver-nps-rdg/radius.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Azure MFA és az [IIS-webalkalmazások](howto-mfaserver-iis.md) integrálása
 

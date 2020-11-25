@@ -11,11 +11,11 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: kenwith
 ms.openlocfilehash: 1765c6a7d19a11730567acd5e41deebc0a20cec2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88235808"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993992"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Attribútum-alapú alkalmazás-kiépítés hatóköri szűrőkkel
 Ennek a cikknek a célja annak ismertetése, hogyan használhatók a hatóköri szűrők olyan attribútum-alapú szabályok definiálásához, amelyek meghatározzák, hogy mely felhasználók legyenek kiépítve egy alkalmazáshoz.
@@ -37,7 +37,7 @@ Alapértelmezés szerint az Azure AD kiépítési összekötői nem rendelkeznek
 
 ## <a name="scoping-filter-construction"></a>Hatókör-szűrő kialakítása
 
-Egy hatóköri szűrő egy vagy több *záradékból*áll. A záradékok határozzák meg, hogy mely felhasználók számára engedélyezett a hatókör-szűrő átadása az egyes felhasználók attribútumainak kiértékelésével. Előfordulhat például, hogy egy olyan záradékkal rendelkezik, amely megköveteli, hogy a felhasználó "State" attribútuma "New York" legyen, így csak a New York-i felhasználók lettek kiépítve az alkalmazásba. 
+Egy hatóköri szűrő egy vagy több *záradékból* áll. A záradékok határozzák meg, hogy mely felhasználók számára engedélyezett a hatókör-szűrő átadása az egyes felhasználók attribútumainak kiértékelésével. Előfordulhat például, hogy egy olyan záradékkal rendelkezik, amely megköveteli, hogy a felhasználó "State" attribútuma "New York" legyen, így csak a New York-i felhasználók lettek kiépítve az alkalmazásba. 
 
 Egyetlen záradék egyetlen feltételt határoz meg egyetlen attribútum értékének megadásához. Ha egy hatókör-szűrőben több záradék jön létre, a rendszer a "és a" logikával együtt értékeli ki őket. Ez azt jelenti, hogy az összes záradéknak az "igaz" értéket kell kiértékelnie ahhoz, hogy egy felhasználó kiépíthető legyen.
 
@@ -70,9 +70,9 @@ A hatóköri szűrők az egyes Azure AD-beli felhasználói létesítési össze
 
 5. Válassza ki a **forrás objektum hatóköre** menüt.
 
-6. Válassza a **hatókör hozzáadása szűrő**elemet.
+6. Válassza a **hatókör hozzáadása szűrő** elemet.
 
-7. Definiáljon egy záradékot úgy, hogy kiválasztja a forrás **attribútum nevét**, egy **operátort**és egy **attribútum-értéket** , amely megfelel a következőnek:. A következő operátorok támogatottak:
+7. Definiáljon egy záradékot úgy, hogy kiválasztja a forrás **attribútum nevét**, egy **operátort** és egy **attribútum-értéket** , amely megfelel a következőnek:. A következő operátorok támogatottak:
 
    a. **Egyenlő**. A záradék "igaz" értéket ad vissza, ha a kiértékelt attribútum pontosan egyezik a bemeneti karakterlánc értékével (kis-és nagybetűk megkülönböztetése).
 
@@ -103,9 +103,9 @@ A hatóköri szűrők az egyes Azure AD-beli felhasználói létesítési össze
 
 9. Szükség esetén ismételje meg a 7-8. lépést további hatókör-záradékok hozzáadásához.
 
-10. A **hatóköri szűrő címe**területen adja meg a hatókör-szűrő nevét.
+10. A **hatóköri szűrő címe** területen adja meg a hatókör-szűrő nevét.
 
-11. Kattintson az **OK** gombra.
+11. Válassza az **OK** lehetőséget.
 
 12. Kattintson ismét az **OK gombra** a **hatókör szűrők** képernyőjén. Szükség esetén ismételje meg a 6-11-es lépést egy másik hatókör-szűrő hozzáadásához.
 

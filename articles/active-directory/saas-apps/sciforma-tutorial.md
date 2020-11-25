@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 469cfcd39ff606c6ed828d490f26e6e3e027993e
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677619"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993190"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sciforma"></a>Oktatóanyag: Azure Active Directory integráció a Sciforma
 
@@ -131,7 +131,7 @@ Ha az egyszeri bejelentkezést szeretné konfigurálni a **Sciforma** oldalon, e
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 

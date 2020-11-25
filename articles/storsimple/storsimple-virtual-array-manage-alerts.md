@@ -16,11 +16,11 @@ ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 12fcc9996697f3bbba35826d79bec238bfb0f8b3
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94956211"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993012"
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>A StorSimple Eszközkezelő használata a StorSimple virtuális tömbhöz tartozó riasztások kezelésére
 
@@ -165,6 +165,6 @@ Az alábbi táblázatok felsorolják az esetlegesen felmerülő StorSimple-riasz
 |:--- |:--- |:--- |
 | A <*eszköznév* jelszava \> <*szám* \> nap múlva lejár. |Jelszó figyelmeztetése |A jelszó <*számú* \> nap múlva lejár. Érdemes lehet módosítani a jelszavát. További információért lépjen [a StorSimple virtuális tömb eszköz rendszergazdai jelszavának módosítása](storsimple-virtual-array-change-device-admin-password.md)elemre. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [További információ a StorSimple virtuális tömbről](storsimple-ova-overview.md).

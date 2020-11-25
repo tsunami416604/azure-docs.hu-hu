@@ -16,11 +16,11 @@ ms.date: 01/23/2017
 ms.author: mazha
 ms.custom: devx-track-js
 ms.openlocfilehash: f5d5c7a6e1f6993b19f38db2ae846b213a1d553e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316757"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993377"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Ismerkedés az Azure CDN-fejlesztéssel
 > [!div class="op_single_selector"]
@@ -49,7 +49,7 @@ Hozzon létre egy mappát az alkalmazás tárolásához.  A konzolon az aktuáli
 npm init
 ```
 
-Ekkor a projekt inicializálására vonatkozó kérdések sora jelenik meg.  A **belépési pont**esetében ez az oktatóanyag *app.jst *használ.  Az alábbi példában megtekintheti az egyéb döntéseket.
+Ekkor a projekt inicializálására vonatkozó kérdések sora jelenik meg.  A **belépési pont** esetében ez az oktatóanyag *app.jst* használ.  Az alábbi példában megtekintheti az egyéb döntéseket.
 
 ![NPM init kimenet](./media/cdn-app-dev-node/cdn-npm-init.png)
 
@@ -80,7 +80,7 @@ A csomagok telepítésének befejezése után a fájl *package.js* a következő
 }
 ```
 
-Végül a szövegszerkesztővel hozzon létre egy üres szövegfájlt, és mentse azt a projekt mappájának gyökerébe *app.jsként *.  Most már készen áll a kód írásának megkezdésére.
+Végül a szövegszerkesztővel hozzon létre egy üres szövegfájlt, és mentse azt a projekt mappájának gyökerébe *app.jsként*.  Most már készen áll a kód írásának megkezdésére.
 
 ## <a name="requires-constants-authentication-and-structure"></a>Szükséges, állandók, hitelesítés és struktúra
 A szerkesztőben megnyitott *app.js* megnyithatja a programunk alapszintű szerkezetét.
@@ -91,7 +91,7 @@ A szerkesztőben megnyitott *app.js* megnyithatja a programunk alapszintű szerk
     var msRestAzure = require('ms-rest-azure');
     var cdnManagementClient = require('azure-arm-cdn');
     ```
-2. Meg kell határozni néhány állandót, amelyeket a metódusok használni fognak.  Adja hozzá a következőt.  A helyőrzőket cserélje le úgy, hogy a ** &lt; zárójeleket &gt; **is beleértve, szükség esetén a saját értékeivel.
+2. Meg kell határozni néhány állandót, amelyeket a metódusok használni fognak.  Adja hozzá a következőt.  A helyőrzőket cserélje le úgy, hogy a **&lt; zárójeleket &gt;** is beleértve, szükség esetén a saját értékeivel.
    
     ``` javascript
     //Tenant app constants
@@ -124,7 +124,7 @@ A szerkesztőben megnyitott *app.js* megnyithatja a programunk alapszintű szerk
     var cdnClient = new cdnManagementClient(credentials, subscriptionId);
     ```
    
-    Ügyeljen rá, hogy a megfelelő információkkal helyettesítse az elemeket a ** &lt; szögletes zárójelben &gt; ** .  A esetében `<redirect URI>` használja az alkalmazás Azure ad-ben való regisztrálásakor megadott átirányítási URI-t.
+    Ügyeljen rá, hogy a megfelelő információkkal helyettesítse az elemeket a **&lt; szögletes zárójelben &gt;** .  A esetében `<redirect URI>` használja az alkalmazás Azure ad-ben való regisztrálásakor megadott átirányítási URI-t.
 4. Node.js Console-alkalmazásunk bizonyos parancssori paramétereket fog igénybe venni.  Győződjön meg arról, hogy legalább egy paraméter át lett adva.
    
    ```javascript

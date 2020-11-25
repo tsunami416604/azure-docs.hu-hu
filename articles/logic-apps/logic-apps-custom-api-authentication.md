@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
 ms.openlocfilehash: 5e0dcd478c6eb6696a0e07d35d4dccddac68ac1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80656232"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993181"
 ---
 # <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>A Azure Logic Apps egyéni API-khoz érkező hívások biztonságának fokozása
 
@@ -46,21 +46,21 @@ A logikai alkalmazás ezt az Azure AD-alkalmazás identitását használja az Az
 
 **Hozza létre az alkalmazás identitását a logikai alkalmazáshoz a Azure Portal**
 
-1. A [Azure Portal](https://portal.azure.com "https://portal.azure.com")válassza a **Azure Active Directory**lehetőséget. 
+1. A [Azure Portal](https://portal.azure.com "https://portal.azure.com")válassza a **Azure Active Directory** lehetőséget. 
 
 2. Győződjön meg arról, hogy a webalkalmazás vagy az API-alkalmazás ugyanazon a címtárban van.
 
    > [!TIP]
-   > A címtárak váltásához válassza ki a profilt, és válasszon másik könyvtárat. Vagy válassza az **Áttekintés**  >  **kapcsoló könyvtár**lehetőséget.
+   > A címtárak váltásához válassza ki a profilt, és válasszon másik könyvtárat. Vagy válassza az **Áttekintés**  >  **kapcsoló könyvtár** lehetőséget.
 
-3. A könyvtár menü **kezelés**területén válassza **Alkalmazásregisztrációk**  >  **új alkalmazás regisztrálása**lehetőséget.
+3. A könyvtár menü **kezelés** területén válassza **Alkalmazásregisztrációk**  >  **új alkalmazás regisztrálása** lehetőséget.
 
    > [!TIP]
-   > Alapértelmezés szerint az alkalmazás-regisztrációk lista megjeleníti az összes alkalmazás regisztrációját a címtárban. Ha csak az alkalmazás regisztrációit szeretné megtekinteni, a keresőmező mellett válassza a **saját alkalmazások**lehetőséget. 
+   > Alapértelmezés szerint az alkalmazás-regisztrációk lista megjeleníti az összes alkalmazás regisztrációját a címtárban. Ha csak az alkalmazás regisztrációit szeretné megtekinteni, a keresőmező mellett válassza a **saját alkalmazások** lehetőséget. 
 
    ![Új alkalmazásregisztráció létrehozása](./media/logic-apps-custom-api-authentication/new-app-registration-azure-portal.png)
 
-4. Adjon nevet az alkalmazásnak, hagyja üresen az **alkalmazás típusát** a **Web App/API**értékre, adjon meg egy egyedi karakterláncot a **bejelentkezési URL-cím**tartományként, majd válassza a **Létrehozás**lehetőséget.
+4. Adjon nevet az alkalmazásnak, hagyja üresen az **alkalmazás típusát** a **Web App/API** értékre, adjon meg egy egyedi karakterláncot a **bejelentkezési URL-cím** tartományként, majd válassza a **Létrehozás** lehetőséget.
 
    ![Adja meg az alkalmazás identitásának nevét és bejelentkezési URL-címét](./media/logic-apps-custom-api-authentication/logic-app-identity-azure-portal.png)
 
@@ -72,15 +72,15 @@ A logikai alkalmazás ezt az Azure AD-alkalmazás identitását használja az Az
 
    ![A Logic App-alkalmazás AZONOSÍTÓjának másolása és mentése](./media/logic-apps-custom-api-authentication/logic-app-application-id.png)
 
-6. Ha az alkalmazás-identitás beállításai nem láthatók, válassza a **Beállítások** vagy **az összes beállítás**lehetőséget.
+6. Ha az alkalmazás-identitás beállításai nem láthatók, válassza a **Beállítások** vagy **az összes beállítás** lehetőséget.
 
-7. Az **API-hozzáférés**területen válassza a **kulcsok**lehetőséget. A **Leírás**mezőben adja meg a kulcs nevét. A **lejárat**alatt válassza ki a kulcs időtartamát.
+7. Az **API-hozzáférés** területen válassza a **kulcsok** lehetőséget. A **Leírás** mezőben adja meg a kulcs nevét. A **lejárat** alatt válassza ki a kulcs időtartamát.
 
    Az Ön által létrehozott kulcs az alkalmazás identitásának "titkos" vagy jelszava a logikai alkalmazáshoz.
 
    ![Kulcs létrehozása a logikai alkalmazás identitásához](./media/logic-apps-custom-api-authentication/create-logic-app-identity-key-secret-password.png)
 
-8. Az eszköztáron válassza a **Mentés**lehetőséget. Az **érték**alatt a kulcs most megjelenik. 
+8. Az eszköztáron válassza a **Mentés** lehetőséget. Az **érték** alatt a kulcs most megjelenik. 
 Ügyeljen arra, hogy a kulcsot a későbbi használatra **másolja és mentse** , mert a kulcs rejtve marad a **kulcsok** lapon.
 
    Ha a logikai alkalmazást a 3. részben konfigurálja, a kulcsot a "titkos" vagy a "jelszó" értékre kell beállítania.
@@ -103,7 +103,7 @@ Ezt a feladatot Azure Resource Manager a PowerShell használatával hajthatja v�
 
 1. `New-AzADApplication -DisplayName "MyLogicAppID" -HomePage "http://mydomain.tld" -IdentifierUris "http://mydomain.tld" -Password $SecurePassword`
 
-1. Ügyeljen arra, hogy a **bérlői azonosítót** (az Azure ad-bérlő GUID azonosítóját), az **alkalmazás azonosítóját**és a használt jelszót másolja.
+1. Ügyeljen arra, hogy a **bérlői azonosítót** (az Azure ad-bérlő GUID azonosítóját), az **alkalmazás azonosítóját** és a használt jelszót másolja.
 
 További információ: [egyszerű szolgáltatásnév létrehozása a PowerShell-lel az erőforrások eléréséhez](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
@@ -115,11 +115,11 @@ Ha a webalkalmazás vagy az API-alkalmazás már telepítve van, bekapcsolhatja 
 
 1. A [Azure Portal](https://portal.azure.com "https://portal.azure.com")keresse meg és válassza ki a webalkalmazást vagy API-alkalmazást. 
 
-2. A **Beállítások**területen válassza a **hitelesítés/engedélyezés**lehetőséget. A **app Service hitelesítés**területen kapcsolja be **a**hitelesítést. A **hitelesítésszolgáltatók**területen válassza a **Azure Active Directory**lehetőséget.
+2. A **Beállítások** területen válassza a **hitelesítés/engedélyezés** lehetőséget. A **app Service hitelesítés** területen kapcsolja be **a** hitelesítést. A **hitelesítésszolgáltatók** területen válassza a **Azure Active Directory** lehetőséget.
 
    ![Hitelesítés bekapcsolása](./media/logic-apps-custom-api-authentication/custom-web-api-app-authentication.png)
 
-3. Most hozzon létre egy alkalmazás-identitást a webalkalmazáshoz vagy az API-alkalmazáshoz az itt látható módon. A **Azure Active Directory beállítások** lapon állítsa a **felügyeleti módot** **expressz**értékre. Válassza az **új ad-alkalmazás létrehozása**lehetőséget. Adjon nevet az alkalmazásnak, majd kattintson **az OK gombra**. 
+3. Most hozzon létre egy alkalmazás-identitást a webalkalmazáshoz vagy az API-alkalmazáshoz az itt látható módon. A **Azure Active Directory beállítások** lapon állítsa a **felügyeleti módot** **expressz** értékre. Válassza az **új ad-alkalmazás létrehozása** lehetőséget. Adjon nevet az alkalmazásnak, majd kattintson **az OK gombra**. 
 
    ![Alkalmazás-identitás létrehozása webalkalmazáshoz vagy API-alkalmazáshoz](./media/logic-apps-custom-api-authentication/custom-api-application-identity.png)
 
@@ -129,18 +129,18 @@ Most meg kell keresnie a webalkalmazáshoz vagy API-alkalmazáshoz társított a
 
 **A webalkalmazás vagy az API-alkalmazás ügyfél-AZONOSÍTÓjának és bérlői AZONOSÍTÓjának megkeresése a Azure Portal**
 
-1. A **hitelesítésszolgáltatók**területen válassza a **Azure Active Directory**lehetőséget. 
+1. A **hitelesítésszolgáltatók** területen válassza a **Azure Active Directory** lehetőséget. 
 
    ![Válassza az „Azure Active Directory” elemet](./media/logic-apps-custom-api-authentication/custom-api-app-identity-client-id-tenant-id.png)
 
-2. A **Azure Active Directory beállítások** lapon állítsa be a **felügyeleti módot** a **speciális**értékre.
+2. A **Azure Active Directory beállítások** lapon állítsa be a **felügyeleti módot** a **speciális** értékre.
 
 3. Másolja ki az **ügyfél-azonosítót**, és mentse a GUID azonosítót a 3. részben való használatra.
 
    > [!TIP] 
    > Ha az **ügyfél-azonosító** és a **kiállító URL-címe** nem jelenik meg, próbálja meg frissíteni a Azure Portal, és ismételje meg az 1. lépést.
 
-4. A **kiállító URL-címe**területen másolja és mentse a 3. rész GUID azonosítóját. Ezt a GUID-t a webalkalmazás vagy az API-alkalmazás telepítési sablonjában is használhatja, ha szükséges.
+4. A **kiállító URL-címe** területen másolja és mentse a 3. rész GUID azonosítóját. Ezt a GUID-t a webalkalmazás vagy az API-alkalmazás telepítési sablonjában is használhatja, ha szükséges.
 
    Ez a GUID az adott bérlő GUID-azonosítója ("bérlői azonosító"), és ebben az URL-ben kell megjelennie: `https://sts.windows.net/{GUID}`
 
@@ -152,7 +152,7 @@ Most meg kell keresnie a webalkalmazáshoz vagy API-alkalmazáshoz társított a
 
 Továbbra is létre kell hoznia egy Azure AD-alkalmazás identitását a webalkalmazáshoz vagy API-alkalmazáshoz, amely eltér a logikai alkalmazás alkalmazás-identitásával. Az alkalmazás identitásának létrehozásához kövesse az Azure Portal 2. részében szereplő előző lépéseket. 
 
-Követheti az 1. részben leírt lépéseket is, de ügyeljen arra, hogy a webalkalmazást vagy az API-alkalmazást a tényleges `https://{URL}` **bejelentkezési URL-cím** és az **alkalmazás-azonosító URI**használatával használja. A fenti lépésekben az ügyfél-azonosítót és a bérlő AZONOSÍTÓját is el kell menteni az alkalmazás telepítési sablonjában, valamint a 3. részhez.
+Követheti az 1. részben leírt lépéseket is, de ügyeljen arra, hogy a webalkalmazást vagy az API-alkalmazást a tényleges `https://{URL}` **bejelentkezési URL-cím** és az **alkalmazás-azonosító URI** használatával használja. A fenti lépésekben az ügyfél-azonosítót és a bérlő AZONOSÍTÓját is el kell menteni az alkalmazás telepítési sablonjában, valamint a 3. részhez.
 
 > [!NOTE]
 > Amikor létrehozza az Azure AD-alkalmazás identitását a webalkalmazáshoz vagy az API-alkalmazáshoz, a Azure Portalt kell használnia, nem a PowerShellt. A PowerShell-parancsmagot nem állítja be a felhasználók webhelyekre való aláírásához szükséges engedélyeket.
@@ -199,11 +199,11 @@ Nyissa meg a logikai alkalmazás definícióját a kód nézetben, nyissa meg a 
 
 | Tulajdonság | Kötelező | Leírás | 
 | -------- | -------- | ----------- | 
-| Bérlő | Igen | Az Azure AD-bérlő GUID azonosítója | 
-| célközönség | Igen | Az elérni kívánt cél erőforrás GUID azonosítója, amely a webalkalmazás vagy API-alkalmazás alkalmazás-identitásának ügyfél-azonosítója | 
-| ügyfél-azonosító | Igen | A hozzáférést kérő ügyfél GUID azonosítója, amely a logikai alkalmazás alkalmazás-identitásának ügyfél-azonosítója | 
-| titkos kód | Igen | A hozzáférési jogkivonatot kérő ügyfélhez tartozó alkalmazás identitásának kulcsa vagy jelszava | 
-| típus | Igen | A hitelesítési típus. A ActiveDirectoryOAuth-hitelesítés esetében az érték a következő: `ActiveDirectoryOAuth` . | 
+| Bérlő | Yes | Az Azure AD-bérlő GUID azonosítója | 
+| célközönség | Yes | Az elérni kívánt cél erőforrás GUID azonosítója, amely a webalkalmazás vagy API-alkalmazás alkalmazás-identitásának ügyfél-azonosítója | 
+| ügyfél-azonosító | Yes | A hozzáférést kérő ügyfél GUID azonosítója, amely a logikai alkalmazás alkalmazás-identitásának ügyfél-azonosítója | 
+| titkos kód | Yes | A hozzáférési jogkivonatot kérő ügyfélhez tartozó alkalmazás identitásának kulcsa vagy jelszava | 
+| típus | Yes | A hitelesítési típus. A ActiveDirectoryOAuth-hitelesítés esetében az érték a következő: `ActiveDirectoryOAuth` . | 
 |||| 
 
 Például:
@@ -251,8 +251,8 @@ Az **Engedélyezés** szakaszban adja meg a következő tulajdonságokat:
 | Tulajdonság | Kötelező | Leírás |
 | -------- | -------- | ----------- |
 | `type` | Igen | A hitelesítési típus. A TLS/SSL-Ügyféltanúsítványok esetében az értéknek a következőnek kell lennie: `ClientCertificate` . |
-| `password` | Nem | Az ügyféltanúsítvány eléréséhez használt jelszó (PFX-fájl) |
-| `pfx` | Igen | Az ügyféltanúsítvány Base64 kódolású tartalma (PFX-fájl) |
+| `password` | No | Az ügyféltanúsítvány eléréséhez használt jelszó (PFX-fájl) |
+| `pfx` | Yes | Az ügyféltanúsítvány Base64 kódolású tartalma (PFX-fájl) |
 ||||
 
 <a name="basic"></a>
@@ -273,9 +273,9 @@ Az **Engedélyezés** szakaszban adja meg a következő tulajdonságokat:
 
 | Tulajdonság | Kötelező | Leírás | 
 | -------- | -------- | ----------- | 
-| típus | Igen | A használni kívánt hitelesítési típus. Alapszintű hitelesítés esetén az értéknek a következőnek kell lennie: `Basic` . | 
-| username | Igen | A hitelesítéshez használni kívánt Felhasználónév | 
-| jelszó | Igen | A hitelesítéshez használni kívánt jelszó | 
+| típus | Yes | A használni kívánt hitelesítési típus. Alapszintű hitelesítés esetén az értéknek a következőnek kell lennie: `Basic` . | 
+| username | Yes | A hitelesítéshez használni kívánt Felhasználónév | 
+| jelszó | Yes | A hitelesítéshez használni kívánt jelszó | 
 |||| 
 
 <a name="azure-ad-code"></a>

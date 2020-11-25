@@ -12,11 +12,11 @@ ms.author: mimart
 ms.subservice: B2C
 ms.date: 11/12/2020
 ms.openlocfilehash: b41f5e9a3bd4d3cbe52cf2e1c567d24de8a661f4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949955"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95992840"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure AD B2C figyelése Azure Monitor
 
@@ -314,7 +314,7 @@ workspace("AD-B2C-TENANT1").AuditLogs
 
 Azure Monitor naplókat úgy tervezték, hogy a vállalati vagy az Azure-ban üzembe helyezett bármely forrásból származó nagy mennyiségű adat gyűjtését, indexelését és tárolását naponta kialakítsa és támogassa. Alapértelmezés szerint a rendszer 30 napig őrzi meg a naplókat, a megőrzési időtartam azonban akár két évre is növelhető. Megtudhatja, hogyan [kezelheti a használatot és a költségeket Azure monitor naplók használatával](../azure-monitor/platform/manage-cost-storage.md). Az árképzési csomag kiválasztása után [megváltoztathatja az adatmegőrzési időszakot](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További mintákat a Azure AD B2C [Siem galériában](https://aka.ms/b2csiem)talál. 
 

@@ -10,12 +10,12 @@ ms.date: 11/17/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 64ab86836989030c36ad2e8ad054c364b382af0b
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 5802070bf9b495c0e866d160d6661349369a444e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95248016"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95993744"
 ---
 # <a name="enable-and-manage-blob-versioning"></a>BLOB-verziószámozás engedélyezése és kezelése
 
@@ -87,7 +87,7 @@ A következő mintakód bemutatja, hogyan listázhatja a Blobok verzióját a .N
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ListBlobVersions":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [BLOB verziószámozása](versioning-overview.md)
-- [Az Azure Storage-blobok helyreállítható törlése](soft-delete-overview.md)
+- [Az Azure Storage-blobok helyreállítható törlése](./soft-delete-blob-overview.md)

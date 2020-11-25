@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 55c6457ec73c9fe9b39d607f26ffe2a577cc200d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839046"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994213"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Speciális konfigurációs beállítások a Multi-Factor Authentication NPS-bővítményéhez
 
@@ -53,6 +53,6 @@ Az IP-címek engedélyezési listájának konfigurálásához nyissa meg `HKLM\S
 
 Ha egy kérelem olyan IP-címről érkezik, amely létezik a-ben `IP_WHITELIST` , a kétlépéses ellenőrzés kimarad. Az IP-listát a RADIUS-kérelem *ratNASIPAddress* attribútumában megadott IP-címhez hasonlítjuk. Ha egy RADIUS-kérelem a ratNASIPAddress attribútum nélkül érkezik, a rendszer a következő figyelmeztetést naplózza: "P_WHITE_LIST_WARNING:: az IP-engedélyezési lista figyelmen kívül lesz hagyva, mert a forrás IP-cím hiányzik a RADIUS-kérelemben a NasIpAddress attribútumban."
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Hibák elhárítása az Azure AD-hez tartozó NPS-bővítményből Multi-Factor Authentication](howto-mfa-nps-extension-errors.md)

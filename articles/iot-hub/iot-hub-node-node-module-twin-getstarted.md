@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 04/26/2018
 ms.custom: amqp, devx-track-js
 ms.openlocfilehash: 9de3f45a9d62a9d131583c133440ac8a311a468d
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151423"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993275"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>Ismerkedés a IoT Hub modul identitásával és moduljával (Node.js)
 
@@ -119,7 +119,7 @@ Ebben a szakaszban egy Node.js alkalmazást hoz létre, amely létrehoz egy eszk
 
     ```
 
-Ez az alkalmazás létrehoz egy **MYFIRSTDEVICE** azonosítóval és egy **myFirstModule** azonosítójú modul-identitással az eszköz **myFirstDevice**alatt. (Ha a modul azonosítója már létezik az Identity registryben, a kód egyszerűen lekéri a meglévő modul adatait.) Az alkalmazás ezután megjeleníti az adott identitás elsődleges kulcsát. Ezt a kulcsot a szimulált modulalkalmazásban használja az IoT Hubhoz való csatlakozáshoz.
+Ez az alkalmazás létrehoz egy **MYFIRSTDEVICE** azonosítóval és egy **myFirstModule** azonosítójú modul-identitással az eszköz **myFirstDevice** alatt. (Ha a modul azonosítója már létezik az Identity registryben, a kód egyszerűen lekéri a meglévő modul adatait.) Az alkalmazás ezután megjeleníti az adott identitás elsődleges kulcsát. Ezt a kulcsot a szimulált modulalkalmazásban használja az IoT Hubhoz való csatlakozáshoz.
 
 Futtassa ezt a csomópont add.js használatával. Megadja az eszköz identitásához tartozó kapcsolatok karakterláncát, és egy másikat a modul identitásához.
 
@@ -134,7 +134,7 @@ Ebben a szakaszban egy Node.js alkalmazást hoz létre a szimulált eszközön, 
 
    ![Az Azure Portal moduladatai](./media/iot-hub-node-node-module-twin-getstarted/module-detail.png)
 
-2. Hasonlóan a fenti lépéshez, hozzon létre egy könyvtárat az eszköz kódjához, és a NPM használatával inicializálja és telepítse az eszköz SDK-t (**NPM install-S Azure-IOT-Device-amqp \@ modulok – előzetes**verzió).
+2. Hasonlóan a fenti lépéshez, hozzon létre egy könyvtárat az eszköz kódjához, és a NPM használatával inicializálja és telepítse az eszköz SDK-t (**NPM install-S Azure-IOT-Device-amqp \@ modulok – előzetes** verzió).
 
    > [!NOTE]
    > Előfordulhat, hogy a NPM telepítési parancs lassú. Legyen türelmes, sok kódot húz le a csomag adattárból.
@@ -193,7 +193,7 @@ Ebben a szakaszban egy Node.js alkalmazást hoz létre a szimulált eszközön, 
     });
     ```
 
-4. Ezután futtassa ezt a parancsot a **twin.jsparancssori csomópont **használatával.
+4. Ezután futtassa ezt a parancsot a **twin.jsparancssori csomópont** használatával.
 
    ```cmd/sh
    F:\temp\module_twin>node twin.js
@@ -211,7 +211,7 @@ Ebben a szakaszban egy Node.js alkalmazást hoz létre a szimulált eszközön, 
    twin state reported
    ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További bevezetés az IoT Hub használatába, valamint egyéb IoT-forgatókönyvek megismerése:
 

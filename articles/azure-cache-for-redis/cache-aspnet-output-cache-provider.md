@@ -8,11 +8,11 @@ ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 04/22/2018
 ms.openlocfilehash: 6d711b07a10e04dcdf31259f3e53c9687af28e28
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544630"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993406"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>ASP.NET kimeneti gyorsítótár-szolgáltató az Azure cache-hez a Redis
 
@@ -22,7 +22,7 @@ A Redis kimeneti gyorsítótár-szolgáltató használatához először konfigur
 
 ## <a name="store-aspnet-page-output-in-the-cache"></a>ASP.NET-oldal kimenetének tárolása a gyorsítótárban
 
-Ha a Visual Studióban szeretné konfigurálni az ügyfélalkalmazás-t a Redis munkamenet-állapot NuGet-csomagjának Azure cache szolgáltatásával, kattintson a **NuGet csomagkezelő** , **csomagkezelő konzol** elemre az **eszközök** menüből.
+Ha a Visual Studióban szeretné konfigurálni az ügyfélalkalmazás-t a Redis munkamenet-állapot NuGet-csomagjának Azure cache szolgáltatásával, kattintson a **NuGet csomagkezelő**, **csomagkezelő konzol** elemre az **eszközök** menüből.
 
 Futtassa az alábbi parancsot a `Package Manager Console` ablakából.
 
@@ -52,7 +52,7 @@ A NuGet csomag letölti és hozzáadja a szükséges szerelvény-hivatkozásokat
 
 Konfigurálja az attribútumokat a Microsoft Azure Portal cache paneljének értékeivel, és szükség szerint konfigurálja a többi értéket. A gyorsítótár tulajdonságainak elérésére vonatkozó utasításokért tekintse meg az [Azure cache konfigurálása a Redis-beállításokhoz](cache-configure.md#configure-azure-cache-for-redis-settings)című témakört.
 
-| Attribútum | Típus | Alapértelmezett | Description (Leírás) |
+| Attribútum | Típus | Alapértelmezett | Leírás |
 | --------- | ---- | ------- | ----------- |
 | *gazdagép* | sztring | localhost | A Redis-kiszolgáló IP-címe vagy állomásneve |
 | *Port* | pozitív egész szám | 6379 (nem TLS/SSL)<br/>6380 (TLS/SSL) | Redis-kiszolgáló portja |
@@ -61,12 +61,12 @@ Konfigurálja az attribútumokat a Microsoft Azure Portal cache paneljének ért
 | *databaseIdNumber* | pozitív egész szám | 0 | *Ez az attribútum csak web.config vagy AppSettings használatával adható meg.*<br/><br/>Határozza meg, hogy melyik Redis-adatbázist kívánja használni. |
 | *connectionTimeoutInMilliseconds* | pozitív egész szám | A StackExchange. Redis által biztosított | A *ConnectTimeout* beállítására szolgál a StackExchange. Redis. ConnectionMultiplexer létrehozásakor. |
 | *operationTimeoutInMilliseconds* | pozitív egész szám | A StackExchange. Redis által biztosított | A *SyncTimeout* beállítására szolgál a StackExchange. Redis. ConnectionMultiplexer létrehozásakor. |
-| *ConnectionString* (érvényes StackExchange. Redis kapcsolati sztring) | sztring | *n/a* | Vagy egy AppSettings vagy web.config paraméterre mutató hivatkozás, vagy egy érvényes StackExchange. Redis-kapcsolódási karakterlánc. Ez az attribútum a *gazdagép* , a *port* , az *accessKey* , az *SSL* és más StackExchange. Redis attribútumok értékeit biztosítja. A *ConnectionString* részletesebb ismertetését lásd: a [ConnectionString beállítása](#setting-connectionstring) az [attribútumok megjegyzései](#attribute-notes) szakaszban. |
+| *ConnectionString* (érvényes StackExchange. Redis kapcsolati sztring) | sztring | *n/a* | Vagy egy AppSettings vagy web.config paraméterre mutató hivatkozás, vagy egy érvényes StackExchange. Redis-kapcsolódási karakterlánc. Ez az attribútum a *gazdagép*, a *port*, az *accessKey*, az *SSL* és más StackExchange. Redis attribútumok értékeit biztosítja. A *ConnectionString* részletesebb ismertetését lásd: a [ConnectionString beállítása](#setting-connectionstring) az [attribútumok megjegyzései](#attribute-notes) szakaszban. |
 | *settingsClassName*<br/>*settingsMethodName* | sztring<br/>sztring | *n/a* | *Ezek az attribútumok csak web.config vagy AppSettings adhatók meg.*<br/><br/>Ezekkel az attribútumokkal adhat meg egy kapcsolódási karakterláncot. a *settingsClassName* a *settingsMethodName* által megadott metódust tartalmazó szerelvény minősített osztályának kell lennie.<br/><br/>A *settingsMethodName* által megadott metódusnak nyilvános, statikus és Void értékűnek kell lennie (nem kell paramétereket megadnia) a **karakterlánc** visszatérési típusával. Ez a metódus a tényleges kapcsolatok karakterláncát adja vissza. |
 | *loggingClassName*<br/>*loggingMethodName* | sztring<br/>sztring | *n/a* | *Ezek az attribútumok csak web.config vagy AppSettings adhatók meg.*<br/><br/>Ezekkel az attribútumokkal hibakeresést végezhet az alkalmazásban, ha naplókat biztosít a munkamenet-állapot/kimeneti gyorsítótárból, valamint a StackExchange. Redis naplókat. a *loggingClassName* a *loggingMethodName* által megadott metódust tartalmazó szerelvény minősített osztályának kell lennie.<br/><br/>A *loggingMethodName* által megadott metódusnak nyilvános, statikus és Void értékűnek kell lennie (nem kell paramétereket megadnia) a **System. IO. TextWriter** visszatérési típusával. |
 | *applicationName* | sztring | Az aktuális folyamat moduljának neve vagy "/" | *Csak SessionStateProvider*<br/>*Ez az attribútum csak web.config vagy AppSettings használatával adható meg.*<br/><br/>A Redis cache-ben használandó alkalmazásnév-előtag. Az ügyfél különböző célokra használhatja ugyanazt a Redis cache-gyorsítótárat. Annak biztosításához, hogy a munkamenetkulcsok ne ütköznek, az alkalmazás neve előtaggal megadható. |
-| *throwOnError* | boolean | true | *Csak SessionStateProvider*<br/>*Ez az attribútum csak web.config vagy AppSettings használatával adható meg.*<br/><br/>Azt határozza meg, hogy hiba esetén kivételt kell-e kidobni.<br/><br/>További információ a *throwOnError* : [Megjegyzések a *ThrowOnError*](#notes-on-throwonerror) -ben az [attribútumok megjegyzései](#attribute-notes) szakaszban. |>*Microsoft. Web. Redis. RedisSessionStateProvider. LastException* . |
-| *retryTimeoutInMilliseconds* | pozitív egész szám | 5000 | *Csak SessionStateProvider*<br/>*Ez az attribútum csak web.config vagy AppSettings használatával adható meg.*<br/><br/>Ennyi ideig próbálkozzon újra egy művelet sikertelensége esetén. Ha ez az érték kisebb, mint a *operationTimeoutInMilliseconds* , akkor a szolgáltató nem próbálkozik újra.<br/><br/>További információ a *retryTimeoutInMilliseconds* : [Megjegyzések a *RetryTimeoutInMilliseconds*](#notes-on-retrytimeoutinmilliseconds) -ben az [attribútumok megjegyzései](#attribute-notes) szakaszban. |
+| *throwOnError* | boolean | true | *Csak SessionStateProvider*<br/>*Ez az attribútum csak web.config vagy AppSettings használatával adható meg.*<br/><br/>Azt határozza meg, hogy hiba esetén kivételt kell-e kidobni.<br/><br/>További információ a *throwOnError*: [Megjegyzések a *ThrowOnError*](#notes-on-throwonerror) -ben az [attribútumok megjegyzései](#attribute-notes) szakaszban. |>*Microsoft. Web. Redis. RedisSessionStateProvider. LastException*. |
+| *retryTimeoutInMilliseconds* | pozitív egész szám | 5000 | *Csak SessionStateProvider*<br/>*Ez az attribútum csak web.config vagy AppSettings használatával adható meg.*<br/><br/>Ennyi ideig próbálkozzon újra egy művelet sikertelensége esetén. Ha ez az érték kisebb, mint a *operationTimeoutInMilliseconds*, akkor a szolgáltató nem próbálkozik újra.<br/><br/>További információ a *retryTimeoutInMilliseconds*: [Megjegyzések a *RetryTimeoutInMilliseconds*](#notes-on-retrytimeoutinmilliseconds) -ben az [attribútumok megjegyzései](#attribute-notes) szakaszban. |
 | *redisSerializerType* | sztring | *n/a* | Meghatározza a Microsoft. Web. Redis által megvalósított osztály szerelvényének minősített típusának nevét. ISerializer, amely az értékek szerializálására és deszerializálására szolgáló egyéni logikát tartalmazza. További információ: a [ *redisSerializerType* ismertetése](#about-redisserializertype) az [attribútumok megjegyzései](#attribute-notes) szakaszban. |
 
 ## <a name="attribute-notes"></a>Attribútumok megjegyzései
@@ -135,7 +135,7 @@ Ha a munkamenet-művelet során hiba lép fel, a munkamenet-állapot szolgáltat
 
 Ez a viselkedés olyan módon módosult, amely támogatja a meglévő ASP.NET munkamenet-szolgáltatói felhasználók elvárásait, miközben szükség esetén kivételeket is megadhat. Az alapértelmezett viselkedés továbbra is kivételt jelez, ha hiba történik, összhangban a többi ASP.NET munkamenet-szolgáltatóval; a meglévő kódnak ugyanúgy kell működnie, mint korábban.
 
-Ha a *throwOnError* false ( **hamis** ) értékre van állítva, akkor a kivételek eldobása helyett a művelet csendes hibát jelez. Ha meg szeretné tudni, hogy hiba történt-e, és ha igen, keresse meg a kivételt, ellenőrizze a *Microsoft. Web. Redis. RedisSessionStateProvider. LastException* statikus tulajdonságát.
+Ha a *throwOnError* false ( **hamis**) értékre van állítva, akkor a kivételek eldobása helyett a művelet csendes hibát jelez. Ha meg szeretné tudni, hogy hiba történt-e, és ha igen, keresse meg a kivételt, ellenőrizze a *Microsoft. Web. Redis. RedisSessionStateProvider. LastException* statikus tulajdonságát.
 
 ### <a name="notes-on-retrytimeoutinmilliseconds"></a>Megjegyzések a *retryTimeoutInMilliseconds*
 
@@ -204,6 +204,6 @@ A lépések elvégzése után az alkalmazás a Redis kimeneti gyorsítótár-szo
 * [Apache Ignite](https://apacheignite-net.readme.io/docs/aspnet-output-caching)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg az [Azure Cache ASP.NET munkamenet-szolgáltatóját a Redis](cache-aspnet-session-state-provider.md).

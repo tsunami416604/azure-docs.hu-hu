@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
-ms.openlocfilehash: dc28f5a9c3faa9d1c963a441f79eb1eea3fcba47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 649c456309d2524fec8d44f13c0f3081725c4361
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91858319"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95994084"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Rövid útmutató: Arcfelismerés egy képen a REST API és a PHP használatával
 
@@ -24,7 +24,7 @@ Ebben a rövid útmutatóban az Azure Face REST API a PHP használatával ismeri
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/cognitive-services/)
-* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" hozzon létre egy Face-erőforrást "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése**elemre.
+* Ha már rendelkezik Azure-előfizetéssel, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" hozzon létre egy Face-erőforrást "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a Azure Portal a kulcs és a végpont beszerzéséhez. Az üzembe helyezést követően kattintson **az erőforrás keresése** elemre.
     * Szüksége lesz a létrehozott erőforrás kulcsára és végpontra az alkalmazás Face APIhoz való összekapcsolásához. A kulcsot és a végpontot a rövid útmutató későbbi részében található kódra másolja.
     * Az ingyenes díjszabási csomag () segítségével `F0` kipróbálhatja a szolgáltatást, és később is frissítheti az éles környezetben futó fizetős szintre.
 * Egy Kódszerkesztő, például a [Visual Studio Code](https://code.visualstudio.com/download).
@@ -33,7 +33,7 @@ Ebben a rövid útmutatóban az Azure Face REST API a PHP használatával ismeri
 
 ## <a name="initialize-the-html-file"></a>A HTML-fájl inicializálása
 
-Hozzon létre egy új, *detectFaces.html*formátumú HTML-fájlt, és adja hozzá a következő kódot.
+Hozzon létre egy új, *detectFaces.html* formátumú HTML-fájlt, és adja hozzá a következő kódot.
 
 ```html
 <html>
@@ -271,3 +271,4 @@ Ismerkedjen meg a képen látható emberi arcok észleléséhez használt Face A
 
 > [!div class="nextstepaction"]
 > [Face API-k](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
+ 

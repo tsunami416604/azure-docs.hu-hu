@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 10/15/2019
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.openlocfilehash: e0f3cd034838d5a9ccb1a5ccdc2567933b2e1dd6
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: f5909a3a824149d9bb4247c78eaaa895b040c6f2
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562202"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95993975"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rövid útmutató: Felhasználók bejelentkeztetése és a Microsoft Graph API meghívása Android-alkalmazásokból
 
-Ebben a rövid útmutatóban egy kód mintát tölt le és futtat, amely bemutatja, hogyan jelentkezhet be egy Android-alkalmazás a felhasználók számára, és hogyan szerezhet be hozzáférési tokent a Microsoft Graph API meghívásához. 
+Ebben a rövid útmutatóban egy kód mintát tölt le és futtat, amely bemutatja, hogyan jelentkezhet be egy Android-alkalmazás a felhasználók számára, és hogyan kérhet hozzáférési jogkivonatot a Microsoft Graph API meghívásához. 
 
 Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 
@@ -51,7 +51,7 @@ Az alkalmazásokat a Azure Active Directory alkalmazásnak kell képviselnie, ho
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>3. lépés: az alkalmazás konfigurálva van, és készen áll a futtatásra
 > A projektet az alkalmazás tulajdonságainak értékével konfiguráltuk, és készen áll a futtatásra.
-> A minta alkalmazás az **Egyfiókos mód** képernyőn indul el. Alapértelmezés szerint az alapértelmezett hatókör, a **User. Read** , amelyet a rendszer akkor használ, amikor a Microsoft Graph API-hívás során beolvassa a saját profil adatait. Alapértelmezés szerint a Microsoft Graph API-hívás URL-címe van megadva. Ha szeretné, mindkettőt módosíthatja.
+> A minta alkalmazás az **Egyfiókos mód** képernyőn indul el. Alapértelmezés szerint az alapértelmezett hatókör, a **User. Read**, amelyet a rendszer akkor használ, amikor a Microsoft Graph API-hívás során beolvassa a saját profil adatait. Alapértelmezés szerint a Microsoft Graph API-hívás URL-címe van megadva. Ha szeretné, mindkettőt módosíthatja.
 >
 > ![MSAL minta alkalmazás, amely egyetlen és több fiók használatát mutatja be](./media/quickstart-v2-android/quickstart-sample-app.png)
 >
@@ -77,7 +77,7 @@ Az alkalmazásokat a Azure Active Directory alkalmazásnak kell képviselnie, ho
 >
 > Válassza ki emulátorát vagy fizikai eszközét Android Studio **elérhető eszközök** legördülő menüből, és futtassa az alkalmazást.
 >
-> A minta alkalmazás az **Egyfiókos mód** képernyőn indul el. Alapértelmezés szerint az alapértelmezett hatókör, a **User. Read** , amelyet a rendszer akkor használ, amikor a Microsoft Graph API-hívás során beolvassa a saját profil adatait. Alapértelmezés szerint a Microsoft Graph API-hívás URL-címe van megadva. Ha szeretné, mindkettőt módosíthatja.
+> A minta alkalmazás az **Egyfiókos mód** képernyőn indul el. Alapértelmezés szerint az alapértelmezett hatókör, a **User. Read**, amelyet a rendszer akkor használ, amikor a Microsoft Graph API-hívás során beolvassa a saját profil adatait. Alapértelmezés szerint a Microsoft Graph API-hívás URL-címe van megadva. Ha szeretné, mindkettőt módosíthatja.
 >
 > ![MSAL minta alkalmazás, amely egyetlen és több fiók használatát mutatja be](./media/quickstart-v2-android/quickstart-sample-app.png)
 >
@@ -478,7 +478,7 @@ A konfigurációs fájl [auth_config_single_account.jstól](#auth_config_single_
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Lépjen be az Android-oktatóanyagba, amelyben létrehoz egy olyan Android-alkalmazást, amely a Microsoft Identity platform hozzáférési jogkivonatát kapja, és a használatával hívja meg a Microsoft Graph API-t.
 

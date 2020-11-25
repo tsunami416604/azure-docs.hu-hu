@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/21/2018
 ms.author: mazha
 ms.openlocfilehash: 4967991b0edaa854acbf6b308596859d662311fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91316756"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993380"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 A CDN felügyeleti kód írása előtt el kell végeznie néhány előkészítést, hogy a kód működjön a Azure Resource Managerval. Az előkészületek elvégzéséhez a következőket kell tennie:
@@ -20,14 +20,14 @@ A CDN felügyeleti kód írása előtt el kell végeznie néhány előkészíté
 
 ### <a name="creating-the-resource-group"></a>Az erőforráscsoport létrehozása
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Kattintson **az erőforrás létrehozása**elemre.
-3. Keresse meg az **erőforráscsoportot** , és az erőforráscsoport ablaktáblán kattintson a **Létrehozás**elemre.
+2. Kattintson **az erőforrás létrehozása** elemre.
+3. Keresse meg az **erőforráscsoportot** , és az erőforráscsoport ablaktáblán kattintson a **Létrehozás** elemre.
 
     ![Új erőforráscsoport létrehozása](./media/cdn-app-dev-prep/cdn-new-rg-1-include.png)
-3. Nevezze el az erőforráscsoport *CdnConsoleTutorial*.  Válassza ki az előfizetését, és válasszon egy Önhöz közeli helyet.  Ha szeretné, kattintson a **rögzítés az irányítópulton** jelölőnégyzetre az erőforráscsoport az irányítópulton való rögzítéséhez a portálon.  A rögzítés megkönnyíti a későbbi keresését.  Miután végzett a beállításokat, kattintson a **Létrehozás**gombra.
+3. Nevezze el az erőforráscsoport *CdnConsoleTutorial*.  Válassza ki az előfizetését, és válasszon egy Önhöz közeli helyet.  Ha szeretné, kattintson a **rögzítés az irányítópulton** jelölőnégyzetre az erőforráscsoport az irányítópulton való rögzítéséhez a portálon.  A rögzítés megkönnyíti a későbbi keresését.  Miután végzett a beállításokat, kattintson a **Létrehozás** gombra.
 
     ![Képernyőkép az erőforráscsoport párbeszédpanelről.](./media/cdn-app-dev-prep/cdn-new-rg-2-include.png)
-4. Ha az erőforráscsoport létrejött, ha nem rögzítette az irányítópulton, akkor a **Tallózás**, majd az **erőforráscsoportok**elemre kattintva keresheti meg.  A megnyitásához kattintson az erőforráscsoport elemre.  Jegyezze fel az előfizetés- **azonosítóját**. Később szükség van rá.
+4. Ha az erőforráscsoport létrejött, ha nem rögzítette az irányítópulton, akkor a **Tallózás**, majd az **erőforráscsoportok** elemre kattintva keresheti meg.  A megnyitásához kattintson az erőforráscsoport elemre.  Jegyezze fel az előfizetés- **azonosítóját**. Később szükség van rá.
 
     ![Képernyőkép a C D N konzolról – oktatóanyag szakasz.](./media/cdn-app-dev-prep/cdn-subscription-id-include.png)
 
@@ -37,9 +37,9 @@ Az alkalmazások hitelesítésének két módja van Azure Active Directory: egy�
 Az egyszerű szolgáltatás létrehozása több lépésből áll, beleértve az Azure Active Directory alkalmazások létrehozását is.  A létrehozáshoz [ezt az oktatóanyagot](../articles/active-directory/develop/howto-create-service-principal-portal.md)fogjuk követni.
 
 > [!IMPORTANT]
-> Ügyeljen arra, hogy kövesse a [csatolt oktatóanyag](../articles/active-directory/develop/howto-create-service-principal-portal.md)összes lépését.  *Fontos* , hogy pontosan a leírt módon végezze el.  Ügyeljen arra, hogy a **bérlői azonosítót**, a **bérlői tartománynevet** (általában *. onmicrosoft.com* tartomány, hacsak nem adott meg egyéni TARTOMÁNYT), az **ügyfél-azonosítót**és az **ügyfél-hitelesítési kulcsot**jegyezze fel, mivel ezekre az információkra később szükség van.  Ügyeljen arra, hogy megvédje az **ügyfél-azonosítót** és az ügyfél- **hitelesítési kulcsot**, mivel ezeket a hitelesítő adatokat bárki felhasználhatja, hogy az egyszerű szolgáltatásként hajtsa végre a műveleteket.
+> Ügyeljen arra, hogy kövesse a [csatolt oktatóanyag](../articles/active-directory/develop/howto-create-service-principal-portal.md)összes lépését.  *Fontos* , hogy pontosan a leírt módon végezze el.  Ügyeljen arra, hogy a **bérlői azonosítót**, a **bérlői tartománynevet** (általában *. onmicrosoft.com* tartomány, hacsak nem adott meg egyéni TARTOMÁNYT), az **ügyfél-azonosítót** és az **ügyfél-hitelesítési kulcsot** jegyezze fel, mivel ezekre az információkra később szükség van.  Ügyeljen arra, hogy megvédje az **ügyfél-azonosítót** és az ügyfél- **hitelesítési kulcsot**, mivel ezeket a hitelesítő adatokat bárki felhasználhatja, hogy az egyszerű szolgáltatásként hajtsa végre a műveleteket.
 >
-> Ha megtekinti a több-bérlős alkalmazás konfigurálása nevű lépést, válassza a **nem**lehetőséget.
+> Ha megtekinti a több-bérlős alkalmazás konfigurálása nevű lépést, válassza a **nem** lehetőséget.
 >
 > Amikor megkapja az [alkalmazás szerepkörhöz való hozzárendelésének](../articles/active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)lépését, használja a korábban létrehozott erőforráscsoportot, a  *CdnConsoleTutorial*, de az **olvasó** szerepkör helyett a **CDN-profil közreműködői** szerepkört.  Miután hozzárendelte az alkalmazást a **CDN-profil közreműködői** szerepkörhöz az erőforráscsoporthoz, térjen vissza ehhez az oktatóanyaghoz. 
 >
@@ -57,11 +57,11 @@ Ha az egyszerű szolgáltatásnév helyett inkább interaktív egyéni felhaszn�
 >
 >
 
-1. Az alkalmazás létrehozásakor a **webalkalmazás**helyett válassza a **natív alkalmazás**lehetőséget.
+1. Az alkalmazás létrehozásakor a **webalkalmazás** helyett válassza a **natív alkalmazás** lehetőséget.
 
     ![Natív alkalmazás](./media/cdn-app-dev-prep/cdn-native-application-include.png)
 2. A következő oldalon egy **átirányítási URI**-t kell megadnia.  Az URI nem lesz érvényesítve, de ne feledje, hogy mi adta meg. Később szüksége lesz rá.
-3. Nem kell **ügyfél-hitelesítési kulcsot**létrehoznia.
+3. Nem kell **ügyfél-hitelesítési kulcsot** létrehoznia.
 4. Az egyszerű szolgáltatásoknak a **CDN-profil közreműködői** szerepkörhöz való társítása helyett egyéni felhasználókat vagy csoportokat fogunk hozzárendelni.  Ebben a példában láthatja, hogy a  *CDN-bemutató felhasználót* a **CDN-profil közreműködői** szerepkörhöz rendeltem.  
 
     ![Egyéni felhasználói hozzáférés](./media/cdn-app-dev-prep/cdn-aad-user-include.png)

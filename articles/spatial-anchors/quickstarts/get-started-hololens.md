@@ -1,19 +1,19 @@
 ---
 title: 'Rövid útmutató: HoloLens-alkalmazás létrehozása a DirectX szolgáltatással'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre HoloLens-alkalmazást térbeli horgonyok használatával.
-author: craigktreasure
-manager: virivera
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 02/24/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 66b8008312c1cf81d4fca7fb8ee5f26fc4c98f60
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: c96c45869ee1c9c96cd77d0b3eb10c733199666e
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096163"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95993516"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-spatial-anchors-in-cwinrt-and-directx"></a>Gyors útmutató: HoloLens-alkalmazás létrehozása Azure térbeli Horgonyokkal, C++/WinRT és DirectX-ben
 
@@ -33,7 +33,7 @@ A következőket fogja megtanulni:
 A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az alábbiakkal:
 - A **univerzális Windows-platform-fejlesztési** számítási feladattal és a **Windows 10 SDK-val (10.0.18362.0 vagy újabb** verzióval) telepített Windows-gép a <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> -es verziójával. <a href="https://git-scm.com/download/win" target="_blank">A git for Windows és a</a> <a href="https://git-lfs.github.com/">git LFS</a>is telepítenie kell.
 - A Visual studióhoz készült [C++/WinRT Visual Studio bővítményt (VSIX)](https://aka.ms/cppwinrt/vsix) a [Visual Studio piactérről](https://marketplace.visualstudio.com/)kell telepíteni.
-- HoloLens-eszköz, amelyen engedélyezve van a [fejlesztői mód](/windows/mixed-reality/using-visual-studio) . Ehhez a cikkhez HoloLens-eszközre van szükség, amely a [Windows 10 2020](/windows/mixed-reality/whats-new/release-notes-may-2020)-es verziójának frissítését igényli. A HoloLens legújabb kiadásának frissítéséhez nyissa meg a **Beállítások** alkalmazást, lépjen a **frissítés & biztonság**elemre, majd kattintson a **frissítések keresése** gombra.
+- HoloLens-eszköz, amelyen engedélyezve van a [fejlesztői mód](/windows/mixed-reality/using-visual-studio) . Ehhez a cikkhez HoloLens-eszközre van szükség, amely a [Windows 10 2020](/windows/mixed-reality/whats-new/release-notes-may-2020)-es verziójának frissítését igényli. A HoloLens legújabb kiadásának frissítéséhez nyissa meg a **Beállítások** alkalmazást, lépjen a **frissítés & biztonság** elemre, majd kattintson a **frissítések keresése** gombra.
 - Az alkalmazásnak a AppX-jegyzékben kell beállítania a **spatialPerception** képességet.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
@@ -60,7 +60,7 @@ Keresse meg a `SpatialAnchorsAccountDomain` mezőt, és cserélje le a `Set me` 
 
 Módosítsa a **megoldás konfigurációját** a **kiadásra**, módosítsa a **megoldási platformot** **x86**-ra, majd válassza az **eszköz** lehetőséget a telepítési cél beállításai közül.
 
-Ha a 2. HoloLens használja, a **ARM64** -et a **megoldási platformként**használhatja az **x86**helyett.
+Ha a 2. HoloLens használja, a **ARM64** -et a **megoldási platformként** használhatja az **x86** helyett.
 
 ![Visual Studio-konfiguráció](./media/get-started-hololens/visual-studio-configuration.png)
 
@@ -70,7 +70,7 @@ Válassza a **hibakeresés**  >  **indítása** az alkalmazás üzembe helyezés
 
 A horgonyok elhelyezéséhez és felidézéséhez kövesse az alkalmazás utasításait.
 
-A Visual Studióban állítsa le az alkalmazást úgy, hogy kiválasztja a **hibakeresés leállítása** vagy a **SHIFT + F5**billentyűkombinációt.
+A Visual Studióban állítsa le az alkalmazást úgy, hogy kiválasztja a **hibakeresés leállítása** vagy a **SHIFT + F5** billentyűkombinációt.
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

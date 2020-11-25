@@ -4,11 +4,11 @@ description: Adja hozzá az üzembe helyezést, vagy készítsen jelölőket a m
 ms.topic: conceptual
 ms.date: 08/14/2020
 ms.openlocfilehash: 58f6603687838713fafbf4cd5cc3f100e22b7401
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91758183"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993720"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Jegyzetek a metrikus diagramokon Application Insights
 
@@ -42,28 +42,28 @@ Hozzon létre külön API-kulcsot az Azure-folyamatok egyes kiadási sablonjaiho
 
 1. Egy külön böngészőablakban nyissa meg vagy hozza létre az Azure-folyamatok üzembe helyezéseit kezelő kiadási sablont.
    
-1. Válassza a **feladat hozzáadása**lehetőséget, majd a menüből válassza a **Application Insights kibocsátási megjegyzése** feladatot.
+1. Válassza a **feladat hozzáadása** lehetőséget, majd a menüből válassza a **Application Insights kibocsátási megjegyzése** feladatot.
    
    ![Válassza a feladat hozzáadása lehetőséget, és válassza ki Application Insights kiadási jegyzetet.](./media/annotations/3-add-task.png)
 
    > [!NOTE]
    > A kiadási jegyzet feladata jelenleg csak a Windows-alapú ügynököket támogatja; nem futtatható Linux, macOS vagy más típusú ügynökön.
    
-1. Az **alkalmazás azonosítója**alatt illessze be az **API-hozzáférés** LAPRÓL másolt Application Insights azonosítót.
+1. Az **alkalmazás azonosítója** alatt illessze be az **API-hozzáférés** LAPRÓL másolt Application Insights azonosítót.
    
    ![Application Insights-azonosító beillesztése](./media/annotations/4-paste-app-id.png)
    
-1. Vissza a Application Insights **API-hozzáférés** ablakban válassza az **API-kulcs létrehozása**lehetőséget. 
+1. Vissza a Application Insights **API-hozzáférés** ablakban válassza az **API-kulcs létrehozása** lehetőséget. 
    
    ![Az API-hozzáférés lapon válassza az API-kulcs létrehozása lehetőséget.](./media/annotations/5-create-api-key.png)
    
-1. Az **API-kulcs létrehozása** ablakban írja be a leírást, válassza a **Megjegyzések írása**lehetőséget, majd válassza a **kulcs létrehozása**lehetőséget. Másolja az új kulcsot.
+1. Az **API-kulcs létrehozása** ablakban írja be a leírást, válassza a **Megjegyzések írása** lehetőséget, majd válassza a **kulcs létrehozása** lehetőséget. Másolja az új kulcsot.
    
    ![Az API-kulcs létrehozása ablakban írja be a leírást, válassza a megjegyzések írása lehetőséget, majd válassza a kulcs létrehozása lehetőséget.](./media/annotations/6-create-api-key.png)
    
 1. A kiadási sablon ablak **változók** lapján válassza a **Hozzáadás** lehetőséget az új API-kulcs változó definíciójának létrehozásához.
 
-1. A **név**mezőben adja meg `ApiKey` az értéket, majd az **érték**alatt ILLESSZE be a másolt API-kulcsot az **API-hozzáférés** lapról.
+1. A **név** mezőben adja meg `ApiKey` az értéket, majd az **érték** alatt ILLESSZE be a másolt API-kulcsot az **API-hozzáférés** lapról.
    
    ![Az Azure DevOps-változók lapon válassza a Hozzáadás elemet, nevezze el a ApiKey változót, majd illessze be az API-kulcsot az érték mezőbe.](./media/annotations/7-paste-api-key.png)
    
@@ -89,7 +89,7 @@ Minden olyan log-alapú munkafüzet-lekérdezésben, amelyben a vizualizáció m
 
 ![Képernyőfelvétel a munkafüzetek panelről idősorozatos naplózási lekérdezéssel megjelenített megjegyzésekkel](./media/annotations/workbooks-annotations.png)
 
-Ha engedélyezni szeretné a jegyzeteket a munkafüzetben, ugorjon a **Speciális beállítások** elemre, és válassza a **jegyzetek megjelenítése**lehetőséget.
+Ha engedélyezni szeretné a jegyzeteket a munkafüzetben, ugorjon a **Speciális beállítások** elemre, és válassza a **jegyzetek megjelenítése** lehetőséget.
 
 ![Képernyőkép a speciális beállítások menüjéről, a következő szavakkal: a beállítás melletti jelölőnégyzetekkel Kiemelt jegyzeteket jelenít meg az engedélyezéshez.](./media/annotations/workbook-show-annotations.png)
 
@@ -117,7 +117,7 @@ A GitHubról származó [CreateReleaseAnnotation](https://github.com/MohanGsk/Ap
 
 Módosíthatja a parancsfájlt, például a múltbeli jegyzetek létrehozásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Munkaelemek létrehozása](./diagnostic-search.md#create-work-item)
 * [Automatizálás a PowerShell használatával](./powershell.md)

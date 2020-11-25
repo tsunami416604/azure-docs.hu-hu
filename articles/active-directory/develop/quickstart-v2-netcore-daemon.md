@@ -13,16 +13,16 @@ ms.date: 10/05/2020
 ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: d50a953c9593c9ae78889be336697686e59d965f
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: d732d2fd8b97ca61222accc21c9930ed8c5c5d3a
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592736"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95993890"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>Gyors útmutató: token beszerzése és Microsoft Graph API meghívása a konzol alkalmazás identitásával
 
-Ebben a rövid útmutatóban egy olyan kódrészletet tölt le és futtat, amely bemutatja, hogyan szerezhet be egy .NET Core Console-alkalmazás hozzáférési jogkivonatot a Microsoft Graph API meghívásához és a címtárban lévő [felhasználók listájának](/graph/api/user-list) megjelenítéséhez. A kód minta azt is bemutatja, hogy egy adott feladatot vagy Windows-szolgáltatást hogyan futtathat egy alkalmazás identitásával a felhasználó identitása helyett. 
+Ebben a rövid útmutatóban egy olyan kódrészletet tölt le és futtat, amely bemutatja, hogy a .NET Core Console-alkalmazás hogyan kaphat hozzáférési jogkivonatot a Microsoft Graph API meghívásához és a címtárban lévő [felhasználók listájának](/graph/api/user-list) megjelenítéséhez. A kód minta azt is bemutatja, hogy egy adott feladatot vagy Windows-szolgáltatást hogyan futtathat egy alkalmazás identitásával a felhasználó identitása helyett. 
 
 Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 
@@ -59,7 +59,7 @@ Ehhez a rövid útmutatóhoz a [.net Core 3,1](https://www.microsoft.com/net/dow
 > 1. Az **ügyfél** titkos kulcsa területen válassza az **+ új ügyfél titka** lehetőséget. Adja meg a nevet, és válassza a **Hozzáadás** lehetőséget. Másolja a titkos kulcsot egy biztonságos helyre. Szüksége lesz rá a kódban való használatra, és nem jelenik meg újra a portálon.
 > 1. Most válassza ki az **API-engedélyek** menüt, válassza az **+ engedély hozzáadása** gombot, és válassza a **Microsoft Graph** lehetőséget.
 > 1. Válassza ki az **alkalmazás engedélyeit**.
-> 1. A **felhasználó** csomópont alatt válassza a **felhasználó. olvasás. mind** , majd az **engedélyek hozzáadása** elemet.
+> 1. A **felhasználó** csomópont alatt válassza a **felhasználó. olvasás. mind**, majd az **engedélyek hozzáadása** elemet.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="download-and-configure-your-quickstart-app"></a>A Gyorsindítás alkalmazás letöltése és konfigurálása
@@ -92,7 +92,7 @@ Ehhez a rövid útmutatóhoz a [.net Core 3,1](https://www.microsoft.com/net/dow
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-visual-studio-project"></a>3. lépés: A Visual Studio-projekt konfigurálása
 >
-> 1. Csomagolja ki a zip-fájlt egy helyi mappába a lemez gyökerének közelében (például: **C:\Azure-Samples** ).
+> 1. Csomagolja ki a zip-fájlt egy helyi mappába a lemez gyökerének közelében (például: **C:\Azure-Samples**).
 > 1. Nyissa meg a megoldást a Visual Studio- **1-Call-MSGraph\daemon-Console.SLN** (nem kötelező).
 > 1. Szerkessze **appsettings.js** , és cserélje le a mezők értékeit `ClientId` , `Tenant` és `ClientSecret` a következővel:
 >
@@ -101,14 +101,14 @@ Ehhez a rövid útmutatóhoz a [.net Core 3,1](https://www.microsoft.com/net/dow
 >    "ClientId": "Enter_the_Application_Id_Here",
 >    "ClientSecret": "Enter_the_Client_Secret_Here"
 >    ```
->   Ebben a példában:
+>   Kimenet:
 >   - `Enter_the_Application_Id_Here` – ez a regisztrált alkalmazáshoz tartozó **Alkalmazás (ügyfél) azonosítója** érték.
 >   - `Enter_the_Tenant_Id_Here` – cserélje le ezt az értéket a **bérlői azonosító** vagy a **bérlő nevére** (például contoso.microsoft.com).
 >   - `Enter_the_Client_Secret_Here` – cserélje le ezt az értéket az 1. lépésben létrehozott ügyfél-titkos kulcsra.
 
 > [!div renderon="docs"]
 > > [!TIP]
-> > Az **alkalmazás (ügyfél) azonosítójának** , a **bérlői azonosító** értékének megkereséséhez lépjen az alkalmazás **Áttekintés** lapjára a Azure Portal. Új kulcs létrehozásához nyissa meg a **tanúsítványok & titkok** lapot.
+> > Az **alkalmazás (ügyfél) azonosítójának**, a **bérlői azonosító** értékének megkereséséhez lépjen az alkalmazás **Áttekintés** lapjára a Azure Portal. Új kulcs létrehozásához nyissa meg a **tanúsítványok & titkok** lapot.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-admin-consent"></a>3. lépés: rendszergazdai engedély
@@ -137,7 +137,7 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 ```
 
 > [!div renderon="docs"]
->> Ebben a példában:
+>> Kimenet:
 >> * `Enter_the_Tenant_Id_Here` – cserélje le ezt az értéket a **bérlői azonosító** vagy a **bérlő nevére** (például contoso.microsoft.com).
 >> * `Enter_the_Application_Id_Here` – ez a regisztrált alkalmazáshoz tartozó **Alkalmazás (ügyfél) azonosítója** érték.
 
@@ -157,7 +157,7 @@ cd {ProjectFolder}\1-Call-MSGraph\daemon-console
 dotnet run
 ```
 
-> Ebben a példában:
+> Kimenet:
 > * *{ProjectFolder}* az a mappa, ahová kibontotta a zip-fájlt. Példa **C:\Azure-Samples\active-Directory-dotnetcore-Daemon-v2**
 
 Ennek eredményeképpen meg kell jelennie az Azure AD-címtárban található felhasználók listájának.
@@ -174,7 +174,7 @@ Ennek eredményeképpen meg kell jelennie az Azure AD-címtárban található fe
 
 A MSAL ([Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) az a könyvtár, amellyel a felhasználók bejelentkezhetnek, és a Microsoft Identity platform által védett API eléréséhez használt jogkivonatokat kérhetnek. A leírtak szerint ez a rövid útmutató a jogkivonatokat az alkalmazás saját identitásának használatával kéri le a delegált engedélyek helyett. Az ebben az esetben használt hitelesítési folyamat az *[ügyfél hitelesítő adatai OAuth folyamat](v2-oauth2-client-creds-grant-flow.md)*. A MSAL.NET és az ügyfél-hitelesítő adatok folyamatával kapcsolatos további információkért tekintse meg [ezt a cikket](https://aka.ms/msal-net-client-credentials).
 
- A MSAL.NET a következő parancs futtatásával telepítheti a Visual Studio **Package Manager konzolján** :
+ A MSAL.NET a következő parancs futtatásával telepítheti a Visual Studio **Package Manager konzolján**:
 
 ```dotnetcli
 dotnet add package Microsoft.Identity.Client
@@ -198,7 +198,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-> | Ebben a példában: | Leírás |
+> | Kimenet: | Leírás |
 > |---------|---------|
 > | `config.ClientSecret` | Az Azure Portalon az alkalmazáshoz létrehozott ügyfél-titkos kulcs. |
 > | `config.ClientId` | Az Azure Portalon regisztrált alkalmazás **alkalmazásazonosítója (ügyfél-azonosítója)**. Ezt az értéket az alkalmazás **Áttekintés** oldalán találja az Azure Portalon. |
@@ -215,7 +215,7 @@ result = await app.AcquireTokenForClient(scopes)
                   .ExecuteAsync();
 ```
 
-> |Ebben a példában:| Leírás |
+> |Kimenet:| Leírás |
 > |---------|---------|
 > | `scopes` | A kért hatóköröket tartalmazza. A bizalmas ügyfelek esetében a hasonló formátumot kell használnia, hogy `{Application ID URI}/.default` jelezze, hogy a kért hatókörök az Azure Portalon beállított app Object (Microsoft Graph, `{Application ID URI}` pont –) számára statikusan meghatározottak `https://graph.microsoft.com` . Az egyéni webes API- `{Application ID URI}` k esetében az Azure Portal alkalmazás-regisztrációjában (előzetes verzió), az **API közzététele** részben van meghatározva. |
 
@@ -223,7 +223,7 @@ További információkért tekintse [meg `AcquireTokenForClient` ](/dotnet/api/m
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Daemon-alkalmazásokkal kapcsolatos további tudnivalókért tekintse meg a forgatókönyv áttekintését:
 

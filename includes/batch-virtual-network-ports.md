@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.date: 06/16/2020
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: 3e4bca058f554f60dfa5c237633d1fecf06dfea7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4f17fbfad1e7e550b3a1e95c93e4b061d0f1c3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87507484"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993422"
 ---
 ### <a name="general-requirements"></a>Általános követelmények
 
@@ -57,7 +57,7 @@ Az alhálózatnak engedélyeznie kell a Batch szolgáltatástól kiinduló bejö
 * Kimenő forgalom bármilyen porton keresztül az internetre. Ez az alhálózati szintű NSG-szabályok (lásd alább) alapján módosítható.
 
 > [!IMPORTANT]
-> Körültekintően járjon el, ha a Batch-konfigurált NSG módosítja vagy hozzáadja a bejövő vagy kimenő szabályokat. Ha a megadott alhálózaton lévő számítási csomópontok felé irányuló kommunikációt egy NSG megtagadja, a Batch szolgáltatás a számítási csomópontok állapotát **használhatatlanná**fogja állítani. Emellett nem kell erőforrás-zárolást alkalmazni a Batch által létrehozott összes erőforrásra, mivel ez megakadályozhatja az erőforrások törlését a felhasználó által kezdeményezett műveletek, például a készlet törlése miatt.
+> Körültekintően járjon el, ha a Batch-konfigurált NSG módosítja vagy hozzáadja a bejövő vagy kimenő szabályokat. Ha a megadott alhálózaton lévő számítási csomópontok felé irányuló kommunikációt egy NSG megtagadja, a Batch szolgáltatás a számítási csomópontok állapotát **használhatatlanná** fogja állítani. Emellett nem kell erőforrás-zárolást alkalmazni a Batch által létrehozott összes erőforrásra, mivel ez megakadályozhatja az erőforrások törlését a felhasználó által kezdeményezett műveletek, például a készlet törlése miatt.
 
 #### <a name="network-security-groups-specifying-subnet-level-rules"></a>Hálózati biztonsági csoportok: Alhálózati szintű szabályok meghatározása
 
@@ -69,7 +69,7 @@ Csak akkor konfigurálja a bejövő forgalmat a 3389-es porton (Windows) vagy a 
 
 | Forrás IP-címek | Forrás szolgáltatáscímke | Forrásportok | Cél | Célportok | Protokoll | Műveletek |
 | --- | --- | --- | --- | --- | --- | --- |
-| N/A | `BatchNodeManagement` [Szolgáltatáscímke](../articles/virtual-network/security-overview.md#service-tags) (regionális változat használata esetén, a Batch-fiókkal megegyező régióban) | * | Bármelyik | 29876-29877 | TCP | Engedélyezés |
+| N/A | `BatchNodeManagement` [Szolgáltatáscímke](../articles/virtual-network/network-security-groups-overview.md#service-tags) (regionális változat használata esetén, a Batch-fiókkal megegyező régióban) | * | Bármelyik | 29876-29877 | TCP | Engedélyezés |
 | Felhasználók forrás IP-címei a számítási csomópontok és/vagy egy számítási csomópont alhálózatának távoli eléréséhez a Linux többpéldányos feladatai esetében, amennyiben szükséges. | N/A | * | Bármelyik | 3389 (Windows), 22 (Linux) | TCP | Engedélyezés |
 
 > [!WARNING]
@@ -79,7 +79,7 @@ Csak akkor konfigurálja a bejövő forgalmat a 3389-es porton (Windows) vagy a 
 
 | Forrás | Forrásportok | Cél | Cél szolgáltatáscímkéje | Célportok | Protokoll | Műveletek |
 | --- | --- | --- | --- | --- | --- | --- |
-| Bármelyik | * | [Szolgáltatáscímke](../articles/virtual-network/security-overview.md#service-tags) | `Storage` (regionális változat használata esetén, a Batch-fiókkal megegyező régióban) | 443 | TCP | Engedélyezés |
+| Bármelyik | * | [Szolgáltatáscímke](../articles/virtual-network/network-security-groups-overview.md#service-tags) | `Storage` (regionális változat használata esetén, a Batch-fiókkal megegyező régióban) | 443 | TCP | Engedélyezés |
 
 ### <a name="pools-in-the-cloud-services-configuration"></a>Készletek a Cloud Services konfigurációjában
 
@@ -95,7 +95,7 @@ Csak akkor konfigurálja a bejövő forgalmat a 3389-es porton (Windows) vagy a 
 
 Az alhálózatnak engedélyeznie kell a Batch szolgáltatástól kiinduló bejövő kommunikációt, hogy képes legyen feladatok ütemezésére a számítási csomópontokon, illetve a kimenő kommunikációt, hogy kommunikálhasson az Azure Storage szolgáltatással vagy más erőforrásokkal.
 
-Nem kell megadnia NSG-t, mert a Batch szolgáltatás csak a Batch IP-címeiről a készletezett csomópontokra érkező bejövő kommunikációt konfigurálja. Ugyanakkor ha a megadott alhálózathoz hálózati biztonsági csoportok (NSG-k) és/vagy egy tűzfal van társítva, a következő táblázatokban látható módon konfigurálja a bejövő és kimenő biztonsági szabályokat. Ha a megadott alhálózaton lévő számítási csomópontok felé irányuló kommunikációt egy NSG megtagadja, a Batch szolgáltatás nem **használható**állapotba állítja a számítási csomópontok állapotát.
+Nem kell megadnia NSG-t, mert a Batch szolgáltatás csak a Batch IP-címeiről a készletezett csomópontokra érkező bejövő kommunikációt konfigurálja. Ugyanakkor ha a megadott alhálózathoz hálózati biztonsági csoportok (NSG-k) és/vagy egy tűzfal van társítva, a következő táblázatokban látható módon konfigurálja a bejövő és kimenő biztonsági szabályokat. Ha a megadott alhálózaton lévő számítási csomópontok felé irányuló kommunikációt egy NSG megtagadja, a Batch szolgáltatás nem **használható** állapotba állítja a számítási csomópontok állapotát.
 
 Windows rendszer esetében csak akkor konfigurálja a bejövő forgalmat a 3389-es porton keresztül, ha engedélyeznie kell az RDP-hozzáférést a készletezett csomópontokhoz. Ez nem szükséges ahhoz, hogy a készlet csomópontjai felhasználhatók legyenek.
 

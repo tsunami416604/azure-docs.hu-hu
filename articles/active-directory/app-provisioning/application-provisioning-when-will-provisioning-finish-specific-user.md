@@ -12,11 +12,11 @@ ms.date: 09/03/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.openlocfilehash: 307a97b71fe453c89617a86a88063e60fcf28fa3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88235060"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994009"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>A felhasználó kiépítési állapotának megtekintése
 
@@ -59,7 +59,7 @@ Ha automatikus felhasználó-kiosztást használ egy alkalmazással, az Azure AD
 
 Az adott felhasználó üzembe helyezéséhez szükséges idő főleg attól függ, hogy a kiépítési feladatok kezdeti ciklust vagy növekményes ciklust futtatnak-e.
 
-- A **kezdeti ciklus**esetében a feladat ideje számos tényezőtől függ, beleértve a kiépítés hatókörében lévő felhasználók és csoportok számát, valamint a felhasználók és a csoport teljes számát a forrásoldali rendszeren. Az Azure AD és az alkalmazások közötti első szinkronizálás akár 20 perctől akár több óráig is eltarthat, az Azure AD-címtár méretétől és a kiépítés hatókörében lévő felhasználók számától függően. A kezdeti ciklusok teljesítményét befolyásoló tényezők átfogó listáját a szakasz későbbi részében találja.
+- A **kezdeti ciklus** esetében a feladat ideje számos tényezőtől függ, beleértve a kiépítés hatókörében lévő felhasználók és csoportok számát, valamint a felhasználók és a csoport teljes számát a forrásoldali rendszeren. Az Azure AD és az alkalmazások közötti első szinkronizálás akár 20 perctől akár több óráig is eltarthat, az Azure AD-címtár méretétől és a kiépítés hatókörében lévő felhasználók számától függően. A kezdeti ciklusok teljesítményét befolyásoló tényezők átfogó listáját a szakasz későbbi részében találja.
 
 - A kezdeti ciklust követő **növekményes ciklusok** esetében a feladatok időtartama általában gyorsabb (például 10 percen belül), mivel a kiépítési szolgáltatás a kezdeti ciklus után mindkét rendszer állapotát jelképező vízjeleket tárolja, így javítja a későbbi szinkronizálások teljesítményét. A feladatok ideje a kiépítési ciklusban észlelt változások számától függ. Ha kevesebb mint 5 000 felhasználó vagy csoporttagság változik, a feladatok egyetlen növekményes kiépítési cikluson belül is befejeződik. 
 
@@ -77,12 +77,12 @@ Az alábbi táblázat összefoglalja a gyakori kiépítési forgatókönyvek szi
 | Az Azure AD összes felhasználójának szinkronizálása|  < 1 000  | < 30 perc | < 30 perc |
 | Az Azure AD összes felhasználójának szinkronizálása | 1 000 – 10 000  | 43 – 86 perc | < 30 perc |
 
-Csak a konfigurációs **szinkronizáláshoz hozzárendelt felhasználók és csoportok**esetében a következő képletek segítségével meghatározhatja a **kezdeti ciklus** várt minimális és maximális idejét:
+Csak a konfigurációs **szinkronizáláshoz hozzárendelt felhasználók és csoportok** esetében a következő képletek segítségével meghatározhatja a **kezdeti ciklus** várt minimális és maximális idejét:
 
 - Minimális perc = 0,01 x [a hozzárendelt felhasználók, csoportok és csoporttagok száma)
 - Maximális perc = 0,08 x [a hozzárendelt felhasználók, csoportok és csoporttagok száma)
 
-A **kezdeti ciklus**végrehajtásához szükséges időt befolyásoló tényezők összefoglalása:
+A **kezdeti ciklus** végrehajtásához szükséges időt befolyásoló tényezők összefoglalása:
 
 - A kiépítés hatókörében lévő felhasználók és csoportok teljes száma.
 
@@ -98,5 +98,5 @@ A **kezdeti ciklus**végrehajtásához szükséges időt befolyásoló tényező
 
 - Ha a teljesítmény probléma lesz, és megpróbálja kiépíteni a bérlőben lévő felhasználók és csoportok többségét, használjon hatóköri szűrőket. A hatóköri szűrők lehetővé teszik a kiépítési szolgáltatás által az Azure AD által kinyert adatok finomhangolását a felhasználók adott attribútumérték alapján történő kiszűrésével. A szűrők hatókörével kapcsolatos további információkért lásd: [attribútum-alapú alkalmazás kiépítés hatókör-szűrőkkel](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Felhasználók átadásának és megszüntetésének automatizálása az SaaS-alkalmazásokban az Azure Active Directoryval](user-provisioning.md)

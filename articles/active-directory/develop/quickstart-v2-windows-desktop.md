@@ -11,16 +11,16 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 25c5e6445bb5d673db1cfb755f320302a9e9c5b5
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: f63dbad398afcd0a9756cc1e9d4f70f1303d00b0
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561862"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95993856"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Rövid útmutató: Jogkivonat lekérése és a Microsoft Graph API meghívása egy Windows asztali alkalmazásból
 
-Ebben a rövid útmutatóban egy olyan kódrészletet tölt le és futtat, amely bemutatja, hogyan jelentkezhet be a Windows asztali .NET (WPF) alkalmazás a felhasználókba, és hogyan szerezhet be hozzáférési jogkivonatot a Microsoft Graph API meghívásához. 
+Ebben a rövid útmutatóban egy olyan kódrészletet tölt le és futtat, amely bemutatja, hogyan jelentkezhet be a Windows asztali .NET (WPF) alkalmazás a felhasználókba, és hogyan kérhet hozzáférési jogkivonatot a Microsoft Graph API meghívásához. 
 
 Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 
@@ -53,7 +53,7 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 >      - A **Támogatott fióktípusok** szakaszban jelölje be a **Tetszőleges szervezeti címtárban található fiókok és a Személyes Microsoft-fiókok (például Skype, Xbox, Outlook.com)** beállítást.
 >      - Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
 > 1. Az alkalmazás oldalainak listájában válassza a **Hitelesítés** elemet.
-> 1. Az **átirányítási URI** -  |  **k javasolt átirányítási URI-k a nyilvános ügyfelekhez (mobil, asztali)** szakaszban használja a következőt: **https://login.microsoftonline.com/common/oauth2/nativeclient** .
+> 1. Az **átirányítási URI**-  |  **k javasolt átirányítási URI-k a nyilvános ügyfelekhez (mobil, asztali)** szakaszban használja a következőt: **https://login.microsoftonline.com/common/oauth2/nativeclient** .
 > 1. Kattintson a **Mentés** gombra.
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -85,7 +85,7 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-visual-studio-project"></a>3. lépés: A Visual Studio-projekt konfigurálása
-> 1. Csomagolja ki a zip-fájlt egy helyi mappába a lemez gyökerének közelében (például: **C:\Azure-Samples** ).
+> 1. Csomagolja ki a zip-fájlt egy helyi mappába a lemez gyökerének közelében (például: **C:\Azure-Samples**).
 > 1. Nyissa meg a projektet a Visual Studióban.
 > 1. Módosítsa az **App.Xaml.cs** fájlt, és cserélje a `ClientId` és `Tenant` mezők értékét a következő kódra:
 >
@@ -94,7 +94,7 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 >    private static string Tenant = "Enter_the_Tenant_Info_Here";
 >    ```
 >
-> Ebben a példában:
+> Kimenet:
 > - `Enter_the_Application_Id_here` – ez a regisztrált alkalmazáshoz tartozó **Alkalmazás (ügyfél) azonosítója** érték.
 > - `Enter_the_Tenant_Info_Here` – az alábbi lehetőségek egyike lesz:
 >   - Ha az alkalmazás **az adott szervezeti címtárban lévő fiókokat** támogatja, ezt az értéket a **Bérlőazonosítóra** vagy a **Bérlő nevére** cserélje le (például contoso.microsoft.com)
@@ -102,7 +102,7 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 >   - Ha az alkalmazás **bármely szervezeti címtárban lévő fiókot és a személyes Microsoft-fiókokat** támogatja, ezt az értéket a `common` értékre cserélje le
 >
 > > [!TIP]
-> > Az **alkalmazás (ügyfél) azonosítója** , a **címtár (bérlő) azonosítója** és a **támogatott fióktípusok** értékét az alkalmazás **Áttekintés** oldalán találja az Azure Portalon.
+> > Az **alkalmazás (ügyfél) azonosítója**, a **címtár (bérlő) azonosítója** és a **támogatott fióktípusok** értékét az alkalmazás **Áttekintés** oldalán találja az Azure Portalon.
 
 ## <a name="more-information"></a>További információ
 
@@ -110,7 +110,7 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 ![Bemutatja, hogyan működik a rövid útmutatóban létrehozott minta alkalmazás](media/quickstart-v2-windows-desktop/windesktop-intro.svg)
 
 ### <a name="msalnet"></a>MSAL.NET
-A MSAL ([Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) az a könyvtár, amellyel a felhasználók bejelentkezhetnek, és a Microsoft Identity platform által védett API eléréséhez használt jogkivonatokat kérhetnek. Az MSAL telepítéséhez futtassa a következő parancsot a Visual Studio **Package Manager konzolján** :
+A MSAL ([Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) az a könyvtár, amellyel a felhasználók bejelentkezhetnek, és a Microsoft Identity platform által védett API eléréséhez használt jogkivonatokat kérhetnek. Az MSAL telepítéséhez futtassa a következő parancsot a Visual Studio **Package Manager konzolján**:
 
 ```powershell
 Install-Package Microsoft.Identity.Client -IncludePrerelease
@@ -134,7 +134,7 @@ PublicClientApplicationBuilder.Create(ClientId)
                 .Build();
 ```
 
-> |Ebben a példában: | Leírás |
+> |Kimenet: | Leírás |
 > |---------|---------|
 > | `ClientId` | Az Azure Portalon regisztrált alkalmazás **alkalmazásazonosítója (ügyfél-azonosítója)**. Ezt az értéket az alkalmazás **Áttekintés** oldalán találja az Azure Portalon. |
 
@@ -156,7 +156,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(_scopes)
                                       .ExecuteAsync();
 ```
 
-> |Ebben a példában:| Leírás |
+> |Kimenet:| Leírás |
 > |---------|---------|
 > | `_scopes` | A kért hatóköröket tartalmazza, például `{ "user.read" }` Microsoft Graph vagy `{ "api://<Application ID>/access_as_user" }` egyéni webes API-k esetén. |
 
@@ -171,14 +171,14 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
                                       .ExecuteAsync();
 ```
 
-> |Ebben a példában: | Leírás |
+> |Kimenet: | Leírás |
 > |---------|---------|
 > | `scopes` | A kért hatóköröket tartalmazza, például `{ "user.read" }` Microsoft Graph vagy `{ "api://<Application ID>/access_as_user" }` egyéni webes API-k esetén. |
 > | `firstAccount` | A gyorsítótár első felhasználóját határozza meg (az MSAL több felhasználót támogat egy alkalmazásban). |
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Próbálja ki az asztali Windowshoz készült oktatóanyagot, amelyben teljes körű, részletes útmutatót talál az alkalmazások és új szolgáltatások létrehozásához, valamint megtalálja ennek a rövid útmutatónak a teljes magyarázatát is.
 

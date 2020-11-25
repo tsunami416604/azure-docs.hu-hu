@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: eaac8bdf828d2dd9a8e2dfae0b1b2b5985d1951d
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 1a8d851d2e70850155950786c6aa67c1d5086eb2
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592702"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95993873"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Gyors útmutató: bejelentkezés felvétele a Microsofttal egy Python-webalkalmazásba
 
-Ebben a rövid útmutatóban egy kódrészletet tölt le és futtat, amely bemutatja, hogyan jelentkezhet be egy Python-webalkalmazás a felhasználók számára, és hogyan szerezhet be hozzáférési jogkivonatot a Microsoft Graph API meghívásához. A személyes Microsoft-fiókkal vagy egy Azure Active Directory (Azure AD-) szervezet fiókkal is bejelentkezhet az alkalmazásba.
+Ebben a rövid útmutatóban egy kód mintát tölt le és futtat, amely bemutatja, hogyan jelentkezhet be egy Python-webalkalmazás a felhasználók számára, és hogyan kérhet hozzáférési jogkivonatot a Microsoft Graph API meghívásához. A személyes Microsoft-fiókkal vagy egy Azure Active Directory (Azure AD-) szervezet fiókkal is bejelentkezhet az alkalmazásba.
 
 Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 
@@ -60,8 +60,8 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 >      - Válassza a **Regisztráció** lehetőséget.
 >      - Az alkalmazás **áttekintése** lapon jegyezze fel az **alkalmazás (ügyfél) azonosítójának** értékét későbbi használatra.
 > 1. Válassza ki a **hitelesítést** a menüben, majd adja hozzá a következő adatokat:
->    - Adja hozzá **a** webplatform-konfigurációt. Hozzáadás `http://localhost:5000/getAToken` **átirányítási URI** -ként.
->    - Válassza a **Mentés** lehetőséget.
+>    - Adja hozzá **a** webplatform-konfigurációt. Hozzáadás `http://localhost:5000/getAToken` **átirányítási URI**-ként.
+>    - Kattintson a **Mentés** gombra.
 > 1. A bal oldali menüben válassza a **tanúsítványok & Secrets** elemet, majd kattintson az **új ügyfél titkára** az **ügyfél titkai** szakaszban:
 >
 >      - Írja be a kulcs leírását (a példány-alkalmazás titkos kulcsa).
@@ -107,7 +107,7 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-the-application"></a>3. lépés: az alkalmazás konfigurálása
 >
-> 1. Csomagolja ki a zip-fájlt egy helyi mappába a gyökérmappa közelében (például: **C:\Azure-Samples** )
+> 1. Csomagolja ki a zip-fájlt egy helyi mappába a gyökérmappa közelében (például: **C:\Azure-Samples**)
 > 1. Ha integrált fejlesztési környezetet használ, nyissa meg a mintát a kedvenc IDE (opcionális).
 > 1. Nyissa meg a **app_config.** a fájlt, amely megtalálható a gyökérkönyvtárban, és cserélje le a következő kódrészletre:
 >
@@ -116,7 +116,7 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 > CLIENT_SECRET = "Enter_the_Client_Secret_Here"
 > AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
 > ```
-> Ebben a példában:
+> Kimenet:
 >
 > - `Enter_the_Application_Id_here` – ez a regisztrált alkalmazás alkalmazásazonosítója.
 > - `Enter_the_Client_Secret_Here`– a **tanúsítványokban létrehozott &** **titkos kulcs** a regisztrált alkalmazáshoz.
@@ -164,7 +164,7 @@ import msal
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a többrészes forgatókönyvek felhasználói számára bejelentkező webalkalmazásokról.
 

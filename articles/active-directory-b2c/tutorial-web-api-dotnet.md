@@ -12,17 +12,17 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: ada4226500437e7733605a29988ee7cacae40761
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953066"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994314"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>Oktatóanyag: hozzáférés biztosítása egy ASP.NET webes API-hoz a Azure Active Directory B2C használatával
 
 Ez az oktatóanyag bemutatja, hogyan hívhat meg egy védett webes API-erőforrást Azure Active Directory B2C (Azure AD B2C) egy ASP.NET-webalkalmazásból.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Webes API-alkalmazás hozzáadása
