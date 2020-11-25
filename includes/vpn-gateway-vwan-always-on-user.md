@@ -9,11 +9,11 @@ ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 3b68fce603801c7bc1aee2af871df257b5f69197
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95555552"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96025754"
 ---
 1. Telepítse az Ügyféltanúsítványok szolgáltatást a Windows 10-es ügyfélre, ahogyan az ebben a [pont – hely VPN-ügyfél](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md) című cikkben látható. A tanúsítványnak az aktuális felhasználói tárolóban kell lennie.
 

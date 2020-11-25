@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
 ms.openlocfilehash: 223f3e45f25e3aed3ed6fa15e5b9ea04b17f6c59
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655323"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023908"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>Adatok összekötése a veszélyforrások felderítését biztosító szolgáltatóktól
 
@@ -109,7 +109,7 @@ A veszélyforrások indikátorait az Azure Sentinel szolgáltatásba továbbíth
 
 6. Az Azure sentinelbe importált veszélyforrások mutatóinak megtekintéséhez navigáljon az **Azure Sentinel-logs**  >  **SecurityInsights**, majd bontsa ki a **ThreatIntelligenceIndicator** csomópontot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható a veszélyforrások elleni intelligencia szolgáltatója az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket.
 

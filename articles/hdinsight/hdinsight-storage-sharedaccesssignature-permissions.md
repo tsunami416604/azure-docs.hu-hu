@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 04/28/2020
 ms.openlocfilehash: eb8201ea888b98250d452e0b0e1c48f30cbb1efc
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742058"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022734"
 ---
 # <a name="use-azure-blob-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Az Azure Blob Storage közös hozzáférésű aláírásait használva korlátozza a HDInsight lévő adathozzáférést
 
@@ -27,7 +27,7 @@ A HDInsight teljes hozzáféréssel rendelkezik a fürthöz társított Azure Bl
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](./hdinsight-hadoop-linux-use-ssh-unix.md).
+* Egy SSH-ügyfél. További információért lásd: [Csatlakozás a HDInsighthoz (Apache Hadoop) SSH-val](./hdinsight-hadoop-linux-use-ssh-unix.md).
 
 * Egy meglévő [Storage-tároló](../storage/blobs/storage-quickstart-blobs-portal.md).  
 
@@ -355,10 +355,10 @@ Ha meglévő fürttel rendelkezik, a következő lépésekkel adhatja hozzá az 
 
 1. Navigáljon a **HDFS**  >  **konfigurációk**  >  **speciális**  >  **Egyéni Core-site** elemre.
 
-1. Bontsa ki az **Egyéni Core-site** szakaszt, görgessen a végéhez, majd válassza a **tulajdonság hozzáadása..** . lehetőséget. Használja a következő értékeket a **kulcshoz** és az **értékhez** :
+1. Bontsa ki az **Egyéni Core-site** szakaszt, görgessen a végéhez, majd válassza a **tulajdonság hozzáadása..**. lehetőséget. Használja a következő értékeket a **kulcshoz** és az **értékhez**:
 
-    * **Kulcs** : `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
-    * **Érték** : a korábban végrehajtott metódusok egyike által visszaadott sas.
+    * **Kulcs**: `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
+    * **Érték**: a korábban végrehajtott metódusok egyike által visszaadott sas.
 
     Cserélje le a helyére a `CONTAINERNAME` C# vagy sas-alkalmazáshoz használt tároló nevét. Cserélje le `STORAGEACCOUNTNAME` a nevet a használt Storage-fiók nevére.
 
@@ -371,7 +371,7 @@ Ha meglévő fürttel rendelkezik, a következő lépésekkel adhatja hozzá az 
    > [!IMPORTANT]  
    > A módosítás érvénybe léptetéséhez több szolgáltatást is újra kell indítania.
 
-1. Ekkor megjelenik egy **Újraindítási** legördülő lista. Válassza az **összes érintett újraindítása** elemet a legördülő listából, majd __erősítse meg az összes újraindítását__ .
+1. Ekkor megjelenik egy **Újraindítási** legördülő lista. Válassza az **összes érintett újraindítása** elemet a legördülő listából, majd __erősítse meg az összes újraindítását__.
 
     Ismételje meg ezt a folyamatot a **MapReduce2** és a **fonal** esetében.
 
@@ -433,7 +433,7 @@ Az alábbi lépések végrehajtásával ellenőrizheti, hogy csak az SAS-Storage
 
     Ezúttal a művelet végrehajtása sikeresen befejeződött.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte, hogyan adhat hozzá korlátozott hozzáférésű tárolót a HDInsight-fürthöz, megismerheti a fürtön tárolt adatkezelés egyéb módjait:
 

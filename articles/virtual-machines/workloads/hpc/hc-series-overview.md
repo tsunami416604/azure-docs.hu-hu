@@ -9,11 +9,11 @@ ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
 ms.openlocfilehash: 672175d5bb92c8ab6dc347ece5ad6b14d8232ef4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965442"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024078"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>A HC sorozatú virtuális gépek áttekintése
 
@@ -56,7 +56,7 @@ Az alábbi ábrán az Azure Hypervisort és a HC-sorozatú virtuális gép szám
 | Operációs rendszer támogatása a CSATOLÓJÁHOZ nincs SR RDMA   | CentOS/RHEL 7.6 +, SLES 12 SP4 +, WinServer 2016 +  |
 | Orchestrator-támogatás        | CycleCloud, köteg  |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az [Intel Xeon SP architektúráról](https://bit.ly/2RCYkiE).
 - Olvassa el a legújabb bejelentéseket és néhány HPC-példát, valamint az eredményeket az [Azure számítási technikai Közösség blogjában](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute).

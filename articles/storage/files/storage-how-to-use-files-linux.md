@@ -8,11 +8,11 @@ ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: c271107b85e4903153c29b58aadadd37fb051b76
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94626741"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022564"
 ---
 # <a name="use-azure-files-with-linux"></a>Az Azure Files használata Linux rendszerrel
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztás az [SMB kernel-ügyféllel](https://wiki.samba.org/index.php/LinuxCIFS)is csatlakoztatható Linux-disztribúciókban. Ebből a cikkből megtudhatja, hogyan csatlakoztathat egy Azure-fájlmegosztást: igény szerint a `mount` paranccsal és a rendszerindítással, ha létrehoz egy bejegyzést a alkalmazásban `/etc/fstab` .
@@ -47,7 +47,7 @@ uname -r
     sudo apt install cifs-utils
     ```
 
-    **Fedora** , **Red Hat Enterprise Linux 8 +** és **CentOS 8 +** esetén használja a `dnf` Package Managert:
+    **Fedora**, **Red Hat Enterprise Linux 8 +** és **CentOS 8 +** esetén használja a `dnf` Package Managert:
 
     ```bash
     sudo dnf install cifs-utils
@@ -59,7 +59,7 @@ uname -r
     sudo yum install cifs-utils 
     ```
 
-    Az **openSUSE** -ben használja a `zypper` csomagkezelő eszközt:
+    Az **openSUSE**-ben használja a `zypper` csomagkezelő eszközt:
 
     ```bash
     sudo zypper install cifs-utils
@@ -69,7 +69,7 @@ uname -r
 
 * **Az Azure parancssori felület (CLI) legújabb verziója.** Az Azure CLI telepítésével kapcsolatos további információkért lásd: [Az Azure CLI telepítése](/cli/azure/install-azure-cli?view=azure-cli-latest) és az operációs rendszer kiválasztása. Ha inkább a Azure PowerShell modult szeretné használni a PowerShell 6 +-ban, akkor az alábbi utasításokat azonban az Azure CLI-hez mutatjuk be.
 
-* **Győződjön meg arról** , hogy a 445-es port nyitva van: az SMB a 445-es TCP-porton keresztül kommunikál, és ellenőrizze, hogy a tűzfal nem blokkolja-e az ügyfélszámítógép TCP-445 portjait.  Cserélje le `<your-resource-group>` , `<your-storage-account>` majd futtassa a következő parancsfájlt:
+* **Győződjön meg arról**, hogy a 445-es port nyitva van: az SMB a 445-es TCP-porton keresztül kommunikál, és ellenőrizze, hogy a tűzfal nem blokkolja-e az ügyfélszámítógép TCP-445 portjait.  Cserélje le `<your-resource-group>` , `<your-storage-account>` majd futtassa a következő parancsfájlt:
     ```bash
     resourceGroupName="<your-resource-group>"
     storageAccountName="<your-storage-account>"
@@ -99,7 +99,7 @@ Ha egy Azure-fájlmegosztást Linux-disztribúcióval szeretne használni, létr
 Szükség esetén egyszerre több csatlakoztatási pontra is csatlakoztathatja az Azure-fájlmegosztást.
 
 ### <a name="mount-the-azure-file-share-on-demand-with-mount"></a>Igény szerinti Azure-fájlmegosztás csatlakoztatása a következővel: `mount`
-1. **Hozzon létre egy mappát a csatlakoztatási ponthoz** : cserélje le `<your-resource-group>` , `<your-storage-account>` és a `<your-file-share>` megfelelő információkkal a környezetéhez:
+1. **Hozzon létre egy mappát a csatlakoztatási ponthoz**: cserélje le `<your-resource-group>` , `<your-storage-account>` és a `<your-file-share>` megfelelő információkkal a környezetéhez:
 
     ```bash
     resourceGroupName="<your-resource-group>"
@@ -135,7 +135,7 @@ Szükség esetén egyszerre több csatlakoztatási pontra is csatlakoztathatja a
 Ha elkészült az Azure-fájlmegosztás használatával, `sudo umount $mntPath` a használatával leválaszthatja a megosztást.
 
 ### <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>Állandó csatlakozási pont létrehozása az Azure-fájlmegosztás számára a következővel: `/etc/fstab`
-1. **Hozzon létre egy mappát a csatlakoztatási ponthoz** : egy csatlakozási ponthoz tartozó mappa bárhol létrehozható a fájlrendszerben, de ez a közös konvenció a/mnt. alatt történő létrehozásához. A következő parancs például létrehoz egy új könyvtárat, lecseréli `<your-resource-group>` , `<your-storage-account>` és a `<your-file-share>` megfelelő információkat a környezetéhez:
+1. **Hozzon létre egy mappát a csatlakoztatási ponthoz**: egy csatlakozási ponthoz tartozó mappa bárhol létrehozható a fájlrendszerben, de ez a közös konvenció a/mnt. alatt történő létrehozásához. A következő parancs például létrehoz egy új könyvtárat, lecseréli `<your-resource-group>` , `<your-storage-account>` és a `<your-file-share>` megfelelő információkat a környezetéhez:
 
     ```bash
     resourceGroupName="<your-resource-group>"
@@ -207,7 +207,7 @@ Ha elkészült az Azure-fájlmegosztás használatával, `sudo umount $mntPath` 
     sudo apt update
     sudo apt install autofs
     ```
-    **Fedora** , **Red Hat Enterprise Linux 8 +** és **CentOS 8 +** esetén használja a `dnf` Package Managert:
+    **Fedora**, **Red Hat Enterprise Linux 8 +** és **CentOS 8 +** esetén használja a `dnf` Package Managert:
     ```bash
     sudo dnf install autofs
     ```
@@ -215,11 +215,11 @@ Ha elkészült az Azure-fájlmegosztás használatával, `sudo umount $mntPath` 
     ```bash
     sudo yum install autofs 
     ```
-    Az **openSUSE** -ben használja a `zypper` csomagkezelő eszközt:
+    Az **openSUSE**-ben használja a `zypper` csomagkezelő eszközt:
     ```bash
     sudo zypper install autofs
     ```
-2. **Csatlakozási pont létrehozása a megosztás (ok) hoz** :
+2. **Csatlakozási pont létrehozása a megosztás (ok) hoz**:
    ```bash
     sudo mkdir /fileshares
     ```
@@ -250,22 +250,22 @@ A Linux kernel 4,18-es verziótól kezdődően az SMB kernel modul, amely `cifs`
 
 | Disztribúció | Az SMB 1 letiltása |
 |--------------|-------------------|
-| Ubuntu 14.04 – 16.04 | Nem |
-| Ubuntu 18.04 | Igen |
-| Ubuntu 19.04 + | Igen |
-| Debian 8-9 | Nem |
-| Debian 10 + | Igen |
-| Fedora 29 + | Igen |
-| CentOS 7 | Nem | 
-| CentOS 8 + | Igen |
-| Red Hat Enterprise Linux 6. x-7. x | Nem |
-| Red Hat Enterprise Linux 8 + | Igen |
-| openSUSE LEAP 15,0 | Nem |
-| openSUSE ugrás 15.1 + | Igen |
-| openSUSE Tumbleweed | Igen |
-| SUSE Linux Enterprise 11. x-12. x | Nem |
-| SUSE Linux Enterprise 15 | Nem |
-| SUSE Linux Enterprise 15,1 | Nem |
+| Ubuntu 14.04 – 16.04 | No |
+| Ubuntu 18.04 | Yes |
+| Ubuntu 19.04 + | Yes |
+| Debian 8-9 | No |
+| Debian 10 + | Yes |
+| Fedora 29 + | Yes |
+| CentOS 7 | No | 
+| CentOS 8 + | Yes |
+| Red Hat Enterprise Linux 6. x-7. x | No |
+| Red Hat Enterprise Linux 8 + | Yes |
+| openSUSE LEAP 15,0 | No |
+| openSUSE ugrás 15.1 + | Yes |
+| openSUSE Tumbleweed | Yes |
+| SUSE Linux Enterprise 11. x-12. x | No |
+| SUSE Linux Enterprise 15 | No |
+| SUSE Linux Enterprise 15,1 | No |
 
 A következő parancs használatával megtekintheti, hogy a Linux-disztribúciója támogatja-e a `disable_legacy_dialects` modul paraméterét.
 

@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/14/2019
 ms.openlocfilehash: 5ffd688a60f793ffa497cd0d23ed88437e56a07c
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289023"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022683"
 ---
 # <a name="troubleshoot-azure-hdinsight"></a>Az Azure HDInsight hibáinak megoldása
 
@@ -34,6 +34,6 @@ ms.locfileid: "93289023"
 | Hibák | - [Webhcaten-hibák megértése és megoldása](hdinsight-hadoop-templeton-webhcat-debug-errors.md)<br>- [OutofMemory-hiba elhárításának Apache Hive beállításai](hdinsight-hadoop-hive-out-of-memory-error-oom.md) |
 | Eszközök | - [Apache Hive lekérdezések optimalizálása](hdinsight-hadoop-optimize-hive-query.md)<br>- [HDInsight IntelliJ eszköz](./spark/apache-spark-intellij-tool-plugin.md)<br>- [HDInsight Eclipse eszköz](./spark/apache-spark-eclipse-tool-plugin.md)<br>- [HDInsight VSCode eszköz](hdinsight-for-vscode.md)<br>- [HDInsight Visual Studio-eszköz](./hadoop/apache-hadoop-visual-studio-tools-get-started.md) |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [troubleshooting next steps](../../includes/hdinsight-troubleshooting-next-steps.md)]

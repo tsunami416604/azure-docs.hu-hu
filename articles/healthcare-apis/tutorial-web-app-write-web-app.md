@@ -10,21 +10,21 @@ ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
 ms.openlocfilehash: bb9c206a17a11f0cf710ac4ee3ac7ccae0fa9eb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87848026"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023295"
 ---
 # <a name="write-azure-web-application-to-read-fhir-data"></a>Azure-webalkalmazás írása FHIR-alapú adatolvasásra
 Most, hogy tud csatlakozni a FHIR-kiszolgálóhoz, és közzéteszi az adatküldést, készen áll arra, hogy olyan webalkalmazást írjon, amely beolvassa a FHIR adatait. Az oktatóanyag ezen utolsó lépésében bemutatjuk a webalkalmazás írását és elérését.
 
 ## <a name="create-web-application"></a>Webalkalmazás létrehozása
-Az Azure-ban válassza az **erőforrás létrehozása** elemet, és válassza a **webalkalmazás**lehetőséget. Ügyeljen arra, hogy a webalkalmazást az ügyfélalkalmazás átirányítási URI-ja alapján adja meg, vagy térjen vissza, és frissítse az átirányítási URI-t az új névvel. 
+Az Azure-ban válassza az **erőforrás létrehozása** elemet, és válassza a **webalkalmazás** lehetőséget. Ügyeljen arra, hogy a webalkalmazást az ügyfélalkalmazás átirányítási URI-ja alapján adja meg, vagy térjen vissza, és frissítse az átirányítási URI-t az új névvel. 
 
 ![Webalkalmazás létrehozása](media/tutorial-web-app/create-web-app.png)
 
-A webalkalmazás elérhetővé tétele után **nyissa meg az erőforrást**. Válassza a jobb oldali Fejlesztőeszközök területen a **app Service Editor (előzetes verzió)** lehetőséget, majd válassza az **Indítás**lehetőséget. Az indítás lehetőség kiválasztásával megnyílik a App Service Editor. Kattintson a jobb gombbal a szürke területre a *Tallózás* területen, és hozzon létre egy új, **index.html**nevű fájlt.
+A webalkalmazás elérhetővé tétele után **nyissa meg az erőforrást**. Válassza a jobb oldali Fejlesztőeszközök területen a **app Service Editor (előzetes verzió)** lehetőséget, majd válassza az **Indítás** lehetőséget. Az indítás lehetőség kiválasztásával megnyílik a App Service Editor. Kattintson a jobb gombbal a szürke területre a *Tallózás* területen, és hozzon létre egy új, **index.html** nevű fájlt.
 
 Alább látható a **index.html**-be bevitt kód. A következő elemeket kell frissítenie:
 * **clientId** – frissítsen az ügyfélalkalmazás azonosítójával. Ez az azonosító a token beolvasása során kihúzott azonosító lesz
@@ -147,7 +147,7 @@ Alább látható a **index.html**-be bevitt kód. A következő elemeket kell fr
 
 Innen visszatérhet a webalkalmazás-erőforráshoz, és megnyithatja az Áttekintés oldalon található URL-címet. Jelentkezzen be, hogy megtekintse a korábban létrehozott James Tiberious Kirk beteget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Sikeresen telepítette a FHIR készült Azure API-t, regisztrált egy nyilvános ügyfélalkalmazás-alkalmazást, tesztelt hozzáférést, és létrehozott egy kis webalkalmazást. A következő lépésként tekintse meg az Azure API FHIR által támogatott funkciókat.
 
 >[!div class="nextstepaction"]

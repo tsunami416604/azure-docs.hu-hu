@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: a6fc1d6b831ae794907c59ab1af3328902f3a70a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb90c5776e67c1ba8fecdbf394a8098e96ca0652
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230109"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96022377"
 ---
 # <a name="soft-delete-for-blobs"></a>Blobok helyreállítható törlése
 
 A Blobok helyreállítható törlésével megvédheti az adatait véletlenül vagy hibásan, vagy törölheti azokat. Ha a Blobok helyreállított törlését engedélyezték a Storage-fiókhoz, a Blobok, a blobok és a pillanatképek a Storage-fiókban való törlése a megadott megőrzési időtartamon belül megtörténik.
 
-Ha egy alkalmazás vagy egy másik Storage-fiók felhasználója véletlenül nem módosíthatja vagy törölheti az adatait, a Microsoft a Soft delete bekapcsolását javasolja. További információ a Soft delete engedélyezéséről: a [Blobok Soft delete engedélyezése és kezelése](soft-delete-enable.md).
+Ha egy alkalmazás vagy egy másik Storage-fiók felhasználója véletlenül nem módosíthatja vagy törölheti az adatait, a Microsoft a Soft delete bekapcsolását javasolja. További információ a Soft delete engedélyezéséről: a [Blobok Soft delete engedélyezése és kezelése](./soft-delete-blob-enable.md).
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
@@ -52,7 +52,7 @@ Ha letiltja a helyreállítható törlést, továbbra is hozzáférhet és helyr
 
 A helyreállítható törlés megőrzi az adatait sok esetben, ha az objektumokat törölték vagy felülírják.
 
-Ha a blobot a **put blob**, a **Letiltás**vagy a **blob másolása**használatával írja felül, a rendszer automatikusan létrehozza a blob állapotának verzióját vagy pillanatképét az írási művelet előtt. Ez az objektum csak akkor látható, ha a helyreállított objektumok explicit módon vannak felsorolva. A [helyreállított](#recovery) objektumok listázásával kapcsolatos információkért tekintse meg a helyreállítás szakaszt.
+Ha a blobot a **put blob**, a **Letiltás** vagy a **blob másolása** használatával írja felül, a rendszer automatikusan létrehozza a blob állapotának verzióját vagy pillanatképét az írási művelet előtt. Ez az objektum csak akkor látható, ha a helyreállított objektumok explicit módon vannak felsorolva. A [helyreállított](#recovery) objektumok listázásával kapcsolatos információkért tekintse meg a helyreállítás szakaszt.
 
 ![Egy ábra, amely bemutatja, hogyan tárolódnak a Blobok pillanatképei, mivel azok felül vannak írva a Put blob használatával, a letiltási listával vagy a blob másolásával.](media/soft-delete-blob-overview/storage-blob-soft-delete-overwrite.png)
 
@@ -149,7 +149,7 @@ A kimenetet előkészítő alkalmazásra mutató hivatkozásról a [következő 
 
 ## <a name="pricing-and-billing"></a>Árak és számlázás
 
-A rendszer az aktív adatforgalommal megegyező sebességgel számítja fel az összes helyreállított törlési értéket. A beállított megőrzési időtartam után véglegesen törölt adatokért nem számítunk fel díjat. A pillanatképek és az azokra vonatkozó költségek mélyebb megismeréséhez lásd: a [Pillanatképek felmerülésének ismertetése](storage-blob-snapshots.md).
+A rendszer az aktív adatforgalommal megegyező sebességgel számítja fel az összes helyreállított törlési értéket. A beállított megőrzési időtartam után véglegesen törölt adatokért nem számítunk fel díjat. A pillanatképek és az azokra vonatkozó költségek mélyebb megismeréséhez lásd: a [Pillanatképek felmerülésének ismertetése](./snapshots-overview.md).
 
 A pillanatképek automatikus generálásával kapcsolatos tranzakciókért nem számítunk fel díjat. A blob-tranzakciók **törlésének** visszavonása az írási műveletek díjszabása alapján történik.
 
@@ -183,15 +183,15 @@ Igen, de először a blob törlését kell meghívnia.
 
 ### <a name="is-soft-delete-available-for-virtual-machine-disks"></a>Elérhető-e a Soft Delete a virtuális gépek lemezei számára?  
 
-A Soft delete szolgáltatás a prémium és a standard szintű nem felügyelt lemezek esetében is elérhető, amelyek a borítón lévő lapokat tartalmazó Blobok. A helyreállítható törlés csak a **blob törlésével**, a **Blobok**, a **letiltási listák**és a **Blobok másolásával** kapcsolatos adatok helyreállításához nyújt segítséget. A **put oldal** hívása által felülírt adathalmaz nem helyreállítható.
+A Soft delete szolgáltatás a prémium és a standard szintű nem felügyelt lemezek esetében is elérhető, amelyek a borítón lévő lapokat tartalmazó Blobok. A helyreállítható törlés csak a **blob törlésével**, a **Blobok**, a **letiltási listák** és a **Blobok másolásával** kapcsolatos adatok helyreállításához nyújt segítséget. A **put oldal** hívása által felülírt adathalmaz nem helyreállítható.
 
-Az Azure-beli virtuális gépek nem felügyelt lemezre való írást végeznek a **put lapra**hívásokkal, így a Soft delete használatával visszavonhatók az írások egy nem felügyelt lemezre egy Azure-beli virtuális gépről nem támogatott forgatókönyv.
+Az Azure-beli virtuális gépek nem felügyelt lemezre való írást végeznek a **put lapra** hívásokkal, így a Soft delete használatával visszavonhatók az írások egy nem felügyelt lemezre egy Azure-beli virtuális gépről nem támogatott forgatókönyv.
 
 ### <a name="do-i-need-to-change-my-existing-applications-to-use-soft-delete"></a>Módosítani kell a meglévő alkalmazásaikat a Soft delete használatára?
 
 A Soft delete előnyeit kihasználhatja a használt API-verziótól függetlenül. Azonban a Soft Deleted blobok és a blob-Pillanatképek listázásához és helyreállításához az [Azure Storage REST API](/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) vagy újabb 2017-07-29 verzióját kell használnia. A Microsoft azt javasolja, hogy mindig az Azure Storage API legújabb verzióját használja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Blobok helyreállítható törlésének engedélyezése](soft-delete-enable.md)
+- [Blobok helyreállítható törlésének engedélyezése](./soft-delete-blob-enable.md)
 - [BLOB verziószámozása](versioning-overview.md)

@@ -10,11 +10,11 @@ ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
 ms.openlocfilehash: 1c64468a2e420734ca51a5b9308bb52e13712c51
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852922"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023312"
 ---
 # <a name="testing-the-fhir-api"></a>A FHIR API tesztelése
 Az előző két lépésben üzembe helyezte az Azure API-t a FHIR számára, és regisztrálta az ügyfélalkalmazás alkalmazását. Most már készen áll arra, hogy tesztelje, hogy a FHIR készült Azure API be van-e állítva az ügyfélalkalmazás számára. 
@@ -34,7 +34,7 @@ A következő lépésben megpróbálunk beolvasni egy beteget. A beteg beolvasá
 A hozzáféréshez hozzáférési jogkivonatra van szükség.
 1. A Poster területen válassza az **Engedélyezés** lehetőséget, és állítsa be a típust a **OAuth 2.0** értékre
 1. Válassza az **új hozzáférési jogkivonat beolvasása** elemet.
-1. Töltse ki a mezőket, és válassza a **kérelem tokenje**elemet. Alább láthatja az oktatóanyag egyes mezőinek értékeit.
+1. Töltse ki a mezőket, és válassza a **kérelem tokenje** elemet. Alább láthatja az oktatóanyag egyes mezőinek értékeit.
 
 |Mező                |Érték                                                               |
 |---------------------|--------------------------------------------------------------------|
@@ -91,7 +91,7 @@ Ha a fenti lépések bármelyike során problémákba ütközött, tekintse át 
 * Az [Azure ad és az Azure API for FHIR](azure-ad-hcapi.md) – ez a dokumentum a Azure Active Directory alapvető alapelveit ismerteti, valamint azt, hogy miként működik együtt a FHIR készült Azure API-val.
 * [Hozzáférési jogkivonat érvényesítése](azure-ad-hcapi-token-validation.md) – ez a útmutató részletesen ismerteti a hozzáférési tokenek érvényesítését és a hozzáférési problémák megoldásához szükséges lépéseket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy sikeresen tud csatlakozni az ügyfélalkalmazáshoz, készen áll a webalkalmazás megírására.
 
 >[!div class="nextstepaction"]

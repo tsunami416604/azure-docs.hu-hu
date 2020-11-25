@@ -12,11 +12,11 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: bc615322c11a456699d2364cf44cad40e086e851
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517886"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022479"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>A számítási erőforrások kezelése Azure Functions használatával az Azure szinapszis Analytics SQL-készletben
 
@@ -165,7 +165,7 @@ Akár 08:00 – DW1000c, a hétköznapokon lefelé DW600c. Szüneteltetés pént
 | 3. függvény | 0 0 23 * * 5   | `var operation = {"operationType": "PauseDw"}` |
 | 4. függvény | 0 0 7 * * 1    | `var operation = {"operationType": "ResumeDw"}` |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az [időzítő trigger](../../azure-functions/functions-create-scheduled-function.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Azure Functionsról.
 

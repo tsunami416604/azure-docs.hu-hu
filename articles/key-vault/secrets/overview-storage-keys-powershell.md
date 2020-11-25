@@ -9,14 +9,17 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 50fbaf5092e793369daaa71fc7364dfd406e03b3
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 3bced101516e91259ea9018fe3c4aa44f867cbe6
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444894"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96023108"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>A Storage-fiók kulcsainak kezelése Key Vault és Azure PowerShell
+> [!IMPORTANT]
+> Javasoljuk, hogy az Azure Storage-integrációt Azure Active Directory (Azure AD), a Microsoft felhőalapú identitás-és hozzáférés-kezelési szolgáltatásával használja. Az Azure AD-integráció az [Azure-blobok és-várólisták](../../storage/common/storage-auth-aad.md)számára érhető el, és OAuth2 token-alapú hozzáférést biztosít az Azure Storage-hoz (akárcsak Azure Key Vault).
+> Az Azure AD lehetővé teszi az ügyfélalkalmazás hitelesítését alkalmazás vagy felhasználói identitás használatával a Storage-fiók hitelesítő adatai helyett. Azure AD-beli [felügyelt identitást](../../active-directory/managed-identities-azure-resources/index.yml) használhat az Azure-ban való futtatáskor. A felügyelt identitások nem szükségesek az ügyfél-hitelesítéshez és a hitelesítő adatok tárolásához a vagy az alkalmazásban. Az alábbi megoldás csak akkor használható, ha az Azure AD-hitelesítés nem lehetséges.
 
 Az Azure Storage-fiók a fiók nevét és kulcsát tartalmazó hitelesítő adatokat használ. A kulcs automatikusan létrejön, és jelszóként szolgál, nem pedig titkosítási kulcsként. Key Vault kezeli a Storage-fiókok kulcsait a Storage-fiókba való rendszeres újragenerálással, és megosztott hozzáférési aláírási jogkivonatokat biztosít a Storage-fiók erőforrásaihoz delegált hozzáféréshez.
 
@@ -28,12 +31,6 @@ A felügyelt Storage-fiók kulcsa funkció használata esetén vegye figyelembe 
 - Csak Key Vault kell kezelnie a Storage-fiók kulcsait. Ne kezelje a kulcsokat, és ne zavarja a Key Vault folyamatokat.
 - Csak egyetlen Key Vault objektumnak kell kezelnie a Storage-fiók kulcsait. Ne engedélyezze a kulcskezelő szolgáltatás több objektumból való felügyeletét.
 - Kulcsok újragenerálása csak Key Vault használatával. Ne végezze el manuálisan a Storage-fiók kulcsainak újragenerálása.
-
-Javasoljuk, hogy az Azure Storage-integrációt Azure Active Directory (Azure AD), a Microsoft felhőalapú identitás-és hozzáférés-kezelési szolgáltatásával használja. Az Azure AD-integráció az [Azure-blobok és-várólisták](../../storage/common/storage-auth-aad.md)számára érhető el, és OAuth2 token-alapú hozzáférést biztosít az Azure Storage-hoz (akárcsak Azure Key Vault).
-
-Az Azure AD lehetővé teszi az ügyfélalkalmazás hitelesítését alkalmazás vagy felhasználói identitás használatával a Storage-fiók hitelesítő adatai helyett. Azure AD-beli [felügyelt identitást](../../active-directory/managed-identities-azure-resources/index.yml) használhat az Azure-ban való futtatáskor. A felügyelt identitások nem szükségesek az ügyfél-hitelesítéshez és a hitelesítő adatok tárolásához a vagy az alkalmazásban.
-
-Az Azure AD az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával kezeli az engedélyezést, amelyet a Key Vault is támogat.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -256,14 +253,20 @@ Content Type : application/vnd.ms-sastoken-storage
 Tags         :
 ```
 
-Mostantól használhatja a [Get-AzKeyVaultSecret](/powershell/module/az.keyvault/get-azkeyvaultsecret) parancsmagot és a Secret `Name` tulajdonságot is a titkos kód tartalmának megtekintéséhez.
+Mostantól használhatja a [Get-AzKeyVaultSecret](/powershell/module/az.keyvault/get-azkeyvaultsecret) parancsmagot a `VaultName` és a `Name` paraméterekkel a titkos kód tartalmának megtekintéséhez.
 
 ```azurepowershell-interactive
-Write-Host (Get-AzKeyVaultSecret -VaultName <YourKeyVaultName> -Name <SecretName>).SecretValue | ConvertFrom-SecureString -AsPlainText
+$secret = Get-AzKeyVaultSecret -VaultName <YourKeyVaultName> -Name <SecretName>
+$ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
+try {
+   $secretValueText = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($ssPtr)
+} finally {
+   [System.Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ssPtr)
+}
+Write-Output $secretValueText
 ```
 
 A parancs kimenete az SAS-definíciós karakterláncot jeleníti meg.
-
 
 ## <a name="next-steps"></a>További lépések
 

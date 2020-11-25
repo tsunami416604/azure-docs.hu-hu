@@ -1,19 +1,19 @@
 ---
 title: 'Gyors útmutató: HoloLens-alkalmazás létrehozása Unity'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre HoloLens-alkalmazást az Unity használatával a térbeli Horgonyokkal.
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 09/29/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 143bc89518ff1811ad6789f71fcf7a9267e99f73
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 11d8e8d918b408881f211605ce6c713615f0aa93
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097439"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96022632"
 ---
 # <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>Gyors útmutató: Azure térbeli horgonyokat használó Unity HoloLens-alkalmazás létrehozása
 
@@ -34,9 +34,9 @@ A következőket fogja megtanulni:
 Az oktatóanyag elvégzéséhez:
 
 - Telepítenie kell egy Windows rendszerű számítógépet, amelynek a <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,4 (LTS)</a> és a <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> -es vagy újabb verziója van telepítve. A Visual Studio-telepítésnek tartalmaznia kell a **univerzális Windows-platform fejlesztési** munkaterhelést és a **Windows 10 SDK (10.0.18362.0 vagy újabb)** összetevőt. <a href="https://git-scm.com/download/win" target="_blank">A git for Windows és a</a> <a href="https://git-lfs.github.com/">git LFS</a>is telepítenie kell.
-- Szüksége van egy olyan HoloLens-eszközre, amelyen engedélyezve van a [fejlesztői mód](/windows/mixed-reality/using-visual-studio) . A [Windows 10 2020-es frissítését](/windows/mixed-reality/whats-new/release-notes-may-2020) telepíteni kell az eszközre. A HoloLens legújabb kiadásának frissítéséhez nyissa meg a **Beállítások** alkalmazást, lépjen a **frissítés & biztonság**elemre, majd válassza a **frissítések keresése**lehetőséget.
-- Az alkalmazásban engedélyeznie kell a **SpatialPerception** képességet. Ez a beállítás a beállítások **kiépítése**a  >  **lejátszó beállításaiban**  >  **közzétételi beállítások**  >  **lehetőségre**.
-- Az alkalmazásban engedélyeznie kell a **Windows Mixed Reality SDK**-val **támogatott virtuális valóságot** . Ez a beállítás a **Build Settings**  >  **Player Settings**  >  **XR**beállításokban található.
+- Szüksége van egy olyan HoloLens-eszközre, amelyen engedélyezve van a [fejlesztői mód](/windows/mixed-reality/using-visual-studio) . A [Windows 10 2020-es frissítését](/windows/mixed-reality/whats-new/release-notes-may-2020) telepíteni kell az eszközre. A HoloLens legújabb kiadásának frissítéséhez nyissa meg a **Beállítások** alkalmazást, lépjen a **frissítés & biztonság** elemre, majd válassza a **frissítések keresése** lehetőséget.
+- Az alkalmazásban engedélyeznie kell a **SpatialPerception** képességet. Ez a beállítás a beállítások **kiépítése** a  >  **lejátszó beállításaiban**  >  **közzétételi beállítások**  >  **lehetőségre**.
+- Az alkalmazásban engedélyeznie kell a **Windows Mixed Reality SDK**-val **támogatott virtuális valóságot** . Ez a beállítás a **Build Settings**  >  **Player Settings**  >  **XR** beállításokban található.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -46,11 +46,11 @@ Az oktatóanyag elvégzéséhez:
 
 [!INCLUDE [Open Unity Project](../../../includes/spatial-anchors-open-unity-project.md)]
 
-A **Build-beállítások** megnyitásához válassza a **fájl**-  >  **létrehozási beállítások**lehetőséget.
+A **Build-beállítások** megnyitásához válassza a **fájl**-  >  **létrehozási beállítások** lehetőséget.
 
-A **platform** szakaszban válassza a **univerzális Windows-platform**lehetőséget. Módosítsa a **céleszköz** **HoloLens**.
+A **platform** szakaszban válassza a **univerzális Windows-platform** lehetőséget. Módosítsa a **céleszköz** **HoloLens**.
 
-Válassza a **platform váltása** lehetőséget a platform **univerzális Windows-platformre**való módosításához. Az egység kérheti, hogy telepítse a UWP-támogatási összetevőket, ha hiányoznak.
+Válassza a **platform váltása** lehetőséget a platform **univerzális Windows-platformre** való módosításához. Az egység kérheti, hogy telepítse a UWP-támogatási összetevőket, ha hiányoznak.
 
 ![Unity-létrehozási beállítások ablak](./media/get-started-unity-hololens/unity-build-settings.png)
 
@@ -62,7 +62,7 @@ A **létrehozási beállítások** ablak bezárásához.
 
 [!INCLUDE [Export Unity Project](../../../includes/spatial-anchors-unity-export-project-snip.md)]
 
-Válassza a **Létrehozás**lehetőséget. A párbeszédpanelen válassza ki azt a mappát, amelybe exportálni szeretné a HoloLens Visual Studio-projektet.
+Válassza a **Létrehozás** lehetőséget. A párbeszédpanelen válassza ki azt a mappát, amelybe exportálni szeretné a HoloLens Visual Studio-projektet.
 
 Az Exportálás befejeztével megjelenik az exportált HoloLens projektet tartalmazó mappa.
 
@@ -72,7 +72,7 @@ A mappában kattintson duplán a **HELLOAR U3D. SLN** elemre a projekt a Visual 
 
 Módosítsa a **megoldás konfigurációját** a **kiadásra**, módosítsa a **megoldás platformját** **x86**-ra, majd válassza az **eszköz** lehetőséget a telepítési cél beállításai közül.
 
-Ha a 2. HoloLens használja, a **ARM64** -et a **megoldási platformként**használhatja az **x86**helyett.
+Ha a 2. HoloLens használja, a **ARM64** -et a **megoldási platformként** használhatja az **x86** helyett.
 
    ![Visual Studio-konfiguráció](./media/get-started-unity-hololens/visual-studio-configuration.png)
 

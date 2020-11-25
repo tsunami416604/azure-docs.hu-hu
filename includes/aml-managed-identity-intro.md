@@ -10,11 +10,11 @@ ms.custom: include file
 ms.topic: include
 ms.date: 08/24/2020
 ms.openlocfilehash: 70b636b7bb508b71475a7464983b091d5d10e0e1
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95556237"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96025441"
 ---
  Azure Machine Learning a számítási fürtök támogatják az Azure-erőforrásokhoz való hozzáférés hitelesítéséhez szükséges [felügyelt identitásokat](../articles/active-directory/managed-identities-azure-resources/overview.md) is, a kódban szereplő hitelesítő adatok nélkül. A felügyelt identitásoknak két típusa létezik:
 

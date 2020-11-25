@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 594ad352d5fd8431ffaf6d681c891c967cf9d32a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34e841a5f17d589c4fbef54a4a8674a99ac6c640
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90606267"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96025481"
 ---
 Az eszköz-alagút sikeres létrehozásához az alábbi követelményeknek kell teljesülniük:
 
@@ -22,13 +22,13 @@ Az eszköz-alagút sikeres létrehozásához az alábbi követelményeknek kell 
 * Eszközönként csak egy eszköz-alagút állítható be.
 
 1. Telepítse az Ügyféltanúsítványok szolgáltatást a Windows 10-es ügyfélgépre a [pont – hely VPN-ügyfél](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md) használatával. A tanúsítványnak a helyi számítógép tárolójába kell esnie.
-1. Hozzon létre egy VPN-profilt, és konfigurálja az eszköz-alagutat a helyi rendszerfiók környezetében [ezen utasítások](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/vpn-device-tunnel-config#vpn-device-tunnel-configuration)használatával.
+1. Hozzon létre egy VPN-profilt, és konfigurálja az eszköz-alagutat a helyi rendszerfiók környezetében [ezen utasítások](/windows-server/remote/remote-access/vpn/vpn-device-tunnel-config#vpn-device-tunnel-configuration)használatával.
 
 ### <a name="configuration-example-for-device-tunnel"></a>Az eszköz-alagút konfigurációs példája
 
 Miután konfigurálta a virtuális hálózati átjárót, és telepítette az ügyféltanúsítványt a Windows 10-ügyfél helyi számítógép tárolójába, az alábbi példákkal konfigurálhatja az ügyfél-eszköz alagutat:
 
-1. Másolja az alábbi szöveget, és mentse ***devicecert.ps1ként ***.
+1. Másolja az alábbi szöveget, és mentse ***devicecert.ps1** _ néven.
 
    ```
    Param(
@@ -80,7 +80,7 @@ Miután konfigurálta a virtuális hálózati átjárót, és telepítette az ü
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. Másolja az alábbi szöveget, és mentse ***VPNProfile.xmlként *** ugyanabba a mappába, mint **devicecert.ps1**. Szerkessze a következő szöveget a környezetének megfelelően.
+1. Másolja a következő szöveget, és mentse _*_VPNProfile.xmlként_*_ ugyanabban a mappában, mint az _ * devicecert.ps1 * *. Szerkessze a következő szöveget a környezetének megfelelően.
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers> <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
    * `<Address>192.168.3.5</Address> <= IP of resource in the vnet or the vnet address space`
@@ -115,7 +115,7 @@ Miután konfigurálta a virtuális hálózati átjárót, és telepítette az ü
    <RegisterDNS>true</RegisterDNS>
    </VPNProfile>
    ```
-1. Töltse le a **PsExec** -t a [Sysinternals](https://docs.microsoft.com/sysinternals/downloads/psexec) -ból, és bontsa ki a fájlokat a **C:\PSTools**.
+1. Töltse le a **PsExec** -t a [Sysinternals](/sysinternals/downloads/psexec) -ból, és bontsa ki a fájlokat a **C:\PSTools**.
 1. A rendszergazda parancssorból indítsa el a PowerShellt a következő parancs futtatásával:
 
    ```
@@ -134,7 +134,7 @@ Miután konfigurálta a virtuális hálózati átjárót, és telepítette az ü
 1. Futtassa a **Rasphone**.
 
    ![A képernyőképen egy Futtatás párbeszédpanel jelenik meg, amelyen a Rasphone ki van választva.](./media/vpn-gateway-vwan-always-on-device/rasphone.png)
-1. Keresse meg a **MachineCertTest** bejegyzést, és kattintson a **kapcsolat**elemre.
+1. Keresse meg a **MachineCertTest** bejegyzést, és kattintson a **kapcsolat** elemre.
 
    ![A képernyőfelvétel egy hálózati kapcsolat párbeszédpanelt jelenít meg a kiválasztott MachineCertTest és egy csatlakozás gombbal.](./media/vpn-gateway-vwan-always-on-device/connect.png)
 1. Ha a kapcsolatok sikeresek, indítsa újra a számítógépet. Az alagút automatikusan fog összekapcsolást.

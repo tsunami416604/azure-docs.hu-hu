@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
 ms.openlocfilehash: c57a3920dac3e18e248109fafdf61fdfa871c54d
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123710"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023397"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Anomáliák észlelése Azure Stream Analytics
 
@@ -116,7 +116,7 @@ Ezeknek a modelleknek a teljesítménye az előzmények méretétől, az időtar
 
 * **Előzmények mérete** – ezek a modellek lineárisan, az **Előzmények méretével** végezhetők el. Minél hosszabb az előzmények mérete, annál hosszabb lesz a modell egy új esemény kiértékeléséhez. Ennek az az oka, hogy a modellek összehasonlítják az új eseményt az előzmények pufferben lévő összes korábbi eseménysel.
 * **Ablak időtartama** – az **ablak időtartamának** tükröznie kell, hogy mennyi időt vesz igénybe az előzmények mérete által meghatározott számú esemény fogadása. Az ablakban számos esemény nélkül Azure Stream Analytics a hiányzó értékeket. Ezért a CPU-felhasználás az előzmények méretének függvénye.
-* **Esemény betöltése** – minél nagyobb az **esemény terhelése** , annál több munka van, amelyet a modellek végeznek, ami hatással van a CPU-felhasználásra. A feladatot zavaróan párhuzamosan lehet kibővíteni, feltételezve, hogy az üzleti logika több bemeneti partíció használatát teszi lehetővé.
+* **Esemény betöltése** – minél nagyobb az **esemény terhelése**, annál több munka van, amelyet a modellek végeznek, ami hatással van a CPU-felhasználásra. A feladatot zavaróan párhuzamosan lehet kibővíteni, feltételezve, hogy az üzleti logika több bemeneti partíció használatát teszi lehetővé.
 * **Függvény szintű particionálás**  -  A **függvények szintjének particionálását** ```PARTITION BY``` az anomáliák észlelése függvény hívásával végezheti el. Ez a particionálási típus felveszi a terhelést, mivel az állapotot egyszerre több modell esetében is fenn kell tartani. A függvények szintjének particionálását olyan forgatókönyvek használják, mint az eszközök szintjének particionálás.
 
 ### <a name="relationship"></a>Kapcsolat
@@ -152,9 +152,9 @@ A fentiekben nem particionált konfigurációk futtatásához használandó mint
 > A pontosabb becslés érdekében szabja testre a mintákat úgy, hogy illeszkedjenek a forgatókönyvhöz.
 
 ### <a name="identifying-bottlenecks"></a>Szűk keresztmetszetek azonosítása
-A Azure Stream Analytics feladatok mérőszámok paneljén azonosíthatja a folyamat szűk keresztmetszeteit. Tekintse át a **bemeneti/kimeneti eseményeket** az átviteli sebesség és a "küszöbértékek [késleltetése"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) vagy a **várakozó események** között, és ellenőrizze, hogy a feladatban szerepel-e a bemeneti sebesség. Az Event hub mérőszámai esetében keresse meg a **szabályozott kérelmeket** , és ennek megfelelően módosítsa a küszöbértékeket. Cosmos DB metrikák esetében tekintse át a **maximálisan felhasznált ru/s** értékeit az átviteli sebesség alatt, hogy a partíciós kulcsok tartománya egységesen legyen felhasználva. Az Azure SQL DB esetében figyelje a **log IO** és a **CPU** -t.
+A Azure Stream Analytics feladatok mérőszámok paneljén azonosíthatja a folyamat szűk keresztmetszeteit. Tekintse át a **bemeneti/kimeneti eseményeket** az átviteli sebesség és a "küszöbértékek [késleltetése"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) vagy a **várakozó események** között, és ellenőrizze, hogy a feladatban szerepel-e a bemeneti sebesség. Az Event hub mérőszámai esetében keresse meg a **szabályozott kérelmeket** , és ennek megfelelően módosítsa a küszöbértékeket. Cosmos DB metrikák esetében tekintse át a **maximálisan felhasznált ru/s** értékeit az átviteli sebesség alatt, hogy a partíciós kulcsok tartománya egységesen legyen felhasználva. Az Azure SQL DB esetében figyelje a **log IO** és a **CPU**-t.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)

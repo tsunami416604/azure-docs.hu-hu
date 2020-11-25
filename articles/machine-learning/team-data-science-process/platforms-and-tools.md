@@ -11,11 +11,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d3f6a48815519499ddc39dcc12cafe0fe95e70e0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320237"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023805"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Az adatelemzési projektek platformja és eszközei
 
@@ -108,7 +108,7 @@ A Microsoft TDSP csapata két teljes körű bemutatót tett közzé, amelyek bem
 
 ### <a name="install-git-credential-manager-on-windows"></a>A git Hitelesítőadat-kezelő telepítése Windows rendszeren
 
-Ha a **Windows** TDSP követi, telepítenie kell a **git hitelesítőadat-kezelőt (GCM)** a git-adattárakkal való kommunikációhoz. A GCM telepítéséhez először a **chocolatt** kell telepítenie. A Chocolat és a GCM telepítéséhez futtassa a következő parancsokat a Windows PowerShellben **rendszergazdaként** :  
+Ha a **Windows** TDSP követi, telepítenie kell a **git hitelesítőadat-kezelőt (GCM)** a git-adattárakkal való kommunikációhoz. A GCM telepítéséhez először a **chocolatt** kell telepítenie. A Chocolat és a GCM telepítéséhez futtassa a következő parancsokat a Windows PowerShellben **rendszergazdaként**:  
 
 ```powershell
 iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex
@@ -149,7 +149,7 @@ Ha Linux (CentOS) gépeket használ a git-parancsok futtatásához, hozzá kell 
 1. Illessze be a szövegmezőbe másolt SSH-kulcsot, és mentse a fájlt.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Teljes körű útmutatók, amelyek bemutatják a folyamat összes lépését az **adott forgatókönyvek** esetében is. Ezek a példákban láthatók és a miniatűr leírásokkal vannak összekapcsolva a [példa útmutatói](walkthroughs.md) című témakörben. Bemutatják, hogyan kombinálhatók a felhő, a helyszíni eszközök és a szolgáltatások egy munkafolyamatban vagy folyamatban egy intelligens alkalmazás létrehozásához. 
 

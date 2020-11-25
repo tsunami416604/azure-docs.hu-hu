@@ -4,11 +4,11 @@ description: Ebben a rövid útmutatóban az Azure-tervezeteket használja az ö
 ms.date: 08/27/2020
 ms.topic: quickstart
 ms.openlocfilehash: bb9aeb4d4b96227f7bf7296854c56df4058fbe69
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89648648"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022530"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Rövid útmutató: terv meghatározása és hozzárendelése a portálon
 
@@ -34,21 +34,21 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
 
 1. Adja meg a **tervrajz nevét** , például **MyBlueprint**. (Legfeljebb 48 betűt és számot használhat, de nem tartalmazhat szóközt vagy különleges karaktert). Most hagyja üresen a **terv leírását** .
 
-1. A **definíció helye** mezőben válassza ki a jobb oldali három pontot, válassza ki azt a [felügyeleti csoportot](../management-groups/overview.md) vagy előfizetést, ahol a tervet menteni szeretné, majd válassza a **kiválasztás**lehetőséget.
+1. A **definíció helye** mezőben válassza ki a jobb oldali három pontot, válassza ki azt a [felügyeleti csoportot](../management-groups/overview.md) vagy előfizetést, ahol a tervet menteni szeretné, majd válassza a **kiválasztás** lehetőséget.
 
 1. Ellenőrizze, hogy helyesek-e az adatok. A **terv neve** és a **definíció helye** mezők később nem módosíthatók. Ezután válassza a **Tovább:** összetevők elemet az oldal alján, vagy az **összetevők fület az oldal** tetején.
 
 1. Szerepkör-hozzárendelés hozzáadása az előfizetési szinten:
 
-   1. Válassza ki az **előfizetéshez**tartozó **+ összetevő hozzáadása** sort. Megnyílik az összetevő **hozzáadása** ablak a böngésző jobb oldalán.
+   1. Válassza ki az **előfizetéshez** tartozó **+ összetevő hozzáadása** sort. Megnyílik az összetevő **hozzáadása** ablak a böngésző jobb oldalán.
 
    1. Válassza ki a **szerepkör-hozzárendelést** az összetevő **típusa mezőben**.
 
-   1. A **szerepkör**területen válassza a **közreműködő**lehetőséget. Hagyja a **felhasználó, alkalmazás vagy csoport hozzáadása** jelölőnégyzetet a dinamikus paramétert jelző jelölőnégyzet bejelölésével.
+   1. A **szerepkör** területen válassza a **közreműködő** lehetőséget. Hagyja a **felhasználó, alkalmazás vagy csoport hozzáadása** jelölőnégyzetet a dinamikus paramétert jelző jelölőnégyzet bejelölésével.
 
    1. A **Hozzáadás** gombra kattintva adja hozzá ezt az összetevőt a tervhez.
 
-   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment.png" alt-text="Képernyőkép a &quot;Create Blueprint&quot; (terv létrehozása) gombra a terv-definíciók oldalon." border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment.png" alt-text="Képernyőkép a szerepkör-hozzárendelési összetevőről a terv meghatározásához való hozzáadáshoz." border="false":::
 
    > [!NOTE]
    > Az összetevők többsége paramétereket is támogat. A terv létrehozásakor egy értékhez rendelt paraméter _statikus paraméter_. Ha a paramétert a terv hozzárendelése során rendeli hozzá, akkor ez egy _dinamikus paraméter_. További információ: [terv paramétereinek](./concepts/parameters.md).
@@ -61,21 +61,21 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
 
    1. Módosítsa a **típust** **beépítettre**. A **Search (keresés**) mezőbe írja be a **címkét**.
 
-   1. Módosítsa a szűrést úgy, hogy a **Keresés** megtörténjen. Válassza a **Hozzáfűzés címkét és az alapértelmezett értéket az erőforráscsoportok**elemnél.
+   1. Módosítsa a szűrést úgy, hogy a **Keresés** megtörténjen. Válassza a **Hozzáfűzés címkét és az alapértelmezett értéket az erőforráscsoportok** elemnél.
 
    1. A **Hozzáadás** gombra kattintva adja hozzá ezt az összetevőt a tervhez.
 
-1. Válassza ki a szabályzat **-hozzárendelés hozzáfűzése címke sorát és az alapértelmezett értékét az erőforráscsoportok**elemnél.
+1. Válassza ki a szabályzat **-hozzárendelés hozzáfűzése címke sorát és az alapértelmezett értékét az erőforráscsoportok** elemnél.
 
-1. Megnyílik az ablak, amelyben a tervdefiníció részeként adhatók meg paraméterek az összetevőhöz, és a paraméterek minden ezen a terven alapuló hozzárendeléshez beállíthatók (statikus paraméterek), nem pedig a hozzárendelés során kell megadni azokat (dinamikus paraméterek). Ez a példa dinamikus paramétereket használ a terv hozzárendelése során, ezért hagyja meg az alapértelmezett értékeket, és válassza a **Mégse**gombot.
+1. Megnyílik az ablak, amelyben a tervdefiníció részeként adhatók meg paraméterek az összetevőhöz, és a paraméterek minden ezen a terven alapuló hozzárendeléshez beállíthatók (statikus paraméterek), nem pedig a hozzárendelés során kell megadni azokat (dinamikus paraméterek). Ez a példa dinamikus paramétereket használ a terv hozzárendelése során, ezért hagyja meg az alapértelmezett értékeket, és válassza a **Mégse** gombot.
 
 1. Erőforráscsoport hozzáadása az előfizetési szinten:
 
-   1. Válassza ki az **előfizetéshez**tartozó **+ összetevő hozzáadása** sort.
+   1. Válassza ki az **előfizetéshez** tartozó **+ összetevő hozzáadása** sort.
 
    1. Válassza az **erőforráscsoport** lehetőséget az összetevő **típusához**.
 
-   1. Hagyja üresen a **lelet megjelenítendő nevét**, az **erőforráscsoport nevét**és a **hely** mezőit, de győződjön meg arról, hogy a jelölőnégyzet be van jelölve minden paraméter tulajdonságnál, hogy dinamikus paramétereket adjon meg.
+   1. Hagyja üresen a **lelet megjelenítendő nevét**, az **erőforráscsoport nevét** és a **hely** mezőit, de győződjön meg arról, hogy a jelölőnégyzet be van jelölve minden paraméter tulajdonságnál, hogy dinamikus paramétereket adjon meg.
 
    1. A **Hozzáadás** gombra kattintva adja hozzá ezt az összetevőt a tervhez.
 
@@ -83,7 +83,7 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
 
    1. Válassza ki az **ResourceGroup** -bejegyzés alatt lévő **+ összetevő hozzáadása** sort.
 
-   1. Válassza ki **Azure Resource Manager sablont** az összetevő **típusához**, állítsa be az összetevő **megjelenítendő nevét** a **StorageAccount**értékre, és hagyja üresen a **leírást** .
+   1. Válassza ki **Azure Resource Manager sablont** az összetevő **típusához**, állítsa be az összetevő **megjelenítendő nevét** a **StorageAccount** értékre, és hagyja üresen a **leírást** .
 
    1. A szerkesztő mezőben a **sablon** lapon illessze be a következő ARM-sablont. A sablon beillesztése után válassza a parameters ( **Paraméterek** ) fület, és figyelje meg, hogy a rendszer a sablon paramétereinek **tárfióktípus** és **helyét** észlelte. Minden paraméter automatikusan észlelhető és fel lett töltve, de dinamikus paraméterként van konfigurálva.
 
@@ -139,15 +139,15 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
       }
       ```
 
-   1. Törölje a **tárfióktípus** jelölőnégyzet jelölését, és vegye figyelembe, hogy a legördülő lista csak az ARM-sablonban szereplő értékeket tartalmazza a **allowedValues**alatt. Jelölje be a jelölőnégyzetet, ha vissza szeretne állítani egy dinamikus paramétert.
+   1. Törölje a **tárfióktípus** jelölőnégyzet jelölését, és vegye figyelembe, hogy a legördülő lista csak az ARM-sablonban szereplő értékeket tartalmazza a **allowedValues** alatt. Jelölje be a jelölőnégyzetet, ha vissza szeretne állítani egy dinamikus paramétert.
 
    1. A **Hozzáadás** gombra kattintva adja hozzá ezt az összetevőt a tervhez.
 
-   :::image type="content" source="./media/create-blueprint-portal/add-resource-manager-template.png" alt-text="Képernyőkép a &quot;Create Blueprint&quot; (terv létrehozása) gombra a terv-definíciók oldalon." border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/add-resource-manager-template.png" alt-text="Képernyőkép: a Resource Manager-sablon összetevő-beállításai a terv meghatározásához való hozzáadáshoz." border="false":::
 
-1. Kész tervének az alábbi ábrán láthatóhoz kell hasonlítania. Figyelje meg, hogy minden összetevő ** _x_ paraméterrel _y_ ** rendelkezik, amely a **Parameters (paraméterek** ) oszlopban van kitöltve. A dinamikus paraméterek beállítása a terv egyes hozzárendeléseikor történik.
+1. Kész tervének az alábbi ábrán láthatóhoz kell hasonlítania. Figyelje meg, hogy minden összetevő **_x_ paraméterrel _y_** rendelkezik, amely a **Parameters (paraméterek** ) oszlopban van kitöltve. A dinamikus paraméterek beállítása a terv egyes hozzárendeléseikor történik.
 
-   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint.png" alt-text="Képernyőkép a &quot;Create Blueprint&quot; (terv létrehozása) gombra a terv-definíciók oldalon." border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint.png" alt-text="Képernyőkép egy befejezett terv-definícióról az egyes összetevők típusával." border="false":::
 
 1. Most, hogy minden tervezett összetevő hozzá lett adva, válassza a lap alján található **Piszkozat mentése** elemet.
 
@@ -157,9 +157,9 @@ A [terv létrehozása](#create-a-blueprint)során nem adta meg a leírást, vagy
 
 1. A bal oldali oldalon válassza a **tervezet-definíciók** lehetőséget.
 
-1. A tervrajzok listájában kattintson a jobb gombbal a korábban létrehozott elemre, majd válassza a **terv szerkesztése**lehetőséget.
+1. A tervrajzok listájában kattintson a jobb gombbal a korábban létrehozott elemre, majd válassza a **terv szerkesztése** lehetőséget.
 
-1. A **terv leírása**területen adjon meg néhány információt a tervről és az azt alkotó összetevőkről. Ebben az esetben írja be a következőt: **Ez a terv beállítja a címkézési szabályzatot és a szerepkör-hozzárendelést az előfizetésben, létrehoz egy ResourceGroup, és üzembe helyezi az erőforrás-sablont és a szerepkör-hozzárendelést az adott ResourceGroup.**
+1. A **terv leírása** területen adjon meg néhány információt a tervről és az azt alkotó összetevőkről. Ebben az esetben írja be a következőt: **Ez a terv beállítja a címkézési szabályzatot és a szerepkör-hozzárendelést az előfizetésben, létrehoz egy ResourceGroup, és üzembe helyezi az erőforrás-sablont és a szerepkör-hozzárendelést az adott ResourceGroup.**
 
 1. Válassza a **Next (tovább** ) lehetőséget: az oldal alján található összetevők lap vagy az oldal tetején található összetevők lapot. **Artifacts**
 
@@ -169,17 +169,17 @@ A [terv létrehozása](#create-a-blueprint)során nem adta meg a leírást, vagy
 
    1. Válassza ki a **szerepkör-hozzárendelést** az összetevő **típusa mezőben**.
 
-   1. A **szerepkör**területen válassza a **tulajdonos**lehetőséget, majd törölje a jelölést a **felhasználó, alkalmazás vagy csoport hozzáadása** mezőben.
+   1. A **szerepkör** területen válassza a **tulajdonos** lehetőséget, majd törölje a jelölést a **felhasználó, alkalmazás vagy csoport hozzáadása** mezőben.
 
    1. Keresse meg és válassza ki a hozzáadni kívánt felhasználót, alkalmazást vagy csoportot. Az összetevő ugyanazt a statikus paraméterkészletet használja a terv minden hozzárendelésében.
 
    1. A **Hozzáadás** gombra kattintva adja hozzá ezt az összetevőt a tervhez.
 
-   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment-2.png" alt-text="Képernyőkép a &quot;Create Blueprint&quot; (terv létrehozása) gombra a terv-definíciók oldalon." border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment-2.png" alt-text="Képernyőkép – a második szerepkör-hozzárendelési összetevő lehetőségei a terv meghatározásához való hozzáadáshoz." border="false":::
 
 1. Kész tervének az alábbi ábrán láthatóhoz kell hasonlítania. Figyelje meg, hogy az újonnan hozzáadott szerepkör-hozzárendelés **1 – 1 paraméterrel van feltöltve**. Ez azt jelenti, hogy ez egy statikus paraméter.
 
-   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint-2.png" alt-text="Képernyőkép a &quot;Create Blueprint&quot; (terv létrehozása) gombra a terv-definíciók oldalon." border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint-2.png" alt-text="A második befejezett terv definíciójának képernyőképe a további szerepkör-hozzárendelési összetevővel." border="false":::
 
 1. Válassza a **Piszkozat mentése** most, hogy frissítve lett.
 
@@ -190,7 +190,7 @@ A közzététel lehetővé teszi, hogy a terv elérhető legyen az előfizetésh
 
 1. A bal oldali oldalon válassza a **tervezet-definíciók** lehetőséget.
 
-1. A tervrajzok listájában kattintson a jobb gombbal a korábban létrehozott elemre, majd válassza a **terv közzététele**lehetőséget.
+1. A tervrajzok listájában kattintson a jobb gombbal a korábban létrehozott elemre, majd válassza a **terv közzététele** lehetőséget.
 
 1. A megnyíló panelen adjon meg egy olyan **verziót** (betűket, számokat és kötőjeleket, amelyek legfeljebb 20 karakter hosszúak), például **v1**. Szükség esetén szöveget is megadhat a **módosítási megjegyzésekben**, például az **első közzétételt**.
 
@@ -202,7 +202,7 @@ A terv közzététele után hozzárendelhető egy előfizetéshez. Rendelje hozz
 
 1. A bal oldali oldalon válassza a **tervezet-definíciók** lehetőséget.
 
-1. A tervrajzok listájában kattintson a jobb gombbal a korábban létrehozott elemre (vagy válassza a három pontot), majd válassza a **terv kiosztása**elemet.
+1. A tervrajzok listájában kattintson a jobb gombbal a korábban létrehozott elemre (vagy válassza a három pontot), majd válassza a **terv kiosztása** elemet.
 
 1. A **terv kiosztása** lap **előfizetés** legördülő listájában válassza ki azokat az előfizetéseket, amelyekre a tervet telepíteni szeretné.
 
@@ -218,39 +218,39 @@ A terv közzététele után hozzárendelhető egy előfizetéshez. Rendelje hozz
 
    1. A lap alján kattintson a **Létrehozás** gombra.
 
-      :::image type="content" source="./media/create-blueprint-portal/assignment-create-subscription.png" alt-text="Képernyőkép a &quot;Create Blueprint&quot; (terv létrehozása) gombra a terv-definíciók oldalon." border="false":::
+      :::image type="content" source="./media/create-blueprint-portal/assignment-create-subscription.png" alt-text="Képernyőkép az előfizetés létrehozása ablakról és az új előfizetés lehetőségeiről." border="false":::
 
       > [!IMPORTANT]
-      > Az új előfizetés létrehozása közvetlenül a **Létrehozás**gombra kattintva történik.
+      > Az új előfizetés létrehozása közvetlenül a **Létrehozás** gombra kattintva történik.
 
    > [!NOTE]
    > Minden kiválasztott előfizetéshez létrejön egy hozzárendelés. Egy adott előfizetés-hozzárendelést később is módosíthat, anélkül, hogy a kijelölt előfizetések hátralévő részében módosításokat kellene végeznie.
 
-1. A **hozzárendelés neve mezőben**adjon meg egy egyedi nevet ehhez a hozzárendeléshez.
+1. A **hozzárendelés neve mezőben** adjon meg egy egyedi nevet ehhez a hozzárendeléshez.
 
-1. A **hely**mezőben válasszon ki egy régiót a-ben létrehozandó felügyelt identitás és előfizetés központi telepítési objektumához. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További tudnivalókért lásd [az Azure-erőforrások felügyelt identitásait](../../active-directory/managed-identities-azure-resources/overview.md).
+1. A **hely** mezőben válasszon ki egy régiót a-ben létrehozandó felügyelt identitás és előfizetés központi telepítési objektumához. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További tudnivalókért lásd [az Azure-erőforrások felügyelt identitásait](../../active-directory/managed-identities-azure-resources/overview.md).
 
 1. Hagyja meg a **terv definíciójának verziószámát** a **közzétett** verziók kiválasztásával a **v1** bejegyzésben. (Az alapértelmezett érték a legutóbb közzétett verzió.)
 
 1. A **Hozzárendelés zárolása** mezőben hagyja meg az alapértelmezett **Nem zárolandó** értéket. További információ: [tervrajzok erőforrás-zárolása](./concepts/resource-locking.md).
 
-   :::image type="content" source="./media/create-blueprint-portal/assignment-locking-mi.png" alt-text="Képernyőkép a &quot;Create Blueprint&quot; (terv létrehozása) gombra a terv-definíciók oldalon." border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/assignment-locking-mi.png" alt-text="Képernyőkép a tervrajz-hozzárendelés zárolási hozzárendeléséről és a felügyelt identitási lehetőségekről." border="false":::
 
-1. A **felügyelt identitás**területen hagyja meg a **hozzárendelt rendszer**alapértelmezett beállítását.
+1. A **felügyelt identitás** területen hagyja meg a **hozzárendelt rendszer** alapértelmezett beállítását.
 
 1. A **[Felhasználó, csoport vagy alkalmazás neve] : Közreműködő** előfizetés-szintű szerepkör-hozzárendeléshez keressen meg vagy jelöljön ki egy felhasználót, alkalmazást vagy csoportot.
 
 1. Az előfizetési szint házirendjének hozzárendeléséhez állítsa a **címke nevét** a **CostCenter** értékre, a **címke értékét** pedig a következőre: **ContosoIT**.
 
-1. A **ResourceGroup**adja meg a **StorageAccount** **nevét** és az **USA 2. keleti** **régiójának helyét** a legördülő listából.
+1. A **ResourceGroup** adja meg a **StorageAccount** **nevét** és az **USA 2. keleti** **régiójának helyét** a legördülő listából.
 
    > [!NOTE]
    > Minden olyan összetevő esetében, amelyet az erőforráscsoport alatt hozzáadott a terv meghatározása során, a rendszer behúzza az összetevőt úgy, hogy az a-vel üzembe helyezni kívánt erőforráscsoporthoz vagy objektumhoz legyen igazítva.
    > Azok az összetevők, amelyek nem rendelkeznek paraméterekkel, vagy nincsenek definiálva paraméterek a hozzárendeléshez, csak a környezetfüggő információkra vannak felsorolva.
 
-1. Az ARM-sablon **StorageAccount**válassza a **Standard_GRS** lehetőséget a **tárfióktípus** paraméternél.
+1. Az ARM-sablon **StorageAccount** válassza a **Standard_GRS** lehetőséget a **tárfióktípus** paraméternél.
 
-1. Olvassa el az oldal alján található információs mezőt, majd válassza a **hozzárendelés**lehetőséget.
+1. Olvassa el az oldal alján található információs mezőt, majd válassza a **hozzárendelés** lehetőséget.
 
 ## <a name="track-deployment-of-a-blueprint"></a>Terv üzembe helyezésének nyomon követése
 
@@ -263,9 +263,9 @@ Most, hogy a terv hozzá lett rendelve egy előfizetéshez, ellenőrizze az üze
 
 1. Válassza ki a **kijelölt tervrajzokat** a bal oldali oldalról.
 
-1. A tervrajzok listájában kattintson a jobb gombbal a korábban hozzárendelt elemre, és válassza a **hozzárendelés részleteinek megtekintése**lehetőséget.
+1. A tervrajzok listájában kattintson a jobb gombbal a korábban hozzárendelt elemre, és válassza a **hozzárendelés részleteinek megtekintése** lehetőséget.
 
-   :::image type="content" source="./media/create-blueprint-portal/view-assignment-details.png" alt-text="Képernyőkép a &quot;Create Blueprint&quot; (terv létrehozása) gombra a terv-definíciók oldalon." border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/view-assignment-details.png" alt-text="Képernyőfelvétel a terv-hozzárendelés helyi menüjéről a &quot;hozzárendelés részleteinek megtekintése&quot; lehetőség kiválasztásával." border="false":::
 
 1. A **terv-hozzárendelés** lapon ellenőrizze, hogy az összes összetevő telepítése sikeres volt-e, és hogy nem történt-e hiba a telepítés során. Ha hiba történt, tekintse meg a [tervekkel kapcsolatos hibaelhárítási](./troubleshoot/general.md) lépéseket, amelyek alapján megállapíthatja, hogy mi volt a probléma.
 
@@ -285,11 +285,11 @@ Ha már nincs szüksége terv-hozzárendelésre, távolítsa el az előfizetésb
 
 1. A bal oldali oldalon válassza a **tervezet-definíciók** lehetőséget.
 
-1. Kattintson a jobb gombbal a törölni kívánt tervre, majd válassza a **terv törlése**lehetőséget. Ezután válassza az **Igen** lehetőséget a megerősítő párbeszédpanelen.
+1. Kattintson a jobb gombbal a törölni kívánt tervre, majd válassza a **terv törlése** lehetőséget. Ezután válassza az **Igen** lehetőséget a megerősítő párbeszédpanelen.
 
 > [!NOTE]
 > A terv törlése ebben a metódusban a kiválasztott terv összes közzétett verzióját is törli.
-> Egyetlen verzió törléséhez nyissa meg a tervet, válassza a **közzétett verziók** lapot, válassza ki a törölni kívánt verziót, majd válassza a **verzió törlése**lehetőséget. Emellett nem törölheti a tervet, amíg a terv definíciójának összes hozzárendelését törölni nem.
+> Egyetlen verzió törléséhez nyissa meg a tervet, válassza a **közzétett verziók** lapot, válassza ki a törölni kívánt verziót, majd válassza a **verzió törlése** lehetőséget. Emellett nem törölheti a tervet, amíg a terv definíciójának összes hozzárendelését törölni nem.
 
 ## <a name="next-steps"></a>További lépések
 

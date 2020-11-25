@@ -12,11 +12,11 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: fecb78b240f5c983580d4bdb34535a879ffe3e2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289276"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022547"
 ---
 # <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>Maximalizálja a sorcsoport minőségét a oszlopcentrikus index teljesítményéhez
 
@@ -140,7 +140,7 @@ A DWU mérete és a felhasználói erőforrás osztály együttesen határozzák
 - A DWU növeléséhez lásd: [Hogyan méretezési teljesítmény?](../sql-data-warehouse/quickstart-scale-compute-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - Ha módosítani szeretné egy lekérdezés erőforrás osztályát, tekintse meg a [felhasználói erőforrás osztályának módosítása](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#change-a-users-resource-class)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A szinapszis SQL teljesítményének növelésével kapcsolatos további lehetőségekért tekintse meg a [teljesítmény áttekintését](../overview-cheat-sheet.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 

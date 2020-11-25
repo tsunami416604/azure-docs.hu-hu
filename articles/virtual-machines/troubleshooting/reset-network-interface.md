@@ -13,11 +13,11 @@ ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
 ms.openlocfilehash: 6c4e507df0f112934979d4e59778b667743cf623
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87005956"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022904"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Windows rendszerű Azure-beli virtuális gép hálózati adapterének visszaállítása 
 
@@ -38,7 +38,7 @@ Ez a cikk bemutatja, hogyan állíthatja alaphelyzetbe az Azure Windows rendszer
 
     ![Hálózati adapter helye](./media/reset-network-interface/select-network-interface-vm.png)
     
-4.  Válassza az **IP-konfigurációk**lehetőséget.
+4.  Válassza az **IP-konfigurációk** lehetőséget.
 5.  Válassza ki az IP-címet. 
 6.  Ha a **magánhálózati IP-hozzárendelés**  nem  **statikus**, módosítsa **statikusra**.
 7.  Módosítsa az **IP-címet** egy másik IP-címhez, amely elérhető az alhálózatban.
@@ -81,7 +81,7 @@ A hálózati adapter alaphelyzetbe állításához kövesse az alábbi lépések
 1.  Nyissa meg az [Azure Portalt]( https://ms.portal.azure.com).
 2.  Válassza a **Virtual Machines (klasszikus)** lehetőséget.
 3.  Válassza ki az érintett virtuális gépet.
-4.  Válassza az **IP-címek**lehetőséget.
+4.  Válassza az **IP-címek** lehetőséget.
 5.  Ha a **magánhálózati IP-hozzárendelés**  nem  **statikus**, módosítsa **statikusra**.
 6.  Módosítsa az **IP-címet** egy másik IP-címhez, amely elérhető az alhálózatban.
 7.  Kattintson a **Mentés** gombra.
@@ -117,8 +117,8 @@ A hálózati adapter alaphelyzetbe állításához kövesse az alábbi lépések
 Miután a Távoli asztalt elvégezte a gépen, törölnie kell a régi hálózati adaptereket, hogy elkerülje a lehetséges problémát:
 
 1.  Indítsa el az Eszközkezelőt.
-2.  Válassza a **nézet**  >  **rejtett eszközök megjelenítése**lehetőséget.
-3.  Válassza a **hálózati adapterek**lehetőséget. 
+2.  Válassza a **nézet**  >  **rejtett eszközök megjelenítése** lehetőséget.
+3.  Válassza a **hálózati adapterek** lehetőséget. 
 4.  Keresse meg a "Microsoft Hyper-V hálózati adapter" nevű adaptereket.
 5.  Előfordulhat, hogy egy nem elérhető adapter szürkén jelenik meg. Kattintson a jobb gombbal az adapterre, majd válassza az Eltávolítás lehetőséget.
 

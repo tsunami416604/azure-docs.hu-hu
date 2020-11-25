@@ -11,11 +11,11 @@ ms.workload: genomics
 ms.topic: troubleshooting
 ms.date: 10/29/2018
 ms.openlocfilehash: c508c10d619cde1a16d89b446c5cfd1a3ce81daf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82100906"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023823"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
@@ -42,7 +42,7 @@ Három kötelező argumentum:
 
 * URL – az API alap URI-ja
 * KULCS – a genomikai fiók elérési kulcsa
-    * Az URL-cím és a kulcs megkereséséhez nyissa meg a Azure Portal és nyissa meg a Microsoft Genomics-fiók lapot. A **felügyelet** fejléc alatt válassza a **hozzáférési kulcsok**elemet. Itt megtalálja az API URL-címét és a hozzáférési kulcsokat is.
+    * Az URL-cím és a kulcs megkereséséhez nyissa meg a Azure Portal és nyissa meg a Microsoft Genomics-fiók lapot. A **felügyelet** fejléc alatt válassza a **hozzáférési kulcsok** elemet. Itt megtalálja az API URL-címét és a hozzáférési kulcsokat is.
 
   
 * AZONOSÍTÓ – a munkafolyamat azonosítója
@@ -115,7 +115,7 @@ Ezek a hibák a felhasználók számára hajthatók végre. A fájl típusa és 
 
 | A fájl típusa | Hibakód | Hibaüzenet                                                                           | Javasolt hibaelhárítási lépések                                                                                         |
 |--------------|------------|-----------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|
-| Bármelyik          | 701        | A [readId] Read [numberOfBases] bases, de a korlát [maxReadLength].           | Ennek a hibának a leggyakoribb oka a fájl sérülése, amely két olvasás összefűzését eredményezi. Győződjön meg róla, hogy a bemeneti fájlok vannak. |
+| Bármely          | 701        | A [readId] Read [numberOfBases] bases, de a korlát [maxReadLength].           | Ennek a hibának a leggyakoribb oka a fájl sérülése, amely két olvasás összefűzését eredményezi. Győződjön meg róla, hogy a bemeneti fájlok vannak. |
 | BAM          | 200        |   A következő fájl nem olvasható: "[yourFileName]".                                                                                       | Vizsgálja meg a BAM-fájl formátumát. Küldje el újra a munkafolyamatot egy megfelelően formázott fájllal.                                                                           |
 | BAM          | 201        |  Nem olvasható a következő BAM-fájl: [File_name].                                                                                      |Vizsgálja meg a BAM-fájl formátumát.  Küldje el a munkafolyamatot egy megfelelően formázott fájllal.                                                                            |
 | BAM          | 202        | Nem olvasható a következő BAM-fájl: [File_name]. A fájl túl kicsi és hiányzó fejléc.                                                                                        | Vizsgálja meg a BAM-fájl formátumát.  Küldje el a munkafolyamatot egy megfelelően formázott fájllal.                                                                            |

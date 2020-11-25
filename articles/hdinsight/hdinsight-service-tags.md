@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
 ms.openlocfilehash: 1a90bc6636dcb3aa81f09b0489850c1a95b3256d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535246"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022751"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Az Azure HDInsight NSG szolgáltatásának címkéi
 
@@ -26,9 +26,9 @@ Ha egy adott régiót szeretne használni, és a szolgáltatás címkéje még n
 
 A hálózati biztonsági csoportokban két lehetőség van a szolgáltatási címkék használatára:
 
-- **Egyetlen globális HDInsight szolgáltatás használata** : ezzel a beállítással megnyithatja a virtuális hálózatot minden olyan IP-címre, amelyet a HDInsight szolgáltatás használ a fürtök összes régión belüli figyelésére. Ez a legegyszerűbb módszer, de előfordulhat, hogy nem megfelelő, ha korlátozó biztonsági követelményekkel rendelkezik.
+- **Egyetlen globális HDInsight szolgáltatás használata**: ezzel a beállítással megnyithatja a virtuális hálózatot minden olyan IP-címre, amelyet a HDInsight szolgáltatás használ a fürtök összes régión belüli figyelésére. Ez a legegyszerűbb módszer, de előfordulhat, hogy nem megfelelő, ha korlátozó biztonsági követelményekkel rendelkezik.
 
-- **Több regionális szolgáltatási címke használata** : ezzel a beállítással megnyithatja a virtuális hálózatot, hogy csak az adott régióban használt IP-címek HDInsight. Ha azonban több régiót használ, több szolgáltatási címkét is hozzá kell adnia a virtuális hálózathoz.
+- **Több regionális szolgáltatási címke használata**: ezzel a beállítással megnyithatja a virtuális hálózatot, hogy csak az adott régióban használt IP-címek HDInsight. Ha azonban több régiót használ, több szolgáltatási címkét is hozzá kell adnia a virtuális hálózathoz.
 
 ## <a name="use-a-single-global-hdinsight-service-tag"></a>Egyetlen globális HDInsight szolgáltatási címke használata
 
@@ -99,7 +99,7 @@ Ha például a fürt a régióban lett létrehozva `East US 2` , akkor a követk
 | Country | Régió | Szolgáltatáscímke |
 | ---- | ---- | ---- |
 | Egyesült Államok | USA 2. keleti régiója | HDInsight. EastUS2 |
-| &nbsp; | USA középső régiója | HDInsight. CentralUS |
+| &nbsp; | Az USA középső régiója | HDInsight. CentralUS |
 | &nbsp; | NorthCentral minket | HDInsight. NorthCentralUS |
 | &nbsp; | USA déli középső régiója | HDInsight. SouthCentralUS |
 | &nbsp; | USA keleti régiója | HDInsight. EastUS |
@@ -123,7 +123,7 @@ Ha például a fürt a régióban lett létrehozva `East US 2` , akkor a követk
 
 A *németországi Közép* -és *Kelet-Németország* régiójában lévő fürtökön két szolgáltatási címkét kell engedélyezni: `HDInsight.GermanyCentral` és `HDInsight.GermanyNortheast` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Hálózati biztonsági csoportok: szolgáltatás címkéi](../virtual-network/network-security-groups-overview.md#security-rules)
 - [Virtuális hálózatok létrehozása az Azure HDInsight-fürtökhöz](hdinsight-create-virtual-network.md)

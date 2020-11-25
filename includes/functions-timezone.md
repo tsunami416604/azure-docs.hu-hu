@@ -1,10 +1,15 @@
 ---
-ms.openlocfilehash: dba7a3cc7a68d360fd6e56511b71ae364f624646
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: ggailey777
+ms.service: azure-functions
+ms.topic: include
+ms.date: 09/20/2020
+ms.author: glenga
+ms.openlocfilehash: 7d1bf8dd2d1c8feab8b051a8edad7d5e570ee11b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569278"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96025736"
 ---
 A CRON-kifejezésekkel használt alapértelmezett időzóna az egyezményes világidő (UTC) szerint van megadva. Ha egy másik időzóna alapján szeretné megkeresni a CRON-kifejezést, hozzon létre egy alkalmazást az nevű Function-alkalmazáshoz `WEBSITE_TIME_ZONE` . 
 
@@ -12,22 +17,16 @@ A beállítás értéke attól függ, hogy az operációs rendszer és az alkalm
 
 |Operációs rendszer |Felkészülés |Érték |
 |-|-|-|
-| **Windows** |Mind | Állítsa az értéket a kívánt időzóna nevére a [Microsoft időzóna-indexben](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-vista/cc749073(v=ws.10))látható módon. |
+| **Windows** |Mind | Állítsa az értéket a kívánt időzóna nevére, ahogy azt a Windows-parancs által megadott párok második sora adja. `tzutil.exe /L` |
 | **Linux** |Prémium<br/>Dedikált |Állítsa az értéket a kívánt időzóna nevére a [TZ-adatbázisban](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)látható módon. |
 
 > [!NOTE]
 > `WEBSITE_TIME_ZONE` jelenleg nem támogatott a Linux-fogyasztási tervben.
 
-Például a *keleti téli idő* (Windows) vagy az *America/New_York* (Linux) UTC-05:00. A következő NCRONTAB-kifejezéssel, amely az UTC-időzónához 10:00 tartozik:
-
-```
-"0 0 15 * * *"
-``` 
-
-Vagy hozzon létre egy alkalmazás-beállítást a nevű Function alkalmazáshoz `WEBSITE_TIME_ZONE` , állítsa az értéket `Eastern Standard Time` (Windows) vagy `America/New_York` (Linux) értékre, majd használja a következő NCRONTAB kifejezést: 
+Például a keleti idő az Egyesült Államokban (amelyet `Eastern Standard Time` (Windows) vagy `America/New_York` (Linux)) jelenleg utc-05:00-et használ a téli idő és az utc-04:00 során a nyári idő alatt. Ahhoz, hogy az időzítő elindítsa a tüzet a 10:00 Kelet-napi időszakban, hozzon létre egy alkalmazás-beállítást a nevű Function alkalmazáshoz `WEBSITE_TIME_ZONE` , állítsa az értéket `Eastern Standard Time` (Windows) vagy `America/New_York` (Linux), majd használja a következő NCRONTAB kifejezést: 
 
 ```
 "0 0 10 * * *"
 ``` 
 
-A használatakor `WEBSITE_TIME_ZONE` az idő az adott időzónában, például a nyári időszámítás időpontjára módosul. 
+Ha az `WEBSITE_TIME_ZONE` időpontot használja az időzóna időváltozásainak megfelelően, beleértve a nyári időmegtakarítást és a normál időben végzett módosításokat is.

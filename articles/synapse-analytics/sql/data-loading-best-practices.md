@@ -12,11 +12,11 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: 7e706f12a251cd38c3525a48553743606ed199b6
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321514"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024027"
 ---
 # <a name="best-practices-for-loading-data-into-a-dedicated-sql-pool-azure-synapse-analytics"></a>Ajánlott eljárások az Azure szinapszis Analytics dedikált SQL-készletbe való betöltéséhez
 
@@ -142,7 +142,7 @@ ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SE
 
 A mögöttes külső adatforrásokban nem kell más módosítást elvégezni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a kinyerési, betöltési és átalakítási (ELT) folyamatról: [design elt for Azure szinapszis Analytics](../sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 - A betöltési oktatóanyaghoz [használja a Base elemet az adatok Azure Blob Storage-ból az Azure szinapszis analyticsbe való betöltéséhez](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).

@@ -4,11 +4,11 @@ description: Ez a cikk a Service Fabric alkalmazások frissítésével kapcsolat
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: cc2fdc8f99b74078bd8d5274cbe52265ab8455ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86248084"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022989"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric alkalmazás frissítése: speciális témakörök
 
@@ -28,13 +28,13 @@ Ennek elkerüléséhez konfigurálja a *RequestDrain* szolgáltatást úgy, hogy
 
 A késést többféleképpen is konfigurálhatja a szolgáltatás oldalán.
 
- * **Új szolgáltatás létrehozásakor**a következőket kell megadnia `-InstanceCloseDelayDuration` :
+ * **Új szolgáltatás létrehozásakor** a következőket kell megadnia `-InstanceCloseDelayDuration` :
 
     ```powershell
     New-ServiceFabricService -Stateless [-ServiceName] <Uri> -InstanceCloseDelayDuration <TimeSpan>
     ```
 
- * A **szolgáltatásnak az alkalmazás jegyzékfájljának Alapértelmezések szakaszában megadott meghatározása során**rendelje hozzá a (z) `InstanceCloseDelayDurationSeconds` tulajdonságot:
+ * A **szolgáltatásnak az alkalmazás jegyzékfájljának Alapértelmezések szakaszában megadott meghatározása során** rendelje hozzá a (z) `InstanceCloseDelayDurationSeconds` tulajdonságot:
 
     ```xml
           <StatelessService ServiceTypeName="Web1Type" InstanceCount="[Web1_InstanceCount]" InstanceCloseDelayDurationSeconds="15">
@@ -42,13 +42,13 @@ A késést többféleképpen is konfigurálhatja a szolgáltatás oldalán.
           </StatelessService>
     ```
 
- * **Meglévő szolgáltatás frissítésekor**a következőket kell megadnia `-InstanceCloseDelayDuration` :
+ * **Meglévő szolgáltatás frissítésekor** a következőket kell megadnia `-InstanceCloseDelayDuration` :
 
     ```powershell
     Update-ServiceFabricService [-Stateless] [-ServiceName] <Uri> [-InstanceCloseDelayDuration <TimeSpan>]`
     ```
 
- * **Meglévő szolgáltatás ARM-sablonon keresztüli létrehozásakor vagy frissítésekor**a következőt kell megadnia: `InstanceCloseDelayDuration` (a támogatott API-verzió minimális verziója: 2019-11-01-előnézet):
+ * **Meglévő szolgáltatás ARM-sablonon keresztüli létrehozásakor vagy frissítésekor** a következőt kell megadnia: `InstanceCloseDelayDuration` (a támogatott API-verzió minimális verziója: 2019-11-01-előnézet):
 
     ```ARM template to define InstanceCloseDelayDuration of 30seconds
     {
@@ -112,7 +112,7 @@ A felülbírált késleltetési időtartam csak a meghívott frissítési péld�
 >
 >
 
-*Figyelt* módban Service Fabric alkalmazza az állapot-szabályzatokat, hogy az alkalmazás kifogástalan állapotú legyen a frissítés folyamata során. Ha az Állapotházirendek megsértették, a rendszer felfüggeszti a frissítést, vagy automatikusan visszaállítja a megadott *FailureAction*függően.
+*Figyelt* módban Service Fabric alkalmazza az állapot-szabályzatokat, hogy az alkalmazás kifogástalan állapotú legyen a frissítés folyamata során. Ha az Állapotházirendek megsértették, a rendszer felfüggeszti a frissítést, vagy automatikusan visszaállítja a megadott *FailureAction* függően.
 
 *UnmonitoredManual* módban az alkalmazás rendszergazdája teljes mértékben szabályozhatja a frissítés előrehaladását. Ez a mód akkor hasznos, ha egyéni állapot-értékelési házirendeket alkalmaz, vagy nem hagyományos frissítéseket végez az állapot figyelésének mellőzéséhez (például az alkalmazás már adatvesztésben van). Az ebben a módban futó frissítés az egyes UD befejezését követően felfüggeszti magát, és a [resume-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps)használatával explicit módon folytatnia kell azt. Ha a frissítés fel van függesztve, és készen áll a felhasználó folytatására, a frissítési állapota *RollforwardPending* fog megjelenni (lásd: [UpgradeState](/dotnet/api/system.fabric.applicationupgradestate?view=azure-dotnet)).
 
@@ -205,7 +205,7 @@ ApplicationParameters  : { "ImportantParameter" = "2"; "NewParameter" = "testAft
 
 ## <a name="roll-back-application-upgrades"></a>Alkalmazások verziófrissítésének visszaállítása
 
-A frissítések a három mód (*figyelt*, *UnmonitoredAuto*vagy *UnmonitoredManual*) egyikében továbbíthatók, de csak *UnmonitoredAuto* vagy *UnmonitoredManual* módban állíthatók vissza. A *UnmonitoredAuto* mód visszaállítása ugyanúgy működik, mint a *UpgradeReplicaSetCheckTimeout* alapértelmezett értéke – lásd az [alkalmazás frissítési paramétereit](service-fabric-application-upgrade-parameters.md). A *UnmonitoredManual* mód visszaállítása ugyanúgy működik, mint a továbbítás – a visszaállítás az összes UD befejezése után felfüggeszti magát, és a [resume-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) használatával explicit módon folytatnia kell a visszaállítást.
+A frissítések a három mód (*figyelt*, *UnmonitoredAuto* vagy *UnmonitoredManual*) egyikében továbbíthatók, de csak *UnmonitoredAuto* vagy *UnmonitoredManual* módban állíthatók vissza. A *UnmonitoredAuto* mód visszaállítása ugyanúgy működik, mint a *UpgradeReplicaSetCheckTimeout* alapértelmezett értéke – lásd az [alkalmazás frissítési paramétereit](service-fabric-application-upgrade-parameters.md). A *UnmonitoredManual* mód visszaállítása ugyanúgy működik, mint a továbbítás – a visszaállítás az összes UD befejezése után felfüggeszti magát, és a [resume-ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) használatával explicit módon folytatnia kell a visszaállítást.
 
 A visszaállítások automatikusan indíthatók, ha a *figyelt* módban lévő, a *FailureAction* *visszaállítással* rendelkező frissítés állapot-házirendjei megsérülnek (lásd az [alkalmazás frissítési paramétereit](service-fabric-application-upgrade-parameters.md)), vagy explicit módon használják a [Start-ServiceFabricApplicationRollback](/powershell/module/servicefabric/start-servicefabricapplicationrollback?view=azureservicefabricps).
 

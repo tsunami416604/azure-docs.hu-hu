@@ -4,11 +4,11 @@ description: Megismerheti Azure Active Directory bérlők, a felhasználók és 
 ms.date: 10/29/2020
 ms.topic: conceptual
 ms.openlocfilehash: 411b9bae19166e1875011360aa011c05d590b237
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043035"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023942"
 ---
 # <a name="tenants-users-and-roles-in-azure-lighthouse-scenarios"></a>Bérlők, felhasználók és szerepkörök az Azure Lighthouse-forgatókönyvekben
 
@@ -18,7 +18,7 @@ A *bérlő* az Azure ad dedikált és megbízható példánya. Az egyes bérlők
 
 Ahhoz, hogy ez a logikai leképezés elérhető legyen, az ügyfél bérlőn belül egy előfizetést (vagy egy vagy több erőforráscsoportot *) be kell készíteni az* Azure világítótoronyba. Ez a [bevezetési folyamat Azure Resource Manager-sablonokkal](../how-to/onboard-customer.md) vagy [nyilvános vagy privát ajánlat Azure Marketplace-en való közzétételével](../how-to/publish-managed-services-offers.md)végezhető el.
 
-Bármelyik bevezetési módszert választja, meg kell adnia az *engedélyeket* . Az egyes engedélyek egy felhasználói fiókot határoznak meg a bérlők kezelése szolgáltatásban, amely hozzáfér a delegált erőforrásokhoz, valamint egy beépített szerepkört, amely megadja, hogy az egyes felhasználók milyen engedélyeket kapnak ezekhez az erőforrásokhoz.
+Bármelyik bevezetési módszert választja, meg kell adnia az *engedélyeket*. Az egyes engedélyek egy felhasználói fiókot határoznak meg a bérlők kezelése szolgáltatásban, amely hozzáfér a delegált erőforrásokhoz, valamint egy beépített szerepkört, amely megadja, hogy az egyes felhasználók milyen engedélyeket kapnak ezekhez az erőforrásokhoz.
 
 ## <a name="best-practices-for-defining-users-and-roles"></a>Ajánlott eljárások felhasználók és szerepkörök definiálásához
 
@@ -45,7 +45,7 @@ Az Azure Lighthouse jelenleg minden [beépített szerepkört](../../role-based-a
 > [!NOTE]
 > Miután hozzáadta az új megfelelő beépített szerepkört az Azure-hoz, hozzárendelheti az [ügyfelet Azure Resource Manager-sablonok használatával](../how-to/onboard-customer.md). A [felügyelt szolgáltatások ajánlatának közzétételekor](../how-to/publish-managed-services-offers.md)előfordulhat, hogy az újonnan hozzáadott szerepkör elérhetővé válik a partner Centerben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg [Az Azure Lighthouse ajánlott biztonsági eljárásait](recommended-security-practices.md).
 - Az ügyfeleket az Azure világítótoronyba [Azure Resource Manager sablonok használatával](../how-to/onboard-customer.md) vagy [egy magán-vagy nyilvános felügyelt szolgáltatás Azure Marketplace-re való közzétételével](../how-to/publish-managed-services-offers.md)teheti közzé.

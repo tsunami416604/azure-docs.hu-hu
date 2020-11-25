@@ -4,19 +4,19 @@ description: A blob Storage-eseményekhez megadott tulajdonságokat ismerteti Az
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: a914edbb6f624617766c77b277d7ee8e6ad08bd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87458943"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023959"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>Azure-Blob Storage Event Grid forrásként
 
-Ez a cikk a blob Storage-események tulajdonságait és sémáját ismerteti.Az események sémáinak bemutatása: [Azure Event Grid Event Schema](event-schema.md). Emellett a gyors indulások és oktatóanyagok listáját is megjeleníti az Azure Blob Storage eseményforrásként való használatához.
+Ez a cikk a blob Storage-események tulajdonságait és sémáját ismerteti. Az események sémáinak bemutatása: [Azure Event Grid Event Schema](event-schema.md). Emellett a gyors indulások és oktatóanyagok listáját is megjeleníti az Azure Blob Storage eseményforrásként való használatához.
 
 
 >[!NOTE]
-> Csak a **StorageV2 (általános célú v2)**, a **BlockBlobStorage**és a **BlobStorage** típusú tárolási fiókok támogatják az események integrálását. A **Storage (általános célú v1)** *nem* támogatja a Event Grid integrációját.
+> Csak a **StorageV2 (általános célú v2)**, a **BlockBlobStorage** és a **BlobStorage** típusú tárolási fiókok támogatják az események integrálását. A **Storage (általános célú v1)** *nem* támogatja a Event Grid integrációját.
 
 ## <a name="event-grid-event-schema"></a>Event Grid-eseményséma
 
@@ -316,7 +316,7 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 | contentOffset | szám | Egy írási művelet bájtban kifejezett eltolása azon a ponton, ahol az eseményindító alkalmazás befejezte a fájlba való írást. <br>Csak olyan eseményeknél jelenik meg, amelyek hierarchikus névtérrel rendelkező blob Storage-fiókokban aktiválódnak.|
 | destinationUrl |sztring | A művelet befejeződése után létező fájl URL-címe. Ha például egy fájl átnevezve lett, a `destinationUrl` tulajdonság az új fájlnév URL-címét tartalmazza. <br>Csak olyan eseményeknél jelenik meg, amelyek hierarchikus névtérrel rendelkező blob Storage-fiókokban aktiválódnak.|
 | sourceUrl |sztring | A művelet előtt létező fájl URL-címe. Ha például egy fájl átnevezve lett, a az `sourceUrl` átnevezési művelet előtt az eredeti fájlnév URL-címét tartalmazza. <br>Csak olyan eseményeknél jelenik meg, amelyek hierarchikus névtérrel rendelkező blob Storage-fiókokban aktiválódnak. |
-| url | sztring | A blob elérési útja. <br>Ha az ügyfél blobot REST API használ, akkor az URL-cím a következő szerkezettel rendelkezik: * \<storage-account-name\> . blob.Core.Windows.net/ \<container-name\> / \<file-name\> *. <br>Ha az ügyfél egy Data Lake Storage REST API használ, akkor az URL-cím a következő struktúrával rendelkezik: * \<storage-account-name\> . DFS.Core.Windows.net/ \<file-system-name\> / \<file-name\> *. |
+| url | sztring | A blob elérési útja. <br>Ha az ügyfél blobot REST API használ, akkor az URL-cím a következő szerkezettel rendelkezik: *\<storage-account-name\> . blob.Core.Windows.net/ \<container-name\> / \<file-name\>*. <br>Ha az ügyfél egy Data Lake Storage REST API használ, akkor az URL-cím a következő struktúrával rendelkezik: *\<storage-account-name\> . DFS.Core.Windows.net/ \<file-system-name\> / \<file-name\>*. |
 | rekurzív | sztring | `True` a művelet végrehajtása az összes alárendelt könyvtáron; Ellenkező esetben `False` . <br>Csak olyan eseményeknél jelenik meg, amelyek hierarchikus névtérrel rendelkező blob Storage-fiókokban aktiválódnak. |
 | Sequencer | sztring | Egy átlátszatlan karakterlánc-érték, amely az események logikai sorát jelképezi az adott blob nevénél.  A felhasználók a szabványos sztringek összehasonlításával megértették, hogy az adott blob nevében két esemény relatív sorszáma látható. |
 | storageDiagnostics | object | Az Azure Storage szolgáltatás időnként diagnosztikai adatelemzéseket is tartalmaz. Ha van ilyen, figyelmen kívül kell hagyni az esemény felhasználói számára. |

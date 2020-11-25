@@ -7,11 +7,11 @@ ms.date: 07/10/2019
 ms.author: vturecek
 ms.custom: devx-track-csharp
 ms.openlocfilehash: f775608c6c349c93a43ef4aef26ad50707cd39b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743760"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023618"
 ---
 # <a name="getting-started-with-reliable-actors"></a>A Reliable Actors első lépései
 > [!div class="op_single_selector"]
@@ -46,9 +46,9 @@ A megoldás három projektet tartalmaz:
 
 * **Az interface projekt (HelloWorld. interfaces)**. Ez a projekt tartalmazza a színész illesztőfelület-definícióját. A színészi felületek bármilyen nevű projektben meghatározhatók.  A csatoló határozza meg a Actors-szerződést, amelyet a színészi implementáció és a színészet hívó ügyfelek is megosztanak.  Mivel az ügyfelek projektjei függenek tőle, általában logikus, hogy egy olyan szerelvényben definiálják, amely eltér a szereplő implementációtól.
 
-* **A actoring Service projekt (HelloWorld)**. Ez a projekt azt a Service Fabric szolgáltatást határozza meg, amely a szereplőt fogja üzemeltetni. A *HelloWorld.cs*a színész megvalósítását tartalmazza. A Actors implementáció egy olyan osztály, amely az alaptípusból származik `Actor` , és megvalósítja a *MyActor. interfaces* projektben definiált illesztőfelületeket. A Actors osztálynak olyan konstruktort is végre kell hajtania, amely elfogadja a `ActorService` példányt és `ActorId` a-t, és átadja azokat az `Actor` alaposztálynak.
+* **A actoring Service projekt (HelloWorld)**. Ez a projekt azt a Service Fabric szolgáltatást határozza meg, amely a szereplőt fogja üzemeltetni. A *HelloWorld.cs* a színész megvalósítását tartalmazza. A Actors implementáció egy olyan osztály, amely az alaptípusból származik `Actor` , és megvalósítja a *MyActor. interfaces* projektben definiált illesztőfelületeket. A Actors osztálynak olyan konstruktort is végre kell hajtania, amely elfogadja a `ActorService` példányt és `ActorId` a-t, és átadja azokat az `Actor` alaposztálynak.
     
-    Ez a projekt *program.cs*is tartalmaz, amely a Service Fabric Runtime használatával regisztrálja a színészi osztályokat `ActorRuntime.RegisterActorAsync<T>()` . Az `HelloWorld` osztály már regisztrálva van. A projekthez hozzáadott további Actors implementációkat is regisztrálni kell a `Main()` metódusban.
+    Ez a projekt *program.cs* is tartalmaz, amely a Service Fabric Runtime használatával regisztrálja a színészi osztályokat `ActorRuntime.RegisterActorAsync<T>()` . Az `HelloWorld` osztály már regisztrálva van. A projekthez hozzáadott további Actors implementációkat is regisztrálni kell a `Main()` metódusban.
 
 ## <a name="customize-the-helloworld-actor"></a>A HelloWorld Actor testreszabása
 
@@ -96,11 +96,11 @@ Hozzon létre egy egyszerű konzolos alkalmazást a Actor szolgáltatás meghív
     > [!NOTE]
     > A konzolos alkalmazások nem az alkalmazás olyan típusa, amelyet általában a Service Fabric-ügyfélként használ, de a helyi Service Fabric-fürt használatával a hibakereséshez és teszteléshez használható.
 
-3. A konzol alkalmazásának 64 bitesnek kell lennie az illesztőfelület-projekttel és egyéb függőségekkel való kompatibilitás fenntartásához.  Megoldáskezelő kattintson a jobb gombbal a **ActorClient** projektre, majd kattintson a **Tulajdonságok**elemre.  A **build (létrehozás** ) lapon állítsa be a **platform célt** az **x64**értékre.
+3. A konzol alkalmazásának 64 bitesnek kell lennie az illesztőfelület-projekttel és egyéb függőségekkel való kompatibilitás fenntartásához.  Megoldáskezelő kattintson a jobb gombbal a **ActorClient** projektre, majd kattintson a **Tulajdonságok** elemre.  A **build (létrehozás** ) lapon állítsa be a **platform célt** az **x64** értékre.
     
     ![Build tulajdonságai][8]
 
-4. Az ügyfél-projekthez szükség van a megbízható Actors NuGet-csomagra.  Kattintson az **eszközök**  >  **NuGet Package**Manager  >  **csomagkezelő konzol**elemre.  A Package Manager konzolon adja meg a következő parancsot:
+4. Az ügyfél-projekthez szükség van a megbízható Actors NuGet-csomagra.  Kattintson az **eszközök**  >  **NuGet Package** Manager  >  **csomagkezelő konzol** elemre.  A Package Manager konzolon adja meg a következő parancsot:
     
     ```powershell
     Install-Package Microsoft.ServiceFabric.Actors -IncludePrerelease -ProjectName ActorClient
@@ -108,7 +108,7 @@ Hozzon létre egy egyszerű konzolos alkalmazást a Actor szolgáltatás meghív
 
     A NuGet-csomag és annak összes függősége telepítve van a ActorClient projektben.
 
-5. Az ügyfél projekthez az illesztőfelületek projektre mutató hivatkozás is szükséges.  A ActorClient projektben kattintson a jobb gombbal a **függőségek** elemre, majd kattintson a **projekt-hivatkozás hozzáadása**parancsra.  Válassza a **projektek > a megoldás** elemet (ha még nincs kiválasztva), majd jelölje be a **HelloWorld. interfaces**elem melletti jelölőnégyzetet.  Kattintson az **OK** gombra.
+5. Az ügyfél projekthez az illesztőfelületek projektre mutató hivatkozás is szükséges.  A ActorClient projektben kattintson a jobb gombbal a **függőségek** elemre, majd kattintson a **projekt-hivatkozás hozzáadása** parancsra.  Válassza a **projektek > a megoldás** elemet (ha még nincs kiválasztva), majd jelölje be a **HelloWorld. interfaces** elem melletti jelölőnégyzetet.  Kattintson az **OK** gombra.
     
     ![Hivatkozás hozzáadása párbeszédpanel][7]
 
@@ -142,14 +142,14 @@ Nyomja le az **F5** billentyűt az alkalmazás helyi létrehozásához, üzembe 
 
 ![Service Fabric hibakeresési kimeneti ablak][3]
 
-Ha a kimenet tartalmazza a szöveget, *az alkalmazás készen áll*, a ActorClient alkalmazással tesztelheti a szolgáltatást.  Megoldáskezelő kattintson a jobb gombbal a **ActorClient** projektre, **majd kattintson az**  >  **új példány indítása**parancsra.  A parancssori alkalmazásnak a Actor szolgáltatás kimenetét kell megjelenítenie.
+Ha a kimenet tartalmazza a szöveget, *az alkalmazás készen áll*, a ActorClient alkalmazással tesztelheti a szolgáltatást.  Megoldáskezelő kattintson a jobb gombbal a **ActorClient** projektre, **majd kattintson az**  >  **új példány indítása** parancsra.  A parancssori alkalmazásnak a Actor szolgáltatás kimenetét kell megjelenítenie.
 
 ![Alkalmazás kimenete][9]
 
 > [!TIP]
 > A Service Fabric Actors Runtime a [színészi módszerekhez kapcsolódó eseményeket és](service-fabric-reliable-actors-diagnostics.md#actor-method-events-and-performance-counters)teljesítményszámlálókat bocsát ki. Ezek a diagnosztika és a teljesítmény monitorozása során hasznosak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ arról, [hogy Reliable Actors hogyan használják a Service Fabric platformot](service-fabric-reliable-actors-platform.md).
 
 

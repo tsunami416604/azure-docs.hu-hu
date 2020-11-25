@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 961ba457136d20fbb63ae3315fe8143cffb56be2
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: c4cbbc437b633232ea65dd202b7531a1a5ac2c58
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629308"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "96022588"
 ---
 # <a name="azure-file-share-protocols"></a>Azure fájlmegosztás protokollok
 
@@ -21,12 +21,12 @@ Azure Files két protokollt biztosít az Azure-fájlmegosztás csatlakoztatásá
 
 ## <a name="differences-at-a-glance"></a>Különbségek egy pillantással
 
-|Jellemző  |NFS (előzetes verzió)  |SMB  |
+|Funkció  |NFS (előzetes verzió)  |SMB  |
 |---------|---------|---------|
 |Hozzáférési protokollok     |NFS 4,1         |SMB 2,1, SMB 3,0         |
 |Támogatott operációs rendszer     |Linux kernel 4.3-as és újabb verziója         |Windows 2008 R2 +, Linux kernel 4.11 +         |
 |[Elérhető szintek](storage-files-planning.md#storage-tiers)     |Prémium szintű Storage         |Premium Storage, tranzakciós optimalizált, gyors elérésű, ritka elérésű         |
-|[Redundancia](storage-files-planning.md#redundancy)     |LRS         |LRS, ZRS, GRS         |
+|[Redundancia](storage-files-planning.md#redundancy)     |LRS, ZRS         |LRS, ZRS, GRS         |
 |Hitelesítés     |Csak gazdagép-alapú hitelesítés        |Identitás-alapú hitelesítés, felhasználó alapú hitelesítés         |
 |Engedélyek     |UNIX-stílusú engedélyek         |NTFS-stílusú engedélyek         |
 |Fájlrendszer-szemantika     |POSIX-kompatibilis         |Nem POSIX-kompatibilis         |
@@ -74,7 +74,7 @@ Az elérhető hálózati beállításokkal kapcsolatos további információkér
 
 Az SMB-vel csatlakoztatott Azure-fájlmegosztás további Azure Files funkciókat kínál, és nem rendelkezik Azure Files szolgáltatás korlátozásával, mivel általánosan elérhető.
 
-### <a name="features"></a>Funkciók
+### <a name="features"></a>Szolgáltatások
 
 - Azure-fájlok szinkronizálása
 - Identitás-alapú hitelesítés

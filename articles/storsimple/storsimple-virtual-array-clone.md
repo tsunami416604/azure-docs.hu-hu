@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
 ms.openlocfilehash: b6cc89cb082cd0ed32abd88e3a6683c60a27ba90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742179"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023040"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>Klónozás a StorSimple virtuális tömb biztonsági másolatából
 
@@ -33,12 +33,12 @@ Ez a cikk részletesen ismerteti a megosztások vagy kötetek biztonsági másol
 
 #### <a name="to-clone-a-share"></a>Megosztás klónozása
 
-1. Tallózással keresse meg az **eszközök** panelt. Jelölje ki, majd kattintson az eszközre, majd kattintson a **megosztások**lehetőségre. Válassza ki a klónozott megosztást, kattintson a jobb gombbal a megosztásra a helyi menü meghívásához. Válassza a **klónozás**lehetőséget.
+1. Tallózással keresse meg az **eszközök** panelt. Jelölje ki, majd kattintson az eszközre, majd kattintson a **megosztások** lehetőségre. Válassza ki a klónozott megosztást, kattintson a jobb gombbal a megosztásra a helyi menü meghívásához. Válassza a **Clone** lehetőséget.
    
    ![Biztonsági másolat klónozása](./media/storsimple-virtual-array-clone/cloneshare1.png)
 2. A **klónozás** panelen kattintson a **biztonsági mentés > válassza ki** , majd tegye a következőket: 
    
-   a.    Az eszközön lévő biztonsági másolat szűrése az időtartomány alapján. Az **elmúlt 7 nap**, az **elmúlt 30 nap**és az **elmúlt év**közül választhat.
+   a.    Az eszközön lévő biztonsági másolat szűrése az időtartomány alapján. Az **elmúlt 7 nap**, az **elmúlt 30 nap** és az **elmúlt év** közül választhat.
    
    b.    A szűrt biztonsági másolatok listájában válassza ki a klónozott biztonsági mentést.
    
@@ -73,12 +73,12 @@ A biztonsági másolatból való klónozáshoz a Azure Portal a megosztás klón
 
 #### <a name="to-clone-a-volume"></a>Kötet klónozása
 
-1. Tallózással keresse meg az **eszközök** panelt. Jelölje ki, majd kattintson az eszközre, majd kattintson a **kötetek**elemre. Válassza ki a klónozott kötetet, kattintson a jobb gombbal a kötetre a helyi menü meghívásához. Válassza a **klónozás**lehetőséget.
+1. Tallózással keresse meg az **eszközök** panelt. Jelölje ki, majd kattintson az eszközre, majd kattintson a **kötetek** elemre. Válassza ki a klónozott kötetet, kattintson a jobb gombbal a kötetre a helyi menü meghívásához. Válassza a **Clone** lehetőséget.
    
    ![Kötet klónozása](./media/storsimple-virtual-array-clone/clonevolume1.png)
 2. A **klónozás** panelen kattintson a **biztonsági mentés** elemre, majd tegye a következőket: 
    
-   a.    Az eszközön lévő biztonsági másolat szűrése az időtartomány alapján. Az **elmúlt 7 nap**, az **elmúlt 30 nap**és az **elmúlt év**közül választhat. 
+   a.    Az eszközön lévő biztonsági másolat szűrése az időtartomány alapján. Az **elmúlt 7 nap**, az **elmúlt 30 nap** és az **elmúlt év** közül választhat. 
    
    b.    A szűrt biztonsági másolatok listájában válassza ki a klónozott biztonsági mentést.
    
@@ -89,11 +89,11 @@ A biztonsági másolatból való klónozáshoz a Azure Portal a megosztás klón
    
    a. Az eszköz neve automatikusan kitöltődik.
    
-   b. Adja meg a **klónozott kötet**kötetének nevét. A kötet nevének 3 – 127 karaktert kell tartalmaznia.
+   b. Adja meg a **klónozott kötet** kötetének nevét. A kötet nevének 3 – 127 karaktert kell tartalmaznia.
    
    c. A kötet típusa automatikusan az eredeti kötetre lesz beállítva. A többszinten lévő köteteket a rendszer lépcsőzetesen, a helyileg rögzített kötetként pedig egy helyileg rögzített kötetként klónozott.
    
-   d. A **csatlakoztatott gazdagépek**esetében kattintson a **kiválasztás**elemre.
+   d. A **csatlakoztatott gazdagépek** esetében kattintson a **kiválasztás** elemre.
    
    ![3. kötet klónozása](./media/storsimple-virtual-array-clone/clonevolume4.png)
 4. A **csatlakoztatott gazdagépek** panelen válasszon egy meglévő ACR közül, vagy adjon hozzá egy új ACR-t. Új ACR hozzáadásához meg kell adnia egy ACR-nevet és a gazdagép IQN. Kattintson a **Kiválasztás** elemre.
@@ -106,7 +106,7 @@ A biztonsági másolatból való klónozáshoz a Azure Portal a megosztás klón
    
    ![6. kötet klónozása](./media/storsimple-virtual-array-clone/clonevolume8.png)
 7. Ha a kötet megjelenik a kötetek listáján, a kötet elérhetővé válik. Az iSCSI-kezdeményező gazdagépen frissítse a célok listáját az iSCSI-kezdeményező tulajdonságai ablakban. A klónozott kötet nevét tartalmazó új cél "inaktívként" jelenik meg az Állapot oszlopban.
-8. Válassza ki a célt, és kattintson a **kapcsolat**elemre. Miután a kezdeményező csatlakozott a célhoz, az állapotnak **csatlakoztatva**értékre kell váltania.
+8. Válassza ki a célt, és kattintson a **kapcsolat** elemre. Miután a kezdeményező csatlakozott a célhoz, az állapotnak **csatlakoztatva** értékre kell váltania.
 9. A **Lemezkezelés** ablakban a csatlakoztatott kötetek az alábbi ábrán látható módon jelennek meg. Kattintson a jobb gombbal a felderített kötetre (kattintson a lemez nevére), majd kattintson az **Online** elemre.
 
 > [!IMPORTANT]
@@ -135,7 +135,7 @@ Minden megosztáshoz tartozik egy *. Backups* mappa, amely a legújabb biztonsá
 
 4. Másolja a fájlt vagy a mappát a megfelelő megosztásba a StorSimple fájlkiszolgálón.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tudjon meg többet arról, hogyan [felügyelheti a StorSimple virtuális tömböt a helyi webes felhasználói felület használatával](storsimple-ova-web-ui-admin.md).
 

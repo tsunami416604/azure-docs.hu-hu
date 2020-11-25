@@ -1,19 +1,19 @@
 ---
 title: 'Gyors útmutató: Xamarin Android-alkalmazás létrehozása'
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy Android-alkalmazást a Xamarin térbeli horgonyok használatával.
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 07/22/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: ab414b877bd2d098c6e340267ff579fb58aec9d9
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 1626dfa739df6b7cf971aa570f14d36ac6c532e7
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097320"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96022615"
 ---
 # <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>Gyors útmutató: Xamarin Android-alkalmazás létrehozása az Azure térbeli Horgonyokkal
 
@@ -43,7 +43,7 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az
 - A Xamarin. Android legújabb verziója telepítve van és fut a választott platformon. A Xamarin. Android telepítésével kapcsolatos útmutatóért tekintse meg a [Xamarin. Android telepítési](/xamarin/android/get-started/installation/index) útmutatóit.
 - A <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">fejlesztők számára engedélyezett</a> és <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore alkalmas</a> Android-eszköz.
   - Előfordulhat, hogy a számítógépe számára további eszközillesztők szükségesek az Android-eszközkel való kommunikációhoz. További információ: [itt](https://developer.android.com/studio/run/device.html).
-- Az alkalmazásnak a **1,8**ARCore kell megcéloznia.
+- Az alkalmazásnak a **1,8** ARCore kell megcéloznia.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -69,19 +69,19 @@ Keresse meg a `SpatialAnchorsAccountDomain` mezőt, és cserélje le a `Set me` 
 
 Kapcsolja be az androidos eszközt, jelentkezzen be, és csatlakoztassa a számítógéphez USB-kábellel.
 
-Állítsa az indítási projektet a **SampleXamarin. Android**értékre, módosítsa a **megoldás konfigurációját** a **kiadásra**, majd válassza ki azt az eszközt, amelyet telepíteni kíván az eszköz-választó legördülő menüben.
+Állítsa az indítási projektet a **SampleXamarin. Android** értékre, módosítsa a **megoldás konfigurációját** a **kiadásra**, majd válassza ki azt az eszközt, amelyet telepíteni kíván az eszköz-választó legördülő menüben.
 
 # <a name="windows"></a>[Windows](#tab/deploy-windows)
 
 ![Képernyőkép, amely megjeleníti a menüt a projekt és az eszköz kiválasztásához a Windowsban.](./media/get-started-xamarin-android/visual-studio-windows-configuration.png)
 
-**Debug**  >  Az alkalmazás üzembe helyezéséhez és elindításához válassza a hibakeresés**megkezdése** lehetőséget.
+**Debug**  >  Az alkalmazás üzembe helyezéséhez és elindításához válassza a hibakeresés **megkezdése** lehetőséget.
 
 # <a name="macos"></a>[macOS](#tab/deploy-macos)
 
 ![Visual Studio-konfiguráció](./media/get-started-xamarin-android/visual-studio-macos-configuration.jpg)
 
-**Run**  >  Az alkalmazás üzembe helyezéséhez és elindításához válassza a Futtatás**indításkor hibakeresés nélkül** lehetőséget.
+**Run**  >  Az alkalmazás üzembe helyezéséhez és elindításához válassza a Futtatás **indításkor hibakeresés nélkül** lehetőséget.
 
 ---
 

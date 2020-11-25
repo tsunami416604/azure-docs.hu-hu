@@ -15,17 +15,17 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: cf8fb383625ec2752264d6e5a70d8625f06689fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82628299"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022810"
 ---
 # <a name="troubleshoot-deploying-linux-virtual-machine-issues-in-azure"></a>Linux rendszerű virtuális gépek Azure-beli üzembe helyezése során előforduló problémák elhárítása
 
 A virtuális gépek üzembe helyezésével kapcsolatos problémák elhárításához az Azure-ban tekintse át a leggyakoribb hibák és megoldások [legfontosabb problémáit](#top-issues) .
 
-Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.
+Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése** lehetőséget.
 
 ## <a name="top-issues"></a>Leggyakoribb problémák
 [!INCLUDE [virtual-machines-linux-troubleshoot-deploy-vm-top](../../../includes/virtual-machines-linux-troubleshoot-deploy-vm-top.md)]
@@ -38,7 +38,7 @@ productPesIds="1234, 5678"
 />
 - Próbálja megismételni a kérést kisebb virtuálisgép-méret használatával.
 - Ha a kért virtuális gép mérete nem módosítható:
-    - Állítsa le az összes virtuális gépet a rendelkezésre állási csoportból. Kattintson **Az erőforráscsoportok >** az erőforráscsoport > **erőforrások** > a rendelkezésre állási csoport > **Virtual Machines** a virtuális gép > **leállítása**elemre.
+    - Állítsa le az összes virtuális gépet a rendelkezésre állási csoportból. Kattintson **Az erőforráscsoportok >** az erőforráscsoport > **erőforrások** > a rendelkezésre állási csoport > **Virtual Machines** a virtuális gép > **leállítása** elemre.
     - Az összes virtuális gép leállítása után a kívánt méretben hozza létre a virtuális gépet.
     - Először indítsa el az új virtuális gépet, majd válassza ki a leállított virtuális gépeket, és kattintson az Indítás gombra.
 
@@ -99,4 +99,4 @@ Igen. Meglévő klasszikus virtuális gépet hozzáadhat egy új vagy meglévő 
 ## <a name="next-steps"></a>További lépések
 Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is.
 
-Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.
+Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése** lehetőséget.

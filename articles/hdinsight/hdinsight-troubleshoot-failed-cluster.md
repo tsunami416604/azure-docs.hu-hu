@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: 4fea7719d0aa375aad3d2795d240006222b6486c
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535093"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022700"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Egy HDInsight-fürt lassú vagy meghibásodott feladatának hibaelhárítása
 
@@ -115,7 +115,7 @@ A [Ambari felhasználói felület irányítópultja](#view-cluster-configuration
 
 ### <a name="check-your-webhcat-service"></a>A Webhcaten szolgáltatás ellenõrzése
 
-A Apache Hive, Apache Pig vagy Apache Sqoop feladatok egyik gyakori forgatókönyve, hogy a hiba a [webhcaten](hdinsight-hadoop-templeton-webhcat-debug-errors.md) (vagy *Templeton* ) szolgáltatás meghibásodása. A Webhcaten egy REST-felület a távoli feladatok végrehajtásához, mint például a kaptár, a Pig, a SCOOP és a MapReduce. A Webhcaten lefordítja a beküldési kérelmeket Apache Hadoop fonal-alkalmazásokba, és visszaadja a fonal alkalmazás állapotból származtatott állapotot.  A következő szakaszok az általános Webhcaten HTTP-állapotkódok leírását ismertetik.
+A Apache Hive, Apache Pig vagy Apache Sqoop feladatok egyik gyakori forgatókönyve, hogy a hiba a [webhcaten](hdinsight-hadoop-templeton-webhcat-debug-errors.md) (vagy *Templeton*) szolgáltatás meghibásodása. A Webhcaten egy REST-felület a távoli feladatok végrehajtásához, mint például a kaptár, a Pig, a SCOOP és a MapReduce. A Webhcaten lefordítja a beküldési kérelmeket Apache Hadoop fonal-alkalmazásokba, és visszaadja a fonal alkalmazás állapotból származtatott állapotot.  A következő szakaszok az általános Webhcaten HTTP-állapotkódok leírását ismertetik.
 
 #### <a name="badgateway-502-status-code"></a>BadGateway (502 állapotkód)
 
@@ -259,7 +259,7 @@ A fürtlemez forrásának diagnosztizálásához indítson el egy új fürtöt u
 5. Folytassa, amíg az összes lépés hiba nélkül fut.
 6. Ha befejezte a tesztelési fürt hibakeresését, törölje azt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [HDInsight-fürtök kezelése az Apache Ambari webes felületével](hdinsight-hadoop-manage-ambari.md)
 * [HDInsight-naplók elemzése](./hdinsight-troubleshoot-guide.md)

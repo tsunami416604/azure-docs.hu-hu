@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/17/2020
-ms.openlocfilehash: d45f5d5d1d61372ed959334519aa865c22d70748
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: fa048473f0f285b793dad88c7defdb6189ca1ccd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832483"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023006"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Fogadó átalakítás a leképezési adatfolyamban
 
@@ -108,10 +108,14 @@ Alapértelmezés szerint az determinált sorrendben több mosogatóba történik
 
 Az adatbázisba való íráskor bizonyos sorok nem hajthatók végre, mert a cél által meghatározott korlátozások vannak megadva. Alapértelmezés szerint az adatfolyamatok futtatása meghiúsul az első hiba esetén. Bizonyos összekötők esetében dönthet úgy, hogy **folytatja a hibát** , amely lehetővé teszi az adatfolyam befejeződését, még akkor is, ha az egyes sorok hibákkal rendelkeznek. Ez a funkció jelenleg csak Azure SQL Databaseban érhető el. További információ: [Az Azure SQL dB-ben a hibajelentések feldolgozása](connector-azure-sql-database.md#error-row-handling).
 
+Az alábbi videó bemutatja, hogyan használható az adatbázis-hibák sora automatikusan a fogadó transzformációban.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4IWne]
+
 ## <a name="data-preview-in-sink"></a>Az adatelőnézet a fogadóban
 
 Amikor egy hibakeresési fürtön beolvas egy előnézetet, a rendszer nem írja le az adatait a fogadóba. Egy pillanatkép arról, hogy az adatok milyen módon lesznek visszaadva, de semmi sem kerül a célhelyre. Az adatok a fogadóba való írásának teszteléséhez futtasson egy folyamat-hibakeresést a folyamat vásznon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy létrehozta az adatfolyamatot, adjon hozzá egy [adatfolyam-tevékenységet a folyamathoz](concepts-data-flow-overview.md).

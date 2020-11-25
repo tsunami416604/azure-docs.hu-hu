@@ -9,11 +9,11 @@ ms.date: 05/18/2020
 ms.author: derekol
 Customer intent: Customer wants to measure their connection telemetry per prefix to Microsoft services with Azure Peering Service.
 ms.openlocfilehash: abbe69ebbaed56ed416f85fafa7b77a1740fabe7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84872688"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022496"
 ---
 # <a name="tutorial-measure-peering-service-connection-telemetry"></a>Oktatóanyag: egyenrangú szolgáltatási kapcsolatok telemetria mérése
 
@@ -28,7 +28,7 @@ A társ-szolgáltatási kapcsolatok telemetria méréséhez regisztrálnia kell 
 
 Ha egy adott társ-szolgáltatási kapcsolatok késési jelentését szeretné megtekinteni, kövesse az alábbi lépéseket.
 
-1. Válassza ki az **összes erőforrás** elemet a bal oldali ablaktáblán, és válassza ki a társ-szolgáltatási kapcsolatot. Ezután válassza a **Megnyitás** az **előtagok**alatt lehetőséget. 
+1. Válassza ki az **összes erőforrás** elemet a bal oldali ablaktáblán, és válassza ki a társ-szolgáltatási kapcsolatot. Ezután válassza a **Megnyitás** az **előtagok** alatt lehetőséget. 
 
    ![Válassza ki a társ-szolgáltatási kapcsolatot](./media/peering-service-measure/peering-service-measure-menu.png)
 
@@ -36,7 +36,7 @@ Ha egy adott társ-szolgáltatási kapcsolatok késési jelentését szeretné m
 
       ![Késési jelentés lapja](./media/peering-service-measure/peering-service-latency-report.png)
 
-3. Alapértelmezés szerint a jelentés minden, a lapon megjelenő órában frissül. Ha meg szeretné tekinteni a jelentést a különböző időpontokhoz, válassza ki a megfelelő lehetőséget az **adatok megjelenítéséhez az utolsó**elemnél. 
+3. Alapértelmezés szerint a jelentés minden, a lapon megjelenő órában frissül. Ha meg szeretné tekinteni a jelentést a különböző időpontokhoz, válassza ki a megfelelő lehetőséget az **adatok megjelenítéséhez az utolsó** elemnél. 
 
 4. Egy adott előtag eseményeinek megtekintéséhez válassza ki az előtag nevét, és válassza a bal oldali ablaktábla **előtag-események** elemét. Megjelennek a rögzített események.
 
@@ -47,12 +47,12 @@ Ha egy adott társ-szolgáltatási kapcsolatok késési jelentését szeretné m
 
 | **Előtag-események** | **Esemény típusa**|**Indoklása**|
 |-----------|---------|---------|
-| PrefixAnnouncementEvent |Tájékoztatás|Előtag-hirdetmény érkezett|
+| PrefixAnnouncementEvent |Információ|Előtag-hirdetmény érkezett|
 | PrefixWithdrawalEvent|Figyelmeztetés| Az előtag visszavonása megérkezett |
-| PrefixBackupRouteAnnouncementEvent |Tájékoztatás|Az előtag biztonsági mentési útvonalának bejelentése megérkezett |
+| PrefixBackupRouteAnnouncementEvent |Információ|Az előtag biztonsági mentési útvonalának bejelentése megérkezett |
 | PrefixBackupRouteWithdrawalEvent|Figyelmeztetés|Az előtag biztonsági mentési útvonalának visszavonása megérkezett |
-| PrefixActivePath |Tájékoztatás| Aktuális előtag aktív útvonala   |
-| PrefixBackupPath | Tájékoztatás|Aktuális előtag biztonsági mentési útvonala   |
+| PrefixActivePath |Információ| Aktuális előtag aktív útvonala   |
+| PrefixBackupPath | Információ|Aktuális előtag biztonsági mentési útvonala   |
 | PrefixOriginAsChangeEvent|Kritikus| Pontos előtag érkezett a különböző forrás autonóm rendszer számával (aktív útvonalhoz)| 
 | PrefixBackupRouteOriginAsChangeEvent  | Hiba|A különböző forrásként kapott előtag (biztonsági mentési útvonal)  |
 

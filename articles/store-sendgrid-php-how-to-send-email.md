@@ -16,16 +16,16 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
 ms.openlocfilehash: b3a9fee09d1eac6fb4d716af83c348cb2c21f7a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67870917"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023788"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>A SendGrid E-mail szolgáltatás használata a PHP-ből
 
 Ez az útmutató bemutatja, hogyan hajthat végre általános programozási feladatokat az Azure SendGrid e-mail szolgáltatásával. A mintákat a PHP-ben írták.
-A tárgyalt forgatókönyvek közé tartozik például az **e-mailek**létrehozása, az **e-mail küldése**és a **mellékletek hozzáadása**. További információt a SendGrid és az e-mailek küldéséről a [következő lépések](#next-steps) című szakaszban talál.
+A tárgyalt forgatókönyvek közé tartozik például az **e-mailek** létrehozása, az **e-mail küldése** és a **mellékletek hozzáadása**. További információt a SendGrid és az e-mailek küldéséről a [következő lépések](#next-steps) című szakaszban talál.
 
 ## <a name="what-is-the-sendgrid-email-service"></a>Mi a SendGrid E-mail szolgáltatás?
 A SendGrid egy [felhőalapú e-mail-szolgáltatás] , amely megbízható [tranzakciós e-mail-kézbesítést], skálázhatóságot és valós idejű elemzéseket biztosít, valamint rugalmas API-kat, amelyek egyszerűvé teszik az egyéni integrációt. Az általános SendGrid-használati forgatókönyvek a következők:
@@ -299,7 +299,7 @@ A mellékletek webes API-val történő küldése nagyon hasonlít a webes API-t
 
 ## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>Útmutató: szűrők használata a láblécek, a követés és az elemzés engedélyezéséhez
 
-A SendGrid további e-mail-funkciókat biztosít a *szűrők*használatával. Ezek olyan beállítások, amelyek hozzáadhatók egy e-mail-üzenethez, amely lehetővé teszi bizonyos funkciók használatát, például a követést, a Google Analyticset, az előfizetés nyomon követését stb.
+A SendGrid további e-mail-funkciókat biztosít a *szűrők* használatával. Ezek olyan beállítások, amelyek hozzáadhatók egy e-mail-üzenethez, amely lehetővé teszi bizonyos funkciók használatát, például a követést, a Google Analyticset, az előfizetés nyomon követését stb.
 
 A szűrők az üzenetekre a szűrők tulajdonság használatával alkalmazhatók. A szűrőket a szűrőre jellemző beállításokat tartalmazó kivonat határozza meg. A következő példa engedélyezi a lábléc szűrőjét, és megadja az e-mail-üzenet aljához hozzáfűzni kívánt szöveges üzenetet. Ebben a példában a [sendgrid-php könyvtárat]fogjuk használni.
 
@@ -406,7 +406,7 @@ php composer.phar require sendgrid/sendgrid 2.1.1
  print_r($response);
  ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte a SendGrid E-mail szolgáltatás alapjait, kövesse az alábbi hivatkozásokat további információért.
 

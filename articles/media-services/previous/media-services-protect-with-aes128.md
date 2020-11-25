@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cfc2ae06a1dca855b03f69b7f57adcfd2bfe13e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0e2f785bb3c097b7d2918198457a3f7baf6a39c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89259880"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96023448"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Az AES-128 dinamikus titkosítás és a kulcskézbesítési szolgáltatás használata
 
@@ -28,7 +28,7 @@ ms.locfileid: "89259880"
 
 > [!div class="op_single_selector"]
 > * [.NET](media-services-protect-with-aes128.md)
-> * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
+> * [Java](https://github.com/rnrneverdies/azure-sdk-for-media-services-java-samples)
 > * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 >  
 
@@ -254,7 +254,7 @@ A következő kód bemutatja, hogyan küldhet egy kérést a Media Services Key 
     <add key="Audience" value="urn:test"/>
     ```
 
-### <a name="example"></a><a id="example"></a>Például
+### <a name="example"></a><a id="example"></a>Példa
 
 Írja felül a Program.cs fájlban található kódot az itt látható kóddal.
  

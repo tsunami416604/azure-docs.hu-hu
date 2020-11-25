@@ -18,11 +18,11 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/11/2019
 ms.openlocfilehash: 870842074bb4a0012a48115586a8ad571275d470
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91281031"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022411"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-android-apps-using-azure-notification-hubs"></a>Oktatóanyag: leküldéses értesítések küldése adott Android-alkalmazásoknak az Azure Notification Hubs
 
@@ -485,7 +485,7 @@ A következő lépés az oktatóanyagban létrehozott Android-alkalmazás friss�
 
 1. Futtassa az alkalmazást egy eszközön vagy az Android Studiót használó emulátoron.
 2. Az Android-alkalmazásban adjon meg egy felhasználónevet és jelszót. Mindkettőnek ugyanazon sztringértéknek kell lennie, és nem tartalmazhatnak szóközt vagy különleges karaktert.
-3. Az Android-alkalmazásban kattintson a **Bejelentkezés**elemre. Várjon egy, az állapotba **bejelentkezett és regisztrált Toast-** üzenetet. Ezzel elérhetővé válik a **Send Notification** (Értesítés küldése) gomb.
+3. Az Android-alkalmazásban kattintson a **Bejelentkezés** elemre. Várjon egy, az állapotba **bejelentkezett és regisztrált Toast-** üzenetet. Ezzel elérhetővé válik a **Send Notification** (Értesítés küldése) gomb.
 
     ![Képernyőkép egy emulátorról, amely bemutatja, hogy a felhasználók hogyan értesítik a felhasználókat az Notification Hubs a bejelentkezés után.][A2]
 4. Kattintson a váltógombokra az összes olyan platform engedélyezéséhez, amelyen futtatta az alkalmazást és regisztrált felhasználókat.

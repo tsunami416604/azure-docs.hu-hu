@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: b8dc63030c6791779ad90500747e4e2f5c4ffeef
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288984"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022666"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Az Apache Hadoop YARN hibaelhárítása az Azure HDInsighttal
 
@@ -24,7 +24,7 @@ Ismerkedjen meg a leggyakoribb problémákról és azok megoldásaival kapcsolat
 
 A következő lépések végrehajtásával hozzon létre egy új Ambari-várólistát, majd az összes várólista között válassza a kapacitás kiosztását.
 
-Ebben a példában két meglévő várólista ( **alapértelmezett** és **thriftsvr** ) is módosul 50%-os kapacitásról 25%-ra, ami az új üzenetsor (Spark) 50%-os kapacitását adja meg.
+Ebben a példában két meglévő várólista (**alapértelmezett** és **thriftsvr**) is módosul 50%-os kapacitásról 25%-ra, ami az új üzenetsor (Spark) 50%-os kapacitását adja meg.
 
 | Üzenetsor | Kapacitás | Maximális kapacitás |
 | --- | --- | --- |
@@ -129,11 +129,11 @@ Ezek a változások azonnal láthatók a fonal-ütemező felhasználói felület
 
     Ez a parancs létrehoz egy containerlogs.txt nevű naplófájlt.
 
-### <a name="additional-reading"></a><a name="additional-reading-2"></a>További információ
+### <a name="additional-reading"></a><a name="additional-reading-2"></a>További olvasnivaló
 
 - [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](./hdinsight-hadoop-linux-use-ssh-unix.md)
 - [A fonal-fogalmak és-alkalmazások Apache Hadoop](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [troubleshooting next steps](../../includes/hdinsight-troubleshooting-next-steps.md)]

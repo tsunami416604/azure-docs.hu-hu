@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
 ms.openlocfilehash: 22ce91a81964ed52830fc19dbbbd52e7f170b0d4
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535399"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022768"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök méretezése
 
@@ -125,10 +125,10 @@ Ha el szeretné kerülni, hogy a futó feladatok leskálázási művelet közben
 1. Manuálisan fejezze be a feladatokat.
 1. A skálázási művelet megkötése után küldje el újra a feladatokat.
 
-A függőben lévő és futó feladatok listájának megtekintéséhez a következő lépéseket követve használhatja a fonal **Resource Manager felhasználói felületét** :
+A függőben lévő és futó feladatok listájának megtekintéséhez a következő lépéseket követve használhatja a fonal **Resource Manager felhasználói felületét**:
 
 1. A [Azure Portal](https://portal.azure.com/)válassza ki a fürtöt.  A fürt megnyílik egy új portál oldalon.
-2. A fő nézetből navigáljon a **fürt irányítópultok**  >  **Ambari kezdőlapra** . Adja meg a fürt hitelesítő adatait.
+2. A fő nézetből navigáljon a **fürt irányítópultok**  >  **Ambari kezdőlapra**. Adja meg a fürt hitelesítő adatait.
 3. A Ambari felhasználói felületén válassza a **fonal** elemet a szolgáltatások listájában a bal oldali menüben.  
 4. A fonal lapon válassza a **gyors hivatkozások** lehetőséget, majd vigye az egérmutatót az aktív fő csomópont fölé, majd válassza a **Resource Manager felhasználói felület** lehetőséget.
 
@@ -268,7 +268,7 @@ A skálázási művelet elvégzése után néhány percen belül automatikusan k
     balancer
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure HDInsight-fürtök automatikus skálázása](hdinsight-autoscale-clusters.md)
 

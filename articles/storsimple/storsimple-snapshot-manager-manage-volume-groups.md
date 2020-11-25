@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 805ab0e78f0679ce483af3a73203b41132be2a59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90054772"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022955"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>StorSimple-Snapshot Manager használata a kötetek létrehozásához és kezeléséhez
 ## <a name="overview"></a>Áttekintés
@@ -46,14 +46,14 @@ Ez az oktatóanyag azt ismerteti, hogyan használható a StorSimple Snapshot Man
 Az összes művelet a **műveletek** ablaktáblán is elérhető.
 
 ## <a name="view-volume-groups"></a>Mennyiségi csoportok megtekintése
-Ha a **mennyiségi csoportok** csomópontra kattint, az **eredmények** ablaktábla az egyes kötetekre vonatkozó alábbi információkat jeleníti meg az oszlopok kiválasztott beállításaitól függően. (Az **eredmények** ablaktáblájának oszlopai konfigurálhatók. Kattintson a jobb gombbal a **kötetek** csomópontra, válassza a **nézet**, majd az **Oszlopok hozzáadása/eltávolítása**lehetőséget.)
+Ha a **mennyiségi csoportok** csomópontra kattint, az **eredmények** ablaktábla az egyes kötetekre vonatkozó alábbi információkat jeleníti meg az oszlopok kiválasztott beállításaitól függően. (Az **eredmények** ablaktáblájának oszlopai konfigurálhatók. Kattintson a jobb gombbal a **kötetek** csomópontra, válassza a **nézet**, majd az **Oszlopok hozzáadása/eltávolítása** lehetőséget.)
 
 | Eredmények oszlop | Leírás |
 |:--- |:--- |
-| Name (Név) |A **Name (név** ) oszlop tartalmazza a kötet csoportjának nevét. |
+| Név |A **Name (név** ) oszlop tartalmazza a kötet csoportjának nevét. |
 | Alkalmazás |Az **alkalmazások** oszlop a Windows-gazdagépen jelenleg telepített és futó VSS-írók számát jeleníti meg. |
 | Bejelölve |A **kiválasztott** oszlop a kötetben található kötetek számát jeleníti meg. A nulla (0) érték azt jelzi, hogy egyetlen alkalmazás sincs társítva a mennyiségi csoport köteteihez. |
-| Importált |Az **importált** oszlop az importált kötetek számát jeleníti meg. Ha **igaz**értékre van állítva, akkor ez az oszlop azt jelzi, hogy egy kötet csoport lett importálva a Azure Portalból, és nem lett létrehozva a StorSimple Snapshot Manager. |
+| Importált |Az **importált** oszlop az importált kötetek számát jeleníti meg. Ha **igaz** értékre van állítva, akkor ez az oszlop azt jelzi, hogy egy kötet csoport lett importálva a Azure Portalból, és nem lett létrehozva a StorSimple Snapshot Manager. |
 
 > [!NOTE]
 > A StorSimple Snapshot Manager kötetek a Azure Portal **biztonsági mentési házirendek** lapján is megjelennek.
@@ -65,7 +65,7 @@ A következő eljárással hozhat létre kötet-csoportot.
 
 #### <a name="to-create-a-volume-group"></a>Kötet csoport létrehozása
 1. A StorSimple Snapshot Manager indításához kattintson az asztal ikonjára.
-2. A **hatókör** ablaktáblán kattintson a jobb gombbal a **kötetek csoportok**elemre, majd kattintson a **kötet csoport létrehozása**parancsra.
+2. A **hatókör** ablaktáblán kattintson a jobb gombbal a **kötetek csoportok** elemre, majd kattintson a **kötet csoport létrehozása** parancsra.
    
     ![Kötet csoport létrehozása](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_Create_volume_group.png)
    
@@ -92,22 +92,22 @@ A kötetek biztonsági mentését az alábbi eljárással hozhatja létre.
 
 #### <a name="to-back-up-a-volume-group"></a>Mennyiségi csoport biztonsági mentése
 1. A StorSimple Snapshot Manager indításához kattintson az asztal ikonjára.
-2. A **hatókör** ablaktáblán bontsa ki a **kötetek csoportjai** csomópontot, kattintson a jobb gombbal a kötet csoport nevére, majd kattintson a **biztonsági mentés**készítése elemre.
+2. A **hatókör** ablaktáblán bontsa ki a **kötetek csoportjai** csomópontot, kattintson a jobb gombbal a kötet csoport nevére, majd kattintson a **biztonsági mentés** készítése elemre.
    
     ![A kötet csoport biztonsági mentése azonnal](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_Take_backup.png)
-3. A **biztonsági mentés** készítése párbeszédpanelen válassza a **helyi pillanatkép** vagy a **Felhőbeli pillanatkép**lehetőséget, majd kattintson a **Létrehozás**gombra.
+3. A **biztonsági mentés** készítése párbeszédpanelen válassza a **helyi pillanatkép** vagy a **Felhőbeli pillanatkép** lehetőséget, majd kattintson a **Létrehozás** gombra.
    
     ![Biztonsági mentés készítése párbeszédpanel](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_TakeBackup_dialog.png)
-4. Annak ellenőrzéséhez, hogy a biztonsági mentés fut-e, bontsa ki a **feladatok** csomópontot, majd kattintson a **Futtatás**elemre. A biztonsági másolatnak szerepelnie kell a felsorolásban.
-5. A befejezett pillanatkép megtekintéséhez bontsa ki a **biztonságimásolat-katalógus** csomópontot, bontsa ki a kötet csoport nevét, majd kattintson a **helyi pillanatkép** vagy a **Felhőbeli pillanatkép**elemre. A biztonsági mentés akkor jelenik meg, ha a művelet sikeresen befejeződött.
+4. Annak ellenőrzéséhez, hogy a biztonsági mentés fut-e, bontsa ki a **feladatok** csomópontot, majd kattintson a **Futtatás** elemre. A biztonsági másolatnak szerepelnie kell a felsorolásban.
+5. A befejezett pillanatkép megtekintéséhez bontsa ki a **biztonságimásolat-katalógus** csomópontot, bontsa ki a kötet csoport nevét, majd kattintson a **helyi pillanatkép** vagy a **Felhőbeli pillanatkép** elemre. A biztonsági mentés akkor jelenik meg, ha a művelet sikeresen befejeződött.
 
 ## <a name="edit-a-volume-group"></a>Mennyiségi csoport szerkesztése
 A következő eljárással szerkesztheti a kötetek csoportjait.
 
 #### <a name="to-edit-a-volume-group"></a>Mennyiségi csoport szerkesztése
 1. A StorSimple Snapshot Manager indításához kattintson az asztal ikonjára.
-2. A **hatókör** ablaktáblán bontsa ki a **kötetek csoportjai** csomópontot, kattintson a jobb gombbal a kötet csoport nevére, majd kattintson a **Szerkesztés**parancsra.
-3. Megjelenik a * * kötet csoport létrehozása * * párbeszédpanel. Módosíthatja a **nevet**, az **alkalmazásokat**és a **kötetek** bejegyzéseit.
+2. A **hatókör** ablaktáblán bontsa ki a **kötetek csoportjai** csomópontot, kattintson a jobb gombbal a kötet csoport nevére, majd kattintson a **Szerkesztés** parancsra.
+3. Megjelenik a * * kötet csoport létrehozása * * párbeszédpanel. Módosíthatja a **nevet**, az **alkalmazásokat** és a **kötetek** bejegyzéseit.
 4. Kattintson az **OK** gombra a módosítások mentéséhez.
 
 ## <a name="delete-a-volume-group"></a>Mennyiségi csoport törlése
@@ -120,12 +120,12 @@ A köteteket a következő eljárással törölheti.
 
 #### <a name="to-delete-a-volume-group"></a>Mennyiségi csoport törlése
 1. A StorSimple Snapshot Manager indításához kattintson az asztal ikonjára.
-2. A **hatókör** ablaktáblán bontsa ki a **kötetek csoportjai** csomópontot, kattintson a jobb gombbal a kötet csoport nevére, majd kattintson a **Törlés**parancsra.
-3. Megjelenik a **kötet törlése** párbeszédpanel. Írja be a **megerősítés** szöveget a szövegmezőbe, majd kattintson **az OK**gombra.
+2. A **hatókör** ablaktáblán bontsa ki a **kötetek csoportjai** csomópontot, kattintson a jobb gombbal a kötet csoport nevére, majd kattintson a **Törlés** parancsra.
+3. Megjelenik a **kötet törlése** párbeszédpanel. Írja be a **megerősítés** szöveget a szövegmezőbe, majd kattintson **az OK** gombra.
    
     A törölt számítógépcsoport eltűnik az **eredményeket** tartalmazó ablaktábla listájáról, és az adott kötethez társított összes biztonsági mentés törlődik a biztonsági mentési katalógusból.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Ismerje meg, hogyan kezelheti [a StorSimple-megoldást a StorSimple Snapshot Manager használatával](storsimple-snapshot-manager-admin.md).
 * Ismerje meg, hogyan [hozhat létre és kezelhet biztonsági mentési házirendeket a StorSimple Snapshot Manager használatával](storsimple-snapshot-manager-manage-backup-policies.md).
 

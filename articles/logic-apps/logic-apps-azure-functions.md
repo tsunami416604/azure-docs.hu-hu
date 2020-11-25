@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.custom: devx-track-js
 ms.openlocfilehash: 75693c57a8d120aad53a15d03ae4054bac8262af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269301"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023057"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Azure-függvények meghívása az Azure Logic Appsből
 
@@ -61,11 +61,11 @@ Ha a Logic Apps Designerben a Function paraméterekkel dolgozik, érdemes megism
 
 1. A Function alkalmazásban a következő lépések végrehajtásával állítson be [több eredetű erőforrás-megosztást (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) , hogy minden eredet engedélyezve legyen:
 
-   1. A **Function apps** listából válassza ki a Function alkalmazást. A jobb oldali ablaktáblán válassza a **platform szolgáltatások**  >  **CORS**elemet.
+   1. A **Function apps** listából válassza ki a Function alkalmazást. A jobb oldali ablaktáblán válassza a **platform szolgáltatások**  >  **CORS** elemet.
 
       ![Válassza ki a Function alkalmazást > "platform-funkciók" > "CORS" elemet.](./media/logic-apps-azure-functions/function-platform-features-cors.png)
 
-   1. A **CORS**területen adja hozzá a csillag ( **`*`** ) helyettesítő karaktert, de távolítsa el a listában szereplő összes többi eredetet, majd kattintson a **Mentés**gombra.
+   1. A **CORS** területen adja hozzá a csillag ( **`*`** ) helyettesítő karaktert, de távolítsa el a listában szereplő összes többi eredetet, majd kattintson a **Mentés** gombra.
 
       ![A "*" helyettesítő karakter CORS beállítása](./media/logic-apps-azure-functions/function-platform-features-cors-origins.png)
 
@@ -110,9 +110,9 @@ Ahhoz azonban, hogy bármely Azure-függvényt létre lehessen hozni, már rende
 
 1. A függvény létrehozásához és hozzáadásához kövesse az adott forgatókönyvhöz tartozó lépést:
 
-   * A logikai alkalmazás munkafolyamatának utolsó lépése alatt válassza az **új lépés**lehetőséget.
+   * A logikai alkalmazás munkafolyamatának utolsó lépése alatt válassza az **új lépés** lehetőséget.
 
-   * A logikai alkalmazás munkafolyamatának meglévő lépései között vigye az egérmutatót a nyílra, válassza ki a plusz (+) jelet, majd válassza a **művelet hozzáadása**lehetőséget.
+   * A logikai alkalmazás munkafolyamatának meglévő lépései között vigye az egérmutatót a nyílra, válassza ki a plusz (+) jelet, majd válassza a **művelet hozzáadása** lehetőséget.
 
 1. A keresőmezőbe írja be szűrőként az "Azure functions" kifejezést. A műveletek listából válassza az Azure- **függvény kiválasztása** műveletet, például:
 
@@ -128,11 +128,11 @@ Ahhoz azonban, hogy bármely Azure-függvényt létre lehessen hozni, már rende
 
    1. A **Code (kód** ) mezőben adja hozzá a kódot a függvény sablonhoz, beleértve a logikai alkalmazásnak a működés befejezése után visszaadott válaszokat és hasznos adatokat. Ha elkészült, válassza a **Létrehozás** lehetőséget.
 
-   Példa:
+   Például:
 
    ![A függvény megadása](./media/logic-apps-azure-functions/add-code-function-definition.png)
 
-   A sablon kódjában az * `context` objektum* arra az üzenetre hivatkozik, amelyet a logikai alkalmazás egy későbbi lépésben a **kérés törzse** mezőben küld. Az `context` objektum tulajdonságainak a függvényen belüli eléréséhez használja a következő szintaxist:
+   A sablon kódjában az *`context` objektum* arra az üzenetre hivatkozik, amelyet a logikai alkalmazás egy későbbi lépésben a **kérés törzse** mezőben küld. Az `context` objektum tulajdonságainak a függvényen belüli eléréséhez használja a következő szintaxist:
 
    `context.body.<property-name>`
 
@@ -165,9 +165,9 @@ A logikai alkalmazásokból származó meglévő Azure-függvények meghívásá
 
 1. A [Azure Portalban](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic app Designerben.
 
-1. A függvény hozzáadásának lépéséhez válassza az **új lépés**lehetőséget.
+1. A függvény hozzáadásának lépéséhez válassza az **új lépés** lehetőséget.
 
-1. A **válasszon műveletet**területen a keresőmezőbe írja be szűrőként az "Azure functions" kifejezést. A műveletek listából válassza az Azure- **függvény kiválasztása** műveletet.
+1. A **válasszon műveletet** területen a keresőmezőbe írja be szűrőként az "Azure functions" kifejezést. A műveletek listából válassza az Azure- **függvény kiválasztása** műveletet.
 
    !["Azure functions" keresése](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
@@ -195,7 +195,7 @@ A logikai alkalmazásokból származó meglévő Azure-függvények meghívásá
 
 ## <a name="call-logic-apps-from-azure-functions"></a>Logikai alkalmazások meghívása az Azure functions szolgáltatásból
 
-Ha egy logikai alkalmazást egy Azure-függvényen belül szeretne elindítani, a logikai alkalmazásnak egy olyan triggerrel kell kezdődnie, amely meghívásos végpontot biztosít. Elindíthatja például a logikai alkalmazást a **http**, a **kérelem**, az **Azure Queues**vagy a **Event Grid** trigger használatával. A függvényen belül küldjön egy HTTP POST-kérelmet az trigger URL-címére, és adja meg a logikai alkalmazás feldolgozására használni kívánt adattartalmat. További információ: a [logikai alkalmazások hívása, triggere vagy beágyazása](../logic-apps/logic-apps-http-endpoint.md).
+Ha egy logikai alkalmazást egy Azure-függvényen belül szeretne elindítani, a logikai alkalmazásnak egy olyan triggerrel kell kezdődnie, amely meghívásos végpontot biztosít. Elindíthatja például a logikai alkalmazást a **http**, a **kérelem**, az **Azure Queues** vagy a **Event Grid** trigger használatával. A függvényen belül küldjön egy HTTP POST-kérelmet az trigger URL-címére, és adja meg a logikai alkalmazás feldolgozására használni kívánt adattartalmat. További információ: a [logikai alkalmazások hívása, triggere vagy beágyazása](../logic-apps/logic-apps-http-endpoint.md).
 
 <a name="enable-authentication-functions"></a>
 
@@ -222,15 +222,15 @@ Ha a logikai alkalmazás felügyelt identitását szeretné használni az Azure-
 
 1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki a Function alkalmazást. Ezek a lépések az "FabrikamFunctionApp" kifejezést használják példaként szolgáló Function alkalmazásként.
 
-1. A Function alkalmazás ablaktáblán válassza a **platform szolgáltatások**elemet. A **fejlesztői eszközök**területen válassza a **speciális eszközök (kudu)** lehetőséget.
+1. A Function alkalmazás ablaktáblán válassza a **platform szolgáltatások** elemet. A **fejlesztői eszközök** területen válassza a **speciális eszközök (kudu)** lehetőséget.
 
    ![A kudu speciális eszközeinek megnyitása](./media/logic-apps-azure-functions/open-advanced-tools-kudu.png)
 
-1. A kudu webhely címsorában, a **hibakeresési konzol** menüjében válassza a **cmd**elemet.
+1. A kudu webhely címsorában, a **hibakeresési konzol** menüjében válassza a **cmd** elemet.
 
    ![A hibakeresési konzol menüjében válassza a "CMD" lehetőséget.](./media/logic-apps-azure-functions/open-debug-console-kudu.png)
 
-1. A következő oldal megjelenése után a mappalistában válassza a **site**  >  **wwwroot**  >  *a-Function*elemet. Ezek a lépések az "FabrikamAzureFunction" függvényt használják példaként.
+1. A következő oldal megjelenése után a mappalistában válassza a **site**  >  **wwwroot**  >  *a-Function* elemet. Ezek a lépések az "FabrikamAzureFunction" függvényt használják példaként.
 
    ![Válassza ki a "site" > "wwwroot" > a függvényt](./media/logic-apps-azure-functions/select-site-wwwroot-function-folder.png)
 
@@ -254,7 +254,7 @@ A feladat elindítása előtt keresse meg és helyezze el ezeket az értékeket 
 
   * Az objektumazonosító létrehozásához [engedélyezze a logikai alkalmazás rendszer által hozzárendelt identitását](../logic-apps/create-managed-service-identity.md#azure-portal-system-logic-app).
 
-  * Ellenkező esetben az objektumazonosító megkereséséhez nyissa meg a logikai alkalmazást a Logic app Designerben. A logikai alkalmazás menüjének **Beállítások**területén válassza az **Identity**  >  **System Assigned**elemet.
+  * Ellenkező esetben az objektumazonosító megkereséséhez nyissa meg a logikai alkalmazást a Logic app Designerben. A logikai alkalmazás menüjének **Beállítások** területén válassza az **Identity**  >  **System Assigned** elemet.
 
 * Azure Active Directory (Azure AD) bérlői címtárának azonosítója
 
@@ -264,7 +264,7 @@ A feladat elindítása előtt keresse meg és helyezze el ezeket az értékeket 
 
   1. Keresse meg és válassza ki az Azure AD-bérlőt. Ezek a lépések a "Fabrikam"-t használják példaként a bérlőként.
 
-  1. A bérlő menü **kezelés**területén válassza a **Tulajdonságok**elemet.
+  1. A bérlő menü **kezelés** területén válassza a **Tulajdonságok** elemet.
 
   1. Másolja például a bérlő címtár-AZONOSÍTÓját, és mentse az azonosítót későbbi használatra.
 
@@ -283,17 +283,17 @@ Most már készen áll az Azure AD-hitelesítés beállítására a Function alk
 
 1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki a Function alkalmazást.
 
-1. A Function alkalmazás ablaktáblán válassza a **platform szolgáltatások**elemet. A **hálózat**területen válassza a **hitelesítés/engedélyezés**lehetőséget.
+1. A Function alkalmazás ablaktáblán válassza a **platform szolgáltatások** elemet. A **hálózat** területen válassza a **hitelesítés/engedélyezés** lehetőséget.
 
    ![Hitelesítési és engedélyezési beállítások megtekintése](./media/logic-apps-azure-functions/view-authentication-authorization-settings.png)
 
-1. Módosítsa a **app Service hitelesítési** beállítást **a be**értékre. Ha a **kérelem nem hitelesítve van, akkor az elvégzendő műveletből** válassza a **Bejelentkezés a következővel Azure Active Directory**elemet. A **hitelesítésszolgáltatók**területen válassza a **Azure Active Directory**lehetőséget.
+1. Módosítsa a **app Service hitelesítési** beállítást **a be** értékre. Ha a **kérelem nem hitelesítve van, akkor az elvégzendő műveletből** válassza a **Bejelentkezés a következővel Azure Active Directory** elemet. A **hitelesítésszolgáltatók** területen válassza a **Azure Active Directory** lehetőséget.
 
    ![Hitelesítés bekapcsolása az Azure AD-vel](./media/logic-apps-azure-functions/turn-on-authentication-azure-active-directory.png)
 
 1. A **Azure Active Directory beállítások** ablaktáblán hajtsa végre az alábbi lépéseket:
 
-   1. Állítsa be a **felügyeleti módot** a **speciális**értékre.
+   1. Állítsa be a **felügyeleti módot** a **speciális** értékre.
 
    1. Az **ügyfél-azonosító** tulajdonságban adja meg a logikai alkalmazás rendszer által hozzárendelt identitásához tartozó objektumazonosítót.
 
@@ -313,6 +313,6 @@ Most már készen áll az Azure AD-hitelesítés beállítására a Function alk
 
 1. Térjen vissza a Logic app Designer szolgáltatáshoz, és kövesse a [lépéseket a felügyelt identitással való hozzáférés hitelesítéséhez](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tudnivalók az [Logic apps-összekötőről](../connectors/apis-list.md)

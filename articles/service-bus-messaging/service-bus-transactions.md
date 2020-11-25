@@ -5,11 +5,11 @@ ms.topic: article
 ms.date: 10/28/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9162b8578fe4f48cc3740b38d9d84ffaa2f260de
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927787"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023601"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>A tranzakciók feldolgozásának Service Bus áttekintése
 
@@ -17,7 +17,7 @@ Ez a cikk a Microsoft Azure Service Bus tranzakciós képességeit ismerteti. A 
 
 ## <a name="transactions-in-service-bus"></a>Service Bus tranzakciói
 
-Egy *tranzakció* két vagy több műveletet egyesít egy *végrehajtási hatókörbe* . Természeténél fogva az ilyen tranzakciónak biztosítania kell, hogy az adott műveleti csoportba tartozó összes művelet a sikeres vagy a sikertelen műveletekkel együtt járjon el. Ebben a tekintetben a tranzakciók egy egységként működnek, amelyet gyakran *atominak* nevezünk.
+Egy *tranzakció* két vagy több műveletet egyesít egy *végrehajtási hatókörbe*. Természeténél fogva az ilyen tranzakciónak biztosítania kell, hogy az adott műveleti csoportba tartozó összes művelet a sikeres vagy a sikertelen műveletekkel együtt járjon el. Ebben a tekintetben a tranzakciók egy egységként működnek, amelyet gyakran *atominak* nevezünk.
 
 A Service Bus egy tranzakciós üzenetküldési ügynök, és biztosítja az összes belső művelet tranzakciós integritását az üzenet-tárolókban. A Service Buson belüli összes üzenet átvitele, például üzenetek áthelyezése egy [kézbesítetlen levelek várólistájába](service-bus-dead-letter-queues.md) vagy az üzenetek entitások közötti [automatikus továbbítása](service-bus-auto-forwarding.md) , tranzakciós. Ilyen esetben, ha Service Bus fogad egy üzenetet, azt már tárolták, és sorszámmal címkézték. Ettől kezdve a Service Buson belüli összes üzenet a különböző entitások között koordinált műveleteket hajt végre, és nem fog elveszíteni (a forrás sikeres és a cél sikertelen lesz), vagy a Duplikálás (a forrás meghibásodása és a cél sikeressége).
 
@@ -27,8 +27,8 @@ A Service Bus támogatja az egyetlen üzenetküldő entitásra (üzenetsor, tém
 
 A tranzakciók hatókörén belül elvégezhető műveletek a következők:
 
-* **[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient), [MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender), [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)** : `Send` , `SendAsync` , `SendBatch` ,`SendBatchAsync`
-* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)** :,,,, `Complete` `CompleteAsync` `Abandon` `AbandonAsync` `Deadletter` , `DeadletterAsync` , `Defer` , `DeferAsync` , `RenewLock` , `RenewLockAsync` 
+* **[QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient), [MessageSender](/dotnet/api/microsoft.azure.servicebus.core.messagesender), [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient)**: `Send` , `SendAsync` , `SendBatch` ,`SendBatchAsync`
+* **[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)**:,,,, `Complete` `CompleteAsync` `Abandon` `AbandonAsync` `Deadletter` , `DeadletterAsync` , `Defer` , `DeferAsync` , `RenewLock` , `RenewLockAsync` 
 
 A fogadási műveletek nem szerepelnek, mert feltételezhető, hogy az alkalmazás a [ReceiveMode. PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) mód használatával, egy fogadási hurokban vagy egy [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) -visszahívással szerzi be az üzeneteket, és csak ezután nyit meg egy tranzakció-hatókört az üzenet feldolgozásához.
 
@@ -36,7 +36,7 @@ Az üzenet (teljes, lemondás, kézbesítetlen levél, elhalasztás) a (z) és a
 
 ## <a name="transfers-and-send-via"></a>Átvitel és "Küldés"
 
-Ha engedélyezni szeretné az adatok tranzakciós *átadását* egy várólistáról vagy témakörből egy processzorra, majd egy másik várólistára vagy témakörre, Service Bus támogatja az átvitelt. Az átviteli műveletekben a küldő először üzenetet küld egy *adatátviteli várólistába vagy témakörbe* , és az átviteli várólista vagy a témakör azonnal áthelyezi az üzenetet a kívánt célhelyre vagy témakörre ugyanazzal a robusztus átvitel-megvalósítással, amelyet az autoforward funkció támaszkodik. Az üzenet soha nem lett véglegesítve az adatátviteli várólista vagy a témakör naplójában, így láthatóvá válik az átviteli várólista vagy a témakör felhasználói számára.
+Ha engedélyezni szeretné az adatok tranzakciós *átadását* egy várólistáról vagy témakörből egy processzorra, majd egy másik várólistára vagy témakörre, Service Bus támogatja az átvitelt. Az átviteli műveletekben a küldő először üzenetet küld egy *adatátviteli várólistába vagy témakörbe*, és az átviteli várólista vagy a témakör azonnal áthelyezi az üzenetet a kívánt célhelyre vagy témakörre ugyanazzal a robusztus átvitel-megvalósítással, amelyet az autoforward funkció támaszkodik. Az üzenet soha nem lett véglegesítve az adatátviteli várólista vagy a témakör naplójában, így láthatóvá válik az átviteli várólista vagy a témakör felhasználói számára.
 
 A tranzakciós képesség ereje nyilvánvalóvá válik, ha az átviteli várólista vagy a témakör maga a küldő bemeneti üzeneteinek forrása. Más szóval, Service Bus átviheti az üzenetet a célhelyre vagy a (z) "on" üzenetbe az átviteli várólistán vagy témakörön keresztül, miközben teljes (vagy késleltetett) műveletet végez a bemeneti üzenetben, egyetlen atomi művelettel. 
 
@@ -91,7 +91,7 @@ using (var ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
 ## <a name="timeout"></a>Időtúllépés
 Egy tranzakció időtúllépése 2 perc múlva megtörténik. A tranzakció-időzítő akkor indul el, amikor a tranzakció első művelete elindul. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Service Bus várólistákkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 

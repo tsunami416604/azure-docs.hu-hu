@@ -6,11 +6,11 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 26ac1714330bba06c01d33b47105f04c600c7729
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555107"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024095"
 ---
 # <a name="color-materials"></a>Színes anyagok
 
@@ -66,7 +66,7 @@ A következő tulajdonságok a színanyagokra jellemzőek:
 * [C++ ColorMaterial osztály](/cpp/api/remote-rendering/colormaterial)
 * [C++ RemoteManager:: CreateMaterial ()](/cpp/api/remote-rendering/remotemanager#creatematerial)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [PBR-anyagok](pbr-materials.md)
 * [Textúrák](../../concepts/textures.md)

@@ -12,11 +12,11 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.openlocfilehash: effa0d3ba9f7098b691605bfbd76bff9ea3d5e66
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593756"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023431"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure SSIS integrációs modul létrehozása Azure Data Factory
 
@@ -79,7 +79,7 @@ Azon Azure-régiók listájáért, amelyekben Data Factory és Azure-SSIS IR el�
 
 Az alábbi táblázat összehasonlítja egy Azure SQL Database-kiszolgáló és az SQL felügyelt példány bizonyos funkcióit, amelyek az Azure-SSIR IR-hez kapcsolódnak:
 
-| Jellemző | SQL Database| SQL felügyelt példány |
+| Funkció | SQL Database| SQL felügyelt példány |
 |---------|--------------|------------------|
 | **Ütemezés** | A SQL Server Agent nem érhető el.<br/><br/>Lásd: [csomagok végrehajtásának ütemezett Data Factory folyamata](/sql/integration-services/lift-shift/ssis-azure-schedule-packages?view=sql-server-2017#activity).| A felügyelt példány ügynöke elérhető. |
 | **Hitelesítés** | Létrehozhat egy SSISDB-példányt egy olyan tárolt adatbázis-felhasználóval, aki az adat-előállító felügyelt identitásával rendelkező Azure AD-csoportot az **db_owner** szerepkör tagjaként.<br/><br/>Lásd: az [Azure ad-hitelesítés engedélyezése SSISDB létrehozásához Azure SQL Database kiszolgálón](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database). | Létrehozhat egy SSISDB-példányt egy olyan tárolt adatbázis-felhasználóval, aki az adatelőállító felügyelt identitását képviseli. <br/><br/>Lásd: az [Azure ad-hitelesítés engedélyezése SSISDB létrehozásához az Azure SQL felügyelt példányában](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-sql-managed-instance). |
@@ -128,7 +128,7 @@ Az **Integration Runtime telepítési** paneljének **általános beállítások
 
    7. A **pénz megtakarítása** lehetőségnél válassza a Azure Hybrid Benefit lehetőséget az integrációs futtatókörnyezethez: **Igen** vagy **nem**. Válassza az **Igen** lehetőséget, ha a frissítési garanciával rendelkező saját SQL Server licencét szeretné kihasználni a hibrid használattal járó költségmegtakarítással.
 
-   8. Válassza a **Tovább** gombot.
+   8. Kattintson a **Tovább** gombra.
 
 #### <a name="deployment-settings-page"></a>Központi telepítési beállítások lap
 
@@ -186,7 +186,7 @@ A **csomag-áruház hozzáadása** panelen hajtsa végre az alábbi lépéseket.
    1. A **Package Store társított szolgáltatás** esetében válassza ki a meglévő társított szolgáltatást, amely tárolja a fájlrendszer/Azure Files/Azure SQL felügyelt példányhoz tartozó hozzáférési adatokat, ahol a csomagok telepítve vannak, vagy hozzon létre egy újat az **új** lehetőség kiválasztásával. Az **új társított szolgáltatás** ablaktáblán hajtsa végre a következő lépéseket.
    
       > [!NOTE]
-      > Az Azure Files eléréséhez használhatja az **Azure file Storage** vagy a **fájlrendszerhez** társított szolgáltatásokat. Ha az **Azure file Storage** társított szolgáltatást használja, Azure-SSIS IR a Package Store jelenleg csak az **alapszintű** (nem a **fiók kulcsát** és az **sas URI** -t) hitelesítési módszert támogatja. Az **Azure file Storage** társított szolgáltatás **alapszintű** hitelesítésének használatához hozzáfűzheti `?feature.upgradeAzureFileStorage=false` Az ADF portál URL-címét a böngészőben. Azt is megteheti, hogy a **fájlrendszerhez** társított szolgáltatást használja a Azure Files eléréséhez. 
+      > Az Azure Files eléréséhez használhatja az **Azure file Storage** vagy a **fájlrendszerhez** társított szolgáltatásokat. Ha az **Azure file Storage** társított szolgáltatást használja, Azure-SSIS IR a Package Store jelenleg csak az **alapszintű** (nem a **fiók kulcsát** és az **sas URI**-t) hitelesítési módszert támogatja. Az **Azure file Storage** társított szolgáltatás **alapszintű** hitelesítésének használatához hozzáfűzheti `?feature.upgradeAzureFileStorage=false` Az ADF portál URL-címét a böngészőben. Azt is megteheti, hogy a **fájlrendszerhez** társított szolgáltatást használja a Azure Files eléréséhez. 
 
       ![A társított szolgáltatások telepítési beállításai](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings-linked-service.png)
 
@@ -194,17 +194,17 @@ A **csomag-áruház hozzáadása** panelen hajtsa végre az alábbi lépéseket.
          
       1. A **Leírás** mezőben adja meg a társított szolgáltatás leírását. 
          
-      1. A **Típus mezőben** válassza az **Azure file Storage** , az **Azure SQL felügyelt példány** vagy a **fájlrendszer** lehetőséget.
+      1. A **Típus mezőben** válassza az **Azure file Storage**, az **Azure SQL felügyelt példány** vagy a **fájlrendszer** lehetőséget.
 
-      1. Az integrációs modulon keresztül figyelmen kívül hagyhatja a **csatlakozást** , mivel mindig a Azure-SSIS IR használjuk a csomagok tárolóinak hozzáférési információinak beolvasására.
+      1. Az integrációs modulon keresztül figyelmen kívül hagyhatja a **csatlakozást**, mivel mindig a Azure-SSIS IR használjuk a csomagok tárolóinak hozzáférési információinak beolvasására.
 
       1. Ha az **Azure file Storage** lehetőséget választja, hajtsa végre az alábbi lépéseket. 
 
          1. A **fiók kiválasztása módszer** esetében válassza **Az Azure-előfizetés** lehetőséget, vagy **adja meg manuálisan**.
          
-         1. Ha **Az Azure-előfizetésből** lehetőséget választja, válassza ki a megfelelő **Azure-előfizetést** , a **Storage-fiók nevét** és a **fájlmegosztást**.
+         1. Ha **Az Azure-előfizetésből** lehetőséget választja, válassza ki a megfelelő **Azure-előfizetést**, a **Storage-fiók nevét** és a **fájlmegosztást**.
             
-         1. Ha a **manuális bevitel** lehetőséget választja, adja meg `\\<storage account name>.file.core.windows.net\<file share name>` a **gazdagépet** , `Azure\<storage account name>` a **felhasználónevet** és `<storage account key>` a **jelszót** , vagy válassza ki a **Azure Key Vault** , ahol titkosként van tárolva.
+         1. Ha a **manuális bevitel** lehetőséget választja, adja meg `\\<storage account name>.file.core.windows.net\<file share name>` a **gazdagépet**, `Azure\<storage account name>` a **felhasználónevet** és `<storage account key>` a **jelszót** , vagy válassza ki a **Azure Key Vault** , ahol titkosként van tárolva.
 
       1. Ha az **Azure SQL felügyelt példányát** választja, hajtsa végre az alábbi lépéseket. 
 
@@ -216,7 +216,7 @@ A **csomag-áruház hozzáadása** panelen hajtsa végre az alábbi lépéseket.
 
             1. Az **adatbázis neve** mezőbe írja be a következőt: `msdb` .
                
-            1. A **Hitelesítés típusa** beállításnál válassza az **SQL-hitelesítés** , a **felügyelt identitás** vagy az **egyszerű szolgáltatásnév** lehetőséget.
+            1. A **Hitelesítés típusa** beállításnál válassza az **SQL-hitelesítés**, a **felügyelt identitás** vagy az **egyszerű szolgáltatásnév** lehetőséget.
 
             1. Ha az **SQL-hitelesítés** lehetőséget választja, adja meg a megfelelő **felhasználónevet** és **jelszót** , vagy válassza ki a **Azure Key Vault** , ahol titkosként van tárolva.
 
@@ -224,7 +224,7 @@ A **csomag-áruház hozzáadása** panelen hajtsa végre az alábbi lépéseket.
 
             1. Ha az **egyszerű szolgáltatásnév** lehetőséget választja, adja meg a megfelelő **egyszerű szolgáltatásnév** és **egyszerű szolgáltatásnév kulcsát** , vagy válassza ki a **Azure Key Vault** , ahol titkosként van tárolva.
 
-      1. Ha a **fájlrendszer** lehetőséget választja, adja meg annak a mappának az UNC elérési útját, ahol a csomagok telepítve vannak a **gazdagéphez** , valamint a megfelelő **felhasználónevet** és **jelszót** , vagy válassza ki a **Azure Key Vault** , ahol titkosként van tárolva.
+      1. Ha a **fájlrendszer** lehetőséget választja, adja meg annak a mappának az UNC elérési útját, ahol a csomagok telepítve vannak a **gazdagéphez**, valamint a megfelelő **felhasználónevet** és **jelszót** , vagy válassza ki a **Azure Key Vault** , ahol titkosként van tárolva.
 
       1. Jelölje be a **Kapcsolódás tesztelése** , ha alkalmazható, és ha sikeres, válassza a **Létrehozás** lehetőséget.
 
@@ -248,7 +248,7 @@ Az **Integration Runtime telepítési** paneljének **Speciális beállítások*
    
       1. Az **egyéni telepítési tároló sas URI azonosítójának** megadásával adja meg a tároló sas URI-ját, ahol a parancsfájlok és a társított fájlok szabványos egyéni telepítésekhez vannak tárolva.
 
-      1. Az **expressz egyéni telepítéshez** válassza az **új** lehetőséget az **expressz egyéni telepítés hozzáadása** panel megnyitásához, majd válassza ki az **expressz egyéni telepítés típusa** legördülő menü bármelyik típusát, például futtassa a **cmdkey parancsot** , **adja hozzá a környezeti változót** , **telepítse a licencelt összetevőt** stb.
+      1. Az **expressz egyéni telepítéshez** válassza az **új** lehetőséget az **expressz egyéni telepítés hozzáadása** panel megnyitásához, majd válassza ki az **expressz egyéni telepítés típusa** legördülő menü bármelyik típusát, például futtassa a **cmdkey parancsot**, **adja hozzá a környezeti változót**, **telepítse a licencelt összetevőt** stb.
 
          Ha bejelöli a **licencelt összetevő** típusának telepítése lehetőséget, akkor az **összetevő neve** legördülő menüben kiválaszthatja az ISV-partnereinktől származó összes integrált összetevőt, és ha szükséges, megadhatja a termék licencének kulcsát, és feltöltheti a tőlük vásárolt terméket a **licenckulcs** / **licenc fájl** mezőjébe.
   
@@ -1010,7 +1010,7 @@ További információ: [SSIS-projektek/csomagok telepítése](/sql/integration-s
 
 Mindkét esetben a telepített csomagokat Azure-SSIS IR is futtathatja a SSIS-csomag végrehajtása művelettel Data Factory folyamatokban. További információ: [SSIS-csomag végrehajtásának meghívása első osztályú Data Factory tevékenységként](./how-to-invoke-ssis-package-ssis-activity.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További Azure-SSIS IR témakörök a jelen dokumentációban:
 

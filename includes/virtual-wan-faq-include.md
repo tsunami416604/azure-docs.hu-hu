@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: da2535a9764c909af3a491402311fe263dbb48fb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c476fe2af1fb4bddff4799609b164aab14f57b00
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93331137"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023489"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Az Azure Virtual WAN a GA-ban található?
 
@@ -273,3 +273,7 @@ Tekintse meg a [virtuális WAN-korlátok](../articles/azure-resource-manager/man
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>Mi a különbség a virtuális WAN-típusok (Basic és standard) között?
 
 Lásd: [alapszintű és standard szintű virtuális WAN](../articles/virtual-wan/virtual-wan-about.md#basicstandard). A díjszabással kapcsolatban tekintse meg a [díjszabási](https://azure.microsoft.com/pricing/details/virtual-wan/) oldalt.
+
+### <a name="does-virtual-wan-store-customer-data"></a>A virtuális WAN tárolja az ügyféladatokat? 
+
+Nem. A virtuális WAN nem tárolja az ügyféladatokat.

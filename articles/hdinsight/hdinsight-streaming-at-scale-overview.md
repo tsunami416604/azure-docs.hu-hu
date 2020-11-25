@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: a04ce77c7e81a3a73b87eaf5790b383dece35d86
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535229"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022717"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Ipari léptékű streamelés a HDInsightban
 
 A valós idejű big data megoldások a mozgásban lévő adatkezelési műveletek során működnek. Ezek az értékek jellemzően a legértékesebb a megérkezéskor. Ha a bejövő adatfolyam ennél a pillanatnál nagyobb lesz, lehet, hogy le kell állítania az erőforrásokat. Azt is megteheti, hogy egy HDInsight-fürt vertikálisan képes megfelelni a folyamatos átviteli megoldásoknak. ehhez szükség van csomópontok hozzáadására.
 
-Egy adatfolyam-alkalmazásban egy vagy több adatforrás olyan eseményeket generál (néha több millió másodpercenként), amelyeket gyorsan kell bevezetni a hasznos információk eldobása nélkül. A bejövő eseményeket *adatfolyam-puffereléssel* , más néven *Event Queuing* szolgáltatással kezelik, például [Apache Kafka](kafka/apache-kafka-introduction.md) vagy [Event Hubs](https://azure.microsoft.com/services/event-hubs/). Az események összegyűjtése után az *adatfolyam-feldolgozási* rétegben található valós idejű elemzési rendszer használatával elemezheti az adatokat, például [Apache Storm](storm/apache-storm-overview.md) vagy [Apache Spark streaming](spark/apache-spark-streaming-overview.md). A feldolgozott adatok tárolhatók hosszú távú tárolási rendszerekben, például a [Azure Data Lake Storageban](https://azure.microsoft.com/services/storage/data-lake-storage/), és valós időben jeleníthetők meg az üzleti intelligencia irányítópultján, például [Power bi](https://powerbi.microsoft.com), tabló vagy egyéni weblap.
+Egy adatfolyam-alkalmazásban egy vagy több adatforrás olyan eseményeket generál (néha több millió másodpercenként), amelyeket gyorsan kell bevezetni a hasznos információk eldobása nélkül. A bejövő eseményeket *adatfolyam-puffereléssel*, más néven *Event Queuing* szolgáltatással kezelik, például [Apache Kafka](kafka/apache-kafka-introduction.md) vagy [Event Hubs](https://azure.microsoft.com/services/event-hubs/). Az események összegyűjtése után az *adatfolyam-feldolgozási* rétegben található valós idejű elemzési rendszer használatával elemezheti az adatokat, például [Apache Storm](storm/apache-storm-overview.md) vagy [Apache Spark streaming](spark/apache-spark-streaming-overview.md). A feldolgozott adatok tárolhatók hosszú távú tárolási rendszerekben, például a [Azure Data Lake Storageban](https://azure.microsoft.com/services/storage/data-lake-storage/), és valós időben jeleníthetők meg az üzleti intelligencia irányítópultján, például [Power bi](https://powerbi.microsoft.com), tabló vagy egyéni weblap.
 
 ![Azure HDInsight streaming-minták](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
 
@@ -61,7 +61,7 @@ A Apache Spark három fő paramétert használ a környezet konfigurálásához 
 
 Ez a három paraméter a fürt szintjén konfigurálható a fürtön futó összes alkalmazás esetében, és az egyes alkalmazásokhoz is megadható. További információ: Apache Spark- [fürtök erőforrásainak kezelése](spark/apache-spark-resource-manager.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Apache Storm topológia létrehozása és figyelése az Azure HDInsight](storm/apache-storm-quickstart.md)
 * [HDInsight alatt futó Apache Storm példatopológiái](storm/apache-storm-example-topology.md)

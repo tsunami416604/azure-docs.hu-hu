@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: d979a68f4e3aa0071fb7654647610af1fbf95e90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86078816"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023976"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Az HDInsight Spark-fürt használata az Azure SQL Databaseba való adatolvasásra és írásra
 
@@ -45,7 +45,7 @@ Kezdje a Spark-fürthöz társított Jupyter Notebook létrehozásával. Ezt a j
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
-1. A Jupyter jegyzetfüzetben, a jobb felső sarokban kattintson az **új**elemre, majd a **Spark** elemre a Scala notebook létrehozásához. A HDInsight Spark-fürtön található Jupyter-jegyzetfüzetek a Python2-alkalmazások **PySpark** -kernelét, valamint a PySpark3-alkalmazások **Python3** -kernelét is biztosítják. Ebben a cikkben egy Scala-jegyzetfüzetet hozunk létre.
+1. A Jupyter jegyzetfüzetben, a jobb felső sarokban kattintson az **új** elemre, majd a **Spark** elemre a Scala notebook létrehozásához. A HDInsight Spark-fürtön található Jupyter-jegyzetfüzetek a Python2-alkalmazások **PySpark** -kernelét, valamint a PySpark3-alkalmazások **Python3** -kernelét is biztosítják. Ebben a cikkben egy Scala-jegyzetfüzetet hozunk létre.
 
     ![Kernelek Jupyter notebookhoz a Sparkban](./media/apache-spark-connect-to-sql-database/kernel-jupyter-notebook-on-spark.png "Kernelek Jupyter notebookhoz a Sparkban")
 
@@ -172,7 +172,7 @@ Ebben a szakaszban egy CSV-fájlt használunk a fürtben, amely egy táblázatot
 
     ![Kapcsolódás SQL Database a SSMS1 használatával](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png "Kapcsolódás SQL Database a SSMS1 használatával")
 
-    b. **Object Explorerból**bontsa ki az adatbázist és a tábla csomópontot, hogy megtekintse a **dbo. hvactable** létrejöttét.
+    b. **Object Explorerból** bontsa ki az adatbázist és a tábla csomópontot, hogy megtekintse a **dbo. hvactable** létrejöttét.
 
     ![Kapcsolódás SQL Database a SSMS2 használatával](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png "Kapcsolódás SQL Database a SSMS2 használatával")
 
@@ -192,7 +192,7 @@ Ebben a szakaszban az előző szakaszban létrehozott adatátviteli folyamatokat
     TRUNCATE TABLE [dbo].[hvactable]
     ```
 
-1. Hozzon létre egy új Jupyter-jegyzetfüzetet a HDInsight Spark-fürtön. Illessze be a következő kódrészletet a kód cellájába, majd nyomja le a **SHIFT + ENTER**billentyűkombinációt:
+1. Hozzon létre egy új Jupyter-jegyzetfüzetet a HDInsight Spark-fürtön. Illessze be a következő kódrészletet a kód cellájába, majd nyomja le a **SHIFT + ENTER** billentyűkombinációt:
 
     ```scala
     import org.apache.spark.sql._
@@ -210,7 +210,7 @@ Ebben a szakaszban az előző szakaszban létrehozott adatátviteli folyamatokat
     readStreamDf.printSchema
     ```
 
-1. A kimenet a **HVAC.csv**sémáját jeleníti meg. A `hvactable` ugyanazzal a sémával is rendelkezik. A kimenet listázza a tábla oszlopait.
+1. A kimenet a **HVAC.csv** sémáját jeleníti meg. A `hvactable` ugyanazzal a sémával is rendelkezik. A kimenet listázza a tábla oszlopait.
 
     !["hdinsight Apache Spark séma tábla"](./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png "Tábla sémája")
 

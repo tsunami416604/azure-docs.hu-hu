@@ -6,11 +6,11 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: reference
 ms.openlocfilehash: 8313243bf680ea1a1d63f2719b647149a04935a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88893092"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024044"
 ---
 # <a name="material-mapping-for-model-formats"></a>Anyagleképzés a modellformátumokhoz
 
@@ -47,7 +47,7 @@ A glTF minden textúrája tartalmazhat egy `texCoord` értéket, amelyet az Azur
 
 ### <a name="embedded-textures"></a>Beágyazott textúrák
 
-A * \* . bin* vagy * \* . borai* fájlokba ágyazott textúrák támogatottak.
+A *\* . bin* vagy *\* . borai* fájlokba ágyazott textúrák támogatottak.
 
 ### <a name="supported-gltf-extension"></a>Támogatott glTF-bővítmény
 
@@ -62,14 +62,14 @@ Az alapszolgáltatások készletén kívül az Azure Remote rendering a követke
 A FBX formátuma zárt – a forrás-és a FBX-anyagok általában nem kompatibilisek a PBR-anyagokkal. A FBX a felületek összetett leírását használja számos egyedi paraméterrel és tulajdonsággal, és **nem mindegyiket használja az Azure távoli renderelési folyamata**.
 
 > [!IMPORTANT]
-> Az Azure távoli renderelési modell átalakítási folyamata csak a **2011-es és újabb FBX**támogatja.
+> Az Azure távoli renderelési modell átalakítási folyamata csak a **2011-es és újabb FBX** támogatja.
 
 A FBX formátuma az anyagok konzervatív megközelítését határozza meg, a hivatalos FBX-specifikációnak csak két típusa van:
 
 * *Lambert* – a már nem gyakran használt sokáig, de továbbra is támogatott, ha az átalakítás időpontjában a (z).
 * A *-ben* szinte minden anyag és a legtöbb tartalmi eszköz ezt a típust használja.
 
-Az FBX-modell pontosabb, és *kizárólag* az anyagokhoz használható modellként szolgál. Az alábbiakban *FBX-anyagként*lesz hivatkozva.
+Az FBX-modell pontosabb, és *kizárólag* az anyagokhoz használható modellként szolgál. Az alábbiakban *FBX-anyagként* lesz hivatkozva.
 
 > A Maya két egyéni bővítményt használ a FBX-hoz egyéni tulajdonságok definiálásával a PBR és a rája típusú anyagokhoz. Ezek az adatok nem szerepelnek az FBX-specifikációban, ezért az Azure távoli renderelés jelenleg nem támogatja.
 
@@ -101,7 +101,7 @@ A fenti leképezés az anyag-átalakítás legbonyolultabb része, mivel számos
 Néhány alább használt definíció:
 
 * `Specular` =  `SpecularColor` * `SpecularFactor`
-* `SpecularIntensity` = `Specular`. Piros ∗ 0,2125 +  `Specular` . Zöld ∗ 0,7154 + `Specular` . Kék ∗ 0,0721
+* `SpecularIntensity` = `Specular`. Red ∗ 0,2125 +  `Specular` . Zöld ∗ 0,7154 + `Specular` . Kék ∗ 0,0721
 * `DiffuseBrightness` = 0,299 * `Diffuse` . Piros<sup>2</sup> + 0,587 * `Diffuse` . Zöld<sup>2</sup> + 0,114 * `Diffuse` . Kék<sup>2</sup>
 * `SpecularBrightness` = 0,299 * `Specular` . Piros<sup>2</sup> + 0,587 * `Specular` . Zöld<sup>2</sup> + 0,114 * `Specular` . Kék<sup>2</sup>
 * `SpecularStrength` = Max ( `Specular` . Piros, `Specular` . Zöld, `Specular` . Kék
@@ -164,7 +164,7 @@ If `TransparencyFactor` , then `AlbedoAlpha` = 1,0- `TransparencyFactor`
 
 A végső `Albedo` színnek négy csatornája van, amely a és a együttesét kombinálja `AlbedoRGB` `AlbedoAlpha` .
 
-### <a name="summary"></a>Összegzés
+### <a name="summary"></a>Összefoglalás
 
 Ha itt szeretné összefoglalni, `Albedo` nagyon közel lesz az eredetihöz `Diffuse` , ha `Specular` közel van nullához. Ellenkező esetben a felület egy fémes felületnek fog kinézni, és elveszti a diffúz színt. A felület kifinomultabb és fényvisszaverő lesz, ha `ShininessExponent` elég nagy, és `Specular` világos. Ellenkező esetben a felület durva lesz, és alig tükrözi a környezetet.
 

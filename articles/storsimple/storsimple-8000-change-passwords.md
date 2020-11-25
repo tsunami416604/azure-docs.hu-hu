@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 038084ba9ae43e14bc2eb42bf258912be27d062c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86527863"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023754"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-change-your-storsimple-passwords"></a>A StorSimple Eszközkezelő szolgáltatás használata a StorSimple jelszavának módosítására
 
@@ -52,7 +52,7 @@ A regisztráció során a Windows PowerShell felületén először beállított 
 
     ![A jelszó panelt ábrázoló képernyőfelvétel Az eszköz rendszergazdai jelszava alatt az új jelszó és a Jelszó megerősítése mezők ki lesznek töltve.](./media/storsimple-8000-change-passwords/changepwd4.png)
 
-7. Kattintson a **Mentés** gombra, és amikor a rendszer megerősítést kér, kattintson az **Igen**gombra.
+7. Kattintson a **Mentés** gombra, és amikor a rendszer megerősítést kér, kattintson az **Igen** gombra.
 
     ![A jelszó panelt ábrázoló képernyőfelvétel A Mentés gomb ki van emelve.](./media/storsimple-8000-change-passwords/changepwd6.png)
 
@@ -86,7 +86,7 @@ A StorSimple Snapshot Manager jelszavát a Azure Portal használatával állíth
 
      ![A jelszó panelt ábrázoló képernyőfelvétel A jelszó Snapshot Manager alatt az új jelszó és a Jelszó megerősítése mezők ki lesznek töltve.](./media/storsimple-8000-change-passwords/changepwd5.png)
 
-7. Kattintson a **Mentés** gombra, és amikor a rendszer megerősítést kér, kattintson az **Igen**gombra.
+7. Kattintson a **Mentés** gombra, és amikor a rendszer megerősítést kér, kattintson az **Igen** gombra.
 
      ![A jelszó panelt ábrázoló képernyőfelvétel A Mentés gomb ki van emelve.](./media/storsimple-8000-change-passwords/changepwd6.png)
 

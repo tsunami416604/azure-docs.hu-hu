@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: 6c6f71277c276bed603989774637bd95999de333
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079054"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023524"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute-titkosítás: IPsec a ExpressRoute-en keresztül a virtuális WAN-hoz
 
@@ -76,8 +76,8 @@ A hely erőforrása megegyezik a virtuális WAN-hoz nem ExpressRoute VPN-helyekk
 >
 
 1. Nyissa meg a Azure Portalt a böngészőben. 
-1. Válassza ki a létrehozott hubot. A virtuális WAN-központ lap **kapcsolat**területén válassza a **VPN-helyek**lehetőséget.
-1. A **VPN-helyek** lapon válassza a **+ hely létrehozása**lehetőséget.
+1. Válassza ki a létrehozott hubot. A virtuális WAN-központ lap **kapcsolat** területén válassza a **VPN-helyek** lehetőséget.
+1. A **VPN-helyek** lapon válassza a **+ hely létrehozása** lehetőséget.
 1. A **Hely létrehozása** lapon töltse ki a következő mezőket:
    * **Előfizetés**: Ellenőrizze az előfizetést.
    * **Erőforráscsoport**: válassza ki vagy hozza létre a használni kívánt erőforráscsoportot.
@@ -95,9 +95,9 @@ A hely erőforrása megegyezik a virtuális WAN-hoz nem ExpressRoute VPN-helyekk
 
    Ha a BGP engedélyezve van, akkor az az Azure-ban a helyhez létrehozott összes kapcsolatra érvényes lesz. A BGP virtuális WAN-on való konfigurálása egyenértékű a BGP Azure-beli VPN-átjárón való konfigurálásával. 
    
-   A helyszíni BGP-társ címe *nem* egyezhet meg a VPN-hely IP-címével vagy a VPN-hely virtuális hálózati címével. Használjon egy másik IP-címet a VPN-eszközön a BGP-társ IP-címéhez. Ez lehet egy olyan cím is, amely az eszköz visszacsatolási hálózatához van rendelve. Azonban *nem* lehet APIPA (169,254).* x*. *x*) címe. Adja meg ezt a címlistát a helyet jelölő megfelelő helyi hálózati átjáróban. A BGP-előfeltételeket lásd: [a BGP és az Azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-overview.md).
+   A helyszíni BGP-társ címe *nem* egyezhet meg a VPN-hely IP-címével vagy a VPN-hely virtuális hálózati címével. Használjon egy másik IP-címet a VPN-eszközön a BGP-társ IP-címéhez. Ez lehet egy olyan cím is, amely az eszköz visszacsatolási hálózatához van rendelve. Azonban *nem* lehet APIPA (169,254).*x*. *x*) címe. Adja meg ezt a címlistát a helyet jelölő megfelelő helyi hálózati átjáróban. A BGP-előfeltételeket lásd: [a BGP és az Azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-overview.md).
 
-1. Válassza a **Next (tovább): Áttekintés + >létrehozása ** elemet a beállítási értékek ellenőrzéséhez és a VPN-hely létrehozásához. Ha a csatlakozáshoz a **hubok** lehetőséget választotta, a kapcsolat létrejön a helyszíni hálózat és a hub VPN-átjáró között.
+1. Válassza a **Next (tovább): Áttekintés + >létrehozása** elemet a beállítási értékek ellenőrzéséhez és a VPN-hely létrehozásához. Ha a csatlakozáshoz a **hubok** lehetőséget választotta, a kapcsolat létrejön a helyszíni hálózat és a hub VPN-átjáró között.
 
 ## <a name="3-update-the-vpn-connection-setting-to-use-expressroute"></a><a name="hub"></a>3. frissítse a VPN-kapcsolat beállítását a ExpressRoute használatára
 
@@ -105,16 +105,16 @@ Miután létrehozta a VPN-helyet, és csatlakozik a központhoz, a következő l
 
 1. Lépjen vissza a virtuális WAN-erőforrás lapra, és válassza ki a hub-erőforrást. Vagy navigáljon a VPN-helyről a csatlakoztatott hubhoz.
 
-   :::image type="content" source="./media/vpn-over-expressroute/hub-selection.png" alt-text="VPN over ExpressRoute":::
-1. A **kapcsolat**területen válassza a **VPN (helyek közötti)** lehetőséget.
+   :::image type="content" source="./media/vpn-over-expressroute/hub-selection.png" alt-text="Válasszon hubot":::
+1. A **kapcsolat** területen válassza a **VPN (helyek közötti)** lehetőséget.
 
-   :::image type="content" source="./media/vpn-over-expressroute/vpn-select.png" alt-text="VPN over ExpressRoute":::
-1. A VPN-helyen válassza a három pontot (**..**.) a ExpressRoute-on keresztül, majd válassza a **VPN-kapcsolat szerkesztése ehhez a hubhoz**lehetőséget.
+   :::image type="content" source="./media/vpn-over-expressroute/vpn-select.png" alt-text="Válassza a VPN (helyek közötti) lehetőséget.":::
+1. A VPN-helyen válassza a három pontot (**..**.) a ExpressRoute-on keresztül, majd válassza a **VPN-kapcsolat szerkesztése ehhez a hubhoz** lehetőséget.
 
-   :::image type="content" source="./media/vpn-over-expressroute/config-menu.png" alt-text="VPN over ExpressRoute":::
-1. Az **Azure Private IP-cím használatához**válassza az **Igen**lehetőséget. A beállítás úgy konfigurálja a hub VPN-átjárót, hogy a nyilvános IP-címek helyett magánhálózati IP-címeket használjon a hub-címtartomány ezen a kapcsolaton belül. Ezzel biztosíthatja, hogy a helyszíni hálózatról érkező forgalom a nyilvános Internet helyett a VPN-kapcsolaton keresztül áthaladjon a ExpressRoute privát elágazási útjain. A következő képernyőképen a beállítás látható:
+   :::image type="content" source="./media/vpn-over-expressroute/config-menu.png" alt-text="Konfigurációs menü megadása":::
+1. Az **Azure Private IP-cím használatához** válassza az **Igen** lehetőséget. A beállítás úgy konfigurálja a hub VPN-átjárót, hogy a nyilvános IP-címek helyett magánhálózati IP-címeket használjon a hub-címtartomány ezen a kapcsolaton belül. Ezzel biztosíthatja, hogy a helyszíni hálózatról érkező forgalom a nyilvános Internet helyett a VPN-kapcsolaton keresztül áthaladjon a ExpressRoute privát elágazási útjain. A következő képernyőképen a beállítás látható:
 
-   :::image type="content" source="./media/vpn-over-expressroute/vpn-link-configuration.png" alt-text="VPN over ExpressRoute" border="false":::
+   :::image type="content" source="./media/vpn-over-expressroute/vpn-link-configuration.png" alt-text="Beállítás a VPN-kapcsolat magánhálózati IP-címének használatára" border="false":::
 1. Kattintson a **Mentés** gombra.
 
 A módosítások mentése után a hub VPN-átjáró a VPN-átjáró magánhálózati IP-címeivel hozza létre az IPsec/IKE-kapcsolatokat a helyszíni VPN-eszközzel a ExpressRoute-en keresztül.
@@ -123,8 +123,8 @@ A módosítások mentése után a hub VPN-átjáró a VPN-átjáró magánháló
 
 Töltse le a VPN-eszköz konfigurációját a hub VPN-átjáró magánhálózati IP-címeinek lekéréséhez. Ezekre a címekre a helyszíni VPN-eszköz konfigurálásához van szükség.
 
-1. A hub lapján válassza a **VPN (helyek közötti)** lehetőséget a **kapcsolat**alatt.
-1. Az **Áttekintés** lap tetején válassza a **VPN-konfiguráció letöltése**lehetőséget. 
+1. A hub lapján válassza a **VPN (helyek közötti)** lehetőséget a **kapcsolat** alatt.
+1. Az **Áttekintés** lap tetején válassza a **VPN-konfiguráció letöltése** lehetőséget. 
 
    Az Azure létrehoz egy Storage-fiókot a "Microsoft-Network-[Location]" erőforráscsoporthoz, ahol a *hely* a WAN helye. Miután alkalmazza a konfigurációt a VPN-eszközökre, törölheti ezt a Storage-fiókot.
 1. A fájl létrehozása után kattintson a hivatkozásra a letöltéshez.
@@ -242,6 +242,6 @@ Ha már nincs szüksége ezekre az erőforrásokra, a [Remove-AzResourceGroup](/
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre VPN-kapcsolatot a ExpressRoute magánhálózati kapcsolaton keresztül a virtuális WAN használatával. Ha többet szeretne megtudni a virtuális WAN-ról és a kapcsolódó szolgáltatásokról, tekintse meg a [virtuális WAN áttekintése](virtual-wan-about.md)című témakört.

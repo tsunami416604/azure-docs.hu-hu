@@ -3,12 +3,12 @@ title: Várólisták és témakörök Service Bus Azure Event Grid események es
 description: Ismerteti, hogyan használhatók Service Bus várólisták és témakörök Azure Event Grid eseményekhez tartozó eseménykezelőként.
 ms.topic: conceptual
 ms.date: 09/03/2020
-ms.openlocfilehash: ab219f0dc6009dc01d5915995fc04094e72a88cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b18009f8fb31f1a5f057c7395781f63f182847f
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629505"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "96024214"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>Várólisták és témakörök Service Bus Azure Event Grid események eseménykezelői számára
 Az eseménykezelő az a hely, ahol az esemény elküldése történik. A kezelő további műveletet hajt végre az esemény feldolgozásához. Számos Azure-szolgáltatás automatikusan van konfigurálva az események kezelésére, és **Azure Service Bus** az egyikük. 
@@ -50,18 +50,8 @@ az eventgrid event-subscription create \
     --endpoint /subscriptions/{SubID}/resourceGroups/TestRG/providers/Microsoft.ServiceBus/namespaces/ns1/topics/topic1
 ```
 
-## <a name="message-properties"></a>Üzenet tulajdonságai
-Ha **Service Bus témakört vagy üzenetsor** -kezelőt használ a Event Grid eseményeihez, ezek a tulajdonságok, amelyeket az üzenet fejlécében kap: 
+[!INCLUDE [event-grid-message-headers](../../includes/event-grid-message-headers.md)]
 
-| Tulajdonság neve | Leírás |
-| ------------- | ----------- | 
-| AEG-előfizetés – név | Az esemény-előfizetés neve. |
-| AEG – kézbesítés – darabszám | <p>Az eseményre tett kísérletek száma.</p> <p>Példa: "1"</p> |
-| AEG – eseménytípus | <p>Az esemény típusa.</p><p> Például: "Microsoft. Storage. blobCreated"</p> | 
-| AEG – metaadatok – verzió | <p>Az esemény metaadat-verziója.</p> <p>Példa: "1".</p><p> **Event Grid Event Schema**esetében ez a tulajdonság a metaadat-verziót és a **Felhőbeli esemény sémáját**jelöli, amely a **spec verziót**jelöli. </p>|
-| AEG – adatverzió | <p>Az esemény adatverziója.</p><p>Példa: "1".</p><p>**Event Grid Event Schema**esetében ez a tulajdonság az adatverziót és a **Felhőbeli esemény sémáját**jelöli, nem érvényes.</p> |
-
-## <a name="message-headers"></a>Üzenetek fejlécei
 Ha egy eseményt egy Service Bus üzenetsor vagy témakör felügyelt üzenetként küld, a `messageid` közvetítő üzenet egy belső rendszerazonosító.
 
 Az üzenet belső rendszerazonosítóját az esemény ismételt kézbesítése fogja megőrizni, így elkerülhető az ismétlődő kézbesítések elkerülése a Service Bus entitás **ismétlődő észlelésének** bekapcsolásával. Javasoljuk, hogy engedélyezze az ismétlődő észlelés időtartamát a Service Bus entitáson, hogy az esemény élettartama (TTL) vagy az újrapróbálkozások maximális időtartama legyen, attól függően, hogy melyik a hosszabb.
@@ -157,5 +147,5 @@ Az üzenet belső rendszerazonosítóját az esemény ismételt kézbesítése f
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A támogatott eseménykezelők listáját az [eseménykezelők](event-handlers.md) című cikkben tekintheti meg. 

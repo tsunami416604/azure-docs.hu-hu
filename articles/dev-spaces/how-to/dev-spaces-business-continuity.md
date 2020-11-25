@@ -9,11 +9,11 @@ description: Ismerje meg, hogyan használható az Azure dev Spaces és az Azure 
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
 manager: gwallace
 ms.openlocfilehash: 824eb1e65e7da5736080e47509aa163a868d8ec9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973138"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023329"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Üzletmenet-folytonosság és vész-helyreállítás az Azure dev Spaces szolgáltatásban
 
@@ -39,7 +39,7 @@ az aks use-dev-spaces -g <resource group name> -n <cluster name>
 
 ## <a name="deploy-your-teams-baseline-to-each-cluster"></a>A csapat alaptervének üzembe helyezése minden fürtön
 
-A dev Spaces használata esetén általában a teljes alkalmazást a Kubernetes-fürt szülő-fejlesztői területére telepíti. Alapértelmezés szerint a `default` rendszer a helyet használja. A kezdeti üzembe helyezés magában foglalja az összes szolgáltatást, valamint a szolgáltatástól függő külső erőforrásokat, például az adatbázisokat vagy a várólistákat. Ezt az *alaptervnek*nevezzük. Miután beállította az alapkonfigurációt a szülő fejlesztői térben, megismételheti és hibakeresést végezhet a gyermek-fejlesztési tereken belüli egyes szolgáltatásokon.
+A dev Spaces használata esetén általában a teljes alkalmazást a Kubernetes-fürt szülő-fejlesztői területére telepíti. Alapértelmezés szerint a `default` rendszer a helyet használja. A kezdeti üzembe helyezés magában foglalja az összes szolgáltatást, valamint a szolgáltatástól függő külső erőforrásokat, például az adatbázisokat vagy a várólistákat. Ezt az *alaptervnek* nevezzük. Miután beállította az alapkonfigurációt a szülő fejlesztői térben, megismételheti és hibakeresést végezhet a gyermek-fejlesztési tereken belüli egyes szolgáltatásokon.
 
 Az alapkonfiguráció-készlet legújabb verzióit több régióban lévő fürtökre kell telepítenie. Az alapszolgáltatások frissítése így biztosíthatja, hogy továbbra is használhatja a fejlesztői helyeket, ha van Azure-régió meghibásodása. Ha például egy CI/CD folyamaton keresztül telepíti az alapkonfigurációt, módosítsa úgy a folyamatot, hogy az a különböző régiókban lévő több fürtre legyen telepítve.
 
@@ -72,7 +72,7 @@ Ha a Visual studiót használja, a következő lépésekkel válthat egy meglév
 1. Nyissa meg a projektjét a Visual Studióban.
 1. Kattintson a jobb gombbal a projekt nevére Megoldáskezelő majd kattintson a **Tulajdonságok** elemre.
 1. A bal oldali ablaktáblán kattintson a **hibakeresés** elemre.
-1. A hibakeresés tulajdonságai lapon kattintson a **profil** legördülő listára, és válassza az **Azure dev Spaces**elemet.
+1. A hibakeresés tulajdonságai lapon kattintson a **profil** legördülő listára, és válassza az **Azure dev Spaces** elemet.
 1. Kattintson a **módosítás** gombra.
 1. A megjelenő párbeszédpanelen válassza ki a használni kívánt AK-fürtöt. Ha kívánja, válasszon egy másik fejlesztői helyet a működéséhez, vagy hozzon létre egy új fejlesztői területet a megfelelő beállítás kiválasztásával a **hely** legördülő listából.
 
@@ -84,7 +84,7 @@ Ismételje meg ezeket a lépéseket minden más, az eredeti fürt használatára
 
 Ha úgy állította be a szolgáltatást, hogy a nyilvános DNS-nevet használja, akkor a szolgáltatás egy másik URL-címmel fog rendelkezni, ha egy biztonsági mentési fürtön futtatja. A nyilvános DNS-nevek mindig formátuma `<space name>.s.<root space name>.<service name>.<cluster GUID>.<region>.azds.io` . Ha másik fürtre vált, a fürt GUID azonosítója és valószínűleg a régió módosul.
 
-A dev Spaces mindig a megfelelő URL-címet jeleníti meg a szolgáltatás futásakor `azds up` , illetve a Visual Studióban, az **Azure dev Spaces**alatt.
+A dev Spaces mindig a megfelelő URL-címet jeleníti meg a szolgáltatás futásakor `azds up` , illetve a Visual Studióban, az **Azure dev Spaces** alatt.
 
 Az URL-címet a parancs futtatásával is megkeresheti `azds list-uris` :
 ```

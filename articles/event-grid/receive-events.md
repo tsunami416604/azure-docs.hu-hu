@@ -2,14 +2,14 @@
 title: Események fogadása Azure Event Gridról egy HTTP-végpontra
 description: Útmutató HTTP-végpontok érvényesítéséhez, majd az események fogadásához és deszerializálásához Azure Event Grid
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 11/19/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 42cf237f0c2fbe091307625fde70613ab9173b0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75c80fb85d39298f1130537971bc700897c039d0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326473"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96023717"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Események fogadása HTTP-végponton
 
@@ -140,9 +140,11 @@ Tesztelje az érvényesítési válasz függvényt úgy, hogy beillesztette a mi
 }]
 ```
 
-Ha a Futtatás gombra kattint, a kimenetnek 200 OK és a törzsnek kell lennie `{"ValidationResponse":"512d38b6-c7b8-40c8-89fe-f46f9e9622b6"}` :
+Ha a Futtatás gombra kattint, a kimenetnek 200 OK és a törzsnek kell lennie `{"validationResponse":"512d38b6-c7b8-40c8-89fe-f46f9e9622b6"}` :
 
-![érvényesítési válasz](./media/receive-events/validation-response.png)
+:::image type="content" source="./media/receive-events/validation-request.png" alt-text="Érvényesítési kérelem":::
+
+:::image type="content" source="./media/receive-events/validation-output.png" alt-text="Érvényesítési kimenet":::
 
 ## <a name="handle-blob-storage-events"></a>BLOB Storage-események kezelése
 
@@ -395,7 +397,9 @@ Végezetül ellenőrizze, hogy a függvény mostantól képes-e kezelni az egyé
 
 Ezt a funkciót élőben is tesztelheti, ha [Egyéni eseményt küld a portálról,](./custom-event-quickstart-portal.md) vagy [egy egyéni témakörbe](./post-to-custom-topic.md)  helyezi el egy olyan szolgáltatással vagy alkalmazással, amely egy végpontra, például [Poster](https://www.getpostman.com/)-re tehet közzé. Hozzon létre egy egyéni témakört és egy esemény-előfizetést a függvény URL-címének megfelelő végponttal.
 
-## <a name="next-steps"></a>Következő lépések
+[!INCLUDE [event-grid-message-headers](../../includes/event-grid-message-headers.md)]
+
+## <a name="next-steps"></a>További lépések
 
 * Az [SDK-k Azure Event Grid felügyeletének és közzétételének](./sdk-overview.md) megismerése
 * Útmutató [Egyéni témakörhöz való közzétételhez](./post-to-custom-topic.md)
