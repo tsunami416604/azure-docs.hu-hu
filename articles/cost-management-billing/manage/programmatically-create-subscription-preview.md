@@ -5,26 +5,34 @@ author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/29/2020
+ms.date: 11/17/2020
 ms.reviewer: andalmia
 ms.author: banders
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3ffdeb0add8622e1b9f28f9603dc146b78f742cd
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 68d890386d53b4115c773b128f8678bac9579e53
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043296"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844335"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-preview-apis"></a>Azure-előfizetések létrehozása programozott módon, előzetes verziójú API-kkal
 
-Ez a cikk segítséget nyújt az Azure-előfizetések programozott módon, a régebbi, előzetes verziójú API-k használatával történő létrehozásával kapcsolatban. [Újabb API-verziót tettünk elérhetővé](programmatically-create-subscription.md). A cikkben található információkat is használhatja, ha nem szeretné a legújabb verziót használni. Ebből a cikkből megtudhatja, hogyan hozhat létre előfizetéseket programozott módon az Azure Resource Manager használatával.
+Ez a cikk segítséget nyújt az Azure-előfizetések programozott módon, a régebbi, előzetes verziójú API-k használatával történő létrehozásával kapcsolatban. Ebből a cikkből megtudhatja, hogyan hozhat létre előfizetéseket programozott módon az Azure Resource Manager használatával.
+
+Új cikkek érhetőek el a legújabb API-verzióra vonatkozóan a különböző Azure-szerződések előfizetési típusaihoz:
+
+- [Nagyvállalati Szerződéshez tartozó előfizetések programozott létrehozása a legújabb API-val](programmatically-create-subscription-enterprise-agreement.md)
+- [Microsoft Ügyfélszerződéshez tartozó előfizetések programozott létrehozása a legújabb API-val](programmatically-create-subscription-microsoft-customer-agreement.md)
+- [Microsoft Partnerszerződéshez tartozó előfizetések programozott létrehozása a legújabb API-val](Programmatically-create-subscription-microsoft-customer-agreement.md)
+
+Azonban az ezen cikkben szereplő információkat is használhatja, ha nem szeretné a legújabb API-verziót használni.
 
 Az alábbi szerződéstípusok esetén a számlázási fiókkal rendelkező Azure-ügyfelek az előfizetéseket programozott módon is létrehozhatják:
 
-- [Nagyvállalati Szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
-- [Microsoft-ügyfélszerződés (Microsoft Customer Agreement, MCA)](https://azure.microsoft.com/pricing/purchase-options/microsoft-customer-agreement/)
-- [Microsoft-partnerszerződés (MPA)](https://www.microsoft.com/licensing/news/introducing-microsoft-partner-agreement)
+- Nagyvállalati Szerződés
+- Microsoft-ügyfélszerződés (Microsoft Customer Agreement, MCA)
+- Microsoft-partnerszerződés (MPA)
 
 Ha programozott módon hoz létre Azure-előfizetést, az előfizetést az a megállapodás szabályozza, amely keretében igénybe veszi a Microsoft vagy egy hivatalos viszonteladó által biztosított Azure-szolgáltatásokat. További információért lásd a [Microsoft Azure jogi információit](https://azure.microsoft.com/support/legal/).
 
@@ -45,7 +53,7 @@ Előfizetés létrehozásához tulajdonosi szerepkörrel kell rendelkeznie egy r
 
 Miután hozzáadták Önt egy fióktulajdonoshoz társított regisztrációs fiókhoz, az Azure a fiók és a regisztráció közötti kapcsolat alapján állapítja meg, hogy hová kell kiszámlázni az előfizetési díjakat. A fiókhoz létrehozott minden előfizetést annak az EA-regisztrációnak számláz ki, amelyben a fiók található. Előfizetések létrehozásához meg kell adni a regisztrációs fiókra vonatkozó értékeket, valamint az előfizetés tulajdonosának felhasználói nevét.
 
-A következő parancsok futtatásához be kell jelentkeznie a fióktulajdonos *kezdőkönyvtárába* , amely az a könyvtár, amelyben az előfizetések alapértelmezetten létrejönnek.
+A következő parancsok futtatásához be kell jelentkeznie a fióktulajdonos *kezdőkönyvtárába*, amely az a könyvtár, amelyben az előfizetések alapértelmezetten létrejönnek.
 
 ### <a name="rest"></a>[REST](#tab/rest)
 
@@ -324,7 +332,7 @@ Az `invoiceSectionDisplayName` tulajdonsággal azonosíthatja azt a számlaszaka
 
 ### <a name="create-a-subscription-for-an-invoice-section"></a>Előfizetés létrehozása számlaszakaszhoz
 
-Az alábbi példa egy *Microsoft Azure-csomag típusú* , *Fejlesztői csapat előfizetés* nevű előfizetést hoz létre a *Fejlesztés* számlaszakaszhoz. Az előfizetés a *Contoso pénzügyi* számlázási profilon lesz kiszámlázva, és a számla *Fejlesztés* szakaszában jelenik meg.
+Az alábbi példa egy *Microsoft Azure-csomag típusú*, *Fejlesztői csapat előfizetés* nevű előfizetést hoz létre a *Fejlesztés* számlaszakaszhoz. Az előfizetés a *Contoso pénzügyi* számlázási profilon lesz kiszámlázva, és a számla *Fejlesztés* szakaszában jelenik meg.
 
 Hajtsa végre a következő kérést, amelyben cserélje le az `<invoiceSectionId>` értéket a második lépésben kimásolt `invoiceSectionId` értékével (```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_2019-05-31/billingProfiles/PBFV-XXXX-XXX-XXX/invoiceSections/GJGR-XXXX-XXX-XXX```). Adja meg a második lépésben kimásolt `billingProfileId` és `skuId` értéket az API kérelemparamétereiben. Tulajdonosok megadásához tekintse meg a [felhasználói objektumazonosítók lekérésének módját](grant-access-to-create-subscription.md#userObjectId).
 

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 07/21/2020
+ms.date: 11/03/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 638ab84658c36536966ef990570684a047521ee6
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 0aace1041eba771a26bed4c85361ea2551c71ba6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88257447"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659420"
 ---
 ::: zone target="docs"
 
@@ -66,18 +66,18 @@ Végezze el a következő lépéseket, ha az Egyesült Államokba vagy Kanadába
     - Ha nem adja meg a nyomkövetési számot, felárat kell fizetnie a UPS-nek a csomagfelvételkor.
     - A csomagfelvétel ütemezése helyett a legközelebbi átadóhelyen is leadhatja a Data Box Disket.
 
-### <a name="europe"></a>[Európa](#tab/in-europe)
 
-Végezze el a következő lépéseket, ha Európába küldi vissza az eszközt.
+### <a name="europe-or-uk"></a>[Európa vagy az Egyesült Királyság](#tab/in-europe-or-uk)
+
+Végezze el a következő lépéseket, ha Európába vagy az Egyesült Királyságba küldi vissza az eszközt.
 
 1. Helyezze fel a visszaküldési fuvarlevélcímkét, amely a dobozhoz rögzített átlátszó műanyagzsebben található. Ha a címke sérült vagy elveszett:
     - Lépjen az **Áttekintés > Levélcímke letöltése** menüpontra, és töltsön le egy visszaküldési címkét.
     - Ragassza a címkét az eszközre.
 
 2. Zárja le a szállítási dobozt, és győződjön meg arról, hogy a visszaküldési fuvarlevélcímke jól látható.
-3. Ha az eszközt Európán belül, DHL-lel szeretné visszaküldeni, látogasson el a DHL webhelyére, kérjen csomagfelvételt, és adja meg a légi fuvarlevél számát.
-4. Lépjen az ország/régió DHL Express webhelyére, és válassza az **Online futárrendelés > Visszáru online megrendelése** lehetőséget.
-5. Adja meg a fuvarlevél számát, és kattintson a **Futárrendelés** gombra a csomagfelvétel lefoglalásához.
+3. Lépjen az ország/régió DHL Express webhelyére, és válassza a **Futárrendelés** lehetőséget. A **Szeretne küldeménycímkét létrehozni** területen válassza a **Nem** > **Már csatoltam szállítási címkét a csomagomhoz** lehetőséget.
+4. Adja meg a fuvarlevél számát, és kattintson a **Futárrendelés** gombra a csomagfelvétel lefoglalásához.
 
 ### <a name="australia"></a>[Ausztrália](#tab/in-australia)
 

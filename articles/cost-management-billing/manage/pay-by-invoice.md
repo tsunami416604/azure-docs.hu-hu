@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/26/2020
+ms.date: 11/16/2020
 ms.author: banders
 ms.custom: contentperfq2
-ms.openlocfilehash: df95305d1b014579ca6294a9015ac7879d8ce0b3
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 9311a22575c328e0412398f6b63af84c35ac3c32
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670442"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94652909"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Azure-előfizetés fizetése számla alapján
 
@@ -36,7 +36,7 @@ Ha számlás fizetésre vált, az azt jelenti, hogy számláját a számlázási
 
     ![Új támogatási kérés hivatkozás, Súgó és támogatás képernyő, Microsoft Azure Portal](./media/pay-by-invoice/help-and-support.png)
 
-2. Válassza ki a **Számlázás** lehetőséget a **probléma típusaként** . A *problématípus* a támogatási kérelem kategóriája. Válassza ki azt az előfizetést, amelynél számlával szeretne fizetni, válasszon egy támogatási csomagot, majd válassza a **Tovább** lehetőséget.
+2. Válassza ki a **Számlázás** lehetőséget a **probléma típusaként**. A *problématípus* a támogatási kérelem kategóriája. Válassza ki azt az előfizetést, amelynél számlával szeretne fizetni, válasszon egy támogatási csomagot, majd válassza a **Tovább** lehetőséget.
 
 3. Válassza a **Fizetés** lehetőséget a **Probléma típusa** legördülő listából. A *probléma típusa* a támogatási kérelem alkategóriája.
 
@@ -72,7 +72,7 @@ Ha számlás fizetésre vált, az azt jelenti, hogy számláját a számlázási
 
 6. Ellenőrizze a kapcsolattartási adatokat és a kívánt kapcsolatfelvételi módot, majd válassza a **Létrehozás** lehetőséget.
 
-Ha hitelképesség-vizsgálatra van szükség az igényelendő hitel mennyisége miatt, küldünk Önnek egy hitelképesség-vizsgálati kérelmet.
+Ha hitelképesség-vizsgálatra van szükség az igényelendő hitel mennyisége miatt, küldünk Önnek egy hitelképesség-vizsgálati kérelmet. Előfordulhat, hogy kérni fogjuk a vállalat auditált pénzügyi kimutatásait. Ha nem ad meg pénzügyi információkat, vagy ha az adatok nem elég megalapozottak a szükséges hitelkerethez, a hitelképesség-vizsgálati kérés jóváhagyásához biztonsági letétet vagy készenléti akkreditívet kérhetünk.
 
 ## <a name="switch-to-invoice-pay-checkwire-transfer"></a>Váltás számlás fizetésre (csekk/banki átutalás)
 
@@ -82,7 +82,7 @@ Ha rendelkezik Microsoft Online Services Program-fiókkal, Azure-előfizetését
 
 ### <a name="switch-azure-subscription-to-checkwire-transfer"></a>Azure-előfizetés váltása csekkel/átutalással való fizetésre
 
-Kövesse az alábbi lépéseket Azure-előfizetése számlás fizetésre (csekk/átutalás) váltásához. *Ha számlás fizetésre vált (csekk/banki átutalás), nem válthat vissza hitelkártyás fizetésre* .
+Kövesse az alábbi lépéseket Azure-előfizetése számlás fizetésre (csekk/átutalás) váltásához. *Ha számlás fizetésre vált (csekk/banki átutalás), nem válthat vissza hitelkártyás fizetésre*.
 
 1. Nyissa meg az Azure Portalt, és jelentkezzen be fiókadminisztrátorként. Keresse meg és válassza ki a **Költségkezelés + számlázás** lehetőséget.
 
