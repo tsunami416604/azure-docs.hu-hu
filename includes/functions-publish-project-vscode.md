@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: glenga
 ms.openlocfilehash: a525d1e14e642a64235c263ba29bf7a181bf9e30
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420988"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008186"
 ---
 ## <a name="publish-the-project-to-azure"></a>A projekt közzététele az Azure-ban
 
@@ -25,15 +25,15 @@ Ebben a szakaszban egy Function-alkalmazást és egy kapcsolódó erőforrást h
 
 1. Adja meg a következő információkat a kérdésekben:
 
-    - **Mappa kiválasztása** : válasszon egy mappát a munkaterületről, vagy tallózással keresse meg a Function alkalmazást tartalmazó mappát. Ez nem jelenik meg, ha már nyitva van egy érvényes Function alkalmazás.
+    - **Mappa kiválasztása**: válasszon egy mappát a munkaterületről, vagy tallózással keresse meg a Function alkalmazást tartalmazó mappát. Ez nem jelenik meg, ha már nyitva van egy érvényes Function alkalmazás.
 
-    - **Előfizetés kiválasztása** : válassza ki a használni kívánt előfizetést. Ez nem jelenik meg, ha csak egy előfizetéssel rendelkezik.
+    - **Előfizetés kiválasztása**: válassza ki a használni kívánt előfizetést. Ez nem jelenik meg, ha csak egy előfizetéssel rendelkezik.
 
-    - **Függvényalkalmazás kiválasztása az Azure-ban** : válassza a lehetőséget `- Create new Function App` . (Ne válassza a `Advanced` lehetőséget, amely nem szerepel ebben a cikkben.)
+    - **Függvényalkalmazás kiválasztása az Azure-ban**: válassza a lehetőséget `- Create new Function App` . (Ne válassza a `Advanced` lehetőséget, amely nem szerepel ebben a cikkben.)
       
-    - **Adja meg a Function alkalmazás globálisan egyedi nevét** : írjon be egy URL-útvonalon érvényes nevet. A rendszer érvényesíti a beírt nevet, hogy a Azure Functions egyedi legyen.
+    - **Adja meg a Function alkalmazás globálisan egyedi nevét**: írjon be egy URL-útvonalon érvényes nevet. A rendszer érvényesíti a beírt nevet, hogy a Azure Functions egyedi legyen.
     
-    - **Válasszon egy helyet az új erőforrásokhoz** : a jobb teljesítmény érdekében válasszon egy Önhöz közeli [régiót](https://azure.microsoft.com/regions/) . 
+    - **Válasszon egy helyet az új erőforrásokhoz**: a jobb teljesítmény érdekében válasszon egy Önhöz közeli [régiót](https://azure.microsoft.com/regions/) . 
     
 1.  Ha elkészült, a következő Azure-erőforrások jönnek létre az előfizetésben, és neveket kell használni a Function app neve alapján:
     

@@ -1,21 +1,21 @@
 ---
 title: Beépített szabályzat-definíciók listája
 description: A Azure Policy beépített szabályzat-definícióinak listázása. A kategóriák közé tartoznak a címkék, a szabályozások megfelelősége, a Key Vault, a Kubernetes, a vendég konfigurációja és még sok más.
-ms.date: 10/20/2020
+ms.date: 11/20/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: c1627c05e041b2b4a91f5fb5ad44d79641cb9756
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 66563a4754d706f2c73e90ad3c2e8e0f4fe7d3a0
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312168"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "96007836"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy beépített szabályzat-definíciók
 
 Ez az oldal Azure Policy beépített szabályzat-definíciók indexe.
 
-Az egyes beépített hivatkozások neve a Azure Portal házirend-definíciójában. **A forrás oszlopban található** hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban. A beépített modulok a **metaadatok** **Kategória** tulajdonságában vannak csoportosítva. Egy adott **kategóriára**való ugráshoz használja az oldal jobb oldalán található menüt. Ellenkező esetben a <kbd>CTRL</kbd> - <kbd>F</kbd> billentyűkombinációval használhatja a böngésző keresési funkcióját.
+Az egyes beépített hivatkozások neve a Azure Portal házirend-definíciójában. **A forrás oszlopban található** hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban. A beépített modulok a **metaadatok** **Kategória** tulajdonságában vannak csoportosítva. Egy adott **kategóriára** való ugráshoz használja az oldal jobb oldalán található menüt. Ellenkező esetben a <kbd>CTRL</kbd> - <kbd>F</kbd> billentyűkombinációval használhatja a böngésző keresési funkcióját.
 
 ## <a name="api-for-fhir"></a>API for FHIR
 
@@ -45,6 +45,10 @@ Az egyes beépített hivatkozások neve a Azure Portal házirend-definíciójáb
 
 [!INCLUDE [azure-policy-reference-policies-automation](../../../../includes/policy/reference/bycat/policies-automation.md)]
 
+## <a name="azure-data-explorer"></a>Azure Data Explorer
+
+[!INCLUDE [azure-policy-reference-policies-azure-data-explorer](../../../../includes/policy/reference/bycat/policies-azure-data-explorer.md)]
+
 ## <a name="backup"></a>Backup
 
 [!INCLUDE [azure-policy-reference-policies-backup](../../../../includes/policy/reference/bycat/policies-backup.md)]
@@ -61,7 +65,7 @@ Az egyes beépített hivatkozások neve a Azure Portal házirend-definíciójáb
 
 [!INCLUDE [azure-policy-reference-policies-cognitive-services](../../../../includes/policy/reference/bycat/policies-cognitive-services.md)]
 
-## <a name="compute"></a>Számítás
+## <a name="compute"></a>Compute
 
 [!INCLUDE [azure-policy-reference-policies-compute](../../../../includes/policy/reference/bycat/policies-compute.md)]
 
@@ -89,7 +93,7 @@ Az egyes beépített hivatkozások neve a Azure Portal házirend-definíciójáb
 
 [!INCLUDE [azure-policy-reference-policies-event-hub](../../../../includes/policy/reference/bycat/policies-event-hub.md)]
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 [!INCLUDE [azure-policy-reference-policies-general](../../../../includes/policy/reference/bycat/policies-general.md)]
 
@@ -129,9 +133,13 @@ Az egyes beépített hivatkozások neve a Azure Portal házirend-definíciójáb
 
 [!INCLUDE [azure-policy-reference-policies-monitoring](../../../../includes/policy/reference/bycat/policies-monitoring.md)]
 
-## <a name="network"></a>Hálózat
+## <a name="network"></a>Network (Hálózat)
 
 [!INCLUDE [azure-policy-reference-policies-network](../../../../includes/policy/reference/bycat/policies-network.md)]
+
+## <a name="portal"></a>Portál
+
+[!INCLUDE [azure-policy-reference-policies-portal](../../../../includes/policy/reference/bycat/policies-portal.md)]
 
 ## <a name="search"></a>Keresés
 
@@ -164,6 +172,10 @@ Az egyes beépített hivatkozások neve a Azure Portal házirend-definíciójáb
 ## <a name="stream-analytics"></a>Stream Analytics
 
 [!INCLUDE [azure-policy-reference-policies-stream-analytics](../../../../includes/policy/reference/bycat/policies-stream-analytics.md)]
+
+## <a name="synapse"></a>Szinapszis
+
+[!INCLUDE [azure-policy-reference-policies-synapse](../../../../includes/policy/reference/bycat/policies-synapse.md)]
 
 ## <a name="tags"></a>Címkék
 

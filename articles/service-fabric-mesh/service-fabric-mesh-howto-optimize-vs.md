@@ -6,11 +6,11 @@ ms.author: gwallace
 ms.date: 11/29/2018
 ms.topic: conceptual
 ms.openlocfilehash: aa7a959128d3bcdfcce67d3abeac245975339a9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840302"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007375"
 ---
 # <a name="optimize-visual-studio-performance-for-service-fabric-mesh-projects"></a>A Visual Studio teljesítményének optimalizálása Service Fabric Mesh-projektekhez
 
@@ -18,7 +18,7 @@ Ez a cikk bemutatja, hogyan optimalizálhatja a Visual Studio teljesítményét 
 
 ## <a name="change-visual-studio-settings"></a>A Visual Studio beállításainak módosítása
  
-A Visual Studióban az **eszközök**  >  **Beállítások**   >  **Service Fabric Mesh Tools**  >  **általános**területen a következő beállításokat módosíthatja:
+A Visual Studióban az **eszközök**  >  **Beállítások**   >  **Service Fabric Mesh Tools**  >  **általános** területen a következő beállításokat módosíthatja:
 
 - A **kötelező Docker-rendszerképek lekérése a projekt megnyitásakor** az első hibakeresési művelet (F5) gyorsabb lesz, ha elindítja a lemezkép letöltési folyamatát, miközben a projekt betöltődik.  
 - Az **alkalmazás üzembe helyezése a projekt megnyitásakor** megteheti az első hibakeresési műveletet (F5), ha a projekt megnyitása után elindítja a telepítés folyamatát.  
@@ -26,6 +26,6 @@ A Visual Studióban az **eszközök**  >  **Beállítások**   >  **Service Fabr
 
 Ha az Service Fabric eszközök kimeneti ablakában látja az üzeneteket, a Visual Studio "képek húzása", "bemelegítés" vagy "alkalmazás eltávolítása", akkor a fenti beállításokra hivatkozik. Ezeket a beállításokat ki is kapcsolhatja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Útmutató a Mesh-alkalmazás hibakereséséhez](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)

@@ -4,11 +4,11 @@ description: Ismerje meg, hogyan állíthat be egy Azure Migrate berendezést a 
 ms.topic: article
 ms.date: 03/23/2020
 ms.openlocfilehash: a12785ea3791366badb907498796a73c2c993623
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314170"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008310"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Berendezés beállítása Hyper-V virtuális gépekhez
 
@@ -35,15 +35,15 @@ A készülék beállítása VHD-sablon használatával:
 ### <a name="generate-the-azure-migrate-project-key"></a>A Azure Migrate projekt kulcsának előállítása
 
 1. A **Migrálási célok** > **Kiszolgálók** > **Azure Migrate: Kiszolgáló értékelése** területen válassza a **Felderítés** lehetőséget.
-2. A **felderítési gépek**a  >  **gépek virtualizáltak?** területen válassza **az igen, a Hyper-V**lehetőséget.
-3. **1.: Azure Migrate projekt kulcsának létrehozásakor**adja meg a Hyper-V virtuális gépek felderítéséhez beállított Azure Migrate berendezés nevét. a névnek alfanumerikusnak kell lennie 14 karakternél vagy kevesebb értékkel.
+2. A **felderítési gépek** a  >  **gépek virtualizáltak?** területen válassza **az igen, a Hyper-V** lehetőséget.
+3. **1.: Azure Migrate projekt kulcsának létrehozásakor** adja meg a Hyper-V virtuális gépek felderítéséhez beállított Azure Migrate berendezés nevét. a névnek alfanumerikusnak kell lennie 14 karakternél vagy kevesebb értékkel.
 1. Kattintson a **kulcs létrehozása** lehetőségre a szükséges Azure-erőforrások létrehozásának elindításához. Az erőforrások létrehozásakor ne zárja be a gépek felderítése lapot.
 1. Az Azure-erőforrások sikeres létrehozása után létrejön egy **Azure Migrate projekt kulcsa** .
 1. Másolja a kulcsot, mert szüksége lesz rá, hogy elvégezze a berendezés regisztrációját a konfiguráció során.
 
 ### <a name="download-the-vhd"></a>A VHD letöltése
 
-**2.: töltse le Azure Migrate készüléket**, és válassza a (z) elemet. VHD-fájl, majd kattintson a **Letöltés**gombra. 
+**2.: töltse le Azure Migrate készüléket**, és válassza a (z) elemet. VHD-fájl, majd kattintson a **Letöltés** gombra. 
 
    ![A felderítési gépek kiválasztása](./media/tutorial-assess-hyper-v/servers-discover.png)
 
@@ -69,19 +69,19 @@ A telepítése előtt győződjön meg arról, hogy a tömörített fájl bizton
 Importálja a letöltött fájlt, és hozza létre a virtuális gépet.
 
 1. Bontsa ki a tömörített VHD-fájlt egy olyan mappába a Hyper-V-gazdagépen, amely a készülék virtuális gépét fogja üzemeltetni. Három mappa van kibontva.
-2. Nyissa meg a Hyper-V kezelőjét. A **műveletek**területen kattintson a **virtuális gép importálása**elemre.
+2. Nyissa meg a Hyper-V kezelőjét. A **műveletek** területen kattintson a **virtuális gép importálása** elemre.
 
     ![VHD üzembe helyezése](./media/how-to-set-up-appliance-hyper-v/deploy-vhd.png)
 
-2. A virtuális gép importálása varázslóban > a **Kezdés előtt**kattintson a **tovább**gombra.
-3. A **mappában keresse**meg a kibontott virtuális merevlemezt tartalmazó mappát. Ezután kattintson a **Tovább** gombra.
-1. A **virtuális gép kiválasztása lapon**kattintson a **tovább**gombra.
-2. Az **importálási típus kiválasztása**területen kattintson **a virtuális gép másolása (új egyedi azonosító létrehozása)** elemre. Ezután kattintson a **Tovább** gombra.
-3. A **cél kiválasztása**területen hagyja meg az alapértelmezett beállítást. Kattintson a **Tovább** gombra.
-4. A **tárolási mappák**területen hagyja meg az alapértelmezett beállítást. Kattintson a **Tovább** gombra.
-5. A **hálózat kiválasztása**területen adja meg azt a virtuális kapcsolót, amelyet a virtuális gép használni fog. A kapcsolónak internetkapcsolattal kell rendelkeznie az Azure-ba való adatküldéshez.
-6. Az **Összefoglalás**területen tekintse át a beállításokat. Ezután kattintson a **Befejezés** gombra.
-7. A Hyper-V kezelőjében > **Virtual Machines**indítsa el a virtuális gépet.
+2. A virtuális gép importálása varázslóban > a **Kezdés előtt** kattintson a **tovább** gombra.
+3. A **mappában keresse** meg a kibontott virtuális merevlemezt tartalmazó mappát. Ezután kattintson a **Tovább** gombra.
+1. A **virtuális gép kiválasztása lapon** kattintson a **tovább** gombra.
+2. Az **importálási típus kiválasztása** területen kattintson **a virtuális gép másolása (új egyedi azonosító létrehozása)** elemre. Ezután kattintson a **Tovább** gombra.
+3. A **cél kiválasztása** területen hagyja meg az alapértelmezett beállítást. Kattintson a **Tovább** gombra.
+4. A **tárolási mappák** területen hagyja meg az alapértelmezett beállítást. Kattintson a **Tovább** gombra.
+5. A **hálózat kiválasztása** területen adja meg azt a virtuális kapcsolót, amelyet a virtuális gép használni fog. A kapcsolónak internetkapcsolattal kell rendelkeznie az Azure-ba való adatküldéshez.
+6. Az **Összefoglalás** területen tekintse át a beállításokat. Ezután kattintson a **Befejezés** gombra.
+7. A Hyper-V kezelőjében > **Virtual Machines** indítsa el a virtuális gépet.
 
 
 ### <a name="verify-appliance-access-to-azure"></a>A készülék Azure-beli hozzáférésének ellenőrzése
@@ -95,13 +95,13 @@ Győződjön meg arról, hogy a készülék virtuális gépe tud csatlakozni az 
 > [!NOTE]
 > Ha a letöltött VHD helyett [PowerShell-parancsfájl](deploy-appliance-script.md) használatával állítja be a készüléket, az ebben az eljárásban szereplő első két lépés nem releváns.
 
-1. A Hyper-V kezelőjében > **Virtual Machines**kattintson a jobb gombbal a virtuális gépre > a **kapcsolat**elemre.
+1. A Hyper-V kezelőjében > **Virtual Machines** kattintson a jobb gombbal a virtuális gépre > a **kapcsolat** elemre.
 2. Adja meg a berendezés nyelvét, időzónáját és jelszavát.
 3. Nyisson meg egy böngészőt bármely olyan gépen, amely csatlakozhat a virtuális géphez, és nyissa meg a berendezés webalkalmazásának URL-címét: **https://*készülék neve vagy IP-címe*: 44368**.
 
    Másik lehetőségként megnyithatja az alkalmazást a készülék asztaláról az alkalmazás parancsikonra kattintva.
 1. Fogadja el a **licencfeltételeket**, és olvassa el a harmadik féltől származó információkat.
-1. A webalkalmazás-> **Előfeltételek beállítása**lapon tegye a következőket:
+1. A webalkalmazás-> **Előfeltételek beállítása** lapon tegye a következőket:
     - **Kapcsolat**: az alkalmazás ellenőrzi, hogy a virtuális gép rendelkezik-e internet-hozzáféréssel. Ha a virtuális gép proxyt használ:
       - Kattintson a **proxy beállítása** elemre, és adja meg a proxy címe (az űrlapon http://ProxyIPAddress vagy a http://ProxyFQDN) figyelési porton.
       - Adja meg a hitelesítő adatokat, ha a proxykiszolgáló hitelesítést igényel.
@@ -112,14 +112,14 @@ Győződjön meg arról, hogy a készülék virtuális gépe tud csatlakozni az 
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>A készülék regisztrálása a Azure Migrate
 
-1. Illessze be a portálról másolt **Azure Migrate Project kulcsot** . Ha nem rendelkezik a kulccsal, lépjen a **kiszolgáló értékelése> felderítés> a meglévő berendezések kezelése**lehetőségre, válassza ki a készüléknek a kulcs létrehozásakor megadott nevét, és másolja a megfelelő kulcsot.
-1. Kattintson a **Bejelentkezés**elemre. Egy új böngésző lapon nyit meg egy Azure-beli bejelentkezési kérést. Ha nem jelenik meg, ellenőrizze, hogy letiltotta-e az előugró ablakokat a böngészőben.
+1. Illessze be a portálról másolt **Azure Migrate Project kulcsot** . Ha nem rendelkezik a kulccsal, lépjen a **kiszolgáló értékelése> felderítés> a meglévő berendezések kezelése** lehetőségre, válassza ki a készüléknek a kulcs létrehozásakor megadott nevét, és másolja a megfelelő kulcsot.
+1. Kattintson a **Bejelentkezés** elemre. Egy új böngésző lapon nyit meg egy Azure-beli bejelentkezési kérést. Ha nem jelenik meg, ellenőrizze, hogy letiltotta-e az előugró ablakokat a böngészőben.
 1. Az új lapon jelentkezzen be az Azure-beli felhasználónevével és jelszavával.
    
    A PIN-kóddal való bejelentkezés nem támogatott.
 3. A sikeres bejelentkezést követően térjen vissza a webalkalmazáshoz. 
 4. Ha a naplózáshoz használt Azure-beli felhasználói fiók rendelkezik a megfelelő [engedélyekkel](./tutorial-discover-hyper-v.md#prepare-an-azure-user-account) a kulcs létrehozása során létrehozott Azure-erőforrásokhoz, a készülék regisztrációja kezdeményezve lesz.
-1. A készülék sikeres regisztrálása után a **részletek megtekintése**lehetőségre kattintva megtekintheti a regisztráció részleteit.
+1. A készülék sikeres regisztrálása után a **részletek megtekintése** lehetőségre kattintva megtekintheti a regisztráció részleteit.
 
 
 
@@ -134,34 +134,34 @@ Ha virtuális merevlemezeket futtat az SMB-n, engedélyeznie kell a hitelesítő
     ```
 
 2. Ezt is megteheti a berendezés Helyicsoportházirend-szerkesztőján:
-    - A **helyi számítógép-házirend**  >  **Számítógép konfigurációja**területen kattintson **Felügyeleti sablonok**  >  **rendszer**  >  **hitelesítő adatok delegálása**elemre.
-    - Kattintson duplán a **új hitelesítő adatok delegálásának engedélyezése**lehetőségre, és válassza az **engedélyezve**lehetőséget.
-    - A **Beállítások**területen kattintson a **Megjelenítés**elemre, és adja hozzá a listában felderíteni kívánt Hyper-V-gazdagépeket a **wsman/** előtagként.
-    - A  **hitelesítő adatok delegálása**területen kattintson duplán a **friss hitelesítő adatok delegálása csak NTLM kiszolgálói hitelesítéssel**lehetőségre. Ismét adja hozzá a **wsman/** előtagként használni kívánt Hyper-V-gazdagépeket a listához.
+    - A **helyi számítógép-házirend**  >  **Számítógép konfigurációja** területen kattintson **Felügyeleti sablonok**  >  **rendszer**  >  **hitelesítő adatok delegálása** elemre.
+    - Kattintson duplán a **új hitelesítő adatok delegálásának engedélyezése** lehetőségre, és válassza az **engedélyezve** lehetőséget.
+    - A **Beállítások** területen kattintson a **Megjelenítés** elemre, és adja hozzá a listában felderíteni kívánt Hyper-V-gazdagépeket a **wsman/** előtagként.
+    - A  **hitelesítő adatok delegálása** területen kattintson duplán a **friss hitelesítő adatok delegálása csak NTLM kiszolgálói hitelesítéssel** lehetőségre. Ismét adja hozzá a **wsman/** előtagként használni kívánt Hyper-V-gazdagépeket a listához.
 
 ## <a name="start-continuous-discovery"></a>Folyamatos felderítés indítása
 
 Kapcsolódjon a készülékről a Hyper-V-gazdagépekhez vagy-fürtökhöz, és indítsa el a virtuális gépek felderítését.
 
-1. Az **1. lépés: a Hyper-v gazdagép hitelesítő adatainak**megadása területen kattintson a **hitelesítő adatok hozzáadása** lehetőségre a hitelesítő adatok rövid nevének megadásához, adja hozzá a **felhasználónevet** és a **jelszót** egy olyan Hyper-V-gazdagéphez vagy-fürthöz, amelyet a berendezés a virtuális gépek felderítéséhez használ Kattintson a **Save (Mentés**) gombra.
+1. Az **1. lépés: a Hyper-v gazdagép hitelesítő adatainak** megadása területen kattintson a **hitelesítő adatok hozzáadása** lehetőségre a hitelesítő adatok rövid nevének megadásához, adja hozzá a **felhasználónevet** és a **jelszót** egy olyan Hyper-V-gazdagéphez vagy-fürthöz, amelyet a berendezés a virtuális gépek felderítéséhez használ Kattintson a **Save (Mentés**) gombra.
 1. Ha egyszerre több hitelesítő adatot szeretne felvenni, kattintson a **továbbiak hozzáadása** elemre, és adjon hozzá további hitelesítő adatokat. A Hyper-V virtuális gépek felderítéséhez több hitelesítő adat is támogatott.
-1. A **2. lépés: a Hyper-v-gazdagép/-fürt részleteinek**megadása elemnél kattintson a **felderítési forrás hozzáadása** lehetőségre a Hyper-v-gazdagép/ **-fürt IP-címének/teljes tartománynevének** , valamint a gazdagéphez/fürthöz való kapcsolódáshoz szükséges hitelesítő adatok rövid nevének
+1. A **2. lépés: a Hyper-v-gazdagép/-fürt részleteinek** megadása elemnél kattintson a **felderítési forrás hozzáadása** lehetőségre a Hyper-v-gazdagép/ **-fürt IP-címének/teljes tartománynevének** , valamint a gazdagéphez/fürthöz való kapcsolódáshoz szükséges hitelesítő adatok rövid nevének
 1. Egyszerre **egyetlen elemet is hozzáadhat** , vagy egy menetben **több elemet is hozzáadhat** . Emellett lehetőség van a Hyper-V-gazdagép/-fürt adatainak biztosítására is a **CSV importálásával**.
 
     ![A felderítési forrás hozzáadásának kijelölése](./media/tutorial-assess-hyper-v/add-discovery-source-hyperv.png)
 
-    - Ha az **egyetlen elem hozzáadása**lehetőséget választja, meg kell adnia a hitelesítő adatok és a Hyper-V-gazdagép/fürt **IP-CÍMÉNEK/teljes tartománynevének** rövid nevét, majd kattintson a **Mentés**gombra.
+    - Ha az **egyetlen elem hozzáadása** lehetőséget választja, meg kell adnia a hitelesítő adatok és a Hyper-V-gazdagép/fürt **IP-CÍMÉNEK/teljes tartománynevének** rövid nevét, majd kattintson a **Mentés** gombra.
     - Ha a **több elem hozzáadása** _(alapértelmezés szerint)_ lehetőséget választja, egyszerre több rekordot is hozzáadhat, ha a szövegmezőben a hitelesítő adatok rövid nevét adja meg a Hyper-V gazdagép/fürt **IP-címének/teljes tartománynevének** a megadásával. **Ellenőrizze** a hozzáadott rekordokat, és kattintson a **Save (Mentés**) gombra.
-    - Ha a **CSV importálása**lehetőséget választja, letöltheti a CSV-sablonfájlt, feltöltheti a fájlt a Hyper-V gazdagép/fürt **IP-CÍMÉVEL/teljes tartománynevével** , valamint a hitelesítő adatok rövid nevét. Ezután importálja a fájlt a készülékbe, **ellenőrizze** a fájlban szereplő rekordokat, és kattintson a **Mentés**gombra.
+    - Ha a **CSV importálása** lehetőséget választja, letöltheti a CSV-sablonfájlt, feltöltheti a fájlt a Hyper-V gazdagép/fürt **IP-CÍMÉVEL/teljes tartománynevével** , valamint a hitelesítő adatok rövid nevét. Ezután importálja a fájlt a készülékbe, **ellenőrizze** a fájlban szereplő rekordokat, és kattintson a **Mentés** gombra.
 
 1. A Save (Mentés) gombra kattintva a készülék megpróbálja ellenőrizni a kapcsolódást a hozzáadott Hyper-V-gazdagépekhez/-fürtökhöz, és megjeleníti a tábla **érvényesítési állapotát** az egyes gazdagépeken/fürtökön.
     - A sikeresen érvényesített gazdagépek/fürtök esetében további részleteket a saját IP-címére/teljes tartománynevére kattintva tekinthet meg.
     - Ha az érvényesítés sikertelen a gazdagépen, tekintse át a hibát, ha a tábla állapot oszlopában a **sikertelen érvényesítés** gombra kattint. Javítsa ki a problémát, és ismételje meg az érvényesítést.
-    - Gazdagépek vagy fürtök eltávolításához kattintson a **Törlés**gombra.
+    - Gazdagépek vagy fürtök eltávolításához kattintson a **Törlés** gombra.
     - Egy adott gazdagép nem távolítható el fürtből. Csak a teljes fürtöt távolíthatja el.
     - Hozzáadhat egy fürtöt, még akkor is, ha a fürt adott gazdagépével problémák léptek fel.
 1. A felderítés megkezdése előtt bármikor **újraérvényesítheti** a gazdagépek/fürtök kapcsolatát.
-1. Kattintson a **felderítés indítása**lehetőségre a virtuális gép felderítésének kikapcsolásához a sikeresen érvényesített gazdagépekről/fürtökről. A felderítés sikeres elindítása után megtekintheti a felderítési állapotot az egyes gazdagépeken/fürtökön a táblában.
+1. Kattintson a **felderítés indítása** lehetőségre a virtuális gép felderítésének kikapcsolásához a sikeresen érvényesített gazdagépekről/fürtökről. A felderítés sikeres elindítása után megtekintheti a felderítési állapotot az egyes gazdagépeken/fürtökön a táblában.
 
 Ez elindítja a felderítést. Gazdagépen körülbelül 2 percet vesz igénybe, hogy a felderített kiszolgálók metaadatai megjelenjenek a Azure Portalban.
 
@@ -170,9 +170,9 @@ Ez elindítja a felderítést. Gazdagépen körülbelül 2 percet vesz igénybe,
 A felderítés befejezését követően ellenőrizheti, hogy a virtuális gépek megjelennek-e a portálon.
 
 1. Nyissa meg az Azure Migrate irányítópultját.
-2. A **Azure Migrate-Servers**  >  **Azure Migrate: kiszolgáló értékelése** lapon kattintson arra az ikonra, amely megjeleníti a **felderített kiszolgálók**darabszámát.
+2. A **Azure Migrate-Servers**  >  **Azure Migrate: kiszolgáló értékelése** lapon kattintson arra az ikonra, amely megjeleníti a **felderített kiszolgálók** darabszámát.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Próbálja ki a [Hyper-V értékelését](tutorial-assess-hyper-v.md) Azure Migrate kiszolgáló értékelésével.

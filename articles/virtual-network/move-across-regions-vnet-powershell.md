@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: allensu
 ms.openlocfilehash: e13164c3ec6049a8ae3954528a02d20e313dd883
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84711459"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008123"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-azure-powershell"></a>Azure-beli virtuális hálózat áthelyezése egy másik régióba Azure PowerShell használatával
 
@@ -60,7 +60,7 @@ A virtuális hálózat exportálásához és a cél virtuális hálózat PowerSh
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
    ```
 
-1. A letöltött fájl neve megegyezik azzal az erőforrás-csoporttal, amelyben az erőforrást exportálták. Keresse meg a paranccsal exportált * \<resource-group-name> . JSON* fájlt, majd nyissa meg a szerkesztőben:
+1. A letöltött fájl neve megegyezik azzal az erőforrás-csoporttal, amelyben az erőforrást exportálták. Keresse meg a paranccsal exportált *\<resource-group-name> . JSON* fájlt, majd nyissa meg a szerkesztőben:
    
    ```azurepowershell
    notepad <source-resource-group-name>.json
@@ -105,7 +105,7 @@ A virtuális hálózat exportálásához és a cél virtuális hálózat PowerSh
     Get-AzLocation | format-table
     ```
 
-1. Választható A további paramétereket a * \<resource-group-name> . JSON* fájlban is módosíthatja, a követelményektől függően:
+1. Választható A további paramétereket a *\<resource-group-name> . JSON* fájlban is módosíthatja, a követelményektől függően:
 
     * **Címterület**: a fájl mentése előtt megváltoztathatja a virtuális hálózat addressSpace, ha módosítja az **erőforrások**  >  **addressSpace** szakaszát, és megváltoztatja a **addressPrefixes** tulajdonságot:
 
@@ -193,7 +193,7 @@ A virtuális hálózat exportálásához és a cél virtuális hálózat PowerSh
          ]
         ```
 
-1. Mentse a * \<resource-group-name> . JSON* fájlt.
+1. Mentse a *\<resource-group-name> . JSON* fájlt.
 
 1. Hozzon létre egy erőforráscsoportot a cél régióban a cél virtuális hálózat [új-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)használatával történő telepítéséhez:
     
@@ -201,7 +201,7 @@ A virtuális hálózat exportálásához és a cél virtuális hálózat PowerSh
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-1. Telepítse a szerkesztett * \<resource-group-name> . JSON* fájlt az előző lépésben létrehozott erőforráscsoporthoz a [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)használatával:
+1. Telepítse a szerkesztett *\<resource-group-name> . JSON* fájlt az előző lépésben létrehozott erőforráscsoporthoz a [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)használatával:
 
     ```azurepowershell-interactive
 
@@ -231,7 +231,7 @@ Az erőforráscsoport eltávolításához használja a [Remove-AzResourceGroup](
 Remove-AzResourceGroup -Name <target-resource-group-name>
 ```
 
-## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
 
 A módosítások véglegesítéséhez és a virtuális hálózat áthelyezésének befejezéséhez tegye a következők egyikét:
 

@@ -7,11 +7,11 @@ ms.date: 03/18/2020
 ms.author: azfuncdf
 zone_pivot_groups: code-editors-set-one
 ms.openlocfilehash: d5b6ecc12cee983cee0772da8b6f8f26a3b5a8ae
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890275"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008188"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Hozza létre első tartós funkcióját a C-ben\#
 
@@ -90,7 +90,7 @@ Az új függvényeket tartalmazó osztályt a projekthez adja hozzá a rendszer.
 
 Nyissa meg az új *HelloOrchestration.cs* fájlt a tartalom megtekintéséhez. Ez a tartós függvény egy egyszerű függvények láncolására szolgáló példa a következő módszerekkel:  
 
-| Módszer | Függvénynév | Leírás |
+| Metódus | Függvénynév | Leírás |
 | -----  | ------------ | ----------- |
 | **`RunOrchestrator`** | `HelloOrchestration` | Kezeli a tartós összeszerelést. Ebben az esetben a folyamat elindul, létrehoz egy listát, és hozzáadja a listához a három függvény hívásának eredményét.  Ha a három függvény meghívása befejeződött, a rendszer visszaadja a listát. |
 | **`SayHello`** | `HelloOrchestration_Hello` | A függvény egy Hello értéket ad vissza. Ez az a függvény, amely az összehangolt üzleti logikát tartalmazza. |
@@ -152,7 +152,7 @@ Miután ellenőrizte, hogy a függvény megfelelően fut a helyi számítógépe
 
 1. Illessze be a HTTP-kérelem új URL-címét a böngésző címsorába. Ugyanezt az állapot-választ kell megadnia, mint korábban a közzétett alkalmazás használatakor.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Visual Studio Code használatával C# tartós Function-alkalmazást hozhat létre és tehet közzé.
 
@@ -187,7 +187,7 @@ A Azure Functions sablon létrehoz egy projektet, amely közzétehető egy Azure
 
     ![Új projekt párbeszédpanel a Visual Studióban egy függvény létrehozásához](./media/durable-functions-create-first-csharp/functions-vs-new-project.png)
 
-1. Írjon be egy **projekt nevét** a projekthez, majd kattintson **az OK gombra** . A projekt nevének érvényesnek kell lennie C# névtérként, ezért ne használjon aláhúzást, kötőjelet vagy más nem alfanumerikus karaktereket.
+1. Írjon be egy **projekt nevét** a projekthez, majd kattintson **az OK gombra**. A projekt nevének érvényesnek kell lennie C# névtérként, ezért ne használjon aláhúzást, kötőjelet vagy más nem alfanumerikus karaktereket.
 
 1. Az **új Azure functions alkalmazás létrehozása** területen használja a képet követő táblázatban megadott beállításokat.
 
@@ -217,7 +217,7 @@ A következő lépésekkel hozhatja létre a projektben a tartós függvény kó
 
 A rendszer új tartós függvényt ad hozzá az alkalmazáshoz.  A tartalom megtekintéséhez nyissa meg az új. cs fájlt. Ez a tartós függvény egy egyszerű függvények láncolására szolgáló példa a következő módszerekkel:  
 
-| Módszer | Függvénynév | Leírás |
+| Metódus | Függvénynév | Leírás |
 | -----  | ------------ | ----------- |
 | **`RunOrchestrator`** | `<file-name>` | Kezeli a tartós összeszerelést. Ebben az esetben a folyamat elindul, létrehoz egy listát, és hozzáadja a listához a három függvény hívásának eredményét.  Ha a három függvény meghívása befejeződött, a rendszer visszaadja a listát. |
 | **`SayHello`** | `<file-name>_Hello` | A függvény egy Hello értéket ad vissza. Ez az a függvény, amely az összehangolt üzleti logikát tartalmazza. |
@@ -281,7 +281,7 @@ A projekt közzétételéhez rendelkeznie kell egy függvényalkalmazással.az A
 
 2. Illessze be a HTTP-kérelem új URL-címét a böngésző címsorába. Ugyanezt az állapot-választ kell megadnia, mint korábban a közzétett alkalmazás használatakor.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Visual Studio használatával C# tartós Function-alkalmazást hozhat létre és tesz közzé.
 

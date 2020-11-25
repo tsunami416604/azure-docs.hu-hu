@@ -3,12 +3,12 @@ title: A funkciók áttekintése – Azure Event Hubs | Microsoft Docs
 description: Ez a cikk részletesen ismerteti az Azure Event Hubs funkcióit és terminológiáját.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 43ebf4e928cadfc87f52fc10b27f9c8419d11a8f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: db7c0244fd4e9e04f9cfbcbba8748ec8190fc5c5
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369641"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96007433"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Az Azure Event Hubs funkciói és terminológiája
 
@@ -63,7 +63,7 @@ A [Event Hubs Capture](event-hubs-capture-overview.md) lehetővé teszi, hogy au
 
 ## <a name="sas-tokens"></a>SAS-tokenek
 
-A Event Hubs *megosztott hozzáférési aláírásokat*használ, amelyek a névtér és az Event hub szintjén érhetők el. A SAS-tokent egy SAS-kulcsból hozza létre a rendszer, és egy URL SHA-kivonata egy meghatározott formátumban kódolva. A kulcs neve (házirend) és a token együttes használatával az Event Hubs képes újra létrehozni a kivonatot, és így azonosítani a küldőt. Az esemény-közzétevők SAS-tokenje általában csak egy adott Event hub **küldési** jogosultságokkal hozható létre. Ez a SAS-tokenes URL-mechanizmus az alapja a közzétevők a közzétevői házirendben bevezetett azonosításának. További információ a SAS használatával kapcsolatban: [Shared Access Signature Authentication with Service Bus](../service-bus-messaging/service-bus-sas.md) (Közös hozzáférésű jogosultságkóddal való hitelesítés a Service Bus használatával).
+A Event Hubs *megosztott hozzáférési aláírásokat* használ, amelyek a névtér és az Event hub szintjén érhetők el. A SAS-tokent egy SAS-kulcsból hozza létre a rendszer, és egy URL SHA-kivonata egy meghatározott formátumban kódolva. A kulcs neve (házirend) és a token együttes használatával az Event Hubs képes újra létrehozni a kivonatot, és így azonosítani a küldőt. Az esemény-közzétevők SAS-tokenje általában csak egy adott Event hub **küldési** jogosultságokkal hozható létre. Ez a SAS-tokenes URL-mechanizmus az alapja a közzétevők a közzétevői házirendben bevezetett azonosításának. További információ a SAS használatával kapcsolatban: [Shared Access Signature Authentication with Service Bus](../service-bus-messaging/service-bus-sas.md) (Közös hozzáférésű jogosultságkóddal való hitelesítés a Service Bus használatával).
 
 ## <a name="event-consumers"></a>Eseményfelhasználók
 
@@ -71,7 +71,7 @@ Minden olyan entitás, amely az Event hub esemény-adatait olvassa be, az *esem�
 
 ### <a name="consumer-groups"></a>Fogyasztói csoportok
 
-A Event Hubs közzétételi/előfizetési mechanizmusa *felhasználói csoportokon*keresztül engedélyezhető. A felhasználói csoport a teljes eseményközpont egyik nézete (állapot, pozíció vagy eltolás). A felhasználói csoportok révén több felhasználó alkalmazás rendelkezhet az eseménystream külön nézetével, és a többitől függetlenül saját tempójában és saját eltolásával olvashatja a streamet.
+A Event Hubs közzétételi/előfizetési mechanizmusa *felhasználói csoportokon* keresztül engedélyezhető. A felhasználói csoport a teljes eseményközpont egyik nézete (állapot, pozíció vagy eltolás). A felhasználói csoportok révén több felhasználó alkalmazás rendelkezhet az eseménystream külön nézetével, és a többitől függetlenül saját tempójában és saját eltolásával olvashatja a streamet.
 
 A streamfeldolgozási architektúrákban mindegyik alárendelt alkalmazás megfelel egy felhasználói csoportnak. Amennyiben eseményadatokat kíván írni egy hosszú távú tárhelyre, az adott tárhelyírási alkalmazás is egy felhasználói csoport. Az összetett eseményfeldolgozást már egy másik, külön felhasználói csoport végzi. A partíciókat csak a felhasználói csoportokon keresztül érheti el. Az eseményközpontokban mindig van egy alapértelmezett felhasználói csoport, és akár 20 felhasználói csoportot is létrehozhat a standard szintű eseményközpontokban.
 
@@ -104,7 +104,7 @@ Ha egy olvasó lecsatlakozik egy partícióról, az újracsatlakozáskor az adot
 
 > [!NOTE]
 > Ha Azure Blob Storaget használ az ellenőrzőpont-tárolóként olyan környezetben, amely támogatja a Storage blob SDK egy másik verzióját, mint az Azure-ban, akkor a Storage szolgáltatás API-verziójának az adott környezet által támogatott verzióra való módosításához programkódot kell használnia. Ha például [egy 2002-es Azure stack hub-os verzióban](/azure-stack/user/event-hubs-overview)futtatja az Event Hubs-t, a Storage szolgáltatás legmagasabb rendelkezésre álló verziója a 2017-11-09-es verzió. Ebben az esetben programkódot kell használnia a Storage szolgáltatás API-verziójának 2017-11-09-re való célzásához. Az adott tárolási API-verzió célzására vonatkozó példát a GitHubon található példákban talál: 
-> - [.Net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). 
+> - [.Net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/). 
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/)
 > - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript) vagy  [írógéppel](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript)
 > - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/)
@@ -135,7 +135,7 @@ Eseményadatok:
 
 Az eltolás kezelése a felhasználó felelőssége.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha további információkat szeretne az Event Hubsról, tekintse meg az alábbi hivatkozásokat:
 

@@ -4,11 +4,11 @@ description: Lemezek kizárása a replikációból az Azure-ba Azure Site Recove
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: 15989fbfd65f758eb777c5170c217aba8707e0be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333664"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008259"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Lemezek kizárása a vész-helyreállításból
 
@@ -26,7 +26,7 @@ A táblázatból összefoglalt lemezek kizárhatók a replikációból.
 
 **Azure – Azure** | **VMware – Azure** | **Hyper-V – Azure** | **Fizikai kiszolgálóról az Azure-ba**
 --- | --- | --- | ---
-Igen | Igen | Igen | Igen
+Igen | Igen | Igen | Yes
 
 ## <a name="exclude-limitations"></a>Korlátozások kizárása
 
@@ -56,13 +56,13 @@ Példák a kizárásra alkalmas adatváltozásokra, például a lapozófájlba v
 
 ## <a name="example-1-exclude-the-sql-server-tempdb-disk"></a>1. példa: SQL Server tempdb adatbázist tartalmazó lemezének kizárása
 
-Nézzük meg, hogyan kezelheti a lemezek kizárását, a feladatátvételt és a feladatátvételt egy olyan forráshoz SQL Server Windows rendszerű virtuális gép-* * SalesDB * * *, amelyhez ki szeretnénk zárni a tempdb. 
+Nézzük meg, hogyan kezelheti a lemezek kizárását, a feladatátvételt és a feladatátvételt egy olyan forrás SQL Server Windows rendszerű virtuális gép – **SalesDB** _ esetében, amelyhez ki szeretnénk zárni a tempdb. 
 
 ### <a name="exclude-disks-from-replication"></a>Lemezek kizárása a replikációból
 
 Ezeket a lemezeket a forrás Windows virtuális gép SalesDB.
 
-**Lemez neve** | **Vendég operációsrendszer-lemez** | **Meghajtó betűjele** | **Lemez adattípusa**
+_ *Lemez neve** | **Vendég operációsrendszer-lemez** | **Meghajtó betűjele** | **Lemez adattípusa**
 --- | --- | --- | ---
 DB-Disk0-OS | Disk0 | C:\ | Operációs rendszer lemeze.
 DB-Disk1| Disk1 | D:\ | Az SQL rendszeradatbázis és a felhasználói Adatbázis1.
@@ -263,7 +263,7 @@ Az Azure-beli virtuális gépen elérhető lapozófájl-beállítások a követk
 ![Képernyőfelvétel a virtuális memória párbeszédpanelről a C: meghajtó vonallal, amely a "rendszer által felügyelt" lapozófájl-méret beállítását mutatja.](./media/exclude-disks-replication/pagefile-azure-vm-after-failover-2.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az ideiglenes Storage-lemezre vonatkozó irányelvekről:
     - [További](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/) tudnivalók az SSD-k Azure-beli virtuális gépeken való használatáról SQL Server tempdb és puffer-bővítmények tárolásához

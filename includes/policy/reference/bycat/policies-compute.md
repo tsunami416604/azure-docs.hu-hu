@@ -2,19 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 10/20/2020
+ms.date: 11/20/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 973e592a2c0b94bb39d53cbddfc67c1c20df96b3
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: d22633cd2665ade46ff19047608279adadeb0d1f
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92347065"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "96007782"
 ---
 |Név<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Engedélyezett virtuális gépek mérete SKU-ban](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcccc23c7-8427-4f53-ad12-b6a63eb452b3) |Ez a szabályzat lehetővé teszi, hogy megadhatja a szervezet által telepíthető virtuálisgép-méretű SKU-készletet. |Letiltás |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VMSkusAllowed_Deny.json) |
+|[Engedélyezett virtuális gépek mérete SKU-ban](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcccc23c7-8427-4f53-ad12-b6a63eb452b3) |Ez a szabályzat lehetővé teszi, hogy megadhatja a szervezet által telepíthető virtuálisgép-méretű SKU-készletet. |Megtagadás |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VMSkusAllowed_Deny.json) |
 |[Virtuális gépek naplózása vész-helyreállítás nélkül konfigurálva](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0015ea4d-51ff-4ce3-8d8c-f3f8f0179a56) |Olyan virtuális gépek naplózása, amelyek nem rendelkeznek a vész-helyreállítási beállításokkal. A vész-helyreállítással kapcsolatos további információkért látogasson el a következő oldalra: [https://aka.ms/asr-doc](https://aka.ms/asr-doc) . |auditIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/RecoveryServices_DisasterRecovery_Audit.json) |
 |[Felügyelt lemezeket nem használó virtuális gépek naplózása](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F06a78e20-9358-41c9-923c-fb736d382a4d) |Ez a házirend a felügyelt lemezeket nem használó virtuális gépeket naplózza |ellenőrzési |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VMRequireManagedDisk_Audit.json) |
 |[A Windows Serverhez készült alapértelmezett Microsoft IaaSAntimalware-bővítmény telepítése](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2835b622-407b-4114-9198-6f7064cbe0dc) |Ezzel a szabályzattal egy alapértelmezett konfigurációval telepítheti a Microsoft IaaSAntimalware bővítményt, ha a virtuális gép nem a kártevő szoftverrel együtt van konfigurálva. |deployIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VMAntimalwareExtension_Deploy.json) |

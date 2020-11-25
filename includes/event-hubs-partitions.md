@@ -1,19 +1,19 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.topic: include
-ms.date: 05/22/2019
+ms.date: 11/19/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: cbd2d3b46ec339328e0d0889a722d39070104953
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 48cc6b84fe88676a03d1bb6e0a8154c16e3ef618
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92347270"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007434"
 ---
 Az Event Hubs üzenetstreamelést biztosít egy particionált felhasználói mintán keresztül, amelyben mindegyik felhasználó az üzenetstream csak egy adott részét, vagyis partícióját olvassa. Ez a minta biztosítja a horizontális skálázhatóságot az eseményfeldolgozáshoz, és egyéb, streamközpontú szolgáltatásokat is nyújt, amelyek az üzenetsorokban vagy témakörökben nem érhetők el.
 
@@ -25,7 +25,7 @@ Event Hubs megőrzi az adatok egy konfigurált megőrzési időt, amely az Event
 
 ![Event Hubs](./media/event-hubs-partitions/multiple-partitions.png)
 
-A partíciók száma az eseményközpont létrehozásakor határozható meg, és 2 és 32 közé eshet. A partíciószám nem módosítható, a megadásakor tehát hosszú távú szempontokat érdemes mérlegelni. A partíció egy adatrendezési mechanizmus, és a felhasználó alkalmazásokban szükséges alárendeltségi párhuzamossághoz köthető. Az egyes eseményközpontokban található partíciók számának kiválasztása közvetlenül kapcsolódik az egyidejű olvasók várt számához. A partíciószám 32 fölé növeléséhez vegye fel a kapcsolatot az Event Hubs-csapattal.
+A partíciók száma a létrehozáskor van megadva, és 1 és 32 között kell lennie. A partíciószám nem módosítható, a megadásakor tehát hosszú távú szempontokat érdemes mérlegelni. A partíció egy adatrendezési mechanizmus, és a felhasználó alkalmazásokban szükséges alárendeltségi párhuzamossághoz köthető. Az egyes eseményközpontokban található partíciók számának kiválasztása közvetlenül kapcsolódik az egyidejű olvasók várt számához. A partíciószám 32 fölé növeléséhez vegye fel a kapcsolatot az Event Hubs-csapattal.
 
 A létrehozás időpontjában érdemes lehet beállítani a lehető legmagasabb értéket, amely a 32. Ne feledje, hogy több partíció használata esetén a rendszer több partícióba küldi az eseményeket anélkül, hogy megtartja a sorrendet, kivéve, ha a küldőket úgy konfigurálja, hogy csak egyetlen, a 32-es partíción kívülről küldje el a fennmaradó 31 partíciót. Az előző esetben az összes 32-partíción el kell olvasnia az eseményeket. Az utóbbi esetben az Event Processor Host-on kívüli további konfigurációtól eltekintve nincs nyilvánvaló további díj.
 

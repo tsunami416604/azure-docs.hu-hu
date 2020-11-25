@@ -6,11 +6,11 @@ manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
 ms.openlocfilehash: dc14334668b76ee8cbb81e48abfe1eecf17fa138
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86130397"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007358"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Az Azure-beli virtuális gép vész-helyreállítási replikációjának elhárítása
 
@@ -28,14 +28,14 @@ Az alábbi szakaszok az okait és megoldásait ismertetik.
 
 ## <a name="high-data-change-rate-on-the-source-virtual-machine"></a>Magas adatváltozási érték a forrás virtuális gépen
 
-Azure Site Recovery esemény jön létre, ha a forrás virtuális gép adatváltozási sebessége meghaladja a támogatott határértékeket. Ha szeretné megtekinteni, hogy a probléma magas adatforgalom miatt történt-e, nyissa meg a **replikált elemek**virtuálisgép  >  **VM**  >  **-események – utolsó 72 óra**lehetőséget.
-Az esemény- **adatváltozási arányt a támogatott korlátokon felül**kell látni:
+Azure Site Recovery esemény jön létre, ha a forrás virtuális gép adatváltozási sebessége meghaladja a támogatott határértékeket. Ha szeretné megtekinteni, hogy a probléma magas adatforgalom miatt történt-e, nyissa meg a **replikált elemek** virtuálisgép  >  **VM**  >  **-események – utolsó 72 óra** lehetőséget.
+Az esemény- **adatváltozási arányt a támogatott korlátokon felül** kell látni:
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/data_change_event.png" alt-text="Azure Site Recovery lap, amely túl magas adatváltozási sebességet mutat.":::
 
 Ha kijelöli az eseményt, a lemez pontos adatait kell megjelennie:
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/data_change_event2.png" alt-text="Azure Site Recovery lap, amely túl magas adatváltozási sebességet mutat.":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/data_change_event2.png" alt-text="Az adatváltozási arányt esemény részleteit megjelenítő oldal.":::
 
 ### <a name="azure-site-recovery-limits"></a>Az Azure Site Recovery korlátai
 
@@ -54,11 +54,11 @@ Prémium szintű P20, P30, P40 vagy P50 lemez | 16 KB vagy több |20 MB/s | 1684
 
 ### <a name="solution"></a>Megoldás
 
-A Azure Site Recovery a lemez típusától függően korlátozza az adatváltozások sebességét. Ha szeretné megtudni, hogy ez a probléma ismétlődő vagy ideiglenes, keresse meg az érintett virtuális gép adatváltozási arányát. Nyissa meg a forrás virtuális gépet, keresse meg a **figyelés**területen található mérőszámokat, és adja hozzá a metrikákat az alábbi képernyőképen látható módon:
+A Azure Site Recovery a lemez típusától függően korlátozza az adatváltozások sebességét. Ha szeretné megtudni, hogy ez a probléma ismétlődő vagy ideiglenes, keresse meg az érintett virtuális gép adatváltozási arányát. Nyissa meg a forrás virtuális gépet, keresse meg a **figyelés** területen található mérőszámokat, és adja hozzá a metrikákat az alábbi képernyőképen látható módon:
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/churn.png" alt-text="Azure Site Recovery lap, amely túl magas adatváltozási sebességet mutat.":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/churn.png" alt-text="Az adatváltozási arány megkeresésének három lépésből álló folyamatát bemutató oldal.":::
 
-1. Válassza a **metrika hozzáadása**lehetőséget, és adja hozzá az **operációsrendszer-lemezt írási sebesség (bájt/s** ) és **az adatlemez írási sebessége (bájt/s**)
+1. Válassza a **metrika hozzáadása** lehetőséget, és adja hozzá az **operációsrendszer-lemezt írási sebesség (bájt/s** ) és **az adatlemez írási sebessége (bájt/s**)
 1. Figyelje meg a nyársat a képernyőképen látható módon.
 1. Megtekintheti az operációsrendszer-lemezek és az összes adatlemez együttes összes írási műveletét. Előfordulhat, hogy ezek a metrikák nem biztosítanak információt a lemezen, de az adatforgalom teljes mintázatát jelzik.
 
@@ -116,7 +116,7 @@ A további hibaelhárításhoz tekintse meg a forrás gépen található fájlok
 
 `C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log`
 
-A hibák megkereséséhez nyissa meg a _vacp. log_ fájlt egy szövegszerkesztőben, és keresse meg a **vacpError**karakterláncot.
+A hibák megkereséséhez nyissa meg a _vacp. log_ fájlt egy szövegszerkesztőben, és keresse meg a **vacpError** karakterláncot.
 
 ```plaintext
 Ex: vacpError:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|
@@ -134,7 +134,7 @@ Az előző példában a **2147754994** az a hibakód, amely a mondat utáni hib�
 
 Ha a VSS le van tiltva:
 
-- Ellenőrizze, hogy a VSS-szolgáltató szolgáltatás indítási típusa **automatikus**értékre van-e állítva.
+- Ellenőrizze, hogy a VSS-szolgáltató szolgáltatás indítási típusa **automatikus** értékre van-e állítva.
 - Indítsa újra a következő szolgáltatásokat:
   - VSS szolgáltatás.
   - Azure Site Recovery VSS-szolgáltató.
@@ -154,7 +154,7 @@ A VSS-szolgáltató újratelepítéséhez használja a következő parancsokat:
 
    `"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
 
-Ellenőrizze, hogy a VSS-szolgáltató szolgáltatás indítási típusa **automatikus**értékre van-e állítva.
+Ellenőrizze, hogy a VSS-szolgáltató szolgáltatás indítási típusa **automatikus** értékre van-e állítva.
 
 Indítsa újra a következő szolgáltatásokat:
 

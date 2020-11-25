@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 10/20/2020
+ms.date: 11/20/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: e83e5fdd0d8797377407e27614e98c348b008164
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 1333fd582af5aad041c4a0575a6ad3d0468ea306
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312029"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "96007888"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Description |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Név<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[A Kubernetes szolgáltatás (ak) Azure Policy bővítményét telepíteni és engedélyezni kell a fürtökön](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0a15ec92-a229-4763-bb14-0ea34a568f8d) |A (z) Azure Policy bővítmény a Kubernetes szolgáltatáshoz (ak) kibővíti a forgalomirányító v3-t, egy, az Open Policy Agent (OPA) beléptetési vezérlőt, amely központosított, konzisztens módon alkalmazható a fürtökön. |Naplózás, letiltva |[1.0.1 – előzetes verzió](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Audit.json) |
 |[Azure Policy bővítmény üzembe helyezése az Azure Kubernetes Service-fürtökön](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa8eff44f-8c92-45c3-a3fb-9880802d67a7) |Az Azure Kubernetes Service (ak) fürtök megfelelőségi állapotának kezeléséhez és jelentéséhez használja a Azure Policy bővítményt. További információ: [https://aka.ms/akspolicydoc](https://aka.ms/akspolicydoc). |deployIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Deploy.json) |

@@ -7,11 +7,11 @@ ms.date: 11/21/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter , devx-track-azurecli
 ms.openlocfilehash: 00addbe992bc113c67df08f73414107d51b3bce5
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748201"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007392"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Azure Files-alapú kötet csatlakoztatása egy Service Fabric Mesh-alkalmazásban 
 
@@ -246,7 +246,7 @@ application:
             - name: VolumeTestNetwork
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse meg a Azure Files mennyiségi minta alkalmazást a [githubon](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter).
 - A Service Fabric-erőforrásmodellel kapcsolatos további tudnivalókért lásd a [Service Fabric Mesh-erőforrásmodellt](service-fabric-mesh-service-fabric-resources.md) bemutató cikket.

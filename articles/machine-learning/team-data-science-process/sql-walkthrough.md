@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 580181aaaea975ee07bcec8108297079c5373b92
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320424"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007409"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>A csoportos adatelemzési folyamat működés közben: a SQL Server használata
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és helyezhet üzembe gépi tanulási modellt SQL Server és nyilvánosan elérhető adatkészlettel – a [New York-i taxis](https://www.andresmh.com/nyctaxitrips/) adatkészlettel. Az eljárás egy szabványos adatelemzési munkafolyamatot követ: az adatgyűjtést és-elemzést, a mérnöki funkciókat a tanulás megkönnyítésére, majd a modellek elkészítésére és üzembe helyezésére.
@@ -258,7 +258,7 @@ AND   pickup_longitude != '0' AND dropoff_longitude != '0'
 ```
 
 #### <a name="feature-engineering-in-sql-queries"></a>Funkciók mérnöki funkciója SQL-lekérdezésekben
-A címkék és a földrajz átalakítására szolgáló elemzési lekérdezések a számlálási rész eltávolításával is felhasználhatók címkék vagy szolgáltatások létrehozására. További mérnöki SQL-példákat az [adatelemzési és funkció-mérnöki IPython notebook](#ipnb) szakaszban talál. Hatékonyabban futtathatja a szolgáltatás-létrehozási lekérdezéseket a teljes adatkészletre vagy annak nagy részhalmazára az SQL-lekérdezések használatával, amelyek közvetlenül a SQL Server adatbázis-példányon futnak. A lekérdezések **SQL Server Management Studio** , IPython jegyzetfüzetben vagy bármely olyan fejlesztési eszközön vagy környezetben hajthatók végre, amely helyileg vagy távolról is hozzáfér az adatbázishoz.
+A címkék és a földrajz átalakítására szolgáló elemzési lekérdezések a számlálási rész eltávolításával is felhasználhatók címkék vagy szolgáltatások létrehozására. További mérnöki SQL-példákat az [adatelemzési és funkció-mérnöki IPython notebook](#ipnb) szakaszban talál. Hatékonyabban futtathatja a szolgáltatás-létrehozási lekérdezéseket a teljes adatkészletre vagy annak nagy részhalmazára az SQL-lekérdezések használatával, amelyek közvetlenül a SQL Server adatbázis-példányon futnak. A lekérdezések **SQL Server Management Studio**, IPython jegyzetfüzetben vagy bármely olyan fejlesztési eszközön vagy környezetben hajthatók végre, amely helyileg vagy távolról is hozzáfér az adatbázishoz.
 
 #### <a name="preparing-data-for-model-building"></a>Az adatmodell-létrehozási adatelőkészítés
 A következő lekérdezés összekapcsolja a **nyctaxi \_ Trip** és a **nyctaxi \_ viteldíj** -táblázatokat, létrehoz egy bináris besorolási címkét, egy többosztályos besorolási címke **Tipp \_ osztályt** **, és** Kinyer egy 1%-os véletlenszerű mintát a teljes csatlakoztatott adatkészletből. Ez a lekérdezés átmásolható közvetlenül a [Azure Machine learning Studio](https://studio.azureml.net) [Importálás][import-data] adatmodulba az Azure-beli SQL Server-adatbázis példányának közvetlen adatfeldolgozásához. A lekérdezés helytelen (0, 0) koordinátákat tartalmazó rekordokat hagy figyelmen kívül.
@@ -437,7 +437,7 @@ Az [Azure Machine learning Studio](https://studio.azureml.net)-beli modellre val
 Ebben a szakaszban egy új táblázatot hozunk létre, amely a mintául szolgáló és a megtervezett adathalmazokat fogja tárolni. A modell építésének közvetlen SQL-lekérdezési példáját a SQL Server szakaszban található [Adatfeltárási és-szolgáltatás-fejlesztés](#dbexplore) tartalmazza.
 
 #### <a name="create-a-sample-table-and-populate-with-1-of-the-joined-tables-drop-table-first-if-it-exists"></a>Hozzon létre egy minta táblát, és töltse fel az illesztett táblázatok 1%-át. Ha létezik, először dobja el a táblázatot.
-Ebben a szakaszban összekapcsoljuk a táblákat a **nyctaxi \_ Trip** -és **nyctaxi- \_ díjszabással** , kinyerjük az 1%-os véletlenszerű mintát, és egy új táblanév **nyctaxi egy \_ \_ százalékban** megőrzik a mintákat:
+Ebben a szakaszban összekapcsoljuk a táblákat a **nyctaxi \_ Trip** -és **nyctaxi- \_ díjszabással**, kinyerjük az 1%-os véletlenszerű mintát, és egy új táblanév **nyctaxi egy \_ \_ százalékban** megőrzik a mintákat:
 
 ```sql
 cursor = conn.cursor()
@@ -653,7 +653,7 @@ Ebben a gyakorlatban már megvizsgáltuk és megtervezjük az SQL Server-ban lé
 2. Válassza a **Azure SQL Database** lehetőséget a **Tulajdonságok** panelen lévő **adatforrásként** .
 3. Adja meg az adatbázis DNS-nevét az **adatbázis-kiszolgáló neve** mezőben. Formátumban `tcp:<your_virtual_machine_DNS_name>,1433`
 4. Adja meg az **adatbázis nevét** a megfelelő mezőben.
-5. Adja meg az **SQL-felhasználónevet** a **kiszolgáló felhasználói fiókjának nevében** , és a **jelszót** a **kiszolgáló felhasználói fiókjának jelszavában**.
+5. Adja meg az **SQL-felhasználónevet** a **kiszolgáló felhasználói fiókjának nevében**, és a **jelszót** a **kiszolgáló felhasználói fiókjának jelszavában**.
 7. Az **adatbázis-lekérdezés** szövegmezőben illessze be azt a lekérdezést, amely kibontja a szükséges adatbázis-mezőket (beleértve a kiszámított mezőket, például a címkéket), és a legördülő menüben az adatok kinyerését a kívánt minta méretre.
 
 Az alábbi ábrán egy példa látható a bináris besorolási kísérletre, amely közvetlenül az SQL Server adatbázisból olvas be adatot. A többosztályos besoroláshoz és a regressziós problémákhoz hasonló kísérletek is létrehozhatók.
@@ -661,7 +661,7 @@ Az alábbi ábrán egy példa látható a bináris besorolási kísérletre, ame
 ![Azure Machine Learning Train][10]
 
 > [!IMPORTANT]
-> Az előző szakaszban ismertetett modellezési adatok kinyerésére és mintavételezésére vonatkozó példákban a **három modellezési gyakorlat összes címkéje szerepel a lekérdezésben**. A modellezési gyakorlatok fontos (kötelező) lépése, hogy **kizárják** a másik két probléma felesleges címkéit, valamint az egyéb **megcélzott szivárgásokat**. Ha például bináris besorolást használ, használja a megjelenő **címkét** , és zárja ki a mezők **Tipp \_ osztályát** , a **Tipp \_ összegét** és a **teljes \_ mennyiséget**. Az utóbbi a célzott szivárgásokat célozza meg, mivel a borravalót befizették.
+> Az előző szakaszban ismertetett modellezési adatok kinyerésére és mintavételezésére vonatkozó példákban a **három modellezési gyakorlat összes címkéje szerepel a lekérdezésben**. A modellezési gyakorlatok fontos (kötelező) lépése, hogy **kizárják** a másik két probléma felesleges címkéit, valamint az egyéb **megcélzott szivárgásokat**. Ha például bináris besorolást használ, használja a megjelenő **címkét** , és zárja ki a mezők **Tipp \_ osztályát**, a **Tipp \_ összegét** és a **teljes \_ mennyiséget**. Az utóbbi a célzott szivárgásokat célozza meg, mivel a borravalót befizették.
 > 
 > A szükségtelen oszlopok és/vagy célzott szivárgások kizárásához használja az [Oszlopok kiválasztása az adatkészlet][select-columns] modulban vagy a [metaadatok szerkesztése][edit-metadata]lehetőséget. További információ: [Oszlopok kiválasztása az adatkészletben][select-columns] és a [metaadatokat][edit-metadata] tartalmazó hivatkozások szerkesztése.
 > 
@@ -696,7 +696,7 @@ Ahhoz, hogy bedugni, ebben az útmutatóban létrehozott egy Azure-beli adatelem
 ### <a name="license-information"></a>Licencelési információk
 Ez a minta-útmutató és a hozzá tartozó parancsfájlok és IPython-jegyzetfüzet (ek) a Microsoft által a MIT licenc alatt vannak megosztva. További részletekért olvassa el a GitHubon található mintakód könyvtárában lévő LICENSE.txt fájlt.
 
-### <a name="references"></a>Referencia
+### <a name="references"></a>Hivatkozások
 •    [Andrés MONROY NYC taxi TRIPS letöltési oldal](https://www.andresmh.com/nyctaxitrips/)  
 •    [A New York-i taxis utazási adatvédelme Chris Whong](https://chriswhong.com/open-data/foil_nyc_taxi/)   
 • A    [New York-i taxi és a limuzin Bizottság kutatási és statisztikai adatai](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
