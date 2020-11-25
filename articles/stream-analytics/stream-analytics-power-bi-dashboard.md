@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/16/2020
 ms.openlocfilehash: 4e3f31442c5fa645e27a640d8facf86aed20aa75
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842481"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006695"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics és Power BI: valós idejű elemzési irányítópult az adatfolyam-továbbításhoz
 
@@ -227,7 +227,7 @@ Hasonlóképpen, ha egy feladatot a jogkivonat lejárta után is elindít, hiba 
 
 Miután az engedélyezést Power BItel frissítette, egy zöld riasztás jelenik meg az engedélyezési területen, hogy tükrözze a probléma megoldását.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)
 * [Stream Analytics kimenetek](stream-analytics-define-outputs.md)

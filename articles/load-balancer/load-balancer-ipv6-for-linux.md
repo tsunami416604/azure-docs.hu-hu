@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2019
 ms.author: allensu
 ms.openlocfilehash: d8bd62bab627beb70a8fcba276bf8c2eca309c45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86259732"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006746"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>A DHCPv6 konfigurálása Linux rendszerű virtuális gépekhez
 
@@ -44,7 +44,7 @@ Ez a dokumentum leírja, hogyan engedélyezhető a DHCPv6, hogy a linuxos virtu�
 
 2. Szerkessze az ETH0-interfész hálózati konfigurációját a következő konfigurációval:
 
-   * **Ubuntu 12,04 és 14,04**esetén szerkessze a */etc/network/interfaces.d/eth0.cfg* fájlt. 
+   * **Ubuntu 12,04 és 14,04** esetén szerkessze a */etc/network/interfaces.d/eth0.cfg* fájlt. 
    * Az **Ubuntu 16,04**-ben szerkessze a */etc/network/interfaces.d/50-Cloud-init.cfg* fájlt.
 
     ```config

@@ -16,11 +16,11 @@ ms.date: 06/25/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c79942aad2ce450bc22aa0a0cfc32e67a667bd48
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895953"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006234"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>Felügyelt identitások konfigurálása virtuálisgép-méretezési csoportba tartozó Azure-erőforrásokhoz REST API-hívások használatával
 
@@ -311,7 +311,7 @@ Egy meglévő virtuálisgép-méretezési csoporton a rendszer által hozzárend
     }
    ```
 
-   Ha el szeretné távolítani a rendszer által hozzárendelt felügyelt identitást egy olyan virtuálisgép-méretezési csoportból, amely felhasználó által hozzárendelt felügyelt identitásokkal rendelkezik, távolítsa el `SystemAssigned` az értéket az érték `{"identity":{"type:" "}}` `UserAssigned` és a `userAssignedIdentities` szótár értékének megőrzése mellett, ha az **API 2018-06-01** -es verzióját használja. Ha a 2017-12-01-es vagy korábbi **API-verziót** használja, tartsa meg a `identityIds` tömböt.
+   Ha el szeretné távolítani a rendszer által hozzárendelt felügyelt identitást egy olyan virtuálisgép-méretezési csoportból, amely felhasználó által hozzárendelt felügyelt identitásokkal rendelkezik, távolítsa el `SystemAssigned` az értéket az érték `{"identity":{"type:" "}}` `UserAssigned` és a `userAssignedIdentities` szótár értékének megőrzése mellett, ha az **API 2018-06-01**-es verzióját használja. Ha a 2017-12-01-es vagy korábbi **API-verziót** használja, tartsa meg a `identityIds` tömböt.
 
 ## <a name="user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás
 
@@ -542,7 +542,7 @@ Ebből a szakaszból megtudhatja, hogyan adhat hozzá és távolíthat el felhas
 
 4. Ha nem rendelkezik a virtuálisgép-méretezési csoporthoz hozzárendelt felhasználó-vagy rendszerhez rendelt felügyelt identitásokkal, a következő CURL-paranccsal hívja meg az Azure Resource Manager REST-végpontot, hogy az első felhasználóhoz rendelt felügyelt identitást hozzárendelje a virtuálisgép-méretezési csoporthoz.  Ha a virtuálisgép-méretezési csoporthoz hozzárendelt felhasználói vagy rendszerhez rendelt felügyelt identitás (oka) t tartalmaz, ugorjon az 5. lépésre, amely bemutatja, hogyan adhat hozzá több felhasználó által hozzárendelt felügyelt identitást egy virtuálisgép-méretezési csoporthoz, miközben a rendszer által hozzárendelt felügyelt identitást is megtarthatja.
 
-   A következő példa egy felhasználó által hozzárendelt felügyelt identitást rendel hozzá `ID1` egy *myVMSS* nevű virtuálisgép-méretezési csoporthoz az erőforráscsoport *myResourceGroup* .  Cserélje le az elemet az `<ACCESS TOKEN>` előző lépésben kapott értékre, amikor a tulajdonos hozzáférési jogkivonatát és az `<SUBSCRIPTION ID>` adott környezetnek megfelelő értéket kért.
+   A következő példa egy felhasználó által hozzárendelt felügyelt identitást rendel hozzá `ID1` egy *myVMSS* nevű virtuálisgép-méretezési csoporthoz az erőforráscsoport *myResourceGroup*.  Cserélje le az elemet az `<ACCESS TOKEN>` előző lépésben kapott értékre, amikor a tulajdonos hozzáférési jogkivonatát és az `<SUBSCRIPTION ID>` adott környezetnek megfelelő értéket kért.
 
    **API-VERZIÓ 2018-06-01**
 
@@ -828,7 +828,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A felhasználó által hozzárendelt felügyelt identitások REST használatával történő létrehozásával, listázásával vagy törlésével kapcsolatos információkért lásd:
 

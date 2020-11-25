@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.openlocfilehash: 66a17b61fef652160dc6d4a02bf330adbf0c7362
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425692"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006822"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Keresési tevékenység a Azure Data Factory
 
@@ -58,8 +58,8 @@ A keresési tevékenység legfeljebb 5000 sort tud visszaadni; Ha az eredményha
 
 Név | Leírás | Típus | Kötelező?
 ---- | ----------- | ---- | --------
-adatkészlet | A keresés adatkészlet-hivatkozását adja meg. Az egyes kapcsolódó összekötők című cikk **adatkészlet tulajdonságai** szakaszában talál részleteket. | Kulcs/érték pár | Igen
-source | Adatkészlet-specifikus forrás tulajdonságokat tartalmaz, ugyanazokat a másolási tevékenység forrását. A részletek a **másolási tevékenység tulajdonságai** szakaszban olvashatók a kapcsolódó összekötők cikkeiben. | Kulcs/érték pár | Igen
+adatkészlet | A keresés adatkészlet-hivatkozását adja meg. Az egyes kapcsolódó összekötők című cikk **adatkészlet tulajdonságai** szakaszában talál részleteket. | Kulcs/érték pár | Yes
+source | Adatkészlet-specifikus forrás tulajdonságokat tartalmaz, ugyanazokat a másolási tevékenység forrását. A részletek a **másolási tevékenység tulajdonságai** szakaszban olvashatók a kapcsolódó összekötők cikkeiben. | Kulcs/érték pár | Yes
 firstRowOnly | Azt jelzi, hogy csak az első sort vagy az összes sort kívánja-e visszaadni. | Logikai | Nem. A mező alapértelmezett értéke: `true`.
 
 > [!NOTE]
@@ -85,7 +85,7 @@ A keresési eredmény a `output` tevékenység futtatási eredményének szakasz
     }
     ```
 
-* Ha a értéke, a kimeneti formátum a következő kódban látható. ** `firstRowOnly` `false` ** Egy `count` mező jelzi, hogy a rendszer hány rekordot ad vissza. A részletes értékek egy rögzített tömb alatt jelennek meg `value` . Ilyen esetben a keresési tevékenységet egy [foreach-tevékenység](control-flow-for-each-activity.md)követi. A `value` tömböt a foreach tevékenység mezőjébe kell átadni `items` a mintázatának használatával `@activity('MyLookupActivity').output.value` . A tömb elemeinek eléréséhez `value` használja a következő szintaxist: `@{activity('lookupActivity').output.value[zero based index].propertyname}` . Például: `@{activity('lookupActivity').output.value[0].schema}`.
+* Ha a értéke, a kimeneti formátum a következő kódban látható. **`firstRowOnly` `false`** Egy `count` mező jelzi, hogy a rendszer hány rekordot ad vissza. A részletes értékek egy rögzített tömb alatt jelennek meg `value` . Ilyen esetben a keresési tevékenységet egy [foreach-tevékenység](control-flow-for-each-activity.md)követi. A `value` tömböt a foreach tevékenység mezőjébe kell átadni `items` a mintázatának használatával `@activity('MyLookupActivity').output.value` . A tömb elemeinek eléréséhez `value` használja a következő szintaxist: `@{activity('lookupActivity').output.value[zero based index].propertyname}` . Például: `@{activity('lookupActivity').output.value[0].schema}`.
 
     ```json
     {
@@ -114,7 +114,7 @@ Ez a példa csak az első sor keresését mutatja be. Az összes sorhoz való ke
 
 ### <a name="pipeline"></a>Folyamat
 
-- A keresési tevékenység a **LookupDataset**használatára van konfigurálva, amely az Azure Blob Storage-ban található helyre hivatkozik. A keresési tevékenység beolvassa az SQL-táblázat nevét egy olyan JSON-fájlból, amely ezen a helyen található. 
+- A keresési tevékenység a **LookupDataset** használatára van konfigurálva, amely az Azure Blob Storage-ban található helyre hivatkozik. A keresési tevékenység beolvassa az SQL-táblázat nevét egy olyan JSON-fájlból, amely ezen a helyen található. 
 - A másolási tevékenység a keresési tevékenység kimenetét használja, amely az SQL-tábla neve. A **SourceDataset** **Táblanév** tulajdonsága a keresési tevékenység kimenetének használatára van konfigurálva. A másolási tevékenység az SQL-táblából másolja az adatait az Azure Blob Storage egyik helyére. A helyet a **SinkDataset** tulajdonság határozza meg. 
 
 ```json

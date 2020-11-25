@@ -5,11 +5,11 @@ ms.subservice: logs
 ms.topic: conceptual
 ms.date: 07/29/2018
 ms.openlocfilehash: dce340db90c1528c46c1be0bc172751a04feaf31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294075"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006404"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Riasztási szabályok létrehozása és kezelése a Log Analyticsban REST API 
 
@@ -385,7 +385,7 @@ $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'propertie
 armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A [REST API használatával hajthat végre naplóbeli keresést](../log-query/log-query-overview.md) a log Analytics.
 * További tudnivalók a [naplózási riasztásokról az Azure monitorban](./alerts-unified-log.md)

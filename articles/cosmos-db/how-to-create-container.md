@@ -9,11 +9,11 @@ ms.date: 10/16/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: 302c5d6e8e523a11b8773f10bb6089e3bea09bdd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101561"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006848"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-sql-api"></a>Tároló létrehozása Azure Cosmos DB SQL API-ban
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -65,7 +65,7 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 1000 });
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Particionálás az Azure Cosmos DB-ben](partitioning-overview.md)
 * [Az Azure Cosmos DB kérelemegységei](request-units.md)

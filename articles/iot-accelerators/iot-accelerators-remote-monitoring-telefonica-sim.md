@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 05/15/2018
 ms.topic: conceptual
 ms.openlocfilehash: 21d84bea808ba5832b81d415001a3fc25a7e1630
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91323957"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006763"
 ---
 # <a name="integrate-sim-data-in-the-remote-monitoring-solution"></a>SIM-alkalmazások integrálása a távoli figyelési megoldásba
 
@@ -21,7 +21,7 @@ A IoT-eszközök gyakran csatlakoznak a felhőhöz egy SIM-kártyával, amely le
 
 A távoli figyelés lehetővé teszi a Telefónica IoT-kapcsolattal való integrációt, lehetővé téve az ügyfelek számára, hogy a IoT-kapcsolati platformját szinkronizálják az eszközük SIMs-kapcsolati adatait a megoldásaikkal. Ez a megoldás bővíthető a GitHub- [tárházon](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)keresztül más IoT-kapcsolati szolgáltatók támogatásához.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 * A Telefónica IoT SIM-adatbázisának integrálása a távoli figyelési megoldásba
 * Valós idejű telemetriai adatok megtekintése
@@ -33,9 +33,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Ez a további távoli figyelési funkció jelenleg előzetes verzióban érhető el. Az alábbi lépéseket követve szinkronizálhatja a kapcsolati adatait az Azure távoli figyelési megoldásával:
 
-1. Töltsön ki egy kérelmet a [Telefónica's webhelyen](https://iot.telefonica.com/contact), és válassza az **Azure távoli figyelés**lehetőséget, beleértve a kapcsolattartási adatait is.
+1. Töltsön ki egy kérelmet a [Telefónica's webhelyen](https://iot.telefonica.com/contact), és válassza az **Azure távoli figyelés** lehetőséget, beleértve a kapcsolattartási adatait is.
 2. A Telefónica aktiválja a fiókját.
-3. Ha még nem Telefónica-ügyfél, és szeretné használni ezt vagy más IoT-kapcsolati Felhőbeli használatra kész szolgáltatásokat, látogasson el a [Telefónica's webhelyére](https://iot.telefonica.com/) , és válassza a **kapcsolat**lehetőséget.
+3. Ha még nem Telefónica-ügyfél, és szeretné használni ezt vagy más IoT-kapcsolati Felhőbeli használatra kész szolgáltatásokat, látogasson el a [Telefónica's webhelyére](https://iot.telefonica.com/) , és válassza a **kapcsolat** lehetőséget.
 
 ### <a name="telefnica-sim-setup"></a>Telefónica SIM-telepítő
 A Telefónica SIM & Azure Twin Device ID társítás a Telefónica IoT SIM "alias" tulajdonságán alapul. 
@@ -63,7 +63,7 @@ A következő kapcsolódási paraméterek vannak közzétéve:
 
 ![Képernyőkép az Azure IoT távoli monitorozási irányítópultjának Device Explorer ablakáról. Ki van emelve egy sor, amely megjeleníti a WeatherStation-eszköz részleteit.](./media/iot-accelerators-remote-monitoring-telefonica-sim/dashboard.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy áttekinti, hogyan integrálhatja a SIM-információkat az Azure IoT távoli monitorozási szolgáltatásba, a következő lépéseket javasoljuk a megoldás-gyorsítók:
 

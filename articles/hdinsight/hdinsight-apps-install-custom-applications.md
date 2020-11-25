@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 11/29/2019
 ms.openlocfilehash: d110f4ee0248b6ea069c6033dd69840eec1a18f3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741615"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007154"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Egyéni Apache Hadoop-alkalmazások telepítése az Azure HDInsight
 
@@ -77,7 +77,7 @@ A **Hue** esetében az alábbi lépéseket hajthatja végre:
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza ki azt a fürtöt, amelyre az alkalmazást telepítette.
 1. A **Beállítások** menüben válassza az **alkalmazások** lehetőséget.
 1. A tulajdonságok megtekintéséhez válassza a **színárnyalat** lehetőséget a listából.  
@@ -125,7 +125,7 @@ Ha egy alkalmazás telepítése nem sikerült, a következő három helyről lá
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza ki azt a fürtöt, amelyre az alkalmazást telepítette.
 1. A **Beállítások** menüben válassza az **alkalmazások** lehetőséget.
 1. Kattintson a jobb gombbal az eltávolítani kívánt alkalmazásra, majd válassza a **Törlés** lehetőséget.
@@ -139,7 +139,7 @@ Cserélje le a, a `NAME` `CLUSTERNAME` és a `RESOURCEGROUP` értéket a megfele
 az hdinsight application delete --name NAME --cluster-name CLUSTERNAME --resource-group RESOURCEGROUP
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [MSDN: Install an HDInsight application](/rest/api/hdinsight/hdinsight-application) (MSDN: HDInsight-alkalmazás telepítése): Megtudhatja, hogyan fejleszthet Resource Manager-sablonokat HDInsight-alkalmazások üzembe helyezéséhez.
 * [HDInsight-alkalmazások telepítése](hdinsight-apps-install-applications.md): Megtudhatja, hogyan telepíthet HDInsight-alkalmazásokat a fürtjeire.

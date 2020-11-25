@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 08/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: e8f027ccc577df79e561fca7194c20b6cc7ef2c6
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94356755"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005503"
 ---
 # <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Elium konfigurálása
 
@@ -144,7 +144,7 @@ Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghat�
 
 A **jelenlegi állapot** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységre mutató hivatkozásokat. A kiépítési tevékenység jelentés az Azure AD-kiépítési szolgáltatás által a Elium-on végrehajtott összes műveletet ismerteti. További információ: [a felhasználó kiépítési állapotának ellenõrzése](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md). Az Azure AD-létesítési naplók olvasásához lásd: [jelentéskészítés az automatikus felhasználói fiók kiépítés](../app-provisioning/check-status-user-account-provisioning.md)során.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [A vállalati alkalmazások felhasználói fiókok üzembe](../app-provisioning/configure-automatic-user-provisioning-portal.md)helyezésének kezelése.
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

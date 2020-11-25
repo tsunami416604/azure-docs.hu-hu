@@ -7,15 +7,15 @@ ms.topic: article
 ms.date: 07/28/2020
 ms.author: zarhoads
 ms.openlocfilehash: 0ca2d7ccc863e2208db1212ef3d3f10fa709d069
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87407115"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006644"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>Gyors útmutató: fejlesztés az Azure Kubernetes Service-ben (ak) a Helmtal
 
-A [Helm][helm] egy nyílt forráskódú csomagolási eszköz, amely segítséget nyújt a Kubernetes-alkalmazások életciklusának telepítéséhez és kezeléséhez. A Linux-csomagkezelő, például az *apt* és a *yum*hasonlóan a Helm a Kubernetes-diagramok kezelésére szolgál, amelyek előre konfigurált Kubernetes-erőforrások csomagjai.
+A [Helm][helm] egy nyílt forráskódú csomagolási eszköz, amely segítséget nyújt a Kubernetes-alkalmazások életciklusának telepítéséhez és kezeléséhez. A Linux-csomagkezelő, például az *apt* és a *yum* hasonlóan a Helm a Kubernetes-diagramok kezelésére szolgál, amelyek előre konfigurált Kubernetes-erőforrások csomagjai.
 
 Ebből a cikkből megtudhatja, hogyan használhatja a Helm csomagot és futtathat egy alkalmazást az AK-ban. Egy meglévő alkalmazás Helm használatával történő telepítésével kapcsolatos további információkért lásd: [meglévő alkalmazások telepítése az AK-ban Helm-ben][helm-existing].
 
@@ -92,7 +92,7 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/nodejs/getting-started/webfrontend
 ```
 
-## <a name="create-a-dockerfile"></a>Docker létrehozása
+## <a name="create-a-dockerfile"></a>Dockerfile létrehozása
 
 Hozzon létre egy új *Docker* -fájlt a következő használatával:
 

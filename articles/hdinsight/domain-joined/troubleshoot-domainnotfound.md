@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/23/2020
 ms.openlocfilehash: 79cd3b687dc8a2eb838146a6dc8a40b184a55fe6
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285564"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005945"
 ---
 # <a name="scenario-cluster-creation-fails-with-domainnotfound-error-in-azure-hdinsight"></a>Forgatókönyv: a fürt létrehozása DomainNotFound hibával meghiúsul az Azure HDInsight
 
@@ -46,6 +46,6 @@ A tartományhoz csatlakoztatott fürtök telepítésekor a HDI létrehoz egy bel
   * A szkript futtatása felhasználónévvel és jelszóval
   * A szkript pingelni fog, létrehozza a szükséges konfigurációs fájlokat, majd tartományt. Ha ez sikeres, a DNS-beállítások jók.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [troubleshooting next steps](../../../includes/hdinsight-troubleshooting-next-steps.md)]

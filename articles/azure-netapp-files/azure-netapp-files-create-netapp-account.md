@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 03/28/2018
 ms.author: b-juche
 ms.openlocfilehash: e5e0c43aa8c4fbf0db89065e0fab93ee174a4ede
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85483669"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006593"
 ---
 # <a name="create-a-netapp-account"></a>NetApp-fiók létrehozása
 A NetApp-fiókok létrehozásával lehetősége lesz kapacitáskészleteket beállítani, majd azt követően köteteket létrehozni. NetApp-fiókokat az Azure NetApp Files panelen hozhat létre.
@@ -31,7 +31,7 @@ A NetApp erőforrás-szolgáltató használatához regisztrálnia kell az előfi
 
 ## <a name="steps"></a>Lépések 
 
-1. Jelentkezzen be az Azure portálra. 
+1. Jelentkezzen be az Azure Portalra. 
 2. Az Azure NetApp Files panelt a következő módszerek egyikével érheti el:  
    * Keressen rá az **Azure NetApp Files** kifejezésre az Azure Portal keresőmezőjében.  
    * Kattintson a navigációs menü **Minden szolgáltatás** elemére, majd szűrjön az Azure NetApp Files kifejezésre.  
@@ -54,7 +54,7 @@ A NetApp erőforrás-szolgáltató használatához regisztrálnia kell az előfi
      ![Új NetApp-fiók](../media/azure-netapp-files/azure-netapp-files-new-netapp-account.png)
 
 
-5. Kattintson a **Létrehozás** elemre.     
+5. Kattintson a **Létrehozás** gombra.     
    A létrehozott NetApp-fiók megjelenik az Azure NetApp Files panelen. 
 
 > [!NOTE] 

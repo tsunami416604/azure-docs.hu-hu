@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: b8b6383c7808fd6c298d7776fc10572631bc6ddc
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359561"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006217"
 ---
 # <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>Oktatóanyag: a Zscaler konfigurálása az automatikus felhasználó-kiépítés számára
 
@@ -80,7 +80,7 @@ Ez a szakasz végigvezeti az Azure AD kiépítési szolgáltatás konfigurálás
 
 ### <a name="configure-automatic-user-provisioning-for-zscaler-one-in-azure-ad"></a>Automatikus felhasználó-kiépítés konfigurálása az Azure AD-ben az egyik Zscaler
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza ki a **vállalati alkalmazások**  >  **minden alkalmazás**  >  **Zscaler egyet**.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza ki a **vállalati alkalmazások**  >  **minden alkalmazás**  >  **Zscaler egyet**.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -116,7 +116,7 @@ Ez a szakasz végigvezeti az Azure AD kiépítési szolgáltatás konfigurálás
 
     ![Zscaler egy értesítő e-mailt](./media/zscaler-one-provisioning-tutorial/notification.png)
 
-9. Válassza a **Mentés** lehetőséget.
+9. Kattintson a **Mentés** gombra.
 
 10. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory felhasználók Zscaler egyet**.
 
@@ -154,7 +154,7 @@ A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat 
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

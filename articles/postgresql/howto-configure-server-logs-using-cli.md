@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 5/6/2019
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 71dac0b6ea2202e712280607a73e860ae68bdb73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91704871"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005588"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>A kiszolgálói naplók konfigurálása és elérése az Azure CLI használatával
 A PostgreSQL-kiszolgáló naplófájljait a parancssori felület (Azure CLI) használatával töltheti le. A tranzakciós naplókhoz való hozzáférés azonban nem támogatott. 
@@ -34,7 +34,7 @@ További információ: a [kiszolgáló konfigurációs paramétereinek testresza
 ## <a name="list-logs"></a>Naplók listázása
 A kiszolgálóhoz elérhető naplófájlok listázásához futtassa az az [postgres Server-logs List](/cli/azure/postgres/server-logs) parancsot.
 
-A kiszolgálói **mydemoserver.postgres.database.Azure.com** tartozó naplófájlokat az erőforráscsoport **myresourcegroup**lehet kilistázni. Ezután irányítsa a naplófájlok listáját a naplófájlok ** \_ \_list.txt**nevű szövegfájlba.
+A kiszolgálói **mydemoserver.postgres.database.Azure.com** tartozó naplófájlokat az erőforráscsoport **myresourcegroup** lehet kilistázni. Ezután irányítsa a naplófájlok listáját a naplófájlok **\_ \_list.txt** nevű szövegfájlba.
 ```azurecli-interactive
 az postgres server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```
@@ -45,6 +45,6 @@ A következő példa használatával letöltheti a kiszolgáló **mydemoserver.p
 ```azurecli-interactive
 az postgres server-logs download --name 20170414-mydemoserver-postgresql.log --resource-group myresourcegroup --server mydemoserver
 ```
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - A kiszolgálók naplóival kapcsolatos további tudnivalókért tekintse meg [a Azure Database for PostgreSQL kiszolgáló naplófájljait](concepts-server-logs.md).
 - A kiszolgálói paraméterekkel kapcsolatos további információkért lásd: [kiszolgáló konfigurációs paramétereinek testreszabása az Azure CLI használatával](howto-configure-server-parameters-using-cli.md).

@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 05/14/2018
 ms.author: hrasheed
 ms.openlocfilehash: ca84cb6cdd6b47976eadbc5298701a46fe677426
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547826"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007137"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>HDInsight-alkalmazás közzététele az Azure Marketplace-en
 Egy Azure HDInsight-alkalmazást Linux-alapú HDInsight-fürtön is telepíthet. Ebből a cikkből megtudhatja, hogyan tehet közzé egy HDInsight-alkalmazást az Azure Marketplace-en. Az Azure Marketplace-en való közzétételsel kapcsolatos általános információkért tekintse meg az [ajánlat közzététele az Azure piactéren](../marketplace/overview.md)című témakört.
@@ -89,14 +89,14 @@ HDInsight-alkalmazás közzététele:
 1. Jelentkezzen be az [Azure Publishing](https://publish.windowsazure.com/)szolgáltatásba.
 2. A bal oldali menüben válassza a **megoldás sablonok** lehetőséget.
 3. Adjon meg egy címet, majd válassza **az új megoldás sablon létrehozása** lehetőséget.
-4. Ha még nem regisztrálta a szervezetét, válassza **a Fejlesztői központ fiók létrehozása lehetőséget, és csatlakozzon az Azure-programhoz** .  További információt a [Microsoft fejlesztői fiók létrehozása](../marketplace/overview.md)című témakörben talál.
+4. Ha még nem regisztrálta a szervezetét, válassza **a Fejlesztői központ fiók létrehozása lehetőséget, és csatlakozzon az Azure-programhoz**.  További információt a [Microsoft fejlesztői fiók létrehozása](../marketplace/overview.md)című témakörben talál.
 5. **A kezdéshez válassza az egyes topológiák megadása** lehetőséget. A megoldási sablon a "Parent" az összes topológiája számára. Egy ajánlat vagy megoldás sablonjában több topológiát is meghatározhat. Ha egy ajánlat átmeneti állapotba kerül, a rendszer minden topológiával leküldi. 
 6. Adja meg a topológia nevét, majd válassza a elemet **+** .
 7. Adjon meg egy új verziót, majd válassza a elemet **+** .
 8. Töltse fel az alkalmazás csomagolásakor létrehozott. zip fájlt.  
 9. Válassza a **tanúsítvány kérése** lehetőséget. A Microsoft minősítési csapata áttekinti a fájlokat, és tanúsítja a topológiát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Ismerje meg, hogyan [telepíthet HDInsight-alkalmazásokat](hdinsight-apps-install-applications.md) a fürtökbe.
 * Ismerje meg, hogyan [telepíthet egyéni HDInsight-alkalmazásokat](hdinsight-apps-install-custom-applications.md) , és hogyan helyezhet üzembe egy közzé nem tett HDInsight alkalmazást a HDInsight.
 * Megtudhatja, hogyan [használható a parancsfájlok művelet a Linux-alapú HDInsight-fürtök testreszabásához](hdinsight-hadoop-customize-cluster-linux.md) és további alkalmazások hozzáadásához. 

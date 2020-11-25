@@ -7,11 +7,11 @@ ms.date: 2/25/2019
 ms.author: srrengar
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a80eea5a50aa7b1e441049eeb2cae381994cd3ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018654"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006336"
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>Események összesítése és gyűjtése a EventFlow segítségével használatával
 
@@ -25,7 +25,7 @@ A EventFlow segítségével bináris fájljai NuGet-csomagokként érhetők el. 
 
 Megjelenik a különböző csomagok listája, amely a "bemenetek" és a "kimenetek" címkével jelenik meg. A EventFlow segítségével különböző naplózási szolgáltatókat és elemzőket támogat. A EventFlow segítségével üzemeltető szolgáltatásnak tartalmaznia kell a megfelelő csomagokat az alkalmazás naplói forrásáról és céljától függően. Az alapszintű ServiceFabric-csomag mellett legalább egy bemeneti és kimeneti beállításra is szükség van. Például a következő csomagokat adhatja hozzá a EventSource-események küldéséhez a Application Insightsba:
 
-* `Microsoft.Diagnostics.EventFlow.Inputs.EventSource` adatok rögzítése a szolgáltatás EventSource Osztályáról, valamint a szabványos EventSources, például a *Microsoft-ServiceFabric-Services* és a *Microsoft-ServiceFabric-Actors*használatával
+* `Microsoft.Diagnostics.EventFlow.Inputs.EventSource` adatok rögzítése a szolgáltatás EventSource Osztályáról, valamint a szabványos EventSources, például a *Microsoft-ServiceFabric-Services* és a *Microsoft-ServiceFabric-Actors* használatával
 * `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights` (a naplókat egy Azure Application Insights-erőforrásba fogjuk elküldeni)
 * `Microsoft.Diagnostics.EventFlow.ServiceFabric`(engedélyezi a EventFlow segítségével folyamat inicializálását Service Fabric szolgáltatás konfigurációjában, és a diagnosztikai adatok Service Fabric állapot-jelentésként való elküldésével kapcsolatos problémákat jelenti.)
 
@@ -146,7 +146,7 @@ servicefabric:/<section-name>/<setting-name>
 
 Indítsa el a szolgáltatást, és figyelje meg a hibakeresési kimenet ablakot a Visual Studióban. A szolgáltatás elindítása után meg kell jelennie arról, hogy a szolgáltatás a konfigurált kimenetre küld rekordokat. Navigáljon az Event Analysis and vizualizációs platformra, és ellenőrizze, hogy a naplók megkezdték-e a megjelenítést (eltarthat néhány percig).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Események elemzése és vizualizáció Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)
 * [Események elemzése és vizualizáció Azure Monitor naplókkal](service-fabric-diagnostics-event-analysis-oms.md)

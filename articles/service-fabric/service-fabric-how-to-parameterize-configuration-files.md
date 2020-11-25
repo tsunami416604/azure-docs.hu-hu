@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: mikhegn
 ms.openlocfilehash: 4e96a732cffd70b0a5c24e7ebafe214297a72720
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75644630"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006047"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Konfigurációs fájlok parametrizálja Service Fabric
 
@@ -20,7 +20,7 @@ Ez a cikk bemutatja, hogyan parametrizálja egy konfigurációs fájlt a Service
 
 Ebben a példában egy konfigurációs értéket kell felülbírálnia az alkalmazás telepítésében található paraméterek használatával.
 
-1. Nyissa meg a * \<MyService>\PackageRoot\Config\Settings.xml* fájlt a szolgáltatási projektben.
+1. Nyissa meg a *\<MyService>\PackageRoot\Config\Settings.xml* fájlt a szolgáltatási projektben.
 1. A következő XML-kód hozzáadásával állítsa be a konfigurációs paraméter nevét és értékét, például a gyorsítótár méretét 25-re:
 
    ```xml
@@ -30,7 +30,7 @@ Ebben a példában egy konfigurációs értéket kell felülbírálnia az alkalm
    ```
 
 1. Mentse és zárja be a fájlt.
-1. Nyissa meg a * \<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml* fájlt.
+1. Nyissa meg a *\<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml* fájlt.
 1. A ApplicationManifest.xml fájlban deklaráljon egy paramétert és egy alapértelmezett értéket a `Parameters` elemben.  Javasoljuk, hogy a paraméter neve tartalmazza a szolgáltatás nevét (például "MyService").
 
    ```xml

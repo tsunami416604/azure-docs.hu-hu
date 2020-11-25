@@ -16,11 +16,11 @@ ms.date: 02/18/2020
 ms.author: allensu
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: a4d034aefe59a661bfb0694feba36a669aa274ac
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94737931"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007273"
 ---
 # <a name="create-a-nat-gateway-using-azure-cli"></a>NAT-átjáró létrehozása az Azure CLI-vel
 
@@ -222,7 +222,7 @@ Ha már nincs rá szükség, az az [Group delete](/cli/azure/group#az-group-dele
     --name myResourceGroupNAT
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozott egy NAT-átjárót és egy virtuális gépet a használatára. 
 

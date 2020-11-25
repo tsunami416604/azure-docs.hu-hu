@@ -9,11 +9,11 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.openlocfilehash: 602da28f0c235fb0e797a493bc1160631c042a9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132721"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005979"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Útmutatás a személyre szabáshoz
 
@@ -73,7 +73,7 @@ A tartalom személyre szabása a tartalommal és a felhasználóval kapcsolatos 
 
 Vegye figyelembe a következő funkciók hatásait:
 
-* **Felhasználói demográfiai**viszonyok: a szex, a nem, az Age, a Race, a vallás: a nem engedélyezett funkciók bizonyos alkalmazásokban szabályozási okokból nem használhatók, és a személyre szabása nem etikus, mert a személyre szabás az általánosításokat és torzulásokat propagálja. Ez a torzítási propagálás egy példa arra, hogy az idősek és a nemi alapú célközönségek nem jelennek meg a mérnöki munkákban.
+* **Felhasználói demográfiai** viszonyok: a szex, a nem, az Age, a Race, a vallás: a nem engedélyezett funkciók bizonyos alkalmazásokban szabályozási okokból nem használhatók, és a személyre szabása nem etikus, mert a személyre szabás az általánosításokat és torzulásokat propagálja. Ez a torzítási propagálás egy példa arra, hogy az idősek és a nemi alapú célközönségek nem jelennek meg a mérnöki munkákban.
 * **Területi információ**: a világ számos helyén, a helyadatok (például irányítószámok, irányítószámok vagy környéki nevek) nagy összefüggésben lehetnek a jövedelemmel, a faji és a vallással.
 * A **felhasználó megítélése a méltányosság szempontjából**: még abban az esetben is, ha az alkalmazás a helyes döntéseket veszi, vegye figyelembe, hogy a felhasználók az alkalmazásban megjelenített tartalmat úgy tekintik, hogy összefügg a megkülönböztető képességgel rendelkező funkciókkal.
 * Nem **szándékolt torzítás a funkciókban**: léteznek olyan torzítások, amelyek csak a populáció egy részhalmazát érintik. Ez további figyelmet igényel, ha a szolgáltatások algorithmically jönnek létre, például ha a képelemzés használatával kinyeri az elemeket egy kép-vagy szöveges elemzésben az entitások szövegbeli felderítéséhez. Ismerje meg a funkciók létrehozásához használt szolgáltatások jellemzőit.
@@ -141,7 +141,7 @@ A következőkben az AI-k felelős megvalósításának kialakítási területei
 * A szerkesztőktől, az algoritmikus eszközöktől vagy a felhasználóktól származó funkciókban esetlegesen előforduló torzulások ismertetése.
 
 ### <a name="reliability-and-safety"></a>Megbízhatóság és biztonság
-*A AI-rendszereknek megbízhatóan és biztonságosan kell*működniük. Személyre szabás:
+*A AI-rendszereknek megbízhatóan és biztonságosan kell* működniük. Személyre szabás:
 
 * *Ne adja meg azokat a személyre szabott műveleteket, amelyek nem választhatók ki*. A nem megfelelő filmeket például ki kell szűrni a személyre szabott műveletekből, ha névtelen vagy fiatalkorú felhasználó számára tesz javaslatot.
 * *Személyre szabott modell kezelése üzleti eszközként*.  Gondolja át, hogy milyen gyakran szeretné menteni és biztonsági mentést készíteni a modellre és a tanulási szabályzatokat a személyre szabott hurok mögött, és más módon kezelje fontos üzleti eszközként. A múltbeli eredmények reprodukálása fontos az önellenőrzés és a fejlesztés szempontjából.

@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: b-juche
 ms.openlocfilehash: e88cf0c063b3ba42dadd72c19c23be8fcf919b86
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930730"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006610"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>NFS-kötet létrehozása az Azure NetApp Files számára
 
@@ -56,7 +56,7 @@ Azure NetApp Files támogatja a kötetek NFS használatával történő létreho
 
     ![A kötetek navigálása](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png) 
 
-2.  A kötet létrehozása ablakban kattintson a **Létrehozás**gombra, és adja meg a következő mezők adatait az alapok lapon:   
+2.  A kötet létrehozása ablakban kattintson a **Létrehozás** gombra, és adja meg a következő mezők adatait az alapok lapon:   
     * **Kötet neve**      
         Adja meg a létrehozni kívánt kötet nevét.   
 
@@ -98,7 +98,7 @@ Azure NetApp Files támogatja a kötetek NFS használatával történő létreho
 
         ![Speciális kijelölés megjelenítése](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
-3. Kattintson a **protokoll**elemre, majd hajtsa végre a következő műveleteket:  
+3. Kattintson a **protokoll** elemre, majd hajtsa végre a következő műveleteket:  
     * Válassza az **NFS** lehetőséget a kötethez tartozó protokoll típusaként.   
     * Itt adhatja meg a **fájl elérési útját** , amelyet az új kötet exportálási útvonalának létrehozásához fog használni. A rendszer az exportálási útvonal használatával csatlakoztatja és éri el a kötetet.
 
@@ -123,7 +123,7 @@ Azure NetApp Files támogatja a kötetek NFS használatával történő létreho
     A kötetek a kapacitáskészletről öröklik az előfizetésre, az erőforráscsoportra és a helyre vonatkozó attribútumokat. A kötet üzembe helyezésének állapotát az Értesítések lapon követheti nyomon.
 
 
-## <a name="next-steps"></a>Következő lépések  
+## <a name="next-steps"></a>További lépések  
 
 * [Az NFSv 4.1 alapértelmezett tartományának konfigurálása az Azure NetApp Fileshoz](azure-netapp-files-configure-nfsv41-domain.md)
 * [Az NFSv 4.1 Kerberos-titkosításának konfigurálása](configure-kerberos-encryption.md)

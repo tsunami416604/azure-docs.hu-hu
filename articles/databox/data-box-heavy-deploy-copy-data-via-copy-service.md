@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 601e5cf15c47b16c53ff9ca81a56cb613bcfc3f5
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127148"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006559"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-heavy-preview"></a>Oktatóanyag: az adatmásolási szolgáltatás használata az Adatmásolás Azure Data Box Heavyba (előzetes verzió)
 
@@ -48,8 +48,8 @@ Miután csatlakozott a NAS-eszközhöz, a következő lépés az adatai másolá
 
 Az adatok adatmásolási szolgáltatással történő másolásához létre kell hoznia egy feladatot:
 
-1. A Data Box Heavy eszköz helyi webes felületén nyissa meg az **Manage**  >  **Adatmásolás**kezelése lapot.
-2. Az **Adatmásolás** lapon válassza a **Létrehozás**lehetőséget.
+1. A Data Box Heavy eszköz helyi webes felületén nyissa meg az **Manage**  >  **Adatmásolás** kezelése lapot.
+2. Az **Adatmásolás** lapon válassza a **Létrehozás** lehetőséget.
 
     ![Válassza a létrehozás lehetőséget az "Adatmásolás" oldalon](media/data-box-deploy-copy-data-via-copy-service/click-create.png)
 
@@ -59,10 +59,10 @@ Az adatok adatmásolási szolgáltatással történő másolásához létre kell
     |-------------------------------|---------|
     |**Feladat neve**                       |A feladatokhoz 230 karakternél rövidebb egyedi név. A következő karakterek nem engedélyezettek a feladattípusban:,,,,,, \<, \> \| \? \* \\ \: \/ és \\\.         |
     |**Forrás helye**                |Adja meg az adatforrás SMB-elérési útját a következő formátumban: `\\<ServerIPAddress>\<ShareName>` vagy `\\<ServerName>\<ShareName>` .        |
-    |**Felhasználónév**                       |A Felhasználónév `\\<DomainName><UserName>` formátuma az adatforrás eléréséhez. Ha egy helyi rendszergazda csatlakozik, akkor explicit biztonsági engedélyekre van szükségük. Kattintson a jobb gombbal a mappára, válassza a **Tulajdonságok** lehetőséget, majd válassza a **Biztonság**elemet. Ehhez hozzá kell adnia a helyi rendszergazdát a **Biztonság** lapon.       |
+    |**Felhasználónév**                       |A Felhasználónév `\\<DomainName><UserName>` formátuma az adatforrás eléréséhez. Ha egy helyi rendszergazda csatlakozik, akkor explicit biztonsági engedélyekre van szükségük. Kattintson a jobb gombbal a mappára, válassza a **Tulajdonságok** lehetőséget, majd válassza a **Biztonság** elemet. Ehhez hozzá kell adnia a helyi rendszergazdát a **Biztonság** lapon.       |
     |**Jelszó**                       |Az adatforrás eléréséhez használt jelszó.           |
     |**Cél tárfiók**    |Válassza ki a cél Storage-fiókot, hogy az adatok a listáról legyenek feltöltve.         |
-    |**Cél típusa**       |Válassza ki a cél tárolási típust a listából: **blob letiltása**, **oldal blobja**vagy **Azure Files**.        |
+    |**Cél típusa**       |Válassza ki a cél tárolási típust a listából: **blob letiltása**, **oldal blobja** vagy **Azure Files**.        |
     |**Cél tároló/megosztás**    |Adja meg annak a tárolónak vagy megosztásnak a nevét, amelyhez fel kívánja tölteni az adatait a célhely Storage-fiókjába. A név lehet egy megosztás neve vagy egy tároló neve. Például használhatja a következőket: `myshare` vagy `mycontainer`. A nevet megadhatja a (z) formátumban is `sharename\directory_name` `containername\virtual_directory_name` .        |
     |**Fájlokra vonatkozó megfelelő minta másolása**    | A fájlnév-megfeleltetési mintát a következő két módon adhatja meg:<ul><li>**Helyettesítő kifejezések használata:** Csak `*` `?` a helyettesítő karakteres kifejezésekben támogatott. A kifejezés például megfelel a `*.vhd` kiterjesztéssel rendelkező összes fájlnak `.vhd` . Hasonlóképpen, a `*.dl?` kiterjesztéssel `.dl` vagy a-vel kezdődő összes fájlra megegyezik `.dl` , például: `.dll` . Hasonlóképpen, `*foo` az összes olyan fájlra illeszkedik, amelynek a nevei véget ért `foo` .<br>A mezőbe közvetlenül is beírhatja a helyettesítő karaktert. Alapértelmezés szerint a mezőben megadott értéket helyettesítő kifejezésként kezeli a rendszer.</li><li>**Reguláris kifejezések használata:** A POSIX-alapú reguláris kifejezések támogatottak. A reguláris kifejezés például megfelel a `.*\.vhd` kiterjesztéssel rendelkező összes fájlnak `.vhd` . A reguláris kifejezések esetében adja meg a közvetlenül a következőt: `<pattern>` `regex(<pattern>)` . További információ a reguláris kifejezésekről: [reguláris kifejezés nyelve – gyors hivatkozás](/dotnet/standard/base-types/regular-expression-language-quick-reference).</li><ul>|
     |**Fájl optimalizálása**              |Ha ez a funkció engedélyezve van, az 1 MB-nál kisebb fájlok a betöltés során lesznek csomagolva. Ez a csomagolás felgyorsítja a kis méretű fájlok adatmásolási feladatait. Emellett jelentős időt takaríthat meg, ha a fájlok száma messze meghaladja a címtárak számát.        |
@@ -98,7 +98,7 @@ Az adatok adatmásolási szolgáltatással történő másolásához létre kell
         >[!NOTE]
         > Ha lemond vagy szüneteltet egy feladatot, előfordulhat, hogy a nagyméretű fájlok csak részben másolhatók. Ezeket a részben másolt fájlokat a rendszer az Azure-ba feltöltötte. Egy feladat megszakítása vagy felfüggesztése esetén győződjön meg arról, hogy a fájlok megfelelően lettek másolva. A fájlok ellenőrzéséhez tekintse meg az SMB-megosztásokat, vagy töltse le az AJ-fájlt.
 
-    - Ha egy átmeneti hiba miatt nem sikerült végrehajtani a feladatot, például hálózati hibát észlelt, újraindíthatja a feladatokat. A feladatokat azonban nem lehet újraindítani, ha elérte a terminál állapotát, például **sikeres** vagy **hibákkal fejeződött**be. A feladatok meghibásodását a fájl-elnevezési vagy a fájlméretbeli problémák okozhatják. A rendszer naplózza ezeket a hibákat, de a befejezése után a feladatot nem lehet újraindítani.
+    - Ha egy átmeneti hiba miatt nem sikerült végrehajtani a feladatot, például hálózati hibát észlelt, újraindíthatja a feladatokat. A feladatokat azonban nem lehet újraindítani, ha elérte a terminál állapotát, például **sikeres** vagy **hibákkal fejeződött** be. A feladatok meghibásodását a fájl-elnevezési vagy a fájlméretbeli problémák okozhatják. A rendszer naplózza ezeket a hibákat, de a befejezése után a feladatot nem lehet újraindítani.
 
         ![Sikertelen feladatok újraindítása](media/data-box-deploy-copy-data-via-copy-service/restart-failed-job.png)
 
@@ -112,7 +112,7 @@ Az adatok adatmásolási szolgáltatással történő másolásához létre kell
 6. Amíg a művelet folyamatban van, az **adatok másolása** oldalon:
 
     - Az **állapot** oszlopban megtekintheti a másolási feladatok állapotát. Az állapot a következőket teheti:
-        - **Futó**
+        - **Fut**
         - **Sikertelen**
         - **Sikeres**
         - **Felfüggesztés**
@@ -141,7 +141,7 @@ A másolási feladatok befejezése után kiválaszthatja **szállításra való 
 >[!NOTE]
 > A **szállításra való előkészítés** nem futtatható, amíg a másolási feladatok folyamatban vannak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan szállíthatja vissza Data Box Heavy eszközét a Microsoftnak.
 

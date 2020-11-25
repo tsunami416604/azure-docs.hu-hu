@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 06/19/2019
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 4231f348f99073406fcb6a5bef9bf0f84cacf2eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707676"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005571"
 ---
 # <a name="customize-server-configuration-parameters-for-azure-database-for-postgresql---single-server-using-azure-cli"></a>Kiszolgáló konfigurációs paramétereinek testreszabása Azure Database for PostgreSQL – egyetlen kiszolgáló az Azure CLI-vel
 Az Azure PostgreSQL-kiszolgálóhoz tartozó konfigurációs paramétereket a parancssori felületen (Azure CLI) listázhatja, megjelenítheti és frissítheti. A motor-konfigurációk egy részhalmaza a kiszolgáló szintjén érhető el, és módosítható. 
@@ -26,7 +26,7 @@ A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 ## <a name="list-server-configuration-parameters-for-azure-database-for-postgresql-server"></a>Azure Database for PostgreSQL kiszolgáló kiszolgáló-konfigurációs paramétereinek listázása
 A kiszolgálók és azok értékei összes módosítható paraméterének listázásához futtassa az az [postgres Server Configuration List](/cli/azure/postgres/server/configuration) parancsot.
 
-A kiszolgálói **mydemoserver.postgres.database.Azure.com** tartozó kiszolgálói konfigurációs paramétereket a **myresourcegroup**erőforráscsoport alatt listázhatja.
+A kiszolgálói **mydemoserver.postgres.database.Azure.com** tartozó kiszolgálói konfigurációs paramétereket a **myresourcegroup** erőforráscsoport alatt listázhatja.
 ```azurecli-interactive
 az postgres server configuration list --resource-group myresourcegroup --server mydemoserver
 ```
@@ -40,7 +40,7 @@ az postgres server configuration show --name log_min_messages --resource-group m
 ## <a name="modify-server-configuration-parameter-value"></a>Kiszolgáló konfigurációs paramétere értékének módosítása
 Egy bizonyos kiszolgáló-konfigurációs paraméter értékét is módosíthatja, amely frissíti a PostgreSQL-kiszolgáló motorjának alapjául szolgáló konfigurációs értéket. A konfiguráció frissítéséhez használja az az [postgres Server Configuration set](/cli/azure/postgres/server/configuration) parancsot. 
 
-A kiszolgáló **mydemoserver.postgres.database.Azure.com** **naplózási \_ percek \_ ** kiszolgáló-konfigurációs paraméterének frissítése a myresourcegroup erőforráscsoport alatt **.**
+A kiszolgáló **mydemoserver.postgres.database.Azure.com** **naplózási \_ percek \_** kiszolgáló-konfigurációs paraméterének frissítése a myresourcegroup erőforráscsoport alatt **.**
 ```azurecli-interactive
 az postgres server configuration set --name log_min_messages --resource-group myresourcegroup --server mydemoserver --value INFO
 ```
@@ -48,8 +48,8 @@ Ha alaphelyzetbe kívánja állítani egy konfigurációs paraméter értékét,
 ```azurecli-interactive
 az postgres server configuration set --name log_min_messages --resource-group myresourcegroup --server mydemoserver
 ```
-Ez a parancs alaphelyzetbe állítja a ** \_ min. percben megadott \_ üzenetek** konfigurációját az alapértelmezett érték **figyelmeztetéssel**. A kiszolgáló-konfigurációval és a megengedett értékekkel kapcsolatos további információkért lásd a PostgreSQL-dokumentáció a [kiszolgálók konfigurációjában](https://www.postgresql.org/docs/9.6/static/runtime-config.html)című témakört.
+Ez a parancs alaphelyzetbe állítja a **\_ min. percben megadott \_ üzenetek** konfigurációját az alapértelmezett érték **figyelmeztetéssel**. A kiszolgáló-konfigurációval és a megengedett értékekkel kapcsolatos további információkért lásd a PostgreSQL-dokumentáció a [kiszolgálók konfigurációjában](https://www.postgresql.org/docs/9.6/static/runtime-config.html)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [További információ a kiszolgálók újraindításáról](howto-restart-server-cli.md)
 - A kiszolgálók naplófájljainak konfigurálásához és eléréséhez lásd: [kiszolgálói naplók Azure Database for PostgreSQL](concepts-server-logs.md)

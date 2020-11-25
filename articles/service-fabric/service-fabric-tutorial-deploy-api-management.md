@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 61a13d80fd67751d77bc77199fa433143ad92048
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94831685"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007103"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>API Management integrálása az Azure Service Fabricával
 
@@ -289,7 +289,7 @@ ResourceGroupName="sfclustertutorialgroup"
 az group delete --name $ResourceGroupName
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a [API Management](../api-management/import-and-publish.md)használatáról.
 

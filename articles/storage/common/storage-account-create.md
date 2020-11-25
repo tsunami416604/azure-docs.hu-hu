@@ -11,11 +11,11 @@ ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: b7faec5023abe37802d8b08980f216934d70a6ac
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784354"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005545"
 ---
 # <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
@@ -76,7 +76,7 @@ Nincsenek.
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Jelentkezzen be az [Azure Portal](https://portal.azure.com).
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -98,7 +98,7 @@ az login
 
 # <a name="template"></a>[Sablon](#tab/template)
 
-N/A
+N.A.
 
 ---
 
@@ -106,7 +106,7 @@ N/A
 
 Minden tárfióknak egy Azure-erőforráscsoporthoz kell tartoznia. Az erőforráscsoport egy logikai tároló az Azure-szolgáltatások csoportosításához. A tárfiók létrehozásakor lehetősége van létrehozni egy új erőforráscsoportot, vagy választhat egy meglévő erőforráscsoportot. Ez a cikk bemutatja, hogyan hozhat létre egy új erőforráscsoportot.
 
-Az **általános célú v2** -tárfiókok az összes Azure Storage-szolgáltatáshoz (blobokhoz, fájlokhoz, üzenetsorokhoz, táblákhoz és lemezekhez) hozzáférést biztosítanak. Az itt leírt lépések egy általános célú v2-es Storage-fiókot hoznak létre, de a bármilyen típusú Storage-fiók létrehozásának lépései hasonlóak. További információ a tárfiókok típusairól és a tárfiókok egyéb beállításairól: [Az Azure Storage-fiókok áttekintése](storage-account-overview.md).
+Az **általános célú v2**-tárfiókok az összes Azure Storage-szolgáltatáshoz (blobokhoz, fájlokhoz, üzenetsorokhoz, táblákhoz és lemezekhez) hozzáférést biztosítanak. Az itt leírt lépések egy általános célú v2-es Storage-fiókot hoznak létre, de a bármilyen típusú Storage-fiók létrehozásának lépései hasonlóak. További információ a tárfiókok típusairól és a tárfiókok egyéb beállításairól: [Az Azure Storage-fiókok áttekintése](storage-account-overview.md).
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -281,7 +281,7 @@ Másik lehetőségként törölheti az erőforráscsoportot, amely törli a Stor
 >
 > Ha egy Azure virtuális géppel társított tárfiókot próbál törölni, egy hibaüzenetet kaphat, amely szerint a tárfiók még használatban van. A hiba elhárításához a Storage- [fiókok törlésekor a hibák elhárítása](../../virtual-machines/troubleshooting/index.yml)című témakörben talál segítséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Tárfiókok áttekintése](storage-account-overview.md)
 - [Frissítés általános célú v2-tárfiókra](storage-account-upgrade.md)

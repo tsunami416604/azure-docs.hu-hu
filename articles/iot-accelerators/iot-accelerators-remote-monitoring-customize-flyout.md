@@ -10,11 +10,11 @@ ms.date: 10/05/2018
 ms.topic: conceptual
 ms.custom: devx-track-js
 ms.openlocfilehash: afd8c5b01b9f36606bf6bd43fbed747ca83ba320
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318415"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006115"
 ---
 # <a name="add-a-custom-flyout-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Egyéni menü hozzáadása a távoli figyelési megoldás webes felhasználói felületéhez
 
@@ -60,9 +60,9 @@ Másolja a **src/walkthrough/Components/Pages/pageWithFlyout/a menüket** tartal
 
 ### <a name="add-the-flyout-to-the-page"></a>A képernyő hozzáadása az oldalhoz
 
-Módosítsa az **src/Components/Pages/example/basicPage.jselemet ** a következő érték hozzáadásához:.
+Módosítsa az **src/Components/Pages/example/basicPage.jselemet** a következő érték hozzáadásához:.
 
-Adja hozzá a **BTN** az **összetevők/megosztott** importálások és a **svgs** és a **ExampleFlyoutContainer**importálásához:
+Adja hozzá a **BTN** az **összetevők/megosztott** importálások és a **svgs** és a **ExampleFlyoutContainer** importálásához:
 
 ```js
 import {
@@ -136,7 +136,7 @@ npm start
 
 Az előző parancs helyileg futtatja a felhasználói felületet `http://localhost:3000/dashboard` . Navigáljon a **példa** lapra, és kattintson a **nyílra**.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a cikkből megtudhatta, hogyan adhat hozzá vagy szabhat testre lapokat a webes felhasználói felületen a távoli figyelési megoldás-gyorsító segítségével.
 

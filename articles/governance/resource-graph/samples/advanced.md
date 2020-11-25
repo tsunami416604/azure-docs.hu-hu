@@ -4,11 +4,11 @@ description: Az Azure Resource Graph használatával speciális lekérdezéseket
 ms.date: 10/14/2020
 ms.topic: sample
 ms.openlocfilehash: dff4b06cc5cf4385820c7f6251efaae792d9c22d
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057144"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005401"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Speciális Resource Graph lekérdezési minták
 
@@ -174,7 +174,7 @@ Search-AzGraph -Query "Resources | project tags | summarize buildschema(tags)"
 
 ## <a name="virtual-machines-matched-by-regex"></a><a name="vm-regex"></a>Reguláris kifejezésekkel egyező virtuális gépek
 
-Ez a lekérdezés olyan virtuális gépeket keres, amelyek egyeznek egy [reguláris kifejezéssel](/dotnet/standard/base-types/regular-expression-language-quick-reference) (más néven _regex-szel_). Az **egyezések \@ ** használata lehetővé teszi, hogy megegyezzen a reguláris kifejezéssel, amely a következő: `^Contoso(.*)[0-9]+$` .
+Ez a lekérdezés olyan virtuális gépeket keres, amelyek egyeznek egy [reguláris kifejezéssel](/dotnet/standard/base-types/regular-expression-language-quick-reference) (más néven _regex-szel_). Az **egyezések \@** használata lehetővé teszi, hogy megegyezzen a reguláris kifejezéssel, amely a következő: `^Contoso(.*)[0-9]+$` .
 A reguláris kifejezés definíciójának magyarázata:
 
 - `^` – Az egyezésnek a sztring elején kell kezdődnie.
@@ -219,7 +219,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.compute/virtualmachi
 
 ## <a name="list-cosmos-db-with-specific-write-locations"></a><a name="mvexpand-cosmosdb"></a>Adott írási hellyel rendelkező Cosmos DB listázása
 
-A következő lekérdezés korlátozza az erőforrások Cosmos DBét, `mv-expand` és a **tulajdonságokat tartalmazó**táska kibontásához használja a writeLocations, majd a projekt-specifikus mezőket, és az eredményeket tovább szűkíti a **Properties. writeLocations. locationName** értékekre, amelyek megfelelnek az "USA keleti régiója" vagy az "USA nyugati régiója".
+A következő lekérdezés korlátozza az erőforrások Cosmos DBét, `mv-expand` és a **tulajdonságokat tartalmazó** táska kibontásához használja a writeLocations, majd a projekt-specifikus mezőket, és az eredményeket tovább szűkíti a **Properties. writeLocations. locationName** értékekre, amelyek megfelelnek az "USA keleti régiója" vagy az "USA nyugati régiója".
 
 ```kusto
 Resources
@@ -378,7 +378,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.compute/virtualmachi
 ## <a name="list-all-extensions-installed-on-a-virtual-machine"></a><a name="join-vmextension"></a>A virtuális gépre telepített összes bővítmény felsorolása
 
 Először is ez a lekérdezés a `extend` virtuális gépek erőforrástípus alapján kéri le az azonosítót nagybetűs ( `toupper()` ) azonosítóként, az operációs rendszer nevének és típusának beolvasásához, valamint a virtuális gép méretének lekéréséhez.
-Az erőforrás-azonosító nagybetűs beszerzése jó módszer arra, hogy felkészüljenek egy másik tulajdonsághoz való csatlakozásra. Ezt követően a lekérdezés a `join` _leftouter_ használatával beolvassa a virtuálisgép-bővítményeket a bővítmény-azonosító felső tokozásának megfelelő módon **kind** `substring` . Az azonosító "/Extensions/" előtti része \<ExtensionName\> megegyezik a virtuális gépek azonosítójának formátumával, ezért ezt a tulajdonságot használjuk `join` . `summarize` Ezután a a virtuálisgép-bővítmény nevével együtt használja `make_list` az egyes bővítmények nevének összevonására, ahol az _azonosító_, a _OSName_, a _OSType_és a _VMSize_ ugyanaz, mint egyetlen tömb tulajdonság. Végül `order by` pedig az alsó tokozású _OSName_ az **Asc**. Alapértelmezés szerint `order by` csökkenő.
+Az erőforrás-azonosító nagybetűs beszerzése jó módszer arra, hogy felkészüljenek egy másik tulajdonsághoz való csatlakozásra. Ezt követően a lekérdezés a `join` _leftouter_ használatával beolvassa a virtuálisgép-bővítményeket a bővítmény-azonosító felső tokozásának megfelelő módon **kind** `substring` . Az azonosító "/Extensions/" előtti része \<ExtensionName\> megegyezik a virtuális gépek azonosítójának formátumával, ezért ezt a tulajdonságot használjuk `join` . `summarize` Ezután a a virtuálisgép-bővítmény nevével együtt használja `make_list` az egyes bővítmények nevének összevonására, ahol az _azonosító_, a _OSName_, a _OSType_ és a _VMSize_ ugyanaz, mint egyetlen tömb tulajdonság. Végül `order by` pedig az alsó tokozású _OSName_ az **Asc**. Alapértelmezés szerint `order by` csökkenő.
 
 ```kusto
 Resources
@@ -578,7 +578,7 @@ Az előfizetés nevének beszerzésére szolgáló alternatíva az operátor has
 
 > [!NOTE]
 > Ha a lekérdezés nem a **Project** használatával adja meg a visszaadott tulajdonságokat, a **hosszúnak** és a **tenantDisplayName** automatikusan belekerül az eredmények közé.
-> Ha a lekérdezés a **projectet**használja, a _DisplayName_ mezők mindegyikének explicit módon szerepelnie kell a **projektben** , vagy nem lesznek visszaadva az eredmények között még akkor sem, ha a **include** paramétert használja. A **include** paraméter nem működik a [táblákkal](../concepts/query-language.md#resource-graph-tables).
+> Ha a lekérdezés a **projectet** használja, a _DisplayName_ mezők mindegyikének explicit módon szerepelnie kell a **projektben** , vagy nem lesznek visszaadva az eredmények között még akkor sem, ha a **include** paramétert használja. A **include** paraméter nem működik a [táblákkal](../concepts/query-language.md#resource-graph-tables).
 
 ---
 
@@ -625,7 +625,7 @@ Search-AzGraph -Query "GuestConfigurationResources | extend vmid = split(propert
 
 ## <a name="query-details-of-guest-configuration-assignment-reports"></a><a name="query-gcreports"></a>A vendég konfiguráció-hozzárendelési jelentések részleteinek lekérdezése
 
-Jelentés megjelenítése a [vendég konfigurációjának hozzárendelési okának](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration) részleteiről. A következő példában a lekérdezés csak azokat az eredményeket adja vissza, amelyekben a vendég-hozzárendelés neve, `installed_application_linux` a kimenet pedig az `Python` összes olyan linuxos gépet listázó karakterláncot tartalmazza, amelyben a **Python**nevet tartalmazó csomag telepítve van. Ha egy adott hozzárendeléshez tartozó összes gép megfelelőségét szeretné lekérdezni, távolítsa el a második `where` záradékot.
+Jelentés megjelenítése a [vendég konfigurációjának hozzárendelési okának](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration) részleteiről. A következő példában a lekérdezés csak azokat az eredményeket adja vissza, amelyekben a vendég-hozzárendelés neve, `installed_application_linux` a kimenet pedig az `Python` összes olyan linuxos gépet listázó karakterláncot tartalmazza, amelyben a **Python** nevet tartalmazó csomag telepítve van. Ha egy adott hozzárendeléshez tartozó összes gép megfelelőségét szeretné lekérdezni, távolítsa el a második `where` záradékot.
 
 ```kusto
 GuestConfigurationResources
@@ -700,7 +700,7 @@ Search-AzGraph -Query "GuestConfigurationResources | where properties.compliance
 
 - Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/GuestConfigurationResources%20%7C%20where%20properties.complianceStatus%20%3D%3D%20'NonCompliant'%20%7C%20extend%20vmid%20%3D%20split(properties.targetResourceId%2C'%2F')%20%7C%20mvexpand%20properties.latestAssignmentReport.resources%20%7C%20mvexpand%20properties_latestAssignmentReport_resources.reasons%20%7C%20extend%20machine%20%3D%20tostring(vmid%5B(-1)%5D)%20%7C%20where%20machine%20%3D%3D%20'MACHINENAME'%20%7C%20project%20phrase%20%3D%20tostring(properties_latestAssignmentReport_resources_reasons.phrase)%2C%20resource%20%3D%20tostring(properties_latestAssignmentReport_resources.resourceId)%2C%20name%2C%20machine%2C%20resourceGroup%2C%20subscriptionId" target="_blank">Portal.Azure.com <span class="docon docon-navigate-external x-hidden-focus"></span> </a>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse meg az [alapszintű lekérdezések](starter.md)mintáit.
 - További információ a [lekérdezési nyelvről](../concepts/query-language.md).

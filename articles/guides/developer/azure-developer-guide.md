@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
 ms.openlocfilehash: 8694c403b14234a70b0a67f9f4defb7817ba3ae3
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372208"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005384"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure fejlesztői útmutató az első lépésekhez
 
@@ -170,7 +170,7 @@ Rendkívül fontos, hogy ne csak tudja, ki használja az alkalmazásokat, hanem 
 
 - **App Service hitelesítés**: Ha úgy dönt, app Service az alkalmazás üzemeltetéséhez, az Azure ad beépített hitelesítési támogatását, valamint a közösségi identitás-szolgáltatókat, például a Facebookot, a Google-t, a Microsoftot és a Twittert is igénybe veheti.
 
-  > **Mikor érdemes használni**a következőt: Ha engedélyezni szeretné a hitelesítést egy app Service alkalmazásban az Azure ad-vel, a közösségi identitás-szolgáltatókkal vagy mindkettővel.
+  > **Mikor érdemes használni** a következőt: Ha engedélyezni szeretné a hitelesítést egy app Service alkalmazásban az Azure ad-vel, a közösségi identitás-szolgáltatókkal vagy mindkettővel.
   >
   > Első **lépések**: Ha többet szeretne megtudni a app Service hitelesítéséről, tekintse meg [a hitelesítés és engedélyezés](../../app-service/overview-authentication-authorization.md)című témakört Azure app Service.
 
@@ -281,7 +281,7 @@ Azure-előfizetések létrehozásához vagy használatához Azure-fiókkal kell 
 
 Minden Azure-előfizetés bizalmi kapcsolattal rendelkezik egy Azure AD-példányhoz. Ez azt jelenti, hogy megbízik ebben a címtárban a felhasználók, szolgáltatások és eszközök hitelesítéséhez. Több előfizetés is megbízhat ugyanabban a címtárban, de egy előfizetés csak egy címtárban bízhat meg. További információkért lásd: [Az Azure-előfizetések társítása Azure Active Directoryhoz](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
-Az egyes Azure-fiókok identitásait, más néven *felhasználókat*is definiálhat, és *csoportokat* ADHAT meg az Azure ad-ben. A felhasználói csoportok létrehozása jó módja a szerepköralapú hozzáférés-vezérlés (RBAC) használatával az előfizetések erőforrásaihoz való hozzáférés kezelésére. A csoportok létrehozásával kapcsolatos további információkért lásd: [csoport létrehozása Azure Active Directory előzetes](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)verzióban. Csoportokat a [PowerShell használatával](../../active-directory/enterprise-users/groups-settings-v2-cmdlets.md)is létrehozhat és kezelhet.
+Az egyes Azure-fiókok identitásait, más néven *felhasználókat* is definiálhat, és *csoportokat* ADHAT meg az Azure ad-ben. A felhasználói csoportok létrehozása jó módja a szerepköralapú hozzáférés-vezérlés (RBAC) használatával az előfizetések erőforrásaihoz való hozzáférés kezelésére. A csoportok létrehozásával kapcsolatos további információkért lásd: [csoport létrehozása Azure Active Directory előzetes](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)verzióban. Csoportokat a [PowerShell használatával](../../active-directory/enterprise-users/groups-settings-v2-cmdlets.md)is létrehozhat és kezelhet.
 
 ### <a name="manage-your-subscriptions"></a>Feliratkozások kezelése
 

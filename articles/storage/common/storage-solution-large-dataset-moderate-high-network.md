@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: 962bb7a4484f28d52ffd4f0cae985140ec2f0d28
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792922"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006030"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>Nagy méretű adathalmazok átvitele közepes vagy nagy hálózati sávszélességen
  
@@ -25,11 +25,11 @@ Az összes rendelkezésre álló adatátviteli lehetőség áttekintését itt t
 
 A nagyméretű adathalmazok a TBs és a PBs közötti adatméretekre hivatkoznak. A közepes és a nagy hálózati sávszélesség 100 Mbps és 10 GB közötti értékre utal.
 
-## <a name="recommended-options"></a>Ajánlott beállítások
+## <a name="recommended-options"></a>Ajánlott lehetőségek
 
-Az ebben a forgatókönyvben javasolt beállítások attól függnek, hogy a hálózati sávszélesség vagy a nagy hálózati sávszélesség van-e.
+Az ebben a forgatókönyvben javasolt lehetőségek attól függnek, hogy Ön közepes vagy nagy hálózati sávszélességgel rendelkezik.
 
-### <a name="moderate-network-bandwidth-100-mbps---1-gbps"></a>Mérsékelt hálózati sávszélesség (100 Mbps – 1 GB/s)
+### <a name="moderate-network-bandwidth-100-mbps---1-gbps"></a>Közepes sávszélesség (100 Mbps – 1 Gbps)
 
 A mérsékelt hálózati sávszélességgel a hálózaton keresztüli adatátvitel időpontját kell megtervezni.
 
@@ -39,20 +39,20 @@ Az alábbi táblázat segítségével megbecsülheti az időtartamot, és attól
 
 - Ha a hálózati átvitel túl lassú, akkor fizikai eszközt kell használnia. Ebben az esetben az ajánlott beállítások a saját lemezek használatával Azure Data Box családból vagy az Azure import/export szolgáltatásból származó offline átvitelű eszközök.
 
-    - **Azure Data Box család offline átvitelhez** – a Microsoft által biztosított Data Box eszközökről származó eszközök használatával nagy mennyiségű adatok helyezhetők át az Azure-ba, ha az idő, a hálózat rendelkezésre állása vagy a költségek korlátozottak. Helyi Adatmásolás a Robocopy eszközzel. Az átvitelre szánt adatok méretétől függően Data Box Disk, Data Box vagy Data Box Heavy közül választhat.
-    - **Azure import/export** – az Azure import/export szolgáltatás használata a saját lemezmeghajtók szállításával, hogy biztonságosan importáljon nagy mennyiségű adatmennyiséget az Azure Blob Storage-ba és a Azure Filesba. Ezzel a szolgáltatással adatok vihetők át az Azure Blob Storage-ból a lemezmeghajtóra és a helyszíni helyekre.
+    - **Azure Data Box család offline átvitelhez** – a Microsoft által biztosított Data Box eszközökről származó eszközök használatával nagy mennyiségű adatok helyezhetők át az Azure-ba, ha az idő, a hálózat rendelkezésre állása vagy a költségek korlátozottak. A helyszíni adatokat az olyan eszközökkel másolhatja át, mint például a Robocopy. Az áthelyezendő adatok méretétől függően a következő lehetőségek közül választhat: Data Box Disk, Data Box vagy Data Box Heavy.
+    - **Azure import/export** – az Azure import/export szolgáltatás használata a saját lemezmeghajtók szállításával, hogy biztonságosan importáljon nagy mennyiségű adatmennyiséget az Azure Blob Storage-ba és a Azure Filesba. Ez a szolgáltatás az adatoknak az Azure Blob-tárolóból lemezmeghajtókra való átvitelére, majd saját helyszíni helyeire való eljuttatására is használható.
 
 - Ha a hálózati átvitelt a rendszer ésszerűnek tekinti, akkor a [nagy hálózati sávszélességgel](#high-network-bandwidth)kapcsolatos alábbi eszközök bármelyikét használhatja.
 
 
-### <a name="high-network-bandwidth-1-gbps---100-gbps"></a>Nagy hálózati sávszélesség (1 GB/s – 100 GB/s)
+### <a name="high-network-bandwidth-1-gbps---100-gbps"></a>Nagy sávszélesség (1 Gbps – 100 Gbps)
 
 Ha a rendelkezésre álló hálózati sávszélesség magas, használja az alábbi eszközök egyikét.
 
-- **AzCopy** – ezzel a parancssori eszközzel könnyedén másolhatók az Azure-Blobok,-fájlok és-tárolók adatai az optimális teljesítmény érdekében. A AzCopy támogatja a párhuzamosságot és a párhuzamosságot, valamint lehetővé teszi a másolási műveletek folytatását megszakítás közben.
+- **AzCopy** – ezzel a parancssori eszközzel könnyedén másolhatók az Azure-Blobok,-fájlok és-tárolók adatai az optimális teljesítmény érdekében. Az AzCopy támogatja az egyidejűséget és a párhuzamosságot, valamint lehetővé teszi a másolási műveletek folytatását egy esetleges megszakítás esetén.
 - **Azure Storage REST API-k/SDK** -k – egy alkalmazás létrehozásakor az Azure Storage REST API-kon keresztül fejlesztheti az alkalmazást, és használhatja a több nyelven elérhető Azure SDK-kat.
-- **Azure Data Box család online átvitelekhez** – a Data Box Edge és a Data Box Gateway olyan online hálózati eszközök, amelyek az Azure-ba és az-ba helyezhetik át az adatátvitelt. Data Box Edge fizikai eszköz használata, ha a feltöltés előtt egyidejűleg szükség van a folyamatos betöltésre és az adatok előzetes feldolgozására. Data Box Gateway az eszköz virtuális verziója azonos adatátviteli képességekkel. Az adatátvitelt minden esetben az eszköz kezeli.
-- **Azure Data Factory** – Data Factory kell használni az adatátviteli műveletek felskálázásához, és ha szükség van a koordinálásra és a nagyvállalati szintű figyelési lehetőségekre. A Data Factory használatával rendszeresen továbbíthatja a fájlokat több Azure-szolgáltatás, a helyszíni környezet vagy a kettő kombinációja között. a Data Factory használatával olyan adatvezérelt munkafolyamatokat hozhat létre és ütemezhet, amelyek különböző adattárakból származó adatok betöltésére, valamint az adatáthelyezés és az adatátalakítás automatizálására használhatók.
+- **Azure Data Box család online átvitelekhez** – a Data Box Edge és a Data Box Gateway olyan online hálózati eszközök, amelyek az Azure-ba és az-ba helyezhetik át az adatátvitelt. Használja a Data Box Edge fizikai eszközt, ha egyszerre van szükség a folyamatos betöltésre és az adatok feltöltés előtti előzetes feldolgozására. A Data Box Gateway az eszköz virtuális verziója, amely ugyanazokkal az adatátviteli képességekkel rendelkezik. Az adatátvitelt mindkét esetben az eszköz kezeli.
+- **Azure Data Factory** – Data Factory kell használni az adatátviteli műveletek felskálázásához, és ha szükség van a koordinálásra és a nagyvállalati szintű figyelési lehetőségekre. A Data Factory használatával rendszeresen továbbíthatja a fájlokat több Azure- vagy helyszíni szolgáltatás, illetve a kettő kombinációja között. A Data Factory segítségével létrehozhatók és ütemezhetők a különböző adattárolókból adatokat beolvasó, valamint az adatátvitelt és adatátalakítást automatizáló adatvezérelt munkafolyamatok.
 
 ## <a name="comparison-of-key-capabilities"></a>A főbb képességek összehasonlítása
 
@@ -68,7 +68,7 @@ Ha kapcsolat nélküli adatátvitelt használ, a következő táblázat segíts�
 |    **Adattípus**                    |    Azure Blobs                  |    Azure Blobs<br>Azure Files                    |    Azure Blobs<br>Azure Files            |    Azure Blobs<br>Azure Files          |
 |    **Űrlap tényező**                  |    5 SSD/megrendelés             |    1 X 50 – lbs. asztali méretű eszköz/megrendelés    |    1 X ~ 500 – lbs. nagyméretű eszköz/megrendelés    |    Akár 10 HDD/SSD/megrendelés        |
 |    **Kezdeti telepítési idő**               |    Alacsony <br>(15 perc)            |    Alacsony – mérsékelt <br> (<30 perc)               |    Mérsékelt<br>(1-2 óra)               |    Mérsékelt – nehéz<br>változó |
-|    **Adatküldés az Azure-ba**           |    Igen                          |    Igen                                           |    Igen                                   |    Igen                                 |
+|    **Adatküldés az Azure-ba**           |    Igen                          |    Igen                                           |    Igen                                   |    Yes                                 |
 |    **Adatok exportálása az Azure-ból**           |    Nem                           |    Nem                                            |    Nem                                    |    Igen                                 |
 |    **Titkosítás**                   |    AES 128 bites                  |    AES 256 bites                                   |    AES 256 bites                           |    AES 128 bites                         |
 |    **Hardver**                     |     Microsoft által megadott          |    Microsoft által megadott                            |    Microsoft által megadott                    |    Ügyfél által megadott                   |
@@ -88,12 +88,12 @@ Ha online adatátvitelt használ, használja a következő szakaszban találhat�
 |    **Adattípus**              |    Azure-Blobok, Azure Files, Azure-táblák    |    Azure-Blobok, Azure Files, Azure-táblák    |    Azure-Blobok, Azure Files                           |   70 + adatösszekötőt támogat az adattárakhoz és a formátumokhoz    |
 |    **Űrlap tényező**            |    Parancssori eszközök                        |    Programozott felület                    |    A Microsoft biztosítja a virtuális <br>vagy fizikai eszköz     |    Szolgáltatás Azure Portal                                            |
 |    **Kezdeti egyszeri telepítés** |    Könnyen               |    Mérsékelt                       |    Easy (<30 perc) – mérsékelt (1-2 óra)            |    Kiterjedt                                                          |
-|    **Adatfeldolgozás előtti**          |    Nem                                        |    Nem                                        |    Igen (az Edge számítási feladatokkal)                               |    Igen                                                                |
+|    **Adatfeldolgozás előtti**          |    Nem                                        |    Nem                                        |    Igen (az Edge számítási feladatokkal)                               |    Yes                                                                |
 |    **Átvitel más felhőkből**   |    Nem                                        |    Nem                                        |    Nem                                                    |    Igen                                                                |
 |    **Felhasználó típusa**                    |    IT Pro vagy dev                                       |    Dev                                       |    IT-szakértő                                                |    IT-szakértő                                                             |
 |    **Díjszabás**                      |    Ingyenes, a kimenő adatforgalomra vonatkozó díjak érvényesek         |    Ingyenes, a kimenő adatforgalomra vonatkozó díjak érvényesek         |    [Díjszabás](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                                               |    [Díjszabás](https://azure.microsoft.com/pricing/details/data-factory/)                                                            |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Megtudhatja, hogyan vihet át adatátvitelt importálási/exportálási szolgáltatással](./storage-import-export-data-to-blobs.md).
 - Ismerje meg, hogyan

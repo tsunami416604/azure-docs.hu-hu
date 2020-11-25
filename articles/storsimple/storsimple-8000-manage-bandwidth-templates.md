@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 56170ffbbfe14248bcfd1f94549a3565873f8646
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514019"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005894"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-storsimple-bandwidth-templates"></a>A StorSimple Eszközkezelő szolgáltatás használata a StorSimple sávszélesség-sablonjainak kezelésére
 
@@ -55,7 +55,7 @@ További információkat is talál a következő témakörben található sávsz
 
 #### <a name="to-add-a-bandwidth-template"></a>Sávszélesség-sablon hozzáadása
 
-1. Lépjen a StorSimple Eszközkezelő szolgáltatáshoz, kattintson a **sávszélesség-sablonok** , majd a **+ sávszélesség-sablon hozzáadása**lehetőségre.
+1. Lépjen a StorSimple Eszközkezelő szolgáltatáshoz, kattintson a **sávszélesség-sablonok** , majd a **+ sávszélesség-sablon hozzáadása** lehetőségre.
 
     ![Kattintson a + sávszélesség hozzáadása sablon elemre.](./media/storsimple-8000-manage-bandwidth-templates/addbwtemp1.png)
 
@@ -73,7 +73,7 @@ További információkat is talál a következő témakörben található sávsz
            > [!NOTE]
            > Az átfedésben lévő ütemtervek nem engedélyezettek. Ha a kezdési és befejezési idő átfedésben van, akkor a rendszer hibaüzenetet jelenít meg.
 
-        4. A **sávszélesség sebességének**meghatározása. Ez a StorSimple-eszköz által a felhővel kapcsolatos műveletekben használt sávszélesség (MB/s) (a feltöltések és a letöltések is). Ebben a mezőben 1–1000 közötti értéket adjon meg.
+        4. A **sávszélesség sebességének** meghatározása. Ez a StorSimple-eszköz által a felhővel kapcsolatos műveletekben használt sávszélesség (MB/s) (a feltöltések és a letöltések is). Ebben a mezőben 1–1000 közötti értéket adjon meg.
 
             ![Sávszélesség-ütemterv meghatározása](./media/storsimple-8000-manage-bandwidth-templates/addbwtemp2.png)
          
@@ -88,9 +88,9 @@ A sávszélesség-sablon szerkesztéséhez hajtsa végre az alábbi lépéseket.
 
 ### <a name="to-edit-a-bandwidth-template"></a>Sávszélesség-sablon szerkesztése
 
-1. Lépjen a StorSimple Eszközkezelő szolgáltatásra, és kattintson a **sávszélesség-sablonok**elemre.
-2. A sávszélesség-sablonok listájában válassza ki a törölni kívánt sablont. Kattintson a jobb gombbal, és a helyi menüben válassza a **Törlés**lehetőséget.
-3. Ha a rendszer megerősítést kér, kattintson **az OK**gombra. Ennek a sávszélesség-sablont törölnie kell. 
+1. Lépjen a StorSimple Eszközkezelő szolgáltatásra, és kattintson a **sávszélesség-sablonok** elemre.
+2. A sávszélesség-sablonok listájában válassza ki a törölni kívánt sablont. Kattintson a jobb gombbal, és a helyi menüben válassza a **Törlés** lehetőséget.
+3. Ha a rendszer megerősítést kér, kattintson **az OK** gombra. Ennek a sávszélesség-sablont törölnie kell. 
 4. A sávszélesség-sablonok frissítéseinek listája, amelyek a törlést tükrözik.
 
 > [!NOTE]
@@ -102,9 +102,9 @@ A sávszélesség-sablon törléséhez hajtsa végre az alábbi lépéseket.
 
 #### <a name="to-delete-a-bandwidth-template"></a>Sávszélesség-sablon törlése
 
-1. Lépjen a StorSimple Eszközkezelő szolgáltatásra, és kattintson a **sávszélesség-sablonok**elemre.
+1. Lépjen a StorSimple Eszközkezelő szolgáltatásra, és kattintson a **sávszélesség-sablonok** elemre.
 2. A sávszélesség-sablonok listájában válassza ki a törölni kívánt sablont. Kattintson a jobb gombbal, és a helyi menüben válassza a Törlés lehetőséget.
-3. Ha a rendszer megerősítést kér, kattintson **az OK**gombra. Ennek a sávszélesség-sablont törölnie kell.
+3. Ha a rendszer megerősítést kér, kattintson **az OK** gombra. Ennek a sávszélesség-sablont törölnie kell.
 4. A sávszélesség-sablonok frissítéseinek listája, amelyek a törlést tükrözik.
 
 Ha a sablont bármely kötet (ek) használja, nem törölheti. Megjelenik egy hibaüzenet, amely azt jelzi, hogy a sablon használatban van. Megjelenik egy hibaüzenet párbeszédpanel, amely tájékoztatja, hogy a sablonra vonatkozó összes hivatkozást el kell távolítani.

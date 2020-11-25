@@ -9,11 +9,11 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: b0df55e59bd519a816c4022f2434edfcd4460780
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570763"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006523"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>EDIFACT-üzenetek váltása nagyvállalati integráció esetében az Azure Logic Appsben az Enterprise Integration Pack csomaggal
 
@@ -38,32 +38,32 @@ Az alábbi elemek szükségesek:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com "Azure Portal"). 
 
-2. Az Azure fő menüjében válassza a **minden szolgáltatás**lehetőséget. A keresőmezőbe írja be az "integráció" kifejezést, majd válassza az **integrációs fiókok**elemet.
+2. Az Azure fő menüjében válassza a **minden szolgáltatás** lehetőséget. A keresőmezőbe írja be az "integráció" kifejezést, majd válassza az **integrációs fiókok** elemet.
 
    ![Integrációs fiók megkeresése](./media/logic-apps-enterprise-integration-edifact/edifact-0.png)
 
    > [!TIP]
-   > Ha az **összes szolgáltatás** nem jelenik meg, lehetséges, hogy először ki kell bontania a menüt. Az összecsukott menü tetején válassza a **Szövegcímkék megjelenítése**lehetőséget.
+   > Ha az **összes szolgáltatás** nem jelenik meg, lehetséges, hogy először ki kell bontania a menüt. Az összecsukott menü tetején válassza a **Szövegcímkék megjelenítése** lehetőséget.
 
-3. Az **integrációs fiókok**területen válassza ki azt az integrációs fiókot, amelyben létre szeretné hozni a szerződést.
+3. Az **integrációs fiókok** területen válassza ki azt az integrációs fiókot, amelyben létre szeretné hozni a szerződést.
 
    ![Válassza ki az integrációs fiókot, ahol létre kívánja hozni a szerződést](./media/logic-apps-enterprise-integration-edifact/edifact-1-4.png)
 
-4. Válassza a **szerződések**lehetőséget. Ha nem rendelkezik szerződések csempével, először adja hozzá a csempét.   
+4. Válassza a **szerződések** lehetőséget. Ha nem rendelkezik szerződések csempével, először adja hozzá a csempét.   
 
    ![Válassza a "szerződések" csempét](./media/logic-apps-enterprise-integration-edifact/edifact-1-5.png)
 
-5. A szerződések lapon válassza a **Hozzáadás**lehetőséget.
+5. A szerződések lapon válassza a **Hozzáadás** lehetőséget.
 
    ![Válassza a "Hozzáadás" lehetőséget.](./media/logic-apps-enterprise-integration-edifact/edifact-agreement-2.png)
 
-6. A **Hozzáadás**területen adja meg a szerződés **nevét** . A **szerződés típusa**beállításnál válassza a **EDIFACT**lehetőséget. Válassza ki a **gazdagép partnerét**, a **gazdagép identitását**, a **vendég partnert**és a **vendég identitását** a szerződéshez.
+6. A **Hozzáadás** területen adja meg a szerződés **nevét** . A **szerződés típusa** beállításnál válassza a **EDIFACT** lehetőséget. Válassza ki a **gazdagép partnerét**, a **gazdagép identitását**, a **vendég partnert** és a **vendég identitását** a szerződéshez.
 
    ![Szerződés részleteinek megadása](./media/logic-apps-enterprise-integration-edifact/edifact-1.png)
 
    | Tulajdonság | Leírás |
    | --- | --- |
-   | Name (Név) |A szerződés neve |
+   | Név |A szerződés neve |
    | Szerződés típusa | EDIFACT kell lennie |
    | Gazda partner |Egy szerződéshez a gazdagép és a vendég partner is szükséges. A fogadó partner a szerződést konfiguráló szervezetet jelöli. |
    | Gazdagép identitása |A gazdagép-partner azonosítója |
@@ -81,14 +81,14 @@ Most, hogy beállította a szerződés tulajdonságait, beállíthatja, hogy a j
 > Az EDIFACT-összekötő csak UTF-8 karaktereket támogat.
 > Ha a kimenet váratlan karaktereket tartalmaz, ellenőrizze, hogy a EDIFACT-üzenetei az UTF-8 karakterkészletet használják-e.
 
-1. A **Hozzáadás**területen válassza a **fogadási beállítások**lehetőséget.
+1. A **Hozzáadás** területen válassza a **fogadási beállítások** lehetőséget.
 Konfigurálja ezeket a tulajdonságokat a partnerrel kötött szerződése alapján, amely üzeneteket cserél Önnel. A tulajdonságok leírását a jelen szakasz tábláiban találja.
 
    A **fogadási beállítások** a következő csoportokba vannak rendezve: azonosítók, visszaigazolások, sémák, vezérlési számok, érvényesítés és belső beállítások.
 
    ![A "fogadási beállítások" konfigurálása](./media/logic-apps-enterprise-integration-edifact/edifact-2.png)  
 
-2. Ha elkészült, győződjön meg arról, hogy az **OK gombra**kattintva menti a beállításokat.
+2. Ha elkészült, győződjön meg arról, hogy az **OK gombra** kattintva menti a beállításokat.
 
 A szerződés most már készen áll a kiválasztott beállításoknak megfelelő bejövő üzenetek kezelésére.
 
@@ -155,14 +155,14 @@ Az egyes ellenőrzési sorok elvégzése után a rendszer automatikusan hozzáad
 
 Beállíthatja, hogy a jelen Szerződés hogyan azonosítsa és kezeli a partnerek számára a jelen szerződés keretében küldött kimenő üzeneteket.
 
-1.  A **Hozzáadás**területen válassza a **küldési beállítások**lehetőséget.
+1.  A **Hozzáadás** területen válassza a **küldési beállítások** lehetőséget.
 Konfigurálja ezeket a tulajdonságokat a partnerrel kötött szerződése alapján, akik üzeneteket cserélnek Önnel. A tulajdonságok leírását a jelen szakasz tábláiban találja.
 
     A **küldési beállítások** a következő részekre vannak rendezve: azonosítók, visszaigazolások, sémák, borítékok, karakterkészletek és elválasztók, vezérlőelem-számok és érvényesítések.
 
     ![A "küldési beállítások" beállítása](./media/logic-apps-enterprise-integration-edifact/edifact-3.png)    
 
-2. Ha elkészült, győződjön meg arról, hogy az **OK gombra**kattintva menti a beállításokat.
+2. Ha elkészült, győződjön meg arról, hogy az **OK gombra** kattintva menti a beállításokat.
 
 A szerződés most már készen áll a kiválasztott beállításoknak megfelelő kimenő üzenetek kezelésére.
 
@@ -170,7 +170,7 @@ A szerződés most már készen áll a kiválasztott beállításoknak megfelel�
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| UNB 1.2 (szintaxis verziója) |Válasszon egy **1** és **4**közötti értéket. |
+| UNB 1.2 (szintaxis verziója) |Válasszon egy **1** és **4** közötti értéket. |
 | UNB 2.3 (küldő fordított irányú útválasztási címe) |Írjon be egy alfanumerikus értéket legalább egy karakterrel, és legfeljebb 14 karakterből állhat. |
 | UNB 3.3 (címzett fordított irányú útválasztási címe) |Írjon be egy alfanumerikus értéket legalább egy karakterrel, és legfeljebb 14 karakterből állhat. |
 | UNB 6.1 (címzettek hivatkozási jelszava) |Adjon meg legalább egy alfanumerikus értéket, és legfeljebb 14 karakterből állhat. |
@@ -202,7 +202,7 @@ A szerződés most már készen áll a kiválasztott beállításoknak megfelel�
 | UNB10 (kommunikációs szerződés) |Írjon be egy alfanumerikus értéket legalább egy karakterrel, és legfeljebb 40 karaktert. |
 | UNB11 (teszt kijelző) |Jelölje be ezt a jelölőnégyzetet, ha azt szeretné, hogy a létrehozott adatcsere a teszt adatai |
 | Az UNA-szegmens alkalmazása (Service string-tanácsok) |Jelölje be ezt a jelölőnégyzetet, ha egy UNA-szegmenst szeretne előállítani az adatcsere elküldéséhez. |
-| UNG-szegmensek alkalmazása (Function Group-fejléc) |Jelölje be ezt a jelölőnégyzetet a csoportosítási szegmensek létrehozásához a funkcionális csoport fejlécében a vendég partnernek küldött üzenetekben. A UNG-szegmensek létrehozásához a következő értékeket kell használni: <p>A **UNG1**mezőbe írjon be egy alfanumerikus értéket, amely legalább egy karakterből és legfeljebb hat karakterből állhat. <p>A **Ung 2.1**esetében adjon meg egy alfanumerikus értéket, amely legalább egy karakterből és legfeljebb 35 karakterből állhat. <p>A **Ung 2.2**esetében adjon meg egy alfanumerikus értéket, amely legfeljebb négy karakter hosszú lehet. <p>A **Ung 3.1**esetében adjon meg egy alfanumerikus értéket, amely legalább egy karakterből és legfeljebb 35 karakterből állhat. <p>A **Ung 3.2**esetében adjon meg egy alfanumerikus értéket, amely legfeljebb négy karakter hosszú lehet. <p>A **UNG6**mezőben adjon meg egy alfanumerikus értéket, amely legalább egy, legfeljebb három karakterből állhat. <p>A **Ung 7.1**esetében adjon meg egy alfanumerikus értéket, amely legalább egy karakterből és legfeljebb három karakterből állhat. <p>A **Ung 7.2**esetében adjon meg egy alfanumerikus értéket, amely legalább egy karakterből és legfeljebb három karakterből állhat. <p>A **Ung 7.3**esetében adjon meg egy alfanumerikus értéket, amely legalább 1 karakterből és legfeljebb 6 karakterből állhat. <p>A **UNG8**mezőbe írjon be egy alfanumerikus értéket, amely legalább egy karakterből és legfeljebb 14 karakterből állhat. |
+| UNG-szegmensek alkalmazása (Function Group-fejléc) |Jelölje be ezt a jelölőnégyzetet a csoportosítási szegmensek létrehozásához a funkcionális csoport fejlécében a vendég partnernek küldött üzenetekben. A UNG-szegmensek létrehozásához a következő értékeket kell használni: <p>A **UNG1** mezőbe írjon be egy alfanumerikus értéket, amely legalább egy karakterből és legfeljebb hat karakterből állhat. <p>A **Ung 2.1** esetében adjon meg egy alfanumerikus értéket, amely legalább egy karakterből és legfeljebb 35 karakterből állhat. <p>A **Ung 2.2** esetében adjon meg egy alfanumerikus értéket, amely legfeljebb négy karakter hosszú lehet. <p>A **Ung 3.1** esetében adjon meg egy alfanumerikus értéket, amely legalább egy karakterből és legfeljebb 35 karakterből állhat. <p>A **Ung 3.2** esetében adjon meg egy alfanumerikus értéket, amely legfeljebb négy karakter hosszú lehet. <p>A **UNG6** mezőben adjon meg egy alfanumerikus értéket, amely legalább egy, legfeljebb három karakterből állhat. <p>A **Ung 7.1** esetében adjon meg egy alfanumerikus értéket, amely legalább egy karakterből és legfeljebb három karakterből állhat. <p>A **Ung 7.2** esetében adjon meg egy alfanumerikus értéket, amely legalább egy karakterből és legfeljebb három karakterből állhat. <p>A **Ung 7.3** esetében adjon meg egy alfanumerikus értéket, amely legalább 1 karakterből és legfeljebb 6 karakterből állhat. <p>A **UNG8** mezőbe írjon be egy alfanumerikus értéket, amely legalább egy karakterből és legfeljebb 14 karakterből állhat. |
 
 ### <a name="character-sets-and-separators"></a>Karakterkészletek és elválasztók
 
@@ -256,6 +256,6 @@ Az összekötő részletes technikai részleteit, például az összekötő henc
 > [!NOTE]
 > Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében ez az összekötő ISE által címkézett verziója az [ISE B2B-üzenetek korlátait](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits)használja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése

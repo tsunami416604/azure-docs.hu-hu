@@ -18,11 +18,11 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8e0baeb7eddb1d74a8d7708b04391134d2e188b2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951961"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005673"
 ---
 # <a name="high-availability-azure-virtual-machines-for-sap-netweaver"></a>Magas rendelkezésre állású Azure-Virtual Machines az SAP NetWeaver-hoz
 
@@ -741,7 +741,7 @@ Ha az SAP-ASCS vagy az SCS-példányokhoz eltérő számokat szeretne használni
 1. A Azure Portal válassza a **< *SID*>-LB-ASCs terheléselosztó** terheléselosztási  >  **szabályokat**.
 2. Az SAP-ASCS vagy az SCS-példányhoz tartozó összes terheléselosztási szabály esetében módosítsa a következő értékeket:
 
-   * Name
+   * Név
    * Port
    * Háttérbeli port
 

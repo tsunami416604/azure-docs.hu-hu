@@ -16,16 +16,16 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 244fdbf7cb723fe85e0987d176a13242f0bff064
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94956823"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005928"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>StorSimple virtuális tömb üzembe helyezése – beállítás fájlkiszolgáló használatával Azure Portal
 ![A virtuális tömb üzembe helyezéséhez szükséges lépéseket bemutató ábra. A harmadik lépés első része fájlkiszolgálóként van beállítva, és ki van emelve.](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 [!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
@@ -211,5 +211,5 @@ Ekkor csatlakoznia kell egy vagy több, az előző lépésben létrehozott megos
    ![A fájlkezelő képernyőképe. Az újonnan létrehozott megosztásokat jelölő több mappa látható.](./media/storsimple-virtual-array-deploy3-fs-setup/image24.png)
 3. Mostantól hozzáadhat fájlokat a megosztásokhoz, és biztonsági mentést készíthet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Megtudhatja, hogyan használhatja a helyi webes felhasználói felületet a [StorSimple virtuális tömb felügyeletére](storsimple-ova-web-ui-admin.md).

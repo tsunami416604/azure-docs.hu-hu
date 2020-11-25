@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 11/02/2017
 ms.author: alkohli
 ms.openlocfilehash: d05395f97aded0b57780f898e9cba6ddca491f95
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534092"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005817"
 ---
 # <a name="install-update-10-on-your-storsimple-virtual-array"></a>Az 1,0-es frissítés telepítése a StorSimple virtuális tömbön
 
@@ -128,6 +128,6 @@ Az eljárás végrehajtása körülbelül 4 percet vesz igénybe. A frissítés 
 > [!NOTE]
 > Ha közvetlenül az 1. frissítést alkalmazza egy olyan eszközre, amely a 0,6-es frissítés előtt fut, akkor hiányoznak néhány frissítés. A következő lépésekhez forduljon Microsoft ügyfélszolgálatahoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ [a StorSimple virtuális tömb felügyeletéről](storsimple-ova-web-ui-admin.md).

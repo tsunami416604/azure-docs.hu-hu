@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 11/18/2020
 ms.author: alzam
 ms.openlocfilehash: 1f10799ab32b6cb26a8b3b5b343f65b960d71357
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94889099"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007001"
 ---
 # <a name="set-up-alerts-on-resource-log-events-from-vpn-gateway"></a>Riasztások beállítása az erőforrás-naplózási eseményekről VPN Gateway
 
@@ -195,6 +195,6 @@ A következő példa lépésekben riasztást hoz létre egy olyan leválasztási
        -Name 'The Azure to Redmond tunnel is disconnected'
    ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A riasztások bújtatási metrikákkal való konfigurálásáról lásd: [riasztások beállítása VPN Gateway mérőszámokon](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md).

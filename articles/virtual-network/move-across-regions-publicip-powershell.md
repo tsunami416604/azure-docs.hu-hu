@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: allensu
 ms.openlocfilehash: 4f72c22ee26375e025af7b3a391fdd45187e7041
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84703740"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006268"
 ---
 # <a name="move-azure-public-ip-configuration-to-another-region-using-azure-powershell"></a>Azure nyilvános IP-konfiguráció áthelyezése másik régióba Azure PowerShell használatával
 
@@ -62,7 +62,7 @@ A következő lépések bemutatják, hogyan készítse elő a nyilvános IP-cím
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
    ```
 
-4. A letöltött fájl neve annak az erőforrás-csoportnak az alapján lesz elnevezve, amelyből az erőforrást exportálták.  Keresse meg a ** \<resource-group-name> . JSON** nevű parancsból exportált fájlt, és nyissa meg egy tetszőleges szerkesztőben:
+4. A letöltött fájl neve annak az erőforrás-csoportnak az alapján lesz elnevezve, amelyből az erőforrást exportálták.  Keresse meg a **\<resource-group-name> . JSON** nevű parancsból exportált fájlt, és nyissa meg egy tetszőleges szerkesztőben:
    
    ```azurepowershell
    notepad <source-resource-group-name>.json
@@ -118,7 +118,7 @@ A következő lépések bemutatják, hogyan készítse elő a nyilvános IP-cím
     ```
 8. A sablon egyéb paramétereit is módosíthatja, és a követelményektől függően választható:
 
-    * **SKU** – a nyilvános IP-cím SKU-jának a standard és az alap közötti értékről a standard típusra módosítható úgy, **sku**hogy a  >  ** \<resource-group-name> . JSON** fájlban módosítja az SKU**Name** tulajdonságot:
+    * **SKU** – a nyilvános IP-cím SKU-jának a standard és az alap közötti értékről a standard típusra módosítható úgy, **sku** hogy a  >  **\<resource-group-name> . JSON** fájlban módosítja az SKU **Name** tulajdonságot:
 
          ```json
             "resources": [
@@ -135,7 +135,7 @@ A következő lépések bemutatják, hogyan készítse elő a nyilvános IP-cím
 
          Az alapszintű és a standard SKU nyilvános IP-címei közötti különbségekkel kapcsolatos további információkért lásd: [nyilvános IP-cím létrehozása, módosítása vagy törlése](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address).
 
-    * **Nyilvános IP-kiosztási módszer** és **Üresjárati időkorlát** – a sablon mindkét beállítását módosíthatja úgy, hogy a **PublicIPAllocationMethod** tulajdonságot **dinamikusról** **statikusra** vagy statikusra változtatja **a** **dinamikus**értékre. Az Üresjárat időkorlátja módosítható úgy, hogy módosítja a **idleTimeoutInMinutes** tulajdonságot a kívánt értékre.  Az alapértelmezett érték **4**:
+    * **Nyilvános IP-kiosztási módszer** és **Üresjárati időkorlát** – a sablon mindkét beállítását módosíthatja úgy, hogy a **PublicIPAllocationMethod** tulajdonságot **dinamikusról** **statikusra** vagy statikusra változtatja **a** **dinamikus** értékre. Az Üresjárat időkorlátja módosítható úgy, hogy módosítja a **idleTimeoutInMinutes** tulajdonságot a kívánt értékre.  Az alapértelmezett érték **4**:
 
          ```json
          "resources": [
@@ -163,14 +163,14 @@ A következő lépések bemutatják, hogyan készítse elő a nyilvános IP-cím
         A kiosztási módszerekkel és az üresjárati időtúllépési értékekkel kapcsolatos további információkért lásd: [nyilvános IP-cím létrehozása, módosítása vagy törlése](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address).
 
 
-9. Mentse a ** \<resource-group-name> . JSON** fájlt.
+9. Mentse a **\<resource-group-name> . JSON** fájlt.
 
 10. Hozzon létre egy erőforráscsoportot a céltartományban a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)használatával telepítendő cél nyilvános IP-címhez.
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. Telepítse a szerkesztett ** \<resource-group-name> . JSON** fájlt az előző lépésben létrehozott erőforráscsoporthoz a [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)használatával:
+11. Telepítse a szerkesztett **\<resource-group-name> . JSON** fájlt az előző lépésben létrehozott erőforráscsoporthoz a [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)használatával:
 
     ```azurepowershell-interactive
 
@@ -201,7 +201,7 @@ Remove-AzResourceGroup -Name <target-resource-group-name>
 
 ```
 
-## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
 
 A módosítások elvégzéséhez és a virtuális hálózat áthelyezésének befejezéséhez törölje a forrás virtuális hálózatot vagy az erőforráscsoportot a [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) vagy a [Remove-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/remove-azpublicipaddress?view=azps-2.6.0):
 

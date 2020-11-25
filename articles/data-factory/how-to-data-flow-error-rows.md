@@ -6,22 +6,30 @@ author: kromerm
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/20/2020
+ms.date: 11/22/2020
 ms.author: makromer
-ms.openlocfilehash: 3f8ac2d1434019548b01d8468015a543d89d0fba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49d11dfe3d42d99c610fae9fa64079a5fd87501f
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85254412"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96006787"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>SQL-csonkolt hibák sorainak kezelése Data Factory leképezési adatforgalomban
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-A leképezési adatfolyamatok használatakor Data Factory gyakori forgatókönyv, hogy az átalakított adatait Azure SQL Database-adatbázisba írja. Ebben a forgatókönyvben egy gyakori hiba feltételt kell megakadályozni, hogy az oszlop csonkítható legyen. Az alábbi lépéseket követve megadhatja azokat az oszlopokat, amelyek nem illeszkednek a célként megadott karakterlánc-oszlopba, így az adatfolyamok továbbra is folytatják ezeket a forgatókönyveket.
+A leképezési adatfolyamatok használatakor Data Factory gyakori forgatókönyv, hogy az átalakított adatait Azure SQL Database-adatbázisba írja. Ebben a forgatókönyvben egy gyakori hiba feltételt kell megakadályozni, hogy az oszlop csonkítható legyen.
 
-## <a name="scenario"></a>Forgatókönyv
+Az adatbázis-fogadóba az ADF-adatfolyamatok során két elsődleges módszer található a hibák kezelésére
+
+* Az adatbázis adatainak feldolgozásakor a "Folytatás hiba esetén" beállításnál állítsa be a fogadói [hiba sorainak kezelését](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#error-row-handling) . Ez egy automatizált catch-all metódus, amely nem igényel egyéni logikát az adatfolyamban.
+* Azt is megteheti, hogy az alábbi lépéseket követve olyan oszlopok naplózását adja meg, amelyek nem illeszkednek a cél sztring oszlopba, így az adatfolyam továbbra is folytatódhat.
+
+> [!NOTE]
+> Ha engedélyezi az automatikus hibajelentések kezelését, a saját hibakezelés logikájának írásakor az alábbi módszernek megfelelően a rendszer kis teljesítményű szankciót használ, és az ADF által végrehajtott további lépéseket végrehajtva kétfázisú műveletet hajt végre a hibák alátöltése érdekében.
+
+## <a name="scenario"></a>Használati eset
 
 1. Egy ```nvarchar(5)``` "Name" nevű oszlopot tartalmazó céladatbázis-táblánk van.
 
@@ -49,6 +57,10 @@ Ez a videó végigvezeti egy, az adatfolyamatban a hibák sorát kezelő logiká
 4. Az elkészült adatfolyam az alábbi ábrán látható. Most már eloszthatjuk a hibák sorait, hogy elkerülje az SQL-csonkítás hibáit, és a bejegyzéseket egy naplófájlba helyezi. Eközben a sikeres sorok továbbra is írhatnak a célként megadott adatbázisba.
 
     ![teljes adatforgalom](media/data-flow/error2.png)
+
+5. Ha a hibás sorok kezelésére szolgáló beállítást választja a fogadó átalakításban, és beállítja a "kimeneti hibák sorait", az ADF automatikusan létrehoz egy CSV-fájl kimenetét a sorból, valamint az illesztőprogram által jelentett hibaüzeneteket. Ezzel az alternatív lehetőséggel nem kell manuálisan hozzáadnia ezt a logikát az adatfolyamathoz. Ezzel a lehetőséggel kis teljesítményű szankció keletkezik, így az ADF kétfázisú módszert alkalmazhat a hibák összevonására és a naplózásra.
+
+    ![az adatforgalom befejezése a hibák soraival](media/data-flow/error-row-3.png)
 
 ## <a name="next-steps"></a>További lépések
 

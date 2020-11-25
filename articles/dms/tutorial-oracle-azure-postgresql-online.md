@@ -13,17 +13,17 @@ ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/24/2020
 ms.openlocfilehash: df789161bb9db8d49f069992600b5fcb4f78dd03
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955242"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006542"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Oktatóanyag: Oracle migrálása Azure Database for PostgreSQL online-ba a DMS használatával (előzetes verzió)
 
 A Azure Database Migration Service segítségével áttelepítheti az adatbázisokat a helyszíni vagy virtuális gépeken üzemeltetett Oracle-adatbázisokból, hogy minimális állásidővel [Azure Database for PostgreSQL](../postgresql/index.yml) . Más szóval az áttelepítés minimális állásidővel is elvégezhető az alkalmazáshoz. Ebben az oktatóanyagban a **HR** mintaadatbázis helyszíni vagy virtuálisgép-példányáról telepíti át a Azure Database for PostgreSQL a Azure Database Migration Service Online áttelepítési tevékenységének használatával.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 > [!div class="checklist"]
 >
 > * Mérje fel az áttelepítési erőfeszítést a ora2pg eszközzel.
@@ -383,7 +383,7 @@ Az első teljes betöltés elkészültével az adatbázisok **Átállásra kész
  > [!NOTE]
  > Mivel a PostgreSQL alapértelmezés szerint a Schema. table. Column altípust használja, a jelen cikk korábbi részében a **Azure Database for PostgreSQL séma beállítása a sémában** című részében található parancsfájl használatával visszaállíthatja a nagybetűs esetről a kisbetűsre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az Azure Database for PostgreSQL-be történő online migrálás végrehajtásakor felmerülő ismert hibákhoz és korlátozásokhoz kapcsolódó információk: [Az Azure Database for PostgreSQL online migrálásával kapcsolatos ismert hibák és kerülő megoldások](known-issues-azure-postgresql-online.md).
 * A Azure Database Migration Service kapcsolatos információkért tekintse meg a [Azure Database Migration Service?](./dms-overview.md)című cikket.

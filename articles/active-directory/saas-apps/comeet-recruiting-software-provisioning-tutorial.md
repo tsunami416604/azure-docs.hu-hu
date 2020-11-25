@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 288d1e6cec8ddcf7d4afe5a35f28a022c2a7be10
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357062"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006712"
 ---
 # <a name="tutorial-configure-comeet-recruiting-software-for-automatic-user-provisioning"></a>Oktatóanyag: a felhasználók automatikus kiépítés céljából történő toborzásának konfigurálása
 
@@ -53,7 +53,7 @@ Az Azure AD-vel való automatikus felhasználó-kiépítési szoftver bevezetés
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a következőt: **munkatársak toborzása szoftver** , válassza a **munkatársak toborzása** az eredmények panelen lehetőséget, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a következőt: **munkatársak toborzása szoftver**, válassza a **munkatársak toborzása** az eredmények panelen lehetőséget, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![A szoftverek toborzása az eredmények listájában](common/search-new-app.png)
 
@@ -142,7 +142,7 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 
 * A munkatársak toborzása jelenleg nem támogatja a csoportokat.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

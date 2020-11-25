@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: duau
 ms.openlocfilehash: 208fe9c5bfa20bf5b2daab296af9f955db67a33d
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204673"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007171"
 ---
 # <a name="expressroute-routing-requirements"></a>Az ExpressRoute útválasztási követelményei
 Ahhoz, hogy az ExpressRoute-tal tudjon csatlakozni a Microsoft-felhőszolgáltatásokhoz, be kell állítania és kezelnie kell az útválasztást. Egyes kapcsolatszolgáltatók az útválasztás beállítását és kezelését felügyelt szolgáltatásként kínálják. Ellenőrizze kapcsolatszolgáltatójánál, hogy kínálja-e ezt a szolgáltatást. Ha nem, akkor meg kell felelnie az alábbi követelményeknek:
@@ -82,7 +82,7 @@ A BGP-munkamenetek beállításához az Ön birtokában lévő nyilvános IP-cí
 ### <a name="private-peering"></a>Magánhálózati társviszony-létesítés
 Eldöntheti, hogy nyilvános vagy magánhálózati IPv4-címeket szeretne-e használni a magánhálózati társviszony-létesítéshez. Mi biztosítjuk a forgalom végpontok közötti elkülönítését, így elkerülhető, hogy a címek átfedésben legyenek más ügyfelekkel magánhálózati társviszony-létesítés esetén. Ezek a címek nincsenek meghirdetve az interneten. 
 
-### <a name="microsoft-peering"></a>Microsoftos társviszony
+### <a name="microsoft-peering"></a>Microsoftos társhálózat-létesítés
 A Microsoft-partneri útvonal lehetővé teszi a Microsoft Cloud Serviceshez való kapcsolódást. A szolgáltatások listája olyan Microsoft 365 szolgáltatásokat tartalmaz, mint például az Exchange Online, a SharePoint Online, a Skype vállalati verzió és a Microsoft teams. A Microsoft támogatja a kétirányú kapcsolatokat a Microsoft-társviszony-létesítésen keresztül. A Microsoft-felhőszolgáltatások felé irányuló forgalomnak érvényes nyilvános IPv4-címeket kell használnia, mielőtt belép a Microsoft hálózatába.
 
 Győződjön meg róla, hogy az IP-címek és AS-számok regisztrálva vannak az alábbi nyilvántartások egyikében:
@@ -163,7 +163,7 @@ Geopolitikai régiónként több ExpressRoute-kapcsolatcsoportot is vásárolhat
 | USA nyugati középső régiója | 12076:51027 | 12076:52027 | 12076:53027 | 12076:54027 | 12076:55027 |
 | USA északi középső régiója | 12076:51007 | 12076:52007 | 12076:53007 | 12076:54007 | 12076:55007 |
 | USA déli középső régiója | 12076:51008 | 12076:52008 | 12076:53008 | 12076:54008 | 12076:55008 |
-| USA középső régiója | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 | 12076:55009 |
+| Az USA középső régiója | 12076:51009 | 12076:52009 | 12076:53009 | 12076:54009 | 12076:55009 |
 | Közép-Kanada | 12076:51020 | 12076:52020 | 12076:53020 | 12076:54020 | 12076:55020 |
 | Kelet-Kanada | 12076:51021 | 12076:52021 | 12076:53021 | 12076:54021 | 12076:55021 |
 | **Dél-Amerika** | |
@@ -261,7 +261,7 @@ A fentiek mellett a Microsoft a kapcsolódó szolgáltatások alapján is címk�
 | Azure Active Directory |12076:5160 |
 | Egyéb Office 365-szolgáltatások |12076:5200 |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Az ExpressRoute-kapcsolat konfigurálása.
   
   * [Kapcsolatcsoport létrehozása és módosítása](expressroute-howto-circuit-arm.md)

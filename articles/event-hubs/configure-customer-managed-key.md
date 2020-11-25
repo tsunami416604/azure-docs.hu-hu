@@ -4,11 +4,11 @@ description: Ez a cikk azt ismerteti, hogyan konfigurálhatja saját kulcsát az
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 9f073c42373e75fc1cb34d1c752350f9d2c61872
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843213"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006132"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Ügyfél által felügyelt kulcsok konfigurálása az Azure Event Hubs-adatok inaktív titkosításához a Azure Portal használatával
 Az Azure Event Hubs az Azure Storage Service Encryption (Azure SSE) segítségével titkosítja az inaktív adatok titkosítását. Event Hubs az Azure Storage-ra támaszkodik az adattárolásra, és alapértelmezés szerint az Azure Storage-ban tárolt összes adattal titkosították a Microsoft által felügyelt kulcsokkal. 
@@ -400,7 +400,7 @@ Ajánlott eljárásként mindig engedélyezze a naplókat, például az előző 
 
 A következő gyakori hibakódokat kell megkeresnie, amikor a BYOK-titkosítás engedélyezve van.
 
-| Műveletek | Hibakód | Eredményül kapott állapot |
+| Művelet | Hibakód | Eredményül kapott állapot |
 | ------ | ---------- | ----------------------- | 
 | Kicsomagolási/kicsomagolási engedély eltávolítása a kulcstartóból | 403 |    Nem érhető el |
 | HRE-szerepkör tagságának eltávolítása egy olyan HRE, amely a wrap/unwrap engedélyt adta | 403 |  Nem érhető el |
@@ -415,7 +415,7 @@ A következő gyakori hibakódokat kell megkeresnie, amikor a BYOK-titkosítás 
 > [!IMPORTANT]
 > Ha engedélyezni szeretné, hogy a Geo-DR olyan névtérben legyen, amely a BYOK-titkosítást használja, a párosítás másodlagos névterének dedikált fürtben kell lennie, és rendelkeznie kell egy hozzá tartozó, rendszerhez rendelt felügyelt identitással. További információ: [felügyelt identitások az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/overview.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket:
 - [Event Hubs áttekintése](event-hubs-about.md)
 - [Key Vault áttekintése](../key-vault/general/overview.md)

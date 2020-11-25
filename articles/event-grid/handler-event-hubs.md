@@ -3,12 +3,12 @@ title: Event hub Azure Event Grid események eseménykezelője
 description: Ismerteti, hogyan használható az Event hub Azure Event Grid eseményekhez eseménykezelőként.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 4fb8027290831dbfed4b6d202d61d2d689274828
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 446fef6df65f59206519e282c74d59c2ed1bfa9d
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629624"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "96005629"
 ---
 # <a name="event-hub-as-an-event-handler-for-azure-event-grid-events"></a>Event hub Azure Event Grid események eseménykezelője
 Az eseménykezelő az a hely, ahol az esemény elküldése történik. A kezelő végrehajt egy műveletet az esemény feldolgozásához. Számos Azure-szolgáltatás automatikusan van konfigurálva az események kezelésére, és az **azure Event Hubs** az egyik. 
@@ -23,17 +23,8 @@ Lásd az alábbi példákat:
 | [Gyors útmutató: egyéni események irányítása az Azure Event Hubs az Azure CLI-vel](custom-event-to-eventhub.md) | Egyéni eseményt küld egy Event hub-nak egy alkalmazás általi feldolgozáshoz. |
 | [Resource Manager-sablon: Event Grid egyéni témakör létrehozása és események küldése az Event hubhoz](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| Resource Manager-sablon, amely létrehoz egy egyéni témakörhöz tartozó előfizetést. Eseményeket küld egy Azure-Event Hubs. |
 
-## <a name="message-properties"></a>Üzenet tulajdonságai
-Ha az **Event hub** -t a Event Grid eseményeihez tartozó esemény-kezelőként használja, akkor az üzenetek fejlécében megjelenő tulajdonságok a következők: 
+[!INCLUDE [event-grid-message-headers](../../includes/event-grid-message-headers.md)]
 
-| Tulajdonság neve | Leírás |
-| ------------- | ----------- | 
-| AEG-előfizetés – név | Az esemény-előfizetés neve. |
-| AEG – kézbesítés – darabszám | <p>Az eseményre tett kísérletek száma.</p> <p>Példa: "1"</p> |
-| AEG – eseménytípus | <p>Az esemény típusa.</p><p> Például: "Microsoft. Storage. blobCreated"</p> | 
-| AEG – metaadatok – verzió | <p>Az esemény metaadat-verziója.</p> <p>Példa: "1".</p><p> **Event Grid Event Schema**esetében ez a tulajdonság a metaadat-verziót és a **Felhőbeli esemény sémáját**jelöli, amely a **spec verziót**jelöli. </p>|
-| AEG – adatverzió | <p>Az esemény adatverziója.</p><p>Példa: "1".</p><p>**Event Grid Event Schema**esetében ez a tulajdonság az adatverziót és a **Felhőbeli esemény sémáját**jelöli, nem érvényes.</p> |
-| AEG-output-Event-ID | A Event Grid esemény azonosítója. |
 
 ## <a name="rest-examples-for-put"></a>REST-példák (PUT)
 
@@ -82,5 +73,5 @@ Ha az **Event hub** -t a Event Grid eseményeihez tartozó esemény-kezelőként
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A támogatott eseménykezelők listáját az [eseménykezelők](event-handlers.md) című cikkben tekintheti meg. 

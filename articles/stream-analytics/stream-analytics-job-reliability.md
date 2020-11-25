@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
 ms.openlocfilehash: 889e298f64689748340713de6318f8ffcd181001
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123846"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006455"
 ---
 # <a name="guarantee-stream-analytics-job-reliability-during-service-updates"></a>A szolgáltatás frissítéseinek Stream Analytics a feladatok megbízhatóságának garantálása
 
@@ -29,7 +29,7 @@ A **[rendelkezésre állással és a párosított régiókkal](../best-practices
 
 Azt javasoljuk, hogy azonos feladatokat helyezzen üzembe a párosított régiókban. Ezután [Figyelje ezeket a feladatokat](./stream-analytics-set-up-alerts.md#scenarios-to-monitor) , hogy értesítést kapjon, ha valami váratlan esemény történik. Ha a feladatok egyike [sikertelen állapotba](./job-states.md) kerül egy stream Analytics szolgáltatás frissítése után, forduljon az ügyfélszolgálathoz, és segít azonosítani a kiváltó okot. Az összes alsóbb rétegbeli fogyasztót is át kell adnia az egészséges feladat kimenetére.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Bevezetés a Stream Analyticsba](stream-analytics-introduction.md)
 * [Ismerkedés a Stream Analytics szolgáltatással](stream-analytics-real-time-fraud-detection.md)

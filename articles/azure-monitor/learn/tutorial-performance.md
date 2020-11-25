@@ -8,11 +8,11 @@ ms.author: lagayhar
 ms.date: 06/15/2020
 ms.custom: mvc
 ms.openlocfilehash: df7cfff7d5bf1b89f88105f79c072d1d7e731b31
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592566"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005486"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Teljesítménybeli problémák észlelése és diagnosztizálása az Application Insights segítségével
 
@@ -103,7 +103,7 @@ A kiszolgáló teljesítményére gyűjtött adatokhoz hasonlóan a Application 
 
     ![Naplók lekérdezése](media/tutorial-performance/10-page-view-logs.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most már megtanulta, hogyan azonosíthatja a futásidejű kivételeket. Térjen át a következő oktatóanyagra, hogy megtanulja, hogyan hozhat létre riasztásokat a hibákhoz.
 
 > [!div class="nextstepaction"]

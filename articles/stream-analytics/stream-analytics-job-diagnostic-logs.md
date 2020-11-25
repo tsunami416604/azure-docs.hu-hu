@@ -9,11 +9,11 @@ ms.topic: troubleshooting
 ms.custom: contperfq1
 ms.date: 06/18/2020
 ms.openlocfilehash: 0e7777cba93706baea815521757b495209431ce6
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124017"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006472"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>Azure Stream Analyticsek hibakeresése erőforrás-naplók használatával
 
@@ -84,7 +84,7 @@ Azure Stream Analytics az erőforrás-naplók két kategóriáját rögzíti:
 
 * **Szerzői** műveletek: rögzíti a feladatok létrehozásához kapcsolódó műveleteket, például a feladatok létrehozását, a bemenetek és kimenetek hozzáadását és törlését, a lekérdezés hozzáadását és frissítését, valamint a feladatok elindítását és leállítását.
 
-* **Végrehajtás** : rögzíti a feladatok végrehajtása során előforduló eseményeket.
+* **Végrehajtás**: rögzíti a feladatok végrehajtása során előforduló eseményeket.
     * Csatlakozási hibák
     * Adatfeldolgozási hibák, beleértve az alábbiakat:
         * Azok az események, amelyek nem felelnek meg a lekérdezés definíciójának (nem egyező mezőtípus és értékek, hiányzó mezők stb.)
@@ -98,11 +98,11 @@ Az összes napló JSON formátumban van tárolva. Mindegyik bejegyzés a követk
 Név | Leírás
 ------- | -------
 time | A napló időbélyegzője (UTC).
-resourceId | Annak az erőforrásnak az azonosítója, amelyre a művelet bekerült, nagybetűvel. Magában foglalja az előfizetés-azonosítót, az erőforráscsoportot és a feladatnév nevét. Például: **/Subscriptions/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/My-Resource-Group/Providers/Microsoft. STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB** .
+resourceId | Annak az erőforrásnak az azonosítója, amelyre a művelet bekerült, nagybetűvel. Magában foglalja az előfizetés-azonosítót, az erőforráscsoportot és a feladatnév nevét. Például: **/Subscriptions/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/My-Resource-Group/Providers/Microsoft. STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**.
 category | Napló kategóriája, **végrehajtás** vagy **szerzői** művelet.
-operationName | A naplózott művelet neve. Például az **események küldése: az SQL kimeneti írási hiba mysqloutput** .
+operationName | A naplózott művelet neve. Például az **események küldése: az SQL kimeneti írási hiba mysqloutput**.
 status | A művelet állapota. Például sikertelen vagy **sikeres** **volt** .
-szint | Naplózási szint. Például: **hiba** , **Figyelmeztetés** vagy **tájékoztató** .
+szint | Naplózási szint. Például: **hiba**, **Figyelmeztetés** vagy **tájékoztató**.
 properties | Naplóbejegyzés-specifikus részletek, JSON-karakterláncként szerializálva. További információkért tekintse meg a cikk következő részeit.
 
 ### <a name="execution-log-properties-schema"></a>Végrehajtási napló tulajdonságai sémája
@@ -117,16 +117,16 @@ Név | Leírás
 ------- | -------
 Forrás | A feladathoz tartozó bemenet vagy kimenet neve, ahol a hiba történt.
 Üzenet | A hibához tartozó üzenet.
-Típus | A hiba típusa. Például: **DataConversionError** , **CsvParserError** vagy **ServiceBusPropertyColumnMissingError** .
+Típus | A hiba típusa. Például: **DataConversionError**, **CsvParserError** vagy **ServiceBusPropertyColumnMissingError**.
 Adatok | Olyan információkat tartalmaz, amelyek hasznosak a hiba forrásának pontos megtalálásához. A mérettől függően a csonkítás függ.
 
 A **operationName** értékétől függően az adathibák a következő sémával rendelkeznek:
 
 * Az **események szerializálása** az esemény-olvasási műveletek során következik be. Akkor fordulnak elő, ha a bemeneti adatok nem felelnek meg a lekérdezési sémának az alábbi okok valamelyike miatt:
 
-   * A következő *típus nem egyezik az esemény (de) szerializálásakor* : a hibát okozó mezőt azonosítja.
+   * A következő *típus nem egyezik az esemény (de) szerializálásakor*: a hibát okozó mezőt azonosítja.
 
-   * *Nem lehet olvasni egy eseményt, érvénytelen szerializálás* : felsorolja a bemeneti adatok azon helyével kapcsolatos információkat, ahol a hiba történt. Tartalmazza a Blobok bemenetének, eltolásának és az adatok mintájának a nevét.
+   * *Nem lehet olvasni egy eseményt, érvénytelen szerializálás*: felsorolja a bemeneti adatok azon helyével kapcsolatos információkat, ahol a hiba történt. Tartalmazza a Blobok bemenetének, eltolásának és az adatok mintájának a nevét.
 
 * Az **események küldése** az írási műveletek során történik. A hibát okozó folyamatos átviteli eseményt azonosítják.
 
@@ -138,10 +138,10 @@ Név | Leírás
 -------- | --------
 Hiba | választható Hiba adatai. Általában ez a kivételi információ, ha elérhető.
 Üzenet| A naplózási üzenet.
-Típus | Az üzenet típusa. Leképezés a hibák belső kategorizálására. Például: **JobValidationError** vagy **BlobOutputAdapterInitializationFailure** .
+Típus | Az üzenet típusa. Leképezés a hibák belső kategorizálására. Például: **JobValidationError** vagy **BlobOutputAdapterInitializationFailure**.
 Korrelációs azonosító | GUID, amely egyedileg azonosítja a feladatok végrehajtását. Az összes végrehajtási naplóbejegyzés abban az időponttól kezdve, amíg a feladatoknak nem kell megegyezniük a **korrelációs azonosító** értékével.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [AdatStream Analyticsi hibák](./data-errors.md)
 * [Stream Analytics lekérdezés nyelvi referenciája](/stream-analytics-query/stream-analytics-query-language-reference)

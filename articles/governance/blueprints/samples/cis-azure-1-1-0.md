@@ -4,11 +4,11 @@ description: A CIS Microsoft Azure Foundations Benchmark tervmintájának áttek
 ms.date: 10/14/2020
 ms.topic: sample
 ms.openlocfilehash: 6c09e539e192db8422b25079264b9f4e8965d994
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92054610"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005605"
 ---
 # <a name="cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>A CIS Microsoft Azure alapítványok teljesítményteszt-tervezetének mintája
 
@@ -37,7 +37,7 @@ Először a tervminta implementálásához hozzon létre egy új tervet a körny
 
 1. A bal oldalon válassza az **Első lépések** oldalt, és válassza a _Terv létrehozása_ területen a **Létrehozás** lehetőséget.
 
-1. Keresse meg a **CIS Microsoft Azure founds benchmark v 1.1.0** Blueprint mintát _más minták_ alatt, és válassza **a minta használata**lehetőséget.
+1. Keresse meg a **CIS Microsoft Azure founds benchmark v 1.1.0** Blueprint mintát _más minták_ alatt, és válassza **a minta használata** lehetőséget.
 
 1. Adja meg a tervminta _alapvető beállításait_:
 
@@ -60,7 +60,7 @@ A tervminta másolata létrejött a környezetében. **Piszkozat** módban jött
 
 ### <a name="assign-the-sample-copy"></a>Ugyanazon másolat hozzárendelése
 
-Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzárendelhető egy előfizetéshez, amely a felügyeleti csoporton belül lett mentve. Ebben a lépésben adja meg a paramétereket, hogy a tervminta másolatának minden üzemelő példánya egyedi legyen.
+Miután a tervezet mintájának **közzététele** sikeresen megtörtént, hozzárendelhető egy előfizetéshez, amely a felügyeleti csoporton belül lett mentve. Ebben a lépésben adja meg a paramétereket, hogy a tervminta másolatának minden üzemelő példánya egyedi legyen.
 
 1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **Tervek** elemet.
 
@@ -104,7 +104,7 @@ A következő táblázat a terv összetevő-paramétereinek listáját tartalmaz
 |Az audit CIS Microsoft Azure alapítványok teljesítményteszt 1.1.0-javaslatait és a konkrét támogató virtuálisgép-bővítmények üzembe helyezését|Szabályzat-hozzárendelés|Azon régiók listája, amelyeken engedélyezni kell a Network Watcher|Régiók pontosvesszővel tagolt listája. A régiók teljes listájának megtekintéséhez használja a Get-AzLocation. Pl.: eastus; eastus2|
 |Az audit CIS Microsoft Azure alapítványok teljesítményteszt 1.1.0-javaslatait és a konkrét támogató virtuálisgép-bővítmények üzembe helyezését|Szabályzat-hozzárendelés|A használatra jóváhagyott virtuálisgép-bővítmények listája|A bővítmények pontosvesszővel tagolt listája. A virtuálisgép-bővítmények teljes listájának megtekintéséhez használja a Get-AzVMExtensionImage. Pl.: AzureDiskEncryption; IaaSAntimalware|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További cikkek a tervekről és a használatukról:
 

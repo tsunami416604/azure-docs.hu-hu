@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 5d61c0f5f26bc46b9c4a5bc4a793df1e10710004
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130867"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006729"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Struktúra-táblák létrehozása és adatok betöltése az Azure Blob Storage
 
@@ -147,12 +147,12 @@ STORED AS TEXTFILE LOCATION '<storage location>' TBLPROPERTIES("skip.header.line
 
 Itt láthatók a bekapcsolni és egyéb konfigurációkhoz szükséges mezők leírása:
 
-* **\<database name\>** : a létrehozni kívánt adatbázis neve. Ha csak az alapértelmezett adatbázist szeretné használni, akkor az " *adatbázis létrehozása..* ." lekérdezés elhagyható.
-* **\<table name\>** : a megadott adatbázison belül létrehozni kívánt tábla neve. Ha az alapértelmezett adatbázist szeretné használni, a tábla közvetlenül is megadható *\<table name\>* \<database name\> .
-* **\<field separator\>** : az adatfájlban a kaptár táblába feltöltendő mezőket határoló elválasztó.
-* **\<line separator\>** : az adatfájl sorait határoló elválasztó.
-* **\<storage location\>** : az Azure Storage-hely, amely a kaptár-táblák adatmentését menti. Ha nem ad meg *helyet \<storage location\>* , a rendszer alapértelmezés szerint az adatbázist és a táblákat a kaptár-fürt alapértelmezett tárolójában, a *kaptárban/raktárban/* könyvtárban tárolja. Ha meg szeretné adni a tárolási helyet, a tárolási helynek az adatbázis és a táblák alapértelmezett tárolójában kell lennie. Ezt a helyet a fürt alapértelmezett tárolójához viszonyítva kell megadni a *"wasb:/// \<directory 1> /"* vagy a *"wasb:/// \<directory 1> / \<directory 2> /* " formátumban, stb. A lekérdezés végrehajtása után a relatív könyvtárak az alapértelmezett tárolón belül jönnek létre.
-* **TBLPROPERTIES ("skip. header. line. Count" = "1")** : Ha az adatfájlnak van fejléce, akkor a *tábla létrehozása* lekérdezés **végén** hozzá kell adnia ezt a tulajdonságot. Ellenkező esetben a fejlécsor rekordként van betöltve a táblába. Ha az adatfájlnak nincs fejléce, akkor ez a konfiguráció kihagyható a lekérdezésben.
+* **\<database name\>**: a létrehozni kívánt adatbázis neve. Ha csak az alapértelmezett adatbázist szeretné használni, akkor az "*adatbázis létrehozása..*." lekérdezés elhagyható.
+* **\<table name\>**: a megadott adatbázison belül létrehozni kívánt tábla neve. Ha az alapértelmezett adatbázist szeretné használni, a tábla közvetlenül is megadható *\<table name\>* \<database name\> .
+* **\<field separator\>**: az adatfájlban a kaptár táblába feltöltendő mezőket határoló elválasztó.
+* **\<line separator\>**: az adatfájl sorait határoló elválasztó.
+* **\<storage location\>**: az Azure Storage-hely, amely a kaptár-táblák adatmentését menti. Ha nem ad meg *helyet \<storage location\>*, a rendszer alapértelmezés szerint az adatbázist és a táblákat a kaptár-fürt alapértelmezett tárolójában, a *kaptárban/raktárban/* könyvtárban tárolja. Ha meg szeretné adni a tárolási helyet, a tárolási helynek az adatbázis és a táblák alapértelmezett tárolójában kell lennie. Ezt a helyet a fürt alapértelmezett tárolójához viszonyítva kell megadni a *"wasb:/// \<directory 1> /"* vagy a *"wasb:/// \<directory 1> / \<directory 2> /*" formátumban, stb. A lekérdezés végrehajtása után a relatív könyvtárak az alapértelmezett tárolón belül jönnek létre.
+* **TBLPROPERTIES ("skip. header. line. Count" = "1")**: Ha az adatfájlnak van fejléce, akkor a *tábla létrehozása* lekérdezés **végén** hozzá kell adnia ezt a tulajdonságot. Ellenkező esetben a fejlécsor rekordként van betöltve a táblába. Ha az adatfájlnak nincs fejléce, akkor ez a konfiguráció kihagyható a lekérdezésben.
 
 ## <a name="load-data-to-hive-tables"></a><a name="load-data"></a>Adatgyűjtés a kaptár tábláiba
 Itt látható a kaptár-lekérdezés, amely betölti az adathalmazt egy struktúra-táblába.
@@ -161,7 +161,7 @@ Itt látható a kaptár-lekérdezés, amely betölti az adathalmazt egy struktú
 LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 ```
 
-* **\<path to blob data\>** : Ha a kaptár táblába való feltöltésre kerülő blob-fájl a HDInsight Hadoop-fürt alapértelmezett tárolójában van, akkor az értéknek *\<path to blob data\>* *"wasb:// \<directory in this container> / \<blob file name> "* formátumúnak kell lennie. A blob fájl a HDInsight Hadoop-fürt további tárolójában is szerepelhet. Ebben az esetben *\<path to blob data\>* a következő formátumúnak kell lennie: *"wasb:// \<container name> @ \<storage account name> . blob.Core.Windows.net/ \<blob file name> "* .
+* **\<path to blob data\>**: Ha a kaptár táblába való feltöltésre kerülő blob-fájl a HDInsight Hadoop-fürt alapértelmezett tárolójában van, akkor az értéknek *\<path to blob data\>* *"wasb:// \<directory in this container> / \<blob file name> "* formátumúnak kell lennie. A blob fájl a HDInsight Hadoop-fürt további tárolójában is szerepelhet. Ebben az esetben *\<path to blob data\>* a következő formátumúnak kell lennie: *"wasb:// \<container name> @ \<storage account name> . blob.Core.Windows.net/ \<blob file name> "*.
 
   > [!NOTE]
   > A kaptár táblába feltöltendő blob-adatmennyiségnek a Hadoop-fürthöz tartozó Storage-fiók alapértelmezett vagy további tárolójában kell lennie. Ellenkező esetben a *betöltési adat* lekérdezése sikertelenül panaszkodik, hogy nem fér hozzá az adathoz.
@@ -249,7 +249,7 @@ INSERT OVERWRITE TABLE <database name>.<ORC table name> PARTITION (<partition va
     WHERE <partition variable>=<partition value>;
 ```
 
-*\<external text file table name\>* Ha az összes adattal beszúrta *\<database name\> \<ORC table name\>* , a következő lekérdezés használata esetén a rendszer biztonságosan elvégezheti a használatát:
+*\<external text file table name\>* Ha az összes adattal beszúrta *\<database name\> \<ORC table name\>*, a következő lekérdezés használata esetén a rendszer biztonságosan elvégezheti a használatát:
 
 ```hiveql
     DROP TABLE IF EXISTS <database name>.<external textfile table name>;

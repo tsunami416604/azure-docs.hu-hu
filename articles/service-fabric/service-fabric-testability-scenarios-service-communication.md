@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 87b922cb9655588a22c739d26c9ce9e49d35781a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75465559"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007120"
 ---
 # <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric tesztelési forgatókönyvek: szolgáltatás-kommunikáció
 Az Azure Service Fabricban természetesen a szolgáltatások és a szolgáltatás-orientált építészeti stílusok is felszínre kerülnek. Ezekben az elosztott architektúrákban az összetevő-szolgáltatási alkalmazások jellemzően több olyan szolgáltatásból állnak, amelyeknek egymással kell kommunikálni. A legegyszerűbb esetekben általában legalább egy állapot nélküli webszolgáltatás és egy állapot-nyilvántartó adattároló szolgáltatásnak kell kommunikálnia.

@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 03/24/2020
 ms.custom: seodec18
 ms.openlocfilehash: ba216e41672e1d19e552b3f82a2ea65da7d3a435
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124577"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007086"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Ismerkedés a Azure Stream Analytics használatával: a csalások valós idejű észlelése
 
@@ -178,7 +178,7 @@ Most, hogy elvégezte a hívási események streamjét, beállíthat egy Stream 
 
 ### <a name="create-the-job"></a>A feladat létrehozása 
 
-1. A Azure Portal kattintson az **erőforrás létrehozása**  >  **eszközök internetes hálózata**  >  **stream Analytics feladatokra** .
+1. A Azure Portal kattintson az **erőforrás létrehozása**  >  **eszközök internetes hálózata**  >  **stream Analytics feladatokra**.
 
 2. Nevezze el a feladatot `asa_frauddetection_job_demo` , adjon meg egy előfizetést, egy erőforráscsoportot és egy helyet.
 
@@ -359,7 +359,7 @@ Ha rendelkezik meglévő blob Storage-fiókkal, ezt használhatja. Ebből az okt
 
 ### <a name="create-an-azure-blob-storage-account"></a>Azure Blob Storage-fiók létrehozása
 
-1. A Azure Portal bal felső sarkában válassza az **erőforrás létrehozása**  >  **Storage** -  >  **fiók** lehetőséget. Töltse ki a Storage-fiók feladata lapot "asaehstorage **" értékre** , az "USA keleti **régiója** " értékre állítva, az **erőforráscsoport** pedig az "ASA-eh-NS-RG" értékre van állítva (a nagyobb teljesítmény érdekében tárolja a Storage-fiókot a folyamatos átviteli feladattal azonos erőforráscsoporthoz). A fennmaradó beállításokat alapértelmezett értéken hagyhatja.  
+1. A Azure Portal bal felső sarkában válassza az **erőforrás létrehozása**  >  **Storage**-  >  **fiók** lehetőséget. Töltse ki a Storage-fiók feladata lapot "asaehstorage **" értékre** , az "USA keleti **régiója** " értékre állítva, az **erőforráscsoport** pedig az "ASA-eh-NS-RG" értékre van állítva (a nagyobb teljesítmény érdekében tárolja a Storage-fiókot a folyamatos átviteli feladattal azonos erőforráscsoporthoz). A fennmaradó beállításokat alapértelmezett értéken hagyhatja.  
 
    ![Storage-fiók létrehozása Azure Portal](./media/stream-analytics-real-time-fraud-detection/stream-analytics-storage-account-create.png)
 
@@ -405,7 +405,7 @@ Amikor megvizsgál egy fájl tartalmát a blob Storage-ban, a következőhöz ha
    ![Azure Blob Storage streaming Analytics-kimenettel](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-blob-storage-view.png)
  
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Vannak további cikkek, amelyek továbbra is a csalások észlelésére szolgálnak, és az ebben az oktatóanyagban létrehozott erőforrásokat használják. Ha folytatni szeretné a lépéseket, tekintse meg a **következő lépések** című témakörben található javaslatokat.
 
@@ -422,7 +422,7 @@ Ha azonban elkészült, és nincs szüksége a létrehozott erőforrásokra, tö
 
 További segítségért próbálja ki a [Microsoft Q&a Azure stream Analytics vonatkozó kérdés oldalát](/answers/topics/azure-stream-analytics.html).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezt az oktatóanyagot a következő cikk használatával folytathatja:
 

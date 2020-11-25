@@ -4,22 +4,22 @@ ms.author: dapine
 ms.date: 10/02/2019
 ms.service: cognitive-services
 ms.topic: include
-ms.openlocfilehash: 7ccbc6c06419d22add7c52829069bb858cb35cf7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a6f399e19cadf3d6ce9edfaecb3d904e62c498aa
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73484077"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006873"
 ---
 A tároló a következő konfigurációs beállításokkal rendelkezik:
 
 |Kötelező|Beállítás|Rendeltetés|
 |--|--|--|
-|Igen|[ApiKey](#apikey-configuration-setting)|A számlázási információk nyomon követése.|
-|Nem|[ApplicationInsights](#applicationinsights-setting)|Lehetővé teszi az [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) telemetria támogatásának hozzáadását a tárolóhoz.|
-|Igen|[Számlázás](#billing-configuration-setting)|Meghatározza a szolgáltatási erőforrás végpontjának URI-JÁT az Azure-ban.|
-|Igen|[EULA](#eula-setting)| Azt jelzi, hogy elfogadta a tároló licencét.|
-|Nem|[Fluentd](#fluentd-settings)|Naplózza a naplót, és opcionálisan metrikus adatokat is egy Fluent-kiszolgálóra.|
-|Nem|HTTP-proxy|Konfigurál egy HTTP-proxyt a kimenő kérések elkészítése céljából.|
-|Nem|[Logging](#logging-settings)|ASP.NET Core naplózási támogatást biztosít a tárolóhoz. |
-|Nem|[Tartók](#mount-settings)|Adatokat olvas és ír a gazdagépről a tárolóba, a tárolóból pedig vissza a gazdagépre.|
+|Yes|[ApiKey](#apikey-configuration-setting)|A számlázási információk nyomon követése.|
+|No|[ApplicationInsights](#applicationinsights-setting)|Lehetővé teszi az [Azure Application Insights](/azure/application-insights) telemetria támogatásának hozzáadását a tárolóhoz.|
+|Yes|[Számlázás](#billing-configuration-setting)|Meghatározza a szolgáltatási erőforrás végpontjának URI-JÁT az Azure-ban.|
+|Yes|[EULA](#eula-setting)| Azt jelzi, hogy elfogadta a tároló licencét.|
+|No|[Fluentd](#fluentd-settings)|Naplózza a naplót, és opcionálisan metrikus adatokat is egy Fluent-kiszolgálóra.|
+|No|HTTP-proxy|Konfigurál egy HTTP-proxyt a kimenő kérések elkészítése céljából.|
+|No|[Logging](#logging-settings)|ASP.NET Core naplózási támogatást biztosít a tárolóhoz. |
+|No|[Tartók](#mount-settings)|Adatokat olvas és ír a gazdagépről a tárolóba, a tárolóból pedig vissza a gazdagépre.|

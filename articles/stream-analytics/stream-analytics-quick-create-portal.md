@@ -8,11 +8,11 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 ms.openlocfilehash: 5ad261064adf34945a600983296cb3e0ceaa5247
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90901072"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006661"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával
 
@@ -30,7 +30,7 @@ A Stream Analytics feladatának meghatározása előtt elő kell készítenie a 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. Válassza **az erőforrás létrehozása**  >  **eszközök internetes hálózata**  >  **IoT hub**lehetőséget.
+2. Válassza **az erőforrás létrehozása**  >  **eszközök internetes hálózata**  >  **IoT hub** lehetőséget.
 
 3. A **IoT hub** ablaktáblán adja meg a következő adatokat:
    
@@ -49,9 +49,9 @@ A Stream Analytics feladatának meghatározása előtt elő kell készítenie a 
 
    ![A IoT Hub mérete és méretezése](./media/stream-analytics-quick-create-portal/iot-hub-size-and-scale.png)
 
-6. Válassza az **Áttekintés + létrehozás** lehetőséget. Tekintse át IoT Hub adatait, és kattintson a **Létrehozás**gombra. A IoT Hub létrehozása néhány percet is igénybe vehet. A létrehozás folyamatát az **Értesítések** panelen követheti nyomon.
+6. Válassza az **Áttekintés + létrehozás** lehetőséget. Tekintse át IoT Hub adatait, és kattintson a **Létrehozás** gombra. A IoT Hub létrehozása néhány percet is igénybe vehet. A létrehozás folyamatát az **Értesítések** panelen követheti nyomon.
 
-7. A IoT Hub navigációs menüjében kattintson a **Hozzáadás** elemre a **IoT eszközök**alatt. Adja meg az **eszköz azonosítóját** , és kattintson a **Mentés**gombra.
+7. A IoT Hub navigációs menüjében kattintson a **Hozzáadás** elemre a **IoT eszközök** alatt. Adja meg az **eszköz azonosítóját** , és kattintson a **Mentés** gombra.
 
    ![Eszköz hozzáadása a IoT Hub](./media/stream-analytics-quick-create-portal/add-device-iot-hub.png)
 
@@ -61,7 +61,7 @@ A Stream Analytics feladatának meghatározása előtt elő kell készítenie a 
 
 ## <a name="create-blob-storage"></a>BLOB Storage létrehozása
 
-1. A Azure Portal bal felső sarkában válassza az **erőforrás létrehozása**  >  **Storage**-  >  **fiók**lehetőséget.
+1. A Azure Portal bal felső sarkában válassza az **erőforrás létrehozása**  >  **Storage**-  >  **fiók** lehetőséget.
 
 2. A **Storage-fiók létrehozása** panelen adja meg a Storage-fiók nevét, helyét és az erőforráscsoportot. Válassza ki ugyanazt a helyet és erőforráscsoportot, mint a létrehozott IoT Hub. Ezután kattintson a **felülvizsgálat + létrehozás** gombra a fiók létrehozásához.
 
@@ -77,7 +77,7 @@ A Stream Analytics feladatának meghatározása előtt elő kell készítenie a 
 
 ## <a name="create-a-stream-analytics-job"></a>Stream Analytics-feladat létrehozása
 
-1. Jelentkezzen be az Azure portálra.
+1. Jelentkezzen be az Azure Portalra.
 
 2. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.  
 
@@ -106,7 +106,7 @@ Ebben a szakaszban egy IoT Hub eszköz bemenetét fogja konfigurálni a Stream A
 
 1. Keresse meg a Stream Analytics-feladatot.  
 
-2. Válassza a **bemenetek**  >  **hozzáadása stream bemeneti**  >  **IoT hub**lehetőséget.  
+2. Válassza a **bemenetek**  >  **hozzáadása stream bemeneti**  >  **IoT hub** lehetőséget.  
 
 3. Töltse ki a **IoT hub** oldalt a következő értékekkel:
 
@@ -116,7 +116,7 @@ Ebben a szakaszban egy IoT Hub eszköz bemenetét fogja konfigurálni a Stream A
    |Előfizetés   |  \<Your subscription\> |  Válassza ki azt az Azure-előfizetést, amelyhez a létrehozott tárfiók tartozik. A tárfiók tartozhat ugyanahhoz az előfizetéshez, de akár egy másik előfizetéshez is. A példa azt feltételezi, hogy a tárfiók ugyanahhoz az előfizetéshez tartozik. |
    |IoT Hub  |  MyASAIoTHub |  Adja meg az előző szakaszban létrehozott IoT Hub nevét. |
 
-4. Az egyéb beállításokat hagyja alapértelmezett értéken, és válassza a**Mentés** lehetőséget a beállítások mentéséhez.  
+4. Az egyéb beállításokat hagyja alapértelmezett értéken, és válassza a **Mentés** lehetőséget a beállítások mentéséhez.  
 
    ![A bemeneti adatok konfigurálása](./media/stream-analytics-quick-create-portal/configure-asa-input.png)
  
@@ -124,7 +124,7 @@ Ebben a szakaszban egy IoT Hub eszköz bemenetét fogja konfigurálni a Stream A
 
 1. Keresse meg a korábban létrehozott Stream Analytics-feladatot.  
 
-2. Válassza a **kimenetek**  >  **Add**  >  **blob Storage**hozzáadása elemet.  
+2. Válassza a **kimenetek**  >  **Add**  >  **blob Storage** hozzáadása elemet.  
 
 3. A **Blobtároló** oldalon adja meg a következő értékeket:
 
@@ -135,7 +135,7 @@ Ebben a szakaszban egy IoT Hub eszköz bemenetét fogja konfigurálni a Stream A
    |Tárfiók |  asaquickstartstorage |   Válassza ki vagy adja meg a tárfiók nevét. Ha a tárfiókok ugyanahhoz az előfizetéshez tartoznak, a rendszer automatikusan észleli a nevüket.       |
    |Tároló |   container1  |  Válassza ki a tárfiókjában létrehozott meglévő tárolót.   |
 
-4. Az egyéb beállításokat hagyja alapértelmezett értéken, és válassza a**Mentés** lehetőséget a beállítások mentéséhez.  
+4. Az egyéb beállításokat hagyja alapértelmezett értéken, és válassza a **Mentés** lehetőséget a beállítások mentéséhez.  
 
    ![Kimenet konfigurálása](./media/stream-analytics-quick-create-portal/configure-asa-output.png)
  
@@ -152,7 +152,7 @@ Ebben a szakaszban egy IoT Hub eszköz bemenetét fogja konfigurálni a Stream A
    HAVING Temperature > 27
    ```
 
-3. Ebben a példában a lekérdezés beolvassa az adatokat a IoT Hubból, és átmásolja egy új fájlba a blobban. Válassza a **Mentés** lehetőséget.  
+3. Ebben a példában a lekérdezés beolvassa az adatokat a IoT Hubból, és átmásolja egy új fájlba a blobban. Kattintson a **Mentés** gombra.  
 
    ![A transzformáció konfigurálása](./media/stream-analytics-quick-create-portal/add-asa-query.png)
 
@@ -170,7 +170,7 @@ Ebben a szakaszban egy IoT Hub eszköz bemenetét fogja konfigurálni a Stream A
 
 1. Térjen vissza a feladat áttekintési oldalára, és válassza az **Indítás** lehetőséget.
 
-2. A **kezdési feladatnál**válassza a **most**lehetőséget a **feladatok kimenetének kezdési ideje** mezőhöz. Ezután válassza az **Indítás** lehetőséget a feladatok elindításához.
+2. A **kezdési feladatnál** válassza a **most** lehetőséget a **feladatok kimenetének kezdési ideje** mezőhöz. Ezután válassza az **Indítás** lehetőséget a feladatok elindításához.
 
 3. Néhány perc elteltével keresse meg a portálon azt a tárfiókot és tárolót, amelyet a feladat kimeneteként beállított. Mostanra a kimeneti fájl megjelent a tárolóban. Az első indítás után pár percbe telhet, amíg a feladat elindul, de ezt követően mindig futni fog, amint adatok érkeznek.  
 

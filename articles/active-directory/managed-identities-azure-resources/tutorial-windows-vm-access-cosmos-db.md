@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/29/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b571b2b8e0d334a02631e3f443ec54398117ee9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cd1fb7f33c56aefe76bc55181ae92ca3d149754
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532669"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006964"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Oktatóanyag: Hozzáférés az Azure Cosmos DB-hez egy Windows VM-beli, rendszer által hozzárendelt felügyelt identitással
 
@@ -59,7 +59,7 @@ Ha még nincs fiókja, hozzon létre egy Cosmos DB-fiókot. Ezt a lépést kihag
 3. Adja meg a Cosmos DB-fiók **azonosítóját**, amelyet később használni fog.  
 4. Az **API** értéke legyen „SQL”. Az ebben az oktatóanyagban ismertetett megközelítést más API-típusokkal is használhatja, de az itt szereplő lépések az SQL API-ra vonatkoznak.
 5. Ellenőrizze, hogy az **Előfizetés** és az **Erőforráscsoport** mező értéke egyezik-e az előző lépésben a virtuális gép létrehozása során megadottakkal.  Válasszon ki egy olyan **helyet**, ahol a Cosmos DB elérhető.
-6. Kattintson a **Létrehozás** elemre.
+6. Kattintson a **Létrehozás** gombra.
 
 ### <a name="create-a-collection"></a>Gyűjtemény létrehozása 
 
@@ -82,7 +82,7 @@ New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Read
 ```
 
 >[!NOTE]
-> Ne feledje, hogy ha nem tud végrehajtani egy műveletet, lehet, hogy nem rendelkezik a megfelelő engedélyekkel. Ha írási hozzáférést szeretne a kulcsokhoz, olyan RBAC-szerepkört kell használnia, mint például a DocumentDB-fiók közreműködője, vagy létre kell hoznia egy egyéni szerepkört. További információ a [szerepköralapú hozzáférés-vezérlésről Azure Cosmos db](../../cosmos-db/role-based-access-control.md)
+> Ne feledje, hogy ha nem tud végrehajtani egy műveletet, lehet, hogy nem rendelkezik a megfelelő engedélyekkel. Ha írási hozzáférést szeretne a kulcsokhoz, olyan Azure-szerepkört kell használnia, mint például a DocumentDB-fiók közreműködője, vagy létre kell hoznia egy egyéni szerepkört. További információkért tekintse át [Az Azure szerepköralapú hozzáférés-vezérlését Azure Cosmos db](../../cosmos-db/role-based-access-control.md)
 
 ## <a name="access-data"></a>Adatok elérése
 

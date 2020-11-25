@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
 ms.openlocfilehash: 71ef902e909e552ade5174196f291630bc242ca0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543236"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005367"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>A HDInsight csatlakoztatása a helyszíni hálózathoz
 
@@ -44,7 +44,7 @@ A következő ábrán a zöld vonalak a virtuális hálózat DNS-utótagjának v
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](./hdinsight-hadoop-linux-use-ssh-unix.md).
+* Egy SSH-ügyfél. További információért lásd: [Csatlakozás a HDInsighthoz (Apache Hadoop) SSH-val](./hdinsight-hadoop-linux-use-ssh-unix.md).
 * Ha a PowerShellt használja, szüksége lesz az az [modulra](/powershell/azure/).
 * Ha az Azure CLI-t szeretné használni, és még nem telepítette, tekintse meg [Az Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört.
 
@@ -77,12 +77,12 @@ Ezek a lépések a [Azure Portal](https://portal.azure.com) használatával lét
     | --- | --- |
     |Előfizetés |Válassza ki a megfelelő előfizetést.|
     |Erőforráscsoport |Válassza ki azt az erőforráscsoportot, amely a korábban létrehozott virtuális hálózatot tartalmazza.|
-    |Virtuális gép neve | Adjon meg egy rövid nevet, amely azonosítja ezt a virtuális gépet. Ez a példa az **DNSProxy** -t használja.|
-    |Régió | Válassza ki ugyanazt a régiót, mint a korábban létrehozott virtuális hálózat.  Nem minden virtuálisgép-méret érhető el minden régióban.  |
-    |Rendelkezésre állási beállítások |  Válassza ki a kívánt rendelkezésre állási szintet.  Az Azure számos lehetőséget kínál az alkalmazások rendelkezésre állásának és rugalmasságának kezelésére.  A Availability Zones-vagy rendelkezésre állási csoportokban lévő replikált virtuális gépek használatát az adatközpont-kimaradások és a karbantartási események védelme érdekében Ebben a példában **nem szükséges infrastruktúra-redundancia** . |
-    |Kép | Hagyja az **Ubuntu Server 18,04 LTS** -et. |
-    |Hitelesítéstípus | __Jelszó__ vagy __nyilvános SSH-kulcs__ : az SSH-fiók hitelesítési módszere. Javasoljuk, hogy használjon nyilvános kulcsokat, mivel azok biztonságosabbak. Ez a példa a **jelszót** használja.  További információ: [ssh-kulcsok létrehozása és használata Linux rendszerű virtuális gépekhez](../virtual-machines/linux/mac-create-ssh-keys.md) dokumentum.|
-    |Felhasználónév |Adja meg a virtuális gép rendszergazdai felhasználónevét.  Ez a példa az **sshuser** -t használja.|
+    |Virtuális gép neve | Adjon meg egy rövid nevet, amely azonosítja ezt a virtuális gépet. Ez a példa az **DNSProxy**-t használja.|
+    |Region | Válassza ki ugyanazt a régiót, mint a korábban létrehozott virtuális hálózat.  Nem minden virtuálisgép-méret érhető el minden régióban.  |
+    |Rendelkezésre állási beállítások |  Válassza ki a kívánt rendelkezésre állási szintet.  Az Azure számos lehetőséget kínál az alkalmazások rendelkezésre állásának és rugalmasságának kezelésére.  A Availability Zones-vagy rendelkezésre állási csoportokban lévő replikált virtuális gépek használatát az adatközpont-kimaradások és a karbantartási események védelme érdekében Ebben a példában **nem szükséges infrastruktúra-redundancia**. |
+    |Kép | Hagyja az **Ubuntu Server 18,04 LTS**-et. |
+    |Hitelesítéstípus | __Jelszó__ vagy __nyilvános SSH-kulcs__: az SSH-fiók hitelesítési módszere. Javasoljuk, hogy használjon nyilvános kulcsokat, mivel azok biztonságosabbak. Ez a példa a **jelszót** használja.  További információ: [ssh-kulcsok létrehozása és használata Linux rendszerű virtuális gépekhez](../virtual-machines/linux/mac-create-ssh-keys.md) dokumentum.|
+    |Felhasználónév |Adja meg a virtuális gép rendszergazdai felhasználónevét.  Ez a példa az **sshuser**-t használja.|
     |Jelszó vagy nyilvános SSH-kulcs | A rendelkezésre álló mező meghatározása a **hitelesítési típus** alapján történik.  Adja meg a megfelelő értéket.|
     |Nyilvános bejövő portok|Válassza a **kiválasztott portok engedélyezése** lehetőséget. Ezután válassza az **SSH (22)** lehetőséget a **bejövő portok kiválasztása** legördülő listából.|
 
@@ -288,8 +288,8 @@ Hálózati biztonsági csoportokat (NSG) vagy felhasználó által definiált ú
 
 2. Az 1. lépésben azonosított IP-címek esetében engedélyezze a bejövő forgalmat az adott IP-címekről.
 
-   * Ha a __NSG__ -t használja: engedélyezze a __bejövő__ forgalmat az __443__ -as porton az IP-címekhez.
-   * Ha a __UDR__ -t használja: állítsa be az útvonal __következő ugrási__ típusát az __internetre__ az IP-címekhez.
+   * Ha a __NSG__-t használja: engedélyezze a __bejövő__ forgalmat az __443__ -as porton az IP-címekhez.
+   * Ha a __UDR__-t használja: állítsa be az útvonal __következő ugrási__ típusát az __internetre__ az IP-címekhez.
 
 Az Azure PowerShell vagy az Azure CLI használatával történő NSG létrehozásához például tekintse meg a [HDInsight kiterjesztése az Azure Virtual Networks](hdinsight-create-virtual-network.md#hdinsight-nsg) dokumentummal című témakört.
 
@@ -341,7 +341,7 @@ Ha közvetlenül szeretne csatlakozni a HDInsight a virtuális hálózaton keres
     >
     > Például az Apache Ambari egyszerre csak egy fő csomóponton aktív. Ha megpróbál hozzáférni a Ambari egy fő csomóponton, és 404-es hibát ad vissza, akkor a másik fő csomóponton fut.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A virtuális hálózatok HDInsight használatával kapcsolatos további információkért lásd: [virtuális hálózat központi telepítésének megtervezése az Azure HDInsight-fürtökhöz](./hdinsight-plan-virtual-network-deployment.md).
 

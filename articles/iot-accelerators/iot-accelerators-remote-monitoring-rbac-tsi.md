@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 08/06/2018
 ms.topic: conceptual
 ms.openlocfilehash: 9d5d572c3e32e3645e65ba8d6fc28b567b3c1e9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "65827201"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005962"
 ---
 # <a name="configure-access-controls-for-the-time-series-insights-telemetry-explorer"></a>A Time Series Insights telemetria Explorer hozzáférés-vezérlésének konfigurálása
 
@@ -31,14 +31,14 @@ Az alábbi lépéseket követve biztosíthatja az adathozzáférést egy felhasz
 
 3. Válassza ki az Azure Time Series Insights környezetet a listából.
 
-4. Válassza **az adatelérési házirendek**, majd a **+ Hozzáadás**lehetőséget.
+4. Válassza **az adatelérési házirendek**, majd a **+ Hozzáadás** lehetőséget.
     ![A Time Series Insights-forrás felügyelete – környezet](media/iot-accelerators-remote-monitoring-rbac-tsi/getstarted-grant-data-access1.png)
 
-5. Válassza a **felhasználó kiválasztása**lehetőséget.  Keresse meg a felhasználónevet vagy az e-mail-címet, hogy megkeresse a hozzáadni kívánt felhasználót. Kattintson **a kijelölés** elemre a kijelölés megerősítéséhez. 
+5. Válassza a **felhasználó kiválasztása** lehetőséget.  Keresse meg a felhasználónevet vagy az e-mail-címet, hogy megkeresse a hozzáadni kívánt felhasználót. Kattintson **a kijelölés** elemre a kijelölés megerősítéséhez. 
 
     ![A Time Series Insights-forrás felügyelete – hozzáadás](media/iot-accelerators-remote-monitoring-rbac-tsi/getstarted-grant-data-access2.png)
 
-6. Válassza a **szerepkör kiválasztása**lehetőséget. Válassza ki a megfelelő hozzáférési szerepkört a felhasználó számára:
+6. Válassza a **szerepkör kiválasztása** lehetőséget. Válassza ki a megfelelő hozzáférési szerepkört a felhasználó számára:
    - Válassza a **közreműködő** lehetőséget, ha engedélyezni szeretné a felhasználó számára a hivatkozási adatmódosítást és a mentett lekérdezések és perspektívák megosztását a környezet más felhasználóival. 
    - Ellenkező esetben válassza az **olvasó** lehetőséget, hogy engedélyezze a felhasználói lekérdezési és a személyes (nem megosztott) lekérdezések mentését a környezetben.
 

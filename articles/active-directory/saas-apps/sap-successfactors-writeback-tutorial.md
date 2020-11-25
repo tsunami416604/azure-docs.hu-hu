@@ -11,11 +11,11 @@ ms.workload: identity
 ms.date: 10/14/2020
 ms.author: chmutali
 ms.openlocfilehash: d39e00a80ab167936a749c73867b4343e6ed9d76
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358813"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006438"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>Oktatóanyag: az attribútumok az Azure AD-ből az SAP SuccessFactors való visszaírásának konfigurálása
 Ennek az oktatóanyagnak a célja, hogy megjelenjenek az Azure AD-ből származó, az SAP SuccessFactors Employee Central-re vonatkozó írási és olvasási műveletek lépései. 
@@ -85,7 +85,7 @@ A SuccessFactors felügyeleti csapatával vagy a megvalósítási partnerrel egy
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>Engedélyezési csoport létrehozása az API-felhasználó számára
 
-1. A SuccessFactors felügyeleti központban keressen rá az *engedélyek kezelése csoportra* , majd válassza az **engedélyek kezelése** lehetőséget a keresési eredmények közül.
+1. A SuccessFactors felügyeleti központban keressen rá az *engedélyek kezelése csoportra*, majd válassza az **engedélyek kezelése** lehetőséget a keresési eredmények közül.
 
    > [!div class="mx-imgBorder"]
    > ![Engedélyezési csoportok kezelése](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
@@ -183,7 +183,7 @@ Az SAP-SuccessFactors a *listára* konfigurálható beállítások állíthatók
    > ![E-mail típus kódjának beolvasása](./media/sap-successfactors-inbound-provisioning/get-email-type-code.png)
 
    > [!NOTE]
-   > A vessző karakter eldobása az érték átmásolásakor. Például ha az **azonosító** értéke *8 448* , akkor a *emailType* az Azure AD-ben állítsa be a *8448* állandó számra (a vessző karakter nélkül). 
+   > A vessző karakter eldobása az érték átmásolásakor. Például ha az **azonosító** értéke *8 448*, akkor a *emailType* az Azure AD-ben állítsa be a *8448* állandó számra (a vessző karakter nélkül). 
 
 ### <a name="retrieve-constant-value-for-phonetype"></a>PhoneType állandó értékének beolvasása
 
@@ -214,7 +214,7 @@ Az SAP-SuccessFactors a *listára* konfigurálható beállítások állíthatók
    > ![Mobiltelefon kódjának beolvasása](./media/sap-successfactors-inbound-provisioning/get-cell-phone-code.png)
 
    > [!NOTE]
-   > A vessző karakter eldobása az érték átmásolásakor. Például ha az **azonosító** értéke *10 606* , akkor a *cellPhoneType* az Azure AD-ben állítsa be a *10606* állandó számra (a vessző karakter nélkül). 
+   > A vessző karakter eldobása az érték átmásolásakor. Például ha az **azonosító** értéke *10 606*, akkor a *cellPhoneType* az Azure AD-ben állítsa be a *10606* állandó számra (a vessző karakter nélkül). 
 
 
 ## <a name="configuring-successfactors-writeback-app"></a>SuccessFactors visszaírási-alkalmazás konfigurálása
@@ -233,11 +233,11 @@ Ez a szakasz a következő lépéseit tartalmazza:
 
 2. A bal oldali navigációs sávon válassza a **Azure Active Directory**
 
-3. Válassza a **vállalati alkalmazások** , majd **az összes alkalmazás** lehetőséget.
+3. Válassza a **vállalati alkalmazások**, majd **az összes alkalmazás** lehetőséget.
 
 4. Válassza az **alkalmazás hozzáadása** lehetőséget, és válassza az **összes** kategóriát.
 
-5. Keresse meg a **SuccessFactors visszaírási** , és adja hozzá az alkalmazást a gyűjteményből.
+5. Keresse meg a **SuccessFactors visszaírási**, és adja hozzá az alkalmazást a gyűjteményből.
 
 6. Miután hozzáadta az alkalmazást, és megjelenik az alkalmazás részletei képernyő, válassza a **kiépítés** lehetőséget.
 
@@ -308,7 +308,7 @@ Ebben a szakaszban azt fogja konfigurálni, hogy a felhasználói adatok hogyan 
    > Ha az **attribútumok szerkesztése SuccessFactors** beállítás nem jelenik meg a Azure Portalban, használja az URL-címet az *https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true* oldal eléréséhez. 
 
 1. Az ebben a nézetben szereplő **API-kifejezés** oszlop az összekötő által használt JSON-elérésiút-kifejezéseket jeleníti meg. 
-1. Frissítse a JSON-elérésiút-kifejezéseket a vállalati telefon és a mobiltelefon számára a környezetnek megfelelő azonosító érték ( *businessPhoneType* és *cellPhoneType* ) használatára. 
+1. Frissítse a JSON-elérésiút-kifejezéseket a vállalati telefon és a mobiltelefon számára a környezetnek megfelelő azonosító érték (*businessPhoneType* és *cellPhoneType*) használatára. 
 
     >[!div class="mx-imgBorder"]
     >![Telefonos JSON-elérésiút változása](./media/sap-successfactors-inbound-provisioning/phone-json-path-change.png)
@@ -325,8 +325,8 @@ Miután befejezte az SuccessFactors-létesítési alkalmazás konfigurációját
 1. A **létesítés** lapon állítsa be a **kiépítési állapotot** **a** következőre:.
 
 1. Válassza a **hatókör** elemet. Az alábbi lehetőségek közül választhat: 
-   * **Minden felhasználó és csoport szinkronizálása** : akkor válassza ezt a lehetőséget, ha az Azure ad-ből az összes felhasználóhoz tartozó leképezett attribútumokat szeretné a SuccessFactors- **Mappings** re írni  ->  **Source Object Scope**. 
-   * **Csak a hozzárendelt felhasználók és csoportok szinkronizálása** : akkor válassza ezt a lehetőséget, ha **csak a felhasználók**  ->  **Manage**  ->  **és csoportok** kezelése menüpontban az alkalmazáshoz hozzárendelt felhasználókra vonatkozó leképezett attribútumok írhatók vissza. Ezeket a felhasználókat a **hozzárendelések**  ->  **forrás objektum hatókörében** meghatározott hatóköri szabályok is vonatkoznak.
+   * **Minden felhasználó és csoport szinkronizálása**: akkor válassza ezt a lehetőséget, ha az Azure ad-ből az összes felhasználóhoz tartozó leképezett attribútumokat szeretné a SuccessFactors- **Mappings** re írni  ->  **Source Object Scope**. 
+   * **Csak a hozzárendelt felhasználók és csoportok szinkronizálása**: akkor válassza ezt a lehetőséget, ha **csak a felhasználók**  ->  **Manage**  ->  **és csoportok** kezelése menüpontban az alkalmazáshoz hozzárendelt felhasználókra vonatkozó leképezett attribútumok írhatók vissza. Ezeket a felhasználókat a **hozzárendelések**  ->  **forrás objektum hatókörében** meghatározott hatóköri szabályok is vonatkoznak.
 
    > [!div class="mx-imgBorder"]
    > ![Visszaírási hatókörének kiválasztása](./media/sap-successfactors-inbound-provisioning/select-writeback-scope.png)

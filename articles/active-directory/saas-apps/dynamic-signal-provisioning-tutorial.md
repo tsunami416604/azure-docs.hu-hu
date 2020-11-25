@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 263a67fd8fba2c336d1ed4d91475386a8ae175dd
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359017"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005792"
 ---
 # <a name="tutorial-configure-dynamic-signal-for-automatic-user-provisioning"></a>Oktatóanyag: dinamikus jel beállítása a felhasználók automatikus üzembe helyezéséhez
 
@@ -53,7 +53,7 @@ Az Azure AD-vel való automatikus felhasználó-kiépítés előtt dinamikus jel
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **dinamikus jelet** , válassza ki a **dinamikus** jelet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **dinamikus jelet**, válassza ki a **dinamikus** jelet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![Dinamikus jel az eredmények listájában](common/search-new-app.png)
 
@@ -102,7 +102,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     :::image type="content" source="./media/dynamic-signal-provisioning-tutorial/secret-token-1.png" alt-text="Képernyőkép a dinamikus jel felügyeleti konzolról. A speciális elem a felügyeleti menüben van kiemelve. A Speciális menü is látható, egy P kiemelve." border="false":::
 
-    Másolja a **scim API URL-címét** a **bérlői URL** -címre. Kattintson az **új jogkivonat létrehozása** lehetőségre egy **tulajdonosi jogkivonat** létrehozásához és az érték **titkos jogkivonatba** való másolásához.
+    Másolja a **scim API URL-címét** a **bérlői URL**-címre. Kattintson az **új jogkivonat létrehozása** lehetőségre egy **tulajdonosi jogkivonat** létrehozásához és az érték **titkos jogkivonatba** való másolásához.
 
     :::image type="content" source="./media/dynamic-signal-provisioning-tutorial/secret-token-2.png" alt-text="Képernyőfelvétel a tokenek lapról: S C I M A P I U R L, új jogkivonat létrehozása és a tulajdonosi jogkivonat kiemelése, valamint egy helyőrző a tulajdonosi jogkivonat mezőben." border="false":::
 
@@ -147,7 +147,7 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 * A dinamikus jel nem támogatja az állandó felhasználók törlését az Azure AD-ből. Ha véglegesen szeretné törölni a felhasználót a dinamikus jelek között, a műveletet a dinamikus jel felügyeleti konzoljának felhasználói felületén kell elvégezni. 
 * A dinamikus jel jelenleg nem támogatja a csoportokat.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

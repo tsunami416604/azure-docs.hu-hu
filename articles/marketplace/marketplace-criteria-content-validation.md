@@ -8,11 +8,11 @@ author: trkeya
 ms.author: trkeya
 ms.date: 09/04/2020
 ms.openlocfilehash: 3b2fc1ea37b09f6e4813d2a3c2333bc6d744293d
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491494"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006506"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Az Azure Marketplace listázási irányelvei
 
@@ -31,7 +31,7 @@ Ez a cikk ismerteti az Azure Marketplace-en elérhető új ajánlatok és szolg�
 | 7 | Videók | <ul><li>Nincs szükség videóra, de ha meg van adni, hiba nélkül kell visszajátszania.</li><li>Ha meg van adni, előfordulhat, hogy nem hivatkozik a versenytárs vállalatokra, *kivéve* , ha egy áttelepítési megoldást mutat be. |<ul><li>Ideális esetben a hossz 3 perc vagy több.</li><li>A megoldási ajánlat könnyen értelmezhető a videotartalom használatával.</li><li>A megoldás képességeinek bemutatóját biztosítja. |
 | 8 | Lista állapota (listaelem-beállítások) | <ul><li>A címkét a következő típusok egyikének kell megadnia: <ul><li>*Kapcsolatfelvétel*</li><li>*Próbaverzió* / *Próbaverzió letöltése* / *Próbaverzió indítása* / *Tesztelési meghajtó*</li><li>*Vásárlás most* / Letöltés *most*</li></ul></ul> | Az ügyfél könnyen megismerheti a következő lépéseket: <ol><li>Próbálja ki a próbaverziót.</li><li>Vásároljon most.</li><li>Vegye fel a kapcsolatot e-mailben vagy telefonszámon, hogy intézkedik a megvalósíthatósági igazolásról (POC), az értékelésről vagy a tájékoztatásról.</li></ol> | 
 | 9 | Megoldás díjszabása | A megoldás díjszabási lapjának/részleteinek kell lennie, és a díjszabásnak a partneri megoldás ajánlatának helyi pénznemében kell lennie. | A vásárlói beállítások megadásához több számlázási lehetőség is rendelkezésre áll. |
-| 10 | Tudjon meg többet | Az alján található hivatkozások (a Leírás alatt, nem az Azure Marketplace hivatkozásai a bal oldalon) a megoldással kapcsolatos további információkhoz vezethetnek, és nyilvánosan elérhetők és megfelelően jelennek meg. |    Adott elemekre mutató hivatkozások (például a partner webhelyén található spec-lapok) és nem csak a partner kezdőlapja. | 
+| 10 | További információ | Az alján található hivatkozások (a Leírás alatt, nem az Azure Marketplace hivatkozásai a bal oldalon) a megoldással kapcsolatos további információkhoz vezethetnek, és nyilvánosan elérhetők és megfelelően jelennek meg. |    Adott elemekre mutató hivatkozások (például a partner webhelyén található spec-lapok) és nem csak a partner kezdőlapja. | 
 | 11 | Megoldás támogatása és Súgó | Hivatkozás a következők legalább egyikére: <ul><li>Telefonszámok</li><li>E-mail-támogatás</li><li>Csevegési ügynökök</li><li>Közösségi fórumok |<ul><li>Az összes támogatási módszer szerepel a felsorolásban.</li><li>A fizetős támogatás díjmentesen használható a *próbaidőszak* vagy a *tesztelési* időszak alatt. |
 | 12 | Jogi tudnivalók | A szabályzatok vagy kifejezések nyilvános URL-címen keresztül érhetők el. |  |
 |||
@@ -40,7 +40,7 @@ Ez a cikk ismerteti az Azure Marketplace-en elérhető új ajánlatok és szolg�
 
 | Nem. | Elem listázása | Alapkövetelmény | Optimális követelmény | 
 |:--- |:--- |:--- |:--- |
-|  | Lista állapota (listázási lehetőség) | A hivatkozásnak az ügyfél által vezetett *próbaidőszakot* kell eredményeznie. | Egyéb listaelem-beállítások (például a *Buy most* ) is elérhetők. | 
+|  | Lista állapota (listázási lehetőség) | A hivatkozásnak az ügyfél által vezetett *próbaidőszakot* kell eredményeznie. | Egyéb listaelem-beállítások (például a *Buy most*) is elérhetők. | 
 |||
 
 ## <a name="saas-application-requirements"></a>SaaS-alkalmazásokra vonatkozó követelmények
@@ -48,7 +48,7 @@ Ez a cikk ismerteti az Azure Marketplace-en elérhető új ajánlatok és szolg�
 | Nem. | Elem listázása | Alapkövetelmény | Optimális követelmény | 
 |:--- |:--- |:--- |:--- |
 | 1 | Ajánlat címe |<ul><li>Csak kisbetűket, alfanumerikus karaktereket, kötőjeleket vagy aláhúzásokat tartalmazhat. A cím közzététele után nem módosítható.</li><li>A megoldás ajánlatát ismerteti.</li><li>A megoldás online előléptetésének felel meg a partner webhelyén. | A legfontosabb keresési szavakat tartalmazza. |
-| 2 | Technikai információ: konfiguráció |<ul><li>SaaS-alkalmazások esetén válassza ki, hogy csak az alkalmazást kívánja-e listázni, vagy hogy az ügyfelek megvásárolhatják az alkalmazást az Azure-ban.</li><li>Válassza ki az ajánlat beszerzése gombjának kívánt szövegét: *ingyenes* , *ingyenes próbaverzió* vagy *Kapcsolatfelvétel*.</li><li>Az előugró ablakban válassza ki a csak egy megfelelő terméket, ha az alkalmazás a technológiát használja: Cortana Intelligence, Power BI megoldás-sablonok vagy a Power apps. |  |
+| 2 | Technikai információ: konfiguráció |<ul><li>SaaS-alkalmazások esetén válassza ki, hogy csak az alkalmazást kívánja-e listázni, vagy hogy az ügyfelek megvásárolhatják az alkalmazást az Azure-ban.</li><li>Válassza ki az ajánlat beszerzése gombjának kívánt szövegét: *ingyenes*, *ingyenes próbaverzió* vagy *Kapcsolatfelvétel*.</li><li>Az előugró ablakban válassza ki a csak egy megfelelő terméket, ha az alkalmazás a technológiát használja: Cortana Intelligence, Power BI megoldás-sablonok vagy a Power apps. |  |
 | 3 | Tesztelési meghajtó | Válassza az *Igen* vagy a *Nem* lehetőséget. | Az ügyfél könnyen megismerheti a következő lépéseket: <ol><li>Próbálja ki a próbaverziót.</li><li>Vásároljon most.</li><li>Kapcsolatfelvétel e-mailben vagy telefonszámon a POC, az értékelés vagy a tájékoztatás megszervezéséhez.</li></ol> |
 | 4 | Online áruház részletei: ajánlat összegzése | Megjelenik az alkalmazás keresési oldalán, és legfeljebb 100 karakterből állhat. | |
 | 5 | Online áruház részletei: iparágak | Iparágak (max. 2): válassza ki azokat az iparágakat, amelyekhez az alkalmazás a legmegfelelőbb és alkalmazható. | |
@@ -85,7 +85,7 @@ Ez a cikk ismerteti az Azure Marketplace-en elérhető új ajánlatok és szolg�
 | 9 | Kompetenciák | A következők legalább egyikében rendelkeznie kell kompetenciával:<ul><li>Alkalmazásfejlesztés</li><li>Alkalmazásintegráció</li><li>Alkalmazások életciklus-kezelése</li><li>Felhőalapú platform<li>Adatelemzés</li><li>Adatközpont</li><li>Adatplatform</li><li>DevOps |
 | 10 | Termékek | Azure-termékeknek kell lennie. | |
 | 11 | Ország/régió | Győződjön meg arról, hogy az ország/régió megfelel a kiválasztott pénznemnek. | |
-| 12 | Tudjon meg többet  | <ul><li>A lenti hivatkozások (a Leírás alatt, nem az Azure Marketplace-hivatkozások a bal oldalon) a megoldással kapcsolatos további információkhoz vezethetnek, és nyilvánosan elérhetők, és helyesen jelennek meg.</li><li>A hivatkozásoknak "felhasználóbarát" névvel kell rendelkezniük, és nem jelennek meg a letöltésekhez tartozó fájlnévként. | |
+| 12 | További információ  | <ul><li>A lenti hivatkozások (a Leírás alatt, nem az Azure Marketplace-hivatkozások a bal oldalon) a megoldással kapcsolatos további információkhoz vezethetnek, és nyilvánosan elérhetők, és helyesen jelennek meg.</li><li>A hivatkozásoknak "felhasználóbarát" névvel kell rendelkezniük, és nem jelennek meg a letöltésekhez tartozó fájlnévként. | |
 ||||
 
 ## <a name="next-steps"></a>További lépések

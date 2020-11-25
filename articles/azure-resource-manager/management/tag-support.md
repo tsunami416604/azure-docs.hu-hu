@@ -4,11 +4,11 @@ description: Megjeleníti, hogy mely Azure-erőforrástípusok támogatják a c�
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.openlocfilehash: fb81ed303cf27add3a033021f017c03f4b9e9750
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427768"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005724"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure-erőforrások támogatásának címkézése
 Ez a cikk azt mutatja be, hogy az erőforrástípus támogatja-e a [címkéket](tag-resources.md). A címkével ellátott oszlopban szereplő **címke jelzi,** hogy az erőforrástípus rendelkezik-e tulajdonsággal a címkéhez. A **címke a Cost jelentésben** feliratú oszlop jelzi, hogy az erőforrástípus átadja-e a címkét a Cost jelentésnek. A költségeket címkék alapján tekintheti meg a [Cost Management Cost Analysis](../../cost-management-billing/costs/group-filter.md) és az [Azure számlázási számlájában és a napi használati adatokban](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
@@ -847,7 +847,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ReservationTransactions | Nem | Nem |
 > | Címkék | Nem | Nem |
 > | bérlők | Nem | Nem |
-> | Fogalmak | Nem | Nem |
+> | Kifejezések | Nem | Nem |
 > | UsageDetails | Nem | Nem |
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance

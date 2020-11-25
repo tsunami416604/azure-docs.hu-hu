@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: b2ff542d2782293e89b66e5d25cb67a9bcde6da8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b26d4af29a92fb0f14c52e76a7eae1d0073a3aa0
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75772969"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96005320"
 ---
 Ez a hiba akkor következhet be, ha az Azure File Sync nem érhető el a kiszolgálóról. A hiba elhárításához végezze el a következő lépéseket:
 
@@ -31,6 +31,6 @@ Ez a hiba akkor következhet be, ha az Azure File Sync nem érhető el a kiszolg
     Import-Module "$agentPath\StorageSync.Management.ServerCmdlets.dll"
     Get-StorageSyncProxyConfiguration
     ```
-4. A Test-StorageSyncNetworkConnectivity parancsmag használatával ellenőrizheti a szolgáltatás-végpontokkal létesített hálózati kapcsolatot. További információért lásd: [hálózati kapcsolat tesztelése a szolgáltatási végpontokkal](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#test-network-connectivity-to-service-endpoints).    
+4. A Test-StorageSyncNetworkConnectivity parancsmag használatával ellenőrizheti a szolgáltatás-végpontokkal létesített hálózati kapcsolatot. További információért lásd: [hálózati kapcsolat tesztelése a szolgáltatási végpontokkal](../articles/storage/files/storage-sync-files-firewall-and-proxy.md#test-network-connectivity-to-service-endpoints).    
 
 5. További segítségért forduljon a hálózati rendszergazdához, és kérjen segítséget a hálózati kapcsolatról.

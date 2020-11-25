@@ -9,11 +9,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
 ms.openlocfilehash: a9a90fbb2eedd6db2873d4ac2a5fea94c05c7eed
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844744"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005656"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Az Azure HDInsight kettős titkosítást biztosít a nyugalmi állapotban lévő adatokhoz
 
@@ -36,7 +36,7 @@ Ezeket a típusokat a következő táblázat foglalja össze.
 |Fürt típusa |OPERÁCIÓSRENDSZER-lemez (felügyelt lemez) |Adatlemez (felügyelt lemez) |Ideiglenes adatlemez (helyi SSD) |
 |---|---|---|---|
 |Kafka, HBase gyorsított írásokkal|Layer1: az [SSE titkosítás](../virtual-machines/managed-disks-overview.md#encryption) alapértelmezés szerint|Layer1: [SSE titkosítás](../virtual-machines/managed-disks-overview.md#encryption) alapértelmezés szerint, Layer2: opcionális TITKOSÍTÁS a CMK-ben a REST-tel|Layer1: opcionális titkosítás a gazdagépen a főkulcsok, Layer2: opcionális titkosítás a CMK használatával|
-|Minden más fürt (Spark, Interactive, Hadoop, gyorsított írások nélkül HBase)|Layer1: az [SSE titkosítás](../virtual-machines/managed-disks-overview.md#encryption) alapértelmezés szerint|N/A|Layer1: opcionális titkosítás a gazdagépen a főkulcsok, Layer2: opcionális titkosítás a CMK használatával|
+|Minden más fürt (Spark, Interactive, Hadoop, gyorsított írások nélkül HBase)|Layer1: az [SSE titkosítás](../virtual-machines/managed-disks-overview.md#encryption) alapértelmezés szerint|N.A.|Layer1: opcionális titkosítás a gazdagépen a főkulcsok, Layer2: opcionális titkosítás a CMK használatával|
 
 ## <a name="encryption-at-rest-using-customer-managed-keys"></a>Inaktív adatok titkosítása az ügyfél által felügyelt kulcsok használatával
 
@@ -111,7 +111,7 @@ A HDInsight csak a Azure Key Vaultt támogatja. Ha rendelkezik saját kulcstart�
 
 1. Válassza a **Hozzáadás** elemet.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
     ![Azure Key Vault hozzáférési szabályzat mentése](./media/disk-encryption/add-key-vault-access-policy-save.png)
 
@@ -467,7 +467,7 @@ az hdinsight create -t spark -g MyResourceGroup -n MyCluster \\
 --storage-account MyStorageAccount --encryption-at-host true
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a Azure Key Vaultről: [Mi az Azure Key Vault](../key-vault/general/overview.md).
 * [A vállalati biztonság áttekintése az Azure HDInsight-ben](./domain-joined/hdinsight-security-overview.md).

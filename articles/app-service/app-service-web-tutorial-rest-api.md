@@ -7,17 +7,17 @@ ms.topic: tutorial
 ms.date: 04/28/2020
 ms.custom: devx-track-csharp, mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019, seodec18
 ms.openlocfilehash: 9481b6d2740d27b8c3d1309e205edda6017868fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213700"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005749"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Oktatóanyag: CORS-támogatással rendelkező RESTful API üzemeltetése az Azure App Service-ben
 
 Az [Azure App Service](overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás. Továbbá az App Service beépített támogatást nyújt az [Eltérő eredetű erőforrások megosztásához (CORS)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing) a RESTful API-k esetében. Ez az oktatóanyag bemutatja, hogyan telepíthető ASP.NET Core API-alkalmazás az App Service-ben CORS-támogatással. Az alkalmazást parancssori eszközökkel állíthatja be, és a Git használatával helyezheti üzembe. 
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * App Service-erőforrások létrehozása az Azure CLI-vel
@@ -51,7 +51,7 @@ git clone https://github.com/Azure-Samples/dotnet-core-api
 
 Ez az adattár a következő oktatóanyag alapján létrehozott alkalmazást tartalmaz: [Swaggert használó ASP.NET Core webes API-k súgóoldalai](/aspnet/core/tutorials/web-api-help-pages-using-swagger?tabs=visual-studio). Ez egy Swagger-generátort használ a [Swagger felhasználói felület](https://swagger.io/swagger-ui/) és a Swagger JSON-végpont kiszolgálásához.
 
-### <a name="run-the-application"></a>Az alkalmazás futtatása
+### <a name="run-the-application"></a>Alkalmazás futtatása
 
 Futtassa az alábbi parancsokat a szükséges csomagok telepítéséhez, adatbázisok migrálásához és az alkalmazás elindításához.
 
@@ -81,7 +81,7 @@ Ebben a lépésben az SQL Database-hez csatlakoztatott .NET Core-alkalmazást he
 
 [!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-no-h.md)]
 
@@ -160,7 +160,7 @@ A böngészőalkalmazás (`http://localhost:5000`) és a távoli erőforrás (`h
 
 ### <a name="enable-cors"></a>CORS engedélyezése 
 
-A Cloud Shellban engedélyezze a CORS az ügyfél URL-címére a [`az webapp cors add`](/cli/azure/webapp/cors#az-webapp-cors-add) parancs használatával. Cserélje le az _ &lt; alkalmazás neve>_ helyőrzőt.
+A Cloud Shellban engedélyezze a CORS az ügyfél URL-címére a [`az webapp cors add`](/cli/azure/webapp/cors#az-webapp-cors-add) parancs használatával. Cserélje le az _&lt; alkalmazás neve>_ helyőrzőt.
 
 ```azurecli-interactive
 az webapp cors add --resource-group myResourceGroup --name <app-name> --allowed-origins 'http://localhost:5000'

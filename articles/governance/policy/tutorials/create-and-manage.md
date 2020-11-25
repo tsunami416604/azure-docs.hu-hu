@@ -4,11 +4,11 @@ description: Ebben az oktatóanyagban szabályzatokat alkalmaz a szabványok bet
 ms.date: 10/05/2020
 ms.topic: tutorial
 ms.openlocfilehash: bf3da82abcdcada1fc38df29efc988a1805c3020
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876380"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005435"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Oktatóanyag: szabályzatok létrehozása és kezelése a megfelelőség kikényszerítés érdekében
 
@@ -36,11 +36,11 @@ A megfelelőség Azure Policy használatával történő kikényszerítésének 
 
 1. Válassza ki a **Hozzárendelések** elemet az Azure Policy oldal bal oldalán. A hozzárendelés egy olyan szabályzat, amely egy adott hatókörön belül érvényes.
 
-   :::image type="content" source="../media/create-and-manage/select-assignments.png" alt-text="Képernyőkép a szabályzat kereséséről a keresősávban." border="false":::
+   :::image type="content" source="../media/create-and-manage/select-assignments.png" alt-text="Képernyőkép a hozzárendelések csomópont kiválasztásáról a házirend áttekintése lapon." border="false":::
 
 1. Válassza a **Szabályzat hozzárendelése** lehetőséget a **Szabályzat – Hozzárendelések** oldal tetején.
 
-   :::image type="content" source="../media/create-and-manage/select-assign-policy.png" alt-text="Képernyőkép a szabályzat kereséséről a keresősávban." border="false":::
+   :::image type="content" source="../media/create-and-manage/select-assign-policy.png" alt-text="Képernyőkép: a hozzárendelések lapon válassza a házirend hozzárendelése gombot." border="false":::
 
 1. A **házirend kiosztása** lap és alapértelmezések **lapon válassza** ki a **hatókört** a három pont kiválasztásával, majd válasszon ki egy felügyeleti csoportot vagy előfizetést. Ha szeretne, válasszon erőforráscsoportot. A hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrások vagy erőforráscsoportok esetében lesz kényszerítve.
    Ezután válassza a **kijelölés** elemet a **hatókör** lap alján.
@@ -51,20 +51,20 @@ A megfelelőség Azure Policy használatával történő kikényszerítésének 
 
 1. Kattintson a **Szabályzatdefiníció** melletti három pontra az elérhető definíciók listájának megjelenítéséhez. A szabályzatdefiníció **Típus** tulajdonságát szűrheti _Beépített_ érték alapján az összes megtekintéséhez és a leírásaik elolvasásához.
 
-1. **Ha hiányzik, válassza a címke öröklése az erőforráscsoporthoz**lehetőséget. Ha nem találja meg azonnal, írja be a **címke öröklése** a keresőmezőbe kifejezést, majd nyomja le az ENTER billentyűt, vagy válassza ki a keresőmezőbe.
+1. **Ha hiányzik, válassza a címke öröklése az erőforráscsoporthoz** lehetőséget. Ha nem találja meg azonnal, írja be a **címke öröklése** a keresőmezőbe kifejezést, majd nyomja le az ENTER billentyűt, vagy válassza ki a keresőmezőbe.
    Ha megtalálta és kiválasztotta a házirend-definíciót, válassza az **elérhető definíciók** lap alján található **Kiválasztás lehetőséget** .
 
-   :::image type="content" source="../media/create-and-manage/select-available-definition.png" alt-text="Képernyőkép a szabályzat kereséséről a keresősávban.":::
+   :::image type="content" source="../media/create-and-manage/select-available-definition.png" alt-text="Képernyőfelvétel a keresési szűrőről a házirend-definíció kiválasztásakor.":::
 
 1. A **Hozzárendelés neve** mező automatikusan kitöltődik a kiválasztott szabályzat nevével, de megadhat más nevet is. Ebben a példában hagyja a _címke öröklése az erőforráscsoporthoz, ha hiányzik_. Ha szeretné hozzáadhat egy **Leírást**. A leírás a szabályzat-hozzárendeléssel kapcsolatos információkat adja meg.
 
-1. Hagyja _engedélyezve_a **házirend-kényszerítést** . Ha _le van tiltva_, ez a beállítás lehetővé teszi a házirend eredményének tesztelését a hatás elindítása nélkül. További információ: [kényszerítési mód](../concepts/assignment-structure.md#enforcement-mode).
+1. Hagyja _engedélyezve_ a **házirend-kényszerítést** . Ha _le van tiltva_, ez a beállítás lehetővé teszi a házirend eredményének tesztelését a hatás elindítása nélkül. További információ: [kényszerítési mód](../concepts/assignment-structure.md#enforcement-mode).
 
 1. A **hozzárendelt** érték automatikusan ki van töltve a bejelentkezett felhasználó alapján. Ennek a mezőnek a kitöltése nem kötelező, tehát megadhatók egyedi értékek.
 
 1. Válassza a **Paraméterek** fület a varázsló tetején.
 
-1. A **címke neve**mezőben adja meg a _környezet_értéket.
+1. A **címke neve** mezőben adja meg a _környezet_ értéket.
 
 1. Válassza a **szervizelés** fület a varázsló tetején.
 
@@ -82,7 +82,7 @@ Most, hogy hozzárendelt egy beépített szabályzatdefiníciót, még többet v
 
 1. A Azure Policy lap bal oldalán, a **szerzői műveletek** területen válassza a **definíciók** lehetőséget.
 
-   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="Képernyőkép a szabályzat kereséséről a keresősávban." border="false":::
+   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="Képernyőkép a definíciók lapról a szerzői csoport szakaszban." border="false":::
 
 1. Kattintson a **+ Szabályzatdefiníció** elemre a lap tetején. Ez a gomb megnyílik a **házirend-definíció** lapon.
 
@@ -342,11 +342,11 @@ A kezdeményezési definícióval több szabályzatdefiníciót csoportosíthat 
 
 1. A Azure Policy lap bal oldalán, a **szerzői műveletek** területen válassza a **definíciók** lehetőséget.
 
-   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="Képernyőkép a szabályzat kereséséről a keresősávban.":::
+   :::image type="content" source="../media/create-and-manage/definition-under-authoring.png" alt-text="Képernyőkép az authoring Group definíciós oldaláról.":::
 
 1. A lap tetején válassza a **+ kezdeményezés definícióját** a **kezdeményezési definíció** varázsló megnyitásához.
 
-   :::image type="content" source="../media/create-and-manage/initiative-definition.png" alt-text="Képernyőkép a szabályzat kereséséről a keresősávban.":::
+   :::image type="content" source="../media/create-and-manage/initiative-definition.png" alt-text="Képernyőkép a megadható kezdeményezés-definíciós lapról és tulajdonságairól.":::
 
 1. A **kezdeményezési hely** három pontján válasszon ki egy felügyeleti csoportot vagy előfizetést a definíció tárolásához. Ha az előző oldal hatóköre egyetlen felügyeleti csoportra vagy előfizetésre vonatkozik, a rendszer automatikusan kitölti a **kezdeményezés helyét** .
 
@@ -373,17 +373,36 @@ A kezdeményezési definícióval több szabályzatdefiníciót csoportosíthat 
    - Az erőforrásokra vonatkozó címke hozzáadása vagy cseréje (kétszer adja hozzá ezt a házirend-definíciót)
 
    Miután kiválasztotta az egyes szabályzat-definíciókat a listából, válassza a **Hozzáadás** elemet a lista alján.
-   Mivel a szolgáltatás kétszer lett hozzáadva, a _Címkék hozzáadása vagy cseréje az erőforrás_ -házirend-definíciókban minden más _hivatkozási azonosító_beolvasása.
+   Mivel a szolgáltatás kétszer lett hozzáadva, a _Címkék hozzáadása vagy cseréje az erőforrás_ -házirend-definíciókban minden más _hivatkozási azonosító_ beolvasása.
 
-   :::image type="content" source="../media/create-and-manage/initiative-definition-2.png" alt-text="Képernyőkép a szabályzat kereséséről a keresősávban." beállítás van kiválasztva, a rendszer legördülő listát biztosít a **kezdeményezési paraméterek** lapon létrehozott kezdeményezési paraméterek nevével.
+   :::image type="content" source="../media/create-and-manage/initiative-definition-2.png" alt-text="Képernyőkép a kiválasztott szabályzat-definíciók és a hivatkozási azonosítójuk és csoportjuk közül a kezdeményezési definíciós lapon.":::
 
-   :::image type="content" source="../media/create-and-manage/initiative-definition-3.png" alt-text="Képernyőkép a szabályzat kereséséről a keresősávban." értékkel.
+   > [!NOTE]
+   > A kiválasztott szabályzat-definíciók hozzáadhatók a csoportokhoz egy vagy több hozzáadott definíció kiválasztásával, majd **a kijelölt házirendek csoporthoz való hozzáadásának** kiválasztásával. A csoportnak először léteznie kell, és a varázsló **csoportok** lapján hozható létre.
 
-   :::image type="content" source="../media/create-and-manage/initiative-definition-4.png" alt-text="Képernyőkép a szabályzat kereséséről a keresősávban.":::
+1. Kattintson a **Tovább gombra** az oldal alján vagy a **csoportok** lapon a varázsló tetején. Ezen a lapon új csoportok vehetők fel. Ebben az oktatóanyagban nem adunk hozzá csoportokat.
+
+1. Kattintson a **Tovább gombra** az oldal alján vagy a varázsló tetején található **kezdeményezési paraméterek** lapon. Ha a kezdeményezésben egy vagy több belefoglalt szabályzat-definícióba való átadáshoz egy paramétert akartunk használni, a paraméter itt van definiálva, majd a **házirend-paraméterek** lapon lesz használatban. Ebben az oktatóanyagban nem adunk hozzá kezdeményezési paramétereket.
+
+   > [!NOTE]
+   > A kezdeményezési definícióba való mentés után a kezdeményezési paramétereket nem lehet törölni a kezdeményezésből. Ha már nincs szükség egy kezdeményezési paraméterre, távolítsa el a használatból bármely szabályzat-definíciós paramétert.
+
+1. Kattintson a **Tovább gombra** az oldal alján vagy a varázsló tetején található **házirend-paraméterek** lapon.
+
+1. A házirend-definíció olyan kezdeményezéshez lett hozzáadva, amely paraméterekkel rendelkezik a rácsban. Az _érték típusa_ lehet "default Value", "set Value" vagy "use Initiative paraméter". Ha a "set Value" érték van kiválasztva, a kapcsolódó érték az _érték (ek)_ alatt lesz megadva. Ha a házirend-definícióban szereplő paraméter az engedélyezett értékek listáját tartalmazza, a beviteli mező egy legördülő választó. Ha a "kezdeményezési paraméter használata" beállítás van kiválasztva, a rendszer legördülő listát biztosít a **kezdeményezési paraméterek** lapon létrehozott kezdeményezési paraméterek nevével.
+
+   :::image type="content" source="../media/create-and-manage/initiative-definition-3.png" alt-text="Képernyőkép az engedélyezett helyszínek definíciós paraméterének megengedett értékeiről a kezdeményezési definíció lap házirend-paraméterek lapján.":::
+
+   > [!NOTE]
+   > Egyes `strongType` paraméterek esetében az értékek listája nem határozható meg automatikusan. Ezekben az esetekben három pont jelenik meg a paraméterek sorától jobbra. Ha kiválasztja, megnyílik a "paraméter hatóköre ( &lt; paraméter neve &gt; )" oldal. Ezen az oldalon válassza ki az értéklehetőségek biztosítására szolgáló előfizetést. Ez a paraméter-hatókör kizárólag a kezdeményezés hozzárendelésének létrehozásakor használatos, és hozzárendelésekor nincs hatással a szabályzat-kiértékelésre vagy a kezdeményezés hatókörére.
+
+   Állítsa a "megengedett hely" értéket "set Value" _értékre_ , és válassza az "USA 2. keleti régiója" lehetőséget a legördülő menüből. Az erőforrások házirend-definíciók _hozzáadása vagy cseréje címke_ két példánya esetében a **címke neve** paramétert állítsa a "env" és a "CostCenter" **értékre, a címke értéke** paramétereit pedig "test" és "Lab" értékre az alábbi ábrán látható módon. Hagyja a többit "alapértelmezett értékként". Ha ugyanazt a definíciót kétszer használja a kezdeményezésben, de különböző paraméterekkel, akkor ez a konfiguráció egy "env" címkét hoz létre vagy cserél a "test" értékkel és egy "CostCenter" címkével, a hozzárendelés hatókörében lévő erőforrásokon a "Lab" értékkel.
+
+   :::image type="content" source="../media/create-and-manage/initiative-definition-4.png" alt-text="Képernyőkép az engedélyezett helyszínek definíciós paraméterének és a címke paramétereinek értékeiről a kezdeményezés definíciója lap házirend-paraméterek lapján található megengedett értékek számára megadott beállítások közül.":::
 
 1. A lap alján vagy a varázsló tetején válassza a **felülvizsgálat + létrehozás** elemet.
 
-1. Tekintse át a beállításokat, majd válassza a **Létrehozás**lehetőséget.
+1. Tekintse át a beállításokat, majd válassza a **Létrehozás** lehetőséget.
 
 #### <a name="create-a-policy-initiative-definition-with-azure-cli"></a>Házirend-kezdeményezési definíció létrehozása az Azure CLI-vel
 
@@ -432,11 +451,11 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 
 1. Keresse meg és válassza ki a korában létrehozott **Biztonságossá tétel** kezdeményezési definíciót. A lap tetején válassza a **hozzárendelés** lehetőséget, hogy megnyissa a **biztonságos Get: hozzárendelés kezdeményezése** oldalon.
 
-   :::image type="content" source="../media/create-and-manage/assign-definition.png" alt-text="Képernyőkép a szabályzat kereséséről a keresősávban." border="false":::
+   :::image type="content" source="../media/create-and-manage/assign-definition.png" alt-text="Képernyőkép: a &quot;hozzárendelés&quot; gomb a kezdeményezési definíció lapon." border="false":::
 
-   Azt is megteheti, hogy a jobb gombbal a kijelölt sorra kattint, vagy kiválasztja a sor végén található három pontot a helyi menühöz. Ezután válassza a **hozzárendelés**lehetőséget.
+   Azt is megteheti, hogy a jobb gombbal a kijelölt sorra kattint, vagy kiválasztja a sor végén található három pontot a helyi menühöz. Ezután válassza a **hozzárendelés** lehetőséget.
 
-   :::image type="content" source="../media/create-and-manage/select-right-click.png" alt-text="Képernyőkép a szabályzat kereséséről a keresősávban." border="false":::
+   :::image type="content" source="../media/create-and-manage/select-right-click.png" alt-text="A hozzárendelési funkció kiválasztására szolgáló kezdeményezés helyi menüjének képernyőképe." border="false":::
 
 1. A **Biztonságossá tétel: kezdeményezés hozzárendelése** oldalon adja meg a következő példaadatokat. A saját adatait is használhatja.
 
@@ -463,11 +482,11 @@ New-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"
 1. Keresse meg a **biztonságos** kezdeményezést. Valószínűleg továbbra is a **nem indult el** _megfelelőségi állapotban_ van.
    Válassza ki a kezdeményezést a hozzárendelés teljes részleteinek beszerzéséhez.
 
-   :::image type="content" source="../media/create-and-manage/compliance-status-not-started.png" alt-text="Képernyőkép a szabályzat kereséséről a keresősávban." border="false":::
+   :::image type="content" source="../media/create-and-manage/compliance-status-not-started.png" alt-text="Képernyőkép a kezdeményezési megfelelőségi oldalról, amely nem indult állapotú hozzárendelés-értékeléseket mutat." border="false":::
 
 1. A kezdeményezés hozzárendelésének befejezését követően a megfelelőségi lap frissül a **Megfelelő**_Megfelelőségi állapottal_.
 
-   :::image type="content" source="../media/create-and-manage/compliance-status-compliant.png" alt-text="Képernyőkép a szabályzat kereséséről a keresősávban." border="false":::
+   :::image type="content" source="../media/create-and-manage/compliance-status-compliant.png" alt-text="Képernyőkép a kezdeményezés megfelelőségi oldaláról, amely a hozzárendelés-értékelések befejezését és megfelelőségi állapotát mutatja." border="false":::
 
 1. A kezdeményezés megfelelősége lapon található bármely szabályzat kiválasztásával megnyílik az adott szabályzat megfelelőségi adatok lapja. Ez a lap az erőforrás szintjén tartalmaz részleteket a megfelelőséghez.
 
@@ -480,11 +499,11 @@ Miután hozzárendelt egy házirend-kezdeményezést egy adott hely megkövetel�
 
 A hozzárendelt házirend vagy kezdeményezés által megakadályozott központi telepítések megtekinthetők az üzemelő példány által megnevezett erőforráscsoport esetében: válassza a **központi telepítések** lehetőséget a lap bal oldalán, majd válassza ki a sikertelen telepítés **központi telepítési nevét** . Az elutasított erőforrás _Tiltott_ állapotúként jelenik meg a listában. Az erőforrást megtagadó házirend vagy kezdeményezés és hozzárendelés meghatározásához válassza a **sikertelen lehetőséget. Kattintson ide a részletekért – >** a központi telepítés áttekintése lapon. A lap jobb oldalán megnyílik egy ablak a hibára vonatkozó információkkal. A **hiba részletei** szakaszban a kapcsolódó házirend-objektumok GUID azonosítói láthatók.
 
-:::image type="content" source="../media/create-and-manage/rg-deployment-denied.png" alt-text="Képernyőkép a szabályzat kereséséről a keresősávban." border="false":::
+:::image type="content" source="../media/create-and-manage/rg-deployment-denied.png" alt-text="Képernyőkép egy sikertelen központi telepítésről, amelyet egy szabályzat-hozzárendelés elutasította." border="false":::
 
 A Azure Policy oldalon: válassza a **megfelelőség** lehetőséget az oldal bal oldalán, és válassza a **biztonságos házirend beolvasása** kezdeményezést. Ezen az oldalon megnőtt a letiltott erőforrások **megtagadási** száma. Az **Events (események** ) lapon a szabályzat-definíció által megtagadott erőforrás létrehozására vagy központi telepítésére tett kísérletekről talál részleteket.
 
-:::image type="content" source="../media/create-and-manage/compliance-overview.png" alt-text="Képernyőkép a szabályzat kereséséről a keresősávban." border="false":::
+:::image type="content" source="../media/create-and-manage/compliance-overview.png" alt-text="Képernyőkép az események lapról és a házirend-esemény részleteiről a kezdeményezés megfelelősége lapon." border="false":::
 
 Ebben a példában a Trent Baker, az egyik contoso SR. Virtualization specialista szükséges munkát végzett. Meg kell adni a Trent helyet a kivételekhez. Létrehozott egy új erőforráscsoportot, a **LocationsExcluded**, és a következő megadása alól kivételt jelent a szabályzat-hozzárendelés.
 
@@ -494,14 +513,14 @@ Ebben a példában a Trent Baker, az egyik contoso SR. Virtualization specialist
 
 1. Tallózással keresse meg az összes házirend-hozzárendelést, és nyissa meg a _biztonságos_ szabályzat-hozzárendelést.
 
-1. Állítsa be a **kizárást** úgy, hogy kiválasztja a három pontot, és kiválasztja a kizárni kívánt erőforráscsoportot, _LocationsExcluded_ ebben a példában. Válassza **a Hozzáadás a kiválasztott hatókörhöz** lehetőséget, majd válassza a **Mentés**lehetőséget.
+1. Állítsa be a **kizárást** úgy, hogy kiválasztja a három pontot, és kiválasztja a kizárni kívánt erőforráscsoportot, _LocationsExcluded_ ebben a példában. Válassza **a Hozzáadás a kiválasztott hatókörhöz** lehetőséget, majd válassza a **Mentés** lehetőséget.
 
-   :::image type="content" source="../media/create-and-manage/request-exclusion.png" alt-text="Képernyőkép a szabályzat kereséséről a keresősávban." border="false":::
+   :::image type="content" source="../media/create-and-manage/request-exclusion.png" alt-text="Képernyőkép a kizárások lehetőségről a kezdeményezés-hozzárendelés lapon a kizárt erőforráscsoport hozzáadásához a szabályzat-hozzárendeléshez." border="false":::
 
    > [!NOTE]
    > A házirend-definíciótól és annak hatásaitól függően a kizárást a hozzárendelés hatókörén belül egy erőforráscsoport adott erőforrásaihoz is meg lehet adni. Ennek az oktatóanyagnak a **megtagadási** hatása miatt nem érdemes megállapítani a kizárást egy már létező erőforráson.
 
-1. Válassza a **felülvizsgálat + mentés** lehetőséget, majd kattintson a **Mentés**gombra.
+1. Válassza a **felülvizsgálat + mentés** lehetőséget, majd kattintson a **Mentés** gombra.
 
 Ebben a szakaszban megoldotta a megtagadott kérelmet úgy, hogy egyetlen erőforráscsoport számára létrehoz egy kizárást.
 
@@ -525,7 +544,7 @@ Ebben az oktatóanyagban sikeresen elvégezte a következőket:
 > - Feloldott egy nem megfelelő vagy elutasított erőforrást
 > - Megvalósított egy új szabályzatot a vállalaton belül
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A szabályzatdefiníciók szerkezetéről szóló további információkért lásd az alábbi cikket:
 

@@ -16,11 +16,11 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 509a3ac383cebd91821e9c4b872c253ab3b0a947
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94956194"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005860"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Vészhelyreállítás és az eszköz feladatátvétele a StorSimple Virtual Arrayhez az Azure Portalon keresztül
 
@@ -178,6 +178,6 @@ Az üzletmenet folytonossága vész-helyreállítási (BCDR) forgatókönyv akko
 
 Ha vannak olyan StorSimple-eszközök, amelyek közvetlenül a katasztrófa előtt lettek regisztrálva, akkor előfordulhat, hogy ezeket a StorSimple-eszközöket törölni kell. A katasztrófa után újból létrehozhatja és konfigurálhatja ezeket az eszközöket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tudjon meg többet arról, hogyan [felügyelheti a StorSimple virtuális tömböt a helyi webes felhasználói felület használatával](storsimple-ova-web-ui-admin.md).

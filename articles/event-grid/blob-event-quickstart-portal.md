@@ -4,11 +4,11 @@ description: 'Gyors útmutató: Azure Event Grid és Azure Portal használatáva
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.openlocfilehash: 46cd88558334239a1a9971c63b8b2608def3c4d3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87421603"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005690"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Gyors útmutató: blob Storage-események átirányítása webes végpontra a Azure Portal
 
@@ -33,13 +33,13 @@ A folyamat végén látni fogja, hogy a rendszer elküldte az eseményadatokat a
    Az eseményekre feliratkozáshoz vagy egy általános célú v2 tárfiókot vagy Blob Storage-fiókot hozzon létre.
    
 1. A **Storage-fiók létrehozása** oldalon hajtsa végre a következő lépéseket:
-    1. Válassza ki az Azure-előfizetését. 
-    2. **Erőforráscsoport**esetén hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévőt. 
+    1. Válassza ki Azure-előfizetését. 
+    2. **Erőforráscsoport** esetén hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévőt. 
     3. Adja meg a tárfiók nevét. 
     4. Válassza az **Áttekintés + létrehozás** lehetőséget. 
 
        ![Kezdeti lépések](./media/blob-event-quickstart-portal/provide-blob-values.png)    
-    5. A **felülvizsgálat + létrehozás** oldalon tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra. 
+    5. A **felülvizsgálat + létrehozás** oldalon tekintse át a beállításokat, majd kattintson a **Létrehozás** gombra. 
 
         >[!NOTE]
         > Csak a **StorageV2 (általános célú v2)** és a **BlobStorage** típusú tárolási fiókok támogatják az események integrálását. A **Storage (Genral Purpose v1)** *nem* támogatja a Event Grid integrációját.
@@ -52,14 +52,14 @@ A Blob Storage-eseményekre való feliratkozás előtt hozzuk létre az esemény
 
    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Aquent." /></a>
 2. Az **Egyéni telepítés** oldalon hajtsa végre a következő lépéseket: 
-    1. Az **erőforráscsoport**mezőben válassza ki a Storage-fiók létrehozásakor létrehozott erőforráscsoportot. Az oktatóanyag törlésével megkönnyíti a tisztítást, miután az erőforráscsoportot törli.  
-    2. A **hely neve**mezőben adja meg a webalkalmazás nevét.
-    3. A **üzemeltetési terv neve**mezőben adja meg a webalkalmazás üzemeltetéséhez használni kívánt app Service-csomag nevét.
-    4. Jelölje be az Elfogadom a **fenti feltételeket és kikötéseket**jelölőnégyzetet. 
+    1. Az **erőforráscsoport** mezőben válassza ki a Storage-fiók létrehozásakor létrehozott erőforráscsoportot. Az oktatóanyag törlésével megkönnyíti a tisztítást, miután az erőforráscsoportot törli.  
+    2. A **hely neve** mezőben adja meg a webalkalmazás nevét.
+    3. A **üzemeltetési terv neve** mezőben adja meg a webalkalmazás üzemeltetéséhez használni kívánt app Service-csomag nevét.
+    4. Jelölje be az Elfogadom a **fenti feltételeket és kikötéseket** jelölőnégyzetet. 
     5. Válassza a **Vásárlás** lehetőséget. 
 
        ![Központi telepítési paraméterek](./media/blob-event-quickstart-portal/template-deploy-parameters.png)
-1. Az üzembe helyezés befejezése eltarthat néhány percig. Válassza a riasztások (harang ikon) lehetőséget a portálon, majd válassza az **Ugrás az erőforrás-csoportba**lehetőséget. 
+1. Az üzembe helyezés befejezése eltarthat néhány percig. Válassza a riasztások (harang ikon) lehetőséget a portálon, majd válassza az **Ugrás az erőforrás-csoportba** lehetőséget. 
 
     ![Riasztás – navigáljon az erőforráscsoporthoz](./media/blob-event-quickstart-portal/navigate-resource-group.png)
 4. Az **erőforráscsoport** lap erőforrások listájában válassza ki a létrehozott webalkalmazást. Ezen a listán a App Service terv és a Storage-fiók is látható. 
@@ -92,7 +92,7 @@ A témakörre való feliratkozással lehet tudatni az Event Griddel, hogy mely e
     2. Válassza a **webes Hook** lehetőséget a **végpont típusához**. 
 
        ![Webes Hook-végpont típusának kiválasztása](./media/blob-event-quickstart-portal/select-web-hook-end-point-type.png)
-4. A **végpont**esetében kattintson a **válasszon egy végpontot**lehetőségre, és adja meg a webalkalmazás URL-címét, és adja hozzá `api/updates` a Kezdőlap URL-címét (például: `https://spegridsite.azurewebsites.net/api/updates` ), majd válassza a **kijelölés megerősítése**lehetőséget.
+4. A **végpont** esetében kattintson a **válasszon egy végpontot** lehetőségre, és adja meg a webalkalmazás URL-címét, és adja hozzá `api/updates` a Kezdőlap URL-címét (például: `https://spegridsite.azurewebsites.net/api/updates` ), majd válassza a **kijelölés megerősítése** lehetőséget.
 
    ![Végpont kijelölésének megerősítése](./media/blob-event-quickstart-portal/confirm-endpoint-selection.png)
 5. Most az esemény- **előfizetés létrehozása** lapon válassza a **Létrehozás** lehetőséget az esemény-előfizetés létrehozásához. 
@@ -113,7 +113,7 @@ A Blob Storage-hoz egy eseményt egy fájl feltöltésével aktiválhat. A fájl
 
    ![Blobok kiválasztása](./media/blob-event-quickstart-portal/select-blobs.png)
 
-1. Válassza a **+ Tároló** lehetőséget. Adja meg a tároló nevét, és használja az összes hozzáférési szintet, majd válassza a **Létrehozás**lehetőséget. 
+1. Válassza a **+ Tároló** lehetőséget. Adja meg a tároló nevét, és használja az összes hozzáférési szintet, majd válassza a **Létrehozás** lehetőséget. 
 
    ![Tároló hozzáadása](./media/blob-event-quickstart-portal/add-container.png)
 

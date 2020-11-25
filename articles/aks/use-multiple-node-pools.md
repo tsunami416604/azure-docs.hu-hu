@@ -5,11 +5,11 @@ services: container-service
 ms.topic: article
 ms.date: 04/08/2020
 ms.openlocfilehash: 39c2fe177d0a6d913d7bf2b2baf44af3c69c0868
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900082"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006933"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Egy fürthöz több csomópontkészlet létrehozása és felügyelete az Azure Kubernetes Service (AKS) szolgáltatásban
 
@@ -93,7 +93,7 @@ A csomópont-készletek állapotának megtekintéséhez használja az az [AK Nod
 az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluster
 ```
 
-A következő példa kimenete azt mutatja, hogy a *mynodepool* sikeresen létrejött a csomópont-készletben lévő három csomóponttal. Ha az AK-fürt az előző lépésben lett létrehozva, a rendszer egy alapértelmezett *nodepool1* hozott létre, amelynek a csomópontja *2* .
+A következő példa kimenete azt mutatja, hogy a *mynodepool* sikeresen létrejött a csomópont-készletben lévő három csomóponttal. Ha az AK-fürt az előző lépésben lett létrehozva, a rendszer egy alapértelmezett *nodepool1* hozott létre, amelynek a csomópontja *2*.
 
 ```output
 [
@@ -161,7 +161,7 @@ Mivel ebben a példában két csomópont-készlet található, a csomópont-kés
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Frissítse a *mynodepool* . Az az [AK nodepool upgrade][az-aks-nodepool-upgrade] paranccsal frissítse a csomópont-készletet, ahogy az az alábbi példában is látható:
+Frissítse a *mynodepool*. Az az [AK nodepool upgrade][az-aks-nodepool-upgrade] paranccsal frissítse a csomópont-készletet, ahogy az az alábbi példában is látható:
 
 ```azurecli-interactive
 az aks nodepool upgrade \
@@ -172,7 +172,7 @@ az aks nodepool upgrade \
     --no-wait
 ```
 
-Sorolja fel újra a csomópont-készletek állapotát az az [AK Node Pool List][az-aks-nodepool-list] parancs használatával. Az alábbi példa azt mutatja, hogy a *mynodepool* a *frissítési* állapotban van *KUBERNETES_VERSION* :
+Sorolja fel újra a csomópont-készletek állapotát az az [AK Node Pool List][az-aks-nodepool-list] parancs használatával. Az alábbi példa azt mutatja, hogy a *mynodepool* a *frissítési* állapotban van *KUBERNETES_VERSION*:
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -249,7 +249,7 @@ Az alkalmazás számítási feladatainak változása miatt szükség lehet a cso
 
 <!--If you scale down, nodes are carefully [cordoned and drained][kubernetes-drain] to minimize disruption to running applications.-->
 
-A csomópontok számának skálázásához használja az az [AK Node Pool Scale][az-aks-nodepool-scale] parancsot. Az alábbi példa a *mynodepool* csomópontok számát *5* -re méretezi:
+A csomópontok számának skálázásához használja az az [AK Node Pool Scale][az-aks-nodepool-scale] parancsot. Az alábbi példa a *mynodepool* csomópontok számát *5*-re méretezi:
 
 ```azurecli-interactive
 az aks nodepool scale \
@@ -367,7 +367,7 @@ az aks nodepool add \
     --no-wait
 ```
 
-Az az [AK Node Pool List][az-aks-nodepool-list] parancs kimenete az alábbi példa alapján mutatja, hogy a *Gpunodepool* csomópontokat *hoz létre* a megadott *VmSize* :
+Az az [AK Node Pool List][az-aks-nodepool-list] parancs kimenete az alábbi példa alapján mutatja, hogy a *Gpunodepool* csomópontokat *hoz létre* a megadott *VmSize*:
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -425,7 +425,7 @@ az aks nodepool add \
 > [!NOTE]
 > A csomópont-készlet létrehozásakor a rendszer csak a csomópontok készletei számára állíthatja be a megromlást.
 
-Az az [AK nodepool List][az-aks-nodepool-list] parancs kimenetének következő példája azt mutatja, hogy a *Taintnp* csomópontokat *hoz létre* a megadott *nodeTaints* :
+Az az [AK nodepool List][az-aks-nodepool-list] parancs kimenetének következő példája azt mutatja, hogy a *Taintnp* csomópontokat *hoz létre* a megadott *nodeTaints*:
 
 ```console
 $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -531,7 +531,7 @@ az aks nodepool add \
 > [!NOTE]
 > A csomópont-készlet létrehozásakor csak a csomópont-készletek esetében lehet beállítani a címkét. A címkéknek is kulcs/érték pároknak kell lenniük, és [érvényes szintaxissal][kubernetes-label-syntax]kell rendelkezniük.
 
-Az az [AK nodepool List][az-aks-nodepool-list] parancs kimenetének következő példája azt mutatja, hogy a *Labelnp* csomópontokat *hoz létre* a megadott *nodeLabels* :
+Az az [AK nodepool List][az-aks-nodepool-list] parancs kimenetének következő példája azt mutatja, hogy a *Labelnp* csomópontokat *hoz létre* a megadott *nodeLabels*:
 
 ```console
 $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -577,9 +577,9 @@ az aks nodepool add \
 ```
 
 > [!NOTE]
-> Használhatja a `--tags` paramétert is, ha az [az AK nodepool Update][az-aks-nodepool-update] parancsot használja, valamint a fürt létrehozásakor. A fürt létrehozása során a `--tags` paraméter alkalmazza a címkét a fürttel létrehozott kezdeti csomópont-készletre. Az [Azure-erőforrások rendszerezéséhez][tag-limitation]az összes címke nevének be kell tartania a használati címkék korlátozásait. Ha a (z) paraméterrel frissíti egy csomópont-készletet, a `--tags` meglévő kódelemek összes értékének frissítése és az új címkék hozzáfűzése. Ha például a csomópont-készletben a *dept = it* és a *costcenter = 9999* szerepel a címkéknél, és frissítette a *Team = dev* és a *costcenter = 111* címkével, akkor a címkékhez nodepool a *dept = it* , a *costcenter = 111* és a *Team = dev* .
+> Használhatja a `--tags` paramétert is, ha az [az AK nodepool Update][az-aks-nodepool-update] parancsot használja, valamint a fürt létrehozásakor. A fürt létrehozása során a `--tags` paraméter alkalmazza a címkét a fürttel létrehozott kezdeti csomópont-készletre. Az [Azure-erőforrások rendszerezéséhez][tag-limitation]az összes címke nevének be kell tartania a használati címkék korlátozásait. Ha a (z) paraméterrel frissíti egy csomópont-készletet, a `--tags` meglévő kódelemek összes értékének frissítése és az új címkék hozzáfűzése. Ha például a csomópont-készletben a *dept = it* és a *costcenter = 9999* szerepel a címkéknél, és frissítette a *Team = dev* és a *costcenter = 111* címkével, akkor a címkékhez nodepool a *dept = it*, a *costcenter = 111* és a *Team = dev* .
 
-Az az [AK nodepool List][az-aks-nodepool-list] parancs kimenetének következő példája azt mutatja, hogy a *Tagnodepool* csomópontokat *hoz létre* a megadott *címkével* :
+Az az [AK nodepool List][az-aks-nodepool-list] parancs kimenetének következő példája azt mutatja, hogy a *Tagnodepool* csomópontokat *hoz létre* a megadott *címkével*:
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -614,7 +614,7 @@ Hozzon létre egy sablont, például `aks-agentpools.json` illessze be a követk
 
 * Frissíti a *myagentpool* nevű *Linux* Node-készletet három csomópont futtatásához.
 * Beállítja a csomópont-készlet csomópontjait a Kubernetes-verzió *1.15.7* futtatásához.
-* Meghatározza a csomópont méretét *Standard_DS2_v2ként* .
+* Meghatározza a csomópont méretét *Standard_DS2_v2ként*.
 
 Szükség szerint szerkessze ezeket az értékeket a csomópont-készletek frissítéséhez, hozzáadásához vagy törléséhez:
 
@@ -774,7 +774,7 @@ A csomópontok nyilvános IP-címeit többféleképpen is megtalálhatja:
 az vmss list-instance-public-ips -g MC_MyResourceGroup2_MyManagedCluster_eastus -n YourVirtualMachineScaleSetName
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ebben a cikkben létrehozta a GPU-alapú csomópontokat tartalmazó AK-fürtöt. A szükségtelen díjak csökkentése érdekében érdemes törölni a *gpunodepool* vagy a teljes Kabai fürtöt.
 
@@ -796,7 +796,7 @@ A csomópont-készletek esetében a nyilvános IP-címhez létrehozott további 
 az group delete --name myResourceGroup2 --yes --no-wait
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a [rendszercsomópont-készletekről][use-system-pool].
 

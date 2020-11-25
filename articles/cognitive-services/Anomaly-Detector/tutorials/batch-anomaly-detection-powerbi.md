@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: mbullwin
 ms.openlocfilehash: a17301e0807877662ae1bf34ade48e90a1d30c0c
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368644"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006200"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Oktatóanyag: rendellenességek megjelenítése a Batch észlelésével és Power BIával
 
@@ -54,7 +54,7 @@ A párbeszédpanel megjelenése után Navigáljon arra a mappára, ahová letöl
 
 Power BI a rendszer az első oszlopban lévő időbélyegeket `Date/Time` adattípusra konvertálja. Ezeket az időbélyegeket szöveggé kell alakítani, hogy el lehessen elküldeni az anomália-detektor API-nak. Ha a Power Query-szerkesztő nem nyílik meg automatikusan, kattintson a kezdőlapon a **lekérdezések szerkesztése** elemre.
 
-Kattintson az **átalakítás** menüszalagra a Power Query-szerkesztőben. A **bármely oszlop** csoportban nyissa meg az **adattípus:** legördülő menüt, és válassza a **text (szöveg** ) lehetőséget.
+Kattintson az **átalakítás** menüszalagra a Power Query-szerkesztőben. A **bármely oszlop** csoportban nyissa meg az **adattípus:** legördülő menüt, és válassza a **text (szöveg**) lehetőséget.
 
 ![A legördülő lista adattípusának képe](../media/tutorials/data-type-drop-down.png)
 
@@ -112,7 +112,7 @@ A Speciális szerkesztőon belül a következő Power Query M kódrészlettel bo
  in results
 ```
 
-A lekérdezésnek az adatlapon való meghívásához válassza az `Sheet1` alábbi **ENTER paramétert** , majd kattintson a **meghívás** gombra.
+A lekérdezésnek az adatlapon való meghívásához válassza az `Sheet1` alábbi **ENTER paramétert**, majd kattintson a **meghívás** gombra.
 
 ![Az meghívó függvény képe](../media/tutorials/invoke-function-screenshot.png)
 
@@ -125,7 +125,7 @@ Előfordulhat, hogy a lekérdezés futtatására tett kísérlet során figyelme
 
 ![A Power BI által létrehozott figyelmeztetést ábrázoló kép](../media/tutorials/blocked-function.png)
 
-A probléma megoldásához kattintson a **fájl** , majd a beállítások **és beállítások** elemre. Ezután kattintson a **Beállítások** elemre. Az **aktuális fájl** alatt válassza az **Adatvédelem** lehetőséget, és **hagyja figyelmen kívül az adatvédelmi szinteket, és javítsa a teljesítményt**.
+A probléma megoldásához kattintson a **fájl**, majd a beállítások **és beállítások** elemre. Ezután kattintson a **Beállítások** elemre. Az **aktuális fájl** alatt válassza az **Adatvédelem** lehetőséget, és **hagyja figyelmen kívül az adatvédelmi szinteket, és javítsa a teljesítményt**.
 
 Emellett üzenet jelenik meg, amely arra kéri, hogy határozza meg, hogyan kíván csatlakozni az API-hoz.
 
@@ -156,7 +156,7 @@ A mezők hozzáadása után kattintson a diagramra, és méretezze át az össze
 
 ### <a name="display-anomaly-data-points"></a>Az anomália adatpontjainak megjelenítése
 
-A Power BI ablak jobb oldalán, a **mezők** ablaktábla alatt kattintson a jobb gombbal az **értékre** a **meghívott függvény lekérdezésében** , és kattintson az **új gyors mérték** elemre.
+A Power BI ablak jobb oldalán, a **mezők** ablaktábla alatt kattintson a jobb gombbal az **értékre** a **meghívott függvény lekérdezésében**, és kattintson az **új gyors mérték** elemre.
 
 ![Az új gyors mérték képernyő képe](../media/tutorials/new-quick-measure.png)
 
@@ -164,7 +164,7 @@ A megjelenő képernyőn válassza a **szűrt érték** kiszámítása lehetős�
 
 ![Az új gyors mérték képernyő második képe](../media/tutorials/new-quick-measure-2.png)
 
-Miután rákattintott **az OK gombra** , a `Value for True` mezők listájának alján egy mező jelenik meg. Kattintson rá a jobb gombbal, és nevezze át az **anomáliára**. Adja hozzá a diagram **értékeit**. Ezután válassza ki a **formázó** eszközt, és állítsa az X tengely típusát **kategorikus** értékre.
+Miután rákattintott **az OK gombra**, a `Value for True` mezők listájának alján egy mező jelenik meg. Kattintson rá a jobb gombbal, és nevezze át az **anomáliára**. Adja hozzá a diagram **értékeit**. Ezután válassza ki a **formázó** eszközt, és állítsa az X tengely típusát **kategorikus** értékre.
 
 ![Az x tengely formátumának képe](../media/tutorials/format-x-axis.png)
 

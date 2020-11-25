@@ -16,11 +16,11 @@ ms.date: 06/25/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b159250e107fa73b9071eafe24fbe08ff1ea100b
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896004"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006251"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Felügyelt identitások konfigurálása Azure-beli virtuális gépeken lévő Azure-erőforrásokhoz REST API hívások használatával
 
@@ -293,7 +293,7 @@ Ha le szeretné tiltani a rendszerhez rendelt felügyelt identitást egy virtuá
     }
    ```
 
-   Ha a rendszer által hozzárendelt felügyelt identitást egy olyan virtuális gépről szeretné eltávolítani, amely felhasználó által hozzárendelt felügyelt identitásokkal rendelkezik, távolítsa el `SystemAssigned` az értéket az érték `{"identity":{"type:" "}}` `UserAssigned` és a szótár értékének megtartásával, `userAssignedIdentities` Ha az **API 2018-06-01** -es verzióját használja. Ha a 2017-12-01-es vagy korábbi **API-verziót** használja, tartsa meg a `identityIds` tömböt.
+   Ha a rendszer által hozzárendelt felügyelt identitást egy olyan virtuális gépről szeretné eltávolítani, amely felhasználó által hozzárendelt felügyelt identitásokkal rendelkezik, távolítsa el `SystemAssigned` az értéket az érték `{"identity":{"type:" "}}` `UserAssigned` és a szótár értékének megtartásával, `userAssignedIdentities` Ha az **API 2018-06-01**-es verzióját használja. Ha a 2017-12-01-es vagy korábbi **API-verziót** használja, tartsa meg a `identityIds` tömböt.
 
 ## <a name="user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás
 
@@ -517,7 +517,7 @@ Ha felhasználó által hozzárendelt identitást szeretne hozzárendelni egy vi
 
 4. Ha nem rendelkezik a virtuális géphez hozzárendelt, felhasználóhoz rendelt felügyelt identitásokkal, a következő CURL-paranccsal hívja meg az Azure Resource Manager REST-végpontot, hogy az első felhasználóhoz rendelt felügyelt identitást hozzárendelje a virtuális géphez.
 
-   A következő példa egy felhasználó által hozzárendelt felügyelt identitást rendel hozzá `ID1` egy *myVM* nevű virtuális géphez az erőforráscsoport *myResourceGroup* .  Cserélje le az elemet az `<ACCESS TOKEN>` előző lépésben kapott értékre, amikor a tulajdonos hozzáférési jogkivonatát és az `<SUBSCRIPTION ID>` adott környezetnek megfelelő értéket kért.
+   A következő példa egy felhasználó által hozzárendelt felügyelt identitást rendel hozzá `ID1` egy *myVM* nevű virtuális géphez az erőforráscsoport *myResourceGroup*.  Cserélje le az elemet az `<ACCESS TOKEN>` előző lépésben kapott értékre, amikor a tulajdonos hozzáférési jogkivonatát és az `<SUBSCRIPTION ID>` adott környezetnek megfelelő értéket kért.
 
    **API-VERZIÓ 2018-06-01**
 
@@ -805,7 +805,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A felhasználó által hozzárendelt felügyelt identitások REST használatával történő létrehozásával, listázásával vagy törlésével kapcsolatos információkért lásd:
 

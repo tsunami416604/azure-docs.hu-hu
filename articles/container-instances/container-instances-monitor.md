@@ -4,11 +4,11 @@ description: A számítási erőforrások (például a processzor és a memória
 ms.topic: article
 ms.date: 04/24/2019
 ms.openlocfilehash: b10c370b599233d00b2b4a65268f6c61a11cbd5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526697"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007256"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>Tároló-erőforrások figyelése az Azure Container Instances-ben
 
@@ -31,7 +31,7 @@ A Azure Monitor a következő [metrikákat biztosítja a Azure Container Instanc
 
 * **Memóriahasználat** – bájtban megadva.
 
-* A másodpercenként **fogadott hálózati bájtok** és a másodpercenként **továbbított hálózati bájtok**száma. 
+* A másodpercenként **fogadott hálózati bájtok** és a másodpercenként **továbbított hálózati bájtok** száma. 
 
 ## <a name="get-metrics---azure-portal"></a>Metrika beolvasása – Azure Portal
 
@@ -42,7 +42,7 @@ Tárolócsoport létrehozásakor az Azure Monitor adatai elérhetők az Azure Po
 Egy több tárolót tartalmazó tároló csoportban használjon [dimenziót][monitor-dimension] a mérőszámok tároló alapján történő megjelenítéséhez. Az egyes tárolómetrikák diagramjának létrehozásához hajtsa végre az alábbi lépéseket:
 
 1. Az **Áttekintés** oldalon válassza ki az egyik mérőszám-diagramot, például a **processzort**. 
-1. Válassza a **felosztás alkalmazása** gombot, és válassza a **tároló neve**lehetőséget.
+1. Válassza a **felosztás alkalmazása** gombot, és válassza a **tároló neve** lehetőséget.
 
 ![A képernyőfelvételek egy tároló példány metrikáit jelenítik meg, a kiválasztott felosztással és a tároló nevének kiválasztásával.][dimension]
 
@@ -136,7 +136,7 @@ Timestamp            Name          Containername             Average
 2019-04-23 23:10:00  Memory Usage  aci-tutorial-sidecar  847872.0
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure-alapú figyelésről további információt az [Azure-alapú figyelés áttekintése][azure-monitoring] szakaszban talál.
 
