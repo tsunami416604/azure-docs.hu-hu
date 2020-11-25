@@ -12,11 +12,11 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.openlocfilehash: e73126cfc54294a7b9d54ff62c406d5e686ac470
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186773"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95982712"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS Integration Runtime csatlakoztatása virtuális hálózathoz
 
@@ -186,7 +186,7 @@ A teljes forgatókönyv működéséhez az alábbi lépéseket kell elvégeznie
 
 Azure Batch felügyeleti szolgáltatások és a Azure-SSIS IR közötti bejövő forgalom nem irányítható át a tűzfal-berendezésbe, ellenkező esetben a forgalom aszimmetrikus útválasztási probléma miatt megszakad. A bejövő forgalomhoz meg kell adni az útvonalakat, így a forgalom ugyanúgy reagálhat, mint a szolgáltatás. Megadhat konkrét UDR, amelyekkel átirányíthatja a forgalmat Azure Batch felügyeleti szolgáltatások és a Azure-SSIS IR között a következő ugrási típusként az **Internet** lehetőséggel.
 
-Ha például a Azure-SSIS IR a (z) helyen található, `UK South` és Azure Firewallon keresztül szeretné megvizsgálni a kimenő forgalmat, először a szolgáltatási címke IP-címtartomány `BatchNodeManagement.UKSouth` [letöltése hivatkozásra](https://www.microsoft.com/download/details.aspx?id=56519) vagy a Service [tag felderítési API](../virtual-network/service-tags-overview.md#service-tags-on-premises)-ra kell beolvasnia a szolgáltatás címkéjét. Ezt követően alkalmazza az alábbi UDR a kapcsolódó IP-címtartomány-útvonalakat a következő ugrási típussal az **Internet** mellett a 0.0.0.0/0 útvonalon, a következő ugrási típust pedig **virtuális készülékként** .
+Ha például a Azure-SSIS IR a (z) helyen található, `UK South` és Azure Firewallon keresztül szeretné megvizsgálni a kimenő forgalmat, először a szolgáltatási címke IP-címtartomány `BatchNodeManagement.UKSouth` [letöltése hivatkozásra](https://www.microsoft.com/download/details.aspx?id=56519) vagy a Service [tag felderítési API](../virtual-network/service-tags-overview.md#service-tags-on-premises)-ra kell beolvasnia a szolgáltatás címkéjét. Ezt követően alkalmazza az alábbi UDR a kapcsolódó IP-címtartomány-útvonalakat a következő ugrási típussal az **Internet** mellett a 0.0.0.0/0 útvonalon, a következő ugrási típust pedig **virtuális készülékként**.
 
 ![Azure Batch UDR beállításai](media/join-azure-ssis-integration-runtime-virtual-network/azurebatch-udr-settings.png)
 
@@ -269,7 +269,7 @@ Ahhoz, hogy a tűzfal eszközön engedélyezve legyen a kimenő forgalom, enged�
 > [!NOTE]
 > Az Azure SQL és a Storage esetében, ha Virtual Network szolgáltatási végpontokat állít be az alhálózaton, akkor az azonos régióban található Azure-SSIS IR és az Azure SQL közötti adatforgalom az azonos régióban lévő \ Azure Storage-ban vagy a párosított régiókban közvetlenül a tűzfal helyett a Microsoft Azure gerinc hálózatra lesz irányítva.
 
-Ha nincs szüksége a Azure-SSIS IR kimenő forgalmának vizsgálatára, egyszerűen alkalmazhatja az útvonalat, hogy a következő ugrás típusú összes forgalmat kényszerítse az **internethez** :
+Ha nincs szüksége a Azure-SSIS IR kimenő forgalmának vizsgálatára, egyszerűen alkalmazhatja az útvonalat, hogy a következő ugrás típusú összes forgalmat kényszerítse az **internethez**:
 
 -   Az Azure ExpressRoute-forgatókönyvekben a következő ugrási típussal rendelkező 0.0.0.0/0 útvonalakat alkalmazhatja **Internet** a Azure-SSIS IR futtató alhálózaton. 
 -   Egy NVA-forgatókönyvben módosíthatja a meglévő 0.0.0.0/0 útvonalat azon az alhálózaton **, amely** a következő ugrási típusról az **internetre** helyezi a Azure-SSIS IR.
@@ -282,9 +282,9 @@ Ha nincs szüksége a Azure-SSIS IR kimenő forgalmának vizsgálatára, egyszer
 ### <a name="set-up-the-resource-group"></a><a name="resource-group"></a> Az erőforráscsoport beállítása
 
 A Azure-SSIS IR létre kell hoznia bizonyos hálózati erőforrásokat a virtuális hálózattal azonos erőforráscsoporthoz. Ezek az erőforrások a következők:
-- Egy Azure Load Balancer a name *\<Guid> -azurebatch-cloudserviceloadbalancer* .
-- Egy Azure nyilvános IP-cím, amelynek neve *\<Guid> – azurebatch-cloudservicepublicip* .
-- Egy hálózati munkahelyi biztonsági csoport, amelynek neve: *\<Guid> azurebatch-cloudservicenetworksecuritygroup* . 
+- Egy Azure Load Balancer a name *\<Guid> -azurebatch-cloudserviceloadbalancer*.
+- Egy Azure nyilvános IP-cím, amelynek neve *\<Guid> – azurebatch-cloudservicepublicip*.
+- Egy hálózati munkahelyi biztonsági csoport, amelynek neve: *\<Guid> azurebatch-cloudservicenetworksecuritygroup*. 
 
 > [!NOTE]
 > Mostantól használhatja a saját statikus nyilvános IP-címeit a Azure-SSIS IRhoz. Ebben az esetben csak az Azure Load Balancer és a hálózati biztonsági csoport jön létre a virtuális hálózat helyett statikus nyilvános IP-címekkel.
@@ -392,7 +392,7 @@ A portálon konfigurálhatja a klasszikus virtuális hálózatot, mielőtt csatl
 
    1. Válassza a **Szerepkör-hozzárendelés hozzáadása** lehetőséget.
 
-   1. A **szerepkör-hozzárendelés hozzáadása** lapon a **szerepkör** beállításnál válassza a **klasszikus virtuális gépek közreműködője** lehetőséget. A **Select (kiválasztás** ) mezőben illessze be a **ddbf3205-c6bd-46ae-8127-60eb93363864** , majd válassza a **Microsoft Azure batch** elemet a keresési eredmények listájából. 
+   1. A **szerepkör-hozzárendelés hozzáadása** lapon a **szerepkör** beállításnál válassza a **klasszikus virtuális gépek közreműködője** lehetőséget. A **Select (kiválasztás** ) mezőben illessze be a **ddbf3205-c6bd-46ae-8127-60eb93363864**, majd válassza a **Microsoft Azure batch** elemet a keresési eredmények listájából. 
 
        ![Keresési eredmények a "szerepkör-hozzárendelés hozzáadása" oldalon](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-to-vm-contributor.png)
 
