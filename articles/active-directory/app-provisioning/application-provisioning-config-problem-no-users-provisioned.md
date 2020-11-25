@@ -12,11 +12,11 @@ ms.date: 04/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.openlocfilehash: 21f16a0b9c8b3b603735520d5dcdbf61601e1480
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706489"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994825"
 ---
 # <a name="no-users-are-being-provisioned"></a>Egyetlen felhasználó létrehozása sem történt meg 
 >[!NOTE]
@@ -65,6 +65,6 @@ A katalógus egyik alkalmazásának alapértelmezett szerepkörét az "alapérte
 **A 04/16/2020 előtt létrehozott kiépítési konfigurációk viselkedése:** A következő 3 hónapban a viselkedés továbbra is a mai napig folytatódik. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók kimaradnak, és nem lesznek ténylegesen jogosultak. Július 2020 után a viselkedés minden alkalmazás esetében egységes lesz. Nem fogjuk kihagyni a felhasználókat az alapértelmezett hozzáférési szerepkörrel, mert "nem lehet ténylegesen jogosult". Ezt a módosítást a Microsoft végzi, és nincs szükség felhasználói beavatkozásra. Ha szeretné biztosítani, hogy ezek a felhasználók továbbra is kimaradnak, még a módosítás után is alkalmazza a megfelelő hatókörű szűrőket, vagy szüntesse meg a felhasználó hozzárendelését az alkalmazásból, hogy azok ne legyenek a hatókörön belül.  
 
 A változásokkal kapcsolatos kérdéseit a következő címen érheti el: provisioningfeedback@microsoft.com
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Azure AD Connect szinkronizálás: a deklaratív kiépítés ismertetése](../hybrid/concept-azure-ad-connect-sync-declarative-provisioning.md)

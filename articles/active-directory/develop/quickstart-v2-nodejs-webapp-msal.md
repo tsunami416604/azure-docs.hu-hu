@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 10/22/2020
 ms.author: amikuma
 ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: 52e6c70b76b83c73059dc887eaefe8403befac13
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: ac400efe66ab740f5fb87977ac531cbe465e3f91
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94594232"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95995155"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési jogkivonat beszerzése egy Node-webalkalmazásban az Auth Code flow használatával
 
-Ebben a rövid útmutatóban egy kód mintát tölt le és futtat, amely bemutatja, hogyan jelentkezhet be Node.js webalkalmazás a felhasználók számára az engedélyezési kód folyamatával. A kód minta azt is bemutatja, hogyan szerezhet be hozzáférési tokent Microsoft Graph API meghívásához. 
+Ebben a rövid útmutatóban egy kód mintát tölt le és futtat, amely bemutatja, hogyan jelentkezhet be Node.js webalkalmazás a felhasználók számára az engedélyezési kód folyamatával. A kód minta azt is bemutatja, hogyan kérhető le Microsoft Graph API-t meghívó hozzáférési jogkivonat. 
 
 Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 
@@ -140,7 +140,7 @@ A MSAL-csomópont könyvtára aláírja a felhasználókat, és a Microsoft Iden
 npm install @azure/msal-node
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Hitelesítés hozzáadása meglévő webalkalmazáshoz – GitHub-mintakód >](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/msal-node-samples/standalone-samples/auth-code)

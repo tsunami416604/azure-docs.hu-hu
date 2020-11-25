@@ -14,15 +14,15 @@ ms.author: ryanwi
 ms.reviewer: marsma, jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
 ms.openlocfilehash: 0c5b06fd14f526ca90b1b922be281af55ba00116
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077489"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995216"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Útmutató: Azure Active Directory-felhasználók bejelentkeztetése több-bérlős alkalmazásminta használatával
 
-Ha egy szolgáltatott szoftver (SaaS) alkalmazást biztosít számos szervezet számára, beállíthatja, hogy az alkalmazás minden Azure Active Directory (Azure AD-) bérlőtől fogadja a bejelentkezéseket. Ezt a konfigurációt az *alkalmazás több-bérlővé tétele hívja meg* . Az Azure AD-bérlők felhasználói bejelentkezhetnek az alkalmazásba, miután beleegyezett a fiókja alkalmazásával.
+Ha egy szolgáltatott szoftver (SaaS) alkalmazást biztosít számos szervezet számára, beállíthatja, hogy az alkalmazás minden Azure Active Directory (Azure AD-) bérlőtől fogadja a bejelentkezéseket. Ezt a konfigurációt az *alkalmazás több-bérlővé tétele hívja meg*. Az Azure AD-bérlők felhasználói bejelentkezhetnek az alkalmazásba, miután beleegyezett a fiókja alkalmazásával.
 
 Ha olyan meglévő alkalmazással rendelkezik, amely saját fiókkal rendelkezik, vagy más felhőalapú szolgáltatók más típusú bejelentkezéseit is támogatja, az Azure AD-bejelentkezés bármely bérlőből egyszerű. Csak regisztráljon az alkalmazást, adja hozzá a bejelentkezési kódot OAuth2, OpenID Connect vagy SAML használatával, és helyezzen el egy ["Bejelentkezés Microsoft-fiókkal" gombot][AAD-App-Branding] az alkalmazásban.
 
@@ -40,7 +40,7 @@ Nézzük meg az egyes lépéseket részletesen. Az [Azure ad és az OpenID Conne
 
 ## <a name="update-registration-to-be-multi-tenant"></a>Regisztráció frissítése több-bérlőre
 
-Alapértelmezés szerint az Azure AD-ben a webalkalmazás/API-regisztráció egyetlen bérlős. A regisztráció több-bérlőt úgy teheti meg, hogy megkeresi a **támogatott fióktípus** kapcsolót az alkalmazás regisztrációjának **hitelesítés** ablaktábláján a [Azure Portal][AZURE-portal] , és beállítja azt a **szervezeti címtárban lévő fiókokhoz** .
+Alapértelmezés szerint az Azure AD-ben a webalkalmazás/API-regisztráció egyetlen bérlős. A regisztráció több-bérlőt úgy teheti meg, hogy megkeresi a **támogatott fióktípus** kapcsolót az alkalmazás regisztrációjának **hitelesítés** ablaktábláján a [Azure Portal][AZURE-portal] , és beállítja azt a **szervezeti címtárban lévő fiókokhoz**.
 
 A több-bérlős alkalmazások megkezdése előtt az Azure AD-nek az alkalmazás alkalmazásspecifikus URI azonosítójának globálisan egyedinek kell lennie. Az alkalmazásazonosító URI egy módszer, amellyel az alkalmazás a protokollüzenetekben azonosítható. Egybérlős alkalmazás esetében az alkalmazásazonosító URI-nak csak a bérlőn belül kell egyedinek lennie. Több-bérlős alkalmazás esetében azonban globálisan egyedinek kell lennie, hogy az Azure AD megtalálja az alkalmazást a különböző bérlők közt. A globális egyediség azzal kényszeríthető ki, hogy a rendszer megköveteli, hogy az alkalmazásazonosító URI egy olyan egy gazdanévvel rendelkezzen, amely egyezik az Azure AD-bérlő egy ellenőrzött tartományával.
 
@@ -184,7 +184,7 @@ A több-bérlős alkalmazások hozzáférési tokeneket is kérhetnek az Azure A
 * [Az engedélyezési keretrendszer áttekintése][AAD-Consent-Overview]
 * [Az API-engedélyek hatókörének Microsoft Graph][MSFT-Graph-permission-scopes]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan hozhat létre olyan alkalmazásokat, amelyek bármely Azure AD-bérlőből bejelentkezhetnek a felhasználókba. Miután engedélyezte az egyszeri Sign-On (SSO) használatát az alkalmazás és az Azure AD között, frissítheti az alkalmazást a Microsoft-erőforrások, például a Microsoft 365 számára elérhető API-k eléréséhez. Ez lehetővé teszi, hogy személyre szabott felhasználói élményt nyújtson az alkalmazásban, például a környezetfüggő információkat jelenítse meg a felhasználók számára, például a profil képét vagy a következő naptári időpontot.
 

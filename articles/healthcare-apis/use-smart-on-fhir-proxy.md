@@ -10,11 +10,11 @@ ms.author: matjazl
 author: matjazl
 ms.date: 04/02/2019
 ms.openlocfilehash: 2e13a9fc32964781dda07e5534e5cab79868ddf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87846975"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995539"
 ---
 # <a name="tutorial-azure-active-directory-smart-on-fhir-proxy"></a>Oktatóanyag: Azure Active Directory SMART on FHIR proxy
 
@@ -126,7 +126,7 @@ Miután elindította a SMART on FHIR app launchert, rámutathat a böngészőre 
 
 ![SMART on FHIR app Launcher](media/tutorial-smart-on-fhir/smart-on-fhir-app-launcher.png)
 
-Amikor beírja a **beteg**, a **találkozás**vagy a **gyakorló** információit, megfigyelheti, hogy az **indítási környezet** frissült. Ha a FHIR készült Azure API-t használja, az indítási környezet egyszerűen egy JSON-dokumentum, amely a betegekkel, a kezelővel és egyebekkel kapcsolatos információkat tartalmaz. Ez az indítási környezet Base64 kódolású, és a lekérdezési paraméterként továbbítja az intelligens on FHIR alkalmazásnak `launch` . Az intelligens on FHIR specifikáció szerint ez a változó átlátszatlan az intelligens on FHIR alkalmazásban, és átadásra kerül az identitás-szolgáltatónak. 
+Amikor beírja a **beteg**, a **találkozás** vagy a **gyakorló** információit, megfigyelheti, hogy az **indítási környezet** frissült. Ha a FHIR készült Azure API-t használja, az indítási környezet egyszerűen egy JSON-dokumentum, amely a betegekkel, a kezelővel és egyebekkel kapcsolatos információkat tartalmaz. Ez az indítási környezet Base64 kódolású, és a lekérdezési paraméterként továbbítja az intelligens on FHIR alkalmazásnak `launch` . Az intelligens on FHIR specifikáció szerint ez a változó átlátszatlan az intelligens on FHIR alkalmazásban, és átadásra kerül az identitás-szolgáltatónak. 
 
 Az intelligens on FHIR proxy ezeket az információkat használja a jogkivonat-válasz mezőinek feltöltéséhez. Az intelligens on *FHIR alkalmazás ezeket a mezőket használhatja annak* szabályozására, hogy melyik beteg kér le és hogyan jeleníti meg az alkalmazást a képernyőn. Az intelligens on FHIR proxy a következő mezőket támogatja:
 

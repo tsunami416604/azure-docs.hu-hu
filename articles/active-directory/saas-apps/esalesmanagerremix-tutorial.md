@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 06/12/2018
 ms.author: jeedes
 ms.openlocfilehash: c06595b683092abf52300481068daab26394c4cb
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358745"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995641"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Azure Active Directory integrálása az E Sales Manager remixekkel
 
@@ -68,7 +68,7 @@ Az Azure AD és az E Sales Manager Remix integrálásának konfigurálásához a
 
     ![Az új alkalmazás gomb][3]
 
-1. A keresőmezőbe írja be a következőt: **e Sales Manager Remix** , válassza az **e Sales Manager Remix** elemet az eredmények listájában, majd kattintson a **Hozzáadás** gombra.
+1. A keresőmezőbe írja be a következőt: **e Sales Manager Remix**, válassza az **e Sales Manager Remix** elemet az eredmények listájában, majd kattintson a **Hozzáadás** gombra.
 
     ![E Sales Manager Remix az eredmények listájában](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_addfromgallery.png)
 
@@ -127,7 +127,7 @@ Engedélyezze az Azure AD egyszeri bejelentkezést a Azure Portalban, és konfig
 
 1. A **rövid útmutató** szakaszban másolja ki a kijelentkezési URL-címet és az SAML egyszeri bejelentkezési szolgáltatás URL-címét.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
     ![A Mentés gomb](./media/esalesmanagerremix-tutorial/tutorial_general_400.png)
 
@@ -199,7 +199,7 @@ Ebben a szakaszban a Azure Portal a következő módon hozza létre a Britta Sim
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd jegyezze fel a **jelszó** mezőben megjelenő értéket.
 
-    d. Válassza a **Létrehozás** lehetőséget.
+    d. Kattintson a **Létrehozás** gombra.
  
 ### <a name="create-an-e-sales-manager-remix-test-user"></a>E Sales Manager Remix tesztelési felhasználó létrehozása
 
@@ -209,7 +209,7 @@ Ebben a szakaszban a Azure Portal a következő módon hozza létre a Britta Sim
 
     ![E Sales Manager Remix-konfiguráció](./media/esalesmanagerremix-tutorial/configure4.png)
 
-1. Válassza ki **a vállalati beállítások**  >  **karbantartását a részlegek és alkalmazottak számára** , majd válassza a **regisztrált alkalmazottak** lehetőséget.
+1. Válassza ki **a vállalati beállítások**  >  **karbantartását a részlegek és alkalmazottak számára**, majd válassza a **regisztrált alkalmazottak** lehetőséget.
 
     ![Az "alkalmazottak regisztrálva" lap](./media/esalesmanagerremix-tutorial/user1.png)
 
@@ -217,7 +217,7 @@ Ebben a szakaszban a Azure Portal a következő módon hozza létre a Britta Sim
     
     ![Az "új alkalmazott regisztrálása" szakasz](./media/esalesmanagerremix-tutorial/user2.png)
 
-    a. Az **alkalmazott neve** mezőbe írja be a felhasználó nevét (például **Britta** ).
+    a. Az **alkalmazott neve** mezőbe írja be a felhasználó nevét (például **Britta**).
 
     b. Fejezze be a fennmaradó kötelező mezőket.
     
@@ -265,7 +265,7 @@ Amikor kiválasztja az E Sales Manager Remix csempét a hozzáférési panelen, 
 
 További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](../user-help/my-apps-portal-end-user-access.md). 
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Az SaaS-alkalmazások Azure Active Directory-vel való integrálását ismertető oktatóanyagok listája](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

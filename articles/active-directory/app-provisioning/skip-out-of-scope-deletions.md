@@ -12,18 +12,18 @@ ms.date: 12/10/2019
 ms.author: kenwith
 ms.reviewer: celested
 ms.openlocfilehash: f459a804b4c375eea17cbc22ded2f41f808c1b82
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041169"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995369"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>A hatókörön kívüli felhasználói fiókok törlésének kihagyása
 
 Alapértelmezés szerint az Azure AD-létesítési motor Soft törli vagy letiltja a hatókörön kívüli felhasználókat. Bizonyos forgatókönyvek esetében azonban, például az AD-felhasználók bejövő kiépítéséhez, ez a viselkedés nem a várt módon lehetséges, és érdemes lehet felülbírálni ezt az alapértelmezett viselkedést.  
 
-Ez a cikk azt ismerteti, hogyan használható a Microsoft Graph API és a Microsoft Graph API Explorer a hatókörön kívüli fiókok feldolgozásának szabályozására a * **SkipOutOfScopeDeletions** _ beállítással. _ Ha * **SkipOutOfScopeDeletions** _ értéke 0 (hamis), akkor a hatókörön kívüli fiókok le lesznek tiltva a célhelyen.
-_ If * **SkipOutOfScopeDeletions** _ értéke 1 (igaz), a hatókörön kívüli fiókok nem lesznek letiltva a célhelyen. Ez a jelző a _Provisioning alkalmazás * szintjén van beállítva, és a Graph API használatával konfigurálható. 
+Ez a cikk azt ismerteti, hogyan használható a Microsoft Graph API és a Microsoft Graph API Explorer a hatókörön kívüli fiókok feldolgozásának szabályozására a ***SkipOutOfScopeDeletions** _ beállítással. _ Ha ***SkipOutOfScopeDeletions** _ értéke 0 (hamis), akkor a hatókörön kívüli fiókok le lesznek tiltva a célhelyen.
+_ If ***SkipOutOfScopeDeletions** _ értéke 1 (igaz), a hatókörön kívüli fiókok nem lesznek letiltva a célhelyen. Ez a jelző a _Provisioning alkalmazás * szintjén van beállítva, és a Graph API használatával konfigurálható. 
 
 Mivel ezt a konfigurációt széles körben használják a *Munkanapokon Active Directory a felhasználók kiépítési* alkalmazásához, a következő lépésekben a munkanap alkalmazás képernyőképei szerepelnek. A konfiguráció azonban *más alkalmazásokkal* is használható, például a ServiceNow, a Salesforce és a Dropbox használatával.
 
@@ -68,9 +68,9 @@ Itt látható a leképezéshez hozzáadandó JSON-blokk.
 
 ## <a name="step-4-update-the-secrets-endpoint-with-the-skipoutofscopedeletions-flag"></a>4. lépés: a titkok végpontjának frissítése a SkipOutOfScopeDeletions jelzővel
 
-A Graph Explorerben futtassa az alábbi parancsot a Secrets végpont * *_SkipOutOfScopeDeletions_* _ jelzővel való frissítéséhez. 
+A Graph Explorerben futtassa az alábbi parancsot a Secrets végpont **_SkipOutOfScopeDeletions_* _ jelzővel való frissítéséhez. 
 
-Az alábbi URL-címben cserélje le a [servicePrincipalId] elemet az [1. lépésből](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id)kinyert _ *servicePrincipalId* * elemre. 
+Az alábbi URL-címben cserélje le a [servicePrincipalId] elemet az [1. lépésből](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id)kinyert _ *servicePrincipalId** elemre. 
 
 ```http
    PUT https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/secrets

@@ -14,11 +14,11 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 21f29135cc3b94e5b8c2dfc99b0f7be26b37d123
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425269"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995199"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Alkalmazások migrálása a MSAL.NET-be
 
@@ -51,7 +51,7 @@ A MSAL.NET használatához hozzá kell adnia a [Microsoft. Identity. Client](htt
 
 ### <a name="scopes-not-resources"></a>Hatókörök nem erőforrásai
 
-A ADAL.NET lekéri az *erőforrásokhoz*tartozó jogkivonatokat, de a MSAL.net jogkivonatokat vásárol a *hatókörökhöz*. Számos MSAL.NET-AcquireToken felülbíráláshoz hatókör () nevű paraméter szükséges `IEnumerable<string> scopes` . Ez a paraméter a szükséges engedélyeket és erőforrásokat deklaráló karakterláncok egyszerű listája. A jól ismert hatókörök a [Microsoft Graph hatókörei](/graph/permissions-reference).
+A ADAL.NET lekéri az *erőforrásokhoz* tartozó jogkivonatokat, de a MSAL.net jogkivonatokat vásárol a *hatókörökhöz*. Számos MSAL.NET-AcquireToken felülbíráláshoz hatókör () nevű paraméter szükséges `IEnumerable<string> scopes` . Ez a paraméter a szükséges engedélyeket és erőforrásokat deklaráló karakterláncok egyszerű listája. A jól ismert hatókörök a [Microsoft Graph hatókörei](/graph/permissions-reference).
 
 A MSAL.NET a v 1.0 erőforrásokhoz is hozzáfér. Tekintse meg a [v 1.0 alkalmazás hatókörökben](#scopes-for-a-web-api-accepting-v10-tokens)található részleteket.
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/12/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 014c9759756a1da922a5141f064991827d593208
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: a0b7330485d3152a588d43added7d9feaa5c2a14
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630260"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "95994492"
 ---
 # <a name="upload-and-index-your-videos"></a>Videók feltöltése és indexelése  
 
@@ -74,27 +74,7 @@ Ezzel a paraméterrel megadhat egy azonosítót, amely társítva lesz a videóh
 
 #### <a name="callbackurl"></a>callbackUrl
 
-Egy URL-cím, amely az ügyfél (POST-kérelem használatával) értesítésére szolgál az alábbi eseményekről:
-
-- Az indexelési állapot változása: 
-    - Tulajdonságok:    
-    
-        |Név|Leírás|
-        |---|---|
-        |id|A videó azonosítója|
-        |állapot|A videó állapota|  
-    - Például: https: \/ /test.com/notifyme?projectName=MyProject&ID = 1234abcd&State = Processed
-- A videóban azonosított személy:
-  - Tulajdonságok
-    
-      |Név|Leírás|
-      |---|---|
-      |id| A videó azonosítója|
-      |faceId|A videó indexében megjelenő Arcfelismerés|
-      |knownPersonId|Az arc-modellen belül egyedi személy azonosítója|
-      |personName|A személy neve|
-        
-    - Például: https: \/ /test.com/notifyme?projectName=MyProject&ID = 1234abcd&faceid = 12&knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5&personName = Inigo_Montoya 
+[!INCLUDE [callback url](./includes/callback-url.md)]
 
 ##### <a name="other-considerations"></a>További szempontok
 
@@ -118,7 +98,7 @@ Az árat a kiválasztott indexelési lehetőség határozza meg.
 
 #### <a name="priority"></a>prioritású
 
-A videók indexelése Video Indexer a prioritásuk szerint történik. Az index prioritásának megadásához használja a **priority** paramétert. A következő értékek érvényesek: **alacsony** , **normál** (alapértelmezett) és **magas**.
+A videók indexelése Video Indexer a prioritásuk szerint történik. Az index prioritásának megadásához használja a **priority** paramétert. A következő értékek érvényesek: **alacsony**, **normál** (alapértelmezett) és **magas**.
 
 A **priority** paraméter csak a fizetős fiókok esetében támogatott.
 

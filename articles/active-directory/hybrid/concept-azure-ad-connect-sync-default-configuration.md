@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5e55526e0a63a0c603e2b62ccb3ac0efed911cff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91295226"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996627"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Az Azure AD Connect szinkronizálása: az alapértelmezett konfiguráció ismertetése
 Ez a cikk a beépített konfigurációs szabályokat ismerteti. Dokumentálja a szabályokat, és hogy ezek a szabályok milyen hatással vannak a konfigurációra. Emellett Azure AD Connect Sync alapértelmezett konfigurációját is ismerteti. A cél az, hogy az olvasó tudomásul veszi, hogyan működik a deklaratív kiépítés nevű konfigurációs modell egy valós példában. Ez a cikk azt feltételezi, hogy már telepítette és konfigurálta Azure AD Connect szinkronizálást a telepítővarázsló használatával.
@@ -140,7 +140,7 @@ Ezen az ablaktáblán láthatja a konfigurációhoz létrehozott összes szinkro
 ### <a name="synchronization-rule"></a>Szinkronizálási szabály
 A szinkronizálási szabály egy olyan konfigurációs objektum, amely egy adott feltétel teljesülése esetén áramlik az attribútumok egy halmazával. Azt is felhasználjuk, hogy az összekötő terület egy objektuma a metaverse egyik objektumához **kapcsolódjon** , más néven JOIN vagy **Match**. A szinkronizálási szabályok elsőbbségi értékkel rendelkeznek, amely azt jelzi, hogy azok hogyan kapcsolódnak egymáshoz. Az alacsonyabb numerikus értékkel rendelkező szinkronizálási szabályok magasabb prioritással rendelkeznek, és egy attribútum-adatfolyam ütközik, a magasabb prioritású WINS megnyeri az ütközés feloldását.
 
-Példaként tekintse át az **ad – User AccountEnabled**szinkronizálási szabályát. Jelölje ki ezt a sort a SRE, és válassza a **Szerkesztés**lehetőséget.
+Példaként tekintse át az **ad – User AccountEnabled** szinkronizálási szabályát. Jelölje ki ezt a sort a SRE, és válassza a **Szerkesztés** lehetőséget.
 
 Mivel ez a szabály egy beépített szabály, a szabály megnyitásakor figyelmeztetés jelenik meg. Nem kell [módosítania](how-to-connect-sync-best-practices-changing-default-configuration.md)a beépített szabályokat, ezért a rendszer megkérdezi, hogy mit tesz a szándéka. Ebben az esetben csak a szabályt szeretné megtekinteni. Válassza a **Nem** lehetőséget.
 
@@ -162,18 +162,18 @@ A hatóköri szűrő szakasz használatával konfigurálhatja, hogy mikor kell a
 
 ![A "bejövő szinkronizálási szabály szerkesztése" ablak "hatókör szűrő" szakaszát bemutató képernyőkép.](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
 
-A hatókör-szűrő olyan csoportokat és záradékokat tartalmaz, amelyek beágyazva lehetnek. Egy csoporton belüli összes záradéknak meg kell felelnie egy szinkronizálási szabály alkalmazásának. Ha több csoport van definiálva, akkor legalább egy csoportnak teljesülnie kell a szabály alkalmazásához. Ez a logikai vagy a csoportok és logikai, valamint egy csoporton belüli kiértékelése. Erre a konfigurációra például a kimenő szinkronizálási szabály a **HRE – csoportos csatlakozás**lehetőségnél talál példát. Több szinkronizálási szűrő is létezik, például egy a biztonsági csoportok ( `securityEnabled EQUAL True` ) és egy a terjesztési csoportok ( `securityEnabled EQUAL False` ) számára.
+A hatókör-szűrő olyan csoportokat és záradékokat tartalmaz, amelyek beágyazva lehetnek. Egy csoporton belüli összes záradéknak meg kell felelnie egy szinkronizálási szabály alkalmazásának. Ha több csoport van definiálva, akkor legalább egy csoportnak teljesülnie kell a szabály alkalmazásához. Ez a logikai vagy a csoportok és logikai, valamint egy csoporton belüli kiértékelése. Erre a konfigurációra például a kimenő szinkronizálási szabály a **HRE – csoportos csatlakozás** lehetőségnél talál példát. Több szinkronizálási szűrő is létezik, például egy a biztonsági csoportok ( `securityEnabled EQUAL True` ) és egy a terjesztési csoportok ( `securityEnabled EQUAL False` ) számára.
 
 ![Hatókör lap a szinkronizálási szabály szerkesztőjében](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilterout.png)
 
 Ez a szabály annak meghatározására szolgál, hogy mely csoportokat kell kiépíteni az Azure AD-be. A terjesztési csoportoknak engedélyezni kell a levelezést az Azure AD-vel való szinkronizáláshoz, de a biztonsági csoportok esetében nincs szükség e-mailekre.
 
 #### <a name="join-rules"></a>Csatlakozási szabályok
-A harmadik szakasz annak konfigurálására szolgál, hogy az összekötő terület objektumai hogyan kapcsolódnak a metaverse objektumaihoz. A korábban megtekintett szabály nem rendelkezik konfigurációval az összekapcsolási szabályokhoz, így helyette az **ad – User JOIN szolgáltatásban**fog megjelenni.
+A harmadik szakasz annak konfigurálására szolgál, hogy az összekötő terület objektumai hogyan kapcsolódnak a metaverse objektumaihoz. A korábban megtekintett szabály nem rendelkezik konfigurációval az összekapcsolási szabályokhoz, így helyette az **ad – User JOIN szolgáltatásban** fog megjelenni.
 
 ![Csatlakoztatási szabályok lap a szinkronizálási szabály szerkesztőjében](./media/concept-azure-ad-connect-sync-default-configuration/syncrulejoinrules.png)
 
-Az illesztési szabály tartalma a telepítési varázslóban kiválasztott egyeztetési beállítástól függ. Bejövő szabályok esetén a kiértékelés a forrás-összekötő területének egy objektumával kezdődik, és az illesztési szabályokban szereplő egyes csoportok kiértékelése a sorban történik. Ha egy forrásoldali objektum úgy van kiértékelve, hogy a metaverse pontosan egy objektumát használja az illesztési szabályok valamelyikével, akkor az objektumok csatlakozva lesznek. Ha az összes szabály kiértékelése megtörtént, és nincs egyezés, akkor a Leírás lapon a hivatkozás típusa lesz használatban. Ha ez a konfiguráció kiépítésre van **beállítva, akkor**létrejön egy új objektum a célhelyen, a metaverse, ha az illesztési feltételekben legalább egy attribútum létezik (értéke). Ha új objektumot szeretne kiépíteni a metaverse-nek, azt is nevezik, hogy egy objektumot **terveznek** a metaverse-nek.
+Az illesztési szabály tartalma a telepítési varázslóban kiválasztott egyeztetési beállítástól függ. Bejövő szabályok esetén a kiértékelés a forrás-összekötő területének egy objektumával kezdődik, és az illesztési szabályokban szereplő egyes csoportok kiértékelése a sorban történik. Ha egy forrásoldali objektum úgy van kiértékelve, hogy a metaverse pontosan egy objektumát használja az illesztési szabályok valamelyikével, akkor az objektumok csatlakozva lesznek. Ha az összes szabály kiértékelése megtörtént, és nincs egyezés, akkor a Leírás lapon a hivatkozás típusa lesz használatban. Ha ez a konfiguráció kiépítésre van **beállítva, akkor** létrejön egy új objektum a célhelyen, a metaverse, ha az illesztési feltételekben legalább egy attribútum létezik (értéke). Ha új objektumot szeretne kiépíteni a metaverse-nek, azt is nevezik, hogy egy objektumot **terveznek** a metaverse-nek.
 
 Az illesztési szabályok csak egyszer lesznek kiértékelve. Ha egy összekötő Space objektum és egy metaverse-objektum csatlakoztatva van, akkor a rendszer addig csatlakozik, amíg a szinkronizálási szabály hatóköre továbbra is teljesül.
 
@@ -190,7 +190,7 @@ Ha ezt a konfigurációt kontextusban szeretné elhelyezni, egy Account-Resource
 
 Az átalakítás különböző típusokkal rendelkezhet: állandó, közvetlen és kifejezés.
 
-* Egy állandó folyamat mindig hardcoded értéket hoz folyamatba. A fenti esetben mindig az **igaz** értéket állítja be a **accountEnabled**nevű metaverse attribútumban.
+* Egy állandó folyamat mindig hardcoded értéket hoz folyamatba. A fenti esetben mindig az **igaz** értéket állítja be a **accountEnabled** nevű metaverse attribútumban.
 * A közvetlen folyamat a forrásban lévő attribútum értékét mindig a célként megadott attribútumra irányítja.
 * A harmadik folyamat típusa kifejezés, és lehetővé teszi a fejlettebb konfigurációk használatát.
 
@@ -211,7 +211,7 @@ NULL
 A következő témakörben talál további információt az attribútum-adatforgalom kifejezés nyelvéről: a [deklaratív kiépítési kifejezések ismertetése](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) .
 
 ### <a name="precedence"></a>Precedencia
-Most már megvizsgálta az egyes szinkronizálási szabályokat, de a szabályok együtt működnek a konfigurációban. Bizonyos esetekben az attribútumérték több szinkronizálási szabályból is hozzájárul ugyanahhoz a TARGET attribútumhoz. Ebben az esetben az attribútum prioritása határozza meg, hogy a WINS melyik attribútumot használja. Példaként tekintse meg a sourceAnchor attribútumot. Ez az attribútum fontos attribútum az Azure AD-be való bejelentkezéshez. Ehhez az attribútumhoz két különböző szinkronizálási szabályban talál attribútum-adatfolyamot, **az ad – User AccountEnabled** és a **from ad – Common**. A szinkronizálási szabály elsőbbsége miatt a sourceAnchor attribútum az erdőből származik, amikor a metaverse objektumhoz több objektum is csatlakozik. Ha nincsenek engedélyezett fiókok, akkor a szinkronizálási motor az **ad – User Common**a catch-all szinkronizálási szabályt használja Ez a konfiguráció biztosítja, hogy még a letiltott fiókok esetében is legyen sourceAnchor.
+Most már megvizsgálta az egyes szinkronizálási szabályokat, de a szabályok együtt működnek a konfigurációban. Bizonyos esetekben az attribútumérték több szinkronizálási szabályból is hozzájárul ugyanahhoz a TARGET attribútumhoz. Ebben az esetben az attribútum prioritása határozza meg, hogy a WINS melyik attribútumot használja. Példaként tekintse meg a sourceAnchor attribútumot. Ez az attribútum fontos attribútum az Azure AD-be való bejelentkezéshez. Ehhez az attribútumhoz két különböző szinkronizálási szabályban talál attribútum-adatfolyamot, **az ad – User AccountEnabled** és a **from ad – Common**. A szinkronizálási szabály elsőbbsége miatt a sourceAnchor attribútum az erdőből származik, amikor a metaverse objektumhoz több objektum is csatlakozik. Ha nincsenek engedélyezett fiókok, akkor a szinkronizálási motor az **ad – User Common** a catch-all szinkronizálási szabályt használja Ez a konfiguráció biztosítja, hogy még a letiltott fiókok esetében is legyen sourceAnchor.
 
 ![Bejövő szinkronizálási szabályok](./media/concept-azure-ad-connect-sync-default-configuration/syncrulesinbound.png)
 
@@ -220,7 +220,7 @@ A szinkronizálási szabályok elsőbbségi sorrendjét a telepítővarázsló c
 ### <a name="putting-it-all-together"></a>Végső összeállítás
 Most már tudjuk, hogy a szinkronizálási szabályokkal tisztában lehet azzal, hogy a konfiguráció hogyan működik a különböző szinkronizálási szabályokkal. Ha megtekint egy felhasználót és a metaverse-hoz hozzájáruló attribútumokat, a szabályok a következő sorrendben lesznek alkalmazva:
 
-| Name (Név) | Megjegyzés |
+| Név | Megjegyzés |
 |:--- |:--- |
 | A from AD – felhasználói csatlakozás |Szabály az összekötő terület objektumainak metaverse-vel való csatlakoztatásához. |
 | A from AD – felhasználóifiók engedélyezve |Az Azure AD-be és Microsoft 365ba való bejelentkezéshez szükséges attribútumok. Ezeket az attribútumokat az engedélyezett fiókból szeretnénk használni. |
@@ -229,7 +229,7 @@ Most már tudjuk, hogy a szinkronizálási szabályokkal tisztában lehet azzal,
 | A from AD – felhasználói Exchange |Csak akkor létezik, ha az Exchange észlelve lett. Az összes infrastruktúra-Exchange-attribútumot átfolyik. |
 | A from AD – felhasználó Lync |Csak akkor létezik, ha a Lync észlelve lett. Az összes infrastruktúra Lync-attribútumot átfolyik. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ a konfigurációs modellről a [deklaratív kiépítés ismertetése](concept-azure-ad-connect-sync-declarative-provisioning.md)című cikkből.
 * További információ a kifejezés nyelvéről a [deklaratív kiépítési kifejezések ismertetése](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)című cikkből.
 * Továbbra is olvashatja, hogyan működik a beépített konfiguráció a [felhasználók és a névjegyek megismeréséhez](concept-azure-ad-connect-sync-user-and-contacts.md)

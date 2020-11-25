@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fe92f761ac0b16da7c3cc3c69c1fa4b00f4e7579
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836359"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996593"
 ---
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure Active Directory átmenő hitelesítés: technikai mély merülés
 Ez a cikk áttekintést nyújt az Azure Active Directory (Azure AD) átmenő hitelesítésének működéséről. A részletes technikai és biztonsági tudnivalókat lásd a [biztonsági Deep Dive](how-to-connect-pta-security-deep-dive.md) -cikkben.
@@ -50,7 +50,7 @@ A következő ábra az összes összetevőt és a benne foglalt lépéseket szem
 
 ![Átmenő hitelesítés](./media/how-to-connect-pta-how-it-works/pta2.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Jelenlegi korlátozások](how-to-connect-pta-current-limitations.md): megtudhatja, hogy mely forgatókönyvek támogatottak, és melyek nem.
 - [Gyorskonfigurálás](how-to-connect-pta-quick-start.md): az Azure ad átmenő hitelesítésének megkezdése és futtatása.
 - [Migrálás ad FSról áteresztő hitelesítésre](https://aka.ms/adfstoPTADP) – részletes útmutató a AD FS (vagy más összevonási technológiákból) áttelepített hitelesítéshez.

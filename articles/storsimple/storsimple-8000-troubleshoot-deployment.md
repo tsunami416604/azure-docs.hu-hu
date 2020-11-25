@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 600934e2d46c1a84a83fa1290db13b3d0d1508f4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94956891"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995403"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>StorSimple-eszközök üzembe helyezésével kapcsolatos problémák elhárítása
 ## <a name="overview"></a>Áttekintés
@@ -548,7 +548,7 @@ A hibát a következők bármelyike okozhatja:
 8. Tekintse meg a naplókat. [A hibaelhárításhoz keresse fel a támogatási csomagokat és az eszközök naplóit](#support-packages-and-device-logs-available-for-troubleshooting).
 9. Ha a fenti lépések nem oldják meg a problémát, [kérje a Microsoft ügyfélszolgálata](storsimple-8000-contact-microsoft-support.md) segítségét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Megtudhatja, hogyan használhatja a diagnosztikai eszközt a StorSimple-eszközök hibakereséséhez](storsimple-8000-diagnostics.md).
 
 <!--Link references-->

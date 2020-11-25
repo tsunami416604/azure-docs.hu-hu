@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 8/7/2020
 ms.openlocfilehash: 99beddba470f73d6eadb448dfe1b77453ce6426d
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541589"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996219"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Az adatreplikálás Azure Database for MySQLba
 
@@ -50,7 +50,7 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MySQL dok
 - Az adatreplikálás csak általános célú és a memória optimalizált díjszabási szintjein támogatott.
 - A globális tranzakciós azonosítók (GTID-EK) nem támogatottak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Ismerje meg, hogyan [állíthatja be az adatreplikációt](howto-data-in-replication.md)
 - Tudnivalók [Az Azure-beli replikálásról olvasási replikákkal](concepts-read-replicas.md)
 - Az [adatáttelepítés minimális állásidővel való áttelepítésének ismertetése a DMS használatával](howto-migrate-online.md)

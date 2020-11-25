@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: duau
 ms.openlocfilehash: 85e088dda767a6f6c80ac0a9f6eed84e8802e5ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401044"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994927"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Többértékű útválasztási módszer konfigurálása Traffic Manager
 
@@ -30,22 +30,22 @@ Ez a cikk azt ismerteti, hogyan konfigurálható a többtényezős forgalom – 
 Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 Hozzon létre egy erőforráscsoportot a Traffic Manager profilhoz.
-1. A Azure Portal bal oldali ablaktábláján válassza az **erőforráscsoportok**lehetőséget.
-2. Az **erőforráscsoportok**lapon a lap tetején válassza a **Hozzáadás**lehetőséget.
-3. Az **erőforráscsoport neve**mezőbe írja be a *myResourceGroupTM1*nevet. Az **erőforráscsoport helye**területen válassza az **USA keleti**régiója lehetőséget, majd kattintson **az OK gombra**.
+1. A Azure Portal bal oldali ablaktábláján válassza az **erőforráscsoportok** lehetőséget.
+2. Az **erőforráscsoportok** lapon a lap tetején válassza a **Hozzáadás** lehetőséget.
+3. Az **erőforráscsoport neve** mezőbe írja be a *myResourceGroupTM1* nevet. Az **erőforráscsoport helye** területen válassza az **USA keleti** régiója lehetőséget, majd kattintson **az OK gombra**.
 
 ## <a name="create-a-traffic-manager-profile"></a>Traffic Manager-profil létrehozása
 Hozzon létre egy Traffic Manager-profilt, amely a legalacsonyabb késleltetésű végpontra küldi a felhasználói forgalmat.
 
-1. A képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **hálózatkezelés**  >  **Traffic Manager profil**  >  **létrehozása**lehetőséget.
-2. A **Traffic Manager profil létrehozása**lapon adja meg vagy válassza ki a következő adatokat, fogadja el az alapértelmezett értékeket a többi beállításnál, majd válassza a **Létrehozás**lehetőséget:
+1. A képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **hálózatkezelés**  >  **Traffic Manager profil**  >  **létrehozása** lehetőséget.
+2. A **Traffic Manager profil létrehozása** lapon adja meg vagy válassza ki a következő adatokat, fogadja el az alapértelmezett értékeket a többi beállításnál, majd válassza a **Létrehozás** lehetőséget:
     
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
-    | Name (Név)                   | Ennek a névnek egyedinek kell lennie a trafficmanager.net zónában, és a trafficmanager.net DNS-nevet eredményezi, amellyel elérhető a Traffic Manager-profil.                                   |
+    | Név                   | Ennek a névnek egyedinek kell lennie a trafficmanager.net zónában, és a trafficmanager.net DNS-nevet eredményezi, amellyel elérhető a Traffic Manager-profil.                                   |
     | Útválasztási metódus          | Válassza ki **a** többértékű útválasztási módszert.                                       |
     | Előfizetés            | Válassza ki előfizetését.                          |
-    | Erőforráscsoport          | Válassza a *myResourceGroupTM1*lehetőséget. |
+    | Erőforráscsoport          | Válassza a *myResourceGroupTM1* lehetőséget. |
     | Hely                | Ez a beállítás az erőforráscsoport helyére vonatkozik, és nincs hatással a globálisan üzembe helyezendő Traffic Manager-profilra.                              |
    |        |           | 
   
@@ -62,16 +62,16 @@ Vegyen fel két IP-címet külső végpontként az előző lépésben létrehozo
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
     | Típus                    | Külső végpont                                   |
-    | Name (Név)           | myEndpoint1                                        |
+    | Név           | myEndpoint1                                        |
     | Teljes tartománynév (FQDN) vagy IP-cím           | Írja be annak a végpontnak a nyilvános IP-címét, amelyet hozzá szeretne adni a Traffic Manager profilhoz                         |
     |        |           |
 
-4. Ismételje meg a 2. és a 3. lépést egy *myEndpoint2*nevű másik végpont hozzáadásához a **teljes tartománynév (FQDN) vagy az IP-** cím mezőben adja meg a második végpont nyilvános IP-címét.
+4. Ismételje meg a 2. és a 3. lépést egy *myEndpoint2* nevű másik végpont hozzáadásához a **teljes tartománynév (FQDN) vagy az IP-** cím mezőben adja meg a második végpont nyilvános IP-címét.
 5. Miután mindkét végpontot hozzáadta, azok megjelennek a **Traffic Manager-profil** panelen, **Online** figyelési állapottal.
 
    ![Traffic Manager-végpont hozzáadása](./media/traffic-manager-multivalue-routing-method/add-endpoint.png)
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [súlyozott forgalom útválasztási metódusról](traffic-manager-configure-weighted-routing-method.md).
 - További információ az [elsődleges útválasztási metódusról](traffic-manager-configure-priority-routing-method.md).

@@ -9,11 +9,11 @@ ms.date: 3/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.openlocfilehash: 1883ffdff20bbbef8efec1440854f01a21a281dc
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045720"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994519"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Azure IoT Edge-modulok fejlesztése és hibakeresése a Visual Studio 2019 használatával
 
@@ -71,7 +71,7 @@ Miután a Visual Studio 2019 elkészült, a következő eszközökre és összet
 
 ### <a name="check-your-tools-version"></a>Az eszközök verziójának keresése
 
-1. A **bővítmények** menüben válassza a **Bővítmények kezelése**lehetőséget. Bontsa ki a **telepített > eszközöket** , és megtalálhatja a Visual Studio és **a Cloud Explorer** **Azure IoT Edge eszközeit** .
+1. A **bővítmények** menüben válassza a **Bővítmények kezelése** lehetőséget. Bontsa ki a **telepített > eszközöket** , és megtalálhatja a Visual Studio és **a Cloud Explorer** **Azure IoT Edge eszközeit** .
 
 1. Jegyezze fel a telepített verziót. Ezt a verziót a Visual Studio Marketplace legújabb verziójának használatával hasonlíthatja össze ([Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS2019), [Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools))
 
@@ -79,7 +79,7 @@ Miután a Visual Studio 2019 elkészült, a következő eszközökre és összet
 
 ### <a name="update-your-tools"></a>Az eszközök frissítése
 
-1. A **Bővítmények kezelése** ablakban bontsa ki a **frissítések > a Visual Studio Marketplace**elemet, válassza a **Azure IoT Edge Tools** vagy **a Cloud Explorer for Visual Studio** lehetőséget, majd válassza a **frissítés**lehetőséget.
+1. A **Bővítmények kezelése** ablakban bontsa ki a **frissítések > a Visual Studio Marketplace** elemet, válassza a **Azure IoT Edge Tools** vagy **a Cloud Explorer for Visual Studio** lehetőséget, majd válassza a **frissítés** lehetőséget.
 
 1. Az eszközök frissítésének letöltése után a Visual Studio bezárásával aktiválja az eszközök frissítését a VSIX telepítő használatával.
 
@@ -94,11 +94,11 @@ A Visual Studióban Azure IoT Edge Project sablon egy olyan projektet hoz létre
 > [!TIP]
 > A Visual Studio által létrehozott IoT Edge projekt szerkezete nem ugyanaz, mint a Visual Studio Code-ban.
 
-1. A Visual Studio új projekt párbeszédpanelen keresse meg és válassza ki **Azure IoT Edge** projektet, majd kattintson a **tovább**gombra. A Project Configuration (projekt konfigurációja) ablakban adja meg a projekt nevét, és adja meg a helyet, majd válassza a **Létrehozás**lehetőséget. Az alapértelmezett projekt neve **AzureIoTEdgeApp1**.
+1. A Visual Studio új projekt párbeszédpanelen keresse meg és válassza ki **Azure IoT Edge** projektet, majd kattintson a **tovább** gombra. A Project Configuration (projekt konfigurációja) ablakban adja meg a projekt nevét, és adja meg a helyet, majd válassza a **Létrehozás** lehetőséget. Az alapértelmezett projekt neve **AzureIoTEdgeApp1**.
 
    ![Új projekt létrehozása](./media/how-to-visual-studio-develop-csharp-module/create-new.png)
 
-1. A **IoT Edge alkalmazás és modul hozzáadása** ablakban válassza a **C# modul** vagy a **C modul** lehetőséget, majd adja meg a modul nevét és a modul rendszerkép-tárházát. A Visual Studio automatikusan feltölti a modul nevét a **localhost: 5000/<a modul \> nevével**. Cserélje le a saját beállításjegyzék-adataira. Ha a teszteléshez helyi Docker-beállításjegyzéket használ, a **localhost** rendben van. Ha Azure Container Registry használ, használja a bejelentkezési kiszolgálót a beállításjegyzék beállításai közül. A bejelentkezési kiszolgáló a következőhöz hasonló: ** _\<registry name\>_ . azurecr.IO**. Csak cserélje le a **localhost: 5000** részét a karakterláncra, hogy a végeredmény a következőhöz hasonlítson: ** \<*registry name*\> . azurecr.IO/ _\<your module name\>_ **. Az alapértelmezett modul neve **IotEdgeModule1**
+1. A **IoT Edge alkalmazás és modul hozzáadása** ablakban válassza a **C# modul** vagy a **C modul** lehetőséget, majd adja meg a modul nevét és a modul rendszerkép-tárházát. A Visual Studio automatikusan feltölti a modul nevét a **localhost: 5000/<a modul \> nevével**. Cserélje le a saját beállításjegyzék-adataira. Ha a teszteléshez helyi Docker-beállításjegyzéket használ, a **localhost** rendben van. Ha Azure Container Registry használ, használja a bejelentkezési kiszolgálót a beállításjegyzék beállításai közül. A bejelentkezési kiszolgáló a következőhöz hasonló: **_\<registry name\>_ . azurecr.IO**. Csak cserélje le a **localhost: 5000** részét a karakterláncra, hogy a végeredmény a következőhöz hasonlítson: **\<*registry name*\> . azurecr.IO/ _\<your module name\>_**. Az alapértelmezett modul neve **IotEdgeModule1**
 
    ![Alkalmazás és modul hozzáadása](./media/how-to-visual-studio-develop-csharp-module/add-application-and-module.png)
 
@@ -122,7 +122,7 @@ Ha készen áll a modul sablonjának testre szabására a saját kódjával, az 
 
    ![Edge-eszköz csatlakoztatási karakterláncának másolása](./media/how-to-visual-studio-develop-csharp-module/copy-edge-conn-string.png)
 
-1. A **Tools (eszközök** ) menüben válassza a **Azure IoT Edge Tools**  >  **Setup IoT Edge Simulator**elemet, illessze be a kapcsolatok karakterláncát, és kattintson **az OK**gombra.
+1. A **Tools (eszközök** ) menüben válassza a **Azure IoT Edge Tools**  >  **Setup IoT Edge Simulator** elemet, illessze be a kapcsolatok karakterláncát, és kattintson **az OK** gombra.
 
    ![Az Edge-kapcsolatok karakterláncának megnyitására szolgáló ablak megnyitása](./media/how-to-visual-studio-develop-csharp-module/set-edge-conn-string.png)
 
@@ -135,7 +135,7 @@ Ha készen áll a modul sablonjának testre szabására a saját kódjával, az 
 
 Az egyes modulokat általában tesztelni és hibakeresést végezni, mielőtt egy teljes megoldáson belül futtatja, több modullal.
 
-1. A **megoldáskezelő**kattintson a jobb gombbal a **IotEdgeModule1** elemre, és válassza a **beállítás indítási projektként** lehetőséget a helyi menüben.
+1. A **megoldáskezelő** kattintson a jobb gombbal a **IotEdgeModule1** elemre, és válassza a **beállítás indítási projektként** lehetőséget a helyi menüben.
 
    ![Indítási projekt beállítása](./media/how-to-visual-studio-develop-csharp-module/module-start-up-project.png)
 
@@ -166,7 +166,7 @@ Az egyes modulokat általában tesztelni és hibakeresést végezni, mielőtt eg
 
 Miután befejezte egyetlen modul fejlesztését, érdemes lehet egy teljes megoldást futtatni és hibakeresést végezni több modullal.
 
-1. A **Megoldáskezelőban**adjon hozzá egy második modult a megoldáshoz, kattintson a jobb gombbal a **AzureIoTEdgeApp1** elemre, és válassza az **Add**  >  **új IoT Edge modul**hozzáadása lehetőséget. A második modul alapértelmezett neve **IotEdgeModule2** , és egy másik pipe-modulként fog működni.
+1. A **Megoldáskezelőban** adjon hozzá egy második modult a megoldáshoz, kattintson a jobb gombbal a **AzureIoTEdgeApp1** elemre, és válassza az **Add**  >  **új IoT Edge modul** hozzáadása lehetőséget. A második modul alapértelmezett neve **IotEdgeModule2** , és egy másik pipe-modulként fog működni.
 
 1. Nyissa meg a fájlt `deployment.template.json` , és látni fogja, hogy a **IotEdgeModule2** hozzá lett adva a **modulok** szakaszhoz. Cserélje le az **útvonalak** szakaszt az alábbira. Ha testre szabta a modulok nevét, ügyeljen rá, hogy a neveket a megfelelő értékre frissítse.
 
@@ -192,7 +192,7 @@ Miután befejezte egyetlen modul fejlesztését, érdemes lehet egy teljes megol
 1. Győződjön meg arról, hogy a **AzureIoTEdgeApp1** az indítási projekt. Válassza a **hibakeresés** vagy a **kiadás** lehetőséget a modul lemezképei számára felépített konfigurációként.
 
     > [!NOTE]
-    > A **hibakeresés**kiválasztásakor a Visual Studio `Dockerfile.(amd64|windows-amd64).debug` Docker-lemezképek készítésére használja. Ez magában foglalja a .NET Core parancssori hibakereső VSDBG a tároló rendszerképében a létrehozás során. Az éles használatra kész IoT Edge modulok esetében javasoljuk, hogy a **kiadási** konfigurációt használja, amely `Dockerfile.(amd64|windows-amd64)` VSDBG nélkül használatos.
+    > A **hibakeresés** kiválasztásakor a Visual Studio `Dockerfile.(amd64|windows-amd64).debug` Docker-lemezképek készítésére használja. Ez magában foglalja a .NET Core parancssori hibakereső VSDBG a tároló rendszerképében a létrehozás során. Az éles használatra kész IoT Edge modulok esetében javasoljuk, hogy a **kiadási** konfigurációt használja, amely `Dockerfile.(amd64|windows-amd64)` VSDBG nélkül használatos.
 
 1. Ha olyan privát beállításjegyzéket használ, mint például az Azure Container Registry (ACR), a következő Docker-parancs használatával jelentkezzen be.  A felhasználónevet és a jelszót a beállításjegyzék **hozzáférési kulcsok** lapjáról kérheti le a Azure Portal. Ha helyi beállításjegyzéket használ, [helyi beállításjegyzéket is futtathat](https://docs.docker.com/registry/deploying/#run-a-local-registry).
 
@@ -216,19 +216,19 @@ Miután befejezte egyetlen modul fejlesztését, érdemes lehet egy teljes megol
           }
     ```
 
-1. A **megoldáskezelő**kattintson a jobb gombbal a **AzureIoTEdgeApp1** elemre, és válassza a **IoT Edge modulok létrehozása és leküldése** lehetőséget, hogy minden modulhoz létrehozza és leküldje a Docker-rendszerképet.
+1. A **megoldáskezelő** kattintson a jobb gombbal a **AzureIoTEdgeApp1** elemre, és válassza a **IoT Edge modulok létrehozása és leküldése** lehetőséget, hogy minden modulhoz létrehozza és leküldje a Docker-rendszerképet.
 
 ## <a name="deploy-the-solution"></a>A megoldás üzembe helyezése
 
 Az IoT Edge-eszköz beállításához használt rövid útmutatóban egy modult helyezett üzembe az Azure Portal segítségével. A Visual studióhoz készült Cloud Explorer használatával a modulokat is üzembe helyezheti. Már rendelkezik egy, a forgatókönyvhöz előkészített üzembe helyezési jegyzékfájlval, a `deployment.json` fájlnak és az összes szükséges műveletnek ki kell választania egy eszközt az üzemelő példány fogadásához.
 
-1. Nyissa meg a **Cloud Explorert** a **View**  >  **Cloud Explorer**megtekintése elemre kattintva. Győződjön meg arról, hogy bejelentkezett a Visual Studio 2019-ba.
+1. Nyissa meg a **Cloud Explorert** a **View**  >  **Cloud Explorer** megtekintése elemre kattintva. Győződjön meg arról, hogy bejelentkezett a Visual Studio 2019-ba.
 
-1. A **Cloud Explorerben**bontsa ki az előfizetését, keresse meg az Azure-IoT hub és a telepíteni kívánt Azure IoT Edge eszközt.
+1. A **Cloud Explorerben** bontsa ki az előfizetését, keresse meg az Azure-IoT hub és a telepíteni kívánt Azure IoT Edge eszközt.
 
 1. Kattintson a jobb gombbal a IoT Edge eszközre, és hozzon létre egy központi telepítést. Navigáljon a platformhoz konfigurált üzembe helyezési jegyzékfájlhoz a Visual Studio-megoldás **konfigurációs** mappájában, például: `deployment.arm32v7.json` .
 
-1. Kattintson a refresh (frissítés) gombra, és tekintse meg az új modulokat, amelyek a **SimulatedTemperatureSensor** modullal és a **$edgeAgent** és **$edgeHubval**együtt futnak.
+1. Kattintson a refresh (frissítés) gombra, és tekintse meg az új modulokat, amelyek a **SimulatedTemperatureSensor** modullal és a **$edgeAgent** és **$edgeHubval** együtt futnak.
 
 ## <a name="view-generated-data"></a>A létrejött adatok megtekintése
 
@@ -236,6 +236,6 @@ Az IoT Edge-eszköz beállításához használt rövid útmutatóban egy modult 
 
 1. A figyelési információk leállításához jelölje be a **beépített esemény végpontjának figyelése** a **műveleti** ablakban jelölőnégyzetet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Egyéni modulok fejlesztése a IoT Edge-eszközökhöz, az [Azure IoT hub SDK-k megismerése és használata](../iot-hub/iot-hub-devguide-sdks.md).

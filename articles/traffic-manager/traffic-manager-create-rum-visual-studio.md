@@ -13,11 +13,11 @@ ms.date: 03/16/2018
 ms.author: duau
 ms.custom: devx-track-js
 ms.openlocfilehash: c49672ad38ac8cf80214d03870b5876d741e76ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259866"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994876"
 ---
 # <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>valós felhasználómérés küldése a Traffic Managernak a Visual Studio Mobile centerrel
 
@@ -35,7 +35,7 @@ Az ügyfélalkalmazás által Traffic Manager elvégezhető méréseket a szolg�
 A RUM-kulcs Azure Portal használatával történő beszerzéséhez a következő eljárással:
 1. Egy böngészőben jelentkezzen be az Azure Portalra. Ha még nincs fiókja, regisztrálhat egy egy hónapos ingyenes próbaverzióra.
 2. A portál keresősávjában keressen rá a módosítani kívánt Traffic Manager-profil nevére, majd kattintson a Traffic Manager-profilra a megjelenített eredmények között.
-3. A Traffic Manager profil lapon kattintson a **valós felhasználómérés** elemre a **Beállítások**területen.
+3. A Traffic Manager profil lapon kattintson a **valós felhasználómérés** elemre a **Beállítások** területen.
 4. Kattintson a **kulcs létrehozása** lehetőségre egy új rum-kulcs létrehozásához.
         
    ![valós felhasználómérés kulcs előállítása](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
@@ -95,7 +95,7 @@ A valós felhasználómérés használatához hajtsa végre a következő eljár
     MobileCenter.start(getApplication(), "<Your Mobile Center AppSecret>", RealUserMeasurements.class);
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További információ a [valós felhasználómérés](traffic-manager-rum-overview.md)
 - Tudnivalók a [Traffic Manager működéséről](traffic-manager-overview.md)
 - További információ a [Mobile Centerről](https://docs.microsoft.com/mobile-center/)

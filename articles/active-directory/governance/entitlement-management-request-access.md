@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 726507fa6ea0651b23d46424bda669a2d8ad41e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979908"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996644"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomaghoz való hozzáférés kérése az Azure AD-jogosultságok kezelésében
 
@@ -51,7 +51,7 @@ Miután megtalálta a hozzáférési csomagot a saját hozzáférési portálon,
 
 **Előfeltételként szükséges szerepkör:** Kérelmező
 
-1. Keresse meg a hozzáférési csomagot a listában.  Ha szükséges, a kereséshez írja be a keresési karakterláncot, majd válassza ki a **nevet**, a **katalógust**vagy az **erőforrások** szűrőt.
+1. Keresse meg a hozzáférési csomagot a listában.  Ha szükséges, a kereséshez írja be a keresési karakterláncot, majd válassza ki a **nevet**, a **katalógust** vagy az **erőforrások** szűrőt.
 
     ![Saját hozzáférési portál – erőforrás-keresés](./media/entitlement-management-request-access/my-access-resource-search.png)
 
@@ -63,7 +63,7 @@ Miután megtalálta a hozzáférési csomagot a saját hozzáférési portálon,
 
 1. Ha megjelenik az **üzleti indoklás** mező, írja be a hozzáféréshez szükséges indoklást.
 
-1. Ha az **adott időszakra vonatkozó kérelem** van engedélyezve, válassza az **Igen** vagy a **nem**lehetőséget.
+1. Ha az **adott időszakra vonatkozó kérelem** van engedélyezve, válassza az **Igen** vagy a **nem** lehetőséget.
 
 1. Szükség esetén a kezdési és a befejezési dátumot is meg kell adni.
 
@@ -127,7 +127,7 @@ Ha hozzáférési kérelmet küld be, és a kérés még mindig a **függőben l
 
 1. Kattintson a **kérelmek előzményei** elemre a kérelem törlésének megerősítéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Hozzáférési kérelmek jóváhagyása vagy megtagadása](entitlement-management-request-approve.md)
 - [Kérelmek feldolgozása és e-mail-értesítések](entitlement-management-process.md)

@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
 ms.openlocfilehash: 947b509468857b98b868881bdd48adf67a5d60db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86499001"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994629"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>A DNS-infrastruktúrával kapcsolatos információk gyűjtése a DNS Analytics előzetes verziójának megoldásával
 
@@ -35,10 +35,10 @@ A következő táblázat ismerteti a megoldás által támogatott csatlakoztatot
 
 | **Csatlakoztatott forrás** | **Támogatás** | **Leírás** |
 | --- | --- | --- |
-| [Windows-ügynökök](../platform/agent-windows.md) | Igen | A megoldás DNS-információkat gyűjt a Windows-ügynököktől. |
-| [Linux-ügynökök](../learn/quick-collect-linux-computer.md) | Nem | A megoldás nem gyűjt DNS-adatokat a közvetlen Linux-ügynököktől. |
-| [System Center Operations Manage felügyeleti csoport](../platform/om-agents.md) | Igen | A megoldás a DNS-információkat a csatlakoztatott Operations Manager felügyeleti csoportban lévő ügynököktől gyűjti. Nem szükséges közvetlen kapcsolódás a Operations Manager ügynöktől a Azure Monitorhoz. Az adatok továbbítása a felügyeleti csoportból a Log Analytics munkaterületre történik. |
-| [Azure Storage-fiók](../platform/resource-logs.md#send-to-log-analytics-workspace) | Nem | A megoldás nem használja az Azure Storage-t. |
+| [Windows-ügynökök](../platform/agent-windows.md) | Yes | A megoldás DNS-információkat gyűjt a Windows-ügynököktől. |
+| [Linux-ügynökök](../learn/quick-collect-linux-computer.md) | No | A megoldás nem gyűjt DNS-adatokat a közvetlen Linux-ügynököktől. |
+| [System Center Operations Manage felügyeleti csoport](../platform/om-agents.md) | Yes | A megoldás a DNS-információkat a csatlakoztatott Operations Manager felügyeleti csoportban lévő ügynököktől gyűjti. Nem szükséges közvetlen kapcsolódás a Operations Manager ügynöktől a Azure Monitorhoz. Az adatok továbbítása a felügyeleti csoportból a Log Analytics munkaterületre történik. |
+| [Azure Storage-fiók](../platform/resource-logs.md#send-to-log-analytics-workspace) | No | A megoldás nem használja az Azure Storage-t. |
 
 ### <a name="data-collection-details"></a>Adatgyűjtés részletei
 
@@ -89,7 +89,7 @@ A DNS-csempe tartalmazza azon DNS-kiszolgálók számát, amelyeken az adatok gy
 
 ### <a name="solution-dashboard"></a>A megoldás irányítópultja
 
-A megoldás irányítópultja a megoldás különböző szolgáltatásaihoz tartozó összesített információkat jeleníti meg. Emellett a kriminalisztika elemzésére és diagnosztizálására szolgáló részletes nézetre mutató hivatkozásokat is tartalmaz. Alapértelmezés szerint az elmúlt hét napban megjelennek az adathalmazok. A dátum-és időtartomány a **dátum-idő kijelölési vezérlőelem**használatával módosítható, ahogy az alábbi képen is látható:
+A megoldás irányítópultja a megoldás különböző szolgáltatásaihoz tartozó összesített információkat jeleníti meg. Emellett a kriminalisztika elemzésére és diagnosztizálására szolgáló részletes nézetre mutató hivatkozásokat is tartalmaz. Alapértelmezés szerint az elmúlt hét napban megjelennek az adathalmazok. A dátum-és időtartomány a **dátum-idő kijelölési vezérlőelem** használatával módosítható, ahogy az alábbi képen is látható:
 
 ![Idő kiválasztása vezérlő](./media/dns-analytics/dns-time.png)
 
@@ -159,7 +159,7 @@ Ezeket a lekérdezéseket kiindulási pontként használhatja a testreszabott je
 
 A naplók keresése lapon létrehozhat egy lekérdezést. A keresési eredményeket a Faces vezérlők használatával szűrheti. Emellett speciális lekérdezéseket is létrehozhat az eredmények átalakításához, szűréséhez és jelentéséhez. Kezdje a következő lekérdezések használatával:
 
-1. A **keresési lekérdezés mezőbe**írja be, `DnsEvents` hogy a megoldás által kezelt DNS-kiszolgálók által generált összes DNS-eseményt megtekintse. Az eredmények felsorolják a keresési lekérdezésekkel, a dinamikus regisztrációkkal és a konfigurációs változásokkal kapcsolatos összes esemény naplózási adatát.
+1. A **keresési lekérdezés mezőbe** írja be, `DnsEvents` hogy a megoldás által kezelt DNS-kiszolgálók által generált összes DNS-eseményt megtekintse. Az eredmények felsorolják a keresési lekérdezésekkel, a dinamikus regisztrációkkal és a konfigurációs változásokkal kapcsolatos összes esemény naplózási adatát.
 
     ![DnsEvents-napló keresése](./media/dns-analytics/log-search-dnsevents.png)  
 
@@ -169,7 +169,7 @@ A naplók keresése lapon létrehozhat egy lekérdezést. A keresési eredménye
 
     c. A konfigurációs módosítások naplózási adatainak megtekintéséhez válassza a **konfigurációváltozás** lehetőséget a bal oldali dimenzió vezérlőelemben található **altípus** -szűrőként. Megjelenik egy tábla, amely felsorolja a kiválasztott időszak összes konfigurációs módosítási eseményét.
 
-1. A **keresési lekérdezés mezőbe**írja be, `DnsInventory` hogy megtekintse a megoldás által kezelt DNS-kiszolgálók összes DNS-leltárával kapcsolatos adatát. Az eredmények felsorolják a DNS-kiszolgálók, a DNS-zónák és az erőforrásrekordok naplózási adatait.
+1. A **keresési lekérdezés mezőbe** írja be, `DnsInventory` hogy megtekintse a megoldás által kezelt DNS-kiszolgálók összes DNS-leltárával kapcsolatos adatát. Az eredmények felsorolják a DNS-kiszolgálók, a DNS-zónák és az erőforrásrekordok naplózási adatait.
 
     ![DnsInventory-napló keresése](./media/dns-analytics/log-search-dnsinventory.png)
     

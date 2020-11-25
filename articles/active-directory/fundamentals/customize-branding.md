@@ -14,11 +14,11 @@ ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bb138ade0f579a7545c0910646b6adfb7d5ac02a
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94650223"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996661"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Arculat hozzáadása a szervezet Azure Active Directory bejelentkezési lapjához
 A szervezet emblémájának és egyéni színsémáinak használatával egységes megjelenést és működést biztosíthat a Azure Active Directory (Azure AD) bejelentkezési oldalain. A bejelentkezési oldalai akkor jelennek meg, amikor a felhasználók bejelentkeznek a szervezet webalapú alkalmazásaiba, például a Microsoft 365ba, amely az Azure AD-t használja az identitás-szolgáltatóként.
@@ -113,7 +113,7 @@ Az egyéni védjegyezés létrehozása után visszaléphet, és módosíthatja a
 
 3. A **vállalati védjegyezés konfigurálása** lapon a jelen cikk az [Azure ad bejelentkezési oldalának testreszabása](#customize-your-azure-ad-sign-in-page) lapján található leírások alapján adja hozzá, távolítsa el vagy módosítsa a szükséges információkat.
 
-4. Válassza a **Mentés** lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
    A bejelentkezési oldal arculatán alkalmazott módosítások megjelenítése akár egy órát is igénybe vehet.
 
@@ -130,7 +130,7 @@ Az eredeti konfiguráció nyelvét nem módosíthatja az alapértelmezett nyelvr
 
 3. A **vállalati védjegyezés konfigurálása** lapon válassza ki a nyelvet (például francia), majd adja hozzá a lefordított adatokat a jelen cikk [Azure ad bejelentkezési oldalának testreszabása lapján](#customize-your-azure-ad-sign-in-page) található leírások alapján.
 
-4. Válassza a **Mentés** lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
     A **contoso – vállalati védjegyezési** oldal frissítései az új francia konfiguráció megjelenítéséhez.
 

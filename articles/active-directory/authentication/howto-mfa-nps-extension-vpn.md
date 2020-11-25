@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 73fa82c3f162b546517ce40ef1447c002351d5b4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839539"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994468"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-ad-mfa-by-using-the-network-policy-server-extension-for-azure"></a>A VPN-infrastruktúra integrálása az Azure AD MFA-val az Azure-hoz készült hálózati házirend-kiszolgáló bővítménnyel
 
@@ -249,7 +249,7 @@ Ebben a szakaszban a VPN-kiszolgálót a RADIUS-hitelesítés használatára kon
 
     ![RADIUS-kiszolgáló ablakának hozzáadása az időtúllépés konfigurálásához](./media/howto-mfa-nps-extension-vpn/image16.png) 
 
-8. Kattintson az **OK** gombra.
+8. Válassza az **OK** lehetőséget.
 
 ### <a name="test-vpn-connectivity"></a>VPN-kapcsolat tesztelése
 
@@ -458,7 +458,7 @@ A további hibaelhárításhoz használhat egy protokoll-elemzőt, például a W
 
 További információ: [a meglévő NPS-infrastruktúra integrálása az Azure ad-val multi-Factor Authentication](howto-mfa-nps-extension.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Azure AD-Multi-Factor Authentication beolvasása](concept-mfa-licensing.md)
 

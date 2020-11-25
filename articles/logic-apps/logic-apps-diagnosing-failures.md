@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/31/2020
 ms.openlocfilehash: 1f83f13564a64a0d9d8a5e0144ca95af6a769d6c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76905087"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995046"
 ---
 # <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>A munkafolyamatok hibáinak elhárítása és diagnosztizálása az Azure Logic Appsben
 
@@ -27,7 +27,7 @@ Az egyes logikai alkalmazások futtatása trigger-kísérlettel kezdődik, így 
 
    ![Trigger állapotának és előzményeinek megtekintése](./media/logic-apps-diagnosing-failures/logic-app-trigger-history.png)
 
-1. Ellenőrizze az trigger bemeneteit, hogy megbizonyosodjon róla, hogy a várt módon jelenjenek meg. A **bemenetek hivatkozás**alatt válassza ki a hivatkozást, amely a **bemenetek** panelt jeleníti meg.
+1. Ellenőrizze az trigger bemeneteit, hogy megbizonyosodjon róla, hogy a várt módon jelenjenek meg. A **bemenetek hivatkozás** alatt válassza ki a hivatkozást, amely a **bemenetek** panelt jeleníti meg.
 
    Az trigger bemenetei közé tartoznak az indító által várt adatok, és a munkafolyamat indításához szükségesek. Ezeknek az adatoknak a megtekintésével megállapíthatja, hogy helyesek-e az trigger bemenetei, és hogy teljesül-e a feltétel, hogy a munkafolyamat folytatódhat-e.
 
@@ -35,7 +35,7 @@ Az egyes logikai alkalmazások futtatása trigger-kísérlettel kezdődik, így 
 
    ![Hibákra vonatkozó trigger-bemenetek áttekintése](./media/logic-apps-diagnosing-failures/review-trigger-inputs-for-errors.png)
 
-1. Ellenőrizze az eseményindítók kimeneteit, ha vannak ilyenek, és ellenőrizze, hogy a várt módon jelenjenek-e meg. A **kimenetek hivatkozás**alatt válassza ki a hivatkozást, amely megjeleníti a **kimenetek** ablaktáblát.
+1. Ellenőrizze az eseményindítók kimeneteit, ha vannak ilyenek, és ellenőrizze, hogy a várt módon jelenjenek-e meg. A **kimenetek hivatkozás** alatt válassza ki a hivatkozást, amely megjeleníti a **kimenetek** ablaktáblát.
 
    Az aktiválási kimenetek tartalmazzák azokat az adatokat, amelyeket a trigger a munkafolyamat következő lépéseként továbbít. Ezeknek a kimeneteknek a áttekintése segíthet megállapítani, hogy a munkafolyamat következő lépéseként átadott helyes vagy várt értékek, például:
 
@@ -60,7 +60,7 @@ Minden alkalommal, amikor az eseményindító egy elemhez vagy eseményhez tüze
 
 1. Ellenőrizze a sikertelen lépés bemeneteit annak megerősítéséhez, hogy a várt módon jelenjenek-e meg.
 
-1. Tekintse át az egyes lépések részleteit egy adott futtatásban. A futtatási **Előzmények**területen válassza ki a vizsgálni kívánt futtatást.
+1. Tekintse át az egyes lépések részleteit egy adott futtatásban. A futtatási **Előzmények** területen válassza ki a vizsgálni kívánt futtatást.
 
    ![Futtatási előzmények áttekintése](./media/logic-apps-diagnosing-failures/logic-app-runs-history.png)
 

@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.subservice: alerts
 ms.openlocfilehash: f76d28018fdf55314593dabc44ef1e9a1dab9494
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91403126"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995097"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Összetett műveletek elindítása Azure Monitor riasztásokkal
 
@@ -37,13 +37,13 @@ A folyamat hasonló, ha azt szeretné, hogy a logikai alkalmazás más művelete
 
 1.  A Azure Portal válassza az **erőforrás létrehozása** lehetőséget a bal felső sarokban.
 
-2.  Keresse meg és válassza ki a **logikai alkalmazást**, majd kattintson a **Létrehozás**gombra.
+2.  Keresse meg és válassza ki a **logikai alkalmazást**, majd kattintson a **Létrehozás** gombra.
 
-3.  Adjon **nevet**a logikai alkalmazásnak, válasszon ki egy **erőforráscsoportot**, és így tovább.
+3.  Adjon **nevet** a logikai alkalmazásnak, válasszon ki egy **erőforráscsoportot**, és így tovább.
 
     ![Logikai alkalmazás létrehozása](media/action-groups-logic-app/create-logic-app-dialog.png "Logikai alkalmazás létrehozása")
 
-4.  Válassza a **Létrehozás** lehetőséget a logikai alkalmazás létrehozásához. Egy előugró üzenet azt jelzi, hogy a logikai alkalmazás létrejött. Válassza az **erőforrás elindítása** elemet a **Logic apps Designer**megnyitásához.
+4.  Válassza a **Létrehozás** lehetőséget a logikai alkalmazás létrehozásához. Egy előugró üzenet azt jelzi, hogy a logikai alkalmazás létrejött. Válassza az **erőforrás elindítása** elemet a **Logic apps Designer** megnyitásához.
 
 5.  Válassza ki a triggert: **http-kérés fogadásakor**.
 
@@ -96,11 +96,11 @@ A folyamat hasonló, ha azt szeretné, hogy a logikai alkalmazás más művelete
         }
     ```
 
-9. A **Logic app Designer** egy előugró ablakot jelenít meg, amely figyelmezteti, hogy a logikai alkalmazásnak elküldett kérelemnek be kell állítania a **Content-Type** fejlécet az **Application/JSON**értékre. Az előugró ablak bezárásához. A Azure Monitor riasztás beállítja a fejlécet.
+9. A **Logic app Designer** egy előugró ablakot jelenít meg, amely figyelmezteti, hogy a logikai alkalmazásnak elküldett kérelemnek be kell állítania a **Content-Type** fejlécet az **Application/JSON** értékre. Az előugró ablak bezárásához. A Azure Monitor riasztás beállítja a fejlécet.
 
     ![A Content-Type fejléc beállítása](media/action-groups-logic-app/content-type-header.png "A Content-Type fejléc beállítása")
 
-10. Válassza **+** az **új lépés** , majd **a művelet hozzáadása**lehetőséget.
+10. Válassza **+** az **új lépés** , majd **a művelet hozzáadása** lehetőséget.
 
     ![Művelet hozzáadása](media/action-groups-logic-app/add-action.png "Művelet hozzáadása")
 
@@ -122,11 +122,11 @@ A folyamat hasonló, ha azt szeretné, hogy a logikai alkalmazás más művelete
     Ezután keresse meg és cserélje le az \<fields\> azonos nevű dinamikus tartalom címkéit.
 
     > [!NOTE]
-    > Két, **állapot**nevű dinamikus mező van. Adja hozzá mindkét mezőt az üzenethez. Használja a **activityLog** tulajdonság táskájában található mezőt, és törölje a másik mezőt. Vigye az egérmutatót az **állapot** mező fölé a teljes mező hivatkozás megjelenítéséhez, ahogy az alábbi képernyőképen is látható:
+    > Két, **állapot** nevű dinamikus mező van. Adja hozzá mindkét mezőt az üzenethez. Használja a **activityLog** tulajdonság táskájában található mezőt, és törölje a másik mezőt. Vigye az egérmutatót az **állapot** mező fölé a teljes mező hivatkozás megjelenítéséhez, ahogy az alábbi képernyőképen is látható:
 
     ![Microsoft Teams művelet: üzenet közzététele](media/action-groups-logic-app/teams-action-post-message.png "Microsoft Teams művelet: üzenet közzététele")
 
-14. A **Logic apps Designer**tetején válassza a **Mentés** lehetőséget a logikai alkalmazás mentéséhez.
+14. A **Logic apps Designer** tetején válassza a **Mentés** lehetőséget a logikai alkalmazás mentéséhez.
 
 15. Nyissa meg a meglévő műveleti csoportot, és adjon hozzá egy műveletet a logikai alkalmazásra való hivatkozáshoz. Ha nem rendelkezik meglévő műveleti csoporttal, tekintse meg [a műveleti csoportok létrehozása és kezelése a Azure Portalban](./action-groups.md) című témakört. Ne felejtse el menteni a módosításokat.
 
@@ -186,7 +186,7 @@ Azure Service Health bejegyzések a műveletnapló részét képezik. A riasztá
 -  A 9. és a 10. lépés azonos.
 -  A 11 – 14. lépésnél használja a következő folyamatot:
 
-   1. Válassza **+** az **új lépés** , majd **a feltétel hozzáadása**lehetőséget. Állítsa be a következő feltételeket, hogy a logikai alkalmazás csak akkor fusson, ha a bemeneti adatok megfelelnek az alábbi értékeknek.  Ha a Version (verzió) értéket a szövegmezőbe írja, idézőjelek közé helyezi a kifejezést ("0.1.1"), hogy az kiértékelése karakterláncként történjen, és ne numerikus típusú legyen.  A System nem jeleníti meg az idézőjeleket, ha visszatér az oldalhoz, de az alapul szolgáló kód továbbra is megőrzi a karakterlánc típusát.   
+   1. Válassza **+** az **új lépés** , majd **a feltétel hozzáadása** lehetőséget. Állítsa be a következő feltételeket, hogy a logikai alkalmazás csak akkor fusson, ha a bemeneti adatok megfelelnek az alábbi értékeknek.  Ha a Version (verzió) értéket a szövegmezőbe írja, idézőjelek közé helyezi a kifejezést ("0.1.1"), hogy az kiértékelése karakterláncként történjen, és ne numerikus típusú legyen.  A System nem jeleníti meg az idézőjeleket, ha visszatér az oldalhoz, de az alapul szolgáló kód továbbra is megőrzi a karakterlánc típusát.   
        - `schemaId == Microsoft.Insights/activityLogs`
        - `eventSource == ServiceHealth`
        - `version == "0.1.1"`
@@ -274,7 +274,7 @@ A metrikai riasztások létrehozásának folyamata hasonló a [műveletnapló-ri
 - A 9. és a 10. lépés azonos.
 - A 11 – 14. lépésnél használja a következő folyamatot:
 
-  1. Válassza **+** az **új lépés** , majd **a feltétel hozzáadása**lehetőséget. Állítsa be a következő feltételeket, hogy a logikai alkalmazás csak akkor fusson, ha a bemeneti adatok megfelelnek az alábbi értékeknek. Ha a Version (verzió) értéket a szövegmezőbe írja, az idézőjelek közé kerül ("2,0"), hogy megbizonyosodjon róla, hogy kiértékelése sztringként, nem numerikus típusúként történik.  A System nem jeleníti meg az idézőjeleket, ha visszatér az oldalhoz, de az alapul szolgáló kód továbbra is megőrzi a karakterlánc típusát. 
+  1. Válassza **+** az **új lépés** , majd **a feltétel hozzáadása** lehetőséget. Állítsa be a következő feltételeket, hogy a logikai alkalmazás csak akkor fusson, ha a bemeneti adatok megfelelnek az alábbi értékeknek. Ha a Version (verzió) értéket a szövegmezőbe írja, az idézőjelek közé kerül ("2,0"), hogy megbizonyosodjon róla, hogy kiértékelése sztringként, nem numerikus típusúként történik.  A System nem jeleníti meg az idézőjeleket, ha visszatér az oldalhoz, de az alapul szolgáló kód továbbra is megőrzi a karakterlánc típusát. 
      - `schemaId == AzureMonitorMetricAlert`
      - `version == "2.0"`
        
@@ -293,7 +293,7 @@ A metrikai riasztások létrehozásának folyamata hasonló a [műveletnapló-ri
 ## <a name="calling-other-applications-besides-microsoft-teams"></a>Más alkalmazások hívása a Microsoft Teams szolgáltatáson kívül
 Logic Apps számos különböző összekötővel rendelkezik, amelyek lehetővé teszik, hogy számos alkalmazás és adatbázis között aktiválja a műveleteket. A Slack, SQL Server, Oracle, Salesforce, csak néhány példa. További információ az összekötők használatáról: [Logic app-összekötők](../../connectors/apis-list.md).  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Tekintse át az Azure-tevékenységek naplójának riasztásait](./alerts-overview.md) , és Ismerje meg, hogyan fogadhat riasztásokat.  
 * Megtudhatja, hogyan [konfigurálhat riasztásokat Azure Service Health értesítés közzétételekor](../../service-health/alerts-activity-log-service-notifications-portal.md).
 * További információ a [műveleti csoportokról](./action-groups.md).

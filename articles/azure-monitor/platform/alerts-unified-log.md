@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
 ms.openlocfilehash: 8081c60833c3c02d55ae66ca695ba106dba01450
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294138"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995080"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Riasztások naplózása Azure Monitor
 
@@ -58,11 +58,11 @@ A szabály kiértékeléséhez használt [log Analytics](../log-query/get-starte
 
 #### <a name="query-time-range"></a>Lekérdezés időtartománya
 
-Az időtartomány a szabály feltételének definíciójában van beállítva. A munkaterületek és a Application Insights a neve **pont**. Az összes többi erőforrástípus esetében a **lekérdezés időtartományának felülbírálását**nevezzük.
+Az időtartomány a szabály feltételének definíciójában van beállítva. A munkaterületek és a Application Insights a neve **pont**. Az összes többi erőforrástípus esetében a **lekérdezés időtartományának felülbírálását** nevezzük.
 
 A log analyticshez hasonlóan az időtartomány is a megadott tartományra korlátozza a lekérdezési időt. Akkor is alkalmazza az időtartományt **, ha a** lekérdezésben már szerepel a futtatási parancs.
 
-Egy lekérdezés például 60 percet vizsgál, ha az időtartomány 60 perc, még akkor is, ha a szöveg már tartalmazza a **következőt: ago (1d)**. Az időtartománynak és a lekérdezési idő szűrésének meg kell egyeznie. A példában az **adott időszakra**vonatkozó  /  **felülbírálás lekérdezési időtartománya** egy napra változik, a várt módon fog működni.
+Egy lekérdezés például 60 percet vizsgál, ha az időtartomány 60 perc, még akkor is, ha a szöveg már tartalmazza a **következőt: ago (1d)**. Az időtartománynak és a lekérdezési idő szűrésének meg kell egyeznie. A példában az **adott időszakra** vonatkozó  /  **felülbírálás lekérdezési időtartománya** egy napra változik, a várt módon fog működni.
 
 ### <a name="measure"></a>Measure
 
@@ -74,7 +74,7 @@ Az eredmények száma az alapértelmezett mérték. Ideális megoldás az olyan 
 
 A naplózási riasztások akkor működnek a legjobban, ha a naplóban lévő adatészlelési kísérletet végez. Kevésbé jól működik, ha a naplókban lévő adathiány észlelését kísérli meg. Például a virtuális gép szívverésének riasztása.
 
-Munkaterületek és Application Insights esetén a rendszer a kiválasztott **számú találatok** **alapján** hívja meg. Az összes többi erőforrástípus esetében ez a **mérték** a kiválasztási **táblázat soraival**együtt.
+Munkaterületek és Application Insights esetén a rendszer a kiválasztott **számú találatok** **alapján** hívja meg. Az összes többi erőforrástípus esetében ez a **mérték** a kiválasztási **táblázat soraival** együtt.
 
 > [!NOTE]
 > Mivel a naplók részben strukturált adatok, eredendően látensek, mint a metrikák, előfordulhat, hogy a rendszer a naplókban észlelt adatok hiányának észlelésére tett kísérlet során a [metrikai riasztásokat](alerts-metric-overview.md)használja. Adatokat küldhet a metrikai tárolóba a naplók [metrikai riasztásai](alerts-metric-logs.md)használatával.
@@ -98,11 +98,11 @@ Ezt követően a riasztási szabályok figyelik az 500 hibakódú kérelmeket. A
 
 #### <a name="calculation-of-measure-based-on-a-numeric-column-such-as-cpu-counter-value"></a>Mérték kiszámítása numerikus oszlop alapján (például CPU-számláló értéke)
 
-Munkaterületek és Application Insights esetén a **rendszer** a kiválasztási **metrika mértékének**megfelelően hívja meg. Az összes többi erőforrástípus esetében ez a **mérték** a szám oszlop nevének kiválasztásával történik.
+Munkaterületek és Application Insights esetén a **rendszer** a kiválasztási **metrika mértékének** megfelelően hívja meg. Az összes többi erőforrástípus esetében ez a **mérték** a szám oszlop nevének kiválasztásával történik.
 
 ### <a name="aggregation-type"></a>Összesítés típusa
 
-A több rekordon elvégzett számítások egy numerikus értékre összesítve. Példa:
+A több rekordon elvégzett számítások egy numerikus értékre összesítve. Például:
 - A **Count** a lekérdezésben lévő rekordok számát adja vissza.
 - Az **átlagos** érték a mérték oszlop [**összesítési részletességének**](#aggregation-granularity) átlagát adja meg.
 
@@ -110,9 +110,9 @@ A munkaterületek és a Application Insights esetében ez csak **metrikus méré
 
 ### <a name="aggregation-granularity"></a>Összesítés részletessége
 
-Meghatározza a több rekord egy numerikus értékre való összesítéséhez használt időközt. Ha például **5 percet**adott meg, a rekordok 5 percenként lesznek csoportosítva a megadott **összesítési típus** használatával.
+Meghatározza a több rekord egy numerikus értékre való összesítéséhez használt időközt. Ha például **5 percet** adott meg, a rekordok 5 percenként lesznek csoportosítva a megadott **összesítési típus** használatával.
 
-A munkaterületek és a Application Insights esetében ez csak **metrikus mérési** mértékekben támogatott. A lekérdezés eredményének tartalmaznia kell egy [bin ()](/azure/kusto/query/binfunction) értéket, amely beállítja az intervallumot a lekérdezés eredményei között. Az összes többi erőforrástípus esetében az ezt a beállítást vezérlő mezőt **aggregációs részletességnek**nevezzük.
+A munkaterületek és a Application Insights esetében ez csak **metrikus mérési** mértékekben támogatott. A lekérdezés eredményének tartalmaznia kell egy [bin ()](/azure/kusto/query/binfunction) értéket, amely beállítja az intervallumot a lekérdezés eredményei között. Az összes többi erőforrástípus esetében az ezt a beállítást vezérlő mezőt **aggregációs részletességnek** nevezzük.
 
 > [!NOTE]
 > Mivel a [bin ()](/azure/kusto/query/binfunction) nem egyenletes időintervallumot eredményezhet, a riasztási szolgáltatás automatikusan átalakítja a [bin ()](/azure/kusto/query/binfunction) függvényt, hogy [bin_at ()](/azure/kusto/query/binatfunction) függvényt a megfelelő időpontra konvertálja, hogy az eredmények egy rögzített ponttal legyenek biztosítva.
@@ -162,7 +162,7 @@ Miután megtörtént a lekérdezés futtatása és az eredmények kiértékelés
 
 A lekérdezés eredményei egy számra vannak átalakítva, amely a küszöbértékhez és a kezelőhöz hasonlít.
 
-### <a name="frequency"></a>Frequency
+### <a name="frequency"></a>Gyakoriság
 
 A lekérdezés futtatásának időköze. 5 perctől akár egy napig is beállítható. A naplózási rekordok kihagyása érdekében a [lekérdezési időtartománynak](#query-time-range) meg kell egyeznie vagy annál kisebbnek kell lennie.
 
@@ -178,7 +178,7 @@ Ha például a szabály [**összesítési részletessége**](#aggregation-granul
 
 A naplózási riasztások állapot nélküliek. Riasztások tűz a feltétel teljesülése esetén, még akkor is, ha korábban kirúgták. A felgyújtott riasztások nem oldhatók fel. [A riasztást lezártként jelölheti](alerts-managing-alert-states.md)meg. A műveletek elnémításával megakadályozhatja, hogy a riasztási szabály elindítását követően egy adott időszakban aktiválják őket.
 
-A munkaterületek és a Application Insights esetében ez a **riasztások letiltása**. Az összes többi erőforrástípus esetében az **Elnémítás műveletnek**nevezzük. 
+A munkaterületek és a Application Insights esetében ez a **riasztások letiltása**. Az összes többi erőforrástípus esetében az **Elnémítás műveletnek** nevezzük. 
 
 Tekintse meg ezt a riasztási kiértékelési példát:
 
@@ -203,7 +203,7 @@ A díjszabási információk a [Azure monitor díjszabási oldalán](https://azu
 > [!NOTE]
 > Az örökölt [log Analytics riasztási API](api-alerts.md) -val és a [log Analytics mentett keresések és riasztások](../insights/solutions.md)örökölt sablonjaival felügyelhető log Analytics naplózási riasztásai. [További információ az aktuális SCHEDULEDQUERYRULES API-ra való áttérésről](alerts-log-api-switch.md). A riasztási szabályok kezelését a [régi log Analytics API](api-alerts.md) használatával kell elvégezni, amíg nem dönt, és nem tudja használni a rejtett erőforrásokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg [, hogyan hozhat létre naplóbeli riasztásokat az Azure](./alerts-log.md)-ban.
 * Ismerkedjen meg [a webhookokkal a log-riasztásokban az Azure-ban](alerts-log-webhook.md).

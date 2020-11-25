@@ -9,11 +9,11 @@ ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
 ms.openlocfilehash: 93545c63013c95e3db498b079061da3d9b189efd
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94986446"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995760"
 ---
 # <a name="create-a-new-device-template-version"></a>Új sablon-verzió létrehozása
 
@@ -106,7 +106,7 @@ Az eszköz sablonjának több verzióját is létrehozhatja. Idővel több csatl
 1. Az **áttelepítés** kiválasztása: :::image type="content" source="media/howto-version-device-template/migrate-device.png" alt-text="válassza az eszköz áttelepítésének megkezdése lehetőséget"::: .
 1. Válassza ki azt a verziószámot, amelyen át szeretné telepíteni az eszközt, majd válassza az **áttelepítés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha Ön egy operátor vagy megoldás-szerkesztő, a következő lépés az [eszközök felügyeletének](./howto-manage-devices.md)megismerése.
 

@@ -10,12 +10,12 @@ ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 07e306c6c428a0e3a3f64a29a2574cb0378bb81f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a74860b7adf4dade5aedc71a4960595cbe55eaf0
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230228"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95995301"
 ---
 # <a name="enable-and-manage-soft-delete-for-blobs"></a>A Blobok Soft delete engedélyezése és kezelése
 
@@ -32,9 +32,9 @@ A tárolók helyreállítható törlésének engedélyezéséről a [tárolók h
 A Blobok törlésének engedélyezése a Storage-fiókban Azure Portal használatával:
 
 1. Az [Azure Portalon](https://portal.azure.com/) lépjen a tárfiókra.
-1. Keresse meg az **Adatvédelem** lehetőséget a **blob Service**alatt.
-1. Állítsa *engedélyezve*értékre a **blob törlési** tulajdonságát.
-1. Az **adatmegőrzési szabályzatok**területen határozza meg, hogy az Azure Storage mennyi ideig őrizze meg a Soft-Deleted blobokat.
+1. Keresse meg az **Adatvédelem** lehetőséget a **blob Service** alatt.
+1. Állítsa *engedélyezve* értékre a **blob törlési** tulajdonságát.
+1. Az **adatmegőrzési szabályzatok** területen határozza meg, hogy az Azure Storage mennyi ideig őrizze meg a Soft-Deleted blobokat.
 1. Mentse a módosításokat.
 
 ![Képernyőkép az Azure Portalról a megválasztott adatvédelmi blob-szolgáltatással.](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-configuration.png)
@@ -43,7 +43,7 @@ A nem kötelezően törölt Blobok megtekintéséhez jelölje be a **törölt Bl
 
 ![Képernyőfelvétel: az adatvédelem blob szolgáltatás lapja, a törölt Blobok megjelenítése lehetőség kiemelve.](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-view-soft-deleted.png)
 
-Egy adott blobhoz tartozó, törölt Pillanatképek megtekintéséhez válassza ki a blobot, majd kattintson a **Pillanatképek megtekintése**elemre.
+Egy adott blobhoz tartozó, törölt Pillanatképek megtekintéséhez válassza ki a blobot, majd kattintson a **Pillanatképek megtekintése** elemre.
 
 ![Képernyőfelvétel: az adatvédelem blob szolgáltatás lapja, a pillanatképek megtekintése lehetőség kiemelve.](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-view-soft-deleted-snapshots.png)
 
@@ -55,7 +55,7 @@ Ha a törölt blobra vagy pillanatképre kattint, figyelje az új blob tulajdons
 
 ![Képernyőkép a nem kötelezően törölt objektumok részleteiről.](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-properties.png)
 
-Ne feledje, hogy a Blobok törlésének visszavonása törli az összes társított pillanatképet is. Ha törölni szeretné a nem törölt pillanatképeket egy aktív blobhoz, kattintson a blobra, és válassza az **összes pillanatkép törlésének**visszavonása lehetőséget.
+Ne feledje, hogy a Blobok törlésének visszavonása törli az összes társított pillanatképet is. Ha törölni szeretné a nem törölt pillanatképeket egy aktív blobhoz, kattintson a blobra, és válassza az **összes pillanatkép törlésének** visszavonása lehetőséget.
 
 ![Képernyőkép a helyreállítható törölt Blobok részleteiről.](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-undelete-all-snapshots.png)
 
@@ -82,7 +82,7 @@ $MatchingAccounts | $account = Get-AzStorageAccount -ResourceGroupName myresourc
    Get-AzStorageServiceProperty -ServiceType Blob -Context $account.Context | Select-Object -ExpandProperty DeleteRetentionPolicy
 ```
 
-A véletlenül törölt Blobok helyreállításához hívja meg a **blob törlését** az adott blobokon. Ne feledje, hogy az aktív és a nem törölt Blobok **törlésének**visszavonása művelettel az összes társított helyreállított pillanatkép aktív állapotú lesz. A következő példa meghívja a **blob törlését** a tároló összes lágy törölt és aktív blobján:
+A véletlenül törölt Blobok helyreállításához hívja meg a **blob törlését** az adott blobokon. Ne feledje, hogy az aktív és a nem törölt Blobok **törlésének** visszavonása művelettel az összes társított helyreállított pillanatkép aktív állapotú lesz. A következő példa meghívja a **blob törlését** a tároló összes lágy törölt és aktív blobján:
 
 ```powershell
 # Create a context by specifying storage account name and key
@@ -140,7 +140,7 @@ A Soft delete engedélyezéséhez frissítse a blob-ügyfél szolgáltatásának
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_EnableSoftDelete":::
 
-A véletlenül törölt Blobok helyreállításához hívja meg a törlést a blobokon. Ne feledje, hogy a **Törlés**visszahívása az aktív és a nem törölt Blobok esetében is megtörténik, és az összes társított helyreállított pillanatkép aktív állapotba kerül. A következő példa meghívja a törlést a tároló összes lágy törölt és aktív blobján:
+A véletlenül törölt Blobok helyreállításához hívja meg a törlést a blobokon. Ne feledje, hogy a **Törlés** visszahívása az aktív és a nem törölt Blobok esetében is megtörténik, és az összes társított helyreállított pillanatkép aktív állapotba kerül. A következő példa meghívja a törlést a tároló összes lágy törölt és aktív blobján:
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_RecoverDeletedBlobs":::
 
@@ -164,7 +164,7 @@ serviceProperties.DeleteRetentionPolicy.RetentionDays = RetentionDays;
 blobClient.SetServiceProperties(serviceProperties);
 ```
 
-A véletlenül törölt Blobok helyreállításához hívja meg a **blob törlését** az adott blobokon. Ne feledje, hogy az aktív és a nem törölt Blobok **törlésének**visszavonása művelettel az összes társított helyreállított pillanatkép aktív állapotú lesz. A következő példa meghívja a **blob törlését** a tároló összes lágyan törölt és aktív blobján:
+A véletlenül törölt Blobok helyreállításához hívja meg a **blob törlését** az adott blobokon. Ne feledje, hogy az aktív és a nem törölt Blobok **törlésének** visszavonása művelettel az összes társított helyreállított pillanatkép aktív állapotú lesz. A következő példa meghívja a **blob törlését** a tároló összes lágyan törölt és aktív blobján:
 
 ```csharp
 // Recover all blobs in a container
@@ -192,7 +192,7 @@ blockBlob.StartCopy(copySource);
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [A blob Storage-hoz készült Soft delete](soft-delete-overview.md)
+- [A blob Storage-hoz készült Soft delete](./soft-delete-blob-overview.md)
 - [BLOB verziószámozása](versioning-overview.md)

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: aahi
 ms.openlocfilehash: cedcf8a3fcd656c4af0ca7493c598791d35d20d9
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130561"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996125"
 ---
 # <a name="use-docker-compose-to-deploy-multiple-containers"></a>A Docker Compose használata több tároló üzembe helyezéséhez
 
@@ -39,7 +39,7 @@ Ez az eljárás számos olyan eszközt igényel, amelyeknek helyileg kell telep�
 
 ## <a name="docker-compose-file"></a>Docker-összeállítási fájl
 
-A YAML fájl határozza meg az összes telepítendő szolgáltatást. Ezek a szolgáltatások a vagy egy `DockerFile` meglévő tároló képére támaszkodnak. Ebben az esetben két előzetes rendszerképet fogunk használni. Másolja és illessze be a következő YAML-fájlt, és mentse *Docker-levélírás. YAML* néven. Adja meg a megfelelő **apikey** , **Számlázási** és **fájlban lecserélendő endpointuri** értékeket a fájlban.
+A YAML fájl határozza meg az összes telepítendő szolgáltatást. Ezek a szolgáltatások a vagy egy `DockerFile` meglévő tároló képére támaszkodnak. Ebben az esetben két előzetes rendszerképet fogunk használni. Másolja és illessze be a következő YAML-fájlt, és mentse *Docker-levélírás. YAML* néven. Adja meg a megfelelő **apikey**, **Számlázási** és **fájlban lecserélendő endpointuri** értékeket a fájlban.
 
 ```yaml
 version: '3.7'
@@ -169,7 +169,7 @@ Nyisson meg egy böngészőt a gazdagépen, és nyissa meg a **localhost** -ot a
 
 ![Űrlap-felismerő tároló](media/form-recognizer-swagger-page.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Cognitive Services tárolók](../cognitive-services-container-support.md)

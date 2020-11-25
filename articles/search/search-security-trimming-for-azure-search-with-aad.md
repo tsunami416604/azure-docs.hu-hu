@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 06/04/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 87337cf22bdb388c5873a2811bb9913c3e7f4d4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019776"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994961"
 ---
 # <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>Az Azure Cognitive Search eredményeinek Active Directory identitások használatával történő kivágására szolgáló biztonsági szűrők
 
@@ -44,11 +44,11 @@ Az alkalmazásnak a HRE-ben is regisztrálva kell lennie az alábbi eljárásban
 Ez a lépés integrálja az alkalmazást a HRE-mel, hogy elfogadja a felhasználói és csoportfiókok bejelentkezését. Ha Ön nem HRE-rendszergazda a szervezetben, lehetséges, hogy [létre kell hoznia egy új bérlőt](../active-directory/develop/quickstart-create-new-tenant.md) az alábbi lépések végrehajtásához.
 
 1. Nyissa meg az [**alkalmazás regisztrációs portálját**](https://apps.dev.microsoft.com), és  >   **Converged app**  >  **adjon hozzá egy alkalmazást**.
-2. Adja meg az alkalmazás nevét, majd kattintson a **Létrehozás**gombra. 
+2. Adja meg az alkalmazás nevét, majd kattintson a **Létrehozás** gombra. 
 3. Válassza ki az újonnan regisztrált alkalmazást a saját alkalmazások oldalon.
-4. Az alkalmazás regisztrációja **oldalon > platform platform**  >  **hozzáadása**területen válassza a **webes API**lehetőséget.
-5. Továbbra is az alkalmazás regisztrációja oldalon lépjen > **Microsoft Graph engedélyek**  >  **Hozzáadás**gombra.
-6. Az engedélyek kiválasztása területen adja hozzá a következő delegált engedélyeket, majd kattintson az **OK**gombra:
+4. Az alkalmazás regisztrációja **oldalon > platform platform**  >  **hozzáadása** területen válassza a **webes API** lehetőséget.
+5. Továbbra is az alkalmazás regisztrációja oldalon lépjen > **Microsoft Graph engedélyek**  >  **Hozzáadás** gombra.
+6. Az engedélyek kiválasztása területen adja hozzá a következő delegált engedélyeket, majd kattintson az **OK** gombra:
 
    + **Directory. ReadWrite. All**
    + **Group.ReadWrite.All**

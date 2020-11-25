@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: e6acea560c3a02420b15aff84475ab58e642116c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078255"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995964"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Gyakori kérdések a csatlakoztatott Factory megoldás-gyorsító szolgáltatásról
 
@@ -76,13 +76,13 @@ Ha a www.azureiotsolutions.com-ből telepítette a megoldást, nem tud bejelentk
 1. A következő futtatásával ellenőrizhető, hogy mely tárolók aktívak: `docker ps` .
 1. Az összes szimulációs tároló leállításához futtassa a következőt: `./stopsimulation` .
 1. Az összes szimulációs tároló elindítása:
-    * Exportáljon egy **IOTHUB_CONNECTIONSTRING**nevű rendszerhéj-változót. Használja az **IotHubOwnerConnectionString** beállítás értékét a `<name of your deployment>.config.user` fájlban. Például:
+    * Exportáljon egy **IOTHUB_CONNECTIONSTRING** nevű rendszerhéj-változót. Használja az **IotHubOwnerConnectionString** beállítás értékét a `<name of your deployment>.config.user` fájlban. Például:
 
         ```sh
         export IOTHUB_CONNECTIONSTRING="HostName={yourdeployment}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={your key}"
         ```
 
-    * A `./startsimulation` parancs futtatása.
+    * Futtassa az `./startsimulation` parancsot.
 
 ### <a name="how-do-i-update-the-simulation-in-the-vm"></a>Hogyan frissíteni a szimulációt a virtuális gépen?
 
@@ -190,7 +190,7 @@ Telemetria-adatok küldése nem OPC UA-eszközökről a csatlakoztatott gyárba:
 
 1. Indítsa újra a csatlakoztatott gyári App Service.
 
-### <a name="next-steps"></a>Következő lépések
+### <a name="next-steps"></a>További lépések
 
 Megismerheti az IoT-megoldásgyorsítók egyéb szolgáltatásait és funkcióit is:
 

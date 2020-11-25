@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: 1a9dc47888110836239c59f6a7542f71f753dd3a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: dbac832165c57e14e737372e12c4f4b2f3039c0d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89568183"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995257"
 ---
 # <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>Gyors útmutató: Blobok kezelése a Python V12 SDK-val
 
@@ -24,7 +24,7 @@ További források:
 * [API-referenciadokumentáció](/python/api/azure-storage-blob)
 * [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob)
 * [Csomag (Python-csomag indexe)](https://pypi.org/project/azure-storage-blob/)
-* [Példák](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+* [Példák](../common/storage-samples-python.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,7 +40,7 @@ Ez a szakasz végigvezeti a projekt előkészítésének folyamatán a Pythonhoz
 
 ### <a name="create-the-project"></a>A projekt létrehozása
 
-Hozzon létre egy *blob-Gyorsindítás-V12*nevű Python-alkalmazást.
+Hozzon létre egy *blob-Gyorsindítás-V12* nevű Python-alkalmazást.
 
 1. A konzol ablakban (például cmd, PowerShell vagy bash) hozzon létre egy új könyvtárat a projekthez.
 
@@ -54,7 +54,7 @@ Hozzon létre egy *blob-Gyorsindítás-V12*nevű Python-alkalmazást.
     cd blob-quickstart-v12
     ```
 
-1. A *blob-Gyorsindítás-V12* könyvtárban hozzon létre egy másik könyvtárat, amely az *adat*nevű. A blob-adatfájlokat a rendszer létrehozza és tárolja.
+1. A *blob-Gyorsindítás-V12* könyvtárban hozzon létre egy másik könyvtárat, amely az *adat* nevű. A blob-adatfájlokat a rendszer létrehozza és tárolja.
 
     ```console
     mkdir data

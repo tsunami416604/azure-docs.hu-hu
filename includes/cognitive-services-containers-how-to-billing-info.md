@@ -5,11 +5,11 @@ ms.date: 02/19/2020
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: 2ac93f5aba722eea78267a512999a5581a887b99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77474234"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996432"
 ---
 A tárolóra irányuló lekérdezések számlázása az Azure-erőforrás díjszabási szintjénél történik `ApiKey` .
 
@@ -27,4 +27,4 @@ A tárolónak a számlázási argumentum értékeit kell futtatnia. Ezek az ért
 |--------|-------------|
 | `ApiKey` | A számlázási információk nyomon követéséhez használt Cognitive Services erőforrás API-kulcsa.<br/>Ennek a beállításnak az értékét a ben megadott kiépített erőforráshoz tartozó API-kulcsra kell beállítani `Billing` . |
 | `Billing` | A számlázási információk nyomon követéséhez használt Cognitive Services erőforrás végpontja.<br/>Ennek a beállításnak az értékét egy kiépített Azure-erőforrás végpont-URI-azonosítójának kell beállítania.|
-| `Eula` | Azt jelzi, hogy elfogadta a tároló licencét.<br/>Ennek a beállításnak az értékét az **elfogadás**értékre kell beállítani. |
+| `Eula` | Azt jelzi, hogy elfogadta a tároló licencét.<br/>Ennek a beállításnak az értékét az **elfogadás** értékre kell beállítani. |

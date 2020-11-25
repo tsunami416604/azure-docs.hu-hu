@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: 52fad84c9ed145b4acec73ffad1fa470acf94532
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076946"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994587"
 ---
 # <a name="sizes-for-cloud-services"></a>Méretek Cloud Services
 Ez a témakör a Cloud Service-példányok (webes szerepkörök és feldolgozói szerepkörök) elérhető méreteit és beállításait ismerteti. Emellett üzembe helyezési megfontolásokat is biztosít, hogy az erőforrások használatának megtervezésekor vegye figyelembe a használatát. Minden mérethez tartozik egy azonosító, amelyet a [szolgáltatás definíciós fájljába](cloud-services-model-and-package.md#csdef)helyez. Az egyes méretek árai a [Cloud Services díjszabási](https://azure.microsoft.com/pricing/details/cloud-services/) oldalon érhetők el.
@@ -58,7 +58,7 @@ Létrehozta az Azure számítási egység (ACU) koncepcióját, amely lehetővé
 | [A5 – 7](#a-series) |100 |
 | [A8-A11](#a-series) |225* |
 | [Egy v2](#av2-series) |100 |
-| [D](#d-series) |160 |
+| [T](#d-series) |160 |
 | [D v2](#dv2-series) |160 – 190 * |
 | [D v3](#dv3-series) |160 – 190 * |
 | [E v3](#ev3-series) |160 – 190 * |
@@ -215,6 +215,6 @@ A PowerShell vagy a REST API használatával lekérheti a méretek listáját. A
 Get-AzureRoleSize | where SupportedByWebWorkerRoles -eq $true | select InstanceSize, RoleSizeLabel
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Ismerje meg [az Azure-előfizetések és -szolgáltatások korlátozásait, kvótáit és megkötéseit](../azure-resource-manager/management/azure-subscription-service-limits.md).
 * További [Tudnivalók a nagy teljesítményű számítási virtuálisgép-méretekről](../virtual-machines/sizes-hpc.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) a HPC-munkaterhelések esetében.

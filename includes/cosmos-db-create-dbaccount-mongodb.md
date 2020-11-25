@@ -4,11 +4,11 @@ description: fájlbefoglalás
 services: cosmos-db
 ms.custom: include file
 ms.openlocfilehash: ad4445cbea6553a7a96299e1276dbe8f3816e166
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94503905"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994550"
 ---
 1. Egy új böngészőablakban jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
@@ -29,7 +29,7 @@ ms.locfileid: "94503905"
     Fiók neve|Adjon meg egy egyedi nevet|Adjon meg egy egyedi nevet az Azure Cosmos DB-fiók azonosításához. A fiók URI-ja az egyedi *Mongo.Cosmos.Azure.com* lesz hozzáfűzve.<br><br>A fiók neve csak kisbetűket, számokat és kötőjeleket (-) tartalmazhat, és 3 – 31 karakter hosszúságú lehet.
     API|Azure Cosmos DB a Mongo DB API-hoz|A létrehozni kívánt fiók típusát az API határozza meg. A Azure Cosmos DB öt API-t biztosít a dokumentumok adatbázisaihoz, a Gremlin Azure Cosmos DB, a Mongo DB API-hoz a dokumentum-adatbázisok, az Azure Table és a Cassandra esetében. Jelenleg külön fiókot kell létrehoznia minden egyes API-hoz. <br><br>Válassza ki **Azure Cosmos db a MONGO db API**  -hoz, mert ebben a rövid útmutatóban olyan gyűjteményt hoz létre, amely együttműködik a MongoDB.<br><br>[További információ a Azure Cosmos db for MONGODB API-ról](../articles/cosmos-db/mongodb-introduction.md).|
     Hely|Válassza ki a felhasználóihoz legközelebb eső régiót|Válassza ki az Azure Cosmos DB-fiókot üzemeltetéséhez használni kívánt földrajzi helyet. Használja a felhasználókhoz legközelebb lévő helyet, hogy a lehető leggyorsabb hozzáférést biztosítsa az adatokhoz.|
-    Kapacitásmód|Kiosztott átviteli sebesség vagy kiszolgáló nélküli|Válassza a **kiépített átviteli sebesség** lehetőséget egy fiók [kiépített átviteli](../articles/cosmos-db/set-throughput.md) módban való létrehozásához. [Kiszolgáló nélküli módban lévő](../articles/cosmos-db/serverless.md) fiók létrehozásához válassza a **kiszolgáló** nélküli lehetőséget.<br><br>**Megjegyzés** : a kiszolgáló nélküli fiókok csak a MongoDB API 3,6-es verzióját támogatják. Az 3,2-as verzió választása esetén a rendszer kiépített átviteli üzemmódban kényszeríti a fiókot.
+    Kapacitásmód|Kiosztott átviteli sebesség vagy kiszolgáló nélküli|Válassza a **kiépített átviteli sebesség** lehetőséget egy fiók [kiépített átviteli](../articles/cosmos-db/set-throughput.md) módban való létrehozásához. [Kiszolgáló nélküli módban lévő](../articles/cosmos-db/serverless.md) fiók létrehozásához válassza a **kiszolgáló** nélküli lehetőséget.<br><br>**Megjegyzés**: a kiszolgáló nélküli fiókok csak a MongoDB API 3,6-es verzióját támogatják. Az 3,2-as verzió választása esetén a rendszer kiépített átviteli üzemmódban kényszeríti a fiókot.
 
     Válassza a **felülvizsgálat + létrehozás** lehetőséget. Kihagyhatja a **hálózat** és **címkék** szakaszt. 
 

@@ -14,11 +14,11 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 320d48535c4792a4d610888c6a7030568ccf16bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89459844"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995182"
 ---
 # <a name="configuration-requirements-and-troubleshooting-tips-for-xamarin-android-with-msalnet"></a>Konfigurációs követelmények és hibaelhárítási tippek a Xamarin Androidhoz a MSAL.NET
 
@@ -112,7 +112,7 @@ Az alábbi példa egy olyan osztályra mutat, amely az XML-fájl értékeit jel�
 
 ### <a name="xamarinforms-43x-manifest"></a>Xamarin. Forms 4.3. x jegyzékfájl
 
-A Xamarin. Forms 4.3. x olyan kódot állít elő, amely az attribútumotAndroidManifest.xmlértékre állítja be `package` `com.companyname.{appName}` . * * Ha a `DataScheme` as-t használja `msal{client_id}` , érdemes lehet módosítani az értéket, hogy az megfeleljen a névtér értékének `MainActivity.cs` .
+A Xamarin. Forms 4.3. x olyan kódot állít elő, amely az attribútumotAndroidManifest.xmlértékre állítja be `package` `com.companyname.{appName}` . ** Ha a `DataScheme` as-t használja `msal{client_id}` , érdemes lehet módosítani az értéket, hogy az megfeleljen a névtér értékének `MainActivity.cs` .
 
 ## <a name="use-the-embedded-web-view-optional"></a>A beágyazott webes nézet használata (nem kötelező)
 
@@ -140,12 +140,12 @@ További információkért lásd: [webböngészők használata a MSAL.net](msal-
 - Ellenőrizze, hogy a Xamarin. Android. support. v4 a legújabb verzió-e.
 - Győződjön meg arról, hogy az összes Xamarin. Android. support csomag a legújabb verziót célozza meg.
 - Törölje vagy építse újra az alkalmazást.
-- A Visual Studióban próbálja meg beállítani a párhuzamos projektek maximális számát **1**értékre. Ehhez válassza a **Beállítások**  >  **projektek és megoldások**  >  **Létrehozás és Futtatás**  >  **maximális száma párhuzamos projektek**buildek lehetőséget.
+- A Visual Studióban próbálja meg beállítani a párhuzamos projektek maximális számát **1** értékre. Ehhez válassza a **Beállítások**  >  **projektek és megoldások**  >  **Létrehozás és Futtatás**  >  **maximális száma párhuzamos projektek** buildek lehetőséget.
 - Ha a parancssorból épít, és a parancs a parancsot használja `/m` , próbálja meg eltávolítani az elemet a parancsból.
 
 ### <a name="error-the-name-authenticationcontinuationhelper-doesnt-exist-in-the-current-context"></a>Hiba: a AuthenticationContinuationHelper név nem létezik az aktuális környezetben.
 
-Ha egy hiba azt jelzi, hogy `AuthenticationContinuationHelper` az aktuális környezetben nem létezik, előfordulhat, hogy a Visual Studio hibásan frissítette az *Android. csproj \* * fájlt. Előfordul, hogy a fájl elérési útja nem megfelelően van megadva a `<HintPath>` `netstandard13` helyett `monoandroid90` .
+Ha egy hiba azt jelzi, hogy `AuthenticationContinuationHelper` az aktuális környezetben nem létezik, előfordulhat, hogy a Visual Studio hibásan frissítette az *Android. csproj \** fájlt. Előfordul, hogy a fájl elérési útja nem megfelelően van megadva a `<HintPath>` `netstandard13` helyett `monoandroid90` .
 
 Ez a példa a fájl helyes elérési útját tartalmazza:
 
@@ -156,7 +156,7 @@ Ez a példa a fájl helyes elérési útját tartalmazza:
 </Reference>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ: a [Microsoft Identity platformot használó Xamarin Mobile-alkalmazás](https://github.com/azure-samples/active-directory-xamarin-native-v2#android-specific-considerations)mintája. A következő táblázat összefoglalja a fontos információkat a README fájlban.
 

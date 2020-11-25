@@ -13,11 +13,11 @@ ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
 ms.openlocfilehash: 0dad7add63102d462a2111f1ecf12ae43dae123c
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979912"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996185"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Oktatóanyag: bejelentkezés felvétele a Microsoftba ASP.NET-webalkalmazásba
 
@@ -480,7 +480,7 @@ A **IssuerValidator** paraméter használatával egyéni módszert alkalmazhat a
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan hívhat meg védett webes API-kat a Web Apps szolgáltatásból a Microsoft Identity platformmal:
 

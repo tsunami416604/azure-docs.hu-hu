@@ -4,22 +4,22 @@ description: Ismerje meg az Azure-tervrajzok zárolási lehetőségeit, amelyekk
 ms.date: 10/05/2020
 ms.topic: conceptual
 ms.openlocfilehash: 01f69cbfebe203407287392c2433181396b541b2
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92095994"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996100"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Az erőforrások zárolásának megismerése az Azure-tervekben
 
-A konzisztens környezetek nagy méretekben történő létrehozása csak abban az esetben hasznos, ha van olyan mechanizmus, amely a konzisztencia fenntartására szolgál. Ez a cikk azt ismerteti, hogyan működik az erőforrás-zárolás az Azure-tervekben. Az erőforrás-zárolásra és a _megtagadási hozzárendelések_alkalmazására vonatkozó példa az [új erőforrások védelme](../tutorials/protect-new-resources.md) oktatóanyagban található.
+A konzisztens környezetek nagy méretekben történő létrehozása csak abban az esetben hasznos, ha van olyan mechanizmus, amely a konzisztencia fenntartására szolgál. Ez a cikk azt ismerteti, hogyan működik az erőforrás-zárolás az Azure-tervekben. Az erőforrás-zárolásra és a _megtagadási hozzárendelések_ alkalmazására vonatkozó példa az [új erőforrások védelme](../tutorials/protect-new-resources.md) oktatóanyagban található.
 
 > [!NOTE]
 > Az Azure-tervrajzok által üzembe helyezett erőforrás-zárolások csak a terv-hozzárendelés által üzembe helyezett erőforrásokra vonatkoznak. A meglévő erőforrások, például a már létező erőforráscsoportok, nincsenek hozzájuk adva zárolások.
 
 ## <a name="locking-modes-and-states"></a>Zárolási módok és állapotok
 
-A zárolási mód a tervrajz-hozzárendelésre vonatkozik, és három lehetőség közül választhat: **ne zárolja**, **csak olvasható**vagy ne **törölje**. A zárolási módot a rendszer a terv hozzárendelése során konfigurálja az összetevő üzembe helyezése során. A terv hozzárendelésének frissítésével egy másik zárolási mód is beállítható.
+A zárolási mód a tervrajz-hozzárendelésre vonatkozik, és három lehetőség közül választhat: **ne zárolja**, **csak olvasható** vagy ne **törölje**. A zárolási módot a rendszer a terv hozzárendelése során konfigurálja az összetevő üzembe helyezése során. A terv hozzárendelésének frissítésével egy másik zárolási mód is beállítható.
 A zárolási módokat azonban nem lehet az Azure-tervezeteken kívül módosítani.
 
 A tervrajz-hozzárendelésekben az összetevők által létrehozott erőforrások négy állapottal rendelkeznek: **nincs zárolva**, **csak olvasható**, **nem szerkeszthető/** nem törölhető, vagy **nem törölhető**. Az egyes összetevők típusa **nem zárolt** állapotban lehet. Az alábbi táblázat egy erőforrás állapotának meghatározására használható:
@@ -109,7 +109,7 @@ Az egyes üzemmódok [megtagadási hozzárendeléseinek tulajdonságai](../../..
 
 |Mód |Engedélyek. műveletek |Engedélyek. Tapintatok |Rendszerbiztonsági tag [i]. Típusa |ExcludePrincipals [i]. ID | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
-|Csak olvasási engedély |**\*** |**\*/read**<br />**Microsoft. Authorization/zárolások/törlés**<br />**Microsoft. Network/virtualNetwork/alhálózatok/csatlakozás/művelet** |SystemDefined (mindenki) |tervezet-hozzárendelés és felhasználó által definiált **excludedPrincipals** |Erőforráscsoport – _igaz_; Erőforrás – _hamis_ |
+|Csak olvasási engedély |**\** _ |_ *\* /READ **<br />** Microsoft. engedélyezés/zárolás/törlés **<br />** Microsoft. Network/virtualNetwork/alhálózatok/csatlakozás/művelet** |SystemDefined (mindenki) |tervezet-hozzárendelés és felhasználó által definiált **excludedPrincipals** |Erőforráscsoport – _igaz_; Erőforrás – _hamis_ |
 |Törlés mellőzése |**\*/delete** | **Microsoft. Authorization/zárolások/törlés**<br />**Microsoft. Network/virtualNetwork/alhálózatok/csatlakozás/művelet** |SystemDefined (mindenki) |tervezet-hozzárendelés és felhasználó által definiált **excludedPrincipals** |Erőforráscsoport – _igaz_; Erőforrás – _hamis_ |
 
 > [!IMPORTANT]
@@ -117,7 +117,7 @@ Az egyes üzemmódok [megtagadási hozzárendeléseinek tulajdonságai](../../..
 
 ## <a name="exclude-a-principal-from-a-deny-assignment"></a>Tag kizárása egy megtagadási hozzárendelésből
 
-Bizonyos tervezési vagy biztonsági helyzetekben szükség lehet egy rendszerbiztonsági tag kizárására a terv-hozzárendelés által létrehozott [megtagadási hozzárendelésből](../../../role-based-access-control/deny-assignments.md) . Ez a lépés REST API történik, ha a [hozzárendelés létrehozásakor](/rest/api/blueprints/assignments/createorupdate)a **zárolások** tulajdonságban legfeljebb öt értéket ad hozzá a **excludedPrincipals** tömbhöz. A következő hozzárendelési definíció egy példa a **excludedPrincipals**tartalmazó kérelem törzsére:
+Bizonyos tervezési vagy biztonsági helyzetekben szükség lehet egy rendszerbiztonsági tag kizárására a terv-hozzárendelés által létrehozott [megtagadási hozzárendelésből](../../../role-based-access-control/deny-assignments.md) . Ez a lépés REST API történik, ha a [hozzárendelés létrehozásakor](/rest/api/blueprints/assignments/createorupdate)a **zárolások** tulajdonságban legfeljebb öt értéket ad hozzá a **excludedPrincipals** tömbhöz. A következő hozzárendelési definíció egy példa a **excludedPrincipals** tartalmazó kérelem törzsére:
 
 ```json
 {

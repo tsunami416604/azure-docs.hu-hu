@@ -18,11 +18,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5aa8f675e3fd36fbebfecf42db0f02b0f0f00115
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319740"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995981"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Naplózott tevékenységekre vonatkozó jelentések az Azure Active Directory portálon 
 
@@ -207,7 +207,7 @@ Az alkalmazásalapú naplózási jelentésekkel az alábbi kérdésekre kaphat v
 * Történt változás az alkalmazások nevében?
 * Ki hagyott jóvá egy adott alkalmazást?
 
-Ha szeretné áttekinteni az alkalmazásokkal kapcsolatos naplózási adatait, a **vállalati alkalmazások** panel **tevékenység** szakaszában talál egy szűrt nézetet a **naplók** területen. Ehhez a belépési ponthoz az **alkalmazás típusaként**megadott **vállalati alkalmazások** vannak előválasztva.
+Ha szeretné áttekinteni az alkalmazásokkal kapcsolatos naplózási adatait, a **vállalati alkalmazások** panel **tevékenység** szakaszában talál egy szűrt nézetet a **naplók** területen. Ehhez a belépési ponthoz az **alkalmazás típusaként** megadott **vállalati alkalmazások** vannak előválasztva.
 
 ![Vállalati alkalmazások](./media/concept-audit-logs/enterpriseapplications.png "Vállalati alkalmazások")
 
@@ -217,7 +217,7 @@ A [Microsoft 365 felügyeleti központban](/office365/admin/admin-overview/about
 
 Az [Office 365 felügyeleti API](/office/office-365-management-api/office-365-management-apis-overview)-k használatával programozott módon is elérheti a Microsoft 365 tevékenység naplóit.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure AD naplózott tevékenységekre vonatkozó referencia](reference-audit-activities.md)
 - [Azure AD-jelentések adatmegőrzési referenciája](reference-reports-data-retention.md)

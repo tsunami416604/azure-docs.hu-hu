@@ -4,11 +4,11 @@ description: Ez a cikk azt ismerteti, hogyan hozhatók létre Event Grid-előfiz
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: e80e2243c93ab38187646256f567d6ab73c40100
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91308503"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995063"
 ---
 # <a name="subscribe-to-events-through-portal"></a>Előfizetés az eseményekre a portálon keresztül
 
@@ -42,7 +42,7 @@ Ha Event Grid-előfizetést szeretne létrehozni bármelyik támogatott [esemén
 
    ![Képernyőkép, amely a "végpont részletei" és az "esemény-előfizetés részletei" szakaszt jeleníti meg a megadott előfizetés-név értékkel.](./media/subscribe-through-portal/provide-subscription-details.png)
 
-1. A kézbesítetlen üzenetek engedélyezéséhez és az újrapróbálkozási szabályzatok testreszabásához válassza a **További szolgáltatások**lehetőséget.
+1. A kézbesítetlen üzenetek engedélyezéséhez és az újrapróbálkozási szabályzatok testreszabásához válassza a **További szolgáltatások** lehetőséget.
 
    ![További funkciók kiválasztása](./media/subscribe-through-portal/select-additional-features.png)
 
@@ -60,7 +60,7 @@ Néhány eseményforrás támogatja az esemény-előfizetések létrehozását a
 
 A portálon megtekintheti az adott forráshoz kapcsolódó esemény-előfizetések létrehozásának lehetőségeit.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ az események kézbesítéséről és újrapróbálkozásáról, [Event Grid az üzenetek kézbesítéséről, és próbálkozzon újra](delivery-and-retry.md).
 * Az Event Grid ismertetése: [Az Event Grid bemutatása](overview.md).

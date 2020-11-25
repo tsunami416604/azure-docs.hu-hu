@@ -7,11 +7,11 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: d9acd322c454002613e21e8591c3e83aeec2d51e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979381"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995352"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Az Application Insights Profiler engedélyezésével vagy megtekintésével kapcsolatos problémák elhárítása
 
@@ -76,7 +76,7 @@ A Profiler megfelelő működéséhez:
 
 * A **ApplicationInsightsProfiler3** -webjobs futnia kell. A webjobs megkeresése:
    1. Nyissa meg a [kudu](/archive/blogs/cdndevs/the-kudu-debug-console-azure-websites-best-kept-secret).
-   1. Az **eszközök** menüben válassza a **webjobs irányítópult**elemet.  
+   1. Az **eszközök** menüben válassza a **webjobs irányítópult** elemet.  
       Megnyílik a **webjobs** panel. 
    
       ![Képernyőfelvétel: a webjobs panel, amely a feladatok nevét, állapotát és utolsó futási idejét jeleníti meg.][profiler-webjob]   
@@ -92,7 +92,7 @@ Ha nem tudja kideríteni, hogy a Profiler miért nem működik Önnek, letölthe
 
 A Profiler konfigurálásakor a rendszer frissíti a webalkalmazás beállításait. Ha a környezete megköveteli, manuálisan is alkalmazhatja a frissítéseket. Lehetséges például, hogy az alkalmazás a PowerApps Web Apps-környezetében fut. Frissítések manuális alkalmazása:
 
-1. A **webalkalmazás-vezérlő** ablaktáblán nyissa meg a **Beállítások**lapot.
+1. A **webalkalmazás-vezérlő** ablaktáblán nyissa meg a **Beállítások** lapot.
 
 1. A **.NET-keretrendszer verziójának** beállítása: **v 4.6**.
 
@@ -125,7 +125,7 @@ Ezek a paraméterek törlik a Application Insights Profiler által használt map
 
 ### <a name="how-do-i-determine-whether-application-insights-profiler-is-running"></a>Hogyan határozza meg, hogy a Application Insights Profiler fut-e?
 
-A Profiler folyamatos webjobs fut a webalkalmazásban. A webalkalmazás-erőforrást a [Azure Portalban](https://portal.azure.com)nyithatja meg. A **webjobs** ablaktáblán tekintse meg a **ApplicationInsightsProfiler**állapotát. Ha nem fut, nyissa meg a **naplókat** , hogy további információkat kapjon.
+A Profiler folyamatos webjobs fut a webalkalmazásban. A webalkalmazás-erőforrást a [Azure Portalban](https://portal.azure.com)nyithatja meg. A **webjobs** ablaktáblán tekintse meg a **ApplicationInsightsProfiler** állapotát. Ha nem fut, nyissa meg a **naplókat** , hogy további információkat kapjon.
 
 ## <a name="troubleshoot-vms-and-cloud-services"></a>Virtuális gépek és Cloud Services hibáinak megoldása
 
@@ -168,7 +168,7 @@ A Azure Diagnostics konfigurálásához használt beállítások ellenőrzését
 
 1. Ellenőrizze, hogy helyes-e a Rendszerállapotkulcsot a Profiler parancssorban. 
 
-1. A fájl előzőconfig.jstalálható elérési út használatával keresse * meg* a Profiler-naplófájlt ( **BootstrapN. log**). Megjeleníti a Profiler által használt beállításokat jelző hibakeresési információkat. Megjeleníti a Profiler állapot-és hibaüzeneteit is.  
+1. A fájl előzőconfig.jstalálható elérési út használatával keresse *meg* a Profiler-naplófájlt ( **BootstrapN. log**). Megjeleníti a Profiler által használt beállításokat jelző hibakeresési információkat. Megjeleníti a Profiler állapot-és hibaüzeneteit is.  
 
     A virtuális gépek esetében általában a fájl a következő:
     ```

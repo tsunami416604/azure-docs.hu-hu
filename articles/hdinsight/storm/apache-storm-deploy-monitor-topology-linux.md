@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
 ms.openlocfilehash: 9b190b5847c7412344e2bb09fd4000985816219b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085735"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995590"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Apache Storm-topológiák üzembe helyezése és kezelése az Azure HDInsight
 
@@ -21,9 +21,9 @@ Ebből a dokumentumból megtudhatja, hogyan kezelheti és figyelheti [Apache Sto
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Apache Storm-fürt a HDInsight-on. Lásd: [hozzon létre Apache Hadoop fürtöket a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) , és válassza a **Storm** a **fürt típusa**lehetőséget.
+* Egy Apache Storm-fürt a HDInsight-on. Lásd: [hozzon létre Apache Hadoop fürtöket a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) , és válassza a **Storm** a **fürt típusa** lehetőséget.
 
-* Választható A Secure Shell (SSH) és a biztonságos másolás (SCP) ismerete. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Választható A Secure Shell (SSH) és a biztonságos másolás (SCP) ismerete. További információért lásd: [Csatlakozás a HDInsighthoz (Apache Hadoop) SSH-val](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 * Választható A Visual Studio, az Azure SDK 2.5.1-es vagy újabb verziója, valamint a Visual studióhoz készült Data Lake Tools. További információ: [Apache Hadoop & Visual Studio Data Lake Tools](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
@@ -40,22 +40,22 @@ A Visual studióhoz készült Data Lake Tools használatával C# vagy hibrid top
 
 1. Indítsa el a Visual Studiót.
 
-1. A **Start** ablakban válassza az **új projekt létrehozása**lehetőséget.
+1. A **Start** ablakban válassza az **új projekt létrehozása** lehetőséget.
 
-1. A **create a New Project (új projekt létrehozása** ) ablakban jelölje be a keresőmezőbe, majd írja be a kifejezést `Storm` . Ezután válassza a **Storm Sample** elemet az eredmények listájában, és kattintson a **tovább**gombra.
+1. A **create a New Project (új projekt létrehozása** ) ablakban jelölje be a keresőmezőbe, majd írja be a kifejezést `Storm` . Ezután válassza a **Storm Sample** elemet az eredmények listájában, és kattintson a **tovább** gombra.
 
 1. Az **új projekt konfigurálása** ablakban adja meg a **projekt nevét**, és lépjen a helyre, vagy hozzon létre egy **helyet** az új projekt mentéséhez a alkalmazásban. Ezután válassza a **Létrehozás** elemet.
 
     ![Az új Project-ablak, a Visual Studio konfigurálása](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png)
 
-1. A **Server Explorerben**kattintson a jobb gombbal az **Azure** elemre, és válassza a **Kapcsolódás Microsoft Azure előfizetéshez...** lehetőséget, és fejezze be a bejelentkezési folyamatot.
+1. A **Server Explorerben** kattintson a jobb gombbal az **Azure** elemre, és válassza a **Kapcsolódás Microsoft Azure előfizetéshez...** lehetőséget, és fejezze be a bejelentkezési folyamatot.
 
-1. **Megoldáskezelő**kattintson a jobb gombbal a projektre, és válassza a **Küldés a Storm on HDInsight**lehetőséget.
+1. **Megoldáskezelő** kattintson a jobb gombbal a projektre, és válassza a **Küldés a Storm on HDInsight** lehetőséget.
 
     > [!NOTE]  
     > Ha a rendszer kéri, adja meg az Azure-előfizetéséhez tartozó bejelentkezési hitelesítő adatokat. Ha egynél több előfizetéssel rendelkezik, jelentkezzen be a HDInsight-fürtön található Stormot tartalmazóba.
 
-1. A **topológia beküldése** párbeszédpanel **Storm-fürt** legördülő listájában válassza ki a Storm on HDInsight-fürtöt, majd válassza a **Küldés**lehetőséget. A **kimenet** ablaktáblán megtekintheti, hogy a Küldés sikeres volt-e.
+1. A **topológia beküldése** párbeszédpanel **Storm-fürt** legördülő listájában válassza ki a Storm on HDInsight-fürtöt, majd válassza a **Küldés** lehetőséget. A **kimenet** ablaktáblán megtekintheti, hogy a Küldés sikeres volt-e.
 
 ## <a name="submit-a-topology-using-ssh-and-the-storm-command"></a>Topológia beküldése az SSH és a Storm parancs használatával
 
@@ -89,7 +89,7 @@ Amikor a Visual Studióval küldi el a topológiát, megjelenik a **Storm-topol�
 ![Figyelő topológia, Storm-topológiák nézet ablak, Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/visual-studio-monitor.png)
 
 > [!NOTE]  
-> A **Storm-topológiákat** a **Server Explorerben**is megtekintheti. Bontsa ki az **Azure**  >  **HDInsight**csomópontot, kattintson a jobb gombbal a HDInsight-fürtön található Storm elemre, majd válassza a **Storm-topológiák megtekintése**lehetőséget.
+> A **Storm-topológiákat** a **Server Explorerben** is megtekintheti. Bontsa ki az **Azure**  >  **HDInsight** csomópontot, kattintson a jobb gombbal a HDInsight-fürtön található Storm elemre, majd válassza a **Storm-topológiák megtekintése** lehetőséget.
 
 Válassza ki a kiöntő vagy a bolt alakzatát, és tekintse meg az ezen összetevőkre vonatkozó információkat. A kiválasztott elemhez tartozó elemleírás jelenik meg.
 
@@ -226,7 +226,7 @@ A **topológiai műveletek** szakaszban a következő gombokra kattintva végezh
 | Kiöntő statisztika vagy bolt statisztikái | A kiöntő vagy a bolt statisztikája. Az ebben a szakaszban szereplő bejegyzés időkeretének megadásához válassza ki a hivatkozást az **ablak** oszlopban. |
 | (Csak bolt)<br/>Bemeneti statisztika *(időkeret)* | A bolt által felhasznált bemeneti adatfolyamokra vonatkozó információk. |
 | Kimeneti statisztika *(időkeret)* | Információk a kiöntő vagy a bolt által kibocsátott adatfolyamokról. |
-| Profilkészítés és hibakeresés | Az ezen a lapon található összetevők profilkészítésének és hibakeresésének vezérlése. Megadhatja az **állapot/időkorlát (perc)** értéket, és kiválaszthatja a **JStack**, a **feldolgozót**és a **kupacot**is. |
+| Profilkészítés és hibakeresés | Az ezen a lapon található összetevők profilkészítésének és hibakeresésének vezérlése. Megadhatja az **állapot/időkorlát (perc)** értéket, és kiválaszthatja a **JStack**, a **feldolgozót** és a **kupacot** is. |
 | Végrehajtók *(időkeret)* | Információk a kiöntő vagy a bolt példányairól. Ha meg szeretné tekinteni az ehhez a példányhoz létrehozott diagnosztikai információk naplóját, válassza ki az adott végrehajtóhoz tartozó **portot** . Az adott végrehajtóhoz társított munkavégző erőforrásokat is megtekintheti a **gazdagép** oszlopban található hivatkozás kiválasztásával. |
 | Hibák | A kiöntő vagy a boltra vonatkozó bármilyen hiba. |
 
@@ -252,12 +252,12 @@ A fürt fő csomópontjának teljes tartományneve (FQDN) több módon is megker
 | FQDN-felderítési módszer | Leírás |
 | --- | --- |
 | SSH-munkamenet | Használja a parancsot `headnode -f` egy SSH-munkamenetből a fürtre. |
-| Ambari web | A Ambari-fürt weblapján ( `https://CLUSTERNAME.azurehdinsight.net` ) válassza ki a **szolgáltatások** elemet az oldal tetején, majd válassza a **Storm**lehetőséget. Az **Összefoglalás** lapon válassza a **Storm UI-kiszolgáló**lehetőséget. A Storm felhasználói felületet futtató csomópont teljes tartományneve és REST API a lap tetején jelenik meg. |
+| Ambari web | A Ambari-fürt weblapján ( `https://CLUSTERNAME.azurehdinsight.net` ) válassza ki a **szolgáltatások** elemet az oldal tetején, majd válassza a **Storm** lehetőséget. Az **Összefoglalás** lapon válassza a **Storm UI-kiszolgáló** lehetőséget. A Storm felhasználói felületet futtató csomópont teljes tartományneve és REST API a lap tetején jelenik meg. |
 | Ambari REST API | A paranccsal `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` információkat kérhet le arról a csomópontról, amelyen a Storm kezelőfelülete és REST API fut. Cserélje le a *CLUSTERNAME* két példányát a fürt nevére. Amikor a rendszer kéri, adja meg a felhasználói (rendszergazdai) fiókhoz tartozó jelszót. A válaszban a JSON-kimenet "host_name" bejegyzése tartalmazza a csomópont teljes tartománynevét. |
 
 ### <a name="authentication"></a>Hitelesítés
 
-A REST APIra irányuló kérelmeknek *alapszintű hitelesítést*kell használniuk, ezért a HDInsight-fürthöz tartozó rendszergazdai nevet és jelszót kell használnia.
+A REST APIra irányuló kérelmeknek *alapszintű hitelesítést* kell használniuk, ezért a HDInsight-fürthöz tartozó rendszergazdai nevet és jelszót kell használnia.
 
 > [!NOTE]  
 > Mivel az egyszerű hitelesítés titkosítatlan szöveggel van ellátva, *mindig* a HTTPS protokollt használja a fürttel folytatott kommunikáció biztonságossá tételéhez.

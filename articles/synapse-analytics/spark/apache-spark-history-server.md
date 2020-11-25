@@ -10,17 +10,17 @@ ms.date: 10/15/2020
 ms.author: euang
 ms.reviewer: euang
 ms.openlocfilehash: 94c30cad1e09a01686a9042a6271a152d0f433fd
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738514"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995386"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Apache Spark alkalmazások hibakeresése és diagnosztizálása a kiterjesztett Apache Sparki előzményeket használó kiszolgálón
 
 Ez a cikk útmutatást nyújt arról, hogyan használható a kiterjesztett Apache Sparki előzmények kiszolgáló a befejezett és futó Spark-alkalmazások hibakereséséhez és diagnosztizálásához.
 
-A bővítmény tartalmaz egy adatlapot, a Graph fület és a diagnosztika lapot. Használja az **adatok** lapot a Spark-feladathoz tartozó bemeneti és kimeneti adatok vizsgálatához. A **Graph (gráf** ) lapon megtekintheti a feladatok gráfjának adatfolyamait és visszajátszását. A **diagnosztika** lapon az  **adatok elferdítés** , az **idő** és a **végrehajtó használatának elemzése** látható.
+A bővítmény tartalmaz egy adatlapot, a Graph fület és a diagnosztika lapot. Használja az **adatok** lapot a Spark-feladathoz tartozó bemeneti és kimeneti adatok vizsgálatához. A **Graph (gráf** ) lapon megtekintheti a feladatok gráfjának adatfolyamait és visszajátszását. A **diagnosztika** lapon az  **adatok elferdítés**, az **idő** és a **végrehajtó használatának elemzése** látható.
 
 ## <a name="access-the-apache-spark-history-server"></a>A Apache Spark History-kiszolgáló elérése
 
@@ -30,7 +30,7 @@ A Apache Spark History Server a webes felhasználói felület a befejezett és f
 
 1. Nyissa meg az [Azure szinapszis Analytics szolgáltatást](https://web.azuresynapse.net/).
 
-2. Válassza a **figyelés** , majd az **alkalmazások Apache Spark** lehetőséget.
+2. Válassza a **figyelés**, majd az **alkalmazások Apache Spark** lehetőséget.
 
     ![Válassza a figyelés, majd a Spark-alkalmazás lehetőséget.](./media/apache-spark-history-server/click-monitor-spark-application.png)
 
@@ -56,7 +56,7 @@ A Apache Spark History Server a webes felhasználói felület a befejezett és f
 
 Válassza ki a megtekinteni kívánt feladatokhoz tartozó AZONOSÍTÓJÚ feladatot. Az adatnézet beszerzéséhez az eszköz menüjében válassza az **Adatvédelem** lehetőséget. Ez a szakasz bemutatja, hogyan végezheti el a különböző feladatokat az adatok lapon.
 
-* A lapokat külön kiválasztva jelölje be a **bemenetek** , a **kimenetek** és a **táblák műveleteit** .
+* A lapokat külön kiválasztva jelölje be a **bemenetek**, a **kimenetek** és a **táblák műveleteit** .
 
     ![A Spark-alkalmazások lapjai](./media/apache-spark-history-server/apache-spark-data-tabs.png)
 
@@ -68,7 +68,7 @@ Válassza ki a megtekinteni kívánt feladatokhoz tartozó AZONOSÍTÓJÚ felada
 
     ![A Spark-alkalmazás mentésének adatvédelme](./media/apache-spark-history-server/apache-spark-data-save.png)
 
-* Keresés kulcsszavak beírásával a mezők **kereséséhez** . A keresési eredmények azonnal megjelennek.
+* Keresés kulcsszavak beírásával a mezők **kereséséhez**. A keresési eredmények azonnal megjelennek.
 
     ![A Spark-alkalmazások keresésére vonatkozó adatgyűjtés](./media/apache-spark-history-server/apache-spark-data-search.png)
 
@@ -190,9 +190,9 @@ Küldjön visszajelzést a problémákkal kapcsolatos visszajelzések **megadás
 
 ## <a name="explore-the-diagnosis-tab-in-apache-spark-history-server"></a>A Apache Spark History Server diagnosztika lapjának megismerése
 
-A diagnosztika lap megnyitásához válassza ki a kívánt AZONOSÍTÓJÚ feladatot. Ezután válassza a **diagnosztika** lehetőséget az eszköz menüjében a feladatok diagnosztizálási nézetének lekéréséhez. A diagnosztika lapon szerepel az **adatok eldöntése** , az **időeltérés** és a **végrehajtó általi használat elemzése** .
+A diagnosztika lap megnyitásához válassza ki a kívánt AZONOSÍTÓJÚ feladatot. Ezután válassza a **diagnosztika** lehetőséget az eszköz menüjében a feladatok diagnosztizálási nézetének lekéréséhez. A diagnosztika lapon szerepel az **adatok eldöntése**, az **időeltérés** és a **végrehajtó általi használat elemzése**.
 
-A lapfülek kiválasztásával keresse meg az **adatok eldöntését** , az **időeltérést** és a **végrehajtó használatának elemzését** .
+A lapfülek kiválasztásával keresse meg az **adatok eldöntését**, az **időeltérést** és a **végrehajtó használatának elemzését** .
 
 ![SparkUI-diagnosztika adatferdítő lapja](./media/apache-spark-history-server/sparkui-diagnosis-tabs.png)
 
@@ -216,7 +216,7 @@ Az **idő megdöntése** lap a feladat végrehajtási ideje alapján elferdítet
 
 * **Paraméterek megadása** – az első szakasz azokat a paramétereket jeleníti meg, amelyek az időeltérés észlelésére szolgálnak. Az időeltérés észlelésének alapértelmezett feltételei: a feladat-végrehajtási idő nagyobb, mint az átlagos végrehajtási idő háromszorosa, a feladat végrehajtási ideje pedig 30 másodpercnél nagyobb. A paramétereket igény szerint módosíthatja. A **ferde szakasz** és az elferdítés **diagram** a megfelelő szakaszokat és feladatokat jeleníti meg, ugyanúgy, mint a fenti **adattorzítási** lap.
 
-* Adja meg az **időeltérést** , majd a szűrt **eredmény a szakasz** paramétereinek megadása szakaszban, a **Paraméterek** beállítása szakaszban látható. Válasszon egy elemet a **ferde fázis** szakaszban, majd a megfelelő diagramot a section3-ben, a feladat részletei pedig a jobb alsó panelen jelennek meg.
+* Adja meg az **időeltérést**, majd a szűrt **eredmény a szakasz** paramétereinek megadása szakaszban, a **Paraméterek** beállítása szakaszban látható. Válasszon egy elemet a **ferde fázis** szakaszban, majd a megfelelő diagramot a section3-ben, a feladat részletei pedig a jobb alsó panelen jelennek meg.
 
     ![sparkui-diagnosztika időtartamának eldöntése szakasz](./media/apache-spark-history-server/sparkui-diagnosis-timeskew-section2.png)
 
@@ -224,7 +224,7 @@ Az **idő megdöntése** lap a feladat végrehajtási ideje alapján elferdítet
 
 A végrehajtói használati gráf megjeleníti a Spark-feladatok végrehajtójának kiosztását és futási állapotát.  
 
-1. Válassza **a végrehajtói használat elemzése** lehetőséget, majd a végrehajtói használattal kapcsolatos négy típusú görbét, beleértve a **lefoglalt végrehajtókat** , a **végrehajtók** , az **üresjárati végrehajtók** és a **maximális végrehajtó példányok** futtatását. A lefoglalt végrehajtók esetében a "végrehajtó által hozzáadott" vagy "végrehajtó eltávolított" esemény növeli vagy csökkenti a lefoglalt végrehajtókat. További összehasonlításért tekintse meg az "esemény ütemezése" részt a "feladatok" lapon.
+1. Válassza **a végrehajtói használat elemzése** lehetőséget, majd a végrehajtói használattal kapcsolatos négy típusú görbét, beleértve a **lefoglalt végrehajtókat**, a **végrehajtók**, az **üresjárati végrehajtók** és a **maximális végrehajtó példányok** futtatását. A lefoglalt végrehajtók esetében a "végrehajtó által hozzáadott" vagy "végrehajtó eltávolított" esemény növeli vagy csökkenti a lefoglalt végrehajtókat. További összehasonlításért tekintse meg az "esemény ütemezése" részt a "feladatok" lapon.
 
    ![sparkui-diagnosztikai végrehajtók lap](./media/apache-spark-history-server/sparkui-diagnosis-executors.png)
 
@@ -236,7 +236,7 @@ A végrehajtói használati gráf megjeleníti a Spark-feladatok végrehajtójá
 
 A rugalmasan elosztott adatkészletek (RDD) használatával a bemeneti/kimeneti adatok nem jelennek meg az adatok lapon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Synapse Analytics](../overview-what-is.md)
 - [.NET Apache Spark dokumentációhoz](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)

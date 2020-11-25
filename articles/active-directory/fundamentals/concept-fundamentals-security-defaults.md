@@ -13,11 +13,11 @@ ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
 ms.openlocfilehash: c26cbf55c1e3883605d4c65659511af20cf02c7f
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836767"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996678"
 ---
 # <a name="what-are-security-defaults"></a>Mik azok a biztonsági alapértékek?
 
@@ -159,7 +159,7 @@ A biztonsági alapértelmezett beállítások engedélyezése a címtárban:
 1. Tallózással keresse meg **Azure Active Directory**   >  **tulajdonságokat**.
 1. Válassza a **biztonsági beállítások kezelése** lehetőséget.
 1. Állítsa a **biztonsági Alapértelmezések engedélyezése** kapcsolót **Igen** értékre.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="disabling-security-defaults"></a>Biztonsági alapértékek letiltása
 
@@ -173,8 +173,8 @@ A biztonsági alapértelmezett beállítások letiltása a címtárban:
 1. Tallózással keresse meg **Azure Active Directory**   >  **tulajdonságokat**.
 1. Válassza a **biztonsági beállítások kezelése** lehetőséget.
 1. Állítsa be a **biztonsági beállítások engedélyezése** beállítást a **nem** értékre.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Gyakori feltételes hozzáférési szabályzatok](../conditional-access/concept-conditional-access-policy-common.md)

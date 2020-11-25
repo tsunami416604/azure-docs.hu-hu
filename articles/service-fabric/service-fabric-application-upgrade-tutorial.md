@@ -4,11 +4,11 @@ description: Ez a cikk végigvezeti egy Service Fabric alkalmazás üzembe helye
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: acde2f4e51bee29d2eefb0d5fbb54fbe421a41f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82195867"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996236"
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>Service Fabric alkalmazás-frissítési oktatóanyag a Visual Studióval
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ Most kattintson a **Közzététel** lehetőségre a párbeszédpanelen. [A Servi
 ## <a name="step-2-update-the-visual-objects-sample"></a>2. lépés: a vizuális objektumok mintájának frissítése
 Észreveheti, hogy az 1. lépésben üzembe helyezett verziónál a vizualizációs objektumok nem forognak. Frissítjük az alkalmazást arra a szintre, ahol a vizualizáció objektumok is forognak.
 
-Válassza ki a VisualObjects. ActorService projektet a VisualObjects-megoldáson belül, és nyissa meg a **VisualObjectActor.cs** fájlt. A fájlon belül lépjen a metódusra `MoveObject` , a megjegyzésbe `visualObject.Move(false)` és a megjegyzésbe `visualObject.Move(true)` . A kód módosítása a szolgáltatás frissítése után elforgatja az objektumokat.  **Most már létrehozhatja (nem építheti újra) a megoldást**, amely létrehozza a módosított projekteket. Ha az *összes Újraépítés*lehetőséget választja, frissítenie kell az összes projekt verzióját.
+Válassza ki a VisualObjects. ActorService projektet a VisualObjects-megoldáson belül, és nyissa meg a **VisualObjectActor.cs** fájlt. A fájlon belül lépjen a metódusra `MoveObject` , a megjegyzésbe `visualObject.Move(false)` és a megjegyzésbe `visualObject.Move(true)` . A kód módosítása a szolgáltatás frissítése után elforgatja az objektumokat.  **Most már létrehozhatja (nem építheti újra) a megoldást**, amely létrehozza a módosított projekteket. Ha az *összes Újraépítés* lehetőséget választja, frissítenie kell az összes projekt verzióját.
 
 Az alkalmazás verziószámát is meg kell adni. Ha módosítani szeretné a verziót, miután a jobb gombbal a **VisualObjects** projektre kattint, használhatja a Visual Studio **jegyzékfájl-verziójának szerkesztése** lehetőséget. A beállítás kiválasztásával megjelenik a kiadási verziók párbeszédpanelje a következő módon:
 
@@ -47,7 +47,7 @@ Frissítse a módosított projektek és a hozzájuk tartozó csomagok verziójá
 
 ![Verziók frissítése][image4]
 
-A Visual Studio-eszközök az **alkalmazások és szolgáltatások verzióinak automatikus frissítését követően automatikusan**kumulatív verziókat is elvégezhetnek. Ha a [SemVer](http://www.semver.org)-t használja, akkor a kódot és/vagy a konfigurációs csomag verzióját csak akkor kell frissíteni, ha ez a beállítás be van jelölve.
+A Visual Studio-eszközök az **alkalmazások és szolgáltatások verzióinak automatikus frissítését követően automatikusan** kumulatív verziókat is elvégezhetnek. Ha a [SemVer](http://www.semver.org)-t használja, akkor a kódot és/vagy a konfigurációs csomag verzióját csak akkor kell frissíteni, ha ez a beállítás be van jelölve.
 
 Mentse a módosításokat, és most jelölje be az **alkalmazás frissítése** jelölőnégyzetet.
 

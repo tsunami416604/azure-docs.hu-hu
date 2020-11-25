@@ -12,11 +12,11 @@ ms.date: 08/10/2020
 ms.author: juliako
 ms.custom: devx-track-js
 ms.openlocfilehash: 1bc751ae293abbb7aa330a99a4b66a917d150906
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268621"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994978"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Video Indexer widgetek beágyazása az alkalmazásokba
 
@@ -30,7 +30,7 @@ A 2. verziótól kezdődően a widget alap URL-címe tartalmazza a megadott fió
 
 A Kognitív elemzési vezérlő az összes vizuális elemzést tartalmazza, amely a videóindexelési folyamat során lett kinyerve. A kognitív bepillantások widget a következő opcionális URL-paramétereket támogatja:
 
-|Name (Név)|Definíció|Leírás|
+|Név|Definíció|Leírás|
 |---|---|---|
 |`widgets` | Vesszővel elválasztott sztringek | Lehetővé teszi a megjeleníteni kívánt adatfelismerések szabályozását.<br/>Példa: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords` a csak a felhasználók és a kulcsszavak felhasználói felületi felismeréseit jeleníti meg.<br/>Elérhető lehetőségek: személyek, animatedCharacters, kulcsszavak, címkék, érzelmek, érzelmek, témakörök, kulcsképek, átiratok, OCR, hangszórók, jelenetek és namedEntities.|
 |`controls`|Vesszővel elválasztott sztringek|Lehetővé teszi a megjeleníteni kívánt vezérlők szabályozását.<br/>Példa: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?controls=search,download` csak a keresési lehetőség és a letöltés gomb megjelenítése.<br/>Elérhető lehetőségek: keresés, letöltés, előzetes beállítás, nyelv.|
@@ -43,7 +43,7 @@ A Kognitív elemzési vezérlő az összes vizuális elemzést tartalmazza, amel
 
 A Player widget Adaptív átviteli sebesség használatával is továbbíthatja a videót. A Player widget a következő opcionális URL-paramétereket támogatja.
 
-|Name (Név)|Definíció|Leírás|
+|Név|Definíció|Leírás|
 |---|---|---|
 |`t` | Másodperc az elejétől | A lejátszó a megadott időpontból kezdi a lejátszást.<br/> Példa: `t=60`. |
 |`captions` | Nyelvi kód | A megadott nyelven beolvassa a feliratot a widget betöltésével, hogy elérhető legyen a **feliratok** menüben.<br/> Példa: `captions=en-US`. |
@@ -57,7 +57,7 @@ A Player widget Adaptív átviteli sebesség használatával is továbbíthatja 
 
 A szerkesztői widgettel új projekteket hozhat létre, és kezelheti a videókban észlelt eredményeket. A szerkesztői widget a következő opcionális URL-paramétereket támogatja.
 
-|Name (Név)|Definíció|Leírás|
+|Név|Definíció|Leírás|
 |---|---|---|
 |`accessToken`<sup>*</sup> | Sztring | Hozzáférést biztosít azokhoz a videókhoz, amelyek csak a widget beágyazásához használt fiókban találhatók.<br> A szerkesztő widgethez a `accessToken` paraméter szükséges. |
 |`language` | Nyelvi kód | A lejátszó nyelvének szabályozása. Az alapértelmezett érték `en-US`.<br/>Példa: `language=de-DE`. |
@@ -78,9 +78,9 @@ A `location` paraméternek szerepelnie kell a beágyazott hivatkozásokban. lás
 ### <a name="public-content"></a>Nyilvános tartalom
 
 1. Jelentkezzen be a [video Indexer](https://www.videoindexer.ai/) webhelyére.
-1. Válassza ki a használni kívánt videót, és nyomja meg a **Lejátszás**gombot.
-1. Válassza ki a kívánt widget típusát (**kognitív ismeretek**, **lejátszó**vagy **szerkesztő**).
-1. Kattintson a ** &lt; / &gt; beágyazás**gombra.
+1. Válassza ki a használni kívánt videót, és nyomja meg a **Lejátszás** gombot.
+1. Válassza ki a kívánt widget típusát (**kognitív ismeretek**, **lejátszó** vagy **szerkesztő**).
+1. Kattintson a **&lt; / &gt; beágyazás** gombra.
 5. Másolja a beágyazási kódot (ekkor megjelenik a **beágyazott kód másolása** a **megosztás & beágyazási** párbeszédpanelen).
 6. Adja hozzá a kódot az alkalmazáshoz.
 
@@ -208,7 +208,7 @@ Ha nem a Azure Media Playert használja, akkor manuálisan kell módosítania a 
     ```
 
 2. Ágyazza be a Kognitív elemzési vezérlőt.
-3. Implementálja a lejátszóval való kommunikációt az „üzenet” eseményre való figyeléssel. Példa:
+3. Implementálja a lejátszóval való kommunikációt az „üzenet” eseményre való figyeléssel. Például:
 
     ```javascript
     <script>
@@ -271,7 +271,7 @@ Fontos tudni, hogy ez a beállítás csak olyan esetekben releváns, ha azt szer
 
 A Video Indexer-lejátszó beágyazásakor megadhatja a lejátszó méretét az iframe méretének meghatározásával.
 
-Példa:
+Például:
 
 `<iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />`
 
@@ -304,7 +304,7 @@ Tekintse meg a [Code Samples](https://github.com/Azure-Samples/media-services-vi
 | `url-generator`                   | Egyéni beágyazási URL-címeket hoz létre a felhasználó által megadott beállítások alapján.             |
 | `html5-player`                    | A VI-betekintést egy alapértelmezett HTML5-videolejátszó alá ágyazhatja.                           |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Video Indexer információk megtekintésével és szerkesztésével kapcsolatos információkért lásd: [video Indexer-információk megtekintése és szerkesztése](video-indexer-view-edit.md).
 

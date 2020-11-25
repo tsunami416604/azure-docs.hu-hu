@@ -11,15 +11,15 @@ ms.workload: identity
 ms.date: 03/19/2020
 ms.author: kenwith
 ms.openlocfilehash: e34656d6ce515cabe955c101f7b52ac0f2ade8db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88235817"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994808"
 ---
 # <a name="how-to-export-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>Útmutató: az üzembe helyezési konfiguráció exportálása és visszavonása egy ismert megfelelő állapotba
 
-Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
+Ebből a cikkből megtudhatja, hogyan:
 
 - Kiépítési konfiguráció exportálása és importálása a Azure Portal
 - A kiépítési konfiguráció exportálása és importálása a Microsoft Graph API használatával
@@ -30,9 +30,9 @@ Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 
 A konfiguráció exportálása:
 
-1. A [Azure Portal](https://portal.azure.com/)a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a bal oldali navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 1. A **Azure Active Directory** ablaktáblán válassza a **vállalati alkalmazások** lehetőséget, majd válassza ki az alkalmazást.
-1. A bal oldali navigációs panelen válassza a **kiépítés**lehetőséget. A létesítési konfiguráció lapon kattintson az **attribútum-hozzárendelések**elemre, majd **jelenítse meg a speciális beállításokat**, és végül **tekintse át a sémát**. Ekkor megnyílik a sémakezelő szerkesztő.
+1. A bal oldali navigációs panelen válassza a **kiépítés** lehetőséget. A létesítési konfiguráció lapon kattintson az **attribútum-hozzárendelések** elemre, majd **jelenítse meg a speciális beállításokat**, és végül **tekintse át a sémát**. Ekkor megnyílik a sémakezelő szerkesztő.
 1. A séma letöltéséhez kattintson a lap tetején található parancssáv Letöltés gombjára.
 
 ### <a name="disaster-recovery---roll-back-to-a-known-good-state"></a>Vész-helyreállítás – visszaállítás egy ismert jó állapotba

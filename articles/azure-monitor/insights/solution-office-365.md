@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
 ms.openlocfilehash: eb20bf4164cb2153f6786dbec04f79453554fa25
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999740"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995862"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365 felügyeleti megoldás az Azure-ban (előzetes verzió)
 
@@ -41,9 +41,9 @@ ms.locfileid: "91999740"
 > ### <a name="q-will-the-tables-and-schemas-be-changed"></a>K: a táblák és sémák módosulnak?
 > A **OfficeActivity** -tábla neve és sémája ugyanaz marad, mint az aktuális megoldásban. Továbbra is használhatja az új megoldásban ugyanazokat a lekérdezéseket, az Azure AD-adataira hivatkozó lekérdezések kivételével.
 > 
-> Az új [Azure ad jelentéskészítési és figyelési megoldás](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md) naplói bekerülnek a [SigninLogs](../../active-directory/reports-monitoring/concept-sign-ins.md) és a [AuditLogs](../../active-directory/reports-monitoring/concept-audit-logs.md) táblákba a **OfficeActivity**helyett. További információ: az Azure [ad-naplók elemzése](../../active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics.md), amely az Azure Sentinel és a Azure monitor felhasználók számára is fontos.
+> Az új [Azure ad jelentéskészítési és figyelési megoldás](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md) naplói bekerülnek a [SigninLogs](../../active-directory/reports-monitoring/concept-sign-ins.md) és a [AuditLogs](../../active-directory/reports-monitoring/concept-audit-logs.md) táblákba a **OfficeActivity** helyett. További információ: az Azure [ad-naplók elemzése](../../active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics.md), amely az Azure Sentinel és a Azure monitor felhasználók számára is fontos.
 > 
-> A következő minták a **OfficeActivity** és a **SigninLogs**lekérdezések átalakítására szolgálnak:
+> A következő minták a **OfficeActivity** és a **SigninLogs** lekérdezések átalakítására szolgálnak:
 > 
 > **Sikertelen bejelentkezések lekérdezése felhasználónként:**
 > 
@@ -125,7 +125,7 @@ Az Office 365 felügyeleti megoldás lehetővé teszi az Office 365-környezet f
 
 Az Office 365 felügyeleti megoldás eltávolításához használja a [felügyeleti megoldás eltávolítása](solutions.md#remove-a-monitoring-solution)című eljárást. Ez nem állítja le az Office 365-ből gyűjtött adatokat a Azure Monitor mégis. Kövesse az alábbi eljárást az Office 365 lemondásához és az adatok gyűjtésének leállításához.
 
-1. Mentse a következő parancsfájlt *office365_unsubscribe.ps1ként *.
+1. Mentse a következő parancsfájlt *office365_unsubscribe.ps1ként*.
 
     ```powershell
     param (
@@ -381,7 +381,7 @@ Ezek a rekordok a postaláda-naplózási bejegyzések létrehozásakor jönnek l
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType (Rekordtípus)     | ExchangeItem |
-| Elem | Azt az elemeket jelöli, amelyen a műveletet elvégezték | 
+| Item | Azt az elemeket jelöli, amelyen a műveletet elvégezték | 
 | SendAsUserMailboxGuid | Azon postaláda Exchange GUID azonosítója, amelyet a rendszer az e-mailek küldésére használt. |
 | SendAsUserSmtp | A megszemélyesíteni kívánt felhasználó SMTP-címe. |
 | SendonBehalfOfUserMailboxGuid | Azon postaláda Exchange GUID azonosítója, amelyet a rendszer a levél nevében küldött e-mailek küldéséhez. |
@@ -462,7 +462,7 @@ Ezek a rekordok a SharePoint-fájl műveleteire adott válaszként jönnek létr
 
 A következő táblázat példákat tartalmaz a megoldás által gyűjtött frissítési rekordok lekérdezésére.
 
-| Lekérdezés | Description |
+| Lekérdezés | Leírás |
 | --- | --- |
 |Az Office 365-előfizetés összes műveletének száma |OfficeActivity &#124; összegzések száma () művelet szerint |
 |SharePoint-webhelyek használata|OfficeActivity &#124;, ahol a OfficeWorkload = ~ "SharePoint" &#124; összesítések száma () SiteUrl szerint \| rendezve|
@@ -471,7 +471,7 @@ A következő táblázat példákat tartalmaz a megoldás által gyűjtött fris
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A részletes frissítési információk megtekintéséhez használja [a Azure monitor a naplózási lekérdezéseket](../log-query/log-query-overview.md) .
 * [Saját irányítópultok létrehozásával](../learn/tutorial-logs-dashboards.md) megjelenítheti kedvenc Office 365 keresési lekérdezéseit.

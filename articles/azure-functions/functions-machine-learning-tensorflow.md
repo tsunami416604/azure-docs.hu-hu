@@ -7,11 +7,11 @@ ms.date: 01/15/2020
 ms.author: antchu
 ms.custom: mvc, devx-track-python, devx-track-azurepowershell
 ms.openlocfilehash: ca9ce27583168dfee1a597fce559afad38a3a8c7
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422926"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994604"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Oktatóanyag: gépi tanulási modellek alkalmazása Azure Functions Python és TensorFlow
 
@@ -21,7 +21,7 @@ Ebből a cikkből megtudhatja, hogyan használható a Python, a TensorFlow és a
 > * Helyi környezet inicializálása a Python-Azure Functions fejlesztéséhez.
 > * Egyéni TensorFlow Machine learning-modell importálása egy Function alkalmazásba.
 > * Hozzon létre egy kiszolgáló nélküli HTTP API-t, amely egy kutyát vagy macskát tartalmazó képet osztályoz.
-> * Használja az API-t egy webalkalmazásból.
+> * Az API használata webalkalmazásból.
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
@@ -133,7 +133,7 @@ Azure Functions egy függvény-projekt egy vagy több olyan egyedi függvény t�
     func new --name classify --template "HTTP trigger"
     ```
 
-    Ez a parancs létrehoz egy mappát, amely megfelel a függvény nevének, *besorolása*. Ebben a mappában két fájl található: az *\_ \_ init \_ \_ .* a (z), amely tartalmazza a függvény kódját, és *function.json* , amely leírja a függvény triggerét, valamint a bemeneti és kimeneti kötéseit. A fájlok tartalmával kapcsolatos részletekért lásd: [a fájl tartalmának vizsgálata](./create-first-function-cli-python.md#optional-examine-the-file-contents) a Python rövid útmutatójában.
+    Ez a parancs létrehoz egy mappát, amely megfelel a függvény nevének, *besorolása*. Ebben a mappában két fájl található: az *\_ \_ init \_ \_ .* a (z), amely tartalmazza a függvény kódját, és *function.json*, amely leírja a függvény triggerét, valamint a bemeneti és kimeneti kötéseit. A fájlok tartalmával kapcsolatos részletekért lásd: [a fájl tartalmának vizsgálata](./create-first-function-cli-python.md#optional-examine-the-file-contents) a Python rövid útmutatójában.
 
 
 ## <a name="run-the-function-locally"></a>A függvény helyi futtatása

@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 396344ba90aa3850d7d23dc40d6df95f6d1f6c3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89279516"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996576"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>Felhasználói adatok védelme és az Azure Active Directory átmenő hitelesítése
 
@@ -46,7 +46,7 @@ Erősen ajánljuk a második lehetőséget, mivel egyszerűbb megvalósítani é
 
 ### <a name="delete-azure-ad-connect-trace-log-files"></a>Azure AD Connect nyomkövetési naplófájlok törlése
 
-Tekintse át a **%ProgramData%\AADConnect** mappa tartalmát, és törölje a mappához tartozó nyomkövetési napló tartalmát (**nyomkövetési \* ** naplófájlok) a Azure ad Connect telepítésének vagy frissítésének 48 órán belül, illetve az átmenő hitelesítési konfiguráció módosításával, mivel ez a művelet a GDPR által érintett adatmennyiséget hozhat létre.
+Tekintse át a **%ProgramData%\AADConnect** mappa tartalmát, és törölje a mappához tartozó nyomkövetési napló tartalmát (**nyomkövetési \*** naplófájlok) a Azure ad Connect telepítésének vagy frissítésének 48 órán belül, illetve az átmenő hitelesítési konfiguráció módosításával, mivel ez a művelet a GDPR által érintett adatmennyiséget hozhat létre.
 
 >[!IMPORTANT]
 >Ne törölje a mappában található **PersistedState.xml** fájlt, mivel ez a fájl a Azure ad Connect előző telepítésének állapotát fogja használni, és a rendszer a frissítés telepítésekor használja. Ez a fájl soha nem tartalmaz semmilyen információt egy személyről, és soha nem törölhető.
@@ -67,7 +67,7 @@ Ha többet szeretne megtudni a kapcsolódó Azure AD Connect GDPR vonatkozó kö
 
 ### <a name="delete-authentication-agent-event-logs"></a>Hitelesítési ügynök eseménynaplóinak törlése
 
-Ez a termék Windows- **eseménynaplókat**is létrehozhat. További információért olvassa el [ezt a cikket](/windows/win32/wes/windows-event-log).
+Ez a termék Windows- **eseménynaplókat** is létrehozhat. További információért olvassa el [ezt a cikket](/windows/win32/wes/windows-event-log).
 
 A továbbított hitelesítési ügynökhöz kapcsolódó naplók megtekintéséhez nyissa meg a **Eseménynapló** alkalmazást a kiszolgálón, és keresse meg az **alkalmazás és szolgáltatás Logs\Microsoft\AzureAdConnect\AuthenticationAgent\Admin**.
 
@@ -91,20 +91,20 @@ Foreach ($file in $files) {
 A parancsfájl 48 óránkénti futtatásához kövesse az alábbi lépéseket:
 
 1.  Mentse a parancsfájlt egy fájlban a következővel:. PS1 "bővítmény.
-2.  Nyissa meg a **Vezérlőpultot** , és kattintson a **rendszer és biztonság**elemre.
-3.  A **felügyeleti eszközök** fejléc alatt kattintson a**feladatok ütemezhetnek**elemre.
-4.  A **Feladatütemezőben**kattintson a jobb gombbal a "**feladatütemezés könyvtára**" elemre, majd kattintson az "**alapszintű feladat létrehozása..**." elemre.
-5.  Adja meg az új feladat nevét, majd kattintson a **tovább**gombra.
-6.  Válassza a "**napi**" lehetőséget a **feladat-triggerhez** , majd kattintson a **tovább**gombra.
-7.  Állítsa be az ismétlődést két napra, és kattintson a **tovább**gombra.
-8.  Válassza a**program indítása**műveletet, és kattintson a **tovább**gombra.
-9.  Írja be a "**PowerShell**" kifejezést a program/parancsfájl mezőjébe, és az "**argumentumok hozzáadása (nem kötelező)**" feliratú mezőben adja meg a korábban létrehozott parancsfájl teljes elérési útját, majd kattintson a **tovább**gombra.
+2.  Nyissa meg a **Vezérlőpultot** , és kattintson a **rendszer és biztonság** elemre.
+3.  A **felügyeleti eszközök** fejléc alatt kattintson a **feladatok ütemezhetnek** elemre.
+4.  A **Feladatütemezőben** kattintson a jobb gombbal a "**feladatütemezés könyvtára**" elemre, majd kattintson az "**alapszintű feladat létrehozása..**." elemre.
+5.  Adja meg az új feladat nevét, majd kattintson a **tovább** gombra.
+6.  Válassza a "**napi**" lehetőséget a **feladat-triggerhez** , majd kattintson a **tovább** gombra.
+7.  Állítsa be az ismétlődést két napra, és kattintson a **tovább** gombra.
+8.  Válassza a **program indítása** műveletet, és kattintson a **tovább** gombra.
+9.  Írja be a "**PowerShell**" kifejezést a program/parancsfájl mezőjébe, és az "**argumentumok hozzáadása (nem kötelező)**" feliratú mezőben adja meg a korábban létrehozott parancsfájl teljes elérési útját, majd kattintson a **tovább** gombra.
 10. A következő képernyőn a létrehozandó feladat összegzése látható. Ellenőrizze az értékeket, és kattintson a **Befejezés** gombra a feladat létrehozásához:
  
 ### <a name="note-about-domain-controller-logs"></a>Megjegyzés a tartományvezérlő naplóiról
 
 Ha a naplózás engedélyezve van, ez a termék biztonsági naplókat hozhat a tartományvezérlőkhöz. Ha többet szeretne megtudni a naplózási házirendek konfigurálásáról, olvassa el ezt a [cikket](/previous-versions/tn-archive/dd277403(v=technet.10)).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A Microsoft adatvédelmi szabályzatának áttekintése a megbízhatósági központban](https://www.microsoft.com/trustcenter)
 * [**Hibaelhárítás**](tshoot-connect-pass-through-authentication.md) – megismerheti a szolgáltatással kapcsolatos gyakori problémák megoldását.

@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: a4c97b8baaf5265f984622e2dc47e6c8c714172a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88272637"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995726"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>Hálózati biztonsági csoport folyamatábráinak megjelenítése Power BI
 
@@ -28,7 +28,7 @@ A naplófájlok manuális keresésével nehéz lehet betekintést nyerni a flow 
 > [!Warning]  
 > Az alábbi lépések a flow-naplók 1-es verziójával működnek. Részletekért lásd: a [hálózati biztonsági csoportok flow-naplózásának bemutatása](network-watcher-nsg-flow-logging-overview.md). A következő utasítások nem fognak működni a naplófájlok 2-es verziójával, módosítás nélkül.
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Használati eset
 
 Az alábbi forgatókönyvben a NSG-flow naplózási adataihoz tartozó fogadóként konfigurált Storage-fiókhoz csatlakozik Power BI asztal. A Storage-fiókhoz való kapcsolódás után Power BI letölti és elemzi a naplókat a hálózati biztonsági csoportok által naplózott forgalom vizuális megjelenítéséhez.
 

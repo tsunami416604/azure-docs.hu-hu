@@ -18,18 +18,18 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4dcc7ed6076c3bac723d709f50f1b3ab2ce8f58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319928"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996559"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>A ADSync-szolgáltatásfiók jelszavának módosítása
 Ha módosítja a ADSync-szolgáltatásfiók jelszavát, a szinkronizálási szolgáltatás nem fog megfelelően elindulni, amíg el nem hagyta a titkosítási kulcsot, és újra nem inicializálta a ADSync-szolgáltatásfiók jelszavát. 
 
 Azure AD Connect a szinkronizálási szolgáltatások részeként egy titkosítási kulcsot használ a AD DS Connector-fiók és a ADSync-szolgáltatásfiók jelszavának tárolására.  Ezek a fiókok titkosítva vannak, mielőtt azokat a rendszer az adatbázisban tárolja. 
 
-A használt titkosítási kulcs [védelme a Windows adatvédelem (DPAPI)](/previous-versions/ms995355(v=msdn.10))használatával történik. A DPAPI a **AdSync-szolgáltatásfiók**használatával védi a titkosítási kulcsot. 
+A használt titkosítási kulcs [védelme a Windows adatvédelem (DPAPI)](/previous-versions/ms995355(v=msdn.10))használatával történik. A DPAPI a **AdSync-szolgáltatásfiók** használatával védi a titkosítási kulcsot. 
 
 Ha módosítania kell a szolgáltatásfiók jelszavát, használhatja a [AdSync-szolgáltatásfiók titkosítási kulcsának elhagyása](#abandoning-the-adsync-service-account-encryption-key) a következő eljárásokkal való elvégzéséhez szükséges eljárásokat.  Ezeket az eljárásokat akkor is érdemes használni, ha valamilyen okból le kell hagyni a titkosítási kulcsot.
 
@@ -39,7 +39,7 @@ A szolgáltatásfiók jelszavának módosításakor két dolgot kell végrehajta
 Először módosítania kell a jelszót a Windows szolgáltatásvezérlő kezelőjében.  A probléma megoldása előtt a következő hibák jelennek meg:
 
 
-- Ha a Windows szolgáltatásvezérlő kezelőjében megpróbálja elindítani a szinkronizálási szolgáltatást, a következő hibaüzenet jelenik meg: "a**Windows nem tudja elindítani a Microsoft Azure ad Sync szolgáltatást a helyi számítógépen**". **1069-es hiba: a szolgáltatás bejelentkezési hiba miatt nem indult el.**"
+- Ha a Windows szolgáltatásvezérlő kezelőjében megpróbálja elindítani a szinkronizálási szolgáltatást, a következő hibaüzenet jelenik meg: "a **Windows nem tudja elindítani a Microsoft Azure ad Sync szolgáltatást a helyi számítógépen**". **1069-es hiba: a szolgáltatás bejelentkezési hiba miatt nem indult el.**"
 - A Windows Eseménynapló alatt a rendszer eseménynaplója hibát tartalmaz a 7038-es azonosítójú **eseménnyel** és az üzenettel kapcsolatban **: "a AdSync szolgáltatás nem tudott bejelentkezni a jelenleg konfigurált jelszóval a következő hiba miatt: a Felhasználónév vagy a jelszó helytelen.**"
 
 Másodszor, ha a jelszó frissül, a szinkronizálási szolgáltatás a DPAPI használatával már nem tudja lekérni a titkosítási kulcsot. A titkosítási kulcs nélkül a szinkronizációs szolgáltatás nem tudja visszafejteni a helyszíni AD-hez és az Azure AD-hoz való szinkronizáláshoz szükséges jelszavakat.
@@ -97,8 +97,8 @@ Mivel az adatbázisban tárolt meglévő jelszavakat már nem lehet visszafejten
 </br>![Service Manager szinkronizálása](./media/how-to-connect-sync-change-serviceacct-pass/startmenu.png)  
 2. Nyissa meg az **Összekötők** lapot.
 3. Válassza ki az **ad-összekötőt** , amely megfelel a helyszíni ad-nek. Ha egynél több AD-összekötővel rendelkezik, ismételje meg az alábbi lépéseket mindegyiknél.
-4. A **műveletek**területen válassza a **Tulajdonságok**lehetőséget.
-5. Az előugró párbeszédpanelen válassza a **kapcsolódás Active Directory erdőhöz**lehetőséget:
+4. A **műveletek** területen válassza a **Tulajdonságok** lehetőséget.
+5. Az előugró párbeszédpanelen válassza a **kapcsolódás Active Directory erdőhöz** lehetőséget:
 6. Adja meg a **jelszó** szövegmezőben a AD DS fiók jelszavát. Ha nem ismeri a jelszavát, a lépés végrehajtása előtt be kell állítania egy ismert értéket.
 7. Az új jelszó mentéséhez és az előugró ablak bezárásához kattintson **az OK** gombra.
 ![A "tulajdonságok" ablak "kapcsolódás Active Directory erdőhöz" lapját bemutató képernyőkép.](./media/how-to-connect-sync-change-serviceacct-pass/key6.png)
@@ -119,7 +119,7 @@ Most, hogy a szinkronizálási szolgáltatásnak van hozzáférése a titkosít�
 1. Nyissa meg a Windows Service Control Managert (START → szolgáltatások).
 2. Válassza a **Microsoft Azure ad szinkronizálás** lehetőséget, majd kattintson az Újraindítás gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 **Áttekintő témakörök**
 
 * [Azure AD Connect szinkronizálás: a szinkronizálás megismerése és testreszabása](how-to-connect-sync-whatis.md)

@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/23/2019
 ms.openlocfilehash: 421993ac4aaba551b6fcbd002783d44559ce377d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545735"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995335"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Apache Spark-alkalmazások hibakeresése HDInsight-fürtön Azure Toolkit for IntelliJ SSH-n keresztül
 
@@ -25,7 +25,7 @@ Ez a cikk részletes útmutatást nyújt arról, hogyan használhatók a [Azure 
 
 * Windows-felhasználók esetén: a helyi Spark Scala-alkalmazás Windows rendszerű számítógépen való futtatásakor kivételt jelenthet a [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356)című részben leírtak szerint. A kivétel oka, hogy WinUtils.exe hiányzik a Windows rendszerből.
 
-    A hiba elhárításához töltse le [Winutils.exet](https://github.com/steveloughran/winutils) egy olyan helyre, mint például a **C:\WinUtils\bin** . Ezután adja hozzá **HADOOP_HOME** környezeti változót, és állítsa a változó értékét **C:\WinUtils** értékre.
+    A hiba elhárításához töltse le [Winutils.exet](https://github.com/steveloughran/winutils) egy olyan helyre, mint például a **C:\WinUtils\bin**. Ezután adja hozzá **HADOOP_HOME** környezeti változót, és állítsa a változó értékét **C:\WinUtils** értékre.
 
 * [INTELLIJ Idea](https://www.jetbrains.com/idea/download/#section=windows) (a Community Edition ingyenes.)
 
@@ -33,7 +33,7 @@ Ez a cikk részletes útmutatást nyújt arról, hogyan használhatók a [Azure 
 
 * [IntelliJ-hez készült Scala beépülő modul](../spark/apache-spark-intellij-tool-plugin.md#install-scala-plugin-for-intellij-idea).
 
-* Egy SSH-ügyfél. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Egy SSH-ügyfél. További információért lásd: [Csatlakozás a HDInsighthoz (Apache Hadoop) SSH-val](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="create-a-spark-scala-application"></a>Spark Scala-alkalmazás létrehozása
 
@@ -65,7 +65,7 @@ Ez a cikk részletes útmutatást nyújt arról, hogyan használhatók a [Azure 
 
 1. Válassza a **Befejezés** lehetőséget. A projekt elérhetővé válása néhány percet igénybe vehet. Tekintse meg a jobb alsó sarokban a folyamat előrehaladását.
 
-1. Bontsa ki a projektet, és navigáljon az **src**  >  **Main**  >  **Scala** -  >  **mintához** . Kattintson duplán a **SparkCore_WasbIOTest** elemre.
+1. Bontsa ki a projektet, és navigáljon az **src**  >  **Main**  >  **Scala**-  >  **mintához**. Kattintson duplán a **SparkCore_WasbIOTest** elemre.
 
 ## <a name="perform-local-run"></a>Helyi futtatás végrehajtása
 
@@ -75,7 +75,7 @@ Ez a cikk részletes útmutatást nyújt arról, hogyan használhatók a [Azure 
 
     ![IntelliJ projekt helyi futtatásának eredménye](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-local-run-result.png)
 
-1. Az eszközök a helyi Futtatás és a helyi hibakeresés végrehajtásakor automatikusan beállították az alapértelmezett helyi futtatási konfigurációt. A jobb felső sarokban található **[Spark on HDInsight] XXX** megnyitásával megtekintheti a **[Spark on HDInsight] XXX** -t, amelyet a **HDInsight** -ben már Apache Spark létrehoztak. Váltson a **helyi Futtatás** lapra.
+1. Az eszközök a helyi Futtatás és a helyi hibakeresés végrehajtásakor automatikusan beállították az alapértelmezett helyi futtatási konfigurációt. A jobb felső sarokban található **[Spark on HDInsight] XXX** megnyitásával megtekintheti a **[Spark on HDInsight] XXX** -t, amelyet a **HDInsight**-ben már Apache Spark létrehoztak. Váltson a **helyi Futtatás** lapra.
 
     ![IntelliJ helyi futtatású hibakeresési konfigurációk futtatása](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-configuration.png)
 
@@ -83,7 +83,7 @@ Ez a cikk részletes útmutatást nyújt arról, hogyan használhatók a [Azure 
     - [WinUtils.exe hely](#prerequisites): Ha nem állította be a rendszerkörnyezeti változót, akkor a gombra kattintva megkeresheti a helyet.
     - Csupán két lehetőség közül választhat, és a MacOS és a Linux rendszeren nem szükséges.
 
-1. A konfigurációt manuálisan is beállíthatja a helyi Futtatás és a helyi hibakeresés végrehajtása előtt. Az előző képernyőképen válassza a pluszjelet ( **+** ). Ezután válassza ki a **Apache Spark a HDInsight** beállításnál. Adja meg a **név** , a **fő osztály nevét** , a menteni kívánt adatokat, majd kattintson a helyi Futtatás gombra.
+1. A konfigurációt manuálisan is beállíthatja a helyi Futtatás és a helyi hibakeresés végrehajtása előtt. Az előző képernyőképen válassza a pluszjelet ( **+** ). Ezután válassza ki a **Apache Spark a HDInsight** beállításnál. Adja meg a **név**, a **fő osztály nevét** , a menteni kívánt adatokat, majd kattintson a helyi Futtatás gombra.
 
 ## <a name="perform-local-debugging"></a>Helyi hibakeresés végrehajtása
 
@@ -93,13 +93,13 @@ Ez a cikk részletes útmutatást nyújt arról, hogyan használhatók a [Azure 
 
 ## <a name="perform-remote-run"></a>Távoli futtatás végrehajtása
 
-1. Navigáljon a konfigurációk szerkesztési beállításainak **futtatásához**  >  **..** . Ebből a menüből létrehozhat vagy szerkesztheti a távoli hibakeresés konfigurációit.
+1. Navigáljon a konfigurációk szerkesztési beállításainak **futtatásához**  >  **..**. Ebből a menüből létrehozhat vagy szerkesztheti a távoli hibakeresés konfigurációit.
 
 1. A **Futtatás/hibakeresés konfiguráció** párbeszédpanelen válassza a pluszjelet ( **+** ). Ezután válassza ki a **Apache Spark a HDInsight** beállításnál.
 
    ![IntelliJ új konfiguráció hozzáadása](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-add-new-Configuration.png)
 
-1. Váltson **távoli futtatásra a fürt** lapon. Adja meg a **név** , a **Spark-fürt** és a **fő osztály nevét** . Ezután kattintson a **Speciális konfiguráció (távoli hibakeresés)** elemre. Eszközeink támogatják a **végrehajtókkal** való hibakeresést. A **numExectors** az alapértelmezett érték 5. Nagyobb, mint 3.
+1. Váltson **távoli futtatásra a fürt** lapon. Adja meg a **név**, a **Spark-fürt** és a **fő osztály nevét**. Ezután kattintson a **Speciális konfiguráció (távoli hibakeresés)** elemre. Eszközeink támogatják a **végrehajtókkal** való hibakeresést. A **numExectors** az alapértelmezett érték 5. Nagyobb, mint 3.
 
    ![Hibakeresési konfigurációk futtatása IntelliJ](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-run-debug-configurations.png)
 
@@ -151,7 +151,7 @@ Ez a cikk részletes útmutatást nyújt arról, hogyan használhatók a [Azure 
 
    ![IntelliJ hibakeresése távoli Spark-feladatokhoz kivétel nélkül](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debug-without-exception.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
 

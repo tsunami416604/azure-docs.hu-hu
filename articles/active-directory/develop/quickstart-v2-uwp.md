@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 10/07/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: 28d912153b52580727e0fb5086e0a7ae55e8b545
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: ab8942b473ad980da22d451116bea6a759aeb461
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94560927"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95995114"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Rövid útmutató: A Microsoft Graph API meghívása Univerzális Windows-platform- (UWP-) alkalmazásból
 
-Ebben a rövid útmutatóban egy kód mintát tölt le és futtat, amely bemutatja, hogyan jelentkezhet be egy Univerzális Windows-platform (UWP) alkalmazás a felhasználók számára, és hogyan szerezhet be hozzáférési tokent a Microsoft Graph API meghívásához. 
+Ebben a rövid útmutatóban egy kód mintát tölt le és futtat, amely bemutatja, hogyan jelentkezhet be egy Univerzális Windows-platform (UWP) alkalmazás a felhasználók számára, és hogyan kérhet hozzáférési jogkivonatot a Microsoft Graph API meghívásához. 
 
 Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 
@@ -57,7 +57,7 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 > 1. Válassza a **regisztráció** lehetőséget az alkalmazás létrehozásához, majd jegyezze fel az **alkalmazás (ügyfél) azonosítóját** egy későbbi lépésben való használatra.
 > 1. A **kezelés** területen válassza a **hitelesítés** lehetőséget.
 > 1. Válassza **a platform**  >  **mobil-és asztali alkalmazások** hozzáadása lehetőséget.
-> 1. Az **átirányítási URI** -k területen válassza a elemet `https://login.microsoftonline.com/common/oauth2/nativeclient` .
+> 1. Az **átirányítási URI**-k területen válassza a elemet `https://login.microsoftonline.com/common/oauth2/nativeclient` .
 > 1. Válassza a **Konfigurálás** lehetőséget.
 
 > [!div renderon="portal" class="sxs-lookup"]
@@ -98,7 +98,7 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 >    private const string ClientId = "Enter_the_Application_Id_here";
 >    ```
 >
->    Az **alkalmazás (ügyfél) azonosítóját** az alkalmazás **Áttekintés** paneljén találja a Azure Portal ( **Azure Active Directory**  >  **Alkalmazásregisztrációk**  >  *{az alkalmazás regisztrációja}* ).
+>    Az **alkalmazás (ügyfél) azonosítóját** az alkalmazás **Áttekintés** paneljén találja a Azure Portal (**Azure Active Directory**  >  **Alkalmazásregisztrációk**  >  *{az alkalmazás regisztrációja}*).
 > 1. Hozzon létre egy új önaláírt teszt tanúsítványt a csomaghoz, majd válassza ki a következőt:
 >     1. A **megoldáskezelő** kattintson duplán a *Package. appxmanifest* fájlra.
 >     1. Válasszon **csomagolást** a tanúsítvány kiválasztása.  >  **..**  >  **Létrehozás...**
@@ -112,10 +112,10 @@ Nézze meg, [Hogyan működik a minta](#how-the-sample-works) egy ábrán.
 
 A minta alkalmazás futtatása a helyi gépen:
 
-1. A Visual Studio eszköztárán válassza ki a megfelelő platformot (valószínűleg **x64** vagy **x86** , nem ARM). A célként megadott eszköznek az *eszközről* a *helyi gépre* kell váltania.
+1. A Visual Studio eszköztárán válassza ki a megfelelő platformot (valószínűleg **x64** vagy **x86**, nem ARM). A célként megadott eszköznek az *eszközről* a *helyi gépre* kell váltania.
 1. Válassza a **Debug (Hibakeresés)**  > **Start Without Debugging (Indítás hibakeresés nélkül)** lehetőséget.
     
-    Ha a rendszer erre kéri, először engedélyeznie kell a **fejlesztői módot** , majd újra kell **indítania a hibakeresést** az alkalmazás elindításához.
+    Ha a rendszer erre kéri, először engedélyeznie kell a **fejlesztői módot**, majd újra kell **indítania a hibakeresést** az alkalmazás elindításához.
 
 Amikor megjelenik az alkalmazás ablaka, a **hívás Microsoft Graph API** gombra kattintva megadhatja a hitelesítő adatait, és beleegyezik az alkalmazás által kért engedélyekkel. Ha a művelet sikeres, az alkalmazás megjeleníti a Microsoft Graph API-nak a hívásból beszerzett néhány jogkivonat-információt és adatot.
 
@@ -125,7 +125,7 @@ Amikor megjelenik az alkalmazás ablaka, a **hívás Microsoft Graph API** gombr
 
 ### <a name="msalnet"></a>MSAL.NET
 
-A MSAL ([Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) a felhasználók bejelentkezésére és biztonsági jogkivonatok igénylésére használt könyvtár. A biztonsági jogkivonatok a Microsoft Identity platform által védett API-k elérésére használhatók a fejlesztők számára. Az MSAL telepítéséhez futtassa a következő parancsot a Visual Studio *Package Manager konzolján* :
+A MSAL ([Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)) a felhasználók bejelentkezésére és biztonsági jogkivonatok igénylésére használt könyvtár. A biztonsági jogkivonatok a Microsoft Identity platform által védett API-k elérésére használhatók a fejlesztők számára. Az MSAL telepítéséhez futtassa a következő parancsot a Visual Studio *Package Manager konzolján*:
 
 ```powershell
 Install-Package Microsoft.Identity.Client
@@ -186,7 +186,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Próbálja ki az asztali Windowshoz készült oktatóanyagot, amelyben teljes körű, részletes útmutatót talál az alkalmazások és új szolgáltatások létrehozásához, valamint megtalálja ennek a rövid útmutatónak a teljes magyarázatát is.
 

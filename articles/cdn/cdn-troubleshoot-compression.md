@@ -15,22 +15,22 @@ ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: f49af1488a0c044639a72fc2ea52ba0a47727a24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89433670"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996151"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>A CDN-fájlok tömörítési hibáinak elhárítása
 Ez a cikk segítséget nyújt a [CDN-fájlok tömörítésével](cdn-improve-performance.md)kapcsolatos problémák elhárításában.
 
-Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban és a stack overflow fórumokon](https://azure.microsoft.com/support/forums/). Azt is megteheti, hogy Azure-támogatási incidenst is beküld. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és kattintson a **támogatás kérése**lehetőségre.
+Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel [az MSDN Azure-ban és a stack overflow fórumokon](https://azure.microsoft.com/support/forums/). Azt is megteheti, hogy Azure-támogatási incidenst is beküld. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és kattintson a **támogatás kérése** lehetőségre.
 
 ## <a name="symptom"></a>Hibajelenség
 A végpont tömörítése engedélyezve van, de a fájlok kibontása nem történik meg.
 
 > [!TIP]
-> Annak megállapításához, hogy a fájlok tömörítése folyamatban van-e, olyan eszközt kell használnia, mint a [Hegedűs](https://www.telerik.com/fiddler) vagy a böngésző [fejlesztői eszközei](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/).  Győződjön meg arról, hogy a gyorsítótárazott CDN-tartalommal visszaadott HTTP-válasz fejlécei szerepelnek.  Ha a fejlécben a `Content-Encoding` **gzip**, a **bzip2**vagy a **deflate**érték szerepel, a rendszer tömöríti a tartalmat.
+> Annak megállapításához, hogy a fájlok tömörítése folyamatban van-e, olyan eszközt kell használnia, mint a [Hegedűs](https://www.telerik.com/fiddler) vagy a böngésző [fejlesztői eszközei](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/).  Győződjön meg arról, hogy a gyorsítótárazott CDN-tartalommal visszaadott HTTP-válasz fejlécei szerepelnek.  Ha a fejlécben a `Content-Encoding` **gzip**, a **bzip2** vagy a **deflate** érték szerepel, a rendszer tömöríti a tartalmat.
 > 
 > ![Content-Encoding fejléc](./media/cdn-troubleshoot-compression/cdn-content-header.png)
 > 
@@ -54,7 +54,7 @@ Több lehetséges oka van, többek között a következők:
 Először is végre kell hajtania egy gyors józan ész-ellenőrzését a kérelemben.  A böngésző [fejlesztői eszközeivel](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) megtekintheti az elvégzett kérelmeket.
 
 * Ellenőrizze, hogy a rendszer elküldte-e a kérést a végpont URL-címére, `<endpointname>.azureedge.net` és ne a forrását.
-* Ellenőrizze, hogy a kérelem tartalmazza-e az **Accept-Encoding** fejlécet, és a fejléc értéke **gzip**, **deflate**vagy **bzip2**.
+* Ellenőrizze, hogy a kérelem tartalmazza-e az **Accept-Encoding** fejlécet, és a fejléc értéke **gzip**, **deflate** vagy **bzip2**.
 
 > [!NOTE]
 > **A Akamai-** profilokból Azure CDN csak a **gzip** -kódolást támogatja.
@@ -82,7 +82,7 @@ Navigáljon a végponthoz a [Azure Portalon](https://portal.azure.com) , majd ka
 > 
 > 
 
-Navigáljon a végponthoz a [Azure Portalon](https://portal.azure.com) , és kattintson a **kezelés** gombra.  Ekkor megnyílik a kiegészítő portál.  Vigye a kurzort a **nagyméretű http** -lapra, majd vigye a kurzort a **gyorsítótár beállításai** menü fölé.  Kattintson a **tömörítés**gombra. 
+Navigáljon a végponthoz a [Azure Portalon](https://portal.azure.com) , és kattintson a **kezelés** gombra.  Ekkor megnyílik a kiegészítő portál.  Vigye a kurzort a **nagyméretű http** -lapra, majd vigye a kurzort a **gyorsítótár beállításai** menü fölé.  Kattintson a **tömörítés** gombra. 
 
 * Ellenőrizze, hogy engedélyezve van-e a tömörítés.
 * Ellenőrizze, hogy a **fájltípusok** lista tartalmazza-e a MIME-típusok vesszővel tagolt listáját (szóközök nélkül).

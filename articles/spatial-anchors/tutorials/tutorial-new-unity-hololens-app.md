@@ -1,19 +1,19 @@
 ---
 title: 'Oktatóanyag: új HoloLens Unity-alkalmazás létrehozása'
 description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre új HoloLens Unity-alkalmazást az Azure térbeli horgonyok használatával.
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 08/17/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e94ced70ad17286612328884d03d4d1253b7818b
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: ee0bf9b4ce009f37dd1931d4ed030defa24e7d38
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096538"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95996260"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>Oktatóanyag: lépésenkénti útmutató új HoloLens Unity-alkalmazás létrehozásához az Azure térbeli horgonyok használatával
 
@@ -25,7 +25,7 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a köv
 
 1. Egy Windows rendszerű gép, amelyen a <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017 +</a> telepítve van a **univerzális Windows-platform fejlesztési** számítási feladattal és a **Windows 10 SDK-val (10.0.18362.0 vagy újabb)** és a <a href="https://git-scm.com/download/win" target="_blank">git for Windows</a>rendszerrel.
 2. A Visual studióhoz készült [C++/WinRT Visual Studio bővítményt (VSIX)](https://aka.ms/cppwinrt/vsix) a [Visual Studio piactérről](https://marketplace.visualstudio.com/)kell telepíteni.
-3. HoloLens-eszköz, amelyen engedélyezve van a [fejlesztői mód](/windows/mixed-reality/using-visual-studio) . Ehhez a cikkhez HoloLens-eszközre van szükség, amely a [Windows 10 2020](/windows/mixed-reality/whats-new/release-notes-may-2020)-es verziójának frissítését igényli. A HoloLens legújabb kiadásának frissítéséhez nyissa meg a **Beállítások** alkalmazást, lépjen a **frissítés & biztonság**elemre, majd kattintson a **frissítések keresése** gombra.
+3. HoloLens-eszköz, amelyen engedélyezve van a [fejlesztői mód](/windows/mixed-reality/using-visual-studio) . Ehhez a cikkhez HoloLens-eszközre van szükség, amely a [Windows 10 2020](/windows/mixed-reality/whats-new/release-notes-may-2020)-es verziójának frissítését igényli. A HoloLens legújabb kiadásának frissítéséhez nyissa meg a **Beállítások** alkalmazást, lépjen a **frissítés & biztonság** elemre, majd kattintson a **frissítések keresése** gombra.
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -43,15 +43,15 @@ Először be kell állítania a projekt és az egység jelenetét:
 Most olyan Unity Project-beállításokat fogunk beállítani, amelyek segítenek a Windows holografikus SDK fejlesztésében.
 
 Először állítsa be az alkalmazás minőségi beállításait.
-1. Válassza **Edit**a  >  **projekt beállításainak**  >  **Quality** szerkesztése lehetőséget
+1. Válassza **Edit** a  >  **projekt beállításainak**  >  **Quality** szerkesztése lehetőséget
 2. A **Windows áruház** emblémájának oszlopában kattintson a nyílra az alapértelmezett sorban, és válassza a **nagyon alacsony** **értéket** . A beállítás helyesen lesz alkalmazva, ha a **Windows áruház** oszlopában található mező és a **nagyon alacsony** sor zöld.
 
 Az Unity-alkalmazást a 2D-nézet helyett magával a nézettel kell konfigurálni. Hozzon létre egy részletes nézetet a virtuális valóság támogatásának engedélyezésével a Windows 10-es SDK-t célzó Unity-on.
-1. Lépjen a **Edit**  >  **Project Settings**  >  **Player**szerkesztése menüpontra.
+1. Lépjen a **Edit**  >  **Project Settings**  >  **Player** szerkesztése menüpontra.
 2. A **Player-beállítások** **ellenőr paneljén** válassza a **Windows** ikont.
 3. Bontsa ki az **XR-beállítások** csoportot.
 4. A **renderelés** szakaszban jelölje be a **virtuális valóság támogatott** jelölőnégyzetet új **virtuális valóság SDK** -k listájának hozzáadásához.
-5. Ellenőrizze, hogy a **Windows vegyes valóság** megjelenik-e a listában. Ha nem, válassza a **+** lista alján található gombot, és válassza a **Windows vegyes valóság**lehetőséget.
+5. Ellenőrizze, hogy a **Windows vegyes valóság** megjelenik-e a listában. Ha nem, válassza a **+** lista alján található gombot, és válassza a **Windows vegyes valóság** lehetőséget.
 
 > [!NOTE]
 > Ha nem látja a Windows-ikont, ellenőrizze, hogy a telepítés előtt a Windows .NET parancsfájlkezelési hátteret választotta-e. Ha nem, lehetséges, hogy újra kell telepítenie az egységet a megfelelő Windows-telepítéssel.
@@ -59,7 +59,7 @@ Az Unity-alkalmazást a 2D-nézet helyett magával a nézettel kell konfiguráln
 **Parancsfájl-háttér konfigurációjának ellenőrzése**
 1. Nyissa meg **a**  >  **Project Settings (projekt beállítása**  >  )**lejátszót** (lehetséges, hogy az előző lépésben megnyitotta a **lejátszót** ).
 2. A **Player-beállítások** **ellenőr paneljén** válassza a **Windows áruház** ikont.
-3. A **További beállítások** konfigurálása szakaszban győződjön meg arról, hogy a **parancsfájlkezelési háttér** **IL2CPP**értékre van állítva.
+3. A **További beállítások** konfigurálása szakaszban győződjön meg arról, hogy a **parancsfájlkezelési háttér** **IL2CPP** értékre van állítva.
 
 **Képességek beállítása**
 1. Nyissa meg **a**  >  **Project Settings (projekt beállítása**  >  )**lejátszót** (lehetséges, hogy az előző lépésben megnyitotta a **lejátszót** ).
@@ -67,22 +67,22 @@ Az Unity-alkalmazást a 2D-nézet helyett magával a nézettel kell konfiguráln
 3. A **közzétételi beállítások** konfigurálása szakaszban keresse meg a **InternetClientServer** és a **SpatialPerception**.
 
 **A fő virtuális kamera beállítása**
-1. A **hierarchia panelen**válassza a **fő kamera**elemet.
-2. Az **ellenőrben**állítsa az átalakítási pozícióját **0, 0,** 0 értékre.
-3. Keresse meg a **Clear Flags** tulajdonságot, és módosítsa a legördülő listát a **SkyBox** értékről a **Solid Color**értékre.
+1. A **hierarchia panelen** válassza a **fő kamera** elemet.
+2. Az **ellenőrben** állítsa az átalakítási pozícióját **0, 0,** 0 értékre.
+3. Keresse meg a **Clear Flags** tulajdonságot, és módosítsa a legördülő listát a **SkyBox** értékről a **Solid Color** értékre.
 4. A háttérszín megnyitásához kattintson a **háttér** mezőre.
-5. Állítsa be az **R, a G, a B és az a** **értéket 0**értékre.
+5. Állítsa be az **R, a G, a B és az a** **értéket 0** értékre.
 6. Válassza az **összetevő hozzáadása** lehetőséget, és keresse meg és adja hozzá a **térbeli leképezési ütközést**.
 
 **Szkript létrehozása**
-1. A **projekt** ablaktáblán hozzon létre egy új mappát, **parancsfájlokat**az **eszközök** mappában.
-2. Kattintson a jobb gombbal a mappára, majd válassza a **létrehozás >**, **C# parancsfájl**lehetőséget. Cím **AzureSpatialAnchorsScript**.
+1. A **projekt** ablaktáblán hozzon létre egy új mappát, **parancsfájlokat** az **eszközök** mappában.
+2. Kattintson a jobb gombbal a mappára, majd válassza a **létrehozás >**, **C# parancsfájl** lehetőséget. Cím **AzureSpatialAnchorsScript**.
 3. Nyissa meg a **GameObject**  ->  **create Empty (üres**) lehetőséget.
 4. Jelölje ki, majd a **Inspector** nevezze át a **GameObject** -ből a **MixedRealityCloud**-be. Válassza az **összetevő hozzáadása** lehetőséget, és keresse meg és adja hozzá a **AzureSpatialAnchorsScript**.
 
 **A gömb panel létrehozása**
 1. Nyissa meg a **GameObject**  ->  **3D Object**  ->  **szférát**.
-2. Az **ellenőrben**állítsa be a méretezést **0,25, 0,25, 0,25**értékre.
+2. Az **ellenőrben** állítsa be a méretezést **0,25, 0,25, 0,25** értékre.
 3. Keresse meg a **gömb** objektumot a **hierarchia** ablaktáblán. Kattintson rá, és húzza a **projekt** ablaktábla **eszközök** mappájába.
 4. Kattintson a jobb gombbal, és **törölje** a **hierarchia** ablaktáblán létrehozott eredeti gömbet.
 
@@ -103,12 +103,12 @@ Ezután adja hozzá a következő tagok változóit a `AzureSpatialAnchorsScript
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=26-47,53-57,65-84)]
 
 A folytatás előtt be kell állítania a spherePrefab-tag változón létrehozott gömb panelt. Lépjen vissza az **egységbe**.
-1. Az **egység**területen válassza ki a **MixedRealityCloud** objektumot a **hierarchia** ablaktáblán.
+1. Az **egység** területen válassza ki a **MixedRealityCloud** objektumot a **hierarchia** ablaktáblán.
 2. Kattintson a **projekt** ablaktáblán mentett **gömb** panelre. Húzza azt a **gömbre** , amelyre rákattintott az **Azure térbeli horgonyok parancsfájlja (szkript)** **alatt a** **gömb panelre** .
 
 Ekkor meg kell **jelennie a** panelnek a parancsfájlban. Hozza létre az **egységet** , majd nyissa meg újra az eredményül kapott **Visual Studio** -megoldást, ahogy azt a [kipróbálás](#trying-it-out)során is tette.
 
-A **Visual Studióban**nyissa meg `AzureSpatialAnchorsScript.cs` újra. Adja hozzá a következő kódot a `Start()` metódushoz. Ez a kód összekapcsol `GestureRecognizer` , amely akkor fog megjelenni, `HandleTap` Amikor egy levegő koppintást észlel.
+A **Visual Studióban** nyissa meg `AzureSpatialAnchorsScript.cs` újra. Adja hozzá a következő kódot a `Start()` metódushoz. Ez a kód összekapcsol `GestureRecognizer` , amely akkor fog megjelenni, `HandleTap` Amikor egy levegő koppintást észlel.
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=86-95,98&highlight=4-10)]
 
@@ -164,7 +164,7 @@ Ez a módszer kompatibilis az Unity 2019.1 + verziójával.
 > [!WARNING]
 > Az Azure térbeli horgonyok SDK Unity Asset csomagjának eloszlása elavulttá válik az SDK 2.5.0-es verziójának használata után.
 
-Töltse le az Azure térbeli horgonyok SDK-t. Lépjen az [Azure térbeli horgonyok GitHub-verziók oldalára](https://github.com/Azure/azure-spatial-anchors-samples/releases). Az **eszközök**alatt töltse le a **AzureSpatialAnchors. unitypackage**. Az egységben válassza az **eszközök**, majd az egyéni csomag **importálása**  >  **...** lehetőséget. Navigáljon a csomaghoz, és válassza a **Megnyitás**lehetőséget.
+Töltse le az Azure térbeli horgonyok SDK-t. Lépjen az [Azure térbeli horgonyok GitHub-verziók oldalára](https://github.com/Azure/azure-spatial-anchors-samples/releases). Az **eszközök** alatt töltse le a **AzureSpatialAnchors. unitypackage**. Az egységben válassza az **eszközök**, majd az egyéni csomag **importálása**  >  **...** lehetőséget. Navigáljon a csomaghoz, és válassza a **Megnyitás** lehetőséget.
 
 Az új **importálási egység csomag** ablakban válassza ki a **plugins** elemet, majd válassza az **Importálás** lehetőséget a jobb alsó sarokban.
 

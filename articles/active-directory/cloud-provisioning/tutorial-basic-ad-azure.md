@@ -11,11 +11,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ceffc928a0cf8313723ff6193d9a6a63f8465f90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91266309"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994774"
 ---
 # <a name="tutorial-basic-active-directory-environment"></a>Oktatóanyag: alapszintű Active Directory környezet
 
@@ -78,10 +78,10 @@ A virtuális gép létrehozásának befejezéséhez be kell fejeznie az operáci
 1. Hyper-V kezelője, kattintson duplán a virtuális gépre
 2. Kattintson a Start gombra.
 3. A rendszer felszólítja, hogy a CD-ről vagy DVD-ről történő rendszerindításhoz nyomja le bármelyik billentyűt. Ugorjon erre.
-4. A Windows Server Start up képernyőn válassza ki a nyelvet, és kattintson a **tovább**gombra.
-5. Kattintson a **Telepítés most**lehetőségre.
-6. Adja meg a licenckulcs, és kattintson a **tovább**gombra.
-7. Jelölje be a * * Elfogadom a licencfeltételeket, majd kattintson a **tovább**gombra.
+4. A Windows Server Start up képernyőn válassza ki a nyelvet, és kattintson a **tovább** gombra.
+5. Kattintson a **Telepítés most** lehetőségre.
+6. Adja meg a licenckulcs, és kattintson a **tovább** gombra.
+7. Jelölje be a * * Elfogadom a licencfeltételeket, majd kattintson a **tovább** gombra.
 8. Válassza az **Egyéni: csak a Windows telepítése (speciális) lehetőséget.**
 9. Kattintson a **tovább** gombra
 10. Miután a telepítés befejeződött, indítsa újra a virtuális gépet, jelentkezzen be, és futtassa a Windows-frissítéseket, hogy a virtuális gép a legnaprakészebb legyen.  Telepítse a legújabb frissítéseket.
@@ -265,10 +265,10 @@ A virtuális gép létrehozásának befejezéséhez be kell fejeznie az operáci
 1. Hyper-V kezelője, kattintson duplán a virtuális gépre
 2. Kattintson a Start gombra.
 3. A rendszer felszólítja, hogy a CD-ről vagy DVD-ről történő rendszerindításhoz nyomja le bármelyik billentyűt. Ugorjon erre.
-4. A Windows Server Start up képernyőn válassza ki a nyelvet, és kattintson a **tovább**gombra.
-5. Kattintson a **Telepítés most**lehetőségre.
-6. Adja meg a licenckulcs, és kattintson a **tovább**gombra.
-7. Jelölje be a * * Elfogadom a licencfeltételeket, majd kattintson a **tovább**gombra.
+4. A Windows Server Start up képernyőn válassza ki a nyelvet, és kattintson a **tovább** gombra.
+5. Kattintson a **Telepítés most** lehetőségre.
+6. Adja meg a licenckulcs, és kattintson a **tovább** gombra.
+7. Jelölje be a * * Elfogadom a licencfeltételeket, majd kattintson a **tovább** gombra.
 8. Válassza az **Egyéni: csak a Windows telepítése (speciális) lehetőséget.**
 9. Kattintson a **tovább** gombra
 10. Miután a telepítés befejeződött, indítsa újra a virtuális gépet, jelentkezzen be, és futtassa a Windows-frissítéseket, hogy a virtuális gép a legnaprakészebb legyen.  Telepítse a legújabb frissítéseket.

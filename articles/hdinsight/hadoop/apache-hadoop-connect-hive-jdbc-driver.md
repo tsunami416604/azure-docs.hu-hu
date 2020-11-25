@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: 183bc416dde941f11bd94cfcff3bf738b35f876f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207389"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996074"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Az Apache Hive lekérdezése a HDInsight JDBC-illesztőjén keresztül
 
@@ -75,7 +75,7 @@ A mókus SQL egy JDBC-ügyfél, amely a kaptár-lekérdezések távoli futtatás
     scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/{commons-codec*.jar,commons-logging-*.jar,hive-*-*.jar,httpclient-*.jar,httpcore-*.jar,libfb*.jar,libthrift-*.jar} .
     ```
 
-3. Indítsa el a mókus SQL-alkalmazást. Az ablak bal oldalán válassza az **illesztőprogramok**lehetőséget.
+3. Indítsa el a mókus SQL-alkalmazást. Az ablak bal oldalán válassza az **illesztőprogramok** lehetőséget.
 
     ![Illesztőprogramok lap az ablak bal oldalán](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-squirreldrivers.png)
 
@@ -87,7 +87,7 @@ A mókus SQL egy JDBC-ügyfél, amely a kaptár-lekérdezések távoli futtatás
 
     |Tulajdonság | Érték |
     |---|---|
-    |Name (Név)|Hive|
+    |Név|Hive|
     |Példa URL-címére|`jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2`|
     |Extra osztály elérési útja|A **Hozzáadás** gomb használatával adja hozzá a korábban letöltött összes jar-fájlt.|
     |Osztály neve|org. Apache. kaptár. JDBC. HiveDriver|
@@ -96,7 +96,7 @@ A mókus SQL egy JDBC-ügyfél, amely a kaptár-lekérdezések távoli futtatás
 
    A beállítások mentéséhez kattintson **az OK gombra** .
 
-6. A mókus SQL-ablak bal oldalán válassza az **aliasok**lehetőséget. Ezután válassza a **+** ikont a kapcsolódási alias létrehozásához.
+6. A mókus SQL-ablak bal oldalán válassza az **aliasok** lehetőséget. Ezután válassza a **+** ikont a kapcsolódási alias létrehozásához.
 
     !["Mókus SQL új alias párbeszédpanel hozzáadása"](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png)
 
@@ -104,7 +104,7 @@ A mókus SQL egy JDBC-ügyfél, amely a kaptár-lekérdezések távoli futtatás
 
     |Tulajdonság |Érték |
     |---|---|
-    |Name (Név)|Struktúra a HDInsight|
+    |Név|Struktúra a HDInsight|
     |Illesztő|A **struktúra** -illesztőprogram kiválasztásához használja a legördülő listát.|
     |URL-cím|`jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2`. Cserélje le a **CLUSTERNAME** kifejezést a HDInsight-fürt nevére.|
     |Felhasználónév|A fürt bejelentkezési fiókjának neve a HDInsight-fürthöz. Az alapértelmezett érték a **rendszergazda**.|
@@ -117,7 +117,7 @@ A mókus SQL egy JDBC-ügyfél, amely a kaptár-lekérdezések távoli futtatás
 
     A kapcsolódási alias mentéséhez használja az **alias hozzáadása** párbeszédpanel alján található **OK** gombot.
 
-8. A mókus SQL-oldal tetején található **Kapcsolódás** legördülő listáról válassza a **kaptár elemet a HDInsight**. Ha a rendszer kéri, válassza a **Csatlakozás**lehetőséget.
+8. A mókus SQL-oldal tetején található **Kapcsolódás** legördülő listáról válassza a **kaptár elemet a HDInsight**. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget.
 
     ![paraméterekkel rendelkező kapcsolatok párbeszédpanel](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-connect-dialog.png)
 
