@@ -18,11 +18,11 @@ ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 62803bd450db351290bbc12d650d23a4148a4536
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951196"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022343"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Azure-infrastruktúra előkészítése az SAP magas rendelkezésre állásához Windows feladatátvevő fürt és fájlmegosztás használatával SAP ASCS/SCS-példányok esetén
 
@@ -341,6 +341,6 @@ Miután sikeresen telepítette a Windows Scale-Out fájlkiszolgáló fürtöt, a
 
 Ezek a beállítások az ügyfelekkel lettek tesztelve, és jó kompromisszumot biztosítanak. Elég rugalmasak, de a valós hibák és a virtuális gépek meghibásodása esetén is elég gyors feladatátvételt biztosítanak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az SAP NetWeaver magas rendelkezésre állásának telepítése Windows feladatátvevő fürtön és fájlmegosztás SAP ASCS/SCS-példányokhoz][sap-high-availability-installation-wsfc-file-share]

@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 08/12/2020
-ms.openlocfilehash: 055cdf7b6cec12eb8c3e7fde891d155b831a6523
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/24/2020
+ms.openlocfilehash: cc06f12317f5e30721452e07bd4dc5f50dfdb7ec
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637870"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022360"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Adatfolyamatok teljesítményének és hangolási útmutatójának leképezése
 
@@ -87,6 +87,12 @@ Ha jól ismeri az Ön adatait, a kulcsfontosságú particionálás jó stratégi
 > [!TIP]
 > A particionálási séma manuális beállítása átrendezi az adatmennyiséget, és ellensúlyozza a Spark-optimalizáló előnyeit. A legjobb megoldás, ha nem kell manuálisan beállítania a particionálást.
 
+## <a name="logging-level"></a>Naplózási szint
+
+Ha nincs szüksége az adatáramlási tevékenységek minden folyamatának végrehajtására az összes részletes telemetria-napló teljes naplózásához, igény szerint beállíthatja a naplózási szintet az "alapszintű" vagy a "None" értékre. Ha az adatfolyamatokat "részletes" módban hajtja végre (alapértelmezés), az automatikus lapadagolóba az adatátalakítás során minden egyes partíciós szinten teljes körű naplózási tevékenységet kér. Ez költséges művelet lehet, ezért csak akkor engedélyezze a részletes műveleteket, ha a hibaelhárítás javítja a teljes adatfolyamatot és a folyamat teljesítményét. Az "alapszintű" mód csak az átalakítási időtartamokat fogja naplózni, míg a "None" csak az időtartamok összegzését tartalmazza.
+
+![Naplózási szint](media/data-flow/logging.png "Naplózási szint beállítása")
+
 ## <a name="optimizing-the-azure-integration-runtime"></a><a name="ir"></a> A Azure Integration Runtime optimalizálása
 
 Az adatfolyamatok olyan Spark-fürtökön futnak, amelyek futás közben forognak. A használt fürt konfigurációja a tevékenység Integration Runtime (IR) szolgáltatásában van definiálva. Az integrációs modul definiálásakor három teljesítménnyel kapcsolatos szempontot kell figyelembe venni: a fürt típusa, a fürt mérete és az élettartam.
@@ -155,7 +161,7 @@ Azure SQL Database rendelkezik egy "forrás" particionálás nevű egyedi partic
 
 #### <a name="isolation-level"></a>Elkülönítési szint
 
-Egy Azure SQL-forrás rendszer olvasásának elkülönítési szintje hatással van a teljesítményre. A "nem véglegesített olvasás" lehetőség kiválasztásával biztosíthatja a leggyorsabb teljesítményt, és megakadályozhatja az adatbázisok zárolását. Az SQL elkülönítési szintjeivel kapcsolatos további tudnivalókért tekintse meg az [elkülönítési szintek ismertetése](/sql/connect/jdbc/understanding-isolation-levels?view=sql-server-ver15)című témakört.
+Egy Azure SQL-forrás rendszer olvasásának elkülönítési szintje hatással van a teljesítményre. A "nem véglegesített olvasás" lehetőség kiválasztásával biztosíthatja a leggyorsabb teljesítményt, és megakadályozhatja az adatbázisok zárolását. Az SQL elkülönítési szintjeivel kapcsolatos további tudnivalókért tekintse meg az [elkülönítési szintek ismertetése](https://docs.microsoft.com/sql/connect/jdbc/understanding-isolation-levels)című témakört.
 
 #### <a name="read-using-query"></a>Olvasás a lekérdezés használatával
 
@@ -163,7 +169,7 @@ Azure SQL Database a tábla vagy SQL-lekérdezés használatával olvashatja el.
 
 ### <a name="azure-synapse-analytics-sources"></a>Azure szinapszis analitikai források
 
-Az Azure szinapszis Analytics használatakor a forrás beállításai között az **átmeneti engedélyezés** nevű beállítás található. Ez lehetővé teszi, hogy az [ADF-ből a szinapszis használatával tudjon](/sql/relational-databases/polybase/polybase-guide?view=sql-server-ver15)olvasni, ami jelentősen javítja az olvasási teljesítményt. A Gen2 engedélyezéséhez meg kell adnia egy Azure-Blob Storage vagy Azure Data Lake Storage-előkészítési helyet az adatfolyam tevékenységi beállításai között.
+Az Azure szinapszis Analytics használatakor a forrás beállításai között az **átmeneti engedélyezés** nevű beállítás található. Ez lehetővé teszi az ADF-nek a szinapszis használatával történő olvasását ```Polybase``` , ami jelentősen javítja az olvasási teljesítményt. Az engedélyezéshez ```Polybase``` meg kell adnia egy Azure Blob Storage vagy Azure Data Lake Storage Gen2-előkészítési helyet az adatfolyam tevékenység beállításainál.
 
 ![Előkészítés engedélyezése](media/data-flow/enable-staging.png "Előkészítés engedélyezése")
 
@@ -183,6 +189,10 @@ Amikor az adatfolyamatok elsüllyednek, az egyéni particionálások azonnal meg
 
 A Azure SQL Database esetében az alapértelmezett particionálásnak a legtöbb esetben működnie kell. Előfordulhat, hogy a fogadó túl sok partícióval rendelkezik az SQL-adatbázis kezeléséhez. Ha ezt a szolgáltatást futtatja, csökkentse a SQL Database fogadó által kiosztott partíciók számát.
 
+#### <a name="impact-of-error-row-handling-to-performance"></a>A hibák sorainak a teljesítményre gyakorolt hatása
+
+Ha engedélyezi a sorcsoport-kezelést ("Folytatás a hibánál") a fogadó átalakításban, az ADF további lépést fog tartani, mielőtt beírja a kompatibilis sorokat a céltábla táblájába. Ez a további lépés egy kisebb teljesítménnyel kapcsolatos szankciót tartalmaz, amely az ehhez a lépéshez tartozó 5%-os tartományba kerül, egy további kis teljesítményű találatot is hozzáadva, ha a beállítást úgy állítja be, hogy a nem kompatibilis sorok is a naplófájlhoz legyenek beállítva.
+
 #### <a name="disabling-indexes-using-a-sql-script"></a>Indexek letiltása SQL-parancsfájl használatával
 
 Az indexek letiltásával az SQL-adatbázisok terhelése jelentősen javíthatja a tábla írásának teljesítményét. Futtassa az alábbi parancsot az SQL-gyűjtőbe való írás előtt.
@@ -198,7 +208,7 @@ Ezek az Azure SQL DB-ben vagy a szinapszis-tárolón belül, az adatfolyamatok l
 ![Indexek letiltása](media/data-flow/disable-indexes-sql.png "Indexek letiltása")
 
 > [!WARNING]
-> Az indexek letiltásakor az adatfolyam gyakorlatilag nem veszi át az adatbázis irányítását, és a lekérdezések nem valószínű, hogy sikeresek lesznek. Ennek eredményeképpen számos ETL-feladat aktiválva lesz az éjszaka közepén, hogy elkerülje ezt az ütközést. További információ az [indexek letiltásának korlátozásait](/sql/relational-databases/indexes/disable-indexes-and-constraints?view=sql-server-ver15) ismerteti.
+> Az indexek letiltásakor az adatfolyam gyakorlatilag nem veszi át az adatbázis irányítását, és a lekérdezések nem valószínű, hogy sikeresek lesznek. Ennek eredményeképpen számos ETL-feladat aktiválva lesz az éjszaka közepén, hogy elkerülje ezt az ütközést. További információ az [indexek letiltásának korlátozásait](https://docs.microsoft.com/sql/relational-databases/indexes/disable-indexes-and-constraints) ismerteti.
 
 #### <a name="scaling-up-your-database"></a>Az adatbázis vertikális felskálázása
 
@@ -239,7 +249,6 @@ A CosmosDB való íráskor az átviteli sebesség és a köteg méretének módo
 **Átviteli sebesség:** Itt állíthatja be a nagyobb átviteli sebesség beállítást, hogy a dokumentumok gyorsabban CosmosDB. Ne feledje, hogy a magasabb RU-költségek magas átviteli sebességen alapulnak.
 
 **Írási átviteli sebesség költségvetése:** Használjon olyan értéket, amely kisebb, mint a percenkénti teljes RUs. Ha nagy számú Spark-partícióval rendelkező adatfolyamot tartalmaz, a költségvetés átviteli sebességének beállítása nagyobb egyensúlyt tesz lehetővé a partíciók között.
-
 
 ## <a name="optimizing-transformations"></a>Átalakítások optimalizálása
 
@@ -301,7 +310,7 @@ A feladatok egymás utáni futtatása valószínűleg a leghosszabb időt vesz i
 
 Ha egyetlen adatfolyamba helyezi az összes logikát, akkor az ADF egyetlen Spark-példányon hajtja végre a teljes feladatot. Habár ez úgy tűnhet, mint a költségek csökkentése, összekeveri a különböző logikai folyamatokat, és nehéz lehet figyelni és hibakeresést végezni. Ha egy összetevő meghibásodik, a feladat összes többi része is sikertelen lesz. Az Azure Data Factory csapat az adatfolyamatok független üzleti logikával való szervezését javasolja. Ha az adatfolyam túl nagy lesz, a különálló összetevőkre való felosztás egyszerűbbé teszi a figyelést és a hibakeresést. Habár az adatforgalomban az átalakítások száma nem korlátozott, túl sok lesz a feladatsor.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse meg a teljesítménnyel kapcsolatos egyéb adatfolyam-cikkeket:
 

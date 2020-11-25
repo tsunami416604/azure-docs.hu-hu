@@ -9,11 +9,11 @@ ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
 ms.openlocfilehash: 9e60903aaa61cae63d406d459937d33317eee394
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545633"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022251"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Az Apache Spark hibaelhárítása az Azure HDInsighttal
 
@@ -25,19 +25,19 @@ A Spark konfigurációs értékei a Apache Spark alkalmazás kivételének elker
 
 1. Jelentkezzen be a Ambari-ba a `https://CLUSTERNAME.azurehdidnsight.net` fürt hitelesítő adataival. A kezdeti képernyő egy áttekintő irányítópultot jelenít meg. A HDInsight 3,6 és 4,0 közötti enyhe kozmetikai különbségek vannak.
 
-1. Navigáljon a **Spark2** -  >  **konfigurációkhoz** .
+1. Navigáljon a **Spark2**-  >  **konfigurációkhoz**.
 
     ![Válassza a konfigurációk fület](./media/apache-troubleshoot-spark/apache-spark-ambari-config2.png)
 
-1. A konfigurációk listájában válassza ki és bontsa ki az **Egyéni-spark2 – alapértelmezett értékeket** .
+1. A konfigurációk listájában válassza ki és bontsa ki az **Egyéni-spark2 – alapértelmezett értékeket**.
 
-1. Keresse meg a módosítani kívánt érték beállítást, például **spark.executor. Memory** . Ebben az esetben a **9728m** értéke túl magas.
+1. Keresse meg a módosítani kívánt érték beállítást, például **spark.executor. Memory**. Ebben az esetben a **9728m** értéke túl magas.
 
     ![Egyéni-Spark – alapértékek kiválasztása](./media/apache-troubleshoot-spark/apache-spark-ambari-config4.png)
 
 1. Állítsa be az értéket az ajánlott beállításra. Ehhez a beállításhoz a **2048m** érték használata javasolt.
 
-1. Mentse az értéket, majd mentse a konfigurációt. Válassza a **Mentés** lehetőséget.
+1. Mentse az értéket, majd mentse a konfigurációt. Kattintson a **Mentés** gombra.
 
     ![Érték módosítása 2048m](./media/apache-troubleshoot-spark/apache-spark-ambari-config6a.png)
 
@@ -101,7 +101,7 @@ spark-submit --master yarn-cluster --class com.microsoft.spark.application --num
 
 [Apache Spark a feladatok beküldését a HDInsight-fürtökön](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
