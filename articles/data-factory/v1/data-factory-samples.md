@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: ed63d148afa6f5674d36cc50c18351b2a06966eb
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636833"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019616"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory – minták
 > [!NOTE]
@@ -80,7 +80,7 @@ A számítógépre a következőket kell telepíteni:
 
 * Visual Studio 2013 vagy Visual Studio 2015
 * Töltse le az Azure SDK-t a Visual Studio 2013-hoz vagy a Visual Studio 2015-höz. Nyissa meg az [Azure letöltési oldalát](https://azure.microsoft.com/downloads/), és kattintson a **VS 2013** vagy a **VS 2015** elemre a **.NET** szakaszban.
-* Töltse le a legújabb Azure Data Factory beépülő modult a Visual Studióhoz: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) vagy [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Ha a Visual Studio 2013-at használja, a beépülő modult a következő lépések végrehajtásával is frissítheti: a menüben kattintson az **eszközök**  ->  **bővítmények** elemre, és frissítse az  ->  **online**  ->  **Visual Studio Gallery**  ->  **Microsoft Azure Data Factory Tools for Visual Studio**  ->  **Update szolgáltatást** .
+* Töltse le a legújabb Azure Data Factory beépülő modult a Visual Studióhoz: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) vagy [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Ha a Visual Studio 2013-at használja, a beépülő modult a következő lépések végrehajtásával is frissítheti: a menüben kattintson az **eszközök**  ->  **bővítmények** elemre, és frissítse az  ->  **online**  ->  **Visual Studio Gallery**  ->  **Microsoft Azure Data Factory Tools for Visual Studio**  ->  **Update szolgáltatást**.
 
 ### <a name="use-data-factory-templates"></a>Data Factory-sablonok használata
 1. Kattintson a menüben a **fájl** elemre, mutasson az **új** elemre, majd kattintson a **projekt** elemre.
@@ -88,7 +88,7 @@ A számítógépre a következőket kell telepíteni:
 
    1. A **sablonok** területen válassza a **DataFactory** lehetőséget.
    2. Válassza ki **Data Factory sablonokat** a jobb oldali ablaktáblán.
-   3. Adjon meg a projekt **nevét** .
+   3. Adjon meg a projekt **nevét**.
    4. Válassza ki a projekt **helyét** .
    5. Kattintson az **OK** gombra.
 

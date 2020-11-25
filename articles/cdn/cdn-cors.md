@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: f7edf790e526329dd285d03a31137a26220e52ee
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778931"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018647"
 ---
 # <a name="using-azure-cdn-with-cors"></a>Azure CDN használata a CORS
 ## <a name="what-is-cors"></a>Mi az a CORS?
@@ -91,7 +91,7 @@ https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.co
 > 
 > 
 
-Ha a reguláris kifejezés megfelel, a szabály a forrástól a kérést küldő forrásból származó **hozzáférés-vezérlési engedélyezési-származási** fejlécet (ha van) lecseréli.  További CORS-fejléceket is hozzáadhat, például a **hozzáférés-vezérlés-engedélyezési metódusokat** .
+Ha a reguláris kifejezés megfelel, a szabály a forrástól a kérést küldő forrásból származó **hozzáférés-vezérlési engedélyezési-származási** fejlécet (ha van) lecseréli.  További CORS-fejléceket is hozzáadhat, például a **hozzáférés-vezérlés-engedélyezési metódusokat**.
 
 ![Szabályok – példa reguláris kifejezéssel](./media/cdn-cors/cdn-cors-regex.png)
 

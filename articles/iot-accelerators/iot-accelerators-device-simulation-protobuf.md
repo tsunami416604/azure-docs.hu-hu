@@ -10,11 +10,11 @@ ms.custom: mvc, amqp, devx-track-csharp
 ms.date: 11/06/2018
 ms.author: dobett
 ms.openlocfilehash: 12aa18c966745b450b3c9aa55e87e576b0c3f99b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075960"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018528"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Telemetria szerializálása protokoll-pufferek használatával
 
@@ -68,7 +68,7 @@ Nyissa meg a **. vscode/launch.js** fájlt, és rendelje hozzá a Cosmos db-kapc
 > [!NOTE]
 > Ha helyileg futtatja a szolgáltatást a gépen, akkor továbbra is szükség van egy Cosmos DB példányra az Azure-ban, hogy megfelelően működjön.
 
-Ha helyileg szeretné futtatni a Storage-adaptert, kattintson a hibakeresés ** \> megkezdése**elemre.
+Ha helyileg szeretné futtatni a Storage-adaptert, kattintson a hibakeresés **\> megkezdése** elemre.
 
 A Visual Studio Code-ban található **Terminálablak** a futó szolgáltatás kimenetét jeleníti meg, beleértve a webszolgáltatás állapot-ellenőrzési URL-címét: <http://127.0.0.1:9022/v1/status> . Amikor navigál erre a címre, az állapotnak "OK: Alive and Well" értéknek kell lennie.
 
@@ -217,7 +217,7 @@ Adjon hozzá egy bejegyzést a **services\services.csproj** -fájlhoz minden oly
 </None>
 ```
 
-Ha helyileg szeretné futtatni a szolgáltatást, kattintson a hibakeresés ** \> megkezdése**elemre.
+Ha helyileg szeretné futtatni a szolgáltatást, kattintson a hibakeresés **\> megkezdése** elemre.
 
 A Visual Studio Code-ban található **Terminálablak** a futó szolgáltatás kimenetét jeleníti meg.
 
@@ -247,23 +247,23 @@ Poster beállítása:
 
 1. Nyissa meg a Poster szolgáltatást a helyi gépen.
 
-1. Kattintson a **fájl \> importálása**elemre. Ezután kattintson a **fájlok kiválasztása**elemre.
+1. Kattintson a **fájl \> importálása** elemre. Ezután kattintson a **fájlok kiválasztása** elemre.
 
-1. Válassza az **Azure IoT-eszköz szimulációs megoldás gyorsító. Poster \_ Collection** és az **Azure IoT Device szimulációs megoldás gyorsító. Poster- \_ környezet** lehetőséget, és kattintson a **Megnyitás**gombra.
+1. Válassza az **Azure IoT-eszköz szimulációs megoldás gyorsító. Poster \_ Collection** és az **Azure IoT Device szimulációs megoldás gyorsító. Poster- \_ környezet** lehetőséget, és kattintson a **Megnyitás** gombra.
 
 1. Bontsa ki az **Azure IoT-eszköz szimulációs megoldásának Gyorssegédjét** a küldendő kérések megtekintéséhez.
 
-1. Kattintson a **nincs környezet** elemre, és válassza az **Azure IoT-eszköz szimulációs megoldásának gyorsítása**elemet.
+1. Kattintson a **nincs környezet** elemre, és válassza az **Azure IoT-eszköz szimulációs megoldásának gyorsítása** elemet.
 
 Most már betöltött egy gyűjteményt és egy környezetet a Poster-munkaterületen, amely az eszköz-szimulációs szolgáltatással való kommunikációhoz használható.
 
 A szimuláció konfigurálása és futtatása:
 
-1. A Poster gyűjteményben válassza az **Asset Tracker-szimuláció létrehozása** lehetőséget, majd kattintson a **Küldés**gombra. Ez a kérelem a szimulált eszköz típusának négy példányát hozza létre.
+1. A Poster gyűjteményben válassza az **Asset Tracker-szimuláció létrehozása** lehetőséget, majd kattintson a **Küldés** gombra. Ez a kérelem a szimulált eszköz típusának négy példányát hozza létre.
 
 1. Az Eseménynapló kimenete az Azure CLI-ablakban a szimulált eszközök telemetria jeleníti meg.
 
-A szimuláció leállításához jelölje ki a **Szimuláció leállítására** irányuló kérelmet a Poster alkalmazásban, és kattintson a **Küldés**gombra.
+A szimuláció leállításához jelölje ki a **Szimuláció leállítására** irányuló kérelmet a Poster alkalmazásban, és kattintson a **Küldés** gombra.
 
 ### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -275,6 +275,6 @@ Ha már nincs szüksége a IoT Hubra és Cosmos DB példányokra, törölje azok
 
 Számos IoT Hub funkció nem támogatja natív módon a Protopuf vagy más bináris formátumot. Például nem lehet átirányítani az üzenet adattartalma alapján, mert IoT Hub nem fogja tudni feldolgozni az üzenet tartalmát. Az üzeneteket azonban az üzenetek fejlécei alapján is elvégezheti.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megtanulta, hogyan szabhatja testre az eszköz szimulációját, hogy Protopuf küldjön telemetria, a következő lépés az [Egyéni lemezkép felhőbe való üzembe helyezésének](iot-accelerators-device-simulation-deploy-image.md)megismerése.

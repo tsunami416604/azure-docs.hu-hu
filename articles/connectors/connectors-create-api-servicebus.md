@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/22/2020
 tags: connectors
 ms.openlocfilehash: b6276ff940d8b156a671cb5386ce53ede30dd879
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426654"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019709"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Exchange-üzenetek a felhőben Azure Logic Apps és Azure Service Bus használatával
 
@@ -47,13 +47,13 @@ Győződjön meg arról, hogy a logikai alkalmazás rendelkezik a Service Bus n�
 
 1. A [Azure Portal](https://portal.azure.com)jelentkezzen be az Azure-fiókjával.
 
-1. Lépjen a Service Bus *névtérhez*. A névtér lap **Beállítások**területén válassza a **megosztott elérési házirendek**elemet. A **jogcímek**területen győződjön meg arról, hogy rendelkezik az adott névtérhez **tartozó jogosultságokkal** .
+1. Lépjen a Service Bus *névtérhez*. A névtér lap **Beállítások** területén válassza a **megosztott elérési házirendek** elemet. A **jogcímek** területen győződjön meg arról, hogy rendelkezik az adott névtérhez **tartozó jogosultságokkal** .
 
    ![Service Bus névtér engedélyeinek kezelése](./media/connectors-create-api-azure-service-bus/azure-service-bus-namespace.png)
 
 1. A Service Bus névtérhez tartozó kapcsolatok karakterláncának beolvasása. Erre a karakterláncra akkor van szükség, amikor megadja a kapcsolódási adatokat a logikai alkalmazásban.
 
-   1. A **megosztott hozzáférési házirendek** panelen válassza a **RootManageSharedAccessKey**lehetőséget.
+   1. A **megosztott hozzáférési házirendek** panelen válassza a **RootManageSharedAccessKey** lehetőséget.
 
    1. Az elsődleges kapcsolódási karakterlánc mellett kattintson a Másolás gombra. Mentse a kapcsolatok karakterláncát későbbi használatra.
 
@@ -91,9 +91,9 @@ Győződjön meg arról, hogy a logikai alkalmazás rendelkezik a Service Bus n�
 
       ![A kapcsolatok nevének megadását és a Service Bus névtér kijelölését bemutató képernyőkép](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-1.png)
 
-      Ha ehelyett manuálisan szeretné megadni a kapcsolódási karakterláncot, válassza a **kapcsolódási adatok manuális megadása**lehetőséget. Ha nem rendelkezik a kapcsolódási karakterlánccal, Ismerje meg, [hogyan keresheti meg a kapcsolódási karakterláncot](#permissions-connection-string).
+      Ha ehelyett manuálisan szeretné megadni a kapcsolódási karakterláncot, válassza a **kapcsolódási adatok manuális megadása** lehetőséget. Ha nem rendelkezik a kapcsolódási karakterlánccal, Ismerje meg, [hogyan keresheti meg a kapcsolódási karakterláncot](#permissions-connection-string).
 
-   1. Válassza ki a Service Bus szabályzatot, majd válassza a **Létrehozás**lehetőséget.
+   1. Válassza ki a Service Bus szabályzatot, majd válassza a **Létrehozás** lehetőséget.
 
       ![A Service Bus szabályzat kijelölését bemutató képernyőkép](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-2.png)
 
@@ -119,11 +119,11 @@ Győződjön meg arról, hogy a logikai alkalmazás rendelkezik a Service Bus n�
 
 1. A [Azure Portalban](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic app Designerben.
 
-1. Válassza ki azt a lépést, amelyben a műveletet hozzá szeretné adni, majd kattintson az **új lépés**gombra.
+1. Válassza ki azt a lépést, amelyben a műveletet hozzá szeretné adni, majd kattintson az **új lépés** gombra.
 
-   Vagy a lépések közötti művelet hozzáadásához vigye a mutatót a fenti lépések között látható nyíl fölé. Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása**lehetőséget.
+   Vagy a lépések közötti művelet hozzáadásához vigye a mutatót a fenti lépések között látható nyíl fölé. Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása** lehetőséget.
 
-1. A **válasszon műveletet**területen a keresőmezőbe írja be a kifejezést `azure service bus` . A megjelenő műveletek listából válassza ki a kívánt műveletet. 
+1. A **válasszon műveletet** területen a keresőmezőbe írja be a kifejezést `azure service bus` . A megjelenő műveletek listából válassza ki a kívánt műveletet. 
 
    Ebben a példában válassza az **üzenet küldése** műveletet.
 
@@ -135,9 +135,9 @@ Győződjön meg arról, hogy a logikai alkalmazás rendelkezik a Service Bus n�
 
       ![A kapcsolatok nevének megadását és a Service Bus névtér kiválasztását bemutató képernyőkép](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-1.png)
 
-      Ha ehelyett manuálisan szeretné megadni a kapcsolódási karakterláncot, válassza a **kapcsolódási adatok manuális megadása**lehetőséget. Ha nem rendelkezik a kapcsolódási karakterlánccal, Ismerje meg, [hogyan keresheti meg a kapcsolódási karakterláncot](#permissions-connection-string).
+      Ha ehelyett manuálisan szeretné megadni a kapcsolódási karakterláncot, válassza a **kapcsolódási adatok manuális megadása** lehetőséget. Ha nem rendelkezik a kapcsolódási karakterlánccal, Ismerje meg, [hogyan keresheti meg a kapcsolódási karakterláncot](#permissions-connection-string).
 
-   1. Válassza ki a Service Bus szabályzatot, majd válassza a **Létrehozás**lehetőséget.
+   1. Válassza ki a Service Bus szabályzatot, majd válassza a **Létrehozás** lehetőséget.
 
       ![Képernyőkép a Service Bus házirend kiválasztásáról és a létrehozás gomb kiválasztásáról](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-2.png)
 
@@ -157,7 +157,7 @@ Győződjön meg arról, hogy a logikai alkalmazás rendelkezik a Service Bus n�
 
    Hozzáadhat például egy olyan műveletet, amely e-mailt küld, hogy erősítse meg az üzenet elküldését.
 
-1. Mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés**lehetőséget.
+1. Mentse a logikai alkalmazást. A tervező eszköztárán válassza a **Mentés** lehetőséget.
 
 <a name="sequential-convoy"></a>
 

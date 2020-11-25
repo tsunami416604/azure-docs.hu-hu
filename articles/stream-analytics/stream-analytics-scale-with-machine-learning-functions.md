@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/16/2020
 ms.openlocfilehash: feeb709f67a0e75f5980ec0520b95feb7edd5960
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124407"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018817"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>A Stream Analytics-feladatok skálázása Azure Machine Learning Studio (klasszikus) függvényekkel
 
@@ -52,7 +52,7 @@ Az 200 000-események másodpercenkénti feldolgozásához a Stream Analytics fe
 
 ![Stream Analytics méretezése a Studio (klasszikus) függvényekben két feladatra példa](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-00.png "Stream Analytics méretezése a Studio (klasszikus) függvényekben két feladatra példa")
 
-Általánosságban: * *_b_* _ a Batch mérethez, _*_L_*_ a webszolgáltatás késéséhez a B köteg mérete ezredmásodpercben, az _*_N_*_ SUs stream Analytics-feladatok átviteli sebessége a következő:
+Általánosságban: **_b_* _ a Batch mérethez, _*_L_*_ a webszolgáltatás késéséhez a B köteg mérete ezredmásodpercben, az _*_N_*_ SUs stream Analytics-feladatok átviteli sebessége a következő:
 
 ![Stream Analytics méretezése a Studio (klasszikus) függvények képlettel](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-02.png "Stream Analytics méretezése a Studio (klasszikus) függvények képlettel")
 
@@ -63,7 +63,7 @@ A beállítással kapcsolatos további információkért tekintse át a [Machine
 ## <a name="example--sentiment-analysis"></a>Példa – Hangulatelemzés
 Az alábbi példa egy Stream Analytics feladatot tartalmaz az "a klasszikus", az [Stream Analytics Machine learning Studio (klasszikus) integrációs oktatóanyagban](stream-analytics-machine-learning-integration-tutorial.md)leírtaknak megfelelően.
 
-A lekérdezés egy egyszerű, teljes particionált lekérdezés, amelyet a _ *hangulat* * függvény követ, ahogy az az alábbi példában is látható:
+A lekérdezés egy egyszerű, teljes particionált lekérdezés, amelyet a _ *hangulat** függvény követ, ahogy az az alábbi példában is látható:
 
 ```SQL
     WITH subquery AS (
@@ -88,7 +88,7 @@ Ha a bemeneti esemény sebessége a 100x értékkel növekszik, akkor a Stream A
 
 Az első lehetőséggel a feladatok **késése** növekszik.
 
-A második lehetőséggel további SUs-t kell kiépítenie, hogy a rendszer több egyidejű Studio-(klasszikus) webszolgáltatás-kérelmet hozzon létre. Ez a nagyobb számú SUs, növeli a feladatok **költségeit** .
+A második lehetőséggel további SUs-t kell kiépítenie, hogy a rendszer több egyidejű Studio-(klasszikus) webszolgáltatás-kérelmet hozzon létre. Ez a nagyobb számú SUs, növeli a feladatok **költségeit**.
 
 Nézzük meg a skálázást az egyes batch-méretek következő késési mértékének használatával:
 
@@ -99,7 +99,7 @@ Nézzük meg a skálázást az egyes batch-méretek következő késési mérté
 | 300 MS | 10 000 – eseményvezérelt kötegek |
 | 500 ms | 25 000 – eseményvezérelt kötegek |
 
-1. Az első lehetőség használata (további SUs kiépítés **nélkül** ). A köteg mérete **25 000** -ra növelhető. A Batch méretének növelése lehetővé teszi, hogy a feladatok feldolgozzák a 1 000 000-es eseményeket 20 egyidejű kapcsolattal a Studio (klasszikus) webszolgáltatással (a hagyományosnál 500 ms-os késéssel). Így a Stream Analytics feladat további késése miatt a Studio (klasszikus) webszolgáltatásra irányuló kérések iránti kérések az **200 MS** -ról **500 MS** -ra növekednek. A Batch mérete azonban **nem** növelhető végtelenül, mert a Studio (klasszikus) webszolgáltatások esetében a kérések hasznos mérete 4 MB vagy kisebb, a webszolgáltatások pedig a 100-as művelet után időtúllépést igényelnek.
+1. Az első lehetőség használata (további SUs kiépítés **nélkül** ). A köteg mérete **25 000**-ra növelhető. A Batch méretének növelése lehetővé teszi, hogy a feladatok feldolgozzák a 1 000 000-es eseményeket 20 egyidejű kapcsolattal a Studio (klasszikus) webszolgáltatással (a hagyományosnál 500 ms-os késéssel). Így a Stream Analytics feladat további késése miatt a Studio (klasszikus) webszolgáltatásra irányuló kérések iránti kérések az **200 MS** -ról **500 MS**-ra növekednek. A Batch mérete azonban **nem** növelhető végtelenül, mert a Studio (klasszikus) webszolgáltatások esetében a kérések hasznos mérete 4 MB vagy kisebb, a webszolgáltatások pedig a 100-as művelet után időtúllépést igényelnek.
 1. A második lehetőség használatával a köteg mérete 1000-kor marad, az 200-MS webszolgáltatás késése esetén pedig a webszolgáltatás 20 egyidejű kapcsolata képes lesz az 1000 * 20 * 5 esemény = 100 000 másodpercenkénti feldolgozására. Így a 1 000 000-események másodpercenkénti feldolgozásához a feladatoknak 60 SUs-re van szükségük. Az első lehetőséghez képest Stream Analytics a feladatok több webszolgáltatási batch-kérést is igénybe vennének, ami nagyobb költségeket eredményez.
 
 Alább látható a különböző SUs-és batch-méretekhez tartozó Stream Analytics-feladatok átviteli sebességének táblázata (az események másodpercenkénti száma).
@@ -120,17 +120,17 @@ Most már jól megértette, hogy a Studio (klasszikus) függvények hogyan műk�
 A Studio (klasszikus) függvényekhez beállított batch-méret általában nem osztható meg pontosan az egyes Stream Analytics feladatok "lekérése" által visszaadott események számával. Ebben az esetben a Studio (klasszikus) webszolgáltatás "részleges" kötegekkel van meghívva. A részleges kötegek használata elkerüli, hogy a lekéréses művelet során felmerülő további feladatok késése coalescing-eseményeknél.
 
 ## <a name="new-function-related-monitoring-metrics"></a>Új függvényekkel kapcsolatos figyelési metrikák
-Egy Stream Analytics feladat figyelés területén három további függvényhez kapcsolódó metrika lett hozzáadva. Ezek a **függvények,** a **függvények** és a **sikertelen függvények kérései** , az alábbi ábrán látható módon.
+Egy Stream Analytics feladat figyelés területén három további függvényhez kapcsolódó metrika lett hozzáadva. Ezek a **függvények,** a **függvények** és a **sikertelen függvények kérései**, az alábbi ábrán látható módon.
 
 ![Stream Analytics méretezése a Studio (klasszikus) függvények Metrikái](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-01.png "Stream Analytics méretezése a Studio (klasszikus) függvények Metrikái")
 
 A a következőképpen van meghatározva:
 
-**Function kérelmek** : a függvények kéréseinek száma.
+**Function kérelmek**: a függvények kéréseinek száma.
 
-**Function Events** : a függvény kéréseinek száma.
+**Function Events**: a függvény kéréseinek száma.
 
-**Sikertelen függvények kérései** : a sikertelen függvények kéréseinek száma.
+**Sikertelen függvények kérései**: a sikertelen függvények kéréseinek száma.
 
 ## <a name="key-takeaways"></a>Kulcs elvihető
 
@@ -142,7 +142,7 @@ Ha egy Stream Analytics feladatot Studio (klasszikus) függvényekkel szeretne m
 
 Példaként egy teljesen particionált Stream Analytics lekérdezést használtak. Ha összetettebb lekérdezésre van szükség, a [Microsoft Q&a Azure stream Analytics egy kérdés oldalát](/answers/topics/azure-stream-analytics.html) , amellyel további segítséget kaphat a stream Analytics csapattól.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Stream Analyticsról további információt a következő témakörben talál:
 
 * [Get started using Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md) (Bevezetés az Azure Stream Analytics használatába)

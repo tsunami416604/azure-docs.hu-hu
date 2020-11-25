@@ -9,19 +9,19 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotga
 ms.openlocfilehash: b9fc37c6589cdd0bc6a5cdce7b7ebebe2c6e9a85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531610"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019446"
 ---
 # <a name="iot-hub-device-provisioning-service-dps-terminology"></a>IoT Hub Device Provisioning Service (DPS) terminológia
 
 A IoT Hub Device Provisioning Service egy olyan IoT Hub segítő szolgáltatás, amellyel a nulla érintéses eszköz kiépíthető a megadott IoT hubhoz. A Device kiépítési szolgáltatással több millió eszköz is [kiépíthető](about-iot-dps.md#provisioning-process) biztonságos és skálázható módon.
 
-Az eszközök kiépítési folyamata két részből áll. Az első rész a kezdeti kapcsolatot hozza létre az eszköz és a IoT megoldás között az eszköz *regisztrálásával* . A második rész a megoldás konkrét követelményei alapján alkalmazza a megfelelő *konfigurációt* az eszközre. Ha mindkét lépést végrehajtotta, az eszköz teljes mértékben *kiépítve*lett. A Device Provisioning Service a két lépés automatizálásával biztosítja az eszközök zökkenőmentes kiépítését.
+Az eszközök kiépítési folyamata két részből áll. Az első rész a kezdeti kapcsolatot hozza létre az eszköz és a IoT megoldás között az eszköz *regisztrálásával* . A második rész a megoldás konkrét követelményei alapján alkalmazza a megfelelő *konfigurációt* az eszközre. Ha mindkét lépést végrehajtotta, az eszköz teljes mértékben *kiépítve* lett. A Device Provisioning Service a két lépés automatizálásával biztosítja az eszközök zökkenőmentes kiépítését.
 
-Ez a cikk áttekintést nyújt a *szolgáltatás*kezeléséhez leginkább alkalmazandó kiépítési fogalmakról. Ez a cikk a [felhő telepítési lépésében](about-iot-dps.md#cloud-setup-step) érintett personák szempontjából a legfontosabb, hogy az eszköz készen álljon az üzembe helyezésre.
+Ez a cikk áttekintést nyújt a *szolgáltatás* kezeléséhez leginkább alkalmazandó kiépítési fogalmakról. Ez a cikk a [felhő telepítési lépésében](about-iot-dps.md#cloud-setup-step) érintett personák szempontjából a legfontosabb, hogy az eszköz készen álljon az üzembe helyezésre.
 
 ## <a name="service-operations-endpoint"></a>Szolgáltatási műveletek végpontja
 
@@ -123,6 +123,6 @@ Az eszköz azonosítója a IoT Hubban megjelenő azonosító. Előfordulhat, hog
 
 
 
-## <a name="operations"></a>Műveletek
+## <a name="operations"></a>Üzemeltetés
 
 A műveletek az eszköz kiépítési szolgáltatásának számlázási egységei. Egy művelet egy utasítás sikeres befejezése a szolgáltatás számára. A műveletek közé tartozik az eszközök regisztrációja és az újbóli regisztráció; a műveletek olyan szolgáltatás-oldali módosításokat is tartalmaznak, mint például a regisztrációs lista bejegyzéseinek hozzáadása és a regisztrációs lista bejegyzéseinek frissítése.

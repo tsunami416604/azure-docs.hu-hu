@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: genli
 ms.openlocfilehash: 208e99f61694f5a81a98dbc649e2a6035f57891b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842583"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018273"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Az Azure VPN Gateway RADIUS-hitelesítésének integrálása az NPS-kiszolgálóval Multi-Factor Authentication 
 
@@ -79,7 +79,7 @@ Az MFA engedélyezéséhez a felhasználóknak Azure Active Directory (Azure AD)
 
       ![A helyről a hely beállításaira mutató rendszerkép](./media/vpn-gateway-radiuis-mfa-nsp/configure-p2s.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure AD-Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md)
 - [Meglévő NPS-infrastruktúra integrálása az Azure AD-vel Multi-Factor Authentication](../active-directory/authentication/howto-mfa-nps-extension.md)

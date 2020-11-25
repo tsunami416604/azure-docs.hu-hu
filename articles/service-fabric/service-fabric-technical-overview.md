@@ -7,11 +7,11 @@ ms.date: 09/17/2018
 ms.author: masnider
 ms.custom: sfrev
 ms.openlocfilehash: 7b2f1a170a792e0b4d069258264407c121dab3ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260235"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018834"
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric terminológia áttekintése
 
@@ -82,7 +82,7 @@ Az **újrakonfigurálás** a szolgáltatás replikájának bármely változásá
 **Code Package**: a szolgáltatástípus végrehajtható fájljait (általában exe/DLL fájlokat) tartalmazó lemez könyvtára. A Kódszerkesztő könyvtárában lévő fájlokat a szolgáltatás típusa `ServiceManifest.xml` fájlja hivatkozik. Névvel ellátott szolgáltatás létrehozásakor a rendszer átmásolja a kódot a csomópontra vagy a kijelölt csomópontokra a nevesített szolgáltatás futtatásához. Ezután elindul a kód futtatása. A kód csomag végrehajtható fájljainak két típusa létezik:
 
 * **Vendég végrehajtható fájlok**: a as-t futtató végrehajtható fájlok a gazda operációs rendszeren (Windows vagy Linux). Ezek a végrehajtható fájlok nem hivatkoznak Service Fabric futtatókörnyezeti fájlokra, ezért nem használnak Service Fabric programozási modelleket. Ezek a végrehajtható fájlok nem tudják használni a Service Fabric szolgáltatásait, például az elnevezési szolgáltatást a végpontok felderítéséhez. A vendég végrehajtható fájlok nem tudják jelenteni az egyes szolgáltatási példányokra vonatkozó betöltési metrikákat.
-* A **Service Host végrehajtható**fájljai: Service Fabric programozási modelleket használó végrehajtható fájlok Service Fabric futtatókörnyezeti fájlokhoz való csatolással, Service Fabric funkciók engedélyezésével. Az elnevezett szolgáltatási példányok például regisztrálhatják a végpontokat Service Fabric elnevezési szolgáltatás, és jelenthetik be a terhelési metrikákat is.
+* A **Service Host végrehajtható** fájljai: Service Fabric programozási modelleket használó végrehajtható fájlok Service Fabric futtatókörnyezeti fájlokhoz való csatolással, Service Fabric funkciók engedélyezésével. Az elnevezett szolgáltatási példányok például regisztrálhatják a végpontokat Service Fabric elnevezési szolgáltatás, és jelenthetik be a terhelési metrikákat is.
 
 **Adatcsomag**: a szolgáltatás típusának statikus, csak olvasható adatfájljait, jellemzően fénykép-, hang-és videofájlok listáját tartalmazó lemez könyvtára. Az adatcsomag könyvtárában lévő fájlokat a szolgáltatás típusa fájlja hivatkozik `ServiceManifest.xml` . Elnevezett szolgáltatás létrehozásakor a rendszer átmásolja az adatcsomagot a csomópontra vagy a kijelölt csomópontokra a nevesített szolgáltatás futtatásához. A kód elindul, és most már elérheti az adatfájlokat.
 

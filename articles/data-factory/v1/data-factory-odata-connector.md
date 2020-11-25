@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 95f92d4e5616d7754c355610685701a8e089b84e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85847572"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019650"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>Adatok áthelyezése egy OData-forrásból Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -43,9 +43,9 @@ Az alábbi hitelesítési típusok támogatottak:
 ## <a name="getting-started"></a>Első lépések
 Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely különböző eszközök/API-k használatával helyez át egy OData-forrásból származó adatokkal.
 
-A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló**használata. Tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört, amely gyors áttekintést nyújt a folyamat létrehozásáról az adatmásolási varázsló használatával.
+A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló** használata. Tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört, amely gyors áttekintést nyújt a folyamat létrehozásáról az adatmásolási varázsló használatával.
 
-A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**és **REST API**. A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál.
+A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API** és **REST API**. A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál.
 
 Függetlenül attól, hogy az eszközöket vagy API-kat használja, a következő lépések végrehajtásával hozhat létre egy folyamatot, amely egy forrás adattárból egy fogadó adattárba helyezi át az adatait:
 
@@ -62,13 +62,13 @@ A következő táblázat a OData társított szolgáltatáshoz tartozó JSON-ele
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| típus |A Type tulajdonságot a következőre kell beállítani: **OData** |Igen |
-| url |A OData szolgáltatás URL-címe. |Igen |
-| authenticationType |A OData-forráshoz való kapcsolódáshoz használt hitelesítés típusa. <br/><br/> A Felhőbeli OData a lehetséges értékek a következők: névtelen, alapszintű és OAuth (Megjegyzés Azure Data Factory jelenleg csak Azure Active Directory-alapú OAuth-t támogatnak). <br/><br/> A helyszíni OData a lehetséges értékek a következők: névtelen, alapszintű és Windows. |Igen |
+| típus |A Type tulajdonságot a következőre kell beállítani: **OData** |Yes |
+| url |A OData szolgáltatás URL-címe. |Yes |
+| authenticationType |A OData-forráshoz való kapcsolódáshoz használt hitelesítés típusa. <br/><br/> A Felhőbeli OData a lehetséges értékek a következők: névtelen, alapszintű és OAuth (Megjegyzés Azure Data Factory jelenleg csak Azure Active Directory-alapú OAuth-t támogatnak). <br/><br/> A helyszíni OData a lehetséges értékek a következők: névtelen, alapszintű és Windows. |Yes |
 | username |Ha alapszintű hitelesítést használ, adja meg a felhasználónevet. |Igen (csak akkor, ha alapszintű hitelesítést használ) |
 | jelszó |Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. |Igen (csak akkor, ha alapszintű hitelesítést használ) |
 | authorizedCredential |Ha OAuth használ, kattintson az **Engedélyezés** gombra a Data Factory másolás varázslóban vagy a szerkesztőben, és adja meg a hitelesítő adatait, majd a tulajdonság értékét automatikusan létrehozza a rendszer. |Igen (csak OAuth-hitelesítés használata esetén) |
-| Átjáró neve |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni OData szolgáltatáshoz való kapcsolódáshoz. Csak akkor kell megadni, ha a helyszíni OData forrásból másol Adatmásolást. |Nem |
+| Átjáró neve |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni OData szolgáltatáshoz való kapcsolódáshoz. Csak akkor kell megadni, ha a helyszíni OData forrásból másol Adatmásolást. |No |
 
 ### <a name="using-basic-authentication"></a>Alapszintű hitelesítés használata
 ```json
@@ -147,7 +147,7 @@ A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól,
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| path |A OData erőforrás elérési útja |Nem |
+| path |A OData erőforrás elérési útja |No |
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 A tevékenységek definiálásához elérhető & tulajdonságok teljes listáját a [folyamatok létrehozása](data-factory-create-pipelines.md) című cikkben találja. A tulajdonságok, például a név, a leírás, a bemeneti és a kimeneti táblák, valamint a szabályzatok minden típusú tevékenységhez elérhetők.
@@ -158,7 +158,7 @@ Ha a forrás típusa **RelationalSource** (beleértve a OData is), a typePropert
 
 | Tulajdonság | Leírás | Példa | Kötelező |
 | --- | --- | --- | --- |
-| lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |"? $select = név, leírás&$top = 5" |Nem |
+| lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |"? $select = név, leírás&$top = 5" |No |
 
 ## <a name="type-mapping-for-odata"></a>Típus leképezése OData
 Ahogy azt az [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) című cikk ismerteti, a másolási tevékenység az alábbi kétlépéses megközelítéssel hajtja végre az automatikus típus-konverziókat a forrás típusairól a fogadó típusokba.
@@ -176,7 +176,7 @@ Az adatok OData való áthelyezésekor a rendszer a következő leképezéseket 
 | EDM. DateTime |DateTime |
 | EDM. decimális |Tizedesjegy |
 | Edm.Double |Dupla |
-| EDM. Single |Egyirányú |
+| EDM. Single |Egyszeres |
 | EDM. GUID |Guid |
 | EDM. Int16 |Int16 |
 | Edm.Int32 |Int32 |

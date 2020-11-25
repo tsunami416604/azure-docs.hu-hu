@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
 ms.openlocfilehash: 50e047325ad17710794b1640715ab1938373fe85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542172"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019463"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Terheléselosztás az Azure alkalmazáskézbesítési csomagjával
 
@@ -82,7 +82,7 @@ Emellett a dinamikus tartalmat kiszolgáló alapértelmezett virtuálisgép-kés
 
 Az alábbi ábrán a forgatókönyv architektúrája látható:
 
-:::image type="content" source="./media/front-door-lb-with-azure-app-delivery-suite/application-delivery-figure2.png" alt-text="Application Delivery Suite":::
+:::image type="content" source="./media/front-door-lb-with-azure-app-delivery-suite/application-delivery-figure2.png" alt-text="Application Delivery Suite – részletes architektúra":::
 
 > [!NOTE]
 > Ez a példa az Azure által kínált terheléselosztási szolgáltatások számos lehetséges konfigurációjának egyike. A Traffic Manager, a bejárati ajtó, a Application Gateway és a Load Balancer összekeverhető, és a legjobban megfelel a terheléselosztási igényeknek. Ha például a TLS/SSL-kiszervezés vagy a 7. rétegbeli feldolgozás nem szükséges, Load Balancer Application Gateway helyett használható.

@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
 ms.openlocfilehash: 0842efe304faa9a0d94fbf71075f1bc16ff34014
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217558"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018205"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Naplózási riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával
 
@@ -34,7 +34,7 @@ A naplózási riasztási szabályokat Azure Resource Manager sablonok használat
 Itt találja a riasztási lekérdezések írásához szükséges lépéseket:
 
 1. Keresse meg azt az erőforrást, amelyre a riasztást szeretné.
-1. A **figyelés**területen válassza a **naplók**lehetőséget.
+1. A **figyelés** területen válassza a **naplók** lehetőséget.
 1. Kérdezze le a naplóadatokat, amelyek a hibát jelezhetik. A [riasztási lekérdezés példái című témakörből](../log-query/saved-queries.md) megtudhatja, hogy milyen módon derítheti fel vagy kezdheti [meg a saját lekérdezésének megírását](../log-query/get-started-portal.md). Ezenkívül [megtudhatja, hogyan hozhat létre optimalizált riasztási lekérdezéseket](alerts-log-query.md).
 1. Nyomja meg az "+ új riasztási szabály" gombot a riasztás létrehozási folyamatának elindításához.
 
@@ -77,11 +77,11 @@ Itt találja a riasztási lekérdezések írásához szükséges lépéseket:
 
 1. Ezután az előnézeti adathalmaz alapján állítsa be az [ **operátort**, a **küszöbértéket**](alerts-unified-log.md#threshold-and-operator)és a [**gyakoriságot**](alerts-unified-log.md#frequency).
 
-1. Megadhatja azt is, [hogy a szabálysértések száma](alerts-unified-log.md#number-of-violations-to-trigger-alert) **teljes vagy egymást követő szabálysértések**használatával történjen.
+1. Megadhatja azt is, [hogy a szabálysértések száma](alerts-unified-log.md#number-of-violations-to-trigger-alert) **teljes vagy egymást követő szabálysértések** használatával történjen.
 
-1. Válassza a **Done** (Kész) lehetőséget. 
+1. Válassza a **Kész** lehetőséget. 
 
-1. Adja meg a **riasztási szabály nevét**, **leírását**, és válassza ki a riasztás **súlyosságát**. Ezeket a részleteket minden riasztási műveletben használják. Emellett dönthet úgy is, hogy nem aktiválja a riasztási szabályt a létrehozáshoz a **szabály engedélyezése a létrehozáskor**lehetőség kiválasztásával.
+1. Adja meg a **riasztási szabály nevét**, **leírását**, és válassza ki a riasztás **súlyosságát**. Ezeket a részleteket minden riasztási műveletben használják. Emellett dönthet úgy is, hogy nem aktiválja a riasztási szabályt a létrehozáshoz a **szabály engedélyezése a létrehozáskor** lehetőség kiválasztásával.
 
 1. Válassza ki, hogy szeretné-e letiltani a szabályok műveleteit egy riasztás elindítását követően, majd használja a [**riasztások mellőzése**](alerts-unified-log.md#state-and-resolving-alerts) beállítást. A szabály továbbra is futni fog, és riasztásokat hoz létre, de a rendszer nem indít el műveleteket a zaj megelőzése érdekében. Az Elnémítás művelet értékének nagyobbnak kell lennie, mint a riasztások hatékonyságának gyakorisága.
 
@@ -110,11 +110,11 @@ Itt találja a riasztási lekérdezések írásához szükséges lépéseket:
 > [!NOTE]
 > A riasztások kezelése szolgáltatásból való létrehozás jelenleg nem támogatott az erőforrás-központú naplók esetében
 
-1. A [portálon](https://portal.azure.com/)válassza a **figyelés** , majd a **riasztások**lehetőséget.
+1. A [portálon](https://portal.azure.com/)válassza a **figyelés** , majd a **riasztások** lehetőséget.
 
     ![Figyelés](media/alerts-log/AlertsPreviewMenu.png)
 
-1. Válassza az **új riasztási szabály**lehetőséget. 
+1. Válassza az **új riasztási szabály** lehetőséget. 
 
     ![Riasztás hozzáadása](media/alerts-log/AlertsPreviewOption.png)
 
@@ -176,7 +176,7 @@ Itt találja a riasztási lekérdezések írásához szükséges lépéseket:
 
     ![Műveletek lap](media/alerts-log/actions-tab.png)
 
-1. A **részletek** lapon adja meg a **riasztási szabály részleteit**és a **projekt részleteit**. Opcionálisan beállíthatja, hogy a **rendszer ne kezdjen el**, vagy a riasztási szabály elindítását követően [**elnémítani a műveleteket**](alerts-unified-log.md#state-and-resolving-alerts) .
+1. A **részletek** lapon adja meg a **riasztási szabály részleteit** és a **projekt részleteit**. Opcionálisan beállíthatja, hogy a **rendszer ne kezdjen el**, vagy a riasztási szabály elindítását követően [**elnémítani a műveleteket**](alerts-unified-log.md#state-and-resolving-alerts) .
 
     > [!NOTE]
     > A naplózási riasztási szabályok jelenleg állapot nélküliek, és minden alkalommal elindítanak egy műveletet, ha az Elnémítás nincs meghatározva.
@@ -265,7 +265,7 @@ New-AzResourceGroupDeployment -Name AlertDeployment -ResourceGroupName ResourceG
 
 Az előző szakasz ismerteti, hogyan hozhatók létre, tekinthetők meg és kezelhetők a naplózási riasztási szabályok a Azure Portal használatával. Ez a szakasz azt írja le, hogyan végezheti el ugyanezt a platformfüggetlen [Azure CLI](/cli/azure/get-started-with-azure-cli)használatával. Az Azure CLI használatának leggyorsabb módja a [Azure Cloud Shellon](../../cloud-shell/overview.md)keresztül. Ebben a cikkben a Cloud Shell fogjuk használni.
 
-1. Lépjen a Azure Portalra, majd válassza a **Cloud Shell**lehetőséget.
+1. Lépjen a Azure Portalra, majd válassza a **Cloud Shell** lehetőséget.
 
 1. A parancssorban a ``--help`` parancsokkal további információkat kaphat a paranccsal és annak használatáról. A következő parancs például megjeleníti a naplók létrehozásának, megtekintésének és kezeléséhez elérhető parancsok listáját:
 
@@ -321,7 +321,7 @@ az group deployment create \
 
 A létrehozás sikeressége érdekében a 201 értéket adja vissza. A frissítés sikerességéről a 200 értéket adja vissza.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a [naplózási riasztásokról](./alerts-unified-log.md).
 * Napló-riasztások létrehozása [Azure Resource Manager-sablonok](./alerts-log-create-templates.md)használatával.

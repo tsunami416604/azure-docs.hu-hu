@@ -7,22 +7,22 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: 3674c316e34b1e54ed8282ac7d2c228a2b774c06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081219"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019021"
 ---
 # <a name="how-to-document-data-sources-in-azure-data-catalog"></a>Adatforrások dokumentálása Azure Data Catalog
 
 ## <a name="introduction"></a>Bevezetés
-A **Microsoft Azure Data Catalog** egy teljes körűen felügyelt felhőalapú szolgáltatás, amely a vállalati adatforrások regisztrálási és felderítési rendszereként szolgál. Ez azt jelenti, hogy **Azure Data Catalog** az a célja, hogy segítsen az embereknek felderíteni, *megérteni*és használni az adatforrásokat, és hogy segítse a szervezeteket abban, hogy a meglévő adatokból több értéket kapjanak.
+A **Microsoft Azure Data Catalog** egy teljes körűen felügyelt felhőalapú szolgáltatás, amely a vállalati adatforrások regisztrálási és felderítési rendszereként szolgál. Ez azt jelenti, hogy **Azure Data Catalog** az a célja, hogy segítsen az embereknek felderíteni, *megérteni* és használni az adatforrásokat, és hogy segítse a szervezeteket abban, hogy a meglévő adatokból több értéket kapjanak.
 
 Ha egy adatforrás regisztrálva van **Azure Data Catalog**, a metaadatokat a szolgáltatás átmásolja és indexeli, de a történet nem fejeződik be. **Azure Data Catalog** azt is lehetővé teszi, hogy a felhasználók saját teljes dokumentációt adjanak meg, amely leírja az adatforrás használati és általános forgatókönyveit.
 
 Az [adatforrások feliratozásával](data-catalog-how-to-annotate.md)megismerheti, hogy az adatforrást ismerő szakértők megjegyzésekkel láthatják el a címkéket és a leírást. A **Azure Data Catalog** -portál egy Rich Text Editort tartalmaz, így a felhasználók teljes mértékben dokumentálják az adategységeket és a tárolókat. A szerkesztő tartalmazza a bekezdések formázását, például a fejléceket, a szövegformázást, a listajeles listákat, a számozott listákat és a táblákat.
 
-A címkék és a leírások kiválóan használhatók az egyszerű jegyzetekhez. Ahhoz azonban, hogy az adatfogyasztók jobban megértsék az adatforrások használatát és az adatforráshoz kapcsolódó üzleti forgatókönyveket, a szakértők teljes körű és részletes dokumentációt is biztosíthatnak. Az adatforrások egyszerű dokumentálása. Válasszon ki egy adategységet vagy tárolót, és válassza a **dokumentáció**elemet.
+A címkék és a leírások kiválóan használhatók az egyszerű jegyzetekhez. Ahhoz azonban, hogy az adatfogyasztók jobban megértsék az adatforrások használatát és az adatforráshoz kapcsolódó üzleti forgatókönyveket, a szakértők teljes körű és részletes dokumentációt is biztosíthatnak. Az adatforrások egyszerű dokumentálása. Válasszon ki egy adategységet vagy tárolót, és válassza a **dokumentáció** elemet.
 
 ![Dokumentációs lap Data Catalog](media/data-catalog-documentation/data-catalog-documentation.png)
 

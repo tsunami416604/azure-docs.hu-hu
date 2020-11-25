@@ -15,11 +15,11 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 09068064f24594ef35a8a1bf64213b48d83873ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89296863"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018732"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay-licencek követelményei és konfigurálása
 
@@ -120,6 +120,6 @@ private static ContentKeyPolicyFairPlayConfiguration ConfigureFairPlayPolicyOpti
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További [információ a DRM elleni védelemről](protect-with-drm.md)

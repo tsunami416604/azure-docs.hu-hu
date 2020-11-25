@@ -10,11 +10,11 @@ ms.topic: how-to
 ms.date: 01/02/2018
 ms.author: cynthn
 ms.openlocfilehash: cae29954211e62601debb35d76f938fb6a92779e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87284608"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019803"
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>A D: meghajtó használata adatmeghajtóként Windows-alapú virtuális gépen
 Ha az alkalmazásnak a D meghajtót kell használnia az adattároláshoz, kövesse az alábbi utasításokat, hogy az ideiglenes lemezhez egy másik meghajtóbetűjelet használjon. Soha ne használja az ideiglenes lemezt a megőrizni kívánt adatmennyiség tárolására.
@@ -29,31 +29,31 @@ Először csatlakoztatnia kell az adatlemezt a virtuális géphez. Ha ezt a port
 ## <a name="temporarily-move-pagefilesys-to-c-drive"></a>pagefile.sys ideiglenes áthelyezése C meghajtóra
 1. Csatlakozzon a virtuális géphez. 
 2. Kattintson a jobb gombbal a **Start** menüre, és válassza a **System (rendszeren**) lehetőséget.
-3. A bal oldali menüben válassza a **Speciális rendszerbeállítások**lehetőséget.
-4. A **teljesítmény** szakaszban válassza a **Beállítások**lehetőséget.
+3. A bal oldali menüben válassza a **Speciális rendszerbeállítások** lehetőséget.
+4. A **teljesítmény** szakaszban válassza a **Beállítások** lehetőséget.
 5. Lépjen a **Speciális** lapra.
-6. A **virtuális memória** szakaszban válassza a **módosítás**lehetőséget.
-7. Válassza ki a **C** meghajtót, majd kattintson a **rendszer által felügyelt méret** elemre, majd a **beállítás**elemre.
-8. Válassza ki a **D** meghajtót, majd kattintson a **nincs lapozófájl** elemre, majd a **beállítás**gombra.
+6. A **virtuális memória** szakaszban válassza a **módosítás** lehetőséget.
+7. Válassza ki a **C** meghajtót, majd kattintson a **rendszer által felügyelt méret** elemre, majd a **beállítás** elemre.
+8. Válassza ki a **D** meghajtót, majd kattintson a **nincs lapozófájl** elemre, majd a **beállítás** gombra.
 9. Kattintson az Alkalmaz gombra. A módosítások érvénybe lépéséhez figyelmeztetést kap, hogy a számítógépet újra kell indítani.
 10. Indítsa újra a virtuális gépet.
 
 ## <a name="change-the-drive-letters"></a>A meghajtóbetűjelek módosítása
 1. A virtuális gép újraindítása után jelentkezzen be újra a virtuális gépre.
 2. Kattintson a **Start** menüre, és írja be a **diskmgmt. msc** parancsot, és nyomja le az ENTER billentyűt. A Lemezkezelés elindul.
-3. Kattintson a jobb gombbal a **D**, az ideiglenes tároló meghajtóra, majd válassza a meghajtóbetűjel **és elérési utak módosítása**lehetőséget.
+3. Kattintson a jobb gombbal a **D**, az ideiglenes tároló meghajtóra, majd válassza a meghajtóbetűjel **és elérési utak módosítása** lehetőséget.
 4. A meghajtóbetűjel területen válasszon egy új meghajtót, például **t** , majd kattintson **az OK gombra**. 
-5. Kattintson a jobb gombbal az adatlemezre, és válassza a meghajtóbetűjel **és elérési utak módosítása**lehetőséget.
-6. A meghajtóbetűjel területen válassza a **D** meghajtó lehetőséget, majd kattintson **az OK**gombra. 
+5. Kattintson a jobb gombbal az adatlemezre, és válassza a meghajtóbetűjel **és elérési utak módosítása** lehetőséget.
+6. A meghajtóbetűjel területen válassza a **D** meghajtó lehetőséget, majd kattintson **az OK** gombra. 
 
 ## <a name="move-pagefilesys-back-to-the-temporary-storage-drive"></a>pagefile.sys visszahelyezése az ideiglenes tárolóeszközre
 1. Kattintson a jobb gombbal a **Start** menüre, és válassza a **System** lehetőséget.
-2. A bal oldali menüben válassza a **Speciális rendszerbeállítások**lehetőséget.
-3. A **teljesítmény** szakaszban válassza a **Beállítások**lehetőséget.
+2. A bal oldali menüben válassza a **Speciális rendszerbeállítások** lehetőséget.
+3. A **teljesítmény** szakaszban válassza a **Beállítások** lehetőséget.
 4. Lépjen a **Speciális** lapra.
-5. A **virtuális memória** szakaszban válassza a **módosítás**lehetőséget.
-6. Válassza ki a **C** operációsrendszer-meghajtót, és kattintson a **nincs lapozófájl** elemre, majd a **beállítás**gombra.
-7. Válassza ki az ideiglenes tároló **meghajtót, majd kattintson** a **rendszer által felügyelt méret** elemre, majd a **beállítás**gombra.
+5. A **virtuális memória** szakaszban válassza a **módosítás** lehetőséget.
+6. Válassza ki a **C** operációsrendszer-meghajtót, és kattintson a **nincs lapozófájl** elemre, majd a **beállítás** gombra.
+7. Válassza ki az ideiglenes tároló **meghajtót, majd kattintson** a **rendszer által felügyelt méret** elemre, majd a **beállítás** gombra.
 8. Kattintson az **Alkalmaz** gombra. A módosítások érvénybe lépéséhez figyelmeztetést kap, hogy a számítógépet újra kell indítani.
 9. Indítsa újra a virtuális gépet.
 

@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: radeltch
 ms.openlocfilehash: 2783d9dc7151190857d870b5493465884b82ffcc
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957265"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017950"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SAP HANA magas rendelkezésre állása Azure-beli virtuális gépeken SUSE Linux Enterprise Server
 
@@ -1137,7 +1137,7 @@ Megjegyzés: az alábbi tesztek úgy lettek kialakítva, hogy sorban fussanak, �
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]

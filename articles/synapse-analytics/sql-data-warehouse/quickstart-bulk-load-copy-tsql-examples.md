@@ -10,11 +10,11 @@ ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.openlocfilehash: 9ed3a4b0827e81b3f779d95a6eab1dc341e69bb1
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503266"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019378"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Adattárolás biztonságos betöltése a szinapszis SQL használatával
 
@@ -89,7 +89,7 @@ A felügyelt identitás hitelesítésére akkor van szükség, ha a Storage-fió
    > [!NOTE]
    > Ha rendelkezik általános célú v1-vagy blob Storage-fiókkal, először a **v2-re kell frissítenie** az [útmutató](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)segítségével.
 
-3. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, és válassza a **szerepkör-hozzárendelés hozzáadása**elemet. Rendeljen **Storage blob-Adattulajdonost, közreműködőt vagy olvasó** Azure-szerepkört az SQL Serverhez.
+3. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, és válassza a **szerepkör-hozzárendelés hozzáadása** elemet. Rendeljen **Storage blob-Adattulajdonost, közreműködőt vagy olvasó** Azure-szerepkört az SQL Serverhez.
 
    > [!NOTE]
    > Ezt a lépést csak a tulajdonosi jogosultsággal rendelkező tagok hajthatják végre. A különböző Azure-beli beépített szerepkörökhöz tekintse meg ezt az [útmutatót](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
@@ -113,7 +113,7 @@ A felügyelt identitás hitelesítésére akkor van szükség, ha a Storage-fió
 ## <a name="d-azure-active-directory-authentication"></a>D. Azure Active Directory-hitelesítés
 #### <a name="steps"></a>Lépések
 
-1. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, és válassza a **szerepkör-hozzárendelés hozzáadása**elemet. Rendeljen **Storage blob-Adattulajdonost, közreműködőt vagy olvasó** Azure-szerepkört az Azure ad-felhasználóhoz. 
+1. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, és válassza a **szerepkör-hozzárendelés hozzáadása** elemet. Rendeljen **Storage blob-Adattulajdonost, közreműködőt vagy olvasó** Azure-szerepkört az Azure ad-felhasználóhoz. 
 
     > [!IMPORTANT]
     > A **Storage** **blob** -adattulajdonos, közreműködő vagy olvasó Azure-szerepkör meghatározása. Ezek a szerepkörök eltérnek a tulajdonos, közreműködő és olvasó Azure beépített szerepköreitől.
@@ -158,7 +158,7 @@ A felügyelt identitás hitelesítésére akkor van szükség, ha a Storage-fió
 >
 > - Az OAuth 2,0 token végpont **v1** -es verziójának használata
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A részletes szintaxissal kapcsolatban olvassa el a [copy utasítással](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax) kapcsolatos cikket.
 - Az ajánlott eljárások betöltéséhez tekintse meg az [adatgyűjtés áttekintése című](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/design-elt-data-loading#what-is-elt) cikket

@@ -13,11 +13,11 @@ ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 0f96680f1ea91434c84d6606e3637c68c1cb5a84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80991501"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019633"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Adatok áthelyezése helyszíni Cassandra-adatbázisból Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -47,8 +47,8 @@ Az átjáró telepítésekor a automatikusan telepíti a Cassandra-adatbázishoz
 ## <a name="getting-started"></a>Első lépések
 Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely különböző eszközök/API-k használatával helyez át egy helyszíni Cassandra-adattárból származó adatokkal.
 
-- A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló**használata. Tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört, amely gyors áttekintést nyújt a folyamat létrehozásáról az adatmásolási varázsló használatával.
-- A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**és **REST API**. A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál.
+- A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló** használata. Tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört, amely gyors áttekintést nyújt a folyamat létrehozásáról az adatmásolási varázsló használatával.
+- A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API** és **REST API**. A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál.
 
 Függetlenül attól, hogy az eszközöket vagy API-kat használja, a következő lépések végrehajtásával hozhat létre egy folyamatot, amely egy forrás adattárból egy fogadó adattárba helyezi át az adatait:
 
@@ -65,14 +65,14 @@ A következő táblázat a Cassandra társított szolgáltatáshoz tartozó JSON
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| típus |A Type tulajdonságot a következőre kell beállítani: **OnPremisesCassandra** |Igen |
-| gazda |A Cassandra-kiszolgálók egy vagy több IP-címe vagy állomásneve.<br/><br/>Megadhatja az IP-címek vagy állomásnevek vesszővel tagolt listáját, hogy az összes kiszolgálóhoz egyszerre kapcsolódjon. |Igen |
+| típus |A Type tulajdonságot a következőre kell beállítani: **OnPremisesCassandra** |Yes |
+| gazda |A Cassandra-kiszolgálók egy vagy több IP-címe vagy állomásneve.<br/><br/>Megadhatja az IP-címek vagy állomásnevek vesszővel tagolt listáját, hogy az összes kiszolgálóhoz egyszerre kapcsolódjon. |Yes |
 | port |A Cassandra-kiszolgáló által az ügyfélkapcsolatok figyeléséhez használt TCP-port. |Nem, alapértelmezett érték: 9042 |
-| authenticationType |Alapszintű vagy névtelen |Igen |
+| authenticationType |Alapszintű vagy névtelen |Yes |
 | username |Adja meg a felhasználói fiók felhasználónevét. |Igen, ha a authenticationType értéke alapszintű. |
 | jelszó |A felhasználói fiók jelszavának megadása. |Igen, ha a authenticationType értéke alapszintű. |
-| Átjáró neve |A helyszíni Cassandra-adatbázishoz való kapcsolódáshoz használt átjáró neve. |Igen |
-| encryptedCredential |Az átjáró által titkosított hitelesítő adat. |Nem |
+| Átjáró neve |A helyszíni Cassandra-adatbázishoz való kapcsolódáshoz használt átjáró neve. |Yes |
+| encryptedCredential |Az átjáró által titkosított hitelesítő adat. |No |
 
 >[!NOTE]
 >Jelenleg nem támogatott a Cassandra-hez való kapcsolódás a TLS használatával.
@@ -92,7 +92,7 @@ A tevékenységek definiálásához elérhető & tulajdonságok teljes listájá
 
 Míg a tevékenység typeProperties szakaszában elérhető tulajdonságok az egyes tevékenységtípusok esetében eltérőek. Másolási tevékenység esetén a források és a nyelők típusaitól függően változnak.
 
-Ha a forrás **CassandraSource**típusú, a következő tulajdonságok érhetők el a typeProperties szakaszban:
+Ha a forrás **CassandraSource** típusú, a következő tulajdonságok érhetők el a typeProperties szakaszban:
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
@@ -264,10 +264,10 @@ A RelationalSource által támogatott tulajdonságok listáját a [RelationalSou
 | ASCII |Sztring |
 | BIGINT |Int64 |
 | BLOB |Bájt [] |
-| LOGIKAI |Logikai érték |
+| LOGIKAI |Logikai |
 | DECIMÁLIS |Tizedesjegy |
 | DUPLÁN |Dupla |
-| FLOAT |Egyirányú |
+| FLOAT |Egyszeres |
 | INET |Sztring |
 | INT |Int32 |
 | TEXT |Sztring |

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: ramamill
 ms.openlocfilehash: a547a874c42d06d8453b154847561d8b5f0dabb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361388"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019189"
 ---
 # <a name="manage-process-servers"></a>Folyamatkiszolgálók kezelése
 
@@ -37,18 +37,18 @@ Ha helyszíni vagy Azure-beli kiszolgálóként helyez üzembe egy folyamatot a 
 
 Az alábbiak szerint kiegyensúlyozhatja a terhelést úgy, hogy áthelyezi a virtuális gépeket két folyamat kiszolgálója között:
 
-1. A tárolóban a **kezelés** alatt kattintson **site Recovery infrastruktúra**elemre. **A VMware & fizikai gépek**területen kattintson a **konfigurációs kiszolgálók**elemre.
+1. A tárolóban a **kezelés** alatt kattintson **site Recovery infrastruktúra** elemre. **A VMware & fizikai gépek** területen kattintson a **konfigurációs kiszolgálók** elemre.
 2. Kattintson arra a konfigurációs kiszolgálóra, amelyen a folyamat-kiszolgálók regisztrálva vannak.
 3. Kattintson arra a folyamat-kiszolgálóra, amelynek terheléselosztási forgalmát el szeretné osztani.
 
     ![A képernyőképen egy olyan folyamat-kiszolgáló látható, amelyen terheléselosztási forgalmat lehet betölteni.](media/vmware-azure-manage-process-server/LoadBalance.png)
 
-4. Kattintson a **terheléselosztás**elemre, válassza ki azt a cél-feldolgozási kiszolgálót, amelyre a gépeket át szeretné helyezni. Ezután kattintson **az OK** gombra.
+4. Kattintson a **terheléselosztás** elemre, válassza ki azt a cél-feldolgozási kiszolgálót, amelyre a gépeket át szeretné helyezni. Ezután kattintson **az OK** gombra.
 
     ![Képernyőfelvétel: a terheléselosztás ablaktábla kijelölése a cél-feldolgozási kiszolgáló kijelölésével.](media/vmware-azure-manage-process-server/LoadPS.PNG)
 
-2. Kattintson a **gépek kiválasztása**lehetőségre, majd válassza ki azokat a gépeket, amelyeket az aktuálisról a cél-feldolgozási kiszolgálóra szeretne áthelyezni. Az átlagos adatváltozás részletei az egyes virtuális gépeken jelennek meg. Ezután kattintson az **OK** gombra. 
-3. A tárolóban figyelje a feladat előrehaladását a **figyelés**  >  **site Recovery feladatok**területen.
+2. Kattintson a **gépek kiválasztása** lehetőségre, majd válassza ki azokat a gépeket, amelyeket az aktuálisról a cél-feldolgozási kiszolgálóra szeretne áthelyezni. Az átlagos adatváltozás részletei az egyes virtuális gépeken jelennek meg. Ezután kattintson az **OK** gombra. 
+3. A tárolóban figyelje a feladat előrehaladását a **figyelés**  >  **site Recovery feladatok** területen.
 
 Körülbelül 15 percet vesz igénybe, hogy a változások tükrözzék a portálon. A gyorsabb hatás érdekében [frissítse a konfigurációs kiszolgálót](vmware-azure-manage-configuration-server.md#refresh-configuration-server).
 
@@ -56,14 +56,14 @@ Körülbelül 15 percet vesz igénybe, hogy a változások tükrözzék a portá
 
 Helyezze át a folyamat-kiszolgáló által kezelt teljes munkaterhelést egy másik folyamat-kiszolgálóra, az alábbiak szerint:
 
-1. A tárolóban a **kezelés** alatt kattintson **site Recovery infrastruktúra**elemre. **A VMware & fizikai gépek**területen kattintson a **konfigurációs kiszolgálók**elemre.
+1. A tárolóban a **kezelés** alatt kattintson **site Recovery infrastruktúra** elemre. **A VMware & fizikai gépek** területen kattintson a **konfigurációs kiszolgálók** elemre.
 2. Kattintson arra a konfigurációs kiszolgálóra, amelyen a folyamat-kiszolgálók regisztrálva vannak.
 3. Kattintson arra a folyamat-kiszolgálóra, amelyről át szeretné váltani a munkaterhelést.
-4. Kattintson a **kapcsoló**elemre, válassza ki azt a cél-feldolgozási kiszolgálót, amelyre át szeretné helyezni a munkaterhelést. Ezután kattintson **az OK** gombra.
+4. Kattintson a **kapcsoló** elemre, válassza ki azt a cél-feldolgozási kiszolgálót, amelyre át szeretné helyezni a munkaterhelést. Ezután kattintson **az OK** gombra.
 
     ![Képernyőfelvétel: a cél-feldolgozási kiszolgáló kiválasztása panel.](media/vmware-azure-manage-process-server/Switch.PNG)
 
-5. A tárolóban figyelje a feladat előrehaladását a **figyelés**  >  **site Recovery feladatok**területen.
+5. A tárolóban figyelje a feladat előrehaladását a **figyelés**  >  **site Recovery feladatok** területen.
 
 Körülbelül 15 percet vesz igénybe, hogy a változások tükrözzék a portálon. A gyorsabb hatás érdekében [frissítse a konfigurációs kiszolgálót](vmware-azure-manage-configuration-server.md#refresh-configuration-server).
 
@@ -91,7 +91,7 @@ A következő módon regisztrálja újra a helyszíni vagy egy Azure-beli virtu�
 A beállítások mentése után tegye a következőket:
 
 1. Nyisson meg egy rendszergazdai parancssort a Process Server kiszolgálón.
-2. Tallózással keresse meg a **%PROGRAMDATA%\ASR\Agent**mappát, és futtassa a következő parancsot:
+2. Tallózással keresse meg a **%PROGRAMDATA%\ASR\Agent** mappát, és futtassa a következő parancsot:
 
     ```
     cdpcli.exe --registermt
@@ -111,7 +111,7 @@ Ha egy helyszíni folyamat-kiszolgáló egy proxy használatával csatlakozik az
    net stop obengine
    net start obengine
    ```
-2. Tallózással keresse meg a **%PROGRAMDATA%\ASR\Agent**mappát, és futtassa a következő parancsot:
+2. Tallózással keresse meg a **%PROGRAMDATA%\ASR\Agent** mappát, és futtassa a következő parancsot:
    ```
    cmd
    cdpcli.exe --registermt

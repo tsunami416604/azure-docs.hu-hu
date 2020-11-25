@@ -18,11 +18,11 @@ ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ad9820cc3227c788582a9c2a452abe1886a4a2d3
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950312"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019327"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>SAP számításifeladat-konfigurációk az Azure Availability Zones szolgáltatással
 [Azure Availability Zones](../../../availability-zones/az-overview.md) az Azure által biztosított magas rendelkezésre állási funkciók egyike. A Availability Zones használata javítja az Azure-beli SAP-munkaterhelések teljes rendelkezésre állását. Ez a funkció már elérhető néhány [Azure-régióban](https://azure.microsoft.com/global-infrastructure/regions/). A jövőben több régióban is elérhető lesz.
@@ -180,7 +180,7 @@ Ehhez a konfigurációhoz a következő szempontokat kell figyelembe venni:
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Íme néhány további lépés a Azure Availability Zones üzembe helyezéséhez:
 
 - [Az SAP ASCS/SCS-példányok fürtözése Windows feladatátvevő fürtön az Azure-ban megosztott fürtözött lemez használatával](./sap-high-availability-guide-wsfc-shared-disk.md)

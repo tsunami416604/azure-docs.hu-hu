@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: e0b9ac3f16a170bb14925b555e8894cb10080488
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: cfffafaab2e2d4ef6b165ef03beb827342c94608
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026182"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96018052"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>Privát kapcsolati szolgáltatás létrehozása az Azure CLI-vel
 Ebből a cikkből megtudhatja, hogyan hozhat létre egy privát hivatkozási szolgáltatást az Azure-ban az Azure CLI használatával.
@@ -50,7 +50,7 @@ az network lb create --resource-group myResourceGroup --name myILB --sku standar
 
 ### <a name="create-a-load-balancer-health-probe"></a>Terheléselosztó állapotmintájának létrehozása
 
-Az állapotfigyelő mintavételező az összes virtuálisgép-példányt ellenőrzi, hogy biztosan képesek legyenek hálózati forgalom fogadására. A mintavételező tesztjén elbukó virtuálisgép-példányokat a rendszer eltávolítja a terheléselosztóból, és így is maradnak, amíg ismét online állapotúak nem lesznek, és a mintavételező tesztje azt nem jelzi, hogy megfelelő az állapotuk. Hozzon létre egy állapotmintát az [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest) paranccsal a virtuális gépek állapotának monitorozásához. 
+Az állapotfigyelő mintavételező az összes virtuálisgép-példányt ellenőrzi, hogy biztosan képesek legyenek hálózati forgalom fogadására. A mintavételező tesztjén elbukó virtuálisgép-példányokat a rendszer eltávolítja a terheléselosztóból, és így is maradnak, amíg ismét online állapotúak nem lesznek, és a mintavételező tesztje azt nem jelzi, hogy megfelelő az állapotuk. Hozzon létre egy állapotmintát az [az network lb probe create](/cli/azure/network/lb/probe?view=azure-cli-latest) paranccsal a virtuális gépek állapotának monitorozásához. 
 
 ```azurecli-interactive
   az network lb probe create \
@@ -63,7 +63,7 @@ Az állapotfigyelő mintavételező az összes virtuálisgép-példányt ellenő
 
 ### <a name="create-a-load-balancer-rule"></a>Terheléselosztási szabály létrehozása
 
-A terheléselosztási szabályok meghatározzák az előtérbeli IP-konfigurációt a bejövő forgalomhoz és a háttérbeli IP-készletet a forgalom fogadásához, valamint a szükséges forrás- és célportot. Hozzon létre egy *myHTTPRule* nevű terheléselosztási szabályt az [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) paranccsal a *myFrontEnd* nevű előtérbeli címkészlet 80-as portjának figyeléséhez és az elosztott terhelésű hálózati forgalomnak a *myBackEndPool* nevű háttércímkészletre való küldéséhez, amely a 80-as portot használja. 
+A terheléselosztási szabályok meghatározzák az előtérbeli IP-konfigurációt a bejövő forgalomhoz és a háttérbeli IP-készletet a forgalom fogadásához, valamint a szükséges forrás- és célportot. Hozzon létre egy *myHTTPRule* nevű terheléselosztási szabályt az [az network lb rule create](/cli/azure/network/lb/rule?view=azure-cli-latest) paranccsal a *myFrontEnd* nevű előtérbeli címkészlet 80-as portjának figyeléséhez és az elosztott terhelésű hálózati forgalomnak a *myBackEndPool* nevű háttércímkészletre való küldéséhez, amely a 80-as portot használja. 
 
 ```azurecli-interactive
   az network lb rule create \
@@ -79,7 +79,7 @@ A terheléselosztási szabályok meghatározzák az előtérbeli IP-konfiguráci
 ```
 ### <a name="create-backend-servers"></a>Háttérkiszolgálók létrehozása
 
-Ebben a példában nem fedi le a virtuális gépek létrehozását. Kövesse a következő témakör lépéseit [: belső terheléselosztó létrehozása a virtuális gépek terheléselosztásához az Azure CLI használatával](/azure/load-balancer/quickstart-load-balancer-standard-internal-cli) , hogy két virtuális gépet hozzon létre, amelyek a terheléselosztó háttér-kiszolgálóiként használhatók. 
+Ebben a példában nem fedi le a virtuális gépek létrehozását. Kövesse a következő témakör lépéseit [: belső terheléselosztó létrehozása a virtuális gépek terheléselosztásához az Azure CLI használatával](../load-balancer/quickstart-load-balancer-standard-internal-cli.md) , hogy két virtuális gépet hozzon létre, amelyek a terheléselosztó háttér-kiszolgálóiként használhatók. 
 
 
 ### <a name="disable-private-link-service-network-policies-on-subnet"></a>Magánhálózati kapcsolati szolgáltatás hálózati házirendjének letiltása az alhálózaton 
@@ -161,6 +161,5 @@ Lásd: kapcsolódási kérelmek a Private link Service [-ben az az Network Priva
 ```azurecli-interactive 
 az network private-link-service show --resource-group myResourceGroup --name myPLS 
 ```
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További információ az [Azure Private link Service](private-link-service-overview.md) -ről
- 

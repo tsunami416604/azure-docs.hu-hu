@@ -7,17 +7,17 @@ ms.topic: how-to
 ms.date: 08/31/2019
 ms.author: allensu
 ms.openlocfilehash: 04abc051cec8a6fb38ce6aa8f5347ae06cb8bd1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84688449"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019752"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-azure-powershell"></a>Azure hálózati biztonsági csoport (NSG) áthelyezése egy másik régióba Azure PowerShell használatával
 
 Különböző helyzetekben érdemes áthelyezni a meglévő NSG egyik régióból a másikba. Előfordulhat például, hogy létre szeretne hozni egy NSG ugyanazzal a konfigurációs és biztonsági szabályokkal a teszteléshez. Előfordulhat, hogy a vész-helyreállítási tervezés részeként egy NSG is át szeretne helyezni egy másik régióba.
 
-Az Azure biztonsági csoportjai nem helyezhetők át egyik régióból a másikba. A NSG meglévő konfigurációs és biztonsági szabályainak exportálásához azonban Azure Resource Manager sablont is használhat.  Ezután egy másik régióban is elvégezheti az erőforrást, ha a NSG sablonba exportálja, módosítja a paramétereket, hogy azok megfeleljenek a célhelynek, majd üzembe helyezi a sablont az új régióban.  A Resource Managerrel és a sablonokkal kapcsolatos további információkért lásd: [erőforráscsoportok exportálása sablonokba](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates).
+Az Azure biztonsági csoportok nem helyezhetők át az egyik régióból egy másikba. A NSG meglévő konfigurációs és biztonsági szabályainak exportálásához azonban Azure Resource Manager sablont is használhat.  Ezután egy másik régióban is elvégezheti az erőforrást, ha a NSG sablonba exportálja, módosítja a paramétereket, hogy azok megfeleljenek a célhelynek, majd üzembe helyezi a sablont az új régióban.  A Resource Managerrel és a sablonokkal kapcsolatos további információkért lásd: [erőforráscsoportok exportálása sablonokba](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates).
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -61,7 +61,7 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceNSGID -IncludeParameterDefaultValue
    ```
 
-4. A letöltött fájl neve annak az erőforrás-csoportnak az alapján lesz elnevezve, amelyből az erőforrást exportálták.  Keresse meg a ** \<resource-group-name> . JSON** nevű parancsból exportált fájlt, és nyissa meg egy tetszőleges szerkesztőben:
+4. A letöltött fájl neve annak az erőforrás-csoportnak az alapján lesz elnevezve, amelyből az erőforrást exportálták.  Keresse meg a **\<resource-group-name> . JSON** nevű parancsból exportált fájlt, és nyissa meg egy tetszőleges szerkesztőben:
    
    ```azurepowershell
    notepad <source-resource-group-name>.json
@@ -83,7 +83,7 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
     ```
 
 
-6. A NSG-konfigurációt és a biztonsági szabályokat áthelyező cél régió szerkesztéséhez módosítsa a **Location (hely** ) tulajdonságot az **erőforrások**területen.
+6. A NSG-konfigurációt és a biztonsági szabályokat áthelyező cél régió szerkesztéséhez módosítsa a **Location (hely** ) tulajdonságot az **erőforrások** területen.
 
     ```json
             "resources": [
@@ -106,9 +106,9 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
     Get-AzLocation | format-table
     
     ```
-8. A ** \<resource-group-name> . JSON** fájl egyéb paramétereit is módosíthatja, ha az Ön által választott, és a követelményektől függően választható:
+8. A **\<resource-group-name> . JSON** fájl egyéb paramétereit is módosíthatja, ha az Ön által választott, és a követelményektől függően választható:
 
-    * **Biztonsági szabályok** – a ** \<resource-group-name> . JSON** fájl **securityRules** szakaszának szabályainak hozzáadásával vagy eltávolításával szerkesztheti, hogy mely szabályok legyenek telepítve a cél NSG:
+    * **Biztonsági szabályok** – a **\<resource-group-name> . JSON** fájl **securityRules** szakaszának szabályainak hozzáadásával vagy eltávolításával szerkesztheti, hogy mely szabályok legyenek telepítve a cél NSG:
 
         ```json
            "resources": [
@@ -144,7 +144,7 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
             
         ```
 
-        A cél NSG lévő szabályok hozzáadásának vagy eltávolításának befejezéséhez a ** \<resource-group-name> . JSON** fájl végén található egyéni szabályok típusait is szerkesztenie kell az alábbi példa formátumában:
+        A cél NSG lévő szabályok hozzáadásának vagy eltávolításának befejezéséhez a **\<resource-group-name> . JSON** fájl végén található egyéni szabályok típusait is szerkesztenie kell az alábbi példa formátumában:
 
         ```json
            {
@@ -171,7 +171,7 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
             }
         ```
 
-9. Mentse a ** \<resource-group-name> . JSON** fájlt.
+9. Mentse a **\<resource-group-name> . JSON** fájlt.
 
 10. Hozzon létre egy erőforráscsoportot a cél régióban a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)használatával telepítendő NSG:
     
@@ -179,7 +179,7 @@ A következő lépések bemutatják, hogyan készítse elő a hálózati biztons
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-11. Telepítse a szerkesztett ** \<resource-group-name> . JSON** fájlt az előző lépésben létrehozott erőforráscsoporthoz a [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)használatával:
+11. Telepítse a szerkesztett **\<resource-group-name> . JSON** fájlt az előző lépésben létrehozott erőforráscsoporthoz a [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)használatával:
 
     ```azurepowershell-interactive
 
@@ -211,7 +211,7 @@ Remove-AzResourceGroup -Name <target-resource-group-name>
 
 ```
 
-## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
+## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
 
 A módosítások végrehajtásához és a NSG áthelyezésének befejezéséhez törölje a forrás NSG vagy az erőforráscsoportot, majd használja a [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) vagy a [Remove-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/remove-aznetworksecuritygroup?view=azps-2.6.0):
 

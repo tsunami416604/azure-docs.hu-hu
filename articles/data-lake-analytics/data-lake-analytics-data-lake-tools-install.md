@@ -6,11 +6,11 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 08/30/2019
 ms.openlocfilehash: cb0183ae229c328588a31c2c0549e7e93fd19b78
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221043"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019004"
 ---
 # <a name="install-data-lake-tools-for-visual-studio"></a>A Data Lake Tools for Visual Studio telepítése
 
@@ -47,7 +47,7 @@ Töltse le és telepítse [a Visual studióhoz készült Microsoft Azure Data La
 * A **Server Explorer**  >  **Azure** -csomópontja **Data Lake Analytics** csomópontot tartalmaz.
 * Az **Eszközök** menü tartalmaz egy **Data Lake** elemet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A diagnosztikai információk naplózásához tekintse meg [a Azure Data Lake Analytics diagnosztikai naplóinak elérését](data-lake-analytics-diagnostic-logs.md)ismertető témakört.
 * Egy összetettebb lekérdezés megtekintéséhez lásd: [Webhelynaplók elemzése az Azure Data Lake Analytics használatával](data-lake-analytics-analyze-weblogs.md).

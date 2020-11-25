@@ -6,11 +6,11 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 02/09/2018
 ms.openlocfilehash: e7da5454581e0e414dc832d4fcec50277f3b7f40
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221247"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019055"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>A Visual Studio Code-hoz készült Azure Data Lake-eszközök használata
 
@@ -20,7 +20,7 @@ Ebből a cikkből megtudhatja, hogyan használhatók a Visual Studio Code-hoz k�
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A VS Code-hoz készült Azure Data Lake Tools támogatja a Windows, a Linux és a macOS rendszert.A U-SQL helyi Futtatás és a helyi hibakeresés csak Windows rendszerben működik.
+A VS Code-hoz készült Azure Data Lake Tools támogatja a Windows, a Linux és a macOS rendszert. A U-SQL helyi Futtatás és a helyi hibakeresés csak Windows rendszerben működik.
 
 - [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx)
 
@@ -37,7 +37,7 @@ Az Előfeltételek telepítése után telepítheti a VS Code Azure Data Lake esz
 
 1. Nyissa meg a Visual Studio Code-ot.
 2. A bal oldali ablaktáblán válassza a **bővítmények** lehetőséget. A keresőmezőbe írja be **Azure Data Lake eszközöket** .
-3. Válassza a **telepítés** lehetőséget **Azure Data Lake eszközök**elem mellett.
+3. Válassza a **telepítés** lehetőséget **Azure Data Lake eszközök** elem mellett.
 
    ![Data Lake eszközök telepítésének kiválasztása](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extensions.png)
 
@@ -59,24 +59,24 @@ Nyissa meg a parancssort (CTRL + SHIFT + P), és írja be az **ADL: Open minta s
 
 ### <a name="to-open-a-folder-for-your-u-sql-project"></a>Mappa megnyitása a U-SQL-projekthez
 
-1. A Visual Studio Code-ból válassza a **fájl** menüt, majd a **mappa megnyitása**lehetőséget.
-2. Adjon meg egy mappát, majd kattintson a **mappa kiválasztása**lehetőségre.
-3. Válassza ki a **fájl** menüt, majd válassza az **új**lehetőséget. Egy névtelen-1 fájl van hozzáadva a projekthez.
+1. A Visual Studio Code-ból válassza a **fájl** menüt, majd a **mappa megnyitása** lehetőséget.
+2. Adjon meg egy mappát, majd kattintson a **mappa kiválasztása** lehetőségre.
+3. Válassza ki a **fájl** menüt, majd válassza az **új** lehetőséget. Egy névtelen-1 fájl van hozzáadva a projekthez.
 4. Adja meg a következő kódot a névtelen-1 fájlban:
 
    ```usql
-   @departments  =
-       SELECT * FROM
-           (VALUES
-               (31,    "Sales"),
-               (33,    "Engineering"),
-               (34,    "Clerical"),
-               (35,    "Marketing")
-           ) AS
-                 D( DepID, DepName );
+   @departments  =
+       SELECT * FROM
+           (VALUES
+               (31,    "Sales"),
+               (33,    "Engineering"),
+               (34,    "Clerical"),
+               (35,    "Marketing")
+           ) AS
+                 D( DepID, DepName );
    ```
 
-   KIMENET @departments      a következőre: "/output/departments.csv" Outputters.Csv ();
+   KIMENET @departments     a következőre: "/Output/departments.csv" Outputters.Csv ();
 
     A szkript létrehoz egy departments.csv fájlt, amely tartalmaz néhány, a/output mappában található adattal.
 
@@ -105,7 +105,7 @@ A feladatok nézet **Összegzés** lapján láthatja a feladatok részleteit. A 
 Beállíthatja, hogy az alapértelmezett környezet alkalmazza ezt a beállítást az összes parancsfájl-fájlra, ha a fájlokhoz nem állított be paramétereket külön.
 
 1. A parancs paletta megnyitásához kattintson a CTRL + SHIFT + P billentyűkombinációra.
-2. Adja meg az **ADL: alapértelmezett környezet beállítása beállítást**. Vagy kattintson a jobb gombbal a parancsfájl-szerkesztőre, és válassza az **ADL: alapértelmezett környezet beállítása**lehetőséget.
+2. Adja meg az **ADL: alapértelmezett környezet beállítása beállítást**. Vagy kattintson a jobb gombbal a parancsfájl-szerkesztőre, és válassza az **ADL: alapértelmezett környezet beállítása** lehetőséget.
 3. Válassza ki a kívánt fiókot, adatbázist és sémát. A rendszer a konfigurációs fájl xxx_settings.jsmenti a beállítást.
 
    ![A fiók, az adatbázis és a séma beállítása alapértelmezett környezetként](./media/data-lake-analytics-data-lake-tools-for-vscode/default-context-sequence.png)
@@ -113,7 +113,7 @@ Beállíthatja, hogy az alapértelmezett környezet alkalmazza ezt a beállítá
 ### <a name="to-set-script-parameters"></a>Parancsfájl paramétereinek megadása
 
 1. A parancs paletta megnyitásához kattintson a CTRL + SHIFT + P billentyűkombinációra.
-2. Adja meg az **ADL: parancsfájl paramétereinek beállítása**értéket.
+2. Adja meg az **ADL: parancsfájl paramétereinek beállítása** értéket.
 3. A fájl xxx_settings.jsmegnyílik a következő tulajdonságokkal:
 
    - **fiók**: az Azure-előfizetéshez tartozó Azure Data Lake Analytics fiók, amely a U-SQL-feladatok fordításához és futtatásához szükséges. Az U-SQL-feladatok fordítása és futtatása előtt konfigurálnia kell a számítógépfiókot.
@@ -248,7 +248,7 @@ Mielőtt lefordítja és futtatja a U-SQL-parancsfájlokat a Data Lake Analytics
 > - Data Lake eszközök automatikusan aláírják Önt a következő alkalommal, ha nem kijelentkezik.
 > - Ha a fiókja két tényezőt engedélyez, javasoljuk, hogy PIN-kód használata helyett telefonos hitelesítést használjon.
 
-A kijelentkezéshez írja be az **ADL: kijelentkezés**parancsot.
+A kijelentkezéshez írja be az **ADL: kijelentkezés** parancsot.
 
 ### <a name="to-connect-to-azure-from-the-explorer"></a>Kapcsolódás az Azure-hoz az Intézőből
 
@@ -264,7 +264,7 @@ A. csv, a. TSV és a. txt kiterjesztésű fájlok kinyerési parancsfájlját a 
 
 ### <a name="to-create-an-extraction-script-by-using-a-command"></a>Kinyerési parancsfájl létrehozása parancs használatával
 
-1. A CTRL + SHIFT + P billentyűkombinációval nyissa meg a parancssort, és írja be az **ADL: extract szkript létrehozása**elemet.
+1. A CTRL + SHIFT + P billentyűkombinációval nyissa meg a parancssort, és írja be az **ADL: extract szkript létrehozása** elemet.
 2. Adja meg az Azure Storage-fájl teljes elérési útját, és válassza az ENTER billentyűt.
 3. Válasszon egy fiókot.
 4. Egy. txt kiterjesztésű fájl esetén válasszon ki egy határolójelet a fájl kibontásához.
@@ -292,14 +292,14 @@ Hozzáférés Azure Data Lake Analytics erőforrásokhoz a fiókok listázásáh
 
 ### <a name="to-access-azure-data-lake-analytics-metadata"></a>Azure Data Lake Analytics metaadatok elérése
 
-1. Válassza a CTRL + SHIFT + P billentyűkombinációt, majd írja be az **ADL: List Tables**elemet.
+1. Válassza a CTRL + SHIFT + P billentyűkombinációt, majd írja be az **ADL: List Tables** elemet.
 2. Válassza ki a Data Lake Analytics fiókok egyikét.
 3. Válassza ki a Data Lake Analytics adatbázisok egyikét.
 4. Válassza ki az egyik sémát. Láthatja a táblák listáját.
 
 ### <a name="to-view-azure-data-lake-analytics-jobs"></a>Azure Data Lake Analytics feladatok megtekintése
 
-1. Nyissa meg a parancssort (CTRL + SHIFT + P), és válassza az **ADL: feladatok megjelenítése**lehetőséget.
+1. Nyissa meg a parancssort (CTRL + SHIFT + P), és válassza az **ADL: feladatok megjelenítése** lehetőséget.
 2. Válasszon Data Lake Analytics vagy helyi fiókot.
 3. Várjon, amíg megjelenik a Feladatlista a fiókhoz.
 4. Válasszon ki egy feladatot a feladatlistából. Data Lake eszközök megnyitják a feladatok nézetet a jobb oldali ablaktáblán, és a VS Code kimenetben jelenítenek meg néhány információt.
@@ -319,8 +319,8 @@ Azure Data Lake Store kapcsolódó parancsok a következőhöz használhatók:
 
 ### <a name="to-list-the-storage-path-through-the-command-palette"></a>A tár elérési útjának listázása a parancs palettáján
 
-1. Kattintson a jobb gombbal a parancsfájl-szerkesztőre, és válassza az **ADL: lista elérési útja**lehetőséget.
-2. Válassza ki a mappát a listában, vagy válassza az **elérési út megadása** vagy a **gyökér elérési útja alapján való Tallózás**lehetőséget. (A **megadott elérési utat** példaként használjuk.)
+1. Kattintson a jobb gombbal a parancsfájl-szerkesztőre, és válassza az **ADL: lista elérési útja** lehetőséget.
+2. Válassza ki a mappát a listában, vagy válassza az **elérési út megadása** vagy a **gyökér elérési útja alapján való Tallózás** lehetőséget. (A **megadott elérési utat** példaként használjuk.)
 3. Válassza ki a Data Lake Analytics fiókját.
 4. Tallózással keresse meg vagy adja meg a tárolási mappa elérési útját (például/output/).  
 
@@ -332,13 +332,13 @@ A relatív elérési út kilistázásának kényelmesebb módja a helyi menün k
 
 ### <a name="to-list-the-storage-path-through-the-shortcut-menu"></a>A tár elérési útjának listázása a helyi menüben
 
-Kattintson a jobb gombbal az elérési út sztringre, és válassza a **lista elérési útja**lehetőséget.
+Kattintson a jobb gombbal az elérési út sztringre, és válassza a **lista elérési útja** lehetőséget.
 
 !["Lista elérési útja" a helyi menüben](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-right-click-path.png)
 
 ### <a name="preview-the-storage-file"></a>A tárolási fájl előnézete
 
-1. Kattintson a jobb gombbal a parancsfájl-szerkesztőre, és válassza az **ADL: előnézet fájl**elemet.
+1. Kattintson a jobb gombbal a parancsfájl-szerkesztőre, és válassza az **ADL: előnézet fájl** elemet.
 2. Válassza ki a Data Lake Analytics fiókját.
 3. Adja meg az Azure Storage-fájl elérési útját (például/output/SearchLog.txt).
 
@@ -350,9 +350,9 @@ A fájl előnézetének egy másik módja a fájl teljes elérési útjának hel
 
 ### <a name="upload-a-file-or-folder"></a>Fájl vagy mappa feltöltése
 
-1. Kattintson a jobb gombbal a parancsfájl-szerkesztőre, és válassza a **fájl feltöltése** vagy a **feltöltés mappa**lehetőséget.
-2. Ha a **fájl feltöltése**lehetőséget választotta, válasszon egy fájlt vagy több fájlt, vagy válassza a teljes mappát, ha a **mappa feltöltése**lehetőséget választotta. Ezután válassza a **Feltöltés** lehetőséget.
-3. Válassza ki a Storage mappát a listában, vagy válassza az **elérési út megadása** vagy a **gyökér elérési útja alapján való Tallózás**lehetőséget. (A **megadott elérési utat** példaként használjuk.)
+1. Kattintson a jobb gombbal a parancsfájl-szerkesztőre, és válassza a **fájl feltöltése** vagy a **feltöltés mappa** lehetőséget.
+2. Ha a **fájl feltöltése** lehetőséget választotta, válasszon egy fájlt vagy több fájlt, vagy válassza a teljes mappát, ha a **mappa feltöltése** lehetőséget választotta. Ezután válassza a **Feltöltés** lehetőséget.
+3. Válassza ki a Storage mappát a listában, vagy válassza az **elérési út megadása** vagy a **gyökér elérési útja alapján való Tallózás** lehetőséget. (A **megadott elérési utat** példaként használjuk.)
 4. Válassza ki a Data Lake Analytics fiókját.
 5. Tallózással keresse meg vagy adja meg a tárolási mappa elérési útját (például/output/).
 6. A feltöltés célhelyének megadásához válassza az **aktuális mappa kiválasztása** lehetőséget.
@@ -382,9 +382,9 @@ Nyomon követheti [a letöltési állapotot](#check-storage-tasks-status).
 
 ### <a name="to-download-a-file-through-the-adl-download-file-command"></a>Fájl letöltése az ADL: fájl letöltése paranccsal
 
-1. Kattintson a jobb gombbal a parancsfájl-szerkesztőre, válassza a **Fájl letöltése**parancsot, majd a **mappa kiválasztása** párbeszédpanelen válassza ki a célmappát.
+1. Kattintson a jobb gombbal a parancsfájl-szerkesztőre, válassza a **Fájl letöltése** parancsot, majd a **mappa kiválasztása** párbeszédpanelen válassza ki a célmappát.
 
-1. Válassza ki a mappát a listában, vagy válassza az **elérési út megadása** vagy a **gyökér elérési útja alapján való Tallózás**lehetőséget. (A **megadott elérési utat** példaként használjuk.)
+1. Válassza ki a mappát a listában, vagy válassza az **elérési út megadása** vagy a **gyökér elérési útja alapján való Tallózás** lehetőséget. (A **megadott elérési utat** példaként használjuk.)
 
 1. Válassza ki a Data Lake Analytics fiókját.
 
@@ -404,19 +404,19 @@ Megjelenik a feltöltés és a letöltés állapot az állapotsoron. Válassza k
 
 ## <a name="integrate-with-azure-data-lake-analytics-from-the-explorer"></a>Integrálás Azure Data Lake Analytics az Intézőből
 
-A bejelentkezést követően az Azure-fiók összes előfizetése megjelenik a bal oldali panelen az **Azure DATALAKE**alatt.
+A bejelentkezést követően az Azure-fiók összes előfizetése megjelenik a bal oldali panelen az **Azure DATALAKE** alatt.
 
 ![Data Lake Explorer](./media/data-lake-analytics-data-lake-tools-for-vscode/datalake-explorer.png)
 
 ### <a name="data-lake-analytics-metadata-navigation"></a>Data Lake Analytics metaadatok navigációja
 
-Bővítse ki Azure-előfizetését. A **u-SQL-adatbázisok** csomópont alatt böngészhet a u-SQL-adatbázison, és megtekintheti a mappákat, például a **sémákat**, a **hitelesítő adatokat**, a **szerelvényeket**, a **táblákat**és az **indexeket**.
+Bővítse ki Azure-előfizetését. A **u-SQL-adatbázisok** csomópont alatt böngészhet a u-SQL-adatbázison, és megtekintheti a mappákat, például a **sémákat**, a **hitelesítő adatokat**, a **szerelvényeket**, a **táblákat** és az **indexeket**.
 
 ### <a name="data-lake-analytics-metadata-entity-management"></a>Metaadat-entitások Data Lake Analytics kezelése
 
-Bontsa ki az **U-SQL-adatbázisok**csomópontot. Létrehozhat egy adatbázist, sémát, táblázatot, táblát, típust, indexet vagy statisztikát úgy, hogy a jobb gombbal a megfelelő csomópontra kattint, majd kiválasztja a helyi menüben **létrehozni kívánt parancsfájlt** . A megnyitott parancsfájl lapon szerkessze a szkriptet az igényeinek megfelelően. Ezt követően küldje el a feladatot úgy, hogy a jobb gombbal rákattint, és kiválasztja az **ADL: submit feladatot**.
+Bontsa ki az **U-SQL-adatbázisok** csomópontot. Létrehozhat egy adatbázist, sémát, táblázatot, táblát, típust, indexet vagy statisztikát úgy, hogy a jobb gombbal a megfelelő csomópontra kattint, majd kiválasztja a helyi menüben **létrehozni kívánt parancsfájlt** . A megnyitott parancsfájl lapon szerkessze a szkriptet az igényeinek megfelelően. Ezt követően küldje el a feladatot úgy, hogy a jobb gombbal rákattint, és kiválasztja az **ADL: submit feladatot**.
 
-Miután befejezte az elem létrehozását, kattintson a jobb gombbal a csomópontra, majd válassza a **frissítés** lehetőséget az elem megjelenítéséhez. Az elemet úgy is törölheti, ha a jobb gombbal kattint, majd kiválasztja a **Törlés**lehetőséget.
+Miután befejezte az elem létrehozását, kattintson a jobb gombbal a csomópontra, majd válassza a **frissítés** lehetőséget az elem megjelenítéséhez. Az elemet úgy is törölheti, ha a jobb gombbal kattint, majd kiválasztja a **Törlés** lehetőséget.
 
 !["Parancsfájl létrehozása" parancs a Data Lake Explorer helyi menüjében](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-code-explorer-script-create.png)
 
@@ -424,19 +424,19 @@ Miután befejezte az elem létrehozását, kattintson a jobb gombbal a csomópon
 
 ### <a name="data-lake-analytics-assembly-registration"></a>Data Lake Analytics szerelvény regisztrációja
 
-A megfelelő adatbázisban lévő szerelvények regisztrálásához kattintson a jobb gombbal a **szerelvények** csomópontra, majd válassza a **szerelvény regisztrálása**lehetőséget.
+A megfelelő adatbázisban lévő szerelvények regisztrálásához kattintson a jobb gombbal a **szerelvények** csomópontra, majd válassza a **szerelvény regisztrálása** lehetőséget.
 
 !["Assembly regisztrálása" parancs a szerelvények csomópont helyi menüjében](./media/data-lake-analytics-data-lake-tools-for-vscode/datalake-explorer-register-assembly.png)
 
 ## <a name="integrate-with-azure-data-lake-store-from-the-explorer"></a>Integrálás Azure Data Lake Store az Intézőből
 
-**Data Lake Store**keresése:
+**Data Lake Store** keresése:
 
-- Kattintson a jobb gombbal a mappa csomópontjára, majd a **frissítés**, a **Törlés**, a **feltöltés**, a **mappa feltöltése**, a **relatív elérési út másolása**és a **teljes elérésiút** -parancsok másolása parancsra a helyi menüben.
+- Kattintson a jobb gombbal a mappa csomópontjára, majd a **frissítés**, a **Törlés**, a **feltöltés**, a **mappa feltöltése**, a **relatív elérési út másolása** és a **teljes elérésiút** -parancsok másolása parancsra a helyi menüben.
 
    ![A Data Lake Explorerben található mappa csomópontjának helyi menü parancsai](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-account-folder-menu.png)
 
-- Kattintson a jobb gombbal a fájl csomópontra, majd használja az **előnézet**, a **Letöltés**, a **Törlés**, a **kinyerési parancsfájl létrehozása** (csak CSV-, TSV-és txt-fájlok esetén elérhető), a **relatív elérési út másolása**és a **teljes elérésiút** -parancsok másolása a helyi menüben.
+- Kattintson a jobb gombbal a fájl csomópontra, majd használja az **előnézet**, a **Letöltés**, a **Törlés**, a **kinyerési parancsfájl létrehozása** (csak CSV-, TSV-és txt-fájlok esetén elérhető), a **relatív elérési út másolása** és a **teljes elérésiút** -parancsok másolása a helyi menüben.
 
    ![A Data Lake Explorerben található fájlhoz tartozó helyi menüparancsok](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-account-extract.png)
 
@@ -444,7 +444,7 @@ A megfelelő adatbázisban lévő szerelvények regisztrálásához kattintson a
 
 Tallózás a blob Storage-ban:
 
-- Kattintson a jobb gombbal a blob-tároló csomópontra, majd használja a helyi menüben a **frissítés**, a **blob-tároló**és a **Blobok feltöltése** parancsot.
+- Kattintson a jobb gombbal a blob-tároló csomópontra, majd használja a helyi menüben a **frissítés**, a **blob-tároló** és a **Blobok feltöltése** parancsot.
 
    ![BLOB-tároló csomópontjának helyi menü parancsai a blob Storage-ban](./media/data-lake-analytics-data-lake-tools-for-vscode/blob-storage-blob-container-node.png)
 
@@ -452,14 +452,14 @@ Tallózás a blob Storage-ban:
 
    ![A blob Storage alatti mappa csomópontjának helyi menü parancsai](./media/data-lake-analytics-data-lake-tools-for-vscode/blob-storage-folder-node.png)
 
-- Kattintson a jobb gombbal a fájl csomópontra, majd használja az **előnézet/szerkesztés**, **Letöltés**, **Törlés**, **létrehozási parancsfájl** (csak CSV-, TSV-és txt-fájlok esetén elérhető), a **relatív elérési út másolása**és a **teljes elérésiút** -parancsok másolása a helyi menüben.
+- Kattintson a jobb gombbal a fájl csomópontra, majd használja az **előnézet/szerkesztés**, **Letöltés**, **Törlés**, **létrehozási parancsfájl** (csak CSV-, TSV-és txt-fájlok esetén elérhető), a **relatív elérési út másolása** és a **teljes elérésiút** -parancsok másolása a helyi menüben.
 
     ![A blob Storage alatt lévő fájl csomópontjának helyi menü parancsai](./media/data-lake-analytics-data-lake-tools-for-vscode/create-extract-script-from-context-menu-2.png)
 
 ## <a name="open-the-data-lake-explorer-in-the-portal"></a>A Data Lake Explorer megnyitása a portálon
 
 1. A parancs paletta megnyitásához kattintson a CTRL + SHIFT + P billentyűkombinációra.
-2. Adja meg a **nyílt webes Azure Storage Explorer** , vagy kattintson a jobb gombbal egy relatív elérési útra, vagy a parancsfájl-szerkesztő teljes elérési útjára, majd válassza a **webes Azure Storage Explorer megnyitása**lehetőséget.
+2. Adja meg a **nyílt webes Azure Storage Explorer** , vagy kattintson a jobb gombbal egy relatív elérési útra, vagy a parancsfájl-szerkesztő teljes elérési útjára, majd válassza a **webes Azure Storage Explorer megnyitása** lehetőséget.
 3. Válasszon Data Lake Analytics fiókot.
 
 Data Lake eszközök megnyitják az Azure Storage elérési útját a Azure Portalban. A fájl elérési útját és előnézetét a webről tekintheti meg.
@@ -493,7 +493,7 @@ A VS Code-hoz készült Data Lake Tools a következő funkciókat támogatja:
 > [!NOTE]
 > Javasoljuk, hogy a Visual Studio 2.3.3000.4 vagy újabb verziójára frissítsen Azure Data Lake-eszközökre. A korábbi verziók már nem tölthetők le, és mostantól elavultnak számítanak.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A U-SQL fejlesztése Python, R és C Sharp Azure Data Lake Analytics a VS Code-ban](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
 - [U-SQL helyi Futtatás és helyi hibakeresés a Visual Studio Code-ban](data-lake-tools-for-vscode-local-run-and-debug.md)

@@ -4,11 +4,11 @@ description: A Azure Functions közzétételéhez használja a kudu üzembe hely
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.openlocfilehash: e104661dcdf1f6c6fd6dd5eb1024748980e7931f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85833052"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018433"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Azure Functions üzembe helyezése ZIP-fájlokkal
 
@@ -46,7 +46,7 @@ Előfordulhat azonban, hogy a Azure Portal szerkesztője segítségével hozta l
 
   1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), majd nyissa meg a Function alkalmazást.
 
-  2. Az **Áttekintés** lapon válassza az **alkalmazás tartalmának letöltése**lehetőséget. Válassza ki a letöltési beállításokat, majd válassza a **Letöltés**lehetőséget.
+  2. Az **Áttekintés** lapon válassza az **alkalmazás tartalmának letöltése** lehetőséget. Válassza ki a letöltési beállításokat, majd válassza a **Letöltés** lehetőséget.
 
       ![A Function app-projekt letöltése](./media/deployment-zip-push/download-project.png)
 

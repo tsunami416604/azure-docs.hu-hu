@@ -13,17 +13,17 @@ ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: képek felismerése, képfelismerési alkalmazás, egyéni jövőkép
 ms.openlocfilehash: ab747ad5e7b9362e9c587741198a0191c032b124
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91596894"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018365"
 ---
 # <a name="quickstart-build-an-object-detector-with-the-custom-vision-website"></a>Gyors útmutató: objektum-detektor létrehozása a Custom Vision webhellyel
 
 Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy Object detektor-modellt a Custom Vision webhellyel. A modell létrehozása után tesztelheti az új rendszerképekkel, és végül integrálhatja azt a saját rendszerkép-felismerő alkalmazásba.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/cognitive-services/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -35,12 +35,12 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 
 ## <a name="create-a-new-project"></a>Új projekt létrehozása
 
-A böngészőben nyissa meg a [Custom Vision weblapot](https://customvision.ai) , és válassza a __Bejelentkezés__lehetőséget. Jelentkezzen be ugyanazzal a fiókkal, amelyet a Azure Portalba való bejelentkezéshez használt.
+A böngészőben nyissa meg a [Custom Vision weblapot](https://customvision.ai) , és válassza a __Bejelentkezés__ lehetőséget. Jelentkezzen be ugyanazzal a fiókkal, amelyet a Azure Portalba való bejelentkezéshez használt.
 
 ![A bejelentkezési oldal képe](./media/browser-home.png)
 
 
-1. Az első projekt létrehozásához válassza az **új projekt**lehetőséget. Ekkor megjelenik az **új projekt létrehozása** párbeszédpanel.
+1. Az első projekt létrehozásához válassza az **új projekt** lehetőséget. Ekkor megjelenik az **új projekt létrehozása** párbeszédpanel.
 
     ![Az új projekt párbeszédpanelen a név, a leírás és a tartományok mezői láthatók.](./media/get-started-build-detector/new-project.png)
 
@@ -49,18 +49,18 @@ A böngészőben nyissa meg a [Custom Vision weblapot](https://customvision.ai) 
    > [!NOTE]
    > Ha nincs elérhető erőforráscsoport, győződjön meg róla, hogy a [customvision.ai](https://customvision.ai) -ba jelentkezett be ugyanazzal a fiókkal, mint amikor a [Azure Portalba](https://portal.azure.com/)való bejelentkezéshez használt. Továbbá erősítse meg, hogy ugyanazt a "könyvtárat" választotta a Custom Vision webhelyén abban a Azure Portal könyvtárban, ahol a Custom Vision erőforrásai találhatók. Mindkét helyen kiválaszthatja a könyvtárat a képernyő jobb felső sarkában található legördülő menü fiók menüjéből. 
 
-1. Válassza az __objektum felismerése__ a __projektek típusai__alatt lehetőséget.
+1. Válassza az __objektum felismerése__ a __projektek típusai__ alatt lehetőséget.
 
 1. Ezután válassza ki a rendelkezésre álló tartományok egyikét. Az egyes tartományok a következő táblázatban leírtak szerint optimalizálja az adott típusú képek detektorát. Ha szeretné, később is megváltoztathatja a tartományt.
 
-    |Tartomány|Rendeltetés|
+    |Tartomány|Cél|
     |---|---|
     |__Általános__| Az objektum-észlelési feladatok széles körére optimalizált. Ha a többi tartomány egyike sem megfelelő, vagy nem biztos benne, hogy melyik tartományt szeretné kiválasztani, válassza ki az általános tartományt. |
     |__Embléma__|A képeken található márka emblémák keresésére optimalizált.|
     |__Termékek a polcokon__|A polcokon található termékek észlelésére és besorolására optimalizált.|
     |__Kompakt tartományok__| A mobileszközök valós idejű objektum-észlelésének korlátaira optimalizált. A kompakt tartományok által generált modellek helyileg is futtathatók.|
 
-1. Végül válassza a __projekt létrehozása__lehetőséget.
+1. Végül válassza a __projekt létrehozása__ lehetőséget.
 
 ## <a name="choose-training-images"></a>Képzési lemezképek kiválasztása
 
@@ -70,7 +70,7 @@ A böngészőben nyissa meg a [Custom Vision weblapot](https://customvision.ai) 
 
 Ebben a szakaszban fel kell töltenie és manuálisan kell címkézni a képeket, hogy segítse a detektor betanítását. 
 
-1. Képek hozzáadásához kattintson a __képek hozzáadása__ gombra, majd válassza a __helyi fájlok tallózása__lehetőséget. A Képek feltöltéséhez kattintson a __Megnyitás__ gombra.
+1. Képek hozzáadásához kattintson a __képek hozzáadása__ gombra, majd válassza a __helyi fájlok tallózása__ lehetőséget. A Képek feltöltéséhez kattintson a __Megnyitás__ gombra.
 
     ![A képek hozzáadása vezérlő megjelenik a bal felső sarokban, és az alsó középen lévő gomb.](./media/get-started-build-detector/add-images.png)
 

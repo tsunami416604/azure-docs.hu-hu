@@ -13,11 +13,11 @@ ms.custom:
 - mqtt
 - devx-track-js
 ms.openlocfilehash: 78600b7b57a7c30fc609434a700f13fa21e079ce
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659641"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019259"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Lefelé irányuló eszköz csatlakoztatása Azure IoT Edge-átjáróhoz
 
@@ -159,7 +159,7 @@ Ez a szakasz egy Azure IoT .NET-eszköz ügyfelének egy IoT Edge átjáróhoz v
 
 Ha egy .NET-alkalmazás használatával szeretne programozott módon telepíteni egy megbízható tanúsítványt a tanúsítványtárolóban, tekintse meg a **InstallCACert ()** függvényt a **EdgeDownstreamDevice/program.cs** fájlban. Ez a művelet idempotens, így többször is futhat ugyanazzal az értékekkel, további hatás nélkül.
 
-### <a name="c"></a>C
+### <a name="c"></a>C#
 
 Ez a szakasz egy Azure IoT C-eszköz ügyfelének egy IoT Edge átjáróhoz való csatlakoztatására szolgáló minta alkalmazást mutat be. A C SDK számos TLS-függvénytárral működhet, beleértve az OpenSSL-t, a WolfSSL-t és a Schannel-t. További információkért lásd az [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)-t.
 
@@ -218,6 +218,6 @@ Ha a levélben lévő eszköz időnként csatlakozik az átjáró eszközéhez, 
 2. Feloldható az átjáró állomásneve egy IP-címhez? Az időszakos kapcsolatokat a DNS használatával vagy egy gazda-fájl bejegyzésének a levél eszközön való hozzáadásával oldhatja fel.
 3. Nyitva vannak a kommunikációs portok a tűzfalon? A használt protokollon alapuló (MQTTS: 8883/AMQPS: 5671/HTTPS: 433) kommunikációnak az alsóbb rétegbeli eszköz és az átlátszó IoT Edge között kell lennie.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan bővítheti IoT Edge az [Offline képességeket](offline-capabilities.md) az alsóbb rétegbeli eszközökre.

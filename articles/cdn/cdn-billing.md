@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/13/2019
 ms.author: allensu
 ms.openlocfilehash: aa2f00a732a3978524fc017481285859c9535387
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779169"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018681"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Az Azure CDN számlázásának ismertetése
 
@@ -48,7 +48,7 @@ A Azure CDN számlázási régió a forrás-kiszolgáló azon helyén alapul, am
 Ha például egy Mexikóban található felhasználó kiadja a kérést, és ezt a kérést egy, az Egyesült Államok-előugróban található kiszolgáló szervizeli vagy forgalmi feltételek miatt, a számlázási régió lesz a Egyesült Államok.
 
 ## <a name="what-is-a-billable-azure-cdn-transaction"></a>Mi az a számlázható Azure CDN tranzakció?
-Minden olyan HTTP-kérelem, amely a CDN-nél leáll, számlázható esemény, amely minden választ tartalmaz: sikeres, sikertelen vagy egyéb. Azonban a különböző válaszok különböző forgalmi mennyiségeket hozhatnak. Például a *304 nem módosult* , és a csak más fejlécekre adott válaszok kis forgalmat eredményeznek, mert kis fejlécre választanak. Hasonlóképpen, a hibaüzenetek (például a *404 nem található* ) számlázva vannak, de a kis-és nagyszámú válasz miatt kisebb költségekkel járnak.
+Minden olyan HTTP-kérelem, amely a CDN-nél leáll, számlázható esemény, amely minden választ tartalmaz: sikeres, sikertelen vagy egyéb. Azonban a különböző válaszok különböző forgalmi mennyiségeket hozhatnak. Például a *304 nem módosult* , és a csak más fejlécekre adott válaszok kis forgalmat eredményeznek, mert kis fejlécre választanak. Hasonlóképpen, a hibaüzenetek (például a *404 nem található*) számlázva vannak, de a kis-és nagyszámú válasz miatt kisebb költségekkel járnak.
 
 ## <a name="what-other-azure-costs-are-associated-with-azure-cdn-use"></a>Milyen egyéb Azure-költségek vannak társítva Azure CDN használatra?
 A Azure CDN használata az objektumok forrásaként használt szolgáltatások használati díját is megterheli. Ezek a költségek jellemzően a CDN teljes használati költségének kis hányadát jelentik.

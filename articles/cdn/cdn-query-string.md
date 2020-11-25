@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 06/11/2018
 ms.author: allensu
 ms.openlocfilehash: 1521d08ef9d431bbe8b3fd3a578297d440ed56b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84887216"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018579"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---standard-tier"></a>Azure CDN gyorsítótárazási viselkedés szabályozása lekérdezési karakterláncokkal – standard szint
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "84887216"
 Az Azure Content Delivery Network (CDN) segítségével szabályozhatja, hogy a rendszer hogyan gyorsítótárazza a fájlokat egy olyan webes kérelem esetében, amely egy lekérdezési karakterláncot tartalmaz. Lekérdezési karakterláncot tartalmazó webes kérelem esetén a lekérdezési karakterlánc a kérelemnek a kérdőjel (?) utáni részét jelöli. A lekérdezési karakterláncok tartalmazhatnak egy vagy több kulcs-érték párokat, amelyekben a mező nevét és értékét egy egyenlőségjel (=) választja el egymástól. A kulcs-érték párokat egy jel (&) választja el egymástól. Például: http: \/ /www.contoso.com/content.mov?field1=value1&mező = érték2. Ha egy kérelem lekérdezési karakterláncában egynél több kulcs-érték pár szerepel, a rendelésük nem számít. 
 
 > [!IMPORTANT]
-> A Azure CDN standard és a prémium szintű termékek ugyanazt a lekérdezési karakterlánc gyorsítótárazási funkcióját biztosítják, a felhasználói felület azonban eltérő. Ez a cikk a **Microsoft Azure CDN standard**felületét ismerteti, amely a Akamai és a **Azure CDN standard**szintről **Azure CDN** a verizontól. A **Verizon Azure CDN Premium**csomaggal rendelkező lekérdezési karakterlánc gyorsítótárazásával kapcsolatban lásd: [Azure CDN gyorsítótárazási viselkedés vezérlése a lekérdezési karakterláncokkal – prémium szint](cdn-query-string-premium.md).
+> A Azure CDN standard és a prémium szintű termékek ugyanazt a lekérdezési karakterlánc gyorsítótárazási funkcióját biztosítják, a felhasználói felület azonban eltérő. Ez a cikk a **Microsoft Azure CDN standard** felületét ismerteti, amely a Akamai és a **Azure CDN standard** szintről **Azure CDN** a verizontól. A **Verizon Azure CDN Premium** csomaggal rendelkező lekérdezési karakterlánc gyorsítótárazásával kapcsolatban lásd: [Azure CDN gyorsítótárazási viselkedés vezérlése a lekérdezési karakterláncokkal – prémium szint](cdn-query-string-premium.md).
 
 Három lekérdezési karakterlánc mód érhető el:
 
@@ -49,11 +49,11 @@ Három lekérdezési karakterlánc mód érhető el:
    
    ![CDN-profil végpontjai](./media/cdn-query-string/cdn-endpoints.png)
    
-2. A bal oldali ablaktábla beállítások területén kattintson a **gyorsítótárazási szabályok**elemre.
+2. A bal oldali ablaktábla beállítások területén kattintson a **gyorsítótárazási szabályok** elemre.
    
     ![CDN-gyorsítótárszabályok gomb](./media/cdn-query-string/cdn-caching-rules-btn.png)
    
-3. A **lekérdezési karakterlánc gyorsítótárazási viselkedése** listán válassza ki a lekérdezési karakterlánc módot, majd kattintson a **Mentés**gombra.
+3. A **lekérdezési karakterlánc gyorsítótárazási viselkedése** listán válassza ki a lekérdezési karakterlánc módot, majd kattintson a **Mentés** gombra.
    
    ![CDN lekérdezési karakterlánc gyorsítótárazási beállításai](./media/cdn-query-string/cdn-query-string.png)
 

@@ -17,11 +17,11 @@ ms.date: 09/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 799034d9060e8afe101e86e7b98ac7e01c28d191
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950244"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019310"
 ---
 # <a name="sap-hana-availability-across-azure-regions"></a>SAP HANA rendelkezésre állás Azure-régiók között
 
@@ -83,7 +83,7 @@ A logreplay as Operations mód használata esetén ez a konfiguráció egy alacs
 > [!IMPORTANT]
 > A különböző rétegek közötti műveleti módoknak homogénnek kell lenniük. Az 1. és a 2. szinten **nem** használhatja a logreply, és a 3. szintű delta_datashipping. Az összes réteghez konzisztensnek kell lennie, vagy más működési módot kell választania. Mivel a delta_datashipping nem alkalmas a RPO = 0 érték megadására, a többrétegű konfigurációk esetében az egyetlen ésszerű működési mód marad a logreplay. A működési módokkal és bizonyos korlátozásokkal kapcsolatos részletekért tekintse meg az SAP-cikkek [működési módjait SAP HANA rendszer-replikáláshoz](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/627bd11e86c84ec2b9fcdf585d24011c.html)című témakört. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A konfigurációk Azure-beli beállításával kapcsolatos részletes útmutatásért lásd:
 

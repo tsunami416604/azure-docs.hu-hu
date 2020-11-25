@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: 'Lásd: végpontok és esemény-útvonalak beállítása és kezelése az Azure Digital Twins-adatszolgáltatásokhoz.'
 author: alexkarcher-msft
 ms.author: alkarche
-ms.date: 10/12/2020
+ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0b8bd9006482daf7c9218f0f3dbb16d2e08359bf
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: b836038aa2f8f60e25c51d1d5674d22497b3ce44
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533752"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "96018960"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Végpontok és útvonalak kezelése az Azure Digital Twinsban (API-k és parancssori felület)
 
@@ -71,8 +71,8 @@ Az Event Grid témakör az Azure Digital Twins-beli végpontként érhető el, a
 Event Hubs vagy Service Bus végpontok létrehozásának folyamata hasonló a fent látható Event Grid folyamathoz.
 
 Először hozza létre a végpontként használni kívánt erőforrásokat. A következők szükségesek:
-* Service Bus: _Service Bus névtér_ , _Service Bus témakör_ , _engedélyezési szabály_
-* Event Hubs: _Event Hubs névtér_ , _Event hub_ , _engedélyezési szabály_
+* Service Bus: _Service Bus névtér_, _Service Bus témakör_, _engedélyezési szabály_
+* Event Hubs: _Event Hubs névtér_, _Event hub_, _engedélyezési szabály_
 
 Ezután használja a következő parancsokat a végpontok létrehozásához az Azure Digital Twinsban: 
 
@@ -156,10 +156,10 @@ Az Azure digitális Twins-ból egy végpontba küldött adatok tényleges elkül
 
 Az ebben a szakaszban szereplő minták a [.net (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)-t használják.
 
-**Előfeltétel** : a cikk korábbi részében leírtak szerint hozzon létre végpontokat, mielőtt továbblép az útvonal létrehozásához. Ha befejezte a végpontok beállítását, folytassa az esemény-útvonal létrehozásával.
+**Előfeltétel**: a cikk korábbi részében leírtak szerint hozzon létre végpontokat, mielőtt továbblép az útvonal létrehozásához. Ha befejezte a végpontok beállítását, folytassa az esemény-útvonal létrehozásával.
 
->[!NOTE]
->Ha nemrég telepítette a végpontokat, ellenőrizze, hogy készen állnak-e a telepítésre, **mielőtt** új esemény-útvonalra próbálja használni őket. Ha az útválasztás telepítése sikertelen, mert a végpontok nem állnak készen, várjon néhány percet, és próbálkozzon újra.
+> [!NOTE]
+> Ha nemrég telepítette a végpontokat, ellenőrizze, hogy készen állnak-e a telepítésre, **mielőtt** új esemény-útvonalra próbálja használni őket. Ha az útválasztás telepítése sikertelen, mert a végpontok nem állnak készen, várjon néhány percet, és próbálkozzon újra.
 >
 > Ha a folyamat futtatásakor ezt a folyamatot szeretné használni, akkor érdemes lehet ezt megvárnia, ha 2-3 perc várakozási idő alatt a végponti szolgáltatás befejezi a telepítést, mielőtt továbblép az útvonal beállítására.
 
@@ -229,7 +229,7 @@ Szűrés nélkül a végpontok számos eseményt kapnak az Azure Digital ikrekt�
 
 Az elküldött eseményeket úgy korlátozhatja, hogy hozzáad egy **szűrőt** egy végponthoz az esemény-útvonalhoz.
 
-Szűrő hozzáadásához használhat egy PUT-kérést a *https://{YourHost}/EventRoutes/myNewRoute? API-Version = 2020-10-31* értékre a következő törzstel:
+Szűrő hozzáadásához használhat egy PUT kérelmet a *https://{saját-Azure-Digital-Twins-hostname}/eventRoutes/{Event-Route-Name}? API-Version = 2020-10-31* és a következő törzs használatával:
 
 ```json  
 {
@@ -237,7 +237,6 @@ Szűrő hozzáadásához használhat egy PUT-kérést a *https://{YourHost}/Even
     "filter": "<filter-text>"
 }
 ``` 
-
 Itt láthatók a támogatott útválasztási szűrők. A *szűrő szöveg sémája* oszlopban található részletek használatával cserélje le a `<filter-text>` helyőrzőt a fenti kérelem törzsében.
 
 [!INCLUDE [digital-twins-route-filters](../../includes/digital-twins-route-filters.md)]
@@ -248,7 +247,7 @@ A végpontok és útvonalak az Azure Digital Twins CLI használatával is kezelh
 
 [!INCLUDE [digital-twins-route-metrics](../../includes/digital-twins-route-metrics.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a fogadott üzenetek különböző típusairól:
 * [*Útmutató: az események értelmezése*](how-to-interpret-event-data.md)

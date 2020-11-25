@@ -1,9 +1,9 @@
 ---
 title: Oktatóanyag – általános Node.js-ügyfélalkalmazás összekötése az Azure IoT Centraltal | Microsoft Docs
-description: Ebből az oktatóanyagból megtudhatja, hogyan lehet egy eszköz fejlesztőként összekötni egy Node.js ügyfélalkalmazás futtató eszközt az Azure IoT Central-alkalmazásba. Eszköz-sablon létrehozása eszköz-képességi modell importálásával és olyan nézetek hozzáadásával, amelyek lehetővé teszik a csatlakoztatott eszköz használatát
+description: Ebből az oktatóanyagból megtudhatja, hogyan lehet egy eszköz fejlesztőként összekötni egy Node.js ügyfélalkalmazás futtató eszközt az Azure IoT Central-alkalmazásba. Az automatikusan létrehozott sablon úgy módosítható, ha olyan nézeteket ad hozzá, amelyek lehetővé teszik, hogy az operátor kommunikáljon egy csatlakoztatott eszközzel.
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/07/2020
+ms.date: 11/03/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
@@ -11,330 +11,282 @@ ms.custom:
 - mqtt
 - device-developer
 - devx-track-js
-ms.openlocfilehash: 87284b88076cbd205a5d8ae388fe0b37c35cf6f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6175be702f0824ad2cd2b146e96641037407ca0b
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328547"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "96018800"
 ---
-# <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-nodejs"></a>Oktatóanyag: ügyfélalkalmazás létrehozása és összekötése az Azure IoT Central alkalmazással (Node.js)
+# <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-nodejs"></a>Oktatóanyag: Ügyfélalkalmazás létrehozása és csatlakoztatása az Azure IoT Central-alkalmazáshoz (Node.js)
 
 [!INCLUDE [iot-central-selector-tutorial-connect](../../../includes/iot-central-selector-tutorial-connect.md)]
 
 *Ez a cikk a megoldás-építők és az eszközök fejlesztőire vonatkozik.*
 
-Ebből az oktatóanyagból megtudhatja, hogyan lehet egy Node.js ügyfélalkalmazás csatlakoztatásához az Azure IoT Central-alkalmazáshoz. A Node.js alkalmazás egy környezeti érzékelő eszköz viselkedését szimulálja. A minta- _eszköz képesség modell_ használatával IoT Centralban hozhat létre egy _eszközt_ . A nézetek hozzáadásával lehetővé teheti, hogy az operátor kommunikáljon az eszközzel.
+Ebből az oktatóanyagból megtudhatja, hogyan lehet egy Node.js ügyfélalkalmazás csatlakoztatásához az Azure IoT Central-alkalmazáshoz. A Node.js alkalmazás szimulálja egy termosztátos eszköz viselkedését. Amikor az alkalmazás csatlakozik a IoT Centralhoz, elküldi a termosztát-eszköz modell-AZONOSÍTÓját. IoT Central a modell AZONOSÍTÓját használja az eszköz modell lekéréséhez és az eszköz sablonjának létrehozásához. A testreszabásokat és nézeteket hozzá kell adni az eszköz sablonhoz, hogy az operátor kapcsolatba lépjen az eszközzel.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
-> * Eszköz-képesség modell importálása eszköz sablonjának létrehozásához.
-> * Adja hozzá az alapértelmezett és az egyéni nézeteket egy eszköz sablonhoz.
-> * Tegye közzé az eszközt, és adjon hozzá egy valós eszközt a IoT Central alkalmazáshoz.
 > * Hozza létre és futtassa a Node.js eszköz kódját, és tekintse meg a IoT Central alkalmazáshoz való kapcsolódást ismertető témakört.
 > * Az eszközről eljuttatott szimulált telemetria megtekintése.
+> * Egyéni nézetek hozzáadása egy eszköz sablonhoz.
+> * Tegye közzé az eszköz sablonját.
 > * Az eszköz tulajdonságainak kezeléséhez használja a nézetet.
-> * A szinkron és aszinkron parancsok meghívásával vezérelheti az eszközt.
+> * Az eszköz vezérléséhez hívja meg a parancsot.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
-* Egy Azure IoT Central-alkalmazás, amely az **egyéni alkalmazás** sablonnal lett létrehozva. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md). Az alkalmazást a 07/14/2020-es vagy későbbi, vagy azt követően kell létrehozni.
-* [Node.js](https://nodejs.org/) verziójú 10.0.0 vagy újabb verziót futtató fejlesztési gép. A `node --version` parancssorban futtatva ellenőrizhető a verzió. Az oktatóanyagban szereplő utasítások feltételezik, hogy a Windows-parancssorban futtatja a **Node** parancsot. Számos más operációs rendszeren azonban Node.js is használhatja.
+* Egy Azure IoT Central-alkalmazás, amely az **egyéni alkalmazás** sablonnal lett létrehozva. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md). Az alkalmazást a 2020. július 14-én vagy azt követően kell létrehozni.
+* A [Node.js](https://nodejs.org/) 6-os vagy újabb verzióját futtató fejlesztési gép. A `node --version` parancssorban futtatva ellenőrizhető a verzió. Az oktatóanyagban szereplő utasítások feltételezik, hogy a Windows-parancssorban futtatja a **Node** parancsot. Számos más operációs rendszeren azonban Node.js is használhatja.
+* A [Microsoft Azure IOT SDK ](https://github.com/Azure/azure-iot-sdk-node) helyi másolata Node.jsGitHub-tárházhoz, amely tartalmazza a mintakód. Ezzel a hivatkozással töltheti le az adattár másolatát: [zip letöltése](https://github.com/Azure/azure-iot-sdk-node/archive/master.zip). Ezután bontsa ki a fájlt egy megfelelő helyre a helyi gépen.
 
-[!INCLUDE [iot-central-add-environmental-sensor](../../../includes/iot-central-add-environmental-sensor.md)]
+## <a name="review-the-code"></a>A kód áttekintése
 
-### <a name="create-a-nodejs-application"></a>Node.js alkalmazás létrehozása
+A korábban letöltött Node.js Microsoft Azure IoT SDK másolatában nyissa meg az *Azure-IoT-SDK-Node/Device/Samples/PnP/simple_thermostat.js* fájlt egy szövegszerkesztőben.
 
-A következő lépések bemutatják, hogyan hozhat létre olyan Node.js ügyfélalkalmazás, amely az alkalmazáshoz hozzáadott valódi eszközhöz csatlakozik. Ez a Node.js alkalmazás egy valós eszköz viselkedését szimulálja.
+Amikor futtatja a mintát IoT Centralhoz való csatlakozáshoz, az eszköz kiépítési szolgáltatását (DPS) használja az eszköz regisztrálásához és egy kapcsolati karakterlánc létrehozásához. A minta lekérdezi a DPS által igényelt, a parancssori környezettől kapott kapcsolatok információit.
 
-1. A parancssori környezetben navigáljon a `environmental-sensor` korábban létrehozott mappára.
+A `main` metódus:
 
-1. A Node.js-projekt inicializálásához és a szükséges függőségek telepítéséhez futtassa a következő parancsokat – fogadja el az összes alapértelmezett beállítást a futtatásakor `npm init` :
+* Létrehoz egy `client` objektumot, és beállítja a `dtmi:com:example:Thermostat;1` modell azonosítóját a kapcsolatok megnyitása előtt.
+* Létrehoz egy parancsfájl-kezelőt.
+* Elindít egy hurkot, amely 10 másodpercenként elküldi a hőmérséklet-telemetria.
+* A `maxTempSinceLastReboot` tulajdonságot a IoT Central küldi. IoT Central figyelmen kívül hagyja a `serialNumber` tulajdonságot, mert az nem része az eszköz modelljének.
+* Egy írható tulajdonságok kezelőjét hozza létre.
 
-    ```cmd/sh
-    npm init
-    npm install azure-iot-device azure-iot-device-mqtt azure-iot-provisioning-device-mqtt azure-iot-security-symmetric-key --save
-    ```
+```javascript
+async function main() {
 
-1. Hozzon létre egy **environmentalSensor.js** nevű fájlt a `environmental-sensor` mappában.
+  // ...
 
-1. Adja hozzá a következő `require` utasításokat a **environmentalSensor.js** fájl elejéhez:
+  // fromConnectionString must specify a transport, coming from any transport package.
+  const client = Client.fromConnectionString(deviceConnectionString, Protocol);
 
-    ```javascript
-    "use strict";
+  let resultTwin;
+  try {
+    // Add the modelId here
+    await client.setOptions(modelIdObject);
+    await client.open();
 
-    // Use the Azure IoT device SDK for devices that connect to Azure IoT Central.
-    var iotHubTransport = require('azure-iot-device-mqtt').Mqtt;
-    var Client = require('azure-iot-device').Client;
-    var Message = require('azure-iot-device').Message;
-    var ProvisioningTransport = require('azure-iot-provisioning-device-mqtt').Mqtt;
-    var SymmetricKeySecurityClient = require('azure-iot-security-symmetric-key').SymmetricKeySecurityClient;
-    var ProvisioningDeviceClient = require('azure-iot-provisioning-device').ProvisioningDeviceClient;
-    ```
+    client.onDeviceMethod(commandMaxMinReport, commandHandler);
 
-1. Adja a következő változódeklarációkat a fájlhoz:
+    // Send Telemetry every 10 secs
+    let index = 0;
+    intervalToken = setInterval(() => {
+      sendTelemetry(client, index).catch((err) => console.log('error', err.toString()));
+      index += 1;
+    }, telemetrySendInterval);
 
-    ```javascript
-    var provisioningHost = 'global.azure-devices-provisioning.net';
-    var idScope = '{your Scope ID}';
-    var registrationId = '{your Device ID}';
-    var symmetricKey = '{your Primary Key}';
-    var provisioningSecurityClient = new SymmetricKeySecurityClient(registrationId, symmetricKey);
-    var provisioningClient = ProvisioningDeviceClient.create(provisioningHost, idScope, new ProvisioningTransport(), provisioningSecurityClient);
-    var hubClient;
+    // attach a standard input exit listener
+    attachExitHandler(client);
 
-    var targetTemperature = 0;
-    var ledOn = true;
-    ```
-
-    Frissítse a helyőrzőket `{your Scope ID}` , `{your Device ID}` és a `{your Primary Key}` korábban megjegyzett értékekkel. Ebben a példában `targetTemperature` nulla értékre állítja az inicializálást, az eszközről származó aktuális olvasást vagy a Twin eszköz értékét használhatja.
-
-1. Szimulált telemetria az Azure IoT Central-alkalmazásba való küldéséhez adja hozzá a következő függvényt a fájlhoz:
-
-    ```javascript
-    // Send simulated device telemetry.
-    function sendTelemetry() {
-      var temp = targetTemperature + (Math.random() * 15);
-      var humid = 70 + (Math.random() * 10);
-      var data = JSON.stringify({
-        temp: temp,
-        humid: humid,
-        });
-      var message = new Message(data);
-      hubClient.sendEvent(message, (err, res) => console.log(`Sent message: ${message.getData()}` +
-        (err ? `; error: ${err.toString()}` : '') +
-        (res ? `; status: ${res.constructor.name}` : '')));
-    }
-    ```
-
-    A telemetria elemek nevének ( `temp` és `humid` ) meg kell egyeznie az eszköz sablonjában használt nevekkel.
-
-1. Ha az eszköz két tulajdonságát szeretné elküldeni az Azure IoT Central-alkalmazásba, adja hozzá a következő függvényt a fájlhoz:
-
-    ```javascript
-    // Send device twin reported properties.
-    function sendDeviceProperties(twin, properties) {
-      twin.properties.reported.update(properties, (err) => console.log(`Sent device properties: ${JSON.stringify(properties)}; ` +
-        (err ? `error: ${err.toString()}` : `status: success`)));
-    }
-    ```
-
-    A IoT Central az eszközön lévő Twins használatával szinkronizálja az eszköz és a IoT Central alkalmazás közötti tulajdonságértékeket. Az eszköz tulajdonságainak értékei az eszköz Twin jelentett tulajdonságait használják. Az írható tulajdonságok mind a két eszköz, mind a kívánt tulajdonságokat használják.
-
-1. Az eszköz által válaszolt írható tulajdonságok definiálásához és kezeléséhez adja hozzá a következő kódot. Az az üzenet, amelyet az eszköz az [írható tulajdonság frissítésére](concepts-telemetry-properties-commands.md#writeable-property-types) válaszként küld, tartalmaznia kell a `av` és a `ac` mezőket. A `ad` mező megadása nem kötelező:
-
-    ```javascript
-    // Add any writeable properties your device supports,
-    // mapped to a function that's called when the writeable property
-    // is updated in the IoT Central application.
-    var writeableProperties = {
-      'name': (newValue, callback) => {
-          setTimeout(() => {
-            callback(newValue, 'completed', 200);
-          }, 1000);
-      },
-      'brightness': (newValue, callback) => {
-        setTimeout(() => {
-            callback(newValue, 'completed', 200);
-        }, 5000);
-      }
-    };
-
-    // Handle writeable property updates that come from IoT Central via the device twin.
-    function handleWriteablePropertyUpdates(twin) {
-      twin.on('properties.desired', function (desiredChange) {
-        for (let setting in desiredChange) {
-          if (writeableProperties[setting]) {
-            console.log(`Received setting: ${setting}: ${desiredChange[setting]}`);
-            writeableProperties[setting](desiredChange[setting], (newValue, status, code) => {
-              var patch = {
-                [setting]: {
-                  value: newValue,
-                  ad: status,
-                  ac: code,
-                  av: desiredChange.$version
-                }
-              }
-              sendDeviceProperties(twin, patch);
-            });
-          }
-        }
+    // Deal with twin
+    try {
+      resultTwin = await client.getTwin();
+      const patchRoot = createReportPropPatch({ serialNumber: deviceSerialNum });
+      const patchThermostat = createReportPropPatch({
+        maxTempSinceLastReboot: deviceTemperatureSensor.getMaxTemperatureValue()
       });
+
+      // the below things can only happen once the twin is there
+      updateComponentReportedProperties(resultTwin, patchRoot);
+      updateComponentReportedProperties(resultTwin, patchThermostat);
+
+      // Setup the handler for desired properties
+      desiredPropertyPatchHandler(resultTwin);
+
+    } catch (err) {
+      console.error('could not retrieve twin or report twin properties\n' + err.toString());
     }
-    ```
-
-    Ha a kezelő egy írható tulajdonságot állít be a IoT Central alkalmazásban, az alkalmazás egy, a kívánt eszközhöz tartozó, a kívánt tulajdonságot használva küldi el az értéket az eszköznek. Az eszköz ezután válaszol a Device Twin jelentett tulajdonság használatával. Ha a IoT Central megkapja a jelentett tulajdonság értékét, akkor a rendszer **szinkronizált**állapottal frissíti a tulajdonság nézetét.
-
-    A tulajdonságok nevének ( `name` és `brightness` ) meg kell egyeznie az eszköz sablonjában használt nevekkel.
-
-1. Adja hozzá a következő kódot a IoT Central alkalmazásból eljuttatott parancsok kezeléséhez:
-
-    ```javascript
-    // Setup command handlers
-    function setupCommandHandlers(twin) {
-
-      // Handle synchronous LED blink command with request and response payload.
-      function onBlink(request, response) {
-        console.log('Received synchronous call to blink');
-        var responsePayload = {
-          status: 'Blinking LED every ' + request.payload  + ' seconds'
-        }
-        response.send(200, responsePayload, (err) => {
-          if (err) {
-            console.error('Unable to send method response: ' + err.toString());
-          } else {
-            console.log('Blinking LED every ' + request.payload  + ' seconds');
-          }
-        });
-      }
-
-      // Handle synchronous LED turn on command
-      function turnOn(request, response) {
-        console.log('Received synchronous call to turn on LED');
-        if(!ledOn){
-          console.log('Turning on the LED');
-          ledOn = true;
-        }
-        response.send(200, (err) => {
-          if (err) {
-            console.error('Unable to send method response: ' + err.toString());
-          }
-        });
-      }
-
-      // Handle synchronous LED turn off command
-      function turnOff(request, response) {
-        console.log('Received synchronous call to turn off LED');
-        if(ledOn){
-          console.log('Turning off the LED');
-          ledOn = false;
-        }
-        response.send(200, (err) => {
-          if (err) {
-            console.error('Unable to send method response: ' + err.toString());
-          }
-        });
-      }
-
-      // Handle asynchronous sensor diagnostics command with response payload.
-      function diagnostics(request, response) {
-        console.log('Starting asynchronous diagnostics run...');
-        response.send(202, (err) => {
-          if (err) {
-            console.error('Unable to send method response: ' + err.toString());
-          } else {
-            var repetitions = 3;
-            var intervalID = setInterval(() => {
-              console.log('Generating diagnostics...');
-              if (--repetitions === 0) {
-                clearInterval(intervalID);
-                var properties = {
-                  rundiagnostics: {
-                    value: 'Diagnostics run complete at ' + new Date().toLocaleString()
-                  }
-                };
-                sendDeviceProperties(twin, properties);
-              }
-            }, 2000);
-          }
-        });
-      }
-
-      hubClient.onDeviceMethod('blink', onBlink);
-      hubClient.onDeviceMethod('turnon', turnOn);
-      hubClient.onDeviceMethod('turnoff', turnOff);
-      hubClient.onDeviceMethod('rundiagnostics', diagnostics);
-    }
-    ```
-
-    A parancsok nevének (,, `blink` , `turnon` `turnoff` és `rundiagnostics` ) meg kell egyeznie az eszköz sablonjában használt nevekkel.
-
-    A IoT Central jelenleg nem használja az eszköz-képesség modellben definiált válasz sémát. A szinkron parancsok esetében a válasz hasznos JSON lehet. Egy aszinkron parancs esetében az eszköznek azonnal egy 202-es választ kell visszaadnia, amelyet a rendszer a munka befejeződése után jelentett a tulajdonságok frissítése után. A jelentett tulajdonság frissítésének formátuma:
-
-    ```json
-    {
-      [command name] : {
-        value: 'response message'
-      }
-    }
-    ```
-
-    Az operátor megtekintheti a válasz adattartalmát a parancs előzményeiben.
-
-1. Adja hozzá a következő kódot az Azure IoT Central-alkalmazáshoz való csatlakozás befejezéséhez és az ügyfélkódban lévő függvények csatlakoztatásához:
-
-    ```javascript
-    // Handle device connection to Azure IoT Central.
-    var connectCallback = (err) => {
-      if (err) {
-        console.log(`Device could not connect to Azure IoT Central: ${err.toString()}`);
-      } else {
-        console.log('Device successfully connected to Azure IoT Central');
-
-        // Send telemetry to Azure IoT Central every 1 second.
-        setInterval(sendTelemetry, 1000);
-
-        // Get device twin from Azure IoT Central.
-        hubClient.getTwin((err, twin) => {
-          if (err) {
-            console.log(`Error getting device twin: ${err.toString()}`);
-          } else {
-            // Send device properties once on device start up.
-            var properties = {
-              state: 'true',
-              processorArchitecture: 'ARM',
-              swVersion: '1.0.0'
-            };
-            sendDeviceProperties(twin, properties);
-
-            handleWriteablePropertyUpdates(twin);
-
-            setupCommandHandlers(twin);
-          }
-        });
-      }
-    };
-
-    // Start the device (register and connect to Azure IoT Central).
-    provisioningClient.register((err, result) => {
-      if (err) {
-        console.log('Error registering device: ' + err);
-      } else {
-        console.log('Registration succeeded');
-        console.log('Assigned hub=' + result.assignedHub);
-        console.log('DeviceId=' + result.deviceId);
-        var connectionString = 'HostName=' + result.assignedHub + ';DeviceId=' + result.deviceId + ';SharedAccessKey=' + symmetricKey;
-        hubClient = Client.fromConnectionString(connectionString, iotHubTransport);
-
-        hubClient.open(connectCallback);
-      }
-    });
-    ```
-
-## <a name="run-your-nodejs-application"></a>A Node.js-alkalmazás futtatása
-
-Az eszköz ügyfélalkalmazás elindításához futtassa a következő parancsot a parancssori környezetben:
-
-```cmd/sh
-node environmentalSensor.js
+  } catch (err) {
+    console.error('could not connect Plug and Play client or could not attach interval function for telemetry\n' + err.toString());
+  }
+}
 ```
 
-Láthatja, hogy az eszköz csatlakozik az Azure IoT Central-alkalmazáshoz, és elkezdi elküldeni a telemetria:
+A `provisionDevice` függvény azt mutatja be, hogy az eszköz hogyan használja a DPS-t a IoT Central regisztrálásához és a kapcsolódáshoz. Az adattartalom tartalmazza a modell AZONOSÍTÓját:
 
-![Az ügyfélalkalmazás futtatása](media/tutorial-connect-device-nodejs/run-application.png)
+```javascript
+async function provisionDevice(payload) {
+  var provSecurityClient = new SymmetricKeySecurityClient(registrationId, symmetricKey);
+  var provisioningClient = ProvisioningDeviceClient.create(provisioningHost, idScope, new ProvProtocol(), provSecurityClient);
 
-[!INCLUDE [iot-central-monitor-environmental-sensor](../../../includes/iot-central-monitor-environmental-sensor.md)]
+  if (!!(payload)) {
+    provisioningClient.setProvisioningPayload(payload);
+  }
+
+  try {
+    let result = await provisioningClient.register();
+    deviceConnectionString = 'HostName=' + result.assignedHub + ';DeviceId=' + result.deviceId + ';SharedAccessKey=' + symmetricKey;
+  } catch (err) {
+    console.error("error registering device: " + err.toString());
+  }
+}
+```
+
+A `sendTelemetry` függvény azt mutatja, hogy az eszköz hogyan küldi el a hőmérséklet telemetria IoT Central. A `getCurrentTemperatureObject` metódus egy olyan objektumot ad vissza, amely a következőképpen néz ki `{ temperature: 45.6 }` :
+
+```javascript
+async function sendTelemetry(deviceClient, index) {
+  console.log('Sending telemetry message %d...', index);
+  const msg = new Message(
+    JSON.stringify(
+      deviceTemperatureSensor.updateSensor().getCurrentTemperatureObject()
+    )
+  );
+  msg.contentType = 'application/json';
+  msg.contentEncoding = 'utf-8';
+  await deviceClient.sendEvent(msg);
+}
+```
+
+A `main` metódus a következő két módszer használatával küldi `maxTempSinceLastReboot` el a tulajdonságot IoT Central. A metódus a következőhöz `main` `createReportPropPatch` hasonló objektummal hív meg `{maxTempSinceLastReboot: 80.9}` :
+
+```javascript
+const createReportPropPatch = (propertiesToReport) => {
+  let patch;
+  patch = { };
+  patch = propertiesToReport;
+  return patch;
+};
+
+const updateComponentReportedProperties = (deviceTwin, patch) => {
+  deviceTwin.properties.reported.update(patch, function (err) {
+    if (err) throw err;
+    console.log('Properties have been reported for component');
+  });
+};
+```
+
+A `main` metódus a következő két módszert használja a _cél hőmérséklet_ írható tulajdonságának IoT Centralból való kezelésére. Figyelje meg, hogy a `propertyUpdateHandle` Válasz hogyan épül fel a verzióra és az állapotkódot:
+
+```javascript
+const desiredPropertyPatchHandler = (deviceTwin) => {
+  deviceTwin.on('properties.desired', (delta) => {
+    const versionProperty = delta.$version;
+
+    Object.entries(delta).forEach(([propertyName, propertyValue]) => {
+      if (propertyName !== '$version') {
+        propertyUpdateHandler(deviceTwin, propertyName, null, propertyValue, versionProperty);
+      }
+    });
+  });
+};
+
+const propertyUpdateHandler = (deviceTwin, propertyName, reportedValue, desiredValue, version) => {
+  console.log('Received an update for property: ' + propertyName + ' with value: ' + JSON.stringify(desiredValue));
+  const patch = createReportPropPatch(
+    { [propertyName]:
+      {
+        'value': desiredValue,
+        'ac': 200,
+        'ad': 'Successfully executed patch for ' + propertyName,
+        'av': version
+      }
+    });
+  updateComponentReportedProperties(deviceTwin, patch);
+  console.log('updated the property');
+};
+```
+
+A `main` metódus a következő két módszert használja a parancs hívásának kezelésére `getMaxMinReport` . A `getMaxMinReportObject` METÓDUS JSON-objektumként hozza létre a jelentést:
+
+```javascript
+const commandHandler = async (request, response) => {
+  switch (request.methodName) {
+  case commandMaxMinReport: {
+    console.log('MaxMinReport ' + request.payload);
+    await sendCommandResponse(request, response, 200, deviceTemperatureSensor.getMaxMinReportObject());
+    break;
+  }
+  default:
+    await sendCommandResponse(request, response, 404, 'unknown method');
+    break;
+  }
+};
+
+const sendCommandResponse = async (request, response, status, payload) => {
+  try {
+    await response.send(status, payload);
+    console.log('Response to method \'' + request.methodName +
+              '\' sent successfully.' );
+  } catch (err) {
+    console.error('An error ocurred when sending a method response:\n' +
+              err.toString());
+  }
+};
+```
+
+## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
+
+[!INCLUDE [iot-central-connection-configuration](../../../includes/iot-central-connection-configuration.md)]
+
+## <a name="run-the-code"></a>A kód futtatása
+
+A minta alkalmazás futtatásához nyisson meg egy parancssori környezetet, és navigáljon az *Azure-IOT-SDK-Node/Device/Samples/PnP* mappába, amely tartalmazza az *simple_thermostat.js* -mintát.
+
+[!INCLUDE [iot-central-connection-environment](../../../includes/iot-central-connection-environment.md)]
+
+Telepítse a szükséges csomagokat:
+
+```cmd/sh
+npm install
+```
+
+Minta futtatása:
+
+```cmd/sh
+node simple_thermostat.js
+```
+
+Az alábbi kimenetben az eszköz regisztrálása és a IoT Centralhoz való csatlakozás látható. A minta ezután elküldi a `maxTempSinceLastReboot` tulajdonságot a telemetria küldésének megkezdése előtt:
+
+```cmd/sh
+registration succeeded
+assigned hub=iotc-.......azure-devices.net
+deviceId=sample-device-01
+payload=undefined
+Connecting using connection string HostName=iotc-........azure-devices.net;DeviceId=sample-device-01;SharedAccessKey=Ci....=
+Enabling the commands on the client
+Please enter q or Q to exit sample.
+The following properties will be updated for root interface:
+{ maxTempSinceLastReboot: 55.20309427428496 }
+Properties have been reported for component
+Sending telemetry message 0...
+Sending telemetry message 1...
+Sending telemetry message 2...
+Sending telemetry message 3...
+```
+
+[!INCLUDE [iot-central-monitor-thermostat](../../../includes/iot-central-monitor-thermostat.md)]
 
 Láthatja, hogy az eszköz hogyan válaszol a parancsokra és a tulajdonságokra:
 
-![Az ügyfélalkalmazás megfigyelése](media/tutorial-connect-device-nodejs/run-application-2.png)
+```cmd/sh
+MaxMinReport 2020-10-15T12:00:00.000Z
+Response to method 'getMaxMinReport' sent successfully.
+
+...
+
+Received an update for property: targetTemperature with value: {"value":86.3}
+The following properties will be updated for root interface:
+{
+  targetTemperature: {
+    value: { value: 86.3 },
+    ac: 200,
+    ad: 'Successfully executed patch for targetTemperature',
+    av: 2
+  }
+}
+```
 
 ## <a name="view-raw-data"></a>Nyers adattárolók megtekintése
 
-[!INCLUDE [iot-central-monitor-environmental-sensor-raw-data](../../../includes/iot-central-monitor-environmental-sensor-raw-data.md)]
+[!INCLUDE [iot-central-monitor-thermostat-raw-data](../../../includes/iot-central-monitor-thermostat-raw-data.md)]
 
 ## <a name="next-steps"></a>További lépések
 
@@ -347,3 +299,4 @@ Most, hogy megismerte, hogyan hozhat létre egy eszközt a Node.js használatáv
 
 * Olvassa el a [Mi az eszközök sablonjai?](./concepts-device-templates.md) további információ az eszközök sablonjainak szerepéről az eszköz kódjának megvalósításakor.
 * Olvassa el az [Azure IoT Centralhoz való csatlakozást](./concepts-get-connected.md) ismertető témakört, amelyből megtudhatja, hogyan regisztrálhat eszközöket a IoT Central, és hogyan IoT Central biztonságossá teszi az eszközök kapcsolatait.
+* Olvassa el a [telemetria, a tulajdonságot és a parancs hasznos](concepts-telemetry-properties-commands.md) adatait, ha többet szeretne megtudni az eszköz IoT Centralsal való cseréjéről.

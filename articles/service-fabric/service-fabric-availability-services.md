@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 5306439184561e8dec8303a7b149f51d6c2f6e08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75551862"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018902"
 ---
 # <a name="availability-of-service-fabric-services"></a>Service Fabric szolgáltatások rendelkezésre állása
 Ez a cikk áttekintést nyújt arról, hogyan kezeli az Azure Service Fabric egy szolgáltatás rendelkezésre állását.
@@ -23,11 +23,11 @@ Service Fabric szolgáltatások lehetnek állapot-nyilvántartó vagy állapot n
 Ha egy állapot nélküli névvel ellátott szolgáltatás egy példánya meghibásodik, egy új példány jön létre egy jogosult csomóponton a fürtben. Előfordulhat például, hogy egy állapot nélküli szolgáltatási példány meghiúsul a Csomópont1, és újra létre kell hozni a Csomópont5 számítógépre.
 
 ## <a name="availability-of-service-fabric-stateful-services"></a>Service Fabric állapot-nyilvántartó szolgáltatások rendelkezésre állása
-Az állapot-nyilvántartó szolgáltatáshoz társítva van egy állapot. Service Fabric egy állapot-nyilvántartó szolgáltatás replikák készletként van modellezve. Minden replika a szolgáltatás kódjának futó példánya. A replika a szolgáltatás állapotának másolatát is tartalmazhatja. Az olvasási és írási műveleteket egy, az *elsődlegesnek*nevezett replikán hajtja végre. Az írási műveletek állapotának módosításait a rendszer az *aktív formátumú másodlagos zónák*nevű replikakészlet más replikáinak *replikálja* , és alkalmazza. 
+Az állapot-nyilvántartó szolgáltatáshoz társítva van egy állapot. Service Fabric egy állapot-nyilvántartó szolgáltatás replikák készletként van modellezve. Minden replika a szolgáltatás kódjának futó példánya. A replika a szolgáltatás állapotának másolatát is tartalmazhatja. Az olvasási és írási műveleteket egy, az *elsődlegesnek* nevezett replikán hajtja végre. Az írási műveletek állapotának módosításait a rendszer az *aktív formátumú másodlagos zónák* nevű replikakészlet más replikáinak *replikálja* , és alkalmazza. 
 
 Csak egy elsődleges replika lehet, de több aktív másodlagos replika is lehet. Az aktív másodlagos replikák száma konfigurálható, és a replikák nagyobb száma több párhuzamos szoftver és hardverhiba esetén is elfogadható.
 
-Ha az elsődleges replika leáll, Service Fabric teszi az új elsődleges replikát az egyik aktív másodlagos replikára. Ez az aktív másodlagos replika már rendelkezik az állapot frissített verziójával a *replikáláson*keresztül, és folytathatja a további írási/olvasási műveletek feldolgozását. Ez a folyamat *újrakonfigurálás* néven ismert, és az [újrakonfigurálási](service-fabric-concepts-reconfiguration.md) cikkben további útmutatást talál.
+Ha az elsődleges replika leáll, Service Fabric teszi az új elsődleges replikát az egyik aktív másodlagos replikára. Ez az aktív másodlagos replika már rendelkezik az állapot frissített verziójával a *replikáláson* keresztül, és folytathatja a további írási/olvasási műveletek feldolgozását. Ez a folyamat *újrakonfigurálás* néven ismert, és az [újrakonfigurálási](service-fabric-concepts-reconfiguration.md) cikkben további útmutatást talál.
 
 A replika fogalma elsődleges vagy aktív másodlagos, azaz *replika szerepkör*. Ezeket a replikákat a [replikák és példányok](service-fabric-concepts-replica-lifecycle.md) című cikkben találja. 
 

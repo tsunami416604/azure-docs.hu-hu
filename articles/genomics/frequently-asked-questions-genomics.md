@@ -10,11 +10,11 @@ ms.service: genomics
 ms.topic: troubleshooting
 ms.date: 12/07/2017
 ms.openlocfilehash: e8806bc4f761214e6740a22093b7e18030fdf881
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76986036"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018324"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics: gyakori kérdések
 
@@ -48,10 +48,10 @@ A leggyakrabban használt parancsok az ügyfél argumentumai a `msgen` következ
  |`cancel`             |A által megadott munkafolyamat feldolgozásának megszakítására vonatkozó kérést küld `--workflow-id` . Lásd még: `msgen help cancel` . |
 
 ## <a name="where-do-i-get-the-value-for---api-url-base"></a>Honnan szerezhetem be a értéket `--api-url-base` ?
-Lépjen a Azure Portalra, és nyissa meg a genomikai fiók lapját. A **felügyelet** fejléc alatt válassza a **hozzáférési kulcsok**elemet. Itt megtalálja az API URL-címét és a hozzáférési kulcsokat is.
+Lépjen a Azure Portalra, és nyissa meg a genomikai fiók lapját. A **felügyelet** fejléc alatt válassza a **hozzáférési kulcsok** elemet. Itt megtalálja az API URL-címét és a hozzáférési kulcsokat is.
 
 ## <a name="where-do-i-get-the-value-for---access-key"></a>Honnan szerezhetem be a értéket `--access-key` ?
-Lépjen a Azure Portalra, és nyissa meg a genomikai fiók lapját. A **felügyelet** fejléc alatt válassza a **hozzáférési kulcsok**elemet. Itt megtalálja az API URL-címét és a hozzáférési kulcsokat is.
+Lépjen a Azure Portalra, és nyissa meg a genomikai fiók lapját. A **felügyelet** fejléc alatt válassza a **hozzáférési kulcsok** elemet. Itt megtalálja az API URL-címét és a hozzáférési kulcsokat is.
 
 ## <a name="why-do-i-need-two-access-keys"></a>Miért van szükség két hozzáférési kulcsra?
 Ha a szolgáltatás használatának megszakítása nélkül szeretné frissíteni (újragenerálni), két hozzáférési kulcsra van szüksége. Ha például frissíteni szeretné az első kulcsot, az összes új munkafolyamatnak a második kulcsot kell használnia. Ezután várja meg az összes munkafolyamatot, amely az első kulcsot használja az első kulcs frissítése előtt.

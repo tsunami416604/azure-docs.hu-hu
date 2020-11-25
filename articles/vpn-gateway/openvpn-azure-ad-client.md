@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/15/2020
 ms.author: alzam
 ms.openlocfilehash: 7c2c1930b8f801db7f70baa5b713a641606be644
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94661171"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019777"
 ---
 # <a name="azure-active-directory-authentication-configure-a-vpn-client-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory hitelesítés: VPN-ügyfél konfigurálása a P2S OpenVPN protokoll kapcsolataihoz
 
@@ -243,6 +243,6 @@ azurevpn -i azurevpnconfig.xml
 az importálás kényszerítéséhez használja az **-f** kapcsolót is
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ: [Azure Active Directory-bérlő létrehozása az Azure ad-hitelesítést használó P2S nyitott VPN-kapcsolatokhoz](openvpn-azure-ad-tenant.md).

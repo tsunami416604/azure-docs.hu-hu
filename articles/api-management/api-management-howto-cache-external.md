@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: apimpm
 ms.openlocfilehash: 6288a10e111e42629abf5e09b84a6a7791dcfe95
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095934"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018222"
 ---
 # <a name="use-an-external-redis-compatible-cache-in-azure-api-management"></a>Külső Redis-kompatibilis gyorsítótár használata az Azure-ban API Management
 
@@ -65,7 +65,7 @@ Kövesse az alábbi lépéseket egy külső Azure-gyorsítótár hozzáadásáho
 > [!NOTE]
 > A **használat forrása** beállítással megadhat egy Azure-régiót vagy egy saját üzemeltetésű átjáró helyét, amely a beállított gyorsítótárat fogja használni. Az **alapértelmezettként** konfigurált gyorsítótárak felülbírálása egy adott egyező régióval vagy hellyel rendelkező gyorsítótárak esetében történik.
 >
-> Ha például API Management az USA keleti régiójában, a Délkelet-Ázsiában és a Nyugat-európai régióban található, és két gyorsítótár van konfigurálva, az egyik az **alapértelmezett** , a másik pedig a **Délkelet-ázsiai** , a **Délkelet-ázsiai** API Management a saját gyorsítótárát fogja használni, míg a másik két régió az **alapértelmezett** gyorsítótár-bejegyzést fogja használni.
+> Ha például API Management az USA keleti régiójában, a Délkelet-Ázsiában és a Nyugat-európai régióban található, és két gyorsítótár van konfigurálva, az egyik az **alapértelmezett** , a másik pedig a **Délkelet-ázsiai**, a **Délkelet-ázsiai** API Management a saját gyorsítótárát fogja használni, míg a másik két régió az **alapértelmezett** gyorsítótár-bejegyzést fogja használni.
 
 ### <a name="add-an-azure-cache-for-redis-from-the-same-subscription"></a>Azure cache hozzáadása ugyanahhoz az előfizetéshez tartozó Redis
 
@@ -100,7 +100,7 @@ Kövesse az alábbi lépéseket egy külső Azure-gyorsítótár hozzáadásáho
 
 Ha a külső gyorsítótár konfigurálva van az Azure API Managementban, a gyorsítótárazási házirendek használatával is használható. A részletes lépésekért lásd: [gyorsítótár hozzáadása az Azure-API Management teljesítményének növeléséhez](api-management-howto-cache.md) .
 
-## <a name="next-steps"></a><a name="next-steps"> </a>Következő lépések
+## <a name="next-steps"></a><a name="next-steps"> </a>További lépések
 
 * További információt a gyorsítótárazási házirendekről az [API Management házirend-referencia][API Management policy reference] oktatóanyag [Gyorsítótárazási házirendek][Caching policies] szakaszában talál.
 * További információ az elemeknek a házirend-kifejezések kulcsával történő gyorsítótárazásáról: [Egyéni gyorsítótárazás az Azure API Management szolgáltatásban](api-management-sample-cache-by-key.md).

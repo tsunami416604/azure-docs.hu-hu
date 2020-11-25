@@ -8,11 +8,11 @@ ms.date: 05/08/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: b72de9fb15eafd48c3b72aae4f35fef3bb1f1bef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76279485"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019504"
 ---
 A Function app Settings értékeit környezeti változókként is beolvashatja a kódban. További információkért tekintse meg az alábbi nyelvspecifikus témakörök környezeti változók című szakaszát:
 

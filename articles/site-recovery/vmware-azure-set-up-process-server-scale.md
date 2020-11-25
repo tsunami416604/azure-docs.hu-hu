@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 4/23/2019
 ms.author: ramamill
 ms.openlocfilehash: 40f912122e6ffb9cccbd32a747f6f0d46fd6c330
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87292806"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019138"
 ---
 # <a name="scale-with-additional-process-servers"></a>Skálázás további folyamat-kiszolgálókkal
 
@@ -53,11 +53,11 @@ Töltse le a Process Server telepítési fájlját a következőképpen:
 
 1. Jelentkezzen be a Azure Portalba, és keresse meg a Recovery Services-tárolót.
 2. Nyissa meg **site Recovery-infrastruktúra**  >  **VMware-és fizikai gépek**  >  **konfigurációs kiszolgálóit** (a VMware & fizikai gépeknél).
-3. Válassza ki a konfigurációs kiszolgálót a kiszolgáló adatainak részletezéséhez. Ezután kattintson a **+ folyamat kiszolgáló**elemre.
-4. A **Process Server hozzáadása**  >   lapon válassza ki,**hogy hová szeretné telepíteni a Process Servert**, válassza a **helyszíni kibővíthető folyamat kiszolgálójának központi telepítése**lehetőséget.
+3. Válassza ki a konfigurációs kiszolgálót a kiszolgáló adatainak részletezéséhez. Ezután kattintson a **+ folyamat kiszolgáló** elemre.
+4. A **Process Server hozzáadása**  >   lapon válassza ki,**hogy hová szeretné telepíteni a Process Servert**, válassza a **helyszíni kibővíthető folyamat kiszolgálójának központi telepítése** lehetőséget.
 
    ![Kiszolgálók hozzáadása lap](./media/vmware-azure-set-up-process-server-scale/add-process-server.png)
-1. Kattintson **a Microsoft Azure site Recovery egyesített telepítő letöltése**elemre. Ezzel letölti a telepítési fájl legújabb verzióját.
+1. Kattintson **a Microsoft Azure site Recovery egyesített telepítő letöltése** elemre. Ezzel letölti a telepítési fájl legújabb verzióját.
 
    > [!WARNING]
    > A Process Server telepítési verziójának meg kell egyeznie a futtatott konfigurációs kiszolgáló verziószámával, vagy annál korábbinak kell lennie. A verziók kompatibilitásának egyszerű módja, ha ugyanazt a telepítőt használja, amelyet legutóbb a konfigurációs kiszolgáló telepítéséhez vagy frissítéséhez használt.

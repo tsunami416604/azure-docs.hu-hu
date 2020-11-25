@@ -12,11 +12,11 @@ ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1, devx-track-azurecli
 ms.openlocfilehash: 03d10f71b585090157eff164cc98246f50608fe1
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695367"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018783"
 ---
 # <a name="set-up-a-python-development-environment-for-azure-machine-learning"></a>Python-fejlesztési környezet beállítása Azure Machine Learninghoz
 
@@ -214,7 +214,7 @@ A helyi környezetekhez hasonlóan a Visual Studio Code és a [Azure Machine lea
 További információ: [Adatelemzési Virtual Machines](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Azure Machine Learning [modell betanítása](tutorial-train-models-with-aml.md) a MNIST adatkészlettel.
 - Tekintse [meg a Pythonhoz készült Azure Machine learning SDK-referenciát](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py). 

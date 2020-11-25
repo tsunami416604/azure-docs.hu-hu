@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 792908236c4f240db64bd3899474d779d5b0570c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966513"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018103"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Bevezetés a hálózati biztonsági csoportok folyamatnaplózásába
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 A [hálózati biztonsági csoport](../virtual-network/network-security-groups-overview.md#security-rules) (NSG) folyamatábrája az Azure Network Watcher egyik funkciója, amely lehetővé teszi, hogy naplózza a NSG keresztül ÁRAMLÓ IP-forgalomra vonatkozó információkat. A flow-adatok az Azure Storage-fiókokba kerülnek, ahonnan elérheti, és exportálhatja bármely vizualizációs eszközre, SIEM-re vagy tetszőleges AZONOSÍTÓra.
 
@@ -305,7 +305,7 @@ A flow rekordok egy TCP-beszélgetésből 185.170.185.105:35370 és 10.2.0.4:23:
 A " _C_ " és a "End _E_ flow" állapot esetén a bájt és a csomagok száma az előző folyamat rekordjának időpontjától számított összesített szám. Az előző példában szereplő beszélgetésre hivatkozva az átvitt csomagok teljes száma 1021 + 52 + 8005 + 47 = 9125. Az átvitt bájtok teljes száma: 588096 + 29952 + 4610880 + 27072 = 5256000.
 
 
-## <a name="enabling-nsg-flow-logs"></a>NSG-folyamatok naplófájljainak engedélyezése
+## <a name="enabling-nsg-flow-logs"></a>NSG-folyamat-naplók engedélyezése
 
 Használja az alábbi hivatkozásokat a flow-naplók engedélyezésére vonatkozó útmutatókhoz.
 

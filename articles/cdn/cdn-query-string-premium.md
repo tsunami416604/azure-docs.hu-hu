@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 06/11/2018
 ms.author: allensu
 ms.openlocfilehash: a799309b6e5d00db3b6c206187eec7097c9dc11a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84887260"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018596"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---premium-tier"></a>Azure CDN gyorsítótárazási viselkedés szabályozása lekérdezési karakterláncokkal – prémium szint
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "84887260"
 Az Azure Content Delivery Network (CDN) segítségével szabályozhatja, hogy a rendszer hogyan gyorsítótárazza a fájlokat egy olyan webes kérelem esetében, amely egy lekérdezési karakterláncot tartalmaz. Lekérdezési karakterláncot tartalmazó webes kérelem esetén a lekérdezési karakterlánc a kérelemnek a kérdőjel (?) utáni részét jelöli. A lekérdezési karakterláncok tartalmazhatnak egy vagy több kulcs-érték párokat, amelyekben a mező nevét és értékét egy egyenlőségjel (=) választja el egymástól. A kulcs-érték párokat egy jel (&) választja el egymástól. Például: http: \/ /www.contoso.com/content.mov?field1=value1&mező = érték2. Ha egy kérelem lekérdezési karakterláncában egynél több kulcs-érték pár szerepel, a rendelésük nem számít. 
 
 > [!IMPORTANT]
-> A standard és a prémium CDN-termékek ugyanazt a lekérdezési karakterlánc-gyorsítótárazási funkciót biztosítják, a felhasználói felület azonban eltérő. Ez a cikk a **Verizon Azure CDN Premium**csomag felületét ismerteti. A Azure CDN standard termékekkel történő lekérdezési karakterláncok gyorsítótárazásával kapcsolatban lásd: [Azure CDN gyorsítótárazási viselkedés szabályozása a lekérdezési karakterláncokkal – standard szint](cdn-query-string.md).
+> A standard és a prémium CDN-termékek ugyanazt a lekérdezési karakterlánc-gyorsítótárazási funkciót biztosítják, a felhasználói felület azonban eltérő. Ez a cikk a **Verizon Azure CDN Premium** csomag felületét ismerteti. A Azure CDN standard termékekkel történő lekérdezési karakterláncok gyorsítótárazásával kapcsolatban lásd: [Azure CDN gyorsítótárazási viselkedés szabályozása a lekérdezési karakterláncokkal – standard szint](cdn-query-string.md).
 >
 
 
@@ -50,17 +50,17 @@ Három lekérdezési karakterlánc mód érhető el:
     > Ne használja ezt a módot, ha a lekérdezési karakterlánc olyan paramétereket tartalmaz, amelyek minden kérelemre (például egy munkamenet-AZONOSÍTÓra vagy egy felhasználónévre) változnak, mert az alacsony gyorsítótár-találati arányt eredményez.
 
 ## <a name="changing-query-string-caching-settings-for-premium-cdn-profiles"></a>A prémium szintű CDN-profilok lekérdezési karakterláncának gyorsítótárazási beállításainak módosítása
-1. Nyisson meg egy CDN-profilt, majd kattintson a **kezelés**elemre.
+1. Nyisson meg egy CDN-profilt, majd kattintson a **kezelés** elemre.
    
     ![CDN-profil kezelése gomb](./media/cdn-query-string-premium/cdn-manage-btn.png)
    
     Megnyílik a CDN felügyeleti portál.
-2. Vigye a kurzort a **nagyméretű http** -lapra, majd vigye a kurzort a **gyorsítótár beállításai** menü fölé. Kattintson a **lekérdezés-karakterlánc gyorsítótárazása**elemre.
+2. Vigye a kurzort a **nagyméretű http** -lapra, majd vigye a kurzort a **gyorsítótár beállításai** menü fölé. Kattintson a **lekérdezés-karakterlánc gyorsítótárazása** elemre.
    
     Megjelenik a lekérdezési karakterlánc gyorsítótárazási beállításai.
    
     ![CDN lekérdezési karakterlánc gyorsítótárazási beállításai](./media/cdn-query-string-premium/cdn-query-string.png)
-3. Válasszon egy lekérdezési karakterlánc módot, majd kattintson a **frissítés**gombra.
+3. Válasszon egy lekérdezési karakterlánc módot, majd kattintson a **frissítés** gombra.
 
 > [!IMPORTANT]
 > Mivel időt vesz igénybe, hogy a regisztráció a CDN-en keresztül legyen propagálva, előfordulhat, hogy a gyorsítótár-karakterlánc beállításainak módosításai nem azonnal láthatók. A propagálás általában 10 percen belül befejeződik.

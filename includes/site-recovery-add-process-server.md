@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
 ms.openlocfilehash: 31e61069c95be9bd1c7a684bb83ebcd93bcb14be
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548266"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019139"
 ---
 1. Indítsa ez az Azure Site Recovery UnifiedSetup.exe fájlt
 2. Az **Előkészületek** területen válassza a **További folyamatkiszolgálók hozzáadása az üzembe helyezés horizontális felskálázásához** lehetőséget.
@@ -30,7 +30,7 @@ ms.locfileid: "92548266"
      * Ha az egyéni proxy használatát választja, meg kell adnia a címet, a portot és a hitelesítő adatokat.
      * Ha proxyt használ, már engedélyezte a szolgáltatási URL-címekhez való hozzáférést.
 
-5. Az **Előfeltételek ellenőrzése** területen a telepítő ellenőrzi, hogy a telepítés végrehajtható-e. Ha megjelenik egy figyelmeztetés a **globális időszinkron ellenőrzéséről** , ellenőrizze, hogy a rendszeróra ideje (a **Dátum és idő** beállítások) megegyeznek-e az időzónával.
+5. Az **Előfeltételek ellenőrzése** területen a telepítő ellenőrzi, hogy a telepítés végrehajtható-e. Ha megjelenik egy figyelmeztetés a **globális időszinkron ellenőrzéséről**, ellenőrizze, hogy a rendszeróra ideje (a **Dátum és idő** beállítások) megegyeznek-e az időzónával.
 
      ![4. folyamatkiszolgáló hozzáadása](./media/site-recovery-add-process-server/ps-page-4.png)
 

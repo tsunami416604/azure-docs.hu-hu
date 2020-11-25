@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: c186e7beeed3a1729560d7deb002d573e0014508
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: bd45b0e1070efae7ae69a74ad96e1fa94a136006
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950975"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96019395"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines az SAP NetWeaver tervezése és megvalósítása
 
@@ -315,7 +315,7 @@ A tanulmány kiegészíti az SAP-telepítési dokumentációt és az SAP-megjegy
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 A felhő-számítástechnika egy széles körben használt kifejezés, amely egyre nagyobb jelentőséggel bír az informatikai iparban, a kisvállalkozásoktól egészen a nagy és a multinacionális vállalatokig.
 
 A Microsoft Azure a Microsoft Cloud Services platformja, amely az új lehetőségek széles spektrumát kínálja. Mostantól az ügyfelek gyorsan üzembe helyezhetik és kioszthatják az alkalmazásokat a felhőben, így azok nem korlátozódnak technikai vagy költségvetési korlátozásokra. Az idő és a költségvetés hardveres infrastruktúrába való befektetése helyett a vállalatok az alkalmazásra, az üzleti folyamatokra, valamint az ügyfelek és a felhasználók számára nyújtott előnyökre is koncentrálnak.
@@ -1951,7 +1951,7 @@ Az offline biztonsági mentés alapvetően a virtuális gép leállítását ig�
 
 
 Az állapot visszaállítása magában foglalhatja az alapszintű virtuális gép, valamint az alapszintű virtuális gép és a csatlakoztatott lemezek eredeti lemezének törlését, a mentett lemezek másolását az eredeti Storage-fiókba vagy az erőforráscsoport számára a felügyelt lemezek esetében, majd a rendszer újbóli üzembe helyezését.
-Ez a cikk egy példát mutat be a folyamat PowerShellben való megírására: <http://www.westerndevs.com/azure-snapshots/>
+Ez a cikk egy példát mutat be a folyamat PowerShellben való megírására: <https://www.westerndevs.com/_/azure-snapshots/>
 
 Ügyeljen arra, hogy új SAP-licencet telepítsen a virtuális gépek biztonsági mentésének visszaállítása óta, a fentiekben leírtak szerint pedig létrehoz egy új hardverprofilt.
 
@@ -2000,7 +2000,7 @@ Az Azure-beli SAP-rendszerek magas rendelkezésre állásának legfontosabb pont
 * Az SAP-párbeszédpanel példányainak biztonsági mentése kevés értelmet, mivel általában gyorsabb az egyszerű párbeszédpanel-példányok újratelepítése.
 * A virtuális gép biztonsági mentése, amely tartalmazza az SAP-rendszer globális könyvtárát, valamint a különböző példányok összes profilját, a Windows biztonsági mentésével, vagy például a Linux-alapú tar-vel kell elvégezni. Mivel a Windows Server 2008 (R2) és a Windows Server 2012 (R2) között különbségek vannak, így könnyebben készíthető biztonsági mentés a legújabb Windows Server-kiadásokkal, javasoljuk, hogy Windows Server 2012 (R2) operációs rendszert futtasson Windows vendég operációs rendszerként.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Olvassa el a cikkeket:
 
 - [Azure Virtual Machines üzembe helyezés az SAP NetWeaver-ben](./deployment-guide.md)

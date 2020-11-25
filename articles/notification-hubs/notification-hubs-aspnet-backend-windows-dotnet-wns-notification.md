@@ -16,11 +16,11 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/22/2019
 ms.openlocfilehash: 97a6a45ab01fc113b79a48ba7fcb246d528684be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90090057"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019480"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>Oktatóanyag: Értesítések küldése adott felhasználóknak az Azure Notification Hubs használatával
 
@@ -58,8 +58,8 @@ Ez az oktatóanyag az [Oktatóanyag: Értesítések küldése az Univerzális Wi
 Ebben a szakaszban az [Oktatóanyag: Értesítések küldése az Univerzális Windows-platformon alapuló alkalmazásoknak az Azure Notification Hubs használatával](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) című oktatóanyag során létrehozott kódot fogja frissíteni. A projektnek már társítva kell lennie a Windows Áruházhoz. Emellett úgy kell konfigurálni, hogy az értesítési központot használja. Ebben a szakaszban olyan kódot fog hozzáadni, amely meghívja az új WebAPI háttérrendszert, majd az értesítések regisztrálásához és küldéséhez használja azt.
 
 1. A Visual Studióban nyissa meg az [Oktatóanyag: Értesítések küldése az Univerzális Windows-platformon alapuló alkalmazásoknak az Azure Notification Hubs használatával](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) című oktatóanyaghoz létrehozott megoldást.
-2. Megoldáskezelő kattintson a jobb gombbal a Univerzális Windows-platform (UWP) projektre, majd kattintson a **NuGet-csomagok kezelése**elemre.
-3. A bal oldali oldalon válassza a **Tallózás**lehetőséget.
+2. Megoldáskezelő kattintson a jobb gombbal a Univerzális Windows-platform (UWP) projektre, majd kattintson a **NuGet-csomagok kezelése** elemre.
+3. A bal oldali oldalon válassza a **Tallózás** lehetőséget.
 4. A **Search** (Keresés) mezőbe írja be a **Http Client** (HTTP-ügyfél) kifejezést.
 5. A találatok listájában kattintson a **System.Net.Http** elemre, majd az **Install** (Telepítés) parancsra. Fejezze be a telepítést.
 6. A NuGet **Search** (Keresés) mezőjébe írja be a **Json.net** kifejezést. Telepítse a **Newtonsoft.json** csomagot, majd zárja be a NuGet-csomagkezelő ablakát.

@@ -8,11 +8,11 @@ ms.topic: quickstart
 ms.date: 10/20/2020
 ms.author: allensu
 ms.openlocfilehash: 395912ae70c5a01bd7de9a80cf8a507dd516028e
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895201"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018069"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-the-azure-portal"></a>Rövid útmutató: privát végpont létrehozása a Azure Portal használatával
 
@@ -50,7 +50,7 @@ A megerősített gazdagép a magánhálózati végpont teszteléséhez a virtuá
     | Erőforráscsoport   | **CreatePrivateEndpointQS kiválasztása – RG** |
     | **Példány adatai** |                                                                 |
     | Name             | **MyVNet** megadása                                    |
-    | Régió           | Válassza a **Nyugat-Európa** régiót.|
+    | Region           | Válassza a **Nyugat-Európa** régiót.|
 
 3. Válassza az **IP-címek** lapot, vagy válassza a **következő: IP-címek** gombot az oldal alján.
 
@@ -69,7 +69,7 @@ A megerősített gazdagép a magánhálózati végpont teszteléséhez a virtuá
     | Alhálózat neve | **MySubnet** megadása |
     | Alhálózati címtartomány | Adja meg a **10.1.0.0/24** értéket |
 
-7. Válassza a **Mentés** lehetőséget.
+7. Kattintson a **Mentés** gombra.
 
 8. Válassza a **Biztonság** fület.
 
@@ -79,7 +79,7 @@ A megerősített gazdagép a magánhálózati végpont teszteléséhez a virtuá
     |--------------------|----------------------------|
     | Bástya neve | **MyBastionHost** megadása |
     | AzureBastionSubnet címterület | Adja meg a **10.1.1.0/24** értéket |
-    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. </br> A **név** mezőbe írja be a következőt: **myBastionIP** . </br> Kattintson az **OK** gombra. |
+    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. </br> A **név** mezőbe írja be a következőt: **myBastionIP**. </br> Válassza az **OK** lehetőséget. |
 
 
 8. Válassza a **felülvizsgálat + létrehozás** lapot, vagy kattintson a **felülvizsgálat + létrehozás** gombra.
@@ -101,7 +101,7 @@ Ebben a szakaszban létre fog hozni egy virtuális gépet, amely a privát végp
     | Erőforráscsoport | **CreatePrivateEndpointQS kiválasztása – RG** |
     | **Példány adatai** |  |
     | Virtuális gép neve | **MyVM** megadása |
-    | Régió | Válassza a **Nyugat-Európa** régiót. |
+    | Region | Válassza a **Nyugat-Európa** régiót. |
     | Rendelkezésre állási beállítások | Válassza az **infrastruktúra-redundancia nem szükséges** lehetőséget |
     | Kép | Válassza a **Windows Server 2019 Datacenter – Gen1** elemet. |
     | Azure Spot-példány | Válassza a **nem** lehetőséget |
@@ -111,7 +111,7 @@ Ebben a szakaszban létre fog hozni egy virtuális gépet, amely a privát végp
     | Jelszó | Adja meg a jelszót |
     | Jelszó megerősítése | Jelszó újbóli megadása |
 
-3. Válassza a **hálózatkezelés** lapot, vagy válassza a **Tovább: lemezek** , majd a **Tovább: hálózatkezelés** lehetőséget.
+3. Válassza a **hálózatkezelés** lapot, vagy válassza a **Tovább: lemezek**, majd a **Tovább: hálózatkezelés** lehetőséget.
   
 4. A hálózatkezelés lapon válassza ki vagy írja be a következőket:
 
@@ -149,7 +149,7 @@ Ebben a szakaszban létre fog hozni egy privát végpontot az előfeltételek sz
     | Erőforráscsoport | Válassza a **CreatePrivateEndpointQS-RG** elemet. Ezt az erőforráscsoportot az előző szakaszban hozta létre.|
     | **Példány adatai** |  |
     | Name  | Adja meg a **myPrivateEndpoint** nevet. |
-    | Régió | Válassza a **Nyugat-Európa** régiót. |
+    | Region | Válassza a **Nyugat-Európa** régiót. |
 
 6. Válassza ki az **erőforrás** lapot vagy a **következő: erőforrás** gombot az oldal alján.
     
@@ -173,9 +173,9 @@ Ebben a szakaszban létre fog hozni egy privát végpontot az előfeltételek sz
     | Virtuális hálózat | Válassza a **myVNet** lehetőséget. |
     | Alhálózat | Válassza a **mySubnet** lehetőséget. |
     | **saját DNS integráció** |  |
-    | Integrálás saját DNS-zónával | Hagyja meg az alapértelmezett **Igen értéket** . |
+    | Integrálás saját DNS-zónával | Hagyja meg az alapértelmezett **Igen értéket**. |
     | Előfizetés | Válassza ki előfizetését. |
-    | Privát DNS-zónák | Hagyja meg az alapértelmezett **(új) privatelink.azurewebsites.net** .
+    | Privát DNS-zónák | Hagyja meg az alapértelmezett **(új) privatelink.azurewebsites.net**.
     
 
 13. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
@@ -214,9 +214,9 @@ Ebben a szakaszban az előző lépésben létrehozott virtuális gépet fogja ha
 
     A rendszer a webalkalmazás neveként a **10.1.0.5** magánhálózati IP-címét adja vissza.  Ez a címe a korábban létrehozott virtuális hálózat alhálózatában található.
 
-11. Nyissa meg az Internet Explorert a **myVM** -ben lévő megerősített kapcsolódásban.
+11. Nyissa meg az Internet Explorert a **myVM**-ben lévő megerősített kapcsolódásban.
 
-12. Adja meg a webalkalmazás ( **https:// \<your-webapp-name> . azurewebsites.net** ) URL-címét.
+12. Adja meg a webalkalmazás ( **https:// \<your-webapp-name> . azurewebsites.net**) URL-címét.
 
 13. Ha még nem telepítette az alkalmazást, az alapértelmezett webalkalmazás-oldal jelenik meg:
 
@@ -224,7 +224,7 @@ Ebben a szakaszban az előző lépésben létrehozott virtuális gépet fogja ha
 
 18. A **myVM** létesített kapcsolatok lezárása.
 
-## <a name="clean-up-resources"></a>Az erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha nem folytatja az alkalmazás használatát, törölje a virtuális hálózatot, a virtuális gépet és a webalkalmazást a következő lépésekkel:
 
@@ -234,7 +234,7 @@ Ha nem folytatja az alkalmazás használatát, törölje a virtuális hálózato
 
 3. Válassza az **Erőforráscsoport törlése** elemet.
 
-4. Írja be a **CreatePrivateEndpointQS-RG** **nevet az erőforráscsoport nevének megadása mezőbe** .
+4. Írja be a **CreatePrivateEndpointQS-RG** **nevet az erőforráscsoport nevének megadása mezőbe**.
 
 5. Válassza a **Törlés** elemet.
 

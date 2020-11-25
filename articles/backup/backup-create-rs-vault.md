@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
 ms.openlocfilehash: c7e7509f18e7511cd60099a70785b4e2c890afad
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171635"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019293"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása és konfigurálása
 
@@ -25,10 +25,10 @@ A Azure Backup automatikusan kezeli a tároló tárterületét. Meg kell adnia a
 >- Ha még nem konfigurálta a biztonsági mentést, [kövesse az alábbi lépéseket](#set-storage-redundancy) a beállítások áttekintéséhez és módosításához.
 >- Ha már konfigurálta a biztonsági mentést, és át kell térnie a GRS-ről a LRS-re, [tekintse át ezeket a megkerülő megoldásokat](#how-to-change-from-grs-to-lrs-after-configuring-backup).
 
-1. Az **Recovery Services** -tárolók ablaktáblán válassza ki az új tárolót. A **Beállítások** szakaszban válassza a  **Tulajdonságok**lehetőséget.
-1. A **Tulajdonságok**alatt a **biztonsági mentés konfigurálása**területen válassza a **frissítés**lehetőséget.
+1. Az **Recovery Services** -tárolók ablaktáblán válassza ki az új tárolót. A **Beállítások** szakaszban válassza a  **Tulajdonságok** lehetőséget.
+1. A **Tulajdonságok** alatt a **biztonsági mentés konfigurálása** területen válassza a **frissítés** lehetőséget.
 
-1. Válassza ki a tárolási replikálás típusát, majd kattintson a **Mentés**gombra.
+1. Válassza ki a tárolási replikálás típusát, majd kattintson a **Mentés** gombra.
 
      ![Az új tároló tárolási konfigurációjának beállítása](./media/backup-create-rs-vault/recovery-services-vault-backup-configuration.png)
 
@@ -136,7 +136,7 @@ Egy új LRS-tárolóban a munkaterhelések védelme érdekében a jelenlegi véd
 
 1. Állítsa le a védelmet, és törölje a biztonsági mentéseket a meglévő GRS-tárból. A tároló irányítópultjának menüjében válassza a **biztonsági másolati elemek elemet**. Az itt felsorolt elemeket, amelyeket át kell helyezni a LRS-tárba, el kell távolítani a biztonsági másolati adatokkal együtt. Lásd: [védett elemek törlése a felhőben](backup-azure-delete-vault.md#delete-protected-items-in-the-cloud) és a [védett elemek törlése a helyszínen](backup-azure-delete-vault.md#delete-protected-items-on-premises).
 
-1. Ha az AFS (Azure-fájlmegosztás), az SQL-kiszolgálók vagy a SAP HANA-kiszolgálók áthelyezését tervezi, akkor regisztrálnia kell a regisztrációt is. A tároló irányítópultjának menüjében válassza a **biztonsági mentési infrastruktúra**elemet. Tekintse meg [az SQL Server regisztrációjának](manage-monitor-sql-database-backup.md#unregister-a-sql-server-instance)megszüntetését, az [Azure-fájlmegosztáshoz társított Storage-fiók regisztrációjának](manage-afs-backup.md#unregister-a-storage-account)megszüntetését és a [SAP HANA példány regisztrációjának](sap-hana-db-manage.md#unregister-an-sap-hana-instance)megszüntetését ismertető témakört.
+1. Ha az AFS (Azure-fájlmegosztás), az SQL-kiszolgálók vagy a SAP HANA-kiszolgálók áthelyezését tervezi, akkor regisztrálnia kell a regisztrációt is. A tároló irányítópultjának menüjében válassza a **biztonsági mentési infrastruktúra** elemet. Tekintse meg [az SQL Server regisztrációjának](manage-monitor-sql-database-backup.md#unregister-a-sql-server-instance)megszüntetését, az [Azure-fájlmegosztáshoz társított Storage-fiók regisztrációjának](manage-afs-backup.md#unregister-a-storage-account)megszüntetését és a [SAP HANA példány regisztrációjának](sap-hana-db-manage.md#unregister-an-sap-hana-instance)megszüntetését ismertető témakört.
 
 1. Miután eltávolította őket a GRS-tárolóból, folytassa a számítási feladatok biztonsági mentésének konfigurálását az új LRS-tárolóban.
 
@@ -160,7 +160,7 @@ Ha meg kell őriznie a védett adatok védelmét a GRS-tárolóban, és egy új 
   - Szükség esetén visszaállíthatja a virtuális gépet a GRS-tárból.
   - Az új erőforrásban található virtuális gép LRS-tárolójának első biztonsági mentése kezdeti replika lesz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [További](backup-azure-recovery-services-vault-overview.md) információ Recovery Services-tárolók.
 [További](backup-azure-delete-vault.md) információ Recovery Services tárolók törlése.

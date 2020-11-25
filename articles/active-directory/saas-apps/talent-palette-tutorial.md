@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 6e1064e4362175b3de5187ce050f1719ede56bd5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516426"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018749"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talent-palette"></a>Oktatóanyag: Azure Active Directory integráció a Talent-palettával
 
@@ -62,13 +62,13 @@ A Talent paletta az Azure AD-be való integrálásának konfigurálásához hozz
 
     ![Az új alkalmazás gomb](common/add_new_app.png)
 
-4. A keresőmezőbe írja be a **Talent paletta**kifejezést, válassza a **Talent paletta** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Talent paletta** kifejezést, válassza a **Talent paletta** elemet az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
      ![Tehetség paletta az eredmények listájában](common/search_new_app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az **Britta Simon**nevű teszt felhasználója alapján konfigurálja és teszteli a Talent paletta segítségével.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az **Britta Simon** nevű teszt felhasználója alapján konfigurálja és teszteli a Talent paletta segítségével.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Talent paletta kapcsolódó felhasználója közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés a Talent paletta használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -86,7 +86,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés és a Talent paletta konfigurálásához hajtsa végre a következő lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com/)a **Talent paletta** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **Talent paletta** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select_sso.png)
 
@@ -135,7 +135,7 @@ Ha be szeretné állítani az egyszeri bejelentkezést a **Talent paletta** olda
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -154,13 +154,13 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a Talent paletta elérésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **tehetség palettát**.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **tehetség palettát**.
 
     ![Vállalati alkalmazások panel](common/enterprise_applications.png)
 
@@ -168,7 +168,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
     ![A Talent paletta hivatkozása az alkalmazások listájában](common/all_applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users_groups_blade.png)
 

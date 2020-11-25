@@ -6,11 +6,11 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.openlocfilehash: ffbaa2e40d5924ba61e548398e63295cf7dba2b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91303726"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019735"
 ---
 # <a name="label-machine-learning-entity-in-an-example-utterance"></a>Címke gépi tanulásra szolgáló entitása egy példa Kimondás esetén
 
@@ -39,7 +39,7 @@ A leképezési Részletek lapon két címkézési módszer támogatott.
 
 Miután [megtervezte a sémát az entitásokkal](luis-how-plan-your-app.md), megtarthatja az **entitás palettáját** a címkézés során. Az **entitás-paletta** a kinyerni tervezett entitások emlékeztetője.
 
-Az entitás- **paletta**eléréséhez válassza ki a **@** szimbólumot a környezetfüggő eszköztáron a példa-megjelölések listáján.
+Az entitás- **paletta** eléréséhez válassza ki a **@** szimbólumot a környezetfüggő eszköztáron a példa-megjelölések listáján.
 
 > [!div class="mx-imgBorder"]
 > ![Képernyőkép az Entity paletta a szándék részletei lapon.](media/label-utterances/entity-palette-from-tool-bar.png)
@@ -66,7 +66,7 @@ Az Entity paletta alsó szakasza lehetővé teszi szolgáltatások hozzáadásá
 
 ## <a name="labeling-entity-roles"></a>Entitás szerepköreinek címkézése
 
-Az entitások szerepkörei az **Entity paletta**használatával vannak megjelölve.
+Az entitások szerepkörei az **Entity paletta** használatával vannak megjelölve.
 
 1. A leképezés részletei lapon válassza ki az Entity ( **entitás) palettát** a helyi eszköztárból.
 1. Az entitás-paletta megnyitása után válassza ki az entitást az entitás listából.
@@ -136,6 +136,6 @@ Az entitás-előrejelzési hibák azt jelzik, hogy az előre jelzett entitás ne
 > [!div class="mx-imgBorder"]
 > ![A gépi tanulási entitás entitás-palettája](media/label-utterances/example-utterance-indicates-prediction-error.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Használja az [irányítópultot](luis-how-to-use-dashboard.md) , és [tekintse át a végpont hosszúságú kimondott szöveg](luis-how-to-review-endpoint-utterances.md) az alkalmazás előrejelzési minőségének javítása érdekében.

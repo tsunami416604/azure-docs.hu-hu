@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
 ms.openlocfilehash: 41a97c639d9148f2bff3e4f530363ea05a65a7b8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095951"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018247"
 ---
 # <a name="automatically-scale-an-azure-api-management-instance"></a>Az Azure API Management-példány automatikus skálázása  
 
@@ -74,7 +74,7 @@ Az alábbi lépéseket követve konfigurálhatja az Azure API Management szolgá
 
    Egy Felskálázási szabály például kiválthatja egy Azure API Management egység hozzáadását, ha az elmúlt 30 percben az átlagos kapacitási metrika meghaladja a 80%-ot. Az alábbi táblázat egy ilyen szabály konfigurációját tartalmazza.
 
-    | Paraméter             | Érték             | Megjegyzések                                                                                                                                                                                                                                                                           |
+    | Paraméter             | Érték             | Jegyzetek                                                                                                                                                                                                                                                                           |
     |-----------------------|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Metrikaforrás         | Aktuális erőforrás  | Határozza meg a szabályt az aktuális Azure API Management erőforrás-metrikák alapján.                                                                                                                                                                                                     |
     | *Feltételek*            |                   |                                                                                                                                                                                                                                                                                 |
@@ -101,7 +101,7 @@ Az alábbi lépéseket követve konfigurálhatja az Azure API Management szolgá
 
     A szabály skálázása például kiválthatja egy Azure API Management egység eltávolítását, ha az elmúlt 30 percben az átlagos kapacitási metrika 35%-nál kisebb. Az alábbi táblázat egy ilyen szabály konfigurációját tartalmazza.
 
-    | Paraméter             | Érték             | Megjegyzések                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+    | Paraméter             | Érték             | Jegyzetek                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
     |-----------------------|-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Metrikaforrás         | Aktuális erőforrás  | Határozza meg a szabályt az aktuális Azure API Management erőforrás-metrikák alapján.                                                                                                                                                                                                                                                                                                                                                                                                                         |
     | *Feltételek*            |                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
@@ -129,7 +129,7 @@ Az alábbi lépéseket követve konfigurálhatja az Azure API Management szolgá
 
 13. Kattintson a **Mentés** gombra. Az autoskálázás konfigurálva van.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure API Management-szolgáltatáspéldány üzembe helyezése több Azure-régióban](api-management-howto-deploy-multi-region.md)
 - [Optimalizálja és mentse a Felhőbeli kiadásait](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

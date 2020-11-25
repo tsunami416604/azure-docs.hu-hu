@@ -4,11 +4,11 @@ description: A DoD Impact Level 4 terv minta hozzárendelésének vezérlése. M
 ms.date: 10/26/2020
 ms.topic: sample
 ms.openlocfilehash: 376ddd68373026a93eaf08774cee0a1f8ce06bec
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675740"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019531"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>A DoD Impact Level 4 tervezetének vezérlése
 
@@ -410,7 +410,7 @@ Az Azure Storage komplex veszélyforrások elleni védelme szokatlan és potenci
 > [!NOTE]
 > Az adott Azure Policy-definíciók rendelkezésre állása Azure Government és más nemzeti felhőkben is változhat. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy áttekintette a DoD Impact Level 4 tervezetének vezérlési leképezését, a következő cikkekben megismerheti a terv ismertetését és a minta üzembe helyezésének módját:
 

@@ -5,11 +5,11 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 08/02/2017
 ms.openlocfilehash: a1e9a9df4c2ec57dfeec8cf5ddd5348228b9cc3e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92218680"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018562"
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>A feladatböngésző és a Feladat nézet használata az Azure Data Lake Analyticsben
 A Azure Data Lake Analytics szolgáltatás archivált feladatokat küld egy lekérdezési tárolóban. Ebből a cikkből megtudhatja, hogyan használhatja a feladatok böngészőjét és a feladatok nézetét a Visual studióhoz készült Azure Data Lake-eszközökben a korábbi feladatok adatainak megkereséséhez. 
@@ -45,7 +45,7 @@ A feladatok nézete a következőket tartalmazza:
     * Véglegesítés: a rendszer befejezi a feladatot (például véglegesíti a fájlt).
       
       A feladat minden fázisban sikertelen lehet. Például fordítási hibák az előkészítési fázisban, időtúllépési hibák a várólistán lévő fázisban, illetve végrehajtási hibák a futó fázisban stb.
-  * Alapszintű információk
+  * Alapvető adatok
     
       Az alapszintű feladat adatai a feladat összegzése panel alsó részén láthatók.
     

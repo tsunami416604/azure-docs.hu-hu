@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: jeedes
 ms.openlocfilehash: bf86656ff670df19162867d597a869d762a012e8
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454564"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019344"
 ---
 # <a name="tutorial-integrate-dropbox-business-with-azure-active-directory"></a>Oktatóanyag: a Dropbox Business integrálása a Azure Active Directory
 
@@ -51,14 +51,14 @@ A Dropbox Business Azure AD-integrációjának konfigurálásához hozzá kell a
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **Dropbox Business** kifejezést a keresőmezőbe.
 1. Válassza a **Dropbox Business** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Azure AD SSO konfigurálása és tesztelése a Dropbox Business használatával a **Britta Simon**nevű teszt felhasználóval. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a Dropbox Business-beli kapcsolódó felhasználó között.
+Azure AD SSO konfigurálása és tesztelése a Dropbox Business használatával a **Britta Simon** nevű teszt felhasználóval. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a Dropbox Business-beli kapcsolódó felhasználó között.
 
 Az Azure AD SSO a Dropbox Businessrel való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
@@ -73,8 +73,8 @@ Az Azure AD SSO a Dropbox Businessrel való konfigurálásához és tesztelésé
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)a **Dropbox Business** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **Dropbox Business** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
@@ -107,25 +107,25 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `Britta Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `BrittaSimon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a Dropbox üzleti hozzáférésének biztosításával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **Dropbox Business**lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **Dropbox Business** lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
@@ -135,7 +135,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 ## <a name="configure-dropbox-business-sso"></a>A Dropbox Business SSO konfigurálása
 
-1. A Dropbox Businessen belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
+1. A Dropbox Businessen belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése** lehetőségre kattintva.
 
     ![Saját alkalmazások bővítmény](common/install-myappssecure-extension.png)
 
@@ -151,11 +151,11 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
     ![Képernyőkép, amely a "felhasználó ikon" műveletet és a "beállítások" beállítást mutatja.](./media/dropboxforbusiness-tutorial/configure1.png "Egyszeri bejelentkezés konfigurálása")
 
-5. A bal oldali navigációs ablaktáblán kattintson a **felügyeleti konzol**elemre.
+5. A bal oldali navigációs ablaktáblán kattintson a **felügyeleti konzol** elemre.
 
     ![A "felügyeleti konzol" elemet megjelenítő képernyőkép.](./media/dropboxforbusiness-tutorial/configure2.png "Egyszeri bejelentkezés konfigurálása")
 
-6. A **felügyeleti konzolon**kattintson a bal oldali navigációs ablaktábla **Beállítások** elemére.
+6. A **felügyeleti konzolon** kattintson a bal oldali navigációs ablaktábla **Beállítások** elemére.
 
     ![Képernyőkép, amely a "beállítások" elemet jeleníti meg.](./media/dropboxforbusiness-tutorial/configure3.png "Egyszeri bejelentkezés konfigurálása")
 
@@ -169,11 +169,11 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
     a. Válassza a **kötelező** lehetőséget a legördülő listából az **egyszeri bejelentkezéshez**.
 
-    b. Kattintson a **bejelentkezési URL-cím hozzáadása** elemre, majd az **Identity Provider bejelentkezési URL-címe** szövegmezőbe illessze be azt a **bejelentkezési URL-címet** , amelyet a Azure Portal másolt, majd válassza a **kész**lehetőséget.
+    b. Kattintson a **bejelentkezési URL-cím hozzáadása** elemre, majd az **Identity Provider bejelentkezési URL-címe** szövegmezőbe illessze be azt a **bejelentkezési URL-címet** , amelyet a Azure Portal másolt, majd válassza a **kész** lehetőséget.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/dropboxforbusiness-tutorial/configure6.png "Egyszeri bejelentkezés konfigurálása")
 
-    c. Kattintson a **tanúsítvány feltöltése**elemre, majd keresse meg a **Base64-kódolású tanúsítványfájl** , amelyet a Azure Portal letöltött.
+    c. Kattintson a **tanúsítvány feltöltése** elemre, majd keresse meg a **Base64-kódolású tanúsítványfájl** , amelyet a Azure Portal letöltött.
 
     d. Kattintson a **Másolás hivatkozásra** , és illessze be a másolt értéket a **Dropbox üzleti tartomány és URL-** **cím** szövegmezőbe Azure Portal.
 

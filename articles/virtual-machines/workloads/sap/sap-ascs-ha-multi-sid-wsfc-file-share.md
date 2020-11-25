@@ -18,11 +18,11 @@ ms.date: 08/24/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: b204aa508370c62aaf33688aeb7ec63d3f8f1b0e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950618"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019361"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>SAP ASCS/SCS instance multi-SID magas rendelkezésre állás a Windows Server feladatátvételi fürtszolgáltatással és fájlmegosztás az Azure-ban
 
@@ -290,7 +290,7 @@ Kövesse ugyanazt a telepítési és konfigurációs lépéseket, ahogy az egy S
 ### <a name="install-dbms-and-sap-application-servers"></a>Az adatbázis-kezelő és az SAP-alkalmazáskiszolgáló telepítése
 Telepítse az adatbázis-kezelőt és az SAP-alkalmazásokat a korábban leírtak szerint.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [ASCS-/SCS-példány telepítése megosztott lemezek nélküli feladatátvevő fürtön][sap-official-ha-file-share-document]: Ha egy adott fájlmegosztás esetében hivatalos SAP irányelvek
 

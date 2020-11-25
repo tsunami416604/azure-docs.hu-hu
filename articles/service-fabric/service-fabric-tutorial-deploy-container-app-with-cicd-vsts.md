@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 08/29/2018
 ms.custom: mvc
 ms.openlocfilehash: bb0eb9226a99f139ff10a8da12a1e22017536c67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326303"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018851"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Oktatóanyag: Tárolóalkalmazás üzembe helyezése Service Fabric-fürtön CI/CD használatával
 
@@ -64,7 +64,7 @@ Az Azure DevOps kiadási definíciója olyan munkafolyamatot ír le, amely egy a
 
 Nyissa meg az új csapat projektjét, és navigáljon a https://dev.azure.com webböngészőben, és válassza ki a szervezetét, majd az új projektet. 
 
-Válassza a **folyamatok** lehetőséget a bal oldali panelen, majd kattintson az **új folyamat**elemre.
+Válassza a **folyamatok** lehetőséget a bal oldali panelen, majd kattintson az **új folyamat** elemre.
 
 >[!NOTE]
 >Ha nem látja a builddefiníciós sablont, ellenőrizze, hogy a **New YAML pipeline creation experience** (Új YAML-folyamat létrehozása) funkció ki van-e kapcsolva. Ez a funkció a DevOps-fiók **Preview Features** (Előzetes verziójú funkciók) szakaszában konfigurálható.
@@ -93,7 +93,7 @@ A **Container Registry Type** (Tárolóregisztrációs adatbázis típusa) alatt
 
 ![A Docker Push rendszerképek kiválasztása][select-push-images]
 
-Az **Eseményindítók** lapon engedélyezze a folyamatos integrációt a **folyamatos integráció engedélyezése**ellenőrzésével. A **Branch filters** (Ágszűrők) területen kattintson az **+ Add** (+ Hozzáadás) elemre, és az alapértelmezés szerint a **Branch specification** (Ágspecifikáció) **master** lesz.
+Az **Eseményindítók** lapon engedélyezze a folyamatos integrációt a **folyamatos integráció engedélyezése** ellenőrzésével. A **Branch filters** (Ágszűrők) területen kattintson az **+ Add** (+ Hozzáadás) elemre, és az alapértelmezés szerint a **Branch specification** (Ágspecifikáció) **master** lesz.
 
 A build manuális elindításához a **Save build pipeline and queue dialog** (A buildfolyamat és az üzenetsor párbeszédpanelének mentése) menüben kattintson a **Save & queue** (Mentés és üzenetsorba helyezés) elemre.
 
@@ -103,7 +103,7 @@ A buildek leküldés vagy bejelentkezés hatására is aktiválódnak. A létreh
 
 ### <a name="create-a-release-definition"></a>Kiadási definíció létrehozása
 
-Válassza a **folyamatok** lehetőséget a bal oldali panelen, majd a **releases**, majd az **+ új folyamat**elemet.  A **Select a template** (Sablon kiválasztása) területen válassza ki az **Azure Service Fabric Deployment** (Üzembe helyezés az Azure Service Fabric használatával) sablont a listából, majd kattintson az **Apply** (Alkalmaz) gombra.
+Válassza a **folyamatok** lehetőséget a bal oldali panelen, majd a **releases**, majd az **+ új folyamat** elemet.  A **Select a template** (Sablon kiválasztása) területen válassza ki az **Azure Service Fabric Deployment** (Üzembe helyezés az Azure Service Fabric használatával) sablont a listából, majd kattintson az **Apply** (Alkalmaz) gombra.
 
 ![Kiadási sablon kiválasztása][select-release-template]
 

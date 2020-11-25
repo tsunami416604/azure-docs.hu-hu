@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 7f07f08cd320d94495403b0f5ae65d60d8dc93b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84195985"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019684"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Adatáthelyezés a helyszíni források és a felhő között adatkezelés átjáróval
 > [!NOTE]
@@ -50,10 +50,10 @@ A forgatókönyv elkezdése előtt a következő előfeltételek szükségesek:
 * **SQL Server**. Ebben az oktatóanyagban egy SQL Server-adatbázist használ **forrásként** szolgáló adattárként.
 
 ## <a name="create-data-factory"></a>Data factory létrehozása
-Ebben a lépésben a Azure Portal használatával hoz létre egy **ADFTutorialOnPremDF**nevű Azure Data Factory-példányt.
+Ebben a lépésben a Azure Portal használatával hoz létre egy **ADFTutorialOnPremDF** nevű Azure Data Factory-példányt.
 
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-2. Kattintson **az erőforrás létrehozása**elemre, majd az **intelligencia és Analitika**elemre, majd a **Data Factory**elemre.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com).
+2. Kattintson **az erőforrás létrehozása** elemre, majd az **intelligencia és Analitika** elemre, majd a **Data Factory** elemre.
 
    ![New (Új)->DataFactory](./media/data-factory-move-data-between-onprem-and-cloud/NewDataFactoryMenu.png)  
 3. Az **új adatgyár** lapon adja meg a **ADFTutorialOnPremDF** nevet.
@@ -61,7 +61,7 @@ Ebben a lépésben a Azure Portal használatával hoz létre egy **ADFTutorialOn
     ![Hozzáadás a Kezdőpulton](./media/data-factory-move-data-between-onprem-and-cloud/OnPremNewDataFactoryAddToStartboard.png)
 
    > [!IMPORTANT]
-   > Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a következő hibaüzenetet kapja: a **"ADFTutorialOnPremDF" nem érhető el**az adatfeldolgozó neve, módosítsa az adatgyár nevét (például yournameADFTutorialOnPremDF), és próbálkozzon újra a létrehozással. Ezt a nevet a ADFTutorialOnPremDF helyett használja az oktatóanyag hátralévő lépéseinek végrehajtásához.
+   > Az Azure data factory nevének globálisan egyedinek kell lennie. Ha a következő hibaüzenetet kapja: a **"ADFTutorialOnPremDF" nem érhető el** az adatfeldolgozó neve, módosítsa az adatgyár nevét (például yournameADFTutorialOnPremDF), és próbálkozzon újra a létrehozással. Ezt a nevet a ADFTutorialOnPremDF helyett használja az oktatóanyag hátralévő lépéseinek végrehajtásához.
    >
    > Az adatfeldolgozó neve a jövőben **DNS-** névként regisztrálható, így nyilvánosan láthatóvá válik.
    >
@@ -82,23 +82,23 @@ Ebben a lépésben a Azure Portal használatával hoz létre egy **ADFTutorialOn
 1. A **Data Factory** lapon kattintson a Létrehozás gombra, **és telepítse** a csempét, hogy elindítsa az adatelőállító **szerkesztőjét** .
 
     ![Az Author and deploy (Fejlesztés és üzembe helyezés) csempe](./media/data-factory-move-data-between-onprem-and-cloud/author-deploy-tile.png)
-2. A Data Factory-szerkesztőben kattintson a **... elemre. További információ** az eszköztáron, majd kattintson az **új adatátjáró**elemre. Azt is megteheti, hogy a jobb gombbal az **adatátjárók** elemre kattint a fanézetben, majd az **új adatátjáró**elemre.
+2. A Data Factory-szerkesztőben kattintson a **... elemre. További információ** az eszköztáron, majd kattintson az **új adatátjáró** elemre. Azt is megteheti, hogy a jobb gombbal az **adatátjárók** elemre kattint a fanézetben, majd az **új adatátjáró** elemre.
 
    ![Új adatátjáró az eszköztáron](./media/data-factory-move-data-between-onprem-and-cloud/NewDataGateway.png)
-3. A **Létrehozás** lapon adja meg a **adftutorialgateway** nevet a **név**mezőben, majd kattintson **az OK**gombra.     
+3. A **Létrehozás** lapon adja meg a **adftutorialgateway** nevet a **név** mezőben, majd kattintson **az OK** gombra.     
 
     ![Átjáró létrehozása lap](./media/data-factory-move-data-between-onprem-and-cloud/OnPremCreateGatewayBlade.png)
 
     > [!NOTE]
     > Ebben az útmutatóban a logikai átjárót csak egy csomóponttal (helyszíni Windows-géppel) hozza létre. Egy adatkezelési átjárót úgy méretezheti fel, hogy több helyszíni gépet társít az átjáróhoz. Az adatáthelyezési feladatok növekvő száma növelhető, amely egyidejűleg futhat egy csomóponton. Ez a funkció egyetlen csomóponttal rendelkező logikai átjáró esetén is elérhető. Részletekért lásd: az [adatkezelési átjáró skálázása Azure Data Factory](data-factory-data-management-gateway-high-availability-scalability.md) cikkben.  
-4. A **configure (Konfigurálás** ) lapon kattintson a **telepítés közvetlenül ezen a számítógépen**elemre. Ez a művelet letölti az átjáró telepítési csomagját, telepíti, konfigurálja és regisztrálja az átjárót a számítógépen.  
+4. A **configure (Konfigurálás** ) lapon kattintson a **telepítés közvetlenül ezen a számítógépen** elemre. Ez a művelet letölti az átjáró telepítési csomagját, telepíti, konfigurálja és regisztrálja az átjárót a számítógépen.  
 
    > [!NOTE]
    > Használja az Internet Explorert vagy a Microsoft ClickOnce-kompatibilis webböngészőt.
    >
    > Ha a Chrome-ot használja, lépjen a [Chrome webáruházba](https://chrome.google.com/webstore/), keressen a "ClickOnce" kulcsszóra, válassza ki az egyik ClickOnce-bővítményt, és telepítse.
    >
-   > Tegye ugyanezt a Firefox esetében is (telepítse a bővítményt). Kattintson a **menü megnyitása** gombra az eszköztáron (**három vízszintes vonal** a jobb felső sarokban), kattintson a **bővítmények**lehetőségre, keressen rá a "ClickOnce" kulcsszóra, válassza ki az egyik ClickOnce-bővítményt, és telepítse azt.    
+   > Tegye ugyanezt a Firefox esetében is (telepítse a bővítményt). Kattintson a **menü megnyitása** gombra az eszköztáron (**három vízszintes vonal** a jobb felső sarokban), kattintson a **bővítmények** lehetőségre, keressen rá a "ClickOnce" kulcsszóra, válassza ki az egyik ClickOnce-bővítményt, és telepítse azt.    
    >
    >
 
@@ -127,7 +127,7 @@ Ebben a lépésben a Azure Portal használatával hoz létre egy **ADFTutorialOn
    * **Regisztrálja** az átjárót egy kulccsal a Azure Portal a regisztráció gomb használatával.
    * **Állítsa le** az átjárót futtató gépen futó adatkezelés átjáró szolgáltatást.
    * A **frissítések ütemezett frissítését** a nap adott időpontjában kell telepíteni.
-   * Az átjáró **utolsó frissítésének**megtekintése.
+   * Az átjáró **utolsó frissítésének** megtekintése.
    * Itt adhatja meg, hogy mikor lehet telepíteni az átjáró frissítését.
 8. Váltson a **Beállítások** lapra. A **tanúsítvány** szakaszban megadott tanúsítvány a portálon megadott helyszíni adattároló hitelesítő adatainak titkosítására és visszafejtésére szolgál. választható Kattintson a **módosítás** gombra a saját tanúsítványának használatához. Alapértelmezés szerint az átjáró a Data Factory szolgáltatás által automatikusan generált tanúsítványt használja.
 
@@ -148,27 +148,27 @@ Ebben a lépésben a Azure Portal használatával hoz létre egy **ADFTutorialOn
    * Kattintson a **naplók megtekintése** lehetőségre a adatkezelés átjáró naplójának Eseménynapló ablakban való megjelenítéséhez.
    * Kattintson a **naplók küldése** elemre, ha az elmúlt hét nap naplóit tartalmazó zip-fájlt szeretne feltölteni a Microsoftnak a problémák elhárítása érdekében.
 10. A **diagnosztika** lapon, a **kapcsolat tesztelése** szakaszban válassza a **SQLServer** lehetőséget az adattár típusához, adja meg az adatbázis-kiszolgáló nevét, az adatbázis nevét, a hitelesítés típusát, adja meg a felhasználónevet és a jelszót, majd kattintson a **tesztelés** elemre annak teszteléséhez, hogy az átjáró tud-e csatlakozni az adatbázishoz.
-11. Váltson a böngészőre, és a **Azure Portal**kattintson az **OK** gombra a **Konfigurálás** lapon, majd az **új adatátjáró** lapon.
+11. Váltson a böngészőre, és a **Azure Portal** kattintson az **OK** gombra a **Konfigurálás** lapon, majd az **új adatátjáró** lapon.
 12. A bal oldali fanézetben a **adftutorialgateway** alatt található **adatátjárók** területen kell megjelennie.  Ha rákattint, megjelenik a társított JSON.
 
 ## <a name="create-linked-services"></a>Társított szolgáltatások létrehozása
 Ebben a lépésben két társított szolgáltatást hoz létre: **AzureStorageLinkedService** és **SqlServerLinkedService**. A **SqlServerLinkedService** egy SQL Server adatbázisra hivatkozik, és a **AzureStorageLinkedService** társított szolgáltatás egy Azure BLOB-tárolót csatol az adatelőállítóhoz. Az útmutató későbbi részében létrehoz egy folyamatot, amely átmásolja a SQL Server adatbázis adatait az Azure Blob-tárolóba.
 
 #### <a name="add-a-linked-service-to-a-sql-server-database"></a>Társított szolgáltatás hozzáadása SQL Server adatbázishoz
-1. A **Data Factory szerkesztőben**kattintson az eszköztár **új adattár** elemére, és válassza a **SQL Server**lehetőséget.
+1. A **Data Factory szerkesztőben** kattintson az eszköztár **új adattár** elemére, és válassza a **SQL Server** lehetőséget.
 
    ![Új SQL Server társított szolgáltatás](./media/data-factory-move-data-between-onprem-and-cloud/NewSQLServer.png)
 2. A jobb oldalon található **JSON-szerkesztőben** hajtsa végre a következő lépéseket:
 
-   1. A **átjáró neve**esetében válassza a **adftutorialgateway**.    
-   2. A **ConnectionString**alkalmazásban hajtsa végre a következő lépéseket:    
+   1. A **átjáró neve** esetében válassza a **adftutorialgateway**.    
+   2. A **ConnectionString** alkalmazásban hajtsa végre a következő lépéseket:    
 
-      1. A **kiszolgálónév**mezőbe írja be annak a kiszolgálónak a nevét, amely a SQL Server adatbázist üzemelteti.
-      2. A **databasename**mezőben adja meg az adatbázis nevét.
+      1. A **kiszolgálónév** mezőbe írja be annak a kiszolgálónak a nevét, amely a SQL Server adatbázist üzemelteti.
+      2. A **databasename** mezőben adja meg az adatbázis nevét.
       3. Kattintson a **titkosítás** gombra az eszköztáron. Megjelenik a hitelesítő adatok kezelője alkalmazás.
 
          ![Hitelesítő adatok kezelője alkalmazás](./media/data-factory-move-data-between-onprem-and-cloud/credentials-manager-application.png)
-      4. A **hitelesítő adatok beállítása** párbeszédpanelen adja meg a hitelesítés típusát, a felhasználónevet és a jelszót, majd kattintson **az OK**gombra. Ha a kapcsolatok sikeresek, a rendszer a titkosított hitelesítő adatokat a JSON-ban tárolja, és bezárja a párbeszédpanelt.
+      4. A **hitelesítő adatok beállítása** párbeszédpanelen adja meg a hitelesítés típusát, a felhasználónevet és a jelszót, majd kattintson **az OK** gombra. Ha a kapcsolatok sikeresek, a rendszer a titkosított hitelesítő adatokat a JSON-ban tárolja, és bezárja a párbeszédpanelt.
       5. Zárja be az üres böngésző fület, amely elindította a párbeszédpanelt, ha az nincs automatikusan lezárva, és visszatér a lapra a Azure Portal.
 
          Az átjárót futtató gépen a hitelesítő adatok **titkosítva** vannak a Data Factory szolgáltatás tulajdonosa által használt tanúsítvánnyal. Ha inkább a adatkezelés átjáróhoz társított tanúsítványt szeretné használni, olvassa el a hitelesítő adatok biztonságos beállítása című témakört.    
@@ -177,10 +177,10 @@ Ebben a lépésben két társított szolgáltatást hoz létre: **AzureStorageLi
       ![SQL Server társított szolgáltatás a fanézetben](./media/data-factory-move-data-between-onprem-and-cloud/sql-linked-service-in-tree-view.png)    
 
 #### <a name="add-a-linked-service-for-an-azure-storage-account"></a>Társított szolgáltatás hozzáadása Azure Storage-fiókhoz
-1. A **Data Factory szerkesztőben**kattintson a parancssáv **új adattár** elemére, majd az **Azure Storage**elemre.
+1. A **Data Factory szerkesztőben** kattintson a parancssáv **új adattár** elemére, majd az **Azure Storage** elemre.
 2. Adja meg az Azure Storage-fiók nevét a **fiók nevéhez**.
 3. Adja meg az Azure Storage-fiók kulcsát a **fiók kulcsaként**.
-4. A **AzureStorageLinkedService**telepítéséhez kattintson a **Deploy (üzembe helyezés** ) elemre.
+4. A **AzureStorageLinkedService** telepítéséhez kattintson a **Deploy (üzembe helyezés** ) elemre.
 
 ## <a name="create-datasets"></a>Adatkészletek létrehozása
 Ebben a lépésben olyan bemeneti és kimeneti adatkészleteket hoz létre, amelyek a másolási művelet be- és kimeneti adatait képezik majd (Helyszíni SQL Server-adatbázis => Azure Blob Storage). Az adatkészletek létrehozása előtt végezze el a következő lépéseket (a részletes lépések a lista után olvashatóak):
@@ -210,7 +210,7 @@ Ebben a lépésben olyan bemeneti és kimeneti adatkészleteket hoz létre, amel
 
 ### <a name="create-input-dataset"></a>Bemeneti adatkészlet létrehozása
 
-1. A **Data Factory-szerkesztőben**kattintson a **... elemre. Továbbiak**, kattintson az **új adatkészlet** elemre a parancssorban, majd kattintson **SQL Server tábla**elemre.
+1. A **Data Factory-szerkesztőben** kattintson a **... elemre. Továbbiak**, kattintson az **új adatkészlet** elemre a parancssorban, majd kattintson **SQL Server tábla** elemre.
 2. Cserélje le a JSON-t a jobb oldali ablaktáblán a következő szövegre:
 
     ```JSON   
@@ -240,16 +240,16 @@ Ebben a lépésben olyan bemeneti és kimeneti adatkészleteket hoz létre, amel
    Vegye figyelembe a következő szempontokat:
 
    * a **típus** értéke **SqlServerTable**.
-   * a **Táblanév** az **EMP**értékre van állítva.
+   * a **Táblanév** az **EMP** értékre van állítva.
    * a **linkedServiceName** értéke **SqlServerLinkedService** (ezt a társított szolgáltatást korábban a bemutatóban hozta létre).
-   * Olyan bemeneti adatkészlethez, amelyet a Azure Data Factory nem egy másik folyamat generál, a **külsőt** **igaz**értékre kell állítani. Azt jelzi, hogy a bemeneti adatokat a rendszer a Azure Data Factory szolgáltatáson kívülről állítja elő. Opcionálisan megadhat bármilyen külső adatházirendet **a szabályzat szakaszban található** **externalData** elem használatával.    
+   * Olyan bemeneti adatkészlethez, amelyet a Azure Data Factory nem egy másik folyamat generál, a **külsőt** **igaz** értékre kell állítani. Azt jelzi, hogy a bemeneti adatokat a rendszer a Azure Data Factory szolgáltatáson kívülről állítja elő. Opcionálisan megadhat bármilyen külső adatházirendet **a szabályzat szakaszban található** **externalData** elem használatával.    
 
    A JSON-tulajdonságokkal kapcsolatos részletekért tekintse [meg az adatok áthelyezése a SQL Serverba vagy az adatokat](data-factory-sqlserver-connector.md)
 3. Az adatkészlet üzembe helyezéséhez kattintson a parancssáv **Deploy (üzembe helyezés** ) elemére.  
 
 ### <a name="create-output-dataset"></a>Kimeneti adatkészlet létrehozása
 
-1. A **Data Factory szerkesztőben**kattintson a parancssáv **új adatkészlet** elemére, majd az **Azure Blob Storage**elemre.
+1. A **Data Factory szerkesztőben** kattintson a parancssáv **új adatkészlet** elemére, majd az **Azure Blob Storage** elemre.
 2. Cserélje le a JSON-t a jobb oldali ablaktáblán a következő szövegre:
 
     ```JSON   
@@ -302,7 +302,7 @@ Ebben a lépésben olyan bemeneti és kimeneti adatkészleteket hoz létre, amel
 ## <a name="create-pipeline"></a>Folyamat létrehozása
 Ebben a lépésben egy **másolási tevékenységgel** rendelkező folyamatot hoz létre, **amely a** **EmpOnPremSQLTable** -t használja bemenetként és **OutputBlobTableként** a kimenetként.
 
-1. Data Factory szerkesztőben kattintson a **... elemre. Továbbiak**, majd az **új folyamat**elemre.
+1. Data Factory szerkesztőben kattintson a **... elemre. Továbbiak**, majd az **új folyamat** elemre.
 2. Cserélje le a JSON-t a jobb oldali ablaktáblán a következő szövegre:    
 
     ```JSON   
@@ -356,9 +356,9 @@ Ebben a lépésben egy **másolási tevékenységgel** rendelkező folyamatot ho
 
    Vegye figyelembe a következő szempontokat:
 
-   * A tevékenységek szakaszban csak olyan tevékenység van, amelynek **típusa** **másolásra**van beállítva.
-   * A tevékenység **bemenete** **EmpOnPremSQLTable** értékre van állítva, és a tevékenység **kimenete** **OutputBlobTable**értékre van állítva.
-   * A **typeProperties** szakaszban a **SqlSource** van megadva, mert a **forrás típusa** és a **BlobSink** a fogadó **típusaként**van megadva.
+   * A tevékenységek szakaszban csak olyan tevékenység van, amelynek **típusa** **másolásra** van beállítva.
+   * A tevékenység **bemenete** **EmpOnPremSQLTable** értékre van állítva, és a tevékenység **kimenete** **OutputBlobTable** értékre van állítva.
+   * A **typeProperties** szakaszban a **SqlSource** van megadva, mert a **forrás típusa** és a **BlobSink** a fogadó **típusaként** van megadva.
    * `select * from emp`A **SqlSource** **sqlReaderQuery** tulajdonságához SQL-lekérdezés van megadva.
 
    Mind a kezdő, mind a befejező dátum-időpont értéket [ISO formátumban](https://en.wikipedia.org/wiki/ISO_8601) kell megadni. Például: 2014-10-14T16:32:41Z. Az **end** (befejező) időpont megadása opcionális, a jelen oktatóanyagban azonban azt is használjuk.
@@ -374,7 +374,7 @@ Ebben a lépésben egy **másolási tevékenységgel** rendelkező folyamatot ho
 **Gratulálunk!** Sikeresen létrehozott egy Azure-beli adat-előállítót, társított szolgáltatásokat, adatkészleteket és egy folyamatot, és ütemezte a folyamatot.
 
 #### <a name="view-the-data-factory-in-a-diagram-view"></a>A data factory megtekintése diagramnézetben
-1. A **Azure Portal**kattintson a **diagram** csempére a **ADFTutorialOnPremDF** -adatelőállító kezdőlapján. :
+1. A **Azure Portal** kattintson a **diagram** csempére a **ADFTutorialOnPremDF** -adatelőállító kezdőlapján. :
 
     ![Diagram hivatkozása](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDiagramLink.png)
 2. Az alábbi képhez hasonló diagramnak kell megjelennie:
@@ -386,11 +386,11 @@ Ebben a lépésben egy **másolási tevékenységgel** rendelkező folyamatot ho
 ## <a name="monitor-pipeline"></a>Folyamat figyelése
 Ebben a lépésben az Azure Portal használatával figyeli egy Azure data factory eseményeit. PowerShell-parancsmagokat is használhat az adatkészletek és folyamatok figyeléséhez. A figyeléssel kapcsolatos részletekért lásd: [folyamatok figyelése és kezelése](data-factory-monitor-manage-pipelines.md).
 
-1. A diagramon kattintson duplán a **EmpOnPremSQLTable**elemre.  
+1. A diagramon kattintson duplán a **EmpOnPremSQLTable** elemre.  
 
     ![EmpOnPremSQLTable szeletek](./media/data-factory-move-data-between-onprem-and-cloud/OnPremSQLTableSlicesBlade.png)
 2. Figyelje meg, hogy az összes adatszelet **kész** állapotban van, mert a folyamat időtartama (Kezdési idő a befejezésig) múltbeli. Emellett azért is, mert az SQL Server adatbázisban szúrta be az adathalmazt, és az egész idő alatt van. Győződjön meg arról, hogy a **probléma szeletek** szakasz alján nem jelennek meg szeletek. Az összes szelet megtekintéséhez kattintson a szeletek listájának alján **található továbbiak** elemre.
-3. Most az **adatkészletek** lapon kattintson a **OutputBlobTable**elemre.
+3. Most az **adatkészletek** lapon kattintson a **OutputBlobTable** elemre.
 
     ![OputputBlobTable szeletek](./media/data-factory-move-data-between-onprem-and-cloud/OutputBlobTableSlicesBlade.png)
 4. Kattintson a listából bármelyik adatszeletre, és megjelenik az **adatszelet** oldal. Megjelenik a szelethez tartozó tevékenységek futtatása. Általában csak egy tevékenység futtatása látható.  
@@ -398,14 +398,14 @@ Ebben a lépésben az Azure Portal használatával figyeli egy Azure data factor
     ![Adatszelet panel](./media/data-factory-move-data-between-onprem-and-cloud/DataSlice.png)
 
     Ha a szelet nem **Ready** (Kész) állapotú, az **Upstream slices that are not ready** (Nem kész állapotú fölérendelt szeletek) listában láthatja azokat a nem kész állapotú fölérendelt szeleteket, amelyek blokkolják az aktuális szelet végrehajtását.
-5. A **tevékenység futtatási részleteinek**megtekintéséhez kattintson a lenti listából a tevékenység **futtatása** elemre.
+5. A **tevékenység futtatási részleteinek** megtekintéséhez kattintson a lenti listából a tevékenység **futtatása** elemre.
 
    ![Tevékenység futtatásának részletei lap](./media/data-factory-move-data-between-onprem-and-cloud/ActivityRunDetailsBlade.png)
 
    Olyan információkat láthat, mint például az átviteli sebesség, az időtartam és az adatok átviteléhez használt átjáró.
 6. Kattintson az **X** gombra az összes oldal bezárásához, amíg meg nem történik
-7. vissza a **ADFTutorialOnPremDF**kezdőlapjára.
-8. választható Kattintson a **folyamatok**elemre, kattintson a **ADFTutorialOnPremDF**elemre, és válassza a bemeneti táblák (**felhasznált**) vagy a kimeneti adatkészletek (**előállított**) szerinti részletezés lehetőséget.
+7. vissza a **ADFTutorialOnPremDF** kezdőlapjára.
+8. választható Kattintson a **folyamatok** elemre, kattintson a **ADFTutorialOnPremDF** elemre, és válassza a bemeneti táblák (**felhasznált**) vagy a kimeneti adatkészletek (**előállított**) szerinti részletezés lehetőséget.
 9. A [Microsoft Storage Explorer](https://storageexplorer.com/) eszközzel ellenőrizheti, hogy minden órában létrejön-e blob/fájl.
 
    ![Azure Storage Explorer](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)

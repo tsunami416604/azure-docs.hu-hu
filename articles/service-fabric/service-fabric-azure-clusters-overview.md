@@ -6,11 +6,11 @@ documentationcenter: .net
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.openlocfilehash: 25e6854491f35dd0aa46b5de218d312f57854760
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685817"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018919"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Az Azure-beli Service Fabric-fürtök áttekintése
 A Service Fabric-fürt olyan virtuális vagy fizikai gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait. A fürt részét képező számítógépet vagy virtuális gépet fürtcsomópont-csomópontnak nevezzük. A fürtök több ezer csomópontra is méretezhetők. Ha új csomópontokat ad hozzá a fürthöz, Service Fabric a csomópontok számának megnövekedésével kiegyensúlyozza a szolgáltatás partíciójának replikáit és példányait. Az alkalmazások teljes teljesítményének növelése és a memória-hozzáférés csökkentése. Ha a fürt csomópontjait nem használják hatékonyan, csökkentheti a fürt csomópontjainak számát. Service Fabric újra kiegyenlíti a partíciók replikáit és példányait a csomópontok számának csökkenésével, hogy jobban használhassa a hardvert az egyes csomópontokon.
@@ -75,7 +75,7 @@ A Service Fabric a hozzáférés-vezérlést is támogatja, hogy korlátozza a h
 
 További információért olvassa el [Service Fabric szerepköralapú hozzáférés-vezérlés](service-fabric-cluster-security.md#service-fabric-role-based-access-control)című témakört.
 
-### <a name="network-security-groups"></a>Hálózati biztonsági csoportok 
+### <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok) 
 Hálózati biztonsági csoportok (NSG) egy alhálózat, virtuális gép vagy adott hálózati adapter bejövő és kimenő forgalmát vezérlik.  Alapértelmezés szerint, ha több virtuális gép kerül ugyanarra a virtuális hálózatra, akkor bármely porton keresztül kommunikálhatnak egymással.  Ha korlátozni szeretné a számítógépek közötti kommunikációt, megadhatja a NSG a hálózat szegmentálásához vagy a virtuális gépek elkülönítéséhez.  Ha egy fürtben több csomópont-típus található, akkor a NSG az alhálózatokra is alkalmazhatja, hogy megakadályozza, hogy a különböző csomópont-típusokhoz tartozó gépek egymással kommunikáljanak egymással.  
 
 További információkért lásd: [biztonsági csoportok](../virtual-network/network-security-groups-overview.md)
@@ -112,7 +112,7 @@ További információ: [támogatott fürtözött verziók az Azure-ban](./servic
 >
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ az Azure-fürtök [biztonságossá](service-fabric-cluster-security.md)tételéről, [méretezéséről](service-fabric-cluster-scaling.md)és [frissítéséről](service-fabric-cluster-upgrade.md) .
 
 További információ a [Service Fabric támogatási lehetőségeiről](service-fabric-support.md).

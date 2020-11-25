@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 108bdf057cd375e28b10a6838ec5c8c6f57749a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84707276"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019582"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Adatok áthelyezése az SAP Business Warehouse-ból Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -45,8 +45,8 @@ A SAP BW-példányhoz való kapcsolódás engedélyezéséhez telepítse a köve
 ## <a name="getting-started"></a>Első lépések
 Létrehozhat egy másolási tevékenységgel rendelkező folyamatot, amely különböző eszközök/API-k használatával helyez át egy helyszíni Cassandra-adattárból származó adatokkal. 
 
-- A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló**használata. Tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört, amely gyors áttekintést nyújt a folyamat létrehozásáról az adatmásolási varázsló használatával. 
-- A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**és **REST API**. A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál. 
+- A folyamat létrehozásának legegyszerűbb módja a **Másolás varázsló** használata. Tekintse meg az [oktatóanyag: folyamat létrehozása a másolás varázslóval](data-factory-copy-data-wizard-tutorial.md) című témakört, amely gyors áttekintést nyújt a folyamat létrehozásáról az adatmásolási varázsló használatával. 
+- A következő eszközöket is használhatja a folyamat létrehozásához: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API** és **REST API**. A másolási tevékenységgel rendelkező folyamat létrehozásával kapcsolatos részletes utasításokat a [másolási tevékenységről szóló oktatóanyagban](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) talál. 
 
 Függetlenül attól, hogy az eszközöket vagy API-kat használja, a következő lépések végrehajtásával hozhat létre egy folyamatot, amely egy forrás adattárból egy fogadó adattárba helyezi át az adatait:
 
@@ -63,18 +63,18 @@ Az alábbi táblázat az SAP Business Warehouse (BW) társított szolgáltatásh
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-kiszolgáló | Annak a kiszolgálónak a neve, amelyen az SAP BW-példány található. | sztring | Igen
-systemNumber | A SAP BWrendszer rendszerszáma. | String típusú kétszámjegyű decimális szám. | Igen
-ügyfél-azonosító | A-ügyfél ügyfél-azonosítója az SAP W rendszeren. | Karakterláncként megjelenített háromjegyű decimális szám. | Igen
-username | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó neve | sztring | Igen
-jelszó | A felhasználó jelszava. | sztring | Igen
-Átjáró neve | Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni SAP BW-példányhoz való kapcsolódáshoz. | sztring | Igen
+kiszolgáló | Annak a kiszolgálónak a neve, amelyen az SAP BW-példány található. | sztring | Yes
+systemNumber | A SAP BWrendszer rendszerszáma. | String típusú kétszámjegyű decimális szám. | Yes
+ügyfél-azonosító | A-ügyfél ügyfél-azonosítója az SAP W rendszeren. | Karakterláncként megjelenített háromjegyű decimális szám. | Yes
+username | Az SAP-kiszolgálóhoz hozzáféréssel rendelkező felhasználó neve | sztring | Yes
+jelszó | A felhasználó jelszava. | sztring | Yes
+Átjáró neve | Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni SAP BW-példányhoz való kapcsolódáshoz. | sztring | Yes
 encryptedCredential | A titkosított hitelesítő adat karakterlánca. | sztring | No
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 Az adatkészletek definiálásához rendelkezésre álló & tulajdonságok teljes listáját az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben találja. Az adathalmazok (például a struktúra, a rendelkezésre állás és a szabályzat) minden adatkészlet esetében hasonlóak (például az Azure SQL, az Azure Blob, az Azure Table stb.).
 
-A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről. Nincs olyan Type-specifikus tulajdonság, amely a **RelationalTable**típusú SAP BW adatkészlet esetében nem támogatott. 
+A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről. Nincs olyan Type-specifikus tulajdonság, amely a **RelationalTable** típusú SAP BW adatkészlet esetében nem támogatott. 
 
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
@@ -86,7 +86,7 @@ Ha a másolási tevékenységben szereplő forrás **RelationalSource** típusú
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| lekérdezés | Megadja az MDX-lekérdezést, amely beolvassa az SAP BW-példány adatait. | MDX-lekérdezés. | Igen |
+| lekérdezés | Megadja az MDX-lekérdezést, amely beolvassa az SAP BW-példány adatait. | MDX-lekérdezés. | Yes |
 
 
 ## <a name="json-example-copy-data-from-sap-business-warehouse-to-azure-blob"></a>JSON-példa: adatok másolása az SAP Business Warehouse-ból az Azure Blobba
@@ -145,7 +145,7 @@ Ez a társított szolgáltatás összeköti az Azure Storage-fiókját az adatel
 ```
 
 ### <a name="sap-bw-input-dataset"></a>Bemeneti adatkészlet SAP BW
-Ez az adatkészlet határozza meg az SAP Business Warehouse-adatkészletet. A Data Factory adatkészlet típusát állítsa **RelationalTable**értékre. Jelenleg nem határoz meg egy SAP BW adatkészlet típus-specifikus tulajdonságait. A másolási tevékenység definíciójában szereplő lekérdezés meghatározza, hogy milyen adatok olvashatók a SAP BW-példányból. 
+Ez az adatkészlet határozza meg az SAP Business Warehouse-adatkészletet. A Data Factory adatkészlet típusát állítsa **RelationalTable** értékre. Jelenleg nem határoz meg egy SAP BW adatkészlet típus-specifikus tulajdonságait. A másolási tevékenység definíciójában szereplő lekérdezés meghatározza, hogy milyen adatok olvashatók a SAP BW-példányból. 
 
 Ha a külső tulajdonságot True (igaz) értékre állítja, az a Data Factory szolgáltatás, amely a tábla kívül esik az adatgyárban, nem az adatelőállító tevékenysége.
 

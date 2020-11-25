@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5565dd43689d0420fbb9b73f088f24a38a2d54db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5ecbabe4a5c3458c77d145fbce1281550470e00
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91665905"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96019072"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Az ügyféladat-kérési funkciók összegzése
 
@@ -34,7 +34,7 @@ A bérlői rendszergazdák a Azure Portal használatával törölhetik az ügyf�
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-A portálon keresztüli ügyféladatok törlése előtt azonban el kell távolítania a felhasználó hozzáférési házirendjeit a Time Series Insights-környezetből a Azure Portalon belül. További információért olvassa el az [adathozzáférés engedélyezése Time Series Insights környezethez Azure Portal használatával](time-series-insights-data-access.md)című témakört.
+A portálon keresztüli ügyféladatok törlése előtt azonban el kell távolítania a felhasználó hozzáférési házirendjeit a Time Series Insights-környezetből a Azure Portalon belül. További információért olvassa el az [adathozzáférés engedélyezése Time Series Insights környezethez Azure Portal használatával](./concepts-access-policies.md)című témakört.
 
 A REST API használatával is elvégezheti a hozzáférési szabályzatok törlési műveleteit. További információért olvassa el a [hozzáférési szabályzatok – törlés](/rest/api/time-series-insights/management(gen1/gen2)/accesspolicies/delete)című témakört.
 
@@ -46,7 +46,7 @@ Az adatok törléséhez hasonlóan a bérlői rendszergazdák megtekinthetik és
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-Bérlői rendszergazdaként megtekintheti az adatelérési házirendeket a Azure Portal Time Series Insights környezetében. További információért olvassa el az [adathozzáférés engedélyezése Time Series Insights környezethez Azure Portal használatával](time-series-insights-data-access.md)című témakört.
+Bérlői rendszergazdaként megtekintheti az adatelérési házirendeket a Azure Portal Time Series Insights környezetében. További információért olvassa el az [adathozzáférés engedélyezése Time Series Insights környezethez Azure Portal használatával](./concepts-access-policies.md)című témakört.
 
 A hozzáférési házirendekben az exportálási műveleteket is elvégezheti a megadott REST APIban a "környezetek listázása" művelet használatával. További információkért olvassa el a [hozzáférési szabályzatok – lista a környezet alapján](/rest/api/time-series-insights/management(gen1/gen2)/accesspolicies/listbyenvironment)című témakört.
 
@@ -56,7 +56,7 @@ Előfordulhat, hogy a személyes adatok az Time Series Insights Storage-ban, a f
 
 ### <a name="view-and-export-data"></a>Az adatmegjelenítés és-exportálás
 
-Time Series Insights belül tárolt adatmegjelenítéshez és-exportáláshoz meg kell keresnie az adott adathalmazt. A Time Series Insights Explorer vagy a Time Series Insights lekérdezési API-k segítségével megtekintheti és exportálhatja az adatfájlokat. Ha a Time Series Insights Explorerrel szeretné megtekinteni és exportálni az adatexportálást, először keresse meg a szóban forgó felhasználói adatelemet. A keresés után kattintson a jobb gombbal a diagramra, és válassza az **események feltárása**lehetőséget. Megjelenik az Events (események) rács, amely a CSV-ként és JSON-ként való exportálási beállításokat jeleníti meg.
+Time Series Insights belül tárolt adatmegjelenítéshez és-exportáláshoz meg kell keresnie az adott adathalmazt. A Time Series Insights Explorer vagy a Time Series Insights lekérdezési API-k segítségével megtekintheti és exportálhatja az adatfájlokat. Ha a Time Series Insights Explorerrel szeretné megtekinteni és exportálni az adatexportálást, először keresse meg a szóban forgó felhasználói adatelemet. A keresés után kattintson a jobb gombbal a diagramra, és válassza az **események feltárása** lehetőséget. Megjelenik az Events (események) rács, amely a CSV-ként és JSON-ként való exportálási beállításokat jeleníti meg.
 
 További információ: [Azure Time Series Insights Explorer](time-series-insights-explorer.md).
 
@@ -66,9 +66,9 @@ A Time Series Insights jelenleg nem támogatja az adattárolás részletes törl
 
 További információért olvassa el az [adatmegőrzés konfigurálása Time Series Insightsban](time-series-insights-how-to-configure-retention.md)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-* További információ [a Azure Time Series Insights-környezet adatelérésének biztosításáról](./time-series-insights-data-access.md).
+* További információ [a Azure Time Series Insights-környezet adatelérésének biztosításáról](./concepts-access-policies.md).
 
 * Tekintse meg a [Azure Time Series Insights Explorert](time-series-insights-explorer.md).
 

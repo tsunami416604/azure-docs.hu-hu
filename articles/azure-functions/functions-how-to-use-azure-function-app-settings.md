@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
 ms.openlocfilehash: f597e58c70d6ac9daff753f5c0a54199c2383c42
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746165"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019505"
 ---
 # <a name="manage-your-function-app"></a>A Function alkalmazás kezelése 
 
@@ -81,7 +81,7 @@ A cikk további részében a következő, a függvények számára hasznos App S
 + [App Service szerkesztő](#editor)
 + [Console](#console)
 + [Speciális eszközök (kudu)](#kudu)
-+ [Üzembe helyezési lehetőségek](#deployment)
++ [Üzembe helyezési beállítások](#deployment)
 + [CORS](#cors)
 + [Hitelesítés](#auth)
 
@@ -143,7 +143,7 @@ A [`az functionapp cors show`](/cli/azure/functionapp/cors#az-functionapp-cors-s
 Ha a függvények HTTP-triggert használnak, megkövetelheti, hogy először hitelesíteni lehessen a hívásokat. App Service támogatja a Azure Active Directory hitelesítését és a közösségi szolgáltatókkal való bejelentkezést, például a Facebookot, a Microsoftot és a Twittert. Az egyes hitelesítő szolgáltatók konfigurálásával kapcsolatos részletekért tekintse meg a [Azure app Service Authentication áttekintése](../app-service/overview-authentication-authorization.md)című témakört. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 + [Azure App Service beállítások konfigurálása](../app-service/configure-common.md)
 + [Azure Functions – folyamatos üzembe helyezés](functions-continuous-deployment.md)
