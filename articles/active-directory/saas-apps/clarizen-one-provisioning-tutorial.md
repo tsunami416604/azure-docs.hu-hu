@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: Zhchia
-ms.openlocfilehash: 9335869797509171c71caffb0062aeccca207803
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 1658e6adf0c9de0cbd7412b963fb9a134f633430
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358915"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96179696"
 ---
 # <a name="tutorial-configure-clarizen-one-for-automatic-user-provisioning"></a>Oktatóanyag: a Clarizen konfigurálása az automatikus felhasználó-kiépítés számára
 
-Ez az oktatóanyag leírja, milyen lépéseket kell végrehajtania a Clarizen egy és Azure Active Directory (Azure AD) az automatikus felhasználó-kiépítés konfigurálásához. Ha be van állítva, az Azure AD automatikusan kiépíti és kiosztja a felhasználókat és csoportokat, hogy [Clarizen](https://www.clarizen.com/) az Azure ad-létesítési szolgáltatás használatával. A szolgáltatás működésével, működésével és gyakori kérdéseivel kapcsolatos információkért lásd: a felhasználók kiépítésének [automatizálása és az Azure ad-vel való kiépítés a szolgáltatott szoftverek (SaaS) alkalmazásaiba](../manage-apps/user-provisioning.md).
+Ez az oktatóanyag leírja, milyen lépéseket kell végrehajtania a Clarizen egy és Azure Active Directory (Azure AD) az automatikus felhasználó-kiépítés konfigurálásához. Ha be van állítva, az Azure AD automatikusan kiépíti és kiosztja a felhasználókat és csoportokat, hogy [Clarizen](https://www.clarizen.com/) az Azure ad-létesítési szolgáltatás használatával. A szolgáltatás működésével, működésével és gyakori kérdéseivel kapcsolatos információkért lásd: a felhasználók kiépítésének [automatizálása és az Azure ad-vel való kiépítés a szolgáltatott szoftverek (SaaS) alkalmazásaiba](../app-provisioning/user-provisioning.md).
 
 ## <a name="capabilities-supported"></a>Támogatott képességek
 
@@ -33,21 +33,21 @@ Ez az oktatóanyag leírja, milyen lépéseket kell végrehajtania a Clarizen eg
 > * Távolítsa el a felhasználókat a Clarizen-ben, ha már nem igénylik a hozzáférést.
 > * A felhasználói attribútumok szinkronizálása az Azure AD és a Clarizen között.
 > * Csoportok és csoporttagságok kiépítése a Clarizen-ben.
-> * Az [egyszeri bejelentkezés (SSO)](https://docs.microsoft.com/azure/active-directory/saas-apps/clarizen-tutorial) az Clarizen-re ajánlott.
+> * Az [egyszeri bejelentkezés (SSO)](./clarizen-tutorial.md) az Clarizen-re ajánlott.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
-* [Egy Azure AD-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant).
-* Egy Azure AD-beli felhasználói fiók, amely [jogosult](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) a kiépítés konfigurálására. Ilyenek például az alkalmazás rendszergazdája, a felhőalapú alkalmazás rendszergazdája, az alkalmazás tulajdonosa vagy a globális rendszergazda.
+* [Egy Azure AD-bérlő](../develop/quickstart-create-new-tenant.md).
+* Egy Azure AD-beli felhasználói fiók, amely [jogosult](../roles/permissions-reference.md) a kiépítés konfigurálására. Ilyenek például az alkalmazás rendszergazdája, a felhőalapú alkalmazás rendszergazdája, az alkalmazás tulajdonosa vagy a globális rendszergazda.
 * A Clarizen egyik felhasználói fiókja az **Integration User** és a **Lite rendszergazdai** [engedélyekkel](https://success.clarizen.com/hc/articles/360011833079-API-Keys-Support)rendelkezik.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>1. lépés Az átadás üzembe helyezésének megtervezése
 
-1. Ismerje meg [az átadási szolgáltatás működését](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
-1. Határozza meg, hogy ki lesz [az átadás hatókörében](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
-1. Határozza meg, hogy az [Azure ad és a Clarizen között milyen adatleképezést kell leképezni](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes).
+1. Ismerje meg [az átadási szolgáltatás működését](../app-provisioning/user-provisioning.md).
+1. Határozza meg, hogy ki lesz [az átadás hatókörében](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+1. Határozza meg, hogy az [Azure ad és a Clarizen között milyen adatleképezést kell leképezni](../app-provisioning/customize-application-attributes.md).
 
 ## <a name="step-2-configure-clarizen-one-to-support-provisioning-with-azure-ad"></a>2. lépés A Clarizen konfigurálása az Azure AD-vel való kiépítés támogatásához
 
@@ -61,14 +61,14 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 
 ## <a name="step-3-add-clarizen-one-from-the-azure-ad-application-gallery"></a>3. lépés Clarizen hozzáadása az Azure AD Application Galleryből
 
-Adja hozzá a Clarizen egyet az Azure AD-alkalmazás-katalógusból, hogy megkezdje a Clarizen való kiépítés kezelését. Ha korábban már beállította a Clarizen az egyszeri bejelentkezéshez, ugyanazt az alkalmazást használhatja. Ha először teszteli az integrációt, hozzon létre egy külön alkalmazást. Ha többet szeretne megtudni az alkalmazások katalógusból való hozzáadásáról, tekintse meg [az alkalmazás hozzáadása az Azure ad-bérlőhöz](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)című témakört.
+Adja hozzá a Clarizen egyet az Azure AD-alkalmazás-katalógusból, hogy megkezdje a Clarizen való kiépítés kezelését. Ha korábban már beállította a Clarizen az egyszeri bejelentkezéshez, ugyanazt az alkalmazást használhatja. Ha először teszteli az integrációt, hozzon létre egy külön alkalmazást. Ha többet szeretne megtudni az alkalmazások katalógusból való hozzáadásáról, tekintse meg [az alkalmazás hozzáadása az Azure ad-bérlőhöz](../manage-apps/add-application-portal.md)című témakört.
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. lépés: Az átadás hatókörében lévő személyek meghatározása
 
-Az Azure AD kiépítési szolgáltatásával az alkalmazáshoz való hozzárendelés vagy a felhasználó vagy csoport attribútumai alapján kell kiépíteni a hatókört. Ha úgy dönt, hogy a hatókör ki lesz kiépítve az alkalmazáshoz a hozzárendelés alapján, a felhasználók és csoportok alkalmazáshoz való hozzárendeléséhez kövesse a [felhasználói hozzárendelés kezelése a Azure Active Directory](../manage-apps/assign-user-or-group-access-portal.md) alkalmazásban című témakör lépéseit. Ha olyan hatókört választ ki, amely kizárólag a felhasználó vagy csoport attribútumai alapján lesz kiépítve, használjon egy hatókör-szűrőt az [attribútum-alapú alkalmazás kiépítés hatókör-szűrőkkel](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)című cikkben leírtak szerint.
+Az Azure AD kiépítési szolgáltatásával az alkalmazáshoz való hozzárendelés vagy a felhasználó vagy csoport attribútumai alapján kell kiépíteni a hatókört. Ha úgy dönt, hogy a hatókör ki lesz kiépítve az alkalmazáshoz a hozzárendelés alapján, a felhasználók és csoportok alkalmazáshoz való hozzárendeléséhez kövesse a [felhasználói hozzárendelés kezelése a Azure Active Directory](../manage-apps/assign-user-or-group-access-portal.md) alkalmazásban című témakör lépéseit. Ha olyan hatókört választ ki, amely kizárólag a felhasználó vagy csoport attribútumai alapján lesz kiépítve, használjon egy hatókör-szűrőt az [attribútum-alapú alkalmazás kiépítés hatókör-szűrőkkel](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)című cikkben leírtak szerint.
 
-* Amikor felhasználókat és csoportokat rendel hozzá a Clarizen, ki kell választania az **alapértelmezett hozzáféréstől** eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól, és a kiépítési naplók nem jogosultak arra, hogy ne legyenek ténylegesen feltüntetve. Ha az alkalmazás egyetlen szerepköre az alapértelmezett hozzáférési szerepkör, akkor a további szerepkörök hozzáadásához [frissítheti az alkalmazás-jegyzékfájlt](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) .
-* Kezdje kicsiben. Próbálja ki a felhasználókat és csoportokat egy kis készlettel, mielőtt mindenki számára elérhetővé vált. Ha a kiépítés hatóköre a hozzárendelt felhasználókhoz és csoportokhoz van beállítva, megtarthatja a vezérlést úgy, hogy egy vagy két felhasználót vagy csoportot rendel az alkalmazáshoz. Ha a hatókör minden felhasználóra és csoportra van beállítva, megadhat egy [attribútum-alapú hatókör-szűrőt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
+* Amikor felhasználókat és csoportokat rendel hozzá a Clarizen, ki kell választania az **alapértelmezett hozzáféréstől** eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól, és a kiépítési naplók nem jogosultak arra, hogy ne legyenek ténylegesen feltüntetve. Ha az alkalmazás egyetlen szerepköre az alapértelmezett hozzáférési szerepkör, akkor a további szerepkörök hozzáadásához [frissítheti az alkalmazás-jegyzékfájlt](../develop/howto-add-app-roles-in-azure-ad-apps.md) .
+* Kezdje kicsiben. Próbálja ki a felhasználókat és csoportokat egy kis készlettel, mielőtt mindenki számára elérhetővé vált. Ha a kiépítés hatóköre a hozzárendelt felhasználókhoz és csoportokhoz van beállítva, megtarthatja a vezérlést úgy, hogy egy vagy két felhasználót vagy csoportot rendel az alkalmazáshoz. Ha a hatókör minden felhasználóra és csoportra van beállítva, megadhat egy [attribútum-alapú hatókör-szűrőt](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-clarizen-one"></a>5. lépés Automatikus felhasználó-kiépítés beállítása Clarizen
 
@@ -76,7 +76,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 ### <a name="configure-automatic-user-provisioning-for-clarizen-one-in-azure-ad"></a>Automatikus felhasználó-kiépítés konfigurálása az Azure AD-ben az egyik Clarizen
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com). Válassza a **vállalati alkalmazások**  >  **minden alkalmazás** lehetőséget.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások**  >  **minden alkalmazás** lehetőséget.
 
     ![A vállalati alkalmazások panelt bemutató képernyőkép.](common/enterprise-applications.png)
 
@@ -100,11 +100,11 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Az értesítő e-mail-címet megjelenítő képernyőkép.](common/provisioning-notification-email.png)
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 1. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory felhasználók Clarizen egyet**.
 
-1. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban található Clarizen. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Clarizen lévő felhasználói fiókok egyeztetésére szolgálnak a frissítési műveletekhez. Ha módosítja a [megfeleltetési attribútumot](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), meg kell győződnie arról, hogy az CLARIZEN egy API támogatja a felhasználók szűrését az adott attribútum alapján. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
+1. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban található Clarizen. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Clarizen lévő felhasználói fiókok egyeztetésére szolgálnak a frissítési műveletekhez. Ha módosítja a [megfeleltetési attribútumot](../app-provisioning/customize-application-attributes.md), meg kell győződnie arról, hogy az CLARIZEN egy API támogatja a felhasználók szűrését az adott attribútum alapján. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
    |Attribútum|Típus|
    |---|---|
@@ -158,7 +158,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
       |externalId|Sztring|
       |tagok|Referencia|
 
-1. A hatóköri szűrők konfigurálásához tekintse meg a  [hatóköri szűrő oktatóanyagának](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)utasításait.
+1. A hatóköri szűrők konfigurálásához tekintse meg a  [hatóköri szűrő oktatóanyagának](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)utasításait.
 
 1. Ha **engedélyezni szeretné az** Azure ad kiépítési szolgáltatást a Clarizen, módosítsa a **kiépítési állapotot** a **Beállítások** szakaszban.
 
@@ -178,9 +178,9 @@ Ez a művelet a **Beállítások** szakasz **Hatókör** területén meghatároz
 
 A kiépítés beállítása után a következő erőforrásokkal figyelheti az üzemelő példányt.
 
-1. A [kiépítési naplók](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) segítségével határozza meg, hogy mely felhasználók lettek sikeresen kiépítve vagy sikertelenül.
-1. Tekintse meg a [folyamatjelző sáv](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) állapotát a kiépítési ciklus állapotának megtekintéséhez és a befejezéshez.
-1. Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. További információ a karanténba helyezési [állapotokról: az alkalmazás üzembe helyezése a karanténba helyezett állapotban](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
+1. A [kiépítési naplók](../reports-monitoring/concept-provisioning-logs.md) segítségével határozza meg, hogy mely felhasználók lettek sikeresen kiépítve vagy sikertelenül.
+1. Tekintse meg a [folyamatjelző sáv](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) állapotát a kiépítési ciklus állapotának megtekintéséhez és a befejezéshez.
+1. Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. További információ a karanténba helyezési [állapotokról: az alkalmazás üzembe helyezése a karanténba helyezett állapotban](../app-provisioning/application-provisioning-quarantine-status.md).
 
 ## <a name="troubleshooting-tips"></a>Hibaelhárítási tippek
 
@@ -194,11 +194,11 @@ Ha a Clarizen egy gyűjtemény-alkalmazáshoz rendel hozzá egy felhasználót, 
 * Érvényes felügyelői
 * Az idő & a költségek felhasználója
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../manage-apps/check-status-user-account-provisioning.md)
+* [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)

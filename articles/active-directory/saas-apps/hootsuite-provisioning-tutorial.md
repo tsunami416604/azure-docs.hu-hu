@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 011071c9aa1722b8f1cf81ec8d9ef88e8d91ea03
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: b371baec663ffc7ff5909e04965353e79acb9708
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359051"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96177072"
 ---
 # <a name="tutorial-configure-hootsuite-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés HootSuite konfigurálása
 
@@ -35,7 +35,7 @@ Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a HootSuite és a A
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
 * [Azure AD-bérlő](../develop/quickstart-create-new-tenant.md) 
-* Egy Azure AD-beli felhasználói fiók, amely [jogosult](../users-groups-roles/directory-assign-admin-roles.md) a kiépítés konfigurálására (például alkalmazás-rendszergazda, felhőalapú alkalmazás-rendszergazda, alkalmazás tulajdonosa vagy globális rendszergazda). 
+* Egy Azure AD-beli felhasználói fiók, amely [jogosult](../roles/permissions-reference.md) a kiépítés konfigurálására (például alkalmazás-rendszergazda, felhőalapú alkalmazás-rendszergazda, alkalmazás tulajdonosa vagy globális rendszergazda). 
 * Olyan [HootSuite](http://www.hootsuite.com/) rendelkező felhasználói fiók, amely a szervezeten belüli jogosultságokat **felügyeli** .
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>1. lépés Az átadás üzembe helyezésének megtervezése
@@ -121,7 +121,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
       |externalId|Sztring|
       |tagok|Referencia|
 
-12. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
+12. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
 
 13. Az Azure AD-kiépítési szolgáltatás HootSuite való engedélyezéséhez módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
 
@@ -149,7 +149,7 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 * 10/22/2020 – a következő felhasználói attribútumok támogatása: "name. givenName" és "name. familyName". A felhasználók számára a "organizationIds" és a "teamIds" egyéni kiterjesztési attribútumok el lettek távolítva.
 A "displayName", "Members" és "externalId" csoportosítási attribútumok támogatása.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

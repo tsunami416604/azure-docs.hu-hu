@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/25/2020
 ms.author: Zhchia
-ms.openlocfilehash: f6a03a65b18d09000e93a1e0fa4a194321912211
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 75da1e2b2f1954b0126b08232046fe09b1c2b6e7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94354251"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96177941"
 ---
 # <a name="tutorial-configure-invision-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés InVision konfigurálása
 
@@ -39,7 +39,7 @@ Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a InVision és a Az
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
 * [Azure AD-bérlő](../develop/quickstart-create-new-tenant.md) 
-* Egy felhasználói fiók az Azure AD-ben az átadás konfigurálására vonatkozó [engedéllyel](../users-groups-roles/directory-assign-admin-roles.md) (pl. alkalmazás-rendszergazda, felhőalkalmazás-rendszergazda, alkalmazástulajdonos vagy globális rendszergazda). 
+* Egy felhasználói fiók az Azure AD-ben az átadás konfigurálására vonatkozó [engedéllyel](../roles/permissions-reference.md) (pl. alkalmazás-rendszergazda, felhőalkalmazás-rendszergazda, alkalmazástulajdonos vagy globális rendszergazda). 
 * [InVision Enterprise-fiók](https://www.invisionapp.com/enterprise) egyszeri bejelentkezéssel engedélyezve.
 * Rendszergazdai jogosultságokkal rendelkező felhasználói fiók a InVision-ben.
 
@@ -102,7 +102,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Kiépítési mód](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a scim API URL-címének a **bérlői URL** -címben korábban lekért értékét. Adja meg a **titkos tokenben** korábban lekért hitelesítési jogkivonat értékét. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a InVision. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a InVision-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a scim API URL-címének a **bérlői URL**-címben korábban lekért értékét. Adja meg a **titkos tokenben** korábban lekért hitelesítési jogkivonat értékét. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a InVision. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a InVision-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![Rendszergazdai hitelesítő adatok](./media/inVision-provisioning-tutorial/provisioning.png)
 
@@ -147,7 +147,7 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 2. A [folyamatjelzőn](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
 3. Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](../app-provisioning/application-provisioning-quarantine-status.md) találhat további információt.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

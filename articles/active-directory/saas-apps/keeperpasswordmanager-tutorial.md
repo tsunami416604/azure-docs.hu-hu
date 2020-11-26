@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/13/2020
 ms.author: jeedes
-ms.openlocfilehash: ef49a8a3ac1779071a4d4906bfd053530063102d
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: b70c50e7c2900f884dd4d91c6650205bc626326e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984464"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96178041"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager--digital-vault"></a>Oktatóanyag: Azure Active Directory integráció a Keeper Password Managerrel & Digital Vaulttal
 
@@ -102,7 +102,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Emellett a Keeper Password Manager & Digital Vault alkalmazás néhány további attribútumot vár az SAML-válaszban való visszatéréshez. Ezek az alábbi táblázatban láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelmények szerint áttekinthetők.
 
-    | Name | Forrás attribútum|
+    | Name (Név) | Forrás attribútum|
     | ------------| --------- |
     | Első | User. givenName |
     | Utolsó | felhasználó. vezetéknév |
@@ -157,7 +157,7 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 * Közvetlenül az alkalmazás bejelentkezési URL-címére léphet, és elindíthatja a bejelentkezést onnan.
 
-* Használhatja a Microsoft Access panelt. Amikor kiválasztja a **Keeper Password Manager & a digitális** tárolót a hozzáférési panelen, a rendszer átirányítja az alkalmazás bejelentkezési URL-címére. További információ a hozzáférési panelről: [Bejelentkezés és alkalmazások indítása a saját alkalmazások portálján](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Használhatja a Microsoft Access panelt. Amikor kiválasztja a **Keeper Password Manager & a digitális** tárolót a hozzáférési panelen, a rendszer átirányítja az alkalmazás bejelentkezési URL-címére. További információ a hozzáférési panelről: [Bejelentkezés és alkalmazások indítása a saját alkalmazások portálján](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Következő lépések

@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 06/15/2020
 ms.author: jeedes
 ms.openlocfilehash: 7bb74732074482c12d3bc760e259bb014ccf006f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454184"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96179268"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ekarda"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a ekarda
 
@@ -50,14 +50,14 @@ A ekarda Azure AD-be való integrálásának konfigurálásához adja hozzá a e
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal vagy személyes Microsoft-fiók használatával.
 
 1. A bal oldali panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az új alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban írja be a **ekarda** kifejezést a keresőmezőbe.
 1. Válassza ki a **ekarda** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-ekarda"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a ekarda
 
-Konfigurálja és tesztelje az Azure AD SSO-t a ekarda egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy összekapcsolt kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között a ekarda-ben.
+Konfigurálja és tesztelje az Azure AD SSO-t a ekarda egy **B. Simon** nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy összekapcsolt kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó között a ekarda-ben.
 
 Az Azure AD SSO és a ekarda konfigurálásához és teszteléséhez hajtsa végre a következő lépéseket:
 
@@ -74,15 +74,15 @@ Az Azure AD SSO és a ekarda konfigurálásához és teszteléséhez hajtsa vég
 Az Azure AD SSO engedélyezéséhez kövesse az Azure Portal alábbi lépéseit:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-1. A **ekarda** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A **ekarda** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeres Sign-On beállítása az SAML-vel** lapon válassza a ceruza ikont az **alapszintű SAML-konfigurációs** beállítások szerkesztéséhez.
 
    ![Képernyőfelvétel: egyszeres Sign-On beállítása SAML-oldallal, a ceruza ikon kiemelve.](common/edit-urls.png)
 
-1. Az **alapszintű SAML-konfiguráció** szakaszban, ha a **szolgáltatói metaadatokat tartalmazó fájlt**látja, kövesse az alábbi lépéseket:
-    1. Válassza a **metaadat-fájl feltöltése**lehetőséget.
-    1. Válassza a mappa ikont a metaadat-fájl kiválasztásához, majd válassza a **feltöltés**lehetőséget.
+1. Az **alapszintű SAML-konfiguráció** szakaszban, ha a **szolgáltatói metaadatokat tartalmazó fájlt** látja, kövesse az alábbi lépéseket:
+    1. Válassza a **metaadat-fájl feltöltése** lehetőséget.
+    1. Válassza a mappa ikont a metaadat-fájl kiválasztásához, majd válassza a **feltöltés** lehetőséget.
     1. A metaadat-fájl feltöltése után az **azonosító** és a **Válasz URL-címe** automatikusan megjelenik a ekarda szakasz szövegmezőben.
 
     > [!Note]
@@ -112,7 +112,7 @@ Az Azure AD SSO engedélyezéséhez kövesse az Azure Portal alábbi lépéseit:
 
 Ebben a szakaszban a Azure Portal használatával hozzon létre egy B. Simon nevű teszt felhasználót.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**  >  **felhasználók**  >  **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**  >  **felhasználók**  >  **minden felhasználó** lehetőséget.
 
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
@@ -125,24 +125,24 @@ Ebben a szakaszban a Azure Portal használatával hozzon létre egy B. Simon nev
 
 Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a ekarda.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza a **ekarda**lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**  >  **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza a **ekarda** lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok** lehetőséget.
 
    ![Képernyőfelvétel a kezelés szakaszról, a Kiemelt felhasználók és csoportok lehetőséggel.](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A felhasználók és csoportok szakasz képernyőképe, a felhasználó hozzáadása Kiemelt színnel.](common/add-assign-user.png)
 
 1. A **felhasználók és csoportok** párbeszédpanelen válassza ki a felhasználók listájából a **B. Simon** elemet. Ezután válassza a **kijelölés** lehetőséget a képernyő alján.
 1. Ha az SAML-kijelentésben bármilyen szerepkörre számíthat, válassza ki a megfelelő szerepkört a felhasználó számára a **szerepkör kiválasztása** párbeszédpanel listájában. Ezután válassza a **kijelölés** lehetőséget a képernyő alján.
-1. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés**lehetőséget.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés** lehetőséget.
 
 ## <a name="configure-ekarda-sso"></a>Ekarda SSO konfigurálása
 
 1. Egy másik webböngésző-ablakban jelentkezzen be a ekarda vállalati webhelyre rendszergazdaként.
-1. Válassza **Admin**  >  **a rendszergazda saját fiók**lehetőséget.
+1. Válassza **Admin**  >  **a rendszergazda saját fiók** lehetőséget.
 
     ![Képernyőkép a ekarda-hely felhasználói felületéről a fiókom kiemelve a felügyeleti menüben.](./media/ekarda-tutorial/ekarda.png)
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/04/2020
 ms.author: Zhchia
-ms.openlocfilehash: 3fa91e6d9c1df941a930d53119e6d4bd4cabca04
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 7d5904461d642f47e691d0a1aaa1f1faf439df1f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94354359"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96178143"
 ---
 # <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Insight4GRC konfigurálása
 
@@ -36,7 +36,7 @@ Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a Insight4GRC és a
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
 * [Azure AD-bérlő](../develop/quickstart-create-new-tenant.md) 
-* Egy felhasználói fiók az Azure AD-ben az átadás konfigurálására vonatkozó [engedéllyel](../users-groups-roles/directory-assign-admin-roles.md) (pl. alkalmazás-rendszergazda, felhőalkalmazás-rendszergazda, alkalmazástulajdonos vagy globális rendszergazda). 
+* Egy felhasználói fiók az Azure AD-ben az átadás konfigurálására vonatkozó [engedéllyel](../roles/permissions-reference.md) (pl. alkalmazás-rendszergazda, felhőalkalmazás-rendszergazda, alkalmazástulajdonos vagy globális rendszergazda). 
 * Rendszergazdai jogosultságokkal rendelkező felhasználói fiók a Insight4GRC-ben.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>1. lépés Az átadás üzembe helyezésének megtervezése
@@ -86,7 +86,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Képernyőkép a kiépítési mód legördülő listájáról az automatikus lehetőséggel.](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a scim-végpont URL-címét a **bérlői URL** -címben. A végpontot URL-címnek olyan formátumúnak kell lennie, `https://<Insight4GRC Domain Name>.insight4grc.com/public/api/scim/v2 ` ahol a **Insight4GRC tartományneve** az előző lépések során lekért érték. Adja meg a **titkos jogkivonatban** korábban lekért tulajdonosi jogkivonat értékét. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a Insight4GRC. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Insight4GRC-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a scim-végpont URL-címét a **bérlői URL**-címben. A végpontot URL-címnek olyan formátumúnak kell lennie, `https://<Insight4GRC Domain Name>.insight4grc.com/public/api/scim/v2 ` ahol a **Insight4GRC tartományneve** az előző lépések során lekért érték. Adja meg a **titkos jogkivonatban** korábban lekért tulajdonosi jogkivonat értékét. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a Insight4GRC. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Insight4GRC-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![Képernyőfelvétel: a rendszergazdai hitelesítő adatok párbeszédpanel, ahol megadhatja a bérlő U R L-t és a titkos jogkivonatot.](./media/insight4grc-provisioning-tutorial/provisioning.png)
 
@@ -144,7 +144,7 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 * Tekintse meg a [folyamatjelző sáv](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) állapotát a kiépítési ciklus állapotának megtekintéséhez és a befejezéshez.
 * Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](../app-provisioning/application-provisioning-quarantine-status.md) találhat további információt.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [A vállalati alkalmazások felhasználói fiókok üzembe](../app-provisioning/configure-automatic-user-provisioning-portal.md)helyezésének kezelése.
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

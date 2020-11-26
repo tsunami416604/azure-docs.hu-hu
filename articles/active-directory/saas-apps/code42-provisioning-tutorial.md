@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/23/2020
 ms.author: Zhchia
-ms.openlocfilehash: e7f3817a6db288e93b5e0dc99c7b6c9b7bd2e44b
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: ffae286437a476d5ebe08c3ee442d0d52af84eb7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94355736"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96179340"
 ---
 # <a name="tutorial-configure-code42-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Code42 konfigurálása
 
@@ -40,7 +40,7 @@ Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a Code42 és a Azur
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
 * [Azure AD-bérlő](../develop/quickstart-create-new-tenant.md)
-* Egy Azure AD-beli felhasználói fiók, amely [jogosult](../users-groups-roles/directory-assign-admin-roles.md) a kiépítés konfigurálására (például alkalmazás-rendszergazda, felhőalapú alkalmazás-rendszergazda, alkalmazás tulajdonosa vagy globális rendszergazda).
+* Egy Azure AD-beli felhasználói fiók, amely [jogosult](../roles/permissions-reference.md) a kiépítés konfigurálására (például alkalmazás-rendszergazda, felhőalapú alkalmazás-rendszergazda, alkalmazás tulajdonosa vagy globális rendszergazda).
 * Code42-bérlő, amelyen engedélyezve van az Identitáskezelés.
 * A Code42 felhasználói fiókja az [ügyfél-felhőalapú rendszergazdai](https://support.code42.com/Administrator/Cloud/Monitoring_and_managing/Roles_reference#Customer_Cloud_Admin) engedéllyel.
 
@@ -162,7 +162,7 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 2. A [folyamatjelzőn](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) láthatja az átadási ciklus állapotát és azt, hogy mennyi hiányzik még a befejeződéséhez.
 3. Ha úgy tűnik, hogy az átadási konfiguráció állapota nem megfelelő, az alkalmazás karanténba kerül. A karanténállapotokról [itt](../app-provisioning/application-provisioning-quarantine-status.md) találhat további információt.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
