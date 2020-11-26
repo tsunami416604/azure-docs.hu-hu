@@ -54,6 +54,7 @@
     - name: A Video Indexer kimenetének vizsgálata
       href: video-indexer-output-json-v2.md
     - name: Pontos időpontok keresése videókban
+      displayName: search
       href: video-indexer-search.md
     - name: 'Jelenetek, felvételek, kulcsképek észlelése'
       href: scenes-shots-keyframes.md

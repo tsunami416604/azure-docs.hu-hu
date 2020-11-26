@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
-ms.openlocfilehash: a2d5234b3c80456a98fde4547b9665ca1b0a83dd
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 651c1913491952c53af42abec5ce5d5009da06a0
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913545"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168066"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Folyamatos teljesítés a GitHub-művelet használatával
 
@@ -34,7 +34,7 @@ Azure Functions munkafolyamathoz a fájl három szakaszt tartalmaz:
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Egy GitHub-fiók. Ha még nem rendelkezik ilyennel, regisztráljon [ingyenesen](https://github.com/join).  
 - Az Azure-ban egy GitHub-adattárral üzemeltetett Working Function-alkalmazás.   
-    - [Rövid útmutató: Függvény létrehozása az Azure-ban a Visual Studio Code használatával](functions-create-first-function-vs-code.md)
+    - [Rövid útmutató: Függvény létrehozása az Azure-ban a Visual Studio Code használatával](./create-first-function-vs-code-csharp.md)
 
 ## <a name="generate-deployment-credentials"></a>Központi telepítési hitelesítő adatok előállítása
 
@@ -57,9 +57,9 @@ A Function alkalmazás közzétételi profiljának letöltése:
 
 1. A [githubon](https://github.com)keresse meg a tárházat, és válassza a **Beállítások**  >  **titkok**  >  **új titok hozzáadása** elemet.
 
-   :::image type="content" source="media/functions-how-to-github-actions/add-secret.png" alt-text="Közzétételi profil letöltése":::
+   :::image type="content" source="media/functions-how-to-github-actions/add-secret.png" alt-text="Titkos kód hozzáadása":::
 
-1. Adjon hozzá egy új titkos kulcsot a `AZURE_FUNCTIONAPP_PUBLISH_PROFILE` **név** mezőben, a közzétételi profil fájljának tartalmát az **értékhez** , majd válassza a **titkos kód hozzáadása** lehetőséget.
+1. Adjon hozzá egy új titkos kulcsot a `AZURE_FUNCTIONAPP_PUBLISH_PROFILE` **név** mezőben, a közzétételi profil fájljának tartalmát az **értékhez**, majd válassza a **titkos kód hozzáadása** lehetőséget.
 
 A GitHub mostantól képes hitelesíteni az Azure-beli Function-alkalmazást.
 

@@ -12,12 +12,12 @@ ms.date: 11/09/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 59ed397f3bd54a324f8fa375a3ea870860c31142
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: fa6fc11441811589967ddd7728501b521f9f9155
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410929"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169273"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD-hitelesítési és -engedélyezési hibakódok
 
@@ -315,7 +315,7 @@ Ha például a "AADSTS50058" hibakódot kapta, keressen rá a [https://login.mic
 | AADSTS700022 | InvalidMultipleResourcesScope – a bemeneti paraméter hatóköréhez megadott érték érvénytelen, mert egynél több erőforrást tartalmaz. |
 | AADSTS700023 | InvalidResourcelessScope – a bemeneti paraméter hatóköréhez megadott érték érvénytelen, ha hozzáférési jogkivonatot kér. |
 | AADSTS7000215 | Érvénytelen ügyfél-titkos kulcs van megadva. Fejlesztői hiba – az alkalmazás a szükséges vagy helyes hitelesítési paraméterek nélkül próbál bejelentkezni.|
-| AADSTS7000222 | InvalidClientSecretExpiredKeysProvided – a megadott ügyfél titkos kulcsainak érvényessége lejárt. Látogasson el a Azure Portal új kulcsok létrehozásához az alkalmazáshoz, vagy vegye fontolóra a tanúsítvány hitelesítő adatainak használatát a további biztonság érdekében: [https://aka.ms/certCreds](https://aka.ms/certCreds) |
+| AADSTS7000222 | InvalidClientSecretExpiredKeysProvided – a megadott ügyfél titkos kulcsainak érvényessége lejárt. Látogasson el a Azure Portal új kulcsok létrehozásához az alkalmazáshoz, vagy vegye fontolóra a tanúsítvány hitelesítő adatainak használatát a további biztonság érdekében: [https://aka.ms/certCreds](./active-directory-certificate-credentials.md) |
 | AADSTS700005 | A InvalidGrantRedeemAgainstWrongTenant által biztosított engedélyezési kód más Bérlővel való használatra készült, ezért el lett utasítva. A OAuth2-engedélyezési kódot a (/gyakori hibák vagy/{tenant-ID}) megszerzett Bérlővel azonos Bérlővel kell beváltani. |
 | AADSTS1000000 | UserNotBoundError – a kötési API megköveteli, hogy az Azure AD-felhasználó egy külső IDENTITÁSSZOLGÁLTATÓ is hitelesítse magát, ami még nem történt meg. |
 | AADSTS1000002 | BindCompleteInterruptError – a kötés sikeresen befejeződött, de a felhasználót tájékoztatni kell. |
@@ -323,6 +323,6 @@ Ha például a "AADSTS50058" hibakódot kapta, keressen rá a [https://login.mic
 | AADSTS7000114| A (z) "appIdentifier" alkalmazás nem jogosult az alkalmazáshoz tartozó hívásokra.|
 | AADSTS7500529 | A "SAMLId-GUID" érték nem érvényes SAML-azonosító – az Azure AD ezt az attribútumot használja a visszaadott válasz InResponseTo attribútumának feltöltéséhez. Az azonosító nem kezdődhet számmal, ezért a közös stratégia egy olyan karakterláncot, mint az "id", egy GUID karakterlánc-ábrázolására. Például a id6c1c178c166d486687be4aaf5e482730 érvényes azonosító. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Kérdése van, vagy nem találja, amit keres? Hozzon létre egy GitHub-problémát, vagy tekintse meg a [fejlesztők támogatási és támogatási lehetőségeit](./developer-support-help-options.md) , amelyekkel megismerheti a Súgó és támogatás egyéb lehetőségeit.

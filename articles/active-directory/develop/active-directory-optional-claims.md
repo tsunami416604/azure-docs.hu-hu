@@ -12,12 +12,12 @@ ms.date: 10/30/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 1a08aa4261e8d2546d16bb60394829c83604b4cd
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 50f57f48ca839c5389df49fc5dc7586030916b6b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019959"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169749"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Útmutató: opcionális jogcímek megadása az alkalmazás számára
 
@@ -37,7 +37,7 @@ Míg a választható jogcímek a v 1.0 és a v 2.0 formátumú jogkivonatokban, 
 
 | Fiók típusa               | 1.0-s verziós tokenek | v 2.0-tokenek |
 |----------------------------|-------------|-------------|
-| Személyes Microsoft-fiók | N.A.         | Támogatott   |
+| Személyes Microsoft-fiók | N/A         | Támogatott   |
 | Azure AD-fiók           | Támogatott   | Támogatott   |
 
 ## <a name="v10-and-v20-optional-claims-set"></a>v 1.0 és v 2.0 választható jogcímek készlete
@@ -49,7 +49,7 @@ Az alábbi listában a használni kívánt alkalmazások alapértelmezett válas
 
 **2. táblázat: v 1.0 és v 2.0 opcionális jogcím-készlet**
 
-| Név                       |  Leírás   | Jogkivonat típusa | Felhasználó típusa | Jegyzetek  |
+| Név                       |  Leírás   | Jogkivonat típusa | Felhasználó típusa | Megjegyzések  |
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | A felhasználó utolsó hitelesítésének időpontja. Lásd: OpenID Connect spec.| JWT        |           |  |
 | `tenant_region_scope`      | Az erőforrás-bérlő régiója | JWT        |           | |
@@ -67,7 +67,7 @@ Az alábbi listában a használni kívánt alkalmazások alapértelmezett válas
 | `email`                    | A felhasználó címezhető e-mail-címe, ha a felhasználó rendelkezik ilyennel.  | JWT, SAML | MSA, Azure AD | Alapértelmezés szerint ez az érték szerepel, ha a felhasználó vendég a bérlőben.  A felügyelt felhasználók (a bérlőn belüli felhasználók) esetében ezt a választható jogcímen keresztül kell kérni, vagy csak a 2.0-s verzióban az OpenID hatókörrel.  A felügyelt felhasználók esetében az e-mail-címet be kell állítani az [Office felügyeleti portálon](https://portal.office.com/adminportal/home#/users).|
 | `acct`                | Felhasználói fiók állapota a bérlőben | JWT, SAML | | Ha a felhasználó tagja a bérlőnek, az érték a `0` . Ha vendég, az érték a `1` . |
 | `groups`| Csoportos jogcímek opcionális formázása |JWT, SAML| |Az GroupMembershipClaims beállítással együtt használatos az [alkalmazás jegyzékfájljában](reference-app-manifest.md), amelyet is be kell állítani. Részletekért lásd az alábbi [csoportos jogcímeket](#configuring-groups-optional-claims) . A csoportok jogcímeivel kapcsolatos további információkért lásd: [csoportos jogcímek konfigurálása](../hybrid/how-to-connect-fed-group-claims.md)
-| `upn`                      | UserPrincipalName | JWT, SAML  |           | A username_hint paraméterrel használható felhasználó termékazonosító.  Nem tartós azonosító a felhasználó számára, és nem használható a felhasználói adatok egyedi azonosítására (például adatbázis-kulcsként). Ehelyett használja a felhasználói objektum AZONOSÍTÓját ( `oid` ) az adatbázis kulcsaként. Az [alternatív bejelentkezési azonosítóval](/azure/active-directory/authentication/howto-authentication-use-email-signin) bejelentkezett felhasználók nem láthatják az egyszerű felhasználónevet (UPN). Ehelyett használja a következő azonosító jogkivonat-jogcímeket a bejelentkezési állapot felhasználónak való megjelenítéséhez: `preferred_username` vagy `unique_name` v1-tokenekhez és `preferred_username` v2-tokenekhez. Bár ez a jogcím automatikusan szerepel, megadhatja opcionális jogcímként is, ha további tulajdonságokat szeretne csatolni a vendég felhasználói eset működésének módosításához.  |
+| `upn`                      | UserPrincipalName | JWT, SAML  |           | A username_hint paraméterrel használható felhasználó termékazonosító.  Nem tartós azonosító a felhasználó számára, és nem használható a felhasználói adatok egyedi azonosítására (például adatbázis-kulcsként). Ehelyett használja a felhasználói objektum AZONOSÍTÓját ( `oid` ) az adatbázis kulcsaként. Az [alternatív bejelentkezési azonosítóval](../authentication/howto-authentication-use-email-signin.md) bejelentkezett felhasználók nem láthatják az egyszerű felhasználónevet (UPN). Ehelyett használja a következő azonosító jogkivonat-jogcímeket a bejelentkezési állapot felhasználónak való megjelenítéséhez: `preferred_username` vagy `unique_name` v1-tokenekhez és `preferred_username` v2-tokenekhez. Bár ez a jogcím automatikusan szerepel, megadhatja opcionális jogcímként is, ha további tulajdonságokat szeretne csatolni a vendég felhasználói eset működésének módosításához.  |
 | `idtyp`                    | Jogkivonat típusa   | JWT hozzáférési jogkivonatok | Speciális: csak az alkalmazáshoz tartozó hozzáférési jogkivonatokban |  Az érték az, `app` Ha a jogkivonat csak alkalmazási token. Ez a legpontosabb módszer egy API számára annak megállapítására, hogy a token alkalmazás-jogkivonat vagy alkalmazás + felhasználói jogkivonat-e.|
 
 ## <a name="v20-specific-optional-claims-set"></a>a 2.0-s verzióra vonatkozó nem kötelező jogcímek beállítása
@@ -85,7 +85,7 @@ Ezeket a jogcímeket mindig tartalmazza a v 1.0 Azure AD-jogkivonatok, de a nem 
 | `in_corp`     | Vállalati hálózaton belül        | Azt jelzi, hogy az ügyfél bejelentkezik-e a vállalati hálózatról. Ha nem, a rendszer nem tartalmazza a jogcímet.   |  Az MFA [megbízható IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) -címeinek beállításai alapján.    |
 | `family_name` | Vezetéknév                       | A felhasználó vezetéknevét, vezetéknevét vagy családjának nevét adja meg a felhasználói objektumban definiált módon. <br>"family_name": "Miller" | Támogatott a MSA és az Azure AD-ben. A `profile` hatókört igényli.   |
 | `given_name`  | Utónév                      | A felhasználó első vagy "megadott" nevét adja meg a felhasználói objektumra vonatkozóan.<br>"given_name": "Frank"                   | Támogatott a MSA és az Azure AD-ben.  A `profile` hatókört igényli. |
-| `upn`         | Felhasználó egyszerű neve | A username_hint paraméterrel használható felhasználó termékazonosító.  Nem tartós azonosító a felhasználó számára, és nem használható a felhasználói adatok egyedi azonosítására (például adatbázis-kulcsként). Ehelyett használja a felhasználói objektum AZONOSÍTÓját ( `oid` ) az adatbázis kulcsaként. Az [alternatív bejelentkezési azonosítóval](/azure/active-directory/authentication/howto-authentication-use-email-signin) bejelentkezett felhasználók nem láthatják az egyszerű felhasználónevet (UPN). Ehelyett használja a következő azonosító jogkivonat-jogcímeket a bejelentkezési állapot felhasználónak való megjelenítéséhez: `preferred_username` vagy `unique_name` v1-tokenekhez és `preferred_username` v2-tokenekhez. | A jogcím konfigurálásához tekintse meg az alábbi [további tulajdonságokat](#additional-properties-of-optional-claims) . A `profile` hatókört igényli.|
+| `upn`         | Felhasználó egyszerű neve | A username_hint paraméterrel használható felhasználó termékazonosító.  Nem tartós azonosító a felhasználó számára, és nem használható a felhasználói adatok egyedi azonosítására (például adatbázis-kulcsként). Ehelyett használja a felhasználói objektum AZONOSÍTÓját ( `oid` ) az adatbázis kulcsaként. Az [alternatív bejelentkezési azonosítóval](../authentication/howto-authentication-use-email-signin.md) bejelentkezett felhasználók nem láthatják az egyszerű felhasználónevet (UPN). Ehelyett használja a következő azonosító jogkivonat-jogcímeket a bejelentkezési állapot felhasználónak való megjelenítéséhez: `preferred_username` vagy `unique_name` v1-tokenekhez és `preferred_username` v2-tokenekhez. | A jogcím konfigurálásához tekintse meg az alábbi [további tulajdonságokat](#additional-properties-of-optional-claims) . A `profile` hatókört igényli.|
 
 ### <a name="additional-properties-of-optional-claims"></a>A választható jogcímek további tulajdonságai
 
@@ -93,7 +93,7 @@ Egyes választható jogcímek úgy konfigurálhatók, hogy megváltoztassák a j
 
 **4. táblázat: választható jogcímek konfigurálásának értékei**
 
-| Tulajdonság neve  | További tulajdonságnév | Description |
+| Tulajdonság neve  | További tulajdonságnév | Leírás |
 |----------------|--------------------------|-------------|
 | `upn`          |                          | Az SAML-és JWT-válaszokhoz, valamint a 1.0-s és a v 2.0-tokenekhez is használható. |
 |                | `include_externally_authenticated_upn`  | Az erőforrás-bérlőben tárolt vendég UPN-t tartalmazza. Például: `foo_hometenant.com#EXT#@resourcetenant.com` |
@@ -139,7 +139,7 @@ Az alkalmazásra vonatkozó opcionális jogcímeket a felhasználói felület va
 1. Válassza a **Hozzáadás** elemet.
 
 > [!NOTE]
-> A felhasználói felületi beállítás **jogkivonat-konfigurációja** panel jelenleg nem érhető el Azure ad B2C bérlőben regisztrált alkalmazásokhoz. A B2C-bérlőben regisztrált alkalmazások esetében a választható jogcímeket az alkalmazás jegyzékfájljának módosításával lehet konfigurálni. További információ: [jogcímek hozzáadása és felhasználói bevitel testreszabása Egyéni szabályzatok használatával Azure Active Directory B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-configure-user-input) 
+> A felhasználói felületi beállítás **jogkivonat-konfigurációja** panel jelenleg nem érhető el Azure ad B2C bérlőben regisztrált alkalmazásokhoz. A B2C-bérlőben regisztrált alkalmazások esetében a választható jogcímeket az alkalmazás jegyzékfájljának módosításával lehet konfigurálni. További információ: [jogcímek hozzáadása és felhasználói bevitel testreszabása Egyéni szabályzatok használatával Azure Active Directory B2C](../../active-directory-b2c/custom-policy-configure-user-input.md) 
 
 **Választható jogcímek konfigurálása az alkalmazás jegyzékfájlján keresztül:**
 
@@ -186,7 +186,7 @@ Deklarálja az alkalmazás által kért választható jogcímeket. Egy alkalmaz�
 
 **5. táblázat: OptionalClaims típusának tulajdonságai**
 
-| Név          | Típus                       | Description                                           |
+| Név          | Típus                       | Leírás                                           |
 |---------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Gyűjtemény (OptionalClaim) | A JWT azonosító jogkivonatában visszaadott választható jogcímek.     |
 | `accessToken` | Gyűjtemény (OptionalClaim) | Az JWT hozzáférési jogkivonatban visszaadott választható jogcímek. |
@@ -199,7 +199,7 @@ Ha egy adott jogcím támogatja, a OptionalClaim viselkedését a AdditionalProp
 
 **6. táblázat: OptionalClaim típusának tulajdonságai**
 
-| Név                   | Típus                    | Description                                                                                                                                                                                                                                                                                                   |
+| Név                   | Típus                    | Leírás                                                                                                                                                                                                                                                                                                   |
 |------------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | A választható jogcím neve.                                                                                                                                                                                                                                                                               |
 | `source`               | Edm.String              | A jogcím forrása (Directory-objektum). A bővítmény tulajdonságaiban előre definiált jogcímek és felhasználó által definiált jogcímek találhatók. Ha a forrás értéke null, a jogcím egy előre meghatározott opcionális jogcím. Ha a forrás értéke felhasználó, a Name (név) tulajdonság értéke a felhasználói objektum kiterjesztés tulajdonsága. |

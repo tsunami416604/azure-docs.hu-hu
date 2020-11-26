@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/20/2020
 ms.author: cshoe
 ms.custom: contperfq2
-ms.openlocfilehash: 6713c0d45a8b5363122c726d1d31e5c479ba8fff
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 514f2e9a82a50f95f9c054c6a54e7b5af3c0af15
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95504637"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96167777"
 ---
 # <a name="introduction-to-azure-functions"></a>Az Azure Functions bemutatása
 
@@ -38,7 +38,7 @@ Az alábbiakban gyakoriak, _de nem teljes körűen_ a Azure functions forgatók�
 | --- | --- |
 | **Webes API létrehozása** | Végpont implementálása a webalkalmazásokhoz a [http-trigger](./functions-bindings-http-webhook.md) használatával |
 | **Fájlfeltöltés feldolgozása** | Kód futtatása a [blob Storage](./functions-bindings-storage-blob.md) -beli fájlok feltöltésekor vagy módosításakor |
-| **Kiszolgáló nélküli munkafolyamat létrehozása** | Függvények egy sorozatának láncolása [tartós függvények](./durable-functions-overview.md) használatával |
+| **Kiszolgáló nélküli munkafolyamat létrehozása** | Függvények egy sorozatának láncolása [tartós függvények](./durable/durable-functions-overview.md) használatával |
 | **Válaszadás az adatbázis változásaira** | Egyéni logika futtatása dokumentum létrehozásakor vagy frissítésekor [Cosmos db](./functions-bindings-cosmosdb-v2.md) |
 | **Ütemezett feladatok futtatása** | Kód végrehajtása a [beállított időpontokban](./functions-bindings-timer.md) |
 | **Megbízható üzenetsor-rendszerek létrehozása** | Üzenetek várólistáinak feldolgozása [Queue Storage](./functions-bindings-storage-queue.md), [Service Bus](./functions-bindings-service-bus.md)vagy [Event Hubs](./functions-bindings-event-hubs.md) használatával |

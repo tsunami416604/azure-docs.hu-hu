@@ -16,12 +16,12 @@ ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96485dabd8cfb2ea9e3fb907940fccb05b5baee3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab425d0232310bd80d41c4028229c9da324a2bc9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89659348"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168236"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations--next-steps"></a>Azure Active Directory hibrid identitás kialakításával kapcsolatos megfontolások – következő lépések
 Most, hogy befejezte a követelmények meghatározását és megvizsgálta az összes lehetséges mobileszköz-kezelési megoldást, készen áll a következő lépésekre az Ön és szervezete számára legalkalmasabb támogató infrastruktúra üzembe helyezéséhez.
@@ -31,7 +31,7 @@ Az elméleti és eljárástervezési, telepítési és felügyeleti tartalmak ha
 
 * A [Microsoft System Center](/previous-versions/system-center/developer/cc817313(v=msdn.10)) megoldásai segíthetnek az infrastruktúra, a szabályzatok, a folyamatok és az ajánlott eljárások rögzítésében és összesítésében, így az informatikai részleg kezelhető rendszereket építhet ki és automatizálhat műveleteket.
 * A [Microsoft Intune](/mem/intune/) egy felhőalapú eszközkezelési szolgáltatás, amellyel felügyelheti a számítógépeket és a mobileszközöket, valamint biztosíthatja vállalata információinak biztonságát.
-* A [Microsoft 365 Mdm](https://technet.microsoft.com/library/ms.o365.cc.devicepolicy.aspx) lehetővé teszi a mobileszközök felügyeletét és védelmét, amikor azok a Microsoft 365 szervezethez csatlakoznak. A MDM használatával Microsoft 365 az eszköz biztonsági házirendjeinek és hozzáférési szabályainak megadásához, valamint a mobileszközök törléséhez, ha azok elveszettek vagy ellopták.
+* A [Microsoft 365 Mdm](/microsoft-365/admin/basic-mobility-security/overview) lehetővé teszi a mobileszközök felügyeletét és védelmét, amikor azok a Microsoft 365 szervezethez csatlakoznak. A MDM használatával Microsoft 365 az eszköz biztonsági házirendjeinek és hozzáférési szabályainak megadásához, valamint a mobileszközök törléséhez, ha azok elveszettek vagy ellopták.
 
 ## <a name="hybrid-identity-resources"></a>Hibrid identitás-erőforrások
 A következő erőforrások monitorozása gyakran tartalmazza a mobileszköz-kezelési megoldásokkal kapcsolatos legújabb híreket és frissítéseket:

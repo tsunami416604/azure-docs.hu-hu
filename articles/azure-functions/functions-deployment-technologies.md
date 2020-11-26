@@ -4,12 +4,12 @@ description: Megtudhatja, milyen módokon telepíthet programkódot a Azure Func
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 3988f30d0e6429a8cac450711d4033e4b2603d46
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 7a75408008a90a2c40553b1f6c5c196775a48e61
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900175"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168100"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Üzembe helyezési technológiák Azure Functions
 
@@ -34,7 +34,7 @@ Míg az adott függvények központi telepítései a környezetük alapján a le
 Azure Functions támogatja a többplatformos helyi fejlesztést és üzemeltetést Windows és Linux rendszeren. Jelenleg három üzemeltetési csomag érhető el:
 
 + [Fogyasztás](functions-scale.md#consumption-plan)
-+ [Prémium](functions-scale.md#premium-plan)
++ [Prémium szintű](functions-scale.md#premium-plan)
 + [Dedikált (App Service)](functions-scale.md#app-service-plan)
 
 Minden csomag eltérő viselkedéssel rendelkezik. Nem minden központi telepítési technológia érhető el Azure Functions minden egyes ízét. A következő diagramon látható, hogy mely telepítési technológiák támogatottak az operációs rendszer és a üzemeltetési csomag minden kombinációja esetén:
@@ -86,7 +86,7 @@ A Linuxon a távoli buildek engedélyezéséhez be kell állítani a következő
 * `ENABLE_ORYX_BUILD=true`
 * `SCM_DO_BUILD_DURING_DEPLOYMENT=true`
 
-Alapértelmezés szerint a [Azure functions Core Tools](functions-run-local.md) és a [Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure) -hoz készült Azure functions-bővítmény is távoli buildeket hajt végre a Linux rendszeren való üzembe helyezéskor. Emiatt mindkét eszköz automatikusan létrehozza ezeket a beállításokat az Azure-ban.
+Alapértelmezés szerint a [Azure functions Core Tools](functions-run-local.md) és a [Visual Studio Code](./create-first-function-vs-code-csharp.md#publish-the-project-to-azure) -hoz készült Azure functions-bővítmény is távoli buildeket hajt végre a Linux rendszeren való üzembe helyezéskor. Emiatt mindkét eszköz automatikusan létrehozza ezeket a beállításokat az Azure-ban.
 
 Az alkalmazások Linux rendszeren való létrehozásakor [a központi telepítési csomagból futnak](run-functions-from-deployment-package.md).
 
@@ -185,7 +185,7 @@ A portálon alapuló szerkesztőben közvetlenül szerkesztheti a Function alkal
 
 >__Mikor érdemes használni:__ A portál jó módszer a Azure Functions megkezdésére. Az intenzívebb fejlesztési munka érdekében javasoljuk, hogy a következő ügyféleszközök egyikét használja:
 >
->* [Visual Studio Code](functions-create-first-function-vs-code.md)
+>* [Visual Studio Code](./create-first-function-vs-code-csharp.md)
 >* [Azure Functions Core Tools (parancssor)](functions-run-local.md)
 >* [Visual Studio](functions-create-your-first-function-visual-studio.md)
 
@@ -210,7 +210,7 @@ Központi telepítés esetén az összes meglévő végrehajtás engedélyezett 
 
 Ha ennél az átmenetnél több vezérlésre van szüksége, használja az üzembe helyezési pontokat.
 
-## <a name="deployment-slots"></a>Üzembe helyezési pontok
+## <a name="deployment-slots"></a>Üzembehelyezési pontok
 
 Amikor üzembe helyezi a Function alkalmazást az Azure-ban, az üzembe helyezést külön üzembe helyezheti közvetlenül az éles környezet helyett. Az üzembe helyezési pontokkal kapcsolatos további információkért tekintse meg a részleteket a [Azure functions üzembe helyezési](functions-deployment-slots.md) pontok dokumentációjában.
 

@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 88e9d16a205df16a2be63e67f45cdbcf9144b30f
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f41354630f4885a30bd5c036495b216a2cc05599
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108456"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96167794"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Az Azure Functions méretezése és üzemeltetése
 
@@ -97,7 +97,7 @@ Még ha a mindig engedélyezve van, az egyes függvények végrehajtási időtú
 
 ## <a name="determine-the-hosting-plan-of-an-existing-application"></a>Meglévő alkalmazás üzemeltetési tervének meghatározása
 
-A Function app által használt üzemeltetési csomag meghatározásához tekintse meg a [Azure Portal](https://portal.azure.com)a Function alkalmazás **áttekintés** lapján található **app Service terv** című részt. Az árképzési csomag megjelenítéséhez válassza ki a **app Service terv**nevét, majd a bal oldali ablaktáblán válassza a **Tulajdonságok** lehetőséget.
+A Function app által használt üzemeltetési csomag meghatározásához tekintse meg a [Azure Portal](https://portal.azure.com)a Function alkalmazás **áttekintés** lapján található **app Service terv** című részt. Az árképzési csomag megjelenítéséhez válassza ki a **app Service terv** nevét, majd a bal oldali ablaktáblán válassza a **Tulajdonságok** lehetőséget.
 
 ![Méretezési terv megtekintése a portálon](./media/functions-scale/function-app-overview-portal.png)
 
@@ -144,7 +144,7 @@ A Azure Functions méretezési egysége a Function alkalmazás. A Function alkal
 
 ### <a name="cold-start"></a>Hidegindító
 
-Azt követően, hogy a függvény alkalmazása több percig is tétlen volt, a platform méretezheti a példányok számát, amelyeken az alkalmazás nullára fut. A következő kérelem a nullára való skálázás késleltetését adja meg. Ezt a késést a rendszer _hideg indításnak_nevezzük. A Function alkalmazás által betöltendő függőségek száma hatással lehet a hideg kezdési időpontra. A hidegebb indítás több problémát jelent a szinkron műveletek, például a HTTP-eseményindítók esetében, amelyeknek választ kell visszaadniuk. Ha a ritkán használt funkciók hatással vannak a függvényekre, érdemes lehet egy prémium csomagon vagy egy dedikált csomagban futtatni, amely mindig engedélyezve van.   
+Azt követően, hogy a függvény alkalmazása több percig is tétlen volt, a platform méretezheti a példányok számát, amelyeken az alkalmazás nullára fut. A következő kérelem a nullára való skálázás késleltetését adja meg. Ezt a késést a rendszer _hideg indításnak_ nevezzük. A Function alkalmazás által betöltendő függőségek száma hatással lehet a hideg kezdési időpontra. A hidegebb indítás több problémát jelent a szinkron műveletek, például a HTTP-eseményindítók esetében, amelyeknek választ kell visszaadniuk. Ha a ritkán használt funkciók hatással vannak a függvényekre, érdemes lehet egy prémium csomagon vagy egy dedikált csomagban futtatni, amely mindig engedélyezve van.   
 
 ### <a name="understanding-scaling-behaviors"></a>A skálázási viselkedés ismertetése
 
@@ -255,8 +255,8 @@ Az alábbi összehasonlító táblázat a Azure Functions app üzemeltetési cso
 
 <sup>1</sup> a különböző app Service-csomagokra vonatkozó beállításokra vonatkozó meghatározott korlátokat a [app Service csomag korlátai](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)című részben tekintheti meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-+ [Gyors útmutató: Azure Functions projekt létrehozása a Visual Studio Code használatával](functions-create-first-function-vs-code.md)
++ [Gyors útmutató: Azure Functions projekt létrehozása a Visual Studio Code használatával](./create-first-function-vs-code-csharp.md)
 + [Üzembe helyezési technológiák Azure Functions](functions-deployment-technologies.md) 
 + [Azure Functions – fejlesztői útmutató](functions-reference.md)

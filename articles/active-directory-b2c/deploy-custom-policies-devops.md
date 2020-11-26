@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4dd9f98f174144cef455157162694a470aa1065f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2652bd8ed33eb68e228f059fba9daa3c6e7c22da
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951763"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170157"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Egyéni szabályzatok üzembe helyezése az Azure-folyamatokkal
 
@@ -29,7 +29,7 @@ Három fő lépés szükséges ahhoz, hogy lehetővé tegye az Azure-folyamatok 
 1. Azure-folyamat konfigurálása
 
 > [!IMPORTANT]
-> Azure AD B2C egyéni szabályzatok Azure-folyamattal való kezelése jelenleg az Microsoft Graph API-végponton elérhető **előzetes** műveleteket használja `/beta` . Az API-k üzemi alkalmazásokban való használata nem támogatott. További információ: [Microsoft Graph REST API Beta-végpont referenciája](/graph/api/overview?toc=.%252fref%252ftoc.json&view=graph-rest-beta).
+> Azure AD B2C egyéni szabályzatok Azure-folyamattal való kezelése jelenleg az Microsoft Graph API-végponton elérhető **előzetes** műveleteket használja `/beta` . Az API-k üzemi alkalmazásokban való használata nem támogatott. További információ: [Microsoft Graph REST API Beta-végpont referenciája](/graph/api/overview?toc=.%2fref%2ftoc.json&view=graph-rest-beta).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -131,7 +131,7 @@ A tárház inicializálása és az egyéni házirend-fájlok feltöltése után 
 1. Válassza a **változók** fület.
 1. Adja hozzá a következő változókat a **folyamat változói** alatt, és állítsa be az értékeket a megadott módon:
 
-    | Name | Érték |
+    | Name (Név) | Érték |
     | ---- | ----- |
     | `clientId` | A korábban regisztrált alkalmazás **alkalmazás-(ügyfél-) azonosítója** . |
     | `clientSecret` | A korábban létrehozott **ügyfél-titok** értéke. <br /> Módosítsa a változó típusát **titkosra** (válassza a zárolás ikont). |

@@ -3,12 +3,12 @@ title: Azure Functions helyi fejlesztése és futtatása
 description: Megtudhatja, hogyan végezheti el a Azure Functions kódolását és tesztelését a helyi számítógépen, mielőtt a Azure Functions futtatja őket.
 ms.topic: conceptual
 ms.date: 09/04/2018
-ms.openlocfilehash: c011dff9f43de59d3f08445a7bbd5387b27563ad
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 9c37d51abcc8d612b777b845515cf07666369d4f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920032"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168134"
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Az Azure Functions helyi kódolása és tesztelése
 
@@ -20,7 +20,7 @@ A funkciók helyi számítógépen való fejlesztésének módja a [nyelvi](supp
 
 |Környezet                              |Nyelvek         |Leírás|
 |-----------------------------------------|------------|---|
-|[Visual Studio Code](functions-develop-vs-code.md)| [C# (osztály könyvtára)](functions-dotnet-class-library.md), [c# parancsfájl (. CSX)](functions-reference-csharp.md), [JavaScript](functions-reference-node.md), [PowerShell](./create-first-function-vs-code-powershell.md), [Python](functions-reference-python.md) | A [vs Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) -hoz készült Azure functions-bővítmény támogatja a vs Code funkciót. Az alapvető eszközöket igényli. Támogatja a Linux, a MacOS és a Windows fejlesztését, ha a Core Tools 2. x verzióját használja. További információért lásd: [az első függvény létrehozása a Visual Studio Code használatával](functions-create-first-function-vs-code.md). |
+|[Visual Studio Code](functions-develop-vs-code.md)| [C# (osztály könyvtára)](functions-dotnet-class-library.md), [c# parancsfájl (. CSX)](functions-reference-csharp.md), [JavaScript](functions-reference-node.md), [PowerShell](./create-first-function-vs-code-powershell.md), [Python](functions-reference-python.md) | A [vs Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) -hoz készült Azure functions-bővítmény támogatja a vs Code funkciót. Az alapvető eszközöket igényli. Támogatja a Linux, a MacOS és a Windows fejlesztését, ha a Core Tools 2. x verzióját használja. További információért lásd: [az első függvény létrehozása a Visual Studio Code használatával](./create-first-function-vs-code-csharp.md). |
 | [Parancssor vagy terminál](functions-run-local.md) | [C# (osztály könyvtára)](functions-dotnet-class-library.md), [c# parancsfájl (. CSX)](functions-reference-csharp.md), [JavaScript](functions-reference-node.md), [PowerShell](functions-reference-powershell.md), [Python](functions-reference-python.md) | A [Azure functions Core Tools] az alapszintű futtatókörnyezetet és sablonokat biztosít a függvények létrehozásához, amelyek lehetővé teszik a helyi fejlesztést. A 2. x verzió támogatja a Linux, a MacOS és a Windows fejlesztését. Minden környezet a helyi függvények futtatókörnyezetének alapvető eszközein alapul. |
 | [Visual Studio 2019](functions-develop-vs.md) | [C# (osztálytár)](functions-dotnet-class-library.md) | A Azure Functions eszközöket a [Visual Studio 2019](https://www.visualstudio.com/vs/) -es és újabb verzióiban elérhető **Azure-fejlesztési** számítási feladatok tartalmazzák. Lehetővé teszi a függvények fordítását egy osztály-függvénytárban, és a. dll közzétételét az Azure-ban. A a helyi teszteléshez szükséges alapvető eszközöket tartalmazza. További információ: [Azure functions fejlesztése a Visual Studióval](functions-develop-vs.md). |
 | [Maven](./create-first-function-cli-java.md) (különböző) | [Java](functions-reference-java.md) | A Java-függvények fejlesztését lehetővé tevő alapvető eszközökkel integrálható. A 2. x verzió támogatja a Linux, a MacOS és a Windows fejlesztését. További információ: [az első függvény létrehozása a Java és a Maven](./create-first-function-cli-java.md)használatával. Az [Eclipse](functions-create-maven-eclipse.md) és a [IntelliJ IDEA](functions-create-maven-intellij.md) használatával is támogatja a fejlesztést |

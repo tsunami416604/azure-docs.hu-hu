@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: baa0aa01c94c4deb35db8a59f7b4f81224ae1fd3
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5f529e6148463ae384791985659378cb9d0a5046
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836988"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168865"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>A Azure Active Directory Authentication Management üzemeltetési útmutatója
 
@@ -160,7 +160,7 @@ Egy szabványosított egyszeri bejelentkezési mechanizmus biztosítása a telje
 > [!NOTE]
 > Ha nem rendelkezik olyan mechanizmussal, amely a szervezeten belüli nem felügyelt alkalmazásokat deríti fel, javasoljuk, hogy a felderítési folyamat megvalósítását egy felhőalapú hozzáférési biztonsági közvetítő megoldással (CASB), például a [Microsoft Cloud app Security](https://www.microsoft.com/enterprise-mobility-security/cloud-app-security)használatával hajtsa végre.
 
-Végül, ha rendelkezik Azure AD-alkalmazás-katalógussal, és olyan alkalmazásokat használ, amelyek támogatják az egyszeri bejelentkezést az Azure AD-ben, javasoljuk, hogy az [alkalmazást az App Galleryben](../azuread-dev/howto-app-gallery-listing.md)tartalmazza.
+Végül, ha rendelkezik Azure AD-alkalmazás-katalógussal, és olyan alkalmazásokat használ, amelyek támogatják az egyszeri bejelentkezést az Azure AD-ben, javasoljuk, hogy az [alkalmazást az App Galleryben](../develop/v2-howto-app-gallery-listing.md)tartalmazza.
 
 #### <a name="single-sign-on-recommended-reading"></a>Egyszeri bejelentkezés ajánlott olvasás
 
@@ -255,7 +255,7 @@ A feltételes hozzáférés elengedhetetlen eszköz a szervezet biztonsági hely
 
 #### <a name="conditional-access-recommended-reading"></a>Feltételes hozzáférés ajánlott olvasmánya
 
-- [Ajánlott eljárások a feltételes hozzáféréshez Azure Active Directory](../conditional-access/best-practices.md)
+- [Ajánlott eljárások a feltételes hozzáféréshez Azure Active Directory](../conditional-access/overview.md)
 - [Identitás- és eszköz-hozzáférési konfigurációk](/microsoft-365/enterprise/microsoft-365-policies-configurations)
 - [Azure Active Directory feltételes hozzáférési beállítások ismertetése](../conditional-access/concept-conditional-access-conditions.md)
 - [Gyakori feltételes hozzáférési szabályzatok](../conditional-access/concept-conditional-access-policy-common.md)
@@ -372,7 +372,7 @@ A bejelentkezési tevékenységhez való hozzáférés, az Azure AD naplózási 
 - [Office 365 felügyeleti tevékenység API-referenciája](/office/office-365-management-api/office-365-management-activity-api-reference)
 - [Az Azure Active Directory Power BI-tartalomcsomag használata](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 A biztonságos identitás-infrastruktúrának 12 aspektusa van. Ez a lista segítséget nyújt a hitelesítő adatok biztonságossá tételéhez és kezeléséhez, a hitelesítési élmény meghatározásához, a hozzárendelés delegálásához, a használat méréséhez és a hozzáférési házirendek definiálásához a vállalati biztonsági helyzet alapján.
 

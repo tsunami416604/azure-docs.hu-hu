@@ -14,19 +14,19 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 646bd2b6a8e22698e6fbcb44d2442e921c7850a5
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e7a77c110c12fd6b42e8defbe43a40579b9c6588
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441504"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168763"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B-együttműködés hibaelhárítása
 
 Íme néhány jogorvoslat az Azure Active Directory (Azure AD) B2B-együttműködés gyakori problémáira.
 
    > [!IMPORTANT]
-   > **2021. március 31-ig**a Microsoft többé nem fogja támogatni a meghívások beváltását azáltal, hogy nem felügyelt Azure ad-fiókokat és bérlőket hoz létre vállalatközi együttműködési forgatókönyvek létrehozásához. A felkészülés során javasoljuk, hogy az ügyfelek [e-mail-egyszeri jelszavas hitelesítést](one-time-passcode.md)kérjenek. Szívesen fogadjuk visszajelzését ezen a nyilvános előzetes verzióban, és örömmel vesszük, hogy még több módszert is létre lehetne hozni az együttműködésre.
+   > **2021. március 31-ig** a Microsoft többé nem fogja támogatni a meghívások beváltását azáltal, hogy nem felügyelt Azure ad-fiókokat és bérlőket hoz létre vállalatközi együttműködési forgatókönyvek létrehozásához. A felkészülés során javasoljuk, hogy az ügyfelek [e-mail-egyszeri jelszavas hitelesítést](one-time-passcode.md)kérjenek. Szívesen fogadjuk visszajelzését ezen a nyilvános előzetes verzióban, és örömmel vesszük, hogy még több módszert is létre lehetne hozni az együttműködésre.
 
 ## <a name="ive-added-an-external-user-but-do-not-see-them-in-my-global-address-book-or-in-the-people-picker"></a>Hozzáadtam egy külső felhasználót, de nem látják őket a globális címjegyzékben vagy a People Picker
 
@@ -93,11 +93,11 @@ A vendég fiókkal rendelkező felhasználók nem jelentkezhetnek be, és a köv
 
 A felhasználó rendelkezik Azure-beli felhasználói fiókkal, és olyan vírusos bérlő, aki el lett hagyva vagy nem felügyelt. Emellett a bérlő nem rendelkezik globális vagy vállalati rendszergazdákkal.
 
-A probléma megoldásához át kell vennie az elhagyott bérlőt. Tekintse át a nem  [felügyelt címtár átvétele rendszergazdaként Azure Active Directory-ben](../users-groups-roles/domains-admin-takeover.md)című témakört. Az internetre irányuló DNS-t a szóban forgó tartományi utótaghoz is el kell érni ahhoz, hogy közvetlen bizonyítékot szolgáltasson a névtér irányításához. Ha a bérlőt visszaküldi a felügyelt állapotba, beszéljen az ügyféllel, hogy a felhasználók és az ellenőrzött tartománynév a legjobb megoldás-e a szervezet számára.
+A probléma megoldásához át kell vennie az elhagyott bérlőt. Tekintse át a nem  [felügyelt címtár átvétele rendszergazdaként Azure Active Directory-ben](../enterprise-users/domains-admin-takeover.md)című témakört. Az internetre irányuló DNS-t a szóban forgó tartományi utótaghoz is el kell érni ahhoz, hogy közvetlen bizonyítékot szolgáltasson a névtér irányításához. Ha a bérlőt visszaküldi a felügyelt állapotba, beszéljen az ügyféllel, hogy a felhasználók és az ellenőrzött tartománynév a legjobb megoldás-e a szervezet számára.
 
 ## <a name="a-guest-user-with-a-just-in-time-or-viral-tenant-is-unable-to-reset-their-password"></a>Egy igény szerinti vagy "vírusos" Bérlővel rendelkező vendég felhasználó nem tudja alaphelyzetbe állítani a jelszavát
 
-Ha az identitás bérlője egy igény szerinti (JIT) vagy vírusos bérlő (azaz egy különálló, nem felügyelt Azure-bérlő), csak a vendég felhasználó állíthatja alaphelyzetbe a jelszavát. Néha a szervezet [átveszi az olyan vírusos bérlők felügyeletét](../users-groups-roles/domains-admin-takeover.md) , amelyek akkor jönnek létre, amikor az alkalmazottak a munkahelyi e-mail-címeiket használják a szolgáltatások regisztrálására. Miután a szervezet átvesz egy vírusos bérlőt, csak az adott szervezet rendszergazdája állíthatja alaphelyzetbe a felhasználó jelszavát, vagy engedélyezheti a SSPR. Ha szükséges, a meghívó szervezetnél távolítsa el a vendég felhasználói fiókot a címtárból, és küldje el újra a meghívót.
+Ha az identitás bérlője egy igény szerinti (JIT) vagy vírusos bérlő (azaz egy különálló, nem felügyelt Azure-bérlő), csak a vendég felhasználó állíthatja alaphelyzetbe a jelszavát. Néha a szervezet [átveszi az olyan vírusos bérlők felügyeletét](../enterprise-users/domains-admin-takeover.md) , amelyek akkor jönnek létre, amikor az alkalmazottak a munkahelyi e-mail-címeiket használják a szolgáltatások regisztrálására. Miután a szervezet átvesz egy vírusos bérlőt, csak az adott szervezet rendszergazdája állíthatja alaphelyzetbe a felhasználó jelszavát, vagy engedélyezheti a SSPR. Ha szükséges, a meghívó szervezetnél távolítsa el a vendég felhasználói fiókot a címtárból, és küldje el újra a meghívót.
 
 ## <a name="a-guest-user-is-unable-to-use-the-azuread-powershell-v1-module"></a>A vendég felhasználó nem tudja használni a AzureAD PowerShell v1-modult
 
@@ -121,6 +121,6 @@ Ha véletlenül törölte a `aad-extensions-app` -et, 30 napja van a helyreáll�
 
 Ekkor látnia kell a visszaállított alkalmazást a Azure Portalban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Támogatás kérése B2B-együttműködéshez](../fundamentals/active-directory-troubleshooting-support-howto.md)

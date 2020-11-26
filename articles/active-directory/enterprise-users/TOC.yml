@@ -9,7 +9,7 @@
     - name: Felhasználók hozzáadása az Azure AD-hez
       href: ../fundamentals/add-users-azure-active-directory.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
     - name: Licencek hozzárendelése felhasználókhoz
-      href: /azure/active-directory/fundamentals/license-users-groups?context=%2fazure/active-directory/enterprise-users/context/ugr-context
+      href: ../fundamentals/license-users-groups.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
     - name: Csoportok lejáratának beállítása
       href: groups-quickstart-expiration.md
     - name: Csoportelnevezési szabályzat beállítása
@@ -57,13 +57,13 @@
         - name: Nem felügyelt könyvtárban található fiók bezárása
           href: users-close-account.md
         - name: Vendégfelhasználók hozzáadása
-          href: /azure/active-directory/b2b/what-is-b2b?context=%2fazure/active-directory/enterprise-users/context/ugr-context
+          href: ../external-identities/what-is-b2b.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
         - name: Szerepkörök hozzárendelése vendégfelhasználókhoz
-          href: /azure/active-directory/b2b/add-guest-to-role?context=%2fazure/active-directory/enterprise-users/context/ugr-context
+          href: ../external-identities/add-guest-to-role.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
         - name: Vendégfelhasználók hozzáférésének korlátozása
           href: users-restrict-guest-permissions.md
         - name: Dinamikus csoportok és vendégek
-          href: /azure/active-directory/b2b/use-dynamic-groups?context=%2fazure/active-directory/enterprise-users/context/ugr-context
+          href: ../external-identities/use-dynamic-groups.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
     - name: A szervezet kezelése
       items:
         - name: Azure AD-szervezetek

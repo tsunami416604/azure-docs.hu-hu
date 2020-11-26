@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ab14413de1f999747e5b3fb58b505e0a9258a55
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7cd2aa5e9ff8cbaeead69f11d2e3de7f760b53ec
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441215"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168644"
 ---
 # <a name="saml-authentication-with-azure-active-directory"></a>SAML-hitelesítés Azure Active Directory
 
@@ -53,8 +53,8 @@ Noha az SAML-címek egyik legfontosabb felhasználási esete az SSO, különöse
 
 ## <a name="implement-saml-authentication-with-azure-ad"></a>SAML-hitelesítés implementálása az Azure AD-vel
 
-* [Oktatóanyagok az SaaS-alkalmazások integrálásához a Azure Active Directory használatával](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) 
+* [Oktatóanyagok az SaaS-alkalmazások integrálásához a Azure Active Directory használatával](../saas-apps/tutorial-list.md) 
 
-* [SAML-alapú egyszeri bejelentkezés konfigurálása nem katalógusbeli alkalmazásokhoz](https://docs.microsoft.com/azure/active-directory/manage-apps/add-non-gallery-app) 
+* [SAML-alapú egyszeri bejelentkezés konfigurálása nem katalógusbeli alkalmazásokhoz](../manage-apps/add-application-portal.md) 
 
-* [Hogyan használja az Azure AD az SAML-protokollt](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-protocol-reference)
+* [Hogyan használja az Azure AD az SAML-protokollt](../develop/active-directory-saml-protocol-reference.md)

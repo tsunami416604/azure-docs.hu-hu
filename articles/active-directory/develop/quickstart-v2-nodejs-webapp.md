@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: 5cde4b539262c9e20bbcf2e7dd8c8e9de38035c3
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 643305057490cc550a5a8e39a892297b000cbc8e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94594249"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169409"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Rövid útmutató: bejelentkezés hozzáadása az OpenID használatával Node.js webalkalmazáshoz
 
@@ -51,9 +51,9 @@ Ebben a rövid útmutatóban egy Code-mintát tölt le és futtat, amely bemutat
 1. Az alkalmazás oldalainak listájában válassza a **Hitelesítés** elemet.
     - Az **átirányítási URI** -k szakaszban válassza a **web** elemet a kombinált listában, és adja meg a következő átirányítási URI-t: `http://localhost:3000/auth/openid/return`
     - A **Speciális beállítások** szakaszban állítsa be a **KIJELENTKEZÉSI URL-címet** a következőre: `https://localhost:3000` .
-    - A **Speciális beállítások > implicit engedélyezési** szakaszban tekintse meg az **azonosító jogkivonatokat** , mivel ez a minta megköveteli, hogy az [implicit engedélyezési folyamat](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-implicit-grant-flow) engedélyezze a bejelentkezést a felhasználó számára.
+    - A **Speciális beállítások > implicit engedélyezési** szakaszban tekintse meg az **azonosító jogkivonatokat** , mivel ez a minta megköveteli, hogy az [implicit engedélyezési folyamat](./v2-oauth2-implicit-grant-flow.md) engedélyezze a bejelentkezést a felhasználó számára.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 1. A **tanúsítványok & titkok** oldal **ügyfél-titkok** szakaszában válassza az **új ügyfél titka** elemet.
     - Adja meg a kulcs leírását (például az alkalmazás titkos kulcsaként).

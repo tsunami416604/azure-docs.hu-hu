@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 0b54a8227594a81c17dcaaaaa6c599d70217c498
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d899fe7f84a8708bb8ee32cc008567b272a885c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90705860"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169375"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>A MSAL használata nemzeti Felhőbeli környezetben
 
@@ -49,7 +49,7 @@ Miután eldöntötte, hogy elvégezte az alkalmazás regisztrálását, külön 
 
 ### <a name="get-an-azure-government-subscription"></a>Azure Government előfizetés beszerzése
 
-Azure Government előfizetés beszerzéséhez tekintse meg az [előfizetésének kezelése és csatlakoztatása Azure Government-ban](../../azure-government/documentation-government-manage-subscriptions.md)című témakört.
+Azure Government előfizetés beszerzéséhez tekintse meg az [előfizetésének kezelése és csatlakoztatása Azure Government-ban](../../azure-government/compare-azure-government-global-azure.md)című témakört.
 
 Ha nem rendelkezik Azure Government-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/global-infrastructure/government/request/) a Kezdés előtt.
 
@@ -77,12 +77,12 @@ MSAL.js alkalmazásának engedélyezése a szuverén felhők esetében:
 1. Ha a fiókja több bérlőhöz biztosít hozzáférést, válassza ki a fiókját a jobb felső sarokban, és állítsa be a portál munkamenetét a kívánt Azure AD-bérlőre.
 1. Nyissa meg a Microsoft Identity platform [Alkalmazásregisztrációk](https://aka.ms/ra/ff) lapját a fejlesztők számára.
 1. Ha megjelenik az **Alkalmazás regisztrálása** oldal, adjon nevet az alkalmazásnak.
-1. A **támogatott fiókok típusai**területen válassza **a fiókok lehetőséget bármely szervezeti címtárban**.
+1. A **támogatott fiókok típusai** területen válassza **a fiókok lehetőséget bármely szervezeti címtárban**.
 1. Az **átirányítási URI** szakaszban válassza ki a **webplatformot** , és állítsa az értéket az alkalmazás URL-címére a webkiszolgáló alapján. A következő részekben megtudhatja, hogyan állíthatja be és kérheti le az átirányítási URL-címet a Visual Studióban és a csomópontban.
 1. Válassza a **Regisztráció** lehetőséget.
 1. Az alkalmazás **áttekintése** lapon jegyezze fel az **alkalmazás (ügyfél) azonosítójának** értékét.
-1. Ez az oktatóanyag megköveteli az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md)engedélyezését. A regisztrált alkalmazás bal oldali ablaktábláján válassza a **hitelesítés**lehetőséget.
-1. A **Speciális beállítások**területén az **implicit engedélyezés**területen jelölje be az **azonosító tokenek** és a **hozzáférési tokenek** jelölőnégyzetet. Az azonosító jogkivonatok és hozzáférési tokenek megadása kötelező, mert az alkalmazásnak be kell jelentkeznie a felhasználókba, és hívnia kell egy API-t.
+1. Ez az oktatóanyag megköveteli az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md)engedélyezését. A regisztrált alkalmazás bal oldali ablaktábláján válassza a **hitelesítés** lehetőséget.
+1. A **Speciális beállítások** területén az **implicit engedélyezés** területen jelölje be az **azonosító tokenek** és a **hozzáférési tokenek** jelölőnégyzetet. Az azonosító jogkivonatok és hozzáférési tokenek megadása kötelező, mert az alkalmazásnak be kell jelentkeznie a felhasználókba, és hívnia kell egy API-t.
 1. Kattintson a **Mentés** gombra.
 
 ### <a name="step-2--set-up-your-web-server-or-project"></a>2. lépés: a webkiszolgáló vagy projekt beállítása

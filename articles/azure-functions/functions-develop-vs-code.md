@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan fejlesztheti és tesztelheti Azure Functions a 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
-ms.openlocfilehash: c851f5284b87f224932b027fd10ce720327639c2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 573177615ff898326eb29649a7f766b5df34b587
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010518"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168431"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Az Azure Functions fejlesztése a Visual Studio Code használatával
 
@@ -34,7 +34,7 @@ A bővítmény a következő nyelvekkel használható, amelyeket a Azure Functio
 
 Ebben a cikkben a példák jelenleg csak a JavaScript (Node.js) és a C# Class Library függvények esetében érhetők el.  
 
-Ez a cikk részletesen ismerteti, hogyan használhatók a Azure Functions bővítmény a függvények fejlesztéséhez és az Azure-ban való közzétételéhez. A cikk elolvasása előtt létre kell [hoznia az első függvényt a Visual Studio Code használatával](functions-create-first-function-vs-code.md).
+Ez a cikk részletesen ismerteti, hogyan használhatók a Azure Functions bővítmény a függvények fejlesztéséhez és az Azure-ban való közzétételéhez. A cikk elolvasása előtt létre kell [hoznia az első függvényt a Visual Studio Code használatával](./create-first-function-vs-code-csharp.md).
 
 > [!IMPORTANT]
 > Egyetlen Function-alkalmazás esetében ne keverje a helyi fejlesztést és a portál fejlesztését. Amikor egy helyi projektből tesz közzé egy Function alkalmazást, a telepítési folyamat felülírja a portálon kifejlesztett összes funkciót.
@@ -93,7 +93,7 @@ A Project sablon létrehoz egy projektet a választott nyelven, és telepíti a 
 
 A nyelvtől függően ezek a többi fájl is létrejön:
 
-# <a name="c"></a>[C#\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 * A függvényt megvalósító [HttpExample.cs-függvénytár-fájl](functions-dotnet-class-library.md#functions-class-library-project) .
 
@@ -125,7 +125,7 @@ Ezen a ponton adhat hozzá bemeneti és kimeneti kötéseket a függvényhez a [
 
 A HTTP-és időzítő-eseményindítók kivételével a kötések a kiterjesztési csomagokban vannak implementálva. Telepítenie kell a kiterjesztési csomagokat a szükséges eseményindítók és kötések számára. A kötési bővítmények telepítésének folyamata a projekt nyelvétől függ.
 
-# <a name="c"></a>[C#\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 A terminál ablakban futtassa a [DotNet-csomag hozzáadása](/dotnet/core/tools/dotnet-add-package) parancsot a projektben szükséges kiterjesztési csomagok telepítéséhez. A következő parancs telepíti az Azure Storage bővítményt, amely a blob, a várólista és a Table Storage kötéseit valósítja meg.
 
@@ -145,7 +145,7 @@ Hozzáadhat egy új függvényt egy meglévő projekthez az előre meghatározot
 
 A művelet eredménye a projekt nyelvétől függ:
 
-# <a name="c"></a>[C#\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 A rendszer új C#-függvénytárat (. cs) ad hozzá a projekthez.
 
@@ -161,7 +161,7 @@ A függvényt kiterjesztheti a bemeneti és kimeneti kötések hozzáadásával.
 
 Az alábbi példák egy nevű Storage-várólistához csatlakoznak `outqueue` , ahol a Storage-fiók kapcsolati karakterlánca a `MyStorageConnection` local.settings.jsalkalmazás beállításában van beállítva.
 
-# <a name="c"></a>[C#\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 A Function metódus frissítésével adja hozzá a következő paramétert a `Run` metódus-definícióhoz:
 
@@ -233,7 +233,7 @@ A Visual Studio Code-ból való közzétételkor kihasználhatja a [zip üzembe 
 
 ### <a name="quick-function-app-create"></a>Gyors funkció alkalmazás létrehozása
 
-Ha az **+ új Function alkalmazás létrehozása az Azure-ban** lehetőséget választja, a bővítmény automatikusan generál értékeket a Function alkalmazás által igényelt Azure-erőforrásokhoz. Ezek az értékek a kiválasztott Function app-név alapján jelennek meg. A Project új Azure-beli Function alkalmazásban való közzétételére szolgáló alapértelmezett beállításokkal kapcsolatos példát a [Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure)rövid útmutatójában talál.
+Ha az **+ új Function alkalmazás létrehozása az Azure-ban** lehetőséget választja, a bővítmény automatikusan generál értékeket a Function alkalmazás által igényelt Azure-erőforrásokhoz. Ezek az értékek a kiválasztott Function app-név alapján jelennek meg. A Project új Azure-beli Function alkalmazásban való közzétételére szolgáló alapértelmezett beállításokkal kapcsolatos példát a [Visual Studio Code](./create-first-function-vs-code-csharp.md#publish-the-project-to-azure)rövid útmutatójában talál.
 
 Ha explicit neveket kíván megadni a létrehozott erőforrásokhoz, ki kell választania a speciális létrehozási útvonalat.
 
@@ -441,7 +441,7 @@ A Azure Functions bővítmény egy hasznos grafikus felületet biztosít az Azur
 | **Véglegesítés megtekintése a GitHubon** | Megjeleníti a legutóbbi véglegesítés egy adott központi telepítésben, ha a Function alkalmazás egy adattárhoz csatlakozik. |
 | **Telepítési naplók megtekintése** | Megjeleníti az Azure-beli Function alkalmazáshoz megadott központi telepítés naplóit. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Functions Core Toolsről: [a Azure functions Core Tools használata](functions-run-local.md).
 

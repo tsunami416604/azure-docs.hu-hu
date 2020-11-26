@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: ryanwi
 ms.reviewer: jeedes
-ms.openlocfilehash: 37f305a7564382b9c6c5a031340d81a22cfedbf2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0df811f4e8b5d6a95868dfebe192e96fbfa80ed9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88120711"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169256"
 ---
 # <a name="add-a-multitenant-application-to-the-azure-ad-application-gallery"></a>Több-bérlős alkalmazás hozzáadása az Azure AD alkalmazáskatalógusához
 
@@ -29,9 +29,9 @@ A Azure Active Directory (Azure AD) egy felhőalapú identitás-szolgáltatás. 
 ## <a name="if-your-application-supports-saml-or-openidconnect"></a>Ha az alkalmazás támogatja az SAML-t vagy a OpenIDConnect-t
 Ha rendelkezik egy több-bérlős alkalmazással, amelyet az Azure AD-alkalmazás-katalógusban szeretne felvenni, először győződjön meg arról, hogy az alkalmazás támogatja a következő egyszeri bejelentkezési technológiák egyikét:
 
-- **OpenID Connect**: az alkalmazás listájának létrehozásához hozza létre a több-bérlős alkalmazást az Azure ad-ben, és implementálja az [Azure ad-beli engedélyezési keretrendszert](./consent-framework.md) az alkalmazáshoz. Küldje el a bejelentkezési kérést egy közös végpontra, hogy bármely ügyfél beleegyezik az alkalmazásba. A felhasználó hozzáférését a bérlő azonosítója és a jogkivonatban kapott felhasználó egyszerű felhasználóneve alapján szabályozhatja. Küldje el az alkalmazást az [alkalmazás listázása az Azure Active Directory Application Galleryben](../azuread-dev/howto-app-gallery-listing.md)című részében ismertetett eljárással.
+- **OpenID Connect**: az alkalmazás listájának létrehozásához hozza létre a több-bérlős alkalmazást az Azure ad-ben, és implementálja az [Azure ad-beli engedélyezési keretrendszert](./consent-framework.md) az alkalmazáshoz. Küldje el a bejelentkezési kérést egy közös végpontra, hogy bármely ügyfél beleegyezik az alkalmazásba. A felhasználó hozzáférését a bérlő azonosítója és a jogkivonatban kapott felhasználó egyszerű felhasználóneve alapján szabályozhatja. Küldje el az alkalmazást az [alkalmazás listázása az Azure Active Directory Application Galleryben](./v2-howto-app-gallery-listing.md)című részében ismertetett eljárással.
 
-- **SAML**: Ha az alkalmazása támogatja az SAML 2,0-et, az alkalmazás a katalógusban is szerepelhet. Kövesse az [alkalmazás listázása a Azure Active Directory Application Galleryben](../azuread-dev/howto-app-gallery-listing.md)című témakör utasításait.
+- **SAML**: Ha az alkalmazása támogatja az SAML 2,0-et, az alkalmazás a katalógusban is szerepelhet. Kövesse az [alkalmazás listázása a Azure Active Directory Application Galleryben](./v2-howto-app-gallery-listing.md)című témakör utasításait.
 
 ## <a name="if-your-application-does-not-support-saml-or-openidconnect"></a>Ha az alkalmazás nem támogatja az SAML-t vagy a OpenIDConnect-t
 Az SAML-vagy OpenIDConnect-t nem támogató alkalmazások továbbra is integrálhatók az alkalmazás-katalógusba a jelszó egyszeri bejelentkezési technológiájának használatával.
@@ -40,11 +40,11 @@ A jelszavas egyszeri bejelentkezés, más néven a jelszó-tároló, lehetővé 
 
 Ha az alkalmazást a következő technológiával szeretné listázni:
 1. Hozzon létre egy webalkalmazást, amely tartalmaz egy HTML-bejelentkezési oldalt a [jelszó-egyszeri bejelentkezés](../manage-apps/what-is-single-sign-on.md)konfigurálásához. 
-2. Küldje el a kérelmet az [alkalmazás listázása a Azure Active Directory Application Galleryben](../azuread-dev/howto-app-gallery-listing.md)című témakörben leírtak szerint.
+2. Küldje el a kérelmet az [alkalmazás listázása a Azure Active Directory Application Galleryben](./v2-howto-app-gallery-listing.md)című témakörben leírtak szerint.
 
 ## <a name="escalations"></a>Azok következményeinek
 
 Bármilyen eszkaláció esetén küldjön e-mailt az [Azure ad SSO integrációs csapatának](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) , és a lehető leghamarabb visszakerülünk Önnek.
 
 ## <a name="next-steps"></a>Következő lépések
-Megtudhatja, hogyan [listázhatja az alkalmazást az Azure Active Directory alkalmazás-](../azuread-dev/howto-app-gallery-listing.md)katalógusban.
+Megtudhatja, hogyan [listázhatja az alkalmazást az Azure Active Directory alkalmazás-](./v2-howto-app-gallery-listing.md)katalógusban.

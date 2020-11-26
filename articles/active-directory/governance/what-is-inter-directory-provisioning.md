@@ -11,14 +11,14 @@ ms.date: 10/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cbca2d00d10b6595b8a1d13251dd88c65667541
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: df199afd85c788299334087321c3edac8482698d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135334"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168508"
 ---
-# <a name="what-is-inter-directory-provisioning"></a>Mi az Inter-Directory kiépítés?
+# <a name="what-is-inter-directory-provisioning"></a>Mi az a címtárak közötti üzembe helyezés?
 
 A címtár egy megosztott információs infrastruktúra, amely elemek és hálózati erőforrások keresésére, kezelésére, felügyeletére és rendszerezésére szolgál.  A címtárszolgáltatások szolgáltatást használó alkalmazások például a Microsoft Active Directory és az Azure AD.  Az identitások a címtár-rendszerek olyan meghatározásokat tesznek lehetővé, mint a mi, és akik számára engedélyezett az adott erőforrások használata.
 
@@ -35,7 +35,7 @@ Az Azure AD jelenleg három módszert támogat a könyvtárak közötti kiépít
 
 - [Azure ad Connect Cloud kiépítés](../cloud-provisioning/what-is-cloud-provisioning.md) – egy új Microsoft-ügynök, amely a hibrid identitási célok teljesítésére és megvalósítására lett tervezve.  A szolgáltatás Active Directory és az Azure AD közötti, kis-és nagyszámú Inter-Directory kiépítési élményt nyújt.
 
-- [Microsoft Identity Manager](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016) – a Microsoft helyszíni identitás-és hozzáférés-kezelési megoldása, amely segít a felhasználók, a hitelesítő adatok, a házirendek és a hozzáférés kezelésében a szervezeten belül. Emellett a a többkönyvtáros kiépítés lehetővé teszi a hibrid identitási környezetek elérését Active Directory, az Azure AD és más címtárakban.
+- [Microsoft Identity Manager](/microsoft-identity-manager/microsoft-identity-manager-2016) – a Microsoft helyszíni identitás-és hozzáférés-kezelési megoldása, amely segít a felhasználók, a hitelesítő adatok, a házirendek és a hozzáférés kezelésében a szervezeten belül. Emellett a a többkönyvtáros kiépítés lehetővé teszi a hibrid identitási környezetek elérését Active Directory, az Azure AD és más címtárakban.
 
 ### <a name="key-benefits"></a>Főbb előnyök
 
@@ -45,11 +45,11 @@ A könyvtárak közötti kiépítés ezen képessége a következő jelentős ü
 - [Átmenő hitelesítés](../hybrid/how-to-connect-pta.md) – a bejelentkezési módszer, amely lehetővé teszi, hogy a felhasználók ugyanazt a jelszót használják a helyszínen és a felhőben, de nincs szükség összevont környezet további infrastruktúrájának használatára.
 - [Összevonási integráció](../hybrid/how-to-connect-fed-whatis.md) – a hibrid környezetek helyszíni AD FS infrastruktúra használatával történő konfigurálására használható. Emellett AD FS felügyeleti képességeket is biztosít, mint például a tanúsítvány megújítása és a AD FS-kiszolgáló további telepítései.
 - [Szinkronizálás](../hybrid/how-to-connect-sync-whatis.md) – a felhasználók, csoportok és egyéb objektumok létrehozásához felelős.  Továbbá a helyszíni felhasználók és csoportok személyazonossági információinak biztosítása a felhővel egyező.  Ez a szinkronizálás jelszó-kivonatokat is tartalmaz.
-- [Állapotfigyelő – robusztus](../hybrid/whatis-hybrid-identity-health.md) figyelést biztosíthat, és központi helyet biztosíthat a Azure Portal a tevékenység megtekintéséhez. 
+- [Állapotfigyelő – robusztus](../hybrid/whatis-azure-ad-connect.md) figyelést biztosíthat, és központi helyet biztosíthat a Azure Portal a tevékenység megtekintéséhez. 
 
 
 ## <a name="next-steps"></a>Következő lépések 
 - [Mi az Identity Lifecycle Management?](what-is-identity-lifecycle-management.md)
 - [Mi az az üzembe helyezés?](what-is-provisioning.md)
 - [Mi az a HR-alapú kiépítés?](what-is-hr-driven-provisioning.md)
-- [Mi az App kiépítés?](what-is-app-provisioning.md)
+- [Mi az az alkalmazás-üzembehelyezés?](what-is-app-provisioning.md)

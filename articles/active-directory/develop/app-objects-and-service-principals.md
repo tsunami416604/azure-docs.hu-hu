@@ -13,19 +13,19 @@ ms.date: 07/22/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: db25e0a9ebe01a45c594fe214efcdd3551cf6c14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fe48cf28ab3004087e2b022d7a9eca69a1e58e2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449370"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169630"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Alkalmazás- és szolgáltatásnév-objektumok az Azure Active Directoryban
 
 Ez a cikk az alkalmazások regisztrálását, az alkalmazások objektumait és az egyszerű szolgáltatásokat ismerteti Azure Active Directoryban: mit, hogyan használják, és hogyan kapcsolódnak egymáshoz. Egy több-bérlős példa is látható, amely szemlélteti az alkalmazás alkalmazás-objektuma és a hozzá tartozó egyszerű szolgáltatásnév objektumok közötti kapcsolatot.
 
 ## <a name="application-registration"></a>Alkalmazásregisztráció
-Az identitás-és hozzáférés-kezelési funkciók Azure AD-be való delegálásához egy alkalmazást regisztrálni kell egy Azure AD- [bérlőben](developer-glossary.md#tenant). Ha az Azure AD-vel regisztrálja az alkalmazást, az alkalmazáshoz olyan identitás-konfigurációt hoz létre, amely lehetővé teszi, hogy integrálható legyen az Azure AD-vel. Ha a [Azure Portalban][AZURE-Portal]regisztrál egy alkalmazást, Ön dönti el, hogy egyetlen bérlő (csak a bérlőben érhető el) vagy több-bérlős (más bérlők számára elérhető), és igény szerint beállíthat-e ÁTirányítási URI-t (ahol a hozzáférési jogkivonat el van küldve).
+Az identitás-és hozzáférés-kezelési funkciók Azure AD-be való delegálásához egy alkalmazást regisztrálni kell egy Azure AD- [bérlőben](developer-glossary.md#tenant). Ha az Azure AD-vel regisztrálja az alkalmazást, az alkalmazáshoz olyan identitás-konfigurációt hoz létre, amely lehetővé teszi, hogy integrálható legyen az Azure AD-vel. Ha a [Azure Portalban][AZURE-Portal]regisztrál egy alkalmazást, kiválaszthatja, hogy egyetlen bérlő (csak a bérlőben érhető el) vagy több-bérlős (más bérlők számára elérhető), és opcionálisan beállíthat-e ÁTirányítási URI-t (ahol a hozzáférési jogkivonat el van küldve).
 
 :::image type="content" source="media/app-objects-and-service-principals/app-registration.png" alt-text="Képernyőkép a Azure Portal az alkalmazás regisztrálása panelről":::
 

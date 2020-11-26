@@ -14,18 +14,18 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: hahamil
 ms.reviewer: marsma
-ms.openlocfilehash: 7e53e21b6d929e2f0ba9a2e23e4e8e1b2278f828
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 3f5791bfcf6547b7fc4e84bee3d4c1c49453af9c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209633"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169494"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-msal"></a>Útmutató: alkalmazások közötti egyszeri bejelentkezés engedélyezése Androidon a MSAL használatával
 
 Az egyszeri bejelentkezés (SSO) lehetővé teszi, hogy a felhasználók csak egyszer adják meg hitelesítő adataikat, és a hitelesítő adataik automatikusan működjenek az alkalmazások között.
 
-A [Microsoft Identity platform](/azure/active-directory/develop/) és a Microsoft Authentication Library (MSAL) segítségével engedélyezheti az egyszeri bejelentkezést a saját alkalmazáscsomag-alkalmazásokon keresztül. A közvetítői képesség és a hitelesítő alkalmazások esetében kiterjesztheti az egyszeri bejelentkezést a teljes eszközön.
+A [Microsoft Identity platform](./index.yml) és a Microsoft Authentication Library (MSAL) segítségével engedélyezheti az egyszeri bejelentkezést a saját alkalmazáscsomag-alkalmazásokon keresztül. A közvetítői képesség és a hitelesítő alkalmazások esetében kiterjesztheti az egyszeri bejelentkezést a teljes eszközön.
 
 Ebben az útmutatóban megtudhatja, hogyan konfigurálhatja az alkalmazás által használt SDK-kat az egyszeri bejelentkezéshez az ügyfelek számára.
 
@@ -33,7 +33,7 @@ Ebben az útmutatóban megtudhatja, hogyan konfigurálhatja az alkalmazás álta
 
 Ez az útmutató feltételezi, hogy tudja, hogyan:
 
-- Az alkalmazás kiépítése a Azure Portal használatával. A témakörrel kapcsolatos további információkért tekintse meg az alkalmazások létrehozásával kapcsolatos utasításokat [az Android-oktatóanyagban](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-android#create-a-project) .
+- Az alkalmazás kiépítése a Azure Portal használatával. A témakörrel kapcsolatos további információkért tekintse meg az alkalmazások létrehozásával kapcsolatos utasításokat [az Android-oktatóanyagban](./tutorial-v2-android.md#create-a-project) .
 - Az alkalmazás integrálása az [Androidhoz készült Microsoft-hitelesítési könyvtárral](https://github.com/AzureAD/microsoft-authentication-library-for-android).
 
 ## <a name="methods-for-single-sign-on"></a>Az egyszeri bejelentkezés módszerei
@@ -120,7 +120,7 @@ keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.k
 Miután létrehozta az aláírási kivonatot a (z) *eszközzel*, a Azure Portal használatával hozza létre az ÁTirányítási URI-t:
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza ki az Android-alkalmazást a **Alkalmazásregisztrációkban**.
-1. Válassza **Authentication**  >  **a hitelesítés platform hozzáadása**  >  **Android**lehetőséget.
+1. Válassza **Authentication**  >  **a hitelesítés platform hozzáadása**  >  **Android** lehetőséget.
 1. A megnyíló **Android-alkalmazás konfigurálása** panelen adja meg a korábban létrehozott **aláírási kivonatot** és a **csomag nevét**.
 1. Válassza a **Konfigurálás** gombot.
 
@@ -159,7 +159,7 @@ Ha `MsalClientException` hibakódot kap `"BROKER_BIND_FAILURE"` , két lehetős�
 Előfordulhat, hogy nem azonnal egyértelmű, hogy a közvetítő integrációja működik, de a következő lépésekkel ellenőrizheti:
 
 1. Az Android-eszközön végezzen el egy kérelmet a közvetítő használatával.
-1. Az Android-eszköz beállításai között keresse meg a által hitelesített fióknak megfelelő újonnan létrehozott fiókot. A fióknak *munkahelyi fiók*típusúnak kell lennie.
+1. Az Android-eszköz beállításai között keresse meg a által hitelesített fióknak megfelelő újonnan létrehozott fiókot. A fióknak *munkahelyi fiók* típusúnak kell lennie.
 
 Ha meg szeretné ismételni a tesztet, eltávolíthatja a fiókot a beállítások közül.
 

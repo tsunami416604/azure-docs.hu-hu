@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan fejlesztheti a függvényeket a Python használ
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 7d97405a0b75129ddb0da581955728b393bf49ca
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8254abda68949e6884143316d4b29b07ade129dc
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539073"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96167845"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python fejlesztői útmutató
 
@@ -19,7 +19,7 @@ Python-fejlesztőként a következő cikkek egyike is érdekli:
 
 | Első lépések | Alapelvek| Forgatókönyvek/minták |
 | -- | -- | -- | 
-| <ul><li>[Python-függvény a Visual Studio Code használatával](./functions-create-first-function-vs-code.md?pivots=programming-language-python)</li><li>[Python-függvény a Terminal/Command parancssorral](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python)</li></ul> | <ul><li>[Fejlesztői útmutató](functions-reference.md)</li><li>[Üzemeltetési lehetőségek](functions-scale.md)</li><li>[Teljesítménnyel &nbsp; kapcsolatos megfontolások](functions-best-practices.md)</li></ul> | <ul><li>[Képek besorolása a PyTorch használatával](machine-learning-pytorch.md)</li><li>[Azure Automation-minta](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[Gépi tanulás a TensorFlow-val](functions-machine-learning-tensorflow.md)</li><li>[Python-minták tallózása](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
+| <ul><li>[Python-függvény a Visual Studio Code használatával](./create-first-function-vs-code-csharp.md?pivots=programming-language-python)</li><li>[Python-függvény a Terminal/Command parancssorral](./create-first-function-cli-csharp.md?pivots=programming-language-python)</li></ul> | <ul><li>[Fejlesztői útmutató](functions-reference.md)</li><li>[Üzemeltetési lehetőségek](functions-scale.md)</li><li>[Teljesítménnyel &nbsp; kapcsolatos megfontolások](functions-best-practices.md)</li></ul> | <ul><li>[Képek besorolása a PyTorch használatával](machine-learning-pytorch.md)</li><li>[Azure Automation-minta](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[Gépi tanulás a TensorFlow-val](functions-machine-learning-tensorflow.md)</li><li>[Python-minták tallózása](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
 
 ## <a name="programming-model"></a>Programozási modell
 
@@ -93,18 +93,18 @@ A Python functions projekt javasolt mappastruktúrát a következő példához h
 ```
 A fő projekt mappája (<project_root>) a következő fájlokat tartalmazza:
 
-* *local.settings.json* : az Alkalmazásbeállítások és a kapcsolódási karakterláncok helyi futtatásakor való tárolásához használatos. Ez a fájl nem jelenik meg az Azure-ban. További információ: [Local. Settings. file](functions-run-local.md#local-settings-file).
-* *requirements.txt* : azon Python-csomagok listáját tartalmazza, amelyeket a rendszeren az Azure-ba való közzétételkor telepít.
-* *host.json* : olyan globális konfigurációs beállításokat tartalmaz, amelyek a Function alkalmazás összes funkcióját érintik. Ez a fájl közzé van téve az Azure-ban. Nem minden beállítás támogatott a helyi futtatásakor. További információ: [host.json](functions-host-json.md).
-* *. vscode/* : (nem kötelező) a tároló vscode konfigurációját tartalmazza. További információ: VSCode- [beállítás](https://code.visualstudio.com/docs/getstarted/settings).
-* *. venv/* : (nem kötelező) a helyi fejlesztés által használt Python virtuális környezetet tartalmaz.
-* *Docker* : (nem kötelező) a projekt [Egyéni tárolóban](functions-create-function-linux-custom-image.md)történő közzétételekor használatos.
-* *tesztek/* : (nem kötelező) a Function alkalmazás tesztelési eseteit tartalmazza.
-* *. funcignore* : (nem kötelező) deklarálja azokat a fájlokat, amelyek nem tudnak közzétenni az Azure-ban. Ez a fájl általában a `.vscode/` szerkesztői beállítások figyelmen kívül hagyása, `.venv/` a helyi Python virtuális környezet figyelmen kívül hagyása, `tests/` a tesztelési esetek figyelmen kívül hagyása és `local.settings.json` a helyi Alkalmazásbeállítások közzétételének megakadályozása érdekében.
+* *local.settings.json*: az Alkalmazásbeállítások és a kapcsolódási karakterláncok helyi futtatásakor való tárolásához használatos. Ez a fájl nem jelenik meg az Azure-ban. További információ: [Local. Settings. file](functions-run-local.md#local-settings-file).
+* *requirements.txt*: azon Python-csomagok listáját tartalmazza, amelyeket a rendszeren az Azure-ba való közzétételkor telepít.
+* *host.json*: olyan globális konfigurációs beállításokat tartalmaz, amelyek a Function alkalmazás összes funkcióját érintik. Ez a fájl közzé van téve az Azure-ban. Nem minden beállítás támogatott a helyi futtatásakor. További információ: [host.json](functions-host-json.md).
+* *. vscode/*: (nem kötelező) a tároló vscode konfigurációját tartalmazza. További információ: VSCode- [beállítás](https://code.visualstudio.com/docs/getstarted/settings).
+* *. venv/*: (nem kötelező) a helyi fejlesztés által használt Python virtuális környezetet tartalmaz.
+* *Docker*: (nem kötelező) a projekt [Egyéni tárolóban](functions-create-function-linux-custom-image.md)történő közzétételekor használatos.
+* *tesztek/*: (nem kötelező) a Function alkalmazás tesztelési eseteit tartalmazza.
+* *. funcignore*: (nem kötelező) deklarálja azokat a fájlokat, amelyek nem tudnak közzétenni az Azure-ban. Ez a fájl általában a `.vscode/` szerkesztői beállítások figyelmen kívül hagyása, `.venv/` a helyi Python virtuális környezet figyelmen kívül hagyása, `tests/` a tesztelési esetek figyelmen kívül hagyása és `local.settings.json` a helyi Alkalmazásbeállítások közzétételének megakadályozása érdekében.
 
 Minden függvényhez tartozik a saját kód fájlja és a kötési konfigurációs fájl (function.js).
 
-Amikor az Azure-beli Function alkalmazásba helyezi üzembe a projektet, a főprojekt ( *<project_root>* ) mappájának teljes tartalmát bele kell foglalni a csomagba, de nem maga a mappa, ami azt jelenti, hogy a `host.json` csomag gyökerében kell lennie. Javasoljuk, hogy a teszteket egy olyan mappában tartsa, amely más függvényekkel együtt, ebben a példában `tests/` . További információ: [Unit Testing (egység tesztelése](#unit-testing)).
+Amikor az Azure-beli Function alkalmazásba helyezi üzembe a projektet, a főprojekt (*<project_root>*) mappájának teljes tartalmát bele kell foglalni a csomagba, de nem maga a mappa, ami azt jelenti, hogy a `host.json` csomag gyökerében kell lennie. Javasoljuk, hogy a teszteket egy olyan mappában tartsa, amely más függvényekkel együtt, ebben a példában `tests/` . További információ: [Unit Testing (egység tesztelése](#unit-testing)).
 
 ## <a name="import-behavior"></a>Importálási viselkedés
 
@@ -385,7 +385,7 @@ A FUNCTIONS_WORKER_PROCESS_COUNT minden olyan gazdagépre vonatkozik, amelyet a 
 
 Ha egy függvény hívási környezetét szeretné lekérni a végrehajtás során, adja [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) meg az argumentumot az aláírásában.
 
-Ilyenek többek között:
+Például:
 
 ```python
 import azure.functions
@@ -491,7 +491,7 @@ func azure functionapp publish <APP_NAME>
 
 Ne felejtse el lecserélni a `<APP_NAME>` Function alkalmazás nevét az Azure-ban.
 
-A [Visual Studio Code Azure functions-bővítménye](functions-create-first-function-vs-code.md#publish-the-project-to-azure) alapértelmezés szerint távoli buildet is igényel.
+A [Visual Studio Code Azure functions-bővítménye](./create-first-function-vs-code-csharp.md#publish-the-project-to-azure) alapértelmezés szerint távoli buildet is igényel.
 
 ### <a name="local-build"></a>Helyi Build
 
@@ -533,7 +533,7 @@ func azure functionapp publish <APP_NAME> --no-build
 
 Ne felejtse el lecserélni a `<APP_NAME>` Function alkalmazás nevét az Azure-ban.
 
-## <a name="unit-testing"></a>Egység tesztelése
+## <a name="unit-testing"></a>Egységtesztek
 
 A Pythonban írt függvények a standard szintű tesztelési keretrendszerek használatával más Python-kódokhoz hasonlóan is vizsgálhatók. A legtöbb kötés esetében lehetséges, hogy létrehoz egy modell típusú bemeneti objektumot úgy, hogy létrehoz egy megfelelő osztály egy példányát a `azure.functions` csomagból. Mivel a [`azure.functions`](https://pypi.org/project/azure-functions/) csomag nem érhető el azonnal, ne felejtse el telepíteni a `requirements.txt` fájlt a fenti [csomagkezelő](#package-management) című szakaszban leírtak szerint.
 

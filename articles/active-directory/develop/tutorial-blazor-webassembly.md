@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 5489feeeec64c7b3d4b5fc28eddfe8b780308796
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 09e922ffddcce732d9213eb91026561528c0728a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979878"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169137"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>Oktatóanyag: bejelentkezés a felhasználókba és a védett API meghívása egy Blazer webszerelvény-alkalmazásból
 
@@ -26,7 +26,7 @@ Ebben az oktatóanyagban:
 > [!div class="checklist"]
 >
 > * Hozzon létre egy új, az Azure Active Directory (Azure AD) használatára konfigurált, a Microsoft Identity platformot használó, [hitelesítésre és engedélyezésre](authentication-vs-authorization.md) konfigurált Blazer webszerelvény-alkalmazást
-> * Adatok beolvasása egy védett webes API-ból, ebben az esetben [Microsoft Graph](https://docs.microsoft.com/graph/overview)
+> * Adatok beolvasása egy védett webes API-ból, ebben az esetben [Microsoft Graph](/graph/overview)
 
 ## <a name="prerequisites"></a>Előfeltételek
 

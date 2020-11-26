@@ -13,17 +13,17 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a1f970a97616fbc38a2f5d274998596992d4a45
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 343486286d45538b949de03604811bb2371701c1
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522073"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169018"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Dinamikus csoport létrehozása vagy frissítése Azure Active Directory
 
 Azure Active Directory (Azure AD) esetében a szabályok segítségével meghatározhatja a csoporttagság alapján a felhasználók vagy az eszközök tulajdonságait. Ez a cikk azt ismerteti, hogyan lehet szabályt beállítani egy dinamikus csoporthoz a Azure Portalban.
-A dinamikus tagság biztonsági csoportok vagy Microsoft 365 csoportok esetén támogatott. Csoporttagság-szabály alkalmazása esetén a rendszer kiértékeli a felhasználók és az eszközök attribútumait a tagsági szabállyal való egyezések alapján. Amikor egy attribútum megváltoztatja a felhasználót vagy az eszközt, a rendszer a szervezet összes dinamikus csoportjának szabályait dolgozza fel a tagság változásaihoz. A felhasználók és az eszközök akkor lesznek hozzáadva vagy eltávolítva, ha megfelelnek a csoport feltételeinek. A biztonsági csoportok bármely eszközhöz vagy felhasználóhoz használhatók, de Microsoft 365 csoportok csak felhasználói csoportok lehetnek. A dinamikus csoportok használatához az Azure AD Premium P1 licenc szükséges. További részletekért tekintse [meg a csoportok dinamikus tagsági szabályait](https://docs.microsoft.com/azure/active-directory/enterprise-users/groups-dynamic-membership) . 
+A dinamikus tagság biztonsági csoportok vagy Microsoft 365 csoportok esetén támogatott. Csoporttagság-szabály alkalmazása esetén a rendszer kiértékeli a felhasználók és az eszközök attribútumait a tagsági szabállyal való egyezések alapján. Amikor egy attribútum megváltoztatja a felhasználót vagy az eszközt, a rendszer a szervezet összes dinamikus csoportjának szabályait dolgozza fel a tagság változásaihoz. A felhasználók és az eszközök akkor lesznek hozzáadva vagy eltávolítva, ha megfelelnek a csoport feltételeinek. A biztonsági csoportok bármely eszközhöz vagy felhasználóhoz használhatók, de Microsoft 365 csoportok csak felhasználói csoportok lehetnek. A dinamikus csoportok használatához az Azure AD Premium P1 licenc szükséges. További részletekért tekintse [meg a csoportok dinamikus tagsági szabályait](./groups-dynamic-membership.md) . 
 
 ## <a name="rule-builder-in-the-azure-portal"></a>Szabálykészlet a Azure Portalban
 

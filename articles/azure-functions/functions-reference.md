@@ -4,12 +4,12 @@ description: Ismerkedjen meg az Azure-ban a függvények fejlesztéséhez szüks
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: 9a3c0643f4fc965ff64106758320aeb445aaf9ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54bfd770fba9a1766396d66c0c263111c233c9c2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85921744"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96167879"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure Functions – fejlesztői útmutató
 Azure Functions az egyes függvények a használt nyelvtől vagy kötéstől függetlenül megosztanak néhány alapvető műszaki fogalmat és összetevőt. Mielőtt beolvassa az adott nyelvre vagy kötésre vonatkozó tanulási adatokat, olvassa el ezt az áttekintést, amely az összesre vonatkozik.
@@ -61,7 +61,7 @@ A fenti az alapértelmezett (és ajánlott) mappa szerkezete egy Function alkalm
 > Ha manuálisan helyez üzembe egy csomagot, ügyeljen arra, hogy a _host.jsa_ fájl-és a függvény mappáiban közvetlenül a `wwwroot` mappára telepítse. Ne adja meg a `wwwroot` mappát a központi telepítések között. Ellenkező esetben a `wwwroot\wwwroot` mappákkal végződik.
 
 #### <a name="use-local-tools-and-publishing"></a>Helyi eszközök használata és közzététel
-A Function apps különböző eszközökkel, például a [Visual Studióval](./functions-develop-vs.md), a [Visual Studio Code](functions-create-first-function-vs-code.md), a [IntelliJ](./functions-create-maven-intellij.md), az [Eclipse](./functions-create-maven-eclipse.md)és a [Azure functions Core Tools](./functions-develop-local.md)használatával hozhatók létre és tehetők közzé. További információ: [code and test Azure functions helyileg](./functions-develop-local.md).
+A Function apps különböző eszközökkel, például a [Visual Studióval](./functions-develop-vs.md), a [Visual Studio Code](./create-first-function-vs-code-csharp.md), a [IntelliJ](./functions-create-maven-intellij.md), az [Eclipse](./functions-create-maven-eclipse.md)és a [Azure functions Core Tools](./functions-develop-local.md)használatával hozhatók létre és tehetők közzé. További információ: [code and test Azure functions helyileg](./functions-develop-local.md).
 
 <!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --glenga -->
 
@@ -95,7 +95,7 @@ Problémák léptek fel a kötésekkel kapcsolatos hibákkal kapcsolatban? Tekin
 ## <a name="reporting-issues"></a>Jelentéskészítési problémák
 [!INCLUDE [Reporting Issues](../../includes/functions-reporting-issues.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információkat találhat az alábbi forrásokban:
 
 * [Eseményindítók és kötések Azure Functions](functions-triggers-bindings.md)

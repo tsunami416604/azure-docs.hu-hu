@@ -67,6 +67,10 @@
           href: virtual-wan-ipsec.md
         - name: Több ISP-hivatkozás – Azure-beli elérési út kiválasztása
           href: path-selection-multiple-links.md
+    - name: Biztonság
+      items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
     - name: A díjszabás alapelvei
       href: pricing-concepts.md
     - name: NVA egy virtuális központban

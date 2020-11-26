@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ffa0059e78ee193cb12a4838282f7f9fb282edd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a55fdf781de80834bf5463fb9bec3730e6e39a76
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95973694"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168695"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiválja a Azure Active Directory újdonságait?
 
@@ -131,7 +131,7 @@ A 2020. áprilisában a következő 31 új alkalmazást bővítettük az App Gal
 
 [SincroPool-alkalmazások](https://www.sincropool.com/), [SmartDB](https://hibiki.dreamarts.co.jp/smartdb/trial/), [float](../saas-apps/float-tutorial.md), [LMS365](https://lms.365.systems/), [belvízi adatgyűjtési csomag](../saas-apps/iwt-procurement-suite-tutorial.md), [Lunni](https://lunni.fi/), [EasySSO for JIRA](../saas-apps/easysso-for-jira-tutorial.md), [Virtual Training Academy](https://vta.c3p.ca/app/en/openid?authenticate_with=microsoft), [Meraki irányítópult](../saas-apps/meraki-dashboard-tutorial.md), [Microsoft 365 mozgató](https://app.mover.io/login), [beszélő tevékenység](https://speakerengage.com/login.php), [becsületesen](../saas-apps/honestly-tutorial.md), [Ally](../saas-apps/ally-tutorial.md), [DutyFlow](https://app.dutyflow.nl/), [AlertMedia](../saas-apps/alertmedia-tutorial.md), [gr8 People](../saas-apps/gr8-people-tutorial.md), [Kata](../saas-apps/pendo-tutorial.md), [HighGround](../saas-apps/highground-tutorial.md), [Harmony](../saas-apps/harmony-tutorial.md), [Timetabling megoldások](../saas-apps/timetabling-solutions-tutorial.md), [SynchroNet Click](../saas-apps/synchronet-click-tutorial.md), [Empower](https://www.made-in-office.com/en/), [Forts Change Cloud](../saas-apps/fortes-change-cloud-tutorial.md), [Lakmusz](../saas-apps/litmus-tutorial.md) [, GroupTalk,](https://recorder.grouptalk.com/) [Frontify](../saas-apps/frontify-tutorial.md), [MongoDB felhő](../saas-apps/mongodb-cloud-tutorial.md), [TickitLMS Learn](../saas-apps/tickitlms-learn-tutorial.md), [Coco](https://hexaware.com/partnerships-and-alliances/digital-transformation-using-microsoft-azure/), [nitro hatékonyságnövelő csomag](../saas-apps/nitro-productivity-suite-tutorial.md) , [Trend Micro Web Security (TMWS)](https://review.docs.microsoft.com/azure/active-directory/saas-apps/trend-micro-tutorial)
 
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../azuread-dev/howto-app-gallery-listing.md)című témakört.
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../develop/v2-howto-app-gallery-listing.md)című témakört.
 
 ---
 
@@ -215,7 +215,7 @@ A felügyeleti egységek használatával a központi rendszergazda:
 - Rendszergazdai engedélyekkel rendelkező szerepkör társítása csak az Azure AD-felhasználók számára egy felügyeleti egységben
 - Szükség szerint töltse fel a felügyeleti egységeket a felhasználókkal és a csoportokkal
 
-További információ: [felügyeleti egységek kezelése Azure Active Directory (előzetes verzió)](../users-groups-roles/directory-administrative-units.md).
+További információ: [felügyeleti egységek kezelése Azure Active Directory (előzetes verzió)](../roles/administrative-units.md).
 
 ---
 
@@ -286,7 +286,7 @@ További információkért tekintse meg a következőket:
 
 **A termék képességei:**
 
-A saját munkatársak lehetővé teszik a Firstline-kezelők, például egy áruház kezelője számára, hogy a személyzet tagjai hozzáférhessenek az Azure AD-fiókokhoz. A központi ügyfélszolgálatra való támaszkodás helyett a szervezetek olyan gyakori feladatokat delegálnak, mint például a jelszavak alaphelyzetbe állítása vagy a telefonszámok módosítása a Firstline-kezelőhöz. A munkatársakkal egy olyan felhasználó, aki nem tud hozzáférni a fiókjához, mindössze néhány kattintással elérheti a hozzáférést, és nincs szükség ügyfélszolgálatra vagy informatikai személyzetre. További információ: a [felhasználók kezelése a saját munkatársakkal (előzetes verzió)](../users-groups-roles/my-staff-configure.md) és a [felhasználói felügyelet delegálása a munkatársakkal (előzetes verzió)](../user-help/my-staff-team-manager.md).
+A saját munkatársak lehetővé teszik a Firstline-kezelők, például egy áruház kezelője számára, hogy a személyzet tagjai hozzáférhessenek az Azure AD-fiókokhoz. A központi ügyfélszolgálatra való támaszkodás helyett a szervezetek olyan gyakori feladatokat delegálnak, mint például a jelszavak alaphelyzetbe állítása vagy a telefonszámok módosítása a Firstline-kezelőhöz. A munkatársakkal egy olyan felhasználó, aki nem tud hozzáférni a fiókjához, mindössze néhány kattintással elérheti a hozzáférést, és nincs szükség ügyfélszolgálatra vagy informatikai személyzetre. További információ: a [felhasználók kezelése a saját munkatársakkal (előzetes verzió)](../roles/my-staff-configure.md) és a [felhasználói felügyelet delegálása a munkatársakkal (előzetes verzió)](../user-help/my-staff-team-manager.md).
 
 ---
 
@@ -451,7 +451,7 @@ Március 2020-én ezeket a 51 új alkalmazásokat bővítettük az alkalmazás-k
 
 [Cisco AnyConnect](../saas-apps/cisco-anyconnect.md), [Zoho One China](../saas-apps/zoho-one-china-tutorial.md), [PlusPlus](https://test.plusplus.app/auth/login/azuread-outlook/), [profit.co SAML-alkalmazás](../saas-apps/profitco-saml-app-tutorial.md), [IPoint](../saas-apps/ipoint-service-provider-tutorial.md)- [Aster](https://demo.asterapp.io/login)szolgáltató, [LIFT](../saas-apps/lift-tutorial.md) [contexxt.ai szféra](https://contexxt-sphere.com/login), [bölcsesség a Invictus, a](../saas-apps/wisdom-by-invictus-tutorial.md) [flare digitális aláírások](https://spark-dev.pixelnebula.com/login), [a Logz.IO-Felhőbeli megfigyelés, a](../saas-apps/logzio-cloud-observability-for-engineers-tutorial.md) [SpectrumU](../saas-apps/spectrumu-tutorial.md), a BizzContact, a [Node Insight](https://admin.nodeinsight.com/AADLogin.aspx)Elqano, az MarketSignShare, a CrossKnowledge, az net Vision, a Compas, a Byggeweb, az [Elqano SSO](../saas-apps/elqano-sso-tutorial.md) [GoLinks,](../saas-apps/crossknowledge-learning-suite-tutorial.md) [a](../saas-apps/planview-enterprise-one-tutorial.md)datadoggal [, a Zscaler, a](../saas-apps/netvision-compas-tutorial.md)WatchTeams [, Planview Enterprise One](../saas-apps/fcm-hub-tutorial.md)A [,](https://www.devfinition.com/) [a](https://apps.apple.com/us/app/docia/id529058757) [,](../saas-apps/golinks-tutorial.md) [az](../saas-apps/datadog-tutorial.md) [, a](../saas-apps/zscaler-b2b-user-portal-tutorial.md) [, a](../saas-apps/skills-workflow-tutorial.md), [IP-platform](../saas-apps/ip-platform-tutorial.md), [InVision](../saas-apps/invision-tutorial.md), [PIPEDRIVE](../saas-apps/pipedrive-tutorial.md), [Showcase workshop](https://app.showcaseworkshop.com/) [BizzContact](https://bizzcontact.app/), [Greenlight integrációs platform](../saas-apps/greenlight-integration-platform-tutorial.md), Greenlight- [kompatibilis hozzáférés-kezelés](../saas-apps/greenlight-compliant-access-management-tutorial.md), [grokkolom learning](../saas-apps/grok-learning-tutorial.md), [Mirador online](https://login.online.miradore.com/), [Khoros Care](../saas-apps/khoros-care-tutorial.md), [MarketSignShare](http://www.signshare.com/) [AskYourTeam](../saas-apps/askyourteam-tutorial.md), [TruNarrative](../saas-apps/trunarrative-tutorial.md), [Smartwaiver](https://www.smartwaiver.com/m/user/sw_login.php?wms_login), [bizarr Studio a digitális folyamatok automatizálásához](../saas-apps/bizagi-studio-for-digital-process-automation-tutorial.md), [insuiteX,](https://www.insuite.jp/) [sybo](https://www.systexsoftware.com.tw/), [brit](../saas-apps/britive-tutorial.md), [WhosOffice](../saas-apps/whosoffice-tutorial.md), [E-nap](../saas-apps/e-days-tutorial.md), [Kollective Sdn](https://portal.kollective.app/login) [, Witivio,](https://app.witivio.com/) [Playvox](https://my.playvox.com/login), [Korn Ferry 360](../saas-apps/korn-ferry-360-tutorial.md), [Campus Café](../saas-apps/campus-cafe-tutorial.md), [Catchpoint](../saas-apps/catchpoint-tutorial.md) [, Code42](../saas-apps/code42-tutorial.md)
 
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../azuread-dev/howto-app-gallery-listing.md)című témakört.
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../develop/v2-howto-app-gallery-listing.md)című témakört.
 
 ---
 
@@ -602,7 +602,7 @@ Február 2020-án a következő 31 új alkalmazást bővítettük az alkalmazás
 [IamIP szabadalmi platform](../saas-apps/iamip-patent-platform-tutorial.md), [felhő](../saas-apps/experience-cloud-tutorial.md), [ns1 egyszeri bejelentkezés az Azure](../saas-apps/ns1-sso-azure-tutorial.md)-hoz, [Barracuda e-mail-biztonsági szolgáltatás](https://ess.barracudanetworks.com/sso/azure), [ABa-jelentéskészítés](https://myaba.co.uk/client-access/signin/auth/msad) [válság esetén – online portál](../saas-apps/in-case-of-crisis-online-portal-tutorial.md), [BIC Cloud design](../saas-apps/bic-cloud-design-tutorial.md), [méhész Azure ad-alapú adatösszekötő](../saas-apps/beekeeper-azure-ad-data-connector-tutorial.md), [Korn Ferry-értékelések](https://www.kornferry.com/solutions/kf-digital/kf-assess), Verkada- [parancs](../saas-apps/verkada-command-tutorial.md), [Splashtop](../saas-apps/splashtop-tutorial.md), [Syxsense](../saas-apps/syxsense-tutorial.md), [Emődi-böngészés](../saas-apps/eab-navigate-tutorial.md), [új ereklye (korlátozott kiadás)](../saas-apps/new-relic-limited-release-tutorial.md), [túlium](https://admin.thulium.com/login/instance), [Ticket Manager](../saas-apps/ticketmanager-tutorial.md), [sablon kiválasztása csapatok számára](https://links.officeatwork.com/templatechooser-download-teams), [méhek](https://www.beesy.me/index.php/site/login), [egészségügyi támogatási rendszer](../saas-apps/health-support-system-tutorial.md), [fali](https://app.mural.co/signup), [kaptár](../saas-apps/hive-tutorial.md), [LavaDo](https://appsource.microsoft.com/product/web-apps/lavaloon.lavado_standard?tab=Overview), [Wakelet](https://wakelet.com/login), [Firmex VDR](../saas-apps/firmex-vdr-tutorial.md), [ThingLink tanárok és iskolák számára](https://www.thinglink.com/), [CODA](../saas-apps/coda-tutorial.md), [NearpodApp](https://nearpod.com/signup/?oc=Microsoft&utm_campaign=Microsoft&utm_medium=site&utm_source=product), [WeDo](../saas-apps/wedo-tutorial.md), [InvitePeople](https://invitepeople.com/login), [újranyomtatja az íróasztalt-article Galaxy](../saas-apps/reprints-desk-article-galaxy-tutorial.md), [TeamViewer](../saas-apps/teamviewer-tutorial.md)
 
  
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../azuread-dev/howto-app-gallery-listing.md)című témakört.
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../develop/v2-howto-app-gallery-listing.md)című témakört.
 
 ---
  
@@ -713,7 +713,7 @@ Január 2020-én ezeket a 33 új alkalmazásokat az alkalmazás-katalógushoz va
 
 [Josa](../saas-apps/josa-tutorial.md), [gyors Edge Cloud](../saas-apps/fastly-edge-cloud-tutorial.md), [Terraform Enterprise](../saas-apps/terraform-enterprise-tutorial.md), [Spintr SSO](../saas-apps/spintr-sso-tutorial.md), [Abibot Netlogistik](https://azuremarketplace.microsoft.com/marketplace/apps/aad.abibotnetlogistik), [SkyKick](https://login.skykick.com/login?state=g6Fo2SBTd3M5Q0xBT0JMd3luS2JUTGlYN3pYTE1remJQZnR1c6N0aWTZIDhCSkwzYVQxX2ZMZjNUaWxNUHhCSXg2OHJzbllTcmYto2NpZNkgM0h6czk3ZlF6aFNJV1VNVWQzMmpHeFFDbDRIMkx5VEc&client=3Hzs97fQzhSIWUMUd32jGxQCl4H2LyTG&protocol=oauth2&audience=https://papi.skykick.com&response_type=code&redirect_uri=https://portal.skykick.com/callback&scope=openid%20profile%20offline_access), [,](../saas-apps/upshotly-tutorial.md) [LEAVEBOT](https://leavebot.io/#home), [DataCamp](../saas-apps/datacamp-tutorial.md) [, TripActions,](../saas-apps/tripactions-tutorial.md) [SmartWork,](https://www.intumit.com/english/SmartWork.html) [dotcom-monitor](../saas-apps/dotcom-monitor-tutorial.md), [SSOGEN-Azure ad SSO Gateway for Oracle E-Business Suite-EBS, PeopleSoft és JDE](../saas-apps/ssogen-tutorial.md), [üzemeltetett MyCirqa SSO](../saas-apps/hosted-mycirqa-sso-tutorial.md), [Yuhu Property Management platform](../saas-apps/yuhu-property-management-platform-tutorial.md), [LumApps](https://sites.lumapps.com/login), munkavégző [vállalat](../saas-apps/upwork-enterprise-tutorial.md), [Talentsoft](../saas-apps/talentsoft-tutorial.md), [SmartDB a Microsoft Teams](http://teams.smartdb.jp/login/), [PressPage](../saas-apps/presspage-tutorial.md), [ContractSafe egy saml2 SSO](../saas-apps/contractsafe-saml2-sso-tutorial.md), Maxient- [kezelő szoftver](../saas-apps/maxient-conduct-manager-software-tutorial.md), [Helpshift](../saas-apps/helpshift-tutorial.md), [PortalTalk 365](https://www.portaltalk.com/), [Áttekintés](https://portal.coreview.com/), [leverni Cloud Office 365 Connector](https://laxmi.squelch.io/login), [PingFlow hitelesítés](https://app-staging.pingview.io/), PrinterLogic [SaaS](../saas-apps/printerlogic-saas-tutorial.md), Taskize [Csatlakozás](../saas-apps/taskize-connect-tutorial.md), Sandwai, EZRentOut [, AssetSonar](https://app.sandwai.com/) [,](../saas-apps/assetsonar-tutorial.md) [akari virtuális asszisztens](https://akari.io/akari-virtual-assistant/) [EZRentOut](../saas-apps/ezrentout-tutorial.md)
 
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../azuread-dev/howto-app-gallery-listing.md)című témakört.
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../develop/v2-howto-app-gallery-listing.md)című témakört.
 
 ---
 
@@ -935,7 +935,7 @@ November 2019-én a következő 21 új alkalmazást adtuk hozzá az App Gallery 
 
 [Airtable](../saas-apps/airtable-tutorial.md), [HootSuite](../saas-apps/hootsuite-tutorial.md), [Blue Access for Members (BAM)](../saas-apps/blue-access-for-members-tutorial.md), [bitly címkéjű](../saas-apps/bitly-tutorial.md), [Riva](../saas-apps/riva-tutorial.md), [ResLife portál](https://app.reslifecloud.com/hub5_signin/microsoft_azuread/?g=44BBB1F90915236A97502FF4BE2952CB&c=5&uid=0&ht=2&ref=), [NegometrixPortal egyszeri bejelentkezés (SSO)](../saas-apps/negometrixportal-tutorial.md), [TeamsChamp](https://login.microsoftonline.com/551f45da-b68e-4498-a7f5-a6e1efaeb41c/adminconsent?client_id=ca9bbfa4-1316-4c0f-a9ee-1248ac27f8ab&redirect_uri=https://admin.teamschamp.com/api/adminconsent&state=6883c143-cb59-42ee-a53a-bdb5faabf279), [Motus](../saas-apps/motus-tutorial.md), [MyAryaka](../saas-apps/myaryaka-tutorial.md), [BlueMail](https://loginself1.bluemail.me/), [Beedle](https://teams-web.beedle.co/#/), [Visma](../saas-apps/visma-tutorial.md), [OneDesk](../saas-apps/onedesk-tutorial.md), [foko kiskereskedelmi](../saas-apps/foko-retail-tutorial.md), [Qmarkets Idea & innováció kezelése](../saas-apps/qmarkets-idea-innovation-management-tutorial.md), Netskope [felhasználói hitelesítés](../saas-apps/netskope-user-authentication-tutorial.md), uniFLOW [online](../saas-apps/uniflow-online-tutorial.md), [Claromentis, Jisc](../saas-apps/claromentis-tutorial.md) [Student választópolgár regisztráció](../saas-apps/jisc-student-voter-registration-tutorial.md), [e4enable](https://portal.e4enable.com/)
 
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../azuread-dev/howto-app-gallery-listing.md)című témakört.
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../develop/v2-howto-app-gallery-listing.md)című témakört.
 
 ---
 
@@ -1096,7 +1096,7 @@ A 2019-es verzióban az alábbi 35 új alkalmazásokat bővítettük az App Gall
 
 [Válság esetén – mobil](../saas-apps/in-case-of-crisis-mobile-tutorial.md), [Juno Journey](../saas-apps/juno-journey-tutorial.md), [ExponentHR](../saas-apps/exponenthr-tutorial.md), [tapintat](https://tact.ai/assistant/), [OpusCapita cash Management](http://cm1.opuscapita.com/tenantname), [Salestim](https://www.salestim.com/), [Learnster](../saas-apps/learnster-tutorial.md), [Dynatrace](../saas-apps/dynatrace-tutorial.md), HunchBuzz, [Freshworks](https://login.hunchbuzz.com/integrations/azure/process), [eCornell](../saas-apps/freshworks-tutorial.md), [eCornell](../saas-apps/ecornell-tutorial.md) [SHIPHAZMAT](../saas-apps/shiphazmat-tutorial.md), [Netskope Cloud Security](../saas-apps/netskope-cloud-security-tutorial.md), [tartalom](../saas-apps/contentful-tutorial.md), [Bindtuning](https://bindtuning.com/login), [HireVue koordináta – Európa](https://www.hirevue.com/), [HireVue koordináta-USOnly](https://www.hirevue.com/), [HIREVUE koordináta-USA](https://www.hirevue.com/), [WittyParrot Knowledge Box](https://wittyapi.wittyparrot.com/wittyparrot/api/provision/trail/signup), [Cloudmore](../saas-apps/cloudmore-tutorial.md), [Visit.org](../saas-apps/visitorg-tutorial.md), [Cambium Xirrus EasyPass portál](https://login.xirrus.com/azure-signup), [paylocityben](../saas-apps/paylocity-tutorial.md), [mail LUCK!](../saas-apps/mail-luck-tutorial.md), [teamer](https://theteamie.com/), [a csapatok sebessége](https://velocity.peakup.org/teams/login), [signl4 használatával](https://account.signl4.com/manage), [Emődi Navigálás IMPL](../saas-apps/eab-navigate-impl-tutorial.md), [ScreenMeet](https://console.screenmeet.com/), [Omega pont](https://pi.ompnt.com/), [beszélő e-mail az Intune-hoz (iPhone)](https://speaking.email/FAQ/98/email-access-via-microsoft-intune), [beszéd e-mailek az Office 365 Direct (iPhone/Android)](https://speaking.email/FAQ/126/email-access-via-microsoft-office-365-direct), [ExactCare egyszeri bejelentkezés](../saas-apps/exactcare-sso-tutorial.md) [,](https://qubie.azurewebsites.net/static/adminTab/authorize.html) [iHealthHome](https://ihealthnav.com/account/signin)
 
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../azuread-dev/howto-app-gallery-listing.md)című témakört.
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../develop/v2-howto-app-gallery-listing.md)című témakört.
 
 ---
 
@@ -1199,7 +1199,7 @@ További információ az új végpont használatáról: [a rendszergazdai enged�
 
 [ScheduleLook](https://schedulelook.bbsonlineservices.net/), [MS Azure SSO hozzáférés a Ethidex megfelelőségi irodához &trade; – egyszeri bejelentkezés](../saas-apps/ms-azure-sso-access-for-ethidex-compliance-office-tutorial.md), [iServer-portál](../saas-apps/iserver-portal-tutorial.md), [SKYSITE](../saas-apps/skysite-tutorial.md), az [utazás és a költségek](../saas-apps/concur-travel-and-expense-tutorial.md), a [WorkBoard](../saas-apps/workboard-tutorial.md), `https://apps.yeeflow.com/` az [arc létesítmények](../saas-apps/arc-facilities-tutorial.md), a [Luware Stratus csapata](https://stratus.emea.luware.cloud/login), a [széles körű ötletek](https://wideideas.online/wideideas/), a [Prisma-felhő](../saas-apps/prisma-cloud-tutorial.md), a JDLT- [ügyfél központja](https://clients.jdlt.co.uk/login), [a RENRAKU](../saas-apps/renraku-tutorial.md), a [SealPath biztonságos böngésző](https://protection.sealpath.com/SealPathInterceptorWopiSaas/Open/InstallSealPathEditorOneDrive), a [Prisma Cloud](../saas-apps/prisma-cloud-tutorial.md), `https://app.penneo.com/` a, `https://app.testhtm.com/settings/email-integration` a [Cintoo felhő](https://aec.cintoo.com/login), [Discovery Benefits SSO](../saas-apps/discovery-benefits-sso-tutorial.md)a Whitesource [,](../saas-apps/whitesource-tutorial.md) [a](../saas-apps/tutorial-list.md) [szolgáltatott örökség online SSO](../saas-apps/hosted-heritage-online-sso-tutorial.md), [IDC](../saas-apps/idc-tutorial.md), [CakeHR](../saas-apps/cakehr-tutorial.md), [Amelio](https://app.amelio.co/) [BIS](../saas-apps/bis-tutorial.md), [COO Kai Team Build](https://ms-contacts.coo-kai.jp/), [Sonarqube](../saas-apps/sonarqube-tutorial.md)`https://itask.yipinapp.com/`
 
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../azuread-dev/howto-app-gallery-listing.md)című témakört.
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../develop/v2-howto-app-gallery-listing.md)című témakört.
 
 ---
 
@@ -1370,7 +1370,7 @@ További információ erről a hibáról: [Azure Active Directory a hitelesíté
 
 [Civic platform](../saas-apps/civic-platform-tutorial.md), [Amazon Business](../saas-apps/amazon-business-tutorial.md), a-ben az [Ops Manager](../saas-apps/pronovos-ops-manager-tutorial.md), [Cognidox](../saas-apps/cognidox-tutorial.md), [Viareport 's Inativ portál (Európa)](../saas-apps/viareports-inativ-portal-europe-tutorial.md), [Azure Databricks](https://azure.microsoft.com/services/databricks), [Robin](../saas-apps/robin-tutorial.md), [Academy részvétel](../saas-apps/academy-attendance-tutorial.md), [prioritási mátrix](https://sync.appfluence.com/pmwebng/), [Cousto MySpace](https://cousto.platformers.be/account/login), [Uploadcare](https://uploadcare.com/accounts/signup/), [Carbonite Endpoint Backup](../saas-apps/carbonite-endpoint-backup-tutorial.md), [CPQSync by Cincom](../saas-apps/cpqsync-by-cincom-tutorial.md), [Chargebee](../saas-apps/chargebee-tutorial.md), [kézbesítés. &trade; Media Portal](https://portal.deliver.media), [Frontline Education](../saas-apps/frontline-education-tutorial.md), [F5](https://www.f5.com/products/security/access-policy-manager), [stashcat ad-kapcsolat](https://www.stashcat.com), [Blink](../saas-apps/blink-tutorial.md), [Vocoli](../saas-apps/vocoli-tutorial.md) [, Sigstr,](../saas-apps/pronovos-analytics-tutorial.md)Darwinbox [,](../saas-apps/sigstr-tutorial.md) [Emődi](../saas-apps/darwinbox-tutorial.md), [karóra színek](../saas-apps/watch-by-colors-tutorial.md), [hám](../saas-apps/harness-tutorial.md), [navigáljon stratégiai Care](../saas-apps/eab-navigate-strategic-care-tutorial.md)
 
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../azuread-dev/howto-app-gallery-listing.md)című témakört.
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../develop/v2-howto-app-gallery-listing.md)című témakört.
 
 ---
 
@@ -1523,7 +1523,7 @@ További információkért lásd: a [jelszó nélküli bejelentkezés engedélye
 
 [Ungerboeck szoftver](../saas-apps/ungerboeck-software-tutorial.md), [világos minta Omnichannel Contact Center](../saas-apps/bright-pattern-omnichannel-contact-center-tutorial.md), [Clever Nelly](../saas-apps/clever-nelly-tutorial.md), [AcquireIO](../saas-apps/acquireio-tutorial.md), [Looop](https://www.looop.co/schedule-a-demo/), [productboard](../saas-apps/productboard-tutorial.md), [MS Azure SSO hozzáférés Ethidex megfelelőségi iroda &trade; ](../saas-apps/ms-azure-sso-access-for-ethidex-compliance-office-tutorial.md), [hype](../saas-apps/hype-tutorial.md), [absztrakt](../saas-apps/abstract-tutorial.md), [átfedés](../saas-apps/ascentis-tutorial.md), [Flipsnack](https://www.flipsnack.com/accounts/sign-in-sso.html), [Wanda](../saas-apps/wandera-tutorial.md), [TwineSocial](https://twinesocial.com/), [Kallidus](../saas-apps/kallidus-tutorial.md), [HyperAnna](../saas-apps/hyperanna-tutorial.md), [PharmID WasteWitness](https://pharmid.com/), i2B- [kapcsolat](https://www.i2b-online.com/sign-up-to-use-i2b-connect-here-sso-access/), [beli jfrog Artifactory](../saas-apps/jfrog-artifactory-tutorial.md)
 
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../azuread-dev/howto-app-gallery-listing.md)című témakört.
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../develop/v2-howto-app-gallery-listing.md)című témakört.
 
 ---
 
@@ -1701,7 +1701,7 @@ További információ: [kockázatkezelési API-dokumentáció](/graph/api/resour
 
 [Azure ad SAML Toolkit](../saas-apps/saml-toolkit-tutorial.md), [Otsuka Shokai (大塚商会)](../saas-apps/otsuka-shokai-tutorial.md), [ANAQUA](../saas-apps/anaqua-tutorial.md), [Azure VPN-ügyfél](https://portal.azure.com/), [ExpenseIn](../saas-apps/expensein-tutorial.md), [Helper Helper](../saas-apps/helper-helper-tutorial.md), [Costpoint](../saas-apps/costpoint-tutorial.md), [GlobalOne](../saas-apps/globalone-tutorial.md), [Mercedes-Benz In-Car Office](https://me.secure.mercedes-benz.com/), [Skore](https://app.justskore.it/), [Oracle felhőalapú infrastruktúra konzol](../saas-apps/oracle-cloud-tutorial.md), [CyberArk SAML-hitelesítés](../saas-apps/cyberark-saml-authentication-tutorial.md), [scrible edu](https://www.scrible.com/sign-in/#/create-account), [PandaDoc](../saas-apps/pandadoc-tutorial.md), [Perceptyx](https://apexdata.azurewebsites.net/docs.microsoft.com/azure/active-directory/saas-apps/perceptyx-tutorial), [Proptimise os](https://proptimise.co.uk/software/), [Vtiger CRM (SAML)](../saas-apps/vtiger-crm-saml-tutorial.md), Oracle Access Manager for Oracle kiskereskedelmi értékesítés, Oracle-hozzáférés-kezelő az Oracle E-Business Suite-hoz
 
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../azuread-dev/howto-app-gallery-listing.md)című témakört.
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../develop/v2-howto-app-gallery-listing.md)című témakört.
 
 ---
 
@@ -1849,7 +1849,7 @@ A 2019-es verzióban a következő 21 új alkalmazást adtuk hozzá az alkalmaz�
 
 [Freedcamp](../saas-apps/freedcamp-tutorial.md), [valódi hivatkozások](../saas-apps/real-links-tutorial.md), [Kianda](https://app.kianda.com/sso/OpenID/AzureAD/), [egyszerű aláírás](../saas-apps/simple-sign-tutorial.md), [forrasztás](../saas-apps/braze-tutorial.md), [lejátszó](../saas-apps/displayr-tutorial.md), [Templafy](../saas-apps/templafy-tutorial.md), [Marketo értékesítések](https://toutapp.com/login), [ACLP](../saas-apps/aclp-tutorial.md), [rendszerek](../saas-apps/outsystems-tutorial.md), [Meta4 globális HR](../saas-apps/meta4-global-hr-tutorial.md), [Quantum munkahely](../saas-apps/quantum-workplace-tutorial.md), [kobalt](../saas-apps/cobalt-tutorial.md), [webMethods API-felhő](../saas-apps/webmethods-integration-cloud-tutorial.md), [RedFlag](https://pocketstop.com/redflag/), [Whatfix](../saas-apps/whatfix-tutorial.md), [vezérlés](../saas-apps/control-tutorial.md), [JOBHUB](../saas-apps/jobhub-tutorial.md), [NEOGOV](../saas-apps/neogov-tutorial.md), [Foodee](../saas-apps/foodee-tutorial.md), [MyVR](../saas-apps/myvr-tutorial.md)
 
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../azuread-dev/howto-app-gallery-listing.md)című témakört.
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../develop/v2-howto-app-gallery-listing.md)című témakört.
 
 ---
 
@@ -1979,7 +1979,7 @@ További információ: [Azure monitor munkafüzetek használata Azure Active Dir
 
 [SAP Fiori](../saas-apps/sap-fiori-tutorial.md), [HRworks egyszeri bejelentkezés](../saas-apps/hrworks-single-sign-on-tutorial.md), [átszivárog](../saas-apps/percolate-tutorial.md), [MobiControl](../saas-apps/mobicontrol-tutorial.md), [Citrix NetScaler](../saas-apps/citrix-netscaler-tutorial.md), [Shibumi](../saas-apps/shibumi-tutorial.md), [padok](../saas-apps/benchling-tutorial.md), [MileIQ](https://mileiq.onelink.me/991934284/7e980085) [, PageDNA, EDUBRITE](../saas-apps/pagedna-tutorial.md) [LMS](../saas-apps/edubrite-lms-tutorial.md), RStudio- [kapcsolat](../saas-apps/rstudio-connect-tutorial.md), [AMMS,](../saas-apps/amms-tutorial.md)Mitel- [kapcsolat](../saas-apps/mitel-connect-tutorial.md), [Alibaba Cloud (szerepköralapú SSO)](../saas-apps/alibaba-cloud-service-role-based-sso-tutorial.md), [Certent Equity Management](../saas-apps/certent-equity-management-tutorial.md), [Sectigo Certificate Manager](../saas-apps/sectigo-certificate-manager-tutorial.md), [GreenOrbit](../saas-apps/greenorbit-tutorial.md), [Workgrid](../saas-apps/workgrid-tutorial.md), [Monday.com](../saas-apps/mondaycom-tutorial.md), [surveymonkey Enterprise](../saas-apps/surveymonkey-enterprise-tutorial.md), [Indiggo](https://indiggolead.com/)
 
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../azuread-dev/howto-app-gallery-listing.md)című témakört.
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../develop/v2-howto-app-gallery-listing.md)című témakört.
 
 ---
 
@@ -2073,7 +2073,7 @@ Március 2019-án a következő 14 új alkalmazást bővítettük az alkalmazás
 
 [ISEC7 Mobile Exchange-delegált](https://www.isec7.com/english/), [MediusFlow](https://office365.cloudapp.mediusflow.com/), [ePlatform](../saas-apps/eplatform-tutorial.md), [Fulcrum](../saas-apps/fulcrum-tutorial.md), [ExcelityGlobal](../saas-apps/excelityglobal-tutorial.md), [magyarázat-alapú naplózási rendszer](../saas-apps/explanation-based-auditing-system-tutorial.md), [sovány](../saas-apps/lean-tutorial.md), [Powerschool teljesítményű ügyek](../saas-apps/powerschool-performance-matters-tutorial.md), [Cinode](https://cinode.com/), [írisz intranet](../saas-apps/iris-intranet-tutorial.md), [Empactis](../saas-apps/empactis-tutorial.md), [SmartDraw](../saas-apps/smartdraw-tutorial.md), [Confirmit horizont](../saas-apps/confirmit-horizons-tutorial.md), [Tas](../saas-apps/tas-tutorial.md)
 
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../azuread-dev/howto-app-gallery-listing.md)című témakört.
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../develop/v2-howto-app-gallery-listing.md)című témakört.
 
 ---
 
@@ -2209,7 +2209,7 @@ Február 2019-án az alábbi 27 új alkalmazást adtuk hozzá az alkalmazás-kat
 
 [Euromonitor Passport](../saas-apps/euromonitor-passport-tutorial.md), [MINDTICKLE](../saas-apps/mindtickle-tutorial.md), [FAT Finger](https://seeforgetest-exxon.azurewebsites.net/Account/create?Length=7), [AirStack](../saas-apps/airstack-tutorial.md), [Oracle Fusion ERP](../saas-apps/oracle-fusion-erp-tutorial.md), [iDrive](../saas-apps/idrive-tutorial.md), [ég felé Qmlativ](../saas-apps/skyward-qmlativ-tutorial.md), [Brightidea](../saas-apps/brightidea-tutorial.md), [AlertOps](../saas-apps/alertops-tutorial.md), [Soloinsight-CloudGate SSO](../saas-apps/soloinsight-cloudgate-sso-tutorial.md), engedély kattintás, [Brandfolder](../saas-apps/brandfolder-tutorial.md), [StoregateSmartFile](../saas-apps/smartfile-tutorial.md), [Pexip, Stormboard](../saas-apps/pexip-tutorial.md), [szeizmikus](../saas-apps/seismic-tutorial.md), [megoszthat egy álom](https://www.shareadream.org/how-it-works), [Bugsnag](../saas-apps/bugsnag-tutorial.md), [Stormboard](../saas-apps/stormboard-tutorial.md) [webmódszerek integrációs felhő](../saas-apps/webmethods-integration-cloud-tutorial.md), [ismeretek bárhová LMS](../saas-apps/knowledge-anywhere-lms-tutorial.md), [ou Campus](../saas-apps/ou-campus-tutorial.md), [periszkóp adat](../saas-apps/periscope-data-tutorial.md), NetOp [portál](../saas-apps/netop-portal-tutorial.md), [smartvid.IO](../saas-apps/smartvid.io-tutorial.md), [PureCloud](../saas-apps/purecloud-by-genesys-tutorial.md), Genesys, [ClickUp hatékonyságnövelő platform](../saas-apps/clickup-productivity-platform-tutorial.md)
 
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../azuread-dev/howto-app-gallery-listing.md)című témakört.
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../develop/v2-howto-app-gallery-listing.md)című témakört.
 
 ---
 
@@ -2315,7 +2315,7 @@ Január 2019-én ezeket a 35 új alkalmazásokat az alkalmazás-katalógushoz va
 
 [Firstbird](../saas-apps/firstbird-tutorial.md), [Folloze](../saas-apps/folloze-tutorial.md), [Talent paletta](../saas-apps/talent-palette-tutorial.md), [infor CloudSuite](../saas-apps/infor-cloud-suite-tutorial.md), [Cisco Umbrella](../saas-apps/cisco-umbrella-tutorial.md), [Zscaler internet-hozzáférés rendszergazdája](../saas-apps/zscaler-internet-access-administrator-tutorial.md), [lejárati emlékeztető](../saas-apps/expiration-reminder-tutorial.md), [InstaVR-megjelenítő](../saas-apps/instavr-viewer-tutorial.md), [CORPTAX](../saas-apps/corptax-tutorial.md), [művelet](https://app.verb.net/login), [OpenLattice](https://openlattice.com/agora), [TheOrgWiki](https://www.theorgwiki.com/signup), [Pavaso digitális Bezárás](../saas-apps/pavaso-digital-close-tutorial.md), [GoodPractice Toolkit](../saas-apps/goodpractice-toolkit-tutorial.md), [Cloud Service PICCO](../saas-apps/cloud-service-picco-tutorial.md), [AuditBoard](../saas-apps/auditboard-tutorial.md), [iProva](../saas-apps/iprova-tutorial.md), [működőképes](../saas-apps/workable-tutorial.md), [CallPlease](https://webapp.callplease.com/create-account/create-account.html), [GTNexus SSO rendszer](../saas-apps/gtnexus-sso-module-tutorial.md), [CBRE ServiceInsight](../saas-apps/cbre-serviceinsight-tutorial.md), [Deskradar](../saas-apps/deskradar-tutorial.md), [Coralogixv](../saas-apps/coralogix-tutorial.md), [Signagelive,](../saas-apps/signagelive-tutorial.md) [Ares for Enterprise](../saas-apps/ares-for-enterprise-tutorial.md), [K2 Office 365](https://www.k2.com/O365), [Xledger](https://www.xledger.net/), [iDiD Manager](../saas-apps/idid-manager-tutorial.md), [HighGear](../saas-apps/highgear-tutorial.md), [látogasson el](../saas-apps/visitly-tutorial.md)a [Korn Ferry Alp](../saas-apps/korn-ferry-alp-tutorial.md), [Acadia](../saas-apps/acadia-tutorial.md), [Adoddle cSaas platform](../saas-apps/adoddle-csaas-platform-tutorial.md)<!-- , [CaféX Portal (Meetings)](https://docs.microsoft.com/azure/active-directory/saas-apps/cafexportal-meetings-tutorial), [MazeMap Link](https://docs.microsoft.com/azure/active-directory/saas-apps/mazemaplink-tutorial)-->
 
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../azuread-dev/howto-app-gallery-listing.md)című témakört.
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../develop/v2-howto-app-gallery-listing.md)című témakört.
 
 ---
 
@@ -2535,7 +2535,7 @@ November 2018-én a következő 26 új alkalmazást adtuk hozzá az alkalmazás-
 
 [CoreStack](https://cloud.corestack.io/site/login), [HubSpot](../saas-apps/hubspot-tutorial.md), [GetThere](../saas-apps/getthere-tutorial.md), [GRA-PE](../saas-apps/grape-tutorial.md), [eHour](https://getehour.com/try-now), [Consent2Go](../saas-apps/consent2go-tutorial.md), [Appinux](../saas-apps/appinux-tutorial.md), [DriveDollar](https://azuremarketplace.microsoft.com/marketplace/apps/savitas.drivedollar-azuread?tab=Overview), [Useall](../saas-apps/useall-tutorial.md), [végtelen Campus](../saas-apps/infinitecampus-tutorial.md), [Alaya](https://alayagood.com), [HeyBuddy](../saas-apps/heybuddy-tutorial.md), [Wrike SAML](../saas-apps/wrike-tutorial.md), [drift](../saas-apps/drift-tutorial.md), [Zenegy for Business Central 365](https://accounting.zenegy.com/), [Everbridge tag portál](../saas-apps/everbridge-tutorial.md), [IDEO](https://profile.ideo.com/users/sign_up), [Ivanti Service Manager (ISM)](../saas-apps/ivanti-service-manager-tutorial.md), [Peakon](../saas-apps/peakon-tutorial.md), [Allbound SSO](../saas-apps/allbound-sso-tutorial.md), [plex alkalmazások – klasszikus teszt](https://test.plexonline.com/signon), [plex alkalmazások – klasszikus](https://www.plexonline.com/signon), [plex-alkalmazások – UX-teszt](https://test.cloud.plex.com/sso), [plex-alkalmazások – UX](https://cloud.plex.com/sso), [plex alkalmazások – iam](https://accounts.plex.com/), [mesterségek – gyermekgondozási nyilvántartások, részvétel, &](https://getcrafts.ca/craftsregistration)
 
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../azuread-dev/howto-app-gallery-listing.md)című témakört.
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../develop/v2-howto-app-gallery-listing.md)című témakört.
 
 ---
 
@@ -2557,7 +2557,7 @@ Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmaz
 
 [Saját díjátadó pontok, a](../saas-apps/myawardpoints-tutorial.md) [Vibe HCM](../saas-apps/vibehcm-tutorial.md), a ambyint, a [MyWorkDrive](../saas-apps/myworkdrive-tutorial.md), a [BorrowBox](../saas-apps/borrowbox-tutorial.md), a [ON24 virtuális környezet](../saas-apps/on24-tutorial.md), a [RingCentral](../saas-apps/ringcentral-tutorial.md), a [Zscaler három](../saas-apps/zscaler-three-tutorial.md) [, a Phraseanet,](../saas-apps/phraseanet-tutorial.md)a [kiértékelt](../saas-apps/appraisd-tutorial.md), a [Workspot-szabályozás](../saas-apps/workspotcontrol-tutorial.md), a [Shuccho Navi](../saas-apps/shucchonavi-tutorial.md) [, a Glassfrog](../saas-apps/glassfrog-tutorial.md)
 
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../azuread-dev/howto-app-gallery-listing.md)című témakört.
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../develop/v2-howto-app-gallery-listing.md)című témakört.
 
 ---
 
@@ -2672,7 +2672,7 @@ A következő alkalmazások szerepelnek a [jóváhagyott ügyfélalkalmazások](
 
 - Microsoft Stream
 
-További információkért lásd:
+További információ:
 
 - [Azure AD-alkalmazás-alapú feltételes hozzáférés](../conditional-access/app-based-conditional-access.md)
 
@@ -2708,7 +2708,7 @@ Ehhez és más protokollok kapcsolódó módosításaihoz tekintse [meg a hitele
 
 [Uberflip](../saas-apps/uberflip-tutorial.md), [a](../saas-apps/comeetrecruitingsoftware-tutorial.md) [Workteam](../saas-apps/workteam-tutorial.md), a [ArcGIS Enterprise](../saas-apps/arcgisenterprise-tutorial.md), a [Nuclino](../saas-apps/nuclino-tutorial.md), a [Ambrus kiry noemi Cloud](../saas-apps/jdacloud-tutorial.md), a [hópehely](../saas-apps/snowflake-tutorial.md), a [NavigoCloud, a Figma, a](../saas-apps/figma-tutorial.md)JOIN.me, a ZEPHYRSSO, a Silverback, a Riverbed Xirrus EasyPass, a [Rackspace SSO](../saas-apps/rackspacesso-tutorial.md), a Enlyft SSO az Azure-hoz, surveymonkey, [összehívás](../saas-apps/convene-tutorial.md), [dmarcian](../saas-apps/dmarcian-tutorial.md) [ZephyrSSO](../saas-apps/zephyrsso-tutorial.md) [Silverback](../saas-apps/silverback-tutorial.md)
 
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../azuread-dev/howto-app-gallery-listing.md)című témakört.
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../develop/v2-howto-app-gallery-listing.md)című témakört.
 
 ---
 
@@ -2826,7 +2826,7 @@ Az alkalmazás-hozzáférés jelenleg csak az Azure AD-portál és az Azure-erő
 
 [Szarvascsőrű](../saas-apps/hornbill-tutorial.md), [bridgeline kötetlen](../saas-apps/bridgelineunbound-tutorial.md), [Sauce Labs-mobil-és webes tesztelés](../saas-apps/saucelabs-mobileandwebtesting-tutorial.md), [meta Networks-összekötő](../saas-apps/metanetworksconnector-tutorial.md), [így teszünk](../saas-apps/waywedo-tutorial.md), [Spotinst](../saas-apps/spotinst-tutorial.md), [Promaster (Inlogik)](../saas-apps/promaster-tutorial.md), SchoolBooking, [4me](../saas-apps/4me-tutorial.md), [dokumentáció](../saas-apps/dossier-tutorial.md), [N2F-költségelszámolás](../saas-apps/n2f-expensereports-tutorial.md), [Comm100 élő csevegés](../saas-apps/comm100livechat-tutorial.md), [SafeConnect](../saas-apps/safeconnect-tutorial.md), [ZenQMS](../saas-apps/zenqms-tutorial.md), [eLuminate](../saas-apps/eluminate-tutorial.md), [Dovetale](../saas-apps/dovetale-tutorial.md).
 
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../azuread-dev/howto-app-gallery-listing.md)című témakört.
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../develop/v2-howto-app-gallery-listing.md)című témakört.
 
 ---
 
@@ -2912,7 +2912,7 @@ A bejelentkezési tevékenység naplóiban a **Client app (ügyfélalkalmazás**
 
 [Innovációs központ](../saas-apps/innovationhub-tutorial.md), [Leapsome](../saas-apps/leapsome-tutorial.md), [bizonyos adminisztrációs egyszeri bejelentkezés](../saas-apps/certainadminsso-tutorial.md), PSUC-előkészítés, [ipass-SmartConnect](../saas-apps/ipasssmartconnect-tutorial.md), [képernyőfelvétel-O-Matic](../saas-apps/screencast-tutorial.md), PowerSchool Unified osztályterem, [Eli](../saas-apps/elionboarding-tutorial.md)bevezetése, Bomgar-alapú [távoli támogatás](../saas-apps/bomgarremotesupport-tutorial.md), [NimbleX](../saas-apps/nimblex-tutorial.md), [Imagine webvízió](../saas-apps/imagineerwebvision-tutorial.md), [Insight4GRC](../saas-apps/insight4grc-tutorial.md), [SecureW2 JoinNow-összekötő](../saas-apps/securejoinnow-tutorial.md), [Kanbanize](../saas-apps/kanbanize-tutorial.md), [SmartLPA](../saas-apps/smartlpa-tutorial.md), [ismeretek alapja](../saas-apps/skillsbase-tutorial.md)
 
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../azuread-dev/howto-app-gallery-listing.md)című témakört.
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../develop/v2-howto-app-gallery-listing.md)című témakört.
 
 ---
 
@@ -3092,7 +3092,7 @@ Előfordulhat, hogy az elavult böngészők nem támogatják az újabb TLS-verzi
 
 [Skytap](../saas-apps/skytap-tutorial.md), a [Music](../saas-apps/settlingmusic-tutorial.md), az [SAML 1,1 token engedélyezve LOB-alkalmazás](../saas-apps/saml-tutorial.md), a felszínek [, az](../saas-apps/supermood-tutorial.md)automatikus [feladat](../saas-apps/autotaskendpointbackup-tutorial.md), a [végpontok biztonsági mentése](../saas-apps/autotaskendpointbackup-tutorial.md), a [SkyHigh-hálózatok](../saas-apps/skyhighnetworks-tutorial.md), a Smartway2, a [TonicDM](../saas-apps/tonicdm-tutorial.md), a [Moconavi](../saas-apps/moconavi-tutorial.md), a [Zoho One](../saas-apps/zohoone-tutorial.md), [a helyszíni SharePoint, a](../saas-apps/sharepoint-on-premises-tutorial.md) [CX Suite](../saas-apps/foreseecxsuite-tutorial.md), a [Vidyard,](../saas-apps/vidyard-tutorial.md)a [ChronicX](../saas-apps/chronicx-tutorial.md)
 
-Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../azuread-dev/howto-app-gallery-listing.md)című témakört.
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md). Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../develop/v2-howto-app-gallery-listing.md)című témakört.
 
 ---
 
@@ -3270,7 +3270,7 @@ A 2018-es verzióban az alábbi 18 új alkalmazást bővítettük az alkalmazás
 
 Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md).
 
-Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../azuread-dev/howto-app-gallery-listing.md)című témakört.
+Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../develop/v2-howto-app-gallery-listing.md)című témakört.
 
 ---
 
@@ -3336,10 +3336,10 @@ További információt a [Azure ad B2C: hozzáférési tokenek igénylése](../.
 
 Az SAML-alapú SSO-alkalmazások konfigurálásakor tesztelheti az integrációt a konfiguráció lapon. Ha a bejelentkezés során hibát észlel, megadhatja a hibát a tesztelési élményben, és az Azure AD megoldást nyújt az adott probléma megoldásához szükséges megoldási lépések elvégzésére.
 
-További információkért lásd:
+További információ:
 
 - [Egyszeri bejelentkezés konfigurálása az Azure Active Directory alkalmazáskatalógusában nem szereplő alkalmazásokhoz](../manage-apps/view-applications-portal.md)
-- [Az SAML-alapú egyszeri bejelentkezések hibakeresése Azure Active Directory-alkalmazásokban](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
+- [Az SAML-alapú egyszeri bejelentkezések hibakeresése Azure Active Directory-alkalmazásokban](../manage-apps/debug-saml-sso-issues.md)
 
 ---
 
@@ -3415,7 +3415,7 @@ Az HCM, [a FiscalNote](../saas-apps/fiscalnote-tutorial.md), a [Secret Server (o
 
 Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md).
 
-Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../azuread-dev/howto-app-gallery-listing.md)című témakört.
+Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../develop/v2-howto-app-gallery-listing.md)című témakört.
 
 ---
 
@@ -3471,7 +3471,7 @@ Az Azure AD értesítést küld, ha egy katalógus vagy nem katalógusbeli alkal
 
 Néhány felhasználó nem kapott értesítéseket az SAML-alapú egyszeri bejelentkezéshez konfigurált nagyvállalati alkalmazásokhoz. A probléma megoldódott. Az Azure AD értesítést küld a 7, 30 és 60 nap alatt lejáró tanúsítványokról. Ezt az eseményt a naplókban láthatja.
 
-További információkért lásd:
+További információ:
 
 - [Az összevont egyszeri bejelentkezés tanúsítványainak kezelése Azure Active Directory](../manage-apps/manage-certificates-for-federated-single-sign-on.md)
 - [Naplózott tevékenységekre vonatkozó jelentések az Azure Active Directory portálon](../reports-monitoring/concept-audit-logs.md)
@@ -3500,7 +3500,7 @@ További információ: [Mi az az Azure ad B2B Collaboration?](../external-identi
 
 Erről a [blogbejegyzésben](https://cloudblogs.microsoft.com/enterprisemobility/2018/03/15/the-intune-managed-browser-now-supports-azure-ad-sso-and-conditional-access/)olvashat bővebben.
 
-További információkért lásd:
+További információ:
 
 - [Alkalmazás-alapú feltételes hozzáférés beállítása](../conditional-access/app-based-conditional-access.md)
 
@@ -3558,7 +3558,7 @@ Március 2018-én a következő 15 új alkalmazást bővítettük az alkalmazás
 
 Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md).
 
-Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../azuread-dev/howto-app-gallery-listing.md)című témakört.
+Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../develop/v2-howto-app-gallery-listing.md)című témakört.
 
 ---
 
@@ -3817,7 +3817,7 @@ Február végére a következő alkalmazások lesznek hozzáadva:
 
 - Microsoft-számlázás
 
-További információkért lásd:
+További információ:
 
 - [Jóváhagyott ügyfélalkalmazás-követelmény](../conditional-access/concept-conditional-access-conditions.md#client-apps)
 - [Azure AD-alkalmazás-alapú feltételes hozzáférés](../conditional-access/app-based-conditional-access.md)
@@ -3844,7 +3844,7 @@ Január 2018-án a következő új alkalmazások lettek hozzáadva az összevon�
 
 Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md).
 
-Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../azuread-dev/howto-app-gallery-listing.md)című témakört.
+Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../develop/v2-howto-app-gallery-listing.md)című témakört.
 
 ---
 
@@ -3914,7 +3914,7 @@ Az új Azure Active Directory felügyeleti konzol és az új API-k általánosan
 
 Az új felügyeleti konzolra való áttérés részeként 2 új API-t tettünk elérhetővé az Azure AD-tevékenységek naplófájljainak beolvasásához. Az új API-k szélesebb körű szűrési és rendezési funkciókat biztosítanak, továbbá gazdagabb naplózási és bejelentkezési tevékenységeket is biztosítanak. A biztonsági jelentésekben korábban elérhető adatok mostantól az Identity Protection kockázati észlelések API-n keresztül érhetők el Microsoft Graphban.
 
-További információkért lásd:
+További információ:
 
 - [Ismerkedés a Azure Active Directory Reporting API-val](../reports-monitoring/concept-reporting-api.md)
 
@@ -3998,7 +3998,7 @@ További információ: [Mi az Azure ad Privileged Identity Management?](../privi
 
 Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS-alkalmazások integrálása Azure Active Directoryokkal](../saas-apps/tutorial-list.md).
 
-Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../azuread-dev/howto-app-gallery-listing.md)című témakört.
+Az alkalmazás Azure AD-katalógusban való listázásával kapcsolatos további információkért tekintse [meg az alkalmazás listázása a Azure Active Directory Application Galleryben](../develop/v2-howto-app-gallery-listing.md)című témakört.
 
 ---
 
@@ -4075,7 +4075,7 @@ A következő alkalmazások szerepelnek a [jóváhagyott ügyfélalkalmazások](
 - [Microsoft Kaizala](https://www.microsoft.com/garage/profiles/kaizala/)
 - Microsoft StaffHub
 
-További információkért lásd:
+További információ:
 
 - [Jóváhagyott ügyfélalkalmazás-követelmény](../conditional-access/concept-conditional-access-conditions.md#client-apps)
 - [Azure AD-alkalmazás-alapú feltételes hozzáférés](../conditional-access/app-based-conditional-access.md)
@@ -4157,7 +4157,7 @@ Mostantól belefoglalhatja (vagy kizárhatja) a macOS-t az Azure AD feltételes 
 - **Győződjön meg arról, hogy a macOS-eszközök megfelelnek a szervezetnek az Intune-ban definiált megfelelőségi szabályzatoknak.** A Azure Portal Intune-ban mostantól beállíthatja a macOS-eszközökre vonatkozó megfelelőségi szabályzatokat.
 - **Az Azure AD-alkalmazásokhoz való hozzáférés korlátozása csak a megfelelő macOS-eszközökre.** A feltételes hozzáférési szabályzat létrehozásához a macOS-t külön eszköz platformként kell megválasztani. Most már készíthet macOS-specifikus feltételes hozzáférési szabályzatokat az Azure-beli megcélzott alkalmazás számára.
 
-További információkért lásd:
+További információ:
 
 - [Megfelelőségi szabályzat létrehozása MacOS-eszközökhöz az Intune-nal](/mem/intune/protect/compliance-policy-create-mac-os)
 - [Feltételes hozzáférés az Azure AD-ben](../conditional-access/overview.md)
@@ -4204,7 +4204,7 @@ A következő alkalmazások lettek hozzáadva a [jóváhagyott ügyfélalkalmaz�
 - Microsoft Planner
 - Azure Information Protection
 
-További információkért lásd:
+További információ:
 
 - [Jóváhagyott ügyfélalkalmazás-követelmény](../conditional-access/concept-conditional-access-conditions.md#client-apps)
 - [Azure AD-alkalmazás-alapú feltételes hozzáférés](../conditional-access/app-based-conditional-access.md)
