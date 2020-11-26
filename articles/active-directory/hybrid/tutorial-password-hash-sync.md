@@ -15,11 +15,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b82dcc633f0f2bb13cb84f80873117f9eb94a24f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91313162"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96176120"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>Oktatóanyag: egyetlen AD-erdő integrálása a jelszó-kivonatolási szinkronizálással (PHS)
 
@@ -78,10 +78,10 @@ A virtuális gép létrehozásának befejezéséhez be kell fejeznie az operáci
 1. Hyper-V kezelője, kattintson duplán a virtuális gépre
 2. Kattintson a Start gombra.
 3. A rendszer felszólítja, hogy a CD-ről vagy DVD-ről történő rendszerindításhoz nyomja le bármelyik billentyűt. Ugorjon erre.
-4. A Windows Server Start up képernyőn válassza ki a nyelvet, és kattintson a **tovább**gombra.
-5. Kattintson a **Telepítés most**lehetőségre.
-6. Adja meg a licenckulcs, és kattintson a **tovább**gombra.
-7. Jelölje be a * * Elfogadom a licencfeltételeket, majd kattintson a **tovább**gombra.
+4. A Windows Server Start up képernyőn válassza ki a nyelvet, és kattintson a **tovább** gombra.
+5. Kattintson a **Telepítés most** lehetőségre.
+6. Adja meg a licenckulcs, és kattintson a **tovább** gombra.
+7. Jelölje be a * * Elfogadom a licencfeltételeket, majd kattintson a **tovább** gombra.
 8. Válassza az **Egyéni: csak a Windows telepítése (speciális) lehetőséget.**
 9. Kattintson a **tovább** gombra
 10. Miután a telepítés befejeződött, indítsa újra a virtuális gépet, jelentkezzen be, és futtassa a Windows-frissítéseket, hogy a virtuális gép a legnaprakészebb legyen.  Telepítse a legújabb frissítéseket.
@@ -232,7 +232,7 @@ Most ellenőrizzük, hogy a helyszíni címtárban található felhasználók sz
 
 Ezzel sikeresen beállított egy hibrid identitási környezetet, amellyel tesztelheti és megismerheti az Azure által kínált lehetőségeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 
 - [Hardver és előfeltételek](how-to-connect-install-prerequisites.md) 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c154952d41db742c4d33899094a49a65fae72f26
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 7caeefb741e6916d69894ede3a7c64eb2e8f623f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840100"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174496"
 ---
 # <a name="self-service-password-reset-frequently-asked-questions"></a>Gyakori kérdések az önkiszolgáló jelszó-visszaállítással kapcsolatban
 
@@ -289,4 +289,4 @@ Ez a GYIK a következő szakaszokra oszlik:
 * [Mi a jelszóvisszaíró, és miért fontos?](./tutorial-enable-sspr-writeback.md)
 * [Hogyan készíthető jelentés az SSPR-ben végzett tevékenységekről?](howto-sspr-reporting.md)
 * [Mik az SSPR beállításai, és mit jelentenek?](concept-sspr-howitworks.md)
-* [Úgy gondolom, hogy valami megszakadt. Hogyan a SSPR hibáinak megoldása?](active-directory-passwords-troubleshoot.md)
+* [Úgy gondolom, hogy valami megszakadt. Hogyan a SSPR hibáinak megoldása?](./troubleshoot-sspr.md)

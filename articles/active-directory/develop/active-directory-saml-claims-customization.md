@@ -13,16 +13,16 @@ ms.date: 10/22/2019
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 90efdd560735a112c2a4c5eb5740f211b587a241
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f462a78790e73f3e0f67f55b6417589c7826a75d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275752"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173668"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: az SAML-jogkivonatban kiadott jogcímek testreszabása nagyvállalati alkalmazásokhoz
 
-Napjainkban a Microsoft Identity platform támogatja az egyszeri bejelentkezést (SSO) a legtöbb nagyvállalati alkalmazással, beleértve az Azure AD-katalógusban és az egyéni alkalmazásokban előre integrált alkalmazásokat is. Amikor a felhasználó az SAML 2,0 protokoll használatával hitelesít egy alkalmazást a Microsoft Identity platformon keresztül, a Microsoft Identity platform tokent küld az alkalmazásnak (HTTP-POSTon keresztül). Ezután az alkalmazás érvényesíti és használja a jogkivonatot a felhasználó bejelentkezésére a Felhasználónév és a jelszó kérése helyett. Ezek az SAML-tokenek a *jogcímek*által ismert felhasználóra vonatkozó adatokat tartalmaznak.
+Napjainkban a Microsoft Identity platform támogatja az egyszeri bejelentkezést (SSO) a legtöbb nagyvállalati alkalmazással, beleértve az Azure AD-katalógusban és az egyéni alkalmazásokban előre integrált alkalmazásokat is. Amikor a felhasználó az SAML 2,0 protokoll használatával hitelesít egy alkalmazást a Microsoft Identity platformon keresztül, a Microsoft Identity platform tokent küld az alkalmazásnak (HTTP-POSTon keresztül). Ezután az alkalmazás érvényesíti és használja a jogkivonatot a felhasználó bejelentkezésére a Felhasználónév és a jelszó kérése helyett. Ezek az SAML-tokenek a *jogcímek* által ismert felhasználóra vonatkozó adatokat tartalmaznak.
 
 A *jogcím* olyan információ, amelyet az identitás-szolgáltató az adott felhasználóhoz tartozó jogkivonatban lévő felhasználóval kapcsolatos. Az [SAML-tokenben](https://en.wikipedia.org/wiki/SAML_2.0)ezeket az adatok JELLEMZŐEN az SAML-attribútum utasításában találhatók. A felhasználó egyedi AZONOSÍTÓját általában az SAML-tulajdonos jelöli, más néven a name Identifier.
 
@@ -54,7 +54,7 @@ Ha az SAML-kérelem nem tartalmaz NameIDPolicy-elemet, akkor a Microsoft Identit
 
 A **név-azonosító formátum** legördülő listából választhatja ki az alábbi lehetőségek egyikét.
 
-| NameID formátuma | Description |
+| NameID formátuma | Leírás |
 |---------------|-------------|
 | **Alapértelmezett** | A Microsoft Identity platform az alapértelmezett forrás formátumot fogja használni. |
 | **Állandó** | A Microsoft Identity platform a NameID formátumot fogja használni állandóként. |
@@ -109,7 +109,7 @@ Használhatja a jogcím-átalakítási funkciókat is.
 
 Alkalmazás-specifikus jogcímek hozzáadása:
 
-1. A **felhasználói attribútumok & jogcímek**területen válassza az **új jogcím hozzáadása** elemet a **felhasználói jogcímek kezelése** lap megnyitásához.
+1. A **felhasználói attribútumok & jogcímek** területen válassza az **új jogcím hozzáadása** elemet a **felhasználói jogcímek kezelése** lap megnyitásához.
 1. Adja meg a jogcímek **nevét** . Az értéknek nem feltétlenül kell követnie egy URI-mintát az SAML-specifikáció alapján. Ha URI-mintázatra van szüksége, azt a **névtér** mezőbe helyezheti.
 1. Válassza ki azt a **forrást** , ahol a jogcím le fogja kérdezni az értékét. Kiválaszthat egy felhasználói attribútumot a forrás attribútum legördülő menüből, vagy alkalmazhat egy átalakítást a felhasználói attribútumra, mielőtt jogcímet kibocsátja jogcímként.
 
@@ -117,9 +117,9 @@ Alkalmazás-specifikus jogcímek hozzáadása:
 
 Átalakítás alkalmazása felhasználói attribútumra:
 
-1. A **jogcím kezelése**lapon válassza az *átalakítás* lehetőséget jogcím forrásaként az **átalakítás kezelése** lap megnyitásához.
+1. A **jogcím kezelése** lapon válassza az *átalakítás* lehetőséget jogcím forrásaként az **átalakítás kezelése** lap megnyitásához.
 2. Válassza ki a függvényt az átalakítás legördülő listából. A kiválasztott függvénytől függően paramétereket és állandó értéket kell megadnia, hogy kiértékelje az átalakítást. Az elérhető funkciókkal kapcsolatos további információkért tekintse meg az alábbi táblázatot.
-3. Több átalakítás alkalmazásához kattintson az **átalakítás hozzáadása**lehetőségre. A jogcímek számára legfeljebb két átalakítás alkalmazható. Először kinyerheti például az e-mail-előtagot `user.mail` . Ezután végezze el a karakterláncot a nagybetűvel.
+3. Több átalakítás alkalmazásához kattintson az **átalakítás hozzáadása** lehetőségre. A jogcímek számára legfeljebb két átalakítás alkalmazható. Először kinyerheti például az e-mail-előtagot `user.mail` . Ezután végezze el a karakterláncot a nagybetűvel.
 
    ![Több jogcím-átalakítás](./media/active-directory-saml-claims-customization/sso-saml-multiple-claims-transformation.png)
 
@@ -162,7 +162,7 @@ Az egyik forgatókönyv, ahol ez hasznos lehet, ha a jogcím forrása eltér a v
 
 Jogcím feltételének hozzáadása:
 
-1. A **jogcím kezelése**területen bontsa ki a jogcím feltételeit.
+1. A **jogcím kezelése** területen bontsa ki a jogcím feltételeit.
 2. Válassza ki a felhasználó típusát.
 3. Válassza ki azokat a csoportokat, amelyekhez a felhasználónak tartoznia kell. Egy adott alkalmazáshoz tartozó jogcímek közül legfeljebb 50 egyedi csoportot választhat ki. 
 4. Válassza ki azt a **forrást** , ahol a jogcím le fogja kérdezni az értékét. Kiválaszthat egy felhasználói attribútumot a forrás attribútum legördülő menüből, vagy alkalmazhat egy átalakítást a felhasználói attribútumra, mielőtt jogcímet kibocsátja jogcímként.
@@ -178,5 +178,5 @@ Először is a Microsoft Identity platform ellenőrzi, hogy a Britta felhasznál
 ## <a name="next-steps"></a>Következő lépések
 
 * [Alkalmazások kezelése az Azure AD-ben](../manage-apps/what-is-application-management.md)
-* [Egyszeri bejelentkezés konfigurálása olyan alkalmazásokhoz, amelyek nem szerepelnek az Azure AD-alkalmazás-katalógusban](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
-* [Az SAML-alapú egyszeri bejelentkezés hibaelhárítása](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
+* [Egyszeri bejelentkezés konfigurálása olyan alkalmazásokhoz, amelyek nem szerepelnek az Azure AD-alkalmazás-katalógusban](../manage-apps/configure-saml-single-sign-on.md)
+* [Az SAML-alapú egyszeri bejelentkezés hibaelhárítása](../manage-apps/debug-saml-sso-issues.md)

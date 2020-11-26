@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 695d47c839a9436f4fad9399f7995b3197e1c0eb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b1583307771dd58053128d71cb0ae5dd7e709f68
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964995"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174381"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Jelszóházirend és a fiókra vonatkozó korlátozások a Azure Active Directoryban
 
@@ -102,7 +102,7 @@ A [set-msolcompanysettings parancsmagjával PowerShell-](/powershell/module/mson
 Az egy-kapus szabályzathoz egy hitelesítő adat szükséges, például egy e-mail-cím vagy telefonszám. Az egykapus szabályzat a következő esetekben érvényes:
 
 * A próbaverziós előfizetés első 30 napján belül van; vagy
-* Nincs beállítva egyéni tartomány az Azure AD-bérlőhöz, ezért az alapértelmezett **. onmicrosoft.com*használja. Az alapértelmezett **. onmicrosoft.com* tartomány nem ajánlott éles használatra; és
+* Nincs beállítva egyéni tartomány az Azure AD-bérlőhöz, ezért az alapértelmezett **. onmicrosoft.com* használja. Az alapértelmezett **. onmicrosoft.com* tartomány nem ajánlott éles használatra; és
 * Az Azure AD Connect nem szinkronizálja az identitásokat
 
 ## <a name="password-expiration-policies"></a><a name="set-password-expiration-policies-in-azure-ad"></a>Jelszó-elévülési szabályzatok
@@ -180,4 +180,4 @@ A modul telepítése után a következő lépésekkel hajtsa végre az egyes fel
 
 A SSPR használatának megkezdéséhez tekintse meg az [oktatóanyag: a felhasználók számára a fiók zárolásának feloldását vagy a jelszavak visszaállítását Azure Active Directory önkiszolgáló jelszó-visszaállítással](tutorial-enable-sspr.md).
 
-Ha Ön vagy a felhasználók problémákat tapasztalnak a SSPR kapcsolatban, olvassa el az [önkiszolgáló jelszó-visszaállítás hibaelhárítása](active-directory-passwords-troubleshoot.md) című témakört.
+Ha Ön vagy a felhasználók problémákat tapasztalnak a SSPR kapcsolatban, olvassa el az [önkiszolgáló jelszó-visszaállítás hibaelhárítása](./troubleshoot-sspr.md) című témakört.

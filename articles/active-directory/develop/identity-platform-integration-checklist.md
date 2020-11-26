@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 036c40395e5da5ebc09a87e420893d7dbd2ec668
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94da22fbb2940bddaad1324bedc8759706eca37b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88116801"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173566"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft Identity platform – ajánlott eljárások és javaslatok
 
@@ -32,7 +32,7 @@ Az alábbi ellenőrzőlista használatával biztosíthatja, hogy az alkalmazás 
 
 ## <a name="basics"></a>Alapvető beállítások
 
-![jelölőnégyzet ](./media/active-directory-integration-checklist/checkbox-two.svg) beolvasása és a [Microsoft-Platform házirendjeinek](https://go.microsoft.com/fwlink/?linkid=2090497&clcid=0x409)megismerése. Győződjön meg arról, hogy az alkalmazás megfelel a felhasználók és a platform elleni védelemhez tervezett feltételeknek.
+![jelölőnégyzet ](./media/active-directory-integration-checklist/checkbox-two.svg) beolvasása és a [Microsoft-Platform házirendjeinek](/legal/microsoft-identity-platform/terms-of-use)megismerése. Győződjön meg arról, hogy az alkalmazás megfelel a felhasználók és a platform elleni védelemhez tervezett feltételeknek.
 
 ## <a name="ownership"></a>Tulajdonjog
 

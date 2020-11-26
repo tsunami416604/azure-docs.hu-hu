@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-java
 - devx-track-azurecli
-ms.openlocfilehash: 5c8993bdf892ceb7d9886d0d2b97063dedec720c
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: db24fa4721e2e502c5098b415c4cf06da80f697d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635551"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175678"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>Gyors útmutató: Java-függvény létrehozása az Azure-ban a parancssorból
 
@@ -34,7 +34,7 @@ Mielőtt elkezdené, a következőkkel kell rendelkeznie:
 
 + Az [Azure CLI](/cli/azure/install-azure-cli) 2,4-es vagy újabb verziója.
 
-+ A [Java fejlesztői csomag](https://aka.ms/azure-jdks)8-as vagy 11-es verziója. A `JAVA_HOME` környezeti változót a JDK megfelelő verziójának telepítési helyére kell beállítani.     
++ A [Java fejlesztői csomag](/azure/developer/java/fundamentals/java-jdk-long-term-support)8-as vagy 11-es verziója. A `JAVA_HOME` környezeti változót a JDK megfelelő verziójának telepítési helyére kell beállítani.     
 
 + [Apache Maven](https://maven.apache.org), 3,0-es vagy újabb verzió.
 
@@ -154,7 +154,7 @@ Az archetípus is létrehoz egy egység tesztet a függvényhez. Ha módosítja 
     
     A terminál, amelyben elindította a projektet, a naplók kimenetét is megjeleníti a kérések elkészítésekor.
 
-1. Ha elkészült, használja a **CTRL C billentyűt** , + **C** és válassza `y` a functions gazdagép leállítását.
+1. Ha elkészült, használja a **CTRL C billentyűt**, + **C** és válassza `y` a functions gazdagép leállítását.
 
 ## <a name="deploy-the-function-project-to-azure"></a>A Function projekt üzembe helyezése az Azure-ban
 
@@ -220,7 +220,7 @@ Remove-AzResourceGroup -Name java-functions-group
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Kapcsolódás Azure Storage-várólistához](functions-add-output-binding-storage-queue-cli.md?pivots=programming-language-java)

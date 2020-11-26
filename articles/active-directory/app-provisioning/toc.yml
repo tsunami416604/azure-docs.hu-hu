@@ -51,7 +51,7 @@
         - name: Üzembehelyezési jelentések
           href: ../reports-monitoring/concept-provisioning-logs.md?context=%2fazure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
     - name: Automatikus konfigurálás az MS Graph használatával
-      href: 'https://docs.microsoft.com/graph/application-provisioning-configure-api'
+      href: /graph/application-provisioning-configure-api
     - name: Az alkalmazás üzembe helyezésének hibaelhárítása
       items:
         - name: Ismert problémák

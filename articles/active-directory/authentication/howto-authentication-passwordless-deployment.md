@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0143da9c1961b4123467120210135f7db2c582c8
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b4c06e53d3ddfb5f344a759e31d83cb22ce6d4d3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839573"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174136"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Jelszóval nem rendelkező hitelesítés központi telepítésének megtervezése Azure Active Directory
 
@@ -78,11 +78,11 @@ A szervezeteknek a következő előfeltételeknek kell megfelelniük a jelszóva
 
 A Windows Hello előfeltételei nagymértékben függenek attól, hogy helyszíni, hibrid vagy kizárólag felhőalapú konfigurációban végez-e üzembe helyezést. További információkért tekintse meg a [vállalati Windows Hello előfeltételeinek teljes listáját](/windows/security/identity-protection/hello-for-business/hello-identity-verification).
 
-### <a name="azure-ad-multi-factor-authentication"></a>Azure AD-Multi-Factor Authentication
+### <a name="azure-ad-multi-factor-authentication"></a>Azure AD többtényezős hitelesítés
 
 A felhasználók az Azure AD Multi-Factor Authentication regisztrációs folyamat részeként regisztrálják a jelszóval nem rendelkező metódust. A többtényezős hitelesítés a felhasználónévvel és a jelszóval együtt egy másik regisztrált módszerrel is használható tartalékként, ha bizonyos helyzetekben nem tudják használni a telefonját vagy a biztonsági kulcsát.
 
-### <a name="licensing"></a>Licencek 
+### <a name="licensing"></a>Licencelés 
 A jelszó nélküli hitelesítéshez nem kell további díjat fizetni, bár bizonyos előfeltételek esetén prémium előfizetés szükséges. A [Azure Active Directory licencelése lapon](https://azure.microsoft.com/pricing/details/active-directory/)található részletes funkció-és licencelési információk. 
 
 ## <a name="develop-a-plan"></a>Terv kidolgozása
@@ -126,7 +126,7 @@ A jelszó nélküli hitelesítés telepítésekor először engedélyeznie kell 
 
 A csoportok a helyszíni címtárból vagy az Azure AD-ből is szinkronizálhatók. Ha elégedett a pilóta eredményeivel, átválthatja a jelszó nélküli hitelesítést az összes felhasználóra.
 
-Tekintse meg az [ajánlott eljárásokat a pilóta számára](https://aka.ms/deploymentplans) a központi telepítési tervek lapon.
+Tekintse meg az [ajánlott eljárásokat a pilóta számára](../fundamentals/active-directory-deployment-plans.md) a központi telepítési tervek lapon.
 
 ## <a name="plan-passwordless-authentication-with-the-microsoft-authenticator-app"></a>Jelszóval nem rendelkező hitelesítés tervezése a Microsoft Authenticator alkalmazással
 

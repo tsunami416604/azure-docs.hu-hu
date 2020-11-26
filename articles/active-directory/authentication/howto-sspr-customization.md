@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4bef201cbd14a4de0c785b5f86d534f27bfedb31
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e121a6a45ab20055591a3670152114b8d03529cf
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363708"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173994"
 ---
 # <a name="customize-the-user-experience-for-azure-active-directory-self-service-password-reset"></a>Felhasználói élmény testreszabása Azure Active Directory önkiszolgáló jelszó-visszaállításhoz
 
@@ -56,8 +56,8 @@ Ha többet szeretne megtudni a különböző rendszergazdai szerepkörökről é
 
 Ha a szervezet nem szeretné értesíteni a rendszergazdákat a jelszó-visszaállítási kérelmekről, a következő konfigurációs lehetőségek használhatók:
 
-* Testreszabhatja az ügyfélszolgálati hivatkozást egy webes URL-cím vagy mailto: cím megadásához, amellyel a felhasználók segítséget kérhetnek. Ez a beállítás a **jelszó-visszaállítás**  >  **testreszabása**  >  **Egyéni segélyszolgálat e-mail-címe vagy URL-címe**alatt található.
-* Az összes felhasználó önkiszolgáló jelszó-visszaállításának engedélyezése. Ez a beállítás a **jelszó-visszaállítás**  >  **tulajdonságai**területen található. Ha nem szeretné, hogy a felhasználók a saját jelszavukat állítsa alaphelyzetbe, akkor egy üres csoporthoz is hozzáférhet. *Ez a beállítás nem ajánlott.*
+* Testreszabhatja az ügyfélszolgálati hivatkozást egy webes URL-cím vagy mailto: cím megadásához, amellyel a felhasználók segítséget kérhetnek. Ez a beállítás a **jelszó-visszaállítás**  >  **testreszabása**  >  **Egyéni segélyszolgálat e-mail-címe vagy URL-címe** alatt található.
+* Az összes felhasználó önkiszolgáló jelszó-visszaállításának engedélyezése. Ez a beállítás a **jelszó-visszaállítás**  >  **tulajdonságai** területen található. Ha nem szeretné, hogy a felhasználók a saját jelszavukat állítsa alaphelyzetbe, akkor egy üres csoporthoz is hozzáférhet. *Ez a beállítás nem ajánlott.*
 
 ## <a name="customize-the-sign-in-page-and-access-panel"></a>A bejelentkezési oldal és a hozzáférési panel testreszabása
 
@@ -74,7 +74,7 @@ A kiválasztott grafikák a következő esetekben jelennek meg:
 
 Annak érdekében, hogy a dolgok jobban megnézzék a felhasználókat, a Portálon és az automatikus kommunikációban is megváltoztathatja a szervezet nevét. Ha módosítani szeretné a Azure Portal könyvtárnév attribútumát, keresse meg **Azure Active Directory**  >  **tulajdonságokat**. Ez a felhasználóbarát szervezet neve beállítás a legkönnyebben látható az automatizált e-mailekben, az alábbi példáknak megfelelően:
 
-* A felhasználóbarát név az e-mailben, például "a Microsoft neve a*contoso demo nevében*"
+* A felhasználóbarát név az e-mailben, például "a Microsoft neve a *contoso demo nevében*"
 * Az e-mailben szereplő tárgyi sor, például "*contoso demo-fiók e-mail-ellenőrző kódja*"
 
 ## <a name="customize-the-ad-fs-sign-in-page"></a>A AD FS bejelentkezési oldalának testreszabása
@@ -91,4 +91,4 @@ Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><a href='https://passwor
 
 A környezet SSPR használatának megismeréséhez lásd: [jelentéskészítési beállítások az Azure ad jelszavas felügyelethez](howto-sspr-reporting.md).
 
-Ha Ön vagy a felhasználók problémákat tapasztalnak a SSPR kapcsolatban, olvassa el az [önkiszolgáló jelszó-visszaállítás hibaelhárítása](active-directory-passwords-troubleshoot.md) című témakört.
+Ha Ön vagy a felhasználók problémákat tapasztalnak a SSPR kapcsolatban, olvassa el az [önkiszolgáló jelszó-visszaállítás hibaelhárítása](./troubleshoot-sspr.md) című témakört.

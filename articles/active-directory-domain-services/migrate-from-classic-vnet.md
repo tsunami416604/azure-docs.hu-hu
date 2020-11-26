@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: joflore
-ms.openlocfilehash: a66268c0cd0c2382b412873ec7f78b87d3491594
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: aae665b5982ab2b5c1163bb9297eda5f2e5d344a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968174"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175372"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Azure Active Directory Domain Services migrálása a klasszikus virtuális hálózati modellből a Resource Managerbe
 
@@ -153,11 +153,11 @@ A Resource Manager-alapú üzemi modellre és a virtuális hálózatra történ�
 
 | Lépés    | Végrehajtás  | Becsült idő  | Állásidő  | Vissza/vissza? |
 |---------|--------------------|-----------------|-----------|-------------------|
-| [1. lépés – az új virtuális hálózat frissítése és megkeresése](#update-and-verify-virtual-network-settings) | Azure Portal | 15 perc | Nincs szükség állásidőre | N.A. |
+| [1. lépés – az új virtuális hálózat frissítése és megkeresése](#update-and-verify-virtual-network-settings) | Azure Portal | 15 perc | Nincs szükség állásidőre | N/A |
 | [2. lépés – a felügyelt tartomány előkészítése áttelepítésre](#prepare-the-managed-domain-for-migration) | PowerShell | 15 – 30 perc átlagosan | Az Azure AD DS leállása a parancs befejezése után kezdődik. | Visszaállítás és helyreállítás elérhető. |
 | [3. lépés – a felügyelt tartomány áthelyezése meglévő virtuális hálózatra](#migrate-the-managed-domain) | PowerShell | átlagosan 1 – 3 óra | A parancs befejezése után egy tartományvezérlő érhető el, a leállás véget ér. | Hiba esetén mind a visszaállítás (önkiszolgáló), mind a visszaállítás elérhető. |
 | [4. lépés – tesztelés és várakozás a replika tartományvezérlőre](#test-and-verify-connectivity-after-the-migration)| PowerShell és Azure Portal | 1 óra vagy több, a tesztek számától függően | Mindkét tartományvezérlő elérhető, és általában működnie kell. | N/A. Az első virtuális gép sikeres áttelepítése után nincs lehetőség visszaállításra vagy visszaállításra. |
-| [5. lépés – választható konfigurációs lépések](#optional-post-migration-configuration-steps) | Azure Portal és virtuális gépek | N.A. | Nincs szükség állásidőre | N.A. |
+| [5. lépés – választható konfigurációs lépések](#optional-post-migration-configuration-steps) | Azure Portal és virtuális gépek | N/A | Nincs szükség állásidőre | N/A |
 
 > [!IMPORTANT]
 > Az áttelepítési folyamat megkezdése előtt olvassa el az összes áttelepítési cikket és útmutatást a további állásidő elkerüléséhez. Az áttelepítési folyamat egy adott időszakra hatással van az Azure AD DS tartományvezérlők rendelkezésre állására. A felhasználók, szolgáltatások és alkalmazások nem tudnak hitelesíteni a felügyelt tartományon az áttelepítési folyamat során.
@@ -230,7 +230,7 @@ A felügyelt tartomány előkészítése és biztonsági mentése után a tartom
 
 Futtassa a `Migrate-Aadds` parancsmagot a *-commit* paraméter használatával. Adja meg a *-ManagedDomainFqdn* az előző szakaszban előkészített saját felügyelt tartományhoz, például *aaddscontoso.com*:
 
-Válassza ki azt a célként megadott erőforráscsoportot, amely az Azure AD DS áttelepíteni kívánt virtuális hálózatot tartalmazza, például *myResourceGroup*. Adja meg a cél virtuális hálózatot, például a *myVnet*és az alhálózatot, például a *DomainServices*.
+Válassza ki azt a célként megadott erőforráscsoportot, amely az Azure AD DS áttelepíteni kívánt virtuális hálózatot tartalmazza, például *myResourceGroup*. Adja meg a cél virtuális hálózatot, például a *myVnet* és az alhálózatot, például a *DomainServices*.
 
 A parancs futtatása után visszaállíthatja a következőt:
 
@@ -302,7 +302,7 @@ Ha szükséges, frissítheti a részletes jelszóházirendek, hogy az alapértel
 
 1. [Állítsa be a jelszóházirend beállítását][password-policy] a felügyelt tartomány kevesebb korlátozására, és figyelje meg az eseményeket a naplókban.
 1. Ha bármelyik szolgáltatásfiók a naplókban azonosított lejárt jelszavakat használ, frissítse ezeket a fiókokat a megfelelő jelszóval.
-1. Ha egy virtuális gép elérhető az internethez, tekintse át az általános fiókok neveit, például a rendszergazda, a *felhasználó*vagy a *vendég* *szerepkört*a magas bejelentkezési kísérletekkel. Ha lehetséges, frissítse ezeket a virtuális gépeket úgy, hogy azok kevésbé általános névvel ellátott fiókokat használjanak.
+1. Ha egy virtuális gép elérhető az internethez, tekintse át az általános fiókok neveit, például a rendszergazda, a *felhasználó* vagy a *vendég* *szerepkört* a magas bejelentkezési kísérletekkel. Ha lehetséges, frissítse ezeket a virtuális gépeket úgy, hogy azok kevésbé általános névvel ellátott fiókokat használjanak.
 1. A virtuális gépen található hálózati nyomkövetés használatával keresse meg a támadások forrását, és tiltsa le az IP-címeket, hogy a rendszer megkísérelje a bejelentkezést.
 1. Ha minimális zárolási probléma merül fel, frissítse a részletes jelszóházirendek a szükségesnél szigorúbb korlátozást.
 
@@ -314,7 +314,7 @@ Az áttelepítési folyamat egy bizonyos pontjáig dönthet úgy, hogy visszaál
 
 Ha hiba lép fel a PowerShell-parancsmag futtatásakor a 2. lépésben vagy a 3. lépésben a Migrálás előkészítéséhez, a felügyelt tartomány visszaállíthatja az eredeti konfigurációt. A visszaállításhoz az eredeti klasszikus virtuális hálózat szükséges. Az IP-címek továbbra is változhatnak a visszaállítás után.
 
-Futtassa a `Migrate-Aadds` parancsmagot a *-megszakítás* paraméter használatával. Adja meg a *-ManagedDomainFqdn* az előző szakaszban előkészített saját felügyelt tartományhoz, például a *Aaddscontoso.com*és a klasszikus virtuális hálózat nevét, például *myClassicVnet*:
+Futtassa a `Migrate-Aadds` parancsmagot a *-megszakítás* paraméter használatával. Adja meg a *-ManagedDomainFqdn* az előző szakaszban előkészített saját felügyelt tartományhoz, például a *Aaddscontoso.com* és a klasszikus virtuális hálózat nevét, például *myClassicVnet*:
 
 ```powershell
 Migrate-Aadds `
@@ -360,7 +360,7 @@ A felügyelt tartomány áttelepítése a Resource Manager-alapú üzemi modellr
 [notifications]: notifications.md
 [password-policy]: password-policy.md
 [secure-ldap]: tutorial-configure-ldaps.md
-[migrate-iaas]: ../virtual-machines/windows/migration-classic-resource-manager-overview.md
+[migrate-iaas]: ../virtual-machines/migration-classic-resource-manager-overview.md
 [join-windows]: join-windows-vm.md
 [tutorial-create-management-vm]: tutorial-create-management-vm.md
 [troubleshoot-domain-join]: troubleshoot-domain-join.md

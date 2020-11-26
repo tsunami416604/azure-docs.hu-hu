@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06c37eaf63b79b171e5a21d807262cfb359d416c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 765bfe0f805ae4219110d689e8f7f8fd54a26cf3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994162"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173936"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Azure Active Directory önkiszolgáló jelszó-visszaállítás központi telepítésének megtervezése
 
@@ -123,7 +123,7 @@ A környezetében érdemes figyelembe vennie a szervezeti igényeket is.
 
 ### <a name="engage-the-right-stakeholders"></a>A megfelelő résztvevők bevonása
 
-A technológiai projektek meghibásodása esetén általában a hatás, az eredmények és a felelősségek eltérő elvárásai miatt válnak elérhetővé. A buktatók elkerülése érdekében [Győződjön meg arról, hogy a megfelelő érintett feleket folytatja](https://aka.ms/deploymentplans) , és hogy a projektben érintett szerepköröket jól megértette az érintett felek és a projekt bemeneti és elszámoltathatóság dokumentálása révén.
+A technológiai projektek meghibásodása esetén általában a hatás, az eredmények és a felelősségek eltérő elvárásai miatt válnak elérhetővé. A buktatók elkerülése érdekében [Győződjön meg arról, hogy a megfelelő érintett feleket folytatja](../fundamentals/active-directory-deployment-plans.md) , és hogy a projektben érintett szerepköröket jól megértette az érintett felek és a projekt bemeneti és elszámoltathatóság dokumentálása révén.
 
 #### <a name="required-administrator-roles"></a>Szükséges rendszergazdai szerepkörök
 
@@ -154,14 +154,14 @@ A következő beállítások szükségesek a SSPR engedélyezéséhez az ajánlo
 | **SSPR tulajdonságai** | Önkiszolgáló jelszó-visszaállítás engedélyezve | **Kijelölt** csoport a próbaüzem/ **mind** az éles környezethez |
 | **Hitelesítési módszerek** | A regisztráláshoz szükséges hitelesítési módszerek | Az alaphelyzetbe állításhoz mindig 1 nagyobb érték szükséges |
 |   | Az alaphelyzetbe állításhoz szükséges hitelesítési módszerek | Egy vagy kettő |
-| **Regisztráció** | Szükséges a felhasználóknak regisztrálniuk a bejelentkezéskor? | Yes |
+| **Regisztráció** | Szükséges a felhasználóknak regisztrálniuk a bejelentkezéskor? | Igen |
 |   | A napok száma, amely előtt a rendszer kéri a felhasználóktól a hitelesítési adataik ismételt megerősítését | 90 – 180 nap |
-| **Értesítések** | Értesítse a felhasználókat új jelszó kérésekor? | Yes |
-|   | Minden rendszergazda kapjon értesítést, ha más rendszergazdák új jelszót kérnek? | Yes |
-| **Testreszabás** | Segélyszolgálat hivatkozásának testreszabása | Yes |
+| **Értesítések** | Értesítse a felhasználókat új jelszó kérésekor? | Igen |
+|   | Minden rendszergazda kapjon értesítést, ha más rendszergazdák új jelszót kérnek? | Igen |
+| **Testreszabás** | Segélyszolgálat hivatkozásának testreszabása | Igen |
 |   | Egyéni segélyszolgálat e-mail-címe vagy URL-címe | Támogatási webhely vagy e-mail-cím |
-| **Helyszíni integráció** | Jelszavak visszaírása a helyszíni AD-be | Yes |
-|   | Fiók feloldásának engedélyezése a felhasználók számára a jelszó alaphelyzetbe állítása nélkül | Yes |
+| **Helyszíni integráció** | Jelszavak visszaírása a helyszíni AD-be | Igen |
+|   | Fiók feloldásának engedélyezése a felhasználók számára a jelszó alaphelyzetbe állítása nélkül | Igen |
 
 ### <a name="sspr-properties"></a>SSPR tulajdonságai
 
@@ -325,7 +325,7 @@ A [használat és](./howto-authentication-methods-usage-insights.md) az adatok s
 
 ### <a name="troubleshoot"></a>Hibaelhárítás
 
-* Lásd: önkiszolgáló [jelszó-visszaállítási hibák megoldása](./active-directory-passwords-troubleshoot.md) 
+* Lásd: önkiszolgáló [jelszó-visszaállítási hibák megoldása](./troubleshoot-sspr.md) 
 
 * A [jelszó-kezeléssel kapcsolatos gyakori kérdések](./active-directory-passwords-faq.md) követése 
 
@@ -341,7 +341,7 @@ A [használat és](./howto-authentication-methods-usage-insights.md) az adatok s
 
 * [Mi a jelszó visszaírási?](./concept-sspr-writeback.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az SSPR üzembe helyezésének megkezdéséhez lásd: az [Azure ad önkiszolgáló jelszó-visszaállításának engedélyezése](tutorial-enable-sspr.md)
 

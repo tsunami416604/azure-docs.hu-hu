@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 010e2a206ef08677651572c274cfc38fd516ecc9
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: e741bd6c87ea32b0d92b1dd53112a1bed3e4cd38
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041118"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174917"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Automatikus felhasználóátadást használó üzembe helyezés tervezése
 
@@ -34,15 +34,15 @@ A felhasználók üzembe helyezése létrehoz egy alapot a folyamatos identitás
 
 Az automatikus felhasználó-kiépítés engedélyezésének fő előnyei a következők:
 
-* **Megnövekedett termelékenység** . Az SaaS-alkalmazásokban felhasználói identitásokat egyetlen felhasználói üzembe helyezési kezelőfelülettel kezelhet. Ez az illesztőfelület egyetlen kiépítési szabályzattal rendelkezik.
+* **Megnövekedett termelékenység**. Az SaaS-alkalmazásokban felhasználói identitásokat egyetlen felhasználói üzembe helyezési kezelőfelülettel kezelhet. Ez az illesztőfelület egyetlen kiépítési szabályzattal rendelkezik.
 
-* **Kockázatkezelés** . Növelheti a biztonságot úgy, hogy a szerepköröket és/vagy a hozzáférést meghatározó alkalmazotti állapot vagy csoporttagságok alapján automatizálja a módosításokat.
+* **Kockázatkezelés**. Növelheti a biztonságot úgy, hogy a szerepköröket és/vagy a hozzáférést meghatározó alkalmazotti állapot vagy csoporttagságok alapján automatizálja a módosításokat.
 
-* **Foglalkozzon a megfelelőséggel és a szabályozással** . Az Azure AD minden felhasználói kiépítési kérelem esetében támogatja a natív naplózási naplókat. A kérelmeket a forrás-és a célszámítógépen is végrehajtja a rendszer. Így nyomon követheti, hogy ki férhet hozzá az alkalmazásokhoz egyetlen képernyőről.
+* **Foglalkozzon a megfelelőséggel és a szabályozással**. Az Azure AD minden felhasználói kiépítési kérelem esetében támogatja a natív naplózási naplókat. A kérelmeket a forrás-és a célszámítógépen is végrehajtja a rendszer. Így nyomon követheti, hogy ki férhet hozzá az alkalmazásokhoz egyetlen képernyőről.
 
-* **Csökkentse a költségeket** . Az automatikus felhasználó-kiépítés csökkenti a költségeket azáltal, hogy elkerüli a hatékonyságot és az emberi hibát a manuális kiépítés során. Ez csökkenti az egyéni fejlesztésű felhasználói megoldások, parancsfájlok és naplók igényét.
+* **Csökkentse a költségeket**. Az automatikus felhasználó-kiépítés csökkenti a költségeket azáltal, hogy elkerüli a hatékonyságot és az emberi hibát a manuális kiépítés során. Ez csökkenti az egyéni fejlesztésű felhasználói megoldások, parancsfájlok és naplók igényét.
 
-### <a name="licensing"></a>Licencek
+### <a name="licensing"></a>Licencelés
 
 Az Azure AD bármely alkalmazás önkiszolgáló integrálását teszi lehetővé az alkalmazás-katalógus menüjében található sablonok használatával. A licencekre vonatkozó követelmények teljes listáját az [Azure ad licencelési lapján](https://azure.microsoft.com/pricing/details/active-directory/)tekintheti meg.
 
@@ -157,7 +157,7 @@ Az automatikus kiépítés engedélyezéséhez és konfigurálásához szükség
 
 Ha nem, kövesse az alábbi lépéseket:
 
-1. [Hozzon létre egy](../azuread-dev/howto-app-gallery-listing.md) , az előre integrált felhasználó-létesítési összekötőre vonatkozó kérelmet. Csapatunk együttműködik Önnel és az alkalmazás fejlesztővel, hogy az alkalmazást a platformon, ha az támogatja a SCIM-t.
+1. [Hozzon létre egy](../develop/v2-howto-app-gallery-listing.md) , az előre integrált felhasználó-létesítési összekötőre vonatkozó kérelmet. Csapatunk együttműködik Önnel és az alkalmazás fejlesztővel, hogy az alkalmazást a platformon, ha az támogatja a SCIM-t.
 
 1. Használja az [BYOA scim](../app-provisioning/use-scim-to-provision-users-and-groups.md) általános felhasználói üzembe helyezési támogatását az alkalmazáshoz. Ez a követelmény, hogy az Azure AD-ben a felhasználók az előre integrált létesítési összekötő nélkül legyenek kiépítve az alkalmazásba.
 
@@ -300,11 +300,11 @@ A kiépítés során esetlegesen felmerülő problémák elhárításához tekin
 
 * [Egy attribútum szinkronizálása a helyszíni Active Directory az Azure AD-be az alkalmazásba való kiépítéshez](../app-provisioning/user-provisioning-sync-attributes-for-mapping.md)
 
-* [Probléma a rendszergazdai hitelesítő adatok mentésekor, miközben a felhasználók üzembe helyezését egy Azure Active Directory Gallery-alkalmazáshoz konfigurálja](../app-provisioning/application-provisioning-config-problem-storage-limit.md)
+* [Probléma a rendszergazdai hitelesítő adatok mentésekor, miközben a felhasználók üzembe helyezését egy Azure Active Directory Gallery-alkalmazáshoz konfigurálja](./user-provisioning.md)
 
 * [Egyetlen felhasználó sincs kiépítve egy Azure AD Gallery-alkalmazásba](../app-provisioning/application-provisioning-config-problem-no-users-provisioned.md)
 
-* [Helytelenek a felhasználók egy Azure AD Gallery-alkalmazásban való üzembe helyezése](../app-provisioning/application-provisioning-config-problem-wrong-users-provisioned.md)
+* [Helytelenek a felhasználók egy Azure AD Gallery-alkalmazásban való üzembe helyezése](../manage-apps/add-application-portal-assign-users.md)
 
 ### <a name="helpful-documentation"></a>Hasznos dokumentáció
 

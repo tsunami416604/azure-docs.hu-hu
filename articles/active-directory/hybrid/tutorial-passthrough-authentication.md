@@ -12,11 +12,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f02ec2220827fbec8c981ab3a1859d633675a6f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91313263"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96176205"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>Oktatóanyag: egyetlen AD-erdő integrálása átmenő hitelesítéssel (PTA ESP)
 
@@ -81,10 +81,10 @@ A virtuális gép létrehozásának befejezéséhez be kell fejeznie az operáci
 1. Hyper-V kezelője, kattintson duplán a virtuális gépre
 2. Kattintson a Start gombra.
 3. A rendszer felszólítja, hogy a CD-ről vagy DVD-ről történő rendszerindításhoz nyomja le bármelyik billentyűt. Ugorjon erre.
-4. A Windows Server Start up képernyőn válassza ki a nyelvet, és kattintson a **tovább**gombra.
-5. Kattintson a **Telepítés most**lehetőségre.
-6. Adja meg a licenckulcs, és kattintson a **tovább**gombra.
-7. Jelölje be a * * Elfogadom a licencfeltételeket, majd kattintson a **tovább**gombra.
+4. A Windows Server Start up képernyőn válassza ki a nyelvet, és kattintson a **tovább** gombra.
+5. Kattintson a **Telepítés most** lehetőségre.
+6. Adja meg a licenckulcs, és kattintson a **tovább** gombra.
+7. Jelölje be a * * Elfogadom a licencfeltételeket, majd kattintson a **tovább** gombra.
 8. Válassza az **Egyéni: csak a Windows telepítése (speciális) lehetőséget.**
 9. Kattintson a **tovább** gombra
 10. Miután a telepítés befejeződött, indítsa újra a virtuális gépet, jelentkezzen be, és futtassa a Windows-frissítéseket, hogy a virtuális gép a legnaprakészebb legyen.  Telepítse a legújabb frissítéseket.
@@ -208,9 +208,9 @@ Most, hogy van egy bérlőnk és egy globális rendszergazda, hozzá kell adnia 
 
 1. Lépjen vissza a [Azure Portal](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) a **minden felhasználó** panel bezárásához.
 2. A bal oldalon válassza az **Egyéni tartománynevek** elemet.
-3. Válassza az **egyéni tartomány hozzáadása**lehetőséget.</br>
+3. Válassza az **egyéni tartomány hozzáadása** lehetőséget.</br>
 ![Képernyőfelvétel: az egyéni tartomány hozzáadása gomb kiemelve.](media/tutorial-federation/custom1.png)</br>
-4. Az **Egyéni tartománynevek**mezőben adja meg az egyéni tartomány nevét a mezőbe, majd kattintson a **tartomány hozzáadása**lehetőségre.
+4. Az **Egyéni tartománynevek** mezőben adja meg az egyéni tartomány nevét a mezőbe, majd kattintson a **tartomány hozzáadása** lehetőségre.
 5. Az Egyéni tartománynév képernyőn TXT-vagy MX-információkkal fog ellátni.  Ezeket az adatokat hozzá kell adni a tartományhoz tartozó tartományregisztráló DNS-adataihoz.  Ezért a tartományregisztráló a tartomány DNS-beállításaiban adja meg a TXT vagy az MX információt.  Ez lehetővé teszi, hogy az Azure ellenőrizze a tartományt.  Ez akár 24 órát is igénybe vehet az Azure számára az ellenőrzéshez.  További információt az [egyéni tartomány hozzáadása](../../active-directory/fundamentals/add-custom-domain.md) dokumentációban talál.</br>
 ![Képernyőkép, amely megjeleníti a TXT-vagy MX-adatok hozzáadásának helyét.](media/tutorial-federation/custom2.png)</br>
 6. A hitelesítés ellenőrzéséhez kattintson az ellenőrzés gombra.</br>
@@ -222,18 +222,18 @@ Most itt az ideje, hogy letöltse és telepítse Azure AD Connect.  A telepíté
 1. [Azure ad Connect](https://www.microsoft.com/download/details.aspx?id=47594) letöltése
 2. Keresse meg az **AzureADConnect.msi** fájlt, és kattintson rá duplán.
 3. Az üdvözlőképernyőn jelölje be a licencfeltételek elfogadását jelző mezőt, és kattintson a **Continue** (Folytatás) gombra.  
-4. Az expressz beállítások képernyőn kattintson a **Testreszabás**elemre.  
+4. Az expressz beállítások képernyőn kattintson a **Testreszabás** elemre.  
 5. A szükséges összetevők telepítése képernyőn. Kattintson az **Install** (Telepítés) gombra.  
-6. A felhasználó bejelentkezési képernyőjén válassza az **átmenő hitelesítés** lehetőséget, és engedélyezze az **egyszeri bejelentkezést** , és kattintson a **tovább**gombra.</br>
+6. A felhasználó bejelentkezési képernyőjén válassza az **átmenő hitelesítés** lehetőséget, és engedélyezze az **egyszeri bejelentkezést** , és kattintson a **tovább** gombra.</br>
 ![KIBOCSÁTVA](media/tutorial-passthrough-authentication/pta1.png)</b>
-7. A Kapcsolódás az Azure AD-hoz képernyőn adja meg a fent létrehozott globális rendszergazda felhasználónevét és jelszavát, majd kattintson a **tovább**gombra.
-2. A címtárak összekapcsolása képernyőn kattintson a **könyvtár hozzáadása**lehetőségre.  Ezután válassza az **új ad-fiók létrehozása** lehetőséget, és adja meg a Contoso\Rendszergazda felhasználónevét és jelszavát, majd kattintson **az OK**gombra.
+7. A Kapcsolódás az Azure AD-hoz képernyőn adja meg a fent létrehozott globális rendszergazda felhasználónevét és jelszavát, majd kattintson a **tovább** gombra.
+2. A címtárak összekapcsolása képernyőn kattintson a **könyvtár hozzáadása** lehetőségre.  Ezután válassza az **új ad-fiók létrehozása** lehetőséget, és adja meg a Contoso\Rendszergazda felhasználónevét és jelszavát, majd kattintson **az OK** gombra.
 3. Kattintson a **Tovább** gombra.
 4. Az Azure AD bejelentkezési konfiguráció képernyőjén válassza a Folytatás lehetőséget **anélkül, hogy az összes UPN-utótagot egyeztetni kívánja a tartományokhoz** , és kattintson a **Tovább gombra.**
-5. A tartomány és szervezeti egység szűrése képernyőn kattintson a **tovább**gombra.
-6. A felhasználók egyedi azonosítása képernyőn kattintson a **tovább**gombra.
-7. A felhasználók és eszközök szűrése képernyőn kattintson a **tovább**gombra.
-8. A választható szolgáltatások képernyőn kattintson a **tovább**gombra.
+5. A tartomány és szervezeti egység szűrése képernyőn kattintson a **tovább** gombra.
+6. A felhasználók egyedi azonosítása képernyőn kattintson a **tovább** gombra.
+7. A felhasználók és eszközök szűrése képernyőn kattintson a **tovább** gombra.
+8. A választható szolgáltatások képernyőn kattintson a **tovább** gombra.
 9. Az egyszeri bejelentkezési hitelesítő adatok engedélyezése lapon adja meg a Contoso\rendszergazda felhasználónevét és jelszavát, majd kattintson a **Tovább gombra.**
 10. A Ready to configure (Konfigurálásra kész) oldalon kattintson az **Install** (Telepítés) lehetőségre.
 11. A telepítés befejezése után kattintson az **Exit** (Kilépés) gombra.
@@ -257,7 +257,7 @@ Most ellenőrizzük, hogy a helyszíni címtárban található felhasználók sz
 
 Ezzel sikeresen beállított egy hibrid identitási környezetet, amellyel tesztelheti és megismerheti az Azure által kínált lehetőségeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 
 - [Hardver és előfeltételek](how-to-connect-install-prerequisites.md) 

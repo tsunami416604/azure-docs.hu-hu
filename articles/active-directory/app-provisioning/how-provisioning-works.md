@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperfq2
-ms.openlocfilehash: 31c9dcaf6c6f26d28d70e3d1664665c2dbc37ce6
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 48188adfc3648db76f2ca362f59de6986c7c1339
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393081"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174951"
 ---
 # <a name="how-provisioning-works"></a>Az üzembe helyezés menete
 
@@ -43,7 +43,7 @@ Ha olyan alkalmazáshoz szeretne automatikus Azure AD-kiépítési összekötőt
 
 ## <a name="authorization"></a>Engedélyezés
 
-A hitelesítő adatok szükségesek ahhoz, hogy az Azure AD csatlakozhasson az alkalmazás felhasználói felügyeleti API-hoz. Egy alkalmazás automatikus felhasználó-kiépítési beállításakor érvényes hitelesítő adatokat kell megadnia. A katalógus alkalmazásaihoz az alkalmazásra vonatkozó oktatóanyagra hivatkozó hitelesítő adatokat és követelményeket talál. A nem katalógusos alkalmazások esetében a [scim](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#authorization-for-provisioning-connectors-in-the-application-gallery) dokumentációjában tájékozódhat a hitelesítő adatok típusairól és követelményeiről. A Azure Portalon tesztelheti a hitelesítő adatokat azáltal, hogy az Azure AD megpróbál csatlakozni az alkalmazás kiépítési alkalmazásához a megadott hitelesítő adatok használatával.
+A hitelesítő adatok szükségesek ahhoz, hogy az Azure AD csatlakozhasson az alkalmazás felhasználói felügyeleti API-hoz. Egy alkalmazás automatikus felhasználó-kiépítési beállításakor érvényes hitelesítő adatokat kell megadnia. A katalógus alkalmazásaihoz az alkalmazásra vonatkozó oktatóanyagra hivatkozó hitelesítő adatokat és követelményeket talál. A nem katalógusos alkalmazások esetében a [scim](./use-scim-to-provision-users-and-groups.md#authorization-for-provisioning-connectors-in-the-application-gallery) dokumentációjában tájékozódhat a hitelesítő adatok típusairól és követelményeiről. A Azure Portalon tesztelheti a hitelesítő adatokat azáltal, hogy az Azure AD megpróbál csatlakozni az alkalmazás kiépítési alkalmazásához a megadott hitelesítő adatok használatával.
 
 ## <a name="mapping-attributes"></a>Leképezési attribútumok
 
@@ -51,7 +51,7 @@ Ha engedélyezi a felhasználók kiosztását egy külső SaaS-alkalmazáshoz, a
 
 Az Azure AD felhasználói objektumai és az egyes SaaS-alkalmazások felhasználói objektumai között előre konfigurált attribútumok és attribútumok vannak megadva. Egyes alkalmazások más típusú objektumokat is kezelhetnek a felhasználók, például a csoportok mellett.
 
-A kiépítés beállításakor fontos, hogy áttekintse és konfigurálja azokat az attribútum-hozzárendeléseket és munkafolyamatokat, amelyek meghatározzák, hogy az Azure AD mely felhasználói (vagy csoport-) tulajdonságait kell az alkalmazásnak megadnia. Tekintse át és konfigurálja a megfelelő tulajdonságot (az **attribútumot használó objektumok egyeztetése** ), amely a felhasználók és csoportok egyedi azonosítására és a két rendszer közötti egyeztetésére szolgál.
+A kiépítés beállításakor fontos, hogy áttekintse és konfigurálja azokat az attribútum-hozzárendeléseket és munkafolyamatokat, amelyek meghatározzák, hogy az Azure AD mely felhasználói (vagy csoport-) tulajdonságait kell az alkalmazásnak megadnia. Tekintse át és konfigurálja a megfelelő tulajdonságot (az **attribútumot használó objektumok egyeztetése**), amely a felhasználók és csoportok egyedi azonosítására és a két rendszer közötti egyeztetésére szolgál.
 
 Az alapértelmezett attribútum-hozzárendelések testreszabhatók az üzleti igényeknek megfelelően. Így módosíthatja vagy törölheti a meglévő attribútum-hozzárendeléseket, illetve létrehozhat új attribútum-hozzárendeléseket is. Részletekért lásd: [felhasználói üzembe helyezési attribútumok testreszabása – SaaS-alkalmazások leképezése](./customize-application-attributes.md).
 
@@ -133,7 +133,7 @@ A kezdeti ciklus után az összes többi ciklus a következő lesz:
 10. A növekményes ciklus végén egy új vízjel marad, amely a későbbi növekményes ciklusok kiindulási pontját adja meg.
 
 > [!NOTE]
-> A **létrehozási** , **frissítési** vagy **törlési** műveletet letilthatja a [leképezések](customize-application-attributes.md) szakasz **cél objektum műveletei** jelölőnégyzetének használatával. A felhasználók egy frissítés során való letiltásának logikáját a (z) "accountEnabled" mezőből származó attribútum-hozzárendeléssel is ellenőrzik.
+> A **létrehozási**, **frissítési** vagy **törlési** műveletet letilthatja a [leképezések](customize-application-attributes.md) szakasz **cél objektum műveletei** jelölőnégyzetének használatával. A felhasználók egy frissítés során való letiltásának logikáját a (z) "accountEnabled" mezőből származó attribútum-hozzárendeléssel is ellenőrzik.
 
 A kiépítési szolgáltatás továbbra is határozatlan időre futtatja az [egyes alkalmazásokra vonatkozó oktatóanyagban](../saas-apps/tutorial-list.md)meghatározott időközöket. A növekményes ciklusok addig folytatódnak, amíg az alábbi események egyike nem következik be:
 

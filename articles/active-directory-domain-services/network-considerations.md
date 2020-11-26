@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: joflore
-ms.openlocfilehash: 4ced7331daa116e237d9628d12d16a67687db5b9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 43731f84066943b991b566ff5936e4288aa669eb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968089"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175219"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>A virtuális hálózat kialakításával kapcsolatos szempontok és a Azure Active Directory Domain Services konfigurációs beállításai
 
@@ -91,7 +91,7 @@ A névfeloldást engedélyezheti feltételes DNS-továbbítók használatával a
 
 A felügyelt tartomány hálózati erőforrásokat hoz létre az üzembe helyezés során. Ezek az erőforrások a felügyelt tartomány sikeres működéséhez és felügyeletéhez szükségesek, és nem kell manuálisan konfigurálni.
 
-| Azure-erőforrás                          | Description |
+| Azure-erőforrás                          | Leírás |
 |:----------------------------------------|:---|
 | Hálózati csatolókártya                  | Az Azure AD DS üzemelteti a felügyelt tartományt két tartományvezérlőn (DCs), amely Azure-beli virtuális gépekként fut a Windows Serveren. Minden virtuális gépnek van egy virtuális hálózati adaptere, amely csatlakozik a virtuális hálózati alhálózathoz. |
 | Dinamikus normál nyilvános IP-cím      | Az Azure AD DS szabványos SKU nyilvános IP-cím használatával kommunikál a szinkronizálási és a felügyeleti szolgáltatással. A nyilvános IP-címekről további információt az [IP-címek típusai és a kiosztási módszerek az Azure-ban](../virtual-network/public-ip-addresses.md)című témakörben talál. |
@@ -104,15 +104,15 @@ A felügyelt tartomány hálózati erőforrásokat hoz létre az üzembe helyez�
 
 ## <a name="network-security-groups-and-required-ports"></a>Hálózati biztonsági csoportok és szükséges portok
 
-A [hálózati biztonsági csoport (NSG)](../virtual-network/security-overview.md) olyan szabályokat tartalmaz, amelyek engedélyezik vagy megtagadják egy Azure-beli virtuális hálózat forgalmának hálózati forgalmát. A hálózati biztonsági csoport akkor jön létre, ha olyan felügyelt tartományt telepít, amely olyan szabályokat tartalmaz, amelyek lehetővé teszik a szolgáltatás számára a hitelesítési és felügyeleti funkciókat. Ez az alapértelmezett hálózati biztonsági csoport ahhoz a virtuális hálózati alhálózathoz van társítva, amelyet a felügyelt tartomány üzembe helyez.
+A [hálózati biztonsági csoport (NSG)](../virtual-network/network-security-groups-overview.md) olyan szabályokat tartalmaz, amelyek engedélyezik vagy megtagadják egy Azure-beli virtuális hálózat forgalmának hálózati forgalmát. A hálózati biztonsági csoport akkor jön létre, ha olyan felügyelt tartományt telepít, amely olyan szabályokat tartalmaz, amelyek lehetővé teszik a szolgáltatás számára a hitelesítési és felügyeleti funkciókat. Ez az alapértelmezett hálózati biztonsági csoport ahhoz a virtuális hálózati alhálózathoz van társítva, amelyet a felügyelt tartomány üzembe helyez.
 
 A következő hálózati biztonsági csoportokra vonatkozó szabályokra van szükség ahhoz, hogy a felügyelt tartomány hitelesítő és felügyeleti szolgáltatásokat nyújtson. Ne szerkessze vagy törölje ezeket a hálózati biztonsági csoportokra vonatkozó szabályokat arra a virtuális hálózati alhálózatra, amelyet a felügyelt tartomány üzembe helyez.
 
 | Portszám | Protokoll | Forrás                             | Cél | Művelet | Kötelező | Cél |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
-| 443         | TCP      | AzureActiveDirectoryDomainServices | Bármelyik         | Engedélyezés  | Yes      | Szinkronizálás az Azure AD-Bérlővel. |
-| 3389        | TCP      | CorpNetSaw                         | Bármelyik         | Engedélyezés  | Yes      | A tartomány kezelése. |
-| 5986        | TCP      | AzureActiveDirectoryDomainServices | Bármelyik         | Engedélyezés  | Yes      | A tartomány kezelése. |
+| 443         | TCP      | AzureActiveDirectoryDomainServices | Bármelyik         | Engedélyezés  | Igen      | Szinkronizálás az Azure AD-Bérlővel. |
+| 3389        | TCP      | CorpNetSaw                         | Bármelyik         | Engedélyezés  | Igen      | A tartomány kezelése. |
+| 5986        | TCP      | AzureActiveDirectoryDomainServices | Bármelyik         | Engedélyezés  | Igen      | A tartomány kezelése. |
 
 Létrejön egy Azure standard Load Balancer, amely megköveteli a szabályok elhelyezését. Ez a hálózati biztonsági csoport biztosítja az Azure AD DSét, és szükséges a felügyelt tartomány megfelelő működéséhez. Ne törölje ezt a hálózati biztonsági csoportot. A terheléselosztó nem fog megfelelően működni.
 
@@ -123,7 +123,7 @@ Ha szükséges, [a szükséges hálózati biztonsági csoportot és szabályokat
 >
 > Ha biztonságos LDAP-t használ, akkor a szükséges TCP-port 636-szabály hozzáadásával engedélyezheti a külső forgalmat, ha szükséges. A szabály hozzáadása nem támogatott állapotban helyezi el a hálózati biztonsági csoport szabályait. További információ: [biztonságos LDAP-hozzáférés zárolása az interneten keresztül](tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet)
 >
-> A hálózati biztonsági csoport számára a *AllowVnetInBound*, a *AllowAzureLoadBalancerInBound*, a *DenyAllInBound*, a *AllowVnetOutBound*, a *AllowInternetOutBound*és a *DenyAllOutBound* alapértelmezett szabályai is léteznek. Ne szerkessze vagy törölje ezeket az alapértelmezett szabályokat.
+> A hálózati biztonsági csoport számára a *AllowVnetInBound*, a *AllowAzureLoadBalancerInBound*, a *DenyAllInBound*, a *AllowVnetOutBound*, a *AllowInternetOutBound* és a *DenyAllOutBound* alapértelmezett szabályai is léteznek. Ne szerkessze vagy törölje ezeket az alapértelmezett szabályokat.
 >
 > Az Azure SLA nem vonatkozik azokra az üzemelő példányokra, amelyekben nem megfelelően konfigurált hálózati biztonsági csoport és/vagy felhasználó által definiált útválasztási táblák lettek alkalmazva, amelyek blokkolják az Azure AD DS a tartomány frissítését és felügyeletét.
 
@@ -140,7 +140,7 @@ Ha szükséges, [a szükséges hálózati biztonsági csoportot és szabályokat
 * Az alapértelmezett hálózati biztonsági csoport szabály a *CorpNetSaw* szolgáltatás címkéjét használja a forgalom további korlátozására.
     * Ez a szolgáltatási címke csak a biztonságos hozzáférést biztosító munkaállomásokat engedélyezi a Microsoft vállalati hálózaton a távoli asztal a felügyelt tartományhoz való használatához.
     * A hozzáférés csak üzleti indoklással engedélyezett, például felügyeleti vagy hibaelhárítási helyzetekben.
-* Ez a szabály beállítható a *Megtagadás*értékre, és csak *akkor állítható be, ha* szükséges. A legtöbb felügyeleti és figyelési feladat a PowerShell távelérés használatával történik. Az RDP-t csak abban a ritka eseményben használják, amelyet a Microsoftnak a felügyelt tartományhoz való távoli kapcsolódásra kell használnia a speciális hibaelhárítás érdekében.
+* Ez a szabály beállítható a *Megtagadás* értékre, és csak *akkor állítható be, ha* szükséges. A legtöbb felügyeleti és figyelési feladat a PowerShell távelérés használatával történik. Az RDP-t csak abban a ritka eseményben használják, amelyet a Microsoftnak a felügyelt tartományhoz való távoli kapcsolódásra kell használnia a speciális hibaelhárítás érdekében.
 
 > [!NOTE]
 > Ha megpróbálja szerkeszteni a hálózati biztonsági csoport szabályát, manuálisan nem választhatja ki a *CorpNetSaw* szolgáltatás címkéjét a portálról. A *CorpNetSaw* szolgáltatás címkét használó szabályok manuális konfigurálásához Azure PowerShell vagy az Azure CLI-t kell használnia.
@@ -154,7 +154,7 @@ Ha szükséges, [a szükséges hálózati biztonsági csoportot és szabályokat
 * Felügyeleti feladatok végrehajtásához használható a felügyelt tartomány PowerShell-távelérési funkciójával.
 * A porthoz való hozzáférés nélkül a felügyelt tartományt nem lehet frissíteni, konfigurálni, biztonsági mentést készíteni vagy figyelni.
 * A Resource Manager-alapú virtuális hálózatot használó felügyelt tartományok esetében a porthoz való bejövő hozzáférést a *AzureActiveDirectoryDomainServices* szolgáltatás címkéjére korlátozhatja.
-    * A klasszikus virtuális hálózatot használó örökölt felügyelt tartományok esetében a porthoz való bejövő hozzáférést a következő forrás IP-címekre korlátozhatja: *52.180.183.8*, *23.101.0.70*, *52.225.184.198*, *52.179.126.223*, *13.74.249.156*, *52.187.117.83*, *52.161.13.95*, *104.40.156.18*és *104.40.87.209*.
+    * A klasszikus virtuális hálózatot használó örökölt felügyelt tartományok esetében a porthoz való bejövő hozzáférést a következő forrás IP-címekre korlátozhatja: *52.180.183.8*, *23.101.0.70*, *52.225.184.198*, *52.179.126.223*, *13.74.249.156*, *52.187.117.83*, *52.161.13.95*, *104.40.156.18* és *104.40.87.209*.
 
     > [!NOTE]
     > A (z) 2017-es verziójában Azure AD Domain Services elérhetővé vált a Azure Resource Manager hálózaton lévő gazdagép számára. Azóta egy biztonságosabb szolgáltatást hoztunk létre a Azure Resource Manager modern képességeinek használatával. Mivel Azure Resource Manager központi telepítések teljes mértékben lecserélik a klasszikus üzemelő példányokat, az Azure-AD DS a klasszikus virtuális hálózati telepítések 2023. március 1-től megszűnnek.
@@ -176,4 +176,4 @@ További információ az Azure AD DS által használt hálózati erőforrásokr�
 
 * [Azure-beli virtuális hálózati társítás](../virtual-network/virtual-network-peering-overview.md)
 * [Azure VPN-átjárók](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md)
-* [Azure-beli hálózati biztonsági csoportok](../virtual-network/security-overview.md)
+* [Azure-beli hálózati biztonsági csoportok](../virtual-network/network-security-groups-overview.md)

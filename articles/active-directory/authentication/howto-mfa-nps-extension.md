@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 576b9c11f167f7c0d5fcb06e484347c643589a66
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: abdfbc92af3617a7a13a2e4f603de9c1cc3959af
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839063"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174330"
 ---
 # <a name="integrate-your-existing-network-policy-server-nps-infrastructure-with-azure-ad-multi-factor-authentication"></a>A meglévő hálózati házirend-kiszolgáló (NPS) infrastruktúrájának integrálása az Azure AD-vel Multi-Factor Authentication
 
@@ -72,7 +72,7 @@ A hálózati házirend-kiszolgáló bővítmény célja, hogy működjön a megl
 
 ### <a name="licenses"></a>Licencek
 
-Az Azure AD Multi-Factor Authentication hálózati házirend-bővítménye az [Azure ad multi-Factor Authentication licenccel](multi-factor-authentication.md)rendelkező ügyfelek számára érhető el. Az Azure AD-Multi-Factor Authentication, például felhasználónként vagy hitelesítési licencek esetében a használaton kívüli licencek nem kompatibilisek a hálózati házirend-kiszolgáló bővítménnyel.
+Az Azure AD Multi-Factor Authentication hálózati házirend-bővítménye az [Azure ad multi-Factor Authentication licenccel](./concept-mfa-howitworks.md)rendelkező ügyfelek számára érhető el. Az Azure AD-Multi-Factor Authentication, például felhasználónként vagy hitelesítési licencek esetében a használaton kívüli licencek nem kompatibilisek a hálózati házirend-kiszolgáló bővítménnyel.
 
 ### <a name="software"></a>Szoftverek
 

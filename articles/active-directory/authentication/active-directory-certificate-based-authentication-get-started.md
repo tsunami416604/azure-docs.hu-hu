@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 96f1e3983f3c093cdf643e7674221b04631eeabd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ddff11caba9d83e9ed21748fd50a3480d866d8a9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965624"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174564"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>A tanúsítványalapú hitelesítés első lépései az Azure Active Directoryban
 
@@ -31,7 +31,7 @@ A szolgáltatás konfigurálásával nem kell megadnia a Felhasználónév és a
 Ez a témakör:
 
 - A következő lépésekkel konfigurálhatja és használhatja a tanúsítvány alapú hitelesítést a bérlők felhasználói számára az Office 365 Enterprise, az üzleti, az oktatási és az Egyesült Államok kormányzati csomagjaiban. Ez a funkció előzetes verzióban érhető el az Office 365 Kínában, az USA kormányzati védelmi és az USA kormányzati szövetségi terveiben.
-- Feltételezi, hogy már rendelkezik egy [nyilvános kulcsokra épülő infrastruktúrával (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) és [AD FS](../hybrid/how-to-connect-fed-whatis.md) konfigurálva.
+- Feltételezi, hogy már rendelkezik egy [nyilvános kulcsokra épülő infrastruktúrával (PKI)](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831740(v=ws.11)) és [AD FS](../hybrid/how-to-connect-fed-whatis.md) konfigurálva.
 
 ## <a name="requirements"></a>Követelmények
 
@@ -190,7 +190,7 @@ A beállított dátumnak a jövőben kell lennie. Ha a dátum nem a jövőben, a
 
 ### <a name="testing-your-certificate"></a>A tanúsítvány tesztelése
 
-Első konfigurációs tesztként próbáljon meg bejelentkezni az [Outlook Web Accessbe](https://outlook.office365.com) vagy a [SharePoint Online](https://microsoft.sharepoint.com) -ba az **eszközön futó böngésző**használatával.
+Első konfigurációs tesztként próbáljon meg bejelentkezni az [Outlook Web Accessbe](https://outlook.office365.com) vagy a [SharePoint Online](https://microsoft.sharepoint.com) -ba az **eszközön futó böngésző** használatával.
 
 Ha a bejelentkezés sikeres, akkor tudja, hogy:
 

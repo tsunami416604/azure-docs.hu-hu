@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: joflore
-ms.openlocfilehash: 02c4679016ea80a4ac8bb53b502292945cbe9d7b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5d19cddc82d9fb092887c5cdeba36b8ab7127f94
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967069"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175134"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Biztonsági naplózási események áttekintése Azure Active Directory Domain Services Azure Monitor munkafüzetek használatával
 
@@ -69,7 +69,7 @@ A biztonsági áttekintés jelentés munkafüzet-sablonjának eléréséhez hajt
 
     A **csempék** és a **diagram nézet** beállításait is módosíthatja, hogy a kívánt módon elemezze és megjelenítse az adatmegjelenítést.
 
-1. Egy adott eseménytípus részletezéséhez válassza ki az egyik **bejelentkezési eredmény** kártyát, például a *fiók kizárva*lehetőséget, ahogy az alábbi példában is látható:
+1. Egy adott eseménytípus részletezéséhez válassza ki az egyik **bejelentkezési eredmény** kártyát, például a *fiók kizárva* lehetőséget, ahogy az alábbi példában is látható:
 
     ![Példa a biztonsági áttekintésre Azure Monitor munkafüzetekbe vizualizációzott adatjelentések](./media/use-azure-monitor-workbooks/example-security-overview-report.png)
 
@@ -91,7 +91,7 @@ A fiók tevékenységi jelentéshez tartozó munkafüzet-sablon eléréséhez ha
 
     Válassza ki az **időtartományt**, például az *utolsó 30 napot*, majd azt, hogy a **Mozaik nézet** hogyan legyen ábrázolva az adathalmazban.
 
-    Az alábbi példában látható módon szűrheti a **fiók felhasználónevét**, például a *Felix*nevet:
+    Az alábbi példában látható módon szűrheti a **fiók felhasználónevét**, például a *Felix* nevet:
 
     [![Fiók tevékenységi jelentése Azure Monitor munkafüzetekben.](./media/use-azure-monitor-workbooks/account-activity-report-cropped.png)](./media/use-azure-monitor-workbooks/account-activity-report.png#lightbox)
 
@@ -103,7 +103,7 @@ A biztonsági áttekintés jelentéshez hasonlóan a jelentés tetején találha
 
 Az Azure AD DS által biztosított két sablonos munkafüzet jó kiindulópont a saját adatelemzéshez. Ha részletesebb információra van szüksége az adatlekérdezésekről és a vizsgálatokról, mentheti a saját munkafüzeteit, és szerkesztheti a lekérdezéseket.
 
-1. Ha menteni szeretné a munkafüzetek egyik sablonjának másolatát, válassza a **szerkesztés > Mentés másként > megosztott jelentések**lehetőséget, majd adjon meg egy nevet, és mentse.
+1. Ha menteni szeretné a munkafüzetek egyik sablonjának másolatát, válassza a **szerkesztés > Mentés másként > megosztott jelentések** lehetőséget, majd adjon meg egy nevet, és mentse.
 1. A sablon saját példányáról válassza a **Szerkesztés** lehetőséget a szerkesztési mód megadásához. A jelentés bármely része mellett a kék **Szerkesztés** gombot is választhatja, és módosíthatja azt.
 
 Azure Monitor munkafüzetek összes diagramja és táblázata Kusto lekérdezések használatával jön létre. A saját lekérdezések létrehozásával kapcsolatos további információkért lásd: [Azure monitor log-lekérdezések][azure-monitor-queries] és [Kusto-lekérdezések oktatóanyaga][kusto-queries].
@@ -122,5 +122,5 @@ A felhasználókkal kapcsolatos problémák esetén megismerheti a [fiókok beje
 [password-policy]: password-policy.md
 [troubleshoot-sign-in]: troubleshoot-sign-in.md
 [troubleshoot-account-lockout]: troubleshoot-account-lockout.md
-[azure-monitor-queries]: ../azure-monitor/log-query/query-language.md
+[azure-monitor-queries]: /azure/data-explorer/kusto/query/
 [kusto-queries]: /azure/kusto/query/tutorial?pivots=azuredataexplorer

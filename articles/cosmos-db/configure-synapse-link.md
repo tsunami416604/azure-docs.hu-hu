@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: a487d984fe4b8f5d6313e181863872c4ea150059
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 3355b502033451f58ac2289a81414e62823e459b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93334538"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175933"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure szinapszis-hivatkozás konfigurálása és használata Azure Cosmos DB (előzetes verzió)
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -63,7 +63,7 @@ A tároló létrehozásakor bekapcsolhatja az analitikus tárolót egy Azure Cos
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) vagy az [Azure Cosmos Explorerben](https://cosmos.azure.com/).
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com/) vagy a [Azure Cosmos db Explorerben](https://cosmos.azure.com/).
 
 1. Navigáljon a Azure Cosmos DB-fiókjához, és nyissa meg a **adatkezelő** lapot.
 
@@ -171,7 +171,7 @@ Ha az elemzési tárat egy adott élettartamértékkel engedélyezte, később m
 
 Ha a Azure Portalon keresztül létrehozott egy analitikai tárolót engedélyező tárolót, az a-1 alapértelmezett analitikai ÉLETTARTAMot tartalmazza. A következő lépésekkel frissítheti ezt az értéket:
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) vagy az [Azure Cosmos Explorerben](https://cosmos.azure.com/).
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com/) vagy a [Azure Cosmos db Explorerben](https://cosmos.azure.com/).
 
 1. Navigáljon a Azure Cosmos DB-fiókjához, és nyissa meg a **adatkezelő** lapot.
 
@@ -232,7 +232,7 @@ A [Azure Resource Manager sablon](./manage-with-templates.md#azure-cosmos-accoun
 
 A [githubon](https://aka.ms/cosmosdb-synapselink-samples)megtalálhatja az Azure szinapszis hivatkozásának megkezdéséhez szükséges mintákat. Ezek a teljes körű megoldások a IoT és a kiskereskedelmi helyzetekben. A MongoDB Azure Cosmos DB API-nak megfelelő mintákat is megtalálhatja ugyanabban a tárházban, a [MongoDB](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/MongoDB) mappában. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információért lásd a következő dokumentumokat:
 

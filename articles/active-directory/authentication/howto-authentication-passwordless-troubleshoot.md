@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 690d4761657b8bf6e5ba63ddfbce7163584e64e2
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964570"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174034"
 ---
 # <a name="troubleshooting-for-hybrid-deployments-of-fido2-security-keys-in-azure-ad-preview"></a>Hibaelhárítás a FIDO2 biztonsági kulcsok hibrid üzembe helyezéséhez az Azure AD-ben (előzetes verzió)
 
@@ -46,7 +46,7 @@ A FIDO2 biztonsági kulcsainak és a helyszíni erőforrások hibrid elérésén
 
 A Windows Hello Face a legjobb megoldás a felhasználók regisztrálására szolgáló eszköz számára. A FIDO2 biztonsági kulcsai megosztott eszközökön való használatra készültek, vagy a vállalati Windows Hello-regisztráció akadályt jelent.
 
-Ha a Windows Hello Face megakadályozza, hogy a felhasználók kipróbálják a FIDO2 biztonsági kulcsának bejelentkezési forgatókönyvét, a felhasználók kikapcsolhatják a Hello Face bejelentkezést a **beállítások > Sign-In lehetőségre**kattintva.
+Ha a Windows Hello Face megakadályozza, hogy a felhasználók kipróbálják a FIDO2 biztonsági kulcsának bejelentkezési forgatókönyvét, a felhasználók kikapcsolhatják a Hello Face bejelentkezést a **beállítások > Sign-In lehetőségre** kattintva.
 
 ### <a name="users-arent-able-to-use-fido2-security-keys-immediately-after-they-create-a-hybrid-azure-ad-joined-machine"></a>A felhasználók nem tudják azonnal használni a FIDO2 biztonsági kulcsait a hibrid Azure AD-hez csatlakoztatott számítógép létrehozása után
 
@@ -54,7 +54,7 @@ A hibrid Azure AD-hez csatlakoztatott számítógép tiszta telepítésének tar
 
 Ez a viselkedés a tartományhoz csatlakoztatott eszközök ismert korlátozása, és nem a FIDO2 biztonsági kulcsaira vonatkozik.
 
-Az aktuális állapot megtekintéséhez használja az `dsregcmd /status` parancsot. Győződjön meg arról, hogy a *AzureAdJoined* és a *DomainJoined* is *Igen értéket*mutat.
+Az aktuális állapot megtekintéséhez használja az `dsregcmd /status` parancsot. Győződjön meg arról, hogy a *AzureAdJoined* és a *DomainJoined* is *Igen értéket* mutat.
 
 ### <a name="users-are-unable-to-get-sso-to-my-ntlm-network-resource-after-signing-in-with-a-fido2-security-key-and-receiving-a-credential-prompt"></a>A felhasználók nem tudnak bejelentkezni az NTLM hálózati erőforrásba a FIDO2 biztonsági kulccsal való bejelentkezés után és a hitelesítő adatok megadásának kérése
 
@@ -70,15 +70,15 @@ Két területen lehet elhárítani a hibaelhárítást – a [Windows-ügyfelek 
 
 Az alábbi lépéseket követve gyűjthet olyan adatokat, amelyek segítséget nyújthatnak a Windowsba való bejelentkezéssel vagy a helyszíni erőforrások Windows 10-es eszközökről való elérésével kapcsolatos hibák elhárításához:
 
-1. Nyissa meg a **visszajelzési központ** alkalmazást. Győződjön meg arról, hogy a neve az alkalmazás bal alsó sarkában található, majd válassza az **új visszajelzési elem létrehozása**lehetőséget.
+1. Nyissa meg a **visszajelzési központ** alkalmazást. Győződjön meg arról, hogy a neve az alkalmazás bal alsó sarkában található, majd válassza az **új visszajelzési elem létrehozása** lehetőséget.
 
-    A visszajelzési elem típusa beállításnál válassza a *probléma*elemet.
+    A visszajelzési elem típusa beállításnál válassza a *probléma* elemet.
 
 1. Válassza ki a *biztonsági és adatvédelmi* kategóriát, *majd a parancs* alkategóriáját.
-1. Jelölje be a *csatolt fájlok és diagnosztika küldése a Microsoftnak a visszajelzések mellett*jelölőnégyzetet.
-1. Válassza *a saját problémák*újbóli létrehozása, majd a *rögzítés elindítása*lehetőséget.
+1. Jelölje be a *csatolt fájlok és diagnosztika küldése a Microsoftnak a visszajelzések mellett* jelölőnégyzetet.
+1. Válassza *a saját problémák* újbóli létrehozása, majd a *rögzítés elindítása* lehetőséget.
 1. Zárolja és oldja fel a gépet a FIDO2 biztonsági kulccsal. Ha a probléma merül fel, próbálja meg feloldani más hitelesítő adatokkal.
-1. Térjen vissza a **visszajelzési hubhoz**, válassza a **rögzítés leállítása**lehetőséget, és küldje el visszajelzését.
+1. Térjen vissza a **visszajelzési hubhoz**, válassza a **rögzítés leállítása** lehetőséget, és küldje el visszajelzését.
 1. Nyissa meg a *visszajelzés* lapot, majd a *saját visszajelzés* fület. Válassza ki a legutóbb elküldött visszajelzést.
 1. Kattintson a jobb felső sarokban található *megosztás* gombra a visszajelzésre mutató hivatkozás beszerzéséhez. Adja meg ezt a hivatkozást egy támogatási eset megnyitásakor, vagy válaszoljon egy meglévő támogatási esethez rendelt mérnöknek.
 
@@ -149,7 +149,7 @@ A tulajdonságok első készlete a helyszíni AD DS környezet objektumaiból sz
 | DomainDnsName      | A AD DS tartomány DNS-tartományneve. |
 | ComputerAccount    | Az Azure AD Kerberos-kiszolgáló objektum számítógépfiók-objektuma (a tartományvezérlő). |
 | Felhasználóifiók        | Az Azure AD Kerberos-kiszolgáló TGT titkosítási kulcsát birtokló letiltott felhasználói fiók objektum. Ennek a fióknak a megkülönböztető neve *CN = krbtgt_AzureAD, CN = felhasználók, <tartomány – DN>* |
-| Verziószám         | Az Azure AD Kerberos-kiszolgáló TGT titkosítási kulcsának verziószáma. A verzió a kulcs létrehozásakor lesz hozzárendelve. Ekkor a rendszer a kulcs elforgatásakor minden alkalommal megnöveli a verziót. A növekmények a replikálási metaadatokon alapulnak, és valószínűleg nagyobbak lesznek, mint egy.<br /><br /> A kezdeti *verzió* például *192272*lehet. A kulcs első elforgatásakor a verzió a *212621*-as értékre léphet.<br /><br /> A legfontosabb, hogy ellenőrizze, hogy a helyszíni objektum és a *CloudKeyVersion* a Felhőbeli objektumhoz tartozó *verziószáma* azonos-e. |
+| Verziószám         | Az Azure AD Kerberos-kiszolgáló TGT titkosítási kulcsának verziószáma. A verzió a kulcs létrehozásakor lesz hozzárendelve. Ekkor a rendszer a kulcs elforgatásakor minden alkalommal megnöveli a verziót. A növekmények a replikálási metaadatokon alapulnak, és valószínűleg nagyobbak lesznek, mint egy.<br /><br /> A kezdeti *verzió* például *192272* lehet. A kulcs első elforgatásakor a verzió a *212621*-as értékre léphet.<br /><br /> A legfontosabb, hogy ellenőrizze, hogy a helyszíni objektum és a *CloudKeyVersion* a Felhőbeli objektumhoz tartozó *verziószáma* azonos-e. |
 | KeyUpdatedOn       | Az Azure AD Kerberos-kiszolgáló TGT titkosítási kulcsának dátuma és időpontja. |
 | KeyUpdatedFrom     | Az a tartományvezérlő, ahol az Azure AD Kerberos-kiszolgáló TGT-titkosítási kulcsa utoljára frissült. |
 | CloudId            | Az Azure AD-objektumból származó *azonosító* . Meg kell egyeznie a fenti *azonosítóval* . |

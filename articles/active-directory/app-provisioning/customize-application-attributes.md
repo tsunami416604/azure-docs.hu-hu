@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/10/2020
 ms.author: kenwith
-ms.openlocfilehash: f65fb37a4cc6640bc998af1c56e7852cccaba234
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 5f6e5de61c9f43d5958e68c545105c4373996f7c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955517"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175066"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Oktatóanyag – a felhasználó-kiépítési attribútum testreszabása – SaaS-alkalmazások leképezése Azure Active Directory
 
@@ -239,7 +239,7 @@ Az alábbi lépésekkel szerepköröket hozhat létre az alkalmazáshoz. Vegye f
    }
    ]
    ```  
-A javítás és a POST kérelem formátuma eltérő. Annak biztosítása érdekében, hogy a POST és a PATCH ugyanolyan formátumban legyen elküldve, használhatja az [itt](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-scim-compatibility#flags-to-alter-the-scim-behavior)ismertetett funkció jelzőjét. 
+A javítás és a POST kérelem formátuma eltérő. Annak biztosítása érdekében, hogy a POST és a PATCH ugyanolyan formátumban legyen elküldve, használhatja az [itt](./application-provisioning-config-problem-scim-compatibility.md#flags-to-alter-the-scim-behavior)ismertetett funkció jelzőjét. 
 
 - **AppRoleAssignmentsComplex** 
   - **Mikor kell használni:** A AppRoleAssignmentsComplex kifejezés használatával több szerepkört is kiépítheti egy felhasználó számára. 

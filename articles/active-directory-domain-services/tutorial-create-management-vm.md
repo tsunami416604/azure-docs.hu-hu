@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: joflore
-ms.openlocfilehash: cc183a047023e5377d7a45088b7c9ae2407f6829
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 52a97b824824d8e9eaf79cfa4a447494bf1525cf
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967120"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175151"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Oktatóanyag: felügyeleti virtuális gép létrehozása Azure Active Directory Domain Services felügyelt tartomány konfigurálásához és felügyeletéhez
 
@@ -85,11 +85,11 @@ Az előző oktatóanyagban egy Windows Server rendszerű virtuális gép lett l�
 Első lépésként kapcsolódjon a Windows Server rendszerű virtuális géphez a következő módon:
 
 1. A Azure Portal válassza az **erőforráscsoportok** lehetőséget a bal oldalon. Válassza ki azt az erőforráscsoportot, amelyben a virtuális gép létrejött, például *myResourceGroup*, majd válassza ki a virtuális gépet, például *myVM*.
-1. A virtuális gép **Áttekintés** paneljén válassza a **kapcsolat**, majd a **Bastion**lehetőséget.
+1. A virtuális gép **Áttekintés** paneljén válassza a **kapcsolat**, majd a **Bastion** lehetőséget.
 
     ![Kapcsolódás Windows rendszerű virtuális géphez a Azure Portal](./media/join-windows-vm/connect-to-vm.png)
 
-1. Adja meg a virtuális gép hitelesítő adatait, majd válassza a **kapcsolat**lehetőséget.
+1. Adja meg a virtuális gép hitelesítő adatait, majd válassza a **kapcsolat** lehetőséget.
 
    ![Kapcsolódjon a megerősített gazdagépen a Azure Portal](./media/join-windows-vm/connect-to-bastion.png)
 
@@ -101,30 +101,30 @@ A felügyelt tartományokban ugyanazokat a felügyeleti eszközöket használja,
 
 A Active Directory felügyeleti eszközök tartományhoz csatlakoztatott virtuális gépekre való telepítéséhez hajtsa végre a következő lépéseket:
 
-1. Ha a **Kiszolgálókezelő** alapértelmezés szerint nem nyílik meg, amikor bejelentkezik a virtuális gépre, válassza a **Start** menüt, majd a **Kiszolgálókezelő**elemet.
-1. A **Kiszolgálókezelő** ablak *irányítópult* paneljén válassza a **szerepkörök és szolgáltatások hozzáadása**lehetőséget.
-1. A *szerepkörök és szolgáltatások hozzáadása varázsló*alapismeretek **lapján kattintson a** **Tovább gombra**.
-1. A *telepítés típusa*beállításnál hagyja bejelölve a **szerepköralapú vagy a szolgáltatáson alapuló telepítési** beállítást, majd kattintson a **Tovább gombra**.
-1. A **kiszolgáló kiválasztása** lapon válassza ki az aktuális virtuális gépet a kiszolgáló készletéből, például *myvm.aaddscontoso.com*, majd kattintson a **tovább**gombra.
-1. A **kiszolgálói szerepkörök** lapon kattintson a **tovább**gombra.
+1. Ha a **Kiszolgálókezelő** alapértelmezés szerint nem nyílik meg, amikor bejelentkezik a virtuális gépre, válassza a **Start** menüt, majd a **Kiszolgálókezelő** elemet.
+1. A **Kiszolgálókezelő** ablak *irányítópult* paneljén válassza a **szerepkörök és szolgáltatások hozzáadása** lehetőséget.
+1. A *szerepkörök és szolgáltatások hozzáadása varázsló* alapismeretek **lapján kattintson a** **Tovább gombra**.
+1. A *telepítés típusa* beállításnál hagyja bejelölve a **szerepköralapú vagy a szolgáltatáson alapuló telepítési** beállítást, majd kattintson a **Tovább gombra**.
+1. A **kiszolgáló kiválasztása** lapon válassza ki az aktuális virtuális gépet a kiszolgáló készletéből, például *myvm.aaddscontoso.com*, majd kattintson a **tovább** gombra.
+1. A **kiszolgálói szerepkörök** lapon kattintson a **tovább** gombra.
 1. A **szolgáltatások** lapon bontsa ki a **Távoli kiszolgálófelügyelet eszközei** csomópontot, majd bontsa ki a **szerepkör-felügyeleti eszközök** csomópontot.
 
-    Válassza a **AD DS és AD LDS eszközök** lehetőséget a szerepkör-felügyeleti eszközök listájából, majd kattintson a **tovább**gombra.
+    Válassza a **AD DS és AD LDS eszközök** lehetőséget a szerepkör-felügyeleti eszközök listájából, majd kattintson a **tovább** gombra.
 
     ![A "AD DS és AD LDS eszközök" telepítése a szolgáltatások lapról](./media/tutorial-create-management-vm/install-features.png)
 
-1. A **jóváhagyás** lapon válassza a **telepítés**lehetőséget. A felügyeleti eszközök telepítéséhez egy-két percet is igénybe vehet.
+1. A **jóváhagyás** lapon válassza a **telepítés** lehetőséget. A felügyeleti eszközök telepítéséhez egy-két percet is igénybe vehet.
 1. A szolgáltatás telepítésének befejezése után a **Bezárás** gombra kattintva lépjen ki a **szerepkörök és szolgáltatások hozzáadása** varázslóból.
 
 ## <a name="use-active-directory-administrative-tools"></a>Active Directory felügyeleti eszközök használata
 
 Ha a felügyeleti eszközök telepítve vannak, lássuk, hogyan használhatja őket a felügyelt tartomány felügyeletére. Győződjön meg arról, hogy bejelentkezett a virtuális gépre egy olyan felhasználói fiókkal, amely tagja az *HRE DC-rendszergazdák* csoportnak.
 
-1. A **Start** menüben válassza a **Windows felügyeleti eszközök**elemet. Az előző lépésben telepített AD felügyeleti eszközök szerepelnek a felsorolásban.
+1. A **Start** menüben válassza a **Windows felügyeleti eszközök** elemet. Az előző lépésben telepített AD felügyeleti eszközök szerepelnek a felsorolásban.
 
     ![A kiszolgálóra telepített felügyeleti eszközök listája](./media/tutorial-create-management-vm/list-admin-tools.png)
 
-1. Válassza a **Active Directory felügyeleti központ**lehetőséget.
+1. Válassza a **Active Directory felügyeleti központ** lehetőséget.
 1. A felügyelt tartomány megismeréséhez válassza ki a tartománynevet a bal oldali ablaktáblán, például *aaddscontoso*. A *AADDC számítógépek* és a *AADDC-felhasználók* nevű tárolók a lista elejére kerülnek.
 
     ![A felügyelt tartományhoz elérhető tárolók listázása](./media/tutorial-create-management-vm/active-directory-administrative-center.png)
@@ -139,7 +139,7 @@ Ha a felügyeleti eszközök telepítve vannak, lássuk, hogyan használhatja ő
 
 Az általános Active Directory felügyeleti központ műveletek, például a felhasználói fiók jelszavának alaphelyzetbe állítása vagy a csoporttagság kezelése elérhető. Ezek a műveletek csak a felügyelt tartományba közvetlenül létrehozott felhasználók és csoportok esetében működnek. Az azonosító adatok csak az Azure AD- *ről* az Azure AD DS-ra szinkronizálhatók. Az Azure AD DSról az Azure AD-re nem írható vissza. Az Azure AD-ből szinkronizált felhasználók jelszavait vagy a felügyelt csoporttagság nem módosítható, és a módosítások szinkronizálva lesznek.
 
-A felügyelt tartomány általános műveleteinek kezeléséhez használhatja a felügyeleti eszközök részeként telepített *Windows PowerShell Active Directory modulját*is.
+A felügyelt tartomány általános műveleteinek kezeléséhez használhatja a felügyeleti eszközök részeként telepített *Windows PowerShell Active Directory modulját* is.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -160,4 +160,4 @@ A felügyelt tartományának más alkalmazásokból való biztonságos kezelés�
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
 [create-join-windows-vm]: join-windows-vm.md
-[azure-bastion]: ../bastion/bastion-create-host-portal.md
+[azure-bastion]: ../bastion/tutorial-create-host-portal.md

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6aa31d0b8c68f38d2b4fc41a6bbaaeab8a3ffac
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 3f2c5b37c713b69df56e938fdaa2a9134402d765
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363606"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173902"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Az Azure AD-jelszókezelés jelentéskészítési lehetőségei
 
@@ -53,7 +53,7 @@ A Azure Portal-élményben továbbfejlesztettük a jelszavak alaphelyzetbe áll�
 
 ### <a name="combined-registration"></a>Kombinált regisztráció
 
-Ha engedélyezte a [kombinált regisztrációt](./concept-registration-mfa-sspr-combined.md), a naplók felhasználói tevékenységével kapcsolatos információk a **biztonsági**  >  **hitelesítési módszerek**alatt találhatók.
+Ha engedélyezte a [kombinált regisztrációt](./concept-registration-mfa-sspr-combined.md), a naplók felhasználói tevékenységével kapcsolatos információk a **biztonsági**  >  **hitelesítési módszerek** alatt találhatók.
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>A jelentés oszlopainak leírása a Azure Portalban
 
@@ -181,7 +181,7 @@ A következő lista részletesen ismerteti ezt a tevékenységet:
 * [Mik az SSPR szabályzatbeállításai?](concept-sspr-policy.md)
 * [Mi a jelszóvisszaíró, és miért fontos?](./tutorial-enable-sspr-writeback.md)
 * [Mik az SSPR beállításai, és mit jelentenek?](concept-sspr-howitworks.md)
-* [Úgy gondolom, hogy valami megszakadt. Hogyan a SSPR hibáinak megoldása?](active-directory-passwords-troubleshoot.md)
+* [Úgy gondolom, hogy valami megszakadt. Hogyan a SSPR hibáinak megoldása?](./troubleshoot-sspr.md)
 * [Olyan kérdésem van, amely máshol nem szerepelt](active-directory-passwords-faq.md)
 
 [Reporting]: ./media/howto-sspr-reporting/sspr-reporting.png "Példa SSPR tevékenység-naplózási naplókra az Azure AD-ben"

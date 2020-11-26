@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 11/19/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: 8a1c789759f1119a6170fffc2c70874cd9a32fde
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: e0a77e1e4757c8951756c3e41479628c293dfd8f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94919683"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174832"
 ---
 # <a name="known-issues-application-provisioning"></a>Ismert problémák: az alkalmazás kiépítés
 Ismert problémák az alkalmazások kiépítés közbeni használatáról. A UserVoice-on futó alkalmazás-kiépítési szolgáltatással kapcsolatban az [Azure ad Application UserVoice](https://aka.ms/appprovisioningfeaturerequest)című témakörben talál visszajelzést. Szorosan Figyeljük a UserVoice, így javíthatjuk a szolgáltatást. 
@@ -28,7 +28,7 @@ Ismert problémák az alkalmazások kiépítés közbeni használatáról. A Use
 
 **Nem sikerült menteni a sikeres kapcsolódási teszt után**
 
-Ha sikeresen tesztel egy kapcsolatokat, de nem tudja menteni, akkor túllépte a hitelesítő adatok megengedett tárolási korlátját. További információ: a [rendszergazdai hitelesítő adatok mentése](application-provisioning-config-problem-storage-limit.md).
+Ha sikeresen tesztel egy kapcsolatokat, de nem tudja menteni, akkor túllépte a hitelesítő adatok megengedett tárolási korlátját. További információ: a [rendszergazdai hitelesítő adatok mentése](./user-provisioning.md).
 
 **Nem lehet menteni**
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58f0ffa8bd43a8428603334b6c89fa1cf36315b5
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: ba22745923f1b157c477dce0b5704c7e278e748e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94987337"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96176001"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Gyakori kérdések az identitások védelméről Azure Active Directory
 
@@ -38,7 +38,7 @@ Ha Ön Azure AD Identity Protection ügyfél, lépjen a [kockázatos felhasznál
 ## <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>Miért tiltották le a bejelentkezést, de az Identity Protection nem generált kockázati észlelést?
 A bejelentkezések több okból is letiltható. Fontos megjegyezni, hogy az Identity Protection csak akkor generál kockázati észleléseket, ha a hitelesítési kérelemben a megfelelő hitelesítő adatok vannak használatban. Ha a felhasználó helytelen hitelesítő adatokat használ, a rendszer nem jelöli meg az identitások védelme miatt, mert nem áll fenn a hitelesítő adatok sérülése, kivéve, ha egy hibás szereplő a megfelelő hitelesítő adatokat használja. Bizonyos okok miatt előfordulhat, hogy a felhasználók nem tudnak az Identity Protection-észlelést előidéző aláírásból a következőket:
 * Az **IP-cím letiltható** az IP-címről érkező kártékony tevékenységek miatt. Az IP-cím letiltott üzenete nem különbözteti meg a hitelesítő adatok helyességét. Ha az IP-cím le van tiltva, és a rendszer nem használja a helyes hitelesítő adatokat, akkor nem hoz létre Identity Protection-észlelést
-* Az **[intelligens zárolás](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout)** blokkolhatja a fiókot több sikertelen kísérlet után.
+* Az **[intelligens zárolás](../authentication/howto-password-smart-lockout.md)** blokkolhatja a fiókot több sikertelen kísérlet után.
 * A **feltételes hozzáférési szabályzat** kényszeríthető, amely a kockázati szinttől eltérő feltételeket használ a hitelesítési kérelem letiltásához.
 
 ### <a name="how-can-i-get-a-report-of-detections-of-a-specific-type"></a>Hogyan szerezhetek be egy adott típusú észlelési jelentést?
@@ -93,6 +93,4 @@ Tekintettel arra, hogy a felhasználói kockázat kumulatív jellegű, és nem j
 
 ### <a name="why-does-a-sign-in-have-a-sign-in-risk-aggregate-score-of-high-when-the-detections-associated-with-it-are-of-low-or-medium-risk"></a>Miért van a bejelentkezés "a bejelentkezési kockázat (aggregált)" pontszáma, amikor a hozzá társított észlelések alacsony vagy közepes kockázattal rendelkeznek?
 
-A magas összesített kockázati pontszám a bejelentkezés más szolgáltatásain alapulhat, vagy az a tény, hogy a bejelentkezéshez egynél több észlelés történt. A bejelentkezés pedig akkor is előfordulhat, ha a bejelentkezési kockázat (aggregált) közepes, még akkor is, ha a bejelentkezéshez kapcsolódó észlelések nagy kockázatot jelentenek. 
-
-
+A magas összesített kockázati pontszám a bejelentkezés más szolgáltatásain alapulhat, vagy az a tény, hogy a bejelentkezéshez egynél több észlelés történt. A bejelentkezés pedig akkor is előfordulhat, ha a bejelentkezési kockázat (aggregált) közepes, még akkor is, ha a bejelentkezéshez kapcsolódó észlelések nagy kockázatot jelentenek.

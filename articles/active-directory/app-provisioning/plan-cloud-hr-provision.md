@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: ce8b792beb8652bedfddff470444240bc3edf148
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 64418a727ecb9a300912a4766a9ea2066328ad31
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363657"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174900"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>A Cloud HR-alkalmazás megtervezése Azure Active Directory a felhasználók üzembe helyezéséhez
 
@@ -61,7 +61,7 @@ A felhasználók üzembe helyezése létrehoz egy alapot a folyamatos identitás
 Ez a cikk a következő kifejezéseket használja:
 
 - **Forrásoldali rendszer**: az Azure ad által kiépített felhasználók tárháza. Ilyen például egy Felhőbeli HR-alkalmazás, például a munkanap vagy a SuccessFactors.
-- Célrendszer: az Azure AD által **kiépített**felhasználók tárháza. Ilyenek például a következők: Active Directory, Azure AD, Microsoft 365 vagy más SaaS-alkalmazás.
+- Célrendszer: az Azure AD által **kiépített** felhasználók tárháza. Ilyenek például a következők: Active Directory, Azure AD, Microsoft 365 vagy más SaaS-alkalmazás.
 - **Csatlakozások**– a kimaradók folyamata: az új bérletek, átadások és leállítások kifejezése, amely egy FELHŐbeli HR-alkalmazás a rekordok rendszereként való használatával történik. A folyamat akkor fejeződik be, amikor a szolgáltatás sikeresen kiépíti a szükséges attribútumokat a célszámítógépen.
 
 ### <a name="key-benefits"></a>Főbb előnyök
@@ -73,7 +73,7 @@ A HR-alapú IT-kiépítés ezen funkciója a következő jelentős üzleti előn
 - **Címek megfelelősége és szabályozása:** Az Azure AD támogatja a natív naplókat a forrás-és a célként megadott alkalmazások által végrehajtott felhasználói kiépítési kérelmek esetében. A naplózás segítségével nyomon követheti, hogy ki férhet hozzá az alkalmazásokhoz egyetlen képernyőről.
 - **Kezelés díja:** Az automatikus kiépítés csökkenti a költségeket, és elkerüli a manuális kiépítés során felmerülő eredménytelenség és emberi hibák elkerülését. Ez csökkenti a régi és elavult platformok használatával az idő múlásával létrehozott, egyéni fejlesztésű felhasználói megoldások igényét.
 
-### <a name="licensing"></a>Licencek
+### <a name="licensing"></a>Licencelés
 
 Ha a Cloud HR-alkalmazást az Azure AD-beli felhasználók kiépítéséhez szeretné konfigurálni, érvényes [prémium szintű Azure ad licencre](https://azure.microsoft.com/pricing/details/active-directory/) és licencre van szükség a Cloud HR-alkalmazáshoz, például a munkanapokhoz vagy a SuccessFactors.
 
@@ -144,7 +144,7 @@ Futtassa a kezdeti konfigurációt egy [kísérleti környezetben](../fundamenta
 
 Az Azure AD üzembe helyezési munkafolyamatainak a Cloud HR-alkalmazás és a Active Directory közötti megkönnyítéséhez több kiépítési összekötő-alkalmazást is hozzáadhat az Azure AD-alkalmazás-katalógusból:
 
-- **Cloud HR-alkalmazás a Active Directory a felhasználók üzembe**helyezéséhez: Ez a kiépítési összekötő alkalmazás a Cloud HR-alkalmazásból egyetlen Active Directory tartományba helyezi el a felhasználói fiókok kiépítési folyamatát. Ha több tartománya van, az alkalmazás egy példányát hozzáadhatja az Azure AD-alkalmazás-katalógusból minden Active Directory-tartományhoz, amelyre telepítenie kell.
+- **Cloud HR-alkalmazás a Active Directory a felhasználók üzembe** helyezéséhez: Ez a kiépítési összekötő alkalmazás a Cloud HR-alkalmazásból egyetlen Active Directory tartományba helyezi el a felhasználói fiókok kiépítési folyamatát. Ha több tartománya van, az alkalmazás egy példányát hozzáadhatja az Azure AD-alkalmazás-katalógusból minden Active Directory-tartományhoz, amelyre telepítenie kell.
 - **Cloud HR-alkalmazás az Azure ad-** beli felhasználók számára: míg Azure ad Connect az az eszköz, amelyet a felhasználók Azure ad-vel való Active Directory szinkronizálásához kell használni, ez a kiépítési összekötő alkalmazás a Cloud HR-alkalmazásból egyetlen Azure ad-bérlővé való kiépítés megkönnyítésére használható.
 - **Cloud HR-alkalmazás írása**: Ez a kiépítési összekötő alkalmazás megkönnyíti a felhasználó e-mail-címeinek visszaírását az Azure ad-ből a Cloud HR alkalmazásba.
 
@@ -303,7 +303,7 @@ Ez egy gyakori követelmény, hogy a felhasználói fiókokat az üzleti egység
 
 A [Switch ()](../app-provisioning/functions-for-customizing-application-data.md#switch) függvénnyel konfigurálja az üzleti logikát a szervezeti egység hozzárendeléséhez, és leképezheti azt a Active Directory attribútum **parentDistinguishedName**.
 
-Ha például a HR-attribútum **helyhatósága**alapján szeretne felhasználókat létrehozni a szervezeti egységben, a következő kifejezést használhatja:
+Ha például a HR-attribútum **helyhatósága** alapján szeretne felhasználókat létrehozni a szervezeti egységben, a következő kifejezést használhatja:
 
 `
 Switch([Municipality], "OU=Default,OU=Users,DC=contoso,DC=com", "Dallas", "OU=Dallas,OU=Users,DC=contoso,DC=com", "Austin", "OU=Austin,OU=Users,DC=contoso,DC=com", "Seattle", "OU=Seattle,OU=Users,DC=contoso,DC=com", "London", "OU=London,OU=Users,DC=contoso,DC=com")
@@ -404,9 +404,9 @@ A kiépítés során esetlegesen felmerülő problémák elhárításához tekin
 
 - [Hiba történt a felhasználók Azure AD Gallery-alkalmazásba való konfigurálásának beállításakor](application-provisioning-config-problem.md)
 - [Egy attribútum szinkronizálása a helyszíni Active Directory az Azure AD-be az alkalmazásba való kiépítéshez](user-provisioning-sync-attributes-for-mapping.md)
-- [Probléma a rendszergazdai hitelesítő adatok mentésekor, miközben a felhasználók üzembe helyezését egy Azure Active Directory Gallery-alkalmazáshoz konfigurálja](application-provisioning-config-problem-storage-limit.md)
+- [Probléma a rendszergazdai hitelesítő adatok mentésekor, miközben a felhasználók üzembe helyezését egy Azure Active Directory Gallery-alkalmazáshoz konfigurálja](./user-provisioning.md)
 - [Egyetlen felhasználó sincs kiépítve egy Azure AD Gallery-alkalmazásba](application-provisioning-config-problem-no-users-provisioned.md)
-- [Helytelenek a felhasználók egy Azure AD Gallery-alkalmazásban való üzembe helyezése](application-provisioning-config-problem-wrong-users-provisioned.md)
+- [Helytelenek a felhasználók egy Azure AD Gallery-alkalmazásban való üzembe helyezése](../manage-apps/add-application-portal-assign-users.md)
 - [Windows Eseménynapló beállítása az ügynökhöz – hibaelhárítás](../saas-apps/workday-inbound-tutorial.md#setting-up-windows-event-viewer-for-agent-troubleshooting)
 - [Azure Portal naplók beállítása a szolgáltatás hibaelhárításához](../saas-apps/workday-inbound-tutorial.md#setting-up-azure-portal-audit-logs-for-service-troubleshooting)
 - [Az AD felhasználói fiók létrehozási műveleteinek naplói](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-ad-user-account-create-operations)

@@ -10,11 +10,11 @@ ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.openlocfilehash: a9f58a9cdf8dea9631443d499548f2aee61eda69
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553675"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175406"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Külső táblák használata a szinapszis SQL használatával
 
@@ -332,7 +332,7 @@ KÜLSŐ tábla létrehozása lehetővé teszi az oszlopnév, az adattípus, a nu
 
 A Parquet-fájlokból való olvasáskor csak azokat az oszlopokat adhatja meg, amelyeket el szeretne olvasni, és kihagyhatja a többiet.
 
-LOCATION = ' *folder_or_filepath* '
+LOCATION = '*folder_or_filepath*'
 
 Megadja a tényleges adatok mappáját vagy fájljának elérési útját és fájlnevét az Azure Blob Storageban. A hely a gyökérmappa alapján kezdődik. A gyökérmappa a külső adatforrásban megadott adathely.
 

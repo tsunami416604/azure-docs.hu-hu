@@ -11,16 +11,16 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: b6eb571c7c37a628d11f07b4e1b207e38830250b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5b593add9c9d7be446798eecdd03b396c3fe513a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88235400"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174730"
 ---
 # <a name="what-is-automated-saas-app-user-provisioning-in-azure-ad"></a>Mi az az Azure AD-ben az automatizált SaaS-alkalmazások felhasználói üzembe helyezése?
 
-Azure Active Directory (Azure AD) esetében az **alkalmazás üzembe** helyezésének kifejezése arra a felhasználói identitások és szerepkörök automatikus létrehozására utal, amelyekhez[SaaS](https://azure.microsoft.com/overview/what-is-saas/)a felhasználóknak hozzá kell férniük. A felhasználói identitások létrehozása mellett az automatikus kiépítés a felhasználói identitások karbantartását és eltávolítását is magában foglalja az állapot vagy a szerepkörök módosításakor. Gyakori forgatókönyvek például az Azure AD-felhasználók üzembe helyezése olyan alkalmazásokban, mint a [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md), a [Salesforce](../saas-apps/salesforce-provisioning-tutorial.md), a [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md)és még sok más.
+Azure Active Directory (Azure AD) esetében az **alkalmazás üzembe** helyezésének kifejezése arra a felhasználói identitások és szerepkörök automatikus létrehozására utal, amelyekhez [SaaS](https://azure.microsoft.com/overview/what-is-saas/)a felhasználóknak hozzá kell férniük. A felhasználói identitások létrehozása mellett az automatikus kiépítés a felhasználói identitások karbantartását és eltávolítását is magában foglalja az állapot vagy a szerepkörök módosításakor. Gyakori forgatókönyvek például az Azure AD-felhasználók üzembe helyezése olyan alkalmazásokban, mint a [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md), a [Salesforce](../saas-apps/salesforce-provisioning-tutorial.md), a [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md)és még sok más.
 
 ![Kiépítés – áttekintés diagram](./media/user-provisioning/provisioning-overview.png)
 
@@ -59,7 +59,7 @@ Az Azure AD számos népszerű SaaS-alkalmazás és emberi erőforrásrendszer e
 
    ![Salesforce embléma](./media/user-provisioning/gallery-app-logos.png)
 
-   Ha új alkalmazást szeretne igényelni az üzembe helyezéshez, [kérheti, hogy az alkalmazás integrálva legyen](../azuread-dev/howto-app-gallery-listing.md)az alkalmazás-galériával. A felhasználó kiépítési kérelméhez az alkalmazásnak SCIM-kompatibilis végponttal kell rendelkeznie. Kérje meg, hogy az alkalmazás gyártója kövesse a SCIM standardot, így gyorsan üzembe helyezhetjük az alkalmazást a platformon.
+   Ha új alkalmazást szeretne igényelni az üzembe helyezéshez, [kérheti, hogy az alkalmazás integrálva legyen](../develop/v2-howto-app-gallery-listing.md)az alkalmazás-galériával. A felhasználó kiépítési kérelméhez az alkalmazásnak SCIM-kompatibilis végponttal kell rendelkeznie. Kérje meg, hogy az alkalmazás gyártója kövesse a SCIM standardot, így gyorsan üzembe helyezhetjük az alkalmazást a platformon.
 
 * **Az SCIM 2,0-et támogató alkalmazások**. Az SCIM 2,0-alapú felhasználói felügyeleti API-kat megvalósító alkalmazások általános összekapcsolásával kapcsolatos információkért lásd: [scim-végpont létrehozása és a felhasználók üzembe](use-scim-to-provision-users-and-groups.md)helyezésének konfigurálása.
 
@@ -79,11 +79,11 @@ Az Azure AD-katalógusban található alkalmazások támogatják a két üzembe 
 
 * Az **automatikus** beállítás azt jelenti, hogy az alkalmazáshoz egy Azure ad-létesítési összekötő lett kifejlesztve. Kövesse az alkalmazás üzembe helyezésének beállítására vonatkozó telepítési oktatóanyagot. Az alkalmazás-oktatóanyagok az [SaaS-alkalmazások Azure Active Directory használatával történő integrálását ismertető oktatóanyagban](../saas-apps/tutorial-list.md)találhatók.
 
-Az Azure AD-katalógusban az automatikus kiépítés támogatására szolgáló alkalmazásokat **kiépítési** ikon jelöli. Váltson az új katalógus előzetes verziójára, és tekintse meg ezeket az ikonokat (az **alkalmazás hozzáadása lap**tetején található szalagcímben, majd válassza ki azt a hivatkozást, amely az **új és továbbfejlesztett alkalmazás-gyűjtemény kipróbálásához kattintson ide**).
+Az Azure AD-katalógusban az automatikus kiépítés támogatására szolgáló alkalmazásokat **kiépítési** ikon jelöli. Váltson az új katalógus előzetes verziójára, és tekintse meg ezeket az ikonokat (az **alkalmazás hozzáadása lap** tetején található szalagcímben, majd válassza ki azt a hivatkozást, amely az **új és továbbfejlesztett alkalmazás-gyűjtemény kipróbálásához kattintson ide**).
 
 ![Kiépítési ikon az alkalmazás-gyűjteményben](./media/user-provisioning/browse-gallery.png)
 
-Az alkalmazás által támogatott kiépítési mód a **kiépítés** lapon is látható, miután hozzáadta az alkalmazást a **vállalati**alkalmazásokhoz.
+Az alkalmazás által támogatott kiépítési mód a **kiépítés** lapon is látható, miután hozzáadta az alkalmazást a **vállalati** alkalmazásokhoz.
 
 ## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>Hogyan automatikus kiépítés beállítása egy alkalmazáshoz?
 
@@ -94,7 +94,7 @@ A katalógusban felsorolt előre integrált alkalmazások esetében az automatik
 Az SCIM 2,0-et támogató egyéb alkalmazások esetében kövesse a [scim-végpont létrehozása és a felhasználók kiépítésének konfigurálása](use-scim-to-provision-users-and-groups.md)című cikkben ismertetett lépéseket.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az SaaS-alkalmazások integrálásával kapcsolatos oktatóanyagok listája](../saas-apps/tutorial-list.md)
 - [Attribútum-hozzárendelések testreszabása a felhasználók üzembe helyezéséhez](customize-application-attributes.md)

@@ -16,12 +16,12 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 224ccaeace91288171db42d2b8b8cf8c21a352e0
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 99da9b787bfe06bece8b8dafdafc257336dddf63
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94652518"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96176188"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Az Azure Active Directory átmenő hitelesítésének hibaelhárítása
 
@@ -72,7 +72,7 @@ Annak ellenőrzéséhez, hogy ez a probléma, először ellenőrizze, hogy az á
  ``` 
 4. Amikor a rendszer a hitelesítő adatok megadását kéri, adja meg a bejelentkezéshez használt felhasználónevet és jelszót ( https://login.microsoftonline.com) ).
 
-Ha ugyanazzal a Felhasználónév/jelszóval kapcsolatos hibaüzenetet kap, ez azt jelenti, hogy az áteresztő hitelesítési ügynök megfelelően működik, és a probléma az lehet, hogy a helyszíni UPN nem irányítható. További tudnivalókért tekintse meg az [alternatív bejelentkezési azonosító konfigurálását]( /windows-server/identity/ad-fs/operations/configuring-alternate-login-id#:~:text=%20Configuring%20Alternate%20Login%20ID,See%20Also.%20%20More)ismertető témakört.
+Ha ugyanazzal a Felhasználónév/jelszóval kapcsolatos hibaüzenetet kap, ez azt jelenti, hogy az áteresztő hitelesítési ügynök megfelelően működik, és a probléma az lehet, hogy a helyszíni UPN nem irányítható. További tudnivalókért tekintse meg az [alternatív bejelentkezési azonosító konfigurálását](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)ismertető témakört.
 
 > [!IMPORTANT]
 > Ha a Azure AD Connect-kiszolgáló nincs tartományhoz csatlakoztatva, [Azure ad Connect: előfeltételek](./how-to-connect-install-prerequisites.md#installation-prerequisites), Érvénytelen felhasználónév/jelszó hiba lép fel.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 68e47fe3cc674542a807ecbabd37cc6b624d5c03
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 167ed7e5c00452db4ee77e10236fec3ff86f0439
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145594"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175100"
 ---
 # <a name="understand-how-provisioning-integrates-with-azure-monitor-logs"></a>A kiépítés integrálása Azure Monitor naplókkal
 
@@ -30,13 +30,13 @@ Miután konfigurálta az Azure monitoringot, engedélyezheti a naplók számára
 
 :::image type="content" source="media/application-provisioning-log-analytics/diagnostic-settings.png" alt-text="Hozzáférés a diagnosztikai beállításokhoz" lightbox="media/application-provisioning-log-analytics/diagnostic-settings.png":::
 
-:::image type="content" source="media/application-provisioning-log-analytics/enable-log-analytics.png" alt-text="Hozzáférés a diagnosztikai beállításokhoz" lightbox="media/application-provisioning-log-analytics/enable-log-analytics.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/enable-log-analytics.png" alt-text="Alkalmazás-kiépítési naplók engedélyezése" lightbox="media/application-provisioning-log-analytics/enable-log-analytics.png":::
 
 > [!NOTE]
 > Ha nemrég üzembe helyezett egy munkaterületet, eltarthat egy ideig, amíg el nem küldi a naplókat. Ha olyan hibaüzenetet kap, hogy az előfizetés nincs regisztrálva a *Microsoft. bepillantások* használatára, térjen vissza néhány perc múlva.
  
 ## <a name="understanding-the-data"></a>Az adatgyűjtés ismertetése
-Az alapul szolgáló adatfolyam, amelyet a kiépítés küld, a naplók megjelenítői majdnem azonosak. Azure Monitor naplók közel azonos streamtel rendelkeznek, mint a Azure Portal felhasználói felület és az Azure API. A naplózási mezőkben csak néhány **eltérés** szerepel, ahogy az alábbi táblázatban is látható. A mezőkkel kapcsolatos további tudnivalókért tekintse meg a [ProvisioningObjectSummary listázása](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http&preserve-view=true)című témakört.
+Az alapul szolgáló adatfolyam, amelyet a kiépítés küld, a naplók megjelenítői majdnem azonosak. Azure Monitor naplók közel azonos streamtel rendelkeznek, mint a Azure Portal felhasználói felület és az Azure API. A naplózási mezőkben csak néhány **eltérés** szerepel, ahogy az alábbi táblázatban is látható. A mezőkkel kapcsolatos további tudnivalókért tekintse meg a [ProvisioningObjectSummary listázása](/graph/api/provisioningobjectsummary-list?preserve-view=true&tabs=http&view=graph-rest-beta)című témakört.
 
 |Azure Monitor-naplók   |Azure Portal felhasználói felület   |Azure API |
 |----------|-----------|------------|
@@ -51,9 +51,9 @@ Azure Monitor munkafüzetek rugalmas vásznon biztosítanak adatelemzést. Emell
 
 Az alkalmazás üzembe helyezése előre elkészített munkafüzetekből áll. A munkafüzeteket a munkafüzetek lapon tekintheti meg. Az adatok megtekintéséhez meg kell győződnie arról, hogy az összes szűrő (timeRange, jobID, appName) fel van töltve. Emellett meg kell győződnie arról, hogy kiépített egy alkalmazást, ellenkező esetben nem fog tudni semmilyen adatnaplót.
 
-:::image type="content" source="media/application-provisioning-log-analytics/workbooks.png" alt-text="Hozzáférés a diagnosztikai beállításokhoz" lightbox="media/application-provisioning-log-analytics/workbooks.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/workbooks.png" alt-text="Alkalmazás-kiépítési munkafüzetek" lightbox="media/application-provisioning-log-analytics/workbooks.png":::
 
-:::image type="content" source="media/application-provisioning-log-analytics/report.png" alt-text="Hozzáférés a diagnosztikai beállításokhoz" lightbox="media/application-provisioning-log-analytics/report.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/report.png" alt-text="Alkalmazás-üzembe helyezési irányítópult" lightbox="media/application-provisioning-log-analytics/report.png":::
 
 ## <a name="custom-queries"></a>Egyéni lekérdezések
 
@@ -100,15 +100,15 @@ A riasztásokkal kapcsolatos további tudnivalókért tekintse meg az [Azure mon
 
 Riasztás, ha hiba van a csúcson. Cserélje le a jobID az alkalmazás jobID.
 
-:::image type="content" source="media/application-provisioning-log-analytics/alert1.png" alt-text="Hozzáférés a diagnosztikai beállításokhoz" lightbox="media/application-provisioning-log-analytics/alert1.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/alert1.png" alt-text="Riasztás, ha hiba van a csúcson." lightbox="media/application-provisioning-log-analytics/alert1.png":::
 
 Előfordulhat, hogy a kiépítési szolgáltatás leállását okozó probléma merülhet fel. A következő riasztással derítheti fel, hogy egy adott időintervallumban nincsenek-e kiépítési események.
 
-:::image type="content" source="media/application-provisioning-log-analytics/alert2.png" alt-text="Hozzáférés a diagnosztikai beállításokhoz" lightbox="media/application-provisioning-log-analytics/alert2.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/alert2.png" alt-text="Előfordulhat, hogy a kiépítési szolgáltatás leállását okozó probléma merülhet fel." lightbox="media/application-provisioning-log-analytics/alert2.png":::
 
 Riasztás, ha a rendszer letiltja vagy törli a nyársat.
 
-:::image type="content" source="media/application-provisioning-log-analytics/alert3.png" alt-text="Hozzáférés a diagnosztikai beállításokhoz" lightbox="media/application-provisioning-log-analytics/alert3.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/alert3.png" alt-text="Riasztás, ha a rendszer letiltja vagy törli a nyársat." lightbox="media/application-provisioning-log-analytics/alert3.png":::
 
 
 ## <a name="community-contributions"></a>Közösségi hozzájárulások
@@ -121,4 +121,4 @@ Nyílt forráskódú és közösségi alapú megközelítést végzünk az alkal
 - [Ismerkedés a Azure Monitor-naplókban található lekérdezésekkel](../../azure-monitor/log-query/get-started-queries.md)
 - [Riasztási csoportok létrehozása és kezelése a Azure Portal](../../azure-monitor/platform/action-groups.md)
 - [A log Analytics-nézetek telepítése és használata Azure Active Directory](../reports-monitoring/howto-install-use-log-analytics-views.md)
-- [A naplók API üzembe helyezése](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta.md&preserve-view=true)
+- [A naplók API üzembe helyezése](/graph/api/resources/provisioningobjectsummary?preserve-view=true&view=graph-rest-beta.md)

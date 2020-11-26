@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: videor, jeevanb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d681eba53aa85fe5df05f8404bcddb7c6877477
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 607df39833a5ae787e9acb8d3b4df3c52dd7709d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91992799"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173685"
 ---
 # <a name="conditional-access-programmatic-access"></a>Feltételes hozzáférés: programozott hozzáférés
 
@@ -62,7 +62,7 @@ Ez a példa egy olyan mechanizmust biztosít, amely lehetővé teszi, hogy a fok
 
 - [Feltételes hozzáférési szabályzatok üzembe helyezése üzemi környezetekben jóváhagyási munkafolyamatokkal](https://github.com/Azure-Samples/azure-ad-conditional-access-apis/tree/main/03-deploy)
 
-## <a name="monitor"></a>Figyelés
+## <a name="monitor"></a>Monitor
 
 Ez a példa egy olyan mechanizmust biztosít, amely a feltételes hozzáférési szabályzatok időbeli változásait figyeli, és riasztásokat indíthat a kulcsfontosságú házirendek megváltozásakor.
 
@@ -78,7 +78,7 @@ A feltételes hozzáférési szabályzatok biztonsági mentésének és visszaá
 
 ### <a name="emergency-access-accounts"></a>Vészhelyzeti hozzáférési fiókok
 
-Több rendszergazda is létrehozhat feltételes hozzáférési szabályzatokat, és elfelejtheti a [vészhelyzeti hozzáférési fiókjainak](../users-groups-roles/directory-emergency-access.md) kizárását a szabályzatok számára. Ez a példa biztosítja, hogy a rendszer minden házirendet frissít, hogy tartalmazza a kijelölt sürgősségi hozzáférési fiókokat.
+Több rendszergazda is létrehozhat feltételes hozzáférési szabályzatokat, és elfelejtheti a [vészhelyzeti hozzáférési fiókjainak](../roles/security-emergency-access.md) kizárását a szabályzatok számára. Ez a példa biztosítja, hogy a rendszer minden házirendet frissít, hogy tartalmazza a kijelölt sürgősségi hozzáférési fiókokat.
 
 - [Vészhelyzeti hozzáférési fiókok hozzárendelésének kezelése a feltételes hozzáférési házirendekhez Microsoft Graph API-hívások használatával](https://github.com/Azure-Samples/azure-ad-conditional-access-apis/tree/main/05-manage/02-emergency-access)
 

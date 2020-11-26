@@ -13,19 +13,19 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ROBOTS: NOINDEX
-ms.openlocfilehash: 378dab95d8fb3519bb2fc5c934a760e051a18d29
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: b08b07ebcd6e45e95e23dff8686148889e9d4b39
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94575883"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173919"
 ---
 # <a name="developer-guidance-for-the-azure-active-directory-conditional-access-feature"></a>Fejlesztői útmutató a Azure Active Directory feltételes hozzáférési szolgáltatáshoz
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
 > [!NOTE]
-> A cikk Microsoft Identity platformjának verziója a következő témakörben található: [Azure Active Directory feltételes hozzáférés fejlesztői útmutatója](/azure/active-directory/develop/v2-conditional-access-dev-guide).
+> A cikk Microsoft Identity platformjának verziója a következő témakörben található: [Azure Active Directory feltételes hozzáférés fejlesztői útmutatója](../develop/v2-conditional-access-dev-guide.md).
 
 Azure Active Directory (Azure AD) feltételes hozzáférési funkciója számos módszert kínál az alkalmazás biztonságossá tételéhez és a szolgáltatások védelméhez. A feltételes hozzáférés lehetővé teszi a fejlesztők és a nagyvállalatok számára, hogy számos módon védik a szolgáltatásokat, többek között:
 
@@ -178,7 +178,7 @@ Az alkalmazásnak meg kell fognia a következőt: `error=interaction_required` .
 
 Ha szeretné kipróbálni ezt a forgatókönyvet, tekintse [meg a JS Spa-t a kód nevében](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca). Ez a mintakód azt a feltételes hozzáférési házirendet és webes API-t használja, amelyet korábban regisztrált a JS SPA használatával a forgatókönyv bemutatásához. Bemutatja, hogyan kezelheti megfelelően a jogcímek kihívását, és hogyan szerezhet be egy olyan hozzáférési jogkivonatot, amelyet a webes API-hoz használhat. Alternatív megoldásként az általános [Angular.js kódot](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) is kiválaszthatja egy szögletes fürdőre vonatkozó útmutatásért
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * A képességekkel kapcsolatos további tudnivalókért tekintse meg a [feltételes hozzáférés Azure Active Directoryban](../conditional-access/overview.md)című témakört.
 * További Azure AD-kódrészletek: a [Code Samples GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active-directory)-tárháza.

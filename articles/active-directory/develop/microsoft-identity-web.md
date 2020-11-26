@@ -13,12 +13,12 @@ ms.date: 10/09/2020
 ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 77cb3b0c13a6bfe41c6f7a1a5a0f9d7278aea1db
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: b82e300128a41f8315132e1ff93af33c853edb15
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930152"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173515"
 ---
 # <a name="microsoft-identity-web-authentication-library"></a>Microsoft Identity web Authentication Library
 
@@ -58,14 +58,14 @@ dotnet new --install Microsoft.Identity.Web.ProjectTemplates::1.0.0
 
 Az alábbi ábrán a támogatott alkalmazások típusai és a kapcsolódó argumentumok magas szintű nézete látható:
 
-:::image type="content" source="media/microsoft-identity-web-overview/diagram-microsoft-identity-web-templates.png" lightbox="media/microsoft-identity-web-overview/diagram-microsoft-identity-web-templates.png" alt-text="A Microsoft Identity web elérhető dot Net CLI-projektjeinek ábrája&quot;:::
-<br /><sup><b>*</b></sup>nem támogatott a alkalmazásban, de aappsettings.jsbekapcsolható `MultiOrg` `webapi2` * a* bérlő beállítása `common` vagy `organizations`
+:::image type="content" source="media/microsoft-identity-web-overview/diagram-microsoft-identity-web-templates.png" lightbox="media/microsoft-identity-web-overview/diagram-microsoft-identity-web-templates.png" alt-text="A Microsoft Identity web elérhető dot Net CLI-projektjeinek ábrája":::
+<br /><sup><b>*</b></sup>nem támogatott a alkalmazásban, de aappsettings.jsbekapcsolható `MultiOrg` `webapi2` *a* bérlő beállítása `common` vagy `organizations`
 <br /><sup><b>**</b></sup>`--calls-graph`Azure ad B2C esetén nem támogatott
 
 Ez a példában szereplő .NET CLI-parancs a [Blazer Server oktatóanyagból](tutorial-blazor-server.md)származik, és létrehoz egy új, a megfelelő csomagokat és alapszintű kódot (látható helyőrző értékeket) tartalmazó új Blazer-kiszolgálói projektet:
 
 ```dotnetcli
-dotnet new blazorserver2 --auth SingleOrg --calls-graph --client-id &quot;00000000-0000-0000-0000-000000000000&quot; --tenant-id &quot;11111111-1111-1111-1111-111111111111" --output my-blazor-app
+dotnet new blazorserver2 --auth SingleOrg --calls-graph --client-id "00000000-0000-0000-0000-000000000000" --tenant-id "11111111-1111-1111-1111-111111111111" --output my-blazor-app
 ```
 
 #### <a name="github"></a>GitHub
@@ -74,15 +74,15 @@ A Microsoft Identity web egy, a GitHubon üzemeltetett nyílt forráskódú proj
 
 A [tárház wiki](https://github.com/AzureAD/microsoft-identity-web/wiki) további dokumentációt tartalmaz, és ha segítségre van szüksége vagy hibát szeretne felderíteni, a [probléma](https://github.com/AzureAD/microsoft-identity-web/issues)beolvasható.
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 A Microsoft Identity web számos olyan szolgáltatást tartalmaz, amelyeket nem biztosítunk, ha az alapértelmezett ASP.NET 3,1 Project-sablonokat használja.
 
-| Szolgáltatás                                                                                  | ASP.NET Core 3,1                                                     | Microsoft Identity web                                                                                  |
+| Funkció                                                                                  | ASP.NET Core 3,1                                                     | Microsoft Identity web                                                                                  |
 |------------------------------------------------------------------------------------------|----------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
 | [Felhasználói bejelentkezés](scenario-web-app-sign-user-app-configuration.md) a Web Apps szolgáltatásban             | <li>Munkahelyi vagy iskolai fiókok<li>Közösségi identitások (Azure AD B2C) | <li>Munkahelyi vagy iskolai fiókok<li>Személyes Microsoft-fiókok<li>Közösségi identitások (Azure AD B2C)     |
 | [Webes API-k elleni védelem](scenario-protected-web-api-app-configuration.md#microsoftidentityweb) | <li>Munkahelyi vagy iskolai fiókok<li>Közösségi identitások (Azure AD B2C) | <li>Munkahelyi vagy iskolai fiókok<li>Személyes Microsoft-fiókok<li>Közösségi identitások (Azure AD B2C)     |
-| Kiállítói ellenőrzés a több-bérlős alkalmazásokban                                                   | Nem                                                                   | Igen, [minden felhők](authentication-national-cloud.md) és [Azure ad B2C](/azure/active-directory-b2c) esetén |
+| Kiállítói ellenőrzés a több-bérlős alkalmazásokban                                                   | Nem                                                                   | Igen, [minden felhők](authentication-national-cloud.md) és [Azure ad B2C](../../active-directory-b2c/index.yml) esetén |
 | Webalkalmazás/API [a Microsoft Graph meghívása] [forgatókönyv-API-Call-Graph]                             | Nem                                                                   | Igen                                                                                                     |
 | Webalkalmazás/API [meghívja a webes API-t] [forgatókönyv-API-Call-API]                                       | Nem                                                                   | Igen                                                                                                     |
 | A tanúsítvány hitelesítő adatainak támogatása                                                         | Nem                                                                   | Igen, beleértve a Azure Key Vault                                                                          |
