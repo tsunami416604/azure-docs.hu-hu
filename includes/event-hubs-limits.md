@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 09/10/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 1b5905046fdde4d5574fd4d39f40dce1bbf11e32
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 262783e83bdb846a3ea7e3015212c01048a00125
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "96027364"
+ms.locfileid: "96152667"
 ---
 Az alábbi táblázatok az [Azure Event Hubsra](https://azure.microsoft.com/services/event-hubs/)vonatkozó kvótákat és korlátokat biztosítanak. További információ a Event Hubs díjszabásáról: [Event Hubs díjszabása](https://azure.microsoft.com/pricing/details/event-hubs/).
 
-## <a name="common-limits-for-all-tiers"></a>Általános korlátok az összes szinten
+### <a name="common-limits-for-all-tiers"></a>Általános korlátok az összes szinten
 Az alábbi korlátok az összes szinten gyakoriak. 
 
-| Korlát |  Jegyzetek | Érték |
+| Korlát |  Megjegyzések | Érték |
 | --- |  --- | --- |
 | Event Hubs névterek száma/előfizetés |- |100 |
 | Az Event hubok száma névtérben | Az új Event hub létrehozására vonatkozó további kérelmeket a rendszer elutasítja. |10 |
@@ -33,10 +33,10 @@ Az alábbi korlátok az összes szinten gyakoriak.
 | A virtuális hálózat (VNet) és az IP-konfigurációs szabályok száma | - | 128 | 
 
 
-## <a name="basic-vs-standard-tiers"></a>Alapszintű és standard csomag
+### <a name="basic-vs-standard-tiers"></a>Alapszintű és standard csomag
 Az alábbi táblázat az alapszintű és a standard szintekhez eltérő korlátozásokat mutat be. 
 
-| Korlát | Jegyzetek | Alapszintű | Standard |
+| Korlát | Megjegyzések | Alapszintű | Standard |
 |---|---|--|---|
 | Event Hubs esemény maximális mérete| &nbsp; | 256 KB | 1 MB |
 | Fogyasztói csoportok száma az Event hub-ban | &nbsp; |1 |20 |
@@ -44,7 +44,7 @@ Az alábbi táblázat az alapszintű és a standard szintekhez eltérő korláto
 | Esemény-adatok maximális megőrzési ideje | &nbsp; |1 nap |1-7 nap |
 | Maximális átviteli egységek |Ha túllépi ezt a korlátot, a rendszer leszabályozza az adatait, és létrehoz egy [kiszolgáló által foglalt kivételt](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception). Ha nagyobb számú átviteli egységet szeretne igényelni egy standard szintű csomaghoz, a [támogatási kérést](../articles/azure-portal/supportability/how-to-create-azure-support-request.md). A [további átviteli egységek](../articles/event-hubs/event-hubs-auto-inflate.md) 20 blokkban érhetők el egy véglegesített vásárlás alapján. |20 | 20 | 
 
-## <a name="dedicated-tier-vs-standard-tier"></a>Dedikált szint és standard szint
+### <a name="dedicated-tier-vs-standard-tier"></a>Dedikált szint és standard szint
 Az dedikált Event Hubs ajánlat számlázása rögzített havi díjszabással történik, amely legalább 4 órányi használatot biztosít. A dedikált szint a standard csomag összes funkcióját felkínálja, de nagyvállalati kapacitást és korlátokat biztosít az ügyfelek számára igényes számítási feladatokkal. 
 
 Tekintse át ezt a [dokumentumot](../articles/event-hubs/event-hubs-dedicated-cluster-create-portal.md) arról, hogyan hozhat létre dedikált Event Hubs-fürtöt a Azure Portal használatával.
@@ -63,11 +63,11 @@ Tekintse át ezt a [dokumentumot](../articles/event-hubs/event-hubs-dedicated-cl
 | Rögzítés | Óránkénti fizetés | Tartalmazza |
 
 
-## <a name="schema-registry-limitations"></a>A séma beállításjegyzékének korlátai
+### <a name="schema-registry-limitations"></a>A séma beállításjegyzékének korlátai
 
-### <a name="limits-that-are-the-same-for-standard-and-dedicated-tiers"></a>A **standard** és a **dedikált** szint esetében azonos korlátok 
+#### <a name="limits-that-are-the-same-for-standard-and-dedicated-tiers"></a>A standard és a dedikált szint esetében azonos korlátok 
 | Funkció | Korlát | 
-|---|---|--|
+|---|---|
 | Séma-csoport nevének maximális hossza | 50 |  
 | Séma nevének maximális hossza | 100 |    
 | Méret bájt/séma szerint | 1 MB |   
@@ -76,10 +76,10 @@ Tekintse át ezt a [dokumentumot](../articles/event-hubs/event-hubs-dedicated-cl
 | Méret (bájt/csoport) tulajdonság értéke | 1024 | 
 
 
-### <a name="limits-that-are-different-for-standard-and-dedicated-tiers"></a>A **standard** és a **dedikált** szint esetében eltérő korlátok 
+#### <a name="limits-that-are-different-for-standard-and-dedicated-tiers"></a>A standard és a dedikált szint esetében eltérő korlátok 
 
 | Korlát | Standard | Dedikált | 
-|---|---|--|---|
+|---|---|--|
 | A séma beállításjegyzékének mérete (névtér) Mega bájtban | 25 |  1024 |
 | Séma-beállításjegyzékben vagy névtérben lévő séma-csoportok száma | 1 – az alapértelmezett csoport kizárása | 1000 |
 | Séma-verziók száma az összes sémakezelő csoportban | 25 | 10000 |
