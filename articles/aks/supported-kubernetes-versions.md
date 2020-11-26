@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 649f02097a18a141d186434a91539563c64e72ba
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: ecea9dcd28aede92ef255bf002b9195ded43c68b
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042128"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296114"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service-ben (AKS) támogatott Kubernetes-verziók
 
@@ -95,7 +95,7 @@ New Supported Version List
 
 A `kubectl` *Kube-apiserver* verziójához viszonyítva egy régebbi vagy újabb verziójú alverziót is használhat, amely összhangban van a [kubectl Kubernetes-támogatási szabályzatával](https://kubernetes.io/docs/setup/release/version-skew-policy/#kubectl).
 
-Ha például a *Kube-apiserver* értéke *1,17* , akkor a *1,18* *1,16* -es verzióit használhatja a következővel: `kubectl` *Kube-apiserver* .
+Ha például a *Kube-apiserver* értéke *1,17*, akkor a *1,18* *1,16* -es verzióit használhatja a következővel: `kubectl` *Kube-apiserver*.
 
 A verziójának telepítéséhez vagy frissítéséhez futtassa a következőt: `kubectl` `az aks install-cli` .
 
@@ -106,6 +106,9 @@ A következő verziókra vonatkozó kiadásokat és elavultkat az [AK Kubernetes
 A Kubernetes új **másodlagos** verzióihoz
 1. Az AK egy előzetes bejelentést tesz közzé egy új verzió kiadásának tervezett dátumával, és a korábbi verziókban való elavult verziót az [AK kibocsátási megjegyzésekben](https://aka.ms/aks/releasenotes) legalább 30 nappal az Eltávolítás előtt.
 2. Az AK a [szolgáltatás állapotáról szóló értesítést](../service-health/service-health-overview.md) tesz közzé az AK-val és a portál elérésével rendelkező összes felhasználó számára, és e-mailt küld az előfizetési rendszergazdáknak a tervezett verzió-eltávolítási dátumokkal.
+````
+To find out who is your subscription administrators or to change it, please refer to [manage Azure subscriptions](https://docs.microsoft.com/azure/cost-management-billing/manage/add-change-subscription-administrator#assign-a-subscription-administrator).
+````
 3. A felhasználók a verzió eltávolítása után **30 nappal** frissíthetnek a támogatott alverzióra, hogy továbbra is megkapják a támogatást.
 
 A Kubernetes új **javítócsomag** -verzióihoz
@@ -121,7 +124,7 @@ Előfordulhat, hogy a rendszer kihagyja az adott javítási kiadásokat, vagy a 
 
 ## <a name="azure-portal-and-cli-versions"></a>Azure Portal és CLI-verziók
 
-Ha AK-fürtöt telepít a portálon vagy az Azure CLI-vel, a fürt alapértelmezett értéke az N-1 alverzió és a legújabb javítás. Ha például az AK támogatja a következőt: *1.17. a* , *1.17. b* , *1.16. c* , *1.16. d* , *1.15. e* és *1.15. f* , a kiválasztott alapértelmezett verzió az *1.16. c* .
+Ha AK-fürtöt telepít a portálon vagy az Azure CLI-vel, a fürt alapértelmezett értéke az N-1 alverzió és a legújabb javítás. Ha például az AK támogatja a következőt: *1.17. a*, *1.17. b*, *1.16. c*, *1.16. d*, *1.15. e* és *1.15. f*, a kiválasztott alapértelmezett verzió az *1.16. c*.
 
 Ha szeretné megtudni, hogy az előfizetéshez és a régióhoz jelenleg milyen verziók érhetők el, használja az az [AK Get-Versions][az-aks-get-versions] parancsot. A következő példa a *EastUS* régió elérhető Kubernetes-verzióit sorolja fel:
 
@@ -179,7 +182,7 @@ A vezérlési síkon az összes csomópont-készlet verziójának egy ablakában
 
 Ha egy támogatott AK-fürtöt frissít, a Kubernetes alverzióit nem lehet kihagyni. Például a *1.12. x*  ->  *1.13. x* vagy *1.13. x*  ->  *1.14. x* közötti frissítések engedélyezettek, a *1.12. x*  ->  *1.14. x* azonban nem.
 
-A frissítéshez *1.12. x*  ->  *1,14. x* -ről először a *1.12. x* 1.13. x verzióról kell frissíteni,  ->  *1.13.x* majd az *1.13. x*  ->  *1.14. x* verziójáról kell frissíteni.
+A frissítéshez *1.12. x*  ->  *1,14. x*-ről először a *1.12. x* 1.13. x verzióról kell frissíteni,  ->  *1.13.x* majd az *1.13. x*  ->  *1.14. x* verziójáról kell frissíteni.
 
 Több verzió kihagyása csak akkor végezhető el, ha nem támogatott verzióról frissít vissza egy támogatott verzióra. Például nem támogatott *1.10. x* – > egy támogatott *1.15. x-et* lehet befejezni.
 

@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 10/25/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: 55ec8be176dc7274a3b9a1feca53726d57eeb422
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2e96cbf0c1464e27b0a384e8a813118056103b91
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024465"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296685"
 ---
 # <a name="connect-to-workspace-resources-from-a-restricted-network"></a>Kapcsolódás a munkaterület erőforrásaihoz egy korlátozott hálózatról
 
@@ -46,14 +46,11 @@ További információ: szolgáltatás- [címkék áttekintése](/azure/virtual-n
 
 Következő lépésként hozzon létre privát kapcsolati hubokat a Azure Portal. A portálon megkeresheti az *Azure szinapszis Analytics (Private link hubok) szolgáltatást*, majd kitöltheti a szükséges információkat a létrehozásához. 
 
-> [!Note]
-> Győződjön meg arról, hogy a **régió** értéke ugyanaz, mint az Azure szinapszis Analytics-munkaterülete.
-
 ![Képernyőfelvétel a szinapszis Private link hub létrehozásáról.](./media/how-to-connect-to-workspace-from-restricted-network/private-links.png)
 
-## <a name="step-3-create-a-private-endpoint-for-your-gateway"></a>3. lépés: hozzon létre egy privát végpontot az átjáróhoz
+## <a name="step-3-create-a-private-endpoint-for-your-synapse-studio"></a>3. lépés: privát végpont létrehozása a szinapszis studióhoz
 
-Az Azure szinapszis Analytics Studio-átjáró eléréséhez létre kell hoznia egy privát végpontot a Azure Portalból. Ha szeretné megkeresni a portálon, keresse meg a *privát hivatkozás* kifejezést. A **privát kapcsolat központban** válassza a **privát végpont létrehozása** lehetőséget, majd adja meg a szükséges adatokat a létrehozásához. 
+Az Azure szinapszis Analytics studióhoz való hozzáféréshez létre kell hoznia egy privát végpontot a Azure Portalból. Ha szeretné megkeresni a portálon, keresse meg a *privát hivatkozás* kifejezést. A **privát kapcsolat központban** válassza a **privát végpont létrehozása** lehetőséget, majd adja meg a szükséges adatokat a létrehozásához. 
 
 > [!Note]
 > Győződjön meg arról, hogy a **régió** értéke ugyanaz, mint az Azure szinapszis Analytics-munkaterülete.
@@ -118,6 +115,43 @@ Ha azt szeretné, hogy a notebookja egy bizonyos Storage-fiókhoz tartozó társ
 A végpont létrehozása után a jóváhagyási állapot **függőben** állapotot mutat. A Storage-fiók tulajdonosának jóváhagyása a Azure Portal a Storage-fiók **Private Endpoint Connections** lapján. A jóváhagyást követően a notebookja hozzáférhet a Storage-fiókban lévő társított tárolási erőforrásokhoz.
 
 Most pedig minden beállítás. Elérheti az Azure szinapszis Analytics Studio Workspace-erőforrást.
+
+## <a name="appendix-dns-registration-for-private-endpoint"></a>Függelék: a privát végpont DNS-regisztrációja
+
+Ha az "integráció a saját DNS-zónával" beállítás nincs engedélyezve a privát végpont létrehozásakor az alábbi képernyőképen, létre kell hoznia a "**saját DNS zónát**" az egyes privát végpontokhoz.
+![Képernyőfelvétel: a szinapszis saját DNS-zónájának létrehozása 1.](./media/how-to-connect-to-workspace-from-restricted-network/pdns-zone-1.png)
+
+Ha meg szeretné keresni a **saját DNS zónát** a portálon, keresse meg *saját DNS zónát*. A **saját DNS zónában** adja meg az alábbi szükséges adatokat a létrehozásához.
+
+* A **név mezőben** adja meg a saját DNS-zóna dedikált nevét az adott privát végponthoz az alábbiak szerint:
+  * **`privatelink.azuresynapse.net`** Az Azure szinapszis Analytics Studio Gateway elérésének privát végpontja. Tekintse meg az ilyen típusú privát végpont létrehozását a 3. lépésben.
+  * **`privatelink.sql.azuresynapse.net`** az SQL-lekérdezés végrehajtásának ilyen típusú magánhálózati végpontja az SQL-készletben és a beépített készletben. Lásd a végpont létrehozását a 4. lépésben.
+  * **`privatelink.dev.azuresynapse.net`** Ehhez a típusú privát végponthoz kell hozzáférni az Azure szinapszis Analytics Studio-munkaterületeken található összes máshoz. Tekintse meg az ilyen típusú privát végpont létrehozását a 4. lépésben.
+  * **`privatelink.dfs.core.windows.net`** a munkaterülethez kapcsolt Azure Data Lake Storage Gen2hoz való hozzáférés privát végpontja. Az 5. lépésben megtekintheti az ilyen típusú privát végpontok létrehozását.
+  * **`privatelink.blob.core.windows.net`** a munkaterülethez kapcsolódó Azure Blob Storagehoz való hozzáférés privát végpontja. Az 5. lépésben megtekintheti az ilyen típusú privát végpontok létrehozását.
+
+![Képernyőfelvétel: a szinapszis saját DNS-zónájának létrehozása 2.](./media/how-to-connect-to-workspace-from-restricted-network/pdns-zone-2.png)
+
+Miután létrehozta a **saját DNS zónát** , adja meg a létrehozott magánhálózati DNS-zónát, és válassza ki a **virtuális hálózati hivatkozásokat** a virtuális hálózatra mutató hivatkozás hozzáadásához. 
+
+![Képernyőfelvétel: a szinapszis saját DNS-zóna létrehozása 3.](./media/how-to-connect-to-workspace-from-restricted-network/pdns-zone-3.png)
+
+Adja meg a kötelező mezőket az alábbi módon:
+* A **hivatkozás neve** mezőben adja meg a hivatkozás nevét.
+* **Virtuális hálózat** esetén válassza ki a virtuális hálózatot.
+
+![Képernyőfelvétel: a szinapszis saját DNS-zónájának létrehozása 4.](./media/how-to-connect-to-workspace-from-restricted-network/pdns-zone-4.png)
+
+A virtuális hálózati kapcsolat hozzáadása után hozzá kell adnia a DNS-rekordot a korábban létrehozott **saját DNS zónához** .
+
+* A **név mezőben** adja meg a dedikált név karakterláncokat a különböző privát végpontokhoz: 
+  * a **web** az Azure szinapszis Analytics studióhoz való hozzáférés privát végpontja.
+  * A "***YourWorkSpaceName * * _" az SQL-lekérdezés SQL-készletben való futtatásának privát végpontja, valamint a privát végpont, amely az Azure szinapszis Analytics Studio-munkaterületeken található minden más számára elérhető. _ "*** YourWorkSpaceName *-OnDemand * *" az SQL-lekérdezés végrehajtásának privát végpontja a beépített készletben.
+* A **Type (típus) mezőben** válassza **a csak A** DNS-rekord lehetőséget. 
+* Az **IP-cím mezőben** adja meg az egyes privát végpontok megfelelő IP-címét. A **hálózati adapter** IP-címét a saját végpontjának áttekintésében érheti el.
+
+![Képernyőfelvétel: a szinapszis saját DNS-zónájának létrehozása 5.](./media/how-to-connect-to-workspace-from-restricted-network/pdns-zone-5.png)
+
 
 ## <a name="next-steps"></a>Következő lépések
 

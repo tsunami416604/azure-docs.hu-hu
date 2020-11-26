@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 766837cacb4ef2acf874c2872b347b6d35633faa
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 862fa839c56746042c072ae3100832fb2b78451a
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94700997"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296906"
 ---
 # <a name="source-control-integration-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Verziókövetés integrálása dedikált SQL-készlethez az Azure szinapszis Analyticsben
 
@@ -38,11 +38,13 @@ Ez az oktatóanyag azt ismerteti, hogyan integrálható a SQL Server Data Tools 
    ![Kapcsolatok kezelése](./media/sql-data-warehouse-source-control-integration/2-manage-connections.png "Kapcsolatok kezelése")
 
 3. Kapcsolódjon a projekthez a **kapcsolatok kezelése**, majd **a projekthez való csatlakozás** lehetőség kiválasztásával.
- ![Connect1](./media/sql-data-warehouse-source-control-integration/3-connect-project.png "Kapcsolódás")
+ 
+    ![Connect1](./media/sql-data-warehouse-source-control-integration/3-connect-project.png "Kapcsolódás")
 
 
 4. Keresse meg az első lépésben létrehozott projektet, majd válassza a **kapcsolat** lehetőséget.
-![Connect2](./media/sql-data-warehouse-source-control-integration/3.5-connect.png "Kapcsolódás")
+ 
+    ![Connect2](./media/sql-data-warehouse-source-control-integration/3.5-connect.png "Kapcsolódás")
 
 
 3. Az Azure DevOps-tárház klónozása a projektből a helyi gépre.
@@ -85,7 +87,7 @@ A projektek Visual Studióval való összekapcsolásával kapcsolatos további i
 
    ![Ellenőrzés](./media/sql-data-warehouse-source-control-integration/10-verify-column-change-pushed.png "Módosítások ellenőrzése")
 
-4. (Nem **kötelező**) A séma összehasonlításával és a cél adattárház változásainak a SSDT használatával történő frissítésével biztosíthatja, hogy az Azure-tárházban az objektum-definíciók és a helyi adattár tükrözzék az adattárházat.
+4. (Nem **kötelező**) Használja a séma összevetését, és frissítse a cél dedikált SQL-készlet módosításait a SSDT használatával, hogy az Azure-tárházban és a helyi tárházban lévő Object-definíciók tükrözzék a dedikált SQL-készletet.
 
 ## <a name="next-steps"></a>Következő lépések
 

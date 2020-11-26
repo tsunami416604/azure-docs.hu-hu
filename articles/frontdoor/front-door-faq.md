@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: 18e32a0387119d235294d1126d869186ae28d2b2
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: abc4529d6076496b34859eec2b931a8dcbd1ce93
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488979"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296590"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Gyakori kérdések az Azure bejárati ajtóról
 
@@ -24,7 +24,7 @@ Ez a cikk az Azure-előtérben elérhető funkciókkal és funkciókkal kapcsola
 
 1. A cikk megjegyzések szakasza.
 2. [Azure bejárati ajtó UserVoice](https://feedback.azure.com/forums/217313-networking?category_id=345025).
-3. **Microsoft ügyfélszolgálata:** Új támogatási kérelem létrehozásához a Azure Portal **Súgó** lapján kattintson a **Súgó + támogatás** gombra, majd válassza az **új támogatási kérelem**lehetőséget.
+3. **Microsoft ügyfélszolgálata:** Új támogatási kérelem létrehozásához a Azure Portal **Súgó** lapján kattintson a **Súgó + támogatás** gombra, majd válassza az **új támogatási kérelem** lehetőséget.
 
 ## <a name="general"></a>Általános kérdések
 
@@ -242,7 +242,7 @@ Igen, az Azure bejárati ajtó támogatja a TLS/SSL-kiszervezést és a végpont
 Nem, az önaláírt tanúsítványok nem támogatottak a bejárati ajtón, és a korlátozás a következőkre is vonatkozik:
 
 1. **Háttérrendszer**: az önaláírt tanúsítványok nem használhatók, ha a forgalmat HTTPS vagy https állapotú mintavételként továbbítja, vagy a gyorsítótárat a forrástól az útválasztási szabályokhoz a gyorsítótárazás engedélyezve beállítással tölti ki.
-2. Előtér **: nem**használhat önaláírt tanúsítványokat saját egyéni TLS/SSL-tanúsítvány használata esetén a https engedélyezéséhez az egyéni tartományon.
+2. Előtér **: nem** használhat önaláírt tanúsítványokat saját egyéni TLS/SSL-tanúsítvány használata esetén a https engedélyezéséhez az egyéni tartományon.
 
 ### <a name="why-is-https-traffic-to-my-backend-failing"></a>Miért nem sikerül HTTPS-forgalmat felvenni a háttérben?
 

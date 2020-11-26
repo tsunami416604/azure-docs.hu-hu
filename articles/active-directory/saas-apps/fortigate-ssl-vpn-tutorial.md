@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/11/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acb08d5430f13ad9a339b2cdd072fce9c196d05f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 021550598452516d45ae67c1139c2f891629a875
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92451483"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296573"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortigate-ssl-vpn"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a FortiGate SSL VPN-lel
 
@@ -53,8 +53,8 @@ A FortiGate SSL VPN Azure AD-be való integrálásának konfigurálásához hozz
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók.
 1. A bal oldali panelen válassza az **Azure Active Directory** lehetőséget.
-1. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban adja meg a **FortiGate SSL VPN** kifejezést a keresőmezőbe.
 1. Válassza az **FORTIGATE SSL VPN** elemet az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
@@ -75,8 +75,8 @@ Az Azure AD SSO FortiGate SSL VPN-sel való konfigurálásához és tesztelésé
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a Azure Portalban:
 
-1. A [Azure Portal](https://portal.azure.com/)a **FortiGate SSL VPN-** alkalmazás integrációja oldalon, a **kezelés** szakaszban válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **FortiGate SSL VPN-** alkalmazás integrációja oldalon, a **kezelés** szakaszban válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon válassza az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza gombot a beállítások szerkesztéséhez:
 
    ![Képernyőkép, amely az alapszintű SAML-konfiguráció szerkesztésére szolgáló ceruza gombot mutatja.](common/edit-urls.png)
@@ -92,7 +92,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a Azure Portal
     d. A **kijelentkezési URL-cím** mezőben adjon meg egy URL-címet a mintában `https://<FQDN>/remote/saml/logout` .
 
     > [!NOTE]
-    > Ezek az értékek csak minták. A tényleges **bejelentkezési URL-címet**, **azonosítót**, **Válasz URL**-címet és **kijelentkezési URL-** címet kell használnia. A tényleges értékek lekéréséhez lépjen kapcsolatba a [FORTIGATE SSL VPN-ügyfél támogatási csapatával](mailto:tac_amer@fortinet.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek csak minták. A tényleges **bejelentkezési URL-címet**, **azonosítót**, **Válasz URL**-címet és **kijelentkezési URL-** címet kell használnia. Útmutatásért forduljon a [Fortinet támogatási szolgálatához](https://support.fortinet.com) . A Azure Portal a Fortinet dokumentációjában és az **alapszintű SAML-konfiguráció** szakaszban látható példákat is megtekintheti.
 
 1. A FortiGate SSL VPN-alkalmazás meghatározott formátumban várja az SAML-jogcímeket, így egyéni attribútum-hozzárendeléseket kell hozzáadnia a konfigurációhoz. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
@@ -107,16 +107,16 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a Azure Portal
    
    A további jogcímek létrehozásához:
    
-   1. A **felhasználói attribútumok & jogcímek**elem mellett válassza a **Szerkesztés**lehetőséget.
-   1. Válassza az **új jogcím hozzáadása**lehetőséget.
-   1. A **név**mezőben adja meg a **username**nevet.
-   1. A **forrás attribútumnál**válassza a **User. userPrincipalName**elemet.
-   1. Válassza a **Mentés** lehetőséget.
-   1. Válassza **a csoport hozzáadása**lehetőséget.
+   1. A **felhasználói attribútumok & jogcímek** elem mellett válassza a **Szerkesztés** lehetőséget.
+   1. Válassza az **új jogcím hozzáadása** lehetőséget.
+   1. A **név** mezőben adja meg a **username** nevet.
+   1. A **forrás attribútumnál** válassza a **User. userPrincipalName** elemet.
+   1. Kattintson a **Mentés** gombra.
+   1. Válassza **a csoport hozzáadása** lehetőséget.
    1. Válassza a **Minden csoport** lehetőséget.
    1. Seect a **csoport nevének testreszabása** jelölőnégyzetet.
-   1. A **név**mezőbe írja be a következőt: **Group**.
-   1. Válassza a **Mentés** lehetőséget.   
+   1. A **név** mezőbe írja be a következőt: **Group**.
+   1. Kattintson a **Mentés** gombra.   
 
 1. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **tanúsítvány (Base64)** melletti **Letöltés** hivatkozást a tanúsítvány letöltéséhez és a számítógépen való mentéséhez:
 
@@ -130,45 +130,45 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a Azure Portal
 
 Ebben a szakaszban egy B. Simon nevű teszt felhasználót hoz létre a Azure Portal.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget. Válassza a **felhasználók**lehetőséget, majd válassza **a minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget. Válassza a **felhasználók** lehetőséget, majd válassza **a minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre a következő lépéseket:
    1. A név mezőbe írja be a **B. Simon** **nevet** .  
    1. A **Felhasználónév** mezőbe írja be a nevet \<username> @ \<companydomain> . \<extension> Például: `B.Simon@contoso.com`.
-   1. Válassza a **jelszó megjelenítése**lehetőséget, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Válassza a **jelszó megjelenítése** lehetőséget, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Létrehozás** gombra.
 
 #### <a name="grant-access-to-the-test-user"></a>Hozzáférés biztosítása a tesztelési felhasználónak
 
 Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a felhasználónak a FortiGate SSL VPN-hez.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza az **FORTIGATE SSL VPN**elemet.
-1. Az alkalmazás Áttekintés lapjának **kezelés** szakaszában válassza a **felhasználók és csoportok**lehetőséget:
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza az **FORTIGATE SSL VPN** elemet.
+1. Az alkalmazás Áttekintés lapjának **kezelés** szakaszában válassza a **felhasználók és csoportok** lehetőséget:
 
    ![A felhasználók és csoportok lehetőséget megjelenítő képernyőkép.](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget:
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget:
 
     ![A felhasználó hozzáadása gombot megjelenítő képernyőkép.](common/add-assign-user.png)
 
 1. A **felhasználók és csoportok** párbeszédpanelen válassza az **B. Simon** elemet a **felhasználók** listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. Ha az SAML-kijelentésben bármelyik szerepkör értékét várta, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a listáról a felhasználó számára. Kattintson a képernyő alján található **kiválasztás** gombra.
-1. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés**lehetőséget.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés** lehetőséget.
 
 #### <a name="create-a-security-group-for-the-test-user"></a>Biztonsági csoport létrehozása a tesztelési felhasználó számára
 
 Ebben a szakaszban egy biztonsági csoportot hoz létre Azure Active Directory a tesztelési felhasználó számára. A FortiGate ezt a biztonsági csoportot fogja használni a VPN-en keresztüli felhasználói hálózati hozzáférés biztosításához.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget. Ezután válassza a **csoportok**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget. Ezután válassza a **csoportok** lehetőséget.
 1. Válassza az **új csoport** lehetőséget a képernyő tetején.
 1. Az **új csoport** tulajdonságaiban hajtsa végre a következő lépéseket:
-   1. A **csoport típusa** listában válassza a **Biztonság**elemet.
+   1. A **csoport típusa** listában válassza a **Biztonság** elemet.
    1. A csoportnév mezőbe írja be a **FortiGateAccess** **nevet** .
    1. A **csoport leírása** mezőbe írja be **a FortiGate VPN-hozzáférés biztosítására szolgáló csoportot**.
-   1. Az **Azure ad-szerepkörökhöz hozzá lehet rendelni a csoport (előzetes verzió)** beállításait, válassza a **nem**lehetőséget.
-   1. A **tagság típusa** mezőben válassza a **hozzárendelt**elemet.
-   1. A **tagok**területen válassza a **nincs kiválasztott tag**elemet.
+   1. Az **Azure ad-szerepkörökhöz hozzá lehet rendelni a csoport (előzetes verzió)** beállításait, válassza a **nem** lehetőséget.
+   1. A **tagság típusa** mezőben válassza a **hozzárendelt** elemet.
+   1. A **tagok** területen válassza a **nincs kiválasztott tag** elemet.
    1. A **felhasználók és csoportok** párbeszédpanelen válassza a **felhasználók** listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
    1. Kattintson a **Létrehozás** gombra.
 1. Miután visszatért a Azure Active Directory **csoportok** szakaszára, keresse meg a FortiGate- **hozzáférési** csoportot, és jegyezze fel az **objektumazonosítót**. Később szüksége lesz rá.
@@ -180,12 +180,12 @@ Ebben a szakaszban egy biztonsági csoportot hoz létre Azure Active Directory a
 Miután végrehajtotta a FortiGate alkalmazás SAML-konfigurációját a bérlőn, letöltötte a Base64 kódolású SAML-tanúsítványt. Ezt a tanúsítványt fel kell töltenie a FortiGate készülékbe:
 
 1. Jelentkezzen be a FortiGate-berendezés felügyeleti portálján.
-1. A bal oldali ablaktáblán válassza a **System**elemet.
-1. A **rendszerben**válassza a **tanúsítványok**lehetőséget.
-1. Válassza **Import**a  >  **távoli tanúsítvány**importálása lehetőséget.
+1. A bal oldali ablaktáblán válassza a **System** elemet.
+1. A **rendszerben** válassza a **tanúsítványok** lehetőséget.
+1. Válassza **Import** a  >  **távoli tanúsítvány** importálása lehetőséget.
 1. Tallózással keresse meg a FortiGate alkalmazás üzembe helyezéséről az Azure-bérlőn letöltött tanúsítványt, jelölje ki, majd kattintson **az OK gombra**.
 
-A tanúsítvány feltöltése után jegyezze fel a nevét a **System**  >  **rendszertanúsítványok**  >  **távoli tanúsítványa**alatt. Alapértelmezés szerint REMOTE_Cert_*n*lesz, ahol *N* egész érték.
+A tanúsítvány feltöltése után jegyezze fel a nevét a **System**  >  **rendszertanúsítványok**  >  **távoli tanúsítványa** alatt. Alapértelmezés szerint REMOTE_Cert_ *n* lesz, ahol *N* egész érték.
 
 #### <a name="complete-fortigate-command-line-configuration"></a>FortiGate-parancssori konfiguráció befejezése
 
@@ -199,7 +199,7 @@ A lépések elvégzéséhez szüksége lesz a korábban feljegyzett értékekre:
 - Azure bejelentkezési URL-cím
 - Azure AD-azonosító
 - Azure kijelentkezési URL-címe
-- Base64 SAML-tanúsítvány neve (REMOTE_Cert_*N*)
+- Base64 SAML-tanúsítvány neve (REMOTE_Cert_ *N*)
 
 1. Hozzon létre egy SSH-munkamenetet a FortiGate készüléken, és jelentkezzen be egy FortiGate-rendszergazdai fiókkal.
 1. Futtassa a következő parancsokat:

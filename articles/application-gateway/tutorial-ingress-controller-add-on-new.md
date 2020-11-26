@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 43aadee627c7dc12a37a8f3895ba4dfed472808c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 627d5b15a861c3d564cb4db33b366d3227092d37
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182903"
+ms.locfileid: "96296250"
 ---
 # <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>Oktatóanyag: az új, Application Gateway példánnyal rendelkező új AK-fürthöz tartozó bejövő vezérlő bővítmény (előzetes verzió) engedélyezése
 
@@ -34,7 +34,10 @@ Az oktatóanyag a következőket ismerteti:
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
- - Az oktatóanyaghoz az Azure CLI 2.0.4 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van.
+ - Az oktatóanyaghoz az Azure CLI 2.0.4 vagy újabb verziójára van szükség. Azure Cloud Shell használata esetén a legújabb verzió már telepítve van. Ha az Azure CLI-t használja, telepítenie kell az előzetes verziójú bővítményt a CLI-be a következő parancs használatával, ha még nem tette meg:
+    ```azurecli-interactive
+    az extension add --name aks-preview
+    ```
 
  - Regisztrálja az *AK-IngressApplicationGatewayAddon* funkció jelzőjét az az [Feature Register](/cli/azure/feature#az-feature-register) paranccsal az alábbi példában látható módon. Ezt csak egyszer kell elvégeznie előfizetés esetén, amíg a bővítmény még előzetes verzióban van.
     ```azurecli-interactive
@@ -113,7 +116,7 @@ Győződjön meg arról, hogy a létrehozott minta alkalmazás a következők va
 
 A frissítés beszerzéséhez Application Gateway egy percet is igénybe vehet. Ha a Application Gateway még mindig **frissítési** állapotban van a portálon, hagyja befejezni az IP-cím elérését. 
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha már nincs szüksége rájuk, távolítsa el az erőforráscsoportot, a Application Gateway példányt és az összes kapcsolódó erőforrást:
 

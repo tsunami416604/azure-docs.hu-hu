@@ -4,12 +4,12 @@ description: Ebből a cikkből megismerheti az Azure-beli virtuális gépek Azur
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 74e2facfd9fd6073acc1f939c3d2ba922e3ac931
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: e6e14209a8df7160d103cb036d38c9fee29b34dd
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92925577"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296063"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Gyakori kérdések – Azure-beli virtuális gépek biztonsági mentése
 
@@ -87,11 +87,11 @@ Igen, Azure Backup támogatja a [standard SSD felügyelt lemezeket](https://docs
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>Tud biztonsági másolatot készíteni egy virtuális gépről írásgyorsító (WA)-kompatibilis lemezzel?
 
-Nem lehet pillanatképeket felvenni a WA-kompatibilis lemezre. A Azure Backup szolgáltatás azonban kizárhatja a WA-kompatibilis lemezt a biztonsági mentésből.
+A pillanatképek csak a WA-kompatibilis és nem operációsrendszer-lemezeket tartalmazó adatlemezeken készíthetők. Így csak az WA-kompatibilis adatlemezek védhetők.
 
 ### <a name="i-have-a-vm-with-write-accelerator-wa-disks-and-sap-hana-installed-how-do-i-back-up"></a>Van egy írásgyorsító (WA) lemezzel rendelkező virtuális gép, és SAP HANA telepítve. Hogyan biztonsági mentést?
 
-Azure Backup nem tud biztonsági másolatot készíteni a WA-kompatibilis lemezről, de kizárhatja azt a biztonsági mentésből. A biztonsági mentés azonban nem biztosít adatbázis-konzisztenciát, mert a WA-kompatibilis lemezen található információk nem rendelkeznek biztonsági mentéssel. Ebben a konfigurációban biztonsági mentést készíthet a lemezekről, ha az operációs rendszer lemezének biztonsági mentését kívánja végezni, valamint a nem a WA-kompatibilis lemezek biztonsági mentését.
+Azure Backup tud biztonsági másolatot készíteni a WA-kompatibilis adatlemezről. A biztonsági mentés azonban nem biztosít adatbázis-konzisztenciát.
 
 A Azure Backup egy 15 perces RPO rendelkező SAP HANA-adatbázisokhoz biztosít streaming biztonsági mentési megoldást. Az SAP által tanúsított Backint natív biztonsági mentési támogatást biztosítanak a SAP HANA natív API-jai kihasználásához. További [információ a SAP HANA adatbázisok Azure-beli virtuális gépeken történő biztonsági mentéséről](./sap-hana-db-about.md).
 

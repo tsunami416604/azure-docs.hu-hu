@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 11/18/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8fd7562d1f8e38c79f739fdd2db7031e772874bc
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 0e637a09a5305e314a32b1cac34b2da669eec614
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122636"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296199"
 ---
 # <a name="azure-synapse-analytics-terminology"></a>Az Azure szinapszis Analytics terminológiája
 
@@ -51,13 +51,13 @@ A (z)-ben kétféleképpen használhatja a Sparkot:
 
 A folyamatok az Azure szinapszis adatintegrációját biztosítják – lehetővé teszi az adatáthelyezést a szolgáltatások és a tevékenységek között.
 
-* Az **adatfolyamatok** olyan adatátalakítást tesznek lehetővé, amely a szinapszis Spark-t használó adatátalakítást használja.
-* **Folyamat** – a tevékenységeket végrehajtó tevékenységek logikai csoportosítása.
-* **Tevékenység** – az adatokon végrehajtandó műveletek, például adatok másolása, jegyzetfüzetek vagy SQL-parancsfájlok futtatása.
+* A **folyamat** az olyan tevékenységek logikai csoportosítása, amelyek egy feladatot együtt hajtanak végre.
+* A **tevékenységek** a folyamaton belüli műveleteket határozzák meg olyan adatokon, mint például az adatok másolása, jegyzetfüzetek vagy SQL-parancsfájlok futtatása.
+* Az **adatfolyamatok** egy adott típusú tevékenység, amely kód nélküli működést biztosít az adatátalakításhoz, amely a szinapszis Sparkot használja a-borítón.
 * **Trigger** – folyamat végrehajtása. Futtatható manuálisan vagy automatikusan (Schedule, bukdácsoló ablak vagy eseményvezérelt)
 * **Integrációs adatkészlet** – olyan adatok elnevezett nézete, amelyek egyszerűen rámutatnak vagy hivatkoznak egy tevékenységben bemenetként és kimenetként használandó adatokra. Egy társított szolgáltatáshoz tartozik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ismerkedés az Azure szinapszis Analytics szolgáltatással](get-started.md)
 * [Munkaterület létrehozása](quickstart-create-workspace.md)

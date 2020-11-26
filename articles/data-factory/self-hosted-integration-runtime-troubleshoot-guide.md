@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 11/17/2020
 ms.author: lle
-ms.openlocfilehash: 93c35828444ec93a974769ed3a2f1981c0ec4368
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 8195c4d072acce5345fa9752f97713aed22d962f
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96013460"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296954"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Saját üzemeltetésű integrációs modul hibáinak megoldása
 
@@ -459,6 +459,22 @@ Konvertálás előtt és után:
 
 ![A tanúsítvány módosítása után](media/self-hosted-integration-runtime-troubleshoot-guide/after-certificate-change.png)
 
+### <a name="self-hosted-integration-runtime-version-5x"></a>Saját üzemeltetésű Integration Runtime 5. x verzió
+A Azure Data Factory saját üzemeltetésű integrációs modul 5. x verziójára való frissítéshez a **.NET-keretrendszer futtatókörnyezetének 4.7.2** vagy újabb verzióra van szükség. A letöltési oldalon a legújabb 4. x verzióra és a legújabb két 5. x verzióra mutató hivatkozások lesznek letöltve. 
+
+
+ADF v2-ügyfelek esetén:
+- Ha az automatikus frissítés be van kapcsolva, és a .NET-keretrendszer futtatókörnyezetét már 4.7.2 vagy újabb verzióra frissítette, akkor a saját üzemeltetésű integrációs modul automatikusan frissül a legújabb 5. x verzióra.
+- Ha az automatikus frissítés be van kapcsolva, és nem frissítette a .NET-keretrendszer futtatókörnyezetét 4.7.2 vagy újabb verzióra, akkor a saját üzemeltetésű integrációs modul nem lesz automatikusan frissítve a legújabb 5. x verzióra. A saját üzemeltetésű Integration Runtime a jelenlegi 4. x verzióban marad. A .NET-keretrendszer futtatókörnyezetének frissítésére vonatkozó figyelmeztetést a Portálon és a saját üzemeltetésű Integration Runtime-ügyfélen talál.
+- Ha az automatikus frissítés ki van kapcsolva, és már frissítette a .NET-keretrendszer futtatókörnyezetét a 4.7.2 vagy újabb verzióra, akkor manuálisan letöltheti a legújabb 5. x-et, és telepítheti a számítógépet.
+- Ha az automatikus frissítés ki van kapcsolva, és nem frissítette a .NET-keretrendszer futtatókörnyezetét 4.7.2 vagy újabb verzióra. Ha a (5. x) rendszer manuális telepítését kísérli meg, és regisztrálja a kulcsot, először frissítenie kell a .NET-keretrendszer futtatókörnyezetét.
+
+
+ADF v1-ügyfelek esetén:
+- A saját üzemeltetésű Integration Runtime 5. X verziója nem támogatja az ADF v1-es verzióját.
+- A saját üzemeltetésű integrációs modul automatikusan frissítve lesz a 4. x legújabb verziójára. A 4. x utolsó verziója pedig nem jár le. 
+- Ha a saját üzemeltetésű Integration Runtime 5. x verzióját próbálja meg manuálisan telepíteni, és regisztrálja a kulcsot, akkor a saját üzemeltetésű Integration Runtime 5. x verziója nem támogatja a v1-et.
+
 
 ## <a name="self-hosted-ir-connectivity-issues"></a>Saját üzemeltetésű IR-kapcsolati problémák
 
@@ -759,7 +775,8 @@ Előfordulhat, hogy más adatgyárakat (különböző bérlőket) is meg kell h�
 A saját üzemeltetésű integrációs modul nem osztható meg több Bérlővel.
 
 
-## <a name="next-steps"></a>További lépések
+
+## <a name="next-steps"></a>Következő lépések
 
 A hibaelhárítással kapcsolatos további segítségért próbálkozzon a következő erőforrásokkal:
 

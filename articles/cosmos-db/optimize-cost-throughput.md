@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 76f4f9ddaa1e4aec9409e96a0088ec51b8c2645e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 86de3e1199b00dff4e03f3b4292f86e6c19ea491
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097464"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296539"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>A kiosztott átviteli sebesség költségeinek optimalizálása az Azure Cosmos DB-ben
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -31,7 +31,7 @@ Az átviteli sebességet adatbázisok vagy tárolók között is kioszthatja, é
 
 Az alábbiakban néhány, a kiosztott átviteli sebességre vonatkozó stratégiát kell eldöntenie:
 
-**Vegye fontolóra az átviteli sebesség kiszámítását egy Azure Cosmos-adatbázison (tárolók készletét tartalmazó), ha** :
+**Vegye fontolóra az átviteli sebesség kiszámítását egy Azure Cosmos-adatbázison (tárolók készletét tartalmazó), ha**:
 
 1. Néhány tucat Azure Cosmos-tárolóval rendelkezik, és az átviteli sebességet szeretné megosztani egy vagy több között. 
 
@@ -137,7 +137,7 @@ Mivel a kiosztott átviteli sebességért számítunk fel díjat, a kiépített 
 
 Az új munkaterhelés kiépített átviteli sebességének meghatározásához a következő lépéseket használhatja: 
 
-1. Végezzen el egy kezdeti, durva értékelést a Capacity Planner használatával, és állítsa be a becsléseket a Azure Portal Azure Cosmos Explorer segítségével. 
+1. Végezzen el egy kezdeti, durva értékelést a Capacity Planner használatával, és állítsa be a becsléseket a Azure Portal Azure Cosmos DB Explorer segítségével. 
 
 2. Azt javasoljuk, hogy a tárolókat a vártnál magasabb átviteli sebességgel hozza létre, majd szükség szerint méretezéssel. 
 

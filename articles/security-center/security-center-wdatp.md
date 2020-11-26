@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 372ff1dc53f15a1338cad933fec64746b6736f40
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5645a2e0449a1929421f9444bf645f08ad0525e9
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368085"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296811"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>A végpontok Security Center integrált EDR megoldással való ellátása: a Microsoft Defender for Endpoint
 
@@ -33,7 +33,7 @@ A Microsoft Defender for Endpoint egy holisztikus, felhőalapú végponti bizton
 > [!TIP]
 > Eredetileg a **Windows DEFENDER ATP**-ként indult el, ez a végpont-észlelési és-válasz (EDR) termék a 2019-as, a **Microsoft Defender ATP**-ként lett átnevezve.
 >
-> A Ignite 2020-on elindítottuk a [Microsoft DEFENDER XDR Suite](https://www.microsoft.com/security/business/threat-protection) -ot, és ez a EDR-összetevő a **Microsoft Defender for Endpoint**névre lett átnevezve.
+> A Ignite 2020-on elindítottuk a [Microsoft DEFENDER XDR Suite](https://www.microsoft.com/security/business/threat-protection) -ot, és ez a EDR-összetevő a **Microsoft Defender for Endpoint** névre lett átnevezve.
 
 
 ## <a name="availability"></a>Rendelkezésre állás
@@ -42,10 +42,10 @@ A Microsoft Defender for Endpoint egy holisztikus, felhőalapú végponti bizton
 |---------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Kiadás állapota:                  | Általánosan elérhető (GA)                                                                                                                                                                                                                                                                                      |
 | Árképzési                        | [Az Azure Defender for Servers](security-center-pricing.md) használatát igényli                                                                                                                                                                                                                                             |
-| Támogatott platformok:            | ![Igen](./media/icons/yes-icon.png) Windows rendszerű Azure-gépek<br>![Igen](./media/icons/yes-icon.png) Windows rendszerű Azure arc-gépek|
+| Támogatott platformok:            | ![Yes](./media/icons/yes-icon.png) Windows rendszerű Azure-gépek<br>![Yes](./media/icons/yes-icon.png) Windows rendszerű Azure arc-gépek|
 | A Windows támogatott verziói:  | Az Endpoint védője a Windows 10 1703 (és újabb) és a Windows Server 2019 rendszerbe van építve.<br>A Security Center támogatja az észlelést a Windows Server 2016, 2012 R2 és 2008 R2 SP1 rendszeren.<br>A kiszolgálói végpont monitorozása ezzel az integrációval le lett tiltva az Office 365 GCC-ügyfelek számára. |
-| Szükséges szerepkörök és engedélyek: | Az integráció engedélyezése/letiltása: **biztonsági rendszergazda** vagy **tulajdonos**<br>MDATP-riasztások megtekintése a Security Center-ben: **biztonsági olvasó**, **olvasó**, **erőforráscsoport-közreműködő**, **erőforráscsoport-tulajdonos**, **biztonsági rendszergazda**, **előfizetés tulajdonosa**vagy **előfizetéshez tartozó közreműködő**                         |
-| Felhők                         | ![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők.<br>![Nem](./media/icons/no-icon.png) A munkaterheléseket futtató GCC-ügyfelek a globális Azure-felhőkben<br>![Igen](./media/icons/yes-icon.png) US Gov<br>![Nem](./media/icons/no-icon.png) Kínai gov, egyéb gov                                                        |
+| Szükséges szerepkörök és engedélyek: | Az integráció engedélyezése/letiltása: **biztonsági rendszergazda** vagy **tulajdonos**<br>MDATP-riasztások megtekintése a Security Center-ben: **biztonsági olvasó**, **olvasó**, **erőforráscsoport-közreműködő**, **erőforráscsoport-tulajdonos**, **biztonsági rendszergazda**, **előfizetés tulajdonosa** vagy **előfizetéshez tartozó közreműködő**                         |
+| Felhők                         | ![Yes](./media/icons/yes-icon.png) Kereskedelmi felhők.<br>![No](./media/icons/no-icon.png) A munkaterheléseket futtató GCC-ügyfelek a globális Azure-felhőkben<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Kínai gov, egyéb gov                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
 
 
@@ -61,9 +61,9 @@ A Microsoft Defender for Endpoint a következőket biztosítja:
 
 A Defender Security Center-nal való integrálásával a következő kiegészítő képességeket veheti igénybe:
 
-- **Automatizált**előkészítés. A Security Center automatikusan engedélyezi a Microsoft Defender for Endpoint Sensor használatát a Security Center által figyelt összes Windows-kiszolgáló esetében (kivéve, ha a Windows Server 2019 rendszert futtatják).
+- **Automatizált** előkészítés. A Security Center automatikusan engedélyezi a Microsoft Defender for Endpoint Sensor használatát a Security Center által figyelt összes Windows-kiszolgálóhoz. A Windows Server 2019 rendszert futtatók kivételével, amelyeket helyi parancsfájllal, Csoportházirend objektummal (GPO) vagy a [Microsoft Endpoint Configuration Manager](https://docs.microsoft.com/mem/configmgr/) (korábban SCCM) kell bevezetni.
 
-- **Egyetlen**üvegtábla. A Security Center-konzolon a Microsoft Defender for Endpoint riasztások jelennek meg. További vizsgálathoz használja a Microsoft Defendert a végpont saját portáljának oldalain, ahol további információkat talál, például a riasztási folyamat fáját és az incidens diagramot. Megtekintheti a részletes gépi idővonalat is, amely egy 6 hónapos időszakra visszamenőlegesen mutatja be az összes viselkedést.
+- **Egyetlen** üvegtábla. A Security Center-konzolon a Microsoft Defender for Endpoint riasztások jelennek meg. További vizsgálathoz használja a Microsoft Defendert a végpont saját portáljának oldalain, ahol további információkat talál, például a riasztási folyamat fáját és az incidens diagramot. Megtekintheti a részletes gépi idővonalat is, amely egy 6 hónapos időszakra visszamenőlegesen mutatja be az összes viselkedést.
 
     :::image type="content" source="./media/security-center-wdatp/microsoft-defender-security-center.png" alt-text="A Microsoft Defender a végpont saját Security Center" lightbox="./media/security-center-wdatp/microsoft-defender-security-center.png":::
 
@@ -82,12 +82,12 @@ A hely konfigurálása után nem módosítható. Ha át kell helyeznie az adatai
     > Az Azure arc-kompatibilis gépek biztonsága érdekében kövesse a következő témakör utasításait [: hibrid gép összekapcsolása Azure arc-kompatibilis kiszolgálókkal](../azure-arc/servers/learn/quick-enable-hybrid-vm.md).
 
 1. Ha már licencelte és telepítette a Microsoft Defendert a kiszolgálókon a végpontokhoz, távolítsa el azt a [regisztrációjának megszüntetésére szolgáló Windows Servers](/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints#offboard-windows-servers)című témakörben leírt eljárással.
-1. A Security Center menüjében válassza a **díjszabás & beállítások**lehetőséget.
+1. A Security Center menüjében válassza a **díjszabás & beállítások** lehetőséget.
 1. Válassza ki a módosítani kívánt előfizetést.
-1. Válassza a **veszélyforrások észlelése**lehetőséget.
-1. Jelölje be **az adathozzáférés engedélyezése a Microsoft Defender számára a végpont számára**lehetőséget, majd válassza a **Mentés**lehetőséget.
+1. Válassza a **veszélyforrások észlelése** lehetőséget.
+1. Jelölje be **az adathozzáférés engedélyezése a Microsoft Defender számára a végpont számára** lehetőséget, majd válassza a **Mentés** lehetőséget.
 
-    :::image type="content" source="./media/security-center-wdatp/enable-integration-with-edr.png" alt-text="A Microsoft Defender a végpont saját Security Center":::
+    :::image type="content" source="./media/security-center-wdatp/enable-integration-with-edr.png" alt-text="Az integráció engedélyezése Azure Security Center és a Microsoft EDR megoldása, a Microsoft Defender for Endpoint":::
 
     A Azure Security Center automatikusan előkészíti a kiszolgálókat a Microsoft Defender számára a végponthoz. A bevezetést akár 24 óráig is eltarthat.
 
@@ -112,10 +112,10 @@ Jóindulatú Microsoft Defender létrehozása a végponti tesztelési riasztásh
     ```powershell
     powershell.exe -NoExit -ExecutionPolicy Bypass -WindowStyle Hidden (New-Object System.Net.WebClient).DownloadFile('http://127.0.0.1/1.exe', 'C:\\test-MDATP-test\\invoice.exe'); Start-Process 'C:\\test-MDATP-test\\invoice.exe'
     ```
-    :::image type="content" source="./media/security-center-wdatp/generate-edr-alert.png" alt-text="A Microsoft Defender a végpont saját Security Center":::
+    :::image type="content" source="./media/security-center-wdatp/generate-edr-alert.png" alt-text="Egy parancssori ablak, amely a parancs használatával teszt riasztást hoz elő.":::
 
 1. Ha a parancs sikeres, egy új riasztás jelenik meg a Azure Security Center irányítópulton és a Microsoft Defender for Endpoint portálon. Ez a riasztás néhány percet is igénybe vehet.
-1. A Security Center riasztásának áttekintéséhez lépjen a **biztonsági riasztások**  >  **gyanús PowerShell parancssori**elemre.
+1. A Security Center riasztásának áttekintéséhez lépjen a **biztonsági riasztások**  >  **gyanús PowerShell parancssori** elemre.
 1. A vizsgálat ablakban válassza ki a Microsoft Defender for Endpoint portálra mutató hivatkozást.
 
 
@@ -123,7 +123,7 @@ Jóindulatú Microsoft Defender létrehozása a végponti tesztelési riasztásh
 
 ### <a name="what-are-the-licensing-requirements-for-microsoft-defender-for-endpoint"></a>Milyen licencelési követelmények vonatkoznak a Microsoft Defender for Endpoint szolgáltatásra?
 
-Az **Azure Defender for Servers**szolgáltatáshoz nem tartozik további díj a Defender for Endpoint szolgáltatáshoz. Azt is megteheti, hogy külön megvásárolható a 50-es vagy újabb gépeken.
+Az **Azure Defender for Servers** szolgáltatáshoz nem tartozik további díj a Defender for Endpoint szolgáltatáshoz. Azt is megteheti, hogy külön megvásárolható a 50-es vagy újabb gépeken.
 
 
 ### <a name="how-do-i-switch-from-a-third-party-edr-tool"></a>Hogyan váltani egy külső gyártótól származó EDR eszközről?

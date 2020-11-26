@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: a5cb5831090987f1b620593843ddba817d8e68d4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 111b2b5b660133c20afdb3c56e1c3e3ed607398c
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188122"
+ms.locfileid: "96297059"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Verziókövetés az Azure szinapszis Studióban
 
@@ -30,17 +30,17 @@ A DevOps képesség biztosításához a szinapszis Studio lehetővé teszi, hogy
 
 ## <a name="configure-git-repository-in-synapse-studio"></a>A git-tárház konfigurálása a szinapszis Studióban 
 
-A szinapszis Studio elindítása után beállíthatja a git-tárházat a munkaterületen. A szinapszis Studio-munkaterületek egyszerre csak egy git-tárházhoz társíthatók. 
+A szinapszis Studio elindítása után beállíthatja a git-tárházat a munkaterületen. A szinapszis Studio-munkaterület egyszerre csak egy git-tárházhoz társítható. 
 
-### <a name="configuration-method-1-authoring-canvas"></a>1. konfigurációs módszer: szerzői vászon
+### <a name="configuration-method-1-global-bar"></a>1. konfigurációs módszer: globális sáv
 
-A szinapszis Studio authoring vásznon kattintson a **szinapszis élő** legördülő menüre, majd válassza a **kódlap beállítása** lehetőséget.
+A szinapszis Studio globális sávján kattintson a **szinapszis élő** legördülő menüre, majd válassza a **kódlap beállítása** lehetőséget.
 
 ![A kód-adattár beállításainak konfigurálása szerzői műveletekből](media/configure-repo-1.png)
 
 ### <a name="configuration-method-2-manage-hub"></a>2. konfigurációs módszer: a hub kezelése
 
-Nyissa meg a szinapszis Studio felügyeleti központját. Válassza a **git-konfiguráció** elemet a **verziókövetés** szakaszban. Ha nincs csatlakoztatva adattár, kattintson a **Konfigurálás** elemre.
+Nyissa meg a szinapszis Studio felügyelet központját. Válassza a **git-konfiguráció** elemet a **verziókövetés** szakaszban. Ha nincs csatlakoztatva adattár, kattintson a **Konfigurálás** elemre.
 
 ![A Code adattár beállításainak konfigurálása a felügyeleti központban](media/configure-repo-2.png)
 
@@ -51,7 +51,7 @@ A munkaterületen az Azure DevOps vagy a GitHub git-tárházat is csatlakozhat.
 
 ## <a name="connect-with-azure-devops-git"></a>Kapcsolódjon az Azure DevOps git-vel 
 
-A szinapszis-munkaterületet társíthatja egy Azure DevOps adattárral a verziókövetés, az együttműködés, a verziószámozás és így tovább. Ha nem rendelkezik Azure DevOps adattárral, kövesse az [alábbi utasításokat](/azure/devops/organizations/accounts/create-organization-msa-or-work-student) az adattár-erőforrások első létrehozásához.
+A szinapszis-munkaterületet társíthatja egy Azure DevOps adattárral a verziókövetés, az együttműködés, a verziószámozás és így tovább. Ha nem rendelkezik Azure DevOps adattárral, a tárház erőforrásainak létrehozásához kövesse az [alábbi utasításokat](/azure/devops/organizations/accounts/create-organization-msa-or-work-student) .
 
 ### <a name="azure-devops-git-repository-settings"></a>Az Azure DevOps git-tárházának beállításai
 
@@ -94,7 +94,7 @@ Ha személyes Microsoft-fiók szeretne használni a git-integrációhoz, összek
 
 Ezeket a konfigurációs lépéseket követően a saját tárháza akkor érhető el, ha git-integrációt állít be a szinapszis Studióban.
 
-Az Azure Repos szervezete Active Directoryhoz való csatlakoztatásával kapcsolatos további információkért lásd: [Az Azure DevOps-szervezet csatlakoztatása Azure Active Directoryhoz](/azure/devops/organizations/accounts/connect-organization-to-azure-ad).
+További információ az Azure Repos szervezet Active Directoryhoz való csatlakoztatásáról: [a szervezet csatlakoztatása Azure Active Directoryhoz](/azure/devops/organizations/accounts/connect-organization-to-azure-ad).
 
 ## <a name="connect-with-github"></a>Kapcsolódjon a GitHubhoz 
 

@@ -3,12 +3,12 @@ title: Tudnivalók az Azure-beli virtuális gépeken SAP HANA adatbázis biztons
 description: Ez a cikk az Azure Virtual Machines szolgáltatásban futó SAP HANA adatbázisok biztonsági mentését ismerteti.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: e30510817401fd8db23dc9f1d62fab495fac7ab2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efb9c3f786e429df404e261f053a9c9a9b032e11
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022309"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296454"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>Tudnivalók az Azure-beli virtuális gépeken SAP HANA adatbázis biztonsági mentéséről
 
@@ -21,7 +21,7 @@ Azure Backup az SAP által [tanúsított Backint](https://www.sap.com/dmc/exp/20
 SAP HANA adatbázisok biztonsági mentése és visszaállítása Azure Backup használatával a következő előnyöket nyújtja:
 
 * **15 perces helyreállítási időkorlát (RPO)**: már lehetséges a kritikus adatmennyiség 15 percen belüli helyreállítása.
-* **Egykattintásos, időponthoz**tartozó visszaállítások: a termelési és az alternatív HANA-kiszolgálókra történő biztonsági mentés egyszerűen elvégezhető. A biztonsági mentések és a katalógusok a visszaállítások elvégzéséhez való láncolása mind az Azure által a színfalak mögött van kezelve.
+* **Egykattintásos, időponthoz** tartozó visszaállítások: a termelési és az alternatív HANA-kiszolgálókra történő biztonsági mentés egyszerűen elvégezhető. A biztonsági mentések és a katalógusok a visszaállítások elvégzéséhez való láncolása mind az Azure által a színfalak mögött van kezelve.
 * **Hosszú távú adatmegőrzés**: szigorú megfelelőségi és naplózási igények. Megtarthatja a biztonsági mentéseket évekig, a megőrzési időtartam alapján, amelyen keresztül a helyreállítási pontokat automatikusan metszi a beépített életciklus-kezelési képesség.
 * **Biztonsági mentési felügyelet az Azure-ból**: Azure Backup felügyeleti és figyelési képességeinek használata a jobb felügyeleti élmény érdekében. Az Azure CLI-t is támogatja.
 
@@ -51,7 +51,7 @@ A jelenleg támogatott biztonsági mentési és visszaállítási forgatókönyv
 
 * A **HANA Azure Backup beépülő modulja** fenntartja az összes biztonsági mentési ütemtervet és házirend-részletet. Elindítja az ütemezett biztonsági mentéseket, és a Backint API-kon keresztül kommunikál a **HANA Backup motorral** .
 * A **HANA Backup motor** egy Backint-adatfolyamot ad vissza a biztonsági mentésre szolgáló adatokkal.
-* Az összes ütemezett biztonsági mentést és igény szerinti biztonsági mentést (a Azure Portalból kiváltott) a **HANA Azure Backup beépülő modulja**kezdeményezi. A naplók biztonsági mentését azonban a **HANA Backup motor** felügyeli és aktiválja.
+* Az összes ütemezett biztonsági mentést és igény szerinti biztonsági mentést (a Azure Portalból kiváltott) a **HANA Azure Backup beépülő modulja** kezdeményezi. A naplók biztonsági mentését azonban a **HANA Backup motor** felügyeli és aktiválja.
 * A SAP HANA számára Azure Backup BackInt tanúsított megoldás, nem függ a mögöttes lemez-vagy virtuálisgép-típustól. A biztonsági mentést a HANA által generált streamek végzik.
 
 ## <a name="using-azure-vm-backup-with-azure-sap-hana-backup"></a>Azure-beli virtuális gépek biztonsági mentésének használata az Azure SAP HANA Backup szolgáltatással
@@ -60,15 +60,12 @@ Az adatbázis-szintű biztonsági mentést és helyreállítást biztosító Azu
 
 Az [Backint Certified Azure SAP HANA biztonsági mentési megoldás](#backup-architecture) használható az adatbázisok biztonsági mentéséhez és helyreállításához.
 
-Az Azure-beli [virtuális gépek biztonsági mentése](backup-azure-vms-introduction.md) az operációs rendszer és az egyéb nem adatbázis-lemezek biztonsági mentésére is használható. A virtuális gép biztonsági mentését naponta egyszer kell elvégezni, és az összes lemezről biztonsági másolatot készít (kivéve **írásgyorsító (WA) lemezeket** és **Ultra lemezeket**). Mivel az adatbázis biztonsági mentése az Azure SAP HANA Backup megoldás használatával történik, az Azure-beli [virtuális gépek funkcióinak szelektív lemezes biztonsági mentésével és visszaállításával](selective-disk-backup-restore.md) csak az operációs rendszer és a nem adatbázis típusú lemezekről készíthet biztonsági mentést.
-
->[!NOTE]
-> Az Azure-beli virtuális gép biztonsági mentés előtti parancsfájlokkal való használata lehetővé teszi, hogy az alkalmazás konzisztens biztonsági mentést készítsen az adatbázis adatköteteiről. Ha azonban a naplózási terület a WA-lemezeken található, akkor a lemezek pillanatképe nem garantálja a naplózási terület konzisztenciáját. A HANA explicit módon hozza létre a naplók biztonsági másolatait erre a pontos indokra. Engedélyezze ugyanezt a SAP HANAban, és biztonsági mentést készíthet az Azure SAP HANA Backup használatával.
+Az Azure-beli [virtuális gépek biztonsági mentése](backup-azure-vms-introduction.md) az operációs rendszer és az egyéb nem adatbázis-lemezek biztonsági mentésére is használható. A virtuális gép biztonsági mentését naponta egyszer kell elvégezni, és az összes lemezről biztonsági másolatot készít (kivéve **írásgyorsító (WA) operációsrendszer-lemezeket** és **Ultra lemezeket**). Mivel az adatbázis biztonsági mentése az Azure SAP HANA Backup megoldás használatával történik, az Azure-beli [virtuális gépek funkcióinak szelektív lemezes biztonsági mentésével és visszaállításával](selective-disk-backup-restore.md) csak az operációs rendszer és a nem adatbázis típusú lemezekről készíthet biztonsági mentést.
 
 SAP HANA rendszert futtató virtuális gép visszaállításához kövesse az alábbi lépéseket:
 
 * [Új virtuális gép visszaállítása az Azure virtuális gép biztonsági másolatából](backup-azure-arm-restore-vms.md) a legújabb helyreállítási pontról. Vagy hozzon létre egy új üres virtuális gépet, és csatolja a lemezeket a legújabb helyreállítási ponthoz.
-* Mivel a WA-lemezek nem rendelkeznek biztonsági mentéssel, a rendszer nem állítja vissza őket. Hozzon létre üres WA-lemezeket és naplózási területeket.
+* Ha a WA-lemezek ki vannak zárva, azok nem állíthatók vissza. Ebben az esetben hozzon létre üres WA-lemezeket és naplózási területeket.
 * Miután az összes többi konfiguráció (például az IP, a rendszer neve stb.) be van állítva, a virtuális gép a Azure Backup adatbázis-adatok fogadására van beállítva.
 * Most állítsa vissza az adatbázist a virtuális gépre az [Azure SAP HANA db biztonsági másolatból](sap-hana-db-restore.md#restore-to-a-point-in-time-or-to-a-recovery-point) a kívánt időpontra.
 
