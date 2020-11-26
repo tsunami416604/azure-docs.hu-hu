@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
-ms.openlocfilehash: 223f3e45f25e3aed3ed6fa15e5b9ea04b17f6c59
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 205cc6eea5d1ac3be2d0e266621067dc8e20d2f9
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023908"
+ms.locfileid: "96121751"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>Adatok összekötése a veszélyforrások felderítését biztosító szolgáltatóktól
 
@@ -56,6 +56,11 @@ A veszélyforrások indikátorait az Azure Sentinel szolgáltatásba továbbíth
 
     További információ: [ThreatConnect-integrációk](https://threatconnect.com/integrations/) és a Microsoft Graph Security API használata az oldalon.
 
+- [EclecticIQ platform](https://www.eclecticiq.com/solutions)
+
+- [ThreatQ fenyegetések intelligencia platform](https://www.threatq.com/)
+
+    További információ és útmutatás: a [Microsoft Sentinel Connector a ThreatQ-integrációhoz](https://appsource.microsoft.com/product/web-apps/threatquotientinc1595345895602.microsoft-sentinel-connector-threatq?src=health&tab=Overview).
 
 ## <a name="connect-azure-sentinel-to-your-threat-intelligence-platform"></a>Az Azure Sentinel összekapcsolhatók a veszélyforrások elleni intelligencia platformmal
 
@@ -109,7 +114,7 @@ A veszélyforrások indikátorait az Azure Sentinel szolgáltatásba továbbíth
 
 6. Az Azure sentinelbe importált veszélyforrások mutatóinak megtekintéséhez navigáljon az **Azure Sentinel-logs**  >  **SecurityInsights**, majd bontsa ki a **ThreatIntelligenceIndicator** csomópontot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható a veszélyforrások elleni intelligencia szolgáltatója az Azure Sentinelhez. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket.
 

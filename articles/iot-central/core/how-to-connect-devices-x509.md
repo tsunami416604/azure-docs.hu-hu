@@ -8,22 +8,22 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 33d837f63fca2062ec930fcf0d64ee01ea822c99
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: d36cf2344891bb70ab5499e77699b111429a936b
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94989530"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96121824"
 ---
 # <a name="how-to-connect-devices-with-x509-certificates-using-nodejs-device-sdk-for-iot-central-application"></a>X. 509 tanúsítvánnyal rendelkező eszközök csatlakoztatása a IoT Central alkalmazáshoz készült Node.js eszközoldali SDK-val
 
-IoT Central támogatja a közös hozzáférésű aláírások (SAS) és az X. 509 tanúsítványok használatát az eszköz és az alkalmazás közötti kommunikáció biztonságossá tételéhez. Az [ügyfélalkalmazás létrehozása és összekapcsolása az Azure IoT Central Application](./tutorial-connect-device-nodejs.md) oktatóanyagban sas-t használ. Ebből a cikkből megtudhatja, hogyan módosíthatja a kód mintát az X. 509 használatára.  Az X. 509 tanúsítványokat éles környezetekben ajánlott használni. További információ: [Csatlakozás az Azure IoT Centralhoz](./concepts-get-connected.md).
+IoT Central támogatja a közös hozzáférésű aláírások (SAS) és az X. 509 tanúsítványok használatát az eszköz és az alkalmazás közötti kommunikáció biztonságossá tételéhez. Az [ügyfélalkalmazás létrehozása és összekapcsolása az Azure IoT Central Application](./tutorial-connect-device.md) oktatóanyagban sas-t használ. Ebből a cikkből megtudhatja, hogyan módosíthatja a kód mintát az X. 509 használatára.  Az X. 509 tanúsítványokat éles környezetekben ajánlott használni. További információ: [Csatlakozás az Azure IoT Centralhoz](./concepts-get-connected.md).
 
 Ez a cikk két módszert mutat be az X. 509 – [csoportos regisztrációk](how-to-connect-devices-x509.md#use-a-group-enrollment) jellemzően éles környezetben való használatát, valamint a teszteléshez hasznos [Egyéni regisztrációkat](how-to-connect-devices-x509.md#use-an-individual-enrollment) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [Ügyfélalkalmazás létrehozásának és összekapcsolásának befejezése az Azure IoT Central Application (Node.js)](./tutorial-connect-device-nodejs.md) oktatóanyagban.
+- [Ügyfélalkalmazás létrehozásának és összekapcsolásának befejezése az Azure IoT Central Application (JavaScript)](./tutorial-connect-device.md) oktatóanyagban.
 - [Git](https://git-scm.com/download/).
 - Töltse le és telepítse az [OpenSSL](https://www.openssl.org/)-t. Ha Windows rendszert használ, a fájlok a [SourceForge-on lévő OpenSSL lapról](https://sourceforge.net/projects/openssl/)is használhatók.
 
@@ -97,7 +97,7 @@ A beléptetési csoport mentése után jegyezze fel az azonosító hatókörét.
 
 ## <a name="run-sample-device-code"></a>Minta eszköz kódjának futtatása
 
-1. Másolja a **sampleDevice01_key. PEM** és **sampleDevice01_cert. PEM** fájlokat az _Azure-IOT-SDK-Node/Device/Samples/PnP_ mappába, amely tartalmazza a **simple_thermostat.js** alkalmazást. Ezt az alkalmazást az [eszköz csatlakoztatása (Node.js) oktatóanyag](./tutorial-connect-device-nodejs.md)befejezése után használta.
+1. Másolja a **sampleDevice01_key. PEM** és **sampleDevice01_cert. PEM** fájlokat az _Azure-IOT-SDK-Node/Device/Samples/PnP_ mappába, amely tartalmazza a **simple_thermostat.js** alkalmazást. Ezt az alkalmazást az [eszköz csatlakoztatása (JavaScript) oktatóanyag](./tutorial-connect-device.md)befejezése után használta.
 
 1. Navigáljon az _Azure-IOT-SDK-Node/Device/Samples/PnP_ mappára, amely tartalmazza a **simple_thermostat.js** alkalmazást, és futtassa a következő parancsot az X. 509 csomag telepítéséhez:
 
@@ -149,7 +149,7 @@ A beléptetési csoport mentése után jegyezze fel az azonosító hatókörét.
     ```
 
     > [!TIP]
-    > A többi szükséges környezeti változót akkor kell beállítania, amikor végrehajtotta az [ügyfélalkalmazás létrehozása és összekötése az Azure IoT Central alkalmazáshoz](./tutorial-connect-device-nodejs.md) oktatóanyagot.
+    > A többi szükséges környezeti változót akkor kell beállítania, amikor végrehajtotta az [ügyfélalkalmazás létrehozása és összekötése az Azure IoT Central alkalmazáshoz](./tutorial-connect-device.md) oktatóanyagot.
 
 1. Futtassa a szkriptet, és győződjön meg róla, hogy az eszközt sikeresen kiosztották:
 
@@ -197,7 +197,7 @@ Az eszköz most már X. 509 tanúsítvánnyal lett kiépítve.
 
 ## <a name="run-a-sample-individual-enrollment-device"></a>Minta egyéni beléptetési eszköz futtatása
 
-1. Másolja a _mytestselfcertprimary_key. PEM_ és _mytestselfcertprimary_cert. PEM_ fájlokat az _Azure-IOT-SDK-Node/Device/Samples/PnP_ mappába, amely tartalmazza a **simple_thermostat.js** alkalmazást. Ezt az alkalmazást az [eszköz csatlakoztatása (Node.js) oktatóanyag](./tutorial-connect-device-nodejs.md)befejezése után használta.
+1. Másolja a _mytestselfcertprimary_key. PEM_ és _mytestselfcertprimary_cert. PEM_ fájlokat az _Azure-IOT-SDK-Node/Device/Samples/PnP_ mappába, amely tartalmazza a **simple_thermostat.js** alkalmazást. Ezt az alkalmazást az [eszköz csatlakoztatása (JavaScript) oktatóanyag](./tutorial-connect-device.md)befejezése után használta.
 
 1. Módosítsa a következő módon használt környezeti változókat:
 
