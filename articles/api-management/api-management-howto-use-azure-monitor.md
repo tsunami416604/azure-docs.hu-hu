@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 2317e61111c3ad328e8f112e7d9567f3f5d47990
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 031b3bfd30e0272589c5c7ee2c546b9459767b33
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997043"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183192"
 ---
 # <a name="tutorial-monitor-published-apis"></a>Oktatóanyag: közzétett API-k figyelése
 
@@ -149,7 +149,7 @@ Ha engedélyezi a GatewayLogs vagy metrikák gyűjtését egy Log Analytics munk
 
     :::image type="content" source="media/api-management-howto-use-azure-monitor/logs-menu-item.png" alt-text="Képernyőfelvétel a figyelési menüben található naplók elemről":::
 
-Lekérdezések futtatása az adatmegjelenítéshez. Több [minta lekérdezés](../azure-monitor/log-query/saved-queries.md) van megadva, vagy saját maga futtathatja. A következő lekérdezés például lekéri a legutóbbi 24 órás adatmennyiséget a GatewayLogs táblából:
+Lekérdezések futtatása az adatmegjelenítéshez. Több [minta lekérdezés](../azure-monitor/log-query/example-queries.md) van megadva, vagy saját maga futtathatja. A következő lekérdezés például lekéri a legutóbbi 24 órás adatmennyiséget a GatewayLogs táblából:
 
 ```kusto
 ApiManagementGatewayLogs
@@ -158,7 +158,7 @@ ApiManagementGatewayLogs
 
 További információ a API Management erőforrás-naplóinak használatáról:
 
-* Ismerkedjen meg [Azure Monitor log Analyticsval](../azure-monitor/log-query/get-started-portal.md), vagy próbálja ki a [log Analytics bemutató környezetét](https://portal.loganalytics.io/demo).
+* Ismerkedjen meg [Azure Monitor log Analyticsval](../azure-monitor/log-query/log-analytics-tutorial.md), vagy próbálja ki a [log Analytics bemutató környezetét](https://portal.loganalytics.io/demo).
 
 * [A Azure monitor lévő naplók áttekintése](../azure-monitor/log-query/log-query-overview.md).
 

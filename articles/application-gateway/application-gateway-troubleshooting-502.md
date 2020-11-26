@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: fd1ca218d9c079e26f8424a36b90b9b657690b41
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: d44f9109540c3899ab50bd5c4c02afa19045bafb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397705"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182937"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Hibás átjárókkal kapcsolatos hibák elhárítása az Application Gatewayben
 
@@ -95,7 +95,7 @@ A következő táblázat felsorolja az alapértelmezett állapot-mintavételhez 
 * Ha a Backendhttpsetting értékre a 80-től eltérő portot ad meg, az alapértelmezett helyet úgy kell konfigurálni, hogy figyelje a portot.
 * A hívásnak az 200-es `http://127.0.0.1:port` http-eredmény kódját kell visszaadnia. Ezt vissza kell adni a 30 másodperces időkorlát alatt.
 * Győződjön meg arról, hogy a konfigurált port meg van nyitva, és nincsenek tűzfalszabályok vagy Azure hálózati biztonsági csoportok, amelyek letiltják a bejövő vagy kimenő forgalmat a konfigurált porton.
-* Ha a klasszikus Azure-beli virtuális gépeket vagy a felhőalapú szolgáltatást teljes tartománynévvel vagy nyilvános IP-címmel használja, győződjön meg arról, hogy a megfelelő [végpont](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints?toc=%252fazure%252fapplication-gateway%252ftoc.json) meg van nyitva.
+* Ha a klasszikus Azure-beli virtuális gépeket vagy a felhőalapú szolgáltatást teljes tartománynévvel vagy nyilvános IP-címmel használja, győződjön meg arról, hogy a megfelelő [végpont](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints?toc=%2fazure%2fapplication-gateway%2ftoc.json) meg van nyitva.
 * Ha a virtuális gép Azure Resource Manageron keresztül van konfigurálva, és azon a VNet kívül esik, amelyen az Application Gateway telepítve van, úgy kell konfigurálni egy [hálózati biztonsági csoportot](../virtual-network/network-security-groups-overview.md) , hogy engedélyezze a hozzáférést a kívánt porton.
 
 ## <a name="problems-with-custom-health-probe"></a>Problémák az egyéni állapotú mintavételsel
@@ -108,7 +108,7 @@ A következő további tulajdonságokat adja hozzá a rendszer:
 
 | Mintavételi tulajdonság | Leírás |
 | --- | --- |
-| Név |A mintavétel neve. Ez a név szolgál a mintavételre a háttérbeli HTTP-beállításokban. |
+| Name (Név) |A mintavétel neve. Ez a név szolgál a mintavételre a háttérbeli HTTP-beállításokban. |
 | Protokoll |A mintavétel küldéséhez használt protokoll. A mintavétel a háttérbeli HTTP-beállításokban definiált protokollt használja. |
 | Gazdagép |A mintavétel elküldésére szolgáló állomásnév. Csak akkor alkalmazható, ha több hely van konfigurálva az Application gatewayben. Ez különbözik a virtuális gép gazdagépének nevétől. |
 | Elérési út |A mintavétel relatív elérési útja. Az érvényes elérési út "/" karakterrel kezdődik. A mintavétel a \<protocol\> :// \<host\> :\<port\>\<path\> |
@@ -192,6 +192,6 @@ Ha a BackendAddressPool összes példánya nem kifogástalan állapotú, akkor a
 
 Ellenőrizze, hogy a példányok állapota Kifogástalan-e, és hogy az alkalmazás megfelelően van-e konfigurálva. Ellenőrizze, hogy a háttérbeli példányok tudnak-e válaszolni a pingelésre egy másik virtuális gépről ugyanabban a VNet. Ha nyilvános végponttal van konfigurálva, győződjön meg arról, hogy a webalkalmazáshoz tartozó böngésző-kérelem szervizelhető.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a fenti lépések nem oldják meg a problémát, nyisson meg egy [támogatási jegyet](https://azure.microsoft.com/support/options/).

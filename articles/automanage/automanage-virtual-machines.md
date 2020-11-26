@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: a51a4a95d3580912d9b727d1580e6f278831f677
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: ffbf3fa3e2d404b7bc5888ef01707cbd816600b3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891502"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182852"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure-beli automata felügyelet virtuális gépeken
 
@@ -28,7 +28,7 @@ Ez a cikk a virtuális gépek Azure-beli autofelügyeletével kapcsolatos inform
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure-beli automatikus felügyelet virtuális gépeken olyan szolgáltatás, amely kiküszöböli a bevezetést, a bevezetést és az Azure-ban olyan szolgáltatások konfigurálását, amelyek hasznosak a virtuális gép számára. Ezek a szolgáltatások segítenek a virtuális gépek megbízhatóságának, biztonságának és kezelésének javításában, és az Azure ajánlott eljárásokat szolgáló szolgáltatásai, például az [azure Update Management](../automation/update-management/update-mgmt-overview.md) és az [Azure Backup](../backup/backup-overview.md) – csak hogy csak néhányat említsünk.
+Az Azure-beli automatikus felügyelet virtuális gépeken olyan szolgáltatás, amely kiküszöböli a bevezetést, a bevezetést és az Azure-ban olyan szolgáltatások konfigurálását, amelyek hasznosak a virtuális gép számára. Ezek a szolgáltatások segítenek a virtuális gépek megbízhatóságának, biztonságának és kezelésének javításában, és az Azure ajánlott eljárásokat szolgáló szolgáltatásai, például az [azure Update Management](../automation/update-management/overview.md) és az [Azure Backup](../backup/backup-overview.md) – csak hogy csak néhányat említsünk.
 
 Miután bevezette a virtuális gépeket az Azure automatikus felügyelet szolgáltatásba, automatikusan konfigurálja az egyes ajánlott eljárásokat a javasolt beállításokhoz. Az ajánlott eljárások az egyes szolgáltatások esetében eltérőek. Lehetséges például, hogy Azure Backup, ahol az ajánlott eljárás a virtuális gép biztonsági mentése naponta egyszer, a megőrzési időtartam pedig hat hónap.
 
@@ -69,7 +69,7 @@ Az összes ilyen szolgáltatás esetében automatikusan bevezetést, automatikus
 
 A Azure Portalban engedélyezheti a meglévő virtuális gépeken a felügyeletet, vagy új virtuális gép létrehozásakor. A folyamat tömör lépéseihez tekintse meg a [virtuális gépekkel kapcsolatos](quick-create-virtual-machines-portal.md)gyors útmutató című témakört.
 
-Ha első alkalommal engedélyezi a virtuális gép autofelügyeletét, a Azure Portal kereshet az **automanage – Azure virtuális gépek ajánlott eljárásaiban** . Kattintson a **meglévő virtuális gép engedélyezése** lehetőségre, válassza ki a bevezetni kívánt virtuális gépeket, kattintson a **kiválasztás** , majd az **Engedélyezés** elemre, és készen áll.
+Ha első alkalommal engedélyezi a virtuális gép autofelügyeletét, a Azure Portal kereshet az **automanage – Azure virtuális gépek ajánlott eljárásaiban**. Kattintson a **meglévő virtuális gép engedélyezése** lehetőségre, válassza ki a bevezetni kívánt virtuális gépeket, kattintson a **kiválasztás**, majd az **Engedélyezés** elemre, és készen áll.
 
 Előfordulhat, hogy a virtuális géppel való kommunikációra csak akkor van szükség, ha a virtuális gépet szervizelni próbáltuk, de ezt a szolgáltatást nem sikerült kijavítani. Ha sikeresen szervizeljük a virtuális gépet, akkor még a riasztás nélkül visszatesszük a megfelelőséget.
 
@@ -114,7 +114,7 @@ Ha a virtuális gépeken engedélyezi az automanage funkciót, az Azure Portal-�
 
 A Azure Portal nyissa meg az automatikus **kezelés – Azure virtuális gépek ajánlott eljárásai** lapot, amely felsorolja az összes automatikusan felügyelt virtuális gépet. Itt láthatja az egyes virtuális gépek általános állapotát.
 
-:::image type="content" source="media\automanage-virtual-machines\configured-status.png" alt-text="Intelligensen integrált szolgáltatások.":::
+:::image type="content" source="media\automanage-virtual-machines\configured-status.png" alt-text="A konfigurált virtuális gépek listája.":::
 
 Az egyes felsorolt virtuális gépeknél a következő részletek jelennek meg: név, konfigurációs profil, konfigurációs preferencia, állapot, fiók, előfizetés és erőforráscsoport.
 
@@ -132,7 +132,7 @@ Dönthet úgy is, hogy egy nap elteltével letiltja az automanage szolgáltatás
 
 Ehhez a Azure Portal nyissa meg az automatikus **kezelés – Azure virtuális gépek ajánlott eljárásai** lapot, amely felsorolja az összes automatikusan felügyelt virtuális gépet. Jelölje be az **automanagement** szolgáltatásból letiltani kívánt virtuális gép melletti jelölőnégyzetet, majd kattintson az önfelügyelet letiltása gombra.
 
-:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="Intelligensen integrált szolgáltatások.":::
+:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="A virtuális gépeken az automanage szolgáltatás letiltása.":::
 
 A **Letiltás** előtt olvassa el figyelmesen az üzenetküldést az eredményül kapott előugró ablakban.
 

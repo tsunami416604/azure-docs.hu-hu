@@ -7,12 +7,12 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: apimpm
-ms.openlocfilehash: 92d108304f788279a636b1dc5e1c4e6c103ede3d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 62f163b9ce649cd5ddb52b4325682570633dfb92
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088879"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183158"
 ---
 # <a name="cicd-for-api-management-using-azure-resource-manager-templates"></a>CI/CD API Management Azure Resource Manager sablonok használatával
 
@@ -36,19 +36,19 @@ A következő ábra a javasolt megközelítést mutatja be.
 
 :::image type="content" source="media/devops-api-development-templates/apim-devops.png" alt-text="Diagram, amely a DevOps mutatja API Management.":::
 
-Ebben a példában két központi telepítési környezet létezik: a *fejlesztés* és a *gyártás* . Mindegyiknek saját API Management példánya van. 
+Ebben a példában két központi telepítési környezet létezik: a *fejlesztés* és a *gyártás*. Mindegyiknek saját API Management példánya van. 
 
 * Az API-fejlesztők hozzáférhetnek a fejlesztési példányhoz, és használhatják az API-k fejlesztéséhez és teszteléséhez. 
 * Az *API-közzétevők* nevű kijelölt csapat kezeli az üzemi példányt.
 
-Ennek a javasolt megközelítésnek a kulcsa az összes API Management konfiguráció megtartása [Azure Resource Manager-sablonokban](../azure-resource-manager/resource-group-authoring-templates.md). A szervezetnek meg kell őriznie ezeket a sablonokat egy verziókövetés-rendszeren, például a git-ben. Ahogy az ábrán látható, a közzétevő adattár az éles API Management példány összes konfigurációját tartalmazza sablonok gyűjteményében:
+Ennek a javasolt megközelítésnek a kulcsa az összes API Management konfiguráció megtartása [Azure Resource Manager-sablonokban](../azure-resource-manager/templates/template-syntax.md). A szervezetnek meg kell őriznie ezeket a sablonokat egy verziókövetés-rendszeren, például a git-ben. Ahogy az ábrán látható, a közzétevő adattár az éles API Management példány összes konfigurációját tartalmazza sablonok gyűjteményében:
 
 |Sablon  |Leírás  |
 |---------|---------|
 |Szolgáltatássablon     | A API Management példány szolgáltatási szintjének konfigurációi, például az árképzési szint és az egyéni tartományok.         |
 |Megosztott sablonok     |  A API Management-példányok, például a csoportok, a termékek és a naplózók közös erőforrásai.    |
 |API-sablonok     |  API-k és alerőforrásaik konfigurációja: műveletek, házirendek, diagnosztikai beállítások.        |
-|Főkiszolgáló (fő) sablonja     |   A minden sablonhoz való csatolással és az azok sorrendjében történő üzembe helyezésével [összekapcsolja](../azure-resource-manager/resource-group-linked-templates.md) a kapcsolatot. Ha az összes konfigurációt egy API Management példányra szeretné telepíteni, telepítse a fő sablont. Az egyes sablonokat egyenként is üzembe helyezheti.       |
+|Főkiszolgáló (fő) sablonja     |   A minden sablonhoz való csatolással és az azok sorrendjében történő üzembe helyezésével [összekapcsolja](../azure-resource-manager/templates/linked-templates.md) a kapcsolatot. Ha az összes konfigurációt egy API Management példányra szeretné telepíteni, telepítse a fő sablont. Az egyes sablonokat egyenként is üzembe helyezheti.       |
 
 Az API-fejlesztők a közzétevő tárházat a fejlesztői tárházba fogják lefoglalni, és az API-k változásain dolgoznak. A legtöbb esetben az API-sablonokra összpontosítanak, és nem kell módosítaniuk a megosztott vagy a szolgáltatási sablonokat.
 

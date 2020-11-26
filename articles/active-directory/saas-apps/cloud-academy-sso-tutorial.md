@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 07/16/2020
 ms.author: jeedes
 ms.openlocfilehash: 822e28402d0b7829b835ad03a3b3cf7d05c3d343
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455807"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180999"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-cloud-academy---sso"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses integráció a Cloud Academy-vel – SSO
 
@@ -49,15 +49,15 @@ A Cloud Academy-SSO Azure AD-be való integrálásának konfigurálásához hozz
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók.
 1. A bal oldali panelen válassza az **Azure Active Directory** lehetőséget.
-1. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
-1. Alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. Lépjen a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás** lehetőséget.
+1. Alkalmazás hozzáadásához válassza az **új alkalmazás** lehetőséget.
 1. A **Hozzáadás a** katalógusból szakaszban adja meg a **Cloud Academy-SSO** kifejezést a keresőmezőbe.
 1. Válassza ki a **Cloud Academy-SSO** elemet az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 
 ## <a name="configure-and-test-azure-ad-sso-for-cloud-academy---sso"></a>Azure AD SSO konfigurálása és tesztelése a Cloud Academy-hez – SSO
 
-Az Azure AD SSO konfigurálását és tesztelését a Cloud Academy-SSO használatával végezheti el egy **B. Simon**nevű teszt felhasználó segítségével. Az SSO működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a hozzá tartozó felhasználó között a Cloud Academy-SSO-ban.
+Az Azure AD SSO konfigurálását és tesztelését a Cloud Academy-SSO használatával végezheti el egy **B. Simon** nevű teszt felhasználó segítségével. Az SSO működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a hozzá tartozó felhasználó között a Cloud Academy-SSO-ban.
 
 Az Azure AD SSO és a Cloud Academy-SSO konfigurálásához és teszteléséhez hajtsa végre a következő magas szintű lépéseket:
 
@@ -72,15 +72,15 @@ Az Azure AD SSO és a Cloud Academy-SSO konfigurálásához és teszteléséhez 
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a Azure Portalban:
 
-1. A [Azure Portal](https://portal.azure.com/)a **Cloud Academy-SSO** Application Integration oldalon, a **kezelés** szakaszban válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/)a **Cloud Academy-SSO** Application Integration oldalon, a **kezelés** szakaszban válassza az **egyszeri bejelentkezés** lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML** lehetőséget.
 1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon válassza az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza gombot a beállítások szerkesztéséhez:
 
    ![Képernyőkép, amely az alapszintű SAML-konfiguráció szerkesztésére szolgáló ceruza gombot mutatja.](common/edit-urls.png)
 
 1. Az **alapszintű SAML-konfiguráció** szakasz **bejelentkezési URL-címe** mezőjébe írja be a következőt: `https://cloudacademy.com/login/enterprise/` .
 
-1. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban válassza a másolás gombot az **alkalmazás-összevonási metaadatok URL-címének**másolásához. Mentse az URL-címet.
+1. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban válassza a másolás gombot az **alkalmazás-összevonási metaadatok URL-címének** másolásához. Mentse az URL-címet.
 
     ![Képernyőkép, amely az alkalmazás-összevonási metaadatok URL-címéhez tartozó másolás gombot jeleníti meg.](common/copy-metadataurl.png)
 
@@ -88,31 +88,31 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a Azure Portal
 
 Ebben a szakaszban egy B. Simon nevű teszt felhasználót hoz létre a Azure Portal.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget. Válassza a **felhasználók**lehetőséget, majd válassza **a minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget. Válassza a **felhasználók** lehetőséget, majd válassza **a minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre a következő lépéseket:
    1. A név mezőbe írja be a **B. Simon** **nevet** .  
    1. A **Felhasználónév** mezőbe írja be a nevet \<username> @ \<companydomain> . \<extension> Például: `B.Simon@contoso.com`.
-   1. Válassza a **jelszó megjelenítése**lehetőséget, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Válassza a **jelszó megjelenítése** lehetőséget, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="grant-access-to-the-test-user"></a>Hozzáférés biztosítása a tesztelési felhasználónak
 
 Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy a felhasználó hozzáférést biztosít a Cloud Academy-SSO-hoz.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza ki a **Cloud Academy-SSO**elemet.
-1. Az alkalmazás Áttekintés lapjának **kezelés** szakaszában válassza a **felhasználók és csoportok**lehetőséget:
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, majd válassza a **minden alkalmazás** lehetőséget.
+1. Az alkalmazások listában válassza ki a **Cloud Academy-SSO** elemet.
+1. Az alkalmazás Áttekintés lapjának **kezelés** szakaszában válassza a **felhasználók és csoportok** lehetőséget:
 
    ![A felhasználók és csoportok lehetőséget megjelenítő képernyőkép.](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget:
+1. Válassza a **felhasználó hozzáadása** lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget:
 
     ![A felhasználó hozzáadása gombot megjelenítő képernyőkép.](common/add-assign-user.png)
 
 1. A **felhasználók és csoportok** párbeszédpanelen válassza az **B. Simon** elemet a **felhasználók** listán, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. Ha az SAML-kijelentésben bármelyik szerepkör értékét várta, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a listáról a felhasználó számára. Kattintson a képernyő alján található **kiválasztás** gombra.
-1. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés**lehetőséget.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés** lehetőséget.
 
 ## <a name="configure-single-sign-on-for-cloud-academy"></a>Egyszeri bejelentkezés konfigurálása a Cloud Academy-hez
 
@@ -138,7 +138,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     d. A **név azonosítójának formátuma** mezőben tartsa meg az alapértelmezett értéket: `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified` .
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
     > [!NOTE]
     > A Cloud Academy-SSO konfigurálásával kapcsolatos további információkért lásd: az [egyszeri bejelentkezés beállítása](https://support.cloudacademy.com/hc/articles/360043908452-Setting-Up-Single-Sign-On).
@@ -151,11 +151,11 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     ![A tagok lehetőséget megjelenítő képernyőkép.](./media/cloud-academy-sso-tutorial/create-user.PNG)
 
-1. Válassza a **tagok meghívása** , majd **az egyetlen tag meghívása**lehetőséget:
+1. Válassza a **tagok meghívása** , majd **az egyetlen tag meghívása** lehetőséget:
 
     ![Képernyőkép, amely az egyetlen tag meghívása lehetőséget mutatja.](./media/cloud-academy-sso-tutorial/create-user-1.PNG)
 
-1. Adja meg az értékeket a kötelező mezőkben, majd válassza a **meghívás**elemet:
+1. Adja meg az értékeket a kötelező mezőkben, majd válassza a **meghívás** elemet:
 
     ![Képernyőkép, amely megjeleníti a tag meghívása párbeszédpanelt.](./media/cloud-academy-sso-tutorial/create-user-2.PNG)
 

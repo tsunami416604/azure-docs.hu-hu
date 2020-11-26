@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 11/09/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: d3706c26d9b15e9ea607996ace222b29ccd84458
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 4125a4493b72fa60203067f3eba1ccebdc820b02
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95999654"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182971"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-user"></a>Oktatóanyag: hozzáférés Microsoft Graph a biztonságos alkalmazásból felhasználóként
 
@@ -78,7 +78,7 @@ A webalkalmazás már rendelkezik a szükséges engedélyekkel, és hozzáadja M
 > [!NOTE]
 > A Microsoft. Identity. Web függvénytár nem szükséges az alapszintű hitelesítéshez/engedélyezéshez, illetve a kérelmek Microsoft Graph-vel történő hitelesítéséhez a webalkalmazásban. Az [alsóbb rétegbeli API-k biztonságosan hívhatók](tutorial-auth-aad.md#call-api-securely-from-server-code) , és csak a app Service hitelesítés/engedélyezési modul engedélyezett.
 > 
-> Azonban a App Service hitelesítés/engedélyezés az alapszintű hitelesítési forgatókönyvekhez lett tervezve. Összetettebb forgatókönyvek esetén (például egyéni jogcímek kezelésére) a Microsoft. Identity. Web Library vagy a [Microsoft Authentication Library](/azure/active-directory/develop/msal-overview)szükséges. Az elején még egy beállítás és konfiguráció is működik, de a Microsoft. Identity. Web függvénytár a App Service hitelesítési/engedélyezési modullal együtt futhat. Később, amikor a webalkalmazásnak összetettebb forgatókönyvek kezelésére van szüksége, letilthatja a App Service hitelesítési/engedélyezési modulját, a Microsoft. Identity. web pedig már az alkalmazás részét képezi.
+> Azonban a App Service hitelesítés/engedélyezés az alapszintű hitelesítési forgatókönyvekhez lett tervezve. Összetettebb forgatókönyvek esetén (például egyéni jogcímek kezelésére) a Microsoft. Identity. Web Library vagy a [Microsoft Authentication Library](../active-directory/develop/msal-overview.md)szükséges. Az elején még egy beállítás és konfiguráció is működik, de a Microsoft. Identity. Web függvénytár a App Service hitelesítési/engedélyezési modullal együtt futhat. Később, amikor a webalkalmazásnak összetettebb forgatókönyvek kezelésére van szüksége, letilthatja a App Service hitelesítési/engedélyezési modulját, a Microsoft. Identity. web pedig már az alkalmazás részét képezi.
 
 ### <a name="install-client-library-packages"></a>Ügyféloldali függvénytár-csomagok telepítése
 

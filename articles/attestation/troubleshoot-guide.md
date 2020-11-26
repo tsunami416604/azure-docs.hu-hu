@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: fe347983e2143c7a4bdf00ca0207356c881c66ac
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 72d7a40c38f3629a70260f223074b456dff9ce38
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95891282"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182835"
 ---
 # <a name="microsoft-azure-attestation-troubleshooting-guide"></a>Microsoft Azure igazolás hibaelhárítási útmutatója
 
@@ -95,7 +95,7 @@ b. Az Azure-szerepkör-hozzárendelés beállításainak ellenőrzése
  
   ```
 
-c. Ha nem találja a megfelelő szerepkör-hozzárendelést a listában, kövesse az [itt](/azure/role-based-access-control/role-assignments-powershell) található utasításokat.
+c. Ha nem találja a megfelelő szerepkör-hozzárendelést a listában, kövesse az [itt](../role-based-access-control/role-assignments-powershell.md) található utasításokat.
 
 ## <a name="2-http--400-errors"></a>2. HTTP – 400 hibák
 
@@ -123,7 +123,7 @@ G:\Az\security\Attestation\src\AttestationServices\Instance\Enclave\api.cpp(840)
 
 Küldési kérelem küldése az API-nak a "draftPolicyForAttestation" paraméterben található házirend szövegének megadásával. A AttestSgxEnclave API ezt a házirend-dokumentumot fogja használni a tanúsító hívás során, így a használat előtt tesztelheti az igazolási házirendeket. A mező jelenléte esetén generált igazolási jogkivonat nem lesz biztonságos.
 
-Lásd a [tanúsítványokra vonatkozó példákat](/azure/attestation/policy-examples)
+Lásd a [tanúsítványokra vonatkozó példákat](./policy-examples.md)
 
 ### <a name="22-attestation-failure-due-to-invalid-input"></a>2.2. Érvénytelen bevitel miatti igazolási hiba
 
@@ -163,7 +163,7 @@ Győződjön meg arról, hogy a főtanúsítvány alapszintű megkötések bőv�
 
 Máskülönben a tanúsítványlánc érvénytelennek tekintendő.
 
-Lásd: [házirend-aláíró](/azure/attestation/policy-signer-examples) és [házirend](/azure/attestation/policy-examples) -példák 
+Lásd: [házirend-aláíró](./policy-signer-examples.md) és [házirend](./policy-examples.md) -példák 
 
 ### <a name="24-adddelete-policy-signer-failure"></a>2.4. Házirend-aláíró hibájának hozzáadása/törlése
 
@@ -209,7 +209,7 @@ At line:1 char:1
     + FullyQualifiedErrorId : Microsoft.Azure.Commands.Attestation.AddAzureAttestationPolicySigner
 ```
 
-**Hibaelhárítási lépések** Új házirend-aláíró tanúsítvány hozzáadásához/törléséhez használja az RFC7519 JSON Web Token (JWT) kifejezést az "x-MS-policyCertificate" nevű jogcím használatával. A jogcím értéke egy RFC7517 JSON-webkulcs, amely tartalmazza a hozzáadni kívánt tanúsítványt. A JWT a szolgáltatóhoz tartozó érvényes házirend-aláíró tanúsítványok titkos kulcsával kell aláírni. Lásd: [házirend-aláíró példák](/azure/attestation/policy-signer-examples).
+**Hibaelhárítási lépések** Új házirend-aláíró tanúsítvány hozzáadásához/törléséhez használja az RFC7519 JSON Web Token (JWT) kifejezést az "x-MS-policyCertificate" nevű jogcím használatával. A jogcím értéke egy RFC7517 JSON-webkulcs, amely tartalmazza a hozzáadni kívánt tanúsítványt. A JWT a szolgáltatóhoz tartozó érvényes házirend-aláíró tanúsítványok titkos kulcsával kell aláírni. Lásd: [házirend-aláíró példák](./policy-signer-examples.md).
 
 ### <a name="25-attestation-policy-configuration-failure"></a>2.5. Igazolási házirend konfigurációs hibája
 
@@ -255,7 +255,7 @@ Ha egy házirendet szöveges formátumban szeretne konfigurálni, akkor közvetl
 
 A PowerShellben adja meg a PolicyFormat as JWT, hogy JWT formátumban konfigurálja a szabályzatot. Az alapértelmezett házirend-formátum a Text (szöveg).
 
-Lásd a tanúsítványokra [vonatkozó példákat](/azure/attestation/policy-examples) és az [igazolási szabályzatok létrehozási módját](/azure/attestation/author-sign-policy) . 
+Lásd a tanúsítványokra [vonatkozó példákat](./policy-examples.md) és az [igazolási szabályzatok létrehozási módját](./author-sign-policy.md) . 
 
 ## <a name="3-azattestation-installation-issues-in-powershell"></a>3. az az igazolás telepítési problémái a PowerShellben
 
@@ -301,4 +301,3 @@ Get-InstalledModule
 Ha a verziók nem felelnek meg a minimális követelménynek, futtassa Update-Module parancsokat
 
 például:-Update-Module-Name az. igazolás
-

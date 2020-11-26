@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 5cdc36c20cbba148bb68bda700f5fdccbc593caf
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: cca46d47003a1611c861986f8df839de57500db6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94352999"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181481"
 ---
 # <a name="tutorial-configure-solarwinds-service-desk-previously-samanage-for-automatic-user-provisioning"></a>Oktatóanyag: a SolarWinds Service Desk (korábban Samanage) konfigurálása a felhasználók automatikus üzembe helyezéséhez
 
@@ -54,7 +54,7 @@ Az alkalmazás migrálása után a **rendszergazdai hitelesítő adatok** szakas
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
 * [Azure AD-bérlő](../develop/quickstart-create-new-tenant.md) 
-* Egy Azure AD-beli felhasználói fiók, amely [jogosult](../users-groups-roles/directory-assign-admin-roles.md) a kiépítés konfigurálására (például alkalmazás-rendszergazda, felhőalapú alkalmazás-rendszergazda, alkalmazás tulajdonosa vagy globális rendszergazda). 
+* Egy Azure AD-beli felhasználói fiók, amely [jogosult](../roles/permissions-reference.md) a kiépítés konfigurálására (például alkalmazás-rendszergazda, felhőalapú alkalmazás-rendszergazda, alkalmazás tulajdonosa vagy globális rendszergazda). 
 * A professzionális csomaggal rendelkező [SolarWinds Service Desk-bérlő](https://www.samanage.com/pricing/) .
 * Egy felhasználói fiók a SolarWinds Service Desk-ben rendszergazdai engedélyekkel.
 
@@ -156,7 +156,7 @@ Ha bejelöli a **minden felhasználó és csoport szinkronizálása** lehetősé
 * 09/14/2020 – a vállalat nevét két SaaS-oktatóanyagban módosította a Samanage-ről a SolarWinds Service deskre (korábban Samanage) https://github.com/ravitmorales .
 * 04/22/2020 – frissített engedélyezési módszer az alapszintű hitelesítésből a hosszú élettartamú titkos jogkivonatba.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 

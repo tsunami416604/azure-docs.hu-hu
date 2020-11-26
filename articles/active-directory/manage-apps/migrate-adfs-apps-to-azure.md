@@ -14,14 +14,14 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1012ae32f679d23f16a7483415657596d027cc01
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: ab3b655d59e2cb8c6773fa1a34a08638e6926475
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658825"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180659"
 ---
-# <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Alkalmazás-hitelesítés áthelyezése Active Directory összevonási szolgáltatások (AD FS)ról Azure Active Directoryra
+# <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Alkalmazáshitelesítés áthelyezése az Active Directory Federation Servicesből az Azure Active Directoryba
 
 [Azure Active Directory (Azure ad)](../fundamentals/active-directory-whatis.md) univerzális identitási platformot kínál, amely a felhasználók, partnerek és ügyfelek számára egyetlen identitást biztosít az alkalmazások eléréséhez és a bármely platformról és eszközről való együttműködéshez. Az Azure AD [teljes körű Identitáskezelés-kezelési képességekkel](../fundamentals/active-directory-whatis.md)rendelkezik. Az alkalmazás (alkalmazás) hitelesítésének és az Azure AD-engedélyezésének egységesítése lehetővé teszi, hogy ezek a képességek milyen előnyöket biztosítanak.
 
@@ -320,7 +320,7 @@ A felhasználó/csoport választó egy olyan szabály, amely lehetővé teszi, h
 
 MFA-szabályok megadása egy felhasználó vagy egy csoport számára az Azure AD-ben:
 
-1. Hozzon létre egy [új feltételes hozzáférési szabályzatot](../authentication/tutorial-enable-azure-mfa.md?bc=%252fazure%252factive-directory%252fconditional-access%252fbreadcrumb%252ftoc.json&toc=%252fazure%252factive-directory%252fconditional-access%252ftoc.json).
+1. Hozzon létre egy [új feltételes hozzáférési szabályzatot](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json).
 
 2. Válassza a **hozzárendelések** lehetőséget. Adja hozzá azokat a felhasználó (ka) t vagy csoportot, amelyeken az MFA-t szeretné kikényszeríteni.
 
@@ -333,7 +333,7 @@ MFA-szabályok megadása egy felhasználó vagy egy csoport számára az Azure A
 
 MFA-szabályok megadása a nem regisztrált eszközökhöz az Azure AD-ben:
 
-1. Hozzon létre egy [új feltételes hozzáférési szabályzatot](../authentication/tutorial-enable-azure-mfa.md?bc=%252fazure%252factive-directory%252fconditional-access%252fbreadcrumb%252ftoc.json&toc=%252fazure%252factive-directory%252fconditional-access%252ftoc.json).
+1. Hozzon létre egy [új feltételes hozzáférési szabályzatot](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json).
 
 2. Állítsa be a **hozzárendeléseket** az **összes felhasználóra**.
 
@@ -348,7 +348,7 @@ Ha úgy állítja be a több vezérlőt, hogy megkövetelje a kiválasztott vez�
 
 A felhasználó Azure AD-beli helye alapján megadott MFA-szabályok meghatározása:
 
-1. Hozzon létre egy [új feltételes hozzáférési szabályzatot](../authentication/tutorial-enable-azure-mfa.md?bc=%252fazure%252factive-directory%252fconditional-access%252fbreadcrumb%252ftoc.json&toc=%252fazure%252factive-directory%252fconditional-access%252ftoc.json).
+1. Hozzon létre egy [új feltételes hozzáférési szabályzatot](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json).
 
 1. Állítsa be a **hozzárendeléseket** az **összes felhasználóra**.
 
@@ -386,7 +386,7 @@ A AD FS 2016 számos beépített hozzáférés-vezérlési szabályzattal rendel
 ![Az Azure AD beépített hozzáférés-vezérléssel rendelkezik](media/migrate-adfs-apps-to-azure/map-builtin-access-control-policies-1.png)
 
 
-A beépített szabályzatok Azure AD-ben történő megvalósításához használhat [új feltételes hozzáférési házirendet](../authentication/tutorial-enable-azure-mfa.md?bc=%252fazure%252factive-directory%252fconditional-access%252fbreadcrumb%252ftoc.json&toc=%252fazure%252factive-directory%252fconditional-access%252ftoc.json) , és konfigurálhatja a hozzáférés-vezérlést, vagy használhatja az egyéni házirend-tervezőt AD FS 2016-ben a hozzáférés-vezérlési házirendek konfigurálásához. A szabály szerkesztőjének teljes listája lehetővé teszi az engedélyezést, és kivéve azokat a lehetőségeket, amelyek segítségével bármilyen típusú permutációt készíthet.
+A beépített szabályzatok Azure AD-ben történő megvalósításához használhat [új feltételes hozzáférési házirendet](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json) , és konfigurálhatja a hozzáférés-vezérlést, vagy használhatja az egyéni házirend-tervezőt AD FS 2016-ben a hozzáférés-vezérlési házirendek konfigurálásához. A szabály szerkesztőjének teljes listája lehetővé teszi az engedélyezést, és kivéve azokat a lehetőségeket, amelyek segítségével bármilyen típusú permutációt készíthet.
 
 ![Azure AD-hozzáférés-vezérlési szabályzatok](media/migrate-adfs-apps-to-azure/map-builtin-access-control-policies-2.png)
 

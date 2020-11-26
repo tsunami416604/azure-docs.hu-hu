@@ -12,12 +12,12 @@ ms.date: 10/10/2019
 ms.author: jeedes
 ms.custom: it-pro
 ms.reviewer: celested
-ms.openlocfilehash: 19889c05447db05cc20c8f46e97bd8d16ff43bdf
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: f74cdb700013dc9b124c6a2df195456f08e4b60a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445659"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182138"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához
 
@@ -25,7 +25,7 @@ A felhőalapú [szoftveres (SaaS)](https://azure.microsoft.com/overview/what-is-
 
 Az Azure AD-be előre integrált SaaS-alkalmazások listáját a [Active Directory piactéren](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/azure-active-directory-apps)tekintheti meg.
 
-Az [Application Network portál](../azuread-dev/howto-app-gallery-listing.md) használatával igényeljen egy [scim](../app-provisioning/use-scim-to-provision-users-and-groups.md) -kompatibilis alkalmazást a katalógusba az automatikus kiépítés vagy egy SAML-/OIDC-kompatibilis alkalmazás hozzáadásához a katalógusba az SSO-hoz.
+Az [Application Network portál](../develop/v2-howto-app-gallery-listing.md) használatával igényeljen egy [scim](../app-provisioning/use-scim-to-provision-users-and-groups.md) -kompatibilis alkalmazást a katalógusba az automatikus kiépítés vagy egy SAML-/OIDC-kompatibilis alkalmazás hozzáadásához a katalógusba az SSO-hoz.
 
 ## <a name="quick-links"></a>Gyorshivatkozások
 
@@ -119,6 +119,6 @@ További oktatóanyagokat a bal oldali tartalomjegyzékben talál.
 | ![embléma – két Zscaler](./media/tutorial-list/active-directory-saas-zscaler-two-tutorial.png)| [Zscaler Two](zscaler-two-tutorial.md)|  
 | ![embléma – Zscaler ZSCloud](./media/tutorial-list/active-directory-saas-zscaler-zscloud-tutorial.png)| [Zscaler ZSCloud](zscaler-zscloud-tutorial.md)|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az alkalmazások kezeléséről: [Mi az az Application Management](../manage-apps/what-is-application-management.md).

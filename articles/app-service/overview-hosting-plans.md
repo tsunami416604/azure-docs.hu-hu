@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5f96b48b8fec07ab207ea3962a201bbff68a5339
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 8033235cde5b7ebe298bb1fa8d4222e208df998b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92200848"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183005"
 ---
 # <a name="azure-app-service-plan-overview"></a>Az Azure App Service-csomagok áttekintése
 
@@ -27,7 +27,7 @@ Ha egy App Service tervet hoz létre egy bizonyos régióban (például Nyugat-E
 Egy App Service-csomag _díjszabási szintje_ határozza meg, hogy milyen app Service funkciókat kap, és mennyit fizet a csomagért. A tarifacsomagok a következő kategóriákba sorolhatók:
 
 - **Megosztott számítás**: az **ingyenes** és a **közös**, a két alapszintű alkalmazás ugyanazon az Azure-beli virtuális gépen futtatja az alkalmazást, mint a többi app Service alkalmazást, beleértve a más ügyfelek alkalmazásait is. Ezek a csomagok CPU-kvótákat rendelnek mindegyik, a közös erőforrásokon futó alkalmazáshoz, és ezek az erőforrások nem skálázhatóak fel horizontálisan.
-- **Dedikált számítás**: az **alapszintű**, a **standard**, a **prémium**, a **PremiumV2**és a **PremiumV3** csomag alkalmazások futtatása dedikált Azure-beli virtuális gépeken. A számítási erőforrások elosztása csak az ugyanabban az App Service-csomagban lévő alkalmazások között történik. Minél magasabb szintű a csomag, annál több virtuálisgép-példány áll rendelkezésére a horizontális felskálázáshoz.
+- **Dedikált számítás**: az **alapszintű**, a **standard**, a **prémium**, a **PremiumV2** és a **PremiumV3** csomag alkalmazások futtatása dedikált Azure-beli virtuális gépeken. A számítási erőforrások elosztása csak az ugyanabban az App Service-csomagban lévő alkalmazások között történik. Minél magasabb szintű a csomag, annál több virtuálisgép-példány áll rendelkezésére a horizontális felskálázáshoz.
 - **Elkülönített**: Ez a szintű dedikált Azure-beli virtuális gépeket futtat dedikált Azure-beli virtuális hálózatokon. Hálózati elkülönítést biztosít az alkalmazások számára a számítási elkülönítésen. Ez a szint biztosítja a legnagyobb horizontális felskálázási lehetőségeket.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
@@ -37,13 +37,13 @@ Az egyes szintek a App Service szolgáltatások egy adott részhalmazát is bizt
 <a name="new-pricing-tier-premiumv3"></a>
 
 > [!NOTE]
-> Az új **PremiumV3** díjszabási csomag a **standard** szinthez képest gyorsabb processzorokkal (minimálisan 195 [ACU](https://docs.microsoft.com/azure/virtual-machines/acu) /virtuális CPU-val), SSD-tárolóval és négyszeres memória-mag aránnyal rendelkező gépeket garantál. A **PremiumV3** a megnövelt példányszámot is támogatja, miközben továbbra is biztosítja a **standard** szinten található összes speciális funkciót. A meglévő **PremiumV2** -szinten elérhető összes funkció a **PremiumV3**része.
+> Az új **PremiumV3** díjszabási csomag a **standard** szinthez képest gyorsabb processzorokkal (minimálisan 195 [ACU](../virtual-machines/acu.md) /virtuális CPU-val), SSD-tárolóval és négyszeres memória-mag aránnyal rendelkező gépeket garantál. A **PremiumV3** a megnövelt példányszámot is támogatja, miközben továbbra is biztosítja a **standard** szinten található összes speciális funkciót. A meglévő **PremiumV2** -szinten elérhető összes funkció a **PremiumV3** része.
 >
 > A többi dedikált platformhoz hasonlóan három virtuálisgép-méret érhető el ehhez a platformhoz:
 >
 > - Kicsi (2 CPU mag, 8 GiB memória) 
 > - Közepes (4 CPU-mag, 16 GiB memória) 
-> - Nagyméretű (8 CPU mag, 32 GiB memória)  
+> - Nagyméretű (8 CPU mag, 32 GiB memória)  
 >
 > A **PremiumV3** díjszabásával kapcsolatos információkért lásd: [app Service díjszabása](https://azure.microsoft.com/pricing/details/app-service/).
 >

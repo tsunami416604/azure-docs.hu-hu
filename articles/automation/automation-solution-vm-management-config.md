@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: b0bc23d515bebdd0d943bbad33c5ebba35a35605
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fdb3b2b23d07b79a8e9979450bee653d646196c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987203"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182801"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>Start/Stop VMs during off-hours konfigurálása
 
@@ -63,13 +63,13 @@ Egy olyan környezetben, amely több, elosztott munkaterhelést támogató virtu
 
 ### <a name="target-the-start-and-stop-actions-against-a-subscription-and-resource-group"></a>A kezdési és a leállítási műveletek célzása egy előfizetéshez és az erőforráscsoporthoz
 
-1. Adjon hozzá egy `sequencestart` és egy `sequencestop` pozitív egész számmal rendelkező címkét a és a `External_Start_ResourceGroupNames` változót használó virtuális gépekhez `External_Stop_ResourceGroupNames` . A kezdési és a leállítási műveletek növekvő sorrendben lesznek végrehajtva. A virtuális gépek címkézésével kapcsolatos további információkért lásd: [Windows rendszerű virtuális gép címkézése az Azure-ban](../virtual-machines/windows/tag.md) , és Linux rendszerű [virtuális gép címkézése az Azure-ban](../virtual-machines/linux/tag.md).
+1. Adjon hozzá egy `sequencestart` és egy `sequencestop` pozitív egész számmal rendelkező címkét a és a `External_Start_ResourceGroupNames` változót használó virtuális gépekhez `External_Stop_ResourceGroupNames` . A kezdési és a leállítási műveletek növekvő sorrendben lesznek végrehajtva. A virtuális gépek címkézésével kapcsolatos további információkért lásd: [Windows rendszerű virtuális gép címkézése az Azure-ban](../virtual-machines/tag-portal.md) , és Linux rendszerű [virtuális gép címkézése az Azure-ban](../virtual-machines/tag-cli.md).
 
 2. Módosítsa az ütemezett **StartVM** és a **sorozatos StopVM** az igényeinek megfelelő dátumra és időpontra, és engedélyezze az ütemtervet.
 
 3. A módosítások előnézetének megtekintéséhez futtassa az **SequencedStartStop_Parent** **runbook a** következővel: **Start** és **WHATIF** True értékre állítva.
 
-4. Tekintse meg a műveletet, és végezze el a szükséges módosításokat az éles virtuális gépeken való megvalósítás előtt. Ha elkészült, manuálisan hajtsa végre a runbook a (z) paraméterrel **hamis**értékre állítva, vagy hagyja, hogy az automatizálási ütemezések **sorozatos StartVM** és **szekvenciális StopVM** automatikusan fussanak az előírt ütemezése után.
+4. Tekintse meg a műveletet, és végezze el a szükséges módosításokat az éles virtuális gépeken való megvalósítás előtt. Ha elkészült, manuálisan hajtsa végre a runbook a (z) paraméterrel **hamis** értékre állítva, vagy hagyja, hogy az automatizálási ütemezések **sorozatos StartVM** és **szekvenciális StopVM** automatikusan fussanak az előírt ütemezése után.
 
 ### <a name="target-the-start-and-stop-actions-by-vm-list"></a>A kezdő és a leállítási műveletek célzása virtuálisgép-lista alapján
 
@@ -85,7 +85,7 @@ Egy olyan környezetben, amely több, elosztott munkaterhelést támogató virtu
 
 6. Ez a forgatókönyv nem tartja tiszteletben a `External_Start_ResourceGroupNames` és `External_Stop_ResourceGroupnames` változókat. Ebben a forgatókönyvben létre kell hoznia a saját automatizálási ütemtervét. Részletekért lásd: [runbook Azure Automationban való beosztása](shared-resources/schedules.md).
 
-7. Tekintse meg a műveletet, és végezze el a szükséges módosításokat az éles virtuális gépeken való megvalósítás előtt. Ha elkészült, manuálisan hajtsa végre a **figyelés és diagnosztika/figyelés – művelet – groupsrunbook** paramétert a **false**értékre. Azt is megteheti, hogy az automatizálási ütemezések **sorozatos StartVM** és **szekvenciális StopVM** automatikusan az előírt ütemterv szerint futnak.
+7. Tekintse meg a műveletet, és végezze el a szükséges módosításokat az éles virtuális gépeken való megvalósítás előtt. Ha elkészült, manuálisan hajtsa végre a **figyelés és diagnosztika/figyelés – művelet – groupsrunbook** paramétert a **false** értékre. Azt is megteheti, hogy az automatizálási ütemezések **sorozatos StartVM** és **szekvenciális StopVM** automatikusan az előírt ütemterv szerint futnak.
 
 ## <a name="scenario-3-start-or-stop-automatically-based-on-cpu-utilization"></a><a name="cpuutil"></a>3. forgatókönyv: automatikusan indítás vagy leállítás CPU-kihasználtság alapján
 
@@ -137,19 +137,19 @@ Ha Start/Stop VMs during off-hours telepítése után módosítani szeretné az 
 > [!NOTE]
 > A Azure Government-felhőben lévő előfizetések nem támogatják a funkció e-mail-funkcióit.
 
-1. A Azure Portal navigáljon a **figyelés**, majd a **műveleti csoportok**elemre. Válassza ki a **StartStop_VM_Notication**nevű műveleti csoportot.
+1. A Azure Portal navigáljon a **figyelés**, majd a **műveleti csoportok** elemre. Válassza ki a **StartStop_VM_Notication** nevű műveleti csoportot.
 
     :::image type="content" source="media/automation-solution-vm-management/azure-monitor.png" alt-text="Képernyőkép a figyelő – műveleti csoportok lapról.":::
 
 2. A StartStop_VM_Notification **lapon kattintson a részletek** elemre. **Details** Ekkor megnyílik az E-mail/SMS/leküldés/hang lap. Frissítse az e-mail-címet, és kattintson **az OK** gombra a módosítások mentéséhez.
 
-    :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="Képernyőkép a figyelő – műveleti csoportok lapról.":::
+    :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="Képernyőkép az e-mailek/SMS/push/Voice lapról, amely egy példaként frissített e-mail-címet mutat be.":::
 
     Másik lehetőségként további műveleteket is hozzáadhat a műveleti csoporthoz, hogy többet tudjon meg a műveleti csoportokról, lásd: [műveleti csoportok](../azure-monitor/platform/action-groups.md)
 
 A következő példa egy olyan e-mailt küld, amelyet a szolgáltatás a virtuális gépek leállításakor küld.
 
-:::image type="content" source="media/automation-solution-vm-management/email.png" alt-text="Képernyőkép a figyelő – műveleti csoportok lapról.":::
+:::image type="content" source="media/automation-solution-vm-management/email.png" alt-text="A szolgáltatás által a virtuális gépek leállításakor küldött példa e-mail-üzenet képernyőképe.":::
 
 ## <a name="add-or-exclude-vms"></a><a name="add-exclude-vms"></a>Virtuális gépek hozzáadása vagy kizárása
 
@@ -177,9 +177,9 @@ A szolgáltatás konfigurálása a virtuális gépek leállítására egy adott 
 
 2. Hozzon létre saját ütemtervet, amikor le szeretné állítani a virtuális gépeket.
 
-3. Navigáljon a **ScheduledStartStop_Parent** runbook, és kattintson az **ütemterv**gombra. Ez lehetővé teszi az előző lépésben létrehozott ütemterv kiválasztását.
+3. Navigáljon a **ScheduledStartStop_Parent** runbook, és kattintson az **ütemterv** gombra. Ez lehetővé teszi az előző lépésben létrehozott ütemterv kiválasztását.
 
-4. Válassza a paraméterek lehetőséget, **és futtassa a beállításokat** , és állítsa a **művelet** mezőt **Leállítás**értékre.
+4. Válassza a paraméterek lehetőséget, **és futtassa a beállításokat** , és állítsa a **művelet** mezőt **Leállítás** értékre.
 
 5. A módosítások mentéséhez kattintson az **OK** gombra.
 

@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a48a72aa021a17c59adb86bece66cec966e234bd
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 0c4fde22b1b8d72ae8ae775c090e0da25ce0665f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056140"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181169"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Azure AD-beli tevékenység-naplók elemzése Azure Monitor naplókkal
 
@@ -49,7 +49,7 @@ A lépések végrehajtásához a következőkre lesz szüksége:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 
-2. Válassza a **Azure Active Directory**lehetőséget, majd a **figyelés** szakaszban válassza a **naplók** lehetőséget a log Analytics munkaterület megnyitásához. A munkaterület alapértelmezett lekérdezéssel fog megnyílni.
+2. Válassza a **Azure Active Directory** lehetőséget, majd a **figyelés** szakaszban válassza a **naplók** lehetőséget a log Analytics munkaterület megnyitásához. A munkaterület alapértelmezett lekérdezéssel fog megnyílni.
 
     ![Alapértelmezett lekérdezés](./media/howto-analyze-activity-logs-log-analytics/defaultquery.png)
 
@@ -104,9 +104,9 @@ A lekérdezésen is beállíthat riasztásokat. Ha például riasztást szeretne
 
 A munkafüzetek több, a naplózást, a bejelentkezést és az üzembe helyezési eseményeket érintő gyakori forgatókönyvekhez kapcsolódó jelentéseket biztosítanak. Az előző szakaszban ismertetett lépéseket követve riasztást is használhat a jelentésekben megadott összes adattal kapcsolatban.
 
-* **Kiépítés elemzése**: Ez a [munkafüzet](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics) a naplózási kiépítési tevékenységgel kapcsolatos jelentéseket jeleníti meg, például az új felhasználók kiépített és kiépítési hibák számát, a frissített felhasználók számát és a frissítési hibákat, valamint a kiosztott és a hozzájuk tartozó hibák számát.    
+* **Kiépítés elemzése**: Ez a [munkafüzet](../app-provisioning/application-provisioning-log-analytics.md) a naplózási kiépítési tevékenységgel kapcsolatos jelentéseket jeleníti meg, például az új felhasználók kiépített és kiépítési hibák számát, a frissített felhasználók számát és a frissítési hibákat, valamint a kiosztott és a hozzájuk tartozó hibák számát.    
 * **Bejelentkezési események**: Ez a munkafüzet a figyelési tevékenységekkel kapcsolatos legfontosabb jelentéseket mutatja be, például az alkalmazás, a felhasználó, az eszköz, valamint egy összegző nézet, amely az idő múlásával követi nyomon a bejelentkezések számát.
-* **Feltételes hozzáférési információ**: a feltételes hozzáférési ismeretek és a jelentéskészítési [munkafüzet](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-insights-reporting) lehetővé teszi a feltételes hozzáférési szabályzatok a szervezetben való időbeli hatásának megértését. 
+* **Feltételes hozzáférési információ**: a feltételes hozzáférési ismeretek és a jelentéskészítési [munkafüzet](../conditional-access/howto-conditional-access-insights-reporting.md) lehetővé teszi a feltételes hozzáférési szabályzatok a szervezetben való időbeli hatásának megértését. 
 
 ## <a name="next-steps"></a>Következő lépések
 

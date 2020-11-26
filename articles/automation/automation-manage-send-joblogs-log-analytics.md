@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8578f8aef779ff80f3965fc21b24b785f11226d0
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2e7e798967541748b5572994d48cb5bdf7474cb1
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024143"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182869"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>Azure Automation-feladat adatainak továbbítása az Azure Monitor-naplói felé
 
@@ -177,7 +177,7 @@ AzureDiagnostics
 
 ### <a name="filter-job-status-output-converted-into-a-json-object"></a>A feladatok állapotának szűrése egy JSON-objektumba
 
-A közelmúltban módosítottuk az Automation-naplóban lévő adatnak a Log Analytics szolgáltatásban található táblába való beírásának viselkedését `AzureDiagnostics` , ahol a JSON-tulajdonságokat a továbbiakban nem bontja külön mezőkre. Ha úgy konfigurálta a runbook, hogy az objektumokat JSON formátumban formázza a kimeneti adatfolyamban, akkor a tulajdonságok eléréséhez újra kell konfigurálnia a lekérdezéseket, hogy az adott mezőt egy JSON-objektumba elemezze. Ezt a [parseJSON](https://docs.microsoft.com/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#parsejson) használatával lehet elérni egy ismert elérési úton található JSON-elem eléréséhez.
+A közelmúltban módosítottuk az Automation-naplóban lévő adatnak a Log Analytics szolgáltatásban található táblába való beírásának viselkedését `AzureDiagnostics` , ahol a JSON-tulajdonságokat a továbbiakban nem bontja külön mezőkre. Ha úgy konfigurálta a runbook, hogy az objektumokat JSON formátumban formázza a kimeneti adatfolyamban, akkor a tulajdonságok eléréséhez újra kell konfigurálnia a lekérdezéseket, hogy az adott mezőt egy JSON-objektumba elemezze. Ezt a [parseJSON](/azure/data-explorer/kusto/query/samples?pivots=#parsejson) használatával lehet elérni egy ismert elérési úton található JSON-elem eléréséhez.
 
 Egy runbook például a *ResultDescription* tulajdonságot a kimeneti adatfolyamban, JSON formátumban formázza több mezővel. Ha olyan feladatok állapotát szeretné megkeresni, amelyek **állapota "állapot**" nevű mezőben van megadva, akkor a példában szereplő lekérdezéssel a **sikertelen** állapotú *ResultDescription* keresheti meg a következőt:
 

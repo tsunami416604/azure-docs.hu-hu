@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01f762ef1fa3a997c01873df02abf87362b8c06f
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 85e6a66f4520f12278266203211e1d1ae224c97f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055953"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180455"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Azure AD-naplók integrálása Azure Monitor naplókkal
 
@@ -46,7 +46,7 @@ További elemzés céljából átirányíthatja a naplózási tevékenységek na
 
 * **Auditnaplók**: Az [auditnaplók tevékenységjelentés](concept-audit-logs.md) hozzáférést nyújt a bérlőn elvégzett összes feladat előzményeihez.
 * **Bejelentkezési naplók**: A [bejelentkezések tevékenységjelentéssel](concept-sign-ins.md) meghatározhatja, hogy ki hajtotta végre az auditnaplók által jelentett feladatokat.
-* **Kiépítési naplók**: a [kiépítési naplók](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics)segítségével megfigyelheti, hogy mely felhasználók lettek létrehozva, frissítve és törölve az összes harmadik féltől származó alkalmazásban. 
+* **Kiépítési naplók**: a [kiépítési naplók](../app-provisioning/application-provisioning-log-analytics.md)segítségével megfigyelheti, hogy mely felhasználók lettek létrehozva, frissítve és törölve az összes harmadik féltől származó alkalmazásban. 
 
 > [!NOTE]
 > A B2C-hez kapcsolódó audit- és bejelentkezési tevékenységnaplók jelenleg nem támogatottak.
@@ -71,7 +71,7 @@ A szolgáltatás használatához prémium szintű Azure AD P1 vagy P2 licenc sz�
 
 2. Válassza **Azure Active Directory**  >  **diagnosztikai beállítások**  ->  **Hozzáadás diagnosztikai beállítást**. A **naplózási naplók** vagy a **bejelentkezések** lapon is kiválaszthatja a **Beállítások exportálása** lehetőséget a diagnosztikai beállítások konfigurációs oldalának beolvasásához.  
     
-3. A **diagnosztikai beállítások** menüben jelölje be a **Küldés log Analytics munkaterületre** jelölőnégyzetet, majd válassza a **Konfigurálás**lehetőséget.
+3. A **diagnosztikai beállítások** menüben jelölje be a **Küldés log Analytics munkaterületre** jelölőnégyzetet, majd válassza a **Konfigurálás** lehetőséget.
 
 4. Válassza ki azt a Log Analytics munkaterületet, amelyhez el szeretné küldeni a naplókat, vagy hozzon létre egy új munkaterületet a megadott párbeszédpanelen.  
 

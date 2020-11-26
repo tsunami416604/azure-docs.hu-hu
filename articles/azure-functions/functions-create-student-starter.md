@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre Azure-függvényt egy Azure-beli 
 Customer intent: As a student, I want to be able to create an HTTP triggered Function App within the Student Starter plan so that I can easily add APIs to any project.
 ms.topic: how-to
 ms.date: 04/29/2020
-ms.openlocfilehash: ecb2cc20bec602101d683dbfdd3f82a2e199aa16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f40405c9325743da5d1963e3baea781606d2d8d9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87386962"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182529"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Függvény létrehozása az Azure diákoknak kezdőknek
 
@@ -41,15 +41,15 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
 ## <a name="create-an-http-trigger-function"></a><a name="create-function"></a>HTTP-trigger függvény létrehozása
 
-1. A **függvények** ablak bal oldali menüjében válassza a **függvények**lehetőséget, majd a felső menüben válassza a **Hozzáadás** lehetőséget. 
+1. A **függvények** ablak bal oldali menüjében válassza a **függvények** lehetőséget, majd a felső menüben válassza a **Hozzáadás** lehetőséget. 
  
-1. Az **új függvény** ablakban válassza a **http-trigger**lehetőséget.
+1. Az **új függvény** ablakban válassza a **http-trigger** lehetőséget.
 
     ![HTTP-trigger függvény kiválasztása](./media/functions-create-student-starter/function-app-select-http-trigger.png)
 
-1. Az **új függvény** ablakban fogadja el az **új függvény**alapértelmezett nevét, vagy adjon meg egy új nevet. 
+1. Az **új függvény** ablakban fogadja el az **új függvény** alapértelmezett nevét, vagy adjon meg egy új nevet. 
 
-1. Válassza a **Névtelen** lehetőséget az **engedélyezési szint** legördülő listából, majd kattintson a **függvény létrehozása**elemre.
+1. Válassza a **Névtelen** lehetőséget az **engedélyezési szint** legördülő listából, majd kattintson a **függvény létrehozása** elemre.
 
     Az Azure létrehozza a HTTP trigger függvényt. Mostantól egy HTTP-kérelem küldésével futtathatja az új függvényt.
 
@@ -95,12 +95,12 @@ Az Azure diákoknak kezdők számára a Azure Functions futtatókörnyezet legt�
 * Csak a functions futtatókörnyezet [2. x vagy újabb verziója](functions-versions.md) támogatott.
 * Az összes fejlesztői szerszámozás támogatott szerkesztési és közzétételi függvények esetén. Ide tartozik a VS Code, a Visual Studio, az Azure CLI és a Azure Portal. Ha a portálon kívül bármilyen más eszközt szeretne használni, először létre kell hoznia egy alkalmazást a portálon, majd az alkalmazást központi telepítési célként kell kiválasztania az előnyben részesített eszközön.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezzel befejezte a Function app létrehozását egy egyszerű HTTP-trigger függvénnyel. Ezután megismerheti a helyi eszközöket, a több nyelvet, a figyelést és az integrációt.
 
  * [Az első függvény létrehozása a Visual Studio használatával](./functions-create-your-first-function-visual-studio.md)
- * [Az első függvény létrehozása a Visual Studio Code használatával](./functions-create-first-function-vs-code.md)
+ * [Az első függvény létrehozása a Visual Studio Code használatával](./create-first-function-vs-code-csharp.md)
  * [Azure Functions JavaScript fejlesztői útmutató](./functions-reference-node.md)
  * [Azure Functions használata Azure SQL Databasehoz való kapcsolódáshoz](./functions-scenario-database-table-cleanup.md)
  * [További információ a Azure FUNCTIONS http-kötésekről](./functions-bindings-http-webhook.md).

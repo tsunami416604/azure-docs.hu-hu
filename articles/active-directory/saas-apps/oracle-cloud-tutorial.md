@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/04/2020
 ms.author: jeedes
-ms.openlocfilehash: 90623c6fd1c0eba3042688ae6fd6fdc92b088fd4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 914858471432979e5516a1f075ed4fcbb8061a5d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096995"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181850"
 ---
 # <a name="tutorial-integrate-oracle-cloud-infrastructure-console-with-azure-active-directory"></a>Oktatóanyag: az Oracle felhőalapú infrastruktúra-konzol integrálása a Azure Active Directory
 
@@ -118,9 +118,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
    1. Válassza ki a **csoport azonosítója** **forrás attribútumát** .
 
-   1. Győződjön meg arról **, hogy testreszabja a csoportjogcím nevét** .
+   1. Győződjön meg arról **, hogy testreszabja a csoportjogcím nevét**.
 
-   1. A **név** szövegmezőbe írja be a következőt: **Csoportnév** .
+   1. A **név** szövegmezőbe írja be a következőt: **Csoportnév**.
 
    1. A **névtér (nem kötelező)** szövegmezőbe írja be a következőt: `https://auth.oraclecloud.com/saml/claims` .
 
@@ -136,13 +136,13 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B. Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B. Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** gombra.
+   1. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -160,7 +160,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Egy másik böngészőablakban jelentkezzen be rendszergazdaként az Oracle Cloud Infrastructure-konzolra.
 
-1. Kattintson a menü bal oldalára, majd kattintson az **identitás** elemre, majd navigáljon az **összevonáshoz** .
+1. Kattintson a menü bal oldalára, majd kattintson az **identitás** elemre, majd navigáljon az **összevonáshoz**.
 
    ![Configuration1](./media/oracle-cloud-tutorial/config01.png)
 
@@ -188,7 +188,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
    1. A Azure Portal és a szervezet igényeinek megfelelően több csoportot is leképezheti a telepítéshez. Kattintson a **+ leképezés hozzáadása** lehetőségre, hogy minél több csoportot adjon hozzá, mint amennyire szüksége van.
 
-   1. Kattintson a **Submit (Küldés** ) gombra.
+   1. Kattintson a **Submit (Küldés**) gombra.
    
 ### <a name="create-oracle-cloud-infrastructure-console-test-user"></a>Oracle felhőalapú infrastruktúra-konzol tesztelési felhasználójának létrehozása
 
@@ -202,5 +202,4 @@ Ha a hozzáférési panelen kiválasztja az Oracle Cloud Infrastructure Console 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az Oracle felhőalapú infrastruktúra-konzol konfigurálása után kényszerítheti a munkamenet-vezérlők betartatását, amelyek valós időben védik a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáférésből. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
-
+Az Oracle felhőalapú infrastruktúra-konzol konfigurálása után kényszerítheti a munkamenet-vezérlők betartatását, amelyek valós időben védik a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáférésből. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-aad)

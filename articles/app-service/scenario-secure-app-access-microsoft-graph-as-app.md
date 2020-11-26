@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 11/09/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: a7b8ca309bf5710ddbd88413935bef5e97a1ed9f
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: bdd6dbf790bcf2ec97be33504e51ca3db2eb3ef7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95999671"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182988"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-app"></a>Oktatóanyag: hozzáférés Microsoft Graph egy biztonságos alkalmazásból az alkalmazással
 
@@ -23,7 +23,7 @@ Megtudhatja, hogyan érheti el Microsoft Graph egy Azure App Serviceon futó web
 
 :::image type="content" alt-text="A Microsoft Graph elérését bemutató diagram." source="./media/scenario-secure-app-access-microsoft-graph/web-app-access-graph.svg" border="false":::
 
-Meg szeretné hívni Microsoft Graph a webalkalmazáshoz. A webalkalmazások adatokhoz való hozzáférésének biztonságos módja, ha [rendszerhez rendelt felügyelt identitást](/azure/active-directory/managed-identities-azure-resources/overview)használ. A Azure Active Directory felügyelt identitása lehetővé teszi, hogy a App Service szerepköralapú hozzáférés-vezérléssel (RBAC) keresztül hozzáférjen az erőforrásokhoz az alkalmazás hitelesítő adatainak megadása nélkül. Miután felügyelt identitást rendelt a webalkalmazáshoz, az Azure gondoskodik a tanúsítványok létrehozásáról és elosztásáról. Nem kell aggódnia a titkok vagy az alkalmazások hitelesítő adatainak kezelésével kapcsolatban.
+Meg szeretné hívni Microsoft Graph a webalkalmazáshoz. A webalkalmazások adatokhoz való hozzáférésének biztonságos módja, ha [rendszerhez rendelt felügyelt identitást](../active-directory/managed-identities-azure-resources/overview.md)használ. A Azure Active Directory felügyelt identitása lehetővé teszi, hogy a App Service szerepköralapú hozzáférés-vezérléssel (RBAC) keresztül hozzáférjen az erőforrásokhoz az alkalmazás hitelesítő adatainak megadása nélkül. Miután felügyelt identitást rendelt a webalkalmazáshoz, az Azure gondoskodik a tanúsítványok létrehozásáról és elosztásáról. Nem kell aggódnia a titkok vagy az alkalmazások hitelesítő adatainak kezelésével kapcsolatban.
 
 Az oktatóanyag a következőket ismerteti:
 

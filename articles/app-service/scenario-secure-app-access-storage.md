@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 11/09/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: 250e95b33b985aedcc1b1537f57338d29e848451
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: c596b0d218c0b935fa1f3e971067160e52d87af1
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96020211"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183124"
 ---
 # <a name="tutorial-access-azure-storage-from-a-web-app"></a>Oktatóanyag: az Azure Storage elérése egy webalkalmazásból
 
@@ -23,7 +23,7 @@ Ismerje meg, hogyan érheti el az Azure Storage szolgáltatást a Azure App Serv
 
 :::image type="content" alt-text="A tároló elérését bemutató diagram." source="./media/scenario-secure-app-access-storage/web-app-access-storage.svg" border="false":::
 
-Hozzáférést szeretne adni az Azure-beli adatsíkon (Azure Storage, Azure SQL Database, Azure Key Vault vagy más szolgáltatásokhoz) a webalkalmazásból. Használhat megosztott kulcsot, de a titkos kulcs létrehozásához, üzembe helyezéséhez és kezeléséhez szükséges működési biztonságot kell aggódnia. Lehetséges, hogy a kulcsot a GitHubon is be lehetett olvasni, így a hackerek tudják, hogyan kereshetnek. A webalkalmazások adathozzáférésének biztonságosabb módja a [felügyelt identitások](/azure/active-directory/managed-identities-azure-resources/overview)használata.
+Hozzáférést szeretne adni az Azure-beli adatsíkon (Azure Storage, Azure SQL Database, Azure Key Vault vagy más szolgáltatásokhoz) a webalkalmazásból. Használhat megosztott kulcsot, de a titkos kulcs létrehozásához, üzembe helyezéséhez és kezeléséhez szükséges működési biztonságot kell aggódnia. Lehetséges, hogy a kulcsot a GitHubon is be lehetett olvasni, így a hackerek tudják, hogyan kereshetnek. A webalkalmazások adathozzáférésének biztonságosabb módja a [felügyelt identitások](../active-directory/managed-identities-azure-resources/overview.md)használata.
 
 Azure Active Directory (Azure AD) felügyelt identitása lehetővé teszi, hogy a App Service szerepköralapú hozzáférés-vezérléssel (RBAC) keresztül hozzáférjenek az erőforrásokhoz az alkalmazás hitelesítő adatainak megadása nélkül. Miután felügyelt identitást rendelt a webalkalmazáshoz, az Azure gondoskodik a tanúsítványok létrehozásáról és elosztásáról. Az embereknek nem kell aggódniuk a titkok vagy az alkalmazások hitelesítő adatainak kezelésével kapcsolatban.
 

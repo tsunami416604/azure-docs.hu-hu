@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: e367e4f2a704d8c718551fb031164520b3ff5bb3
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 75e3886e31592b0672487bacd5ff2266e07e39cd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579130"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182503"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>Oktatóanyag: Azure Functions Private site-hozzáférés létrehozása
 
@@ -67,7 +67,7 @@ Az oktatóanyag első lépése egy új virtuális gép létrehozása egy virtuá
     | _Előfizetés_ | Az Ön előfizetése | Az az előfizetés, amelyben az erőforrások létrejöttek. |
     | [_Erőforráscsoport_](../azure-resource-manager/management/overview.md) | myResourceGroup | Válassza ki az oktatóanyaghoz tartozó összes erőforrást tartalmazó erőforráscsoportot.  Ugyanezen erőforráscsoport használatával egyszerűbbé válik az erőforrások törlése, amikor ezzel az Oktatóanyaggal végzett. |
     | _Virtuális gép neve_ | myVM | A virtuális gép nevének egyedinek kell lennie az erőforráscsoporthoz |
-    | [_Régió_](https://azure.microsoft.com/regions/) | USA USA északi középső régiója | Válasszon egy Önhöz közeli régiót vagy az elérni kívánt funkciók közelében. |
+    | [_Region_](https://azure.microsoft.com/regions/) | USA USA északi középső régiója | Válasszon egy Önhöz közeli régiót vagy az elérni kívánt funkciók közelében. |
     | _Nyilvános bejövő portok_ | Nincs | Válassza a **nincs** lehetőséget, hogy a virtuális géphez ne legyen bejövő kapcsolat az internetről. A virtuális géphez való távoli hozzáférés az Azure Bastion szolgáltatáson keresztül lesz konfigurálva. |
 
 1. Válassza a _hálózatkezelés_ fület, és válassza az **új létrehozása** lehetőséget az új virtuális hálózat konfigurálásához.
@@ -90,8 +90,8 @@ Az oktatóanyag első lépése egy új virtuális gép létrehozása egy virtuá
 1. A virtuális hálózat létrehozásához kattintson **az OK gombra** .
 1. A _hálózatkezelés_ lapon ellenőrizze, hogy **nincs** -e kiválasztva a _nyilvános IP-cím_ beállítás.
 1. Válassza a _felügyelet_ fület, majd a _diagnosztikai Storage-fiók_ területen válassza az **új létrehozása** lehetőséget egy új Storage-fiók létrehozásához.
-1. Hagyja meg az _identitás_ , az _automatikus leállítás_ és a _biztonsági mentési_ csoportok alapértelmezett értékeit.
-1. Válassza a _Felülvizsgálat + létrehozás_ lehetőséget. Az érvényesítés befejezése után válassza a **Létrehozás** lehetőséget. A virtuális gép létrehozási folyamata néhány percet vesz igénybe.
+1. Hagyja meg az _identitás_, az _automatikus leállítás_ és a _biztonsági mentési_ csoportok alapértelmezett értékeit.
+1. Válassza az _Áttekintés + létrehozás_ lehetőséget. Az érvényesítés befejezése után válassza a **Létrehozás** lehetőséget. A virtuális gép létrehozási folyamata néhány percet vesz igénybe.
 
 ## <a name="configure-azure-bastion"></a>Az Azure Bastion konfigurálása
 
@@ -113,7 +113,7 @@ Az [Azure Bastion](https://azure.microsoft.com/services/azure-bastion/) egy telj
     | _Alhálózat_ | AzureBastionSubnet | Annak a virtuális hálózatnak az alhálózata, amelyhez az új megerősített gazdagép erőforrása telepítve lesz. Létre kell hoznia egy alhálózatot a **AzureBastionSubnet** név érték használatával. Ez az érték lehetővé teszi, hogy az Azure tudja, melyik alhálózaton telepítse a megerősített erőforrásokat a következőre:. Legalább **/27** vagy nagyobb (/27,/26 stb.) alhálózatot kell használnia. |
 
     > [!NOTE]
-    > Az Azure megerősített erőforrás létrehozásával kapcsolatos részletes útmutatóért tekintse meg az [Azure Bastion-gazdagép létrehozása](../bastion/bastion-create-host-portal.md) oktatóanyagot.
+    > Az Azure megerősített erőforrás létrehozásával kapcsolatos részletes útmutatóért tekintse meg az [Azure Bastion-gazdagép létrehozása](../bastion/tutorial-create-host-portal.md) oktatóanyagot.
 
 1. Hozzon létre egy alhálózatot, amelyben az Azure kiépítheti az Azure-beli megerősített gazdagépet. Az **alhálózati konfiguráció kezelése** lehetőség megnyit egy új ablaktáblát, ahol megadhat egy új alhálózatot.  Válassza a **+ alhálózat** lehetőséget egy új alhálózat létrehozásához.
 1. Az alhálózatnak a **AzureBastionSubnet** névvel kell rendelkeznie, és az alhálózati előtagnak legalább **/27-** nek kell lennie.  Az alhálózat létrehozásához kattintson **az OK gombra** .
@@ -145,7 +145,7 @@ A következő lépés egy Function-alkalmazás létrehozása az Azure-ban a [fel
     | _Régió_ | USA északi középső régiója | Válasszon egy Önhöz közeli [régiót](https://azure.microsoft.com/regions/) vagy a funkciókhoz tartozó egyéb szolgáltatások közelében. |
 
     Válassza a **következő: >üzemeltetése** gombot.
-1. A _hoszting_ szakaszban válassza ki a megfelelő _Storage-fiókot_ , _operációs rendszert_ és _tervet_ a következő táblázatban leírtak szerint.
+1. A _hoszting_ szakaszban válassza ki a megfelelő _Storage-fiókot_, _operációs rendszert_ és _tervet_ a következő táblázatban leírtak szerint.
 
     | Beállítás      | Ajánlott érték  | Leírás      |
     | ------------ | ---------------- | ---------------- |
@@ -165,7 +165,7 @@ A [privát hely](functions-networking-options.md#private-endpoint-connections) e
 1. A _hálózatkezelés_ lap a kiindulási pont, amely az Azure bejárati ajtót, a Azure CDNt és a hozzáférés korlátozásait is beállítja.
 1. Válassza a **hozzáférési korlátozások konfigurálása** lehetőséget a privát hely elérésének konfigurálásához.
 1. A _hozzáférési korlátozások_ lapon csak az alapértelmezett korlátozás jelenik meg. Az alapértelmezett érték nem korlátozza a Function alkalmazáshoz való hozzáférést.  Válassza a **szabály hozzáadása** lehetőséget a privát hely hozzáférés-korlátozási konfigurációjának létrehozásához.
-1. A _hozzáférés-korlátozás hozzáadása_ panelen adja meg az új szabály _nevét_ , _prioritását_ és _leírását_ .
+1. A _hozzáférés-korlátozás hozzáadása_ panelen adja meg az új szabály _nevét_, _prioritását_ és _leírását_ .
 1. Válassza ki a **Virtual Network** elemet a _típus_ legördülő listából, majd válassza ki a korábban létrehozott virtuális hálózatot, majd válassza ki az **oktatóanyag** -alhálózatot. 
     > [!NOTE]
     > A szolgáltatás végpontjának engedélyezése több percet is igénybe vehet.
@@ -194,9 +194,9 @@ Az oktatóanyag következő lépése egy HTTP-triggerű Azure-függvény létreh
 
 1. A Azure Functions-alkalmazás létrehozásához és üzembe helyezéséhez kövesse az alábbi rövid útmutatók egyikét.
 
-    * [Visual Studio Code](./functions-create-first-function-vs-code.md)
+    * [Visual Studio Code](./create-first-function-vs-code-csharp.md)
     * [Visual Studio](./functions-create-your-first-function-visual-studio.md)
-    * [Parancssor](./functions-create-first-azure-function-azure-cli.md)
+    * [Parancssor](./create-first-function-cli-csharp.md)
     * [Maven (Java)](./create-first-function-cli-java.md?tabs=bash,browser)
 
 1. Azure Functions projekt közzétételekor válassza ki az oktatóanyag során korábban létrehozott Function app-erőforrást.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: Zhchia
-ms.openlocfilehash: 10b7b79ba5081e6133f2e5e94840eddfe403caef
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4d877468e87edb11b606668739d8d539ef0cc1dd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013173"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180849"
 ---
 # <a name="tutorial-configure-ideo-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés IDEO konfigurálása
 
@@ -39,7 +39,7 @@ Az oktatóanyag célja annak bemutatása, hogy milyen lépéseket kell végrehaj
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
 * [Egy Azure AD-bérlő](../develop/quickstart-create-new-tenant.md).
-* Egy felhasználói fiók az Azure AD-ben az átadás konfigurálására vonatkozó [engedéllyel](../users-groups-roles/directory-assign-admin-roles.md) (pl. alkalmazás-rendszergazda, felhőalkalmazás-rendszergazda, alkalmazástulajdonos vagy globális rendszergazda).
+* Egy felhasználói fiók az Azure AD-ben az átadás konfigurálására vonatkozó [engedéllyel](../roles/permissions-reference.md) (pl. alkalmazás-rendszergazda, felhőalkalmazás-rendszergazda, alkalmazástulajdonos vagy globális rendszergazda).
 * [IDEO-bérlő](https://www.shape.space/product/pricing)
 * Felhasználói fiók a IDEO-on | Alakzat rendszergazdai engedélyekkel.
 

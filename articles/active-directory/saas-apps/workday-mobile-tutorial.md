@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: e706649957bf427cd577d7995fb9ce104c687f4b
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: ef1ca41f54a15554a04fa3edf608bb13f5fb3398
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378992"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182019"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday-mobile-application"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a munkanap Mobile alkalmazással
 
@@ -33,13 +33,13 @@ Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Azure Active Dir
 Első lépések:
 
 * Munkanapok integrálása az Azure AD-vel.
-* Olvassa el [Azure Active Directory egyszeri bejelentkezéses (SSO) integrációt a munkanapokkal](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-tutorial).
+* Olvassa el [Azure Active Directory egyszeri bejelentkezéses (SSO) integrációt a munkanapokkal](./workday-tutorial.md).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 Ebben az oktatóanyagban az Azure AD feltételes hozzáférési szabályzatait és az Intune-t a munkanap Mobile Application szolgáltatással konfigurálja és teszteli.
 
-Az egyszeri bejelentkezés (SSO) engedélyezéséhez az Azure AD-vel konfigurálhatja a munkanap összevont alkalmazását. További információ: [Azure Active Directory egyszeri bejelentkezés (SSO) integrálása munkanapokkal](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-tutorial).
+Az egyszeri bejelentkezés (SSO) engedélyezéséhez az Azure AD-vel konfigurálhatja a munkanap összevont alkalmazását. További információ: [Azure Active Directory egyszeri bejelentkezés (SSO) integrálása munkanapokkal](./workday-tutorial.md).
 
 > [!NOTE] 
 > A munkanap nem támogatja az Intune alkalmazás-védelmi szabályzatait. A feltételes hozzáférés használatához a mobileszközök felügyeletét kell használnia.
@@ -86,7 +86,7 @@ Ha a munkanapokat felügyelt eszközként szeretné beállítani, hajtsa végre 
 
 1. **Csak felügyelt eszközök** esetén a **név** területen válassza a **csak felügyelt eszközök** lehetőséget, majd válassza a **felhőalapú alkalmazások vagy műveletek** lehetőséget.
 
-1. **Felhőalapú alkalmazásokban vagy műveletekben** :
+1. **Felhőalapú alkalmazásokban vagy műveletekben**:
 
     a. Váltson át a **felhőalapú alkalmazásokra** **vonatkozó szabályzat kiválasztásához** .
 
@@ -94,11 +94,11 @@ Ha a munkanapokat felügyelt eszközként szeretné beállítani, hajtsa végre 
 
     c. A **kiválasztás** listából válassza a **munkanap** lehetőséget.
 
-    d. Válassza a **Done** (Kész) lehetőséget.
+    d. Válassza a **Kész** lehetőséget.
 
 1. Kapcsolja be az engedélyezési **szabályzatot** **a** következőre:.
 
-1. Válassza a **Save** (Mentés) lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 A hozzáférés **biztosítása** érdekében hajtsa végre a következő lépéseket:
 
@@ -108,7 +108,7 @@ A hozzáférés **biztosítása** érdekében hajtsa végre a következő lépé
 
 1. A **csak felügyelt eszközök** **területen válassza a** **csak felügyelt eszközök** elemet. A **Hozzáférés-vezérlés** alatt válassza ki az **Engedélyezés** elemet.
 
-1. A **Grant** :
+1. A **Grant**:
 
     a. Válassza ki azokat a vezérlőket, amelyek számára **engedélyezi a hozzáférést**.
 
@@ -120,7 +120,7 @@ A hozzáférés **biztosítása** érdekében hajtsa végre a következő lépé
 
 1. Kapcsolja be az engedélyezési **szabályzatot** **a** következőre:.
 
-1. Válassza a **Save** (Mentés) lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="set-up-device-compliance-policy"></a>Eszköz megfelelőségi szabályzatának beállítása
 
@@ -168,10 +168,10 @@ Annak biztosítása érdekében, hogy az iOS-eszközök csak a mobileszköz-keze
     </dict>
 
     ```
-1. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza a **Hozzáadás** elemet.
 1. Frissítse az oldalt, és válassza ki az újonnan létrehozott házirendet.
 1. Válassza a **hozzárendelések** lehetőséget, majd válassza ki, hogy ki szeretné alkalmazni az alkalmazást.
-1. Válassza a **Save** (Mentés) lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="android-configuration-policies"></a>Konfigurációs szabályzatok Android-alapú eszközökhöz
 
@@ -182,4 +182,3 @@ Annak biztosítása érdekében, hogy az iOS-eszközök csak a mobileszköz-keze
 6. A **platform** területen válassza az **Android** lehetőséget.
 7. A **társított alkalmazás** alatt válassza ki az Android-alkalmazáshoz hozzáadott munkanapokat.
 8. Válassza a **konfigurációs beállítások** lehetőséget. A **konfigurációs beállítások formátuma** területen válassza a **JSON-adat megadása** lehetőséget.
-

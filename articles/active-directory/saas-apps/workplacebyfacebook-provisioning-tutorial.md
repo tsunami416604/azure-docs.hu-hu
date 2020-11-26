@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.openlocfilehash: d0113ea684b9b2fb26eac1fb5ceec5b53aef677f
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: e690a761efcd16428f9da8fe53e5dd8d26e9ff79
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359748"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181284"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Oktatóanyag: a munkahelyi környezet konfigurálása a Facebook használatával a felhasználók automatikus üzembe helyezéséhez
 
@@ -35,7 +35,7 @@ Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a Facebook és Azur
 Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
 * [Azure AD-bérlő](../develop/quickstart-create-new-tenant.md) 
-* Egy Azure AD-beli felhasználói fiók, amely [jogosult](../users-groups-roles/directory-assign-admin-roles.md) a kiépítés konfigurálására (például alkalmazás-rendszergazda, Felhőbeli alkalmazás-rendszergazda, alkalmazás tulajdonosa vagy globális rendszergazda)
+* Egy Azure AD-beli felhasználói fiók, amely [jogosult](../roles/permissions-reference.md) a kiépítés konfigurálására (például alkalmazás-rendszergazda, Felhőbeli alkalmazás-rendszergazda, alkalmazás tulajdonosa vagy globális rendszergazda)
 * A Facebook egyszeri bejelentkezéses előfizetést használó munkaterülete
 
 > [!NOTE]
@@ -166,7 +166,7 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 
 * 09/10/2020 – a (z) "Division", "Organization", "costCenter" és "employeeNumber" vállalati attribútumok támogatása. A "startDate", a "auth_method" és a "Frontline" egyéni attribútumok támogatása
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 185b61f77b275ed78050f5d8efb820c5333f6e1f
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: d813757d5adb8cee9b83e0486baed80ae1bac874
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358575"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180931"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés DocuSign konfigurálása
 
@@ -95,12 +95,12 @@ Elindítja a felhasználók és csoportok szakaszban DocuSign rendelt felhaszná
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
 ## <a name="troubleshooting-tips"></a>Hibaelhárítási tippek
-* A Docusign felhasználó szerepkör-vagy engedélyezési profiljának kiépítéséhez használhatja az attribútum-hozzárendelések kifejezését a [switch](https://docs.microsoft.com/azure/active-directory/app-provisioning/functions-for-customizing-application-data#switch) és a [singleAppRoleAssignment](https://docs.microsoft.com/azure/active-directory/app-provisioning/functions-for-customizing-application-data#singleapproleassignment) függvények használatával. Az alábbi kifejezés például a "8032066" azonosítót fogja kiépíteni, ha egy felhasználónál az Azure AD-ben hozzá van rendelve a "DS-rendszergazda" szerepkör. Ha a felhasználó nincs hozzárendelve szerepkör az Azure AD-oldalhoz, nem fog semmilyen jogosultsági profilt kiépíteni. Az azonosító a DocuSign- [portálról](https://support.docusign.com/articles/Default-settings-for-out-of-the-box-DocuSign-Permission-Profiles)kérhető le.
+* A Docusign felhasználó szerepkör-vagy engedélyezési profiljának kiépítéséhez használhatja az attribútum-hozzárendelések kifejezését a [switch](../app-provisioning/functions-for-customizing-application-data.md#switch) és a [singleAppRoleAssignment](../app-provisioning/functions-for-customizing-application-data.md#singleapproleassignment) függvények használatával. Az alábbi kifejezés például a "8032066" azonosítót fogja kiépíteni, ha egy felhasználónál az Azure AD-ben hozzá van rendelve a "DS-rendszergazda" szerepkör. Ha a felhasználó nincs hozzárendelve szerepkör az Azure AD-oldalhoz, nem fog semmilyen jogosultsági profilt kiépíteni. Az azonosító a DocuSign- [portálról](https://support.docusign.com/articles/Default-settings-for-out-of-the-box-DocuSign-Permission-Profiles)kérhető le.
 
 Switch (SingleAppRoleAssignment ([appRoleAssignments]), "", "8032066", "DS-rendszergazda")
 
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

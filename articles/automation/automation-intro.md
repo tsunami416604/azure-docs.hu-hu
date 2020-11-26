@@ -7,12 +7,12 @@ keywords: Azure Automation, DSC, PowerShell, állapot-konfiguráció, Update Man
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 24aeb37cf868bed5d4211bc9b459a4736ceea4b2
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: e3986b7e8fc70f8662bed40b076897caa6165744
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205336"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182818"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Az Azure Automation bemutatása
 
@@ -43,7 +43,7 @@ A Change Tracking és a leltár ötvözi a Change Tracking and Inventory függv�
 
 ## <a name="update-management"></a>Frissítéskezelés
 
-A Azure Automation a Windows-és Linux-rendszerek [Update Management](update-management/update-mgmt-overview.md) funkcióját is tartalmazza hibrid környezetek között. A Update Management az Azure-ban és más felhőkben, illetve a helyszínen is elérhetővé teszi a frissítési megfelelőséget. A szolgáltatással olyan ütemezett központi telepítéseket hozhat létre, amelyek egy meghatározott karbantartási időszakon belül hangolják össze a frissítések telepítését. Ha egy frissítést nem kell telepíteni a gépre, Update Management funkcióval kizárhatja azt egy központi telepítésből.
+A Azure Automation a Windows-és Linux-rendszerek [Update Management](./update-management/overview.md) funkcióját is tartalmazza hibrid környezetek között. A Update Management az Azure-ban és más felhőkben, illetve a helyszínen is elérhetővé teszi a frissítési megfelelőséget. A szolgáltatással olyan ütemezett központi telepítéseket hozhat létre, amelyek egy meghatározott karbantartási időszakon belül hangolják össze a frissítések telepítését. Ha egy frissítést nem kell telepíteni a gépre, Update Management funkcióval kizárhatja azt egy központi telepítésből.
 
 ## <a name="shared-capabilities"></a>Közös képességek
 

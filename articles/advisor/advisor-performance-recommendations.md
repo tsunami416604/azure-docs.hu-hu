@@ -3,12 +3,12 @@ title: Az Azure-alkalmazások teljesítményének javítása az Advisor szolgál
 description: Az üzleti szempontból kritikus fontosságú alkalmazások sebességének és reagálásának javítása érdekében Azure Advisor teljesítményre vonatkozó javaslatokat használhat.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 6a008411d4422853e6a98fad59bd4519b42a9548
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 55f5ac6784bf613170fd10060799ab5ad1290a62
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308686"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183345"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Az Azure-alkalmazások teljesítményének növelése Azure Advisor használatával
 
@@ -146,7 +146,7 @@ Az Advisor olyan Azure Cosmos DB-fiókokat észlel, amelyeknek jelenleg nincs ko
 
 ## <a name="configure-your-azure-cosmos-db-indexing-policy-by-using-custom-included-or-excluded-paths"></a>Az Azure Cosmos DB indexelési házirend konfigurálása egyéni, belefoglalt vagy kizárt elérési utak használatával
 
-Az Advisor azonosítja Azure Cosmos DB tárolókat, amelyek az alapértelmezett indexelési házirendet használják, de az egyéni indexelési házirendek előnyeit is kihasználhatják. Ez a meghatározás a számítási feladatok mintáján alapul. Az alapértelmezett indexelési házirend indexeli az összes tulajdonságot. A lekérdezési szűrőben használt explicit belefoglalt vagy kizárt elérési úttal rendelkező egyéni indexelési házirend csökkentheti az indexeléshez felhasznált RUs-t és tárterületet. [További információ az index-házirendek módosításáról.](/azure/cosmos-db/index-policy)
+Az Advisor azonosítja Azure Cosmos DB tárolókat, amelyek az alapértelmezett indexelési házirendet használják, de az egyéni indexelési házirendek előnyeit is kihasználhatják. Ez a meghatározás a számítási feladatok mintáján alapul. Az alapértelmezett indexelési házirend indexeli az összes tulajdonságot. A lekérdezési szűrőben használt explicit belefoglalt vagy kizárt elérési úttal rendelkező egyéni indexelési házirend csökkentheti az indexeléshez felhasznált RUs-t és tárterületet. [További információ az index-házirendek módosításáról.](../cosmos-db/index-policy.md)
 
 ## <a name="set-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>Azure Cosmos DB lekérdezési oldal méretének (MaxItemCount) beállítása a-1 értékre 
 

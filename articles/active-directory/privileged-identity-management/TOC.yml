@@ -11,7 +11,7 @@
     - name: A PIM-mel nem kezelhető szerepkörök
       href: pim-roles.md
     - name: Biztonságos emelt szintű hozzáférés
-      href: ../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
+      href: ../roles/security-planning.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
     - name: MFA és PIM
       href: pim-how-to-require-mfa.md
     - name: Áttekintő irányítópultok

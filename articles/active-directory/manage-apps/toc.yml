@@ -263,7 +263,7 @@
             - name: A Kerberos által korlátozott delegálás konfigurálása
               href: application-proxy-back-end-kerberos-constrained-delegation-how-to.md
             - name: Konfigurálás a PingAccess segítségével
-              href: /azure/active-directory/manage-apps/application-proxy-ping-access-publishing-guide
+              href: ./application-proxy-ping-access-publishing-guide.md
             - name: „Can't Access this Corporate Application” (Nem lehet hozzáférni ehhez a céges alkalmazáshoz) hibaüzenet
               href: application-proxy-sign-in-bad-gateway-timeout-error.md
             - name: Probléma az alkalmazásproxy-ügynök összekötőjének telepítésekor

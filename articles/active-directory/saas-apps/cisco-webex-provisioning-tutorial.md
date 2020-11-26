@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: 069c8a8e2a595248afe45bbb90de877b3b6fc87d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc05e83ac6c7f0f7c5e9a571c1fa7397af858f44
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91849338"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180098"
 ---
 # <a name="tutorial-configure-cisco-webex-for-automatic-user-provisioning"></a>Oktatóanyag: a Cisco WebEx konfigurálása automatikus felhasználó-kiépítési szolgáltatáshoz
 
@@ -53,7 +53,7 @@ Mielőtt a Cisco WebEx-t az Azure AD-vel való automatikus felhasználói üzemb
 
     ![Az új alkalmazás gomb](common/add-new-app.png)
 
-4. A keresőmezőbe írja be a **Cisco WebEx**kifejezést, válassza a **Cisco WebEx** az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
+4. A keresőmezőbe írja be a **Cisco WebEx** kifejezést, válassza a **Cisco WebEx** az eredmények panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
     ![Cisco WebEx az eredmények listájában](common/search-new-app.png)
 
@@ -77,11 +77,11 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 ### <a name="to-configure-automatic-user-provisioning-for-cisco-webex-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása a Cisco WebEx az Azure AD-ben:
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **Cisco WebEx**lehetőséget.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza a **Cisco WebEx** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **Cisco WebEx**elemet.
+2. Az alkalmazások listában válassza a **Cisco WebEx** elemet.
 
     ![A Cisco WebEx hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -91,39 +91,39 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 4. Állítsa a **Kiépítési mód** mezőt **Automatikus** értékre.
 
-    :::image type="content" source="common/provisioning-automatic.png" alt-text="Képernyőkép a Azure Portal egyik menüjéről. A kezelés területen ki van emelve a kiépítés." border="false":::
+    :::image type="content" source="common/provisioning-automatic.png" alt-text="Képernyőkép a kiépítési mód listájáról, amely automatikusan ki van emelve." border="false":::
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a Cisco WebEx-fiókjának **bérlői URL-címét**és **titkos jogkivonatát** .
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a Cisco WebEx-fiókjának **bérlői URL-címét** és **titkos jogkivonatát** .
 
-    :::image type="content" source="./media/cisco-webex-provisioning-tutorial/secrettoken1.png" alt-text="Képernyőkép a Azure Portal egyik menüjéről. A kezelés területen ki van emelve a kiépítés." border="false":::
+    :::image type="content" source="./media/cisco-webex-provisioning-tutorial/secrettoken1.png" alt-text="A rendszergazdai hitelesítő adatok szakasz képernyőképe. A bérlő U R L és titkos jogkivonat mezői kiemelve vannak, de üresek." border="false":::
 
 6.  A **bérlői URL-cím** mezőben adjon meg egy értéket a formájában `https://api.ciscospark.com/v1/scim/[OrgId]` . A beszerzéshez `[OrgId]` Jelentkezzen be a [Cisco WebEx Control hub](https://admin.webex.com/login)webhelyre. Kattintson a szervezet nevére a bal alsó sarokban, és másolja az értéket a **szervezet azonosítójában**. 
 
-    * A **titkos jogkivonat**értékének beszerzéséhez navigáljon erre az [URL-címre](https://idbroker.webex.com/idb/saml2/jsp/doSSO.jsp?type=login&goto=https%3A%2F%2Fidbroker.webex.com%2Fidb%2Foauth2%2Fv1%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3DC4ca14fe00b0e51efb414ebd45aa88c1858c3bfb949b2405dba10b0ca4bc37402%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fauth%252Fcode%26scope%3Dspark%253Apeople_read%2520spark%253Apeople_write%2520Identity%253ASCIM%26state%3Dthis-should-be-a-random-string-for-security-purpose). A megjelenő WebEx bejelentkezési oldalon jelentkezzen be a szervezete teljes Cisco WebEx-rendszergazdai fiókjával. Megjelenik egy hibaüzenet, amely azt jelzi, hogy a hely nem érhető el, de ez normális.
+    * A **titkos jogkivonat** értékének beszerzéséhez navigáljon erre az [URL-címre](https://idbroker.webex.com/idb/saml2/jsp/doSSO.jsp?type=login&goto=https%3A%2F%2Fidbroker.webex.com%2Fidb%2Foauth2%2Fv1%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3DC4ca14fe00b0e51efb414ebd45aa88c1858c3bfb949b2405dba10b0ca4bc37402%26redirect_uri%3Dhttp%253A%2f%2flocalhost%253A3000%2fauth%2fcode%26scope%3Dspark%253Apeople_read%2520spark%253Apeople_write%2520Identity%253ASCIM%26state%3Dthis-should-be-a-random-string-for-security-purpose). A megjelenő WebEx bejelentkezési oldalon jelentkezzen be a szervezete teljes Cisco WebEx-rendszergazdai fiókjával. Megjelenik egy hibaüzenet, amely azt jelzi, hogy a hely nem érhető el, de ez normális.
 
-        :::image type="content" source="./media/cisco-webex-provisioning-tutorial/test.png" alt-text="Képernyőkép a Azure Portal egyik menüjéről. A kezelés területen ki van emelve a kiépítés." border="false":::
+        :::image type="content" source="./media/cisco-webex-provisioning-tutorial/test.png" alt-text="Képernyőkép egy hibaüzenetet megjelenítő weblapról. Az üzenet azt mondja, hogy a hely nem érhető el, és néhány hibaelhárítási tippet tartalmaz." border="false":::
  
     * Másolja a generált tulajdonosi jogkivonat értékét az URL-címről az alábbi kiemelt értékre. Ez a jogkivonat 365 napig érvényes.
         
-        :::image type="content" source="./media/cisco-webex-provisioning-tutorial/test1.png" alt-text="Képernyőkép a Azure Portal egyik menüjéről. A kezelés területen ki van emelve a kiépítés." border="false":::
+        :::image type="content" source="./media/cisco-webex-provisioning-tutorial/test1.png" alt-text="Képernyőfelvétel: egy hosszú U R L. a cím egy része nem megfejthető, de Kiemelt és címkézett tulajdonosi jogkivonat." border="false":::
 
 7. Az 5. lépésben megjelenő mezők kitöltése után kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozni tudjanak a Cisco WebEx. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Cisco WebEx-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
     ![Bérlői URL + token](common/provisioning-testconnection-tenanturltoken.png)
    
-8. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
+8. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba** esetén.
 
     ![Értesítés e-mailben](common/provisioning-notification-email.png)
 
 9. Kattintson a **Mentés** gombra.
 
-10. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Cisco WebEx**lehetőséget.
+10. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a Cisco WebEx** lehetőséget.
 
-    :::image type="content" source="./media/cisco-webex-provisioning-tutorial/usermapping.png" alt-text="Képernyőkép a Azure Portal egyik menüjéről. A kezelés területen ki van emelve a kiépítés." border="false":::
+    :::image type="content" source="./media/cisco-webex-provisioning-tutorial/usermapping.png" alt-text="Képernyőkép a Azure Portal leképezések szakaszáról. A név alatt szinkronizálja Azure Active Directory felhasználókat a CiscoSpark." border="false":::
 
 11. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az attribútum- **hozzárendelési** szakaszban a Cisco WebEx. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Cisco WebEx felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    :::image type="content" source="./media/cisco-webex-provisioning-tutorial/usermappingattributes.png" alt-text="Képernyőkép a Azure Portal egyik menüjéről. A kezelés területen ki van emelve a kiépítés." border="false":::
+    :::image type="content" source="./media/cisco-webex-provisioning-tutorial/usermappingattributes.png" alt-text="Képernyőkép az attribútum-hozzárendelésekről szakasz, amely a Azure Active Directory attribútumokat, a megfelelő CiscoSpark-attribútumokat és a megfelelő állapotot jeleníti meg." border="false":::
 
 12. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
 
