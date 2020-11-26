@@ -1,5 +1,5 @@
 ---
-title: Metrikák figyelője REST API rövid útmutató
+title: Metrikai tanácsadó REST API rövid útmutató
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: mrbullwinkle
@@ -9,12 +9,12 @@ ms.subservice: metrics-advisor
 ms.topic: include
 ms.date: 09/23/2020
 ms.author: mbullwin
-ms.openlocfilehash: 416f28f51a3ebe00e7227503f189898406229c8a
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 42ea166119d3cc405b3d73e184c44dbfd6708a97
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047461"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96231480"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -38,7 +38,7 @@ A REST API használatának megkezdéséhez két kulcsra lesz szüksége:
 
 ## <a name="add-a-data-feed-from-a-sample-or-data-source"></a>Adatcsatorna hozzáadása minta vagy adatforrás alapján
 
-Az idősorozat-adatai figyelésének megkezdéséhez hozzá kell adnia egy adatcsatornát. Adatcsatorna hozzáadásához meg kell adnia egy adatsémát az adatforrás típusa és paraméterei alapján. Mentse az alábbi JSON-kérés törzsét egy *body.json*nevű fájlba, és futtassa a cURL parancsot.
+Az idősorozat-adatai figyelésének megkezdéséhez hozzá kell adnia egy adatcsatornát. Adatcsatorna hozzáadásához meg kell adnia egy adatsémát az adatforrás típusa és paraméterei alapján. Mentse az alábbi JSON-kérés törzsét egy *body.json* nevű fájlba, és futtassa a cURL parancsot.
 
 ```json
 {
@@ -115,7 +115,7 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 x-content-type-options: nosniff
 Date: Thu, 03 Sep 2020 18:29:27 GMT
 ```
-A fenti válaszban a **Location** header a létrehozott adatcsatorna URL-címe, amely **dataFeedID**tartalmaz. 
+A fenti válaszban a **Location** header a létrehozott adatcsatorna URL-címe, amely **dataFeedID** tartalmaz. 
 
 A fenti URL-cím használatával az előző lépésben létrehozott adatcsatorna részletes adatait kérdezheti le. (A **metricID** a következő lépésekben fogjuk használni az adatcsatorna adataiban)
 
@@ -197,7 +197,7 @@ curl https://REPLACE-WITH-YOUR-ENDPOINT/metricsadvisor/v1.0/datafeeds/REPLACE-WI
 
 ## <a name="check-ingestion-status"></a>Betöltési állapot keresése
 
-Ha az adatcsatorna hozzáadása után szeretné megtekinteni a betöltési feladatok állapotát, megtekintheti azt. Mentse az alábbi JSON-kérés törzsét egy *body.json*nevű fájlba, és futtassa a cURL parancsot.
+Ha az adatcsatorna hozzáadása után szeretné megtekinteni a betöltési feladatok állapotát, megtekintheti azt. Mentse az alábbi JSON-kérés törzsét egy *body.json* nevű fájlba, és futtassa a cURL parancsot.
 
 ```json
 {
@@ -246,7 +246,7 @@ curl https://REPLACE-WITH-YOUR-ENDPOINT/metricsadvisor/v1.0/datafeeds/REPLACE-WI
 
 ##  <a name="configure-anomaly-detection-configuration"></a>Anomáliák észlelési konfigurációjának konfigurálása
 
-Az egyes mérőszámokra automatikusan alkalmazza az alapértelmezett konfigurációt, és beállíthatja az adatokon használt észlelési módokat. Mentse az alábbi JSON-kérés törzsét egy *body.json*nevű fájlba, és futtassa a cURL parancsot.
+Az egyes mérőszámokra automatikusan alkalmazza az alapértelmezett konfigurációt, és beállíthatja az adatokon használt észlelési módokat. Mentse az alábbi JSON-kérés törzsét egy *body.json* nevű fájlba, és futtassa a cURL parancsot.
 
 ```json
 {
@@ -338,7 +338,7 @@ curl https://REPLACE-WITH-YOUR-ENDPOINT/metricsadvisor/v1.0/enrichment/anomalyDe
 
 A riasztás konfigurálása előtt létre kell hoznia egy hookot, amelyet a rendszer a riasztások értesítésére használ majd. A riasztások aktiválásakor kétféleképpen lehet értesítést kapni, amely webhook és e-mail-cím. A kampós konfigurációban a horog létrehozásakor megadhatja az egyiket a horog típusaként.
 
-Mentse az alábbi JSON-kérés törzsét egy *body.json*nevű fájlba, és futtassa a cURL parancsot.
+Mentse az alábbi JSON-kérés törzsét egy *body.json* nevű fájlba, és futtassa a cURL parancsot.
 
 ```json
 {
@@ -414,7 +414,7 @@ curl https://REPLACE-WITH-YOUR-ENDPOINT/metricsadvisor/v1.0/hooks/REPLACE-WITH-Y
 }
 ```
 
-A riasztások konfigurálásának konfigurálásával megadhatja az észlelési feltételt, amely a riasztás indítására használható. Mentse az alábbi JSON-kérés törzsét egy *body.json*nevű fájlba, és futtassa a cURL parancsot.
+A riasztások konfigurálásának konfigurálásával megadhatja az észlelési feltételt, amely a riasztás indítására használható. Mentse az alábbi JSON-kérés törzsét egy *body.json* nevű fájlba, és futtassa a cURL parancsot.
 
 ```json
 {
@@ -538,7 +538,7 @@ curl https://REPLACE-WITH-YOUR-ENDPOINT/metricsadvisor/v1.0/alert/anomaly/config
 }
 ```
 
-A fenti válaszban riasztást kaptunk. Ezzel a **alertID**a riasztást kiváltó összes kapcsolódó rendellenesség lekérdezhető.
+A fenti válaszban riasztást kaptunk. Ezzel a **alertID** a riasztást kiváltó összes kapcsolódó rendellenesség lekérdezhető.
 
 (A riasztások beszerzésének másik módja a webhook konfigurálása, valamint a passzív riasztások fogadása, ha megtalálható)
 
