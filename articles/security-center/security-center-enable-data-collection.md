@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 7d96b03598f90b45b7ecf88027be7408d8f161ea
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: 53130e395995b3533a45a96f897a0c6bcf1e4c71
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638767"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187187"
 ---
 # <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>Ügynökök és bővítmények automatikus kiépítés a Azure Security Centerból
 
@@ -23,8 +23,8 @@ Az adatgyűjtés szükséges a hiányzó frissítések láthatóságának biztos
 
 Az adatok gyűjtése a használatával történik:
 
-- A **log Analytics ügynök** , amely különböző biztonsággal kapcsolatos konfigurációkat és eseménynaplókat olvas be a gépről, és átmásolja az adatokat a munkaterületre elemzés céljából. Ilyenek például a következők: az operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép neve, az IP-címek és a bejelentkezett felhasználó.
-- A **biztonsági bővítmények** , például a [Kubernetes Azure Policy-bővítménye](../governance/policy/concepts/policy-for-kubernetes.md), amely a speciális erőforrástípusok Security Center vonatkozó információkat is biztosít.
+- A **log Analytics ügynök**, amely különböző biztonsággal kapcsolatos konfigurációkat és eseménynaplókat olvas be a gépről, és átmásolja az adatokat a munkaterületre elemzés céljából. Ilyenek például a következők: az operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép neve, az IP-címek és a bejelentkezett felhasználó.
+- A **biztonsági bővítmények**, például a [Kubernetes Azure Policy-bővítménye](../governance/policy/concepts/policy-for-kubernetes.md), amely a speciális erőforrástípusok Security Center vonatkozó információkat is biztosít.
 
 > [!TIP]
 > Ahogy a Security Center nőtt, a megfigyelhető erőforrások típusai is megnőttek. A bővítmények száma is megnőtt. Az automatikus kiépítés kibővült a további erőforrástípusok támogatásához a Azure Policy képességeinek kihasználásával.

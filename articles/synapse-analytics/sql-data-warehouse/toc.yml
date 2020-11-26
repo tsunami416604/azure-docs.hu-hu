@@ -424,5 +424,9 @@
           href: sql-data-warehouse-partner-data-management.md
         - name: Gépi tanulás és mesterséges intelligencia
           href: sql-data-warehouse-partner-machine-learning-ai.md
+        - name: Rendszer-integráció
+          href: sql-data-warehouse-partner-system-integration.md
         - name: A nyilvános előzetes verzió partnerei
           href: sql-data-warehouse-partner-launch.md
+        - name: Kompatibilitási problémák külső alkalmazások használatakor
+          href: sql-data-warehouse-partner-compatibility-issues.md

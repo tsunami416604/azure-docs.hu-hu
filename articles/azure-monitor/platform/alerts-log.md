@@ -6,18 +6,18 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
-ms.openlocfilehash: 0842efe304faa9a0d94fbf71075f1bc16ff34014
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 61aba3e5792d1cc20da16686d052de91744dab76
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018205"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186779"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Naplózási riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával
 
 ## <a name="overview"></a>Áttekintés
 
-A riasztások naplózása lehetővé teszi, hogy a felhasználók egy [log Analytics](../log-query/get-started-portal.md) lekérdezést használjanak, amellyel kiértékelheti az erőforrások összes készletének gyakoriságát, és egy riasztást az eredmények alapján. A szabályok egy vagy több műveletet aktiválnak a [műveleti csoportok](./action-groups.md)használatával. [További információ a naplózási riasztások funkcióival és terminológiával kapcsolatban](alerts-unified-log.md).
+A riasztások naplózása lehetővé teszi, hogy a felhasználók egy [log Analytics](../log-query/log-analytics-tutorial.md) lekérdezést használjanak, amellyel kiértékelheti az erőforrások összes készletének gyakoriságát, és egy riasztást az eredmények alapján. A szabályok egy vagy több műveletet aktiválnak a [műveleti csoportok](./action-groups.md)használatával. [További információ a naplózási riasztások funkcióival és terminológiával kapcsolatban](alerts-unified-log.md).
 
 Ez a cikk bemutatja, hogyan hozhat létre és kezelhet naplózási riasztásokat a Azure Monitor használatával. A riasztási szabályokat három összetevő határozza meg:
 - Cél: A figyelni kívánt Azure-erőforrás.
@@ -27,7 +27,7 @@ Ez a cikk bemutatja, hogyan hozhat létre és kezelhet naplózási riasztásokat
 A naplózási riasztási szabályokat Azure Resource Manager sablonok használatával is létrehozhatja, amelyek [külön cikkben](alerts-log-create-templates.md)vannak leírva.
 
 > [!NOTE]
-> [Log Analytics munkaterületről](../log-query/get-started-portal.md) származó adatok naplózása elküldhető a Azure monitor metrikák tárolójába. A metrikák riasztásai [eltérő viselkedéssel](alerts-metric-overview.md)rendelkeznek, ami kívánatosabb lehet a használt adatoktól függően. A naplók mérőszámokra való átirányításával kapcsolatos információkért lásd: [metrika riasztás a naplókhoz](alerts-metric-logs.md).
+> [Log Analytics munkaterületről](../log-query/log-analytics-tutorial.md) származó adatok naplózása elküldhető a Azure monitor metrikák tárolójába. A metrikák riasztásai [eltérő viselkedéssel](alerts-metric-overview.md)rendelkeznek, ami kívánatosabb lehet a használt adatoktól függően. A naplók mérőszámokra való átirányításával kapcsolatos információkért lásd: [metrika riasztás a naplókhoz](alerts-metric-logs.md).
 
 ## <a name="create-a-log-alert-rule-with-the-azure-portal"></a>Napló-riasztási szabály létrehozása a Azure Portal
 
@@ -35,7 +35,7 @@ Itt találja a riasztási lekérdezések írásához szükséges lépéseket:
 
 1. Keresse meg azt az erőforrást, amelyre a riasztást szeretné.
 1. A **figyelés** területen válassza a **naplók** lehetőséget.
-1. Kérdezze le a naplóadatokat, amelyek a hibát jelezhetik. A [riasztási lekérdezés példái című témakörből](../log-query/saved-queries.md) megtudhatja, hogy milyen módon derítheti fel vagy kezdheti [meg a saját lekérdezésének megírását](../log-query/get-started-portal.md). Ezenkívül [megtudhatja, hogyan hozhat létre optimalizált riasztási lekérdezéseket](alerts-log-query.md).
+1. Kérdezze le a naplóadatokat, amelyek a hibát jelezhetik. A [riasztási lekérdezés példái című témakörből](../log-query/example-queries.md) megtudhatja, hogy milyen módon derítheti fel vagy kezdheti [meg a saját lekérdezésének megírását](../log-query/log-analytics-tutorial.md). Ezenkívül [megtudhatja, hogyan hozhat létre optimalizált riasztási lekérdezéseket](alerts-log-query.md).
 1. Nyomja meg az "+ új riasztási szabály" gombot a riasztás létrehozási folyamatának elindításához.
 
     ![Log Analytics riasztás beállítása](media/alerts-log/AlertsAnalyticsCreate.png)
@@ -321,10 +321,9 @@ az group deployment create \
 
 A létrehozás sikeressége érdekében a 201 értéket adja vissza. A frissítés sikerességéről a 200 értéket adja vissza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [naplózási riasztásokról](./alerts-unified-log.md).
 * Napló-riasztások létrehozása [Azure Resource Manager-sablonok](./alerts-log-create-templates.md)használatával.
 * [A naplózási riasztások webhook-műveleteinek](./alerts-log-webhook.md)ismertetése.
 * További információ a [naplók lekérdezéséről](../log-query/log-query-overview.md).
-

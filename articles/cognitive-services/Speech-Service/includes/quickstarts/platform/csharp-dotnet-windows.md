@@ -12,11 +12,11 @@ ms.date: 10/15/2020
 ms.author: erhopf
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: f63c97fd23d56ff508de8d5953eefac6b15ae1aa
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097065"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188298"
 ---
 Ez az útmutató bemutatja, hogyan telepítheti a .NET-keretrendszerhez készült [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t (Windows). Ha csak azt szeretné, hogy a csomag neve megkezdhető legyen a saját számára, futtassa `Install-Package Microsoft.CognitiveServices.Speech` a parancsot a NuGet-konzolon.
 
@@ -36,13 +36,13 @@ Telepítenie kell a [SPEECH SDK NuGet-csomagot](https://aka.ms/csspeech/nuget) ,
 
 1. Nyissa meg a Visual Studio 2019 alkalmazást.
 
-1. A Start ablakban válassza az **új projekt létrehozása**lehetőséget. 
+1. A Start ablakban válassza az **új projekt létrehozása** lehetőséget. 
 
-1. Az **új projekt létrehozása** ablakban válassza a **Console app (.NET-keretrendszer)** lehetőséget, majd kattintson a **tovább**gombra.
+1. Az **új projekt létrehozása** ablakban válassza a **Console app (.NET-keretrendszer)** lehetőséget, majd kattintson a **tovább** gombra.
 
-1. Az **új projekt konfigurálása** ablakban írja be a *HelloWorld* nevet a **projekt neve**mezőbe, válassza ki vagy hozza létre a könyvtár elérési útját a **helyen**, majd válassza a **Létrehozás**lehetőséget.
+1. Az **új projekt konfigurálása** ablakban írja be a *HelloWorld* nevet a **projekt neve** mezőbe, válassza ki vagy hozza létre a könyvtár elérési útját a **helyen**, majd válassza a **Létrehozás** lehetőséget.
 
-1. A Visual Studio menüsávban válassza az **eszközök**  >  **beolvasása eszközök és szolgáltatások**elemet, amely megnyitja a Visual Studio telepítőjét, és megjeleníti a **módosítás** párbeszédpanelt.
+1. A Visual Studio menüsávban válassza az **eszközök**  >  **beolvasása eszközök és szolgáltatások** elemet, amely megnyitja a Visual Studio telepítőjét, és megjeleníti a **módosítás** párbeszédpanelt.
 
 1. Győződjön meg arról, hogy elérhető-e a **.net Desktop fejlesztői** munkaterhelése. Ha a munkaterhelés még nincs telepítve, jelölje be a jelölőnégyzetet, majd kattintson a **módosítás** gombra a telepítés elindításához. A letöltése és telepítése néhány percet is igénybe vehet.
 
@@ -60,7 +60,7 @@ Telepítenie kell a [SPEECH SDK NuGet-csomagot](https://aka.ms/csspeech/nuget) ,
 
 1. A jobb felső sarokban keresse meg a **csomag forrása** legördülő listát, és ellenőrizze, hogy be van-e **`nuget.org`** jelölve.
 
-1. A bal felső sarokban válassza a **Tallózás**lehetőséget.
+1. A bal felső sarokban válassza a **Tallózás** lehetőséget.
 
 1. A keresőmezőbe írja be a *Microsoft. CognitiveServices. Speech* kifejezést, és válassza az **ENTER billentyűt**.
 
@@ -76,18 +76,18 @@ Telepítenie kell a [SPEECH SDK NuGet-csomagot](https://aka.ms/csspeech/nuget) ,
 
 A konzol alkalmazás létrehozásához és futtatásához hozzon létre egy, a számítógép architektúrájának megfelelő platform-konfigurációt.
 
-1. A menüsávban válassza a **Build**  >  **Configuration Manager**elemet. Megjelenik a **Configuration Manager** párbeszédpanel.
+1. A menüsávban válassza a **Build**  >  **Configuration Manager** elemet. Megjelenik a **Configuration Manager** párbeszédpanel.
 
    ![Configuration Manager párbeszédpanel](~/articles/cognitive-services/speech-service/media/sdk/vs-configuration-manager-dialog-box.png)
 
-1. Az **aktív megoldási platform** legördülő listában válassza az **új**lehetőséget. Megjelenik az **új megoldás-platform** párbeszédpanel.
+1. Az **aktív megoldási platform** legördülő listában válassza az **új** lehetőséget. Megjelenik az **új megoldás-platform** párbeszédpanel.
 
 1. A **típus vagy a válassza ki az új platform** legördülő listát:
-   - Ha 64 bites Windows rendszert futtat, válassza az **x64**elemet.
-   - Ha 32 bites Windows rendszert futtat, válassza az **x86**lehetőséget.
+   - Ha 64 bites Windows rendszert futtat, válassza az **x64** elemet.
+   - Ha 32 bites Windows rendszert futtat, válassza az **x86** lehetőséget.
 
-1. Válassza **az OK** , majd a **Bezárás**lehetőséget.
+1. Válassza **az OK** , majd a **Bezárás** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [windows](../quickstart-list.md)]

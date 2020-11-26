@@ -3,18 +3,18 @@ title: Keresés használata az Azure Application Insightsban | Microsoft Docs
 description: A webalkalmazás által eljuttatott nyers telemetria keresése és szűrése.
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.openlocfilehash: f88e0fb8fbd7e9605635ede1e8f71b57de84b74e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f87a972b417bf6074de1c10b7a54bd2416f88daa
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324454"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187017"
 ---
 # <a name="using-search-in-application-insights"></a>Keresés használata a Application Insightsban
 
 A keresés a [Application Insights](./app-insights-overview.md) egyik funkciója, amellyel megkeresheti és megismerheti az egyes telemetria-elemeket, például a lapok nézeteit, a kivételeket vagy a webes kérelmeket. És megtekintheti a kódolt naplókat és eseményeket.
 
-(Az [adatelemzéshez használja az](../log-query/get-started-portal.md)összetettebb lekérdezéseket.)
+(Az [adatelemzéshez használja az](../log-query/log-analytics-tutorial.md)összetettebb lekérdezéseket.)
 
 ## <a name="where-do-you-see-search"></a>Hol látja a keresést?
 
@@ -81,7 +81,7 @@ Ha az összes elemet ugyanazzal a tulajdonsággal szeretné megkeresni, írja be
 ## <a name="search-the-data"></a>Keresés az adatszolgáltatásban
 
 > [!NOTE]
-> Összetettebb lekérdezések írásához nyissa meg a [**naplók (Analitika)**](../log-query/get-started-portal.md) elemet a Keresés panel tetején.
+> Összetettebb lekérdezések írásához nyissa meg a [**naplók (Analitika)**](../log-query/log-analytics-tutorial.md) elemet a Keresés panel tetején.
 >
 
 A kifejezéseket bármelyik tulajdonság értékében megkeresheti. Ez akkor hasznos, ha olyan [Egyéni eseményeket](./api-custom-events-metrics.md) írt be, amelyekben tulajdonságértékek szerepelnek.
@@ -116,7 +116,7 @@ Ha az alkalmazás nagy mennyiségű telemetria hoz létre (és a ASP.NET SDK 2.0
 
 A GitHubon vagy az Azure DevOps-ban is létrehozhat egy hibát bármely telemetria-elem részleteivel.
 
-A végpontok közötti tranzakció részletes nézetéhez kattintson bármelyik telemetria elemre, majd válassza a **munkaelem létrehozása**lehetőséget.
+A végpontok közötti tranzakció részletes nézetéhez kattintson bármelyik telemetria elemre, majd válassza a **munkaelem létrehozása** lehetőséget.
 
 ![Kattintson az új munkaelem lehetőségre, szerkessze a mezőket, majd kattintson az OK gombra.](./media/diagnostic-search/work-item.png)
 
@@ -143,10 +143,9 @@ Lásd a [korlátok összegzését](./pricing.md#limits-summary).
 
 Az adatposta automatikus naplózása nem történik meg, de a [TrackTrace vagy a log hívásokat](./asp-net-trace-logs.md)is használhatja. Helyezze a POST (üzenetek) paramétert az üzenetbe. Az üzenetre ugyanúgy nem szűrheti a szűrést, mint a tulajdonságok szűrésére, de a méretkorlát már nem használható.
 
-## <a name="next-steps"></a><a name="add"></a>További lépések
+## <a name="next-steps"></a><a name="add"></a>Következő lépések
 
-* [Összetett lekérdezések írása az elemzésekben](../log-query/get-started-portal.md)
+* [Összetett lekérdezések írása az elemzésekben](../log-query/log-analytics-tutorial.md)
 * [Naplók és egyéni telemetria küldése Application Insights](./asp-net-trace-logs.md)
 * [Rendelkezésre állási és válaszadási tesztek beállítása](./monitor-web-app-availability.md)
 * [Hibaelhárítás](../faq.md)
-

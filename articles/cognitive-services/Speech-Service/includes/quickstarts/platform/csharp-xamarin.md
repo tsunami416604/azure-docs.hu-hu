@@ -12,11 +12,11 @@ ms.date: 10/15/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3f441e2f89d0f85a7a4e2fff5490fed5e2879506
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425279"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188230"
 ---
 Ez az útmutató bemutatja, hogyan telepítheti a [Xamarin](/xamarin/get-started/what-is-xamarin)készült [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t, amely egy nyílt forráskódú platform, amely modern és nagy teljesítményű alkalmazásokat hoz létre iOS, Android és Windows rendszerre a .NET használatával. Ha csak azt szeretné, hogy a csomag neve megkezdhető legyen a saját számára, futtassa `Install-Package Microsoft.CognitiveServices.Speech` a parancsot a NuGet-konzolon.
 

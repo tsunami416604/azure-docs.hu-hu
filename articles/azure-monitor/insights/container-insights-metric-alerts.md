@@ -3,12 +3,12 @@ title: Metrikai riasztások Azure Monitorről tárolók számára
 description: Ez a cikk a Azure Monitor for containers nyilvános előzetes verziójában elérhető javasolt metrikai riasztásokat tekinti át.
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: cda5639fdf72f5731af851860f37afa888e7d965
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 16995246578dc8d3c009253d8384c6d7ff3911d3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927821"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186881"
 ---
 # <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Ajánlott metrikai riasztások (előzetes verzió) Azure Monitorről tárolók számára
 
@@ -74,15 +74,15 @@ A következő riasztási alapú metrikák egyedi viselkedési jellemzőkkel rend
 
 * a *oomKilledContainerCount* metrikát csak akkor küldik el, ha a rendszer a bácsi által leölt tárolókat.
 
-* a *cpuExceededPercentage* , a *MemoryRssExceededPercentage* és a *memoryWorkingSetExceededPercentage* mérőszámok akkor lesznek elküldése, ha a processzor, a memória RSS-és a memória-munkakészletének értéke meghaladja a beállított küszöbértéket (az alapértelmezett küszöbérték 95%). Ezek a küszöbértékek kizárólag a vonatkozó riasztási szabályhoz megadott riasztási feltétel küszöbértékét jelentik. Ha ezeket a metrikákat szeretné összegyűjteni és elemezni a [metrikák Intézőből](../platform/metrics-getting-started.md), javasoljuk, hogy a küszöbértéket a riasztási küszöbértéknél alacsonyabb értékre konfigurálja. A tároló erőforrás-kihasználtsági küszöbértékek gyűjtési beállításaival kapcsolatos konfiguráció felülbírálható a szakasz ConfigMaps fájljában `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]` . A ConfigMap konfigurációs fájljának konfigurálásával kapcsolatos részletekért tekintse meg a [riasztásos metrikák konfigurálása című ConfigMaps](#configure-alertable-metrics-in-configmaps) .
+* a *cpuExceededPercentage*, a *MemoryRssExceededPercentage* és a *memoryWorkingSetExceededPercentage* mérőszámok akkor lesznek elküldése, ha a processzor, a memória RSS-és a memória-munkakészletének értéke meghaladja a beállított küszöbértéket (az alapértelmezett küszöbérték 95%). Ezek a küszöbértékek kizárólag a vonatkozó riasztási szabályhoz megadott riasztási feltétel küszöbértékét jelentik. Ha ezeket a metrikákat szeretné összegyűjteni és elemezni a [metrikák Intézőből](../platform/metrics-getting-started.md), javasoljuk, hogy a küszöbértéket a riasztási küszöbértéknél alacsonyabb értékre konfigurálja. A tároló erőforrás-kihasználtsági küszöbértékek gyűjtési beállításaival kapcsolatos konfiguráció felülbírálható a szakasz ConfigMaps fájljában `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]` . A ConfigMap konfigurációs fájljának konfigurálásával kapcsolatos részletekért tekintse meg a [riasztásos metrikák konfigurálása című ConfigMaps](#configure-alertable-metrics-in-configmaps) .
 
-* a rendszer akkor továbbítja az *pvUsageExceededPercentage* metrikát, ha a kötet állandó kihasználtságának százalékos aránya meghaladja a beállított küszöbértéket (az alapértelmezett küszöbérték 60%). Ez a küszöbérték kizárólag a megfelelő riasztási szabályhoz megadott riasztási feltétel küszöbértékét határozza meg. Ha ezeket a metrikákat szeretné összegyűjteni és elemezni a [metrikák Intézőből](../platform/metrics-getting-started.md), javasoljuk, hogy a küszöbértéket a riasztási küszöbértéknél alacsonyabb értékre konfigurálja. Az állandó kötet-kihasználtsági küszöbértékek gyűjtési beállításaival kapcsolatos konfiguráció felülbírálható a szakasz ConfigMaps fájljában `[alertable_metrics_configuration_settings.pv_utilization_thresholds]` . A ConfigMap konfigurációs fájljának konfigurálásával kapcsolatos részletekért tekintse meg a [riasztásos metrikák konfigurálása című ConfigMaps](#configure-alertable-metrics-in-configmaps) . Alapértelmezés szerint ki van zárva az állandó mennyiségi mérőszámok gyűjteménye, amely jogcímeket tartalmaz a *Kube-System* névtérben. Ha engedélyezni szeretné a gyűjteményt ebben a névtérben, használja a `[metric_collection_settings.collect_kube_system_pv_metrics]` ConfigMap fájljának szakaszát. Részletekért lásd a [metrika-gyűjtemény beállításait](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-agent-config#metric-collection-settings) .
+* a rendszer akkor továbbítja az *pvUsageExceededPercentage* metrikát, ha a kötet állandó kihasználtságának százalékos aránya meghaladja a beállított küszöbértéket (az alapértelmezett küszöbérték 60%). Ez a küszöbérték kizárólag a megfelelő riasztási szabályhoz megadott riasztási feltétel küszöbértékét határozza meg. Ha ezeket a metrikákat szeretné összegyűjteni és elemezni a [metrikák Intézőből](../platform/metrics-getting-started.md), javasoljuk, hogy a küszöbértéket a riasztási küszöbértéknél alacsonyabb értékre konfigurálja. Az állandó kötet-kihasználtsági küszöbértékek gyűjtési beállításaival kapcsolatos konfiguráció felülbírálható a szakasz ConfigMaps fájljában `[alertable_metrics_configuration_settings.pv_utilization_thresholds]` . A ConfigMap konfigurációs fájljának konfigurálásával kapcsolatos részletekért tekintse meg a [riasztásos metrikák konfigurálása című ConfigMaps](#configure-alertable-metrics-in-configmaps) . Alapértelmezés szerint ki van zárva az állandó mennyiségi mérőszámok gyűjteménye, amely jogcímeket tartalmaz a *Kube-System* névtérben. Ha engedélyezni szeretné a gyűjteményt ebben a névtérben, használja a `[metric_collection_settings.collect_kube_system_pv_metrics]` ConfigMap fájljának szakaszát. Részletekért lásd a [metrika-gyűjtemény beállításait](./container-insights-agent-config.md#metric-collection-settings) .
 
 ## <a name="metrics-collected"></a>Összegyűjtött metrikák
 
 A szolgáltatás részeként a következő metrikákat engedélyezheti és gyűjtheti be, hacsak másként nincs megadva:
 
-|Metrikai névtér |Metrika |Leírás |
+|Metrikai névtér |Metric |Leírás |
 |---------|----|------------|
 |Bepillantást nyerhet. tároló/csomópontok |cpuUsageMillicores |A CPU-kihasználtságot a millicores üzemelteti.|
 |Bepillantást nyerhet. tároló/csomópontok |cpuUsagePercentage |CPU-használat százaléka a csomópont alapján.|
@@ -150,7 +150,7 @@ Az alapszintű lépések a következők:
 
 3. Keressen rá a **sablon** kifejezésre, majd válassza a **template Deployment** lehetőséget.
 
-4. Válassza a **Létrehozás** lehetőséget.
+4. Kattintson a **Létrehozás** gombra.
 
 5. A sablonok létrehozásához több lehetőség is megjelenik, válassza **a saját sablon létrehozása a szerkesztőben** lehetőséget.
 
@@ -204,7 +204,7 @@ Megtekintheti és kezelheti Azure Monitor a tárolók riasztási szabályaihoz, 
 
 2. A küszöbérték módosításához a **javasolt riasztások** panelen jelölje ki az engedélyezett riasztást. A **szabály szerkesztése** területen válassza ki a szerkeszteni kívánt **riasztási feltételeket** .
 
-    * A riasztási szabály küszöbértékének módosításához válassza ki a **feltételt** .
+    * A riasztási szabály küszöbértékének módosításához válassza ki a **feltételt**.
     * Meglévő vagy létrehozott műveleti csoport megadásához válassza a **Hozzáadás** vagy **Létrehozás** a **műveleti csoportban** lehetőséget.
 
 Az engedélyezett szabályokhoz létrehozott riasztások megtekintéséhez az **ajánlott riasztások** panelen válassza a **megtekintés a riasztásokban** lehetőséget. A rendszer átirányítja az AK-fürt riasztási menüjére, ahol a fürthöz jelenleg létrehozott összes riasztást láthatja.

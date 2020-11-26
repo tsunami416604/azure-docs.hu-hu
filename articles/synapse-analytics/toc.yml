@@ -445,61 +445,72 @@
           href: quickstart-create-apache-spark-pool-studio.md
     - name: Oktatóanyagok
       items:
-        - name: Apache Spark-alkalmazások futtatása
-          href: ./spark/intellij-tool-synapse.md
-          displayname: intellij
-        - name: PySpark-alkalmazások futtatása Spark-készletekhez
-          href: ./spark/vscode-tool-synapse.md
-        - name: Spark-feladatdefiníciók
+        - name: Adatvizualizáció Synapse Studio-jegyzetfüzetekkel
+          href: ./spark/apache-spark-data-visualization-tutorial.md
+        - name: Adatelemzés az Apache Spark és a Power BI használatával
+          href: ./spark/apache-spark-to-power-bi.md
+        - name: Gépi tanulási modellek létrehozása
+          href: ./spark/apache-spark-machine-learning-mllib-notebook.md
+        - name: Spark-feladatdefiníciók küldése
           href: ./spark/apache-spark-job-definitions.md
     - name: Alapelvek
       items:
-        - name: Apache Spark-alapelvek
+        - name: Apache Spark
           href: ./spark/apache-spark-concepts.md
-        - name: Mi az a Delta Lake?
+        - name: Delta Lake
           href: ./spark/apache-spark-what-is-delta-lake.md
-        - name: A Delta Lake működésének áttekintése
-          href: ./spark/apache-spark-delta-lake-overview.md
-        - name: Az Apache Spark teljesítménye
-          href: ./spark/apache-spark-performance.md
-        - name: Apache Spark teljesítményoptimalizálása Hyperspace-indexekkel
-          href: ./spark/apache-spark-performance-hyperspace.md
         - name: Az Apache Spark automatikus skálázási viselkedése
           href: ./spark/apache-spark-autoscale.md
-        - name: Fejlesztés
+        - name: Synapse-futtatókörnyezetek
+          href: ./spark/apache-spark-version-support.md
+        - name: Gépi tanulás
+          href: ./spark/apache-spark-machine-learning-concept.md
+        - name: Notebooks
+          href: ./spark/apache-spark-notebook-concept.md
+        - name: Figyelési eszközök
+          href: monitoring/how-to-monitor-spark-applications.md
+    - name: Útmutatók
+      items:
+        - name: A Delta Lake használata
+          href: ./spark/apache-spark-delta-lake-overview.md
+        - name: Kódtárak kezelése
+          href: ./spark/apache-spark-azure-portal-add-libraries.md
+        - name: Jegyzetfüzetek használata
           items:
-            - name: Kódtárak
-              items:
-                - name: Kódtárak létrehozása és kezelése
-                  href: ./spark/apache-spark-azure-portal-add-libraries.md
-                - name: Futásidejű nyelv- és kódtártámogatás
-                  href: ./spark/apache-spark-version-support.md
-            - name: Azure Synapse Studio-jegyzetfüzetek
+            - name: Jegyzetfüzetek kezelése
               href: ./spark/apache-spark-development-using-notebooks.md
-            - name: Hitelesítő adatok biztonságossá tétele a TokenLibrary használatával
-              href: ./spark/apache-spark-secure-credentials-with-tokenlibrary.md
+            - name: Adatok vizualizációja
+              href: ./spark/apache-spark-data-visualization.md
+            - name: Csatlakozás a Sparkhoz IntelliJ beépülő modullal
+              href: ./spark/intellij-tool-synapse.md
+            - name: Csatlakozás Spark-készletekhez a VSCode használatával
+              href: ./spark/vscode-tool-synapse.md
+        - name: Nyelvek felfedezése
+          items:
             - name: .NET az Apache Sparkhoz
               href: ./spark/spark-dotnet.md
-        - name: Figyelés
+        - name: Biztonság
+          items:
+            - name: Hitelesítő adatok biztonságossá tétele a TokenLibrary használatával
+              href: ./spark/apache-spark-secure-credentials-with-tokenlibrary.md
+        - name: Teljesítmény optimalizálása
+          items:
+            - name: Az Apache Spark teljesítménye
+              href: ./spark/apache-spark-performance.md
+            - name: Apache Spark teljesítményoptimalizálása Hyperspace-indexekkel
+              href: ./spark/apache-spark-performance-hyperspace.md
+        - name: Kezelés és monitorozás
           items:
             - name: Spark-készlet előzménykiszolgálója
               href: ./spark/apache-spark-history-server.md
-    - name: Útmutatók
-      items:
-        - name: Kezelés és monitorozás
-          items:
-            - name: Apache Spark-alkalmazások
-              href: monitoring/how-to-monitor-spark-applications.md
-            - name: Apache Spark-alkalmazás részletei
+            - name: Spark-alkalmazások monitorozása
               href: monitoring/apache-spark-applications.md
-            - name: JSON elemzése az Apache Sparkkal
-              href: how-to-analyze-complex-schema.md
         - name: Adatok betöltése és előkészítése
           items:
-            - name: Az adattárházba
-              items:
-                - name: Adatok importálása és exportálása az Apache Spark használatával
-                  href: ./spark/synapse-spark-sql-pool-import-export.md
+            - name: SQL Data Warehouse
+              href: ./spark/synapse-spark-sql-pool-import-export.md
+            - name: JSON elemzése
+              href: how-to-analyze-complex-schema.md
 - name: Synapse Link
   items:
     - name: Áttekintés
@@ -616,6 +627,8 @@
               href: ../data-factory/connector-azure-database-for-mysql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure Database for PostgreSQL
               href: ../data-factory/connector-azure-database-for-postgresql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Azure Databricks Delta Lake
+              href: ../data-factory/connector-azure-databricks-delta-lake.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure File Storage
               href: ../data-factory/connector-azure-file-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure SQL Database
@@ -959,8 +972,8 @@
               href: ../data-factory/data-factory-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Összekötő hibaelhárítása
               href: ../data-factory/connector-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Adatok másolása eszköz hibaelhárítása
-              href: ../data-factory/copy-data-tool-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Biztonság és hozzáférés-vezérlés
+              href: ../data-factory/security-and-access-control-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Saját üzemeltetésű integrációs futtatókörnyezetek hibaelhárítása
               href: ../data-factory/self-hosted-integration-runtime-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
 - name: Machine Learning
@@ -973,15 +986,22 @@
       items:
         - name: Új Azure Machine Learning társított szolgáltatás létrehozása
           href: machine-learning/quickstart-integrate-azure-machine-learning.md
+    - name: Alapelvek
+      items:
+        - name: Modellek betanítása
+          href: ./spark/apache-spark-machine-learning-training.md
     - name: Oktatóanyagok
       items:
+        - name: Adatvizualizáció az Apache Spark használatával
+          href: ./spark/apache-spark-data-visualization-tutorial.md
+          displayname: machine learning
         - name: SQL-készletek modellpontozási varázslója
           href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
           displayname: machine learning
         - name: Regressziós kísérlet futtatása Azure AutoML használatával
           href: ./spark/apache-spark-azure-machine-learning-tutorial.md
           displayname: machine learning
-        - name: Apache Spark-alapú gépi tanulási alkalmazás létrehozása
+        - name: Gépi tanulási modell létrehozása az Apache Spark MLlib használatával
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
           displayname: machine learning
 - name: Referencia
@@ -1046,5 +1066,9 @@
           href: ./sql-data-warehouse/sql-data-warehouse-partner-data-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Gépi tanulás és mesterséges intelligencia
           href: ./sql-data-warehouse/sql-data-warehouse-partner-machine-learning-ai.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Rendszer-integráció
+          href: ./sql-data-warehouse/sql-data-warehouse-partner-system-integration.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: A nyilvános előzetes verzió partnerei
           href: ./sql-data-warehouse/sql-data-warehouse-partner-launch.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Kompatibilitási problémák külső alkalmazások használatakor
+          href: ./sql-data-warehouse/sql-data-warehouse-partner-compatibility-issues.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json

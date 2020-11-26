@@ -11,11 +11,11 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
 ms.openlocfilehash: 3ad8eb9564c4d8343a0763cc2f6f5061ee602b72
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096980"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188248"
 ---
 Ez az útmutató bemutatja, hogyan telepítheti a C++ [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t MacOS 10,13-es vagy újabb verzióra.
 
@@ -56,6 +56,6 @@ macOS 10,13 és újabb verziók
 
 Ezután az alábbi [lépésekkel](#next-steps) léphet tovább.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [windows](../quickstart-list.md)]

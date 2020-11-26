@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 68daec6bb6682d2b488abacb2f79bdfadc4ae628
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: bedf4dd2a955a8ffe648b47c1691e77ac1fdb8f5
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076572"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187799"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Nem indítható Cloud Service-szerepkörök – problémamegoldás
 Íme néhány gyakori probléma és megoldás az Azure Cloud Services-szerepkörökkel kapcsolatban, amelyek nem indulnak el.
@@ -27,11 +27,11 @@ ms.locfileid: "92076572"
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="missing-dlls-or-dependencies"></a>Hiányzó DLL-ek vagy függőségek
-Az **inicializálás**, a **foglalt**és a **leállítási** állapotok közötti kerékpározást nem válaszoló szerepköröket és szerepköröket a hiányzó DLL-ek vagy szerelvények okozzák.
+Az **inicializálás**, a **foglalt** és a **leállítási** állapotok közötti kerékpározást nem válaszoló szerepköröket és szerepköröket a hiányzó DLL-ek vagy szerelvények okozzák.
 
 Hiányzó DLL-ek vagy szerelvények tünetei a következőket okozhatják:
 
-* A szerepkör-példány az **inicializálás**, a **foglalt**és a **leállítási** állapotok közötti kerékpározás.
+* A szerepkör-példány az **inicializálás**, a **foglalt** és a **leállítási** állapotok közötti kerékpározás.
 * A szerepkör-példánya **készen áll** , de ha a webalkalmazásra navigál, a lap nem jelenik meg.
 
 A problémák kivizsgálásához számos ajánlott módszer áll rendelkezésre.
@@ -47,7 +47,7 @@ A részletes hibaüzeneteket úgy tekintheti meg, ha a webes szerepkörhöz tart
 Ha a Távoli asztal használata nélkül szeretné megtekinteni a teljes hibákat:
 
 1. Nyissa meg a megoldást a Microsoft Visual Studióban.
-2. A **megoldáskezelő**keresse meg a web.config fájlt, és nyissa meg.
+2. A **megoldáskezelő** keresse meg a web.config fájlt, és nyissa meg.
 3. A web.config fájlban keresse meg a System. Web szakaszt, és adja hozzá a következő sort:
 
     ```xml
@@ -63,7 +63,7 @@ A Távoli asztal használatával elérheti a szerepkört, és távolról is megt
 
 1. Győződjön meg arról, hogy az Azure SDK 1,3-as vagy újabb verziója telepítve van.
 2. A megoldás a Visual Studióval való üzembe helyezése során engedélyezze a Távoli asztal. További információkért lásd: [Távoli asztali kapcsolat engedélyezése az Azure-ban Cloud Services szerepkörhöz a Visual Studióval](cloud-services-role-enable-remote-desktop-visual-studio.md).
-3. A Microsoft Azure Portalban, miután a példány **kész**állapotba került, a távoli a példányba. A távoli asztal Cloud Services használatával történő használatáról további információt a következő témakörben talál: [távoli szerepkör-példányok](cloud-services-role-enable-remote-desktop-new-portal.md#remote-into-role-instances).
+3. A Microsoft Azure Portalban, miután a példány **kész** állapotba került, a távoli a példányba. A távoli asztal Cloud Services használatával történő használatáról további információt a következő témakörben talál: [távoli szerepkör-példányok](cloud-services-role-enable-remote-desktop-new-portal.md#remote-into-role-instances).
 5. Jelentkezzen be a virtuális gépre a Távoli asztal konfigurálása során megadott hitelesítő adatok használatával.
 6. Nyisson meg egy parancsablakot.
 7. Gépelje be: `IPconfig`.
@@ -82,7 +82,7 @@ Például:
 ![Explicit Kiszolgálóhiba a következő alkalmazásban: "/".](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503389.png)
 
 ## <a name="diagnose-issues-by-using-the-compute-emulator"></a>Problémák diagnosztizálása a Compute Emulator használatával
-A Microsoft Azure Compute Emulator segítségével diagnosztizálhatja és elháríthatja a hiányzó függőségekkel és web.config hibákkal kapcsolatos problémákat.
+A Microsoft Azure számítási emulátor segítségével diagnosztizálhatja és elháríthatja a hiányzó függőségek és web.config hibák problémáit.
 
 A diagnosztikai módszer használatának legjobb eredményeihez olyan számítógépet vagy virtuális gépet kell használnia, amely a Windows tiszta telepítését használja. Az Azure-környezet legjobb szimulálása érdekében használja a Windows Server 2008 R2 x64-et.
 
@@ -104,8 +104,8 @@ Az alábbi lépéseket követve telepítheti a szolgáltatást a IntelliTrace en
 3. A példány elindítása után nyissa meg a **Server Explorert**.
 4. Bontsa ki az **Azure \\ Cloud Services** csomópontot, és keresse meg a központi telepítést.
 5. Bontsa ki a központi telepítést, amíg meg nem jelenik a szerepkör példányai. Kattintson a jobb gombbal az egyik példányra.
-6. Válassza a **IntelliTrace-naplók megtekintése**lehetőséget. Ekkor megnyílik a **IntelliTrace összegzése** .
-7. Keresse meg az összefoglalás kivételek szakaszát. Ha kivételek vannak, a szakasz a **kivételek által jelzett adattípust**jelöli.
+6. Válassza a **IntelliTrace-naplók megtekintése** lehetőséget. Ekkor megnyílik a **IntelliTrace összegzése** .
+7. Keresse meg az összefoglalás kivételek szakaszát. Ha kivételek vannak, a szakasz a **kivételek által jelzett adattípust** jelöli.
 8. Bontsa ki a **kivételeket** , és keresse meg a **System. IO. FileNotFoundException** az alábbihoz hasonló hibákat:
 
 ![Kivételt képező, hiányzó fájl vagy szerelvény](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503390.png)
@@ -114,9 +114,9 @@ Az alábbi lépéseket követve telepítheti a szolgáltatást a IntelliTrace en
 A DLL-fájl hiányzó és szerelvény-hibáinak elhárításához kövesse az alábbi lépéseket:
 
 1. Nyissa meg a megoldást a Visual Studióban.
-2. A **Megoldáskezelőban**nyissa meg a **hivatkozások** mappát.
+2. A **Megoldáskezelőban** nyissa meg a **hivatkozások** mappát.
 3. Kattintson a hibában azonosított szerelvényre.
-4. A **Tulajdonságok** ablaktáblán keresse meg a **Másolás helyi tulajdonságot** , és állítsa az értéket **igaz**értékre.
+4. A **Tulajdonságok** ablaktáblán keresse meg a **Másolás helyi tulajdonságot** , és állítsa az értéket **igaz** értékre.
 5. Telepítse újra a Cloud Service-t.
 
 Miután meggyőződött róla, hogy az összes hibát kijavította, a szolgáltatás központi telepítését a **IntelliTrace engedélyezése a .net 4-szerepkörökhöz** jelölőnégyzet bejelölése nélkül végezheti el.

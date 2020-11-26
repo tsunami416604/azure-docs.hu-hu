@@ -12,11 +12,11 @@ ms.date: 10/15/2020
 ms.custom: devx-track-java
 ms.author: erhopf
 ms.openlocfilehash: 00fa8c27d9f324da0cc5704ee1e2a743907345fe
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097082"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188258"
 ---
 Ez az útmutató bemutatja, hogyan telepítheti a Java [SPEECH SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t Androidon. A telepítő a Speech SDK Maven-csomagon alapul, és Android Studio 3,3.
 
@@ -35,6 +35,6 @@ A Speech SDK kompatibilis az Android-eszközökkel, amelyek 32/64 bites ARM-és 
 
 Ezután az alábbi [lépésekkel](#next-steps) léphet tovább.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [windows](../quickstart-list.md)]

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: b7248a3a66e0eeca4d86568f80af82bf2d89701f
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: a5cb5831090987f1b620593843ddba817d8e68d4
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96031235"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188122"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Verziókövetés az Azure szinapszis Studióban
 
@@ -38,7 +38,7 @@ A szinapszis Studio authoring vásznon kattintson a **szinapszis élő** legörd
 
 ![A kód-adattár beállításainak konfigurálása szerzői műveletekből](media/configure-repo-1.png)
 
-### <a name="configuration-method-2-management-hub"></a>2. konfigurációs módszer: felügyeleti központ
+### <a name="configuration-method-2-manage-hub"></a>2. konfigurációs módszer: a hub kezelése
 
 Nyissa meg a szinapszis Studio felügyeleti központját. Válassza a **git-konfiguráció** elemet a **verziókövetés** szakaszban. Ha nincs csatlakoztatva adattár, kattintson a **Konfigurálás** elemre.
 
@@ -217,7 +217,12 @@ Ha a közzétételi ág nincs szinkronban az együttműködési ágban, és a le
 
 1. Lekéréses kérelem létrehozása az együttműködési ág változásainak egyesítéséhez 
 
+## <a name="unsupported-features"></a>Nem támogatott funkciók
 
-## <a name="next-steps"></a>További lépések
+- A szinapszis Studio nem engedélyezi a bekötések vagy az erőforrások szelektív közzétételét. 
+- A szinapszis Studio nem támogatja a véglegesítő üzenet testreszabását.
+- A Studio alkalmazásban a DELETE művelet megtervezésével közvetlenül a git-ben lesz végrehajtva
+
+## <a name="next-steps"></a>Következő lépések
 
 * A folyamatos integráció és üzembe helyezés megvalósításához tekintse meg a [folyamatos integrációt és teljesítést (CI/CD)](continuous-integration-deployment.md).

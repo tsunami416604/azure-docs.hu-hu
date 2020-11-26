@@ -3,12 +3,12 @@ title: Az Azure Red Hat OpenShift v3. x konfigurálása az Azure Monitor for con
 description: Ez a cikk azt ismerteti, hogyan konfigurálhatja a Kubernetes-fürtök figyelését az Azure Red Hat OpenShift 3-as vagy újabb verziójában üzemeltetett Azure Monitor használatával.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 1186056559d6497b2b48cb3533a0967d6d61f38e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 2cd39c13ce7d67b2bfcfaca0a6f627e19d289783
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216368"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186915"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Az Azure Red Hat OpenShift v3 konfigurálása a Azure Monitor for containers szolgáltatással
 
@@ -18,7 +18,7 @@ ms.locfileid: "92216368"
 > Október 2020-én már nem fog tudni új 3,11-fürtöket létrehozni.
 > A meglévő 3,11-es fürtök továbbra is a 2022-ig fognak működni, de ezt követően már nem lesznek támogatottak.
 >
-> Kövesse ezt az útmutatót [egy Azure Red Hat OpenShift 4-fürt létrehozásához](https://docs.microsoft.com/azure/openshift/tutorial-create-cluster).
+> Kövesse ezt az útmutatót [egy Azure Red Hat OpenShift 4-fürt létrehozásához](../../openshift/tutorial-create-cluster.md).
 > Ha konkrét kérdései vannak, vegye [fel velünk a kapcsolatot](mailto:aro-feedback@microsoft.com).
 
 A tárolók Azure Monitor széles körű monitorozást biztosítanak az Azure Kubernetes szolgáltatás (ak) és az AK-beli motor fürtök számára. Ez a cikk azt ismerteti, hogyan engedélyezhető a Kubernetes-fürtök figyelése az [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) 3. verziójában és a 3. verzió legújabb támogatott verzióján, hogy hasonló figyelési élményt lehessen elérni.
@@ -67,7 +67,7 @@ A tárolók Azure Monitor támogatja az Azure Red Hat OpenShift figyelését az 
     Microsoft Azure                       AzureCloud   0fb60ef2-03cc-4290-b595-e71108e8f4ce  Enabled  True
     ```
 
-1. Másolja a **SubscriptionId**értékét.
+1. Másolja a **SubscriptionId** értékét.
 
 1. Váltson arra az előfizetésre, amely a Log Analytics munkaterületet üzemelteti, a következő parancs futtatásával:
 
@@ -81,7 +81,7 @@ A tárolók Azure Monitor támogatja az Azure Red Hat OpenShift figyelését az 
     az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
     ```
 
-1. A kimenetben keresse meg a munkaterület nevét, majd másolja az adott Log Analytics munkaterület teljes erőforrás-AZONOSÍTÓját a mező **azonosítója**alá.
+1. A kimenetben keresse meg a munkaterület nevét, majd másolja az adott Log Analytics munkaterület teljes erőforrás-AZONOSÍTÓját a mező **azonosítója** alá.
 
 ## <a name="enable-for-a-new-cluster-using-an-azure-resource-manager-template"></a>Új fürt engedélyezése Azure Resource Manager sablon használatával
 
@@ -170,11 +170,11 @@ A következő lépések végrehajtásával engedélyezheti az Azure-ban üzembe 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. A Azure Portal menüben vagy a Kezdőlap lapon válassza a **Azure monitor**lehetőséget. Az **áttekintések** szakaszban válassza a **tárolók**lehetőséget.
+2. A Azure Portal menüben vagy a Kezdőlap lapon válassza a **Azure monitor** lehetőséget. Az **áttekintések** szakaszban válassza a **tárolók** lehetőséget.
 
-3. A **figyelő-tárolók** lapon válassza a **nem figyelt fürtök**lehetőséget.
+3. A **figyelő-tárolók** lapon válassza a **nem figyelt fürtök** lehetőséget.
 
-4. A nem figyelt fürtök listájából keresse meg a fürtöt a listában, és kattintson az **Engedélyezés**gombra. A listában szereplő eredmények azonosításához keresse meg az **ARO** értéket a **fürt típusa**oszlopban.
+4. A nem figyelt fürtök listájából keresse meg a fürtöt a listában, és kattintson az **Engedélyezés** gombra. A listában szereplő eredmények azonosításához keresse meg az **ARO** értéket a **fürt típusa** oszlopban.
 
 5. Ha egy meglévő Log Analytics munkaterülettel rendelkezik, amely a fürttel azonos előfizetésben található, **Azure monitor a tárolók** lapon, válassza ki a kívánt elemet a legördülő listából.  
     A lista előjelöli az alapértelmezett munkaterületet és helyet, amelyet a fürt az előfizetésben üzembe helyez.
@@ -230,7 +230,7 @@ Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és haszn�
     az openshift show -g <clusterResourceGroup> -n <clusterName>
     ```
 
-5. Szerkessze **existingClusterParam.jsa** JSON-paramétert, és frissítse a *AroResourceId* és a *aroResourceLocation*értékeket. A **workspaceResourceId** értéke a log Analytics munkaterület teljes erőforrás-azonosítója, amely tartalmazza a munkaterület nevét.
+5. Szerkessze **existingClusterParam.jsa** JSON-paramétert, és frissítse a *AroResourceId* és a *aroResourceLocation* értékeket. A **workspaceResourceId** értéke a log Analytics munkaterület teljes erőforrás-azonosítója, amely tartalmazza a munkaterület nevét.
 
 6. Az Azure CLI-vel való üzembe helyezéshez futtassa a következő parancsokat:
 

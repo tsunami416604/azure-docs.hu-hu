@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 3a523421c128ea26503c0848ad8fcf7d74636a04
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: bd8c5c31579ac22cd6c77dffd31103680e393f69
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341329"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187170"
 ---
 # <a name="quickstart-setting-up-azure-security-center"></a>Gyors útmutató: Azure Security Center beállítása
 
@@ -37,7 +37,7 @@ Az Azure Defender előfizetésre való engedélyezéséhez hozzá kell rendelnie
 
 1. Jelentkezzen be az [Azure Portalon](https://azure.microsoft.com/features/azure-portal/).
 
-1. A portál menüjében válassza a **Security Center**lehetőséget. 
+1. A portál menüjében válassza a **Security Center** lehetőséget. 
 
     Megnyílik a Security Center áttekintése oldal.
 
@@ -47,7 +47,7 @@ A **Security Center – Áttekintés** egységes képet ad a hibrid felhőbeli s
 
 Megtekintheti és szűrheti az előfizetések listáját az **előfizetések** menüpont kiválasztásával. A Security Center úgy állítja be a kijelzőt, hogy tükrözze a kiválasztott előfizetések biztonsági állapotát. 
 
-A Security Center első indítása után néhány percen belül a következők jelenhetnek meg:
+A Security Center első indítását követően néhány percen belül megjelenhet a következő:
 
 - **Javaslatok** a csatlakoztatott erőforrások biztonságának javítására.
 - A Security Center által értékelt erőforrások leltára, valamint az egyes eszközök biztonsági helyzete.
@@ -61,9 +61,9 @@ A Security Center teljes kihasználása érdekében az Azure Defender engedélye
 
 A Security Center rövid útmutatók és oktatóanyagok esetében engedélyeznie kell az Azure Defendert. Ingyenes 30 napos próbaverzió érhető el. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/). 
 
-1. Az Security Center oldalsávján válassza az **első lépések**lehetőséget.
+1. Az Security Center oldalsávján válassza az **első lépések** lehetőséget.
 
-    :::image type="content" source="./media/security-center-get-started/get-started-upgrade-tab.png" alt-text="Security Center áttekintése irányítópult"::: 
+    :::image type="content" source="./media/security-center-get-started/get-started-upgrade-tab.png" alt-text="Az első lépések lap upgrade (frissítés) lapja"::: 
 
     A **frissítés** lap felsorolja a bevezetésre jogosult előfizetéseket és munkaterületeket.
 
@@ -79,12 +79,12 @@ Ha engedélyezve van az automatikus kiépítés, Security Center telepíti a Log
 
 Az log Analytics-ügynök automatikus kiépítés engedélyezése:
 
-1. A Security Center menüjében válassza a **díjszabás & beállítások**lehetőséget.
+1. A Security Center menüjében válassza a **díjszabás & beállítások** lehetőséget.
 1. Válassza ki az adott előfizetést.
-1. Az **adatgyűjtés** lapon állítsa be az **automatikus kiépítés** **a**következőre:.
-1. Válassza a **Mentés** lehetőséget.
+1. Az **adatgyűjtés** lapon állítsa be az **automatikus kiépítés** **a** következőre:.
+1. Kattintson a **Mentés** gombra.
 
-    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Security Center áttekintése irányítópult":::
+    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Az log Analytics-ügynök automatikus kiépítés engedélyezése":::
 
 >[!TIP]
 > Ha egy munkaterületet ki kell építeni, az ügynök telepítése akár 25 percet is igénybe vehet.

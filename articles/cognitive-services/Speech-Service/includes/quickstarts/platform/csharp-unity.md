@@ -12,11 +12,11 @@ ms.date: 10/15/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp
 ms.openlocfilehash: fd592b6f565cb23d7a922af2a68e6328911c2dc0
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096929"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188271"
 ---
 Ez az útmutató bemutatja, hogyan telepítheti az [Unity](https://unity3d.com/) [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) -t.
 
@@ -41,12 +41,12 @@ Az egységhez készült Speech SDK telepítéséhez kövesse az alábbi lépése
 
    [![Unity-csomag importálása párbeszédpanel az Unity Editorban](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-unity-01-import.png)](~/articles/cognitive-services/speech-service/media/sdk/qs-csharp-unity-01-import.png#lightbox)
 
-1. Győződjön meg arról, hogy az összes fájl ki van választva, majd válassza az **Importálás**lehetőséget. Néhány pillanat elteltével a rendszer importálja az Unity Asset csomagot a projektbe.
+1. Győződjön meg arról, hogy az összes fájl ki van választva, majd válassza az **Importálás** lehetőséget. Néhány pillanat elteltével a rendszer importálja az Unity Asset csomagot a projektbe.
 
 Az adategység-csomagok Unity-ba történő importálásával kapcsolatos további információkért tekintse meg az [Unity dokumentációját](https://docs.unity3d.com/Manual/AssetPackages.html).
 
 Ezután az alábbi [lépésekkel](#next-steps) léphet tovább.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [windows](../quickstart-list.md)]

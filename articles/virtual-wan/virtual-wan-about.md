@@ -9,11 +9,11 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
 ms.openlocfilehash: 69525173aa5c4af536105a4e897ee4860f021b6c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91267431"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187432"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Mi az Azure Virtual WAN?
 
@@ -95,7 +95,7 @@ A virtuális WAN lehetővé teszi az átvitelt a virtuális hálózatok között
 
 Az útválasztó négy útválasztási állapottal rendelkezhet: kiépített, kiépítés, sikertelen vagy nincs. Az **útválasztási állapot** a Azure Portal található a virtuális központ lapra való navigálással.
 
-* A **none** állapot azt jelzi, hogy a virtuális központ nem tudta kiépíteni az útválasztót. Ez akkor fordulhat *elő, ha*a virtuális WAN alaptípusú, vagy ha a virtuális hub üzembe helyezése az elérhető szolgáltatás előtt megtörtént.
+* A **none** állapot azt jelzi, hogy a virtuális központ nem tudta kiépíteni az útválasztót. Ez akkor fordulhat *elő, ha* a virtuális WAN alaptípusú, vagy ha a virtuális hub üzembe helyezése az elérhető szolgáltatás előtt megtörtént.
 * A **sikertelen** állapot azt jelzi, hogy hiba történt A példány létrehozásakor. Az útválasztó létrehozásához vagy alaphelyzetbe állításához keresse meg az **útválasztó alaphelyzetbe állítása** lehetőséget, és navigáljon a Azure Portal virtuális központ áttekintés lapjára.
 
 Minden virtuális központ útválasztója legfeljebb 50 GB/s-os összesített átviteli sebességet támogat. A virtuális hálózati kapcsolatok közötti kapcsolat azt feltételezi, hogy az összes, egyetlen virtuális hubhoz csatlakozó virtuális hálózatok összesen 2000 virtuális gép számítási feladatát veszi figyelembe.
@@ -136,6 +136,6 @@ Az útválasztási táblák mostantól társítási és propagálási funkciókk
 
 Fizessen elő az RSS-hírcsatornára, és tekintse meg a virtuális WAN legújabb funkcióinak frissítéseit az [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=VIRTUAL%20WAN) oldalon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Helyek közötti kapcsolat létrehozása virtuális WAN használatával](virtual-wan-site-to-site-portal.md)

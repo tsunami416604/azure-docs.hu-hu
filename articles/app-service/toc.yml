@@ -11,9 +11,9 @@
 - name: Rövid útmutatók
   expanded: true
   items:
-    - name: .NET Core
+    - name: ASP.NET-mag
       href: quickstart-dotnetcore.md
-    - name: .NET-keretrendszer
+    - name: ASP.NET
       href: quickstart-dotnet-framework.md
     - name: Node.js
       href: quickstart-nodejs.md
@@ -52,9 +52,9 @@
           href: scenario-secure-app-clean-up-resources.md
     - name: Adatbázist használó alkalmazás
       items:
-        - name: .NET Core és SQL-adatbázis
+        - name: ASP.NET Core és SQL DB
           href: tutorial-dotnetcore-sqldb-app.md
-        - name: .NET-keretrendszer és SQL DB
+        - name: ASP.NET és SQL DB
           href: app-service-web-tutorial-dotnet-sqldatabase.md
         - name: PHP és MySQL
           href: tutorial-php-mysql-app.md

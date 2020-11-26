@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d349d07a66b21766ea529661c2f27d0c76ea4d3b
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: cac0d8cb8a910b735454c9270060364cab2db5fb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024721"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187238"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Az Azure Digital Twins API-k és SDK-k használata
 
@@ -20,7 +20,7 @@ Az Azure digitális Twins a **vezérlési sík API** -kkal és az **adatsík API
 * A vezérlési sík API-jai [Azure Resource Manager (ARM)](../azure-resource-manager/management/overview.md) API-k, és olyan erőforrás-kezelési műveleteket takarnak, mint például a példányok létrehozása és törlése. 
 * Az adatsíkok API-jai az Azure Digital Twins API-k, és olyan adatkezelési műveletekhez használatosak, mint például a modellek, az ikrek és a gráfok kezelése.
 
-Ez a cikk áttekintést nyújt az elérhető API-król, valamint a velük való interakció módszereiről. Használhatja a REST API-kat közvetlenül a hozzájuk kapcsolódó feladatokkal vagy egy SDK-val.
+Ez a cikk áttekintést nyújt az elérhető API-król, valamint a velük való interakció módszereiről. Használhatja a REST API-kat közvetlenül a hozzájuk kapcsolódó hencegő adatokkal (például [Poster](how-to-use-postman.md)-eszközön keresztül) vagy egy SDK-val.
 
 ## <a name="overview-control-plane-apis"></a>Áttekintés: felügyeleti sík API-k
 
@@ -32,7 +32,7 @@ A vezérlő sík API-k használata:
 * Az API-kat közvetlenül hívhatja a [vezérlési sík hencegő mappájában](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins)található legújabb hencegés hivatkozásával. Ez a tárház a használatot bemutató példákat is tartalmaz.
 * Jelenleg a vezérlési API-k számára érhető el az SDK-ban...
   - [**.Net (C#)**](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([hivatkozás [automatikusan generált]](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true)) ([forrás](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))
-  - [**Java**](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([hivatkozás [automatikusan generált]](/java/api/overview/azure/digitaltwins?view=azure-java-stable)) ([forrás](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31))
+  - [**Java**](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([hivatkozás [automatikusan generált]](/java/api/overview/azure/digitaltwins?view=azure-java-stable&preserve-view=true)) ([forrás](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31))
   - [**JavaScript**](https://www.npmjs.com/package/@azure/arm-digitaltwins) ([forrás](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins))
   - [**Python**](https://pypi.org/project/azure-mgmt-digitaltwins/) ([forrás](https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins))
   - [**Go**](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins) ([forrás](https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins))
@@ -279,6 +279,7 @@ client.UpdateDigitalTwin("myTwin", updateTwinData);
 
 Az alábbi lista további részleteket és általános irányelveket tartalmaz az API-k és SDK-k használatához.
 
+* Használhat olyan HTTP REST-tesztelési eszközt, mint a Poster, amely közvetlen hívásokat hajt végre az Azure digitális Twins API-kon. További információ erről a folyamatról [*: útmutató: kérelmek küldése a Poster használatával*](how-to-use-postman.md).
 * Az SDK használatához hozza létre az `DigitalTwinsClient` osztályt. A konstruktorhoz olyan hitelesítő adatok szükségesek, amelyek különböző hitelesítési módszerekkel szerezhetők be a `Azure.Identity` csomagban. További `Azure.Identity` információ: a [névtér dokumentációja](/dotnet/api/azure.identity?preserve-view=true&view=azure-dotnet). 
 * Hasznos lehet az `InteractiveBrowserCredential` első lépések során, de több más lehetőség is van, beleértve a [felügyelt identitáshoz](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet)tartozó hitelesítő adatokat is, amelyeket valószínűleg az MSI-vel az Azure Digital Twins szolgáltatásban [beállított Azure-függvények](../app-service/overview-managed-identity.md?tabs=dotnet) hitelesítésére fog használni. További információ `InteractiveBrowserCredential` : az [osztály dokumentációja](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet).
 * Az összes szolgáltatás API-hívása tag-függvényként van kitéve az `DigitalTwinsClient` osztályban.
@@ -303,8 +304,8 @@ Itt megtekintheti a példány metrikáit, és létrehozhat egyéni nézeteket is
 
 ## <a name="next-steps"></a>Következő lépések
 
-Tekintse meg, hogyan használható az API-k egy Azure digitális Twins-példány és-hitelesítés beállításához:
-* [*Útmutató: példány és hitelesítés beállítása*](how-to-set-up-instance-cli.md)
+Tekintse meg, hogyan lehet közvetlen kérelmeket készíteni az API-khoz a Poster használatával:
+* [*Útmutató: kérelmek küldése a Poster használatával*](how-to-use-postman.md)
 
-Vagy járjon végig egy ügyfélalkalmazás létrehozásához szükséges lépéseken, például a következő útmutatóban használt módon:
+Vagy a .NET SDK-t a következő oktatóanyaggal rendelkező ügyfélalkalmazás létrehozásával használhatja:
 * [*Oktatóanyag: ügyfélalkalmazás kódolása*](tutorial-code.md)

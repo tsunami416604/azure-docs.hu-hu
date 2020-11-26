@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: f97d04ca40e69ba2516744adfc9f1f455cba97c0
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 0bb252e227e4f23388929f2fca18769e0bd02e19
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896344"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187034"
 ---
 # <a name="tutorial---migrate-web-service-from-google-maps"></a>Oktatóanyag – webszolgáltatás migrálása a Google Mapsből
 
@@ -132,7 +132,7 @@ A Azure Maps fordított helymeghatározáshoz API további funkciókkal rendelke
 A helyek keresési API-ját a Google Maps szolgáltatásban keresheti meg. Ez az API három különböző módszert biztosít a fontos helyek kereséséhez:
 
 - **Hely keresése a következő szövegből:** Megkeresi az érdeklődési pontot a neve, címe vagy telefonszáma alapján.
-- **Közeli keresés** : megkeresi azokat az érdeklődési pontokat, amelyek egy adott távolságon belül vannak.
+- **Közeli keresés**: megkeresi azokat az érdeklődési pontokat, amelyek egy adott távolságon belül vannak.
 - **Szöveges keresés:** Megkeresi a helyeket egy szabad formátumú szöveggel, amely az érdeklődési pont és a hely adatait is tartalmazza. Például: "pizza a New York-ban" vagy "éttermek a Main St közelében".
 
 Azure Maps számos keresési API-t biztosít a hasznos helyek számára:
@@ -501,10 +501,10 @@ További információ a Azure Maps REST-szolgáltatásokról:
 > [Ajánlott eljárások az útválasztáshoz](how-to-use-best-practices-for-routing.md)
 
 > [!div class="nextstepaction"]
-> [Azure Maps REST Service API-referenciák dokumentációja](https://docs.microsoft.com/rest/api/maps/)
+> [Azure Maps REST Service API-referenciák dokumentációja](/rest/api/maps/)
 
 > [!div class="nextstepaction"]
-> [Kódminták](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Kódminták](/samples/browse/?products=azure-maps)
 
 > [!div class="nextstepaction"]
 > [A Services modul (web SDK) használata](how-to-use-best-practices-for-routing.md)

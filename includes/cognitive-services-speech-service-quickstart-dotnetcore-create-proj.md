@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
 ms.openlocfilehash: 3f1a24db459cabd65d9ce17b89105c3b9ab8abb7
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097184"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188321"
 ---
 1. Indítsa el a Visual Studio 2019-et.
 
-1. Győződjön róla meg, hogy elérhető a **Platformfüggetlen .NET-fejlesztés** számítási feladat. Válassza **a**Visual  >  Studio menüsávjának eszközök**és szolgáltatások beolvasása** elemét, és nyissa meg a Visual Studio telepítőjét. Ha ez a számítási feladat már engedélyezve van, zárja be a párbeszédpanelt.
+1. Győződjön róla meg, hogy elérhető a **Platformfüggetlen .NET-fejlesztés** számítási feladat. Válassza **a** Visual  >  Studio menüsávjának eszközök **és szolgáltatások beolvasása** elemét, és nyissa meg a Visual Studio telepítőjét. Ha ez a számítási feladat már engedélyezve van, zárja be a párbeszédpanelt.
 
    ![A Visual Studio telepítőjének képernyőképe, amelyen ki van emelve a Számítási feladatok lap](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-net-core-workload.png)
 
@@ -27,7 +27,7 @@ ms.locfileid: "92097184"
 
    ![Képernyőkép a Megoldáskezelőről, a NuGet-csomagok kezelése a Kiemelt megoldáshoz](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-02-manage-nuget-packages.png "Megoldás NuGet-csomagjainak kezelése")
 
-1. A jobb felső sarokban, a **csomag forrása** mezőben válassza a **nuget.org**lehetőséget. Keresse meg a `Microsoft.CognitiveServices.Speech` csomagot, és telepítse a **HelloWorld** projektbe.
+1. A jobb felső sarokban, a **csomag forrása** mezőben válassza a **nuget.org** lehetőséget. Keresse meg a `Microsoft.CognitiveServices.Speech` csomagot, és telepítse a **HelloWorld** projektbe.
 
    ![A "csomagok kezelése a megoldáshoz" párbeszédpanel képernyőképe.](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-03-nuget-install-1.0.0.png "NuGet-csomag telepítése")
 

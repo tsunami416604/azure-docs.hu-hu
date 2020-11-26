@@ -6,16 +6,16 @@ ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.openlocfilehash: aa2530f817bf20af40ab2913df9f16e7d1974ef3
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94375454"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187136"
 ---
 # <a name="tutorial-create-an-faq-bot-with-azure-bot-service"></a>Oktatóanyag: GYIK-bot létrehozása Azure Bot Service
 Hozzon létre egy GYIK-robotot a QnA Maker és az Azure [bot Service](https://azure.microsoft.com/services/bot-service/) kód nélkül.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -73,7 +73,7 @@ Ha módosítja a tudásbázist, és újból közzéteszi, nem kell további műv
 
 1. A robot létrehozása után nyissa meg a **bot Service** -erőforrást.
 1. A **bot Management** alatt válassza **a tesztelés webes csevegésben** lehetőséget.
-1. Írja be a következőt a csevegési **üzenetbe** :
+1. Írja be a következőt a csevegési **üzenetbe**:
 
     `Azure services?`
 

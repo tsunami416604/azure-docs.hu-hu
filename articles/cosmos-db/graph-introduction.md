@@ -5,14 +5,14 @@ author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 07/10/2020
+ms.date: 11/25/2020
 ms.author: chrande
-ms.openlocfilehash: d0bd94037a75db8d69cfd44820a80ae8b403c9ea
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 56ed1e653547b3c0e3469f820eb33155aedb1bcb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357079"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187204"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>A Gremlin API bemutatása Azure Cosmos DB
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -24,6 +24,9 @@ ms.locfileid: "93357079"
 Ez a cikk áttekintést nyújt a Azure Cosmos DB Gremlin API-ról, és ismerteti, hogyan használhatók a nagy méretű gráfok több milliárd csúcsot és éleket tartalmazó diagramjainak tárolására. A gráfokat ezredmásodperces késéssel kérdezheti le, és könnyedén fejlesztheti a gráf szerkezetét. Azure Cosmos DB Gremlin API-ját az [Apache TinkerPop](https://tinkerpop.apache.org), egy gráf-számítástechnikai keretrendszer alapján építették. A Azure Cosmos DB Gremlin API a Gremlin lekérdezési nyelvet használja.
 
 Azure Cosmos DB Gremlin API-ját nagy mértékben skálázható, felügyelt infrastruktúrával ötvözi a Graph adatbázis-algoritmusok előnyeit, hogy egyedi, rugalmas megoldást nyújtson a rugalmasság és a kapcsolatok hiánya miatti leggyakoribb adatproblémákra.
+
+> [!NOTE]
+> A [kiszolgáló nélküli kapacitás mód](serverless.md) mostantól elérhető a Azure Cosmos db Gremlin API-ban.
 
 ## <a name="features-of-azure-cosmos-dbs-gremlin-api"></a>A Azure Cosmos DB Gremlin API funkciói
  
@@ -79,7 +82,7 @@ A Azure Cosmos DB Gremlin API által kínált differenciált funkciók a követk
 
   Számos távközlési, logisztikai és utazástervezési alkalmazásban van szükség az egyes helyszínek egy területen belül való megkeresésére, vagy a két helyszín közötti legrövidebb/optimális útvonal megállapítására. Az Azure Cosmos DB természetes választás az ilyen problémákhoz.
 
-* **Eszközök internetes hálózata**
+* **eszközök internetes hálózata**
 
   Ha a hálózatot és az IoT-eszközök közötti kapcsolatot gráfként modellezi, jobban megértheti az eszközök és adategységek állapotát. Azt is megértheti, hogy a hálózat egyes részeinek módosítása milyen potenciális hatással lehet a többi részre.
 
@@ -111,18 +114,18 @@ Használjunk egy mintagráfot annak megismeréséhez, hogyan adhatók meg lekér
 
 Ez a gráf a következő *csúcs* -típusokkal rendelkezik (ezeket a "label" is nevezik a Gremlin-ben):
 
-* **Emberek** : a gráf három személy, Robin, Thomas és ben
+* **Emberek**: a gráf három személy, Robin, Thomas és ben
 * **Érdeklődési** körök: ebben a példában a labdarúgás játéka
-* **Eszközök** : a felhasználók által használt eszközök
-* **Operációs rendszerek** : az eszközöket futtató operációs rendszerek
-* **Hely** : azok a helyek, amelyekről az eszközök hozzáférnek
+* **Eszközök**: a felhasználók által használt eszközök
+* **Operációs rendszerek**: az eszközöket futtató operációs rendszerek
+* **Hely**: azok a helyek, amelyekről az eszközök hozzáférnek
 
 Az entitások közötti kapcsolatokat a következő *Edge* -típusok szerint jelöljük:
 
 * **Ismerheti** meg például a következőt: "Thomas know Robin"
-* **Fontos** : a gráfban lévő személyek érdekeinek kifejezése, például "ben a labdarúgás érdekli"
-* **RunsOS** : a laptop a Windows operációs rendszert futtatja
-* A következőt **használja** : egy személy által használt eszköz jelölésére. Robin például egy Motorola-telefont használ, amelynek sorozatszáma 77.
+* **Fontos**: a gráfban lévő személyek érdekeinek kifejezése, például "ben a labdarúgás érdekli"
+* **RunsOS**: a laptop a Windows operációs rendszert futtatja
+* A következőt **használja**: egy személy által használt eszköz jelölésére. Robin például egy Motorola-telefont használ, amelynek sorozatszáma 77.
 * **Helye: annak** a helynek a jelölése, amelyről az eszközök hozzáférnek
 
 A Gremlin-konzol egy interaktív terminál, amelyet az Apache TinkerPop kínál, és ez a terminál a Graph-adatkezeléshez használatos. További információért tekintse meg a rövid útmutató dokumentációját a [Gremlin-konzol használatáról](create-graph-gremlin-console.md). Ezek a műveletek tetszőleges platformon is (Java, Node.js, Python vagy .NET) végrehajthatók a Gremlin-illesztők használatával. Az alábbi példák bemutatják, hogyan futtathat lekérdezéseket a gráf adatain a Gremlin-konzol használatával.

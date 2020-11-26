@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: a1492a106f68eec941970f9b41ff94178c9130bc
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425373"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188332"
 ---
 - [Gyors útmutató: beszéd felismerése mikrofonból](../../get-started-speech-to-text.md)
 - [Rövid útmutató: beszéd felismerése fájlból](../../get-started-speech-to-text.md)

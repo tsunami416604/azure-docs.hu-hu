@@ -22,6 +22,12 @@
           href: howto-create-private-cluster-4x.md
         - name: DNS-továbbítás konfigurálása
           href: dns-forwarding.md
+    - name: Storage
+      items:
+        - name: Azure Files StorageClass létrehozása
+          href: howto-create-a-storageclass.md
+        - name: A beépített tárolóregisztrációs adatbázis használata
+          href: built-in-container-registry.md
     - name: Biztonság és hitelesítés
       items:
         - name: Az Azure Active Directory-fiókon alapuló hitelesítés konfigurálása (CLI)

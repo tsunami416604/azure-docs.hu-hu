@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: d7ec1edb779ddaf53cef02dd6e83bb3e719d0b4e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b096b24acd5cf65f6ad3e9eabb1d536b3aae0168
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503555"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187068"
 ---
 # <a name="tutorial---migrate-an-android-app-from-google-maps"></a>Oktatóanyag – Android-alkalmazás migrálása a Google Mapsből
 
@@ -35,7 +35,7 @@ Az Android SDK Azure Maps használatával történő fejlesztésével kapcsolato
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 2. [Azure Maps fiók létrehozása](quick-demo-map-app.md#create-an-azure-maps-account)
 3. [Szerezzen be egy elsődleges előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account), más néven az elsődleges kulcsot vagy az előfizetési kulcsot. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](how-to-manage-authentication.md).
 
@@ -193,7 +193,7 @@ Ha az Androidhoz készült Azure Maps SDK-val szeretne térképet megjeleníteni
         > [!Note]
         > A Azure Maps Android SDK-t rendszeresen frissítjük és bővítettük. A legújabb Azure Maps verziószámának beszerzéséhez tekintse meg az [első lépések az Android Map Control](how-to-use-android-map-control-library.md) használatával című témakört. Azt is megteheti, hogy a verziószám a "0,2" értékről "0 +" értékre van állítva, hogy a kód mindig a legújabb verzióra mutasson.
 
-    4. Nyissa meg a **fájlt** az eszköztáron, majd kattintson a **szinkronizálás projekt Gradle-fájlokkal**elemre.
+    4. Nyissa meg a **fájlt** az eszköztáron, majd kattintson a **szinkronizálás projekt Gradle-fájlokkal** elemre.
 
 3. Térképi töredék hozzáadása a fő tevékenységhez (erőforrások pwd \> elrendezési \> tevékenység \_main.xml):
 
@@ -322,7 +322,7 @@ Ha futtatja az alkalmazást, a Térkép vezérlőelem a következő képen láth
 Figyelje meg, hogy a Azure Maps-vezérlő támogatja a nagyítást, és több globális nézetet biztosít.
 
 > [!TIP]
-> Ha Android-emulátort használ egy Windows rendszerű gépen, előfordulhat, hogy a Térkép nem jelenik meg az OpenGL-vel és a szoftveresen felgyorsított grafikus megjelenítéssel való ütközések miatt. A következőkben néhány személy számára a probléma megoldásához is dolgozott. Nyissa meg a AVD-kezelőt, és válassza ki a szerkeszteni kívánt virtuális eszközt. Görgessen le a **Konfiguráció ellenőrzése** panelen. Az **emulált teljesítmény** szakaszban állítsa a **grafikus** beállítást a **hardver**elemre.
+> Ha Android-emulátort használ egy Windows rendszerű gépen, előfordulhat, hogy a Térkép nem jelenik meg az OpenGL-vel és a szoftveresen felgyorsított grafikus megjelenítéssel való ütközések miatt. A következőkben néhány személy számára a probléma megoldásához is dolgozott. Nyissa meg a AVD-kezelőt, és válassza ki a szerkeszteni kívánt virtuális eszközt. Görgessen le a **Konfiguráció ellenőrzése** panelen. Az **emulált teljesítmény** szakaszban állítsa a **grafikus** beállítást a **hardver** elemre.
 
 ## <a name="localizing-the-map"></a>A Térkép honosítása
 
@@ -769,7 +769,7 @@ További információ az Azure Maps Android SDK-ról:
 > [Szimbólum réteg hozzáadása Android-térképhez](how-to-add-symbol-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [Alakzatok hozzáadása Android-térképhez](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)
+> [Alakzatok hozzáadása Android-térképhez](./how-to-add-shapes-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [Térkép stílusainak módosítása Android-térképeken](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
+> [Térkép stílusainak módosítása Android-térképeken](./set-android-map-styles.md)

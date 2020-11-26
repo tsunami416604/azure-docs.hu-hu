@@ -90,12 +90,13 @@
           href: de-identified-export.md
     - name: Identitásobjektum-azonosítók keresése
       href: find-identity-object-ids.md
-    - name: Diagnosztikai naplózás engedélyezése az Azure API for FHIR®-ben
-      href: enable-diagnostic-logging.md
-    - name: Az FHIR-hez készült Azure IoT-összekötő (előzetes verzió) metrikáinak exportálása a diagnosztikai beállításokon keresztül
-      href: iot-metrics-diagnostics-export.md
-    - name: Az FHIR-hez készült Azure IoT-összekötő (előzetes verzió) metrikáinak megjelenítése és konfigurálása
-      href: iot-metrics-display.md
+    - name: Diagnosztikai naplózás és mérőszámok
+      expanded: false
+      items:
+        - name: Diagnosztikai naplózás engedélyezése az Azure API for FHIR-ben
+          href: enable-diagnostic-logging.md
+        - name: Az FHIR-hez készült Azure IoT-összekötő (előzetes verzió) metrikáinak megjelenítése és konfigurálása
+          href: iot-metrics-display.md
     - name: Jogkivonat beszerzése az Azure API for FHIR-hoz – parancssori felület
       href: get-healthcare-apis-access-token-cli.md
     - name: Az FHIR-hez készült Azure IoT-összekötő hibaelhárítása (előzetes verzió)

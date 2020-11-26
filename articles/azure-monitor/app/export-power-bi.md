@@ -3,12 +3,12 @@ title: Exportálás Power BI az Azure Application Insightsból | Microsoft Docs
 description: Az elemzési lekérdezések a Power BIban is megjeleníthetők.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 804da7d3aaa2fd1b7973a686bc9ca5cb5ee973a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e88d60cd9a9d0e6267998237b33a361b12ffd84
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979166"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187000"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Hírcsatorna-Power BI Application Insights
 A [Power bi](https://www.powerbi.com/) egy olyan üzleti eszköz, amely megkönnyíti az adatok elemzését és az elemzések megosztását. A gazdag irányítópultok minden eszközön elérhetők. Több forrásból is egyesítheti az adatait, beleértve az [Azure Application Insightsból](./app-insights-overview.md)származó elemzési lekérdezéseket is.
@@ -31,12 +31,12 @@ A Application Insights-lekérdezés importálásához használja a Power BI aszt
 Telepítse a [Power bi Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
 ### <a name="export-an-analytics-query"></a>Elemzési lekérdezés exportálása
-1. [Nyissa meg az elemzést, és írja le a lekérdezést](../log-query/get-started-portal.md).
+1. [Nyissa meg az elemzést, és írja le a lekérdezést](../log-query/log-analytics-tutorial.md).
 2. Tesztelje és pontosítsa a lekérdezést, amíg nem elégedett az eredményekkel. Exportálás előtt győződjön meg arról, hogy a lekérdezés megfelelően fut az Analyticsben.
 3. Az **Exportálás** menüben válassza a **Power bi (M)** lehetőséget. Mentse a szövegfájlt.
    
     ![Képernyőkép az elemzésről, az Exportálás menü kiemelve](./media/export-power-bi/analytics-export-power-bi.png)
-4. A Power bi Desktop **területen válassza az**  >  **adatlekérdezés üres lekérdezés**lehetőséget. Ezután a lekérdezés szerkesztő **nézet**területén válassza a **speciális szerkesztő**lehetőséget.
+4. A Power bi Desktop **területen válassza az**  >  **adatlekérdezés üres lekérdezés** lehetőséget. Ezután a lekérdezés szerkesztő **nézet** területén válassza a **speciális szerkesztő** lehetőséget.
 
     Illessze be az exportált M nyelvi szkriptet a Speciális szerkesztőba.
 
@@ -57,11 +57,11 @@ Telepítse a [Power bi Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
 ### <a name="export-a-funnel"></a>Tölcsér exportálása
 1. [Készítse el a tölcsért](./usage-funnels.md).
-2. Válassza a **Power bi**lehetőséget.
+2. Válassza a **Power bi** lehetőséget.
 
    ![Power BI gomb képernyőképe](./media/export-power-bi/button.png)
 
-3. A Power bi Desktop **területen válassza az**  >  **adatlekérdezés üres lekérdezés**lehetőséget. Ezután a lekérdezés szerkesztő **nézet**területén válassza a **speciális szerkesztő**lehetőséget.
+3. A Power bi Desktop **területen válassza az**  >  **adatlekérdezés üres lekérdezés** lehetőséget. Ezután a lekérdezés szerkesztő **nézet** területén válassza a **speciális szerkesztő** lehetőséget.
 
    ![Képernyőkép a Power BI Desktopről, az üres lekérdezés gomb kiemelve](./media/export-power-bi/blankquery.png)
 
@@ -119,7 +119,7 @@ Ez a metódus létrehoz egy teljes irányítópultot a telemetria. A kezdeti ada
 
 ### <a name="get-the-adapter"></a>Az adapter beszerzése
 1. Jelentkezzen be a [Power BI-ba](https://app.powerbi.com/).
-2. Nyissa meg az **adatolvasás** ![ képernyőképet a GetData ikon bal alsó sarkában ](./media/export-power-bi/001.png) , a **szolgáltatások**területen.
+2. Nyissa meg az **adatolvasás** ![ képernyőképet a GetData ikon bal alsó sarkában ](./media/export-power-bi/001.png) , a **szolgáltatások** területen.
 
     ![A Képernyőképek a szolgáltatások ablakban a beolvasás gombra mutatnak.](./media/export-power-bi/002.png)
 
@@ -146,5 +146,4 @@ A kezdeti importálás után az irányítópult és a jelentések naponta friss�
 
 ## <a name="next-steps"></a>Következő lépések
 * [Power BI – Learn](https://www.powerbi.com/learning/)
-* [Elemzési oktatóanyag](../log-query/get-started-portal.md)
-
+* [Elemzési oktatóanyag](../log-query/log-analytics-tutorial.md)

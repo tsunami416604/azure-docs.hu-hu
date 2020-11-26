@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: d5da6576258d3e33296781bbc262494220140ddc
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 37c237cdaf6c0d4f766d4b2e39c10e3e96215463
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489284"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187833"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway-preview"></a>Alsóbb rétegbeli IoT Edge eszköz csatlakoztatása Azure IoT Edge átjáróhoz (előzetes verzió)
 
@@ -34,15 +34,15 @@ Egyes hálózati architektúrák megkövetelik, hogy a hierarchiában csak a leg
 
 A cikkben ismertetett lépések a [IoT Edge-eszköz konfigurálása, amely transzparens átjáróként működik](how-to-create-transparent-gateway.md), amely egy IoT Edge eszköz átjáróként való használatát állítja be az alsóbb rétegbeli IoT-eszközökhöz. Ugyanazok az alapvető lépések érvényesek az összes átjáróra:
 
-* **Hitelesítés** : hozzon létre IoT hub identitásokat az átjáró-hierarchiában lévő összes eszközhöz.
-* **Engedélyezés** : állítsa be a szülő/gyermek kapcsolatot IoT hub, hogy a gyermek eszközök csatlakozzanak a fölérendelt eszközhöz, például a IoT hubhoz.
-* **Átjáró felderítése** : gondoskodjon arról, hogy a gyermek eszköz a helyi hálózaton találja a fölérendelt eszközét.
-* **Biztonságos kapcsolat** : hozzon létre biztonságos kapcsolatot az azonos lánc részét képező megbízható tanúsítványokkal.
+* **Hitelesítés**: hozzon létre IoT hub identitásokat az átjáró-hierarchiában lévő összes eszközhöz.
+* **Engedélyezés**: állítsa be a szülő/gyermek kapcsolatot IoT hub, hogy a gyermek eszközök csatlakozzanak a fölérendelt eszközhöz, például a IoT hubhoz.
+* **Átjáró felderítése**: gondoskodjon arról, hogy a gyermek eszköz a helyi hálózaton találja a fölérendelt eszközét.
+* **Biztonságos kapcsolat**: hozzon létre biztonságos kapcsolatot az azonos lánc részét képező megbízható tanúsítványokkal.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy ingyenes vagy standard IoT hub.
-* Legalább két **IoT Edge eszköz** , az egyik a legfelső rétegű eszköz, és egy vagy több alsóbb rétegbeli eszköz. Ha nem áll rendelkezésre IoT Edge eszköz, [futtathatja Azure IoT Edge Ubuntu rendszerű virtuális gépeken](how-to-install-iot-edge-ubuntuvm.md)is.
+* Legalább két **IoT Edge eszköz**, az egyik a legfelső rétegű eszköz, és egy vagy több alsóbb rétegbeli eszköz. Ha nem áll rendelkezésre IoT Edge eszköz, [futtathatja Azure IoT Edge Ubuntu rendszerű virtuális gépeken](how-to-install-iot-edge-ubuntuvm.md)is.
 * Ha az Azure CLI-t használja az eszközök létrehozásához és kezeléséhez, az Azure CLI v 2.3.1-es verziója az Azure IoT Extension v 0.10.6 vagy újabb verzióra van telepítve.
 
 Ez a cikk részletesen ismerteti azokat a lépéseket és lehetőségeket, amelyekkel a forgatókönyvhöz megfelelő átjáró-hierarchia hozható létre. Interaktív oktatóanyagért lásd: [IoT Edge-eszközök hierarchiájának létrehozása átjárók használatával](tutorial-nested-iot-edge.md).
@@ -99,9 +99,9 @@ Ezzel a beállítással minden alsóbb rétegbeli IoT Edge eszköz-vagy IoT-eszk
 
 Hozza létre a következő tanúsítványokat:
 
-* Egy **legfelső szintű hitelesítésszolgáltatói tanúsítvány** , amely egy adott átjáró-hierarchiában lévő összes eszköz legfelső szintű megosztott tanúsítványa. Ez a tanúsítvány minden eszközre telepítve van.
+* Egy **legfelső szintű hitelesítésszolgáltatói tanúsítvány**, amely egy adott átjáró-hierarchiában lévő összes eszköz legfelső szintű megosztott tanúsítványa. Ez a tanúsítvány minden eszközre telepítve van.
 * Minden olyan **köztes tanúsítvány** , amelyet fel szeretne venni a főtanúsítvány-láncba.
-* Az **eszköz hitelesítésszolgáltatói tanúsítványa** és a hozzá tartozó **titkos kulcs** , amelyet a gyökér és a köztes tanúsítvány generál. Az átjáró-hierarchiában minden IoT Edge eszközhöz egyedi HITELESÍTÉSSZOLGÁLTATÓI tanúsítványra van szükség.
+* Az **eszköz hitelesítésszolgáltatói tanúsítványa** és a hozzá tartozó **titkos kulcs**, amelyet a gyökér és a köztes tanúsítvány generál. Az átjáró-hierarchiában minden IoT Edge eszközhöz egyedi HITELESÍTÉSSZOLGÁLTATÓI tanúsítványra van szükség.
 
 >[!NOTE]
 >Jelenleg a libiothsm korlátozásai meggátolják a 2038 január 1-jén vagy azt követően lejáró tanúsítványok használatát.
@@ -148,9 +148,9 @@ Linux rendszeren ellenőrizze, hogy a felhasználó **iotedge** rendelkezik-e ol
 
 1. Keresse meg a **tanúsítványok** szakaszt a config. YAML fájlban. Frissítse a három tanúsítvány mezőt úgy, hogy az a tanúsítványokra mutasson. Adja meg a fájl URI elérési útját, amely a formátumot használja `file:///<path>/<filename>` .
 
-   * **device_ca_cert** : az eszköz egyedi hitelesítésszolgáltatói tanúsítványának fájl URI elérési útja.
-   * **device_ca_pk** : a fájl URI-elérési útja az eszközhöz egyedi hitelesítésszolgáltató titkos kulcsához.
-   * **trusted_ca_certs** : az átjáró-hierarchiában lévő összes eszköz által megosztott legfelső szintű hitelesítésszolgáltatói tanúsítvány FÁJLjának URI-elérési útja.
+   * **device_ca_cert**: az eszköz egyedi hitelesítésszolgáltatói tanúsítványának fájl URI elérési útja.
+   * **device_ca_pk**: a fájl URI-elérési útja az eszközhöz egyedi hitelesítésszolgáltató titkos kulcsához.
+   * **trusted_ca_certs**: az átjáró-hierarchiában lévő összes eszköz által megosztott legfelső szintű hitelesítésszolgáltatói tanúsítvány FÁJLjának URI-elérési útja.
 
 1. Keresse meg a **hostname** paramétert a config. YAML fájlban. Frissítse a gazdagépet a teljes tartománynév (FQDN) vagy a IoT Edge eszköz IP-címének megadásával.
 
@@ -160,7 +160,7 @@ Linux rendszeren ellenőrizze, hogy a felhasználó **iotedge** rendelkezik-e ol
 
    Konzisztensnek kell lennie az állomásnév-mintázattal az átjáró-hierarchián belül. Használjon teljes tartománynevet vagy IP-címet, de mindkettőt nem.
 
-1. **Ha ez az eszköz egy gyermek eszköz** , keresse meg a **parent_hostname** paramétert. Frissítse a **parent_hostname** mezőt úgy, hogy a szülő eszköz teljes tartományneve vagy IP-címe legyen, és hogy az a szülő config. YAML fájljában található állomásnévként legyen megadva.
+1. **Ha ez az eszköz egy gyermek eszköz**, keresse meg a **parent_hostname** paramétert. Frissítse a **parent_hostname** mezőt úgy, hogy a szülő eszköz teljes tartományneve vagy IP-címe legyen, és hogy az a szülő config. YAML fájljában található állomásnévként legyen megadva.
 
 1. Habár ez a funkció nyilvános előzetes verzióban érhető el, a IoT Edge eszközt úgy kell konfigurálnia, hogy az indításkor a IoT Edge-ügynök nyilvános előzetes verzióját használja.
 
@@ -172,7 +172,7 @@ Linux rendszeren ellenőrizze, hogy a felhasználó **iotedge** rendelkezik-e ol
      type: "docker"
      env: {}
      config:
-       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc1"
+       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2"
        auth: {}
    ```
 
@@ -202,16 +202,16 @@ Linux rendszeren ellenőrizze, hogy a felhasználó **iotedge** rendelkezik-e ol
 
 Habár ez a funkció nyilvános előzetes verzióban érhető el, konfigurálnia kell a IoT Edge eszközt az IoT Edge Runtime-modulok nyilvános előzetes verziójára. Az előző szakasz a edgeAgent konfigurálásának lépéseit ismerteti indításkor. A futásidejű modulokat is konfigurálnia kell az eszköz telepítéséhez.
 
-1. Konfigurálja a edgeHub modult a nyilvános előzetes rendszerkép használatára: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc1` .
+1. Konfigurálja a edgeHub modult a nyilvános előzetes rendszerkép használatára: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2` .
 
 1. Konfigurálja az alábbi környezeti változókat a edgeHub modulhoz:
 
-   | Name | Érték |
+   | Name (Név) | Érték |
    | - | - |
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__nestedEdgeEnabled` | `true` |
 
-1. Konfigurálja a edgeAgent modult a nyilvános előzetes rendszerkép használatára: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc1` .
+1. Konfigurálja a edgeAgent modult a nyilvános előzetes rendszerkép használatára: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2` .
 
 ## <a name="network-isolate-downstream-devices"></a>Hálózati elkülönítésű alsóbb szintű eszközök
 
@@ -298,17 +298,17 @@ Az API-proxy modul úgy lett kialakítva, hogy testre legyen szabva a leggyakori
 1. Kattintson a **Save (Mentés** ) gombra a futásidejű beállítások módosításainak mentéséhez.
 1. Válassza a **Hozzáadás** újra, majd a **IoT Edge modul** lehetőséget.
 1. Adja meg a következő értékeket a Docker beállításjegyzék-modul telepítéséhez a központi telepítéshez:
-   1. **IoT Edge modul neve** : `registry`
-   1. A **modul beállításai** lapon a **rendszerkép URI-ja** : `registry:latest`
+   1. **IoT Edge modul neve**: `registry`
+   1. A **modul beállításai** lapon a **rendszerkép URI-ja**: `registry:latest`
    1. A **környezeti változók** lapon adja hozzá a következő környezeti változókat:
 
-      * **Név** : `REGISTRY_PROXY_REMOTEURL` **érték** : annak a tároló-beállításjegyzéknek az URL-címe, amelyhez a beállításjegyzék-modult le szeretné képezni. Például: `https://myregistry.azurecr`.
+      * **Név**: `REGISTRY_PROXY_REMOTEURL` **érték**: annak a tároló-beállításjegyzéknek az URL-címe, amelyhez a beállításjegyzék-modult le szeretné képezni. Például: `https://myregistry.azurecr`.
 
         A beállításjegyzék-modul csak egy tároló-beállításjegyzékhez képezhető le, ezért azt javasoljuk, hogy az összes tároló lemezképe egyetlen privát tároló-beállításjegyzékben legyen.
 
-      * **Name** : `REGISTRY_PROXY_USERNAME` **Value** : username a Container registryben való hitelesítéshez.
+      * **Name**: `REGISTRY_PROXY_USERNAME` **Value**: username a Container registryben való hitelesítéshez.
 
-      * **Name** : `REGISTRY_PROXY_PASSWORD` **Value** : jelszó a tároló beállításjegyzékében való hitelesítéshez.
+      * **Name**: `REGISTRY_PROXY_PASSWORD` **Value**: jelszó a tároló beállításjegyzékében való hitelesítéshez.
 
    1. A **tároló létrehozása beállítások** lapon illessze be a következőt:
 
@@ -329,8 +329,8 @@ Az API-proxy modul úgy lett kialakítva, hogy testre legyen szabva a leggyakori
 1. A **Hozzáadás** gombra kattintva adja hozzá a modult a központi telepítéshez.
 1. Válassza a Next (tovább) lehetőséget **: útvonalakon** lépjen a következő lépésre.
 1. Ha engedélyezni szeretné az eszközről a felhőbe irányuló üzeneteket az alsóbb rétegbeli eszközökről a IoT Hub elérésére, adjon meg egy útvonalat, amely az összes üzenetet átadja IoT Hubnak. Például:
-    1. **Név** : `Route`
-    1. **Érték** : `FROM /messages/* INTO $upstream`
+    1. **Név**: `Route`
+    1. **Érték**: `FROM /messages/* INTO $upstream`
 1. Válassza a **felülvizsgálat + létrehozás** lehetőséget az utolsó lépéshez való ugráshoz.
 1. Válassza a **Létrehozás** lehetőséget az eszközön való üzembe helyezéshez.
 
@@ -366,7 +366,7 @@ agent:
   type: "docker"
   env: {}
   config:
-    image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc1"
+    image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc2"
     auth: {}
 ```
 
@@ -436,12 +436,12 @@ Az API-proxy modul úgy lett kialakítva, hogy testre legyen szabva a leggyakori
 1. Kattintson a **Save (Mentés** ) gombra a futásidejű beállítások módosításainak mentéséhez.
 1. Válassza a Next (tovább) lehetőséget **: útvonalakon** lépjen a következő lépésre.
 1. Ha engedélyezni szeretné az eszközről a felhőbe irányuló üzeneteket az alsóbb rétegbeli eszközökről a IoT Hub elérésére, adjon meg egy útvonalat, amely az összes üzenetet átadja `$upstream` . A felsőbb rétegbeli paraméter a fölérendelt eszközre mutat alsó rétegű eszközök esetén. Például:
-    1. **Név** : `Route`
-    1. **Érték** : `FROM /messages/* INTO $upstream`
+    1. **Név**: `Route`
+    1. **Érték**: `FROM /messages/* INTO $upstream`
 1. Válassza a **felülvizsgálat + létrehozás** lehetőséget az utolsó lépéshez való ugráshoz.
 1. Válassza a **Létrehozás** lehetőséget az eszközön való üzembe helyezéshez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [IoT Edge-eszköz használata átjáróként](iot-edge-as-gateway.md)
 

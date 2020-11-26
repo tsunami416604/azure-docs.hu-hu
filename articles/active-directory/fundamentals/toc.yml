@@ -79,6 +79,46 @@
               href: sync-ldap.md
             - name: SCIM-szinkronizálás
               href: sync-scim.md
+        - name: Rugalmasságot szem előtt tartó kiépítés
+          items:
+            - name: Áttekintés
+              href: resilience-overview.md
+            - name: Infrastruktúra-kezelési útmutató
+              items:
+                - name: Infrastruktúra áttekintése
+                  href: resilience-in-infrastructure.md
+                - name: Hitelesítő adatok kezelése
+                  href: resilience-in-credentials.md
+                - name: Eszközállapotok
+                  href: resilience-with-device-states.md
+                - name: Folyamatos hozzáférés-kiértékelés
+                  href: resilience-with-continuous-access-evaluation.md
+                - name: Külső felhasználó hitelesítése
+                  href: resilience-b2b-authentication.md
+                - name: Hibrid hitelesítés
+                  href: resilience-in-hybrid.md
+                - name: Alkalmazásproxy
+                  href: resilience-on-premises-access.md
+            - name: Útmutató az Azure AD B2C-hez
+              items:
+                - name: Bevezetés az Azure AD B2C rugalmassági megoldásaiba
+                  href: resilience-b2c.md
+                - name: Végfelhasználói élmény
+                  href: resilient-end-user-experience.md
+                - name: Csatolók külső folyamatokhoz
+                  href: resilient-external-processes.md
+                - name: Ajánlott fejlesztői eljárások az Azure AD B2C-hez
+                  href: resilience-b2c-developer-best-practices.md
+                - name: Figyelés és elemzés
+                  href: resilience-with-monitoring-alerting.md
+            - name: Alkalmazásfejlesztési útmutató
+              items:
+                - name: Fejlesztői áttekintés
+                  href: resilience-app-development-overview.md
+                - name: Ügyfélalkalmazások
+                  href: resilience-client-app.md
+                - name: Démonalkalmazások
+                  href: resilience-daemon-app.md
         - name: Az Azure-ban használt hitelesítésszolgáltatók
           href: certificate-authorities.md
     - name: Üzembehelyezési útmutató

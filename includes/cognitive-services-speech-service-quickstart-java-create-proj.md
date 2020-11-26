@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
 ms.openlocfilehash: ee88a7cc187644c89aca5656df9ab9ae48a5a056
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096912"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187676"
 ---
 1. Indítsa el az Eclipse-et.
 
@@ -19,23 +19,23 @@ ms.locfileid: "92096912"
 
 1. Az Eclipse IDE főablaka hamarosan megjelenik. Ha van ilyen, zárjuk be az **üdvözlőképernyőn** .
 
-1. Az Eclipse menüsávban hozzon létre egy új projektet a **fájl**  >  **új**  >  **projekt**lehetőség kiválasztásával.
+1. Az Eclipse menüsávban hozzon létre egy új projektet a **fájl**  >  **új**  >  **projekt** lehetőség kiválasztásával.
 
 1. Megjelenik a **New project** (Új projekt) párbeszédpanel. Válassza a **Java Project** (Java-projekt) lehetőséget, majd kattintson a **Next** (Tovább) gombra.
 
    ![A New project párbeszédpanel képernyőképe a kiemelt Java Project lehetőséggel](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-02-select-wizard.png)
 
-1. Elindul az **új Java-projekt** varázsló. A **Project name** (Projekt neve) mezőbe írja be a **quickstart** (rövid útmutató) kifejezést, és válassza ki a **JavaSE-1.8** futtatókörnyezetet. Válassza a **Befejezés** lehetőséget.
+1. Elindul az **új Java-projekt** varázsló. A **Project name** (Projekt neve) mezőbe írja be a **quickstart** (rövid útmutató) kifejezést, és válassza ki a **JavaSE-1.8** futtatókörnyezetet. Válassza a **Befejezés** gombot.
 
    ![A New Java Project varázsló képernyőképe](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-03-create-java-project.png)
 
 1. Ha az **Open Associated Perspective?** (Megnyitja a társított perspektívát?) ablak megjelenik, válassza az **Open Perspective** (Perspektíva megnyitása) lehetőséget.
 
-1. A **Package Explorerben** kattintson a jobb gombbal a **v** nevű projektre. Válassza **Configure**  >  a helyi menü**Konvertálás a Maven-re projektre** parancsát.
+1. A **Package Explorerben** kattintson a jobb gombbal a **v** nevű projektre. Válassza **Configure**  >  a helyi menü **Konvertálás a Maven-re projektre** parancsát.
 
    ![A Package Explorer képernyőképe](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-04-convert-to-maven-project.png)
 
-1. Megjelenik a **Create new POM** (Új POM létrehozása) ablak. A **csoport azonosítója** mezőben adja meg a *com. microsoft. cognitiveservices. Speech. Samples*értéket, és az összetevő- **azonosító** mezőben adja meg a gyors *útmutatót.* Ezután válassza a **Befejezés**lehetőséget.
+1. Megjelenik a **Create new POM** (Új POM létrehozása) ablak. A **csoport azonosítója** mezőben adja meg a *com. microsoft. cognitiveservices. Speech. Samples* értéket, és az összetevő- **azonosító** mezőben adja meg a gyors *útmutatót.* Ezután válassza a **Befejezés** lehetőséget.
 
    ![A Create new POM ablak képernyőképe](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-05-configure-maven-pom.png)
 

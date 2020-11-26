@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 10/16/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: c38fa77951aaeb5559dc2030f1401a896d7c238d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: f9ced3dfeccdbac5f0eb220cf0e104679f263aac
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841920"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186864"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>A Azure Monitor figyelési megoldásai
 
@@ -29,7 +29,7 @@ A képernyő felső részén található legördülő listák használatával m�
 
 [![Képernyőfelvétel: a Azure Portal menü a kiválasztott megoldásokkal és a megoldások ablaktáblán megjelenített megoldásokkal.](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
 
-A figyelési megoldások több típusú Azure-erőforrást is tartalmazhatnak, és a megoldáshoz tartozó összes erőforrást ugyanúgy megtekintheti, mint bármely más erőforrást. Például a megoldásban szereplő összes naplózási lekérdezés megjelenik a [lekérdezési](../log-query/get-started-portal.md#load-queries) lekérdezésekben a **megoldás-lekérdezések** területen, ha ad hoc elemzést végez a [naplók](../log-query/log-query-overview.md)lekérdezésével.
+A figyelési megoldások több típusú Azure-erőforrást is tartalmazhatnak, és a megoldáshoz tartozó összes erőforrást ugyanúgy megtekintheti, mint bármely más erőforrást. Például a megoldásban szereplő összes naplózási lekérdezés megjelenik a [lekérdezési tallózó](../log-query/log-analytics-tutorial.md) **megoldási lekérdezések** területén. Ezeket a lekérdezéseket akkor használhatja, amikor ad hoc elemzést végez a [naplók lekérdezésével](../log-query/log-query-overview.md).
 
 ## <a name="list-installed-monitoring-solutions"></a>Telepített figyelési megoldások listázása
 

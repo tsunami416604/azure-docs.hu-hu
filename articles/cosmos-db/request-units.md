@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.custom: seo-nov-2020
-ms.openlocfilehash: f698c1ac7ab3ad2dbd86710bea9a48d962603d86
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 23401885580a3883dc49eccc97c17bbedd9080ab
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94334584"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187323"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Az Azure Cosmos DB kérelemegységei
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -31,34 +31,34 @@ A kapacitás kezelése és tervezése érdekében az Azure Cosmos DB biztosítja
 
 Az Ön által használt Azure Cosmos-fiók típusa határozza meg, hogy milyen módon történik a felhasznált RUs felszámítása. 3 mód áll rendelkezésre, amelyekben létrehozhat egy fiókot:
 
-1. **Kiépített átviteli sebességi mód** : ebben a módban az alkalmazáshoz tartozó RUs számát másodpercenként 100 RUs-onként kell kiépíteni. Az alkalmazás kiépített átviteli sebességének méretezése érdekében a 100 RUs növekmények vagy csökkentései révén bármikor növelheti vagy csökkentheti az RUs számát. A módosításokat elvégezheti programozással vagy az Azure Portal használatával is. Az Ön által kiépített RUs-mennyiségért óradíjat számolunk fel. További információt a [kiosztott átviteli sebességről](set-throughput.md) szóló cikkben talál.
+1. **Kiépített átviteli sebességi mód**: ebben a módban az alkalmazáshoz tartozó RUs számát másodpercenként 100 RUs-onként kell kiépíteni. Az alkalmazás kiépített átviteli sebességének méretezése érdekében a 100 RUs növekmények vagy csökkentései révén bármikor növelheti vagy csökkentheti az RUs számát. A módosításokat elvégezheti programozással vagy az Azure Portal használatával is. Az Ön által kiépített RUs-mennyiségért óradíjat számolunk fel. További információt a [kiosztott átviteli sebességről](set-throughput.md) szóló cikkben talál.
 
    Az átviteli sebességet két különböző részletességgel is kiépítheti:
 
-   * **Tárolók** : további információkért lásd az [átviteli sebesség Azure Cosmos-tárolón](how-to-provision-container-throughput.md)való kiépítését ismertető témakört.
-   * **Adatbázisok** : további információt az [átviteli sebesség kiépítése Azure Cosmos-adatbázisban](how-to-provision-database-throughput.md)című témakörben talál.
+   * **Tárolók**: további információkért lásd az [átviteli sebesség Azure Cosmos-tárolón](how-to-provision-container-throughput.md)való kiépítését ismertető témakört.
+   * **Adatbázisok**: további információt az [átviteli sebesség kiépítése Azure Cosmos-adatbázisban](how-to-provision-database-throughput.md)című témakörben talál.
 
-2. **Kiszolgáló nélküli mód** : ebben a módban nem szükséges átviteli sebességet kiépíteni az Azure Cosmos-fiókban lévő erőforrások létrehozásakor. A számlázási időszak végén az adatbázis-műveletek által felhasznált kérelmek mennyiségét számoljuk fel. További információért lásd a kiszolgáló nélküli [átviteli sebességről](serverless.md) szóló cikket. 
+2. **Kiszolgáló nélküli mód**: ebben a módban nem szükséges átviteli sebességet kiépíteni az Azure Cosmos-fiókban lévő erőforrások létrehozásakor. A számlázási időszak végén az adatbázis-műveletek által felhasznált kérelmek mennyiségét számoljuk fel. További információért lásd a kiszolgáló nélküli [átviteli sebességről](serverless.md) szóló cikket. 
 
-3. Automatikus **skálázási mód** : ebben az esetben automatikusan és azonnal méretezheti az adatbázis vagy tároló átviteli sebességét (ru/s) a használat alapján, anélkül, hogy ez befolyásolná a munkaterhelés rendelkezésre állását, késését, átviteli sebességét vagy teljesítményét. Ez a mód kiválóan alkalmas olyan kritikus fontosságú számítási feladatokhoz, amelyek változó vagy kiszámíthatatlan forgalmi mintákkal rendelkeznek, és nagy teljesítményű és méretezhető SLA-kat igényelnek. További információ: az [autoscale átviteli sebessége](provision-throughput-autoscale.md) című cikk. 
+3. Automatikus **skálázási mód**: ebben a módban automatikusan és azonnal méretezheti az adatbázis vagy tároló átviteli sebességét (ru/s) a használat alapján, anélkül, hogy ez befolyásolná a munkaterhelés rendelkezésre állását, késését, átviteli sebességét vagy teljesítményét. Ez a mód kiválóan alkalmas olyan kritikus fontosságú számítási feladatokhoz, amelyek változó vagy kiszámíthatatlan forgalmi mintákkal rendelkeznek, és nagy teljesítményű és méretezhető SLA-kat igényelnek. További információ: az [autoscale átviteli sebessége](provision-throughput-autoscale.md) című cikk. 
 
 ## <a name="request-unit-considerations"></a>A kérelemegységekkel kapcsolatos megfontolások
 
 A számítási feladatok által felhasznált RUs számának becslése közben vegye figyelembe a következő tényezőket:
 
-* **Elem mérete** : Az elem méretének növekedésével az elem olvasásához vagy írásához szükséges kérelemegységek száma is növekszik.
+* **Elem mérete**: Az elem méretének növekedésével az elem olvasásához vagy írásához szükséges kérelemegységek száma is növekszik.
 
-* **Elem indexelése** : Alapértelmezés szerint minden elem automatikusan indexelve lesz. Kevesebb kérelemegység lesz felhasználva, ha egy tárolóban egyes elemeket nem indexel.
+* **Elem indexelése**: Alapértelmezés szerint minden elem automatikusan indexelve lesz. Kevesebb kérelemegység lesz felhasználva, ha egy tárolóban egyes elemeket nem indexel.
 
-* **Elemtulajdonságok száma** : Feltéve, hogy az alapértelmezett indexelés az összes tulajdonságra van állítva, az elem írásához szükséges kérelemegységek száma az elemtulajdonságok számának növekedésével együtt növekszik.
+* **Elemtulajdonságok száma**: Feltéve, hogy az alapértelmezett indexelés az összes tulajdonságra van állítva, az elem írásához szükséges kérelemegységek száma az elemtulajdonságok számának növekedésével együtt növekszik.
 
-* **Indexelt tulajdonságok** : Az indexelési szabályzat az egyes tárolókra azt határozza meg, hogy alapértelmezés szerint mely tulajdonságok lesznek indexelve. Ha csökkenteni szeretné az írási műveletek fogyasztását, korlátozza az indexelt tulajdonságok számát.
+* **Indexelt tulajdonságok**: Az indexelési szabályzat az egyes tárolókra azt határozza meg, hogy alapértelmezés szerint mely tulajdonságok lesznek indexelve. Ha csökkenteni szeretné az írási műveletek fogyasztását, korlátozza az indexelt tulajdonságok számát.
 
-* **Adatkonzisztencia** : az erős és a határos inkonzisztens konzisztencia-szintek körülbelül kétszer használják az olvasási műveleteket a többi nyugodt konzisztencia-szinthez képest.
+* **Adatkonzisztencia**: az erős és a határos inkonzisztens konzisztencia-szintek körülbelül kétszer használják az olvasási műveleteket a többi nyugodt konzisztencia-szinthez képest.
 
 * **Az olvasások típusa: a** Point olvasási díja jóval kevesebb, mint a lekérdezéseknél.
 
-* **Lekérdezési mintázatok** : A lekérdezés összetettsége hatással van arra, hogy egy művelethez hány kérelemegység szükséges. A lekérdezési műveletek költségét befolyásoló tényezők többek között: 
+* **Lekérdezési mintázatok**: A lekérdezés összetettsége hatással van arra, hogy egy művelethez hány kérelemegység szükséges. A lekérdezési műveletek költségét befolyásoló tényezők többek között: 
  
   * A lekérdezési eredmények száma
   * A predikátumok száma
@@ -70,7 +70,7 @@ A számítási feladatok által felhasznált RUs számának becslése közben ve
 
   Ugyanezen az adatlekérdezésen ugyanazt a lekérdezést fogja megismételni az ismétlődő végrehajtások esetében is.
 
-* **Parancsfájlok használata** : a lekérdezésekhez hasonlóan a tárolt eljárások és eseményindítók a végrehajtott műveletek összetettsége alapján használják az RUs-ket. Az alkalmazás fejlesztése során vizsgálja meg a [kérelemdíj fejlécet](./optimize-cost-reads-writes.md#measuring-the-ru-charge-of-a-request), hogy pontosabb képet kapjon arról, hány kérelemegységet fogyasztanak az egyes műveletek.
+* **Parancsfájlok használata**: a lekérdezésekhez hasonlóan a tárolt eljárások és eseményindítók a végrehajtott műveletek összetettsége alapján használják az RUs-ket. Az alkalmazás fejlesztése során vizsgálja meg a [kérelemdíj fejlécet](./optimize-cost-reads-writes.md#measuring-the-ru-charge-of-a-request), hogy pontosabb képet kapjon arról, hány kérelemegységet fogyasztanak az egyes műveletek.
 
 ## <a name="request-units-and-multiple-regions"></a>Kérési egységek és több régió
 
@@ -78,9 +78,9 @@ Ha a Cosmos-tárolón (vagy adatbázison) kiépíti az *r* RUS-t, Cosmos db bizt
 
 Feltételezve, hogy egy Cosmos-tároló *"R"* RUs-vel van konfigurálva, és a Cosmos-fiókhoz tartozó *"N"* régió van társítva, a teljes, globálisan elérhető RUs a tárolóban = *R* x *N*.
 
-Az Ön által választott [konzisztencia-modell](consistency-levels.md) az átviteli sebességet is befolyásolja. Körülbelül 2x olvasási sebességet érhet el a nyugodtabb konzisztencia-szintek (például *munkamenet* , *konzisztens előtag* és *végleges* konzisztencia) tekintetében az erősebb konzisztencia-szintekhez képest (például *kötött* elavulás vagy *erős* konzisztencia).
+Az Ön által választott [konzisztencia-modell](consistency-levels.md) az átviteli sebességet is befolyásolja. Körülbelül 2x olvasási sebességet érhet el a nyugodtabb konzisztencia-szintek (például *munkamenet*, *konzisztens előtag* és *végleges* konzisztencia) tekintetében az erősebb konzisztencia-szintekhez képest (például *kötött* elavulás vagy *erős* konzisztencia).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [átviteli sebesség Azure Cosmos-tárolók és-adatbázisok létesítéséről](set-throughput.md).
 - További információ a [Azure Cosmos db kiszolgáló](serverless.md)nélküli használatáról.

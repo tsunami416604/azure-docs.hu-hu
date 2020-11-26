@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: d203cb5ccef90fd09659ba64b7bcbc8b9be9e47a
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: d42a32e236eb73f2aa9f2f61d9708314783564dd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358099"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187297"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Gyors útmutató – a minta Azure digitális Twins-forgatókönyvek megismerése a ADT Explorer használatával
 
-Az Azure Digital Twins segítségével valós környezetei élő modelljeit hozhat létre és kezelhet. Először *digitális Twins* -ként modellezheti az egyes elemeket. Ezután csatlakoztassuk azokat egy *olyan tudásbázishoz* , amely reagálni tud az élő eseményekre, és információkat kér le.
+Az Azure Digital Twins segítségével valós környezetei élő modelljeit hozhat létre és kezelhet. Először *digitális Twins*-ként modellezheti az egyes elemeket. Ezután csatlakoztassuk azokat egy *olyan tudásbázishoz* , amely reagálni tud az élő eseményekre, és információkat kér le.
 
 Ebben a rövid útmutatóban egy előre elkészített Azure Digital Twins gráfot fog felfedezni, amely az [Azure Digital Twins (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)nevű minta alkalmazás segítségével készült. A ADT Explorer használatával:
 
@@ -66,6 +66,7 @@ Ellenkező esetben a helyi Azure CLI-t a következő lépésekkel telepítheti:
 1. Kövesse a [telepítési hivatkozás](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) folyamatát az operációs rendszerének megfelelő telepítés befejezéséhez.
 1. Nyisson meg egy konzolablak ablakot a gépen.
 1. Futtassa `az login` a parancsot, és kövesse a hitelesítési kéréseket, hogy bejelentkezzen az Azure-fiókjába.
+1. Utolsó lépés: Ha a fiókban több Azure-előfizetést is használ, állítsa be a hitelesítési környezetet az Azure-beli digitális Twins-példányt tartalmazó Azure-előfizetésre a futtatásával `az account set --subscription "<your-subscription-name-or-ID>"` (vagy az előfizetés nevének vagy azonosítójának értéke).
 
 A bejelentkezést követően a ADT Explorer automatikusan felveszi az Azure-beli hitelesítő adatait, amikor a következő szakaszban futtatja.
 
@@ -90,13 +91,13 @@ Nyisson meg egy konzol ablakot a mappa helyére **Azure_Digital_Twins__ADT__expl
 
    :::image type="content" source="media/quickstart-adt-explorer/sign-in.png" alt-text="ADT Explorer – a bejelentkezési ikon kiemelése az ablak tetején. Az ikon a kulcs sziluettjét ábrázoló személy egyszerű sziluettjét jeleníti meg." lightbox="media/quickstart-adt-explorer/sign-in.png":::
 
-1. Adja meg az [Előfeltételek](#prerequisites) szakaszban korábban összegyűjtött Azure digitális Twins-példány URL-címét a *https://{instance Host Name}* formátumban.
+1. Adja meg az Azure Digital Twins-példány [beállítása](#set-up-an-azure-digital-twins-instance) szakaszban korábban összegyűjtött Azure digitális Twins-példány URL-címét, a *https://{instance Host Name}* formátumban.
 
 >[!NOTE]
 > Bármikor újra megtekintheti vagy szerkesztheti ezeket az adatokat. Ehhez jelölje ki ugyanazt az ikont, ha újra megnyitja a **bejelentkezési** mezőt. A rendszer megtartja a beadott értékeket.
 
 > [!TIP]
-> Ha a `SignalRService.subscribe` csatlakozáskor hibaüzenet jelenik meg, győződjön meg arról, hogy az Azure digitális Twins URL-címe a *https://* -vel kezdődik.
+> Ha a `SignalRService.subscribe` csatlakozáskor hibaüzenet jelenik meg, győződjön meg arról, hogy az Azure digitális Twins URL-címe a *https://*-vel kezdődik.
 
 Ha megjelenik a Microsoft előugró ablakát **kérő engedély** , adja meg az alkalmazás jóváhagyását, és fogadja el a folytatást.
 
@@ -108,7 +109,7 @@ Ezután importálja a minta forgatókönyvet és a Graphot a ADT Explorerben. A 
 
 Az Azure digitális ikrek megoldásának első lépéseként meg kell határozni a környezet szókincsét. Egyéni [modelleket](concepts-models.md) hozhat létre, amelyek leírják a környezetben létező entitások típusait.
 
-Minden modell olyan nyelven íródott, mint például a JSON-LD Digital Twin Definition Language (DTDL) néven. Mindegyik modell egyetlen típusú entitást ír le *tulajdonságai* , *telemetria* , *kapcsolatai* és *összetevői* tekintetében. Később ezeket a modelleket fogja használni a digitális ikrek alapjaként, amely az ilyen típusú példányokat jelképezi.
+Minden modell olyan nyelven íródott, mint például a JSON-LD Digital Twin Definition Language (DTDL) néven. Mindegyik modell egyetlen típusú entitást ír le *tulajdonságai*, *telemetria*, *kapcsolatai* és *összetevői* tekintetében. Később ezeket a modelleket fogja használni a digitális ikrek alapjaként, amely az ilyen típusú példányokat jelképezi.
 
 A modell létrehozásakor általában három lépést kell végrehajtania:
 
@@ -267,7 +268,7 @@ A ADT Explorer segítségével szerkesztheti a gráfban ábrázolt ikrek tulajdo
 
 Az indításhoz válassza a **Room0** lehetőséget a tulajdonságok listájának megjelenítéséhez a **Property Explorer** mezőben.
 
-A lista tulajdonságai szerkeszthető. Az új érték beírásának engedélyezéséhez válassza a **70** hőmérséklet-értéket. Adja meg a **76** értéket, és válassza a **Mentés** ikont a hőmérséklet **76** -re való frissítéséhez.
+A lista tulajdonságai szerkeszthető. Az új érték beírásának engedélyezéséhez válassza a **70** hőmérséklet-értéket. Adja meg a **76** értéket, és válassza a **Mentés** ikont a hőmérséklet **76**-re való frissítéséhez.
 
 :::row:::
     :::column:::
@@ -313,9 +314,9 @@ Ha azt tervezi, hogy továbbra is az Azure digitális Twins-oktatóanyagokat has
  
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-Végezetül törölje a Project Sample mappát, **Azure_Digital_Twins__ADT__explorer** , amelyet a helyi gépre töltött le. Előfordulhat, hogy törölnie kell a tömörített és a kibontott verziót is.
+Végezetül törölje a Project Sample mappát, **Azure_Digital_Twins__ADT__explorer**, amelyet a helyi gépre töltött le. Előfordulhat, hogy törölnie kell a tömörített és a kibontott verziót is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezután folytassa az Azure digitális Twins-oktatóanyagokkal, és készítse elő saját Azure digitális Twins-forgatókönyvét és interakciós eszközeit.
 

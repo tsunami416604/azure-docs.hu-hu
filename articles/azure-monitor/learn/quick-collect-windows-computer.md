@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 726caa0c4a7bbd6b8d0c17ffdfade5f9cc3c2a34
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9cd92075c7e0c4450dbee750fd31efb394dd24f7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89020371"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186745"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Adatok gyűjtése egy Windows rendszerű számítógépről hibrid környezetben Azure Monitor
 
@@ -26,7 +26,7 @@ ms.locfileid: "89020371"
 
 A támogatott konfiguráció megismeréséhez tekintse meg a [támogatott operációs rendszerek](../platform/agents-overview.md#supported-operating-systems) és [hálózati tűzfal konfigurálása](../platform/log-analytics-agent.md#network-requirements)című témakört.
  
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure-portal"></a>Bejelentkezés az Azure portálra
 
@@ -34,11 +34,11 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
 
-1. A Azure Portal válassza a **minden szolgáltatás**lehetőséget. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza **log Analytics munkaterületek**lehetőséget.
+1. A Azure Portal válassza a **minden szolgáltatás** lehetőséget. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza **log Analytics munkaterületek** lehetőséget.
 
     ![Azure Portal](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
-2. Válassza a **Létrehozás**lehetőséget, majd válassza ki a kívánt beállításokat a következő elemekhez:
+2. Válassza a **Létrehozás** lehetőséget, majd válassza ki a kívánt beállításokat a következő elemekhez:
 
    * Adja meg az új **Log Analytics-munkaterület** nevét, például: *DefaultLAWorkspace*.  
    * A legördülő listából válassza ki azt az **előfizetést**, amelyikhez kapcsolódni szeretne, ha az alapértelmezett kiválasztás nem megfelelő.
@@ -57,17 +57,17 @@ Az **Értesítések** menüpontot kiválasztva nyomon követheti, hogyan ellenő
 
 Mielőtt telepítené a Windows Log Analytics-ügynökét (más néven a Microsoft monitoring Agent (MMA)), szüksége lesz a munkaterület-AZONOSÍTÓra és a kulcsra a Log Analytics-munkaterülethez. A telepítővarázsló erre az információra van szüksége az ügynök megfelelő konfigurálásához, és gondoskodik arról, hogy az Azure Monitor kommunikáljon.  
 
-1. A Azure Portal bal felső sarkában válassza a **minden szolgáltatás**lehetőséget. A keresőmezőbe írja be a **log Analytics**kifejezést. A beíráskor a rendszer a bemenet alapján szűri a listákat. Válassza **log Analytics munkaterületek**lehetőséget.
+1. A Azure Portal bal felső sarkában válassza a **minden szolgáltatás** lehetőséget. A keresőmezőbe írja be a **log Analytics** kifejezést. A beíráskor a rendszer a bemenet alapján szűri a listákat. Válassza **log Analytics munkaterületek** lehetőséget.
 
 2. Log Analytics munkaterületek listájában válassza ki a korábban létrehozott munkaterületet. (Lehet, hogy elnevezte a **DefaultLAWorkspace**.)
 
-3. Válassza a **Speciális beállítások**lehetőséget:
+3. Válassza a **Speciális beállítások** lehetőséget:
 
     ![Log Analytics speciális beállítások](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png)
   
 4. Válassza ki a **Csatlakoztatott források**, majd a **Windowsos kiszolgálók** elemet.
 
-5. Másolja az értékeket a **munkaterület-azonosító** és az **elsődleges kulcs**jobb oldalán. Illessze be őket a kedvenc szerkesztőjébe.
+5. Másolja az értékeket a **munkaterület-azonosító** és az **elsődleges kulcs** jobb oldalán. Illessze be őket a kedvenc szerkesztőjébe.
 
 ## <a name="install-the-agent-for-windows"></a>A Windowshoz készült ügynök telepítése
 
@@ -83,12 +83,12 @@ A következő lépésekkel telepítheti és konfigurálhatja az ügynököt Log 
 
 5. A **Célmappa** lapon fogadja el az alapértelmezett telepítési mappát, vagy adjon meg egy másikat, majd kattintson a **Tovább** gombra.
 
-6. Az **ügynök telepítési beállításai** lapon kapcsolja össze az ügynököt az Azure log Analytics, majd válassza a **tovább**lehetőséget.
+6. Az **ügynök telepítési beállításai** lapon kapcsolja össze az ügynököt az Azure log Analytics, majd válassza a **tovább** lehetőséget.
 
 7. Az **Azure log Analytics** oldalon hajtsa végre a következő lépéseket:
 
    1. Illessze be a korábban átmásolt **munkaterület-azonosítót** és a **munkaterület kulcsát (elsődleges kulcs)** . Ha a számítógépnek Azure Government Log Analytics munkaterületre kell jelentenie, válassza az **Azure US government** lehetőséget az **Azure Cloud** listán.  
-   2. Ha a számítógépnek egy proxykiszolgálón keresztül kell kommunikálnia a Log Analytics szolgáltatással, kattintson a **Speciális** gombra, majd adja meg a proxykiszolgáló URL-címét és portszámát. Ha a proxykiszolgáló hitelesítést igényel, adja meg a proxykiszolgáló hitelesítéséhez szükséges felhasználónevet és jelszót, majd kattintson a **tovább**gombra.  
+   2. Ha a számítógépnek egy proxykiszolgálón keresztül kell kommunikálnia a Log Analytics szolgáltatással, kattintson a **Speciális** gombra, majd adja meg a proxykiszolgáló URL-címét és portszámát. Ha a proxykiszolgáló hitelesítést igényel, adja meg a proxykiszolgáló hitelesítéséhez szükséges felhasználónevet és jelszót, majd kattintson a **tovább** gombra.  
 
 8. A konfigurációs beállítások hozzáadása után válassza a **tovább** lehetőséget:
 
@@ -96,7 +96,7 @@ A következő lépésekkel telepítheti és konfigurálhatja az ügynököt Log 
 
 9. A **Telepítésre kész** oldalon ellenőrizze a beállításokat, majd kattintson a **Telepítés** elemre.
 
-10. A **Konfigurálás sikeresen befejeződött** lapon válassza a **Befejezés**lehetőséget.
+10. A **Konfigurálás sikeresen befejeződött** lapon válassza a **Befejezés** lehetőséget.
 
 Ha a telepítés és a telepítés befejeződött, a Microsoft monitoring Agent megjelenik a Vezérlőpulton. Áttekintheti a konfigurációt, és ellenőrizheti, hogy az ügynök csatlakoztatva van-e a Log Analytics munkaterülethez. Ha csatlakoztatva van, az **Azure log Analytics** lapon az ügynök megjeleníti ezt az üzenetet: **a Microsoft monitoring Agent sikeresen csatlakozott a Microsoft log Analytics szolgáltatáshoz.**<br><br> ![MMA-kapcsolatok állapota](media/quick-collect-windows-computer/log-analytics-mma-laworkspace-status.png)
 
@@ -104,15 +104,15 @@ Ha a telepítés és a telepítés befejeződött, a Microsoft monitoring Agent 
 
 A Azure Monitor a hosszú távú elemzéshez és jelentéskészítéshez a Windows eseménynaplóból és a teljesítményszámlálókből megadott eseményeket gyűjthet. Ha egy adott feltételt észlel, akkor is végezhet műveleteket. A következő lépésekkel konfigurálhatja az események gyűjtését a Windows eseménynaplóból, illetve (kezdetnek) egyes gyakran használt teljesítményszámlálókból.  
 
-1. A Azure Portal bal alsó sarkában válassza a **További szolgáltatások**lehetőséget. A keresőmezőbe írja be a **log Analytics**kifejezést. A beíráskor a rendszer a bemenet alapján szűri a listákat. Válassza **log Analytics munkaterületek**lehetőséget.
+1. A Azure Portal bal alsó sarkában válassza a **További szolgáltatások** lehetőséget. A keresőmezőbe írja be a **log Analytics** kifejezést. A beíráskor a rendszer a bemenet alapján szűri a listákat. Válassza **log Analytics munkaterületek** lehetőséget.
 
-2. Válassza a **Speciális beállítások**lehetőséget:
+2. Válassza a **Speciális beállítások** lehetőséget:
 
     ![Log Analytics speciális beállítások](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png)
  
 3. Válassza az **Adatok**, majd a **Windows Eseménynaplók** lehetőséget.  
 
-4. Az Eseménynapló hozzáadásához írja be a napló nevét. Adja meg a **rendszer**elemet, majd válassza a pluszjelet ( **+** ).  
+4. Az Eseménynapló hozzáadásához írja be a napló nevét. Adja meg a **rendszer** elemet, majd válassza a pluszjelet ( **+** ).  
 
 5. A táblázatban válassza ki a **hibát** és a **Figyelmeztetési** megszakításokat.
 
@@ -124,7 +124,7 @@ A Azure Monitor a hosszú távú elemzéshez és jelentéskészítéshez a Windo
 
     ![Windows-teljesítményszámlálók](media/quick-collect-windows-computer/windows-perfcounters-default.png).
     
-    Válassza **a kijelölt teljesítményszámlálók hozzáadása**lehetőséget. A számlálók a tíz másodperces gyűjtési mintavételi intervallummal lettek hozzáadva és beállítva.
+    Válassza **a kijelölt teljesítményszámlálók hozzáadása** lehetőséget. A számlálók a tíz másodperces gyűjtési mintavételi intervallummal lettek hozzáadva és beállítva.
 
 9. Válassza a **Mentés** lehetőséget az oldal tetején.
 
@@ -132,9 +132,9 @@ A Azure Monitor a hosszú távú elemzéshez és jelentéskészítéshez a Windo
 
 Most, hogy engedélyezte az adatgyűjtést, futtasson egy egyszerű naplót, hogy bizonyos adatok megjelenjenek a célszámítógépen.  
 
-1. A kiválasztott munkaterületen, a bal oldali ablaktáblán válassza a **naplók**lehetőséget.
+1. A kiválasztott munkaterületen, a bal oldali ablaktáblán válassza a **naplók** lehetőséget.
 
-2. A naplók lekérdezése lapon írja be `Perf` a lekérdezés-szerkesztőt, és válassza a **Futtatás**lehetőséget.
+2. A naplók lekérdezése lapon írja be `Perf` a lekérdezés-szerkesztőt, és válassza a **Futtatás** lehetőséget.
  
     ![Naplóbeli keresés Log Analytics](media/quick-collect-windows-computer/log-analytics-portal-queryexample.png)
 
@@ -152,18 +152,17 @@ Az ügynök eltávolításához hajtsa végre az alábbi lépéseket:
 
 2. Nyissa meg a **Programok és szolgáltatások** részt.
 
-3. A **programok és szolgáltatások**területen válassza a **Microsoft monitoring Agent** lehetőséget, majd válassza az **Eltávolítás**lehetőséget.
+3. A **programok és szolgáltatások** területen válassza a **Microsoft monitoring Agent** lehetőséget, majd válassza az **Eltávolítás** lehetőséget.
 
-A korábban létrehozott Log Analytics munkaterület törléséhez válassza ki azt, majd az erőforrás lapon válassza a **Törlés**lehetőséget:
+A korábban létrehozott Log Analytics munkaterület törléséhez válassza ki azt, majd az erőforrás lapon válassza a **Törlés** lehetőséget:
 
 ![Log Analytics munkaterület törlése](media/quick-collect-azurevm/log-analytics-portal-delete-resource.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy operatív és teljesítményadatokat gyűjt a Windows rendszerű számítógépéről, könnyedén megkezdheti az összegyűjtött adatok feltárását, elemzését és *kezelését.*  
 
 Az adatmegtekintés és-elemzés megismeréséhez folytassa az oktatóanyagot:
 
 > [!div class="nextstepaction"]
-> [Adatok megtekintése és elemzése a Log Analyticsben](../log-query/get-started-portal.md)
-
+> [Adatok megtekintése és elemzése a Log Analyticsben](../log-query/log-analytics-tutorial.md)

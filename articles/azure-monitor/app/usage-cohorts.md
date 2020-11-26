@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d12244bce117d6a631fdb67dc460af18bc77028c
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: f8edeb452f01af88f0305cd0a3e3a2332ec09e4e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995744"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186949"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights kohorszok
 
@@ -43,7 +43,7 @@ A csapata egy résztvevő felhasználót határoz meg, aki egy adott hónapban �
     * **Időszak**, egy hónap definíciója.
     * **UsedAtLeastCustom**, hogy a felhasználóknak hány alkalommal kell használnia egy adott időszakon belül a befoglalt értéket.
 
-4. Módosítsa **UsedAtLeastCustom** a UsedAtLeastCustom **5 + nap**értékre, és hagyjon **időt** az alapértelmezett 28 napra.
+4. Módosítsa **UsedAtLeastCustom** a UsedAtLeastCustom **5 + nap** értékre, és hagyjon **időt** az alapértelmezett 28 napra.
 
     ![Résztvevő felhasználók](./media/usage-cohorts/003.png)
 
@@ -54,11 +54,11 @@ A csapata egy résztvevő felhasználót határoz meg, aki egy adott hónapban �
    > [!TIP]
    > Adja meg a kohorsz nevét, például a "résztvevő felhasználók (5 + nap)" nevet. Mentse a "saját jelentések" vagy a "megosztott jelentések" kifejezésre attól függően, hogy szeretné-e, ha a Application Insights erőforráshoz hozzáférő más felhasználók is láthassák ezt a kohorszot.
 
-6. Válassza **a vissza a**katalógushoz lehetőséget.
+6. Válassza **a vissza a** katalógushoz lehetőséget.
 
 ### <a name="what-can-you-do-by-using-this-cohort"></a>Mit tehet a következő kohorsz használatával?
 
-Nyissa meg a felhasználók eszközt. A **Megjelenítés** legördülő listában válassza ki azokat a kohorszokat, amelyeket a **-hez tartozó felhasználók**alatt hozott létre.
+Nyissa meg a felhasználók eszközt. A **Megjelenítés** legördülő listában válassza ki azokat a kohorszokat, amelyeket a **-hez tartozó felhasználók** alatt hozott létre.
 
 A felhasználók eszköz mostantól a felhasználók ezen kohorszára van szűrve:
 
@@ -79,7 +79,7 @@ Az események kohorszait is elvégezheti. Ebben a szakaszban megadhatja az esem�
 
 2. Válassza a **sablon-gyűjtemény** fület. Különböző kohorszokhoz tartozó sablonok gyűjteménye látható.
 
-3. Válassza az **események választó**elemet.
+3. Válassza az **események választó** elemet.
 
     ![Képernyőkép az események választóról](./media/usage-cohorts/006.png)
 
@@ -93,7 +93,7 @@ Az előző két kohorsz a legördülő listák használatával lett meghatározv
 
 ![Animált rendszerképek a Kohorszs eszköz használatával](./media/usage-cohorts/cohorts0001.gif)
 
-1. Nyissa meg a Kohorszs eszközt, válassza a **sablon** -katalógus lapot, és válassza az **üres felhasználók kohorsz**lehetőséget.
+1. Nyissa meg a Kohorszs eszközt, válassza a **sablon** -katalógus lapot, és válassza az **üres felhasználók kohorsz** lehetőséget.
 
     ![Üres felhasználók kohorsz](./media/usage-cohorts/001.png)
 
@@ -131,7 +131,7 @@ A kohorszok és a szűrők eltérőek. Tegyük fel, hogy az Egyesült Királysá
 
 ## <a name="learn-more"></a>Tudjon meg többet
 
-* [Elemzés lekérdezési nyelve](../log-query/get-started-portal.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
+* [Elemzés lekérdezési nyelve](../log-query/log-analytics-tutorial.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 * [Felhasználók, munkamenetek, események](usage-segmentation.md)
 * [Felhasználói folyamatok](usage-flows.md)
 * [A használat áttekintése](usage-overview.md)

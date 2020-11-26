@@ -12,11 +12,11 @@ ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
 ms.openlocfilehash: f00448f19cc0a2118477a9527005548fea25537e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91651445"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187272"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Oktatóanyag: adatok exportálása az Azure IoT Central és az elemzések megjelenítése Power BI
 
@@ -35,20 +35,20 @@ Az oktatóanyag során a következőket fogja elsajátítani:
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 * Az előző két oktatóanyag elvégzéséhez [hozzon létre egy áruházbeli elemzési alkalmazást az azure IoT Centralban](./tutorial-in-store-analytics-create-app.md) , és [szabja testre az operátor irányítópultját, és kezelje az eszközöket az Azure IoT Centralban](./tutorial-in-store-analytics-customize-dashboard.md).
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
-* Egy Power BI-fiók. Ha nincs Power BI fiókja, regisztráljon az [ingyenes Power bi Pro próbaverzióra](https://app.powerbi.com/signupredirect?pbi_source=web) , mielőtt elkezdené.
+* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Power BI-fiók. Ha nincs Power BI fiókja, regisztráljon az [ingyenes Power bi Pro próbaverzióra](https://app.powerbi.com/signupredirect?pbi_source=web) , mielőtt elkezdené.
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az Event hub és a Logic app létrehozása előtt létre kell hoznia egy erőforráscsoportot a kezeléséhez. Az erőforráscsoport ugyanazon a helyen kell lennie, mint az **áruházbeli elemzési-pénztár** IoT Central alkalmazás. Erőforráscsoport létrehozása:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. A bal oldali navigációs sávon válassza az **erőforráscsoportok**lehetőséget. Ezután válassza a **Hozzáadás** elemet.
-1. Az **előfizetés**mezőben válassza ki a IoT Central alkalmazás létrehozásához használt Azure-előfizetés nevét.
+1. A bal oldali navigációs sávon válassza az **erőforráscsoportok** lehetőséget. Ezután válassza a **Hozzáadás** elemet.
+1. Az **előfizetés** mezőben válassza ki a IoT Central alkalmazás létrehozásához használt Azure-előfizetés nevét.
 1. Az **erőforráscsoport** neve mezőbe írja be a következőt: _Retail-Store-Analysis_*.
-1. A **régió**esetében válassza ki ugyanazt a régiót, amelyet a IoT Central alkalmazáshoz választott.
-1. Válassza a **felülvizsgálat + létrehozás**lehetőséget.
-1. A **felülvizsgálat + létrehozás** lapon válassza a **Létrehozás**lehetőséget.
+1. A **régió** esetében válassza ki ugyanazt a régiót, amelyet a IoT Central alkalmazáshoz választott.
+1. Válassza a **felülvizsgálat + létrehozás** lehetőséget.
+1. A **felülvizsgálat + létrehozás** lapon válassza a **Létrehozás** lehetőséget.
 
 Most már rendelkezik egy **Retail-Store-Analysis** nevű erőforráscsoporthoz az előfizetésében.
 
@@ -57,8 +57,8 @@ Most már rendelkezik egy **Retail-Store-Analysis** nevű erőforráscsoporthoz 
 Ahhoz, hogy konfigurálni tudja a kiskereskedelmi figyelési alkalmazást a telemetria exportálásához, létre kell hoznia egy Event hub-t az exportált adatforgalom fogadásához. Az alábbi lépések bemutatják, hogyan hozhatja létre az Event hub-t:
 
 1. A Azure Portal válassza az **erőforrás létrehozása** lehetőséget a képernyő bal felső részén.
-1. A **Keresés a piactéren**mezőbe írja be a _Event Hubs_kifejezést, majd nyomja le az **ENTER**billentyűt.
-1. A **Event Hubs** lapon válassza a **Létrehozás**lehetőséget.
+1. A **Keresés a piactéren** mezőbe írja be a _Event Hubs_ kifejezést, majd nyomja le az **ENTER** billentyűt.
+1. A **Event Hubs** lapon válassza a **Létrehozás** lehetőséget.
 1. A **névtér létrehozása** oldalon hajtsa végre a következő lépéseket:
     * Adja meg a névtér egyedi nevét, például: _sajátneve-Retail-Store-Analysis_. A rendszer ellenőrzi, hogy elérhető-e a név.
     * Válassza ki az **alapszintű** díjszabási szintet.
@@ -66,13 +66,13 @@ Ahhoz, hogy konfigurálni tudja a kiskereskedelmi figyelési alkalmazást a tele
     * Válassza ki a **kiskereskedelmi tároló-elemzési** erőforráscsoportot.
     * Válassza ki ugyanazt a helyet, amelyet a IoT Central alkalmazáshoz használt.
     * Kattintson a **Létrehozás** gombra. Előfordulhat, hogy néhány percet várnia kell, amíg a rendszer kiépíti az erőforrásokat.
-1. A portálon navigáljon a **Retail-Store-Analysis** erőforráscsoport elemre. Várjon, amíg az üzembe helyezés befejeződik. Előfordulhat, hogy a **frissítés** gombra kell kattintania a telepítés állapotának frissítéséhez. Az Event hub-névtér létrehozásának állapotát az **értesítésekben**is megtekintheti.
+1. A portálon navigáljon a **Retail-Store-Analysis** erőforráscsoport elemre. Várjon, amíg az üzembe helyezés befejeződik. Előfordulhat, hogy a **frissítés** gombra kell kattintania a telepítés állapotának frissítéséhez. Az Event hub-névtér létrehozásának állapotát az **értesítésekben** is megtekintheti.
 1. A **Retail-Store-Analysis** Resource csoportban válassza ki a **Event Hubs névteret**. Ekkor megjelenik a **Event Hubs névtér** kezdőlapja a portálon.
 
 Most már rendelkezik egy **Event Hubs névtérrel**, létrehozhat egy **Event hub** -t, amelyet a IoT Central alkalmazással használhat:
 
-1. A portálon a **Event Hubs névtér** kezdőlapján válassza a **+ Event hub**elemet.
-1. Az **Event hub létrehozása** lapon adja meg a _Store-telemetria_ nevet a név mezőben, majd válassza a **Létrehozás**lehetőséget.
+1. A portálon a **Event Hubs névtér** kezdőlapján válassza a **+ Event hub** elemet.
+1. Az **Event hub létrehozása** lapon adja meg a _Store-telemetria_ nevet a név mezőben, majd válassza a **Létrehozás** lehetőséget.
 
 Most már rendelkezik egy Event hub-val, amely a IoT Central alkalmazásból történő adatexportálás konfigurálására használható:
 
@@ -84,8 +84,8 @@ Most már rendelkezik egy Event hub-vel, beállíthatja az **áruházbeli elemz�
 
 1. Jelentkezzen be az **áruházbeli elemzés-** IoT Central alkalmazásba.
 1. A bal oldali ablaktáblán válassza az **adatexportálás** lehetőséget.
-1. Válassza az **új > Azure Event Hubs**lehetőséget.
-1. A **megjelenítendő név**mezőben adja meg a _telemetria exportálását_ .
+1. Válassza az **új > Azure Event Hubs** lehetőséget.
+1. A **megjelenítendő név** mezőben adja meg a _telemetria exportálását_ .
 1. Válassza ki a **Event Hubs névteret**.
 1. Válassza ki a **Store-telemetria** Event hubot.
 1. Kapcsolja ki az **eszközöket** és az eszközök **sablonjait** az **exportálandó adatexportálás** szakaszban.
@@ -100,11 +100,11 @@ Az adatexportálás eltarthat néhány percig, hogy el lehessen küldeni a telem
 A Power BI irányítópulton megjelennek a kiskereskedelmi monitorozási alkalmazásból származó adatok. Ebben a megoldásban Power BI adatfolyam-adatkészleteket használja az Power BI irányítópult adatforrásaként. Ebben a szakaszban megadhatja a folyamatos átviteli adatkészletek sémáját, hogy a logikai alkalmazás továbbítsa az adatokat az Event hub-ból. A következő lépések bemutatják, hogyan hozhat létre két folyamatos átviteli adatkészletet a környezeti érzékelőkhöz és egy folyamatos átviteli adatkészlethez a foglaltság érzékelőhöz:
 
 1. Jelentkezzen be a **Power BI**-fiókjába.
-1. Válassza a **munkaterületek**lehetőséget, majd válassza **a munkaterület létrehozása**lehetőséget.
-1. A **Munkaterület létrehozása** lapon a **munkaterület neve**mezőbe írja be _a következőt: Store Analytics-Checkout_ .
-1. Görgessen az **üdvözli a helyszíni elemzés – pénztár munkaterület** oldal aljára, és válassza a **kihagyás**lehetőséget.
-1. A munkaterület lapon válassza a **> folyamatos átviteli adatkészlet létrehozása**lehetőséget.
-1. Az **új folyamatos átviteli adatkészlet** lapon válassza az **API**lehetőséget, majd kattintson a **tovább**gombra.
+1. Válassza a **munkaterületek** lehetőséget, majd válassza **a munkaterület létrehozása** lehetőséget.
+1. A **Munkaterület létrehozása** lapon a **munkaterület neve** mezőbe írja be _a következőt: Store Analytics-Checkout_ .
+1. Görgessen az **üdvözli a helyszíni elemzés – pénztár munkaterület** oldal aljára, és válassza a **kihagyás** lehetőséget.
+1. A munkaterület lapon válassza a **> folyamatos átviteli adatkészlet létrehozása** lehetőséget.
+1. Az **új folyamatos átviteli adatkészlet** lapon válassza az **API** lehetőséget, majd kattintson a **tovább** gombra.
 1. Adja meg _1. zóna érzékelőt_ az **adatkészlet neveként**.
 1. Adja meg a következő táblázatban található **stream három értékét** :
 
@@ -115,7 +115,7 @@ A Power BI irányítópulton megjelennek a kiskereskedelmi monitorozási alkalma
     | Hőmérséklet | Szám     |
 
 1. Állítsa át a **korábbi adatelemzést** a következőre:.
-1. Válassza a **Létrehozás** , majd a **kész**lehetőséget.
+1. Válassza a **Létrehozás** , majd a **kész** lehetőséget.
 1. Hozzon létre egy **2. zóna Sensor** nevű adatfolyam-adatkészletet ugyanazzal a sémával és beállításokkal, mint az **1. zóna Sensor** streaming adatkészlettel.
 
 Most már két folyamatos adatkészletet tartalmaz. A logikai alkalmazás átirányítja a telemetria **a következő két** adatkészlethez kapcsolódó két környezeti érzékelőből:
@@ -126,8 +126,8 @@ Ez a megoldás egy adatfolyam-adatkészletet használ az egyes érzékelőkhöz,
 
 Szüksége lesz egy folyamatos átviteli adatkészletre is a foglaltság telemetria:
 
-1. A munkaterület lapon válassza a **> folyamatos átviteli adatkészlet létrehozása**lehetőséget.
-1. Az **új folyamatos átviteli adatkészlet** lapon válassza az **API**lehetőséget, majd kattintson a **tovább**gombra.
+1. A munkaterület lapon válassza a **> folyamatos átviteli adatkészlet létrehozása** lehetőséget.
+1. Az **új folyamatos átviteli adatkészlet** lapon válassza az **API** lehetőséget, majd kattintson a **tovább** gombra.
 1. Adja meg a _kihasználtsági érzékelőt_ az **adatkészlet neveként**.
 1. Adja meg a **stream öt értékét** a következő táblázatban:
 
@@ -140,7 +140,7 @@ Szüksége lesz egy folyamatos átviteli adatkészletre is a foglaltság telemet
     | 2. tartózkodási idő   | Szám     |
 
 1. Állítsa át a **korábbi adatelemzést** a következőre:.
-1. Válassza a **Létrehozás** , majd a **kész**lehetőséget.
+1. Válassza a **Létrehozás** , majd a **kész** lehetőséget.
 
 Most már rendelkezik egy harmadik adatfolyam-adatkészlettel, amely az értékeket a szimulált Foglaltság érzékelőből tárolja. Ez az érzékelő jelentést készít a várólista hosszáról a tároló két pénztárában, valamint azt, hogy mennyi ideig várakozik az ügyfelek a következő várólistákban:
 
@@ -153,7 +153,7 @@ Ebben a megoldásban a logikai alkalmazás beolvassa az telemetria az Event hub-
 A logikai alkalmazás létrehozása előtt szüksége lesz az IoT Central-alkalmazáshoz csatlakoztatott két RuuviTag-érzékelő eszköz-azonosítójának [használatára az Azure IoT Central](./tutorial-in-store-analytics-create-app.md) oktatóanyag:
 
 1. Jelentkezzen be az **áruházbeli elemzés-** IoT Central alkalmazásba.
-1. Válassza az **eszközök** lehetőséget a bal oldali ablaktáblán. Ezután válassza a **RuuviTag**lehetőséget.
+1. Válassza az **eszközök** lehetőséget a bal oldali ablaktáblán. Ezután válassza a **RuuviTag** lehetőséget.
 1. Jegyezze fel az **eszköz azonosítóit**. A következő képernyőképen az azonosítók a **f5dcf4ac32e8** és a **e29ffc8d5326**:
 
     ![Eszközök azonosítói](./media/tutorial-in-store-analytics-visualize-insights/device-ids.png)
@@ -161,8 +161,8 @@ A logikai alkalmazás létrehozása előtt szüksége lesz az IoT Central-alkalm
 A következő lépések bemutatják, hogyan hozhatja létre a logikai alkalmazást a Azure Portalban:
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza az **erőforrás létrehozása** lehetőséget a képernyő bal felső részén.
-1. A **Keresés a piactéren**mezőbe írja be a _Logic app_kifejezést, majd nyomja le az **ENTER**billentyűt.
-1. A **logikai alkalmazás** lapon válassza a **Létrehozás**lehetőséget.
+1. A **Keresés a piactéren** mezőbe írja be a _Logic app_ kifejezést, majd nyomja le az **ENTER** billentyűt.
+1. A **logikai alkalmazás** lapon válassza a **Létrehozás** lehetőséget.
 1. A **logikai alkalmazás** létrehozása lapon:
     * Adjon egyedi nevet a logikai alkalmazásnak, például _sajátneve-Retail-Store-Analysis_.
     * Válassza ki ugyanazt az **előfizetést** , amelyet a IoT Central alkalmazás létrehozásához használt.
@@ -170,14 +170,14 @@ A következő lépések bemutatják, hogyan hozhatja létre a logikai alkalmazá
     * Válassza ki ugyanazt a helyet, amelyet a IoT Central alkalmazáshoz használt.
     * Kattintson a **Létrehozás** gombra. Előfordulhat, hogy néhány percet várnia kell, amíg a rendszer kiépíti az erőforrásokat.
 1. A Azure Portal navigáljon az új logikai alkalmazáshoz.
-1. A **Logic apps Designer** lapon görgessen le, és válassza az **üres logikai alkalmazás**lehetőséget.
-1. Az **Összekötők és eseményindítók keresése**területen adja meg a _Event Hubs_.
-1. Az **Eseményindítók**területen válassza ki, hogy **mikor érhetők el események az Event hub-ban**.
+1. A **Logic apps Designer** lapon görgessen le, és válassza az **üres logikai alkalmazás** lehetőséget.
+1. Az **Összekötők és eseményindítók keresése** területen adja meg a _Event Hubs_.
+1. Az **Eseményindítók** területen válassza ki, hogy **mikor érhetők el események az Event hub-ban**.
 1. Adja meg a _telemetria tárolási_ **nevét**, és válassza ki a **Event Hubs névteret**.
-1. Válassza ki a **RootManageSharedAccess** szabályzatot, majd válassza a **Létrehozás**lehetőséget.
+1. Válassza ki a **RootManageSharedAccess** szabályzatot, majd válassza a **Létrehozás** lehetőséget.
 1. Az Event hub-műveletben **elérhető események** esetén:
-    * Az **Event hub neveként**válassza a **Store-telemetria**elemet.
-    * A **tartalom típusa**területen válassza az **alkalmazás/JSON**elemet.
+    * Az **Event hub neveként** válassza a **Store-telemetria** elemet.
+    * A **tartalom típusa** területen válassza az **alkalmazás/JSON** elemet.
     * Az **intervallumot** állítsa három értékre, a **gyakoriságot** pedig másodpercre.
 1. Kattintson a **Mentés** gombra a logikai alkalmazás mentéséhez.
 
@@ -372,55 +372,55 @@ A Logic app-kialakításhoz való hozzáadáshoz válassza a **kód nézetet**:
 
     ![Logic app-kialakítás](./media/tutorial-in-store-analytics-visualize-insights/logic-app.png)
 
-1. A művelet kibontásához válassza a **Váltás az DeviceID alapján** lehetőséget. Ezután válassza ki **1. zóna környezetet**, és válassza **a művelet hozzáadása**lehetőséget.
-1. A **Keresés az összekötők és műveletek**területen írja be **Power bi**, majd nyomja le az **ENTER**billentyűt.
+1. A művelet kibontásához válassza a **Váltás az DeviceID alapján** lehetőséget. Ezután válassza ki **1. zóna környezetet**, és válassza **a művelet hozzáadása** lehetőséget.
+1. A **Keresés az összekötők és műveletek** területen írja be **Power bi**, majd nyomja le az **ENTER** billentyűt.
 1. Válassza a **sorok hozzáadása adatkészlethez (előzetes verzió)** műveletet.
 1. Válassza a **Bejelentkezés** lehetőséget, és az utasításokat követve jelentkezzen be Power bi-fiókjába.
 1. A bejelentkezési folyamat befejezése után a **sorok hozzáadása egy adatkészlethez** művelet:
     * Válassza a **tárolt elemzés – pénztár** lehetőséget a munkaterület területen.
     * Válassza ki **1. zóna érzékelőt** adatkészletként.
     * Válassza a **RealTimeData** táblát.
-    * Válassza az **új paraméter hozzáadása** lehetőséget, majd válassza ki az **időbélyeg**, a **páratartalom**és a **hőmérséklet** mezőket.
+    * Válassza az **új paraméter hozzáadása** lehetőséget, majd válassza ki az **időbélyeg**, a **páratartalom** és a **hőmérséklet** mezőket.
     * Válassza ki az **időbélyeg** mezőt, majd válassza az **x-opt-Enqueuedtime** lehetőséget a **dinamikus tartalmak** listájából.
-    * Válassza ki a **páratartalom** mezőt, majd válassza a **továbbiak** tovább lehetőséget a **telemetria elemzéséhez**. Ezután válassza a **páratartalom**lehetőséget.
-    * Válassza ki a **hőmérséklet** mezőt, majd válassza a **továbbiak** lehetőséget a **telemetria elemzéséhez**. Ezután válassza a **hőmérséklet**elemet.
+    * Válassza ki a **páratartalom** mezőt, majd válassza a **továbbiak** tovább lehetőséget a **telemetria elemzéséhez**. Ezután válassza a **páratartalom** lehetőséget.
+    * Válassza ki a **hőmérséklet** mezőt, majd válassza a **továbbiak** lehetőséget a **telemetria elemzéséhez**. Ezután válassza a **hőmérséklet** elemet.
     * A módosítások mentéséhez válassza a **Mentés** gombot. A **1. zóna környezeti** művelet a következő képernyőképre hasonlít: ![ 1. zóna-környezet](./media/tutorial-in-store-analytics-visualize-insights/zone-1-action.png)
-1. Válassza ki a **2. zóna környezeti** műveletet, és válassza a **művelet hozzáadása**lehetőséget.
-1. A **Keresés az összekötők és műveletek**területen írja be **Power bi**, majd nyomja le az **ENTER**billentyűt.
+1. Válassza ki a **2. zóna környezeti** műveletet, és válassza a **művelet hozzáadása** lehetőséget.
+1. A **Keresés az összekötők és műveletek** területen írja be **Power bi**, majd nyomja le az **ENTER** billentyűt.
 1. Válassza a **sorok hozzáadása adatkészlethez (előzetes verzió)** műveletet.
 1. A **sorok hozzáadása egy adatkészlethez 2** művelet:
     * Válassza a **tárolt elemzés – pénztár** lehetőséget a munkaterület területen.
     * Válassza ki **2. zóna érzékelőt** adatkészletként.
     * Válassza a **RealTimeData** táblát.
-    * Válassza az **új paraméter hozzáadása** lehetőséget, majd válassza ki az **időbélyeg**, a **páratartalom**és a **hőmérséklet** mezőket.
+    * Válassza az **új paraméter hozzáadása** lehetőséget, majd válassza ki az **időbélyeg**, a **páratartalom** és a **hőmérséklet** mezőket.
     * Válassza ki az **időbélyeg** mezőt, majd válassza az **x-opt-Enqueuedtime** lehetőséget a **dinamikus tartalmak** listájából.
-    * Válassza ki a **páratartalom** mezőt, majd válassza a **továbbiak** tovább lehetőséget a **telemetria elemzéséhez**. Ezután válassza a **páratartalom**lehetőséget.
-    * Válassza ki a **hőmérséklet** mezőt, majd válassza a **továbbiak** lehetőséget a **telemetria elemzéséhez**. Ezután válassza a **hőmérséklet**elemet.
+    * Válassza ki a **páratartalom** mezőt, majd válassza a **továbbiak** tovább lehetőséget a **telemetria elemzéséhez**. Ezután válassza a **páratartalom** lehetőséget.
+    * Válassza ki a **hőmérséklet** mezőt, majd válassza a **továbbiak** lehetőséget a **telemetria elemzéséhez**. Ezután válassza a **hőmérséklet** elemet.
     A módosítások mentéséhez válassza a **Mentés** gombot.  A **2. zóna környezeti** művelet a következő képernyőképre hasonlít: ![ 2. zóna-környezet](./media/tutorial-in-store-analytics-visualize-insights/zone-2-action.png)
 1. Válassza ki a **kihasználtsági** műveletet, majd válassza ki a **kapcsolót illesztőfelület-azonosító** művelettel.
-1. Válassza ki a **tartózkodási idő illesztőfelülete** műveletet, és válassza a **művelet hozzáadása**lehetőséget.
-1. A **Keresés az összekötők és műveletek**területen írja be **Power bi**, majd nyomja le az **ENTER**billentyűt.
+1. Válassza ki a **tartózkodási idő illesztőfelülete** műveletet, és válassza a **művelet hozzáadása** lehetőséget.
+1. A **Keresés az összekötők és műveletek** területen írja be **Power bi**, majd nyomja le az **ENTER** billentyűt.
 1. Válassza a **sorok hozzáadása adatkészlethez (előzetes verzió)** műveletet.
 1. A **sorok hozzáadása adatkészlet** -művelethez:
     * Válassza a **tárolt elemzés – pénztár** lehetőséget a munkaterület területen.
     * Válassza ki a **kihasználtsági érzékelőt** adatkészletként.
     * Válassza a **RealTimeData** táblát.
-    * Válassza az **új paraméter hozzáadása** lehetőséget, majd válassza ki az **időbélyeget**, az **1. tartózkodási időt**és a **tartózkodási idő 2** mezőt.
+    * Válassza az **új paraméter hozzáadása** lehetőséget, majd válassza ki az **időbélyeget**, az **1. tartózkodási időt** és a **tartózkodási idő 2** mezőt.
     * Válassza ki az **időbélyeg** mezőt, majd válassza az **x-opt-Enqueuedtime** lehetőséget a **dinamikus tartalmak** listájából.
-    * Válassza ki a **tartózkodási idő 1** mezőt, majd válassza a **továbbiak** tovább lehetőséget a **telemetria elemzéséhez**. Ezután válassza a **DwellTime1**lehetőséget.
-    * Válassza ki a **tartózkodási idő 2** mezőt, majd válassza a **továbbiak** tovább lehetőséget a **telemetria elemzéséhez**. Ezután válassza a **DwellTime2**lehetőséget.
+    * Válassza ki a **tartózkodási idő 1** mezőt, majd válassza a **továbbiak** tovább lehetőséget a **telemetria elemzéséhez**. Ezután válassza a **DwellTime1** lehetőséget.
+    * Válassza ki a **tartózkodási idő 2** mezőt, majd válassza a **továbbiak** tovább lehetőséget a **telemetria elemzéséhez**. Ezután válassza a **DwellTime2** lehetőséget.
     * A módosítások mentéséhez válassza a **Mentés** gombot. A **tartózkodási idő illesztőfelületének** művelete a következő képernyőképhez hasonlóan néz ki: ![ képernyőkép, amely a "tartózkodási idő illesztőfelülete" műveletet mutatja.](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png)
-1. Válassza ki a **személyek száma illesztőfelület** műveletet, és válassza a **művelet hozzáadása**lehetőséget.
-1. A **Keresés az összekötők és műveletek**területen írja be **Power bi**, majd nyomja le az **ENTER**billentyűt.
+1. Válassza ki a **személyek száma illesztőfelület** műveletet, és válassza a **művelet hozzáadása** lehetőséget.
+1. A **Keresés az összekötők és műveletek** területen írja be **Power bi**, majd nyomja le az **ENTER** billentyűt.
 1. Válassza a **sorok hozzáadása adatkészlethez (előzetes verzió)** műveletet.
 1. A **sorok hozzáadása adatkészlet** -művelethez:
     * Válassza a **tárolt elemzés – pénztár** lehetőséget a munkaterület területen.
     * Válassza ki a **kihasználtsági érzékelőt** adatkészletként.
     * Válassza a **RealTimeData** táblát.
-    * Válassza az **új paraméter hozzáadása** lehetőséget, majd válassza ki az **időbélyeg**, a **várólista hossza 1**és a **várólista hossza 2** mezőt.
+    * Válassza az **új paraméter hozzáadása** lehetőséget, majd válassza ki az **időbélyeg**, a **várólista hossza 1** és a **várólista hossza 2** mezőt.
     * Válassza ki az **időbélyeg** mezőt, majd válassza az **x-opt-Enqueuedtime** lehetőséget a **dinamikus tartalmak** listájából.
-    * Válassza ki a **várólista hossza 1** mezőt, majd válassza a **továbbiak** tovább lehetőséget a **telemetria elemzéséhez**. Ezután válassza a **count1**lehetőséget.
-    * Válassza ki a **várólista hossza 2** mezőt, majd válassza a **továbbiak** tovább lehetőséget a **telemetria elemzéséhez**. Ezután válassza a **count2**lehetőséget.
+    * Válassza ki a **várólista hossza 1** mezőt, majd válassza a **továbbiak** tovább lehetőséget a **telemetria elemzéséhez**. Ezután válassza a **count1** lehetőséget.
+    * Válassza ki a **várólista hossza 2** mezőt, majd válassza a **továbbiak** tovább lehetőséget a **telemetria elemzéséhez**. Ezután válassza a **count2** lehetőséget.
     * A módosítások mentéséhez válassza a **Mentés** gombot. A **személyek száma Interface** művelet a következő képernyőképhez hasonlóan néz ki: ![ Foglaltság művelet](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-2.png)
 
 A logikai alkalmazás automatikusan fut. Az egyes futtatások állapotának megtekintéséhez navigáljon a logikai alkalmazás **Áttekintés** lapjára a Azure Portalban:
@@ -430,13 +430,13 @@ A logikai alkalmazás automatikusan fut. Az egyes futtatások állapotának megt
 Most már telemetria a IoT Central alkalmazásból az Event hub-on keresztül. Ezután a logikai alkalmazás elemzi az Event hub-üzeneteket, és hozzáadja őket egy Power BI streaming-adatkészlethez. Most létrehozhat egy Power BI irányítópultot a telemetria megjelenítéséhez:
 
 1. Jelentkezzen be a **Power BI**-fiókjába.
-1. Válassza ki **a Munkaterületek > áruházbeli elemzés – pénztár**lehetőséget.
+1. Válassza ki **a Munkaterületek > áruházbeli elemzés – pénztár** lehetőséget.
 1. Válassza a **létrehozás > irányítópultot**.
-1. Adja meg a **Store Analytics** nevet az irányítópult neveként, majd válassza a **Létrehozás**lehetőséget.
+1. Adja meg a **Store Analytics** nevet az irányítópult neveként, majd válassza a **Létrehozás** lehetőséget.
 
 ### <a name="add-line-charts"></a>Soros diagramok hozzáadása
 
-Adja hozzá a négy vonalas diagramot a hőmérséklet és a páratartalom megjelenítéséhez a két környezeti érzékelőből. A csempék létrehozásához használja a következő táblázatban található információkat. Az egyes csempék hozzáadásához először válassza a **... lehetőséget. (További beállítások) > csempe hozzáadása**. Válassza az **Egyéni adatfolyam-továbbítás**lehetőséget, majd válassza a **Next (tovább**) gombot:
+Adja hozzá a négy vonalas diagramot a hőmérséklet és a páratartalom megjelenítéséhez a két környezeti érzékelőből. A csempék létrehozásához használja a következő táblázatban található információkat. Az egyes csempék hozzáadásához először válassza a **... lehetőséget. (További beállítások) > csempe hozzáadása**. Válassza az **Egyéni adatfolyam-továbbítás** lehetőséget, majd válassza a **Next (tovább**) gombot:
 
 | Beállítás | Diagram #1 | Diagram #2 | Diagram #3 | Diagram #4 |
 | ------- | -------- | -------- | -------- | -------- |
@@ -454,7 +454,7 @@ Az alábbi képernyőképen az első diagram beállításai láthatók:
 
 ### <a name="add-cards-to-show-environmental-data"></a>Kártyák hozzáadása a környezeti adatai megjelenítéséhez
 
-A két környezeti érzékelő közül a legutóbbi hőmérséklet és a páratartalom értékének megjelenítéséhez vegyen fel négy kártyát a csempék közül. A csempék létrehozásához használja a következő táblázatban található információkat. Az egyes csempék hozzáadásához először válassza a **... lehetőséget. (További beállítások) > csempe hozzáadása**. Válassza az **Egyéni adatfolyam-továbbítás**lehetőséget, majd válassza a **Next (tovább**) gombot:
+A két környezeti érzékelő közül a legutóbbi hőmérséklet és a páratartalom értékének megjelenítéséhez vegyen fel négy kártyát a csempék közül. A csempék létrehozásához használja a következő táblázatban található információkat. Az egyes csempék hozzáadásához először válassza a **... lehetőséget. (További beállítások) > csempe hozzáadása**. Válassza az **Egyéni adatfolyam-továbbítás** lehetőséget, majd válassza a **Next (tovább**) gombot:
 
 | Beállítás | Kártya #1 | Kártya #2 | Kártya #3 | Kártya #4 |
 | ------- | ------- | ------- | ------- | ------- |
@@ -470,7 +470,7 @@ Az alábbi képernyőképen az első kártya beállításai láthatók:
 
 ### <a name="add-tiles-to-show-checkout-occupancy-data"></a>Csempék hozzáadása a pénztári kihasználtsági adatai megjelenítéséhez
 
-Vegyen fel négy kártya csempét, hogy megjelenjen a várólista hossza és a tartózkodási idő a két pénztár számára a tárolóban. A csempék létrehozásához használja a következő táblázatban található információkat. Az egyes csempék hozzáadásához először válassza a **... lehetőséget. (További beállítások) > csempe hozzáadása**. Válassza az **Egyéni adatfolyam-továbbítás**lehetőséget, majd válassza a **Next (tovább**) gombot:
+Vegyen fel négy kártya csempét, hogy megjelenjen a várólista hossza és a tartózkodási idő a két pénztár számára a tárolóban. A csempék létrehozásához használja a következő táblázatban található információkat. Az egyes csempék hozzáadásához először válassza a **... lehetőséget. (További beállítások) > csempe hozzáadása**. Válassza az **Egyéni adatfolyam-továbbítás** lehetőséget, majd válassza a **Next (tovább**) gombot:
 
 | Beállítás | Kártya #1 | Kártya #2 | Kártya #3 | Kártya #4 |
 | ------- | ------- | ------- | ------- | ------- |
@@ -496,11 +496,11 @@ Ha végzett a IoT Central alkalmazással, törölheti azt az alkalmazásba való
 
 Ha szeretné megtartani az alkalmazást, de csökkenti az ahhoz kapcsolódó költségeket, tiltsa le a telemetria küldő adatexportálást az Event hub-ra.
 
-Az Event hub és a Logic alkalmazást törölheti a Azure Portal a **Retail-Store-Analysis**nevű erőforráscsoport törlésével.
+Az Event hub és a Logic alkalmazást törölheti a Azure Portal a **Retail-Store-Analysis** nevű erőforráscsoport törlésével.
 
 Power BI adatkészleteket és irányítópultokat a munkaterület Power BI beállítások lapján lévő munkaterület törlésével törölheti.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a három oktatóanyag olyan teljes körű megoldást mutat be, amely a **Store Analytics-checkout** IoT Central alkalmazás sablonját használja. Csatlakoztatta az eszközöket az alkalmazáshoz, a IoT Central használta az eszközök figyelésére, és Power BI, hogy irányítópultot hozzon létre az eszköz telemetria való betekintés céljából. A következő lépés egy másik IoT Central alkalmazás-sablon egyikének megismerése:
 
