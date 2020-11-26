@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbf23a32fdf5515402e18f70fe032a1a589dbcbe
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 32526a31a9d52fbfac57f1d384b25e0939b5e297
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424256"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172873"
 ---
 # <a name="how-to-find-your-azure-active-directory-tenant-id"></a>A Azure Active Directory-bérlő AZONOSÍTÓjának megkeresése
 
@@ -51,7 +51,7 @@ További információ a [Get-AzTenant](/powershell/module/az.accounts/get-aztena
 ## <a name="find-tenant-id-with-cli"></a>Bérlői azonosító keresése a parancssori felülettel
 Ha parancssori felületen szeretné megkeresni a bérlő AZONOSÍTÓját, ezt megteheti az [Azure CLI](/cli/azure/install-azure-cli) -vel vagy [Microsoft 365 CLI](https://pnp.github.io/cli-microsoft365/)-vel. 
 
-Az Azure CLI esetében az alábbi példában látható módon használja az az **login** , **az Account List** vagy **az az Account bérlő List** parancsot. Figyelje meg az egyes előfizetések **tenantId** tulajdonságát minden egyes parancs kimenetében.
+Az Azure CLI esetében az alábbi példában látható módon használja az az **login**, **az Account List** vagy **az az Account bérlő List** parancsot. Figyelje meg az egyes előfizetések **tenantId** tulajdonságát minden egyes parancs kimenetében.
 
 ```azurecli-interactive
 az login
@@ -71,10 +71,10 @@ m365 tenant id get
 További információkért tekintse meg a Microsoft 365 [bérlői azonosító lekérése](https://pnp.github.io/cli-microsoft365/cmd/tenant/id/id-get/) parancs referenciáját.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Új Azure AD-bérlő létrehozásához tekintse meg a rövid útmutató [: új bérlő létrehozása a Azure Active Directory-ben](active-directory-access-create-new-tenant.md)című témakört.
 
 - Ha szeretné megismerni, hogyan lehet előfizetést hozzárendelni vagy hozzáadni a bérlőhöz, tekintse meg az [Azure-előfizetés hozzárendelése vagy hozzáadása a Azure Active Directory bérlőhöz](active-directory-how-subscriptions-associated-directory.md)című témakört.
 
-- Az objektumazonosító megkereséséről a [felhasználói objektum azonosítójának megkeresése](https://docs.microsoft.com/partner-center/find-ids-and-domain-names#find-the-user-object-id)című témakörben olvashat bővebben.
+- Az objektumazonosító megkereséséről a [felhasználói objektum azonosítójának megkeresése](/partner-center/find-ids-and-domain-names#find-the-user-object-id)című témakörben olvashat bővebben.

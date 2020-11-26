@@ -13,11 +13,11 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 7fa13a328a55b0e9eaa546e70bf0711f4f011cf1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89068533"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173430"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Microsoft Authenticator vagy Intune Céges portál használata Xamarin-alkalmazásokban
 
@@ -185,8 +185,8 @@ Adja hozzá az átirányítási URI-t az alkalmazás regisztrálásához a [Azur
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Válassza ki **Azure Active Directory**  >  **Alkalmazásregisztrációk** a regisztrált alkalmazás >
-1. **Hitelesítés**kiválasztása  >  **Add a platform**  >  **iOS/MacOS** platform hozzáadása
-1. Adja meg a köteg AZONOSÍTÓját, majd válassza a **Konfigurálás**lehetőséget.
+1. **Hitelesítés** kiválasztása  >  **Add a platform**  >  **iOS/MacOS** platform hozzáadása
+1. Adja meg a köteg AZONOSÍTÓját, majd válassza a **Konfigurálás** lehetőséget.
 
     Másolja az **átirányítási URI** -szövegmezőben megjelenő generált ÁTirányítási URI-t a kódban való felvételhez:
 
@@ -347,7 +347,7 @@ Másik lehetőségként beállíthatja, hogy a MSAL a beágyazott böngészőre 
   - Microsoft Authenticator naplók megtekintése:
 
     1. Kattintson a menü gombra az alkalmazás jobb felső sarkában.
-    1. Válassza a **Súgó**  >  **Küldés naplók**  >  **megtekintése naplók**lehetőséget.
+    1. Válassza a **Súgó**  >  **Küldés naplók**  >  **megtekintése naplók** lehetőséget.
     1. Válassza az **összes másolása** elemet a közvetítő naplóinak az eszköz vágólapra másolásához.
 
     Ezekkel a naplókkal a legjobb megoldás, ha e-mailben küldi el őket, és megtekinti őket a fejlesztői gépen. Előfordulhat, hogy könnyebben elemezni szeretné a számítógépen lévő naplókat az eszköz helyett. Az Androidon egy tesztelési szerkesztőt is használhat, amely szövegfájlként menti a naplókat, majd egy USB-kábellel másolja a fájlt a számítógépre.

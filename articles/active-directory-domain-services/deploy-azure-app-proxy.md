@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: joflore
-ms.openlocfilehash: bc16f75a4ed2f9fe3be8a8bdc2d981a339780cc3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7c30bca947788e93e57f462094d51f00e338c0b8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960779"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171653"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-active-directory-domain-services-managed-domain"></a>Az Azure AD Application Proxy üzembe helyezése egy Azure Active Directory Domain Services felügyelt tartomány belső alkalmazásaihoz való biztonságos hozzáféréshez
 
@@ -54,9 +54,9 @@ Ha létre szeretne hozni egy virtuális gépet az Azure AD Application Proxy-ös
 Az Azure AD Application Proxy-összekötő letöltéséhez hajtsa végre a következő lépéseket. A letöltött telepítőfájlt a következő szakaszban másolja az alkalmazás-proxy virtuális gépre.
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) egy olyan felhasználói fiókkal, amely *vállalati rendszergazdai* engedélyekkel rendelkezik az Azure ad-ben.
-1. Keresse meg és válassza ki **Azure Active Directory** a portál tetején, majd válassza a **vállalati alkalmazások**lehetőséget.
+1. Keresse meg és válassza ki **Azure Active Directory** a portál tetején, majd válassza a **vállalati alkalmazások** lehetőséget.
 1. Válassza ki az **alkalmazásproxy** elemet a bal oldali menüben. Az első összekötő létrehozásához és az alkalmazásproxy engedélyezéséhez válassza a hivatkozást az **összekötő letöltéséhez**.
-1. A letöltési oldalon fogadja el a licencfeltételeket és az adatvédelmi szerződést, majd válassza a **feltételek elfogadása & Letöltés**lehetőséget.
+1. A letöltési oldalon fogadja el a licencfeltételeket és az adatvédelmi szerződést, majd válassza a **feltételek elfogadása & Letöltés** lehetőséget.
 
     ![A Azure AD alkalmazás proxy-összekötő letöltése](./media/app-proxy/download-app-proxy-connector.png)
 
@@ -77,7 +77,7 @@ Ha a virtuális gép készen áll az Azure AD Application Proxy-összekötőkén
    * Ha az Internet Explorer fokozott biztonsági beállításai be vannak kapcsolva ahhoz a virtuális géphez, amelyen az összekötőt telepíti, lehetséges, hogy a regisztrációs képernyő blokkolva van. A hozzáférés engedélyezéséhez kövesse a hibaüzenet utasításait, vagy kapcsolja ki az Internet Explorer fokozott biztonságát a telepítési folyamat során.
    * Ha az összekötő regisztrálása meghiúsul, tekintse meg az [alkalmazásproxy hibaelhárítása](../active-directory/manage-apps/application-proxy-troubleshoot.md)című témakört.
 1. A beállítás végén megjelenik egy Megjegyzés a kimenő proxyval rendelkező környezetekhez. Ha úgy szeretné konfigurálni az Azure AD Application Proxy-összekötőt, hogy a kimenő proxyn keresztül működjön, futtassa a megadott parancsfájlt, például: `C:\Program Files\Microsoft AAD App Proxy connector\ConfigureOutBoundProxy.ps1` .
-1. Az Azure Portal alkalmazásproxy lapján az új összekötő *aktív*állapotú, az alábbi példában látható módon jelenik meg:
+1. Az Azure Portal alkalmazásproxy lapján az új összekötő *aktív* állapotú, az alábbi példában látható módon jelenik meg:
 
     ![Az új Azure AD Application Proxy-összekötő, amely aktívként jelenik meg a Azure Portal](./media/app-proxy/connected-app-proxy.png)
 
@@ -97,7 +97,7 @@ További információ: [a Kerberos által korlátozott delegálás (KCD) konfigu
 
 A [Get-ADComputer][Get-ADComputer] használatával beolvashatja azon számítógép beállításait, amelyre az Azure ad Application proxy Connector telepítve van. Futtassa a következő parancsmagokat a tartományhoz csatlakoztatott felügyeleti virtuális gépről, és jelentkezzen be felhasználói fiókként, amely az *Azure ad DC-rendszergazdák* csoport tagja.
 
-Az alábbi példa a *appproxy.aaddscontoso.com*nevű számítógépfiók adatait olvassa be. Adja meg az előző lépésekben konfigurált Azure AD Application Proxy virtuális géphez tartozó saját számítógép nevét.
+Az alábbi példa a *appproxy.aaddscontoso.com* nevű számítógépfiók adatait olvassa be. Adja meg az előző lépésekben konfigurált Azure AD Application Proxy virtuális géphez tartozó saját számítógép nevét.
 
 ```powershell
 $ImpersonatingAccount = Get-ADComputer -Identity appproxy.aaddscontoso.com
@@ -120,6 +120,6 @@ Az Azure AD DS integrált Azure-AD Application Proxy az alkalmazások közzété
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
 [create-join-windows-vm]: join-windows-vm.md
-[azure-bastion]: ../bastion/bastion-create-host-portal.md
+[azure-bastion]: ../bastion/tutorial-create-host-portal.md
 [Get-ADComputer]: /powershell/module/addsadministration/get-adcomputer
 [Set-ADComputer]: /powershell/module/addsadministration/set-adcomputer

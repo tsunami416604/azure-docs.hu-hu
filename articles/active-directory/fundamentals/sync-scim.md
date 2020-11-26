@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f957070ec94fc4c61089f31fe91261a2f52c4ee4
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: b95aac504bc6ee72c353faecad25384e2dc90840
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578858"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172418"
 ---
 # <a name="scim-synchronization-with-azure-active-directory"></a>SCIM-szinkronizálás Azure Active Directory
 
@@ -35,21 +35,20 @@ Automatikusan szeretné kiépíteni a felhasználói adatokat egy HCM rendszerb�
 
 ## <a name="components-of-system"></a>A System összetevői 
 
-* **HCM rendszer** : olyan alkalmazások és technológiák, amelyek lehetővé teszik a humántőke-felügyeleti folyamatokat, valamint a HR-folyamatokat támogató és automatizálható eljárásokat az alkalmazottak életciklusa során. 
+* **HCM rendszer**: olyan alkalmazások és technológiák, amelyek lehetővé teszik a humántőke-felügyeleti folyamatokat, valamint a HR-folyamatokat támogató és automatizálható eljárásokat az alkalmazottak életciklusa során. 
 
-* **Azure ad-kiépítési szolgáltatás** : a scim 2,0 protokollt használja az automatikus kiépítés számára. A szolgáltatás a SCIM-végponthoz csatlakozik az alkalmazáshoz, és a SCIM felhasználói objektum sémáját és a REST API-kat használja a felhasználók és csoportok kiépítése és kiépítése automatizálására.  
+* **Azure ad-kiépítési szolgáltatás**: a scim 2,0 protokollt használja az automatikus kiépítés számára. A szolgáltatás a SCIM-végponthoz csatlakozik az alkalmazáshoz, és a SCIM felhasználói objektum sémáját és a REST API-kat használja a felhasználók és csoportok kiépítése és kiépítése automatizálására.  
 
-* **Azure ad** : felhasználói adattár, amely az identitások és a hozzájuk tartozó jogosultságok életciklusának kezelésére szolgál. 
+* **Azure ad**: felhasználói adattár, amely az identitások és a hozzájuk tartozó jogosultságok életciklusának kezelésére szolgál. 
 
-* **Célrendszer** : az scim-végponttal rendelkező alkalmazás vagy rendszer, amely az Azure ad-kiépítés használatával lehetővé teszi a felhasználók és csoportok automatikus kiépítét.  
+* **Célrendszer**: az scim-végponttal rendelkező alkalmazás vagy rendszer, amely az Azure ad-kiépítés használatával lehetővé teszi a felhasználók és csoportok automatikus kiépítét.  
 
 ## <a name="implement-scim-with-azure-ad"></a>A SCIM megvalósítása az Azure AD-vel 
 
-* [A kiépítés működése az Azure AD-ben ](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works)
+* [A kiépítés működése az Azure AD-ben ](../app-provisioning/how-provisioning-works.md)
 
-* [A vállalati alkalmazások felhasználói fiókkal való üzembe helyezésének kezelése a Azure Portal ](https://docs.microsoft.com/azure/active-directory/app-provisioning/configure-automatic-user-provisioning-portal)
+* [A vállalati alkalmazások felhasználói fiókkal való üzembe helyezésének kezelése a Azure Portal ](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 
-* [SCIM-végpont létrehozása és a felhasználók üzembe helyezésének konfigurálása az Azure AD-vel  ](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups)
+* [SCIM-végpont létrehozása és a felhasználók üzembe helyezésének konfigurálása az Azure AD-vel  ](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 
-* [Az Azure AD-kiépítési szolgáltatás SCIM 2,0 protokolljának megfelelősége](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-scim-compatibility)
-
+* [Az Azure AD-kiépítési szolgáltatás SCIM 2,0 protokolljának megfelelősége](../app-provisioning/application-provisioning-config-problem-scim-compatibility.md)

@@ -11,12 +11,12 @@ ms.date: 10/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d54e1127207f0593f8d345b266d7db6e92b5c0d
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 65e1217041d85b66664792d9475cdfcb517559b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335400"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172435"
 ---
 # <a name="what-is-identity-lifecycle-management"></a>Mi az az identitáséletciklus-felügyelet?
 
@@ -67,10 +67,10 @@ Az Azure AD jelenleg a következő funkciókat biztosítja:
 * A felhasználók a tulajdonságok alapján, [dinamikus csoportok](../external-identities/use-dynamic-groups.md#what-are-dynamic-groups) használatával automatikusan hozzárendelhetők csoportokba, és igény szerint csoportokhoz, csapatokhoz, Azure ad-szerepkörökhöz, Azure-erőforrás-szerepkörökhöz és SharePoint Online-webhelyekhez is hozzárendelhetők, a [jogosultságok kezelése](entitlement-management-scenarios.md) és a [Privileged Identity Management](../privileged-identity-management/pim-configure.md)
 * A felhasználók frissítései automatikusan elküldhetők több alkalmazásba az alkalmazások [kiépítés](what-is-app-provisioning.md) használatával
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 - [Mi az az üzembe helyezés?](what-is-provisioning.md)
-- [A külső felhasználók hozzáférésének szabályozása az Azure AD-jogosultságok kezelésében](/azure/active-directory/governance/entitlement-management-external-users)
+- [A külső felhasználók hozzáférésének szabályozása az Azure AD-jogosultságok kezelésében](./entitlement-management-external-users.md)
 - [Mi az a HR-alapú kiépítés?](what-is-hr-driven-provisioning.md)
 - [Mi az az alkalmazás-üzembehelyezés?](what-is-app-provisioning.md)
 - [Mi az a címtárak közötti üzembe helyezés?](what-is-inter-directory-provisioning.md)

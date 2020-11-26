@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 184616058cb2a86025eb75b4923e374ab42ebf05
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 99741a412ae02a2d30293e1aa254245f5ca7b662
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953559"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171432"
 ---
 # <a name="tutorial-for-configuring-saviynt-with-azure-active-directory-b2c"></a>Oktatóanyag a Saviynt konfigurálásához a Azure Active Directory B2C
 
@@ -69,7 +69,7 @@ A következő architektúra-diagram a megvalósítást mutatja be.
 
 1. Saviynt-fiók létrehozásához forduljon a [Saviynt](https://saviynt.com/contact-us/)
 
-2. Delegált felügyeleti házirendek létrehozása és felhasználók társítása [delegált rendszergazdaként](../active-directory/users-groups-roles/roles-concept-delegation.md) különböző szerepkörökkel.
+2. Delegált felügyeleti házirendek létrehozása és felhasználók társítása [delegált rendszergazdaként](../active-directory/roles/concept-delegation.md) különböző szerepkörökkel.
 
 ## <a name="configure-azure-ad-b2c-with-saviynt"></a>Azure AD B2C konfigurálása a Saviynt
 

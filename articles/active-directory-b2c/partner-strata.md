@@ -11,23 +11,23 @@ ms.topic: how-to
 ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 6276bd0db9bfb93897f7350b87d208ac2951c859
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: bddc4c64feb31f78bed482bbd729ab1c4b8e676e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94330325"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171415"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>Oktatóanyag a helyi alkalmazások a rétegek használatával történő védelemének Azure AD B2C bővítéséhez
 
 Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja Azure Active Directory (AD) B2C-t a rétegek [Maverics Identity Orchestrator](https://www.strata.io/maverics-identity-orchestrator/).
 A Maverics Identity Orchestrator kiterjeszti Azure AD B2C a helyszíni alkalmazások védelmére. Bármely Identity rendszerhez kapcsolódik, átlátható módon áttelepíti a felhasználókat és a hitelesítő adatokat, szinkronizálja a házirendeket és a konfigurációkat, valamint absztrakt hitelesítéssel és munkamenet-felügyelettel rendelkezik. A többrétegű vállalatok segítségével az alkalmazások újraírása nélkül lehet gyorsan áttérni az örökölt rendszerről Azure AD B2Cra. A megoldás a következő előnyökkel jár:
 
-- **Ügyfél egyszeri Sign-On (SSO) a helyszíni hibrid alkalmazásokhoz** : Azure ad B2C támogatja az ügyfél egyszeri bejelentkezését a Maverics Identity Orchestrator. A felhasználók a Azure AD B2C vagy közösségi identitás-szolgáltatóban (identitásszolgáltató) üzemeltetett fiókokkal jelentkeznek be. A Maverics olyan alkalmazásokra is kiterjeszti az SSO-t, amelyeket az örökölt identitás-rendszerek (például a Symantec SiteMinder) már korábban védett.
+- **Ügyfél egyszeri Sign-On (SSO) a helyszíni hibrid alkalmazásokhoz**: Azure ad B2C támogatja az ügyfél egyszeri bejelentkezését a Maverics Identity Orchestrator. A felhasználók a Azure AD B2C vagy közösségi identitás-szolgáltatóban (identitásszolgáltató) üzemeltetett fiókokkal jelentkeznek be. A Maverics olyan alkalmazásokra is kiterjeszti az SSO-t, amelyeket az örökölt identitás-rendszerek (például a Symantec SiteMinder) már korábban védett.
 
-- A **szabványokon alapuló egyszeri bejelentkezések kiterjesztése az alkalmazásokba az újraírás nélkül** : az Azure ad B2C segítségével kezelheti a felhasználói hozzáférést, és engedélyezheti az egyszeri bejelentkezést a Maverics Identity Orchestrator SAML vagy OIDC összekötők használatával.
+- A **szabványokon alapuló egyszeri bejelentkezések kiterjesztése az alkalmazásokba az újraírás nélkül**: az Azure ad B2C segítségével kezelheti a felhasználói hozzáférést, és engedélyezheti az egyszeri bejelentkezést a Maverics Identity Orchestrator SAML vagy OIDC összekötők használatával.
 
-- **Egyszerű konfiguráció** : Azure ad B2C egy egyszerű, lépésről lépésre haladó felhasználói felületet biztosít a Maverics Identity Orchestrator SAML-vagy OIDC-összekötők Azure ad B2Choz való csatlakoztatásához.
+- **Egyszerű konfiguráció**: Azure ad B2C egy egyszerű, lépésről lépésre haladó felhasználói felületet biztosít a Maverics Identity Orchestrator SAML-vagy OIDC-összekötők Azure ad B2Choz való csatlakoztatásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -35,7 +35,7 @@ A kezdéshez a következőkre lesz szüksége:
 
 - Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
 
-- Egy [Azure ad B2C bérlő](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) , amely az Azure-előfizetéshez van csatolva.
+- Egy [Azure ad B2C bérlő](./tutorial-create-tenant.md) , amely az Azure-előfizetéshez van csatolva.
 
 - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) egy példánya, amely a Maverics Identity Orchestrator által használt titkokat tárolja. A szolgáltatás Azure AD B2C vagy más attribútum-szolgáltatóhoz, például egy Lightweight Directory Access Protocol-(LDAP-) címtárhoz vagy adatbázishoz való kapcsolódásra szolgál.
 
@@ -47,11 +47,11 @@ A kezdéshez a következőkre lesz szüksége:
 
 A rétegek Maverics-integrációja a következő összetevőket tartalmazza:
 
-- **Azure ad B2C** : a felhasználó hitelesítő adatainak ellenőrzéséhez felelős engedélyezési kiszolgáló. A hitelesített felhasználók a Azure AD B2C könyvtárban tárolt helyi fiók használatával férhetnek hozzá a helyszíni alkalmazásokhoz.
+- **Azure ad B2C**: a felhasználó hitelesítő adatainak ellenőrzéséhez felelős engedélyezési kiszolgáló. A hitelesített felhasználók a Azure AD B2C könyvtárban tárolt helyi fiók használatával férhetnek hozzá a helyszíni alkalmazásokhoz.
 
-- **Külső közösségi vagy vállalati identitásszolgáltató** : bármilyen OpenID Connect-szolgáltató, Facebook, Google vagy GitHub lehet. További információ a [külső idp](https://docs.microsoft.com/azure/active-directory-b2c/technical-overview#external-identity-providers) Azure ad B2C használatával történő használatáról.  
+- **Külső közösségi vagy vállalati identitásszolgáltató**: bármilyen OpenID Connect-szolgáltató, Facebook, Google vagy GitHub lehet. További információ a [külső idp](./technical-overview.md#external-identity-providers) Azure ad B2C használatával történő használatáról.  
 
-- A **rétegek Maverics Identity Orchestrator** : az a szolgáltatás, amely összehangolja a felhasználói bejelentkezést, és transzparens módon továbbítja az alkalmazásokat a http-fejléceken keresztül.
+- A **rétegek Maverics Identity Orchestrator**: az a szolgáltatás, amely összehangolja a felhasználói bejelentkezést, és transzparens módon továbbítja az alkalmazásokat a http-fejléceken keresztül.
 
 A következő architektúra-diagram a megvalósítást mutatja be.
 
@@ -75,7 +75,7 @@ Ahhoz, hogy a szoftvert használni lehessen a régi helyszíni alkalmazás Azure
 
 1. **Az alkalmazás regisztrálása**
 
-   a. [Regisztrálja a Orchestrator alkalmazást](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-applications?tabs=app-reg-ga) Azure ad B2C bérlőben.
+   a. [Regisztrálja a Orchestrator alkalmazást](./tutorial-register-applications.md?tabs=app-reg-ga) Azure ad B2C bérlőben.
    >[!Note]
    >A Orchestrator-példány konfigurálásakor a bérlő nevét és azonosítóját, az ügyfél-azonosítót, az ügyfél titkos kulcsát, a konfigurált jogcímeket és az átirányítási URI-t kell később megadnia.
 
@@ -83,13 +83,13 @@ Ahhoz, hogy a szoftvert használni lehessen a régi helyszíni alkalmazás Azure
 
    c. Adjon hozzá egy átirányítási URI-t az alkalmazáshoz. Ez az URI megfelel a `oauthRedirectURL` Orchestrator Azure ad B2C-összekötő konfigurációjának paraméterének, például: `https://example.com/oidc-endpoint` .
 
-2. **Felhasználói folyamat létrehozása** : hozzon létre egy [bejelentkezési és bejelentkezési felhasználói folyamatot](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows).
+2. **Felhasználói folyamat létrehozása**: hozzon létre egy [bejelentkezési és bejelentkezési felhasználói folyamatot](./tutorial-create-user-flows.md).
 
-3. **Identitásszolgáltató hozzáadása** : dönthet úgy, hogy helyi fiókkal vagy közösségi vagy vállalati [identitásszolgáltató](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers)kíván bejelentkezni a felhasználóba.
+3. **Identitásszolgáltató hozzáadása**: dönthet úgy, hogy helyi fiókkal vagy közösségi vagy vállalati [identitásszolgáltató](./tutorial-add-identity-providers.md)kíván bejelentkezni a felhasználóba.
 
-4. **Felhasználói attribútumok definiálása** : a regisztráció során gyűjteni kívánt attribútumok meghatározása.
+4. **Felhasználói attribútumok definiálása**: a regisztráció során gyűjteni kívánt attribútumok meghatározása.
 
-5. **Adja meg az alkalmazás jogcímeit** : adja meg az alkalmazásnak az Orchestrator-példányon keresztül visszaadott attribútumokat. A Orchestrator a Azure AD B2C által visszaadott jogcímek attribútumait használja fel, és további attribútumokat kérhet le más csatlakoztatott identitási rendszerekből, például az LDAP-címtárakból és-adatbázisokból. Ezek az attribútumok a HTTP-fejlécekben vannak beállítva, és a felsőbb rétegbeli helyszíni alkalmazásba lesznek küldve.
+5. **Adja meg az alkalmazás jogcímeit**: adja meg az alkalmazásnak az Orchestrator-példányon keresztül visszaadott attribútumokat. A Orchestrator a Azure AD B2C által visszaadott jogcímek attribútumait használja fel, és további attribútumokat kérhet le más csatlakoztatott identitási rendszerekből, például az LDAP-címtárakból és-adatbázisokból. Ezek az attribútumok a HTTP-fejlécekben vannak beállítva, és a felsőbb rétegbeli helyszíni alkalmazásba lesznek küldve.
 
 ## <a name="configure-maverics-identity-orchestrator"></a>Maverics-identitás Orchestrator konfigurálása
 
@@ -259,7 +259,7 @@ appgateways:
 
 Fontos, hogy biztosítsa a Orchestrator által a Azure AD B2C és bármely más Identity rendszerhez való kapcsolódáshoz használt titkok védelmét. A Maverics alapértelmezés szerint egyszerű szövegként tölti be a titkos kulcsokat `maverics.yaml` , azonban ebben az oktatóanyagban a Azure Key Vault a Secrets providerként fogja használni.
 
-Az utasításokat követve [hozzon létre egy új Key Vault](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#create-a-vault) , amelyet a Orchestrator-példánya titkos szolgáltatóként fog használni. Adja hozzá a titkot a tárolóhoz, és jegyezze fel az `SECRET NAME` adott titkos kulcsot. Például: `AzureADB2CClientSecret`.
+Az utasításokat követve [hozzon létre egy új Key Vault](../key-vault/secrets/quick-create-portal.md) , amelyet a Orchestrator-példánya titkos szolgáltatóként fog használni. Adja hozzá a titkot a tárolóhoz, és jegyezze fel az `SECRET NAME` adott titkos kulcsot. Például: `AzureADB2CClientSecret`.
 
 Ha egy konfigurációs fájlban titkos kulcsot szeretne deklarálni `maverics.yaml` , zárja be a titkos kódot a szögletes zárójelekkel:
 
@@ -338,10 +338,10 @@ appgateways:
 
 7. Ekkor meg kell jelennie a kért alkalmazásnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért tekintse át a következő cikkeket:
 
-- [Egyéni szabályzatok az Azure AD B2C-ben](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Egyéni szabályzatok az Azure AD B2C-ben](./custom-policy-overview.md)
 
-- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](./custom-policy-get-started.md?tabs=applications)

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: dd6e760fe8052463491f249b54c3af3d2636d46d
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 337275cef0f2159cb5fac40ac0435408baf3bbef
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93376884"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170922"
 ---
 # <a name="tutorial-for-configuring-theaccesshub-admin-tool-with-azure-active-directory-b2c"></a>Oktatóanyag a TheAccessHub felügyeleti eszköz konfigurálásához Azure Active Directory B2C
 
@@ -38,13 +38,13 @@ A kezdéshez a következőkre lesz szüksége:
 
 - Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
 
-- [Azure ad B2C bérlő](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant). A bérlőt az Azure-előfizetéshez kell kapcsolni.
+- [Azure ad B2C bérlő](./tutorial-create-tenant.md). A bérlőt az Azure-előfizetéshez kell kapcsolni.
 
 - Egy TheAccessHub felügyeleti eszköz környezete: lépjen kapcsolatba az [N8 Identity](https://n8id.com/contact/) szolgáltatással egy új környezet kiépítéséhez.
 
 - Választható Kapcsolati és hitelesítő adatok minden olyan adatbázishoz vagy Lightweight Directory Access Protocol (LDAPs) szolgáltatáshoz, amelyre adatokat kíván áttelepíteni.
 
-- Választható Az [Egyéni házirendek](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started)használatára konfigurált Azure ad B2C környezet, ha integrálni szeretné a TheAccessHub-felügyeleti eszközt a regisztrációs házirend folyamatba.
+- Választható Az [Egyéni házirendek](./custom-policy-get-started.md)használatára konfigurált Azure ad B2C környezet, ha integrálni szeretné a TheAccessHub-felügyeleti eszközt a regisztrációs házirend folyamatba.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -52,7 +52,7 @@ A TheAccessHub felügyeleti eszköz az Azure bármely más alkalmazásához haso
 
 ![N8identity architektúra diagramot ábrázoló kép](./media/partner-n8identity/n8identity-architecture-diagram.png)
 
-|Lépés | Description |
+|Lépés | Leírás |
 |:-----| :-----------|
 | 1. | A felhasználó egy bejelentkezési oldalon érkezik. A felhasználók a regisztráció gombra kattintva létrehozhatnak egy új fiókot, és beírhatják az adatokat az oldalra. A Azure AD B2C a felhasználói attribútumokat gyűjti.
 | 2. | Azure AD B2C meghívja a TheAccessHub felügyeleti eszközét, és átadja a felhasználói attribútumokat
@@ -162,9 +162,9 @@ A TheAccessHub felügyeleti eszközben az ügyfél és a CSR/helpdesk felhaszná
 
 3. Válassza > **Csoport hozzáadása** lehetőséget
 
-4. Adja meg a **csoport nevét** , a **csoport leírását** és a **csoport tulajdonosát**
+4. Adja meg a **csoport nevét**, a **csoport leírását** és a **csoport tulajdonosát**
 
-5. Keresse meg és jelölje ki azokat a munkatársakat, akik számára a csoport tagjai lesznek, majd válassza a > **Hozzáadás** lehetőséget.
+5. Keresse meg és jelölje ki azokat a munkatársakat, akik számára a csoport tagjai lesznek, majd válassza a >**Hozzáadás** lehetőséget.
 
 6. A lap alján láthatja a csoport összes tagját.
 
@@ -180,7 +180,7 @@ A TheAccessHub felügyeleti eszközben az ügyfél és a CSR/helpdesk felhaszná
 
 3. Válassza > **szervezet hozzáadása** lehetőséget
 
-4. Adja meg a **szervezet nevét** , a **szervezet tulajdonosát** és a **szülő szervezetet**.
+4. Adja meg a **szervezet nevét**, a **szervezet tulajdonosát** és a **szülő szervezetet**.
 
     a. A szervezet neve ideális esetben olyan érték, amely megfelel az ügyfél adatainak. Ha betölti a munkatársat és az ügyféladatokat, és a terhelésben megadja a szervezet nevét, a munkatárs automatikusan elhelyezhető a szervezeten belül.
 
@@ -280,7 +280,7 @@ A TheAccessHub felügyeleti eszköz használatával különböző adatbázisokb�
 
    b. Válassza a **kapcsolatok engedélyezése** lehetőséget.
 
-   c. Egy új ablak kérni fogja, hogy jelentkezzen be a **OneDrive** -be, jelentkezzen be egy olyan felhasználóval, aki olvasási hozzáféréssel rendelkezik a OneDrive-fiókjához. A TheAccessHub felügyeleti eszköz segítségével a felhasználó CSV-fájlok betöltését olvashatja el.
+   c. Egy új ablak kérni fogja, hogy jelentkezzen be a **OneDrive**-be, jelentkezzen be egy olyan felhasználóval, aki olvasási hozzáféréssel rendelkezik a OneDrive-fiókjához. A TheAccessHub felügyeleti eszköz segítségével a felhasználó CSV-fájlok betöltését olvashatja el.
 
    d. Kövesse az utasításokat, és válassza az **elfogadás** lehetőséget a TheAccessHub felügyeleti eszköz a kért engedélyek megadásához.
 
@@ -358,7 +358,7 @@ Azure AD B2C adatainak szinkronizálása a TheAccessHub felügyeleti eszközön:
 
 ## <a name="configure-azure-ad-b2c-policies"></a>Azure AD B2C házirendek konfigurálása
 
-A TheAccessHub felügyeleti eszköz időnkénti szinkronizálása korlátozva van a Azure AD B2Cával való naprakész állapotának megőrzésére. A TheAccessHub felügyeleti eszköz API-ját és Azure AD B2C szabályzatait kihasználva tájékoztatjuk a TheAccessHub felügyeleti eszköz változásait. Ehhez a megoldáshoz [Azure ad B2C egyéni szabályzatok](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started#:~:text=%20Get%20started%20with%20custom%20policies%20in%20Azure,Experience%20Framework%20applications.%20Azure%20AD%20B2C...%20More%20)technikai ismerete szükséges. A következő szakaszban bemutatunk egy példát a szabályzat lépéseire és egy biztonságos tanúsítványra, amely értesíti az új fiókok TheAccessHub felügyeleti eszközét az Sign-Up egyéni szabályzatokban.
+A TheAccessHub felügyeleti eszköz időnkénti szinkronizálása korlátozva van a Azure AD B2Cával való naprakész állapotának megőrzésére. A TheAccessHub felügyeleti eszköz API-ját és Azure AD B2C szabályzatait kihasználva tájékoztatjuk a TheAccessHub felügyeleti eszköz változásait. Ehhez a megoldáshoz [Azure ad B2C egyéni szabályzatok](./custom-policy-get-started.md)technikai ismerete szükséges. A következő szakaszban bemutatunk egy példát a szabályzat lépéseire és egy biztonságos tanúsítványra, amely értesíti az új fiókok TheAccessHub felügyeleti eszközét az Sign-Up egyéni szabályzatokban.
 
 ### <a name="create-a-secure-credential-to-invoke-theaccesshub-admin-tools-api"></a>Biztonságos hitelesítő adat létrehozása a TheAccessHub felügyeleti eszköz API-ját meghívásához
 
@@ -372,7 +372,7 @@ A TheAccessHub felügyeleti eszköz időnkénti szinkronizálása korlátozva va
 
 5. Az ügyféltanúsítvány beszerzéséhez kattintson a **Letöltés** gombra.
 
-6. Ezt az [oktatóanyagot](https://docs.microsoft.com/azure/active-directory-b2c/secure-rest-api#https-client-certificate-authentication ) követve vegye fel az ügyféltanúsítványt Azure ad B2Cba.
+6. Ezt az [oktatóanyagot](./secure-rest-api.md#https-client-certificate-authentication ) követve vegye fel az ügyféltanúsítványt Azure ad B2Cba.
 
 ### <a name="retrieve-your-custom-policy-examples"></a>Egyéni házirend-példák beolvasása
 
@@ -382,16 +382,16 @@ A TheAccessHub felügyeleti eszköz időnkénti szinkronizálása korlátozva va
 
 3. Adja meg Azure AD B2C bérlői tartományát és a két identitási élmény keretrendszer-azonosítóját az identitási élmény keretrendszere konfigurációjában
 
-4. Válassza a **Mentés** lehetőséget.
+4. Válassza a **Mentés** lehetőséget
 
 5. Válassza a **Letöltés** lehetőséget, ha olyan alapszintű szabályzatokat tartalmazó zip-fájlt szeretne beolvasni, amely ügyfeleket regisztrál a TheAccessHub felügyeleti eszközbe.
 
-6. Ezt az [oktatóanyagot](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started) követve megkezdheti az egyéni szabályzatok megtervezését Azure ad B2Cban.
+6. Ezt az [oktatóanyagot](./custom-policy-get-started.md) követve megkezdheti az egyéni szabályzatok megtervezését Azure ad B2Cban.
 
 ## <a name="next-steps"></a>Következő lépések
 
 További információkért tekintse át a következő cikkeket:
 
-- [Egyéni szabályzatok az Azure AD B2C-ben](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Egyéni szabályzatok az Azure AD B2C-ben](./custom-policy-overview.md)
 
-- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Ismerkedés az egyéni szabályzatokkal Azure AD B2C](./custom-policy-get-started.md?tabs=applications)

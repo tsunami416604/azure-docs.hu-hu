@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd8f6bb8ce93d1d423019f792624d8bdac56ecf8
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 352d5218f91fa55134a7515b6aeee49857847468
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92892639"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173209"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Hogyan hívhatják meg a felhasználók a vendégeket egy alkalmazásba
 
@@ -28,14 +28,14 @@ Miután hozzáadta a vendég felhasználóját a címtárhoz az Azure AD-ben, az
  - Az alkalmazás konfigurálása önkiszolgáló használatra és a csoport társítása az alkalmazáshoz
 
 > [!NOTE]
-> Ez a cikk bemutatja, hogyan állíthat be önkiszolgáló felügyeletet az Azure AD-bérlőhöz hozzáadott katalógushoz és SAML-alapú alkalmazásokhoz. [Beállíthat önkiszolgáló Microsoft 365 csoportokat](../users-groups-roles/groups-self-service-management.md) is, így a felhasználók kezelhetik a saját Microsoft 365 csoportjaihoz való hozzáférést. A felhasználók az Office-fájlok és-alkalmazások megoszthatók a vendég felhasználókkal, a [vendég hozzáférés Microsoft 365 csoportokban](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) és a [SharePoint-fájlok és-mappák megosztása](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c)című témakörben talál további lehetőségeket.
+> Ez a cikk bemutatja, hogyan állíthat be önkiszolgáló felügyeletet az Azure AD-bérlőhöz hozzáadott katalógushoz és SAML-alapú alkalmazásokhoz. [Beállíthat önkiszolgáló Microsoft 365 csoportokat](../enterprise-users/groups-self-service-management.md) is, így a felhasználók kezelhetik a saját Microsoft 365 csoportjaihoz való hozzáférést. A felhasználók az Office-fájlok és-alkalmazások megoszthatók a vendég felhasználókkal, a [vendég hozzáférés Microsoft 365 csoportokban](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) és a [SharePoint-fájlok és-mappák megosztása](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c)című témakörben talál további lehetőségeket.
 
 ## <a name="invite-a-guest-user-to-an-app-from-the-access-panel"></a>Vendég felhasználó meghívása egy alkalmazásra a hozzáférési panelen
 
 Ha egy alkalmazás önkiszolgálásra van konfigurálva, az alkalmazás tulajdonosai a saját hozzáférési paneljén meghívhatnak egy vendég felhasználót a megosztani kívánt alkalmazáshoz. A vendég felhasználót nem feltétlenül kell az Azure AD-be előre hozzáadni. 
 
 1. Nyissa meg a hozzáférési panelt a következő lépésekkel: `https://myapps.microsoft.com` .
-2. Mutasson az alkalmazásra, válassza a három pontot ( **...** ), majd válassza az **alkalmazás kezelése** lehetőséget.
+2. Mutasson az alkalmazásra, válassza a három pontot (**...**), majd válassza az **alkalmazás kezelése** lehetőséget.
  
    ![Képernyőfelvétel: a Salesforce alkalmazáshoz tartozó alkalmazás almenüjének kezelése](media/add-users-iw/access-panel-manage-app.png)
  
@@ -75,7 +75,7 @@ Ha egy alkalmazás önkiszolgáló használatára van konfigurálva, az alkalmaz
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az önkiszolgáló alkalmazások felügyeletéhez a globális rendszergazda és az Azure AD-rendszergazda által igényelt kezdeti beállítás szükséges. A telepítő részeként konfigurálja az alkalmazást az önkiszolgáló szolgáltatáshoz, és hozzárendel egy csoportot az alkalmazáshoz, amelyet az alkalmazás tulajdonosa kezelhet. A csoportot úgy is beállíthatja, hogy bárki megkérje a tagságot, de a csoport tulajdonosának jóváhagyása szükséges. (További információ az [önkiszolgáló csoport kezeléséről](../users-groups-roles/groups-self-service-management.md).) 
+Az önkiszolgáló alkalmazások felügyeletéhez a globális rendszergazda és az Azure AD-rendszergazda által igényelt kezdeti beállítás szükséges. A telepítő részeként konfigurálja az alkalmazást az önkiszolgáló szolgáltatáshoz, és hozzárendel egy csoportot az alkalmazáshoz, amelyet az alkalmazás tulajdonosa kezelhet. A csoportot úgy is beállíthatja, hogy bárki megkérje a tagságot, de a csoport tulajdonosának jóváhagyása szükséges. (További információ az [önkiszolgáló csoport kezeléséről](../enterprise-users/groups-self-service-management.md).) 
 
 > [!NOTE]
 > Nem vehet fel vendég felhasználókat dinamikus csoportba vagy olyan csoportba, amely szinkronizálva van a helyszíni Active Directoryával.
@@ -85,8 +85,8 @@ Az önkiszolgáló alkalmazások felügyeletéhez a globális rendszergazda és 
 2. A navigációs panelen válassza a **Azure Active Directory** lehetőséget.
 3. Válassza a **csoportok** lehetőséget.
 4. A **Beállítások** területen válassza az **általános** lehetőséget.
-5. Az **önkiszolgáló csoport felügyelete** alatt **a tulajdonosok lehetőség mellett a hozzáférési panelen is kezelhet csoporttagság-kérelmeket** , és válassza az **Igen** lehetőséget.
-6. Válassza a **Mentés** lehetőséget.
+5. Az **önkiszolgáló csoport felügyelete** alatt **a tulajdonosok lehetőség mellett a hozzáférési panelen is kezelhet csoporttagság-kérelmeket**, és válassza az **Igen** lehetőséget.
+6. Kattintson a **Mentés** gombra.
 
 ### <a name="create-a-group-to-assign-to-the-app-and-make-the-user-an-owner"></a>Hozzon létre egy csoportot, amelyet hozzá szeretne rendelni az alkalmazáshoz, és tegye a felhasználót a tulajdonosnak
 1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com) Azure ad-rendszergazdaként vagy globális rendszergazdaként.
@@ -94,7 +94,7 @@ Az önkiszolgáló alkalmazások felügyeletéhez a globális rendszergazda és 
 3. Válassza a **csoportok** lehetőséget.
 4. Válassza az **új csoport** lehetőséget.
 5. A **csoport típusa** területen válassza a **Biztonság** elemet.
-6. Gépelje be a **Csoport nevét** és a **Csoport leírását** .
+6. Gépelje be a **Csoport nevét** és a **Csoport leírását**.
 7. A **tagság típusa** területen válassza a **hozzárendelt** elemet.
 8. Válassza a **Létrehozás** lehetőséget, majd a **csoport** lap bezárásához.
 9. A **csoportok – minden csoport** lapon nyissa meg a csoportot. 

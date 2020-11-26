@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: joflore
-ms.openlocfilehash: 3df96f5576829694b5eb12fd1811de112279884d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5481dbfe1f7b185e87ee13f26f23ea563350b0fa
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963227"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171789"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Oktatóanyag: Windows Server rendszerű virtuális gép csatlakoztatása Azure Active Directory Domain Services felügyelt tartományhoz
 
@@ -56,19 +56,19 @@ Ha szeretné megtudni, hogyan csatlakozhat egy számítógéphez egy felügyelt 
 
 Ha már rendelkezik egy olyan virtuális géppel, amelyet tartományhoz szeretne csatlakoztatni, ugorjon a szakaszra, és [csatlakozzon a virtuális géphez a felügyelt tartományhoz](#join-the-vm-to-the-managed-domain).
 
-1. A Azure Portal menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása**lehetőséget.
+1. A Azure Portal menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása** lehetőséget.
 
-1. Az első **lépések**területen válassza a **Windows Server 2016 Datacenter**lehetőséget.
+1. Az első **lépések** területen válassza a **Windows Server 2016 Datacenter** lehetőséget.
 
     ![Válassza a Windows Server 2016 Datacenter rendszerű virtuális gép létrehozását a Azure Portal](./media/join-windows-vm/select-vm-image.png)
 
-1. Az **alapvető** beállítások ablakban adja meg a virtuális gép alapvető beállításait. Hagyja meg az alapértelmezett *beállításokat a rendelkezésre állási beállítások*, a *képek*és a *méretek*számára.
+1. Az **alapvető** beállítások ablakban adja meg a virtuális gép alapvető beállításait. Hagyja meg az alapértelmezett *beállításokat a rendelkezésre állási beállítások*, a *képek* és a *méretek* számára.
 
     | Paraméter            | Ajánlott érték   |
     |----------------------|-------------------|
     | Erőforráscsoport       | Válasszon ki vagy hozzon létre egy erőforráscsoportot, például *myResourceGroup* |
     | Virtuális gép neve | Adja meg a virtuális gép nevét, például *myVM* |
-    | Régió               | Válassza ki azt a régiót, amelyben létre szeretné hozni a virtuális gépet, például: *USA keleti* régiója |
+    | Region               | Válassza ki azt a régiót, amelyben létre szeretné hozni a virtuális gépet, például: *USA keleti* régiója |
     | Felhasználónév             | Adjon meg egy felhasználónevet a virtuális gépen létrehozandó helyi rendszergazdai fiókhoz, például: *Azureus* |
     | Jelszó             | Adja meg és erősítse meg a virtuális gépen a helyi rendszergazda számára létrehozott biztonságos jelszót. Ne határozzon meg tartományi felhasználói fiók hitelesítő adatait. |
 
@@ -76,10 +76,10 @@ Ha már rendelkezik egy olyan virtuális géppel, amelyet tartományhoz szeretne
 
     Az RDP-t csak szükség esetén kell engedélyezni, és az engedélyezett IP-címtartományok körére korlátozódik. Ez a konfiguráció segít javítani a virtuális gép biztonságát, és csökkenti a lehetséges támadási területét. Vagy létrehozhat és használhat egy olyan Azure Bastion-gazdagépet, amely csak a TLS-en keresztül Azure Portal hozzáférést. Az oktatóanyag következő lépéseként egy Azure Bastion-gazdagépet használ a virtuális géphez való biztonságos kapcsolódáshoz.
 
-    A **nyilvános bejövő portok**területen válassza a *nincs*lehetőséget.
+    A **nyilvános bejövő portok** területen válassza a *nincs* lehetőséget.
 
-1. Ha elkészült, válassza a **Tovább: lemezek**elemet.
-1. Az **operációsrendszer-lemez típusa**legördülő menüben válassza a *standard SSD*, majd a **Tovább: hálózatkezelés**lehetőséget.
+1. Ha elkészült, válassza a **Tovább: lemezek** elemet.
+1. Az **operációsrendszer-lemez típusa** legördülő menüben válassza a *standard SSD*, majd a **Tovább: hálózatkezelés** lehetőséget.
 1. A virtuális gépnek csatlakoznia kell egy olyan Azure-beli virtuális hálózati alhálózathoz, amely képes kommunikálni azzal az alhálózattal, amelyet a felügyelt tartomány üzembe helyez. Azt javasoljuk, hogy egy felügyelt tartományt a saját dedikált alhálózatán telepítsen. Ne telepítse a virtuális gépet a felügyelt tartományhoz tartozó alhálózatba.
 
     A virtuális gép üzembe helyezésének két fő módja van, és csatlakozhat a megfelelő virtuális hálózati alhálózathoz:
@@ -90,32 +90,32 @@ Ha már rendelkezik egy olyan virtuális géppel, amelyet tartományhoz szeretne
     Ha olyan virtuális hálózati alhálózatot választ, amely nem csatlakozik a felügyelt tartományhoz tartozó alhálózathoz, nem csatlakoztathatja a virtuális gépet a felügyelt tartományhoz. Ebben az oktatóanyagban hozzunk létre egy új alhálózatot az Azure Virtual Networkben.
 
     A **hálózatkezelés** ablaktáblán válassza ki azt a virtuális hálózatot, amelyben a felügyelt tartományt telepíti, például *aaads-vnet*
-1. Ebben a példában a meglévő *aaads-alhálózat* azt mutatja, hogy a felügyelt tartomány csatlakozik. Ne kapcsolódjon a virtuális géphez ehhez az alhálózathoz. Ha alhálózatot szeretne létrehozni a virtuális géphez, válassza az **alhálózat konfigurációjának kezelése**lehetőséget.
+1. Ebben a példában a meglévő *aaads-alhálózat* azt mutatja, hogy a felügyelt tartomány csatlakozik. Ne kapcsolódjon a virtuális géphez ehhez az alhálózathoz. Ha alhálózatot szeretne létrehozni a virtuális géphez, válassza az **alhálózat konfigurációjának kezelése** lehetőséget.
 
     ![Válassza az alhálózat konfigurációjának kezelését a Azure Portal](./media/join-windows-vm/manage-subnet.png)
 
-1. A virtuális hálózat ablak bal oldali menüjében válassza a **címterület**lehetőséget. A virtuális hálózat egy *10.0.2.0/24*-es címtartomány használatával jön létre, amelyet az alapértelmezett alhálózat használ. Más alhálózatok, például a *munkaterhelések* vagy az Azure-alapú kihelyezés már létezhetnek.
+1. A virtuális hálózat ablak bal oldali menüjében válassza a **címterület** lehetőséget. A virtuális hálózat egy *10.0.2.0/24*-es címtartomány használatával jön létre, amelyet az alapértelmezett alhálózat használ. Más alhálózatok, például a *munkaterhelések* vagy az Azure-alapú kihelyezés már létezhetnek.
 
     Adjon hozzá egy további IP-címtartományt a virtuális hálózathoz. A címtartomány mérete és a használni kívánt IP-címtartomány a már telepített többi hálózati erőforrástól függ. Az IP-címtartomány nem fedi át az Azure-ban vagy a helyszíni környezetben lévő összes meglévő címtartományt. Győződjön meg arról, hogy az IP-címtartomány elég nagy méretű az alhálózatba telepítendő virtuális gépek számához.
 
-    A következő példában egy *10.0.5.0/24* további IP-címtartomány van hozzáadva. Ha elkészült, válassza a **Mentés**lehetőséget.
+    A következő példában egy *10.0.5.0/24* további IP-címtartomány van hozzáadva. Ha elkészült, válassza a **Mentés** lehetőséget.
 
     ![További virtuális hálózati IP-címtartomány hozzáadása a Azure Portal](./media/join-windows-vm/add-vnet-address-range.png)
 
-1. Ezután a virtuális hálózat ablak bal oldali menüjében válassza az **alhálózatok**elemet, majd válassza az **+ alhálózat** lehetőséget az alhálózat hozzáadásához.
+1. Ezután a virtuális hálózat ablak bal oldali menüjében válassza az **alhálózatok** elemet, majd válassza az **+ alhálózat** lehetőséget az alhálózat hozzáadásához.
 
-1. Válassza az **+ alhálózat**lehetőséget, majd adja meg az alhálózat nevét (például *felügyelet*). Adja meg a **címtartományt (CIDR blokk)**, például *10.0.5.0/24*. Győződjön meg arról, hogy ez az IP-címtartomány nem fedi át a többi meglévő Azure-vagy helyszíni címtartományt. Hagyja meg a többi beállítást alapértelmezett értékként, majd kattintson az **OK gombra**.
+1. Válassza az **+ alhálózat** lehetőséget, majd adja meg az alhálózat nevét (például *felügyelet*). Adja meg a **címtartományt (CIDR blokk)**, például *10.0.5.0/24*. Győződjön meg arról, hogy ez az IP-címtartomány nem fedi át a többi meglévő Azure-vagy helyszíni címtartományt. Hagyja meg a többi beállítást alapértelmezett értékként, majd kattintson az **OK gombra**.
 
     ![Alhálózat-konfiguráció létrehozása a Azure Portalban](./media/join-windows-vm/create-subnet.png)
 
 1. Az alhálózat létrehozása eltarthat néhány másodpercig. A létrehozás után válassza az X- *et* az alhálózat ablak bezárásához.
-1. A **hálózatkezelés** ablaktáblán a virtuális gép létrehozásához válassza ki a létrehozott alhálózatot a legördülő menüből, például a *felügyelet*lehetőséget. Győződjön meg arról, hogy a megfelelő alhálózatot választja, és ne telepítse a virtuális gépet a felügyelt tartományhoz tartozó alhálózatba.
-1. A **nyilvános IP-címek**esetében válassza a *nincs* lehetőséget a legördülő menüből. Ahogy az oktatóanyagban az Azure Bastion használatával csatlakozik a felügyelethez, nincs szüksége a virtuális géphez hozzárendelt nyilvános IP-címekre.
-1. Hagyja meg a többi beállítást alapértelmezett értékként, majd válassza a **felügyelet**lehetőséget.
-1. Állítsa *ki*a **rendszerindítási diagnosztikát** . Hagyja meg a többi beállítást alapértelmezett értékként, majd válassza a **felülvizsgálat + létrehozás**lehetőséget.
-1. Tekintse át a virtuális gép beállításait, majd kattintson a **Létrehozás**gombra.
+1. A **hálózatkezelés** ablaktáblán a virtuális gép létrehozásához válassza ki a létrehozott alhálózatot a legördülő menüből, például a *felügyelet* lehetőséget. Győződjön meg arról, hogy a megfelelő alhálózatot választja, és ne telepítse a virtuális gépet a felügyelt tartományhoz tartozó alhálózatba.
+1. A **nyilvános IP-címek** esetében válassza a *nincs* lehetőséget a legördülő menüből. Ahogy az oktatóanyagban az Azure Bastion használatával csatlakozik a felügyelethez, nincs szüksége a virtuális géphez hozzárendelt nyilvános IP-címekre.
+1. Hagyja meg a többi beállítást alapértelmezett értékként, majd válassza a **felügyelet** lehetőséget.
+1. Állítsa *ki* a **rendszerindítási diagnosztikát** . Hagyja meg a többi beállítást alapértelmezett értékként, majd válassza a **felülvizsgálat + létrehozás** lehetőséget.
+1. Tekintse át a virtuális gép beállításait, majd kattintson a **Létrehozás** gombra.
 
-A virtuális gép létrehozása néhány percet vesz igénybe. A Azure Portal az üzemelő példány állapotát jeleníti meg. Ha a virtuális gép elkészült, válassza az **Ugrás az erőforráshoz**lehetőséget.
+A virtuális gép létrehozása néhány percet vesz igénybe. A Azure Portal az üzemelő példány állapotát jeleníti meg. Ha a virtuális gép elkészült, válassza az **Ugrás az erőforráshoz** lehetőséget.
 
 ![A virtuális gép erőforrásának megugrása a Azure Portal a sikeres létrehozás után](./media/join-windows-vm/vm-created.png)
 
@@ -125,11 +125,11 @@ A virtuális gépekhez való biztonságos kapcsolódáshoz használjon egy Azure
 
 Ha egy megerősített gazdagépet szeretne használni a virtuális géphez való kapcsolódáshoz, hajtsa végre a következő lépéseket:
 
-1. A virtuális gép **Áttekintés** paneljén válassza a **kapcsolat**, majd a **Bastion**lehetőséget.
+1. A virtuális gép **Áttekintés** paneljén válassza a **kapcsolat**, majd a **Bastion** lehetőséget.
 
     ![Kapcsolódás Windows rendszerű virtuális géphez a Azure Portal](./media/join-windows-vm/connect-to-vm.png)
 
-1. Adja meg az előző szakaszban megadott virtuális gép hitelesítő adatait, majd válassza a **kapcsolat**lehetőséget.
+1. Adja meg az előző szakaszban megadott virtuális gép hitelesítő adatait, majd válassza a **kapcsolat** lehetőséget.
 
    ![Kapcsolódjon a megerősített gazdagépen a Azure Portal](./media/join-windows-vm/connect-to-bastion.png)
 
@@ -139,8 +139,8 @@ Ha szükséges, engedélyezze a webböngésző számára az előugró ablak megn
 
 A létrehozott virtuális géppel és az Azure Bastion használatával létrehozott webalapú RDP-kapcsolattal most csatlakoztassa a Windows Server rendszerű virtuális gépet a felügyelt tartományhoz. Ez a folyamat megegyezik egy normál helyszíni Active Directory tartományi szolgáltatások tartományhoz csatlakozó számítógéppel.
 
-1. Ha a **Kiszolgálókezelő** alapértelmezés szerint nem nyílik meg, amikor bejelentkezik a virtuális gépre, válassza a **Start** menüt, majd a **Kiszolgálókezelő**elemet.
-1. A **Kiszolgálókezelő** ablak bal oldali paneljén válassza a **helyi kiszolgáló**lehetőséget. A jobb oldali ablaktábla **Tulajdonságok** területén válassza a **munkacsoport**lehetőséget.
+1. Ha a **Kiszolgálókezelő** alapértelmezés szerint nem nyílik meg, amikor bejelentkezik a virtuális gépre, válassza a **Start** menüt, majd a **Kiszolgálókezelő** elemet.
+1. A **Kiszolgálókezelő** ablak bal oldali paneljén válassza a **helyi kiszolgáló** lehetőséget. A jobb oldali ablaktábla **Tulajdonságok** területén válassza a **munkacsoport** lehetőséget.
 
     ![Nyissa meg a Kiszolgálókezelő eszközt a virtuális gépen, és szerkessze a munkacsoport tulajdonságot](./media/join-windows-vm/server-manager.png)
 
@@ -178,7 +178,7 @@ A létrehozott virtuális géppel és az Azure Bastion használatával létrehoz
 
 A Windows Server rendszerű virtuális gép újraindítása után a felügyelt tartományban alkalmazott házirendeket a rendszer leküldi a virtuális gépre. Most már bejelentkezhet a Windows Server rendszerű virtuális gépre is a megfelelő tartományi hitelesítő adatok használatával.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A következő oktatóanyagban ezt a Windows Server-alapú virtuális gépet használja a felügyelt tartomány felügyeletét lehetővé teszi a felügyeleti eszközök telepítéséhez. Ha nem szeretné folytatni az oktatóanyag-sorozatot, tekintse át a következő karbantartási lépéseket a [virtuális gép törléséhez](#delete-the-vm). Ellenkező esetben [folytassa a következő oktatóanyaggal](#next-steps).
 
@@ -194,7 +194,7 @@ Ha nem használja ezt a Windows Server-alapú virtuális gépet, törölje a vir
 
 1. A bal oldali menüben válassza az **erőforráscsoportok** lehetőséget.
 1. Válassza ki az erőforráscsoportot, például *myResourceGroup*.
-1. Válassza ki a virtuális gépet, például *myVM*, majd válassza a **Törlés**lehetőséget. Válassza az **Igen** lehetőséget az erőforrás törlésének megerősítéséhez. A virtuális gép törlése néhány percet vesz igénybe.
+1. Válassza ki a virtuális gépet, például *myVM*, majd válassza a **Törlés** lehetőséget. Válassza az **Igen** lehetőséget az erőforrás törlésének megerősítéséhez. A virtuális gép törlése néhány percet vesz igénybe.
 1. A virtuális gép törlésekor válassza ki az operációsrendszer-lemezt, a hálózati adaptert és minden más erőforrást a *myVM-* előtaggal, és törölje azokat.
 
 ## <a name="troubleshoot-domain-join-issues"></a>A tartományhoz való csatlakozással kapcsolatos problémák elhárítása
@@ -246,5 +246,5 @@ A felügyelt tartomány felügyeletéhez konfigurálja a felügyeleti virtuális
 [vnet-peering]: ../virtual-network/virtual-network-peering-overview.md
 [password-sync]: ./tutorial-create-instance.md
 [add-computer]: /powershell/module/microsoft.powershell.management/add-computer
-[azure-bastion]: ../bastion/bastion-create-host-portal.md
+[azure-bastion]: ../bastion/tutorial-create-host-portal.md
 [set-azvmaddomainextension]: /powershell/module/az.compute/set-azvmaddomainextension

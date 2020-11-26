@@ -16,12 +16,12 @@ ms.date: 11/05/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eccc0e71c73fb8bd2a5a50ebd0dda048d34dbea0
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 032b1ca945cf729f8a6682cf71d26a716b1e8863
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94488400"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172347"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Az Azure AD Connect előfeltételei
 Ez a cikk a Azure Active Directory (Azure AD) csatlakozási előfeltételeit és hardverkövetelmények leírását ismerteti.
@@ -43,7 +43,7 @@ A Azure AD Connect telepítése előtt néhány dolog szükséges.
 ### <a name="on-premises-active-directory"></a>Helyszíni Active Directory
 * A Active Directory séma verziószámának és az erdő működési szintjének Windows Server 2003 vagy újabb verziójúnak kell lennie. A tartományvezérlők bármilyen verziót futtathatnak, amíg a séma verziója és az erdő szintű követelmények teljesülnek.
 * Ha azt tervezi, hogy a szolgáltatás *jelszava visszaírási* használja, a tartományvezérlőknek Windows Server 2012 vagy újabb rendszerre kell esniük.
-* Az Azure AD által használt tartományvezérlőnek írhatónak kell lennie. Írásvédett tartományvezérlő használata *nem támogatott* , és a Azure ad Connect nem hajtja végre az írási átirányítást.
+* Az Azure AD által használt tartományvezérlőnek írhatónak kell lennie. Írásvédett tartományvezérlő használata *nem támogatott*, és a Azure ad Connect nem hajtja végre az írási átirányítást.
 * A helyszíni erdők vagy tartományok használata "pontozott" (a név tartalmazza a "." pontot) A NetBIOS-nevek *nem támogatottak*.
 * Javasoljuk, hogy [engedélyezze a Active Directory Lomtárát](how-to-connect-sync-recycle-bin.md).
 
@@ -52,7 +52,7 @@ A Azure Active Directory Connect aláírt PowerShell-parancsfájlokat futtat a t
 
 A telepítés során a javasolt végrehajtási szabályzat a "RemoteSigned".
 
-A PowerShell végrehajtási házirendjének beállításával kapcsolatos további információkért lásd: [Set-ExecutionPolicy](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7).
+A PowerShell végrehajtási házirendjének beállításával kapcsolatos további információkért lásd: [Set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7).
 
 
 ### <a name="azure-ad-connect-server"></a>Azure AD Connect kiszolgáló
@@ -82,7 +82,7 @@ Javasoljuk, hogy a biztonsági támadási felületet az IT-környezet ezen kriti
 - Hozzon létre egy [dedikált fiókot az összes, emelt szintű hozzáféréssel rendelkező személy számára](/windows-server/identity/securing-privileged-access/securing-privileged-access). A rendszergazdáknak nem szabad megkeresni a webet, ellenőrizniük az e-mailjeit, és a magas jogosultsági szintű fiókokkal a napi hatékonyságnövelő feladatokat kell megadniuk.
 - Kövesse az emelt [szintű hozzáférés biztonságossá tétele](/windows-server/identity/securing-privileged-access/securing-privileged-access)című témakör útmutatását. 
 - Az NTLM-hitelesítés használatának megtagadása a AADConnect-kiszolgálóval. A következőképpen teheti meg ezt: [az NTLM korlátozása a AADConnect-kiszolgálón és az](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-outgoing-ntlm-traffic-to-remote-servers) [NTLM korlátozása egy tartományon](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-ntlm-authentication-in-this-domain)
-- Győződjön meg arról, hogy minden gépnek egyedi helyi rendszergazdai jelszava van. További információ: [helyi rendszergazda jelszavas megoldás (kör)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) az egyes munkaállomásokon egyedi véletlenszerű jelszavakat konfigurálhat, és a kiszolgálókat ACL-védelemmel ellátott Active Directory tárolhatja. Csak a jogosult jogosult felhasználók olvashatják el vagy kérhetik a helyi rendszergazdai fiók jelszavának visszaállítását. A munkaállomásokon és kiszolgálókon a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=46899#:~:text=The%20%22Local%20Administrator%20Password%20Solution,it%20or%20request%20its%20reset.)kérheti le a kört. További útmutatást a környezet és az emelt szintű hozzáférési munkaállomások (mancsok) üzemeltetéséhez az [üzemeltetési szabványokban találhat a tiszta forrás elve alapján](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle). 
+- Győződjön meg arról, hogy minden gépnek egyedi helyi rendszergazdai jelszava van. További információ: [helyi rendszergazda jelszavas megoldás (kör)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) az egyes munkaállomásokon egyedi véletlenszerű jelszavakat konfigurálhat, és a kiszolgálókat ACL-védelemmel ellátott Active Directory tárolhatja. Csak a jogosult jogosult felhasználók olvashatják el vagy kérhetik a helyi rendszergazdai fiók jelszavának visszaállítását. A munkaállomásokon és kiszolgálókon a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=46899)kérheti le a kört. További útmutatást a környezet és az emelt szintű hozzáférési munkaállomások (mancsok) üzemeltetéséhez az [üzemeltetési szabványokban találhat a tiszta forrás elve alapján](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle). 
 - Dedikált emelt [szintű hozzáférésű munkaállomások](/windows-server/identity/securing-privileged-access/privileged-access-workstations) implementálása minden munkatárs számára, a szervezet információs rendszereihez emelt szintű hozzáféréssel. 
 - A Active Directory-környezet támadási felületének csökkentése érdekében kövesse ezeket a [további irányelveket](/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface) .
 
@@ -229,5 +229,5 @@ AD FS-vagy webalkalmazás-proxykiszolgálót futtató számítógépekre vonatko
 * Memória: 2 GB vagy magasabb
 * Azure-beli virtuális gép: a2 vagy újabb konfiguráció
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3bf65fd2cc6feb338c1cd7d0742fb3d2a4289eff
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: c695a08e25512720c542c2a94048c5390b452591
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287172"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170998"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>ISV-partnerek Azure Active Directory B2C
 
@@ -37,6 +37,7 @@ Az ISV-partneri hálózat kibővíti a megoldási képességeiket a zökkenőmen
 | ![Képernyőkép egy Jumio-emblémáról.](./media/partner-gallery/jumio-logo.png) | A [Jumio](./partner-jumio.md) egy azonosító-ellenőrzési szolgáltatás, amely lehetővé teszi a valós idejű automatizált azonosítók ellenőrzését, így biztosítva az ügyféladatok védelmét. |
 | ![Képernyőkép egy LexisNexis-emblémáról.](./media/partner-gallery/lexisnexis-logo.png) | A [LexisNexis](./partner-lexisnexis.md) egy profilkészítési és identitás-ellenőrzési szolgáltató, amely ellenőrzi a felhasználó azonosítását, és átfogó kockázatértékelést biztosít a felhasználó eszköze alapján. |
 | ![Képernyőfelvétel az N8 Identity logóról.](./media/partner-gallery/n8identity-logo.png) | A [N8 Identity](./partner-n8identity.md) egy szolgáltatás-felügyeleti platform, amely megoldást nyújt a Microsoft Azureon futó ügyfelek fiókjainak áttelepítésére és az ügyfél-szolgáltatási kérelmekre (CSR) irányuló felügyeletre. |
+| ![A Nevis emblémájának képernyőképe.](./media/partner-gallery/nevis-logo.png) | A [Nevis](./partner-nevis.md) Mobile-First, teljes körűen márkás végfelhasználói élményt nyújt a Nevis-hozzáférési alkalmazással, amely erős ügyfél-hitelesítést biztosít, és megfelel a Payment Services direktíva 2 (PSD2) tranzakciós követelményeinek. |
 | ![Képernyőkép egy Onfido-emblémáról.](./media/partner-gallery/onfido-logo.png) | A [Onfido](./partner-onfido.md) egy dokumentum-azonosító és egy arc biometria-ellenőrzési megoldás, amely lehetővé teszi a vállalatok számára, hogy valós időben tudják kielégíteni *az ügyfél* és az identitás követelményeit.  |
 | ![Képernyőkép egy Saviynt-emblémáról.](./media/partner-gallery/saviynt-logo.png) | A [Saviynt](./partner-saviynt.md) Felhőbeli natív platform intelligens elemzési funkciókat használ, és lehetővé teszi az alkalmazások integrálását az informatikai modernizáció egyszerűsítése és a jobb biztonság, irányítás és megfelelőség elősegítése érdekében. Az üzleti modernizáció megváltoztatja a vállalatoknak a hozzáférési kérelmek felülvizsgálati módszereit, a hozzáférési felülvizsgálatokat, a jelentés-elemzéseket és a minősítési kampányok egyszerűsítését.  |
 | ![Képernyőfelvétel a rétegek emblémáról.](./media/partner-gallery/strata-logo.png) | A [rétegek](./partner-strata.md) védelmet biztosítanak a helyszíni alkalmazások számára a konzisztens hozzáférési szabályzatok betartatásával, a szinkronizálási identitások megőrzésével, valamint a Azure ad B2C által biztosított, a szabványokon alapuló hitelesítésre és hozzáférés-vezérlésre való áttérés egyszerűvé tétele érdekében. |

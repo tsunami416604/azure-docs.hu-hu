@@ -16,12 +16,12 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a0765f5279eb41324691c431c5973bb55a8b52d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74bc659c11c4f43ab3cf85cdc53f704cd07a1cde
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89662487"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172367"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect Sync: címtárszolgáltatás-bővítmények
 A (z) Azure Active Directory (Azure AD) sémájának kiterjesztése a helyi Active Directory saját attribútumaival is elvégezhető. Ez a funkció lehetővé teszi LOB-alkalmazások készítését olyan attribútumok fogyasztásával, amelyeket továbbra is a helyszínen kezelhet. Ezek az attribútumok a [bővítményeken](/graph/extensibility-overview
@@ -60,7 +60,7 @@ Azure AD Connect telepítésekor az alkalmazás regisztrálva lesz, ahol ezek az
 
 Győződjön meg róla, hogy az **összes alkalmazás** lehetőséget választotta az alkalmazás megtekintéséhez.
 
-Az attribútumok előtaggal vannak ellátva ** \_ {ApplicationId} \_ bővítménnyel**. A ApplicationId ugyanazt az értéket adja meg az Azure AD-bérlő összes attribútuma számára. Erre az értékre szüksége lesz az ebben a témakörben található összes többi forgatókönyv esetében.
+Az attribútumok előtaggal vannak ellátva **\_ {ApplicationId} \_ bővítménnyel**. A ApplicationId ugyanazt az értéket adja meg az Azure AD-bérlő összes attribútuma számára. Erre az értékre szüksége lesz az ebben a témakörben található összes többi forgatókönyv esetében.
 
 ## <a name="viewing-attributes-using-the-microsoft-graph-api"></a>Attribútumok megtekintése a Microsoft Graph API használatával
 
@@ -71,6 +71,9 @@ Ezek az attribútumok mostantól a Microsoft Graph API-n keresztül érhetők el
 >
 > További információ [: Microsoft Graph: lekérdezési paraméterek használata](/graph/query-parameters#select-parameter).
 
+>[!NOTE]
+> Nem támogatott a AADConnect által nem létrehozott AADConnect származó attribútumok szinkronizálása. Így teljesítménnyel kapcsolatos problémákat és nem várt eredményeket eredményezhet. A szinkronizáláshoz csak a fenti ábrán látható kiterjesztési attribútumok támogatottak.
+
 ## <a name="use-the-attributes-in-dynamic-groups"></a>A dinamikus csoportok attribútumainak használata
 
 A hasznos forgatókönyvek egyike az, hogy ezeket az attribútumokat a dinamikus biztonsági vagy Microsoft 365 csoportokban használják.
@@ -79,7 +82,7 @@ A hasznos forgatókönyvek egyike az, hogy ezeket az attribútumokat a dinamikus
 
    ![Képernyőfelvétel új csoporttal](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup1.png)
 
-2. **Dinamikus lekérdezés hozzáadásához**válassza a lehetőséget. Ha megtekinti a tulajdonságokat, akkor ezek a kiterjesztett attribútumok nem jelennek meg. Először hozzá kell adnia őket. Kattintson az **Egyéni bővítmény tulajdonságainak beolvasása**elemre, adja meg az alkalmazás azonosítóját, és kattintson a **Tulajdonságok frissítése**elemre.
+2. **Dinamikus lekérdezés hozzáadásához** válassza a lehetőséget. Ha megtekinti a tulajdonságokat, akkor ezek a kiterjesztett attribútumok nem jelennek meg. Először hozzá kell adnia őket. Kattintson az **Egyéni bővítmény tulajdonságainak beolvasása** elemre, adja meg az alkalmazás azonosítóját, és kattintson a **Tulajdonságok frissítése** elemre.
 
    ![Képernyőfelvétel a címtár-bővítmények hozzáadásáról](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup2.png) 
 

@@ -40,6 +40,10 @@
       href: threat-intelligence-settings.md
     - name: FQDN a hálózatszabályokban
       href: fqdn-filtering-network-rules.md
+    - name: Biztonság
+      items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
 - name: Útmutatók
   items:
     - name: Biztonságipartner-szolgáltatók üzembe helyezése

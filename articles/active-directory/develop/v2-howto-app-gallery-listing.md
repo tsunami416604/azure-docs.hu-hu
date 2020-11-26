@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 3b9f744e414e83c103f6b9249a0ccf5020588463
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 6374164bb5049742d63a669b4c1e552c93967977
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356348"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173379"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Az alkalmazás közzététele az Azure AD App Galleryben
 
@@ -36,7 +36,7 @@ Emellett számos előnnyel jár, ha az ügyfelek az Azure AD-t használják iden
 - Egyszeri bejelentkezés biztosítása a felhasználók számára. Az egyszeri bejelentkezéssel csökkentheti a támogatási költségeket azáltal, hogy megkönnyíti az ügyfelek számára az egyszeri bejelentkezést. Ha az egyszeri bejelentkezés engedélyezve van, az ügyfelek informatikai rendszergazdái nem kell megismerniük, hogyan kell konfigurálni az alkalmazást a szervezetében való használatra. További információ az egyszeri bejelentkezésről: [Mi az egyszeri bejelentkezés?](../manage-apps/what-is-single-sign-on.md).
 - Az alkalmazás a Microsoft 365 alkalmazás-katalógusban, a Microsoft 365 app Launcherben és a Microsoft Search on Office.com található. 
 - Integrált alkalmazások kezelése. Ha többet szeretne megtudni az alkalmazások kezeléséről az Azure AD-ben, olvassa el a [Mi az az Application Management?](../manage-apps/what-is-application-management.md)című témakört.
-- Az alkalmazás az [Graph API](https://docs.microsoft.com/graph/) használatával férhet hozzá a felhasználók termelékenységét a Microsoft-ökoszisztémában használó adataihoz.
+- Az alkalmazás az [Graph API](/graph/) használatával férhet hozzá a felhasználók termelékenységét a Microsoft-ökoszisztémában használó adataihoz.
 - A kölcsönös ügyfeleink számára az Azure AD-csapattal együtt létrehozott, alkalmazásspecifikus dokumentáció megkönnyíti a bevezetést.
 - Lehetővé teszi ügyfelei számára, hogy teljes körűen kezeljék az alkalmazottak és a vendég identitások hitelesítését és engedélyezését.
 - Az összes Fiókkezelés és megfelelőségi feladat elhelyezése az ügyfelek tulajdonosával.
@@ -47,7 +47,7 @@ Emellett számos előnnyel jár, ha az ügyfelek az Azure AD-t használják iden
 - Biztonság és kényelem hozzáadása, ha a felhasználók az Azure AD SSO használatával jelentkeznek be az alkalmazásokba, és nem kell külön hitelesítő adatokat kiválasztaniuk.
 
 > [!TIP]
-> Ha a vásárlás vagy előfizetés keretében más vállalatok is használhatják az alkalmazást, az alkalmazás elérhetővé válik az ügyfelek számára a saját Azure-bérlőn belül. Ezt nevezzük több-bérlős alkalmazás létrehozásakor. A koncepció áttekintését lásd: több [-bérlős alkalmazások az Azure-ban](https://docs.microsoft.com/azure/dotnet-develop-multitenant-applications) és [Az Azure Active Directory-ban való bérlet](single-and-multi-tenant-apps.md).
+> Ha a vásárlás vagy előfizetés keretében más vállalatok is használhatják az alkalmazást, az alkalmazás elérhetővé válik az ügyfelek számára a saját Azure-bérlőn belül. Ezt nevezzük több-bérlős alkalmazás létrehozásakor. A koncepció áttekintését lásd: több [-bérlős alkalmazások az Azure-ban](../../dotnet-develop-multitenant-applications.md) és [Az Azure Active Directory-ban való bérlet](single-and-multi-tenant-apps.md).
 
 > [!IMPORTANT]
 > Az alkalmazás Azure AD-katalógusban való közzétételéhez meg kell egyeznie bizonyos feltételekkel és kikötésekkel. Mielőtt elkezdené, olvassa el és fogadja el a [feltételeket és a kikötéseket](https://azure.microsoft.com/support/legal/active-directory-app-gallery-terms/).
@@ -162,7 +162,7 @@ Ha az alkalmazás támogatja az SAML 2,0-et, akkor közvetlenül integrálható 
 A Microsoft nem biztosít vagy ajánlja az SAML-implementációk függvénytárait. Számos nyílt forráskódú függvénytár érhető el.
 
 ### <a name="implement-ws-fed"></a>WS-Fed implementálása
-Ha többet szeretne megtudni a ASP.NET Core WS-Fedről, tekintse meg a [felhasználók hitelesítése a WS-Federation használatával ASP.net Core](https://docs.microsoft.com/aspnet/core/security/authentication/ws-federation).
+Ha többet szeretne megtudni a ASP.NET Core WS-Fedről, tekintse meg a [felhasználók hitelesítése a WS-Federation használatával ASP.net Core](/aspnet/core/security/authentication/ws-federation).
 
 ### <a name="implement-password-vaulting"></a>A jelszó-tároló implementálása
 
@@ -173,7 +173,7 @@ Hozzon létre egy webalkalmazást, amely tartalmaz egy HTML-bejelentkezési olda
 
 Az alkalmazás teszteléséhez szüksége lesz egy Azure AD-bérlőre. A fejlesztési környezet beállításához tekintse meg [a rövid útmutató: bérlő beállítása](quickstart-create-new-tenant.md)című témakört.
 
-Alternatív megoldásként az Azure AD-bérlő minden Microsoft 365-előfizetéssel rendelkezik. Az ingyenes Microsoft 365 fejlesztési környezet létrehozásához tekintse meg [a Microsoft 365 fejlesztői program csatlakoztatása](https://docs.microsoft.com/office/developer-program/microsoft-365-developer-program)című témakört.
+Alternatív megoldásként az Azure AD-bérlő minden Microsoft 365-előfizetéssel rendelkezik. Az ingyenes Microsoft 365 fejlesztési környezet létrehozásához tekintse meg [a Microsoft 365 fejlesztői program csatlakoztatása](/office/developer-program/microsoft-365-developer-program)című témakört.
 
 Ha bérlője van, engedélyeznie kell és tesztelni kell az egyszeri bejelentkezéses hozzáférést. 
 
@@ -209,7 +209,7 @@ Javasoljuk, hogy a webhelyen legalább a következő elemeket tartalmazza a doku
 
 ### <a name="documentation-on-the-microsoft-site"></a>Dokumentáció a Microsoft webhelyén
 
-Ha az alkalmazást az Azure Active Directory alkalmazás-katalógussal sorolja fel, amely az Azure piactéren is közzéteszi az alkalmazást, a Microsoft dokumentációt készít a kölcsönös ügyfeleinknek a lépésenkénti folyamatról. [Itt](https://aka.ms/appstutorial)láthat egy példát. Ezt a dokumentációt a katalógusba való beküldésük alapján hozza létre, és egyszerűen frissítheti, ha az alkalmazást a GitHub-fiók használatával módosítja.
+Ha az alkalmazást az Azure Active Directory alkalmazás-katalógussal sorolja fel, amely az Azure piactéren is közzéteszi az alkalmazást, a Microsoft dokumentációt készít a kölcsönös ügyfeleinknek a lépésenkénti folyamatról. [Itt](../saas-apps/tutorial-list.md)láthat egy példát. Ezt a dokumentációt a katalógusba való beküldésük alapján hozza létre, és egyszerűen frissítheti, ha az alkalmazást a GitHub-fiók használatával módosítja.
 
 
 ## <a name="step-5---submit-your-app"></a>5. lépés – az alkalmazás elküldése
@@ -262,7 +262,7 @@ Ha hozzá szeretné adni az alkalmazást a katalógusban a jelszó SSO használa
 
 ![Jelszó-SSO-alkalmazás listázása a katalógusban](./media/howto-app-gallery-listing/passwordsso.png)
 
-Ha [SCIM](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) 2,0-végpontot hoz létre a felhasználók üzembe helyezéséhez, válassza a látható lehetőséget. 
+Ha [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2,0-végpontot hoz létre a felhasználók üzembe helyezéséhez, válassza a látható lehetőséget. 
 
    ![A felhasználó kiépítési kérelme](./media/howto-app-gallery-listing/user-provisioning.png)
 

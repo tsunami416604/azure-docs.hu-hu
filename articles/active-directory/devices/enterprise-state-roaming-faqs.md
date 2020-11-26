@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9510bd564ced2f458a9a78ff23200bb32358c3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb889298a09c30a629c69442ebf31bc735af31d1
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268536"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173124"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Beállítások és adatroaming GYIK
 
@@ -77,15 +77,15 @@ A Windows 10 november 2015-es vagy újabb kiadásaiban Enterprise State Roaming 
 Ha a különböző Azure AD-bérlők több Azure AD-fiókja ugyanazon az eszközön található, frissítenie kell az eszköz beállításjegyzékét az Azure Rights Management szolgáltatással való kommunikációra minden egyes Azure AD-bérlő esetében.  
 
 1. Keresse meg az egyes Azure AD-bérlők GUID azonosítóját. Nyissa meg a Azure Portal, és válasszon ki egy Azure AD-bérlőt. A bérlő GUID-azonosítója a kiválasztott bérlő tulajdonságlapján található (a https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) címkével ellátott **CÍMTÁR-azonosítóval**. 
-2. A GUID azonosító megadása után hozzá kell adnia a **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<tenant ID GUID> **beállításkulcsot.
-   A **bérlői azonosító GUID** kulcsában hozzon létre egy új, **AllowedRMSServerUrls**nevű Multi-String értéket (reg-multi-sz). Az adatmennyiség beállításnál határozza meg az eszköz által használt többi Azure-bérlő licencelési terjesztési pontjának URL-címeit.
+2. A GUID azonosító megadása után hozzá kell adnia a **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<tenant ID GUID>** beállításkulcsot.
+   A **bérlői azonosító GUID** kulcsában hozzon létre egy új, **AllowedRMSServerUrls** nevű Multi-String értéket (reg-multi-sz). Az adatmennyiség beállításnál határozza meg az eszköz által használt többi Azure-bérlő licencelési terjesztési pontjának URL-címeit.
 3. A licencelési terjesztési pontok URL-címei a **Get-AadrmConfiguration** parancsmagnak a AADRM modulból való futtatásával találhatók meg. Ha a **LicensingIntranetDistributionPointUrl** és a **LicensingExtranetDistributionPointUrl** értéke eltérő, akkor mindkét értéket meg kell adni. Ha az értékek megegyeznek, csak egyszer kell megadnia az értéket.
 
 ## <a name="what-are-the-roaming-settings-options-for-existing-windows-desktop-applications"></a>Milyen barangolási beállítások állnak rendelkezésre a meglévő Windows asztali alkalmazásokhoz?
 
 A roaming csak univerzális Windows-alkalmazásokhoz használható. Két lehetőség áll rendelkezésre a barangolás engedélyezésére egy meglévő Windows asztali alkalmazásban:
 
-* Az [asztali híd](https://aka.ms/desktopbridge) segítséget nyújt a meglévő Windows asztali alkalmazások univerzális Windows-platform való bekapcsolásához. Innen az Azure AD-alkalmazások adatroamingjának kihasználásához minimális programkód-módosításra lesz szükség. Az asztali híd alkalmazás-identitással biztosítja az alkalmazásait, ami szükséges ahhoz, hogy az alkalmazások adatbarangolása elérhető legyen a meglévő asztali alkalmazások számára.
+* Az [asztali híd](/windows/msix/desktop/source-code-overview) segítséget nyújt a meglévő Windows asztali alkalmazások univerzális Windows-platform való bekapcsolásához. Innen az Azure AD-alkalmazások adatroamingjának kihasználásához minimális programkód-módosításra lesz szükség. Az asztali híd alkalmazás-identitással biztosítja az alkalmazásait, ami szükséges ahhoz, hogy az alkalmazások adatbarangolása elérhető legyen a meglévő asztali alkalmazások számára.
 * A [felhasználói élmény virtualizálása (UE-V)](/previous-versions//dn458947(v=vs.85)) segítségével egyéni beállítási sablont hozhat létre a meglévő Windows asztali alkalmazásokhoz, és engedélyezheti a roaming használatát a Win32-alkalmazások számára. Ehhez a beállításhoz nincs szükség az alkalmazás fejlesztői számára az alkalmazás kódjának megváltoztatására. Az UE-V a Microsoft asztali optimalizációs csomag megvásárlása esetén a helyszíni Active Directory barangolásra korlátozódik.
 
 A rendszergazdák úgy konfigurálhatják az UE-V-t, hogy a Windows asztali alkalmazáshoz tartozó adatátvitelt a Windows operációs rendszer beállításainak és az univerzális alkalmazásadatok az [UE-v csoportházirendekkel](/microsoft-desktop-optimization-pack/uev-v2/configuring-ue-v-2x-with-group-policy-objects-both-uevv2)való megváltoztatásával, beleértve a következőket:

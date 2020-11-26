@@ -11,12 +11,12 @@ ms.date: 10/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ef6f6068bce7a676e55eca10ae9198b2238a143
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 640367d1b833f61e8a83fe9ce6b14d6d799cf9b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135375"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172452"
 ---
 # <a name="what-is-provisioning"></a>Mi az az üzembe helyezés?
 
@@ -59,7 +59,7 @@ További információ: [Mi az a HR-alapú kiépítés?](what-is-hr-driven-provis
 
 ![alkalmazás kiépítés](media/what-is-provisioning/cloud-3b.png)
 
-Az Azure AD-ben az **[alkalmazás üzembe](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)** helyezésének kifejezése arra utal, hogy a felhasználói identitások példányait automatikusan hozza létre azon alkalmazásokban, amelyekhez a felhasználóknak hozzáférésre van szükségük, az Azure ad-től és a Active Directorytól eltérő alkalmazásokhoz. A felhasználói identitások létrehozása mellett az alkalmazások kiosztása magában foglalja az alkalmazásokból származó felhasználói identitások karbantartását és eltávolítását, mivel a felhasználó állapota vagy szerepkörei változnak. Gyakori forgatókönyvek közé tartozik például az Azure AD-felhasználók üzembe helyezése az olyan alkalmazásokban, mint a [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial), a [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial), a [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial), mivel mindegyik alkalmazás saját felhasználói tárháza különbözik az Azure ad-től.
+Az Azure AD-ben az **[alkalmazás üzembe](../app-provisioning/user-provisioning.md)** helyezésének kifejezése arra utal, hogy a felhasználói identitások példányait automatikusan hozza létre azon alkalmazásokban, amelyekhez a felhasználóknak hozzáférésre van szükségük, az Azure ad-től és a Active Directorytól eltérő alkalmazásokhoz. A felhasználói identitások létrehozása mellett az alkalmazások kiosztása magában foglalja az alkalmazásokból származó felhasználói identitások karbantartását és eltávolítását, mivel a felhasználó állapota vagy szerepkörei változnak. Gyakori forgatókönyvek közé tartozik például az Azure AD-felhasználók üzembe helyezése az olyan alkalmazásokban, mint a [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md), a [Salesforce](../saas-apps/salesforce-provisioning-tutorial.md), a [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md), mivel mindegyik alkalmazás saját felhasználói tárháza különbözik az Azure ad-től.
 
 További információ: [Mi az az App kiépítés?](what-is-app-provisioning.md)
 
@@ -77,7 +77,7 @@ További információ: [Mi az a Inter-Directory kiépítés?](what-is-inter-dire
 
  
 ## <a name="next-steps"></a>Következő lépések 
-- [Mi az Identity Lifecycle Management?](what-is-identity-lifecycle-management.md)
+- [Mi az az identitáséletciklus-felügyelet?](what-is-identity-lifecycle-management.md)
 - [Mi az a HR-alapú kiépítés?](what-is-hr-driven-provisioning.md)
-- [Mi az App kiépítés?](what-is-app-provisioning.md)
-- [Mi az Inter-Directory kiépítés?](what-is-inter-directory-provisioning.md)
+- [Mi az az alkalmazás-üzembehelyezés?](what-is-app-provisioning.md)
+- [Mi az a címtárak közötti üzembe helyezés?](what-is-inter-directory-provisioning.md)

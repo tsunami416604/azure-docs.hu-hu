@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74815976036abafc56f97e622351a1018fe30504
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 5bd6a5c8af117bf6cb39969a5f1b1f17ff08681c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576932"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172822"
 ---
 # <a name="password-based-authentication-with-azure-active-directory"></a>Jelszó-alapú hitelesítés Azure Active Directory
 
@@ -35,20 +35,19 @@ Az előhitelesítéssel kell védelemmel ellátnia az egyszeri bejelentkezést, 
 
 ## <a name="components-of-system"></a>A System összetevői
 
-* **Felhasználó** : a létrehozott alapú alkalmazást a saját alkalmazások közül vagy a webhely közvetlen meglátogatásával érheti el. 
+* **Felhasználó**: a létrehozott alapú alkalmazást a saját alkalmazások közül vagy a webhely közvetlen meglátogatásával érheti el. 
 
-* **Webböngésző** : az alkalmazás külső URL-címének eléréséhez a felhasználó által kommunikáló összetevő. A felhasználó az MyApps-bővítményen keresztül fér hozzá az űrlapalapú alkalmazáshoz. 
+* **Webböngésző**: az alkalmazás külső URL-címének eléréséhez a felhasználó által kommunikáló összetevő. A felhasználó az MyApps-bővítményen keresztül fér hozzá az űrlapalapú alkalmazáshoz. 
 
-* **MyApps-bővítmény** : azonosítja a konfigurált jelszó-alapú SSO-alkalmazást, és a bejelentkezési űrlapon továbbítja a hitelesítő adatokat. A MyApps bővítmény telepítve van a webböngészőben. 
+* **MyApps-bővítmény**: azonosítja a konfigurált jelszó-alapú SSO-alkalmazást, és a bejelentkezési űrlapon továbbítja a hitelesítő adatokat. A MyApps bővítmény telepítve van a webböngészőben. 
 
-* **Azure ad** : hitelesíti a felhasználót.
+* **Azure ad**: hitelesíti a felhasználót.
 
 ## <a name="implement-password-based-sso-with-azure-ad"></a>Jelszó-alapú egyszeri bejelentkezés megvalósítása az Azure AD-vel
 
-* [Mi a jelszó-alapú egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) 
+* [Mi a jelszó-alapú egyszeri bejelentkezés](../manage-apps/what-is-single-sign-on.md) 
 
-* [Jelszó alapú egyszeri bejelentkezés konfigurálása felhőalapú alkalmazásokhoz ](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-password-single-sign-on-non-gallery-applications)
+* [Jelszó alapú egyszeri bejelentkezés konfigurálása felhőalapú alkalmazásokhoz ](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md)
 
-* [Jelszó-alapú SSO konfigurálása helyszíni alkalmazásokhoz alkalmazásproxy segítségével](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-password-vaulting)
+* [Jelszó-alapú SSO konfigurálása helyszíni alkalmazásokhoz alkalmazásproxy segítségével](../manage-apps/application-proxy-configure-single-sign-on-password-vaulting.md)
 
- 

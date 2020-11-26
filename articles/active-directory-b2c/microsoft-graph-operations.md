@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9db46d13c9a798204958a7c295df9cca169fc08f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: cd4c70354920655507f987f43a542e4b474803e1
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94954035"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170939"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>A Azure AD B2C számára elérhető Microsoft Graph műveletek
 
@@ -36,12 +36,12 @@ Azure AD B2C felhasználói fiókok Microsoft Graph API-val való kezelésével 
 
 ## <a name="user-phone-number-management"></a>Felhasználói telefonszámok kezelése
 
-- [Hozzáadás](https://docs.microsoft.com/graph/api/authentication-post-phonemethods)
-- [Get](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-get)
-- [Frissítés](https://docs.microsoft.com/graph/api/b2cauthenticationmethodspolicy-update)
-- [Törlés](https://docs.microsoft.com/graph/api/phoneauthenticationmethod-delete)
+- [Hozzáadás](/graph/api/authentication-post-phonemethods)
+- [Get](/graph/api/b2cauthenticationmethodspolicy-get)
+- [Frissítés](/graph/api/b2cauthenticationmethodspolicy-update)
+- [Törlés](/graph/api/phoneauthenticationmethod-delete)
 
-A felhasználó bejelentkezési telefonszámának Microsoft Graph API-val való kezelésével kapcsolatos további információkért lásd a [B2C hitelesítési módszereit](https://docs.microsoft.com/graph/api/resources/b2cauthenticationmethodspolicy)ismertető témakört.
+A felhasználó bejelentkezési telefonszámának Microsoft Graph API-val való kezelésével kapcsolatos további információkért lásd a [B2C hitelesítési módszereit](/graph/api/resources/b2cauthenticationmethodspolicy)ismertető témakört.
 
 ## <a name="identity-providers-user-flow"></a>Identitás-szolgáltatók (felhasználói folyamat)
 

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: 8f184de8953e8e8bfe982d2502ca476fb54a66c9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7fd9e504448d55b4a2ef8c10b4ba1176cb2e3402
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95903712"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172635"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>Öt lépés az összes alkalmazás integrálásához az Azure AD-vel
 
@@ -38,7 +38,7 @@ Azure Active Directory (Azure AD) gyűjteménye több ezer előre integrált alk
 - [AWS](../saas-apps/amazon-web-service-tutorial.md)
 - [Slack](../saas-apps/slack-tutorial.md)
 
-Emellett a katalógusban [nem szereplő alkalmazásokat is integrálhat](../manage-apps/view-applications-portal.md), beleértve a szervezetében már létező alkalmazásait, vagy bármely olyan gyártótól származó alkalmazást, amely még nem része az Azure ad-katalógusnak. Azt is megteheti, [hogy hozzáadta az alkalmazást a](../azuread-dev/howto-app-gallery-listing.md) katalógushoz, ha az nem létezik.
+Emellett a katalógusban [nem szereplő alkalmazásokat is integrálhat](../manage-apps/view-applications-portal.md), beleértve a szervezetében már létező alkalmazásait, vagy bármely olyan gyártótól származó alkalmazást, amely még nem része az Azure ad-katalógusnak. Azt is megteheti, [hogy hozzáadta az alkalmazást a](../develop/v2-howto-app-gallery-listing.md) katalógushoz, ha az nem létezik.
 
 Végül integrálhatja a házon belül fejlesztett alkalmazásokat is. Ez a jelen útmutató ötödik lépésében szerepel.
 
@@ -107,6 +107,6 @@ A fejlesztők a platformot használhatják a belső használatra szánt alkalmaz
 
 Egy videó- [sorozatot](https://www.youtube.com/watch?v=zjezqZPPOfc&amp;list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX) biztosítunk, amely átfogó bevezetést nyújt a platformhoz, valamint számos, a támogatott nyelveken és platformokon elérhető [kódrészletet](../develop/sample-v2-code.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Forrásanyagok az alkalmazások Azure Active Directoryba való migrálásához](../manage-apps/migration-resources.md)

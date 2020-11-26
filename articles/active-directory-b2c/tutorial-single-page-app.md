@@ -11,18 +11,18 @@ ms.custom: mvc, seo-javascript-september2019, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 705df6ddc6b665ac3d0d62ec3dad93e38f5e513e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 6a9f3b864bd8aba2140c7d32d4b5474ff7b95f88
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953100"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171228"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>Oktatóanyag: hitelesítés engedélyezése egyoldalas alkalmazásban Azure AD B2C
 
 Ez az oktatóanyag bemutatja, hogyan használható a Azure Active Directory B2C (Azure AD B2C) egy egyoldalas alkalmazásban (SPA) lévő felhasználók regisztrálására és bejelentkezésére a következők bármelyikével:
-* [OAuth 2,0 engedélyezési kód folyamatábrája](https://docs.microsoft.com/azure/active-directory-b2c/authorization-code-flow) ( [MSAL.js 2. x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)használatával)
-* [OAuth 2,0 implicit engedélyezési folyamat](https://docs.microsoft.com/azure/active-directory-b2c/implicit-flow-single-page-application) ( [MSAL.js 1. x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core)használatával)
+* [OAuth 2,0 engedélyezési kód folyamatábrája](./authorization-code-flow.md) ( [MSAL.js 2. x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)használatával)
+* [OAuth 2,0 implicit engedélyezési folyamat](./implicit-flow-single-page-application.md) ( [MSAL.js 1. x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core)használatával)
 
 Ebben az oktatóanyagban az első egy kétrészes sorozatban:
 
@@ -51,7 +51,7 @@ Emellett a helyi fejlesztési környezetben a következőkre lesz szüksége:
 
 ## <a name="update-the-application"></a>Az alkalmazás frissítése
 
-Az előfeltételek részeként elvégzett [második oktatóanyagban](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-spa) egy egyoldalas alkalmazást regisztrált Azure ad B2Cban. Ebben az oktatóanyagban a kód mintával való kommunikáció engedélyezéséhez adjon hozzá egy válasz URL-címet (más néven átirányítási URI-t) az alkalmazás regisztrálásához.
+Az előfeltételek részeként elvégzett [második oktatóanyagban](./tutorial-register-spa.md) egy egyoldalas alkalmazást regisztrált Azure ad B2Cban. Ebben az oktatóanyagban a kód mintával való kommunikáció engedélyezéséhez adjon hozzá egy válasz URL-címet (más néven átirányítási URI-t) az alkalmazás regisztrálásához.
 
 Ha frissíteni szeretne egy alkalmazást a Azure AD B2C-bérlőben, használhatja az új egyesített **Alkalmazásregisztrációk** -élményt vagy az örökölt  **alkalmazások (örökölt)** felületét. [További információ az új felületről](./app-registrations-training-guide.md).
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 11/12/2020
-ms.openlocfilehash: b41f5e9a3bd4d3cbe52cf2e1c567d24de8a661f4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6d40eab12c9726459543d0b69e27b73178eba99f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95992840"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170616"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure AD B2C figyelése Azure Monitor
 
@@ -140,9 +140,9 @@ Miután telepítette a sablont, és néhány percet várt az erőforrás-kivetí
 
 A diagnosztikai beállítások határozzák meg, hogy az erőforráshoz tartozó naplókat és mérőszámokat kell-e elküldeni. A lehetséges célpontok:
 
-- [Azure Storage-fiók](../azure-monitor/platform/resource-logs-collect-storage.md)
-- [Event hub](../azure-monitor/platform/resource-logs-stream-event-hubs.md) -megoldások
-- [Log Analytics munkaterület](../azure-monitor/platform/resource-logs-collect-workspace.md)
+- [Azure Storage-fiók](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [Event hub](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs) -megoldások
+- [Log Analytics munkaterület](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)
 
 Ebben a példában a Log Analytics munkaterületet használjuk egy irányítópult létrehozásához.
 
@@ -180,7 +180,7 @@ Most beállíthatja a Log Analytics munkaterületet az adatai megjelenítéséhe
 A naplók lekérdezései segítségével teljes mértékben kihasználhatja Azure Monitor naplókban összegyűjtött adatok értékét. Egy hatékony lekérdezési nyelv lehetővé teszi több táblázatból származó adatok összekapcsolását, nagy mennyiségű adat összesítését, valamint a minimális kóddal rendelkező összetett műveletek végrehajtását. Gyakorlatilag bármilyen kérdés megválaszolható és elemezhető mindaddig, amíg a támogatási adatok gyűjtése megtörtént, és tisztában van a megfelelő lekérdezés létrehozásával is. További információ: Ismerkedés [a Azure monitor-naplózási lekérdezésekkel](../azure-monitor/log-query/get-started-queries.md).
 
 1. **Log Analytics munkaterületen** válassza a **naplók** lehetőséget.
-1. Illessze be a következő Kusto lekérdezési [nyelvi](https://docs.microsoft.com/azure/data-explorer/kusto/query/) lekérdezést a lekérdezéstervező szerkesztőjébe. Ez a lekérdezés a házirend-használatot mutatja az elmúlt x napban. Az alapértelmezett időtartam 90 nap (90d). Figyelje meg, hogy a lekérdezés csak arra a műveletre összpontosít, ahol a jogkivonat/kód kiállítja a szabályzatot.
+1. Illessze be a következő Kusto lekérdezési [nyelvi](/azure/data-explorer/kusto/query/) lekérdezést a lekérdezéstervező szerkesztőjébe. Ez a lekérdezés a házirend-használatot mutatja az elmúlt x napban. Az alapértelmezett időtartam 90 nap (90d). Figyelje meg, hogy a lekérdezés csak arra a műveletre összpontosít, ahol a jogkivonat/kód kiállítja a szabályzatot.
 
     ```kusto
     AuditLogs
@@ -205,7 +205,7 @@ A naplók lekérdezései segítségével teljes mértékben kihasználhatja Azur
 
 1. Kattintson a **Mentés** gombra.
 
-A lekérdezést úgy is módosíthatja, hogy megjelenítse az adatait a [Render](https://docs.microsoft.com/azure/data-explorer/kusto/query/renderoperator?pivots=azuremonitor) operátor használatával.
+A lekérdezést úgy is módosíthatja, hogy megjelenítse az adatait a [Render](/azure/data-explorer/kusto/query/renderoperator?pivots=azuremonitor) operátor használatával.
 
 ```kusto
 AuditLogs
@@ -314,7 +314,7 @@ workspace("AD-B2C-TENANT1").AuditLogs
 
 Azure Monitor naplókat úgy tervezték, hogy a vállalati vagy az Azure-ban üzembe helyezett bármely forrásból származó nagy mennyiségű adat gyűjtését, indexelését és tárolását naponta kialakítsa és támogassa. Alapértelmezés szerint a rendszer 30 napig őrzi meg a naplókat, a megőrzési időtartam azonban akár két évre is növelhető. Megtudhatja, hogyan [kezelheti a használatot és a költségeket Azure monitor naplók használatával](../azure-monitor/platform/manage-cost-storage.md). Az árképzési csomag kiválasztása után [megváltoztathatja az adatmegőrzési időszakot](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További mintákat a Azure AD B2C [Siem galériában](https://aka.ms/b2csiem)talál. 
 

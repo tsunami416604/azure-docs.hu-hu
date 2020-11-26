@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 08c1b415ac075429a9bc89098233fffb8c25b710
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 69a0272061d8518119114e8fe7b023c889639844
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369256"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171559"
 ---
 # <a name="managed-hsm-disaster-recovery"></a>Felügyelt HSM vész-helyreállítás
 
@@ -35,7 +35,7 @@ A vész-helyreállítási eljárás lépései a következők:
 1. Készítsen biztonsági másolatot az új HSM-ről. A visszaállítás előtt biztonsági másolatra van szükség, még akkor is, ha a HSM üres. A biztonsági mentések lehetővé teszik az egyszerű visszaállítást.
 1. A legújabb HSM biztonsági mentés visszaállítása a forrás HSM-ből
 
-A Key Vault tartalmát a régión belül, a másodlagos régióba legalább 150 mérfölddel arrébb, de ugyanazon a földrajzon belül replikálja a rendszer. Ez a funkció a kulcsok és a titkos kódok magas tartósságát biztosítja. Az egyes régiókkal kapcsolatos részletekért tekintse meg az [Azure párosított régiókról](../../best-practices-availability-paired-regions.md) szóló dokumentumot.
+Ezek a lépések lehetővé teszik a HSM tartalmának manuális replikálását egy másik régióba. A HSM neve (és a szolgáltatási végpont URI-ja) eltérő lesz, ezért előfordulhat, hogy módosítania kell az alkalmazás konfigurációját, hogy más helyről is használhassa ezeket a kulcsokat.
 
 ## <a name="create-a-new-managed-hsm"></a>Új felügyelt HSM létrehozása
 
@@ -48,7 +48,7 @@ Felügyelt HSM-erőforrás létrehozásához a következő bemeneteket kell mega
 - Az Azure-beli hely.
 - A kezdeti rendszergazdák listája.
 
-Az alábbi példa egy **ContosoMHSM** nevű HSM-et hoz létre az **USA 2. keleti** régiójában található erőforráscsoport- **ContosoResourceGroup** , amely az **aktuálisan bejelentkezett felhasználó** , mint az egyetlen rendszergazda.
+Az alábbi példa egy **ContosoMHSM** nevű HSM-et hoz létre az **USA 2. keleti** régiójában található erőforráscsoport- **ContosoResourceGroup**, amely az **aktuálisan bejelentkezett felhasználó** , mint az egyetlen rendszergazda.
 
 ```azurecli-interactive
 oid=$(az ad signed-in-user show --query objectId -o tsv)
@@ -60,8 +60,8 @@ az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGro
 
 A parancs kimenete a létrehozott felügyelt HSM tulajdonságait jeleníti meg. A két legfontosabb tulajdonság:
 
-* **név** : a példában a név ContosoMHSM. Ezt a nevet fogja használni a többi Key Vault parancshoz.
-* **hsmUri** : a PÉLDÁBAN az URI a következő: " https://contosohsm.managedhsm.azure.net ." A HSM-et a REST API használó alkalmazásoknak ezt az URI-t kell használniuk.
+* **név**: a példában a név ContosoMHSM. Ezt a nevet fogja használni a többi Key Vault parancshoz.
+* **hsmUri**: a PÉLDÁBAN az URI a következő: " https://contosohsm.managedhsm.azure.net ." A HSM-et a REST API használó alkalmazásoknak ezt az URI-t kell használniuk.
 
 Az Azure-fiókja már jogosult bármilyen művelet végrehajtására ezen a felügyelt HSM-ben. Még senki más nem rendelkezik jogosultsággal.
 
@@ -86,7 +86,7 @@ A `az keyvault security-domain upload` parancs a következő műveleteket hajtja
 - Hozzon létre egy biztonsági tartományi feltöltési blobot, amely az előző lépésben letöltött biztonsági tartományi Exchange-kulccsal lett titkosítva, majd
 - Töltse fel a biztonsági tartomány feltöltési blobját a HSM-be a biztonsági tartomány helyreállításának befejezéséhez
 
-Az alábbi példában a biztonsági tartományt használjuk a **ContosoMHSM** , a megfelelő titkos kulcsok közül 2, és fel kell tölteni a **ContosoMHSM2** -be, amely egy biztonsági tartomány fogadására vár. 
+Az alábbi példában a biztonsági tartományt használjuk a **ContosoMHSM**, a megfelelő titkos kulcsok közül 2, és fel kell tölteni a **ContosoMHSM2**-be, amely egy biztonsági tartomány fogadására vár. 
 
 ```azurecli-interactive
 az keyvault security-domain upload --hsm-name ContosoMHSM2 --sd-exchange-key ContosoMHSM-SDE.cer --sd-file ContosoMHSM-SD.json --sd-wrapping-keys cert_0.key cert_1.key
@@ -130,7 +130,7 @@ az keyvault restore start --hsm-name ContosoMHSM2 --storage-account-name Contoso
 
 Most elvégezte a teljes vész-helyreállítási folyamatot. A forrás HSM tartalmát a biztonsági másolat készítésekor a rendszer a cél HSM-be másolja, beleértve az összes kulcsot, verziót, attribútumot, címkét és szerepkör-hozzárendelést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a biztonsági tartományról: [a felügyelt HSM biztonsági tartomány ismertetése](security-domain.md)
 - A [felügyelt HSM ajánlott eljárásainak](best-practices.md) követése

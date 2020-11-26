@@ -8,11 +8,11 @@ ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: személyre szabott, Azure személyre szabott, gépi tanulás
 ms.openlocfilehash: f843e7bfa014ad8391e20efff83a3c21a9de11b9
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363901"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171959"
 ---
 # <a name="what-is-personalizer"></a>Mi a Personalizer?
 
@@ -29,7 +29,7 @@ A Kezdés előtt nyugodtan kipróbálhatja a [személyre szabást az interaktív
 
 ## <a name="how-does-personalizer-select-the-best-content-item"></a>Hogyan választja ki a személyre szabott tartalmi elemet?
 
-A személyre szabás a **megerősítő tanulás** segítségével kiválasztja a legjobb elemet ( _művelet_ ) a kollektív viselkedés és a jutalom pontszámok alapján az összes felhasználó számára. A műveletek a tartalmi elemek, például hírek, adott mozgóképek vagy termékek.
+A személyre szabás a **megerősítő tanulás** segítségével kiválasztja a legjobb elemet (_művelet_) a kollektív viselkedés és a jutalom pontszámok alapján az összes felhasználó számára. A műveletek a tartalmi elemek, például hírek, adott mozgóképek vagy termékek.
 
 A **rangsorban** hívja meg a műveleti elemet, valamint a művelet funkcióit és a környezeti funkciókat, hogy kiválassza a felső műveleti elemet:
 
@@ -79,7 +79,7 @@ Mivel a személyre szabott, közel valós időben a személyre szabott adatokat 
 1. [Tervezze](concepts-features.md) meg és tervezze meg a tartalmat, a **_műveleteket_** és a **_környezetet_**. Határozza meg **_a jutalmas pontszámhoz_** tartozó jutalmazási algoritmust.
 1. Az Ön által létrehozott minden [személyre szabott erőforrás](how-to-settings.md) egy tanulási ciklusnak tekintendő. A hurok az adott tartalomhoz vagy felhasználói élményhez tartozó rang és jutalmazási hívásokat is megkapja.
 
-    |Erőforrás típusa| Rendeltetés|
+    |Erőforrás típusa| Cél|
     |--|--|
     |[Gyakornoki mód](concept-apprentice-mode.md) `E0`|A személyre szabott modell betanítása anélkül, hogy ez hatással lenne a meglévő alkalmazásra, majd telepítse az online tanulási viselkedést éles környezetbe|
     |Standard `S0`|Online tanulási viselkedés éles környezetben|
@@ -90,7 +90,7 @@ Mivel a személyre szabott, közel valós időben a személyre szabott adatokat 
     1. Jelenítse meg a legjobb, egyetlen _tartalmi_ tételt, amely a visszaadott _jutalom műveleti azonosítója_ a felhasználónak.
     1. Az _üzleti logikát_ alkalmazva gyűjtheti össze a felhasználó működésével kapcsolatos információkat a **jutalom** pontszámának meghatározásához, például:
 
-    |Működés|Számított jutalom pontszáma|
+    |Viselkedés|Számított jutalom pontszáma|
     |--|--|
     |A felhasználó a legjobb, egyetlen _tartalmi_ elemet (jutalmazási művelet azonosítója) választotta|**1**|
     |A felhasználó által kiválasztott egyéb tartalom|**0**|
@@ -121,7 +121,7 @@ A személyre szabott szolgáltatás használatának megkezdése után próbálja
 * [Személyre szabott Python SDK](/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python)
 * [REST API-k](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > A [megszemélyesítő működése](how-personalizer-works.md) 

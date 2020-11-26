@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: 4a9282882d23ecbdc3c03ca158ea3de5566143e7
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 59924c1f876d08aa504f19c5d6c86dca32fbd1e2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94634854"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173464"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>Az egyszeri bejelentkezés és az alkalmazás-védelmi szabályzatok támogatása a fejleszthető mobil alkalmazásokban
 
@@ -38,7 +38,7 @@ Javasoljuk, hogy az alkalmazás az egyszeri bejelentkezés előnyeit kihasználv
 
 ### <a name="use-microsoft-authentication-library-msal"></a>A Microsoft Authentication Library (MSAL) használata
 
-Az egyszeri bejelentkezés az alkalmazásban való megvalósításának legjobb lehetősége a [Microsoft Authentication Library (MSAL)](msal-overview.md)használata. A MSAL használatával az alkalmazáshoz minimális kóddal és API-hívásokkal adhat hozzá hitelesítést, lekérheti a [Microsoft Identity platform](/azure/active-directory/develop/)teljes funkcióit, és lehetővé teszi a Microsoft számára a biztonságos hitelesítési megoldás karbantartását. A MSAL alapértelmezés szerint egyszeri bejelentkezéses támogatást biztosít az alkalmazáshoz. Emellett a MSAL használata is követelmény, ha az alkalmazás-védelmi szabályzatok megvalósítását is tervezi.
+Az egyszeri bejelentkezés az alkalmazásban való megvalósításának legjobb lehetősége a [Microsoft Authentication Library (MSAL)](msal-overview.md)használata. A MSAL használatával az alkalmazáshoz minimális kóddal és API-hívásokkal adhat hozzá hitelesítést, lekérheti a [Microsoft Identity platform](./index.yml)teljes funkcióit, és lehetővé teszi a Microsoft számára a biztonságos hitelesítési megoldás karbantartását. A MSAL alapértelmezés szerint egyszeri bejelentkezéses támogatást biztosít az alkalmazáshoz. Emellett a MSAL használata is követelmény, ha az alkalmazás-védelmi szabályzatok megvalósítását is tervezi.
 
 > [!NOTE]
 > A MSAL a beágyazott webes nézet használatára is konfigurálható. Ez megakadályozza az egyszeri bejelentkezést. Használja az alapértelmezett viselkedést (vagyis a rendszerböngészőt) az egyszeri bejelentkezés működésének biztosításához.
@@ -64,7 +64,7 @@ Az Apple útmutatást nyújt ennek elvégzéséhez iOS-alkalmazásokban: [felhas
 
 Az alkalmazás-védelmi szabályzatok engedélyezéséhez használja a [Microsoft Authentication Library (MSAL)](msal-overview.md)eszközt. A MSAL a Microsoft Identity platform hitelesítési és engedélyezési könyvtára, és az Intune SDK-t úgy alakítottuk ki, hogy párhuzamosan működjön.
 
-Emellett a hitelesítéshez egy közvetítő alkalmazást kell használnia. A közvetítő megköveteli, hogy az alkalmazás megadjon egy alkalmazást és egy eszközt az alkalmazások megfelelőségének biztosításához. az iOS-felhasználók a [Microsoft Authenticator alkalmazást](../user-help/user-help-auth-app-sign-in.md) fogják használni, és az Android-felhasználók a Microsoft Authenticator alkalmazást vagy a [céges portál alkalmazást](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal) felügyelt [hitelesítésre](brokered-auth.md)használják. Alapértelmezés szerint a MSAL egy közvetítőt használ a hitelesítési kérések teljesítéséhez, így a közvetítő hitelesítésre való használata automatikusan engedélyezve lesz az alkalmazáshoz, amikor a MSAL-t használja.
+Emellett a hitelesítéshez egy közvetítő alkalmazást kell használnia. A közvetítő megköveteli, hogy az alkalmazás megadjon egy alkalmazást és egy eszközt az alkalmazások megfelelőségének biztosításához. az iOS-felhasználók a [Microsoft Authenticator alkalmazást](../user-help/user-help-auth-app-sign-in.md) fogják használni, és az Android-felhasználók a Microsoft Authenticator alkalmazást vagy a [céges portál alkalmazást](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal) felügyelt [hitelesítésre](./msal-android-single-sign-on.md)használják. Alapértelmezés szerint a MSAL egy közvetítőt használ a hitelesítési kérések teljesítéséhez, így a közvetítő hitelesítésre való használata automatikusan engedélyezve lesz az alkalmazáshoz, amikor a MSAL-t használja.
 
 Végül [adja hozzá az INTUNE SDK](/mem/intune/developer/app-sdk-get-started) -t az alkalmazáshoz az alkalmazás-védelmi szabályzatok engedélyezéséhez. Az SDK a legtöbb esetben egy elfogási modellt követ, és automatikusan alkalmazza az alkalmazás-védelmi házirendeket annak meghatározására, hogy az alkalmazás által végzett műveletek engedélyezettek-e vagy sem. Vannak olyan API-k is, amelyekkel manuálisan hívható meg az alkalmazás, ha bizonyos műveletek korlátozásai vannak.
 
@@ -73,8 +73,8 @@ Végül [adja hozzá az INTUNE SDK](/mem/intune/developer/app-sdk-get-started) -
 - [Azure Active Directory egyszeri bejelentkezéses telepítés megtervezése](../manage-apps/plan-sso-deployment.md)
 - [Útmutató: az SSO konfigurálása macOS és iOS rendszeren](single-sign-on-macos-ios.md)
 - [Microsoft Enterprise SSO beépülő modul Apple-eszközökhöz (előzetes verzió)](apple-sso-plugin.md)
-- [Felügyelt hitelesítés az Androidban](brokered-auth.md)
-- [Engedélyezési ügynökök és azok engedélyezése](authorization-agents.md)
+- [Felügyelt hitelesítés az Androidban](./msal-android-single-sign-on.md)
+- [Engedélyezési ügynökök és azok engedélyezése](./msal-android-single-sign-on.md)
 - [Bevezetés a Microsoft Intune App SDK használatába](/mem/intune/developer/app-sdk-get-started)
 - [Az Intune App SDK-beállítások konfigurálása](/mem/intune/developer/app-sdk-ios#configure-settings-for-the-intune-app-sdk)
 - [Microsoft Intune védett alkalmazások](/mem/intune/apps/apps-supported-intune-apps)

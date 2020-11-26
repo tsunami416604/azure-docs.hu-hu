@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: a02fa7d9f656ed3b6e61aab1f42e2a3ffca131a7
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 4fea027663b55e87822eae1fd0cdb2d67dbc630b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917256"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170823"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Bevezetés a kiépített átviteli sebességbe Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -137,7 +137,7 @@ A skálázási folyamat programozott módon ellenőrizhető az [aktuálisan kios
 
 Az [aktuális kiosztott átviteli sebesség](#current-provisioned-throughput) című szakaszban leírtak szerint a tárolón vagy adatbázison kiépíthető minimális átviteli sebesség számos tényezőtől függ. Az egyik közülük a jelenleg tárolt adatok mennyisége, mivel a Azure Cosmos DB GB tárterületen legalább 10 RU/s kapacitást érvényesít.
 
-Ez olyan helyzetekben lehet fontos, amikor nagy mennyiségű adat tárolására van szükség, de az összehasonlításhoz alacsony átviteli sebességre van szükség. A forgatókönyvek jobb bevezetéséhez Azure Cosmos DB egy **"nagy tárolási/alacsony átviteli sebességű" programot** vezetett be, amely a jogosult fiókok esetében 10 – 1 értékre csökkenti az ru/s korlátot.
+Ez olyan helyzetekben lehet fontos, amikor nagy mennyiségű adat tárolására van szükség, de az összehasonlításhoz alacsony átviteli sebességre van szükség. A forgatókönyvek jobb kielégítése érdekében a Azure Cosmos DB egy **"nagy tárolási/alacsony átviteli sebességű" programot** vezetett be, amely csökkenti az ru/s/GB korlátozásokat a jogosult fiókokra vonatkozóan.
 
 Jelenleg legalább egy olyan tárolót vagy közös átviteli sebességű adatbázist kell használnia, amely a fiókban több mint 1 TB-nyi adatnak megfelelő jogosultságot tartalmaz. A programhoz való csatlakozáshoz és a teljes jogosultság felméréséhez mindössze annyit kell tennie, hogy kitölti [ezt a kérdőívet](https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRzBPrdEMjvxPuDm8fCLUtXpUREdDU0pCR0lVVFY5T1lRVEhWNUZITUJGMC4u). A Azure Cosmos DB csapat ezután nyomon követi és folytatja a bevezetést.
 
