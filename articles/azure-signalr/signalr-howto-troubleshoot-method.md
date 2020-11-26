@@ -6,18 +6,18 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: yajin1
-ms.openlocfilehash: 4b0b85b08c3f813440d556c61ba5e290ac200049
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 413bb88deac96c1ca12e8a9d25fc9cd16edf4616
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686759"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183957"
 ---
 # <a name="how-to-troubleshoot-connectivity-and-message-delivery-issues"></a>A kapcsolat és az üzenetek kézbesítésével kapcsolatos problémák elhárítása
 
 Ez az útmutató számos módszert mutat be az öndiagnosztizálásra, hogy a kiváltó okot közvetlenül vagy Szűkítse le a probléma megoldásához. Az öndiagnózisi eredmény akkor is hasznos, ha további vizsgálat céljából jelentést küld nekünk.
 
-Először ellenőriznie kell az Azure Portal, hogy a [ServiceMode](https://docs.microsoft.com/azure/azure-signalr/concept-service-mode) melyik Azure signaler szolgáltatás (más néven **ASRS**).
+Először ellenőriznie kell az Azure Portal, hogy a [ServiceMode](./concept-service-mode.md) melyik Azure signaler szolgáltatás (más néven **ASRS**).
 
 :::image type="content" source="./media/signalr-howto-troubleshoot-method/service-mode.png" alt-text="ServiceMode":::
 
@@ -49,13 +49,13 @@ A probléma több módon is leszűkíthető.
 
 ### <a name="how-to-view-the-traffic-and-narrow-down-the-issue"></a>A forgalom megtekintése és a probléma szűkítése
 
-A folyamatban lévő forgalom rögzítése a legközvetlenebb megoldás a probléma szűkítéséhez. A [Hálózati nyomkövetést](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#network-traces) az alább ismertetett beállítások használatával rögzítheti:
+A folyamatban lévő forgalom rögzítése a legközvetlenebb megoldás a probléma szűkítéséhez. A [Hálózati nyomkövetést](/aspnet/core/signalr/diagnostics#network-traces) az alább ismertetett beállítások használatával rögzítheti:
 
-* [Hálózati nyomkövetés összegyűjtése a Hegedűsrel](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#network-traces)
+* [Hálózati nyomkövetés összegyűjtése a Hegedűsrel](/aspnet/core/signalr/diagnostics#network-traces)
 
-* [Hálózati nyomkövetés összegyűjtése a tcpdump](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#collect-a-network-trace-with-tcpdump-macos-and-linux-only)
+* [Hálózati nyomkövetés összegyűjtése a tcpdump](/aspnet/core/signalr/diagnostics#collect-a-network-trace-with-tcpdump-macos-and-linux-only)
 
-* [Hálózati nyomkövetés összegyűjtése a böngészőben](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#collect-a-network-trace-in-the-browser)
+* [Hálózati nyomkövetés összegyűjtése a böngészőben](/aspnet/core/signalr/diagnostics#collect-a-network-trace-in-the-browser)
 
 <a name="view_traffic_client"></a>
 
@@ -63,7 +63,7 @@ A folyamatban lévő forgalom rögzítése a legközvetlenebb megoldás a probl�
 
 A szignáló állandó kapcsolata esetén először az `/negotiate` üzemeltetett app Serverre, majd átirányítjuk az Azure signaler szolgáltatásra, majd az Azure signaler szolgáltatáshoz való valódi állandó kapcsolatot létesít. A részletes lépésekért tekintse meg az [Azure signaler szolgáltatás belső részeit](https://github.com/Azure/azure-signalr/blob/dev/docs/internal.md) .
 
-Az ügyféloldali hálózati nyomkövetéssel ellenőrizze, hogy melyik kérelem meghiúsul, milyen állapotkódot és milyen válaszokat keres, és keressen megoldásokat a [hibaelhárítási útmutatóban](https://docs.microsoft.com/azure/azure-signalr/signalr-howto-troubleshoot-guide).
+Az ügyféloldali hálózati nyomkövetéssel ellenőrizze, hogy melyik kérelem meghiúsul, milyen állapotkódot és milyen válaszokat keres, és keressen megoldásokat a [hibaelhárítási útmutatóban](./signalr-howto-troubleshoot-guide.md).
 
 #### <a name="server-requests"></a>Kiszolgálói kérelmek
 
@@ -71,7 +71,7 @@ A jelző *kiszolgáló* a *kiszolgáló és a* *szolgáltatás* közötti *kiszo
 
 A *Kiszolgálói kapcsolatok* a hálózat instabilitása vagy az Azure signaler szolgáltatás rendszeres karbantartása, illetve az üzemeltetett app Server-frissítések/karbantartás miatt csökkenhetnek. Ha az ügyféloldali kapcsolat bontási/újracsatlakozási mechanizmussal rendelkezik, a hatás minimális, mint bármely ügyféloldali kapcsolat bontása – újracsatlakozás.
 
-Tekintse meg a kiszolgálóoldali hálózati nyomkövetést az állapotkód megállapításához, és a hiba részletes leírását, a *kiszolgáló kapcsolatának* a *szolgáltatás* által elvetett vagy visszautasított állapotát, valamint a [hibaelhárítási útmutatóban](https://docs.microsoft.com/azure/azure-signalr/signalr-howto-troubleshoot-guide)megjelenő kiváltó okot.
+Tekintse meg a kiszolgálóoldali hálózati nyomkövetést az állapotkód megállapításához, és a hiba részletes leírását, a *kiszolgáló kapcsolatának* a *szolgáltatás* által elvetett vagy visszautasított állapotát, valamint a [hibaelhárítási útmutatóban](./signalr-howto-troubleshoot-guide.md)megjelenő kiváltó okot.
 
 
 ### <a name="how-to-add-logs"></a>Naplók hozzáadása
@@ -86,18 +86,18 @@ Az ügyféloldali naplózási élmény pontosan ugyanaz, mint a saját üzemelte
 
 ##### <a name="enable-client-side-logging-for-aspnet-core-signalr"></a>Ügyféloldali naplózás engedélyezése a következőhöz: `ASP.NET Core SignalR`
 
-* [JavaScript-ügyfél naplózása](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#javascript-client-logging)
+* [JavaScript-ügyfél naplózása](/aspnet/core/signalr/diagnostics#javascript-client-logging)
 
-* [.NET-ügyfél naplózása](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#net-client-logging)
+* [.NET-ügyfél naplózása](/aspnet/core/signalr/diagnostics#net-client-logging)
 
 
 ##### <a name="enable-client-side-logging-for-aspnet-signalr"></a>Ügyféloldali naplózás engedélyezése a következőhöz: `ASP.NET SignalR`
 
-* [.NET-ügyfél](https://docs.microsoft.com/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-the-net-client-windows-desktop-apps)
+* [.NET-ügyfél](/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-the-net-client-windows-desktop-apps)
 
-* [Nyomkövetés engedélyezése Windows Phone-telefon 8 ügyfélen](https://docs.microsoft.com/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-windows-phone-8-clients)
+* [Nyomkövetés engedélyezése Windows Phone-telefon 8 ügyfélen](/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-windows-phone-8-clients)
 
-* [Nyomkövetés engedélyezése a JavaScript-ügyfélben](https://docs.microsoft.com/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-the-javascript-client)
+* [Nyomkövetés engedélyezése a JavaScript-ügyfélben](/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-the-javascript-client)
 
 <a name="add_logs_server"></a>
 
@@ -105,7 +105,7 @@ Az ügyféloldali naplózási élmény pontosan ugyanaz, mint a saját üzemelte
 
 ##### <a name="enable-server-side-logging-for-aspnet-core-signalr"></a>Kiszolgálóoldali naplózás engedélyezése a következőhöz: `ASP.NET Core SignalR`
 
-A kiszolgálóoldali naplózási funkció `ASP.NET Core SignalR` integrálható a `ILogger` keretrendszerben megadott alapú [naplózással](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1&tabs=aspnetcore2x) `ASP.NET Core` . A kiszolgálóoldali naplózást a következő módon engedélyezheti `ConfigureLogging` a használatával:
+A kiszolgálóoldali naplózási funkció `ASP.NET Core SignalR` integrálható a `ILogger` keretrendszerben megadott alapú [naplózással](/aspnet/core/fundamentals/logging/?tabs=aspnetcore2x&view=aspnetcore-2.1) `ASP.NET Core` . A kiszolgálóoldali naplózást a következő módon engedélyezheti `ConfigureLogging` a használatával:
 
 ```cs
 .ConfigureLogging((hostingContext, logging) =>
@@ -162,7 +162,7 @@ Ellenőrizze, hogy vannak-e rendellenes figyelmeztető/hibanapló rögzített hi
 
 #### <a name="how-to-enable-logs-inside-azure-signalr-service"></a>Naplók engedélyezése az Azure Signaler szolgáltatáson belül
 
-A [diagnosztikai naplókat](https://docs.microsoft.com/azure/azure-signalr/signalr-tutorial-diagnostic-logs) az Azure signaler szolgáltatáshoz is engedélyezheti, ezek a naplók részletes információkat biztosítanak az Azure signaler szolgáltatáshoz csatlakozó összes kapcsolatról.
+A [diagnosztikai naplókat](./signalr-howto-diagnostic-logs.md) az Azure signaler szolgáltatáshoz is engedélyezheti, ezek a naplók részletes információkat biztosítanak az Azure signaler szolgáltatáshoz csatlakozó összes kapcsolatról.
 
 <a name="serverless_mode_tsg"></a>
 
@@ -194,7 +194,7 @@ A szolgáltatás állapotának állapot API-ját is megtekintheti.
     * Vagy indítsa újra a példányt.
     * Ha az összes fenti lehetőség nem működik, vegye fel velünk a kapcsolatot új támogatási kérelem hozzáadásával Azure Portal.
 
-További információ a vész- [helyreállítási](https://docs.microsoft.com/azure/azure-signalr/signalr-concept-disaster-recovery)szolgáltatásról.
+További információ a vész- [helyreállítási](./signalr-concept-disaster-recovery.md)szolgáltatásról.
 
 ## <a name="next-steps"></a>Következő lépések
 

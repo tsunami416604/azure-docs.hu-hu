@@ -5,12 +5,12 @@ ms.date: 10/19/2020
 services: automation
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: bffd1cc0ce2a6a827c0bc708321a6bd2839aae2d
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 23e5293301a2fc311565d0c1c8ec5fd92bebe9b2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207325"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183566"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>A társított Log Analytics-munkaterület esetében támogatott régiók
 
@@ -63,9 +63,9 @@ A funkciók eltávolítva az Automation-fiók összekapcsolásának megszüntet�
 > [!NOTE]
 > Előfordulhat, hogy egyes funkciók, például az Azure SQL monitoring megoldás korábbi verzióiban olyan Automation-eszközöket hoztak létre, amelyeket el kell távolítani a munkaterület leválasztása előtt.
 
-1. Nyissa meg az Automation-fiókját a Azure Portal. Az Automation-fiók lapon a **kapcsolódó erőforrások**területen válassza a **csatolt munkaterület** lehetőséget.
+1. Nyissa meg az Automation-fiókját a Azure Portal. Az Automation-fiók lapon a **kapcsolódó erőforrások** területen válassza a **csatolt munkaterület** lehetőséget.
 
-2. A munkaterület megszüntetése lapon válassza a **munkaterület**leválasztása lehetőséget. Ha folytatni kívánja a folytatást, a rendszer rákérdez az ellenőrzésre.
+2. A munkaterület megszüntetése lapon válassza a **munkaterület** leválasztása lehetőséget. Ha folytatni kívánja a folytatást, a rendszer rákérdez az ellenőrzésre.
 
 3. Habár Azure Automation a fiók leválasztása a Log Analytics munkaterületről, a menü **értesítések** részén nyomon követheti a folyamat állapotát.
 
@@ -82,11 +82,11 @@ A funkciók eltávolítva az Automation-fiók összekapcsolásának megszüntet�
 
 Azt is megteheti, hogy leválasztja a munkaterületet az Automation-fiókjából a munkaterületen belül.
 
-1. A munkaterületen válassza az **Automation-fiók** lehetőséget a **kapcsolódó erőforrások**területen.
-2. Az Automation-fiók lapon válassza a **fiók megszüntetése**lehetőséget.
+1. A munkaterületen válassza az **Automation-fiók** lehetőséget a **kapcsolódó erőforrások** területen.
+2. Az Automation-fiók lapon válassza a **fiók megszüntetése** lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Ismerkedjen meg Update Management [Update Management áttekintésében](../update-management/update-mgmt-overview.md).
+* Ismerkedjen meg Update Management [Update Management áttekintésében](../update-management/overview.md).
 * Ismerkedjen meg a Change Tracking és a leltárral [change Tracking és leltár áttekintésében](../change-tracking/overview.md).
 * Ismerkedjen meg Start/Stop VMs during off-hours [Start/Stop VMS During off-hours áttekintésében](../automation-solution-vm-management.md).

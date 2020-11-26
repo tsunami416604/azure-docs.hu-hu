@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: eb1b3534481c55723bd5d13760259b18e0b5cce2
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: c444732a497d595235ac337d7f5c71fb84f17cca
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93392044"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185589"
 ---
 # <a name="filling-time-gaps-and-imputing-missing-values"></a>Az időbeli hézagok kitöltése és az imputált hiányzó értékek 
 
@@ -179,9 +179,9 @@ timestamp               OrigVoltageVals  ImputedVoltage  OrigPressureVals  Imput
 > [!NOTE]
 > A fenti lekérdezés a `FIRST_VALUE()` függvény használatával lecseréli a hiányzó értékeket a következő megfigyelt értékre. Ugyanez az eredmény egy záradék használatával is megvalósítható `LAST_VALUE()` `ORDER BY <ordering_column> DESC` .
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
-- [FIRST_VALUE (Transact-SQL)](/sql/t-sql/functions/first-value-transact-sql?toc=%252fazure%252fazure-sql-edge%252ftoc.json)
-- [LAST_VALUE (Transact-SQL)](/sql/t-sql/functions/last-value-transact-sql?toc=%252fazure%252fazure-sql-edge%252ftoc.json)
+- [FIRST_VALUE (Transact-SQL)](/sql/t-sql/functions/first-value-transact-sql?toc=%2fazure%2fazure-sql-edge%2ftoc.json)
+- [LAST_VALUE (Transact-SQL)](/sql/t-sql/functions/last-value-transact-sql?toc=%2fazure%2fazure-sql-edge%2ftoc.json)
 - [DATE_BUCKET (Transact-SQL)](date-bucket-tsql.md)
 - [Összesítő függvények (Transact-SQL)](/sql/t-sql/functions/aggregate-functions-transact-sql)

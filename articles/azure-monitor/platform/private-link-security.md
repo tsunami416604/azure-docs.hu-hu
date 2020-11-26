@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 61073ce7e8d3abc43d1db031608da72e6d3e0791
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 3f9779d2676d4d2b67efff37118d109664b84bd5
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926801"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184603"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Hálózatok biztonságos csatlakoztatása az Azure Monitorhoz az Azure Private Linkkel
 
@@ -90,7 +90,7 @@ Az alábbi topológiában:
 
 Első lépésként hozzon létre egy Azure Monitor privát hivatkozás hatókör-erőforrást.
 
-1. Nyissa meg az **erőforrás létrehozása** a Azure Portalban, és keresse meg **Azure monitor privát hivatkozás hatókörét** .
+1. Nyissa meg az **erőforrás létrehozása** a Azure Portalban, és keresse meg **Azure monitor privát hivatkozás hatókörét**.
 
    ![Azure Monitor privát hivatkozás hatókörének keresése](./media/private-link-security/ampls-find-1c.png)
 
@@ -125,7 +125,7 @@ Most, hogy rendelkezik a AMPLS kapcsolódó erőforrásokkal, hozzon létre egy 
 
 2. Válassza ki az előfizetést, az erőforráscsoportot és a végpont nevét, valamint azt a régiót, amelyben élni kíván. A régiónak ugyanabban a régióban kell lennie, mint a virtuális hálózatnak, amelyhez csatlakozni fog.
 
-3. Kattintson a **Tovább gombra: erőforrás** . 
+3. Kattintson a **Tovább gombra: erőforrás**. 
 
 4. Az erőforrás képernyőjén
 
@@ -135,22 +135,22 @@ Most, hogy rendelkezik a AMPLS kapcsolódó erőforrásokkal, hozzon létre egy 
 
    c. Az **erőforrás** legördülő menüben válassza ki a korábban létrehozott saját hivatkozás hatókörét. 
 
-   d. Kattintson a **Tovább gombra: konfigurációs >** .
+   d. Kattintson a **Tovább gombra: konfigurációs >**.
       ![Képernyőkép a privát végpont létrehozása elemről](./media/private-link-security/ampls-select-private-endpoint-create-4.png)
 
 5. A konfigurációs ablaktáblán
 
    a.    Válassza ki azt a **virtuális hálózatot** és **alhálózatot** , amelyhez csatlakozni szeretne a Azure monitor erőforrásaihoz. 
  
-   b.    Válassza az **Igen** lehetőséget a **saját DNS-zónába való integráláshoz** , és hagyja, hogy automatikusan létrehozzon egy új saját DNS zónát. Előfordulhat, hogy a tényleges DNS-zónák eltérnek az alábbi képernyőképen láthatótól. 
+   b.    Válassza az **Igen** lehetőséget a **saját DNS-zónába való integráláshoz**, és hagyja, hogy automatikusan létrehozzon egy új saját DNS zónát. Előfordulhat, hogy a tényleges DNS-zónák eltérnek az alábbi képernyőképen láthatótól. 
    > [!NOTE]
-   > Ha a **nem** lehetőséget választja, és manuálisan szeretné kezelni a DNS-rekordokat, először fejezze be a privát kapcsolat beállítását – beleértve ezt a privát végpontot és a AMPLS-konfigurációt. Ezután konfigurálja a DNS-t az [Azure Private Endpoint DNS-konfiguráció](https://docs.microsoft.com/azure/private-link/private-endpoint-dns)utasításai szerint. Ügyeljen arra, hogy ne hozzon létre üres rekordokat előkészítésként a privát kapcsolat beállításához. Az Ön által létrehozott DNS-rekordok felülbírálják a meglévő beállításokat, és hatással vannak a Azure Monitorával létesített kapcsolatra.
+   > Ha a **nem** lehetőséget választja, és manuálisan szeretné kezelni a DNS-rekordokat, először fejezze be a privát kapcsolat beállítását – beleértve ezt a privát végpontot és a AMPLS-konfigurációt. Ezután konfigurálja a DNS-t az [Azure Private Endpoint DNS-konfiguráció](../../private-link/private-endpoint-dns.md)utasításai szerint. Ügyeljen arra, hogy ne hozzon létre üres rekordokat előkészítésként a privát kapcsolat beállításához. Az Ön által létrehozott DNS-rekordok felülbírálják a meglévő beállításokat, és hatással vannak a Azure Monitorával létesített kapcsolatra.
  
    c.    Kattintson a **Felülvizsgálat + létrehozás** elemre.
  
    d.    Az érvényesítési fázis engedélyezése. 
  
-   e.    Kattintson a **Létrehozás** gombra. 
+   e.    Kattintson a **Létrehozás** lehetőségre. 
 
     ![Képernyőkép a Select Private Endpoint2 létrehozásáról](./media/private-link-security/ampls-select-private-endpoint-create-5.png)
 
@@ -190,7 +190,7 @@ Nyissa meg az Azure Portalt. A Azure Monitor Application Insights összetevő-er
 
 ![AI hálózati elkülönítés](./media/private-link-security/ampls-application-insights-lan-network-isolation-6.png)
 
-Először is csatlakoztathatja ezt a Application Insights-erőforrást, hogy Azure Monitor privát hivatkozás hatókörét, amelyhez hozzáféréssel rendelkezik. Kattintson a **Hozzáadás** gombra, és válassza ki a **Azure monitor privát hivatkozás hatókörét** . A kapcsolódáshoz kattintson az Alkalmaz gombra. Az összes csatlakoztatott hatókör megjelenik ezen a képernyőn. Ez a kapcsolat lehetővé teszi, hogy a csatlakoztatott virtuális hálózatok hálózati forgalma elérje ezt az összetevőt. A kapcsolat létrehozása ugyanaz, mint a [Azure monitor erőforrások csatlakoztatásakor](#connect-azure-monitor-resources)a hatókörhöz való csatlakozáskor. 
+Először is csatlakoztathatja ezt a Application Insights-erőforrást, hogy Azure Monitor privát hivatkozás hatókörét, amelyhez hozzáféréssel rendelkezik. Kattintson a **Hozzáadás** gombra, és válassza ki a **Azure monitor privát hivatkozás hatókörét**. A kapcsolódáshoz kattintson az Alkalmaz gombra. Az összes csatlakoztatott hatókör megjelenik ezen a képernyőn. Ez a kapcsolat lehetővé teszi, hogy a csatlakoztatott virtuális hálózatok hálózati forgalma elérje ezt az összetevőt. A kapcsolat létrehozása ugyanaz, mint a [Azure monitor erőforrások csatlakoztatásakor](#connect-azure-monitor-resources)a hatókörhöz való csatlakozáskor. 
 
 Másodszor, azt is szabályozhatja, hogy ez az erőforrás Hogyan érhető el a korábban felsorolt privát kapcsolati hatókörökön kívülről. Ha a **nyilvános hálózati hozzáférés engedélyezése** a **nem** értékre van állítva, akkor a csatlakoztatott hatókörökön kívüli gépek vagy SDK-k nem tölthetnek fel adatot ebbe az összetevőbe. Ha a **nyilvános hálózati hozzáférés engedélyezése a** **nem** értékre van állítva, akkor a hatókörön kívüli gépek nem férnek hozzá a Application Insights erőforrásban lévő adatforrásokhoz. Az adatok közé tartozik az APM-naplók, a metrikák és az élő metrikai stream elérésének, valamint a többek között a munkafüzetek, az irányítópultok, a lekérdezési API-alapú ügyfél-élmények, a Azure Portal elemzések és egyebek. 
 
@@ -240,7 +240,7 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace k
 
 ### <a name="azure-portal"></a>Azure Portal
 
-A Azure Monitor-portál használatának, például a Application Insights és a Log Analytics használatához engedélyeznie kell a Azure Portal és a Azure Monitor bővítmények számára a magánhálózatok elérését. Vegye fel a **AzureActiveDirectory** , a **AzureResourceManager** , a **AzureFrontDoor. FirstParty** és a **AzureFrontDoor. frontend** [szolgáltatás címkéit](../../firewall/service-tags.md) a hálózati biztonsági csoportba.
+A Azure Monitor-portál használatának, például a Application Insights és a Log Analytics használatához engedélyeznie kell a Azure Portal és a Azure Monitor bővítmények számára a magánhálózatok elérését. Vegye fel a **AzureActiveDirectory**, a **AzureResourceManager**, a **AzureFrontDoor. FirstParty** és a **AzureFrontDoor. frontend** [szolgáltatás címkéit](../../firewall/service-tags.md) a hálózati biztonsági csoportba.
 
 ### <a name="programmatic-access"></a>Szoftveres hozzáférés
 

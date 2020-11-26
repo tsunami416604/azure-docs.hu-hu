@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 12/02/2019
 ms.author: alkohli
 ms.openlocfilehash: 203c977fe9109cd8b2b6de561e975e20aacf700e
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93376206"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185572"
 ---
 Ha első alkalommal használja a Storage Explorer, a következő lépéseket kell elvégeznie.
 
-1. A felső parancssáv lépjen a **> cél Azure stack API** -k szerkesztése elemre.
+1. A felső parancssáv lépjen a **> cél Azure stack API**-k szerkesztése elemre.
 
     ![Storage Explorer konfigurálása](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-1.png)
 
@@ -37,7 +37,7 @@ Kövesse az alábbi lépéseket a Storage-fiókhoz való kapcsolódáshoz és a 
     3. Illessze be az eszköz helyi API-jai által Azure Resource Manager használatával kapott hozzáférési kulcsot.
     4. Válassza a tárolási tartomány lehetőséget **(adja meg az alábbit)** , majd adja meg a blob Service-végpont utótagját a következő formátumban: `<appliance name>.<DNSdomain>` . 
     5. Az átvitel HTTP *-kapcsolaton* keresztüli **használatának** engedélyezése. 
-    6. Válassza a **Tovább** gombot.
+    6. Kattintson a **Tovább** gombra.
 
     ![Storage Explorer 4 konfigurálása](media/azure-stack-edge-gateway-verify-connection-storage-explorer/connect-with-storage-explorer-4.png)    
 
@@ -57,7 +57,7 @@ Az alábbi lépéseket követve töltse be az adatait a peremhálózati Storage-
 
     ![Adatátvitel ellenőrzése](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-1.png)
 
-2. A **fájlok feltöltése** párbeszédpanelen navigáljon, és válassza ki a feltölteni kívánt fájlokat. Válassza a **Tovább** gombot.
+2. A **fájlok feltöltése** párbeszédpanelen navigáljon, és válassza ki a feltölteni kívánt fájlokat. Kattintson a **Tovább** gombra.
 
     ![Adatátvitel ellenőrzése 2](media/azure-stack-edge-gateway-verify-connection-storage-explorer/verify-data-transfer-2.png)
 

@@ -6,14 +6,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/22/2020
 ms.author: bwren
-ms.openlocfilehash: d00ffb1cb9b9fd6231322d4ef5bfebfbe242eac7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3c3a20d8401affc519e118c7f2295339990e7dee
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014237"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186507"
 ---
-# <a name="azure-monitor-logs-overview"></a>Azure Monitor naplók áttekintése
+# <a name="azure-monitor-logs-overview"></a>Azure Monitor-naplók – áttekintés
 Azure Monitor naplók a Azure Monitor szolgáltatása, amely összegyűjti és rendszerezi a napló-és teljesítményadatokat a [figyelt erőforrásokból](../monitor-reference.md). A különböző forrásokból származó adatok, például az Azure-szolgáltatásokból származó [platformok naplói](platform-logs-overview.md) , a [Virtual Machines-ügynökökből](agents-overview.md)származó naplók és teljesítményadatok, valamint az [alkalmazásokból](../app/app-insights-overview.md) származó használati és teljesítményadatokat összevonható egyetlen munkaterületre, így az elemzésük olyan kifinomult lekérdezési nyelv használatával végezhető el, amely képes több millió rekord elemzésére. Egy egyszerű lekérdezést is végrehajthat, amely csak egy adott rekordhalmazt kér le, vagy kifinomult adatelemzést végez a megfigyelési adatokban található kritikus minták azonosításához. A naplózási lekérdezésekkel és azok eredményeivel interaktív módon, Log Analytics használatával dolgozhat a riasztási szabályokban, hogy a br proaktívan értesítse a problémákat, vagy megjelenítse az eredményeket egy munkafüzetben vagy irányítópulton.
 
 > [!NOTE]
@@ -25,11 +25,11 @@ A következő táblázat ismerteti az Azure Monitorban található naplók kül�
 
 |  |  |
 |:---|:---|
-| **Elemzés** | A Azure Portal [log Analytics](../log-query/get-started-portal.md) használata a [naplók](../log-query/log-query-overview.md) írásához és interaktív módon történő elemzéséhez egy hatékony elemzési motor használatával |
+| **Elemzés** | A Azure Portal [log Analytics](../log-query/log-analytics-tutorial.md) használata a [naplók](../log-query/log-query-overview.md) írásához és interaktív módon történő elemzéséhez egy hatékony elemzési motor használatával |
 | **Riasztás** | Olyan [naplózási riasztási szabályt](alerts-log.md) konfigurálhat, amely értesítést küld, vagy [automatikus műveletet hajt végre](action-groups.md) , ha a lekérdezés eredményei egy adott eredménynek felelnek meg. |
-| **Vizualizáció** | A lekérdezés eredményei táblázatként vagy diagramként jelennek meg egy [Azure-irányítópulton](../../azure-portal/azure-portal-dashboards.md).<br>Hozzon létre egy [munkafüzetet](../app/usage-workbooks.md) , amely kombinálható több adatkészlettel egy interaktív jelentésben. <br>A lekérdezés eredményeinek exportálásával [Power BIhatja](powerbi.md) a különböző vizualizációk használatát, és megoszthatja azokat az Azure-on kívüli felhasználókkal.<br>Egy lekérdezés eredményeinek exportálása a [Grafana](grafana-plugin.md) , hogy kihasználja az irányítópultot, és kombinálja más adatforrásokkal.|
+| **Vizualizáció** | A lekérdezés eredményei táblázatként vagy diagramként jelennek meg egy [Azure-irányítópulton](../../azure-portal/azure-portal-dashboards.md).<br>Hozzon létre egy [munkafüzetet](./workbooks-overview.md) , amely kombinálható több adatkészlettel egy interaktív jelentésben. <br>A lekérdezés eredményeinek exportálásával [Power BIhatja](powerbi.md) a különböző vizualizációk használatát, és megoszthatja azokat az Azure-on kívüli felhasználókkal.<br>Egy lekérdezés eredményeinek exportálása a [Grafana](grafana-plugin.md) , hogy kihasználja az irányítópultot, és kombinálja más adatforrásokkal.|
 | **Insights** | Az [egyes](../monitor-reference.md#insights-and-core-solutions) alkalmazásokhoz és szolgáltatásokhoz testreszabott figyelési élményt nyújtó adatvizsgálatok támogatása.  |
-| **Beolvasni** | A naplók lekérdezési eredményeinek elérése egy parancssorból az [Azure CLI](/cli/azure/ext/log-analytics/monitor/log-analytics)használatával.<br>A log lekérdezés eredményeinek elérése a parancssorból [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/az.operationalinsights)használatával.<br>Hozzáférés a naplók lekérdezési eredményeihez egy egyéni alkalmazásból [REST API](https://dev.loganalytics.io/)használatával. |
+| **Beolvasni** | A naplók lekérdezési eredményeinek elérése egy parancssorból az [Azure CLI](/cli/azure/ext/log-analytics/monitor/log-analytics)használatával.<br>A log lekérdezés eredményeinek elérése a parancssorból [PowerShell-parancsmagok](/powershell/module/az.operationalinsights)használatával.<br>Hozzáférés a naplók lekérdezési eredményeihez egy egyéni alkalmazásból [REST API](https://dev.loganalytics.io/)használatával. |
 | **Exportálás** | [A naplófájlok automatikus exportálásának](logs-data-export.md) konfigurálása az Azure Storage-fiókba vagy az azure-Event Hubsba.<br>Hozzon létre egy munkafolyamatot a naplófájlok beolvasásához, és másolja azt egy külső helyre [Logic apps](logicapp-flow-connector.md)használatával. |
 
 ![Naplók – áttekintés](media/data-platform-logs/logs-overview.png)
@@ -75,8 +75,8 @@ Az adatok beolvasása egy Log Analytics munkaterületről egy olyan naplózási 
 ## <a name="log-analytics"></a>Log Analytics
 Használja a Log Analytics, amely a Azure Portal eszköz, amely a naplók szerkesztésére és futtatására, valamint az eredmények interaktív elemzésére szolgál. Ezután a létrehozott lekérdezéseket használhatja a Azure Monitor egyéb funkcióinak támogatásához, például a log lekérdezési riasztások és a munkafüzetek számára. A Azure Monitor menüben vagy a Azure Portal legtöbb más szolgáltatásában lévő **naplók** lehetőséggel érheti el log Analytics.
 
-- A Log Analytics leírását lásd: a [Azure Monitor log Analytics áttekintése](/azure/azure-monitor/log-query/log-analytics-overview) . 
-- Tekintse meg a [log Analytics oktatóanyagot](/azure/azure-monitor/log-query/log-analytics-tutorial) , amely végigvezeti a log Analytics-funkciók használatával egy egyszerű napló-lekérdezés létrehozásán és az eredmények elemzésén.
+- A Log Analytics leírását lásd: a [Azure Monitor log Analytics áttekintése](../log-query/log-analytics-overview.md) . 
+- Tekintse meg a [log Analytics oktatóanyagot](../log-query/log-analytics-tutorial.md) , amely végigvezeti a log Analytics-funkciók használatával egy egyszerű napló-lekérdezés létrehozásán és az eredmények elemzésén.
 
 
 

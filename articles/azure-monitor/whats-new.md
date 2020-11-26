@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: 4fa00bffc35c4ed67ce70751c8882b74ad6b01a1
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: bf15e380eb1a88acc39ca63165d18d04a260b35d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95534500"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185895"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Az Azure Monitor dokumentációjának újdonságai
 
@@ -19,7 +19,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 
 ## <a name="october-2020"></a>2020. október
 
-### <a name="general"></a>Általános
+### <a name="general"></a>Általános kérdések
 - [Azure monitor API-nyugdíjazás](platform/operationalinsights-api-retirement.md) – új cikk.
 
 ### <a name="agents"></a>Ügynökök
@@ -74,7 +74,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 
 ## <a name="september-2020"></a>2020. szeptember
 
-### <a name="general"></a>Általános
+### <a name="general"></a>Általános kérdések
 - [Azure monitor GYIK](faq.md) – további szakasz a OpenTelemetry.
 
 ### <a name="agents"></a>Ügynökök
@@ -141,7 +141,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 
 ## <a name="august-2020"></a>2020. augusztus
 
-### <a name="general"></a>Általános
+### <a name="general"></a>Általános kérdések
 
 - A [Azure monitor által figyelt](monitor-reference.md) frissítések Azure monitor ügynök belefoglalásával.
 
@@ -205,7 +205,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 
 ## <a name="july-2020"></a>2020. július
 
-### <a name="general"></a>Általános
+### <a name="general"></a>Általános kérdések
 - [Azure monitor üzembe helyezése](deploy-scale.md) Azure monitor for VMS bevezetési tartalom újrastrukturálása.
 - Az [Azure Private link használatával biztonságosan csatlakoztathatja a hálózatokat Azure monitor](platform/private-link-security.md) hozzáadott szakaszhoz a korlátok között.
 
@@ -230,7 +230,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 - [Azure monitor ügyfél által felügyelt kulcshoz](platform/customer-managed-keys.md) hozzáadott hibaüzenet és szakasz CMK-konfiguráció lekérdezésekhez.
 - [Azure monitor http](platform/data-collector-api.md) -adatgyűjtő API – Python 3 minta hozzáadva.
 - [Az](log-query/query-optimization.md) allekérdezések használatakor a Azure monitor hozzáadott szakasz több adatvizsgálat elkerülését ismertető szakaszban található.
-- [Oktatóanyag: Ismerkedés a log Analytics lekérdezésekkel](log-query/get-started-portal.md) – videó hozzáadva.
+- [Oktatóanyag: Ismerkedés a log Analytics lekérdezésekkel](./log-query/log-analytics-tutorial.md) – videó hozzáadva.
 
 ### <a name="platform-logs"></a>Platformnaplók
 - [Diagnosztikai beállítások létrehozása a platform naplófájljainak és metrikáinak különböző célhelyekre való küldéséhez](platform/diagnostic-settings.md) – hozzáadott videó.
@@ -263,7 +263,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 
 ## <a name="june-2020"></a>2020. június
 
-### <a name="general"></a>Általános
+### <a name="general"></a>Általános kérdések
 - [Azure monitor üzembe helyezése](deploy-scale.md) – új cikk.
 - [Azure monitor ügyfél által felügyelt kulcs](platform/customer-managed-keys.md) – frissített billingtype tulajdonság. PowerShell-parancsok hozzáadva.
 
@@ -343,7 +343,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 
 ## <a name="may-2020"></a>2020. május
 
-### <a name="general"></a>Általános
+### <a name="general"></a>Általános kérdések
 
 - [Azure monitor GYIK](faq.md) – további szakasz a mérőszámokhoz.
 - [Azure monitor ügyfél által felügyelt kulcs](platform/customer-managed-keys.md) – az általános elérhetőségre való felkészülés különböző változásai.
@@ -433,7 +433,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 
 ## <a name="april-2020"></a>2020. április
 
-### <a name="general"></a>Általános
+### <a name="general"></a>Általános kérdések
 
 - A [Azure monitor ügyfél által felügyelt kulcshoz](platform/customer-managed-keys.md) hozzáadott szakasz az aszinkron műveletekhez
 - [Log Analytics munkaterületek kezelése Azure monitor](platform/manage-access.md) – frissített egyéni naplók szakaszban.
@@ -482,7 +482,7 @@ Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített ci
 
 ## <a name="march-2020"></a>2020. március
 
-### <a name="general"></a>Általános
+### <a name="general"></a>Általános kérdések
 
 - [Azure monitor áttekintése](overview.md) – Azure monitor áttekintő videó hozzáadva.
 - [Azure monitor ügyfél által felügyelt kulcs konfigurációjának](platform/customer-managed-keys.md) általános frissítései.
@@ -604,7 +604,7 @@ Több új cikk a Designer for munkafüzetek átalakítási útmutatójában.
 
 ## <a name="january-2020"></a>2020. január
 
-### <a name="general"></a>Általános
+### <a name="general"></a>Általános kérdések
 
 - [Mi figyeli a Azure Monitor?](monitor-reference.md) – Új cikk.
 

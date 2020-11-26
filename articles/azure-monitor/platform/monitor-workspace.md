@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/20/2020
-ms.openlocfilehash: 07d9ae0d7cdf8e823bb59cb376d40cdf846bb2cb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3cb01a8f1c06bad618ae5c7930920ee0f067038c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092755"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184535"
 ---
 # <a name="monitor-health-of-log-analytics-workspace-in-azure-monitor"></a>Log Analytics munkaterület állapotának figyelése Azure Monitor
-A Log Analytics munkaterület teljesítményének és rendelkezésre állásának Azure Monitor-ban való fenntartásához képesnek kell lennie proaktív módon észlelni a felmerülő problémákat. Ez a cikk azt ismerteti, hogyan figyelheti a Log Analytics munkaterület állapotát a [műveleti](https://docs.microsoft.com/azure/azure-monitor/reference/tables/operation) tábla adatai alapján. Ez a táblázat minden Log Analytics-munkaterület része, és a munkaterületen előforduló hibákat és figyelmeztetéseket tartalmazza. Rendszeresen tekintse át ezeket az adatait, és hozzon létre riasztásokat, amelyekkel proaktívan értesítheti, ha vannak olyan fontos incidensek a munkaterületen.
+A Log Analytics munkaterület teljesítményének és rendelkezésre állásának Azure Monitor-ban való fenntartásához képesnek kell lennie proaktív módon észlelni a felmerülő problémákat. Ez a cikk azt ismerteti, hogyan figyelheti a Log Analytics munkaterület állapotát a [műveleti](/azure/azure-monitor/reference/tables/operation) tábla adatai alapján. Ez a táblázat minden Log Analytics-munkaterület része, és a munkaterületen előforduló hibákat és figyelmeztetéseket tartalmazza. Rendszeresen tekintse át ezeket az adatait, és hozzon létre riasztásokat, amelyekkel proaktívan értesítheti, ha vannak olyan fontos incidensek a munkaterületen.
 
 ## <a name="_logoperation-function"></a>_LogOperation függvény
 
-Azure Monitor naplók a probléma előfordulásakor a munkaterületen lévő [művelet](https://docs.microsoft.com/azure/azure-monitor/reference/tables/operation) táblájában lévő hibák részleteit küldi el. A **_LogOperation** System függvény a **műveleti** táblázaton alapul, és egyszerűsített információt nyújt az elemzéshez és a riasztásokhoz.
+Azure Monitor naplók a probléma előfordulásakor a munkaterületen lévő [művelet](/azure/azure-monitor/reference/tables/operation) táblájában lévő hibák részleteit küldi el. A **_LogOperation** System függvény a **műveleti** táblázaton alapul, és egyszerűsített információt nyújt az elemzéshez és a riasztásokhoz.
 
 ## <a name="columns"></a>Oszlopok
 
@@ -60,15 +60,15 @@ A betöltési műveletek olyan problémák, amelyek az adatok betöltése során
 | Metaadatok. | Hiba | Konfigurációs hiba észlelhető. | |
 | Adatgyűjtés | Hiba   | Az rendszer eldobta az adatmennyiséget, mert a kérést a beállított napok száma előtt hozták létre. | [A használat és a költségek felügyelete Azure Monitor-naplókkal](manage-cost-storage.md#alert-when-daily-cap-reached)
 | Adatgyűjtés | Információ    | A rendszer a gyűjtemény számítógépének konfigurációját észlelte.| |
-| Adatgyűjtés | Információ    | Az adatgyűjtés új nap miatt megkezdődött. | [A használat és a költségek felügyelete Azure Monitor-naplókkal](/azure/azure-monitor/platform/manage-cost-storage#alert-when-daily-cap-reached) |
-| Adatgyűjtés | Figyelmeztetés | Az adatgyűjtés a napi korlát miatt leállt.| [A használat és a költségek felügyelete Azure Monitor-naplókkal](/azure/azure-monitor/platform/manage-cost-storage#alert-when-daily-cap-reached) |
+| Adatgyűjtés | Információ    | Az adatgyűjtés új nap miatt megkezdődött. | [A használat és a költségek felügyelete Azure Monitor-naplókkal](./manage-cost-storage.md#alert-when-daily-cap-reached) |
+| Adatgyűjtés | Figyelmeztetés | Az adatgyűjtés a napi korlát miatt leállt.| [A használat és a költségek felügyelete Azure Monitor-naplókkal](./manage-cost-storage.md#alert-when-daily-cap-reached) |
 | Adatfeldolgozás | Hiba   | Érvénytelen JSON-formátum. | [Naplóbejegyzések küldése a Azure Monitornak a HTTP-adatgyűjtő API-val (nyilvános előzetes verzió)](data-collector-api.md#request-body) | 
 | Adatfeldolgozás | Figyelmeztetés | Az érték a megengedett maximális méretre van kimetszve. | [Azure Monitor szolgáltatási korlátok](../service-limits.md#log-analytics-workspaces) |
 | Adatfeldolgozás | Figyelmeztetés | A mező értéke elérte a méretkorlátot. | [Azure Monitor szolgáltatási korlátok](../service-limits.md#log-analytics-workspaces) | 
 | Betöltési arány | Információ | A betöltési arány a 70%-ra közeledik. | [Azure Monitor szolgáltatási korlátok](../service-limits.md#log-analytics-workspaces) |
 | Betöltési arány | Figyelmeztetés | A betöltési arány elérte a korlátot. | [Azure Monitor szolgáltatási korlátok](../service-limits.md#log-analytics-workspaces) |
 | Betöltési arány | Hiba   | Elérte a díjszabási korlátot. | [Azure Monitor szolgáltatási korlátok](../service-limits.md#log-analytics-workspaces) |
-| Storage | Hiba   | A Storage-fiók nem érhető el, mert a használt hitelesítő adatok érvénytelenek.  |
+| Tárolás | Hiba   | A Storage-fiók nem érhető el, mert a használt hitelesítő adatok érvénytelenek.  |
 
 
 

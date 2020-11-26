@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan méretezheti az Azure-ban az erőforrás-webalk
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 543ecc80abeb9a437a895224de6ade679698c4d7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5af60befeda9f0ed4ed76f7ab8449e94950352fb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020908"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186575"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Ismerkedés az Azure-beli autoskálázással
 Ez a cikk azt ismerteti, hogyan állíthatja be az erőforráshoz tartozó autoskálázási beállításokat a Microsoft Azure Portalban.
@@ -151,14 +151,14 @@ Ez a szakasz azt ismerteti, hogyan helyezheti át az Azure-beli autoskálázást
 1. Győződjön meg arról, hogy az Azure-beli autoskálázás elérhető az [Azure-régióban, ahová át kíván térni](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all).
 
 ### <a name="move"></a>Áthelyezés
-A [REST API](https://docs.microsoft.com/rest/api/monitor/autoscalesettings/createorupdate) használatával hozzon létre egy autoskálázási beállítást az új környezetben. A célként megadott régióban létrehozott automatikusan skálázási beállítás a forrás régiójában lévő autoskálázási beállítás másolata lesz.
+A [REST API](/rest/api/monitor/autoscalesettings/createorupdate) használatával hozzon létre egy autoskálázási beállítást az új környezetben. A célként megadott régióban létrehozott automatikusan skálázási beállítás a forrás régiójában lévő autoskálázási beállítás másolata lesz.
 
-A forrás régióban az autoscale beállítással létrehozott [diagnosztikai beállítások](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) nem helyezhetők át. A cél régióban újra létre kell hoznia a diagnosztikai beállításokat, miután befejeződött az autosales beállítások létrehozása. 
+A forrás régióban az autoscale beállítással létrehozott [diagnosztikai beállítások](./diagnostic-settings.md) nem helyezhetők át. A cél régióban újra létre kell hoznia a diagnosztikai beállításokat, miután befejeződött az autosales beállítások létrehozása. 
 
 ### <a name="learn-more-about-moving-resources-across-azure-regions"></a>További információ az erőforrások Azure-régiók közötti áthelyezéséről
-Ha többet szeretne megtudni az erőforrások régiók közötti áthelyezéséről és az Azure-beli vész-helyreállításról, olvassa el az [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources) című témakört.
+Ha többet szeretne megtudni az erőforrások régiók közötti áthelyezéséről és az Azure-beli vész-helyreállításról, olvassa el az [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../../azure-resource-manager/management/move-resource-group-and-subscription.md) című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Műveletnapló-riasztás létrehozása az összes autoskálázási motor műveleteinek figyeléséhez az előfizetésen](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [Műveletnapló-riasztás létrehozása az összes sikertelen, az előfizetésen kívüli méretezési és kibővítő művelet figyeléséhez](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
 

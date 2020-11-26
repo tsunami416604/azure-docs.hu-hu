@@ -6,12 +6,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 7f70994f35148614fb048ed2c3297727d5099b05
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 00cec2ca11b77f6cb9d6c0f3c429931bdcc6f6e4
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056514"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186133"
 ---
 # <a name="quickstart-monitor-an-azure-resource-with-azure-monitor"></a>Gyors útmutató: Azure-erőforrások figyelése Azure Monitor
 [Azure monitor](../overview.md) elindítja az adatok gyűjtését az Azure-erőforrásokból a létrehozásuk pillanatában. Ez a rövid útmutató egy adott erőforráshoz automatikusan összegyűjtött és a Azure Portalban megtekinthető adatokat ismerteti. Később további adatokat is hozzáadhat a konfigurációhoz, és a Azure Monitor menüben megtekintheti az előfizetéshez tartozó összes erőforráshoz gyűjtött adatokat.
@@ -37,7 +37,7 @@ Számos szolgáltatás a működésük gyors áttekintése érdekében az **átt
 ## <a name="view-the-activity-log"></a>A műveletnapló megtekintése
 A tevékenység naplója betekintést nyújt az egyes Azure-erőforrások műveleteibe az előfizetésben. Ez olyan információkat tartalmaz, mint az erőforrások létrehozásakor vagy módosításakor, a feladatok indításakor vagy egy adott művelet bekövetkeztekor.
 
-1. Az erőforrás menüjének tetején válassza a **műveletnapló**lehetőséget.
+1. Az erőforrás menüjének tetején válassza a **műveletnapló** lehetőséget.
 2. Az aktuális szűrő az erőforráshoz kapcsolódó eseményekre van beállítva. Ha nem lát eseményeket, próbálja meg módosítani a **TimeSpan** az idő hatókörének növeléséhez.
 
     ![Képernyőkép az erőforrás-tevékenységekről a Azure Portal az alapértelmezett szűrési feltételek alapján generált erőforrás-műveletek listáját jeleníti meg.](media/quick-monitor-azure-resource/activity-log-resource.png)
@@ -51,7 +51,7 @@ A tevékenység naplója betekintést nyújt az egyes Azure-erőforrások művel
 ## <a name="view-metrics"></a>Metrikák megtekintése
 A metrikák olyan numerikus értékek, amelyek egy adott időpontban írják le az erőforrás bizonyos aspektusait. A Azure Monitor az összes Azure-erőforrásból egy percen belül automatikusan gyűjti a platform metrikáit. Ezek a metrikák a metrikák Explorerrel tekinthetők meg.
 
-1. Az erőforrás menüjének **figyelés** területén válassza a **metrikák**lehetőséget. Ekkor megnyílik a metrikák kezelője az erőforráshoz beállított hatókörrel.
+1. Az erőforrás menüjének **figyelés** területén válassza a **metrikák** lehetőséget. Ekkor megnyílik a metrikák kezelője az erőforráshoz beállított hatókörrel.
 2. A diagramhoz metrika hozzáadásához kattintson a **metrika hozzáadása** lehetőségre.
    
    ![Képernyőkép a metrikák tallózóról Azure Portal az erőforrás metrikáinak megjelenítéséről. A metrika legördülő lista új metrikák hozzáadására van nyitva.](media/quick-monitor-azure-resource/metrics-explorer-01.png)
@@ -70,5 +70,4 @@ A metrikák olyan numerikus értékek, amelyek egy adott időpontban írják le 
 Ebben a rövid útmutatóban megtekintett egy Azure-erőforrás tevékenység-naplóját és metrikáit, amelyeket a Azure Monitor automatikusan gyűjt. Folytassa a következő rövid útmutatóval, amely bemutatja, hogyan gyűjtheti be a tevékenység naplóját egy Log Analytics munkaterületre, ahol a [naplózási lekérdezések](../log-query/log-query-overview.md)használatával elemezhetők.
 
 > [!div class="nextstepaction"]
-> [Azure-tevékenység naplójának küldése Log Analytics munkaterületre](https://docs.microsoft.com/azure/azure-monitor/learn/quick-collect-activity-log-portal)
-
+> [Azure-tevékenység naplójának küldése Log Analytics munkaterületre](./quick-collect-activity-log-portal.md)

@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 1813da8a8a812eeded235d71c351ec352c42707c
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: bd929d06bca370ffab53ce2023188bc12a1d8bd1
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920083"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186439"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics munkaterület-adatexportálás Azure Monitorban (előzetes verzió)
 Log Analytics munkaterület-adatexportálás Azure Monitor lehetővé teszi, hogy folyamatosan exportálja a Log Analytics munkaterület kijelölt tábláiból származó adatokat egy Azure Storage-fiókba vagy az Azure-Event Hubsba az összegyűjtött adatok alapján. Ez a cikk részletesen ismerteti ezt a funkciót, valamint az adatexportálás konfigurálásának lépéseit a munkaterületeken.
@@ -68,7 +68,7 @@ Az adatküldés óránként történik a Storage-fiókok számára. Az adatexpor
 
 A Storage-fiók blobjának elérési útja a következő: *WorkspaceResourceId =/Subscriptions/Subscription-ID/resourcegroups/ \<resource-group\> /providers/Microsoft.operationalinsights/workspaces/ \<workspace\> /y = \<four-digit numeric year\> /m = \<two-digit numeric month\> /d =/h =/m = \<two-digit numeric day\> \<two-digit 24-hour clock hour\> 00/PT1H.js*. Mivel a hozzáfűzési Blobok a Storage-ban lévő 50K-írásokra korlátozódnak, az exportált Blobok száma kiterjeszthető, ha a Hozzáfűzések száma magas. Ilyen esetben a Blobok elnevezési mintája PT1H_ #. JSON lesz, ahol a # a növekményes Blobok száma.
 
-A Storage-fiók adatformátuma [JSON-vonal](diagnostic-logs-append-blobs.md). Ez azt jelenti, hogy az egyes rekordok egy sortöréssel vannak elválasztva, a külső rekordok tömbje és a JSON-rekordok közötti vesszők nélkül. 
+A Storage-fiók adatformátuma [JSON-vonal](./resource-logs-blob-format.md). Ez azt jelenti, hogy az egyes rekordok egy sortöréssel vannak elválasztva, a külső rekordok tömbje és a JSON-rekordok közötti vesszők nélkül. 
 
 [![Tárolási mintaadatok](media/logs-data-export/storage-data.png)](media/logs-data-export/storage-data.png#lightbox)
 
@@ -78,7 +78,7 @@ Log Analytics adatexportálás írási blobokat írhat a nem módosítható tár
 A rendszer közel valós időben küldi el az adatait az Event hub számára, mivel Azure Monitor. A rendszer minden olyan adattípushoz létrehoz egy Event hub *-* t, amelyet a név és a tábla neve után exportál. Például a *SecurityEvent* tábla egy *am-SecurityEvent* nevű Event hub számára fog eljuttatni. Ha azt szeretné, hogy az exportált adatai egy adott esemény központhoz jussanak, vagy ha olyan névvel rendelkezik, amely meghaladja az 47 karakteres korlátot, akkor megadhatja a saját Event hub-nevét, és exportálhatja a megadott táblák összes adatait.
 
 Szempontok:
-1. Az "alapszintű" Event hub SKU támogatja a kisebb méretű események [korlátját](https://docs.microsoft.com/azure/event-hubs/event-hubs-quotas#basic-vs-standard-tiers) , és a munkaterület egyes naplói túllépik azt, és el is lehet dobni. Javasoljuk, hogy a "standard" vagy a "dedikált" Event hub legyen az Exportálás célhelye.
+1. Az "alapszintű" Event hub SKU támogatja a kisebb méretű események [korlátját](../../event-hubs/event-hubs-quotas.md#basic-vs-standard-tiers) , és a munkaterület egyes naplói túllépik azt, és el is lehet dobni. Javasoljuk, hogy a "standard" vagy a "dedikált" Event hub legyen az Exportálás célhelye.
 2. Az exportált adatok mennyisége gyakran növekszik az idő múlásával, és az Event hub-méretezést növelni kell a nagyobb adatátviteli sebesség kezelésére, valamint a szabályozás és az adatkésés elkerülésére. A Event Hubs automatikus feltöltési funkciójának használatával automatikusan méretezheti és növelheti az átviteli egységek számát, és megfelel a használati igényeknek. A részletekért lásd: az [Azure Event Hubs átviteli egységek automatikus vertikális felskálázása](../../event-hubs/event-hubs-auto-inflate.md) .
 
 ## <a name="prerequisites"></a>Előfeltételek

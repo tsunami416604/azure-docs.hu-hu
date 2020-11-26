@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 11/05/2020
 ms.author: alsin
-ms.openlocfilehash: 226a23bfdacb0f7423c7dafb8cae36af7333699d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 4694fa679c7bbff309a0452219ff39bacf2488c4
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681839"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183702"
 ---
 # <a name="repair-an-automanage-account"></a>Automanage-fiók javítása
 Az [Azure automatikus felügyelet fiókja](./automanage-virtual-machines.md#automanage-account) az a biztonsági környezet vagy identitás, amely alatt az automatizált műveletek történnek. Ha nemrég olyan előfizetést helyezett át, amely egy automatikusan felügyelt fiókot tartalmaz egy új bérlőhöz, újra kell konfigurálnia a fiókot. Az újrakonfiguráláshoz alaphelyzetbe kell állítania az identitás típusát, és hozzá kell rendelnie a fiókhoz a megfelelő szerepköröket.
@@ -22,8 +22,8 @@ Az [Azure automatikus felügyelet fiókja](./automanage-virtual-machines.md#auto
 Az alábbi Azure Resource Manager (ARM) sablon használatával állítsa alaphelyzetbe az automanage Account Identity típust. Mentse a fájlt helyileg armdeploy.jsvagy hasonló néven. Figyelje meg, hogy a fiók neve és helye nem az ARM-sablonban szükséges paraméterek.
 
 1. Hozzon létre egy Resource Manager-telepítést a következő sablonnal. Használja az `identityType = None` parancsot.
-    * A telepítés az Azure CLI-ben a használatával hozható létre `az deployment sub create` . További információ: [az Deployment sub](https://docs.microsoft.com/cli/azure/deployment/sub).
-    * A telepítést a PowerShellben hozhatja létre a `New-AzDeployment` modul használatával. További információ: [New-AzDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azdeployment).
+    * A telepítés az Azure CLI-ben a használatával hozható létre `az deployment sub create` . További információ: [az Deployment sub](/cli/azure/deployment/sub).
+    * A telepítést a PowerShellben hozhatja létre a `New-AzDeployment` modul használatával. További információ: [New-AzDeployment](/powershell/module/az.resources/new-azdeployment).
 
 1. Futtassa újra ugyanezt az ARM-sablont a rel `identityType = SystemAssigned` .
 
@@ -63,7 +63,7 @@ Az automanage fiókhoz a közreműködő és az erőforrás-házirend közreműk
 
 Ha ARM-sablont vagy az Azure CLI-t használja, szüksége lesz az automanage-fiókjának résztvevő-AZONOSÍTÓra (más néven objektumazonosító). (Ha a Azure Portal használja, nincs szükség az AZONOSÍTÓra.) Ezt az azonosítót a következő módszerekkel érheti el:
 
-- [Azure CLI](https://docs.microsoft.com/cli/azure/ad/sp): használja az parancsot `az ad sp list --display-name <name of your Automanage Account>` .
+- [Azure CLI](/cli/azure/ad/sp): használja az parancsot `az ad sp list --display-name <name of your Automanage Account>` .
 
 - Azure Portal: Nyissa meg a **Azure Active Directory** , és keresse meg a fiókját név szerint. A **vállalati alkalmazások** területen válassza ki a fiók autokezelése nevet, ha megjelenik.
 
@@ -72,7 +72,7 @@ Ha ARM-sablont vagy az Azure CLI-t használja, szüksége lesz az automanage-fi�
 1. Nyissa meg a **hozzáférés-vezérlés (iam)** lehetőséget.
 1. Válassza a **szerepkör-hozzárendelések hozzáadása** lehetőséget.
 1. Válassza ki a **közreműködő** szerepkört, és adja meg az automanage-fiók nevét.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 1. Ismételje meg a 3 – 5. lépést, ezúttal az **erőforrás-házirend közreműködői** szerepkörével.
 
 ### <a name="arm-template"></a>ARM-sablon

@@ -10,16 +10,16 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: mbullwin
-ms.openlocfilehash: de8d5d8e9fc5ce1df05cfd4c67ef146760e2c7e9
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: fb6eaf44967732d3a41ea92b0896540a40f694e3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043170"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184722"
 ---
 # <a name="how-to-manage-your-data-feeds"></a>Útmutató: az adatcsatornák kezelése
 
-Ismerje meg, hogyan kezelheti az adatcsatornákat a metrikus tanácsadóban. Ez a cikk végigvezeti a mérőszámok figyelő adatcsatornáinak kezelésén.
+Ismerje meg, hogyan kezelheti az adatcsatornákat a metrikus tanácsadóban. Ez a cikk végigvezeti az adatcsatornáknak a metrikai tanácsadóban való kezelésén.
 
 ## <a name="edit-a-data-feed"></a>Adatcsatorna szerkesztése
 
@@ -27,7 +27,7 @@ Ismerje meg, hogyan kezelheti az adatcsatornákat a metrikus tanácsadóban. Ez 
 > Az adatcsatorna létrehozása után a következő adatok nem módosíthatók. 
 > * Adatcsatorna azonosítója
 > * Létrehozás ideje
-> * Méret
+> * Dimenzió
 > * Source Type (Forrás típusa)
 > * Részletesség
 
@@ -43,9 +43,9 @@ Adatcsatorna törlése:
 
 1. Az adatcsatorna-lista lapon kattintson a **Törlés** elemre az adatcsatornán.
 
-2. Az adatcsatorna adatai lapon kattintson a **Törlés**elemre.
+2. Az adatcsatorna adatai lapon kattintson a **Törlés** elemre.
 
-A kezdési idő módosításakor újra ellenőriznie kell a sémát. Módosíthatja a **paramétereket a paraméterek szerkesztése**lehetőséggel.
+A kezdési idő módosításakor újra ellenőriznie kell a sémát. Módosíthatja a **paramétereket a paraméterek szerkesztése** lehetőséggel.
 
 ##  <a name="backfill-your-data-feed"></a>Backfill az adatcsatornákat
 
@@ -76,7 +76,7 @@ A metrikák tanácsadója lehetővé teszi, hogy különböző adatcsatornákon 
 
 * **Maximális Egyidejűség**: akkor adja meg ezt a paramétert, ha az adatforrás támogatja a korlátozott párhuzamosságot. Ellenkező esetben hagyja meg az alapértelmezett beállítást.
 
-* **Újrapróbálkozás**ennyi idő után: Ha az adatfeldolgozás meghiúsult, akkor egy adott időszakon belül automatikusan újrapróbálkozik. Az időszak kezdete az az idő, amikor az első adatfeldolgozás történt. Az időszak hossza a részletességnek megfelelően van definiálva. Ha az alapértelmezett értéket (-1) hagyja, az érték az alábbi részletesség alapján lesz meghatározva.
+* **Újrapróbálkozás** ennyi idő után: Ha az adatfeldolgozás meghiúsult, akkor egy adott időszakon belül automatikusan újrapróbálkozik. Az időszak kezdete az az idő, amikor az első adatfeldolgozás történt. Az időszak hossza a részletességnek megfelelően van definiálva. Ha az alapértelmezett értéket (-1) hagyja, az érték az alábbi részletesség alapján lesz meghatározva.
     
     | Részletesség       | Újrapróbálkozás befejezése után           |
     | :------------ | :--------------- |
@@ -89,7 +89,7 @@ A metrikák tanácsadója lehetővé teszi, hogy különböző adatcsatornákon 
     | :------------ | :--------------- |
     | Napi, egyéni (>= 1 nap), hetente, havonta     | 30 perc          |
     | Óránként, egyéni (< 1 nap)      | 10 perc |
-    | Évi | 1 nap          |
+    | Éves | 1 nap          |
  
 ### <a name="fill-gap-when-detecting"></a>Kitöltési hézag az észleléskor: 
 
@@ -106,7 +106,7 @@ A következő lehetőségek közül választhat:
 
 A Action link-sablonok használatával előre definiálható http URL-címek határozhatók meg, amelyek a helyőrzők,,, és karakterből állhatnak `%datafeed` `%metric` `%timestamp` `%detect_config` `%tagset` . A sablon használatával egy anomália vagy incidens egy adott URL-címére irányítható át a részletezéshez.
 
-:::image type="content" source="../media/action-link-template.png" alt-text="Backfill adatcsatorna" lightbox="../media/action-link-template.png":::
+:::image type="content" source="../media/action-link-template.png" alt-text="Művelet csatolása sablon" lightbox="../media/action-link-template.png":::
 
 Miután kitöltötte a művelet hivatkozását **, kattintson a művelet hivatkozásra az** incidensek listájának művelete lehetőségnél, majd az incidens faszerkezetének jobb gombbal kattintson a menü elemre. Cserélje le a művelet csatolása sablonban található helyőrzőket az anomália vagy az incidens megfelelő értékeire.
 

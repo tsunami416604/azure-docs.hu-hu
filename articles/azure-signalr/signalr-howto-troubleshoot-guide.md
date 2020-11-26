@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: 11ea348a80bc226b6a96bea1e7c023ee9c06b13a
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: cc17dcef7a554bee2715c79ba7d0c2356db2c6b3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684117"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185657"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Hibaelhárítási útmutató az Azure Signaler szolgáltatás gyakori problémáira
 
@@ -148,7 +148,7 @@ A ASP.NET-jelző esetében, amikor az [ügyfél kapcsolata csökken](#client_con
 
 Az **ingyenes** példányok esetében az **egyidejű** kapcsolatok száma legfeljebb 20 a **standard** példányok esetében, az **egységenkénti** **kapcsolati** korlát egységenként 1 K, ami azt jelenti, hogy a Unit100 engedélyezi a 100-K egyidejű kapcsolatait.
 
-A kapcsolatok az ügyfél és a kiszolgáló kapcsolatait is tartalmazzák. [itt](https://docs.microsoft.com/azure/azure-signalr/signalr-concept-messages-and-connections#how-connections-are-counted) tekintheti meg a kapcsolatok számításának módját.
+A kapcsolatok az ügyfél és a kiszolgáló kapcsolatait is tartalmazzák. [itt](./signalr-concept-messages-and-connections.md#how-connections-are-counted) tekintheti meg a kapcsolatok számításának módját.
 
 ## <a name="500-error-when-negotiate-azure-signalr-service-is-not-connected-yet-please-try-again-later"></a>500 hiba az egyeztetés során: az Azure Signaler szolgáltatás még nincs csatlakoztatva, próbálkozzon újra később.
 
@@ -162,7 +162,7 @@ Engedélyezze a kiszolgálóoldali nyomkövetést, hogy megtudja a hiba részlet
 
 #### <a name="enable-server-side-logging-for-aspnet-core-signalr"></a>Kiszolgálóoldali naplózás engedélyezése ASP.NET Core jelzőhöz
 
-A ASP.NET Core-jelző kiszolgálóoldali naplózása integrálható a `ILogger` ASP.net Core-keretrendszerben megadott alapú [naplózással](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1&tabs=aspnetcore2x) . A kiszolgálóoldali naplózást a következő módon engedélyezheti `ConfigureLogging` a használatával:
+A ASP.NET Core-jelző kiszolgálóoldali naplózása integrálható a `ILogger` ASP.net Core-keretrendszerben megadott alapú [naplózással](/aspnet/core/fundamentals/logging/?tabs=aspnetcore2x&view=aspnetcore-2.1) . A kiszolgálóoldali naplózást a következő módon engedélyezheti `ConfigureLogging` a használatával:
 ```cs
 .ConfigureLogging((hostingContext, logging) =>
         {

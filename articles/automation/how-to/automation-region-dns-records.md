@@ -3,14 +3,14 @@ title: Az Azure Automation által használt Azure-adatközpont DNS-rekordjai | M
 description: Ez a cikk a Azure Automation szolgáltatások által igényelt DNS-rekordokat ismerteti, amikor az Automation-fiókot üzemeltető Azure-régióval való kommunikációt korlátozza.
 services: automation
 ms.subservice: process-automation
-ms.date: 07/23/2020
+ms.date: 11/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: 17d0857a8979cfcc632ab8951fb255f97229a665
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4b8f48afc75c0a96937575bdad5bb884d0cb4d8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87117184"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183719"
 ---
 # <a name="dns-records-for-azure-regions-used-by-azure-automation"></a>Az Azure Automation által használt Azure-régiók DNS-rekordjai
 
@@ -57,7 +57,7 @@ A Azure Automation [privát hivatkozásának](../../private-link/private-link-ov
 | USA nyugati középső régiója |`https://<accountId>.webhook.wcus.azure-automation.net`<br>`https://<accountId>.agentsvc.wcus.azure-automation.net`<br>`https://<accountId>.jrds.wcus.azure-automation.net` |
 | USA nyugati régiója |`https://<accountId>.webhook.wus.azure-automation.net`<br>`https://<accountId>.agentsvc.wus.azure-automation.net`<br>`https://<accountId>.jrds.wus.azure-automation.net` |
 | USA 2. nyugati régiója |`https://<accountId>.webhook.wus2.azure-automation.net`<br>`https://<accountId>.agentsvc.wus2.azure-automation.net`<br>`https://<accountId>.jrds.wus2.azure-automation.net` |
-| USA középső régiója |`https://<accountId>.webhook.cus.azure-automation.net`<br>`https://<accountId>.agentsvc.cus.azure-automation.net`<br>`https://<accountId>.jrds.cus.azure-automation.net` |
+| Az USA középső régiója |`https://<accountId>.webhook.cus.azure-automation.net`<br>`https://<accountId>.agentsvc.cus.azure-automation.net`<br>`https://<accountId>.jrds.cus.azure-automation.net` |
 | USA déli középső régiója |`https://<accountId>.webhook.scus.azure-automation.net`<br>`https://<accountId>.agentsvc.scus.azure-automation.net`<br>`https://<accountId>.jrds.scus.azure-automation.net` |
 | USA északi középső régiója |`https://<accountId>.webhook.ncus.azure-automation.net`<br>`https://<accountId>.agentsvc.ncus.azure-automation.net`<br>`https://<accountId>.jrds.ncus.azure-automation.net` |
 | USA keleti régiója |`https://<accountId>.webhook.eus.azure-automation.net`<br>`https://<accountId>.agentsvc.eus.azure-automation.net`<br>`https://<accountId>.jrds.eus.azure-automation.net` |
@@ -90,6 +90,9 @@ Cserélje le a `<accountId>` értéket a DNS-rekordba az Automation-fiók azonos
 
 Másolja az értéket a *fiókok/* URL- **cím** mező után – `https://<GUID>.agentsvc.<region>.azure-automation.net/accounts/<GUID>`
 
+> [!NOTE]
+> Az összes webhook-és agentservice DNS-rekord frissítve lett az új stílusú DNS-rekordokra a privát hivatkozás támogatásához. JRDS DNS-rekordok esetén a régi és az új stílusú DNS-rekordok is támogatottak. Ha nem használ privát hivatkozást, a régi stílusú DNS-rekordok jelennek meg, míg a privát hivatkozásokat használó a DNS-rekordok új stílusát fogják látni.
+
 Javasoljuk, hogy használja a [kivételek](../automation-runbook-execution.md#exceptions)meghatározásakor felsorolt címeket. A régió IP-címeinek listája a régiók nevei helyett a következő felhőalapú környezetek esetén töltse le a JSON-fájlt a Microsoft letöltőközpontból:
 
 * [Azure IP-címtartományok és szolgáltatás-címkék – Azure Public](https://www.microsoft.com/download/details.aspx?id=56519)
@@ -104,7 +107,7 @@ Az IP-cím fájl felsorolja az Microsoft Azure adatközpontokban használt IP-c�
 > [!NOTE]
 > Ha az Azure ExpressRoute-t használja, ne feledje, hogy az IP-fájl az Azure Space Border Gateway Protocol (BGP) hirdetményének az egyes hónapok első hetében való frissítésére szolgál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A hibrid Runbook-feldolgozók hibaelhárításával kapcsolatos további információkért lásd: [hibrid Runbook-feldolgozói problémák elhárítása](../troubleshoot/hybrid-runbook-worker.md#general).
 

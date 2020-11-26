@@ -7,19 +7,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 391d9562bc73265a10976f485c78e3966aa4fe83
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: b770e4488b6edb1c2d3749066315b552c0b5b40a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536285"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186167"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor gyakori kérdések
 
 A Microsoft gyakori kérdései a Azure Monitorkal kapcsolatos gyakori kérdések listája. Ha további kérdése van, látogasson el a [vitafórumra](/answers/questions/topics/single/24223.html) , és tegye fel kérdéseit. Ha egy kérdést gyakran megkérdeznek, azt a cikkhez adja hozzá, hogy gyorsan és könnyen elérhető legyen.
 
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 ### <a name="what-is-azure-monitor"></a>Mi az Azure Monitor?
 [Azure monitor](overview.md) egy Azure-szolgáltatás, amely teljesítmény-és rendelkezésre állási monitorozást biztosít az Azure-ban, más felhőalapú környezetekben vagy helyszíni környezetben futó alkalmazások és szolgáltatások számára. Azure Monitor a különböző forrásokból származó adatokat egy közös adatplatformba gyűjti, ahol elemezni lehet a trendeket és a rendellenességeket. A Azure Monitor gazdag funkciói segítenek gyorsan azonosítani és reagálni azokra a kritikus helyzetekre, amelyek hatással lehetnek az alkalmazásra.
@@ -31,7 +31,7 @@ Szeptember 2018-án a Microsoft kombinált Azure Monitor, Log Analytics és Appl
 A Azure Monitor automatikusan engedélyezett szolgáltatásai, például a metrikák és a tevékenységek naplóinak gyűjtése díjmentes. Más szolgáltatásokkal, például a naplók lekérdezésével és a riasztásokkal kapcsolatos költségeket is tartalmaz. A részletes díjszabási információkért tekintse meg a [Azure monitor díjszabási oldalát](https://azure.microsoft.com/pricing/details/monitor/) .
 
 ### <a name="how-do-i-enable-azure-monitor"></a>Hogyan az Azure Monitor engedélyezése?
-Azure Monitor engedélyezve van az új Azure-előfizetés létrehozásakor, valamint a [tevékenység naplójának](./platform/platform-logs-overview.md) és a platform [metrikáinak](platform/data-platform-metrics.md) automatikus gyűjtése. [Diagnosztikai beállításokat](platform/diagnostic-settings.md) hozhat létre az Azure-erőforrások működésével kapcsolatos részletesebb információk gyűjtéséhez, valamint a [figyelési megoldások](insights/solutions.md) és elemzések hozzáadásához [, hogy](insights/insights-overview.md) további elemzéseket nyújtson az egyes szolgáltatások összegyűjtött adatairól. 
+Azure Monitor engedélyezve van az új Azure-előfizetés létrehozásakor, valamint a [tevékenység naplójának](./platform/platform-logs-overview.md) és a platform [metrikáinak](platform/data-platform-metrics.md) automatikus gyűjtése. [Diagnosztikai beállításokat](platform/diagnostic-settings.md) hozhat létre az Azure-erőforrások működésével kapcsolatos részletesebb információk gyűjtéséhez, valamint a [figyelési megoldások](insights/solutions.md) és elemzések hozzáadásához [, hogy](./monitor-reference.md) további elemzéseket nyújtson az egyes szolgáltatások összegyűjtött adatairól. 
 
 ### <a name="how-do-i-access-azure-monitor"></a>Hogyan a hozzáférési Azure Monitor?
 A Azure Portal **figyelés** menüjében található összes Azure monitor funkció és az adatok elérése. A különböző Azure-szolgáltatások menüjének **figyelés** szakasza ugyanazokat az eszközöket biztosítja, mint az adott erőforráshoz szűrt adatok. Azure Monitor adatok a CLI, a PowerShell és a REST API használatával számos különböző forgatókönyvhöz is elérhetők.
@@ -65,7 +65,7 @@ Az elemzések és megoldások egyéni felhasználói élményt biztosítanak a A
 ## <a name="solutions-and-insights"></a>Megoldások és bepillantást nyerhet
 
 ### <a name="what-is-an-insight-in-azure-monitor"></a>Mi a Azure Monitor betekintése?
-Az adatok testreszabott figyelési élményt nyújtanak az adott Azure-szolgáltatásokhoz. Ugyanazokat a metrikákat és naplókat használják, mint a Azure Monitor egyéb funkciói, de további adatokat gyűjthetnek, és egyedi felhasználói élményt nyújthatnak a Azure Portal. Tekintse [meg Azure monitor](insights/insights-overview.md).
+Az adatok testreszabott figyelési élményt nyújtanak az adott Azure-szolgáltatásokhoz. Ugyanazokat a metrikákat és naplókat használják, mint a Azure Monitor egyéb funkciói, de további adatokat gyűjthetnek, és egyedi felhasználói élményt nyújthatnak a Azure Portal. Tekintse [meg Azure monitor](./monitor-reference.md).
 
 A Azure Portalban megjelenő információk megtekintéséhez tekintse meg **a szolgáltatás** menüjének **figyelés** menüjének és **figyelés** szakaszának áttekintés szakaszát.
 
@@ -77,7 +77,7 @@ Ha meg szeretné tekinteni a megoldásokat a Azure Portalban, kattintson **a** *
 ## <a name="logs"></a>Naplók
 
 ### <a name="whats-the-difference-between-azure-monitor-logs-and-azure-data-explorer"></a>Mi a különbség a Azure Monitor naplók és az Azure Adatkezelő között?
-Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Azure Monitor naplók az Azure Adatkezelőra épülnek, és ugyanazokat a Kusto-lekérdezési nyelvet (KQL) használják néhány kisebb eltéréssel. Lásd: [Azure monitor a naplózási lekérdezés nyelvi különbségeit](log-query/data-explorer-difference.md).
+Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Azure Monitor naplók az Azure Adatkezelőra épülnek, és ugyanazokat a Kusto-lekérdezési nyelvet (KQL) használják néhány kisebb eltéréssel. Lásd: [Azure monitor a naplózási lekérdezés nyelvi különbségeit](/azure/data-explorer/kusto/query/).
 
 ### <a name="how-do-i-retrieve-log-data"></a>Hogyan beolvasni az adatnaplót?
 Az összes adatok beolvasása egy Log Analytics munkaterületről a Kusto Query Language (KQL) használatával írt napló lekérdezés használatával. Írhat saját lekérdezéseket, vagy használhat olyan megoldásokat és bepillantást, amelyek egy adott alkalmazáshoz vagy szolgáltatáshoz tartozó naplózási lekérdezéseket tartalmaznak. Lásd: [Azure monitorban található naplók áttekintése](log-query/log-query-overview.md).
@@ -224,7 +224,7 @@ A tervező csak közreműködői engedélyekkel rendelkező felhasználók szám
 * [Node.js-alkalmazások](app/nodejs.md)
 * [Webalkalmazások az Azure-ban](app/azure-web-apps.md)
 * [Cloud Services az Azure-ban](app/cloudservices.md)
-* [A Docker-ben futó alkalmazás-kiszolgálók](app/docker.md)
+* [A Docker-ben futó alkalmazás-kiszolgálók](./azure-monitor-app-hub.yml)
 * [Egyoldalas webalkalmazások](app/javascript.md)
 * [SharePoint](app/sharepoint.md)
 * [Windows asztali alkalmazás](app/windows-desktop.md)
@@ -401,7 +401,7 @@ Minden továbbított tétel egy olyan `itemCount` tulajdonságot hordoz, amely a
 
 A meglévő Application Insights erőforrások egyik régióból a másikba való áthelyezése **jelenleg nem támogatott**. Az összegyűjtött korábbi adatok **nem telepíthetők át** új régióba. Az egyetlen részleges Áthidaló megoldás a következő:
 
-1. Új Application Insights-erőforrás létrehozása ([klasszikus](app/create-new-resource.md) vagy [munkaterület-alapú](/azure/azure-monitor/app/create-workspace-resource)) az új régióban.
+1. Új Application Insights-erőforrás létrehozása ([klasszikus](app/create-new-resource.md) vagy [munkaterület-alapú](./app/create-workspace-resource.md)) az új régióban.
 2. Hozza létre újra az új erőforrás eredeti erőforrásához tartozó összes egyedi testreszabást.
 3. Módosítsa az alkalmazást úgy, hogy az új régió-erőforrás kialakítási [kulcsát](app/create-new-resource.md#copy-the-instrumentation-key) vagy a [kapcsolódási karakterláncot](app/sdk-connection-string.md)használja.  
 4. Ellenőrizze, hogy minden továbbra is a várt módon működik-e az új Application Insights erőforrással. 
@@ -414,7 +414,7 @@ Az új régióban az erőforráshoz gyakran manuálisan újra létre kell hozni 
 - Rendelkezésre állási riasztások újbóli létrehozása.
 - Hozza létre újra a felhasználók számára az új erőforrás eléréséhez szükséges egyéni Azure szerepköralapú hozzáférés-vezérlési (Azure RBAC) beállításokat. 
 - Replikálja a betöltési mintavételezést, az adatmegőrzést, a napi korlátot és az egyéni metrikák engedélyezését érintő beállításokat. Ezeket a beállításokat a **használati és becsült költségek** panelen szabályozhatja.
-- Minden olyan integráció, amely az API-kulcsokra támaszkodik, például a [kibocsátási jegyzetek](/azure/azure-monitor/app/annotations), az [élő metrika biztonságos vezérlési csatornája](app/live-stream.md#secure-the-control-channel) stb. Új API-kulcsokat kell létrehoznia, és frissítenie kell a társított integrációt. 
+- Minden olyan integráció, amely az API-kulcsokra támaszkodik, például a [kibocsátási jegyzetek](./app/annotations.md), az [élő metrika biztonságos vezérlési csatornája](app/live-stream.md#secure-the-control-channel) stb. Új API-kulcsokat kell létrehoznia, és frissítenie kell a társított integrációt. 
 - A klasszikus erőforrások folyamatos exportálását újra kell konfigurálni.
 - A munkaterület-alapú erőforrások diagnosztikai beállításait újra kell konfigurálni.
 

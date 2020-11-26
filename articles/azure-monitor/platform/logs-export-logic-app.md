@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/02/2020
-ms.openlocfilehash: ed9942fa7b73418e3ef1ddf0651781d32b662995
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 04f1eb0d9db00a2be1a4619cafe38aa18145fc78
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92049788"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185997"
 ---
 # <a name="archive-data-from-log-analytics-workspace-to-azure-storage-using-logic-app"></a>Adatok archiválása Log Analytics munkaterületről az Azure Storage-ba a logikai alkalmazás használatával
 Ez a cikk azt ismerteti, hogyan lehet a [Azure Logic apps](../../logic-apps/index.yml) segítségével lekérdezni a Azure monitor és az Azure Storage szolgáltatásba küldött log Analytics munkaterületről származó adatok lekérdezésére szolgáló módszert. Akkor használja ezt a folyamatot, ha a naplózási és megfelelőségi forgatókönyvek Azure Monitor naplózási adatait szeretné exportálni, vagy egy másik szolgáltatás számára engedélyezi az adatok lekérését.  
@@ -25,7 +25,7 @@ A cikkben ismertetett módszer egy logikai alkalmazás használatával ütemezet
 - Egyszeri exportálás a helyi gépre PowerShell-parancsfájl használatával. Lásd: [meghívás-AzOperationalInsightsQueryExport]] ( https://www.powershellgallery.com/packages/Invoke-AzOperationalInsightsQueryExport) .
 
 ## <a name="overview"></a>Áttekintés
-Ez az eljárás a [Azure monitor naplók összekötőt](https://docs.microsoft.com/connectors/azuremonitorlogs/) használja, amely lehetővé teszi a log-lekérdezés futtatását egy logikai alkalmazásból, és a kimenetét használja a munkafolyamat más műveleteiben. Ebben az eljárásban az [azure blob Storage-összekötőt](https://docs.microsoft.com/connectors/azureblob/) használjuk a lekérdezés kimenetének az Azure Storage-ba való küldéséhez. A többi műveletet az alábbi szakaszokban ismertetjük.
+Ez az eljárás a [Azure monitor naplók összekötőt](/connectors/azuremonitorlogs/) használja, amely lehetővé teszi a log-lekérdezés futtatását egy logikai alkalmazásból, és a kimenetét használja a munkafolyamat más műveleteiben. Ebben az eljárásban az [azure blob Storage-összekötőt](/connectors/azureblob/) használjuk a lekérdezés kimenetének az Azure Storage-ba való küldéséhez. A többi műveletet az alábbi szakaszokban ismertetjük.
 
 ![A Logic app áttekintése](media/logs-export-logicapp/logic-app-overview.png)
 
@@ -61,25 +61,25 @@ A tároló [létrehozása](../../storage/blobs/storage-quickstart-blobs-portal.m
 
 ## <a name="create-logic-app"></a>Logikai alkalmazás létrehozása
 
-Lépjen a Azure Portal **Logic apps** elemre, majd kattintson a **Hozzáadás**gombra. Válassza ki az új logikai alkalmazás tárolására szolgáló **előfizetést**, **erőforráscsoportot**és **régiót** , majd adjon meg egy egyedi nevet. **Log Analytics** beállítás bekapcsolásával információkat gyűjthet a futtatókörnyezet adatairól és eseményeiről az [Azure monitor naplók beállítása és a diagnosztikai adatok összegyűjtése a Azure Logic apps számára](../../logic-apps/monitor-logic-apps-log-analytics.md)című témakörben leírtak szerint. Ez a beállítás nem szükséges a Azure Monitor naplók összekötő használatához.
+Lépjen a Azure Portal **Logic apps** elemre, majd kattintson a **Hozzáadás** gombra. Válassza ki az új logikai alkalmazás tárolására szolgáló **előfizetést**, **erőforráscsoportot** és **régiót** , majd adjon meg egy egyedi nevet. **Log Analytics** beállítás bekapcsolásával információkat gyűjthet a futtatókörnyezet adatairól és eseményeiről az [Azure monitor naplók beállítása és a diagnosztikai adatok összegyűjtése a Azure Logic apps számára](../../logic-apps/monitor-logic-apps-log-analytics.md)című témakörben leírtak szerint. Ez a beállítás nem szükséges a Azure Monitor naplók összekötő használatához.
 
 ![Logikai alkalmazás létrehozása](media/logs-export-logicapp/create-logic-app.png)
 
 
-Kattintson a **felülvizsgálat + létrehozás** , majd a **Létrehozás**elemre. Ha a telepítés befejeződött, kattintson az **erőforrás** megnyitása lehetőségre a **Logic apps Designer**megnyitásához.
+Kattintson a **felülvizsgálat + létrehozás** , majd a **Létrehozás** elemre. Ha a telepítés befejeződött, kattintson az **erőforrás** megnyitása lehetőségre a **Logic apps Designer** megnyitásához.
 
 ## <a name="create-a-trigger-for-the-logic-app"></a>Trigger létrehozása a logikai alkalmazáshoz
-Az **Indítás általános eseményindítóval**területen válassza az **Ismétlődés**lehetőséget. Ez egy olyan logikai alkalmazást hoz létre, amely rendszeres időközönként automatikusan fut. A művelet **gyakorisága** mezőben válassza az **óra** lehetőséget, majd az **intervallum** mezőben adja meg az **1** értéket a munkafolyamat napi egyszeri futtatásához.
+Az **Indítás általános eseményindítóval** területen válassza az **Ismétlődés** lehetőséget. Ez egy olyan logikai alkalmazást hoz létre, amely rendszeres időközönként automatikusan fut. A művelet **gyakorisága** mezőben válassza az **óra** lehetőséget, majd az **intervallum** mezőben adja meg az **1** értéket a munkafolyamat napi egyszeri futtatásához.
 
 ![Ismétlődési művelet](media/logs-export-logicapp/recurrence-action.png)
 
 
 ### <a name="add-azure-monitor-logs-action"></a>Azure Monitor naplók hozzáadása művelet
-Kattintson az **+ új lépés** gombra egy olyan művelet hozzáadásához, amely az ismétlődési művelet után fut. A **művelet kiválasztása**területen írja be az **Azure monitor** parancsot, majd válassza ki **Azure monitor naplókat**.
+Kattintson az **+ új lépés** gombra egy olyan művelet hozzáadásához, amely az ismétlődési művelet után fut. A **művelet kiválasztása** területen írja be az **Azure monitor** parancsot, majd válassza ki **Azure monitor naplókat**.
 
 ![Azure Monitor naplók művelete](media/logs-export-logicapp/select-azure-monitor-connector.png)
 
-Kattintson **Az Azure log Analytics – lekérdezési és listázási eredmények futtatása**elemre.
+Kattintson **Az Azure log Analytics – lekérdezési és listázási eredmények futtatása** elemre.
 
 ![Képernyőkép a Logic app Designer egyik lépéséhez hozzáadott új műveletről. Azure Monitor naplók ki vannak emelve a művelet kiválasztása lehetőség alatt.](media/logs-export-logicapp/select-query-action-list.png)
 
@@ -89,7 +89,7 @@ A rendszer kérni fogja, hogy válasszon ki egy bérlőt, és adjon hozzáféré
 ## <a name="add-azure-monitor-logs-action"></a>Azure Monitor naplók hozzáadása művelet
 A Azure Monitor naplók művelettel megadhatja a futtatandó lekérdezést. Az ebben a példában használt naplózási lekérdezés óránkénti ismétlődésre van optimalizálva, és az adott végrehajtási időpontra vonatkozó adatokat gyűjti. Ha például a munkafolyamat a 4:35-es időpontban fut, az időtartomány 4:00 és 5:00. Ha úgy módosítja a logikai alkalmazást, hogy más gyakorisággal fusson, szüksége lesz a lekérdezés módosítására is. Ha például úgy állítja be az ismétlődést, hogy naponta fusson, az időpontot a lekérdezésben startofday (make_datetime (év, hónap, nap, 0, 0) értékre állítja be. 
 
-Válassza ki az **előfizetést** és az **erőforráscsoportot** a log Analytics munkaterülethez. Válassza ki *log Analytics munkaterületet* az **erőforrás típusához** , majd válassza ki a munkaterület nevét az **Erőforrás neve**alatt.
+Válassza ki az **előfizetést** és az **erőforráscsoportot** a log Analytics munkaterülethez. Válassza ki *log Analytics munkaterületet* az **erőforrás típusához** , majd válassza ki a munkaterület nevét az **Erőforrás neve** alatt.
 
 Adja hozzá a következő naplózási lekérdezést a **lekérdezési** ablakhoz.  
 
@@ -131,7 +131,7 @@ A **futtatási lekérdezés és a lista eredményei** művelet kimenete JSON-for
 Megadhat egy JSON-sémát, amely leírja a várt adattartalmat. A tervező elemzi a JSON-tartalmat a séma használatával, és olyan felhasználóbarát jogkivonatokat hoz létre, amelyek a JSON-tartalomban szereplő tulajdonságokat jelölik. Ezután egyszerűen hivatkozhat és felhasználhatja ezeket a tulajdonságokat a logikai alkalmazás munkafolyamataiban. 
 
 
-Kattintson az **+ új lépés**, majd **a + művelet hozzáadása**lehetőségre. A **művelet kiválasztása**területen írja be a **JSON** -t, majd válassza a **JSON**elemzése lehetőséget.
+Kattintson az **+ új lépés**, majd **a + művelet hozzáadása** lehetőségre. A **művelet kiválasztása** területen írja be a **JSON** -t, majd válassza a **JSON** elemzése lehetőséget.
 
 ![A JSON elemzési tevékenység kiválasztása](media/logs-export-logicapp/select-parse-json.png)
 
@@ -139,7 +139,7 @@ Kattintson a **tartalom** mezőbe az előző tevékenységekből származó ért
 
 [![Törzs kijelölése](media/logs-export-logicapp/select-body.png)](media/logs-export-logicapp/select-body.png#lightbox)
 
-5.  **A séma létrehozásához kattintson a minta hasznos adatok használata**elemre. Futtassa a napló lekérdezését, és másolja a minta hasznos adatokhoz használni kívánt kimenetet.  A minta lekérdezéshez a következő kimenetet használhatja:
+5.  **A séma létrehozásához kattintson a minta hasznos adatok használata** elemre. Futtassa a napló lekérdezését, és másolja a minta hasznos adatokhoz használni kívánt kimenetet.  A minta lekérdezéshez a következő kimenetet használhatja:
 
 
 ```json
@@ -166,7 +166,7 @@ Kattintson a **tartalom** mezőbe az előző tevékenységekből származó ért
 ## <a name="add-the-compose-action"></a>Az összeállítás művelet hozzáadása
 Az **összeállítás** művelet végrehajtja az elemzett JSON-kimenetet, és létrehozza azt az objektumot, amelyet a blobban tárolnia kell.
 
-Kattintson az **+ új lépés**, majd **a + művelet hozzáadása**lehetőségre. A **válasszon műveletet**területen írja be az **összeállítás** elemet, majd válassza ki az **összeállítás** műveletet.
+Kattintson az **+ új lépés**, majd **a + művelet hozzáadása** lehetőségre. A **válasszon műveletet** területen írja be az **összeállítás** elemet, majd válassza ki az **összeállítás** műveletet.
 
 ![Összeállítási művelet kiválasztása](media/logs-export-logicapp/select-compose.png)
 
@@ -179,7 +179,7 @@ Kattintson a **bemenetek** mezőre az előző tevékenységekből származó ér
 ## <a name="add-the-create-blob-action"></a>A blob létrehozása művelet hozzáadása
 A blob létrehozása művelet beírja a komponált JSON-t a tárolóba.
 
-Kattintson az **+ új lépés**, majd **a + művelet hozzáadása**lehetőségre. A **művelet kiválasztása**területen írja be a **blob** parancsot, majd válassza a **blob létrehozása** műveletet.
+Kattintson az **+ új lépés**, majd **a + művelet hozzáadása** lehetőségre. A **művelet kiválasztása** területen írja be a **blob** parancsot, majd válassza a **blob létrehozása** műveletet.
 
 ![Válassza a blob létrehozása lehetőséget.](media/logs-export-logicapp/select-create-blob.png)
 
@@ -198,7 +198,7 @@ Kattintson a **blob-tartalom** mezőre az előző tevékenységekből származó
 
 
 ## <a name="test-the-logic-app"></a>A logikai alkalmazás tesztelése
-A munkafolyamat teszteléséhez kattintson a **Futtatás**gombra. Ha a munkafolyamat hibákat tartalmaz, azt a rendszer a problémával együtt jelzi. Az egyes lépésekhez megtekintheti a végrehajtást és a részletezést, így megtekintheti a bemeneti és kimeneti adatokat a hibák kivizsgálásához. Ha szükséges, olvassa el [a Azure Logic apps munkafolyamat-meghibásodások elhárítása és diagnosztizálása](../../logic-apps/logic-apps-diagnosing-failures.md) című témakört.
+A munkafolyamat teszteléséhez kattintson a **Futtatás** gombra. Ha a munkafolyamat hibákat tartalmaz, azt a rendszer a problémával együtt jelzi. Az egyes lépésekhez megtekintheti a végrehajtást és a részletezést, így megtekintheti a bemeneti és kimeneti adatokat a hibák kivizsgálásához. Ha szükséges, olvassa el [a Azure Logic apps munkafolyamat-meghibásodások elhárítása és diagnosztizálása](../../logic-apps/logic-apps-diagnosing-failures.md) című témakört.
 
 [![Futtatási előzmények](media/logs-export-logicapp/runs-history.png)](media/logs-export-logicapp/runs-history.png#lightbox)
 

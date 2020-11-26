@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/21/2020
-ms.openlocfilehash: 6231e4631c19aa3595fa85ca0aa7997861de65a3
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: e068ad01c07af4e5833399c0053da3362cd6aaa6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675032"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185640"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>Oktatóanyag: Azure AD-felhasználók létrehozása az Azure AD-alkalmazásokkal
 
@@ -27,7 +27,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre Azure AD-felhasználókat a 
 
 Az Azure SQL Azure AD-hitelesítéssel kapcsolatos további információkért tekintse meg a [Azure Active Directory hitelesítés használata](authentication-aad-overview.md)című cikket.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > - Identitás társítása az Azure SQL logikai kiszolgálóhoz
@@ -44,9 +44,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="assign-an-identity-to-the-azure-sql-logical-server"></a>Identitás társítása az Azure SQL logikai kiszolgálóhoz
 
-1. Kapcsolódjon a Azure Active Directoryhoz. Meg kell találnia a bérlő AZONOSÍTÓját. Ez a [Azure Portal](https://portal.azure.com), majd a **Azure Active Directory** -erőforrásra megy. Az **Áttekintés** ablaktáblán látnia kell a **bérlő azonosítóját** . Futtassa az alábbi PowerShell-parancsot:
+1. Kapcsolódjon a Azure Active Directoryhoz. Meg kell találnia a bérlő AZONOSÍTÓját. Ez a [Azure Portal](https://portal.azure.com), majd a **Azure Active Directory** -erőforrásra megy. Az **Áttekintés** ablaktáblán látnia kell a **bérlő azonosítóját**. Futtassa az alábbi PowerShell-parancsot:
 
-    - Cserélje le a helyére `<TenantId>` a **bérlő azonosítóját** .
+    - Cserélje le a helyére `<TenantId>` a **bérlő azonosítóját**.
 
     ```powershell
     Connect-AzAccount -Tenant <TenantId>
@@ -161,11 +161,11 @@ Az SQL felügyelt példányra vonatkozó **címtár** -olvasási engedélyek be�
 
 1. Kövesse az alábbi útmutatót az [alkalmazás regisztrálásához és az engedélyek beállításához](active-directory-interactive-connect-azure-sql-db.md#register-your-app-and-set-permissions).
 
-    Ügyeljen arra, hogy hozzáadja az **alkalmazás engedélyeit** , valamint a **delegált engedélyeket** .
+    Ügyeljen arra, hogy hozzáadja az **alkalmazás engedélyeit** , valamint a **delegált engedélyeket**.
 
-    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-apps.png" alt-text="Object-ID":::
+    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-apps.png" alt-text="A Azure Active Directory Alkalmazásregisztrációk lapját ábrázoló képernyőkép. A megjelenített név AppSP rendelkező alkalmazás ki van emelve.":::
 
-    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-app-registration-api-permissions.png" alt-text="Object-ID":::
+    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-app-registration-api-permissions.png" alt-text="API – engedélyek":::
 
 2. Létre kell hoznia egy ügyfél-titkot is a bejelentkezéshez. Kövesse az alábbi útmutatót a [tanúsítvány feltöltéséhez vagy a bejelentkezéshez szükséges titkos kód létrehozásához](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options).
 
@@ -173,15 +173,15 @@ Az SQL felügyelt példányra vonatkozó **címtár** -olvasási engedélyek be�
     - **Alkalmazásazonosító**
     - **Bérlő azonosítója** – ennek a következőnek kell lennie:
 
-Ebben az oktatóanyagban a *AppSP* -t fogjuk használni a fő szolgáltatásnévként, és *SAJÁTPR* az Azure SQL-ben a *AppSP* által létrehozott második egyszerű szolgáltatásként. Létre kell hoznia két alkalmazást, a *AppSP* és a *SajátPr* .
+Ebben az oktatóanyagban a *AppSP* -t fogjuk használni a fő szolgáltatásnévként, és *SAJÁTPR* az Azure SQL-ben a *AppSP* által létrehozott második egyszerű szolgáltatásként. Létre kell hoznia két alkalmazást, a *AppSP* és a *SajátPr*.
 
 Az Azure AD-alkalmazások létrehozásával kapcsolatos további információkért tekintse meg a következő cikket [: útmutató: a portál használata az erőforrásokhoz hozzáférő Azure ad-alkalmazás és egyszerű szolgáltatásnév létrehozásához](../../active-directory/develop/howto-create-service-principal-portal.md).
 
 ### <a name="permissions-required-to-set-or-unset-the-azure-ad-admin"></a>Az Azure AD-rendszergazda beállításához vagy törléséhez szükséges engedélyek
 
-Ahhoz, hogy az egyszerű szolgáltatás beállítsa vagy kiállítsa az Azure Active Directory-rendszergazdát az Azure SQL-hez, további API-engedélyre van szükség. A [Directory. Read. All](https://docs.microsoft.com/graph/permissions-reference#application-permissions-18) Application API-engedélyt hozzá kell adni az alkalmazáshoz az Azure ad-ben.
+Ahhoz, hogy az egyszerű szolgáltatás beállítsa vagy kiállítsa az Azure Active Directory-rendszergazdát az Azure SQL-hez, további API-engedélyre van szükség. A [Directory. Read. All](/graph/permissions-reference#application-permissions-18) Application API-engedélyt hozzá kell adni az alkalmazáshoz az Azure ad-ben.
 
-:::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-directory-reader-all-permissions.png" alt-text="Object-ID":::
+:::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-directory-reader-all-permissions.png" alt-text="Directory. Reader. minden engedély az Azure AD-ben":::
 
 Az egyszerű szolgáltatásnak szüksége lesz a [**SQL Server közreműködő**](../../role-based-access-control/built-in-roles.md#sql-server-contributor) szerepkörre is SQL Database vagy az SQL felügyelt [**példány közreműködői**](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor) szerepköre számára az SQL felügyelt példányához.
 
@@ -199,7 +199,7 @@ Miután létrehozta a szolgáltatásnevet az Azure AD-ben, hozza létre a felhas
     GO
     ```
 
-2. Adjon `db_owner` engedélyt a *AppSP* , amely lehetővé teszi, hogy a felhasználó más Azure ad-felhasználókat hozzon létre az adatbázisban.
+2. Adjon `db_owner` engedélyt a *AppSP*, amely lehetővé teszi, hogy a felhasználó más Azure ad-felhasználókat hozzon létre az adatbázisban.
 
     ```sql
     EXEC sp_addrolemember 'db_owner', [AppSP]

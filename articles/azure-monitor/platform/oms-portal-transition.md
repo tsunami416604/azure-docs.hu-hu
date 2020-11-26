@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 9c4e9676208a5d2cfa8c0c04a97675a3c634e3d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba81e0bd74390d8b20803f8f9cf6e9f2ae9f0eab
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87446797"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184518"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS-portál áthelyezése az Azure-ba
 
@@ -32,7 +32,7 @@ Az alábbi módosítások a OMS-portál elavult változatával lesznek bejelentv
 - A [OMS Mobile alkalmazás](#oms-mobile-app) elavult. 
 - Az [NSG-megoldás cseréje](#azure-network-security-group-analytics) Traffic Analytics megoldáson keresztül elérhető továbbfejlesztett funkciókkal történik.
 - A System Center Operations Manager új kapcsolatainak Log Analytics a [frissített felügyeleti csomagokat](#system-center-operations-manager)kell megkövetelniük.
-- A [Update Management](../../automation/update-management/update-mgmt-overview.md)változásairól további információt a [OMS-frissítés telepítése az Azure-](../../automation/migrate-oms-update-deployments.md) ban című témakörben talál.
+- A [Update Management](../../automation/update-management/overview.md)változásairól további információt a [OMS-frissítés telepítése az Azure-](../../automation/migrate-oms-update-deployments.md) ban című témakörben talál.
 
 
 ## <a name="what-should-i-do-now"></a>Mit tegyek most?
@@ -104,5 +104,5 @@ Továbbra is használhatja a diagnosztikai beállításokat, hogy NSG-naplókat 
 ## <a name="system-center-operations-manager"></a>System Center Operations Manager
 Ha [log Analyticshoz csatlakoztatta a Operations Manager felügyeleti csoportot](om-agents.md), akkor továbbra is a módosítások nélkül fog működni. Az új kapcsolatok esetében azonban az [Operations Management Suite konfigurálásához követnie kell a Microsoft System Center Operations Manager felügyeleti csomag](https://techcommunity.microsoft.com/t5/system-center-blog/bg-p/SystemCenterBlog)útmutatását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Tekintse át a [OMS Portálról való áttérés gyakori kérdéseit, hogy Azure Portal log Analytics felhasználók](../overview.md) számára a OMS Portálról a Azure Portalre való áthelyezéshez.

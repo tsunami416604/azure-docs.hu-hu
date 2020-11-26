@@ -4,12 +4,12 @@ description: Ismerteti, Hogyan oldhatók fel a gyakori hibák, amikor erőforrá
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 09/09/2020
-ms.openlocfilehash: fb7e476a5b4416282546d321a5e9a0127b7a4364
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 785a74184cae8523b99da7f647ca87fda53c8648
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000708"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185827"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Gyakori Azure-beli üzembe helyezési hibák elhárítása az Azure Resource Managerrel
 
@@ -76,10 +76,10 @@ Ha egy hibakódra vonatkozó információt keres, és ez a cikk nem tartalmaz in
 | StorageAccountAlreadyTaken | Adjon meg egy egyedi nevet a tárfióknak. | [A Storage-fiók nevének feloldása](error-storage-account-name.md) |
 | StorageAccountNotFound | Tekintse meg az előfizetést, az erőforráscsoportot és a használni kívánt Storage-fiók nevét. | |
 | SubnetsNotInSameVnet | A virtuális gépeknek csak egy virtuális hálózata lehet. Több hálózati adapter telepítésekor győződjön meg arról, hogy ugyanahhoz a virtuális hálózathoz tartoznak. | [Több hálózati adapter](../../virtual-machines/windows/multiple-nics.md) |
-| SubscriptionNotFound | Nem érhető el a központi telepítéshez megadott előfizetés. Lehet, hogy az előfizetés-azonosító helytelen, a sablont telepítő felhasználó nem rendelkezik megfelelő engedélyekkel az előfizetéshez való üzembe helyezéshez, vagy az előfizetés-azonosító formátuma helytelen. Ha beágyazott központi telepítéseket használ a [hatókörök közötti központi](cross-scope-deployment.md)telepítéshez, adja meg az előfizetés GUID azonosítóját. | |
+| SubscriptionNotFound | Nem érhető el a központi telepítéshez megadott előfizetés. Lehet, hogy az előfizetés-azonosító helytelen, a sablont telepítő felhasználó nem rendelkezik megfelelő engedélyekkel az előfizetéshez való üzembe helyezéshez, vagy az előfizetés-azonosító formátuma helytelen. Ha beágyazott központi telepítéseket használ a [hatókörök közötti központi](./deploy-to-resource-group.md)telepítéshez, adja meg az előfizetés GUID azonosítóját. | |
 | SubscriptionNotRegistered | Erőforrás telepítésekor az erőforrás-szolgáltatót regisztrálni kell az előfizetéséhez. Ha Azure Resource Manager sablont használ a központi telepítéshez, a rendszer automatikusan regisztrálja az erőforrás-szolgáltatót az előfizetésben. Előfordulhat, hogy az automatikus regisztráció nem fejeződött be időben. Az időszakos hiba elkerüléséhez regisztrálja az erőforrás-szolgáltatót az üzembe helyezés előtt. | [Regisztráció feloldása](error-register-resource-provider.md) |
 | TemplateResourceCircularDependency | Felesleges függőségek eltávolítása. | [Körkörös függőségek feloldása](error-invalid-template.md#circular-dependency) |
-| TooManyTargetResourceGroups | Az erőforráscsoportok számának csökkentése egyetlen központi telepítéshez. | [Több hatókörű központi telepítés](cross-scope-deployment.md) |
+| TooManyTargetResourceGroups | Az erőforráscsoportok számának csökkentése egyetlen központi telepítéshez. | [Több hatókörű központi telepítés](./deploy-to-resource-group.md) |
 
 ## <a name="find-error-code"></a>Hibakód keresése
 
@@ -247,7 +247,7 @@ Bizonyos esetekben a sablon egy részének teszteléséhez a legegyszerűbb mód
 
 Vagy tegyük fel, hogy olyan központi telepítési hibákat észlel, amelyeket úgy gondol, hogy a nem megfelelően beállított függőségekhez kapcsolódik. A sablon teszteléséhez bontsa ki az egyszerűsített sablonokat. Először hozzon létre egy sablont, amely csak egyetlen erőforrást telepít (például egy SQL Server). Ha biztos benne, hogy megfelelően definiálta az erőforrást, adjon hozzá egy erőforrást, amely attól függ (például egy SQL Database). Ha a két erőforrás megfelelően van definiálva, vegyen fel más függő erőforrásokat (például naplózási házirendeket). Az egyes tesztelési környezetek között törölje az erőforráscsoportot, hogy ellenőrizze a függőségek megfelelő tesztelését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A hibaelhárítással kapcsolatos oktatóanyagért lásd [: oktatóanyag: Resource Manager-sablonok központi telepítésének hibaelhárítása](template-tutorial-troubleshoot.md)
 * További információ a naplózási műveletekről: [műveletek naplózása a Resource Managerrel](../management/view-activity-logs.md).

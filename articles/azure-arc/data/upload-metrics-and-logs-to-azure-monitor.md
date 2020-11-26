@@ -10,12 +10,12 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 zone_pivot_groups: client-operating-system-macos-and-linux-windows-powershell
-ms.openlocfilehash: c333b95ed762c905511ab1d4a84050d50f0e023c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 66b10efb6ca93bc6b4dd67d700daaf1f9049de68
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371324"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183430"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>Használati adatok, metrikák és naplók feltöltése a Azure Monitorba
 
@@ -63,7 +63,7 @@ Az egyszerű szolgáltatás a használati és mérőszámi adatok feltöltésér
 Az alábbi parancsokkal hozza létre a metrikák feltöltésére szolgáló szolgáltatásnevet:
 
 > [!NOTE]
-> Egy egyszerű szolgáltatásnév létrehozásához [bizonyos engedélyek szükségesek az Azure-ban](/azure/active-directory/develop/howto-create-service-principal-portal#permissions-required-for-registering-an-app).
+> Egy egyszerű szolgáltatásnév létrehozásához [bizonyos engedélyek szükségesek az Azure-ban](../../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app).
 
 Egyszerű szolgáltatásnév létrehozásához frissítse az alábbi példát. Cserélje le a `<ServicePrincipalName>` nevet az egyszerű szolgáltatásnév nevére, és futtassa a parancsot:
 

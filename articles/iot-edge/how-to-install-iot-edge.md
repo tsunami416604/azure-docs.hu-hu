@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: kgremban
-ms.openlocfilehash: 7ab62b04f8bea76c7efb587665f87ccaf123da24
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: a7794bcdfa4f82698fdc5875bc94dcf52b70166e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92109000"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185096"
 ---
 # <a name="install-or-uninstall-the-azure-iot-edge-runtime"></a>A Azure IoT Edge futtatókörnyezet telepítése vagy eltávolítása
 
@@ -51,7 +51,7 @@ Készítse elő az eszközt a Microsoft telepítési csomagjainak eléréséhez.
      curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
      ```
 
-   * **Raspbian stretch**:
+   * **Málna PI operációs rendszer stretch**:
 
      ```bash
      curl https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list > ./microsoft-prod.list
@@ -278,7 +278,7 @@ Ha az eszköz a telepítés során offline állapotba kerül, vagy ha a IoT Edge
 
 5. Ha offline összetevőkkel szeretné telepíteni a programot, a [dot forrás](/powershell/module/microsoft.powershell.core/about/about_scripts#script-scope-and-dot-sourcing) a PowerShell-parancsfájl helyi példányát adja meg. 
 
-6. Futtassa az [Deploy-IoTEdge](reference-windows-scripts.md#deploy-iotedge) parancsot a (z `-OfflineInstallationPath` ) paraméterrel. Adja meg a fájl könyvtárának abszolút elérési útját. Például:
+6. Futtassa az [Deploy-IoTEdge](reference-windows-scripts.md#deploy-iotedge) parancsot a (z `-OfflineInstallationPath` ) paraméterrel. Adja meg a fájl könyvtárának abszolút elérési útját. Példa:
 
    ```powershell
    . <path>\IoTEdgeSecurityDaemon.ps1
@@ -337,7 +337,7 @@ Az eltávolítási lehetőségekkel kapcsolatos további információkért haszn
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A IoT Edge futtatókörnyezet telepítése után konfigurálja az eszközt IoT Hubhoz való kapcsolódásra. A következő cikkek végigvezetik az új eszköz felhőben való regisztrálásán, majd az eszköz identitás-és hitelesítési adataival.
 

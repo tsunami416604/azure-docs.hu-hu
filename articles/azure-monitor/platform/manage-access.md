@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 79e5b1ddde0ff5f0d09dc1c20e3b20ec4de3d925
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 234ef58920a9f896d3e8ebcc561562ea7ceb2708
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536676"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186422"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Naplóadatok és munkaterületek elérésének felügyelete az Azure Monitorban
 
@@ -106,7 +106,7 @@ Minden munkaterülethez több fiók is társítható, és mindegyik fiók több 
 
 Az alábbi tevékenységek szintén Azure-engedélyeket igényelnek:
 
-|Művelet |Azure-engedélyek szükségesek |Jegyzetek |
+|Művelet |Azure-engedélyek szükségesek |Megjegyzések |
 |-------|-------------------------|------|
 | Figyelési megoldások hozzáadása és eltávolítása | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | Az engedélyeknek az erőforráscsoport vagy előfizetés szinteken kell megadva lenniük. |
 | Tarifacsomag módosítása | `Microsoft.OperationalInsights/workspaces/*/write` | |
@@ -285,7 +285,7 @@ A fenti példák az engedélyezett táblák listáját határozzák meg. Ez a p�
 
 ### <a name="custom-logs"></a>Egyéni naplók
 
- Az egyéni naplók az adatforrásokból, például az egyéni naplókból és a HTTP-adatgyűjtő API-ból jönnek létre. A naplók típusának legegyszerűbb azonosításához ellenőrizze az egyéni naplók területen felsorolt táblákat [a log sémában](../log-query/get-started-portal.md#understand-the-schema).
+ Az egyéni naplók az adatforrásokból, például az egyéni naplókból és a HTTP-adatgyűjtő API-ból jönnek létre. A naplók típusának legegyszerűbb azonosításához ellenőrizze az egyéni naplók területen felsorolt táblákat [a log sémában](../log-query/log-analytics-tutorial.md#table-schema).
 
  Egyéni naplókhoz nem lehet hozzáférést biztosítani, de az összes egyéni naplóhoz hozzáférést biztosíthat. Ha az összes egyéni naplóhoz hozzáféréssel rendelkező szerepkört szeretne létrehozni, hozzon létre egy egyéni szerepkört a következő műveletek használatával:
 

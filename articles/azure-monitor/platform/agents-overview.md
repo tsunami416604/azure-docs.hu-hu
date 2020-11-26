@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2020
-ms.openlocfilehash: 30521e85feda0fc19329364dcb710d322ae8cfc1
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: c6db5a856b127d4549de9597f8157f524a38af79
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95323231"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186660"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor ügynökök áttekintése
 
@@ -81,8 +81,8 @@ Ha a következőkre van szüksége, használja a Log Analytics-ügynököt:
 * Naplókat és teljesítményadatokat gyűjthet az Azure-on belüli vagy kívüli virtuális vagy fizikai gépekről. 
 * Adatküldés egy Log Analytics munkaterületre, hogy kihasználhassa a [Azure monitor naplók](data-platform-logs.md) , például a [naplózási lekérdezések](../log-query/log-query-overview.md)által támogatott funkciókat.
 * A [Azure monitor for VMS](../insights/vminsights-overview.md) használata lehetővé teszi a virtuális gépek méretezését, és figyeli a folyamatokat és a függőségeket más erőforrásokra és külső folyamatokra.  
-* A virtuális gépek biztonságának kezelése [Azure Security Center](../../security-center/security-center-intro.md)  vagy [Azure Sentinel](../../sentinel/overview.md)használatával.
-* Az Azure-beli virtuális gépek teljes körű felügyeletének biztosításához használja [Azure Automation Update managementet](../../automation/update-management/update-mgmt-overview.md), [Azure Automation az állapot konfigurációját](../../automation/automation-dsc-overview.md), vagy [Azure Automation Change Tracking és leltárt](../../automation/change-tracking/overview.md) .
+* A virtuális gépek biztonságának kezelése [Azure Security Center](../../security-center/security-center-introduction.md)  vagy [Azure Sentinel](../../sentinel/overview.md)használatával.
+* Az Azure-beli virtuális gépek teljes körű felügyeletének biztosításához használja [Azure Automation Update managementet](../../automation/update-management/overview.md), [Azure Automation az állapot konfigurációját](../../automation/automation-dsc-overview.md), vagy [Azure Automation Change Tracking és leltárt](../../automation/change-tracking/overview.md) .
 * Különböző [megoldásokat](../monitor-reference.md#insights-and-core-solutions) használhat egy adott szolgáltatás vagy alkalmazás figyelésére.
 
 A Log Analytics-ügynök korlátai a következők:

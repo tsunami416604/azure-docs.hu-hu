@@ -4,12 +4,12 @@ description: Az alkalmazások teljesítményének figyelése az Azure app Servic
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: f46d00f97dab18b0c7c1d4a5742a87308f814e9e
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: c0ee68659f4729ed8f63b9ea990343adf51513bd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832898"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186371"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Az Azure App Service teljesítményének monitorozása
 
@@ -163,7 +163,7 @@ Ahhoz, hogy a telemetria-gyűjtést Application Insights használatával engedé
 
 ### <a name="application-settings-definitions"></a>Alkalmazásbeállítások definíciói
 
-|Alkalmazás-beállítás neve |  Definíció | Érték |
+|Alkalmazás-beállítás neve |  Meghatározás | Érték |
 |-----------------|:------------|-------------:|
 |ApplicationInsightsAgent_EXTENSION_VERSION | A fő bővítmény, amely a futtatókörnyezet figyelését vezérli. | `~2` |
 |XDT_MicrosoftApplicationInsights_Mode |  Az alapértelmezett módban csak az alapvető funkciók engedélyezettek az optimális teljesítmény biztosításához. | `default` vagy `recommended`. |
@@ -372,7 +372,7 @@ Az alábbiakban részletes hibaelhárítási útmutatót talál az Azure App Ser
 
     * Győződjön meg arról, hogy nincsenek bejegyzések a `AppAlreadyInstrumented` , és rendszerhez `AppContainsDiagnosticSourceAssembly` `AppContainsAspNetTelemetryCorrelationAssembly` .
         * Ha bármelyik bejegyzés létezik, távolítsa el a következő csomagokat az alkalmazásból: `Microsoft.ApplicationInsights` , `System.Diagnostics.DiagnosticSource` és `Microsoft.AspNet.TelemetryCorrelation` .
-        * Csak ASP.NET Core alkalmazások esetében: abban az esetben, ha az alkalmazás bármely Application Insights csomagra hivatkozik, például ha korábban már telepítette (vagy megkísérelte az eszközt) az [ASP.net Core SDK](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)-val, akkor a app Service integrációjának engedélyezése nem lép érvénybe, és az adatai nem jelennek meg Application Insightsban. A probléma megoldásához a portálon kapcsolja be az "együttműködés a Application Insights SDK-val" lehetőséget, és a rendszer elkezdi látni az adatApplication Insights 
+        * Csak ASP.NET Core alkalmazások esetében: abban az esetben, ha az alkalmazás bármely Application Insights csomagra hivatkozik, például ha korábban már telepítette (vagy megkísérelte az eszközt) az [ASP.net Core SDK](./asp-net-core.md)-val, akkor a app Service integrációjának engedélyezése nem lép érvénybe, és az adatai nem jelennek meg Application Insightsban. A probléma megoldásához a portálon kapcsolja be az "együttműködés a Application Insights SDK-val" lehetőséget, és a rendszer elkezdi látni az adatApplication Insights 
         > [!IMPORTANT]
         > Ez a funkció előzetes verzióban érhető el 
 
@@ -432,4 +432,3 @@ A legújabb frissítések és hibajavítások [olvassa el a kibocsátási megjeg
 * [Riasztási értesítéseket kaphat](../platform/alerts-overview.md), ha működési események történnek vagy a mérőszámok átlépnek egy küszöbértéket.
 * Az [Application Insights JavaScript-alkalmazásokhoz és weblapokhoz](javascript.md) való használatával ügyféltelemetriát kaphat azoktól a böngészőktől, amelyek ellátogatnak egy weblapra.
 * [Állítson be rendelkezésre állási webes teszteket](monitor-web-app-availability.md), így riasztást kaphat, ha webhelye nem működik.
-

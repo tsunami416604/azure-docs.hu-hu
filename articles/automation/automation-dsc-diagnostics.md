@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 425a7ff0553ddeac502c59e240f5ab152d6e0d79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f66c710901b129cb6b138fff126e67615c790714
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87015153"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183668"
 ---
 # <a name="integrate-with-azure-monitor-logs"></a>Integrálás Azure Monitor naplókkal
 
@@ -36,7 +36,7 @@ Az Automation-állapotra vonatkozó konfigurációs jelentések Azure Monitor na
 
 - A [Azure PowerShell](/powershell/azure/) november 2016-es vagy újabb kiadása (v 2.3.0).
 - Egy Azure Automation-fiókra. További információ: [Bevezetés a Azure Automationba](automation-intro.md).
-- Egy Log Analytics munkaterületen egy Automation & Control Service-ajánlattal. További információ: [Bevezetés a log Analytics használatába Azure monitor](../azure-monitor/log-query/get-started-portal.md).
+- Egy Log Analytics munkaterületen egy Automation & Control Service-ajánlattal. További információ: [Bevezetés a log Analytics használatába Azure monitor](../azure-monitor/log-query/log-analytics-tutorial.md).
 - Legalább egy Azure Automation állapot-konfigurációs csomópont. További információ: [bevezetési gépek felügyeletre Azure Automation állapot-konfiguráció alapján](automation-dsc-onboarding.md).
 - A [xDscDiagnostics](https://www.powershellgallery.com/packages/xDscDiagnostics/2.7.0.0) modul 2.7.0.0 vagy újabb verzió. A telepítési lépésekért lásd: [Azure Automation a kívánt állapot konfigurációjának hibaelhárítása](./troubleshoot/desired-state-configuration.md).
 
@@ -99,7 +99,7 @@ Az egyik legfontosabb ügyfelünk, hogy e-mail vagy szöveg küldésére van leh
 
 Riasztási szabály létrehozásához először létre kell hoznia egy naplót az állapot-konfigurációs jelentés azon rekordjaihoz, amelyeknek meg kell hívniuk a riasztást. A riasztási szabály létrehozásához és konfigurálásához kattintson az **új riasztási szabály** gombra.
 
-1. A Log Analytics munkaterület áttekintés lapján kattintson a **naplók**elemre.
+1. A Log Analytics munkaterület áttekintés lapján kattintson a **naplók** elemre.
 1. Hozzon létre egy naplóbeli keresési lekérdezést a riasztáshoz úgy, hogy beírja a következő keresést a lekérdezés mezőbe:  `Type=AzureDiagnostics Category='DscNodeStatus' NodeName_s='DSCTEST1' OperationName='DscNodeStatusData' ResultType='Failed'`
 
    Ha több Automation-fiókból vagy-előfizetésből állított be naplókat a munkaterületre, a riasztásokat az előfizetés és az Automation-fiók alapján csoportosíthatja. Származtatja az Automation-fiók nevét a `Resource` rekordok keresés mezőjéből `DscNodeStatusData` .
@@ -111,7 +111,7 @@ A riasztás konfigurálásának lehetőségeiről további információt a [rias
 
 A Azure Monitor naplók használatának egyik előnye, hogy a sikertelen ellenőrzéseket a csomópontokon is megkeresheti. A meghibásodott DSC-erőforrások összes példányának megkeresése:
 
-1. A Log Analytics munkaterület áttekintése lapon kattintson a **naplók**elemre.
+1. A Log Analytics munkaterület áttekintése lapon kattintson a **naplók** elemre.
 1. Hozzon létre egy naplóbeli keresési lekérdezést a riasztáshoz úgy, hogy beírja a következő keresést a lekérdezés mezőbe:  `Type=AzureDiagnostics Category='DscNodeStatus' OperationName='DscResourceStatusData' ResultType='Failed'`
 
 ### <a name="view-historical-dsc-node-status"></a>A DSC-csomópont korábbi állapotának megtekintése
@@ -191,7 +191,7 @@ Azure Automation diagnosztika két típusú rekordot hoz létre a Azure Monitor 
 | ResourceType | AUTOMATIONACCOUNTS. |
 | CorrelationId |A megfelelőségi jelentés korrelációs AZONOSÍTÓjának GUID azonosítója. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az áttekintést lásd: [Azure Automation állapot konfigurációjának áttekintése](automation-dsc-overview.md).
 - Első lépésként tekintse meg [az Azure Automation állapot konfigurációjának első lépései](automation-dsc-getting-started.md)című témakört.

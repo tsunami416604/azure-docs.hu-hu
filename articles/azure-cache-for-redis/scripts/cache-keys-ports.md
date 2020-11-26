@@ -9,12 +9,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/30/2017
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9fef834e550f144075ec9cc72cac3b11cc1e99e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3e8e359a97c091e025049ac8a978e1beca1d759
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87504211"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184219"
 ---
 # <a name="get-the-hostname-ports-and-keys-for-azure-cache-for-redis"></a>Az Azure cache gazdagép-, port-és kulcsainak beolvasása a Redis
 
@@ -31,14 +31,14 @@ Ebből a forgatókönyvből megtudhatja, hogyan kérheti le a Redis-példány Az
 
 Ez a szkript a következő parancsokat használja egy Azure cache Redis-példányhoz tartozó állomásnév, kulcsok és portok lekéréséhez. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
-| Parancs | Jegyzetek |
+| Parancs | Megjegyzések |
 |---|---|
-| [az Redis show](https://docs.microsoft.com/cli/azure/redis) | A Redis-példányhoz tartozó Azure cache részleteinek beolvasása. |
-| [az Redis List-Keys](https://docs.microsoft.com/cli/azure/redis) | Redis-példányhoz tartozó Azure cache elérési kulcsainak beolvasása. |
+| [az Redis show](/cli/azure/redis) | A Redis-példányhoz tartozó Azure cache részleteinek beolvasása. |
+| [az Redis List-Keys](/cli/azure/redis) | Redis-példányhoz tartozó Azure cache elérési kulcsainak beolvasása. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
+Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 
 További Azure cache a Redis CLI-szkriptekhez az [Azure cache Redis dokumentációjában](../cli-samples.md)található.

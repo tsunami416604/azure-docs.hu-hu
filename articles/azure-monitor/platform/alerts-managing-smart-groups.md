@@ -4,16 +4,16 @@ description: A riasztási példányokon létrehozott intelligens csoportok kezel
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 09/24/2018
-ms.openlocfilehash: 763bfefcf71b0be43722b99f31641015a5991607
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 564440336bf6a90cbd40aba6c8284cbc6c5e3ff3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92105838"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186048"
 ---
 # <a name="manage-smart-groups"></a>Intelligens csoportok kezelése
 
-Az [intelligens csoportok](./alerts-smartgroups-overview.md?toc=%252fazure%252fazure-monitor%252ftoc.json) a gépi tanulási algoritmusok használatával csoportosítják a riasztásokat a közös előfordulás vagy a hasonlóság alapján, így a felhasználó mostantól kezelheti az intelligens csoportokat ahelyett, hogy egyenként kellene kezelnie a riasztásokat. Ebből a cikkből megtudhatja, hogyan érheti el és használhatja az intelligens csoportokat Azure Monitorban.
+Az [intelligens csoportok](./alerts-smartgroups-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json) a gépi tanulási algoritmusok használatával csoportosítják a riasztásokat a közös előfordulás vagy a hasonlóság alapján, így a felhasználó mostantól kezelheti az intelligens csoportokat ahelyett, hogy egyenként kellene kezelnie a riasztásokat. Ebből a cikkből megtudhatja, hogyan érheti el és használhatja az intelligens csoportokat Azure Monitorban.
 
 1. A riasztási példányok számára létrehozott intelligens csoportok megjelenítéséhez a következők közül választhat:
 

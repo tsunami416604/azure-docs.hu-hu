@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: f7980ca7bc6f23c383ea013c2b017b3bd61e2d25
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 410281ce67faf345539701389d4b03351d403b99
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842294"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186065"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM-termékek/-szolgáltatások összekapcsolása IT Service Management-összekötővel
 Ez a cikk azt ismerteti, hogyan konfigurálható a ITSM terméke/szolgáltatása és a IT-szolgáltatásmenedzsmenti csatoló (ITSMC) közötti kapcsolat a munkaelemek központilag felügyelhető Log Analyticsban. További információ a ITSMC: [Áttekintés](./itsmc-overview.md).
@@ -46,7 +46,7 @@ Győződjön meg arról, hogy teljesülnek az alábbi előfeltételek:
 > [!NOTE]
 > 
 > - ITSM-csatoló csak felhőalapú ServiceNow-példányokhoz tud csatlakozni. A helyszíni ServiceNow-példányok jelenleg nem támogatottak.
-> - Ha egyéni [sablonokat](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions) kíván használni a SCSM sablonban található "ProjectionType" paraméterrel, a "IncidentManagement! System. Munkatétel. incidens. ProjectionType "
+> - Ha egyéni [sablonokat](./itsmc-overview.md#template-definitions) kíván használni a SCSM sablonban található "ProjectionType" paraméterrel, a "IncidentManagement! System. Munkatétel. incidens. ProjectionType "
 
 ### <a name="connection-procedure"></a>Csatlakoztatási eljárás
 
@@ -432,4 +432,3 @@ Az ügyfél-azonosító/-kulcs Cherwell való létrehozásához kövesse az alá
 
 ## <a name="next-steps"></a>Következő lépések
  - [ITSM-munkaelemek létrehozása az Azure-riasztásokból](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts)
-

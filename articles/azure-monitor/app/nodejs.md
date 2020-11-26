@@ -4,12 +4,12 @@ description: Teljesítmény figyelése és problémák diagnosztizálása a Node
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 982adf6c6d7cd825d185802321ce30a04bd2f216
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4c350cbfdf92d19a084940941351cf1f028c93d2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020891"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186279"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>A Node.js szolgáltatások és appok figyelése az Application Insights segítségével
 
@@ -413,13 +413,12 @@ Ezek a tulajdonságok az ügyfél-specifikusak, így a `appInsights.defaultClien
 | correlationIdRetryIntervalMs    | Az a várakozási idő, amely után újra kell hívni az azonosítót az összetevők közötti korrelációhoz (alapértelmezett `30000` ).     |
 | correlationHeaderExcludedDomains| Azoknak a tartományoknak a listája, amelyeket ki szeretne zárni az összetevők korrelációs fejlécének injektálásával (alapértelmezett: [config. TS](https://github.com/Microsoft/ApplicationInsights-node.js/blob/develop/Library/Config.ts)).|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A telemetria figyelése a portálon](./overview-dashboard.md)
-* [Analytics-lekérdezések írása a telemetrián](../log-query/get-started-portal.md)
+* [Analytics-lekérdezések írása a telemetrián](../log-query/log-analytics-tutorial.md)
 
 <!--references-->
 
 [portal]: https://portal.azure.com/
 [FAQ]: ../faq.md
-

@@ -4,12 +4,12 @@ description: Webes és feldolgozói szerepkörök hatékony figyelése az Applic
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: cae2e4e1d5b5e199e772c5263a46d82289f5d6ac
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 29482403358936b95fc5e814b68238cc8c25f7a8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91992846"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186354"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services-Application Insights
 A [Application Insights][start] képes figyelni az [Azure Cloud Service-alkalmazásokat](https://azure.microsoft.com/services/cloud-services/) a rendelkezésre állásra, a teljesítményre, a hibákra és a használatra, ha Application Insights SDK-ból származó adatokat egyesít a cloud servicesből származó [Azure Diagnostics](../platform/diagnostics-extension-overview.md) adatokkal. A széles körben elérhető módon működő alkalmazások teljesítményével és hatékonyságával kapcsolatos visszajelzések birtokában tájékozott döntéseket hozhat a fejlesztés irányát illetően az egyes fejlesztési fázisokban.
@@ -73,11 +73,11 @@ Megtudhatja, hogyan lehet [dinamikusan beállítani a kialakítási kulcsot](./s
 
 Ha úgy döntött, hogy külön erőforrást hoz létre minden egyes szerepkörhöz, és esetleg egy külön készletet az egyes Build-konfigurációkhoz, akkor a legegyszerűbb, ha mindegyiket a Application Insights portálon hozza létre. Ha sok erőforrást hoz létre, [automatizálhatja a folyamatot](./powershell.md).
 
-1. A [Azure Portal][portal]válassza az **új**  >  **fejlesztői szolgáltatások**  >  **Application Insights**lehetőséget.  
+1. A [Azure Portal][portal]válassza az **új**  >  **fejlesztői szolgáltatások**  >  **Application Insights** lehetőséget.  
 
     ![Application Insights ablaktábla](./media/cloudservices/01-new.png)
 
-1. Az **alkalmazás típusa** legördülő listában válassza a **ASP.net webalkalmazás**lehetőséget.
+1. Az **alkalmazás típusa** legördülő listában válassza a **ASP.net webalkalmazás** lehetőséget.
 
 Minden erőforrást egy rendszerállapot-kulcs azonosít. Később szükség lehet erre a kulcsra, ha manuálisan szeretné konfigurálni vagy ellenőrizni az SDK konfigurációját.
 
@@ -85,9 +85,9 @@ Minden erőforrást egy rendszerállapot-kulcs azonosít. Később szükség leh
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>Azure Diagnostics beállítása az egyes szerepkörökhöz
 Ezzel a beállítással figyelheti az alkalmazást az Application Insightsszal. A webes szerepkörök esetében ez a beállítás a teljesítmény figyelését, a riasztásokat, a diagnosztika és a használat elemzését teszi lehetővé. Más szerepkörök esetében olyan Azure Diagnostics kereshet és figyel, mint például az újraindítás, a teljesítményszámlálók és a System. Diagnostics. Trace hívása. 
 
-1. A Visual Studio megoldáskezelő a **\<YourCloudService>**  >  **szerepkörök**területen nyissa meg az egyes szerepkörök tulajdonságait.
+1. A Visual Studio megoldáskezelő a **\<YourCloudService>**  >  **szerepkörök** területen nyissa meg az egyes szerepkörök tulajdonságait.
 
-1. A **konfiguráció**területen jelölje be a **diagnosztikai adatküldés Application Insightsba** jelölőnégyzetet, majd válassza ki a korábban létrehozott Application Insights-erőforrást.
+1. A **konfiguráció** területen jelölje be a **diagnosztikai adatküldés Application Insightsba** jelölőnégyzetet, majd válassza ki a korábban létrehozott Application Insights-erőforrást.
 
 Ha úgy döntött, hogy külön Application Insights-erőforrást használ mindegyik buildkonfigurációhoz, előbb válassza ki a konfigurációt.
 
@@ -102,11 +102,11 @@ Ezzel a beállítással egyéni üzleti telemetria adhat hozzá bármely szerepk
 
 A Visual Studióban konfigurálja külön az Application Insights SDK-t az egyes felhőalkalmazás-projektekhez.
 
-1. A **webes szerepkörök**konfigurálásához kattintson a jobb gombbal a projektre, majd válassza a **Application Insights konfigurálása** vagy **> Application Insights telemetria hozzáadása**lehetőséget.
+1. A **webes szerepkörök** konfigurálásához kattintson a jobb gombbal a projektre, majd válassza a **Application Insights konfigurálása** vagy **> Application Insights telemetria hozzáadása** lehetőséget.
 
-1. **Feldolgozói szerepkörök**konfigurálása: 
+1. **Feldolgozói szerepkörök** konfigurálása: 
 
-    a. Kattintson a jobb gombbal a projektre, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
+    a. Kattintson a jobb gombbal a projektre, majd válassza a **NuGet-csomagok kezelése** lehetőséget.
 
     b. Adja hozzá az [Application Insights a Windows-kiszolgálókon](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) modult.
 
@@ -176,7 +176,7 @@ Ha nincs ilyen érték, tegye a következőket:
 
 1. Az egyes események megtekintéséhez nyissa meg a [Keresés][diagnostic] csempét.
 1. Az alkalmazásban nyissa meg a különböző lapokat, hogy egy bizonyos telemetria hozzon létre.
-1. Várjon néhány másodpercet, majd kattintson a **frissítés**gombra.  
+1. Várjon néhány másodpercet, majd kattintson a **frissítés** gombra.  
 
 További információk: [Hibaelhárítás][qna].
 
@@ -191,7 +191,7 @@ A teljesítményszámlálók és az események számának megtekintéséhez nyis
 
 ![Azure Diagnosticsi az adatgyűjtést](./media/cloudservices/23-wad.png)
 
-A Azure Diagnostics által eljuttatott nyomkövetési naplók közötti kereséshez használjon [keresési](./diagnostic-search.md) vagy [elemzési lekérdezést](../log-query/get-started-portal.md). Tegyük fel például, hogy van egy kezeletlen kivétel, amely egy szerepkör összeomlását és újrahasznosítását okozta. Ezek az információk a Windows eseménynaplójában, az Alkalmazás csatornában jelennek meg. A keresés használatával megtekintheti a Windows Eseménynapló hibáját, és lekérheti a kivétel teljes verem-nyomkövetését. Ennek segítségével megtalálhatja a probléma alapvető okát.
+A Azure Diagnostics által eljuttatott nyomkövetési naplók közötti kereséshez használjon [keresési](./diagnostic-search.md) vagy [elemzési lekérdezést](../log-query/log-analytics-tutorial.md). Tegyük fel például, hogy van egy kezeletlen kivétel, amely egy szerepkör összeomlását és újrahasznosítását okozta. Ezek az információk a Windows eseménynaplójában, az Alkalmazás csatornában jelennek meg. A keresés használatával megtekintheti a Windows Eseménynapló hibáját, és lekérheti a kivétel teljes verem-nyomkövetését. Ennek segítségével megtalálhatja a probléma alapvető okát.
 
 ![Azure Diagnostics keresés](./media/cloudservices/25-wad.png)
 

@@ -10,11 +10,11 @@ ms.date: 08/31/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to storage accounts on Azure Stack Edge Pro so I can use it to transfer data to Azure.
 ms.openlocfilehash: c24970b30e522d593a491194dbbabb0421ad7f4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891055"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185571"
 ---
 # <a name="tutorial-transfer-data-via-storage-accounts-with-azure-stack-edge-pro-gpu"></a>Oktatóanyag: adatok átvitele a Storage-fiókok használatával Azure Stack Edge Pro GPU-val 
 
@@ -24,7 +24,7 @@ Ez az oktatóanyag azt ismerteti, hogyan lehet hozzáadni és csatlakozni a Stor
 
 Az eljárás végrehajtása körülbelül 30 percet vesz igénybe.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Storage-fiók hozzáadása
@@ -149,7 +149,7 @@ A következő lépésekkel importálhatja a tanúsítványokat a Azure Storage E
 
 1. Győződjön meg arról, hogy Azure Storage Explorer a Azure Stack API-kat célozza meg. Lépjen a **> cél Azure stack API**-k szerkesztése menüpontra. Ha a rendszer kéri, indítsa újra Storage Explorer a módosítás érvénybe léptetéséhez.
 
-2. Az SSL-tanúsítványok importálásához lépjen az **> SSL-tanúsítványok szerkesztése > tanúsítványok importálása**elemre.
+2. Az SSL-tanúsítványok importálásához lépjen az **> SSL-tanúsítványok szerkesztése > tanúsítványok importálása** elemre.
 
   
    ![Tanúsítvány importálása Storage Explorerba](./media/azure-stack-edge-j-series-deploy-add-storage-accounts/import-cert-storage-explorer-1.png) 
@@ -165,7 +165,7 @@ A következő lépésekkel importálhatja a tanúsítványokat a Azure Storage E
 
 A HTTP protokollon [keresztüli kapcsolódás során használt kapcsolat konfigurálásához és ellenőrzéséhez *http*](#verify-connection)kövesse az alábbi lépéseket. Az egyetlen különbség, hogy a *http használata beállítás* nincs bejelölve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megismerte a következő Azure Stack Edge Pro-témaköröket:
 

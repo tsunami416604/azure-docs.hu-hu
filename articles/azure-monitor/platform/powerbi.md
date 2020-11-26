@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2019
-ms.openlocfilehash: 8b9624313716081a039b12c73e54b9f7afc2a323
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 53277f64c3d1b03572732157756da1fececbcd43
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86505312"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184569"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Azure Monitor naplózási adatnaplóba való importálás Power BI
 
@@ -28,8 +28,8 @@ Ha Azure Monitor [log Analytics munkaterületről](manage-access.md) szeretne ad
 ## <a name="export-query"></a>Lekérdezés exportálása
 Először hozzon létre egy olyan [log-lekérdezést](../log-query/log-query-overview.md) , amely visszaadja azokat az adatokat, amelyeket fel szeretne tölteni a Power bi adatkészletből.  Ezután exportálja a lekérdezést [Power Query (M) nyelvre](/powerquery-m/power-query-m-language-specification) , amelyet a Power bi Desktop használhat.
 
-1. Az adatkészlethez tartozó adatok kinyeréséhez [hozza létre a log Analytics napló lekérdezést](../log-query/get-started-portal.md) .
-2. Válassza az **Exportálás**  >  **Power bi lekérdezés (M)** lehetőséget.  Ezzel exportálja a lekérdezést egy **PowerBIQuery.txt**nevű szövegfájlba. 
+1. Az adatkészlethez tartozó adatok kinyeréséhez [hozza létre a log Analytics napló lekérdezést](../log-query/log-analytics-tutorial.md) .
+2. Válassza az **Exportálás**  >  **Power bi lekérdezés (M)** lehetőséget.  Ezzel exportálja a lekérdezést egy **PowerBIQuery.txt** nevű szövegfájlba. 
 
     ![Naplóbeli keresés exportálása](media/powerbi/export-analytics.png)
 
@@ -39,7 +39,7 @@ Először hozzon létre egy olyan [log-lekérdezést](../log-query/log-query-ove
 A Power BI Desktop egy asztali alkalmazás, amely lehetővé teszi, hogy a Power BI közzétett adatkészleteket és jelentéseket hozzon létre.  Azt is megteheti, hogy a Azure Monitorból exportált Power Query nyelvet használó lekérdezést hoz létre. 
 
 1. Ha még nincs telepítve, telepítse a [Power bi Desktop](https://powerbi.microsoft.com/desktop/) , majd nyissa meg az alkalmazást.
-2. **Get Data**  >  Új lekérdezés megnyitásához válassza az**adatlekérdezés üres lekérdezés** lehetőséget.  Ezután válassza ki **speciális szerkesztő** és illessze be az exportált fájl tartalmát a lekérdezésbe. Kattintson a **Kész** gombra.
+2. **Get Data**  >  Új lekérdezés megnyitásához válassza az **adatlekérdezés üres lekérdezés** lehetőséget.  Ezután válassza ki **speciális szerkesztő** és illessze be az exportált fájl tartalmát a lekérdezésbe. Kattintson a **Kész** gombra.
 
     ![Power BI Desktop lekérdezés](media/powerbi/desktop-new-query.png)
 
@@ -54,7 +54,7 @@ A Power BI Desktop egy asztali alkalmazás, amely lehetővé teszi, hogy a Power
 Amikor közzéteszi a Power BI, egy adatkészletet és egy jelentést fog létrehozni.  Ha Power BI Desktop-ban hoz létre jelentést, akkor a rendszer közzéteszi az adatait.  Ha nem, akkor a rendszer üres jelentést hoz létre.  A jelentést Power BI módosíthatja, vagy létrehozhat egy újat az adatkészlet alapján.
 
 1. Hozzon létre egy jelentést az adatai alapján.  Ha még nem ismeri, használja [Power bi Desktop dokumentációt](/power-bi/desktop-report-view) .  
-1. Ha készen áll arra, hogy elküldje Power BIre, kattintson a **Közzététel**gombra.  
+1. Ha készen áll arra, hogy elküldje Power BIre, kattintson a **Közzététel** gombra.  
 1. Ha a rendszer kéri, válasszon egy célhelyet a Power BI-fiókjában.  Ha nem rendelkezik konkrét céllal, használja a **saját munkaterületet**.
 
     ![Közzététel Power BI Desktop](media/powerbi/desktop-publish.png)
@@ -66,18 +66,18 @@ Amikor közzéteszi a Power BI, egy adatkészletet és egy jelentést fog létre
 A Power BIban létrehozott adatkészlet ugyanazokat az adatokat fogja tartalmazni, amelyeket korábban a Power BI Desktop látott.  A lekérdezés újbóli futtatásához frissítenie kell az adatkészletet, és fel kell töltenie a Azure Monitor legújabb adataival.  
 
 1. Kattintson arra a munkaterületre, ahol feltöltötte a jelentést, és válassza az **adatkészletek** menüt. 
-1. Válassza ki a helyi menüt az új adatkészlet mellett, és válassza a **Beállítások**lehetőséget. 
+1. Válassza ki a helyi menüt az új adatkészlet mellett, és válassza a **Beállítások** lehetőséget. 
 1. Az **adatforrás hitelesítő** adatai területen a hitelesítő adatok érvénytelenek.  Ennek az az oka, hogy még nem adott meg hitelesítő adatokat az adatkészlet számára az adatok frissítésekor.  
 1. Kattintson a **hitelesítő adatok szerkesztése** lehetőségre, és a Azure monitor log Analytics munkaterülethez hozzáféréssel rendelkező hitelesítő adatok megadásához. Ha kétfaktoros hitelesítést igényel, válassza a **OAuth2** lehetőséget a **hitelesítési módszer** megadásához, hogy a rendszer kérje a hitelesítő adatokkal való bejelentkezést.
 
     ![Power BI ütemterv](media/powerbi/powerbi-schedule.png)
 
-5. Az **ütemezett frissítés** területen kapcsolja be az adatok naprakészen **tartásának**lehetőségét.  Igény szerint módosíthatja a **frissítési gyakoriságot** , és egy vagy több megadott időpontot a frissítés futtatásához.
+5. Az **ütemezett frissítés** területen kapcsolja be az adatok naprakészen **tartásának** lehetőségét.  Igény szerint módosíthatja a **frissítési gyakoriságot** , és egy vagy több megadott időpontot a frissítés futtatásához.
 
     ![Power BI frissítés](media/powerbi/powerbi-schedule-refresh.png)
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [naplók kereséséről](../log-query/log-query-overview.md) a Power bi exportálható lekérdezések létrehozásához.
 * További információ a [Power BIről](https://powerbi.microsoft.com) a vizualizációk Azure monitor naplók alapján történő létrehozásához.

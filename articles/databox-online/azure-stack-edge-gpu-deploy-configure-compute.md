@@ -10,11 +10,11 @@ ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
 ms.openlocfilehash: 711da24b3edf08f4867109d0d70165955236c39a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743420"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184654"
 ---
 # <a name="tutorial-configure-compute-on-azure-stack-edge-pro-gpu-device"></a>Oktatóanyag: számítás konfigurálása Azure Stack Edge Pro GPU-eszközön
 
@@ -25,7 +25,7 @@ Ez az oktatóanyag ismerteti, hogyan konfigurálhat számítási szerepkört, é
 Ez az eljárás körülbelül 20 – 30 percet vesz igénybe.
 
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Számítás konfigurálása
@@ -45,11 +45,11 @@ Mielőtt beállít egy számítási szerepkört a Azure Stack Edge Pro-eszközö
 
 Ha az Azure Stack Edge Pro-ban szeretné beállítani a számítást, IoT Hub-erőforrást fog létrehozni a Azure Portal használatával.
 
-1. Az Azure Stack Edge-erőforrás Azure Portal válassza az **Áttekintés**lehetőséget. A jobb oldali ablaktáblán, a **számítási** csempén válassza az első **lépések**lehetőséget.
+1. Az Azure Stack Edge-erőforrás Azure Portal válassza az **Áttekintés** lehetőséget. A jobb oldali ablaktáblán, a **számítási** csempén válassza az első **lépések** lehetőséget.
 
     ![Ismerkedés a számítási feladatokkal](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-1.png)
 
-2. Az **Edge-számítás konfigurálása** csempén válassza a **számítás konfigurálása**lehetőséget.
+2. Az **Edge-számítás konfigurálása** csempén válassza a **számítás konfigurálása** lehetőséget.
 
     ![Számítás konfigurálása](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-2.png)
 
@@ -58,7 +58,7 @@ Ha az Azure Stack Edge Pro-ban szeretné beállítani a számítást, IoT Hub-er
    
     |Mező  |Érték  |
     |---------|---------|
-    |IoT Hub     | Válasszon az **új** vagy a **meglévő**listából. <br> Alapértelmezés szerint IoT-erőforrás létrehozásához a rendszer Standard szintet (S1) használ. Ingyenes szintű IoT-erőforrás használatához hozzon létre egyet, majd válassza ki a létrehozott erőforrást. <br> A IoT Hub erőforrás minden esetben ugyanazt az előfizetést és erőforráscsoportot használja, amelyet az Azure Stack Edge-erőforrás használ.     |
+    |IoT Hub     | Válasszon az **új** vagy a **meglévő** listából. <br> Alapértelmezés szerint IoT-erőforrás létrehozásához a rendszer Standard szintet (S1) használ. Ingyenes szintű IoT-erőforrás használatához hozzon létre egyet, majd válassza ki a létrehozott erőforrást. <br> A IoT Hub erőforrás minden esetben ugyanazt az előfizetést és erőforráscsoportot használja, amelyet az Azure Stack Edge-erőforrás használ.     |
     |Name (Név)     |Adja meg a IoT Hub erőforrás nevét.         |
 
     ![Ismerkedés a 2. számítási feladatokkal](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
@@ -76,7 +76,7 @@ Ha az Azure Stack Edge Pro-ban szeretné beállítani a számítást, IoT Hub-er
     
 Amikor a peremhálózati eszközön beállította a peremhálózat számítási szerepkört, két eszközt hoz létre: egy IoT eszközt és egy IoT Edge eszközt. Mindkét eszköz megtekinthető a IoT Hub erőforrásban. Ezen a IoT Edge eszközön a IoT Edge futtatókörnyezet is fut. Ezen a ponton csak a Linux platform érhető el a IoT Edge eszközhöz.
 
-A számítási műveletek végrehajtása a háttérben, a virtuális gépek és a Kubernetes-fürt létrehozása óta 20-30 percet is igénybe vehet. 
+A számítási műveletek végrehajtása a háttérben, a virtuális gépek és a Kubernetes-fürt létrehozása óta 20-30 percet is igénybe vehet. 
 
 Miután sikeresen konfigurálta a Azure Portal-beli számítást, egy Kubernetes-fürtöt és egy, az IoT-névtérhez társított alapértelmezett felhasználót (az Azure Stack Edge Pro által vezérelt rendszernévtér) létezik. 
 
@@ -85,7 +85,7 @@ Miután sikeresen konfigurálta a Azure Portal-beli számítást, egy Kubernetes
 Ha az ügyfelet a Kubernetes-fürt eléréséhez szeretné konfigurálni, szüksége lesz az Kubernetes-végpontra. Az alábbi lépéseket követve beolvashatja a Kubernetes API-végpontot az Azure Stack Edge Pro-eszköz helyi felhasználói felületéről.
 
 1. Az eszköz helyi webes FELÜLETén nyissa meg az **eszközök** lapot.
-2. Másolja a **KUBERNETES API Service** -végpontot az **eszköz végpontjai**alatt. Ez a végpont egy karakterlánc a következő formátumban: `https://compute.<device-name>.<DNS-domain>[Kubernetes-cluster-IP-address]` . 
+2. Másolja a **KUBERNETES API Service** -végpontot az **eszköz végpontjai** alatt. Ez a végpont egy karakterlánc a következő formátumban: `https://compute.<device-name>.<DNS-domain>[Kubernetes-cluster-IP-address]` . 
 
     ![Eszköz lap a helyi felhasználói felületen](./media/azure-stack-edge-j-series-create-kubernetes-cluster/device-kubernetes-endpoint-1.png)
 

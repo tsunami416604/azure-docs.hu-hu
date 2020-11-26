@@ -3,12 +3,12 @@ title: Azure-előfizetési korlátok és kvóták
 description: Az Azure-előfizetések és-szolgáltatások gyakori korlátainak, kvótáinak és megkötéseinek listáját jeleníti meg. Ez a cikk a korlátok növelésével és a maximális értékekkel kapcsolatos tudnivalókat tartalmazza.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 54eb25e302d49be9e3ab1febeb5c636d267d7e4f
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 810d503f1abdc14ad2d255a89aebe7c10954a889
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577838"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186201"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései
 
@@ -96,7 +96,7 @@ A díjszabási szintek határozzák meg a keresési szolgáltatás kapacitását
 
 * Az **ingyenes** , több-bérlős szolgáltatás, amelyet más Azure-előfizetők is megosztanak, kiértékelésre és kisméretű fejlesztési projektekre tervezték.
 * Az **alapszintű** eszközök dedikált számítástechnikai erőforrásokat biztosítanak az éles számítási feladatokhoz kisebb méretekben, és legfeljebb három replikával rendelkeznek a nagy rendelkezésre állású lekérdezési feladatokhoz.
-* A **standard** , amely az S1, az S2, az S3 és az S3 nagy sűrűségű, nagyobb üzemi számítási feladatokhoz is tartozik. A standard szinten több szint is létezik, így kiválaszthatja a munkaterhelés-profilhoz legjobban illő erőforrás-konfigurációt.
+* A **standard**, amely az S1, az S2, az S3 és az S3 nagy sűrűségű, nagyobb üzemi számítási feladatokhoz is tartozik. A standard szinten több szint is létezik, így kiválaszthatja a munkaterhelés-profilhoz legjobban illő erőforrás-konfigurációt.
 
 **Korlát/előfizetés**
 
@@ -398,7 +398,7 @@ További információ: [virtuális gépek méretei](../../virtual-machines/sizes
 
 #### <a name="disk-encryption-sets"></a>Lemezes titkosítási készletek
 
-A 50-es lemezes titkosítási készletek régiónként, előfizetések szerint vannak korlátozva. További információt a [Linux](../../virtual-machines/linux/disk-encryption.md#restrictions) vagy [Windows rendszerű](../../virtual-machines/windows/disk-encryption.md#restrictions) virtuális gépek titkosítási dokumentációjában talál. Ha a kvóta növelésére van szüksége, forduljon az Azure ügyfélszolgálatához.
+A 50-es lemezes titkosítási készletek régiónként, előfizetések szerint vannak korlátozva. További információt a [Linux](../../virtual-machines/disk-encryption.md#restrictions) vagy [Windows rendszerű](../../virtual-machines/disk-encryption.md#restrictions) virtuális gépek titkosítási dokumentációjában talál. Ha a kvóta növelésére van szüksége, forduljon az Azure ügyfélszolgálatához.
 
 ### <a name="managed-virtual-machine-disks"></a>Felügyelt virtuális gépek lemezei
 
@@ -442,7 +442,7 @@ Az erőforrások megosztott képtárakkal való üzembe helyezéséhez korlátok
 
 [!INCLUDE [virtual-machine-scale-sets-limits](../../../includes/azure-virtual-machine-scale-sets-limits.md)]
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Az Azure korlátainak és növekedésének megismerése](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 * [Virtuális gépek és felhőalapú szolgáltatások mérete az Azure-ban](../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

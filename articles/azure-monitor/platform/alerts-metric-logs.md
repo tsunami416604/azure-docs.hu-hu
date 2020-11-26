@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.subservice: alerts
-ms.openlocfilehash: 23ebb513e55e6b61f608354ae1cb3bf3864a54ae
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 7c1e1d52b8434db930fcdd05c5c5441ba027abc8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108847"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186014"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Metrikai riasztások létrehozása a naplókhoz Azure Monitor
 
@@ -25,7 +25,7 @@ Metrikai riasztásokat használhat a mutatóként kinyert népszerű Log Analyti
 
 - [Teljesítményszámlálók](./data-sources-performance-counters.md) Windows & Linux rendszerű gépekhez
 - [Szívverési rekordok Agent Health](../insights/solution-agenthealth.md)
-- [Felügyeleti rekordok frissítése](../../automation/update-management/update-mgmt-overview.md)
+- [Felügyeleti rekordok frissítése](../../automation/update-management/overview.md)
 - [Esemény](./data-sources-windows-events.md) -adatnaplók
 
 Az Azure-ban a lekérdezésen alapuló [naplózási riasztásokra](./alerts-log.md) **vonatkozó mérőszám-riasztások** használatának számos előnye van. Némelyikük alább látható:
@@ -55,7 +55,7 @@ A Log Analytics-adatokon összegyűjtött naplók metrikája előtt be kell áll
 
 1. **Aktív log Analytics munkaterület**: egy érvényes és aktív log Analytics munkaterület jelen kell lennie. További információ: [log Analytics munkaterület létrehozása a Azure Portalban](../learn/quick-create-workspace.md).
 2. Az **ügynök konfigurálva van log Analytics munkaterületre**: az ügynököt az Azure-beli virtuális gépekhez (és/vagy) a helyszíni virtuális gépekhez kell konfigurálni, hogy az adatküldés a korábbi lépésben használt log Analytics munkaterületre történjen. További információ: [log Analytics – ügynök áttekintése](./agents-overview.md).
-3. A **támogatott log Analytics megoldások telepítve**vannak: a log Analytics megoldást konfigurálni kell, és adatokat kell elküldeni log Analytics munkaterület által támogatott megoldásokba a [teljesítményszámlálók a Windows & Linux](./data-sources-performance-counters.md), [szívverési rekordok a Agent Health, az](../insights/solution-agenthealth.md) [Update Management](../../automation/update-management/update-mgmt-overview.md)és az [Event adatok](./data-sources-windows-events.md)számára.
+3. A **támogatott log Analytics megoldások telepítve** vannak: a log Analytics megoldást konfigurálni kell, és adatokat kell elküldeni log Analytics munkaterület által támogatott megoldásokba a [teljesítményszámlálók a Windows & Linux](./data-sources-performance-counters.md), [szívverési rekordok a Agent Health, az](../insights/solution-agenthealth.md) [Update Management](../../automation/update-management/overview.md)és az [Event adatok](./data-sources-windows-events.md)számára.
 4. **Naplók küldésére konfigurált log Analytics megoldások**: a log Analytics megoldásnak rendelkeznie kell az [log Analytics munkaterületek által támogatott mérőszámokhoz](./metrics-supported.md#microsoftoperationalinsightsworkspaces) tartozó szükséges naplókkal/adatokkal. A *(z)% rendelkezésre álló memória* számlálójának esetében például először a [teljesítményszámlálók](./data-sources-performance-counters.md) megoldásban kell konfigurálni.
 
 ## <a name="configuring-metric-alert-for-logs"></a>Metrikai riasztás konfigurálása a naplókhoz
@@ -67,7 +67,7 @@ Részletes részletekért és példákért tekintse meg a [metrikai riasztások 
 - A metrikai riasztás célja érvényes *log Analytics munkaterület*
 - A kiválasztott *log Analytics-munkaterület* metrikai riasztására kiválasztott jel a következő típusú: **metrika**
 - Adott feltételek vagy erőforrások szűrése dimenzió szűrők használatával; a naplók metrikái többdimenziós
-- A *jel logikájának*konfigurálásakor egyetlen riasztás hozható létre a dimenzió több értékének (például a számítógép) átméretezéséhez.
+- A *jel logikájának* konfigurálásakor egyetlen riasztás hozható létre a dimenzió több értékének (például a számítógép) átméretezéséhez.
 - Ha **nem** használja a Azure Portal a metrikai riasztások létrehozásához a kiválasztott *log Analytics-munkaterülethez*; Ezután a felhasználónak manuálisan kell létrehoznia egy explicit szabályt, amellyel a rendszer [Azure monitor ütemezett lekérdezési szabályok](/rest/api/monitor/scheduledqueryrules)segítségével konvertálja a napló adatait metrikai adatokra.
 
 > [!NOTE]
@@ -685,7 +685,7 @@ Vagy használja az Azure CLI-vel történő üzembe helyezési sablont:
 az group deployment create --resource-group myRG --template-file metricfromLogsAlertDynamic.json --parameters @metricfromLogsAlertDynamic.parameters.json
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [metrikai riasztásokról](alerts-metric.md).
 - További információ a [log-riasztásokról az Azure-ban](./alerts-unified-log.md).

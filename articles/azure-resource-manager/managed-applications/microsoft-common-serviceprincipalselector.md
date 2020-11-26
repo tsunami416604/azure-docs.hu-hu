@@ -5,16 +5,16 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: tomfitz
-ms.openlocfilehash: 9d41e41f110e927f436b38d6291719c138defa53
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 2fdbbad467d8c762db485fc7935e9cef78313fd0
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94745762"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184450"
 ---
 # <a name="microsoftcommonserviceprincipalselector-ui-element"></a>Microsoft. Common. ServicePrincipalSelector felhasználói felületi elem
 
-Olyan vezérlő, amely lehetővé teszi, hogy a felhasználók kiválasszon egy meglévő [szolgáltatásnevet](/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object) , vagy regisztráljanak egy új alkalmazást. Ha az **új létrehozása** lehetőséget választja, kövesse az új alkalmazás regisztrálásához szükséges lépéseket. Egy meglévő alkalmazás kiválasztásakor a vezérlő szövegmezőt biztosít a jelszó vagy a tanúsítvány ujjlenyomatának beviteléhez.
+Olyan vezérlő, amely lehetővé teszi, hogy a felhasználók kiválasszon egy meglévő [szolgáltatásnevet](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) , vagy regisztráljanak egy új alkalmazást. Ha az **új létrehozása** lehetőséget választja, kövesse az új alkalmazás regisztrálásához szükséges lépéseket. Egy meglévő alkalmazás kiválasztásakor a vezérlő szövegmezőt biztosít a jelszó vagy a tanúsítvány ujjlenyomatának beviteléhez.
 
 ## <a name="ui-samples"></a>Felhasználói felületi minták
 

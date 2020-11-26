@@ -16,11 +16,11 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: bbbf924ea950c5ba281be430190370ae77734b7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89262175"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184399"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>Tartalmak továbbítása igény szerint a .NET SDK használatával
 
@@ -159,7 +159,7 @@ A Media Services szolgáltatásban a digitális fájlok feltöltése vagy kimene
 
 Az alábbiakban meghatározott **UploadFile** módszer a **CreateFromFile** módszert hívja meg (amely a .NET SDK-bővítmények között van meghatározva). A **CreateFromFile** létrehoz egy új adategységet, amelybe a megadott forrásfájl fel lesz töltve.
 
-A **CreateFromFile** metódus **assetcreationoptions alapján határozhatja**fogad, amely lehetővé teszi a következő eszköz-létrehozási lehetőségek egyikének megadását:
+A **CreateFromFile** metódus **assetcreationoptions alapján határozhatja** fogad, amely lehetővé teszi a következő eszköz-létrehozási lehetőségek egyikének megadását:
 
 * **Nincs** – Nincs titkosítás. Ez az alapértelmezett érték. Ügyeljen arra, hogy ezen lehetőség használatakor a tartalom sem átvitel, sem tárolás közben nincs védve.
   Ha egy MP4-fájlt progresszív letöltés útján tervez továbbítani, használja ezt a lehetőséget.

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 85ff3bed2a648f852c311fefa8513622c2a48285
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 4d12a7ec76f3390aabc7b45aeb0cd8cedcc6febd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376536"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186473"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Az Azure és a ITSM-eszközök összekapcsolhatók a biztonságos exportálás használatával
 
@@ -28,8 +28,8 @@ A ITSMC a Felhasználónév és a jelszó hitelesítő adatait használja. A biz
 
 A biztonságos exportálási architektúra a következő új képességeket mutatja be:
 
-* **Új műveleti csoport** : a rendszer a ITSM eszközre küld riasztásokat a biztonságos webhook műveleti csoporton keresztül, a ITSMC által használt ITSM-műveleti csoport helyett.
-* **Azure ad-hitelesítés** : a hitelesítés a Felhasználónév/jelszó hitelesítő adatai helyett az Azure ad-n keresztül történik.
+* **Új műveleti csoport**: a rendszer a ITSM eszközre küld riasztásokat a biztonságos webhook műveleti csoporton keresztül, a ITSMC által használt ITSM-műveleti csoport helyett.
+* **Azure ad-hitelesítés**: a hitelesítés a Felhasználónév/jelszó hitelesítő adatai helyett az Azure ad-n keresztül történik.
 
 ## <a name="secure-export-data-flow"></a>Az adatforgalom biztonságos exportálása
 
@@ -49,9 +49,9 @@ A biztonságos exportálási adatfolyam lépései a következők:
 
 Az integráció fő előnyei a következők:
 
-* **Jobb hitelesítés** : az Azure ad biztonságosabb hitelesítést biztosít a ITSMC-ben gyakran előforduló időtúllépések nélkül.
+* **Jobb hitelesítés**: az Azure ad biztonságosabb hitelesítést biztosít a ITSMC-ben gyakran előforduló időtúllépések nélkül.
 * **A ITSM eszközben megoldott riasztások: a** metrikus riasztások "tüzelt" és "megoldott" állapotokat valósítanak meg. Ha a feltétel teljesül, a riasztás állapota "tüzelt". Ha a feltétel már nem teljesül, a riasztás állapota "feloldva". A ITSMC-ben a riasztások nem oldhatók fel automatikusan. A biztonságos exportálással a megoldott állapot a ITSM eszközre áramlik, így automatikusan frissül.
-* **[Gyakori riasztási séma](./alerts-common-schema.md)** : a ITSMC a riasztási adatok sémája eltér a riasztás típusa alapján. A biztonságos exportálásnál létezik egy általános séma az összes riasztási típushoz. Ez a közös séma tartalmazza a CI-t az összes riasztási típushoz. Az összes riasztási típus képes lesz a CI és a CMDB kötésére.
+* **[Gyakori riasztási séma](./alerts-common-schema.md)**: a ITSMC a riasztási adatok sémája eltér a riasztás típusa alapján. A biztonságos exportálásnál létezik egy általános séma az összes riasztási típushoz. Ez a közös séma tartalmazza a CI-t az összes riasztási típushoz. Az összes riasztási típus képes lesz a CI és a CMDB kötésére.
 
 Kezdje el használni a ITSM-csatoló eszközt a következő lépésekkel:
 
@@ -60,8 +60,8 @@ Kezdje el használni a ITSM-csatoló eszközt a következő lépésekkel:
 3. Konfigurálja a partneri környezetet. 
 
 A biztonságos exportálás a következő ITSM eszközökkel támogatja a kapcsolatokat:
-* [ServiceNow](https://docs.microsoft.com/azure/azure-monitor/platform/it-service-management-connector-secure-webhook-connections#connect-servicenow-to-azure-monitor)
-* [BMC Helix](https://docs.microsoft.com/azure/azure-monitor/platform/it-service-management-connector-secure-webhook-connections#connect-bmc-helix-to-azure-monitor)
+* [ServiceNow](#connect-servicenow-to-azure-monitor)
+* [BMC Helix](#connect-bmc-helix-to-azure-monitor)
 
 ## <a name="register-with-azure-active-directory"></a>Regisztrálás Azure Active Directory
 
@@ -90,7 +90,7 @@ Webhook egy művelethez való hozzáadásához kövesse az alábbi utasításoka
 5. Válassza a **biztonságos webhook** lehetőséget.
 6. Válassza ki az alábbi adatokat:
    1. Válassza ki a regisztrált Azure Active Directory példány objektumazonosítóát.
-   2. Az URI esetében illessze be a [ITSM eszköz-környezetből](https://docs.microsoft.com/azure/azure-monitor/platform/it-service-management-connector-secure-webhook-connections#configure-the-partner-environment)másolt webhook URL-címét.
+   2. Az URI esetében illessze be a [ITSM eszköz-környezetből](#configure-the-itsm-tool-environment)másolt webhook URL-címét.
    3. Állítsa be **az általános riasztási séma engedélyezése** **beállítást igen** értékre. 
 
    Az alábbi képen egy minta biztonságos webhook-művelet konfigurációja látható:
@@ -156,12 +156,12 @@ Győződjön meg arról, hogy teljesítette a következő előfeltételeket:
    4. Válassza a **konfiguráció** lehetőséget.
    5. Jelölje be az **új kapcsolatok** konfigurációjának hozzáadása elemet.
    6. Adja meg a konfigurációs szakasz információit:
-      - **Név** : hozza létre a sajátját.
-      - **Engedélyezési típus** : **nincs**
-      - **Leírás** : hozza létre a sajátját.
-      - **Webhely** : **felhő**
-      - **Példányok száma** : **2** , az alapértelmezett érték.
-      - **Ellenőrzés** : a használat engedélyezéséhez alapértelmezés szerint ki van választva.
+      - **Név**: hozza létre a sajátját.
+      - **Engedélyezési típus**: **nincs**
+      - **Leírás**: hozza létre a sajátját.
+      - **Webhely**: **felhő**
+      - **Példányok száma**: **2**, az alapértelmezett érték.
+      - **Ellenőrzés**: a használat engedélyezéséhez alapértelmezés szerint ki van választva.
       - Az Azure-bérlő azonosítója és az Azure-alkalmazás azonosítója a korábban megadott alkalmazásból származik.
 
 ![A BMC-konfigurációt megjelenítő képernyőkép.](media/it-service-management-connector-secure-webhook-connections/bmc-configuration.png)

@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 09/03/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: fa7faf64e1889ef2d1abe644f23f0be363709a6b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b25bae460ff11c3dab84e80524acd2eaf878561c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322710"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184688"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Rövid útmutató: szinapszis-munkaterület létrehozása
 Ez a rövid útmutató ismerteti, hogyan hozhat létre egy Azure szinapszis-munkaterületet a Azure Portal használatával.
@@ -32,6 +32,9 @@ Ez a rövid útmutató ismerteti, hogyan hozhat létre egy Azure szinapszis-munk
 1. 2. lehetőség: a **Storage-fiók előkészítési** utasításai a dokumentum alján találhatók.
 1. Az Azure szinapszis-munkaterülete ezt a Storage-fiókot fogja használni az "elsődleges" Storage-fiók és a munkaterület-adattárolási tároló számára. A munkaterület Apache Spark táblákban tárolja az adattárakat. Egy **/Synapse/workspacename** nevű mappában tárolja a Spark-alkalmazás naplóit.
 1. Válassza a **Felülvizsgálat + létrehozás** > **Létrehozás** lehetőséget. A munkaterület pár percen belül elkészül.
+
+> [!NOTE]
+> Az Azure szinapszis-munkaterület létrehozása után nem fogja tudni áthelyezni a munkaterületet egy másik Azure Active Directory bérlőbe. Ha ezt az előfizetések áttelepítése vagy más műveletek útján végzi el, a munkaterületen található összetevőkhöz nem férhet hozzá.  
 
 ## <a name="open-synapse-studio"></a>A szinapszis Studio megnyitása
 
@@ -61,7 +64,7 @@ Előfordulhat, hogy az Azure szinapszis-munkaterülethez tartozó felügyelt ide
     * A Storage- **blob adatközreműködői** szerepköréhez a Storage-fiókban rendeljen **sajátmunkaterület** a munkaterület-identitáshoz.
     * Rendelje hozzá a **sajátmunkaterület** a munkaterület neveként.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="next-steps"></a>Következő lépések
 

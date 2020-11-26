@@ -3,12 +3,12 @@ title: Intelligens észlelés az Azure Application Insightsban | Microsoft Docs
 description: Application Insights végrehajtja az alkalmazás telemetria automatikus elemzését, és figyelmezteti a lehetséges problémákra.
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 24ed8eefb7e07930cbd123fbe4081d555f0c27c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b6e9370387bf3bb87555261b3949db2917e9911
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87305873"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186252"
 ---
 # <a name="smart-detection-in-application-insights"></a>Intelligens detektálás az Application Insightsban
  Az intelligens észlelés automatikusan figyelmezteti a webalkalmazás lehetséges teljesítménybeli problémáit és meghibásodási rendellenességeit. Az alkalmazás által a [Application Insightsnak](./app-insights-overview.md)küldött telemetria proaktív elemzését végzi. Ha hirtelen megnőtt a meghibásodások aránya, vagy az ügyfél vagy a kiszolgáló teljesítménye rendellenes, akkor riasztást kap. Ehhez a szolgáltatáshoz nincs szükség konfigurációra. Akkor működik, ha az alkalmazása elég telemetria küld.
@@ -40,7 +40,7 @@ Az intelligens észlelés észleli és értesíti a különböző problémákró
 
 ## <a name="smart-detection-email-notifications"></a>E-mail-értesítések intelligens észlelése
 
-Az _előzetes_verzióként megjelölt szabályok kivételével az összes intelligens észlelési szabály alapértelmezés szerint e-mail-értesítések küldésére szolgál az észlelések észlelésekor.
+Az _előzetes_ verzióként megjelölt szabályok kivételével az összes intelligens észlelési szabály alapértelmezés szerint e-mail-értesítések küldésére szolgál az észlelések észlelésekor.
 
 Az e-mail-értesítések egy adott intelligens észlelési szabályhoz való konfigurálásához nyissa meg az intelligens észlelési **Beállítások** panelt, és válassza ki azt a szabályt, amely megnyitja a **szabály szerkesztése** panelt.
 
@@ -50,15 +50,14 @@ Azt is megteheti, hogy Azure Resource Manager-sablonok használatával módosít
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ezek a diagnosztikai eszközök segítenek megvizsgálni a telemetria az alkalmazásból:
 
 * [Metrika-kezelő](../platform/metrics-charts.md)
 * [Keresési ablak](./diagnostic-search.md)
-* [Analitika – hatékony lekérdezési nyelv](../log-query/get-started-portal.md)
+* [Analitika – hatékony lekérdezési nyelv](../log-query/log-analytics-tutorial.md)
 
 Az intelligens észlelés teljesen automatikus. De lehet, hogy néhány riasztást szeretne beállítani?
 
 * [Manuálisan konfigurált metrikai riasztások](../platform/alerts-log.md)
-* [Rendelkezésre állási webes tesztek](./monitor-web-app-availability.md) 
-
+* [Rendelkezésre állási webes tesztek](./monitor-web-app-availability.md)

@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 21a43a005b78c8916d06e97ca9d2ba21d5a585a3
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 56416009395ebf8270ad0fa8d141277424dd6d9a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424328"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183464"
 ---
 # <a name="authentication"></a>Hitelesítés
 
@@ -23,4 +23,4 @@ A [HMAC-hitelesítés](./rest-api-authentication-hmac.md) véletlenszerűen gene
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 
-[Azure Active Directory (Azure ad)-hitelesítés](/azure/active-directory/authentication/overview-authentication) a kérelmek hitelesítéséhez a Azure Active Directorytól kapott tulajdonosi jogkivonatot használ. Az ezen hitelesítési módszert használó kérelmek [engedélyezésének részletei az Azure ad-hitelesítés](./rest-api-authorization-azure-ad.md) szakaszban találhatók.
+[Azure Active Directory (Azure ad)-hitelesítés](../active-directory/authentication/overview-authentication.md) a kérelmek hitelesítéséhez a Azure Active Directorytól kapott tulajdonosi jogkivonatot használ. Az ezen hitelesítési módszert használó kérelmek [engedélyezésének részletei az Azure ad-hitelesítés](./rest-api-authorization-azure-ad.md) szakaszban találhatók.

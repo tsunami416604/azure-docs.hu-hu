@@ -9,11 +9,11 @@ ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 3048eb1ca7f9312a43bc1ab5885bf19d4c2e7931
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95998458"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185387"
 ---
 # <a name="tutorial-share-spatial-anchors-across-sessions-and-devices"></a>Oktatóanyag: térbeli horgonyok megosztása a munkamenetek és az eszközök között
 
@@ -96,7 +96,7 @@ A megosztási szolgáltatás Visual Studio code-on keresztüli üzembe helyezés
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban üzembe helyezett egy ASP.NET Core webalkalmazást az Azure-ban, és egy Unity-alkalmazást konfigurált és telepített. A térbeli horgonyok az alkalmazással lettek létrehozva, és a ASP.NET Core webalkalmazás használatával megosztva más eszközökkel.
 

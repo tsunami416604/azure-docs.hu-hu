@@ -6,19 +6,19 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.subservice: alerts
-ms.openlocfilehash: 7f03858b2427b2a2069ebe2c9d06425e7a741e2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7c9c76816b5d1ee2eedfb7e54645e056906feef
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294359"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186626"
 ---
 # <a name="optimizing-log-alert-queries"></a>A naplók riasztási lekérdezéseinek optimalizálása
 Ez a cikk azt ismerteti, hogyan írhat és alakíthat át [riasztási](alerts-unified-log.md) lekérdezéseket az optimális teljesítmény érdekében. Az optimalizált lekérdezések csökkentik a késést és a riasztások terhelését, ami gyakran fut.
 
 ## <a name="how-to-start-writing-an-alert-log-query"></a>Riasztási napló lekérdezésének megkezdése
 
-A riasztási lekérdezések [a log Analytics napló adatainak lekérdezésével](alerts-log.md#create-a-log-alert-rule-with-the-azure-portal) kezdődnek, amely a problémát jelzi. A [riasztási lekérdezés példái című témakörből](../log-query/saved-queries.md) megtudhatja, hogy mit tud felderíteni. Ön is [megkezdheti a saját lekérdezés megírását](../log-query/get-started-portal.md). 
+A riasztási lekérdezések [a log Analytics napló adatainak lekérdezésével](alerts-log.md#create-a-log-alert-rule-with-the-azure-portal) kezdődnek, amely a problémát jelzi. A [riasztási lekérdezés példái című témakörből](../log-query/example-queries.md) megtudhatja, hogy mit tud felderíteni. Ön is [megkezdheti a saját lekérdezés megírását](../log-query/log-analytics-tutorial.md). 
 
 ### <a name="queries-that-indicate-the-issue-and-not-the-alert"></a>A problémát jelző lekérdezések és nem a riasztás
 
@@ -170,7 +170,7 @@ Perf
 | summarize Avg_Idle_Time = avg(CounterValue) by Computer
 ``` 
 
-### <a name="example-4"></a>4. példa
+### <a name="example-4"></a>4\. példa
 A következő lekérdezéssel szeretne létrehozni egy naplózási riasztási szabályt, amely összekapcsolja a két lekérdezés eredményét `search` :
 
 ```Kusto

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 2e183ad8a6e25c12f073f51e9416b4fc0ed9365f
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 33672e90406b94a1b5788803911c072cdc2577f7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95530403"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186388"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure Szószedet: az Azure platform felhőalapú terminológiájának szótára
 
@@ -41,7 +41,7 @@ A [Azure app Service](app-service/overview.md) a webhelyek vagy webalkalmazások
 
 ## <a name="availability-set"></a>rendelkezésre állási csoport
 Az alkalmazások redundancia és megbízhatósága érdekében együtt kezelt virtuális gépek gyűjteménye. A rendelkezésre állási csoport használata biztosítja, hogy a tervezett vagy nem tervezett karbantartási események esetén legalább egy virtuális gép elérhető legyen.  
-Lásd: [a Windows rendszerű virtuális gépek rendelkezésre állásának kezelése](./virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) és [a linuxos virtuális gépek rendelkezésre állásának kezelése](./virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json)
+Lásd: [a Windows rendszerű virtuális gépek rendelkezésre állásának kezelése](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) és [a linuxos virtuális gépek rendelkezésre állásának kezelése](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="azure-classic-deployment-model"></a><a name="classic-model"></a>Klasszikus Azure üzembe helyezési modell
 Az erőforrások Azure-beli üzembe helyezéséhez használt két [üzembe helyezési modell](./azure-resource-manager/management/deployment-models.md) egyike (az új modell Azure Resource Manager). Bizonyos Azure-szolgáltatások csak a Resource Manager-alapú üzemi modellt támogatják, némelyikük csak a klasszikus üzemi modellt támogatja, és néhány támogatást is. Az egyes Azure-szolgáltatások dokumentációja határozza meg, hogy mely modell (ek) et támogatják.
@@ -58,7 +58,7 @@ A két üzembe helyezési [modell](./azure-resource-manager/management/deploymen
 
 ## <a name="fault-domain"></a>tartalék tartomány
 Egy rendelkezésre állási csoportba tartozó virtuális gépek gyűjteménye, amelyek valószínűleg sikertelenek lehetnek. Ilyen például a rackben található olyan gépek csoportja, amelyek közös áramforrással és hálózati kapcsolóval rendelkeznek. Az Azure-ban a rendelkezésre állási csoportokban lévő virtuális gépeket a rendszer automatikusan elválasztja több tartalék tartomány között.  
-Lásd: [a Windows rendszerű virtuális gépek rendelkezésre állásának kezelése](./virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) vagy [a linuxos virtuális gépek rendelkezésre állásának kezelése](./virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json)  
+Lásd: [a Windows rendszerű virtuális gépek rendelkezésre állásának kezelése](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) vagy [a linuxos virtuális gépek rendelkezésre állásának kezelése](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)  
 
 ## <a name="geo"></a>georedundáns
 Egy meghatározott határ az adattároláshoz, amely általában két vagy több régiót tartalmaz. A határok a nemzeti határokon belül vagy azokon kívül is lehetnek, és az adó szabályozása hatással van rájuk. Minden geo rendelkezik legalább egy régióval. Térségek Ázsia és a Csendes-óceáni térség és Japán. Más néven *Földrajz*.  
@@ -135,7 +135,7 @@ Lásd: [címkék használata az Azure-erőforrások rendszerezéséhez](./azure-
 
 ## <a name="update-domain"></a>tartomány frissítése
 Egy rendelkezésre állási csoportba tartozó virtuális gépek gyűjteménye, amelyek egy időben frissülnek. Az azonos frissítési tartományban lévő virtuális gépeket a rendszer a tervezett karbantartás során együtt újraindítja. Az Azure soha nem indít újra egynél több frissítési tartományt. Más néven frissítési tartomány.  
-Lásd: [a Windows rendszerű virtuális gépek rendelkezésre állásának kezelése](./virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) és [a linuxos virtuális gépek rendelkezésre állásának kezelése](./virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json)
+Lásd: [a Windows rendszerű virtuális gépek rendelkezésre állásának kezelése](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) és [a linuxos virtuális gépek rendelkezésre állásának kezelése](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="virtual-machine"></a><a name="vm"></a>virtuális gép
 Operációs rendszert futtató fizikai számítógép szoftveres implementálása. Egyszerre több virtuális gép is futhat ugyanazon a hardveren. Az Azure-ban a virtuális gépek különböző méretekben érhetők el.  
@@ -144,7 +144,7 @@ Lásd: [Virtual Machines dokumentáció](https://azure.microsoft.com/documentati
 ## <a name="virtual-machine-extension"></a><a name="vm-extension"></a>Virtuálisgép-bővítmény
 Olyan erőforrás, amely olyan viselkedést vagy szolgáltatásokat valósít meg, amelyek vagy más programok segítségére vannak, vagy amelyek lehetővé teszik a futó számítógépekkel való kommunikációt. A virtuálisgép-hozzáférési bővítmény használatával például alaphelyzetbe állíthatja vagy módosíthatja az Azure-beli virtuális gépek távelérési értékeit.
 <!-- This definition seems obscure to me; maybe a list of examples would work better than a conceptual definition? -->
-Lásd: [a virtuálisgép-bővítmények és-szolgáltatások (Windows)](./virtual-machines/extensions/features-windows.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) és [a virtuálisgép-bővítmények és-szolgáltatások (Linux)](./virtual-machines/extensions/features-linux.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) ismertetése
+Lásd: [a virtuálisgép-bővítmények és-szolgáltatások (Windows)](./virtual-machines/extensions/features-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) és [a virtuálisgép-bővítmények és-szolgáltatások (Linux)](./virtual-machines/extensions/features-linux.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ismertetése
 
 ## <a name="virtual-network"></a><a name="vnet"></a>virtuális hálózat
 Olyan hálózat, amely az összes többi Azure-bérlőtől elkülönített Azure-erőforrások közötti kapcsolatot biztosít. Az [Azure VPN Gateway](vpn-gateway/vpn-gateway-about-vpngateways.md) lehetővé teszi a virtuális hálózatok és egy virtuális hálózat és egy helyszíni hálózat közötti kapcsolatok létrehozását. Az IP-címek, a DNS-beállítások, a biztonsági házirendek és a virtuális hálózatokon belüli útválasztási táblák teljes körű szabályozására is lehetőség van.  

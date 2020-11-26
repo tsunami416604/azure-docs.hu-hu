@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: lcozzens
-ms.openlocfilehash: b2b903f259fdd2564fbcaed5eb0a750edf9c06e2
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 936be917d5b494c9d71386440c711ef6c29ffb45
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075875"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183498"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Beállítások leküldése az alkalmazás konfigurációjához az Azure-folyamatokkal
 
@@ -23,7 +23,7 @@ Az [Azure-alkalmazás konfigurálása leküldéses](https://marketplace.visualst
 - Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
 - Alkalmazás-konfigurációs erőforrás – hozzon létre egyet ingyen a [Azure Portal](https://portal.azure.com).
 - Azure DevOps-projekt – [hozzon létre egyet ingyen](https://go.microsoft.com/fwlink/?LinkId=2014881)
-- Azure-alkalmazás konfigurálása leküldéses feladat – ingyenesen letölthető a [Visual Studio piactérről](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task-push#:~:text=Navigate%20to%20the%20Tasks%20tab,the%20Azure%20App%20Configuration%20instance.).
+- Azure-alkalmazás konfigurálása leküldéses feladat – ingyenesen letölthető a [Visual Studio piactérről](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task-push).
 
 ## <a name="create-a-service-connection"></a>Szolgáltatási kapcsolatok létrehozása
 
@@ -31,7 +31,7 @@ A szolgáltatási kapcsolatok lehetővé teszik az Azure-előfizetéshez tartoz�
 
 1. Az Azure DevOps nyissa meg a cél folyamatot tartalmazó projektet, és a bal alsó sarokban nyissa meg a **projekt beállításait** .
 1. A **folyamatok** területen válassza a **szolgáltatás kapcsolatai** lehetőséget, majd a jobb felső sarokban válassza az **új szolgáltatás-kapcsolat** lehetőséget.
-1. Válassza a **Azure Resource Manager**lehetőséget.
+1. Válassza a **Azure Resource Manager** lehetőséget.
 1. Válassza ki az **egyszerű szolgáltatásnév (automatikus)** lehetőséget.
 1. Töltse ki az előfizetést és az erőforrást. Adjon nevet a szolgáltatásnak.
 
@@ -39,7 +39,7 @@ Most, hogy létrejött a szolgáltatás-Kapcsolódás, keresse meg a hozzá rend
 
 1. Lépjen a **Project Settings**  >  **szolgáltatás kapcsolataihoz**.
 1. Válassza ki az előző szakaszban létrehozott szolgáltatási kapcsolatokat.
-1. Válassza az **egyszerű szolgáltatás kezelése**lehetőséget.
+1. Válassza az **egyszerű szolgáltatás kezelése** lehetőséget.
 1. Jegyezze fel a **megjelenített nevet** .
 
 ## <a name="add-role-assignment"></a>Szerepkör-hozzárendelés hozzáadása
@@ -48,15 +48,15 @@ Rendelje hozzá a megfelelő alkalmazás-konfigurációs szerepkör-hozzárendel
 
 1. Navigáljon a cél alkalmazás konfigurációs tárolójához. 
 1. A bal oldalon válassza a **hozzáférés-vezérlés (iam)** lehetőséget.
-1. A felső részen válassza a **+ Hozzáadás** és kivét **szerepkör-hozzárendelés hozzáadása**elemet.
-1. A **szerepkör**területen válassza az **alkalmazás-konfigurációs adat tulajdonosa**elemet. Ez a szerepkör lehetővé teszi a feladat számára, hogy beolvassa az alkalmazást, és beírja az alkalmazás konfigurációs tárolójába. 
+1. A felső részen válassza a **+ Hozzáadás** és kivét **szerepkör-hozzárendelés hozzáadása** elemet.
+1. A **szerepkör** területen válassza az **alkalmazás-konfigurációs adat tulajdonosa** elemet. Ez a szerepkör lehetővé teszi a feladat számára, hogy beolvassa az alkalmazást, és beírja az alkalmazás konfigurációs tárolójába. 
 1. Válassza ki az előző szakaszban létrehozott szolgáltatási kapcsolatban társított szolgáltatásnevet.
   
 ## <a name="use-in-builds"></a>Használat a buildekben
 
 Ez a szakasz bemutatja, hogyan használható az Azure app Configuration leküldéses feladat az Azure DevOps Build-folyamatokban.
 
-1. Navigáljon a folyamat létrehozása lapra a **folyamatok**  >  **folyamatai**elemre kattintva. A folyamatok létrehozásához szükséges dokumentáció [itt](/azure/devops/pipelines/create-first-pipeline?tabs=tfs-2018-2&view=azure-devops)található.
+1. Navigáljon a folyamat létrehozása lapra a **folyamatok**  >  **folyamatai** elemre kattintva. A folyamatok létrehozásához szükséges dokumentáció [itt](/azure/devops/pipelines/create-first-pipeline?tabs=tfs-2018-2&view=azure-devops)található.
       - Ha új létrehozási folyamatot hoz létre, válassza az **asszisztens megjelenítése** lehetőséget a folyamat jobb oldalán, és keresse meg az Azure- **alkalmazás konfigurálása leküldéses** feladatot.
       - Ha meglévő Build-folyamatot használ, navigáljon a **feladatok** lapra a folyamat szerkesztésekor, és keresse meg az **Azure-alkalmazás konfigurációjának leküldése** feladatot.
 2. Adja meg a szükséges paramétereket ahhoz, hogy a feladat a kulcs-értékeket a konfigurációs fájlból az alkalmazás konfigurációs tárolójába küldje. A **konfigurációs fájl elérési útja** paraméter a fájl tárházának gyökerénél kezdődik.
@@ -66,7 +66,7 @@ Ez a szakasz bemutatja, hogyan használható az Azure app Configuration leküld�
 
 Ez a szakasz bemutatja, hogyan használható az Azure app Configuration leküldéses feladat egy Azure DevOps kiadási folyamatokban.
 
-1. Navigáljon a folyamat kiadása lapra a **folyamatok**kiadásai lehetőség kiválasztásával  >  **Releases**. A kiadási folyamatok dokumentációja [itt](/azure/devops/pipelines/release?view=azure-devops)található.
+1. Navigáljon a folyamat kiadása lapra a **folyamatok** kiadásai lehetőség kiválasztásával  >  **Releases**. A kiadási folyamatok dokumentációja [itt](/azure/devops/pipelines/release?view=azure-devops)található.
 1. Válasszon ki egy meglévő kiadási folyamatot. Ha még nem rendelkezik ilyennel, válassza az **+ új** lehetőséget, hogy újat hozzon létre.
 1. A kiadási folyamat szerkesztéséhez kattintson a jobb felső sarokban található **Szerkesztés** gombra.
 1. Válassza ki a **szakaszt** a feladat hozzáadásához. További információt a szakaszokról [itt](/azure/devops/pipelines/release/environments?view=azure-devops)találhat.
@@ -87,7 +87,7 @@ Az alkalmazás-konfiguráció leküldéses feladata a következő paramétereket
 - **Label (címke**): az egyes kulcs-értékekhez hozzáadott karakterlánc, amely az alkalmazás konfigurációs tárolójában található címke.
 - **Content Type (tartalomtípus**): az egyes kulcs-értékekhez hozzáadott karakterlánc, amely az alkalmazás konfigurációs tárolójában található tartalomtípus.
 - **Címkék**: egy JSON-objektum a (z `{"tag1":"val1", "tag2":"val2"}` ) formátumban, amely meghatározza az alkalmazás-konfigurációs tárolóba leküldett minden egyes kulcshoz hozzáadott címkéket.
-- **A tárolóban lévő összes többi Key-Values törlése a megadott előtaggal és címkével: az**alapértelmezett érték nincs **bejelölve**.
+- **A tárolóban lévő összes többi Key-Values törlése a megadott előtaggal és címkével: az** alapértelmezett érték nincs **bejelölve**.
   - **Bejelölve**: eltávolítja az alkalmazás-konfigurációs tároló összes olyan kulcs-értékét, amely megegyezik a megadott előtaggal és címkével, mielőtt az új kulcs-értékeket kikényszeríti a konfigurációs fájlból.
   - **Nincs bejelölve**: leküldi a konfigurációs fájl összes kulcs-értékét az alkalmazás konfigurációs tárolójába, és az alkalmazás konfigurációs tárolójában lévő minden más elemet érintetlenül hagy.
 

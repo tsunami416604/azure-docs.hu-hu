@@ -6,16 +6,16 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.subservice: alerts
-ms.openlocfilehash: b23f1d455610222ffa5713773a0bfb947f23ce34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fb0288d592af8bd23415b31ecf6a6e3448b92ba
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91343776"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186031"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>Naplóriasztás létrehozása Resource Manager-sablonnal
 
-A riasztások naplózása lehetővé teszi, hogy a felhasználók egy [log Analytics](../log-query/get-started-portal.md) lekérdezést használjanak, amellyel kiértékelheti az erőforrások összes készletének gyakoriságát, és egy riasztást az eredmények alapján. A szabályok futtathatnak egy vagy több műveletet a [műveleti csoportok](./action-groups.md)használatával. [További információ a naplózási riasztások funkcióival és terminológiával kapcsolatban](alerts-unified-log.md).
+A riasztások naplózása lehetővé teszi, hogy a felhasználók egy [log Analytics](../log-query/log-analytics-tutorial.md) lekérdezést használjanak, amellyel kiértékelheti az erőforrások összes készletének gyakoriságát, és egy riasztást az eredmények alapján. A szabályok futtathatnak egy vagy több műveletet a [műveleti csoportok](./action-groups.md)használatával. [További információ a naplózási riasztások funkcióival és terminológiával kapcsolatban](alerts-unified-log.md).
 
 Ez a cikk azt mutatja be, hogyan használhatók a [Azure Resource Manager-sablonok](../../azure-resource-manager/templates/template-syntax.md) a [naplózási riasztások](alerts-unified-log.md) Azure monitorban történő konfigurálásához. A Resource Manager-sablonok lehetővé teszik, hogy programozott módon állítsa be a riasztásokat konzisztens és reprodukálható módon a környezetekben. A naplózási riasztások az `Microsoft.Insights/scheduledQueryRules` erőforrás-szolgáltatóban jönnek létre. Lásd: API-referenciák az [ütemezett lekérdezési szabályok API](/rest/api/monitor/scheduledqueryrules/)-hoz.
 
@@ -26,7 +26,7 @@ Az alapszintű lépések a következők:
 4. A sablon üzembe helyezése bármely üzembe helyezési módszer használatával.
 
 > [!NOTE]
-> [Log Analytics munkaterületről](../log-query/get-started-portal.md) származó adatok naplózása elküldhető a Azure monitor metrikák tárolójába. A metrikák riasztásai [eltérő viselkedéssel](alerts-metric-overview.md)rendelkeznek, ami kívánatosabb lehet a használt adatoktól függően. A naplók mérőszámokra való átirányításával kapcsolatos információkért lásd: [metrika riasztás a naplókhoz](alerts-metric-logs.md).
+> [Log Analytics munkaterületről](../log-query/log-analytics-tutorial.md) származó adatok naplózása elküldhető a Azure monitor metrikák tárolójába. A metrikák riasztásai [eltérő viselkedéssel](alerts-metric-overview.md)rendelkeznek, ami kívánatosabb lehet a használt adatoktól függően. A naplók mérőszámokra való átirányításával kapcsolatos információkért lásd: [metrika riasztás a naplókhoz](alerts-metric-logs.md).
 
 > [!NOTE]
 > Az örökölt [log Analytics riasztási API](api-alerts.md) -val és a [log Analytics mentett keresések és riasztások](../insights/solutions.md)örökölt sablonjaival felügyelhető log Analytics naplózási riasztásai. [További információ az aktuális SCHEDULEDQUERYRULES API-ra való áttérésről](alerts-log-api-switch.md).

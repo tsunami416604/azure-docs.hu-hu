@@ -4,11 +4,11 @@ description: Megtudhatja, hogyan hozhat létre privát végpontokat a Azure Back
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.openlocfilehash: 0ca4e7a83e18ac72e25131d320737ce9578b1cf3
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172239"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184747"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup magánhálózati végpontok
 
@@ -25,7 +25,7 @@ Ez a cikk segít megérteni a Azure Backup magánhálózati végpontok létrehoz
 - A Recovery Services-tárolót (mindkettő) Azure Backup és Azure Site Recovery is használja, ez a cikk a privát végpontok használatát ismerteti csak Azure Backup esetén.
 - Azure Active Directory jelenleg nem támogatja a privát végpontokat. A Azure Active Directory működéséhez szükséges IP-címeket és teljes tartományneveket engedélyezni kell a biztonságos hálózatról, amikor az Azure-beli virtuális gépeken található adatbázisok biztonsági mentését hajtja végre, és a MARS-ügynök használatával készít biztonsági mentést. NSG-címkéket és Azure Firewall címkéket is használhat az Azure AD-hez való hozzáférés engedélyezéséhez.
 - A hálózati házirendekkel rendelkező virtuális hálózatok magánhálózati végpontok esetén nem támogatottak. A folytatás előtt le kell tiltania a hálózati házirendeket.
-- A Recovery Services erőforrás-szolgáltatót újra regisztrálnia kell az előfizetéssel, ha azt a 1 2020. május előtt regisztrálta. A szolgáltató újbóli regisztrálásához nyissa meg az előfizetését a Azure Portalban, navigáljon az **erőforrás-szolgáltatóhoz** a bal oldali navigációs sávon, majd válassza a **Microsoft. recoveryservices szolgáltatónál** elemet, és válassza az **ismételt regisztráció**lehetőséget.
+- A Recovery Services erőforrás-szolgáltatót újra regisztrálnia kell az előfizetéssel, ha azt a 1 2020. május előtt regisztrálta. A szolgáltató újbóli regisztrálásához nyissa meg az előfizetését a Azure Portalban, navigáljon az **erőforrás-szolgáltatóhoz** a bal oldali navigációs sávon, majd válassza a **Microsoft. recoveryservices szolgáltatónál** elemet, és válassza az **ismételt regisztráció** lehetőséget.
 
 ## <a name="recommended-and-supported-scenarios"></a>Ajánlott és támogatott forgatókönyvek
 
@@ -55,7 +55,7 @@ A felügyelt identitások lehetővé teszik, hogy a tároló privát végpontoka
 
     ![Identitás állapotának módosítása a következőre](./media/private-endpoints/identity-status-on.png)
 
-1. Módosítsa az **állapotot** **be értékre, majd** válassza a **Mentés**lehetőséget.
+1. Módosítsa az **állapotot** **be értékre, majd** válassza a **Mentés** lehetőséget.
 
 1. A rendszer létrehoz egy **objektumazonosító-azonosítót** , amely a tár felügyelt identitása.
 
@@ -73,11 +73,11 @@ A Azure Backuphoz szükséges privát végpontok létrehozásához a tárolónak
 Javasoljuk, hogy adja meg a **közreműködői** szerepkört a három erőforráscsoport számára a tárolóhoz (felügyelt identitás). A következő lépések azt írják le, hogyan kell ezt megtenni egy adott erőforráscsoport esetében (ezt a három erőforráscsoporthoz kell elvégezni):
 
 1. Nyissa meg az erőforráscsoportot, és navigáljon a **Access Control (iam)** elemre a bal oldali sávon.
-1. Ha **Access Control**, lépjen a **szerepkör-hozzárendelés hozzáadása**elemre.
+1. Ha **Access Control**, lépjen a **szerepkör-hozzárendelés hozzáadása** elemre.
 
     ![Szerepkör-hozzárendelés hozzáadása](./media/private-endpoints/add-role-assignment.png)
 
-1. A **szerepkör-hozzárendelés hozzáadása** panelen válassza a **közreműködő** **szerepkört**, és használja a tároló **nevét** a **rendszerbiztonsági tag**néven. Válassza ki a tárolót, és kattintson a **Mentés** gombra, ha elkészült.
+1. A **szerepkör-hozzárendelés hozzáadása** panelen válassza a **közreműködő** **szerepkört**, és használja a tároló **nevét** a **rendszerbiztonsági tag** néven. Válassza ki a tárolót, és kattintson a **Mentés** gombra, ha elkészült.
 
     ![Szerepkör és rendszerbiztonsági tag kiválasztása](./media/private-endpoints/choose-role-and-principal.png)
 
@@ -89,11 +89,11 @@ Az engedélyek részletesebb kezeléséhez tekintse meg a [szerepkörök és eng
 
 Ez a szakasz azt ismerteti, hogyan hozható létre saját végpont a tárolóhoz.
 
-1. A keresési sávban keresse meg és válassza ki a **privát hivatkozás**lehetőséget. Ekkor megjelenik a **privát kapcsolati központ**.
+1. A keresési sávban keresse meg és válassza ki a **privát hivatkozás** lehetőséget. Ekkor megjelenik a **privát kapcsolati központ**.
 
     ![Privát hivatkozás keresése](./media/private-endpoints/search-for-private-link.png)
 
-1. A bal oldali navigációs sávon válassza a **privát végpontok**lehetőséget. Egyszer a **privát végpontok** ablaktáblán válassza a **+ Hozzáadás** lehetőséget a saját tárolóhoz tartozó privát végpont létrehozásához.
+1. A bal oldali navigációs sávon válassza a **privát végpontok** lehetőséget. Egyszer a **privát végpontok** ablaktáblán válassza a **+ Hozzáadás** lehetőséget a saját tárolóhoz tartozó privát végpont létrehozásához.
 
     ![Privát végpont hozzáadása a privát kapcsolati központban](./media/private-endpoints/add-private-endpoint.png)
 
@@ -411,7 +411,7 @@ Ehhez a privát végponton lévő összes FQDN-hez bejegyzéseket kell készíte
 - A tárolóhoz tartozó magánhálózati végpont a magánhálózati végpont létrehozásakor megadott nevet használja.
 - A blob-és üzenetsor-szolgáltatásokhoz tartozó magánhálózati végpontok előre vannak meghatározva a tárolóhoz tartozó névvel.
 
-Az alábbi képen például a *pee2epe*nevű privát végponti kapcsolatban létrehozott három privát végpont látható:
+Az alábbi képen például a *pee2epe* nevű privát végponti kapcsolatban létrehozott három privát végpont látható:
 
 ![Három privát végpont a privát végponti kapcsolatok számára](./media/private-endpoints/three-private-endpoints.png)
 

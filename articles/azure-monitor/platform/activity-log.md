@@ -7,23 +7,23 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 6543b629af8d67658afe61ef81e22eb7355e1de7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b49faabb1c61a10418bfce3ae2e8187429981ad
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91772804"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186082"
 ---
 # <a name="azure-activity-log"></a>Azure-tevékenységnapló
-A műveletnapló egy Azure-beli [platform-napló](platform-logs-overview.md) , amely betekintést nyújt az előfizetési szintű eseményekre. Ez olyan adatokat tartalmaz, mint amikor egy erőforrás módosul, vagy amikor a virtuális gép elindul. Megtekintheti a tevékenység naplóját a Azure Portal vagy beolvashatja a bejegyzéseket a PowerShell és a parancssori felület használatával. További funkciókért hozzon létre egy diagnosztikai beállítást, amely elküldi a tevékenység naplóját [Azure monitor naplókba](data-platform-logs.md), az Azure Event Hubs az Azure-on kívülre vagy az Azure Storage-ba az archiváláshoz. Ez a cikk részletesen ismerteti a tevékenység naplójának megtekintését és a különböző célhelyekre való küldését.
+A Tevékenységnapló az Azure előfizetési szintű eseményekkel kapcsolatos megállapításokat biztosító [platformnaplója](platform-logs-overview.md). Olyan információkat tartalmaz, mint az erőforrások módosításának vagy a virtuális gépek indításának az időpontja. Megtekintheti a tevékenység naplóját a Azure Portal vagy beolvashatja a bejegyzéseket a PowerShell és a parancssori felület használatával. További funkciókért hozzon létre egy diagnosztikai beállítást, amely elküldi a tevékenység naplóját [Azure monitor naplókba](data-platform-logs.md), az Azure Event Hubs az Azure-on kívülre vagy az Azure Storage-ba az archiváláshoz. Ez a cikk részletesen ismerteti a tevékenység naplójának megtekintését és a különböző célhelyekre való küldését.
 
 A diagnosztikai beállítások létrehozásával kapcsolatos részletekért tekintse meg a [diagnosztikai beállítások létrehozása a platform naplófájljainak és metrikáinak a különböző célhelyekre való küldéséhez](diagnostic-settings.md) című témakört.
 
 > [!NOTE]
-> A műveletnapló bejegyzései a rendszer által generált és nem módosíthatók és nem törölhetők.
+> A Tevékenységnapló bejegyzéseit a rendszer hozza létre, és nem módosíthatók vagy törölhetők.
 
 ## <a name="view-the-activity-log"></a>A műveletnapló megtekintése
-A tevékenység naplóját a Azure Portal legtöbb menüjéből elérheti. A megnyíló menü meghatározza a kezdeti szűrőt. Ha a **figyelés** menüből nyitja meg, akkor az egyetlen szűrő lesz az előfizetésben. Ha egy erőforrás menüjéből nyitja meg, akkor a szűrő erre az erőforrásra lesz beállítva. A szűrőt bármikor módosíthatja, ha az összes többi bejegyzést meg szeretné tekinteni. Kattintson a **szűrő hozzáadása** lehetőségre további tulajdonságok hozzáadásához a szűrőhöz.
+A Tevékenységnaplót az Azure Portal legtöbb menüjéből elérheti. A megnyitásához használt menü határozza meg a napló kezdeti szűrőjét. Ha a **figyelés** menüből nyitja meg, akkor az egyetlen szűrő lesz az előfizetésben. Ha egy erőforrás menüjéből nyitja meg, akkor a szűrő erre az erőforrásra lesz beállítva. A szűrőt bármikor módosíthatja, ha az összes többi bejegyzést meg szeretné tekinteni. Kattintson a **szűrő hozzáadása** lehetőségre további tulajdonságok hozzáadásához a szűrőhöz.
 
 ![Műveletnapló megtekintése](./media/activity-logs-overview/view-activity-log.png)
 
@@ -58,9 +58,9 @@ A tevékenység-naplózási eseményeket a következő módszerekkel érheti el.
 - 90 napnál hosszabb ideig tárolhatja a tevékenység naplójának bejegyzéseit.
 - Nincs adatfeldolgozási vagy adatmegőrzési díj a Log Analytics munkaterületen tárolt műveletnapló-adatokra vonatkozóan.
 
-[Hozzon létre egy diagnosztikai beállítást](diagnostic-settings.md) a műveletnapló log Analytics munkaterületre való elküldéséhez. A tevékenység naplóját bármely előfizetésből akár öt munkaterületre is elküldheti. A naplók a bérlők közötti gyűjtéséhez az [Azure Lighthouse](../../lighthouse/index.yml)szükséges.
+[Hozzon létre egy diagnosztikai beállítást](diagnostic-settings.md) a műveletnapló log Analytics munkaterületre való elküldéséhez. A tevékenység naplóját bármely előfizetésből akár öt munkaterületre is elküldheti. A több bérlőt érintő naplógyűjtéshez az [Azure Lighthouse](../../lighthouse/index.yml) szükséges.
 
-A Log Analytics munkaterületen található műveletnapló-adattábla egy *AzureActivity* nevű táblázatban található, amelyet a [log Analytics](../log-query/get-started-portal.md) [napló lekérdezésével](../log-query/log-query-overview.md) lehet lekérni. A tábla szerkezete a [naplóbejegyzés kategóriájára](activity-log-schema.md)függően változik. A táblázat tulajdonságainak leírását a [Azure monitor adathivatkozás](/azure/azure-monitor/reference/tables/azureactivity)című részben tekintheti meg.
+A Log Analytics munkaterületen található műveletnapló-adattábla egy *AzureActivity* nevű táblázatban található, amelyet a [log Analytics](../log-query/log-analytics-tutorial.md) [napló lekérdezésével](../log-query/log-query-overview.md) lehet lekérni. A tábla szerkezete a [naplóbejegyzés kategóriájára](activity-log-schema.md)függően változik. A táblázat tulajdonságainak leírását a [Azure monitor adathivatkozás](/azure/azure-monitor/reference/tables/azureactivity)című részben tekintheti meg.
 
 Ha például meg szeretné tekinteni az egyes kategóriákhoz tartozó műveletnapló-rekordok számát, használja a következő lekérdezést.
 
@@ -169,7 +169,7 @@ Ez a szakasz a diagnosztikai beállítások előtt használt műveletnapló öss
 ### <a name="log-profiles"></a>Log-profilok
 A log profilok a tevékenység naplójának az Azure Storage-ba vagy az Event hubokba való küldésére szolgáló örökölt módszer. A következő eljárással folytathatja a munkát a napló profiljával, vagy letilthatja azt a diagnosztikai beállításokra való Migrálás előkészítése során.
 
-1. A Azure Portal **Azure monitor** menüjében válassza a **műveletnapló**elemet.
+1. A Azure Portal **Azure monitor** menüjében válassza a **műveletnapló** elemet.
 3. Kattintson a **Diagnosztikai beállítások** elemre.
 
    ![Diagnosztikai beállítások](media/diagnostic-settings-subscription/diagnostic-settings.png)
@@ -206,7 +206,7 @@ Ha már létezik egy bejelentkezési profil, először el kell távolítania a m
     | serviceBusRuleId |Nem |Service Bus a Service Bus névtérhez tartozó szabály AZONOSÍTÓját, amelybe az Event hub-t létre szeretné hozni. Ez a következő formátumú karakterlánc: `{service bus resource ID}/authorizationrules/{key name}` . |
     | Hely |Igen |Azoknak a régióknak a vesszővel tagolt listája, amelyeknek a tevékenység-naplózási eseményeket össze szeretné gyűjteni. |
     | RetentionInDays |Igen |Ennyi nap elteltével kell megőrizni az eseményeket a Storage-fiókban 1 és 365 között. A nulla érték határozatlan ideig tárolja a naplókat. |
-    | Kategória |Nem |Az összegyűjteni kívánt események kategóriáinak vesszővel tagolt listája. A lehetséges értékek a következők: _írás_, _Törlés_és _művelet_. |
+    | Kategória |Nem |Az összegyűjteni kívánt események kategóriáinak vesszővel tagolt listája. A lehetséges értékek a következők: _írás_, _Törlés_ és _művelet_. |
 
 ### <a name="example-script"></a>Példaszkript
 A következő példa egy PowerShell-szkriptet hoz létre egy olyan log-profil létrehozásához, amely a tevékenység naplóját a Storage-fiókra és az Event hub-ra írja.
@@ -256,7 +256,7 @@ Ha már létezik egy naplózási profil, először el kell távolítania a megl�
 A tevékenység naplójának a Log Analytics munkaterületre való küldésének örökölt módja a munkaterület konfigurációjában található napló csatlakoztatása. 
 
 1. A Azure Portal **log Analytics munkaterületek** menüjében válassza ki a munkaterületet a tevékenység naplójának összegyűjtéséhez.
-1. A munkaterület menü **munkaterület adatforrásai** területén válassza az **Azure-tevékenység napló**elemet.
+1. A munkaterület menü **munkaterület adatforrásai** területén válassza az **Azure-tevékenység napló** elemet.
 1. Kattintson arra az előfizetésre, amelyhez csatlakozni szeretne.
 
     ![A képernyőképen Log Analytics munkaterület van kiválasztva egy Azure-tevékenység naplójában.](media/activity-log-collect/workspaces.png)
@@ -281,7 +281,7 @@ A következő táblázat oszlopai elavultak a frissített sémában. Továbbra i
 | ResourceProvider  | ResourceProviderValue  |
 
 > [!IMPORTANT]
-> Bizonyos esetekben az oszlopok értékei az összes nagybetűvel rendelkezhetnek. Ha olyan lekérdezéssel rendelkezik, amely tartalmazza ezeket az oszlopokat, a [= ~ operátort](/azure/kusto/query/datatypes-string-operators) kell használnia a kis-és nagybetűk megkülönböztetésének összehasonlításához.
+> Bizonyos esetekben az ezekben az oszlopokban lévő értékek csupa nagybetűvel jelenhetnek meg. Ha ezeket az oszlopokat tartalmazó lekérdezése van, használja az [=~ operátort](/azure/kusto/query/datatypes-string-operators) a kis- és nagybetűket nem megkülönböztető összehasonlításhoz.
 
 A következő oszlop lett hozzáadva a *AzureActivity* -hez a frissített sémában:
 

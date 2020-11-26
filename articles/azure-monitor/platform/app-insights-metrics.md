@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: 9ea98df4b6cd8572412e7082b451feac3736919c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c61287475eb82241aa5c9e1d1649e8b20e3b28c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327072"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185946"
 ---
 # <a name="application-insights-log-based-metrics"></a>Application Insights log-alapú metrikák
 
@@ -35,10 +35,10 @@ Ha ugyanazt a metrikát ábrázolja a [metrikák Explorerben](metrics-getting-st
 
 - A kiválasztott **szűrési** méretek további *Where* záradékokra vannak lefordítva.
 
-- A kiválasztott **felosztott diagram** dimenzió egy extra összefoglaló tulajdonságra van lefordítva. Ha például a diagramot a *hely*alapján osztja szét, és egy 5 perces részletességgel ábrázolja azt, akkor a program összegzi az *Összefoglaló* záradékot *... raktárhely alapján (timestamp, 5 m), hely*.
+- A kiválasztott **felosztott diagram** dimenzió egy extra összefoglaló tulajdonságra van lefordítva. Ha például a diagramot a *hely* alapján osztja szét, és egy 5 perces részletességgel ábrázolja azt, akkor a program összegzi az *Összefoglaló* záradékot *... raktárhely alapján (timestamp, 5 m), hely*.
 
 > [!NOTE]
-> Ha még nem ismeri a Kusto lekérdezési nyelvét, a Kusto-utasítások másolásával és beillesztésével az Log Analytics lekérdezési ablaktáblán végezheti el a módosítások végrehajtása nélkül. Az alapszintű diagram megjelenítéséhez kattintson a **Futtatás** gombra. Ahogy elkezdi megérteni a lekérdezési nyelv szintaxisát, elindíthatja a kisebb módosításokat, és megtekintheti a módosítás hatását. A saját adatai megismerése nagyszerű lehetőséget jelent a [log Analytics](../log-query/get-started-portal.md) és [Azure monitor](../overview.md)teljes teljesítményének megkezdésére.
+> Ha még nem ismeri a Kusto lekérdezési nyelvét, a Kusto-utasítások másolásával és beillesztésével az Log Analytics lekérdezési ablaktáblán végezheti el a módosítások végrehajtása nélkül. Az alapszintű diagram megjelenítéséhez kattintson a **Futtatás** gombra. Ahogy elkezdi megérteni a lekérdezési nyelv szintaxisát, elindíthatja a kisebb módosításokat, és megtekintheti a módosítás hatását. A saját adatai megismerése nagyszerű lehetőséget jelent a [log Analytics](../log-query/log-analytics-tutorial.md) és [Azure monitor](../overview.md)teljes teljesítményének megkezdésére.
 
 ## <a name="availability-metrics"></a>Rendelkezésre állási metrikák
 
@@ -182,7 +182,7 @@ A **hibák** mérőszámai a kérelmek feldolgozásával, a függőségi hívás
 
 Ez a metrika a böngészőben futó alkalmazás kódjából kiváltott kivételek számát mutatja. ```trackException()```A metrika csak a Application INSIGHTS API-hívással követett kivételeket tartalmazza.
 
-|Mértékegység|Támogatott összesítések|Előre összevont méretek|Jegyzetek|
+|Mértékegység|Támogatott összesítések|Előre összevont méretek|Megjegyzések|
 |---|---|---|---|
 |Darabszám|Darabszám|Nincs|A log-alapú verzió a **Sum** összesítést használja.|
 
@@ -197,7 +197,7 @@ exceptions
 
 A sikertelen függőségi hívások száma.
 
-|Mértékegység|Támogatott összesítések|Előre összevont méretek|Jegyzetek|
+|Mértékegység|Támogatott összesítések|Előre összevont méretek|Megjegyzések|
 |---|---|---|---|
 |Darabszám|Darabszám|Nincs|A log-alapú verzió a **Sum** összesítést használja.|
 
@@ -212,7 +212,7 @@ dependencies
 
 Minden alkalommal, amikor kivételt naplóz Application Insights, az SDK [trackException () metódusát](../app/api-custom-events-metrics.md#trackexception) hívja meg. A kivételek mérőszáma a naplózott kivételek számát jeleníti meg.
 
-|Mértékegység|Támogatott összesítések|Előre összevont méretek|Jegyzetek|
+|Mértékegység|Támogatott összesítések|Előre összevont méretek|Megjegyzések|
 |---|---|---|---|
 |Darabszám|Darabszám|Felhőbeli szerepkör neve, felhőalapú szerepkör-példány, eszköz típusa|A log-alapú verzió a **Sum** összesítést használja.|
 
@@ -224,9 +224,9 @@ exceptions
 
 ### <a name="failed-requests-requestsfailed"></a>Sikertelen kérelmek (kérelmek/sikertelen)
 
-A *sikertelenként*megjelölt, nyomon követett kiszolgálói kérelmek száma. Alapértelmezés szerint a Application Insights SDK automatikusan megjelöl minden olyan kiszolgálói kérelmet, amely sikertelen kérelemként HTTP-5xx vagy 4xx adott vissza. Ezt a logikát testreszabhatja úgy, hogy módosítja a kérelem telemetria-eleme  *sikerességi* tulajdonságát egy [Egyéni telemetria-inicializálásban](../app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer).
+A *sikertelenként* megjelölt, nyomon követett kiszolgálói kérelmek száma. Alapértelmezés szerint a Application Insights SDK automatikusan megjelöl minden olyan kiszolgálói kérelmet, amely sikertelen kérelemként HTTP-5xx vagy 4xx adott vissza. Ezt a logikát testreszabhatja úgy, hogy módosítja a kérelem telemetria-eleme  *sikerességi* tulajdonságát egy [Egyéni telemetria-inicializálásban](../app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer).
 
-|Mértékegység|Támogatott összesítések|Előre összevont méretek|Jegyzetek|
+|Mértékegység|Támogatott összesítések|Előre összevont méretek|Megjegyzések|
 |---|---|---|---|
 |Darabszám|Darabszám|Felhőbeli szerepkör-példány, Felhőbeli szerepkör neve, valós vagy szintetikus forgalom, kérelmek teljesítménye, válasz kódja|A log-alapú verzió a **Sum** összesítést használja.|
 
@@ -241,7 +241,7 @@ requests
 
 Ez a metrika a kiszolgálói kivételek számát jeleníti meg.
 
-|Mértékegység|Támogatott összesítések|Előre összevont méretek|Jegyzetek|
+|Mértékegység|Támogatott összesítések|Előre összevont méretek|Megjegyzések|
 |---|---|---|---|
 |Darabszám|Darabszám|Felhőbeli szerepkör neve, felhőalapú szerepkör-példány|A log-alapú verzió a **Sum** összesítést használja.|
 
@@ -492,4 +492,3 @@ union traces, requests, pageViews, dependencies, customEvents, availabilityResul
 | summarize dcount(user_AuthenticatedId) by bin(timestamp, 1h)
 | render barchart
 ```
-

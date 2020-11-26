@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 10/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 65451ed99580d9f2d66bd28518f0ec40a21ffe65
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: ed5eda668f6bd52ba144aa664119ab613fdb7742
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317087"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183583"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Runbookok kezelése Azure Automation
 
@@ -45,7 +45,7 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 
 ## <a name="import-a-runbook"></a>Runbook importálása
 
-Létrehozhat egy PowerShell-vagy PowerShell-( **. ps1** ) parancsfájlt, egy grafikus runbook ( **. graphrunbook** ) vagy egy Python 2-szkriptet ( **.** a) a saját runbook. Meg kell adnia az importálás során létrehozott [runbook típusát](automation-runbook-types.md) , figyelembe véve az alábbi szempontokat.
+Létrehozhat egy PowerShell-vagy PowerShell-(**. ps1**) parancsfájlt, egy grafikus runbook (**. graphrunbook**) vagy egy Python 2-szkriptet (**.** a) a saját runbook. Meg kell adnia az importálás során létrehozott [runbook típusát](automation-runbook-types.md) , figyelembe véve az alábbi szempontokat.
 
 * Olyan **. ps1** fájlt is importálhat, amely nem tartalmaz munkafolyamatot egy [PowerShell-Runbook](automation-runbook-types.md#powershell-runbooks) vagy egy [PowerShell-munkafolyamat runbook](automation-runbook-types.md#powershell-workflow-runbooks). Ha egy PowerShell munkafolyamat-runbook importálja, azt egy munkafolyamatba konvertálja a rendszer. Ebben az esetben a megjegyzéseket a runbook tartalmazza az elvégzett módosítások leírásához.
 
@@ -68,7 +68,7 @@ A parancsfájlokat a következő eljárással importálhatja Azure Automationba.
 4. Kattintson a **Runbook fájl** elemre, és válassza ki az importálni kívánt fájlt.
 5. Ha a **név** mező engedélyezve van, lehetősége van módosítani a runbook nevét. A névnek betűvel kell kezdődnie, és csak betűket, számokat, aláhúzásokat és kötőjeleket tartalmazhat.
 6. A [runbook típusa](automation-runbook-types.md) automatikusan ki van választva, de a megfelelő korlátozások figyelembe vétele után módosíthatja a típust.
-7. Kattintson a **Létrehozás** gombra. Az új runbook megjelenik az Automation-fiók runbookok listájában.
+7. Kattintson a **Létrehozás** lehetőségre. Az új runbook megjelenik az Automation-fiók runbookok listájában.
 8. A Futtatás előtt közzé kell tennie [a runbook](#publish-a-runbook) .
 
 > [!NOTE]
@@ -223,7 +223,7 @@ Egyéni parancsfájl használata:
 
 1. Hozzon létre egy Automation-fiókot, és szerezzen be [közreműködői szerepkört](automation-role-based-access-control.md).
 2. [Kapcsolja össze a fiókot az Azure-munkaterülettel](../security-center/security-center-enable-data-collection.md).
-3. [Hibrid Runbook Worker](automation-hybrid-runbook-worker.md), [Update Management](update-management/update-mgmt-overview.md)vagy más automatizálási funkció engedélyezése. 
+3. [Hibrid Runbook Worker](automation-hybrid-runbook-worker.md), [Update Management](./update-management/overview.md)vagy más automatizálási funkció engedélyezése. 
 4. Ha Linux-gépen van szüksége, magas szintű engedélyekkel kell rendelkeznie. Jelentkezzen be az [aláírás-ellenőrzések kikapcsolásához](automation-linux-hrw-install.md#turn-off-signature-validation).
 
 ## <a name="test-a-runbook"></a>Runbook tesztelése

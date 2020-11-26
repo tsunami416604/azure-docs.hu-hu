@@ -4,12 +4,12 @@ description: Az intelligens csoportok olyan riasztások összesítései, amelyek
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/15/2018
-ms.openlocfilehash: dff59ac207e6078a264d1350d24c9e6f4a461d78
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 743bd1a674c034cd6a0350f959289ac3ecb568de
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012884"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186609"
 ---
 # <a name="smart-groups"></a>Intelligens csoportok
 
@@ -33,7 +33,7 @@ A következő intelligens csoportos állapotok támogatottak.
 | Nyugtázva | A rendszergazda áttekintette az intelligens csoportot, és megkezdte a munkát. |
 | Lezárt | A probléma megoldódott. Egy intelligens csoport bezárása után újra megnyithatja azt egy másik állapotba való módosításával. |
 
-[Megtudhatja, hogyan módosíthatja az intelligens csoport állapotát.](./alerts-managing-alert-states.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
+[Megtudhatja, hogyan módosíthatja az intelligens csoport állapotát.](./alerts-managing-alert-states.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 
 > [!NOTE]
 >  Az intelligens csoportok állapotának módosítása nem változtatja meg az egyes tagokra vonatkozó riasztások állapotát.
@@ -56,7 +56,7 @@ Az intelligens csoport részleteit tartalmazó oldal a következő részekből �
 
 Az intelligens csoport neve az első riasztás neve. Intelligens csoportok nem hozhatók létre és nem nevezhetők át.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Intelligens csoportok kezelése](./alerts-managing-smart-groups.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
-- [A riasztás és az intelligens csoport állapotának módosítása](./alerts-managing-alert-states.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
+- [Intelligens csoportok kezelése](./alerts-managing-smart-groups.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
+- [A riasztás és az intelligens csoport állapotának módosítása](./alerts-managing-alert-states.md?toc=%2fazure%2fazure-monitor%2ftoc.json)

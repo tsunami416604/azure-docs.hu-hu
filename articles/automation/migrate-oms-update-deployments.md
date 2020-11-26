@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: dabe914ffd4e84e8ded5c0e3b519036479fe33ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2226f55c829afa4316a92888d16f6dc68e1f931
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987605"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183600"
 ---
 # <a name="migrate-azure-monitor-logs-update-deployments-to-azure-portal"></a>Áttelepítési Azure Monitor naplók frissítése a Azure Portal
 
@@ -19,11 +19,11 @@ Az Operations Management Suite-(OMS-) portál [elavult](../azure-monitor/platfor
 ## <a name="key-information"></a>Legfontosabb információk
 
 * A meglévő telepítések továbbra is működni fognak. Ha újra létrehozta az üzembe helyezést az Azure-ban, törölheti a régi központi telepítést.
-* A OMS összes meglévő funkciója elérhető az Azure-ban. További információ a Update Managementről: [Update Management Overview (áttekintés](update-management/update-mgmt-overview.md)).
+* A OMS összes meglévő funkciója elérhető az Azure-ban. További információ a Update Managementről: [Update Management Overview (áttekintés](./update-management/overview.md)).
 
 ## <a name="access-the-azure-portal"></a>Az Azure Portal elérése
 
-1. A munkaterületen kattintson a **Megnyitás az Azure-ban**lehetőségre. 
+1. A munkaterületen kattintson a **Megnyitás az Azure-ban** lehetőségre. 
 
     ![Megnyitás az Azure-ban – Log Analytics](media/migrate-oms-update-deployments/link-to-azure-portal.png)
 
@@ -31,34 +31,34 @@ Az Operations Management Suite-(OMS-) portál [elavult](../azure-monitor/platfor
 
     ![Azure Monitor-naplók](media/migrate-oms-update-deployments/log-analytics.png)
 
-3. Az Automation-fiókban kattintson a **Update Management**elemre.
+3. Az Automation-fiókban kattintson a **Update Management** elemre.
 
     :::image type="content" source="media/migrate-oms-update-deployments/azure-automation.png" alt-text="Képernyőkép az Update Management oldalról.":::
 
-4. A Azure Portal az **összes szolgáltatás**területen válassza az **Automation-fiókok** lehetőséget. 
+4. A Azure Portal az **összes szolgáltatás** területen válassza az **Automation-fiókok** lehetőséget. 
 
-5. A **felügyeleti eszközök**területen válassza ki a megfelelő Automation-fiókot, majd kattintson a **Update Management**elemre.
+5. A **felügyeleti eszközök** területen válassza ki a megfelelő Automation-fiókot, majd kattintson a **Update Management** elemre.
 
 ## <a name="recreate-existing-deployments"></a>Meglévő központi telepítések újbóli létrehozása
 
 A OMS-portálon létrehozott összes frissítési központi telepítésnek más néven számítógépcsoport [néven is](../azure-monitor/platform/computer-groups.md) ismertnek kell lennie, amelynek a neve megegyezik a létező frissítési központi telepítéssel. A mentett keresés a frissítés központi telepítésében ütemezett számítógépek listáját tartalmazza.
 
-:::image type="content" source="media/migrate-oms-update-deployments/oms-deployment.png" alt-text="Képernyőkép az Update Management oldalról.":::
+:::image type="content" source="media/migrate-oms-update-deployments/oms-deployment.png" alt-text="Képernyőfelvétel a frissítések központi telepítése oldalról a Kiemelt név és kiszolgálók mezőkkel.":::
 
 A meglévő mentett keresés használatához kövesse az alábbi lépéseket:
 
-1. Új frissítés központi telepítésének létrehozásához nyissa meg a Azure Portal, válassza ki a használt Automation-fiókot, majd kattintson az **Update Management**elemre. Kattintson a **frissítés központi telepítésének ütemezett frissítése**elemre.
+1. Új frissítés központi telepítésének létrehozásához nyissa meg a Azure Portal, válassza ki a használt Automation-fiókot, majd kattintson az **Update Management** elemre. Kattintson a **frissítés központi telepítésének ütemezett frissítése** elemre.
 
     ![Frissítés központi telepítésének ütemezett időpontja](media/migrate-oms-update-deployments/schedule-update-deployment.png)
 
-2. Megnyílik az új frissítés központi telepítése panel. Adja meg az alábbi táblázatban leírt tulajdonságok értékeit, majd kattintson a **Létrehozás**gombra:
+2. Megnyílik az új frissítés központi telepítése panel. Adja meg az alábbi táblázatban leírt tulajdonságok értékeit, majd kattintson a **Létrehozás** gombra:
 
-3. A **frissíteni kívánt gépek**esetében válassza ki a OMS-telepítés által használt mentett keresést.
+3. A **frissíteni kívánt gépek** esetében válassza ki a OMS-telepítés által használt mentett keresést.
 
     | Tulajdonság | Leírás |
     | --- | --- |
     |Name (Név) |A frissítéstelepítést beazonosító egyedi név. |
-    |Operációs rendszer| Válassza a **Linux** vagy a **Windows**lehetőséget.|
+    |Operációs rendszer| Válassza a **Linux** vagy a **Windows** lehetőséget.|
     |Frissítendő gépek |Válasszon ki egy mentett keresést, importált csoportot, vagy válasszon ki egy gépet a legördülő listából, és válassza az egyes gépek lehetőséget. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható.</br> A számítógépcsoportok Azure Monitor-naplókban való létrehozásának különböző módszereiről a következő témakörben talál további információt: [számítógépcsoportok Azure monitor-naplókban](../azure-monitor/platform/computer-groups.md) |
     |Frissítési besorolások|Válassza ki az összes szükséges frissítési besorolást. A CentOS nem támogatja ezt a jelölőnégyzetet.|
     |Kizárási frissítések|Adja meg a kizárni kívánt frissítéseket. Windows esetén **a KB-os előtag nélkül** adja meg a tudásbázist. Linux esetén adja meg a csomag nevét, vagy használjon helyettesítő karaktert.  |
@@ -74,4 +74,4 @@ A meglévő mentett keresés használatához kövesse az alábbi lépéseket:
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ a Azure Automation Update Managementáról: [Update Management Overview](update-management/update-mgmt-overview.md).
+További információ a Azure Automation Update Managementáról: [Update Management Overview](./update-management/overview.md).

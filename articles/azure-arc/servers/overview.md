@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan használhatja az Azure arc-kompatibilis kiszolg
 keywords: Azure Automation, DSC, PowerShell, a kívánt állapot konfigurálása, frissítés kezelése, változások követése, leltár, runbookok, Python, grafikus, hibrid
 ms.date: 11/12/2020
 ms.topic: overview
-ms.openlocfilehash: 2df970f7c94f1e306243aba1480ee7023b8f76c1
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 8368f89b8e471698ede3e9e8eb691e69f494b6e2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578722"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183396"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Mi azok az Azure Arc-kompatibilis kiszolgálók?
 
@@ -29,7 +29,7 @@ Ha a gépet az Azure arc-kompatibilis kiszolgálókhoz kapcsolja, lehetővé tes
 
 - Egyszerűsítse az üzembe helyezést más Azure-szolgáltatásokkal, például az Azure Automation [állapot-konfigurációval](../../automation/automation-dsc-overview.md) és Azure monitor log Analytics munkaterülettel a nem Azure-beli Windows-vagy Linux-alapú Azure virtuálisgép- [bővítmények](manage-vm-extensions.md) használatával. Ez magában foglalja az üzembe helyezés utáni konfiguráció vagy a Szoftvertelepítés egyéni parancsfájl-bővítmény használatával végzett telepítését is.
 
-- [Update Management](../../automation/update-management/update-mgmt-overview.md) használata Azure Automation a Windows-és Linux-kiszolgálók operációsrendszer-frissítéseinek kezeléséhez
+- [Update Management](../../automation/update-management/overview.md) használata Azure Automation a Windows-és Linux-kiszolgálók operációsrendszer-frissítéseinek kezeléséhez
 
     > [!NOTE]
     > Jelenleg a Update Management engedélyezése közvetlenül egy ív-kompatibilis kiszolgálóról nem támogatott. A követelmények megismeréséhez és a kiszolgáló engedélyezéséhez lásd: [Update Management engedélyezése az Automation-fiókból](../../automation/update-management/enable-from-automation-account.md) .

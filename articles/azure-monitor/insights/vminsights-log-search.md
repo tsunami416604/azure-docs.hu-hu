@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 6b3fdf052ce7f0d6a5c3497aa1ac971d9249546a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 118bdcb6929abfc162ff05e91f1621f087b6c50c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015592"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186728"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>Naplók lekérdezése Azure Monitor for VMs
 
@@ -112,7 +112,7 @@ A *VMConnection* táblában lévő összes RemoteIp-tulajdonságot a rendszer az
 |:--|:--|
 |MaliciousIp |A RemoteIp címe |
 |IndicatorThreadType |Az észlelt veszélyforrás a következő értékek egyike: *botnet*, *C2*, *CryptoMining*, *Darknet*, *DDos*, *MaliciousUrl*, *malware*, *phishing*, *proxy*, *PUA*, *List*.   |
-|Description |A megfigyelt fenyegetés leírása. |
+|Leírás |A megfigyelt fenyegetés leírása. |
 |TLPLevel |A forgalmi lámpa protokoll (TLP) szintje az egyik definiált érték, a *fehér*, a *zöld*, a *sárga* és a *vörös*. |
 |Megbízhatóság |Az értékek *0 – 100*. |
 |Súlyosság |Az értékek *0 – 5*, ahol az *5* a legsúlyosabb, a *0* pedig egyáltalán nem súlyos. Az alapértelmezett érték *3*.  |
@@ -233,7 +233,7 @@ A *VMProcess* rendelkező rekordok a függőségi ügynökkel rendelkező kiszol
 |Csoport | A feldolgozó csoport neve. Az ugyanabban a csoportban lévő folyamatok logikailag kapcsolódnak egymáshoz, például ugyanannak a terméknek vagy rendszerösszetevőnek a része. |
 |StartTime | A folyamat készletének kezdési ideje |
 |FirstPid | A folyamat első PID-je |
-|Description | A folyamat leírása |
+|Leírás | A folyamat leírása |
 |CompanyName | A vállalat neve |
 |InternalName | A belső név |
 |TermékNév | A termék neve |
@@ -442,7 +442,7 @@ A *InsightsMetrics* rendelkező rekordok a virtuális gép vendég operációs r
 |Computer | A számítógép teljes tartományneve | 
 |Forrás | *vm.azm.ms* |
 |Névtér | A teljesítményszámláló kategóriája | 
-|Name | A teljesítményszámláló neve |
+|Name (Név) | A teljesítményszámláló neve |
 |Val | Összegyűjtött érték | 
 |Címkék | A rekorddal kapcsolatos részletek. Az alábbi táblázatban láthatja a különböző bejegyzéstípusokkal használt címkéket.  |
 |Ügynökazonosító | Az egyes számítógépek ügynökének egyedi azonosítója |
@@ -473,7 +473,6 @@ A jelenleg a *InsightsMetrics* táblába összegyűjtött teljesítményszámlá
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Ha a Azure Monitor naplóbeli lekérdezések írásakor új, tekintse át a következő [témakört: log Analytics használata](../log-query/get-started-portal.md) a Azure Portal a naplók írásához.
+* Ha a Azure Monitor naplóbeli lekérdezések írásakor új, tekintse át a következő [témakört: log Analytics használata](../log-query/log-analytics-tutorial.md) a Azure Portal a naplók írásához.
 
-* További információ a [keresési lekérdezések írásához](/azure/azure-monitor/log-query/get-started-queries).
-
+* További információ a [keresési lekérdezések írásához](../log-query/get-started-queries.md).

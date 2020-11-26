@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan adhat hozzá kimeneti kötést a C# Class Libra
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 0711516143839dbcdbafec56ab1d9643b4b8cdc7
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 635392212027c73e5aa954eb671be31228796a0d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167121"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185130"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>Függvények összekötése az Azure Storage-ba a Visual Studióval
 
@@ -29,15 +29,15 @@ A cikk elindítása előtt a következőket kell tennie:
 
 ## <a name="download-the-function-app-settings"></a>A függvény alkalmazás beállításainak letöltése
 
-Az [előző](functions-create-first-function-vs-code.md)rövid útmutatóban létrehozott egy Function alkalmazást az Azure-ban a szükséges Storage-fiókkal együtt. A fiókhoz tartozó kapcsolatok karakterlánca biztonságosan tárolódik az Azure-beli alkalmazás beállításaiban. Ebben a cikkben egy fiókba írja az üzeneteket egy tárolási várólistába. Ha a funkciót helyileg futtatja, a Storage-fiókhoz való csatlakozáshoz le kell töltenie az alkalmazás beállításait a fájl *local.settings.js* . 
+Az [előző](./create-first-function-vs-code-csharp.md)rövid útmutatóban létrehozott egy Function alkalmazást az Azure-ban a szükséges Storage-fiókkal együtt. A fiókhoz tartozó kapcsolatok karakterlánca biztonságosan tárolódik az Azure-beli alkalmazás beállításaiban. Ebben a cikkben egy fiókba írja az üzeneteket egy tárolási várólistába. Ha a funkciót helyileg futtatja, a Storage-fiókhoz való csatlakozáshoz le kell töltenie az alkalmazás beállításait a fájl *local.settings.js* . 
 
 1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza a **Publish** (Közzététel) lehetőséget. 
 
-1. A **műveletek**területen válassza a **Azure app Service beállítások szerkesztése**lehetőséget. 
+1. A **műveletek** területen válassza a **Azure app Service beállítások szerkesztése** lehetőséget. 
 
     ![Az Alkalmazásbeállítások szerkesztése](media/functions-add-output-binding-storage-queue-vs/edit-app-settings.png)
 
-1. A **AzureWebJobsStorage**alatt másolja a **távoli** karakterlánc értéket a **helyi**értékre, majd kattintson **az OK gombra**. 
+1. A **AzureWebJobsStorage** alatt másolja a **távoli** karakterlánc értéket a **helyi** értékre, majd kattintson **az OK gombra**. 
 
 A kapcsolat beállítását használó tárolási kötések `AzureWebJobsStorage` mostantól helyileg is csatlakozhatnak a várólista-tárolóhoz.
 
@@ -45,7 +45,7 @@ A kapcsolat beállítását használó tárolási kötések `AzureWebJobsStorage
 
 Mivel a várólista-tároló kimeneti kötését használja, a projekt futtatása előtt telepítenie kell a Storage-kötések bővítményt. A HTTP-és időzítő-eseményindítók kivételével a kötések kiterjesztési csomagként vannak implementálva. 
 
-1. Az **eszközök** menüben válassza a **NuGet Package**Manager  >  **csomagkezelő konzol**lehetőséget. 
+1. Az **eszközök** menüben válassza a **NuGet Package** Manager  >  **csomagkezelő konzol** lehetőséget. 
 
 1. A-konzolon futtassa a következő [Install-Package](/nuget/tools/ps-ref-install-package) parancsot a tárolási bővítmények telepítéséhez:
 
@@ -73,9 +73,9 @@ A rendszer létrehoz egy nevű új várólistát a `outqueue` Storage-fiókban a
 
 ## <a name="examine-the-output-queue"></a>A kimeneti üzenetsor vizsgálata
 
-1. A Visual Studióban a **nézet** menüben válassza a **Cloud Explorer**lehetőséget.
+1. A Visual Studióban a **nézet** menüben válassza a **Cloud Explorer** lehetőséget.
 
-1. A **Cloud Explorerben**bontsa ki az Azure-előfizetések és a **Storage-fiókok**csomópontot, majd bontsa ki a függvény által használt Storage-fiókot. Ha nem emlékszik a Storage-fiók nevére, tekintse `AzureWebJobsStorage` * meg alocal.settings.js* fájljának kapcsolatok karakterlánc-beállítását.  
+1. A **Cloud Explorerben** bontsa ki az Azure-előfizetések és a **Storage-fiókok** csomópontot, majd bontsa ki a függvény által használt Storage-fiókot. Ha nem emlékszik a Storage-fiók nevére, tekintse `AzureWebJobsStorage` *meg alocal.settings.js* fájljának kapcsolatok karakterlánc-beállítását.  
 
 1. Bontsa ki a **várólisták** csomópontot, majd kattintson duplán a " **Dequeue** " nevű várólistára a várólista tartalmának megtekintéséhez a Visual Studióban. 
 
@@ -89,7 +89,7 @@ Itt az ideje, hogy újra közzé lehessen tenni a frissített Function alkalmaz�
 
 ## <a name="redeploy-and-verify-the-updated-app"></a>A frissített alkalmazás újbóli üzembe helyezése és ellenőrzése
 
-1. **Megoldáskezelő**kattintson a jobb gombbal a projektre, és válassza a **Közzététel**lehetőséget, majd válassza a **Közzététel** lehetőséget a projekt újbóli közzétételéhez az Azure-ban.
+1. **Megoldáskezelő** kattintson a jobb gombbal a projektre, és válassza a **Közzététel** lehetőséget, majd válassza a **Közzététel** lehetőséget a projekt újbóli közzétételéhez az Azure-ban.
 
 1. Az üzembe helyezés befejezése után újra használhatja a böngészőt az újratelepített függvény teszteléséhez. Ahogy korábban is, fűzze hozzá a lekérdezési karakterláncot `&name=<yourname>` az URL-címhez.
 
@@ -99,7 +99,7 @@ Itt az ideje, hogy újra közzé lehessen tenni a frissített Function alkalmaz�
 
 [!INCLUDE [Clean-up resources](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Frissítette a HTTP által aktivált függvényt az adattárolási várólistába való íráshoz. További információ a függvények fejlesztéséről: [Azure functions fejlesztése a Visual Studióval](functions-develop-vs.md).
 

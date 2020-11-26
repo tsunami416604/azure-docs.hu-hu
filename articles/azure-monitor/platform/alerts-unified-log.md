@@ -6,28 +6,28 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
-ms.openlocfilehash: 8081c60833c3c02d55ae66ca695ba106dba01450
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 89cec12804f6fd2b8a3885248c42646d6c6dbb13
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995080"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186558"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Riasztások naplózása Azure Monitor
 
 ## <a name="overview"></a>Áttekintés
 
-A naplózási riasztások az [Azure-riasztások](./alerts-overview.md)által támogatott riasztási típusok egyike. A riasztások naplózása lehetővé teszi, hogy a felhasználók egy [log Analytics](../log-query/get-started-portal.md) lekérdezést használjanak, amellyel kiértékelheti az erőforrások összes készletének gyakoriságát, és egy riasztást az eredmények alapján. A szabályok egy vagy több műveletet aktiválnak a [műveleti csoportok](./action-groups.md)használatával.
+A naplózási riasztások az [Azure-riasztások](./alerts-overview.md)által támogatott riasztási típusok egyike. A riasztások naplózása lehetővé teszi, hogy a felhasználók egy [log Analytics](../log-query/log-analytics-tutorial.md) lekérdezést használjanak, amellyel kiértékelheti az erőforrások összes készletének gyakoriságát, és egy riasztást az eredmények alapján. A szabályok egy vagy több műveletet aktiválnak a [műveleti csoportok](./action-groups.md)használatával.
 
 > [!NOTE]
-> [Log Analytics munkaterületről](../log-query/get-started-portal.md) származó adatok naplózása elküldhető a Azure monitor metrikák tárolójába. A metrikák riasztásai [eltérő viselkedéssel](alerts-metric-overview.md)rendelkeznek, ami kívánatosabb lehet a használt adatoktól függően. A naplók mérőszámokra való átirányításával kapcsolatos információkért lásd: [metrika riasztás a naplókhoz](alerts-metric-logs.md).
+> [Log Analytics munkaterületről](../log-query/log-analytics-tutorial.md) származó adatok naplózása elküldhető a Azure monitor metrikák tárolójába. A metrikák riasztásai [eltérő viselkedéssel](alerts-metric-overview.md)rendelkeznek, ami kívánatosabb lehet a használt adatoktól függően. A naplók mérőszámokra való átirányításával kapcsolatos információkért lásd: [metrika riasztás a naplókhoz](alerts-metric-logs.md).
 
 > [!NOTE]
 > Az API `2020-05-01-preview` -verzió és az erőforrás-központú naplózási riasztások esetében jelenleg nem számítunk fel további díjakat.  Az előzetes verzióban elérhető szolgáltatások díjszabása a jövőben lesz bejelentve, és a számlázás megkezdése előtt értesítést küld. Ha továbbra is az új API-verziót és az erőforrás-központú napló riasztásait szeretné használni a hirdetmény lejárta után, akkor a megfelelő díjszabás alapján számítjuk fel a díjat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A naplózási riasztások Log Analytics-adatlekérdezéseket futtatnak. Először el kell kezdenie a [naplózási adatok gyűjtését](resource-logs.md) és a naplózási adatok lekérdezését a hibákért. A Log Analytics a [riasztások lekérdezése témakört](../log-query/saved-queries.md) használhatja, amelyből megismerheti, hogy miként derítheti fel vagy kezdheti [meg a saját lekérdezések írását](../log-query/get-started-portal.md).
+A naplózási riasztások Log Analytics-adatlekérdezéseket futtatnak. Először el kell kezdenie a [naplózási adatok gyűjtését](resource-logs.md) és a naplózási adatok lekérdezését a hibákért. A Log Analytics a [riasztások lekérdezése témakört](../log-query/example-queries.md) használhatja, amelyből megismerheti, hogy miként derítheti fel vagy kezdheti [meg a saját lekérdezések írását](../log-query/log-analytics-tutorial.md).
 
 Az [Azure monitoring közreműködője](./roles-permissions-security.md) a naplók létrehozásához, módosításához és frissítéséhez szükséges általános szerepkör. Az erőforrás-naplókhoz való hozzáférés & a lekérdezés végrehajtási jogosultságai is szükségesek. Az erőforrás-naplók részleges hozzáférése sikertelen lekérdezésekhez vagy részleges eredmények visszaadásához vezethet. [További információ a naplózási riasztások konfigurálásáról az Azure-ban](./alerts-log.md).
 
@@ -44,7 +44,7 @@ A naplóbeli keresési szabályok feltétel-definíciója a következőtől kezd
 A következő szakaszok ismertetik a fenti logika beállításához használható különböző paramétereket.
 
 ### <a name="log-query"></a>Napló lekérdezése
-A szabály kiértékeléséhez használt [log Analytics](../log-query/get-started-portal.md) lekérdezés. A lekérdezés által visszaadott eredmények alapján megállapítható, hogy egy riasztás aktiválva van-e. A lekérdezés hatóköre a következő lehet:
+A szabály kiértékeléséhez használt [log Analytics](../log-query/log-analytics-tutorial.md) lekérdezés. A lekérdezés által visszaadott eredmények alapján megállapítható, hogy egy riasztás aktiválva van-e. A lekérdezés hatóköre a következő lehet:
 
 - Egy adott erőforrás, például egy virtuális gép.
 - Méretezési erőforrás, például előfizetés vagy erőforráscsoport.
@@ -203,10 +203,9 @@ A díjszabási információk a [Azure monitor díjszabási oldalán](https://azu
 > [!NOTE]
 > Az örökölt [log Analytics riasztási API](api-alerts.md) -val és a [log Analytics mentett keresések és riasztások](../insights/solutions.md)örökölt sablonjaival felügyelhető log Analytics naplózási riasztásai. [További információ az aktuális SCHEDULEDQUERYRULES API-ra való áttérésről](alerts-log-api-switch.md). A riasztási szabályok kezelését a [régi log Analytics API](api-alerts.md) használatával kell elvégezni, amíg nem dönt, és nem tudja használni a rejtett erőforrásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg [, hogyan hozhat létre naplóbeli riasztásokat az Azure](./alerts-log.md)-ban.
 * Ismerkedjen meg [a webhookokkal a log-riasztásokban az Azure-ban](alerts-log-webhook.md).
 * Ismerje meg az [Azure-riasztásokat](./alerts-overview.md).
 * További információ a [log Analyticsról](../log-query/log-query-overview.md).
-

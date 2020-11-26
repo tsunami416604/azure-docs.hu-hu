@@ -3,14 +3,14 @@ title: Üzembehelyezési módok
 description: Leírja, hogy miként lehet megállapítani, hogy a teljes vagy növekményes központi telepítési módot használja-e Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: e584acd4af1dc6adb5f5d383acd5d16da0815f32
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc499be4185905af7eaf71b3515895de9bee46d3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87371583"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184042"
 ---
-# <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager üzembe helyezési módok
+# <a name="azure-resource-manager-deployment-modes"></a>Az Azure Resource Manager üzembe helyezési módjai
 
 Az erőforrások telepítésekor meg kell adnia, hogy a központi telepítés Növekményes frissítés vagy teljes frissítés. A két mód közötti különbség az, hogy az erőforrás-kezelő hogyan kezelje a sablonban nem szereplő erőforrás-csoport meglévő erőforrásait.
 
@@ -29,7 +29,7 @@ Ha a sablon olyan erőforrást tartalmaz, amely nincs központilag telepítve, m
 
 Ügyeljen arra, hogy a teljes mód legyen a [másolási hurkokkal](copy-resources.md). A rendszer a másolási hurok feloldása után nem a sablonban megadott erőforrásokat törli.
 
-Ha [egy sablonban több erőforráscsoporthoz](cross-scope-deployment.md)is telepít, a telepítési műveletben megadott erőforráscsoport erőforrásai törölhetők. A másodlagos erőforráscsoportok erőforrásai nem törlődnek.
+Ha [egy sablonban több erőforráscsoporthoz](./deploy-to-resource-group.md)is telepít, a telepítési műveletben megadott erőforráscsoport erőforrásai törölhetők. A másodlagos erőforráscsoportok erőforrásai nem törlődnek.
 
 Az erőforrástípusok eltérő módon kezelik a teljes módú törlést. A fölérendelt erőforrások automatikusan törlődnek, ha nem egy teljes módban telepített sablonban vannak. Néhány alárendelt erőforrás nem törlődik automatikusan, ha nem a sablonban. Ezeket a gyermek erőforrásokat azonban törli a rendszer, ha törli a fölérendelt erőforrást.
 
@@ -52,7 +52,7 @@ Ha az erőforráscsoport [zárolva](../management/lock-resources.md)van, a telje
 A növekményes módban a Resource Manager változatlan erőforrásokat **hagy** az erőforráscsoporthoz, de nincs megadva a sablonban. A sablon erőforrásai **hozzáadódnak** az erőforráscsoporthoz.
 
 > [!NOTE]
-> Ha egy meglévő erőforrást növekményes módban telepít át, a rendszer az összes tulajdonságot újra alkalmazza. A **Tulajdonságok Növekményesen nem vehetők**fel. Gyakori félreértés a sablonban nem megadott tulajdonságok változatlanul maradnak. Ha nem ad meg bizonyos tulajdonságokat, a Resource Manager a központi telepítést úgy értelmezi, hogy felülírja ezeket az értékeket. A sablonban nem szereplő tulajdonságok visszaállnak az alapértelmezett értékekre. Itt adhatja meg az erőforrás nem alapértelmezett értékeit, nem csak a frissíteni kívánt értékeket. A sablon erőforrás-definíciója mindig az erőforrás végső állapotát tartalmazza. Nem jelenthet részleges frissítést egy meglévő erőforráshoz.
+> Ha egy meglévő erőforrást növekményes módban telepít át, a rendszer az összes tulajdonságot újra alkalmazza. A **Tulajdonságok Növekményesen nem vehetők** fel. Gyakori félreértés a sablonban nem megadott tulajdonságok változatlanul maradnak. Ha nem ad meg bizonyos tulajdonságokat, a Resource Manager a központi telepítést úgy értelmezi, hogy felülírja ezeket az értékeket. A sablonban nem szereplő tulajdonságok visszaállnak az alapértelmezett értékekre. Itt adhatja meg az erőforrás nem alapértelmezett értékeit, nem csak a frissíteni kívánt értékeket. A sablon erőforrás-definíciója mindig az erőforrás végső állapotát tartalmazza. Nem jelenthet részleges frissítést egy meglévő erőforráshoz.
 >
 > Ritka esetekben az erőforráshoz megadott tulajdonságok ténylegesen alárendelt erőforrásként valósulnak meg. Ha például egy webalkalmazáshoz adja meg a hely konfigurációs értékeit, ezeket az értékeket a gyermek erőforrástípus adja meg `Microsoft.Web/sites/config` . Ha újra telepíti a webalkalmazást, és megad egy üres objektumot a hely konfigurációs értékeihez, a gyermek erőforrás nem frissül. Ha azonban új hely konfigurációs értékeket ad meg, a gyermek erőforrástípus frissül.
 
@@ -124,7 +124,7 @@ A következő példa egy olyan csatolt sablont mutat be, amely növekményes üz
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Resource Manager-sablonok létrehozásával kapcsolatos további információkért lásd: [Azure Resource Manager-sablonok](template-syntax.md)készítése.
 * További információ az erőforrások üzembe helyezéséről: [alkalmazások központi telepítése Azure Resource Manager sablonnal](deploy-powershell.md).

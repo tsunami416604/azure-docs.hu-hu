@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: ramakk
-ms.openlocfilehash: 50669dcce044988f2e45acc2a17ae43c140d1ab5
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 96d8ba058a33d408ec2ee2a1adfba9011f393da9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930305"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184484"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Az Azure NetApp Files hálózattervezési irányelvei
 
@@ -58,7 +58,7 @@ A következő táblázat a Azure NetApp Files által támogatott hálózati topo
 |-------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------|
 |    Kapcsolat a kötettel a helyi VNet    |    Igen    |         |
 |    Kapcsolat a kötettel egy társ VNet (ugyanabban a régióban)    |    Igen    |         |
-|    Kapcsolat a kötettel egy társ VNet (régió vagy globális társ)    |    Nem    |    Nincsenek    |
+|    Kapcsolat a kötettel egy társ VNet (régió vagy globális társ)    |    Nem    |    Nincs    |
 |    Kapcsolat egy kötettel a ExpressRoute-átjárón keresztül    |    Igen    |         |
 |    Helyszíni kapcsolat a ExpressRoute-átjárón keresztüli küllős VNet, valamint az átjárók közötti VNet    |    Igen    |        |
 |    Helyszíni kapcsolat a VPN-átjárón keresztül küllős VNet lévő kötetre    |    Igen    |         |
@@ -116,7 +116,7 @@ A következő ábra egy hibrid környezetet ábrázol:
 
 ![Hibrid hálózati környezet](../media/azure-netapp-files/azure-netapp-files-network-hybrid-environment.png)
 
-A hibrid forgatókönyvben a helyszíni adatközpontokból származó alkalmazásoknak hozzá kell férniük az Azure-ban található erőforrásokhoz.  Ez azt jelzi, hogy az adatközpontot ki szeretné-e terjeszteni az Azure-ra, vagy szeretné használni az Azure natív szolgáltatásait vagy a vész-helyreállítást. A helyek közötti VPN-en vagy ExpressRoute keresztül az Azure-beli erőforrásokhoz több helyszíni erőforrás összekapcsolásával kapcsolatos információkért tekintse meg [VPN Gateway tervezési lehetőségeket](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%252fazure%252fvirtual-network%252ftoc.json#planningtable) .
+A hibrid forgatókönyvben a helyszíni adatközpontokból származó alkalmazásoknak hozzá kell férniük az Azure-ban található erőforrásokhoz.  Ez azt jelzi, hogy az adatközpontot ki szeretné-e terjeszteni az Azure-ra, vagy szeretné használni az Azure natív szolgáltatásait vagy a vész-helyreállítást. A helyek közötti VPN-en vagy ExpressRoute keresztül az Azure-beli erőforrásokhoz több helyszíni erőforrás összekapcsolásával kapcsolatos információkért tekintse meg [VPN Gateway tervezési lehetőségeket](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable) .
 
 A hibrid küllős topológiában az Azure hub-VNet a helyszíni hálózathoz való kapcsolódás központi pontja. A küllők a központtal virtuális hálózatok, és a számítási feladatok elkülönítésére használhatók.
 

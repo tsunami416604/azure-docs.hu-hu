@@ -3,12 +3,12 @@ title: Érvénytelenek a sablon hibái
 description: Ismerteti, Hogyan oldhatók fel a sablon érvénytelen hibái Azure Resource Manager sablonok telepítésekor.
 ms.topic: troubleshooting
 ms.date: 05/22/2020
-ms.openlocfilehash: 3e68d4634d0092d05222348ca0db0116422faec3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba19d3c4e72a765e2aaff7393915b77a80daf2ba
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87373810"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185793"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Érvénytelen sablonnal kapcsolatos hibák elhárítása
 
@@ -130,7 +130,7 @@ Ellenőrizze az engedélyezett értékeket a sablonban, és adjon meg egyet az �
 
 ## <a name="solution-4---too-many-target-resource-groups"></a>4. megoldás – túl sok cél erőforráscsoport
 
-Előfordulhat, hogy ez a hiba a korábbi központi telepítések során fordul elő, mert egyetlen központi telepítésben legfeljebb öt cél erőforráscsoport van korlátozva. 2020 májusában a korlátot 800-erőforráscsoportok értékre emelték. További információ: [Azure-erőforrások telepítése több előfizetésre vagy erőforráscsoport-re](cross-scope-deployment.md).
+Előfordulhat, hogy ez a hiba a korábbi központi telepítések során fordul elő, mert egyetlen központi telepítésben legfeljebb öt cél erőforráscsoport van korlátozva. 2020 májusában a korlátot 800-erőforráscsoportok értékre emelték. További információ: [Azure-erőforrások telepítése több előfizetésre vagy erőforráscsoport-re](./deploy-to-resource-group.md).
 
 <a id="circular-dependency"></a>
 

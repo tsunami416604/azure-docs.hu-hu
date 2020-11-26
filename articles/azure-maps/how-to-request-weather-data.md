@@ -9,24 +9,24 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 3e0dce10d582006ab8c1dabf6d4b3efc82d8f39f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: c11f20286c514056d14b8faa941315345fea71f2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957112"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186337"
 ---
 # <a name="request-real-time-and-forecasted-weather-data-using-azure-maps-weather-services"></a>A valós idejű és az előre jelzett időjárási idő lekérése Azure Maps időjárási szolgáltatásokkal
 
-A Azure Maps [időjárási szolgáltatás](https://docs.microsoft.com/rest/api/maps/weather) REST API-k készlete, amely lehetővé teszi a fejlesztők számára, hogy a nagy dinamikus történelmi, valós idejű és előre jelzett időjárási adatok és vizualizációk integrálását a megoldásba. Ebben a cikkben bemutatjuk, hogyan kérheti le a valós idejű és az előre jelzett időjárási adatgyűjtést.
+A Azure Maps [időjárási szolgáltatás](/rest/api/maps/weather) REST API-k készlete, amely lehetővé teszi a fejlesztők számára, hogy a nagy dinamikus történelmi, valós idejű és előre jelzett időjárási adatok és vizualizációk integrálását a megoldásba. Ebben a cikkben bemutatjuk, hogyan kérheti le a valós idejű és az előre jelzett időjárási adatgyűjtést.
 
 Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 
-* Valós idejű (aktuális) időjárási idő kérése a [jelenlegi feltételek beolvasása API](https://docs.microsoft.com/rest/api/maps/weather/getcurrentconditionspreview)használatával.
-* Súlyos időjárási riasztások kérése a [Get súlyos időjárási riasztások API](https://docs.microsoft.com/rest/api/maps/weather/getsevereweatheralertspreview)használatával.
-* Napi előrejelzéseket kérhet a [napi előrejelzési API beszerzése](https://docs.microsoft.com/rest/api/maps/weather/getdailyforecastpreview)paranccsal.
-* Óránkénti előrejelzést kérhet a [Get óránkénti előrejelzési API](https://docs.microsoft.com/rest/api/maps/weather/gethourlyforecastpreview)használatával.
-* Kérelmek percenkénti előrejelzése a [Get minute előrejelzési API](https://docs.microsoft.com/rest/api/maps/weather/getminuteforecastpreview)használatával.
+* Valós idejű (aktuális) időjárási idő kérése a [jelenlegi feltételek beolvasása API](/rest/api/maps/weather/getcurrentconditionspreview)használatával.
+* Súlyos időjárási riasztások kérése a [Get súlyos időjárási riasztások API](/rest/api/maps/weather/getsevereweatheralertspreview)használatával.
+* Napi előrejelzéseket kérhet a [napi előrejelzési API beszerzése](/rest/api/maps/weather/getdailyforecastpreview)paranccsal.
+* Óránkénti előrejelzést kérhet a [Get óránkénti előrejelzési API](/rest/api/maps/weather/gethourlyforecastpreview)használatával.
+* Kérelmek percenkénti előrejelzése a [Get minute előrejelzési API](/rest/api/maps/weather/getminuteforecastpreview)használatával.
 
 Ez a videó áttekintést nyújt a Azure Maps időjárási szolgáltatásairól a REST hívási példákkal.
 
@@ -40,15 +40,15 @@ Ez a videó áttekintést nyújt a Azure Maps időjárási szolgáltatásairól 
 2. [Szerezzen be egy elsődleges előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account), más néven az elsődleges kulcsot vagy az előfizetési kulcsot. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](./how-to-manage-authentication.md).
 
     >[!IMPORTANT]
-    >A [Get minute előrejelzés API](https://docs.microsoft.com/rest/api/maps/weather/getminuteforecastpreview) -nak S1 díjszabási szintű kulcsra van szüksége. Minden egyéb API-nak szüksége van egy S0-díjszabási szintű kulcsra.
+    >A [Get minute előrejelzés API](/rest/api/maps/weather/getminuteforecastpreview) -nak S1 díjszabási szintű kulcsra van szüksége. Minden egyéb API-nak szüksége van egy S0-díjszabási szintű kulcsra.
 
 Ez az oktatóanyag a [Poster](https://www.postman.com/) alkalmazást használja, de más API-fejlesztési környezetet is választhat.
 
 ## <a name="request-real-time-weather-data"></a>Valós idejű időjárási adatgyűjtés kérése
 
-A [jelenlegi feltételek beolvasása API](https://docs.microsoft.com/rest/api/maps/weather/getcurrentconditionspreview) részletes időjárási feltételeket ad vissza, például a csapadék, a hőmérséklet és a szél egy adott koordináta-helyhez. Az elmúlt 6 vagy 24 óra megjegyzéseit is lekérheti az adott helyre vonatkozóan. A válasz olyan részleteket tartalmaz, mint a megfigyelési dátum és idő, az időjárási feltételek rövid leírása, az időjárási ikon, a csapadék jelzője és a hőmérséklet. A rendszer a RealFeel™ hőmérsékletét és az ultraibolya (UV) indexet is visszaadja.
+A [jelenlegi feltételek beolvasása API](/rest/api/maps/weather/getcurrentconditionspreview) részletes időjárási feltételeket ad vissza, például a csapadék, a hőmérséklet és a szél egy adott koordináta-helyhez. Az elmúlt 6 vagy 24 óra megjegyzéseit is lekérheti az adott helyre vonatkozóan. A válasz olyan részleteket tartalmaz, mint a megfigyelési dátum és idő, az időjárási feltételek rövid leírása, az időjárási ikon, a csapadék jelzője és a hőmérséklet. A rendszer a RealFeel™ hőmérsékletét és az ultraibolya (UV) indexet is visszaadja.
 
-Ebben a példában a [jelenlegi feltételek beolvasása API](https://docs.microsoft.com/rest/api/maps/weather/getcurrentconditionspreview) segítségével lekéri az aktuális időjárási feltételeket a Seattle-ben található Koordinátákban.
+Ebben a példában a [jelenlegi feltételek beolvasása API](/rest/api/maps/weather/getcurrentconditionspreview) segítségével lekéri az aktuális időjárási feltételeket a Seattle-ben található Koordinátákban.
 
 1. Nyissa meg a Poster alkalmazást. A Poster alkalmazás teteje közelében válassza az **új** lehetőséget. Az **új létrehozása** ablakban válassza a **gyűjtemény** elemet.  Nevezze el a gyűjteményt, és válassza a **Létrehozás** gombot. Ezt a gyűjteményt a jelen dokumentum többi példájában is használhatja.
 
@@ -235,9 +235,9 @@ Ebben a példában a [jelenlegi feltételek beolvasása API](https://docs.micros
 
 ## <a name="request-severe-weather-alerts"></a>Súlyos időjárási riasztások kérése
 
-[Azure Maps a súlyos időjárási riasztások API](https://docs.microsoft.com/rest/api/maps/weather/getsevereweatheralertspreview) beolvassa azokat a súlyos időjárási riasztásokat, amelyek világszerte elérhetők a hivatalos állami meteorológiai ügynökségektől, és globálisan a regionális időjárási riasztási szolgáltatók számára. A szolgáltatás adatokat adhat vissza, például a riasztás típusát, a kategóriát, a szintet és részletes leírást a kért helyre vonatkozó aktív súlyos riasztásokról, például a hurrikánok, a zivatarok, a villámlások, a hőhullámok vagy az erdőtüzek. A logisztikai vezetők például a térképeken, az üzleti helyszíneken és a tervezett útvonalakon is megjeleníthetők a súlyos időjárási feltételek, valamint az illesztőprogramok és a helyi feldolgozók további koordinálása.
+[Azure Maps a súlyos időjárási riasztások API](/rest/api/maps/weather/getsevereweatheralertspreview) beolvassa azokat a súlyos időjárási riasztásokat, amelyek világszerte elérhetők a hivatalos állami meteorológiai ügynökségektől, és globálisan a regionális időjárási riasztási szolgáltatók számára. A szolgáltatás adatokat adhat vissza, például a riasztás típusát, a kategóriát, a szintet és részletes leírást a kért helyre vonatkozó aktív súlyos riasztásokról, például a hurrikánok, a zivatarok, a villámlások, a hőhullámok vagy az erdőtüzek. A logisztikai vezetők például a térképeken, az üzleti helyszíneken és a tervezett útvonalakon is megjeleníthetők a súlyos időjárási feltételek, valamint az illesztőprogramok és a helyi feldolgozók további koordinálása.
 
-Ebben a példában a [Get súlyos időjárási riasztások API](https://docs.microsoft.com/rest/api/maps/weather/getsevereweatheralertspreview) -t használja a jelenlegi időjárási feltételek lekéréséhez a CHEYENNE, WY helyen található koordinátákon.
+Ebben a példában a [Get súlyos időjárási riasztások API](/rest/api/maps/weather/getsevereweatheralertspreview) -t használja a jelenlegi időjárási feltételek lekéréséhez a CHEYENNE, WY helyen található koordinátákon.
 
 >[!NOTE]
 >Ez a példa súlyos időjárási riasztásokat kér le az írás időpontjában. Valószínű, hogy a kért helyen már nincsenek súlyos időjárási riasztások. A tényleges súlyos riasztási adatok lekéréséhez a példa futtatásakor egy másik koordináta-helyen kell adatokat lekérnie.
@@ -287,12 +287,12 @@ Ebben a példában a [Get súlyos időjárási riasztások API](https://docs.mic
 
 ## <a name="request-daily-weather-forecast-data"></a>Napi időjárási előrejelzési adatszolgáltatások kérése
 
-A [napi előrejelzés beolvasása API](https://docs.microsoft.com/rest/api/maps/weather/getdailyforecastpreview) részletes napi időjárási előrejelzést ad vissza, például a hőmérsékletet és a széleket. A kérelemben megadható, hogy hány nap elteltével kell visszaadni: 1, 5, 10, 15, 25 vagy 45 nap egy adott koordináta-helyhez. A válasz olyan részleteket tartalmaz, mint például a hőmérséklet, a szél, a csapadék, a levegőminőség és az UV-index.  Ebben a példában a beállítással öt napig várjuk a kérést `duration=5` .
+A [napi előrejelzés beolvasása API](/rest/api/maps/weather/getdailyforecastpreview) részletes napi időjárási előrejelzést ad vissza, például a hőmérsékletet és a széleket. A kérelemben megadható, hogy hány nap elteltével kell visszaadni: 1, 5, 10, 15, 25 vagy 45 nap egy adott koordináta-helyhez. A válasz olyan részleteket tartalmaz, mint például a hőmérséklet, a szél, a csapadék, a levegőminőség és az UV-index.  Ebben a példában a beállítással öt napig várjuk a kérést `duration=5` .
 
 >[!IMPORTANT]
 >A S0 díjszabási szintjein napi előrejelzést kérhet a következő 1, 5, 10 és 15 nap után. Az S1 díjszabási szinten napi előrejelzést is kérhet a következő 25 napra és 45 napra vonatkozóan.
 
-Ebben a példában a [napi előrejelzési API](https://docs.microsoft.com/rest/api/maps/weather/getdailyforecastpreview) beolvasása lehetőségre kattintva lekéri az öt napos időjárás-előrejelzést a Seattle-ben található koordinátákhoz.
+Ebben a példában a [napi előrejelzési API](/rest/api/maps/weather/getdailyforecastpreview) beolvasása lehetőségre kattintva lekéri az öt napos időjárás-előrejelzést a Seattle-ben található koordinátákhoz.
 
 1. Nyissa meg a Poster alkalmazást, kattintson az **új** elemre, majd válassza a **kérelem** lehetőséget. Adja meg a kérelem **nevét** . Válassza ki az előző szakaszban létrehozott gyűjteményt, vagy hozzon létre egy újat, majd válassza a **Mentés** lehetőséget.
 
@@ -535,12 +535,12 @@ Ebben a példában a [napi előrejelzési API](https://docs.microsoft.com/rest/a
 
 ## <a name="request-hourly-weather-forecast-data"></a>Óradíjas előrejelzési idő kérése
 
-A [Get óránkénti előrejelzés API](https://docs.microsoft.com/rest/api/maps/weather/gethourlyforecastpreview) részletes időjárás-előrejelzést ad vissza az óra alapján a következő 1, 12, 24 (1 nap), 72 (3 nap), 120 (5 nap) és 240 óra (10 nap) esetében a megadott koordináta-helyhez. Az API olyan részleteket ad vissza, mint például a hőmérséklet, a páratartalom, a szél, a csapadék és az UV-index.
+A [Get óránkénti előrejelzés API](/rest/api/maps/weather/gethourlyforecastpreview) részletes időjárás-előrejelzést ad vissza az óra alapján a következő 1, 12, 24 (1 nap), 72 (3 nap), 120 (5 nap) és 240 óra (10 nap) esetében a megadott koordináta-helyhez. Az API olyan részleteket ad vissza, mint például a hőmérséklet, a páratartalom, a szél, a csapadék és az UV-index.
 
 >[!IMPORTANT]
 >A S0 díjszabási szinten a következő 1, 12, 24 óra (1 nap) és 72 óra (3 nap) óradíjat is igényelhet. Az S1 árképzési szinten a következő 120 (5 nap) és a 240 óra (10 nap) óradíjat is igénybe veheti.
 
-Ebben a példában a [Get óránkénti előrejelzés API](https://docs.microsoft.com/rest/api/maps/weather/gethourlyforecastpreview) -val lekéri a következő 12 órában az óránkénti időjárás-előrejelzést a Seattle-ben található Koordinátákban.
+Ebben a példában a [Get óránkénti előrejelzés API](/rest/api/maps/weather/gethourlyforecastpreview) -val lekéri a következő 12 órában az óránkénti időjárás-előrejelzést a Seattle-ben található Koordinátákban.
 
 1. Nyissa meg a Poster alkalmazást, kattintson az **új** elemre, majd válassza a **kérelem** lehetőséget. Adja meg a kérelem **nevét** . Válassza ki az előző szakaszban létrehozott gyűjteményt, vagy hozzon létre egy újat, majd válassza a **Mentés** lehetőséget.
 
@@ -645,9 +645,9 @@ Ebben a példában a [Get óránkénti előrejelzés API](https://docs.microsoft
     ```
 ## <a name="request-minute-by-minute-weather-forecast-data"></a>Kérelem percenkénti időjárás-előrejelzési adatként
 
- A [Get minute előrejelzési API](https://docs.microsoft.com/rest/api/maps/weather/getminuteforecastpreview) percenkénti előrejelzéseket ad vissza egy adott helyhez a következő 120 percre. A felhasználók az időjárási előrejelzéseket 1, 5 és 15 perc intervallumban kérhetik. A válasz olyan részleteket tartalmaz, mint például a csapadék típusa (beleértve az esőt, a havat vagy a kettő kombinációját), a kezdési időt és a csapadék intenzitásának értékét (dBZ).
+ A [Get minute előrejelzési API](/rest/api/maps/weather/getminuteforecastpreview) percenkénti előrejelzéseket ad vissza egy adott helyhez a következő 120 percre. A felhasználók az időjárási előrejelzéseket 1, 5 és 15 perc intervallumban kérhetik. A válasz olyan részleteket tartalmaz, mint például a csapadék típusa (beleértve az esőt, a havat vagy a kettő kombinációját), a kezdési időt és a csapadék intenzitásának értékét (dBZ).
 
-Ebben a példában a [Get minute előrejelzés API](https://docs.microsoft.com/rest/api/maps/weather/getminuteforecastpreview) -val beolvassa a Seattle-ben található koordinátákat percek alatt a percenkénti időjárás-előrejelzést. Az időjárás-előrejelzés a következő 120 percre van megadva. A lekérdezés azt kéri, hogy az előrejelzést 15 percenként adja meg, de beállíthatja, hogy a paraméter értéke 1 vagy 5 perc legyen.
+Ebben a példában a [Get minute előrejelzés API](/rest/api/maps/weather/getminuteforecastpreview) -val beolvassa a Seattle-ben található koordinátákat percek alatt a percenkénti időjárás-előrejelzést. Az időjárás-előrejelzés a következő 120 percre van megadva. A lekérdezés azt kéri, hogy az előrejelzést 15 percenként adja meg, de beállíthatja, hogy a paraméter értéke 1 vagy 5 perc legyen.
 
 1. Nyissa meg a Poster alkalmazást, kattintson az **új** elemre, majd válassza a **kérelem** lehetőséget. Adja meg a kérelem **nevét** . Válassza ki az előző szakaszban létrehozott gyűjteményt, vagy hozzon létre egy újat, majd válassza a **Mentés** lehetőséget.
 
@@ -751,8 +751,8 @@ Ebben a példában a [Get minute előrejelzés API](https://docs.microsoft.com/r
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [A Azure Maps időjárási szolgáltatásával kapcsolatos fogalmak](https://docs.microsoft.com/azure/azure-maps/weather-services-concepts)
+> [A Azure Maps időjárási szolgáltatásával kapcsolatos fogalmak](./weather-services-concepts.md)
 
 > [!div class="nextstepaction"]
-> [Azure Maps időjárási szolgáltatás REST API](https://docs.microsoft.com/rest/api/maps/weather
+> [Azure Maps időjárási szolgáltatás REST API](/rest/api/maps/weather
 )

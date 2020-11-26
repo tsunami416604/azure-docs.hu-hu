@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 04d53dc213d5e992dc79e322b071025bdb447b1b
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 4527d871df3667f483efd529d93f044377f34651
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057501"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186184"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Gyors útmutató: adatok gyűjtése Linux rendszerű számítógépről hibrid környezetben Azure Monitor
 
@@ -34,11 +34,11 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
 
-1. A Azure Portal válassza a **minden szolgáltatás**lehetőséget. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza **log Analytics munkaterületek**lehetőséget.
+1. A Azure Portal válassza a **minden szolgáltatás** lehetőséget. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza **log Analytics munkaterületek** lehetőséget.
 
     ![Log Analytics munkaterület megkeresése a Azure Portal](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
-2. Válassza a **Létrehozás**lehetőséget, majd válassza ki a kívánt beállításokat a következő elemekhez:
+2. Válassza a **Létrehozás** lehetőséget, majd válassza ki a kívánt beállításokat a következő elemekhez:
 
    * Adja meg az új **Log Analytics-munkaterület** nevét, például: *DefaultLAWorkspace*.  
    * A legördülő listából válassza ki azt az **előfizetést**, amelyikhez kapcsolódni szeretne, ha az alapértelmezett kiválasztás nem megfelelő.
@@ -58,15 +58,15 @@ A Linuxhoz készült Log Analytics-ügynök telepítése előtt szüksége lesz 
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]  
 
-1. A Azure Portal bal felső sarkában válassza a **minden szolgáltatás**lehetőséget. A keresőmezőbe írja be a **log Analytics**kifejezést. A beíráskor a rendszer a bemenet alapján szűri a listákat. Válassza **log Analytics munkaterületek**lehetőséget.
+1. A Azure Portal bal felső sarkában válassza a **minden szolgáltatás** lehetőséget. A keresőmezőbe írja be a **log Analytics** kifejezést. A beíráskor a rendszer a bemenet alapján szűri a listákat. Válassza **log Analytics munkaterületek** lehetőséget.
 
 2. Log Analytics munkaterületek listájában válassza ki a korábban létrehozott munkaterületet. (Lehet, hogy elnevezte a **DefaultLAWorkspace**.)
 
-3. **Ügynökök felügyeletének**kiválasztása:
+3. **Ügynökök felügyeletének** kiválasztása:
  
-4. Ezután válassza a **Linux-kiszolgálók**lehetőséget.
+4. Ezután válassza a **Linux-kiszolgálók** lehetőséget.
 
-5. A **munkaterület-azonosító** és az **elsődleges kulcs**jobb oldalán lévő érték. Másolja ki és illessze be mindkettőt a kedvenc szerkesztőjébe.
+5. A **munkaterület-azonosító** és az **elsődleges kulcs** jobb oldalán lévő érték. Másolja ki és illessze be mindkettőt a kedvenc szerkesztőjébe.
 
 ## <a name="install-the-agent-for-linux"></a>A Linuxhoz készült ügynök telepítése
 
@@ -113,9 +113,9 @@ Például: `https://user01:password@proxy01.contoso.com:30443`
 
 A Azure Monitor a hosszú távú elemzésekhez és jelentéskészítéshez megadott linuxos syslog-és teljesítményszámlálók eseményeinek összegyűjtését teszi elérhetővé. Ha egy adott feltételt észlel, akkor is végezhet műveleteket. A következő lépésekkel konfigurálhatja az események gyűjtését a Linux rendszernaplójából, illetve egyes gyakran használt teljesítményszámlálókból is.  
 
-1. A Azure Portal válassza a **minden szolgáltatás**lehetőséget. Az erőforrások listájába írja be a Log Analytics kifejezést. A beíráskor a rendszer a bemenet alapján szűri a listákat. Válassza ki **log Analytics munkaterületeket** , és a log Analytics munkaterületek listájában válassza ki a keresett munkaterületet, és válassza a **log Analytics** munkaterület **Speciális beállítások** elemét.
+1. A Azure Portal válassza a **minden szolgáltatás** lehetőséget. Az erőforrások listájába írja be a Log Analytics kifejezést. A beíráskor a rendszer a bemenet alapján szűri a listákat. Válassza ki **log Analytics munkaterületeket** , és a log Analytics munkaterületek listájában válassza ki a keresett munkaterületet, és válassza a **log Analytics** munkaterület **Speciális beállítások** elemét.
 
-2. Válassza **az**adatelemet, majd válassza a **syslog**lehetőséget.  
+2. Válassza **az** adatelemet, majd válassza a **syslog** lehetőséget.  
 
 3. A syslog hozzáadásához írja be a napló nevét. Adja meg a **syslog** -t, majd válassza ki a plusz jelet **+** .  
 
@@ -129,7 +129,7 @@ A Azure Monitor a hosszú távú elemzésekhez és jelentéskészítéshez megad
 
     ![Alapértelmezett Linux-teljesítményszámlálók kiválasztva Azure Monitor](media/quick-collect-azurevm/linux-perfcounters-azure-monitor.png)
 
-    Válassza az **alábbi konfiguráció alkalmazása a saját gépekre** lehetőséget, majd kattintson **a kijelölt teljesítményszámlálók hozzáadása**lehetőségre. A rendszer hozzáadja a kiválasztott számlálókat, és mindegyikhez beállít egy tíz másodperces mintagyűjtési időszakot.  
+    Válassza az **alábbi konfiguráció alkalmazása a saját gépekre** lehetőséget, majd kattintson **a kijelölt teljesítményszámlálók hozzáadása** lehetőségre. A rendszer hozzáadja a kiválasztott számlálókat, és mindegyikhez beállít egy tíz másodperces mintagyűjtési időszakot.  
 
 8. A konfiguráció mentéséhez kattintson a **Save (Mentés** ) gombra a lap tetején.
 
@@ -137,9 +137,9 @@ A Azure Monitor a hosszú távú elemzésekhez és jelentéskészítéshez megad
 
 Most, hogy engedélyezte az adatgyűjtést, futtasson le egy egyszerű naplóbeli keresést, hogy megtekinthessen néhány, a célszámtógépekről származó adatot.  
 
-1. A kiválasztott munkaterületen, a bal oldali ablaktáblán válassza a **naplók**lehetőséget.
+1. A kiválasztott munkaterületen, a bal oldali ablaktáblán válassza a **naplók** lehetőséget.
 
-2. A naplók lekérdezése lapon írja be `Perf` a lekérdezés-szerkesztőt, és válassza a **Futtatás**lehetőséget.
+2. A naplók lekérdezése lapon írja be `Perf` a lekérdezés-szerkesztőt, és válassza a **Futtatás** lehetőséget.
  
     ![Naplóbeli keresés Log Analytics](media/quick-collect-windows-computer/log-analytics-portal-queryexample.png)
 
@@ -155,7 +155,7 @@ Az ügynök eltávolításához futtassa az alábbi parancsot a Linux rendszerű
 
    `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh --purge`
 
-A munkaterület törléséhez válassza ki a korábban létrehozott Log Analytics munkaterületet, és az erőforrás lapon válassza a **Törlés**lehetőséget.
+A munkaterület törléséhez válassza ki a korábban létrehozott Log Analytics munkaterületet, és az erőforrás lapon válassza a **Törlés** lehetőséget.
 
 ![Log Analytics-erőforrás törlése](media/quick-collect-azurevm/log-analytics-portal-delete-resource.png)
 
@@ -166,5 +166,4 @@ Most, hogy már gyűjti a működési és teljesítményadatokat a linuxos szám
 Az adatok megtekintésének és elemzésének ismertetéséhez lépjen tovább az útmutatóhoz.
 
 > [!div class="nextstepaction"]
-> [Adatok megtekintése és elemzése a Log Analyticsben](../log-query/get-started-portal.md)
-
+> [Adatok megtekintése és elemzése a Log Analyticsben](../log-query/log-analytics-tutorial.md)

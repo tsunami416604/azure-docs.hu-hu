@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 2f2221ad10a2e07a3443cab9f957c8ec26969a3b
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 7b77a47acba6180df4a067887b79d8cdc0f56df6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96031293"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185079"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Folyamatos integráció és kézbesítés az Azure szinapszis-munkaterülethez
 
@@ -25,7 +25,7 @@ Az Azure szinapszis munkaterülete esetében a folyamatos integráció és a sz�
 
 Ebből a cikkből megtudhatja, hogyan automatizálható a szinapszis-munkaterület telepítése több környezetbe az Azure kiadási folyamat használatával.
 
-## <a name="pre-requirements"></a>Előzetes követelmények
+## <a name="prerequisites"></a>Előfeltételek
 
 -   A fejlesztéshez használt munkaterület a Studio git-tárházával lett konfigurálva, lásd: a [szinapszis Studio verziókövetés](source-control.md).
 -   Egy Azure DevOps-projekt készült a kiadási folyamat futtatásához.
@@ -82,7 +82,7 @@ Azure Resource Manager telepítési feladat hozzáadása erőforrások létrehoz
     
     ![munkaterület és készletek üzembe helyezése](media/pools-resource-deploy.png)
 
-1. Választható **Azure PowerShell** hozzáadása a munkaterület szerepkör-hozzárendelésének engedélyezéséhez és frissítéséhez. Ha a kiadási folyamatot egy szinapszis-munkaterület létrehozásához használja, a folyamat egyszerű szolgáltatását a munkaterület alapértelmezett rendszergazdájaként kell hozzáadni. A PowerShell futtatásával más fiókokhoz is hozzáférést biztosíthat a munkaterülethez. 
+1. Választható **Azure PowerShell** hozzáadása a munkaterület szerepkör-hozzárendelésének engedélyezéséhez és frissítéséhez. Ha a kiadási folyamattal hoz létre egy szinapszis-munkaterületet, a rendszer a folyamat egyszerű szolgáltatását adja hozzá alapértelmezett munkaterület-rendszergazdaként. A PowerShell futtatásával más fiókokhoz is hozzáférést biztosíthat a munkaterülethez. 
     
     ![engedély megadása](media/release-creation-grant-permission.png)
 
@@ -115,12 +115,8 @@ Az összes módosítás mentése után kiválaszthatja, hogy a kiadás **létreh
 Ha git-integrációt használ a szinapszis-munkaterülettel, és rendelkezik egy CI/CD-folyamattal, amely a változásokat a fejlesztésből teszteli, majd éles környezetbe helyezi, javasoljuk az alábbi ajánlott eljárásokat:
 
 -   **Git-integráció**. Csak a fejlesztési szinapszis munkaterületet konfigurálja a git-integrációval. A teszt-és éles munkaterületek változásai a CI/CD-n keresztül telepíthetők, és nincs szükség git-integrációra.
--   **Készletek előkészítése az összetevők migrálása előtt**. Ha készleteket csatol az SQL-parancsfájlhoz vagy a jegyzetfüzethez a fejlesztési munkaterületen, akkor a rendszer a különböző környezetekben lévő készletek azonos nevét is elvárta. 
--   **Mások**. További [ajánlott eljárások](/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)
+-   **Készletek előkészítése az összetevők migrálása előtt**. Ha a fejlesztői munkaterületen a készletekhez csatolt SQL-parancsfájl vagy jegyzetfüzet van, akkor a rendszer a különböző környezetekben lévő készletek azonos nevét is elvárta. 
+-   **Infrastruktúra-kód (IaC)**. Az infrastruktúra (hálózatok, virtuális gépek, terheléselosztó és a kapcsolatok topológiája) kezelése egy leíró modellben ugyanazt a verziószámozást használja, mint a DevOps-csapat a forráskódot használja. 
+-   **Mások**. Lásd: [ajánlott eljárások az ADF](/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd) -összetevőkhöz
 
-## <a name="unsupported-features"></a>Nem támogatott funkciók
-
-- A szinapszis Studio nem engedélyezi a bekötések vagy az erőforrások szelektív közzétételét. 
-- A szinapszis Studio nem támogatja a véglegesítő üzenet testreszabását.
-- A törlési művelet megtervezésével közvetlenül a git-ben lesz véglegesítve
 

@@ -6,18 +6,18 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 10/29/2018
-ms.openlocfilehash: ec2ffe71a32781a855da258f3621738f1a5f6be4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9a1bef582053eccdbfef63c2159cf540ffd9bfb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294291"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186592"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>A Azure Monitor naplózási értesítéseinek hibakeresése  
 
 Ebből a cikkből megtudhatja, Hogyan oldhatók meg a naplózási riasztásokkal kapcsolatos gyakori problémák Azure Monitor. Emellett megoldásokat kínál a naplók működésével és konfigurációjával kapcsolatos gyakori problémákra.
 
-A riasztások naplózása lehetővé teszi, hogy a felhasználók egy [log Analytics](../log-query/get-started-portal.md) lekérdezést használjanak, amellyel kiértékelheti az erőforrások összes készletének gyakoriságát, és egy riasztást az eredmények alapján. A szabályok egy vagy több műveletet aktiválnak a [műveleti csoportok](./action-groups.md)használatával. [További információ a naplózási riasztások funkcióival és terminológiával kapcsolatban](alerts-unified-log.md).
+A riasztások naplózása lehetővé teszi, hogy a felhasználók egy [log Analytics](../log-query/log-analytics-tutorial.md) lekérdezést használjanak, amellyel kiértékelheti az erőforrások összes készletének gyakoriságát, és egy riasztást az eredmények alapján. A szabályok egy vagy több műveletet aktiválnak a [műveleti csoportok](./action-groups.md)használatával. [További információ a naplózási riasztások funkcióival és terminológiával kapcsolatban](alerts-unified-log.md).
 
 > [!NOTE]
 > Ez a cikk nem vizsgálja azokat az eseteket, amelyekben a Azure Portal riasztási szabályt váltott ki, és egy kapcsolódó műveleti csoport nem hajt végre értesítést. Ilyen esetekben tekintse meg a hibaelhárítás részleteit [itt](./alerts-troubleshoot.md#action-or-notification-on-my-alert-did-not-work-as-expected).
@@ -36,13 +36,13 @@ A rendszer többször próbálkozik a riasztások kiértékelésével a késés 
 
 A lekérdezés időtartománya a szabály feltételének definíciójában van beállítva. Ez a mező a munkaterületek és a Application Insights **időszaka** , valamint a **lekérdezés időtartományának felülbírálása** minden más erőforrástípus esetében. A log analyticshez hasonlóan az időtartomány is a megadott időszakra korlátozza a lekérdezési időt. Akkor is alkalmazza az időtartományt **, ha a** lekérdezésben már szerepel a futtatási parancs. 
 
-Egy lekérdezés például 60 percet vizsgál, ha az időtartomány 60 perc, még akkor is, ha a szöveg már tartalmazza a **következőt: ago (1d)**. Az időtartománynak és a lekérdezési idő szűrésének meg kell egyeznie. A példában az **adott időszakra**vonatkozó  /  **felülbírálás lekérdezési időtartománya** egy napra változik, a várt módon fog működni.
+Egy lekérdezés például 60 percet vizsgál, ha az időtartomány 60 perc, még akkor is, ha a szöveg már tartalmazza a **következőt: ago (1d)**. Az időtartománynak és a lekérdezési idő szűrésének meg kell egyeznie. A példában az **adott időszakra** vonatkozó  /  **felülbírálás lekérdezési időtartománya** egy napra változik, a várt módon fog működni.
 
 ![Időtartam](media/alert-log-troubleshoot/LogAlertTimePeriod.png)
 
 ### <a name="actions-are-muted-in-the-alert-rule"></a>A riasztási szabályban a műveletek el vannak némítva
 
-A naplózási riasztások lehetőséget biztosítanak egy adott időtartamra kilőtt riasztási műveletek elnémítására. Ez a mező a **riasztások** kihagyása a munkaterületeken és a Application Insights. Az összes többi erőforrástípus esetében az **Elnémítás műveletnek**nevezzük. 
+A naplózási riasztások lehetőséget biztosítanak egy adott időtartamra kilőtt riasztási műveletek elnémítására. Ez a mező a **riasztások** kihagyása a munkaterületeken és a Application Insights. Az összes többi erőforrástípus esetében az **Elnémítás műveletnek** nevezzük. 
 
 Egy gyakori probléma, hogy úgy gondolja, hogy a riasztás a szolgáltatási probléma miatt nem indította el a műveleteket. Még a szabály konfigurációja is elnémítva.
 
@@ -131,7 +131,7 @@ Ha elérte a kvóta korlátját, a következő lépések segíthetnek a problém
 
     - Azon előfizetési azonosítók és erőforrás-azonosítók, amelyekhez a kvóta korlátját növelni kell.
     - A kvóta növelésének oka.
-    - A kvóta növelésének erőforrás-típusa: **log Analytics**, **Application Insights**stb.
+    - A kvóta növelésének erőforrás-típusa: **log Analytics**, **Application Insights** stb.
     - A kért kvóta korlátja.
 
 

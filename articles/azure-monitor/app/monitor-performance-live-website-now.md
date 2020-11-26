@@ -4,12 +4,12 @@ description: Megfigyelheti egy webhely teljesítményét annak ismételt üzembe
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 6c27c78bf8e3f3b8af342a14a38c9be3821d781a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 53dbcc341fdd4bc194d34d40cdd2a975df496376
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020925"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186303"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Az eszköz webalkalmazásai futásidőben Application Insights kód nem csatolhatók
 
@@ -40,10 +40,10 @@ Itt található egy összefoglaló az egyes módszerek eredményeiről:
 
 |  | Felépítési idő | Futási idő |
 | --- | --- | --- |
-| **Kérelmek & kivételek** |Igen |Yes |
-| **[Részletesebb kivételek](./asp-net-exceptions.md)** | |Yes |
+| **Kérelmek & kivételek** |Igen |Igen |
+| **[Részletesebb kivételek](./asp-net-exceptions.md)** | |Igen |
 | **[Függőségi diagnosztika](./asp-net-dependencies.md)** |.NET 4.6+ esetén, kevésbé részletesen |Igen, teljes részletesség: eredménykódok, SQL-parancsszöveg, HTTP-parancsok|
-| **[Rendszerteljesítmény-számlálók](./performance-counters.md)** |Igen |Yes |
+| **[Rendszerteljesítmény-számlálók](./performance-counters.md)** |Igen |Igen |
 | **[API egyéni telemetria][api]** |Igen |Nem |
 | **[Nyomkövetési napló integrációja](./asp-net-trace-logs.md)** |Igen |Nem |
 | **[Az oldal nézet & felhasználói](./javascript.md)** |Igen |Nem |
@@ -93,7 +93,7 @@ Ezeket a lépéseket végrehajtva ellenőrizheti, hogy a telepítés sikeres vol
 
 - Győződjön meg arról, hogy a applicationInsights.config fájl megtalálható a cél alkalmazás könyvtárban, és tartalmazza a rendszerállapotkulcsot.
 
-- Ha azt gyanítja, hogy az adatok hiányoznak, futtathat egy lekérdezést az [Analyticsben](../log-query/get-started-portal.md) az összes olyan felhőalapú szerepkör listázásához, amely jelenleg telemetria küld.
+- Ha azt gyanítja, hogy az adatok hiányoznak, futtathat egy lekérdezést az [Analyticsben](../log-query/log-analytics-tutorial.md) az összes olyan felhőalapú szerepkör listázásához, amely jelenleg telemetria küld.
   ```Kusto
   union * | summarize count() by cloud_RoleName, cloud_RoleInstance
   ```
@@ -316,7 +316,7 @@ A fordítási során már kiépített alkalmazások esetén:
 - A [Állapotmonitor telepítőjének](https://go.microsoft.com/fwlink/?LinkId=506648) letöltése és futtatása
 - Vagy futtasson [webplatform-telepítőt](https://www.microsoft.com/web/downloads/platform.aspx) , és keressen rá Application Insights állapotfigyelő.
 
-## <a name="next-steps"></a><a name="next"></a>További lépések
+## <a name="next-steps"></a><a name="next"></a>Következő lépések
 
 A telemetriai adatok megtekintése:
 
@@ -340,4 +340,3 @@ További telemetriai funkciók hozzáadása:
 [qna]: ../faq.md
 [roles]: ./resources-roles-access-control.md
 [usage]: ./javascript.md
-

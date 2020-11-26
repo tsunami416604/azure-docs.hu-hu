@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 90a5f0f84c72895a8450a42260b07f6dbea15e37
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: b4e35296a999070a6f536f4a52cfb7c3a1d4f42a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94428027"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186490"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Az Azure és a ITSM-eszközök összekötése IT-szolgáltatásmenedzsmenti csatoló használatával
 
@@ -70,7 +70,7 @@ A kapcsolatok létrehozása előtt hozzá kell adnia a ITSMC.
    >[!NOTE]
    >A Microsoft Operations Management Suite (OMS) és a Azure Monitor közötti folyamatos áttérés részeként a OMS-munkaterületek már *log Analytics munkaterületek*.
 
-5. Kattintson az **OK** gombra.
+5. Válassza az **OK** lehetőséget.
 
 A ITSMC-erőforrás telepítésekor az ablak jobb felső sarkában megjelenik egy értesítés.
 
@@ -90,7 +90,7 @@ Azon ITSM-termék alapján, amelyhez csatlakozik, válassza a következő hivatk
 
 Miután elő a ITSM-eszközöket, hajtsa végre a következő lépéseket a kapcsolatok létrehozásához:
 
-1. Az **összes erőforrás** területen keresse meg a **ügyfélszolgálati ( *a munkaterület neve* )** :
+1. Az **összes erőforrás** területen keresse meg a **ügyfélszolgálati (*a munkaterület neve*)**:
 
    ![A Azure Portal legutóbbi erőforrásait bemutató képernyőkép.](media/itsmc-overview/itsm-connections.png)
 
@@ -145,7 +145,7 @@ Munkaelemek létrehozásához kövesse az alábbi eljárást:
 
 7. Válasszon **munkaelem** -típust.
 
-8. Ha rögzített értékekkel rendelkező, beépített mezőket szeretne kitölteni, válassza az **egyéni sablon használata** lehetőséget. Ellenkező esetben válasszon egy meglévő [sablont](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions) a **sablon** listáról, és adja meg a rögzített értékeket a sablon mezőiben.
+8. Ha rögzített értékekkel rendelkező, beépített mezőket szeretne kitölteni, válassza az **egyéni sablon használata** lehetőséget. Ellenkező esetben válasszon egy meglévő [sablont](#template-definitions) a **sablon** listáról, és adja meg a rögzített értékeket a sablon mezőiben.
 
 9. Ha **az egyes konfigurációs elemekhez az egyes** munkaelemek létrehozása lehetőséget választja, minden konfigurációs elemnek saját munkaeleme lesz. A konfigurációs elemek egy munkaelemet kapnak. A rendszer a létrehozandó riasztások alapján frissíti.
 
@@ -156,7 +156,7 @@ Munkaelemek létrehozásához kövesse az alábbi eljárást:
    * Ha a munkaelem legördülő menüben a "esemény" lehetőséget választja: Ha a választógombok kiválasztásakor a különböző munkaelemek **létrehozása** lehetőséget választja, minden riasztás új munkaelemet fog létrehozni. Ha a választógombok kiválasztásakor az egyes **konfigurációs elemek egyéni** munkaelemek létrehozása lehetőséget választja, minden konfigurációs elemnek saját munkaeleme lesz.
    ![A ITSM-jegy ablakát megjelenítő képernyőkép.](media/itsmc-overview/itsm-action-configuration-event.png)
 
-10. Kattintson az **OK** gombra.
+10. Válassza az **OK** lehetőséget.
 
 Azure-riasztási szabály létrehozásakor vagy szerkesztésekor használjon egy ITSM műveletet tartalmazó műveleti csoportot. A riasztás indításakor a rendszer létrehozza vagy frissíti a munkaelemet a ITSM eszközben.
 
@@ -203,7 +203,7 @@ ServiceDeskWorkItemType_s = "incidens"
 
 - ServiceDeskConnectionName
 - Ügyfélszolgálat azonosítója
-- Állapot
+- Állam
 - Sürgősség
 - Hatás
 - Prioritás
@@ -237,7 +237,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 - Cím
 - Típus
 - Kategória
-- Állapot
+- Állam
 - Eszkalálás
 - Ütközési állapot
 - Sürgősség
@@ -253,7 +253,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 - Tervezett befejezési dátum
 - Munka kezdő dátuma
 - Munka befejezési dátuma
-- Description
+- Leírás
 - Computer
 
 ## <a name="output-data-for-a-servicenow-incident"></a>ServiceNow incidens kimeneti adatkészlete
@@ -261,7 +261,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 | Log Analytics mező | ServiceNow mező |
 |:--- |:--- |
 | ServiceDeskId_s| Szám |
-| IncidentState_s | Állapot |
+| IncidentState_s | Állam |
 | Urgency_s |Sürgősség |
 | Impact_s |Hatás|
 | Priority_s | Prioritás |
@@ -272,7 +272,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 | AssignedTo_s | Felelős  |
 | Category_s | Kategória |
 | Title_s|  Rövid leírás |
-| Description_s|  Jegyzetek |
+| Description_s|  Megjegyzések |
 | CreatedDate_t|  Megnyitott |
 | ClosedDate_t| lezárva|
 | ResolvedDate_t|Feloldva|
@@ -289,7 +289,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 | Title_s|  Rövid leírás |
 | Type_s|  Típus |
 | Category_s|  Kategória |
-| CRState_s|  Állapot|
+| CRState_s|  Állam|
 | Urgency_s|  Sürgősség |
 | Priority_s| Prioritás|
 | Risk_s| Kockázat|
@@ -300,7 +300,7 @@ ServiceDeskWorkItemType_s = "módosítási kérelem"
 | PlannedEndDate_t  |   Tervezett befejezési dátum |
 | WorkStartDate_t  | Tényleges kezdési dátum |
 | WorkEndDate_t | Tényleges befejezési dátum|
-| Description_s | Description |
+| Description_s | Leírás |
 | Computer  | Konfigurációs tétel |
 
 
@@ -329,4 +329,3 @@ Ha a IT-szolgáltatásmenedzsmenti csatolóról kérdez vagy visszajelzést szer
 
 ## <a name="next-steps"></a>Következő lépések
 [ITSM-termékek/szolgáltatások hozzáadása a IT-szolgáltatásmenedzsmenti csatolóhoz](./itsmc-connections.md)
-

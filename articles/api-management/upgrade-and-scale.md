@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: c7f0e98b5ea2fdd13b1daa9fd9737998eb6cfaf1
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 466af29a3f073f73d4a0fc62d74709cd59f82425
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "96010214"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183787"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Azure API Management-példány frissítése és méretezése  
 
@@ -80,11 +80,11 @@ Bármely szintre frissítheti és visszaléphet. A verziófrissítés vagy a vis
 Ha a fejlesztői szinten vagy a-ból végez méretezést, a rendszer leállást eredményez. Ellenkező esetben nincs leállás. 
 
 ## <a name="compute-isolation"></a>Számítási elkülönítés
-Ha a biztonsági követelmények között szerepel a [számítási elkülönítés](https://docs.microsoft.com/azure/azure-government/azure-secure-isolation-guidance#compute-isolation), az **elkülönített** díjszabási szintet használhatja. Ez a szint biztosítja, hogy egy API Management szolgáltatási példány számítási erőforrásai a teljes fizikai gazdagépet használják, és megadják a szükséges elkülönítési szintet, például az Egyesült Államok védelmi Minisztériuma 5 (IL5) számítási feladatait. Ha az elkülönített szintet szeretné elérni, [hozzon létre egy támogatási jegyet](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). 
+Ha a biztonsági követelmények között szerepel a [számítási elkülönítés](../azure-government/azure-secure-isolation-guidance.md#compute-isolation), az **elkülönített** díjszabási szintet használhatja. Ez a szint biztosítja, hogy egy API Management szolgáltatási példány számítási erőforrásai a teljes fizikai gazdagépet használják, és megadják a szükséges elkülönítési szintet, például az Egyesült Államok védelmi Minisztériuma 5 (IL5) számítási feladatait. Ha az elkülönített szintet szeretné elérni, [hozzon létre egy támogatási jegyet](../azure-portal/supportability/how-to-create-azure-support-request.md). 
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure API Management-szolgáltatáspéldány üzembe helyezése több Azure-régióban](api-management-howto-deploy-multi-region.md)
 - [Azure API Management Service-példány automatikus méretezése](api-management-howto-autoscale.md)

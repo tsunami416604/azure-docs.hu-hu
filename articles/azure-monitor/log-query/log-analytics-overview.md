@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/04/2020
-ms.openlocfilehash: 26d6bcb52099b15aeeb73a36a7144c14bdf481d6
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: ba27739ff9e9d992ffe6202629a1db19604b1409
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496936"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186116"
 ---
 # <a name="overview-of-log-analytics-in-azure-monitor"></a>A Azure Monitor Log Analytics áttekintése
 A Log Analytics egy olyan eszköz a Azure Portal, amely Azure Monitor naplókba tartozó adatnapló-lekérdezések szerkesztésére és futtatására szolgál. Írhat olyan egyszerű lekérdezést, amely rekordokat ad vissza, majd a Log Analytics funkcióit használja a rendezésre, szűrésre és elemzésre. Vagy egy összetettebb lekérdezést is írhat a statisztikai elemzések elvégzéséhez, és megjelenítheti az eredményeket egy diagramon egy adott trend azonosításához. Függetlenül attól, hogy a lekérdezések eredményét interaktív módon használja-e, vagy más Azure Monitor funkciókkal, például a log lekérdezési riasztásokkal vagy a munkafüzetekkel kívánja használni, Log Analytics az az eszköz, amelyet írási és tesztelési műveletek végrehajtásához használni fog. 
 
 
 > [!TIP]
-> Ez a cikk a Log Analytics és minden funkciójának leírását tartalmazza. Ha egy oktatóanyagra szeretne ugrani, tekintse meg a [log Analytics oktatóanyagot](get-started-portal.md).
+> Ez a cikk a Log Analytics és minden funkciójának leírását tartalmazza. Ha egy oktatóanyagra szeretne ugrani, tekintse meg a [log Analytics oktatóanyagot](./log-analytics-tutorial.md).
 
 
 
@@ -55,7 +55,7 @@ A lekérdezésnek a lekérdezési ablakban való használatának szabályozása.
 ### <a name="2-sidebar"></a>2. Sidebar
 A munkaterületen található táblák listája, a lekérdezési lekérdezések és a szűrési beállítások az aktuális lekérdezéshez.
 
-| Tab | Description |
+| Tab | Leírás |
 |:---|:---|
 | Táblák | Felsorolja a kiválasztott hatókör részét képező táblákat. Válassza a **Csoportosítás** a következővel lehetőséget a táblák csoportosításának módosításához. Vigye a kurzort a táblázat neve fölé, és jelenítse meg a táblázat leírását, valamint a dokumentáció megtekintését és az adatmegjelenítést tartalmazó párbeszédpanelt. A táblázat kibontásával megtekintheti az oszlopait. Kattintson duplán egy táblázatra vagy oszlop nevére a lekérdezéshez való hozzáadásához. |
 | Lekérdezések | A lekérdezési ablakban megnyitható lekérdezési példák listája. Ez az Log Analytics megnyitásakor megjelenő lista. Válassza a **Csoportosítás** lehetőséget a lekérdezések csoportosításának módosításához. Kattintson duplán egy lekérdezésre a lekérdezési ablakba való felvételéhez, vagy vigye a kurzort a többi beállításhoz. |
@@ -90,6 +90,6 @@ Megjeleníti az eredményeket több elérhető diagramtípus közül. A diagram 
 ## <a name="relationship-to-azure-data-explorer"></a>Kapcsolat az Azure Adatkezelő
 Ha már ismeri az Azure Adatkezelő webes felhasználói felületét, Log Analytics érdemes megismernie a munkát. Ennek az az oka, hogy az Azure Adatkezelőra épül, és ugyanazt a Kusto lekérdezési nyelvet (KQL) használja. Log Analytics olyan szolgáltatásokat biztosít, amelyek Azure Monitor például az időtartomány szerinti szűrésre, valamint a riasztási szabályok lekérdezésből való létrehozásának képességére. Mindkét eszköz tartalmaz egy Explorert, amely lehetővé teszi az elérhető táblák szerkezetének vizsgálatát, de az Azure Adatkezelő webes felhasználói felülete elsősorban az Azure Adatkezelő-adatbázisok tábláival működik, miközben a Log Analytics együttműködik Log Analytics munkaterületen található táblázatokkal. 
 
-## <a name="next-steps"></a>További lépések
-- [Útmutató a Azure Portal log Analyticsjának használatáról](get-started-portal.md).
+## <a name="next-steps"></a>Következő lépések
+- [Útmutató a Azure Portal log Analyticsjának használatáról](./log-analytics-tutorial.md).
 - [Útmutató a lekérdezések írásához](get-started-queries.md).

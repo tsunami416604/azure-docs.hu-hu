@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/09/2020
-ms.openlocfilehash: 066e9cf6c63c9f2073ba869e8b40e25bfc993cd8
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: ddb73de87789934aa66893bdbe6519011cf324b3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491375"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186099"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>A lekérdezés hatókörének és időtartományának naplózása Azure Monitor Log Analytics
-Ha [a Azure Portal log Analyticsban](get-started-portal.md)futtat [naplózási lekérdezést](log-query-overview.md) , a lekérdezés által kiértékelt adatok halmaza a hatókörtől és a kiválasztott időtartománytól függ. Ez a cikk a hatókört és az időtartományt ismerteti, valamint azt, hogyan állíthatja be az egyes igényektől függően. Emellett leírja a különböző típusú hatókörök viselkedését is.
+Ha [a Azure Portal log Analyticsban](./log-analytics-tutorial.md)futtat [naplózási lekérdezést](log-query-overview.md) , a lekérdezés által kiértékelt adatok halmaza a hatókörtől és a kiválasztott időtartománytól függ. Ez a cikk a hatókört és az időtartományt ismerteti, valamint azt, hogyan állíthatja be az egyes igényektől függően. Emellett leírja a különböző típusú hatókörök viselkedését is.
 
 
 ## <a name="query-scope"></a>Lekérdezési hatókör
@@ -75,7 +75,7 @@ Ha olyan szűrőt állít be a lekérdezésben, amely a fenti táblázatban lát
 
 ![Szűrt lekérdezés](media/scope/query-filtered.png)
 
-Ha a [munkaterület](workspace-expression.md) vagy az [alkalmazás](app-expression.md) parancs használatával kéri le az adatok egy másik munkaterületről vagy klasszikus alkalmazásból való lekérését, az időválasztó eltérően működhet. Ha a hatókör egy Log Analytics munkaterület, és használja az **alkalmazást** , vagy ha a hatókör egy klasszikus Application Insights alkalmazás, és Ön a **munkaterületet** használja, akkor log Analytics előfordulhat, hogy nem érti, hogy a szűrőben használt oszlopnak meg kell határoznia az időszűrőt.
+Ha a [munkaterület](workspace-expression.md) vagy az [alkalmazás](app-expression.md) parancs használatával kéri le az adatok egy másik munkaterületről vagy klasszikus alkalmazásból való lekérését, az időválasztó eltérően működhet. Ha a hatókör egy Log Analytics munkaterület, és használja az **alkalmazást**, vagy ha a hatókör egy klasszikus Application Insights alkalmazás, és Ön a **munkaterületet** használja, akkor log Analytics előfordulhat, hogy nem érti, hogy a szűrőben használt oszlopnak meg kell határoznia az időszűrőt.
 
 A következő példában a hatókör egy Log Analytics munkaterületre van beállítva.  A lekérdezés **munkaterületet** használ az adatok másik log Analytics munkaterületről való lekéréséhez. Az időválasztó a **lekérdezésben megadott** értékre változik, mert egy olyan szűrőt lát, amely a várt **TimeGenerated** oszlopot használja.
 
@@ -85,7 +85,7 @@ Ha a lekérdezés a klasszikus Application Insights alkalmazásból származó a
 
 ![Lekérdezés az alkalmazással](media/scope/query-app.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Útmutató a Azure Portal log Analyticsjának használatáról](get-started-portal.md).
+- [Útmutató a Azure Portal log Analyticsjának használatáról](./log-analytics-tutorial.md).
 - [Útmutató a lekérdezések írásához](get-started-queries.md).

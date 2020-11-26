@@ -3,12 +3,12 @@ title: Törlés Teljes mód esetén
 description: Azt mutatja, hogy az erőforrástípusok hogyan kezelik a teljes módú törlést Azure Resource Manager-sablonokban.
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: b1f7623d6eee1ff629412a4cc0d76e59e6c9e847
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e0c67bfcda81ad128e0018c4ab37c4b0cbe680f0
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370124"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184025"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Azure-erőforrások törlése a teljes módú üzembe helyezésekhez
 
@@ -18,7 +18,7 @@ Az **Igen** értékkel jelölt erőforrástípusok törlődnek, ha a típus ninc
 
 A **nem** a (z) jelölésű erőforrástípusok nem törlődnek automatikusan, ha nem a sablonban; azonban törlődnek, ha a szülő erőforrás törölve lett. A viselkedés teljes leírását lásd: [Azure Resource Manager telepítési módok](deployment-modes.md).
 
-Ha [egy sablonban több erőforráscsoporthoz](cross-scope-deployment.md)is telepít, a telepítési műveletben megadott erőforráscsoport erőforrásai törölhetők. A másodlagos erőforráscsoportok erőforrásai nem törlődnek.
+Ha [egy sablonban több erőforráscsoporthoz](./deploy-to-resource-group.md)is telepít, a telepítési műveletben megadott erőforráscsoport erőforrásai törölhetők. A másodlagos erőforráscsoportok erőforrásai nem törlődnek.
 
 Az erőforrásokat az erőforrás-szolgáltatói névtér sorolja fel. Az erőforrás-szolgáltatói névtér az Azure-szolgáltatás nevével való egyeztetéséhez tekintse meg az [Azure-szolgáltatások erőforrás-szolgáltatóit](../management/azure-services-resource-providers.md)ismertető témakört.
 

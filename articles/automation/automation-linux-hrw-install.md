@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 07c04274829530942bab0e3267200f6524c4ddc7
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 20683808c81b32560170b175edf1c37c332f47ad
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95793406"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183617"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker üzembe helyezése
 
@@ -73,7 +73,7 @@ A Linux rendszer és a felhasználói hibrid Runbook-feldolgozó minimális köv
 A munkavégző gépet hozzáadhatja egy hibrid Runbook Worker-csoporthoz az egyik Automation-fiókban. A Update Management által felügyelt, rendszerhibrid Runbook-feldolgozót futtató gépekhez hozzáadhatók egy hibrid Runbook Worker csoportjához. Azonban ugyanazt az Automation-fiókot kell használnia mind a Update Management, mind a hibrid Runbook-feldolgozói csoporttagság esetében.
 
 >[!NOTE]
->Azure Automation [Update Management](update-management/update-mgmt-overview.md) automatikusan telepíti a hibrid Runbook-feldolgozót egy olyan Azure-beli vagy nem Azure-beli gépen, amely engedélyezve van a Update Management számára. Ez a feldolgozó azonban nincs regisztrálva az Automation-fiókjában található bármely hibrid Runbook Worker-csoportban. A runbookok ezen gépeken való futtatásához hozzá kell adnia őket egy hibrid Runbook-feldolgozói csoporthoz. Kövesse a 4. lépést a [Linux Hybrid Runbook Worker telepítése](#install-a-linux-hybrid-runbook-worker) című szakaszban a csoportba való felvételhez.
+>Azure Automation [Update Management](./update-management/overview.md) automatikusan telepíti a hibrid Runbook-feldolgozót egy olyan Azure-beli vagy nem Azure-beli gépen, amely engedélyezve van a Update Management számára. Ez a feldolgozó azonban nincs regisztrálva az Automation-fiókjában található bármely hibrid Runbook Worker-csoportban. A runbookok ezen gépeken való futtatásához hozzá kell adnia őket egy hibrid Runbook-feldolgozói csoporthoz. Kövesse a 4. lépést a [Linux Hybrid Runbook Worker telepítése](#install-a-linux-hybrid-runbook-worker) című szakaszban a csoportba való felvételhez.
 
 ## <a name="supported-linux-hardening"></a>Támogatott Linux-megerősítés
 
@@ -87,11 +87,11 @@ A linuxos hibrid Runbook-feldolgozók korlátozott számú Runbook-típust támo
 
 |Runbook típusa | Támogatott |
 |-------------|-----------|
-|Python 2 |Yes |
+|Python 2 |Igen |
 |PowerShell |Igen<sup>1</sup> |
-|PowerShell-munkafolyamat |No |
-|Grafikus |No |
-|Grafikus PowerShell-munkafolyamat |No |
+|PowerShell-munkafolyamat |Nem |
+|Grafikus |Nem |
+|Grafikus PowerShell-munkafolyamat |Nem |
 
 <sup>1</sup> A PowerShell-runbookok a PowerShell Core-t kell telepíteni a Linux rendszerű gépen. A telepítésének megismeréséhez lásd: [a PowerShell Core telepítése Linux rendszeren](/powershell/scripting/install/installing-powershell-core-on-linux) .
 
@@ -196,7 +196,7 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 
 Linux rendszerű gépek hibrid Runbook Worker csoportjának eltávolításához ugyanazokat a lépéseket kell használnia, mint a Windows Hybrid Worker-csoport esetében. Lásd: [hibrid feldolgozói csoport eltávolítása](automation-windows-hrw-install.md#remove-a-hybrid-worker-group).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ha szeretné megtudni, hogyan konfigurálhatja a runbookok a helyszíni adatközpontban vagy más felhőalapú környezetben lévő folyamatok automatizálására, tekintse meg a [Runbookok futtatása hibrid Runbook-feldolgozón](automation-hrw-run-runbooks.md)című témakört.
 

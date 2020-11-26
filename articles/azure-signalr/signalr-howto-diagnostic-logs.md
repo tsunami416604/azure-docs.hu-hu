@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
-ms.openlocfilehash: b0c1a91df30ee6a88f055dc47cfdef339e2ee2b2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 5ad40ca051677ced0c6d8b5c35e8563272ff598f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151062"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183974"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Az Azure Signaler szolgáltatás erőforrás-naplói
 
@@ -31,11 +31,11 @@ Az Azure Signaler szolgáltatáshoz tartozó erőforrás-naplók megtekinthetők
 
 Az erőforrás-naplók alapértelmezés szerint le vannak tiltva. Az erőforrás-naplók engedélyezéséhez kövesse az alábbi lépéseket:
 
-1. A [Azure Portal](https://portal.azure.com)a **figyelés**területen kattintson a **diagnosztikai beállítások**elemre.
+1. A [Azure Portal](https://portal.azure.com)a **figyelés** területen kattintson a **diagnosztikai beállítások** elemre.
 
     ![Ablaktáblában navigáljon a diagnosztikai beállításokhoz](./media/signalr-tutorial-diagnostic-logs/diagnostic-settings-menu-item.png)
 
-1. Ezután kattintson a **diagnosztikai beállítás hozzáadása**elemre.
+1. Ezután kattintson a **diagnosztikai beállítás hozzáadása** elemre.
 
     ![Erőforrás-naplók hozzáadása](./media/signalr-tutorial-diagnostic-logs/add-diagnostic-setting.png)
 
@@ -122,7 +122,7 @@ Az erőforrás-naplók megtekintéséhez kövesse az alábbi lépéseket:
 
     ![Log Analytics menüelem](./media/signalr-tutorial-diagnostic-logs/log-analytics-menu-item.png)
 
-2. Adja meg `SignalRServiceDiagnosticLogs` és válassza ki az időtartományt az erőforrás-naplók lekérdezéséhez. A speciális lekérdezéssel kapcsolatban lásd: a [log Analytics első lépései Azure monitor](../azure-monitor/log-query/get-started-portal.md)
+2. Adja meg `SignalRServiceDiagnosticLogs` és válassza ki az időtartományt az erőforrás-naplók lekérdezéséhez. A speciális lekérdezéssel kapcsolatban lásd: a [log Analytics első lépései Azure monitor](../azure-monitor/log-query/log-analytics-tutorial.md)
 
     ![Lekérdezési napló Log Analytics](./media/signalr-tutorial-diagnostic-logs/query-log-in-log-analytics.png)
 
@@ -162,7 +162,7 @@ A és a közötti különbség a `ConnectionAborted` `ConnectionEnded` `Connecti
 
 A megszakítás okai a következő táblázatban láthatók:
 
-Ok | Description
+Ok | Leírás
 ------- | ------- 
 A kapcsolatok száma eléri a korlátot | A kapcsolatok száma eléri a jelenlegi árszint korlátját. A szolgáltatási egység vertikális felskálázása
 Az alkalmazáskiszolgáló lezárta a kapcsolatokat | Az App Server elindítja az abortuszt. A várt abortusznak számít
@@ -182,7 +182,7 @@ Ha a 401 jogosulatlanul visszaadott ügyfél-kérelmeket kap, ellenőrizze az er
 
 #### <a name="throttling"></a>Throttling
 
-Ha azt tapasztalja, hogy nem tudja létrehozni a szignáló ügyfélkapcsolatait az Azure Signaler szolgáltatáshoz, ellenőrizze az erőforrás-naplókat. Ha `Connection count reaches limit` az erőforrás-naplóban találkozik, túl sok kapcsolatot hoz létre a signaler szolgáltatással, amely eléri a kapcsolati szám korlátot. Vegye fontolóra a Signaler szolgáltatás méretezését. Ha `Message count reaches limit` az erőforrás-naplóban találkozik, az azt jelenti, hogy az ingyenes szintet használja, és az üzenetek kvótáját használja. Ha további üzeneteket szeretne küldeni, érdemes lehet a Signal Service standard csomagra módosítania a további üzenetek küldését. További információ: az [Azure signaler szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/signalr-service/).
+Ha azt tapasztalja, hogy nem tudja létrehozni a szignáló ügyfélkapcsolatait az Azure Signaler szolgáltatáshoz, ellenőrizze az erőforrás-naplókat. Ha `Connection count reaches limit` az erőforrás-naplóban találkozik, túl sok kapcsolatot hoz létre a signaler szolgáltatással, amely eléri a kapcsolati szám korlátot. Vegye fontolóra a Signaler szolgáltatás méretezését. Ha `Message count reaches limit` az erőforrás-naplóban találkozik, az azt jelenti, hogy az ingyenes szintet használja, és az üzenetek kvótáját használja. Ha további üzeneteket szeretne küldeni, érdemes lehet a Signal Service standard csomagra módosítania a további üzenetek küldését. További információ: az [Azure signaler szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/signalr-service/).
 
 ### <a name="get-help"></a>Segítség kérése
 

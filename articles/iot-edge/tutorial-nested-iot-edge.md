@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: db77df29d1b9b0adf07c7da377c028dee5312617
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: cd0fd7ac004d07b71a69a3e59c9cfd4727d98eb6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579198"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184671"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Oktatóanyag: IoT Edge-eszközök hierarchiájának létrehozása (előzetes verzió)
 
@@ -39,11 +39,11 @@ A cél megvalósítása érdekében ez az oktatóanyag végigvezeti IoT Edge esz
 
 Ebben az oktatóanyagban a következő hálózati rétegek vannak definiálva:
 
-* **Legfelső réteg** : IoT Edge a rétegben lévő eszközök közvetlenül kapcsolódhatnak a felhőhöz.
+* **Legfelső réteg**: IoT Edge a rétegben lévő eszközök közvetlenül kapcsolódhatnak a felhőhöz.
 
-* **Alsó réteg** : IoT Edge eszközök ebben a rétegben nem csatlakoztathatók közvetlenül a felhőhöz. Egy vagy több közvetítő IoT Edge eszközön kell átesniük az adatküldésre és fogadásra.
+* **Alsó réteg**: IoT Edge eszközök ebben a rétegben nem csatlakoztathatók közvetlenül a felhőhöz. Egy vagy több közvetítő IoT Edge eszközön kell átesniük az adatküldésre és fogadásra.
 
-Ez az oktatóanyag a két eszköz hierarchiáját használja az egyszerűség kedvéért. Egy eszköz, a **topLayerDevice** , a hierarchia legfelső szintjén található eszközt jelöli, amely közvetlenül kapcsolódhat a felhőhöz. Ez az eszköz **szülő eszközként** is hivatkozni fog. A másik eszköz, a **lowerLayerDevice** , a hierarchia alsó rétegében lévő eszközt jelöli, amely nem tud közvetlenül kapcsolódni a felhőhöz. Ezt az eszközt a rendszer **alárendelt eszközként** is említi. Az éles környezetnek megfelelő további alsóbb rétegbeli eszközöket adhat hozzá. A további alsóbb rétegbeli eszközök konfigurációja a **lowerLayerDevice** konfigurációját fogja követni.
+Ez az oktatóanyag a két eszköz hierarchiáját használja az egyszerűség kedvéért. Egy eszköz, a **topLayerDevice**, a hierarchia legfelső szintjén található eszközt jelöli, amely közvetlenül kapcsolódhat a felhőhöz. Ez az eszköz **szülő eszközként** is hivatkozni fog. A másik eszköz, a **lowerLayerDevice**, a hierarchia alsó rétegében lévő eszközt jelöli, amely nem tud közvetlenül kapcsolódni a felhőhöz. Ezt az eszközt a rendszer **alárendelt eszközként** is említi. Az éles környezetnek megfelelő további alsóbb rétegbeli eszközöket adhat hozzá. A további alsóbb rétegbeli eszközök konfigurációja a **lowerLayerDevice** konfigurációját fogja követni.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -69,11 +69,11 @@ Az IoT Edge-eszközök létrehozásának első lépése a Azure Portal vagy az A
 
 1. A bal oldali ablaktábla menüjének **automatikus eszközkezelés** területén válassza a **IoT Edge** lehetőséget.
 
-1. Válassza **a + IoT Edge eszköz hozzáadása** elemet. Ez az eszköz lesz a legfelső rétegbeli eszköz, ezért adjon meg egy megfelelő egyedi azonosítót. Válassza a **Mentés** lehetőséget.
+1. Válassza **a + IoT Edge eszköz hozzáadása** elemet. Ez az eszköz lesz a legfelső rétegbeli eszköz, ezért adjon meg egy megfelelő egyedi azonosítót. Kattintson a **Mentés** gombra.
 
 1. Válassza **az + IoT Edge eszköz hozzáadása** elemet. Ez az eszköz lesz a peremhálózati alsóbb rétegbeli eszköz, ezért adjon meg egy megfelelő egyedi azonosítót.
 
-1. Válassza a **fölérendelt eszköz beállítása** lehetőséget, válassza ki a legfelső rétegbeli eszközt az eszközök listájából, majd kattintson **az OK gombra**. Válassza a **Mentés** lehetőséget.
+1. Válassza a **fölérendelt eszköz beállítása** lehetőséget, válassza ki a legfelső rétegbeli eszközt az eszközök listájából, majd kattintson **az OK gombra**. Kattintson a **Mentés** gombra.
 
    ![A szülő beállítása az alsó rétegbeli eszközhöz](./media/tutorial-nested-iot-edge/set-parent-device.png)
 
@@ -188,8 +188,8 @@ A IoT Edge telepítéséhez mindkét eszközön végezze el a következő lépé
 1. A hsmlib és a IoT Edge démon telepítése <!-- Update with proper image links on release -->
 
    ```bash
-   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/libiothsm-std_1.2.0.rc1-1-1_debian9_amd64.deb -o libiothsm-std.deb
-   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/iotedge_1.2.0_rc1-1_debian9_amd64.deb -o iotedge.deb
+   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc2/libiothsm-std_1.2.0.rc2-1-1_debian9_amd64.deb -o libiothsm-std.deb
+   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc2/iotedge_1.2.0_rc2-1_debian9_amd64.deb -o iotedge.deb
    sudo dpkg -i ./libiothsm-std.deb
    sudo dpkg -i ./iotedge.deb
    ```
@@ -261,7 +261,7 @@ Hajtsa végre ezeket a lépéseket, majd indítsa újra a IoT Edge szolgáltatá
      type: "docker"
      env: {}
      config:
-       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc1"
+       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2"
        auth: {}
    ```
 
@@ -273,7 +273,7 @@ Hajtsa végre ezeket a lépéseket, majd indítsa újra a IoT Edge szolgáltatá
      type: "docker"
      env: {}
      config:
-       image: "<parent_device_fqdn_or_ip>:8000/azureiotedge-agent:1.2.0-rc1"
+       image: "<parent_device_fqdn_or_ip>:8000/azureiotedge-agent:1.2.0-rc2"
        auth: {}
    ```
 
@@ -305,26 +305,26 @@ A [Azure Portalban](https://ms.portal.azure.com/):
 
 1. Válassza a **Futtatási beállítások** lehetőséget a fogaskerék ikon mellett.
 
-1. Az **Edge hub** terület rendszerkép mezőjébe írja be a értéket `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc1` .
+1. Az **Edge hub** terület rendszerkép mezőjébe írja be a értéket `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2` .
 
    ![Az Edge-központ rendszerképének szerkesztése](./media/tutorial-nested-iot-edge/edge-hub-image.png)
 
 1. Adja hozzá az alábbi környezeti változókat az Edge hub-modulhoz:
 
-    | Név | Érték |
+    | Name (Név) | Érték |
     | - | - |
     | `experimentalFeatures__enabled` | `true` |
     | `experimentalFeatures__nestedEdgeEnabled` | `true` |
 
    ![Az Edge hub környezeti változóinak szerkesztése](./media/tutorial-nested-iot-edge/edge-hub-environment-variables.png)
 
-1. Az **Edge-ügynök** területének rendszerkép mezőjébe írja be a értéket `mcr.microsoft.com/azureiotedge-agent:1.2.0-rc1` . Válassza a **Mentés** lehetőséget.
+1. Az **Edge-ügynök** területének rendszerkép mezőjébe írja be a értéket `mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2` . Kattintson a **Mentés** gombra.
 
 1. Adja hozzá a Docker beállításjegyzék-modulját a felső rétegbeli eszközhöz. Válassza a **+ Hozzáadás** lehetőséget, majd válassza ki **IoT Edge modult** a legördülő menüből. Adja meg a `registry` Docker beállításjegyzék-moduljának nevét, és adja meg a `registry:latest` rendszerkép URI azonosítóját. Ezután adja hozzá a környezeti változókat, és hozzon létre beállításokat a helyi beállításjegyzék-modul a Microsoft Container registryben való letöltéséhez, hogy letöltse a lemezképeket a alkalmazásból, és a következő beállításjegyzékben szolgálja ki a képeket: 5000
 
 1. A környezeti változók lapon adja meg a következő környezeti változó név-érték párokat:
 
-    | Név | Érték |
+    | Name (Név) | Érték |
     | - | - |
     | `REGISTRY_PROXY_REMOTEURL` | `https://mcr.microsoft.com` |
 
@@ -346,7 +346,7 @@ A [Azure Portalban](https://ms.portal.azure.com/):
 
 1. Ezután adja hozzá az API-proxy modult a felső rétegbeli eszközhöz. Válassza a **+ Hozzáadás** lehetőséget, majd válassza ki a **piactér modult** a legördülő menüből. Keresse meg `IoT Edge API Proxy` és válassza ki a modult. A IoT Edge API proxy a 8000-es portot használja, és úgy van konfigurálva, hogy az 5000-es porton található beállításjegyzék-modult használja `registry` alapértelmezettként.
 
-1. Válassza a **felülvizsgálat + létrehozás** , majd a **Létrehozás** lehetőséget a telepítés befejezéséhez. A legfelső rétegbeli eszköz IoT Edge futtatókörnyezete, amely hozzáfér az internethez, lekéri és futtatja az IoT Edge hub és a IoT Edge ügynök **nyilvános előzetes** konfigurációit.
+1. Válassza a **felülvizsgálat + létrehozás**, majd a **Létrehozás** lehetőséget a telepítés befejezéséhez. A legfelső rétegbeli eszköz IoT Edge futtatókörnyezete, amely hozzáfér az internethez, lekéri és futtatja az IoT Edge hub és a IoT Edge ügynök **nyilvános előzetes** konfigurációit.
 
    ![Az Edge hub, Edge Agent, beállításjegyzék-modul és API proxy modult tartalmazó üzembe helyezés befejezése](./media/tutorial-nested-iot-edge/complete-top-layer-deployment.png)
 
@@ -412,14 +412,14 @@ A [Azure Portalban](https://ms.portal.azure.com/):
                    "systemModules": {
                        "edgeAgent": {
                            "settings": {
-                               "image": "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc1",
+                               "image": "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2",
                                "createOptions": ""
                            },
                            "type": "docker"
                        },
                        "edgeHub": {
                            "settings": {
-                               "image": "mcr.microsoft.com/azureiotedge-hub:1.2.0-rc1",
+                               "image": "mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2",
                                "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
                            },
                            "type": "docker",
@@ -478,22 +478,22 @@ A [Azure Portalban](https://ms.portal.azure.com/):
 
 1. Válassza a **Futtatási beállítások** lehetőséget a fogaskerék ikon mellett.
 
-1. Az **Edge hub** terület rendszerkép mezőjébe írja be a értéket `$upstream:8000/azureiotedge-hub:1.2.0-rc1` .
+1. Az **Edge hub** terület rendszerkép mezőjébe írja be a értéket `$upstream:8000/azureiotedge-hub:1.2.0-rc2` .
 
 1. Adja hozzá az alábbi környezeti változókat az Edge hub-modulhoz:
 
-    | Név | Érték |
+    | Name (Név) | Érték |
     | - | - |
     | `experimentalFeatures__enabled` | `true` |
     | `experimentalFeatures__nestedEdgeEnabled` | `true` |
 
-1. Az **Edge-ügynök** területének rendszerkép mezőjébe írja be a értéket `$upstream:8000/azureiotedge-agent:1.2.0-rc1` . Válassza a **Mentés** lehetőséget.
+1. Az **Edge-ügynök** területének rendszerkép mezőjébe írja be a értéket `$upstream:8000/azureiotedge-agent:1.2.0-rc2` . Kattintson a **Mentés** gombra.
 
 1. Adja hozzá a hőmérséklet-érzékelő modult. Válassza a **+ Hozzáadás** lehetőséget, majd válassza ki a **piactér modult** a legördülő menüből. Keresse meg `Simulated Temperature Sensor` és válassza ki a modult.
 
 1. A **IoT Edge modulok** területen válassza ki az `Simulated Temperature Sensor` imént hozzáadott modult, és frissítse a rendszerképének URI-ját, hogy erre mutasson `$upstream:8000/azureiotedge-simulated-temperature-sensor:1.0` .
 
-1. A telepítés befejezéséhez válassza a **Mentés** , a **+ Létrehozás** és a **Létrehozás** lehetőséget.
+1. A telepítés befejezéséhez válassza a **Mentés**, a **+ Létrehozás** és a **Létrehozás** lehetőséget.
 
    ![Az Edge hub, Edge Agent és szimulált hőmérséklet-érzékelőt tartalmazó üzembe helyezés befejezése](./media/tutorial-nested-iot-edge/complete-lower-layer-deployment.png)
 
@@ -534,14 +534,14 @@ A [Azure Portalban](https://ms.portal.azure.com/):
                    "systemModules": {
                        "edgeAgent": {
                            "settings": {
-                               "image": "$upstream:8000/azureiotedge-agent:1.2.0-rc1",
+                               "image": "$upstream:8000/azureiotedge-agent:1.2.0-rc2",
                                "createOptions": ""
                            },
                            "type": "docker"
                        },
                        "edgeHub": {
                            "settings": {
-                               "image": "$upstream:8000/azureiotedge-hub:1.2.0-rc1",
+                               "image": "$upstream:8000/azureiotedge-hub:1.2.0-rc2",
                                "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
                            },
                            "type": "docker",

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 11/18/2020
-ms.openlocfilehash: 7bfd951d7cec27e0b8264aaabf9bc3a17875256a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9715724fc0fbd25198dd3244215ac2c12638d2b8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000725"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185963"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor – ügyfél által kezelt kulcs 
 
@@ -72,7 +72,7 @@ A következő szabályok érvényesek:
 1. Engedélyek megadása a Key Vault számára
 1. Log Analytics-munkaterületek összekapcsolása
 
-Customer-Managed kulcs konfigurálása nem támogatott a Azure Portal és a kiépítés a [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/), a [CLI](https://docs.microsoft.com/cli/azure/monitor/log-analytics) vagy a [Rest](https://docs.microsoft.com/rest/api/loganalytics/) -kérelmek használatával történik.
+Customer-Managed kulcs konfigurálása nem támogatott a Azure Portal és a kiépítés a [PowerShell](/powershell/module/az.operationalinsights/), a [CLI](/cli/azure/monitor/log-analytics) vagy a [Rest](/rest/api/loganalytics/) -kérelmek használatával történik.
 
 ### <a name="asynchronous-operations-and-status-check"></a>Aszinkron műveletek és állapot-ellenőrzések
 
@@ -107,7 +107,7 @@ Ezek a beállítások a CLI-n és a PowerShellen keresztül Key Vault frissíthe
 
 ### <a name="create-cluster"></a>Fürt létrehozása
 
-Kövesse a [dedikált fürtök című cikkben](https://docs.microsoft.com/azure/azure-monitor/log-query/logs-dedicated-clusters#creating-a-cluster)bemutatott eljárást. 
+Kövesse a [dedikált fürtök című cikkben](../log-query/logs-dedicated-clusters.md#creating-a-cluster)bemutatott eljárást. 
 
 > [!IMPORTANT]
 > Másolja ki és mentse a választ, mivel a következő lépésekben szükség lesz a részletekre.
@@ -212,7 +212,7 @@ A művelet végrehajtásához "írási" engedélyekkel kell rendelkeznie a munka
 
 Ez a művelet aszinkron, és egy darabig elvégezhető.
 
-Kövesse a [dedikált fürtök című cikkben](https://docs.microsoft.com/azure/azure-monitor/log-query/logs-dedicated-clusters#link-a-workspace-to-the-cluster)bemutatott eljárást.
+Kövesse a [dedikált fürtök című cikkben](../log-query/logs-dedicated-clusters.md#link-a-workspace-to-the-cluster)bemutatott eljárást.
 
 ## <a name="key-revocation"></a>Kulcs visszavonása
 

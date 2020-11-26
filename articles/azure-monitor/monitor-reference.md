@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: 654d7b4ddb332906aba330da20d42a0e16ec79e6
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 5be6a2d73be35b3d637df9364364784d373dabb3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021439"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186694"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Mi figyeli a Azure Monitor?
 Ez a cikk a Azure Monitor által figyelt különböző alkalmazásokat és szolgáltatásokat ismerteti. 
@@ -23,7 +23,7 @@ Az alapvető megállapítások és megoldások a Azure Monitor részét képezik
 
 Az egyes alkalmazásokhoz és szolgáltatásokhoz testreszabott figyelési funkciókkal szolgálnak. A naplók és a metrikák összegyűjtését és elemzését végzik.
 
-| Elemzések | Description |
+| Elemzések | Leírás |
 |:---|:---|
 | [Application Insights](app/app-insights-overview.md) | Bővíthető Application Performance Management (APM) szolgáltatás az élő webalkalmazások bármely platformon való figyeléséhez. |
 | [Azure Monitor tárolók számára](insights/container-insights-overview.md) | Az Azure Kubernetes Service (ak) szolgáltatásban üzemeltetett Azure Container Instances vagy felügyelt Kubernetes-fürtökön üzembe helyezett tároló-munkaterhelések teljesítményét figyeli. |
@@ -40,7 +40,7 @@ Az egyes alkalmazásokhoz és szolgáltatásokhoz testreszabott figyelési funkc
 
 A megoldások egy adott alkalmazáshoz vagy szolgáltatáshoz testreszabott naplózási lekérdezéseken és nézeteken alapulnak. Csak a naplók gyűjtésére és elemzésére szolgálnak, és az elemzések során időben elavultak.
 
-| Megoldás | Description |
+| Megoldás | Leírás |
 |:---|:---|
 | [Ügynök állapota](insights/solution-agenthealth.md) | Log Analytics ügynökök állapotának és konfigurációjának elemzése. |
 | [Riasztások kezelése](platform/alert-management-solution.md) | System Center Operations Manager, Nagios vagy Zabbix által gyűjtött riasztások elemzése. |
@@ -55,7 +55,7 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 - Naplók – a szolgáltatás támogatja a diagnosztikai beállításokat, amelyek összegyűjthetik a naplók és a metrikák összegyűjtését Azure Monitor.
 - Betekintés – a szolgáltatás számára elérhető egy betekintés, amely testreszabott figyelési élményt biztosít a szolgáltatás számára.
 
-| Szolgáltatás | Mérőszámok | Naplók | Elemzések | Jegyzetek |
+| Szolgáltatás | Mérőszámok | Naplók | Elemzések | Megjegyzések |
 |:---|:---|:---|:---|:---|
 |Active Directory | Nem | Igen | [Igen](../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md) |  |
 |Active Directory B2C | Nem | Nem | Nem |  |
@@ -86,7 +86,7 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 |Container Instances | Igen | Nem | Nem |  |
 |Container Registry | Igen | Igen | Nem |  |
 |Content Delivery Network (CDN) | Nem | Igen | Nem |  |
-|Cosmos DB | Igen | Yes | [Igen](insights/cosmosdb-insights-overview.md) |  |
+|Cosmos DB | Igen | Igen | [Igen](insights/cosmosdb-insights-overview.md) |  |
 |Költségkezelés | Nem | Nem | Nem |  |
 |Data Box | Nem | Nem | Nem |  |
 |Data Catalog Gen2 | Nem | Nem | Nem |  |
@@ -116,9 +116,9 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 |HPC Cache | Nem | Nem | Nem |  |
 |Information Protection | Nem | Igen | Nem |  |
 |Intune | Nem | Igen | Nem |  |
-|IoT Central | Nem | Nem | Nem |  |
+|IoT-központ | Nem | Nem | Nem |  |
 |IoT Hub | Igen | Igen | Nem |  |
-|Key Vault | Igen | Yes | [Igen](./insights/key-vault-insights-overview.md) |  |
+|Key Vault | Igen | Igen | [Igen](./insights/key-vault-insights-overview.md) |  |
 |Kubernetes Service (AKS) | Nem | Nem | [Igen](insights/container-insights-overview.md)  |  |
 |Load Balancer | Igen | Nem | Nem |  |
 |Logic Apps | Igen | Igen | Nem |  |
@@ -141,7 +141,7 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 |Private Link | Nem | Nem | Nem |  |
 |Projekt-várólista kommunikációs platformja | Nem | Nem | Nem |  |
 |Red Hat OpenShift | Nem | Nem | Nem |  |
-|Redis Cache | Igen | Yes | [Igen](insights/redis-cache-insights-overview.md) | |
+|Redis Cache | Igen | Igen | [Igen](insights/redis-cache-insights-overview.md) | |
 |Resource Graph | Nem | Nem | Nem |  |
 |Resource Manager | Nem | Nem | Nem |  |
 |Kiskereskedelmi keresés – Bing alapján | Nem | Nem | Nem |  |
@@ -164,8 +164,8 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 |Traffic Manager | Igen | Igen | Nem |  |
 |Univerzális nyomtatás | Nem | Nem | Nem |  |
 |Virtual Machine Scale Sets | Nem | Igen | [Igen](insights/vminsights-overview.md) | A vendég operációs rendszer és a munkafolyamatok figyeléséhez szükséges ügynök. |
-|Virtual Machines | Igen | Yes | [Igen](insights/vminsights-overview.md) | A vendég operációs rendszer és a munkafolyamatok figyeléséhez szükséges ügynök. |
-|Virtual Network | Igen | Yes | [Igen](insights/network-insights-overview.md) |  |
+|Virtual Machines | Igen | Igen | [Igen](insights/vminsights-overview.md) | A vendég operációs rendszer és a munkafolyamatok figyeléséhez szükséges ügynök. |
+|Virtual Network | Igen | Igen | [Igen](insights/network-insights-overview.md) |  |
 |Virtual Network – NSG folyamatok naplói | Nem | Igen | Nem |  |
 |VPN Gateway | Igen | Igen | Nem |  |
 |Windows Virtual Desktop | Nem | Nem | Nem |  |
@@ -177,7 +177,7 @@ Az egyes ügynökök által gyűjtött adatokra vonatkozó részletekért tekint
 
 | Ügynök |  Mérőszámok | Naplók |
 |:---|:---|:---|:---|
-| [Azure Monitor-ügynök (előzetes verzió)](platform/azure-monitor-agent-overview.md) | Igen | Yes |
+| [Azure Monitor-ügynök (előzetes verzió)](platform/azure-monitor-agent-overview.md) | Igen | Igen |
 | [Log Analytics-ügynök](platform/log-analytics-agent.md) | Nem | Igen|
 | [Diagnosztikai bővítmény](platform/diagnostics-extension-overview.md) | Igen | Nem |
 | [A Grafi ügynök](platform/collect-custom-metrics-linux-telegraf.md) | Igen | Nem |
@@ -187,16 +187,16 @@ Az egyes ügynökök által gyűjtött adatokra vonatkozó részletekért tekint
 ## <a name="product-integrations"></a>Termék-integrációk
 Az alábbi táblázatban szereplő szolgáltatások és megoldások egy Log Analytics munkaterületen tárolják az adatokat, így a Azure Monitor által gyűjtött egyéb naplózási adatokkal is elemezhetők.
 
-| Termék/szolgáltatás | Description |
+| Termék/szolgáltatás | Leírás |
 |:---|:---|
-| [Azure Automation](../automation/index.yml) | Az operációs rendszer frissítéseinek kezelése és a változások nyomon követése Windows és Linux rendszerű számítógépeken. Lásd: [change Tracking](../automation/change-tracking/overview.md) és [Update Management](../automation/update-management/update-mgmt-overview.md). |
+| [Azure Automation](../automation/index.yml) | Az operációs rendszer frissítéseinek kezelése és a változások nyomon követése Windows és Linux rendszerű számítógépeken. Lásd: [change Tracking](../automation/change-tracking/overview.md) és [Update Management](../automation/update-management/overview.md). |
 | [Azure Information Protection ](/azure/information-protection/) | A dokumentumok és e-mailek besorolása és opcionális védelemmel való ellátása. Lásd: [Azure Information Protection központi jelentéskészítése](/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports). |
 | [Azure Security Center](../security-center/index.yml) | A biztonsági események összegyűjtése és elemzése, valamint a fenyegetések elemzésének elvégzése. Adatgyűjtés [Azure Security Center](../security-center/security-center-enable-data-collection.md) |
 | [Azure Sentinel](../sentinel/index.yml) | Különböző forrásokhoz, például az Office 365-hez és a Amazon Web Services Cloud Trailhez csatlakozik. Lásd: [az adatforrások összekötése](../sentinel/connect-data-sources.md). |
 | [Microsoft Intune](/intune/) | Hozzon létre egy diagnosztikai beállítást, amely naplókat küld Azure Monitornak. Lásd: [naplózási információk küldése a Storage-ba, az Event hubokba vagy a log analyticsbe az Intune-ban (előzetes verzió)](/intune/fundamentals/review-logs-using-azure-monitor).  |
 | Network (Hálózat)  | [Network Performance monitor](insights/network-performance-monitor.md) – a hálózati kapcsolat és a teljesítmény figyelése a szolgáltatás-és alkalmazás-végpontok számára.<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) – naplók és mérőszámok elemzése az Azure Application Gatewayból.<br>[Traffic Analytics](../network-watcher/traffic-analytics.md) – elemzi Network Watcher hálózati biztonsági csoport (NSG) folyamatának naplóit, hogy betekintést nyújtson az Azure-felhőbe irányuló forgalomba. |
 | [Office 365](insights/solution-office-365.md) | Az Office 365-környezet monitorozása. Frissített verzió, amely az Azure Sentinel használatával érhető el továbbfejlesztett bevezetéssel. |
-| [SQL Analytics](insights/azure-sql.md) | Az Azure SQL Database-adatbázisok és a felügyelt SQL-példányok teljesítményének figyelése nagy méretekben és több előfizetésen keresztül. |
+| [SQL-elemzés](insights/azure-sql.md) | Az Azure SQL Database-adatbázisok és a felügyelt SQL-példányok teljesítményének figyelése nagy méretekben és több előfizetésen keresztül. |
 | [Surface Hub](insights/surface-hubs.md) | Surface Hub eszközök állapotának és használatának nyomon követése. |
 | [System Center Operations Manager](/system-center/scom) | Operations Manager ügynököktől származó adatok gyűjtése a felügyeleti csoport Azure Monitorhoz való csatlakoztatásával. Lásd: [a Operations Manager kapcsolódása Azure monitor](platform/om-agents.md)<br> [Operations Manager Assessment](insights/scom-assessment.md) megoldással értékelheti System Center Operations Manager felügyeleti csoportjának kockázatait és állapotát. |
 | [Microsoft Teams-szobák](/microsoftteams/room-systems/azure-monitor-deploy) | A Microsoft Teams Rooms eszközeinek integrált, teljes körű felügyelete. |
@@ -208,7 +208,7 @@ Az alábbi táblázatban szereplő szolgáltatások és megoldások egy Log Anal
 ## <a name="other-solutions"></a>Egyéb megoldások
 Más megoldások is elérhetők különböző alkalmazások és szolgáltatások figyelésére, de az aktív fejlesztés leállt, és előfordulhat, hogy az összes régióban nem érhető el. Ezeket az Azure Log Analytics adatfeldolgozási szolgáltatói szerződése szabályozza.
 
-| Megoldás | Description |
+| Megoldás | Leírás |
 |:---|:---|
 | [Active Directory állapot-ellenőrzési](insights/ad-assessment.md) | A Active Directory környezetek kockázatának és állapotának felmérése. |
 | [Active Directory replikáció állapota](insights/ad-replication-status.md) | Rendszeresen figyeli a Active Directory környezetet bármilyen replikációs hiba esetén. |
@@ -222,7 +222,7 @@ Más megoldások is elérhetők különböző alkalmazások és szolgáltatások
 
 ## <a name="third-party-integration"></a>Harmadik féltől származó integráció
 
-| Megoldás | Description |
+| Megoldás | Leírás |
 |:---|:---|
 | [ITSM](platform/itsmc-overview.md) | Az IT Service Management-összekötő (ITSMC) lehetővé teszi, hogy az Azure-t egy támogatott IT Service Management- (ITSM-) termékhez/szolgáltatáshoz kapcsolja.  |
 
@@ -245,4 +245,3 @@ A Azure Monitor az Azure-on kívüli erőforrásokból is gyűjthet adatokat az 
 - Végezzen el egy olyan [oktatóanyagot, amely Azure monitor naplókba tartozó adatelemzési napló lekérdezését írja](learn/tutorial-resource-logs.md)le.
 - A [metrikák diagramjának létrehozásával Azure monitor mérőszámokban lévő adatok elemzéséhez](learn/tutorial-metrics-explorer.md)hajtson végre egy oktatóanyagot.
 
- 

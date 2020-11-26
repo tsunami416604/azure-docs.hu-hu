@@ -3,12 +3,12 @@ title: Sablon exportálása Azure Portal
 description: A Azure Portal használatával exportálhat egy Azure Resource Manager sablont az előfizetése erőforrásaiból.
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 6d0c9adb121372047336d2753df047f54f1e0fa2
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: ee97953a337bbb7cc9a8d1f042a3beae7bccdcae
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951757"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185691"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Egy-és többerőforrásos exportálás Azure Portal sablonba
 
@@ -51,7 +51,7 @@ Egy erőforráscsoport vagy erőforrás exportálásakor az exportált sablon az
 
 A sablon exportálása funkció nem támogatja Azure Data Factory erőforrások exportálását. A Data Factory-erőforrások exportálásával kapcsolatos további tudnivalókért lásd: az [adatfeldolgozó másolása vagy klónozása Azure Data Factory-ben](../../data-factory/copy-clone-data-factory.md).
 
-A klasszikus üzemi modellel létrehozott erőforrások exportálásához [át kell telepítenie azokat a Resource Manager](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)-alapú üzemi modellbe.
+A klasszikus üzemi modellel létrehozott erőforrások exportálásához [át kell telepítenie azokat a Resource Manager](../../virtual-machines/migration-classic-resource-manager-overview.md)-alapú üzemi modellbe.
 
 Ha egy olyan sablon exportálásakor figyelmeztető üzenet jelenik meg, amely azt jelzi, hogy az erőforrás típusa nem lett exportálva, akkor továbbra is felderítheti az adott erőforrás tulajdonságait. Az erőforrás-tulajdonságok megtekintésének különböző lehetőségeiről további információt az [Erőforrás-tulajdonságok felderítése](view-resources.md)című témakörben talál. Az erőforrás típusa az [Azure REST API](/rest/api/azure/) is megtekinthető.
 
@@ -63,12 +63,12 @@ Egy vagy több erőforrás exportálása egy erőforráscsoporthoz:
 
 1. Válassza ki az exportálni kívánt erőforrásokat tartalmazó erőforráscsoportot.
 
-1. Válasszon ki egy vagy több erőforrást a jelölőnégyzetek bejelölésével.  Az összes kijelöléséhez jelölje be a **név**bal oldalán található jelölőnégyzetet. A **sablon exportálása** menüpont csak akkor válik elérhetővé, ha legalább egy erőforrást kiválasztott.
+1. Válasszon ki egy vagy több erőforrást a jelölőnégyzetek bejelölésével.  Az összes kijelöléséhez jelölje be a **név** bal oldalán található jelölőnégyzetet. A **sablon exportálása** menüpont csak akkor válik elérhetővé, ha legalább egy erőforrást kiválasztott.
 
    ![Az összes erőforrás exportálása](./media/export-template-portal/select-all-resources.png)
 
     A képernyőképen csak a Storage-fiók van kiválasztva.
-1. Válassza a **sablon exportálása**lehetőséget.
+1. Válassza a **sablon exportálása** lehetőséget.
 
 1. Megjelenik az exportált sablon, amely letölthető és telepíthető.
 
@@ -96,7 +96,7 @@ Egy erőforrás exportálása:
 
 1. Adja meg az új szolgáltatás értékeit.
 
-1. Az érvényesítést követően, de az üzembe helyezés megkezdése előtt válassza **a sablon letöltése az automatizáláshoz**lehetőséget.
+1. Az érvényesítést követően, de az üzembe helyezés megkezdése előtt válassza **a sablon letöltése az automatizáláshoz** lehetőséget.
 
    ![Sablon letöltése](./media/export-template-portal/download-before-deployment.png)
 
@@ -109,7 +109,7 @@ Exportálhatja a meglévő erőforrások üzembe helyezéséhez használt sablon
 
 1. Válassza ki az exportálni kívánt erőforráscsoportot.
 
-1. Válassza ki az üzemelő **példányok**alatt lévő hivatkozást.
+1. Válassza ki az üzemelő **példányok** alatt lévő hivatkozást.
 
    ![Telepítési előzmények kiválasztása](./media/export-template-portal/select-deployment-history.png)
 
@@ -117,11 +117,11 @@ Exportálhatja a meglévő erőforrások üzembe helyezéséhez használt sablon
 
    ![Központi telepítés kiválasztása](./media/export-template-portal/select-details.png)
 
-1. Válassza a **sablon**lehetőséget. Megjelenik az ehhez a központi telepítéshez használt sablon, amely letölthető.
+1. Válassza a **sablon** lehetőséget. Megjelenik az ehhez a központi telepítéshez használt sablon, amely letölthető.
 
    ![Sablon kiválasztása](./media/export-template-portal/show-template-from-history.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan exportálhat sablonokat az [Azure CLI](../management/manage-resource-groups-cli.md#export-resource-groups-to-templates), a [Azure PowerShell](../management/manage-resource-groups-powershell.md#export-resource-groups-to-templates)vagy a [REST API](/rest/api/resources/resourcegroups/exporttemplate)használatával.
 - A Resource Manager-sablon szintaxisának megismeréséhez tekintse meg [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](template-syntax.md)című témakört.

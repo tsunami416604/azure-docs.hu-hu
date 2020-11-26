@@ -3,12 +3,12 @@ title: Hibrid gépek összekötése az Azure-ba a Windows felügyeleti központb
 description: Ebből a cikkből megtudhatja, hogyan telepítheti az ügynököt, és hogyan csatlakoztathatók a gépek az Azure-ba az Azure arc-kompatibilis kiszolgálók használatával a Windows felügyeleti központból.
 ms.date: 10/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: d47e3dd4434d719f890b64e4cdfb12a189c0632a
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 8fa118a254689feade2897f083bb3aa2dc9db02c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93133711"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183413"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-windows-admin-center"></a>Hibrid gépek összekötése az Azure-ba a Windows felügyeleti központból
 
@@ -24,7 +24,7 @@ A környezet egy vagy több Windows rendszerű számítógépén engedélyezheti
 
 * A felügyelni kívánt cél Windows-kiszolgálóknak internetkapcsolattal kell rendelkezniük az Azure eléréséhez.
 
-### <a name="security"></a>Biztonsági őr
+### <a name="security"></a>Biztonság
 
 Ez a telepítési módszer megköveteli, hogy rendszergazdai jogosultságokkal rendelkezzen a cél Windows-gépen vagy-kiszolgálón az ügynök telepítéséhez és konfigurálásához. Emellett az [**átjáró felhasználói**](/windows-server/manage/windows-admin-center/plan/user-access-options#gateway-access-roles) szerepkör tagjának kell lennie.
 
@@ -69,4 +69,4 @@ Miután telepítette az ügynököt, és konfigurálta az Azure arc-kompatibilis
 
 * Megtudhatja, hogyan kezelheti a gépet [Azure Policy](../../governance/policy/overview.md)használatával, például a virtuális gép [vendég konfigurációjában](../../governance/policy/concepts/guest-configuration.md), ellenőrizheti, hogy a gép a várt log Analytics munkaterületről jelent-e jelentést, lehetővé teszi a figyelést a virtuális [gépekkel Azure monitor](../../azure-monitor/insights/vminsights-enable-policy.md)és sok más további műveletet.
 
-* További információ a [log Analytics-ügynökről](../../azure-monitor/platform/log-analytics-agent.md). A Windows és Linux rendszerhez készült Log Analytics ügynökre akkor van szükség, ha az operációs rendszer és a számítási feladatok figyelésére szolgáló adatokat szeretné összegyűjteni, az Automation-runbookok vagy-szolgáltatásokkal, például a Update Managementekkel, vagy más Azure-szolgáltatások, például a [Azure Security Center](../../security-center/security-center-intro.md)használatával
+* További információ a [log Analytics-ügynökről](../../azure-monitor/platform/log-analytics-agent.md). A Windows és Linux rendszerhez készült Log Analytics ügynökre akkor van szükség, ha az operációs rendszer és a számítási feladatok figyelésére szolgáló adatokat szeretné összegyűjteni, az Automation-runbookok vagy-szolgáltatásokkal, például a Update Managementekkel, vagy más Azure-szolgáltatások, például a [Azure Security Center](../../security-center/security-center-introduction.md)használatával

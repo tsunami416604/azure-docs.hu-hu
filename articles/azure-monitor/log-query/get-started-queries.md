@@ -6,17 +6,17 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: 8b3b6a41da6e3100739da920472d582711d1e9b1
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: a949c9b34e299e0dc4eccbb62f4b4ebb38d6ccb9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024381"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186711"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Ismerkedés az Azure Monitor-naplólekérdezésekkel
 
 > [!NOTE]
-> Ezt a gyakorlatot a saját környezetében hajthatja végre, ha legalább egy virtuális gépről gyűjti az adatgyűjtést. Ha nem, akkor használja a [bemutató környezetét](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade), amely rengeteg mintavételi adatmennyiséget tartalmaz.  Ha már tudja, hogyan lehet lekérdezni a KQL-ben, de csak az erőforrás típusa (i) alapján kell gyorsan létrehoznia hasznos lekérdezéseket, tekintse meg a [mentett példákat tartalmazó ablaktáblát](saved-queries.md).
+> Ezt a gyakorlatot a saját környezetében hajthatja végre, ha legalább egy virtuális gépről gyűjti az adatgyűjtést. Ha nem, akkor használja a [bemutató környezetét](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade), amely rengeteg mintavételi adatmennyiséget tartalmaz.  Ha már tudja, hogyan lehet lekérdezni a KQL-ben, de csak az erőforrás típusa (i) alapján kell gyorsan létrehoznia hasznos lekérdezéseket, tekintse meg a [mentett példákat tartalmazó ablaktáblát](./example-queries.md).
 
 Ez az oktatóanyag bemutatja, hogyan írhat napló lekérdezéseket Azure Monitor. A következőket fogja megtanítani:
 
@@ -28,7 +28,7 @@ Ez az oktatóanyag bemutatja, hogyan írhat napló lekérdezéseket Azure Monito
 - Egyéni mezők definiálása és használata
 - Összesítés és csoportosítás eredményei
 
-A Azure Portal Log Analytics használatáról szóló oktatóanyagért lásd: az [Azure Monitor log Analytics használatának első lépései](get-started-portal.md).<br>
+A Azure Portal Log Analytics használatáról szóló oktatóanyagért lásd: az [Azure Monitor log Analytics használatának első lépései](./log-analytics-tutorial.md).<br>
 További információ a Azure Monitor naplózott lekérdezésekről: [Azure monitor-lekérdezések áttekintése](log-query-overview.md).
 
 Kövesse az alábbi oktatóanyag videós verzióját:
@@ -44,7 +44,7 @@ A lekérdezések a táblanév vagy a *keresési* paranccsal kezdődhetnek. A tá
 
 ### <a name="table-based-queries"></a>Tábla alapú lekérdezések
 
-A Azure Monitor táblákba rendezi a naplókat, amelyek mindegyike több oszlopból áll. Az elemzési portálon az összes tábla és oszlop megjelenik a Log Analytics sémája ablaktáblán. Azonosítson egy olyan táblát, amely érdekli, és tekintse meg a következőt:
+Az Azure Monitor több oszlopból álló táblákba rendezi a naplóadatokat. Az elemzési portálon az összes tábla és oszlop megjelenik a Log Analytics sémája ablaktáblán. Azonosítson egy olyan táblát, amely érdekli, és tekintse meg a következőt:
 
 ```Kusto
 SecurityEvent
