@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 02/12/2020
-  ms.openlocfilehash: a05f168b18f32e2b4730e5ef50624d41fb48e147
-  ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+  ms.openlocfilehash: bcba2b48fdecda311ce349f90ba43023b906bd44
+  ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/30/2020
-  ms.locfileid: "93099096"
+  ms.lasthandoff: 11/26/2020
+  ms.locfileid: "96186405"
 landingContent:
 - title: Az Azure Digital Twins bemutatása
   linkLists:
@@ -71,20 +71,24 @@ landingContent:
     links:
     - text: Alkalmazáshitelesítési kód írása
       url: how-to-authenticate-client.md
-- title: API-referencia megtekintése
+- title: Az API-k felderítése
   linkLists:
+  - linkListType: reference
+    links:
+    - text: REST API-k
+      url: /rest/api/azure-digitaltwins/
   - linkListType: how-to-guide
     links:
     - text: Az Azure Digital Twins API-k és SDK-k használata
       url: how-to-use-apis-sdks.md
   - linkListType: how-to-guide
     links:
+    - text: Kérelem küldése a Postman használatával
+      url: how-to-use-postman.md
+  - linkListType: how-to-guide
+    links:
     - text: Egyéni SDK-k létrehozása az AutoRest használatával
       url: how-to-create-custom-sdks.md
-  - linkListType: reference
-    links:
-    - text: REST API-k
-      url: /rest/api/azure-digitaltwins/
 - title: Kódminták áttekintése
   linkLists:
   - linkListType: sample

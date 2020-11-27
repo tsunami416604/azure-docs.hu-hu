@@ -45,6 +45,10 @@
           href: manage-assets-quickstart.md
         - name: A portál használata tartalom titkosításához
           href: encrypt-content-quickstart.md
+    - name: ARM-sablon használata
+      items:
+        - name: Fiók létrehozása az ARM használatával
+          href: quickstart-arm-template-account.md
 - name: Oktatóanyagok
   items:
     - name: .NET
@@ -401,7 +405,7 @@
           href: /python/api/overview/azure/mediaservices/management
         - name: Node.js
           href: /javascript/api/overview/azure/mediaservices/management
-        - name: Go
+        - name: Indítás
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.media/allversions

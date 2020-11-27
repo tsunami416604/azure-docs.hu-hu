@@ -752,6 +752,8 @@
           href: connector-troubleshoot-guide.md
         - name: Adatfolyamok
           href: data-flow-troubleshoot-guide.md
+        - name: Folyamatos integráció és üzembe helyezés
+          href: ci-cd-github-troubleshoot-guide.md
         - name: Biztonság és hozzáférés-vezérlés
           href: security-and-access-control-troubleshoot-guide.md
         - name: Helyi integrációs futtatókörnyezetek
