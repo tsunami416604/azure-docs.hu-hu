@@ -105,6 +105,8 @@
       href: ../../devtest-labs/security-baseline.md
     - name: Az Azure Firewall biztonsági alapkonfigurációja
       href: ../../firewall/security-baseline.md
+    - name: Az Azure Firewall Manager biztonsági alapkonfigurációja
+      href: ../../firewall-manager/security-baseline.md
     - name: Az Azure Front Door biztonsági alapkonfigurációja
       href: ../../frontdoor/security-baseline.md
     - name: Az Azure Functions biztonsági alapkonfigurációja
@@ -185,6 +187,8 @@
       href: ../../logic-apps/security-baseline.md
     - name: A Network Watcher biztonsági alapkonfigurációja
       href: ../../network-watcher/security-baseline.md
+    - name: A Power BI biztonsági alapkonfigurációja
+      href: /power-bi/fundamentals/security-baseline
     - name: A Security Center alapkonfigurációja
       href: ../../security-center/security-baseline.md
     - name: A Service Bus alapkonfigurációja
@@ -207,5 +211,7 @@
       href: ../../virtual-network/security-baseline.md
     - name: A virtuális hálózatok NAT-biztonsági alapkonfigurációja
       href: ../../virtual-network/nat-security-baseline.md
+    - name: A virtuális WAN biztonsági alapkonfigurációja
+      href: ../../virtual-wan/security-baseline.md
     - name: A VPN Gateway biztonsági alapkonfigurációja
       href: ../../vpn-gateway/security-baseline.md

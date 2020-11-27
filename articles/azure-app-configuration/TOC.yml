@@ -70,6 +70,8 @@
       items:
         - name: Leküldés az Azure Pipelines használatával
           href: push-kv-devops-pipeline.md
+        - name: Lekérés az Azure Pipelines használatával
+          href: pull-key-value-devops-pipeline.md
         - name: Leküldés GitHub-műveletekkel
           href: concept-github-action.md
         - name: Projektek összeállítása exportált konfigurációkkal

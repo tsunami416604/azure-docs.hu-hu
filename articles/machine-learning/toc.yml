@@ -454,7 +454,9 @@
               href: ../iot-edge/tutorial-deploy-machine-learning.md?context=%2fazure%2fmachine-learning%2fservice%2fcontext%2fml-context
             - name: FPGA-következtetés
               href: how-to-deploy-fpga-web-service.md
-        - name: Hibakeresés és hibaelhárítás
+        - name: Hibakeresés és hibaelhárítás (helyi)
+          href: how-to-troubleshoot-deployment-local.md
+        - name: Hibakeresés és hibaelhárítás (távoli)
           href: how-to-troubleshoot-deployment.md
         - name: Webszolgáltatás felhasználása
           displayName: create client consume request response synchronous
