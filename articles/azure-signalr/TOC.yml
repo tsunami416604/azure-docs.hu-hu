@@ -66,6 +66,10 @@
       href: signalr-concept-authenticate-oauth.md
     - name: Eseménykezelés
       href: signalr-concept-event-grid-integration.md
+    - name: Biztonság
+      items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
 - name: Útmutatók
   items:
     - name: Méretezés
