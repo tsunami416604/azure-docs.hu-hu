@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 11/18/2020
-ms.openlocfilehash: 9715724fc0fbd25198dd3244215ac2c12638d2b8
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ac785b3ad534e80d4dd240d1a29ba5f6aa75e10a
+ms.sourcegitcommit: 236014c3274b31f03e5fcee5de510f9cacdc27a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185963"
+ms.locfileid: "96299039"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor – ügyfél által kezelt kulcs 
 
@@ -538,7 +538,9 @@ További információ a [Microsoft Azure Ügyfélszéfről](../../security/funda
   1. a REST használatakor másolja az Azure-AsyncOperation URL értéket a válaszból, és kövesse az [aszinkron műveletek állapotának ellenőrzését](#asynchronous-operations-and-status-check).
   2. GET kérelem küldése a fürtnek vagy a munkaterületnek, és figyelje meg a választ. A nem összekapcsolt munkaterület például nem rendelkezik a *szolgáltatások* *clusterResourceId* .
 
-- A [kettős titkosítás](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) automatikusan konfigurálva van az október 2020-ből létrehozott fürtök esetében, ha a dupla titkosítás a régióban volt. Ha létrehoz egy fürtöt, és "<régió neve> nem támogatja a fürtök kettős titkosítását", akkor továbbra is létrehozhatja a fürtöt, de a kettős titkosítás le van tiltva. A fürt létrehozása után nem engedélyezhető vagy tiltható le. Fürt létrehozásához, ha a dupla titkosítás nem támogatott a régióban, adja hozzá `"properties": {"isDoubleEncryptionEnabled": false}` a REST-kérelem törzsét.
+- A [kettős titkosítás](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) automatikusan konfigurálva van a támogatott régiókban a 2020 október 1-jétől létrehozott fürtökhöz. Ellenőrizheti, hogy a fürt a GET kérelem alapján kettős titkosításra van-e konfigurálva, és megfigyelheti a `"isDoubleEncryptionEnabled"` tulajdonság értékét – ez `true` a kettős titkosítással rendelkező fürtök esetében engedélyezett. 
+  - Ha létrehoz egy fürtöt, és "<region-Name> nem támogatja a fürtök kettős titkosítását", akkor továbbra is létrehozhatja a fürtöt dupla titkosítás nélkül. Adja hozzá `"properties": {"isDoubleEncryptionEnabled": false}` a REST-kérelem törzsét.
+  - A fürt létrehozása után a kettős titkosítási beállítás nem módosítható.
 
 - Hibaüzenetek
   

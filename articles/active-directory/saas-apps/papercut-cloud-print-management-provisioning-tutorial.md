@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: a PaperCut Cloud Print Management (Pocket/kaptár) konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
-description: Ismerje meg, hogy miként lehet automatikusan kiépíteni és kiépíteni felhasználói fiókjait az Azure AD-ből a PaperCut (Pocket/Kas) használatával.
+title: 'Oktatóanyag: a PaperCut Cloud Print Management konfigurálása az automatikus felhasználó-kiépítés a Azure Active Directorysal | Microsoft Docs'
+description: Ismerje meg, hogy miként lehet automatikusan kiépíteni és kiépíteni felhasználói fiókjait az Azure AD-ből a PaperCut Cloud Print Management szolgáltatásba.
 services: active-directory
 documentationcenter: ''
 author: Zhchia
@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2020
 ms.author: Zhchia
-ms.openlocfilehash: d0ecc06cd256dc2fae598e8bc44336d69a9c99df
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 860b880faae9c5fe37a2c7eab2ef3a068ed4da3e
+ms.sourcegitcommit: 236014c3274b31f03e5fcee5de510f9cacdc27a0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96031267"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96299090"
 ---
-# <a name="tutorial-configure-papercut-cloud-print-management-pockethive-for-automatic-user-provisioning"></a>Oktatóanyag: a PaperCut Cloud Print Management (Pocket/kaptár) konfigurálása a felhasználók automatikus üzembe helyezéséhez
+# <a name="tutorial-configure-papercut-cloud-print-management-for-automatic-user-provisioning"></a>Oktatóanyag: a PaperCut Cloud Print Management konfigurálása a felhasználók automatikus kiépítési felállításához
 
-Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a PaperCut Cloud Print Management (Pocket/kaptár) és a Azure Active Directory (Azure AD) segítségével kell végrehajtania az automatikus felhasználó-kiépítés konfigurálásához. Ha konfigurálva van, az Azure AD automatikusan kiépíti és kiosztja a felhasználókat és csoportokat, hogy az Azure AD üzembe helyezési szolgáltatás használatával [PaperCut a Felhőbeli nyomtatást](https://www.papercut.com/products/papercut-pocket/) . A szolgáltatás funkcióival, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekért lásd: [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../manage-apps/user-provisioning.md).
+Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a PaperCut Cloud Print Management és a Azure Active Directory (Azure AD) szolgáltatásban kell végrehajtania az automatikus felhasználó-kiépítés konfigurálásához. Ha konfigurálva van, az Azure AD automatikusan kiépíti és kiosztja a felhasználókat és csoportokat, hogy az Azure AD üzembe helyezési szolgáltatás használatával [PaperCut a Felhőbeli nyomtatást](https://www.papercut.com/products/papercut-pocket/) . A szolgáltatás funkcióival, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekért lásd: [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../manage-apps/user-provisioning.md).
 
 ## <a name="capabilities-supported"></a>Támogatott képességek
 
 > [!div class="checklist"]
-> * Felhasználók létrehozása a PaperCut Cloud Print Management szolgáltatásban (Pocket/kaptár)
-> * Távolítsa el a felhasználókat a PaperCut Cloud Print Management (Pocket/kaptár) szolgáltatásban, ha már nincs szükség hozzáférésre
-> * A felhasználói attribútumok szinkronizálása az Azure AD és a PaperCut Cloud Print Management (Pocket/kaptár) között
+> * Felhasználók létrehozása a PaperCut Cloud Print Management szolgáltatásban
+> * Felhasználók eltávolítása a PaperCut Cloud Print Management szolgáltatásban, ha már nincs szükség hozzáférésre
+> * A felhasználói attribútumok szinkronizálása az Azure AD és a PaperCut Cloud Print Management között
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -39,7 +39,7 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 
 * [Azure AD-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
 * Egy Azure AD-beli felhasználói fiók, amely [jogosult](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) a kiépítés konfigurálására (például alkalmazás-rendszergazda, felhőalapú alkalmazás-rendszergazda, alkalmazás tulajdonosa vagy globális rendszergazda). 
-* Felhasználói fiók a PaperCut Cloud Print managementben (Pocket/kaptár) rendszergazdai engedélyekkel
+* Felhasználói fiók a PaperCut Cloud Print Management szolgáltatásban rendszergazdai engedélyekkel
 
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>1. lépés Az átadás üzembe helyezésének megtervezése
@@ -58,23 +58,23 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 
 
 
-4. A telepítés után a rendszer a **bérlő URL-címével** és **titkos jogkivonatával** jeleníti meg az addon részleteit tartalmazó oldalt. Ezek az értékek a bérlői URL-cím \* és a titkos jogkivonat mezőben jelennek meg a \* PaperCut Cloud Print Management (Pocket/kaptár) alkalmazás üzembe helyezés lapján a Azure Portal.
+4. A telepítés után a rendszer a **bérlő URL-címével** és **titkos jogkivonatával** jeleníti meg az addon részleteit tartalmazó oldalt. Ezek az értékek a bérlői URL-cím \* és a titkos jogkivonat mezőben lesznek megadva a \* PaperCut Cloud Print Management-alkalmazás létesítés lapján a Azure Portal.
 
 
 
-## <a name="step-3-add-papercut-cloud-print-management-pockethive-from-the-azure-ad-application-gallery"></a>3. lépés PaperCut Cloud Print Management (Pocket/kaptár) hozzáadása az Azure AD Application Galleryből
+## <a name="step-3-add-papercut-cloud-print-management-from-the-azure-ad-application-gallery"></a>3. lépés PaperCut Cloud Print Management hozzáadása az Azure AD Application Galleryből
 
-Az Azure AD PaperCut (Pocket/Kas) a Felhőbeli PaperCut (Pocket/kaptár) való kiépítés kezelésének megkezdéséhez adja hozzá a Cloud Print Management (Pocket/kaptár) elemet Ha korábban már beállította a PaperCut Cloud Print managementet (Pocket/kaptár) az egyszeri bejelentkezéshez, ugyanazt az alkalmazást használhatja. Az integráció első tesztelésekor azonban érdemes létrehozni egy külön alkalmazást. Az alkalmazások katalógusból való hozzáadásáról [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) tudhat meg többet.
+Vegye fel a PaperCut Cloud Print managementet az Azure AD-alkalmazás-katalógusból a kiépítés felügyeletének megkezdéséhez a felhő PaperCut. Ha korábban már beállította a PaperCut Cloud Print managementet az SSO-hoz, ugyanazt az alkalmazást használhatja. Az integráció első tesztelésekor azonban érdemes létrehozni egy külön alkalmazást. Az alkalmazások katalógusból való hozzáadásáról [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) tudhat meg többet.
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. lépés: Az átadás hatókörében lévő személyek meghatározása
 
 Az Azure AD átadási szolgáltatása lehetővé teszi az átadott személyek hatókörének meghatározását az alkalmazáshoz való hozzárendelés és/vagy a felhasználó/csoport attribútumai alapján. Ha a hozzárendelés alapján történő hatókör-meghatározást választja, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) rendelhet felhasználókat és csoportokat az alkalmazáshoz. Ha csak a felhasználó vagy csoport attribútumai alapján történő hatókörmeghatározást választja, az [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) leírt hatókörszűrőt használhatja.
 
-* Amikor felhasználókat és csoportokat rendel a PaperCut (Pocket/kaptár), ki kell választania az **alapértelmezett hozzáféréstől** eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps).
+* Amikor felhasználókat és csoportokat rendel a Cloud Print PaperCut, ki kell választania az **alapértelmezett hozzáféréstől** eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva az átadásból, és az átadási naplókban nem jogosultként lesznek megjelölve. Ha az alkalmazáshoz csak az alapértelmezett hozzáférési szerepkör érhető el, akkor további szerepkörök felvételéhez [frissítheti az alkalmazásjegyzéket](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps).
 
 * Kezdje kicsiben. Tesztelje a felhasználók és csoportok kis halmazát, mielőtt mindenkire kiterjesztené. Amikor az átadás hatóköre a hozzárendelt felhasználókra és csoportokra van beállítva, ennek szabályozásához egy vagy két felhasználót vagy csoportot rendelhet az alkalmazáshoz. Amikor a hatókör az összes felhasználóra és csoportra van beállítva, meghatározhat egy [attribútumalapú hatókörszűrőt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 
-## <a name="step-5-configure-automatic-user-provisioning-to-papercut-cloud-print-management-pockethive"></a>5. lépés Automatikus felhasználó-kiépítés beállítása a PaperCut (Pocket/kaptár)
+## <a name="step-5-configure-automatic-user-provisioning-to-papercut-cloud-print-management"></a>5. lépés Automatikus felhasználó-kiépítés beállítása a PaperCut Cloud Print Management szolgáltatásba
 
 Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy TestApp alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
 
@@ -84,7 +84,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza a **PaperCut Cloud Print Management (Pocket/struktúra)** lehetőséget.
+2. Az alkalmazások listában válassza a **PaperCut Cloud Print Management** lehetőséget.
 
    ![A PaperCut Cloud Print Management hivatkozás az alkalmazások listájában](common/all-applications.png)
 
@@ -96,7 +96,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
    ![Kiépítés lap automatikus](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a PaperCut Cloud Print Management (Pocket/kaptár) bérlői URL-címét és a titkos jogkivonatot. Kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozhasson a PaperCut Cloud Print Management szolgáltatáshoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a PaperCut Cloud Print Management-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a PaperCut Cloud Print Management-bérlői URL-címét és a titkos jogkivonatot. Kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozhasson a PaperCut Cloud Print Management szolgáltatáshoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a PaperCut Cloud Print Management-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
    ![Jogkivonat](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -118,11 +118,11 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 10. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
 
-11. Ha engedélyezni szeretné az Azure AD kiépítési szolgáltatást a PaperCut Cloud Print Management (Pocket/kaptár) szolgáltatáshoz, módosítsa a **kiépítési állapotot** **a következőre** a **Beállítások** szakaszban.
+11. Ha engedélyezni szeretné az Azure AD kiépítési szolgáltatást a PaperCut Cloud Print Management szolgáltatáshoz, módosítsa a **kiépítési állapotot** **a következőre** a **Beállítások** szakaszban.
 
     ![Kiépítési állapot bekapcsolva](common/provisioning-toggle-on.png)
 
-12. Adja meg azokat a felhasználókat és/vagy csoportokat, akik számára a PaperCut (Pocket/kaptár) szeretné kiépíteni, majd a **Beállítások** szakaszban válassza ki a kívánt értékeket a **hatókörben** .
+12. Adja meg azokat a felhasználókat és/vagy csoportokat, akik számára ki szeretné építeni a PaperCut a Felhőbeli nyomtatás kezeléséhez. Ehhez válassza ki a kívánt értékeket a **hatókörben** a **Beállítások** szakaszban.
 
     ![Átadási hatókör](common/provisioning-scope.png)
 
