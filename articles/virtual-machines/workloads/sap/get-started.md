@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/05/2020
+ms.date: 11/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4f104accad2b23b907d888ce3d0da083f1fa019a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 05b2747dc21e2aedf16c6ca6e6c31af03b38c81f
+ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964830"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96299513"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -80,6 +80,7 @@ Ebben a szakaszban a PowerBI-integráció SAP-adatforrásokkal való integrálá
 
 ## <a name="change-log"></a>Módosítási napló
 
+- 11/26/2020: az [Azure-beli virtuális gépek tárolási konfigurációinak](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) és [Az Azure storage-típusok](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) SAP HANA hozzáigazítása az SAP számítási feladatokhoz az egyetlen virtuálisgép- [SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines) módosítása
 - 11/05/2020: új SAP-megjegyzésre mutató hivatkozás módosítása a HANA által támogatott fájlrendszer-típusokkal kapcsolatban [SAP HANA Azure-beli virtuális gépek tárolási konfigurációjában](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) 
 - 10/26/2020: az Azure Premium Storage SAP HANA-konfiguráció egyes tábláinak módosítása az Azure-beli [virtuális gépek tárolási konfigurációjának](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) kiépített és burst átviteli sebességének tisztázására
 - 10/22/2020: a [SLES for](./high-availability-guide-suse.md)SAP-alkalmazások esetében az Azure-beli virtuális gépeken az SAP NW esetében az SAP-alkalmazásokhoz, [Ha az Azure](./high-availability-guide-suse-netapp-files.md)-beli virtuális gépeken a ANF-t használó Azure-beli virtuális gépeken az SAP NW-on futó Azure-beli virtuális gépeken az SAP NW-t, a [RHEL](./high-availability-guide-rhel-netapp-files.md) -t [használó](./high-availability-guide-rhel.md) Azure virtuális gépeken net.IPv4.tcp_keepalive_time  

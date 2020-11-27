@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/05/2020
+ms.date: 11/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: af2eac929e3e3f40e1ac1cd384c943b1e09171a8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b8b8d100eb2ff16e8f8b7a734ad493ed4faddd33
+ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967465"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96299530"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure-beli virtuális gépek tárkonfigurációi
 
@@ -273,7 +273,7 @@ A HANA ANF kapcsolatos részletekért olvassa el az [NFS-v 4.1-es kötetek Azure
 
 
 ## <a name="cost-conscious-solution-with-azure-premium-storage"></a>Cost tudatos megoldás az Azure Premium Storage szolgáltatással
-Eddig a jelen dokumentumban ismertetett Azure Premium Storage-megoldás a [Premium Storage és az azure írásgyorsító for Azure M sorozatú virtuális gépekre vonatkozó megoldások](#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines) című szakaszban szerepelt SAP HANA éles környezetben támogatott forgatókönyvek esetében. Az éles környezetben támogatott konfigurációk egyik jellemzője a kötetek elkülönítése SAP HANA adatok számára, és a naplózás megismétlése két különböző kötetre. Az ilyen elkülönítés oka, hogy a kötetek munkaterhelés-jellemzői eltérnek. A javasolt üzemi konfigurációk esetében azonban szükség lehet a különböző típusú gyorsítótárazásokra vagy az Azure Block-tárolók különböző típusaira. Az Azure Block Storage célját használó éles környezetben támogatott konfigurációk megfelelnek az [azure Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/) -hoz készült egyetlen VIRTUÁLISGÉP-SLA-nak is.  A nem éles környezetekben az éles rendszerekre vonatkozó megfontolások némelyike nem alkalmazható a fejlettebb, nem éles üzemi rendszerekre. Ennek eredményeképpen a HANA-adatbázis és a naplózási kötet egyesíthető. Habár végül bizonyos bűnösökkel, például az éles rendszerekhez szükséges bizonyos átviteli vagy késési KPI-kkel nem találkoznak. Az ilyen környezetekben a költségek csökkentésének egy másik aspektusa lehet az [Azure standard SSD Storage](./planning-guide-storage.md#azure-standard-ssd-storage)használata. Az [Azure Virtual Machineshoz tartozó egyszeri](https://azure.microsoft.com/support/legal/sla/virtual-machines/)virtuálisgép-szolgáltatói szerződés megadásának lehetősége azonban. 
+Eddig a jelen dokumentumban ismertetett Azure Premium Storage-megoldás a [Premium Storage és az azure írásgyorsító for Azure M sorozatú virtuális gépekre vonatkozó megoldások](#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines) című szakaszban szerepelt SAP HANA éles környezetben támogatott forgatókönyvek esetében. Az éles környezetben támogatott konfigurációk egyik jellemzője a kötetek elkülönítése SAP HANA adatok számára, és a naplózás megismétlése két különböző kötetre. Az ilyen elkülönítés oka, hogy a kötetek munkaterhelés-jellemzői eltérnek. A javasolt üzemi konfigurációk esetében azonban szükség lehet a különböző típusú gyorsítótárazásokra vagy az Azure Block-tárolók különböző típusaira. A nem éles környezetekben az éles rendszerekre vonatkozó megfontolások némelyike nem alkalmazható a fejlettebb, nem éles üzemi rendszerekre. Ennek eredményeképpen a HANA-adatbázis és a naplózási kötet egyesíthető. Habár végül bizonyos bűnösökkel, például az éles rendszerekhez szükséges bizonyos átviteli vagy késési KPI-kkel nem találkoznak. Az ilyen környezetekben a költségek csökkentésének egy másik aspektusa lehet az [Azure standard SSD Storage](./planning-guide-storage.md#azure-standard-ssd-storage)használata. Ne feledje, hogy az Azure Storage standard SSD vagy standard HDD kiválasztásával hatással van az egyetlen virtuálisgép-SLA-ra, ahogy az a  [Virtual Machines SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines)-ban szerepel.
 
 Az ilyen konfigurációknál a kevésbé költséges alternatíva a következőképpen néz ki:
 
@@ -311,6 +311,6 @@ Vannak felsorolva olyan virtuálisgép-típusok, amelyek nem rendelkeznek SAP-ta
 
 
 ## <a name="next-steps"></a>Következő lépések
-További információ:
+További információkért lásd:
 
 - [SAP HANA magas rendelkezésre állású útmutató Azure-beli virtuális gépekhez](./sap-hana-availability-overview.md).

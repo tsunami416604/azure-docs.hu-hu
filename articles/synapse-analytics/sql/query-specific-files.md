@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: e3f0a9f0b7fdef26cf1ef2b145ede1826fda6ebd
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: d24ae1f42c685589309506b2d5e0eab157b2bc42
+ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685596"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96299615"
 ---
 # <a name="use-file-metadata-in-serverless-sql-pool-queries"></a>Fájl metaadatainak használata kiszolgáló nélküli SQL Pool-lekérdezésekben
 
@@ -76,7 +76,7 @@ ORDER BY
 
 A filepath függvény teljes vagy részleges elérési utat ad vissza:
 
-- Ha paraméter nélkül hívja meg a metódust, az a teljes fájl elérési útját adja vissza, amelyből a sor származik.
+- Ha paraméter nélkül hívja meg a metódust, az a teljes fájl elérési útját adja vissza, amelyből a sor származik. Ha DATA_SOURCE van használatban a OPENROWSET-ben, a rendszer a DATA_SOURCEhoz viszonyított elérési utat adja vissza. 
 - Ha paraméterrel hívja meg a metódust, az az elérési út azon részét adja vissza, amely megfelel a paraméterben megadott pozícióban szereplő helyettesítő karakternek. Például az 1. paraméter értéke az első helyettesítő karakternek megfelelő elérési út egy részét fogja visszaadni.
 
 A következő minta a NYC Yellow taxi adatfájljait olvassa be az elmúlt három hónapban 2017-as értékben. A fájlok elérési útjának számát adja vissza. A lekérdezés OPENROWSET része határozza meg, hogy mely fájlok lesznek beolvasva.

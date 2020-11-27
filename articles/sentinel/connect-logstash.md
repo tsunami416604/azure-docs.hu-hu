@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
-ms.openlocfilehash: 247abafd7abec38e43794b76268ee52538aee508
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 63b9d74fbbb1a79dd4f3d3e7c5fb094a372282e0
+ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655680"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96299632"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>Adatforrások az Azure Sentinelhez való összekapcsolásához használja a Logstash-t
 
@@ -57,7 +57,7 @@ A Logstash készült Azure Sentinel kimeneti beépülő modul JSON formátumú a
 
 Az Azure Sentinel kimeneti beépülő modulja elérhető a Logstash gyűjteményben.
 
-- A *_Microsoft-Logstash-output-Azure-loganalytics_* _ beépülő modul telepítéséhez kövesse a Logstash című cikkben található utasításokat a [plugins](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html) -dokumentummal.
+- A *_[Microsoft-Logstash-output-Azure-loganalytics](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/microsoft-logstash-output-azure-loganalytics)_* _ beépülő modul telepítéséhez kövesse a Logstash című cikkben található utasításokat a [plugins](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html) -dokumentummal.
    
 - Ha a Logstash-rendszer nem rendelkezik internet-hozzáféréssel, kövesse a Logstash [Offline beépülő moduljának felügyeleti](https://www.elastic.co/guide/en/logstash/current/offline-plugins.html) dokumentumának utasításait az offline beépülő modul előkészítéséhez és használatához. (Ehhez szüksége lesz egy másik Logstash rendszer létrehozására internet-hozzáféréssel.)
 

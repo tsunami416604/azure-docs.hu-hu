@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/23/2020
+ms.date: 11/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1cd6f5f7865d18461ac7a635530e9aabfde380a6
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 325e28b9fde349fc4bf01d2b130bee0be0684962
+ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955412"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96299598"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Azure Storage-tárolótípusok SAP számítási feladathoz
 Az Azure számos különböző tárolási típussal rendelkezik, amelyek nagy mértékben különböznek a képességek, a teljesítmény, a késés és az árak között. A tárolási típusok némelyike nem, vagy kizárólag SAP-forgatókönyvekhez használható. Míg számos Azure-beli tárolási típus jól használható vagy speciális SAP-munkaterhelési forgatókönyvekhez van optimalizálva. Különösen a SAP HANA esetében egyes Azure-beli tárolási típusok minősítést kaptak a SAP HANAval való használathoz. Ebben a dokumentumban a különböző típusú tárolásokat vesszük át, és leírjuk a képességeiket és a használhatóságát az SAP-munkaterhelésekkel és az SAP-összetevőkkel.
@@ -34,6 +34,8 @@ Megjegyzés a cikk során használt egységekről. A nyilvános Felhőbeli szál
 A standard HDD, a standard SSD, az Azure Premium Storage és az ultra Disk Microsoft Azure tárolása három különböző tárolási csomóponton tárolja az alap VHD-t (operációs rendszer) és a virtuális gép csatlakoztatott adatlemezeit, illetve a virtuális merevlemezeket. Feladatátvétel egy másik replikára, és egy új replika kivetése egy tárolási csomópont meghibásodása esetén transzparens. A redundancia eredményeként **nem** szükséges bármilyen tárolási redundancia-réteget használni több Azure-lemezen. Ezt a tényt helyi redundáns tárolónak (LRS) nevezzük. A LRS az Azure-ban az ilyen típusú tárolók esetében alapértelmezett. [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) biztosítja a megfelelő redundanciát, hogy ugyanazokat a SLA-kat, mint a többi natív Azure Storage.
 
 Több redundancia-módszer is rendelkezésre áll, amelyek mindegyike az Azure által kínált különböző tárolási típusokra érvényes [Azure Storage-replikációval](../../../storage/common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) kapcsolatos cikkekben szerepel. 
+
+Azt is vegye figyelembe, hogy a különböző Azure-beli tárolási típusok befolyásolják a virtuális gépek rendelkezésre állási SLA-ra vonatkozó SLA-kat [Virtual Machines esetén](https://azure.microsoft.com/support/legal/sla/virtual-machines).
 
 ### <a name="azure-managed-disks"></a>Azure Managed Disks
 
@@ -131,7 +133,6 @@ Az ilyen típusú tárolók az adatbázis-kezelői munkaterheléseket célozzák
 - A tároló I/O-átviteli sebessége nem lineáris a lemez kategóriájának méretével. Kisebb lemezek esetében, mint például a 65 GiB és a 128 GiB kapacitás közötti kategória, az átviteli sebesség körülbelül 780KB/GiB. Míg a nagy méretű lemezek, például egy 32 767 GiB-lemez esetében az átviteli sebesség a 28KB/GiB közelében van
 - A IOPS és az adatátviteli SLA-kat nem lehet módosítani a lemez kapacitásának módosítása nélkül
 
-Az Azure-ban a 99,9%-os, az Azure Premium Storage vagy az Azure Ultra Disk Storage használatára vonatkozó, egypéldányos VM SLA-val rendelkezik. Az SLA-t a [Virtual Machines SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)-ban dokumentáljuk. Ahhoz, hogy megfeleljen ennek az egyetlen virtuálisgép-szolgáltatói szerződésnek, az alapszintű VHD-lemeznek, valamint az **összes** csatlakoztatott lemeznek az Azure Premium Storage vagy az Azure Ultra Disk Storage szolgáltatásnak kell lennie.
 
 Az SAP számítási funkciói mátrixa a következőhöz hasonlóan néz ki:
 
