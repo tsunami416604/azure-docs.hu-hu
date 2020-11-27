@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Az arc-kompatibilis Kubernetes-fürtökkel kapcsolatos gyakori problémák elhárítása.
 keywords: Kubernetes, arc, Azure, tárolók
-ms.openlocfilehash: 4a8f4c652f1ab73e0b9979f77d7de5014c8d31a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e05701b92d2d96074a07e0e61ce65145a1d9dfd
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540608"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302411"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting-preview"></a>Azure arc-kompatibilis Kubernetes-hibaelhárítás (előzetes verzió)
 
@@ -69,7 +69,7 @@ pod/metrics-agent-58b765c8db-n5l7k              2/2     Running  0       16h
 pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
 ```
 
-Az összes hüvelynek a következőnek kell lennie:, és legyen az `STATUS` `Running` vagy a `READY` `3/3` `2/2` . Naplók beolvasása és a visszaadott vagy a hüvelyek leírása `Error` `CrashLoopBackOff` . Ha az ilyen hüvelyek bármelyike állapota beragadt, annak `Pending` oka az lehet, hogy nincs elegendő erőforrás a fürtcsomópontokon. [A fürt vertikális Felskálázása](https://kubernetes.io/docs/tasks/administer-cluster/cluster-management/#resizing-a-cluster) ezeket a hüvelyeket az állapotba való áttérésre fogja kérni `Running` .
+Az összes hüvelynek a következőnek kell lennie:, és legyen az `STATUS` `Running` vagy a `READY` `3/3` `2/2` . Naplók beolvasása és a visszaadott vagy a hüvelyek leírása `Error` `CrashLoopBackOff` . Ha az ilyen hüvelyek bármelyike állapota beragadt, annak `Pending` oka az lehet, hogy nincs elegendő erőforrás a fürtcsomópontokon. [A fürt vertikális Felskálázása](https://kubernetes.io/docs/tasks/administer-cluster/) ezeket a hüvelyeket az állapotba való áttérésre fogja kérni `Running` .
 
 ## <a name="connecting-kubernetes-clusters-to-azure-arc"></a>Kubernetes-fürtök csatlakoztatása az Azure arc-hoz
 

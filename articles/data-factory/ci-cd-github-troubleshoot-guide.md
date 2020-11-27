@@ -7,21 +7,21 @@ ms.reviewer: susabat
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: troubleshooting
-ms.date: 11/26/2020
-ms.openlocfilehash: f07cc8e3d5e9d6f59671a3c8c2efd9f5fb9f27b7
-ms.sourcegitcommit: 236014c3274b31f03e5fcee5de510f9cacdc27a0
+ms.date: 11/27/2020
+ms.openlocfilehash: e0b4b31a1d732cbd5cbfaa9b6e5e021caa3adf01
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96299056"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301954"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>A CI-CD-k, az Azure DevOps és a GitHub-problémák hibaelhárítása Az ADF-ben 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Ez a cikk a CI-CD, az Azure DevOps és a GitHub-problémák általános hibaelhárítási módszereit ismerteti Azure Data Factoryban.
+Ez a cikk a folyamatos Integration-Continuous üzembe helyezés (CI-CD), az Azure DevOps és a GitHub-problémák gyakori hibaelhárítási módszereit ismerteti Azure Data Factoryokban.
 
-Ha kérdése van vagy probléma merül fel a verziókövetés vagy a DevOps technikák használatával, itt talál néhány cikket, amely hasznosnak bizonyulhat:
+Ha kérdése van vagy probléma merül fel a verziókövetés vagy a DevOps technikák használatával, itt talál néhány cikket, amely hasznos lehet:
 
 - Tekintse meg az [ADF forrás-vezérlőelemét](source-control.md) , amelyből megtudhatja, hogyan gyakorolja a VERZIÓKÖVETÉS az ADF-ben. 
 - Ha többet szeretne megtudni arról, hogy az DevOps CI-CD-je hogyan legyen az ADF-ben, tekintse meg a  [CI-CD in ADF című részt](continuous-integration-deployment.md) .
@@ -151,16 +151,12 @@ Felhasználóként létrehozott egy felhasználói szerepkört, és nem rendelke
 
 A probléma megoldásához hozzá kell adnia a következő engedélyeket a szerepkörhöz: *Microsoft. DataFactory/Factorys/queryFeaturesValue/Action*. Ezt az engedélyt alapértelmezés szerint a "Data Factory közreműködő" szerepkörbe kell foglalni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A hibaelhárítással kapcsolatos további segítségért próbálkozzon a következő erőforrásokkal:
 
 *  [Data Factory blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory szolgáltatásra vonatkozó kérelmek](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure-videók](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
-*  [Microsoft Q&egy kérdés oldal](/answers/topics/azure-data-factory.html)
 *  [Stack túlfolyó fórum a Data Factory](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Twitter-információk a Data Factory](https://twitter.com/hashtag/DataFactory)
-
-
- 

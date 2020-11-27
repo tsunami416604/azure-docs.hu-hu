@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan futtathatja a VMware virtuális gépek ügynök
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: ffdbdba0aeae33b04195c5a6bf6aeaff5658424b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 437dbce1c577b5d837ad0c70e8e8865ba59cf9e6
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012237"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302757"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware virtuális gépek migrálása az Azure-ba (ügynök-alapú)
 
@@ -134,35 +134,6 @@ Győződjön meg arról, hogy a VMware-kiszolgálók és a virtuális gépek meg
 > [!NOTE]
 > Az ügynök-alapú áttelepítés Azure Migrate kiszolgáló áttelepítésével a Azure Site Recovery szolgáltatás szolgáltatásain alapul. Néhány követelmény Site Recovery dokumentációra mutató hivatkozásokat is tartalmazhat.
 
-
-
-## <a name="add-the-azure-migrateserver-migration-tool"></a>Adja hozzá a Azure Migrate: Server áttelepítési eszközt
-
-Ha még nem rendelkezik Azure Migrate-projekttel, [állítsa be](how-to-add-tool-first-time.md) most, és adja hozzá a kiszolgáló áttelepítési eszközét.
-
-Ha van projektje, adja hozzá az eszközt az alábbiak szerint:
-
-1. Az Azure Portal > **Minden szolgáltatás** területén keressen az **Azure Migrate** szolgáltatásra.
-2. A **Szolgáltatások** területen válassza az **Azure Migrate** lehetőséget.
-
-    ![Azure Migrate beállítása](./media/tutorial-migrate-vmware-agent/azure-migrate-search.png)
-
-3. Az **Áttekintés** területen kattintson a **Kiszolgálók értékelése és migrálása** lehetőségre.
-4. A **kiszolgálók felderítése, felmérése és migrálása** területen kattintson a **kiszolgálók felmérése és migrálása** elemre.
-
-    ![Kiszolgálók felderítése és kiértékelése](./media/tutorial-migrate-vmware-agent/assess-migrate.png)
-
-1. A **Kiszolgálók felderítése, értékelése és migrálása** területen kattintson az **Eszközök hozzáadása** lehetőségre.
-2. A **Projekt migrálása** területen válassza ki az Azure-előfizetését, majd hozzon létre egy erőforráscsoportot, ha még nem rendelkezik eggyel.
-3. A **Projekt részletei** területen adja meg a projekt nevét és a földrajzi területet, ahol létre szeretné hozni a projektet, majd kattintson a **Következő** gombra. Tekintse át a nyilvános és a [kormányzati felhők](migrate-support-matrix.md#supported-geographies-azure-government)támogatott földrajzi [területeit](migrate-support-matrix.md#supported-geographies-public-cloud) .
-
-    ![Azure Migrate-projekt létrehozása](./media/tutorial-migrate-vmware-agent/migrate-project.png)
-
-
-4. Az **Értékelési eszköz kiválasztása** területen válassza **Az értékelési eszköz hozzáadásának mellőzése egyelőre** > **Tovább** lehetőséget.
-5. A **Migrálási eszköz kiválasztása** területen válassza az **Azure Migrate: Kiszolgáló migrálása** > **Tovább** lehetőséget.
-6. Az **Áttekintés + eszközök hozzáadása** területen ellenőrizze a beállításokat, majd kattintson az **Eszközök hozzáadása** lehetőségre.
-7. Az eszköz hozzáadása után megjelenik a Azure Migrate Project > **Servers**  >  **áttelepítési eszközök** területen.
 
 ## <a name="set-up-the-replication-appliance"></a>A replikációs berendezés beállítása
 

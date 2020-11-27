@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/17/2020
 ms.author: inhenkel
-ms.openlocfilehash: 6085f34c46ab39012500cd42cd8392e65776f773
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: f15e2553ec3f3beed4dae809cc6c37f01837a40c
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94739808"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302909"
 ---
 # <a name="playing-your-content-with-existing-players"></a>A tartalom lejátszása meglévő lejátszókkal
 
@@ -54,7 +54,7 @@ A következő formátumok bármelyikében használhatja a [Azure Media Player](h
 
 ### <a name="dash-players"></a>DASH-lejátszók
 
-[Dash-lejátszó](https://dashplayer.azurewebsites.net)
+[Dash-lejátszó](http://players.akamai.com/players/dashjs)
 
 [https://dashif.org](https://dashif.org)
 

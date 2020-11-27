@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 11/22/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: b9bcdbdf8bdad0d1ad96fc043f29a84b962318c2
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 9f443b15cd427dd31c2ffa95af8d1124f1169881
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95324025"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302649"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Gyors útmutató: nyilvános terheléselosztó létrehozása a virtuális gépek terheléselosztásához Azure PowerShell használatával
 
@@ -618,7 +618,7 @@ Ebben a szakaszban a terheléselosztó háttér-készletéhez tartozó virtuáli
 
 * Hozzon létre három hálózati adaptert a [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface).
 
-* Állítsa be a virtuális gépek rendszergazdai felhasználónevét és jelszavát a [Get-hitelesítő adatokkal](/powershell/reference/5.1/microsoft.powershell.security/Get-Credential).
+* Állítsa be a virtuális gépek rendszergazdai felhasználónevét és jelszavát a [Get-hitelesítő adatokkal](/powershell/module/microsoft.powershell.security/get-credential).
 
 * A [New-AzAvailabilitySet](/powershell/module/az.compute/new-azvm) használatával hozzon létre egy rendelkezésre állási készletet a virtuális gépek számára.
 
@@ -786,7 +786,7 @@ Remove-AzResourceGroup -Name 'CreatePubLBQS-rg'
 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban
 

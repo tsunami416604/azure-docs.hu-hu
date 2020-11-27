@@ -8,12 +8,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 11/20/2020
 ms.author: victorh
-ms.openlocfilehash: f164418c29e9838928f3d03519342ebef40e16e7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: b14bd60ab744be5a1735abc073f32f8ebc3e1ab1
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015697"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301713"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules-on-application-gateway"></a>Webalkalmazási tűzfal v2 egyéni szabályainak létrehozása és használata Application Gateway
 
@@ -21,7 +21,7 @@ Az Azure Application Gateway webalkalmazási tűzfal (WAF) v2 szolgáltatása v�
 
 Ez a cikk néhány példát mutat be a v2-WAF létrehozásához és használatához használható egyéni szabályokról. Ha szeretné megtudni, hogyan helyezhet üzembe egy WAF egyéni szabállyal Azure PowerShell használatával, tekintse meg a [webalkalmazási tűzfal egyéni szabályainak konfigurálása a Azure PowerShell használatával](configure-waf-custom-rules.md)című témakört.
 
-A cikkben látható JSON-kódrészletek egy [ApplicationGatewayWebApplicationFirewallPolicies](/templates/microsoft.network/applicationgatewaywebapplicationfirewallpolicies) -erőforrásból származnak.
+A cikkben látható JSON-kódrészletek egy [ApplicationGatewayWebApplicationFirewallPolicies](/azure/templates/microsoft.network/applicationgatewaywebapplicationfirewallpolicies) -erőforrásból származnak.
 
 >[!NOTE]
 > Ha az Application Gateway nem a WAF szintet használja, akkor a jobb oldali ablaktáblán megjelenik az Application Gateway WAF szintre való frissítésének lehetősége.

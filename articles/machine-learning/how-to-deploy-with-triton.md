@@ -11,12 +11,12 @@ ms.date: 09/23/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy, devx-track-azurecli
-ms.openlocfilehash: cfa40332c45eac23d062b83bb789c25f1906ae24
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8e479367a04e105ae2111ce66707999aff7ef960
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94831633"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302455"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Nagy teljesítményű kiszolgálás a Triton inferenc Serverrel (előzetes verzió) 
 
@@ -53,7 +53,7 @@ Mielőtt a Tritont a saját modelljére próbálja használni, fontos tisztában
 
 ### <a name="setting-the-number-of-workers"></a>A feldolgozók számának beállítása
 
-Az üzemelő példányban lévő feldolgozók számának beállításához állítsa be a környezeti változót `WORKER_COUNT` . Ha van egy nevű [környezeti](https://docs.microsoft.compython/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) objektum `env` , a következőket teheti:
+Az üzemelő példányban lévő feldolgozók számának beállításához állítsa be a környezeti változót `WORKER_COUNT` . Ha van egy nevű [környezeti](/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) objektum `env` , a következőket teheti:
 
 ```{py}
 env.environment_variables["WORKER_COUNT"] = "1"
@@ -320,7 +320,7 @@ az ml service delete -n triton-densenet-onnx
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Lásd: a Triton végpontok közötti mintái Azure Machine Learning](https://aka.ms/aml-triton-sample)
 * Ismerje meg a [Triton-ügyfelek példáit](https://github.com/triton-inference-server/server/tree/master/src/clients/python/examples)

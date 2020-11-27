@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: b9966d4d9ab0a37f5484ec9eb9b7e2472a6b41dc
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: a7fdb370847e72657829d53df019203b0a5b211b
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95012905"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302566"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Megerősítő tanulás (előzetes verzió) Azure Machine Learning
 
@@ -117,7 +117,7 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 ### <a name="specify-a-virtual-network"></a>Virtuális hálózat meghatározása
 
-A több számítási célt használó RL-feladatok esetében olyan nyitott portokkal rendelkező virtuális hálózatot kell megadnia, amelyek lehetővé teszik a munkavégző csomópontok és a fő csomópontok közötti kommunikációt. A virtuális hálózat bármely erőforráscsoporthoz tartozhat, de a munkaterület munkaterületének azonos régiójában kell lennie. A virtuális hálózat beállításával kapcsolatos további információkért tekintse meg a [munkaterület telepítő notebookját](https://aka.ms/azure-rl-env-setup) , amely az előfeltételek szakaszban található. Itt adhatja meg az erőforráscsoport virtuális hálózatának nevét.
+A több számítási célt használó RL-feladatok esetében olyan nyitott portokkal rendelkező virtuális hálózatot kell megadnia, amelyek lehetővé teszik a munkavégző csomópontok és a fő csomópontok közötti kommunikációt. A virtuális hálózat bármely erőforráscsoporthoz tartozhat, de a munkaterület munkaterületének azonos régiójában kell lennie. A virtuális hálózat beállításával kapcsolatos további információkért tekintse meg a munkaterület telepítő notebookját, amely az előfeltételek szakaszban található. Itt adhatja meg az erőforráscsoport virtuális hálózatának nevét.
 
 ```python
 vnet = 'your_vnet'
@@ -431,6 +431,6 @@ Ha a gyermek által futtatott naplókat böngészi, láthatja driver_log.txt fá
 
 Rövid idő alatt több számítási erőforrást is megtanult a megerősítő tanulási ügynök betanítására, hogy nagyon jól játszhasson.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan taníthat meg egy megerősítéses oktatási ügynököt egy IMPALA learning-ügynök használatával. Ha további példákat szeretne látni, ugorjon a [Azure Machine learning megerősítése learning GitHub-tárházra](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/reinforcement-learning/README.md).

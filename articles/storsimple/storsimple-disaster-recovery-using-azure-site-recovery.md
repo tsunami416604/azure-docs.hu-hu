@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
-ms.openlocfilehash: 6d98f1a1dfb575f4af8b666d173f9354b5eeac6b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: e2d89718d953f05b3e5500db412ac8ac03bfa00b
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966241"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301950"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Automatikus vész-helyreállítási megoldás a StorSimple-on üzemeltetett fájlmegosztás Azure Site Recovery használatával
 
@@ -44,7 +44,7 @@ A StorSimple-tárolón üzemeltetett fájlmegosztás Azure Site Recovery haszná
    - Helyszíni StorSimple az Azure StorSimple Managerrel regisztrálva
    - StorSimple Cloud Appliance létrehozva az Azure StorSimple Managerben. A készülék leállítási állapotban is tarthat.
    - A StorSimple tároló eszközön konfigurált köteteken tárolt fájlmegosztás
-   - Microsoft Azure-előfizetésben létrehozott [Azure site Recovery Services](/azure/storsimple/hyper-v-vmm-disaster-recovery) -tároló
+   - Microsoft Azure-előfizetésben létrehozott [Azure site Recovery Services](/azure/site-recovery/hyper-v-vmm-azure-tutorial) -tároló
 
 Továbbá, ha az Azure a helyreállítási hely, futtassa az [Azure Virtual Machine Readiness Assessment eszközt a virtuális](https://azure.microsoft.com/downloads/vm-readiness-assessment/) gépeken, és győződjön meg arról, hogy kompatibilisek az Azure-beli virtuális gépekkel és a Azure site Recovery szolgáltatásokkal.
 
@@ -112,7 +112,7 @@ Ehhez a lépéshez elő kell készítenie a helyszíni fájlkiszolgáló környe
    1. A fájl-és tárolási szolgáltatások szerepkör használatával fájlmegosztás hozható létre ezeken a köteteken.
 
 #### <a name="to-create-and-prepare-an-azure-site-recovery-vault"></a>Azure Site Recovery-tároló létrehozása és előkészítése
-A fájlkiszolgáló virtuális gép védelmének megkezdése előtt tekintse meg a [Azure site Recovery dokumentációját](/azure/storsimple/hyper-v-azure-tutorial) Azure site Recovery.
+A fájlkiszolgáló virtuális gép védelmének megkezdése előtt tekintse meg a [Azure site Recovery dokumentációját](/azure/site-recovery/) Azure site Recovery.
 
 #### <a name="to-enable-protection"></a>A védelem engedélyezése
 1. Válassza le az iSCSI-tároló (ka) t a Azure Site Recovery segítségével védelemmel ellátni kívánt helyszíni virtuális gépekről:
@@ -124,7 +124,7 @@ A fájlkiszolgáló virtuális gép védelmének megkezdése előtt tekintse meg
    > [!NOTE]
    > Ez azt eredményezi, hogy a fájlmegosztás átmenetileg elérhetetlenné válik.
    
-1. [Engedélyezze a Fájlkiszolgálói virtuális gép virtuálisgép-védelmét](/azure/storsimple/hyper-v-azure-tutorial) a Azure site Recovery portálról.
+1. [Engedélyezze a Fájlkiszolgálói virtuális gép virtuálisgép-védelmét](/azure/site-recovery/hyper-v-azure-tutorial) a Azure site Recovery portálról.
 1. A kezdeti szinkronizálás megkezdésekor újra csatlakozhat a célhelyhez. Nyissa meg az iSCSI-kezdeményezőt, válassza ki a StorSimple eszközt, és kattintson a **Kapcsolódás** lehetőségre.
 1. Ha a szinkronizálás befejeződött, és a virtuális gép állapota **védett**, válassza ki a virtuális gépet, válassza a **configure (Konfigurálás** ) lapot, és ennek megfelelően frissítse a virtuális gép hálózatát (ez az a hálózat, amelyre a feladatátvételt végző virtuális gép (ek) a része lesz). Ha a hálózat nem jelenik meg, az azt jelenti, hogy a szinkronizálás továbbra is folyamatban van.
 
@@ -361,5 +361,5 @@ A kapacitás megtervezése legalább két fontos folyamatból tevődik fel:
   > Futtassa újra a helyreállítási tervet a készülék feladatátvételének befejeződése után.
 
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 A Azure Site Recovery használatával létrehozhat egy teljes automatikus vész-helyreállítási tervet egy olyan fájlkiszolgáló virtuális géphez, amely a StorSimple-tárolón üzemeltetett fájlmegosztást tárolja. A feladatátvételt másodpercek alatt elindíthatja bárhonnan, megszakítás esetén, és néhány percen belül üzembe helyezheti és futtathatja az alkalmazást.

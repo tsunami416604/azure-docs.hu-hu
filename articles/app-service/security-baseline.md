@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 5b9c41209902e384988064207bb3e1ded1c47477
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 691bb538ea0f46e26c318a68e9f66a9a986eb5d4
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182954"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301835"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>App Service Azure biztonsági alapterve
 
@@ -168,7 +168,7 @@ További információkért tekintse át a hivatkozott hivatkozásokat.
 
 - [Végpontok közötti TLS konfigurálása Application Gateway használatával a portálon](../application-gateway/end-to-end-ssl-portal.md)
 
-- [A következő témakörben leírtak szerint biztosítsa a beApp Serviceának zárolását:](https://review.docs.microsoft.com/azure/app-service/environment/firewall-integrationEnvironment:)
+- [A következő témakörben leírtak szerint biztosítsa a beApp Serviceának zárolását:](/azure/app-service/environment/firewall-integration)
 
 **Az Azure Security Center monitorozása**: Igen
 
@@ -205,7 +205,7 @@ További információkért tekintse át a hivatkozott hivatkozásokat.
 
 - [Végpontok közötti TLS konfigurálása Application Gateway használatával a portálon](../application-gateway/end-to-end-ssl-portal.md)
 
-- [A következő témakörben leírtak szerint biztosítsa a beApp Serviceának zárolását:](https://review.docs.microsoft.com/azure/app-service/environment/firewall-integrationEnvironment:)
+- [A következő témakörben leírtak szerint biztosítsa a beApp Serviceának zárolását:](/azure/app-service/environment/firewall-integration)
 
 **Az Azure Security Center monitorozása**: Nem alkalmazható
 
@@ -221,7 +221,7 @@ Alkalmazza a címkézési hatásokkal kapcsolatos beépített Azure Policy defin
 
 - [Címkék létrehozása és használata](../azure-resource-manager/management/tag-resources.md)
 
-- [Hozzáférési korlátozások Azure App Service](/azure/app-service/app-service-ip-restriction)
+- [Hozzáférési korlátozások Azure App Service](/azure/app-service/app-service-ip-restrictions)
 
 **Az Azure Security Center monitorozása**: Nem alkalmazható
 
@@ -1147,7 +1147,7 @@ A Microsoft által felügyelt felhő-infrastruktúrával,-szolgáltatásokkal é
 
 **Felelősség**: Megosztott
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../security/benchmarks/overview.md)
 - További tudnivalók az [Azure biztonsági alapkonfigurációiról](../security/benchmarks/security-baselines-overview.md)

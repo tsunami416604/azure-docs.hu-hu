@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 61dc3b9376737f89643473dffc3c915d3e0d9c44
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a885f027250a915347fea758c7c7978af0f45f49
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183447"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302525"
 ---
 # <a name="azure-security-baseline-for-azure-app-configuration"></a>Azure-beli biztonsági alaptervek az Azure-alkalmazások konfigurálásához
 
@@ -94,7 +94,7 @@ Megjegyzés: Ha az AZONOSÍTÓk/IP-címek használatára vonatkozó előírás v
 
 - [Az Azure Marketplace harmadik féltől származó azonosító képességeket is tartalmaz](https://azuremarketplace.microsoft.com/marketplace?search=IDS)
 
-- [Microsoft Defender ATP EDR-képesség](/windows/security/threat-protection/microsoft-defender-atp/overviewendpoint-detection-response)
+- [Microsoft Defender ATP EDR-képesség](/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)
 
 **Az Azure Security Center monitorozása**: Nem alkalmazható
 
@@ -327,7 +327,7 @@ Megjegyzés: a felügyelt identitásokat akkor javasoljuk, ha az alkalmazások k
 
 - [Azure-beli erőforrás-szerepkörök hozzáférési felülvizsgálatának létrehozása Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-resource-roles-start-access-review.md) 
 
-- [Az Azure AD identitás- és hozzáférési felülvizsgálatainak használata](/azure/active-directory/governance/access-reviews-overvie)
+- [Az Azure AD identitás- és hozzáférési felülvizsgálatainak használata](/azure/active-directory/governance/access-reviews-overview)
 
 - [Hozzáférés engedélyezése az Azure app Configuration szolgáltatáshoz az Azure AD használatával](concept-enable-rbac.md)
 
@@ -477,7 +477,7 @@ Az Azure alapértelmezés szerint biztosítja a REST-titkosítást. A szigorúan
 
 ## <a name="asset-management"></a>Asset Management (Eszközkezelés)
 
-*További információért lásd: [Az Azure biztonsági teljesítménytesztje: eszközkezelés](../security/benchmarks/security-controls-v2-asset-management.md).*
+*További információért lásd: [Az Azure biztonsági teljesítménytesztje: eszközkezelés](/azure/security/benchmarks/security-controls-v2-asset-management).*
 
 ### <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1: Gondoskodás arról, hogy a biztonsági csapat átlássa az adategységek kockázatait
 
@@ -553,7 +553,7 @@ Távolítsa el az Azure-erőforrásokat, ha már nincs rájuk szükség. Győző
 
 ## <a name="logging-and-threat-detection"></a>Naplózás és fenyegetésészlelés
 
-*További információért lásd: [Az Azure biztonsági teljesítménytesztje: Naplózás és fenyegetésészlelés](/azure/security/benchmarks/security-controls-v2-logging-threat-protection).*
+*További információért lásd: [Az Azure biztonsági teljesítménytesztje: Naplózás és fenyegetésészlelés](/azure/security/benchmarks/security-controls-v2-logging-threat-detection).*
 
 ### <a name="lt-2-enable-threat-detection-for-azure-identity-and-access-management"></a>LT-2: Fenyegetésészlelés engedélyezése az Azure-beli identitás- és hozzáférés-kezeléshez
 
@@ -746,7 +746,7 @@ Emellett a címkék használatával megjelölheti az erőforrásokat, és létre
 
 ## <a name="posture-and-vulnerability-management"></a>Állapot- és biztonságirés-kezelés
 
-*További információért lásd: [Az Azure biztonsági teljesítménytesztje: Állapot- és biztonságirés-kezelés](/azure/security/benchmarks/security-controls-v2-vulnerability-management).*
+*További információért lásd: [Az Azure biztonsági teljesítménytesztje: Állapot- és biztonságirés-kezelés](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management).*
 
 ### <a name="pv-1-establish-secure-configurations-for-azure-services"></a>PV-1: biztonságos konfigurációk létrehozása az Azure-szolgáltatásokhoz 
 
@@ -846,9 +846,9 @@ További információkért tekintse meg az alábbi hivatkozásokat:
 
 - [Felhőbevezetési keretrendszer – Az Azure adatbiztonsággal és titkosítással kapcsolatos ajánlott eljárásai](../security/fundamentals/data-encryption-best-practices.md?amp;bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json)
 
-- [Azure-biztonsági teljesítményteszt – Objektumkezelés](/azure/security/benchmarks/security-benchmark-v2-asset-management)
+- [Azure-biztonsági teljesítményteszt – Objektumkezelés](/azure/security/benchmarks/security-controls-v2-asset-management)
 
-- [Azure-biztonsági teljesítményteszt – Adatvédelem](/azure/security/benchmarks/security-benchmark-v2-data-protection)
+- [Azure-biztonsági teljesítményteszt – Adatvédelem](/azure/security/benchmarks/security-controls-v2-data-protection)
 
 **Az Azure Security Center monitorozása**: Nem alkalmazható
 
@@ -876,7 +876,7 @@ Győződjön meg arról, hogy a szegmentálási stratégia következetesen van i
 
 **Útmutató**: Folyamatosan mérje fel és mérsékelje az egyes objektumok és az ezeket tartalmazó környezetek kockázatait. Priorizálja a nagy értékű objektumokat és a támadásoknak nagy mértékben kitett felületeket, például a közzétett alkalmazásokat, a hálózat bemeneti és kimeneti pontjait és a felhasználói és rendszergazdai végpontokat.
 
-- [Azure-biztonsági teljesítményteszt – Állapot- és biztonságirés-kezelés](/azure/security/benchmarks/security-benchmark-v2-posture-vulnerability-management)
+- [Azure-biztonsági teljesítményteszt – Állapot- és biztonságirés-kezelés](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
 
 **Az Azure Security Center monitorozása**: Nem alkalmazható
 
@@ -917,7 +917,7 @@ Ennek a stratégiának tartalmaznia kell az alábbi elemek dokumentált útmutat
 További információkért tekintse meg az alábbi hivatkozásokat:
 - [Az Azure ajánlott biztonsági eljárásai 11 – Architektúra. Egyetlen, egységes biztonsági stratégia](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
-- [Azure-biztonsági teljesítményteszt – Hálózati biztonság](/azure/security/benchmarks/security-benchmark-v2-network-security)
+- [Azure-biztonsági teljesítményteszt – Hálózati biztonság](/azure/security/benchmarks/security-controls-v2-network-security)
 
 - [Az Azure-hálózat biztonsági áttekintése](../security/fundamentals/network-overview.md)
 
@@ -945,9 +945,9 @@ Ennek a stratégiának tartalmaznia kell az alábbi elemek dokumentált útmutat
 
 További információkért tekintse meg az alábbi hivatkozásokat:
 
-- [Azure-biztonsági teljesítményteszt – Identitáskezelés](/azure/security/benchmarks/security-benchmark-v2-identity-management)
+- [Azure-biztonsági teljesítményteszt – Identitáskezelés](/azure/security/benchmarks/security-controls-v2-identity-management)
 
-- [Azure-biztonsági teljesítményteszt – Emelt szintű hozzáférés](/azure/security/benchmarks/security-benchmark-v2-privileged-access)
+- [Azure-biztonsági teljesítményteszt – Emelt szintű hozzáférés](/azure/security/benchmarks/security-controls-v2-privileged-access)
 
 - [Az Azure ajánlott biztonsági eljárásai 11 – Architektúra. Egyetlen, egységes biztonsági stratégia](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy)
 
@@ -979,9 +979,9 @@ Ennek a stratégiának tartalmaznia kell az alábbi elemek dokumentált útmutat
 
 További információkért tekintse meg az alábbi hivatkozásokat:
 
-- [Azure-biztonsági teljesítményteszt – Naplózás és fenyegetésészlelés](/azure/security/benchmarks/security-benchmark-v2-logging-threat-detection)
+- [Azure-biztonsági teljesítményteszt – Naplózás és fenyegetésészlelés](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
 
-- [Azure-biztonsági teljesítményteszt – Incidensmegoldás](/azure/security/benchmarks/security-benchmark-v2-incident-response)
+- [Azure-biztonsági teljesítményteszt – Incidensmegoldás](/azure/security/benchmarks/security-controls-v2-incident-response)
 
 - [Az Azure ajánlott biztonsági eljárásai 4 – Folyamat. A felhőre vonatkozó incidensmegoldási folyamatok frissítése](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 

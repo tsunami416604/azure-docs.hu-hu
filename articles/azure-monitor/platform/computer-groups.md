@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
-ms.openlocfilehash: 217be627f81406f671118d5290cd5f67f52c01d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92603165ac399415ec4fb6daeea1641065671a83
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86112112"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302925"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Számítógépcsoportok a Azure Monitor log lekérdezésekben
 A Azure Monitorban lévő számítógépcsoportok lehetővé teszik a [naplózási lekérdezések](../log-query/log-query-overview.md) hatókörét a számítógépek adott csoportjára.  Minden csoport a számítógépekkel együtt van feltöltve a megadott lekérdezés használatával vagy különböző forrásokból származó csoportok importálásával.  Ha a csoport egy napló lekérdezésében szerepel, az eredmények a csoport számítógépeinek megfelelő rekordokra korlátozódnak.
@@ -43,14 +43,14 @@ A következő eljárással hozhat létre számítógépcsoport-keresést a Azure
 1. A Azure Portal **Azure monitor** menüjében kattintson a **naplók** elemre.
 1. Hozzon létre és futtasson egy lekérdezést, amely visszaadja a csoportba felhasználandó számítógépeket.
 1. Kattintson a képernyő felső részén található **Mentés** gombra.
-1. Módosítsa a **Mentés másként** **funkciót** , és válassza a **lekérdezés mentése számítógépcsoportként**lehetőséget.
-1. Adja meg a táblázatban leírt számítógépcsoport minden tulajdonságának értékeit, majd kattintson a **Mentés**gombra.
+1. Módosítsa a **Mentés másként** **funkciót** , és válassza a **lekérdezés mentése számítógépcsoportként** lehetőséget.
+1. Adja meg a táblázatban leírt számítógépcsoport minden tulajdonságának értékeit, majd kattintson a **Mentés** gombra.
 
 A következő táblázat a számítógépcsoport definiálásának tulajdonságait ismerteti.
 
 | Tulajdonság | Leírás |
 |:---|:---|
-| Name (Név)   | A portálon megjelenítendő lekérdezés neve. |
+| Név   | A portálon megjelenítendő lekérdezés neve. |
 | Függvény aliasa | Egyedi alias, amely a számítógépcsoport azonosítására szolgál a lekérdezésben. |
 | Kategória       | A lekérdezéseknek a portálon való rendszerezésének kategóriája. |
 
@@ -61,7 +61,7 @@ Ha a Azure Monitor Active Directory csoporttagság importálására konfigurálj
 > [!NOTE]
 > Az importált Active Directory csoportok csak Windows rendszerű gépeket tartalmaznak.
 
-A Azure Monitor konfigurálható úgy, hogy Active Directory biztonsági csoportokat importáljon a Azure Portal Log Analytics munkaterületének **speciális beállításaiból** .  Válassza ki a **számítógépcsoportok**elemet, **Active Directory**, majd **importálja Active Directory csoporttagság a számítógépekről**.  Nincs szükség további konfigurációra.
+A Azure Monitor konfigurálható úgy, hogy Active Directory biztonsági csoportokat importáljon a Azure Portal Log Analytics munkaterületének **speciális beállításaiból** .  Válassza ki a **számítógépcsoportok** elemet, **Active Directory**, majd **importálja Active Directory csoporttagság a számítógépekről**.  Nincs szükség további konfigurációra.
 
 ![Számítógépcsoportok Active Directory](media/computer-groups/configure-activedirectory.png)
 
@@ -70,7 +70,7 @@ Ha a csoportok importálása megtörtént, a menü felsorolja a csoporttagság �
 ### <a name="windows-server-update-service"></a>Windows Server Update szolgáltatás
 Ha a WSUS-csoporttagságok importálását Azure Monitor konfigurálja, az elemzi a Log Analytics ügynökkel rendelkező számítógépek célcsoport-kezelési csoportjának tagságát.  Ha ügyféloldali célzást használ, a Azure Monitorhoz csatlakoztatott és a WSUS-célcsoportok részét képező bármely számítógép rendelkezik a csoporttagság importálásával Azure Monitor. Ha kiszolgálóoldali célzást használ, akkor a Log Analytics ügynököt a WSUS-kiszolgálóra kell telepíteni ahhoz, hogy a csoporttagság adatai Azure Monitorba legyenek importálva.  Ez a tagság 4 óránként folyamatosan frissül. 
 
-A Azure Monitor konfigurálható úgy, hogy a Azure Portal Log Analytics munkaterületének **speciális beállításaiból** importálja a WSUS-csoportokat.  Válassza ki a **számítógépcsoportok**, a **WSUS**, majd a **WSUS-csoporttagságok importálása**lehetőséget.  Nincs szükség további konfigurációra.
+A Azure Monitor konfigurálható úgy, hogy a Azure Portal Log Analytics munkaterületének **speciális beállításaiból** importálja a WSUS-csoportokat.  Válassza ki a **számítógépcsoportok**, a **WSUS**, majd a **WSUS-csoporttagságok importálása** lehetőséget.  Nincs szükség további konfigurációra.
 
 ![A WSUS-beli számítógépcsoportok](media/computer-groups/configure-wsus.png)
 
@@ -97,13 +97,13 @@ Kattintson az **Eltávolítás** oszlopban található **x** elemre a számító
 A lekérdezésekben egy, az alias függvényként való kezelésével létrehozott számítógépcsoportot használ, jellemzően a következő szintaxissal:
 
 ```kusto
-Table | where Computer in (ComputerGroup)`
+Table | where Computer in (ComputerGroup)
 ```
 
 Például az alábbi paranccsal adhat vissza updateSummary típusú-rekordokat csak a mycomputergroup nevű számítógépcsoport számítógépeihez.
 
 ```kusto
-UpdateSummary | where Computer in (mycomputergroup)`
+UpdateSummary | where Computer in (mycomputergroup)
 ```
 
 Az importált számítógépcsoportok és a hozzájuk tartozó számítógépek a **ComputerGroup** táblában tárolódnak.  Például a következő lekérdezés visszaküldi a tartományi számítógépek csoport számítógépeinek listáját Active Directoryból. 

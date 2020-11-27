@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 11/19/2020
 ms.author: alkohli
-ms.openlocfilehash: e1dca046177634842de25b255dd1bb22c5d2c5a5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: db97a34a79ac45525177a79a59a17426003aeab0
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964081"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302630"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Oktatóanyag: Az Azure Data Box megrendelése
 
@@ -217,7 +217,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
 
    ![Képernyőkép az új szakaszról Azure Data Box a keresőmezőbe](media/data-box-deploy-ordered/select-data-box-import-02.png)
 
-3. Kattintson a **Létrehozás** gombra.
+3. Válassza a **Létrehozás** lehetőséget.
 
    ![Képernyőkép az Azure Data Box szakasz létrehozási lehetőségével](media/data-box-deploy-ordered/select-data-box-import-03.png)
 
@@ -336,7 +336,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket a Azure Por
 
     A felhasználó által hozzárendelt felügyelt identitás egy önálló Azure-erőforrás, amely több erőforrás kezelésére is használható. További információ: [felügyelt identitások típusai](/azure/active-directory/managed-identities-azure-resources/overview).  
 
-    Ha új felügyelt identitást kell létrehoznia, kövesse a [szerepkörök létrehozása, listázása, törlése vagy hozzárendelése egy felhasználóhoz rendelt felügyelt identitáshoz című témakör útmutatását a Azure Portal használatával](/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal).
+    Ha új felügyelt identitást kell létrehoznia, kövesse a [szerepkörök létrehozása, listázása, törlése vagy hozzárendelése egy felhasználóhoz rendelt felügyelt identitáshoz című témakör útmutatását a Azure Portal használatával](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal).
     
     ![Felhasználói azonosító kiválasztása](./media/data-box-deploy-ordered/customer-managed-key-10.png)
 
@@ -903,7 +903,7 @@ PS C:\Windows>
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megismerte a Azure Data Box cikkeket, például a következőket:
 

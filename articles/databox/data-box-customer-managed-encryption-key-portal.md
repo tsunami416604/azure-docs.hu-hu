@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/19/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: cd9f4ad6b6831b2b15c09b37edc569b3f2d247f7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: f75907dc1fa079cebb3b80874090c658fd7b8174
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94958076"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302834"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>Ügyfél által felügyelt kulcsok használata Azure Key Vaultban Azure Data Box
 
@@ -103,7 +103,7 @@ Az alábbi lépéseket követve engedélyezheti az ügyfél által felügyelt ku
 
     ![Válassza ki a használni kívánt identitást](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-14.png)
 
-    Itt nem hozhat létre új felhasználói azonosítót. Ha szeretné megtudni, hogyan hozhat létre egyet, tekintse meg a [szerepkörök létrehozása, listázása, törlése vagy hozzárendelése egy felhasználóhoz rendelt felügyelt identitáshoz a Azure Portal használatával](/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)című témakört.
+    Itt nem hozhat létre új felhasználói azonosítót. Ha szeretné megtudni, hogyan hozhat létre egyet, tekintse meg a [szerepkörök létrehozása, listázása, törlése vagy hozzárendelése egy felhasználóhoz rendelt felügyelt identitáshoz a Azure Portal használatával](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)című témakört.
 
     A kiválasztott felhasználói identitás megjelenik a **titkosítási típus** beállításai között.
 
@@ -141,7 +141,7 @@ A jelenleg használt ügyfél által felügyelt kulcs kulcstartójának, kulcsá
 
     ![Titkosítási lehetőség választása – 2](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-17.png)
 
-4. Kattintson a **Mentés** gombra.
+4. Válassza a **Mentés** lehetőséget.
 
     ![Frissített titkosítási beállítások mentése – 1](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-17-a.png)
 
@@ -161,7 +161,7 @@ Az ügyfél által felügyelt kulcshoz való hozzáférés kezeléséhez haszná
 
      ![Az ügyfél által felügyelt kulcshoz hozzárendelt rendszerre való váltás lehetősége](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-19.png)
 
-3. Kattintson a **Mentés** gombra.
+3. Válassza a **Mentés** lehetőséget.
 
     ![Frissített titkosítási beállítások mentése – 2](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-17-a.png)
 
@@ -175,7 +175,7 @@ Ha az ügyfél által felügyelt kulcs használatával szeretné megváltoztatni
 
     ![A Data Box Orders-5 áttekintése képernyő](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-20.png)
 
-3. Kattintson a **Mentés** gombra.
+3. Válassza a **Mentés** lehetőséget.
 
     ![Microsoft által felügyelt kulcs frissített titkosítási beállításainak mentése](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-21.png)
 
@@ -199,7 +199,7 @@ Ha az ügyfél által felügyelt kulccsal kapcsolatos hibákat kap, a hibaelhár
 | SsemUserErrorKeyVaultBadRequestException | Egy ügyfél által felügyelt kulcs alkalmazva, de a kulcshoz való hozzáférés nem lett megadva vagy vissza lett vonva, vagy nem fér hozzá a Key vaulthoz, mert a tűzfal engedélyezve van. | Adja hozzá a Key vaulthoz kiválasztott identitást, hogy engedélyezze a hozzáférést az ügyfél által felügyelt kulcshoz. Ha a Key vaultban engedélyezve van a tűzfal, váltson át egy rendszerhez rendelt identitásra, majd vegyen fel egy ügyfél által felügyelt kulcsot. További információ: [a kulcs engedélyezése](#enable-key). |
 | Általános hiba  | A hitelesítő kulcs beolvasása sikertelen.| Ez egy általános hiba. A hiba megoldásához forduljon a Microsoft ügyfélszolgálatahoz, és határozza meg a következő lépéseket.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Mi az Azure Key Vault?](../key-vault/general/overview.md)
 - [Rövid útmutató: Titkos kulcs beállítása és lekérése az Azure Key Vaultból az Azure Portal használatával](../key-vault/secrets/quick-create-portal.md)

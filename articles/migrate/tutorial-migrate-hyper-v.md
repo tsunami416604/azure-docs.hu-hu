@@ -6,12 +6,12 @@ ms.date: 06/08/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 84f04d2f1f8c9b54a1f2a2a13cc97954ac5add90
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 038d0ec817d4f81371546e8d7aa4b48b299c8d98
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995318"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302550"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>A Hyper-V virtuális gépek migrálása az Azure-ba 
 
@@ -43,23 +43,9 @@ Az oktatóanyag elkezdése előtt:
 2. [Tekintse át](migrate-support-matrix-hyper-v-migration.md#hyper-v-host-requirements) A Hyper-V gazdagépre vonatkozó követelmények az áttelepítéshez, valamint azon Azure URL-címek, amelyekhez a Hyper-V-gazdagépek és-fürtök hozzáférhetnek a virtuális gépek migrál
 3. [Tekintse át](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms) az Azure-ba áttelepíteni kívánt Hyper-V virtuális gépekre vonatkozó követelményeket.
 4. Javasoljuk, hogy az Azure-ba való Migrálás előtt mérje fel a  [Hyper-V virtuális gépeket](tutorial-assess-hyper-v.md) , de nem kell.
+5. Lépjen a már létrehozott projekthez, vagy [hozzon létre egy új projektet](https://docs.microsoft.com/azure/migrate/create-manage-projects)
+6. Az Azure-fiók engedélyeinek ellenőrzése – az Azure-fióknak rendelkeznie kell a virtuális gép létrehozásához szükséges engedélyekkel, és írnia kell egy Azure-beli felügyelt lemezre.
 
-   
-## <a name="add-the-azure-migrateserver-migration-tool"></a>Adja hozzá a Azure Migrate: Server áttelepítési eszközt
-
-Adja hozzá a Azure Migrate: Server áttelepítési eszközt. Ha még nem rendelkezik Azure Migrate-projekttel [, hozzon létre](how-to-add-tool-first-time.md) egy Azure Migrate projekt létrehozását. A projekt létrehozásakor adja hozzá a Azure Migrate: Server áttelepítési eszközt.
-
-Ha beállított egy projektet, adja hozzá az eszközt az alábbiak szerint:
-
-1. A Azure Migrate projektben kattintson az **Áttekintés** elemre. 
-2. A **felderítési, felmérési és áttelepítési kiszolgálók** területen kattintson a **kiszolgálók felmérése és áttelepítése** elemre.
-3. Az **áttelepítési eszközök** területen válassza **a kattintson ide az áttelepítési eszköz hozzáadásához, amikor készen áll az** áttelepítésre.
-
-    ![Eszköz kiválasztása](./media/tutorial-migrate-hyper-v/select-migration-tool.png)
-
-4. Az eszközök listában válassza a **Azure Migrate: kiszolgáló áttelepítésének**  >  **hozzáadása eszközt**
-
-    ![Kiszolgálómigrálási eszköz](./media/tutorial-migrate-hyper-v/server-migration-tool.png)
 
 ## <a name="download-and-install-the-provider"></a>A szolgáltató letöltése és telepítése
 

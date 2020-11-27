@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: f62e746a189a14838227a40be3bca9d05553a642
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 877f589c19663503b9bb0b1627f1dffe0eba1a23
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635796"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302748"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wikispaces"></a>Oktatóanyag: Azure Active Directory integráció a Wikispaces
 
@@ -106,7 +106,7 @@ Az Azure AD egyszeri bejelentkezés Wikispaces való konfigurálásához hajtsa 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://session.wikispaces.net/<instancename>`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek lekéréséhez forduljon a Wikispaces ügyfélszolgálati [csapatához](https://www.wikispaces.com/site/help) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek lekéréséhez forduljon a Wikispaces ügyfélszolgálati [csapatához](https://wikispaces.psu.edu/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 5. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
@@ -124,13 +124,13 @@ Az Azure AD egyszeri bejelentkezés Wikispaces való konfigurálásához hajtsa 
 
 ### <a name="configure-wikispaces-single-sign-on"></a>Wikispaces egyetlen Sign-On konfigurálása
 
-Ha az egyszeri bejelentkezést szeretné konfigurálni a **Wikispaces** oldalon, el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portal a [Wikispaces támogatási csapatának](https://www.wikispaces.com/site/help). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Ha az egyszeri bejelentkezést szeretné konfigurálni a **Wikispaces** oldalon, el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portal a [Wikispaces támogatási csapatának](https://wikispaces.psu.edu/). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók** , majd a **minden felhasználó** lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -148,7 +148,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -184,7 +184,7 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a Wikispaces, a Wikispac
 
 1. Jelentkezzen be a **Wikispaces** vállalati webhelyre rendszergazdaként.
 
-2. Ugrás a **tagokhoz** .
+2. Ugrás a **tagokhoz**.
    
     ![Tagok](./media/wikispaces-tutorial/ic787193.png "Tagok")
 

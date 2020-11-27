@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/19/2019
 ms.author: jeedes
-ms.openlocfilehash: b451e1645061d2de1758bf02ff0f59c07a43158e
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 0264baf6a8ff107c4a3aa811b9e8639352dca782
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457520"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301809"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-endpoint-backup"></a>Oktatóanyag: Azure Active Directory integráció az automatikus feladat-végpont biztonsági mentésével
 
@@ -67,7 +67,7 @@ Az automatikus feladat-végpont biztonsági mentésének az Azure AD-be való in
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli az automatikus feladat-végpont biztonsági mentésével a **Britta Simon**nevű teszt felhasználó alapján.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja és teszteli az automatikus feladat-végpont biztonsági mentésével a **Britta Simon** nevű teszt felhasználó alapján.
 Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és az automatikus feladat-végpont biztonsági mentésében szereplő kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés automatikus feladat-végponti biztonsági mentéssel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
@@ -85,7 +85,7 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 Az Azure AD egyszeri bejelentkezés automatikus feladat-végponti biztonsági mentéssel való konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Az [Azure Portal](https://portal.azure.com/)az automatikus feladat- **végpont biztonsági mentése** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az [Azure Portal](https://portal.azure.com/)az automatikus feladat- **végpont biztonsági mentése** alkalmazás-integráció lapon válassza az **egyszeri bejelentkezés** lehetőséget.
 
     ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
@@ -106,7 +106,7 @@ Az Azure AD egyszeri bejelentkezés automatikus feladat-végponti biztonsági me
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<subdomain>.backup.autotask.net/singlesignon/saml/SSO`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Az értékek megszerzéséhez lépjen kapcsolatba az automatikus [feladat-végpont biztonsági mentési ügyfelének ügyfélszolgálatával](https://backup.autotask.net/help/Content/0_HOME/_AutotaskCustomerSupport.htm) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Az értékek megszerzéséhez lépjen kapcsolatba az automatikus [feladat-végpont biztonsági mentési ügyfelének ügyfélszolgálatával](https://backup.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 5. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
@@ -124,13 +124,13 @@ Az Azure AD egyszeri bejelentkezés automatikus feladat-végponti biztonsági me
 
 ### <a name="configure-autotask-endpoint-backup-single-sign-on"></a>Az automatikus feladat-végpont biztonsági mentésének konfigurálása Sign-On
 
-Az egyszeri bejelentkezés automatikus **feladat-végponton történő biztonsági mentésének** konfigurálásához el kell küldenie a letöltött **összevonási METAADATOKat tartalmazó XML** -fájlt és a megfelelő másolt url-címeket a Azure Portalról az automatikus [feladat végpontjának biztonsági mentési támogatási csapatához](https://backup.autotask.net/help/Content/0_HOME/_AutotaskCustomerSupport.htm). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Az egyszeri bejelentkezés automatikus **feladat-végponton történő biztonsági mentésének** konfigurálásához el kell küldenie a letöltött **összevonási METAADATOKat tartalmazó XML** -fájlt és a megfelelő másolt url-címeket a Azure Portalról az automatikus [feladat végpontjának biztonsági mentési támogatási csapatához](https://backup.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
 Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britta Simon nevű Azure Portalban.
 
-1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. A Azure Portal bal oldali ablaktábláján válassza a **Azure Active Directory** lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó** lehetőséget.
 
     ![A "felhasználók és csoportok" és a "minden felhasználó" hivatkozás](common/users.png)
 
@@ -155,15 +155,15 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
 Ebben a szakaszban a Britta Simon az Azure egyszeri bejelentkezés használatára teszi lehetővé, hogy hozzáférést biztosítson az automatikus feladat-végpont biztonsági mentéséhez.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza az automatikus **feladat végpontjának biztonsági mentése**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások** lehetőséget, válassza a **minden alkalmazás** lehetőséget, majd válassza az automatikus **feladat végpontjának biztonsági mentése** lehetőséget.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
-2. Az alkalmazások listában válassza az automatikus **feladat végpontjának biztonsági mentése**elemet.
+2. Az alkalmazások listában válassza az automatikus **feladat végpontjának biztonsági mentése** elemet.
 
     ![Az automatikus feladat végpontjának biztonsági mentési hivatkozása az alkalmazások listában](common/all-applications.png)
 
-3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
+3. A bal oldali menüben válassza a **felhasználók és csoportok** lehetőséget.
 
     ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
@@ -179,7 +179,7 @@ Ebben a szakaszban a Britta Simon az Azure egyszeri bejelentkezés használatár
 
 ### <a name="create-autotask-endpoint-backup-test-user"></a>Automatikus feladat-végpont biztonsági mentési tesztelési felhasználójának létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre az autotask Endpoint Backup szolgáltatásban. Az automatikus feladat- [végpont biztonsági mentési támogatási csapatának](https://backup.autotask.net/help/Content/0_HOME/_AutotaskCustomerSupport.htm) használata a felhasználók hozzáadásához az automatikus feladat-végpont biztonsági mentési platformján. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre az autotask Endpoint Backup szolgáltatásban. Az automatikus feladat- [végpont biztonsági mentési támogatási csapatának](https://backup.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) használata a felhasználók hozzáadásához az automatikus feladat-végpont biztonsági mentési platformján. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 

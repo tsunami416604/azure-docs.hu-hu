@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: d32c63332c530ec05eb9f93661a8f2a0c5d8264c
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 21ab58095fa919e6302251c16e474b02f1445993
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94743320"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301998"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript fejlesztői útmutató
 
@@ -567,7 +567,7 @@ Saját környezeti változókat adhat hozzá egy Function-alkalmazáshoz mind a 
 
 ### <a name="in-local-development-environment"></a>Helyi fejlesztési környezetben
 
-Helyileg futtatva a functions projekt tartalmaz egy [ `local.settings.json` fájlt](/functions-run-local.md?tabs=node#local-settings-file), ahol a környezeti változókat az `Values` objektumban tárolja. 
+Helyileg futtatva a functions projekt tartalmaz egy [ `local.settings.json` fájlt](/azure/azure-functions/functions-run-local), ahol a környezeti változókat az `Values` objektumban tárolja. 
 
 ```json
 {
@@ -805,7 +805,7 @@ module.exports = async function (context) {
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkat találhat az alábbi forrásokban:
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 04399dc82a3bd2d70b8b472b121e95a73ca43136
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9c27139e2dca37c1ff8d963e1e8cdb5de682d39d
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009602"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302944"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-carlson-wagonlit-travel"></a>Oktatóanyag: Azure Active Directory-integráció a Carlson Wagonlit Traveltel
 
@@ -119,7 +119,7 @@ Az Azure AD egyszeri bejelentkezés a Carlson Wagonlit Traveltel való konfigur�
 
 ### <a name="configure-carlson-wagonlit-travel-single-sign-on"></a>A Carlson Wagonlit Travel Single Sign-On konfigurálása
 
-Ha az egyszeri bejelentkezést a **Carlson Wagonlit utazási** oldalon szeretné beállítani, el kell küldenie a letöltött **összevonás-metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portalról a [Carlson Wagonlit Travel support csapatának](http://www.carlsonwagonlit.in/content/cwt/in/en/technical-assistance.html). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Ha az egyszeri bejelentkezést a **Carlson Wagonlit utazási** oldalon szeretné beállítani, el kell küldenie a letöltött **összevonás-metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portalról a [Carlson Wagonlit Travel support csapatának](https://www.mycwt.com/traveler-help/). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -144,7 +144,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -174,7 +174,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 ### <a name="create-carlson-wagonlit-travel-test-user"></a>Carlson Wagonlit Travel test User létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Carlson Wagonlit Travel-ban. A [Carlson Wagonlit utazási támogatási csapatával](http://www.carlsonwagonlit.in/content/cwt/in/en/technical-assistance.html) felveheti a felhasználókat a Carlson Wagonlit utazási platformon. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a Carlson Wagonlit Travel-ban. A [Carlson Wagonlit utazási támogatási csapatával](https://www.mycwt.com/traveler-help/) felveheti a felhasználókat a Carlson Wagonlit utazási platformon. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 

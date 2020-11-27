@@ -7,12 +7,12 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: a58fa45f47ee8dce4ec96591551abad76c1218ee
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 86c6ea9dded423e7bd513faf73adfd293f2bd38f
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045482"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302610"
 ---
 # <a name="iot-plug-and-play-conventions"></a>Az IoT Plug and Playhez kapcsolódó konvenciók
 
@@ -20,10 +20,10 @@ A IoT Plug and Play-eszközöknek olyan konvenciókat kell követniük, amikor �
 
 Az eszközök tartalmazhatnak [modulokat](../iot-hub/iot-hub-devguide-module-twins.md), illetve a IoT Edge futtatókörnyezet által üzemeltetett [IoT Edge modulban](../iot-edge/about-iot-edge.md) is megvalósítható.
 
-Ismerteti azokat a telemetria, tulajdonságokat és parancsokat, amelyeket egy IoT Plug and Play-eszköz a [digitális Twins Definition Language v2 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) _modellel_implementál. Ebben a cikkben a modell két típusát említi:
+Ismerteti azokat a telemetria, tulajdonságokat és parancsokat, amelyeket egy IoT Plug and Play-eszköz a [digitális Twins Definition Language v2 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) _modellel_ implementál. Ebben a cikkben a modell két típusát említi:
 
-- **Nincs összetevő** – olyan modell, amely nem rendelkezik összetevőkkel. A modell az telemetria, a tulajdonságokat és a parancsokat deklarálja legfelső szintű tulajdonságokként a fő felület tartalom szakaszában. Az Azure IoT Explorer eszközében ez a modell egyetlen _alapértelmezett összetevőként_jelenik meg.
-- **Több összetevő** – két vagy több illesztőfelületből álló modell. Egy fő felület, amely az _alapértelmezett összetevőként_jelenik meg a telemetria, a Properties és a parancsokkal. Egy vagy több, összetevőként deklarált illesztőfelület további telemetria, tulajdonságokkal és parancsokkal.
+- **Nincs összetevő** – olyan modell, amely nem rendelkezik összetevőkkel. A modell az telemetria, a tulajdonságokat és a parancsokat deklarálja legfelső szintű tulajdonságokként a fő felület tartalom szakaszában. Az Azure IoT Explorer eszközében ez a modell egyetlen _alapértelmezett összetevőként_ jelenik meg.
+- **Több összetevő** – két vagy több illesztőfelületből álló modell. Egy fő felület, amely az _alapértelmezett összetevőként_ jelenik meg a telemetria, a Properties és a parancsokkal. Egy vagy több, összetevőként deklarált illesztőfelület további telemetria, tulajdonságokkal és parancsokkal.
 
 További információ: [IoT Plug and Play-összetevők a modellekben](concepts-components.md).
 
@@ -79,7 +79,7 @@ Példa jelentett tulajdonság hasznos adatai:
 
 Az eszköznek vagy modulnak hozzá kell adnia a `{"__t": "c"}` jelölőt, hogy jelezze, hogy az elem egy összetevőre hivatkozik.
 
-DTDL:
+Összetevőre hivatkozó DTDL:
 
 ```json
 {
@@ -95,7 +95,11 @@ DTDL:
     }
   ]
 }
+```
 
+Az összetevőt meghatározó DTDL:
+
+```json
 {
   "@context": "dtmi:dtdl:context;2",
   "@id": "dtmi:com:example:Thermostat;1",
@@ -255,7 +259,7 @@ Ha egy eszköz több jelentett tulajdonságot kap egyetlen adattartalomban, akko
 
 Az eszköznek vagy a modulnak meg kell győződnie arról, hogy a jelentett tulajdonságok küldésével megkapta a tulajdonságokat:
 
-DTDL:
+Összetevőre hivatkozó DTDL:
 
 ```json
 {
@@ -271,7 +275,11 @@ DTDL:
     }
   ]
 }
+```
 
+Az összetevőt meghatározó DTDL:
+
+```json
 {
   "@context": "dtmi:dtdl:context;2",
   "@id": "dtmi:com:example:Thermostat;1",
@@ -338,7 +346,7 @@ Az összetevő-illesztőfelületek nem a parancs nevét használják előtag né
 
 Egy eszközön vagy modulon több összetevő-illesztőfelület is a következő formátumú parancsokat használja: `componentName*commandName` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte a IoT Plug and Play konvenciókat, néhány további erőforrást is talál:
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: 36ac0058f8f2cf3ca106b30c86207e46d0712193
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dfa0efaa49fbca0b927bfd32511348f3ded7e6c7
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87830546"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302813"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Infrastruktúra-automatizálási eszközök használata az Azure-beli virtuális gépekkel
 
@@ -53,7 +53,7 @@ A [Puppet](https://www.puppet.com) egy nagyvállalati használatra kész Automat
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
-- [A báb üzembe helyezése az Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/Puppet.puppet-agent-windows-asm?tab=Overview).
+- A [báb üzembe helyezése](https://puppet.com/docs/puppet/5.5/install_windows.html).
 
 
 ## <a name="cloud-init"></a>Cloud-init
@@ -147,5 +147,5 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 - [Töltse le a virtuális gép sablonját](./windows/download-template.md).
 - [Hozzon létre egy Azure rendszerkép-szerkesztői sablont](./linux/image-builder-json.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Számos különböző lehetőség áll rendelkezésre az infrastruktúra-automatizálási eszközök használatára az Azure-ban. Ön szabadon használhatja az igényeinek és környezetének legmegfelelőbb megoldást. A kezdéshez és az Azure-ba beépített eszközök kipróbálásához lásd: [Linux](./linux/tutorial-automate-vm-deployment.md) vagy [Windows rendszerű](./windows/tutorial-automate-vm-deployment.md) virtuális gép testreszabásának automatizálása.

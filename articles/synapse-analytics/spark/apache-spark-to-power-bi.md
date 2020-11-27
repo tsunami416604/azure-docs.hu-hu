@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 11/16/2020
-ms.openlocfilehash: ea8fcb602f49dec61187260e08d3ccd1b148cee8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9fb8bbffb423031afd31e156183bc4f8be3c147e
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95920255"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302532"
 ---
 # <a name="tutorial-create-a-power-bi-report-using-apache-spark-and-azure-synapse-analytics"></a>Oktatóanyag: Power BI-jelentés létrehozása Apache Spark és az Azure szinapszis Analytics használatával
 
@@ -69,6 +69,9 @@ Ebben a példában a Apache Spark használatával végezheti el a New York-i tax
                                     & (filtered_df.paymentType.isin({"1", "2"})))
     ```
 4. Végül a Apache Spark metódus használatával mentjük a dataframe ```saveAsTable``` . Ez lehetővé teszi, hogy később lekérdezéssel és a kiszolgáló nélküli SQL-készletekkel kapcsolódjon ugyanahhoz a táblához.
+  ```python
+     taxi_df.write.mode("overwrite").saveAsTable("NycTlcTutorial.nyctaxi")
+  ```
    
 ## <a name="query-data-using-serverless-sql-pools"></a>Az adatlekérdezés kiszolgáló nélküli SQL-készletekkel
 Az Azure szinapszis Analytics lehetővé teszi, hogy a különböző munkaterület-számítási motorok adatbázisokat és táblákat osszanak meg a kiszolgáló nélküli Apache Spark készletek (előzetes verzió) és a kiszolgáló nélküli SQL-készlet (előzetes verzió) között. Ez a szinapszis [megosztott metaadat-kezelési](../metadata/overview.md) képességein keresztül érhető el. Ennek eredményeképpen a Spark által létrehozott adatbázisok és a parketta által támogatott táblázatok láthatóvá válnak a munkaterület kiszolgáló nélküli SQL-készletében.

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2f1c703f2bd2e90e15c566b7e04e8a878c16f6de
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b73fa80085cc0491c8b4d0856d0baacfef1b51c0
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001269"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301529"
 ---
 # <a name="run-runbooks-on-a-hybrid-runbook-worker"></a>Runbookok futtatása hibrid runbook-feldolgozón
 
@@ -22,7 +22,7 @@ Ha hibrid Runbook-feldolgozón futtat egy runbook, akkor a runbook a munkavégz�
 
 A Azure Automation a feladatokat a hibrid Runbook-feldolgozókon eltérően kezeli az Azure-beli munkaterületeken futó feladatoktől. Ha hosszan futó runbook rendelkezik, győződjön meg arról, hogy az esetleges újraindításra rugalmas. A feladat működésével kapcsolatos részletekért lásd: [hibrid Runbook Worker Jobs](automation-hybrid-runbook-worker.md#hybrid-runbook-worker-jobs).
 
-A hibrid Runbook-feldolgozók feladatai a helyi rendszerfiók alatt futnak **Windows rendszeren vagy** a Linuxon futó **nxautomation** -fiókban. Linux esetében ellenőrizze, hogy a **nxautomation** -fiók hozzáfér-e ahhoz a helyhez, ahol a runbook-modulok vannak tárolva. Ha az [install-Module](/powershell/module/powershellget/install-module) parancsmagot használja, ügyeljen arra, hogy a paraméter AllUsers megadásával `Scope` biztosítsa, hogy a **nxautomation** -fiók hozzáférhessen. A Linux PowerShell-lel kapcsolatos további információkért lásd: [ismert problémák a PowerShell számára a nem Windows platformokon](/powershell/scripting/whats-new/known-issues-ps6#known-issues-for-powershell-on-non-windows-platforms).
+A hibrid Runbook-feldolgozók feladatai a helyi rendszerfiók alatt futnak **Windows rendszeren vagy** a Linuxon futó **nxautomation** -fiókban. Linux esetében ellenőrizze, hogy a **nxautomation** -fiók hozzáfér-e ahhoz a helyhez, ahol a runbook-modulok vannak tárolva. Ha az [install-Module](/powershell/module/powershellget/install-module) parancsmagot használja, ügyeljen arra, hogy a paraméter AllUsers megadásával `Scope` biztosítsa, hogy a **nxautomation** -fiók hozzáférhessen. A Linux PowerShell-lel kapcsolatos további információkért lásd: [ismert problémák a PowerShell számára a nem Windows platformokon](/powershell/scripting/whats-new/what-s-new-in-powershell-70?view=powershell-7.1).
 
 ## <a name="configure-runbook-permissions"></a>Runbook engedélyeinek konfigurálása
 

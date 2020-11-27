@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ea834ed874f3011d95f8b924df860576f72bc4ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70a56b7efc34ba2fd3c06521c6e4cac6ea28778f
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88825613"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302465"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Profil tároló létrehozása Azure Files és Azure AD DS
 
@@ -27,15 +27,15 @@ További rendszergazdák hozzáadásához hozzon létre egy új felhasználót, 
 
 Rendszergazda hozzáadása:
 
-1. Válassza a **Azure Active Directory** lehetőséget az oldalsávon, majd válassza a **minden felhasználó**lehetőséget, majd válassza az **új felhasználó**lehetőséget.
+1. Válassza a **Azure Active Directory** lehetőséget az oldalsávon, majd válassza a **minden felhasználó** lehetőséget, majd válassza az **új felhasználó** lehetőséget.
 
 2.  Adja meg a felhasználói adatokat a mezőkben.
 
-3. A képernyő bal oldalán található Azure Active Directory ablaktáblán válassza a **csoportok**lehetőséget.
+3. A képernyő bal oldalán található Azure Active Directory ablaktáblán válassza a **csoportok** lehetőséget.
 
 4. Válassza a **HRE DC-rendszergazdák** csoportot.
 
-5. A bal oldali ablaktáblán válassza a **tagok**lehetőséget, majd válassza a **Tagok hozzáadása** elemet a fő ablaktáblán. Ez megjeleníti az Azure AD-ben elérhető összes felhasználó listáját. Válassza ki az imént létrehozott felhasználói profil nevét.
+5. A bal oldali ablaktáblán válassza a **tagok** lehetőséget, majd válassza a **Tagok hozzáadása** elemet a fő ablaktáblán. Ez megjeleníti az Azure AD-ben elérhető összes felhasználó listáját. Válassza ki az imént létrehozott felhasználói profil nevét.
 
 ## <a name="set-up-an-azure-storage-account"></a>Azure Storage-fiók beállítása
 
@@ -45,7 +45,7 @@ A hitelesítés engedélyezése:
 
 1. Ha még nem tette meg, állítson be és helyezzen üzembe egy általános célú v2-es Azure Storage-fiókot az [Azure Storage-fiók létrehozása](../storage/common/storage-account-create.md)című témakör utasításait követve.
 
-2. Ha befejezte a fiók beállítását, válassza **az Ugrás az erőforráshoz**lehetőséget.
+2. Ha befejezte a fiók beállítását, válassza **az Ugrás az erőforráshoz** lehetőséget.
 
 3. Válassza a **konfiguráció** elemet a képernyő bal oldalán, majd engedélyezze a **Azure Files Azure Active Directory hitelesítését** a fő ablaktáblán. Amikor elkészült, válassza a **Mentés** lehetőséget.
 
@@ -63,15 +63,15 @@ Felhasználói hozzáférési engedélyek kiosztása:
 
 2. Válassza a **Access Control (iam)** lehetőséget.
 
-3. Válassza **a szerepkör-hozzárendelés hozzáadása**lehetőséget.
+3. Válassza **a szerepkör-hozzárendelés hozzáadása** lehetőséget.
 
 4. A **szerepkör-hozzárendelés hozzáadása** lapon válassza ki a megfelelő beépített szerepkört a szerepkör listából. A megfelelő engedélyek beszerzéséhez legalább a **Storage file-ADATsmb-megosztás közreműködőjét** kell választania a fiókhoz.
 
-5. A **hozzáférésének hozzárendeléséhez**válassza ki **Azure Active Directory felhasználót, csoportot vagy egyszerű szolgáltatásnevet**.
+5. A **hozzáférésének hozzárendeléséhez** válassza ki **Azure Active Directory felhasználót, csoportot vagy egyszerű szolgáltatásnevet**.
 
 6. Válassza ki a cél Azure Active Directory identitás nevét vagy e-mail-címét.
 
-7. Kattintson a **Mentés** gombra.
+7. Válassza a **Mentés** lehetőséget.
 
 ## <a name="get-the-storage-account-access-key"></a>A Storage-fiók elérési kulcsának beolvasása
 
@@ -79,11 +79,11 @@ Ezután be kell szereznie a Storage-fiókhoz tartozó hozzáférési kulcsot.
 
 A Storage-fiók elérési kulcsának beszerzése:
 
-1. A Azure Portal oldalsávon válassza a **Storage-fiókok**lehetőséget.
+1. A Azure Portal oldalsávon válassza a **Storage-fiókok** lehetőséget.
 
 2. A Storage-fiókok listájából válassza ki azt a fiókot, amelyhez engedélyezve van az Azure AD DS, és hozza létre az egyéni szerepköröket a fenti lépésekben.
 
-3. A **Beállítások**területen válassza a **hozzáférési kulcsok** lehetőséget, és másolja a kulcsot a **key1**.
+3. A **Beállítások** területen válassza a **hozzáférési kulcsok** lehetőséget, és másolja a kulcsot a **key1**.
 
 4. Lépjen a **Virtual Machines** lapra, és keresse meg a gazdagép-készlet részévé váló virtuális gépeket.
 
@@ -99,7 +99,7 @@ A Storage-fiók elérési kulcsának beszerzése:
 7. Futtassa az alábbi parancsot:
 
      ```cmd
-     net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
+     net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> /user:Azure\<storage-account-name> <storage-account-key>
      ```
 
     - Cserélje le a `<desired-drive-letter>` betűt a kívánt meghajtóbetűjelre (például: `y:` ).
@@ -142,11 +142,11 @@ FSLogix-profil tárolójának konfigurálása:
 
 1. Jelentkezzen be a cikk elején konfigurált munkamenet-gazda virtuális gépre, majd [töltse le és telepítse a FSLogix-ügynököt](/fslogix/install-ht/).
 
-2. Bontsa ki a letöltött FSLogix-ügynök fájlját **x64**  >  , és nyissa meg az x64-es**kiadásokat**, majd nyissa meg **FSLogixAppsSetup.exe**.
+2. Bontsa ki a letöltött FSLogix-ügynök fájlját **x64**  >  , és nyissa meg az x64-es **kiadásokat**, majd nyissa meg **FSLogixAppsSetup.exe**.
 
 3. A telepítő elindítása után válassza az Elfogadom **a licencfeltételeket lehetőséget.** Ha van ilyen, adjon meg egy új kulcsot.
 
-4. Válassza a **Telepítés** gombot.
+4. Válassza a **Telepítés** lehetőséget.
 
 5. Nyissa meg a **C meghajtót**, majd lépjen a **Program Files**  >  **FSLogix**  >  **alkalmazások** elemre, és győződjön meg arról, hogy a FSLogix-ügynök megfelelően van telepítve.
 
@@ -155,16 +155,16 @@ FSLogix-profil tárolójának konfigurálása:
 
 6. Futtassa a **Beállításszerkesztőt** (Regedit) rendszergazdaként.
 
-7. Navigáljon a **számítógép**  >  **HKEY_LOCAL_MACHINE**  >  **szoftver**  >  **FSLogix**, kattintson a jobb gombbal a **FSLogix**elemre, válassza az **új**, majd a **kulcs**elemet.
+7. Navigáljon a **számítógép**  >  **HKEY_LOCAL_MACHINE**  >  **szoftver**  >  **FSLogix**, kattintson a jobb gombbal a **FSLogix** elemre, válassza az **új**, majd a **kulcs** elemet.
 
-8. Hozzon létre egy új, **profilok**nevű kulcsot.
+8. Hozzon létre egy új, **profilok** nevű kulcsot.
 
-9.  Kattintson a jobb gombbal a **profilok**elemre, válassza az **új**lehetőséget, majd válassza a **DWORD (32 bites) értéket.** Nevezze el az **engedélyezett** értéket, és állítsa az **adatértéket** **1-re**.
+9.  Kattintson a jobb gombbal a **profilok** elemre, válassza az **új** lehetőséget, majd válassza a **DWORD (32 bites) értéket.** Nevezze el az **engedélyezett** értéket, és állítsa az **adatértéket** **1-re**.
 
     > [!div class="mx-imgBorder"]
     > ![A profilok kulcs képernyőképe. A REG_DWORD fájl ki van emelve, és az adatérték értéke 1.](media/dword-value.png)
 
-10. Kattintson a jobb gombbal a **profilok**elemre, válassza az **új**, majd a **többkarakterláncos érték**elemet. Nevezze el az érték **VHDLocations** , és adja meg a Azure Files-megosztás URI-ját `\\fsprofile.file.core.windows.net\share` adatértékként.
+10. Kattintson a jobb gombbal a **profilok** elemre, válassza az **új**, majd a **többkarakterláncos érték** elemet. Nevezze el az érték **VHDLocations** , és adja meg a Azure Files-megosztás URI-ját `\\fsprofile.file.core.windows.net\share` adatértékként.
 
     > [!div class="mx-imgBorder"]
     > ![A VHDLocations fájlt bemutató profilok kulcs képernyőképe. Az adatértéke a Azure Files-megosztás URI-JÁT jeleníti meg.](media/multi-string-value.png)
@@ -232,7 +232,7 @@ A profil ellenőrzése:
 
 3. A felhasználói munkamenet létrehozása után nyissa meg a Azure Portal, és jelentkezzen be egy rendszergazdai fiókkal.
 
-4. Az oldalsávon válassza a **Storage-fiókok**lehetőséget.
+4. Az oldalsávon válassza a **Storage-fiókok** lehetőséget.
 
 5. Válassza ki azt a Storage-fiókot, amelyet a munkamenet-gazdagéphez tartozó fájlmegosztásként konfigurált, és amelyen engedélyezve van az Azure AD DS.
 

@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: 2f16ed3c455067ff2fa185bff023a6993ccda58c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a36eb21f681aec1cfc52a000b60bdbc30cab0633
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311976"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302788"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-machine-learning-studio-classic"></a>Útmutató a net # neurális hálózat specifikációjának nyelvéhez Machine Learning Studio (klasszikus)
 
-**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 A net # a Microsoft által fejlesztett nyelv, amely összetett neurális hálózati architektúrákat, például mély neurális hálózatokat vagy tetszőleges méretű dimenziók átruházását használja. Összetett struktúrákat használhat az adatok, például a képek, videók és hanganyagok megismerésének javítására.
 
@@ -44,7 +44,7 @@ Minden betanítható réteg (rejtett vagy kimeneti réteg) egy vagy több **öss
 
 A net # támogatja a különböző típusú kapcsolódási csomagokat, amelyek segítségével testre szabhatja, hogy a bemenetek hogyan vannak leképezve a rejtett rétegekre, és hogyan legyenek leképezve a kimenetek.
 
-Az alapértelmezett vagy a standard csomag egy **teljes köteg** , amelyben a forrás réteg minden csomópontja a cél réteg minden csomópontjára csatlakoztatva van.
+Az alapértelmezett vagy a standard csomag egy **teljes köteg**, amelyben a forrás réteg minden csomópontja a cél réteg minden csomópontjára csatlakoztatva van.
 
 A net # emellett a következő négy típusú speciális csatlakoztatási köteget támogatja:
 
@@ -80,7 +80,7 @@ A specifikáció nyelvi szintaxisának részletes ismertetését lásd: [strukt�
 
 ## <a name="structure-specifications"></a>Struktúra specifikációi
 
-A neurális hálózati struktúra specifikációja három részből áll: a **konstans deklarációtól** , a **réteg deklarációtól** és a **kapcsolatok deklarációjának**. Létezik egy választható **megosztási deklarációs** szakasz is. A szakaszt bármilyen sorrendben meg lehet adni.
+A neurális hálózati struktúra specifikációja három részből áll: a **konstans deklarációtól**, a **réteg deklarációtól** és a **kapcsolatok deklarációjának**. Létezik egy választható **megosztási deklarációs** szakasz is. A szakaszt bármilyen sorrendben meg lehet adni.
 
 ## <a name="constant-declaration"></a>Állandó deklaráció
 
@@ -192,21 +192,21 @@ A rendszer a következő attribútumokat támogatja:
 
 A **InputShape** definiálja a dimenzióját a forrás réteghez. Az értéknek pozitív egész számokból álló rekordnak kell lennie. Az egész számok szorzatának egyenlőnek kell lennie a forrás réteg csomópontjainak számával, de más esetben nem kell megegyeznie a dimenzióját deklarált értékkel. Ennek a rekordnak a hossza a **aritása** érték lesz. A aritása jellemzően a függvény által elvégezhető argumentumok vagy operandusok számát jelöli.
 
-A kernelek alakzatának és helyeinek meghatározásához használja a **KernelShape** , a **Stride** , a **padding** , a **LowerPad** és a **UpperPad** attribútumot:
+A kernelek alakzatának és helyeinek meghatározásához használja a **KernelShape**, a **Stride**, a **padding**, a **LowerPad** és a **UpperPad** attribútumot:
 
-+ **KernelShape** : (kötelező) az egyes kernelek dimenzióját határozza meg a rendszerhez. Az értéknek a köteg aritása egyenlő hosszúságú pozitív egész számnak kell lennie. A rekord minden összetevője nem lehet nagyobb, mint a **InputShape** megfelelő összetevője.
++ **KernelShape**: (kötelező) az egyes kernelek dimenzióját határozza meg a rendszerhez. Az értéknek a köteg aritása egyenlő hosszúságú pozitív egész számnak kell lennie. A rekord minden összetevője nem lehet nagyobb, mint a **InputShape** megfelelő összetevője.
 
-+ **Lépéshossz** : (nem kötelező) meghatározza az egymást követően a (az egyes dimenziók egy lépésének méretét), azaz a központi csomópontok közötti távolságot. Az értéknek olyan pozitív egész számokból álló rekordnak kell lennie, amelynek hossza a köteg aritása. A rekord minden összetevője nem lehet nagyobb, mint a **KernelShape** megfelelő összetevője. Az alapértelmezett érték egy olyan rekord, amelyben az összes összetevő eggyel egyenlő.
++ **Lépéshossz**: (nem kötelező) meghatározza az egymást követően a (az egyes dimenziók egy lépésének méretét), azaz a központi csomópontok közötti távolságot. Az értéknek olyan pozitív egész számokból álló rekordnak kell lennie, amelynek hossza a köteg aritása. A rekord minden összetevője nem lehet nagyobb, mint a **KernelShape** megfelelő összetevője. Az alapértelmezett érték egy olyan rekord, amelyben az összes összetevő eggyel egyenlő.
 
-+ **Megosztás** : (nem kötelező) meghatározza az egyes dimenziók súlyozását. Az érték lehet egy logikai érték, vagy egy logikai értékből álló rekord, amely a köteg aritása hosszúságú. Egyetlen logikai érték van kiterjesztve, hogy a megfelelő hosszúságú rekord legyen a megadott értékkel egyenlő összes összetevővel. Az alapértelmezett érték egy olyan rekord, amely az összes igaz értéket tartalmazza.
++ **Megosztás**: (nem kötelező) meghatározza az egyes dimenziók súlyozását. Az érték lehet egy logikai érték, vagy egy logikai értékből álló rekord, amely a köteg aritása hosszúságú. Egyetlen logikai érték van kiterjesztve, hogy a megfelelő hosszúságú rekord legyen a megadott értékkel egyenlő összes összetevővel. Az alapértelmezett érték egy olyan rekord, amely az összes igaz értéket tartalmazza.
 
-+ **MapCount** : (nem kötelező) meghatározza, hogy a rendszer milyen számú szolgáltatási térképet tartalmaz a többszintű köteghez. Az érték lehet egyetlen pozitív egész szám vagy egy pozitív egész szám, amely a köteg aritása. Egyetlen egész értéket kell kiterjeszteni, hogy a megfelelő hosszúságú rekord legyen a megadott értékkel, és az összes többi összetevő eggyel egyenlő legyen. Az alapértelmezett érték egy. A funkciós térképek teljes száma a rekord összetevőinek szorzata. Ennek az összesített számnak az összetevői az összetevők között határozzák meg, hogyan vannak csoportosítva a funkció-hozzárendelési értékek a cél csomópontokban.
++ **MapCount**: (nem kötelező) meghatározza, hogy a rendszer milyen számú szolgáltatási térképet tartalmaz a többszintű köteghez. Az érték lehet egyetlen pozitív egész szám vagy egy pozitív egész szám, amely a köteg aritása. Egyetlen egész értéket kell kiterjeszteni, hogy a megfelelő hosszúságú rekord legyen a megadott értékkel, és az összes többi összetevő eggyel egyenlő legyen. Az alapértelmezett érték egy. A funkciós térképek teljes száma a rekord összetevőinek szorzata. Ennek az összesített számnak az összetevői az összetevők között határozzák meg, hogyan vannak csoportosítva a funkció-hozzárendelési értékek a cél csomópontokban.
 
-+ **Súlyok** : (nem kötelező) meghatározza a köteg kezdeti súlyozását. Az értéknek olyan lebegőpontos értékeket tartalmazó rekordnak kell lennie, amely a jelen cikk későbbi részében meghatározott kernelek száma a kernelek száma alapján. Az alapértelmezett súlyok véletlenszerűen jönnek létre.
++ **Súlyok**: (nem kötelező) meghatározza a köteg kezdeti súlyozását. Az értéknek olyan lebegőpontos értékeket tartalmazó rekordnak kell lennie, amely a jelen cikk későbbi részében meghatározott kernelek száma a kernelek száma alapján. Az alapértelmezett súlyok véletlenszerűen jönnek létre.
 
 A kitöltést vezérlő tulajdonságok két készlete van, a tulajdonságok kölcsönösen kizárják egymást:
 
-+ **Kitöltés** : (nem kötelező) meghatározza, hogy a bemenet kitöltése egy **alapértelmezett kitöltési séma** használatával történjen-e. Az érték lehet egyetlen logikai érték, vagy lehet egy olyan logikai értékből álló rekord, amely a köteg aritása.
++ **Kitöltés**: (nem kötelező) meghatározza, hogy a bemenet kitöltése egy **alapértelmezett kitöltési séma** használatával történjen-e. Az érték lehet egyetlen logikai érték, vagy lehet egy olyan logikai értékből álló rekord, amely a köteg aritása.
 
     Egyetlen logikai érték van kiterjesztve, hogy a megfelelő hosszúságú rekord legyen a megadott értékkel egyenlő összes összetevővel.
 
@@ -214,7 +214,7 @@ A kitöltést vezérlő tulajdonságok két készlete van, a tulajdonságok köl
 
     Ha egy dimenzió értéke hamis, a kernelek úgy vannak meghatározva, hogy az egyes oldalakon lévő csomópontok száma azonos legyen (legfeljebb 1). Az attribútum alapértelmezett értéke egy olyan rekord, amelyben az összes összetevő hamis értékkel egyenlő.
 
-+ **UpperPad** és **LowerPad** : (nem kötelező) nagyobb mértékű szabályozást biztosít a használathoz. **Fontos:** Ezek az attribútumok meghatározhatók, ha és csak akkor, ha a fenti **kitöltési** tulajdonság **_nem_*_ van meghatározva. Az értékeknek egész szám értékű rekordok kell lenniük, amelynek hosszát a köteg aritása kell megadni. Ha ezek az attribútumok meg vannak adva, a rendszer a "dummy" csomópontokat hozzáadja a bemeneti réteg egyes dimenzióinak alsó és felső végéhez. Az egyes dimenziók alsó és felső végéhez hozzáadott csomópontok számát _* LowerPad** [i] és **UpperPad** [i] érték határozza meg.
++ **UpperPad** és **LowerPad**: (nem kötelező) nagyobb mértékű szabályozást biztosít a használathoz. **Fontos:** Ezek az attribútumok meghatározhatók, ha és csak akkor, ha a fenti **kitöltési** tulajdonság **_nem_*_ van meghatározva. Az értékeknek egész szám értékű rekordok kell lenniük, amelynek hosszát a köteg aritása kell megadni. Ha ezek az attribútumok meg vannak adva, a rendszer a "dummy" csomópontokat hozzáadja a bemeneti réteg egyes dimenzióinak alsó és felső végéhez. Az egyes dimenziók alsó és felső végéhez hozzáadott csomópontok számát _* LowerPad**[i] és **UpperPad**[i] érték határozza meg.
 
     Annak biztosítása érdekében, hogy a kernelek csak "valódi" csomópontoknak feleljen meg, és ne a "dummy" csomópontokra, a következő feltételeknek kell teljesülniük:
   - A **LowerPad** minden összetevőjének szigorúan kisebbnek kell lennie, mint `KernelShape[d]/2` .
@@ -225,12 +225,12 @@ A kitöltést vezérlő tulajdonságok két készlete van, a tulajdonságok köl
 
 A kapcsolódó hálózatokkal és alkalmazásokkal kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-+ [http://deeplearning.net/tutorial/lenet.html](http://deeplearning.net/tutorial/lenet.html)
++ [http://d2l.ai/chapter_convolutional-neural-networks/lenet.html ](http://d2l.ai/chapter_convolutional-neural-networks/lenet.html )
 + [https://research.microsoft.com/pubs/68920/icdar03.pdf](https://research.microsoft.com/pubs/68920/icdar03.pdf)
 
 ## <a name="pooling-bundles"></a>Készletezési csomagok
 
-A **készletezési kötegek a közös** kapcsolathoz hasonló geometriát alkalmaznak, de előre definiált függvényeket használnak a csomópont-értékek forrásához a cél csomópont értékének származtatása érdekében. Ezért a készletezési csomagok nem rendelkeznek betanítható állapottal (súlyok vagy torzítások). A készletezési csomagok támogatják az összes, a **megosztást** , a **MapCount** és a **súlyozást** is.
+A **készletezési kötegek a közös** kapcsolathoz hasonló geometriát alkalmaznak, de előre definiált függvényeket használnak a csomópont-értékek forrásához a cél csomópont értékének származtatása érdekében. Ezért a készletezési csomagok nem rendelkeznek betanítható állapottal (súlyok vagy torzítások). A készletezési csomagok támogatják az összes, a **megosztást**, a **MapCount** és a **súlyozást** is.
 
 Általában a szomszédos készletezési egységek által összefoglalt kernelek nem fedik át egymást. Ha a lépéshossz [d] egyenlő a KernelShape [d] értékkel az egyes dimenziókban, akkor a beszerzett réteg a hagyományos helyi készletezési réteg, amely általában a közösen használt neurális hálózatokban van használatban. Mindegyik cél csomópont a forrás rétegben lévő kernel tevékenységeinek maximális vagy középértékét számítja ki.
 
@@ -277,9 +277,9 @@ Mivel a válasz normalizálása kötegek előre definiált függvényt alkalmazn
 
 A korábban leírt négy attribútumon kívül a válasz normalizálása csomagok is támogatják a következő attribútumokat:
 
-+ **Alpha** : (kötelező) egy lebegőpontos értéket ad meg, amely megfelel `α` az előző képletnek.
-+ **Béta** : (kötelező) `β` az előző képletben szereplő lebegőpontos értéket adja meg.
-+ **Eltolás** : (nem kötelező) egy lebegőpontos értéket ad meg, amely megfelel `k` az előző képletnek. Alapértelmezés szerint 1.
++ **Alpha**: (kötelező) egy lebegőpontos értéket ad meg, amely megfelel `α` az előző képletnek.
++ **Béta**: (kötelező) `β` az előző képletben szereplő lebegőpontos értéket adja meg.
++ **Eltolás**: (nem kötelező) egy lebegőpontos értéket ad meg, amely megfelel `k` az előző képletnek. Alapértelmezés szerint 1.
 
 Az alábbi példa a válasz normalizálása csomagot definiálja a következő attribútumok használatával:
 

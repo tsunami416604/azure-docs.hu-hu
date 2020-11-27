@@ -5,16 +5,16 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 09/10/2020
+ms.date: 11/25/2020
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: 2e54c0b09c3dbe398b0522d0ad9ad2314e29ed26
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: dcc84dc252001721a3848a008a3db80dcc7822d2
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023840"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301272"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory-összekötők hibaelhárítása
 
@@ -440,7 +440,7 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 
 - **Üzenet**: `The name of column index %index; is empty. Make sure column name is properly specified in the header row.`
 
-- **OK**: a "firstRowAsHeader" tevékenységben való beállításakor az első sor lesz az oszlop neve. Ez a hiba azt jelenti, hogy az első sor üres értéket tartalmaz. Például: ' columna,, ColumnB '.
+- **OK**: a "firstRowAsHeader" tevékenységben való beállításakor az első sor lesz az oszlop neve. Ez a hiba azt jelenti, hogy az első sor üres értéket tartalmaz. Például: ' columna, ColumnB '.
 
 - **Javaslat**: Ellenőrizze az első sort, és javítsa ki az értéket, ha üres érték van megadva.
 
@@ -645,6 +645,29 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 
 - **Javaslat**: távolítsa el a fájba a hasznos adatok között.
 
+
+## <a name="rest"></a>REST
+
+### <a name="unexpected-network-response-from-rest-connector"></a>Nem várt hálózati válasz a REST-összekötőtől
+
+- **Tünetek**: a végpont időnként váratlan választ kap (400/401/403/500) a REST-összekötőből.
+
+- **OK**: a REST forrás-összekötő URL-címet és http-metódust/fejlécet/törzset használ a társított szolgáltatás/adatkészlet/másolás forrása paraméterként a HTTP-kérések létrehozásakor. A problémát valószínűleg egy vagy több megadott paraméter hibája okozza.
+
+- **Megoldás**: 
+    - A cmd ablakban a "curl" használatával ellenőrizze, hogy az OK vagy a nem (**elfogadva** és **felhasználói ügynök** fejlécei mindig szerepeljenek-e):
+        ```
+        curl -i -X <HTTP method> -H <HTTP header1> -H <HTTP header2> -H "Accept: application/json" -H "User-Agent: azure-data-factory/2.0" -d '<HTTP body>' <URL>
+        ```
+      Ha a parancs ugyanazt a váratlan választ adja vissza, javítsa a fenti paramétereket a "curl" értékkel, amíg vissza nem adja a várt választ. 
+
+      Emellett használhatja a "curl--help" parancsot is a parancs fejlettebb használatához.
+
+    - Ha csak az ADF REST-összekötő váratlan választ ad vissza, további hibaelhárításért forduljon a Microsoft támogatási szolgálatához.
+    
+    - Vegye figyelembe, hogy a "curl" nem lehet megfelelő az SSL-tanúsítvány érvényesítési hibájának reprodukálása érdekében. Bizonyos esetekben a "curl" parancs végrehajtása nem sikerült az SSL-tanúsítvány érvényesítési problémáinak elvégzése nélkül. Ha azonban ugyanazt az URL-címet a böngészőben hajtja végre, akkor a rendszer nem ad vissza SSL-tanúsítványt az első helyen az ügyfél számára a kiszolgálóval való megbízhatósági kapcsolat létrehozásához.
+
+      A fenti esethez ajánlott eszközök, például a **Poster** és a **Hegedűs** .
 
 
 ## <a name="general-copy-activity-error"></a>Általános másolási tevékenység hibája

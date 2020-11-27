@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
-ms.openlocfilehash: 00501a1e17f8e085b817cfe3dac819ba890248f5
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c69ed7b9e2aaa7113637868e1c1329ed2962b931
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309855"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302770"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>Betanítási adatok importálása Azure Machine Learning Studioba (klasszikus) különböző adatforrásokból
 
-**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**a következőkre vonatkozik:** ![ A következőre vonatkozik:. ](../../../includes/media/aml-applies-to-skus/yes.png) A Machine Learning Studio (klasszikus) ![ nem vonatkozik a következőre:.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Ha Machine Learning Studio (klasszikus) használatával szeretne saját adatait használni a prediktív elemzési megoldások fejlesztéséhez és betanításához, a következő adatok használhatók: 
@@ -50,11 +50,11 @@ A kísérletbe több adattípust is importálhat, attól függően, hogy milyen 
 * Tabulátorral tagolt értékek (TSV) fejléctel (. TSV) vagy anélkül (. NH. TSV)
 * Excel-fájl
 * Azure-tábla
-* Struktúra táblázata
+* Hive-tábla
 * SQL Database-táblázat
 * OData-értékek
 * SVMLight-adatok (. SVMLight) (lásd a formátumra vonatkozó [SVMLight-definíciót](http://svmlight.joachims.org/) )
-* Attribútum-kapcsolati fájlformátum (ARFF) adatai (. ARFF) (lásd a [ARFF definícióját](https://weka.wikispaces.com/ARFF) a formázási adatokhoz).
+* Attribútum-kapcsolati fájlformátum (ARFF) adatai (. ARFF) (lásd a [ARFF definícióját](https://www.cs.waikato.ac.nz/ml/weka/arff.html) a formázási adatokhoz).
 * Zip-fájl (. zip)
 * R-objektum vagy munkaterület-fájl (. RData
 
@@ -73,12 +73,12 @@ A Studio (klasszikus) a következő adattípusokat ismeri fel:
 * DateTime
 * időtartam
 
-A Studio egy * **adattábla** _ nevű belső adattípust használ a modulok közötti adatátvitelhez. Az adatokat adattábla formátumba explicit módon konvertálhatja az [átalakítás adatkészletbe][convert-to-dataset] modul használatával.
+A Studio egy ***adattábla** _ nevű belső adattípust használ a modulok közötti adatátvitelhez. Az adatokat adattábla formátumba explicit módon konvertálhatja az [átalakítás adatkészletbe][convert-to-dataset] modul használatával.
 
 Az adattáblán kívül más formátumokat is tartalmazó modulok a következő modulba való átadásuk előtt csendes adattáblára konvertálják az adattáblát.
 
 Szükség esetén átalakíthatja az adattábla formátumát CSV-, TSV-, ARFF-vagy SVMLight-formátumba más konverziós modulok használatával.
-A függvényeket végrehajtó modulok esetében tekintse meg a modul paletta _ *adatformátum-konverziók* * szakaszát.
+A függvényeket végrehajtó modulok esetében tekintse meg a modul paletta _ *adatformátum-konverziók** szakaszát.
 
 ## <a name="data-capacities"></a>Adatkapacitások
 
@@ -178,7 +178,7 @@ Időnként előfordulhat, hogy egy kísérletből közbenső eredményt szeretne
 
 A Mentés befejeződése után az adatkészlet elérhető lesz a munkaterületen lévő bármilyen kísérletben. Ez a modul paletta **mentett adatkészletek** listájában található.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Az Adatimportálási és adatexportálási modulokat használó Azure Machine Learning Studio webszolgáltatások üzembe helyezése](web-services-that-use-import-export-modules.md)
 
