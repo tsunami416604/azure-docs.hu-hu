@@ -8,12 +8,12 @@ ms.subservice: language-understanding
 ms.date: 09/01/2020
 ms.topic: include
 ms.custom: include file, devx-track-js, cog-serv-seo-aug-2020
-ms.openlocfilehash: 978cfd75d2c8683decd55c70ac5e5c679d66c9cc
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 0c3a02461d8ad4bc8470383244dad7b86b47f405
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95097232"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96303689"
 ---
 A Node.jshoz használja a Language Understanding (LUIS) ügyféloldali kódtárait:
 
@@ -202,7 +202,7 @@ Adja hozzá például a hosszúságú kimondott szöveg egy [ExampleLabelObject]
 
 :::image type="content" source="../media/quickstart-sdk/labeled-example-machine-learned-entity.png" alt-text="Részleges képernyőkép, amely a címkével ellátott példát mutatja a portálon. ":::
 
-Hívja meg a [példákat. vegye fel](//javascript/api/@azure/cognitiveservices-luis-authoring/examples?view=azure-node-latest#add-string--string--examplelabelobject--models-examplesaddoptionalparams-) az alkalmazás azonosítóját, a Version ID-t és a példát.
+Hívja meg a [példákat. vegye fel](/javascript/api/@azure/cognitiveservices-luis-authoring/examples?view=azure-node-lates) az alkalmazás azonosítóját, a Version ID-t és a példát.
 
 [!code-javascript[Add example utterance to intent](~/cognitive-services-quickstart-code/javascript/LUIS/sdk-3x/index.js?name=AuthoringAddLabeledExamples)]
 

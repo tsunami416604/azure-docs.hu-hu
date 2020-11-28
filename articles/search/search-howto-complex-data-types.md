@@ -8,17 +8,17 @@ ms.author: brjohnst
 tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/07/2020
-ms.openlocfilehash: 1d380a41f5b20c52fefca9e68bb4ed858b3bf3a1
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 11/27/2020
+ms.openlocfilehash: b0b2dd9904682121c83b22b9029097e7ee57fb11
+ms.sourcegitcommit: 6b16e7cc62b29968ad9f3a58f1ea5f0baa568f02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422057"
+ms.lasthandoff: 11/28/2020
+ms.locfileid: "96303754"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Összetett adattípusok modellezése az Azure-ban Cognitive Search
 
-Az Azure Cognitive Search indexek feltöltéséhez használt külső adatkészletek számos alakzatban származhatnak. Esetenként hierarchikus vagy beágyazott alstruktúrákat is tartalmaznak. A példák több címet is tartalmazhatnak egyetlen ügyfél számára, több színt és méretet egyetlen SKU számára, egyetlen könyv több szerzője és így tovább. A modellezési feltételekben ezeket a struktúrákat *összetett* , *összetett* , *összetett* vagy *aggregált* adattípusoknak is nevezzük. Az Azure Cognitive Search az ehhez a koncepcióhoz használt kifejezés **összetett típusú**. Az Azure Cognitive Search az összetett típusok modellezése **összetett mezők** használatával történik. A komplex mező olyan mező, amely bármilyen adattípusú gyermekeket (almezőket) tartalmaz, beleértve a más összetett típusokat is. Ez hasonló módon működik, mint a strukturált adattípusok programozási nyelven.
+Az Azure Cognitive Search indexek feltöltéséhez használt külső adatkészletek számos alakzatban származhatnak. Esetenként hierarchikus vagy beágyazott alstruktúrákat is tartalmaznak. A példák több címet is tartalmazhatnak egyetlen ügyfél számára, több színt és méretet egyetlen SKU számára, egyetlen könyv több szerzője és így tovább. A modellezési feltételekben ezeket a struktúrákat *összetett*, *összetett*, *összetett* vagy *aggregált* adattípusoknak is nevezzük. Az Azure Cognitive Search az ehhez a koncepcióhoz használt kifejezés **összetett típusú**. Az Azure Cognitive Search az összetett típusok modellezése **összetett mezők** használatával történik. A komplex mező olyan mező, amely bármilyen adattípusú gyermekeket (almezőket) tartalmaz, beleértve a más összetett típusokat is. Ez hasonló módon működik, mint a strukturált adattípusok programozási nyelven.
 
 Az összetett mezők a dokumentumban szereplő egyetlen objektumot vagy objektumok tömbjét jelölik, az adattípustól függően. A Type típusú mezők `Edm.ComplexType` egyetlen objektumot jelölnek, míg a típusú mezők `Collection(Edm.ComplexType)` objektumok tömbjét jelölik.
 
@@ -62,8 +62,6 @@ A következő JSON-dokumentum egyszerű mezőkből és összetett mezőkből ál
   ]
 }
 ```
-
-<a Name = "indexelés – összetett típusok></a>
 
 ## <a name="indexing-complex-types"></a>Összetett típusok indexelése
 

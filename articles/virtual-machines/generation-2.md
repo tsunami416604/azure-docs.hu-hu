@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: jushiman
-ms.openlocfilehash: 0aedcc3be4cb319dc24990507d85756bd77777e4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 56a360f461c89d7c60e973bf2d6258d63113ab47
+ms.sourcegitcommit: 6b16e7cc62b29968ad9f3a58f1ea5f0baa568f02
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94963827"
+ms.lasthandoff: 11/28/2020
+ms.locfileid: "96303770"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>2. generációs virtuális gépek támogatása az Azure-on
 
@@ -49,6 +49,8 @@ Az 1. generációs virtuális gépeket minden virtuálisgép-méret támogatja a
 * [NCv3 sorozat](ncv3-series.md)
 * [ND sorozat](nd-series.md)
 * [NVv3 sorozat](nvv3-series.md)
+* [NVv4 sorozat](nvv4-series.md)
+* [NCasT4_v3 sorozat](nct4-v3-series.md)
 
 <sup>1</sup> a Mv2 sorozat nem támogatja az 1. generációs virtuálisgép-rendszerképeket, és csak a 2. generációs lemezképek egy részhalmazát támogatja. A részletekért tekintse meg a [Mv2-sorozat dokumentációját](mv2-series.md) .
 
@@ -118,7 +120,7 @@ Az alábbi lépéseket követve hozhat létre 2. generációs (Gen2) virtuális 
 1. Válassza az **Erőforrás létrehozása** lehetőséget.
 1. Kattintson az **összes** megjelenítése az Azure Marketplace-ről lehetőségre a bal oldalon.
 1. Válasszon olyan képet, amely támogatja a Gen2.
-1. Kattintson a **Létrehozás** gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 1. A **speciális** lapon, a **virtuális gép létrehozása** szakaszban válassza a 2. **generációs** lehetőséget.
 1. Az **alapvető beállítások** lap **példány részletei** területén válassza a **méret** elemet, és nyissa meg a **virtuális gép méretének kiválasztása panelt** .
 1. Válasszon egy [támogatott 2. generációs virtuális gépet](#generation-2-vm-sizes).
@@ -220,6 +222,6 @@ A 2. generációs virtuális gépeket virtuálisgép-méretezési csoportok hasz
     1. A **speciális** lapon ellenőrizze, hogy a virtuálisgép- **létrehozási** tulajdonság a **Gen 2** értékre van-e beállítva.
     1. Győződjön meg arról, hogy olyan virtuálisgép- [méretet keres, amely támogatja a Gen2 virtuális gépeket](#generation-2-vm-sizes).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerkedjen meg a [2. generációs virtuális gépekkel a Hyper-V-ben](/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).

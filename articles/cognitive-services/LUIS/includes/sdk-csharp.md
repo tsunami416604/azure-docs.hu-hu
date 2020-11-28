@@ -8,12 +8,12 @@ ms.subservice: language-understanding
 ms.date: 09/01/2020
 ms.topic: include
 ms.custom: include file, devx-track-dotnet, cog-serv-seo-aug-2020
-ms.openlocfilehash: 0703c85b15ab2bc9967d78f8ec1ecb499a22ca05
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: a79f164a1733c46a4cca807403a7ead8df446f0a
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95098192"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96303672"
 ---
 Használja a .NET-hez készült Language Understanding (LUIS) ügyféloldali kódtárait a következőhöz:
 * Alkalmazás létrehozása
@@ -82,7 +82,7 @@ A Language Understanding (LUIS) authoring Client egy [LUISAuthoringClient](/dotn
 Az ügyfél létrehozása után ezt az ügyfelet használhatja a következő funkciók eléréséhez, többek között:
 
 * Alkalmazások – [Létrehozás](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.appsextensions.addasync?view=azure-dotnet), [Törlés](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.appsextensions.deleteasync?view=azure-dotnet), [Közzététel](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.appsextensions.publishasync?view=azure-dotnet)
-* Példa: hosszúságú kimondott szöveg- [Hozzáadás](//dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.examplesextensions.addasync?view=azure-dotnet), [Törlés azonosító alapján](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.examplesextensions.deleteasync?view=azure-dotnet)
+* Példa: hosszúságú kimondott szöveg- [Hozzáadás](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.examplesextensions?view=azure-dotnet), [Törlés azonosító alapján](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.examplesextensions.deleteasync?view=azure-dotnet)
 * Funkciók – [kifejezések listája](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.featuresextensions.addphraselistasync?view=azure-dotnet)
 * Modell – [leképezések](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.modelextensions?view=azure-dotnet) és entitások kezelése
 * Minta – [minták](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.patternextensions?view=azure-dotnet) kezelése
@@ -180,7 +180,7 @@ Adja hozzá például a hosszúságú kimondott szöveg egy [ExampleLabelObject]
 
 :::image type="content" source="../media/quickstart-sdk/labeled-example-machine-learned-entity.png" alt-text="Részleges képernyőkép, amely a címkével ellátott példát mutatja a portálon. ":::
 
-Hívja meg a [példákat. AddAsync](//dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.examplesextensions.addasync?view=azure-dotnet) az alkalmazás azonosítóját, a verziószámot és a példát.
+Hívja meg a [példákat. AddAsync](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.examplesextensions?view=azure-dotnet) az alkalmazás azonosítóját, a verziószámot és a példát.
 
 [!code-csharp[Add example utterance to intent](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=AuthoringAddLabeledExamples)]
 
