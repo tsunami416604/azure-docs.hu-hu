@@ -6,15 +6,15 @@ author: ggailey777
 manager: cfowler
 ms.service: azure-functions
 ms.topic: include
-ms.date: 12/09/2019
+ms.date: 11/27/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 23f342b7e6151657a93af6c83f7b73d102167bd8
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 78b94dad03200d25bd29861acc92b10037a81238
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94633408"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309705"
 ---
 |Nyelv                                 |1. x         |2. x| 3. x |
 |-----------------------------------------|------------|---| --- |
@@ -28,4 +28,5 @@ ms.locfileid: "94633408"
 
 <sup>*</sup> A transpiling-en keresztül támogatott a JavaScripthez.
 
+A támogatott nyelvi verziókkal kapcsolatos további információkért tekintse meg a Language-specifikus fejlesztői útmutató című cikket.   
 További információ a nyelvi támogatás tervezett változásairól: [Azure-ütemterv](https://azure.microsoft.com/roadmap/?tag=functions).

@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: bd929d06bca370ffab53ce2023188bc12a1d8bd1
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d2e93ccfaf3ff2c5b74ceef1f6a274f71ee52c4e
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186439"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309834"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Log Analytics munkaterület-adatexportálás Azure Monitorban (előzetes verzió)
 Log Analytics munkaterület-adatexportálás Azure Monitor lehetővé teszi, hogy folyamatosan exportálja a Log Analytics munkaterület kijelölt tábláiból származó adatokat egy Azure Storage-fiókba vagy az Azure-Event Hubsba az összegyűjtött adatok alapján. Ez a cikk részletesen ismerteti ezt a funkciót, valamint az adatexportálás konfigurálásának lépéseit a munkaterületeken.
@@ -118,6 +118,10 @@ Ha úgy állította be a Storage-fiókot, hogy az engedélyezze a hozzáférést
 Az adatexportálási szabály a táblák egy adott célhelyére exportálandó adatmennyiséget határozza meg. Minden célhoz létrehozhat egy szabályt.
 
 
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+N/A
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Az alábbi CLI-paranccsal megtekintheti a munkaterületen lévő táblákat. Ez segíthet a kívánt táblák másolásában és az adatexportálási szabályban való felvételében.
@@ -203,6 +207,10 @@ Az alábbi példa egy Event hub REST-kérelmére szolgál, ahol az Event hub nev
 
 ## <a name="view-data-export-configuration"></a>Adatexportálási konfiguráció megtekintése
 
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+N/A
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Az alábbi parancs használatával megtekintheti az adatexportálási szabály konfigurációját a parancssori felület használatával.
@@ -221,6 +229,10 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 ---
 
 ## <a name="disable-an-export-rule"></a>Exportálási szabály letiltása
+
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+N/A
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -256,6 +268,10 @@ Content-type: application/json
 
 ## <a name="delete-an-export-rule"></a>Exportálási szabály törlése
 
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+N/A
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Az alábbi parancs használatával törölhet egy adatexportálási szabályt a parancssori felület használatával.
@@ -274,6 +290,10 @@ DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegrou
 ---
 
 ## <a name="view-all-data-export-rules-in-a-workspace"></a>A munkaterület összes adatexportálási szabályának megtekintése
+
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+N/A
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -476,6 +496,6 @@ A támogatott táblázatok jelenleg az alább megadott értékekre korlátozódn
 | WVDManagement | |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az exportált adatok lekérdezése az Azure Adatkezelőból](azure-data-explorer-query-storage.md).

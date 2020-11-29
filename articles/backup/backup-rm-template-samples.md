@@ -4,12 +4,12 @@ description: Azure Resource Manager sablonok Recovery Services-tárolók és Azu
 ms.topic: sample
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: 29a2499bfd3125cad98e72f7543bb9a29293f624
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a4c2f444cb821f7979571b9d777895a59450e7c2
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88755194"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309579"
 ---
 # <a name="azure-resource-manager-templates-for-azure-backup"></a>Azure Resource Manager-sablonok az Azure Backuphoz
 
@@ -29,4 +29,6 @@ A következő táblázat a helyreállítási tárakhoz és az Azure Backup funkc
 | [Azure Monitor naplók használata a Azure Backup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-backup-oms-monitoring) | A sablon Azure Monitor naplókat helyez üzembe Azure Backupokkal, amelyekkel figyelheti a biztonsági mentési és visszaállítási feladatokat, a biztonsági mentési riasztásokat és a Recovery Services-tárolókban használt Felhőbeli tárhelyet.|  
 |**SQL Server biztonsági mentése az Azure-beli virtuális gépen** |  |
 | [SQL Server biztonsági mentése az Azure-beli virtuális gépen](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-vm-workload-backup) | A sablon létrehoz egy Recovery Services-tárolót és a munkaterhelés-specifikus biztonsági mentési szabályzatot. Regisztrálja a virtuális gépet Azure Backup szolgáltatással, és konfigurálja a védelmet a virtuális gépen. Jelenleg csak az SQL Gallery-lemezképek esetében működik. |
+|**Azure-fájlmegosztások biztonsági mentése** |  |
+| [Azure-fájlmegosztások biztonsági mentése](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-backup-file-share) | Ez a sablon egy meglévő Azure-fájlmegosztás védelmét konfigurálja úgy, hogy megadja a Recovery Services tár és a biztonsági mentési szabályzat megfelelő részleteit. Opcionálisan létrehoz egy új Recovery Services-tárolót és egy biztonsági mentési szabályzatot, és regisztrálja a fájlmegosztást tartalmazó Storage-fiókot a Recovery Services-tárolóban. |
 |   |   |

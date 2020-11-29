@@ -12,12 +12,12 @@ ms.date: 11/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4426a305d72fdd86ee58b3f4a05153593515d4b5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7c6ba79a82fe3d291008f3317ddce7df4adcda0a
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949649"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309647"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML-alkalmazás regisztrálása Azure AD B2C
 
@@ -36,7 +36,7 @@ Azure AD B2C az SAML együttműködési képességet kétféleképpen éri el:
 
 A két nem kizárólagos alapszintű forgatókönyvek összefoglalása az SAML használatával:
 
-| Használati eset | Azure AD B2C szerepkör | Használati útmutató |
+| Forgatókönyv | Azure AD B2C szerepkör | Használati útmutató |
 | -------- | ----------------- | ------- |
 | Az alkalmazás egy SAML-állítást vár a hitelesítés elvégzéséhez. | **Azure AD B2C identitás-szolgáltatóként (identitásszolgáltató) működik**<br />Azure AD B2C SAML-identitásszolgáltató viselkedik az alkalmazásokban. | Ez a cikk. |
 | A felhasználóknak egyszeri bejelentkezésre van szükségük egy SAML-kompatibilis identitás-szolgáltatóval, például az ADFS, a Salesforce vagy a Shibboleth.  | **Azure AD B2C szolgáltatóként működik (SP)**<br />A Azure AD B2C szolgáltatóként működik, amikor az SAML-identitás szolgáltatóhoz csatlakozik. Ez egy összevonási proxy az alkalmazás és a SAML-identitás szolgáltatója között.  | <ul><li>[Bejelentkezés beállítása SAML-identitásszolgáltató az ADFS-ben egyéni szabályzatok használatával](identity-provider-adfs2016-custom.md)</li><li>[Bejelentkezés beállítása Salesforce SAML-szolgáltatóval egyéni szabályzatok használatával](identity-provider-salesforce-custom.md)</li></ul> |
@@ -443,7 +443,7 @@ A saját metaadat-végponton keresztül a következő, SAML-függő entitások (
 
 Az SAML-token olyan biztonsági jogkivonat, amelyet a sikeres bejelentkezés után Azure AD B2C állít ki. A felhasználóval, a szolgáltatóval kapcsolatos információkat tartalmaz, amelyek esetében a jogkivonat célja, aláírása és érvényességi ideje. A következő táblázat felsorolja azokat a jogcímeket és tulajdonságokat, amelyeket Azure AD B2C által kiállított SAML-jogkivonatban várhat.
 
-|Elem  |Tulajdonság  |Megjegyzések  |
+|Elem  |Tulajdonság  |Jegyzetek  |
 |---------|---------|---------|
 |`<Response>`| `ID` | A válasz automatikusan generált egyedi azonosítója. | 
 |`<Response>`| `InResponseTo` | Annak az SAML-kérésnek az azonosítója, amelyre ez az üzenet válaszol. | 
@@ -453,11 +453,11 @@ Az SAML-token olyan biztonsági jogkivonat, amelyet a sikeres bejelentkezés ut�
 |`<Response>` `<Assertion>` `<Subject>` `<NameID>`     |         |Az a rendszerbiztonsági tag, amelyről a jogkivonat adatokat érvényesít, például a felhasználói objektum AZONOSÍTÓját. Ez az érték nem módosítható, és nem rendelhető hozzá újra, és nem használható újra. Az engedélyezési ellenőrzések biztonságos elvégzésére használható, például ha a jogkivonat egy erőforrás elérésére szolgál. Alapértelmezés szerint a tulajdonos jogcímet a rendszer a címtárban lévő felhasználó objektumazonosító alapján tölti fel.|
 |`<Response>` `<Assertion>` `<Subject>` `<NameID>`     | `Format` | A karakterlánc-alapú azonosító adatainak besorolását jelölő URI-hivatkozás. Alapértelmezés szerint ez a tulajdonság nincs megadva. A függő entitás [SubjectNamingInfo](relyingparty.md#subjectnaminginfo) beállíthatja a formátum megadását `NameID` , például: `urn:oasis:names:tc:SAML:2.0:nameid-format:transient` . |
 |`<Response>` `<Assertion>` `<Subject>` `<Conditions>` |`NotBefore` |Az az időpont, amikor a jogkivonat érvényes lesz. Az időérték az UTC szerint van kódolva. Az alkalmazásnak ezt a jogcímet kell használnia a jogkivonat élettartamának érvényességének ellenőrzéséhez. Ha módosítani szeretné a jogkivonat élettartamának beállításait, állítsa be az `TokenNotBeforeSkewInSeconds` SAML-jogkivonat kiadása technikai profil [metaadatait](saml-issuer-technical-profile.md#metadata) . |
-|`<Response>` `<Assertion>` `<Subject>` `<Conditions>` | `NotOnOrAfter` | Az az idő, amikor a jogkivonat érvénytelenné válik. Az alkalmazásnak ezt a jogcímet kell használnia a jogkivonat élettartamának érvényességének ellenőrzéséhez. Az érték 15 perccel a és a `NotBefore` nem módosítható.|
+|`<Response>` `<Assertion>` `<Subject>` `<Conditions>` | `NotOnOrAfter` | Az az idő, amikor a jogkivonat érvénytelenné válik. Az alkalmazásnak ezt a jogcímet kell használnia a jogkivonat élettartamának érvényességének ellenőrzéséhez. Az alapértelmezett érték 5 perccel a és a frissítése után, az `NotBefore` `TokenLifeTimeInSeconds` SAML-jogkivonat kiadása technikai profil [metaadatainak](saml-issuer-technical-profile.md#metadata) hozzáadásával.|
 |`<Response>` `<Assertion>` `<Conditions>` `<AudienceRestriction>` `<Audience>` | |Egy célközönséget azonosító URI-hivatkozás. Azonosítja a jogkivonat kívánt címzettjét. Az érték megegyezik az SAML-kérelemmel `AssertionConsumerServiceURL` .|
 |`<Response>``<Assertion>` `<AttributeStatement>` gyűjtemény`<Attribute>` | | Kijelentések gyűjteménye (jogcímek), a [függő entitások technikai profiljának](relyingparty.md#technicalprofile) kimeneti jogcímeiben konfiguráltak szerint. Az állítás nevét a kimeneti jogcím beállításával állíthatja be `PartnerClaimType` . |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információt az [SAML-protokollról az Oasis webhelyén](https://www.oasis-open.org/)talál.
 - Szerezze be az SAML-teszt webalkalmazást [Azure ad B2C GitHub közösségi](https://github.com/azure-ad-b2c/saml-sp-tester)adattárból.

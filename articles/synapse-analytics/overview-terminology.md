@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 11/18/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0e637a09a5305e314a32b1cac34b2da669eec614
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 60c3fc6688dc4a25faf5ed94df25055e29d34403
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296199"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309817"
 ---
 # <a name="azure-synapse-analytics-terminology"></a>Az Azure szinapszis Analytics terminológiája
 
@@ -36,8 +36,7 @@ A munkaterület tetszőleges számú **társított szolgáltatást** tartalmazha
 
 A **SZINAPSZIS SQL** lehetővé teszi a T-SQL-alapú elemzések elvégzését a szinapszis munkaterületen. A szinapszis SQL két felhasználási modellt tartalmaz: dedikált és kiszolgáló nélküli.  A dedikált modell esetében használjon **DEDIKÁLT SQL-készleteket**. A munkaterület tetszőleges számú készlettel rendelkezhet. A kiszolgáló nélküli modell használatához használja a kiszolgáló nélküli **SQL-készleteket**. Minden munkaterülethez tartozik egy ilyen készlet.
 
-* **SQL-kérelem** – művelet, például egy lekérdezés dedikált SQL-készleten vagy kiszolgáló nélküli SQL-készleten keresztüli futtatása.
-* **SQL-parancsfájl** – egy fájlba mentett SQL-parancsok készlete. Egy SQL-parancsfájl egy vagy több SQL-utasítást is tartalmazhat. Az SQL-kérelmeket dedikált SQL-készlet vagy kiszolgáló nélküli SQL-készlet használatával futtathatja.
+A szinapszis Studióban az SQL-készleteket **SQL-parancsfájlok** létrehozásával és futtatásával is használhatja.
 
 ## <a name="apache-spark-for-synapse"></a>A szinapszis Apache Spark
 
@@ -57,7 +56,7 @@ A folyamatok az Azure szinapszis adatintegrációját biztosítják – lehetőv
 * **Trigger** – folyamat végrehajtása. Futtatható manuálisan vagy automatikusan (Schedule, bukdácsoló ablak vagy eseményvezérelt)
 * **Integrációs adatkészlet** – olyan adatok elnevezett nézete, amelyek egyszerűen rámutatnak vagy hivatkoznak egy tevékenységben bemenetként és kimenetként használandó adatokra. Egy társított szolgáltatáshoz tartozik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Ismerkedés az Azure szinapszis Analytics szolgáltatással](get-started.md)
 * [Munkaterület létrehozása](quickstart-create-workspace.md)

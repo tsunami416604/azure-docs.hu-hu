@@ -3,37 +3,69 @@ title: Az Azure Kubernetes szolgáltatás (ak) csomópont-rendszerképeinek fris
 description: Ismerje meg, hogyan frissítheti a lemezképeket az AK-fürtcsomópontok és-csomópontok csomópontjain.
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 11/17/2020
-ms.openlocfilehash: 211190228c1ea9c98004b55da96ad38808821d67
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.date: 11/25/2020
+ms.author: jpalma
+ms.openlocfilehash: e8214345bd1c328f0996f8aa8a2a8bb402a76e8d
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682383"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309596"
 ---
 # <a name="azure-kubernetes-service-aks-node-image-upgrade"></a>Az Azure Kubernetes szolgáltatás (ak) csomópont-rendszerképének frissítése
 
-Az AK támogatja a lemezképek frissítését egy csomóponton, hogy naprakész legyen a legújabb operációsrendszer-és futtatókörnyezet-frissítésekkel. Az AK egy új rendszerképet biztosít hetente a legújabb frissítésekkel, így hasznos lehet a csomópontok képeit rendszeresen frissíteni a legújabb funkciókhoz, beleértve a Linux vagy a Windows rendszerű javításokat is. Ebből a cikkből megtudhatja, hogyan frissítheti az AK-fürtcsomópontok lemezképeit, és hogyan frissítheti a csomópont-készlet lemezképeit a Kubernetes verziójának frissítése nélkül.
+Az AK támogatja a lemezképek frissítését egy csomóponton, hogy naprakész legyen a legújabb operációsrendszer-és futtatókörnyezet-frissítésekkel. Az AK egy új rendszerképet biztosít hetente a legújabb frissítésekkel, így hasznos lehet a csomópontok képeit rendszeresen frissíteni a legújabb funkciókhoz, beleértve a Linux vagy a Windows rendszerű javításokat is. Ez a cikk bemutatja, hogyan frissítheti az AK-fürtcsomópontok lemezképeit, és hogyan frissítheti a csomópont-készlet lemezképeit a Kubernetes verziójának frissítése nélkül.
 
-Ha érdekli az AK által nyújtott legújabb rendszerképek megismerése, további részletekért tekintse meg az [AK kibocsátási megjegyzéseit](https://github.com/Azure/AKS/releases) .
+Az AK által biztosított legújabb rendszerképekkel kapcsolatos további információkért tekintse meg az [AK kibocsátási megjegyzéseit](https://github.com/Azure/AKS/releases).
 
 További információ a fürt Kubernetes-verziójának frissítéséről: [AK-fürt frissítése][upgrade-cluster].
 
-## <a name="limitations"></a>Korlátozások
+> [!NOTE]
+> Az AK-fürtnek virtuálisgép-méretezési csoportokat kell használnia a csomópontokhoz.
 
-* Az AK-fürtnek virtuálisgép-méretezési csoportokat kell használnia a csomópontokhoz.
+## <a name="check-if-your-node-pool-is-on-the-latest-node-image"></a>Ellenőrizze, hogy a csomópont-készlet a legújabb csomópont-lemezképen van-e
 
-## <a name="install-the-aks-cli-extension"></a>Az AK CLI-bővítmény telepítése
-
-A következő alapvető CLI-verzió kiadása előtt a Node-rendszerkép frissítéséhez az *AK-előnézet CLI-* bővítményre van szükség. Használja az az [Extension Add][az-extension-add] parancsot, majd az az [Extension Update][az-extension-update] paranccsal keresse meg a rendelkezésre álló frissítéseket:
+Az alábbi paranccsal megtekintheti, hogy mi a csomópont-rendszerkép a Node-készlethez elérhető legfrissebb verziója: 
 
 ```azurecli
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
+az aks nodepool get-upgrades \
+    --nodepool-name mynodepool \
+    --cluster-name myAKSCluster \
+    --resource-group myResourceGroup
 ```
+
+A kimenetben a következő példában láthatók `latestNodeImageVersion` :
+
+```output
+{
+  "id": "/subscriptions/XXXX-XXX-XXX-XXX-XXXXX/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster/agentPools/nodepool1/upgradeProfiles/default",
+  "kubernetesVersion": "1.17.11",
+  "latestNodeImageVersion": "AKSUbuntu-1604-2020.10.28",
+  "name": "default",
+  "osType": "Linux",
+  "resourceGroup": "myResourceGroup",
+  "type": "Microsoft.ContainerService/managedClusters/agentPools/upgradeProfiles",
+  "upgrades": null
+}
+```
+
+Így `nodepool1` a legújabb csomópont-lemezkép elérhető `AKSUbuntu-1604-2020.10.28` . Most összehasonlíthatja azt a Node-készlet aktuális, a csomópont által használt verziójával, a futtatásával:
+
+```azurecli
+az aks nodepool show \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name mynodepool \
+    --query nodeImageVersion
+```
+
+Példa:
+
+```output
+"AKSUbuntu-1604-2020.10.08"
+```
+
+Így ebben a példában az aktuális `AKSUbuntu-1604-2020.10.08` lemezkép-verzióról a legújabb verzióra frissíthet `AKSUbuntu-1604-2020.10.28` . 
 
 ## <a name="upgrade-all-nodes-in-all-node-pools"></a>Az összes csomópont összes csomópontjának frissítése
 
@@ -64,7 +96,7 @@ az aks show \
 
 Egy csomópont-készlet rendszerképének frissítése hasonló a fürtön lévő rendszerkép frissítéséhez.
 
-Ha a Kubernetes-fürt frissítésének végrehajtása nélkül szeretné frissíteni a csomópont operációsrendszer-rendszerképét, használja a `--node-image-only` következő példában szereplő beállítást:
+Ha a Kubernetes frissítése nélkül szeretné frissíteni a csomópont operációsrendszer-rendszerképét, használja a `--node-image-only` következő példában szereplő beállítást:
 
 ```azurecli
 az aks nodepool upgrade \
@@ -122,7 +154,7 @@ az aks nodepool show \
     --name mynodepool
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A legújabb csomópont-lemezképekkel kapcsolatos információkért tekintse meg az [AK kibocsátási megjegyzéseit](https://github.com/Azure/AKS/releases) .
 - Ismerje meg, hogyan frissítheti a Kubernetes-verziót [egy AK-fürt frissítésével][upgrade-cluster].

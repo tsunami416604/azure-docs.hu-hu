@@ -4,12 +4,12 @@ description: Azure Functions támogatja a futtatókörnyezet több verzióját. 
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 12/09/2019
-ms.openlocfilehash: c67708b5c23667a7b0a1603b756d564b35fa0c3f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3997c5e79192f4386ee5280350620a748dd1489b
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533735"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309706"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions futtatókörnyezet-verziók áttekintése
 
@@ -27,8 +27,6 @@ A 2. x verziótól kezdődően a futtatókörnyezet nyelvi bővíthetőségi mod
 A következő táblázat azt mutatja be, hogy mely programozási nyelvek támogatottak az egyes futtatókörnyezet-verziókban.
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
-
-További információt a [támogatott nyelvek](supported-languages.md) ismertetésében talál.
 
 ## <a name="run-on-a-specific-version"></a><a name="creating-1x-apps"></a>Futtatás adott verzión
 
@@ -194,7 +192,7 @@ A következő táblázat bemutatja, hogy az egyes futásidejű verziók milyen k
 
 [!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkat találhat az alábbi forrásokban:
 

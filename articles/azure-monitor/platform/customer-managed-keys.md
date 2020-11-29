@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 11/18/2020
-ms.openlocfilehash: ac785b3ad534e80d4dd240d1a29ba5f6aa75e10a
-ms.sourcegitcommit: 236014c3274b31f03e5fcee5de510f9cacdc27a0
+ms.openlocfilehash: 6264ea50f128764a5213a7a1fd9b8c47ddae8961
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96299039"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309681"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor – ügyfél által kezelt kulcs 
 
@@ -76,7 +76,23 @@ Customer-Managed kulcs konfigurálása nem támogatott a Azure Portal és a kié
 
 ### <a name="asynchronous-operations-and-status-check"></a>Aszinkron műveletek és állapot-ellenőrzések
 
-Néhány konfigurációs lépés aszinkron módon fut, mert nem hajthatók végre gyorsan. A REST használatakor a válasz kezdetben egy 200-as HTTP-állapotkódot (OK) és egy, az *Azure-AsyncOperation* tulajdonsággal rendelkező fejlécet ad vissza, ha elfogadják:
+Néhány konfigurációs lépés aszinkron módon fut, mert nem hajthatók végre gyorsan. A `status` válaszban a következők egyike lehet: "Inprogress", "frissítés", "Törlés", "sikeres" vagy "sikertelen", beleértve a hibakódot.
+
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+N/A
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+N/A
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+N/A
+
+# <a name="rest"></a>[REST](#tab/rest)
+
+A REST használatakor a válasz kezdetben egy 200-as HTTP-állapotkódot (OK) és egy, az *Azure-AsyncOperation* tulajdonsággal rendelkező fejlécet ad vissza, ha elfogadják:
 ```json
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
 ```
@@ -87,7 +103,7 @@ GET https://management.azure.com/subscriptions/subscription-id/providers/microso
 Authorization: Bearer <token>
 ```
 
-A `status` válaszban a következők egyike lehet: "Inprogress", "frissítés", "Törlés", "sikeres" vagy "sikertelen", beleértve a hibakódot.
+---
 
 ### <a name="allowing-subscription"></a>Előfizetés engedélyezése
 
@@ -137,16 +153,25 @@ Frissítse a KeyVaultProperties a fürtben a kulcs azonosítójának részleteiv
 
 A művelet aszinkron, és hosszabb időt is igénybe vehet.
 
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+N/A
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 ```azurecli
 az monitor log-analytics cluster update --name "cluster-name" --resource-group "resource-group-name" --key-name "key-name" --key-vault-uri "key-uri" --key-version "key-version"
 ```
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -KeyVaultUri "key-uri" -KeyName "key-name" -KeyVersion "key-version"
 ```
 
+# <a name="rest"></a>[REST](#tab/rest)
+
 ```rst
-PATCH https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/cluster-name"?api-version=2020-08-01
+PATCH https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/cluster-name?api-version=2020-08-01
 Authorization: Bearer <token> 
 Content-type: application/json
  
@@ -200,6 +225,8 @@ A kérésre adott válasznak a következőhöz hasonlóan kell kinéznie, amikor
 }
 ```
 
+---
+
 ### <a name="link-workspace-to-cluster"></a>Munkaterület csatolása a fürthöz
 
 A művelet végrehajtásához "írási" engedélyekkel kell rendelkeznie a munkaterület és a fürt számára, beleértve a következő műveleteket:
@@ -250,15 +277,25 @@ Ha saját tárolót (BYOS) használ, és összekapcsolja azt a munkaterülettel,
 
 Storage-fiók összekapcsolása *a* munkaterülethez – a *mentett keresési* lekérdezések a Storage-fiókba lesznek mentve. 
 
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+N/A
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 ```azurecli
 $storageAccountId = '/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage name>'
 az monitor log-analytics workspace linked-storage create --type Query --resource-group "resource-group-name" --workspace-name "workspace-name" --storage-accounts $storageAccountId
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"
 New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -DataSourceType Query -StorageAccountIds $storageAccount.Id
 ```
+
+# <a name="rest"></a>[REST](#tab/rest)
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Query?api-version=2020-08-01
@@ -276,21 +313,33 @@ Content-type: application/json
 }
 ```
 
+---
+
 A konfiguráció után a rendszer minden új *mentett keresési* lekérdezést ment a tárolóba.
 
 **BYOS konfigurálása a log-riasztási lekérdezésekhez**
 
 Storage-fiók csatolása a munkaterülethez tartozó *riasztásokhoz* – a *log-riasztási* lekérdezések mentése a Storage-fiókba történik. 
 
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+N/A
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 ```azurecli
 $storageAccountId = '/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage name>'
 az monitor log-analytics workspace linked-storage create --type ALerts --resource-group "resource-group-name" --workspace-name "workspace-name" --storage-accounts $storageAccountId
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"
 New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -DataSourceType Alerts -StorageAccountIds $storageAccount.Id
 ```
+
+# <a name="rest"></a>[REST](#tab/rest)
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Alerts?api-version=2020-08-01
@@ -308,9 +357,12 @@ Content-type: application/json
 }
 ```
 
+---
+
 A konfiguráció után a rendszer minden új riasztási lekérdezést ment a tárolóba.
 
 ## <a name="customer-lockbox-preview"></a>Ügyfélszéf (előzetes verzió)
+
 A kulcstároló segítségével engedélyezheti vagy elutasíthatja a Microsoft mérnök kérelmét, hogy támogatási kérelem során hozzáférjen az adataihoz.
 
 A Azure Monitor a Log Analytics dedikált fürthöz társított munkaterületeken található adathoz irányítja ezt a vezérlőt. A kulcstároló-vezérlő a Log Analytics dedikált fürtben tárolt adatra vonatkozik, ahol a rendszer elkülönítetten tárolja a fürt Storage-fiókjaiban a kulcstároló által védett előfizetését.  
@@ -321,13 +373,23 @@ További információ a [Microsoft Azure Ügyfélszéfről](../../security/funda
 
 - **Erőforráscsoport összes fürtjének beolvasása**
   
+  # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+  N/A
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
   ```azurecli
   az monitor log-analytics cluster list --resource-group "resource-group-name"
   ```
 
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Get-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name"
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rst
   GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-08-01
@@ -369,15 +431,27 @@ További információ a [Microsoft Azure Ügyfélszéfről](../../security/funda
   }
   ```
 
+  ---
+
 - **Egy előfizetésben lévő összes fürt beolvasása**
+
+  # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+  N/A
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
   ```azurecli
   az monitor log-analytics cluster list
   ```
 
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Get-AzOperationalInsightsCluster
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rst
   GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-08-01
@@ -388,17 +462,29 @@ További információ a [Microsoft Azure Ügyfélszéfről](../../security/funda
     
   Ugyanaz a válasz, mint a "fürterőforrás fürtje", de az előfizetés hatókörében.
 
+  ---
+
 - ***Kapacitás foglalásának* frissítése a fürtben**
 
   Ha a csatolt munkaterületekhez tartozó adatmennyiség idővel módosul, és a kapacitás foglalási szintjét megfelelően szeretné frissíteni. Kövesse a [fürt frissítése](#update-cluster-with-key-identifier-details) című témakört, és adja meg az új kapacitás értékét. A 1000 és 3000 GB közötti tartományban, illetve a 100-as lépéseknél lehet. A napi 3000 GB-nál nagyobb szint esetén a Microsoft-kapcsolattartóval engedélyezheti. Vegye figyelembe, hogy nem kell megadnia a teljes REST-kérelem törzsét, de tartalmaznia kell az SKU-t:
+
+  # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+  N/A
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
   ```azurecli
   az monitor log-analytics cluster update --name "cluster-name" --resource-group "resource-group-name" --sku-capacity daily-ingestion-gigabyte
   ```
 
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -SkuCapacity daily-ingestion-gigabyte
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rst
   PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
@@ -413,6 +499,8 @@ További információ a [Microsoft Azure Ügyfélszéfről](../../security/funda
   }
   ```
 
+  ---
+
 - ***BillingType* frissítése a fürtben**
 
   A *billingType* tulajdonság határozza meg a fürt és a hozzá tartozó információk számlázási hozzárendelését:
@@ -420,6 +508,20 @@ További információ a [Microsoft Azure Ügyfélszéfről](../../security/funda
   - *munkaterületek* – a számlázás a munkaterületek arányosan üzemelő előfizetésekhez van hozzárendelve.
   
   Hajtsa végre a [frissítési fürtöt](#update-cluster-with-key-identifier-details) , és adja meg az új billingType értéket. Vegye figyelembe, hogy nem kell megadnia a teljes REST-kérelem törzsét, és tartalmaznia kell a *billingType*:
+
+  # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+  N/A
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+  N/A
+
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+  N/A
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rst
   PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
@@ -433,36 +535,67 @@ További információ a [Microsoft Azure Ügyfélszéfről](../../security/funda
   }
   ``` 
 
+  ---
+
 - **Munkaterület leválasztása**
 
   A művelet végrehajtásához a munkaterületen és a fürtön a "Write" engedélyek szükségesek. Bármikor leválaszthat egy munkaterületet a fürtből. Az új betöltött adatmennyiséget a leválasztási művelet Log Analytics tárolóban és a Microsoft-kulccsal titkosított formában tárolja. Lekérdezheti a munkaterületre betöltött adatmennyiséget a kapcsolat zökkenőmentes leválasztása előtt és után, ha a fürt kiépítve és érvényes Key Vault kulccsal van konfigurálva.
 
   Ez a művelet aszinkron, és egy darabig elvégezhető.
 
+  # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+  N/A
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
   ```azurecli
   az monitor log-analytics workspace linked-service delete --resource-group "resource-group-name" --name "cluster-name" --workspace-name "workspace-name"
   ```
 
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Remove-AzOperationalInsightsLinkedService -ResourceGroupName "resource-group-name" -Name "workspace-name" -LinkedServiceName cluster
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rest
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-08-01
   Authorization: Bearer <token>
   ```
 
+  ---
+
   - **Munkaterület-hivatkozás állapotának megtekintése**
   
   Hajtsa végre a Get műveletet a munkaterületen, és figyelje meg, hogy a *clusterResourceId* tulajdonság szerepel-e a válaszban a *szolgáltatások* területen. Egy csatolt munkaterület a *clusterResourceId* tulajdonsággal fog rendelkezni.
+
+  # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+  N/A
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
   ```azurecli
   az monitor log-analytics cluster show --resource-group "resource-group-name" --name "cluster-name"
   ```
 
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Get-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
+
+   ```rest
+  GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>?api-version=2020-08-01
+  Authorization: Bearer <token>
+  ```
+
+  ---
 
 - **Fürt törlése**
 
@@ -470,18 +603,30 @@ További információ a [Microsoft Azure Ügyfélszéfről](../../security/funda
   
   A leválasztási művelet aszinkron, és akár 90 percet is igénybe vehet.
 
+  # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+  N/A
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
   ```azurecli
   az monitor log-analytics cluster delete --resource-group "resource-group-name" --name "cluster-name"
   ```
- 
+
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Remove-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name"
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rst
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
   Authorization: Bearer <token>
   ```
+
+  ---
   
 - **A fürt és az adatok helyreállítása** 
   

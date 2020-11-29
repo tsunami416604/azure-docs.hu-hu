@@ -1,16 +1,16 @@
 ---
-title: A Azure Backup újdonságai
+title: Az Azure Backup újdonságai
 description: Ismerkedjen meg a Azure Backup új szolgáltatásaival.
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: e48a7df1e42591843c30b77026a4d8656773a57d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ba29ddea5d5f096640f2bfc012c44ab06bb3e131
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95511506"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309664"
 ---
-# <a name="whats-new-in-azure-backup"></a>A Azure Backup újdonságai
+# <a name="whats-new-in-azure-backup"></a>Az Azure Backup újdonságai
 
 A Azure Backup folyamatosan fejleszti és felszabadítja az Azure-ban tárolt adatai védelmét javító új funkciókat. Ezek az új funkciók kibővítik az adatvédelmet az új számítási feladatokra, javítják a biztonságot, és javítják a biztonsági mentési adatok rendelkezésre állását. Emellett új felügyeleti, monitorozási és automatizálási képességeket is felvehetnek.
 
@@ -19,6 +19,7 @@ Az új kiadásokról további információt az oldal könyvjelzővel vagy a [fri
 ## <a name="updates-summary"></a>Frissítések összegzése
 
 - 2020. november
+  - [Az Azure file share (AFS) biztonsági mentésének Azure Resource Manager sablonja](#azure-resource-manager-template-for-afs-backup)
   - [Az Azure-beli virtuális gépeken SAP HANA adatbázisok növekményes biztonsági mentései](#incremental-backups-for-sap-hana-databases)
 - 2020. szeptember
   - [Biztonsági mentési központ](#backup-center)
@@ -30,6 +31,12 @@ Az új kiadásokról további információt az oldal könyvjelzővel vagy a [fri
   - [Backup SAP HANA a RHEL Azure-ban Virtual Machines](#backup-sap-hana-in-rhel-azure-virtual-machines)
   - [A zóna redundáns tárolója (ZRS) a biztonsági másolati adatként](#zone-redundant-storage-zrs-for-backup-data)
   - [Az Azure-beli virtuális gépek SQL Server és SAP HANA számítási feladatainak törlése](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="azure-resource-manager-template-for-afs-backup"></a>Az AFS biztonsági mentésének Azure Resource Manager sablonja
+
+Azure Backup mostantól támogatja a meglévő Azure-fájlmegosztás biztonsági mentésének konfigurálását egy Azure Resource Manager-(ARM-) sablon használatával. A sablon egy meglévő Azure-fájlmegosztás védelmét konfigurálja úgy, hogy megadja a Recovery Services tár és a biztonsági mentési szabályzat megfelelő részleteit. Opcionálisan létrehoz egy új Recovery Services-tárolót és egy biztonsági mentési szabályzatot, és regisztrálja a fájlmegosztást tartalmazó Storage-fiókot a Recovery Services-tárolóban.
+
+További információ: Azure Resource Manager- [sablonok Azure Backuphoz](backup-rm-template-samples.md).
 
 ## <a name="incremental-backups-for-sap-hana-databases"></a>SAP HANA adatbázisok növekményes biztonsági mentései
 
@@ -99,6 +106,6 @@ Az Azure-beli virtuális gépekre vonatkozó, a Soft delete támogatása mellett
 
 További információ: az [Azure virtuális gépen futó SQL Server rendszerhez készült Soft delete és SAP HANA az Azure-beli virtuális](soft-delete-sql-saphana-in-azure-vm.md)gépek számítási feladataihoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Backup útmutató és ajánlott eljárások](guidance-best-practices.md)
