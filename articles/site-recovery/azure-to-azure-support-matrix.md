@@ -2,14 +2,14 @@
 title: Támogatási mátrix az Azure-beli virtuális gépek vész-helyreállításához Azure Site Recovery
 description: Összefoglalja az Azure-beli virtuális gépek vész-helyreállításának támogatását egy másodlagos régióba Azure Site Recovery használatával.
 ms.topic: article
-ms.date: 07/14/2020
+ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: 2391a4056d5c0c952677b57e7d37a181ef0eacc0
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 25fb28c8f420a64f60ab0d058c374f5de74ed883
+ms.sourcegitcommit: b849ecdc8aa97337299b0f09970b7810c59cd044
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95808865"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96310331"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure-beli virtuális gépek Azure-régiók közti vészhelyreállításának támogatási mátrixa
 
@@ -98,8 +98,8 @@ Windows 7 (x64) SP1-től | Az Azure-beli virtuális gépek mobilitási szolgált
 
 **Operációs rendszer** | **Részletek**
 --- | ---
-Red Hat Enterprise Linux | 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6,[7,7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [7,8](https://support.microsoft.com/help/4564347/), [7,9](https://support.microsoft.com/help/4578241/), [8,0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery), 8,1, [8,2](https://support.microsoft.com/help/4570609/)
-CentOS | 6,5, 6,6, 6,7, 6,8, 6,9, 6,10 </br> 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, 7,7, [7,8](https://support.microsoft.com/help/4564347/), [7,9 előzetes verzió](https://support.microsoft.com/help/4578241/), 7,9 ga verziója támogatott a 9,37 gyors javításának javításában * * </br> 8,0, 8,1, [8,2](https://support.microsoft.com/en-us/help/4570609)
+Red Hat Enterprise Linux | 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6,[7,7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [7,8](https://support.microsoft.com/help/4564347/), [7,9](https://support.microsoft.com/help/4578241/), [8,0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery), 8,1, [8,2](https://support.microsoft.com/help/4570609/), [8,3](https://support.microsoft.com/help/4597409).
+CentOS | 6,5, 6,6, 6,7, 6,8, 6,9, 6,10 </br> 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, 7,7, [7,8](https://support.microsoft.com/help/4564347/), [7,9 előzetes verzió](https://support.microsoft.com/help/4578241/), 7,9 (a ga verziója támogatott a gyorsjavítási 9,37 * *), [8,0, 8,1, 8,2](https://support.microsoft.com/en-us/help/4570609)
 Ubuntu 14,04 LTS-kiszolgáló | Az összes 14,04-es támogatását tartalmazza. *x* verzió; [Támogatott kernel-verziók](#supported-ubuntu-kernel-versions-for-azure-virtual-machines); 
 Ubuntu 16,04 LTS-kiszolgáló | Az összes 16,04-es támogatását tartalmazza. *x* verzió; [Támogatott kernel-verzió](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> A jelszó-alapú hitelesítést és bejelentkezést használó Ubuntu-kiszolgálók, valamint a Cloud-init csomag a felhőalapú virtuális gépek konfigurálásához előfordulhat, hogy a jelszó-alapú bejelentkezés le van tiltva a feladatátvételen (a cloudinit konfigurációjától függően). A jelszó alapú bejelentkezés a virtuális gépen újra engedélyezhető, ha alaphelyzetbe állítja a jelszót a támogatási > hibaelhárítási > beállítások menüjében (a Azure Portal a feladatátvételen átadott virtuális gép).
 Ubuntu 18,04 LTS-kiszolgáló | Az összes 18,04-es támogatását tartalmazza. *x* verzió; [Támogatott kernel-verzió](#supported-ubuntu-kernel-versions-for-azure-virtual-machines) |
@@ -111,10 +111,10 @@ SUSE Linux Enterprise Server 12 | SP1, SP2, SP3, SP4, SP5  [(támogatott kernel-
 SUSE Linux Enterprise Server 15 | 15, SP1, SP2[(támogatott kernel-verziók)](#supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 11 | SP3<br/><br/> A replikáló gépek SP3-ről SP4-re való frissítése nem támogatott. Ha egy replikált gépet frissítettek, le kell tiltania a replikálást, és újra engedélyeznie kell a replikálást a frissítés után.
 SUSE Linux Enterprise Server 11 | SP4
-Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery), [7,8](https://support.microsoft.com/help/4573888/), [8,0](https://support.microsoft.com/help/4573888/), [8,1](https://support.microsoft.com/help/4573888/)  <br/> A Red hat-kompatibilis kernel vagy a nem törhető vállalati kernel kiadásának futtatása 3, 4 & 5 (UEK3, UEK4, UEK5)<br/><br/>8.1<br/>Az összes UEK-kernel és a RedHat kernel <= 3.10.0-1062. * használata támogatott a [9,35](https://support.microsoft.com/help/4573888/) -as számú RedHat-kernel számára a [9,36](https://support.microsoft.com/help/4578241/) -es verzióban
+Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery), [7,8](https://support.microsoft.com/help/4573888/), [7,9](https://support.microsoft.com/help/4597409), [8,0](https://support.microsoft.com/help/4573888/), [8,1](https://support.microsoft.com/help/4573888/) (a Red hat kompatibilis kernel vagy nem törhető Enterprise kernel Release 3, 4 & 5 (UEK3, UEK4, UEK5)<br/><br/>8,1 (az összes UEK kernel és RedHat kernel <= 3.10.0-1062. * támogatott a [9,35](https://support.microsoft.com/help/4573888/)-es verzióban. A RedHat kernelek további támogatása a [9,36](https://support.microsoft.com/help/4578241/)-as verzióban érhető el.)
 
 > [!NOTE]
-> Győződjön meg arról, hogy a Linux-verziók esetében a Azure Site Recovery nem támogatja a testreszabott operációsrendszer-lemezképeket. Csak a terjesztési alverzió kiadásának vagy frissítésének részét képező állomány-kernelek támogatottak.
+> Linux-verziók esetében a Azure Site Recovery nem támogatja a testreszabott operációsrendszer-lemezképeket. Csak a terjesztési alverzió kiadásának vagy frissítésének részét képező állomány-kernelek támogatottak.
 
 * * Megjegyzés: a legújabb linuxos kernelek a kiadástól számított 15 napon belül támogatottak, Azure Site Recovery a legújabb mobilitási ügynök verziójának tetején kidobjuk a gyors javítást. Ez a javítás két fő verzió közötti kiadásban érhető el. Ha frissíteni szeretné a mobilitási ügynök legújabb verziójára (beleértve a gyors javítást is), kövesse az [ebben a cikkben](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure)említett lépéseket. Ez a javítás jelenleg az Azure-ban az Azure DR-ben használt mobilitási ügynökök számára készült.
 

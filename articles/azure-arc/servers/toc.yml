@@ -62,7 +62,7 @@
         - name: Előkészítés az Azure Sentinel számára
           href: scenario-onboard-azure-sentinel.md
         - name: Előkészítés az Azure Security Center számára
-          href: /security-center/quickstart-onboard-machines
+          href: ../../security-center/quickstart-onboard-machines.md
     - name: Hibaelhárítás
       items:
         - name: Ügynökök kapcsolódási problémái

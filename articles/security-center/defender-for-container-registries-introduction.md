@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d587c4dbdd8f46d6e098ff96f464d456fffc9ccf
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: ad880b7c23c687530a79ca1123474e94c923e150
+ms.sourcegitcommit: b849ecdc8aa97337299b0f09970b7810c59cd044
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95529985"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96310391"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>A tárolóregisztrációs adatbázisokhoz készült Azure Defender bemutatása
 
@@ -85,9 +85,11 @@ Igen. Ha a szervezetnek figyelmen kívül kell hagynia egy megállapítást, és
 
 [Ismerje meg, hogyan hozhat létre szabályokat az eredményeknek a beépített sebezhetőségi felmérési eszközből való letiltásához](defender-for-container-registries-usage.md#disable-specific-findings-preview).
 
+### <a name="why-is-security-center-alerting-me-to-vulnerabilities-about-an-image-that-isnt-in-my-registry"></a>Miért Security Center riasztást a beállításjegyzékben nem szereplő rendszerképekkel kapcsolatos biztonsági réseket illetően?
+A Security Center biztonsági réseket biztosít a beállításjegyzékben leküldett vagy lehúzott összes rendszerképhez. Egyes képek a már beolvasott képekből is felhasználhatnak címkéket. Előfordulhat például, hogy a "legutóbbi" címkét újra hozzá kell rendelnie, amikor egy képet vesz fel egy kivonatba. Ilyen esetekben a régi rendszerkép továbbra is létezik a beállításjegyzékben, és a kivonata továbbra is lekérhető. Ha a rendszerkép biztonsági megállapításokkal rendelkezik, és leállt, biztonsági rések jelennek meg.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Biztonsági rések ellenőrzése a lemezképekben](defender-for-container-registries-usage.md)
