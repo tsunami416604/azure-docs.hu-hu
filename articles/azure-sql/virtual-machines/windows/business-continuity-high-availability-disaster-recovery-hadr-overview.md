@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: 81d0bddbd62f9f2d15d8404fee63b15c8ab2c0a3
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 194c6a5cead400e1bac78ba42cb7238b64bd3b7b
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102275"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327474"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Üzletmenet-folytonosság és HADR az Azure-ban SQL Server Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -101,7 +101,7 @@ Az Azure-beli virtuális gépek, a tárolók és a hálózatkezelés eltérő m�
 ### <a name="high-availability-nodes-in-an-availability-set"></a>Magas rendelkezésre állású csomópontok rendelkezésre állási csoportokban
 Az Azure-beli rendelkezésre állási csoportok lehetővé teszik, hogy a magas rendelkezésre állású csomópontokat különálló tartalék tartományokra és frissítési tartományokra helyezze. Az Azure platform egy frissítési tartományt és egy tartalék tartományt rendel a rendelkezésre állási csoportba tartozó egyes virtuális gépekhez. Ez az adatközponton belüli konfiguráció biztosítja, hogy a tervezett vagy nem tervezett karbantartási események során legalább egy virtuális gép elérhető legyen, és teljesítse az 99,95%-os Azure SLA-t. 
 
-Magas rendelkezésre állású telepítés konfigurálásához helyezzen minden résztvevő SQL Server virtuális gépet ugyanabban a rendelkezésre állási csoportba, hogy elkerülje az alkalmazás vagy az adatvesztést a karbantartási események során. Ugyanahhoz a rendelkezésre állási csoporthoz csak az azonos felhőalapú szolgáltatásban lévő csomópontok vehetnek részt. További információk: [Virtuális gépek rendelkezésre állásának kezelése](../../../virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json).
+Magas rendelkezésre állású telepítés konfigurálásához helyezzen minden résztvevő SQL Server virtuális gépet ugyanabban a rendelkezésre állási csoportba, hogy elkerülje az alkalmazás vagy az adatvesztést a karbantartási események során. Ugyanahhoz a rendelkezésre állási csoporthoz csak az azonos felhőalapú szolgáltatásban lévő csomópontok vehetnek részt. További információk: [Virtuális gépek rendelkezésre állásának kezelése](../../../virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ### <a name="high-availability-nodes-in-an-availability-zone"></a>Magas rendelkezésre állású csomópontok egy rendelkezésre állási zónában
 A rendelkezésre állási zónák egy Azure-régióban található egyedi fizikai helyek. Minden zóna egy vagy több független energiaellátással, hűtéssel és hálózatkezeléssel felszerelt adatközpontból áll. A rendelkezésre állási zónák régión belüli fizikai elkülönítése segíti az alkalmazások és az adatok adatközpontbeli meghibásodások elleni védettségét azáltal, hogy legalább egy virtuális gép elérhetővé válik, és megfelel az 99,99%-os Azure SLA-nak. 
@@ -136,7 +136,7 @@ Ha a rendelkezésre állási csoport több Azure-alhálózatra is kiterjed (pél
 Továbbra is csatlakozhat az egyes rendelkezésre állási replikához, ha közvetlenül a szolgáltatási példányhoz csatlakozik. Emellett mivel a rendelkezésre állási csoportok visszamenőleg kompatibilisek az adatbázis-tükrözési ügyfelekkel, csatlakozhat a rendelkezésre állási replikához, például az adatbázis-tükrözési partnerekhez, ha a replikák az adatbázis-tükrözéshez hasonlóan vannak konfigurálva:
 
 * Van egy elsődleges replika és egy másodlagos replika.
-* A másodlagos replika nem olvashatóként van konfigurálva ( **olvasható másodlagos** beállítás: **nem** ).
+* A másodlagos replika nem olvashatóként van konfigurálva (**olvasható másodlagos** beállítás: **nem**).
 
 Az alábbi példa egy olyan ügyfél-kapcsolódási karakterláncot mutat be, amely megfelel ehhez az adatbázis-tükrözéshez hasonló konfigurációnak a ADO.NET vagy a SQL Server Native Client használatával:
 
@@ -160,6 +160,6 @@ A Geo-replikáció az Azure-lemezeken nem támogatja ugyanazon adatbázis adatf�
 
 Ha nem szeretné letiltani a Geo-replikációt a Storage-fiókon, akkor az adatbázis összes adatfájlját és naplófájlját egy adott lemezen tárolja. Ha az adatbázis mérete miatt egynél több lemezt kell használnia, a korábban felsorolt vész-helyreállítási megoldások egyikét kell telepítenie az adatredundancia biztosítása érdekében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Döntse el, hogy egy [rendelkezésre állási csoport](availability-group-overview.md) vagy egy [feladatátvevő fürt példánya](failover-cluster-instance-overview.md) a legjobb üzletmenet-folytonossági megoldás-e a vállalat számára. Ezután tekintse át az [ajánlott eljárásokat](hadr-cluster-best-practices.md) a környezet konfigurálásához a magas rendelkezésre állás és a vész-helyreállítás érdekében.

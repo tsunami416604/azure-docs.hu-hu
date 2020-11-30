@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: e8bb1457bbf5d610518c3bc84768186972734099
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 9ee3b447b2b5f6dfa8972749c3c46ae01f79bfdc
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536861"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327508"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Az Azure cache-ben lévő Redis importálása és exportálása
 Az import/export egy Azure cache a Redis adatkezelési művelethez, amely lehetővé teszi az adatok importálását az Azure cache-be a Redis, vagy exportálja az Azure cache-ből a Redis-be adatok exportálását egy Azure cache for Redis Database (RDB) pillanatkép importálásával és exportálásával egy Azure Storage-fiókban található blobba.
@@ -36,7 +36,7 @@ Az importálással bármilyen felhőben vagy környezetben futó Redis-kiszolgá
 >
 >
 
-1. Egy vagy több exportált gyorsítótár-blob importálásához [tallózással keresse meg a gyorsítótárat](cache-configure.md#configure-azure-cache-for-redis-settings) a Azure Portalon, majd kattintson az **adatok importálása** elemre az **erőforrás menüben** .
+1. Egy vagy több exportált gyorsítótár-blob importálásához [tallózással keresse meg a gyorsítótárat](cache-configure.md#configure-azure-cache-for-redis-settings) a Azure Portalon, majd kattintson az **adatok importálása** elemre az **erőforrás menüben**.
 
     ![Adatok importálása](./media/cache-how-to-import-export-data/cache-import-data.png)
 2. Kattintson a **blob (ok) kiválasztása** elemre, és válassza ki azt a Storage-fiókot, amely az importálandó adatkészletet tartalmazza.
@@ -64,9 +64,9 @@ Az importálással bármilyen felhőben vagy környezetben futó Redis-kiszolgá
 ## <a name="export"></a>Exportálás
 Az Exportálás lehetővé teszi az Azure cache-ben tárolt adatexportálást a Redis-Redis kompatibilis RDB-fájl (ok) hoz. Ezzel a szolgáltatással áthelyezheti az adatok egyik Azure-gyorsítótárból a Redis-példányról egy másikra vagy egy másik Redis-kiszolgálóra. Az exportálási folyamat során létrejön egy ideiglenes fájl az Azure cache-t futtató virtuális gépen a Redis Server-példányhoz, és a fájl fel lesz töltve a kijelölt Storage-fiókba. Ha az exportálási művelet sikeres vagy sikertelen állapottal fejeződött be, a rendszer törli az ideiglenes fájlt.
 
-1. A gyorsítótár aktuális tartalmának a tárterületre való exportálásához [tallózással keresse meg a gyorsítótárat](cache-configure.md#configure-azure-cache-for-redis-settings) a Azure Portalban, majd kattintson az **adatok exportálása** elemre az **erőforrás menüben** .
+1. A gyorsítótár aktuális tartalmának a tárterületre való exportálásához [tallózással keresse meg a gyorsítótárat](cache-configure.md#configure-azure-cache-for-redis-settings) a Azure Portalban, majd kattintson az **adatok exportálása** elemre az **erőforrás menüben**.
 
-    ![Storage-tároló kiválasztása](./media/cache-how-to-import-export-data/cache-export-data-choose-storage-container.png)
+    ![A contoso5premium navigációs ablaktábláján ki van jelölve az adatexportálási beállítás a felügyeleti listán.](./media/cache-how-to-import-export-data/cache-export-data-choose-storage-container.png)
 2. Kattintson a **tároló kiválasztása** elemre, és válassza ki a kívánt Storage-fiókot. A Storage-fióknak a gyorsítótárral megegyező előfizetésben és régióban kell lennie.
 
    > [!IMPORTANT]
@@ -76,7 +76,7 @@ Az Exportálás lehetővé teszi az Azure cache-ben tárolt adatexportálást a 
     ![Tárfiók](./media/cache-how-to-import-export-data/cache-export-data-choose-account.png)
 3. Válassza ki a kívánt BLOB-tárolót, és kattintson a **kiválasztás** gombra. Ha új tárolót szeretne használni, kattintson a **tároló hozzáadása** lehetőségre az első hozzáadásához, majd válassza ki a listából.
 
-    ![Storage-tároló kiválasztása](./media/cache-how-to-import-export-data/cache-export-data-container.png)
+    ![A contoso55 tárolóban a + Container beállítás ki van emelve. Egy tároló szerepel a listán, a cachesaves, és ki van választva és ki van emelve. A kiválasztási lehetőség ki van választva és ki van emelve.](./media/cache-how-to-import-export-data/cache-export-data-container.png)
 4. Írja be a **blob nevének előtagját** , és kattintson az **Exportálás** elemre az exportálási folyamat elindításához. A blob nevének előtagja az exportálási művelet által generált fájlok nevének előtagja.
 
     ![Exportálás](./media/cache-how-to-import-export-data/cache-export-data.png)
@@ -151,7 +151,7 @@ Ennek megoldásához indítsa el az importálási vagy exportálási műveletet 
 ### <a name="i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened"></a>Hibaüzenetet kaptam az adataim Azure Blob Storageba való exportálásakor. Mi történt?
 Az Exportálás csak a RDB tárolt fájlok esetében működik. Más blob-típusok jelenleg nem támogatottak, beleértve a gyors és a lassú elérésű csomagokat tartalmazó blob Storage-fiókokat is. További információkat az [Azure Storage-fiókok áttekintésében](../storage/common/storage-account-overview.md) találhat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ az Azure cache Redis szolgáltatásairól.
 
 * [Azure cache a Redis szolgáltatási szintjeihez](cache-overview.md#service-tiers)

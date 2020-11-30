@@ -3,12 +3,12 @@ title: Költségek megtakarítása az Azure VMware-megoldás fenntartott példá
 description: Megtudhatja, hogyan vásárolhat fenntartott példányt az Azure VMware-megoldáshoz.
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: b57e985068adabccecbbdb43dd11bcf6596bf422
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 80780e9718001893b6960220b5004c1c29b2fec5
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578950"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327397"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>Költségek megtakarítása Azure VMware-megoldással
 
@@ -22,7 +22,7 @@ A fenntartott példányok bizonyos kivételekkel érhetők el.
 
 -   Nem **elegendő kvóta** – az egyetlen/megosztott előfizetéshez tartozó foglalási kvótának az új fenntartott példány előfizetésében elérhetőnek kell lennie a gazdagépek számára. A probléma megoldásához [kvóta-növelési kérelmet hozhat létre](enable-azure-vmware-solution.md) .
 
--   **Ajánlati jogosultság** – szüksége lesz egy [Azure nagyvállalati Szerződésra (EA)](../cost-management-billing/manage/ea-portal-agreements.md) a Microsofttal.
+-   **Ajánlati jogosultság**– szüksége lesz egy [Azure nagyvállalati Szerződésra (EA)](../cost-management-billing/manage/ea-portal-agreements.md) a Microsofttal.
 
 -   **Kapacitás korlátozásai** – ritka körülmények között az Azure korlátozza az Azure VMware-megoldás gazdagépének új foglalásának megvásárlását az adott régió alacsony kapacitása miatt.
 
@@ -58,12 +58,12 @@ Ezek a követelmények a fenntartott dedikált gazdagép-példány megvásárlá
    | Hatókör        | A foglalás hatóköre egyetlen előfizetésre vagy több előfizetésre (megosztott hatókörre) is vonatkozhat. Ha a következőket választja:<br><ul><li><b>Egy erőforráscsoport hatóköre</b> – a foglalási kedvezményt a kiválasztott erőforráscsoport megfelelő erőforrásaira alkalmazza.</li><li><b>Egyszeri előfizetés hatóköre</b> – a foglalási kedvezményt a kiválasztott előfizetésben lévő megfelelő erőforrásokra alkalmazza.</li><li><b>Megosztott hatókör</b> – a foglalási kedvezményt a megfelelő, a számlázási környezetben található jogosult előfizetésekben lévő erőforrásokra alkalmazza. Az EA-ügyfelek esetében a számlázási környezet a beléptetés. A használatalapú díjas, egyéni előfizetések esetében a számlázási hatókör a fiókadminisztrátor által létrehozott, jogosult előfizetéseket foglalja magában.</li></ul>       |
    | Régió       | A foglalás által érintett Azure-régió.   |
    | Gazdagép mérete    | AV36    |
-   | Kifejezés         | Egy vagy három év.  |
+   | Időszak         | Egy vagy három év.  |
    | Mennyiség     | A foglaláson belül megvásárolni kívánt példányok száma. A mennyiség azon Azure VMware-megoldási gazdagépek száma, amelyek beszerezhetik a számlázási kedvezményt.    |
 
 ### <a name="buy-reserved-instances-for-a-csp-subscription"></a>Fenntartott példányok vásárlása CSP-előfizetéshez
 
-Azokat a CSP-ket, amelyeknek fenntartott példányokat kívánnak vásárolni ügyfeleiknek, a [partner Center dokumentációjában](https://docs.microsoft.com/partner-center/azure-plan-manage)kell használniuk a (AOBO) eljárás **adminisztrátorát** . További információkért tekintse meg a [(z) (AOBO) Videójának adminisztrátorát](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) .
+Azokat a CSP-ket, amelyeknek fenntartott példányokat kívánnak vásárolni ügyfeleiknek, a [partner Center dokumentációjában](/partner-center/azure-plan-manage)kell használniuk a (AOBO) eljárás **adminisztrátorát** . További információkért tekintse meg a [(z) (AOBO) Videójának adminisztrátorát](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) .
 
 1. Jelentkezzen be a [partner központba](https://partner.microsoft.com).
 
@@ -87,7 +87,7 @@ Azokat a CSP-ket, amelyeknek fenntartott példányokat kívánnak vásárolni ü
    | Hatókör        | A foglalás hatóköre egyetlen előfizetésre vagy több előfizetésre (megosztott hatókörre) is vonatkozhat. Ha a következőket választja:<br><ul><li><b>Egy erőforráscsoport hatóköre</b> – a foglalási kedvezményt a kiválasztott erőforráscsoport megfelelő erőforrásaira alkalmazza.</li><li><b>Egyszeri előfizetés hatóköre</b> – a foglalási kedvezményt a kiválasztott előfizetésben lévő megfelelő erőforrásokra alkalmazza.</li><li><b>Megosztott hatókör</b> – a foglalási kedvezményt a megfelelő, a számlázási környezetben található jogosult előfizetésekben lévő erőforrásokra alkalmazza. Az EA-ügyfelek esetében a számlázási környezet a beléptetés. A használatalapú díjas, egyéni előfizetések esetében a számlázási hatókör a fiókadminisztrátor által létrehozott, jogosult előfizetéseket foglalja magában.</li></ul>       |
    | Régió       | A foglalás által érintett Azure-régió.   |
    | Gazdagép mérete    | AV36    |
-   | Kifejezés         | Egy vagy három év.  |
+   | Időszak         | Egy vagy három év.  |
    | Mennyiség     | A foglaláson belül megvásárolni kívánt példányok száma. A mennyiség azon Azure VMware-megoldási gazdagépek száma, amelyek beszerezhetik a számlázási kedvezményt.     |
 
 Ha többet szeretne megtudni arról, hogyan tekintheti meg az ügyfél megvásárolt foglalásait, tekintse meg az [Azure-foglalások felhőalapú megoldás-szolgáltatóként (CSP) történő megtekintését](../cost-management-billing/reservations/how-to-view-csp-reservations.md) ismertető cikket.
@@ -113,7 +113,7 @@ A módosításokat a vásárlás után is elvégezheti a foglalás után:
 
 A foglalásokat kisebb adattömbökre vagy egyesítési foglalásokra is kioszthatja. A módosítások egyike sem eredményez új kereskedelmi tranzakciót, vagy nem módosítja a foglalás befejezési dátumát.
 
-A CSP által felügyelt foglalásokkal kapcsolatos részletekért lásd: [Microsoft Azure foglalások eladása a partner Center, a Azure Portal vagy az API-kat használó ügyfeleknek](https://docs.microsoft.com/partner-center/azure-reservations).
+A CSP által felügyelt foglalásokkal kapcsolatos részletekért lásd: [Microsoft Azure foglalások eladása a partner Center, a Azure Portal vagy az API-kat használó ügyfeleknek](/partner-center/azure-reservations).
 
 
 
@@ -131,4 +131,4 @@ A CSP által felügyelt foglalásokkal kapcsolatos részletekért lásd: [Micros
 
 Bizonyos korlátozásokkal lehetősége van a foglalások lemondására, cseréjére és visszatérítésére. További információkért lásd: [Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
-A kriptográfiai szolgáltatók lemondják, cserélik vagy visszafizetik a foglalásokat, és bizonyos korlátozásokkal megvásárolhatják az ügyfelet. További információ: [Microsoft Azure foglalások kezelése, megszakítása, cseréje vagy visszatérítése az ügyfelek](https://docs.microsoft.com/partner-center/azure-reservations-manage)számára.
+A kriptográfiai szolgáltatók lemondják, cserélik vagy visszafizetik a foglalásokat, és bizonyos korlátozásokkal megvásárolhatják az ügyfelet. További információ: [Microsoft Azure foglalások kezelése, megszakítása, cseréje vagy visszatérítése az ügyfelek](/partner-center/azure-reservations-manage)számára.

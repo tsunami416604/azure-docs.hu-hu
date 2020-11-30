@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: db270224a753f815a2d94e6a1fa79ebbedf49278
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: f3723c792dfe962f2cbf16e3b167faf66c50a92e
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94991570"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327457"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>SQL Server biztonsági mentése és visszaállítása Azure-beli virtuális gépeken
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -31,7 +31,7 @@ A cikk első része áttekintést nyújt a rendelkezésre álló biztonsági men
 
 Az alábbi táblázat az Azure-beli virtuális gépek SQL Serverának különböző biztonsági mentési és visszaállítási lehetőségeiről nyújt információkat:
 
-| Stratégia | SQL-verziók | Description |
+| Stratégia | SQL-verziók | Leírás |
 |---|---|---|
 | [Automatikus biztonsági mentés](#automated) | 2014<br/> 2016<br/> 2017 | Az automatikus biztonsági mentés lehetővé teszi a SQL Server VM összes adatbázisának rendszeres biztonsági mentését. A biztonsági mentések tárolása az Azure Storage-ban akár 30 napig is eltartható. A SQL Server 2016-es verziójától kezdve az automatizált Backup v2 további lehetőségeket kínál, például a manuális ütemezés konfigurálását, valamint a teljes és naplózott biztonsági másolatok gyakoriságát. |
 | [Azure Backup SQL-alapú virtuális gépekhez](#azbackup) | 2008<br/> 2012<br/> 2014<br/> 2016<br/> 2017 | A Azure Backup nagyvállalati szintű biztonsági mentési képességet biztosít a SQL Server Azure-beli virtuális gépeken. Ezzel a szolgáltatással központilag kezelheti a biztonsági mentéseket több kiszolgáló és több ezer adatbázis között. Az adatbázisok visszaállíthatók egy adott időpontban a portálon. Testreszabható adatmegőrzési szabályzatot kínál, amely évekig képes biztonsági mentéseket fenntartani. |
@@ -93,7 +93,7 @@ A következő szakaszok részletesen ismertetik a manuális biztonsági mentési
 
 ### <a name="backup-to-attached-disks"></a>Biztonsági mentés csatolt lemezekre
 
-Az Azure-beli virtuális gépeken lévő SQL Server esetén natív biztonsági mentési és visszaállítási technikákat használhat a virtuális gépen lévő csatlakoztatott lemezek használatával a biztonságimásolat-fájlok céljához. A [virtuális gép mérete](../../../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json)alapján azonban korlátozva van az Azure-beli virtuális gépekhez kapcsolható lemezek száma. A Lemezkezelés szolgáltatással kapcsolatos szempontokat is figyelembe kell venni.
+Az Azure-beli virtuális gépeken lévő SQL Server esetén natív biztonsági mentési és visszaállítási technikákat használhat a virtuális gépen lévő csatlakoztatott lemezek használatával a biztonságimásolat-fájlok céljához. A [virtuális gép mérete](../../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)alapján azonban korlátozva van az Azure-beli virtuális gépekhez kapcsolható lemezek száma. A Lemezkezelés szolgáltatással kapcsolatos szempontokat is figyelembe kell venni.
 
 A teljes adatbázis biztonsági mentésének a SQL Server Management Studio (SSMS) vagy a Transact-SQL használatával történő manuális létrehozásával kapcsolatos példát a [teljes adatbázis biztonsági másolatának létrehozása](/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server)című témakörben talál.
 
@@ -147,7 +147,7 @@ Az alábbi táblázat összefoglalja az Azure-ban SQL Server virtuális gépek b
 | Biztonsági mentési feladatok figyelése SSMS vagy Transact-SQL-parancsfájlok segítségével | ![Zöld pipa](./media/backup-restore/yes.png) | ![Zöld pipa](./media/backup-restore/yes.png) | ![Zöld pipa](./media/backup-restore/yes.png) |
 | Adatbázisok visszaállítása SSMS vagy Transact-SQL-parancsfájlokkal | ![Zöld pipa](./media/backup-restore/yes.png) |   | ![Zöld pipa](./media/backup-restore/yes.png) |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha SQL Server Azure-beli virtuális gépen történő üzembe helyezését tervezi, akkor a következő útmutatóban talál kiépítési útmutatót: [Windows SQL Server virtuális gép kiépítése a Azure Portal](create-sql-vm-portal.md).
 

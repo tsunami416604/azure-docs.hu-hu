@@ -3,14 +3,14 @@ title: Azure Automation Update Management áttekintése
 description: Ez a cikk áttekintést nyújt a Windows és Linux rendszerű gépek frissítéseinek megvalósítására szolgáló Update Management szolgáltatásról.
 services: automation
 ms.subservice: update-management
-ms.date: 11/23/2020
+ms.date: 11/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: eadceb17d01b40deab656bdd6223cb8f0844f54f
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 37ab05ce7e963ab7fdc4d2b02e254adaa205446c
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95528244"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327491"
 ---
 # <a name="update-management-overview"></a>A frissítéskezelés áttekintése
 
@@ -79,7 +79,7 @@ A következő táblázat felsorolja a frissítési felmérések és a javításo
 |CentOS 6 és 7 (x64)      | A Linux-ügynököknek hozzáférésre van szükségük egy frissítési tárházhoz. A besoroláson alapuló javításokhoz olyan `yum` biztonsági adatforrásokat kell visszaadnia, amelyeket a CentOS nem tartalmaz a RTM kiadásokban. A CentOS besoroláson alapuló javításával kapcsolatos további információkért lásd: [frissítési besorolások Linux](view-update-assessments.md#linux)rendszeren.          |
 |Red Hat Enterprise 6 és 7 (x64)     | A Linux-ügynököknek hozzáférésre van szükségük egy frissítési tárházhoz.        |
 |SUSE Linux Enterprise Server 12 (x64)     | A Linux-ügynököknek hozzáférésre van szükségük egy frissítési tárházhoz.        |
-|Ubuntu 14,04 LTS, 16,04 LTS és 18,04 (x64)      |A Linux-ügynököknek hozzáférésre van szükségük egy frissítési tárházhoz.         |
+|Ubuntu 14,04 LTS, 16,04 LTS és 18,04 LTS (x64)      |A Linux-ügynököknek hozzáférésre van szükségük egy frissítési tárházhoz.         |
 
 > [!NOTE]
 > Az Azure-beli virtuálisgép-méretezési csoportok a Update Management használatával kezelhetők. A Update Management a példányokon működik, nem az alapképre. A frissítéseket növekményes módon kell ütemeznie, hogy a virtuálisgép-példányok ne legyenek egyszerre frissítve. A virtuálisgép-méretezési csoportok csomópontjait a [nem Azure-beli gép hozzáadása a Change Tracking és a leltárhoz](../automation-tutorial-installed-software.md#add-a-non-azure-machine-to-change-tracking-and-inventory)című szakaszban ismertetett lépéseket követve veheti fel.
@@ -259,7 +259,7 @@ Az alábbi módokon engedélyezheti Update Management és kiválaszthatja a fel�
 > [!NOTE]
 > A Update Management Log Analytics munkaterület összekapcsolását igényli az Automation-fiókhoz. A támogatott régiók végleges listáját az [Azure Workspace-hozzárendelések](../how-to/region-mappings.md)című témakörben tekintheti meg. A régió-hozzárendelések nem befolyásolják a virtuális gépek az Automation-fióktól eltérő régióban való felügyeletének képességét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Update Management használatáról a [virtuális gépek frissítéseinek kezelése](manage-updates-for-vm.md)című témakörben olvashat bővebben.
 
