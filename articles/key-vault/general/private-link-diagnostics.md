@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 870a55e5bc2701df5c03e142522e8490612b2917
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 03abe4e4e098d46060e33ba114872905e54a443f
+ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506056"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96317061"
 ---
 # <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>A privát kapcsolatok konfigurációs problémáinak diagnosztizálása az Azure Key Vaultban
 
@@ -180,8 +180,15 @@ Windows:
 C:\> nslookup fabrikam.vault.azure.net
 ```
 
-Nem mérvadó Válasz: címe: 52.168.109.101 aliasok: fabrikam.vault.azure.net fabrikam.privatelink.vaultcore.azure.net data-prod-eus.vaultcore.azure.net data-prod-eus-region.vaultcore.azure.net
+```output
+Non-authoritative answer:
+Address:  52.168.109.101
+Aliases:  fabrikam.vault.azure.net
+          fabrikam.privatelink.vaultcore.azure.net
+          data-prod-eus.vaultcore.azure.net
+          data-prod-eus-region.vaultcore.azure.net
 ```
+
 Linux:
 
 ```console
@@ -295,7 +302,7 @@ Amint láthatja, a névfeloldás a vezérlő alatt található. Ennek a kialakí
 
 ### <a name="query-the-healthstatus-endpoint-of-the-key-vault"></a>`/healthstatus`A Key Vault végpontjának lekérdezése
 
-A Key Vault biztosítja a `/healthstatus` végpontot, amely a diagnosztika használatával használható. A válasz fejlécei tartalmazzák a forrás IP-címét, ahogy azt a Key Vault szolgáltatás is látja. A végpontot a következő paranccsal hívhatja meg ( **ne felejtse el használni a Key Vault hostname-t** ):
+A Key Vault biztosítja a `/healthstatus` végpontot, amely a diagnosztika használatával használható. A válasz fejlécei tartalmazzák a forrás IP-címét, ahogy azt a Key Vault szolgáltatás is látja. A végpontot a következő paranccsal hívhatja meg (**ne felejtse el használni a Key Vault hostname-t**):
 
 Windows (PowerShell):
 

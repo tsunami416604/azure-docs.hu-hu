@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 3f9779d2676d4d2b67efff37118d109664b84bd5
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8633aba2f7cda5dec4a48e9f7132283f8235f746
+ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184603"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96317520"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Hálózatok biztonságos csatlakoztatása az Azure Monitorhoz az Azure Private Linkkel
 
@@ -29,7 +29,7 @@ A privát hivatkozással a következőket teheti:
 
 További információ:  [a privát hivatkozás legfontosabb előnyei](../../private-link/private-link-overview.md#key-benefits).
 
-## <a name="how-it-works"></a>Működés
+## <a name="how-it-works"></a>A működési elv
 
 Azure Monitor a privát hivatkozás hatóköre olyan csoportosítási erőforrás, amely egy vagy több privát végpont (és így a virtuális hálózatok) egy vagy több Azure Monitor erőforráshoz való csatlakoztatására szolgál. Az erőforrások közé tartoznak Log Analytics munkaterületek és Application Insights összetevők.
 
@@ -79,10 +79,10 @@ A magánhálózati kapcsolat beállításakor figyelembe kell venni néhány kor
 * Egy AMPLS-objektum legfeljebb 10 privát végponthoz tud csatlakozni.
 
 Az alábbi topológiában:
-* Minden VNet 1 AMPLS objektumhoz csatlakozik, így nem tud csatlakozni más AMPLSs.
-* A AMPLS 2 virtuális hálózatok csatlakozik: a lehetséges privát végpontok kapcsolatainak 2/10-as használatával.
-* A AMPLS 2 munkaterülethez és 1 alkalmazás-betekintési összetevőhöz csatlakozik: a lehetséges Azure Monitor erőforrásainak 3/50-es felhasználása.
-* A 2. munkaterület az A és A AMPLS AMPLS csatlakozik: a lehetséges AMPLS-kapcsolatok 2/5-as számú használatával.
+* Minden VNet csak **1** AMPLS objektumhoz csatlakozik.
+* A B AMPLS két virtuális hálózatok (VNet2 és VNet3) privát végpontokhoz csatlakozik, 2/10 (20%) használatával a lehetséges privát végponti kapcsolataikat.
+* A AMPLS két munkaterülethez és egy alkalmazás-Insight összetevőhöz csatlakozik, 3/50 (6%) használatával a lehetséges Azure Monitor erőforrások kapcsolatai.
+* A Workspace2 az 2/5-es és A AMPLS-es AMPLS-hez csatlakozik, a (40%) használatával a lehetséges AMPLS-kapcsolatainak száma.
 
 ![AMPLS-korlátok diagramja](./media/private-link-security/ampls-limits.png)
 
@@ -103,9 +103,9 @@ Első lépésként hozzon létre egy Azure Monitor privát hivatkozás hatókör
 
 6. Hagyja meg az érvényesítési fázist, majd kattintson a **Létrehozás** gombra.
 
-## <a name="connect-azure-monitor-resources"></a>Azure Monitor-erőforrások összekötése
+### <a name="connect-azure-monitor-resources"></a>Azure Monitor-erőforrások összekötése
 
-A AMPLS először a privát végpontokhoz csatlakoztathatja, majd Azure Monitorheti az erőforrásokat, vagy fordítva, de a kapcsolódási folyamat gyorsabban halad, ha a Azure Monitor-erőforrásokat indítja el. A Azure Monitor Log Analytics-munkaterületek és Application Insights-összetevők AMPLS való összekapcsolásának menete
+Azure Monitor erőforrások (Log Analytics-munkaterületek és Application Insights-összetevők) összekapcsolhatók a AMPLS.
 
 1. A Azure Monitor privát hivatkozás hatókörében kattintson a bal oldali menüben található **Azure monitor erőforrások** elemre. Kattintson a **Hozzáadás** gombra.
 2. Adja hozzá a munkaterületet vagy összetevőt. A **Hozzáadás** gombra kattintva megjelenik egy párbeszédpanel, ahol kiválaszthatja Azure monitor erőforrásait. Böngészhet az előfizetések és az erőforráscsoportok között, vagy beírhatja a nevét a szűréshez. Válassza ki a munkaterületet vagy összetevőt, és kattintson az **alkalmaz** gombra a hatókörhöz való hozzáadásához.
@@ -150,7 +150,7 @@ Most, hogy rendelkezik a AMPLS kapcsolódó erőforrásokkal, hozzon létre egy 
  
    d.    Az érvényesítési fázis engedélyezése. 
  
-   e.    Kattintson a **Létrehozás** lehetőségre. 
+   e.    Kattintson a **Létrehozás** gombra. 
 
     ![Képernyőkép a Select Private Endpoint2 létrehozásáról](./media/private-link-security/ampls-select-private-endpoint-create-5.png)
 
@@ -158,16 +158,19 @@ Ezzel létrehozott egy új privát végpontot, amely ehhez a Azure Monitor priv�
 
 ## <a name="configure-log-analytics"></a>A Log Analytics konfigurálása
 
-Nyissa meg az Azure Portalt. A Log Analytics munkaterület-erőforrásban található a bal oldali menüpont **hálózati elkülönítése** . Ebben a menüben két különböző állapotot is megadhat. 
+Nyissa meg az Azure Portalt. A Log Analytics munkaterület-erőforrásban található a bal oldali menüpont **hálózati elkülönítése** . Ebben a menüben két különböző állapotot is megadhat.
 
 ![LA hálózati elkülönítés](./media/private-link-security/ampls-log-analytics-lan-network-isolation-6.png)
 
-Először is csatlakoztathatja ezt a Log Analytics-erőforrást bármely olyan Azure Monitor magánhálózati kapcsolati hatókörhöz, amelyhez hozzáféréssel rendelkezik. Kattintson a **Hozzáadás** gombra, és válassza ki a Azure monitor privát hivatkozás hatókörét.  A kapcsolódáshoz kattintson az **alkalmaz** gombra. Az összes csatlakoztatott hatókör megjelenik ezen a képernyőn. Ez a kapcsolat lehetővé teszi, hogy a csatlakoztatott virtuális hálózatok hálózati forgalma elérje ezt a munkaterületet. A kapcsolat létrehozása ugyanaz, mint a [Azure monitor erőforrások csatlakoztatásakor](#connect-azure-monitor-resources)a hatókörhöz való csatlakozáskor.  
+### <a name="connected-azure-monitor-private-link-scopes"></a>Csatlakoztatott Azure Monitor privát kapcsolati hatókörök
+A munkaterülethez csatlakozó összes hatókör megjelenik ezen a képernyőn. A hatókörökhöz való csatlakozás (AMPLSs) lehetővé teszi, hogy az egyes AMPLS csatlakoztatott virtuális hálózatról érkező hálózati forgalom elérje ezt a munkaterületet. A kapcsolat létrehozása a következővel azonos hatással van a hatókörre, ahogy azt a [Azure monitor erőforrások csatlakoztatása](#connect-azure-monitor-resources)során hajtottuk végre. Új kapcsolat hozzáadásához kattintson a **Hozzáadás** gombra, és válassza ki a Azure monitor privát hivatkozás hatókörét. A kapcsolódáshoz kattintson az **alkalmaz** gombra. Vegye figyelembe, hogy a munkaterület 5 AMPLS objektumhoz tud csatlakozni, ahogy azt a [határértékek megfontolása](#consider-limits)is ismerteti. 
 
-Másodszor, azt is szabályozhatja, hogy ez az erőforrás Hogyan érhető el a fent felsorolt privát kapcsolati hatókörökön kívülről. Ha a **nem** értékre állítja a **nyilvános hálózati hozzáférés engedélyezése lehetőséget** , akkor a csatlakoztatott hatókörökön kívüli gépek nem tölthetnek fel adatot erre a munkaterületre. Ha a **nyilvános hálózati hozzáférés engedélyezése a** **nem** értékre van állítva, akkor a hatókörön kívüli gépek nem férhetnek hozzá a munkaterületen lévő adatforrásokhoz. Ez az adat magában foglalja a munkafüzetek, irányítópultok, a lekérdezési API-alapú ügyfél-élmények, a Azure Portali elemzések és egyéb funkciók elérését. A Azure Portalon kívül futó tapasztalatok, és a lekérdezés Log Analytics az adatnak is futnia kell a privát csatolt VNET.
+### <a name="access-from-outside-of-private-links-scopes"></a>Hozzáférés a privát hivatkozások hatókörén kívülről
+A lap alsó részén lévő beállítások vezérlik a nyilvános hálózatokról való hozzáférést, azaz a fent felsorolt hatókörökön keresztül nem csatlakoztatott hálózatokat. Ha a **nem** értékre állítja a **nyilvános hálózati hozzáférés engedélyezése lehetőséget** , akkor a csatlakoztatott hatókörökön kívüli gépek nem tölthetnek fel adatot erre a munkaterületre. Ha a **nyilvános hálózati hozzáférés engedélyezése a** **nem** értékre van állítva, akkor a hatókörön kívüli gépek nem férhetnek hozzá a munkaterületen lévő adatforrásokhoz, ami azt jelenti, hogy nem fogja tudni lekérdezni a munkaterület adatforrásait. Ez magában foglalja a munkafüzetek, irányítópultok, API-alapú ügyfél-élmények, a Azure Portalban található bepillantások és egyéb funkciók lekérdezéseit. A Azure Portalon kívül futó tapasztalatok, és a lekérdezés Log Analytics az adatnak is futnia kell a privát csatolt VNET.
 
-A hozzáférés ilyen módon történő korlátozása nem vonatkozik a Azure Resource Managerra, ezért a következő korlátozások vonatkoznak rá:
-* Hozzáférés az adatokhoz – miközben blokkolja a nyilvános hálózatokból érkező lekérdezéseket, a legtöbb Log Analyticsi tapasztalatra vonatkozik, egyes funkciók a Azure Resource Manageron keresztül kérdezik le az adatait, ezért nem lesznek képesek az adatok lekérdezésére, kivéve, ha a privát kapcsolat beállításait a Resource Managerre is alkalmazza (a szolgáltatás hamarosan elérhető lesz). Ez magában foglalja például a Azure Monitor megoldásokat, a munkafüzeteket és az adattartalmakat, valamint az LogicApp-összekötőt.
+### <a name="exceptions"></a>Kivételek
+A fentiekben leírtak szerint a hozzáférés korlátozása nem vonatkozik a Azure Resource Managerra, ezért a következő korlátozásokkal rendelkezik:
+* Hozzáférés az adatokhoz – a nyilvános hálózatokból érkező lekérdezések letiltása vagy engedélyezése a legtöbb Log Analyticsi tapasztalatra vonatkozik, és egyes funkciók a Azure Resource Manageron keresztül kérdezik le az adatlekérdezéseket, ezért nem lesznek képesek az adatok lekérdezésére, kivéve, ha a privát kapcsolat beállításait a Resource Manager is alkalmazza (a szolgáltatás hamarosan elérhető). Ez magában foglalja például a Azure Monitor megoldásokat, a munkafüzeteket és az adattartalmakat, valamint az LogicApp-összekötőt.
 * A munkaterület-kezelés – a munkaterület beállítását és a konfiguráció módosításait (beleértve a hozzáférési beállítások be-és kikapcsolását) a Azure Resource Manager kezeli. Korlátozza a munkaterület-felügyelet elérését a megfelelő szerepkörök, engedélyek, hálózati vezérlők és naplózás használatával. További információ: [Azure monitor szerepkörök, engedélyek és biztonság](roles-permissions-security.md).
 
 > [!NOTE]
@@ -256,6 +259,6 @@ Csomagolja be a JavaScript-kódot a parancsfájlba, hogy a böngésző ne kísé
 
 Ha privát kapcsolaton keresztül csatlakozik a Azure Monitor-erőforrásokhoz, ezen erőforrás felé irányuló forgalomnak a hálózaton konfigurált privát végponton kell haladnia. A magánhálózati végpont engedélyezéséhez frissítse a DNS-beállításokat a [Kapcsolódás privát végponthoz](#connect-to-a-private-endpoint)című részben leírtak szerint. Egyes böngészők a beállított beállítások helyett a saját DNS-beállításait használják. Előfordulhat, hogy a böngésző megpróbál csatlakozni Azure Monitor nyilvános végpontokhoz, és teljesen megkerüli a privát hivatkozást. Győződjön meg arról, hogy a böngészők beállításai nem felülbírálják vagy gyorsítótárazzák a régi DNS-beállításokat. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tudnivalók a [privát tárterületről](private-storage.md)

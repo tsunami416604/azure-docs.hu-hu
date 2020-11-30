@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 7b77a47acba6180df4a067887b79d8cdc0f56df6
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5dbd49312b58dc656e2239e8a0a4acea614023de
+ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185079"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96317136"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Folyamatos integráció és kézbesítés az Azure szinapszis-munkaterülethez
 
@@ -91,15 +91,25 @@ Azure Resource Manager telepítési feladat hozzáadása erőforrások létrehoz
 
 ## <a name="set-up-a-stage-task-for-artifacts-deployment"></a>Fázis-feladat beállítása az összetevők üzembe helyezéséhez 
 
-A [szinapszis-munkaterületek használatával & kiadási feladatot hozhat létre](https://marketplace.visualstudio.com/items?itemName=PraveenMathamsetty.synapsecicd-deploy) más elemek a szinapszis munkaterületen való üzembe helyezéséhez, például ADATKÉSZLET, SQL-parancsfájl, jegyzetfüzet, Spark-feladatdefiníció, adatfolyam, folyamat, társított szolgáltatás, hitelesítő adatok és IR (Integration Runtime).  
+A [szinapszis munkaterület üzembe](https://marketplace.visualstudio.com/items?itemName=AzureSynapseWorkspace.synapsecicd-deploy) helyezési bővítményével más elemeket helyezhet üzembe a szinapszis munkaterületen, például ADATKÉSZLET, SQL-parancsfájl, jegyzetfüzet, Spark-feladatdefiníció, adatfolyam, folyamat, társított szolgáltatás, hitelesítő adatok és IR (Integration Runtime).  
+
+1. A bővítmény keresése és beszerzése az **Azure DevOps piactéren**(https://marketplace.visualstudio.com/azuredevops) 
+
+     ![Bővítmény beolvasása](media/get-extension-from-market.png)
+
+1. Válasszon ki egy szervezetet a bővítmény telepítéséhez. 
+
+     ![A bővítmény telepítése](media/install-extension.png)
 
 1. Győződjön meg arról, hogy az Azure DevOps-folyamat szolgáltatási elve megkapta az előfizetés engedélyét, és a cél munkaterület munkaterület-rendszergazdája is hozzá van rendelve. 
 
-1. Hozzon létre egy új feladatot. Keresse meg a **szinapszis-munkaterületek Kiépítéséhez & kiadást**, majd válassza a **Hozzáadás** lehetőséget.
+1. Hozzon létre egy új feladatot. Keressen rá a **szinapszis munkaterület üzembe helyezésére**, majd válassza a **Hozzáadás** lehetőséget.
+
+     ![Bővítmény hozzáadása](media/add-extension-task.png)
 
 1.  A feladatban adja meg a **workspace_publish** kapcsolódó git-tárház adatait, majd válassza ki az erőforráscsoport, a régió, a név és a felhőalapú környezet elemet a cél munkaterülethez. Ha szükséges, adja meg a paramétereket és az értékeket.
 
-    ![szinapszis-munkaterület üzembe helyezése](media/create-release-artifacts-deployment.png)
+    ![Szinapszis-munkaterület üzembe helyezése](media/create-release-artifacts-deployment.png)
 
 > [!IMPORTANT]
 > A CI/CD-helyzetekben a különböző környezetekben lévő Integration Runtime (IR) típusnak azonosnak kell lennie. Ha például saját üzemeltetésű integrációs modult használ a fejlesztési környezetben, akkor ugyanazt az IR-t más környezetekben, például tesztelési és üzemi környezetben is önálló üzemeltetéssel kell eltárolni. Hasonlóképpen, ha több fázisban osztja meg az integrációs modulokat, az integrációs modulokat az összes környezetben, például a fejlesztés, a tesztelés és az éles környezetek szerint kell konfigurálni.

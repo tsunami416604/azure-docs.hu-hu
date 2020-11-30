@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
-ms.openlocfilehash: 89cec12804f6fd2b8a3885248c42646d6c6dbb13
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 9f8004b41e8048dfc97fb61bb67a634963c0c575
+ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186558"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96317554"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Riasztások naplózása Azure Monitor
 
@@ -90,7 +90,7 @@ requests
 | where resultCode == "500"
 ```
 
-- Időtartam **:** 15 perc
+- Időtartam **/Összesítés részletessége:** 15 perc
 - **Riasztás gyakorisága:** 15 perc
 - **Küszöbérték:** Nagyobb, mint 0
 
@@ -145,7 +145,7 @@ Például a webhelyet vagy alkalmazást futtató több virtuális gép hibáit s
 - **Erőforrás-azonosító oszlop:** _ResourceId (a riasztási szabályok erőforrás-azonosító oszlopának felosztása csak az előfizetések és az erőforráscsoportok esetében érhető el)
 - **Méretek/összesítve:**
   - Computer = VM1, VM2 (a riasztási szabályok definíciójában lévő szűrési értékek jelenleg nem érhetők el munkaterületekhez és Application Insightsokhoz. Szűrés a lekérdezési szövegben.)
-- Időtartam **:** 15 perc
+- Időtartam **/Összesítés részletessége:** 15 perc
 - **Riasztás gyakorisága:** 15 perc
 - **Küszöbérték:** Nagyobb, mint 0
 
@@ -182,7 +182,7 @@ A munkaterületek és a Application Insights esetében ez a **riasztások letilt
 
 Tekintse meg ezt a riasztási kiértékelési példát:
 
-| Idő    | Naplózási feltétel kiértékelése | Eredmény 
+| Idő    | Naplózási feltétel kiértékelése | Result 
 | ------- | ----------| ----------| ------- 
 | 00:05 | HAMIS | A riasztás nem tűz. Nincs hívott művelet.
 | 00:10 | IGAZ  | Riasztási tüzek és műveleti csoportok hívása. Új riasztási állapot aktív.
@@ -203,7 +203,7 @@ A díjszabási információk a [Azure monitor díjszabási oldalán](https://azu
 > [!NOTE]
 > Az örökölt [log Analytics riasztási API](api-alerts.md) -val és a [log Analytics mentett keresések és riasztások](../insights/solutions.md)örökölt sablonjaival felügyelhető log Analytics naplózási riasztásai. [További információ az aktuális SCHEDULEDQUERYRULES API-ra való áttérésről](alerts-log-api-switch.md). A riasztási szabályok kezelését a [régi log Analytics API](api-alerts.md) használatával kell elvégezni, amíg nem dönt, és nem tudja használni a rejtett erőforrásokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg [, hogyan hozhat létre naplóbeli riasztásokat az Azure](./alerts-log.md)-ban.
 * Ismerkedjen meg [a webhookokkal a log-riasztásokban az Azure-ban](alerts-log-webhook.md).

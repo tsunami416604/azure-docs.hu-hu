@@ -1,31 +1,31 @@
 ---
-title: Gyors útmutató – Azure Key Vault tanúsítványok .NET-hez készült ügyféloldali kódtára (4-es verzió)
-description: Megtudhatja, hogyan hozhat létre, kérhet le és törölhet tanúsítványokat egy Azure Key vaultból a .NET ügyféloldali kódtár használatával (4-es verzió)
+title: Gyors útmutató – Azure Key Vault kulcsok ügyféloldali kódtára a .NET-hez (4-es verzió)
+description: Megtudhatja, hogyan hozhat létre, kérhet le és törölhet kulcsokat az Azure Key vaultból a .NET ügyféloldali kódtár használatával (4-es verzió)
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 09/23/2020
 ms.service: key-vault
-ms.subservice: certificates
+ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 49f244ea8e602f3b5e6499b8e14db2be15bfc8f7
+ms.openlocfilehash: 658fa81c972846292b1bf608110fc95ffe1a730d
 ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317077"
+ms.locfileid: "96318455"
 ---
-# <a name="quickstart-azure-key-vault-certificate-client-library-for-net-sdk-v4"></a>Gyors útmutató: Azure Key Vault tanúsítvány ügyféloldali kódtára a .NET-hez (SDK v4)
+# <a name="quickstart-azure-key-vault-key-client-library-for-net-sdk-v4"></a>Rövid útmutató: a .NET-hez készült ügyféloldali kódtár (SDK v4) Azure Key Vault
 
-Ismerkedjen meg az Azure Key Vault Certificate .NET-hez készült ügyféloldali kódtáraval. A [Azure Key Vault](../general/overview.md) egy felhőalapú szolgáltatás, amely biztonságos tárolót biztosít a tanúsítványokhoz. Biztonságosan tárolhatja kulcsait, jelszavait, tanúsítványait és egyéb titkos adatait. Az Azure-kulcstartók létrehozhatók és kezelhetők az Azure Portal segítségével is. Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre, kérhet le és törölhet tanúsítványokat egy Azure Key vaultból a .NET ügyféloldali kódtár használatával
+Ismerkedjen meg a .NET-hez készült Azure Key Vault Key ügyféloldali kódtáraval. A [Azure Key Vault](../general/overview.md) egy felhőalapú szolgáltatás, amely biztonságos tárolót biztosít a titkosítási kulcsokhoz. Biztonságosan tárolhatja a titkosítási kulcsokat, a jelszavakat, a tanúsítványokat és más titkokat. Az Azure-kulcstartók létrehozhatók és kezelhetők az Azure Portal segítségével is. Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre, kérhet le és törölhet kulcsokat egy Azure Key vaultból a .NET-kulcs ügyféloldali kódtár használatával
 
-Key Vault ügyféloldali kódtár erőforrásai:
+Key Vault legfontosabb ügyféloldali függvénytár-erőforrások:
 
-[API-referenciák dokumentációja](/dotnet/api/azure.security.keyvault.certificates)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault)  |  [Csomag (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Certificates/)
+[API-referenciák dokumentációja](/dotnet/api/azure.security.keyvault.keys)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault)  |  [Csomag (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.keys/)
 
-A Key Vault és a tanúsítványokról további információt a következő témakörben talál:
+A Key Vault és a kulcsokkal kapcsolatos további információkért lásd:
 - [Key Vault áttekintése](../general/overview.md)
-- A [tanúsítványok áttekintése](about-certificates.md).
+- [Kulcsok áttekintése](about-keys.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -79,10 +79,10 @@ Ez a rövid útmutató az Azure Identity Library és az Azure CLI használatáva
 
 ### <a name="install-the-packages"></a>A csomagok telepítése
 
-A parancssorból telepítse a Azure Key Vault-tanúsítvány .NET-hez készült ügyféloldali kódtárat:
+A parancssorból telepítse a .NET-hez készült Azure Key Vault Key ügyféloldali kódtárat:
 
 ```dotnetcli
-dotnet add package Azure.Security.KeyVault.Certificates
+dotnet add package Azure.Security.KeyVault.Keys
 ```
 
 Ehhez a rövid útmutatóhoz telepítenie kell az Azure SDK-ügyfél függvénytárát is az Azure Identity szolgáltatáshoz:
@@ -93,10 +93,10 @@ dotnet add package Azure.Identity
 
 #### <a name="grant-access-to-your-key-vault"></a>Hozzáférés biztosítása a kulcstartóhoz
 
-Hozzon létre egy hozzáférési szabályzatot a kulcstartó számára, amely engedélyt ad a felhasználói fiókjának
+Hozzon létre egy hozzáférési szabályzatot a kulcstartó számára, amely a felhasználói fiók számára biztosít kulcsfontosságú engedélyeket
 
 ```console
-az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --certificate-permissions delete get list create purge
+az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --key-permissions delete get list create purge
 ```
 
 #### <a name="set-environment-variables"></a>Környezeti változók beállítása
@@ -119,7 +119,7 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 
 ## <a name="object-model"></a>Objektummodell
 
-A Azure Key Vault-tanúsítvány .NET-hez készült ügyféloldali kódtára lehetővé teszi a tanúsítványok kezelését. A [példák](#code-examples) az ügyfelek létrehozására, a tanúsítványok beállítására, a tanúsítványok lekérésére és a tanúsítványok törlésére mutatnak.
+A .NET-hez készült Azure Key Vault Key ügyféloldali kódtára lehetővé teszi a kulcsok kezelését. A [példák](#code-examples) az ügyfelek létrehozására, a kulcs megadására, a kulcs lekérésére és a kulcsok törlésére mutatnak.
 
 ## <a name="code-examples"></a>Kódpéldák
 
@@ -130,7 +130,7 @@ Adja hozzá a következő irányelveket a *program.cs* tetejéhez:
 ```csharp
 using System;
 using Azure.Identity;
-using Azure.Security.KeyVault.Certificates;
+using Azure.Security.KeyVault.Keys;
 ```
 
 ### <a name="authenticate-and-create-a-client"></a>Ügyfél hitelesítése és létrehozása
@@ -140,44 +140,43 @@ Ebben a rövid útmutatóban a bejelentkezett felhasználó a Key Vault hiteles�
 Az alábbi példában a kulcstartó neve a Key Vault URI-ra van kibontva, a "https:// \<your-key-vault-name\> . Vault.Azure.net" formátumban. Ez a példa a  ["DefaultAzureCredential ()"](/dotnet/api/azure.identity.defaultazurecredential) osztályt használja, amely lehetővé teszi, hogy ugyanazt a kódot használja különböző környezetekben különböző beállításokkal az identitás biztosításához. További információ a Key Vault hitelesítéséről: [fejlesztői útmutató](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code).
 
 ```csharp
-string keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
+var keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
 var kvUri = "https://" + keyVaultName + ".vault.azure.net";
 
-var client = new CertificateClient(new Uri(kvUri), new DefaultAzureCredential());
+var client = new KeyClient(new Uri(kvUri), new DefaultAzureCredential());
 ```
 
-### <a name="save-a-certificate"></a>Tanúsítvány mentése
+### <a name="save-a-key"></a>Kulcs mentése
 
-Ebben a példában az egyszerűség kedvéért önaláírt tanúsítványt is használhat alapértelmezett kiállítási házirenddel. Ehhez a feladathoz használja a [StartCreateCertificateAsync](/dotnet/api/azure.security.keyvault.certificates.certificateclient.startcreatecertificateasync) metódust. A metódus paraméterei elfogadják a tanúsítvány nevét és a [tanúsítvány házirendjét](https://docs.microsoft.com/dotnet/api/azure.security.keyvault.certificates.certificatepolicy).
+Ehhez a feladathoz használja a [CreateKeyAsync](/dotnet/api/azure.security.keyvault.keys.keyclient.createkeyasync) metódust. A metódus paraméterei elfogadják a kulcs nevét és a [kulcs típusát](https://docs.microsoft.com/dotnet/api/azure.security.keyvault.keys.keytype).
 
 ```csharp
-var operation = await client.StartCreateCertificateAsync("myCertificate", CertificatePolicy.Default);
-var certificate = await operation.WaitForCompletionAsync();
+var key = await client.CreateKeyAsync("myKey", KeyType.Rsa);
 ```
 
 > [!NOTE]
-> Ha a tanúsítvány neve létezik, a fenti kód a tanúsítvány új verzióját fogja létrehozni.
+> Ha a kulcsnév létezik, a fenti kód a kulcs új verzióját fogja létrehozni.
 
-### <a name="retrieve-a-certificate"></a>Tanúsítvány lekérése
+### <a name="retrieve-a-key"></a>Kulcs lekérése
 
-Most már lekérheti a korábban létrehozott tanúsítványt a [GetCertificateAsync](/dotnet/api/azure.security.keyvault.certificates.certificateclient.getcertificateasync) metódussal.
+Most már lekérheti a korábban létrehozott kulcsot a [GetKeyAsync](/dotnet/api/azure.security.keyvault.keys.keyclient.getkeyasync) metódussal.
 
 ```csharp
-var certificate = await client.GetCertificateAsync("myCertificate");
+var key = await client.GetKeyAsync("myKey");
 ```
 
-### <a name="delete-a-certificate"></a>Tanúsítvány törlése
+### <a name="delete-a-key"></a>Kulcs törlése
 
-Végül töröljük és kiürítjük a tanúsítványt a kulcstartóból a [StartDeleteCertificateAsync](/dotnet/api/azure.security.keyvault.certificates.certificateclient.startdeletecertificateasync) és a [PurgeDeletedCertificateAsync](/dotnet/api/azure.security.keyvault.certificates.certificateclient.purgedeletedcertificateasync)  metódussal.
+Végül törölje és ürítse ki a kulcsot a Key vaultból a [StartDeleteKeyAsync](/dotnet/api/azure.security.keyvault.keys.keyclient.startdeletekeyasync) és a [PurgeDeletedKeyAsync](/dotnet/api/azure.security.keyvault.keys.keyclient.purgedeletedkeyasync) metódussal.
 
 ```csharp
-var operation = await client.StartDeleteCertificateAsync("myCertificate");
+var operation = await client.StartDeleteKeyAsync("myKey");
 
-// You only need to wait for completion if you want to purge or recover the certificate.
+// You only need to wait for completion if you want to purge or recover the key.
 await operation.WaitForCompletionAsync();
 
-var certificate = operation.Value;
-await client.PurgeDeletedCertificateAsync("myCertificate");
+var key = operation.Value;
+await client.PurgeDeletedKeyAsync("myKey");
 ```
 
 ## <a name="sample-code"></a>Mintakód
@@ -190,7 +189,7 @@ Módosítsa a .NET Core Console alkalmazást úgy, hogy az a következő lépés
     using System;
     using System.Threading.Tasks;
     using Azure.Identity;
-    using Azure.Security.KeyVault.Certificates;
+    using Azure.Security.KeyVault.Keys;
     
     namespace key_vault_console_app
     {
@@ -198,29 +197,28 @@ Módosítsa a .NET Core Console alkalmazást úgy, hogy az a következő lépés
         {
             static async Task Main(string[] args)
             {
-                const string certificateName = "myCertificate";
+                const string keyName = "myKey";
                 var keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
                 var kvUri = $"https://{keyVaultName}.vault.azure.net";
     
-                var client = new CertificateClient(new Uri(kvUri), new DefaultAzureCredential());
+                var client = new KeyClient(new Uri(kvUri), new DefaultAzureCredential());
     
-                Console.Write($"Creating a certificate in {keyVaultName} called '{certificateName}' ...");
-                CertificateOperation operation = await client.StartCreateCertificateAsync(certificateName, CertificatePolicy.Default);
-                await operation.WaitForCompletionAsync();
-                Console.WriteLine(" done.");
+                Console.Write($"Creating a key in {keyVaultName} called '{keyName}' ...");
+                var createdKey = await client.CreateKeyAsync(keyName, KeyType.Rsa);
+                Console.WriteLine("done.");
     
-                Console.WriteLine($"Retrieving your certificate from {keyVaultName}.");
-                var certificate = await client.GetCertificateAsync(certificateName);
-                Console.WriteLine($"Your certificate version is '{certificate.Value.Properties.Version}'.");
+                Console.WriteLine($"Retrieving your key from {keyVaultName}.");
+                var key = await client.GetKeyAsync(keyName);
+                Console.WriteLine($"Your key version is '{key.Value.Properties.Version}'.");
     
-                Console.Write($"Deleting your certificate from {keyVaultName} ...");
-                DeleteCertificateOperation deleteOperation = await client.StartDeleteCertificateAsync(certificateName);
-                // You only need to wait for completion if you want to purge or recover the certificate.
+                Console.Write($"Deleting your key from {keyVaultName} ...");
+                var deleteOperation = await client.StartDeleteKeyAsync(keyName);
+                // You only need to wait for completion if you want to purge or recover the key.
                 await deleteOperation.WaitForCompletionAsync();
-                Console.WriteLine(" done.");
+                Console.WriteLine("done.");
 
-                Console.Write($"Purging your certificate from {keyVaultName} ...");
-                await client.PurgeDeletedCertificateAsync(certificateName);
+                Console.Write($"Purging your key from {keyVaultName} ...");
+                await client.PurgeDeletedKeyAsync(keyName);
                 Console.WriteLine(" done.");
             }
         }
@@ -245,10 +243,10 @@ Módosítsa a .NET Core Console alkalmazást úgy, hogy az a következő lépés
     Megjelenik a következő kimenet egy változata:
 
     ```console
-    Creating a certificate in mykeyvault called 'myCertificate' ... done.
-    Retrieving your certificate from mykeyvault.
-    Your certificate version is '8532359bced24e4bb2525f2d2050738a'.
-    Deleting your certificate from jl-kv ... done
+    Creating a key in mykeyvault called 'myKey' ... done.
+    Retrieving your key from mykeyvault.
+    Your key version is '8532359bced24e4bb2525f2d2050738a'.
+    Deleting your key from jl-kv ... done
     ```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
@@ -287,12 +285,12 @@ Remove-AzResourceGroup -Name "myResourceGroup"
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy kulcstartót, tárolt egy tanúsítványt, és lekérte a tanúsítványt. 
+Ebben a rövid útmutatóban létrehozott egy Key vaultot, tárolt egy kulcsot, és lekérte a kulcsot. 
 
 Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, tekintse meg a következő cikkeket:
 
 - [A Azure Key Vault áttekintése](../general/overview.md)
-- [A tanúsítványok áttekintésének](about-certificates.md) beolvasása
+- [A kulcsok áttekintésének](about-keys.md) beolvasása
 - [Hozzáférési Key Vault megtekintése app Service alkalmazásról – oktatóanyag](../general/tutorial-net-create-vault-azure-web-app.md)
 - [Hozzáférési Key Vault megtekintése a virtuális gépről – oktatóanyag](../general/tutorial-net-virtual-machine.md)
 - Tekintse [meg a Azure Key Vault fejlesztői útmutatóját](../general/developers-guide.md)

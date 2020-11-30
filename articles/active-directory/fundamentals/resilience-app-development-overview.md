@@ -11,12 +11,12 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: c2c2f9d0ad7bfa50f543b57326b9fc8dab0069c6
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: d06e851390537bf94b59e656f84bf58fe7216410
+ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029302"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96317352"
 ---
 # <a name="increase-resilience-of-authentication-and-authorization-applications-you-develop"></a>Növelje a fejlesztés alatt álló hitelesítési és engedélyezési alkalmazások rugalmasságát
 
@@ -29,4 +29,4 @@ Ez a cikk útmutatást nyújt az alkalmazások rugalmasságának növeléséhez 
 - [Rugalmasság kiépítése a bejelentkezési felhasználókat használó alkalmazásokba](resilience-client-app.md)
 - [Rugalmasság létrehozása a felhasználók nélküli alkalmazásokban](resilience-daemon-app.md)
 - [Hozzon létre rugalmasságot az identitás-és hozzáférés-kezelési infrastruktúrában](resilience-in-infrastructure.md)
-- [Hozzon létre rugalmasságot az ügyfelek identitásában és a hozzáférés-kezelésben Azure Active Directory B2C](resilience-b2c.md)
+- [Hozzon létre rugalmasságot a CIAM-rendszerekben](resilience-b2c.md)
